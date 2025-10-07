@@ -17,8 +17,8 @@ namespace Content.Shared.Humanoid
 
         public static string GetSexMorph(HumanoidVisualLayers layer, Sex sex, string id)
         {
-            if (!HasSexMorph(layer) || sex == Sex.Unsexed)
-                return id;
+            //if (!HasSexMorph(layer) || sex == Sex.Unsexed)  //CrystallEdge full female body support
+            //    return id;
 
             return $"{id}{sex}";
         }
