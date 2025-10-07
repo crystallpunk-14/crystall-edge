@@ -13,20 +13,22 @@ public sealed class CERoofSystem : EntitySystem
     [Dependency] private readonly SharedMapSystem _map = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
 
-    public bool DisabledByCommand;
+    private bool _roofVisible = true;
+    public bool DisabledByCommand = false;
+
+    private const float TargetAlphaVisible = 1.0f;
+    private const float TargetAlphaHidden = 0.0f;
+    private const float TransitionRate = 2.0f;
 
     private EntityQuery<GhostComponent> _ghostQuery;
     private EntityQuery<TransformComponent> _xformQuery;
+    private EntityQuery<SpriteComponent> _spriteQuery;
+    private EntityQuery<CERoofComponent> _roofQuery;
 
-    private bool _roofVisible = true;
-    public bool RoofVisible
+    public bool RoofVisibility
     {
         get => _roofVisible && !DisabledByCommand;
-        set
-        {
-            _roofVisible = value;
-            UpdateRoofVisibilityAll();
-        }
+        set => _roofVisible = value;
     }
 
     public override void Initialize()
@@ -35,9 +37,10 @@ public sealed class CERoofSystem : EntitySystem
 
         _ghostQuery = GetEntityQuery<GhostComponent>();
         _xformQuery = GetEntityQuery<TransformComponent>();
+        _spriteQuery = GetEntityQuery<SpriteComponent>();
+        _roofQuery = GetEntityQuery<CERoofComponent>();
 
         SubscribeLocalEvent<CERoofComponent, ComponentStartup>(RoofStartup);
-
         SubscribeLocalEvent<GhostComponent, CEToggleRoofVisibilityAction>(OnToggleRoof);
     }
 
@@ -50,31 +53,63 @@ public sealed class CERoofSystem : EntitySystem
         if (_ghostQuery.HasComp(player))
             return;
 
-        if (!_xformQuery.TryComp(player, out var playerXform))
-            return;
-
-        var grid = playerXform.GridUid;
-        if (grid == null || !TryComp<MapGridComponent>(grid, out var gridComp))
-            return;
-
-        var roofQuery = GetEntityQuery<CERoofComponent>();
-        var anchored = _map.GetAnchoredEntities(grid.Value, gridComp, playerXform.Coordinates);
-
-        var underRoof = false;
-        foreach (var ent in anchored)
+        if (_xformQuery.TryComp(player, out var playerXform))
         {
-            if (!roofQuery.HasComp(ent))
-                continue;
+            var grid = playerXform.GridUid;
+            if (grid == null || !TryComp<MapGridComponent>(grid, out var gridComp))
+                return;
 
-            underRoof = true;
-        }
-        if (underRoof && _roofVisible)
-        {
-            RoofVisible = false;
-        }
-        if (!underRoof && !_roofVisible)
-        {
-            RoofVisible = true;
+            var anchored = _map.GetAnchoredEntities(grid.Value, gridComp, playerXform.Coordinates);
+
+            var underRoof = false;
+            foreach (var ent in anchored)
+            {
+                if (!_roofQuery.HasComp(ent))
+                    continue;
+
+                underRoof = true;
+                break;
+            }
+
+            if (underRoof && _roofVisible)
+            {
+                _roofVisible = false;
+            }
+            if (!underRoof && !_roofVisible)
+            {
+                _roofVisible = true;
+            }
+
+            var targetAlpha = (_roofVisible && !DisabledByCommand) ? TargetAlphaVisible : TargetAlphaHidden;
+            var change = TransitionRate * frameTime;
+
+            var query = AllEntityQuery<CERoofComponent>();
+            while (query.MoveNext(out var uid, out var roof))
+            {
+                if (!_spriteQuery.TryGetComponent(uid, out var sprite))
+                    continue;
+
+                var currentAlpha = sprite.Color.A;
+                var newAlpha = targetAlpha > currentAlpha
+                    ? Math.Min(currentAlpha + change, targetAlpha)
+                    : Math.Max(currentAlpha - change, targetAlpha);
+
+                if (!currentAlpha.Equals(newAlpha))
+                {
+                    _sprite.SetColor(uid, sprite.Color.WithAlpha(newAlpha));
+
+                    if (newAlpha <= 0.01f && sprite.Visible)
+                    {
+                        _sprite.SetVisible(uid, false);
+                        roof.IsTransitioning = false;
+                    }
+                    else if (newAlpha > 0.01f && !sprite.Visible)
+                    {
+                        _sprite.SetVisible(uid, true);
+                        roof.IsTransitioning = true;
+                    }
+                }
+            }
         }
     }
 
@@ -84,8 +119,6 @@ public sealed class CERoofSystem : EntitySystem
             return;
 
         DisabledByCommand = !DisabledByCommand;
-        UpdateRoofVisibilityAll();
-
         args.Handled = true;
     }
 
@@ -94,21 +127,9 @@ public sealed class CERoofSystem : EntitySystem
         if (!TryComp<SpriteComponent>(ent, out var sprite))
             return;
 
-        UpdateVisibility(ent, sprite);
-    }
-
-    private void UpdateVisibility(Entity<CERoofComponent> ent, SpriteComponent sprite)
-    {
-        _sprite.SetVisible((ent, sprite), RoofVisible);
-    }
-
-    public void UpdateRoofVisibilityAll()
-    {
-        var query = AllEntityQuery<CERoofComponent, SpriteComponent>();
-        while (query.MoveNext(out var uid, out var marker, out var sprite))
-        {
-            UpdateVisibility((uid, marker), sprite);
-        }
+        ent.Comp.OriginalAlpha = sprite.Color.A;
+        _sprite.SetColor(ent.Owner, sprite.Color.WithAlpha(RoofVisibility ? TargetAlphaVisible : TargetAlphaHidden));
+        _sprite.SetVisible(ent.Owner, RoofVisibility);
     }
 }
 
@@ -117,13 +138,11 @@ internal sealed class ShowRoof : LocalizedCommands
     [Dependency] private readonly IEntitySystemManager _entitySystemManager = default!;
 
     public override string Command => "toggle_roof";
-
     public override string Help => "Toggle roof visibility";
 
     public override void Execute(IConsoleShell shell, string argStr, string[] args)
     {
         var roofSystem = _entitySystemManager.GetEntitySystem<CERoofSystem>();
         roofSystem.DisabledByCommand = !roofSystem.DisabledByCommand;
-        roofSystem.UpdateRoofVisibilityAll();
     }
 }

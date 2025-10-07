@@ -8,6 +8,15 @@ namespace Content.Shared._CE.Roof;
 [RegisterComponent]
 public sealed partial class CERoofComponent : Component
 {
+    /// <summary>
+    /// The original alpha value of the sprite before any transitions
+    /// </summary>
+    public float OriginalAlpha = 1.0f;
+
+    /// <summary>
+    /// Whether the roof is currently in a transitioning state
+    /// </summary>
+    public bool IsTransitioning = false;
 }
 
 public sealed partial class CEToggleRoofVisibilityAction : InstantActionEvent
