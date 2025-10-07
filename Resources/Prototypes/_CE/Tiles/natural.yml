@@ -1,0 +1,320 @@
+# SORTED BY EDGE SPRITE PRIORITY
+
+# 0
+
+- type: tile
+  editorHidden: false
+  id: CEFloorMarbleCave
+  name: ce-tiles-marble-cave
+  sprite: /Textures/_CE/Tiles/marble_cave.png
+  variants: 14
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: CEFloorBase
+  #deconstructTools: [ CEDigging ]
+  isSubfloor: true
+  #itemDrop: CEMarbleBlock1
+  footstepSounds:
+    collection: FootstepAsteroid
+  heatCapacity: 10000
+  weather: true
+  indestructible: true
+
+- type: tile
+  id: CEFloorIce
+  editorHidden: false
+  name: tiles-ice
+  sprite: /Textures/_CE/Tiles/ice.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: CEFloorBase
+  isSubfloor: false
+  heatCapacity: 10000
+  friction: 0.05
+  mobAcceleration: 0.1
+  weather: true
+  
+- type: tile
+  editorHidden: false
+  id: CEFloorDirt
+  name: ce-tiles-dirt
+  sprite: /Textures/_CE/Tiles/Dirt/cavedrought.png
+  variants: 16
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 1
+  edgeSprites:
+    SouthEast: /Textures/_CE/Tiles/Dirt/single_edge_SE.png
+    NorthEast: /Textures/_CE/Tiles/Dirt/single_edge_NE.png
+    NorthWest: /Textures/_CE/Tiles/Dirt/single_edge_NW.png
+    SouthWest: /Textures/_CE/Tiles/Dirt/single_edge_SW.png
+    South: /Textures/_CE/Tiles/Dirt/double_edge_S.png
+    East: /Textures/_CE/Tiles/Dirt/double_edge_E.png
+    North: /Textures/_CE/Tiles/Dirt/double_edge_N.png
+    West: /Textures/_CE/Tiles/Dirt/double_edge_W.png
+  baseTurf: CEFloorBase
+  #deconstructTools: [ CEDigging ]
+  #itemDrop: CERandomDirtLootSpawner
+  isSubfloor: true
+  footstepSounds:
+    collection: FootstepAsteroid
+  heatCapacity: 10000
+  weather: true
+
+- type: tile
+  editorHidden: false
+  id: CEFloorCobblestone
+  name: ce-tiles-cobblestone
+  sprite: /Textures/_CE/Tiles/Cobblestone/cobble.png
+  variants: 5
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 2
+  edgeSprites:
+    SouthEast: /Textures/_CE/Tiles/Cobblestone/single_edge_SE.png
+    NorthEast: /Textures/_CE/Tiles/Cobblestone/single_edge_NE.png
+    NorthWest: /Textures/_CE/Tiles/Cobblestone/single_edge_NW.png
+    SouthWest: /Textures/_CE/Tiles/Cobblestone/single_edge_SW.png
+    South: /Textures/_CE/Tiles/Cobblestone/double_edge_S.png
+    East: /Textures/_CE/Tiles/Cobblestone/double_edge_E.png
+    North: /Textures/_CE/Tiles/Cobblestone/double_edge_N.png
+    West: /Textures/_CE/Tiles/Cobblestone/double_edge_W.png
+  baseTurf: CEFloorDirt
+  #deconstructTools: [ CEDigging ]
+  #itemDrop: CERandomStoneLootSpawner
+  isSubfloor: true
+  footstepSounds:
+    collection: FootstepAsteroid
+  heatCapacity: 10000
+  weather: true
+
+- type: tile
+  id: CEFloorMycelium
+  editorHidden: false
+  name: ce-tiles-mycelium
+  sprite: /Textures/_CE/Tiles/Mycelium/tile.png
+  variants: 12
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 3
+  edgeSprites:
+    South: /Textures/_CE/Tiles/Mycelium/double_edge_S.png
+    East: /Textures/_CE/Tiles/Mycelium/double_edge_E.png
+    North: /Textures/_CE/Tiles/Mycelium/double_edge_N.png
+    West: /Textures/_CE/Tiles/Mycelium/double_edge_W.png
+  baseTurf: CEFloorDirt
+  #deconstructTools: [ CEDigging ]
+  #itemDrop: CERandomDirtLootSpawner
+  isSubfloor: false
+  footstepSounds:
+    collection: FootstepGrass
+  heatCapacity: 10000
+  weather: true
+
+- type: tile
+  id: CEFloorMyceliumLight
+  editorHidden: false
+  name: ce-tiles-mycelium-light
+  sprite: /Textures/_CE/Tiles/MyceliumLight/tile.png
+  variants: 12
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 4
+  edgeSprites:
+    South: /Textures/_CE/Tiles/MyceliumLight/double_edge_S.png
+    East: /Textures/_CE/Tiles/MyceliumLight/double_edge_E.png
+    North: /Textures/_CE/Tiles/MyceliumLight/double_edge_N.png
+    West: /Textures/_CE/Tiles/MyceliumLight/double_edge_W.png
+  baseTurf: CEFloorDirt
+  #deconstructTools: [ CEDigging ]
+  #itemDrop: CERandomDirtLootSpawner
+  isSubfloor: false
+  footstepSounds:
+    collection: FootstepGrass
+  heatCapacity: 10000
+  weather: true
+
+- type: tile
+  editorHidden: false
+  id: CEFloorSand
+  name: ce-tiles-sand
+  sprite: /Textures/_CE/Tiles/Sand/sand.png
+  variants: 5
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 5
+  edgeSprites:
+    SouthEast: /Textures/_CE/Tiles/Sand/single_edge_SE.png
+    NorthEast: /Textures/_CE/Tiles/Sand/single_edge_NE.png
+    NorthWest: /Textures/_CE/Tiles/Sand/single_edge_NW.png
+    SouthWest: /Textures/_CE/Tiles/Sand/single_edge_SW.png
+    South: /Textures/_CE/Tiles/Sand/double_edge_S.png
+    East: /Textures/_CE/Tiles/Sand/double_edge_E.png
+    North: /Textures/_CE/Tiles/Sand/double_edge_N.png
+    West: /Textures/_CE/Tiles/Sand/double_edge_W.png
+  baseTurf: CEFloorBase
+  #deconstructTools: [ CEDigging ]
+  #itemDrop: CEDirtEffect #TODO sand variant
+  isSubfloor: true
+  footstepSounds:
+    collection: FootstepSnow #TODO
+  heatCapacity: 10000
+  weather: true
+
+- type: tile
+  id: CEFloorSnowDeepDeep
+  editorHidden: false
+  name: ce-tiles-snow-deep-deep
+  sprite: /Textures/_CE/Tiles/SnowDeepDeep/snow.png
+  variants: 6
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 1000 # Because snowfall!
+  edgeSprites:
+    SouthEast: /Textures/_CE/Tiles/SnowDeepDeep/single_edge_SE.png
+    NorthEast: /Textures/_CE/Tiles/SnowDeepDeep/single_edge_NE.png
+    NorthWest: /Textures/_CE/Tiles/SnowDeepDeep/single_edge_NW.png
+    SouthWest: /Textures/_CE/Tiles/SnowDeepDeep/single_edge_SW.png
+    South: /Textures/_CE/Tiles/SnowDeepDeep/double_edge_S.png
+    East: /Textures/_CE/Tiles/SnowDeepDeep/double_edge_E.png
+    North: /Textures/_CE/Tiles/SnowDeepDeep/double_edge_N.png
+    West: /Textures/_CE/Tiles/SnowDeepDeep/double_edge_W.png
+  baseTurf: CEFloorDirt
+  #deconstructTools: [ CEDigging ]
+  #itemDrop: CERandomSnowLootSpawner
+  isSubfloor: false
+  footstepSounds:
+    collection: FootstepSnow
+  heatCapacity: 10000
+  weather: true
+
+- type: tile
+  id: CEFloorSnowDeep
+  editorHidden: false
+  name: ce-tiles-snow-deep
+  sprite: /Textures/_CE/Tiles/SnowDeep/snow.png
+  variants: 6
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 1001 # Because snowfall!
+  edgeSprites:
+    SouthEast: /Textures/_CE/Tiles/SnowDeep/single_edge_SE.png
+    NorthEast: /Textures/_CE/Tiles/SnowDeep/single_edge_NE.png
+    NorthWest: /Textures/_CE/Tiles/SnowDeep/single_edge_NW.png
+    SouthWest: /Textures/_CE/Tiles/SnowDeep/single_edge_SW.png
+    South: /Textures/_CE/Tiles/SnowDeep/double_edge_S.png
+    East: /Textures/_CE/Tiles/SnowDeep/double_edge_E.png
+    North: /Textures/_CE/Tiles/SnowDeep/double_edge_N.png
+    West: /Textures/_CE/Tiles/SnowDeep/double_edge_W.png
+  baseTurf: CEFloorSnowDeepDeep
+  #deconstructTools: [ CEDigging ]
+  #itemDrop: CERandomSnowLootSpawner
+  isSubfloor: false
+  footstepSounds:
+    collection: FootstepSnow
+  heatCapacity: 10000
+  weather: true
+
+- type: tile
+  id: CEFloorSnow
+  editorHidden: false
+  name: ce-tiles-snow
+  sprite: /Textures/_CE/Tiles/Snow/snow.png
+  variants: 6
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 1002 # Because snowfall!
+  edgeSprites:
+    SouthEast: /Textures/_CE/Tiles/Snow/single_edge_SE.png
+    NorthEast: /Textures/_CE/Tiles/Snow/single_edge_NE.png
+    NorthWest: /Textures/_CE/Tiles/Snow/single_edge_NW.png
+    SouthWest: /Textures/_CE/Tiles/Snow/single_edge_SW.png
+    South: /Textures/_CE/Tiles/Snow/double_edge_S.png
+    East: /Textures/_CE/Tiles/Snow/double_edge_E.png
+    North: /Textures/_CE/Tiles/Snow/double_edge_N.png
+    West: /Textures/_CE/Tiles/Snow/double_edge_W.png
+  baseTurf: CEFloorSnowDeep
+  #deconstructTools: [ CEDigging ]
+  #itemDrop: CERandomSnowLootSpawner
+  isSubfloor: false
+  footstepSounds:
+    collection: FootstepSnow
+  heatCapacity: 10000
+  weather: true

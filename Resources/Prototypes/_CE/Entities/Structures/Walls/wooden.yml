@@ -37,7 +37,6 @@
     sprite: _CE/Structures/Walls/wooden_wall.rsi
     state: frame
 
-
 - type: entity
   id: CEWallWooden
   name: wooden wall

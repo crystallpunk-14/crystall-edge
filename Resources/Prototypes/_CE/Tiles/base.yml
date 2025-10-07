@@ -1,0 +1,41 @@
+# Tile structure:
+# Base indedstructable stone tile
+# - Dirt
+#   - Grass variants
+# - Gravel
+# - Sand
+# - other natural tiles
+# - Fundament
+#   - Wood planks
+#   - Stonebricks
+#   - other produced tiles
+
+- type: tile
+  editorHidden: false
+  id: CEFloorBase
+  name: ce-tiles-base
+  sprite: /Textures/_CE/Tiles/cave.png
+  variants: 14
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: CEFloorBase #Recursivle indestructible
+  isSubfloor: true
+  footstepSounds:
+    collection: FootstepAsteroid
+  heatCapacity: 10000
+  weather: true
+  indestructible: true
+

@@ -1,0 +1,266 @@
+- type: tile
+  editorHidden: false
+  id: CEFloorFoundation
+  name: ce-tiles-foundation
+  sprite: /Textures/_CE/Tiles/foundation.png
+  variants: 14
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 99 #Dont have edges, but block natural ones
+  baseTurf: CEFloorBase
+  isSubfloor: true
+  footstepSounds:
+    collection: FootstepAsteroid
+  heatCapacity: 10000
+  weather: true
+  #deconstructTools: [ Prying ]
+  #itemDrop: CEFloorTileFoundation
+
+- type: tile
+  editorHidden: false
+  id: CEFloorStonebricks
+  name: ce-tiles-stonebricks
+  sprite: /Textures/_CE/Tiles/Stonebricks/stonebricks.png
+  variants: 9
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 101
+  edgeSprites:
+    SouthEast: /Textures/_CE/Tiles/Stonebricks/single_edge_SE.png
+    NorthEast: /Textures/_CE/Tiles/Stonebricks/single_edge_NE.png
+    NorthWest: /Textures/_CE/Tiles/Stonebricks/single_edge_NW.png
+    SouthWest: /Textures/_CE/Tiles/Stonebricks/single_edge_SW.png
+    South: /Textures/_CE/Tiles/Stonebricks/double_edge_S.png
+    East: /Textures/_CE/Tiles/Stonebricks/double_edge_E.png
+    North: /Textures/_CE/Tiles/Stonebricks/double_edge_N.png
+    West: /Textures/_CE/Tiles/Stonebricks/double_edge_W.png
+  baseTurf: CEFloorFoundation
+  isSubfloor: false
+  footstepSounds:
+    collection: FootstepAsteroid
+  heatCapacity: 10000
+  weather: true
+  #deconstructTools: [ Prying ]
+  #itemDrop: CEFloorTileStonebricks
+
+- type: tile
+  editorHidden: false
+  id: CEFloorStonebricksSnowed
+  name: ce-tiles-stonebricks
+  sprite: /Textures/_CE/Tiles/Stonebricks/snowstonebricks.png
+  variants: 9
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 101
+  edgeSprites:
+    SouthEast: /Textures/_CE/Tiles/Stonebricks/single_edge_SE.png
+    NorthEast: /Textures/_CE/Tiles/Stonebricks/single_edge_NE.png
+    NorthWest: /Textures/_CE/Tiles/Stonebricks/single_edge_NW.png
+    SouthWest: /Textures/_CE/Tiles/Stonebricks/single_edge_SW.png
+    South: /Textures/_CE/Tiles/Stonebricks/double_edge_S.png
+    East: /Textures/_CE/Tiles/Stonebricks/double_edge_E.png
+    North: /Textures/_CE/Tiles/Stonebricks/double_edge_N.png
+    West: /Textures/_CE/Tiles/Stonebricks/double_edge_W.png
+  baseTurf: CEFloorFoundation
+  isSubfloor: false
+  footstepSounds:
+    collection: FootstepAsteroid
+  heatCapacity: 10000
+  weather: true
+  #deconstructTools: [ Prying ]
+  #itemDrop: CEFloorTileStonebricks
+
+- type: tile
+  editorHidden: false
+  id: CEFloorStonebricksSmallCarved1
+  name: ce-tiles-stonebricks-small-carved1
+  sprite: /Textures/_CE/Tiles/Stonebricks/stonebricks_small_carved_1.png
+  variants: 1
+  placementVariants:
+  - 1.0
+  edgeSpritePriority: 101
+  edgeSprites:
+    SouthEast: /Textures/_CE/Tiles/Stonebricks/single_edge_SE.png
+    NorthEast: /Textures/_CE/Tiles/Stonebricks/single_edge_NE.png
+    NorthWest: /Textures/_CE/Tiles/Stonebricks/single_edge_NW.png
+    SouthWest: /Textures/_CE/Tiles/Stonebricks/single_edge_SW.png
+    South: /Textures/_CE/Tiles/Stonebricks/double_edge_S.png
+    East: /Textures/_CE/Tiles/Stonebricks/double_edge_E.png
+    North: /Textures/_CE/Tiles/Stonebricks/double_edge_N.png
+    West: /Textures/_CE/Tiles/Stonebricks/double_edge_W.png
+  baseTurf: CEFloorFoundation
+  isSubfloor: false
+  footstepSounds:
+    collection: FootstepAsteroid
+  heatCapacity: 10000
+  weather: true
+  #deconstructTools: [ Prying ]
+  #itemDrop: CEFloorTileStonebricksSmallCarved
+
+- type: tile
+  editorHidden: false
+  id: CEFloorStonebricksSmallCarved2
+  name: ce-tiles-stonebricks-small-carved2
+  sprite: /Textures/_CE/Tiles/Stonebricks/stonebricks_small_carved_2.png
+  variants: 1
+  placementVariants:
+  - 1.0
+  edgeSpritePriority: 101
+  edgeSprites:
+    SouthEast: /Textures/_CE/Tiles/Stonebricks/single_edge_SE.png
+    NorthEast: /Textures/_CE/Tiles/Stonebricks/single_edge_NE.png
+    NorthWest: /Textures/_CE/Tiles/Stonebricks/single_edge_NW.png
+    SouthWest: /Textures/_CE/Tiles/Stonebricks/single_edge_SW.png
+    South: /Textures/_CE/Tiles/Stonebricks/double_edge_S.png
+    East: /Textures/_CE/Tiles/Stonebricks/double_edge_E.png
+    North: /Textures/_CE/Tiles/Stonebricks/double_edge_N.png
+    West: /Textures/_CE/Tiles/Stonebricks/double_edge_W.png
+  baseTurf: CEFloorFoundation
+  isSubfloor: false
+  footstepSounds:
+    collection: FootstepAsteroid
+  heatCapacity: 10000
+  weather: true
+  #deconstructTools: [ Prying ]
+  #itemDrop: CEFloorTileStonebricksSmallCarved2
+
+- type: tile
+  editorHidden: false
+  id: CEFloorStonebricksSquareCarved
+  name: ce-tiles-stonebricks-square-carved
+  sprite: /Textures/_CE/Tiles/Stonebricks/stonebricks_square_carved.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 101
+  edgeSprites:
+    SouthEast: /Textures/_CE/Tiles/Stonebricks/single_edge_SE.png
+    NorthEast: /Textures/_CE/Tiles/Stonebricks/single_edge_NE.png
+    NorthWest: /Textures/_CE/Tiles/Stonebricks/single_edge_NW.png
+    SouthWest: /Textures/_CE/Tiles/Stonebricks/single_edge_SW.png
+    South: /Textures/_CE/Tiles/Stonebricks/double_edge_S.png
+    East: /Textures/_CE/Tiles/Stonebricks/double_edge_E.png
+    North: /Textures/_CE/Tiles/Stonebricks/double_edge_N.png
+    West: /Textures/_CE/Tiles/Stonebricks/double_edge_W.png
+  baseTurf: CEFloorFoundation
+  isSubfloor: false
+  footstepSounds:
+    collection: FootstepAsteroid
+  heatCapacity: 10000
+  weather: true
+  #deconstructTools: [ Prying ]
+  #itemDrop: CEFloorTileStonebricksSquareCarved
+
+- type: tile
+  editorHidden: false
+  id: CEFloorMarble
+  name: ce-tiles-stonebricks-marble
+  sprite: /Textures/_CE/Tiles/Marble/marble.png
+  variants: 6
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 102
+  edgeSprites:
+    South: /Textures/_CE/Tiles/Marble/double_edge_S.png
+  baseTurf: CEFloorFoundation
+  isSubfloor: false
+  footstepSounds:
+    collection: FootstepAsteroid
+  heatCapacity: 10000
+  weather: true
+  #deconstructTools: [ Prying ]
+  #itemDrop: CEFloorTileMarbleBrick
+
+- type: tile
+  editorHidden: false
+  id: CEFloorMarbleSmallbricks
+  name: ce-tiles-stonebricks-marble
+  sprite: /Textures/_CE/Tiles/Marble/small_bricks.png
+  variants: 9
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 102
+  edgeSprites:
+    South: /Textures/_CE/Tiles/Marble/double_edge_S.png
+  baseTurf: CEFloorFoundation
+  isSubfloor: false
+  footstepSounds:
+    collection: FootstepAsteroid
+  heatCapacity: 10000
+  weather: true
+  #deconstructTools: [ Prying ]
+  #itemDrop: CEFloorTileMarbleSmallbricks
+
+- type: tile
+  editorHidden: false
+  id: CEFloorDirtSeedbed
+  name: ce-tiles-dirt-seedbed
+  sprite: /Textures/_CE/Tiles/DirtSeedBag/seedbed.png
+  variants: 2
+  placementVariants:
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 100
+  edgeSprites:
+    SouthEast: /Textures/_CE/Tiles/DirtSeedBag/single_edge_SE.png
+    NorthEast: /Textures/_CE/Tiles/DirtSeedBag/single_edge_NE.png
+    NorthWest: /Textures/_CE/Tiles/DirtSeedBag/single_edge_NW.png
+    SouthWest: /Textures/_CE/Tiles/DirtSeedBag/single_edge_SW.png
+    South: /Textures/_CE/Tiles/DirtSeedBag/double_edge_S.png
+    East: /Textures/_CE/Tiles/DirtSeedBag/double_edge_E.png
+    North: /Textures/_CE/Tiles/DirtSeedBag/double_edge_N.png
+    West: /Textures/_CE/Tiles/DirtSeedBag/double_edge_W.png
+  baseTurf: CEFloorDirt
+  #deconstructTools: [ CEDigging ]
+  #itemDrop: CEDirtEffect
+  isSubfloor: true
+  footstepSounds:
+    collection: FootstepAsteroid
+  heatCapacity: 10000
+  weather: true
+
