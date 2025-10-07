@@ -1,0 +1,8 @@
+- type: damageContainer
+  id: CEBiological
+  supportedGroups:
+    - Brute
+    - Burn
+    - Toxin
+    - Genetic
+    - Airloss

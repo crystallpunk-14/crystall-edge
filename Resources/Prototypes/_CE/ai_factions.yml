@@ -1,0 +1,10 @@
+- type: npcFaction
+  id: CEImperial
+  hostile:
+  - CEHostileEveryone
+
+- type: npcFaction
+  id: CEHostileEveryone
+  hostile:
+  - CEImperial
+

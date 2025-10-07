@@ -1,0 +1,121 @@
+- type: entity
+  save: false
+  id: CEMobDamageable
+  categories: [ ForkFiltered ]
+  abstract: true
+  components:
+  - type: Damageable
+    damageContainer: CEBiological
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Blunt
+        damage: 400
+      behaviors:
+      - !type:GibBehavior { }
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Heat
+        damage: 1500
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawnInContainer: true
+        spawn:
+          Ash: #TODO - CE Ash
+            min: 2
+            max: 3
+      - !type:BurnBodyBehavior { }
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MeatLaserImpact
+  - type: Stamina
+  - type: MobState
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      100: Critical
+      200: Dead
+  - type: MobStateActions
+    actions:
+      Critical:
+      - ActionCritSuccumb
+      - ActionCritFakeDeath
+      - ActionCritLastWords
+  - type: Deathgasp
+  - type: HealthExaminable
+    examinableTypes:
+    - Blunt
+    - Slash
+    - Piercing
+    - Heat
+    - Shock
+    - Cold
+    - Caustic
+  - type: DamageOnHighSpeedImpact
+    damage:
+      types:
+        Blunt: 5
+    soundHit:
+      path: /Audio/Effects/hit_kick.ogg
+  - type: Pullable
+
+# Used for mobs that need food & water for life
+- type: entity
+  id: CEMobStarving
+  abstract: true
+  categories: [ ForkFiltered ]
+  components:
+  - type: Hunger
+    starvationDamage:
+      types:
+        Cold: 0.25
+        Bloodloss: 0.25
+  - type: Thirst
+
+#- type: entity
+#  id: CEMobMagical
+#  abstract: true
+#  categories: [ ForkFiltered ]
+#  components:
+#  - type: CEMagicEnergyContainer
+#    magicAlert: CEMagicEnergy
+#    maxEnergy: 100
+#    energy: 100
+#    unsafeSupport: true
+#  - type: CEMagicEnergyDraw
+#    energy: 1
+#    delay: 3 # 5m to full restore
+#  - type: CEMagicUnsafeDamage
+#  - type: CEMagicUnsafeSleep
+#  - type: CEAuraImprint
+
+- type: entity
+  id: CEMobTemperature
+  abstract: true
+  categories: [ ForkFiltered ]
+  components:
+  - type: ThermalRegulator
+    metabolismHeat: 800
+    radiatedHeat: 100
+    implicitHeatRegulation: 250
+    sweatHeatRegulation: 500
+    shiveringHeatRegulation: 500
+    normalBodyTemperature: 310.15
+    thermalRegulationTemperatureThreshold: 2
+  - type: Temperature
+    heatDamageThreshold: 325
+    coldDamageThreshold: 260
+    currentTemperature: 310.15
+    specificHeat: 42
+    coldDamage:
+      types:
+        Cold: 1 #per second, scales with temperature & other constants
+    heatDamage:
+      types:
+        Heat: 1.5 #per second, scales with temperature & other constants
+  - type: TemperatureSpeed
+    thresholds:
+      293: 0.8
+      280: 0.6
+      260: 0.4

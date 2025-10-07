@@ -1,0 +1,324 @@
+- type: entity
+  save: false
+  parent:
+  - BaseMob
+  - MobCombat
+  - CEMobDamageable
+  #- CEMobMagical
+  - CEMobTemperature
+  - MobPolymorphable
+  id: CEBaseMobSpecies
+  categories: [ ForkFiltered ]
+  abstract: true
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "enum.HumanoidVisualLayers.Chest" ]
+    - map: [ "enum.HumanoidVisualLayers.Head" ]
+    - map: [ "enum.HumanoidVisualLayers.Snout" ]
+    - map: [ "enum.HumanoidVisualLayers.Eyes" ]
+    - map: [ "enum.HumanoidVisualLayers.RArm" ]
+    - map: [ "enum.HumanoidVisualLayers.LArm" ]
+    - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+    - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+    - map: [ "enum.HumanoidVisualLayers.LFoot" ]
+    - map: [ "enum.HumanoidVisualLayers.RFoot" ]
+    - map: [ "pants" ]
+    - map: [ "shoes" ]
+    - map: [ "shirt" ]
+    - map: [ "enum.HumanoidVisualLayers.LHand" ]
+    - map: [ "enum.HumanoidVisualLayers.RHand" ]
+    - map: [ "gloves" ]
+    - map: [ "ears" ]
+    - map: [ "outerClothing" ]
+    - map: [ "cloak" ]
+    - map: [ "eyes" ]
+    - map: [ "belt" ]
+    - map: [ "belt2" ]
+    - map: [ "neck" ]
+    - map: [ "back" ]
+    - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
+    - map: [ "enum.HumanoidVisualLayers.Hair" ]
+    - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
+    - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+    - map: [ "enum.HumanoidVisualLayers.Tail" ]
+    - map: [ "mask" ]
+    - map: [ "head" ]
+    - map: [ "pocket1" ]
+    - map: [ "pocket2" ]
+    - map: ["enum.HumanoidVisualLayers.Handcuffs"]
+      color: "#ffffff"
+      sprite: Objects/Misc/handcuffs.rsi
+      state: body-overlay-2
+      visible: false
+  - type: DamageVisuals
+    thresholds: [ 10, 20, 30, 50, 70, 100 ]
+    targetLayers:
+    - "enum.HumanoidVisualLayers.Chest"
+    - "enum.HumanoidVisualLayers.Head"
+    - "enum.HumanoidVisualLayers.LArm"
+    - "enum.HumanoidVisualLayers.LLeg"
+    - "enum.HumanoidVisualLayers.RArm"
+    - "enum.HumanoidVisualLayers.RLeg"
+    damageOverlayGroups:
+      Brute:
+        sprite: Mobs/Effects/brute_damage.rsi
+        color: "#FF0000"
+      Burn:
+        sprite: Mobs/Effects/burn_damage.rsi
+  - type: GenericVisualizer
+    visuals:
+      enum.CreamPiedVisuals.Creamed:
+        clownedon: # Not 'creampied' bc I can already see Skyrat complaining about conflicts.
+          True: {visible: true}
+          False: {visible: false}
+  - type: StatusIcon
+    bounds: -0.5,-0.5,0.5,0.5
+  - type: RotationVisuals
+    defaultRotation: 90
+    horizontalRotation: 90
+  - type: HumanoidAppearance
+    species: CEHuman
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      60: 0.7
+      70: 0.6
+      80: 0.5
+  - type: Fixtures
+    fixtures: # TODO: This needs a second fixture just for mob collisions.
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 185
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: FloorOcclusion
+  - type: RangedDamageSound
+    soundGroups:
+      Brute:
+        collection:
+          MeatBulletImpact
+    soundTypes:
+      Heat:
+        collection:
+          MeatLaserImpact
+  - type: Reactive
+    groups:
+      Flammable: [ Touch ]
+      Extinguish: [ Touch ]
+      Acidic: [Touch, Ingestion]
+    reactions:
+    - reagents: [Water, SpaceCleaner]
+      methods: [Touch]
+      effects:
+      - !type:WashCreamPieReaction
+  - type: StatusEffects
+    allowed:
+    - Stun
+    - KnockedDown
+    - SlowedDown
+    - Stutter
+    - SeeingRainbows
+    - Electrocution
+    - Drunk
+    - SlurredSpeech
+    - RatvarianLanguage
+    - PressureImmunity
+    - Muted
+    - ForcedSleep
+    - TemporaryBlindness
+    - Pacified
+    - StaminaModifier
+    - Flashed
+    - RadiationProtection
+    - Drowsiness
+    - Adrenaline
+  - type: Body
+    prototype: CEHuman
+    requiredLegs: 2
+  - type: Crawler
+  - type: Identity
+  - type: Hands
+  - type: ComplexInteraction
+  - type: Inventory
+  - type: InventorySlots
+  - type: Climbing
+  - type: Cuffable
+  - type: Ensnareable
+    sprite: Objects/Misc/ensnare.rsi
+    state: icon
+  - type: AnimationPlayer
+  - type: Buckle
+  - type: CombatMode
+    canDisarm: true
+  - type: MeleeWeapon
+    soundHit:
+      collection: Punch
+    angle: 30
+    animation: WeaponArcFist
+    attackRate: 1.3
+    damage:
+      types:
+        Blunt: 3
+  - type: SleepEmitSound
+  - type: SSDIndicator
+  - type: StandingState
+  - type: MindContainer
+    showExamineInfo: true
+  - type: InteractionPopup
+    successChance: 1
+    interactSuccessString: hugging-success-generic
+    interactSuccessSound: /Audio/Effects/thudswoosh.ogg
+    messagePerceivedByOthers: hugging-success-generic-others
+  - type: NpcFactionMember
+    factions:
+    - CEImperial
+  - type: Stripping
+  - type: Strippable
+  - type: UserInterface
+    interfaces:
+      enum.HumanoidMarkingModifierKey.Key:
+        type: HumanoidMarkingModifierBoundUserInterface
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+  - type: Puller
+  - type: Speech
+    speechSounds: Alto
+  - type: DamageForceSay
+  - type: Vocal
+    sounds:
+      Male: MaleHuman
+      Female: FemaleHuman
+      Unsexed: MaleHuman
+  - type: Emoting
+  - type: BodyEmotes
+    soundsId: GeneralBodyEmotes
+  - type: Grammar
+    attributes:
+      proper: true
+  - type: Tag
+    tags:
+    - FootstepSound
+  - type: MovementAlwaysTouching
+  - type: MovementSpeedModifier
+    weightlessAcceleration: 0.8 # Slow swimming
+    weightlessFriction: 2
+    weightlessModifier: 0.6
+
+- type: entity
+  parent:
+  - MobBloodstream
+  - MobRespirator
+  - MobFlammable
+  - CEMobStarving
+  - CEBaseMobSpecies
+  id: CEBaseMobSpeciesOrganic
+  save: false
+  abstract: true
+  components:
+  # Organs
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    damageCap: 80
+    damage:
+      groups:
+        Brute: -0.07
+        Burn: -0.05
+        Toxin: -0.03
+  - type: StatusEffects
+    allowed:
+    - Stun
+    - KnockedDown
+    - SlowedDown
+    - Stutter
+    - SeeingRainbows
+    - Electrocution
+    - ForcedSleep
+    - TemporaryBlindness
+    - Drunk
+    - SlurredSpeech
+    - RatvarianLanguage
+    - PressureImmunity
+    - Muted
+    - Pacified
+    - StaminaModifier
+    - Flashed
+    - RadiationProtection
+    - Drowsiness
+    - Adrenaline
+  - type: Blindable
+  - type: Bloodstream
+    bloodReagent: Blood
+  - type: FireVisuals
+    sprite: _CP14/Mobs/Effects/onfire.rsi
+    normalState: Small_burning
+    alternateState: Humanoid_burning
+
+- type: entity
+  save: false
+  id: CEBaseSpeciesDummy
+  abstract: true
+  components:
+  - type: Hands
+  - type: Inventory
+    templateId: human
+  - type: InventorySlots
+  - type: ContainerContainer
+  - type: Icon
+    sprite: _CE/Mobs/Species/Human/parts.rsi
+    state: full
+  - type: Sprite
+    layers:
+    - map: [ "enum.HumanoidVisualLayers.Chest" ]
+    - map: [ "enum.HumanoidVisualLayers.Head" ]
+    - map: [ "enum.HumanoidVisualLayers.Snout" ]
+    - map: [ "enum.HumanoidVisualLayers.Eyes" ]
+    - map: [ "enum.HumanoidVisualLayers.RArm" ]
+    - map: [ "enum.HumanoidVisualLayers.LArm" ]
+    - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+    - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+    - map: [ "enum.HumanoidVisualLayers.LFoot" ]
+    - map: [ "enum.HumanoidVisualLayers.RFoot" ]
+    - map: [ "pants" ]
+    - map: [ "shoes" ]
+    - map: [ "shirt" ]
+    - map: [ "enum.HumanoidVisualLayers.LHand" ]
+    - map: [ "enum.HumanoidVisualLayers.RHand" ]
+    - map: [ "gloves" ]
+    - map: [ "ears" ]
+    - map: [ "outerClothing" ]
+    - map: [ "cloak" ]
+    - map: [ "eyes" ]
+    - map: [ "belt" ]
+    - map: [ "belt2" ]
+    - map: [ "neck" ]
+    - map: [ "back" ]
+    - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
+    - map: [ "enum.HumanoidVisualLayers.Hair" ]
+    - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
+    - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+    - map: [ "enum.HumanoidVisualLayers.Tail" ]
+    - map: [ "mask" ]
+    - map: [ "head" ]
+    - map: [ "pocket1" ]
+    - map: [ "pocket2" ]
+    - map: ["enum.HumanoidVisualLayers.Handcuffs"]
+      color: "#ffffff"
+      sprite: Objects/Misc/handcuffs.rsi
+      state: body-overlay-2
+      visible: false
+  - type: Appearance
+  - type: HumanoidAppearance
+    species: CEHuman
+  - type: Body
+    prototype: CEHuman
+    requiredLegs: 2
+  - type: UserInterface
+    interfaces:
+      enum.HumanoidMarkingModifierKey.Key: # sure, this can go here too
+        type: HumanoidMarkingModifierBoundUserInterface

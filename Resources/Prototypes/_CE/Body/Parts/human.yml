@@ -1,0 +1,83 @@
+
+- type: entity
+  id: CETorsoHuman
+  parent: TorsoHuman
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _CE/Mobs/Species/Human/parts.rsi
+    state: torso
+
+- type: entity
+  id: CEHeadHuman
+  parent: HeadHuman
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _CE/Mobs/Species/Human/parts.rsi
+    state: head
+
+- type: entity
+  id: CELeftArmHuman
+  parent: LeftArmHuman
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _CE/Mobs/Species/Human/parts.rsi
+
+- type: entity
+  id: CERightArmHuman
+  parent: RightArmHuman
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _CE/Mobs/Species/Human/parts.rsi
+
+- type: entity
+  id: CELeftHandHuman
+  parent: LeftHandHuman
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _CE/Mobs/Species/Human/parts.rsi
+
+- type: entity
+  id: CERightHandHuman
+  parent: RightHandHuman
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _CE/Mobs/Species/Human/parts.rsi
+
+- type: entity
+  id: CELeftLegHuman
+  parent: LeftLegHuman
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _CE/Mobs/Species/Human/parts.rsi
+
+- type: entity
+  id: CERightLegHuman
+  parent: RightLegHuman
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _CE/Mobs/Species/Human/parts.rsi
+
+- type: entity
+  id: CELeftFootHuman
+  parent: LeftFootHuman
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _CE/Mobs/Species/Human/parts.rsi
+
+- type: entity
+  id: CERightFootHuman
+  parent: RightFootHuman
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _CE/Mobs/Species/Human/parts.rsi
+

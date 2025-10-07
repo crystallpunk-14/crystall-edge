@@ -1,0 +1,107 @@
+- type: entity
+  parent: CEBaseMobSpeciesOrganic
+  id: CEBaseMobHuman
+  name: Mr. Human
+  abstract: true
+  components:
+  - type: HumanoidAppearance
+    species: CEHuman
+  - type: Icon
+    sprite: _CE/Mobs/Species/Human/parts.rsi
+    state: full
+  - type: Body
+    prototype: CEHuman
+    requiredLegs: 2
+  - type: Inventory
+    templateId: human
+    displacements:
+      neck:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Human/displacement.rsi
+            state: male_neck
+          48:
+            sprite: _CE/Mobs/Species/Human/displacement48.rsi
+            state: male_neck
+    femaleDisplacements:
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Human/displacement.rsi
+            state: female_cloak
+      cloak:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Human/displacement.rsi
+            state: female_cloak
+      pants:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Human/displacement.rsi
+            state: female_pants
+      shirt:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Human/displacement.rsi
+            state: female_shirt
+      neck:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Human/displacement.rsi
+            state: female_neck
+          48:
+            sprite: _CE/Mobs/Species/Human/displacement48.rsi
+            state: female_neck
+
+- type: entity
+  parent: CEBaseSpeciesDummy
+  id: CEMobHumanDummy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HumanoidAppearance
+    species: CEHuman
+  - type: Inventory
+    templateId: human
+    displacements:
+      neck:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Human/displacement.rsi
+            state: male_neck
+          48:
+            sprite: _CE/Mobs/Species/Human/displacement48.rsi
+            state: male_neck
+    femaleDisplacements:
+      cloak:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Human/displacement.rsi
+            state: female_cloak
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Human/displacement.rsi
+            state: female_cloak
+      gloves:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Human/displacement.rsi
+            state: female_cloak #Its ok for gloves
+      pants:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Human/displacement.rsi
+            state: female_pants
+      shirt:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Human/displacement.rsi
+            state: female_shirt
+      neck:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Human/displacement.rsi
+            state: female_neck
+          48:
+            sprite: _CE/Mobs/Species/Human/displacement48.rsi
+            state: female_neck
