@@ -1,0 +1,36 @@
+name: Edge Publish
+
+concurrency:
+  group: publish
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+    
+    - name: Install Python dependencies
+      run: sudo apt-get install -y python3-paramiko python3-lxml
+      
+    - name: Send POST-request
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.BUILD_HOST }}
+        username: ${{ secrets.BUILD_USER }}
+        password: ${{ secrets.BUILD_PASS }}
+        port: 22
+        script: sh update.sh &> /dev/null
+
+    - name: Publish changelog (Discord)
+      continue-on-error: true
+      run: Tools/actions_changelogs_since_last_run.py
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        DISCORD_WEBHOOK_URL: ${{ secrets.CHANGELOG_DISCORD_WEBHOOK }}
