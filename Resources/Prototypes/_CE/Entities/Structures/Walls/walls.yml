@@ -1,0 +1,58 @@
+- type: entity
+  abstract: true
+  parent: BaseWall
+  categories: [ ForkFiltered ]
+  id: CEBaseWall
+  name: wall
+  description: Sturdy enough to cover you from threats or cold winds.
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wall
+  components:
+  - type: Transform
+    noRot: true
+  - type: Sprite
+    drawdepth: Mobs
+  - type: SpriteFade
+  - type: IconSmooth
+    key: CEwall
+    base: stone
+  - type: Icon
+    state: full
+  - type: PlacementReplacement
+    key: walls
+
+- type: entity
+  id: CEBaseWallFrame
+  categories: [ ForkFiltered ]
+  parent: BaseStructure
+  abstract: true
+  description: This wall is now in an indeterminate state between existence and non-existence.
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wall
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    snapCardinals: true
+  - type: PlacementReplacement
+    key: walls
+  - type: Transform
+    anchored: true
+    noRot: false
+  - type: SpriteFade
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        density: 1000

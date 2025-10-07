@@ -1,0 +1,93 @@
+# Palisad
+
+- type: entity
+  id: CEWallWoodenPalisade
+  name: palisade
+  description: A wall of sharp logs. Not that it's a safe haven.
+  parent:
+  - CEBaseWall
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Walls/wooden_palisad.rsi
+  - type: Icon
+    sprite: _CE/Structures/Walls/wooden_palisad.rsi
+  - type: IconSmooth
+    key: CEpalisade
+    additionalKeys:
+    - CEwall
+    base: wood
+  - type: Tag
+  - type: Occluder
+    enabled: false
+  - type: Airtight
+    airBlocked: false
+
+# Wooden
+
+- type: entity
+  id: CEWallFrameWooden
+  name: wooden wall frame
+  parent:
+  - CEBaseWallFrame
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Walls/wooden_wall.rsi
+    state: frame
+  - type: Icon
+    sprite: _CE/Structures/Walls/wooden_wall.rsi
+    state: frame
+
+
+- type: entity
+  id: CEWallWooden
+  name: wooden wall
+  parent:
+  - CEBaseWall
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Walls/wooden_wall.rsi
+  - type: Icon
+    sprite: _CE/Structures/Walls/wooden_wall.rsi
+  - type: IconSmooth
+    base: wood
+  #- type: CEWallpaperHolder
+
+# Wooden birch
+
+- type: entity
+  id: CEWallFrameWoodenBirch
+  parent: CEWallFrameWooden
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Walls/wooden_wall_birch.rsi
+  - type: Icon
+    sprite: _CE/Structures/Walls/wooden_wall_birch.rsi
+
+- type: entity
+  id: CEWallWoodenBirch
+  parent: CEWallWooden
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Walls/wooden_wall_birch.rsi
+  - type: Icon
+    sprite: _CE/Structures/Walls/wooden_wall_birch.rsi
+
+# Wooden spruce
+
+- type: entity
+  id: CEWallFrameWoodenSpruce
+  parent: CEWallFrameWooden
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Walls/wooden_wall_spruce.rsi
+  - type: Icon
+    sprite: _CE/Structures/Walls/wooden_wall_spruce.rsi
+
+- type: entity
+  id: CEWallWoodenSpruce
+  parent: CEWallWooden
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Walls/wooden_wall_spruce.rsi
+  - type: Icon
+    sprite: _CE/Structures/Walls/wooden_wall_spruce.rsi

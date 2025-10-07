@@ -1,0 +1,66 @@
+# Stone brick
+
+- type: entity
+  id: CEWallFrameStonebrick
+  name: stone brick wall base
+  parent: CEBaseWallFrame
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Walls/bricks_stone_wall.rsi
+    state: frame
+  - type: Icon
+    sprite: _CE/Structures/Walls/bricks_stone_wall.rsi
+    state: frame
+
+- type: entity
+  id: CEWallStonebrick
+  name: stone brick wall
+  parent: CEBaseWall
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Walls/bricks_stone_wall.rsi
+  - type: Icon
+    sprite: _CE/Structures/Walls/bricks_stone_wall.rsi
+  - type: IconSmooth
+    base: stonebricks
+  #- type: CEWallpaperHolder
+
+# Marble
+
+- type: entity
+  id: CEWallFrameMarblebrick
+  name: marble brick wall base
+  parent: CEBaseWallFrame
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Walls/marblebricks_stone_wall.rsi
+    state: frame
+  - type: Icon
+    sprite: _CE/Structures/Walls/marblebricks_stone_wall.rsi
+    state: frame
+
+- type: entity
+  id: CEWallMarbleBrick
+  name: marble brick wall
+  parent: CEBaseWall
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Walls/marblebricks_stone_wall.rsi
+  - type: Icon
+    sprite: _CE/Structures/Walls/marblebricks_stone_wall.rsi
+  - type: IconSmooth
+    base: stonebricks
+  #- type: CEWallpaperHolder
+
+- type: entity
+  id: CEWallStonebrickOld
+  name: old stone brick wall
+  parent: CEBaseWall
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Walls/brick_stone_old_wall.rsi
+  - type: Icon
+    sprite: _CE/Structures/Walls/brick_stone_old_wall.rsi
+  - type: IconSmooth
+    base: stonebricks
+
