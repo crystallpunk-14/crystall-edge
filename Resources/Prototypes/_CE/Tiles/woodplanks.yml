@@ -23,7 +23,7 @@
     West: /Textures/_CE/Tiles/WoodPlanks/RedWood/red_double_edge_W.png
   #baseTurf: CEFloorFoundation
   #deconstructTools: [ Prying ]
-  itemDrop: CEWoodenPlanks1
+  #itemDrop: CEWoodenPlanks1
   isSubfloor: false
   footstepSounds:
     collection: FootstepWood
@@ -55,7 +55,7 @@
   #baseTurf: CEFloorFoundation
   isSubfloor: false
   #deconstructTools: [ Prying ]
-  itemDrop: CEWoodenPlanks1
+  #itemDrop: CEWoodenPlanks1
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -86,7 +86,7 @@
   #baseTurf: CEFloorFoundation
   isSubfloor: false
   #deconstructTools: [ Prying ]
-  itemDrop: CEWoodenPlanks1
+  #itemDrop: CEWoodenPlanks1
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -117,7 +117,7 @@
   #baseTurf: CEFloorFoundation
   isSubfloor: false
   #deconstructTools: [ Prying ]
-  itemDrop: CEWoodenPlanks1
+  #itemDrop: CEWoodenPlanks1
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -276,7 +276,7 @@
   #baseTurf: CEFloorFoundation
   isSubfloor: false
   #deconstructTools: [ Prying ]
-  itemDrop: CEFloorTileBirchWoodplanks
+  #itemDrop: CEFloorTileBirchWoodplanks
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -307,7 +307,7 @@
   #baseTurf: CEFloorFoundation
   isSubfloor: false
   #deconstructTools: [ Prying ]
-  itemDrop: CEFloorTileBirchWoodplanksBig
+  #itemDrop: CEFloorTileBirchWoodplanksBig
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -338,7 +338,7 @@
   #baseTurf: CEFloorFoundation
   isSubfloor: false
   #deconstructTools: [ Prying ]
-  itemDrop: CEFloorTileBirchWoodplanksCruciform
+  #itemDrop: CEFloorTileBirchWoodplanksCruciform
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -369,7 +369,7 @@
   #baseTurf: CEFloorFoundation
   isSubfloor: false
   #deconstructTools: [ Prying ]
-  itemDrop: CEFloorTileBirchWoodplanksStairs
+  #itemDrop: CEFloorTileBirchWoodplanksStairs
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -528,7 +528,7 @@
   #baseTurf: CEFloorFoundation
   isSubfloor: false
   #deconstructTools: [ Prying ]
-  itemDrop: CEFloorTileOakWoodplanks
+  #itemDrop: CEFloorTileOakWoodplanks
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -559,7 +559,7 @@
   #baseTurf: CEFloorFoundation
   isSubfloor: false
   #deconstructTools: [ Prying ]
-  itemDrop: CEFloorTileOakWoodplanksBig
+  #itemDrop: CEFloorTileOakWoodplanksBig
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -590,7 +590,7 @@
   #baseTurf: CEFloorFoundation
   isSubfloor: false
   #deconstructTools: [ Prying ]
-  itemDrop: CEFloorTileOakWoodplanksCruciform
+  #itemDrop: CEFloorTileOakWoodplanksCruciform
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -621,7 +621,7 @@
   #baseTurf: CEFloorFoundation
   isSubfloor: false
   #deconstructTools: [ Prying ]
-  itemDrop: CEFloorTileOakWoodplanksStairs
+  #itemDrop: CEFloorTileOakWoodplanksStairs
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -780,7 +780,7 @@
   #baseTurf: CEFloorFoundation
   isSubfloor: false
   #deconstructTools: [ Prying ]
-  itemDrop: CEWoodenPlanks1
+  #itemDrop: CEWoodenPlanks1
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -811,7 +811,7 @@
   #baseTurf: CEFloorFoundation
   isSubfloor: false
   #deconstructTools: [ Prying ]
-  itemDrop: CEWoodenPlanks1
+  #itemDrop: CEWoodenPlanks1
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -842,7 +842,7 @@
   #baseTurf: CEFloorFoundation
   isSubfloor: false
   #deconstructTools: [ Prying ]
-  itemDrop: CEWoodenPlanks1
+  #itemDrop: CEWoodenPlanks1
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -873,7 +873,7 @@
   #baseTurf: CEFloorFoundation
   isSubfloor: false
   #deconstructTools: [ Prying ]
-  itemDrop: CEWoodenPlanks1
+  #itemDrop: CEWoodenPlanks1
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -1124,7 +1124,7 @@
     West: /Textures/_CE/Tiles/WoodPlanks/LucensWood/lucens_double_edge_W.png
   #baseTurf: CEFloorFoundation
   #deconstructTools: [ Prying ]
-  itemDrop: CELucensWoodenPlanks1
+  #itemDrop: CELucensWoodenPlanks1
   isSubfloor: false
   footstepSounds:
     collection: FootstepWood
@@ -1156,7 +1156,7 @@
   #baseTurf: CEFloorFoundation
   isSubfloor: false
   #deconstructTools: [ Prying ]
-  itemDrop: CELucensWoodenPlanks1
+  #itemDrop: CELucensWoodenPlanks1
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -1187,7 +1187,7 @@
   #baseTurf: CEFloorFoundation
   isSubfloor: false
   #deconstructTools: [ Prying ]
-  itemDrop: CELucensWoodenPlanks1
+  #itemDrop: CELucensWoodenPlanks1
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -1218,7 +1218,7 @@
   #baseTurf: CEFloorFoundation
   isSubfloor: false
   #deconstructTools: [ Prying ]
-  itemDrop: CELucensWoodenPlanks1
+  #itemDrop: CELucensWoodenPlanks1
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
