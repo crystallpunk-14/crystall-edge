@@ -255,7 +255,7 @@
   - type: Bloodstream
     bloodReagent: Blood
   - type: FireVisuals
-    sprite: _CP14/Mobs/Effects/onfire.rsi
+    sprite: _CE/Mobs/Effects/onfire.rsi
     normalState: Small_burning
     alternateState: Humanoid_burning
 

@@ -1,0 +1,15 @@
+marking-CEHumanFacialHair3Clock = Легкая щетина
+marking-CEHumanFacialHairAbe = Серьезная щетина
+marking-CEHumanFacialHairDwarf = Дворф
+marking-CEHumanFacialHairGoateeMush = Козлиная бородка с усиками
+marking-CEHumanFacialHairBriefs = Шорты
+marking-CEHumanFacialHairCircle = Круглая
+marking-CEHumanFacialHairEspanol = Эспаньолка
+marking-CEHumanFacialHairImperial = Имперская
+marking-CEHumanFacialHairMachete = Мачете
+marking-CEHumanFacialHairMutton = Баранья
+marking-CEHumanFacialHairPigtail = Косичка
+marking-CEHumanFacialHairSage = Ман Чу
+marking-CEHumanFacialHairWatson = Ватсон
+marking-CEHumanFacialHairWhiskers = Бакенбарды
+marking-CEHumanFacialHairHussar = Гусарские
