@@ -1,0 +1,41 @@
+- type: entity
+  name: wooden chair
+  description: Made of the most common planks. Simple and effective!
+  id: CEChairWooden
+  categories: [ ForkFiltered ]
+  parent:
+  - UnanchoredChairBase
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Furniture/chairs.rsi
+    state: wooden
+
+- type: entity
+  id: CEChairWoodenBirch
+  parent: CEChairWooden
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Furniture/chairs.rsi
+    state: birch
+
+- type: entity
+  name: wooden stool
+  id: CEStoolWooden
+  parent: CEChairWooden
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Furniture/chairs.rsi
+    state: stoolWooden
+  - type: Rotatable
+    rotateWhileAnchored: true
+
+- type: entity
+  name: birch stool
+  id: CEStoolBirch
+  parent: CEStoolWooden
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Furniture/chairs.rsi
+    state: stoolBirch
+  - type: Rotatable
+    rotateWhileAnchored: true
