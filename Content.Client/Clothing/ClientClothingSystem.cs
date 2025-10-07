@@ -44,6 +44,12 @@ public sealed class ClientClothingSystem : ClothingSystem
         {"pocket1", "POCKET1"},
         {"pocket2", "POCKET2"},
         {"suitstorage", "SUITSTORAGE"},
+        //CrystallEdge zone
+        {"pants", "PANTS"},
+        {"shirt", "SHIRT"},
+        {"cloak", "CLOAK"},
+        {"keys", "KEYS"},
+        //CrystallEdge zone end
     };
 
     [Dependency] private readonly IResourceCache _cache = default!;

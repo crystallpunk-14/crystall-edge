@@ -26,6 +26,13 @@ public enum SlotFlags
     LEGS = 1 << 13,
     FEET = 1 << 14,
     SUITSTORAGE = 1 << 15,
+    //CrystallEdge zone
+    RING = 1 << 16,
+    PANTS = 1 << 17,
+    SHIRT = 1 << 18,
+    CLOAK = 1 << 19,
+    KEYS = 1 << 20,
+    //CrystallEdge zone end
     All = ~NONE,
 
     WITHOUT_POCKET = All & ~POCKET

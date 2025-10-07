@@ -13,7 +13,7 @@
     prototype: CEHuman
     requiredLegs: 2
   - type: Inventory
-    templateId: human
+    templateId: CEHuman
     displacements:
       neck:
         sizeMaps:
@@ -61,7 +61,7 @@
   - type: HumanoidAppearance
     species: CEHuman
   - type: Inventory
-    templateId: human
+    templateId: CEHuman
     displacements:
       neck:
         sizeMaps:

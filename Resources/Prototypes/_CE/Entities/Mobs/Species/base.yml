@@ -266,7 +266,7 @@
   components:
   - type: Hands
   - type: Inventory
-    templateId: human
+    templateId: CEHuman
   - type: InventorySlots
   - type: ContainerContainer
   - type: Icon
