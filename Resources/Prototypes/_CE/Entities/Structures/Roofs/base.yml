@@ -1,0 +1,75 @@
+- type: entity
+  id: CEBaseRoof
+  categories: [ ForkFiltered ]
+  abstract: true
+  name: roof
+  description: A roof over your head to protect you from the heat of the sun or the weather.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: PlacementReplacement
+    key: CERoof
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: Transform
+    anchored: true
+  - type: BlockWeather
+  - type: CERoof
+  - type: Sprite
+    drawdepth: Effects
+    sprite: _CE/Structures/Roofs/test.rsi
+  - type: Icon
+    sprite: _CE/Structures/Roofs/test.rsi
+    state: full
+  - type: IconSmooth
+    key: CEroof
+    base: roof
+  - type: IsRoof
+  - type: SunShadowCast
+  - type: WallMount
+    arc: 360
+
+- type: entity
+  parent:
+  - CEBaseRoof
+  id: CERoofWooden
+  name: wooden roof
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Roofs/wooden.rsi
+  - type: Icon
+    sprite: _CE/Structures/Roofs/wooden.rsi
+
+- type: entity
+  id: CERoofWoodenBirch
+  parent: CERoofWooden
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Roofs/birch.rsi
+  - type: Icon
+    sprite: _CE/Structures/Roofs/birch.rsi
+
+- type: entity
+  parent:
+  - CEBaseRoof
+  id: CERoofStone
+  name: stone roof
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Roofs/stone.rsi
+  - type: Icon
+    sprite: _CE/Structures/Roofs/stone.rsi
+
+- type: entity
+  parent:
+  - CEBaseRoof
+  id: CERoofRemover
+  name: roof remover debug
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Roofs/stone.rsi
+  - type: Icon
+    sprite: _CE/Structures/Roofs/stone.rsi
+  - type: TimedDespawn
+    lifetime: 2
