@@ -1,0 +1,23 @@
+- type: job
+  id: CEGuardCommander
+  setPreference: true
+  name: ce-job-name-guard-commander
+  description: ce-job-desc-guard-commander
+  playTimeTracker: CEJobGuardCommander
+  #startingGear: CEGuardCommanderGear
+  icon: CEJobIconGuardCommander
+  requireAdminNotify: true
+  joinNotifyCrew: true
+  canBeAntag: false
+  supervisors: ce-job-supervisors-empire
+  weight: 2
+  #requirements:
+  #  - !type:DepartmentTimeRequirement
+  #    department: CEGuard
+  #    time: 10980 # 3 hours
+
+#- type: startingGear
+#  id: CEGuardCommanderGear
+#  equipment:
+#    keys: CEKeyRingGuardCommander
+#    belt: CEWalletFilledTest

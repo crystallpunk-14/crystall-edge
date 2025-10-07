@@ -1,0 +1,12 @@
+
+- type: department
+  id: CEGuard
+  name: department-CEGuard
+  description: department-CEGuard-desc
+  weight: 9
+  color: "#576384"
+  editorHidden: false
+  roles:
+  - CEGuardCommander
+  - CEInvestigator
+  - CEGuard

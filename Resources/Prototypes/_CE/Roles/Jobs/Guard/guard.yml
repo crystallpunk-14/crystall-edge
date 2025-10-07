@@ -1,0 +1,16 @@
+- type: job
+  id: CEGuard
+  setPreference: true
+  name: ce-job-name-guard
+  description: ce-job-desc-guard
+  playTimeTracker: CEJobGuard
+  #startingGear: CEGuardGear
+  icon: CEJobIconGuard
+  supervisors: ce-job-supervisors-guard-commander
+  canBeAntag: false
+
+#- type: startingGear
+#  id: CEGuardGear
+#  equipment:
+#    keys: CEKeyRingGuard
+#    belt: CEWalletFilledTest

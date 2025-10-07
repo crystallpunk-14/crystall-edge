@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "size": {
+    "x": 9,
+    "y": 9
+  },
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Created by TheShuEd (Github)",
+  "states": [
+    {
+      "name": "Adventurer"
+    },
+    {
+      "name": "Alchemist"
+    },
+    {
+      "name": "Apprentice"
+    },
+    {
+      "name": "Merchant"
+    },
+    {
+      "name": "Blacksmith"
+    },
+    {
+      "name": "Guard"
+    },
+    {
+      "name": "GuardCommander"
+    },
+    {
+      "name": "Investigator"
+    },
+    {
+      "name": "Guildmaster"
+    },
+    {
+      "name": "GuildWorker"
+    },
+    {
+      "name": "Innkeeper"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+- type: job
+  id: CEInvestigator
+  setPreference: true
+  name: ce-job-name-investigator
+  description: ce-job-desc-investigator
+  playTimeTracker: CEJobInvestigator
+  #startingGear: CEInvestigatorGear
+  icon: CEJobIconInvestigator
+  supervisors: ce-job-supervisors-guard-commander
+  canBeAntag: false
+  #requirements:
+  #  - !type:DepartmentTimeRequirement
+  #    department: CEGuard
+  #    time: 3600 # 1 hours
+
+#- type: startingGear
+#  id: CEInvestigatorGear
+#  equipment:
+#    keys: CEKeyRingGuard
+#    belt: CEWalletFilledTest

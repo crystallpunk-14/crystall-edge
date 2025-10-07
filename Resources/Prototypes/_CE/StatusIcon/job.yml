@@ -1,0 +1,30 @@
+- type: jobIcon
+  id: CEJobIcon
+  abstract: true
+  priority: 1
+  locationPreference: Right
+  isShaded: true
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconGuardCommander
+  icon:
+    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    state: GuardCommander
+  jobName: ce-job-name-guard-commander
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconGuard
+  icon:
+    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    state: Guard
+  jobName: ce-job-name-guard
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconInvestigator
+  icon:
+    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    state: Investigator
+  jobName: ce-job-name-investigator

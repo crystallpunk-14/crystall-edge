@@ -3,7 +3,7 @@
   name: baseline-job-name-role
   description: baseline-job-desc-role
   playTimeTracker: BaselineRole
-  icon: "JobIconPassenger"
+  icon: JobIconPassenger
   supervisors: job-supervisors-everyone
   setPreference: true
 
