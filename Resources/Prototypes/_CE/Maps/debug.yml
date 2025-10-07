@@ -16,7 +16,7 @@
 - type: gameMap
   id: Dev
   mapName: Dev
-  mapPath: /Maps/_Baseline/baseline.yml
+  mapPath: /Maps/_CE/Dev.yml
   minPlayers: 0
   stations:
     Dev:
