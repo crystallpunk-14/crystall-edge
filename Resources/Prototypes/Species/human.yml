@@ -1,7 +1,7 @@
 - type: species
   id: Human
   name: species-name-human
-  roundStart: true
+  roundStart: false # CrystallEdge vanilla species disable
   prototype: MobHuman
   sprites: MobHumanSprites
   markingLimits: MobHumanMarkingLimits
