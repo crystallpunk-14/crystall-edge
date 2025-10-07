@@ -1,0 +1,65 @@
+- type: entity
+  parent: CEClothingHeadBase
+  id: CEClothingHeadFedoraGuard
+  name: guard fedora
+  description: A stylish fedora worn by city guards.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Head/Fedoras/guard.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Head/Fedoras/guard.rsi
+
+- type: entity
+  parent: CEClothingHeadBase
+  id: CEClothingHeadFedoraGuildmaster
+  name: guildmaster's fedora
+  description: A stylish fedora worn by the guildmaster.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Head/Fedoras/guildmaster.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Head/Fedoras/guildmaster.rsi
+
+- type: entity
+  parent: CEClothingHeadBase
+  id: CEClothingHeadFedoraHunterBlack
+  name: black hunter's fedora
+  description: A sleek black fedora favored by skilled hunters.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Head/Fedoras/hunter_black.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Head/Fedoras/hunter_black.rsi
+
+- type: entity
+  parent: CEClothingHeadBase
+  id: CEClothingHeadFedoraHunterBlue
+  name: blue hunter's fedora
+  description: A distinctive blue fedora worn by hunters.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Head/Fedoras/hunter_blue.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Head/Fedoras/hunter_blue.rsi
+
+- type: entity
+  parent: CEClothingHeadBase
+  id: CEClothingHeadFedoraHunterGreen
+  name: green hunter's fedora
+  description: A forest green fedora perfect for hunters.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Head/Fedoras/hunter_green.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Head/Fedoras/hunter_green.rsi
+
+- type: entity
+  parent: CEClothingHeadBase
+  id: CEClothingHeadFedoraHunterRed
+  name: red hunter's fedora
+  description: A bold red fedora worn by veteran hunters.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Head/Fedoras/hunter_red.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Head/Fedoras/hunter_red.rsi
