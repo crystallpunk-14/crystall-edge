@@ -1,0 +1,197 @@
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtBlack
+  name: black shirt
+  description: A classic black shirt suitable for any occasion.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Shirt/black.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Shirt/black.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtBlue
+  name: blue shirt
+  description: A comfortable blue shirt perfect for casual wear.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Shirt/blue.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Shirt/blue.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtBlueCollar
+  name: blue shirt with collar
+  description: A professional blue shirt featuring a distinctive collar design.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Shirt/blue_collar.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Shirt/blue_collar.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtBlueGreen
+  name: blue and green shirt
+  description: A vibrant shirt combining blue and green colors in an attractive pattern.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Shirt/blue_green.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Shirt/blue_green.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtGray
+  name: gray shirt
+  description: A neutral gray shirt that goes well with anything.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Shirt/gray.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Shirt/gray.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtGreenYellow
+  name: green and yellow shirt
+  description: A lively shirt featuring green and yellow colors.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Shirt/green_yellow.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Shirt/green_yellow.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtJestersAttire
+  name: jester's attire
+  description: A colorful and whimsical shirt worn by jesters and entertainers.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Shirt/jesters_attire.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Shirt/jesters_attire.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtMercenary
+  name: mercenary shirt
+  description: A rugged shirt worn by freelance mercenaries and soldiers of fortune.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Shirt/mercenary.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Shirt/mercenary.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtOpenBlue
+  name: open blue shirt
+  description: A casual blue shirt with an open style for relaxed wear.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Shirt/open_blue.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Shirt/open_blue.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtOpenRed
+  name: open red shirt
+  description: A bold red shirt with an open design for a confident look.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Shirt/open_red.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Shirt/open_red.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtOpenYellow
+  name: open yellow shirt
+  description: A bright yellow shirt with an open style for a cheerful appearance.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Shirt/open_yellow.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Shirt/open_yellow.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtPurple
+  name: purple shirt
+  description: An elegant purple shirt that stands out in any crowd.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Shirt/purple.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Shirt/purple.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtRed
+  name: red shirt
+  description: A striking red shirt that makes a bold statement.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Shirt/red.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Shirt/red.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtWhite
+  name: white shirt
+  description: A clean and classic white shirt suitable for formal occasions.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Shirt/white.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Shirt/white.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtWhiteBrown
+  name: white and brown shirt
+  description: A sophisticated shirt combining white and brown earth tones.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Shirt/white_brown.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Shirt/white_brown.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtWhiteCollar
+  name: white shirt with collar
+  description: A professional white shirt featuring a prominent collar design.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Shirt/white_collar.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Shirt/white_collar.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtYellow
+  name: yellow shirt
+  description: A bright and cheerful yellow shirt that radiates positivity.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Shirt/yellow.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Shirt/yellow.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtYellowCollar
+  name: yellow shirt with collar
+  description: A vibrant yellow shirt featuring an elegant collar design.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Shirt/yellow_collar.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Shirt/yellow_collar.rsi
