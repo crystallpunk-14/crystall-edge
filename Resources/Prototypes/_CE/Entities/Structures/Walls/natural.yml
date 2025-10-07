@@ -5,9 +5,9 @@
   description: A solid stone natural wall. It has a cave-like coldness to it.
   components:
   - type: Sprite
-    sprite: _CE/Structures/Walls/Natural/cave_stone.rsi
+    sprite: _CE/Structures/Walls/cave_stone.rsi
   - type: Icon
-    sprite: _CE/Structures/Walls/Natural/cave_stone.rsi
+    sprite: _CE/Structures/Walls/cave_stone.rsi
   - type: IconSmooth
     base: wall
 
@@ -17,9 +17,9 @@
   parent: CEWallStone
   components:
   - type: Sprite
-    sprite: _CE/Structures/Walls/Natural/marble_stone.rsi
+    sprite: _CE/Structures/Walls/marble_stone.rsi
   - type: Icon
-    sprite: _CE/Structures/Walls/Natural/marble_stone.rsi
+    sprite: _CE/Structures/Walls/marble_stone.rsi
 
 - type: entity
   id: CEWallStoneIndestructable
@@ -29,9 +29,9 @@
   description: An extremely durable stone. Your tools don't seem to be enough to break through it.
   components:
   - type: Sprite
-    sprite: _CE/Structures/Walls/Natural/cave_stone_strong.rsi
+    sprite: _CE/Structures/Walls/cave_stone_strong.rsi
   - type: Icon
-    sprite: _CE/Structures/Walls/Natural/cave_stone_strong.rsi
+    sprite: _CE/Structures/Walls/cave_stone_strong.rsi
   - type: IconSmooth
     base: wall
 
@@ -42,9 +42,9 @@
   description: A tall pile of dirt. Can a house be built from it?
   components:
   - type: Sprite
-    sprite: _CE/Structures/Walls/Natural/dirt_wall.rsi
+    sprite: _CE/Structures/Walls/dirt_wall.rsi
   - type: Icon
-    sprite: _CE/Structures/Walls/Natural/dirt_wall.rsi
+    sprite: _CE/Structures/Walls/dirt_wall.rsi
   - type: IconSmooth
     base: wall
 
@@ -56,9 +56,9 @@
   description: Dense, marginal bushes. You can climb through them, but watch out for thorny branches!
   components:
   - type: Sprite
-    sprite: _CE/Structures/Walls/Natural/leaf.rsi
+    sprite: _CE/Structures/Walls/leaf.rsi
   - type: Icon
-    sprite: _CE/Structures/Walls/Natural/leaf.rsi
+    sprite: _CE/Structures/Walls/leaf.rsi
   - type: IconSmooth
     key: CEwallLeaf
     base: wall
@@ -109,9 +109,9 @@
   description: A tall pile of snow. Can a house be built from it?
   components:
   - type: Sprite
-    sprite: _CE/Structures/Walls/Natural/snow_wall.rsi
+    sprite: _CE/Structures/Walls/snow_wall.rsi
   - type: Icon
-    sprite: _CE/Structures/Walls/Natural/snow_wall.rsi
+    sprite: _CE/Structures/Walls/snow_wall.rsi
   - type: IconSmooth
     base: wall
 
@@ -122,9 +122,9 @@
   description: The solid form of the interdimensional continuum.
   components:
   - type: Sprite
-    sprite: _CE/Structures/Walls/Natural/cave_dimensit.rsi
+    sprite: _CE/Structures/Walls/cave_dimensit.rsi
   - type: Icon
-    sprite: _CE/Structures/Walls/Natural/cave_dimensit.rsi
+    sprite: _CE/Structures/Walls/cave_dimensit.rsi
   - type: IconSmooth
     base: wall
   - type: MeleeSound
