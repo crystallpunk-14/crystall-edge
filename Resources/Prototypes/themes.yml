@@ -1,12 +1,12 @@
 - type: uiTheme
   id: SS14DefaultTheme
-  path: /Textures/Interface/Default/
+  path: /Textures/Interface/CrystallEdge/ #Crystall Edge Theme
   colors:
     whiteText: "#FFF5EE"
     slotSelectedGold: "#e6b812"
     slotColor: "#0f1215"
-    slotOutline: "#333850"
-    slotText: "#333850"
+    slotOutline: "#4a3930" #Crystall Edge Theme
+    slotText: "#503b33" #Crystall Edge Theme
     nanoGold: "#A88B5E"
     goodGreenFore: "#31843E"
     concerningOrangeFore: "#A5762F"
