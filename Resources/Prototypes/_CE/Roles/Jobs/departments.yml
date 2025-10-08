@@ -10,3 +10,28 @@
   - CEGuardCommander
   - CEInvestigator
   - CEGuard
+
+- type: department
+  id: CEMercenaries
+  name: department-CEMercenaries
+  description: department-CEMercenaries-desc
+  weight: 8
+  color: "#1d8534"
+  editorHidden: false
+  roles:
+  - CEGuildmaster
+  - CEGuildWorker
+  - CEMercenary
+
+- type: department
+  id: CECitizens
+  name: department-CECitizens
+  description: department-CECitizens-desc
+  weight: 0
+  color: "#bd7c21"
+  editorHidden: false
+  roles:
+  - CEMayor
+  - CETownfolk
+  #- Alchemist
+  #- Innkeeper

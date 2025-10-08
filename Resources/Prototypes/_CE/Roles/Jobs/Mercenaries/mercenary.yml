@@ -1,0 +1,16 @@
+- type: job
+  id: CEMercenary
+  setPreference: true
+  name: ce-job-name-mercenary
+  description: ce-job-desc-mercenary
+  playTimeTracker: CEJobMercenary
+  #startingGear: CEGuardGear
+  icon: CEJobIconMercenary
+  supervisors: ce-job-supervisors-guildmaster
+  canBeAntag: false
+
+#- type: startingGear
+#  id: CEGuardGear
+#  equipment:
+#    keys: CEKeyRingGuard
+#    belt: CEWalletFilledTest

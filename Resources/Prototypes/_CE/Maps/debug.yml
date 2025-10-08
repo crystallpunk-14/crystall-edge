@@ -11,7 +11,7 @@
           mapNameTemplate: "Empty"
         - type: StationJobs
           availableJobs:
-            BaselineRole: [ -1, -1 ]
+            CETownfolk: [ -1, -1 ]
 
 - type: gameMap
   id: Dev
@@ -26,4 +26,4 @@
           mapNameTemplate: "Dev"
         - type: StationJobs
           availableJobs:
-            BaselineRole: [ -1, -1 ]
+            CETownfolk: [ -1, -1 ]

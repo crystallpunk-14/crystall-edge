@@ -8,3 +8,22 @@ ce-job-desc-guard = A fighting unit of the Empire, sworn to protect its people. 
 
 ce-job-name-investigator = Investigator
 ce-job-desc-investigator = Specialist in capturing and neutralizing particularly dangerous magical criminals.
+
+# Citizens
+
+ce-job-name-mayor = Mayor
+ce-job-desc-mayor = TODO
+
+ce-job-name-townfolk = Townfolk
+ce-job-desc-townfolk = TODO
+
+# Mercenaries
+
+ce-job-name-guildmaster = Guildmaster
+ce-job-desc-guildmaster = TODO
+
+ce-job-name-guildworker = Guild worker
+ce-job-desc-guildworker = TODO
+
+ce-job-name-mercenary = Mercenary
+ce-job-desc-mercenary = TODO

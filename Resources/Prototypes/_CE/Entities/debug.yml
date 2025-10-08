@@ -7,15 +7,3 @@
   parent: LightPostSmall
   id: BaselineLight
   categories: [ ForkFiltered ]
-
-- type: entity
-  id: BaselineSpawnPoint
-  parent: SpawnPointJobBase
-  categories: [ ForkFiltered ]
-  name: spawn point
-  components:
-  - type: SpawnPoint
-    job_id: BaselineRole
-  - type: Sprite
-    layers:
-      - state: green

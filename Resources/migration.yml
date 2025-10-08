@@ -10,6 +10,8 @@
 
 # CrystallEdge migration zone
 
+BaselineSpawnPoint: CESpawnPointMercenary
+
 # CrystallEdge migration zone end
 
 

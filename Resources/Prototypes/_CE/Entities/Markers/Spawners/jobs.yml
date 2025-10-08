@@ -1,0 +1,127 @@
+- type: entity
+  id: CESpawnPointJobBase
+  parent: SpawnPointJobBase
+  abstract: true
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _CE/Markers/jobs.rsi
+    snapCardinals: true
+
+# Citizens
+
+- type: entity
+  id: CESpawnPointMayor
+  parent: CESpawnPointJobBase
+  name: mayor
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEMayor
+  - type: Sprite
+    layers:
+      - state: green
+      - state: workman #TODO
+
+- type: entity
+  id: CESpawnPointTownfolk
+  parent: CESpawnPointJobBase
+  name: townfolk
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CETownfolk
+  - type: Sprite
+    layers:
+      - state: green
+      - state: commandant #TODO
+
+# Guards
+
+- type: entity
+  id: CESpawnPointGuardCommander
+  parent: CESpawnPointJobBase
+  name: guard commander
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEGuardCommander
+  - type: Sprite
+    layers:
+      - state: green
+      - state: guard_commander
+
+- type: entity
+  id: CESpawnPointGuard
+  parent: CESpawnPointJobBase
+  name: guard
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEGuard
+  - type: Sprite
+    layers:
+      - state: green
+      - state: guard
+
+- type: entity
+  id: CESpawnPointInvestigator
+  parent: CESpawnPointJobBase
+  name: investigator
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEInvestigator
+  - type: Sprite
+    layers:
+      - state: green
+      - state: investigator
+
+# Mercenaries
+
+- type: entity
+  id: CESpawnPointGuildmaster
+  parent: CESpawnPointJobBase
+  name: guildmaster
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEGuildmaster
+  - type: Sprite
+    layers:
+      - state: green
+      - state: guildmaster
+
+- type: entity
+  id: CESpawnPointGuildWorker
+  parent: CESpawnPointJobBase
+  name: guild worker
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEGuildWorker
+  - type: Sprite
+    layers:
+      - state: green
+      - state: workman
+
+- type: entity
+  id: CESpawnPointMercenary
+  parent: CESpawnPointJobBase
+  name: mercenary
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEMercenary
+  - type: Sprite
+    layers:
+      - state: green
+      - state: adventurer

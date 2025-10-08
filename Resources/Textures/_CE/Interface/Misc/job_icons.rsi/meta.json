@@ -8,28 +8,10 @@
   "copyright": "Created by TheShuEd (Github)",
   "states": [
     {
-      "name": "Adventurer"
-    },
-    {
-      "name": "Alchemist"
-    },
-    {
-      "name": "Apprentice"
-    },
-    {
-      "name": "Merchant"
-    },
-    {
-      "name": "Blacksmith"
-    },
-    {
       "name": "Guard"
     },
     {
       "name": "GuardCommander"
-    },
-    {
-      "name": "Investigator"
     },
     {
       "name": "Guildmaster"
@@ -39,6 +21,18 @@
     },
     {
       "name": "Innkeeper"
+    },
+    {
+      "name": "Investigator"
+    },
+    {
+      "name": "Mayor"
+    },
+    {
+      "name": "Mercenary"
+    },
+    {
+      "name": "Townfolk"
     }
   ]
 }

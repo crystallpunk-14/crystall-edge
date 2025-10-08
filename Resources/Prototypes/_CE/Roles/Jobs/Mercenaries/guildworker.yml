@@ -1,0 +1,16 @@
+- type: job
+  id: CEGuildWorker
+  setPreference: true
+  name: ce-job-name-guildworker
+  description: ce-job-desc-guildworker
+  playTimeTracker: CEJobGuildWorker
+  #startingGear: CEGuardGear
+  icon: CEJobIconGuildWorker
+  supervisors: ce-job-supervisors-guildmaster
+  canBeAntag: false
+
+#- type: startingGear
+#  id: CEGuardGear
+#  equipment:
+#    keys: CEKeyRingGuard
+#    belt: CEWalletFilledTest

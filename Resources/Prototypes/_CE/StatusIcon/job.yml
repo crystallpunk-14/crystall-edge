@@ -5,6 +5,8 @@
   locationPreference: Right
   isShaded: true
 
+# Guards
+
 - type: jobIcon
   parent: CEJobIcon
   id: CEJobIconGuardCommander
@@ -28,3 +30,48 @@
     sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
     state: Investigator
   jobName: ce-job-name-investigator
+
+# Citizens
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconTownfolk
+  icon:
+    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    state: Townfolk
+  jobName: ce-job-name-townfolk
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconMayor
+  icon:
+      sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+      state: Mayor
+  jobName: ce-job-name-mayor
+
+# Mercenaries
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconGuildmaster
+  icon:
+    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    state: Guildmaster
+  jobName: ce-job-name-guildmaster
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconGuildWorker
+  icon:
+    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    state: GuildWorker
+  jobName: ce-job-name-guildworker
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconMercenary
+  icon:
+      sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+      state: Mercenary
+  jobName: ce-job-name-mercenary
+

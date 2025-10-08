@@ -8,3 +8,22 @@
 
 - type: playTimeTracker
   id: CEJobInvestigator
+
+# Citizens
+
+- type: playTimeTracker
+  id: CEJobMayor
+
+- type: playTimeTracker
+  id: CEJobTownfolk
+
+# Mercenaries
+
+- type: playTimeTracker
+  id: CEJobGuildmaster
+
+- type: playTimeTracker
+  id: CEJobGuildWorker
+
+- type: playTimeTracker
+  id: CEJobMercenary

@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Created by TheShuEd (Github)",
+  "size": {
+    "x": 48,
+    "y": 48
+  },
+  "states": [
+    {
+      "name": "adventurer"
+    },
+    {
+      "name": "alchemist"
+    },
+    {
+      "name": "merchant"
+    },
+    {
+      "name": "blacksmith"
+    },
+    {
+      "name": "commandant"
+    },
+    {
+      "name": "green"
+    },
+    {
+      "name": "guard"
+    },
+    {
+      "name": "guard_commander"
+    },
+    {
+      "name": "guildmaster"
+    },
+    {
+      "name": "investigator"
+    },
+    {
+      "name": "workman"
+    }
+  ]
+}

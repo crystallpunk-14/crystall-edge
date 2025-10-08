@@ -1,0 +1,16 @@
+- type: job
+  id: CEMayor
+  setPreference: true
+  name: ce-job-name-mayor
+  description: ce-job-desc-mayor
+  playTimeTracker: CEJobMayor
+  #startingGear: CEGuardGear
+  icon: CEJobIconMayor
+  supervisors: ce-job-supervisors-empire
+  canBeAntag: false
+
+#- type: startingGear
+#  id: CEGuardGear
+#  equipment:
+#    keys: CEKeyRingGuard
+#    belt: CEWalletFilledTest
