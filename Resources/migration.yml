@@ -10,7 +10,7 @@
 
 # CrystallEdge migration zone
 
-BaselineSpawnPoint: CESpawnPointMercenary
+BaselineSpawnPoint: CESpawnPointTownfolk
 
 # CrystallEdge migration zone end
 
