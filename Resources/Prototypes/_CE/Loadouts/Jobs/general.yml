@@ -1,0 +1,317 @@
+# Shirt
+
+- type: loadoutGroup
+  id: CEGeneralShirt
+  name: ce-loadout-shirt
+  minLimit: 1
+  loadouts:
+  - CEClothingShirtBlack
+  - CEClothingShirtBlue
+  - CEClothingShirtBlueCollar
+  - CEClothingShirtBlueGreen
+  - CEClothingShirtGray
+  - CEClothingShirtGreenYellow
+  - CEClothingShirtOpenBlue
+  - CEClothingShirtOpenRed
+  - CEClothingShirtOpenYellow
+  - CEClothingShirtPurple
+  - CEClothingShirtRed
+  - CEClothingShirtWhite
+  - CEClothingShirtWhiteBrown
+  - CEClothingShirtWhiteCollar
+  - CEClothingShirtYellow
+  - CEClothingShirtYellowCollar
+  - CEClothingShirtDressBlack
+  - CEClothingShirtDressBlue
+  - CEClothingShirtDressBlueOpen
+  - CEClothingShirtDressBlueYellow
+  - CEClothingShirtDressGreenBelt
+  - CEClothingShirtDressGreenBelt2
+  - CEClothingShirtDressLightGreen
+  - CEClothingShirtDressMaid
+  - CEClothingShirtDressOpenRed
+  - CEClothingShirtDressOpenYellow
+  - CEClothingShirtDressRed
+  - CEClothingShirtDressWhiteBlue
+  - CEClothingShirtDressWhiteBlue2
+  - CEClothingShirtDressWhiteBrown
+  - CEClothingShirtDressWhiteBrown2
+  - CEClothingShirtDressWhiteBrown3
+  - CEClothingShirtDressWhiteCollar
+  - CEClothingShirtDressWhiteGreen
+  - CEClothingShirtDressWhiteGreenYellow
+  - CEClothingShirtDressWhiteRedBlue
+  - CEClothingShirtDressYellowBlue
+  - CEClothingShirtDressYellowCollar
+  - CEClothingShirtDressYellowWizard
+  - CEClothingShirtWarriorGarb
+
+- type: loadout
+  id: CEClothingShirtBlack
+  equipment:
+    shirt: CEClothingShirtBlack
+
+- type: loadout
+  id: CEClothingShirtBlue
+  equipment:
+    shirt: CEClothingShirtBlue
+
+- type: loadout
+  id: CEClothingShirtBlueCollar
+  equipment:
+    shirt: CEClothingShirtBlueCollar
+
+- type: loadout
+  id: CEClothingShirtBlueGreen
+  equipment:
+    shirt: CEClothingShirtBlueGreen
+
+- type: loadout
+  id: CEClothingShirtGray
+  equipment:
+    shirt: CEClothingShirtGray
+
+- type: loadout
+  id: CEClothingShirtGreenYellow
+  equipment:
+    shirt: CEClothingShirtGreenYellow
+
+- type: loadout
+  id: CEClothingShirtOpenBlue
+  equipment:
+    shirt: CEClothingShirtOpenBlue
+
+- type: loadout
+  id: CEClothingShirtOpenRed
+  equipment:
+    shirt: CEClothingShirtOpenRed
+
+- type: loadout
+  id: CEClothingShirtOpenYellow
+  equipment:
+    shirt: CEClothingShirtOpenYellow
+
+- type: loadout
+  id: CEClothingShirtPurple
+  equipment:
+    shirt: CEClothingShirtPurple
+
+- type: loadout
+  id: CEClothingShirtRed
+  equipment:
+    shirt: CEClothingShirtRed
+
+- type: loadout
+  id: CEClothingShirtWhite
+  equipment:
+    shirt: CEClothingShirtWhite
+
+- type: loadout
+  id: CEClothingShirtWhiteBrown
+  equipment:
+    shirt: CEClothingShirtWhiteBrown
+
+- type: loadout
+  id: CEClothingShirtWhiteCollar
+  equipment:
+    shirt: CEClothingShirtWhiteCollar
+
+- type: loadout
+  id: CEClothingShirtYellow
+  equipment:
+    shirt: CEClothingShirtYellow
+
+- type: loadout
+  id: CEClothingShirtYellowCollar
+  equipment:
+    shirt: CEClothingShirtYellowCollar
+
+- type: loadout
+  id: CEClothingShirtDressBlack
+  equipment:
+    shirt: CEClothingShirtDressBlack
+
+- type: loadout
+  id: CEClothingShirtDressBlue
+  equipment:
+    shirt: CEClothingShirtDressBlue
+
+- type: loadout
+  id: CEClothingShirtDressBlueOpen
+  equipment:
+    shirt: CEClothingShirtDressBlueOpen
+
+- type: loadout
+  id: CEClothingShirtDressBlueYellow
+  equipment:
+    shirt: CEClothingShirtDressBlueYellow
+
+- type: loadout
+  id: CEClothingShirtDressGreenBelt
+  equipment:
+    shirt: CEClothingShirtDressGreenBelt
+
+- type: loadout
+  id: CEClothingShirtDressGreenBelt2
+  equipment:
+    shirt: CEClothingShirtDressGreenBelt2
+
+- type: loadout
+  id: CEClothingShirtDressLightGreen
+  equipment:
+    shirt: CEClothingShirtDressLightGreen
+
+- type: loadout
+  id: CEClothingShirtDressMaid
+  equipment:
+    shirt: CEClothingShirtDressMaid
+
+- type: loadout
+  id: CEClothingShirtDressOpenRed
+  equipment:
+    shirt: CEClothingShirtDressOpenRed
+
+- type: loadout
+  id: CEClothingShirtDressOpenYellow
+  equipment:
+    shirt: CEClothingShirtDressOpenYellow
+
+- type: loadout
+  id: CEClothingShirtDressRed
+  equipment:
+    shirt: CEClothingShirtDressRed
+
+- type: loadout
+  id: CEClothingShirtDressWhiteBlue
+  equipment:
+    shirt: CEClothingShirtDressWhiteBlue
+
+- type: loadout
+  id: CEClothingShirtDressWhiteBlue2
+  equipment:
+    shirt: CEClothingShirtDressWhiteBlue2
+
+- type: loadout
+  id: CEClothingShirtDressWhiteBrown
+  equipment:
+    shirt: CEClothingShirtDressWhiteBrown
+
+- type: loadout
+  id: CEClothingShirtDressWhiteBrown2
+  equipment:
+    shirt: CEClothingShirtDressWhiteBrown2
+
+- type: loadout
+  id: CEClothingShirtDressWhiteBrown3
+  equipment:
+    shirt: CEClothingShirtDressWhiteBrown3
+
+- type: loadout
+  id: CEClothingShirtDressWhiteCollar
+  equipment:
+    shirt: CEClothingShirtDressWhiteCollar
+
+- type: loadout
+  id: CEClothingShirtDressWhiteGreen
+  equipment:
+    shirt: CEClothingShirtDressWhiteGreen
+
+- type: loadout
+  id: CEClothingShirtDressWhiteGreenYellow
+  equipment:
+    shirt: CEClothingShirtDressWhiteGreenYellow
+
+- type: loadout
+  id: CEClothingShirtDressWhiteRedBlue
+  equipment:
+    shirt: CEClothingShirtDressWhiteRedBlue
+
+- type: loadout
+  id: CEClothingShirtDressYellowBlue
+  equipment:
+    shirt: CEClothingShirtDressYellowBlue
+
+- type: loadout
+  id: CEClothingShirtDressYellowCollar
+  equipment:
+    shirt: CEClothingShirtDressYellowCollar
+
+- type: loadout
+  id: CEClothingShirtDressYellowWizard
+  equipment:
+    shirt: CEClothingShirtDressYellowWizard
+
+- type: loadout
+  id: CEClothingShirtWarriorGarb
+  equipment:
+    shirt: CEClothingShirtWarriorGarb
+
+# Pants
+
+- type: loadoutGroup
+  id: CEGeneralPants
+  name: ce-loadout-pants
+  minLimit: 1
+  loadouts:
+  - CEClothingPantsBrown
+  - CEClothingPantsBlue
+  - CEClothingPantsGreen
+  - CEClothingPantsHakama
+  - CEClothingPantsLoincloth
+  - CEClothingPantsWhite
+
+- type: loadout
+  id: CEClothingPantsBlue
+  equipment:
+    pants: CEClothingPantsBlue
+
+- type: loadout
+  id: CEClothingPantsBrown
+  equipment:
+    pants: CEClothingPantsBrown
+
+- type: loadout
+  id: CEClothingPantsGreen
+  equipment:
+    pants: CEClothingPantsGreen
+
+- type: loadout
+  id: CEClothingPantsHakama
+  equipment:
+    pants: CEClothingPantsHakama
+
+- type: loadout
+  id: CEClothingPantsLoincloth
+  equipment:
+    pants: CEClothingPantsLoincloth
+
+- type: loadout
+  id: CEClothingPantsWhite
+  equipment:
+    pants: CEClothingPantsWhite
+
+# Shoes
+
+- type: loadoutGroup
+  id: CEGeneralShoes
+  name: ce-loadout-shoes
+  minLimit: 1
+  loadouts:
+  - CEClothingShoesBlack
+  - CEClothingShoesSandals
+  - CEClothingShoesLongLeatherBoots
+
+- type: loadout
+  id: CEClothingShoesBlack
+  equipment:
+    shoes: CEClothingShoesBlack
+
+- type: loadout
+  id: CEClothingShoesSandals
+  equipment:
+    shoes: CEClothingShoesSandals
+
+- type: loadout
+  id: CEClothingShoesLongLeatherBoots
+  equipment:
+    shoes: CEClothingShoesLongLeatherBoots

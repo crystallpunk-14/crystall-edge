@@ -1,0 +1,25 @@
+# Head
+
+- type: loadoutGroup
+  id: CETownfolkHead
+  name: ce-loadout-head
+  minLimit: 0
+  loadouts:
+  - CEClothingHeadKasaHat
+  - CEClothingHeadStrawHat
+  - CEClothingHeadWreath
+
+- type: loadout
+  id: CEClothingHeadKasaHat
+  equipment:
+    head: CEClothingHeadKasaHat
+
+- type: loadout
+  id: CEClothingHeadStrawHat
+  equipment:
+    head: CEClothingHeadStrawHat
+
+- type: loadout
+  id: CEClothingHeadWreath
+  equipment:
+    head: CEClothingHeadWreath

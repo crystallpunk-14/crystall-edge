@@ -1,0 +1,7 @@
+- type: roleLoadout
+  id: JobCETownfolk
+  groups:
+  - CETownfolkHead
+  - CEGeneralShirt
+  - CEGeneralPants
+  - CEGeneralShoes
