@@ -1,0 +1,47 @@
+- type: entity
+  parent:
+  - CEClothingCloakBase
+  id: CEClothingRaincoatAlchemist
+  name: alchemist's raincoat
+  description: A protective raincoat used by alchemists to shield reagents from the weather.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Cloak/Raincoat/alchemist.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Cloak/Raincoat/alchemist.rsi
+
+- type: entity
+  parent:
+  - CEClothingCloakBase
+  id: CEClothingRaincoatGreen
+  name: green raincoat
+  description: A waterproof green raincoat for everyday use.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Cloak/Raincoat/green.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Cloak/Raincoat/green.rsi
+
+- type: entity
+  parent:
+  - CEClothingCloakBase
+  id: CEClothingRaincoatGuard
+  name: guard raincoat
+  description: A reinforced raincoat issued to guards for weather protection while on duty.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Cloak/Raincoat/guard.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Cloak/Raincoat/guard.rsi
+
+- type: entity
+  parent:
+  - CEClothingCloakBase
+  id: CEClothingRaincoatWhite
+  name: white raincoat
+  description: A crisp white raincoat commonly used by professionals requiring a clean appearance.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Cloak/Raincoat/white.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Cloak/Raincoat/white.rsi

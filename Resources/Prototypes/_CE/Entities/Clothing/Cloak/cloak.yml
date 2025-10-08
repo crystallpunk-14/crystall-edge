@@ -1,0 +1,95 @@
+- type: entity
+  parent:
+  - CEClothingCloakBase
+  id: CEClothingCloakBlue
+  name: blue cloak
+  description: A simple blue cloak for everyday travel and protection.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Cloak/Cloak/blue.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Cloak/Cloak/blue.rsi
+
+- type: entity
+  parent:
+  - CEClothingCloakBase
+  id: CEClothingCloakCommandant
+  name: commandant's cloak
+  description: A stately cloak worn by high-ranking officers and commandants.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Cloak/Cloak/commandant.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Cloak/Cloak/commandant.rsi
+
+- type: entity
+  parent:
+  - CEClothingCloakBase
+  id: CEClothingCloakGuardCommander
+  name: guard commander's cloak
+  description: A prestigious cloak worn by the guard commander, denoting authority.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Cloak/Cloak/guard_commander.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Cloak/Cloak/guard_commander.rsi
+
+- type: entity
+  parent:
+  - CEClothingCloakBase
+  id: CEClothingCloakGuildmaster
+  name: guildmaster's cloak
+  description: A ceremonial cloak worn by the guildmaster, symbolizing leadership.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Cloak/Cloak/guildmaster.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Cloak/Cloak/guildmaster.rsi
+
+- type: entity
+  parent:
+  - CEClothingCloakBase
+  id: CEClothingCloakInsulatedMantle
+  name: insulated mantle
+  description: An insulated mantle designed to retain heat in cold conditions.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Cloak/Cloak/insulated_mantle.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Cloak/Cloak/insulated_mantle.rsi
+
+- type: entity
+  parent:
+  - CEClothingCloakBase
+  id: CEClothingCloakVampireWhite
+  name: white vampire cloak
+  description: An elegant white cloak favored by vampire nobility.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Cloak/Cloak/vamipre_white.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Cloak/Cloak/vamipre_white.rsi
+
+- type: entity
+  parent:
+  - CEClothingCloakBase
+  id: CEClothingCloakVampireBlue
+  name: blue vampire cloak
+  description: A dark blue cloak with vampiric styling.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Cloak/Cloak/vampire_blue.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Cloak/Cloak/vampire_blue.rsi
+
+- type: entity
+  parent:
+  - CEClothingCloakBase
+  id: CEClothingCloakVampireRed
+  name: red vampire cloak
+  description: A crimson cloak favored by vampiric aristocracy.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Cloak/Cloak/vampire_red.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Cloak/Cloak/vampire_red.rsi

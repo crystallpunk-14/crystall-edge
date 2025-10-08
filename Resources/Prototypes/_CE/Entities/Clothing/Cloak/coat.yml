@@ -1,0 +1,23 @@
+- type: entity
+  parent:
+  - CEClothingCloakBase
+  id: CEClothingCoatFur
+  name: fur coat
+  description: A luxurious fur coat made for warmth and style.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Cloak/Coat/fur_coat.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Cloak/Coat/fur_coat.rsi
+
+- type: entity
+  parent:
+  - CEClothingCloakBase
+  id: CEClothingCoatFurBrown
+  name: brown fur coat
+  description: A rugged brown fur coat for colder climates.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Cloak/Coat/fur_coat_brown.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Cloak/Coat/fur_coat_brown.rsi
