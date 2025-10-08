@@ -30,12 +30,12 @@
     sprite: _CE/Clothing/Shoes/sandals.rsi
   - type: Clothing
     sprite: _CE/Clothing/Shoes/sandals.rsi
-  - type: FootstepModifier
-    footstepSoundCollection:
-      collection: CESlippers
-      params:
-        volume: -8
-        variation: 0.07
+  #- type: FootstepModifier
+  #  footstepSoundCollection:
+  #    collection: CESlippers
+  #    params:
+  #      volume: -8
+  #      variation: 0.07
 
 - type: entity
   parent: CEClothingShoesBase
@@ -47,15 +47,15 @@
     sprite: _CE/Clothing/Shoes/long_leather_boots.rsi
   - type: Clothing
     sprite: _CE/Clothing/Shoes/long_leather_boots.rsi
-  - type: PhysicalComposition
-    materialComposition:
-      CELeather: 5
-      CECloth: 5
-  - type: Butcherable
-    butcheringType: Knife
-    spawned:
-    - id: CEThinLeather1
-      amount: 1
+  #- type: PhysicalComposition
+  #  materialComposition:
+  #    CELeather: 5
+  #    CECloth: 5
+  #- type: Butcherable
+  #  butcheringType: Knife
+  #  spawned:
+  #  - id: CEThinLeather1
+  #    amount: 1
 
 - type: entity
   parent: CEClothingShoesBase
@@ -72,27 +72,6 @@
       collection: FootstepJester
       params:
         variation: 0.07
-
-- type: entity
-  parent: CEClothingShoesBase
-  id: CEClothingShoesArtifactFrogs
-  name: frog's slippers
-  categories: [ DoNotMap ]
-  suffix: Artifact
-  description: For wednesday's lovers.
-  components:
-  - type: Sprite
-    sprite: _CE/Clothing/Shoes/frogs_slippers.rsi
-  - type: Clothing
-    sprite: _CE/Clothing/Shoes/frogs_slippers.rsi
-  - type: FootstepModifier
-    footstepSoundCollection:
-      collection: FrogsSlippers
-      params:
-        variation: 0.07
-  - type: NoSlip
-  - type: StaticPrice
-    price: 500
 
 - type: entity
   parent: CEClothingShoesBase
