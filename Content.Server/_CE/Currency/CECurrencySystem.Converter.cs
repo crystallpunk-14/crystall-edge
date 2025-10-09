@@ -31,7 +31,7 @@ public sealed partial class CECurrencySystem
         Verb copperVerb = new()
         {
             Text = Loc.GetString("ce-currency-converter-get-cp"),
-            Icon = new SpriteSpecifier.Rsi(new ("/Textures/_CE/Objects/Economy/cp_coin.rsi"), "coin10"),
+            Icon = new SpriteSpecifier.Rsi(new ("/Textures/_CE/Objects/Materials/Currency/coin_cp.rsi"), "coin10"),
             Category = VerbCategory.CECurrencyConvert,
             Priority = 1,
             CloseMenu = false,
@@ -51,7 +51,7 @@ public sealed partial class CECurrencySystem
         Verb silverVerb = new()
         {
             Text = Loc.GetString("ce-currency-converter-get-sp"),
-            Icon = new SpriteSpecifier.Rsi(new ("/Textures/_CE/Objects/Economy/sp_coin.rsi"), "coin10"),
+            Icon = new SpriteSpecifier.Rsi(new ("/Textures/_CE/Objects/Materials/Currency/coin_sp.rsi"), "coin10"),
             Category = VerbCategory.CECurrencyConvert,
             Priority = 2,
             CloseMenu = false,
@@ -70,7 +70,7 @@ public sealed partial class CECurrencySystem
         Verb goldVerb = new()
         {
             Text = Loc.GetString("ce-currency-converter-get-gp"),
-            Icon = new SpriteSpecifier.Rsi(new ("/Textures/_CE/Objects/Economy/gp_coin.rsi"), "coin10"),
+            Icon = new SpriteSpecifier.Rsi(new ("/Textures/_CE/Objects/Materials/Currency/coin_gp.rsi"), "coin10"),
             Category = VerbCategory.CECurrencyConvert,
             Priority = 3,
             CloseMenu = false,
@@ -89,7 +89,7 @@ public sealed partial class CECurrencySystem
         Verb platinumVerb = new()
         {
             Text = Loc.GetString("ce-currency-converter-get-pp"),
-            Icon = new SpriteSpecifier.Rsi(new ("/Textures/_CE/Objects/Economy/pp_coin.rsi"), "coin10"),
+            Icon = new SpriteSpecifier.Rsi(new ("/Textures/_CE/Objects/Materials/Currency/coin_pp.rsi"), "coin10"),
             Category = VerbCategory.CECurrencyConvert,
             Priority = 4,
             CloseMenu = false,
