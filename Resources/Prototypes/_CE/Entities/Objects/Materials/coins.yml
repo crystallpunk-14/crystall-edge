@@ -1,0 +1,198 @@
+- type: entity
+  id: CECoinBase
+  parent: BaseItem
+  abstract: true
+  categories: [ ForkFiltered ]
+  components:
+  - type: Tag
+    tags:
+    - CECoin
+  - type: Item
+    size: Tiny
+  - type: Stack
+    baseLayer: base
+    layerStates:
+    - coin0
+    - coin1
+    - coin2
+    - coin3
+    - coin4
+    - coin5
+    - coin6
+    - coin7
+    - coin8
+    - coin9
+    - coin10
+  - type: Appearance
+  - type: StaticPrice
+    price: 0
+  - type: CECurrencyExaminable
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_CE/Effects/coins_fall.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      collection: CECoins
+  - type: EmitSoundOnPickup
+    sound:
+      collection: CECoins
+
+# Copper
+
+- type: entity
+  id: CECoinCopper
+  parent: CECoinBase
+  name: copper coin
+  description: The smallest denomination coin. Copper.
+  suffix: 10 coins
+  components:
+  - type: Sprite
+    sprite: /Textures/_CE/Objects/Materials/Currency/coin_cp.rsi
+    layers:
+    - state: coin10
+      map: ["base"]
+  - type: Stack
+    stackType: CECopperCoin
+    count: 10
+  - type: StackPrice
+    price: 1
+
+- type: entity
+  id: CECoinCopper5
+  parent: CECopperCoin
+  suffix: 5 coins
+  components:
+  - type: Sprite
+    state: coin5
+  - type: Stack
+    count: 5
+
+- type: entity
+  id: CECoinCopper1
+  parent: CECopperCoin
+  suffix: 1 coin
+  components:
+  - type: Sprite
+    state: coin1
+  - type: Stack
+    count: 1
+
+# Silver
+
+- type: entity
+  id: CECoinSilver
+  parent: CECoinBase
+  name: silver coin
+  description: A valuable coin made from a precisely calibrated silver alloy... and something else. Equal in value to ten coppers.
+  suffix: 10 coins
+  components:
+  - type: Sprite
+    sprite: /Textures/_CE/Objects/Materials/Currency/coin_sp.rsi
+    layers:
+    - state: coin10
+      map: ["base"]
+  - type: Stack
+    stackType: CESilverCoin
+    count: 10
+  - type: StackPrice
+    price: 10
+
+- type: entity
+  id: CECoinSilver5
+  parent: CESilverCoin
+  suffix: 5 coins
+  components:
+  - type: Sprite
+    state: coin5
+  - type: Stack
+    count: 5
+
+- type: entity
+  id: CECoinSilver1
+  parent: CESilverCoin
+  suffix: 1 coin
+  components:
+  - type: Sprite
+    state: coin1
+  - type: Stack
+    count: 1
+
+# Gold
+
+- type: entity
+  id: CECoinGold
+  parent: CECoinBase
+  name: gold coin
+  description: A gold, big, beautiful coin. Valuable enough to be stolen by bandits. Equal in value to ten silver coins.
+  suffix: 10 coins
+  components:
+  - type: Sprite
+    sprite: /Textures/_CE/Objects/Materials/Currency/coin_gp.rsi
+    layers:
+    - state: coin10
+      map: ["base"]
+  - type: Stack
+    stackType: CEGoldCoin
+    count: 10
+  - type: StackPrice
+    price: 100
+
+- type: entity
+  id: CECoinGold5
+  parent: CEGoldCoin
+  suffix: 5 coins
+  components:
+  - type: Sprite
+    state: coin5
+  - type: Stack
+    count: 5
+
+- type: entity
+  id: CECoinGold1
+  parent: CEGoldCoin
+  suffix: 1 coin
+  components:
+  - type: Sprite
+    state: coin1
+  - type: Stack
+    count: 1
+
+# Platinum
+
+- type: entity
+  id: CECoinPlatinum
+  parent: CECoinBase
+  name: platinum coin
+  description: A platinum coin? It's so rare. Ten gold pieces is the price of one.
+  suffix: 10 coins
+  components:
+  - type: Sprite
+    sprite: /Textures/_CE/Objects/Materials/Currency/coin_pp.rsi
+    layers:
+    - state: coin10
+      map: ["base"]
+  - type: Stack
+    stackType: CEPlatinumCoin
+    count: 10
+  - type: StackPrice
+    price: 1000
+
+- type: entity
+  id: CECoinPlatinum5
+  parent: CEPlatinumCoin
+  suffix: 5 coins
+  components:
+  - type: Sprite
+    state: coin5
+  - type: Stack
+    count: 5
+
+- type: entity
+  id: CECoinPlatinum1
+  parent: CEPlatinumCoin
+  suffix: 1 coin
+  components:
+  - type: Sprite
+    state: coin1
+  - type: Stack
+    count: 1

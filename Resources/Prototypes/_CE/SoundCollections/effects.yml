@@ -4,3 +4,10 @@
     - /Audio/_CE/Effects/grass_gather.ogg
     - /Audio/_CE/Effects/grass_gather2.ogg
     - /Audio/_CE/Effects/grass_gather3.ogg
+
+- type: soundCollection
+  id: CECoins
+  files:
+  - /Audio/_CE/Effects/coins1.ogg
+  - /Audio/_CE/Effects/coins2.ogg
+  - /Audio/_CE/Effects/coins3.ogg

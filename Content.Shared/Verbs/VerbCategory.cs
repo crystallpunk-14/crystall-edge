@@ -35,6 +35,12 @@ namespace Content.Shared.Verbs
             IconsOnly = iconsOnly;
         }
 
+        //CrystallEdge verbs
+
+        public static readonly VerbCategory CECurrencyConvert = new("ce-verb-categories-currency-converter", null);
+
+        //CrystallEdge verbs end
+
         public static readonly VerbCategory Admin =
             new("verb-categories-admin", "/Textures/Interface/character.svg.192dpi.png");
 

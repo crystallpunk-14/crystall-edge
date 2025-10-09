@@ -1,0 +1,251 @@
+using Content.Shared._CE.Currency;
+using Content.Shared.Examine;
+using Content.Shared.Interaction;
+using Content.Shared.Stacks;
+using Content.Shared.Tag;
+using Content.Shared.Verbs;
+using Robust.Shared.Audio;
+using Robust.Shared.Map;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
+
+namespace Content.Server._CE.Currency;
+
+public sealed partial class CECurrencySystem
+{
+    [Dependency] private readonly TagSystem _tag = default!;
+    private void InitializeConverter()
+    {
+        SubscribeLocalEvent<CECurrencyConverterComponent, GetVerbsEvent<Verb>>(OnGetVerb);
+        SubscribeLocalEvent<CECurrencyConverterComponent, ExaminedEvent>(OnConverterExamine);
+        SubscribeLocalEvent<CECurrencyConverterComponent, InteractUsingEvent>(OnInteractUsing);
+    }
+
+    private void OnGetVerb(Entity<CECurrencyConverterComponent> ent, ref GetVerbsEvent<Verb> args)
+    {
+        if (!args.CanAccess || !args.CanInteract)
+            return;
+
+        var transform = Transform(ent);
+        var coord = transform.Coordinates.Offset(transform.LocalRotation.RotateVec(ent.Comp.SpawnOffset));
+        Verb copperVerb = new()
+        {
+            Text = Loc.GetString("ce-currency-converter-get-cp"),
+            Icon = new SpriteSpecifier.Rsi(new ("/Textures/_CE/Objects/Economy/cp_coin.rsi"), "coin10"),
+            Category = VerbCategory.CECurrencyConvert,
+            Priority = 1,
+            CloseMenu = false,
+            Act = () =>
+            {
+                if (ent.Comp.Balance < CP.Value)
+                    return;
+
+                ent.Comp.Balance -= CP.Value;
+
+                var newEnt = Spawn(CP.Key, coord);
+                _stack.TryMergeToContacts(newEnt);
+                _audio.PlayPvs(ent.Comp.InsertSound, ent, AudioParams.Default.WithMaxDistance(3).WithPitchScale(0.9f));
+            },
+        };
+        args.Verbs.Add(copperVerb);
+        Verb silverVerb = new()
+        {
+            Text = Loc.GetString("ce-currency-converter-get-sp"),
+            Icon = new SpriteSpecifier.Rsi(new ("/Textures/_CE/Objects/Economy/sp_coin.rsi"), "coin10"),
+            Category = VerbCategory.CECurrencyConvert,
+            Priority = 2,
+            CloseMenu = false,
+            Act = () =>
+            {
+                if (ent.Comp.Balance < SP.Value)
+                    return;
+
+                ent.Comp.Balance -= SP.Value;
+                var newEnt = Spawn(SP.Key, coord);
+                _stack.TryMergeToContacts(newEnt);
+                _audio.PlayPvs(ent.Comp.InsertSound, ent, AudioParams.Default.WithMaxDistance(3).WithPitchScale(1.1f));
+            },
+        };
+        args.Verbs.Add(silverVerb);
+        Verb goldVerb = new()
+        {
+            Text = Loc.GetString("ce-currency-converter-get-gp"),
+            Icon = new SpriteSpecifier.Rsi(new ("/Textures/_CE/Objects/Economy/gp_coin.rsi"), "coin10"),
+            Category = VerbCategory.CECurrencyConvert,
+            Priority = 3,
+            CloseMenu = false,
+            Act = () =>
+            {
+                if (ent.Comp.Balance < GP.Value)
+                    return;
+
+                ent.Comp.Balance -= GP.Value;
+                var newEnt = Spawn(GP.Key, coord);
+                _stack.TryMergeToContacts(newEnt);
+                _audio.PlayPvs(ent.Comp.InsertSound, ent, AudioParams.Default.WithMaxDistance(3).WithPitchScale(1.3f));
+            },
+        };
+        args.Verbs.Add(goldVerb);
+        Verb platinumVerb = new()
+        {
+            Text = Loc.GetString("ce-currency-converter-get-pp"),
+            Icon = new SpriteSpecifier.Rsi(new ("/Textures/_CE/Objects/Economy/pp_coin.rsi"), "coin10"),
+            Category = VerbCategory.CECurrencyConvert,
+            Priority = 4,
+            CloseMenu = false,
+            Act = () =>
+            {
+                if (ent.Comp.Balance < PP.Value)
+                    return;
+
+                ent.Comp.Balance -= PP.Value;
+                var newEnt = Spawn(PP.Key, coord);
+                _stack.TryMergeToContacts(newEnt);
+                _audio.PlayPvs(ent.Comp.InsertSound, ent, AudioParams.Default.WithMaxDistance(3).WithPitchScale(1.5f));
+            },
+        };
+        args.Verbs.Add(platinumVerb);
+    }
+
+
+    private void OnConverterExamine(Entity<CECurrencyConverterComponent> ent, ref ExaminedEvent args)
+    {
+        var push =
+            $"{Loc.GetString("ce-currency-converter-examine-title")} {GetCurrencyPrettyString(ent.Comp.Balance)}";
+        args.PushMarkup(push);
+    }
+
+    private void OnInteractUsing(Entity<CECurrencyConverterComponent> ent, ref InteractUsingEvent args)
+    {
+        if (!_tag.HasTag(args.Used, ent.Comp.CoinTag))
+            return;
+
+        if (ent.Comp.Whitelist is not null && !_whitelist.IsValid(ent.Comp.Whitelist, args.Used))
+            return;
+
+        var delta = _price.GetPrice(args.Used);
+        ent.Comp.Balance += (int)delta;
+        QueueDel(args.Used);
+
+        _popup.PopupEntity(Loc.GetString("ce-currency-converter-insert", ("cash", delta)), ent, args.User);
+        _audio.PlayPvs(ent.Comp.InsertSound, ent, AudioParams.Default.WithMaxDistance(3));
+    }
+
+    public HashSet<EntityUid> GenerateMoney(EntProtoId currencyType,
+        double target,
+        EntityCoordinates coordinates,
+        out double remainder)
+    {
+        remainder = target;
+        HashSet<EntityUid> spawns = new();
+
+        if (!_proto.TryIndex(currencyType, out var indexedCurrency))
+            return spawns;
+
+        var ent = Spawn(currencyType, coordinates);
+        if (ProcessEntity(ent, ref remainder, spawns))
+            return spawns;
+
+        while (remainder > 0)
+        {
+            var newEnt = Spawn(currencyType, coordinates);
+            if (ProcessEntity(newEnt, ref remainder, spawns))
+                break;
+        }
+
+        return spawns;
+    }
+
+    public HashSet<EntityUid> GenerateMoney(
+        double target,
+        EntityCoordinates coordinates)
+    {
+        HashSet<EntityUid> coins = new();
+        var balance = target;
+        //PP
+        if (balance > 0)
+        {
+            var ppCoin = GenerateMoney(PP.Key, balance, coordinates, out var remainder);
+            balance = remainder;
+            foreach (var pp in ppCoin)
+            {
+                coins.Add(pp);
+            }
+        }
+        //GP
+        if (balance > 0)
+        {
+            var gpCoin = GenerateMoney(GP.Key, balance, coordinates, out var remainder);
+            balance = remainder;
+            foreach (var gp in gpCoin)
+            {
+                coins.Add(gp);
+            }
+        }
+        //SP
+        if (balance > 0)
+        {
+            var spCoin = GenerateMoney(SP.Key, balance, coordinates, out var remainder);
+            balance = remainder;
+            foreach (var sp in spCoin)
+            {
+                coins.Add(sp);
+            }
+        }
+        //CP
+        if (balance > 0)
+        {
+            var cpCoin = GenerateMoney(CP.Key, balance, coordinates, out var remainder);
+            balance = remainder;
+            foreach (var cp in cpCoin)
+            {
+                coins.Add(cp);
+            }
+        }
+
+        return coins;
+    }
+
+    private bool ProcessEntity(EntityUid ent, ref double remainder, HashSet<EntityUid> spawns)
+    {
+        var singleCurrency = _price.GetPrice(ent);
+
+        if (singleCurrency > remainder)
+        {
+            QueueDel(ent);
+            return true;
+        }
+
+        spawns.Add(ent);
+        remainder -= singleCurrency;
+
+        if (TryComp<StackComponent>(ent, out var stack) &&
+            _proto.TryIndex<StackPrototype>(stack.StackTypeId, out var indexedStack))
+        {
+            AdjustStack(ent, stack, indexedStack, singleCurrency, ref remainder);
+        }
+
+        return false;
+    }
+
+    private void AdjustStack(EntityUid ent,
+        StackComponent stack,
+        StackPrototype stackProto,
+        double singleCurrency,
+        ref double remainder)
+    {
+        var singleStackCurrency = singleCurrency / stack.Count;
+        var stackLeftSpace = stackProto.MaxCount - stack.Count;
+
+        if (stackLeftSpace is not null)
+        {
+            var addedStack = MathF.Min((float)stackLeftSpace, MathF.Floor((float)(remainder / singleStackCurrency)));
+
+            if (addedStack > 0)
+            {
+                _stack.SetCount(ent, stack.Count + (int)addedStack);
+                remainder -= (int)(addedStack * singleStackCurrency);
+            }
+        }
+    }
+}
