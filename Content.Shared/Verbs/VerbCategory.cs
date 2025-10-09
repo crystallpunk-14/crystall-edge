@@ -38,6 +38,7 @@ namespace Content.Shared.Verbs
         //CrystallEdge verbs
 
         public static readonly VerbCategory CECurrencyConvert = new("ce-verb-categories-currency-converter", null);
+        public static readonly VerbCategory CELock = new("ce-verb-categories-lock", "/Textures/Interface/VerbIcons/lock.svg.192dpi.png");
 
         //CrystallEdge verbs end
 
