@@ -27,3 +27,13 @@
   license: "CC-BY-4.0"
   copyright: 'by tim.kahn of Freesound.org. Cropped and mixed from stereo to mono.'
   source: "https://freesound.org/people/tim.kahn/sounds/35827/"
+
+- files: ["doorknob_1.ogg"]
+  license: "CC-BY-3.0"
+  copyright: 'by Leady.'
+  source: "https://freesound.org/people/Leady/sounds/12739/"
+
+- files: ["doorknob_2.ogg"]
+  license: "CC0-1.0"
+  copyright: 'by BenjaminNelan.'
+  source: "https://freesound.org/people/BenjaminNelan/sounds/321087/"

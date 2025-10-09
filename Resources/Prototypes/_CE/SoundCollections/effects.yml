@@ -11,3 +11,9 @@
   - /Audio/_CE/Effects/coins1.ogg
   - /Audio/_CE/Effects/coins2.ogg
   - /Audio/_CE/Effects/coins3.ogg
+
+- type: soundCollection
+  id: CEDoorknob
+  files:
+  - /Audio/_CE/Effects/doorknob_1.ogg
+  - /Audio/_CE/Effects/doorknob_2.ogg
