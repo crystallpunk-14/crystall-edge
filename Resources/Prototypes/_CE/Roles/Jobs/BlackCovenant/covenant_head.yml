@@ -1,12 +1,12 @@
 - type: job
-  id: CEMayor
+  id: CECovenantHead
   setPreference: true
-  name: ce-job-name-mayor
-  description: ce-job-desc-mayor
-  playTimeTracker: CEJobMayor
+  name: ce-job-name-covenant-head
+  description: ce-job-desc-covenant-head
+  playTimeTracker: CEJobCovenantHead
   #startingGear: CEGuardGear
-  icon: CEJobIconMayor
-  supervisors: ce-job-supervisors-empire
+  icon: CEJobIconCovenantHead
+  supervisors: ce-job-supervisors-god
   canBeAntag: false
   weight: 2
 

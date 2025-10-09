@@ -8,6 +8,12 @@
   "copyright": "Created by TheShuEd (Github)",
   "states": [
     {
+      "name": "CovenantAgent"
+    },
+    {
+      "name": "CovenantHead"
+    },
+    {
       "name": "Guard"
     },
     {

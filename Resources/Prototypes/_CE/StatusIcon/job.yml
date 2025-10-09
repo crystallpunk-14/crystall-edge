@@ -75,3 +75,20 @@
       state: Mercenary
   jobName: ce-job-name-mercenary
 
+# Black Covenant
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconCovenantHead
+  icon:
+      sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+      state: CovenantHead
+  jobName: ce-job-name-covenant-head
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconCovenantAgent
+  icon:
+      sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+      state: CovenantAgent
+  jobName: ce-job-name-covenant-agent

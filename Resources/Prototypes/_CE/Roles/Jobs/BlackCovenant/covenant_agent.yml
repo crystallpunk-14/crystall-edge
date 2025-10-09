@@ -1,0 +1,16 @@
+- type: job
+  id: CECovenantAgent
+  setPreference: true
+  name: ce-job-name-covenant-agent
+  description: ce-job-desc-covenant-agent
+  playTimeTracker: CEJobCovenantAgent
+  #startingGear: CEGuardGear
+  icon: CEJobIconCovenantAgent
+  supervisors: ce-job-supervisors-covenant-head
+  canBeAntag: false
+
+#- type: startingGear
+#  id: CEGuardGear
+#  equipment:
+#    keys: CEKeyRingGuard
+#    belt: CEWalletFilledTest

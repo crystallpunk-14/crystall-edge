@@ -8,6 +8,7 @@
   icon: CEJobIconGuildmaster
   supervisors: ce-job-supervisors-empire
   canBeAntag: false
+  weight: 2
 
 #- type: startingGear
 #  id: CEGuardGear

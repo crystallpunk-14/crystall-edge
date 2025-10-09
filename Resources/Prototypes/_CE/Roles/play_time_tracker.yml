@@ -27,3 +27,11 @@
 
 - type: playTimeTracker
   id: CEJobMercenary
+
+# Black Covenant
+
+- type: playTimeTracker
+  id: CEJobCovenantHead
+
+- type: playTimeTracker
+  id: CEJobCovenantAgent

@@ -24,6 +24,17 @@
   - CEMercenary
 
 - type: department
+  id: CEBlackCovenant
+  name: department-CEBlackCovenant
+  description: department-CEBlackCovenant-desc
+  weight: 7
+  color: "#222222"
+  editorHidden: false
+  roles:
+  - CECovenantHead
+  - CECovenantAgent
+
+- type: department
   id: CECitizens
   name: department-CECitizens
   description: department-CECitizens-desc

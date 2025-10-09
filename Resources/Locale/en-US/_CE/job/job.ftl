@@ -27,3 +27,11 @@ ce-job-desc-guildworker = TODO
 
 ce-job-name-mercenary = Mercenary
 ce-job-desc-mercenary = TODO
+
+# Black Covenant
+
+ce-job-name-covenant-head = Covenant head
+ce-job-desc-covenant-head = TODO
+
+ce-job-name-covenant-agent = Agent
+ce-job-desc-covenant-agent = TODO
