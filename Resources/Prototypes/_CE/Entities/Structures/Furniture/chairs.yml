@@ -9,33 +9,31 @@
   - type: Sprite
     sprite: _CE/Structures/Furniture/chairs.rsi
     state: wooden
-
-- type: entity
-  id: CEChairWoodenBirch
-  parent: CEChairWooden
-  components:
-  - type: Sprite
-    sprite: _CE/Structures/Furniture/chairs.rsi
-    state: birch
+  - type: Rotatable
+    rotateWhileAnchored: true
 
 - type: entity
   name: wooden stool
-  id: CEStoolWooden
+  id: CEChairStoolWooden
   parent: CEChairWooden
   components:
   - type: Sprite
-    sprite: _CE/Structures/Furniture/chairs.rsi
-    state: stoolWooden
-  - type: Rotatable
-    rotateWhileAnchored: true
+    state: stool_wooden
 
 - type: entity
-  name: birch stool
-  id: CEStoolBirch
-  parent: CEStoolWooden
+  name: wooden stool
+  id: CEChairStoolMetallic
+  parent: CEChairWooden
+  suffix: Metallic
   components:
   - type: Sprite
-    sprite: _CE/Structures/Furniture/chairs.rsi
-    state: stoolBirch
-  - type: Rotatable
-    rotateWhileAnchored: true
+    state: stool_metall
+
+- type: entity
+  name: wooden stool
+  id: CEChairStoolMetallicRed
+  suffix: Metallic Red
+  parent: CEChairWooden
+  components:
+  - type: Sprite
+    state: stool_metall_red

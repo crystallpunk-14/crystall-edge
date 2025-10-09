@@ -47,18 +47,6 @@
     state: frame
 
 - type: entity
-  parent: CETableWoodenFrame
-  id: CETableWoodenBirchFrame
-  components:
-  - type: Sprite
-    snapCardinals: true
-    sprite: _CE/Structures/Furniture/Tables/birch.rsi
-    state: frame
-  - type: Icon
-    sprite: _CE/Structures/Furniture/Tables/birch.rsi
-    state: frame
-
-- type: entity
   parent: CEWoodenTableBase
   id: CETableWooden
   name: wooden table
@@ -74,14 +62,19 @@
     base: state
 
 - type: entity
-  parent: CETableWooden
-  id: CETableWoodenBirch
+  parent: CEWoodenTableBase
+  id: CETableWoodenMetallic
+  name: wooden reinforced table
+  description: A simple table made of boards, with metal border reinforcements.
   components:
   - type: Sprite
-    sprite: _CE/Structures/Furniture/Tables/birch.rsi
+    sprite: _CE/Structures/Furniture/Tables/wood_metallic.rsi
   - type: Icon
-    sprite: _CE/Structures/Furniture/Tables/birch.rsi
+    sprite: _CE/Structures/Furniture/Tables/wood_metallic.rsi
     state: full
+  - type: IconSmooth
+    key: state
+    base: state
 
 - type: entity
   parent: CEWoodenTableBase
@@ -98,20 +91,6 @@
     state: round
 
 - type: entity
-  parent: CEWoodenTableBase
-  id: CETableWoodenBirchRound
-  name: round birch table
-  description: A simple table made of boards.
-  components:
-  - type: Sprite
-    snapCardinals: true
-    sprite: _CE/Structures/Furniture/Tables/birch.rsi
-    state: round
-  - type: Icon
-    sprite: _CE/Structures/Furniture/Tables/birch.rsi
-    state: round
-
-- type: entity
   parent: CETableWooden
   id: CETableWoodenCounter
   name: wooden counter
@@ -120,17 +99,6 @@
     sprite: _CE/Structures/Furniture/Tables/wood_counter.rsi
   - type: Icon
     sprite: _CE/Structures/Furniture/Tables/wood_counter.rsi
-    state: full
-
-- type: entity
-  parent: CETableWoodenBirch
-  id: CETableWoodenBirchCounter
-  name: birch counter
-  components:
-  - type: Sprite
-    sprite: _CE/Structures/Furniture/Tables/birch_counter.rsi
-  - type: Icon
-    sprite: _CE/Structures/Furniture/Tables/birch_counter.rsi
     state: full
 
 - type: entity

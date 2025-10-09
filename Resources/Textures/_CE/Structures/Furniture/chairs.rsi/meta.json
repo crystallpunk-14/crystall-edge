@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-4.0",
-  "copyright": "Created by TheShuEd (Github) , modified by vladimir.s. Birch recolor by omsoyk and goblinsable (SS14). Stool by SketchiiArtist (Github)",
+  "copyright": "Created by TheShuEd (Github), modified by vladimir.s. stool_wooden by SketchiiArtist (Github)",
   "size": {
     "x": 32,
     "y": 32
@@ -12,16 +12,13 @@
       "directions": 4
     },
     {
-      "name": "birch",
-      "directions": 4
+      "name": "stool_wooden"
     },
     {
-      "name": "stoolWooden",
-      "directions": 4
+      "name": "stool_metall"
     },
     {
-      "name": "stoolBirch",
-      "directions": 4
+      "name": "stool_metall_red"
     }
   ]
 }
