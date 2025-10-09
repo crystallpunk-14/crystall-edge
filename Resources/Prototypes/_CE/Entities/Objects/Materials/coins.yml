@@ -52,14 +52,14 @@
     - state: coin10
       map: ["base"]
   - type: Stack
-    stackType: CECopperCoin
+    stackType: CECoinCopper
     count: 10
   - type: StackPrice
     price: 1
 
 - type: entity
   id: CECoinCopper5
-  parent: CECopperCoin
+  parent: CECoinCopper
   suffix: 5 coins
   components:
   - type: Sprite
@@ -69,7 +69,7 @@
 
 - type: entity
   id: CECoinCopper1
-  parent: CECopperCoin
+  parent: CECoinCopper
   suffix: 1 coin
   components:
   - type: Sprite
@@ -92,14 +92,14 @@
     - state: coin10
       map: ["base"]
   - type: Stack
-    stackType: CESilverCoin
+    stackType: CECoinSilver
     count: 10
   - type: StackPrice
     price: 10
 
 - type: entity
   id: CECoinSilver5
-  parent: CESilverCoin
+  parent: CECoinSilver
   suffix: 5 coins
   components:
   - type: Sprite
@@ -109,7 +109,7 @@
 
 - type: entity
   id: CECoinSilver1
-  parent: CESilverCoin
+  parent: CECoinSilver
   suffix: 1 coin
   components:
   - type: Sprite
@@ -132,14 +132,14 @@
     - state: coin10
       map: ["base"]
   - type: Stack
-    stackType: CEGoldCoin
+    stackType: CECoinGold
     count: 10
   - type: StackPrice
     price: 100
 
 - type: entity
   id: CECoinGold5
-  parent: CEGoldCoin
+  parent: CECoinGold
   suffix: 5 coins
   components:
   - type: Sprite
@@ -149,7 +149,7 @@
 
 - type: entity
   id: CECoinGold1
-  parent: CEGoldCoin
+  parent: CECoinGold
   suffix: 1 coin
   components:
   - type: Sprite
@@ -172,14 +172,14 @@
     - state: coin10
       map: ["base"]
   - type: Stack
-    stackType: CEPlatinumCoin
+    stackType: CECoinPlatinum
     count: 10
   - type: StackPrice
     price: 1000
 
 - type: entity
   id: CECoinPlatinum5
-  parent: CEPlatinumCoin
+  parent: CECoinPlatinum
   suffix: 5 coins
   components:
   - type: Sprite
@@ -189,7 +189,7 @@
 
 - type: entity
   id: CECoinPlatinum1
-  parent: CEPlatinumCoin
+  parent: CECoinPlatinum
   suffix: 1 coin
   components:
   - type: Sprite
