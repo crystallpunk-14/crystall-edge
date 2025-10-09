@@ -78,6 +78,21 @@
 
 - type: entity
   parent: CEWoodenTableBase
+  id: CETableWoodenMetallicCounter
+  name: wooden reinforced counter
+  description: A simple counter made of boards, with metal border reinforcements.
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Furniture/Tables/wood_metallic_counter.rsi
+  - type: Icon
+    sprite: _CE/Structures/Furniture/Tables/wood_metallic_counter.rsi
+    state: full
+  - type: IconSmooth
+    key: state
+    base: state
+
+- type: entity
+  parent: CEWoodenTableBase
   id: CETableWoodenRound
   name: round wooden table
   description: A simple table made of boards.
