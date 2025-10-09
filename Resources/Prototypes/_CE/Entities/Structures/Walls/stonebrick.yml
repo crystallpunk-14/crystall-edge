@@ -25,8 +25,6 @@
     base: stonebricks
   #- type: CEWallpaperHolder
 
-# Marble
-
 - type: entity
   id: CEWallFrameMarblebrick
   name: marble brick wall base
@@ -64,3 +62,14 @@
   - type: IconSmooth
     base: stonebricks
 
+- type: entity
+  id: CEWallStonebrickBrown
+  name: brown stone brick wall
+  parent: CEBaseWall
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Walls/bricks_brown.rsi
+  - type: Icon
+    sprite: _CE/Structures/Walls/bricks_brown.rsi
+  - type: IconSmooth
+    base: bricksA
