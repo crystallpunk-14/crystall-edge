@@ -5,43 +5,19 @@
     "y": 32
   },
   "license": "CC-BY-SA-4.0",
-  "copyright": "Created by TheShuEd (Github), lockpick_skeleton by Vojner (discord)",
+  "copyright": "Created by TheShuEd (Github)",
   "states": [
     {
       "name": "file"
     },
     {
       "name": "key_iron"
-    },
-    {
-      "name": "key_gold"
-    },
-    {
-      "name": "key_copper"
-    },
-    {
-      "name": "key_mithril"
-    },
+    }
     {
       "name": "lock_iron"
     },
     {
-      "name": "lock_copper"
-    },
-    {
-      "name": "lock_gold"
-    },
-    {
-      "name": "lock_mithril"
-    },
-    {
       "name": "lockpick_iron"
-    },
-    {
-      "name": "lockpick_mithril"
-    },
-    {
-      "name": "lockpick_skeleton"
     },
     {
       "name": "keyring"

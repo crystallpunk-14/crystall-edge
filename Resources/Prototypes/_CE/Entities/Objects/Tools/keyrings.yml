@@ -42,6 +42,6 @@
     slots:
     - keys
     - belt
-  - type: PhysicalComposition
-    materialComposition:
-      CEIron: 5
+  #- type: PhysicalComposition
+  #  materialComposition:
+  #    CEIron: 5
