@@ -23,7 +23,7 @@ public sealed partial class StencilOverlay
         var worldAABB = args.WorldAABB;
         var worldBounds = args.WorldBounds;
         var position = args.Viewport.Eye?.Position.Position ?? Vector2.Zero;
-        var eye = args.Viewport.Eye; //CP14
+        var eye = args.Viewport.Eye; //CrystallEdge
 
         // Cut out the irrelevant bits via stencil
         // This is why we don't just use parallax; we might want specific tiles to get drawn over
