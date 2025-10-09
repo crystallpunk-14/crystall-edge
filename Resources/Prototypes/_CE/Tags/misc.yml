@@ -1,2 +1,8 @@
 - type: Tag
   id: CECoin
+
+- type: Tag
+  id: CEKey
+
+- type: Tag
+  id: CELockpick
