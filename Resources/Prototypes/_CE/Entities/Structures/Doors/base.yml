@@ -15,6 +15,7 @@
     openTimeTwo: 0
     closedDrawDepth: Mobs
     openDrawDepth: Mobs
+    canPry: false
   - type: Lock
     locked: false
   - type: CELock #Empty, for installing new locks
