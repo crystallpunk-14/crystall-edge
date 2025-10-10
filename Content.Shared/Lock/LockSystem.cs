@@ -1,8 +1,10 @@
+using Content.Shared._CP14.LockKey;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Construction.Components;
 using Content.Shared.DoAfter;
+using Content.Shared.Doors;
 using Content.Shared.Emag.Systems;
 using Content.Shared.Examine;
 using Content.Shared.IdentityManagement;
@@ -48,6 +50,7 @@ public sealed class LockSystem : EntitySystem
         SubscribeLocalEvent<LockComponent, GotEmaggedEvent>(OnEmagged);
         SubscribeLocalEvent<LockComponent, LockDoAfter>(OnDoAfterLock);
         SubscribeLocalEvent<LockComponent, UnlockDoAfter>(OnDoAfterUnlock);
+        SubscribeLocalEvent<LockComponent, BeforeDoorOpenedEvent>(OnBeforeDoorOpened); //CrystallEdge Lock System Adapt
 
 
         SubscribeLocalEvent<LockedWiresPanelComponent, LockToggleAttemptEvent>(OnLockToggleAttempt);
@@ -71,18 +74,31 @@ public sealed class LockSystem : EntitySystem
         if (args.Handled || !args.Complex)
             return;
 
+        //CrystallEdge LockSystem Adapt - we cant unlock\lock objects via direct hand interaction
+
         // Only attempt an unlock by default on Activate
-        if (lockComp.Locked && lockComp.UnlockOnClick)
-        {
-            args.Handled = true;
-            TryUnlock(uid, args.User, lockComp);
-        }
-        else if (!lockComp.Locked && lockComp.LockOnClick)
-        {
-            args.Handled = true;
-            TryLock(uid, args.User, lockComp);
-        }
+        //if (lockComp.Locked && lockComp.UnlockOnClick)
+        //{
+        //    args.Handled = true;
+        //    TryUnlock(uid, args.User, lockComp);
+        //}
+        //else if (!lockComp.Locked && lockComp.LockOnClick)
+        //{
+        //    args.Handled = true;
+        //    TryLock(uid, args.User, lockComp);
+        //}
+        //CrystallEdge LockSystem Adapt End
     }
+
+    //CP14 Lock adapt
+    private void OnBeforeDoorOpened(EntityUid uid, LockComponent component, BeforeDoorOpenedEvent args)
+    {
+        if (!component.Locked)
+            return;
+
+        args.Cancel();
+    }
+    //CP14 Lock adapt end
 
     private void OnStorageOpenAttempt(EntityUid uid, LockComponent component, ref StorageOpenAttemptEvent args)
     {
@@ -305,21 +321,25 @@ public sealed class LockSystem : EntitySystem
 
     private void AddToggleLockVerb(EntityUid uid, LockComponent component, GetVerbsEvent<AlternativeVerb> args)
     {
-        if (!args.CanAccess || !args.CanInteract || !args.CanComplexInteract || !component.ShowLockVerbs)
-            return;
+        //CrystallEdge Lock System Adapt
 
-        AlternativeVerb verb = new()
-        {
-            Disabled = !CanToggleLock(uid, args.User),
-            Act = component.Locked
-                ? () => TryUnlock(uid, args.User, component)
-                : () => TryLock(uid, args.User, component),
-            Text = Loc.GetString(component.Locked ? "toggle-lock-verb-unlock" : "toggle-lock-verb-lock"),
-            Icon = !component.Locked
-                ? new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/lock.svg.192dpi.png"))
-                : new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/unlock.svg.192dpi.png")),
-        };
-        args.Verbs.Add(verb);
+        //if (!args.CanAccess || !args.CanInteract || !args.CanComplexInteract || !component.ShowLockVerbs)
+        //    return;
+
+        //AlternativeVerb verb = new()
+        //{
+        //    Disabled = !CanToggleLock(uid, args.User),
+        //    Act = component.Locked
+        //        ? () => TryUnlock(uid, args.User, component)
+        //        : () => TryLock(uid, args.User, component),
+        //    Text = Loc.GetString(component.Locked ? "toggle-lock-verb-unlock" : "toggle-lock-verb-lock"),
+        //    Icon = !component.Locked
+        //        ? new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/lock.svg.192dpi.png"))
+        //        : new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/unlock.svg.192dpi.png")),
+        //};
+        //args.Verbs.Add(verb);
+
+        //CrystallEdge Lock System Adapt End
     }
 
     private void OnEmagged(EntityUid uid, LockComponent component, ref GotEmaggedEvent args)
