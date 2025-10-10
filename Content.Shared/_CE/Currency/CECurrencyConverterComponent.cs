@@ -6,10 +6,6 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.Currency;
 
-/// <summary>
-/// Reflects the market value of an item, to guide players through the economy.
-/// </summary>
-
 [RegisterComponent]
 public sealed partial class CECurrencyConverterComponent : Component
 {

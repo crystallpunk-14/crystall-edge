@@ -27,3 +27,17 @@
         - type: StationJobs
           availableJobs:
             CETownfolk: [ -1, -1 ]
+        - type: CEStationSpawnerDistribution
+          spawns:
+            CECoin: !type:AllSelector
+              children:
+              - id: CECoinCopper1
+                amount: 5
+              - id: CECoinSilver1
+                amount: 1
+            CEKey: !type:AllSelector
+              children:
+              - id: CEKeyIronBlank
+                amount: 5
+              - id: CEBaseLockpick
+                amount: 1
