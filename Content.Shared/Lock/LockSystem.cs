@@ -1,4 +1,3 @@
-using Content.Shared._CP14.LockKey;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.ActionBlocker;
@@ -90,7 +89,7 @@ public sealed class LockSystem : EntitySystem
         //CrystallEdge LockSystem Adapt End
     }
 
-    //CP14 Lock adapt
+    //CrystallEdge Lock adapt
     private void OnBeforeDoorOpened(EntityUid uid, LockComponent component, BeforeDoorOpenedEvent args)
     {
         if (!component.Locked)
@@ -98,7 +97,7 @@ public sealed class LockSystem : EntitySystem
 
         args.Cancel();
     }
-    //CP14 Lock adapt end
+    //CrystallEdge Lock adapt end
 
     private void OnStorageOpenAttempt(EntityUid uid, LockComponent component, ref StorageOpenAttemptEvent args)
     {
