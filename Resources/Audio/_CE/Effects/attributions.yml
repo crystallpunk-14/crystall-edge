@@ -37,3 +37,18 @@
   license: "CC0-1.0"
   copyright: 'by BenjaminNelan.'
   source: "https://freesound.org/people/BenjaminNelan/sounds/321087/"
+
+- files: ["crystal_ding.ogg"]
+  license: "CC0-1.0"
+  copyright: '2022-01-14-crystal-bell-08.flac by arseniiv'
+  source: "https://freesound.org/s/614832/"
+
+- files: ["crystal_ding2.ogg"]
+  license: "CC0-1.0"
+  copyright: '2022-01-14-crystal-bell-01.flac by arseniiv'
+  source: "https://freesound.org/s/614833/"
+
+- files: ["shovel_dig1.ogg", "shovel_dig2.ogg", "shovel_dig3.ogg", "shovel_dig4.ogg", "shovel_dig5.ogg"]
+  license: "CC0-1.0"
+  copyright: 'by Ali_6868 of Freesound.org. Cropped and mixed from stereo to mono.'
+  source: "https://freesound.org/people/Ali_6868/sounds/384361/"

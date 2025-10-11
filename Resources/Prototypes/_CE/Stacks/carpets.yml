@@ -1,0 +1,23 @@
+- type: stack
+  id: CEFloorCarpetRed
+  name: ce-stack-red-carpet
+  spawn: CEFloorCarpetItemRed1
+  maxCount: 30
+
+- type: stack
+  id: CEFloorCarpetBlue
+  name: ce-stack-blue-carpet
+  spawn: CEFloorCarpetItemBlue1
+  maxCount: 30
+
+- type: stack
+  id: CEFloorCarpetPurple
+  name: ce-stack-purple-carpet
+  spawn: CEFloorCarpetItemPurple1
+  maxCount: 30
+
+- type: stack
+  id: CEFloorCarpetBlack
+  name: ce-stack-black-carpet
+  spawn: CEFloorCarpetItemBlack1
+  maxCount: 30

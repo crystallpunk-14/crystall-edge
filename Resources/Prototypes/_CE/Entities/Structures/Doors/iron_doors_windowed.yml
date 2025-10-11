@@ -19,17 +19,17 @@
       path: /Audio/Effects/door_open.ogg
     closeSound:
       path: /Audio/Effects/door_close.ogg
-  #- type: Damageable
-  #  damageContainer: Inorganic
-  #  damageModifierSet: CEMetallicStructural
-  #- type: Destructible
-  #  thresholds:
-  #  - trigger:
-  #      !type:DamageTrigger
-  #      damage: 75
-  #    behaviors:
-  #    - !type:DoActsBehavior
-  #      acts: ["Destruction"]
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: CEMetallicStructural
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 75
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
   #    - !type:ChangeConstructionNodeBehavior
   #      node: CEIronDoorFrame
   #- type: Construction

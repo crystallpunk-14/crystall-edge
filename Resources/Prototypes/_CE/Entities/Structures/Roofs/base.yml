@@ -18,9 +18,9 @@
   - type: CERoof
   - type: Sprite
     drawdepth: Effects
-    sprite: _CE/Structures/Roofs/test.rsi
+    sprite: _CE/Structures/Roofs/wooden.rsi
   - type: Icon
-    sprite: _CE/Structures/Roofs/test.rsi
+    sprite: _CE/Structures/Roofs/wooden.rsi
     state: full
   - type: IconSmooth
     key: CEroof
@@ -40,15 +40,6 @@
     sprite: _CE/Structures/Roofs/wooden.rsi
   - type: Icon
     sprite: _CE/Structures/Roofs/wooden.rsi
-
-- type: entity
-  id: CERoofWoodenBirch
-  parent: CERoofWooden
-  components:
-  - type: Sprite
-    sprite: _CE/Structures/Roofs/birch.rsi
-  - type: Icon
-    sprite: _CE/Structures/Roofs/birch.rsi
 
 - type: entity
   parent:

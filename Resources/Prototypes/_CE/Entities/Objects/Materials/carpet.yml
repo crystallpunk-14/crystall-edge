@@ -1,0 +1,110 @@
+- type: entity
+  parent: BaseItem
+  id: CEFloorTileItemBase
+  name: carpet
+  description: Rolled up carpet for easy transport.
+  categories: [ ForkFiltered ]
+  abstract: true
+  components:
+  - type: Stack
+    count: 1
+  - type: Sprite
+    state: icon
+  - type: StackPrice
+    price: 0.5
+  - type: SpawnAfterInteract
+    doAfter: 0.5
+    removeOnInteract: true
+  #- type: PhysicalComposition
+  #  materialComposition:
+  #    CECloth: 15
+
+- type: entity
+  name: blue carpet
+  parent: CEFloorTileItemBase
+  id: CEFloorCarpetItemBlue1
+  suffix: Blue
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Carpets/blue.rsi
+  - type: Stack
+    stackType: CEFloorCarpetBlue
+  - type: SpawnAfterInteract
+    prototype: CECarpetBlue
+
+- type: entity
+  name: red carpet
+  parent: CEFloorTileItemBase
+  id: CEFloorCarpetItemRed1
+  suffix: Red
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Carpets/red.rsi
+  - type: Item
+    heldPrefix: carpet-Red
+  - type: Stack
+    stackType: CEFloorCarpetRed
+  - type: SpawnAfterInteract
+    prototype: CECarpetRed
+
+- type: entity
+  name: purple carpet
+  parent: CEFloorTileItemBase
+  id: CEFloorCarpetItemPurple1
+  suffix: Purple
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Carpets/purple.rsi
+  - type: Item
+    heldPrefix: carpet-Purple
+  - type: Stack
+    stackType: CEFloorCarpetPurple
+  - type: SpawnAfterInteract
+    prototype: CECarpetPurple
+
+- type: entity
+  name: black carpet
+  parent: CEFloorTileItemBase
+  id: CEFloorCarpetItemBlack1
+  suffix: Black
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Carpets/black.rsi
+  - type: Stack
+    stackType: CEFloorCarpetBlack
+  - type: SpawnAfterInteract
+    prototype: CECarpetBlack
+
+#staks
+
+- type: entity
+  id: CEFloorCarpetItemBlue10
+  parent: CEFloorCarpetItemBlue1
+  suffix: Blue 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  id: CEFloorCarpetItemRed10
+  parent: CEFloorCarpetItemRed1
+  suffix: Red 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  id: CEFloorCarpetItemPurple10
+  parent: CEFloorCarpetItemPurple1
+  suffix: Purple 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  id: CEFloorCarpetItemBlack10
+  parent: CEFloorCarpetItemBlack1
+  suffix: Black 10
+  components:
+  - type: Stack
+    count: 10

@@ -1,0 +1,44 @@
+- type: entity
+  id: CEIronBar1
+  parent: BaseItem
+  name: iron bar
+  suffix: 1
+  description: A heavy piece of refined iron
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Normal
+  - type: Sprite
+    sprite: _CE/Objects/Materials/Metals/iron_bar.rsi
+    layers:
+      - state: bar
+        map: ["base"]
+  - type: Appearance
+  - type: Stack
+    stackType: CEIron
+    count: 1
+    baseLayer: base
+    layerStates:
+    - bar
+    - bar_2
+    - bar_3
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      CEIron: 10
+
+- type: entity
+  id: CEIronBar5
+  parent: CEIronBar1
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5
+
+- type: entity
+  id: CEIronBar10
+  parent: CEIronBar1
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10

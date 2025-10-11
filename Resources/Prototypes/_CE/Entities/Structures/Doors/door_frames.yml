@@ -28,22 +28,22 @@
     sprite: _CE/Structures/Doors/wooden_frame.rsi
     drawdepth: Mobs
     state: closed
-  #- type: Damageable
-  #  damageContainer: Inorganic
-  #  damageModifierSet: CEWoodStructural
-  #- type: Destructible
-  #  thresholds:
-  #  - trigger:
-  #      !type:DamageTrigger
-  #      damage: 50
-  #    behaviors:
-  #    - !type:SpawnEntitiesBehavior
-  #      spawn:
-  #        CEWoodenPlanks1:
-  #          min: 1
-  #          max: 2
-  #    - !type:DoActsBehavior
-  #      acts: ["Destruction"]
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: CEWoodStructural
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEWoodenPlanks1:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
   #- type: Construction
   #  graph: CEWoodenDoor
   #  node: CEWoodenDoorFrame
@@ -68,22 +68,22 @@
     sprite: _CE/Structures/Doors/iron_frame.rsi
     drawdepth: Mobs
     state: closed
-  #- type: Damageable
-  #  damageContainer: Inorganic
-  #  damageModifierSet: CEMetallic
-  #- type: Destructible
-  #  thresholds:
-  #  - trigger:
-  #      !type:DamageTrigger
-  #      damage: 50
-  #    behaviors:
-  #    - !type:SpawnEntitiesBehavior
-  #      spawn:
-  #        CEIronBar1:
-  #          min: 1
-  #          max: 2
-  #    - !type:DoActsBehavior
-  #      acts: ["Destruction"]
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: CEMetallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEIronBar1:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
   #- type: Construction
   #  graph: CEIronDoor
   #  node: CEIronDoorFrame

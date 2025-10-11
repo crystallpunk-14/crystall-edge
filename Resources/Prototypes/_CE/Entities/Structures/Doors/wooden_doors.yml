@@ -17,24 +17,24 @@
       path: /Audio/Effects/door_open.ogg
     closeSound:
       path: /Audio/Effects/door_close.ogg
-  #- type: Damageable
-  #  damageContainer: Inorganic
-  #  damageModifierSet: CEWoodStructural
-  #- type: Destructible
-  #  thresholds:
-  #  - trigger:
-  #      !type:DamageTrigger
-  #      damage: 75
-  #    behaviors:
-  #    - !type:DoActsBehavior
-  #      acts: ["Destruction"]
-  #    - !type:SpawnEntitiesBehavior
-  #      spawn:
-  #        CEWoodenPlanks1:
-  #          min: 1
-  #          max: 2
-  #    - !type:ChangeConstructionNodeBehavior
-  #      node: CEWoodenDoorFrame
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: CEWoodStructural
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 75
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEWoodenPlanks1:
+            min: 1
+            max: 2
+      #- !type:ChangeConstructionNodeBehavior
+      #  node: CEWoodenDoorFrame
   #- type: Construction
   #  graph: CEWoodenDoor
   #  node: CEWoodenDoor
