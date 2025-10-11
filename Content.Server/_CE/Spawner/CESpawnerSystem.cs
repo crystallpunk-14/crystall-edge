@@ -63,6 +63,9 @@ public partial class CESpawnerSystem : EntitySystem
             allSpawners.Add((uid, spawner));
         }
 
+        if (plannedEntities.Count == 0)
+            return;
+
         foreach (var (tag, entityList) in plannedEntities)
         {
             foreach (var proto in entityList)
@@ -74,17 +77,13 @@ public partial class CESpawnerSystem : EntitySystem
 
                 if (candidates.Count == 0)
                 {
-#if DEBUG
                     Debug.Assert(candidates.Count > 0, $"For the category of spawners [{tag.Id}], there are zero spawners. Items cannot be distributed across the map.");
-#endif
                     candidates = allSpawners;
                 }
 
                 if (candidates.Count == 0)
                 {
-#if DEBUG
                     Debug.Assert(candidates.Count > 0, $"No spawner markers exist at all! Cannot spawn entity {proto} (tag={tag.Id}).");
-#endif
                     break;
                 }
 
