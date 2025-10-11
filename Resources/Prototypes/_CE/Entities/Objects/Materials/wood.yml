@@ -29,7 +29,7 @@
     canResistFire: false
     alwaysCombustible: true
     canExtinguish: true
-    cP14FireplaceFuel: 10
+    #cP14FireplaceFuel: 10
     damage:
       types:
         Heat: 1
@@ -79,13 +79,13 @@
     canResistFire: false
     alwaysCombustible: true
     canExtinguish: true
-    cP14FireplaceFuel: 8
+    #cP14FireplaceFuel: 8
     damage:
       types:
         Heat: 1
   - type: Appearance
   - type: Stack
-    stackType: CEWoodenPlanks
+    stackType: CEWood
     count: 1
     baseLayer: base
     layerStates:

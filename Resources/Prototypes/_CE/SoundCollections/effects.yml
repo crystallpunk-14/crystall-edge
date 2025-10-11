@@ -17,3 +17,18 @@
   files:
   - /Audio/_CE/Effects/doorknob_1.ogg
   - /Audio/_CE/Effects/doorknob_2.ogg
+
+- type: soundCollection
+  id: CECrystalDings
+  files:
+  - /Audio/_CE/Effects/crystal_ding.ogg
+  - /Audio/_CE/Effects/crystal_ding2.ogg
+
+- type: soundCollection
+  id: CEDigging
+  files:
+  - /Audio/_CE/Items/shovel_dig1.ogg
+  - /Audio/_CE/Items/shovel_dig2.ogg
+  - /Audio/_CE/Items/shovel_dig3.ogg
+  - /Audio/_CE/Items/shovel_dig4.ogg
+  - /Audio/_CE/Items/shovel_dig5.ogg
