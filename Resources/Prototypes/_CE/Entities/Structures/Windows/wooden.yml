@@ -1,0 +1,80 @@
+- type: entity
+  id: CEWindowWooden
+  parent:
+  - CEWindowBase
+  name: wooden window
+  description: A wooden wall with a glass window in it.
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Windows/wooden_window.rsi
+  - type: Icon
+    sprite: _CE/Structures/Windows/wooden_window.rsi
+  #- type: Destructible
+  #  thresholds:
+  #  - trigger:
+  #      !type:DamageTrigger
+  #      damage: 50
+  #    behaviors:
+  #    - !type:PlaySoundBehavior
+  #      sound:
+  #        collection: WindowShatter
+  #    - !type:SpawnEntitiesBehavior
+  #      spawn:
+  #        CEGlassShard:
+  #          min: 1
+  #          max: 2
+  #    - !type:DoActsBehavior
+  #      acts: [ "Destruction" ]
+  #    - !type:ChangeConstructionNodeBehavior
+  #      node: CEWindowWoodenBroken
+  #- type: Construction
+  #  graph: CEWindowWooden
+  #  node: CEWindowWooden
+
+- type: entity
+  id: CEWindowFrameWooden
+  name: wooden window frame
+  parent:
+  - CEBaseWindowFrame
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Windows/wooden_window_frame.rsi
+  - type: Icon
+    sprite: _CE/Structures/Windows/wooden_window_frame.rsi
+  #- type: Damageable
+  #  damageContainer: StructuralInorganic
+  #  damageModifierSet: CEWoodStructural
+  #- type: Destructible
+  #  thresholds:
+  #  - trigger:
+  #      !type:DamageTrigger
+  #      damage: 50
+  #    behaviors:
+  #    - !type:SpawnEntitiesBehavior
+  #      spawn:
+  #        CEWoodenPlanks1:
+  #          min: 1
+  #          max: 2
+  #    - !type:PlaySoundBehavior
+  #      sound:
+  #        collection: WoodDestroy
+  #    - !type:DoActsBehavior
+  #      acts: [ "Destruction" ]
+  #- type: Construction
+  #  graph: CEWindowWooden
+  #  node: CEWindowFrameWooden
+
+- type: entity
+  id: CEWindowWoodenBroken
+  name: shattered wooden window
+  parent:
+  - CEBaseWindowFrameBroken
+  - CEWindowFrameWooden
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Windows/wooden_window_broken.rsi
+  - type: Icon
+    sprite: _CE/Structures/Windows/wooden_window_broken.rsi
+  #- type: Construction
+  #  graph: CEWindowWooden
+  #  node: CEWindowWoodenBroken
