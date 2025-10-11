@@ -102,9 +102,9 @@ namespace Content.Client.Stylesheets
         public static readonly Color DisabledFore = Color.FromHex("#5A5A5A");
 
         public static readonly Color ButtonColorDefault = Color.FromHex("#414550"); //CrystallEdge replacement
-        public static readonly Color ButtonColorDefaultRed = Color.FromHex("#D43B3B");
+        public static readonly Color ButtonColorDefaultRed = Color.FromHex("#7c2727"); //CrystallEdge replacement
         public static readonly Color ButtonColorHovered = Color.FromHex("#7d7d7d"); //CrystallEdge replacement
-        public static readonly Color ButtonColorHoveredRed = Color.FromHex("#DF6B6B");
+        public static readonly Color ButtonColorHoveredRed = Color.FromHex("#9c402e"); //CrystallEdge replacement
         public static readonly Color ButtonColorPressed = Color.FromHex("#2d313c"); //CrystallEdge replacement
         public static readonly Color ButtonColorDisabled = Color.FromHex("#242329"); //CrystallEdge replacement
 
