@@ -34,6 +34,7 @@
   - CEWindowBase
   name: stone window
   description: A stone wall with a glass window in it.
+  suffix: Blue Default
   components:
   - type: Sprite
     sprite: _CE/Structures/Windows/stone_window.rsi
@@ -57,3 +58,26 @@
         acts: [ "Destruction" ]
       #- !type:ChangeConstructionNodeBehavior
       #  node: CEWindowWoodenBroken
+
+- type: entity
+  id: CEWindowStoneGreen
+  suffix: Green
+  parent:
+  - CEWindowStone
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Windows/stone_window_green.rsi
+  - type: Icon
+    sprite: _CE/Structures/Windows/stone_window_green.rsi
+      #  node: CEWindowWoodenBroken
+
+- type: entity
+  id: CEWindowStonePurple
+  suffix: Purple
+  parent:
+  - CEWindowStone
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Windows/stone_window_purple.rsi
+  - type: Icon
+    sprite: _CE/Structures/Windows/stone_window_purple.rsi
