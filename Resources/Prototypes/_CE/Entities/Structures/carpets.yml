@@ -1,0 +1,102 @@
+- type: entity
+  id: CECarpetBase
+  parent:
+  - BaseStructure
+  name: carpet
+  description: Fancy walking surface.
+  categories: [ ForkFiltered ]
+  abstract: true
+  components:
+  - type: PlacementReplacement
+    key: floorTile
+  - type: Sprite
+    drawdepth: FloorTiles
+  - type: Icon
+    state: full
+  - type: IconSmooth
+    key: carpet
+    base: carpet_
+  - type: Tag
+    tags:
+    - Carpet
+    - ForceFixRotations
+  - type: Physics
+    canCollide: false
+  - type: Fixtures
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 10
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Butcherable
+    butcheringType: Knife
+    butcherDelay: 2
+
+- type: entity
+  id: CECarpetBlue
+  parent: CECarpetBase
+  suffix: Blue
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Carpets/blue.rsi
+  - type: Icon
+    sprite: _CE/Structures/Carpets/blue.rsi
+  - type: IconSmooth
+    key: carpet_blue
+  - type: Butcherable
+    spawned:
+    - id: CEFloorCarpetItemBlue1
+      amount: 1
+
+- type: entity
+  id: CECarpetRed
+  parent: CECarpetBase
+  suffix: Red
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Carpets/red.rsi
+  - type: Icon
+    sprite: _CE/Structures/Carpets/red.rsi
+  - type: IconSmooth
+    key: carpet_red
+  - type: Butcherable
+    spawned:
+    - id: CEFloorCarpetItemRed1
+      amount: 1
+
+- type: entity
+  id: CECarpetPurple
+  parent: CECarpetBase
+  suffix: Purple
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Carpets/purple.rsi
+  - type: Icon
+    sprite: _CE/Structures/Carpets/purple.rsi
+  - type: IconSmooth
+    key: carpet_purple
+  - type: Butcherable
+    spawned:
+    - id: CEFloorCarpetItemPurple1
+      amount: 1
+
+- type: entity
+  id: CECarpetBlack
+  parent: CECarpetBase
+  suffix: Black
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Carpets/black.rsi
+  - type: Icon
+    sprite: _CE/Structures/Carpets/black.rsi
+  - type: IconSmooth
+    key: carpet_black
+  - type: Butcherable
+    spawned:
+    - id: CEFloorCarpetItemBlack1
+      amount: 1

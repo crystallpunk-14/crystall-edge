@@ -40,10 +40,10 @@
   components:
   - type: Sprite
     snapCardinals: true
-    sprite: _CE/Structures/Furniture/Tables/wood.rsi
+    sprite: _CE/Structures/Tables/wood.rsi
     state: frame
   - type: Icon
-    sprite: _CE/Structures/Furniture/Tables/wood.rsi
+    sprite: _CE/Structures/Tables/wood.rsi
     state: frame
 
 - type: entity
@@ -53,9 +53,9 @@
   description: A simple table made of boards.
   components:
   - type: Sprite
-    sprite: _CE/Structures/Furniture/Tables/wood.rsi
+    sprite: _CE/Structures/Tables/wood.rsi
   - type: Icon
-    sprite: _CE/Structures/Furniture/Tables/wood.rsi
+    sprite: _CE/Structures/Tables/wood.rsi
     state: full
   - type: IconSmooth
     key: state
@@ -68,9 +68,9 @@
   description: A simple table made of boards, with metal border reinforcements.
   components:
   - type: Sprite
-    sprite: _CE/Structures/Furniture/Tables/wood_metallic.rsi
+    sprite: _CE/Structures/Tables/wood_metallic.rsi
   - type: Icon
-    sprite: _CE/Structures/Furniture/Tables/wood_metallic.rsi
+    sprite: _CE/Structures/Tables/wood_metallic.rsi
     state: full
   - type: IconSmooth
     key: state
@@ -83,9 +83,9 @@
   description: A simple counter made of boards, with metal border reinforcements.
   components:
   - type: Sprite
-    sprite: _CE/Structures/Furniture/Tables/wood_metallic_counter.rsi
+    sprite: _CE/Structures/Tables/wood_metallic_counter.rsi
   - type: Icon
-    sprite: _CE/Structures/Furniture/Tables/wood_metallic_counter.rsi
+    sprite: _CE/Structures/Tables/wood_metallic_counter.rsi
     state: full
   - type: IconSmooth
     key: state
@@ -99,10 +99,10 @@
   components:
   - type: Sprite
     snapCardinals: true
-    sprite: _CE/Structures/Furniture/Tables/wood.rsi
+    sprite: _CE/Structures/Tables/wood.rsi
     state: round
   - type: Icon
-    sprite: _CE/Structures/Furniture/Tables/wood.rsi
+    sprite: _CE/Structures/Tables/wood.rsi
     state: round
 
 - type: entity
@@ -111,9 +111,9 @@
   name: wooden counter
   components:
   - type: Sprite
-    sprite: _CE/Structures/Furniture/Tables/wood_counter.rsi
+    sprite: _CE/Structures/Tables/wood_counter.rsi
   - type: Icon
-    sprite: _CE/Structures/Furniture/Tables/wood_counter.rsi
+    sprite: _CE/Structures/Tables/wood_counter.rsi
     state: full
 
 - type: entity
