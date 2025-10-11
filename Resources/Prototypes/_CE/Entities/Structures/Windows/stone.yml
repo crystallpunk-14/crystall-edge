@@ -1,0 +1,59 @@
+- type: entity
+  id: CEWindowFrameStone
+  name: stone window frame
+  parent:
+  - CEBaseWindowFrame
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Windows/stone_window_frame.rsi
+  - type: Icon
+    sprite: _CE/Structures/Windows/stone_window_frame.rsi
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Rock #TODO
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEStoneBlock1:
+            min: 1
+            max: 2
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  id: CEWindowStone
+  parent:
+  - CEWindowBase
+  name: stone window
+  description: A stone wall with a glass window in it.
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Windows/stone_window.rsi
+  - type: Icon
+    sprite: _CE/Structures/Windows/stone_window.rsi
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WindowShatter
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEGlassShard:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      #- !type:ChangeConstructionNodeBehavior
+      #  node: CEWindowWoodenBroken
