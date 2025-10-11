@@ -39,12 +39,12 @@ public sealed class ProgressColorSystem : EntitySystem
         {
             if (progress >= 1.0f)
             {
-                return new Color(0f, 1f, 0f);
+                return new Color(1f, 1f, 1f); //CrystallEdge White DoAfters
             }
 
-            // lerp
-            var hue = 5f / 18f * progress;
-            return Color.FromHsv(new Vector4(hue, 1f, 0.75f, 1f));
+            //CrystallEdge white DoAfter
+            return new Color(1f, 1f, 1f, MathHelper.Lerp(0.4f, 0.8f, progress));
+            //CrystallEdge end
         }
 
         return InterpolateColorGaussian(Plasma, progress);
