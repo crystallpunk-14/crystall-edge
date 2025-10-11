@@ -68,7 +68,7 @@ public partial class CESpawnerSystem : EntitySystem
 
         if (allSpawners.Count == 0)
         {
-            Log.Error($"No spawner markers exist at all for station [{ent}]!");
+            //Log.Error($"No spawner markers exist at all for station [{Name(ent):stationName}]!");
             return;
         }
 
@@ -83,7 +83,7 @@ public partial class CESpawnerSystem : EntitySystem
 
                 if (candidates.Count == 0)
                 {
-                    Log.Error($"For the category of spawners [{tag.Id}], there are zero spawners on [{ent}]. Items cannot be distributed across the map.");
+                    //Log.Error($"For the category of spawners [{tag.Id}], there are zero spawners on [{Name(ent):stationName}]. Items cannot be distributed across the map.");
                     candidates = allSpawners;
                 }
 
