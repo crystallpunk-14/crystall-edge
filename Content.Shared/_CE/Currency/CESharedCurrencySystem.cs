@@ -1,5 +1,6 @@
 using System.Text;
 using Robust.Shared.Prototypes;
+
 namespace Content.Shared._CE.Currency;
 
 public partial class CESharedCurrencySystem : EntitySystem

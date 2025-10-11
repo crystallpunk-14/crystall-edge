@@ -1,0 +1,40 @@
+- type: entity
+  id: CESpawnPointGroupedBase
+  parent: MarkerBase
+  abstract: true
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _CE/Markers/jobs.rsi
+    snapCardinals: true
+
+#
+
+- type: entity
+  id: CESpawnPointGroupedTest
+  name: Test spawnpoint Key
+  parent: CESpawnPointGroupedBase
+  categories:
+  - Spawner
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+  - type: CESpawnerMarker
+    weightedTypes:
+      CECoin: 0.2
+      CEKey: 0.8
+
+- type: entity
+  id: CESpawnPointGroupedTest2
+  name: Test spawnpoint Coin
+  parent: CESpawnPointGroupedBase
+  categories:
+  - Spawner
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+  - type: CESpawnerMarker
+    weightedTypes:
+      CECoin: 1
