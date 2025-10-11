@@ -1,0 +1,41 @@
+- type: stack
+  id: CEDirt
+  name: ce-stack-dirt-block
+  spawn: CEDirtBlock1
+  icon: { sprite: _CE/Objects/Materials/dirt.rsi, state: dirt_2 }
+  maxCount: 10
+
+- type: stack
+  id: CEStone
+  name: ce-stack-stone-block
+  spawn: CEStoneBlock1
+  icon: { sprite: _CE/Objects/Materials/stone.rsi, state: stone_2 }
+  maxCount: 10
+
+- type: stack
+  id: CEWood
+  name: ce-stack-wood-planks
+  spawn: CEWoodenPlanks1
+  icon: { sprite: _CE/Objects/Materials/wood.rsi, state: planks_2 }
+  maxCount: 20
+
+- type: stack
+  id: CECloth
+  name: ce-stack-cloth
+  spawn: CECloth1
+  icon: { sprite: _CE/Objects/Materials/cloth.rsi, state: cloth_2 }
+  maxCount: 10
+
+- type: stack
+  id: CEIron
+  name: ce-stack-iron-bars
+  spawn: CEIronBar1
+  icon: { sprite: _CE/Objects/Materials/iron_bar.rsi, state: bar_2 }
+  maxCount: 10
+
+- type: stack
+  id: CEGlass
+  name: ce-stack-glass-sheet
+  spawn: CEGlassSheet1
+  icon: { sprite: _CE/Objects/Materials/glass.rsi, state: glass_2 }
+  maxCount: 10

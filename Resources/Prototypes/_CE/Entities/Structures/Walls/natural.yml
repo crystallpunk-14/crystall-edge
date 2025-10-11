@@ -10,33 +10,33 @@
     sprite: _CE/Structures/Walls/cave_stone.rsi
   - type: IconSmooth
     base: wall
-  #- type: Damageable
-  #  damageContainer: StructuralInorganic
-  #  damageModifierSet: CERockStructural
-  #- type: Destructible
-  #  thresholds:
-  #  - trigger:
-  #      !type:DamageTrigger
-  #      damage: 150
-  #    behaviors:
-  #    - !type:DoActsBehavior
-  #      acts: ["Destruction"]
-  #  - trigger:
-  #      !type:DamageTrigger
-  #      damage: 50
-  #    behaviors:
-  #    - !type:PlaySoundBehavior
-  #      sound:
-  #        path: /Audio/Effects/break_stone.ogg
-  #        params:
-  #          volume: -6
-  #    - !type:SpawnEntitiesBehavior
-  #      spawn:
-  #        CEStoneBlock1:
-  #          min: 5
-  #          max: 7
-  #    - !type:DoActsBehavior
-  #      acts: ["Destruction"]
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: CERockStructural
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEStoneBlock1:
+            min: 5
+            max: 7
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
 
 - type: entity
   id: CEWallStoneIndestructable
@@ -64,33 +64,33 @@
     sprite: _CE/Structures/Walls/dirt_wall.rsi
   - type: IconSmooth
     base: wall
-  #- type: Damageable
-  #  damageContainer: StructuralInorganic
-  #  damageModifierSet: Rock # "Soft"
-  #- type: Destructible
-  #  thresholds:
-  #  - trigger:
-  #      !type:DamageTrigger
-  #      damage: 150
-  #    behaviors:
-  #    - !type:DoActsBehavior
-  #      acts: ["Destruction"]
-  #  - trigger:
-  #      !type:DamageTrigger
-  #      damage: 30
-  #    behaviors:
-  #    - !type:PlaySoundBehavior
-  #      sound:
-  #        path: /Audio/Effects/break_stone.ogg #TODO
-  #        params:
-  #          volume: -6
-  #    - !type:SpawnEntitiesBehavior
-  #      spawn:
-  #        CEDirtBlock1:
-  #          min: 3
-  #          max: 5
-  #    - !type:DoActsBehavior
-  #      acts: ["Destruction"]
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Rock
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+    - trigger:
+        !type:DamageTrigger
+        damage: 30
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEDirtBlock1:
+            min: 3
+            max: 5
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
   #- type: Construction
   #  graph: CEWallDirt
   #  node: WallDirt
@@ -115,29 +115,29 @@
         collection: CEGrassGathering
         params:
           variation: 0.05
-  #- type: Damageable
-  #  damageContainer: Inorganic
-  #  damageModifierSet: Wood
-  #- type: Destructible
-  #  thresholds:
-  #  - trigger:
-  #      !type:DamageTrigger
-  #      damage: 100
-  #    behaviors:
-  #      - !type:DoActsBehavior
-  #        acts: [ "Destruction" ]
-  #  - trigger:
-  #      !type:DamageTrigger
-  #      damage: 30
-  #    behaviors:
-  #    - !type:PlaySoundBehavior
-  #      sound:
-  #        collection: CEGrassGathering
-  #        params:
-  #          volume: 5
-  #          variation: 0.05
-  #    - !type:DoActsBehavior
-  #      acts: [ "Destruction" ]
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Wood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 30
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: CEGrassGathering
+          params:
+            volume: 5
+            variation: 0.05
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
   #    - !type:SpawnEntitiesBehavior
   #      spawn:
   #        CEFloraMaterial1:
@@ -189,39 +189,39 @@
     sprite: _CE/Structures/Walls/snow_wall.rsi
   - type: IconSmooth
     base: wall
-  #- type: Damageable
-  #  damageContainer: Inorganic
-  #  damageModifierSet: Rock
-  #- type: Destructible
-  #  thresholds:
-  #  - trigger:
-  #      !type:DamageTrigger
-  #      damage: 150
-  #    behaviors:
-  #    - !type:DoActsBehavior
-  #      acts: ["Destruction"]
-  #  - trigger:
-  #      !type:DamageTrigger
-  #      damage: 30
-  #    behaviors:
-  #    - !type:PlaySoundBehavior
-  #      sound:
-  #        path: /Audio/_CE/Effects/snowball.ogg
-  #        params:
-  #          variation: 0.250
-  #          volume: 15
-  #    - !type:SpawnEntitiesBehavior
-  #      spawn:
-  #        CESnowball:
-  #          min: 3
-  #          max: 5
-  #    - !type:SpawnEntitiesBehavior
-  #      spawn:
-  #        CESnowEffect:
-  #          min: 2
-  #          max: 3
-  #    - !type:DoActsBehavior
-  #      acts: ["Destruction"]
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Rock
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+    - trigger:
+        !type:DamageTrigger
+        damage: 30
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/_CE/Effects/snowball.ogg
+          params:
+            variation: 0.250
+            volume: 15
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CESnowball:
+            min: 3
+            max: 5
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CESnowEffect:
+            min: 2
+            max: 3
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
 
 - type: entity
   id: CEWallDimensit
@@ -239,28 +239,24 @@
     soundGroups:
       Brute:
         collection: GlassSmash
-  #- type: Damageable
-  #  damageContainer: Inorganic
-  #  damageModifierSet: CERock
-  #- type: MeleeSound
-  #  soundGroups:
-  #    Brute:
-  #      collection: GlassSmash
-  #- type: Destructible
-  #  thresholds:
-  #  - trigger:
-  #      !type:DamageTrigger
-  #      damage: 150
-  #    behaviors:
-  #    - !type:DoActsBehavior
-  #      acts: ["Destruction"]
-  #  - trigger:
-  #      !type:DamageTrigger
-  #      damage: 30
-  #    behaviors:
-  #      - !type:PlaySoundBehavior
-  #        sound:
-  #          collection: GlassBreak
-  #      - !type:DoActsBehavior
-  #        acts: ["Destruction"]
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: CERock
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+    - trigger:
+        !type:DamageTrigger
+        damage: 30
+      behaviors:
+        - !type:PlaySoundBehavior
+          sound:
+            collection: GlassBreak
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
 

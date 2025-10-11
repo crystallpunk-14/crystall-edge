@@ -11,24 +11,6 @@
   maxCount: 30
 
 - type: stack
-  id: CEFloorCarpetCyan
-  name: ce-stack-cyan-carpet
-  spawn: CEFloorCarpetItemCyan1
-  maxCount: 30
-
-- type: stack
-  id: CEFloorCarpetGreen
-  name: ce-stack-green-carpet
-  spawn: CEFloorCarpetItemGreen1
-  maxCount: 30
-
-- type: stack
-  id: CEFloorCarpetOrange
-  name: ce-stack-orange-carpet
-  spawn: CEFloorCarpetItemOrange1
-  maxCount: 30
-
-- type: stack
   id: CEFloorCarpetPurple
   name: ce-stack-purple-carpet
   spawn: CEFloorCarpetItemPurple1
@@ -38,10 +20,4 @@
   id: CEFloorCarpetBlack
   name: ce-stack-black-carpet
   spawn: CEFloorCarpetItemBlack1
-  maxCount: 30
-
-- type: stack
-  id: CEFloorCarpetYellow
-  name: ce-stack-yellow-carpet
-  spawn: CEFloorCarpetItemYellow1
   maxCount: 30
