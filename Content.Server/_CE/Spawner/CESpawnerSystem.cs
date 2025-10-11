@@ -66,6 +66,12 @@ public partial class CESpawnerSystem : EntitySystem
         if (plannedEntities.Count == 0)
             return;
 
+        if (allSpawners.Count == 0)
+        {
+            Log.Error($"No spawner markers exist at all for station [{ent}]!");
+            return;
+        }
+
         foreach (var (tag, entityList) in plannedEntities)
         {
             foreach (var proto in entityList)
@@ -77,14 +83,8 @@ public partial class CESpawnerSystem : EntitySystem
 
                 if (candidates.Count == 0)
                 {
-                    Debug.Assert(candidates.Count > 0, $"For the category of spawners [{tag.Id}], there are zero spawners. Items cannot be distributed across the map.");
+                    Log.Error($"For the category of spawners [{tag.Id}], there are zero spawners on [{ent}]. Items cannot be distributed across the map.");
                     candidates = allSpawners;
-                }
-
-                if (candidates.Count == 0)
-                {
-                    Debug.Assert(candidates.Count > 0, $"No spawner markers exist at all! Cannot spawn entity {proto} (tag={tag.Id}).");
-                    break;
                 }
 
                 // Find minimal SpawnerCounter around markers
