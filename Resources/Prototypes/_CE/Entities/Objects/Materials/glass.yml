@@ -15,7 +15,7 @@
         map: ["base"]
   - type: Appearance
   - type: Stack
-    stackType: CEGlassSheet
+    stackType: CEGlass
     count: 1
     baseLayer: base
     layerStates:

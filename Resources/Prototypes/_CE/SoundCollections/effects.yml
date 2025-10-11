@@ -27,8 +27,8 @@
 - type: soundCollection
   id: CEDigging
   files:
-  - /Audio/_CE/Items/shovel_dig1.ogg
-  - /Audio/_CE/Items/shovel_dig2.ogg
-  - /Audio/_CE/Items/shovel_dig3.ogg
-  - /Audio/_CE/Items/shovel_dig4.ogg
-  - /Audio/_CE/Items/shovel_dig5.ogg
+  - /Audio/_CE/Effects/shovel_dig1.ogg
+  - /Audio/_CE/Effects/shovel_dig2.ogg
+  - /Audio/_CE/Effects/shovel_dig3.ogg
+  - /Audio/_CE/Effects/shovel_dig4.ogg
+  - /Audio/_CE/Effects/shovel_dig5.ogg
