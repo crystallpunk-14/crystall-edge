@@ -25,6 +25,10 @@
         visible: false
       - state: glass
       - state: top
+      - map: ["enum.SmesVisualLayers.Input"]
+        shader: unshaded
+      - map: ["enum.SmesVisualLayers.Output"]
+        shader: unshaded
   - type: Smes
     chargeOverlayPrefix: fill-
     numChargeLevels: 8
