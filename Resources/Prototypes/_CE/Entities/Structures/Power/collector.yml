@@ -17,7 +17,6 @@
     sprite: _CE/Structures/Power/collector.rsi
     snapCardinals: true
     drawdepth: Mobs
-    offset: 0, 0.33
     layers:
       - state: base
       - map: ["enum.SmesVisualLayers.Charge"]

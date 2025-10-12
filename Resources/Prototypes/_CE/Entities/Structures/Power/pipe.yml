@@ -15,6 +15,7 @@
     sprite: _CE/Structures/Power/Pipes/brass.rsi
     state: pipe_0
     drawdepth: Mobs
+    offset: 0, 0.01
   - type: Icon
     sprite: _CE/Structures/Power/Pipes/brass.rsi
     state: pipe_15
