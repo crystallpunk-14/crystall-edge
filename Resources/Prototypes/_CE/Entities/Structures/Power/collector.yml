@@ -1,0 +1,102 @@
+- type: entity
+  abstract: true
+  id: CEManaCollectorBase
+  categories: [ ForkFiltered ]
+  parent: [ BaseMachine, ConstructibleMachine ]
+  name: mana collector
+  description: A structure that collects ambient magical energy from the environment and stores it for later use.
+  placement:
+    mode: SnapgridCenter
+  components:
+  #- type: AmbientSound
+  #  volume: -7
+  #  range: 3
+  #  sound:
+  #    path: /Audio/Ambience/Objects/periodic_beep.ogg
+  - type: Sprite
+    sprite: _CE/Structures/Power/collector.rsi
+    snapCardinals: true
+    drawdepth: Mobs
+    offset: 0, 0.33
+    layers:
+      - state: base
+      - map: ["enum.SmesVisualLayers.Charge"]
+        state: "fill-1" # -og0 does not exist
+        shader: unshaded
+        visible: false
+      - state: glass
+      - state: top
+  - type: Smes
+    chargeOverlayPrefix: fill-
+    numChargeLevels: 8
+  - type: Appearance
+  - type: Battery
+    startingCharge: 0
+    maxCharge: 8000000
+  - type: ExaminableBattery #TODO Change to mana specific
+  - type: NodeContainer
+    examinable: true
+    nodes:
+      input:
+        !type:CableTerminalPortNode
+        nodeGroupID: HVPower
+      output:
+        !type:CableDeviceNode
+        nodeGroupID: HVPower
+  - type: BatteryDischarger
+    voltage: High
+    node: output
+  - type: BatteryCharger
+    voltage: High
+    node: input
+  - type: PowerNetworkBattery
+    maxSupply: 150000
+    maxChargeRate: 5000
+    supplyRampTolerance: 5000
+    supplyRampRate: 1000
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#309fdf"
+    castShadows: false
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallicStrong
+  - type: DeviceNetwork
+    deviceNetId: AtmosDevices
+    receiveFrequencyId: AtmosMonitor
+    transmitFrequencyId: AtmosMonitor
+    prefix: device-address-prefix-smes
+    sendBroadcastAttemptEvent: true
+    examinableAddress: true
+  - type: WiredNetworkConnection
+  - type: BatteryInterface
+    minChargeRate: 5000
+    maxChargeRate: 150000
+    minSupply: 5000
+    maxSupply: 150000
+  - type: UserInterface
+    interfaces:
+      enum.BatteryUiKey.Key:
+        type: BatteryBoundUserInterface
+  - type: ActivatableUI
+    key: enum.BatteryUiKey.Key
+
+- type: entity
+  parent: CEManaCollectorBase
+  id: CEManaCollector
+  suffix: Basic
+  components:
+  - type: Battery
+    maxCharge: 8000000
+    startingCharge: 8000000
+    key: enum.BatteryUiKey.Key
+
+- type: entity
+  parent: CEManaCollectorBase
+  id: CEManaCollectorEmpty
+  suffix: Empty
+  components:
+  - type: Battery
+    maxCharge: 8000000
+    startingCharge: 0

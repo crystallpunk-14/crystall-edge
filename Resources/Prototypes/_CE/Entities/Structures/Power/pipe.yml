@@ -11,11 +11,12 @@
   - type: PlacementReplacement
     key: pipe
   - type: Sprite
-    sprite: _CE/Structures/Pipes/brass.rsi
+    noRot: true
+    sprite: _CE/Structures/Power/Pipes/brass.rsi
     state: pipe_0
     drawdepth: Mobs
   - type: Icon
-    sprite: _CE/Structures/Pipes/brass.rsi
+    sprite: _CE/Structures/Power/Pipes/brass.rsi
     state: pipe_15
   - type: Fixtures
     fixtures:
@@ -52,6 +53,7 @@
     cuttingDelay: 1
     cableDroppedOnCutPrototype: CableHVStack1
     cableType: HighVoltage
+    cuttingQuality: null
   - type: CableVis
     node: power
   - type: CableVisualizer
