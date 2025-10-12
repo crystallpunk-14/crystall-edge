@@ -20,6 +20,30 @@
             "name": "top"
         },
         {
+            "name": "dicharging1"
+        },
+        {
+            "name": "dicharging2"
+        },
+        {
+            "name": "charging0"
+        },
+        {
+            "name": "charging1",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
             "name": "fill-1",
             "delays": [
                 [

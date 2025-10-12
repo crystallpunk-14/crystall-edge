@@ -20,17 +20,21 @@
     layers:
       - state: base
       - map: ["enum.SmesVisualLayers.Charge"]
-        state: "fill-1" # -og0 does not exist
+        state: "fill-1"
         shader: unshaded
         visible: false
       - state: glass
       - state: top
       - map: ["enum.SmesVisualLayers.Input"]
+        state: charging0
         shader: unshaded
       - map: ["enum.SmesVisualLayers.Output"]
+        state: dicharging
         shader: unshaded
   - type: Smes
     chargeOverlayPrefix: fill-
+    inputOverlayPrefix: charging
+    outputOverlayPrefix: dicharging
     numChargeLevels: 8
   - type: Appearance
   - type: Battery
