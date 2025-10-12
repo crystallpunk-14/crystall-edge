@@ -30,7 +30,7 @@
   id: CEIron
   name: ce-stack-iron-bars
   spawn: CEIronBar1
-  icon: { sprite: _CE/Objects/Materials/iron_bar.rsi, state: bar_2 }
+  icon: { sprite: _CE/Objects/Materials/Metals/iron_bar.rsi, state: bar_2 }
   maxCount: 10
 
 - type: stack
