@@ -21,6 +21,8 @@
       collection: FootstepHull
   - type: Climbable
   - type: PlaceableSurface
+  - type: PlacementReplacement
+    key: walls
 
 - type: entity
   parent:
