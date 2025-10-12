@@ -90,7 +90,6 @@
   - type: Battery
     maxCharge: 8000000
     startingCharge: 8000000
-    key: enum.BatteryUiKey.Key
 
 - type: entity
   parent: CEManaCollectorBase
