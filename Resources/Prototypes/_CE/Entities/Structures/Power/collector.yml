@@ -29,7 +29,7 @@
         state: charging0
         shader: unshaded
       - map: ["enum.SmesVisualLayers.Output"]
-        state: dicharging
+        state: dicharging1
         shader: unshaded
   - type: Smes
     chargeOverlayPrefix: fill-
