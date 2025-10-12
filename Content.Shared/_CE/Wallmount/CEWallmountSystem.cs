@@ -5,33 +5,32 @@ using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
-namespace Content.Shared._CP14.Wallmount;
+namespace Content.Shared._CE.Wallmount;
 
-public sealed class CP14WallmountSystem : EntitySystem
+public sealed class CEWallmountSystem : EntitySystem
 {
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SharedMapSystem _map = default!;
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly INetManager _net = default!;
 
-    public static readonly ProtoId<TagPrototype>[] WallTags = {"Wall", "Window"};
+    public static readonly ProtoId<TagPrototype>[] WallTags = ["Wall", "Window"];
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CP14WallmountedComponent, ComponentShutdown>(OnWallmountShutdown);
-        SubscribeLocalEvent<CP14WallmountedComponent, AnchorStateChangedEvent>(OnWallmountAnchorChanged);
+        SubscribeLocalEvent<CEWallmountedComponent, ComponentShutdown>(OnWallmountShutdown);
+        SubscribeLocalEvent<CEWallmountedComponent, AnchorStateChangedEvent>(OnWallmountAnchorChanged);
     }
 
-    private void OnWallmountAnchorChanged(Entity<CP14WallmountedComponent> ent, ref AnchorStateChangedEvent args)
+    private void OnWallmountAnchorChanged(Entity<CEWallmountedComponent> ent, ref AnchorStateChangedEvent args)
     {
         if (!args.Anchored)
             ClearWallmounts(ent);
     }
 
-    private void OnWallmountShutdown(Entity<CP14WallmountedComponent> ent, ref ComponentShutdown args)
+    private void OnWallmountShutdown(Entity<CEWallmountedComponent> ent, ref ComponentShutdown args)
     {
         ClearWallmounts(ent);
     }
@@ -43,7 +42,7 @@ public sealed class CP14WallmountSystem : EntitySystem
         if (_net.IsClient)
             return;
 
-        var query = EntityQueryEnumerator<CP14WallmountComponent>();
+        var query = EntityQueryEnumerator<CEWallmountComponent>();
         while (query.MoveNext(out var uid, out var wallmount))
         {
             if (!wallmount.Initialized)
@@ -63,12 +62,12 @@ public sealed class CP14WallmountSystem : EntitySystem
 
             if (TryAttachWallmount((uid, wallmount)))
             {
-                RemComp<CP14WallmountComponent>(uid);
+                RemComp<CEWallmountComponent>(uid);
             }
         }
     }
 
-    private void ClearWallmounts(Entity<CP14WallmountedComponent> ent)
+    private void ClearWallmounts(Entity<CEWallmountedComponent> ent)
     {
         foreach (var attached in ent.Comp.Attached)
         {
@@ -78,7 +77,7 @@ public sealed class CP14WallmountSystem : EntitySystem
         ent.Comp.Attached.Clear();
     }
 
-    private bool TryAttachWallmount(Entity<CP14WallmountComponent> wallmount)
+    private bool TryAttachWallmount(Entity<CEWallmountComponent> wallmount)
     {
         var grid = Transform(wallmount).GridUid;
         if (grid == null || !TryComp<MapGridComponent>(grid, out var gridComp))
@@ -89,16 +88,15 @@ public sealed class CP14WallmountSystem : EntitySystem
         var targetPos = new EntityCoordinates(grid.Value, Transform(wallmount).LocalPosition - offset);
         var anchored = _map.GetAnchoredEntities(grid.Value, gridComp, targetPos);
 
-        bool hasParent = false;
-        foreach (var entt in anchored)
+        var hasParent = false;
+        foreach (var entityUid in anchored)
         {
-            if (!_tag.HasAnyTag(entt, WallTags))
+            if (!_tag.HasAnyTag(entityUid, WallTags))
                 continue;
 
-            EnsureComp<CP14WallmountedComponent>(entt, out var wallmounted);
+            EnsureComp<CEWallmountedComponent>(entityUid, out var wallmounted);
 
-            if (!wallmounted.Attached.Contains(wallmount))
-                wallmounted.Attached.Add(wallmount);
+            wallmounted.Attached.Add(wallmount);
 
             hasParent = true;
             break;

@@ -5,17 +5,17 @@ using JetBrains.Annotations;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 
-namespace Content.Shared._CP14.Wallmount;
+namespace Content.Shared._CE.Wallmount;
 
 [UsedImplicitly]
 [DataDefinition]
-public sealed partial class CP14WallRequired : IConstructionCondition
+public sealed partial class CEWallRequired : IConstructionCondition
 {
     public ConstructionGuideEntry GenerateGuideEntry()
     {
         return new ConstructionGuideEntry
         {
-            Localization = "cp14-construction-step-condition-wall-required",
+            Localization = "ce-construction-step-condition-wall-required",
         };
     }
 
@@ -34,10 +34,9 @@ public sealed partial class CP14WallRequired : IConstructionCondition
         var targetPos = location.Offset(-offset);
         var anchored = mapSystem.GetAnchoredEntities(grid.Value, gridComp, targetPos);
 
-        bool hasParent = false;
-        foreach (var entt in anchored)
+        foreach (var entityUid in anchored)
         {
-            if (!tagSystem.HasAnyTag(entt, CP14WallmountSystem.WallTags))
+            if (!tagSystem.HasAnyTag(entityUid, CEWallmountSystem.WallTags))
                 continue;
 
             return true;
