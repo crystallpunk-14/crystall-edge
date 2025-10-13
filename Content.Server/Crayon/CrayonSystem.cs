@@ -105,7 +105,7 @@ public sealed class CrayonSystem : SharedCrayonSystem
     private void OnCrayonBoundUI(EntityUid uid, CrayonComponent component, CrayonSelectMessage args)
     {
         // Check if the selected state is valid
-        if (!_prototypeManager.TryIndex<DecalPrototype>(args.State, out var prototype) || !prototype.Tags.Contains("crayon"))
+        if (!_prototypeManager.TryIndex<DecalPrototype>(args.State, out var prototype) || !prototype.Tags.Contains("CEcrayon")) //CrystallEdge
             return;
 
         component.SelectedState = args.State;
@@ -129,7 +129,7 @@ public sealed class CrayonSystem : SharedCrayonSystem
         component.Charges = component.Capacity;
 
         // Get the first one from the catalog and set it as default
-        var decal = _prototypeManager.EnumeratePrototypes<DecalPrototype>().FirstOrDefault(x => x.Tags.Contains("crayon"));
+        var decal = _prototypeManager.EnumeratePrototypes<DecalPrototype>().FirstOrDefault(x => x.Tags.Contains("CEcrayon")); //CrystallEdge
         component.SelectedState = decal?.ID ?? string.Empty;
         Dirty(uid, component);
     }
