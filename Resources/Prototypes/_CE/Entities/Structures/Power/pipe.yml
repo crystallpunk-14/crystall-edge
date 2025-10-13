@@ -94,6 +94,8 @@
       power:
         !type:CableNode
         nodeGroupID: MVPower
+  - type: Physics
+    canCollide: false
   - type: Cable
     cableDroppedOnCutPrototype: CableMVStack1
     cableType: MediumVoltage
