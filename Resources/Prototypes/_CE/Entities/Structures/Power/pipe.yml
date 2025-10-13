@@ -1,23 +1,43 @@
 - type: entity
-  id: CEPipeBrass
-  name: brass pipe
-  description: TODO
+  id: CEPipeBase
   categories: [ ForkFiltered ]
+  abstract: true
+  components:
+  - type: Sprite
+    noRot: true
+  - type: Clickable
+  - type: Transform
+    anchored: true
+    noRot: true
+    # TODO: Remove both of these, same with CollideOnAnchor
+  - type: Physics
+    bodyType: Static
+  - type: Appearance
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Metallic
+  - type: CableVis
+    node: power
+
+- type: entity
+  id: CEPipeBrassBig
+  name: big brass pipe
+  description: TODO
   parent:
   - BaseStructure
+  - CEPipeBase
   placement:
     mode: SnapgridCenter
   components:
   - type: PlacementReplacement
-    key: pipe
+    key: pipe_big
   - type: Sprite
-    noRot: true
-    sprite: _CE/Structures/Power/Pipes/brass.rsi
+    sprite: _CE/Structures/Power/Pipes/big.rsi
     state: pipe_0
     drawdepth: Mobs
     offset: 0, 0.01
   - type: Icon
-    sprite: _CE/Structures/Power/Pipes/brass.rsi
+    sprite: _CE/Structures/Power/Pipes/big.rsi
     state: pipe_15
   - type: Fixtures
     fixtures:
@@ -31,17 +51,6 @@
         layer:
         - TableLayer
   - type: Climbable
-  - type: Clickable
-  - type: Transform
-    anchored: true
-    noRot: true
-    # TODO: Remove both of these, same with CollideOnAnchor
-  - type: Physics
-    bodyType: Static
-  - type: Appearance
-  - type: Damageable
-    damageContainer: Inorganic
-    damageModifierSet: Metallic
   - type: Destructible
     thresholds:
     - trigger:
@@ -55,8 +64,6 @@
     cableDroppedOnCutPrototype: CableHVStack1
     cableType: HighVoltage
     cuttingQuality: null
-  - type: CableVis
-    node: power
   - type: CableVisualizer
     statePrefix: pipe_
   - type: NodeContainer
@@ -64,3 +71,39 @@
       power:
         !type:CableNode
         nodeGroupID: HVPower
+
+- type: entity
+  id: CEPipeBrassMedium
+  name: brass pipe
+  description: TODO
+  parent:
+  - CEPipeBase
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Power/Pipes/medium.rsi
+    state: pipe_0
+    drawdepth: ThinWire
+    offset: 0, 0.01
+  - type: Icon
+    sprite: _CE/Structures/Power/Pipes/medium.rsi
+    state: pipe_15
+  - type: NodeContainer
+    nodes:
+      power:
+        !type:CableNode
+        nodeGroupID: MVPower
+  - type: Cable
+    cableDroppedOnCutPrototype: CableMVStack1
+    cableType: MediumVoltage
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 30
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: CableVisualizer
+    statePrefix: pipe_
