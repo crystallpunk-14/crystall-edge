@@ -1,8 +1,8 @@
-namespace Content.Shared._CP14.DayCycle;
+namespace Content.Shared._CE.DayCycle;
 
 
 [RegisterComponent]
-public sealed partial class CP14DayCycleComponent : Component
+public sealed partial class CEDayCycleComponent : Component
 {
     public float LastLightLevel = 0f;
 

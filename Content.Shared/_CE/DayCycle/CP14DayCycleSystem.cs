@@ -9,12 +9,12 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Timing;
 
-namespace Content.Shared._CP14.DayCycle;
+namespace Content.Shared._CE.DayCycle;
 
 /// <summary>
 /// This is an add-on to the LightCycle system that helps you determine what time of day it is on the map
 /// </summary>
-public sealed class CP14DayCycleSystem : EntitySystem
+public sealed class CEDayCycleSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly MetaDataSystem _metaData = default!;
@@ -38,7 +38,7 @@ public sealed class CP14DayCycleSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        var query = EntityQueryEnumerator<LightCycleComponent, CP14DayCycleComponent, MapComponent>();
+        var query = EntityQueryEnumerator<LightCycleComponent, CEDayCycleComponent, MapComponent>();
         while (query.MoveNext(out var uid, out var lightCycle, out var dayCycle, out var map))
         {
             var oldLightLevel = dayCycle.LastLightLevel;
@@ -51,7 +51,7 @@ public sealed class CP14DayCycleSystem : EntitySystem
                 {
                     if (newLightLevel < dayCycle.Threshold)
                     {
-                        var ev = new CP14StartNightEvent(uid);
+                        var ev = new CEStartNightEvent(uid);
                         RaiseLocalEvent(ev);
                     }
                 }
@@ -64,7 +64,7 @@ public sealed class CP14DayCycleSystem : EntitySystem
                 {
                     if (newLightLevel > dayCycle.Threshold)
                     {
-                        var ev = new CP14StartDayEvent(uid);
+                        var ev = new CEStartDayEvent(uid);
                         RaiseLocalEvent(ev);
                     }
                 }
@@ -127,12 +127,12 @@ public sealed class CP14DayCycleSystem : EntitySystem
     }
 }
 
-public sealed class CP14StartNightEvent(EntityUid map) : EntityEventArgs
+public sealed class CEStartNightEvent(EntityUid map) : EntityEventArgs
 {
     public EntityUid Map = map;
 }
 
-public sealed class CP14StartDayEvent(EntityUid map) : EntityEventArgs
+public sealed class CEStartDayEvent(EntityUid map) : EntityEventArgs
 {
     public EntityUid Map = map;
 }
@@ -165,7 +165,7 @@ internal sealed class CheckLightLevel : LocalizedCommands
             return;
         }
 
-        var dayCycle = _entityManager.GetEntitySystem<CP14DayCycleSystem>();
+        var dayCycle = _entityManager.GetEntitySystem<CEDayCycleSystem>();
         shell.WriteLine("Current light level: " + dayCycle.GetLightLevel(map.Value));
     }
 }
