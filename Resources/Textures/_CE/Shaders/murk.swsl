@@ -12,7 +12,7 @@ uniform highp vec3 shaderColor;
 const highp float noiseDistortion = 200.0;
 const highp float desaturationDistance = 0.1;
 const highp float noiseScale = 4.0;
-const highp float timeScale = 0;
+const highp float timeScale = 0.0;
 
 highp float noise(highp vec2 p) {
     const highp float K1 = 0.366025404;
@@ -53,8 +53,7 @@ highp float calculateMurkLevelAtPoint(highp vec2 fragPos) {
     return total;
 }
 
-highp vec3 desaturateByDistance(highp vec3 color, highp float murkLevel) {
-    highp float factor = clamp(murkLevel / desaturationDistance, 0.0, 1.0);
+highp vec3 desaturate(highp vec3 color, highp float factor) {
     highp float gray = dot(color, vec3(0.299, 0.587, 0.114));
     return mix(color, vec3(gray), factor);
 }
@@ -78,9 +77,25 @@ void fragment() {
     highp float murk = calculateMurkLevelAtPoint(fragPos + distortion);
     highp float visibility = clamp(1.0 - (murk * 0.5 + 0.5), 0.0, 1.0);
 
-    highp vec3 baseColor = zTextureSpec(SCREEN_TEXTURE, uv).rgb;
-    highp vec3 finalColor = mix(colorOverlay, baseColor, visibility);
-    finalColor = desaturateByDistance(finalColor, murk);
+    // --- Дискретизация уровней видимости ---
+    highp float desatFactor = 0.0;
+    if (visibility > 0.5) {
+        // Светлая зона — без изменений
+        desatFactor = 0.0;
+    } else if (visibility > 0.4) {
+        // Зона постепенного обесцвечивания (0.4–0.5)
+        desatFactor = smoothstep(0.5, 0.4, visibility);
+    } else {
+        // Ниже 0.4 — тьма с плавным затемнением
+        desatFactor = 1.0;
+    }
 
-    COLOR = vec4(finalColor, 1.0);
+    highp vec3 baseColor = zTextureSpec(SCREEN_TEXTURE, uv).rgb;
+    baseColor = mix(colorOverlay, baseColor, visibility);
+    baseColor = desaturate(baseColor, desatFactor);
+
+    // Плавное затемнение в области тьмы
+    baseColor *= visibility;
+
+    COLOR = vec4(baseColor, 1);
 }
