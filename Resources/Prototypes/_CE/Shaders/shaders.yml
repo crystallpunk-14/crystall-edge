@@ -1,0 +1,4 @@
+- type: shader
+  id: CEMurk
+  kind: source
+  path: "/Textures/_CE/Shaders/murk.swsl"
