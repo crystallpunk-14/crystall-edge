@@ -10,6 +10,7 @@ uniform highp vec2 renderScale;
 uniform highp vec3 shaderColor;
 
 const highp float noiseDistortion = 80.0;
+const highp float desaturationDistance = 0.1;
 const highp float noiseScale = 4.0;
 const highp float timeScale = 0.1;
 
@@ -33,6 +34,7 @@ highp vec3 gradientColor(highp float t) {
     return mix(vec3(0.00, 0.0, 0.00), vec3(0.003, 0.003, 0.005), f);
 }
 
+// теперь возвращаем rawIntensity без clamp
 highp float calculateMurkLevelAtPoint(highp vec2 fragPos) {
     highp float totalIntensity = baseIntensity;
     highp float scale = renderScale.x;
@@ -50,8 +52,18 @@ highp float calculateMurkLevelAtPoint(highp vec2 fragPos) {
         }
     }
 
-    highp float visibility = clamp(1.0 - (totalIntensity * 0.5 + 0.5), 0.0, 1.0);
-    return visibility;
+    return totalIntensity;
+}
+
+// серость появляется только в зоне близкой к границе (desaturationDistance)
+highp vec3 desaturateByDistance(highp vec3 color, highp float murkLevel) {
+    highp float lowerBound = 0.0;
+    highp float upperBound = desaturationDistance;
+
+    // фактор серости от 0 до 1 только в границе
+    highp float factor = clamp((murkLevel - lowerBound) / (upperBound - lowerBound), 0.0, 1.0);
+    highp float gray = dot(color, vec3(0.299, 0.587, 0.114));
+    return mix(color, vec3(gray), factor);
 }
 
 void fragment() {
@@ -72,10 +84,16 @@ void fragment() {
     highp float nY = noise(noiseUV + vec2(9.3, 2.4));
     highp vec2 distortion = vec2(nX - 0.5, nY - 0.5) * noiseDistortion;
 
-    highp float visibility = calculateMurkLevelAtPoint(worldPos + distortion);
+    highp float murkLevel = calculateMurkLevelAtPoint(worldPos + distortion);
+
+    // видимость для смешивания с экранной текстурой
+    highp float visibility = clamp(1.0 - (murkLevel * 0.5 + 0.5), 0.0, 1.0);
 
     highp vec4 baseColor = zTextureSpec(SCREEN_TEXTURE, uv);
     highp vec3 finalColor = mix(colorOverlay, baseColor.rgb, visibility);
+
+    // применяем серость только по границе
+    finalColor = desaturateByDistance(finalColor, murkLevel);
 
     COLOR = vec4(finalColor, 1.0);
 }
