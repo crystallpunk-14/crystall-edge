@@ -9,8 +9,9 @@ uniform highp float[64] intensities;
 uniform highp vec2 renderScale;
 uniform highp vec3 shaderColor;
 
-const highp float noiseScale = 8.0;
-const highp float timeScale = 0.2;
+const highp float noiseDistortion = 80.0;
+const highp float noiseScale = 4.0;
+const highp float timeScale = 0.1;
 
 highp float noise(highp vec2 p) {
     const highp float K1 = 0.366025404;
@@ -49,24 +50,14 @@ highp float calculateMurkLevelAtPoint(highp vec2 fragPos) {
         }
     }
 
-    // чем выше totalIntensity, тем больше мрака, значит видимость должна уменьшаться
     highp float visibility = clamp(1.0 - (totalIntensity * 0.5 + 0.5), 0.0, 1.0);
-    return visibility;
-}
-
-
-highp float calculateEdgeHighlight(highp float visibility) {
-    if (visibility >= 0.99 || visibility <= 0.0)
-        return 0.0;
-
     return visibility;
 }
 
 void fragment() {
     highp vec2 fragPos = FRAGCOORD.xy;
 
-    highp vec2 playerPosR = playerPos * 5;
-
+    highp vec2 playerPosR = playerPos * 7.0;
     highp vec2 worldPos = fragPos - playerPosR;
 
     highp vec2 uv = fragPos * SCREEN_PIXEL_SIZE;
@@ -79,7 +70,7 @@ void fragment() {
 
     highp float nX = noise(noiseUV + vec2(3.1, 7.7));
     highp float nY = noise(noiseUV + vec2(9.3, 2.4));
-    highp vec2 distortion = vec2(nX - 0.5, nY - 0.5) * 15.0 * renderScale.x;
+    highp vec2 distortion = vec2(nX - 0.5, nY - 0.5) * noiseDistortion;
 
     highp float visibility = calculateMurkLevelAtPoint(worldPos + distortion);
 
@@ -88,4 +79,3 @@ void fragment() {
 
     COLOR = vec4(finalColor, 1.0);
 }
-
