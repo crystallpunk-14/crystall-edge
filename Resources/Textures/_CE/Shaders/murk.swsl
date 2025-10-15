@@ -9,8 +9,8 @@ uniform highp vec2 renderScale;
 uniform highp vec3 shaderColor;
 
 const highp float radiusFalloff = 20.0;
-const highp float noiseScale = 6.0;
-const highp float timeScale = 0.1;
+const highp float noiseScale = 15.0;
+const highp float timeScale = 0.2;
 
 highp float noise( highp vec2 p ) {
     const highp float K1 = 0.366025404;
@@ -29,7 +29,7 @@ highp float noise( highp vec2 p ) {
 
 highp vec3 gradientColor(highp float t) {
     highp float f = t / 0.5;
-    return mix(vec3(0.00, 0.0, 0.00), vec3(0.01, 0.01, 0.01), f);
+    return mix(vec3(0.00, 0.0, 0.00), vec3(0.003, 0.003, 0.005), f);
 }
 
 highp float calculateMurkLevelAtPoint(highp vec2 fragPos) {
