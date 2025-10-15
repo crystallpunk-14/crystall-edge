@@ -1,6 +1,7 @@
 uniform sampler2D SCREEN_TEXTURE;
 
 uniform highp float baseIntensity;
+uniform highp vec2 playerPos;
 uniform lowp int count;
 uniform highp vec2[64] position;
 uniform highp float[64] intensities;
@@ -32,7 +33,6 @@ highp vec3 gradientColor(highp float t) {
 }
 
 highp float calculateMurkLevelAtPoint(highp vec2 fragPos) {
-    // базовая интенсивность карты (murkedMap.Intensity)
     highp float totalIntensity = baseIntensity;
     highp float scale = renderScale.x;
 
@@ -41,26 +41,38 @@ highp float calculateMurkLevelAtPoint(highp vec2 fragPos) {
         if (intensity == 0.0)
             continue;
 
-        // радиус действия = |intensity| * масштаб
         highp float radius = abs(intensity) * 33.0 * scale;
         highp float dist = length(fragPos - position[i]);
 
         if (dist <= radius) {
-            // линейное затухание, как в коде: intensity * (1 - dist / |intensity|)
             totalIntensity += intensity * (1.0 - dist / radius);
         }
     }
 
-    // нормализуем в диапазон [0,1], где 0.5 — нейтральный уровень
-    highp float visibility = clamp(0.5 + totalIntensity * 0.5, 0.0, 1.0);
+    // чем выше totalIntensity, тем больше мрака, значит видимость должна уменьшаться
+    highp float visibility = clamp(1.0 - (totalIntensity * 0.5 + 0.5), 0.0, 1.0);
+    return visibility;
+}
+
+
+highp float calculateEdgeHighlight(highp float visibility) {
+    if (visibility >= 0.99 || visibility <= 0.0)
+        return 0.0;
+
     return visibility;
 }
 
 void fragment() {
     highp vec2 fragPos = FRAGCOORD.xy;
+
+    highp vec2 playerPosR = playerPos * 5;
+
+    highp vec2 worldPos = fragPos - playerPosR;
+
     highp vec2 uv = fragPos * SCREEN_PIXEL_SIZE;
     highp float t = TIME * timeScale;
-    highp vec2 noiseUV = uv * noiseScale + vec2(t);
+
+    highp vec2 noiseUV = (uv + playerPosR * 0.01) * noiseScale + vec2(t);
 
     highp float n = noise(noiseUV);
     highp vec3 colorOverlay = gradientColor(n);
@@ -69,11 +81,11 @@ void fragment() {
     highp float nY = noise(noiseUV + vec2(9.3, 2.4));
     highp vec2 distortion = vec2(nX - 0.5, nY - 0.5) * 15.0 * renderScale.x;
 
-    highp float visibility = calculateMurkLevelAtPoint(fragPos + distortion);
+    highp float visibility = calculateMurkLevelAtPoint(worldPos + distortion);
 
     highp vec4 baseColor = zTextureSpec(SCREEN_TEXTURE, uv);
     highp vec3 finalColor = mix(colorOverlay, baseColor.rgb, visibility);
 
-    highp float minAlpha = 1.0;
-    COLOR = vec4(finalColor, minAlpha);
+    COLOR = vec4(finalColor, 1.0);
 }
+

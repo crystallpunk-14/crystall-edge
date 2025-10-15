@@ -25,6 +25,7 @@ public sealed class CEMurkOverlay : Overlay
     private readonly ShaderInstance? _murkShader;
 
     private float _baseIntensity = 0;
+    private Vector2 _playerPos = Vector2.Zero;
     private readonly Vector2[] _positions = new Vector2[MaxCount];
     private readonly float[] _intensities = new float[MaxCount];
     private int _count;
@@ -35,8 +36,6 @@ public sealed class CEMurkOverlay : Overlay
 
         _murkShader = _proto.Index<ShaderPrototype>("CEMurk").InstanceUnique();
 
-        _murkShader?.SetParameter("shaderColor", Color.Black);
-
         _transform = _entManager.System<SharedTransformSystem>();
     }
 
@@ -44,6 +43,8 @@ public sealed class CEMurkOverlay : Overlay
     {
         if (args.Viewport.Eye == null)
             return false;
+
+        _playerPos = args.Viewport.Eye.Position.Position;
 
         if (!_entManager.TryGetComponent<CEMurkedMapComponent>(args.MapUid, out var murkedMap))
         {
@@ -89,6 +90,7 @@ public sealed class CEMurkOverlay : Overlay
         _murkShader?.SetParameter("renderScale", args.Viewport.RenderScale * args.Viewport.Eye.Scale);
 
         _murkShader?.SetParameter("baseIntensity", _baseIntensity);
+        _murkShader?.SetParameter("playerPos", _playerPos);
         _murkShader?.SetParameter("count", _count);
         _murkShader?.SetParameter("position", _positions);
         _murkShader?.SetParameter("intensities", _intensities);
