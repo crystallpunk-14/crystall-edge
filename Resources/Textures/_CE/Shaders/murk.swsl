@@ -9,10 +9,17 @@ uniform highp float[64] intensities;
 uniform highp vec2 renderScale;
 uniform highp vec3 shaderColor;
 
-const highp float noiseDistortion = 200.0;
+const highp float noiseDistortion = 100.0;
 const highp float desaturationDistance = 0.1;
-const highp float noiseScale = 4.0;
-const highp float timeScale = 0.0;
+const highp float noiseScale = 5.0;
+const highp float secondNoiseScale = 40.0;
+const highp float timeScale = 0.1;
+
+highp vec3 randomizeZ(highp vec2 p) {
+    return fract(sin(vec3(dot(p, vec2(127.1, 311.7)),
+                          dot(p, vec2(269.5, 183.3)),
+                          dot(p, vec2(419.2, 371.9)))) * 43758.5453);
+}
 
 highp float noise(highp vec2 p) {
     const highp float K1 = 0.366025404;
@@ -25,9 +32,9 @@ highp float noise(highp vec2 p) {
     highp vec2 c = a - 1.0 + 2.0 * K2;
     highp vec3 h = max(0.5 - vec3(dot(a, a), dot(b, b), dot(c, c)), 0.0);
     highp vec3 n = h * h * h * h * vec3(
-        dot(a, zRandom(i)),
-        dot(b, zRandom(i + o)),
-        dot(c, zRandom(i + 1.0))
+        dot(a, randomizeZ(i).xy),
+        dot(b, randomizeZ(i + o).xy),
+        dot(c, randomizeZ(i + 1.0).xy)
     );
     return dot(n, vec3(70.0));
 }
@@ -77,16 +84,14 @@ void fragment() {
     highp float murk = calculateMurkLevelAtPoint(fragPos + distortion);
     highp float visibility = clamp(1.0 - (murk * 0.5 + 0.5), 0.0, 1.0);
 
-    // --- Дискретизация уровней видимости ---
+    visibility = max(visibility, 0.2);
+
     highp float desatFactor = 0.0;
     if (visibility > 0.5) {
-        // Светлая зона — без изменений
         desatFactor = 0.0;
     } else if (visibility > 0.4) {
-        // Зона постепенного обесцвечивания (0.4–0.5)
         desatFactor = smoothstep(0.5, 0.4, visibility);
     } else {
-        // Ниже 0.4 — тьма с плавным затемнением
         desatFactor = 1.0;
     }
 
@@ -94,7 +99,6 @@ void fragment() {
     baseColor = mix(colorOverlay, baseColor, visibility);
     baseColor = desaturate(baseColor, desatFactor);
 
-    // Плавное затемнение в области тьмы
     baseColor *= visibility;
 
     COLOR = vec4(baseColor, 1);
