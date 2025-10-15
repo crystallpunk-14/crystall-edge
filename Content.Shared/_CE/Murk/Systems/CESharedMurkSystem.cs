@@ -8,14 +8,13 @@ namespace Content.Shared._CE.Murk.Systems;
 public abstract partial class CESharedMurkSystem : EntitySystem
 {
     [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
 
     public bool InMurk(EntityCoordinates coords)
     {
-        if (!TryComp<CEMurkedMapComponent>(_transform.GetMap(coords), out var murkedMap))
-            return false;
+        var totalIntensity = 0f;
+        if (TryComp<CEMurkedMapComponent>(_transform.GetMap(coords), out var murkedMap))
+            totalIntensity = murkedMap.Intensity;
 
-        var totalIntensity = murkedMap.Intensity;
         var mapId = _transform.GetMapId(coords);
 
         var query = EntityQueryEnumerator<CEMurkSourceComponent, TransformComponent>();
@@ -32,5 +31,10 @@ public abstract partial class CESharedMurkSystem : EntitySystem
         }
 
         return totalIntensity > 0.5f;
+    }
+
+    public bool InMurk(EntityUid ent)
+    {
+        return InMurk(Transform(ent).Coordinates);
     }
 }
