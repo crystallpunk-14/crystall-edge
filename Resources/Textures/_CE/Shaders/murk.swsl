@@ -1,12 +1,9 @@
 uniform sampler2D SCREEN_TEXTURE;
 
+uniform highp float baseIntensity;
 uniform lowp int count;
 uniform highp vec2[64] position;
-uniform highp float[64] radius;
-
-uniform lowp int anticount;
-uniform highp vec2[64] antiposition;
-uniform highp float[64] antiradius;
+uniform highp float[64] intensities;
 
 uniform highp vec2 renderScale;
 uniform highp vec3 shaderColor;
@@ -31,40 +28,27 @@ highp float noise( highp vec2 p ) {
 }
 
 highp vec3 gradientColor(highp float t) {
-    if (t < 0.5) {
-        highp float f = t / 0.5;
-        return mix(shaderColor * vec3(0.00, 0.00, 0.05), shaderColor * vec3(0.05, 0.05, 0.15), f);
-    } else {
-        highp float f = (t - 0.5) / 0.5;
-        return mix(shaderColor * vec3(0.05, 0.05, 0.15), shaderColor * vec3(0.15, 0.15, 0.25), f);
-    }
+    highp float f = t / 0.5;
+    return mix(vec3(0.00, 0.0, 0.00), vec3(0.01, 0.01, 0.01), f);
 }
 
-highp float calculateVisibilityAtPoint(highp vec2 fragPos) {
-    highp float visibility = 0.0;
+highp float calculateMurkLevelAtPoint(highp vec2 fragPos) {
+    highp float visibility = baseIntensity;
     highp float scale = renderScale.x;
 
-    // Видимость (раскрытие)
     for (lowp int i = 0; i < 64 && i < count; i++) {
-        highp float scaledRadius = radius[i] * 33.0 * scale;
+        highp float intensity = intensities[i];
+        highp float scaledRadius = abs(intensity) * 33.0 * scale;
         highp float dist = length(fragPos - position[i]);
 
         highp float fade = smoothstep(scaledRadius - radiusFalloff * scale, scaledRadius, dist);
-        visibility = max(visibility, 1.0 - fade);
+        highp float effect = 1.0 - fade; // сила воздействия
+
+        visibility += effect * (-sign(intensity));
     }
 
-    // Антивидимость (перекрытие)
-    for (lowp int i = 0; i < 64 && i < anticount; i++) {
-        highp float scaledRadius = antiradius[i] * 33.0 * scale;
-        highp float dist = length(fragPos - antiposition[i]);
-
-        highp float fade = smoothstep(scaledRadius - radiusFalloff * scale, scaledRadius, dist);
-        highp float antiVis = 1.0 - fade;
-
-        // Учитываем антивидимость как маску
-        visibility = min(visibility, fade); // fade → 1 в центре антизоны (нулевая видимость)
-    }
-
+    // Приводим диапазон к [0, 1]
+    //visibility = clamp(0.5 + visibility * 0.5, 0.0, 1.0);
     return visibility;
 }
 
@@ -75,32 +59,24 @@ highp float calculateEdgeHighlight(highp float visibility) {
     return visibility;
 }
 
-
 void fragment() {
     highp vec2 fragPos = FRAGCOORD.xy;
     highp vec2 uv = fragPos * SCREEN_PIXEL_SIZE;
     highp float t = TIME * timeScale;
     highp vec2 noiseUV = uv * noiseScale + vec2(t);
 
-    // Цветовая маска (по шуму)
     highp float n = noise(noiseUV);
     highp vec3 colorOverlay = gradientColor(n);
 
-    // Искажение позиции для эффекта "миража"
     highp float nX = noise(noiseUV + vec2(3.1, 7.7));
     highp float nY = noise(noiseUV + vec2(9.3, 2.4));
     highp vec2 distortion = vec2(nX - 0.5, nY - 0.5) * 15.0 * renderScale.x;
 
-    highp float visibility = calculateVisibilityAtPoint(fragPos + distortion);
-    highp float edgeHighlight = calculateEdgeHighlight(visibility);
+    highp float visibility = calculateMurkLevelAtPoint(fragPos + distortion);
 
     highp vec4 baseColor = zTextureSpec(SCREEN_TEXTURE, uv);
     highp vec3 finalColor = mix(colorOverlay, baseColor.rgb, visibility);
 
-    finalColor = mix(finalColor, shaderColor, edgeHighlight);
-
     highp float minAlpha = 1.0;
-    COLOR = vec4(finalColor, mix(minAlpha, 1.0, edgeHighlight));
+    COLOR = vec4(finalColor, minAlpha);
 }
-
-

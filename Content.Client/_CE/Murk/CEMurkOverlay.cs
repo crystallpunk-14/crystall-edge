@@ -10,7 +10,6 @@ namespace Content.Client._CE.Murk;
 public sealed class CEMurkOverlay : Overlay
 {
     [Dependency] private readonly IEntityManager _entManager = default!;
-    [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     private readonly SharedTransformSystem _transform;
 
@@ -23,8 +22,9 @@ public sealed class CEMurkOverlay : Overlay
     public override bool RequestScreenTexture => true;
     public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowFOV;
 
-    private readonly ShaderInstance _murkShader;
+    private readonly ShaderInstance? _murkShader;
 
+    private float _baseIntensity = 0;
     private readonly Vector2[] _positions = new Vector2[MaxCount];
     private readonly float[] _intensities = new float[MaxCount];
     private int _count;
@@ -35,6 +35,8 @@ public sealed class CEMurkOverlay : Overlay
 
         _murkShader = _proto.Index<ShaderPrototype>("CEMurk").InstanceUnique();
 
+        _murkShader?.SetParameter("shaderColor", Color.Black);
+
         _transform = _entManager.System<SharedTransformSystem>();
     }
 
@@ -42,6 +44,15 @@ public sealed class CEMurkOverlay : Overlay
     {
         if (args.Viewport.Eye == null)
             return false;
+
+        if (!_entManager.TryGetComponent<CEMurkedMapComponent>(args.MapUid, out var murkedMap))
+        {
+            _baseIntensity = 0;
+        }
+        else
+        {
+            _baseIntensity = murkedMap.Intensity;
+        }
 
         _count = 0;
 
@@ -77,9 +88,10 @@ public sealed class CEMurkOverlay : Overlay
 
         _murkShader?.SetParameter("renderScale", args.Viewport.RenderScale * args.Viewport.Eye.Scale);
 
+        _murkShader?.SetParameter("baseIntensity", _baseIntensity);
         _murkShader?.SetParameter("count", _count);
         _murkShader?.SetParameter("position", _positions);
-        _murkShader?.SetParameter("radius", _intensities);
+        _murkShader?.SetParameter("intensities", _intensities);
 
         _murkShader?.SetParameter("SCREEN_TEXTURE", ScreenTexture);
 
