@@ -10,11 +10,6 @@ public abstract partial class CESharedMurkSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     public bool InMurk(EntityCoordinates coords)
     {
         if (!TryComp<CEMurkedMapComponent>(_transform.GetMap(coords), out var murkedMap))
