@@ -8,11 +8,10 @@ uniform highp float[64] intensities;
 uniform highp vec2 renderScale;
 uniform highp vec3 shaderColor;
 
-const highp float radiusFalloff = 20.0;
-const highp float noiseScale = 15.0;
+const highp float noiseScale = 8.0;
 const highp float timeScale = 0.2;
 
-highp float noise( highp vec2 p ) {
+highp float noise(highp vec2 p) {
     const highp float K1 = 0.366025404;
     const highp float K2 = 0.211324865;
 
@@ -33,29 +32,27 @@ highp vec3 gradientColor(highp float t) {
 }
 
 highp float calculateMurkLevelAtPoint(highp vec2 fragPos) {
-    highp float visibility = baseIntensity;
+    // базовая интенсивность карты (murkedMap.Intensity)
+    highp float totalIntensity = baseIntensity;
     highp float scale = renderScale.x;
 
     for (lowp int i = 0; i < 64 && i < count; i++) {
         highp float intensity = intensities[i];
-        highp float scaledRadius = abs(intensity) * 33.0 * scale;
+        if (intensity == 0.0)
+            continue;
+
+        // радиус действия = |intensity| * масштаб
+        highp float radius = abs(intensity) * 33.0 * scale;
         highp float dist = length(fragPos - position[i]);
 
-        highp float fade = smoothstep(scaledRadius - radiusFalloff * scale, scaledRadius, dist);
-        highp float effect = 1.0 - fade; // сила воздействия
-
-        visibility += effect * (-sign(intensity));
+        if (dist <= radius) {
+            // линейное затухание, как в коде: intensity * (1 - dist / |intensity|)
+            totalIntensity += intensity * (1.0 - dist / radius);
+        }
     }
 
-    // Приводим диапазон к [0, 1]
-    //visibility = clamp(0.5 + visibility * 0.5, 0.0, 1.0);
-    return visibility;
-}
-
-highp float calculateEdgeHighlight(highp float visibility) {
-    if (visibility >= 0.99 || visibility <= 0.0)
-        return 0.0;
-
+    // нормализуем в диапазон [0,1], где 0.5 — нейтральный уровень
+    highp float visibility = clamp(0.5 + totalIntensity * 0.5, 0.0, 1.0);
     return visibility;
 }
 
