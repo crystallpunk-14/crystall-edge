@@ -7,7 +7,7 @@ uniform highp float[64] intensities;
 uniform highp vec2 renderScale;
 uniform highp vec3 shaderColor;
 
-const highp float noiseDistortion = 100.0;
+const highp float noiseDistortion = 300.0;
 const highp float noiseScale = 5.0;
 const highp float timeScale = 0.1;
 
@@ -37,19 +37,19 @@ highp float murk(highp vec2 fragPos) {
     return total;
 }
 
-highp vec3 gradient(highp float t) { return mix(vec3(0.0), vec3(0.003,0.003,0.005), t*2.0); }
-highp vec3 desaturate(highp vec3 c, highp float f) { return mix(c, vec3(dot(c,vec3(0.299,0.587,0.114))), f); }
+highp vec3 gradient(highp float t) {
+    return mix(vec3(0.0), vec3(0.025,0.054,0.042), t);
+}
 
 void fragment() {
     highp vec2 uv = FRAGCOORD.xy * SCREEN_PIXEL_SIZE;
-    highp vec2 nUV = (uv + playerPos*0.06)*noiseScale + TIME*timeScale;
+    highp vec2 nUV = (uv + playerPos*0.05)*noiseScale + TIME*timeScale;
     highp vec2 d = (vec2(noise(nUV+vec2(3.1,7.7)), noise(nUV+vec2(9.3,2.4)))-0.5)*noiseDistortion;
 
     highp float v = clamp(1.0 - (murk(FRAGCOORD.xy + d)*0.5+0.5),0.2,1.0);
     highp float desat = v>0.5 ? 0.0 : v>0.4 ? smoothstep(0.5,0.4,v) : 1.0;
 
     highp vec3 color = mix(gradient(noise(nUV)), zTextureSpec(SCREEN_TEXTURE, uv).rgb, v);
-    color = desaturate(color, desat) * v;
 
     COLOR = vec4(color,1.0);
 }
