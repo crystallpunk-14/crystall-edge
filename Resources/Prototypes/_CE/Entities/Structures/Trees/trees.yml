@@ -1,0 +1,326 @@
+- type: entity
+  id: CEBaseTree
+  abstract: true
+  categories: [ ForkFiltered ]
+  name: tree
+  description: Decades of life and growth, saturating the surrounding nature with fresh air.
+  components:
+  - type: Transform
+    anchored: true
+  - type: CEWaveShader
+    speed: 1
+    dis: 5
+  - type: SpriteFade
+  - type: Clickable
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    offset: 0,0.9
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.2,-0.2,0.2,0.2"
+        density: 1000
+        layer:
+        - WallLayer
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Wood
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        path: /Audio/Effects/chop.ogg
+        params:
+          variation: 0.05
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Heat
+        damage: 50
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 75
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/tree_fell.ogg
+          params:
+            volume: 5
+            variation: 0.05
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEWoodLog:
+            min: 1
+            max: 3
+  - type: Material
+
+- type: entity
+  parent: CEBaseTree
+  id: CEBaseTreeLarge
+  name: large tree
+  abstract: true
+  components:
+  - type: Sprite
+    offset: 0,1.55
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Heat
+        damage: 100
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 120
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/tree_fell.ogg
+          params:
+            volume: 5
+            variation: 0.05
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEWoodLog:
+            min: 3
+            max: 6
+
+- type: entity
+  parent: CEBaseTree
+  id: CEFloraTreeGreen
+  components:
+  - type: Sprite
+    sprite: Objects/Decoration/Flora/flora_trees.rsi
+    layers:
+    - state: tree01
+      map: ["random"]
+  - type: RandomSprite
+    available:
+    - random:
+        tree01: ""
+        tree02: ""
+        tree03: ""
+        tree04: ""
+        tree05: ""
+        tree06: ""
+  #- type: Tag
+  #  tags:
+  #  - CEAmbientForest
+
+- type: entity
+  parent: CEBaseTree
+  id: CEFloraTreeSnow
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Trees/snow.rsi
+    layers:
+    - state: tree01
+      map: ["random"]
+  - type: RandomSprite
+    available:
+    - random:
+        tree01: ""
+        tree02: ""
+        tree03: ""
+        tree04: ""
+        tree05: ""
+        tree06: ""
+
+- type: entity
+  parent: CEBaseTree
+  id: CEFloraTreeDead
+  components:
+  - type: Sprite
+    offset: 0,1.1
+    sprite: _CE/Structures/Trees/died.rsi
+    layers:
+    - state: tree01
+      map: ["random"]
+  - type: RandomSprite
+    available:
+    - random:
+        tree01: ""
+        tree02: ""
+        tree03: ""
+        tree04: ""
+  - type: CEWaveShader
+    speed: 0.3
+    dis: 3
+
+- type: entity
+  parent: CEBaseTree
+  id: CEFloraTreeDeadSmall
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Trees/died_small.rsi
+    layers:
+    - state: tree01
+      map: ["random"]
+  - type: RandomSprite
+    available:
+    - random:
+        tree01: ""
+        tree02: ""
+        tree03: ""
+        tree04: ""
+  - type: CEWaveShader
+    speed: 0.3
+    dis: 3
+
+- type: entity
+  parent: CEBaseTreeLarge
+  id: CEFloraTreeGreenLarge
+  components:
+  - type: Sprite
+    sprite: Objects/Decoration/Flora/flora_treeslarge.rsi
+    layers:
+    - state: treelarge01
+      map: ["random"]
+  - type: RandomSprite
+    available:
+    - random:
+        treelarge01: ""
+        treelarge02: ""
+        treelarge03: ""
+        treelarge04: ""
+        treelarge05: ""
+        treelarge06: ""
+  #- type: Tag
+  #  tags:
+  #  - CEAmbientForest
+
+- type: entity
+  parent: CEBaseTree
+  id: CEFloraTreeBirchSmall
+  suffix: Small
+  components:
+  - type: Sprite
+    offset: 0,1.3
+    sprite: _CE/Structures/Trees/birch_small.rsi
+    layers:
+    - state: tree01
+      map: ["random"]
+  - type: RandomSprite
+    available:
+    - random:
+        tree01: ""
+        tree02: ""
+
+- type: entity
+  parent: CEBaseTree
+  id: CEFloraTreeBirchMedium
+  suffix: Medium
+  components:
+  - type: Sprite
+    offset: 0,1.8
+    sprite: _CE/Structures/Trees/birch_medium.rsi
+    layers:
+    - state: tree01
+      map: ["random"]
+  - type: RandomSprite
+    available:
+    - random:
+        tree01: ""
+        tree02: ""
+
+- type: entity
+  parent: CEBaseTree
+  id: CEFloraTreeBirchLarge
+  suffix: Large
+  components:
+  - type: Sprite
+    offset: 0,2.6
+    sprite: _CE/Structures/Trees/birch_big.rsi
+    layers:
+    - state: tree01
+      map: ["random"]
+  - type: RandomSprite
+    available:
+    - random:
+        tree01: ""
+        tree02: ""
+
+#spruce
+
+- type: entity
+  parent: CEBaseTree
+  id: CEFloraTreeSpruceSmall
+  suffix: Small
+  components:
+  - type: Sprite
+    offset: 0,1
+    sprite: _CE/Structures/Trees/spruce_small.rsi
+    layers:
+    - state: tree01
+      map: ["random"]
+  - type: RandomSprite
+    available:
+    - random:
+        tree01: ""
+        tree02: ""
+        tree03: ""
+        tree04: ""
+        tree05: ""
+        tree06: ""
+
+- type: entity
+  parent: CEBaseTree
+  id: CEFloraTreeSpruceMedium
+  suffix: Medium
+  components:
+  - type: Sprite
+    offset: 0,1.6
+    sprite: _CE/Structures/Trees/spruce_medium.rsi
+    layers:
+    - state: tree01
+      map: ["random"]
+  - type: RandomSprite
+    available:
+    - random:
+        tree01: ""
+        tree02: ""
+        tree03: ""
+        tree04: ""
+
+- type: entity
+  parent: CEBaseTree
+  id: CEFloraTreeSpruceLarge
+  suffix: Large
+  components:
+  - type: Sprite
+    offset: 0,1.9
+    sprite: _CE/Structures/Trees/spruce_big.rsi
+    layers:
+    - state: tree01
+      map: ["random"]
+  - type: RandomSprite
+    available:
+    - random:
+        tree01: ""
+        tree02: ""

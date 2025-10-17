@@ -42,3 +42,48 @@
   components:
   - type: Stack
     count: 10
+
+- type: entity
+  id: CEBrassBar1
+  parent: BaseItem
+  name: brass bar
+  suffix: 1
+  description: A heavy piece of refined brass
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Normal
+  - type: Sprite
+    sprite: _CE/Objects/Materials/Metals/brass_bar.rsi
+    layers:
+      - state: bar
+        map: ["base"]
+  - type: Appearance
+  - type: Stack
+    stackType: CEBrass
+    count: 1
+    baseLayer: base
+    layerStates:
+    - bar
+    - bar_2
+    - bar_3
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      CEBrass: 10
+
+- type: entity
+  id: CEBrassBar5
+  parent: CEBrassBar1
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5
+
+- type: entity
+  id: CEBrassBar10
+  parent: CEBrassBar1
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10

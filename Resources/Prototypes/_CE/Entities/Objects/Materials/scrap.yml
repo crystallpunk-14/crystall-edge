@@ -1,0 +1,45 @@
+- type: entity
+  id: CEBaseScrap
+  parent: BaseItem
+  abstract: true
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Tiny
+  - type: RandomSprite
+    available:
+      - random:
+          scrap: ""
+          scrap_2: ""
+          scrap_3: ""
+
+- type: entity
+  id: CEScrapIron
+  parent: CEBaseScrap
+  name: iron scrap
+  description: Crooked pieces of iron. Only to be melted down.
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Materials/Metals/iron_scrap.rsi
+    layers:
+      - state: scrap
+        map: ["random"]
+  - type: PhysicalComposition
+    materialComposition:
+      CEIron: 10
+
+- type: entity
+  id: CEScrapBrass
+  parent: CEBaseScrap
+  name: brass scrap
+  description: Crooked pieces of brass. The secret of producing this material has been lost. Only ancient ruins remain as a source of this valuable magical metal.
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Materials/Metals/brass_scrap.rsi
+    layers:
+      - state: scrap
+        map: ["random"]
+  - type: PhysicalComposition
+    materialComposition:
+      CEBrass: 10
+

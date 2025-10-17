@@ -34,6 +34,13 @@
   maxCount: 10
 
 - type: stack
+  id: CEBrass
+  name: ce-stack-brass-bars
+  spawn: CEBrassBar1
+  icon: { sprite: _CE/Objects/Materials/Metals/brass_bar.rsi, state: bar_2 }
+  maxCount: 10
+
+- type: stack
   id: CEGlass
   name: ce-stack-glass-sheet
   spawn: CEGlassSheet1

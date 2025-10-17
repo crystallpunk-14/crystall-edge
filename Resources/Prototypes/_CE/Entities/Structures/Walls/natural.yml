@@ -224,15 +224,15 @@
         acts: ["Destruction"]
 
 - type: entity
-  id: CEWallDimensit
+  id: CEWallCrystal
   parent: CEBaseWall
-  name: dimensit wall
-  description: The solid form of the interdimensional continuum.
+  name: crystal wall
+  description: A wall made of magical energy crystals.
   components:
   - type: Sprite
-    sprite: _CE/Structures/Walls/cave_dimensit.rsi
+    sprite: _CE/Structures/Walls/crystal.rsi
   - type: Icon
-    sprite: _CE/Structures/Walls/cave_dimensit.rsi
+    sprite: _CE/Structures/Walls/crystal.rsi
   - type: IconSmooth
     base: wall
   - type: MeleeSound

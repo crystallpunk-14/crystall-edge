@@ -81,6 +81,8 @@
   placement:
     mode: SnapgridCenter
   components:
+  - type: PlacementReplacement
+    key: pipe_medium
   - type: Sprite
     sprite: _CE/Structures/Power/Pipes/medium.rsi
     state: pipe_0
