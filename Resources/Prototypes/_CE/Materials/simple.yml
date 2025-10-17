@@ -50,3 +50,12 @@
   icon: { sprite: _CE/Objects/Materials/Metals/iron_bar.rsi, state: bar_2 }
   color: "#9093a1"
   price: 2
+
+- type: material
+  id: CEBrass
+  stackEntity: CEBrassBar1
+  name: ce-material-brass
+  unit: materials-unit-bar
+  icon: { sprite: _CE/Objects/Materials/Metals/brass_bar.rsi, state: bar_2 }
+  color: "#bb7547"
+  price: 2

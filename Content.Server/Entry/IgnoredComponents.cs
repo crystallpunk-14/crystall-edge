@@ -4,6 +4,9 @@ namespace Content.Server.Entry
     public static class IgnoredComponents
     {
         public static string[] List => new[] {
+            //CrystallEdge start
+            "CEWaveShader",
+            //CrystallEdge end
             "ConstructionGhost",
             "IconSmooth",
             "InteractionOutline",

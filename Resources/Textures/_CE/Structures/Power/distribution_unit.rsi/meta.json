@@ -1,0 +1,50 @@
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 64
+    },
+	"license": "CC-BY-SA-3.0",
+	"copyright": "Created by TheShuEd (github)",
+    "states": [
+        {
+            "name": "base"
+        },
+        {
+            "name": "glass"
+        },
+        {
+            "name": "top"
+        },
+        {
+            "name": "fill-1",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "fill-2",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        }
+    ]
+}

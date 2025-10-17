@@ -1,0 +1,69 @@
+- type: entity
+  abstract: true
+  parent: BaseSubstation
+  id: CEDistributionUnitBase
+  categories: [ ForkFiltered ]
+  name: power distribution unit
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Power/distribution_unit.rsi
+    snapCardinals: true
+    drawdepth: Mobs
+    layers:
+    - state: base
+    - state: glass
+    - state: fill-1
+      shader: unshaded
+    - state: top
+  - type: Battery
+    maxCharge: 2500000
+    startingCharge: 0
+  - type: PointLight
+    radius: 1.5
+    energy: 1
+    color: "#2d8ad6"
+    castShadows: false
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
+      - !type:ExplodeBehavior
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 100
+    intensitySlope: 2
+    totalIntensity: 200
+  - type: AmbientSound
+    range: 3
+
+- type: entity
+  parent: CEDistributionUnitBase
+  id: CEDistributionUnitBasic
+  suffix: Basic, 2.5MJ
+  components:
+  - type: Battery
+    maxCharge: 2500000
+    startingCharge: 2500000
+
+- type: entity
+  parent: CEDistributionUnitBase
+  id: CEDistributionUnitEmpty
+  suffix: Empty
+  components:
+  - type: Battery
+    startingCharge: 0

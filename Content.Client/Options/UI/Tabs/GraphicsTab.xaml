@@ -15,6 +15,8 @@
                 <CheckBox Name="ViewportLowResCheckBox" Text="{Loc 'ui-options-vp-low-res'}" />
                 <CheckBox Name="ParallaxLowQualityCheckBox" Text="{Loc 'ui-options-parallax-low-quality'}" />
                 <CheckBox Name="AmbientOcclusionCheckBox" Text="{Loc 'ui-options-ambient-occlusion'}" />
+                <CheckBox Name="WaveShaderEnabled" Text="{Loc 'ce-ui-options-main-graphics-wave-shader'}" ToolTip="{Loc 'ce-ui-options-main-graphics-wave-shader-tooltip'}" />
+                <CheckBox Name="PostProcessCheckBox" Text="{Loc 'ce-ui-options-postprocess'}" ToolTip="{Loc 'ce-ui-options-postprocess-tooltip'}" />
 
                 <!-- Interface -->
                 <Label Text="{Loc 'ui-options-interface-label'}" StyleClasses="LabelKeyText"/>
