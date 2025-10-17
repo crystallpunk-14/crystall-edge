@@ -1,13 +1,15 @@
 - type: entity
   id: CESpiderWeb
   name: spider web
-  parent: CEBaseFlammableSpreadingStrong
+  categories: [ ForkFiltered ]
   description: It's stringy and sticky.
   placement:
     mode: SnapgridCenter
     snap:
       - Wall
   components:
+  - type: PlacementReplacement
+    key: web
   - type: MeleeSound
     soundGroups:
       Brute:
