@@ -8,7 +8,7 @@ ce-stack-iron-bars = iron bars
 ce-stack-brass-bars = brass bars
 ce-stack-gold-bars = gold bars
 
-ce-stack-coal-ore = hard coa
+ce-stack-coal-ore = hard coal
 ce-stack-iron-ore = iron ore
 ce-stack-gold-ore = gold ore
 
