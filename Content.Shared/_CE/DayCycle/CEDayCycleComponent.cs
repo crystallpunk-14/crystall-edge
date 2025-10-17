@@ -1,6 +1,5 @@
 namespace Content.Shared._CE.DayCycle;
 
-
 [RegisterComponent]
 public sealed partial class CEDayCycleComponent : Component
 {
