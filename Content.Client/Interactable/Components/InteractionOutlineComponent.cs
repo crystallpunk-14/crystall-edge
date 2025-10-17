@@ -65,7 +65,6 @@ namespace Content.Client.Interactable.Components
 
             var instance = _prototypeManager.Index(shaderName).InstanceUnique();
             instance.SetParameter("outline_width", DefaultWidth * renderScale);
-            instance.SetParameter("outline_color", new Vector4(1.0f, 1.0f, 1.0f, 0.33f)); //CrystallEdge White Outline
             return instance;
         }
     }
