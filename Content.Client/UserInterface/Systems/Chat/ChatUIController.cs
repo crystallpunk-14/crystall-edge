@@ -82,6 +82,10 @@ public sealed partial class ChatUIController : UIController
         {SharedChatSystem.OOCPrefix, ChatSelectChannel.OOC},
         {SharedChatSystem.EmotesPrefix, ChatSelectChannel.Emotes},
         {SharedChatSystem.EmotesAltPrefix, ChatSelectChannel.Emotes},
+        //CrystallEdge: Support alternative emote prefix
+        {SharedChatSystem.CEEmotesPrefix, ChatSelectChannel.Emotes},
+        {SharedChatSystem.CEEmotesAltPrefix, ChatSelectChannel.Emotes},
+        //CrystallEdge: end
         {SharedChatSystem.AdminPrefix, ChatSelectChannel.Admin},
         {SharedChatSystem.RadioCommonPrefix, ChatSelectChannel.Radio},
         {SharedChatSystem.DeadPrefix, ChatSelectChannel.Dead}
