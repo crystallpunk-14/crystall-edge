@@ -52,7 +52,7 @@ public sealed class CEMurkOverlay : Overlay
         }
         else
         {
-            _baseIntensity = murkedMap.Intensity;
+            _baseIntensity = murkedMap.LerpedIntensity;
         }
 
         _count = 0;
@@ -74,7 +74,7 @@ public sealed class CEMurkOverlay : Overlay
             tempCoords.Y = args.Viewport.Size.Y - tempCoords.Y; // Local space to fragment space.
 
             _positions[_count] = tempCoords;
-            _intensities[_count] = murk.Intensity;
+            _intensities[_count] = murk.LerpedIntensity;
             _count++;
         }
 
