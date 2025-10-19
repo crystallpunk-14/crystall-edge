@@ -26,7 +26,7 @@
   suffix: Blue
   components:
   - type: Sprite
-    sprite: _CE/Structures/Carpets/blue.rsi
+    sprite: _CE/Structures/Floor/Carpets/blue.rsi
   - type: Stack
     stackType: CEFloorCarpetBlue
   - type: SpawnAfterInteract
@@ -39,7 +39,7 @@
   suffix: Red
   components:
   - type: Sprite
-    sprite: _CE/Structures/Carpets/red.rsi
+    sprite: _CE/Structures/Floor/Carpets/red.rsi
   - type: Item
     heldPrefix: carpet-Red
   - type: Stack
@@ -54,7 +54,7 @@
   suffix: Purple
   components:
   - type: Sprite
-    sprite: _CE/Structures/Carpets/purple.rsi
+    sprite: _CE/Structures/Floor/Carpets/purple.rsi
   - type: Item
     heldPrefix: carpet-Purple
   - type: Stack
@@ -69,7 +69,7 @@
   suffix: Black
   components:
   - type: Sprite
-    sprite: _CE/Structures/Carpets/black.rsi
+    sprite: _CE/Structures/Floor/Carpets/black.rsi
   - type: Stack
     stackType: CEFloorCarpetBlack
   - type: SpawnAfterInteract

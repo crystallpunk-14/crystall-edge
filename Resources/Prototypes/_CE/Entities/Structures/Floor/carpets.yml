@@ -43,9 +43,9 @@
   suffix: Blue
   components:
   - type: Sprite
-    sprite: _CE/Structures/Carpets/blue.rsi
+    sprite: _CE/Structures/Floor/Carpets/blue.rsi
   - type: Icon
-    sprite: _CE/Structures/Carpets/blue.rsi
+    sprite: _CE/Structures/Floor/Carpets/blue.rsi
   - type: IconSmooth
     key: carpet_blue
   - type: Butcherable
@@ -59,9 +59,9 @@
   suffix: Red
   components:
   - type: Sprite
-    sprite: _CE/Structures/Carpets/red.rsi
+    sprite: _CE/Structures/Floor/Carpets/red.rsi
   - type: Icon
-    sprite: _CE/Structures/Carpets/red.rsi
+    sprite: _CE/Structures/Floor/Carpets/red.rsi
   - type: IconSmooth
     key: carpet_red
   - type: Butcherable
@@ -75,9 +75,9 @@
   suffix: Purple
   components:
   - type: Sprite
-    sprite: _CE/Structures/Carpets/purple.rsi
+    sprite: _CE/Structures/Floor/Carpets/purple.rsi
   - type: Icon
-    sprite: _CE/Structures/Carpets/purple.rsi
+    sprite: _CE/Structures/Floor/Carpets/purple.rsi
   - type: IconSmooth
     key: carpet_purple
   - type: Butcherable
@@ -91,9 +91,9 @@
   suffix: Black
   components:
   - type: Sprite
-    sprite: _CE/Structures/Carpets/black.rsi
+    sprite: _CE/Structures/Floor/Carpets/black.rsi
   - type: Icon
-    sprite: _CE/Structures/Carpets/black.rsi
+    sprite: _CE/Structures/Floor/Carpets/black.rsi
   - type: IconSmooth
     key: carpet_black
   - type: Butcherable
