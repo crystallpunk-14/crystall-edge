@@ -21,22 +21,4 @@ public sealed partial class CEClientMurkSystem : CESharedMurkSystem
 
         _overlayMgr.RemoveOverlay<CEMurkOverlay>();
     }
-
-    public override void FrameUpdate(float frameTime)
-    {
-        base.FrameUpdate(frameTime);
-
-        var query = EntityQueryEnumerator<CEMurkSourceComponent>();
-        while (query.MoveNext(out var uid, out var murk))
-        {
-            var targetIntensity = murk.Active ? murk.Intensity : 0f;
-            murk.LerpedIntensity = MathHelper.Lerp(murk.LerpedIntensity, targetIntensity, 0.01f);
-        }
-
-        var mapQuery = EntityQueryEnumerator<CEMurkedMapComponent>();
-        while (mapQuery.MoveNext(out var uid, out var murkedMap))
-        {
-            murkedMap.LerpedIntensity = MathHelper.Lerp(murkedMap.LerpedIntensity, murkedMap.Intensity, 0.01f);
-        }
-    }
 }

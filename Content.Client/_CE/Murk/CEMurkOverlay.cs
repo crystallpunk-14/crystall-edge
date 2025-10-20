@@ -30,6 +30,16 @@ public sealed class CEMurkOverlay : Overlay
     private readonly float[] _intensities = new float[MaxCount];
     private int _count;
 
+    private readonly HashSet<EntityUid> _seen = [];
+    private readonly Dictionary<EntityUid, MurkEntry> _murkBuffer = new();
+
+    private const float LerpStep = 0.01f;
+    private sealed class MurkEntry
+    {
+        public Vector2 Position;
+        public float Intensity;
+    }
+
     public CEMurkOverlay()
     {
         IoCManager.InjectDependencies(this);
@@ -46,35 +56,63 @@ public sealed class CEMurkOverlay : Overlay
 
         _playerPos = args.Viewport.Eye.Position.Position;
 
-        if (!_entManager.TryGetComponent<CEMurkedMapComponent>(args.MapUid, out var murkedMap))
-        {
-            _baseIntensity = 0;
-        }
-        else
-        {
-            _baseIntensity = murkedMap.LerpedIntensity;
-        }
+        float targetMapIntensity = 0;
+        if (_entManager.TryGetComponent<CEMurkedMapComponent>(args.MapUid, out var murkedMap))
+            targetMapIntensity = murkedMap.Intensity;
 
-        _count = 0;
+        _baseIntensity = MathHelper.Lerp(_baseIntensity, targetMapIntensity, LerpStep);
 
-        var religionQuery = _entManager.AllEntityQueryEnumerator<CEMurkSourceComponent, TransformComponent>();
-        while (religionQuery.MoveNext(out var uid, out var murk, out var xform))
+        _seen.Clear();
+        var query = _entManager.AllEntityQueryEnumerator<CEMurkSourceComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var murk, out var xform))
         {
-            if (_count > MaxCount)
-                continue;
-
             if (!murk.Active || xform.MapID != args.MapId)
                 continue;
 
+            _seen.Add(uid);
+
             var mapPos = _transform.GetWorldPosition(uid);
 
-            // To be clear, this needs to use "inside-viewport" pixels.
-            // In other words, specifically NOT IViewportControl.WorldToScreen (which uses outer coordinates).
-            var tempCoords = args.Viewport.WorldToLocal(mapPos);
-            tempCoords.Y = args.Viewport.Size.Y - tempCoords.Y; // Local space to fragment space.
+            if (!_murkBuffer.TryGetValue(uid, out var entry))
+            {
+                entry = new MurkEntry
+                {
+                    Intensity = 0,
+                    Position = mapPos,
+                };
+                _murkBuffer[uid] = entry;
+            }
+
+            entry.Position = Vector2.Lerp(entry.Position, mapPos, LerpStep);
+            entry.Intensity = MathHelper.Lerp(entry.Intensity, murk.Active ? murk.Intensity : 0, LerpStep);
+        }
+
+        var toRemove = new List<EntityUid>();
+        foreach (var (uid, entry) in _murkBuffer)
+        {
+            if (!_seen.Contains(uid))
+                entry.Intensity = MathHelper.Lerp(entry.Intensity, 0, LerpStep);
+
+            if (Math.Abs(entry.Intensity) < 0.01f)
+                toRemove.Add(uid);
+        }
+
+        foreach (var uid in toRemove)
+        {
+            _murkBuffer.Remove(uid);
+        }
+
+        _count = 0;
+        foreach (var entry in _murkBuffer.Values)
+        {
+            if (_count >= MaxCount)
+                break;
+
+            var tempCoords = args.Viewport.WorldToLocal(entry.Position);
+            tempCoords.Y = args.Viewport.Size.Y - tempCoords.Y;
 
             _positions[_count] = tempCoords;
-            _intensities[_count] = murk.LerpedIntensity;
+            _intensities[_count] = entry.Intensity;
             _count++;
         }
 

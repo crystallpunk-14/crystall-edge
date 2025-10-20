@@ -15,12 +15,6 @@ public sealed partial class CEMurkSourceComponent : Component
     [DataField, AutoNetworkedField]
     public float Intensity = 5f;
 
-    /// <summary>
-        /// only for the client: constantly strives for the Intensity value<see cref="Intensity"/>, so that there are no sudden jumps
-    /// </summary>
-    [NonSerialized]
-    public float LerpedIntensity = 0f;
-
     [DataField, AutoNetworkedField]
     public bool Active = true;
 }
