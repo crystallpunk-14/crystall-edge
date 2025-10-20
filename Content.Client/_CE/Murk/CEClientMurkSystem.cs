@@ -29,7 +29,8 @@ public sealed partial class CEClientMurkSystem : CESharedMurkSystem
         var query = EntityQueryEnumerator<CEMurkSourceComponent>();
         while (query.MoveNext(out var uid, out var murk))
         {
-            murk.LerpedIntensity = MathHelper.Lerp(murk.LerpedIntensity, murk.Intensity, 0.01f);
+            var targetIntensity = murk.Active ? murk.Intensity : 0f;
+            murk.LerpedIntensity = MathHelper.Lerp(murk.LerpedIntensity, targetIntensity, 0.01f);
         }
 
         var mapQuery = EntityQueryEnumerator<CEMurkedMapComponent>();
