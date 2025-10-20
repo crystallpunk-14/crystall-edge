@@ -29,10 +29,11 @@
     - map: ["enum.PoweredLightLayers.Glow"]
       state: glow
       shader: unshaded
+      color: "#e4d09d"
     state: base
   - type: PointLight
-    color: "#FFE4CE" # 5000K color temp
-    energy: 0.8
+    color: "#e4d09d"
+    energy: 1.2
     radius: 10
     softness: 1
     offset: "0, -0.5"
@@ -119,6 +120,30 @@
       on: base
       broken: broken
       burned: burned
+  - type: DamageOnInteract
+    damage:
+      types:
+        Heat: 2
+    popupText: powered-light-component-burn-hand
+
+- type: entity
+  id: CEPoweredLight
+  description: "A light fixture. Draws power and produces light when equipped with a light tube."
+  suffix: ""
+  parent: CEPoweredlightEmpty
+  components:
+  - type: Sprite
+    state: base
+  - type: PointLight
+    enabled: true
+  - type: PoweredLight
+    hasLampOnSpawn: LightTube
+  - type: AmbientOnPowered
+  - type: AmbientSound
+    volume: -15
+    range: 2
+    sound:
+      path: /Audio/Ambience/Objects/light_hum.ogg
   - type: DamageOnInteract
     damage:
       types:

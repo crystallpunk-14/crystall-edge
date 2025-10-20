@@ -26,9 +26,9 @@
     nodes:
       input:
         !type:CableDeviceNode
-        nodeGroupID: HVPower
+        nodeGroupID: MVPower
   - type: BatteryCharger
-    voltage: High
+    voltage: Medium
   - type: PowerNetworkBattery
     maxSupply: 150000
     maxChargeRate: 5000
