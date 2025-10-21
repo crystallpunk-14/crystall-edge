@@ -1,4 +1,6 @@
 using Content.Shared.Actions;
+using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.Roof;
 
@@ -17,6 +19,19 @@ public sealed partial class CERoofComponent : Component
     /// Whether the roof is currently in a transitioning state
     /// </summary>
     public bool IsTransitioning = false;
+}
+
+/// <summary>
+///
+/// </summary>
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+public sealed partial class CERoofTogglerComponent : Component
+{
+    [DataField]
+    public EntProtoId ActionProto = "CEActionToggleRoofs";
+
+    [DataField, AutoNetworkedField]
+    public EntityUid? ActionEntity;
 }
 
 public sealed partial class CEToggleRoofVisibilityAction : InstantActionEvent

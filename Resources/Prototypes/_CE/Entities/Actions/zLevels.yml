@@ -23,3 +23,35 @@
       state: down
   - type: InstantAction
     event: !type:CEZLevelActionDown
+
+- type: entity
+  id: CEActionToggleRoofs
+  name: Toggle roofs
+  description: Show or hide roofs
+  components:
+  - type: Action
+    clientExclusive: true
+    checkCanInteract: false
+    icon:
+      sprite: _CE/Actions/misc.rsi
+      state: roof
+  - type: InstantAction
+    event: !type:CEToggleRoofVisibilityAction
+
+#- type: entity
+#  id: CEActionRespawn
+#  name: Respawn
+#  description: Return to the lobby to connect with a new character.
+#  components:
+#  - type: Action
+#    priority: 20
+#    startDelay: true
+#    useDelay: 300
+#    checkCanInteract: false
+#    icon:
+#      sprite: _CE/Actions/zLevel.rsi
+#      state: respawn
+#  - type: ConfirmableAction
+#    popup: CE-respawn-action-popup
+#  - type: InstantAction
+#    event: !type:CERespawnAction

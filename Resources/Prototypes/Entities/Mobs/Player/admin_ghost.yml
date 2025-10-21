@@ -111,6 +111,7 @@
     damageCoefficient: 0
   # CrystallEdge
   - type: CEZLevelMover
+  - type: CERoofToggler
 
 - type: entity
   abstract: true

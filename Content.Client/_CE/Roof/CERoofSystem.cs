@@ -41,7 +41,7 @@ public sealed class CERoofSystem : EntitySystem
         _roofQuery = GetEntityQuery<CERoofComponent>();
 
         SubscribeLocalEvent<CERoofComponent, ComponentStartup>(RoofStartup);
-        SubscribeLocalEvent<GhostComponent, CEToggleRoofVisibilityAction>(OnToggleRoof);
+        SubscribeLocalEvent<CERoofTogglerComponent, CEToggleRoofVisibilityAction>(OnToggleRoof);
     }
 
     public override void Update(float frameTime)
@@ -113,7 +113,7 @@ public sealed class CERoofSystem : EntitySystem
         }
     }
 
-    private void OnToggleRoof(Entity<GhostComponent> ent, ref CEToggleRoofVisibilityAction args)
+    private void OnToggleRoof(Entity<CERoofTogglerComponent> ent, ref CEToggleRoofVisibilityAction args)
     {
         if (args.Handled)
             return;
