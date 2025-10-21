@@ -1,4 +1,4 @@
-using Content.Server._CP14.ZLevels.Components;
+using Content.Server._CE.ZLevels.Components;
 using Content.Server.Station.Components;
 using Content.Server.Station.Events;
 using Content.Server.Station.Systems;
@@ -9,9 +9,9 @@ using Robust.Shared.EntitySerialization;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Map;
 
-namespace Content.Server._CP14.ZLevels.EntitySystems;
+namespace Content.Server._CE.ZLevels.EntitySystems;
 
-public sealed partial class CP14StationZLevelsSystem : EntitySystem
+public sealed partial class CEStationZLevelsSystem : EntitySystem
 {
     [Dependency] private readonly MapSystem _map = default!;
     [Dependency] private readonly StationSystem _station = default!;
@@ -27,10 +27,10 @@ public sealed partial class CP14StationZLevelsSystem : EntitySystem
         InitializePortals();
         InitActions();
 
-        SubscribeLocalEvent<CP14StationZLevelsComponent, StationPostInitEvent>(OnStationPostInit);
+        SubscribeLocalEvent<CEStationZLevelsComponent, StationPostInitEvent>(OnStationPostInit);
     }
 
-    private void OnStationPostInit(Entity<CP14StationZLevelsComponent> ent, ref StationPostInitEvent args)
+    private void OnStationPostInit(Entity<CEStationZLevelsComponent> ent, ref StationPostInitEvent args)
     {
         if (ent.Comp.Initialized)
             return;
@@ -38,7 +38,7 @@ public sealed partial class CP14StationZLevelsSystem : EntitySystem
         var defaultMap = _station.GetLargestGrid(ent.Owner);
         if (defaultMap is null)
         {
-            Log.Error($"Failed to init CP14StationZLevelsSystem: defaultMap is null");
+            Log.Error($"Failed to init CEStationZLevelsSystem: defaultMap is null");
             return;
         }
 
@@ -50,13 +50,13 @@ public sealed partial class CP14StationZLevelsSystem : EntitySystem
         {
             if (ent.Comp.LevelEntities.ContainsValue(map))
             {
-                Log.Error($"Key duplication for CP14StationZLevelsSystem at level {map}!");
+                Log.Error($"Key duplication for CEStationZLevelsSystem at level {map}!");
                 continue;
             }
 
             if (level.Path is null)
             {
-                Log.Error($"path {level.Path.ToString()} for CP14StationZLevelsSystem at level {map} don't exist!");
+                Log.Error($"path {level.Path.ToString()} for CEStationZLevelsSystem at level {map} don't exist!");
                 continue;
             }
 
@@ -65,11 +65,11 @@ public sealed partial class CP14StationZLevelsSystem : EntitySystem
 
             if (!_mapLoader.TryLoadMap(level.Path.Value, out var mapEnt, out var grids))
             {
-                Log.Error($"Failed to load map for CP14StationZLevelsSystem at level {map}!");
+                Log.Error($"Failed to load map for CEStationZLevelsSystem at level {map}!");
                 continue;
             }
 
-            Log.Info($"Created map {mapEnt.Value.Comp.MapId} for CP14StationZLevelsSystem at level {map}");
+            Log.Info($"Created map {mapEnt.Value.Comp.MapId} for CEStationZLevelsSystem at level {map}");
 
             _map.InitializeMap(mapEnt.Value.Comp.MapId);
             var member = EnsureComp<StationMemberComponent>(mapEnt.Value);
@@ -81,7 +81,7 @@ public sealed partial class CP14StationZLevelsSystem : EntitySystem
 
     public MapId? GetMapOffset(EntityUid mapUid, int offset)
     {
-        var query = EntityQueryEnumerator<CP14StationZLevelsComponent>();
+        var query = EntityQueryEnumerator<CEStationZLevelsComponent>();
         while (query.MoveNext(out var uid, out var zLevel))
         {
             if (!zLevel.LevelEntities.TryGetValue(Transform(mapUid).MapID, out var currentLevel))

@@ -1,21 +1,21 @@
-using Content.Server._CP14.ZLevels.Commands;
-using Content.Server._CP14.ZLevels.EntitySystems;
+using Content.Server._CE.ZLevels.Commands;
+using Content.Server._CE.ZLevels.EntitySystems;
 using Robust.Shared.Map;
 using Robust.Shared.Utility;
 
-namespace Content.Server._CP14.ZLevels.Components;
+namespace Content.Server._CE.ZLevels.Components;
 
 /// <summary>
 /// Initializes the z-level system by creating a series of linked maps
 /// </summary>
-[RegisterComponent, Access(typeof(CP14StationZLevelsSystem), typeof(CP14CombineMapsIntoZLevelsCommand))]
-public sealed partial class CP14StationZLevelsComponent : Component
+[RegisterComponent, Access(typeof(CEStationZLevelsSystem), typeof(CECombineMapsIntoZLevelsCommand))]
+public sealed partial class CEStationZLevelsComponent : Component
 {
     [DataField(required: true)]
     public int DefaultMapLevel = 0;
 
     [DataField(required: true)]
-    public Dictionary<int, CP14ZLevelEntry> Levels = new();
+    public Dictionary<int, CEZLevelEntry> Levels = new();
 
     public bool Initialized = false;
 
@@ -23,7 +23,7 @@ public sealed partial class CP14StationZLevelsComponent : Component
 }
 
 [DataRecord, Serializable]
-public sealed class CP14ZLevelEntry
+public sealed class CEZLevelEntry
 {
     public ResPath? Path { get; set; } = null;
 }

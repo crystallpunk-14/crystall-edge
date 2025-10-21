@@ -1,33 +1,33 @@
-using Content.Shared._CP14.ZLevel;
+using Content.Shared._CE.ZLevel;
 using Content.Shared.Actions;
 using Robust.Shared.Map;
 
-namespace Content.Server._CP14.ZLevels.EntitySystems;
+namespace Content.Server._CE.ZLevels.EntitySystems;
 
-public sealed partial class CP14StationZLevelsSystem
+public sealed partial class CEStationZLevelsSystem
 {
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     private void InitActions()
     {
-        SubscribeLocalEvent<CP14ZLevelMoverComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<CP14ZLevelMoverComponent, ComponentRemove>(OnRemove);
-        SubscribeLocalEvent<CP14ZLevelMoverComponent, CP14ZLevelActionUp>(OnZLevelUpGhost);
-        SubscribeLocalEvent<CP14ZLevelMoverComponent, CP14ZLevelActionDown>(OnZLevelDownGhost);
+        SubscribeLocalEvent<CEZLevelMoverComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<CEZLevelMoverComponent, ComponentRemove>(OnRemove);
+        SubscribeLocalEvent<CEZLevelMoverComponent, CEZLevelActionUp>(OnZLevelUpGhost);
+        SubscribeLocalEvent<CEZLevelMoverComponent, CEZLevelActionDown>(OnZLevelDownGhost);
     }
 
-    private void OnMapInit(Entity<CP14ZLevelMoverComponent> ent, ref MapInitEvent args)
+    private void OnMapInit(Entity<CEZLevelMoverComponent> ent, ref MapInitEvent args)
     {
-        _actions.AddAction(ent, ref ent.Comp.CP14ZLevelUpActionEntity, ent.Comp.UpActionProto);
-        _actions.AddAction(ent, ref ent.Comp.CP14ZLevelDownActionEntity, ent.Comp.DownActionProto);
+        _actions.AddAction(ent, ref ent.Comp.ZLevelUpActionEntity, ent.Comp.UpActionProto);
+        _actions.AddAction(ent, ref ent.Comp.ZLevelDownActionEntity, ent.Comp.DownActionProto);
     }
 
-    private void OnRemove(Entity<CP14ZLevelMoverComponent> ent, ref ComponentRemove args)
+    private void OnRemove(Entity<CEZLevelMoverComponent> ent, ref ComponentRemove args)
     {
-        _actions.RemoveAction(ent.Comp.CP14ZLevelUpActionEntity);
-        _actions.RemoveAction(ent.Comp.CP14ZLevelDownActionEntity);
+        _actions.RemoveAction(ent.Comp.ZLevelUpActionEntity);
+        _actions.RemoveAction(ent.Comp.ZLevelDownActionEntity);
     }
 
-    private void OnZLevelDownGhost(Entity<CP14ZLevelMoverComponent> ent, ref CP14ZLevelActionDown args)
+    private void OnZLevelDownGhost(Entity<CEZLevelMoverComponent> ent, ref CEZLevelActionDown args)
     {
         if (args.Handled)
             return;
@@ -37,7 +37,7 @@ public sealed partial class CP14StationZLevelsSystem
         args.Handled = true;
     }
 
-    private void OnZLevelUpGhost(Entity<CP14ZLevelMoverComponent> ent, ref CP14ZLevelActionUp args)
+    private void OnZLevelUpGhost(Entity<CEZLevelMoverComponent> ent, ref CEZLevelActionUp args)
     {
         if (args.Handled)
             return;
