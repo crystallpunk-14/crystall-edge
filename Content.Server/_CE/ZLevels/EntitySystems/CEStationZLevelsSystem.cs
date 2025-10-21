@@ -22,6 +22,7 @@ public sealed partial class CEStationZLevelsSystem : EntitySystem
         base.Initialize();
         InitializePortals();
         InitActions();
+        InitChasm();
 
         SubscribeLocalEvent<CEStationZLevelsComponent, StationPostInitEvent>(OnStationPostInit);
     }
