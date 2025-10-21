@@ -1,11 +1,10 @@
+using System.Diagnostics.CodeAnalysis;
 using Content.Server._CE.ZLevels.Components;
-using Content.Server.Station.Components;
 using Content.Server.Station.Events;
 using Content.Server.Station.Systems;
-using Content.Shared.Maps;
 using Content.Shared.Station.Components;
+using JetBrains.Annotations;
 using Robust.Server.GameObjects;
-using Robust.Shared.EntitySerialization;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Map;
 
@@ -17,9 +16,6 @@ public sealed partial class CEStationZLevelsSystem : EntitySystem
     [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly MapLoaderSystem _mapLoader = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
-    [Dependency] private readonly ITileDefinitionManager _tileDefManager = default!;
-    [Dependency] private readonly TileSystem _tile = default!;
-    [Dependency] private readonly SharedMapSystem _maps = default!;
 
     public override void Initialize()
     {
@@ -63,7 +59,7 @@ public sealed partial class CEStationZLevelsSystem : EntitySystem
             //var mapUid = _map.CreateMap(out var mapId);
 
 
-            if (!_mapLoader.TryLoadMap(level.Path.Value, out var mapEnt, out var grids))
+            if (!_mapLoader.TryLoadMap(level.Path.Value, out var mapEnt, out _))
             {
                 Log.Error($"Failed to load map for CEStationZLevelsSystem at level {map}!");
                 continue;
@@ -79,10 +75,12 @@ public sealed partial class CEStationZLevelsSystem : EntitySystem
         }
     }
 
-    public MapId? GetMapOffset(EntityUid mapUid, int offset)
+    [PublicAPI]
+    public bool TryMapOffset(EntityUid mapUid, int offset, [NotNullWhen(true)] out MapId? mapId)
     {
+        mapId = null;
         var query = EntityQueryEnumerator<CEStationZLevelsComponent>();
-        while (query.MoveNext(out var uid, out var zLevel))
+        while (query.MoveNext(out var zLevel))
         {
             if (!zLevel.LevelEntities.TryGetValue(Transform(mapUid).MapID, out var currentLevel))
                 continue;
@@ -95,9 +93,52 @@ public sealed partial class CEStationZLevelsSystem : EntitySystem
             foreach (var (key, value) in zLevel.LevelEntities)
             {
                 if (value == targetLevel && _map.MapExists(key))
-                    return key;
+                {
+                    mapId = key;
+                    return true;
+                }
             }
         }
-        return null;
+        return false;
+    }
+
+    [PublicAPI]
+    public bool TryMapUp(EntityUid mapUid, [NotNullWhen(true)] out MapId? mapId)
+    {
+        return TryMapOffset(mapUid, 1, out mapId);
+    }
+
+    [PublicAPI]
+    public bool TryMapDown(EntityUid mapUid, [NotNullWhen(true)] out MapId? mapId)
+    {
+        return TryMapOffset(mapUid, -1, out mapId);
+    }
+
+    [PublicAPI]
+    public bool TryMove(EntityUid ent, int offset)
+    {
+        var xform = Transform(ent);
+        var map = xform.MapUid;
+
+        if (map is null)
+            return false;
+
+        if (!TryMapOffset(map.Value, offset, out var targetMap))
+            return false;
+
+        _transform.SetMapCoordinates(ent, new MapCoordinates(_transform.GetWorldPosition(ent), targetMap.Value));
+        return true;
+    }
+
+    [PublicAPI]
+    public bool TryMoveUp(EntityUid ent)
+    {
+        return TryMove(ent, 1);
+    }
+
+    [PublicAPI]
+    public bool TryMoveDown(EntityUid ent)
+    {
+        return TryMove(ent, -1);
     }
 }

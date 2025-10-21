@@ -8,6 +8,7 @@ namespace Content.Server._CE.ZLevels.EntitySystems;
 public sealed partial class CEStationZLevelsSystem
 {
     [Dependency] private readonly LinkedEntitySystem _linkedEntity = default!;
+
     private void InitializePortals()
     {
         SubscribeLocalEvent<RoundStartingEvent>(OnRoundStart);
@@ -34,9 +35,7 @@ public sealed partial class CEStationZLevelsSystem
         if (mapId is null)
             return;
 
-        var offsetMap = GetMapOffset(mapId.Value, autoPortal.Comp.ZLevelOffset);
-
-        if (offsetMap is null)
+        if (!TryMapOffset(mapId.Value, autoPortal.Comp.ZLevelOffset, out var offsetMap))
             return;
 
         var currentWorldPos = _transform.GetWorldPosition(autoPortal);
