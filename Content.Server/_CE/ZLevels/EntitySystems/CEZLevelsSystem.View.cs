@@ -85,14 +85,13 @@ public sealed partial class CEZLevelsSystem
         var globalPos = _transform.GetWorldPosition(xform);
 
         var newEye = SpawnAtPosition(null, new EntityCoordinates(_map.GetMap(mapBelow.Value), globalPos));
+        Transform(newEye).GridTraversal = false;
         AddComp(newEye,
             new CEZLevelEyeComponent
             {
                 Target = actor.PlayerSession,
             }
         );
-
-        Transform(newEye).GridTraversal = false;
 
         eyes.Add(newEye);
     }

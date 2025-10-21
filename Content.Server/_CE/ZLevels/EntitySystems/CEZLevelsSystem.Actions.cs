@@ -1,4 +1,4 @@
-using Content.Shared._CE.ZLevel;
+using Content.Shared._CE.ZLevels;
 using Content.Shared.Actions;
 
 namespace Content.Server._CE.ZLevels.EntitySystems;

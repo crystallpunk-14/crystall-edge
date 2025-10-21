@@ -1,6 +1,6 @@
-using System.Linq;
-using Content.Server._CE.ZLevels.Components;
+using Content.Server._CE.PVS;
 using Content.Server.Administration;
+using Content.Shared._CE.ZLevels;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
 using Robust.Shared.Map;
@@ -64,7 +64,8 @@ public sealed class CECombineMapsIntoZLevelsCommand : LocalizedCommands
         {
             foreach (var findMap in maps)
             {
-                if (zLevelComp.LevelEntities.ContainsKey(findMap))
+                var zlevels = zLevelComp.ZLevels;
+                if (zlevels.ContainsKey(findMap))
                 {
                     shell.WriteError($"{findMap} already in z-level network! Z-Network Entity: {uid}");
                     return;
@@ -75,11 +76,13 @@ public sealed class CECombineMapsIntoZLevelsCommand : LocalizedCommands
         //Ok, all check passed, we create new z-level network
         var zLevelEnt = _entities.Spawn();
         _entities.EnsureComponent<CEZLevelsComponent>(zLevelEnt, out var newZLevelComp);
+        _entities.EnsureComponent<CEPvsOverrideComponent>(zLevelEnt);
 
         var count = 0;
         foreach (var map in maps)
         {
-            newZLevelComp.LevelEntities.Add(map, count);
+            var zlevels = newZLevelComp.ZLevels;
+            zlevels.Add(map, count);
             count++;
         }
 

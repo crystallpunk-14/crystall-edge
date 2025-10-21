@@ -2,7 +2,7 @@ using Content.Shared.Actions;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared._CE.ZLevel;
+namespace Content.Shared._CE.ZLevels;
 
 /// <summary>
 /// component that allows you to quickly move between Z levels
