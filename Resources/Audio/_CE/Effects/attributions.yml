@@ -52,3 +52,13 @@
   license: "CC0-1.0"
   copyright: 'by Ali_6868 of Freesound.org. Cropped and mixed from stereo to mono.'
   source: "https://freesound.org/people/Ali_6868/sounds/384361/"
+
+- files: ["ladder_down.ogg"]
+  license: "CC0-1.0"
+  copyright: 'by qubodup of Freesound.org.'
+  source: "https://freesound.org/people/qubodup/sounds/442770/"
+
+- files: ["ladder_up.ogg"]
+  license: "CC0-1.0"
+  copyright: 'by qubodup of Freesound.org.'
+  source: "https://freesound.org/people/qubodup/sounds/442771/"

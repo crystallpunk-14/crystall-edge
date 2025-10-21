@@ -1,0 +1,138 @@
+- type: entity
+  id: CELaddersDownBase
+  name: stairway down
+  abstract: true
+  categories: [ ForkFiltered, HideSpawnMenu ]
+  description: The dark depths of the underworld are calling you.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    drawdepth: FloorTiles
+    sprite: _CE/Structures/ladders.rsi
+  - type: Transform
+    anchored: True
+  - type: InteractionOutline
+  - type: Clickable
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      portalFixture:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.48,-0.48,0.48,-0.05"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        hard: false
+  - type: Portal
+    canTeleportToOtherMaps: true
+    randomTeleport: false
+    arrivalSound: /Audio/_CE/Effects/ladder_up.ogg
+    departureSound: /Audio/_CE/Effects/ladder_down.ogg
+
+- type: entity
+  parent: CELaddersDownBase
+  id: CELaddersUpBase
+  abstract: true
+  categories: [ ForkFiltered, HideSpawnMenu ]
+  name: stairway up
+  description: A way out of the dark underworld into the overworld.
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/ladders_up.rsi
+    drawdepth: Mobs
+  - type: Fixtures
+    fixtures:
+      portalFixture:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.48,0.48,0.48,0.05"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        hard: false
+  - type: PointLight
+    color: White
+    radius: 3
+    energy: 1
+    netsync: false
+  - type: Portal
+    arrivalSound: /Audio/_CE/Effects/ladder_down.ogg
+    departureSound: /Audio/_CE/Effects/ladder_up.ogg
+
+# Basic stone
+- type: entity
+  parent: CELaddersDownBase
+  id: CELaddersDownStone
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: stone
+
+- type: entity
+  parent: CELaddersUpBase
+  id: CELaddersUpStone
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: stone
+
+
+- type: entity
+  parent: CELaddersDownStone
+  id: CELaddersDownStoneAutoLink
+  suffix: Stone
+  components:
+  - type: CEZLevelAutoPortal
+    zLevelOffset: -1 # Go into deep
+    otherSideProto: CELaddersUpStone
+
+- type: entity
+  parent: CELaddersUpStone
+  id: CELaddersUpStoneAutoLink
+  suffix: Stone
+  components:
+  - type: CEZLevelAutoPortal
+    zLevelOffset: 1 # Go onto surface
+    otherSideProto: CELaddersDownStone
+
+
+# Wood
+- type: entity
+  parent: CELaddersDownBase
+  id: CELaddersDownWood
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: wood
+
+- type: entity
+  parent: CELaddersUpBase
+  id: CELaddersUpWood
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: wood
+
+
+- type: entity
+  parent: CELaddersDownWood
+  id: CELaddersDownWoodAutoLink
+  suffix: Wood
+  components:
+  - type: CEZLevelAutoPortal
+    zLevelOffset: -1 # Go into deep
+    otherSideProto: CELaddersUpWood
+
+- type: entity
+  parent: CELaddersUpWood
+  id: CELaddersUpWoodAutoLink
+  suffix: Wood
+  components:
+  - type: CEZLevelAutoPortal
+    zLevelOffset: 1 # Go onto surface
+    otherSideProto: CELaddersDownWood
