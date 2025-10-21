@@ -3,7 +3,7 @@ using Content.Shared.Actions;
 
 namespace Content.Server._CE.ZLevels.EntitySystems;
 
-public sealed partial class CEStationZLevelsSystem
+public sealed partial class CEZLevelsSystem
 {
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     private void InitActions()

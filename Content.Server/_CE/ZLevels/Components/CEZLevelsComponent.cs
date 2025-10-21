@@ -8,8 +8,8 @@ namespace Content.Server._CE.ZLevels.Components;
 /// <summary>
 /// Initializes the z-level system by creating a series of linked maps
 /// </summary>
-[RegisterComponent, Access(typeof(CEStationZLevelsSystem), typeof(CECombineMapsIntoZLevelsCommand))]
-public sealed partial class CEStationZLevelsComponent : Component
+[RegisterComponent, Access(typeof(CEZLevelsSystem), typeof(CECombineMapsIntoZLevelsCommand))]
+public sealed partial class CEZLevelsComponent : Component
 {
     [DataField(required: true)]
     public int DefaultMapLevel = 0;

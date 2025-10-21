@@ -5,7 +5,7 @@ using Robust.Shared.Map;
 
 namespace Content.Server._CE.ZLevels.EntitySystems;
 
-public sealed partial class CEStationZLevelsSystem
+public sealed partial class CEZLevelsSystem
 {
     [Dependency] private readonly LinkedEntitySystem _linkedEntity = default!;
 

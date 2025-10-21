@@ -6,7 +6,7 @@ namespace Content.Server._CE.ZLevels.Components;
 /// <summary>
 /// automatically creates a linked portal at a different relative z-level, and then the component is removed
 /// </summary>
-[RegisterComponent, Access(typeof(CEStationZLevelsSystem))]
+[RegisterComponent, Access(typeof(CEZLevelsSystem))]
 public sealed partial class CEZLevelAutoPortalComponent : Component
 {
     /// <summary>

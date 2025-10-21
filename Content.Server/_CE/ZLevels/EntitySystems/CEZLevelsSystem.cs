@@ -10,7 +10,7 @@ using Robust.Shared.Map;
 
 namespace Content.Server._CE.ZLevels.EntitySystems;
 
-public sealed partial class CEStationZLevelsSystem : EntitySystem
+public sealed partial class CEZLevelsSystem : EntitySystem
 {
     [Dependency] private readonly MapSystem _map = default!;
     [Dependency] private readonly StationSystem _station = default!;
@@ -20,14 +20,15 @@ public sealed partial class CEStationZLevelsSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        InitializePortals();
+        InitializePortals(); //Delete and replace with some generic Z-level movements
         InitActions();
-        InitChasm();
+        InitChasm(); //Delete and replace with some generic Z-level movements
+        InitView();
 
-        SubscribeLocalEvent<CEStationZLevelsComponent, StationPostInitEvent>(OnStationPostInit);
+        SubscribeLocalEvent<CEZLevelsComponent, StationPostInitEvent>(OnStationPostInit);
     }
 
-    private void OnStationPostInit(Entity<CEStationZLevelsComponent> ent, ref StationPostInitEvent args)
+    private void OnStationPostInit(Entity<CEZLevelsComponent> ent, ref StationPostInitEvent args)
     {
         if (ent.Comp.Initialized)
             return;
@@ -80,7 +81,7 @@ public sealed partial class CEStationZLevelsSystem : EntitySystem
     public bool TryMapOffset(EntityUid mapUid, int offset, [NotNullWhen(true)] out MapId? mapId)
     {
         mapId = null;
-        var query = EntityQueryEnumerator<CEStationZLevelsComponent>();
+        var query = EntityQueryEnumerator<CEZLevelsComponent>();
         while (query.MoveNext(out var zLevel))
         {
             if (!zLevel.LevelEntities.TryGetValue(Transform(mapUid).MapID, out var currentLevel))

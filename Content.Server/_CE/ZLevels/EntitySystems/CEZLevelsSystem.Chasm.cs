@@ -7,7 +7,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.ZLevels.EntitySystems;
 
-public sealed partial class CEStationZLevelsSystem
+public sealed partial class CEZLevelsSystem
 {
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;

@@ -59,7 +59,7 @@ public sealed class CECombineMapsIntoZLevelsCommand : LocalizedCommands
         }
 
         //Check maps already in zLevel links
-        var query = _entities.EntityQueryEnumerator<CEStationZLevelsComponent>();
+        var query = _entities.EntityQueryEnumerator<CEZLevelsComponent>();
         while (query.MoveNext(out var uid, out var zLevelComp))
         {
             foreach (var findMap in maps)
@@ -74,7 +74,7 @@ public sealed class CECombineMapsIntoZLevelsCommand : LocalizedCommands
 
         //Ok, all check passed, we create new z-level network
         var zLevelEnt = _entities.Spawn();
-        _entities.EnsureComponent<CEStationZLevelsComponent>(zLevelEnt, out var newZLevelComp);
+        _entities.EnsureComponent<CEZLevelsComponent>(zLevelEnt, out var newZLevelComp);
 
         var count = 0;
         foreach (var map in maps)
