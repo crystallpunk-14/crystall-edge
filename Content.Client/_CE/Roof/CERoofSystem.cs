@@ -48,67 +48,67 @@ public sealed class CERoofSystem : EntitySystem
     {
         base.Update(frameTime);
 
+        CheckPlayer();
+        AdjustRoofs(frameTime);
+    }
+
+    private void CheckPlayer()
+    {
         var player = _playerManager.LocalEntity;
 
-        if (_ghostQuery.HasComp(player))
+        if (_ghostQuery.HasComp(player)) //Dont toggle roofs for ghosts
             return;
 
-        if (_xformQuery.TryComp(player, out var playerXform))
+        if (!_xformQuery.TryComp(player, out var playerXform))
+            return;
+
+        var grid = playerXform.GridUid;
+        if (grid == null || !TryComp<MapGridComponent>(grid, out var gridComp))
+            return;
+
+        var anchored = _map.GetAnchoredEntities(grid.Value, gridComp, playerXform.Coordinates);
+
+        var underRoof = false;
+        foreach (var ent in anchored)
         {
-            var grid = playerXform.GridUid;
-            if (grid == null || !TryComp<MapGridComponent>(grid, out var gridComp))
-                return;
+            if (!_roofQuery.HasComp(ent))
+                continue;
 
-            var anchored = _map.GetAnchoredEntities(grid.Value, gridComp, playerXform.Coordinates);
+            underRoof = true;
+            break;
+        }
 
-            var underRoof = false;
-            foreach (var ent in anchored)
+        _roofVisible = !underRoof;
+    }
+
+    private void AdjustRoofs(float frameTime)
+    {
+        var targetAlpha = (_roofVisible && !DisabledByCommand) ? TargetAlphaVisible : TargetAlphaHidden;
+        var change = TransitionRate * frameTime;
+
+        var query = AllEntityQuery<CERoofComponent>();
+        while (query.MoveNext(out var uid, out var roof))
+        {
+            if (!_spriteQuery.TryGetComponent(uid, out var sprite))
+                continue;
+
+            var currentAlpha = sprite.Color.A;
+            var newAlpha = targetAlpha > currentAlpha
+                ? Math.Min(currentAlpha + change, targetAlpha)
+                : Math.Max(currentAlpha - change, targetAlpha);
+
+            if (currentAlpha.Equals(newAlpha))
+                continue;
+
+            _sprite.SetColor(uid, sprite.Color.WithAlpha(newAlpha));
+
+            if (newAlpha <= 0.01f && sprite.Visible)
             {
-                if (!_roofQuery.HasComp(ent))
-                    continue;
-
-                underRoof = true;
-                break;
+                _sprite.SetVisible(uid, false);
             }
-
-            if (underRoof && _roofVisible)
+            else if (newAlpha > 0.01f && !sprite.Visible)
             {
-                _roofVisible = false;
-            }
-            if (!underRoof && !_roofVisible)
-            {
-                _roofVisible = true;
-            }
-
-            var targetAlpha = (_roofVisible && !DisabledByCommand) ? TargetAlphaVisible : TargetAlphaHidden;
-            var change = TransitionRate * frameTime;
-
-            var query = AllEntityQuery<CERoofComponent>();
-            while (query.MoveNext(out var uid, out var roof))
-            {
-                if (!_spriteQuery.TryGetComponent(uid, out var sprite))
-                    continue;
-
-                var currentAlpha = sprite.Color.A;
-                var newAlpha = targetAlpha > currentAlpha
-                    ? Math.Min(currentAlpha + change, targetAlpha)
-                    : Math.Max(currentAlpha - change, targetAlpha);
-
-                if (!currentAlpha.Equals(newAlpha))
-                {
-                    _sprite.SetColor(uid, sprite.Color.WithAlpha(newAlpha));
-
-                    if (newAlpha <= 0.01f && sprite.Visible)
-                    {
-                        _sprite.SetVisible(uid, false);
-                        roof.IsTransitioning = false;
-                    }
-                    else if (newAlpha > 0.01f && !sprite.Visible)
-                    {
-                        _sprite.SetVisible(uid, true);
-                        roof.IsTransitioning = true;
-                    }
-                }
+                _sprite.SetVisible(uid, true);
             }
         }
     }
@@ -127,7 +127,6 @@ public sealed class CERoofSystem : EntitySystem
         if (!TryComp<SpriteComponent>(ent, out var sprite))
             return;
 
-        ent.Comp.OriginalAlpha = sprite.Color.A;
         _sprite.SetColor(ent.Owner, sprite.Color.WithAlpha(RoofVisibility ? TargetAlphaVisible : TargetAlphaHidden));
         _sprite.SetVisible(ent.Owner, RoofVisibility);
     }
