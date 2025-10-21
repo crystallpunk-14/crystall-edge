@@ -79,20 +79,22 @@ public sealed partial class CEZLevelsSystem
         if (map is null)
             return;
 
-        if (!TryMapDown(map.Value, out var mapBelow))
-            return;
-
+        var mapsBelow = GetAllMapsBelow(map.Value);
         var globalPos = _transform.GetWorldPosition(xform);
 
-        var newEye = SpawnAtPosition(null, new EntityCoordinates(_map.GetMap(mapBelow.Value), globalPos));
-        Transform(newEye).GridTraversal = false;
-        AddComp(newEye,
-            new CEZLevelEyeComponent
-            {
-                Target = actor.PlayerSession,
-            }
-        );
+        foreach (var mapBelow in mapsBelow)
+        {
+            var newEye = SpawnAtPosition(null, new EntityCoordinates(mapBelow, globalPos));
 
-        eyes.Add(newEye);
+            Transform(newEye).GridTraversal = false;
+            AddComp(newEye,
+                new CEZLevelEyeComponent
+                {
+                    Target = actor.PlayerSession,
+                }
+            );
+
+            eyes.Add(newEye);
+        }
     }
 }

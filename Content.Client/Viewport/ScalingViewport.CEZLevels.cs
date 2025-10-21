@@ -22,24 +22,29 @@ public sealed partial class ScalingViewport
     /// <summary>
     /// Из входящего списка карт фильтруем только те, что требуют отрисовки.
     /// </summary>
-    public void GetDrawingMapList(List<EntityUid> sourceList, EntityUid currentMap, out List<EntityUid> mapList)
+    public List<EntityUid> GetFilteredMapList(List<EntityUid> sourceList, EntityUid currentMap)
     {
-        mapList = new List<EntityUid>(sourceList.Count);
+        var mapList = new List<EntityUid>();
 
         if (_eye is null)
-            return;
+            return mapList;
+
+        //Create inversed list from current map to bottom
+        var invertedSourceList = new List<EntityUid>(sourceList);
+        invertedSourceList.Reverse();
+
 
         var mapIdx = sourceList.IndexOf(currentMap);
         if (mapIdx < 0)
-            return;
+            return mapList;
 
         for (var i = mapIdx; i >= 0; i--)
         {
             var targetMap = sourceList[i];
             mapList.Add(targetMap);
 
-            if (!TryFindEmptyTiles(targetMap))
-                break;
+            //if (!TryFindEmptyTiles(targetMap))
+            //    break;
         }
 
         // Reverse a new list
@@ -53,6 +58,8 @@ public sealed partial class ScalingViewport
 
             mapList = tempList;
         }
+
+        return mapList;
     }
 
     /// <summary>
@@ -119,11 +126,13 @@ public sealed partial class ScalingViewport
         if (drawMaps.Count == 0)
             return;
 
-        var depthCounter = 0;
-        foreach (var toDraw in drawMaps)
+        for (int i = 0; i < drawMaps.Count; i++)
         {
-            // Configure viewport for this layer
+            var toDraw = drawMaps[i];
             var mapComp = _entityManager.GetComponent<MapComponent>(toDraw);
+
+            var depthCounter = drawMaps.Count - i; // reversed depth index
+
             var pos = new MapCoordinates(_eye.Position.Position, mapComp.MapId);
 
             var zEye = new ZEye
@@ -131,10 +140,9 @@ public sealed partial class ScalingViewport
                 Position = pos,
                 DrawFov = false,
                 DrawLight = _eye.DrawLight,
-                Offset = _eye.Offset + new Vector2(0f, 1f),
+                Offset = _eye.Offset + new Vector2(0f, depthCounter),
                 Rotation = _eye.Rotation,
                 Scale = _eye.Scale,
-                //Z Eye settings
                 Depth = depthCounter
             };
 
@@ -143,8 +151,6 @@ public sealed partial class ScalingViewport
             viewport.Render();
 
             handle.DrawTextureRect(viewport.RenderTarget.Texture, drawBox);
-
-            depthCounter++;
         }
     }
 
