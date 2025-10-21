@@ -59,7 +59,7 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
 
             foreach (var (map, depth) in zLevel.ZLevels)
             {
-                if (depth > currentDepth)
+                if (depth >= currentDepth)
                     continue;
 
                 mapIds.Add(_map.GetMap(map));

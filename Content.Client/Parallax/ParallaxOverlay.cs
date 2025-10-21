@@ -7,6 +7,7 @@ using Robust.Client.Graphics;
 using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
+using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
@@ -34,7 +35,7 @@ public sealed class ParallaxOverlay : Overlay
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
     {
-        if (args.MapId == MapId.Nullspace || _entManager.HasComponent<BiomeComponent>(_mapSystem.GetMapOrInvalid(args.MapId)))
+        if (args.MapId == MapId.Nullspace || _entManager.HasComponent<MapGridComponent>(_mapSystem.GetMapOrInvalid(args.MapId))) //CrystallEdge disable parallax for mapgrids
             return false;
 
         return true;

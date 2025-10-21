@@ -131,7 +131,7 @@ entities:
     - type: MapLight
       ambientLightColor: '#75BCFFFF'
     - type: CEMurkedMap
-      intensity: 1
+      intensity: 0
     - type: Forensics
       residues: []
       dnas: []

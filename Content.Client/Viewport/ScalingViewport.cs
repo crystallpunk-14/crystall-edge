@@ -19,7 +19,7 @@ namespace Content.Client.Viewport
     /// <summary>
     ///     Viewport control that has a fixed viewport size and scales it appropriately.
     /// </summary>
-    public sealed class ScalingViewport : Control, IViewportControl
+    public sealed partial class ScalingViewport : Control, IViewportControl //CrystallEdge partial part for ZLevels rendering
     {
         [Dependency] private readonly IClyde _clyde = default!;
         [Dependency] private readonly IEntityManager _entityManager = default!;
@@ -144,34 +144,20 @@ namespace Content.Client.Viewport
             _inputManager.ViewportKeyEvent(this, args);
         }
 
-        protected override void Draw(IRenderHandle handle)
+        protected override void Draw(IRenderHandle handle) //CrystallEdge major refactor: add Zlevel rendering support
         {
+            _fallbackEye = _eye;
+
             EnsureViewportCreated();
 
             DebugTools.AssertNotNull(_viewport);
 
-            _viewport!.Render();
+            // Cache frequently accessed components/systems
+            _xformQuery ??= _entityManager.GetEntityQuery<TransformComponent>();
 
-            if (_queuedScreenshots.Count != 0)
-            {
-                var callbacks = _queuedScreenshots.ToArray();
-
-                _viewport.RenderTarget.CopyPixelsToMemory<Rgba32>(image =>
-                {
-                    foreach (var callback in callbacks)
-                    {
-                        callback(image);
-                    }
-                });
-
-                _queuedScreenshots.Clear();
-            }
-
-            var drawBox = GetDrawBox();
-            var drawBoxGlobal = drawBox.Translated(GlobalPixelPosition);
-            _viewport.RenderScreenOverlaysBelow(handle, this, drawBoxGlobal);
-            handle.DrawingHandleScreen.DrawTextureRect(_viewport.RenderTarget.Texture, drawBox);
-            _viewport.RenderScreenOverlaysAbove(handle, this, drawBoxGlobal);
+            // Process multi-Z rendering
+            RenderZLevels(handle, _viewport!);
+            RenderFinalOutput(handle, _viewport!);
         }
 
         public void Screenshot(CopyPixelsDelegate<Rgba32> callback)
