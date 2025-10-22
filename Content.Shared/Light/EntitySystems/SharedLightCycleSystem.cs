@@ -122,8 +122,7 @@ public abstract class SharedLightCycleSystem : EntitySystem
         float exponent,
         float phase = 0)
     {
-        //var sen = MathF.Pow(MathF.Sin((MathF.PI * (phase + x)) / waveLength), exponent);
-        var sen = MathF.Pow(MathF.Cos((MathF.PI * (phase + x)) / waveLength), exponent); //CP14 edited light curve calculation
+        var sen = MathF.Pow(MathF.Sin((MathF.PI * (phase + x)) / waveLength), exponent);
 
         return (crest - shift) * sen + shift;
     }
