@@ -5,7 +5,6 @@ using Content.Server.Station.Events;
 using Content.Server.Station.Systems;
 using Content.Shared._CE.ZLevels;
 using Content.Shared.Station.Components;
-using JetBrains.Annotations;
 using Robust.Server.GameObjects;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Map;
@@ -24,7 +23,6 @@ public sealed partial class CEZLevelsSystem : CESharedZLevelsSystem
         base.Initialize();
         InitializePortals(); //Delete and replace with some generic Z-level movements
         InitActions();
-        InitChasm(); //Delete and replace with some generic Z-level movements
         InitView();
         InitAPI();
 

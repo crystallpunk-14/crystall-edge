@@ -4,7 +4,6 @@ using Content.Shared.StepTrigger.Systems;
 using Content.Shared.Weapons.Misc;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
-using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 
 namespace Content.Shared.Chasm;
@@ -43,14 +42,6 @@ public sealed class ChasmSystem : EntitySystem
             if (_timing.CurTime < chasm.NextDeletionTime)
                 continue;
 
-            //CrystallEdge
-            var ev = new CEChasmFallingEvent();
-            RaiseLocalEvent(uid, ev);
-
-            if (ev.Handled)
-                continue;
-            //CrystallEdge end
-
             QueueDel(uid);
         }
     }
@@ -88,17 +79,6 @@ public sealed class ChasmSystem : EntitySystem
 
     private void OnUpdateCanMove(EntityUid uid, ChasmFallingComponent component, UpdateCanMoveEvent args)
     {
-        //CrystallEdge
-        if (!component.Running)
-            return;
-        //CrystallEdge
-
         args.Cancel();
     }
 }
-
-/// <summary>
-/// Allows other systems to independently process what happens during a fall into an abyss
-/// </summary>
-[Serializable, NetSerializable]
-public sealed class CEChasmFallingEvent() : HandledEntityEventArgs { }
