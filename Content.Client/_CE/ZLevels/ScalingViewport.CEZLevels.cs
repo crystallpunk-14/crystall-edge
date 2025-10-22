@@ -107,6 +107,8 @@ public sealed partial class ScalingViewport
         if (_eye is null)
             return;
 
+        _fallbackEye = _eye;
+
         // Cache frequently accessed components/systems
         _xformQuery ??= _entityManager.GetEntityQuery<TransformComponent>();
 

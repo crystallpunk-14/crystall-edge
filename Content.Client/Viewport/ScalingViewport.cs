@@ -146,14 +146,13 @@ namespace Content.Client.Viewport
 
         protected override void Draw(IRenderHandle handle)
         {
-            _fallbackEye = _eye; //CrystallEdge zLevel support
-
             EnsureViewportCreated();
 
             DebugTools.AssertNotNull(_viewport);
 
-            // Process multi-Z rendering
+            // CrystallEdge Process multi-Z rendering
             RenderZLevels(handle, _viewport!);
+            // CrystallEdge end
 
             _viewport!.Render();
 
