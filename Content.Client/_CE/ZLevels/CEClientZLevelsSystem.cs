@@ -1,4 +1,5 @@
 using Content.Shared._CE.ZLevels;
+using Content.Shared._CE.ZLevels.EntitySystems;
 using Robust.Client.Graphics;
 
 namespace Content.Client._CE.ZLevels;

@@ -8,25 +8,25 @@ public sealed partial class CEZLevelsSystem
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     private void InitActions()
     {
-        SubscribeLocalEvent<CEZLevelMoverComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<CEZLevelMoverComponent, ComponentRemove>(OnRemove);
-        SubscribeLocalEvent<CEZLevelMoverComponent, CEZLevelActionUp>(OnZLevelUp);
-        SubscribeLocalEvent<CEZLevelMoverComponent, CEZLevelActionDown>(OnZLevelDown);
+        SubscribeLocalEvent<CEZLevelGhostMoverComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<CEZLevelGhostMoverComponent, ComponentRemove>(OnRemove);
+        SubscribeLocalEvent<CEZLevelGhostMoverComponent, CEZLevelActionUp>(OnZLevelUp);
+        SubscribeLocalEvent<CEZLevelGhostMoverComponent, CEZLevelActionDown>(OnZLevelDown);
     }
 
-    private void OnMapInit(Entity<CEZLevelMoverComponent> ent, ref MapInitEvent args)
+    private void OnMapInit(Entity<CEZLevelGhostMoverComponent> ent, ref MapInitEvent args)
     {
         _actions.AddAction(ent, ref ent.Comp.ZLevelUpActionEntity, ent.Comp.UpActionProto);
         _actions.AddAction(ent, ref ent.Comp.ZLevelDownActionEntity, ent.Comp.DownActionProto);
     }
 
-    private void OnRemove(Entity<CEZLevelMoverComponent> ent, ref ComponentRemove args)
+    private void OnRemove(Entity<CEZLevelGhostMoverComponent> ent, ref ComponentRemove args)
     {
         _actions.RemoveAction(ent.Comp.ZLevelUpActionEntity);
         _actions.RemoveAction(ent.Comp.ZLevelDownActionEntity);
     }
 
-    private void OnZLevelDown(Entity<CEZLevelMoverComponent> ent, ref CEZLevelActionDown args)
+    private void OnZLevelDown(Entity<CEZLevelGhostMoverComponent> ent, ref CEZLevelActionDown args)
     {
         if (args.Handled)
             return;
@@ -34,7 +34,7 @@ public sealed partial class CEZLevelsSystem
         args.Handled = TryMoveDown(ent);
     }
 
-    private void OnZLevelUp(Entity<CEZLevelMoverComponent> ent, ref CEZLevelActionUp args)
+    private void OnZLevelUp(Entity<CEZLevelGhostMoverComponent> ent, ref CEZLevelActionUp args)
     {
         if (args.Handled)
             return;

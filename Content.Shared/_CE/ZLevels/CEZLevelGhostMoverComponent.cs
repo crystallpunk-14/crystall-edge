@@ -8,7 +8,7 @@ namespace Content.Shared._CE.ZLevels;
 /// component that allows you to quickly move between Z levels
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-public sealed partial class CEZLevelMoverComponent : Component
+public sealed partial class CEZLevelGhostMoverComponent : Component
 {
     [DataField]
     public EntProtoId UpActionProto = "CEActionZLevelUp";

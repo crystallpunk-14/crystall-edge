@@ -149,7 +149,6 @@ public sealed partial class ScalingViewport
             viewport.Eye = zEye;
             viewport.ClearColor = i == 0 ? Color.Black : null;
             viewport.Render();
-
             handle.DrawTextureRect(viewport.RenderTarget.Texture, drawBox);
         }
 

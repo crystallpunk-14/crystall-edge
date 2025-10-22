@@ -1,7 +1,7 @@
 using Content.Server._CE.ZLevels.Components;
 using Content.Server.Station.Events;
 using Content.Server.Station.Systems;
-using Content.Shared._CE.ZLevels;
+using Content.Shared._CE.ZLevels.EntitySystems;
 using Content.Shared.Station.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.EntitySerialization.Systems;

@@ -2,11 +2,18 @@ using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 using Robust.Shared.Map;
 
-namespace Content.Shared._CE.ZLevels;
+namespace Content.Shared._CE.ZLevels.EntitySystems;
 
 public abstract partial class CESharedZLevelsSystem : EntitySystem
 {
     [Dependency] private readonly SharedMapSystem _map = default!;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        InitMovement();
+    }
 
     /// <summary>
     /// Checks whether the map is in the zLevels network. If so, returns true and the current depth + Entity of the current zLevels network.
