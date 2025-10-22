@@ -1,4 +1,5 @@
 using Content.Server._CE.PVS;
+using Content.Server._CE.ZLevels.EntitySystems;
 using Content.Server.Administration;
 using Content.Shared._CE.ZLevels;
 using Content.Shared.Administration;
@@ -12,6 +13,7 @@ public sealed class CECombineMapsIntoZLevelsCommand : LocalizedCommands
 {
     [Dependency] private readonly IEntityManager _entities = default!;
     [Dependency] private readonly IMapManager _map = default!;
+    private CEZLevelsSystem _zLevels = default!;
 
     private const string Name = "zlevelcombine";
     public override string Command => Name;
@@ -58,34 +60,25 @@ public sealed class CECombineMapsIntoZLevelsCommand : LocalizedCommands
             maps.Add(mapId);
         }
 
-        //Check maps already in zLevel links
-        var query = _entities.EntityQueryEnumerator<CEZLevelsComponent>();
-        while (query.MoveNext(out var uid, out var zLevelComp))
+        _zLevels = _entities.System<CEZLevelsSystem>();
+
+        var network = _zLevels.CreateZNetwork();
+        var counter = 0;
+        var success = true;
+        foreach (var findMap in maps)
         {
-            foreach (var findMap in maps)
+            if (!_zLevels.TryAddMapIntoZNetwork(network, findMap, counter))
             {
-                var zlevels = zLevelComp.ZLevels;
-                if (zlevels.ContainsKey(findMap))
-                {
-                    shell.WriteError($"{findMap} already in z-level network! Z-Network Entity: {uid}");
-                    return;
-                }
+                shell.WriteError($"Unable to add map {findMap} to the new network!");
+                success = false;
             }
+
+            counter++;
         }
 
-        //Ok, all check passed, we create new z-level network
-        var zLevelEnt = _entities.Spawn();
-        _entities.EnsureComponent<CEZLevelsComponent>(zLevelEnt, out var newZLevelComp);
-        _entities.EnsureComponent<CEPvsOverrideComponent>(zLevelEnt);
-
-        var count = 0;
-        foreach (var map in maps)
-        {
-            var zlevels = newZLevelComp.ZLevels;
-            zlevels.Add(map, count);
-            count++;
-        }
-
-        shell.WriteLine($"Successfully created z-level network! Z-Network entity: {zLevelEnt}");
+        if (success)
+            shell.WriteLine($"Created z-level network! Z-Network entity: {network}");
+        else
+            shell.WriteLine($"Created z-level network {network}, but something went wrong!");
     }
 }

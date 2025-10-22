@@ -27,6 +27,15 @@
         - type: StationJobs
           availableJobs:
             CETownfolk: [ -1, -1 ]
+        - type: CEStationZLevels
+          defaultMapLevel: 0
+          levels:
+            1:
+              path: /Maps/_CE/Dev2.yml
+            2:
+              path: /Maps/_CE/Dev2.yml
+            3:
+              path: /Maps/_CE/Dev2.yml
         - type: CEStationSpawnerDistribution
           spawns:
             CECoin: !type:AllSelector
