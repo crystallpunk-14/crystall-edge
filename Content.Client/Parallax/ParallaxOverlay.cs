@@ -35,7 +35,9 @@ public sealed class ParallaxOverlay : Overlay
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
     {
-        if (args.MapId == MapId.Nullspace || _entManager.HasComponent<MapGridComponent>(_mapSystem.GetMapOrInvalid(args.MapId))) //CrystallEdge disable parallax for mapgrids
+        return false; //CrystallEdge - we dont draw parallax because we have ZLevels
+
+        if (args.MapId == MapId.Nullspace || _entManager.HasComponent<BiomeComponent>(_mapSystem.GetMapOrInvalid(args.MapId)))
             return false;
 
         return true;
