@@ -5,7 +5,7 @@ using Robust.Shared.Utility;
 namespace Content.Shared._CE.ZLevels;
 
 /// <summary>
-///
+/// tracker that tracks all maps added to the zLevel network. Usually entity in Nullspace,
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState, Access(typeof(CESharedZLevelsSystem))]
 public sealed partial class CEZLevelsComponent : Component

@@ -29,6 +29,9 @@ public sealed partial class CEZLevelsSystem : CESharedZLevelsSystem
         SubscribeLocalEvent<CEStationZLevelsComponent, StationPostInitEvent>(OnStationPostInit);
     }
 
+    /// <summary>
+    /// creates a new entity zLevelNetwork
+    /// </summary>
     public Entity<CEZLevelsComponent> CreateZNetwork()
     {
         var ent = Spawn();
@@ -39,6 +42,9 @@ public sealed partial class CEZLevelsSystem : CESharedZLevelsSystem
         return (ent, zLevel);
     }
 
+    /// <summary>
+    /// attempts to add the specified map to the zNetwork network at the specified depth
+    /// </summary>
     public bool TryAddMapIntoZNetwork(Entity<CEZLevelsComponent> network, MapId mapId, int depth)
     {
         if (network.Comp.ZLevels.ContainsKey(mapId))

@@ -19,7 +19,7 @@ public sealed partial class ScalingViewport
     private IEye? _fallbackEye;
 
     /// <summary>
-    /// Из входящего списка карт фильтруем только те, что требуют отрисовки.
+    /// From the incoming list of maps, we filter only those that require rendering.
     /// </summary>
     public List<EntityUid> GetFilteredMapList(List<EntityUid> sourceList, EntityUid currentMap)
     {
@@ -57,7 +57,8 @@ public sealed partial class ScalingViewport
     }
 
     /// <summary>
-    /// Ищем хотя бы 1 пустой тайл, на экране. Используется, чтобы убеждаться, что z-уровни вообще имеет смысл рисовать, что их видно.
+    /// We are looking for at least one empty tile on the screen.
+    /// This is used to ensure that it makes sense to draw the z-planes and that they are visible.
     /// </summary>
     public bool TryFindEmptyTiles(EntityUid mapUid)
     {
