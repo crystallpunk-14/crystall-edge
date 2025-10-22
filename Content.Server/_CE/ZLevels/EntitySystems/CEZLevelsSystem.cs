@@ -24,70 +24,9 @@ public sealed partial class CEZLevelsSystem : CESharedZLevelsSystem
         InitializePortals(); //Delete and replace with some generic Z-level movements
         InitActions();
         InitView();
-        InitAPI();
+        InitApi();
 
         SubscribeLocalEvent<CEStationZLevelsComponent, StationPostInitEvent>(OnStationPostInit);
-    }
-
-    /// <summary>
-    /// creates a new entity zLevelNetwork
-    /// </summary>
-    public Entity<CEZLevelsComponent> CreateZNetwork()
-    {
-        var ent = Spawn();
-
-        var zLevel = EnsureComp<CEZLevelsComponent>(ent);
-        EnsureComp<CEPvsOverrideComponent>(ent);
-
-        return (ent, zLevel);
-    }
-
-    /// <summary>
-    /// attempts to add the specified map to the zNetwork network at the specified depth
-    /// </summary>
-    public bool TryAddMapIntoZNetwork(Entity<CEZLevelsComponent> network, MapId mapId, int depth)
-    {
-        if (network.Comp.ZLevels.ContainsKey(mapId))
-        {
-            Log.Error($"Failed to add map {mapId} to ZLevelNetwork {network}: This map is already in this network.");
-            return false;
-        }
-
-        if (TryGetZNetwork(mapId, out _, out var otherNetwork))
-        {
-            Log.Error($"Failed attempt to add map {mapId} to ZLevelNetwork {network}: This map is already in another network {otherNetwork}.");
-            return false;
-        }
-
-        if (network.Comp.ZLevels.ContainsValue(depth))
-        {
-            Log.Error($"Failed attempt to add map {mapId} to ZLevelNetwork {network} at depth {depth}: This depth is already occupied.");
-            return false;
-        }
-
-        network.Comp.ZLevels.Add(mapId, depth);
-        return true;
-    }
-
-    /// <summary>
-    /// Checks whether the map is in the zLevels network. If so, returns true and the current depth + Entity of the current zLevels network.
-    /// </summary>
-    public bool TryGetZNetwork(MapId mapId,[NotNullWhen(true)] out int? depth, [NotNullWhen(true)] out Entity<CEZLevelsComponent>? zLevel)
-    {
-        depth = null;
-        zLevel = null;
-        var query = EntityQueryEnumerator<CEZLevelsComponent>();
-        while (query.MoveNext(out var uid, out var zLevelComp))
-        {
-            if (zLevelComp.ZLevels.TryGetValue(mapId, out var foundedDepth))
-            {
-                depth = foundedDepth;
-                zLevel = (uid, zLevelComp);
-                return true;
-            }
-        }
-
-        return false;
     }
 
     private void OnStationPostInit(Entity<CEStationZLevelsComponent> ent, ref StationPostInitEvent args)

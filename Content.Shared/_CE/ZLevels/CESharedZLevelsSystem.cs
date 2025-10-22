@@ -9,6 +9,28 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
 {
     [Dependency] private readonly SharedMapSystem _map = default!;
 
+    /// <summary>
+    /// Checks whether the map is in the zLevels network. If so, returns true and the current depth + Entity of the current zLevels network.
+    /// </summary>
+    [PublicAPI]
+    public bool TryGetZNetwork(MapId mapId,[NotNullWhen(true)] out int? depth, [NotNullWhen(true)] out Entity<CEZLevelsComponent>? zLevel)
+    {
+        depth = null;
+        zLevel = null;
+        var query = EntityQueryEnumerator<CEZLevelsComponent>();
+        while (query.MoveNext(out var uid, out var zLevelComp))
+        {
+            if (zLevelComp.ZLevels.TryGetValue(mapId, out var foundedDepth))
+            {
+                depth = foundedDepth;
+                zLevel = (uid, zLevelComp);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     [PublicAPI]
     public bool TryMapOffset(EntityUid mapUid, int offset, [NotNullWhen(true)] out MapId? mapId,  [NotNullWhen(true)] out EntityUid? outputMapUid)
     {
