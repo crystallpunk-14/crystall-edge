@@ -144,20 +144,39 @@ namespace Content.Client.Viewport
             _inputManager.ViewportKeyEvent(this, args);
         }
 
-        protected override void Draw(IRenderHandle handle) //CrystallEdge major refactor: add Zlevel rendering support
+        protected override void Draw(IRenderHandle handle)
         {
-            _fallbackEye = _eye;
+            _fallbackEye = _eye; //CrystallEdge zLevel support
 
             EnsureViewportCreated();
 
             DebugTools.AssertNotNull(_viewport);
 
-            // Cache frequently accessed components/systems
-            _xformQuery ??= _entityManager.GetEntityQuery<TransformComponent>();
-
             // Process multi-Z rendering
             RenderZLevels(handle, _viewport!);
-            RenderFinalOutput(handle, _viewport!);
+
+            _viewport!.Render();
+
+            if (_queuedScreenshots.Count != 0)
+            {
+                var callbacks = _queuedScreenshots.ToArray();
+
+                _viewport.RenderTarget.CopyPixelsToMemory<Rgba32>(image =>
+                {
+                    foreach (var callback in callbacks)
+                    {
+                        callback(image);
+                    }
+                });
+
+                _queuedScreenshots.Clear();
+            }
+
+            var drawBox = GetDrawBox();
+            var drawBoxGlobal = drawBox.Translated(GlobalPixelPosition);
+            _viewport.RenderScreenOverlaysBelow(handle, this, drawBoxGlobal);
+            handle.DrawingHandleScreen.DrawTextureRect(_viewport.RenderTarget.Texture, drawBox);
+            _viewport.RenderScreenOverlaysAbove(handle, this, drawBoxGlobal);
         }
 
         public void Screenshot(CopyPixelsDelegate<Rgba32> callback)

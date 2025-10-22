@@ -4,7 +4,6 @@ using Robust.Client.Graphics;
 using Robust.Shared.Graphics;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
-using SixLabors.ImageSharp.PixelFormats;
 
 namespace Content.Client.Viewport;
 
@@ -13,7 +12,7 @@ public sealed partial class ScalingViewport
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly IEyeManager _eyeManager = default!;
 
-    private CEClientZLevelsSystem? _zLevels = default!;
+    private CEClientZLevelsSystem? _zLevels;
 
     private EntityQuery<TransformComponent>? _xformQuery;
 
@@ -28,11 +27,6 @@ public sealed partial class ScalingViewport
 
         if (_eye is null)
             return mapList;
-
-        //Create inversed list from current map to bottom
-        var invertedSourceList = new List<EntityUid>(sourceList);
-        invertedSourceList.Reverse();
-
 
         var mapIdx = sourceList.IndexOf(currentMap);
         if (mapIdx < 0)
@@ -113,6 +107,9 @@ public sealed partial class ScalingViewport
         if (_eye is null)
             return;
 
+        // Cache frequently accessed components/systems
+        _xformQuery ??= _entityManager.GetEntityQuery<TransformComponent>();
+
         var drawBox = GetDrawBox();
         var handle = renderHandle.DrawingHandleScreen;
 
@@ -126,12 +123,12 @@ public sealed partial class ScalingViewport
         if (drawMaps.Count == 0)
             return;
 
-        for (int i = 0; i < drawMaps.Count; i++)
+        for (var i = 0; i < drawMaps.Count; i++)
         {
             var toDraw = drawMaps[i];
             var mapComp = _entityManager.GetComponent<MapComponent>(toDraw);
 
-            var depthCounter = drawMaps.Count - i; // reversed depth index
+            var depth = drawMaps.Count - i; // reversed depth index
 
             var pos = new MapCoordinates(_eye.Position.Position, mapComp.MapId);
 
@@ -140,54 +137,23 @@ public sealed partial class ScalingViewport
                 Position = pos,
                 DrawFov = false,
                 DrawLight = _eye.DrawLight,
-                Offset = _eye.Offset + new Vector2(0f, depthCounter),
+                Offset = _eye.Offset + new Vector2(0f, depth),
                 Rotation = _eye.Rotation,
                 Scale = _eye.Scale,
-                Depth = depthCounter
+                Depth = depth,
             };
 
             viewport.Eye = zEye;
-            viewport.ClearColor = null;
+            viewport.ClearColor = i == 0 ? Color.Black : null;
             viewport.Render();
 
             handle.DrawTextureRect(viewport.RenderTarget.Texture, drawBox);
         }
-    }
-
-    /// <summary>
-    /// Рисуем текущий z-уровень, как это сделано в ванильном вьюпорте. По сути, финальная функция которая должна быть вызвана в Draw()
-    /// </summary>
-    private void RenderFinalOutput(IRenderHandle renderHandle,
-        IClydeViewport viewport)
-    {
-        var drawBox = GetDrawBox();
-        var drawBoxGlobal = drawBox.Translated(GlobalPixelPosition);
-        var handle = renderHandle.DrawingHandleScreen;
 
         // Restore the Eye
         Eye = _fallbackEye;
-
         viewport.ClearColor = null;
         viewport.Eye = Eye;
-        viewport.Render();
-
-        if (_queuedScreenshots.Count > 0)
-        {
-            var callbacks = _queuedScreenshots.ToArray();
-            _queuedScreenshots.Clear();
-
-            viewport.RenderTarget.CopyPixelsToMemory<Rgba32>(image =>
-            {
-                foreach (var callback in callbacks)
-                {
-                    callback(image);
-                }
-            });
-        }
-
-        //viewport.RenderScreenOverlaysBelow(renderHandle, this, drawBoxGlobal);
-        handle.DrawTextureRect(viewport.RenderTarget.Texture, drawBox);
-        //viewport.RenderScreenOverlaysAbove(renderHandle, this, drawBoxGlobal);
     }
 
     //FIXME: This is nasty!
