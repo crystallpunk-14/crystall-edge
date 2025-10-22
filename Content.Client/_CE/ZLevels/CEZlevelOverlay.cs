@@ -1,3 +1,4 @@
+using System.Numerics;
 using Content.Client.Viewport;
 using Robust.Client.Graphics;
 using Robust.Shared.Enums;
@@ -28,7 +29,7 @@ public sealed class CEZLevelOverlay : Overlay
         //if (args.MapId != MapId.Nullspace && _entManager.HasComponent<ZStackMemberComponent>(_mapManager.GetMapEntityId(args.MapId)))
         //    return true;
 
-        return false;
+        return true;
     }
 
     protected override void Draw(in OverlayDrawArgs args)
@@ -36,16 +37,15 @@ public sealed class CEZLevelOverlay : Overlay
         if (args.MapId == MapId.Nullspace)
             return;
 
-        if (ScreenTexture == null)
+        if (ScreenTexture == null || args.Viewport.Eye == null)
             return;
-
-        var worldHandle = args.WorldHandle;
-
-        worldHandle.DrawRect(args.WorldAABB, Color.Black.WithAlpha(0.5f));
 
         if (args.Viewport.Eye is not ScalingViewport.ZEye)
             return;
 
+        _blurShader?.SetParameter("SCREEN_TEXTURE", ScreenTexture);
+
+        var worldHandle = args.WorldHandle;
         worldHandle.UseShader(_blurShader);
         worldHandle.DrawRect(args.WorldAABB, Color.White);
         worldHandle.UseShader(null);
