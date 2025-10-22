@@ -87,7 +87,7 @@ public sealed partial class CEZLevelsSystem : CESharedZLevelsSystem
         if (map is null)
             return false;
 
-        if (!TryMapOffset(map.Value, offset, out var targetMap))
+        if (!TryMapOffset(map.Value, offset, out var targetMap, out _))
             return false;
 
         _transform.SetMapCoordinates(ent, new MapCoordinates(_transform.GetWorldPosition(ent), targetMap.Value));

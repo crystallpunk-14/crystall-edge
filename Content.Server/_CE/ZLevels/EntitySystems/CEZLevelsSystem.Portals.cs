@@ -35,7 +35,7 @@ public sealed partial class CEZLevelsSystem
         if (mapId is null)
             return;
 
-        if (!TryMapOffset(mapId.Value, autoPortal.Comp.ZLevelOffset, out var offsetMap))
+        if (!TryMapOffset(mapId.Value, autoPortal.Comp.ZLevelOffset, out var offsetMap, out _))
             return;
 
         var currentWorldPos = _transform.GetWorldPosition(autoPortal);

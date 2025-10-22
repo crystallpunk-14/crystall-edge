@@ -16,9 +16,6 @@ public sealed partial class CEZLevelsSystem
         SubscribeLocalEvent<PlayerAttachedEvent>(OnPlayerAttached);
         SubscribeLocalEvent<PlayerDetachedEvent>(OnPlayerDetached);
 
-        SubscribeLocalEvent<CEZLevelEyeComponent, ComponentStartup>(ZLevelEyeStartup);
-        SubscribeLocalEvent<CEZLevelEyeComponent, ComponentShutdown>(ZLevelEyeShutdown);
-
         SubscribeLocalEvent<CEZLevelViewerComponent, EntParentChangedMessage>(OnViewerParentChange);
         SubscribeLocalEvent<CEZLevelViewerComponent, MoveEvent>(OnViewerMove);
     }
@@ -40,22 +37,6 @@ public sealed partial class CEZLevelsSystem
     private void OnPlayerDetached(PlayerDetachedEvent ev)
     {
         RemComp<CEZLevelViewerComponent>(ev.Entity);
-    }
-
-    private void ZLevelEyeStartup(Entity<CEZLevelEyeComponent> ent, ref ComponentStartup args)
-    {
-        if (ent.Comp.Target is null)
-            return;
-
-        _viewSubscriber.AddViewSubscriber(ent, ent.Comp.Target);
-    }
-
-    private void ZLevelEyeShutdown(Entity<CEZLevelEyeComponent> ent, ref ComponentShutdown args)
-    {
-        if (ent.Comp.Target is null)
-            return;
-
-        _viewSubscriber.RemoveViewSubscriber(ent, ent.Comp.Target);
     }
 
     private void OnViewerParentChange(Entity<CEZLevelViewerComponent> ent, ref EntParentChangedMessage args)
@@ -90,13 +71,7 @@ public sealed partial class CEZLevelsSystem
             var newEye = SpawnAtPosition(null, new EntityCoordinates(mapUidBelow.Value, globalPos));
 
             Transform(newEye).GridTraversal = false;
-            AddComp(newEye,
-                new CEZLevelEyeComponent
-                {
-                    Target = actor.PlayerSession,
-                }
-            );
-
+            _viewSubscriber.AddViewSubscriber(newEye, actor.PlayerSession);
             eyes.Add(newEye);
         }
     }
