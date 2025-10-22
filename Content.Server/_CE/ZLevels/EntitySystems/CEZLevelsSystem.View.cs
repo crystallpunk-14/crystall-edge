@@ -9,6 +9,8 @@ public sealed partial class CEZLevelsSystem
 {
     [Dependency] private readonly ViewSubscriberSystem _viewSubscriber = default!;
 
+    public const int MAX_Z_LEVELS_BELOW_RENDERING = 3;
+
     private void InitView()
     {
         SubscribeLocalEvent<PlayerAttachedEvent>(OnPlayerAttached);
@@ -68,7 +70,6 @@ public sealed partial class CEZLevelsSystem
         {
             QueueDel(eye);
         }
-
         eyes.Clear();
 
         if (!TryComp<ActorComponent>(ent, out var actor))
@@ -79,12 +80,14 @@ public sealed partial class CEZLevelsSystem
         if (map is null)
             return;
 
-        var mapsBelow = GetAllMapsBelow(map.Value);
         var globalPos = _transform.GetWorldPosition(xform);
 
-        foreach (var mapBelow in mapsBelow)
+        for (var i = 1; i <= MAX_Z_LEVELS_BELOW_RENDERING; i++)
         {
-            var newEye = SpawnAtPosition(null, new EntityCoordinates(mapBelow, globalPos));
+            if (!TryMapOffset(map.Value, -i,out var mapBelow, out var mapUidBelow))
+                break;
+
+            var newEye = SpawnAtPosition(null, new EntityCoordinates(mapUidBelow.Value, globalPos));
 
             Transform(newEye).GridTraversal = false;
             AddComp(newEye,

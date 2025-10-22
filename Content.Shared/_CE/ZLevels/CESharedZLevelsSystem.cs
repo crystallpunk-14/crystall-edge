@@ -10,9 +10,10 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
     [Dependency] private readonly SharedMapSystem _map = default!;
 
     [PublicAPI]
-    public bool TryMapOffset(EntityUid mapUid, int offset, [NotNullWhen(true)] out MapId? mapId)
+    public bool TryMapOffset(EntityUid mapUid, int offset, [NotNullWhen(true)] out MapId? mapId,  [NotNullWhen(true)] out EntityUid? outputMapUid)
     {
         mapId = null;
+        outputMapUid = null;
         var query = EntityQueryEnumerator<CEZLevelsComponent>();
         while (query.MoveNext(out var zLevel))
         {
@@ -29,6 +30,7 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
                 if (value == targetLevel && _map.MapExists(key))
                 {
                     mapId = key;
+                    outputMapUid = _map.GetMap(key);
                     return true;
                 }
             }
@@ -39,13 +41,13 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
     [PublicAPI]
     public bool TryMapUp(EntityUid mapUid, [NotNullWhen(true)] out MapId? mapId)
     {
-        return TryMapOffset(mapUid, 1, out mapId);
+        return TryMapOffset(mapUid, 1, out mapId, out _);
     }
 
     [PublicAPI]
     public bool TryMapDown(EntityUid mapUid, [NotNullWhen(true)] out MapId? mapId)
     {
-        return TryMapOffset(mapUid, -1, out mapId);
+        return TryMapOffset(mapUid, -1, out mapId, out _);
     }
 
     [PublicAPI]
