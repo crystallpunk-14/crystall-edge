@@ -150,7 +150,8 @@ namespace Content.Client.Viewport
 
             DebugTools.AssertNotNull(_viewport);
 
-            RenderZLevels(handle, _viewport!); // CrystallEdge Process multi-Z rendering
+            if (!TryRenderZLevels(handle, _viewport!)) // CrystallEdge Process multi-Z rendering
+                _viewport!.ClearColor = Color.Black;
 
             _viewport!.Render();
 

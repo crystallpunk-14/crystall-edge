@@ -104,10 +104,10 @@ public sealed partial class ScalingViewport
         return false;
     }
 
-    private void RenderZLevels(IRenderHandle handle, IClydeViewport viewport)
+    private bool TryRenderZLevels(IRenderHandle handle, IClydeViewport viewport)
     {
         if (_eye is null)
-            return;
+            return false;
 
         _fallbackEye = _eye;
 
@@ -124,7 +124,7 @@ public sealed partial class ScalingViewport
 
         var drawMaps = _zLevels.GetAllMapsBelow(mapEntityId);
         if (drawMaps.Count == 0)
-            return;
+            return false;
 
         for (var i = 0; i < drawMaps.Count; i++)
         {
@@ -155,6 +155,8 @@ public sealed partial class ScalingViewport
         Eye = _fallbackEye;
         viewport.ClearColor = null;
         viewport.Eye = Eye;
+
+        return true;
     }
 
     //FIXME: This is nasty!
