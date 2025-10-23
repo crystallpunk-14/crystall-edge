@@ -22,6 +22,7 @@ public sealed partial class CEZLevelsSystem : CESharedZLevelsSystem
         InitActions();
         InitView();
         InitApi();
+        InitRoofs();
 
         SubscribeLocalEvent<CEStationZLevelsComponent, StationPostInitEvent>(OnStationPostInit);
     }

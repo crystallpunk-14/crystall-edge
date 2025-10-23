@@ -5,7 +5,7 @@ namespace Content.Shared.Light.Components;
 /// <summary>
 /// Will draw shadows over tiles flagged as roof tiles on the attached grid. ImplicitRoofComponent will get removed if the grid has this component.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, UnsavedComponent] //CrystallEdge unsaved: all Roof data generated throught ZLevelNetwork
 public sealed partial class RoofComponent : Component
 {
     public const int ChunkSize = 8;

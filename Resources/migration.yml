@@ -11,6 +11,9 @@
 # CrystallEdge migration zone
 
 BaselineSpawnPoint: CESpawnPointTownfolk
+CERoofWooden: null
+CERoofStone: null
+CERoofRemover: null
 
 # CrystallEdge migration zone end
 

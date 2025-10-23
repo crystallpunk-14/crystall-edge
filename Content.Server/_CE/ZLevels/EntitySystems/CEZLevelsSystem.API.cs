@@ -50,6 +50,30 @@ public sealed partial class CEZLevelsSystem
         }
 
         network.Comp.ZLevels.Add(mapId, depth);
+        EnsureComp<CEZLevelMapComponent>(_map.GetMap(mapId));
+
+        RaiseLocalEvent(_map.GetMap(mapId), new CEMapAddedIntoZNetwork(mapId, depth, network));
+
         return true;
     }
+}
+
+/// <summary>
+/// Raised directly on map, when it is added into zLevel network
+/// </summary>
+public sealed class CEMapAddedIntoZNetwork(MapId mapId, int depth, Entity<CEZLevelsComponent> network) : EntityEventArgs
+{
+    public MapId MapId = mapId;
+    public int Depth = depth;
+    public Entity<CEZLevelsComponent> Network = network;
+}
+
+/// <summary>
+/// Raised directly on map, when it is removed from zLevel network
+/// </summary>
+public sealed class CEMapRemovedFromZNetwork(MapId mapId, int depth, Entity<CEZLevelsComponent> network) : EntityEventArgs
+{
+    public MapId MapId = mapId;
+    public int Depth = depth;
+    public Entity<CEZLevelsComponent> Network = network;
 }

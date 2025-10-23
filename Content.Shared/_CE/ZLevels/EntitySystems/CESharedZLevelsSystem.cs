@@ -73,9 +73,9 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
     }
 
     [PublicAPI]
-    public bool TryMapDown(EntityUid mapUid, [NotNullWhen(true)] out MapId? mapId, [NotNullWhen(true)] out EntityUid? abobeMapUid)
+    public bool TryMapDown(EntityUid mapUid, [NotNullWhen(true)] out MapId? mapId, [NotNullWhen(true)] out EntityUid? belowMapUid)
     {
-        return TryMapOffset(mapUid, -1, out mapId, out abobeMapUid);
+        return TryMapOffset(mapUid, -1, out mapId, out belowMapUid);
     }
 
     [PublicAPI]
