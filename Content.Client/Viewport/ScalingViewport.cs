@@ -19,7 +19,7 @@ namespace Content.Client.Viewport
     /// <summary>
     ///     Viewport control that has a fixed viewport size and scales it appropriately.
     /// </summary>
-    public sealed partial class ScalingViewport : Control, IViewportControl //CrystallEdge partial part for ZLevels rendering
+    public sealed partial class ScalingViewport : Control, IViewportControl //CrystallEdge partial for ZLevels rendering
     {
         [Dependency] private readonly IClyde _clyde = default!;
         [Dependency] private readonly IEntityManager _entityManager = default!;
@@ -150,9 +150,7 @@ namespace Content.Client.Viewport
 
             DebugTools.AssertNotNull(_viewport);
 
-            // CrystallEdge Process multi-Z rendering
-            RenderZLevels(handle, _viewport!);
-            // CrystallEdge end
+            RenderZLevels(handle, _viewport!); // CrystallEdge Process multi-Z rendering
 
             _viewport!.Render();
 

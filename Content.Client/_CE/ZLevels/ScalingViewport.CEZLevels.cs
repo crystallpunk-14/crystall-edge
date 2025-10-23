@@ -4,6 +4,7 @@ using Robust.Client.Graphics;
 using Robust.Shared.Graphics;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Prototypes;
 
 namespace Content.Client.Viewport;
 
@@ -103,7 +104,7 @@ public sealed partial class ScalingViewport
         return false;
     }
 
-    private void RenderZLevels(IRenderHandle renderHandle, IClydeViewport viewport)
+    private void RenderZLevels(IRenderHandle handle, IClydeViewport viewport)
     {
         if (_eye is null)
             return;
@@ -114,7 +115,6 @@ public sealed partial class ScalingViewport
         _xformQuery ??= _entityManager.GetEntityQuery<TransformComponent>();
 
         var drawBox = GetDrawBox();
-        var handle = renderHandle.DrawingHandleScreen;
 
         // Cache systems and components
         _zLevels ??= _entityManager.System<CEClientZLevelsSystem>();
@@ -139,8 +139,8 @@ public sealed partial class ScalingViewport
             {
                 Position = pos,
                 DrawFov = false,
-                DrawLight = _eye.DrawLight,
-                Offset = _eye.Offset + new Vector2(0f, depth),
+                DrawLight = false,
+                Offset = _eye.Offset + new Vector2(0f, depth * 0.8f),
                 Rotation = _eye.Rotation,
                 Scale = _eye.Scale,
                 Depth = depth,
@@ -149,7 +149,6 @@ public sealed partial class ScalingViewport
             viewport.Eye = zEye;
             viewport.ClearColor = i == 0 ? Color.Black : null;
             viewport.Render();
-            handle.DrawTextureRect(viewport.RenderTarget.Texture, drawBox);
         }
 
         // Restore the Eye
