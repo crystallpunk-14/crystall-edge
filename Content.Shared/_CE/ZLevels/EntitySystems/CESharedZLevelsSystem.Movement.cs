@@ -22,7 +22,7 @@ public abstract partial class CESharedZLevelsSystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly DamageableSystem _damage = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] protected readonly IPrototypeManager Proto = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly ActionBlockerSystem _blocker = default!;
 
@@ -53,7 +53,7 @@ public abstract partial class CESharedZLevelsSystem
         var knockdownTime = MathF.Min(args.Velocity * 0.5f, 10f);
         _stun.TryKnockdown(ent.Owner, TimeSpan.FromSeconds(knockdownTime));
 
-        var damageType = _proto.Index<DamageTypePrototype>("Blunt");
+        var damageType = Proto.Index<DamageTypePrototype>("Blunt");
         var damageAmount = Math.Pow(args.Velocity, 2.25f);
 
         _damage.TryChangeDamage(ent.Owner, new DamageSpecifier(damageType, damageAmount));

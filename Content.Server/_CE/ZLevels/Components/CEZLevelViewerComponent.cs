@@ -1,5 +1,4 @@
 using Content.Server._CE.ZLevels.EntitySystems;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.ZLevels.Components;
 

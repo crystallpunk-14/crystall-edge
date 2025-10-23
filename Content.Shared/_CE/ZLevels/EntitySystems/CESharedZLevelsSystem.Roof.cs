@@ -37,7 +37,7 @@ public abstract partial class CESharedZLevelsSystem
                     if (!TryComp<CEZLevelRoofPlacerComponent>(anchoredUid, out var roofPlacer))
                         continue;
 
-                    _map.SetTile((ent.Owner, mapGrid), change.GridIndices, new Tile(_proto.Index(roofPlacer.Tile).TileId));
+                    _map.SetTile((ent.Owner, mapGrid), change.GridIndices, new Tile(Proto.Index(roofPlacer.Tile).TileId));
                 }
             }
         }
@@ -48,7 +48,7 @@ public abstract partial class CESharedZLevelsSystem
         RoomPlacerProcess(ent);
     }
 
-    private void RoomPlacerProcess(Entity<CEZLevelRoofPlacerComponent> ent)
+    protected void RoomPlacerProcess(Entity<CEZLevelRoofPlacerComponent> ent)
     {
         var placerXform = Transform(ent);
 
@@ -69,6 +69,6 @@ public abstract partial class CESharedZLevelsSystem
                 return;
         }
 
-        _map.SetTile((aboveMapUid.Value, aboveMapGrid), indices, new Tile(_proto.Index(ent.Comp.Tile).TileId));
+        _map.SetTile((aboveMapUid.Value, aboveMapGrid), indices, new Tile(Proto.Index(ent.Comp.Tile).TileId));
     }
 }
