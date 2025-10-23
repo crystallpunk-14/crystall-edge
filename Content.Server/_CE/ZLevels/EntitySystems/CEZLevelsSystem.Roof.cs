@@ -1,17 +1,13 @@
-using Content.Shared._CE.ZLevels;
 using Content.Shared.Light.Components;
-using Content.Shared.Light.EntitySystems;
 using Robust.Shared.Map.Components;
 
 namespace Content.Server._CE.ZLevels.EntitySystems;
 
 public sealed partial class CEZLevelsSystem
 {
-    [Dependency] private readonly SharedRoofSystem _roof = default!;
     private void InitRoofs()
     {
         SubscribeLocalEvent<MapComponent, CEMapAddedIntoZNetwork>(OnMapAdded);
-        SubscribeLocalEvent<CEZLevelMapComponent, TileChangedEvent>(OnTileChanged);
     }
 
     private void OnMapAdded(Entity<MapComponent> ent, ref CEMapAddedIntoZNetwork args)
@@ -47,18 +43,7 @@ public sealed partial class CEZLevelsSystem
         while (enumerator.MoveNext(out var tileRef))
         {
             counter++;
-            _roof.SetRoof((currentMapUid, currentMapGrid, currentRoof), tileRef.Value.GridIndices, !tileRef.Value.Tile.IsEmpty);
-        }
-    }
-
-    private void OnTileChanged(Entity<CEZLevelMapComponent> ent, ref TileChangedEvent args)
-    {
-        if (!TryMapDown(ent, out var mapId, out var belowMapUid))
-            return;
-
-        foreach (var change in args.Changes)
-        {
-            _roof.SetRoof(belowMapUid.Value, change.GridIndices, !change.NewTile.IsEmpty);
+            Roof.SetRoof((currentMapUid, currentMapGrid, currentRoof), tileRef.Value.GridIndices, !tileRef.Value.Tile.IsEmpty);
         }
     }
 }

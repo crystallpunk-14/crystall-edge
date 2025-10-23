@@ -14,6 +14,7 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
         base.Initialize();
 
         InitMovement();
+        InitRoof();
     }
 
     /// <summary>
@@ -101,8 +102,4 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
 
         return mapIds;
     }
-}
-
-public sealed partial class CEToggleRoofVisibilityAction : InstantActionEvent
-{
 }

@@ -16,9 +16,6 @@ public sealed partial class CEZLevelsSystem
 
         SubscribeLocalEvent<CEZLevelViewerComponent, EntParentChangedMessage>(OnViewerParentChange);
         SubscribeLocalEvent<CEZLevelViewerComponent, MoveEvent>(OnViewerMove);
-
-        SubscribeLocalEvent<CEZLevelViewerComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<CEZLevelViewerComponent, ComponentRemove>(OnRemove);
     }
 
     private void OnViewerMove(Entity<CEZLevelViewerComponent> ent, ref MoveEvent args)
@@ -87,15 +84,5 @@ public sealed partial class CEZLevelsSystem
             _viewSubscriber.AddViewSubscriber(newEye, actor.PlayerSession);
             eyes.Add(newEye);
         }
-    }
-
-    private void OnMapInit(Entity<CEZLevelViewerComponent> ent, ref MapInitEvent args)
-    {
-        _actions.AddAction(ent, ref ent.Comp.ActionEntity, ent.Comp.ActionProto);
-    }
-
-    private void OnRemove(Entity<CEZLevelViewerComponent> ent, ref ComponentRemove args)
-    {
-        _actions.RemoveAction(ent.Comp.ActionEntity);
     }
 }

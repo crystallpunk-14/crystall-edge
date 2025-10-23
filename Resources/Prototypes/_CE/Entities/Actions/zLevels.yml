@@ -24,20 +24,6 @@
   - type: InstantAction
     event: !type:CEZLevelActionDown
 
-- type: entity
-  id: CEActionToggleRoofs
-  name: Toggle roofs
-  description: Show or hide roofs
-  components:
-  - type: Action
-    clientExclusive: true
-    checkCanInteract: false
-    icon:
-      sprite: _CE/Actions/misc.rsi
-      state: roof
-  - type: InstantAction
-    event: !type:CEToggleRoofVisibilityAction
-
 #- type: entity
 #  id: CEActionRespawn
 #  name: Respawn
