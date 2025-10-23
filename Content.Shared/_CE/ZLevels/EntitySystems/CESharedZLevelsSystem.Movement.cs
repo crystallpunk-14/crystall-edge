@@ -117,8 +117,8 @@ public abstract partial class CESharedZLevelsSystem
                 }
                 else //Move up
                 {
-                    TryMoveUp(uid);
-                    zPhys.LocalHeight -= 1;
+                    if (TryMoveUp(uid))
+                        zPhys.LocalHeight -= 1;
                 }
             }
         }
@@ -160,13 +160,13 @@ public abstract partial class CESharedZLevelsSystem
         var mapUid = Transform(target).MapUid;
 
         if (mapUid is null)
-            return true;
+            return false;
 
         if (!TryMapUp(mapUid.Value, out var mapAbove, out var mapAboveUid))
-            return true; //We hit the solid sky, lol
+            return false;
 
         if (!_gridQuery.TryComp(mapAboveUid.Value, out var mapAboveGrid))
-            return true; //uhhh, ehhh, ok?
+            return false;
 
         if (_map.TryGetTileRef(mapAboveUid.Value, mapAboveGrid, _transform.GetWorldPosition(target), out var tileRef) && !tileRef.Tile.IsEmpty)
             return true;
