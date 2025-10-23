@@ -121,18 +121,13 @@ public sealed partial class ScalingViewport
         var mapId = _eye.Position.MapId;
         var mapEntityId = _mapManager.GetMapEntityIdOrThrow(mapId);
 
-        var drawMaps = _zLevels.GetAllMapsBelow(mapEntityId);
-        if (drawMaps.Count == 0)
-            return false;
-
-        for (var i = CESharedZLevelsSystem.MaxZLevelsBelowRendering; i > 0; i--)
+        for (var depth = CESharedZLevelsSystem.MaxZLevelsBelowRendering; depth > 0; depth--)
         {
-            if (!_zLevels.TryMapOffset(mapEntityId, -i, out _, out var mapUidBelow))
+            if (!_zLevels.TryMapOffset(mapEntityId, -depth, out _, out var mapUidBelow))
                 continue;
 
             var mapComp = _entityManager.GetComponent<MapComponent>(mapUidBelow.Value);
 
-            var depth = i;
             var pos = new MapCoordinates(_eye.Position.Position, mapComp.MapId);
 
             var zEye = new ZEye
@@ -147,7 +142,7 @@ public sealed partial class ScalingViewport
             };
 
             viewport.Eye = zEye;
-            viewport.ClearColor = i == 0 ? Color.Black : null;
+            viewport.ClearColor = depth == CESharedZLevelsSystem.MaxZLevelsBelowRendering ? Color.Black : null;
             viewport.Render();
         }
 

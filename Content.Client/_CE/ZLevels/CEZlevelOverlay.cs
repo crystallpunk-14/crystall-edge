@@ -26,8 +26,11 @@ public sealed class CEZLevelOverlay : Overlay
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
     {
-        //if (args.MapId != MapId.Nullspace && _entManager.HasComponent<ZStackMemberComponent>(_mapManager.GetMapEntityId(args.MapId)))
-        //    return true;
+        if (args.Viewport.Eye is not ScalingViewport.ZEye zeye)
+            return false;
+
+        if (zeye.Depth <= 0)
+            return false;
 
         return true;
     }

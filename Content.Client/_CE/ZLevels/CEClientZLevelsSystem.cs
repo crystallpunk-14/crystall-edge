@@ -11,7 +11,7 @@ public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
     [Dependency] private readonly IOverlayManager _overlay = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
 
-    public static float ZLevelOffset = 0.7f;
+    public static float ZLevelOffset = 0.6f;
 
     public override void Initialize()
     {
