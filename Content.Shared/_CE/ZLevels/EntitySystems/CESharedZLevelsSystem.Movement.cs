@@ -1,12 +1,15 @@
+using Content.Shared.ActionBlocker;
+using Content.Shared.Chasm;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Ghost;
 using Content.Shared.Stunnable;
 using Content.Shared.Throwing;
 using JetBrains.Annotations;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
-using Robust.Shared.Network;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
@@ -17,10 +20,11 @@ public abstract partial class CESharedZLevelsSystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly ActionBlockerSystem _blocker = default!;
 
     private const float ZGravityForce = 7.0f;
     /// <summary>
@@ -88,8 +92,8 @@ public abstract partial class CESharedZLevelsSystem
                 }
                 else //Fall down
                 {
-                    TryMoveDown(uid);
-                    zPhys.LocalHeight += 1;
+                    if (TryMoveDownOrChasm(uid))
+                        zPhys.LocalHeight += 1;
                 }
             }
             else if (zPhys.LocalHeight > 1) //Going up
@@ -192,6 +196,25 @@ public abstract partial class CESharedZLevelsSystem
     public bool TryMoveDown(EntityUid ent)
     {
         return TryMove(ent, -1);
+    }
+
+    [PublicAPI]
+    public bool TryMoveDownOrChasm(EntityUid ent)
+    {
+        if (TryMoveDown(ent))
+            return true;
+
+        //welp, that default Chasm behavior. Not really good, but ok for now.
+        if (HasComp<ChasmFallingComponent>(ent))
+            return false; //Already falling
+
+        var audio = new SoundPathSpecifier("/Audio/Effects/falling.ogg");
+        _audio.PlayPredicted(audio, Transform(ent).Coordinates, ent);
+        var falling = AddComp<ChasmFallingComponent>(ent);
+        falling.NextDeletionTime = _timing.CurTime + falling.DeletionTime;
+        _blocker.UpdateCanMove(ent);
+
+        return false;
     }
 }
 

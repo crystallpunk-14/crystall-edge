@@ -3,37 +3,6 @@
 # 0
 
 - type: tile
-  editorHidden: false
-  id: CEFloorMarbleCave
-  name: ce-tiles-marble-cave
-  sprite: /Textures/_CE/Tiles/marble_cave.png
-  variants: 14
-  placementVariants:
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  baseTurf: CEFloorBase
-  #deconstructTools: [ CEDigging ]
-  isSubfloor: true
-  #itemDrop: CEMarbleBlock1
-  footstepSounds:
-    collection: FootstepAsteroid
-  heatCapacity: 10000
-  weather: true
-  indestructible: true
-
-- type: tile
   id: CEFloorIce
   editorHidden: false
   name: tiles-ice
@@ -44,13 +13,13 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: CEFloorBase
+  baseTurf: CEFloorStone
   isSubfloor: false
   heatCapacity: 10000
   friction: 0.05
   mobAcceleration: 0.1
   weather: true
-  
+
 - type: tile
   editorHidden: false
   id: CEFloorDirt
@@ -84,7 +53,7 @@
     East: /Textures/_CE/Tiles/Dirt/double_edge_E.png
     North: /Textures/_CE/Tiles/Dirt/double_edge_N.png
     West: /Textures/_CE/Tiles/Dirt/double_edge_W.png
-  baseTurf: CEFloorBase
+  baseTurf: CEFloorStone
   #deconstructTools: [ CEDigging ]
   #itemDrop: CERandomDirtLootSpawner
   isSubfloor: true
@@ -214,7 +183,7 @@
     East: /Textures/_CE/Tiles/Sand/double_edge_E.png
     North: /Textures/_CE/Tiles/Sand/double_edge_N.png
     West: /Textures/_CE/Tiles/Sand/double_edge_W.png
-  baseTurf: CEFloorBase
+  baseTurf: CEFloorStone
   #deconstructTools: [ CEDigging ]
   #itemDrop: CEDirtEffect #TODO sand variant
   isSubfloor: true

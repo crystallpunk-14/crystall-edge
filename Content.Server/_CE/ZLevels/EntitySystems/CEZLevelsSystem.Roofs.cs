@@ -1,9 +1,7 @@
-using System.Linq;
 using Content.Shared._CE.ZLevels;
 using Content.Shared.Light.Components;
 using Content.Shared.Light.EntitySystems;
 using Robust.Shared.Map.Components;
-using Robust.Shared.Utility;
 
 namespace Content.Server._CE.ZLevels.EntitySystems;
 
@@ -51,7 +49,6 @@ public sealed partial class CEZLevelsSystem
             counter++;
             _roof.SetRoof((currentMapUid, currentMapGrid, currentRoof), tileRef.Value.GridIndices, !tileRef.Value.Tile.IsEmpty);
         }
-        Log.Error($"Map roof synced: {currentMapUid}, tiles processed: {counter}");
     }
 
     private void OnTileChanged(Entity<CEZLevelMapComponent> ent, ref TileChangedEvent args)

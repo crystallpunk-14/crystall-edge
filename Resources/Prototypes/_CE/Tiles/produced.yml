@@ -20,7 +20,7 @@
   - 1.0
   - 1.0
   edgeSpritePriority: 99 #Dont have edges, but block natural ones
-  baseTurf: CEFloorBase
+  baseTurf: Space
   isSubfloor: true
   footstepSounds:
     collection: FootstepAsteroid

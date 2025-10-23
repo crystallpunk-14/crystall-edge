@@ -14,7 +14,7 @@ orphans: []
 nullspace: []
 tilemap:
   5: Space
-  3: CEFloorBase
+  3: CEFloorStone
   1: CEFloorCobblestone
   2: CEFloorDirt
   0: CEFloorGrass
