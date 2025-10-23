@@ -26,7 +26,11 @@ public abstract partial class CESharedZLevelsSystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly ActionBlockerSystem _blocker = default!;
 
+    public const int MaxZLevelsBelowRendering = 3;
+    public const int MaxZLevelsAboveRendering = 1;
+
     private const float ZGravityForce = 7.0f;
+
     /// <summary>
     /// The minimum speed required to trigger LandEvent events.
     /// </summary>

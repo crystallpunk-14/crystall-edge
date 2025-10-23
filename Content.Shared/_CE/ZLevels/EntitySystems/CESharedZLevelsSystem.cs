@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using Content.Shared.Actions;
 using JetBrains.Annotations;
 using Robust.Shared.Map;
 
@@ -100,4 +101,8 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
 
         return mapIds;
     }
+}
+
+public sealed partial class CEToggleRoofVisibilityAction : InstantActionEvent
+{
 }

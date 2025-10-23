@@ -1,9 +1,7 @@
-using Content.Shared._CE.Roof;
 using Content.Shared.Ghost;
 using Robust.Client.GameObjects;
 using Robust.Client.Player;
 using Robust.Shared.Console;
-using Robust.Shared.Map.Components;
 
 namespace Content.Client._CE.Roof;
 
@@ -23,7 +21,6 @@ public sealed class CERoofSystem : EntitySystem
     private EntityQuery<GhostComponent> _ghostQuery;
     private EntityQuery<TransformComponent> _xformQuery;
     private EntityQuery<SpriteComponent> _spriteQuery;
-    private EntityQuery<CERoofComponent> _roofQuery;
 
     public bool RoofVisibility
     {
@@ -38,12 +35,12 @@ public sealed class CERoofSystem : EntitySystem
         _ghostQuery = GetEntityQuery<GhostComponent>();
         _xformQuery = GetEntityQuery<TransformComponent>();
         _spriteQuery = GetEntityQuery<SpriteComponent>();
-        _roofQuery = GetEntityQuery<CERoofComponent>();
 
-        SubscribeLocalEvent<CERoofComponent, ComponentStartup>(RoofStartup);
-        SubscribeLocalEvent<CERoofTogglerComponent, CEToggleRoofVisibilityAction>(OnToggleRoof);
+        //SubscribeLocalEvent<CERoofComponent, ComponentStartup>(RoofStartup);
+        //SubscribeLocalEvent<CEZLevelViewerComponent, CEToggleRoofVisibilityAction>(OnToggleRoof);
     }
 
+    /*
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
@@ -130,6 +127,7 @@ public sealed class CERoofSystem : EntitySystem
         _sprite.SetColor(ent.Owner, sprite.Color.WithAlpha(RoofVisibility ? TargetAlphaVisible : TargetAlphaHidden));
         _sprite.SetVisible(ent.Owner, RoofVisibility);
     }
+        */
 }
 
 internal sealed class ShowRoof : LocalizedCommands

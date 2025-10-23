@@ -9,8 +9,6 @@ public sealed partial class CEZLevelsSystem
 {
     [Dependency] private readonly ViewSubscriberSystem _viewSubscriber = default!;
 
-    public const int MAX_Z_LEVELS_BELOW_RENDERING = 3;
-
     private void InitView()
     {
         SubscribeLocalEvent<PlayerAttachedEvent>(OnPlayerAttached);
@@ -18,6 +16,9 @@ public sealed partial class CEZLevelsSystem
 
         SubscribeLocalEvent<CEZLevelViewerComponent, EntParentChangedMessage>(OnViewerParentChange);
         SubscribeLocalEvent<CEZLevelViewerComponent, MoveEvent>(OnViewerMove);
+
+        SubscribeLocalEvent<CEZLevelViewerComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<CEZLevelViewerComponent, ComponentRemove>(OnRemove);
     }
 
     private void OnViewerMove(Entity<CEZLevelViewerComponent> ent, ref MoveEvent args)
@@ -63,9 +64,9 @@ public sealed partial class CEZLevelsSystem
 
         var globalPos = _transform.GetWorldPosition(xform);
 
-        for (var i = 1; i <= MAX_Z_LEVELS_BELOW_RENDERING; i++)
+        for (var i = 1; i <= MaxZLevelsBelowRendering; i++)
         {
-            if (!TryMapOffset(map.Value, -i,out var mapBelow, out var mapUidBelow))
+            if (!TryMapOffset(map.Value, -i, out _, out var mapUidBelow))
                 break;
 
             var newEye = SpawnAtPosition(null, new EntityCoordinates(mapUidBelow.Value, globalPos));
@@ -74,5 +75,27 @@ public sealed partial class CEZLevelsSystem
             _viewSubscriber.AddViewSubscriber(newEye, actor.PlayerSession);
             eyes.Add(newEye);
         }
+
+        for (var i = 1; i <= MaxZLevelsAboveRendering; i++)
+        {
+            if (!TryMapOffset(map.Value, i, out _, out var mapUidAbove))
+                break;
+
+            var newEye = SpawnAtPosition(null, new EntityCoordinates(mapUidAbove.Value, globalPos));
+
+            Transform(newEye).GridTraversal = false;
+            _viewSubscriber.AddViewSubscriber(newEye, actor.PlayerSession);
+            eyes.Add(newEye);
+        }
+    }
+
+    private void OnMapInit(Entity<CEZLevelViewerComponent> ent, ref MapInitEvent args)
+    {
+        _actions.AddAction(ent, ref ent.Comp.ActionEntity, ent.Comp.ActionProto);
+    }
+
+    private void OnRemove(Entity<CEZLevelViewerComponent> ent, ref ComponentRemove args)
+    {
+        _actions.RemoveAction(ent.Comp.ActionEntity);
     }
 }

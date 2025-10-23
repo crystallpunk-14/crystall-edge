@@ -1,5 +1,6 @@
 using System.Numerics;
 using Content.Client._CE.ZLevels;
+using Content.Shared._CE.ZLevels.EntitySystems;
 using Robust.Client.Graphics;
 using Robust.Shared.Graphics;
 using Robust.Shared.Map;
@@ -114,8 +115,6 @@ public sealed partial class ScalingViewport
         // Cache frequently accessed components/systems
         _xformQuery ??= _entityManager.GetEntityQuery<TransformComponent>();
 
-        var drawBox = GetDrawBox();
-
         // Cache systems and components
         _zLevels ??= _entityManager.System<CEClientZLevelsSystem>();
 
@@ -126,13 +125,14 @@ public sealed partial class ScalingViewport
         if (drawMaps.Count == 0)
             return false;
 
-        for (var i = 0; i < drawMaps.Count; i++)
+        for (var i = CESharedZLevelsSystem.MaxZLevelsBelowRendering; i > 0; i--)
         {
-            var toDraw = drawMaps[i];
-            var mapComp = _entityManager.GetComponent<MapComponent>(toDraw);
+            if (!_zLevels.TryMapOffset(mapEntityId, -i, out _, out var mapUidBelow))
+                continue;
 
-            var depth = drawMaps.Count - i; // reversed depth index
+            var mapComp = _entityManager.GetComponent<MapComponent>(mapUidBelow.Value);
 
+            var depth = i;
             var pos = new MapCoordinates(_eye.Position.Position, mapComp.MapId);
 
             var zEye = new ZEye
