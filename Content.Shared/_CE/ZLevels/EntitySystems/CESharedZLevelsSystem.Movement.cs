@@ -22,8 +22,11 @@ public abstract partial class CESharedZLevelsSystem
     [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
 
-    private readonly TimeSpan _physicsUpdateDelay = TimeSpan.FromSeconds(0.1f);
-    private TimeSpan _nextPhysicsUpdate = TimeSpan.Zero;
+    private const float ZGravityForce = 7.0f;
+    /// <summary>
+    /// The minimum speed required to trigger LandEvent events.
+    /// </summary>
+    private const float ImpactVelocityLimit = 2.0f;
 
     private EntityQuery<MapGridComponent> _gridQuery;
     private EntityQuery<GhostComponent> _ghostQuery;
@@ -33,71 +36,103 @@ public abstract partial class CESharedZLevelsSystem
         _gridQuery = GetEntityQuery<MapGridComponent>();
         _ghostQuery = GetEntityQuery<GhostComponent>();
 
-        SubscribeLocalEvent<DamageableComponent, CEZLevelFallEvent>(OnFallEvent);
+        SubscribeLocalEvent<DamageableComponent, CEZLevelHitEvent>(OnFallEvent);
+        SubscribeLocalEvent<PhysicsComponent, MapInitEvent>(OnPhysicMapInit);
     }
 
-    private void OnFallEvent(Entity<DamageableComponent> ent, ref CEZLevelFallEvent args)
+    private void OnFallEvent(Entity<DamageableComponent> ent, ref CEZLevelHitEvent args)
     {
-        _stun.TryKnockdown(ent.Owner, TimeSpan.FromSeconds(args.FallingDistance * 0.5));
+        var knockdownTime = MathF.Min(args.Velocity * 0.5f, 10f);
+        _stun.TryKnockdown(ent.Owner, TimeSpan.FromSeconds(knockdownTime));
+
         var damageType = _proto.Index<DamageTypePrototype>("Blunt");
-        var damageAmount = 20 * Math.Pow(1.5, args.FallingDistance - 1);
+        var damageAmount = Math.Pow(args.Velocity, 2.25f);
+
         _damage.TryChangeDamage(ent.Owner, new DamageSpecifier(damageType, damageAmount));
+    }
+
+    private void OnPhysicMapInit(Entity<PhysicsComponent> ent, ref MapInitEvent args)
+    {
+        if (_ghostQuery.HasComp(ent))
+            return;
+
+        EnsureComp<CEZLevelPhysicsComponent>(ent);
     }
 
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
 
-        if (_net.IsClient)
+        var query = EntityQueryEnumerator<CEZLevelPhysicsComponent, TransformComponent, PhysicsComponent>();
+        while (query.MoveNext(out var uid, out var zPhys, out var xform, out var physics))
+        {
+            //Gravity force application
+            ApplyZGravityForce(uid, zPhys, xform, physics, frameTime);
+
+            //Movement application
+            zPhys.LocalHeight += zPhys.Velocity * frameTime;
+            if (zPhys.LocalHeight < 0) //Falling down
+            {
+                if (HasGround(uid))
+                {
+                    zPhys.LocalHeight = 0;
+
+                    if (MathF.Abs(zPhys.Velocity) >= ImpactVelocityLimit)
+                    {
+                        RaiseLocalEvent(uid, new CEZLevelHitEvent(MathF.Abs(zPhys.Velocity)));
+                        var land = new LandEvent(null, true);
+                        RaiseLocalEvent(uid, ref land);
+                    }
+
+                    zPhys.Velocity = 0;
+                }
+                else //Fall down
+                {
+                    TryMoveDown(uid);
+                    zPhys.LocalHeight += 1;
+                }
+            }
+            else if (zPhys.LocalHeight > 1) //Going up
+            {
+                if (HasRoof(uid)) //Hit roof
+                {
+                    zPhys.LocalHeight = 1;
+
+                    if (MathF.Abs(zPhys.Velocity) >= ImpactVelocityLimit)
+                    {
+                        RaiseLocalEvent(uid, new CEZLevelHitEvent(zPhys.Velocity));
+                        var land = new LandEvent(null, true);
+                        RaiseLocalEvent(uid, ref land);
+                    }
+
+                    zPhys.Velocity = 0;
+                }
+                else //Move up
+                {
+                    TryMoveUp(uid);
+                    zPhys.LocalHeight -= 1;
+                }
+            }
+        }
+    }
+
+    private void ApplyZGravityForce(EntityUid uid, CEZLevelPhysicsComponent zPhys, TransformComponent xform, PhysicsComponent physics, float frameTime)
+    {
+        if (physics.BodyStatus == BodyStatus.InAir)
+            return;
+        if (_ghostQuery.HasComp(uid))
+            return;
+        if (xform.ParentUid != xform.MapUid)
             return;
 
-        if (_timing.CurTime < _nextPhysicsUpdate)
-            return;
+        var newVelocity = zPhys.Velocity - ZGravityForce * frameTime;
+        SetZVelocity((uid, zPhys), newVelocity);
+    }
 
-        _nextPhysicsUpdate = _timing.CurTime + _physicsUpdateDelay;
-
-        var query = EntityQueryEnumerator<TransformComponent, PhysicsComponent>();
-        while (query.MoveNext(out var uid, out var xform, out var physics))
-        {
-            if (physics.BodyStatus == BodyStatus.InAir)
-                continue;
-            if (_ghostQuery.HasComp(uid))
-                continue;
-            if (xform.ParentUid != xform.MapUid)
-                continue;
-            if (HasGround(uid))
-                continue;
-
-            var ev = new CEBeforeZLevelFallingEvent();
-            RaiseLocalEvent(uid, ev);
-
-            if (ev.Cancelled)
-                continue;
-
-            Fallout(uid);
-        }
-
-        //Process falled entities
-        var falledQuery = EntityQueryEnumerator<CEFallingZComponent, PhysicsComponent>();
-        while (falledQuery.MoveNext(out var uid, out var falling, out var physics))
-        {
-            if (physics.BodyStatus == BodyStatus.InAir) //Wow, we start flying mid-falling!
-            {
-                RemCompDeferred<CEFallingZComponent>(uid);
-                continue;
-            }
-            if (HasGround(uid))
-            {
-                var ev = new CEZLevelFallEvent(falling.FallingDistance);
-                RaiseLocalEvent(uid, ev);
-
-                var landEv = new LandEvent(null, true);
-                RaiseLocalEvent(uid, ref landEv);
-
-                RemCompDeferred<CEFallingZComponent>(uid);
-                continue;
-            }
-        }
+    private void SetZVelocity(Entity<CEZLevelPhysicsComponent> zPhys, float velocity)
+    {
+        zPhys.Comp.Velocity = velocity;
+        Dirty(zPhys);
     }
 
     public bool HasGround(EntityUid target)
@@ -112,17 +147,23 @@ public abstract partial class CESharedZLevelsSystem
         return false;
     }
 
-    /// <summary>
-    /// We try to move the target down. If there is nowhere else to move it down, we hit the ground and break our legs.
-    /// </summary>
-    private void Fallout(EntityUid target)
+    public bool HasRoof(EntityUid target)
     {
-        var falling = EnsureComp<CEFallingZComponent>(target);
+        var mapUid = Transform(target).MapUid;
 
-        if (!HasGround(target) && TryMoveDown(target))
-        {
-            falling.FallingDistance++;
-        }
+        if (mapUid is null)
+            return true;
+
+        if (!TryMapUp(mapUid.Value, out var mapAbove, out var mapAboveUid))
+            return true; //We hit the solid sky, lol
+
+        if (!_gridQuery.TryComp(mapAboveUid.Value, out var mapAboveGrid))
+            return true; //uhhh, ehhh, ok?
+
+        if (_map.TryGetTileRef(mapAboveUid.Value, mapAboveGrid, _transform.GetWorldPosition(target), out var tileRef) && !tileRef.Tile.IsEmpty)
+            return true;
+
+        return false;
     }
 
     [PublicAPI]
@@ -154,13 +195,7 @@ public abstract partial class CESharedZLevelsSystem
     }
 }
 
-/// <summary>
-/// other systems can prevent falls for various reasons
-/// </summary>
-public sealed class CEBeforeZLevelFallingEvent : CancellableEntityEventArgs;
-
-
-public sealed class CEZLevelFallEvent(int fallingDistance) : EntityEventArgs
+public sealed class CEZLevelHitEvent(float velocity) : EntityEventArgs
 {
-    public int FallingDistance = fallingDistance;
+    public float Velocity = velocity;
 }
