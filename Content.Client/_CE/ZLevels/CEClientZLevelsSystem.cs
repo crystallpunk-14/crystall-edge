@@ -11,6 +11,7 @@ public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
     [Dependency] private readonly IOverlayManager _overlay = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
 
+    public static float ZLevelOffset = 0.7f;
 
     public override void Initialize()
     {
@@ -38,7 +39,7 @@ public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
         var query = EntityQueryEnumerator<CEZLevelPhysicsComponent, SpriteComponent>();
         while (query.MoveNext(out var uid, out var zPhys, out var sprite))
         {
-            _sprite.SetOffset((uid, sprite), new Vector2(0, zPhys.LocalHeight * 0.8f));
+            _sprite.SetOffset((uid, sprite), new Vector2(0, zPhys.LocalHeight * ZLevelOffset));
         }
     }
 

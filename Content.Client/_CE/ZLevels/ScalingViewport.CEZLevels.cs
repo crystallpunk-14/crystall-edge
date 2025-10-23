@@ -104,7 +104,7 @@ public sealed partial class ScalingViewport
         return false;
     }
 
-    private bool TryRenderZLevels(IRenderHandle handle, IClydeViewport viewport)
+    private bool TryRenderLevelsBelow(IRenderHandle handle, IClydeViewport viewport)
     {
         if (_eye is null)
             return false;
@@ -140,7 +140,7 @@ public sealed partial class ScalingViewport
                 Position = pos,
                 DrawFov = false,
                 DrawLight = false,
-                Offset = _eye.Offset + new Vector2(0f, depth * 0.8f),
+                Offset = _eye.Offset + new Vector2(0f, depth * CEClientZLevelsSystem.ZLevelOffset),
                 Rotation = _eye.Rotation,
                 Scale = _eye.Scale,
                 Depth = depth,
