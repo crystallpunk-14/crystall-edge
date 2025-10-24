@@ -1,7 +1,7 @@
 - type: entity
   parent:
   - BaseStructure
-  id: CP14BaseWorkbench
+  id: CEBaseWorkbench
   categories: [ ForkFiltered ]
   abstract: true
   components:
@@ -13,18 +13,18 @@
     sprite: _CE/Structures/workbench.rsi
     state: filler
   - type: ActivatableUI
-    key: enum.CP14WorkbenchUiKey.Key
+    key: enum.CEWorkbenchUiKey.Key
     requiresComplex: true
     singleUser: true
   - type: Climbable
   - type: Clickable
-  - type: CP14Workbench
+  - type: CEWorkbench
     craftSpeed: 1
   - type: InteractionOutline
   - type: UserInterface
     interfaces:
-      enum.CP14WorkbenchUiKey.Key:
-        type: CP14WorkbenchBoundUserInterface
+      enum.CEWorkbenchUiKey.Key:
+        type: CEWorkbenchBoundUserInterface
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: CEWood
