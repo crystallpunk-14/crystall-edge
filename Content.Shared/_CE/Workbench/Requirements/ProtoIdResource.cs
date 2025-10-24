@@ -52,7 +52,7 @@ public sealed partial class ProtoIdResource : CEWorkbenchCraftRequirement
         if (!protoManager.TryIndex(ProtoId, out var indexedProto))
             return 0;
 
-        var priceSys = entManager.System<CESharedStationEconomySystem>();
+        var priceSys = entManager.System<CEEconomySystem>();
 
         return priceSys.GetEstimatedPrice(indexedProto) * Count;
     }

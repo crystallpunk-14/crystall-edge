@@ -75,7 +75,7 @@ public sealed partial class StackResource : CEWorkbenchCraftRequirement
         if (!protoManager.TryIndex(indexedStack.Spawn, out var indexedProto))
             return 0;
 
-        var priceSys = entManager.System<CESharedStationEconomySystem>();
+        var priceSys = entManager.System<CEEconomySystem>();
 
         return priceSys.GetEstimatedPrice(indexedProto) * Count;
     }

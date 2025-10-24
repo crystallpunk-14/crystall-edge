@@ -3,7 +3,6 @@
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
 
-using Content.Shared._CE.Skill;
 using Content.Shared._CE.Workbench;
 using Content.Shared.Placeable;
 
@@ -11,8 +10,6 @@ namespace Content.Server._CE.Workbench;
 
 public sealed partial class CEWorkbenchSystem
 {
-    [Dependency] private readonly CESharedSkillSystem _skill = default!;
-
     private void OnCraft(Entity<CEWorkbenchComponent> entity, ref CEWorkbenchUiCraftMessage args)
     {
         if (!entity.Comp.Recipes.Contains(args.Recipe))

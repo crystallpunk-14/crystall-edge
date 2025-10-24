@@ -6,7 +6,6 @@
 using System.Numerics;
 using Content.Server.DoAfter;
 using Content.Server.Popups;
-using Content.Shared._CE.Skill;
 using Content.Shared._CE.Workbench;
 using Content.Shared._CE.Workbench.Prototypes;
 using Content.Shared.DoAfter;
@@ -22,7 +21,6 @@ namespace Content.Server._CE.Workbench;
 public sealed partial class CEWorkbenchSystem : CESharedWorkbenchSystem
 {
     [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly DoAfterSystem _doAfter = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
