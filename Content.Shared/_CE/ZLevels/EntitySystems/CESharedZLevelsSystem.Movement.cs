@@ -143,6 +143,11 @@ public abstract partial class CESharedZLevelsSystem
         Dirty(zPhys);
     }
 
+    /// <summary>
+    /// Checks whether there is a floor under the feet of the specified entity (tiles at the entity level).
+    /// </summary>
+    /// <param name="target"></param>
+    /// <returns></returns>
     public bool HasGround(EntityUid target)
     {
         var map = Transform(target).MapUid;
@@ -155,6 +160,10 @@ public abstract partial class CESharedZLevelsSystem
         return false;
     }
 
+    /// <summary>
+    /// Checks whether there is a ceiling above the specified entity (tiles on the layer above).
+    /// If there are no Z-levels above, false will be returned.
+    /// </summary>
     public bool HasRoof(EntityUid target)
     {
         var mapUid = Transform(target).MapUid;
