@@ -34,8 +34,6 @@
         layer:
         - WallLayer
         density: 1000
-  - type: CEZLevelRoofPlacer
-    tile: CEFloorFoundation
 
 - type: entity
   id: CEBaseWallFrame
