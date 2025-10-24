@@ -88,7 +88,7 @@ public sealed partial class CEWorkbenchSystem : CESharedWorkbenchSystem
 
         if (!CanCraftRecipe(recipe, resources, args.User))
         {
-            _popup.PopupEntity(Loc.GetString("cp14-workbench-cant-craft"), ent, args.User);
+            _popup.PopupEntity(Loc.GetString("ce-workbench-cant-craft"), ent, args.User);
             return;
         }
 

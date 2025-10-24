@@ -93,7 +93,7 @@ public sealed partial class SolutionResource : CEWorkbenchCraftRequirement
         if (!protoManager.TryIndex(Reagent, out var indexedReagent))
             return string.Empty;
 
-        return Loc.GetString("cp14-workbench-reagent-req",
+        return Loc.GetString("ce-workbench-reagent-req",
             ("reagent", indexedReagent.LocalizedName),
             ("count", Amount),
             ("purity", Purity * 100));

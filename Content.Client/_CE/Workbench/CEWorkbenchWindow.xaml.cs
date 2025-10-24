@@ -45,7 +45,7 @@ public sealed partial class CEWorkbenchWindow : DefaultWindow
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
 
-        Sawmill = _log.GetSawmill("cp14_workbench_window");
+        Sawmill = _log.GetSawmill("ce_workbench_window");
 
         SearchBar.OnTextChanged += OnSearchChanged;
         CraftButton.OnPressed += OnCraftPressed;
@@ -126,7 +126,7 @@ public sealed partial class CEWorkbenchWindow : DefaultWindow
         _categories.Clear();
         _uncategorized.Clear();
         OptionCategories.Clear();
-        OptionCategories.AddItem(Loc.GetString("cp14-recipe-category-all"), AllCategoryId);
+        OptionCategories.AddItem(Loc.GetString("ce-recipe-category-all"), AllCategoryId);
 
         // First, we sort all the recipes by priority and category.
         var sortedRecipes = recipesState.Recipes
