@@ -1,6 +1,7 @@
 using System.Numerics;
 using Content.Shared._CE.ZLevels;
 using Content.Shared._CE.ZLevels.EntitySystems;
+using Content.Shared.Camera;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 
@@ -10,6 +11,7 @@ public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
 {
     [Dependency] private readonly IOverlayManager _overlay = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
+    [Dependency] private readonly SharedEyeSystem _eye = default!;
 
     public static float ZLevelOffset = 0.7f;
 
@@ -19,6 +21,12 @@ public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
         _overlay.AddOverlay(new CEZLevelOverlay());
 
         SubscribeLocalEvent<CEZPhysicsComponent, ComponentStartup>(OnStartup);
+        SubscribeLocalEvent<CEZPhysicsComponent, GetEyeOffsetEvent>(OnEyeOffset);
+    }
+
+    private void OnEyeOffset(Entity<CEZPhysicsComponent> ent, ref GetEyeOffsetEvent args)
+    {
+        args.Offset += new Vector2(0, ent.Comp.LocalPosition * ZLevelOffset);
     }
 
     private void OnStartup(Entity<CEZPhysicsComponent> ent, ref ComponentStartup args)
