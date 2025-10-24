@@ -1,0 +1,225 @@
+#- type: construction
+#  hide: false
+#  id: CEChairWooden
+#  graph: CESeat
+#  startNode: start
+#  targetNode: CEChairWooden
+#  category: construction-category-furniture
+#  objectType: Structure
+#  placementMode: SnapgridCenter
+#  canBuildInImpassable: false
+#  conditions:
+#    - !type:TileNotBlocked
+
+#- type: construction
+#  hide: false
+#  id: CEStoolWooden
+#  graph: CEStool
+#  startNode: start
+#  targetNode: CEStoolWooden
+#  category: construction-category-furniture
+#  objectType: Structure
+#  placementMode: SnapgridCenter
+#  canBuildInImpassable: false
+#  conditions:
+#  - !type:TileNotBlocked
+
+- type: construction
+  hide: false
+  id: CETableWooden
+  graph: CETableWooden
+  startNode: start
+  targetNode: CETableWooden
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  hide: false
+  id: CETableWoodenRound
+  graph: CETableWoodenRound
+  startNode: start
+  targetNode: CETableWoodenRound
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  hide: false
+  id: CETableWoodenCounter
+  graph: CETableWooden
+  startNode: start
+  targetNode: CETableWoodenCounter
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  hide: false
+  id: CETableWoodenCounter
+  graph: CETableWooden
+  startNode: start
+  targetNode: CETableWoodenCounter
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+#- type: construction
+#  hide: false
+#  id: CEOrderBoard
+#  graph: CEOrderBoard
+#  startNode: start
+#  targetNode: CEOrderBoard
+#  category: construction-category-furniture
+#  objectType: Structure
+#  placementMode: SnapgridCenter
+#  canBuildInImpassable: false
+#  canRotate: true
+#  conditions:
+#    - !type:TileNotBlocked
+#
+#- type: construction
+#  hide: false
+#  id: CEMannequin
+#  graph: CEMannequin
+#  startNode: start
+#  targetNode: CEmannequin
+#  category: construction-category-furniture
+#  objectType: Structure
+#  placementMode: SnapgridCenter
+#  canRotate: true
+#  canBuildInImpassable: false
+#  conditions:
+#    - !type:TileNotBlocked
+#
+#- type: construction
+#  hide: false
+#  id: CETargetStake
+#  graph: CETargetStake
+#  startNode: start
+#  targetNode: CEtargetStake
+#  category: construction-category-furniture
+#  objectType: Structure
+#  placementMode: SnapgridCenter
+#  canBuildInImpassable: false
+#  conditions:
+#    - !type:TileNotBlocked
+#
+#- type: construction
+#  hide: false
+#  id: CETarget
+#  graph: CETargetStake
+#  startNode: start
+#  targetNode: CEtarget
+#  category: construction-category-furniture
+#  objectType: Structure
+#  placementMode: SnapgridCenter
+#  canBuildInImpassable: false
+#  conditions:
+#    - !type:TileNotBlocked
+#
+#- type: construction
+#  hide: false
+#  id: CETargetEffigy
+#  graph: CETargetEffigy
+#  startNode: start
+#  targetNode: CEtargetEffigy
+#  category: construction-category-furniture
+#  objectType: Structure
+#  placementMode: SnapgridCenter
+#  canRotate: true
+#  canBuildInImpassable: false
+#  conditions:
+#    - !type:TileNotBlocked
+#
+#- type: construction
+#  hide: false
+#  id: CEWoodenBed
+#  graph: CEWoodenBed
+#  startNode: start
+#  targetNode: CEWoodenBed
+#  category: construction-category-furniture
+#  objectType: Structure
+#  placementMode: SnapgridCenter
+#  canRotate: false
+#  canBuildInImpassable: false
+#  conditions:
+#    - !type:TileNotBlocked
+
+#- type: construction
+#  hide: false
+#  id: CEBenchWood
+#  graph: CEBenchWood
+#  startNode: start
+#  targetNode: CEBenchWood
+#  category: construction-category-furniture
+#  objectType: Structure
+#  placementMode: SnapgridCenter
+#  canRotate: true
+#  canBuildInImpassable: false
+#  conditions:
+#    - !type:TileNotBlocked
+
+#- type: construction
+#  hide: false
+#  id: CEWoodenCloset
+#  graph: CEWoodenCloset
+#  startNode: start
+#  targetNode: CEWoodenCloset
+#  category: construction-category-furniture
+#  objectType: Structure
+#  placementMode: SnapgridCenter
+#  canBuildInImpassable: false
+#  conditions:
+#    - !type:TileNotBlocked
+#
+#- type: construction
+#  hide: false
+#  id: CEWoodenCabinet
+#  graph: CEWoodenCabinet
+#  startNode: start
+#  targetNode: CEWoodenCabinet
+#  category: construction-category-furniture
+#  objectType: Structure
+#  placementMode: SnapgridCenter
+#  canBuildInImpassable: false
+#  conditions:
+#    - !type:TileNotBlocked
+#
+#- type: construction
+#  hide: false
+#  id: CEIronCabinet
+#  graph: CEIronCabinet
+#  startNode: start
+#  targetNode: CEIronCabinet
+#  category: construction-category-furniture
+#  objectType: Structure
+#  placementMode: SnapgridCenter
+#  canBuildInImpassable: false
+#  conditions:
+#    - !type:TileNotBlocked
+#
+#- type: construction
+#  hide: false
+#  id: CEFurnace
+#  graph: CEFurnace
+#  startNode: start
+#  targetNode: CEFurnace
+#  category: construction-category-furniture
+#  objectType: Structure
+#  placementMode: SnapgridCenter
+#  canBuildInImpassable: false
+#  conditions:
+#    - !type:TileNotBlocked

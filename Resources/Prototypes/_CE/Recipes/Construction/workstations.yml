@@ -1,0 +1,51 @@
+- type: construction
+  hide: false
+  id: CEWorkbench
+  graph: CEWorkbench
+  startNode: start
+  targetNode: CEWorkbench
+  category: construction-category-machines
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+#- type: construction
+#  hide: false
+#  id: CEWorkbenchCooking
+#  graph: CEWorkbenchCooking
+#  startNode: start
+#  targetNode: CEWorkbenchCooking
+#  category: construction-category-machines
+#  objectType: Structure
+#  placementMode: SnapgridCenter
+#  canBuildInImpassable: false
+#  conditions:
+#    - !type:TileNotBlocked
+#
+#- type: construction
+#  hide: false
+#  id: CEWorkbenchSewing
+#  graph: CEWorkbenchSewing
+#  startNode: start
+#  targetNode: CEWorkbenchSewing
+#  category: construction-category-machines
+#  objectType: Structure
+#  placementMode: SnapgridCenter
+#  canBuildInImpassable: false
+#  conditions:
+#    - !type:TileNotBlocked
+#
+#- type: construction
+#  hide: false
+#  id: CEWorkbenchLeather
+#  graph: CEWorkbenchLeather
+#  startNode: start
+#  targetNode: CEWorkbenchLeather
+#  category: construction-category-machines
+#  objectType: Structure
+#  placementMode: SnapgridCenter
+#  canBuildInImpassable: false
+#  conditions:
+#    - !type:TileNotBlocked
