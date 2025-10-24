@@ -11,11 +11,6 @@
             - material: CEWoodenPlanks
               amount: 1
               doAfter: 1
-        - to: CETableWoodenBirchFrame
-          steps:
-          - material: CEBirchWoodenPlanks
-            amount: 1
-            doAfter: 1
 
     - node: CETableWoodenFrame
       entity: CETableWoodenFrame
@@ -101,7 +96,7 @@
       edges:
         - to: CEWorkbench
           steps:
-            - stackGroup: WoodenPlanks
+            - material: CEWoodenPlanks
               amount: 3
               doAfter: 2
     - node: CEWorkbench
@@ -126,7 +121,7 @@
 #      edges:
 #        - to: CEWorkbenchCooking
 #          steps:
-#            - stackGroup: WoodenPlanks
+#            - material: CEWoodenPlanks
 #              amount: 3
 #              doAfter: 2
 #    - node: CEWorkbenchCooking
@@ -151,7 +146,7 @@
 #      edges:
 #        - to: CEWorkbenchSewing
 #          steps:
-#            - stackGroup: WoodenPlanks
+#            - material: CEWoodenPlanks
 #              amount: 3
 #              doAfter: 2
 #    - node: CEWorkbenchSewing
@@ -176,7 +171,7 @@
 #      edges:
 #        - to: CEWorkbenchLeather
 #          steps:
-#            - stackGroup: WoodenPlanks
+#            - material: CEWoodenPlanks
 #              amount: 3
 #              doAfter: 2
 #    - node: CEWorkbenchLeather
