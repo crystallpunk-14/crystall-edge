@@ -510,25 +510,21 @@ entities:
   - uid: 39
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: -14.5,-6.5
       parent: 1
   - uid: 46
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: -10.5,-6.5
       parent: 1
   - uid: 58
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: -11.5,-6.5
       parent: 1
   - uid: 60
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: -13.5,-6.5
       parent: 1
 ...
