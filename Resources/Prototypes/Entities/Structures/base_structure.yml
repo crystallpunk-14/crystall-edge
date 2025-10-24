@@ -26,6 +26,8 @@
   - type: Tag
     tags:
       - Structure
+  #CrystallEdge
+  - type: CEZPhysics
 
 - type: entity
   # This means that it's not anchored on spawn.

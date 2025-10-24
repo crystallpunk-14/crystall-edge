@@ -18,28 +18,33 @@ public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
         base.Initialize();
         _overlay.AddOverlay(new CEZLevelOverlay());
 
-        SubscribeLocalEvent<CEZLevelPhysicsComponent, ComponentStartup>(OnStartup);
+        SubscribeLocalEvent<CEZPhysicsComponent, ComponentStartup>(OnStartup);
     }
 
-    private void OnStartup(Entity<CEZLevelPhysicsComponent> ent, ref ComponentStartup args)
+    private void OnStartup(Entity<CEZPhysicsComponent> ent, ref ComponentStartup args)
     {
         if (!TryComp<SpriteComponent>(ent, out var sprite))
             return;
 
-        if (sprite.NoRotation || sprite.SnapCardinals)
+        if (sprite.SnapCardinals)
             return;
 
-        sprite.NoRotation = true;
+        ent.Comp.NoRotDefault = sprite.NoRotation;
     }
 
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
 
-        var query = EntityQueryEnumerator<CEZLevelPhysicsComponent, SpriteComponent>();
+        var query = EntityQueryEnumerator<CEZPhysicsComponent, SpriteComponent>();
         while (query.MoveNext(out var uid, out var zPhys, out var sprite))
         {
-            _sprite.SetOffset((uid, sprite), new Vector2(0, zPhys.LocalHeight * ZLevelOffset));
+            if (zPhys.LocalPosition != 0)
+                sprite.NoRotation = true;
+            else
+                sprite.NoRotation = zPhys.NoRotDefault;
+
+            _sprite.SetOffset((uid, sprite), new Vector2(0, zPhys.LocalPosition * ZLevelOffset));
         }
     }
 

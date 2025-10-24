@@ -7,7 +7,7 @@ namespace Content.Shared._CE.ZLevels;
 /// Allows an entity to move up and down the z-levels by gravity or jumping
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true), Access(typeof(CESharedZLevelsSystem))]
-public sealed partial class CEZLevelPhysicsComponent : Component
+public sealed partial class CEZPhysicsComponent : Component
 {
     /// <summary>
     /// The current speed of movement between z-levels.
@@ -21,5 +21,13 @@ public sealed partial class CEZLevelPhysicsComponent : Component
     /// Takes values from 0 to 1. If the value rises above 1, the entity moves up to the next level and the value is normalized.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public float LocalHeight = 0f;
+    public float LocalPosition = 0f;
+
+    /// <summary>
+    /// Used only by the client.
+    /// Blocks the rotation of an object if it has LocalHeight != 0,
+    /// and saves the original NoRot value in SpriteComponent here so that it can be restored in the future.
+    /// </summary>
+    [DataField]
+    public bool NoRotDefault = false;
 }

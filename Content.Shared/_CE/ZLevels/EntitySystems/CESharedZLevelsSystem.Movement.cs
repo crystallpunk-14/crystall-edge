@@ -10,6 +10,7 @@ using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
@@ -37,15 +38,16 @@ public abstract partial class CESharedZLevelsSystem
     private const float ImpactVelocityLimit = 2.0f;
 
     private EntityQuery<MapGridComponent> _gridQuery;
+    private EntityQuery<CEZLevelSupportComponent> _supportQuery;
     private EntityQuery<GhostComponent> _ghostQuery;
 
     private void InitMovement()
     {
         _gridQuery = GetEntityQuery<MapGridComponent>();
+        _supportQuery = GetEntityQuery<CEZLevelSupportComponent>();
         _ghostQuery = GetEntityQuery<GhostComponent>();
 
         SubscribeLocalEvent<DamageableComponent, CEZLevelHitEvent>(OnFallEvent);
-        SubscribeLocalEvent<PhysicsComponent, MapInitEvent>(OnPhysicMapInit);
     }
 
     private void OnFallEvent(Entity<DamageableComponent> ent, ref CEZLevelHitEvent args)
@@ -59,39 +61,31 @@ public abstract partial class CESharedZLevelsSystem
         _damage.TryChangeDamage(ent.Owner, new DamageSpecifier(damageType, damageAmount));
     }
 
-    private void OnPhysicMapInit(Entity<PhysicsComponent> ent, ref MapInitEvent args)
-    {
-        if (_ghostQuery.HasComp(ent))
-            return;
-
-        EnsureComp<CEZLevelPhysicsComponent>(ent);
-    }
-
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
 
-        var query = EntityQueryEnumerator<CEZLevelPhysicsComponent, TransformComponent, PhysicsComponent>();
+        var query = EntityQueryEnumerator<CEZPhysicsComponent, TransformComponent, PhysicsComponent>();
         while (query.MoveNext(out var uid, out var zPhys, out var xform, out var physics))
         {
-            //if (!physics.Awake)
-            //    continue;
+            if (physics.BodyType == BodyType.Static)
+                continue;
 
             var grounded = HasGround(uid);
 
             var oldVelocity = zPhys.Velocity;
-            var oldHeight = zPhys.LocalHeight;
+            var oldHeight = zPhys.LocalPosition;
 
             //Gravity force application
             ApplyZGravityForce(uid, zPhys, xform, physics, frameTime);
 
             //Movement application
-            zPhys.LocalHeight += zPhys.Velocity * frameTime;
-            if (zPhys.LocalHeight < 0) //Falling down
+            zPhys.LocalPosition += zPhys.Velocity * frameTime;
+            if (zPhys.LocalPosition < 0) //Falling down
             {
                 if (grounded)
                 {
-                    zPhys.LocalHeight = 0;
+                    zPhys.LocalPosition = 0;
 
                     if (MathF.Abs(zPhys.Velocity) >= ImpactVelocityLimit)
                     {
@@ -105,14 +99,14 @@ public abstract partial class CESharedZLevelsSystem
                 else //Fall down
                 {
                     if (TryMoveDownOrChasm(uid))
-                        zPhys.LocalHeight += 1;
+                        zPhys.LocalPosition += 1;
                 }
             }
-            else if (zPhys.LocalHeight > 1) //Going up
+            else if (zPhys.LocalPosition > 1) //Going up
             {
                 if (HasRoof(uid)) //Hit roof
                 {
-                    zPhys.LocalHeight = 1;
+                    zPhys.LocalPosition = 1;
 
                     if (MathF.Abs(zPhys.Velocity) >= ImpactVelocityLimit)
                     {
@@ -126,19 +120,19 @@ public abstract partial class CESharedZLevelsSystem
                 else //Move up
                 {
                     if (TryMoveUp(uid))
-                        zPhys.LocalHeight -= 1;
+                        zPhys.LocalPosition -= 1;
                 }
             }
 
             if (Math.Abs(oldVelocity - zPhys.Velocity) > 0.01f)
-                DirtyField(uid, zPhys, nameof(CEZLevelPhysicsComponent.Velocity));
+                DirtyField(uid, zPhys, nameof(CEZPhysicsComponent.Velocity));
 
-            if (Math.Abs(oldHeight - zPhys.LocalHeight) > 0.01f)
-                DirtyField(uid, zPhys, nameof(CEZLevelPhysicsComponent.LocalHeight));
+            if (Math.Abs(oldHeight - zPhys.LocalPosition) > 0.01f)
+                DirtyField(uid, zPhys, nameof(CEZPhysicsComponent.LocalPosition));
         }
     }
 
-    private void ApplyZGravityForce(EntityUid uid, CEZLevelPhysicsComponent zPhys, TransformComponent xform, PhysicsComponent physics, float frameTime)
+    private void ApplyZGravityForce(EntityUid uid, CEZPhysicsComponent zPhys, TransformComponent xform, PhysicsComponent physics, float frameTime)
     {
         if (physics.BodyStatus == BodyStatus.InAir)
             return;
@@ -151,7 +145,7 @@ public abstract partial class CESharedZLevelsSystem
     }
 
     /// <summary>
-    /// Checks whether there is a floor under the feet of the specified entity (tiles at the same level).
+    /// Checks whether there is a floor under the feet of the specified entity (tiles at the same level, or anchored zLevelSupportComponent on level below).
     /// </summary>
     /// <param name="target"></param>
     /// <returns></returns>
@@ -161,8 +155,20 @@ public abstract partial class CESharedZLevelsSystem
         if (!_gridQuery.TryComp(map, out var mapGrid))
             return true; //uhhh, ehhh, ok?
 
-        if (_map.TryGetTileRef(map.Value, mapGrid, _transform.GetWorldPosition(target), out var tileRef) && !tileRef.Tile.IsEmpty)
+        var worldPos = _transform.GetGridOrMapTilePosition(target);
+        if (_map.TryGetTileRef(map.Value, mapGrid, worldPos, out var tileRef) && !tileRef.Tile.IsEmpty)
             return true;
+
+        //Check for zLevelSupportComponent on the level below
+        if (TryMapDown(map.Value, out var mapBelowId, out var mapBelowUid) && _gridQuery.TryComp(mapBelowUid, out var mapBelowComp))
+        {
+            var query = _map.GetAnchoredEntitiesEnumerator(mapBelowUid.Value, mapBelowComp, worldPos);
+            while (query.MoveNext(out var uid))
+            {
+                if (_supportQuery.HasComp(uid))
+                    return true;
+            }
+        }
 
         return false;
     }
