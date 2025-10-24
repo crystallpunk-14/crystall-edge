@@ -32,18 +32,18 @@ public sealed class CEZLevelOverlay : Overlay
         if (zeye.Depth <= 0)
             return false;
 
+        if (args.MapId == MapId.Nullspace)
+            return false;
+
+        if (args.Viewport.Eye is not ScalingViewport.ZEye)
+            return false;
+
         return true;
     }
 
     protected override void Draw(in OverlayDrawArgs args)
     {
-        if (args.MapId == MapId.Nullspace)
-            return;
-
         if (ScreenTexture == null || args.Viewport.Eye == null)
-            return;
-
-        if (args.Viewport.Eye is not ScalingViewport.ZEye)
             return;
 
         _blurShader?.SetParameter("SCREEN_TEXTURE", ScreenTexture);
