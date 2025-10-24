@@ -54,7 +54,7 @@ public abstract partial class CESharedZLevelsSystem
         _stun.TryKnockdown(ent.Owner, TimeSpan.FromSeconds(knockdownTime));
 
         var damageType = Proto.Index<DamageTypePrototype>("Blunt");
-        var damageAmount = Math.Pow(args.Velocity, 2.25f);
+        var damageAmount = args.Velocity * args.Velocity * MathF.Sqrt(args.Velocity);
 
         _damage.TryChangeDamage(ent.Owner, new DamageSpecifier(damageType, damageAmount));
     }
@@ -74,6 +74,14 @@ public abstract partial class CESharedZLevelsSystem
         var query = EntityQueryEnumerator<CEZLevelPhysicsComponent, TransformComponent, PhysicsComponent>();
         while (query.MoveNext(out var uid, out var zPhys, out var xform, out var physics))
         {
+            //if (!physics.Awake)
+            //    continue;
+
+            var grounded = HasGround(uid);
+
+            var oldVelocity = zPhys.Velocity;
+            var oldHeight = zPhys.LocalHeight;
+
             //Gravity force application
             ApplyZGravityForce(uid, zPhys, xform, physics, frameTime);
 
@@ -81,13 +89,13 @@ public abstract partial class CESharedZLevelsSystem
             zPhys.LocalHeight += zPhys.Velocity * frameTime;
             if (zPhys.LocalHeight < 0) //Falling down
             {
-                if (HasGround(uid))
+                if (grounded)
                 {
                     zPhys.LocalHeight = 0;
 
                     if (MathF.Abs(zPhys.Velocity) >= ImpactVelocityLimit)
                     {
-                        RaiseLocalEvent(uid, new CEZLevelHitEvent(MathF.Abs(zPhys.Velocity)));
+                        RaiseLocalEvent(uid, new CEZLevelHitEvent(-zPhys.Velocity));
                         var land = new LandEvent(null, true);
                         RaiseLocalEvent(uid, ref land);
                     }
@@ -121,6 +129,12 @@ public abstract partial class CESharedZLevelsSystem
                         zPhys.LocalHeight -= 1;
                 }
             }
+
+            if (Math.Abs(oldVelocity - zPhys.Velocity) > 0.01f)
+                DirtyField(uid, zPhys, nameof(CEZLevelPhysicsComponent.Velocity));
+
+            if (Math.Abs(oldHeight - zPhys.LocalHeight) > 0.01f)
+                DirtyField(uid, zPhys, nameof(CEZLevelPhysicsComponent.LocalHeight));
         }
     }
 
@@ -133,18 +147,11 @@ public abstract partial class CESharedZLevelsSystem
         if (xform.ParentUid != xform.MapUid)
             return;
 
-        var newVelocity = zPhys.Velocity - ZGravityForce * frameTime;
-        SetZVelocity((uid, zPhys), newVelocity);
-    }
-
-    private void SetZVelocity(Entity<CEZLevelPhysicsComponent> zPhys, float velocity)
-    {
-        zPhys.Comp.Velocity = velocity;
-        Dirty(zPhys);
+        zPhys.Velocity -= ZGravityForce * frameTime;
     }
 
     /// <summary>
-    /// Checks whether there is a floor under the feet of the specified entity (tiles at the entity level).
+    /// Checks whether there is a floor under the feet of the specified entity (tiles at the same level).
     /// </summary>
     /// <param name="target"></param>
     /// <returns></returns>

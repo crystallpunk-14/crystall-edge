@@ -4,9 +4,9 @@ using Robust.Shared.GameStates;
 namespace Content.Shared._CE.ZLevels;
 
 /// <summary>
-/// component that allows an object to fall down through zLevels
+/// Allows an entity to move up and down the z-levels by gravity or jumping
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, Access(typeof(CESharedZLevelsSystem))]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true), Access(typeof(CESharedZLevelsSystem))]
 public sealed partial class CEZLevelPhysicsComponent : Component
 {
     /// <summary>
