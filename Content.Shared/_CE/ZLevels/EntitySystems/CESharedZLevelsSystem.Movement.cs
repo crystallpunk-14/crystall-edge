@@ -28,7 +28,6 @@ public abstract partial class CESharedZLevelsSystem
     [Dependency] private readonly ActionBlockerSystem _blocker = default!;
 
     public const int MaxZLevelsBelowRendering = 3;
-    public const int MaxZLevelsAboveRendering = 1;
 
     private const float ZGravityForce = 7.0f;
 
