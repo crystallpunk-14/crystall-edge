@@ -3,6 +3,7 @@ using Content.Shared.Chasm;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Ghost;
+using Content.Shared.Popups;
 using Content.Shared.Stunnable;
 using Content.Shared.Throwing;
 using JetBrains.Annotations;
@@ -10,6 +11,7 @@ using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Network;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
@@ -26,6 +28,9 @@ public abstract partial class CESharedZLevelsSystem
     [Dependency] protected readonly IPrototypeManager Proto = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly ActionBlockerSystem _blocker = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly INetManager _net = default!;
 
     public const int MaxZLevelsBelowRendering = 3;
 
@@ -46,18 +51,41 @@ public abstract partial class CESharedZLevelsSystem
         _supportQuery = GetEntityQuery<CEZLevelSupportComponent>();
         _ghostQuery = GetEntityQuery<GhostComponent>();
 
-        SubscribeLocalEvent<DamageableComponent, CEZLevelHitEvent>(OnFallEvent);
+        SubscribeLocalEvent<DamageableComponent, CEZLevelHitEvent>(OnFallDamage);
+        SubscribeLocalEvent<PhysicsComponent, CEZLevelHitEvent>(OnFallAreaImpact);
     }
 
-    private void OnFallEvent(Entity<DamageableComponent> ent, ref CEZLevelHitEvent args)
+    private void OnFallDamage(Entity<DamageableComponent> ent, ref CEZLevelHitEvent args)
     {
-        var knockdownTime = MathF.Min(args.Velocity * 0.5f, 10f);
+        var knockdownTime = MathF.Min(args.ImpactPower * 0.5f, 10f);
         _stun.TryKnockdown(ent.Owner, TimeSpan.FromSeconds(knockdownTime));
 
         var damageType = Proto.Index<DamageTypePrototype>("Blunt");
-        var damageAmount = args.Velocity * args.Velocity * MathF.Sqrt(args.Velocity);
+        var damageAmount = args.ImpactPower * args.ImpactPower * MathF.Sqrt(args.ImpactPower);
 
         _damage.TryChangeDamage(ent.Owner, new DamageSpecifier(damageType, damageAmount));
+    }
+
+    /// <summary>
+    /// Cause AoE damage in impact point
+    /// </summary>
+    private void OnFallAreaImpact(Entity<PhysicsComponent> ent, ref CEZLevelHitEvent args)
+    {
+        var entitiesAround = _lookup.GetEntitiesInRange(ent, 0.25f, LookupFlags.Uncontained);
+
+        foreach (var victim in entitiesAround)
+        {
+            if (victim == ent.Owner)
+                continue;
+
+            var knockdownTime = MathF.Min(args.ImpactPower * ent.Comp.Mass * 0.1f, 10f);
+            _stun.TryKnockdown(victim, TimeSpan.FromSeconds(knockdownTime));
+
+            var damageType = Proto.Index<DamageTypePrototype>("Blunt");
+            var damageAmount = args.ImpactPower * ent.Comp.Mass * 0.25f;
+
+            _damage.TryChangeDamage(victim, new DamageSpecifier(damageType, damageAmount));
+        }
     }
 
     public override void Update(float frameTime)
@@ -243,7 +271,11 @@ public abstract partial class CESharedZLevelsSystem
     }
 }
 
-public sealed class CEZLevelHitEvent(float velocity) : EntityEventArgs
+/// <summary>
+/// It is called on an entity when it hits the floor or ceiling with force.
+/// </summary>
+/// <param name="impactPower">The speed at the moment of impact. Always positive</param>
+public sealed class CEZLevelHitEvent(float impactPower) : EntityEventArgs
 {
-    public float Velocity = velocity;
+    public float ImpactPower = impactPower;
 }
