@@ -1,0 +1,144 @@
+- type: entity
+  parent: CEBaseMobSpeciesOrganic
+  id: CEBaseMobTiefling
+  name: Mr. Tiefling
+  abstract: true
+  components:
+  - type: HumanoidAppearance
+    species: CETiefling
+  - type: Icon
+    sprite: _CE/Mobs/Species/Tiefling/parts.rsi
+    state: full
+  - type: Body
+    prototype: CETiefling
+    requiredLegs: 2
+  - type: Wagging
+#  - type: Bloodstream
+#    bloodReagent: CEBloodTiefling
+  - type: Damageable
+    damageContainer: CEBiological
+    damageModifierSet: CETiefling
+  - type: PassiveDamage
+    damageCap: 80
+    allowedStates:
+    - Alive
+    damage:
+      types:
+        Heat: -0.14 # Around 8 damage a minute healed (9.6 with burn regeneration below)
+#        CP14ManaDepletion: -0.05
+      groups:
+        Brute: -0.05
+        Burn: -0.02
+        Toxin: -0.03
+#  - type: CEMagicEnergyDraw
+#    energy: 0.75
+#    delay: 3 # 5m to full restore
+#  - type: CEMagicEnergyFromDamage
+#    damage:
+#      Heat: 1 #Magic regen from fire
+#      Cold: -1
+#  - type: CEAuraImprint
+#    imprintColor: "#e0762b"
+#  - type: CESkillStorage #Innate pyrokinetic
+#    freeLearnedSkills:
+#    - PyrokineticT1
+#    - PyrokineticT2
+  - type: Inventory
+    templateId: CEHuman
+    displacements:
+      neck:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Human/displacement.rsi
+            state: male_neck
+          48:
+            sprite: _CE/Mobs/Species/Human/displacement48.rsi
+            state: male_neck
+    femaleDisplacements:
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Human/displacement.rsi
+            state: female_cloak
+      cloak:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Human/displacement.rsi
+            state: female_cloak
+      gloves:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Human/displacement.rsi
+            state: female_cloak #Its ok for gloves
+      pants:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Human/displacement.rsi
+            state: female_pants
+      shirt:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Human/displacement.rsi
+            state: female_shirt
+      neck:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Human/displacement.rsi
+            state: female_neck
+          48:
+            sprite: _CE/Mobs/Species/Human/displacement48.rsi
+            state: female_neck
+
+
+- type: entity
+  parent: CEBaseSpeciesDummy
+  id: CEMobTieflingDummy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HumanoidAppearance
+    species: CETiefling
+  - type: Inventory
+    templateId: CEHuman
+    displacements:
+      neck:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Human/displacement.rsi
+            state: male_neck
+          48:
+            sprite: _CE/Mobs/Species/Human/displacement48.rsi
+            state: male_neck
+    femaleDisplacements:
+      cloak:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Human/displacement.rsi
+            state: female_cloak
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Human/displacement.rsi
+            state: female_cloak
+      gloves:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Human/displacement.rsi
+            state: female_cloak #Its ok for gloves
+      pants:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Human/displacement.rsi
+            state: female_pants
+      shirt:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Human/displacement.rsi
+            state: female_shirt
+      neck:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Human/displacement.rsi
+            state: female_neck
+          48:
+            sprite: _CE/Mobs/Species/Human/displacement48.rsi
+            state: female_neck

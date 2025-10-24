@@ -78,3 +78,23 @@
     Piercing: 10
     Heat: 10
     Structural: 10
+
+# Species
+
+- type: damageModifierSet
+  id: CETiefling
+  coefficients:
+    Heat: 0.5
+    Cold: 1.5
+
+- type: damageModifierSet
+  id: CEGoblin
+  coefficients:
+    Blunt: 1.25
+    Slash: 1.25
+    Piercing: 1.25
+    Heat: 1.25
+    Cold: 1.25
+    Shock: 1.25
+    Poison: 0.5
+    Caustic: 0.5

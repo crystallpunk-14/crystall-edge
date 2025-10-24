@@ -1,0 +1,192 @@
+- type: species
+  id: CEElf
+  name: ce-species-name-elf
+  roundStart: true
+  prototype: CEMobElf
+  sprites: CEMobElfSprites
+  markingLimits: CEMobElfMarkingLimits
+  dollPrototype: CEMobElfDummy
+  skinColoration: CEElf
+  maleFirstNames: CE_Names_Elf_Male_First
+  femaleFirstNames: CE_Names_Elf_Female_First
+  lastNames: CE_Names_Elf_Last
+
+- type: speciesBaseSprites
+  id: CEMobElfSprites
+  sprites:
+    Head: CEMobElfHead
+    HeadTop: CEMobElfMarkingMatchSkin
+    Hair: CEMobElfAnyMarking
+    FacialHair: CEMobElfAnyMarking
+    Snout: CEMobElfMarkingMatchSkin
+    Tail: CEMobElfMarkingMatchSkin
+    Chest: CEMobElfTorso
+    Eyes: CEMobElfEyes
+    LArm: CEMobElfLArm
+    RArm: CEMobElfRArm
+    LHand: CEMobElfLHand
+    RHand: CEMobElfRHand
+    LLeg: CEMobElfLLeg
+    RLeg: CEMobElfRLeg
+    LFoot: CEMobElfLFoot
+    RFoot: CEMobElfRFoot
+
+- type: markingPoints
+  id: CEMobElfMarkingLimits
+  points:
+    Hair:
+      points: 1
+      required: false
+    FacialHair:
+      points: 1
+      required: false
+    Snout:
+      points: 1
+      required: false
+    HeadTop:
+      points: 1
+      required: true
+      defaultMarkings: [ CEElfEars ]
+    Chest:
+      points: 1
+      required: false
+    Legs:
+      points: 2
+      required: false
+    Arms:
+      points: 2
+      required: false
+
+- type: humanoidBaseSprite
+  id: CEMobElfEyes
+  baseSprite:
+    sprite: _CE/Mobs/Customization/eyes.rsi
+    state: eyes
+
+- type: humanoidBaseSprite
+  id: CEMobElfAnyMarking
+
+- type: humanoidBaseSprite
+  id: CEMobElfMarkingMatchSkin
+  markingsMatchSkin: true
+
+- type: humanoidBaseSprite
+  id: CEMobElfHead
+  baseSprite:
+    sprite: _CE/Mobs/Species/Elf/parts.rsi
+    state: head
+
+- type: humanoidBaseSprite
+  id: CEMobElfHeadFemale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Elf/female_parts.rsi
+    state: head
+
+- type: humanoidBaseSprite
+  id: CEMobElfTorso
+  baseSprite:
+    sprite: _CE/Mobs/Species/Elf/parts.rsi
+    state: torso
+
+- type: humanoidBaseSprite
+  id: CEMobElfTorsoFemale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Elf/female_parts.rsi
+    state: torso
+
+- type: humanoidBaseSprite
+  id: CEMobElfLLeg
+  baseSprite:
+    sprite: _CE/Mobs/Species/Elf/parts.rsi
+    state: l_leg
+
+- type: humanoidBaseSprite
+  id: CEMobElfLLegFemale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Elf/female_parts.rsi
+    state: l_leg
+
+- type: humanoidBaseSprite
+  id: CEMobElfLArm
+  baseSprite:
+    sprite: _CE/Mobs/Species/Elf/parts.rsi
+    state: l_arm
+
+- type: humanoidBaseSprite
+  id: CEMobElfLArmFemale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Elf/female_parts.rsi
+    state: l_arm
+
+- type: humanoidBaseSprite
+  id: CEMobElfLHand
+  baseSprite:
+    sprite: _CE/Mobs/Species/Elf/parts.rsi
+    state: l_hand
+
+- type: humanoidBaseSprite
+  id: CEMobElfLHandFemale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Elf/female_parts.rsi
+    state: l_hand
+
+- type: humanoidBaseSprite
+  id: CEMobElfLFoot
+  baseSprite:
+    sprite: _CE/Mobs/Species/Elf/parts.rsi
+    state: l_foot
+
+- type: humanoidBaseSprite
+  id: CEMobElfLFootFemale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Elf/female_parts.rsi
+    state: l_foot
+
+- type: humanoidBaseSprite
+  id: CEMobElfRLeg
+  baseSprite:
+    sprite: _CE/Mobs/Species/Elf/parts.rsi
+    state: r_leg
+
+- type: humanoidBaseSprite
+  id: CEMobElfRLegFemale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Elf/female_parts.rsi
+    state: r_leg
+
+- type: humanoidBaseSprite
+  id: CEMobElfRArm
+  baseSprite:
+    sprite: _CE/Mobs/Species/Elf/parts.rsi
+    state: r_arm
+
+
+- type: humanoidBaseSprite
+  id: CEMobElfRArmFemale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Elf/female_parts.rsi
+    state: r_arm
+
+- type: humanoidBaseSprite
+  id: CEMobElfRHand
+  baseSprite:
+    sprite: _CE/Mobs/Species/Elf/parts.rsi
+    state: r_hand
+
+- type: humanoidBaseSprite
+  id: CEMobElfRHandFemale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Elf/female_parts.rsi
+    state: r_hand
+
+- type: humanoidBaseSprite
+  id: CEMobElfRFoot
+  baseSprite:
+    sprite: _CE/Mobs/Species/Elf/parts.rsi
+    state: r_foot
+
+- type: humanoidBaseSprite
+  id: CEMobElfRFootFemale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Elf/female_parts.rsi
+    state: r_foot
