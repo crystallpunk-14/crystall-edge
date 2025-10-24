@@ -1,0 +1,54 @@
+- type: entity
+  id: CEZLevelLadderBase
+  abstract: true
+  categories: [ ForkFiltered ]
+  parent: BaseStructure
+  name: stairs
+  description: Be careful, the higher you ascend, the more painful the fall.
+  placement:
+      mode: SnapgridCenter
+      snap:
+      - Wall
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _CE/Structures/ladders_up.rsi
+  - type: Transform
+    anchored: True
+  - type: InteractionOutline
+  - type: Clickable
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      portalFixture:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.48,0.48,0.48,0.05"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        hard: false
+  #- type: Portal
+  #  canTeleportToOtherMaps: true
+  #  randomTeleport: false
+  #  arrivalSound: /Audio/_CE/Effects/ladder_up.ogg
+  #  departureSound: /Audio/_CE/Effects/ladder_down.ogg
+  - type: CEZLevelSupport
+
+- type: entity
+  parent: CEZLevelLadderBase
+  id: CEZLevelLadderWooden
+  suffix: Wooden
+  components:
+  - type: Sprite
+    state: wood
+
+- type: entity
+  parent: CEZLevelLadderBase
+  id: CEZLevelLadderStone
+  suffix: Stone
+  components:
+  - type: Sprite
+    state: stone

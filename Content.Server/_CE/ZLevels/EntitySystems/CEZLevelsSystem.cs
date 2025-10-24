@@ -19,7 +19,6 @@ public sealed partial class CEZLevelsSystem : CESharedZLevelsSystem
     public override void Initialize()
     {
         base.Initialize();
-        InitializePortals(); //Delete and replace with some generic Z-level movements
         InitActions();
         InitView();
         InitApi();
