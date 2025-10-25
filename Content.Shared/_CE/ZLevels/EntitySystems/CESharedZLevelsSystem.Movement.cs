@@ -95,7 +95,6 @@ public abstract partial class CESharedZLevelsSystem
             if (physics.BodyType == BodyType.Static)
                 continue;
 
-
             var oldVelocity = zPhys.Velocity;
             var oldHeight = zPhys.LocalPosition;
 
@@ -106,27 +105,25 @@ public abstract partial class CESharedZLevelsSystem
             zPhys.LocalPosition += zPhys.Velocity * frameTime;
 
             var distanceToGround = DistanceToGround((uid, zPhys));
+            var currentFloorHeight = zPhys.LocalPosition - distanceToGround;
+
+            if (distanceToGround <= 0.05f) //Theres a ground
+            {
+                if (MathF.Abs(zPhys.Velocity) >= ImpactVelocityLimit)
+                {
+                    RaiseLocalEvent(uid, new CEZLevelHitEvent(-zPhys.Velocity));
+                    var land = new LandEvent(null, true);
+                    RaiseLocalEvent(uid, ref land);
+                }
+
+                zPhys.LocalPosition = currentFloorHeight;
+                zPhys.Velocity = -zPhys.Velocity * zPhys.Bounciness;
+            }
 
             if (zPhys.LocalPosition < 0) //We wanna fall down on ZLevel below
             {
-                if (distanceToGround <= 0.05f) //But there is ground
-                {
-                    if (MathF.Abs(zPhys.Velocity) >= ImpactVelocityLimit)
-                    {
-                        RaiseLocalEvent(uid, new CEZLevelHitEvent(-zPhys.Velocity));
-                        var land = new LandEvent(null, true);
-                        RaiseLocalEvent(uid, ref land);
-                    }
-
-                    //zPhys.LocalPosition = -distanceToGround; //If for some reason the distance to the ground is negative (the player is stuck inside a wall), it should automatically lift him up.
-                    zPhys.LocalPosition = 0;
-                    zPhys.Velocity = -zPhys.Velocity * zPhys.Bounciness;
-                }
-                else //Fall down
-                {
-                    if (TryMoveDownOrChasm(uid))
-                        zPhys.LocalPosition += 1;
-                }
+                if (TryMoveDownOrChasm(uid))
+                    zPhys.LocalPosition += 1;
             }
             else if (zPhys.LocalPosition > 1) //Going up
             {
@@ -166,12 +163,11 @@ public abstract partial class CESharedZLevelsSystem
         PhysicsComponent physics,
         float frameTime)
     {
-        if (physics.BodyStatus == BodyStatus.InAir)
+        if (physics.BodyStatus == BodyStatus.InAir || _ghostQuery.HasComp(uid) || xform.ParentUid != xform.MapUid)
+        {
+            zPhys.Velocity = 0;
             return;
-        if (_ghostQuery.HasComp(uid))
-            return;
-        if (xform.ParentUid != xform.MapUid)
-            return;
+        }
 
         if (zPhys.Velocity > 0)
             zPhys.Velocity -=
@@ -181,35 +177,32 @@ public abstract partial class CESharedZLevelsSystem
     }
 
     /// <summary>
-    /// Returns the distance to the floor. Returns <see cref="maxChecks"/> if the distance is too great.
+    /// Returns the distance to the floor. Returns <see cref="maxFloors"/> if the distance is too great.
     /// </summary>
     /// <param name="target">The entity, the distance to the floor which we calculate</param>
-    /// <param name="maxChecks">How many z-levels down are we prepared to check? The default is 1, since in most cases we don't need to check more than that.</param>
+    /// <param name="maxFloors">How many z-levels down are we prepared to check? The default is 1, since in most cases we don't need to check more than that.</param>
     /// <returns></returns>
-    public float DistanceToGround(Entity<CEZPhysicsComponent?> target, int maxChecks = 1)
+    public float DistanceToGround(Entity<CEZPhysicsComponent?> target, int maxFloors = 1)
     {
-        if (!Resolve(target,
-                ref target.Comp)) //maybe in future: simpler distance calculation for entities without zPhysComp?
-            return maxChecks;
-
-        var worldPos = _transform.GetGridOrMapTilePosition(target);
+        if (!Resolve(target, ref target.Comp)) //maybe in future: simpler distance calculation for entities without zPhysComp?
+            return maxFloors;
 
         var map = Transform(target).MapUid;
         if (!_gridQuery.TryComp(map, out var mapGrid))
-            return maxChecks; //uhhh, ehhh, ok?
+            return maxFloors; //uhhh, ehhh, ok?
+
+        var worldPos = _transform.GetGridOrMapTilePosition(target);
 
         //Мы сначала проверяем все прикрученные тайлы на текущем уровне, считая высоту. Если таких нет, и тайл пуст - мы проверяем уровень ниже, и ниже, и ниже...
-        var zDistance = target.Comp.LocalPosition;
 
-        for (var i = 0; i <= maxChecks; i++)
+        for (var floor = 0; floor <= maxFloors; floor++)
         {
             var checkingMapUid = map;
             var checkingMapComp = mapGrid;
 
-            if (i != 0) //Map checking selection
+            if (floor != 0) //Map checking selection
             {
-                zDistance++;
-                if (!TryMapOffset(map.Value, -i, out _, out checkingMapUid))
+                if (!TryMapOffset(map.Value, -floor, out _, out checkingMapUid))
                     continue;
                 if (!_gridQuery.TryComp(checkingMapUid, out checkingMapComp))
                     continue;
@@ -220,18 +213,16 @@ public abstract partial class CESharedZLevelsSystem
             while (query.MoveNext(out var uid))
             {
                 if (_supportQuery.TryComp(uid, out var support))
-                {
-                    return zDistance - support.Height;
-                }
+                    return target.Comp.LocalPosition + floor - support.Height;
             }
 
             //No ZEntities found, check floor tiles
             if (_map.TryGetTileRef(checkingMapUid.Value, checkingMapComp, worldPos, out var tileRef) &&
                 !tileRef.Tile.IsEmpty)
-                return zDistance;
+                return target.Comp.LocalPosition + floor;
         }
 
-        return maxChecks;
+        return maxFloors;
     }
 
     /// <summary>
