@@ -131,7 +131,7 @@ namespace Content.Shared.Throwing
             _broadphase.RegenerateContacts((uid, physics));
 
             //CrystallEdge dont call LandEvent if we dont have ground
-            if (!_zLevels.HasGround(uid))
+            if (_zLevels.DistanceToGround(uid) > 0)
                 return;
             //CrystallEdge end
             var landEvent = new LandEvent(thrownItem.Thrower, playSound);

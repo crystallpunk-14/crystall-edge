@@ -94,7 +94,7 @@ public abstract partial class CESharedZLevelsSystem
             if (physics.BodyType == BodyType.Static)
                 continue;
 
-            var grounded = HasGround(uid);
+            var distanceToGround = DistanceToGround((uid, zPhys));
 
             var oldVelocity = zPhys.Velocity;
             var oldHeight = zPhys.LocalPosition;
@@ -106,9 +106,9 @@ public abstract partial class CESharedZLevelsSystem
             zPhys.LocalPosition += zPhys.Velocity * frameTime;
             if (zPhys.LocalPosition < 0) //Falling down
             {
-                if (grounded)
+                if (distanceToGround <= 0)
                 {
-                    zPhys.LocalPosition = 0;
+                    zPhys.LocalPosition = -distanceToGround; //If for some reason the distance to the ground is negative (the player is stuck inside a wall), it should automatically lift him up.
 
                     if (MathF.Abs(zPhys.Velocity) >= ImpactVelocityLimit)
                     {
@@ -155,7 +155,11 @@ public abstract partial class CESharedZLevelsSystem
         }
     }
 
-    private void ApplyZGravityForce(EntityUid uid, CEZPhysicsComponent zPhys, TransformComponent xform, PhysicsComponent physics, float frameTime)
+    private void ApplyZGravityForce(EntityUid uid,
+        CEZPhysicsComponent zPhys,
+        TransformComponent xform,
+        PhysicsComponent physics,
+        float frameTime)
     {
         if (physics.BodyStatus == BodyStatus.InAir)
             return;
@@ -165,38 +169,64 @@ public abstract partial class CESharedZLevelsSystem
             return;
 
         if (zPhys.Velocity > 0)
-            zPhys.Velocity -= ZGravityForce * frameTime * 0.5f; //Gamedesign hack: we have less gravity, when moveing up.
+            zPhys.Velocity -=
+                ZGravityForce * frameTime * 0.5f; //Gamedesign hack: we have less gravity, when moveing up.
         else
             zPhys.Velocity -= ZGravityForce * frameTime;
     }
 
     /// <summary>
-    /// Checks whether there is a floor under the feet of the specified entity (tiles at the same level, or anchored zLevelSupportComponent on level below).
+    /// Returns the distance to the floor. Returns <see cref="maxChecks"/> if the distance is too great.
     /// </summary>
-    /// <param name="target"></param>
+    /// <param name="target">The entity, the distance to the floor which we calculate</param>
+    /// <param name="maxChecks">How many z-levels down are we prepared to check? The default is 1, since in most cases we don't need to check more than that.</param>
     /// <returns></returns>
-    public bool HasGround(EntityUid target)
+    public float DistanceToGround(Entity<CEZPhysicsComponent?> target, int maxChecks = 1)
     {
-        var map = Transform(target).MapUid;
-        if (!_gridQuery.TryComp(map, out var mapGrid))
-            return true; //uhhh, ehhh, ok?
+        if (!Resolve(target,
+                ref target.Comp)) //maybe in future: simpler distance calculation for entities without zPhysComp?
+            return maxChecks;
 
         var worldPos = _transform.GetGridOrMapTilePosition(target);
-        if (_map.TryGetTileRef(map.Value, mapGrid, worldPos, out var tileRef) && !tileRef.Tile.IsEmpty)
-            return true;
 
-        //Check for zLevelSupportComponent on the level below
-        if (TryMapDown(map.Value, out var mapBelowId, out var mapBelowUid) && _gridQuery.TryComp(mapBelowUid, out var mapBelowComp))
+        var map = Transform(target).MapUid;
+        if (!_gridQuery.TryComp(map, out var mapGrid))
+            return maxChecks; //uhhh, ehhh, ok?
+
+        //Мы сначала проверяем все прикрученные тайлы на текущем уровне, считая высоту. Если таких нет, и тайл пуст - мы проверяем уровень ниже, и ниже, и ниже...
+        var zDistance = target.Comp.LocalPosition;
+
+        for (var i = 0; i <= maxChecks; i++)
         {
-            var query = _map.GetAnchoredEntitiesEnumerator(mapBelowUid.Value, mapBelowComp, worldPos);
+            var checkingMapUid = map;
+            var checkingMapComp = mapGrid;
+
+            if (i != 0) //Map checking selection
+            {
+                zDistance++;
+                if (!TryMapOffset(map.Value, -i, out _, out checkingMapUid))
+                    continue;
+                if (!_gridQuery.TryComp(checkingMapUid, out checkingMapComp))
+                    continue;
+            }
+
+            //Check all types of ZHeight entities
+            var query = _map.GetAnchoredEntitiesEnumerator(checkingMapUid.Value, checkingMapComp, worldPos);
             while (query.MoveNext(out var uid))
             {
-                if (_supportQuery.HasComp(uid))
-                    return true;
+                if (_supportQuery.TryComp(uid, out var support))
+                {
+                    return zDistance - support.Height;
+                }
             }
+
+            //No ZEntities found, check floor tiles
+            if (_map.TryGetTileRef(checkingMapUid.Value, checkingMapComp, worldPos, out var tileRef) &&
+                !tileRef.Tile.IsEmpty)
+                return zDistance;
         }
 
-        return false;
+        return maxChecks;
     }
 
     /// <summary>
@@ -216,7 +246,8 @@ public abstract partial class CESharedZLevelsSystem
         if (!_gridQuery.TryComp(mapAboveUid.Value, out var mapAboveGrid))
             return false;
 
-        if (_map.TryGetTileRef(mapAboveUid.Value, mapAboveGrid, _transform.GetWorldPosition(target), out var tileRef) && !tileRef.Tile.IsEmpty)
+        if (_map.TryGetTileRef(mapAboveUid.Value, mapAboveGrid, _transform.GetWorldPosition(target), out var tileRef) &&
+            !tileRef.Tile.IsEmpty)
             return true;
 
         return false;
