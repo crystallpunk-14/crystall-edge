@@ -12,6 +12,7 @@ public sealed class CEZLevelDebugOverlay : Overlay
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly IResourceCache _cache = default!;
     private readonly CESharedZLevelsSystem _zLevels;
+    private readonly SharedTransformSystem _transform = default!;
     public override OverlaySpace Space => OverlaySpace.ScreenSpace;
 
     private readonly Font _font;
@@ -21,6 +22,7 @@ public sealed class CEZLevelDebugOverlay : Overlay
         IoCManager.InjectDependencies(this);
 
         _zLevels = _entityManager.System<CESharedZLevelsSystem>();
+        _transform = _entityManager.System<SharedTransformSystem>();
 
         _font = new VectorFont(_cache.GetResource<FontResource>("/Fonts/NotoSans/NotoSans-Regular.ttf"), 8);
     }
@@ -33,13 +35,13 @@ public sealed class CEZLevelDebugOverlay : Overlay
             if (xform.MapUid != xform.ParentUid)
                 continue;
 
-            var screenPos = args.ViewportControl?.WorldToScreen(xform.WorldPosition) ?? Vector2.Zero;
-            var depthText = $"Z position: {zPhys.LocalPosition}\nVelocity: {zPhys.Velocity}";
-            args.ScreenHandle.DrawString(_font, screenPos, depthText, Color.White);
 
-            //And draw lines from ent to ground
-            args.ScreenHandle.DrawDottedLine(screenPos, screenPos - new Vector2(0, zPhys.LocalPosition), Color.White);
-            args.ScreenHandle.DrawCircle(screenPos, 0.1f, Color.White);
+            var worldPos = _transform.GetWorldPosition(uid);
+            var screenPos = args.ViewportControl?.WorldToScreen(worldPos) ?? Vector2.Zero;
+
+            var groundDis = _zLevels.DistanceToGround(uid);
+            var depthText = $"Z position: {zPhys.LocalPosition}\nVelocity: {zPhys.Velocity}\n\nLocal tile position: {new Vector2(worldPos.X % 1, worldPos.Y % 1)}\n\nDistance to ground: {groundDis}";
+            args.ScreenHandle.DrawString(_font, screenPos, depthText, Color.White);
         }
     }
 }

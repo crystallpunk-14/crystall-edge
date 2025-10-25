@@ -1,3 +1,4 @@
+using System.Numerics;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Chasm;
 using Content.Shared.Damage;
@@ -39,12 +40,12 @@ public abstract partial class CESharedZLevelsSystem
     private const float ImpactVelocityLimit = 2.0f;
 
     private EntityQuery<MapGridComponent> _gridQuery;
-    private EntityQuery<CEZLevelSupportComponent> _supportQuery;
+    private EntityQuery<CEZLevelHighgroundComponent> _highgroundQuery;
 
     private void InitMovement()
     {
         _gridQuery = GetEntityQuery<MapGridComponent>();
-        _supportQuery = GetEntityQuery<CEZLevelSupportComponent>();
+        _highgroundQuery = GetEntityQuery<CEZLevelHighgroundComponent>();
 
         SubscribeLocalEvent<DamageableComponent, CEZLevelHitEvent>(OnFallDamage);
         SubscribeLocalEvent<PhysicsComponent, CEZLevelHitEvent>(OnFallAreaImpact);
@@ -176,7 +177,8 @@ public abstract partial class CESharedZLevelsSystem
         if (!_gridQuery.TryComp(map, out var mapGrid))
             return maxFloors; //uhhh, ehhh, ok?
 
-        var worldPos = _transform.GetGridOrMapTilePosition(target);
+        var worldPosI = _transform.GetGridOrMapTilePosition(target);
+        var worldPos = _transform.GetWorldPosition(target);
 
         //Мы сначала проверяем все прикрученные тайлы на текущем уровне, считая высоту. Если таких нет, и тайл пуст - мы проверяем уровень ниже, и ниже, и ниже...
 
@@ -194,15 +196,35 @@ public abstract partial class CESharedZLevelsSystem
             }
 
             //Check all types of ZHeight entities
-            var query = _map.GetAnchoredEntitiesEnumerator(checkingMapUid.Value, checkingMapComp, worldPos);
+            var query = _map.GetAnchoredEntitiesEnumerator(checkingMapUid.Value, checkingMapComp, worldPosI);
             while (query.MoveNext(out var uid))
             {
-                if (_supportQuery.TryComp(uid, out var support))
-                    return target.Comp.LocalPosition + floor - support.Height;
+                if (!_highgroundQuery.TryComp(uid, out var highground))
+                    continue;
+
+                var localTilePos = new Vector2(worldPos.X % 1, worldPos.Y % 1);
+                var rotation = _transform.GetWorldRotation(uid.Value);
+
+                //Theres some ChatGPT calculations.. i dont really understand them, but they work fine.
+                var dir = rotation.ToWorldVec();
+
+                var t = (localTilePos.X * dir.X + localTilePos.Y * dir.Y);
+                t = Math.Clamp(t, 0f, 1f);
+
+                var curve = highground.HeightCurve;
+                var step = 1f / (curve.Count - 1);
+                var index = (int)(t / step);
+                var frac = (t - index * step) / step;
+
+                var y0 = curve[Math.Clamp(index, 0, curve.Count - 1)];
+                var y1 = curve[Math.Clamp(index + 1, 0, curve.Count - 1)];
+
+                var height = MathHelper.Lerp(y0, y1, frac);
+                return target.Comp.LocalPosition + floor - height;
             }
 
             //No ZEntities found, check floor tiles
-            if (_map.TryGetTileRef(checkingMapUid.Value, checkingMapComp, worldPos, out var tileRef) &&
+            if (_map.TryGetTileRef(checkingMapUid.Value, checkingMapComp, worldPosI, out var tileRef) &&
                 !tileRef.Tile.IsEmpty)
                 return target.Comp.LocalPosition + floor;
         }
