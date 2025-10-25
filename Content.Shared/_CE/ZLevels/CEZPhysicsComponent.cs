@@ -30,4 +30,7 @@ public sealed partial class CEZPhysicsComponent : Component
     /// </summary>
     [DataField]
     public bool NoRotDefault = false;
+
+    [DataField, AutoNetworkedField]
+    public float Bounciness = 0.3f;
 }
