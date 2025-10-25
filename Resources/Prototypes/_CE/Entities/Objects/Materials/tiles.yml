@@ -75,7 +75,7 @@
     stackType: CEFloorTileOakWoodplanks
   - type: PhysicalComposition
     materialComposition:
-      CEWoodenPlanks: 5
+      CEWood: 5
 
 - type: entity
   parent: CEFloorTileBase
@@ -96,7 +96,7 @@
     stackType: CEFloorTileOakWoodplanksBig
   - type: PhysicalComposition
     materialComposition:
-      CEWoodenPlanks: 5
+      CEWood: 5
 
 - type: entity
   parent: CEFloorTileBase
@@ -117,7 +117,7 @@
     stackType: CEFloorTileOakWoodplanksCruciform
   - type: PhysicalComposition
     materialComposition:
-      CEWoodenPlanks: 5
+      CEWood: 5
 
 - type: entity
   parent: CEFloorTileBase
@@ -138,7 +138,7 @@
     stackType: CEFloorTileOakWoodplanksStairs
   - type: PhysicalComposition
     materialComposition:
-      CEWoodenPlanks: 5
+      CEWood: 5
 
 - type: entity
   parent: CEFloorTileBase
