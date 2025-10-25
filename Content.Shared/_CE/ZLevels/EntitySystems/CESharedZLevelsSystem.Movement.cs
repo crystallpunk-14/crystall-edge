@@ -3,7 +3,6 @@ using Content.Shared.Chasm;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Ghost;
-using Content.Shared.Popups;
 using Content.Shared.Stunnable;
 using Content.Shared.Throwing;
 using JetBrains.Annotations;
@@ -11,7 +10,6 @@ using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
-using Robust.Shared.Network;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
@@ -29,8 +27,6 @@ public abstract partial class CESharedZLevelsSystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly ActionBlockerSystem _blocker = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly INetManager _net = default!;
 
     public const int MaxZLevelsBelowRendering = 3;
 
@@ -168,7 +164,10 @@ public abstract partial class CESharedZLevelsSystem
         if (xform.ParentUid != xform.MapUid)
             return;
 
-        zPhys.Velocity -= ZGravityForce * frameTime;
+        if (zPhys.Velocity > 0)
+            zPhys.Velocity -= ZGravityForce * frameTime * 0.5f; //Gamedesign hack: we have less gravity, when moveing up.
+        else
+            zPhys.Velocity -= ZGravityForce * frameTime;
     }
 
     /// <summary>
