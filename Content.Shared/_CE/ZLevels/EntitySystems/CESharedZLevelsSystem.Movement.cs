@@ -31,6 +31,7 @@ public abstract partial class CESharedZLevelsSystem
     public const int MaxZLevelsBelowRendering = 3;
 
     private const float ZGravityForce = 7.0f;
+    private const float ZVelocityLimit = 20.0f;
 
     /// <summary>
     /// The minimum speed required to trigger LandEvent events.
@@ -94,7 +95,6 @@ public abstract partial class CESharedZLevelsSystem
             if (physics.BodyType == BodyType.Static)
                 continue;
 
-            var distanceToGround = DistanceToGround((uid, zPhys));
 
             var oldVelocity = zPhys.Velocity;
             var oldHeight = zPhys.LocalPosition;
@@ -104,12 +104,13 @@ public abstract partial class CESharedZLevelsSystem
 
             //Movement application
             zPhys.LocalPosition += zPhys.Velocity * frameTime;
-            if (zPhys.LocalPosition < 0) //Falling down
-            {
-                if (distanceToGround <= 0)
-                {
-                    zPhys.LocalPosition = -distanceToGround; //If for some reason the distance to the ground is negative (the player is stuck inside a wall), it should automatically lift him up.
 
+            var distanceToGround = DistanceToGround((uid, zPhys));
+
+            if (zPhys.LocalPosition < 0) //We wanna fall down on ZLevel below
+            {
+                if (distanceToGround <= 0.05f) //But there is ground
+                {
                     if (MathF.Abs(zPhys.Velocity) >= ImpactVelocityLimit)
                     {
                         RaiseLocalEvent(uid, new CEZLevelHitEvent(-zPhys.Velocity));
@@ -117,7 +118,9 @@ public abstract partial class CESharedZLevelsSystem
                         RaiseLocalEvent(uid, ref land);
                     }
 
-                    zPhys.Velocity = 0;
+                    //zPhys.LocalPosition = -distanceToGround; //If for some reason the distance to the ground is negative (the player is stuck inside a wall), it should automatically lift him up.
+                    zPhys.LocalPosition = 0;
+                    zPhys.Velocity = -zPhys.Velocity * zPhys.Bounciness;
                 }
                 else //Fall down
                 {
@@ -129,8 +132,6 @@ public abstract partial class CESharedZLevelsSystem
             {
                 if (HasRoof(uid)) //Hit roof
                 {
-                    zPhys.LocalPosition = 1;
-
                     if (MathF.Abs(zPhys.Velocity) >= ImpactVelocityLimit)
                     {
                         RaiseLocalEvent(uid, new CEZLevelHitEvent(zPhys.Velocity));
@@ -138,7 +139,8 @@ public abstract partial class CESharedZLevelsSystem
                         RaiseLocalEvent(uid, ref land);
                     }
 
-                    zPhys.Velocity = 0;
+                    zPhys.LocalPosition = 1;
+                    zPhys.Velocity = -zPhys.Velocity * zPhys.Bounciness;
                 }
                 else //Move up
                 {
@@ -146,6 +148,9 @@ public abstract partial class CESharedZLevelsSystem
                         zPhys.LocalPosition -= 1;
                 }
             }
+
+            if (Math.Abs(zPhys.Velocity) > ZVelocityLimit)
+                zPhys.Velocity = MathF.Sign(zPhys.Velocity) * ZVelocityLimit;
 
             if (Math.Abs(oldVelocity - zPhys.Velocity) > 0.01f)
                 DirtyField(uid, zPhys, nameof(CEZPhysicsComponent.Velocity));
