@@ -13,7 +13,7 @@
   - type: Transform
     noRot: true
   - type: Sprite
-    drawdepth: Mobs
+    drawdepth: BelowMobs
   - type: IconSmooth
     key: CEwall
     base: stone

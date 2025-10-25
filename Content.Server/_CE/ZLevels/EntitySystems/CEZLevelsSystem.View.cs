@@ -72,5 +72,14 @@ public sealed partial class CEZLevelsSystem
             _viewSubscriber.AddViewSubscriber(newEye, actor.PlayerSession);
             eyes.Add(newEye);
         }
+
+        if (TryMapUp(map.Value, out var mapUidAbove, out var aboveMapUid))
+        {
+            var newEye = SpawnAtPosition(null, new EntityCoordinates(aboveMapUid.Value, globalPos));
+
+            Transform(newEye).GridTraversal = false;
+            _viewSubscriber.AddViewSubscriber(newEye, actor.PlayerSession);
+            eyes.Add(newEye);
+        }
     }
 }

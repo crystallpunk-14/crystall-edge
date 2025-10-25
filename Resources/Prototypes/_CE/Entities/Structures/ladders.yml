@@ -13,7 +13,7 @@
   - type: PlacementReplacement
     key: walls
   - type: Sprite
-    drawdepth: Mobs
+    drawdepth: BelowMobs
     sprite: _CE/Structures/ladders_up.rsi
   - type: Transform
     anchored: True
@@ -26,18 +26,24 @@
       portalFixture:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.48,0.48,0.48,0.05"
+          bounds: "-0.5,0.6,0.5,0.5"
         mask:
         - FullTileMask
         layer:
         - WallLayer
-        hard: false
+        density: 1000
+        hard: true
   #- type: Portal
   #  canTeleportToOtherMaps: true
   #  randomTeleport: false
   #  arrivalSound: /Audio/_CE/Effects/ladder_up.ogg
   #  departureSound: /Audio/_CE/Effects/ladder_down.ogg
-  - type: CEZLevelSupport
+  - type: CEZLevelHighground
+    heightCurve:
+    - 1.1
+    - 1.1
+    - 0.5
+    - 0.1
 
 - type: entity
   parent: CEZLevelLadderBase

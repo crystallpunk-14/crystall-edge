@@ -27,6 +27,11 @@ public sealed class CEZLevelDebugOverlay : Overlay
         _font = new VectorFont(_cache.GetResource<FontResource>("/Fonts/NotoSans/NotoSans-Regular.ttf"), 8);
     }
 
+    protected override bool BeforeDraw(in OverlayDrawArgs args)
+    {
+        return false;
+    }
+
     protected override void Draw(in OverlayDrawArgs args)
     {
         var query = _entityManager.EntityQueryEnumerator<CEZPhysicsComponent, TransformComponent>();
@@ -35,12 +40,11 @@ public sealed class CEZLevelDebugOverlay : Overlay
             if (xform.MapUid != xform.ParentUid)
                 continue;
 
-
             var worldPos = _transform.GetWorldPosition(uid);
             var screenPos = args.ViewportControl?.WorldToScreen(worldPos) ?? Vector2.Zero;
-
+            var localTilePos = new Vector2((worldPos.X % 1 + 1) % 1, (worldPos.Y % 1 + 1) % 1);
             var groundDis = _zLevels.DistanceToGround(uid);
-            var depthText = $"Z position: {zPhys.LocalPosition}\nVelocity: {zPhys.Velocity}\n\nLocal tile position: {new Vector2(worldPos.X % 1, worldPos.Y % 1)}\n\nDistance to ground: {groundDis}";
+            var depthText = $"Local tile position: {localTilePos}\n\nDistance to ground: {groundDis}";
             args.ScreenHandle.DrawString(_font, screenPos, depthText, Color.White);
         }
     }

@@ -31,13 +31,13 @@ public abstract partial class CESharedZLevelsSystem
 
     public const int MaxZLevelsBelowRendering = 3;
 
-    private const float ZGravityForce = 7.0f;
+    private const float ZGravityForce = 9.8f;
     private const float ZVelocityLimit = 20.0f;
 
     /// <summary>
     /// The minimum speed required to trigger LandEvent events.
     /// </summary>
-    private const float ImpactVelocityLimit = 2.0f;
+    private const float ImpactVelocityLimit = 4.0f;
 
     private EntityQuery<MapGridComponent> _gridQuery;
     private EntityQuery<CEZLevelHighgroundComponent> _highgroundQuery;
@@ -53,11 +53,11 @@ public abstract partial class CESharedZLevelsSystem
 
     private void OnFallDamage(Entity<DamageableComponent> ent, ref CEZLevelHitEvent args)
     {
-        var knockdownTime = MathF.Min(args.ImpactPower * 0.5f, 10f);
+        var knockdownTime = MathF.Min(args.ImpactPower * 0.25f, 5f);
         _stun.TryKnockdown(ent.Owner, TimeSpan.FromSeconds(knockdownTime));
 
         var damageType = Proto.Index<DamageTypePrototype>("Blunt");
-        var damageAmount = args.ImpactPower * args.ImpactPower * MathF.Sqrt(args.ImpactPower);
+        var damageAmount = MathF.Pow(args.ImpactPower, 2);
 
         _damage.TryChangeDamage(ent.Owner, new DamageSpecifier(damageType, damageAmount));
     }
@@ -202,16 +202,31 @@ public abstract partial class CESharedZLevelsSystem
                 if (!_highgroundQuery.TryComp(uid, out var highground))
                     continue;
 
-                var localTilePos = new Vector2(worldPos.X % 1, worldPos.Y % 1);
-                var rotation = _transform.GetWorldRotation(uid.Value);
+                var dir = _transform.GetWorldRotation(uid.Value).GetCardinalDir();
 
-                //Theres some ChatGPT calculations.. i dont really understand them, but they work fine.
-                var dir = rotation.ToWorldVec();
+                var local = new Vector2((worldPos.X % 1 + 1) % 1, (worldPos.Y % 1 + 1) % 1);
 
-                var t = (localTilePos.X * dir.X + localTilePos.Y * dir.Y);
+                var t = dir switch
+                {
+                    Direction.East  => local.X,
+                    Direction.West  => 1f - local.X,
+                    Direction.North => local.Y,
+                    Direction.South => 1f - local.Y,
+                    _ => 0.5f
+                };
+
                 t = Math.Clamp(t, 0f, 1f);
 
                 var curve = highground.HeightCurve;
+                if (curve.Count == 0)
+                    continue;
+
+                if (curve.Count == 1)
+                {
+                    var h = curve[0];
+                    return target.Comp.LocalPosition + floor - h;
+                }
+
                 var step = 1f / (curve.Count - 1);
                 var index = (int)(t / step);
                 var frac = (t - index * step) / step;
@@ -220,6 +235,7 @@ public abstract partial class CESharedZLevelsSystem
                 var y1 = curve[Math.Clamp(index + 1, 0, curve.Count - 1)];
 
                 var height = MathHelper.Lerp(y0, y1, frac);
+
                 return target.Comp.LocalPosition + floor - height;
             }
 
