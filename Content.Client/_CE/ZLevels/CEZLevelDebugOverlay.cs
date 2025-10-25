@@ -30,6 +30,9 @@ public sealed class CEZLevelDebugOverlay : Overlay
         var query = _entityManager.EntityQueryEnumerator<CEZPhysicsComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out var zPhys, out var xform))
         {
+            if (xform.MapUid != xform.ParentUid)
+                continue;
+
             var screenPos = args.ViewportControl?.WorldToScreen(xform.WorldPosition) ?? Vector2.Zero;
             var depthText = $"Z position: {zPhys.LocalPosition}\nVelocity: {zPhys.Velocity}";
             args.ScreenHandle.DrawString(_font, screenPos, depthText, Color.White);

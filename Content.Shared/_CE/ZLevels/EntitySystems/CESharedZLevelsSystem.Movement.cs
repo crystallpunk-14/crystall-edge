@@ -40,13 +40,11 @@ public abstract partial class CESharedZLevelsSystem
 
     private EntityQuery<MapGridComponent> _gridQuery;
     private EntityQuery<CEZLevelSupportComponent> _supportQuery;
-    private EntityQuery<GhostComponent> _ghostQuery;
 
     private void InitMovement()
     {
         _gridQuery = GetEntityQuery<MapGridComponent>();
         _supportQuery = GetEntityQuery<CEZLevelSupportComponent>();
-        _ghostQuery = GetEntityQuery<GhostComponent>();
 
         SubscribeLocalEvent<DamageableComponent, CEZLevelHitEvent>(OnFallDamage);
         SubscribeLocalEvent<PhysicsComponent, CEZLevelHitEvent>(OnFallAreaImpact);
@@ -92,8 +90,14 @@ public abstract partial class CESharedZLevelsSystem
         var query = EntityQueryEnumerator<CEZPhysicsComponent, TransformComponent, PhysicsComponent>();
         while (query.MoveNext(out var uid, out var zPhys, out var xform, out var physics))
         {
-            if (physics.BodyType == BodyType.Static)
+            if (!zPhys.Active)
                 continue;
+
+            if (physics.BodyType == BodyType.Static || physics.BodyStatus == BodyStatus.InAir || xform.ParentUid != xform.MapUid)
+            {
+                zPhys.Velocity = 0;
+                continue;
+            }
 
             var oldVelocity = zPhys.Velocity;
             var oldHeight = zPhys.LocalPosition;
@@ -125,7 +129,7 @@ public abstract partial class CESharedZLevelsSystem
                 if (TryMoveDownOrChasm(uid))
                     zPhys.LocalPosition += 1;
             }
-            else if (zPhys.LocalPosition > 1) //Going up
+            else if (zPhys.LocalPosition >= 1) //Going up
             {
                 if (HasRoof(uid)) //Hit roof
                 {
@@ -163,12 +167,6 @@ public abstract partial class CESharedZLevelsSystem
         PhysicsComponent physics,
         float frameTime)
     {
-        if (physics.BodyStatus == BodyStatus.InAir || _ghostQuery.HasComp(uid) || xform.ParentUid != xform.MapUid)
-        {
-            zPhys.Velocity = 0;
-            return;
-        }
-
         if (zPhys.Velocity > 0)
             zPhys.Velocity -=
                 ZGravityForce * frameTime * 0.5f; //Gamedesign hack: we have less gravity, when moveing up.
