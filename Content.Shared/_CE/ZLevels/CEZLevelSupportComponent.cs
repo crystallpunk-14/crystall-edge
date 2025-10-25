@@ -13,7 +13,7 @@ public sealed partial class CEZLevelSupportComponent : Component
     /// Support height. Keep values between 0 and 1. If the value = 1, the height will be ideal so that you can essentially walk on the tile from above.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public float Height = 1f;
+    public float Height = 1.1f;
 
     /// <summary>
     /// The tile where this entity is attached is sloped in terms of Z-levels.

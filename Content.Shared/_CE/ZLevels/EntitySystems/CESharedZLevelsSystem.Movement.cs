@@ -103,7 +103,7 @@ public abstract partial class CESharedZLevelsSystem
             var oldHeight = zPhys.LocalPosition;
 
             //Gravity force application
-            ApplyZGravityForce(uid, zPhys, xform, physics, frameTime);
+            zPhys.Velocity -= ZGravityForce * frameTime;
 
             //Movement application
             zPhys.LocalPosition += zPhys.Velocity * frameTime;
@@ -159,19 +159,6 @@ public abstract partial class CESharedZLevelsSystem
             if (Math.Abs(oldHeight - zPhys.LocalPosition) > 0.01f)
                 DirtyField(uid, zPhys, nameof(CEZPhysicsComponent.LocalPosition));
         }
-    }
-
-    private void ApplyZGravityForce(EntityUid uid,
-        CEZPhysicsComponent zPhys,
-        TransformComponent xform,
-        PhysicsComponent physics,
-        float frameTime)
-    {
-        if (zPhys.Velocity > 0)
-            zPhys.Velocity -=
-                ZGravityForce * frameTime * 0.5f; //Gamedesign hack: we have less gravity, when moveing up.
-        else
-            zPhys.Velocity -= ZGravityForce * frameTime;
     }
 
     /// <summary>
