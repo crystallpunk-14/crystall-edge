@@ -205,7 +205,7 @@
   - 1.0
   - 1.0
   - 1.0
-  edgeSpritePriority: 1000 # Because snowfall!
+  edgeSpritePriority: 900 # Because snowfall!
   edgeSprites:
     SouthEast: /Textures/_CE/Tiles/SnowDeepDeep/single_edge_SE.png
     NorthEast: /Textures/_CE/Tiles/SnowDeepDeep/single_edge_NE.png
@@ -237,7 +237,7 @@
   - 1.0
   - 1.0
   - 1.0
-  edgeSpritePriority: 1001 # Because snowfall!
+  edgeSpritePriority: 901 # Because snowfall!
   edgeSprites:
     SouthEast: /Textures/_CE/Tiles/SnowDeep/single_edge_SE.png
     NorthEast: /Textures/_CE/Tiles/SnowDeep/single_edge_NE.png
@@ -269,7 +269,7 @@
   - 1.0
   - 1.0
   - 1.0
-  edgeSpritePriority: 1002 # Because snowfall!
+  edgeSpritePriority: 902 # Because snowfall!
   edgeSprites:
     SouthEast: /Textures/_CE/Tiles/Snow/single_edge_SE.png
     NorthEast: /Textures/_CE/Tiles/Snow/single_edge_NE.png

@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "license": "All right reserved",
+  "copyright": "Created by jaraten(discord), modified by vladimir.s. Cooking table by Max Gab, research_table by TheShuEd(github). tanner_table by PhantomRU(discord)",
+  "size": {
+    "x": 48,
+    "y": 48
+  },
+  "states": [
+    {
+      "name": "workbench"
+    },
+    {
+      "name": "filler"
+    },
+    {
+      "name": "cooking_table"
+    },
+    {
+      "name": "sewing_table"
+    },
+    {
+      "name": "research_table"
+    },
+    {
+      "name": "tanner_table"
+    }
+  ]
+}

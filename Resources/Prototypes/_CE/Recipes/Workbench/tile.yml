@@ -1,0 +1,107 @@
+- type: CERecipe
+  id: CEFloorTileFoundation
+  tag: CERecipeWorkbench
+  category: FloorTile
+  craftTime: 1
+  requirements:
+  - !type:StackResource
+    stack: CEStone
+    count: 1
+  result: CEFloorTileFoundation
+  resultCount: 4
+
+- type: CERecipe
+  id: CEFloorTileStonebricks
+  tag: CERecipeWorkbench
+  category: FloorTile
+  craftTime: 1
+  requirements:
+  - !type:StackResource
+    stack: CEStone
+    count: 1
+  result: CEFloorTileStonebricks
+  resultCount: 4
+
+- type: CERecipe
+  id: CEFloorTileStonebricksSmallCarved
+  tag: CERecipeWorkbench
+  category: FloorTile
+  craftTime: 1
+  requirements:
+  - !type:StackResource
+    stack: CEStone
+    count: 1
+  result: CEFloorTileStonebricksSmallCarved
+  resultCount: 4
+
+- type: CERecipe
+  id: CEFloorTileStonebricksSmallCarved2
+  tag: CERecipeWorkbench
+  category: FloorTile
+  craftTime: 1
+  requirements:
+  - !type:StackResource
+    stack: CEStone
+    count: 1
+  result: CEFloorTileStonebricksSmallCarved2
+  resultCount: 4
+
+- type: CERecipe
+  id: CEFloorTileStonebricksSquareCarved
+  tag: CERecipeWorkbench
+  category: FloorTile
+  craftTime: 1
+  requirements:
+  - !type:StackResource
+    stack: CEStone
+    count: 1
+  result: CEFloorTileStonebricksSquareCarved
+  resultCount: 4
+
+- type: CERecipe
+  id: CEFloorTileOakWoodplanks
+  tag: CERecipeWorkbench
+  category: FloorTile
+  craftTime: 1
+  requirements:
+  - !type:StackResource
+    stack: CEWood
+    count: 1
+  result: CEFloorTileOakWoodplanks
+  resultCount: 4
+
+- type: CERecipe
+  id: CEFloorTileOakWoodplanksBig
+  tag: CERecipeWorkbench
+  category: FloorTile
+  craftTime: 1
+  requirements:
+  - !type:StackResource
+    stack: CEWood
+    count: 1
+  result: CEFloorTileOakWoodplanksBig
+  resultCount: 4
+
+- type: CERecipe
+  id: CEFloorTileOakWoodplanksCruciform
+  tag: CERecipeWorkbench
+  category: FloorTile
+  craftTime: 1
+  requirements:
+  - !type:StackResource
+    stack: CEWood
+    count: 1
+  result: CEFloorTileOakWoodplanksCruciform
+  resultCount: 4
+
+- type: CERecipe
+  id: CEFloorTileOakWoodplanksStairs
+  tag: CERecipeWorkbench
+  category: FloorTile
+  craftTime: 1
+  requirements:
+  - !type:StackResource
+    stack: CEWood
+    count: 1
+  result: CEFloorTileOakWoodplanksStairs
+  resultCount: 4
