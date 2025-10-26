@@ -129,6 +129,12 @@ public abstract partial class CESharedZLevelsSystem
             {
                 if (TryMoveDownOrChasm(uid))
                     zPhys.LocalPosition += 1;
+
+                if (!stickyGround)
+                {
+                    var fallEv = new CEZLevelFallEvent();
+                    RaiseLocalEvent(uid, fallEv);
+                }
             }
             else if (zPhys.LocalPosition >= 1) //Going up
             {
@@ -333,10 +339,15 @@ public abstract partial class CESharedZLevelsSystem
 /// Is called on an entity when it moves between z-levels.
 /// </summary>
 /// <param name="offset">How many levels were crossed. If negative, it means there was a downward movement. If positive, it means an upward movement.</param>
-public sealed class CEZLevelMoveEvent(int offset)
+public sealed class CEZLevelMoveEvent(int offset) : EntityEventArgs
 {
     public int Offset = offset;
 }
+
+/// <summary>
+/// Is triggered when an entity falls to the lower z-levels under the force of gravity
+/// </summary>
+public sealed class CEZLevelFallEvent() : EntityEventArgs;
 
 /// <summary>
 /// It is called on an entity when it hits the floor or ceiling with force.

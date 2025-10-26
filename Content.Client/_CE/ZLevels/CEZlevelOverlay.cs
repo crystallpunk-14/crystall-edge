@@ -1,4 +1,3 @@
-using System.Numerics;
 using Content.Client.Viewport;
 using Robust.Client.Graphics;
 using Robust.Shared.Enums;

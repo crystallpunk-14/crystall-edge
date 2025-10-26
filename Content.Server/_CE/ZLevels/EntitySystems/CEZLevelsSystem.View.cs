@@ -21,7 +21,7 @@ public sealed partial class CEZLevelsSystem
 
         SubscribeLocalEvent<CEZLevelViewerComponent, EntParentChangedMessage>(OnViewerParentChange);
         SubscribeLocalEvent<CEZLevelViewerComponent, MoveEvent>(OnViewerMove);
-        SubscribeLocalEvent<CEZPhysicsComponent, CEZLevelMoveEvent>(OnZLevelMove);
+        SubscribeLocalEvent<CEZPhysicsComponent, CEZLevelFallEvent>(OnZLevelFall);
     }
 
     private void OnViewerMove(Entity<CEZLevelViewerComponent> ent, ref MoveEvent args)
@@ -89,11 +89,8 @@ public sealed partial class CEZLevelsSystem
         }
     }
 
-    private void OnZLevelMove(Entity<CEZPhysicsComponent> ent, ref CEZLevelMoveEvent args)
+    private void OnZLevelFall(Entity<CEZPhysicsComponent> ent, ref CEZLevelFallEvent args)
     {
-        if (args.Offset >= 0) //We only popup when going down
-            return;
-
         //A dirty trick: we call PredictedPopup on the falling entity.
         //This means that the one who is falling does not see the popup itself, but everyone around them does. This is what we need.
         _popup.PopupPredictedCoordinates(Loc.GetString("ce-zlevel-falling-popup", ("name", Identity.Name(ent, EntityManager))), Transform(ent).Coordinates, ent);
