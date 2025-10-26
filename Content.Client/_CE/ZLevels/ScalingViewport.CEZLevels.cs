@@ -2,6 +2,7 @@ using System.Numerics;
 using Content.Client._CE.ZLevels;
 using Content.Shared._CE.ZLevels.EntitySystems;
 using Robust.Client.Graphics;
+using Robust.Client.Player;
 using Robust.Shared.Graphics;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -13,6 +14,7 @@ public sealed partial class ScalingViewport
 {
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly IEyeManager _eyeManager = default!;
+    [Dependency] private readonly IPlayerManager _player = default!;
 
     private CEClientZLevelsSystem? _zLevels;
     private SharedMapSystem? _mapSystem;
@@ -120,11 +122,15 @@ public sealed partial class ScalingViewport
         _zLevels ??= _entityManager.System<CEClientZLevelsSystem>();
         _mapSystem ??= _entityManager.System<SharedMapSystem>();
 
-        var mapId = _eye.Position.MapId;
+        if (!_xformQuery.Value.TryComp(_player.LocalEntity, out var playerXform))
+            return false;
+
+        if (playerXform.MapUid is null)
+            return false;
 
         for (var depth = CESharedZLevelsSystem.MaxZLevelsBelowRendering; depth > 0; depth--)
         {
-            if (!_zLevels.TryMapOffset(mapId, -depth, out _, out var mapUidBelow))
+            if (!_zLevels.TryMapOffset(playerXform.MapUid.Value, -depth, out var mapUidBelow))
                 continue;
 
             if (!_entityManager.TryGetComponent<MapComponent>(mapUidBelow.Value, out var mapComp))

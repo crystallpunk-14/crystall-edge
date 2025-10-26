@@ -15,11 +15,11 @@ public sealed partial class CEZLevelsSystem
     /// <summary>
     /// creates a new entity zLevelNetwork
     /// </summary>
-    public Entity<CEZLevelsComponent> CreateZNetwork()
+    public Entity<CEZLevelsNetworkComponent> CreateZNetwork()
     {
         var ent = Spawn();
 
-        var zLevel = EnsureComp<CEZLevelsComponent>(ent);
+        var zLevel = EnsureComp<CEZLevelsNetworkComponent>(ent);
         EnsureComp<CEPvsOverrideComponent>(ent);
 
         return (ent, zLevel);
@@ -29,30 +29,30 @@ public sealed partial class CEZLevelsSystem
     /// attempts to add the specified map to the zNetwork network at the specified depth
     /// </summary>
     [PublicAPI]
-    public bool TryAddMapIntoZNetwork(Entity<CEZLevelsComponent> network, MapId mapId, int depth)
+    public bool TryAddMapIntoZNetwork(Entity<CEZLevelsNetworkComponent> network, EntityUid mapUid, int depth)
     {
-        if (network.Comp.ZLevels.ContainsKey(mapId))
+        if (network.Comp.ZLevels.ContainsKey(depth))
         {
-            Log.Error($"Failed to add map {mapId} to ZLevelNetwork {network}: This map is already in this network.");
+            Log.Error($"Failed to add map {mapUid} to ZLevelNetwork {network}: This depth is already occupied.");
             return false;
         }
 
-        if (TryGetZNetwork(mapId, out _, out var otherNetwork))
+        if (TryGetZNetwork(mapUid, out var otherNetwork))
         {
-            Log.Error($"Failed attempt to add map {mapId} to ZLevelNetwork {network}: This map is already in another network {otherNetwork}.");
+            Log.Error($"Failed attempt to add map {mapUid} to ZLevelNetwork {network}: This map is already in another network {otherNetwork}.");
             return false;
         }
 
-        if (network.Comp.ZLevels.ContainsValue(depth))
+        if (network.Comp.ZLevels.ContainsValue(mapUid))
         {
-            Log.Error($"Failed attempt to add map {mapId} to ZLevelNetwork {network} at depth {depth}: This depth is already occupied.");
+            Log.Error($"Failed attempt to add map {mapUid} to ZLevelNetwork {network} at depth {depth}: This map is already in this network.");
             return false;
         }
 
-        network.Comp.ZLevels.Add(mapId, depth);
-        EnsureComp<CEZLevelMapComponent>(_map.GetMap(mapId));
+        network.Comp.ZLevels.Add(depth, mapUid);
+        EnsureComp<CEZLevelMapComponent>(mapUid).Depth = depth;
 
-        RaiseLocalEvent(_map.GetMap(mapId), new CEMapAddedIntoZNetwork(mapId, depth, network));
+        RaiseLocalEvent(mapUid, new CEMapAddedIntoZNetwork(mapUid, depth, network));
 
         return true;
     }
@@ -61,19 +61,19 @@ public sealed partial class CEZLevelsSystem
 /// <summary>
 /// Raised directly on map, when it is added into zLevel network
 /// </summary>
-public sealed class CEMapAddedIntoZNetwork(MapId mapId, int depth, Entity<CEZLevelsComponent> network) : EntityEventArgs
+public sealed class CEMapAddedIntoZNetwork(EntityUid mapUid, int depth, Entity<CEZLevelsNetworkComponent> network) : EntityEventArgs
 {
-    public MapId MapId = mapId;
+    public EntityUid MapUid = mapUid;
     public int Depth = depth;
-    public Entity<CEZLevelsComponent> Network = network;
+    public Entity<CEZLevelsNetworkComponent> Network = network;
 }
 
 /// <summary>
 /// Raised directly on map, when it is removed from zLevel network
 /// </summary>
-public sealed class CEMapRemovedFromZNetwork(MapId mapId, int depth, Entity<CEZLevelsComponent> network) : EntityEventArgs
+public sealed class CEMapRemovedFromZNetwork(MapId mapId, int depth, Entity<CEZLevelsNetworkComponent> network) : EntityEventArgs
 {
     public MapId MapId = mapId;
     public int Depth = depth;
-    public Entity<CEZLevelsComponent> Network = network;
+    public Entity<CEZLevelsNetworkComponent> Network = network;
 }

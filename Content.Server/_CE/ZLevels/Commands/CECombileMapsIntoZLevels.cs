@@ -3,6 +3,7 @@ using Content.Server._CE.ZLevels.EntitySystems;
 using Content.Server.Administration;
 using Content.Shared._CE.ZLevels;
 using Content.Shared.Administration;
+using Robust.Server.GameObjects;
 using Robust.Shared.Console;
 using Robust.Shared.Map;
 
@@ -12,7 +13,7 @@ namespace Content.Server._CE.ZLevels.Commands;
 public sealed class CECombineMapsIntoZLevelsCommand : LocalizedCommands
 {
     [Dependency] private readonly IEntityManager _entities = default!;
-    [Dependency] private readonly IMapManager _map = default!;
+    private MapSystem _map = default!;
     private CEZLevelsSystem _zLevels = default!;
 
     private const string Name = "zlevelcombine";
@@ -61,18 +62,18 @@ public sealed class CECombineMapsIntoZLevelsCommand : LocalizedCommands
         }
 
         _zLevels = _entities.System<CEZLevelsSystem>();
+        _map = _entities.System<MapSystem>();
 
         var network = _zLevels.CreateZNetwork();
         var counter = 0;
         var success = true;
         foreach (var findMap in maps)
         {
-            if (!_zLevels.TryAddMapIntoZNetwork(network, findMap, counter))
+            if (!_zLevels.TryAddMapIntoZNetwork(network, _map.GetMap(findMap), counter))
             {
                 shell.WriteError($"Unable to add map {findMap} to the new network!");
                 success = false;
             }
-
             counter++;
         }
 

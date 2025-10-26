@@ -8,8 +8,8 @@ namespace Content.Shared._CE.ZLevels;
 /// Tracker that tracks all maps added to the zLevel network. Usually entity in Nullspace,
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState, Access(typeof(CESharedZLevelsSystem))]
-public sealed partial class CEZLevelsComponent : Component
+public sealed partial class CEZLevelsNetworkComponent : Component
 {
     [DataField, AutoNetworkedField]
-    public Dictionary<MapId, int> ZLevels = new();
+    public Dictionary<int, EntityUid?> ZLevels = new();
 }

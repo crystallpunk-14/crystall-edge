@@ -179,36 +179,33 @@ public abstract partial class CESharedZLevelsSystem
             return maxFloors;
 
         var xform = Transform(target);
-        var map = xform.MapUid;
-        var mapId = xform.MapID;
-
-        if (!_mapQuery.TryComp(map, out var mapComp))
+        if (!ZMapQuery.TryComp(xform.MapUid, out var zMapComp))
             return maxFloors;
-        if (!_gridQuery.TryComp(map, out var mapGrid))
+        if (!GridQuery.TryComp(xform.MapUid, out var mapGrid))
             return maxFloors;
 
         var worldPosI = _transform.GetGridOrMapTilePosition(target);
         var worldPos = _transform.GetWorldPosition(target);
 
         //Select current map by default
-        Entity<MapComponent>? checkingMap = new Entity<MapComponent>(map.Value, mapComp);
-        var checkingMapGrid = mapGrid;
+        Entity<CEZLevelMapComponent> checkingMap = (xform.MapUid.Value, zMapComp);
+        MapGridComponent checkingGrid = mapGrid;
 
         for (var floor = 0; floor <= maxFloors; floor++)
         {
             if (floor != 0) //Select map below
             {
-                if (!TryMapOffset(mapId, -floor, out _, out checkingMap))
+                if (!TryMapOffset((checkingMap.Owner, checkingMap.Comp), -floor, out var tempCheckingMap))
                     continue;
-                if (!_gridQuery.TryComp(checkingMap, out checkingMapGrid))
+                if (!GridQuery.TryComp(checkingMap, out var tempCheckingGrid))
                     continue;
+
+                checkingMap = tempCheckingMap.Value;
+                checkingGrid = tempCheckingGrid;
             }
 
-            if (checkingMap is null || checkingMapGrid is null)
-                continue;
-
             //Check all types of ZHeight entities
-            var query = _map.GetAnchoredEntitiesEnumerator(checkingMap.Value.Owner, checkingMapGrid, worldPosI);
+            var query = _map.GetAnchoredEntitiesEnumerator(checkingMap, checkingGrid, worldPosI);
             while (query.MoveNext(out var uid))
             {
                 if (!_highgroundQuery.TryComp(uid, out var highground))
@@ -255,7 +252,7 @@ public abstract partial class CESharedZLevelsSystem
             }
 
             //No ZEntities found, check floor tiles
-            if (_map.TryGetTileRef(checkingMap.Value, checkingMapGrid, worldPosI, out var tileRef) &&
+            if (_map.TryGetTileRef(checkingMap, checkingGrid, worldPosI, out var tileRef) &&
                 !tileRef.Tile.IsEmpty)
                 return target.Comp.LocalPosition + floor;
         }
@@ -267,17 +264,20 @@ public abstract partial class CESharedZLevelsSystem
     /// Checks whether there is a ceiling above the specified entity (tiles on the layer above).
     /// If there are no Z-levels above, false will be returned.
     /// </summary>
-    public bool HasRoof(EntityUid target)
+    public bool HasRoof(EntityUid ent, Entity<CEZLevelMapComponent?>? map = null)
     {
-        var mapId = Transform(target).MapID;
+        map ??= Transform(ent).MapUid;
 
-        if (!TryMapUp(mapId, out var mapAbove, out var mapAboveUid))
+        if (map is null)
             return false;
 
-        if (!_gridQuery.TryComp(mapAboveUid.Value, out var mapAboveGrid))
+        if (!TryMapUp(map.Value, out var mapAboveUid))
             return false;
 
-        if (_map.TryGetTileRef(mapAboveUid.Value, mapAboveGrid, _transform.GetWorldPosition(target), out var tileRef) &&
+        if (!GridQuery.TryComp(mapAboveUid.Value, out var mapAboveGrid))
+            return false;
+
+        if (_map.TryGetTileRef(mapAboveUid.Value, mapAboveGrid, _transform.GetWorldPosition(ent), out var tileRef) &&
             !tileRef.Tile.IsEmpty)
             return true;
 
@@ -285,12 +285,21 @@ public abstract partial class CESharedZLevelsSystem
     }
 
     [PublicAPI]
-    public bool TryMove(EntityUid ent, int offset)
+    public bool TryMove(EntityUid ent, int offset, Entity<CEZLevelMapComponent?>? map = null)
     {
-        if (!TryMapOffset(Transform(ent).MapID, offset, out var targetMap, out _))
+        map ??= Transform(ent).MapUid;
+
+        if (map is null)
             return false;
 
-        _transform.SetMapCoordinates(ent, new MapCoordinates(_transform.GetWorldPosition(ent), targetMap.Value));
+        if (!TryMapOffset(map.Value, offset, out var targetMap))
+            return false;
+
+        if (!MapQuery.TryComp(targetMap, out var targetMapComp))
+            return false;
+
+
+        _transform.SetMapCoordinates(ent, new MapCoordinates(_transform.GetWorldPosition(ent),targetMapComp.MapId));
 
         var ev = new CEZLevelMoveEvent(offset);
         RaiseLocalEvent(ent, ev);
