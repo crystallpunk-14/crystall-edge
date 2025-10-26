@@ -1,4 +1,8 @@
 using Content.Server._CE.ZLevels.Components;
+using Content.Shared._CE.ZLevels;
+using Content.Shared._CE.ZLevels.EntitySystems;
+using Content.Shared.IdentityManagement;
+using Content.Shared.Popups;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
@@ -8,6 +12,7 @@ namespace Content.Server._CE.ZLevels.EntitySystems;
 public sealed partial class CEZLevelsSystem
 {
     [Dependency] private readonly ViewSubscriberSystem _viewSubscriber = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
 
     private void InitView()
     {
@@ -16,6 +21,7 @@ public sealed partial class CEZLevelsSystem
 
         SubscribeLocalEvent<CEZLevelViewerComponent, EntParentChangedMessage>(OnViewerParentChange);
         SubscribeLocalEvent<CEZLevelViewerComponent, MoveEvent>(OnViewerMove);
+        SubscribeLocalEvent<CEZPhysicsComponent, CEZLevelMoveEvent>(OnZLevelMove);
     }
 
     private void OnViewerMove(Entity<CEZLevelViewerComponent> ent, ref MoveEvent args)
@@ -81,5 +87,15 @@ public sealed partial class CEZLevelsSystem
             _viewSubscriber.AddViewSubscriber(newEye, actor.PlayerSession);
             eyes.Add(newEye);
         }
+    }
+
+    private void OnZLevelMove(Entity<CEZPhysicsComponent> ent, ref CEZLevelMoveEvent args)
+    {
+        if (args.Offset >= 0) //We only popup when going down
+            return;
+
+        //A dirty trick: we call PredictedPopup on the falling entity.
+        //This means that the one who is falling does not see the popup itself, but everyone around them does. This is what we need.
+        _popup.PopupPredictedCoordinates(Loc.GetString("ce-zlevel-falling-popup", ("name", Identity.Name(ent, EntityManager))), Transform(ent).Coordinates, ent);
     }
 }

@@ -18,4 +18,10 @@ public sealed partial class CEZLevelHighgroundComponent : Component
         1f,
         1f,
     };
+
+    /// <summary>
+    /// Forcibly attaches the entity to itself along the z-axis if the character descends smoothly. Needed for various staircases.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool Stick = false;
 }

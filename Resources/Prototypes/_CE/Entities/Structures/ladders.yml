@@ -39,6 +39,7 @@
   #  arrivalSound: /Audio/_CE/Effects/ladder_up.ogg
   #  departureSound: /Audio/_CE/Effects/ladder_down.ogg
   - type: CEZLevelHighground
+    stick: true
     heightCurve:
     - 1.1
     - 1.1

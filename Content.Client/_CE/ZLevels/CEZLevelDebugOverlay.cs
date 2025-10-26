@@ -38,9 +38,13 @@ public sealed class CEZLevelDebugOverlay : Overlay
 
             var worldPos = _transform.GetWorldPosition(uid);
             var screenPos = args.ViewportControl?.WorldToScreen(worldPos) ?? Vector2.Zero;
-            var localTilePos = new Vector2((worldPos.X % 1 + 1) % 1, (worldPos.Y % 1 + 1) % 1);
-            var groundDis = _zLevels.DistanceToGround(uid);
-            var depthText = $"Local tile position: {localTilePos}\n\nDistance to ground: {groundDis}";
+
+            var localPos = MathF.Round(zPhys.LocalPosition, 2);
+            var groundDis = MathF.Round(_zLevels.DistanceToGround(uid, out var sticky), 2);
+            var velocity = MathF.Round(zPhys.Velocity, 2);
+
+            var depthText = $"ZLocalHeight: {localPos}\nDistance to ground: {groundDis}\nVelocity: {velocity}\nSticky: {sticky}";
+
             args.ScreenHandle.DrawString(_font, screenPos, depthText, Color.White);
         }
     }
