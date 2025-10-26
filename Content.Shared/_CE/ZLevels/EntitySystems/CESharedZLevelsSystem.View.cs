@@ -1,4 +1,5 @@
 using Content.Shared.Actions;
+using Content.Shared.Throwing;
 
 namespace Content.Shared._CE.ZLevels.EntitySystems;
 
@@ -8,6 +9,22 @@ public abstract partial class CESharedZLevelsSystem
     {
         SubscribeLocalEvent<CEZLevelViewerComponent, MoveEvent>(OnViewerMove);
         SubscribeLocalEvent<CEZLevelViewerComponent, CEToggleZLevelLookUpAction>(OnToggleLookUp);
+        SubscribeLocalEvent<CEZLevelViewerComponent, ThrowEvent>(OnThrow);
+    }
+
+    /// <summary>
+    /// If you look up and throw something, you will throw it up by 1 z-level.
+    /// </summary>
+    private void OnThrow(Entity<CEZLevelViewerComponent> ent, ref ThrowEvent args)
+    {
+        if (!ent.Comp.LookUp)
+            return;
+
+        if (!TryComp<CEZPhysicsComponent>(args.Thrown, out var thrownZPhys))
+            return;
+
+        thrownZPhys.Velocity += ent.Comp.ThrowUpForce;
+        DirtyField(args.Thrown, thrownZPhys, nameof(CEZPhysicsComponent.Velocity));
     }
 
     protected virtual void OnViewerMove(Entity<CEZLevelViewerComponent> ent, ref MoveEvent args)

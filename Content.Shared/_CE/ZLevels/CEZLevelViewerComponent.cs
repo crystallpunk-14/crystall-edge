@@ -23,4 +23,7 @@ public sealed partial class CEZLevelViewerComponent : Component
 
     [DataField, AutoNetworkedField]
     public EntityUid? ZLevelActionEntity;
+
+    [DataField, AutoNetworkedField]
+    public float ThrowUpForce = 5f; //I dont really like this in viewer component
 }

@@ -138,19 +138,17 @@ public sealed partial class ScalingViewport
 
         var lookUp = zLevelViewer.LookUp ? 1 : 0;
 
-        var lowestMapDepth = CESharedZLevelsSystem.MaxZLevelsBelowRendering - lookUp;
         int? realLowestDepth = null; //Used for ClearColor
 
         var rendered = false;
-        for (var depth = lowestMapDepth; depth >= -lookUp; depth--)
+        for (var depth = CESharedZLevelsSystem.MaxZLevelsBelowRendering; depth >= -lookUp; depth--)
         {
-            MapCoordinates? pos;
             if (depth == 0)
             {
                 if (!_mapQuery.Value.TryComp(playerXform.MapUid.Value, out var mapComp))
                     continue;
 
-                pos = new MapCoordinates(_eye.Position.Position, mapComp.MapId);
+                viewport.Eye =_fallbackEye;
             }
             else
             {
@@ -160,22 +158,19 @@ public sealed partial class ScalingViewport
                 if (!_mapQuery.Value.TryComp(mapUidBelow.Value, out var mapComp))
                     continue;
 
-                pos = new MapCoordinates(_eye.Position.Position, mapComp.MapId);
+                viewport.Eye =new ZEye
+                {
+                    Position = new MapCoordinates(_eye.Position.Position, mapComp.MapId),
+                    DrawFov = _eye.DrawFov && depth <= 0,
+                    DrawLight = _eye.DrawLight && depth <= 0,
+                    Offset = _eye.Offset + new Vector2(0f, depth * CEClientZLevelsSystem.ZLevelOffset),
+                    Rotation = _eye.Rotation,
+                    Scale = _eye.Scale,
+                    Depth = depth,
+                };
             }
             realLowestDepth ??= depth;
 
-            var zEye = new ZEye
-            {
-                Position = pos.Value,
-                DrawFov = depth <= 0,
-                DrawLight = depth <= 0,
-                Offset = _eye.Offset + new Vector2(0f, depth * CEClientZLevelsSystem.ZLevelOffset),
-                Rotation = _eye.Rotation,
-                Scale = _eye.Scale,
-                Depth = depth,
-            };
-
-            viewport.Eye = zEye;
             viewport.ClearColor = depth == realLowestDepth ? Color.Black : null;
             viewport.Render();
             rendered = true;

@@ -82,10 +82,8 @@ public abstract partial class CESharedZLevelsSystem
             if (!zPhys.Active)
                 continue;
 
-            if (physics.BodyType == BodyType.Static || physics.BodyStatus == BodyStatus.InAir ||
-                xform.ParentUid != xform.MapUid)
+            if (physics.BodyType == BodyType.Static || xform.ParentUid != xform.MapUid)
             {
-                zPhys.Velocity = 0;
                 continue;
             }
 
@@ -93,7 +91,8 @@ public abstract partial class CESharedZLevelsSystem
             var oldHeight = zPhys.LocalPosition;
 
             //Gravity force application
-            zPhys.Velocity -= ZGravityForce * frameTime;
+            if (physics.BodyStatus == BodyStatus.OnGround || zPhys.Velocity > 0)
+                zPhys.Velocity -= ZGravityForce * frameTime;
 
             //Movement application
             zPhys.LocalPosition += zPhys.Velocity * frameTime;
@@ -117,12 +116,14 @@ public abstract partial class CESharedZLevelsSystem
             if (zPhys.LocalPosition < 0) //We wanna fall down on ZLevel below
             {
                 if (TryMoveDownOrChasm(uid))
+                {
                     zPhys.LocalPosition += 1;
 
-                if (!stickyGround)
-                {
-                    var fallEv = new CEZLevelFallEvent();
-                    RaiseLocalEvent(uid, fallEv);
+                    if (!stickyGround)
+                    {
+                        var fallEv = new CEZLevelFallEvent();
+                        RaiseLocalEvent(uid, fallEv);
+                    }
                 }
             }
             else if (zPhys.LocalPosition >= 1) //Going up
