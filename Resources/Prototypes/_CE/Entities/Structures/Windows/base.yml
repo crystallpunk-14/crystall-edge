@@ -39,7 +39,7 @@
           collection: WindowShatter
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  - type: CEZLevelSupport
+  - type: CEZLevelHighground
 
 - type: entity
   id: CEBaseWindowFrame
