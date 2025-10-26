@@ -5,6 +5,7 @@ using Content.Server.Cargo.Components;
 using Content.Shared.Administration;
 using Content.Shared.Body.Components;
 using Content.Shared.Cargo;
+using Content.Shared.Cargo.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
@@ -327,7 +328,7 @@ public sealed class PricingSystem : EntitySystem
     {
         var price = 0.0;
 
-        if (TryComp<Shared.Cargo.Components.StackPriceComponent>(uid, out var stackPrice) &&
+        if (TryComp<StackPriceComponent>(uid, out var stackPrice) &&
             TryComp<StackComponent>(uid, out var stack) &&
             !HasComp<MaterialComponent>(uid)) // don't double count material prices
         {
@@ -341,11 +342,11 @@ public sealed class PricingSystem : EntitySystem
     {
         var price = 0.0;
 
-        if (prototype.Components.TryGetValue(Factory.GetComponentName<Shared.Cargo.Components.StackPriceComponent>(), out var stackpriceProto) &&
+        if (prototype.Components.TryGetValue(Factory.GetComponentName<StackPriceComponent>(), out var stackpriceProto) &&
             prototype.Components.TryGetValue(Factory.GetComponentName<StackComponent>(), out var stackProto) &&
             !prototype.Components.ContainsKey(Factory.GetComponentName<MaterialComponent>()))
         {
-            var stackPrice = (Shared.Cargo.Components.StackPriceComponent) stackpriceProto.Component;
+            var stackPrice = (StackPriceComponent) stackpriceProto.Component;
             var stack = (StackComponent) stackProto.Component;
             price += stack.Count * stackPrice.Price;
         }
@@ -357,7 +358,7 @@ public sealed class PricingSystem : EntitySystem
     {
         var price = 0.0;
 
-        if (TryComp<Shared.Cargo.Components.StaticPriceComponent>(uid, out var staticPrice))
+        if (TryComp<StaticPriceComponent>(uid, out var staticPrice))
         {
             price += staticPrice.Price;
         }

@@ -5,6 +5,7 @@ using Content.Server.Cargo.Components;
 using Content.Server.Cargo.Systems;
 using Content.Server.Nutrition.Components;
 using Content.Server.Nutrition.EntitySystems;
+using Content.Shared.Cargo.Components;
 using Content.Shared.Cargo.Prototypes;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Prototypes;
@@ -118,9 +119,9 @@ public sealed class CargoTest
             foreach (var proto in protoIds)
             {
                 // Sanity check
-                Assert.That(proto.TryGetComponent<Shared.Cargo.Components.StackPriceComponent>(out var staticPriceComp, compFact), Is.True);
+                Assert.That(proto.TryGetComponent<StackPriceComponent>(out var staticPriceComp, compFact), Is.True);
 
-                if (proto.TryGetComponent<Shared.Cargo.Components.StackPriceComponent>(out var stackPriceComp, compFact) && stackPriceComp.Price > 0)
+                if (proto.TryGetComponent<StackPriceComponent>(out var stackPriceComp, compFact) && stackPriceComp.Price > 0)
                 {
                     Assert.That(staticPriceComp.Price, Is.EqualTo(0),
                         $"The prototype {proto} has a StackPriceComponent and StaticPriceComponent whose values are not compatible with each other.");
