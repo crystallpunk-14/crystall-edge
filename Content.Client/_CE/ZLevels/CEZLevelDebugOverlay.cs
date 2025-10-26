@@ -3,6 +3,7 @@ using Content.Shared._CE.ZLevels;
 using Content.Shared._CE.ZLevels.EntitySystems;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
+using Robust.Shared.Console;
 using Robust.Shared.Enums;
 
 namespace Content.Client._CE.ZLevels;
@@ -27,11 +28,6 @@ public sealed class CEZLevelDebugOverlay : Overlay
         _font = new VectorFont(_cache.GetResource<FontResource>("/Fonts/NotoSans/NotoSans-Regular.ttf"), 8);
     }
 
-    protected override bool BeforeDraw(in OverlayDrawArgs args)
-    {
-        return false;
-    }
-
     protected override void Draw(in OverlayDrawArgs args)
     {
         var query = _entityManager.EntityQueryEnumerator<CEZPhysicsComponent, TransformComponent>();
@@ -47,5 +43,19 @@ public sealed class CEZLevelDebugOverlay : Overlay
             var depthText = $"Local tile position: {localTilePos}\n\nDistance to ground: {groundDis}";
             args.ScreenHandle.DrawString(_font, screenPos, depthText, Color.White);
         }
+    }
+}
+
+public sealed class CEShowZLevelDebugCommand : LocalizedCommands
+{
+    [Dependency] private readonly IOverlayManager _overlayManager = default!;
+    public override string Command => "showzleveldebug";
+
+    public override void Execute(IConsoleShell shell, string argStr, string[] args)
+    {
+        if (_overlayManager.HasOverlay<CEZLevelDebugOverlay>())
+            _overlayManager.RemoveOverlay<CEZLevelDebugOverlay>();
+        else
+            _overlayManager.AddOverlay(new CEZLevelDebugOverlay());
     }
 }

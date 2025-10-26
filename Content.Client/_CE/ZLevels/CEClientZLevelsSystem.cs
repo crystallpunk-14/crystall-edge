@@ -18,7 +18,6 @@ public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
     {
         base.Initialize();
         _overlay.AddOverlay(new CEZLevelOverlay());
-        _overlay.AddOverlay(new CEZLevelDebugOverlay());
 
         SubscribeLocalEvent<CEZPhysicsComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<CEZPhysicsComponent, GetEyeOffsetEvent>(OnEyeOffset);
@@ -60,6 +59,5 @@ public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
     {
         base.Shutdown();
         _overlay.RemoveOverlay<CEZLevelOverlay>();
-        _overlay.RemoveOverlay<CEZLevelDebugOverlay>();
     }
 }
