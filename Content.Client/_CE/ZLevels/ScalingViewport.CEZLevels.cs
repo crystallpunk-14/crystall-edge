@@ -128,6 +128,7 @@ public sealed partial class ScalingViewport
         if (playerXform.MapUid is null)
             return false;
 
+        var rendered = false;
         for (var depth = CESharedZLevelsSystem.MaxZLevelsBelowRendering; depth > 0; depth--)
         {
             if (!_zLevels.TryMapOffset(playerXform.MapUid.Value, -depth, out var mapUidBelow))
@@ -152,14 +153,14 @@ public sealed partial class ScalingViewport
             viewport.Eye = zEye;
             viewport.ClearColor = depth == CESharedZLevelsSystem.MaxZLevelsBelowRendering ? Color.Black : null;
             viewport.Render();
+            rendered = true;
         }
 
         // Restore the Eye
         Eye = _fallbackEye;
-        viewport.ClearColor = null;
         viewport.Eye = Eye;
 
-        return true;
+        return rendered;
     }
 
     //FIXME: This is nasty!
