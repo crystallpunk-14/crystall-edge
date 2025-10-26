@@ -119,7 +119,7 @@ public sealed class CargoTest
             foreach (var proto in protoIds)
             {
                 // Sanity check
-                Assert.That(proto.TryGetComponent<StackPriceComponent>(out var staticPriceComp, compFact), Is.True);
+                Assert.That(proto.TryGetComponent<StaticPriceComponent>(out var staticPriceComp, compFact), Is.True);
 
                 if (proto.TryGetComponent<StackPriceComponent>(out var stackPriceComp, compFact) && stackPriceComp.Price > 0)
                 {
