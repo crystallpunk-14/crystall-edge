@@ -1,5 +1,3 @@
-using Content.Shared.Light.EntitySystems;
-
 namespace Content.Shared._CE.ZLevels.EntitySystems;
 
 public abstract partial class CESharedZLevelsSystem

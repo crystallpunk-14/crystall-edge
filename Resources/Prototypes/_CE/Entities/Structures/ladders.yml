@@ -33,11 +33,6 @@
         - WallLayer
         density: 1000
         hard: true
-  #- type: Portal
-  #  canTeleportToOtherMaps: true
-  #  randomTeleport: false
-  #  arrivalSound: /Audio/_CE/Effects/ladder_up.ogg
-  #  departureSound: /Audio/_CE/Effects/ladder_down.ogg
   - type: CEZLevelHighground
     stick: true
     heightCurve:

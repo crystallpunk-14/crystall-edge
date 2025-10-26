@@ -18,6 +18,7 @@ public abstract partial class CESharedZLevelsSystem
 
     private const float ZGravityForce = 9.8f;
     private const float ZVelocityLimit = 20.0f;
+
     /// <summary>
     /// The maximum height at which a player will automatically climb higher when stepping on a highground entity.
     /// </summary>
@@ -27,6 +28,7 @@ public abstract partial class CESharedZLevelsSystem
     /// The minimum speed required to trigger LandEvent events.
     /// </summary>
     private const float ImpactVelocityLimit = 4.0f;
+
     private EntityQuery<CEZLevelHighgroundComponent> _highgroundQuery;
 
     private void InitMovement()
@@ -80,7 +82,8 @@ public abstract partial class CESharedZLevelsSystem
             if (!zPhys.Active)
                 continue;
 
-            if (physics.BodyType == BodyType.Static || physics.BodyStatus == BodyStatus.InAir || xform.ParentUid != xform.MapUid)
+            if (physics.BodyType == BodyType.Static || physics.BodyStatus == BodyStatus.InAir ||
+                xform.ParentUid != xform.MapUid)
             {
                 zPhys.Velocity = 0;
                 continue;
@@ -164,7 +167,9 @@ public abstract partial class CESharedZLevelsSystem
     public float DistanceToGround(Entity<CEZPhysicsComponent?> target, out bool stickyGround, int maxFloors = 1)
     {
         stickyGround = false;
-        if (!Resolve(target, ref target.Comp, false)) //maybe in future: simpler distance calculation for entities without zPhysComp?
+        if (!Resolve(target,
+                ref target.Comp,
+                false)) //maybe in future: simpler distance calculation for entities without zPhysComp?
             return maxFloors;
 
         var xform = Transform(target);
@@ -206,8 +211,8 @@ public abstract partial class CESharedZLevelsSystem
 
                 var t = dir switch
                 {
-                    Direction.East  => local.X,
-                    Direction.West  => 1f - local.X,
+                    Direction.East => local.X,
+                    Direction.West => 1f - local.X,
                     Direction.North => local.Y,
                     Direction.South => 1f - local.Y,
                     _ => 0.5f
@@ -288,7 +293,7 @@ public abstract partial class CESharedZLevelsSystem
             return false;
 
 
-        _transform.SetMapCoordinates(ent, new MapCoordinates(_transform.GetWorldPosition(ent),targetMapComp.MapId));
+        _transform.SetMapCoordinates(ent, new MapCoordinates(_transform.GetWorldPosition(ent), targetMapComp.MapId));
 
         var ev = new CEZLevelMoveEvent(offset);
         RaiseLocalEvent(ent, ev);

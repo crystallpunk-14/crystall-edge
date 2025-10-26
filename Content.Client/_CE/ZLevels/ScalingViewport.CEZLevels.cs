@@ -6,7 +6,6 @@ using Robust.Client.Player;
 using Robust.Shared.Graphics;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
-using Robust.Shared.Prototypes;
 
 namespace Content.Client.Viewport;
 

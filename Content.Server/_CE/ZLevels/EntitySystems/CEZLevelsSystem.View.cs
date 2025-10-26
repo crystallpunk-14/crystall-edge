@@ -80,6 +80,7 @@ public sealed partial class CEZLevelsSystem
             eyes.Add(newEye);
         }
 
+        // We constantly load the upper z-level for the client so that you can quickly look up and climb stairs without PVS lag.
         if (TryMapUp(map.Value, out var aboveMapUid))
         {
             var newEye = SpawnAtPosition(null, new EntityCoordinates(aboveMapUid.Value, globalPos));

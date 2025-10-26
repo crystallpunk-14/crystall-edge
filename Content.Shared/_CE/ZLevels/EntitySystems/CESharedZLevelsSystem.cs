@@ -84,17 +84,20 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
             outputMapUid = (targetMapUid.Value, targetZLevelComp);
             return true;
         }
+
         return false;
     }
 
     [PublicAPI]
-    public bool TryMapUp(Entity<CEZLevelMapComponent?> inputMapUid, [NotNullWhen(true)] out Entity<CEZLevelMapComponent>? aboveMapUid)
+    public bool TryMapUp(Entity<CEZLevelMapComponent?> inputMapUid,
+        [NotNullWhen(true)] out Entity<CEZLevelMapComponent>? aboveMapUid)
     {
         return TryMapOffset(inputMapUid, 1, out aboveMapUid);
     }
 
     [PublicAPI]
-    public bool TryMapDown(Entity<CEZLevelMapComponent?> inputMapUid, [NotNullWhen(true)] out Entity<CEZLevelMapComponent>? belowMapUid)
+    public bool TryMapDown(Entity<CEZLevelMapComponent?> inputMapUid,
+        [NotNullWhen(true)] out Entity<CEZLevelMapComponent>? belowMapUid)
     {
         return TryMapOffset(inputMapUid, -1, out belowMapUid);
     }
