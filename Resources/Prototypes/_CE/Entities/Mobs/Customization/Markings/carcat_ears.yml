@@ -1,4 +1,4 @@
-  type: marking
+- type: marking
   id: CECarcatEars
   bodyPart: HeadTop
   markingCategory: HeadTop
@@ -52,4 +52,3 @@
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_ears.rsi
       state: 5
-
