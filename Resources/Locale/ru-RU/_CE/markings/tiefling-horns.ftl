@@ -1,0 +1,11 @@
+marking-CETieflingHorns = Извилистые
+marking-CETieflingHorns2 = Прилежность
+marking-CETieflingHorns3 = Вертикаль власти
+marking-CETieflingHorns3Broken = Сломанная вертикаль
+marking-CETieflingHorns4 = Мелочь
+marking-CETieflingHorns5 = Дьявол
+marking-CETieflingHorns5Broken = Сломленный дьявол
+marking-CETieflingHorns6 = Барашек
+marking-CETieflingHorns7 = Облегающие
+marking-CETieflingHorns8 = Корона
+marking-CETieflingHorns9 = Единорог
