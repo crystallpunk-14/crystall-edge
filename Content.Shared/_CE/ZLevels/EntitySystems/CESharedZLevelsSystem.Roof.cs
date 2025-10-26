@@ -13,17 +13,15 @@ public abstract partial class CESharedZLevelsSystem
 
     private void OnTileChanged(Entity<CEZLevelMapComponent> ent, ref TileChangedEvent args)
     {
-        if (!TryMapDown(ent, out var belowMapId, out var belowMapUid))
+        if (!_mapQuery.TryComp(ent, out var currentMap))
             return;
-        if (!TryComp<MapGridComponent>(belowMapUid, out var belowMapGrid))
-            return;
-        if (!TryComp<MapGridComponent>(ent, out var mapGrid))
+        if (!TryMapDown(currentMap.MapId, out _, out var belowMapUid))
             return;
 
         foreach (var change in args.Changes)
         {
             //Update rooving below map
-            Roof.SetRoof(belowMapUid.Value, change.GridIndices, !change.NewTile.IsEmpty);
+            Roof.SetRoof(belowMapUid.Value.Owner, change.GridIndices, !change.NewTile.IsEmpty);
         }
     }
 }

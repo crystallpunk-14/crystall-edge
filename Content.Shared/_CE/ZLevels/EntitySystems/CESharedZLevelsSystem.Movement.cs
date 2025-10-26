@@ -38,13 +38,10 @@ public abstract partial class CESharedZLevelsSystem
     /// The minimum speed required to trigger LandEvent events.
     /// </summary>
     private const float ImpactVelocityLimit = 4.0f;
-
-    private EntityQuery<MapGridComponent> _gridQuery;
     private EntityQuery<CEZLevelHighgroundComponent> _highgroundQuery;
 
     private void InitMovement()
     {
-        _gridQuery = GetEntityQuery<MapGridComponent>();
         _highgroundQuery = GetEntityQuery<CEZLevelHighgroundComponent>();
 
         SubscribeLocalEvent<DamageableComponent, CEZLevelHitEvent>(OnFallDamage);
@@ -181,30 +178,37 @@ public abstract partial class CESharedZLevelsSystem
         if (!Resolve(target, ref target.Comp)) //maybe in future: simpler distance calculation for entities without zPhysComp?
             return maxFloors;
 
-        var map = Transform(target).MapUid;
+        var xform = Transform(target);
+        var map = xform.MapUid;
+        var mapId = xform.MapID;
+
+        if (!_mapQuery.TryComp(map, out var mapComp))
+            return maxFloors;
         if (!_gridQuery.TryComp(map, out var mapGrid))
-            return maxFloors; //uhhh, ehhh, ok?
+            return maxFloors;
 
         var worldPosI = _transform.GetGridOrMapTilePosition(target);
         var worldPos = _transform.GetWorldPosition(target);
 
-        //Мы сначала проверяем все прикрученные тайлы на текущем уровне, считая высоту. Если таких нет, и тайл пуст - мы проверяем уровень ниже, и ниже, и ниже...
+        //Select current map by default
+        Entity<MapComponent>? checkingMap = new Entity<MapComponent>(map.Value, mapComp);
+        var checkingMapGrid = mapGrid;
 
         for (var floor = 0; floor <= maxFloors; floor++)
         {
-            var checkingMapUid = map;
-            var checkingMapComp = mapGrid;
-
-            if (floor != 0) //Map checking selection
+            if (floor != 0) //Select map below
             {
-                if (!TryMapOffset(map.Value, -floor, out _, out checkingMapUid))
+                if (!TryMapOffset(mapId, -floor, out _, out checkingMap))
                     continue;
-                if (!_gridQuery.TryComp(checkingMapUid, out checkingMapComp))
+                if (!_gridQuery.TryComp(checkingMap, out checkingMapGrid))
                     continue;
             }
 
+            if (checkingMap is null || checkingMapGrid is null)
+                continue;
+
             //Check all types of ZHeight entities
-            var query = _map.GetAnchoredEntitiesEnumerator(checkingMapUid.Value, checkingMapComp, worldPosI);
+            var query = _map.GetAnchoredEntitiesEnumerator(checkingMap.Value.Owner, checkingMapGrid, worldPosI);
             while (query.MoveNext(out var uid))
             {
                 if (!_highgroundQuery.TryComp(uid, out var highground))
@@ -251,7 +255,7 @@ public abstract partial class CESharedZLevelsSystem
             }
 
             //No ZEntities found, check floor tiles
-            if (_map.TryGetTileRef(checkingMapUid.Value, checkingMapComp, worldPosI, out var tileRef) &&
+            if (_map.TryGetTileRef(checkingMap.Value, checkingMapGrid, worldPosI, out var tileRef) &&
                 !tileRef.Tile.IsEmpty)
                 return target.Comp.LocalPosition + floor;
         }
@@ -265,12 +269,9 @@ public abstract partial class CESharedZLevelsSystem
     /// </summary>
     public bool HasRoof(EntityUid target)
     {
-        var mapUid = Transform(target).MapUid;
+        var mapId = Transform(target).MapID;
 
-        if (mapUid is null)
-            return false;
-
-        if (!TryMapUp(mapUid.Value, out var mapAbove, out var mapAboveUid))
+        if (!TryMapUp(mapId, out var mapAbove, out var mapAboveUid))
             return false;
 
         if (!_gridQuery.TryComp(mapAboveUid.Value, out var mapAboveGrid))
@@ -286,13 +287,7 @@ public abstract partial class CESharedZLevelsSystem
     [PublicAPI]
     public bool TryMove(EntityUid ent, int offset)
     {
-        var xform = Transform(ent);
-        var map = xform.MapUid;
-
-        if (map is null)
-            return false;
-
-        if (!TryMapOffset(map.Value, offset, out var targetMap, out _))
+        if (!TryMapOffset(Transform(ent).MapID, offset, out var targetMap, out _))
             return false;
 
         _transform.SetMapCoordinates(ent, new MapCoordinates(_transform.GetWorldPosition(ent), targetMap.Value));

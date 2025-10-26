@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
-using Content.Shared.Actions;
 using JetBrains.Annotations;
 using Robust.Shared.Map;
+using Robust.Shared.Map.Components;
 
 namespace Content.Shared._CE.ZLevels.EntitySystems;
 
@@ -9,9 +9,15 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
 {
     [Dependency] private readonly SharedMapSystem _map = default!;
 
+    private EntityQuery<MapComponent> _mapQuery;
+    private EntityQuery<MapGridComponent> _gridQuery;
+
     public override void Initialize()
     {
         base.Initialize();
+
+        _mapQuery = GetEntityQuery<MapComponent>();
+        _gridQuery = GetEntityQuery<MapGridComponent>();
 
         InitMovement();
         InitRoof();
@@ -40,14 +46,17 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
     }
 
     [PublicAPI]
-    public bool TryMapOffset(EntityUid mapUid, int offset, [NotNullWhen(true)] out MapId? mapId,  [NotNullWhen(true)] out EntityUid? outputMapUid)
+    public bool TryMapOffset(MapId inputMapId,
+        int offset,
+        [NotNullWhen(true)] out MapId? outputMapId,
+        [NotNullWhen(true)] out Entity<MapComponent>? outputMapUid)
     {
-        mapId = null;
+        outputMapId = null;
         outputMapUid = null;
         var query = EntityQueryEnumerator<CEZLevelsComponent>();
         while (query.MoveNext(out var zLevel))
         {
-            if (!zLevel.ZLevels.TryGetValue(Transform(mapUid).MapID, out var currentLevel))
+            if (!zLevel.ZLevels.TryGetValue(inputMapId, out var currentLevel))
                 continue;
 
             var targetLevel = currentLevel + offset;
@@ -57,10 +66,10 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
 
             foreach (var (key, value) in zLevel.ZLevels)
             {
-                if (value == targetLevel && _map.MapExists(key))
+                if (value == targetLevel && _map.TryGetMap(key, out var mapEntity) && _mapQuery.TryComp(mapEntity, out var mapComp))
                 {
-                    mapId = key;
-                    outputMapUid = _map.GetMap(key);
+                    outputMapId = key;
+                    outputMapUid = (mapEntity.Value, mapComp);
                     return true;
                 }
             }
@@ -69,37 +78,14 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
     }
 
     [PublicAPI]
-    public bool TryMapUp(EntityUid mapUid, [NotNullWhen(true)] out MapId? mapId, [NotNullWhen(true)] out EntityUid? abobeMapUid)
+    public bool TryMapUp(MapId imputMapId, [NotNullWhen(true)] out MapId? mapId, [NotNullWhen(true)] out Entity<MapComponent>? abobeMapUid)
     {
-        return TryMapOffset(mapUid, 1, out mapId, out abobeMapUid);
+        return TryMapOffset(imputMapId, 1, out mapId, out abobeMapUid);
     }
 
     [PublicAPI]
-    public bool TryMapDown(EntityUid mapUid, [NotNullWhen(true)] out MapId? mapId, [NotNullWhen(true)] out EntityUid? belowMapUid)
+    public bool TryMapDown(MapId imputMapId, [NotNullWhen(true)] out MapId? mapId, [NotNullWhen(true)] out Entity<MapComponent>? belowMapUid)
     {
-        return TryMapOffset(mapUid, -1, out mapId, out belowMapUid);
-    }
-
-    [PublicAPI]
-    public List<EntityUid> GetAllMapsBelow(EntityUid mapUid)
-    {
-        List<EntityUid> mapIds = new();
-        var query = EntityQueryEnumerator<CEZLevelsComponent>();
-        while (query.MoveNext(out var zLevel))
-        {
-            if (!zLevel.ZLevels.TryGetValue(Transform(mapUid).MapID, out var currentDepth))
-                continue;
-
-            foreach (var (map, depth) in zLevel.ZLevels)
-            {
-                if (depth >= currentDepth)
-                    continue;
-
-                mapIds.Add(_map.GetMap(map));
-            }
-            break;
-        }
-
-        return mapIds;
+        return TryMapOffset(imputMapId, -1, out mapId, out belowMapUid);
     }
 }

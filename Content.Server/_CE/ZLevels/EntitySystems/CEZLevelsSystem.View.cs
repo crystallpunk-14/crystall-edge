@@ -61,15 +61,13 @@ public sealed partial class CEZLevelsSystem
             return;
 
         var xform = Transform(ent);
-        var map = xform.MapUid;
-        if (map is null)
-            return;
+        var map = xform.MapID;
 
         var globalPos = _transform.GetWorldPosition(xform);
 
         for (var i = 1; i <= MaxZLevelsBelowRendering; i++)
         {
-            if (!TryMapOffset(map.Value, -i, out _, out var mapUidBelow))
+            if (!TryMapOffset(map, -i, out _, out var mapUidBelow))
                 break;
 
             var newEye = SpawnAtPosition(null, new EntityCoordinates(mapUidBelow.Value, globalPos));
@@ -79,7 +77,7 @@ public sealed partial class CEZLevelsSystem
             eyes.Add(newEye);
         }
 
-        if (TryMapUp(map.Value, out var mapUidAbove, out var aboveMapUid))
+        if (TryMapUp(map, out _, out var aboveMapUid))
         {
             var newEye = SpawnAtPosition(null, new EntityCoordinates(aboveMapUid.Value, globalPos));
 

@@ -1,6 +1,4 @@
-using Content.Shared._CE.ZLevels;
 using Content.Shared.Light.Components;
-using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 
 namespace Content.Server._CE.ZLevels.EntitySystems;
@@ -14,13 +12,13 @@ public sealed partial class CEZLevelsSystem
 
     private void OnMapAdded(Entity<MapComponent> ent, ref CEMapAddedIntoZNetwork args)
     {
-        if (TryMapDown(ent, out _, out var belowMapUid))
+        if (TryMapDown(ent.Comp.MapId, out _, out var belowMapUid))
         {
             //Sync for map below
             SyncMapRoofs(belowMapUid.Value, ent);
         }
 
-        if (TryMapUp(ent, out _, out var aboveMapUid))
+        if (TryMapUp(ent.Comp.MapId, out _, out var aboveMapUid))
         {
             //Sync for this map
             SyncMapRoofs(ent, aboveMapUid);
@@ -30,22 +28,22 @@ public sealed partial class CEZLevelsSystem
     /// <summary>
     /// Go through all the tiles on the map above, synchronizing the roofs on this map.
     /// </summary>
-    private void SyncMapRoofs(EntityUid currentMapUid, EntityUid? aboveMapUid = null)
+    private void SyncMapRoofs(Entity<MapComponent> currentMap, Entity<MapComponent>? aboveMapUid = null)
     {
-        if (!TryComp<MapGridComponent>(currentMapUid, out var currentMapGrid))
+        if (!TryComp<MapGridComponent>(currentMap, out var currentMapGrid))
             return;
 
-        if (aboveMapUid is null && !TryMapUp(currentMapUid, out _, out aboveMapUid))
+        if (aboveMapUid is null && !TryMapUp(currentMap.Comp.MapId, out _, out aboveMapUid))
             return;
 
         if (!TryComp<MapGridComponent>(aboveMapUid, out var aboveMapGrid))
             return;
 
         var enumerator = _map.GetAllTilesEnumerator(aboveMapUid.Value, aboveMapGrid);
-        var currentRoof = EnsureComp<RoofComponent>(currentMapUid);
+        var currentRoof = EnsureComp<RoofComponent>(currentMap);
         while (enumerator.MoveNext(out var tileRef))
         {
-            Roof.SetRoof((currentMapUid, currentMapGrid, currentRoof), tileRef.Value.GridIndices, !tileRef.Value.Tile.IsEmpty);
+            Roof.SetRoof((currentMap, currentMapGrid, currentRoof), tileRef.Value.GridIndices, !tileRef.Value.Tile.IsEmpty);
         }
     }
 }

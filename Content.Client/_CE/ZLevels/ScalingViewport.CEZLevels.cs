@@ -15,6 +15,7 @@ public sealed partial class ScalingViewport
     [Dependency] private readonly IEyeManager _eyeManager = default!;
 
     private CEClientZLevelsSystem? _zLevels;
+    private SharedMapSystem? _mapSystem;
 
     private EntityQuery<TransformComponent>? _xformQuery;
 
@@ -117,16 +118,17 @@ public sealed partial class ScalingViewport
 
         // Cache systems and components
         _zLevels ??= _entityManager.System<CEClientZLevelsSystem>();
+        _mapSystem ??= _entityManager.System<SharedMapSystem>();
 
         var mapId = _eye.Position.MapId;
-        var mapEntityId = _mapManager.GetMapEntityIdOrThrow(mapId);
 
         for (var depth = CESharedZLevelsSystem.MaxZLevelsBelowRendering; depth > 0; depth--)
         {
-            if (!_zLevels.TryMapOffset(mapEntityId, -depth, out _, out var mapUidBelow))
+            if (!_zLevels.TryMapOffset(mapId, -depth, out _, out var mapUidBelow))
                 continue;
 
-            var mapComp = _entityManager.GetComponent<MapComponent>(mapUidBelow.Value);
+            if (!_entityManager.TryGetComponent<MapComponent>(mapUidBelow.Value, out var mapComp))
+                continue;
 
             var pos = new MapCoordinates(_eye.Position.Position, mapComp.MapId);
 
