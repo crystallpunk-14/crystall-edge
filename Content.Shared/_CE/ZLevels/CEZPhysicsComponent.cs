@@ -36,4 +36,10 @@ public sealed partial class CEZPhysicsComponent : Component
 
     [DataField]
     public bool Active = true;
+
+    /// <summary>
+    /// The original DrawDepth of the object is automatically saved here. Increases by 1 when the creature has <see cref="LocalPosition"/> > 0
+    /// </summary>
+    [DataField]
+    public int DrawDepthDefault = 0;
 }

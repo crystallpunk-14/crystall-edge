@@ -37,6 +37,7 @@ public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
             return;
 
         ent.Comp.NoRotDefault = sprite.NoRotation;
+        ent.Comp.DrawDepthDefault = sprite.DrawDepth;
     }
 
     public override void Update(float frameTime)
@@ -52,6 +53,7 @@ public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
                 sprite.NoRotation = zPhys.NoRotDefault;
 
             _sprite.SetOffset((uid, sprite), new Vector2(0, zPhys.LocalPosition * ZLevelOffset));
+            _sprite.SetDrawDepth((uid, sprite), zPhys.LocalPosition > 0 ? zPhys.DrawDepthDefault +1 : zPhys.DrawDepthDefault);
         }
     }
 

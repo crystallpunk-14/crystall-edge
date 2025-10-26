@@ -13,7 +13,7 @@
   - type: PlacementReplacement
     key: walls
   - type: Sprite
-    drawdepth: BelowMobs
+    drawdepth: Mobs
     sprite: _CE/Structures/ladders_up.rsi
   - type: Transform
     anchored: True
