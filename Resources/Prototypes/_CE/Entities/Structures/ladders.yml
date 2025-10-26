@@ -50,8 +50,60 @@
 
 - type: entity
   parent: CEZLevelLadderBase
+  id: CEZLevelLadderWoodenCorner
+  suffix: Wooden Corner
+  components:
+  - type: Sprite
+    state: wood_corner
+  - type: CEZLevelHighground
+    corner: true
+    heightCurve:
+    - 1.05
+    - 0.5
+    - 0.1
+  - type: Fixtures
+    fixtures:
+      portalFixture:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "0.5,0.5,0.6,0.6"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        density: 1000
+        hard: true
+
+- type: entity
+  parent: CEZLevelLadderBase
   id: CEZLevelLadderStone
   suffix: Stone
   components:
   - type: Sprite
     state: stone
+
+- type: entity
+  parent: CEZLevelLadderBase
+  id: CEZLevelLadderStoneCorner
+  suffix: Stone Corner
+  components:
+  - type: Sprite
+    state: stone_corner
+  - type: CEZLevelHighground
+    corner: true
+    heightCurve:
+    - 1.05
+    - 0.5
+    - 0.1
+  - type: Fixtures
+    fixtures:
+      portalFixture:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "0.5,0.5,0.6,0.4"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        density: 1000
+        hard: true

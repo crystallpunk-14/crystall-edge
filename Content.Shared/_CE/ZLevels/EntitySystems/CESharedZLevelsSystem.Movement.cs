@@ -203,7 +203,7 @@ public abstract partial class CESharedZLevelsSystem
             var query = _map.GetAnchoredEntitiesEnumerator(checkingMap, checkingGrid, worldPosI);
             while (query.MoveNext(out var uid))
             {
-                if (!_highgroundQuery.TryComp(uid, out var highground))
+                if (!_highgroundQuery.TryComp(uid, out var heightComp))
                     continue;
 
                 var dir = _transform.GetWorldRotation(uid.Value).GetCardinalDir();
@@ -212,16 +212,16 @@ public abstract partial class CESharedZLevelsSystem
 
                 var t = dir switch
                 {
-                    Direction.East => local.X,
-                    Direction.West => 1f - local.X,
-                    Direction.North => local.Y,
-                    Direction.South => 1f - local.Y,
+                    Direction.East => heightComp.Corner ? (local.X + 1f - local.Y) / 2f : local.X,
+                    Direction.West => heightComp.Corner ? (1f - local.X + local.Y) / 2f : 1f - local.X,
+                    Direction.North => heightComp.Corner ? (local.X + local.Y) / 2f : local.Y,
+                    Direction.South => heightComp.Corner ? (1f - local.X + 1f - local.Y) / 2f : 1f - local.Y,
                     _ => 0.5f
                 };
 
                 t = Math.Clamp(t, 0f, 1f);
 
-                var curve = highground.HeightCurve;
+                var curve = heightComp.HeightCurve;
                 if (curve.Count == 0)
                     continue;
 
@@ -240,7 +240,7 @@ public abstract partial class CESharedZLevelsSystem
 
                 var distance = target.Comp.LocalPosition + floor - MathHelper.Lerp(y0, y1, frac);
 
-                if (target.Comp.Velocity < -0 && target.Comp.Velocity > -2 && highground.Stick)
+                if (target.Comp.Velocity < -0 && target.Comp.Velocity > -2 && heightComp.Stick)
                     stickyGround = true;
 
                 return distance;

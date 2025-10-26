@@ -24,4 +24,10 @@ public sealed partial class CEZLevelHighgroundComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public bool Stick = false;
+
+    /// <summary>
+    /// SHITCODE - we cant mapping entities rotated by 45 radians, so we just use this
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool Corner = false;
 }
