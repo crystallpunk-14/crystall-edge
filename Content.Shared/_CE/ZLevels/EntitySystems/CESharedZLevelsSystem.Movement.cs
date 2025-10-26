@@ -216,7 +216,7 @@ public abstract partial class CESharedZLevelsSystem
                     Direction.West => heightComp.Corner ? (1f - local.X + local.Y) / 2f : 1f - local.X,
                     Direction.North => heightComp.Corner ? (local.X + local.Y) / 2f : local.Y,
                     Direction.South => heightComp.Corner ? (1f - local.X + 1f - local.Y) / 2f : 1f - local.Y,
-                    _ => 0.5f
+                    _ => 0.5f,
                 };
 
                 t = Math.Clamp(t, 0f, 1f);

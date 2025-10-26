@@ -30,7 +30,7 @@
   description: You lift your head and look up at the sky.
   components:
   - type: Action
-    сheckConsciousness: false
+    checkCanInteract: false
     icon:
       sprite: _CE/Actions/misc.rsi
       state: eye
