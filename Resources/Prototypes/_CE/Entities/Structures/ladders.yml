@@ -41,9 +41,8 @@
   - type: CEZLevelHighground
     stick: true
     heightCurve:
-    - 1.1
-    - 1.1
-    - 0.5
+    - 1.05
+    - 1.05
     - 0.1
 
 - type: entity

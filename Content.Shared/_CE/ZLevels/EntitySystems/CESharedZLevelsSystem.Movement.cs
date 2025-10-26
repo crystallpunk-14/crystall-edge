@@ -18,6 +18,10 @@ public abstract partial class CESharedZLevelsSystem
 
     private const float ZGravityForce = 9.8f;
     private const float ZVelocityLimit = 20.0f;
+    /// <summary>
+    /// The maximum height at which a player will automatically climb higher when stepping on a highground entity.
+    /// </summary>
+    private const float MaxStepHeight = 0.5f;
 
     /// <summary>
     /// The minimum speed required to trigger LandEvent events.
@@ -93,7 +97,7 @@ public abstract partial class CESharedZLevelsSystem
 
             var distanceToGround = DistanceToGround((uid, zPhys), out var stickyGround);
 
-            if (distanceToGround <= 0.05f || stickyGround)
+            if ((distanceToGround <= 0.05f || stickyGround) && distanceToGround <= MaxStepHeight)
                 zPhys.LocalPosition -= distanceToGround;
             if (distanceToGround <= 0.05f) //Theres a ground
             {
@@ -174,7 +178,7 @@ public abstract partial class CESharedZLevelsSystem
 
         //Select current map by default
         Entity<CEZLevelMapComponent> checkingMap = (xform.MapUid.Value, zMapComp);
-        MapGridComponent checkingGrid = mapGrid;
+        var checkingGrid = mapGrid;
 
         for (var floor = 0; floor <= maxFloors; floor++)
         {
@@ -182,7 +186,7 @@ public abstract partial class CESharedZLevelsSystem
             {
                 if (!TryMapOffset((checkingMap.Owner, checkingMap.Comp), -floor, out var tempCheckingMap))
                     continue;
-                if (!GridQuery.TryComp(checkingMap, out var tempCheckingGrid))
+                if (!GridQuery.TryComp(tempCheckingMap, out var tempCheckingGrid))
                     continue;
 
                 checkingMap = tempCheckingMap.Value;

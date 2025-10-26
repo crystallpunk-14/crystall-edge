@@ -15,8 +15,8 @@ public sealed partial class CEZLevelHighgroundComponent : Component
     [DataField, AutoNetworkedField]
     public List<float> HeightCurve = new()
     {
-        1.1f,
-        1.1f,
+        1.05f,
+        1.05f,
     };
 
     /// <summary>
