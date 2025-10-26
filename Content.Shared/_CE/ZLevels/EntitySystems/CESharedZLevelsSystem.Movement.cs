@@ -1,34 +1,19 @@
 using System.Numerics;
-using Content.Shared.ActionBlocker;
 using Content.Shared.Chasm;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
-using Content.Shared.Ghost;
-using Content.Shared.Stunnable;
 using Content.Shared.Throwing;
 using JetBrains.Annotations;
 using Robust.Shared.Audio;
-using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
-using Robust.Shared.Prototypes;
-using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.ZLevels.EntitySystems;
 
 public abstract partial class CESharedZLevelsSystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly DamageableSystem _damage = default!;
-    [Dependency] protected readonly IPrototypeManager Proto = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly ActionBlockerSystem _blocker = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-
     public const int MaxZLevelsBelowRendering = 3;
 
     private const float ZGravityForce = 9.8f;
@@ -175,7 +160,7 @@ public abstract partial class CESharedZLevelsSystem
     public float DistanceToGround(Entity<CEZPhysicsComponent?> target, out bool stickyGround, int maxFloors = 1)
     {
         stickyGround = false;
-        if (!Resolve(target, ref target.Comp)) //maybe in future: simpler distance calculation for entities without zPhysComp?
+        if (!Resolve(target, ref target.Comp, false)) //maybe in future: simpler distance calculation for entities without zPhysComp?
             return maxFloors;
 
         var xform = Transform(target);

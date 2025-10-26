@@ -4,7 +4,6 @@ namespace Content.Shared._CE.ZLevels.EntitySystems;
 
 public abstract partial class CESharedZLevelsSystem
 {
-    [Dependency] protected readonly SharedRoofSystem Roof = default!;
     private void InitRoof()
     {
         SubscribeLocalEvent<CEZLevelMapComponent, TileChangedEvent>(OnTileChanged);

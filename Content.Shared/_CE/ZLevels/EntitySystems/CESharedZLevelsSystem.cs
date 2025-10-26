@@ -1,12 +1,28 @@
 using System.Diagnostics.CodeAnalysis;
+using Content.Shared.ActionBlocker;
+using Content.Shared.Damage;
+using Content.Shared.Light.EntitySystems;
+using Content.Shared.Stunnable;
 using JetBrains.Annotations;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.ZLevels.EntitySystems;
 
 public abstract partial class CESharedZLevelsSystem : EntitySystem
 {
+    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly SharedStunSystem _stun = default!;
+    [Dependency] private readonly DamageableSystem _damage = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly ActionBlockerSystem _blocker = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedMapSystem _map = default!;
+    [Dependency] protected readonly IPrototypeManager Proto = default!;
+    [Dependency] protected readonly SharedRoofSystem Roof = default!;
 
     protected EntityQuery<MapComponent> MapQuery;
     protected EntityQuery<CEZLevelMapComponent> ZMapQuery;
@@ -50,7 +66,7 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
         [NotNullWhen(true)] out Entity<CEZLevelMapComponent>? outputMapUid)
     {
         outputMapUid = null;
-        if (!Resolve(inputMapUid, ref inputMapUid.Comp))
+        if (!Resolve(inputMapUid, ref inputMapUid.Comp, false))
             return false;
 
         var query = EntityQueryEnumerator<CEZLevelsNetworkComponent>();
