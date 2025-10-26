@@ -12,6 +12,9 @@ public sealed partial class CEZLevelsSystem
         SubscribeLocalEvent<CEZLevelGhostMoverComponent, ComponentRemove>(OnRemove);
         SubscribeLocalEvent<CEZLevelGhostMoverComponent, CEZLevelActionUp>(OnZLevelUp);
         SubscribeLocalEvent<CEZLevelGhostMoverComponent, CEZLevelActionDown>(OnZLevelDown);
+
+        SubscribeLocalEvent<CEZLevelViewerComponent, MapInitEvent>(OnViewerMapInit);
+        SubscribeLocalEvent<CEZLevelViewerComponent, ComponentRemove>(OnViewerRemove);
     }
 
     private void OnMapInit(Entity<CEZLevelGhostMoverComponent> ent, ref MapInitEvent args)
@@ -24,6 +27,16 @@ public sealed partial class CEZLevelsSystem
     {
         _actions.RemoveAction(ent.Comp.ZLevelUpActionEntity);
         _actions.RemoveAction(ent.Comp.ZLevelDownActionEntity);
+    }
+
+    private void OnViewerMapInit(Entity<CEZLevelViewerComponent> ent, ref MapInitEvent args)
+    {
+        _actions.AddAction(ent, ref ent.Comp.ZLevelActionEntity, ent.Comp.ActionProto);
+    }
+
+    private void OnViewerRemove(Entity<CEZLevelViewerComponent> ent, ref ComponentRemove args)
+    {
+        _actions.RemoveAction(ent.Comp.ZLevelActionEntity);
     }
 
     private void OnZLevelDown(Entity<CEZLevelGhostMoverComponent> ent, ref CEZLevelActionDown args)

@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Damage;
 using Content.Shared.Light.EntitySystems;
+using Content.Shared.Popups;
 using Content.Shared.Stunnable;
 using JetBrains.Annotations;
 using Robust.Shared.Audio.Systems;
@@ -23,6 +24,7 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
     [Dependency] private readonly SharedMapSystem _map = default!;
     [Dependency] protected readonly IPrototypeManager Proto = default!;
     [Dependency] protected readonly SharedRoofSystem Roof = default!;
+    [Dependency] protected readonly SharedPopupSystem Popup = default!;
 
     protected EntityQuery<MapComponent> MapQuery;
     protected EntityQuery<CEZLevelMapComponent> ZMapQuery;
@@ -38,6 +40,7 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
 
         InitMovement();
         InitRoof();
+        InitView();
     }
 
     /// <summary>

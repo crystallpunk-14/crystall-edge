@@ -1,5 +1,6 @@
 using System.Numerics;
 using Content.Client._CE.ZLevels;
+using Content.Shared._CE.ZLevels;
 using Content.Shared._CE.ZLevels.EntitySystems;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
@@ -19,6 +20,7 @@ public sealed partial class ScalingViewport
     private SharedMapSystem? _mapSystem;
 
     private EntityQuery<TransformComponent>? _xformQuery;
+    private EntityQuery<MapComponent>? _mapQuery;
 
     private IEye? _fallbackEye;
 
@@ -116,10 +118,17 @@ public sealed partial class ScalingViewport
 
         // Cache frequently accessed components/systems
         _xformQuery ??= _entityManager.GetEntityQuery<TransformComponent>();
+        _mapQuery ??= _entityManager.GetEntityQuery<MapComponent>();
 
         // Cache systems and components
         _zLevels ??= _entityManager.System<CEClientZLevelsSystem>();
         _mapSystem ??= _entityManager.System<SharedMapSystem>();
+
+        if (_player.LocalEntity is null)
+            return false;
+
+        if (!_entityManager.TryGetComponent<CEZLevelViewerComponent>(_player.LocalEntity.Value, out var zLevelViewer))
+            return false;
 
         if (!_xformQuery.Value.TryComp(_player.LocalEntity, out var playerXform))
             return false;
@@ -127,22 +136,39 @@ public sealed partial class ScalingViewport
         if (playerXform.MapUid is null)
             return false;
 
+        var lookUp = zLevelViewer.LookUp ? 1 : 0;
+
+        var lowestMapDepth = CESharedZLevelsSystem.MaxZLevelsBelowRendering - lookUp;
+        int? realLowestDepth = null; //Used for ClearColor
+
         var rendered = false;
-        for (var depth = CESharedZLevelsSystem.MaxZLevelsBelowRendering; depth > 0; depth--)
+        for (var depth = lowestMapDepth; depth >= -lookUp; depth--)
         {
-            if (!_zLevels.TryMapOffset(playerXform.MapUid.Value, -depth, out var mapUidBelow))
-                continue;
+            MapCoordinates? pos;
+            if (depth == 0)
+            {
+                if (!_mapQuery.Value.TryComp(playerXform.MapUid.Value, out var mapComp))
+                    continue;
 
-            if (!_entityManager.TryGetComponent<MapComponent>(mapUidBelow.Value, out var mapComp))
-                continue;
+                pos = new MapCoordinates(_eye.Position.Position, mapComp.MapId);
+            }
+            else
+            {
+                if (!_zLevels.TryMapOffset(playerXform.MapUid.Value, -depth, out var mapUidBelow))
+                    continue;
 
-            var pos = new MapCoordinates(_eye.Position.Position, mapComp.MapId);
+                if (!_mapQuery.Value.TryComp(mapUidBelow.Value, out var mapComp))
+                    continue;
+
+                pos = new MapCoordinates(_eye.Position.Position, mapComp.MapId);
+            }
+            realLowestDepth ??= depth;
 
             var zEye = new ZEye
             {
-                Position = pos,
-                DrawFov = false,
-                DrawLight = false,
+                Position = pos.Value,
+                DrawFov = depth <= 0,
+                DrawLight = depth <= 0,
                 Offset = _eye.Offset + new Vector2(0f, depth * CEClientZLevelsSystem.ZLevelOffset),
                 Rotation = _eye.Rotation,
                 Scale = _eye.Scale,
@@ -150,7 +176,7 @@ public sealed partial class ScalingViewport
             };
 
             viewport.Eye = zEye;
-            viewport.ClearColor = depth == CESharedZLevelsSystem.MaxZLevelsBelowRendering ? Color.Black : null;
+            viewport.ClearColor = depth == realLowestDepth ? Color.Black : null;
             viewport.Render();
             rendered = true;
         }

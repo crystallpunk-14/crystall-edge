@@ -20,17 +20,22 @@ public sealed partial class CEZLevelsSystem
         SubscribeLocalEvent<PlayerDetachedEvent>(OnPlayerDetached);
 
         SubscribeLocalEvent<CEZLevelViewerComponent, EntParentChangedMessage>(OnViewerParentChange);
-        SubscribeLocalEvent<CEZLevelViewerComponent, MoveEvent>(OnViewerMove);
         SubscribeLocalEvent<CEZPhysicsComponent, CEZLevelFallEvent>(OnZLevelFall);
     }
 
-    private void OnViewerMove(Entity<CEZLevelViewerComponent> ent, ref MoveEvent args)
+    protected override void OnViewerMove(Entity<CEZLevelViewerComponent> ent, ref MoveEvent args)
     {
+        base.OnViewerMove(ent, ref args);
+
         foreach (var eye in ent.Comp.Eyes)
         {
             _transform.SetWorldPosition(eye, _transform.GetWorldPosition(ent));
         }
     }
+
+    //override void OnViewerMove(Entity<CEZLevelViewerComponent> ent, ref MoveEvent args)
+    //{
+    //}
 
     private void OnPlayerAttached(PlayerAttachedEvent ev)
     {
