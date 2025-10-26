@@ -29,6 +29,9 @@ public sealed class CECombineMapsIntoZLevelsCommand : LocalizedCommands
             return;
         }
 
+        _zLevels = _entities.System<CEZLevelsSystem>();
+        _map = _entities.System<MapSystem>();
+
         List<MapId> maps = new();
         foreach (var arg in args)
         {
@@ -60,9 +63,6 @@ public sealed class CECombineMapsIntoZLevelsCommand : LocalizedCommands
 
             maps.Add(mapId);
         }
-
-        _zLevels = _entities.System<CEZLevelsSystem>();
-        _map = _entities.System<MapSystem>();
 
         var network = _zLevels.CreateZNetwork();
         var counter = 0;
