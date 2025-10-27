@@ -63,7 +63,7 @@ namespace Content.Shared.Damage
         public FixedPoint2 TotalDamage;
 
         [DataField("radiationDamageTypes")]
-        public List<ProtoId<DamageTypePrototype>> RadiationDamageTypeIDs = new() { "Radiation" };
+        public List<ProtoId<DamageTypePrototype>> RadiationDamageTypeIDs = new() {}; //CrystallEdge - removed radiation damage. We use radiation
 
         /// <summary>
         ///     Group types that affect the pain overlay.
