@@ -80,7 +80,7 @@
   components:
   - type: Battery
     maxCharge: 100
-    currentCharge: 100
+    startingCharge: 100
   - type: RadiationReceiver
   - type: CEEnergyRadiationRegeneration
   - type: CEEnergyOverchargeDamage
