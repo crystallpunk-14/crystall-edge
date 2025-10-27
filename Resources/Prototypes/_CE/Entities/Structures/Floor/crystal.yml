@@ -3,7 +3,7 @@
   parent: BaseStructure
   categories: [ ForkFiltered ]
   name: crystal growths
-  description: Naturally growing energy crystals. A valuable resource.
+  description: Crystallized magical energy that appears in places with high concentrations of mana. Can be used as a one-time source of energy.
   components:
   - type: Sprite
     snapCardinals: true
@@ -13,20 +13,23 @@
     - state: cr1
       shader: unshaded
       map: ["random"]
-  - type: InteractionOutline
   - type: RandomSprite
     available:
     - random:
-        cr1: ""
-        cr2: ""
-        cr3: ""
-        cr4: ""
-        cr5: ""
+        cr1: Inherit
+        cr2: Inherit
+        cr3: Inherit
+        cr4: Inherit
+        cr5: Inherit
   - type: Transform
     anchored: True
   - type: Damageable
-    damageContainer: StructuralInorganic
-    damageModifierSet: Rock
+    damageContainer: Inorganic
+    damageModifierSet: Glass
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        collection: GlassSmash
   - type: Physics
     bodyType: Static
   - type: TileEmission
@@ -54,3 +57,19 @@
         layer:
         - Opaque
   - type: Appearance
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 10
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEEnergyCrystalShard:
+            min: 0
+            max: 1

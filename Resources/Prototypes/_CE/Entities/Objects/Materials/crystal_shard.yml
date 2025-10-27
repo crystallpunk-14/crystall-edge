@@ -1,0 +1,33 @@
+- type: entity
+  parent: BaseItem
+  id: CEEnergyCrystalShard
+  name: energy crystal shard
+  description: Crystallized magical energy that appears in places with high concentrations of mana. Can be used as a one-time source of energy.
+  categories: [ ForkFiltered ]
+  components:
+  #- type: Tag
+  #  tags:
+  #  - CP14FitInMortar
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: _CE/Objects/Materials/crystal_shard.rsi
+    layers:
+    - state: shard0
+      shader: unshaded
+      map: ["random"]
+  - type: RandomSprite
+    available:
+    - random:
+        shard0: Inherit
+        shard1: Inherit
+        shard2: Inherit
+        shard3: Inherit
+  #- type: Extractable
+  #  juiceSolution:
+  #    reagents:
+  #    - ReagentId: CP14GroundQuartz
+  #      Quantity: 5
+  #- type: PhysicalComposition
+  #  materialComposition:
+  #    CP14Glass: 10

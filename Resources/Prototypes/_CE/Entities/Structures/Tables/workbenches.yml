@@ -7,10 +7,10 @@
   components:
   - type: Sprite
     snapCardinals: true
-    sprite: _CE/Structures/workbench.rsi
+    sprite: _CE/Structures/Tables/workbench.rsi
     state: filler
   - type: Icon
-    sprite: _CE/Structures/workbench.rsi
+    sprite: _CE/Structures/Tables/workbench.rsi
     state: filler
   - type: ActivatableUI
     key: enum.CEWorkbenchUiKey.Key

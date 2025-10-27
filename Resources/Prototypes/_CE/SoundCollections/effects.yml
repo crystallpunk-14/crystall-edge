@@ -40,3 +40,9 @@
   - /Audio/_CE/Effects/nailing2.ogg
   - /Audio/_CE/Effects/nailing3.ogg
   - /Audio/_CE/Effects/nailing4.ogg
+
+- type: soundCollection
+  id: CP14CrystalDings
+  files:
+  - /Audio/_CE/Effects/crystal_ding.ogg
+  - /Audio/_CE/Effects/crystal_ding2.ogg
