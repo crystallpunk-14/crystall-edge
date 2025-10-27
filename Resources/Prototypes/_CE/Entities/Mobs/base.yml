@@ -84,6 +84,7 @@
   - type: RadiationReceiver
   - type: CEEnergyRadiationRegeneration
   - type: CEEnergyOverchargeDamage
+  - type: CEEnergyAlert
 
 - type: entity
   id: CEMobTemperature

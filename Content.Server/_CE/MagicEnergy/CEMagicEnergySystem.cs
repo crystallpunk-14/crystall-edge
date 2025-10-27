@@ -13,7 +13,6 @@ public sealed partial class CEMagicEnergySystem : CESharedMagicEnergySystem {
     [Dependency] private readonly BatterySystem _battery = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
-
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
