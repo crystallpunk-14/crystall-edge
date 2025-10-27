@@ -1,0 +1,109 @@
+- type: entity
+  id: CEZLevelLadderBase
+  abstract: true
+  categories: [ ForkFiltered ]
+  parent: BaseStructure
+  name: stairs
+  description: Be careful, the higher you ascend, the more painful the fall.
+  placement:
+      mode: SnapgridCenter
+      snap:
+      - Wall
+  components:
+  - type: PlacementReplacement
+    key: walls
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _CE/Structures/ladders_up.rsi
+  - type: Transform
+    anchored: True
+  - type: InteractionOutline
+  - type: Clickable
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      portalFixture:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,0.6,0.5,0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        density: 1000
+        hard: true
+  - type: CEZLevelHighground
+    stick: true
+    heightCurve:
+    - 1.05
+    - 1.05
+    - 0.1
+
+- type: entity
+  parent: CEZLevelLadderBase
+  id: CEZLevelLadderWooden
+  suffix: Wooden
+  components:
+  - type: Sprite
+    state: wood
+
+- type: entity
+  parent: CEZLevelLadderBase
+  id: CEZLevelLadderWoodenCorner
+  suffix: Wooden Corner
+  components:
+  - type: Sprite
+    state: wood_corner
+  - type: CEZLevelHighground
+    corner: true
+    heightCurve:
+    - 1.05
+    - 0.5
+    - 0.1
+  - type: Fixtures
+    fixtures:
+      portalFixture:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "0.5,0.5,0.6,0.6"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        density: 1000
+        hard: true
+
+- type: entity
+  parent: CEZLevelLadderBase
+  id: CEZLevelLadderStone
+  suffix: Stone
+  components:
+  - type: Sprite
+    state: stone
+
+- type: entity
+  parent: CEZLevelLadderBase
+  id: CEZLevelLadderStoneCorner
+  suffix: Stone Corner
+  components:
+  - type: Sprite
+    state: stone_corner
+  - type: CEZLevelHighground
+    corner: true
+    heightCurve:
+    - 1.05
+    - 0.5
+    - 0.1
+  - type: Fixtures
+    fixtures:
+      portalFixture:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "0.5,0.5,0.6,0.4"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        density: 1000
+        hard: true

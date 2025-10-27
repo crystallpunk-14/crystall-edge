@@ -44,6 +44,8 @@
     noRot: false
   - type: Pullable
   - type: DamageExaminable
+  #CrystallEdge
+  - type: CEZPhysics
 
 - type: entity
   name: "storage item"

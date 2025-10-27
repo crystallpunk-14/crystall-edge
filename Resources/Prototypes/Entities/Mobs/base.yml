@@ -54,6 +54,8 @@
   - type: MobMover
   - type: MovementSpeedModifier
   - type: LagCompensation
+  #CrystallEdge
+  - type: CEZPhysics
 
 - type: entity
   save: false

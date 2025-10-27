@@ -110,8 +110,7 @@
   - type: ExplosionResistance
     damageCoefficient: 0
   # CrystallEdge
-  - type: CEZLevelMover
-  - type: CERoofToggler
+  - type: CEZLevelGhostMover
 
 - type: entity
   abstract: true

@@ -1,5 +1,6 @@
 # Tile structure:
-# Base indedstructable stone tile
+# Space
+# Base rock
 # - Dirt
 #   - Grass variants
 # - Gravel
@@ -12,7 +13,7 @@
 
 - type: tile
   editorHidden: false
-  id: CEFloorBase
+  id: CEFloorStone
   name: ce-tiles-base
   sprite: /Textures/_CE/Tiles/cave.png
   variants: 14
@@ -31,11 +32,10 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: CEFloorBase #Recursivle indestructible
+  baseTurf: Space
   isSubfloor: true
   footstepSounds:
     collection: FootstepAsteroid
   heatCapacity: 10000
   weather: true
   indestructible: true
-

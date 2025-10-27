@@ -25,18 +25,17 @@
     event: !type:CEZLevelActionDown
 
 - type: entity
-  id: CEActionToggleRoofs
-  name: Toggle roofs
-  description: Show or hide roofs
+  id: CEActionToggleLookUp
+  name: Look up
+  description: You lift your head and look up at the sky.
   components:
   - type: Action
-    clientExclusive: true
     checkCanInteract: false
     icon:
       sprite: _CE/Actions/misc.rsi
-      state: roof
+      state: eye
   - type: InstantAction
-    event: !type:CEToggleRoofVisibilityAction
+    event: !type:CEToggleZLevelLookUpAction
 
 #- type: entity
 #  id: CEActionRespawn

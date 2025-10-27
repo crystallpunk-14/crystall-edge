@@ -1,23 +1,24 @@
-﻿using Content.Server.Administration;
+﻿using System.Linq;
+using Content.Server.Administration;
 using Content.Server.Body.Systems;
 using Content.Server.Cargo.Components;
-using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Administration;
 using Content.Shared.Body.Components;
 using Content.Shared.Cargo;
+using Content.Shared.Cargo.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Materials;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Research.Prototypes;
 using Content.Shared.Stacks;
 using Robust.Shared.Console;
 using Robust.Shared.Containers;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
-using System.Linq;
-using Content.Shared.Research.Prototypes;
 
 namespace Content.Server.Cargo.Systems;
 
@@ -261,7 +262,9 @@ public sealed class PricingSystem : EntitySystem
     {
         double price = 0;
 
-        if (HasComp<MaterialComponent>(uid) &&
+        //CrystallEdge We take materials into account when calculating the price in any case.
+        var proto = MetaData(uid).EntityPrototype?.ID ?? "";
+        if ((HasComp<MaterialComponent>(uid) || proto.StartsWith("CE")) &&
             TryComp<PhysicalCompositionComponent>(uid, out var composition))
         {
             var matPrice = GetMaterialPrice(composition);
@@ -278,7 +281,8 @@ public sealed class PricingSystem : EntitySystem
     {
         double price = 0;
 
-        if (prototype.Components.ContainsKey(Factory.GetComponentName<MaterialComponent>()) &&
+        //CrystallEdge We take materials into account when calculating the price in any case.
+        if ((prototype.Components.ContainsKey(Factory.GetComponentName<MaterialComponent>()) || prototype.ID.StartsWith("CE")) &&
             prototype.Components.TryGetValue(Factory.GetComponentName<PhysicalCompositionComponent>(), out var composition))
         {
             var compositionComp = (PhysicalCompositionComponent) composition.Component;
@@ -366,9 +370,9 @@ public sealed class PricingSystem : EntitySystem
     {
         var price = 0.0;
 
-        if (prototype.Components.TryGetValue(Factory.GetComponentName<StaticPriceComponent>(), out var staticProto))
+        if (prototype.Components.TryGetValue(Factory.GetComponentName<Shared.Cargo.Components.StaticPriceComponent>(), out var staticProto))
         {
-            var staticPrice = (StaticPriceComponent) staticProto.Component;
+            var staticPrice = (Shared.Cargo.Components.StaticPriceComponent) staticProto.Component;
             price += staticPrice.Price;
         }
 

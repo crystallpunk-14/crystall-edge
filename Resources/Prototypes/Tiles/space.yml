@@ -1,7 +1,9 @@
 - type: tile
   id: Space
   name: tiles-space
-  friction: 0
+  editorHidden: false
+  edgeSpritePriority: 10000
+  #friction: 0
   isSubfloor: true
   isSpace: true
   sturdy: false
