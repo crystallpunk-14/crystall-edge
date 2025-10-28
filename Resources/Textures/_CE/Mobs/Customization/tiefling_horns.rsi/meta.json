@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "size": {
+    "x": 48,
+    "y": 48
+  },
+  "copyright": "Created by TheShuEd",
+  "license": "All right reserved",
+  "states": [
+    {
+      "name": "horn1",
+      "directions": 4
+    },
+    {
+      "name": "horn2",
+      "directions": 4
+    },
+    {
+      "name": "horn3",
+      "directions": 4
+    },
+    {
+      "name": "horn3_broken",
+      "directions": 4
+    },
+    {
+      "name": "horn4",
+      "directions": 4
+    },
+    {
+      "name": "horn5",
+      "directions": 4
+    },
+    {
+      "name": "horn5_broken",
+      "directions": 4
+    },
+    {
+      "name": "horn6",
+      "directions": 4
+    },
+    {
+      "name": "horn7",
+      "directions": 4
+    },
+    {
+      "name": "horn8",
+      "directions": 4
+    },
+    {
+      "name": "horn9",
+      "directions": 4
+    }
+  ]
+}

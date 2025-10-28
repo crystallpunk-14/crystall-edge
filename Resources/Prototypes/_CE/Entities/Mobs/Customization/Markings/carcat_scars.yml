@@ -1,0 +1,150 @@
+- type: marking
+  id: CECarcatScarCheekLeft
+  bodyPart: Head
+  markingCategory: Head
+  followSkinColor: true
+  speciesRestriction: [ CECarcat ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/carcat_scars.rsi
+      state: scar_cheek_left
+
+- type: marking
+  id: CECarcatScarCheekRight
+  bodyPart: Head
+  markingCategory: Head
+  followSkinColor: true
+  speciesRestriction: [ CECarcat ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/carcat_scars.rsi
+      state: scar_cheek_right
+
+- type: marking
+  id: CECarcatScarChestLeft
+  bodyPart: Chest
+  markingCategory: Chest
+  followSkinColor: true
+  speciesRestriction: [ CECarcat ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/carcat_scars.rsi
+      state: scar_chest_left
+
+- type: marking
+  id: CECarcatScarChestRight
+  bodyPart: Chest
+  markingCategory: Chest
+  followSkinColor: true
+  speciesRestriction: [ CECarcat ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/carcat_scars.rsi
+      state: scar_chest_right
+
+- type: marking
+  id: CECarcatScarCutLeft
+  bodyPart: Head
+  markingCategory: Head
+  followSkinColor: true
+  speciesRestriction: [ CECarcat ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/carcat_scars.rsi
+      state: scar_cut_left
+
+- type: marking
+  id: CECarcatScarCutRight
+  bodyPart: Head
+  markingCategory: Head
+  followSkinColor: true
+  speciesRestriction: [ CECarcat ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/carcat_scars.rsi
+      state: scar_cut_right
+
+- type: marking
+  id: CECarcatScarEyeLeft
+  bodyPart: Head
+  markingCategory: Head
+  followSkinColor: true
+  speciesRestriction: [ CECarcat ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/carcat_scars.rsi
+      state: scar_eye_left
+
+- type: marking
+  id: CECarcatScarEyeRight
+  bodyPart: Head
+  markingCategory: Head
+  followSkinColor: true
+  speciesRestriction: [ CECarcat ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/carcat_scars.rsi
+      state: scar_eye_right
+
+- type: marking
+  id: CECarcatScarEyebrowLeft
+  bodyPart: Head
+  markingCategory: Head
+  followSkinColor: true
+  speciesRestriction: [ CECarcat ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/carcat_scars.rsi
+      state: scar_eyebrow_left
+
+- type: marking
+  id: CECarcatScarEyebrowRight
+  bodyPart: Head
+  markingCategory: Head
+  followSkinColor: true
+  speciesRestriction: [ CECarcat ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/carcat_scars.rsi
+      state: scar_eyebrow_right
+
+- type: marking
+  id: CECarcatScarHalfFaceLeft
+  bodyPart: Head
+  markingCategory: Head
+  followSkinColor: true
+  speciesRestriction: [ CECarcat ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/carcat_scars.rsi
+      state: scar_half_face_left
+
+- type: marking
+  id: CECarcatScarHalfFaceRight
+  bodyPart: Head
+  markingCategory: Head
+  followSkinColor: true
+  speciesRestriction: [ CECarcat ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/carcat_scars.rsi
+      state: scar_half_face_right
+
+- type: marking
+  id: CECarcatScarNearRibLeft
+  bodyPart: Chest
+  markingCategory: Chest
+  followSkinColor: true
+  speciesRestriction: [ CECarcat ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/carcat_scars.rsi
+      state: scar_near_rib_left
+
+- type: marking
+  id: CECarcatScarNearRibRight
+  bodyPart: Chest
+  markingCategory: Chest
+  followSkinColor: true
+  speciesRestriction: [ CECarcat ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/carcat_scars.rsi
+      state: scar_near_rib_right
+
+- type: marking
+  id: CECarcatScarNose
+  bodyPart: Head
+  markingCategory: Head
+  followSkinColor: true
+  speciesRestriction: [ CECarcat ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/carcat_scars.rsi
+      state: scar_nose
+

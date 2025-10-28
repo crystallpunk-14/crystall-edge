@@ -1,0 +1,129 @@
+- type: species
+  id: CEDwarf
+  name: ce-species-name-dwarf
+  roundStart: true
+  prototype: CEMobDwarf
+  sprites: CEMobDwarfSprites
+  markingLimits: MobHumanMarkingLimits
+  dollPrototype: CEMobDwarfDummy
+  skinColoration: HumanToned
+  maleFirstNames: CE_Names_Dwarf_Male_First #TODO
+  femaleFirstNames: CE_Names_Dwarf_Female_First #TODO
+  lastNames: CE_Names_Dwarf_Last #TODO
+
+- type: speciesBaseSprites
+  id: CEMobDwarfSprites
+  sprites:
+    Head: CEMobDwarfHead
+    HeadTop: CEMobDwarfMarkingMatchSkin
+    Hair: CEMobDwarfAnyMarking
+    FacialHair: CEMobDwarfAnyMarking
+    Snout: CEMobDwarfMarkingMatchSkin
+    Tail: CEMobDwarfMarkingMatchSkin
+    Chest: CEMobDwarfTorso
+    Eyes: CEMobDwarfEyes
+    LArm: CEMobDwarfLArm
+    RArm: CEMobDwarfRArm
+    LHand: CEMobDwarfLHand
+    RHand: CEMobDwarfRHand
+    LLeg: CEMobDwarfLLeg
+    RLeg: CEMobDwarfRLeg
+    LFoot: CEMobDwarfLFoot
+    RFoot: CEMobDwarfRFoot
+
+- type: humanoidBaseSprite
+  id: CEMobDwarfEyes
+  baseSprite:
+    sprite: _CE/Mobs/Customization/eyes.rsi
+    state: eyes
+
+- type: humanoidBaseSprite
+  id: CEMobDwarfAnyMarking
+
+- type: humanoidBaseSprite
+  id: CEMobDwarfMarkingMatchSkin
+  markingsMatchSkin: true
+
+- type: humanoidBaseSprite
+  id: CEMobDwarfHead
+  baseSprite:
+    sprite: _CE/Mobs/Species/Dwarf/parts.rsi
+    state: head_m
+
+- type: humanoidBaseSprite
+  id: CEMobDwarfHeadMale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Dwarf/parts.rsi
+    state: head_m
+
+- type: humanoidBaseSprite
+  id: CEMobDwarfHeadFemale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Dwarf/parts.rsi
+    state: head_f
+
+- type: humanoidBaseSprite
+  id: CEMobDwarfTorso
+  baseSprite:
+    sprite: _CE/Mobs/Species/Dwarf/parts.rsi
+    state: torso_m
+
+- type: humanoidBaseSprite
+  id: CEMobDwarfTorsoMale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Dwarf/parts.rsi
+    state: torso_m
+
+- type: humanoidBaseSprite
+  id: CEMobDwarfTorsoFemale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Dwarf/parts.rsi
+    state: torso_f
+
+- type: humanoidBaseSprite
+  id: CEMobDwarfLLeg
+  baseSprite:
+    sprite: _CE/Mobs/Species/Dwarf/parts.rsi
+    state: l_leg
+
+- type: humanoidBaseSprite
+  id: CEMobDwarfLArm
+  baseSprite:
+    sprite: _CE/Mobs/Species/Dwarf/parts.rsi
+    state: l_arm
+
+- type: humanoidBaseSprite
+  id: CEMobDwarfLHand
+  baseSprite:
+    sprite: _CE/Mobs/Species/Dwarf/parts.rsi
+    state: l_hand
+
+- type: humanoidBaseSprite
+  id: CEMobDwarfLFoot
+  baseSprite:
+    sprite: _CE/Mobs/Species/Dwarf/parts.rsi
+    state: l_foot
+
+- type: humanoidBaseSprite
+  id: CEMobDwarfRLeg
+  baseSprite:
+    sprite: _CE/Mobs/Species/Dwarf/parts.rsi
+    state: r_leg
+
+- type: humanoidBaseSprite
+  id: CEMobDwarfRArm
+  baseSprite:
+    sprite: _CE/Mobs/Species/Dwarf/parts.rsi
+    state: r_arm
+
+- type: humanoidBaseSprite
+  id: CEMobDwarfRHand
+  baseSprite:
+    sprite: _CE/Mobs/Species/Dwarf/parts.rsi
+    state: r_hand
+
+- type: humanoidBaseSprite
+  id: CEMobDwarfRFoot
+  baseSprite:
+    sprite: _CE/Mobs/Species/Dwarf/parts.rsi
+    state: r_foot

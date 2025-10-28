@@ -23,3 +23,8 @@
     FalloffStrength: 0.75
     FalloffPow: 3.0
     HDR: 1.5
+
+- type: shader
+  id: CEZBlur
+  kind: source
+  path: "/Textures/_CE/Shaders/zblur.swsl"

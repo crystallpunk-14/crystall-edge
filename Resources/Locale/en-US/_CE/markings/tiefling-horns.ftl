@@ -1,0 +1,11 @@
+marking-CETieflingHorns = Winding
+marking-CETieflingHorns2 = Diligence
+marking-CETieflingHorns3 = Vertical of Power
+marking-CETieflingHorns3Broken = Broken Vertical
+marking-CETieflingHorns4 = Change
+marking-CETieflingHorns5 = The Devil
+marking-CETieflingHorns5Broken = Broken Devil
+marking-CETieflingHorns6 = Lamb
+marking-CETieflingHorns7 = Horny horns
+marking-CETieflingHorns8 = Crown
+marking-CETieflingHorns9 = Unicorn

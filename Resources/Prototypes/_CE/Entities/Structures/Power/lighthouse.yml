@@ -1,0 +1,69 @@
+- type: entity
+  id: CEMurkLighthouse
+  parent: BaseMachinePowered
+  name: murk lighthouse
+  description: This beacon uses sapphron energy to dispel the murk around it. For added safety, it is equipped with an internal battery that can operate for some time without an external mana supply.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    noRot: true
+    sprite: _CE/Structures/Power/lighthouse.rsi
+    layers:
+    - state: base
+  - type: AmbientSound
+    enabled: false
+    sound:
+      path: /Audio/Machines/scan_loop.ogg
+    range: 5
+    volume: -8
+  - type: Battery
+    startingCharge: 0
+    maxCharge: 100000
+  - type: ExaminableBattery
+  - type: NodeContainer
+    examinable: true
+    nodes:
+      input:
+        !type:CableDeviceNode
+        nodeGroupID: MVPower
+  - type: BatteryCharger
+    voltage: Medium
+  - type: PowerNetworkBattery
+    maxSupply: 150000
+    maxChargeRate: 5000
+    supplyRampTolerance: 5000
+    supplyRampRate: 1000
+  - type: PointLight
+    radius: 3.5
+    energy: 2
+    color: "#2d8ad6"
+  - type: CEMurkSource
+    intensity: 0
+  - type: CEMurkGenerator
+    disabledIntensity: 0
+    enabledIntensity: -10
+  - type: CEPvsOverride
+  - type: PlacementReplacement
+    key: walls
+  - type: Occluder
+    boundingBox: -0.5, -0.5, 0.5, 1
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.2,0.5,0.8"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        density: 1000
+
+- type: entity
+  parent: CEMurkLighthouse
+  id: CEMurkLighthouseCharged
+  suffix: Charged
+  components:
+  - type: Battery
+    startingCharge: 100000

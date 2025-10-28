@@ -4,7 +4,7 @@
   - BaseMob
   - MobCombat
   - CEMobDamageable
-  #- CEMobMagical
+  - CEMobMagical
   - CEMobTemperature
   - MobPolymorphable
   id: CEBaseMobSpecies
@@ -111,11 +111,6 @@
       Flammable: [ Touch ]
       Extinguish: [ Touch ]
       Acidic: [Touch, Ingestion]
-    reactions:
-    - reagents: [Water, SpaceCleaner]
-      methods: [Touch]
-      effects:
-      - !type:WashCreamPieReaction
   - type: StatusEffects
     allowed:
     - Stun
@@ -212,7 +207,6 @@
 - type: entity
   parent:
   - MobBloodstream
-  - MobRespirator
   - MobFlammable
   - CEMobStarving
   - CEBaseMobSpecies

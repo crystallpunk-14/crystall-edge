@@ -21,8 +21,8 @@
     maxCharge: 2500000
     startingCharge: 0
   - type: PointLight
-    radius: 1.5
-    energy: 1
+    radius: 2.5
+    energy: 2
     color: "#2d8ad6"
     castShadows: false
   - type: Destructible

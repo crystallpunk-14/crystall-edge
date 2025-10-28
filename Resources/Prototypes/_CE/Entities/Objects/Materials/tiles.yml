@@ -1,0 +1,205 @@
+- type: entity
+  parent: BaseItem
+  id: CEFloorTileBase
+  description: Makes the floor more pleasant for your feet. And your eyes.
+  abstract: true
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/tile.rsi
+  - type: Item
+    sprite: _CE/Objects/tile.rsi
+    size: Normal
+  - type: Stack
+    count: 1
+  - type: FloorTile
+    placeTileSound:
+      collection: CEDigging
+      params:
+        variation: 0.03
+        volume: 2
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 30
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 20
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+          params:
+            volume: -8
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: CEFloorTileBase
+  id: CEFloorTileFoundation
+  name: foundation floor tile
+  components:
+  - type: Sprite
+    state: foundation
+  - type: FloorTile
+    outputs:
+      - CEFloorFoundation
+  - type: Stack
+    stackType: CEFloorTileFoundation
+  - type: PhysicalComposition
+    materialComposition:
+      CEStone: 5
+
+- type: entity
+  parent: CEFloorTileBase
+  id: CEFloorTileOakWoodplanks
+  name: oak woodplanks
+  components:
+  - type: Sprite
+    state: oak_woodplanks
+  - type: FloorTile
+    placeTileSound:
+      path: /Audio/Effects/woodenclosetclose.ogg
+      params:
+        variation: 0.03
+        volume: 2
+    outputs:
+      - CEFloorOakWoodPlanks
+  - type: Stack
+    stackType: CEFloorTileOakWoodplanks
+  - type: PhysicalComposition
+    materialComposition:
+      CEWood: 5
+
+- type: entity
+  parent: CEFloorTileBase
+  id: CEFloorTileOakWoodplanksBig
+  name: oak big woodplanks
+  components:
+  - type: Sprite
+    state: oak_woodplanks_big
+  - type: FloorTile
+    placeTileSound:
+      path: /Audio/Effects/woodenclosetclose.ogg
+      params:
+        variation: 0.03
+        volume: 2
+    outputs:
+      - CEFloorOakWoodPlanksBig
+  - type: Stack
+    stackType: CEFloorTileOakWoodplanksBig
+  - type: PhysicalComposition
+    materialComposition:
+      CEWood: 5
+
+- type: entity
+  parent: CEFloorTileBase
+  id: CEFloorTileOakWoodplanksCruciform
+  name: oak cruciform woodplanks
+  components:
+  - type: Sprite
+    state: oak_woodplanks_cruciform
+  - type: FloorTile
+    placeTileSound:
+      path: /Audio/Effects/woodenclosetclose.ogg
+      params:
+        variation: 0.03
+        volume: 2
+    outputs:
+      - CEFloorOakWoodPlanksCruciform
+  - type: Stack
+    stackType: CEFloorTileOakWoodplanksCruciform
+  - type: PhysicalComposition
+    materialComposition:
+      CEWood: 5
+
+- type: entity
+  parent: CEFloorTileBase
+  id: CEFloorTileOakWoodplanksStairs
+  name: oak stairs woodplanks
+  components:
+  - type: Sprite
+    state: oak_woodplanks_stairways
+  - type: FloorTile
+    placeTileSound:
+      path: /Audio/Effects/woodenclosetclose.ogg
+      params:
+        variation: 0.03
+        volume: 2
+    outputs:
+      - CEFloorOakWoodPlanksStairways
+  - type: Stack
+    stackType: CEFloorTileOakWoodplanksStairs
+  - type: PhysicalComposition
+    materialComposition:
+      CEWood: 5
+
+- type: entity
+  parent: CEFloorTileBase
+  id: CEFloorTileStonebricks
+  name: stonebrick
+  components:
+  - type: Sprite
+    state: stonebrick
+  - type: FloorTile
+    outputs:
+      - CEFloorStonebricks
+  - type: Stack
+    stackType: CEFloorTileStonebricks
+  - type: PhysicalComposition
+    materialComposition:
+      CEStone: 5
+
+- type: entity
+  parent: CEFloorTileBase
+  id: CEFloorTileStonebricksSmallCarved
+  name: small carved stonebricks
+  components:
+  - type: Sprite
+    state: stonebrick_small_carved
+  - type: FloorTile
+    outputs:
+      - CEFloorStonebricksSmallCarved1
+  - type: Stack
+    stackType: CEFloorTileStonebricksSmallCarved
+  - type: PhysicalComposition
+    materialComposition:
+      CEStone: 5
+
+- type: entity
+  parent: CEFloorTileBase
+  id: CEFloorTileStonebricksSmallCarved2
+  name: small carved stonebricks 2
+  components:
+  - type: Sprite
+    state: stonebrick_small_carved2
+  - type: FloorTile
+    outputs:
+      - CEFloorStonebricksSmallCarved2
+  - type: Stack
+    stackType: CEFloorTileStonebricksSmallCarved2
+  - type: PhysicalComposition
+    materialComposition:
+      CEStone: 5
+
+- type: entity
+  parent: CEFloorTileBase
+  id: CEFloorTileStonebricksSquareCarved
+  name: square carved stonebricks
+  components:
+  - type: Sprite
+    state: stonebrick_square_carved
+  - type: FloorTile
+    outputs:
+      - CEFloorStonebricksSquareCarved
+  - type: Stack
+    stackType: CEFloorTileStonebricksSquareCarved
+  - type: PhysicalComposition
+    materialComposition:
+      CEStone: 5

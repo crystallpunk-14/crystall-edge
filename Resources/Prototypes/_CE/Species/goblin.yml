@@ -1,0 +1,163 @@
+- type: species
+  id: CEGoblin
+  name: ce-species-name-goblin
+  roundStart: true
+  prototype: CEMobGoblin
+  sprites: CEMobGoblinSprites
+  markingLimits: CEMobGoblinMarkingLimits
+  dollPrototype: CEMobGoblinDummy
+  skinColoration: VoxFeathers
+  defaultSkinTone: "#74964d"
+  maleFirstNames: CE_Names_Goblin_Male_First
+  femaleFirstNames: CE_Names_Goblin_Female_First
+  naming: First
+
+- type: speciesBaseSprites
+  id: CEMobGoblinSprites
+  sprites:
+    Head: CEMobGoblinHead
+    HeadTop: CEMobGoblinMarkingMatchSkin
+    Hair: CEMobGoblinAnyMarking
+    FacialHair: CEMobGoblinAnyMarking
+    Snout: CEMobGoblinMarkingMatchSkin
+    Chest: CEMobGoblinTorso
+    Eyes: CEMobGoblinEyes
+    LArm: CEMobGoblinLArm
+    RArm: CEMobGoblinRArm
+    LHand: CEMobGoblinLHand
+    RHand: CEMobGoblinRHand
+    LLeg: CEMobGoblinLLeg
+    RLeg: CEMobGoblinRLeg
+    LFoot: CEMobGoblinLFoot
+    RFoot: CEMobGoblinRFoot
+
+- type: markingPoints
+  id: CEMobGoblinMarkingLimits
+  onlyWhitelisted: true
+  points:
+    Hair:
+      points: 1
+      required: false
+    FacialHair:
+      points: 1
+      required: false
+      onlyWhitelisted: true
+    Snout:
+      points: 1
+      required: true
+      defaultMarkings: [ CEGoblinNose ]
+      onlyWhitelisted: true
+    HeadTop:
+      points: 1
+      required: true
+      defaultMarkings: [ CEGoblinEars ]
+      onlyWhitelisted: true
+    Chest:
+      points: 1
+      required: false
+      onlyWhitelisted: true
+    Legs:
+      points: 2
+      required: false
+      onlyWhitelisted: true
+    Arms:
+      points: 2
+      required: false
+      onlyWhitelisted: true
+
+- type: humanoidBaseSprite
+  id: CEMobGoblinEyes
+  baseSprite:
+    sprite: _CE/Mobs/Customization/eyes.rsi
+    state: goblin_eyes
+
+- type: humanoidBaseSprite
+  id: CEMobGoblinAnyMarking
+
+- type: humanoidBaseSprite
+  id: CEMobGoblinMarkingMatchSkin
+  markingsMatchSkin: true
+
+- type: humanoidBaseSprite
+  id: CEMobGoblinHead
+  baseSprite:
+    sprite: _CE/Mobs/Species/Goblin/parts.rsi
+    state: head_m
+
+- type: humanoidBaseSprite
+  id: CEMobGoblinHeadMale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Goblin/parts.rsi
+    state: head_m
+
+- type: humanoidBaseSprite
+  id: CEMobGoblinHeadFemale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Goblin/parts.rsi
+    state: head_f
+
+- type: humanoidBaseSprite
+  id: CEMobGoblinTorso
+  baseSprite:
+    sprite: _CE/Mobs/Species/Goblin/parts.rsi
+    state: torso_m
+
+- type: humanoidBaseSprite
+  id: CEMobGoblinTorsoMale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Goblin/parts.rsi
+    state: torso_m
+
+- type: humanoidBaseSprite
+  id: CEMobGoblinTorsoFemale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Goblin/parts.rsi
+    state: torso_f
+
+- type: humanoidBaseSprite
+  id: CEMobGoblinLLeg
+  baseSprite:
+    sprite: _CE/Mobs/Species/Goblin/parts.rsi
+    state: l_leg
+
+- type: humanoidBaseSprite
+  id: CEMobGoblinLArm
+  baseSprite:
+    sprite: _CE/Mobs/Species/Goblin/parts.rsi
+    state: l_arm
+
+- type: humanoidBaseSprite
+  id: CEMobGoblinLHand
+  baseSprite:
+    sprite: _CE/Mobs/Species/Goblin/parts.rsi
+    state: l_hand
+
+- type: humanoidBaseSprite
+  id: CEMobGoblinLFoot
+  baseSprite:
+    sprite: _CE/Mobs/Species/Goblin/parts.rsi
+    state: l_foot
+
+- type: humanoidBaseSprite
+  id: CEMobGoblinRLeg
+  baseSprite:
+    sprite: _CE/Mobs/Species/Goblin/parts.rsi
+    state: r_leg
+
+- type: humanoidBaseSprite
+  id: CEMobGoblinRArm
+  baseSprite:
+    sprite: _CE/Mobs/Species/Goblin/parts.rsi
+    state: r_arm
+
+- type: humanoidBaseSprite
+  id: CEMobGoblinRHand
+  baseSprite:
+    sprite: _CE/Mobs/Species/Goblin/parts.rsi
+    state: r_hand
+
+- type: humanoidBaseSprite
+  id: CEMobGoblinRFoot
+  baseSprite:
+    sprite: _CE/Mobs/Species/Goblin/parts.rsi
+    state: r_foot

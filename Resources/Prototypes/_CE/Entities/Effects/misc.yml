@@ -1,0 +1,33 @@
+- type: entity
+  id: CEOverchargeVFX
+  categories: [ ForkFiltered ]
+  save: false
+  name: vfx magic overcharge
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/energy_overcharge.rsi
+    drawdepth: Effects
+    layers:
+    - state: electrified
+      shader: unshaded
+      map: ["random"]
+  - type: RandomSprite
+    available:
+    - random:
+        electrified: Inherit
+        electrified_diagonal: Inherit
+  - type: Physics
+    canCollide: false
+  - type: Tag
+    tags:
+      - HideContextMenu
+  - type: PointLight
+    color: "#00ddff"
+    enabled: true
+    radius: 2
+    energy: 4
+    netsync: false
+  - type: LightFade
+    duration: 1
+  - type: TimedDespawn
+    lifetime: 1

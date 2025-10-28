@@ -73,22 +73,18 @@
         Bloodloss: 0.25
   - type: Thirst
 
-#- type: entity
-#  id: CEMobMagical
-#  abstract: true
-#  categories: [ ForkFiltered ]
-#  components:
-#  - type: CEMagicEnergyContainer
-#    magicAlert: CEMagicEnergy
-#    maxEnergy: 100
-#    energy: 100
-#    unsafeSupport: true
-#  - type: CEMagicEnergyDraw
-#    energy: 1
-#    delay: 3 # 5m to full restore
-#  - type: CEMagicUnsafeDamage
-#  - type: CEMagicUnsafeSleep
-#  - type: CEAuraImprint
+- type: entity
+  id: CEMobMagical
+  abstract: true
+  categories: [ ForkFiltered ]
+  components:
+  - type: Battery
+    maxCharge: 100
+    startingCharge: 100
+  - type: RadiationReceiver
+  - type: CEEnergyRadiationRegeneration
+  - type: CEEnergyOverchargeDamage
+  - type: CEEnergyAlert
 
 - type: entity
   id: CEMobTemperature

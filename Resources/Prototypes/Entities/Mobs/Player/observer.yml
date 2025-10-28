@@ -27,6 +27,9 @@
         density: 15
         layer:
         - GhostImpassable
+  #CrystallEdge
+  - type: CEZPhysics
+    active: false
 
 # shared parent between aghosts, replay spectators and normal observers
 - type: entity
@@ -68,6 +71,8 @@
     radius: 6
     castShadows: false
     enabled: false
+  # CrystallEdge
+  - type: CEZLevelGhostMover
 
 # proto for player ghosts specifically
 - type: entity

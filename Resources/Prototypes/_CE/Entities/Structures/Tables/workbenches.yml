@@ -1,0 +1,107 @@
+- type: entity
+  parent:
+  - BaseStructure
+  id: CEBaseWorkbench
+  categories: [ ForkFiltered ]
+  abstract: true
+  components:
+  - type: Sprite
+    snapCardinals: true
+    sprite: _CE/Structures/Tables/workbench.rsi
+    state: filler
+  - type: Icon
+    sprite: _CE/Structures/Tables/workbench.rsi
+    state: filler
+  - type: ActivatableUI
+    key: enum.CEWorkbenchUiKey.Key
+    requiresComplex: true
+    singleUser: true
+  - type: Climbable
+  - type: Clickable
+  - type: CEWorkbench
+    craftSpeed: 1
+  - type: InteractionOutline
+  - type: UserInterface
+    interfaces:
+      enum.CEWorkbenchUiKey.Key:
+        type: CEWorkbenchBoundUserInterface
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: CEWood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Heat
+        damage: 40
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+    - trigger:
+        !type:DamageTrigger
+        damage: 60
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEWoodenPlanks1:
+            min: 1
+            max: 2
+  - type: PlaceableSurface
+  - type: CEWorkbenchPlaceableProvider
+  - type: ItemPlacer
+    maxEntities: 0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 55
+        mask: # tables should collide with other tables
+        - TableMask
+        layer:
+        - TableLayer
+      fix2:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        mask:
+        - TabletopMachineMask
+        layer:
+        - Impassable
+        - MidImpassable
+        - LowImpassable
+        hard: false
+
+- type: entity
+  parent:
+  - CEBaseWorkbench
+  #- CEBaseFlammable
+  id: CEWorkbench
+  name: workbench
+  description: Table for the production of various basic tools.
+  components:
+  - type: Sprite
+    state: workbench
+  - type: Icon
+    state: workbench
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepWood
+  #- type: FireVisuals
+  #  sprite: _CE/Effects/fire.rsi
+  #  normalState: full
+  - type: Construction
+    graph: CEWorkbench
+    node: CEWorkbench
+  - type: CEWorkbench
+    recipeTags:
+    - CERecipeWorkbench

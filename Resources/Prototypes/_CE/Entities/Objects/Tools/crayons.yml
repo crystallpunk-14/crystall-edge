@@ -16,14 +16,17 @@
     size: Tiny
   - type: Tag
     tags:
-    - Write
     - Crayon
   - type: UserInterface
     interfaces:
       enum.CrayonUiKey.Key:
         type: CrayonBoundUserInterface
   - type: Crayon
-    capacity: 15
+    selectedState: like
+  - type: LimitedCharges
+    maxCharges: 25
+  - type: StaticPrice
+    price: 5
 
 - type: entity
   parent: CECrayon
@@ -77,7 +80,9 @@
   - type: Crayon
     color: Red
     selectableColor: true
-    capacity: 1000
+    deleteEmpty: false
+  - type: AutoRecharge
+    rechargeDuration: 5
   - type: PointLight
     radius: 1.5
     energy: 1

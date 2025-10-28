@@ -1,0 +1,54 @@
+- type: marking
+  id: CECarcatEars
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  followSkinColor: true
+  forcedColoring: true
+  speciesRestriction: [ CECarcat ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/carcat_ears.rsi
+      state: 1
+
+- type: marking
+  id: CECarcatEars2
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  followSkinColor: true
+  forcedColoring: true
+  speciesRestriction: [ CECarcat ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/carcat_ears.rsi
+      state: 2
+
+- type: marking
+  id: CECarcatEars3
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  followSkinColor: true
+  forcedColoring: true
+  speciesRestriction: [ CECarcat ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/carcat_ears.rsi
+      state: 3
+
+- type: marking
+  id: CECarcatEars4
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  followSkinColor: true
+  forcedColoring: true
+  speciesRestriction: [ CECarcat ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/carcat_ears.rsi
+      state: 4
+
+- type: marking
+  id: CECarcatEars5
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  followSkinColor: true
+  forcedColoring: true
+  speciesRestriction: [ CECarcat ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/carcat_ears.rsi
+      state: 5

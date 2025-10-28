@@ -1,0 +1,196 @@
+- type: species
+  id: CESilva
+  name: ce-species-name-silva
+  roundStart: true
+  prototype: CEMobSilva
+  sprites: CEMobSilvaSprites
+  markingLimits: CEMobSilvaMarkingLimits
+  dollPrototype: CEMobSilvaDummy
+  skinColoration: CESilvasHues
+  defaultSkinTone: "#6c741d"
+  maleFirstNames: CE_Names_Silva_Male_First
+  femaleFirstNames: CE_Names_Silva_Female_First
+  naming: First
+
+- type: speciesBaseSprites
+  id: CEMobSilvaSprites
+  sprites:
+    Head: CEMobSilvaHead
+    HeadTop: CEMobSilvaAnyMarking
+    Hair: CEMobSilvaAnyMarking
+    FacialHair: CEMobSilvaAnyMarking
+    Snout: CEMobSilvaMarkingMatchSkin
+    Tail: CEMobSilvaAnyMarking
+    Chest: CEMobSilvaTorso
+    Eyes: CEMobSilvaEyes
+    LArm: CEMobSilvaLArm
+    RArm: CEMobSilvaRArm
+    LHand: CEMobSilvaLHand
+    RHand: CEMobSilvaRHand
+    LLeg: CEMobSilvaLLeg
+    RLeg: CEMobSilvaRLeg
+    LFoot: CEMobSilvaLFoot
+    RFoot: CEMobSilvaRFoot
+
+- type: markingPoints
+  id: CEMobSilvaMarkingLimits
+  points:
+    Hair:
+      points: 1
+      required: false
+    FacialHair:
+      points: 1
+      required: false
+    HeadTop:
+      points: 2
+      required: false
+    Tail:
+      points: 2
+      required: false
+    Snout:
+      points: 1
+      required: false
+    Chest:
+      points: 1
+      required: false
+    Legs:
+      points: 2
+      required: false
+    Arms:
+      points: 2
+      required: false
+
+- type: humanoidBaseSprite
+  id: CEMobSilvaEyes
+  baseSprite:
+    sprite: _CE/Mobs/Customization/eyes.rsi
+    state: silva_eyes
+    shader: unshaded
+
+- type: humanoidBaseSprite
+  id: CEMobSilvaAnyMarking
+
+- type: humanoidBaseSprite
+  id: CEMobSilvaMarkingMatchSkin
+  markingsMatchSkin: true
+
+- type: humanoidBaseSprite
+  id: CEMobSilvaHead
+  baseSprite:
+    sprite: _CE/Mobs/Species/Silva/parts.rsi
+    state: head
+
+- type: humanoidBaseSprite
+  id: CEMobSilvaHeadFemale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Silva/female_parts.rsi
+    state: head
+
+- type: humanoidBaseSprite
+  id: CEMobSilvaTorso
+  baseSprite:
+    sprite: _CE/Mobs/Species/Silva/parts.rsi
+    state: torso
+
+- type: humanoidBaseSprite
+  id: CEMobSilvaTorsoFemale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Silva/female_parts.rsi
+    state: torso
+
+- type: humanoidBaseSprite
+  id: CEMobSilvaLLeg
+  baseSprite:
+    sprite: _CE/Mobs/Species/Silva/parts.rsi
+    state: l_leg
+
+- type: humanoidBaseSprite
+  id: CEMobSilvaLLegFemale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Silva/female_parts.rsi
+    state: l_leg
+
+- type: humanoidBaseSprite
+  id: CEMobSilvaLArm
+  baseSprite:
+    sprite: _CE/Mobs/Species/Silva/parts.rsi
+    state: l_arm
+
+- type: humanoidBaseSprite
+  id: CEMobSilvaLArmFemale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Silva/female_parts.rsi
+    state: l_arm
+
+- type: humanoidBaseSprite
+  id: CEMobSilvaLHand
+  baseSprite:
+    sprite: _CE/Mobs/Species/Silva/parts.rsi
+    state: l_hand
+
+- type: humanoidBaseSprite
+  id: CEMobSilvaLHandFemale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Silva/female_parts.rsi
+    state: l_hand
+
+- type: humanoidBaseSprite
+  id: CEMobSilvaLFoot
+  baseSprite:
+    sprite: _CE/Mobs/Species/Silva/parts.rsi
+    state: l_foot
+
+- type: humanoidBaseSprite
+  id: CEMobSilvaLFootFemale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Silva/female_parts.rsi
+    state: l_foot
+
+- type: humanoidBaseSprite
+  id: CEMobSilvaRLeg
+  baseSprite:
+    sprite: _CE/Mobs/Species/Silva/parts.rsi
+    state: r_leg
+
+- type: humanoidBaseSprite
+  id: CEMobSilvaRLegFemale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Silva/female_parts.rsi
+    state: r_leg
+
+- type: humanoidBaseSprite
+  id: CEMobSilvaRArm
+  baseSprite:
+    sprite: _CE/Mobs/Species/Silva/parts.rsi
+    state: r_arm
+
+- type: humanoidBaseSprite
+  id: CEMobSilvaRArmFemale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Silva/female_parts.rsi
+    state: r_arm
+
+- type: humanoidBaseSprite
+  id: CEMobSilvaRHand
+  baseSprite:
+    sprite: _CE/Mobs/Species/Silva/parts.rsi
+    state: r_hand
+
+- type: humanoidBaseSprite
+  id: CEMobSilvaRHandFemale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Silva/female_parts.rsi
+    state: r_hand
+
+- type: humanoidBaseSprite
+  id: CEMobSilvaRFoot
+  baseSprite:
+    sprite: _CE/Mobs/Species/Silva/parts.rsi
+    state: r_foot
+
+
+- type: humanoidBaseSprite
+  id: CEMobSilvaRFootFemale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Silva/female_parts.rsi
+    state: r_foot

@@ -1,3 +1,4 @@
+using Content.Shared._CE.DayCycle;
 using Content.Shared.Light.Components;
 using Robust.Shared.Map.Components;
 
@@ -14,6 +15,8 @@ public abstract class SharedLightCycleSystem : EntitySystem
 
     protected virtual void OnCycleMapInit(Entity<LightCycleComponent> ent, ref MapInitEvent args)
     {
+        EnsureComp<CEDayCycleComponent>(ent); //CrystallEdge
+
         if (TryComp(ent.Owner, out MapLightComponent? mapLight))
         {
             ent.Comp.OriginalColor = mapLight.AmbientLightColor;
@@ -120,6 +123,7 @@ public abstract class SharedLightCycleSystem : EntitySystem
         float phase = 0)
     {
         var sen = MathF.Pow(MathF.Sin((MathF.PI * (phase + x)) / waveLength), exponent);
+
         return (crest - shift) * sen + shift;
     }
 }

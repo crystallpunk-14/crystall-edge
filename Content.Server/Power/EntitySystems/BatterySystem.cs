@@ -1,4 +1,5 @@
 using Content.Server.Power.Components;
+using Content.Shared._CE.MagicEnergy.Systems;
 using Content.Shared.Cargo;
 using Content.Shared.Examine;
 using Content.Shared.Power;
@@ -171,7 +172,16 @@ namespace Content.Server.Power.EntitySystems
             if (!Resolve(uid, ref battery))
                 return 0;
 
-            var newValue = Math.Clamp(0, battery.CurrentCharge + value, battery.MaxCharge);
+            //CrystallEdge overcharge energy
+            if (battery.CurrentCharge + value > battery.MaxCharge)
+            {
+                var overcharge = (battery.CurrentCharge + value) - battery.MaxCharge;
+                var overchargeEv = new CEEnergyOverchargeEvent(overcharge);
+                RaiseLocalEvent(uid, ref overchargeEv);
+            }
+            //CrystallEdge end
+
+            var newValue = Math.Clamp(battery.CurrentCharge + value, 0, battery.MaxCharge);
             var delta = newValue - battery.CurrentCharge;
             battery.CurrentCharge = newValue;
 

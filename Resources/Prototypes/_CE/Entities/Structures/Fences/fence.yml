@@ -1,0 +1,77 @@
+- type: entity
+  parent: BaseStructure
+  id: CEBaseFence
+  abstract: true
+  categories: [ ForkFiltered ]
+  name: fence
+  description: A low fence restricting movement in a purely nominal way.
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wall
+  components:
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: Sprite
+    drawdepth: Mobs
+  - type: Icon
+    state: full
+  - type: PlacementReplacement
+    key: walls
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        path:
+          "/Audio/Weapons/boxingpunch1.ogg"
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.3,-0.3,0.3,0.3"
+        density: 1000
+        layer:
+        - LowImpassable
+        - MidImpassable
+  - type: IconSmooth
+    key: CEfence
+    base: fence
+    additionalKeys:
+    - CEwall
+  - type: Climbable
+    delay: 2.5
+
+- type: entity
+  parent:
+  - CEBaseFence
+  id: CEFenceWooden
+  suffix: Wooden
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Fences/wooden.rsi
+  - type: Icon
+    sprite: _CE/Structures/Fences/wooden.rsi
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Wood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 75
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEWoodenPlanks1:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  #- type: Construction
+  #  graph: CEFenceWooden
+  #  node: CEFenceWooden

@@ -1,0 +1,44 @@
+- type: marking
+  id: CEElfEars
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [ CEElf ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/elf_ears.rsi
+      state: ears1
+
+- type: marking
+  id: CEElfEars2
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [ CEElf ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/elf_ears.rsi
+      state: ears2
+
+- type: marking
+  id: CEElfEars3
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [ CEElf ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/elf_ears.rsi
+      state: ears3
+
+- type: marking
+  id: CEElfEars3Broken
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [ CEElf ]
+  sprites:
+    - sprite: _CE/Mobs/Customization/elf_ears.rsi
+      state: ears3_broken
+
+- type: marking
+  id: CEElfEars4
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [ CEElf ]
+  sprites:
+  - sprite: _CE/Mobs/Customization/elf_ears.rsi
+    state: ears4

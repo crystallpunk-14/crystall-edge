@@ -1,0 +1,1 @@
+ce-energy-overcharge-popup = Too much energy!

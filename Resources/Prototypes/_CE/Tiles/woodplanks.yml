@@ -21,10 +21,10 @@
     East: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_W.png
-  #baseTurf: CEFloorFoundation
+  baseTurf: CEFloorFoundation
   isSubfloor: false
-  #deconstructTools: [ Prying ]
-  #itemDrop: CEFloorTileOakWoodplanks
+  deconstructTools: [ Prying ]
+  itemDrop: CEFloorTileOakWoodplanks
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -52,10 +52,10 @@
     East: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_W.png
-  #baseTurf: CEFloorFoundation
+  baseTurf: CEFloorFoundation
   isSubfloor: false
-  #deconstructTools: [ Prying ]
-  #itemDrop: CEFloorTileOakWoodplanksBig
+  deconstructTools: [ Prying ]
+  itemDrop: CEFloorTileOakWoodplanksBig
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -83,10 +83,10 @@
     East: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_W.png
-  #baseTurf: CEFloorFoundation
+  baseTurf: CEFloorFoundation
   isSubfloor: false
-  #deconstructTools: [ Prying ]
-  #itemDrop: CEFloorTileOakWoodplanksCruciform
+  deconstructTools: [ Prying ]
+  itemDrop: CEFloorTileOakWoodplanksCruciform
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -114,10 +114,10 @@
     East: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_W.png
-  #baseTurf: CEFloorFoundation
+  baseTurf: CEFloorFoundation
   isSubfloor: false
-  #deconstructTools: [ Prying ]
-  #itemDrop: CEFloorTileOakWoodplanksStairs
+  deconstructTools: [ Prying ]
+  itemDrop: CEFloorTileOakWoodplanksStairs
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -147,9 +147,9 @@
     East: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_W.png
-  #baseTurf: CEFloorFoundation
+  baseTurf: CEFloorFoundation
   isSubfloor: false
-  #deconstructTools: [ Prying ]
+  deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -177,9 +177,9 @@
     East: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_W.png
-  #baseTurf: CEFloorFoundation
+  baseTurf: CEFloorFoundation
   isSubfloor: false
-  #deconstructTools: [ Prying ]
+  deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -207,9 +207,9 @@
     East: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_W.png
-  #baseTurf: CEFloorFoundation
+  baseTurf: CEFloorFoundation
   isSubfloor: false
-  #deconstructTools: [ Prying ]
+  deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -237,9 +237,9 @@
     East: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_W.png
-  #baseTurf: CEFloorFoundation
+  baseTurf: CEFloorFoundation
   isSubfloor: false
-  #deconstructTools: [ Prying ]
+  deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -262,9 +262,9 @@
     East: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_W.png
-  #baseTurf: CEFloorFoundation
+  baseTurf: CEFloorFoundation
   isSubfloor: false
-  #deconstructTools: [ Prying ]
+  deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -285,9 +285,9 @@
     East: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_W.png
-  #baseTurf: CEFloorFoundation
+  baseTurf: CEFloorFoundation
   isSubfloor: false
-  #deconstructTools: [ Prying ]
+  deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -308,9 +308,9 @@
     East: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_W.png
-  #baseTurf: CEFloorFoundation
+  baseTurf: CEFloorFoundation
   isSubfloor: false
-  #deconstructTools: [ Prying ]
+  deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -331,9 +331,9 @@
     East: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_W.png
-  #baseTurf: CEFloorFoundation
+  baseTurf: CEFloorFoundation
   isSubfloor: false
-  #deconstructTools: [ Prying ]
+  deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000

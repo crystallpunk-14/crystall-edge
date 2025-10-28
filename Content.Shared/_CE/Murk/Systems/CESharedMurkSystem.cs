@@ -1,5 +1,6 @@
 using System.Numerics;
 using Content.Shared._CE.Murk.Components;
+using Content.Shared.Power;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 
@@ -8,6 +9,22 @@ namespace Content.Shared._CE.Murk.Systems;
 public abstract partial class CESharedMurkSystem : EntitySystem
 {
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeLocalEvent<CEMurkGeneratorComponent, ChargeChangedEvent>(OnPowerChanged);
+    }
+
+    private void OnPowerChanged(Entity<CEMurkGeneratorComponent> ent, ref ChargeChangedEvent args)
+    {
+        if (!TryComp<CEMurkSourceComponent>(ent, out var source))
+            return;
+
+        source.Intensity = MathHelper.Lerp(ent.Comp.DisabledIntensity, ent.Comp.EnabledIntensity, args.Charge / args.MaxCharge);
+        Dirty(ent, source);
+    }
 
     public bool InMurk(EntityCoordinates coords)
     {

@@ -1,0 +1,162 @@
+- type: species
+  id: CECarcat
+  name: ce-species-name-carcat
+  roundStart: true
+  prototype: CEMobCarcat
+  sprites: CEMobCarcatSprites
+  markingLimits: CEMobCarcatMarkingLimits
+  dollPrototype: CEMobCarcatDummy
+  skinColoration: CECarcatHues
+  defaultSkinTone: "#4a382f"
+  maleFirstNames: CE_Names_Carcat_First
+  femaleFirstNames: CE_Names_Carcat_First
+  naming: First
+
+- type: speciesBaseSprites
+  id: CEMobCarcatSprites
+  sprites:
+    Head: CEMobCarcatHead
+    HeadTop: CEMobCarcatMarkingMatchSkin
+    #Hair: CEMobCarcatAnyMarking
+    #FacialHair: CEMobCarcatAnyMarking
+    Snout: CEMobCarcatMarkingMatchSkin
+    Tail: CEMobCarcatMarkingMatchSkin
+    Chest: CEMobCarcatTorso
+    Eyes: CEMobCarcatEyes
+    LArm: CEMobCarcatLArm
+    RArm: CEMobCarcatRArm
+    LHand: CEMobCarcatLHand
+    RHand: CEMobCarcatRHand
+    LLeg: CEMobCarcatLLeg
+    RLeg: CEMobCarcatRLeg
+    LFoot: CEMobCarcatLFoot
+    RFoot: CEMobCarcatRFoot
+
+- type: markingPoints
+  id: CEMobCarcatMarkingLimits
+  onlyWhitelisted: true
+  points:
+    Hair:
+      points: 1
+      required: false
+    #FacialHair:
+    #  points: 1
+    #  required: false
+    Snout:
+      points: 1
+      required: true
+      defaultMarkings: [ CECarcatNose ]
+    Tail:
+      points: 1
+      required: true
+      defaultMarkings: [ CECarcatTail ]
+    HeadTop:
+      points: 1
+      required: true
+      defaultMarkings: [ CECarcatEars ]
+    #Chest:
+    #  points: 1
+    #  required: false
+    #Legs:
+    #  points: 2
+    #  required: false
+    #Arms:
+    #  points: 2
+    #  required: false
+
+- type: humanoidBaseSprite
+  id: CEMobCarcatEyes
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carcat/parts.rsi
+    state: eyes
+
+- type: humanoidBaseSprite
+  id: CEMobCarcatAnyMarking
+
+- type: humanoidBaseSprite
+  id: CEMobCarcatMarkingMatchSkin
+  markingsMatchSkin: true
+
+- type: humanoidBaseSprite
+  id: CEMobCarcatHead
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carcat/parts.rsi
+    state: head
+
+- type: humanoidBaseSprite
+  id: CEMobCarcatHeadMale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carcat/parts.rsi
+    state: head
+
+- type: humanoidBaseSprite
+  id: CEMobCarcatHeadFemale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carcat/parts.rsi
+    state: head
+
+- type: humanoidBaseSprite
+  id: CEMobCarcatTorso
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carcat/parts.rsi
+    state: torso
+
+- type: humanoidBaseSprite
+  id: CEMobCarcatTorsoMale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carcat/parts.rsi
+    state: torso
+
+- type: humanoidBaseSprite
+  id: CEMobCarcatTorsoFemale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carcat/parts.rsi
+    state: torso
+
+- type: humanoidBaseSprite
+  id: CEMobCarcatLLeg
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carcat/parts.rsi
+    state: l_leg
+
+- type: humanoidBaseSprite
+  id: CEMobCarcatLArm
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carcat/parts.rsi
+    state: l_arm
+
+- type: humanoidBaseSprite
+  id: CEMobCarcatLHand
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carcat/parts.rsi
+    state: l_hand
+
+- type: humanoidBaseSprite
+  id: CEMobCarcatLFoot
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carcat/parts.rsi
+    state: l_foot
+
+- type: humanoidBaseSprite
+  id: CEMobCarcatRLeg
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carcat/parts.rsi
+    state: r_leg
+
+- type: humanoidBaseSprite
+  id: CEMobCarcatRArm
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carcat/parts.rsi
+    state: r_arm
+
+- type: humanoidBaseSprite
+  id: CEMobCarcatRHand
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carcat/parts.rsi
+    state: r_hand
+
+- type: humanoidBaseSprite
+  id: CEMobCarcatRFoot
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carcat/parts.rsi
+    state: r_foot

@@ -11,6 +11,10 @@
 # CrystallEdge migration zone
 
 BaselineSpawnPoint: CESpawnPointTownfolk
+CERoofWooden: null
+CERoofStone: null
+CERoofRemover: null
+CELaddersUpStoneAutoLink: CEZLevelLadderStone
 
 # CrystallEdge migration zone end
 
@@ -733,5 +737,12 @@ PrefilledSyringe: Syringe
 BibleTanakh: null
 BibleSatanic: null
 
-# 2025-10-8
+
+# 2025-10-08
 ClothingBeltAssault: ClothingBeltMilitaryWebbing
+WarpPointBombing: null
+
+# 2025-10-13
+ToyGriffin: ToyFigurineGriffin
+ToyOwlman: ToyFigurineOwlman
+ToySkeleton: ToyFigurineSkeleton

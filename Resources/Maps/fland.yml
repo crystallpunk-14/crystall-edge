@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 267.2.0
+  engineVersion: 267.3.0
   forkId: ""
   forkVersion: ""
-  time: 10/08/2025 23:22:51
-  entityCount: 36080
+  time: 10/16/2025 13:06:44
+  entityCount: 36082
 maps:
 - 1
 grids:
@@ -186578,6 +186578,29 @@ entities:
       parent: 13329
     - type: Fixtures
       fixtures: {}
+- proto: SignArrivals
+  entities:
+  - uid: 9339
+    components:
+    - type: Transform
+      pos: -37.5,-27.5
+      parent: 13329
+    - type: Fixtures
+      fixtures: {}
+  - uid: 9340
+    components:
+    - type: Transform
+      pos: -24.5,-7.5
+      parent: 13329
+    - type: Fixtures
+      fixtures: {}
+  - uid: 10642
+    components:
+    - type: Transform
+      pos: -24.5,-23.5
+      parent: 13329
+    - type: Fixtures
+      fixtures: {}
 - proto: SignAtmos
   entities:
   - uid: 26468
@@ -188492,14 +188515,6 @@ entities:
       fixtures: {}
 - proto: SignShipDock
   entities:
-  - uid: 13601
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -37.5,-27.5
-      parent: 13329
-    - type: Fixtures
-      fixtures: {}
   - uid: 19947
     components:
     - type: Transform
