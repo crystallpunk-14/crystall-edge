@@ -17,14 +17,66 @@
       edges:
         - to: start
           steps:
-            #- tool: Welding
-            #  doAfter: 1
-            - tool: Prying
+            - tool: Welding
               doAfter: 1
           completed:
             - !type:SpawnPrototype
               prototype: CEBrassBar1
               amount: 2
+        - to: CEPipeBrassBigVerticalDown
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+    - node: CEPipeBrassBigVerticalDown
+      entity: CEPipeBrassBigVerticalDown
+      edges:
+        - to: start
+          steps:
+            - tool: Welding
+              doAfter: 1
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEBrassBar1
+              amount: 2
+        - to: CEPipeBrassBigVerticalUpDown
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+    - node: CEPipeBrassBigVerticalUpDown
+      entity: CEPipeBrassBigVerticalUpDown
+      edges:
+        - to: start
+          steps:
+            - tool: Welding
+              doAfter: 1
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEBrassBar1
+              amount: 2
+        - to: CEPipeBrassBigVerticalUp
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+    - node: CEPipeBrassBigVerticalUp
+      entity: CEPipeBrassBigVerticalUp
+      edges:
+        - to: start
+          steps:
+            - tool: Welding
+              doAfter: 1
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEBrassBar1
+              amount: 2
+        - to: CEPipeBrassBig
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+
 
     - node: CEPipeBrassBigBroken
       entity: CEPipeBrassBigBroken
@@ -34,5 +86,30 @@
             - material: CEBrass
               amount: 1
               doAfter: 1
-           # - tool: Welding
-           #   doAfter: 1
+
+    - node: CEPipeBrassBigVerticalDownBroken
+      entity: CEPipeBrassBigVerticalDownBroken
+      edges:
+        - to: CEPipeBrassBigVerticalDown
+          steps:
+            - material: CEBrass
+              amount: 1
+              doAfter: 1
+
+    - node: CEPipeBrassBigVerticalUpDownBroken
+      entity: CEPipeBrassBigVerticalUpDownBroken
+      edges:
+        - to: CEPipeBrassBigVerticalUpDown
+          steps:
+            - material: CEBrass
+              amount: 1
+              doAfter: 1
+
+    - node: CEPipeBrassBigVerticalUpBroken
+      entity: CEPipeBrassBigVerticalUpBroken
+      edges:
+        - to: CEPipeBrassBigVerticalUp
+          steps:
+            - material: CEBrass
+              amount: 1
+              doAfter: 1

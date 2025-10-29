@@ -1,0 +1,36 @@
+- type: entity
+  id: CEPipeBrassMedium
+  name: smol brass pipe
+  description: TODO
+  parent:
+  - CEPipeBase
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: PlacementReplacement
+    key: pipe_medium
+  - type: Sprite
+    sprite: _CE/Structures/Power/Pipes/medium.rsi
+    state: pipe_15
+    drawdepth: ThinWire
+    offset: 0, 0.01
+  - type: Icon
+    sprite: _CE/Structures/Power/Pipes/medium.rsi
+    state: pipe_15
+  - type: NodeContainer
+    nodes:
+      power:
+        !type:CableNode
+        nodeGroupID: MVPower
+  - type: Physics
+    canCollide: false
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 30
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: CableVisualizer
+    statePrefix: pipe_
