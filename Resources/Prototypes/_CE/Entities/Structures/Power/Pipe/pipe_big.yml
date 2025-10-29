@@ -20,12 +20,12 @@
   name: wide brass pipe
   components:
   - type: Sprite
-    sprite: _CE/Structures/Power/Pipes/big.rsi
-    state: pipe_15 
+    sprite: _CE/Structures/Power/Pipes/big_flat.rsi
+    state: pipe_15
     drawdepth: Mobs
     offset: 0, 0.01
   - type: Icon
-    sprite: _CE/Structures/Power/Pipes/big.rsi
+    sprite: _CE/Structures/Power/Pipes/big_flat.rsi
     state: pipe_15
   - type: Fixtures
     fixtures:
@@ -73,7 +73,9 @@
   name: wide brass pipe up
   components:
   - type: Sprite
-    color: red
+    sprite: _CE/Structures/Power/Pipes/big_up.rsi
+  - type: Icon
+    sprite: _CE/Structures/Power/Pipes/big_up.rsi
   - type: NodeContainer
     nodes:
       power:
@@ -108,52 +110,13 @@
 
 - type: entity
   parent: CEPipeBrassBig
-  id: CEPipeBrassBigVerticalUpDown
-  name: wide brass pipe vertical
-  components:
-  - type: Sprite
-    color: red
-  - type: NodeContainer
-    nodes:
-      power:
-        !type:CableNode
-        nodeGroupID: HVPower
-      power_vertical:
-        !type:CECableVerticalNode
-        up: true
-        down: true
-        nodeGroupID: HVPower
-    graph: CEPipeBrassBig
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 25
-      behaviors:
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          CEScrapBrass:
-            min: 1
-            max: 1
-      #- !type:PlaySoundBehavior
-      #  sound:
-      #    path: /Audio/Effects/tree_fell.ogg
-      #    params:
-      #      volume: 5
-      #      variation: 0.05
-      - !type:ChangeConstructionNodeBehavior
-        node: CEPipeBrassBigVerticalUpDownBroken
-  - type: Construction
-    graph: CEPipeBrassBig
-    node: CEPipeBrassBigVerticalUpDown
-
-- type: entity
-  parent: CEPipeBrassBig
   id: CEPipeBrassBigVerticalDown
   name: wide brass pipe down
   components:
   - type: Sprite
-    color: red
+    sprite: _CE/Structures/Power/Pipes/big_down.rsi
+  - type: Icon
+    sprite: _CE/Structures/Power/Pipes/big_down.rsi
   - type: NodeContainer
     nodes:
       power:
@@ -185,7 +148,7 @@
   - type: Construction
     graph: CEPipeBrassBig
     node: CEPipeBrassBigVerticalDown
-    
+
 # Broken
 
 - type: entity
@@ -239,8 +202,8 @@
       enabled: false
 
 - type: entity
-  parent: 
-  - CEPipeBrassBigBase
+  parent:
+  - CEPipeBrassBig
   - CEPipeBrassBigBrokenBase
   id: CEPipeBrassBigBroken
   suffix: Broken
@@ -251,11 +214,11 @@
     defaultTarget: CEPipeBrassBig
 
 - type: entity
-  parent: 
+  parent:
   - CEPipeBrassBigVerticalUp
   - CEPipeBrassBigBrokenBase
   id: CEPipeBrassBigVerticalUpBroken
-  suffix: Broken 
+  suffix: Broken
   components:
   - type: Construction
     graph: CEPipeBrassBig
@@ -273,32 +236,10 @@
 
 - type: entity
   parent:
-  - CEPipeBrassBigVerticalUpDown
-  - CEPipeBrassBigBrokenBase
-  id: CEPipeBrassBigVerticalUpDownBroken
-  suffix: Broken 
-  components:
-  - type: Construction
-    graph: CEPipeBrassBig
-    node: CEPipeBrassBigVerticalUpDownBroken
-    defaultTarget: CEPipeBrassBigVerticalUpDown
-  - type: NodeContainer
-    nodes:
-      power:
-        !type:CableNode
-        nodeGroupID: HVPower
-      power_vertical:
-        !type:CECableVerticalNode
-        up: true
-        down: true
-        nodeGroupID: HVPower
-
-- type: entity
-  parent: 
   - CEPipeBrassBigVerticalDown
   - CEPipeBrassBigBrokenBase
   id: CEPipeBrassBigVerticalDownBroken
-  suffix: Broken 
+  suffix: Broken
   components:
   - type: Construction
     graph: CEPipeBrassBig

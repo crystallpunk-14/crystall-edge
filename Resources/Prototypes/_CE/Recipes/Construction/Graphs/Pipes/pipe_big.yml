@@ -39,22 +39,6 @@
             - !type:SpawnPrototype
               prototype: CEBrassBar1
               amount: 2
-        - to: CEPipeBrassBigVerticalUpDown
-          steps:
-            - tool: Prying
-              doAfter: 1
-
-    - node: CEPipeBrassBigVerticalUpDown
-      entity: CEPipeBrassBigVerticalUpDown
-      edges:
-        - to: start
-          steps:
-            - tool: Welding
-              doAfter: 1
-          completed:
-            - !type:SpawnPrototype
-              prototype: CEBrassBar1
-              amount: 2
         - to: CEPipeBrassBigVerticalUp
           steps:
             - tool: Prying
@@ -91,15 +75,6 @@
       entity: CEPipeBrassBigVerticalDownBroken
       edges:
         - to: CEPipeBrassBigVerticalDown
-          steps:
-            - material: CEBrass
-              amount: 1
-              doAfter: 1
-
-    - node: CEPipeBrassBigVerticalUpDownBroken
-      entity: CEPipeBrassBigVerticalUpDownBroken
-      edges:
-        - to: CEPipeBrassBigVerticalUpDown
           steps:
             - material: CEBrass
               amount: 1
