@@ -1,0 +1,38 @@
+- type: constructionGraph
+  id: CEPipeBrassBig
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: CEPipeBrassBig
+          steps:
+            - material: CEBrass
+              amount: 2
+              doAfter: 1
+
+    - node: CEPipeBrassBig
+      entity: CEPipeBrassBig
+      edges:
+        - to: start
+          steps:
+            #- tool: Welding
+            #  doAfter: 1
+            - tool: Prying
+              doAfter: 1
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEBrassBar1
+              amount: 2
+
+    - node: CEPipeBrassBigBroken
+      entity: CEPipeBrassBigBroken
+      edges:
+        - to: CEPipeBrassBig
+          steps:
+            - material: CEBrass
+              amount: 1
+              doAfter: 1
+           # - tool: Welding
+           #   doAfter: 1

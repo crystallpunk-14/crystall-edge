@@ -32,7 +32,7 @@
   id: CEScrapBrass
   parent: CEBaseScrap
   name: brass scrap
-  description: Crooked pieces of brass. The secret of producing this material has been lost. Only ancient ruins remain as a source of this valuable magical metal.
+  description: Crooked pieces of brass. The secret of producing this material has been lost. Only ancient ruins remain as a source of this valuable metal.
   components:
   - type: Sprite
     sprite: _CE/Objects/Materials/Metals/brass_scrap.rsi

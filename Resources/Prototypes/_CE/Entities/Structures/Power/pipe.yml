@@ -21,8 +21,8 @@
 
 - type: entity
   id: CEPipeBrassBig
-  name: big brass pipe
-  description: TODO
+  name: wide brass pipe
+  description: Insulated brass pipe with iron supports. A standardized method of transmitting arcane energy over long distances. However, any holes or cracks can lead to energy leakage and harm to surrounding creatures susceptible to magic.
   parent:
   - BaseStructure
   - CEPipeBase
@@ -33,7 +33,7 @@
     key: pipe_big
   - type: Sprite
     sprite: _CE/Structures/Power/Pipes/big.rsi
-    state: pipe_0
+    state: pipe_15 
     drawdepth: Mobs
     offset: 0, 0.01
   - type: Icon
@@ -55,15 +55,21 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 50
+        damage: 25
       behaviors:
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
-  - type: Cable
-    cuttingDelay: 1
-    cableDroppedOnCutPrototype: CableHVStack1
-    cableType: HighVoltage
-    cuttingQuality: null
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEScrapBrass:
+            min: 1
+            max: 1
+      #- !type:PlaySoundBehavior
+      #  sound:
+      #    path: /Audio/Effects/tree_fell.ogg
+      #    params:
+      #      volume: 5
+      #      variation: 0.05
+      - !type:ChangeConstructionNodeBehavior
+        node: CEPipeBrassBigBroken
   - type: CableVisualizer
     statePrefix: pipe_
   - type: NodeContainer
@@ -71,10 +77,51 @@
       power:
         !type:CableNode
         nodeGroupID: HVPower
+  - type: Construction
+    graph: CEPipeBrassBig
+    node: CEPipeBrassBig
+
+- type: entity
+  parent: CEPipeBrassBig
+  id: CEPipeBrassBigBroken
+  description: Damaged brass pipe. The arcane energy flowing through them will flow here and may pose a serious danger to creatures susceptible to magic.
+  suffix: Broken, Energy leak
+  components:
+  - type: Sprite
+    color: cyan
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 25
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEScrapBrass:
+            min: 1
+            max: 1
+      #- !type:PlaySoundBehavior
+      #  sound:
+      #    path: /Audio/Effects/tree_fell.ogg
+      #    params:
+      #      volume: 5
+      #      variation: 0.05
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: PowerConsumer
+    voltage: High
+    drawRate: 10
+  - type: RadiationSource
+    intensity: 0
+  - type: CEEnergyLeak
+  - type: Construction
+    graph: CEPipeBrassBig
+    node: CEPipeBrassBigBroken
+    defaultTarget: CEPipeBrassBig
 
 - type: entity
   id: CEPipeBrassMedium
-  name: brass pipe
+  name: smol brass pipe
   description: TODO
   parent:
   - CEPipeBase
@@ -85,7 +132,7 @@
     key: pipe_medium
   - type: Sprite
     sprite: _CE/Structures/Power/Pipes/medium.rsi
-    state: pipe_0
+    state: pipe_15
     drawdepth: ThinWire
     offset: 0, 0.01
   - type: Icon
@@ -98,9 +145,6 @@
         nodeGroupID: MVPower
   - type: Physics
     canCollide: false
-  - type: Cable
-    cableDroppedOnCutPrototype: CableMVStack1
-    cableType: MediumVoltage
   - type: Destructible
     thresholds:
     - trigger:

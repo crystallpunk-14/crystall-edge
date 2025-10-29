@@ -48,7 +48,7 @@
   parent: BaseItem
   name: brass bar
   suffix: 1
-  description: A heavy piece of refined brass
+  description: "The secret of how this metal is made has been lost over time, but that only makes it more valuable: it's the only metal that can isolate arcane energy, and without it, most modern tech wouldn't be possible."
   categories: [ ForkFiltered ]
   components:
   - type: Item
