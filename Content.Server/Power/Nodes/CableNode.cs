@@ -38,6 +38,14 @@ namespace Content.Server.Power.Nodes
                     nodeDirs.Add((Direction.Invalid, node));
                 }
 
+                //CrystallEdge vertical cabling
+                if (node is CECableVerticalNode && dir == Direction.Invalid)
+                {
+                    // vertical
+                    nodeDirs.Add((Direction.Invalid, node));
+                }
+                //CrysrallEdge end
+
                 if (node is CableTerminalNode)
                 {
                     if (dir == Direction.Invalid)

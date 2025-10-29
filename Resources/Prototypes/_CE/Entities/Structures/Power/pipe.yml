@@ -136,6 +136,26 @@
       enabled: false
 
 - type: entity
+  parent: CEPipeBrassBig
+  id: CEPipeBrassBigVerticalTest
+  suffix: Vertical test
+  components:
+  - type: Sprite
+    color: red
+  - type: NodeContainer
+    nodes:
+      power:
+        !type:CableNode
+        nodeGroupID: HVPower
+      power_vertical:
+        !type:CECableVerticalNode
+        up: true
+        down: true
+        nodeGroupID: HVPower
+
+
+
+- type: entity
   id: CEPipeBrassMedium
   name: smol brass pipe
   description: TODO
