@@ -13,19 +13,6 @@
 
 - type: construction
   hide: false
-  id: CEPipeBrassBigVerticalUpDown
-  graph: CEPipeBrassBig
-  startNode: start
-  targetNode: CEPipeBrassBigVerticalUpDown
-  category: construction-category-machines
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canBuildInImpassable: false
-  conditions:
-    - !type:TileNotBlocked
-
-- type: construction
-  hide: false
   id: CEPipeBrassBigVerticalUp
   graph: CEPipeBrassBig
   startNode: start

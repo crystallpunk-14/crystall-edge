@@ -158,12 +158,24 @@
   description: Damaged brass pipe. The arcane energy flowing through them will flow here and may pose a serious danger to creatures susceptible to magic.
   components:
   - type: Sprite
-    color: cyan
+    layers:
+    - state: broken_pipe_15
+    - state: electrified
+      shader: unshaded
+      visible: false
+      map: [ sparkle ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.CEEnergyLeakVisuals.Enabled:
+        sparkle:
+          True: {visible: true}
+          False: {visible: false}
   - type: Destructible
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 25
+        damage: 50
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
@@ -212,6 +224,8 @@
     graph: CEPipeBrassBig
     node: CEPipeBrassBigBroken
     defaultTarget: CEPipeBrassBig
+  - type: CableVisualizer
+    statePrefix: broken_pipe_
 
 - type: entity
   parent:
