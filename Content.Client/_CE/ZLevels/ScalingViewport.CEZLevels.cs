@@ -43,8 +43,8 @@ public sealed partial class ScalingViewport
             var targetMap = sourceList[i];
             mapList.Add(targetMap);
 
-            //if (!TryFindEmptyTiles(targetMap))
-            //    break;
+            if (!TryFindEmptyTiles(targetMap))
+                break;
         }
 
         // Reverse a new list
@@ -109,10 +109,10 @@ public sealed partial class ScalingViewport
         return false;
     }
 
-    private bool TryRenderLevelsBelow(IRenderHandle handle, IClydeViewport viewport)
+    private void RenderLevelsBelow(IRenderHandle handle, IClydeViewport viewport)
     {
         if (_eye is null)
-            return false;
+            return;
 
         _fallbackEye = _eye;
 
@@ -125,23 +125,40 @@ public sealed partial class ScalingViewport
         _mapSystem ??= _entityManager.System<SharedMapSystem>();
 
         if (_player.LocalEntity is null)
-            return false;
+            return;
 
         if (!_entityManager.TryGetComponent<CEZLevelViewerComponent>(_player.LocalEntity.Value, out var zLevelViewer))
-            return false;
+            return;
 
         if (!_xformQuery.Value.TryComp(_player.LocalEntity, out var playerXform))
-            return false;
+            return;
 
         if (playerXform.MapUid is null)
-            return false;
+            return;
 
         var lookUp = zLevelViewer.LookUp ? 1 : 0;
 
-        int? realLowestDepth = null; //Used for ClearColor
+        var lowestDepth = 0;
+        for (var i = 0; i >= -CESharedZLevelsSystem.MaxZLevelsBelowRendering; i--)
+        {
+            var checkingMap = playerXform.MapUid.Value;
 
-        var rendered = false;
-        for (var depth = CESharedZLevelsSystem.MaxZLevelsBelowRendering; depth >= -lookUp; depth--)
+            if (i != 0)
+            {
+                if (!_zLevels.TryMapOffset(playerXform.MapUid.Value, i, out var mapUidBelow))
+                    continue;
+
+                checkingMap = mapUidBelow.Value;
+            }
+
+            lowestDepth = i;
+
+            if (!TryFindEmptyTiles(checkingMap))
+                break;
+        }
+
+        //From the lowest depth to the highest, render each level
+        for (var depth = lowestDepth; depth <= lookUp; depth++)
         {
             if (depth == 0)
             {
@@ -152,7 +169,7 @@ public sealed partial class ScalingViewport
             }
             else
             {
-                if (!_zLevels.TryMapOffset(playerXform.MapUid.Value, -depth, out var mapUidBelow))
+                if (!_zLevels.TryMapOffset(playerXform.MapUid.Value, depth, out var mapUidBelow))
                     continue;
 
                 if (!_mapQuery.Value.TryComp(mapUidBelow.Value, out var mapComp))
@@ -161,26 +178,22 @@ public sealed partial class ScalingViewport
                 viewport.Eye =new ZEye
                 {
                     Position = new MapCoordinates(_eye.Position.Position, mapComp.MapId),
-                    DrawFov = _eye.DrawFov && depth <= 0,
-                    DrawLight = _eye.DrawLight && depth <= 0,
-                    Offset = _eye.Offset + new Vector2(0f, depth * CEClientZLevelsSystem.ZLevelOffset),
+                    DrawFov = _eye.DrawFov && depth >= 0,
+                    DrawLight = _eye.DrawLight && depth >= 0,
+                    Offset = _eye.Offset + new Vector2(0f, -depth * CEClientZLevelsSystem.ZLevelOffset),
                     Rotation = _eye.Rotation,
                     Scale = _eye.Scale,
                     Depth = depth,
                 };
             }
-            realLowestDepth ??= depth;
 
-            viewport.ClearColor = depth == realLowestDepth ? Color.Black : null;
+            viewport.ClearColor = depth == lowestDepth ? Color.Black : null;
             viewport.Render();
-            rendered = true;
         }
 
         // Restore the Eye
         Eye = _fallbackEye;
         viewport.Eye = Eye;
-
-        return rendered;
     }
 
     //FIXME: This is nasty!
