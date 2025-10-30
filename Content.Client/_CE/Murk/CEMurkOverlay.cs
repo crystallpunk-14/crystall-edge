@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Client.Viewport;
 using Content.Shared._CE.Murk.Components;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
@@ -13,38 +14,23 @@ public sealed class CEMurkOverlay : Overlay
     [Dependency] private readonly IPrototypeManager _proto = default!;
     private readonly SharedTransformSystem _transform;
 
-    /// <summary>
-    ///     Maximum number of observers zones that can be shown on screen at a time.
-    ///     If this value is changed, the shader itself also needs to be updated.
-    /// </summary>
-    public const int MaxCount = 64;
-
     public override bool RequestScreenTexture => true;
     public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowFOV;
 
     private readonly ShaderInstance? _murkShader;
 
-    private float _baseIntensity = 0;
     private Vector2 _playerPos = Vector2.Zero;
-    private readonly Vector2[] _positions = new Vector2[MaxCount];
-    private readonly float[] _intensities = new float[MaxCount];
-    private int _count;
 
-    private readonly HashSet<EntityUid> _seen = [];
-    private readonly Dictionary<EntityUid, MurkEntry> _murkBuffer = new();
+    private readonly EntityQuery<CEMurkedMapComponent> _mapQuery;
 
     private const float LerpStep = 0.01f;
-    private sealed class MurkEntry
-    {
-        public Vector2 Position;
-        public float Intensity;
-    }
 
     public CEMurkOverlay()
     {
         IoCManager.InjectDependencies(this);
 
         _murkShader = _proto.Index<ShaderPrototype>("CEMurk").InstanceUnique();
+        _mapQuery = _entManager.GetEntityQuery<CEMurkedMapComponent>();
 
         _transform = _entManager.System<SharedTransformSystem>();
     }
@@ -54,33 +40,32 @@ public sealed class CEMurkOverlay : Overlay
         if (args.Viewport.Eye == null)
             return false;
 
+        if (!_mapQuery.TryGetComponent(args.MapUid, out var murkedMap))
+            return false;
+
         _playerPos = args.Viewport.Eye.Position.Position;
 
-        float targetMapIntensity = 0;
-        if (_entManager.TryGetComponent<CEMurkedMapComponent>(args.MapUid, out var murkedMap))
-            targetMapIntensity = murkedMap.Intensity;
+        murkedMap.LerpedIntensity = MathHelper.Lerp(murkedMap.LerpedIntensity, murkedMap.Intensity, LerpStep);
 
-        _baseIntensity = MathHelper.Lerp(_baseIntensity, targetMapIntensity, LerpStep);
-
-        _seen.Clear();
+        murkedMap.Seen.Clear();
         var query = _entManager.AllEntityQueryEnumerator<CEMurkSourceComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out var murk, out var xform))
         {
             if (!murk.Active || xform.MapID != args.MapId)
                 continue;
 
-            _seen.Add(uid);
+            murkedMap.Seen.Add(uid);
 
             var mapPos = _transform.GetWorldPosition(uid);
 
-            if (!_murkBuffer.TryGetValue(uid, out var entry))
+            if (!murkedMap.MurkBuffer.TryGetValue(uid, out var entry))
             {
-                entry = new MurkEntry
+                entry = new CEMurkedMapComponent.MurkEntry
                 {
                     Intensity = 0,
                     Position = mapPos,
                 };
-                _murkBuffer[uid] = entry;
+                murkedMap.MurkBuffer[uid] = entry;
             }
 
             entry.Position = Vector2.Lerp(entry.Position, mapPos, LerpStep);
@@ -88,9 +73,9 @@ public sealed class CEMurkOverlay : Overlay
         }
 
         var toRemove = new List<EntityUid>();
-        foreach (var (uid, entry) in _murkBuffer)
+        foreach (var (uid, entry) in murkedMap.MurkBuffer)
         {
-            if (!_seen.Contains(uid))
+            if (!murkedMap.Seen.Contains(uid))
                 entry.Intensity = MathHelper.Lerp(entry.Intensity, 0, LerpStep);
 
             if (Math.Abs(entry.Intensity) < 0.01f)
@@ -99,21 +84,21 @@ public sealed class CEMurkOverlay : Overlay
 
         foreach (var uid in toRemove)
         {
-            _murkBuffer.Remove(uid);
+            murkedMap.MurkBuffer.Remove(uid);
         }
 
-        _count = 0;
-        foreach (var entry in _murkBuffer.Values)
+        murkedMap.Count = 0;
+        foreach (var entry in murkedMap.MurkBuffer.Values)
         {
-            if (_count >= MaxCount)
+            if (murkedMap.Count >= CEMurkedMapComponent.MaxCount)
                 break;
 
             var tempCoords = args.Viewport.WorldToLocal(entry.Position);
             tempCoords.Y = args.Viewport.Size.Y - tempCoords.Y;
 
-            _positions[_count] = tempCoords;
-            _intensities[_count] = entry.Intensity;
-            _count++;
+            murkedMap.Positions[murkedMap.Count] = tempCoords;
+            murkedMap.Intensities[murkedMap.Count] = entry.Intensity;
+            murkedMap.Count++;
         }
 
         return true;
@@ -124,14 +109,19 @@ public sealed class CEMurkOverlay : Overlay
         if (ScreenTexture == null || args.Viewport.Eye == null)
             return;
 
+        var mapIntensity = 0f;
+        if (!_mapQuery.TryGetComponent(args.MapUid, out var murkedMap))
+            return;
+
+        mapIntensity = murkedMap.LerpedIntensity;
 
         _murkShader?.SetParameter("renderScale", args.Viewport.RenderScale * args.Viewport.Eye.Scale);
 
-        _murkShader?.SetParameter("baseIntensity", _baseIntensity);
+        _murkShader?.SetParameter("baseIntensity", mapIntensity);
         _murkShader?.SetParameter("playerPos", _playerPos);
-        _murkShader?.SetParameter("count", _count);
-        _murkShader?.SetParameter("position", _positions);
-        _murkShader?.SetParameter("intensities", _intensities);
+        _murkShader?.SetParameter("count", murkedMap.Count);
+        _murkShader?.SetParameter("position", murkedMap.Positions);
+        _murkShader?.SetParameter("intensities", murkedMap.Intensities);
 
         _murkShader?.SetParameter("SCREEN_TEXTURE", ScreenTexture);
 
