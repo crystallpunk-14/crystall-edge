@@ -1,5 +1,6 @@
 using Content.Shared.GameTicking;
 using Content.Shared.Light.Components;
+using Content.Shared.Light.EntitySystems;
 using Content.Shared.Storage.Components;
 using Content.Shared.Weather;
 using Robust.Shared.Console;
@@ -15,7 +16,7 @@ namespace Content.Shared._CE.DayCycle;
 public sealed class CEDayCycleSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly MetaDataSystem _metaData = default!;
+    [Dependency] private readonly MetaDataSystem _meta = default!;
     [Dependency] private readonly SharedGameTicker _ticker = default!;
     [Dependency] private readonly SharedMapSystem _maps = default!;
     [Dependency] private readonly SharedWeatherSystem _weather = default!;
@@ -39,8 +40,14 @@ public sealed class CEDayCycleSystem : EntitySystem
         var query = EntityQueryEnumerator<LightCycleComponent, CEDayCycleComponent, MapComponent>();
         while (query.MoveNext(out var uid, out var lightCycle, out var dayCycle, out var map))
         {
+            var time = (float) _timing.CurTime
+                .Add(lightCycle.Offset)
+                .Subtract(_ticker.RoundStartTimeSpan)
+                .Subtract(_meta.GetPauseTime(uid))
+                .TotalSeconds;
+
             var oldLightLevel = dayCycle.LastLightLevel;
-            var newLightLevel = GetLightLevel((uid, lightCycle));
+            var newLightLevel = (float)SharedLightCycleSystem.CalculateLightLevel(lightCycle, time);
 
             // Going into darkness
             if (oldLightLevel > newLightLevel)
@@ -49,8 +56,8 @@ public sealed class CEDayCycleSystem : EntitySystem
                 {
                     if (newLightLevel < dayCycle.Threshold)
                     {
-                        var ev = new CEStartNightEvent(uid);
-                        RaiseLocalEvent(ev);
+                        var ev = new CEStartNightEvent();
+                        RaiseLocalEvent(uid, ev, true);
                     }
                 }
             }
@@ -62,8 +69,8 @@ public sealed class CEDayCycleSystem : EntitySystem
                 {
                     if (newLightLevel > dayCycle.Threshold)
                     {
-                        var ev = new CEStartDayEvent(uid);
-                        RaiseLocalEvent(ev);
+                        var ev = new CEStartDayEvent();
+                        RaiseLocalEvent(uid, ev, true);
                     }
                 }
             }
@@ -72,31 +79,23 @@ public sealed class CEDayCycleSystem : EntitySystem
         }
     }
 
-    public float GetLightLevel(Entity<LightCycleComponent?> map)
-    {
-        if (!Resolve(map.Owner, ref map.Comp, false))
-            return 0;
-
-        var time = (float)_timing.CurTime
-            .Add(map.Comp.Offset)
-            .Subtract(_ticker.RoundStartTimeSpan)
-            .Subtract(_metaData.GetPauseTime(map))
-            .TotalSeconds;
-
-        var normalizedTime = time % map.Comp.Duration.TotalSeconds;
-        var lightLevel = 1 - Math.Sin((normalizedTime / map.Comp.Duration.TotalSeconds) * MathF.PI);
-        return (float)lightLevel;
-    }
-
     public bool IsDayNow(Entity<LightCycleComponent?> map)
     {
-        return GetLightLevel(map) >= 0.4;
+        if (!Resolve(map, ref map.Comp, false))
+            return false;
+
+        var time = (float) _timing.CurTime
+            .Add( map.Comp.Offset)
+            .Subtract(_ticker.RoundStartTimeSpan)
+            .Subtract(_meta.GetPauseTime(map))
+            .TotalSeconds;
+
+        return SharedLightCycleSystem.CalculateLightLevel(map.Comp, time) >= 0.4;
     }
 
     /// <summary>
-    /// Checks to see if the specified entity is on the map where it's daytime.
+    /// Checks to see if the specified entity is on the map where it's daytime, and under the open sky
     /// </summary>
-    /// <param name="target">An entity being tested to see if it is in daylight</param>
     public bool UnderSunlight(EntityUid target)
     {
         if (_storageQuery.HasComp(target))
@@ -125,12 +124,12 @@ public sealed class CEDayCycleSystem : EntitySystem
     }
 }
 
-public sealed class CEStartNightEvent(EntityUid map) : EntityEventArgs
-{
-    public EntityUid Map = map;
-}
+/// <summary>
+/// Called on the map with <see cref="LightCycleComponent"/> when night ends and dawn begins
+/// </summary>
+public sealed class CEStartNightEvent : EntityEventArgs { }
 
-public sealed class CEStartDayEvent(EntityUid map) : EntityEventArgs
-{
-    public EntityUid Map = map;
-}
+/// <summary>
+/// Called on the map with <see cref="LightCycleComponent"/> when day ends and night begins
+/// </summary>
+public sealed class CEStartDayEvent : EntityEventArgs { }
