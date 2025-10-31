@@ -7,7 +7,7 @@
   - type: Transform
     noRot: true
   - type: Sprite
-    drawdepth: BelowMobs
+    drawdepth: Mobs
   - type: Icon
     state: full
   - type: IconSmooth

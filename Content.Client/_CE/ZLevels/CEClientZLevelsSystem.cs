@@ -7,6 +7,9 @@ using Robust.Client.Graphics;
 
 namespace Content.Client._CE.ZLevels;
 
+/// <summary>
+/// Only process Eye offset and drawdepth on clientside
+/// </summary>
 public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
 {
     [Dependency] private readonly IOverlayManager _overlay = default!;

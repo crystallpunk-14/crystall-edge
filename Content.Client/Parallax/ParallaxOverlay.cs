@@ -1,5 +1,7 @@
 using System.Numerics;
 using Content.Client.Parallax.Managers;
+using Content.Client.Viewport;
+using Content.Shared._CE.ZLevels;
 using Content.Shared.CCVar;
 using Content.Shared.Parallax.Biomes;
 using Robust.Client.GameObjects;
@@ -34,10 +36,19 @@ public sealed class ParallaxOverlay : Overlay
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
     {
-        return false; //CrystallEdge - we dont draw parallax because we have ZLevels
-
         if (args.MapId == MapId.Nullspace || _entManager.HasComponent<BiomeComponent>(_mapSystem.GetMapOrInvalid(args.MapId)))
             return false;
+
+        //CrystallEdge draw parallax only for lowest zlevel
+        if (!_entManager.TryGetComponent<CEZLevelMapComponent>(args.MapUid, out var zLevel))
+            return true;
+
+        // If the viewport eye is a ZEye -> draw only when it is at the lowest depth.
+        if (args.Viewport.Eye is ScalingViewport.ZEye zeye)
+            return zeye.Depth == zeye.LowestDepth;
+
+        return false;
+        //CrystallEdge end
 
         return true;
     }
