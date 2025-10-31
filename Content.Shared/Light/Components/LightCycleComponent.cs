@@ -19,7 +19,7 @@ public sealed partial class LightCycleComponent : Component
     public TimeSpan Duration = TimeSpan.FromMinutes(24); //CrystallEdge 30 -> 24 minutes
 
     [DataField, AutoNetworkedField]
-    public TimeSpan Offset = TimeSpan.FromMinutes(-1); //CrystallEdge
+    public TimeSpan Offset = TimeSpan.FromMinutes(10); //CrystallEdge
 
     [DataField, AutoNetworkedField]
     public bool Enabled = true;

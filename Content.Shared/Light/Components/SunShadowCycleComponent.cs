@@ -18,7 +18,7 @@ public sealed partial class SunShadowCycleComponent : Component
     public TimeSpan Duration = TimeSpan.FromMinutes(24); //CrystallEdge 30 -> 24 minutes
 
     [DataField, AutoNetworkedField]
-    public TimeSpan Offset;
+    public TimeSpan Offset = TimeSpan.FromMinutes(10); //CrystallEdge
 
     // Originally had this as ratios but it was slightly annoying to use.
 

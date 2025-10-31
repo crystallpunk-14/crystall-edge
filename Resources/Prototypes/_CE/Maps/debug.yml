@@ -16,7 +16,7 @@
 - type: gameMap
   id: Dev
   mapName: Dev
-  mapPath: /Maps/_CE/Dev.yml
+  mapPath: /Maps/_CE/Dev0.yml
   minPlayers: 0
   stations:
     Dev:
@@ -30,12 +30,12 @@
         - type: CEStationZLevels
           defaultMapLevel: 0
           levels:
+            -1:
+              path: /Maps/_CE/Dev-1.yml
             1:
-              path: /Maps/_CE/Dev2.yml
+              path: /Maps/_CE/Dev1.yml
             2:
-              path: /Maps/_CE/Dev2.yml
-            3:
-              path: /Maps/_CE/Dev2.yml
+              path: /Maps/_CE/Dev1.yml
         - type: CEStationSpawnerDistribution
           spawns:
             CECoin: !type:AllSelector
