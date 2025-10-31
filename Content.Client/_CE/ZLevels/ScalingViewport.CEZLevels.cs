@@ -175,15 +175,14 @@ public sealed partial class ScalingViewport
                 if (!_mapQuery.Value.TryComp(mapUidBelow.Value, out var mapComp))
                     continue;
 
-                viewport.Eye =new ZEye
+                viewport.Eye =new ZEye(lowestDepth, depth, lookUp)
                 {
                     Position = new MapCoordinates(_eye.Position.Position, mapComp.MapId),
                     DrawFov = _eye.DrawFov && depth >= 0,
-                    DrawLight = _eye.DrawLight && depth >= 0,
+                    DrawLight = _eye.DrawLight,// && depth >= 0,
                     Offset = _eye.Offset + new Vector2(0f, -depth * CEClientZLevelsSystem.ZLevelOffset),
                     Rotation = _eye.Rotation,
                     Scale = _eye.Scale,
-                    Depth = depth,
                 };
             }
 
@@ -197,8 +196,10 @@ public sealed partial class ScalingViewport
     }
 
     //FIXME: This is nasty!
-    public sealed class ZEye : Robust.Shared.Graphics.Eye
+    public sealed class ZEye(int lowest, int depth, int high) : Robust.Shared.Graphics.Eye
     {
-        public int Depth;
+        public int LowestDepth = lowest;
+        public int Depth = depth;
+        public int HighestDepth = high;
     }
 }
