@@ -113,7 +113,6 @@ entities:
     - type: SunShadow
     - type: MapLight
       ambientLightColor: '#75BCFFFF'
-    - type: CEMurkedMap
     - type: Forensics
       residues: []
       dnas: []
