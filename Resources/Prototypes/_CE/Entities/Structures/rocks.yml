@@ -36,7 +36,7 @@
         - HalfWallLayer
         - Opaque
   - type: Sprite
-    sprite: _CE/Structures/Flora/Rocks/rocks_small.rsi
+    sprite: _CE/Structures/rocks_small.rsi
     offset: 0,0.2
     layers:
       - state: rock0
@@ -91,7 +91,7 @@
         layer:
         - WallLayer
   - type: Sprite
-    sprite: _CE/Structures/Flora/Rocks/rocks_big.rsi
+    sprite: _CE/Structures/rocks_big.rsi
     offset: 0,0.5
     layers:
       - state: rock0
