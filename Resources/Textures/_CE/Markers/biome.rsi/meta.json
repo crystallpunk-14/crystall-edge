@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Created by TheShuEd (Github)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "cave"
+    },
+    {
+      "name": "dirt"
+    },
+    {
+      "name": "frame"
+    },
+    {
+      "name": "grass"
+    },
+    {
+      "name": "forest"
+    },
+    {
+      "name": "snow"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+- type: entity
+  id: CEBaseBiomeSpawner
+  name: biome spawner
+  description: Spawns of various biomes on the map.
+  abstract: true
+  placement:
+    mode: SnapgridCenter
+  categories: [ ForkFiltered ]
+  components:
+  - type: Transform
+    anchored: true
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Sprite
+    snapCardinals: true
+    drawdepth: BelowFloor
+    sprite: _CE/Markers/biome.rsi
+  - type: CEBiomeSpawner
+    deleteBlacklist:
+      components:
+      - Portal
+      - MindContainer
+  - type: PlacementReplacement
+    key: CEBiomeSpawner
+
+- type: entity
+  id: CEBiomeSpawnerGrassland
+  parent: CEBaseBiomeSpawner
+  suffix: Grassland
+  components:
+  - type: Sprite
+    layers:
+      - state: grass
+      - state: frame
+  - type: CEBiomeSpawner
+    biome: CEGrassland
