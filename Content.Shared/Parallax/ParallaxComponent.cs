@@ -11,5 +11,5 @@ public sealed partial class ParallaxComponent : Component
 {
     // I wish I could use a typeserializer here but parallax is extremely client-dependent.
     [DataField, AutoNetworkedField]
-    public string Parallax = "Default";
+    public string Parallax = "Sky"; //CrystallEdge default sky
 }
