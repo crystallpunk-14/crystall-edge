@@ -94,7 +94,7 @@
   components:
   - type: Sprite
     layers:
-    - sprite: _CE/Structures/Flora/high_bush.rsi
+    - sprite: _CE/Structures/high_bush.rsi
       state: grass_high_bush1
   - type: RandomSpawner
     prototypes:

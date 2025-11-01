@@ -44,7 +44,7 @@ public sealed class ParallaxOverlay : Overlay
 
         //CrystallEdge draw parallax only for lowest zlevel
         if (args.Viewport.Eye is ScalingViewport.ZEye zEye)
-            return zEye.LowestDepth == zEye.Depth; 
+            return zEye.LowestDepth == zEye.Depth;
         else
             return !_zLevel.TryMapDown(args.MapUid, out _);
         //CrystallEdge end
