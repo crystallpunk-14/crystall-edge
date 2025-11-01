@@ -1,0 +1,20 @@
+- type: entity
+  id: CEConveyorBelt
+  name: conveyor belt
+  parent: ConveyorBelt
+  description: TODO
+  categories: [ ForkFiltered ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  #- type: PlacementReplacement
+  - type: Sprite
+    sprite: _CE/Structures/Floor/conveyor.rsi
+    state: base
+  - type: GenericVisualizer
+    visuals:
+      enum.ConveyorVisuals.State:
+        enum.ConveyorState.Off:
+          Off: { state: base }
+          Forward: { state: moving_forward }
+          Reverse: { state: moving_backward }
