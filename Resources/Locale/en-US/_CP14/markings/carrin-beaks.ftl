@@ -1,0 +1,16 @@
+marking-CP14CarrinBeak = Beak
+marking-CP14CarrinBeak2 = Short thin beak
+marking-CP14CarrinBeak3 = Curved beak 1
+marking-CP14CarrinBeak4 = Short beak 1
+marking-CP14CarrinBeak5 = Curved beak 2
+marking-CP14CarrinBeak6 = Wide beak
+marking-CP14CarrinBeak7 = Straight beak
+marking-CP14CarrinBeak8 = Long beak
+marking-CP14CarrinBeak9 = High beak
+marking-CP14CarrinBeak10 = Thin beak
+marking-CP14CarrinBeak11 = Hooked beak
+marking-CP14CarrinBeak12 = Short hooked beak
+marking-CP14CarrinBeak13 = Short hooked beak 2
+marking-CP14CarrinBeak14 = Short beak 2
+marking-CP14CarrinBeak15 = Short beak 3
+marking-CP14CarrinBeak16 = Pelican beak

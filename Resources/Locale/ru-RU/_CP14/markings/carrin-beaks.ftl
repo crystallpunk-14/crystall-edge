@@ -1,0 +1,16 @@
+marking-CP14CarrinBeak = Клюв
+marking-CP14CarrinBeak2 = Короткий тонкий клюв
+marking-CP14CarrinBeak3 = Выгнутый клюв 1
+marking-CP14CarrinBeak4 = Короткий клюв 1
+marking-CP14CarrinBeak5 = Выгнутый клюв 2
+marking-CP14CarrinBeak6 = Широкий клюв
+marking-CP14CarrinBeak7 = Прямой клюв
+marking-CP14CarrinBeak8 = Длинный клюв
+marking-CP14CarrinBeak9 = Высокий клюв
+marking-CP14CarrinBeak10 = Тонкий клюв
+marking-CP14CarrinBeak11 = Загнутый клюв
+marking-CP14CarrinBeak12 = Короткий загнутый клюв
+marking-CP14CarrinBeak13 = Короткий загнутый клюв 2
+marking-CP14CarrinBeak14 = Короткий клюв 2
+marking-CP14CarrinBeak15 = Короткий клюв 3
+marking-CP14CarrinBeak16 = Клюв пеликана

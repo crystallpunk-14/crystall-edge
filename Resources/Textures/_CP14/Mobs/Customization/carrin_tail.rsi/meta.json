@@ -1,18 +1,26 @@
 {
   "version": 1,
   "license": "CC-BY-SA-4.0",
-  "copyright": "Created by TheShuEd (Github)",
+  "copyright": "Created by omsoyk (github/discord)",
   "size": {
     "x": 48,
     "y": 48
   },
   "states": [
     {
-      "name": "1",
+      "name": "1_primary",
       "directions": 4
     },
     {
-      "name": "2",
+      "name": "1_secondary",
+      "directions": 4
+    },
+    {
+      "name": "2_primary",
+      "directions": 4
+    },
+    {
+      "name": "2_secondary",
       "directions": 4
     },
     {
@@ -25,18 +33,6 @@
     },
     {
       "name": "5",
-      "directions": 4
-    },
-    {
-      "name": "6",
-      "directions": 4
-    },
-        {
-      "name": "7",
-      "directions": 4
-    },
-        {
-      "name": "8",
       "directions": 4
     }
   ]

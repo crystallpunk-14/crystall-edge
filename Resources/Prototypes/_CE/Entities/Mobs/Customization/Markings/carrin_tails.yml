@@ -1,0 +1,48 @@
+- type: marking
+  id: CP14CarrinTail1
+  bodyPart: Chest
+  markingCategory: Tail
+  speciesRestriction: [ CP14Carrin ]
+  sprites:
+  - sprite: _CP14/Mobs/Customization/carrin_tail.rsi
+    state: 1_primary
+  - sprite: _CP14/Mobs/Customization/carrin_tail.rsi
+    state: 1_secondary
+
+- type: marking
+  id: CP14CarrinTail2
+  bodyPart: Chest
+  markingCategory: Tail
+  speciesRestriction: [ CP14Carrin ]
+  sprites:
+  - sprite: _CP14/Mobs/Customization/carrin_tail.rsi
+    state: 2_primary
+  - sprite: _CP14/Mobs/Customization/carrin_tail.rsi
+    state: 2_secondary
+
+- type: marking
+  id: CP14CarrinTail3
+  bodyPart: Chest
+  markingCategory: Tail
+  speciesRestriction: [ CP14Carrin ]
+  sprites:
+  - sprite: _CP14/Mobs/Customization/carrin_tail.rsi
+    state: 3
+
+- type: marking
+  id: CP14CarrinTail4
+  bodyPart: Chest
+  markingCategory: Tail
+  speciesRestriction: [ CP14Carrin ]
+  sprites:
+  - sprite: _CP14/Mobs/Customization/carrin_tail.rsi
+    state: 4
+
+- type: marking
+  id: CP14CarrinTail5
+  bodyPart: Chest
+  markingCategory: Tail
+  speciesRestriction: [ CP14Carrin ]
+  sprites:
+  - sprite: _CP14/Mobs/Customization/carrin_tail.rsi
+    state: 5
