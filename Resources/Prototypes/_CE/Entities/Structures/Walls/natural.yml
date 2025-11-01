@@ -176,6 +176,10 @@
     fixtureID: fix1
   - type: Airtight
     airBlocked: false
+  - type: CEZLevelHighground
+    heightCurve:
+    - 0
+    - 0
 
 - type: entity
   id: CEWallSnow

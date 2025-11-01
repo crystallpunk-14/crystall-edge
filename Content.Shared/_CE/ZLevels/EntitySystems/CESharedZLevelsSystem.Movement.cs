@@ -99,7 +99,7 @@ public abstract partial class CESharedZLevelsSystem
 
             var distanceToGround = DistanceToGround((uid, zPhys), out var stickyGround);
 
-            if ((distanceToGround <= 0.05f || stickyGround) && distanceToGround <= MaxStepHeight)
+            if ((distanceToGround <= 0.05f || stickyGround) && distanceToGround <= -MaxStepHeight)
                 zPhys.LocalPosition -= distanceToGround;
             if (distanceToGround <= 0.05f) //Theres a ground
             {
