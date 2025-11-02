@@ -8,6 +8,8 @@
   placement:
     mode: SnapgridCenter
   components:
+  - type: PlacementReplacement
+    key: walls
   #- type: AmbientSound
   #  volume: -7
   #  range: 3

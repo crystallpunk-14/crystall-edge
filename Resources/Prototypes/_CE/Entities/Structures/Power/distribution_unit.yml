@@ -7,6 +7,8 @@
   placement:
     mode: SnapgridCenter
   components:
+  - type: PlacementReplacement
+    key: walls
   - type: Sprite
     sprite: _CE/Structures/Power/distribution_unit.rsi
     snapCardinals: true
