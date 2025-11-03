@@ -41,6 +41,20 @@
   maxCount: 10
 
 - type: stack
+  id: CEIronScrap
+  name: ce-stack-iron-scrap
+  spawn: CEIronScrap1
+  icon: { sprite: _CE/Objects/Materials/Metals/iron_bar.rsi, state: scrap_2 }
+  maxCount: 10
+
+- type: stack
+  id: CEBrassScrap
+  name: ce-stack-brass-scrap
+  spawn: CEBrassScrap1
+  icon: { sprite: _CE/Objects/Materials/Metals/brass_bar.rsi, state: scrap_2 }
+  maxCount: 10
+
+- type: stack
   id: CEGlass
   name: ce-stack-glass-sheet
   spawn: CEGlassSheet1
