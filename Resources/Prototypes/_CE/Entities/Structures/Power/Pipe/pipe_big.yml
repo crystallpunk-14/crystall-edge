@@ -50,12 +50,9 @@
           CEScrapBrass:
             min: 1
             max: 1
-      #- !type:PlaySoundBehavior
-      #  sound:
-      #    path: /Audio/Effects/tree_fell.ogg
-      #    params:
-      #      volume: 5
-      #      variation: 0.05
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
       - !type:ChangeConstructionNodeBehavior
         node: CEPipeBrassBigBroken
   - type: NodeContainer
@@ -96,12 +93,9 @@
           CEScrapBrass:
             min: 1
             max: 1
-      #- !type:PlaySoundBehavior
-      #  sound:
-      #    path: /Audio/Effects/tree_fell.ogg
-      #    params:
-      #      volume: 5
-      #      variation: 0.05
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
       - !type:ChangeConstructionNodeBehavior
         node: CEPipeBrassBigVerticalUpBroken
   - type: Construction
@@ -137,17 +131,97 @@
           CEScrapBrass:
             min: 1
             max: 1
-      #- !type:PlaySoundBehavior
-      #  sound:
-      #    path: /Audio/Effects/tree_fell.ogg
-      #    params:
-      #      volume: 5
-      #      variation: 0.05
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
       - !type:ChangeConstructionNodeBehavior
         node: CEPipeBrassBigVerticalDownBroken
   - type: Construction
     graph: CEPipeBrassBig
     node: CEPipeBrassBigVerticalDown
+
+# Valve
+
+- type: entity
+  id: CEPipeBrassBigValve
+  parent: CEPipeBrassBig
+  name: wide brass pipe valve
+  description: A valve installed on a wide brass pipe, allowing for the regulation of arcane energy flow through the pipe.
+  suffix: Valve, Off
+  components:
+  - type: InteractionOutline
+  - type: CEToggleableCable
+    active: false
+  - type: Sprite
+    layers:
+    - state: pipe_15
+    - state: valve_off
+      map: ["valve"]
+    - state: valve_off_light
+      shader: unshaded
+      map: ["valve_light"]
+  - type: NodeContainer
+    nodes:
+      power:
+        !type:CableNode
+        nodeGroupID: HVPower
+        active: false
+  - type: UseDelay
+  - type: GenericVisualizer
+    visuals:
+      enum.CEToggleableCableVisuals.Enabled:
+        valve_light:
+          True: {state: valve_on_light}
+          False: {state: valve_off_light}
+        valve:
+          True: {state: valve_on}
+          False: {state: valve_off}
+  - type: EmitSoundOnActivate
+    sound: /Audio/Effects/toss.ogg
+  - type: Construction
+    graph: CEPipeBrassBig
+    node: CEPipeBrassBigValve
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 25
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEScrapBrass:
+            min: 1
+            max: 1
+          CEScrapIron:
+            min: 1
+            max: 1
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:ChangeConstructionNodeBehavior
+        node: CEPipeBrassBigBroken
+
+- type: entity
+  id: CEPipeBrassBigValveOn
+  parent: CEPipeBrassBigValve
+  suffix: Valve, On
+  components:
+  - type: CEToggleableCable
+    active: true
+  - type: Sprite
+    layers:
+    - state: pipe_15
+    - state: valve_on
+      map: ["valve"]
+    - state: valve_on_light
+      shader: unshaded
+      map: ["valve_light"]
+  - type: NodeContainer
+    nodes:
+      power:
+        !type:CableNode
+        nodeGroupID: HVPower
+        active: true
 
 # Broken
 
@@ -182,12 +256,9 @@
           CEScrapBrass:
             min: 1
             max: 1
-      #- !type:PlaySoundBehavior
-      #  sound:
-      #    path: /Audio/Effects/tree_fell.ogg
-      #    params:
-      #      volume: 5
-      #      variation: 0.05
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: PowerConsumer

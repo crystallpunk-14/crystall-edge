@@ -2,6 +2,7 @@ using Content.Server.NodeContainer;
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.Power.Components;
 using Content.Server.Power.Nodes;
+using Content.Shared.NodeContainer;
 using Content.Shared.Wires;
 using JetBrains.Annotations;
 using Robust.Shared.Map.Components;
@@ -15,9 +16,17 @@ namespace Content.Server.Power.EntitySystems
         [Dependency] private readonly NodeContainerSystem _nodeContainer = default!;
         [Dependency] private readonly SharedMapSystem _map = default!;
 
+        private EntityQuery<TransformComponent> _transformQuery; //CrystallEdge
+        private EntityQuery<NodeContainerComponent> _nodeQuery; //CrystallEdge
+
         public override void Initialize()
         {
             base.Initialize();
+
+            //CrystallEdge
+            _transformQuery = GetEntityQuery<TransformComponent>();
+            _nodeQuery = GetEntityQuery<NodeContainerComponent>();
+            //CrystallEdge end
 
             SubscribeLocalEvent<CableVisComponent, NodeGroupsRebuilt>(UpdateAppearance);
         }
@@ -34,7 +43,7 @@ namespace Content.Server.Power.EntitySystems
             var mask = WireVisDirFlags.None;
             var tile = _map.TileIndicesFor((transform.GridUid.Value, grid), transform.Coordinates);
 
-            foreach (var reachable in node.ReachableNodes)
+            foreach (var reachable in node.GetReachableNodes(transform, _nodeQuery, _transformQuery, grid, EntityManager)) //CrystallEdge connect also disabled nodes, for pipe levers support
             {
                 if (reachable is not CableNode)
                     continue;

@@ -36,3 +36,16 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+
+- type: construction
+  hide: false
+  id: CEPipeBrassBigValve
+  graph: CEPipeBrassBig
+  startNode: start
+  targetNode: CEPipeBrassBigValve
+  category: construction-category-machines
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked

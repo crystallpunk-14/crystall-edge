@@ -24,3 +24,9 @@ public enum CEEnergyLeakVisuals : byte
 {
     Enabled,
 }
+
+[Serializable, NetSerializable]
+public enum CEToggleableCableVisuals : byte
+{
+    Enabled,
+}

@@ -115,6 +115,18 @@
         },
         {
             "name": "broken_pipe_15"
+        },
+        {
+            "name": "valve_off"
+        },
+        {
+            "name": "valve_on"
+        },
+        {
+            "name": "valve_off_light"
+        },
+        {
+            "name": "valve_on_light"
         }
     ]
 }

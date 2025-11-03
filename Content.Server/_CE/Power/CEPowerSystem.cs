@@ -1,10 +1,15 @@
 using Content.Server._CE.Power.Components;
+using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.Power.EntitySystems;
+using Content.Server.Power.Nodes;
 using Content.Server.Radiation.Systems;
 using Content.Shared._CE.Power.Components;
 using Content.Shared.Destructible;
+using Content.Shared.Interaction;
+using Content.Shared.NodeContainer;
 using Content.Shared.Power.Components;
 using Content.Shared.Radiation.Components;
+using Content.Shared.Timing;
 using Robust.Server.GameObjects;
 using Robust.Shared.Spawners;
 
@@ -15,6 +20,8 @@ public sealed class CEPowerSystem : EntitySystem
     [Dependency] private readonly RadiationSystem _radiation = default!;
     [Dependency] private readonly PointLightSystem _pointLight = default!;
     [Dependency] private readonly AppearanceSystem _appearance = default!;
+    [Dependency] private readonly NodeGroupSystem _nodeGroup = default!;
+    [Dependency] private readonly UseDelaySystem _useDelay = default!;
 
     public override void Initialize()
     {
@@ -22,6 +29,30 @@ public sealed class CEPowerSystem : EntitySystem
 
         SubscribeLocalEvent<CEEnergyLeakComponent, PowerConsumerReceivedChanged>(OnPowerChanged);
         SubscribeLocalEvent<CEIrradiateOnDestroyComponent, DestructionEventArgs>(OnBatteryDestroyed);
+        SubscribeLocalEvent<CEToggleableCableComponent, ActivateInWorldEvent>(OnActivateInWorld);
+    }
+
+    private void OnActivateInWorld(Entity<CEToggleableCableComponent> ent, ref ActivateInWorldEvent args)
+    {
+        if (_useDelay.IsDelayed(ent.Owner))
+            return;
+
+        if (!TryComp<NodeContainerComponent>(ent, out var nodeContainer))
+            return;
+
+        var newState = !ent.Comp.Active;
+        ent.Comp.Active = newState;
+        foreach (var node in nodeContainer.Nodes.Values)
+        {
+            if (node is CableNode cableNode)
+            {
+                cableNode.Active = newState;
+                _nodeGroup.QueueReflood(node);
+            }
+        }
+
+        _appearance.SetData(ent, CEToggleableCableVisuals.Enabled, newState);
+        _useDelay.TryResetDelay(ent);
     }
 
     private void OnBatteryDestroyed(Entity<CEIrradiateOnDestroyComponent> ent, ref DestructionEventArgs args)
