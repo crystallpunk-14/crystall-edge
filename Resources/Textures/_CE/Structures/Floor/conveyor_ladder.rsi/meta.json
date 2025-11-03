@@ -10,6 +10,14 @@
     {
       "name": "base",
       "directions": 4
+    },
+    {
+      "name": "moving_forward",
+      "directions": 4
+    },
+    {
+      "name": "moving_backward",
+      "directions": 4
     }
   ]
 }

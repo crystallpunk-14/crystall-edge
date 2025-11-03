@@ -35,7 +35,7 @@
 - type: entity
   id: CEConveyorLadder
   name: conveyor ladder
-  parent: ConveyorBelt
+  parent: CEConveyorBelt
   description: TODO
   categories: [ ForkFiltered ]
   placement:
@@ -46,7 +46,6 @@
   - type: Sprite
     drawdepth: Mobs
     sprite: _CE/Structures/Floor/conveyor_ladder.rsi
-    state: base
   - type: CEZLevelHighground
     stick: true
     heightCurve:
@@ -54,10 +53,3 @@
     - 1.05
     - 0.1
     - 0.1
-  - type: GenericVisualizer
-    visuals:
-      enum.ConveyorVisuals.State:
-        enum.ConveyorState.Off:
-          Off: { state: base }
-          Forward: { state: base }
-          Reverse: { state: base }
