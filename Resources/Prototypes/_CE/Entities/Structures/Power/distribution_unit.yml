@@ -30,12 +30,12 @@
         state: charging0
         shader: unshaded
       - map: ["enum.SmesVisualLayers.Output"]
-        state: dicharging1
+        state: discharging1
         shader: unshaded
   - type: Smes
     chargeOverlayPrefix: fill-
     inputOverlayPrefix: charging
-    outputOverlayPrefix: dicharging
+    outputOverlayPrefix: discharging
     numChargeLevels: 1
   - type: Appearance
   - type: Battery

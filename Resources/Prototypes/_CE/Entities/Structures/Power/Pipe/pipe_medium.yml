@@ -220,6 +220,7 @@
   - type: RadiationSource
     intensity: 0
   - type: CEEnergyLeak
+    leakPercentage: 1
   - type: PointLight
     radius: 1.5
     energy: 2

@@ -8,6 +8,18 @@
 	"copyright": "Created by TheShuEd (github)",
     "states": [
         {
+            "name": "charging0"
+        },
+        {
+            "name": "charging1"
+        },
+        {
+            "name": "discharging1"
+        },
+        {
+            "name": "discharging2"
+        },
+        {
             "name": "base"
         },
         {

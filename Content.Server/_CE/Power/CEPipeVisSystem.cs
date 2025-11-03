@@ -51,6 +51,9 @@ public sealed class CEPipeVisSystem : EntitySystem
             if (reachable is not CableNode)
                 continue;
 
+            if (reachable.NodeGroupID != node.NodeGroupID)
+                continue;
+
             var otherTransform = Transform(reachable.Owner);
             var otherTile = _map.TileIndicesFor((transform.GridUid.Value, grid), otherTransform.Coordinates);
             var diff = otherTile - tile;
