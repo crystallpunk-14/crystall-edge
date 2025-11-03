@@ -8,6 +8,8 @@
   placement:
     mode: SnapgridCenter
   components:
+  - type: PlacementReplacement
+    key: pipe_big
   - type: AmbientSound
     enabled: false
     volume: -8
@@ -20,7 +22,7 @@
       brrt:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.15,-0.15,0.15,0.15"
+          bounds: "-0.4,-0.4,0.4,-0.25"
         hard: false
         layer:
         - FullTileLayer
@@ -46,6 +48,9 @@
     - state: base
     - state: blades_off
       map: [ "blades" ]
+  - type: MaterialStorage
+    insertOnInteract: false  #auto insert from CERecycler
+    canEjectStoredMaterials: false #auto extract from CERecycler
   - type: NodeContainer
     examinable: true
     nodes:
