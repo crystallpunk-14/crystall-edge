@@ -17,7 +17,7 @@
 - type: entity
   id: CEPipeBrassBig
   parent: CEPipeBrassBigBase
-  name: wide brass pipe
+  name: brass pipe
   components:
   - type: Sprite
     sprite: _CE/Structures/Power/Pipes/big_flat.rsi
@@ -67,7 +67,7 @@
 - type: entity
   parent: CEPipeBrassBig
   id: CEPipeBrassBigVerticalUp
-  name: wide brass pipe up
+  name: brass pipe up
   components:
   - type: Sprite
     sprite: _CE/Structures/Power/Pipes/big_up.rsi
@@ -89,7 +89,7 @@
 - type: entity
   parent: CEPipeBrassBig
   id: CEPipeBrassBigVerticalDown
-  name: wide brass pipe down
+  name: brass pipe down
   components:
   - type: Sprite
     sprite: _CE/Structures/Power/Pipes/big_down.rsi
@@ -113,8 +113,8 @@
 - type: entity
   id: CEPipeBrassBigValve
   parent: CEPipeBrassBig
-  name: wide brass pipe valve
-  description: A valve installed on a wide brass pipe, allowing for the regulation of arcane energy flow through the pipe.
+  name: pipe valve
+  description: A valve installed on a brass pipe, allowing for the regulation of arcane energy flow through the pipe.
   suffix: Valve, Off
   components:
   - type: InteractionOutline
@@ -195,8 +195,10 @@
 
 - type: entity
   id: CEPipeBrassBigBroken
+  parent: CEPipeBrassBig
   categories: [ ForkFiltered ]
   description: Damaged brass pipe. The arcane energy flowing through them will flow here and may pose a serious danger to creatures susceptible to magic.
+  suffix: Broken
   components:
   - type: Sprite
     layers:
