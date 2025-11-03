@@ -73,7 +73,7 @@ public sealed class CEPowerSystem : EntitySystem
 
     private void OnPowerChanged(Entity<CEEnergyLeakComponent> ent, ref PowerConsumerReceivedChanged args)
     {
-        var enabled = args.ReceivedPower > 0;
+        var enabled = args.ReceivedPower > args.DrawRate;
 
         _pointLight.SetEnabled(ent, enabled);
 

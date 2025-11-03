@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: BaseSubstation
+  parent: [ BaseMachine, ConstructibleMachine ]
   id: CEDistributionUnitBase
   categories: [ ForkFiltered ]
   name: power distribution unit
@@ -9,58 +9,94 @@
   components:
   - type: PlacementReplacement
     key: walls
+  #- type: AmbientSound
+  #  volume: -7
+  #  range: 3
+  #  sound:
+  #    path: /Audio/Ambience/Objects/periodic_beep.ogg
   - type: Sprite
     sprite: _CE/Structures/Power/distribution_unit.rsi
     snapCardinals: true
     drawdepth: Mobs
     layers:
-    - state: base
-    - state: glass
-    - state: fill-1
-      shader: unshaded
-    - state: top
+      - state: base
+      - state: fill-1
+        shader: unshaded
+        map: ["enum.SmesVisualLayers.Charge"]
+        visible: false
+      - state: glass
+      - state: top
+      - map: ["enum.SmesVisualLayers.Input"]
+        state: charging0
+        shader: unshaded
+      - map: ["enum.SmesVisualLayers.Output"]
+        state: dicharging1
+        shader: unshaded
+  - type: Smes
+    chargeOverlayPrefix: fill-
+    inputOverlayPrefix: charging
+    outputOverlayPrefix: dicharging
+    numChargeLevels: 1
+  - type: Appearance
   - type: Battery
-    maxCharge: 2500000
+    maxCharge: 250
     startingCharge: 0
+  - type: ExaminableBattery #TODO Change to mana specific
+  - type: NodeContainer
+    examinable: true
+    nodes:
+      input:
+        !type:CableDeviceNode
+        nodeGroupID: HVPower
+      output:
+        !type:CableDeviceNode
+        nodeGroupID: MVPower
+  - type: BatteryCharger
+    voltage: High
+  - type: BatteryDischarger
+    voltage: Medium
   - type: PointLight
     radius: 2.5
     energy: 2
     color: "#2d8ad6"
     castShadows: false
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 200
-      behaviors:
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-    - trigger:
-        !type:DamageTrigger
-        damage: 100
-      behaviors:
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MetalGlassBreak
-      - !type:ExplodeBehavior
-  - type: Explosive
-    explosionType: Default
-    maxIntensity: 100
-    intensitySlope: 2
-    totalIntensity: 200
-  - type: AmbientSound
-    range: 3
+  - type: PowerNetworkBattery
+    maxSupply: 5
+    maxChargeRate: 5
+    supplyRampTolerance: 5
+    supplyRampRate: 1
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallicStrong
+  #- type: Destructible
+  #  thresholds:
+  #  - trigger:
+  #      !type:DamageTrigger
+  #      damage: 200
+  #    behaviors:
+  #    - !type:DoActsBehavior
+  #      acts: [ "Destruction" ]
+  #  - trigger:
+  #      !type:DamageTrigger
+  #      damage: 100
+  #    behaviors:
+  #    - !type:DoActsBehavior
+  #      acts: ["Destruction"]
+  #    - !type:PlaySoundBehavior
+  #      sound:
+  #        collection: MetalGlassBreak
+  #    - !type:ExplodeBehavior
+  - type: StaticPrice
+    price: 100
 
 - type: entity
   parent: CEDistributionUnitBase
   id: CEDistributionUnitBasic
-  suffix: Basic, 2.5MJ
+  suffix: Charged
   components:
   - type: Battery
-    maxCharge: 2500000
-    startingCharge: 2500000
+    maxCharge: 250
+    startingCharge: 250
 
 - type: entity
   parent: CEDistributionUnitBase

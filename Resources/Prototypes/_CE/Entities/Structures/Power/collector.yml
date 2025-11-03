@@ -71,14 +71,13 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrong
-  - type: WiredNetworkConnection
   - type: StaticPrice
     price: 100
 
 - type: entity
   parent: CEManaCollectorBase
   id: CEManaCollector
-  suffix: Basic
+  suffix: Charged
   components:
   - type: Battery
     maxCharge: 1000
