@@ -10,7 +10,7 @@
   - type: Sprite
     sprite: _CE/Objects/Materials/Metals/iron_scrap.rsi
     layers:
-      - state: bar
+      - state: scrap
         map: ["base"]
   - type: Appearance
   - type: Stack
@@ -54,7 +54,7 @@
   - type: Sprite
     sprite: _CE/Objects/Materials/Metals/brass_scrap.rsi
     layers:
-      - state: bar
+      - state: scrap
         map: ["base"]
   - type: Appearance
   - type: Stack

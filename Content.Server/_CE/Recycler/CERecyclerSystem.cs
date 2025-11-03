@@ -6,6 +6,7 @@ using Content.Server.Power.EntitySystems;
 using Content.Shared._CE.Recycler;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
+using Content.Shared.Destructible;
 using Content.Shared.Materials;
 using Content.Shared.Stacks;
 using Content.Shared.Whitelist;
@@ -22,6 +23,7 @@ public sealed class CERecyclerSystem : CESharedRecyclerSystem
     [Dependency] private readonly MaterialStorageSystem _material = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly AmbientSoundSystem _ambient = default!;
+    [Dependency] private readonly SharedDestructibleSystem _destructible = default!;
 
     private EntityQuery<PowerConsumerComponent> _powerQuery;
 
@@ -87,6 +89,6 @@ public sealed class CERecyclerSystem : CESharedRecyclerSystem
             _material.EjectAllMaterial(ent.Owner, spawnPos, materialStorage);
         }
 
-        Del(other);
+        _destructible.DestroyEntity(other);
     }
 }
