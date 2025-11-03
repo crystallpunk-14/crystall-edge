@@ -85,21 +85,3 @@
             - material: CEBrass
               amount: 1
               doAfter: 1
-
-    - node: CEPipeBrassBigVerticalDownBroken
-      entity: CEPipeBrassBigVerticalDownBroken
-      edges:
-        - to: CEPipeBrassBigVerticalDown
-          steps:
-            - material: CEBrass
-              amount: 1
-              doAfter: 1
-
-    - node: CEPipeBrassBigVerticalUpBroken
-      entity: CEPipeBrassBigVerticalUpBroken
-      edges:
-        - to: CEPipeBrassBigVerticalUp
-          steps:
-            - material: CEBrass
-              amount: 1
-              doAfter: 1

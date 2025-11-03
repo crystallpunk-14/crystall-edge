@@ -8,19 +8,6 @@
 	"copyright": "Created by TheShuEd (github)",
     "states": [
         {
-          "name": "electrified",
-          "delays": [
-            [
-              0.1,
-              0.1,
-              0.1,
-              0.1,
-              0.1,
-              0.1
-            ]
-          ]
-        },
-        {
             "name": "pipe_0"
         },
         {
@@ -67,54 +54,6 @@
         },
         {
             "name": "pipe_15"
-        },
-        {
-            "name": "broken_pipe_0"
-        },
-        {
-            "name": "broken_pipe_1"
-        },
-        {
-            "name": "broken_pipe_2"
-        },
-        {
-            "name": "broken_pipe_3"
-        },
-        {
-            "name": "broken_pipe_4"
-        },
-        {
-            "name": "broken_pipe_5"
-        },
-        {
-            "name": "broken_pipe_6"
-        },
-        {
-            "name": "broken_pipe_7"
-        },
-        {
-            "name": "broken_pipe_8"
-        },
-        {
-            "name": "broken_pipe_9"
-        },
-        {
-            "name": "broken_pipe_10"
-        },
-        {
-            "name": "broken_pipe_11"
-        },
-        {
-            "name": "broken_pipe_12"
-        },
-        {
-            "name": "broken_pipe_13"
-        },
-        {
-            "name": "broken_pipe_14"
-        },
-        {
-            "name": "broken_pipe_15"
         }
     ]
 }

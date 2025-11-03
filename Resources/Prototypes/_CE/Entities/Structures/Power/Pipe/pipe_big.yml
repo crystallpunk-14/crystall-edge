@@ -11,7 +11,7 @@
   components:
   - type: PlacementReplacement
     key: pipe_big
-  - type: CableVisualizer
+  - type: CEPipeVisualizer
     statePrefix: pipe_
 
 - type: entity
@@ -82,22 +82,6 @@
         !type:CECableVerticalNode
         up: true
         nodeGroupID: HVPower
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 25
-      behaviors:
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          CEScrapBrass:
-            min: 1
-            max: 1
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MetalBreak
-      - !type:ChangeConstructionNodeBehavior
-        node: CEPipeBrassBigVerticalUpBroken
   - type: Construction
     graph: CEPipeBrassBig
     node: CEPipeBrassBigVerticalUp
@@ -120,22 +104,6 @@
         !type:CECableVerticalNode
         down: true
         nodeGroupID: HVPower
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 25
-      behaviors:
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          CEScrapBrass:
-            min: 1
-            max: 1
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MetalBreak
-      - !type:ChangeConstructionNodeBehavior
-        node: CEPipeBrassBigVerticalDownBroken
   - type: Construction
     graph: CEPipeBrassBig
     node: CEPipeBrassBigVerticalDown
@@ -226,9 +194,8 @@
 # Broken
 
 - type: entity
-  id: CEPipeBrassBigBrokenBase
+  id: CEPipeBrassBigBroken
   categories: [ ForkFiltered ]
-  abstract: true
   description: Damaged brass pipe. The arcane energy flowing through them will flow here and may pose a serious danger to creatures susceptible to magic.
   components:
   - type: Sprite
@@ -283,59 +250,9 @@
       property: Energy
       isLooped: true
       enabled: false
-
-- type: entity
-  parent:
-  - CEPipeBrassBig
-  - CEPipeBrassBigBrokenBase
-  id: CEPipeBrassBigBroken
-  suffix: Broken
-  components:
   - type: Construction
     graph: CEPipeBrassBig
     node: CEPipeBrassBigBroken
     defaultTarget: CEPipeBrassBig
-  - type: CableVisualizer
+  - type: CEPipeVisualizer
     statePrefix: broken_pipe_
-
-- type: entity
-  parent:
-  - CEPipeBrassBigVerticalUp
-  - CEPipeBrassBigBrokenBase
-  id: CEPipeBrassBigVerticalUpBroken
-  suffix: Broken
-  components:
-  - type: Construction
-    graph: CEPipeBrassBig
-    node: CEPipeBrassBigVerticalUpBroken
-    defaultTarget: CEPipeBrassBigVerticalUp
-  - type: NodeContainer
-    nodes:
-      power:
-        !type:CableNode
-        nodeGroupID: HVPower
-      power_vertical:
-        !type:CECableVerticalNode
-        up: true
-        nodeGroupID: HVPower
-
-- type: entity
-  parent:
-  - CEPipeBrassBigVerticalDown
-  - CEPipeBrassBigBrokenBase
-  id: CEPipeBrassBigVerticalDownBroken
-  suffix: Broken
-  components:
-  - type: Construction
-    graph: CEPipeBrassBig
-    node: CEPipeBrassBigVerticalDownBroken
-    defaultTarget: CEPipeBrassBigVerticalDown
-  - type: NodeContainer
-    nodes:
-      power:
-        !type:CableNode
-        nodeGroupID: HVPower
-      power_vertical:
-        !type:CECableVerticalNode
-        down: true
-        nodeGroupID: HVPower
