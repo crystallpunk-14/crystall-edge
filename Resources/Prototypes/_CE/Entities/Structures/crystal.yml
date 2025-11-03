@@ -81,3 +81,7 @@
                 max: 2
           - !type:DoActsBehavior
             acts: [ "Destruction" ]
+  - type: Battery
+    maxCharge: 50
+    startingCharge: 50
+  - type: CEIrradiateOnDestroy

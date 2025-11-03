@@ -56,7 +56,7 @@ public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
                 sprite.NoRotation = zPhys.NoRotDefault;
 
             _sprite.SetOffset((uid, sprite), new Vector2(0, zPhys.LocalPosition * ZLevelOffset));
-            _sprite.SetDrawDepth((uid, sprite), zPhys.LocalPosition > 0 ? zPhys.DrawDepthDefault +1 : zPhys.DrawDepthDefault);
+            _sprite.SetDrawDepth((uid, sprite), zPhys.LocalPosition > 0 ? (int)Shared.DrawDepth.DrawDepth.OverMobs : zPhys.DrawDepthDefault);
         }
     }
 

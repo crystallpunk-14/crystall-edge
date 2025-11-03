@@ -2,7 +2,8 @@
   id: CEOverchargeVFX
   categories: [ ForkFiltered ]
   save: false
-  name: vfx magic overcharge
+  suffix: VFX
+  name: magic overcharge
   components:
   - type: Sprite
     sprite: _CE/Effects/energy_overcharge.rsi
@@ -31,3 +32,43 @@
     duration: 1
   - type: TimedDespawn
     lifetime: 1
+
+- type: entity
+  id: CERadiationSourceVFX
+  categories: [ HideSpawnMenu ]
+  suffix: VFX
+  name: radiation source
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/energy_overcharge.rsi
+    drawdepth: Effects
+    layers:
+    - state: electrified
+      shader: unshaded
+      map: ["random"]
+  - type: RandomSprite
+    available:
+    - random:
+        electrified: Inherit
+        electrified_diagonal: Inherit
+  - type: Physics
+    canCollide: false
+  - type: Tag
+    tags:
+      - HideContextMenu
+  - type: PointLight
+    radius: 5
+    energy: 3
+    color: "#309fdf"
+    enabled: false
+  - type: LightBehaviour
+    behaviours:
+    - !type:RandomizeBehaviour
+      interpolate: Nearest
+      minDuration: 0.02
+      maxDuration: 0.06
+      startValue: 0.0
+      endValue: 3.0
+      property: Energy
+      isLooped: true
+      enabled: true

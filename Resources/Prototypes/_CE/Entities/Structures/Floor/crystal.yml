@@ -73,3 +73,8 @@
           CEEnergyCrystalShard:
             min: 0
             max: 1
+  - type: Battery
+    maxCharge: 25
+    startingCharge: 25
+  - type: CEIrradiateOnDestroy
+
