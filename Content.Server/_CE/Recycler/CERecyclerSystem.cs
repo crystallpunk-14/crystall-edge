@@ -59,7 +59,8 @@ public sealed class CERecyclerSystem : CESharedRecyclerSystem
         if (!TryComp<MaterialStorageComponent>(ent, out var materialStorage))
             return;
 
-        _audio.PlayPvs(ent.Comp.RecycleSound, Transform(ent).Coordinates);
+        var xform = Transform(ent);
+        _audio.PlayPvs(ent.Comp.RecycleSound, xform.Coordinates);
         if (TryComp<BodyComponent>(other, out var bodyComp))
         {
             _body.GibBody(other, true, bodyComp);
@@ -81,9 +82,11 @@ public sealed class CERecyclerSystem : CESharedRecyclerSystem
             else
                 _material.TryChangeMaterialAmount((ent.Owner, materialStorage), physComp.MaterialComposition);
 
-            _material.EjectAllMaterial(ent.Owner, Transform(ent).Coordinates.Offset(ent.Comp.SpawnOffset), materialStorage);
-            Del(other);
-            return;
+            var spawnPos =
+                xform.Coordinates.Offset(xform.LocalRotation.ToWorldVec().Normalized() * ent.Comp.SpawnOffset);
+            _material.EjectAllMaterial(ent.Owner, spawnPos, materialStorage);
         }
+
+        Del(other);
     }
 }

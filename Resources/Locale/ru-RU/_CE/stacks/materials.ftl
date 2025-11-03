@@ -8,6 +8,10 @@ ce-stack-iron-bars = железные слитки
 ce-stack-brass-bars = латунные слитки
 ce-stack-gold-bars = золотые слитки
 
+ce-stack-iron-scrap = железный металлолом
+ce-stack-brass-scrap = латунный металлолом
+ce-stack-gold-scrap = золотой металлолом
+
 ce-stack-coal-ore = каменный уголь
 ce-stack-iron-ore = железная руда
 ce-stack-gold-ore = золотая руда
