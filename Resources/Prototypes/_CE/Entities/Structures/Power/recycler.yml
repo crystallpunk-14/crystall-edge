@@ -1,7 +1,7 @@
 - type: entity
   id: CERecycler
   parent:
-  - BaseMachinePowered
+  - BaseMachine
   name: recycler
   description: A large destructive machine used to extract energy from magical items by destroying them. It can also be used as a way to recycle items into basic materials.
   categories: [ ForkFiltered ]
@@ -46,47 +46,23 @@
     sprite: _CE/Structures/Power/grinder.rsi
     layers:
     - state: base
-    - state: blades_on
+    - state: blades_off
+      map: [ "blades" ]
+  - type: NodeContainer
+    examinable: true
+    nodes:
+      input:
+        !type:CableDeviceNode
+        nodeGroupID: HVPower
   - type: Appearance
-  - type: CollideMaterialReclaimer
-  - type: MaterialReclaimer
-    enabled: false
-    scaleProcessSpeed: false #instant!
-    minimumProcessDuration: 0
-    whitelist:
-      components:
-      - PhysicalComposition
-      - MobState
-      - SpaceGarbage
-      tags:
-      - Trash
-      - Recyclable
-    blacklist:
-      components:
-      - Material
-      - Pda
-      - IdCard
-      tags:
-      - HighRiskItem
-    sound:
-      path: /Audio/Effects/saw.ogg
-      params:
-        volume: -3
-    cutOffSound: false
-  - type: MaterialStorage
-    insertOnInteract: false
+  - type: GenericVisualizer
+    visuals:
+      enum.CEPowerConsumerVisuals.Active:
+        blades:
+          True: {state: blades_on}
+          False: {state: blades_off}
+  - type: CERecycler
   - type: Rotatable
-  #- type: Repairable
-  #  doAfterDelay: 5
-  #  fuelCost: 25
-  #- type: Destructible
-  #  thresholds:
-  #  - trigger:
-  #      !type:DamageTrigger
-  #      damage: 300
-  #    behaviors:
-  #    - !type:DoActsBehavior
-  #      acts: ["Breakage"]
-  #    - !type:PlaySoundBehavior
-  #      sound:
-  #        collection: MetalBreak
+  - type: PowerConsumer
+    voltage: High
+    drawRate: 5

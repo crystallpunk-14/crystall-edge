@@ -3,6 +3,7 @@ using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.Power.Components;
 using Content.Server.Power.NodeGroups;
 using Content.Server.Power.Pow3r;
+using Content.Shared._CE.Power;
 using Content.Shared.CCVar;
 using Content.Shared.Power;
 using Content.Shared.Power.Components;
@@ -412,6 +413,11 @@ namespace Content.Server.Power.EntitySystems
 
                 lastRecv = newRecv;
                 var msg = new PowerConsumerReceivedChanged(newRecv, consumer.DrawRate);
+
+                //CrystallEdge
+                _appearance.SetData(uid, CEPowerConsumerVisuals.Active, newRecv >= consumer.DrawRate);
+                //CrystallEdge end
+
                 RaiseLocalEvent(uid, ref msg);
             }
         }

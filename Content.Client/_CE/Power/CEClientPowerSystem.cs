@@ -1,5 +1,6 @@
 using Content.Client.Light.Components;
 using Content.Client.Light.EntitySystems;
+using Content.Shared._CE.Power;
 using Content.Shared._CE.Power.Components;
 using Robust.Client.GameObjects;
 
@@ -13,7 +14,7 @@ public sealed class CEClientPowerSystem : VisualizerSystem<CEEnergyLeakComponent
     {
         base.OnAppearanceChange(uid, component, ref args);
 
-        if (!AppearanceSystem.TryGetData<bool>(uid, CEEnergyLeakVisuals.Enabled, out var enabled))
+        if (!AppearanceSystem.TryGetData<bool>(uid, CEPowerConsumerVisuals.Active, out var enabled))
             return;
 
         if (!TryComp<LightBehaviourComponent>(uid, out var beh))

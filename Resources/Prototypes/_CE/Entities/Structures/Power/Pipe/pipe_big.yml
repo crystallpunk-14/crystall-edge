@@ -207,10 +207,9 @@
       shader: unshaded
       visible: false
       map: [ sparkle ]
-  - type: Appearance
   - type: GenericVisualizer
     visuals:
-      enum.CEEnergyLeakVisuals.Enabled:
+      enum.CEPowerConsumerVisuals.Active:
         sparkle:
           True: {visible: true}
           False: {visible: false}
@@ -232,7 +231,7 @@
         acts: [ "Destruction" ]
   - type: PowerConsumer
     voltage: High
-    drawRate: 10
+    drawRate: 5
   - type: RadiationSource
     intensity: 0
   - type: CEEnergyLeak

@@ -56,7 +56,7 @@ namespace Content.Server.Power.Nodes
                     nodeDirs.Add((Direction.Invalid, node));
                 }
 
-                //CrystallEdge vertical cabling
+                //CrystallEdge cabling
                 if (node is CECableVerticalNode && dir == Direction.Invalid)
                 {
                     // vertical

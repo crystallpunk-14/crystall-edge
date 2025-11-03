@@ -3,6 +3,7 @@ using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Power.Nodes;
 using Content.Server.Radiation.Systems;
+using Content.Shared._CE.Power;
 using Content.Shared._CE.Power.Components;
 using Content.Shared.Destructible;
 using Content.Shared.Interaction;
@@ -84,7 +85,5 @@ public sealed class CEPowerSystem : EntitySystem
 
         ent.Comp.CurrentLeak = args.ReceivedPower * ent.Comp.LeakPercentage;
         Dirty(ent);
-
-        _appearance.SetData(ent, CEEnergyLeakVisuals.Enabled, enabled);
     }
 }
