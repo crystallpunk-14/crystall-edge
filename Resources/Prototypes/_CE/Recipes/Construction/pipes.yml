@@ -49,3 +49,55 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+
+- type: construction
+  hide: false
+  id: CEPipeBrassMedium
+  graph: CEPipeBrassMedium
+  startNode: start
+  targetNode: CEPipeBrassMedium
+  category: construction-category-machines
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  hide: false
+  id: CEPipeBrassMediumVerticalUp
+  graph: CEPipeBrassMedium
+  startNode: start
+  targetNode: CEPipeBrassMediumVerticalUp
+  category: construction-category-machines
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  hide: false
+  id: CEPipeBrassMediumVerticalDown
+  graph: CEPipeBrassMedium
+  startNode: start
+  targetNode: CEPipeBrassMediumVerticalDown
+  category: construction-category-machines
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  hide: false
+  id: CEPipeBrassMediumValve
+  graph: CEPipeBrassMedium
+  startNode: start
+  targetNode: CEPipeBrassMediumValve
+  category: construction-category-machines
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked

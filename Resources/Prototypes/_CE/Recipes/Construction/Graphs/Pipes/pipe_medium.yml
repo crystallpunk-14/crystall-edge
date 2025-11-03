@@ -1,0 +1,87 @@
+- type: constructionGraph
+  id: CEPipeBrassMedium
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: CEPipeBrassMedium
+          steps:
+            - material: CEBrass
+              amount: 2
+              doAfter: 1
+
+    - node: CEPipeBrassMedium
+      entity: CEPipeBrassMedium
+      edges:
+        - to: start
+          steps:
+            - tool: Welding
+              doAfter: 1
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEBrassBar1
+              amount: 2
+        - to: CEPipeBrassMediumVerticalDown
+          steps:
+            - tool: Prying
+              doAfter: 1
+        - to: CEPipeBrassMediumValve
+          steps:
+            - material: CEIron
+              amount: 1
+              doAfter: 1
+
+    - node: CEPipeBrassMediumVerticalDown
+      entity: CEPipeBrassMediumVerticalDown
+      edges:
+        - to: start
+          steps:
+            - tool: Welding
+              doAfter: 1
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEBrassBar1
+              amount: 2
+        - to: CEPipeBrassMediumVerticalUp
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+    - node: CEPipeBrassMediumVerticalUp
+      entity: CEPipeBrassMediumVerticalUp
+      edges:
+        - to: start
+          steps:
+            - tool: Welding
+              doAfter: 1
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEBrassBar1
+              amount: 2
+        - to: CEPipeBrassMedium
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+    - node: CEPipeBrassMediumValve
+      entity: CEPipeBrassMediumValve
+      edges:
+        - to: CEPipeBrassMedium
+          steps:
+            - tool: Welding
+              doAfter: 1
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEIronBar1
+              amount: 1
+
+    - node: CEPipeBrassMediumBroken
+      entity: CEPipeBrassMediumBroken
+      edges:
+        - to: CEPipeBrassMedium
+          steps:
+            - material: CEBrass
+              amount: 1
+              doAfter: 1

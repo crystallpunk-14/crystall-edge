@@ -38,16 +38,16 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalBreak
-      #- !type:ChangeConstructionNodeBehavior
-      #  node: CEPipeBrassBigBroken
+      - !type:ChangeConstructionNodeBehavior
+        node: CEPipeBrassMediumBroken
   - type: NodeContainer
     nodes:
       power:
         !type:CableNode
         nodeGroupID: MVPower
-  #- type: Construction
-  #  graph: CEPipeBrassMedium
-  #  node: CEPipeBrassMedium
+  - type: Construction
+    graph: CEPipeBrassMedium
+    node: CEPipeBrassMedium
 
 - type: entity
   parent: CEPipeBrassMedium
@@ -67,9 +67,9 @@
         !type:CECableVerticalNode
         up: true
         nodeGroupID: MVPower
-  #- type: Construction
-  #  graph: CEPipeBrassMedium
-  #  node: CEPipeBrassMediumVerticalUp
+  - type: Construction
+    graph: CEPipeBrassMedium
+    node: CEPipeBrassMediumVerticalUp
 
 - type: entity
   parent: CEPipeBrassMedium
@@ -89,9 +89,9 @@
         !type:CECableVerticalNode
         down: true
         nodeGroupID: MVPower
-  #- type: Construction
-  #  graph: CEPipeBrassMedium
-  #  node: CEPipeBrassMediumVerticalDown
+  - type: Construction
+    graph: CEPipeBrassMedium
+    node: CEPipeBrassMediumVerticalDown
 
 # Valve
 
@@ -131,9 +131,9 @@
           False: {state: valve_off}
   - type: EmitSoundOnActivate
     sound: /Audio/Effects/toss.ogg
-  #- type: Construction
-  #  graph: CEPipeBrassBig
-  #  node: CEPipeBrassBigValve
+  - type: Construction
+    graph: CEPipeBrassMedium
+    node: CEPipeBrassMediumValve
   - type: Destructible
     thresholds:
     - trigger:
@@ -151,8 +151,8 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalBreak
-      #- !type:ChangeConstructionNodeBehavior
-      #  node: CEPipeBrassBigBroken
+      - !type:ChangeConstructionNodeBehavior
+        node: CEPipeBrassMediumBroken
 
 - type: entity
   id: CEPipeBrassMediumValveOn
@@ -237,9 +237,9 @@
       property: Energy
       isLooped: true
       enabled: false
-  #- type: Construction
-  #  graph: CEPipeBrassBig
-  #  node: CEPipeBrassBigBroken
-  #  defaultTarget: CEPipeBrassBig
+  - type: Construction
+    graph: CEPipeBrassMedium
+    node: CEPipeBrassMediumBroken
+    defaultTarget: CEPipeBrassMedium
   - type: CEPipeVisualizer
     statePrefix: broken_pipe_
