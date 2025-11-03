@@ -6,4 +6,6 @@ namespace Content.Shared._CE.Recycler;
 [Access(typeof(CESharedRecyclerSystem))]
 public sealed partial class CERecyclerComponent : Component
 {
+    [DataField]
+    public string FixtureId = "brrt";
 }

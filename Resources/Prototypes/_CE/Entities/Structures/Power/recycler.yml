@@ -8,8 +8,6 @@
   placement:
     mode: SnapgridCenter
   components:
-  - type: PlacementReplacement
-    key: recyclers
   - type: AmbientSound
     enabled: false
     volume: -8
@@ -53,6 +51,9 @@
     nodes:
       input:
         !type:CableDeviceNode
+        nodeGroupID: HVPower
+      power:
+        !type:CableNode
         nodeGroupID: HVPower
   - type: Appearance
   - type: GenericVisualizer
