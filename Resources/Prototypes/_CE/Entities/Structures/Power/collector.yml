@@ -72,6 +72,8 @@
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrong
   - type: WiredNetworkConnection
+  - type: StaticPrice
+    price: 100
 
 - type: entity
   parent: CEManaCollectorBase
