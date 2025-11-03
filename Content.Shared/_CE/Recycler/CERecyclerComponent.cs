@@ -1,5 +1,6 @@
 using System.Numerics;
 using Content.Shared.Whitelist;
+using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared._CE.Recycler;
@@ -24,5 +25,14 @@ public sealed partial class CERecyclerComponent : Component
     public EntityWhitelist? Blacklist;
 
     [DataField]
-    public Vector2 SpawnOffset = new Vector2(0f, 0.5f);
+    public Vector2 SpawnOffset = new (0f, 0.75f);
+
+    [DataField]
+    public SoundSpecifier RecycleSound = new SoundPathSpecifier("/Audio/Effects/saw.ogg")
+    {
+        Params = new()
+        {
+            Variation = 0.1f,
+        }
+    };
 }

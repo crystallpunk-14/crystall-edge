@@ -1,12 +1,15 @@
 using System.Numerics;
+using Content.Server.Audio;
 using Content.Server.Materials;
 using Content.Server.Power.Components;
+using Content.Server.Power.EntitySystems;
 using Content.Shared._CE.Recycler;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
 using Content.Shared.Materials;
 using Content.Shared.Stacks;
 using Content.Shared.Whitelist;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics.Events;
 
 namespace Content.Server._CE.Recycler;
@@ -17,6 +20,8 @@ public sealed class CERecyclerSystem : CESharedRecyclerSystem
     [Dependency] private readonly SharedBodySystem _body = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
     [Dependency] private readonly MaterialStorageSystem _material = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly AmbientSoundSystem _ambient = default!;
 
     private EntityQuery<PowerConsumerComponent> _powerQuery;
 
@@ -27,6 +32,12 @@ public sealed class CERecyclerSystem : CESharedRecyclerSystem
         _powerQuery = GetEntityQuery<PowerConsumerComponent>();
 
         SubscribeLocalEvent<CERecyclerComponent, StartCollideEvent>(OnCollide);
+        SubscribeLocalEvent<CERecyclerComponent, PowerConsumerReceivedChanged>(OnPowerChanged);
+    }
+
+    private void OnPowerChanged(Entity<CERecyclerComponent> ent, ref PowerConsumerReceivedChanged args)
+    {
+        _ambient.SetAmbience(ent,  args.ReceivedPower >= args.DrawRate);
     }
 
     private void OnCollide(Entity<CERecyclerComponent> ent, ref StartCollideEvent args)
@@ -48,6 +59,7 @@ public sealed class CERecyclerSystem : CESharedRecyclerSystem
         if (!TryComp<MaterialStorageComponent>(ent, out var materialStorage))
             return;
 
+        _audio.PlayPvs(ent.Comp.RecycleSound, Transform(ent).Coordinates);
         if (TryComp<BodyComponent>(other, out var bodyComp))
         {
             _body.GibBody(other, true, bodyComp);
@@ -67,13 +79,11 @@ public sealed class CERecyclerSystem : CESharedRecyclerSystem
                 _material.TryChangeMaterialAmount((ent.Owner, materialStorage), materialComposition);
             }
             else
-            {
                 _material.TryChangeMaterialAmount((ent.Owner, materialStorage), physComp.MaterialComposition);
-            }
+
+            _material.EjectAllMaterial(ent.Owner, Transform(ent).Coordinates.Offset(ent.Comp.SpawnOffset), materialStorage);
+            Del(other);
+            return;
         }
-
-        _material.EjectAllMaterial(ent.Owner, Transform(ent).Coordinates.Offset(ent.Comp.SpawnOffset), materialStorage);
-
-        QueueDel(other);
     }
 }
