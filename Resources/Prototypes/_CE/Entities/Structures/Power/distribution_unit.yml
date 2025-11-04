@@ -32,11 +32,11 @@
       - map: ["enum.SmesVisualLayers.Output"]
         state: discharging1
         shader: unshaded
-  - type: Smes
-    chargeOverlayPrefix: fill-
-    inputOverlayPrefix: charging
-    outputOverlayPrefix: discharging
-    numChargeLevels: 1
+  #- type: Smes #TODO: fix visuals
+  #  chargeOverlayPrefix: fill-
+  #  inputOverlayPrefix: charging
+  #  outputOverlayPrefix: discharging
+  #  numChargeLevels: 1
   - type: Appearance
   - type: Battery
     maxCharge: 250
