@@ -4,8 +4,8 @@ meta:
   engineVersion: 267.3.0
   forkId: ""
   forkVersion: ""
-  time: 11/01/2025 10:06:54
-  entityCount: 728
+  time: 11/04/2025 15:28:02
+  entityCount: 745
 maps:
 - 1
 grids:
@@ -106,7 +106,6 @@ entities:
     - type: BecomesStation
       id: Dev
     - type: Parallax
-      parallax: Sky
     - type: SunShadowCycle
       directions:
       - direction: 0,3
@@ -130,6 +129,14 @@ entities:
       fibers: []
       fingerprints: []
     - type: RadiationGridResistance
+  - uid: 742
+    components:
+    - type: MetaData
+    - type: Transform
+      gridTraversal: False
+      pos: -3.6538062,-5.254073
+      parent: 1
+    - type: ViewSubscriber
 - proto: CEAlwaysPoweredWallLight
   entities:
   - uid: 23
@@ -185,11 +192,6 @@ entities:
     components:
     - type: Transform
       pos: 0.5,-1.5
-      parent: 1
-  - uid: 88
-    components:
-    - type: Transform
-      pos: -5.5,-4.5
       parent: 1
   - uid: 89
     components:
@@ -3370,6 +3372,35 @@ entities:
     - type: Transform
       pos: 10.5,11.5
       parent: 1
+- proto: CEConveyorLadder
+  entities:
+  - uid: 732
+    components:
+    - type: Transform
+      pos: -3.5,-4.5
+      parent: 1
+    - type: DeviceLinkSink
+      ports:
+      - Reverse
+      - Forward
+      - Off
+  - uid: 745
+    components:
+    - type: Transform
+      pos: -4.5,-4.5
+      parent: 1
+    - type: DeviceLinkSink
+      ports:
+      - Reverse
+      - Forward
+      - Off
+- proto: CEDistributionUnitEmpty
+  entities:
+  - uid: 731
+    components:
+    - type: Transform
+      pos: -8.5,1.5
+      parent: 1
 - proto: CEFenceBigWooden
   entities:
   - uid: 7
@@ -3468,34 +3499,159 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -12.5,-6.5
       parent: 1
+- proto: CEManaCollector
+  entities:
+  - uid: 35
+    components:
+    - type: Transform
+      pos: -4.5,4.5
+      parent: 1
+  - uid: 45
+    components:
+    - type: Transform
+      pos: -6.5,4.5
+      parent: 1
+- proto: CEPipeBrassBig
+  entities:
+  - uid: 34
+    components:
+    - type: Transform
+      pos: -4.5,4.5
+      parent: 1
+  - uid: 91
+    components:
+    - type: Transform
+      pos: -8.5,2.5
+      parent: 1
+  - uid: 95
+    components:
+    - type: Transform
+      pos: -5.5,4.5
+      parent: 1
+  - uid: 96
+    components:
+    - type: Transform
+      pos: -6.5,4.5
+      parent: 1
+  - uid: 729
+    components:
+    - type: Transform
+      pos: -8.5,4.5
+      parent: 1
+  - uid: 733
+    components:
+    - type: Transform
+      pos: -8.5,3.5
+      parent: 1
+  - uid: 741
+    components:
+    - type: Transform
+      pos: -8.5,1.5
+      parent: 1
+- proto: CEPipeBrassBigValveOn
+  entities:
+  - uid: 100
+    components:
+    - type: Transform
+      pos: -7.5,4.5
+      parent: 1
+- proto: CEPipeBrassBigVerticalUp
+  entities:
+  - uid: 88
+    components:
+    - type: Transform
+      pos: -7.5,1.5
+      parent: 1
+- proto: CEPipeBrassMedium
+  entities:
+  - uid: 734
+    components:
+    - type: Transform
+      pos: -8.5,1.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+    - type: Fixtures
+      fixtures: {}
+  - uid: 735
+    components:
+    - type: Transform
+      pos: -8.5,0.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+    - type: Fixtures
+      fixtures: {}
+  - uid: 736
+    components:
+    - type: Transform
+      pos: -8.5,-0.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+    - type: Fixtures
+      fixtures: {}
+  - uid: 737
+    components:
+    - type: Transform
+      pos: -8.5,-1.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+    - type: Fixtures
+      fixtures: {}
+  - uid: 740
+    components:
+    - type: Transform
+      pos: -4.5,-4.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+    - type: Fixtures
+      fixtures: {}
+  - uid: 743
+    components:
+    - type: Transform
+      pos: -3.5,-4.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+    - type: Fixtures
+      fixtures: {}
+- proto: CEPipeBrassMediumVerticalUp
+  entities:
+  - uid: 738
+    components:
+    - type: Transform
+      pos: -8.5,-2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+    - type: Fixtures
+      fixtures: {}
+  - uid: 744
+    components:
+    - type: Transform
+      pos: -4.5,-3.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+    - type: Fixtures
+      fixtures: {}
+- proto: CEPipeTerminal
+  entities:
+  - uid: 33
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -5.5,4.5
+      parent: 1
 - proto: CESpawnPointTownfolk
   entities:
   - uid: 262
     components:
     - type: Transform
       pos: -2.5,-6.5
-      parent: 1
-- proto: CETableWoodenCounter
-  entities:
-  - uid: 91
-    components:
-    - type: Transform
-      pos: -7.5,-7.5
-      parent: 1
-  - uid: 95
-    components:
-    - type: Transform
-      pos: -6.5,-7.5
-      parent: 1
-  - uid: 96
-    components:
-    - type: Transform
-      pos: -8.5,-7.5
-      parent: 1
-  - uid: 100
-    components:
-    - type: Transform
-      pos: -9.5,-7.5
       parent: 1
 - proto: CEWallLeaf
   entities:
@@ -3561,11 +3717,6 @@ entities:
     - type: Transform
       pos: -2.5,-3.5
       parent: 1
-  - uid: 35
-    components:
-    - type: Transform
-      pos: -5.5,-3.5
-      parent: 1
   - uid: 36
     components:
     - type: Transform
@@ -3600,11 +3751,6 @@ entities:
     components:
     - type: Transform
       pos: -9.5,1.5
-      parent: 1
-  - uid: 45
-    components:
-    - type: Transform
-      pos: -9.5,2.5
       parent: 1
   - uid: 46
     components:
@@ -3711,6 +3857,16 @@ entities:
     - type: Transform
       pos: -3.5,0.5
       parent: 1
+  - uid: 730
+    components:
+    - type: Transform
+      pos: -9.5,2.5
+      parent: 1
+  - uid: 739
+    components:
+    - type: Transform
+      pos: -3.5,-3.5
+      parent: 1
 - proto: CEWallWoodenPalisade
   entities:
   - uid: 3
@@ -3734,16 +3890,6 @@ entities:
     components:
     - type: Transform
       pos: -2.5,-2.5
-      parent: 1
-  - uid: 33
-    components:
-    - type: Transform
-      pos: -3.5,-3.5
-      parent: 1
-  - uid: 34
-    components:
-    - type: Transform
-      pos: -4.5,-3.5
       parent: 1
   - uid: 37
     components:

@@ -4,8 +4,8 @@ meta:
   engineVersion: 267.3.0
   forkId: ""
   forkVersion: ""
-  time: 10/31/2025 19:48:22
-  entityCount: 61
+  time: 11/04/2025 15:28:56
+  entityCount: 79
 maps:
 - 1
 grids:
@@ -78,8 +78,18 @@ entities:
     - type: BecomesStation
       id: Dev
     - type: SunShadowCycle
+      directions:
+      - direction: 0,3
+      - alpha: 0.5
+        direction: -3,-0.1
+        ratio: 0.25
+      - alpha: 0.8
+        direction: 0,-3
+        ratio: 0.5
+      - alpha: 0.5
+        direction: 3,-0.1
+        ratio: 0.75
     - type: Parallax
-      parallax: Sky
     - type: LightCycle
     - type: SunShadow
     - type: MapLight
@@ -112,30 +122,106 @@ entities:
       rot: 3.141592653589793 rad
       pos: -2.5,0.5
       parent: 1
-  - uid: 48
+  - uid: 76
     components:
     - type: Transform
-      pos: -5.5,-1.5
+      rot: 1.5707963267948966 rad
+      pos: -8.5,-1.5
       parent: 1
-  - uid: 55
+  - uid: 78
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -6.5,0.5
+      rot: -1.5707963267948966 rad
+      pos: -3.5,-0.5
       parent: 1
-  - uid: 56
-    components:
-    - type: Transform
-      pos: -7.5,-1.5
-      parent: 1
-- proto: CEFenceWooden
+- proto: CEConveyorBelt
   entities:
   - uid: 40
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 1.5,0.5
+      pos: -4.5,-0.5
       parent: 1
+    - type: DeviceLinkSink
+      ports:
+      - Reverse
+      - Forward
+      - Off
+  - uid: 57
+    components:
+    - type: Transform
+      pos: -4.5,-1.5
+      parent: 1
+    - type: DeviceLinkSink
+      ports:
+      - Reverse
+      - Forward
+      - Off
+  - uid: 63
+    components:
+    - type: Transform
+      pos: -4.5,-2.5
+      parent: 1
+    - type: DeviceLinkSink
+      ports:
+      - Reverse
+      - Forward
+      - Off
+  - uid: 64
+    components:
+    - type: Transform
+      pos: -4.5,-3.5
+      parent: 1
+    - type: DeviceLinkSink
+      ports:
+      - Reverse
+      - Forward
+      - Off
+  - uid: 65
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -3.5,-3.5
+      parent: 1
+    - type: DeviceLinkSink
+      ports:
+      - Reverse
+      - Forward
+      - Off
+  - uid: 66
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -3.5,-2.5
+      parent: 1
+    - type: DeviceLinkSink
+      ports:
+      - Reverse
+      - Forward
+      - Off
+  - uid: 67
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -3.5,-1.5
+      parent: 1
+    - type: DeviceLinkSink
+      ports:
+      - Reverse
+      - Forward
+      - Off
+  - uid: 68
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -3.5,-0.5
+      parent: 1
+    - type: DeviceLinkSink
+      ports:
+      - Reverse
+      - Forward
+      - Off
+- proto: CEFenceWooden
+  entities:
   - uid: 41
     components:
     - type: Transform
@@ -175,6 +261,180 @@ entities:
     components:
     - type: Transform
       pos: 2.5,5.5
+      parent: 1
+- proto: CEPipeBrassBig
+  entities:
+  - uid: 69
+    components:
+    - type: Transform
+      pos: -7.5,-0.5
+      parent: 1
+  - uid: 71
+    components:
+    - type: Transform
+      pos: -7.5,0.5
+      parent: 1
+  - uid: 73
+    components:
+    - type: Transform
+      pos: -6.5,-1.5
+      parent: 1
+  - uid: 74
+    components:
+    - type: Transform
+      pos: -5.5,-1.5
+      parent: 1
+  - uid: 79
+    components:
+    - type: Transform
+      pos: -4.5,-1.5
+      parent: 1
+- proto: CEPipeBrassBigBroken
+  entities:
+  - uid: 70
+    components:
+    - type: Transform
+      pos: -8.5,-1.5
+      parent: 1
+- proto: CEPipeBrassBigValve
+  entities:
+  - uid: 58
+    components:
+    - type: Transform
+      pos: -8.5,-0.5
+      parent: 1
+  - uid: 72
+    components:
+    - type: Transform
+      pos: -6.5,-0.5
+      parent: 1
+- proto: CEPipeBrassBigVerticalDown
+  entities:
+  - uid: 75
+    components:
+    - type: Transform
+      pos: -7.5,1.5
+      parent: 1
+- proto: CEPipeBrassMedium
+  entities:
+  - uid: 33
+    components:
+    - type: Transform
+      pos: -5.5,-2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+    - type: Fixtures
+      fixtures: {}
+  - uid: 48
+    components:
+    - type: Transform
+      pos: -4.5,-2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+    - type: Fixtures
+      fixtures: {}
+  - uid: 49
+    components:
+    - type: Transform
+      pos: -3.5,-2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+    - type: Fixtures
+      fixtures: {}
+  - uid: 50
+    components:
+    - type: Transform
+      pos: -3.5,-1.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+    - type: Fixtures
+      fixtures: {}
+  - uid: 51
+    components:
+    - type: Transform
+      pos: -4.5,-1.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+    - type: Fixtures
+      fixtures: {}
+  - uid: 52
+    components:
+    - type: Transform
+      pos: -3.5,-3.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+    - type: Fixtures
+      fixtures: {}
+  - uid: 53
+    components:
+    - type: Transform
+      pos: -3.5,-0.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+    - type: Fixtures
+      fixtures: {}
+  - uid: 55
+    components:
+    - type: Transform
+      pos: -7.5,-2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+    - type: Fixtures
+      fixtures: {}
+  - uid: 56
+    components:
+    - type: Transform
+      pos: -4.5,-0.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+    - type: Fixtures
+      fixtures: {}
+- proto: CEPipeBrassMediumValve
+  entities:
+  - uid: 54
+    components:
+    - type: Transform
+      pos: -6.5,-2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+    - type: Fixtures
+      fixtures: {}
+- proto: CEPipeBrassMediumVerticalDown
+  entities:
+  - uid: 32
+    components:
+    - type: Transform
+      pos: -4.5,-3.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+    - type: Fixtures
+      fixtures: {}
+  - uid: 62
+    components:
+    - type: Transform
+      pos: -8.5,-2.5
+      parent: 1
+    - type: Physics
+      canCollide: False
+    - type: Fixtures
+      fixtures: {}
+- proto: CERecycler
+  entities:
+  - uid: 77
+    components:
+    - type: Transform
+      pos: -3.5,-1.5
       parent: 1
 - proto: CEWallWooden
   entities:
@@ -333,36 +593,6 @@ entities:
     - type: Transform
       pos: -0.5,-0.5
       parent: 1
-  - uid: 49
-    components:
-    - type: Transform
-      pos: -6.5,-0.5
-      parent: 1
-  - uid: 50
-    components:
-    - type: Transform
-      pos: -6.5,-1.5
-      parent: 1
-  - uid: 51
-    components:
-    - type: Transform
-      pos: -6.5,-2.5
-      parent: 1
-  - uid: 52
-    components:
-    - type: Transform
-      pos: -5.5,-0.5
-      parent: 1
-  - uid: 53
-    components:
-    - type: Transform
-      pos: -7.5,-0.5
-      parent: 1
-  - uid: 54
-    components:
-    - type: Transform
-      pos: -3.5,-0.5
-      parent: 1
 - proto: CEWindowStone
   entities:
   - uid: 6
@@ -385,16 +615,6 @@ entities:
     - type: Transform
       pos: -7.5,-3.5
       parent: 1
-  - uid: 32
-    components:
-    - type: Transform
-      pos: -4.5,-3.5
-      parent: 1
-  - uid: 33
-    components:
-    - type: Transform
-      pos: -3.5,-3.5
-      parent: 1
 - proto: CEWoodenDoor
   entities:
   - uid: 4
@@ -402,15 +622,5 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 0.5,1.5
-      parent: 1
-  - uid: 57
-    components:
-    - type: Transform
-      pos: -4.5,-0.5
-      parent: 1
-  - uid: 58
-    components:
-    - type: Transform
-      pos: -8.5,-0.5
       parent: 1
 ...
