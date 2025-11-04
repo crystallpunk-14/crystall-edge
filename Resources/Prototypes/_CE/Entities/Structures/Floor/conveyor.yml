@@ -71,3 +71,20 @@
     - 1.05
     - 0.1
     - 0.1
+
+- type: entity
+  id: CEConveyorLadderReverse
+  parent: CEConveyorLadder
+  suffix: Reverse
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Floor/conveyor_ladder_inversed.rsi
+  - type: CEZLevelHighground
+    stick: true
+    heightCurve:
+    - 0.1
+    - 0.1
+    - 1.05
+    - 1.05
