@@ -1,14 +1,14 @@
 {
     "version": 1,
     "license": "CC-BY-SA-4.0",
-    "copyright": "Created by 4g10w",
+    "copyright": "Created by 4g10w, edited by TheShuEd",
     "size": {
         "x": 32,
         "y": 32
     },
     "states": [
         {
-            "name": "screwdriver"
+            "name": "icon"
         },
         {
             "name": "inhand-left",

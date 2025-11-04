@@ -37,7 +37,7 @@ public sealed partial class ConveyorController : SharedConveyorController //Crys
 
     private void OnInit(EntityUid uid, ConveyorComponent component, ComponentInit args)
     {
-        _signalSystem.EnsureSinkPorts(uid, component.ReversePort, component.ForwardPort, component.OffPort);
+        //_signalSystem.EnsureSinkPorts(uid, component.ReversePort, component.ForwardPort, component.OffPort); //CrystallEdge - we dont need sink ports
 
         if (PhysicsQuery.TryComp(uid, out var physics))
         {

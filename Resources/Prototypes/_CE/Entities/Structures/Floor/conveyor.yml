@@ -20,6 +20,8 @@
     drawdepth: HighFloorObjects
   - type: Physics
     bodyType: Static
+  - type: Anchorable
+  - type: Pullable
   - type: Fixtures
     fixtures:
       conveyor:
@@ -74,7 +76,6 @@
           collection: MetalBreak
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  - type: DeviceLinkSink #boilerplate: fix gains a component on spawn inittest error
 
 - type: entity
   id: CEConveyorLadder

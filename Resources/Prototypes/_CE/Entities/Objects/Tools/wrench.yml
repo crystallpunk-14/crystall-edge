@@ -17,7 +17,7 @@
     state: icon
   - type: Item
     sprite: _CE/Objects/Tools/wrench.rsi
-    storedRotation: 45
+    storedRotation: -90
   - type: MeleeWeapon
     wideAnimationRotation: 135
     attackRate: 1.5
