@@ -16,7 +16,7 @@
     - Screwdriver
   - type: Sprite
     sprite: _CE/Objects/Tools/screwdriver.rsi
-    state: screwdriver
+    state: icon
   - type: Item
     sprite: _CE/Objects/Tools/screwdriver.rsi
     storedRotation: -90
