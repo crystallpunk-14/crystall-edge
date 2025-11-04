@@ -1,0 +1,54 @@
+- type: constructionGraph
+  id: CEConveyorLadder
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: CEConveyorLadder
+          steps:
+            - material: CEIron
+              amount: 1
+              doAfter: 1
+            - material: CEBrass
+              amount: 1
+              doAfter: 1
+
+    - node: CEConveyorLadder
+      entity: CEConveyorLadder
+      edges:
+        - to: start
+          steps:
+            - tool: Welding
+              doAfter: 1
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEIronBar1
+              amount: 1
+            - !type:SpawnPrototype
+              prototype: CEBrassBar1
+              amount: 1
+        - to: CEConveyorLadderReverse
+          steps:
+            - tool: Prying
+              doAfter: 1
+
+    - node: CEConveyorLadderReverse
+      entity: CEConveyorLadderReverse
+      edges:
+        - to: start
+          steps:
+            - tool: Welding
+              doAfter: 1
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEIronBar1
+              amount: 1
+            - !type:SpawnPrototype
+              prototype: CEBrassBar1
+              amount: 1
+        - to: CEConveyorLadder
+          steps:
+            - tool: Prying
+              doAfter: 1

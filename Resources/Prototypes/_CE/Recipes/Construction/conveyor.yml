@@ -1,0 +1,38 @@
+- type: construction
+  hide: false
+  id: CEConveyorBelt
+  graph: CEConveyorBelt
+  startNode: start
+  targetNode: CEConveyorBelt
+  category: construction-category-machines
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  hide: false
+  id: CEConveyorLadder
+  graph: CEConveyorLadder
+  startNode: start
+  targetNode: CEConveyorLadder
+  category: construction-category-machines
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  hide: false
+  id: CEConveyorLadderReverse
+  graph: CEConveyorLadder
+  startNode: start
+  targetNode: CEConveyorLadderReverse
+  category: construction-category-machines
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked

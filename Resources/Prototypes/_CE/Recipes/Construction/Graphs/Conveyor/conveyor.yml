@@ -1,0 +1,31 @@
+- type: constructionGraph
+  id: CEConveyorBelt
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: CEConveyorBelt
+          steps:
+            - material: CEIron
+              amount: 1
+              doAfter: 1
+            - material: CEBrass
+              amount: 1
+              doAfter: 1
+
+    - node: CEConveyorBelt
+      entity: CEConveyorBelt
+      edges:
+        - to: start
+          steps:
+            - tool: Welding
+              doAfter: 1
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEIronBar1
+              amount: 1
+            - !type:SpawnPrototype
+              prototype: CEBrassBar1
+              amount: 1

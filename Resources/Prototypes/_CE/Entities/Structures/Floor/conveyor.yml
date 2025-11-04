@@ -49,6 +49,10 @@
       power:
         !type:CableDeviceNode
         nodeGroupID: MVPower
+  - type: Construction
+    graph: CEConveyorBelt
+    node: CEConveyorBelt
+  - type: DeviceLinkSink #boilerplate: fix gains a component on spawn inittest error
 
 - type: entity
   id: CEConveyorLadder
@@ -71,6 +75,9 @@
     - 1.05
     - 0.1
     - 0.1
+  - type: Construction
+    graph: CEConveyorLadder
+    node: CEConveyorLadder
 
 - type: entity
   id: CEConveyorLadderReverse
@@ -88,3 +95,6 @@
     - 0.1
     - 1.05
     - 1.05
+  - type: Construction
+    graph: CEConveyorLadder
+    node: CEConveyorLadderReverse
