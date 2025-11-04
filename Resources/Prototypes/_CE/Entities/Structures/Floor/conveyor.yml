@@ -1,7 +1,6 @@
 - type: entity
   id: CEConveyorBelt
   name: conveyor belt
-  parent: ConveyorBelt
   description: TODO
   categories: [ ForkFiltered ]
   placement:
@@ -9,9 +8,18 @@
   components:
   - type: PlacementReplacement
     key: walls
+  - type: Rotatable
+    rotateWhileAnchored: true
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Transform
+    anchored: true
   - type: Sprite
     sprite: _CE/Structures/Floor/conveyor.rsi
     state: base
+    drawdepth: HighFloorObjects
+  - type: Physics
+    bodyType: Static
   - type: Fixtures
     fixtures:
       conveyor:
@@ -24,6 +32,8 @@
         layer:
         - ConveyorMask
         hard: False
+  - type: Conveyor
+  - type: Appearance
   - type: GenericVisualizer
     visuals:
       enum.ConveyorVisuals.State:
@@ -31,6 +41,14 @@
           Off: { state: base }
           Forward: { state: moving_forward }
           Reverse: { state: moving_backward }
+  - type: PowerConsumer
+    voltage: Medium
+    drawRate: 0.5
+  - type: NodeContainer
+    nodes:
+      power:
+        !type:CableDeviceNode
+        nodeGroupID: MVPower
 
 - type: entity
   id: CEConveyorLadder

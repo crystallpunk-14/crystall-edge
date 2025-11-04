@@ -13,7 +13,7 @@ using Robust.Shared.Physics.Systems;
 
 namespace Content.Server.Physics.Controllers;
 
-public sealed class ConveyorController : SharedConveyorController
+public sealed partial class ConveyorController : SharedConveyorController //CrystallEdge partial
 {
     [Dependency] private readonly FixtureSystem _fixtures = default!;
     [Dependency] private readonly DeviceLinkSystem _signalSystem = default!;
@@ -31,6 +31,7 @@ public sealed class ConveyorController : SharedConveyorController
         SubscribeLocalEvent<ConveyorComponent, SignalReceivedEvent>(OnSignalReceived);
         SubscribeLocalEvent<ConveyorComponent, PowerChangedEvent>(OnPowerChanged);
 
+        InitCrystallEdge();
         base.Initialize();
     }
 
