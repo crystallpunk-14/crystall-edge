@@ -11,6 +11,8 @@
     key: pipe_medium
   - type: CEPipeVisualizer
     statePrefix: pipe_
+  - type: Physics
+    canCollide: false
 
 - type: entity
   id: CEPipeBrassMedium
