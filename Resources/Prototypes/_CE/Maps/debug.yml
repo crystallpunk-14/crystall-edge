@@ -35,7 +35,9 @@
             1:
               path: /Maps/_CE/Dev1.yml
             2:
-              path: /Maps/_CE/Dev1.yml
+              path: /Maps/_CE/Empty.yml
+            3:
+              path: /Maps/_CE/Empty.yml
         - type: CEStationSpawnerDistribution
           spawns:
             CECoin: !type:AllSelector
