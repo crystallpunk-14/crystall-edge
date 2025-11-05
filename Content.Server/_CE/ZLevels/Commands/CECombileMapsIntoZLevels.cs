@@ -66,16 +66,14 @@ public sealed class CECombineMapsIntoZLevelsCommand : LocalizedCommands
 
         var network = _zLevels.CreateZNetwork();
         var counter = 0;
-        var success = true;
+        Dictionary<EntityUid, int> dict = new();
         foreach (var findMap in maps)
         {
-            if (!_zLevels.TryAddMapIntoZNetwork(network, _map.GetMap(findMap), counter))
-            {
-                shell.WriteError($"Unable to add map {findMap} to the new network!");
-                success = false;
-            }
+            dict.Add( _map.GetMap(findMap), counter);
             counter++;
         }
+
+        var success = _zLevels.TryAddMapsIntoZNetwork(network, dict);
 
         if (success)
             shell.WriteLine($"Created z-level network! Z-Network entity: {network}");

@@ -37,7 +37,8 @@ public sealed partial class CEZLevelsSystem : CESharedZLevelsSystem
 
         var stationNetwork = CreateZNetwork();
 
-        TryAddMapIntoZNetwork(stationNetwork, defaultMap.Value, ent.Comp.DefaultMapLevel);
+        Dictionary<EntityUid, int> dict = new();
+        dict.Add(defaultMap.Value, ent.Comp.DefaultMapLevel);
 
         ent.Comp.ZLevelsInitialized = true;
 
@@ -61,7 +62,9 @@ public sealed partial class CEZLevelsSystem : CESharedZLevelsSystem
             var member = EnsureComp<StationMemberComponent>(mapEnt.Value);
             member.Station = ent;
 
-            TryAddMapIntoZNetwork(stationNetwork, mapEnt.Value, depth);
+            dict.Add(mapEnt.Value, depth);
         }
+
+        TryAddMapsIntoZNetwork(stationNetwork, dict);
     }
 }

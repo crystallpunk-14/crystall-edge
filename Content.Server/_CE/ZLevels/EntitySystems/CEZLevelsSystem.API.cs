@@ -24,8 +24,7 @@ public sealed partial class CEZLevelsSystem
     /// <summary>
     /// attempts to add the specified map to the zNetwork network at the specified depth
     /// </summary>
-    [PublicAPI]
-    public bool TryAddMapIntoZNetwork(Entity<CEZLevelsNetworkComponent> network, EntityUid mapUid, int depth)
+    private bool TryAddMapIntoZNetwork(Entity<CEZLevelsNetworkComponent> network, EntityUid mapUid, int depth)
     {
         if (network.Comp.ZLevels.ContainsKey(depth))
         {
@@ -48,28 +47,25 @@ public sealed partial class CEZLevelsSystem
         network.Comp.ZLevels.Add(depth, mapUid);
         EnsureComp<CEZLevelMapComponent>(mapUid).Depth = depth;
 
-        RaiseLocalEvent(mapUid, new CEMapAddedIntoZNetwork(mapUid, depth, network));
-
         return true;
+    }
+
+    public bool TryAddMapsIntoZNetwork(Entity<CEZLevelsNetworkComponent> network, Dictionary<EntityUid, int> maps)
+    {
+        var success = true;
+        foreach (var (ent, depth) in maps)
+        {
+            if (!TryAddMapIntoZNetwork(network, ent, depth))
+                success = false;
+        }
+
+        RaiseLocalEvent(network, new CEZLevelNetworkUpdatedEvent());
+
+        return success;
     }
 }
 
 /// <summary>
-/// Raised directly on map, when it is added into zLevel network
+/// Called on ZLevel Network Entity, when maps added or removed from network
 /// </summary>
-public sealed class CEMapAddedIntoZNetwork(EntityUid mapUid, int depth, Entity<CEZLevelsNetworkComponent> network) : EntityEventArgs
-{
-    public EntityUid MapUid = mapUid;
-    public int Depth = depth;
-    public Entity<CEZLevelsNetworkComponent> Network = network;
-}
-
-/// <summary>
-/// Raised directly on map, when it is removed from zLevel network
-/// </summary>
-public sealed class CEMapRemovedFromZNetwork(MapId mapId, int depth, Entity<CEZLevelsNetworkComponent> network) : EntityEventArgs
-{
-    public MapId MapId = mapId;
-    public int Depth = depth;
-    public Entity<CEZLevelsNetworkComponent> Network = network;
-}
+public sealed class CEZLevelNetworkUpdatedEvent : EntityEventArgs;

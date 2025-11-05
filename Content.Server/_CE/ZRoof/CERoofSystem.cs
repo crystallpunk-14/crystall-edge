@@ -1,50 +1,57 @@
+using System.Linq;
 using Content.Server._CE.ZLevels.EntitySystems;
 using Content.Shared._CE.ZLevels;
 using Content.Shared._CE.ZRoof;
 using Content.Shared.Light.Components;
-using Robust.Server.GameObjects;
 
 namespace Content.Server._CE.ZRoof;
 
 /// <inheritdoc/>
 public sealed class CERoofSystem : CESharedRoofSystem
 {
-    [Dependency] private readonly MapSystem _map = default!;
+    private readonly HashSet<Vector2i> _roofMap = new();
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CEZLevelMapComponent, CEMapAddedIntoZNetwork>(OnMapAdded);
+        SubscribeLocalEvent<CEZLevelsNetworkComponent, CEZLevelNetworkUpdatedEvent>(OnNetworkUpdated);
     }
 
-    private void OnMapAdded(Entity<CEZLevelMapComponent> ent, ref CEMapAddedIntoZNetwork args)
+    private void OnNetworkUpdated(Entity<CEZLevelsNetworkComponent> ent, ref CEZLevelNetworkUpdatedEvent args)
     {
-        //Sync for map below
-        if (ZLevel.TryMapDown((ent.Owner, ent.Comp), out var belowMapUid))
-            SyncMapRoofs(belowMapUid.Value, ent);
-
-        //Sync for this map
-        if (ZLevel.TryMapUp((ent.Owner, ent.Comp), out var aboveMapUid))
-            SyncMapRoofs(ent, aboveMapUid.Value);
+        RecalculateNetworkRoofs(ent);
     }
 
-    /// <summary>
-    /// Go through all the tiles on the map above, synchronizing the roofs on this map.
-    /// </summary>
-    private void SyncMapRoofs(Entity<CEZLevelMapComponent> currentMapUid, Entity<CEZLevelMapComponent> aboveMapUid)
+    public void RecalculateNetworkRoofs(Entity<CEZLevelsNetworkComponent> network)
     {
-        if (!GridQuery.TryComp(currentMapUid, out var currentMapGrid))
-            return;
+        _roofMap.Clear();
 
-        if (!GridQuery.TryComp(aboveMapUid, out var aboveMapGrid))
-            return;
-
-        var enumerator = _map.GetAllTilesEnumerator(aboveMapUid, aboveMapGrid);
-        var currentRoof = EnsureComp<RoofComponent>(currentMapUid);
-        while (enumerator.MoveNext(out var tileRef))
+        List<EntityUid> sortedMaps = new();
+        foreach (var mapUid in network.Comp.ZLevels
+                     .OrderByDescending(kv => kv.Key) // depth sorting
+                     .Select(kv => kv.Value)
+                     .Where(uid => uid.HasValue)
+                     .Select(uid => uid!.Value))
         {
-            Roof.SetRoof((currentMapUid, currentMapGrid, currentRoof), tileRef.Value.GridIndices, !tileRef.Value.Tile.IsEmpty);
+            sortedMaps.Add(mapUid);
+        }
+
+        foreach (var map in sortedMaps)
+        {
+            if (!GridQuery.TryComp(map, out var mapGrid))
+                continue;
+
+            var enumerator = Map.GetAllTilesEnumerator(map, mapGrid);
+            var roofComp = EnsureComp<RoofComponent>(map);
+
+            while (enumerator.MoveNext(out var tileRef))
+            {
+                Roof.SetRoof((map, mapGrid, roofComp), tileRef.Value.GridIndices, _roofMap.Contains(tileRef.Value.GridIndices));
+
+                if (!tileRef.Value.Tile.IsEmpty)
+                    _roofMap.Add(tileRef.Value.GridIndices);
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Damage;
 using Content.Shared.Popups;
@@ -100,5 +101,58 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
         [NotNullWhen(true)] out Entity<CEZLevelMapComponent>? belowMapUid)
     {
         return TryMapOffset(inputMapUid, -1, out belowMapUid);
+    }
+
+    /// <summary>
+    /// Returns a list of all maps above the specified map. The closest map at the top is returned first.
+    /// </summary>
+    [PublicAPI]
+    public List<EntityUid> GetAllMapsAbove(Entity<CEZLevelMapComponent> inputMapUid)
+    {
+        var result = new List<EntityUid>();
+
+        var inputDepth = inputMapUid.Comp.Depth;
+        var query = EntityQueryEnumerator<CEZLevelsNetworkComponent>();
+        while (query.MoveNext(out var network))
+        {
+            if (!network.ZLevels.ContainsValue(inputMapUid))
+                continue;
+
+            result.AddRange(
+                network.ZLevels
+                    .Where(kv => kv.Value.HasValue && kv.Key < inputDepth)
+                    .OrderByDescending(kv => kv.Key)
+                    .Select(kv => kv.Value!.Value)
+            );
+        }
+        return result;
+    }
+
+    /// <summary>
+    /// Returns a list of all maps below the specified map. The closest map at the bottom is returned first.
+    /// </summary>
+    [PublicAPI]
+    public List<EntityUid> GetAllMapsBelow(Entity<CEZLevelMapComponent> inputMapUid)
+    {
+        var result = new List<EntityUid>();
+
+        var inputDepth = inputMapUid.Comp.Depth;
+        var query = EntityQueryEnumerator<CEZLevelsNetworkComponent>();
+        while (query.MoveNext(out var network))
+        {
+            if (!network.ZLevels.ContainsValue(inputMapUid))
+                continue;
+
+            // Перебираем карты, глубже inputDepth
+            foreach (var zLevelEnt in network.ZLevels
+                         .Where(kv => kv.Value.HasValue && kv.Key > inputDepth)
+                         .OrderBy(kv => kv.Key)
+                         .Select(kv => kv.Value!.Value))
+            {
+                result.Add(zLevelEnt);
+            }
+        }
+
+        return result;
     }
 }
