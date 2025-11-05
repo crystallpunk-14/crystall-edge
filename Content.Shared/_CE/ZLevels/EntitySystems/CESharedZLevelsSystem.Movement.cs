@@ -125,7 +125,7 @@ public abstract partial class CESharedZLevelsSystem
             }
             else if (zPhys.LocalPosition >= 1) //Going up
             {
-                if (HasRoof(uid)) //Hit roof
+                if (HasTileAbove(uid)) //Hit roof
                 {
                     if (MathF.Abs(zPhys.Velocity) >= ImpactVelocityLimit)
                     {
@@ -254,20 +254,43 @@ public abstract partial class CESharedZLevelsSystem
     /// If there are no Z-levels above, false will be returned.
     /// </summary>
     [PublicAPI]
-    public bool HasRoof(EntityUid ent, Entity<CEZLevelMapComponent?>? map = null)
+    public bool HasTileAbove(EntityUid ent, Entity<CEZLevelMapComponent?>? currentMapUid = null)
     {
-        map ??= Transform(ent).MapUid;
+        currentMapUid ??= Transform(ent).MapUid;
 
-        if (map is null)
+        if (currentMapUid is null)
             return false;
 
-        if (!TryMapUp(map.Value, out var mapAboveUid))
+        if (!TryMapUp(currentMapUid.Value, out var mapAboveUid))
             return false;
 
         if (!_gridQuery.TryComp(mapAboveUid.Value, out var mapAboveGrid))
             return false;
 
         if (_map.TryGetTileRef(mapAboveUid.Value, mapAboveGrid, _transform.GetWorldPosition(ent), out var tileRef) &&
+            !tileRef.Tile.IsEmpty)
+            return true;
+
+        return false;
+    }
+
+    /// <summary>
+    /// Checks whether there is a ceiling above the specified entity (tiles on the layer above).
+    /// If there are no Z-levels above, false will be returned.
+    /// </summary>
+    [PublicAPI]
+    public bool HasTileAbove(Vector2i indices, Entity<CEZLevelMapComponent?> map)
+    {
+        if (!Resolve(map, ref map.Comp, false))
+            return false;
+
+        if (!TryMapUp(map, out var mapAboveUid))
+            return false;
+
+        if (!_gridQuery.TryComp(mapAboveUid.Value, out var mapAboveGrid))
+            return false;
+
+        if (_map.TryGetTileRef(mapAboveUid.Value, mapAboveGrid, indices, out var tileRef) &&
             !tileRef.Tile.IsEmpty)
             return true;
 

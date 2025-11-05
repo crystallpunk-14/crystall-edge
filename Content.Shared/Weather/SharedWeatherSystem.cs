@@ -1,3 +1,4 @@
+using Content.Shared._CE.ZLevels.EntitySystems;
 using Content.Shared.Light.Components;
 using Content.Shared.Light.EntitySystems;
 using Content.Shared.Maps;
@@ -19,6 +20,7 @@ public abstract class SharedWeatherSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly SharedRoofSystem _roof = default!;
+    [Dependency] private readonly CESharedZLevelsSystem _zLevel = default!; //CrystallEdge
 
     private EntityQuery<BlockWeatherComponent> _blockQuery;
 
@@ -42,10 +44,13 @@ public abstract class SharedWeatherSystem : EntitySystem
 
     public bool CanWeatherAffect(EntityUid uid, MapGridComponent grid, TileRef tileRef, RoofComponent? roofComp = null)
     {
-        if (tileRef.Tile.IsEmpty)
-            return true;
+        //if (tileRef.Tile.IsEmpty) //CrystallEdge - we can have space tiles under roofs on zLevel above
+        //    return true;
 
         if (Resolve(uid, ref roofComp, false) && _roof.IsRooved((uid, grid, roofComp), tileRef.GridIndices))
+            return false;
+
+        if (_zLevel.HasTileAbove(tileRef.GridIndices, uid)) //CrystallEdge - wew need also custom check for zLevel roofs
             return false;
 
         var tileDef = (ContentTileDefinition) _tileDefManager[tileRef.Tile.TypeId];

@@ -15,7 +15,7 @@ public abstract partial class CESharedZLevelsSystem
         if (!ent.Comp.LookUp)
             return;
 
-        if (!HasRoof(ent))
+        if (!HasTileAbove(ent))
             return;
 
         ent.Comp.LookUp = false;
@@ -29,7 +29,7 @@ public abstract partial class CESharedZLevelsSystem
 
         args.Handled = true;
 
-        if (HasRoof(ent))
+        if (HasTileAbove(ent))
         {
             _popup.PopupClient(Loc.GetString("ce-zlevel-look-up-fail"), ent, ent);
             return;
