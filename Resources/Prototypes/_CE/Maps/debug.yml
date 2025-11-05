@@ -28,6 +28,24 @@
           availableJobs:
             CETownfolk: [ -1, -1 ]
         - type: CEStationZLevels
+          mapsComponents:
+          - type: MapAtmosphere
+            space: False
+            mixture:
+              volume: 2500
+              immutable: True
+              temperature: 293.15
+              moles:
+                Oxygen: 21.824879
+                Nitrogen: 82.10312
+          - type: SunShadowCycle
+          - type: Parallax
+            parallax: Sky
+          - type: LightCycle
+            originalColor: '#75BCFFFF'
+          - type: SunShadow
+          - type: MapLight
+            ambientLightColor: '#75BCFFFF'
           defaultMapLevel: 0
           levels:
             -1:

@@ -82,28 +82,12 @@ entities:
         path: /Audio/Effects/alert.ogg
       inherent: True
       enabled: True
-    - type: MapAtmosphere
-      space: False
-      mixture:
-        volume: 2500
-        immutable: True
-        temperature: 293.15
-        moles:
-          Oxygen: 21.824879
-          Nitrogen: 82.10312
     - type: DecalGrid
       chunkCollection:
         version: 2
         nodes: []
     - type: BecomesStation
       id: Dev
-    - type: Parallax
-      parallax: Sky
-    - type: SunShadowCycle
-    - type: LightCycle
-    - type: SunShadow
-    - type: MapLight
-      ambientLightColor: '#75BCFFFF'
     - type: Forensics
       residues: []
       dnas: []

@@ -40,6 +40,8 @@ public sealed partial class CEZLevelsSystem : CESharedZLevelsSystem
         Dictionary<EntityUid, int> dict = new();
         dict.Add(defaultMap.Value, ent.Comp.DefaultMapLevel);
 
+        EntityManager.AddComponents(defaultMap.Value, ent.Comp.MapsComponents);
+
         ent.Comp.ZLevelsInitialized = true;
 
         foreach (var (depth, map) in ent.Comp.Levels)
@@ -58,6 +60,7 @@ public sealed partial class CEZLevelsSystem : CESharedZLevelsSystem
 
             Log.Info($"Created map {mapEnt.Value.Comp.MapId} for CEStationZLevelsSystem at level {depth}");
 
+            EntityManager.AddComponents(mapEnt.Value, ent.Comp.MapsComponents);
             _map.InitializeMap(mapEnt.Value.Comp.MapId);
             var member = EnsureComp<StationMemberComponent>(mapEnt.Value);
             member.Station = ent;

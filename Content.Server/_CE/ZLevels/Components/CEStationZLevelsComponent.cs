@@ -1,4 +1,5 @@
 using Content.Server._CE.ZLevels.EntitySystems;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
 namespace Content.Server._CE.ZLevels.Components;
@@ -19,6 +20,12 @@ public sealed partial class CEStationZLevelsComponent : Component
     /// </summary>
     [DataField(required: true)]
     public Dictionary<int, CEZLevelEntry> Levels = new();
+
+    /// <summary>
+    /// All this components will be added or overrided for all station znetwork maps
+    /// </summary>
+    [DataField]
+    public ComponentRegistry MapsComponents = new();
 }
 
 [DataRecord, Serializable]
