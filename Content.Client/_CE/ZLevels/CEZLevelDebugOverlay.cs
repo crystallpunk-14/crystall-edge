@@ -51,7 +51,7 @@ public sealed class CEZLevelDebugOverlay : Overlay
 
             if (!_entityManager.TryGetComponent<MapGridComponent>(xform.MapUid, out var gridComp))
                 return;
-            var weatherAffect = _weather.CanWeatherAffect(xform.MapUid.Value, gridComp, _map.GetTileRef(uid, gridComp, xform.Coordinates));
+            var weatherAffect = _weather.CanWeatherAffect(xform.MapUid.Value, gridComp, _map.GetTileRef(xform.MapUid.Value, gridComp, xform.Coordinates));
 
             var depthText = $"ZLocalHeight: {localPos}\n" +
                             $"Distance to ground: {groundDis}\n" +
