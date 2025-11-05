@@ -12,7 +12,7 @@ public sealed class CEZLevelDebugOverlay : Overlay
 {
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly IResourceCache _cache = default!;
-    private readonly CESharedZLevelsSystem _zLevels;
+    private readonly CESharedZLevelsSystem _zLevels = default!;
     private readonly SharedTransformSystem _transform = default!;
     public override OverlaySpace Space => OverlaySpace.ScreenSpace;
 
