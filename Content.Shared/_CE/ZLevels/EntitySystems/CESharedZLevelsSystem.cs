@@ -120,8 +120,8 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
 
             result.AddRange(
                 network.ZLevels
-                    .Where(kv => kv.Value.HasValue && kv.Key < inputDepth)
-                    .OrderByDescending(kv => kv.Key)
+                    .Where(kv => kv.Value.HasValue && kv.Key > inputDepth)
+                    .OrderBy(kv => kv.Key)
                     .Select(kv => kv.Value!.Value)
             );
         }
@@ -145,8 +145,8 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
 
             // Перебираем карты, глубже inputDepth
             foreach (var zLevelEnt in network.ZLevels
-                         .Where(kv => kv.Value.HasValue && kv.Key > inputDepth)
-                         .OrderBy(kv => kv.Key)
+                         .Where(kv => kv.Value.HasValue && kv.Key < inputDepth)
+                         .OrderByDescending(kv => kv.Key)
                          .Select(kv => kv.Value!.Value))
             {
                 result.Add(zLevelEnt);

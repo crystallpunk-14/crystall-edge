@@ -55,19 +55,18 @@ public abstract class CESharedRoofSystem : EntitySystem
         if (mapsBelow.Count == 0)
             return;
 
-
-        foreach (var map in mapsBelow)
+        foreach (var mapBelow in mapsBelow)
         {
-            if (!GridQuery.TryComp(map, out var mapGrid))
+            if (!GridQuery.TryComp(mapBelow, out var mapGridBelow))
                 continue;
 
-            var roofComp = EnsureComp<RoofComponent>(map);
+            var roofBelow = EnsureComp<RoofComponent>(mapBelow);
 
             foreach (var (indices, rooved) in roofMap)
             {
-                Roof.SetRoof((map, mapGrid, roofComp), indices, rooved);
+                Roof.SetRoof((mapBelow, mapGridBelow, roofBelow), indices, rooved);
 
-                if (Map.TryGetTile(mapGrid, indices, out var tile) && !tile.IsEmpty)
+                if (Map.TryGetTile(mapGridBelow, indices, out var tile) && !tile.IsEmpty)
                     roofMap[indices] = true;
             }
         }
