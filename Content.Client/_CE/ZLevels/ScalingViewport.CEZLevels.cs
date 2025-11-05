@@ -109,7 +109,7 @@ public sealed partial class ScalingViewport
         return false;
     }
 
-    private void RenderLevelsBelow(IRenderHandle handle, IClydeViewport viewport)
+    private void RenderZLevels(IClydeViewport viewport)
     {
         if (_eye is null)
             return;
@@ -161,12 +161,7 @@ public sealed partial class ScalingViewport
         for (var depth = lowestDepth; depth <= lookUp; depth++)
         {
             if (depth == 0)
-            {
-                if (!_mapQuery.Value.TryComp(playerXform.MapUid.Value, out var mapComp))
-                    continue;
-
-                viewport.Eye =_fallbackEye;
-            }
+                viewport.Eye = _fallbackEye;
             else
             {
                 if (!_zLevels.TryMapOffset(playerXform.MapUid.Value, depth, out var mapUidBelow))
@@ -175,11 +170,11 @@ public sealed partial class ScalingViewport
                 if (!_mapQuery.Value.TryComp(mapUidBelow.Value, out var mapComp))
                     continue;
 
-                viewport.Eye =new ZEye(lowestDepth, depth, lookUp)
+                viewport.Eye = new ZEye(lowestDepth, depth, lookUp)
                 {
                     Position = new MapCoordinates(_eye.Position.Position, mapComp.MapId),
                     DrawFov = _eye.DrawFov && depth >= 0,
-                    DrawLight = _eye.DrawLight,// && depth >= 0,
+                    DrawLight = _eye.DrawLight,
                     Offset = _eye.Offset + new Vector2(0f, -depth * CEClientZLevelsSystem.ZLevelOffset),
                     Rotation = _eye.Rotation,
                     Scale = _eye.Scale,
@@ -195,7 +190,6 @@ public sealed partial class ScalingViewport
         viewport.Eye = Eye;
     }
 
-    //FIXME: This is nasty!
     public sealed class ZEye(int lowest, int depth, int high) : Robust.Shared.Graphics.Eye
     {
         public int LowestDepth = lowest;

@@ -277,8 +277,6 @@ public abstract partial class CESharedZLevelsSystem
     /// <summary>
     /// Sets the vertical velocity for the entity. Positive values make the entity fly upward. Negative values make it fly downward.
     /// </summary>
-    /// <param name="ent"></param>
-    /// <param name="newVelocity"></param>
     [PublicAPI]
     public void SetZVelocity(Entity<CEZPhysicsComponent?> ent, float newVelocity)
     {
@@ -292,8 +290,6 @@ public abstract partial class CESharedZLevelsSystem
     /// <summary>
     /// Add the vertical velocity for the entity. Positive values make the entity fly upward. Negative values make it fly downward.
     /// </summary>
-    /// <param name="ent"></param>
-    /// <param name="newVelocity"></param>
     [PublicAPI]
     public void AddZVelocity(Entity<CEZPhysicsComponent?> ent, float newVelocity)
     {

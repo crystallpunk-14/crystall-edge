@@ -26,6 +26,6 @@ public sealed class CEThrowingSystem : EntitySystem
         if (!TryComp<CEZPhysicsComponent>(args.Thrown, out var thrownZPhys))
             return;
 
-        _zLevel.AddZVelocity((ent, thrownZPhys), ent.Comp.ThrowUpForce);
+        _zLevel.AddZVelocity((args.Thrown, thrownZPhys), ent.Comp.ThrowUpForce);
     }
 }
