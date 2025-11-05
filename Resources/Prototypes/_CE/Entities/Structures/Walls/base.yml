@@ -34,7 +34,7 @@
         layer:
         - WallLayer
         density: 1000
-  - type: CEZLevelHighground
+  - type: CEZLevelHighGround
 
 - type: entity
   id: CEBaseWallFrame

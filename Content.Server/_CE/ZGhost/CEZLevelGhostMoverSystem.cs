@@ -1,13 +1,18 @@
 using Content.Shared._CE.ZLevels;
+using Content.Shared._CE.ZLevels.EntitySystems;
 using Content.Shared.Actions;
 
-namespace Content.Server._CE.ZLevels.EntitySystems;
+namespace Content.Server._CE.ZGhost;
 
-public sealed partial class CEZLevelsSystem
+public sealed class CEZLevelGhostMoverSystem : EntitySystem
 {
     [Dependency] private readonly SharedActionsSystem _actions = default!;
-    private void InitActions()
+    [Dependency] private readonly CESharedZLevelsSystem _zLevel = default!;
+
+    public override void Initialize()
     {
+        base.Initialize();
+
         SubscribeLocalEvent<CEZLevelGhostMoverComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<CEZLevelGhostMoverComponent, ComponentRemove>(OnRemove);
         SubscribeLocalEvent<CEZLevelGhostMoverComponent, CEZLevelActionUp>(OnZLevelUp);
@@ -44,7 +49,7 @@ public sealed partial class CEZLevelsSystem
         if (args.Handled)
             return;
 
-        args.Handled = TryMoveDown(ent);
+        args.Handled = _zLevel.TryMoveDown(ent);
     }
 
     private void OnZLevelUp(Entity<CEZLevelGhostMoverComponent> ent, ref CEZLevelActionUp args)
@@ -52,6 +57,6 @@ public sealed partial class CEZLevelsSystem
         if (args.Handled)
             return;
 
-        args.Handled = TryMoveUp(ent);
+        args.Handled = _zLevel.TryMoveUp(ent);
     }
 }

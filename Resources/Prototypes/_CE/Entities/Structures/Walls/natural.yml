@@ -176,7 +176,7 @@
     fixtureID: fix1
   - type: Airtight
     airBlocked: false
-  - type: CEZLevelHighground
+  - type: CEZLevelHighGround
     heightCurve:
     - 0
     - 0

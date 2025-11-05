@@ -91,7 +91,7 @@
   - type: Sprite
     drawdepth: Mobs
     sprite: _CE/Structures/Floor/conveyor_ladder.rsi
-  - type: CEZLevelHighground
+  - type: CEZLevelHighGround
     stick: true
     heightCurve:
     - 1.05
@@ -113,7 +113,7 @@
   components:
   - type: Sprite
     sprite: _CE/Structures/Floor/conveyor_ladder_inversed.rsi
-  - type: CEZLevelHighground
+  - type: CEZLevelHighGround
     stick: true
     heightCurve:
     - 0.1

@@ -33,7 +33,7 @@
         - WallLayer
         density: 1000
         hard: true
-  - type: CEZLevelHighground
+  - type: CEZLevelHighGround
     stick: true
     heightCurve:
     - 1.05
@@ -55,7 +55,7 @@
   components:
   - type: Sprite
     state: wood_corner
-  - type: CEZLevelHighground
+  - type: CEZLevelHighGround
     corner: true
     heightCurve:
     - 1.05
@@ -89,7 +89,7 @@
   components:
   - type: Sprite
     state: stone_corner
-  - type: CEZLevelHighground
+  - type: CEZLevelHighGround
     corner: true
     heightCurve:
     - 1.05

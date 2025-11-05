@@ -1,4 +1,3 @@
-using Content.Server._CE.ZLevels.Components;
 using Content.Shared._CE.ZLevels;
 using Content.Shared._CE.ZLevels.EntitySystems;
 using Content.Shared.IdentityManagement;
@@ -32,10 +31,6 @@ public sealed partial class CEZLevelsSystem
             _transform.SetWorldPosition(eye, _transform.GetWorldPosition(ent));
         }
     }
-
-    //override void OnViewerMove(Entity<CEZLevelViewerComponent> ent, ref MoveEvent args)
-    //{
-    //}
 
     private void OnPlayerAttached(PlayerAttachedEvent ev)
     {

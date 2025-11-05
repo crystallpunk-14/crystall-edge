@@ -5,7 +5,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._CE.ZLevels;
 
 /// <summary>
-/// Allows you to see through Z-levels
+/// Allows entity to see through Z-levels
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true), UnsavedComponent, Access(typeof(CESharedZLevelsSystem))]
 public sealed partial class CEZLevelViewerComponent : Component
@@ -16,7 +16,7 @@ public sealed partial class CEZLevelViewerComponent : Component
     /// We can look at 1 z-level up.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public bool LookUp = false;
+    public bool LookUp;
 
     [DataField]
     public EntProtoId ActionProto = "CEActionToggleLookUp";

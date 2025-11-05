@@ -1,5 +1,4 @@
 using Content.Shared.Actions;
-using Content.Shared.Throwing;
 
 namespace Content.Shared._CE.ZLevels.EntitySystems;
 

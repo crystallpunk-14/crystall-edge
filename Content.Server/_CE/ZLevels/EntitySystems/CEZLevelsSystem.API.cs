@@ -7,14 +7,10 @@ namespace Content.Server._CE.ZLevels.EntitySystems;
 
 public sealed partial class CEZLevelsSystem
 {
-    private void InitApi()
-    {
-
-    }
-
     /// <summary>
     /// creates a new entity zLevelNetwork
     /// </summary>
+    [PublicAPI]
     public Entity<CEZLevelsNetworkComponent> CreateZNetwork()
     {
         var ent = Spawn();

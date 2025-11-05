@@ -7,7 +7,7 @@ namespace Content.Shared._CE.ZLevels;
 /// Think of it as the ability to walk on top of walls, for example.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-public sealed partial class CEZLevelHighgroundComponent : Component
+public sealed partial class CEZLevelHighGroundComponent : Component
 {
     /// <summary>
     /// Height profile points, forming a simple curve (0..1 by X, height by Y).
@@ -20,7 +20,7 @@ public sealed partial class CEZLevelHighgroundComponent : Component
     };
 
     /// <summary>
-    /// Forcibly attaches the entity to itself along the z-axis if the character descends smoothly. Needed for various staircases.
+    /// Forcibly attaches the entity to itself along the z-axis if the character descends smoothly. Needed for prevent falling from staircases.
     /// </summary>
     [DataField, AutoNetworkedField]
     public bool Stick = false;
