@@ -143,7 +143,6 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
             if (!network.ZLevels.ContainsValue(inputMapUid))
                 continue;
 
-            // Перебираем карты, глубже inputDepth
             foreach (var zLevelEnt in network.ZLevels
                          .Where(kv => kv.Value.HasValue && kv.Key < inputDepth)
                          .OrderByDescending(kv => kv.Key)
