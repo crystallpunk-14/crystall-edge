@@ -5,7 +5,6 @@ using Content.Shared._CE.ZLevels.EntitySystems;
 using Content.Shared.Station.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.EntitySerialization.Systems;
-using Robust.Shared.Timing;
 
 namespace Content.Server._CE.ZLevels.EntitySystems;
 
@@ -22,7 +21,6 @@ public sealed partial class CEZLevelsSystem : CESharedZLevelsSystem
         InitActions();
         InitView();
         InitApi();
-        InitRoofs();
 
         SubscribeLocalEvent<CEStationZLevelsComponent, StationPostInitEvent>(OnStationPostInit);
     }

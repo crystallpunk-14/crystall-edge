@@ -39,7 +39,6 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
         GridQuery = GetEntityQuery<MapGridComponent>();
 
         InitMovement();
-        InitRoof();
         InitView();
     }
 

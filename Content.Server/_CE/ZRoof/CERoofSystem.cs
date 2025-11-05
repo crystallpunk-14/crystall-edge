@@ -1,28 +1,32 @@
+using Content.Server._CE.ZLevels.EntitySystems;
 using Content.Shared._CE.ZLevels;
+using Content.Shared._CE.ZRoof;
 using Content.Shared.Light.Components;
+using Robust.Server.GameObjects;
 
-namespace Content.Server._CE.ZLevels.EntitySystems;
+namespace Content.Server._CE.ZRoof;
 
-public sealed partial class CEZLevelsSystem
+/// <inheritdoc/>
+public sealed class CERoofSystem : CESharedRoofSystem
 {
-    private void InitRoofs()
+    [Dependency] private readonly MapSystem _map = default!;
+
+    public override void Initialize()
     {
+        base.Initialize();
+
         SubscribeLocalEvent<CEZLevelMapComponent, CEMapAddedIntoZNetwork>(OnMapAdded);
     }
 
     private void OnMapAdded(Entity<CEZLevelMapComponent> ent, ref CEMapAddedIntoZNetwork args)
     {
-        if (TryMapDown((ent.Owner, ent.Comp), out var belowMapUid))
-        {
-            //Sync for map below
+        //Sync for map below
+        if (ZLevel.TryMapDown((ent.Owner, ent.Comp), out var belowMapUid))
             SyncMapRoofs(belowMapUid.Value, ent);
-        }
 
-        if (TryMapUp((ent.Owner, ent.Comp), out var aboveMapUid))
-        {
-            //Sync for this map
+        //Sync for this map
+        if (ZLevel.TryMapUp((ent.Owner, ent.Comp), out var aboveMapUid))
             SyncMapRoofs(ent, aboveMapUid.Value);
-        }
     }
 
     /// <summary>
