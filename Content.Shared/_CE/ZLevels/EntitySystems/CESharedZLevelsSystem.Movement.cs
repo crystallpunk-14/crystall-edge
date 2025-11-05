@@ -279,6 +279,36 @@ public abstract partial class CESharedZLevelsSystem
         return false;
     }
 
+    /// <summary>
+    /// Sets the vertical velocity for the entity. Positive values make the entity fly upward. Negative values make it fly downward.
+    /// </summary>
+    /// <param name="ent"></param>
+    /// <param name="newVelocity"></param>
+    [PublicAPI]
+    public void SetZVelocity(Entity<CEZPhysicsComponent?> ent, float newVelocity)
+    {
+        if (!Resolve(ent.Owner, ref ent.Comp))
+            return;
+
+        ent.Comp.Velocity = newVelocity;
+        DirtyField(ent, ent.Comp, nameof(CEZPhysicsComponent.Velocity));
+    }
+
+    /// <summary>
+    /// Add the vertical velocity for the entity. Positive values make the entity fly upward. Negative values make it fly downward.
+    /// </summary>
+    /// <param name="ent"></param>
+    /// <param name="newVelocity"></param>
+    [PublicAPI]
+    public void AddZVelocity(Entity<CEZPhysicsComponent?> ent, float newVelocity)
+    {
+        if (!Resolve(ent.Owner, ref ent.Comp, false))
+            return;
+
+        ent.Comp.Velocity += newVelocity;
+        DirtyField(ent, ent.Comp, nameof(CEZPhysicsComponent.Velocity));
+    }
+
     [PublicAPI]
     public bool TryMove(EntityUid ent, int offset, Entity<CEZLevelMapComponent?>? map = null)
     {
