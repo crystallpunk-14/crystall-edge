@@ -31,7 +31,7 @@ public abstract partial class CESharedZLevelsSystem
 
         if (HasRoof(ent))
         {
-            Popup.PopupClient(Loc.GetString("ce-zlevel-look-up-fail"), ent, ent);
+            _popup.PopupClient(Loc.GetString("ce-zlevel-look-up-fail"), ent, ent);
             return;
         }
 

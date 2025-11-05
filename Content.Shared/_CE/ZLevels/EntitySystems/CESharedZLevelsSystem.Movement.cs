@@ -43,7 +43,7 @@ public abstract partial class CESharedZLevelsSystem
         var knockdownTime = MathF.Min(args.ImpactPower * 0.25f, 5f);
         _stun.TryKnockdown(ent.Owner, TimeSpan.FromSeconds(knockdownTime));
 
-        var damageType = Proto.Index<DamageTypePrototype>("Blunt");
+        var damageType = _proto.Index<DamageTypePrototype>("Blunt");
         var damageAmount = MathF.Pow(args.ImpactPower, 2);
 
         _damage.TryChangeDamage(ent.Owner, new DamageSpecifier(damageType, damageAmount));
@@ -64,7 +64,7 @@ public abstract partial class CESharedZLevelsSystem
             var knockdownTime = MathF.Min(args.ImpactPower * ent.Comp.Mass * 0.1f, 10f);
             _stun.TryKnockdown(victim, TimeSpan.FromSeconds(knockdownTime));
 
-            var damageType = Proto.Index<DamageTypePrototype>("Blunt");
+            var damageType = _proto.Index<DamageTypePrototype>("Blunt");
             var damageAmount = args.ImpactPower * ent.Comp.Mass * 0.25f;
 
             _damage.TryChangeDamage(victim, new DamageSpecifier(damageType, damageAmount));
@@ -171,9 +171,9 @@ public abstract partial class CESharedZLevelsSystem
             return maxFloors;
 
         var xform = Transform(target);
-        if (!ZMapQuery.TryComp(xform.MapUid, out var zMapComp))
+        if (!_zMapQuery.TryComp(xform.MapUid, out var zMapComp))
             return maxFloors;
-        if (!GridQuery.TryComp(xform.MapUid, out var mapGrid))
+        if (!_gridQuery.TryComp(xform.MapUid, out var mapGrid))
             return maxFloors;
 
         var worldPosI = _transform.GetGridOrMapTilePosition(target);
@@ -189,7 +189,7 @@ public abstract partial class CESharedZLevelsSystem
             {
                 if (!TryMapOffset((checkingMap.Owner, checkingMap.Comp), -floor, out var tempCheckingMap))
                     continue;
-                if (!GridQuery.TryComp(tempCheckingMap, out var tempCheckingGrid))
+                if (!_gridQuery.TryComp(tempCheckingMap, out var tempCheckingGrid))
                     continue;
 
                 checkingMap = tempCheckingMap.Value;
@@ -264,7 +264,7 @@ public abstract partial class CESharedZLevelsSystem
         if (!TryMapUp(map.Value, out var mapAboveUid))
             return false;
 
-        if (!GridQuery.TryComp(mapAboveUid.Value, out var mapAboveGrid))
+        if (!_gridQuery.TryComp(mapAboveUid.Value, out var mapAboveGrid))
             return false;
 
         if (_map.TryGetTileRef(mapAboveUid.Value, mapAboveGrid, _transform.GetWorldPosition(ent), out var tileRef) &&
@@ -315,7 +315,7 @@ public abstract partial class CESharedZLevelsSystem
         if (!TryMapOffset(map.Value, offset, out var targetMap))
             return false;
 
-        if (!MapQuery.TryComp(targetMap, out var targetMapComp))
+        if (!_mapQuery.TryComp(targetMap, out var targetMapComp))
             return false;
 
 

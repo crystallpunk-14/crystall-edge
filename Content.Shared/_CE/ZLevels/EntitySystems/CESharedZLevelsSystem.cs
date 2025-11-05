@@ -1,7 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Damage;
-using Content.Shared.Light.EntitySystems;
 using Content.Shared.Popups;
 using Content.Shared.Stunnable;
 using JetBrains.Annotations;
@@ -22,21 +21,20 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
     [Dependency] private readonly ActionBlockerSystem _blocker = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] protected readonly IPrototypeManager Proto = default!;
-    [Dependency] protected readonly SharedRoofSystem Roof = default!;
-    [Dependency] protected readonly SharedPopupSystem Popup = default!;
+    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
 
-    protected EntityQuery<MapComponent> MapQuery;
-    protected EntityQuery<CEZLevelMapComponent> ZMapQuery;
-    protected EntityQuery<MapGridComponent> GridQuery;
+    private EntityQuery<MapComponent> _mapQuery;
+    private EntityQuery<CEZLevelMapComponent> _zMapQuery;
+    private EntityQuery<MapGridComponent> _gridQuery;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        MapQuery = GetEntityQuery<MapComponent>();
-        ZMapQuery = GetEntityQuery<CEZLevelMapComponent>();
-        GridQuery = GetEntityQuery<MapGridComponent>();
+        _mapQuery = GetEntityQuery<MapComponent>();
+        _zMapQuery = GetEntityQuery<CEZLevelMapComponent>();
+        _gridQuery = GetEntityQuery<MapGridComponent>();
 
         InitMovement();
         InitView();
@@ -80,7 +78,7 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
             if (!network.ZLevels.TryGetValue(inputMapUid.Comp.Depth + offset, out var targetMapUid))
                 continue;
 
-            if (!ZMapQuery.TryComp(targetMapUid, out var targetZLevelComp))
+            if (!_zMapQuery.TryComp(targetMapUid, out var targetZLevelComp))
                 continue;
 
             outputMapUid = (targetMapUid.Value, targetZLevelComp);
