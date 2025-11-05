@@ -1,0 +1,60 @@
+- type: weather
+  id: CERain
+  sprite:
+    sprite: /Textures/_CE/Effects/weather.rsi
+    state: rain
+  sound:
+    collection: Rain
+    params:
+      loop: true
+      volume: -6
+
+- type: weather
+  id: CEStorm
+  sprite:
+    sprite: /Textures/_CE/Effects/weather.rsi
+    state: storm
+  sound:
+    path: /Audio/Effects/Weather/rain_heavy.ogg
+    params:
+      loop: true
+      volume: -6
+
+- type: weather
+  id: CESnowLight
+  sprite:
+    sprite: /Textures/_CE/Effects/weather.rsi
+    state: snowfall_light
+
+- type: weather
+  id: CESnowMedium
+  sprite:
+    sprite: /Textures/_CE/Effects/weather.rsi
+    state: snowfall_med
+  sound:
+    path: /Audio/Effects/Weather/snowstorm.ogg
+    params:
+      loop: true
+      volume: -18
+
+- type: weather
+  id: CESnowHeavy
+  sprite:
+    sprite: /Textures/_CE/Effects/weather.rsi
+    state: snowfall_heavy
+  sound:
+    path: /Audio/Effects/Weather/snowstorm.ogg
+    params:
+      loop: true
+      volume: -6
+
+- type: weather
+  id: CESnowSolid
+  sprite:
+    sprite: /Textures/_CE/Effects/weather.rsi
+    state: snowfall_solid
+  sound:
+    path: /Audio/Effects/Weather/snowstorm.ogg
+    params:
+      loop: true
+      volume: -6
