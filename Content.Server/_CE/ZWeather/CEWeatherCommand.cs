@@ -89,7 +89,7 @@ public sealed class CEWeatherCommand : LocalizedCommands
 
         if (args.Length == 2)
         {
-            var a = CompletionHelper.PrototypeIDs<WeatherPrototype>(true, _proto);
+            var a = CompletionHelper.PrototypeIDs<WeatherPrototype>(true, _proto).Where(w => w.Value.StartsWith("CE"));
             var b = a.Concat(new[] { new CompletionOption("null", Loc.GetString("cmd-weather-null")) });
             return CompletionResult.FromHintOptions(b, Loc.GetString("cmd-weather-hint"));
         }
