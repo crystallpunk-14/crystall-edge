@@ -25,44 +25,6 @@ public sealed partial class ScalingViewport
     private IEye? _fallbackEye;
 
     /// <summary>
-    /// From the incoming list of maps, we filter only those that require rendering.
-    /// </summary>
-    public List<EntityUid> GetFilteredMapList(List<EntityUid> sourceList, EntityUid currentMap)
-    {
-        var mapList = new List<EntityUid>();
-
-        if (_eye is null)
-            return mapList;
-
-        var mapIdx = sourceList.IndexOf(currentMap);
-        if (mapIdx < 0)
-            return mapList;
-
-        for (var i = mapIdx; i >= 0; i--)
-        {
-            var targetMap = sourceList[i];
-            mapList.Add(targetMap);
-
-            if (!TryFindEmptyTiles(targetMap))
-                break;
-        }
-
-        // Reverse a new list
-        if (mapList.Count > 0)
-        {
-            var tempList = new List<EntityUid>(mapList.Count);
-            for (var i = mapList.Count - 1; i >= 0; i--)
-            {
-                tempList.Add(mapList[i]);
-            }
-
-            mapList = tempList;
-        }
-
-        return mapList;
-    }
-
-    /// <summary>
     /// We are looking for at least one empty tile on the screen.
     /// This is used to ensure that it makes sense to draw the z-planes and that they are visible.
     /// </summary>
@@ -72,13 +34,34 @@ public sealed partial class ScalingViewport
             return true;
 
         var drawBox = GetDrawBox();
-
-        var bottomLeftPos = _eyeManager.ScreenToMap(drawBox.BottomLeft).Position;
-        var topRightPos = _eyeManager.ScreenToMap(drawBox.TopRight).Position;
         var mapId = xform.MapID;
 
-        var mapCoordsBottomLeft = new MapCoordinates(bottomLeftPos, mapId);
-        var mapCoordsTopRight = new MapCoordinates(topRightPos, mapId);
+        // Переводим все 4 угла экрана в координаты карты
+        var corners = new[]
+        {
+            _eyeManager.ScreenToMap(drawBox.BottomLeft).Position,
+            _eyeManager.ScreenToMap(drawBox.BottomRight).Position,
+            _eyeManager.ScreenToMap(drawBox.TopLeft).Position,
+            _eyeManager.ScreenToMap(drawBox.TopRight).Position
+        };
+
+        float minX = float.MaxValue, minY = float.MaxValue;
+        float maxX = float.MinValue, maxY = float.MinValue;
+
+        foreach (var c in corners)
+        {
+            if (c.X < minX)
+                minX = c.X;
+            if (c.Y < minY)
+                minY = c.Y;
+            if (c.X > maxX)
+                maxX = c.X;
+            if (c.Y > maxY)
+                maxY = c.Y;
+        }
+
+        var mapCoordsBottomLeft = new MapCoordinates(new Vector2(minX, minY), mapId);
+        var mapCoordsTopRight = new MapCoordinates(new Vector2(maxX, maxY), mapId);
 
         if (!_mapManager.TryFindGridAt(mapUid, mapCoordsBottomLeft.Position, out _, out var grid))
             return true;
@@ -86,23 +69,13 @@ public sealed partial class ScalingViewport
         var tileBottomLeft = grid.TileIndicesFor(mapCoordsBottomLeft);
         var tileTopRight = grid.TileIndicesFor(mapCoordsTopRight);
 
-        var minX = tileBottomLeft.X - 1;
-        var maxX = tileTopRight.X + 1;
-        var minY = tileBottomLeft.Y - 1;
-        var maxY = tileTopRight.Y + 1;
-
-        Vector2i tilePos = default;
-
-        for (tilePos.X = minX; tilePos.X <= maxX; tilePos.X++)
+        for (var x = tileBottomLeft.X - 1; x <= tileTopRight.X + 1; x++)
         {
-            for (tilePos.Y = minY; tilePos.Y <= maxY; tilePos.Y++)
+            for (var y = tileBottomLeft.Y - 1; y <= tileTopRight.Y + 1; y++)
             {
-                var tile = grid.GetTileRef(tilePos);
-
+                var tile = grid.GetTileRef(new Vector2i(x, y));
                 if (tile.Tile.IsEmpty)
-                {
                     return true;
-                }
             }
         }
 
@@ -170,14 +143,17 @@ public sealed partial class ScalingViewport
                 if (!_mapQuery.Value.TryComp(mapUidBelow.Value, out var mapComp))
                     continue;
 
+                Angle rotation = _fallbackEye.Rotation * -1;
+                var offset = rotation.ToWorldVec() * CEClientZLevelsSystem.ZLevelOffset * depth;
+
                 viewport.Eye = new ZEye(lowestDepth, depth, lookUp)
                 {
-                    Position = new MapCoordinates(_eye.Position.Position, mapComp.MapId),
-                    DrawFov = _eye.DrawFov && depth >= 0,
-                    DrawLight = _eye.DrawLight,
-                    Offset = _eye.Offset + new Vector2(0f, -depth * CEClientZLevelsSystem.ZLevelOffset),
-                    Rotation = _eye.Rotation,
-                    Scale = _eye.Scale,
+                    Position = new MapCoordinates(_fallbackEye.Position.Position, mapComp.MapId),
+                    DrawFov = _fallbackEye.DrawFov && depth >= 0,
+                    DrawLight = _fallbackEye.DrawLight,
+                    Offset = _fallbackEye.Offset + offset,
+                    Rotation = _fallbackEye.Rotation,
+                    Scale = _fallbackEye.Scale,
                 };
             }
 
