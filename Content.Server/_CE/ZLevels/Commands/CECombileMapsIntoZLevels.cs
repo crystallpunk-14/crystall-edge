@@ -15,6 +15,7 @@ public sealed class CECombineMapsIntoZLevelsCommand : LocalizedCommands
     [Dependency] private readonly IEntityManager _entities = default!;
     private MapSystem _map = default!;
     private CEZLevelsSystem _zLevels = default!;
+    private MetaDataSystem _meta = default!;
 
     private const string Name = "zlevelcombine";
     public override string Command => Name;
@@ -31,6 +32,7 @@ public sealed class CECombineMapsIntoZLevelsCommand : LocalizedCommands
 
         _zLevels = _entities.System<CEZLevelsSystem>();
         _map = _entities.System<MapSystem>();
+        _meta = _entities.System<MetaDataSystem>();
 
         List<MapId> maps = new();
         foreach (var arg in args)
@@ -65,6 +67,7 @@ public sealed class CECombineMapsIntoZLevelsCommand : LocalizedCommands
         }
 
         var network = _zLevels.CreateZNetwork();
+        _meta.SetEntityName(network, $"Admeme zNetwork: {network.Owner.Id}");
         var counter = 0;
         Dictionary<EntityUid, int> dict = new();
         foreach (var findMap in maps)
@@ -79,5 +82,10 @@ public sealed class CECombineMapsIntoZLevelsCommand : LocalizedCommands
             shell.WriteLine($"Created z-level network! Z-Network entity: {network}");
         else
             shell.WriteLine($"Created z-level network {network}, but something went wrong!");
+    }
+
+    public override CompletionResult GetCompletion(IConsoleShell shell, string[] args)
+    {
+        return CompletionResult.FromHintOptions(CompletionHelper.MapIds(_entities), "Map Id");
     }
 }

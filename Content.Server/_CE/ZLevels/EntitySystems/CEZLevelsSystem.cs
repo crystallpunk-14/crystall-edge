@@ -14,6 +14,7 @@ public sealed partial class CEZLevelsSystem : CESharedZLevelsSystem
     [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly MapLoaderSystem _mapLoader = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
+    [Dependency] private readonly MetaDataSystem _meta = default!;
 
     public override void Initialize()
     {
@@ -36,6 +37,7 @@ public sealed partial class CEZLevelsSystem : CESharedZLevelsSystem
         }
 
         var stationNetwork = CreateZNetwork();
+        _meta.SetEntityName(stationNetwork, $"Station z-Network: {MetaData(ent).EntityName}");
 
         Dictionary<EntityUid, int> dict = new();
         dict.Add(defaultMap.Value, ent.Comp.DefaultMapLevel);
