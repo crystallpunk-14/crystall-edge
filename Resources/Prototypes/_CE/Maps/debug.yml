@@ -17,6 +17,29 @@
   id: Dev
   mapName: Dev
   mapPath: /Maps/_CE/Dev0.yml
+  zLevels:
+    -1: /Maps/_CE/Dev-1.yml
+    1: /Maps/_CE/Dev1.yml
+    2: /Maps/_CE/Empty.yml
+    3: /Maps/_CE/Empty.yml
+  zLevelsComponentOverrides:
+    - type: MapAtmosphere
+      space: False
+      mixture:
+        volume: 2500
+        immutable: True
+        temperature: 293.15
+        moles:
+          Oxygen: 21.824879
+          Nitrogen: 82.10312
+    - type: SunShadowCycle
+    - type: Parallax
+      parallax: Sky
+    - type: LightCycle
+      originalColor: '#75BCFFFF'
+    - type: SunShadow
+    - type: MapLight
+      ambientLightColor: '#75BCFFFF'
   minPlayers: 0
   stations:
     Dev:
@@ -27,35 +50,6 @@
         - type: StationJobs
           availableJobs:
             CETownfolk: [ -1, -1 ]
-        - type: CEStationZLevels
-          mapsComponents:
-          - type: MapAtmosphere
-            space: False
-            mixture:
-              volume: 2500
-              immutable: True
-              temperature: 293.15
-              moles:
-                Oxygen: 21.824879
-                Nitrogen: 82.10312
-          - type: SunShadowCycle
-          - type: Parallax
-            parallax: Sky
-          - type: LightCycle
-            originalColor: '#75BCFFFF'
-          - type: SunShadow
-          - type: MapLight
-            ambientLightColor: '#75BCFFFF'
-          defaultMapLevel: 0
-          levels:
-            -1:
-              path: /Maps/_CE/Dev-1.yml
-            1:
-              path: /Maps/_CE/Dev1.yml
-            2:
-              path: /Maps/_CE/Empty.yml
-            3:
-              path: /Maps/_CE/Empty.yml
         - type: CEStationSpawnerDistribution
           spawns:
             CECoin: !type:AllSelector

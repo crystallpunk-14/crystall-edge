@@ -44,6 +44,18 @@ public sealed partial class GameMapPrototype : IPrototype
     [DataField(required: true)]
     public ResPath MapPath { get; private set; } = default!;
 
+    /// <summary>
+    /// CrystallEdge: additional maps loading. <see cref="MapPath"/> working like 0 depth z-level
+    /// </summary>
+    [DataField]
+    public Dictionary<int, ResPath> ZLevels = new();
+
+    /// <summary>
+    /// CrystallEdge: ability to setup shared components for all zLevels
+    /// </summary>
+    [DataField]
+    public ComponentRegistry ZLevelsComponentOverrides = new();
+
     [DataField("stations", required: true)]
     private Dictionary<string, StationConfig> _stations = new();
 

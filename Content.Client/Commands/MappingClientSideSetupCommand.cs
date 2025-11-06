@@ -23,7 +23,7 @@ internal sealed class MappingClientSideSetupCommand : LocalizedEntityCommands
         _markerSystem.MarkersVisible = true;
         _lightManager.Enabled = false;
         _subfloorSystem.ShowAll = true;
-        _actionSystem.LoadActionAssignments("/mapping_actions.yml", false);
+        //_actionSystem.LoadActionAssignments("/mapping_actions.yml", false); CrystallEdge: i fucking hate current mapping actions
     }
 }
 

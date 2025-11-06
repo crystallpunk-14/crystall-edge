@@ -1,26 +1,22 @@
-using Content.Server._CE.PVS;
 using Content.Server._CE.ZLevels.EntitySystems;
 using Content.Server.Administration;
-using Content.Shared._CE.ZLevels;
 using Content.Shared.Administration;
 using Robust.Server.GameObjects;
 using Robust.Shared.Console;
 using Robust.Shared.Map;
 
-namespace Content.Server._CE.ZLevels.Commands;
+namespace Content.Server._CE.ZMapping;
 
 [AdminCommand(AdminFlags.VarEdit)]
-public sealed class CECombineMapsIntoZLevelsCommand : LocalizedCommands
+public sealed class CECombineZNetworkCommand : LocalizedEntityCommands
 {
     [Dependency] private readonly IEntityManager _entities = default!;
-    private MapSystem _map = default!;
-    private CEZLevelsSystem _zLevels = default!;
-    private MetaDataSystem _meta = default!;
+    [Dependency] private readonly MapSystem _map = default!;
+    [Dependency] private readonly CEZLevelsSystem _zLevels = default!;
+    [Dependency] private readonly MetaDataSystem _meta = default!;
 
-    private const string Name = "zlevelcombine";
-    public override string Command => Name;
+    public override string Command => "znetwork-combine";
     public override string Description => "Connects a number of maps into a common network of z-levels. Does not work if one of the maps is already in the z-level network";
-    public override string Help => $"{Name} <MapId 1> <MapId 2> ... <MapId X> (from ground to sky)";
 
     public override void Execute(IConsoleShell shell, string argStr, string[] args)
     {
@@ -29,10 +25,6 @@ public sealed class CECombineMapsIntoZLevelsCommand : LocalizedCommands
             shell.WriteError("Not enough maps to form a network of levels");
             return;
         }
-
-        _zLevels = _entities.System<CEZLevelsSystem>();
-        _map = _entities.System<MapSystem>();
-        _meta = _entities.System<MetaDataSystem>();
 
         List<MapId> maps = new();
         foreach (var arg in args)
@@ -67,7 +59,7 @@ public sealed class CECombineMapsIntoZLevelsCommand : LocalizedCommands
         }
 
         var network = _zLevels.CreateZNetwork();
-        _meta.SetEntityName(network, $"Admeme zNetwork: {network.Owner.Id}");
+        _meta.SetEntityName(network, $"Combined zNetwork: {network.Owner.Id}");
         var counter = 0;
         Dictionary<EntityUid, int> dict = new();
         foreach (var findMap in maps)
@@ -86,6 +78,6 @@ public sealed class CECombineMapsIntoZLevelsCommand : LocalizedCommands
 
     public override CompletionResult GetCompletion(IConsoleShell shell, string[] args)
     {
-        return CompletionResult.FromHintOptions(CompletionHelper.MapIds(_entities), "Map Id");
+        return CompletionResult.FromHintOptions(CompletionHelper.MapIds(_entities), "Map Id in order from ground to sky");
     }
 }
