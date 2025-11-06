@@ -7,7 +7,7 @@ using Robust.Shared.Map;
 
 namespace Content.Server._CE.ZMapping;
 
-[AdminCommand(AdminFlags.VarEdit)]
+[AdminCommand(AdminFlags.Server | AdminFlags.Mapping)]
 public sealed class CECombineZNetworkCommand : LocalizedEntityCommands
 {
     [Dependency] private readonly IEntityManager _entities = default!;
@@ -17,6 +17,11 @@ public sealed class CECombineZNetworkCommand : LocalizedEntityCommands
 
     public override string Command => "znetwork-combine";
     public override string Description => "Connects a number of maps into a common network of z-levels. Does not work if one of the maps is already in the z-level network";
+
+    public override CompletionResult GetCompletion(IConsoleShell shell, string[] args)
+    {
+        return CompletionResult.FromHintOptions(CompletionHelper.MapIds(_entities), "Map Id in order from ground to sky");
+    }
 
     public override void Execute(IConsoleShell shell, string argStr, string[] args)
     {
@@ -74,10 +79,5 @@ public sealed class CECombineZNetworkCommand : LocalizedEntityCommands
             shell.WriteLine($"Created z-level network! Z-Network entity: {network}");
         else
             shell.WriteLine($"Created z-level network {network}, but something went wrong!");
-    }
-
-    public override CompletionResult GetCompletion(IConsoleShell shell, string[] args)
-    {
-        return CompletionResult.FromHintOptions(CompletionHelper.MapIds(_entities), "Map Id in order from ground to sky");
     }
 }

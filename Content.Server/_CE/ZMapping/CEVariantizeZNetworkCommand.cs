@@ -1,17 +1,23 @@
 using Content.Server.Administration;
 using Content.Shared._CE.ZLevels;
 using Content.Shared.Administration;
+using Content.Shared.Maps;
+using Robust.Server.GameObjects;
 using Robust.Shared.Console;
+using Robust.Shared.Map;
+using Robust.Shared.Map.Components;
 
 namespace Content.Server._CE.ZMapping;
 
 [AdminCommand(AdminFlags.Server | AdminFlags.Mapping)]
-public sealed class CEDeleteZNetworkCommand : LocalizedEntityCommands
+public sealed class CEVariantizeZNetworkCommand : LocalizedEntityCommands
 {
     [Dependency] private readonly IEntityManager _entities = default!;
-
-    public override string Command => "znetwork-delete";
-    public override string Description => "Delete all maps into selected zNetwork + zNetwork entity";
+    [Dependency] private readonly MapSystem _map = default!;
+    [Dependency] private readonly TileSystem _tile = default!;
+    [Dependency] private readonly TurfSystem _turf = default!;
+    public override string Command => "znetwork-variantize";
+    public override string Description => "Random tile variations over all zNetwork maps";
 
     public override CompletionResult GetCompletion(IConsoleShell shell, string[] args)
     {
@@ -21,6 +27,7 @@ public sealed class CEDeleteZNetworkCommand : LocalizedEntityCommands
         {
             options.Add(new CompletionOption(_entities.GetNetEntity(uid).ToString(), meta.EntityName));
         }
+
         return CompletionResult.FromHintOptions(options, "zNetwork net entity");
     }
 
@@ -28,7 +35,7 @@ public sealed class CEDeleteZNetworkCommand : LocalizedEntityCommands
     {
         if (args.Length != 1)
         {
-            shell.WriteError("Wrong arguments count.");
+            shell.WriteError(Loc.GetString("shell-wrong-arguments-number"));
             return;
         }
 
@@ -48,13 +55,20 @@ public sealed class CEDeleteZNetworkCommand : LocalizedEntityCommands
             return;
         }
 
-        //Delete all maps
-        foreach (var (depth, mapUid) in levelComp.ZLevels)
+        foreach (var (_, mapUid) in levelComp.ZLevels)
         {
-            _entities.QueueDeleteEntity(mapUid);
-        }
-        _entities.QueueDeleteEntity(target);
+            if (!_entities.TryGetComponent<MapGridComponent>(mapUid, out var gridComp))
+            {
+                shell.WriteError($"Euid '{mapUid}' does not exist or is not a grid.");
+                continue;
+            }
 
-        shell.WriteLine("ZNetwork and all its maps deleted.");
+            foreach (var tile in _map.GetAllTiles(mapUid.Value, gridComp))
+            {
+                var def = _turf.GetContentTileDefinition(tile);
+                var newTile = new Tile(tile.Tile.TypeId, tile.Tile.Flags, _tile.PickVariant(def), tile.Tile.RotationMirroring);
+                _map.SetTile(mapUid.Value, gridComp, tile.GridIndices, newTile);
+            }
+        }
     }
 }

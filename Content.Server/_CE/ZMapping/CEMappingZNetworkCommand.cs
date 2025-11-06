@@ -29,6 +29,18 @@ public sealed class CEMappingZNetworkCommand : LocalizedEntityCommands
 
     public override string Description => "Load existed game map prototype as ZNetwork for mapping";
 
+    public override CompletionResult GetCompletion(IConsoleShell shell, string[] args)
+    {
+        var options = new List<CompletionOption>();
+        foreach (var map in _proto.EnumeratePrototypes<GameMapPrototype>())
+        {
+            if (map.ZLevels.Count > 0)
+                options.Add(new CompletionOption(map.ID, map.MapName));
+        }
+
+        return CompletionResult.FromHintOptions(options, "GameMapPrototype with CEStationZLevelsComponent");
+    }
+
     public override void Execute(IConsoleShell shell, string argStr, string[] args)
     {
         if (shell.Player is not { } player)
@@ -128,17 +140,5 @@ public sealed class CEMappingZNetworkCommand : LocalizedEntityCommands
         {
             DebugTools.Assert(_map.IsPaused(mapId));
         }
-    }
-
-    public override CompletionResult GetCompletion(IConsoleShell shell, string[] args)
-    {
-        var options = new List<CompletionOption>();
-        foreach (var map in _proto.EnumeratePrototypes<GameMapPrototype>())
-        {
-            if (map.ZLevels.Count > 0)
-                options.Add(new CompletionOption(map.ID, map.MapName));
-        }
-
-        return CompletionResult.FromHintOptions(options, "GameMapPrototype with CEStationZLevelsComponent");
     }
 }
