@@ -272,7 +272,7 @@ namespace Content.Shared.Movement.Systems
             var mapId = args.Transform.MapUid;
 
             // If we change maps then reset eye rotation entirely.
-            //if (oldMapId != mapId) //CrystallEdge: No, we dont! Our zLevels is different maps, and we dnot wanna reset rotation each time when we move through zLevels
+            //if (oldMapId != mapId) //CrystallEdge: No, we dont! Our zLevels is different maps, and we dont wanna reset rotation each time when we move through zLevels
             //{
             //    entity.Comp.RelativeEntity = relative;
             //    entity.Comp.TargetRelativeRotation = Angle.Zero;

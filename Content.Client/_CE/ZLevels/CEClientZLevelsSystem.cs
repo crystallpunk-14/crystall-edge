@@ -14,6 +14,7 @@ public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
 {
     [Dependency] private readonly IOverlayManager _overlay = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
+    [Dependency] private readonly IEyeManager _eye = default!;
 
     public static float ZLevelOffset = 0.7f;
 
@@ -28,7 +29,9 @@ public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
 
     private void OnEyeOffset(Entity<CEZPhysicsComponent> ent, ref GetEyeOffsetEvent args)
     {
-        args.Offset += new Vector2(0, ent.Comp.LocalPosition * ZLevelOffset);
+        Angle rotation = _eye.CurrentEye.Rotation * -1;
+        var offset = rotation.RotateVec(new Vector2(0, ent.Comp.LocalPosition * ZLevelOffset)); //_eye.CurrentEye.Rotation.ToWorldVec();
+        args.Offset += offset;
     }
 
     private void OnStartup(Entity<CEZPhysicsComponent> ent, ref ComponentStartup args)
