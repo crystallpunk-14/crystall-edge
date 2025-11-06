@@ -24,6 +24,8 @@ public sealed class CEZLevelOverlay : Overlay
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
     {
+        return false;
+
         if (args.Viewport.Eye is not ScalingViewport.ZEye zeye)
             return false;
 
