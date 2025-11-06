@@ -22,13 +22,12 @@
   - type: PlacementReplacement
     key: walls
   - type: Occluder
-    boundingBox: -0.5, -0.5, 0.5, 1
   - type: Fixtures
     fixtures:
       fix1:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.5,-0.3,0.5,0.7"
+          bounds: "-0.5,-0.5,0.5,0.5"
         mask:
         - FullTileMask
         layer:
