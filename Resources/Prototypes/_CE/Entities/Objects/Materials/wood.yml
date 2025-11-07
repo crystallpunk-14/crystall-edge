@@ -110,6 +110,14 @@
           collection: WoodDestroy
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: FloorTile
+    placeTileSound:
+      collection: CEDigging #TODO
+      params:
+        variation: 0.03
+        volume: 2
+    outputs:
+      - CEPlanks
 
 - type: entity
   id: CEWoodenPlanks10

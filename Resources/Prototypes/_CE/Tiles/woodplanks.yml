@@ -21,7 +21,7 @@
     East: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_W.png
-  baseTurf: CEFoundation
+  baseTurf: CEPlanks
   isSubfloor: false
   deconstructTools: [ Prying ]
   itemDrop: CEFloorTileOakWoodplanks
@@ -52,7 +52,7 @@
     East: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_W.png
-  baseTurf: CEFoundation
+  baseTurf: CEPlanks
   isSubfloor: false
   deconstructTools: [ Prying ]
   itemDrop: CEFloorTileOakWoodplanksBig
@@ -83,7 +83,7 @@
     East: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_W.png
-  baseTurf: CEFoundation
+  baseTurf: CEPlanks
   isSubfloor: false
   deconstructTools: [ Prying ]
   itemDrop: CEFloorTileOakWoodplanksCruciform
@@ -114,7 +114,7 @@
     East: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_W.png
-  baseTurf: CEFoundation
+  baseTurf: CEPlanks
   isSubfloor: false
   deconstructTools: [ Prying ]
   itemDrop: CEFloorTileOakWoodplanksStairs
@@ -147,7 +147,7 @@
     East: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_W.png
-  baseTurf: CEFoundation
+  baseTurf: CEPlanks
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -177,7 +177,7 @@
     East: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_W.png
-  baseTurf: CEFoundation
+  baseTurf: CEPlanks
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -207,7 +207,7 @@
     East: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_W.png
-  baseTurf: CEFoundation
+  baseTurf: CEPlanks
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -237,7 +237,7 @@
     East: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_W.png
-  baseTurf: CEFoundation
+  baseTurf: CEPlanks
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -262,7 +262,7 @@
     East: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_W.png
-  baseTurf: CEFoundation
+  baseTurf: CEPlanks
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -285,7 +285,7 @@
     East: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_W.png
-  baseTurf: CEFoundation
+  baseTurf: CEPlanks
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -308,7 +308,7 @@
     East: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_W.png
-  baseTurf: CEFoundation
+  baseTurf: CEPlanks
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -331,7 +331,7 @@
     East: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_W.png
-  baseTurf: CEFoundation
+  baseTurf: CEPlanks
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:

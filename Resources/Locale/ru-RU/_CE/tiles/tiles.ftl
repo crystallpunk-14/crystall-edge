@@ -23,6 +23,7 @@ ce-tiles-mycelium-light = густой мицелий
 ce-tiles-foundation = фундамент
 ce-tiles-dirt-seedbed = земляная грядка
 ce-tiles-glass = стеклянный пол
+ce-tiles-planks = досчатая опора
 
 ce-tiles-oak-woodplanks = дубовые доски
 ce-tiles-oak-woodplanks-big = большие дубовые доски

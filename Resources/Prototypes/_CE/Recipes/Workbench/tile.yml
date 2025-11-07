@@ -1,16 +1,4 @@
 - type: CERecipe
-  id: CEFloorTileFoundation
-  tag: CERecipeWorkbench
-  category: FloorTile
-  craftTime: 1
-  requirements:
-  - !type:StackResource
-    stack: CEStone
-    count: 1
-  result: CEFloorTileFoundation
-  resultCount: 2
-
-- type: CERecipe
   id: CEFloorTileStonebricks
   tag: CERecipeWorkbench
   category: FloorTile

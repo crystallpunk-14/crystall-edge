@@ -15,6 +15,7 @@
   - 1.0
   baseTurf: CEStone
   isSubfloor: false
+  transparent: true
   heatCapacity: 10000
   friction: 0.05
   mobAcceleration: 0.1

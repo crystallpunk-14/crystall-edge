@@ -42,22 +42,6 @@
 
 - type: entity
   parent: CEFloorTileBase
-  id: CEFloorTileFoundation
-  name: foundation floor tile
-  components:
-  - type: Sprite
-    state: foundation
-  - type: FloorTile
-    outputs:
-      - CEFoundation
-  - type: Stack
-    stackType: CEFloorTileFoundation
-  - type: PhysicalComposition
-    materialComposition:
-      CEStone: 5
-
-- type: entity
-  parent: CEFloorTileBase
   id: CEFloorTileGlass
   name: glass floor tile
   components:

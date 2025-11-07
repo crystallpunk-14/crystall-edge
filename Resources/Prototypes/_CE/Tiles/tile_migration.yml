@@ -68,7 +68,7 @@
 # Produced Tiles
 - type: tileAlias
   id: CEFloorFoundation
-  target: CEFoundation
+  target: CEPlanks
 
 - type: tileAlias
   id: CEFloorStonebricks

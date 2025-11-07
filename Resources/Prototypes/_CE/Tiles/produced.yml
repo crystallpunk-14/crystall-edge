@@ -1,33 +1,23 @@
 - type: tile
   editorHidden: false
-  id: CEFoundation
-  name: ce-tiles-foundation
-  sprite: /Textures/_CE/Tiles/foundation.png
-  variants: 14
+  id: CEPlanks
+  name: ce-tiles-planks
+  sprite: /Textures/_CE/Tiles/planks.png
+  variants: 4
   placementVariants:
   - 1.0
   - 1.0
   - 1.0
   - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  edgeSpritePriority: 99 #Dont have edges, but block natural ones
   baseTurf: Space
   isSubfloor: true
   footstepSounds:
-    collection: FootstepAsteroid
+    collection: FootstepWood
   heatCapacity: 10000
-  weather: true
   deconstructTools: [ Prying ]
-  itemDrop: CEFloorTileFoundation
+  itemDrop: CEWoodenPlanks1
+  transparent: true
+  weather: true
 
 - type: tile
   editorHidden: false
@@ -55,7 +45,7 @@
     East: /Textures/_CE/Tiles/Stonebricks/double_edge_E.png
     North: /Textures/_CE/Tiles/Stonebricks/double_edge_N.png
     West: /Textures/_CE/Tiles/Stonebricks/double_edge_W.png
-  baseTurf: CEFoundation
+  baseTurf: CEPlanks
   isSubfloor: false
   footstepSounds:
     collection: FootstepAsteroid
@@ -90,7 +80,7 @@
     East: /Textures/_CE/Tiles/Stonebricks/double_edge_E.png
     North: /Textures/_CE/Tiles/Stonebricks/double_edge_N.png
     West: /Textures/_CE/Tiles/Stonebricks/double_edge_W.png
-  baseTurf: CEFoundation
+  baseTurf: CEPlanks
   isSubfloor: false
   footstepSounds:
     collection: FootstepAsteroid
@@ -117,7 +107,7 @@
     East: /Textures/_CE/Tiles/Stonebricks/double_edge_E.png
     North: /Textures/_CE/Tiles/Stonebricks/double_edge_N.png
     West: /Textures/_CE/Tiles/Stonebricks/double_edge_W.png
-  baseTurf: CEFoundation
+  baseTurf: CEPlanks
   isSubfloor: false
   footstepSounds:
     collection: FootstepAsteroid
@@ -144,7 +134,7 @@
     East: /Textures/_CE/Tiles/Stonebricks/double_edge_E.png
     North: /Textures/_CE/Tiles/Stonebricks/double_edge_N.png
     West: /Textures/_CE/Tiles/Stonebricks/double_edge_W.png
-  baseTurf: CEFoundation
+  baseTurf: CEPlanks
   isSubfloor: false
   footstepSounds:
     collection: FootstepAsteroid
@@ -174,7 +164,7 @@
     East: /Textures/_CE/Tiles/Stonebricks/double_edge_E.png
     North: /Textures/_CE/Tiles/Stonebricks/double_edge_N.png
     West: /Textures/_CE/Tiles/Stonebricks/double_edge_W.png
-  baseTurf: CEFoundation
+  baseTurf: CEPlanks
   isSubfloor: false
   footstepSounds:
     collection: FootstepAsteroid

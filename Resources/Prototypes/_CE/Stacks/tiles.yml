@@ -1,11 +1,4 @@
 - type: stack
-  id: CEFloorTileFoundation
-  name: ce-tiles-foundation
-  spawn: CEFloorTileFoundation
-  icon: { sprite: _CE/Objects/tile.rsi, state: foundation }
-  maxCount: 30
-
-- type: stack
   id: CEFloorTileGlass
   name: ce-tiles-glass
   spawn: CEFloorTileGlass
