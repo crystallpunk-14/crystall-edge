@@ -149,16 +149,20 @@
             "directions": 4
         },
         {
-            "name": "valve_off"
+            "name": "valve_off",
+            "directions": 4
         },
         {
-            "name": "valve_on"
+            "name": "valve_on",
+            "directions": 4
         },
         {
-            "name": "valve_off_light"
+            "name": "valve_off_light",
+            "directions": 4
         },
         {
-            "name": "valve_on_light"
+            "name": "valve_on_light",
+            "directions": 4
         }
     ]
 }
