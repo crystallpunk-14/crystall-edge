@@ -20,7 +20,7 @@
         variation: 0.03
         volume: 2
     outputs:
-      - CEFloorDirt
+      - CEDirt
   - type: Appearance
   - type: Stack
     stackType: CEDirt
@@ -78,7 +78,7 @@
         variation: 0.03
         volume: 2
     outputs:
-      - CEFloorCobblestone
+      - CECobblestone
 
 - type: entity
   id: CEStoneBlock10

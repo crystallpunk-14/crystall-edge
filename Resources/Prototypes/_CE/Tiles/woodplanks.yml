@@ -24,7 +24,7 @@
   baseTurf: CEFoundation
   isSubfloor: false
   deconstructTools: [ Prying ]
-  itemDrop: CEFloorFloorTileOakWoodplanks
+  itemDrop: CEFloorTileOakWoodplanks
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
@@ -55,7 +55,7 @@
   baseTurf: CEFoundation
   isSubfloor: false
   deconstructTools: [ Prying ]
-  itemDrop: CEFloorFloorTileOakWoodplanksBig
+  itemDrop: CEFloorTileOakWoodplanksBig
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000

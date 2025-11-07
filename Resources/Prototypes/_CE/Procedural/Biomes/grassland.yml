@@ -3,9 +3,9 @@
   layers:
     - !type:BiomeTileLayer
       threshold: -1.0
-      tile: CEFloorGrass
+      tile: CEGrass
     - !type:BiomeTileLayer
-      tile: CEFloorGrassLight
+      tile: CEGrassLight
       threshold: 0
       noise:
         seed: 0
@@ -18,7 +18,7 @@
         domainWarpType: OpenSimplex2
         domainWarpAmp: 120
     - !type:BiomeTileLayer
-      tile: CEFloorGrassTall
+      tile: CEGrassTall
       threshold: 0.45
       noise:
         seed: 0
@@ -39,9 +39,9 @@
       template: CEGrassFill
     - !type:BiomeDecalLayer #Rock decal
       allowedTiles:
-      - CEFloorGrass
-      - CEFloorGrassLight
-      - CEFloorGrassTall
+      - CEGrass
+      - CEGrassLight
+      - CEGrassTall
       threshold: 0.6
       divisions: 1
       noise:
@@ -62,9 +62,9 @@
         - CEFloraRock05
     - !type:BiomeDecalLayer #Grass decal
       allowedTiles:
-      - CEFloorGrass
-      - CEFloorGrassLight
-      - CEFloorGrassTall
+      - CEGrass
+      - CEGrassLight
+      - CEGrassTall
       threshold: 0
       divisions: 1
       noise:
@@ -94,9 +94,9 @@
         - CEFloraGrass14
     - !type:BiomeDecalLayer #Bush decal
       allowedTiles:
-      - CEFloorGrass
-      - CEFloorGrassLight
-      - CEFloorGrassTall
+      - CEGrass
+      - CEGrassLight
+      - CEGrassTall
       threshold: 0.35
       divisions: 1
       noise:
@@ -132,7 +132,7 @@
         domainWarpType: OpenSimplex2
         domainWarpAmp: 120
       allowedTiles:
-        - CEFloorGrassTall
+        - CEGrassTall
       entities:
         - CEBushSpawner
     - !type:BiomeEntityLayer # Rare Trees
@@ -143,9 +143,9 @@
         fractalType: FBm
         frequency: 2
       allowedTiles:
-        - CEFloorGrass
-        - CEFloorGrassLight
-        - CEFloorGrassTall
+        - CEGrass
+        - CEGrassLight
+        - CEGrassTall
       entities:
         - CEFloraTreeBirchLarge
         - CEFloraTreeBirchSmall
@@ -169,9 +169,9 @@
         fractalType: FBm
         frequency: 3
       allowedTiles:
-        - CEFloorGrass
-        - CEFloorGrassLight
-        - CEFloorGrassTall
+        - CEGrass
+        - CEGrassLight
+        - CEGrassTall
       entities:
         - CERockSmall
     - !type:BiomeEntityLayer # More Rocks
@@ -182,9 +182,9 @@
         fractalType: FBm
         frequency: 2
       allowedTiles:
-        - CEFloorGrass
-        - CEFloorGrassLight
-        - CEFloorGrassTall
+        - CEGrass
+        - CEGrassLight
+        - CEGrassTall
       entities:
         - CERockBig
         - CERockBigMoss
