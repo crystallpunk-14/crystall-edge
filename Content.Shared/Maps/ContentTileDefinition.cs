@@ -138,5 +138,11 @@ namespace Content.Shared.Maps
         /// </summary>
         [DataField]
         public bool Transparent = false;
+
+        /// <summary>
+        ///
+        /// </summary>
+        [DataField]
+        public int CollapseDurability = 5;
     }
 }
