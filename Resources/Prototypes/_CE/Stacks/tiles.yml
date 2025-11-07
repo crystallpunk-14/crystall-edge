@@ -6,6 +6,13 @@
   maxCount: 30
 
 - type: stack
+  id: CEFloorTileGlass
+  name: ce-tiles-glass
+  spawn: CEFloorTileGlass
+  icon: { sprite: _CE/Objects/tile.rsi, state: glass }
+  maxCount: 30
+
+- type: stack
   id: CEFloorTileOakWoodplanks
   name: ce-tiles-oak-woodplanks
   spawn: CEFloorTileOakWoodplanks

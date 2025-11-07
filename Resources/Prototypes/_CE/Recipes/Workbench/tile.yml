@@ -105,3 +105,15 @@
     count: 1
   result: CEFloorTileOakWoodplanksStairs
   resultCount: 4
+
+- type: CERecipe
+  id: CEFloorTileGlass
+  tag: CERecipeWorkbench
+  category: FloorTile
+  craftTime: 1
+  requirements:
+  - !type:StackResource
+    stack: CEGlass
+    count: 1
+  result: CEFloorTileGlass
+  resultCount: 4

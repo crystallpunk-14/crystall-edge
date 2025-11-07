@@ -225,5 +225,6 @@
     collection: FootstepTile
   heatCapacity: 10000
   deconstructTools: [ Prying ]
+  itemDrop: CEFloorTileGlass
   transparent: true
   weather: true

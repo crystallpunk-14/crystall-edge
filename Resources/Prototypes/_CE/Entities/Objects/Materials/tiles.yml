@@ -49,12 +49,28 @@
     state: foundation
   - type: FloorTile
     outputs:
-      - CEFloorFoundation
+      - CEFoundation
   - type: Stack
     stackType: CEFloorTileFoundation
   - type: PhysicalComposition
     materialComposition:
       CEStone: 5
+
+- type: entity
+  parent: CEFloorTileBase
+  id: CEFloorTileGlass
+  name: glass floor tile
+  components:
+  - type: Sprite
+    state: glass
+  - type: FloorTile
+    outputs:
+      - CEGlass
+  - type: Stack
+    stackType: CEFloorTileGlass
+  - type: PhysicalComposition
+    materialComposition:
+      CEGlass: 5
 
 - type: entity
   parent: CEFloorTileBase
@@ -70,7 +86,7 @@
         variation: 0.03
         volume: 2
     outputs:
-      - CEFloorOakWoodPlanks
+      - CEOakWoodPlanks
   - type: Stack
     stackType: CEFloorTileOakWoodplanks
   - type: PhysicalComposition
@@ -91,7 +107,7 @@
         variation: 0.03
         volume: 2
     outputs:
-      - CEFloorOakWoodPlanksBig
+      - CEOakWoodPlanksBig
   - type: Stack
     stackType: CEFloorTileOakWoodplanksBig
   - type: PhysicalComposition
@@ -112,7 +128,7 @@
         variation: 0.03
         volume: 2
     outputs:
-      - CEFloorOakWoodPlanksCruciform
+      - CEOakWoodPlanksCruciform
   - type: Stack
     stackType: CEFloorTileOakWoodplanksCruciform
   - type: PhysicalComposition
@@ -133,7 +149,7 @@
         variation: 0.03
         volume: 2
     outputs:
-      - CEFloorOakWoodPlanksStairways
+      - CEOakWoodPlanksStairways
   - type: Stack
     stackType: CEFloorTileOakWoodplanksStairs
   - type: PhysicalComposition
@@ -149,7 +165,7 @@
     state: stonebrick
   - type: FloorTile
     outputs:
-      - CEFloorStonebricks
+      - CEStonebricks
   - type: Stack
     stackType: CEFloorTileStonebricks
   - type: PhysicalComposition
@@ -165,7 +181,7 @@
     state: stonebrick_small_carved
   - type: FloorTile
     outputs:
-      - CEFloorStonebricksSmallCarved1
+      - CEStonebricksSmallCarved1
   - type: Stack
     stackType: CEFloorTileStonebricksSmallCarved
   - type: PhysicalComposition
@@ -181,7 +197,7 @@
     state: stonebrick_small_carved2
   - type: FloorTile
     outputs:
-      - CEFloorStonebricksSmallCarved2
+      - CEStonebricksSmallCarved2
   - type: Stack
     stackType: CEFloorTileStonebricksSmallCarved2
   - type: PhysicalComposition
@@ -197,7 +213,7 @@
     state: stonebrick_square_carved
   - type: FloorTile
     outputs:
-      - CEFloorStonebricksSquareCarved
+      - CEStonebricksSquareCarved
   - type: Stack
     stackType: CEFloorTileStonebricksSquareCarved
   - type: PhysicalComposition
