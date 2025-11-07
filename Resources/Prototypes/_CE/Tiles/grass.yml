@@ -1,5 +1,5 @@
 - type: tile
-  id: CEFloorGrass
+  id: CEGrass
   editorHidden: false
   name: ce-tiles-grass
   sprite: /Textures/_CE/Tiles/Grass/grass.png
@@ -21,7 +21,7 @@
     East: /Textures/_CE/Tiles/Grass/double_edge_E.png
     North: /Textures/_CE/Tiles/Grass/double_edge_N.png
     West: /Textures/_CE/Tiles/Grass/double_edge_W.png
-  baseTurf: CEFloorDirt
+  baseTurf: CEDirt
   #deconstructTools: [ CEDigging ]
   #itemDrop: CERandomDirtLootSpawner
   isSubfloor: false
@@ -31,7 +31,7 @@
   weather: true
 
 - type: tile
-  id: CEFloorGrassLight
+  id: CEGrassLight
   editorHidden: false
   name: ce-tiles-grass-light
   sprite: /Textures/_CE/Tiles/GrassLight/grass.png
@@ -53,7 +53,7 @@
     East: /Textures/_CE/Tiles/GrassLight/double_edge_E.png
     North: /Textures/_CE/Tiles/GrassLight/double_edge_N.png
     West: /Textures/_CE/Tiles/GrassLight/double_edge_W.png
-  baseTurf: CEFloorDirt
+  baseTurf: CEDirt
   #deconstructTools: [ CEDigging ]
   #itemDrop: CERandomDirtLootSpawner
   isSubfloor: false
@@ -63,7 +63,7 @@
   weather: true
 
 - type: tile
-  id: CEFloorGrassTall
+  id: CEGrassTall
   editorHidden: false
   name: ce-tiles-grass-tall
   sprite: /Textures/_CE/Tiles/GrassTall/grass.png
@@ -85,7 +85,7 @@
     East: /Textures/_CE/Tiles/GrassTall/double_edge_E.png
     North: /Textures/_CE/Tiles/GrassTall/double_edge_N.png
     West: /Textures/_CE/Tiles/GrassTall/double_edge_W.png
-  baseTurf: CEFloorDirt
+  baseTurf: CEDirt
   #deconstructTools: [ CEDigging ]
   #itemDrop: CERandomDirtLootSpawner
   isSubfloor: false
@@ -95,7 +95,7 @@
   weather: true
 
 - type: tile
-  id: CEFloorGrassBlood
+  id: CEGrassBlood
   editorHidden: false
   name: ce-tiles-bloodgrass
   sprite: /Textures/_CE/Tiles/GrassBlood/grass.png
@@ -117,7 +117,7 @@
     East: /Textures/_CE/Tiles/GrassBlood/double_edge_E.png
     North: /Textures/_CE/Tiles/GrassBlood/double_edge_N.png
     West: /Textures/_CE/Tiles/GrassBlood/double_edge_W.png
-  baseTurf: CEFloorDirt
+  baseTurf: CEDirt
   #deconstructTools: [ CEDigging ]
   #itemDrop: CERandomDirtLootSpawner
   isSubfloor: false
@@ -127,7 +127,7 @@
   weather: true
 
 - type: tile
-  id: CEFloorGrassLightBlood
+  id: CEGrassLightBlood
   editorHidden: false
   name: ce-tiles-bloodgrass-light
   sprite: /Textures/_CE/Tiles/GrassBloodLight/grass.png
@@ -149,7 +149,7 @@
     East: /Textures/_CE/Tiles/GrassBloodLight/double_edge_E.png
     North: /Textures/_CE/Tiles/GrassBloodLight/double_edge_N.png
     West: /Textures/_CE/Tiles/GrassBloodLight/double_edge_W.png
-  baseTurf: CEFloorDirt
+  baseTurf: CEDirt
   #deconstructTools: [ CEDigging ]
   #itemDrop: CERandomDirtLootSpawner
   isSubfloor: false
@@ -159,7 +159,7 @@
   weather: true
 
 - type: tile
-  id: CEFloorGrassTallBlood
+  id: CEGrassTallBlood
   editorHidden: false
   name: ce-tiles-bloodgrass-tall
   sprite: /Textures/_CE/Tiles/GrassBloodTall/grass.png
@@ -181,7 +181,7 @@
     East: /Textures/_CE/Tiles/GrassBloodTall/double_edge_E.png
     North: /Textures/_CE/Tiles/GrassBloodTall/double_edge_N.png
     West: /Textures/_CE/Tiles/GrassBloodTall/double_edge_W.png
-  baseTurf: CEFloorDirt
+  baseTurf: CEDirt
   #deconstructTools: [ CEDigging ]
   #itemDrop: CERandomDirtLootSpawner
   isSubfloor: false

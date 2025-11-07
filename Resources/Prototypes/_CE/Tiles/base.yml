@@ -13,7 +13,7 @@
 
 - type: tile
   editorHidden: false
-  id: CEFloorStone
+  id: CEStone
   name: ce-tiles-base
   sprite: /Textures/_CE/Tiles/cave.png
   variants: 14

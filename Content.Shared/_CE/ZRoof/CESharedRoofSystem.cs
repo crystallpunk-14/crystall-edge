@@ -2,6 +2,8 @@ using Content.Shared._CE.ZLevels;
 using Content.Shared._CE.ZLevels.EntitySystems;
 using Content.Shared.Light.Components;
 using Content.Shared.Light.EntitySystems;
+using Content.Shared.Maps;
+using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 
 namespace Content.Shared._CE.ZRoof;
@@ -15,6 +17,7 @@ public abstract class CESharedRoofSystem : EntitySystem
     [Dependency] protected readonly CESharedZLevelsSystem ZLevel = default!;
     [Dependency] protected readonly SharedRoofSystem Roof = default!;
     [Dependency] protected readonly SharedMapSystem Map = default!;
+    [Dependency] protected readonly ITileDefinitionManager TilDefMan = default!;
 
     protected EntityQuery<MapGridComponent> GridQuery;
     protected EntityQuery<RoofComponent> RoofQuery;
@@ -45,8 +48,10 @@ public abstract class CESharedRoofSystem : EntitySystem
         Dictionary<Vector2i, bool> roofMap = new();
         foreach (var change in args.Changes)
         {
+            var tileDef = (ContentTileDefinition)TilDefMan[change.NewTile.TypeId];
+
             var roovedAbove = Roof.IsRooved((ent, currentMapGrid, currentRoof), change.GridIndices);
-            var roovedTile = !change.NewTile.IsEmpty;
+            var roovedTile = !tileDef.Transparent;
             roofMap.Add(change.GridIndices, roovedAbove || roovedTile);
         }
 

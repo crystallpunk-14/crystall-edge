@@ -3,6 +3,7 @@ using Content.Server._CE.ZLevels.EntitySystems;
 using Content.Shared._CE.ZLevels;
 using Content.Shared._CE.ZRoof;
 using Content.Shared.Light.Components;
+using Content.Shared.Maps;
 
 namespace Content.Server._CE.ZRoof;
 
@@ -49,7 +50,9 @@ public sealed class CERoofSystem : CESharedRoofSystem
             {
                 Roof.SetRoof((map, mapGrid, roofComp), tileRef.Value.GridIndices, _roofMap.Contains(tileRef.Value.GridIndices));
 
-                if (!tileRef.Value.Tile.IsEmpty)
+                var tileDef = (ContentTileDefinition)TilDefMan[tileRef.Value.Tile.TypeId];
+
+                if (!tileDef.Transparent)
                     _roofMap.Add(tileRef.Value.GridIndices);
             }
         }

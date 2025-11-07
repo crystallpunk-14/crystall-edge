@@ -22,6 +22,7 @@ ce-tiles-mycelium-light = dense mycelium
 # Produced
 ce-tiles-foundation = foundation
 ce-tiles-dirt-seedbed = dirt seedbed
+ce-tiles-glass = glass floor
 
 ce-tiles-oak-woodplanks = oak woodplanks
 ce-tiles-oak-woodplanks-big = big oak planks

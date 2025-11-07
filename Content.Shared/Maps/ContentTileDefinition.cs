@@ -128,9 +128,15 @@ namespace Content.Shared.Maps
         }
 
         /// <summary>
-        /// BASELINE - Vanilla tile filtering
+        /// CrystallEdge: Vanilla tile filtering
         /// </summary>
         [DataField]
         public bool EditorHidden { get; private set; } = true;
+
+        /// <summary>
+        /// CrystallEdge: used for lightning calculation through zlevels
+        /// </summary>
+        [DataField]
+        public bool Transparent = false;
     }
 }

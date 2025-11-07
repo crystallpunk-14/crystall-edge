@@ -5,6 +5,7 @@
   edgeSpritePriority: 10000
   #friction: 0 #CrystallEdge
   weather: true #CrystallEdge
+  transparent: true #CrystallEdge
   isSubfloor: true
   isSpace: true
   sturdy: false

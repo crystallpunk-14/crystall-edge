@@ -2,7 +2,7 @@
 
 - type: tile #Default
   editorHidden: false
-  id: CEFloorOakWoodPlanks
+  id: CEOakWoodPlanks
   name: ce-tiles-oak-woodplanks
   sprite: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_woodplanks.png
   variants: 4
@@ -21,19 +21,19 @@
     East: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_W.png
-  baseTurf: CEFloorFoundation
+  baseTurf: CEFoundation
   isSubfloor: false
   deconstructTools: [ Prying ]
-  itemDrop: CEFloorTileOakWoodplanks
+  itemDrop: CEFloorFloorTileOakWoodplanks
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
   weather: true
-  #burnedTile: CEFloorWoodPlanksBurned
+  #burnedTile: CEWoodPlanksBurned
 
 - type: tile #Big
   editorHidden: false
-  id: CEFloorOakWoodPlanksBig
+  id: CEOakWoodPlanksBig
   name: ce-tiles-oak-woodplanks-big
   sprite: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_woodplanks_big.png
   variants: 4
@@ -52,19 +52,19 @@
     East: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_W.png
-  baseTurf: CEFloorFoundation
+  baseTurf: CEFoundation
   isSubfloor: false
   deconstructTools: [ Prying ]
-  itemDrop: CEFloorTileOakWoodplanksBig
+  itemDrop: CEFloorFloorTileOakWoodplanksBig
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
   weather: true
-  #burnedTile: CEFloorWoodPlanksBigBurned
+  #burnedTile: CEWoodPlanksBigBurned
 
 - type: tile #Cruci
   editorHidden: false
-  id: CEFloorOakWoodPlanksCruciform
+  id: CEOakWoodPlanksCruciform
   name: ce-tiles-oak-woodplanks-cruciform
   sprite: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_woodplanks_cruciform.png
   variants: 4
@@ -83,7 +83,7 @@
     East: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_W.png
-  baseTurf: CEFloorFoundation
+  baseTurf: CEFoundation
   isSubfloor: false
   deconstructTools: [ Prying ]
   itemDrop: CEFloorTileOakWoodplanksCruciform
@@ -91,11 +91,11 @@
     collection: FootstepWood
   heatCapacity: 10000
   weather: true
-  #burnedTile: CEFloorWoodPlanksCruciformBurned
+  #burnedTile: CEWoodPlanksCruciformBurned
 
 - type: tile #Stairways
   editorHidden: false
-  id: CEFloorOakWoodPlanksStairways
+  id: CEOakWoodPlanksStairways
   name: ce-tiles-oak-woodplanks-stairways
   sprite: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_woodplanks_stairways.png
   variants: 4
@@ -114,7 +114,7 @@
     East: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_W.png
-  baseTurf: CEFloorFoundation
+  baseTurf: CEFoundation
   isSubfloor: false
   deconstructTools: [ Prying ]
   itemDrop: CEFloorTileOakWoodplanksStairs
@@ -122,13 +122,13 @@
     collection: FootstepWood
   heatCapacity: 10000
   weather: true
-  #burnedTile: CEFloorWoodPlanksStairwaysBurned
+  #burnedTile: CEWoodPlanksStairwaysBurned
 
 #broken
 
 - type: tile #Default
   editorHidden: false
-  id: CEFloorOakWoodPlanksBroken
+  id: CEOakWoodPlanksBroken
   name: ce-tiles-oak-woodplanks-broken
   sprite: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_woodplanks_broken.png
   variants: 4
@@ -147,18 +147,18 @@
     East: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_W.png
-  baseTurf: CEFloorFoundation
+  baseTurf: CEFoundation
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
   weather: true
-  #burnedTile: CEFloorWoodPlanksBurned
+  #burnedTile: CEWoodPlanksBurned
 
 - type: tile #Big
   editorHidden: false
-  id: CEFloorOakWoodPlanksBigBroken
+  id: CEOakWoodPlanksBigBroken
   name: ce-tiles-oak-woodplanks-big-broken
   sprite: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_woodplanks_big_broken.png
   variants: 4
@@ -177,18 +177,18 @@
     East: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_W.png
-  baseTurf: CEFloorFoundation
+  baseTurf: CEFoundation
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
   weather: true
-  #burnedTile: CEFloorWoodPlanksBigBurned
+  #burnedTile: CEWoodPlanksBigBurned
 
 - type: tile #Cruci
   editorHidden: false
-  id: CEFloorOakWoodPlanksCruciformBroken
+  id: CEOakWoodPlanksCruciformBroken
   name: ce-tiles-oak-woodplanks-cruciform-broken
   sprite: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_woodplanks_cruciform_broken.png
   variants: 4
@@ -207,18 +207,18 @@
     East: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_W.png
-  baseTurf: CEFloorFoundation
+  baseTurf: CEFoundation
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
   weather: true
-  #burnedTile: CEFloorWoodPlanksCruciformBurned
+  #burnedTile: CEWoodPlanksCruciformBurned
 
 - type: tile #Stairways
   editorHidden: false
-  id: CEFloorOakWoodPlanksStairwaysBroken
+  id: CEOakWoodPlanksStairwaysBroken
   name: ce-tiles-oak-woodplanks-stairways-broken
   sprite: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_woodplanks_stairways_broken.png
   variants: 4
@@ -237,19 +237,19 @@
     East: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/OakWood/oak_double_edge_W.png
-  baseTurf: CEFloorFoundation
+  baseTurf: CEFoundation
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
   weather: true
-  #burnedTile: CEFloorWoodPlanksStairwaysBurned
+  #burnedTile: CEWoodPlanksStairwaysBurned
 
 ### BURNED
 - type: tile #Default
   editorHidden: false
-  id: CEFloorWoodPlanksBurned
+  id: CEWoodPlanksBurned
   name: ce-tiles-woodplanks-burned
   sprite: /Textures/_CE/Tiles/WoodPlanks/Burned/woodplanks_burned.png
   edgeSpritePriority: 100
@@ -262,7 +262,7 @@
     East: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_W.png
-  baseTurf: CEFloorFoundation
+  baseTurf: CEFoundation
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -272,7 +272,7 @@
 
 - type: tile #Big
   editorHidden: false
-  id: CEFloorWoodPlanksBigBurned
+  id: CEWoodPlanksBigBurned
   name: ce-tiles-woodplanks-big-burned
   sprite: /Textures/_CE/Tiles/WoodPlanks/Burned/woodplanks_big_burned.png
   edgeSpritePriority: 100
@@ -285,7 +285,7 @@
     East: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_W.png
-  baseTurf: CEFloorFoundation
+  baseTurf: CEFoundation
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -295,7 +295,7 @@
 
 - type: tile #Cruci
   editorHidden: false
-  id: CEFloorWoodPlanksCruciformBurned
+  id: CEWoodPlanksCruciformBurned
   name: ce-tiles-woodplanks-cruciform-burned
   sprite: /Textures/_CE/Tiles/WoodPlanks/Burned/woodplanks_cruciform_burned.png
   edgeSpritePriority: 100
@@ -308,7 +308,7 @@
     East: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_W.png
-  baseTurf: CEFloorFoundation
+  baseTurf: CEFoundation
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -318,7 +318,7 @@
 
 - type: tile #Stairways
   editorHidden: false
-  id: CEFloorWoodPlanksStairwaysBurned
+  id: CEWoodPlanksStairwaysBurned
   name: ce-tiles-woodplanks-stairways-burned
   sprite: /Textures/_CE/Tiles/WoodPlanks/Burned/woodplanks_stairways_burned.png
   edgeSpritePriority: 100
@@ -331,7 +331,7 @@
     East: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_E.png
     North: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_N.png
     West: /Textures/_CE/Tiles/WoodPlanks/Burned/double_edge_burned_W.png
-  baseTurf: CEFloorFoundation
+  baseTurf: CEFoundation
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
