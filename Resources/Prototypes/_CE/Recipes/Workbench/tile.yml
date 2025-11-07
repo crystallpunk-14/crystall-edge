@@ -8,7 +8,7 @@
     stack: CEStone
     count: 1
   result: CEFloorTileFoundation
-  resultCount: 4
+  resultCount: 2
 
 - type: CERecipe
   id: CEFloorTileStonebricks
@@ -20,7 +20,7 @@
     stack: CEStone
     count: 1
   result: CEFloorTileStonebricks
-  resultCount: 4
+  resultCount: 2
 
 - type: CERecipe
   id: CEFloorTileStonebricksSmallCarved
@@ -32,7 +32,7 @@
     stack: CEStone
     count: 1
   result: CEFloorTileStonebricksSmallCarved
-  resultCount: 4
+  resultCount: 2
 
 - type: CERecipe
   id: CEFloorTileStonebricksSmallCarved2
@@ -44,7 +44,7 @@
     stack: CEStone
     count: 1
   result: CEFloorTileStonebricksSmallCarved2
-  resultCount: 4
+  resultCount: 2
 
 - type: CERecipe
   id: CEFloorTileStonebricksSquareCarved
@@ -56,7 +56,7 @@
     stack: CEStone
     count: 1
   result: CEFloorTileStonebricksSquareCarved
-  resultCount: 4
+  resultCount: 2
 
 - type: CERecipe
   id: CEFloorTileOakWoodplanks
@@ -68,7 +68,7 @@
     stack: CEWood
     count: 1
   result: CEFloorTileOakWoodplanks
-  resultCount: 4
+  resultCount: 2
 
 - type: CERecipe
   id: CEFloorTileOakWoodplanksBig
@@ -80,7 +80,7 @@
     stack: CEWood
     count: 1
   result: CEFloorTileOakWoodplanksBig
-  resultCount: 4
+  resultCount: 2
 
 - type: CERecipe
   id: CEFloorTileOakWoodplanksCruciform
@@ -92,7 +92,7 @@
     stack: CEWood
     count: 1
   result: CEFloorTileOakWoodplanksCruciform
-  resultCount: 4
+  resultCount: 2
 
 - type: CERecipe
   id: CEFloorTileOakWoodplanksStairs
@@ -104,7 +104,7 @@
     stack: CEWood
     count: 1
   result: CEFloorTileOakWoodplanksStairs
-  resultCount: 4
+  resultCount: 2
 
 - type: CERecipe
   id: CEFloorTileGlass
@@ -116,4 +116,4 @@
     stack: CEGlass
     count: 1
   result: CEFloorTileGlass
-  resultCount: 4
+  resultCount: 2
