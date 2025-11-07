@@ -3,8 +3,6 @@
   categories: [ ForkFiltered ]
   abstract: true
   components:
-  - type: Sprite
-    noRot: true
   - type: Clickable
   - type: Transform
     anchored: true
