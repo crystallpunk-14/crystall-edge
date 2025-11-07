@@ -2,6 +2,7 @@ using System.Numerics;
 using Content.Client._CE.ZLevels;
 using Content.Shared._CE.ZLevels;
 using Content.Shared._CE.ZLevels.EntitySystems;
+using Content.Shared.Maps;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Graphics;
@@ -15,6 +16,7 @@ public sealed partial class ScalingViewport
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly IEyeManager _eyeManager = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
+    [Dependency] private readonly ITileDefinitionManager _tile = default!;
 
     private CEClientZLevelsSystem? _zLevels;
     private SharedMapSystem? _mapSystem;
@@ -74,7 +76,8 @@ public sealed partial class ScalingViewport
             for (var y = tileBottomLeft.Y - 1; y <= tileTopRight.Y + 1; y++)
             {
                 var tile = grid.GetTileRef(new Vector2i(x, y));
-                if (tile.Tile.IsEmpty)
+                var tileDef = (ContentTileDefinition)_tile[tile.Tile.TypeId];
+                if (tileDef.Transparent || tile.Tile.IsEmpty)
                     return true;
             }
         }
