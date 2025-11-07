@@ -34,6 +34,7 @@
   - 1.0
   baseTurf: Space
   deconstructTools: [ CEPickaxe ]
+  itemDrop: CEStoneBlock1
   isSubfloor: true
   footstepSounds:
     collection: FootstepAsteroid
