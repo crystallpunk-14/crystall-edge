@@ -47,6 +47,28 @@
   components:
   - type: Sprite
     state: wood
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: CEWoodStructural
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEWoodenPlanks1:
+            min: 1
+            max: 2
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Construction
+    graph: CEZLevelLadderWooden
+    node: CEZLevelLadderWooden
 
 - type: entity
   parent: CEZLevelLadderBase
@@ -73,6 +95,28 @@
         - WallLayer
         density: 1000
         hard: true
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: CEWoodStructural
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEWoodenPlanks1:
+            min: 1
+            max: 2
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Construction
+    graph: CEZLevelLadderWooden
+    node: CEZLevelLadderWoodenCorner
 
 - type: entity
   parent: CEZLevelLadderBase
@@ -81,6 +125,30 @@
   components:
   - type: Sprite
     state: stone
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Rock
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 30
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEStoneBlock1:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Construction
+    graph: CEZLevelLadderStone
+    node: CEZLevelLadderStone
 
 - type: entity
   parent: CEZLevelLadderBase
@@ -107,3 +175,27 @@
         - WallLayer
         density: 1000
         hard: true
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Rock
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 30
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEStoneBlock1:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Construction
+    graph: CEZLevelLadderStone
+    node: CEZLevelLadderStoneCorner

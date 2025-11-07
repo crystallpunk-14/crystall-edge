@@ -1,0 +1,39 @@
+- type: constructionGraph
+  id: CEZLevelLadderStone
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: CEZLevelLadderStone
+          completed:
+            - !type:SnapToGrid
+          steps:
+            - material: CEStone
+              amount: 2
+              doAfter: 2
+
+    - node: CEZLevelLadderStone
+      entity: CEZLevelLadderStone
+      edges:
+        #- to: start
+        #  completed:
+        #    - !type:SpawnPrototype
+        #      prototype: CEStoneBlock1
+        #      amount: 2
+        #    - !type:DeleteEntity {}
+        #  steps:
+        #    - tool: Prying
+        #      doAfter: 2
+        - to: CEZLevelLadderStoneCorner
+          steps:
+            - tool: Prying
+              doAfter: 2
+
+    - node: CEZLevelLadderStoneCorner
+      entity: CEZLevelLadderStoneCorner
+      edges:
+        - to: CEZLevelLadderStone
+          steps:
+            - tool: Prying
+              doAfter: 2
+

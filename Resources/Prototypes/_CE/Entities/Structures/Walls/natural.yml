@@ -87,13 +87,13 @@
       - !type:SpawnEntitiesBehavior
         spawn:
           CEDirtBlock1:
-            min: 3
-            max: 5
+            min: 2
+            max: 4
       - !type:DoActsBehavior
         acts: ["Destruction"]
-  #- type: Construction
-  #  graph: CEWallDirt
-  #  node: WallDirt
+  - type: Construction
+    graph: CEWallDirt
+    node: CEWallDirt
 
 - type: entity
   id: CEWallLeaf

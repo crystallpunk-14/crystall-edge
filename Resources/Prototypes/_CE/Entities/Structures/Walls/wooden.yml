@@ -21,6 +21,28 @@
     enabled: false
   - type: Airtight
     airBlocked: false
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: CEWoodStructural
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEWoodenPlanks1:
+            min: 1
+            max: 2
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Construction
+    graph: CEWallWoodenPalisade
+    node: CEWallWoodenPalisade
 
 # Wooden
 
@@ -36,6 +58,28 @@
   - type: Icon
     sprite: _CE/Structures/Walls/wooden_wall.rsi
     state: frame
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: CEWoodStructural
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEWoodenPlanks1:
+            min: 1
+            max: 2
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Construction
+    graph: CEWallWooden
+    node: CEWallFrameWooden
 
 - type: entity
   id: CEWallWooden
@@ -49,4 +93,25 @@
     sprite: _CE/Structures/Walls/wooden_wall.rsi
   - type: IconSmooth
     base: wood
-  #- type: CEWallpaperHolder
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: CEWoodStructural
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEWoodenPlanks1:
+            min: 1
+            max: 2
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Construction
+    graph: CEWallWooden
+    node: CEWallWooden

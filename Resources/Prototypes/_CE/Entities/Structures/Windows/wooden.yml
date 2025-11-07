@@ -13,7 +13,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 50
+        damage: 25
       behaviors:
       - !type:PlaySoundBehavior
         sound:
@@ -23,13 +23,11 @@
           CEGlassShard:
             min: 1
             max: 2
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-      #- !type:ChangeConstructionNodeBehavior
-      #  node: CEWindowWoodenBroken
-  #- type: Construction
-  #  graph: CEWindowWooden
-  #  node: CEWindowWooden
+      - !type:ChangeConstructionNodeBehavior
+        node: CEWindowFrameWooden
+  - type: Construction
+    graph: CEWindowWooden
+    node: CEWindowWooden
 
 - type: entity
   id: CEWindowFrameWooden
@@ -60,21 +58,6 @@
           collection: WoodDestroy
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  #- type: Construction
-  #  graph: CEWindowWooden
-  #  node: CEWindowFrameWooden
-
-- type: entity
-  id: CEWindowWoodenBroken
-  name: shattered wooden window
-  parent:
-  - CEBaseWindowFrameBroken
-  - CEWindowFrameWooden
-  components:
-  - type: Sprite
-    sprite: _CE/Structures/Windows/wooden_window_broken.rsi
-  - type: Icon
-    sprite: _CE/Structures/Windows/wooden_window_broken.rsi
-  #- type: Construction
-  #  graph: CEWindowWooden
-  #  node: CEWindowWoodenBroken
+  - type: Construction
+    graph: CEWindowWooden
+    node: CEWindowFrameWooden

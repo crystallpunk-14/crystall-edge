@@ -1,0 +1,25 @@
+- type: constructionGraph
+  id: CEWallWoodenPalisade
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: CEWallWoodenPalisade
+          completed:
+            - !type:SnapToGrid
+          steps:
+            - material: CEWood
+              amount: 4
+              doAfter: 2
+    - node: CEWallWoodenPalisade
+      entity: CEWallWoodenPalisade
+      edges:
+      - to: start
+        completed:
+        - !type:SpawnPrototype
+          prototype: CEWoodenPlanks1
+          amount: 4
+        - !type:DeleteEntity {}
+        steps:
+        - tool: Prying
+          doAfter: 6
