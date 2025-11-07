@@ -1,0 +1,20 @@
+- type: entity
+  abstract: true
+  id: CEBaseWeaponChemical
+  categories: [ HideSpawnMenu, ForkFiltered ]
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      melee:
+        maxVol: 4
+  - type: MeleeChemicalInjector
+    solution: melee
+  - type: RefillableSolution
+    solution: melee
+  - type: InjectableSolution
+    solution: melee
+  - type: SolutionInjectOnEmbed
+    transferAmount: 2
+    solution: melee
+  - type: SolutionTransfer
+    maxTransferAmount: 2

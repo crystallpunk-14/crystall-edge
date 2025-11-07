@@ -193,7 +193,7 @@
     North: /Textures/_CE/Tiles/DirtSeedBag/double_edge_N.png
     West: /Textures/_CE/Tiles/DirtSeedBag/double_edge_W.png
   baseTurf: CEDirt
-  #deconstructTools: [ CEDigging ]
+  deconstructTools: [ CEDigging ]
   #itemDrop: CEDirtEffect
   isSubfloor: true
   footstepSounds:
