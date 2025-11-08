@@ -11,6 +11,7 @@
     state: wooden
   - type: Rotatable
     rotateWhileAnchored: true
+  - type: CEZPhysics
 
 - type: entity
   name: wooden stool

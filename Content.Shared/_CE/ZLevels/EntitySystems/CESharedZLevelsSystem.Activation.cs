@@ -1,0 +1,60 @@
+using Robust.Shared.Physics;
+using Robust.Shared.Physics.Components;
+using Robust.Shared.Physics.Events;
+
+namespace Content.Shared._CE.ZLevels.EntitySystems;
+
+public abstract partial class CESharedZLevelsSystem
+{
+    private void InitializeActivation()
+    {
+        SubscribeLocalEvent<CEZPhysicsComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<CEZPhysicsComponent, AnchorStateChangedEvent>(OnAnchorStateChange);
+        SubscribeLocalEvent<CEZPhysicsComponent, PhysicsBodyTypeChangedEvent>(OnPhysicsBodyTypeChange);
+    }
+
+    private void OnAnchorStateChange(Entity<CEZPhysicsComponent> ent, ref AnchorStateChangedEvent args)
+    {
+        CheckActivation(ent);
+    }
+
+    private void OnMapInit(Entity<CEZPhysicsComponent> ent, ref MapInitEvent args)
+    {
+        CheckActivation(ent);
+    }
+
+    private void OnPhysicsBodyTypeChange(Entity<CEZPhysicsComponent> ent, ref PhysicsBodyTypeChangedEvent args)
+    {
+        CheckActivation(ent);
+    }
+
+    private void CheckActivation(Entity<CEZPhysicsComponent> ent)
+    {
+        var xform = Transform(ent);
+
+        if (xform.Anchored)
+        {
+            SetActiveStatus(ent, false);
+            return;
+        }
+
+        if (TryComp<PhysicsComponent>(ent, out var physics))
+        {
+            if (physics.BodyType == BodyType.Static)
+            {
+                SetActiveStatus(ent, false);
+                return;
+            }
+        }
+
+        SetActiveStatus(ent, true);
+    }
+
+    private void SetActiveStatus(EntityUid ent, bool active)
+    {
+        if (active)
+            EnsureComp<CEActiveZPhysicsComponent>(ent);
+        else
+            RemComp<CEActiveZPhysicsComponent>(ent);
+    }
+}
