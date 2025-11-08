@@ -10,11 +10,10 @@
 
 # CrystallEdge migration zone
 
-BaselineSpawnPoint: CESpawnPointTownfolk
-CERoofWooden: null
-CERoofStone: null
-CERoofRemover: null
-CELaddersUpStoneAutoLink: CEZLevelLadderStone
+CEWallFrameStonebrick: CEWallFrameStoneBrick
+CEWallStonebrick: CEWallStoneBrick
+CEWallStonebrickOld: CEWallStoneBrickOld
+CEWallStonebrickBrown: CEWallStoneBrickBrown
 
 # CrystallEdge migration zone end
 

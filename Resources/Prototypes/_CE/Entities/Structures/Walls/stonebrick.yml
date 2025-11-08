@@ -1,7 +1,7 @@
 # Stone brick
 
 - type: entity
-  id: CEWallFrameStonebrick
+  id: CEWallFrameStoneBrick
   name: stone brick wall base
   parent: CEBaseWallFrame
   components:
@@ -37,7 +37,7 @@
     node: CEWallFrameStoneBrick
 
 - type: entity
-  id: CEWallStonebrick
+  id: CEWallStoneBrick
   name: stone brick wall
   parent: CEBaseWall
   components:
@@ -70,10 +70,10 @@
         node: CEWallFrameStoneBrick
   - type: Construction
     graph: CEWallStoneBrick
-    node: CEWallStonebrick
+    node: CEWallStoneBrick
 
 - type: entity
-  id: CEWallStonebrickOld
+  id: CEWallStoneBrickOld
   name: old stone brick wall
   parent: CEBaseWall
   components:
@@ -85,7 +85,7 @@
     base: stonebricks
 
 - type: entity
-  id: CEWallStonebrickBrown
+  id: CEWallStoneBrickBrown
   name: brown stone brick wall
   parent: CEBaseWall
   components:

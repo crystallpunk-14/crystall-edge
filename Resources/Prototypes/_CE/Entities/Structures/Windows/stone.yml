@@ -57,8 +57,8 @@
           CEGlassShard:
             min: 1
             max: 2
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
+      - !type:ChangeConstructionNodeBehavior
+        node: CEWindowFrameStone
   - type: Construction
     graph: CEWindowStone
     node: CEWindowStone
