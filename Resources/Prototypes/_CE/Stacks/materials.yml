@@ -60,3 +60,10 @@
   spawn: CEGlassSheet1
   icon: { sprite: _CE/Objects/Materials/glass.rsi, state: glass_2 }
   maxCount: 10
+
+- type: stack
+  id: CENail
+  name: ce-stack-nails
+  spawn: CENail1
+  icon: { sprite: _CE/Objects/Materials/nails.rsi, state: nail_2 }
+  maxCount: 10

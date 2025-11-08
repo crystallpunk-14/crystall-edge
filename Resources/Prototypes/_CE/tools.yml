@@ -13,10 +13,8 @@
   icon: { sprite: _CE/Objects/Tools/Pickaxe/iron.rsi, state: icon}
 
 - type: tool
-  id: CP14Hammering
-  name: cp14-tool-quality-hammering-name
-  toolName: cp14-tool-quality-hammering-tool-name
-  spawn: CEWeaponPickaxeIron #TODO
-  #spawn: CP14WeaponHammerIron
-  icon: { sprite: _CE/Objects/Tools/Pickaxe/iron.rsi, state: icon} #TODO
-  #icon: { sprite: _CP14/Objects/Weapons/Melee/Hammer/iron.rsi, state: icon}
+  id: CEHammering
+  name: ce-tool-quality-hammering-name
+  toolName: ce-tool-quality-hammering-tool-name
+  spawn: CEBaseWeaponHammer
+  icon: { sprite: _CE/Objects/Tools/Hammer/iron.rsi, state: icon}

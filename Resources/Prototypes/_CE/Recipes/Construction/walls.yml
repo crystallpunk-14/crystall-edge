@@ -13,7 +13,7 @@
     - !type:TileNotBlocked
 
 - type: construction
-  hide: false
+  hide: true #2boring, need make graphs better
   id: CEWallWoodenPalisade
   graph: CEWallWoodenPalisade
   startNode: start
@@ -27,7 +27,7 @@
     - !type:TileNotBlocked
 
 - type: construction
-  hide: false
+  hide: true #2boring, need make graphs better
   id: CEWallDirt
   graph: CEWallDirt
   startNode: start
@@ -41,7 +41,7 @@
     - !type:TileNotBlocked
 
 - type: construction
-  hide: false
+  hide: true #2boring, need make graphs better
   id: CEWallStoneBrick
   graph: CEWallStoneBrick
   startNode: start

@@ -11,7 +11,7 @@
           steps:
             - material: CEWood
               amount: 2
-              doAfter: 2
+              doAfter: 3
 
     - node: CEWindowFrameWooden
       entity: CEWindowFrameWooden
@@ -24,23 +24,34 @@
             - !type:DeleteEntity {}
           steps:
             - tool: Prying
+              doAfter: 1
+            - tool: Prying
               doAfter: 2
         - to: CEWindowWooden
           steps:
             - material: CEGlass
               amount: 2
               doAfter: 2
+            - material: CENail
+              amount: 1
+              doAfter: 0.5
+            - tool: CEHammering
+              doAfter: 1
 
     - node: CEWindowWooden
       entity: CEWindowWooden
       edges:
         - to: CEWindowFrameWooden
           steps:
-            - tool: Screwing
+            - tool: Prying
               doAfter: 1
-            - tool: Anchoring
+            - tool: Prying
               doAfter: 2
           completed:
             - !type:SpawnPrototype
               prototype: CEGlassSheet1
               amount: 2
+            - !type:SpawnPrototype
+              prototype: CENail1
+              amount: 1
+
