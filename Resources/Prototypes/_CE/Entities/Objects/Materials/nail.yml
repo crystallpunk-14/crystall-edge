@@ -56,7 +56,6 @@
   - type: Slippery
     slipSound:
       path: /Audio/Effects/weak_hit2.ogg
-    launchForwardsMultiplier: 0.5
 
 - type: entity
   id: CENail110

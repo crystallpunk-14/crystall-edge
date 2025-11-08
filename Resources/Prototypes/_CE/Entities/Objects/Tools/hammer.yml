@@ -58,5 +58,5 @@
     state: icon
   - type: PhysicalComposition
     materialComposition:
-      CEWoodenPlanks: 10
+      CEWood: 10
       CEIron: 10
