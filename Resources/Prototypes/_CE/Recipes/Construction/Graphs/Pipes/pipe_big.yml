@@ -17,7 +17,7 @@
       edges:
         - to: start
           steps:
-            - tool: Welding
+            - tool: Prying
               doAfter: 1
           completed:
             - !type:SpawnPrototype
@@ -25,7 +25,7 @@
               amount: 2
         - to: CEPipeBrassBigVerticalDown
           steps:
-            - tool: Prying
+            - tool: Anchoring
               doAfter: 1
         - to: CEPipeBrassBigValve
           steps:
@@ -38,7 +38,7 @@
       edges:
         - to: start
           steps:
-            - tool: Welding
+            - tool: Prying
               doAfter: 1
           completed:
             - !type:SpawnPrototype
@@ -46,7 +46,7 @@
               amount: 2
         - to: CEPipeBrassBigVerticalUp
           steps:
-            - tool: Prying
+            - tool: Anchoring
               doAfter: 1
 
     - node: CEPipeBrassBigVerticalUp
@@ -54,7 +54,7 @@
       edges:
         - to: start
           steps:
-            - tool: Welding
+            - tool: Prying
               doAfter: 1
           completed:
             - !type:SpawnPrototype
@@ -62,7 +62,7 @@
               amount: 2
         - to: CEPipeBrassBig
           steps:
-            - tool: Prying
+            - tool: Anchoring
               doAfter: 1
 
     - node: CEPipeBrassBigValve
@@ -70,7 +70,7 @@
       edges:
         - to: CEPipeBrassBig
           steps:
-            - tool: Welding
+            - tool: Prying
               doAfter: 1
           completed:
             - !type:SpawnPrototype
