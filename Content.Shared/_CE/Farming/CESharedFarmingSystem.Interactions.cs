@@ -4,6 +4,7 @@ using Content.Shared.EntityTable;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Maps;
+using Content.Shared.Stacks;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -21,6 +22,7 @@ public abstract partial class CESharedFarmingSystem
     [Dependency] private readonly TurfSystem _turf = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly IComponentFactory _compFactory = default!;
+    [Dependency] private readonly SharedStackSystem _stack = default!;
 
     private void InitializeInteractions()
     {
@@ -187,7 +189,11 @@ public abstract partial class CESharedFarmingSystem
         args.Handled = true;
 
         Spawn(ent.Comp.PlantProto, position);
-        QueueDel(ent);
+
+        if (TryComp<StackComponent>(ent, out var stack) && stack.Count > 1)
+            _stack.SetCount(ent, stack.Count - 1);
+        else
+            QueueDel(ent);
     }
 
     protected bool CanPlant(EntityPrototype plant, EntityCoordinates position, EntityUid? user, EntityUid? exclude = null)

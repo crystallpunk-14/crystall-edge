@@ -3,6 +3,7 @@
   parent: BaseItem
   abstract: true
   categories: [ ForkFiltered ]
+  suffix: 1
   components:
   - type: Item
     size: Tiny
@@ -12,8 +13,10 @@
   - type: Tag
     tags:
     - CEFarmSeed
-  - type: StaticPrice
-    price: 1
+  - type: StackPrice
+    price: 0.2
+  - type: Stack
+    count: 1
 
 - type: entity
   id: CESeedWheat
@@ -26,6 +29,17 @@
     - state: wheat
   - type: CESeed
     plantProto: CEPlantWheat
+  - type: Stack
+    stackType: CESeedWheat
+
+- type: entity
+  id: CESeedWheat30
+  parent: CESeedWheat
+  suffix: 30
+  components:
+  - type: Stack
+    stackType: CESeedWheat
+    count: 30
 
 - type: entity
   id: CESeedPumpkin
@@ -38,6 +52,17 @@
     - state: pumpkin
   - type: CESeed
     plantProto: CEPlantPumpkin
+  - type: Stack
+    stackType: CESeedPumpkin
+
+- type: entity
+  id: CESeedPumpkin30
+  parent: CESeedPumpkin
+  suffix: 30
+  components:
+  - type: Stack
+    stackType: CESeedPumpkin
+    count: 30
 
 - type: entity
   id: CESeedCabbage
@@ -50,6 +75,17 @@
     - state: cabbage
   - type: CESeed
     plantProto: CEPlantCabbage
+  - type: Stack
+    stackType: CESeedCabbage
+
+- type: entity
+  id: CESeedCabbage30
+  parent: CESeedCabbage
+  suffix: 30
+  components:
+  - type: Stack
+    stackType: CESeedCabbage
+    count: 30
 
 - type: entity
   id: CESeedCucumber
@@ -62,6 +98,17 @@
     - state: cucumber
   - type: CESeed
     plantProto: CEPlantCucumber
+  - type: Stack
+    stackType: CESeedCucumber
+
+- type: entity
+  id: CESeedCucumber30
+  parent: CESeedCucumber
+  suffix: 30
+  components:
+  - type: Stack
+    stackType: CESeedCucumber
+    count: 30
 
 - type: entity
   id: CESeedTomato
@@ -74,6 +121,17 @@
     - state: tomato
   - type: CESeed
     plantProto: CEPlantTomatoes
+  - type: Stack
+    stackType: CESeedTomato
+
+- type: entity
+  id: CESeedTomato30
+  parent: CESeedTomato
+  suffix: 30
+  components:
+  - type: Stack
+    stackType: CESeedTomato
+    count: 30
 
 - type: entity
   id: CESeedPepper
@@ -86,6 +144,17 @@
     - state: pepper
   - type: CESeed
     plantProto: CEPlantPepper
+  - type: Stack
+    stackType: CESeedPepper
+
+- type: entity
+  id: CESeedPepper30
+  parent: CESeedPepper
+  suffix: 30
+  components:
+  - type: Stack
+    stackType: CESeedPepper
+    count: 30
 
 - type: entity
   id: CESeedSage
@@ -98,6 +167,17 @@
     - state: sage
   - type: CESeed
     plantProto: CEPlantSage
+  - type: Stack
+    stackType: CESeedSage
+
+- type: entity
+  id: CESeedSage30
+  parent: CESeedSage
+  suffix: 30
+  components:
+  - type: Stack
+    stackType: CESeedSage
+    count: 30
 
 - type: entity
   id: CESeedCotton
@@ -110,3 +190,14 @@
     - state: cotton
   - type: CESeed
     plantProto: CEPlantCotton
+  - type: Stack
+    stackType: CESeedCotton
+
+- type: entity
+  id: CESeedCotton30
+  parent: CESeedCotton
+  suffix: 30
+  components:
+  - type: Stack
+    stackType: CESeedCotton
+    count: 30
