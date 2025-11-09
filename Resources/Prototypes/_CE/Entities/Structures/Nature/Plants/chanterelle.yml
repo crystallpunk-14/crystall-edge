@@ -6,6 +6,9 @@
   components:
   - type: CEPlant
     updateFrequency: 1
+    soilTile:
+    - CEMycelium
+    - CEMyceliumLight
   - type: CEPlantVisuals
     growthSteps: 2
     readyVariations: 4

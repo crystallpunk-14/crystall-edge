@@ -712,3 +712,49 @@
     tags:
     - CEFarmFood
     - CEVegetable
+
+
+- type: entity
+  id: CEFoodChanterelle
+  parent: FoodInjectableBase
+  categories: [ ForkFiltered ]
+  name: chanterelle
+  description: A delicious mushroom.
+  components:
+  - type: Item
+    size: Tiny
+  - type: FlavorProfile
+    flavors:
+      - shrooms #TODO
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/chanterelle.rsi
+    layers:
+      - state: base1
+        map: [ "random" ]
+  - type: RandomSprite
+    available:
+      - random:
+          base1: ""
+          base2: ""
+          base3: ""
+          base4: ""
+          base5: ""
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 11
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 2.33
+        - ReagentId: Vitamin
+          Quantity: 1.14
+  - type: CESeed
+    plantProto: CEPlantChanterelle
+  - type: Temperature
+    currentTemperature: 290
+  - type: InternalTemperature
+    thickness: 0.006
+    area: 0.006
+  - type: Tag
+    tags:
+    - CEFarmFood

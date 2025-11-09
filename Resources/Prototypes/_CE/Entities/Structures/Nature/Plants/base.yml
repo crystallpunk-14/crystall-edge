@@ -61,8 +61,6 @@
         - Opaque
   - type: CEPlantGatherable
     toolWhitelist:
-      tags:
-        - CEHerbalGathering
       components:
         - Sharp
   - type: Appearance
