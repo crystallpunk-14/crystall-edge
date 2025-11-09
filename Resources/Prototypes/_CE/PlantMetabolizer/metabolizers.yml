@@ -1,0 +1,7 @@
+- type: CEPlantMetabolizer
+  id: Base
+  metabolization:
+    Water:
+      - !type:AffectPlantValues
+        resource: 1
+
