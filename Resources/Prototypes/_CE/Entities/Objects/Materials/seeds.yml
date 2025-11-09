@@ -8,7 +8,7 @@
   - type: Item
     size: Tiny
   - type: Sprite
-    sprite: _CE/Objects/Materials/seeds.rsi
+    state: seeds
   - type: CESeed
   - type: Tag
     tags:
@@ -25,8 +25,7 @@
   parent: CEBaseSeed
   components:
   - type: Sprite
-    layers:
-    - state: wheat
+    sprite: _CE/Objects/Consumable/wheat.rsi
   - type: CESeed
     plantProto: CEPlantWheat
   - type: Stack
@@ -48,8 +47,7 @@
   parent: CEBaseSeed
   components:
   - type: Sprite
-    layers:
-    - state: pumpkin
+    sprite: _CE/Objects/Consumable/pumpkin.rsi
   - type: CESeed
     plantProto: CEPlantPumpkin
   - type: Stack
@@ -71,8 +69,7 @@
   parent: CEBaseSeed
   components:
   - type: Sprite
-    layers:
-    - state: cabbage
+    sprite: _CE/Objects/Consumable/cabbage.rsi
   - type: CESeed
     plantProto: CEPlantCabbage
   - type: Stack
@@ -94,8 +91,7 @@
   parent: CEBaseSeed
   components:
   - type: Sprite
-    layers:
-    - state: cucumber
+    sprite: _CE/Objects/Consumable/cucumber.rsi
   - type: CESeed
     plantProto: CEPlantCucumber
   - type: Stack
@@ -117,8 +113,7 @@
   parent: CEBaseSeed
   components:
   - type: Sprite
-    layers:
-    - state: tomato
+    sprite: _CE/Objects/Consumable/tomato.rsi
   - type: CESeed
     plantProto: CEPlantTomatoes
   - type: Stack
@@ -140,8 +135,7 @@
   parent: CEBaseSeed
   components:
   - type: Sprite
-    layers:
-    - state: pepper
+    sprite: _CE/Objects/Consumable/pepper.rsi
   - type: CESeed
     plantProto: CEPlantPepper
   - type: Stack
@@ -156,28 +150,27 @@
     stackType: CESeedPepper
     count: 30
 
-- type: entity
-  id: CESeedSage
-  name: sage seeds
-  description: Sage seeds. It's time to grow some fun herbs!
-  parent: CEBaseSeed
-  components:
-  - type: Sprite
-    layers:
-    - state: sage
-  - type: CESeed
-    plantProto: CEPlantSage
-  - type: Stack
-    stackType: CESeedSage
+#- type: entity
+#  id: CESeedSage
+#  name: sage seeds
+#  description: Sage seeds. It's time to grow some fun herbs!
+#  parent: CEBaseSeed
+#  components:
+#  - type: Sprite
+#    sprite: _CE/Objects/Consumable/wheat.rsi
+#  - type: CESeed
+#    plantProto: CEPlantSage
+#  - type: Stack
+#    stackType: CESeedSage
 
-- type: entity
-  id: CESeedSage30
-  parent: CESeedSage
-  suffix: 30
-  components:
-  - type: Stack
-    stackType: CESeedSage
-    count: 30
+#- type: entity
+#  id: CESeedSage30
+#  parent: CESeedSage
+#  suffix: 30
+#  components:
+#  - type: Stack
+#    stackType: CESeedSage
+#    count: 30
 
 - type: entity
   id: CESeedCotton
@@ -186,8 +179,7 @@
   parent: CEBaseSeed
   components:
   - type: Sprite
-    layers:
-    - state: cotton
+    sprite: _CE/Objects/Materials/cotton.rsi
   - type: CESeed
     plantProto: CEPlantCotton
   - type: Stack
