@@ -56,7 +56,7 @@ public sealed class CEMappingZNetworkCommand : LocalizedEntityCommands
         }
 
         //Get Map Prototype
-        if (!_proto.TryIndex<GameMapPrototype>(args[0], out var mapProto))
+        if (!_proto.Resolve<GameMapPrototype>(args[0], out var mapProto))
         {
             shell.WriteError($"Unknown GameMapPrototype {args[0]}");
             return;
