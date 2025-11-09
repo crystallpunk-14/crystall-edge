@@ -1,0 +1,46 @@
+- type: entity
+  id: CEPlantAppleTree
+  parent:
+  - CEGatherablePlantMultiHarvestBase
+  - CEBaseTree
+  name: apple tree
+  description: A sturdy tree that bears delicious apples.
+  components:
+  - type: CEPlant
+    updateFrequency: 1
+  - type: CEPlantVisuals
+    growthSteps: 4
+    readyVariations: 2
+  - type: Physics
+    canCollide: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.2,-0.2,0.2,0.2"
+        density: 1000
+        layer:
+        - WallLayer
+  - type: Sprite
+    noRot: true
+    offset: 0, 0.9
+    drawdepth: Mobs
+    layers:
+    - state: liq-1
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+    - state: grow-1
+      sprite: _CE/Structures/Nature/Farm/apple_tree.rsi
+      map: ["enum.PlantVisualLayers.Base"]
+  #- type: CEPlantGatherable
+  #  loot:
+  #    All: !type:AllSelector
+  #      children:
+  #      - id: CE
+  #        rolls: !type:RangeNumberSelector
+  #          range: 4, 6
+  - type: CEWaveShader
+    speed: 3
+    dis: 4
+
