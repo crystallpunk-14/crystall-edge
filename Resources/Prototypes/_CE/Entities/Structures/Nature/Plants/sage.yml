@@ -1,0 +1,27 @@
+- type: entity
+  id: CEPlantSage
+  parent: CEGatherablePlantSingleHarvestBase
+  name: sage
+  description: Medicinal sage. Some love it for its medicinal properties, others for its narcotic properties. Which side are you on?
+  components:
+  - type: CEPlant
+    updateFrequency: 1
+  - type: CEPlantVisuals
+    growthSteps: 3
+    readyVariations: 1
+  - type: Sprite
+    layers:
+    - state: liq-1
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+    - state: grow-1
+      sprite: _CE/Structures/Nature/Farm/sage.rsi
+      map: ["enum.PlantVisualLayers.Base"]
+  - type: CEPlantGatherable
+    loot:
+      All: !type:AllSelector
+        children:
+        - id: CEWildSage
+          rolls: !type:RangeNumberSelector
+            range: 4, 6
+

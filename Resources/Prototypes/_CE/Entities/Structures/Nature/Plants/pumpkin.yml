@@ -1,0 +1,27 @@
+- type: entity
+  id: CEPlantPumpkin
+  parent: CEGatherablePlantSingleHarvestBase
+  name: pumpkin
+  description: Legends say there is a pumpkin king who stares into your soul through the crowns of trees.
+  components:
+  - type: CEPlant
+    updateFrequency: 1
+  - type: CEPlantVisuals
+    growthSteps: 5
+    readyVariations: 2
+  - type: Sprite
+    layers:
+    - state: liq-1
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+    - state: grow-1
+      sprite: _CE/Structures/Nature/Farm/pumpkin.rsi
+      map: ["enum.PlantVisualLayers.Base"]
+  - type: CEPlantGatherable
+    loot:
+      All: !type:AllSelector
+        children:
+        - id: CEFoodPumpkin
+          rolls: !type:RangeNumberSelector
+            range: 4, 6
+
