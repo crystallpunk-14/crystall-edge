@@ -1,8 +1,8 @@
 - type: entity
-  id: CEPlantCabbage
-  parent: CEGatherablePlantSingleHarvestBase
-  name: cabbage
-  description: You see a cabbage in front of you. Perhaps you were born in one.
+  id: CEPlantCucumber
+  parent: CEGatherablePlantMultiHarvestBase
+  name: cucumber
+  description: Don't trust people who know how to turn into pickles.
   components:
   - type: CEPlant
     updateFrequency: 1
@@ -15,13 +15,13 @@
       map: ["enum.SolutionContainerLayers.Fill"]
       visible: false
     - state: grow-1
-      sprite: _CE/Structures/Nature/Farm/cabbage.rsi
+      sprite: _CE/Structures/Nature/Farm/cucumber.rsi
       map: ["enum.PlantVisualLayers.Base"]
   - type: CEPlantGatherable
     loot:
       All: !type:AllSelector
         children:
-        - id: CEFoodCabbage
+        - id: CEFoodCucumber
           rolls: !type:RangeNumberSelector
-            range: 6, 8
+            range: 4, 6
 

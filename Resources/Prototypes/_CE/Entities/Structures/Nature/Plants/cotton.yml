@@ -26,7 +26,4 @@
         - id: CECotton
           rolls: !type:RangeNumberSelector
             range: 4, 6
-        - id: CESeedCotton
-          rolls: !type:RangeNumberSelector
-            range: 1, 2
 

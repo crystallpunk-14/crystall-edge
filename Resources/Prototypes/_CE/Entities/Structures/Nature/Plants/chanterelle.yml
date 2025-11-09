@@ -24,7 +24,4 @@
         - id: CEFoodChanterelle
           rolls: !type:RangeNumberSelector
             range: 6, 8
-        #- id: CESeedCabbage
-        #  rolls: !type:RangeNumberSelector
-        #    range: 1, 2
 
