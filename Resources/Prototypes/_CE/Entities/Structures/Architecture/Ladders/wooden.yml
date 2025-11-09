@@ -3,7 +3,7 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: _CE/Structures/Architecture/wooden.rsi
+    sprite: _CE/Structures/Architecture/Ladders/wooden.rsi
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: CEWoodStructural

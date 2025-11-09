@@ -84,9 +84,9 @@
   suffix: Iron
   components:
   - type: Sprite
-    sprite: _CE/Structures/Fences/iron_big.rsi
+    sprite: _CE/Structures/Architecture/Fences/iron_big.rsi
   - type: Icon
-    sprite: _CE/Structures/Fences/iron_big.rsi
+    sprite: _CE/Structures/Architecture/Fences/iron_big.rsi
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: Metallic
