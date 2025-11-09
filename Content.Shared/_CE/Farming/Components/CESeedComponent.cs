@@ -14,7 +14,4 @@ public sealed partial class CESeedComponent : Component
 
     [DataField(required: true)]
     public EntProtoId PlantProto;
-
-    [DataField]
-    public HashSet<ProtoId<ContentTileDefinition>> SoilTile = new();
 }

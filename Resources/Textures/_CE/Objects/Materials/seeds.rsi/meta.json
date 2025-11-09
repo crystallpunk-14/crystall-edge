@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Created by TheShuEd (Github) ",
+  "states": [
+    {
+      "name": "bag"
+    },
+    {
+      "name": "cabbage"
+    },
+    {
+      "name": "cucumber"
+    },
+    {
+      "name": "pumpkin"
+    },
+    {
+      "name": "seeds"
+    },
+    {
+      "name": "tomato"
+    },
+    {
+      "name": "onion"
+    },
+    {
+      "name": "pepper"
+    },
+    {
+      "name": "wheat"
+    },
+    {
+      "name": "sage"
+    },
+    {
+      "name": "cotton"
+    }
+  ]
+}

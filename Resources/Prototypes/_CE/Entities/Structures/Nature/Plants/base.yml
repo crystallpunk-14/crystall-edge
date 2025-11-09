@@ -77,6 +77,12 @@
     energy: 30
     growthLevel: 0
     solution: plant
+    soilTile:
+    - CEGrass
+    - CEGrassLight
+    - CEGrassTall
+    - CEDirt
+    - CEDirtSeedbed
   - type: SolutionContainerManager
     solutions:
       plant:

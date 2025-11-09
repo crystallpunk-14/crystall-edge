@@ -153,7 +153,7 @@
     East: /Textures/_CE/Tiles/MyceliumLight/double_edge_E.png
     North: /Textures/_CE/Tiles/MyceliumLight/double_edge_N.png
     West: /Textures/_CE/Tiles/MyceliumLight/double_edge_W.png
-  baseTurf: CEDirt
+  baseTurf: CEMycelium
   deconstructTools: [ CEShovel ]
   isSubfloor: false
   footstepSounds:

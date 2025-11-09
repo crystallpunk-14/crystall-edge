@@ -27,6 +27,16 @@ public sealed partial class CEFarmingSystem : CESharedFarmingSystem
 
     private void OnMapInit(Entity<CEPlantComponent> plant, ref MapInitEvent args)
     {
+        var proto = MetaData(plant).EntityPrototype;
+        if (proto is null)
+            return;
+
+        if (!CanPlant(proto, Transform(plant).Coordinates, null, plant))
+        {
+            QueueDel(plant);
+            return;
+        }
+
         var newTime = _random.NextFloat(plant.Comp.UpdateFrequency);
         plant.Comp.NextUpdateTime = _timing.CurTime + TimeSpan.FromSeconds(newTime);
     }

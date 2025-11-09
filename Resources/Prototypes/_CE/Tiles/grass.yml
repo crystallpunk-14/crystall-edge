@@ -52,7 +52,7 @@
     East: /Textures/_CE/Tiles/GrassLight/double_edge_E.png
     North: /Textures/_CE/Tiles/GrassLight/double_edge_N.png
     West: /Textures/_CE/Tiles/GrassLight/double_edge_W.png
-  baseTurf: CEDirt
+  baseTurf: CEGrass
   deconstructTools: [ CEShovel ]
   isSubfloor: false
   footstepSounds:
@@ -83,7 +83,7 @@
     East: /Textures/_CE/Tiles/GrassTall/double_edge_E.png
     North: /Textures/_CE/Tiles/GrassTall/double_edge_N.png
     West: /Textures/_CE/Tiles/GrassTall/double_edge_W.png
-  baseTurf: CEDirt
+  baseTurf: CEGrassLight
   deconstructTools: [ CEShovel ]
   isSubfloor: false
   footstepSounds:
@@ -145,7 +145,7 @@
     East: /Textures/_CE/Tiles/GrassBloodLight/double_edge_E.png
     North: /Textures/_CE/Tiles/GrassBloodLight/double_edge_N.png
     West: /Textures/_CE/Tiles/GrassBloodLight/double_edge_W.png
-  baseTurf: CEDirt
+  baseTurf: CEGrassBlood
   deconstructTools: [ CEShovel ]
   isSubfloor: false
   footstepSounds:
@@ -176,7 +176,7 @@
     East: /Textures/_CE/Tiles/GrassBloodTall/double_edge_E.png
     North: /Textures/_CE/Tiles/GrassBloodTall/double_edge_N.png
     West: /Textures/_CE/Tiles/GrassBloodTall/double_edge_W.png
-  baseTurf: CEDirt
+  baseTurf: CEGrassLightBlood
   deconstructTools: [ CEShovel ]
   isSubfloor: false
   footstepSounds:

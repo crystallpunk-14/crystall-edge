@@ -1,0 +1,112 @@
+- type: entity
+  id: CEBaseSeed
+  parent: BaseItem
+  abstract: true
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: _CE/Objects/Materials/seeds.rsi
+  - type: CESeed
+  - type: Tag
+    tags:
+    - CEFarmSeed
+  - type: StaticPrice
+    price: 1
+
+- type: entity
+  id: CESeedWheat
+  name: wheat seeds
+  description: Small wheat seeds. What will you do with them? Grind them into flour, or plant them again?
+  parent: CEBaseSeed
+  components:
+  - type: Sprite
+    layers:
+    - state: wheat
+  - type: CESeed
+    plantProto: CEPlantWheat
+
+- type: entity
+  id: CESeedPumpkin
+  name: pumpkin seeds
+  description: Pumpkin seeds. Some pumpkin seems to have been gutted and butchered.
+  parent: CEBaseSeed
+  components:
+  - type: Sprite
+    layers:
+    - state: pumpkin
+  - type: CESeed
+    plantProto: CEPlantPumpkin
+
+- type: entity
+  id: CESeedCabbage
+  name: cabbage seeds
+  description: Oh, no, my cabbage!
+  parent: CEBaseSeed
+  components:
+  - type: Sprite
+    layers:
+    - state: cabbage
+  - type: CESeed
+    plantProto: CEPlantCabbage
+
+- type: entity
+  id: CESeedCucumber
+  name: cucumber seeds
+  description: Are cucumber seeds. You know what to do with them.
+  parent: CEBaseSeed
+  components:
+  - type: Sprite
+    layers:
+    - state: cucumber
+  - type: CESeed
+    plantProto: CEPlantCucumber
+
+- type: entity
+  id: CESeedTomato
+  name: tomato seeds
+  description: It looks like powder! They're so small, these seeds.
+  parent: CEBaseSeed
+  components:
+  - type: Sprite
+    layers:
+    - state: tomato
+  - type: CESeed
+    plantProto: CEPlantTomatoes
+
+- type: entity
+  id: CESeedPepper
+  name: pepper seeds
+  description: Pepper seeds, with a peppercorn inside.
+  parent: CEBaseSeed
+  components:
+  - type: Sprite
+    layers:
+    - state: pepper
+  - type: CESeed
+    plantProto: CEPlantPepper
+
+- type: entity
+  id: CESeedSage
+  name: sage seeds
+  description: Sage seeds. It's time to grow some fun herbs!
+  parent: CEBaseSeed
+  components:
+  - type: Sprite
+    layers:
+    - state: sage
+  - type: CESeed
+    plantProto: CEPlantSage
+
+- type: entity
+  id: CESeedCotton
+  name: cotton seeds
+  description: Cotton seeds. It's time to grow some pants!
+  parent: CEBaseSeed
+  components:
+  - type: Sprite
+    layers:
+    - state: cotton
+  - type: CESeed
+    plantProto: CEPlantCotton

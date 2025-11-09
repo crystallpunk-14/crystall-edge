@@ -38,6 +38,12 @@ public abstract partial class CESharedFarmingSystem : EntitySystem
         SolutionQuery = GetEntityQuery<SolutionContainerManagerComponent>();
 
         SubscribeLocalEvent<CEPlantComponent, ExaminedEvent>(OnExamine);
+        SubscribeLocalEvent<CEPlantComponent, AnchorStateChangedEvent>(OnAnchorStateChanged);
+    }
+    private void OnAnchorStateChanged(Entity<CEPlantComponent> ent, ref AnchorStateChangedEvent args)
+    {
+        if (!args.Anchored)
+            _destructible.DestroyEntity(ent.Owner);
     }
 
     private void OnExamine(EntityUid uid, CEPlantComponent component, ExaminedEvent args)

@@ -1,11 +1,13 @@
 using Content.Shared._CE.Farming.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.EntityTable;
+using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Maps;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.Farming;
@@ -17,6 +19,8 @@ public abstract partial class CESharedFarmingSystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly EntityTableSystem _entityTable = default!;
     [Dependency] private readonly TurfSystem _turf = default!;
+    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private readonly IComponentFactory _compFactory = default!;
 
     private void InitializeInteractions()
     {
@@ -25,6 +29,15 @@ public abstract partial class CESharedFarmingSystem
         SubscribeLocalEvent<CEPlantGatherableComponent, CEPlantGatherDoAfterEvent>(OnGatherDoAfter);
 
         SubscribeLocalEvent<CESeedComponent, CEPlantSeedDoAfterEvent>(OnSeedPlantedDoAfter);
+        SubscribeLocalEvent<CESeedComponent, ExaminedEvent>(OnSeedExamine);
+    }
+
+    private void OnSeedExamine(Entity<CESeedComponent> ent, ref ExaminedEvent args)
+    {
+        if (!_proto.Resolve(ent.Comp.PlantProto, out var plantProto))
+            return;
+
+        args.PushMarkup(Loc.GetString("ce-farming-seed-examine", ("name", plantProto.Name)));
     }
 
     private void OnActivate(Entity<CEPlantGatherableComponent> gatherable, ref InteractUsingEvent args)
@@ -138,7 +151,10 @@ public abstract partial class CESharedFarmingSystem
         if (args.Handled || !args.CanReach)
             return;
 
-        if (!CanPlantSeed(seed, args.ClickLocation, args.User))
+        if (args.Target is not null)
+            return;
+
+        if (!CanPlant(seed.Comp.PlantProto, args.ClickLocation, args.User))
             return;
 
         var doAfterArgs =
@@ -165,7 +181,7 @@ public abstract partial class CESharedFarmingSystem
             return;
 
         var position = GetCoordinates(args.Coordinates);
-        if (!CanPlantSeed(ent, position, args.User))
+        if (!CanPlant(ent.Comp.PlantProto, position, args.User))
             return;
 
         args.Handled = true;
@@ -174,39 +190,49 @@ public abstract partial class CESharedFarmingSystem
         QueueDel(ent);
     }
 
-    public bool CanPlantSeed(Entity<CESeedComponent> seed, EntityCoordinates position, EntityUid? user)
+    protected bool CanPlant(EntityPrototype plant, EntityCoordinates position, EntityUid? user, EntityUid? exclude = null)
     {
         var map = _transform.GetMap(position);
         if (!TryComp<MapGridComponent>(map, out var gridComp))
             return false;
 
-        var tileRef = _map.GetTileRef(map.Value, gridComp, position);
-
-        var tile = _turf.GetContentTileDefinition(tileRef);
-
-        if (!seed.Comp.SoilTile.Contains(tile))
+        if (plant.TryGetComponent<CEPlantComponent>(out var plantComp, _compFactory)
+            && plantComp.SoilTile.Count > 0)
         {
-            if (user is not null && _timing.IsFirstTimePredicted && _net.IsClient)
-            {
-                _popup.PopupEntity(Loc.GetString("ce-farming-soil-wrong", ("seed", MetaData(seed).EntityName)),
-                    user.Value,
-                    user.Value);
-            }
+            var tileRef = _map.GetTileRef(map.Value, gridComp, position);
+            var tile = _turf.GetContentTileDefinition(tileRef);
 
-            return false;
-        }
-
-        foreach (var anchored in _map.GetAnchoredEntities((map.Value, gridComp), position))
-        {
-            if (PlantQuery.TryComp(anchored, out var plant))
+            if (!plantComp.SoilTile.Contains(tile))
             {
                 if (user is not null && _timing.IsFirstTimePredicted && _net.IsClient)
-                    _popup.PopupEntity(Loc.GetString("ce-farming-soil-occupied"), user.Value, user.Value);
+                {
+                    _popup.PopupEntity(Loc.GetString("ce-farming-soil-wrong", ("seed", plant.Name)),
+                        user.Value,
+                        user.Value);
+                }
+
                 return false;
             }
         }
 
+        foreach (var anchored in _map.GetAnchoredEntities((map.Value, gridComp), position))
+        {
+            if (anchored == exclude)
+                continue;
+
+            if (user is not null && _timing.IsFirstTimePredicted && _net.IsClient) _popup.PopupEntity(Loc.GetString("ce-farming-soil-occupied"), user.Value, user.Value);
+                return false;
+        }
+
         return true;
+    }
+
+    protected bool CanPlant(EntProtoId plant, EntityCoordinates position, EntityUid? user, EntityUid? exclude = null)
+    {
+        if (!_proto.Resolve(plant, out var plantProto))
+            return false;
+
+        return CanPlant(plantProto, position, user);
     }
 }
 

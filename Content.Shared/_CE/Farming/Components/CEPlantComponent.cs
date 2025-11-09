@@ -1,4 +1,6 @@
+using Content.Shared.Maps;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.Farming.Components;
 
@@ -43,6 +45,12 @@ public sealed partial class CEPlantComponent : Component
     /// </summary>
     [DataField]
     public string? Solution;
+
+    /// <summary>
+    /// On which tiles can this plant grow? If empty - on any.
+    /// </summary>
+    [DataField]
+    public HashSet<ProtoId<ContentTileDefinition>> SoilTile = new();
 }
 
 /// <summary>
