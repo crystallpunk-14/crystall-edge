@@ -1,4 +1,3 @@
-
 - type: department
   id: CEGuard
   name: department-CEGuard
@@ -12,29 +11,6 @@
   - CEGuard
 
 - type: department
-  id: CEMercenaries
-  name: department-CEMercenaries
-  description: department-CEMercenaries-desc
-  weight: 8
-  color: "#1d8534"
-  editorHidden: false
-  roles:
-  - CEGuildmaster
-  - CEGuildWorker
-  - CEMercenary
-
-- type: department
-  id: CEBlackCovenant
-  name: department-CEBlackCovenant
-  description: department-CEBlackCovenant-desc
-  weight: 7
-  color: "#222222"
-  editorHidden: false
-  roles:
-  - CECovenantHead
-  - CECovenantAgent
-
-- type: department
   id: CECitizens
   name: department-CECitizens
   description: department-CECitizens-desc
@@ -42,7 +18,5 @@
   color: "#bd7c21"
   editorHidden: false
   roles:
-  - CEMayor
+  #- CEMayor
   - CETownfolk
-  #- Alchemist
-  #- Innkeeper

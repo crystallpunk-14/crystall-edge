@@ -1,0 +1,247 @@
+- type: entity
+  id: CEPipeBrassMediumBase
+  parent: CEPipeBase
+  description: Insulated brass pipe with iron supports. A standardized method of transmitting arcane energy over long distances. However, any holes or cracks can lead to energy leakage and harm to surrounding creatures susceptible to magic.
+  abstract: true
+  categories: [ ForkFiltered ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: PlacementReplacement
+    key: pipe_medium
+  - type: CEPipeVisualizer
+    statePrefix: pipe_
+  - type: Physics
+    canCollide: false
+
+- type: entity
+  id: CEPipeBrassMedium
+  parent: CEPipeBrassMediumBase
+  name: small brass pipe
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Industrial/Power/Pipes/medium_flat.rsi
+    state: pipe_15
+    drawdepth: ThinWire
+  - type: Icon
+    sprite: _CE/Structures/Industrial/Power/Pipes/medium_flat.rsi
+    state: pipe_15
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 25
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEBrassScrap1:
+            min: 1
+            max: 1
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:ChangeConstructionNodeBehavior
+        node: CEPipeBrassMediumBroken
+  - type: NodeContainer
+    nodes:
+      power:
+        !type:CableNode
+        nodeGroupID: MVPower
+  - type: Construction
+    graph: CEPipeBrassMedium
+    node: CEPipeBrassMedium
+
+- type: entity
+  parent: CEPipeBrassMedium
+  id: CEPipeBrassMediumVerticalUp
+  name: small brass pipe up
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Industrial/Power/Pipes/medium_up.rsi
+  - type: Icon
+    sprite: _CE/Structures/Industrial/Power/Pipes/medium_up.rsi
+  - type: NodeContainer
+    nodes:
+      power:
+        !type:CableNode
+        nodeGroupID: MVPower
+      power_vertical:
+        !type:CECableVerticalNode
+        up: true
+        nodeGroupID: MVPower
+  - type: Construction
+    graph: CEPipeBrassMedium
+    node: CEPipeBrassMediumVerticalUp
+
+- type: entity
+  parent: CEPipeBrassMedium
+  id: CEPipeBrassMediumVerticalDown
+  name: small brass pipe down
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Industrial/Power/Pipes/medium_down.rsi
+  - type: Icon
+    sprite: _CE/Structures/Industrial/Power/Pipes/medium_down.rsi
+  - type: NodeContainer
+    nodes:
+      power:
+        !type:CableNode
+        nodeGroupID: MVPower
+      power_vertical:
+        !type:CECableVerticalNode
+        down: true
+        nodeGroupID: MVPower
+  - type: Construction
+    graph: CEPipeBrassMedium
+    node: CEPipeBrassMediumVerticalDown
+
+# Valve
+
+- type: entity
+  id: CEPipeBrassMediumValve
+  parent: CEPipeBrassMedium
+  name: small valve
+  description: A valve installed on a brass pipe, allowing for the regulation of arcane energy flow through the pipe.
+  suffix: Valve, Off
+  components:
+  - type: InteractionOutline
+  - type: CEToggleableCable
+    active: false
+  - type: Sprite
+    layers:
+    - state: pipe_15
+    - state: valve_off
+      map: ["valve"]
+    - state: valve_off_light
+      shader: unshaded
+      map: ["valve_light"]
+  - type: NodeContainer
+    nodes:
+      power:
+        !type:CableNode
+        nodeGroupID: MVPower
+        active: false
+  - type: UseDelay
+  - type: GenericVisualizer
+    visuals:
+      enum.CEToggleableCableVisuals.Enabled:
+        valve_light:
+          True: {state: valve_on_light}
+          False: {state: valve_off_light}
+        valve:
+          True: {state: valve_on}
+          False: {state: valve_off}
+  - type: EmitSoundOnActivate
+    sound: /Audio/Effects/toss.ogg
+  - type: Construction
+    graph: CEPipeBrassMedium
+    node: CEPipeBrassMediumValve
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 25
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEBrassScrap1:
+            min: 1
+            max: 1
+          CEIronScrap1:
+            min: 1
+            max: 1
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:ChangeConstructionNodeBehavior
+        node: CEPipeBrassMediumBroken
+
+- type: entity
+  id: CEPipeBrassMediumValveOn
+  parent: CEPipeBrassMediumValve
+  suffix: Valve, On
+  components:
+  - type: CEToggleableCable
+    active: true
+  - type: Sprite
+    layers:
+    - state: pipe_15
+    - state: valve_on
+      map: ["valve"]
+    - state: valve_on_light
+      shader: unshaded
+      map: ["valve_light"]
+  - type: NodeContainer
+    nodes:
+      power:
+        !type:CableNode
+        nodeGroupID: MVPower
+        active: true
+
+# Broken
+
+- type: entity
+  id: CEPipeBrassMediumBroken
+  parent: CEPipeBrassMedium
+  categories: [ ForkFiltered ]
+  description: Damaged brass pipe. The arcane energy flowing through them will flow here and may pose a serious danger to creatures susceptible to magic.
+  suffix: Broken
+  components:
+  - type: Sprite
+    layers:
+    - state: broken_pipe_15
+    - state: electrified
+      shader: unshaded
+      visible: false
+      map: [ sparkle ]
+  - type: GenericVisualizer
+    visuals:
+      enum.CEPowerConsumerVisuals.Active:
+        sparkle:
+          True: {visible: true}
+          False: {visible: false}
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEBrassScrap1:
+            min: 1
+            max: 1
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: PowerConsumer
+    voltage: Medium
+    drawRate: 2
+  - type: RadiationSource
+    intensity: 0
+  - type: CEEnergyLeak
+    leakPercentage: 1
+  - type: PointLight
+    radius: 1.5
+    energy: 2
+    color: "#309fdf"
+    enabled: false
+  - type: LightBehaviour
+    behaviours:
+    - !type:RandomizeBehaviour
+      interpolate: Nearest
+      minDuration: 0.02
+      maxDuration: 0.06
+      startValue: 0.0
+      endValue: 3.0
+      property: Energy
+      isLooped: true
+      enabled: false
+  - type: Construction
+    graph: CEPipeBrassMedium
+    node: CEPipeBrassMediumBroken
+    defaultTarget: CEPipeBrassMedium
+  - type: CEPipeVisualizer
+    statePrefix: broken_pipe_

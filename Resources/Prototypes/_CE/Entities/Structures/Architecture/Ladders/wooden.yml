@@ -1,0 +1,47 @@
+- type: entity
+  id: CEZLevelsLadderWoodenBase
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Ladders/wooden.rsi
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: CEWoodStructural
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEWoodenPlanks1:
+            min: 1
+            max: 2
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent:
+  - CEZLevelLadderBase
+  - CEZLevelsLadderWoodenBase
+  id: CEZLevelLadderWooden
+  suffix: Wooden
+  components:
+  - type: Construction
+    graph: CEZLevelLadderWooden
+    node: CEZLevelLadderWooden
+
+- type: entity
+  parent:
+  - CEZLevelLadderCornerBase
+  - CEZLevelsLadderWoodenBase
+  id: CEZLevelLadderWoodenCorner
+  suffix: Wooden Corner
+  components:
+  - type: Construction
+    graph: CEZLevelLadderWooden
+    node: CEZLevelLadderWoodenCorner

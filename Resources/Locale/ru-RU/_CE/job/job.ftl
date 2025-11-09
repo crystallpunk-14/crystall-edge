@@ -16,22 +16,3 @@ ce-job-desc-mayor = TODO
 
 ce-job-name-townfolk = Горожанин
 ce-job-desc-townfolk = TODO
-
-# Mercenaries
-
-ce-job-name-guildmaster = Гильдмастер
-ce-job-desc-guildmaster = TODO
-
-ce-job-name-guildworker = Работник гильдии
-ce-job-desc-guildworker = TODO
-
-ce-job-name-mercenary = Наемник
-ce-job-desc-mercenary = TODO
-
-# Black Covenant
-
-ce-job-name-covenant-head = Глава ковенанта
-ce-job-desc-covenant-head = TODO
-
-ce-job-name-covenant-agent = Агент
-ce-job-desc-covenant-agent = TODO

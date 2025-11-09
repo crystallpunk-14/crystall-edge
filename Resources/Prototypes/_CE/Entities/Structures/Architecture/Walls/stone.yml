@@ -1,0 +1,97 @@
+# Stone brick
+
+- type: entity
+  id: CEWallFrameStoneBrick
+  name: stone brick wall base
+  parent: CEBaseWallFrame
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Walls/bricks_stone.rsi
+    state: frame
+  - type: Icon
+    sprite: _CE/Structures/Architecture/Walls/bricks_stone.rsi
+    state: frame
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Rock
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 70
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEStoneBlock1:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Construction
+    graph: CEWallStoneBrick
+    node: CEWallFrameStoneBrick
+
+- type: entity
+  id: CEWallStoneBrick
+  name: stone brick wall
+  parent: CEBaseWall
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Walls/bricks_stone.rsi
+  - type: Icon
+    sprite: _CE/Structures/Architecture/Walls/bricks_stone.rsi
+  - type: IconSmooth
+    base: stonebricks
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Rock
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 70
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEStoneBlock1:
+            min: 1
+            max: 2
+      - !type:ChangeConstructionNodeBehavior
+        node: CEWallFrameStoneBrick
+  - type: Construction
+    graph: CEWallStoneBrick
+    node: CEWallStoneBrick
+
+- type: entity
+  id: CEWallStoneBrickOld
+  name: old stone brick wall
+  parent: CEBaseWall
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Walls/brick_stone_old.rsi
+  - type: Icon
+    sprite: _CE/Structures/Architecture/Walls/brick_stone_old.rsi
+  - type: IconSmooth
+    base: stonebricks
+
+- type: entity
+  id: CEWallStoneBrickBrown
+  name: brown stone brick wall
+  parent: CEBaseWall
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Walls/bricks_brown.rsi
+  - type: Icon
+    sprite: _CE/Structures/Architecture/Walls/bricks_brown.rsi
+  - type: IconSmooth
+    base: bricksA

@@ -16,22 +16,3 @@
 
 - type: playTimeTracker
   id: CEJobTownfolk
-
-# Mercenaries
-
-- type: playTimeTracker
-  id: CEJobGuildmaster
-
-- type: playTimeTracker
-  id: CEJobGuildWorker
-
-- type: playTimeTracker
-  id: CEJobMercenary
-
-# Black Covenant
-
-- type: playTimeTracker
-  id: CEJobCovenantHead
-
-- type: playTimeTracker
-  id: CEJobCovenantAgent

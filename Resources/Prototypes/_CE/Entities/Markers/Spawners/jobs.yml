@@ -11,20 +11,6 @@
 # Citizens
 
 - type: entity
-  id: CESpawnPointMayor
-  parent: CESpawnPointJobBase
-  name: mayor
-  categories:
-  - Spawner
-  components:
-  - type: SpawnPoint
-    job_id: CEMayor
-  - type: Sprite
-    layers:
-      - state: green
-      - state: workman #TODO
-
-- type: entity
   id: CESpawnPointTownfolk
   parent: CESpawnPointJobBase
   name: townfolk
@@ -81,47 +67,3 @@
     layers:
       - state: green
       - state: investigator
-
-# Mercenaries
-
-- type: entity
-  id: CESpawnPointGuildmaster
-  parent: CESpawnPointJobBase
-  name: guildmaster
-  categories:
-  - Spawner
-  components:
-  - type: SpawnPoint
-    job_id: CEGuildmaster
-  - type: Sprite
-    layers:
-      - state: green
-      - state: guildmaster
-
-- type: entity
-  id: CESpawnPointGuildWorker
-  parent: CESpawnPointJobBase
-  name: guild worker
-  categories:
-  - Spawner
-  components:
-  - type: SpawnPoint
-    job_id: CEGuildWorker
-  - type: Sprite
-    layers:
-      - state: green
-      - state: workman
-
-- type: entity
-  id: CESpawnPointMercenary
-  parent: CESpawnPointJobBase
-  name: mercenary
-  categories:
-  - Spawner
-  components:
-  - type: SpawnPoint
-    job_id: CEMercenary
-  - type: Sprite
-    layers:
-      - state: green
-      - state: adventurer
