@@ -1,0 +1,32 @@
+- type: entity
+  id: CEPlantCotton
+  parent: CEGatherablePlantSingleHarvestBase
+  name: cotton
+  description: In a way, you're growing future clothes.
+  components:
+  - type: CEPlant
+    updateFrequency: 1
+  - type: CEPlantVisuals
+    growthSteps: 5
+    readyVariations: 2
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - state: liq-1
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+    - state: grow-1
+      offset: 0, 0.5
+      sprite: _CE/Structures/Nature/Farm/cotton.rsi
+      map: ["enum.PlantVisualLayers.Base"]
+  - type: CEPlantGatherable
+    loot:
+      All: !type:AllSelector
+        children:
+        - id: CECotton
+          rolls: !type:RangeNumberSelector
+            range: 4, 6
+        - id: CESeedCotton
+          rolls: !type:RangeNumberSelector
+            range: 1, 2
+

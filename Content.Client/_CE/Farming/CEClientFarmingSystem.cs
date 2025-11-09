@@ -37,8 +37,10 @@ public sealed class CEClientFarmingSystem : CESharedFarmingSystem
         if (!Resolve(visuals, ref plant, false))
             return;
 
-        if (plant.GrowthLevel <= 1) //Growing
+        if (plant.GrowthLevel < 1) //Growing
         {
+            visuals.Comp.SelectedVariation = null;
+
             var growthState = ContentHelpers.RoundToNearestLevels(plant.GrowthLevel, 1, visuals.Comp.GrowthSteps);
             if (growthState == 0)
                 growthState++;
@@ -51,14 +53,14 @@ public sealed class CEClientFarmingSystem : CESharedFarmingSystem
         }
         else //Fully frown
         {
-            var grownVariant = _random.Next(0, visuals.Comp.ReadyVariation);
+            if (visuals.Comp.SelectedVariation is null)
+                visuals.Comp.SelectedVariation = _random.Next(1, visuals.Comp.ReadyVariations + 1);
 
             if (_sprite.LayerMapTryGet(visuals.Owner, PlantVisualLayers.Base, out _, false))
-                _sprite.LayerSetRsiState(visuals.Owner, PlantVisualLayers.Base, $"{visuals.Comp.ReadyState}{grownVariant}");
+                _sprite.LayerSetRsiState(visuals.Owner, PlantVisualLayers.Base, $"{visuals.Comp.ReadyState}{visuals.Comp.SelectedVariation}");
 
             if (_sprite.LayerMapTryGet(visuals.Owner, PlantVisualLayers.BaseUnshaded, out _, false))
-                _sprite.LayerSetRsiState(visuals.Owner, PlantVisualLayers.BaseUnshaded, $"{visuals.Comp.ReadyUnshadedState}{grownVariant}");
+                _sprite.LayerSetRsiState(visuals.Owner, PlantVisualLayers.BaseUnshaded, $"{visuals.Comp.ReadyUnshadedState}{visuals.Comp.SelectedVariation}");
         }
-
     }
 }

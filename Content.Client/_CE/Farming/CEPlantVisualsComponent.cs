@@ -10,7 +10,7 @@ public sealed partial class CEPlantVisualsComponent : Component
     /// The state of a gradually growing plant
     /// </summary>
     [DataField]
-    public string GrowState = "grow";
+    public string GrowState = "grow-";
 
     [DataField]
     public string? GrowUnshadedState;
@@ -25,7 +25,7 @@ public sealed partial class CEPlantVisualsComponent : Component
     /// The state of a fully grown plant.
     /// </summary>
     [DataField]
-    public string ReadyState = "grown";
+    public string ReadyState = "grown-";
 
     [DataField]
     public string? ReadyUnshadedState;
@@ -34,7 +34,10 @@ public sealed partial class CEPlantVisualsComponent : Component
     /// Number of variations of the sprite of a fully grown plant
     /// </summary>
     [DataField]
-    public int ReadyVariation = 1;
+    public int ReadyVariations = 1;
+
+    [DataField]
+    public int? SelectedVariation = null;
 }
 
 public enum PlantVisualLayers : byte

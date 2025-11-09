@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "license": "All right reserved",
+  "copyright": "Created by TheShuEd",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "liq-1"
+    },
+    {
+      "name": "liq-2"
+    },
+    {
+      "name": "liq-3"
+    },
+    {
+      "name": "liq-4"
+    }
+  ]
+}
