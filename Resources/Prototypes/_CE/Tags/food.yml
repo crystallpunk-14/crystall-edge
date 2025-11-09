@@ -1,0 +1,63 @@
+# Util
+
+- type: Tag
+  id: CEFitInFryingPan
+
+# Meat
+
+- type: Tag
+  id: CEMeat
+
+- type: Tag
+  id: CEMeatLeg
+
+- type: Tag
+  id: CEMeatSlice
+
+- type: Tag
+  id: CEMeatCutlet
+
+- type: Tag
+  id: CEMeatMonster
+
+- type: Tag
+  id: CEMeatPig
+
+# Vegetable
+
+- type: Tag
+  id: CEVegetable
+
+- type: Tag
+  id: CESalad
+
+- type: Tag
+  id: CECabbage
+
+- type: Tag
+  id: CEPotato
+
+- type: Tag
+  id: CEPumpkin
+
+# Fruits
+
+- type: Tag
+  id: CEFruits
+
+# Misc
+
+- type: Tag
+  id: CEWheat
+
+- type: Tag
+  id: CEEgg
+
+- type: Tag
+  id: CEDough
+
+- type: Tag
+  id: CECheese
+
+- type: Tag
+  id: CESandwich

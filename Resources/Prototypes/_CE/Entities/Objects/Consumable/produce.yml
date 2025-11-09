@@ -1,54 +1,68 @@
-#- type: entity
-#  id: CEWheat
-#  parent: FoodInjectableBase
-#  name: wheat bushel
-#  description: You have the choice of either planting the grains again or grinding them into flour.
-#  categories: [ ForkFiltered ]
-#  components:
-#  - type: Item
-#    size: Tiny
-#  - type: Sprite
-#    sprite: _CE/Objects/Consumable/wheat.rsi
-#    layers:
-#      - state: base1
-#        map: ["random"]
-#  - type: RandomSprite
-#    available:
-#    - random:
-#        base1: ""
-#        base2: ""
-#  - type: Tag
-#    tags:
-#    - CEWheat
-#    - CEFarmFood
-#  - type: StaticPrice
-#    price: 1
-#
-#- type: entity
-#  id: CECotton
-#  parent: FoodInjectableBase
-#  name: cotton
-#  description: A plant raw fiber used to make cotton fabric.
-#  categories: [ ForkFiltered ]
-#  components:
-#  - type: Item
-#    size: Tiny
-#  - type: Sprite
-#    sprite: _CE/Objects/Consumable/cotton.rsi
-#    layers:
-#      - state: base1
-#        map: ["random"]
-#  - type: RandomSprite
-#    available:
-#    - random:
-#        base1: ""
-#        base2: ""
-#        base3: ""
-#  - type: Tag
-#    tags:
-#    - CEFarmFood
-#  - type: StaticPrice
-#    price: 1
+- type: entity
+  id: CEWheat
+  parent: FoodInjectableBase
+  name: wheat bushel
+  description: You have the choice of either planting the grains again or grinding them into flour.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/wheat.rsi
+    layers:
+      - state: base1
+        map: ["random"]
+  - type: RandomSprite
+    available:
+    - random:
+        base1: ""
+        base2: ""
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 12
+        reagents:
+        - ReagentId: Flour
+          Quantity: 5
+  - type: Tag
+    tags:
+    - CEWheat
+    - CEFarmFood
+  - type: StaticPrice
+    price: 1
+
+- type: entity
+  id: CECotton
+  parent: FoodInjectableBase
+  name: cotton
+  description: A plant raw fiber used to make cotton fabric.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/cotton.rsi
+    layers:
+      - state: base1
+        map: ["random"]
+  - type: RandomSprite
+    available:
+    - random:
+        base1: ""
+        base2: ""
+        base3: ""
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 12
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 5
+  - type: Tag
+    tags:
+    - CEFarmFood
+  - type: StaticPrice
+    price: 1
 
 - type: entity
   id: CEFoodCabbage
@@ -126,9 +140,9 @@
           Quantity: 0.83
         - ReagentId: Vitamin
           Quantity: 0.14
-  - type: FoodSequenceElement
-    entries:
-      CESandwich: CECabbageSandwich
+  #- type: FoodSequenceElement
+  #  entries:
+  #    CESandwich: CECabbageSandwich
   - type: Tag
     tags:
     - CEFarmFood
@@ -212,9 +226,9 @@
           Quantity: 1.33
         - ReagentId: Vitamin
           Quantity: 0.57
-  - type: FoodSequenceElement
-    entries:
-      CESandwich: CEPumpkinSandwich
+  #- type: FoodSequenceElement
+  #  entries:
+  #    CESandwich: CEPumpkinSandwich
   - type: Tag
     tags:
     - CEFarmFood
@@ -344,9 +358,9 @@
           Quantity: 1
         - ReagentId: Water
           Quantity: 1.5
-  - type: FoodSequenceElement
-    entries:
-      CESandwich: CECucumberSandwich
+  #- type: FoodSequenceElement
+  #  entries:
+  #    CESandwich: CECucumberSandwich
   - type: Tag
     tags:
     - CEFarmFood
@@ -451,9 +465,9 @@
           Quantity: 0.33
         - ReagentId: Vitamin
           Quantity: 0.57
-  - type: FoodSequenceElement
-    entries:
-      CESandwich: CETomatoesSandwich
+  #- type: FoodSequenceElement
+  #  entries:
+  #    CESandwich: CETomatoesSandwich
   - type: Tag
     tags:
     - CEFarmFood
@@ -537,9 +551,9 @@
           Quantity: 0.83
         - ReagentId: Vitamin
           Quantity: 0.57
-  - type: FoodSequenceElement
-    entries:
-      CESandwich: CEAppleSandwich
+  #- type: FoodSequenceElement
+  #  entries:
+  #    CESandwich: CEAppleSandwich
   - type: Tag
     tags:
     - CEFarmFood
@@ -611,9 +625,9 @@
           Quantity: 2
         - ReagentId: Vitamin
           Quantity: 1
-  - type: FoodSequenceElement
-    entries:
-      CESandwich: CEPepperSandwich
+  #- type: FoodSequenceElement
+  #  entries:
+  #    CESandwich: CEPepperSandwich
   - type: Tag
     tags:
     - CEFarmFood
@@ -691,9 +705,9 @@
           Quantity: 1
         - ReagentId: Allicin
           Quantity: 0.8
-  - type: FoodSequenceElement
-    entries:
-      CESandwich: CEOnionSandwich
+  #- type: FoodSequenceElement
+  #  entries:
+  #    CESandwich: CEOnionSandwich
   - type: Tag
     tags:
     - CEFarmFood
