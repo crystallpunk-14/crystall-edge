@@ -28,8 +28,6 @@
         layer:
         - GhostImpassable
   #CrystallEdge
-  - type: CEZPhysics
-    active: false
   - type: CEZLevelGhostMover
 
 # shared parent between aghosts, replay spectators and normal observers

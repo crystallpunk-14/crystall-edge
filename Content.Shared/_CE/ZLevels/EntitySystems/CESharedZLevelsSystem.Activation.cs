@@ -1,3 +1,4 @@
+using Content.Shared.Ghost;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
@@ -31,6 +32,12 @@ public abstract partial class CESharedZLevelsSystem
     private void CheckActivation(Entity<CEZPhysicsComponent> ent)
     {
         var xform = Transform(ent);
+
+        if (HasComp<GhostComponent>(ent))
+        {
+            SetActiveStatus(ent, false);
+            return;
+        }
 
         if (xform.Anchored)
         {
