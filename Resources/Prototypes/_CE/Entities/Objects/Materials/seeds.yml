@@ -179,7 +179,7 @@
   parent: CEBaseSeed
   components:
   - type: Sprite
-    sprite: _CE/Objects/Materials/cotton.rsi
+    sprite: _CE/Objects/Consumable/cotton.rsi
   - type: CESeed
     plantProto: CEPlantCotton
   - type: Stack

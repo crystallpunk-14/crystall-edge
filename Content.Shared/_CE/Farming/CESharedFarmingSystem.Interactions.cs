@@ -50,8 +50,7 @@ public abstract partial class CESharedFarmingSystem
         if (_whitelist.IsWhitelistFailOrNull(gatherable.Comp.ToolWhitelist, args.Used))
             return;
 
-        TryHarvestPlant(gatherable, args.Used, args.User);
-        args.Handled = true;
+        args.Handled = TryHarvestPlant(gatherable, args.Used, args.User);
     }
 
     private bool CanHarvestPlant(Entity<CEPlantGatherableComponent> gatherable)
@@ -72,8 +71,6 @@ public abstract partial class CESharedFarmingSystem
         if (!CanHarvestPlant(gatherable))
             return false;
 
-        _audio.PlayPvs(gatherable.Comp.GatherSound, Transform(gatherable).Coordinates);
-
         var doAfterArgs =
             new DoAfterArgs(EntityManager,
                 user,
@@ -89,12 +86,18 @@ public abstract partial class CESharedFarmingSystem
                 BreakOnHandChange = true,
             };
 
+        if (_net.IsServer) //For some reason we have sound spamming here. PlayPredicted dont work, idk why
+            _audio.PlayPvs(gatherable.Comp.GatherSound, Transform(gatherable).Coordinates);
+
         return _doAfter.TryStartDoAfter(doAfterArgs);
     }
 
     private void OnGatherDoAfter(Entity<CEPlantGatherableComponent> gatherable, ref CEPlantGatherDoAfterEvent args)
     {
         if (args.Cancelled || args.Handled)
+            return;
+
+        if (!_timing.IsFirstTimePredicted)
             return;
 
         if (!CanHarvestPlant(gatherable))
@@ -105,19 +108,16 @@ public abstract partial class CESharedFarmingSystem
         HarvestPlant(gatherable, out _, args.Used);
     }
 
-    public void HarvestPlant(Entity<CEPlantGatherableComponent> gatherable,
+    private void HarvestPlant(Entity<CEPlantGatherableComponent> gatherable,
         out HashSet<EntityUid> result,
         EntityUid? used)
     {
         result = new();
 
-        if (_net.IsClient)
-            return;
-
         if (gatherable.Comp.Loot == null)
             return;
 
-        var pos = _transform.GetMapCoordinates(gatherable);
+        var pos = Transform(gatherable).Coordinates;
 
         foreach (var (tag, table) in gatherable.Comp.Loot)
         {
@@ -131,11 +131,9 @@ public abstract partial class CESharedFarmingSystem
             foreach (var loot in spawnLoot)
             {
                 var spawnPos = pos.Offset(_random.NextVector2(gatherable.Comp.GatherOffset));
-                result.Add(Spawn(loot, spawnPos));
+                result.Add(PredictedSpawnAtPosition(loot, spawnPos));
             }
         }
-
-        _audio.PlayPvs(gatherable.Comp.GatherSound, Transform(gatherable).Coordinates);
 
         if (gatherable.Comp.DeleteAfterHarvest)
             _destructible.DestroyEntity(gatherable.Owner);
@@ -179,7 +177,7 @@ public abstract partial class CESharedFarmingSystem
 
     private void OnSeedPlantedDoAfter(Entity<CESeedComponent> ent, ref CEPlantSeedDoAfterEvent args)
     {
-        if (_net.IsClient || args.Handled || args.Cancelled)
+        if (args.Handled || args.Cancelled)
             return;
 
         var position = GetCoordinates(args.Coordinates);
@@ -188,7 +186,7 @@ public abstract partial class CESharedFarmingSystem
 
         args.Handled = true;
 
-        Spawn(ent.Comp.PlantProto, position);
+        PredictedSpawnAtPosition(ent.Comp.PlantProto, position);
 
         if (TryComp<StackComponent>(ent, out var stack) && stack.Count > 1)
             _stack.SetCount(ent, stack.Count - 1);
