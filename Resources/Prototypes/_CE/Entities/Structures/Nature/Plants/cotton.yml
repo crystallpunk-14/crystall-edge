@@ -25,5 +25,4 @@
         children:
         - id: CECotton
           rolls: !type:RangeNumberSelector
-            range: 4, 6
-
+            range: 2, 3
