@@ -1,0 +1,50 @@
+- type: entity
+  parent: BaseItem
+  id: CEAsh1
+  name: ash
+  description: It used to be something that could be interesting and useful, now it's not.
+  suffix: 1
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: _CE/Objects/Materials/ash.rsi
+    layers:
+      - state: ash_1
+        map: ["base"]
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 50
+        reagents:
+        - ReagentId: Ash
+          Quantity: 10
+  - type: SolutionSpiker
+    sourceSolution: food
+    ignoreEmpty: true
+  - type: ScoopableSolution
+    solution: food
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Appearance
+  - type: Stack
+    stackType: CEAsh
+    count: 1
+    baseLayer: base
+    layerStates:
+    - ash_1
+    - ash_2
+    - ash_3
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      CEAsh: 10
+
+- type: entity
+  id: CEAsh30
+  parent: CEAsh1
+  suffix: 30
+  components:
+  - type: Stack
+    count: 30

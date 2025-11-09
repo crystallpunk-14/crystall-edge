@@ -65,14 +65,14 @@
   id: CEFloorTileGrass
   name: ce-tiles-grass
   spawn: CEFloorTileGrass
-  icon: { sprite: _CE/Objects/Materials/grass_seeds.rsi, state: grass }
+  icon: { sprite: _CE/Objects/Materials/seeds_tile.rsi, state: grass }
   maxCount: 30
 
 - type: stack
   id: CEFloorTileMycelium
   name: ce-tiles-mycelium
   spawn: CEFloorTileMycelium
-  icon: { sprite: _CE/Objects/Materials/grass_seeds.rsi, state: mycelium }
+  icon: { sprite: _CE/Objects/Materials/seeds_tile.rsi, state: mycelium }
   maxCount: 30
 
 

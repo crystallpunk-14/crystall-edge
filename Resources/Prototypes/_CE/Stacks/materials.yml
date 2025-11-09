@@ -67,3 +67,10 @@
   spawn: CENail1
   icon: { sprite: _CE/Objects/Materials/nails.rsi, state: nail_2 }
   maxCount: 10
+
+- type: stack
+  id: CEAsh
+  name: ce-stack-ash-pile
+  icon: { sprite: "_CE/Objects/Materials/ash.rsi", state: ash_1 }
+  spawn: CEAsh1
+  maxCount: 30
