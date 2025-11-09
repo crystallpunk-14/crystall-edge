@@ -1,0 +1,71 @@
+- type: entity
+  id: CEZLevelLadderBase
+  abstract: true
+  categories: [ ForkFiltered ]
+  parent: BaseStructure
+  name: stairs
+  description: Be careful, the higher you ascend, the more painful the fall.
+  placement:
+      mode: SnapgridCenter
+      snap:
+      - Wall
+  components:
+  - type: PlacementReplacement
+    key: walls
+  - type: Sprite
+    state: straight
+    drawdepth: Mobs
+  - type: Transform
+    anchored: True
+  - type: InteractionOutline
+  - type: Clickable
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      portalFixture:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,0.6,0.5,0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        density: 1000
+        hard: true
+  - type: CEZLevelHighGround
+    stick: true
+    heightCurve:
+    - 1.05
+    - 1.05
+    - 0.1
+
+- type: entity
+  parent: CEZLevelLadderBase
+  id: CEZLevelLadderCornerBase
+  abstract: true
+  placement:
+      mode: SnapgridCenter
+      snap:
+      - Wall
+  components:
+  - type: Sprite
+    state: corner
+  - type: CEZLevelHighGround
+    corner: true
+    heightCurve:
+    - 1.05
+    - 0.5
+    - 0.1
+  - type: Fixtures
+    fixtures:
+      portalFixture:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "0.5,0.5,0.6,0.6"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        density: 1000
+        hard: true

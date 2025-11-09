@@ -1,0 +1,104 @@
+- type: entity
+  id: CEHighBush
+  name: high bush
+  #parent: CEBaseFlammableSpreading
+  categories: [ HideSpawnMenu ]
+  description: Very tall and dense thickets. Perhaps someone is watching you from them
+  components:
+  - type: CEWaveShader
+    speed: 2.5
+    dis: 4
+  - type: Clickable
+  - type: Sprite
+    noRot: true
+    sprite: _CE/Structures/Nature/high_bush.rsi
+    drawdepth: Mobs
+    offset: 0,0.3
+    layers:
+      - state: grass_high_bush1
+        map: ["random"]
+  - type: RandomSprite
+    available:
+    - random:
+        grass_high_bush1: ""
+        grass_high_bush2: ""
+        grass_high_bush3: ""
+        grass_high_bush4: ""
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        hard: false
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.35,-0.35,0.35,0.35"
+        density: 1000
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Wood
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        collection: CEGrassGathering
+        params:
+          variation: 0.05
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 10
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: CEGrassGathering
+          params:
+            volume: 5
+            variation: 0.05
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      #- !type:SpawnEntitiesBehavior
+      #  spawn:
+      #    CEFloraMaterial1:
+      #      min: 0
+      #      max: 2
+  - type: SpeedModifierContacts
+    walkSpeedModifier: 0.5
+    sprintSpeedModifier: 0.5
+  - type: EmitSoundOnTrigger
+    sound:
+      params:
+        volume: -8
+      collection: CEGrassGathering
+  - type: TriggerOnCollide
+    fixtureID: fix1
+  #- type: CEIgnitionModifier
+  #  ignitionTimeModifier: 0.75
+  #  hideCaution: true
+
+- type: entity
+  id: CEBushSpawner
+  name: bush spawner
+  parent: MarkerBase
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    layers:
+    - sprite: _CE/Structures/Nature/high_bush.rsi
+      state: grass_high_bush1
+  - type: RandomSpawner
+    prototypes:
+    - CEHighBush
+    chance: 1
+    offset: 0.35
+
