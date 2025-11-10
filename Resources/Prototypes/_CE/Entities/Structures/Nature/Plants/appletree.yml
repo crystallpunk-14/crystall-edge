@@ -11,6 +11,8 @@
   - type: CEPlantVisuals
     growthSteps: 4
     readyVariations: 2
+    produceVisualStates:
+      CEFoodApple: 2
   - type: Physics
     canCollide: true
   - type: Fixtures
@@ -33,14 +35,61 @@
     - state: grow-1
       sprite: _CE/Structures/Nature/Farm/apple_tree.rsi
       map: ["enum.PlantVisualLayers.Base"]
-  #- type: CEPlantGatherable
-  #  loot:
-  #    All: !type:AllSelector
-  #      children:
-  #      - id: CE
-  #        rolls: !type:RangeNumberSelector
-  #          range: 4, 6
+    - state: produce-CEFoodApple-var1-state1
+      sprite: _CE/Structures/Nature/Farm/apple_tree.rsi
+      visible: false
+      map: ["Produce-CEFoodApple"]
+  - type: CEPlantProducing
+    gathers:
+      CEFoodApple:
+        maxProduce: 10
+        resourceCost: 1
+        energyCost: 0.5
+  - type: CEPlantGatherOnInteract
+    gatherTypes:
+    - CEFoodApple
+    toolWhitelist:
+      components:
+      - Sharp
+  - type: CEPlantSelfProduce
+    produce:
+      CEWoodLog: 3
   - type: CEWaveShader
     speed: 3
     dis: 4
-
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Wood
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        path: /Audio/Effects/chop.ogg
+        params:
+          variation: 0.05
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Heat
+        damage: 50
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 75
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/tree_fell.ogg
+          params:
+            volume: 5
+            variation: 0.05
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]

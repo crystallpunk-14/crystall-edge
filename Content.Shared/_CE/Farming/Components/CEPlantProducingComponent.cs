@@ -7,7 +7,7 @@ namespace Content.Shared._CE.Farming.Components;
 /// Once this plant has grown, it begins to grow fruit inside itself.
 /// Extraction methods are determined by other components. For example, PlantGatherOnInteractComponent.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
 public sealed partial class CEPlantProducingComponent : Component
 {
     /// <summary>
@@ -20,7 +20,7 @@ public sealed partial class CEPlantProducingComponent : Component
     /// Random shift of the appearing entity during gathering
     /// </summary>
     [DataField]
-    public float GatherOffset = 0.3f;
+    public float GatherOffset = 0.7f;
 }
 
 [Serializable]
@@ -70,5 +70,5 @@ public interface IPlantGatherMethod
     /// <summary>
     /// What types of resources are gathered using this component method?
     /// </summary>
-    public HashSet<EntProtoId> Gathers { get; set; }
+    public HashSet<EntProtoId> GatherTypes { get; set; }
 }

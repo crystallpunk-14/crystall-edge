@@ -19,10 +19,10 @@
       offset: 0, 0.5
       sprite: _CE/Structures/Nature/Farm/cotton.rsi
       map: ["enum.PlantVisualLayers.Base"]
-  - type: CEPlantGatherable
-    loot:
-      All: !type:AllSelector
-        children:
-        - id: CECotton
-          rolls: !type:RangeNumberSelector
-            range: 2, 3
+  #- type: CEPlantGatherable
+  #  loot:
+  #    All: !type:AllSelector
+  #      children:
+  #      - id: CECotton
+  #        rolls: !type:RangeNumberSelector
+  #          range: 2, 3

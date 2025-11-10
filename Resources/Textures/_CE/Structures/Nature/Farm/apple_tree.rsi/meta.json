@@ -26,10 +26,16 @@
         "name": "grown-2"
       },
       {
-        "name": "apple-1"
+        "name": "produce-CEFoodApple-var1-state1"
       },
       {
-        "name": "apple-2"
+        "name": "produce-CEFoodApple-var2-state1"
+      },
+      {
+        "name": "produce-CEFoodApple-var1-state2"
+      },
+      {
+        "name": "produce-CEFoodApple-var2-state2"
       }
     ]
 }

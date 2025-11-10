@@ -13,7 +13,7 @@ public abstract partial class CESharedFarmingSystem
 {
     private void InitializeGather()
     {
-        SubscribeLocalEvent<CEPlantComponent, DestructionEventArgs>(OnPlantDestruction);
+        SubscribeLocalEvent<CEPlantSelfProduceComponent, DestructionEventArgs>(OnPlantDestruction);
         SubscribeLocalEvent<CEPlantGatherOnInteractComponent, InteractUsingEvent>(OnGatherableInteract);
         SubscribeLocalEvent<CEPlantGatherOnInteractComponent, CEPlantGatherDoAfterEvent>(OnGatherDoAfter);
     }
@@ -21,13 +21,16 @@ public abstract partial class CESharedFarmingSystem
     /// <summary>
     /// We gather inner plant resources
     /// </summary>
-    private void OnPlantDestruction(Entity<CEPlantComponent> ent, ref DestructionEventArgs args)
+    private void OnPlantDestruction(Entity<CEPlantSelfProduceComponent> ent, ref DestructionEventArgs args)
     {
+        if (!PlantQuery.TryComp(ent, out var plant))
+            return;
+
         var pos = Transform(ent).Coordinates;
 
-        foreach (var (produceProto, maxCount) in ent.Comp.DestructProduce)
+        foreach (var (produceProto, maxCount) in ent.Comp.Produce)
         {
-            var produceCount = ContentHelpers.RoundToEqualLevels(ent.Comp.GrowthLevel, 1, maxCount);
+            var produceCount = ContentHelpers.RoundToEqualLevels(plant.GrowthLevel, 1, maxCount);
 
             if (produceCount == 0)
                 continue;
@@ -51,14 +54,14 @@ public abstract partial class CESharedFarmingSystem
         if (_whitelist.IsWhitelistFailOrNull(ent.Comp.ToolWhitelist, args.Used))
             return;
 
-        if (!CanHarvestPlant((ent, producing), ent.Comp.Gathers))
+        if (!CanHarvestPlant((ent, producing), ent.Comp.GatherTypes))
             return;
 
         var doAfterArgs =
             new DoAfterArgs(EntityManager,
                 args.User,
                 ent.Comp.GatherDelay,
-                new CEPlantGatherDoAfterEvent(ent.Comp.Gathers),
+                new CEPlantGatherDoAfterEvent(ent.Comp.GatherTypes),
                 ent,
                 used: args.Used)
             {
@@ -148,7 +151,7 @@ public abstract partial class CESharedFarmingSystem
 
             for (var i = 0; i < produceCount; i++)
             {
-                var spawnPos = pos.Offset(_random.NextVector2(ent.Comp.GatherOffset));
+                var spawnPos = pos.Offset(_random.NextVector2(_random.NextFloat(ent.Comp.GatherOffset)));
                 result.Add(PredictedSpawnAtPosition(gatherType, spawnPos));
             }
 

@@ -17,13 +17,13 @@
     - state: grow-1
       sprite: _CE/Structures/Nature/Farm/wheat.rsi
       map: ["enum.PlantVisualLayers.Base"]
-  - type: CEPlantGatherable
-    loot:
-      All: !type:AllSelector
-        children:
-        - id: CEWheat
-          rolls: !type:RangeNumberSelector
-            range: 4, 6
+  #- type: CEPlantGatherable
+  #  loot:
+  #    All: !type:AllSelector
+  #      children:
+  #      - id: CEWheat
+  #        rolls: !type:RangeNumberSelector
+  #          range: 4, 6
   - type: CEWaveShader
     speed: 2.8
     dis: 4

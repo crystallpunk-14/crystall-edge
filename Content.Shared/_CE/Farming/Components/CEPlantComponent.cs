@@ -51,14 +51,6 @@ public sealed partial class CEPlantComponent : Component
     /// </summary>
     [DataField]
     public HashSet<ProtoId<ContentTileDefinition>> SoilTile = new();
-
-    /// <summary>
-    /// What resource is collected when this plant is destroyed? While <see cref="CEPlantProducingComponent"/> provides additional
-    /// harvests that grow periodically on the plant, this resource will be obtained from the plant itself when it is destroyed.
-    /// The amount of harvest is scaled from <see cref="GrowthLevel"/>.
-    /// </summary>
-    [DataField]
-    public Dictionary<EntProtoId, int> DestructProduce = new();
 }
 
 /// <summary>

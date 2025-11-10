@@ -59,10 +59,10 @@
         - FullTileMask
         layer:
         - Opaque
-  - type: CEPlantGatherable
-    toolWhitelist:
-      components:
-        - Sharp
+  #- type: CEPlantGatherable
+  #  toolWhitelist:
+  #    components:
+  #      - Sharp
   - type: Appearance
 
 - type: entity
@@ -156,8 +156,8 @@
     #sprite: _CE/Effects/fire.rsi
     #normalState: full
     #alternateState: full2
-  - type: CEPlantGatherable
-    deleteAfterHarvest: true
+  #- type: CEPlantGatherable
+  #  deleteAfterHarvest: true
 
 - type: entity
   id: CEGatherablePlantMultiHarvestBase
@@ -166,5 +166,5 @@
   components:
   - type: CEPlantGrowing
     growthPerUpdate: 0.06
-  - type: CEPlantGatherable
-    deleteAfterHarvest: false
+  #- type: CEPlantGatherable
+  #  deleteAfterHarvest: false

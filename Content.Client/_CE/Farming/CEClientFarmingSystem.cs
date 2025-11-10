@@ -17,6 +17,18 @@ public sealed class CEClientFarmingSystem : CESharedFarmingSystem
 
         SubscribeLocalEvent<CEPlantVisualsComponent, ComponentInit>(OnPlantVisualInit);
         SubscribeLocalEvent<CEPlantComponent, AfterAutoHandleStateEvent>(OnAutoHandleState);
+        SubscribeLocalEvent<CEPlantProducingComponent, AfterAutoHandleStateEvent>(OnProduceAutoHandleState);
+    }
+
+    private void OnProduceAutoHandleState(Entity<CEPlantProducingComponent> producing, ref AfterAutoHandleStateEvent args)
+    {
+        if (!TryComp<CEPlantVisualsComponent>(producing, out var visuals))
+            return;
+
+        if (!PlantQuery.TryComp(producing.Owner, out var plant))
+            return;
+
+        UpdateVisuals(new Entity<CEPlantVisualsComponent>(producing, visuals), plant);
     }
 
     private void OnAutoHandleState(Entity<CEPlantComponent> plant, ref AfterAutoHandleStateEvent args)
@@ -37,6 +49,8 @@ public sealed class CEClientFarmingSystem : CESharedFarmingSystem
         if (!Resolve(visuals, ref plant, false))
             return;
 
+        PlantProducingQuery.TryComp(visuals.Owner, out var producing);
+
         if (plant.GrowthLevel < 1) //Growing
         {
             visuals.Comp.SelectedVariation = null;
@@ -46,10 +60,22 @@ public sealed class CEClientFarmingSystem : CESharedFarmingSystem
                 growthState++;
 
             if (_sprite.LayerMapTryGet(visuals.Owner, PlantVisualLayers.Base, out _, false))
-                _sprite.LayerSetRsiState(visuals.Owner, PlantVisualLayers.Base, $"{visuals.Comp.GrowState}{growthState}");
+                _sprite.LayerSetRsiState(visuals.Owner,
+                    PlantVisualLayers.Base,
+                    $"{visuals.Comp.GrowState}{growthState}");
 
             if (_sprite.LayerMapTryGet(visuals.Owner, PlantVisualLayers.BaseUnshaded, out _, false))
-                _sprite.LayerSetRsiState(visuals.Owner, PlantVisualLayers.BaseUnshaded, $"{visuals.Comp.GrowUnshadedState}{growthState}");
+                _sprite.LayerSetRsiState(visuals.Owner,
+                    PlantVisualLayers.BaseUnshaded,
+                    $"{visuals.Comp.GrowUnshadedState}{growthState}");
+
+            if (producing is not null)
+            {
+                foreach (var (proto, _) in producing.Gathers)
+                {
+                    _sprite.LayerSetVisible(visuals.Owner, $"{PlantVisualLayers.Produce.ToString()}-{proto}", false);
+                }
+            }
         }
         else //Fully frown
         {
@@ -57,10 +83,33 @@ public sealed class CEClientFarmingSystem : CESharedFarmingSystem
                 visuals.Comp.SelectedVariation = _random.Next(1, visuals.Comp.ReadyVariations + 1);
 
             if (_sprite.LayerMapTryGet(visuals.Owner, PlantVisualLayers.Base, out _, false))
-                _sprite.LayerSetRsiState(visuals.Owner, PlantVisualLayers.Base, $"{visuals.Comp.ReadyState}{visuals.Comp.SelectedVariation}");
+                _sprite.LayerSetRsiState(visuals.Owner,
+                    PlantVisualLayers.Base,
+                    $"{visuals.Comp.ReadyState}{visuals.Comp.SelectedVariation}");
 
             if (_sprite.LayerMapTryGet(visuals.Owner, PlantVisualLayers.BaseUnshaded, out _, false))
-                _sprite.LayerSetRsiState(visuals.Owner, PlantVisualLayers.BaseUnshaded, $"{visuals.Comp.ReadyUnshadedState}{visuals.Comp.SelectedVariation}");
+                _sprite.LayerSetRsiState(visuals.Owner,
+                    PlantVisualLayers.BaseUnshaded,
+                    $"{visuals.Comp.ReadyUnshadedState}{visuals.Comp.SelectedVariation}");
+
+            if (producing is not null)
+            {
+                foreach (var (proto, gatherEntry) in producing.Gathers)
+                {
+                    if (!visuals.Comp.ProduceVisualStates.TryGetValue(proto, out var maxProduceStates))
+                        continue;
+
+                    var growthState = ContentHelpers.RoundToNearestLevels(gatherEntry.Growth, 1, maxProduceStates);
+
+                    _sprite.LayerSetVisible(visuals.Owner, $"{PlantVisualLayers.Produce.ToString()}-{proto}", growthState != 0);
+
+                    _sprite.LayerSetRsiState(visuals.Owner, $"{PlantVisualLayers.Produce.ToString()}-{proto}",
+                        $"produce-{proto}-var{visuals.Comp.SelectedVariation}-state{growthState}");
+                    // We do some complex string formula, combining final variation states + produce growth states
+                    // state: produce-CEFoodApple-var1-state1
+                    // map: ["produce-CEFoodApple"]
+                }
+            }
         }
     }
 }
