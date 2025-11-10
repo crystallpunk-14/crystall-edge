@@ -7,7 +7,7 @@ namespace Content.Shared._CE.Farming.Components;
 /// <summary>
 /// The backbone of any plant. Provides common variables for the plant to other components
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentPause, AutoGenerateComponentState(true), Access(typeof(CESharedFarmingSystem))]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentPause, AutoGenerateComponentState(true, fieldDeltas: true), Access(typeof(CESharedFarmingSystem))]
 public sealed partial class CEPlantComponent : Component
 {
     /// <summary>
@@ -51,6 +51,14 @@ public sealed partial class CEPlantComponent : Component
     /// </summary>
     [DataField]
     public HashSet<ProtoId<ContentTileDefinition>> SoilTile = new();
+
+    /// <summary>
+    /// What resource is collected when this plant is destroyed? While <see cref="CEPlantProducingComponent"/> provides additional
+    /// harvests that grow periodically on the plant, this resource will be obtained from the plant itself when it is destroyed.
+    /// The amount of harvest is scaled from <see cref="GrowthLevel"/>.
+    /// </summary>
+    [DataField]
+    public Dictionary<EntProtoId, int> DestructProduce = new();
 }
 
 /// <summary>
@@ -59,8 +67,6 @@ public sealed partial class CEPlantComponent : Component
 public sealed class CEPlantUpdateEvent(Entity<CEPlantComponent> comp) : EntityEventArgs
 {
     public readonly Entity<CEPlantComponent> Plant = comp;
-    public float EnergyDelta = 0f;
-    public float ResourceDelta = 0f;
 }
 
 /// <summary>

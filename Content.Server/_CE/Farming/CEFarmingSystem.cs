@@ -53,17 +53,13 @@ public sealed partial class CEFarmingSystem : CESharedFarmingSystem
 
             var newTime = _random.NextFloat(plant.UpdateFrequency);
             plant.NextUpdateTime = _timing.CurTime + TimeSpan.FromSeconds(newTime);
+            DirtyField(uid, plant, nameof(CEPlantComponent.NextUpdateTime));
 
             var ev = new CEPlantUpdateEvent((uid, plant));
             RaiseLocalEvent(uid, ev);
 
-            AffectResource((uid, plant), ev.ResourceDelta);
-            AffectEnergy((uid, plant), ev.EnergyDelta);
-
             var ev2 = new CEAfterPlantUpdateEvent((uid, plant));
             RaiseLocalEvent(uid, ev2);
-
-            Dirty(uid, plant);
         }
     }
 }

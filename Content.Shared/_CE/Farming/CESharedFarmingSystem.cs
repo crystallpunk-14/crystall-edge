@@ -3,13 +3,17 @@ using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Destructible;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
+using Content.Shared.Maps;
 using Content.Shared.Popups;
-using Content.Shared.Tag;
+using Content.Shared.Stacks;
 using Content.Shared.Whitelist;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Network;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Serialization;
+using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.Farming;
 
@@ -17,23 +21,32 @@ public abstract partial class CESharedFarmingSystem : EntitySystem
 {
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
-    [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedDestructibleSystem _destructible = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly SharedMapSystem _map = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly TurfSystem _turf = default!;
+    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private readonly IComponentFactory _compFactory = default!;
+    [Dependency] private readonly SharedStackSystem _stack = default!;
 
     protected EntityQuery<CEPlantComponent> PlantQuery;
+    protected EntityQuery<CEPlantProducingComponent> PlantProducingQuery;
     protected EntityQuery<CESeedComponent> SeedQuery;
     protected EntityQuery<SolutionContainerManagerComponent> SolutionQuery;
 
     public override void Initialize()
     {
         base.Initialize();
-        InitializeInteractions();
+        InitializeSeeds();
+        InitializeGather();
 
         PlantQuery = GetEntityQuery<CEPlantComponent>();
+        PlantProducingQuery = GetEntityQuery<CEPlantProducingComponent>();
         SeedQuery = GetEntityQuery<CESeedComponent>();
         SolutionQuery = GetEntityQuery<SolutionContainerManagerComponent>();
 
@@ -61,7 +74,7 @@ public abstract partial class CESharedFarmingSystem : EntitySystem
             return;
 
         ent.Comp.Energy = MathHelper.Clamp(ent.Comp.Energy + energyDelta, 0, ent.Comp.EnergyMax);
-        Dirty(ent);
+        DirtyField(ent, ent.Comp, nameof(CEPlantComponent.Energy));
     }
 
     public void AffectResource(Entity<CEPlantComponent> ent, float resourceDelta)
@@ -70,7 +83,7 @@ public abstract partial class CESharedFarmingSystem : EntitySystem
             return;
 
         ent.Comp.Resource = MathHelper.Clamp(ent.Comp.Resource + resourceDelta, 0, ent.Comp.ResourceMax);
-        Dirty(ent);
+        DirtyField(ent, ent.Comp, nameof(CEPlantComponent.Resource));
     }
 
     public void AffectGrowth(Entity<CEPlantComponent> ent, float growthDelta)
@@ -79,23 +92,6 @@ public abstract partial class CESharedFarmingSystem : EntitySystem
             return;
 
         ent.Comp.GrowthLevel = MathHelper.Clamp01(ent.Comp.GrowthLevel + growthDelta);
-        Dirty(ent);
+        DirtyField(ent, ent.Comp, nameof(CEPlantComponent.GrowthLevel));
     }
-
-    [Serializable, NetSerializable]
-    public sealed partial class CEPlantSeedDoAfterEvent : DoAfterEvent
-    {
-        [DataField(required:true)]
-        public NetCoordinates Coordinates;
-
-        public CEPlantSeedDoAfterEvent(NetCoordinates coordinates)
-        {
-            Coordinates = coordinates;
-        }
-
-        public override DoAfterEvent Clone() => this;
-    }
-
-    [Serializable, NetSerializable]
-    public sealed partial class CEPlantGatherDoAfterEvent : SimpleDoAfterEvent;
 }
