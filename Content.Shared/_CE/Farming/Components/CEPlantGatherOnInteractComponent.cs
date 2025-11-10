@@ -12,7 +12,7 @@ namespace Content.Shared._CE.Farming.Components;
 public sealed partial class CEPlantGatherOnInteractComponent : Component, IPlantGatherMethod
 {
     [DataField]
-    public HashSet<EntProtoId> GatherTypes { get; set; } = new();
+    public HashSet<EntProtoId> Produce { get; set; } = new();
 
     /// <summary>
     ///     Whitelist for specifying the kind of tools can be used on a resource

@@ -12,7 +12,7 @@
     growthSteps: 4
     readyVariations: 2
     produceVisualStates:
-      CEFoodApple: 2
+      CEFoodAppleFalling: 2
   - type: Physics
     canCollide: true
   - type: Fixtures
@@ -35,23 +35,24 @@
     - state: grow-1
       sprite: _CE/Structures/Nature/Farm/apple_tree.rsi
       map: ["enum.PlantVisualLayers.Base"]
-    - state: produce-CEFoodApple-var1-state1
+    - state: produce-CEFoodAppleFalling-var1-state1
       sprite: _CE/Structures/Nature/Farm/apple_tree.rsi
       visible: false
-      map: ["Produce-CEFoodApple"]
+      map: ["Produce-CEFoodAppleFalling"]
   - type: CEPlantProducing
-    gathers:
-      CEFoodApple:
+    gatherOffset: 2
+    produce:
+      CEFoodAppleFalling:
         maxProduce: 10
         resourceCost: 1
         energyCost: 0.5
   - type: CEPlantGatherOnInteract
-    gatherTypes:
-    - CEFoodApple
+    produce:
+    - CEFoodAppleFalling
     toolWhitelist:
       components:
       - Sharp
-  - type: CEPlantSelfProduce
+  - type: CEPlantAdditionalProduceOnDestruct
     produce:
       CEWoodLog: 3
   - type: CEWaveShader

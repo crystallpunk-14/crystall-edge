@@ -14,7 +14,7 @@ public sealed partial class CEPlantProducingComponent : Component
     /// what types of crops does this plant produce, and how
     /// </summary>
     [DataField, AutoNetworkedField]
-    public Dictionary<EntProtoId, CEGatherEntry> Gathers = new();
+    public Dictionary<EntProtoId, CEGatherEntry> Produce = new();
 
     /// <summary>
     /// Random shift of the appearing entity during gathering
@@ -70,5 +70,5 @@ public interface IPlantGatherMethod
     /// <summary>
     /// What types of resources are gathered using this component method?
     /// </summary>
-    public HashSet<EntProtoId> GatherTypes { get; set; }
+    public HashSet<EntProtoId> Produce { get; set; }
 }

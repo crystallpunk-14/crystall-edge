@@ -17,11 +17,9 @@
     - state: grow-1
       sprite: _CE/Structures/Nature/Farm/cabbage.rsi
       map: ["enum.PlantVisualLayers.Base"]
-  #- type: CEPlantGatherable
-  #  loot:
-  #    All: !type:AllSelector
-  #      children:
-  #      - id: CEFoodCabbage
-  #        rolls: !type:RangeNumberSelector
-  #          range: 6, 8
-
+  - type: CEPlantAdditionalProduceOnInteract
+    produce:
+      CEFoodCabbage: 3
+    toolWhitelist:
+      components:
+      - Sharp

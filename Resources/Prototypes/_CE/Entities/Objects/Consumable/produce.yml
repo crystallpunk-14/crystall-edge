@@ -521,6 +521,14 @@
     - CEFruits
 
 - type: entity
+  parent: CEFoodApple
+  id: CEFoodAppleFalling #Fun falling from sky apples
+  suffix: Falling
+  components:
+  - type: CEZPhysics
+    localPosition: 0.99
+
+- type: entity
   id: CEFoodAppleSlice
   parent: FoodInjectableBase
   categories: [ ForkFiltered ]

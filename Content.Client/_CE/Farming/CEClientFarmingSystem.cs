@@ -71,7 +71,7 @@ public sealed class CEClientFarmingSystem : CESharedFarmingSystem
 
             if (producing is not null)
             {
-                foreach (var (proto, _) in producing.Gathers)
+                foreach (var (proto, _) in producing.Produce)
                 {
                     _sprite.LayerSetVisible(visuals.Owner, $"{PlantVisualLayers.Produce.ToString()}-{proto}", false);
                 }
@@ -94,7 +94,7 @@ public sealed class CEClientFarmingSystem : CESharedFarmingSystem
 
             if (producing is not null)
             {
-                foreach (var (proto, gatherEntry) in producing.Gathers)
+                foreach (var (proto, gatherEntry) in producing.Produce)
                 {
                     if (!visuals.Comp.ProduceVisualStates.TryGetValue(proto, out var maxProduceStates))
                         continue;
@@ -107,7 +107,7 @@ public sealed class CEClientFarmingSystem : CESharedFarmingSystem
                         $"produce-{proto}-var{visuals.Comp.SelectedVariation}-state{growthState}");
                     // We do some complex string formula, combining final variation states + produce growth states
                     // state: produce-CEFoodApple-var1-state1
-                    // map: ["produce-CEFoodApple"]
+                    // map: ["Produce-CEFoodApple"]
                 }
             }
         }
