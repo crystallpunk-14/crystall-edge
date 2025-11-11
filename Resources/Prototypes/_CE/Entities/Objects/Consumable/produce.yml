@@ -27,7 +27,6 @@
   - type: Tag
     tags:
     - CEWheat
-    - CEFarmFood
   - type: StaticPrice
     price: 1
 
@@ -60,7 +59,6 @@
           Quantity: 5
   - type: Tag
     tags:
-    - CEFarmFood
   - type: StaticPrice
     price: 1
 
@@ -105,7 +103,6 @@
       CESeedCabbage: 1
   - type: Tag
     tags:
-    - CEFarmFood
     - CEVegetable
     - CESalad
     - CECabbage
@@ -148,7 +145,6 @@
   #    CESandwich: CECabbageSandwich
   - type: Tag
     tags:
-    - CEFarmFood
     - CEVegetable
     - CESalad
     - CECabbage
@@ -195,7 +191,6 @@
       CESeedPumpkin: 1
   - type: Tag
     tags:
-    - CEFarmFood
     - CEVegetable
     - CEPumpkin
 
@@ -237,7 +232,6 @@
   #    CESandwich: CEPumpkinSandwich
   - type: Tag
     tags:
-    - CEFarmFood
     - CEVegetable
     - CEPumpkin
 
@@ -287,7 +281,6 @@
   #    transformTo: CEFoodPotatoHot
   - type: Tag
     tags:
-    - CEFarmFood
     - CEVegetable
     - CEPotato
 
@@ -336,7 +329,6 @@
     slice: CEFoodCucumberSlice
   - type: Tag
     tags:
-    - CEFarmFood
     - CEVegetable
 
 - type: entity
@@ -372,7 +364,6 @@
   #    CESandwich: CECucumberSandwich
   - type: Tag
     tags:
-    - CEFarmFood
     - CEVegetable
 
 - type: entity
@@ -444,7 +435,6 @@
         Blunt: 1
   - type: Tag
     tags:
-    - CEFarmFood
     - CEVegetable
 
 - type: entity
@@ -482,7 +472,6 @@
   #    CESandwich: CETomatoesSandwich
   - type: Tag
     tags:
-    - CEFarmFood
     - CEVegetable
 
 - type: entity
@@ -529,7 +518,6 @@
     slice: CEFoodAppleSlice
   - type: Tag
     tags:
-    - CEFarmFood
     - CEFruits
 
 - type: entity
@@ -576,7 +564,6 @@
   #    CESandwich: CEAppleSandwich
   - type: Tag
     tags:
-    - CEFarmFood
     - CEFruits
 
 - type: entity
@@ -620,7 +607,6 @@
           Quantity: 3.43
   - type: Tag
     tags:
-    - CEFarmFood
     - CEVegetable
 
 - type: entity
@@ -653,7 +639,6 @@
   #    CESandwich: CEPepperSandwich
   - type: Tag
     tags:
-    - CEFarmFood
     - CEVegetable
 
 - type: entity
@@ -701,7 +686,6 @@
     plantProto: CEPlantOnion
   - type: Tag
     tags:
-    - CEFarmFood
     - CEVegetable
 
 - type: entity
@@ -736,7 +720,6 @@
   #    CESandwich: CEOnionSandwich
   - type: Tag
     tags:
-    - CEFarmFood
     - CEVegetable
 
 - type: entity
@@ -782,4 +765,3 @@
     area: 0.006
   - type: Tag
     tags:
-    - CEFarmFood

@@ -13,20 +13,6 @@
     layers:
       - state: ash_1
         map: ["base"]
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 50
-        reagents:
-        - ReagentId: Ash
-          Quantity: 10
-  - type: SolutionSpiker
-    sourceSolution: food
-    ignoreEmpty: true
-  - type: ScoopableSolution
-    solution: food
-  - type: Extractable
-    grindableSolutionName: food
   - type: Appearance
   - type: Stack
     stackType: CEAsh
@@ -36,10 +22,6 @@
     - ash_1
     - ash_2
     - ash_3
-  - type: Material
-  - type: PhysicalComposition
-    materialComposition:
-      CEAsh: 10
 
 - type: entity
   id: CEAsh30
