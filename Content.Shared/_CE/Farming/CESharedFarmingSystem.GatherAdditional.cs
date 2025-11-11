@@ -36,7 +36,7 @@ public abstract partial class CESharedFarmingSystem
     //    `.__.-.__.'  apples
     private void InitializeGatherAdditional()
     {
-        SubscribeLocalEvent<CEPlantAdditionalProduceOnDestructComponent, DestructionEventArgs>(OnPlantDestruction);
+        SubscribeLocalEvent<CEPlantAdditionalProduceOnDestructComponent, BreakageEventArgs>(OnPlantDestruction);
 
         SubscribeLocalEvent<CEPlantAdditionalProduceOnInteractComponent, InteractUsingEvent>(OnAdditionalPlantInteract);
         SubscribeLocalEvent<CEPlantAdditionalProduceOnInteractComponent, CEPlantGatherDoAfterEvent>(OnAdditionalProduceDoAfter);
@@ -45,7 +45,7 @@ public abstract partial class CESharedFarmingSystem
     /// <summary>
     /// We gather inner plant resources
     /// </summary>
-    private void OnPlantDestruction(Entity<CEPlantAdditionalProduceOnDestructComponent> ent, ref DestructionEventArgs args)
+    private void OnPlantDestruction(Entity<CEPlantAdditionalProduceOnDestructComponent> ent, ref BreakageEventArgs args)
     {
         if (!PlantQuery.TryComp(ent, out var plant))
             return;
