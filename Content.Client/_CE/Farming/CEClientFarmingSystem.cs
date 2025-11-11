@@ -71,9 +71,9 @@ public sealed class CEClientFarmingSystem : CESharedFarmingSystem
 
             if (producing is not null)
             {
-                foreach (var (proto, _) in producing.Produce)
+                foreach (var (key, entry) in producing.GatherKeys)
                 {
-                    _sprite.LayerSetVisible(visuals.Owner, $"{PlantVisualLayers.Produce.ToString()}-{proto}", false);
+                    _sprite.LayerSetVisible(visuals.Owner, $"{PlantVisualLayers.Produce.ToString()}-{key}", false);
                 }
             }
         }
@@ -94,20 +94,17 @@ public sealed class CEClientFarmingSystem : CESharedFarmingSystem
 
             if (producing is not null)
             {
-                foreach (var (proto, gatherEntry) in producing.Produce)
+                foreach (var (key, entry) in producing.GatherKeys)
                 {
-                    if (!visuals.Comp.ProduceVisualStates.TryGetValue(proto, out var maxProduceStates))
-                        continue;
+                    var growthState = ContentHelpers.RoundToNearestLevels(entry.Growth, 1, entry.VisualStateCount);
 
-                    var growthState = ContentHelpers.RoundToNearestLevels(gatherEntry.Growth, 1, maxProduceStates);
+                    _sprite.LayerSetVisible(visuals.Owner, $"{PlantVisualLayers.Produce.ToString()}-{key}", growthState != 0);
 
-                    _sprite.LayerSetVisible(visuals.Owner, $"{PlantVisualLayers.Produce.ToString()}-{proto}", growthState != 0);
-
-                    _sprite.LayerSetRsiState(visuals.Owner, $"{PlantVisualLayers.Produce.ToString()}-{proto}",
-                        $"produce-{proto}-var{visuals.Comp.SelectedVariation}-state{growthState}");
+                    _sprite.LayerSetRsiState(visuals.Owner, $"{PlantVisualLayers.Produce.ToString()}-{key}",
+                        $"produce-{key}-var{visuals.Comp.SelectedVariation}-state{growthState}");
                     // We do some complex string formula, combining final variation states + produce growth states
-                    // state: produce-CEFoodApple-var1-state1
-                    // map: ["Produce-CEFoodApple"]
+                    // state: produce-[KEY]-var[VARIATION STATE NUMBER]-state[GROWTH STATE NUMBER]
+                    // map: ["Produce-[KEY]"]
                 }
             }
         }

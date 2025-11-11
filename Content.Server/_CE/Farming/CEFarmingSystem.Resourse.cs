@@ -61,23 +61,23 @@ public sealed partial class CEFarmingSystem
         if (plant.GrowthLevel < 1) //We dont grow fruits before fully grown plant
             return;
 
-        foreach (var (_, gatherEntry) in ent.Comp.Produce)
+        foreach (var (key, entry) in ent.Comp.GatherKeys)
         {
-            var energyCost = gatherEntry.EnergyCost * gatherEntry.GrowthPerUpdate;
-            var resourceCost = gatherEntry.ResourceCost * gatherEntry.GrowthPerUpdate;
+            var energyCost = entry.EnergyCost * entry.GrowthPerUpdate;
+            var resourceCost = entry.ResourceCost * entry.GrowthPerUpdate;
             if (plant.Energy < energyCost)
                 continue;
 
             if (plant.Resource < resourceCost)
                 continue;
 
-            if (gatherEntry.Growth >= 1)
+            if (entry.Growth >= 1)
                 continue;
 
             AffectEnergy(args.Plant, -energyCost);
             AffectResource(args.Plant, -resourceCost);
 
-            gatherEntry.Growth = MathF.Min(gatherEntry.Growth + gatherEntry.GrowthPerUpdate, 1);
+            entry.Growth = MathF.Min(entry.Growth + entry.GrowthPerUpdate, 1);
             Dirty(ent);
         }
     }

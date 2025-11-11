@@ -14,7 +14,7 @@ public sealed partial class CEPlantProducingComponent : Component
     /// what types of crops does this plant produce, and how
     /// </summary>
     [DataField, AutoNetworkedField]
-    public Dictionary<EntProtoId, CEGatherEntry> Produce = new();
+    public Dictionary<string, CEGatherEntry> GatherKeys = new();
 
     /// <summary>
     /// Random shift of the appearing entity during gathering
@@ -27,6 +27,9 @@ public sealed partial class CEPlantProducingComponent : Component
 [DataDefinition]
 public sealed partial class CEGatherEntry
 {
+    [DataField(required: true)]
+    public EntProtoId Result;
+
     /// <summary>
     /// How much has this type of resource grown on this plant? From 0 to 1.
     /// </summary>
@@ -60,6 +63,9 @@ public sealed partial class CEGatherEntry
     /// <remarks>If there are insufficient resources or energy for fruit growth, they will not be spent, and this growth update tick will not occur.</remarks>
     [DataField]
     public float GrowthPerUpdate = 0.1f;
+
+    [DataField]
+    public int VisualStateCount = 0;
 }
 
 /// <summary>
@@ -70,5 +76,5 @@ public interface IPlantGatherMethod
     /// <summary>
     /// What types of resources are gathered using this component method?
     /// </summary>
-    public HashSet<EntProtoId> Produce { get; set; }
+    public HashSet<string> GatherKeys { get; set; }
 }

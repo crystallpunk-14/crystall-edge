@@ -40,9 +40,6 @@ public sealed partial class CEPlantVisualsComponent : Component
 
     [DataField]
     public int? SelectedVariation = null;
-
-    [DataField]
-    public Dictionary<EntProtoId, int> ProduceVisualStates = new();
 }
 
 public enum PlantVisualLayers : byte
