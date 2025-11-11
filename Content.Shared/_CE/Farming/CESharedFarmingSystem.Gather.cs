@@ -85,7 +85,7 @@ public abstract partial class CESharedFarmingSystem
             if (entry.Growth < gatherAmount)
                 continue;
 
-            var produceCount = ContentHelpers.RoundToLevels(gatherAmount, 1, entry.MaxProduce);
+            var produceCount = ContentHelpers.RoundToLevels(gatherAmount, 1, entry.MaxProduce + 1);
 
             if (produceCount == 0)
                 continue;
@@ -121,7 +121,7 @@ public abstract partial class CESharedFarmingSystem
             if (entry.Growth < gatherAmount)
                 continue;
 
-            var produceCount = ContentHelpers.RoundToLevels(gatherAmount, 1, entry.MaxProduce);
+            var produceCount = ContentHelpers.RoundToLevels(gatherAmount, 1, entry.MaxProduce + 1);
 
             if (produceCount == 0)
                 continue;

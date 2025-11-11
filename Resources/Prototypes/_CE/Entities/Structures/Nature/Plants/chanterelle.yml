@@ -22,7 +22,7 @@
       map: ["enum.PlantVisualLayers.Base"]
   - type: CEPlantAdditionalProduceOnInteract
     produce:
-      CEFoodChanterelle: 2
+      CEFoodChanterelle: 3
     toolWhitelist:
       components:
       - Sharp
