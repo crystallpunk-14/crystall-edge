@@ -17,12 +17,16 @@ public sealed partial class CEPlantGatherOnInteractComponent : Component, IPlant
     /// <summary>
     ///     Whitelist for specifying the kind of tools can be used on a resource
     ///     Supports multiple tags.
+    ///     If null, no whitelist checking.
     /// </summary>
     [DataField(required: true)]
     public EntityWhitelist ToolWhitelist = new();
 
     [DataField]
     public TimeSpan GatherDelay = TimeSpan.FromSeconds(1f);
+
+    [DataField]
+    public float GatherAmount = 0.3f;
 
     /// <summary>
     /// Sound to play when gathering

@@ -7,7 +7,7 @@
   description: A sturdy tree that bears delicious apples.
   components:
   - type: CEPlant
-    updateFrequency: 1
+    updateFrequency: 2
   - type: CEPlantVisuals
     growthSteps: 4
     readyVariations: 2

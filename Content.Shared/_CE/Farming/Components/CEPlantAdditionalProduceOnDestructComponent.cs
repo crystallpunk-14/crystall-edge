@@ -30,11 +30,12 @@ public sealed partial class CEPlantAdditionalProduceOnInteractComponent : Compon
     public Dictionary<EntProtoId, int> Produce = new();
 
     /// <summary>
-    ///     Whitelist for specifying the kind of tools can be used on a resource
-    ///     Supports multiple tags.
+    /// Whitelist for specifying the kind of tools can be used on a resource
+    /// Supports multiple tags.
+    /// If null, no whitelist checking.
     /// </summary>
-    [DataField(required: true)]
-    public EntityWhitelist ToolWhitelist = new();
+    [DataField]
+    public EntityWhitelist? ToolWhitelist;
 
     [DataField]
     public TimeSpan GatherDelay = TimeSpan.FromSeconds(1f);

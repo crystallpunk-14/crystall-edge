@@ -51,8 +51,7 @@ public sealed partial class CEFarmingSystem : CESharedFarmingSystem
             if (_timing.CurTime <= plant.NextUpdateTime)
                 continue;
 
-            var newTime = _random.NextFloat(plant.UpdateFrequency);
-            plant.NextUpdateTime = _timing.CurTime + TimeSpan.FromSeconds(newTime);
+            plant.NextUpdateTime = _timing.CurTime + TimeSpan.FromSeconds(plant.UpdateFrequency);
 
             var ev = new CEPlantUpdateEvent((uid, plant));
             RaiseLocalEvent(uid, ev);
