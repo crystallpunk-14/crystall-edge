@@ -34,7 +34,7 @@
           Nitrogen: 82.10312
     - type: SunShadowCycle
     - type: Parallax
-      parallax: Sky
+      parallax: CESky
     - type: LightCycle
       originalColor: '#75BCFFFF'
     - type: SunShadow
