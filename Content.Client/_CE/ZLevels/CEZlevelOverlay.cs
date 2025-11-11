@@ -17,15 +17,11 @@ public sealed class CEZLevelOverlay : Overlay
     public CEZLevelOverlay()
     {
         IoCManager.InjectDependencies(this);
-
         _blurShader = _proto.Index<ShaderPrototype>("CEZBlur").InstanceUnique();
-        ZIndex = 102;
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
     {
-        return false;
-
         if (args.Viewport.Eye is not ScalingViewport.ZEye zeye)
             return false;
 
@@ -47,7 +43,7 @@ public sealed class CEZLevelOverlay : Overlay
 
         var worldHandle = args.WorldHandle;
         worldHandle.UseShader(_blurShader);
-        worldHandle.DrawRect(args.WorldAABB, Color.White);
+        worldHandle.DrawRect(args.WorldBounds, Color.White);
         worldHandle.UseShader(null);
     }
 }
