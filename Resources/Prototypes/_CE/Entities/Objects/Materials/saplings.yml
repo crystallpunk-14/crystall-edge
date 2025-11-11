@@ -6,9 +6,6 @@
   components:
   - type: Item
     size: Normal
-  - type: Tag
-    tags:
-    - CEFarmSeed
   - type: StaticPrice
     price: 5
   - type: CESeed
