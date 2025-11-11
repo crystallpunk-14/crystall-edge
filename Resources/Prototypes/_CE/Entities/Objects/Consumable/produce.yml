@@ -57,8 +57,6 @@
         reagents:
         - ReagentId: Fiber
           Quantity: 5
-  - type: Tag
-    tags:
   - type: StaticPrice
     price: 1
 
