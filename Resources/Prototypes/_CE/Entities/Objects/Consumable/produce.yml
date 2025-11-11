@@ -323,10 +323,10 @@
   - type: SliceableFood
     count: 2
     sliceTime: 1
+    slice: CEFoodCucumberSlice
   - type: CEAdditionalSliceableDrop
     loot:
       CESeedCucumber: 1
-    slice: CEFoodCucumberSlice
   - type: Tag
     tags:
     - CEVegetable
@@ -679,9 +679,6 @@
     count: 4
     sliceTime: 2
     slice: CEFoodOnionSlice
-  - type: CEAdditionalSliceableDrop
-    loot:
-      CESeedOnion: 1
   - type: CESeed
     plantProto: CEPlantOnion
   - type: Tag
@@ -763,5 +760,3 @@
   - type: InternalTemperature
     thickness: 0.006
     area: 0.006
-  - type: Tag
-    tags:
