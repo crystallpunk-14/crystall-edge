@@ -59,10 +59,14 @@ public abstract partial class CESharedFarmingSystem
             if (produceCount == 0)
                 continue;
 
-            for (var i = 0; i < produceCount; i++)
+            if (_net.IsServer)
             {
-                var spawnPos = pos.Offset(_random.NextVector2(0.3f)); //Boo hardcoding
-                PredictedSpawnAtPosition(produceProto, spawnPos);
+                for (var i = 0; i < produceCount; i++)
+                {
+                    var spawnPos = pos.Offset(_random.NextVector2(0.3f)); //Boo hardcoding
+                    var spawned = SpawnAtPosition(produceProto, spawnPos);
+                    _transform.SetLocalRotation(spawned, _random.NextAngle());
+                }
             }
         }
     }
@@ -125,10 +129,14 @@ public abstract partial class CESharedFarmingSystem
             if (produceCount == 0)
                 continue;
 
-            for (var i = 0; i < produceCount; i++)
+            if (_net.IsServer)
             {
-                var spawnPos = pos.Offset(_random.NextVector2(0.3f)); //Boo hardcoding
-                PredictedSpawnAtPosition(produceProto, spawnPos);
+                for (var i = 0; i < produceCount; i++)
+                {
+                    var spawnPos = pos.Offset(_random.NextVector2(0.3f)); //Boo hardcoding
+                    var spawned = SpawnAtPosition(produceProto, spawnPos);
+                    _transform.SetLocalRotation(spawned, _random.NextAngle());
+                }
             }
         }
         QueueDel(ent);

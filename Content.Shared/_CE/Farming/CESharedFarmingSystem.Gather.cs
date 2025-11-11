@@ -119,10 +119,16 @@ public abstract partial class CESharedFarmingSystem
             if (produceCount == 0)
                 continue;
 
-            for (var i = 0; i < produceCount; i++)
+            if (_net.IsServer)
             {
-                var spawnPos = pos.Offset(_random.NextVector2(_random.NextFloat(ent.Comp.GatherOffset)));
-                result.Add(PredictedSpawnAtPosition(entry.Result, spawnPos));
+                for (var i = 0; i < produceCount; i++)
+                {
+                    var spawnPos = pos.Offset(_random.NextVector2(_random.NextFloat(ent.Comp.GatherOffset)));
+
+                    var spawned = SpawnAtPosition(entry.Result, spawnPos);
+                    _transform.SetLocalRotation(spawned, _random.NextAngle());
+                    result.Add(spawned);
+                }
             }
 
             entry.Growth = 0;
