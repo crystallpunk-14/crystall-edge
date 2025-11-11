@@ -100,6 +100,9 @@
     count: 4
     sliceTime: 1.5
     slice: CEFoodCabbageSlice
+  - type: CEAdditionalSliceableDrop
+    loot:
+      CESeedCabbage: 1
   - type: Tag
     tags:
     - CEFarmFood
@@ -187,6 +190,9 @@
     count: 5
     sliceTime: 2
     slice: CEFoodPumpkinSlice
+  - type: CEAdditionalSliceableDrop
+    loot:
+      CESeedPumpkin: 1
   - type: Tag
     tags:
     - CEFarmFood
@@ -324,6 +330,9 @@
   - type: SliceableFood
     count: 2
     sliceTime: 1
+  - type: CEAdditionalSliceableDrop
+    loot:
+      CESeedCucumber: 1
     slice: CEFoodCucumberSlice
   - type: Tag
     tags:
@@ -404,6 +413,9 @@
     count: 3
     sliceTime: 1
     slice: CEFoodTomatoesSlice
+  - type: CEAdditionalSliceableDrop
+    loot:
+      CESeedTomato: 1
   - type: Destructible
     thresholds:
     - trigger:
@@ -594,6 +606,9 @@
     count: 4
     sliceTime: 2
     slice: CEFoodPepperSlice
+  - type: CEAdditionalSliceableDrop
+    loot:
+      CESeedPepper: 1
   - type: SolutionContainerManager
     solutions:
       food:
@@ -679,6 +694,9 @@
     count: 4
     sliceTime: 2
     slice: CEFoodOnionSlice
+  - type: CEAdditionalSliceableDrop
+    loot:
+      CESeedOnion: 1
   - type: CESeed
     plantProto: CEPlantOnion
   - type: Tag
@@ -720,7 +738,6 @@
     tags:
     - CEFarmFood
     - CEVegetable
-
 
 - type: entity
   id: CEFoodChanterelle

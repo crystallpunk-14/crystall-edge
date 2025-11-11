@@ -54,7 +54,7 @@ public sealed partial class CEPlantComponent : Component
 }
 
 /// <summary>
-/// Is called periodically at random intervals on the plant.
+/// Is called periodically on the plant. Use it to change resources and energy level of plant.
 /// </summary>
 public sealed class CEPlantUpdateEvent(Entity<CEPlantComponent> comp) : EntityEventArgs
 {

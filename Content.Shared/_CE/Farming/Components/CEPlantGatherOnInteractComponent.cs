@@ -15,9 +15,9 @@ public sealed partial class CEPlantGatherOnInteractComponent : Component, IPlant
     public HashSet<string> GatherKeys { get; set; } = new();
 
     /// <summary>
-    ///     Whitelist for specifying the kind of tools can be used on a resource
-    ///     Supports multiple tags.
-    ///     If null, no whitelist checking.
+    /// Whitelist for specifying the kind of tools can be used on a resource
+    /// Supports multiple tags.
+    /// If null, no whitelist checking.
     /// </summary>
     [DataField(required: true)]
     public EntityWhitelist ToolWhitelist = new();
