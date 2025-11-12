@@ -85,6 +85,7 @@
   #- type: CEIgnitionModifier
   #  ignitionTimeModifier: 0.75
   #  hideCaution: true
+  - type: CEZPhysics
 
 - type: entity
   id: CEBushSpawner

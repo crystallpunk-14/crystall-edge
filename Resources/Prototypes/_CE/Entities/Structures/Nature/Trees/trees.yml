@@ -5,6 +5,7 @@
   name: tree
   description: Decades of life and growth, saturating the surrounding nature with fresh air.
   components:
+  - type: CEZPhysics
   - type: Transform
     anchored: true
   - type: CEWaveShader

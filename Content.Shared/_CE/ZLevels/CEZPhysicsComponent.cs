@@ -10,9 +10,6 @@ namespace Content.Shared._CE.ZLevels;
  Access(typeof(CESharedZLevelsSystem))]
 public sealed partial class CEZPhysicsComponent : Component
 {
-    [DataField]
-    public bool Active = true;
-
     /// <summary>
     /// The current speed of movement between z-levels.
     /// If greater than 0, the entity moves upward. If less than 0, the entity moves downward.

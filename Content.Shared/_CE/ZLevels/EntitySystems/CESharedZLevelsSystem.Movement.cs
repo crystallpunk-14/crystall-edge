@@ -75,13 +75,10 @@ public abstract partial class CESharedZLevelsSystem
     {
         base.Update(frameTime);
 
-        var query = EntityQueryEnumerator<CEZPhysicsComponent, TransformComponent, PhysicsComponent>();
-        while (query.MoveNext(out var uid, out var zPhys, out var xform, out var physics))
+        var query = EntityQueryEnumerator<CEZPhysicsComponent, CEActiveZPhysicsComponent, TransformComponent, PhysicsComponent>();
+        while (query.MoveNext(out var uid, out var zPhys, out _, out var xform, out var physics))
         {
-            if (!zPhys.Active)
-                continue;
-
-            if (physics.BodyType == BodyType.Static || xform.ParentUid != xform.MapUid)
+            if (xform.ParentUid != xform.MapUid)
                 continue;
 
             var oldVelocity = zPhys.Velocity;

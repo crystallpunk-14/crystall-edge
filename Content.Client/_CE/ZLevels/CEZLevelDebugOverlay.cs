@@ -36,8 +36,8 @@ public sealed class CEZLevelDebugOverlay : Overlay
 
     protected override void Draw(in OverlayDrawArgs args)
     {
-        var query = _entityManager.EntityQueryEnumerator<CEZPhysicsComponent, TransformComponent>();
-        while (query.MoveNext(out var uid, out var zPhys, out var xform))
+        var query = _entityManager.EntityQueryEnumerator<CEZPhysicsComponent, CEActiveZPhysicsComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var zPhys, out _, out var xform))
         {
             if (xform.MapUid != xform.ParentUid)
                 continue;

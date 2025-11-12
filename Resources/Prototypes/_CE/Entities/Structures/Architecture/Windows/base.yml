@@ -4,6 +4,7 @@
   parent: Window
   categories: [ ForkFiltered ]
   components:
+  - type: CEZPhysics
   - type: Transform
     noRot: true
   - type: Sprite

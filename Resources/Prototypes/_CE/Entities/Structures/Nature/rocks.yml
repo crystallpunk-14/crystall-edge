@@ -3,18 +3,14 @@
   name: rock
   description: A piece of rock. Hard, heavy, useless.
   categories: [ ForkFiltered ]
+  parent: BaseStructure
   abstract: true
   placement:
     mode: SnapgridCenter
   components:
-  - type: Transform
-    anchored: True
-  - type: Clickable
   - type: Sprite
     drawdepth: Mobs
     snapCardinals: true
-  - type: Physics
-    bodyType: Static
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: Rock
