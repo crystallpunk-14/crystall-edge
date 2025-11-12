@@ -1,11 +1,12 @@
+using Content.Shared._CE.ZLevels;
 using Content.Shared.Ghost;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
 
-namespace Content.Shared._CE.ZLevels.EntitySystems;
+namespace Content.Server._CE.ZLevels.EntitySystems;
 
-public abstract partial class CESharedZLevelsSystem
+public sealed partial class CEZLevelsSystem
 {
     private void InitializeActivation()
     {
