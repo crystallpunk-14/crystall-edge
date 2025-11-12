@@ -7,9 +7,8 @@
   categories: [ ForkFiltered ]
   components:
   - type: CEPlant
-    updateFrequency: 1 #Debug
-    resource: 25 #Some starting resources "from seed"
-    energy: 0
+    resource: 5 #Some starting resources "from seed"
+    energy: 5
     growthLevel: 0
   - type: Sprite
     snapCardinals: true
