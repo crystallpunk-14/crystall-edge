@@ -31,6 +31,9 @@ public abstract partial class CESharedZLevelsSystem
 
     private void CheckActivation(Entity<CEZPhysicsComponent> ent)
     {
+        if (TerminatingOrDeleted(ent))
+            return;
+
         var xform = Transform(ent);
 
         if (HasComp<GhostComponent>(ent))
