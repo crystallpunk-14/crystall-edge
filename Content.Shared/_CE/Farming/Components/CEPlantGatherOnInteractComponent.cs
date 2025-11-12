@@ -26,7 +26,7 @@ public sealed partial class CEPlantGatherOnInteractComponent : Component, IPlant
     public TimeSpan GatherDelay = TimeSpan.FromSeconds(1f);
 
     [DataField]
-    public float GatherAmount = 0.3f;
+    public float GatherAmount = 1f;
 
     /// <summary>
     /// Sound to play when gathering

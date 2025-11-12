@@ -96,9 +96,15 @@ public sealed class CEClientFarmingSystem : CESharedFarmingSystem
             {
                 foreach (var (key, entry) in producing.GatherKeys)
                 {
-                    var growthState = ContentHelpers.RoundToNearestLevels(entry.Growth, 1, entry.VisualStateCount);
+                    if (entry.VisualStateCount is null)
+                        continue;
+
+                    var growthState = ContentHelpers.RoundToNearestLevels(entry.Growth, 1, entry.VisualStateCount.Value);
 
                     _sprite.LayerSetVisible(visuals.Owner, $"{PlantVisualLayers.Produce.ToString()}-{key}", growthState != 0);
+
+                    if (growthState == 0)
+                        continue;
 
                     _sprite.LayerSetRsiState(visuals.Owner, $"{PlantVisualLayers.Produce.ToString()}-{key}",
                         $"produce-{key}-var{visuals.Comp.SelectedVariation}-state{growthState}");

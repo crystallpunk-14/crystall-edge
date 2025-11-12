@@ -1,5 +1,4 @@
 using Content.Shared._CE.Farming.Components;
-using Content.Shared._CE.Farming.Prototypes;
 using Content.Shared.FixedPoint;
 
 namespace Content.Shared._CE.Farming.Metabolizer;

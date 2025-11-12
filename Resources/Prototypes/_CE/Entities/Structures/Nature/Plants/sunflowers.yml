@@ -1,32 +1,34 @@
 - type: entity
   id: CEPlantSunflower
-  parent: CEGatherablePlantSingleHarvestBase
+  parent:
+  - CEPlantBase
+  - CEPlantBaseSolarEnergy
+  - CEPlantBaseSingleHarvest
+  - CEPlantBaseFloralType
+  - CEPlantBaseGrowing2Day
+  - CEPlantBaseMetabolizer1Day
+  - CEPlantBaseMetabolizerWater
   name: sunflower
   description: A tall, sun-loving plant that produces large, bright yellow flowers.
   components:
-  - type: CEPlant
-    updateFrequency: 1
   - type: CEPlantVisuals
     growthSteps: 2
     readyVariations: 3
   - type: Sprite
+    sprite: _CE/Structures/Nature/Farm/sunflowers.rsi
     noRot: true
     offset: 0, 0.6
     drawdepth: Mobs
     layers:
     - state: liq-1
+      sprite: _CE/Structures/Nature/Farm/watered.rsi
       map: ["enum.SolutionContainerLayers.Fill"]
       visible: false
     - state: grow-1
-      sprite: _CE/Structures/Nature/Farm/sunflowers.rsi
       map: ["enum.PlantVisualLayers.Base"]
-  #- type: CEPlantGatherable
-  #  loot:
-  #    All: !type:AllSelector
-  #      children:
-  #      - id: CE
-  #        rolls: !type:RangeNumberSelector
-  #          range: 4, 6
+  #- type: CEPlantAdditionalProduceOnInteract
+  #  produce:
+  #    CESunflowerHead: 1
   - type: CEWaveShader
     speed: 3
     dis: 4

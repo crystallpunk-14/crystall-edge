@@ -14,7 +14,7 @@ public sealed partial class CEPlantComponent : Component
     /// The ability to consume a resource for growing
     /// </summary>
     [DataField, AutoNetworkedField]
-    public float Energy = 30f;
+    public float Energy = 0f;
 
     [DataField, AutoNetworkedField]
     public float EnergyMax = 100f;
@@ -23,7 +23,7 @@ public sealed partial class CEPlantComponent : Component
     /// resource consumed for growth
     /// </summary>
     [DataField, AutoNetworkedField]
-    public float Resource = 30f;
+    public float Resource = 0f;
 
     [DataField, AutoNetworkedField]
     public float ResourceMax = 100f;
@@ -39,12 +39,6 @@ public sealed partial class CEPlantComponent : Component
 
     [DataField, AutoPausedField]
     public TimeSpan NextUpdateTime = TimeSpan.Zero;
-
-    /// <summary>
-    /// Solution for metabolizing resources
-    /// </summary>
-    [DataField]
-    public string? Solution;
 
     /// <summary>
     /// On which tiles can this plant grow? If empty - on any.

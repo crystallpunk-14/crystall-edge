@@ -1,40 +1,29 @@
 - type: entity
   id: CEPlantAppleTree
   parent:
-  - CEGatherablePlantMultiHarvestBase
-  - CEBaseTree
+  - CEPlantTreeBase
+  - CEPlantBaseSolarEnergy
+  - CEPlantBaseFloralType
+  - CEPlantBaseGrowing4Day
+  - CEPlantBaseMetabolizer1Day
+  - CEPlantBaseMetabolizerWater
   name: apple tree
   description: A sturdy tree that bears delicious apples.
   components:
-  - type: CEPlant
-    updateFrequency: 2
   - type: CEPlantVisuals
     growthSteps: 4
     readyVariations: 2
-  - type: Physics
-    canCollide: true
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.2,-0.2,0.2,0.2"
-        density: 1000
-        layer:
-        - WallLayer
   - type: Sprite
-    noRot: true
+    sprite: _CE/Structures/Nature/Farm/apple_tree.rsi
     offset: 0, 0.9
-    drawdepth: Mobs
     layers:
     - state: liq-1
+      sprite: _CE/Structures/Nature/Farm/watered.rsi
       map: ["enum.SolutionContainerLayers.Fill"]
       visible: false
     - state: grow-1
-      sprite: _CE/Structures/Nature/Farm/apple_tree.rsi
       map: ["enum.PlantVisualLayers.Base"]
     - state: produce-apple-var1-state1
-      sprite: _CE/Structures/Nature/Farm/apple_tree.rsi
       visible: false
       map: ["Produce-apple"]
   - type: CEPlantProducing
@@ -42,55 +31,13 @@
     gatherKeys:
       apple:
         result: CEFoodAppleFalling
-        maxProduce: 10
-        resourceCost: 1
-        energyCost: 0.5
+        maxProduce: 4
         visualStateCount: 2
+        growthPerUpdate: 0.0833 # After 4 days, we start spamming apples 2 times a day
   - type: CEPlantGatherOnInteract
+    gatherAmount: 0.3
     gatherKeys:
     - apple
     toolWhitelist:
       components:
       - Sharp
-  - type: CEPlantAdditionalProduceOnDestruct
-    produce:
-      CEWoodLog: 3
-  - type: CEWaveShader
-    speed: 3
-    dis: 4
-  - type: Damageable
-    damageContainer: Inorganic
-    damageModifierSet: Wood
-  - type: MeleeSound
-    soundGroups:
-      Brute:
-        path: /Audio/Effects/chop.ogg
-        params:
-          variation: 0.05
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTypeTrigger
-        damageType: Heat
-        damage: 50
-      behaviors:
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-    - trigger:
-        !type:DamageTrigger
-        damage: 200
-      behaviors:
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-    - trigger:
-        !type:DamageTrigger
-        damage: 75
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          path: /Audio/Effects/tree_fell.ogg
-          params:
-            volume: 5
-            variation: 0.05
-      - !type:DoActsBehavior
-        acts: [ "Destruction", "Breakage" ]

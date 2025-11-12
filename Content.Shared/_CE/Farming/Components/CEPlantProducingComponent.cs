@@ -47,14 +47,14 @@ public sealed partial class CEGatherEntry
     /// This means that this number will be multiplied by <see cref="GrowthPerUpdate"/>.
     /// </summary>
     [DataField]
-    public float ResourceCost = 0;
+    public float ResourceCost = 1f;
 
     /// <summary>
     /// How many energy are spent on growing this resource COMPLETELY?
     /// This means that this number will be multiplied by <see cref="GrowthPerUpdate"/>.
     /// </summary>
     [DataField]
-    public float EnergyCost = 0;
+    public float EnergyCost = 1f;
 
     /// <summary>
     /// How much resource will be grown per plant update tick?
@@ -65,7 +65,7 @@ public sealed partial class CEGatherEntry
     public float GrowthPerUpdate = 0.1f;
 
     [DataField]
-    public int VisualStateCount = 0;
+    public int? VisualStateCount;
 }
 
 /// <summary>

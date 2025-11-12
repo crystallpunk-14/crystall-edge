@@ -7,14 +7,14 @@ namespace Content.Shared._CE.Farming.Components;
 public sealed partial class CEPlantGrowingComponent : Component
 {
     [DataField]
-    public float EnergyCost = 0f;
+    public float EnergyCost = 1f;
 
     [DataField]
-    public float ResourceCost = 0f;
+    public float ResourceCost = 1f;
 
     /// <summary>
     /// for each plant renewal. It is not every frame, it depends on the refresh rate in PlantComponent
     /// </summary>
-    [DataField]
+    [DataField(required: true)]
     public float GrowthPerUpdate = 0f;
 }

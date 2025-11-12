@@ -1,27 +1,29 @@
 - type: entity
   id: CEPlantOnion
-  parent: CEGatherablePlantSingleHarvestBase
+  parent:
+  - CEPlantBase
+  - CEPlantBaseSolarEnergy
+  - CEPlantBaseSingleHarvest
+  - CEPlantBaseFloralType
+  - CEPlantBaseGrowing2Day
+  - CEPlantBaseMetabolizer1Day
+  - CEPlantBaseMetabolizerWater
   name: onion
   description: He's so cute it brings tears to my eyes to cut him up.
   components:
-  - type: CEPlant
-    updateFrequency: 1
   - type: CEPlantVisuals
     growthSteps: 5
     readyVariations: 2
   - type: Sprite
+    sprite: _CE/Structures/Nature/Farm/onion.rsi
     layers:
     - state: liq-1
+      sprite: _CE/Structures/Nature/Farm/watered.rsi
       map: ["enum.SolutionContainerLayers.Fill"]
       visible: false
     - state: grow-1
-      sprite: _CE/Structures/Nature/Farm/onion.rsi
       map: ["enum.PlantVisualLayers.Base"]
-  #- type: CEPlantGatherable
-  #  loot:
-  #    All: !type:AllSelector
-  #      children:
-  #      - id: CEFoodOnion
-  #        rolls: !type:RangeNumberSelector
-  #          range: 4, 6
+  - type: CEPlantAdditionalProduceOnInteract
+    produce:
+      CEFoodOnion: 4
 

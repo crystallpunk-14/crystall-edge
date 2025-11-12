@@ -1,27 +1,36 @@
 - type: entity
   id: CEPlantCucumber
-  parent: CEGatherablePlantMultiHarvestBase
+  parent:
+  - CEPlantBase
+  - CEPlantBaseSolarEnergy
+  - CEPlantBaseFloralType
+  - CEPlantBaseGrowing1Day
+  - CEPlantBaseMetabolizer1Day
+  - CEPlantBaseMetabolizerWater
   name: cucumber
   description: Don't trust people who know how to turn into pickles.
   components:
-  - type: CEPlant
-    updateFrequency: 1
   - type: CEPlantVisuals
     growthSteps: 5
     readyVariations: 2
   - type: Sprite
+    sprite: _CE/Structures/Nature/Farm/cucumber.rsi
     layers:
     - state: liq-1
+      sprite: _CE/Structures/Nature/Farm/watered.rsi
       map: ["enum.SolutionContainerLayers.Fill"]
       visible: false
     - state: grow-1
-      sprite: _CE/Structures/Nature/Farm/cucumber.rsi
       map: ["enum.PlantVisualLayers.Base"]
-  #- type: CEPlantGatherable
-  #  loot:
-  #    All: !type:AllSelector
-  #      children:
-  #      - id: CEFoodCucumber
-  #        rolls: !type:RangeNumberSelector
-  #          range: 4, 6
-
+  - type: CEPlantProducing
+    gatherKeys:
+      cucumber:
+        result: CEFoodCucumber
+        maxProduce: 2
+        growthPerUpdate: 0.0416 # After 1 days, we start spamming cucumbers 1 times a day
+  - type: CEPlantGatherOnInteract
+    gatherKeys:
+    - cucumber
+    toolWhitelist:
+      components:
+      - Sharp

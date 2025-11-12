@@ -35,21 +35,19 @@ public sealed partial class CEFarmingSystem
             return;
 
         var solEntity = new Entity<SolutionContainerManagerComponent?>(args.Plant, solmanager);
-        if (!_solutionContainer.TryGetSolution(solEntity, args.Plant.Comp.Solution, out var soln, out _))
-            return;
-
-        if (!_proto.Resolve(ent.Comp.MetabolizerId, out var metabolizer))
+        if (!_solutionContainer.TryGetSolution(solEntity, ent.Comp.Solution, out var soln, out _))
             return;
 
         var splitted = _solutionContainer.SplitSolution(soln.Value, ent.Comp.SolutionPerUpdate);
         foreach (var reagent in splitted)
         {
-            if (!metabolizer.Metabolization.TryGetValue(reagent.Reagent.ToString(), out var effects))
+            if (!ent.Comp.Metabolization.TryGetValue(reagent.Reagent.ToString(), out var effects))
                 continue;
 
+            var reagentPercentage = reagent.Quantity / ent.Comp.SolutionPerUpdate;
             foreach (var effect in effects)
             {
-                effect.Effect((ent, args.Plant.Comp), reagent.Quantity, EntityManager);
+                effect.Effect((ent, args.Plant.Comp), reagentPercentage, EntityManager);
             }
         }
     }

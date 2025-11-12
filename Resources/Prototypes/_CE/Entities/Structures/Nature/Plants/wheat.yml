@@ -1,29 +1,31 @@
 - type: entity
   id: CEPlantWheat
-  parent: CEGatherablePlantSingleHarvestBase
+  parent:
+  - CEPlantBase
+  - CEPlantBaseSolarEnergy
+  - CEPlantBaseSingleHarvest
+  - CEPlantBaseFloralType
+  - CEPlantBaseGrowing1Day
+  - CEPlantBaseMetabolizerHalfDay
+  - CEPlantBaseMetabolizerWater
   name: wheat
   description: Most popular crop. Unpretentious, it opens the way to an abundance of flour products.
   components:
-  - type: CEPlant
-    updateFrequency: 1
   - type: CEPlantVisuals
     growthSteps: 4
     readyVariations: 1
   - type: Sprite
+    sprite: _CE/Structures/Nature/Farm/wheat.rsi
     layers:
     - state: liq-1
+      sprite: _CE/Structures/Nature/Farm/watered.rsi
       map: ["enum.SolutionContainerLayers.Fill"]
       visible: false
     - state: grow-1
-      sprite: _CE/Structures/Nature/Farm/wheat.rsi
       map: ["enum.PlantVisualLayers.Base"]
-  #- type: CEPlantGatherable
-  #  loot:
-  #    All: !type:AllSelector
-  #      children:
-  #      - id: CEWheat
-  #        rolls: !type:RangeNumberSelector
-  #          range: 4, 6
+  #- type: CEPlantAdditionalProduceOnInteract
+  #  produce:
+  #    CEWheat: 1
   - type: CEWaveShader
     speed: 2.8
     dis: 4

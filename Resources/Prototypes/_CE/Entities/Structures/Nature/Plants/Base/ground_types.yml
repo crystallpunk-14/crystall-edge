@@ -1,0 +1,20 @@
+- type: entity
+  id: CEPlantBaseFungalType
+  abstract: true
+  components:
+  - type: CEPlant
+    soilTile:
+    - CEMycelium
+    - CEMyceliumLight
+
+- type: entity
+  id: CEPlantBaseFloralType
+  abstract: true
+  components:
+  - type: CEPlant
+    soilTile:
+    - CEGrass
+    - CEGrassLight
+    - CEGrassTall
+    - CEDirt
+    - CEDirtSeedbed

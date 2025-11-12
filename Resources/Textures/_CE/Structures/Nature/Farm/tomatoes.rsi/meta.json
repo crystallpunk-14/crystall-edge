@@ -20,13 +20,22 @@
         "name": "grow-4"
       },
       {
-        "name": "grow-5"
-      },
-      {
         "name": "grown-1"
       },
       {
         "name": "grown-2"
+      },
+      {
+        "name": "produce-tomato-var1-state1"
+      },
+      {
+        "name": "produce-tomato-var2-state1"
+      },
+      {
+        "name": "produce-tomato-var1-state2"
+      },
+      {
+        "name": "produce-tomato-var2-state2"
       }
     ]
 }
