@@ -1,8 +1,0 @@
-- type: entity
-  abstract: true
-  id: CEPlantBaseSingleHarvest
-  components:
-  - type: CEPlantAdditionalProduceOnInteract
-    toolWhitelist:
-      components:
-      - Sharp

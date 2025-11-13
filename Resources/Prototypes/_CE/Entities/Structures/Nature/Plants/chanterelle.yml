@@ -8,6 +8,7 @@
   - CEPlantBaseGrowing1Day
   - CEPlantBaseMetabolizerHalfDay
   - CEPlantBaseMetabolizerWater
+  - CEPlantBaseSpreading
   name: chanterelle
   description: A type of wild mushroom with a distinctive yellow color and a slightly fruity aroma.
   components:
@@ -26,3 +27,5 @@
   - type: CEPlantAdditionalProduceOnInteract
     produce:
       CEFoodChanterelle: 2
+  - type: CEPlantKudzu
+    proto: CEPlantChanterelle

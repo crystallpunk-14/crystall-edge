@@ -21,6 +21,7 @@ public sealed partial class CEFarmingSystem : CESharedFarmingSystem
         base.Initialize();
 
         InitializeResources();
+        InitializeKudzu();
 
         SubscribeLocalEvent<CEPlantComponent, MapInitEvent>(OnMapInit);
     }

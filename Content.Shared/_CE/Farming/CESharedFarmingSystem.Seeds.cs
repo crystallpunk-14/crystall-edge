@@ -86,7 +86,7 @@ public abstract partial class CESharedFarmingSystem
         if (plant.TryGetComponent<CEPlantComponent>(out var plantComp, _compFactory)
             && plantComp.SoilTile.Count > 0)
         {
-            var tileRef = _map.GetTileRef(map.Value, gridComp, position);
+            var tileRef = MapSystem.GetTileRef(map.Value, gridComp, position);
             var tile = _turf.GetContentTileDefinition(tileRef);
 
             if (!plantComp.SoilTile.Contains(tile))
@@ -102,7 +102,7 @@ public abstract partial class CESharedFarmingSystem
             }
         }
 
-        foreach (var anchored in _map.GetAnchoredEntities((map.Value, gridComp), position))
+        foreach (var anchored in MapSystem.GetAnchoredEntities((map.Value, gridComp), position))
         {
             if (anchored == exclude)
                 continue;
