@@ -4,8 +4,8 @@ meta:
   engineVersion: 267.3.0
   forkId: ""
   forkVersion: ""
-  time: 11/13/2025 13:58:21
-  entityCount: 237
+  time: 11/13/2025 18:08:08
+  entityCount: 238
 maps:
 - 1
 grids:
@@ -147,6 +147,14 @@ entities:
     - type: Transform
       gridTraversal: False
       pos: -18.628433,-10.293238
+      parent: 1
+    - type: ViewSubscriber
+  - uid: 238
+    components:
+    - type: MetaData
+    - type: Transform
+      gridTraversal: False
+      pos: 7.7181406,1.716934
       parent: 1
     - type: ViewSubscriber
 - proto: CEAlwaysPoweredWallLight

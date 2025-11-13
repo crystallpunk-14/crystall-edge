@@ -4,8 +4,8 @@ meta:
   engineVersion: 267.3.0
   forkId: ""
   forkVersion: ""
-  time: 11/13/2025 13:58:21
-  entityCount: 978
+  time: 11/13/2025 18:08:08
+  entityCount: 993
 maps:
 - 1
 grids:
@@ -169,13 +169,6 @@ entities:
       pos: -7.4861217,-4.0176044
       parent: 1
     - type: ViewSubscriber
-- proto: Bucket
-  entities:
-  - uid: 948
-    components:
-    - type: Transform
-      pos: -21.28962,-9.53472
-      parent: 1
 - proto: CEAlwaysPoweredWallLight
   entities:
   - uid: 23
@@ -383,23 +376,11 @@ entities:
       rot: 3.141592653589793 rad
       pos: -6.5,6.5
       parent: 1
-  - uid: 109
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -5.5,7.5
-      parent: 1
   - uid: 110
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -5.5,6.5
-      parent: 1
-  - uid: 111
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -4.5,7.5
       parent: 1
   - uid: 112
     components:
@@ -442,18 +423,6 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -1.5,6.5
-      parent: 1
-  - uid: 119
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -6.5,8.5
-      parent: 1
-  - uid: 120
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -5.5,8.5
       parent: 1
   - uid: 121
     components:
@@ -546,22 +515,10 @@ entities:
     - type: Transform
       pos: 2.5,7.5
       parent: 1
-  - uid: 138
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -8.5,9.5
-      parent: 1
   - uid: 139
     components:
     - type: Transform
       pos: 3.5,7.5
-      parent: 1
-  - uid: 140
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -7.5,8.5
       parent: 1
   - uid: 141
     components:
@@ -573,28 +530,10 @@ entities:
     - type: Transform
       pos: 4.5,6.5
       parent: 1
-  - uid: 143
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -8.5,8.5
-      parent: 1
   - uid: 144
     components:
     - type: Transform
       pos: 1.5,4.5
-      parent: 1
-  - uid: 145
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -7.5,9.5
-      parent: 1
-  - uid: 146
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -6.5,9.5
       parent: 1
   - uid: 147
     components:
@@ -622,12 +561,6 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -4.5,9.5
-      parent: 1
-  - uid: 152
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -5.5,9.5
       parent: 1
   - uid: 153
     components:
@@ -2965,18 +2898,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: -9.5,10.5
       parent: 1
-  - uid: 776
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -8.5,10.5
-      parent: 1
-  - uid: 777
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -7.5,10.5
-      parent: 1
   - uid: 778
     components:
     - type: Transform
@@ -3972,6 +3893,13 @@ entities:
     - type: Transform
       pos: -22.5,-10.5
       parent: 1
+- proto: CEBucket
+  entities:
+  - uid: 109
+    components:
+    - type: Transform
+      pos: -21.310097,-9.648553
+      parent: 1
 - proto: CEConveyorBelt
   entities:
   - uid: 746
@@ -4179,6 +4107,145 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -16.5,3.5
+      parent: 1
+- proto: CEHighBushFull
+  entities:
+  - uid: 979
+    components:
+    - type: Transform
+      pos: -20.5,1.5
+      parent: 1
+  - uid: 980
+    components:
+    - type: Transform
+      pos: -24.5,4.5
+      parent: 1
+  - uid: 981
+    components:
+    - type: Transform
+      pos: -23.5,7.5
+      parent: 1
+  - uid: 982
+    components:
+    - type: Transform
+      pos: -25.5,6.5
+      parent: 1
+  - uid: 983
+    components:
+    - type: Transform
+      pos: -19.5,1.5
+      parent: 1
+- proto: CEHighBushRandom
+  entities:
+  - uid: 111
+    components:
+    - type: Transform
+      pos: -4.5,7.5
+      parent: 1
+  - uid: 119
+    components:
+    - type: Transform
+      pos: -5.5,7.5
+      parent: 1
+  - uid: 120
+    components:
+    - type: Transform
+      pos: -8.5,8.5
+      parent: 1
+  - uid: 138
+    components:
+    - type: Transform
+      pos: -7.5,9.5
+      parent: 1
+  - uid: 140
+    components:
+    - type: Transform
+      pos: -6.5,8.5
+      parent: 1
+  - uid: 143
+    components:
+    - type: Transform
+      pos: -8.5,9.5
+      parent: 1
+  - uid: 145
+    components:
+    - type: Transform
+      pos: -6.5,9.5
+      parent: 1
+  - uid: 146
+    components:
+    - type: Transform
+      pos: -7.5,10.5
+      parent: 1
+  - uid: 152
+    components:
+    - type: Transform
+      pos: -8.5,10.5
+      parent: 1
+  - uid: 776
+    components:
+    - type: Transform
+      pos: -7.5,8.5
+      parent: 1
+  - uid: 777
+    components:
+    - type: Transform
+      pos: -5.5,8.5
+      parent: 1
+  - uid: 948
+    components:
+    - type: Transform
+      pos: -5.5,9.5
+      parent: 1
+  - uid: 984
+    components:
+    - type: Transform
+      pos: -25.5,3.5
+      parent: 1
+  - uid: 985
+    components:
+    - type: Transform
+      pos: -26.5,4.5
+      parent: 1
+  - uid: 986
+    components:
+    - type: Transform
+      pos: -18.5,6.5
+      parent: 1
+  - uid: 987
+    components:
+    - type: Transform
+      pos: -21.5,6.5
+      parent: 1
+  - uid: 988
+    components:
+    - type: Transform
+      pos: -18.5,0.5
+      parent: 1
+  - uid: 989
+    components:
+    - type: Transform
+      pos: -16.5,-3.5
+      parent: 1
+  - uid: 990
+    components:
+    - type: Transform
+      pos: -20.5,-3.5
+      parent: 1
+  - uid: 991
+    components:
+    - type: Transform
+      pos: -21.5,-4.5
+      parent: 1
+  - uid: 992
+    components:
+    - type: Transform
+      pos: 9.5,-10.5
+      parent: 1
+  - uid: 993
+    components:
+    - type: Transform
+      pos: 8.5,-8.5
       parent: 1
 - proto: CEIronDoor
   entities:
