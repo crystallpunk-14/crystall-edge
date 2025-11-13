@@ -34,6 +34,12 @@ public sealed partial class CEPlantComponent : Component
     [DataField, AutoNetworkedField]
     public float GrowthLevel;
 
+    /// <summary>
+    /// If true, randomize growth level on map init
+    /// </summary>
+    [DataField]
+    public bool RandomGrowthLevel = false;
+
     [DataField]
     public float UpdateFrequency = 60f;
 

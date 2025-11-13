@@ -8,16 +8,22 @@
     },
     "states": [
         {
-            "name": "grass_high_bush1"
+            "name": "grow-1"
         },
         {
-            "name": "grass_high_bush2"
+            "name": "grow-2"
         },
         {
-            "name": "grass_high_bush3"
+            "name": "grow-3"
         },
         {
-            "name": "grass_high_bush4"
+            "name": "grown-1"
+        },
+        {
+            "name": "grown-2"
+        },
+        {
+            "name": "grown-3"
         }
     ]
 }

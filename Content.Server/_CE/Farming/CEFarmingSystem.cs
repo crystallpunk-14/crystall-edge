@@ -39,6 +39,9 @@ public sealed partial class CEFarmingSystem : CESharedFarmingSystem
 
         var newTime = _random.NextFloat(plant.Comp.UpdateFrequency);
         plant.Comp.NextUpdateTime = _timing.CurTime + TimeSpan.FromSeconds(newTime);
+
+        if (plant.Comp.RandomGrowthLevel)
+            AffectGrowth(plant, _random.NextFloat(0f, 1f));
     }
 
     public override void Update(float frameTime)
