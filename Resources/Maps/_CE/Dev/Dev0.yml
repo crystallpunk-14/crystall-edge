@@ -4,8 +4,8 @@ meta:
   engineVersion: 267.3.0
   forkId: ""
   forkVersion: ""
-  time: 11/11/2025 17:29:43
-  entityCount: 977
+  time: 11/13/2025 13:58:21
+  entityCount: 978
 maps:
 - 1
 grids:
@@ -169,6 +169,13 @@ entities:
       pos: -7.4861217,-4.0176044
       parent: 1
     - type: ViewSubscriber
+- proto: Bucket
+  entities:
+  - uid: 948
+    components:
+    - type: Transform
+      pos: -21.28962,-9.53472
+      parent: 1
 - proto: CEAlwaysPoweredWallLight
   entities:
   - uid: 23
@@ -303,6 +310,18 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -20.5,3.5
+      parent: 1
+  - uid: 941
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -21.5,-11.5
+      parent: 1
+  - uid: 942
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -21.5,-7.5
       parent: 1
 - proto: CEBiomeSpawnerGrassland
   entities:
@@ -956,12 +975,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: -21.5,-8.5
       parent: 1
-  - uid: 327
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -21.5,-11.5
-      parent: 1
   - uid: 329
     components:
     - type: Transform
@@ -1094,11 +1107,6 @@ entities:
     components:
     - type: Transform
       pos: -17.5,-16.5
-      parent: 1
-  - uid: 369
-    components:
-    - type: Transform
-      pos: -17.5,-15.5
       parent: 1
   - uid: 373
     components:
@@ -3839,18 +3847,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: -21.5,-10.5
       parent: 1
-  - uid: 941
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -21.5,-9.5
-      parent: 1
-  - uid: 942
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -21.5,-7.5
-      parent: 1
   - uid: 943
     components:
     - type: Transform
@@ -3868,24 +3864,6 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -22.5,-12.5
-      parent: 1
-  - uid: 946
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -22.5,-11.5
-      parent: 1
-  - uid: 947
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -22.5,-10.5
-      parent: 1
-  - uid: 948
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -22.5,-9.5
       parent: 1
   - uid: 949
     components:
@@ -3988,6 +3966,11 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -16.5,-2.5
+      parent: 1
+  - uid: 978
+    components:
+    - type: Transform
+      pos: -22.5,-10.5
       parent: 1
 - proto: CEConveyorBelt
   entities:
@@ -4358,10 +4341,11 @@ entities:
       parent: 1
 - proto: CEPlantAppleTree
   entities:
-  - uid: 968
+  - uid: 369
     components:
     - type: Transform
-      pos: -22.5,-7.5
+      rot: 1.5707963267948966 rad
+      pos: -17.5,-15.5
       parent: 1
 - proto: CEPlantCucumber
   entities:
@@ -4914,6 +4898,21 @@ entities:
     components:
     - type: Transform
       pos: -20.5,5.5
+      parent: 1
+  - uid: 946
+    components:
+    - type: Transform
+      pos: -22.5,-9.5
+      parent: 1
+  - uid: 947
+    components:
+    - type: Transform
+      pos: -22.5,-11.5
+      parent: 1
+  - uid: 968
+    components:
+    - type: Transform
+      pos: -22.5,-7.5
       parent: 1
 - proto: CEWallWooden
   entities:
@@ -5478,6 +5477,14 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -12.5,-8.5
+      parent: 1
+- proto: FloorWaterEntity
+  entities:
+  - uid: 327
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -21.5,-9.5
       parent: 1
 - proto: SpawnPointLatejoin
   entities:

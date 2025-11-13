@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
 using Robust.Client.GameObjects;
 using Robust.Shared.GameObjects;
@@ -39,13 +40,14 @@ public sealed class FillLevelSpriteTest
                 var rsi = sprite.BaseRSI;
 
                 // Test base sprite fills
-                if (!string.IsNullOrEmpty(visuals.FillBaseName))
+                if (sprite.LayerMapTryGet(SolutionContainerLayers.Fill, out var fillLayerInt) && sprite.TryGetLayer(fillLayerInt, out var fillLayer))
                 {
+                    var fillRsi = fillLayer.ActualRsi;
                     for (var i = 1; i <= visuals.MaxFillLevels; i++)
                     {
                         var state = $"{visuals.FillBaseName}{i}";
-                        Assert.That(rsi.TryGetState(state, out _), @$"{proto.ID} has SolutionContainerVisualsComponent with
-                            MaxFillLevels = {visuals.MaxFillLevels}, but {rsi.Path} doesn't have state {state}!");
+                        Assert.That(fillRsi.TryGetState(state, out _), @$"{proto.ID} has SolutionContainerVisualsComponent with
+                            MaxFillLevels = {visuals.MaxFillLevels}, but {fillRsi.Path} doesn't have state {state}!");
                     }
                 }
 
@@ -60,7 +62,6 @@ public sealed class FillLevelSpriteTest
                             Assert.That(rsi.TryGetState(state, out _), @$"{proto.ID} has SolutionContainerVisualsComponent with
                                 InHandsMaxFillLevels = {visuals.InHandsMaxFillLevels}, but {rsi.Path} doesn't have state {state}!");
                         }
-
                     }
                 }
             }

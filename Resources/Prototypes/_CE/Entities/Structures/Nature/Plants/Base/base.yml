@@ -103,6 +103,7 @@
         layer:
         - WallLayer
   - type: Sprite
+    snapCardinals: false
     noRot: true
     drawdepth: Mobs
   - type: CEPlantAdditionalProduceOnDestruct

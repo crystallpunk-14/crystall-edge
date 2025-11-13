@@ -5,6 +5,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Stacks;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 

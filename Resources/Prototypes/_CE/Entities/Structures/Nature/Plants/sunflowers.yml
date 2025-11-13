@@ -16,8 +16,8 @@
     readyVariations: 3
   - type: Sprite
     sprite: _CE/Structures/Nature/Farm/sunflowers.rsi
+    snapCardinals: false
     noRot: true
-    offset: 0, 0.6
     drawdepth: Mobs
     layers:
     - state: liq-1
@@ -25,6 +25,7 @@
       map: ["enum.SolutionContainerLayers.Fill"]
       visible: false
     - state: grow-1
+      offset: 0, 0.6
       map: ["enum.PlantVisualLayers.Base"]
   #- type: CEPlantAdditionalProduceOnInteract
   #  produce:
