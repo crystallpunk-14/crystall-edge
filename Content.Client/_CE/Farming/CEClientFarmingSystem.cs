@@ -73,7 +73,8 @@ public sealed class CEClientFarmingSystem : CESharedFarmingSystem
             {
                 foreach (var (key, entry) in producing.GatherKeys)
                 {
-                    _sprite.LayerSetVisible(visuals.Owner, $"{PlantVisualLayers.Produce.ToString()}-{key}", false);
+                    if (_sprite.LayerMapTryGet(visuals.Owner, $"{PlantVisualLayers.Produce.ToString()}-{key}", out _, false))
+                        _sprite.LayerSetVisible(visuals.Owner, $"{PlantVisualLayers.Produce.ToString()}-{key}", false);
                 }
             }
         }
@@ -97,6 +98,9 @@ public sealed class CEClientFarmingSystem : CESharedFarmingSystem
                 foreach (var (key, entry) in producing.GatherKeys)
                 {
                     if (entry.VisualStateCount is null)
+                        continue;
+
+                    if (!_sprite.LayerMapTryGet(visuals.Owner, $"{PlantVisualLayers.Produce.ToString()}-{key}", out _, false))
                         continue;
 
                     var growthState = ContentHelpers.RoundToNearestLevels(entry.Growth, 1, entry.VisualStateCount.Value);
