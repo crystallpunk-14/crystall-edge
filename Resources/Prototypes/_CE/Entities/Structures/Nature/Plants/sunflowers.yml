@@ -5,12 +5,14 @@
   - CEPlantBaseSolarEnergy
   - CEPlantBaseSingleHarvest
   - CEPlantBaseFloralType
-  - CEPlantBaseGrowing2Day
+  - CEPlantBaseGrowing1Day
   - CEPlantBaseMetabolizer1Day
   - CEPlantBaseMetabolizerWater
   name: sunflower
   description: A tall, sun-loving plant that produces large, bright yellow flowers.
   components:
+  - type: CEPlant
+    updateFrequency: 1
   - type: CEPlantVisuals
     growthSteps: 2
     readyVariations: 3
@@ -27,9 +29,9 @@
     - state: grow-1
       offset: 0, 0.6
       map: ["enum.PlantVisualLayers.Base"]
-  #- type: CEPlantAdditionalProduceOnInteract
-  #  produce:
-  #    CESunflowerHead: 1
+  - type: CEPlantAdditionalProduceOnInteract
+    produce:
+      CEFoodSunflowerHead: 1
   - type: CEWaveShader
     speed: 3
     dis: 4

@@ -147,28 +147,6 @@
     stackType: CESeedPepper
     count: 30
 
-#- type: entity
-#  id: CESeedSage
-#  name: sage seeds
-#  description: Sage seeds. It's time to grow some fun herbs!
-#  parent: CEBaseSeed
-#  components:
-#  - type: Sprite
-#    sprite: _CE/Objects/Consumable/wheat.rsi
-#  - type: CESeed
-#    plantProto: CEPlantSage
-#  - type: Stack
-#    stackType: CESeedSage
-
-#- type: entity
-#  id: CESeedSage30
-#  parent: CESeedSage
-#  suffix: 30
-#  components:
-#  - type: Stack
-#    stackType: CESeedSage
-#    count: 30
-
 - type: entity
   id: CESeedCotton
   name: cotton seeds
@@ -189,4 +167,26 @@
   components:
   - type: Stack
     stackType: CESeedCotton
+    count: 30
+
+- type: entity
+  id: CESeedSunflower
+  name: sunflower seeds
+  description: Sunflower seeds!
+  parent: CEBaseSeed
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/sunflower.rsi
+  - type: CESeed
+    plantProto: CEPlantSunflower
+  - type: Stack
+    stackType: CESeedSunflower
+
+- type: entity
+  id: CESeedSunflower30
+  parent: CESeedSunflower
+  suffix: 30
+  components:
+  - type: Stack
+    stackType: CESeedSunflower
     count: 30

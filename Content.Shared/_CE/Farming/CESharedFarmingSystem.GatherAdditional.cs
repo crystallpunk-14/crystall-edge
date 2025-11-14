@@ -139,6 +139,7 @@ public abstract partial class CESharedFarmingSystem
                 }
             }
         }
-        QueueDel(ent);
+        if (_net.IsServer)
+            QueueDel(ent);
     }
 }

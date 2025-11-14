@@ -726,9 +726,6 @@
   components:
   - type: Item
     size: Tiny
-  - type: FlavorProfile
-    flavors:
-      - shrooms #TODO
   - type: Sprite
     sprite: _CE/Objects/Consumable/chanterelle.rsi
     layers:
@@ -753,6 +750,46 @@
           Quantity: 1.14
   - type: CESeed
     plantProto: CEPlantChanterelle
+  - type: Temperature
+    currentTemperature: 290
+  - type: InternalTemperature
+    thickness: 0.006
+    area: 0.006
+
+- type: entity
+  id: CEFoodSunflowerHead
+  parent: FoodInjectableBase
+  categories: [ ForkFiltered ]
+  name: sunflower head
+  description: A cut flower from a cheerful, sun-loving plant. Inside are lots of delicious seeds.
+  components:
+  - type: Item
+    size: Tiny
+    shape:
+    - 0, 0, 0, 1
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/sunflower.rsi
+    layers:
+      - state: base1
+        map: [ "random" ]
+  - type: RandomSprite
+    available:
+      - random:
+          base1: ""
+          base2: ""
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 4
+        - ReagentId: Vitamin
+          Quantity: 2
+  - type: SliceableFood
+    count: 3
+    sliceTime: 3
+    slice: CESeedSunflower
   - type: Temperature
     currentTemperature: 290
   - type: InternalTemperature

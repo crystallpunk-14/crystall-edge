@@ -53,3 +53,10 @@
   spawn: CESeedCotton
   icon: { sprite: _CE/Objects/Consumable/cotton.rsi, state: seeds }
   maxCount: 30
+
+- type: stack
+  id: CESeedSunflower
+  name: ce-stack-sunflower-seeds
+  spawn: CESeedSunflower
+  icon: { sprite: _CE/Objects/Consumable/sunflower.rsi, state: seeds }
+  maxCount: 30

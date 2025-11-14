@@ -6,3 +6,4 @@ ce-stack-tomato-seeds = семена помидора
 ce-stack-pepper-seeds = семена перца
 ce-stack-sage-seeds = семена шалфея
 ce-stack-cotton-seeds = семена хлопка
+ce-stack-sunflower-seeds = семена подсолнуха
