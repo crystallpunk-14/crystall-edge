@@ -57,6 +57,10 @@
         reagents:
         - ReagentId: Fiber
           Quantity: 5
+  - type: SliceableFood
+    count: 3
+    sliceTime: 1.5
+    slice: CESeedCotton
   - type: StaticPrice
     price: 1
 

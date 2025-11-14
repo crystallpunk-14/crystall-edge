@@ -6,7 +6,7 @@
   - CEPlantBaseSingleHarvest
   - CEPlantBaseFloralType
   - CEPlantBaseGrowing2Day
-  - CEPlantBaseMetabolizer2Day
+  - CEPlantBaseMetabolizer1Day
   - CEPlantBaseMetabolizerWater
   name: cotton
   description: In a way, you're growing future clothes.
@@ -25,6 +25,6 @@
     - state: grow-1
       offset: 0, 0.5
       map: ["enum.PlantVisualLayers.Base"]
-  #- type: CEPlantAdditionalProduceOnInteract
-  #  produce:
-  #    CEFoodCotton: 2
+  - type: CEPlantAdditionalProduceOnInteract
+    produce:
+      CECotton: 4

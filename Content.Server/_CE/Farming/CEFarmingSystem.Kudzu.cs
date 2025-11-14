@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Server.Spreader;
 using Content.Shared._CE.Farming.Components;
 using Robust.Shared.Map;
@@ -54,10 +55,11 @@ public sealed partial class CEFarmingSystem
         if (targetPositions.Count == 0)
             return;
 
-        if (targetPositions.Count > 1)
-            Spawn(ent.Comp.Proto, _random.Pick(targetPositions));
-        else
-            Spawn(ent.Comp.Proto, targetPositions[0]);
+        var positionToSpawn = targetPositions.Count > 1
+            ? _random.Pick(targetPositions)
+            : targetPositions.First();
+
+        Spawn(ent.Comp.Proto, positionToSpawn);
 
         AffectEnergy((ent, plant), -ent.Comp.EnergyCost);
         AffectResource((ent, plant), -ent.Comp.ResourceCost);

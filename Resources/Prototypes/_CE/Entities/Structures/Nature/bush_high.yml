@@ -79,6 +79,7 @@
   - type: TriggerOnCollide
     fixtureID: fix1
   - type: CEPlantKudzu
+    energyCost: 20
     resourceCost: 0
     proto: CEHighBush
 
