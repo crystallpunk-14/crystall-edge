@@ -41,7 +41,7 @@ public abstract partial class CESharedCookingSystem : EntitySystem
     /// <summary>
     /// When overcooking food, we will replace the reagents inside with this reagent.
     /// </summary>
-    private readonly ProtoId<ReagentPrototype> _burntFoodReagent = "CEBurntFood";
+    private readonly ProtoId<ReagentPrototype> _burntFoodReagent = "Ash";
 
     /// <summary>
     /// Stores a list of all recipes sorted by complexity: the most complex ones at the beginning.

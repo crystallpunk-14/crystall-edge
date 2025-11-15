@@ -1,10 +1,11 @@
+using Content.Server._CE.Cooking;
 using Content.Server.Nutrition.EntitySystems;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Nutrition.Components;
 
-[RegisterComponent, Access(typeof(SliceableFoodSystem))]
+[RegisterComponent, Access(typeof(SliceableFoodSystem), typeof(CECookingSystem))]
 public sealed partial class SliceableFoodComponent : Component
 {
     /// <summary>
