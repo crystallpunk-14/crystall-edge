@@ -45,28 +45,19 @@ public abstract partial class CESharedFarmingSystem : EntitySystem
         InitializeSeeds();
         InitializeGather();
         InitializeGatherAdditional();
+        InitializeExamine();
 
         PlantQuery = GetEntityQuery<CEPlantComponent>();
         PlantProducingQuery = GetEntityQuery<CEPlantProducingComponent>();
         SeedQuery = GetEntityQuery<CESeedComponent>();
         SolutionQuery = GetEntityQuery<SolutionContainerManagerComponent>();
 
-        SubscribeLocalEvent<CEPlantComponent, ExaminedEvent>(OnExamine);
         SubscribeLocalEvent<CEPlantComponent, AnchorStateChangedEvent>(OnAnchorStateChanged);
     }
     private void OnAnchorStateChanged(Entity<CEPlantComponent> ent, ref AnchorStateChangedEvent args)
     {
         if (!args.Anchored)
             _destructible.DestroyEntity(ent.Owner);
-    }
-
-    private void OnExamine(EntityUid uid, CEPlantComponent component, ExaminedEvent args)
-    {
-        if (component.Energy <= 0)
-            args.PushMarkup(Loc.GetString("ce-farming-low-energy"));
-
-        if (component.Resource <= 0)
-            args.PushMarkup(Loc.GetString("ce-farming-low-resources"));
     }
 
     public void AffectEnergy(Entity<CEPlantComponent> ent, float energyDelta)

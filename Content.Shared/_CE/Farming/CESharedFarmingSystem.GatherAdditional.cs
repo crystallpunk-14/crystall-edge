@@ -54,7 +54,7 @@ public abstract partial class CESharedFarmingSystem
 
         foreach (var (produceProto, maxCount) in ent.Comp.Produce)
         {
-            var produceCount = ContentHelpers.RoundToLevels(plant.GrowthLevel, 1, maxCount + 1);
+            var produceCount = ContentHelpers.RoundToEqualLevels(plant.GrowthLevel, 1, maxCount + 1);
 
             if (produceCount == 0)
                 continue;
@@ -124,7 +124,7 @@ public abstract partial class CESharedFarmingSystem
 
         foreach (var (produceProto, maxCount) in ent.Comp.Produce)
         {
-            var produceCount = ContentHelpers.RoundToLevels(plant.GrowthLevel, 1, maxCount + 1);
+            var produceCount = ContentHelpers.RoundToEqualLevels(plant.GrowthLevel, 1, maxCount + 1);
 
             if (produceCount == 0)
                 continue;

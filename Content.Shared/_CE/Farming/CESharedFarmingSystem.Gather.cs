@@ -28,7 +28,7 @@ public abstract partial class CESharedFarmingSystem
         if (_whitelist.IsWhitelistFailOrNull(ent.Comp.ToolWhitelist, args.Used))
             return;
 
-        if (!CanHarvestPlant((ent, producing), ent.Comp.GatherKeys, ent.Comp.GatherAmount))
+        if (!CanHarvestPlant((ent, producing), ent.Comp.GatherKeys))
             return;
 
         var doAfterArgs =
@@ -65,13 +65,13 @@ public abstract partial class CESharedFarmingSystem
 
         args.Handled = true;
 
-        HarvestPlant((ent, producing), args.GatherKeys, null, ent.Comp.GatherAmount, out _);
+        HarvestPlant((ent, producing), args.GatherKeys, null, out _);
     }
 
     /// <summary>
     /// Checks whether it is possible to harvest the plant using any of the specified methods.
     /// </summary>
-    private bool CanHarvestPlant(Entity<CEPlantProducingComponent> ent, HashSet<string> gatherKeys, float gatherAmount, CEPlantComponent? plantComponent = null)
+    private bool CanHarvestPlant(Entity<CEPlantProducingComponent> ent, HashSet<string> gatherKeys, CEPlantComponent? plantComponent = null)
     {
         if (!PlantQuery.Resolve(ent, ref plantComponent))
             return false;
@@ -82,10 +82,7 @@ public abstract partial class CESharedFarmingSystem
             if (!ent.Comp.GatherKeys.TryGetValue(gatherKey, out var entry))
                 continue;
 
-            if (entry.Growth < gatherAmount)
-                continue;
-
-            var produceCount = ContentHelpers.RoundToLevels(gatherAmount, 1, entry.MaxProduce + 1);
+            var produceCount = ContentHelpers.RoundToEqualLevels(entry.Growth, 1, entry.MaxProduce + 1);
 
             if (produceCount == 0)
                 continue;
@@ -102,7 +99,6 @@ public abstract partial class CESharedFarmingSystem
     public void HarvestPlant(Entity<CEPlantProducingComponent> ent,
         HashSet<string> gatherKeys,
         CEPlantComponent? plantComponent,
-        float gatherAmount,
         out HashSet<EntityUid> result)
     {
         result = new();
@@ -118,10 +114,7 @@ public abstract partial class CESharedFarmingSystem
 
             var entry = ent.Comp.GatherKeys[gatherKey];
 
-            if (entry.Growth < gatherAmount)
-                continue;
-
-            var produceCount = ContentHelpers.RoundToLevels(gatherAmount, 1, entry.MaxProduce + 1);
+            var produceCount = ContentHelpers.RoundToEqualLevels(entry.Growth, 1, entry.MaxProduce + 1);
 
             if (produceCount == 0)
                 continue;
@@ -138,7 +131,7 @@ public abstract partial class CESharedFarmingSystem
                 }
             }
 
-            entry.Growth -= gatherAmount;
+            entry.Growth = 0;
         }
         Dirty(ent);
     }

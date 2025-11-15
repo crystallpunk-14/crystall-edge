@@ -10,6 +10,7 @@
     resource: 5 #Some starting resources "from seed"
     energy: 5
     growthLevel: 0
+    updateFrequency: 1
   - type: Sprite
     snapCardinals: true
     drawdepth: FloorTiles

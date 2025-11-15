@@ -58,11 +58,8 @@ public sealed class CEDebugPlantOverlay : Overlay
             {
                 foreach (var (key, entry) in producing.GatherKeys)
                 {
-                    var readyToHarvest = ContentHelpers.RoundToLevels(entry.Growth, 1, entry.MaxProduce + 1);
-
                     depthText += $"[PRODUCE: {key}]\n" +
-                                 $"- Growth Level: {MathF.Round(entry.Growth * 100)}%\n" +
-                                 $"- Ready to harvest: {readyToHarvest}\n";
+                                 $"- Growth Level: {MathF.Round(entry.Growth * 100)}%\n";
                 }
             }
 
