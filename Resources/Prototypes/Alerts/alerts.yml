@@ -227,7 +227,7 @@
   name: ce-alerts-health-name
   description: ce-alerts-health-desc
   minSeverity: 0
-  maxSeverity: 4
+  maxSeverity: 10
 
 - type: alert
   id: BorgHealth

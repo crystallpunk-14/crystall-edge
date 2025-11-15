@@ -28,12 +28,6 @@
     maxItemSize: Small
     grid:
     - 0,0,2,2
-    cP14Ignorelist:
-      components:
-        - CEFoodHolder
-        - FoodSequenceStartPoint
-        - Sharp
-        - CESharpened
   - type: Appearance
   - type: StorageFillVisualizer
     maxFillLevels: 3
