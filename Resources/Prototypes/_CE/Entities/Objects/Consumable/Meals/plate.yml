@@ -58,19 +58,3 @@
   - type: Food
     trash:
     - CEPlateIron
-
-- type: entity
-  id: CEPlateGold
-  parent: CEPlateBase
-  name: gold plate
-  components:
-  - type: Sprite
-    layers:
-    - state: gold
-    - map: ["ce_foodLayers"]
-  - type: PhysicalComposition
-    materialComposition:
-      CEGold: 10
-  - type: Food
-    trash:
-    - CEPlateGold
