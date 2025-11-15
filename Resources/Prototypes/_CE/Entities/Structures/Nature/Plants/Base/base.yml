@@ -12,7 +12,6 @@
     energyMax: 5
     resourceMax: 5
     growthLevel: 0
-    updateFrequency: 1
   - type: Sprite
     snapCardinals: true
     drawdepth: FloorTiles
