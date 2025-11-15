@@ -35,10 +35,11 @@
         - Edible
       tags:
         - CEFitInFryingPan #Todo delete this tag from game
-    cP14Ignorelist:
+    ignorelist:
       components:
         - CEFoodHolder
         - FoodSequenceStartPoint
+        - SolutionTransfer
   - type: CEFoodCooker
     containerId: storagebase
   - type: Temperature

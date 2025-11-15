@@ -46,8 +46,8 @@ public sealed partial class CEFoodCookerComponent : Component
     [DataField]
     public TimeSpan HeatingFrequencyRequired = TimeSpan.FromSeconds(2f);
 
-    [DataField]
-    public EntProtoId? BurntAdditionalSpawn = "CEFire";
+    //[DataField]
+    //public EntProtoId? BurntAdditionalSpawn = "CEFire";
 
     [DataField]
     public float BurntAdditionalSpawnProb = 0.2f;

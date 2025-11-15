@@ -79,8 +79,8 @@ public sealed class CECookingSystem : CESharedCookingSystem
 
         base.OnCookBurned(ent, ref args);
 
-        if (_random.Prob(ent.Comp.BurntAdditionalSpawnProb))
-            Spawn(ent.Comp.BurntAdditionalSpawn, Transform(ent).Coordinates);
+        //if (_random.Prob(ent.Comp.BurntAdditionalSpawnProb))
+        //    Spawn(ent.Comp.BurntAdditionalSpawn, Transform(ent).Coordinates);
     }
 
     protected override void UpdateFoodDataVisuals(Entity<CEFoodHolderComponent> ent, CEFoodData data, bool rename = true)

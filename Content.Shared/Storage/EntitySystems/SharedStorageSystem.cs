@@ -502,6 +502,9 @@ public abstract class SharedStorageSystem : EntitySystem
         if (attemptEv.Cancelled)
             return;
 
+        if (_whitelistSystem.IsWhitelistPass(storageComp.Ignorelist, args.Used)) //CrystallEdge
+            return;
+
         PlayerInsertHeldEntity((uid, storageComp), args.User);
         // Always handle it, even if insertion fails.
         // We don't want to trigger any AfterInteract logic here.
