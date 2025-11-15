@@ -1,0 +1,159 @@
+- type: CECookingRecipe
+  id: InedibleSoup
+  foodType: Soup
+  foodData:
+    name: ce-soup-recipe-trash-name
+    desc: ce-soup-recipe-trash-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Soups/food.rsi
+      state: trash
+  requirements:
+  - !type:AlwaysMet
+
+# 1 req
+
+# We dont have 1 req for soups because all soups is water + something
+
+# 2 req
+
+- type: CECookingRecipe
+  id: MeatSoup
+  foodType: Soup
+  foodData:
+    name: ce-soup-recipe-meat-name
+    desc: ce-soup-recipe-meat-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Soups/food.rsi
+      state: meat
+  requirements:
+  - !type:ReagentRequired
+    amount: 20
+    reagents:
+    - Water
+  - !type:TagRequired
+    tags:
+    - CEMeat
+
+- type: CECookingRecipe
+  id: CheeseSoup
+  foodType: Soup
+  foodData:
+    name: ce-soup-recipe-cheese-name
+    desc: ce-soup-recipe-cheese-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Soups/food.rsi
+      state: cheese
+  requirements:
+  - !type:ReagentRequired
+    amount: 20
+    reagents:
+    - Water
+  - !type:TagRequired
+    tags:
+    - CECheese
+
+- type: CECookingRecipe
+  id: PumpkinPuree
+  foodType: Soup
+  foodData:
+    name: ce-soup-recipe-pumpkin-puree-name
+    desc: ce-soup-recipe-pumpkin-puree-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Soups/food.rsi
+      state: pumpkin
+  requirements:
+  - !type:ReagentRequired
+    amount: 20
+    reagents:
+    - Water #TODO: Milk Cream!!
+  - !type:TagRequired
+    tags:
+    - CEPumpkin
+
+# 3 req
+
+- type: CECookingRecipe
+  id: VegSoup
+  foodType: Soup
+  foodData:
+    name: ce-soup-recipe-veg-name
+    desc: ce-soup-recipe-veg-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Soups/food.rsi
+      state: veg_stew
+  requirements:
+  - !type:ReagentRequired
+    amount: 20
+    reagents:
+    - Water
+  - !type:TagRequired
+    tags:
+    - CESalad
+    - CEVegetable
+  - !type:TagBlocked
+    tags:
+    - CEMeat
+
+- type: CECookingRecipe
+  id: MeatCheeseSoup
+  foodType: Soup
+  foodData:
+    name: ce-soup-recipe-meat-cheese-name
+    desc: ce-soup-recipe-meat-cheese-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Soups/food.rsi
+      state: meat2
+  requirements:
+  - !type:ReagentRequired
+    amount: 20
+    reagents:
+    - Water
+  - !type:TagRequired
+    tags:
+    - CEMeat
+  - !type:TagRequired
+    tags:
+    - CECheese
+
+- type: CECookingRecipe
+  id: MeatSaladSoup
+  foodType: Soup
+  foodData:
+    name: ce-soup-recipe-meat-salad-name
+    desc: ce-soup-recipe-meat-salad-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Soups/food.rsi
+      state: meat_salad
+  requirements:
+  - !type:ReagentRequired
+    amount: 20
+    reagents:
+    - Water
+  - !type:TagRequired
+    tags:
+    - CEMeat
+  - !type:TagRequired
+    tags:
+    - CESalad
+    - CEVegetable
+
+- type: CECookingRecipe
+  id: MonsterBrew
+  foodType: Soup
+  foodData:
+    name: ce-soup-recipe-monster-brew-name
+    desc: ce-soup-recipe-monster-brew-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Soups/food.rsi
+      state: mole
+  requirements:
+  - !type:ReagentRequired
+    amount: 20
+    reagents:
+    - Water
+  - !type:TagRequired
+    tags:
+    - CEMeatMonster
+  - !type:TagRequired
+    tags:
+    - CEEgg

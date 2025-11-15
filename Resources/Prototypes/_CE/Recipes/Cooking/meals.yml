@@ -1,0 +1,227 @@
+- type: CECookingRecipe
+  id: InedibleMeal
+  foodType: Meal
+  foodData:
+    name: ce-meal-recipe-trash-name
+    desc: ce-meal-recipe-trash-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Meals/food.rsi
+      state: trash
+  requirements:
+  - !type:AlwaysMet
+
+# 1 req
+
+- type: CECookingRecipe
+  id: GreenSalad
+  foodType: Meal
+  foodData:
+    name: ce-meal-recipe-green-salad-name
+    desc: ce-meal-recipe-green-salad-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Meals/food.rsi
+      state: green_salad
+  requirements:
+  - !type:TagRequired
+    tags:
+    - CESalad
+    - CEVegetable
+
+- type: CECookingRecipe
+  id: MeatPlate
+  foodType: Meal
+  foodData:
+    name: ce-meal-recipe-meat-plate-name
+    desc: ce-meal-recipe-meat-plate-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Meals/food.rsi
+      state: meat_plate
+  requirements:
+  - !type:TagRequired
+    tags:
+    - CEMeat
+    - CEMeatSlice
+
+- type: CECookingRecipe
+  id: BreadPlate
+  foodType: Meal
+  foodData:
+    name: ce-meal-recipe-bread-plate-name
+    desc: ce-meal-recipe-bread-plate-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Meals/food.rsi
+      state: bread_plate
+  requirements:
+  - !type:TagRequired
+    tags:
+    - CEDough
+
+- type: CECookingRecipe
+  id: MashedPotato
+  foodType: Meal
+  foodData:
+    name: ce-meal-recipe-mashed-potato-name
+    desc: ce-meal-recipe-mashed-potato-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Meals/food.rsi
+      state: mashed_potato
+  requirements:
+  - !type:TagRequired
+    tags:
+    - CEPotato
+
+# 2 req
+
+- type: CECookingRecipe
+  id: GreenSaladMeat
+  foodType: Meal
+  foodData:
+    name: ce-meal-recipe-green-salad-meat-name
+    desc: ce-meal-recipe-green-salad-meat-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Meals/food.rsi
+      state: green_salad_meat
+  requirements:
+  - !type:TagRequired
+    tags:
+    - CESalad
+    - CEVegetable
+  - !type:TagRequired
+    tags:
+    - CEMeat
+
+- type: CECookingRecipe
+  id: MonsterEgg
+  foodType: Meal
+  foodData:
+    name: ce-meal-recipe-monster-egg-name
+    desc: ce-meal-recipe-monster-egg-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Meals/food.rsi
+      state: monster_egg
+  requirements:
+  - !type:TagRequired
+    tags:
+    - CEEgg
+  - !type:TagRequired
+    tags:
+    - CEMeatMonster
+
+- type: CECookingRecipe
+  id: MashedPotatoMeat
+  foodType: Meal
+  foodData:
+    name: ce-meal-recipe-mashed-potato-meat-name
+    desc: ce-meal-recipe-mashed-potato-meat-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Meals/food.rsi
+      state: mashed_potato_meat
+  requirements:
+  - !type:TagRequired
+    tags:
+    - CEPotato
+  - !type:TagRequired
+    tags:
+    - CEMeat
+
+- type: CECookingRecipe
+  id: MashedPotatoSalad
+  foodType: Meal
+  foodData:
+    name: ce-meal-recipe-mashed-potato-salad-name
+    desc: ce-meal-recipe-mashed-potato-salad-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Meals/food.rsi
+      state: mashed_potato_salad
+  requirements:
+  - !type:TagRequired
+    tags:
+    - CEPotato
+  - !type:TagRequired
+    tags:
+    - CESalad
+    - CEVegetable
+
+- type: CECookingRecipe
+  id: CheeseBread
+  foodType: Meal
+  foodData:
+    name: ce-meal-recipe-cheese-bread-name
+    desc: ce-meal-recipe-cheese-bread-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Meals/food.rsi
+      state: cheese_bread
+  requirements:
+  - !type:TagRequired
+    tags:
+    - CEDough
+  - !type:TagRequired
+    tags:
+    - CECheese
+
+# 3 req
+
+- type: CECookingRecipe
+  id: ZellasianBreakfast
+  foodType: Meal
+  foodData:
+    name: ce-meal-recipe-zellasian-breakfast-name
+    desc: ce-meal-recipe-zellasian-breakfast-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Meals/food.rsi
+      state: zellasian_breakfast
+  requirements:
+  - !type:TagRequired
+    tags:
+    - CEEgg
+  - !type:TagRequired
+    tags:
+    - CEDough
+  - !type:TagRequired
+    tags:
+    - CEMeat
+
+- type: CECookingRecipe
+  id: StuffedPotato
+  foodType: Meal
+  foodData:
+    name: ce-meal-recipe-stuffed-potato-name
+    desc: ce-meal-recipe-stuffed-potato-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Meals/food.rsi
+      state: stuffed_potato
+  requirements:
+  - !type:TagRequired
+    tags:
+    - CEMeatSlice
+  - !type:TagRequired
+    tags:
+    - CECheese
+  - !type:TagRequired
+    tags:
+    - CEPotato
+
+# 4 req
+
+- type: CECookingRecipe
+  id: HamInCheese
+  foodType: Meal
+  foodData:
+    name: ce-meal-recipe-pig-cheese-name
+    desc: ce-meal-recipe-pig-cheese-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Meals/food.rsi
+      state: pig_cheese
+  requirements:
+  - !type:TagRequired
+    tags:
+    - CEMeatPig
+  - !type:TagRequired
+    tags:
+    - CEMeatLeg
+  - !type:TagRequired
+    tags:
+    - CECheese
+  - !type:TagRequired
+    tags:
+    - CESalad
