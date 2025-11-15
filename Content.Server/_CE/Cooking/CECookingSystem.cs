@@ -9,6 +9,7 @@ using Content.Server.Temperature.Systems;
 using Content.Shared._CE.Cooking;
 using Content.Shared._CE.Cooking.Components;
 using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Temperature;
 using Robust.Shared.Random;
 
 namespace Content.Server._CE.Cooking;
@@ -23,6 +24,36 @@ public sealed class CECookingSystem : CESharedCookingSystem
         base.Initialize();
 
         SubscribeLocalEvent<CEFoodHolderComponent, SolutionContainerChangedEvent>(OnHolderChanged);
+        SubscribeLocalEvent<CETemperatureTransformationComponent, OnTemperatureChangeEvent>(OnTemperatureChanged);
+    }
+
+    private void OnHolderChanged(Entity<CEFoodHolderComponent> ent, ref SolutionContainerChangedEvent args)
+    {
+        if (args.Solution.Volume != 0)
+            return;
+
+        ent.Comp.FoodData = null;
+        Dirty(ent);
+    }
+
+    private void OnTemperatureChanged(Entity<CETemperatureTransformationComponent> start,
+        ref OnTemperatureChangeEvent args)
+    {
+        var xform = Transform(start);
+        foreach (var entry in start.Comp.Entries)
+        {
+            if (args.CurrentTemperature >= entry.TemperatureRange.X &&
+                args.CurrentTemperature < entry.TemperatureRange.Y)
+            {
+                if (entry.TransformTo == null)
+                    continue;
+
+                SpawnNextToOrDrop(entry.TransformTo, start);
+                Del(start);
+
+                break;
+            }
+        }
     }
 
     protected override bool TryTransferFood(Entity<CEFoodHolderComponent> target, Entity<CEFoodHolderComponent> source)
@@ -39,15 +70,6 @@ public sealed class CECookingSystem : CESharedCookingSystem
         }
 
         return true;
-    }
-
-    private void OnHolderChanged(Entity<CEFoodHolderComponent> ent, ref SolutionContainerChangedEvent args)
-    {
-        if (args.Solution.Volume != 0)
-            return;
-
-        ent.Comp.FoodData = null;
-        Dirty(ent);
     }
 
     protected override void OnCookBurned(Entity<CEFoodCookerComponent> ent, ref CEBurningDoAfter args)
