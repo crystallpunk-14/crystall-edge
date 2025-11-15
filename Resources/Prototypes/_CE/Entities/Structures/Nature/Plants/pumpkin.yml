@@ -4,7 +4,7 @@
   - CEPlantBase
   - CEPlantBaseSolarEnergy
   - CEPlantBaseSingleHarvest
-  - CEPlantBaseFloralType
+  - CEPlantBaseFloralDelicateType
   - CEPlantBaseGrowing4Day
   - CEPlantBaseMetabolizer1Day
   - CEPlantBaseMetabolizerWater
@@ -25,4 +25,4 @@
       map: ["enum.PlantVisualLayers.Base"]
   - type: CEPlantAdditionalProduceOnInteract
     produce:
-      CEFoodPumpkin: 6
+      CEFoodPumpkin: 4

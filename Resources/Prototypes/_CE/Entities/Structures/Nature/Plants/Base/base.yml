@@ -7,8 +7,10 @@
   categories: [ ForkFiltered ]
   components:
   - type: CEPlant
-    resource: 5 #Some starting resources "from seed"
-    energy: 5
+    resource: 0
+    energy: 0
+    energyMax: 5
+    resourceMax: 5
     growthLevel: 0
     updateFrequency: 1
   - type: Sprite

@@ -5,7 +5,7 @@
   - CEPlantBase
   - CEPlantBaseSolarEnergy
   - CEPlantBaseSingleHarvest
-  - CEPlantBaseFloralType
+  - CEPlantBaseFloralWildType
   - CEPlantBaseGrowingHalfDay
   - CEPlantBaseSpreading
   categories: [ ForkFiltered ]

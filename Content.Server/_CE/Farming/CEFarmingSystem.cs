@@ -14,7 +14,6 @@ public sealed partial class CEFarmingSystem : CESharedFarmingSystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
-    [Dependency] private readonly CEDayCycleSystem _dayCycle = default!;
 
     public override void Initialize()
     {

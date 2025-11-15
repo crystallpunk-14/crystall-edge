@@ -74,7 +74,7 @@ public abstract partial class CESharedFarmingSystem
         if (TryComp<StackComponent>(ent, out var stack) && stack.Count > 1)
             _stack.SetCount(ent, stack.Count - 1);
         else
-            QueueDel(ent);
+            PredictedQueueDel(ent);
     }
 
     protected bool CanPlant(EntityPrototype plant, EntityCoordinates position, EntityUid? user, EntityUid? exclude = null)
@@ -84,12 +84,12 @@ public abstract partial class CESharedFarmingSystem
             return false;
 
         if (plant.TryGetComponent<CEPlantComponent>(out var plantComp, _compFactory)
-            && plantComp.SoilTile.Count > 0)
+            && plantComp.SoilResourceGathering.Count > 0)
         {
             var tileRef = MapSystem.GetTileRef(map.Value, gridComp, position);
-            var tile = _turf.GetContentTileDefinition(tileRef);
+            var tile = Turf.GetContentTileDefinition(tileRef);
 
-            if (!plantComp.SoilTile.Contains(tile))
+            if (!plantComp.SoilResourceGathering.ContainsKey(tile))
             {
                 if (user is not null && _timing.IsFirstTimePredicted && _net.IsClient)
                 {

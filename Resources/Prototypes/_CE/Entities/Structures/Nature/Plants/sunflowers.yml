@@ -4,7 +4,7 @@
   - CEPlantBase
   - CEPlantBaseSolarEnergy
   - CEPlantBaseSingleHarvest
-  - CEPlantBaseFloralType
+  - CEPlantBaseFloralDelicateType
   - CEPlantBaseGrowing1Day
   - CEPlantBaseMetabolizer1Day
   - CEPlantBaseMetabolizerWater

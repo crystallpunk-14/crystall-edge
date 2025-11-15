@@ -3,7 +3,7 @@
   parent:
   - CEPlantBase
   - CEPlantBaseSolarEnergy
-  - CEPlantBaseFloralType
+  - CEPlantBaseFloralDelicateType
   - CEPlantBaseGrowing1Day
   - CEPlantBaseMetabolizer1Day
   - CEPlantBaseMetabolizerWater

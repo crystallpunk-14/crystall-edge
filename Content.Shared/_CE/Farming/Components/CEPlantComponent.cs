@@ -17,7 +17,7 @@ public sealed partial class CEPlantComponent : Component
     public float Energy = 0f;
 
     [DataField, AutoNetworkedField]
-    public float EnergyMax = 100f;
+    public float EnergyMax = 10f;
 
     /// <summary>
     /// resource consumed for growth
@@ -26,7 +26,7 @@ public sealed partial class CEPlantComponent : Component
     public float Resource = 0f;
 
     [DataField, AutoNetworkedField]
-    public float ResourceMax = 100f;
+    public float ResourceMax = 10f;
 
     /// <summary>
     /// Plant growth status, from 0 to 1
@@ -47,10 +47,12 @@ public sealed partial class CEPlantComponent : Component
     public TimeSpan NextUpdateTime = TimeSpan.Zero;
 
     /// <summary>
-    /// On which tiles can this plant grow? If empty - on any.
+    /// Available tiles, and how much passive resource they provide per update. TODO: eject to separate component?
     /// </summary>
     [DataField]
-    public HashSet<ProtoId<ContentTileDefinition>> SoilTile = new();
+    public Dictionary<ProtoId<ContentTileDefinition>, float> SoilResourceGathering = new();
+
+    public float? CachedResource;
 }
 
 /// <summary>

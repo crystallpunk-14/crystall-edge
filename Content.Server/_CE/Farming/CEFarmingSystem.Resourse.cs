@@ -1,5 +1,6 @@
 using Content.Shared._CE.Farming.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
+using Robust.Shared.Map.Components;
 
 namespace Content.Server._CE.Farming;
 
@@ -10,14 +11,38 @@ public sealed partial class CEFarmingSystem
         SubscribeLocalEvent<CEPlantEnergyFromLightComponent, CEPlantUpdateEvent>(OnTakeEnergyFromLight);
         SubscribeLocalEvent<CEPlantMetabolizerComponent, CEPlantUpdateEvent>(OnPlantMetabolizing);
         SubscribeLocalEvent<CEPlantProducingComponent, CEPlantUpdateEvent>(OnPlantProducing);
+        SubscribeLocalEvent<CEPlantComponent, CEPlantUpdateEvent>(OnGroundUpdate);
 
         SubscribeLocalEvent<CEPlantGrowingComponent, CEAfterPlantUpdateEvent>(OnPlantGrowing);
+    }
+
+    private void OnGroundUpdate(Entity<CEPlantComponent> ent, ref CEPlantUpdateEvent args)
+    {
+        var xform = Transform(ent);
+        var map =xform.MapUid;
+        if (!TryComp<MapGridComponent>(map, out var gridComp))
+            return;
+
+        var position = xform.Coordinates;
+
+        if (ent.Comp.CachedResource is null) //Check current tile and cache resource gathering level
+        {
+            var tileRef = MapSystem.GetTileRef(map.Value, gridComp, position);
+            var tile = Turf.GetContentTileDefinition(tileRef);
+
+            if (!ent.Comp.SoilResourceGathering.TryGetValue(tile, out var resLevel))
+                ent.Comp.CachedResource = 0;
+            else
+                ent.Comp.CachedResource = resLevel;
+        }
+
+        AffectResource(ent, ent.Comp.CachedResource.Value);
     }
 
     private void OnTakeEnergyFromLight(Entity<CEPlantEnergyFromLightComponent> regeneration, ref CEPlantUpdateEvent args)
     {
         var gainEnergy = false;
-        var daylight = _dayCycle.UnderSunlight(regeneration);
+        var daylight = DayCycle.UnderSunlight(regeneration);
 
         if (regeneration.Comp.Daytime && daylight)
             gainEnergy = true;

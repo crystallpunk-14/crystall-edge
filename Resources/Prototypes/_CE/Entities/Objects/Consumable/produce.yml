@@ -27,6 +27,10 @@
   - type: Tag
     tags:
     - CEWheat
+  - type: SliceableFood
+    count: 2
+    sliceTime: 1.5
+    slice: CESeedWheat
   - type: StaticPrice
     price: 1
 

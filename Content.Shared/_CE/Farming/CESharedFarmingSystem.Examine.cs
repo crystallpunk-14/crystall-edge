@@ -8,8 +8,19 @@ public abstract partial class CESharedFarmingSystem
 {
     private void InitializeExamine()
     {
+        SubscribeLocalEvent<CEPlantComponent, ExaminedEvent>(OnPlantExamine);
         SubscribeLocalEvent<CEPlantAdditionalProduceOnInteractComponent, ExaminedEvent>(OnInteractGatherExamine);
         SubscribeLocalEvent<CEPlantProducingComponent, ExaminedEvent>(OnProducingExamine);
+        SubscribeLocalEvent<CEPlantEnergyFromLightComponent, ExaminedEvent>(OnLightExamine);
+    }
+
+    private void OnPlantExamine(Entity<CEPlantComponent> ent, ref ExaminedEvent args)
+    {
+        if (ent.Comp.CachedResource == null)
+            return;
+
+        if (ent.Comp.CachedResource == 0)
+            args.PushMarkup(Loc.GetString("ce-farming-producing-examine-unefficient-soil"));
     }
 
     private void OnInteractGatherExamine(Entity<CEPlantAdditionalProduceOnInteractComponent> ent,
@@ -59,5 +70,18 @@ public abstract partial class CESharedFarmingSystem
 
             args.PushMarkup($"[color=yellow]{produceName}:[/color] {produceCount}/{entry.MaxProduce}");
         }
+    }
+
+    private void OnLightExamine(Entity<CEPlantEnergyFromLightComponent> ent, ref ExaminedEvent args)
+    {
+        if (ent.Comp.Daytime && ent.Comp.Nighttime)
+            return;
+
+        var daylight = DayCycle.UnderSunlight(ent);
+
+        if (ent.Comp.Daytime && !daylight)
+            args.PushMarkup(Loc.GetString("ce-farming-producing-examine-need-sun"));
+        if (ent.Comp.Nighttime && daylight)
+            args.PushMarkup(Loc.GetString("ce-farming-producing-examine-need-dark"));
     }
 }
