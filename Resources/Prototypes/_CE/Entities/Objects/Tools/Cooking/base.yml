@@ -39,6 +39,7 @@
       components:
         - CEFoodHolder
         - FoodSequenceStartPoint
+        - Injector
         - SolutionTransfer
   - type: CEFoodCooker
     containerId: storagebase
