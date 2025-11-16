@@ -59,8 +59,6 @@
   - type: Sprite
     sprite: _CE/Structures/Furniture/curtains.rsi
   - type: InteractionOutline
-  - type: Physics
-    canCollide: false
 
 - type: entity
   id: CECurtainsWhite
@@ -77,6 +75,8 @@
   #- type: Construction
   #  graph: CECurtains
   #  node: CECurtainsWhite
+  - type: Physics
+    canCollide: false
 
 - type: entity
   id: CECurtainsWhiteOpened
@@ -107,6 +107,8 @@
   #- type: Construction
   #  graph: CECurtains
   #  node: CECurtainsBlue
+  - type: Physics
+    canCollide: false
 
 - type: entity
   id: CECurtainsBlueOpened
@@ -137,6 +139,8 @@
   #- type: Construction
   #  graph: CECurtains
   #  node: CECurtainsRed
+  - type: Physics
+    canCollide: false
 
 - type: entity
   id: CECurtainsRedOpened
