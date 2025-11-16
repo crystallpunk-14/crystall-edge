@@ -1,7 +1,9 @@
+using System.Numerics;
 using Content.Client.Viewport;
 using Robust.Client.Graphics;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
+using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client._CE.ZLevels;
@@ -9,6 +11,7 @@ namespace Content.Client._CE.ZLevels;
 public sealed class CEZLevelOverlay : Overlay
 {
     [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private readonly IEntityManager _entity = default!;
     private readonly ShaderInstance? _blurShader;
 
     public override bool RequestScreenTexture => true;
@@ -39,7 +42,18 @@ public sealed class CEZLevelOverlay : Overlay
         if (ScreenTexture == null || args.Viewport.Eye == null)
             return;
 
+        var ambientColor = new Vector3(0, 0, 1); //Default blue
+
+        if (_entity.TryGetComponent<MapLightComponent>(args.MapUid, out var mapLight))
+        {
+            ambientColor = new Vector3(
+                mapLight.AmbientLightColor.R,
+                mapLight.AmbientLightColor.G,
+                mapLight.AmbientLightColor.B);
+        }
+
         _blurShader?.SetParameter("SCREEN_TEXTURE", ScreenTexture);
+        _blurShader?.SetParameter("BLUR_COLOR", ambientColor);
 
         var worldHandle = args.WorldHandle;
         worldHandle.UseShader(_blurShader);

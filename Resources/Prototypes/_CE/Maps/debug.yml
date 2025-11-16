@@ -36,10 +36,10 @@
     - type: Parallax
       parallax: CESky
     - type: LightCycle
-      originalColor: '#75BCFFFF'
+      originalColor: "#fff475"
     - type: SunShadow
     - type: MapLight
-      ambientLightColor: '#75BCFFFF'
+      ambientLightColor: "#efff75"
   minPlayers: 0
   stations:
     Dev:
