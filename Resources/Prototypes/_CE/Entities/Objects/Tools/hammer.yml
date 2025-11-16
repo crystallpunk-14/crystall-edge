@@ -3,8 +3,7 @@
   id: CEBaseWeaponHammer
   parent:
   - BaseItem
-  - CEBaseWeaponChemical
-  #- CEBaseWeaponThrowable
+  - CEBaseWeaponThrowable
   components:
   - type: Item
     size: Normal

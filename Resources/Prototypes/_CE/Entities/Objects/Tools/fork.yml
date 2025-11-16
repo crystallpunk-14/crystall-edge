@@ -1,0 +1,57 @@
+- type: entity
+  abstract: true
+  id: CEBaseFork
+  parent:
+  - BaseItem
+  - CEBaseWeaponChemical
+  components:
+  - type: Item
+    size: Ginormous
+  - type: ThrowingAngle
+    angle: -90
+  - type: MeleeWeapon
+    attackRate: 1
+    range: 2
+    angle: 10
+    wideAnimationRotation: -90
+    damage:
+      types:
+        Piercing: 3
+    #animation: CEWeaponArcThrust
+    #wideAnimation: CEWeaponArcThrust
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+    #cPAnimationLength: 0.3
+    #cPAnimationOffset: 1.75
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Piercing: 3
+  #- type: CEBonusDistanceMeleeDamage
+  #  minDistance: 2
+  #  bonusDamage:
+  #    types:
+  #      Piercing: 3
+  - type: Wieldable
+  - type: Clothing
+    slots:
+    - neck
+    breakOnMove: false
+    equipDelay: 1
+    unequipDelay: 1
+  - type: CEEditTileTool
+    sound:
+      collection: CEDigging
+    tileReplace:
+      CEDirt: CEDirtSeedbed
+      CEDirtSeedbed: CEDirt
+
+- type: entity
+  parent: CEBaseFork
+  id: CEWeaponFork
+  name: fork
+  description: A simple fork for digging and planting seeds in the soil.
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Tools/Fork/iron.rsi
+    state: icon
