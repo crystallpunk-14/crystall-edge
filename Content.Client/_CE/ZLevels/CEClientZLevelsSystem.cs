@@ -44,21 +44,22 @@ public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
 
         ent.Comp.NoRotDefault = sprite.NoRotation;
         ent.Comp.DrawDepthDefault = sprite.DrawDepth;
+        ent.Comp.SpriteOffsetDefault = sprite.Offset;
     }
 
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
 
-        var query = EntityQueryEnumerator<CEZPhysicsComponent, SpriteComponent>();
-        while (query.MoveNext(out var uid, out var zPhys, out var sprite))
+        var query = EntityQueryEnumerator<CEActiveZPhysicsComponent, CEZPhysicsComponent, SpriteComponent>();
+        while (query.MoveNext(out var uid, out var _, out var zPhys, out var sprite))
         {
             if (zPhys.LocalPosition != 0)
                 sprite.NoRotation = true;
             else
                 sprite.NoRotation = zPhys.NoRotDefault;
 
-            _sprite.SetOffset((uid, sprite), new Vector2(0, zPhys.LocalPosition * ZLevelOffset));
+            _sprite.SetOffset((uid, sprite), zPhys.SpriteOffsetDefault + new Vector2(0, zPhys.LocalPosition * ZLevelOffset));
             _sprite.SetDrawDepth((uid, sprite), zPhys.LocalPosition > 0 ? (int)Shared.DrawDepth.DrawDepth.OverMobs : zPhys.DrawDepthDefault);
         }
     }

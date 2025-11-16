@@ -21,6 +21,7 @@
         volume: 2
     outputs:
       - CEDirt
+      - CEDirtSeedbed
   - type: Appearance
   - type: Stack
     stackType: CEDirt

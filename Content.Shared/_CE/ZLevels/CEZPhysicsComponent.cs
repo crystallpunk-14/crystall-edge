@@ -1,3 +1,4 @@
+using System.Numerics;
 using Content.Shared._CE.ZLevels.EntitySystems;
 using Robust.Shared.GameStates;
 
@@ -44,4 +45,10 @@ public sealed partial class CEZPhysicsComponent : Component
     /// </summary>
     [DataField]
     public int DrawDepthDefault;
+
+    /// <summary>
+    /// When the mapinit entity is created, its initial Sprite Offset value is written here in order to apply an offset based on the Z position relative to this value.
+    /// </summary>
+    [DataField]
+    public Vector2 SpriteOffsetDefault = Vector2.Zero;
 }

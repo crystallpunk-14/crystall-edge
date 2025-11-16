@@ -1,0 +1,85 @@
+- type: entity
+  parent:
+  - BaseMachine
+  id: CEHeater
+  categories: [ ForkFiltered ]
+  name: heater
+  description: a mechanism that converts energy into a controlled burning flame
+  components:
+  - type: PlacementReplacement
+    key: pipe_big
+  - type: AmbientSound
+    enabled: false
+    volume: -8
+    range: 5
+    sound:
+      path: /Audio/Ambience/Objects/fireplace.ogg
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 55
+        mask: # tables should collide with other tables
+        - TableMask
+        layer:
+        - TableLayer
+      fix2:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        mask:
+        - TabletopMachineMask
+        layer:
+        - Impassable
+        - MidImpassable
+        - LowImpassable
+        hard: false
+  - type: Transform
+    anchored: true
+    noRot: false
+  - type: Sprite
+    sprite: _CE/Structures/Industrial/furnace.rsi
+    state: base
+    layers:
+    - state: base
+    - state: burning
+      shader: unshaded
+      visible: false
+      map: [ "flames" ]
+  - type: Icon
+    sprite: _CE/Structures/Industrial/furnace.rsi
+    state: base
+  - type: PointLight
+    radius: 5
+    energy: 3
+    color: "#dd931c"
+    enabled: false
+  - type: Climbable
+  - type: Clickable
+  - type: PlaceableSurface
+  - type: ItemPlacer
+    maxEntities: 0
+  - type: CEEntityHeater
+    power: 500
+  - type: Rotatable
+  - type: PowerConsumer
+    voltage: Medium
+    drawRate: 5
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.CEPowerConsumerVisuals.Active:
+        flames:
+          True: {visible: true}
+          False: {visible: false}
+  - type: NodeContainer
+    examinable: true
+    nodes:
+      input:
+        !type:CableDeviceNode
+        nodeGroupID: MVPower
+      power:
+        !type:CableNode
+        nodeGroupID: MVPower
