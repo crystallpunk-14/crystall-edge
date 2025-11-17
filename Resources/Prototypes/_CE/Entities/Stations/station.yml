@@ -1,0 +1,7 @@
+- type: entity
+  id: CEStandardImperialFloatingIsland
+  parent:
+    - BaseStation
+    - BaseStationJobsSpawning
+    - BaseStationRecords
+    - CEBaseStationArrivals

@@ -43,7 +43,7 @@
   minPlayers: 0
   stations:
     Dev:
-      stationProto: StandardNanotrasenStation
+      stationProto: CEStandardImperialFloatingIsland
       components:
         - type: StationNameSetup
           mapNameTemplate: "Dev"

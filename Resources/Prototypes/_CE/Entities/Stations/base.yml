@@ -1,0 +1,5 @@
+- type: entity
+  id: CEBaseStationArrivals
+  abstract: true
+  components:
+    - type: CEStationArrivals
