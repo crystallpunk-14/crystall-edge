@@ -82,6 +82,9 @@ public abstract partial class CESharedZLevelsSystem
             if (xform.ParentUid != xform.MapUid)
                 continue;
 
+            if (!_zMapQuery.TryComp(xform.MapUid, out var zMapComp))
+                continue;
+
             var oldVelocity = zPhys.Velocity;
             var oldHeight = zPhys.LocalPosition;
 
@@ -163,16 +166,14 @@ public abstract partial class CESharedZLevelsSystem
     public float DistanceToGround(Entity<CEZPhysicsComponent?> target, out bool stickyGround, int maxFloors = 1)
     {
         stickyGround = false;
-        if (!Resolve(target,
-                ref target.Comp,
-                false)) //maybe in future: simpler distance calculation for entities without zPhysComp?
-            return maxFloors;
+        if (!Resolve(target, ref target.Comp, false))
+            return 0; //maybe in future: simpler distance calculation for entities without zPhysComp?
 
         var xform = Transform(target);
         if (!_zMapQuery.TryComp(xform.MapUid, out var zMapComp))
-            return maxFloors;
+            return 0;
         if (!_gridQuery.TryComp(xform.MapUid, out var mapGrid))
-            return maxFloors;
+            return 0;
 
         var worldPosI = _transform.GetGridOrMapTilePosition(target);
         var worldPos = _transform.GetWorldPosition(target);
