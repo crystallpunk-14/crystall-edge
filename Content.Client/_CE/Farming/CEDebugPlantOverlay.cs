@@ -1,9 +1,5 @@
 using System.Numerics;
 using Content.Shared._CE.Farming.Components;
-using Content.Shared._CE.ZLevels;
-using Content.Shared._CE.ZLevels.EntitySystems;
-using Content.Shared.Rounding;
-using Content.Shared.Weather;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
 using Robust.Shared.Console;
@@ -16,10 +12,7 @@ public sealed class CEDebugPlantOverlay : Overlay
 {
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly IResourceCache _cache = default!;
-    private readonly CESharedZLevelsSystem _zLevels = default!;
     private readonly SharedTransformSystem _transform = default!;
-    private readonly SharedWeatherSystem _weather = default!;
-    private readonly SharedMapSystem _map = default!;
     public override OverlaySpace Space => OverlaySpace.ScreenSpace;
 
     private readonly Font _font;
@@ -28,9 +21,6 @@ public sealed class CEDebugPlantOverlay : Overlay
     {
         IoCManager.InjectDependencies(this);
 
-        _zLevels = _entityManager.System<CESharedZLevelsSystem>();
-        _weather = _entityManager.System<SharedWeatherSystem>();
-        _map = _entityManager.System<SharedMapSystem>();
         _transform = _entityManager.System<SharedTransformSystem>();
 
         _font = new VectorFont(_cache.GetResource<FontResource>("/Fonts/NotoSans/NotoSans-Regular.ttf"), 8);

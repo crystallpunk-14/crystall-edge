@@ -1,4 +1,4 @@
-using Content.Server._CE.ZLevels.EntitySystems;
+using Content.Server._CE.ZLevels.Core;
 using Content.Server.NodeContainer.Nodes;
 using Content.Shared.NodeContainer;
 using Robust.Shared.Map.Components;
@@ -9,10 +9,10 @@ namespace Content.Server.Power.Nodes;
 public sealed partial class CECableVerticalNode : Node
 {
     [DataField]
-    public bool Up = false;
+    public bool Up;
 
     [DataField]
-    public bool Down = false;
+    public bool Down;
 
     public override IEnumerable<Node> GetReachableNodes(TransformComponent xform,
         EntityQuery<NodeContainerComponent> nodeQuery,
