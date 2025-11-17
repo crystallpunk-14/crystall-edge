@@ -1,20 +1,45 @@
 using Content.Shared.Actions;
+using Content.Shared.Camera;
+using Content.Shared.Coordinates;
 using Content.Shared.Maps;
 using Robust.Shared.Map;
+using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.ZLevels.EntitySystems;
 
 public abstract partial class CESharedZLevelsSystem
 {
     [Dependency] protected readonly ITileDefinitionManager TilDefMan = default!;
+    [Dependency] protected readonly SharedEyeSystem SharedEyeSystem = default!;
+
+
+    private string _prototype = "test";
+
     private void InitView()
     {
         SubscribeLocalEvent<CEZLevelViewerComponent, MoveEvent>(OnViewerMove);
         SubscribeLocalEvent<CEZLevelViewerComponent, CEToggleZLevelLookUpAction>(OnToggleLookUp);
+        SubscribeLocalEvent<CEZLevelViewerComponent, ComponentInit>(OnOffset);
     }
+    public override void FrameUpdate(float frameTime)
+    {
+        base.FrameUpdate(frameTime);
+    }
+    protected virtual void OnOffset(Entity<CEZLevelViewerComponent> ent, ref ComponentInit args)
+    {
+
+        var query = EntityQueryEnumerator<EyeComponent, CEZLevelViewerComponent>();
+        while (query.MoveNext(out var uid, out var eye, out var zLevel))
+        {
+            //    args.Scale = new MapCoordinates(eye.Eye.Position.Position, new MapId(zLevel.ViewedZLevel));
+        }
+    }
+
 
     protected virtual void OnViewerMove(Entity<CEZLevelViewerComponent> ent, ref MoveEvent args)
     {
+
         if (!ent.Comp.LookUp)
             return;
 
@@ -27,6 +52,8 @@ public abstract partial class CESharedZLevelsSystem
 
     private void OnToggleLookUp(Entity<CEZLevelViewerComponent> ent, ref CEToggleZLevelLookUpAction args)
     {
+        var view = Spawn(_prototype, new MapCoordinates(ent.Owner.ToCoordinates().Position, new MapId(ent.Comp.ViewedZLevel)));
+        SharedEyeSystem.SetTarget(ent, view);
         if (args.Handled)
             return;
 
