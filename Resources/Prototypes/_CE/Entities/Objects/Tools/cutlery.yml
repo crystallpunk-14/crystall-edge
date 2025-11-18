@@ -1,0 +1,56 @@
+- type: entity
+  parent: BaseItem
+  id: CEFork
+  name: fork
+  description: Thousands of years of progress, and there it is, the fork.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Tools/cutlery.rsi
+    state: fork
+  - type: Item
+    sprite: _CE/Objects/Tools/cutlery.rsi
+    heldPrefix: fork
+  - type: Utensil
+    types:
+    - Fork
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    attackRate: 1.5
+    damage:
+      types:
+        Piercing: 2
+  - type: PhysicalComposition
+    materialComposition:
+      CEIron: 5
+
+- type: entity
+  parent: BaseItem
+  id: CESpoon
+  name: spoon
+  description: It is considered the first tool for eating, not counting the hands.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Tools/cutlery.rsi
+    state: spoon
+  - type: Item
+    sprite: _CE/Objects/Tools/cutlery.rsi
+    heldPrefix: spoon
+  - type: Utensil
+    types:
+    - Spoon
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    attackRate: 1.5
+    damage:
+      types:
+        Blunt: 1
+  - type: ReactionMixer
+    mixMessage: "spoon-mixing-success"
+    timeToMix: 0.5
+    reactionTypes:
+    - Stir
+  - type: PhysicalComposition
+    materialComposition:
+      CEIron: 5

@@ -2,7 +2,6 @@ using Content.Server.Power.EntitySystems;
 using Content.Server.Radiation.Components;
 using Content.Shared._CE.MagicEnergy.Components;
 using Content.Shared._CE.MagicEnergy.Systems;
-using Content.Shared.Damage;
 using Content.Shared.Power.Components;
 using Robust.Shared.Timing;
 

@@ -61,26 +61,18 @@
   icon: { sprite: _CE/Objects/tile.rsi, state: stonebrick_square_carved }
   maxCount: 30
 
-#- type: stack
-#  id: CEFloorTileGrassBag
-#  name: ce-tiles-grass
-#  spawn: CEFloorTileGrassBag
-#  icon: { sprite: _CE/Objects/Specific/Farming/grass_seeds.rsi, state: grass }
-#  maxCount: 30
-#
-#- type: stack
-#  id: CEFloorTileGrassBagLight
-#  name: ce-tiles-grass-light
-#  spawn: CEFloorTileGrassBagLight
-#  icon: { sprite: _CE/Objects/Specific/Farming/grass_seeds.rsi, state: grass2 }
-#  maxCount: 30
-#
-#- type: stack
-#  id: CEFloorTileGrassBagTall
-#  name: ce-tiles-grass-tall
-#  spawn: CEFloorTileGrassBagTall
-#  icon: { sprite: _CE/Objects/Specific/Farming/grass_seeds.rsi, state: grass3 }
-#  maxCount: 30
+- type: stack
+  id: CEFloorTileGrass
+  name: ce-tiles-grass
+  spawn: CEFloorTileGrass
+  icon: { sprite: _CE/Objects/Materials/seeds_tile.rsi, state: grass }
+  maxCount: 30
 
+- type: stack
+  id: CEFloorTileMycelium
+  name: ce-tiles-mycelium
+  spawn: CEFloorTileMycelium
+  icon: { sprite: _CE/Objects/Materials/seeds_tile.rsi, state: mycelium }
+  maxCount: 30
 
 

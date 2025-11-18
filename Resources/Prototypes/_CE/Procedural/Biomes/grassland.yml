@@ -31,7 +31,6 @@
         domainWarpType: OpenSimplex2
         domainWarpAmp: 120
 
-
 - type: biomeTemplate
   id: CEGrassland
   layers:
@@ -134,7 +133,7 @@
       allowedTiles:
         - CEGrassTall
       entities:
-        - CEBushSpawner
+        - CEHighBushRandom
     - !type:BiomeEntityLayer # Rare Trees
       threshold: 0.8
       noise:

@@ -1,0 +1,85 @@
+- type: entity
+  abstract: true
+  id: CEBaseWeaponDagger
+  parent:
+  - BaseItem
+  - CEBaseWeaponChemical
+  - CEBaseWeaponThrowable
+  - CEBaseWeaponLight
+  - CEBaseWeaponSharp
+  components:
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,1,0
+  - type: EmbeddableProjectile
+    offset: -0.15,-0.15
+    removalTime: 1.5
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Slash: 4
+        Piercing: 8
+  - type: MeleeWeapon
+    attackRate: 2
+    range: 1
+    angle: 60
+    wideAnimationRotation: -90
+    damage:
+      types:
+        Slash: 2
+        Piercing: 3
+    #animation: CEWeaponArcThrust
+    #wideAnimation: CEWeaponArcSlash
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+    #cPAnimationLength: 0.15
+    #cPAnimationOffset: 0.75
+  - type: Clothing
+    slots:
+    - belt
+    #breakOnMove: false
+    equipDelay: 0.5
+    unequipDelay: 0.5
+
+- type: entity
+  parent: CEBaseWeaponDagger
+  id: CEWeaponDaggerIron
+  name: iron dagger
+  description: A standard dagger made of iron.
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Tools/Dagger/iron.rsi
+    state: icon
+  - type: PhysicalComposition
+    materialComposition:
+      CEWood: 10
+      CEIron: 10
+
+- type: entity
+  parent: CEBaseWeaponDagger
+  id: CEWeaponDaggerHatchet
+  name: hatchet
+  description: A small hatchet, commonly used as a kitchen utensil for preparing food.
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Tools/Dagger/hatchet.rsi
+    state: icon
+  - type: PhysicalComposition
+    materialComposition:
+      CEWood: 10
+      CEIron: 10
+
+- type: entity
+  parent: CEBaseWeaponDagger
+  id: CEWeaponDaggerSickle
+  name: sickle
+  description: A curved blade used for harvesting crops, but can be deadly in skilled hands.
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Tools/Dagger/sickle.rsi
+    state: icon
+  - type: PhysicalComposition
+    materialComposition:
+      CEWood: 10
+      CEIron: 10

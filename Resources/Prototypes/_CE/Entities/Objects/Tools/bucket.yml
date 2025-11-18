@@ -1,0 +1,52 @@
+- type: entity
+  parent:
+  - BaseItem
+  - DrinkBase
+  - DrinkVisualsFill
+  id: CEBucket
+  name: bucket
+  description: It's a boring old bucket.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Edible
+    utensil: Spoon
+  - type: Sprite
+    sprite: _CE/Objects/Tools/bucket.rsi
+  - type: Item
+    size: Normal
+  - type: Clothing
+    sprite: _CE/Objects/Tools/bucket.rsi
+    equipDelay: 0.25
+    unequipDelay: 0.25
+    quickEquip: false
+    #breakOnMove: false
+    slots:
+    - HEAD
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 50
+  - type: SolutionTransfer
+    transferAmount: 50
+    maxTransferAmount: 50
+    minTransferAmount: 10
+  - type: MeleeWeapon
+    soundNoDamage:
+      path: "/Audio/Effects/Fluids/splat.ogg"
+    damage:
+      types:
+        Blunt: 0
+  - type: SpillWhenWorn
+    solution: drink
+  - type: SolutionContainerVisuals
+    maxFillLevels: 3
+    inHandsFillBaseName: null
+  - type: Appearance
+  - type: ExaminableSolution
+    solution: drink
+  - type: Tag
+    tags:
+      - Bucket
+  - type: PhysicalComposition
+    materialComposition:
+      CEWood: 30

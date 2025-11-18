@@ -1,0 +1,61 @@
+- type: CECookingRecipe
+  id: InediblePie
+  foodType: Pie
+  foodData:
+    name: ce-soup-recipe-pie-name
+    desc: ce-soup-recipe-pie-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Pies/food.rsi
+      state: veg
+    sliceProto: CEFoodPiePieceTrash
+  requirements:
+  - !type:AlwaysMet
+
+# 1 Req
+
+- type: CECookingRecipe
+  id: PieVeg
+  foodType: Pie
+  foodData:
+    name: ce-soup-recipe-pie-name
+    desc: ce-soup-recipe-pie-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Pies/food.rsi
+      state: veg
+    sliceProto: CEFoodPiePieceVeg
+  requirements:
+  - !type:TagRequired
+    tags:
+    - CESalad
+    - CEVegetable
+
+- type: CECookingRecipe
+  id: PieMeat
+  foodType: Pie
+  foodData:
+    name: ce-soup-recipe-pie-name
+    desc: ce-soup-recipe-pie-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Pies/food.rsi
+      state: meat
+    sliceProto: CEFoodPiePieceMeat
+  requirements:
+  - !type:TagRequired
+    tags:
+    - CEMeat
+    - CEMeatSlice
+
+- type: CECookingRecipe
+  id: PiePumpkin
+  foodType: Pie
+  foodData:
+    name: ce-soup-recipe-pie-name
+    desc: ce-soup-recipe-pie-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Pies/food.rsi
+      state: meat
+    sliceProto: CEFoodPiePiecePumpkin
+  requirements:
+  - !type:TagRequired
+    tags:
+    - CEPumpkin

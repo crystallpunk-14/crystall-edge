@@ -1,31 +1,36 @@
 - type: entity
   id: CEHighBush
-  name: high bush
-  #parent: CEBaseFlammableSpreading
-  categories: [ HideSpawnMenu ]
-  description: Very tall and dense thickets. Perhaps someone is watching you from them
+  name: bush
+  parent:
+  - CEPlantBase
+  - CEPlantBaseSolarEnergy
+  - CEPlantBaseSingleHarvest
+  - CEPlantBaseFloralWildType
+  - CEPlantBaseGrowingHalfDay
+  - CEPlantBaseSpreading
+  categories: [ ForkFiltered ]
+  description: Thick fast-growing weed
   components:
+  - type: Physics
+    canCollide: true
+  - type: CEPlantGrowing
+    resourceCost: 0 # Dont need to be watered
+  - type: CEPlantVisuals
+    growthSteps: 3
+    readyVariations: 3
   - type: CEWaveShader
     speed: 2.5
     dis: 4
   - type: Clickable
   - type: Sprite
     noRot: true
-    sprite: _CE/Structures/Nature/high_bush.rsi
+    snapCardinals: false
+    sprite: _CE/Structures/Nature/Farm/high_bush.rsi
     drawdepth: Mobs
-    offset: 0,0.3
     layers:
-      - state: grass_high_bush1
-        map: ["random"]
-  - type: RandomSprite
-    available:
-    - random:
-        grass_high_bush1: ""
-        grass_high_bush2: ""
-        grass_high_bush3: ""
-        grass_high_bush4: ""
-  - type: Physics
-    bodyType: Static
+    - state: grow-1
+      offset: 0,0.3
+      map: ["enum.PlantVisualLayers.Base"]
   - type: Fixtures
     fixtures:
       fix1:
@@ -38,15 +43,6 @@
         - TableMask
         layer:
         - TableLayer
-  - type: Damageable
-    damageContainer: Inorganic
-    damageModifierSet: Wood
-  - type: MeleeSound
-    soundGroups:
-      Brute:
-        collection: CEGrassGathering
-        params:
-          variation: 0.05
   - type: Destructible
     thresholds:
     - trigger:
@@ -82,24 +78,23 @@
       collection: CEGrassGathering
   - type: TriggerOnCollide
     fixtureID: fix1
-  #- type: CEIgnitionModifier
-  #  ignitionTimeModifier: 0.75
-  #  hideCaution: true
-  - type: CEZPhysics
+  - type: CEPlantKudzu
+    energyCost: 20
+    resourceCost: 0
+    proto: CEHighBush
 
 - type: entity
-  id: CEBushSpawner
-  name: bush spawner
-  parent: MarkerBase
-  categories: [ ForkFiltered ]
+  id: CEHighBushRandom
+  parent: CEHighBush
+  suffix: Random growth
   components:
-  - type: Sprite
-    layers:
-    - sprite: _CE/Structures/Nature/high_bush.rsi
-      state: grass_high_bush1
-  - type: RandomSpawner
-    prototypes:
-    - CEHighBush
-    chance: 1
-    offset: 0.35
+  - type: CEPlant
+    randomGrowthLevel: true
 
+- type: entity
+  id: CEHighBushFull
+  parent: CEHighBush
+  suffix: Full growth
+  components:
+  - type: CEPlant
+    growthLevel: 1

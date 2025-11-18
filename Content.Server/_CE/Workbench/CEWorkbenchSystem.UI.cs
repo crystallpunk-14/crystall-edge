@@ -15,7 +15,7 @@ public sealed partial class CEWorkbenchSystem
         if (!entity.Comp.Recipes.Contains(args.Recipe))
             return;
 
-        if (!_proto.TryIndex(args.Recipe, out var prototype))
+        if (!_proto.Resolve(args.Recipe, out var prototype))
             return;
 
         StartCraft(entity, args.Actor, prototype);
@@ -31,7 +31,7 @@ public sealed partial class CEWorkbenchSystem
         var recipes = new List<CEWorkbenchUiRecipesEntry>();
         foreach (var recipeId in entity.Comp.Recipes)
         {
-            if (!_proto.TryIndex(recipeId, out var indexedRecipe))
+            if (!_proto.Resolve(recipeId, out var indexedRecipe))
                 continue;
 
             var canCraft = true;

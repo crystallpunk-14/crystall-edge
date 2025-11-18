@@ -1,0 +1,30 @@
+- type: entity
+  id: CEPlantCotton
+  parent:
+  - CEPlantBase
+  - CEPlantBaseSolarEnergy
+  - CEPlantBaseSingleHarvest
+  - CEPlantBaseFloralDelicateType
+  - CEPlantBaseGrowing2Day
+  - CEPlantBaseMetabolizer1Day
+  - CEPlantBaseMetabolizerWater
+  name: cotton
+  description: In a way, you're growing future clothes.
+  components:
+  - type: CEPlantVisuals
+    growthSteps: 5
+    readyVariations: 2
+  - type: Sprite
+    sprite: _CE/Structures/Nature/Farm/cotton.rsi
+    drawdepth: Mobs
+    layers:
+    - state: liq-1
+      sprite: _CE/Structures/Nature/Farm/watered.rsi
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+    - state: grow-1
+      offset: 0, 0.5
+      map: ["enum.PlantVisualLayers.Base"]
+  - type: CEPlantAdditionalProduceOnInteract
+    produce:
+      CECotton: 4

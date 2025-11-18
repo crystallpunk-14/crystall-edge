@@ -1,5 +1,5 @@
 using System.Linq;
-using Content.Shared._CE.ZLevels.EntitySystems;
+using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Shared.Gravity;

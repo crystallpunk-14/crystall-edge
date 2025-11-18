@@ -1,0 +1,23 @@
+- type: parallax
+  id: CESky
+  layers:
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/Parallaxes/land.png"
+      slowness: 0.95
+      scale: 1,1
+      shader: ""
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/Parallaxes/noise.png"
+      slowness: 0.7
+      scale: "1.5, 1.5"
+      scrolling: "0.1, -0.05"
+      shader: ""
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/Parallaxes/noise.png"
+      slowness: 0.5
+      scale: "2, 2"
+      scrolling: "0.2, -0.1"
+      shader: ""

@@ -1,0 +1,19 @@
+- type: entity
+  abstract: true
+  id: CEPlantBaseSingleHarvest
+  components:
+  - type: CEPlantAdditionalProduceOnInteract
+    toolWhitelist:
+      components:
+      - Sharp
+
+- type: entity
+  abstract: true
+  id: CEPlantBaseSpreading
+  components:
+  - type: EdgeSpreader
+    id: CEPlant
+  - type: ActiveEdgeSpreader
+  - type: CEPlantKudzu
+    resourceCost: 50
+    energyCost: 50

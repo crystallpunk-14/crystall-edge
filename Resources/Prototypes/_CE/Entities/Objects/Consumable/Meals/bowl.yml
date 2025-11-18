@@ -1,0 +1,61 @@
+- type: entity
+  id: CEBowlBase
+  parent: BaseItem
+  description: This is your bowl for a delicious soups!
+  categories: [ ForkFiltered ]
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Food/Soups/bowls.rsi
+  - type: Item
+    shape:
+    - 0,0,1,0
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+  - type: CEFoodHolder
+    foodType: Soup
+    solutionId: food
+    displacementRsiPath: _CE/Objects/Consumable/Food/Soups/displacement.rsi
+    canAcceptFood: true
+  - type: Appearance
+  - type: SolutionContainerVisuals
+  - type: Edible
+    edible: Drink
+    utensil: Spoon
+    transferAmount: 2.5
+  - type: Spillable
+    solution: food
+
+- type: entity
+  id: CEBowlWooden
+  parent: CEBowlBase
+  name: wooden bowl
+  components:
+  - type: Sprite
+    layers:
+    - state: wooden
+    - map: ["ce_foodLayers"]
+  - type: PhysicalComposition
+    materialComposition:
+      CEWood: 20
+  - type: Edible
+    trash:
+    - CEBowlWooden
+
+- type: entity
+  id: CEBowlIron
+  parent: CEBowlBase
+  name: iron bowl
+  components:
+  - type: Sprite
+    layers:
+    - state: iron
+    - map: ["ce_foodLayers"]
+  - type: PhysicalComposition
+    materialComposition:
+      CEIron: 20
+  - type: Edible
+    trash:
+    - CEBowlIron

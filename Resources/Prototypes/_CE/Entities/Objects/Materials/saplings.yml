@@ -1,0 +1,24 @@
+- type: entity
+  id: CESaplingBase
+  abstract: true
+  parent: BaseItem
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Normal
+  - type: StaticPrice
+    price: 5
+  - type: CESeed
+    plantingTime: 4
+
+- type: entity
+  id: CESeedAppleTree
+  name: apple tree saplings
+  description: Apple tree saplings. Plant them to grow apple trees.
+  parent: CESaplingBase
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/apple.rsi
+    state: seeds
+  - type: CESeed
+    plantProto: CEPlantAppleTree

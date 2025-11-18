@@ -1,0 +1,33 @@
+- type: entity
+  id: CEPlantBaseFungalType # MUSHROOMS
+  abstract: true
+  components:
+  - type: CEPlant
+    soilResourceGathering:
+      CEDirt: 0
+      CEMycelium: 0.1
+      CEMyceliumLight: 0.2
+
+- type: entity
+  id: CEPlantBaseFloralWildType # For undemanding plants or trees that can grow equally effectively anywhere
+  abstract: true
+  components:
+  - type: CEPlant
+    soilResourceGathering:
+      CEGrass: 0.2
+      CEGrassLight: 0.2
+      CEGrassTall: 0.2
+      CEDirt: 0.2
+      CEDirtSeedbed: 0.2
+
+- type: entity
+  id: CEPlantBaseFloralDelicateType # For farm plants that grow poorly in the wild
+  abstract: true
+  components:
+  - type: CEPlant
+    soilResourceGathering:
+      CEGrass: 0
+      CEGrassLight: 0
+      CEGrassTall: 0
+      CEDirt: 0.1
+      CEDirtSeedbed: 0.2

@@ -1,0 +1,41 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-4.0",
+    "copyright": "Created by omsoyk (Discord)",
+    "size": {
+      "x": 96,
+      "y": 112
+    },
+    "states": [
+      {
+        "name": "grow-1"
+      },
+      {
+        "name": "grow-2"
+      },
+      {
+        "name": "grow-3"
+      },
+      {
+        "name": "grow-4"
+      },
+      {
+        "name": "grown-1"
+      },
+      {
+        "name": "grown-2"
+      },
+      {
+        "name": "produce-apple-var1-state1"
+      },
+      {
+        "name": "produce-apple-var2-state1"
+      },
+      {
+        "name": "produce-apple-var1-state2"
+      },
+      {
+        "name": "produce-apple-var2-state2"
+      }
+    ]
+}

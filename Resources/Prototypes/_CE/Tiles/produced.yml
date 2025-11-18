@@ -194,7 +194,7 @@
     West: /Textures/_CE/Tiles/DirtSeedBag/double_edge_W.png
   baseTurf: CEDirt
   deconstructTools: [ CEShovel ]
-  #itemDrop: CEDirtEffect
+  itemDrop: CEDirtBlock1
   isSubfloor: true
   footstepSounds:
     collection: FootstepAsteroid

@@ -1,0 +1,28 @@
+- type: entity
+  id: CEPlantCabbage
+  parent:
+  - CEPlantBase
+  - CEPlantBaseSolarEnergy
+  - CEPlantBaseSingleHarvest
+  - CEPlantBaseFloralDelicateType
+  - CEPlantBaseGrowing2Day
+  - CEPlantBaseMetabolizer1Day
+  - CEPlantBaseMetabolizerWater
+  name: cabbage
+  description: You see a cabbage in front of you. Perhaps you were born in one.
+  components:
+  - type: CEPlantVisuals
+    growthSteps: 5
+    readyVariations: 2
+  - type: Sprite
+    sprite: _CE/Structures/Nature/Farm/cabbage.rsi
+    layers:
+    - state: liq-1
+      sprite: _CE/Structures/Nature/Farm/watered.rsi
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+    - state: grow-1
+      map: ["enum.PlantVisualLayers.Base"]
+  - type: CEPlantAdditionalProduceOnInteract
+    produce:
+      CEFoodCabbage: 4

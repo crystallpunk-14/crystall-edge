@@ -78,7 +78,7 @@ public sealed partial class CEWorkbenchSystem : CESharedWorkbenchSystem
         if (args.Cancelled || args.Handled)
             return;
 
-        if (!_proto.TryIndex(args.Recipe, out var recipe))
+        if (!_proto.Resolve(args.Recipe, out var recipe))
             return;
 
         var getResource = new CEWorkbenchGetResourcesEvent();

@@ -1,6 +1,6 @@
 using Content.Shared._CE.MagicEnergy.Components;
 using Content.Shared.Alert;
-using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Jittering;
 using Content.Shared.Popups;
 using Content.Shared.Power;
@@ -52,7 +52,7 @@ public abstract class CESharedMagicEnergySystem : EntitySystem {
 
     private void OnOvercharge(Entity<CEEnergyOverchargeDamageComponent> ent, ref CEEnergyOverchargeEvent args)
     {
-        _damageable.TryChangeDamage(ent, ent.Comp.Damage * args.Overcharge, interruptsDoAfters: false);
+        _damageable.TryChangeDamage(ent.Owner, ent.Comp.Damage * args.Overcharge, interruptsDoAfters: false);
         _jitter.DoJitter(ent, TimeSpan.FromSeconds(0.5f), true, 2, 8);
         _popup.PopupEntity(Loc.GetString(ent.Comp.Popup), ent, PopupType.SmallCaution);
 

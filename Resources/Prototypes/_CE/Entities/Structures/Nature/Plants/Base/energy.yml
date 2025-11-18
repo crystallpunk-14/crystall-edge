@@ -1,0 +1,17 @@
+- type: entity
+  abstract: true
+  id: CEPlantBaseSolarEnergy
+  components:
+  - type: CEPlantEnergyFromLight
+    energy: 1
+    daytime: true
+    nighttime: false
+
+- type: entity
+  abstract: true
+  id: CEPlantBaseDarknessEnergy
+  components:
+  - type: CEPlantEnergyFromLight
+    energy: 1
+    daytime: false
+    nighttime: true
