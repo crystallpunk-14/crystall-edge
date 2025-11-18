@@ -1,0 +1,42 @@
+
+- type: gameMap
+  id: CEEntion
+  mapName: Reborned Ention
+  mapPath: /Maps/_CE/Ention/Ention0.yml
+  zLevels:
+    -2: /Maps/_CE/Ention/Ention-2.yml
+    -1: /Maps/_CE/Ention/Ention-1.yml
+    1: /Maps/_CE/Ention/Ention1.yml
+    2: /Maps/_CE/Ention/Ention2.yml
+    3: /Maps/_CE/Ention/Ention3.yml
+  zLevelsComponentOverrides:
+    - type: MapAtmosphere
+      space: False
+      mixture:
+        volume: 2500
+        immutable: True
+        temperature: 293.15
+        moles:
+          Oxygen: 21.824879
+          Nitrogen: 82.10312
+    - type: SunShadowCycle
+    - type: Parallax
+      parallax: CESky
+    - type: LightCycle
+      originalColor: "#fff475"
+    - type: SunShadow
+    - type: MapLight
+      ambientLightColor: "#efff75"
+    - type: BecomesStation
+      id: Ention
+  minPlayers: 0
+  maxPlayers: 20
+  stations:
+    Ention:
+      stationProto: CEStandardImperialFloatingIsland
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: "Reborned Ention"
+        - type: StationJobs
+          availableJobs:
+            CETownfolk: [ -1, -1 ]
