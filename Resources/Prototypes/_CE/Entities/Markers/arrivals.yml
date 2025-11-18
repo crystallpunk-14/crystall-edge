@@ -14,4 +14,7 @@
   - type: Sprite
     layers:
       - state: red
+      - sprite: _CE/Markers/misc.rsi
+        state: ship
   - type: CEArrivalsShipDockPoint
+  - type: FTLSmashImmune

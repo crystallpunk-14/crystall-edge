@@ -33,6 +33,7 @@ public sealed class CEArrivalsSystem : EntitySystem
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly ShuttleSystem _shuttles = default!;
     [Dependency] private readonly StationSpawningSystem _stationSpawning = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     private EntityQuery<CEArrivalsSourceComponent> _arrivalsSourceQuery;
     private EntityQuery<TransformComponent> _xformQuery;
@@ -122,14 +123,14 @@ public sealed class CEArrivalsSystem : EntitySystem
                 // Go back to arrivals source
                 if (xform.MapUid != arrivalsDockXform.MapUid)
                 {
-                    _shuttles.FTLToCoordinates(uid, shuttle, arrivalsDockXform.Coordinates, arrivalsDockXform.LocalRotation);
+                    _shuttles.FTLToCoordinates(uid, shuttle, arrivalsDockXform.Coordinates, _transform.GetWorldRotation(arrivalsDockXform));
 
                     comp.NextArrivalsTime = _timing.CurTime + TimeSpan.FromSeconds(tripTime);
                 }
                 // Go to station
                 else
                 {
-                    _shuttles.FTLToCoordinates(uid, shuttle, stationDockXform.Coordinates, stationDockXform.LocalRotation);
+                    _shuttles.FTLToCoordinates(uid, shuttle, stationDockXform.Coordinates, _transform.GetWorldRotation(stationDockXform));
 
                     comp.NextArrivalsTime = _timing.CurTime + TimeSpan.FromSeconds(
                         _cfgManager.GetCVar(CCVars.ArrivalsCooldown) + tripTime);
@@ -279,7 +280,7 @@ public sealed class CEArrivalsSystem : EntitySystem
             var ship = EnsureComp<CEArrivalsShipComponent>(shuttle.Value);
             ship.Station = arrivalsEnt;
             EnsureComp<ProtectedGridComponent>(arrivalsEnt);
-            _shuttles.FTLToCoordinates(shuttle.Value, shuttleComp, dockXform.Coordinates, dockXform.LocalRotation, hyperspaceTime: RoundStartFTLDuration);
+            _shuttles.FTLToCoordinates(shuttle.Value, shuttleComp, dockXform.Coordinates, _transform.GetWorldRotation(dockXform), hyperspaceTime: RoundStartFTLDuration);
             ship.NextTransfer = _timing.CurTime + TimeSpan.FromSeconds(_cfgManager.GetCVar(CCVars.ArrivalsCooldown));
         }
 

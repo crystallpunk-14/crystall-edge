@@ -4,7 +4,7 @@ meta:
   engineVersion: 267.3.0
   forkId: ""
   forkVersion: ""
-  time: 11/17/2025 20:31:13
+  time: 11/18/2025 12:24:22
   entityCount: 79
 maps: []
 grids:
@@ -99,6 +99,20 @@ entities:
         chunkSize: 4
     - type: GasTileOverlay
     - type: RadiationGridResistance
+- proto: CEAlwaysPoweredWallLight
+  entities:
+  - uid: 80
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -1.5,1.5
+      parent: 1
+  - uid: 81
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 2.5,1.5
+      parent: 1
 - proto: CECandle
   entities:
   - uid: 45
@@ -133,13 +147,6 @@ entities:
     components:
     - type: Transform
       pos: -0.5677645,1.6880612
-      parent: 1
-- proto: CECrowbar
-  entities:
-  - uid: 74
-    components:
-    - type: Transform
-      pos: -1.1448927,1.5087489
       parent: 1
 - proto: CEDistributionUnitBasic
   entities:
@@ -176,14 +183,12 @@ entities:
   - uid: 51
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 3.5,5.5
+      pos: 3.5,2.5
       parent: 1
   - uid: 52
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -2.5,5.5
+      pos: 3.5,3.5
       parent: 1
   - uid: 54
     components:
@@ -243,11 +248,6 @@ entities:
     components:
     - type: Transform
       pos: -2.5,3.5
-      parent: 1
-  - uid: 72
-    components:
-    - type: Transform
-      pos: -2.5,4.5
       parent: 1
 - proto: CEFoodApple
   entities:
