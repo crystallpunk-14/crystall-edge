@@ -1,12 +1,16 @@
+using System.Numerics;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Events;
 using Content.Server.Shuttles.Components;
+using Content.Server.Shuttles.Events;
 using Content.Server.Shuttles.Systems;
 using Content.Server.Spawners.Components;
 using Content.Server.Spawners.EntitySystems;
 using Content.Server.Station.Events;
 using Content.Server.Station.Systems;
 using Content.Shared.CCVar;
+using Content.Shared.Mobs.Components;
+using Content.Shared.Movement.Components;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Tiles;
 using Robust.Shared.Configuration;
@@ -37,6 +41,9 @@ public sealed class CEArrivalsSystem : EntitySystem
 
     private EntityQuery<CEArrivalsSourceComponent> _arrivalsSourceQuery;
     private EntityQuery<TransformComponent> _xformQuery;
+    private EntityQuery<PendingClockInComponent> _pendingQuery;
+    private EntityQuery<ArrivalsBlacklistComponent> _blacklistQuery;
+    private EntityQuery<MobStateComponent> _mobQuery;
 
     /// <summary>
     /// If enabled then spawns players on an alternate map so they can take a shuttle to the station.
@@ -58,12 +65,80 @@ public sealed class CEArrivalsSystem : EntitySystem
         SubscribeLocalEvent<CEArrivalsShipComponent, ComponentStartup>(OnShuttleStartup);
 
         SubscribeLocalEvent<RoundStartingEvent>(OnRoundStarting);
+        SubscribeLocalEvent<CEArrivalsShipComponent, FTLStartedEvent>(OnArrivalsFTL);
 
         _arrivalsSourceQuery = GetEntityQuery<CEArrivalsSourceComponent>();
         _xformQuery = GetEntityQuery<TransformComponent>();
+        _pendingQuery = GetEntityQuery<PendingClockInComponent>();
+        _blacklistQuery = GetEntityQuery<ArrivalsBlacklistComponent>();
+        _mobQuery = GetEntityQuery<MobStateComponent>();
 
         Enabled = _cfgManager.GetCVar(CCVars.CEArrivalsShuttles);
         _cfgManager.OnValueChanged(CCVars.CEArrivalsShuttles, SetArrivals);
+    }
+
+    private void OnArrivalsFTL(Entity<CEArrivalsShipComponent> ent, ref FTLStartedEvent args)
+    {
+        if (!TryGetArrivals(out EntityUid arrivals))
+            return;
+
+        // Don't do anything here when leaving arrivals.
+        var arrivalsMapUid = Transform(arrivals).MapUid;
+        if (args.FromMapUid == arrivalsMapUid)
+            return;
+
+        // Any mob then yeet them off the shuttle.
+        if (!_cfgManager.GetCVar(CCVars.ArrivalsReturns) && args.FromMapUid != null)
+            DumpChildren(ent, ref args);
+
+        var pendingQuery = AllEntityQuery<PendingClockInComponent, TransformComponent>();
+
+        // We're heading from the station back to arrivals (if leaving arrivals, would have returned above).
+        // Process everyone who holds a PendingClockInComponent
+        // Note, due to way DumpChildren works, anyone who doesn't have a PendingClockInComponent gets left in space
+        // and will not warp. This is intended behavior.
+        while (pendingQuery.MoveNext(out var pUid, out _, out var xform))
+        {
+            // Players who have remained at arrivals keep their warp coupon (PendingClockInComponent) for now.
+            if (xform.MapUid == arrivalsMapUid)
+                continue;
+
+            // The player has successfully left arrivals and is also not on the shuttle. Remove their warp coupon.
+            RemCompDeferred<PendingClockInComponent>(pUid);
+            RemCompDeferred<AutoOrientComponent>(pUid);
+        }
+    }
+
+    private void DumpChildren(EntityUid uid, ref FTLStartedEvent args)
+    {
+        var toDump = new List<Entity<TransformComponent>>();
+        FindDumpChildren(uid, toDump);
+        foreach (var (ent, xform) in toDump)
+        {
+            var rotation = xform.LocalRotation;
+            _transform.SetCoordinates(ent, new EntityCoordinates(args.FromMapUid!.Value, Vector2.Transform(xform.LocalPosition, args.FTLFrom)));
+            _transform.SetWorldRotation(ent, args.FromRotation + rotation);
+        }
+    }
+
+    private void FindDumpChildren(EntityUid uid, List<Entity<TransformComponent>> toDump)
+    {
+        if (_pendingQuery.HasComponent(uid))
+            return;
+
+        var xform = Transform(uid);
+
+        if (_mobQuery.HasComponent(uid) || _blacklistQuery.HasComponent(uid))
+        {
+            toDump.Add((uid, xform));
+            return;
+        }
+
+        var children = xform.ChildEnumerator;
+        while (children.MoveNext(out var child))
+        {
+            FindDumpChildren(child, toDump);
+        }
     }
 
     private void SetArrivals(bool obj)
@@ -213,6 +288,9 @@ public sealed class CEArrivalsSystem : EntitySystem
             ev.Job,
             ev.HumanoidCharacterProfile,
             ev.Station);
+
+        EnsureComp<PendingClockInComponent>(ev.SpawnResult.Value);
+        EnsureComp<AutoOrientComponent>(ev.SpawnResult.Value);
     }
 
     private bool TryGetArrivals(out EntityUid uid)
