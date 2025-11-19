@@ -1,12 +1,10 @@
-using Content.Shared._CP14.Trading.Prototypes;
+using Content.Shared._CE.Trading.Prototypes;
 using Content.Shared.Stacks;
-using Robust.Client.GameObjects;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Utility;
 
-namespace Content.Shared._CP14.Trading.BuyServices;
+namespace Content.Shared._CE.Trading.BuyServices;
 
-public sealed partial class CP14BuyItemsService : CP14StoreBuyService
+public sealed partial class CEBuyItemsService : CEStoreBuyService
 {
     [DataField(required: true)]
     public EntProtoId Product;
