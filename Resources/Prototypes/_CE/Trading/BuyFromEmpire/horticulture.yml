@@ -8,3 +8,15 @@
   service: !type:CEBuyItemsService
     product: CEWoodenPlanks20
     count: 1
+
+- type: tradingPosition
+  id: CEFoodApple
+  faction: Horticulture
+  uiPosition: 8
+  reputationLevel: 2
+  icon:
+    sprite: _CE/Objects/Consumable/apple.rsi
+    state: base1
+  service: !type:CEBuyItemsService
+    product: CEFoodApple
+    count: 5
