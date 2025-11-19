@@ -22,7 +22,7 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly PricingSystem _price = default!;
-    [Dependency] private readonly CECurrencySystem _cp14Currency = default!;
+    [Dependency] private readonly CECurrencySystem _currency = default!;
     [Dependency] private readonly CEEconomySystem _economy = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly UserInterfaceSystem _userInterface = default!;
@@ -65,7 +65,7 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
             return;
 
         _audio.PlayPvs(ent.Comp.SellSound, Transform(ent).Coordinates);
-        _cp14Currency.GenerateMoney(balance * ent.Comp.PlatformMarkupProcent, Transform(ent).Coordinates);
+        _currency.GenerateMoney(balance * ent.Comp.PlatformMarkupProcent, Transform(ent).Coordinates);
         SpawnAtPosition(ent.Comp.SellVisual, Transform(ent).Coordinates);
 
         UpdateSellingUIState(ent);
@@ -92,7 +92,7 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
 
         _audio.PlayPvs(ent.Comp.SellSound, Transform(ent).Coordinates);
         var price = GetPrice(indexedRequest) * ent.Comp.PlatformMarkupProcent ?? 0;
-        _cp14Currency.GenerateMoney(price, Transform(ent).Coordinates);
+        _currency.GenerateMoney(price, Transform(ent).Coordinates);
         AddReputation(args.Actor, args.Faction, price * indexedRequest.ReputationCashback);
         SpawnAtPosition(ent.Comp.SellVisual, Transform(ent).Coordinates);
 
@@ -186,7 +186,7 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
         if (balance < price)
         {
             // Not enough balance to buy the position
-            _popup.PopupEntity(Loc.GetString("cp14-trading-failure-popup-money"), platform);
+            _popup.PopupEntity(Loc.GetString("ce-trading-failure-popup-money"), platform);
             return false;
         }
 
@@ -210,7 +210,7 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
         _audio.PlayPvs(platform.Comp.BuySound, Transform(platform).Coordinates);
 
         //return the change
-        _cp14Currency.GenerateMoney(balance, Transform(platform).Coordinates);
+        _currency.GenerateMoney(balance, Transform(platform).Coordinates);
         SpawnAtPosition(platform.Comp.BuyVisual, Transform(platform).Coordinates);
         return true;
     }

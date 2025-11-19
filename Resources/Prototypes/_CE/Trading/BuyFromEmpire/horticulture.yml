@@ -1,0 +1,10 @@
+- type: tradingPosition
+  id: CEWoodenPlanks10
+  faction: Horticulture
+  uiPosition: 7
+  icon:
+    sprite: _CE/Objects/Materials/wood.rsi
+    state: planks_3
+  service: !type:CEBuyItemsService
+    product: CEWoodenPlanks20
+    count: 1

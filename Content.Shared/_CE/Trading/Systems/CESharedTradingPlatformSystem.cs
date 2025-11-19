@@ -54,7 +54,7 @@ public abstract partial class CESharedTradingPlatformSystem : EntitySystem
         var repComp = EnsureComp<CETradingReputationComponent>(args.User);
         repComp.Reputation.TryAdd(ent.Comp.Faction, 0);
         _audio.PlayLocal(new SoundCollectionSpecifier("CECoinImpact"), args.User, args.User);
-        _popup.PopupClient(Loc.GetString("cp14-trading-contract-use", ("name", Loc.GetString(indexedFaction.Name))), args.User, args.User);
+        _popup.PopupClient(Loc.GetString("ce-trading-contract-use", ("name", Loc.GetString(indexedFaction.Name))), args.User, args.User);
 
         if (_net.IsServer)
             QueueDel(ent);
