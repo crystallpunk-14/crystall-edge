@@ -66,14 +66,13 @@ public sealed partial class CESellingPlatformWindow : DefaultWindow
 
         //Faction tabs update
         TreeTabsContainer.RemoveAllChildren();
-        foreach (var (faction, rep) in _cachedUser.Value.Comp.Reputation)
+        foreach (var faction in _cachedUser.Value.Comp.Contracts)
         {
             if (!_proto.TryIndex(faction, out var indexedFaction))
                 continue;
             var factionButton = new CETradingFactionButtonControl(
                 indexedFaction.Color,
-                Loc.GetString(indexedFaction.Name),
-                rep);
+                Loc.GetString(indexedFaction.Name));
 
             factionButton.OnPressed += () =>
             {
@@ -85,7 +84,7 @@ public sealed partial class CESellingPlatformWindow : DefaultWindow
 
         if (_selectedFaction == null)
         {
-            var firstFaction = _cachedUser.Value.Comp.Reputation.Keys.First();
+            var firstFaction = _cachedUser.Value.Comp.Contracts.First();
             if (_proto.TryIndex(firstFaction, out var indexedFaction))
                 SelectFaction(indexedFaction);
         }

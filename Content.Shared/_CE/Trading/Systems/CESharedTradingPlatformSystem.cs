@@ -34,10 +34,8 @@ public abstract partial class CESharedTradingPlatformSystem : EntitySystem
     {
         foreach (var faction in Proto.EnumeratePrototypes<CETradingFactionPrototype>())
         {
-            if (faction.RoundStart is not null)
-            {
-                ent.Comp.Reputation[faction] = ent.Comp.Reputation.GetValueOrDefault(faction, 0f) + faction.RoundStart.Value;
-            }
+            if (faction.RoundStart)
+                ent.Comp.Contracts.Add(faction);
         }
         Dirty(ent);
     }
@@ -52,12 +50,11 @@ public abstract partial class CESharedTradingPlatformSystem : EntitySystem
         args.Handled = true;
 
         var repComp = EnsureComp<CETradingReputationComponent>(args.User);
-        repComp.Reputation.TryAdd(ent.Comp.Faction, 0);
+        repComp.Contracts.Add(ent.Comp.Faction);
         _audio.PlayLocal(new SoundCollectionSpecifier("CECoinImpact"), args.User, args.User);
         _popup.PopupClient(Loc.GetString("ce-trading-contract-use", ("name", Loc.GetString(indexedFaction.Name))), args.User, args.User);
 
-        if (_net.IsServer)
-            QueueDel(ent);
+        PredictedQueueDel(ent);
     }
 
 
@@ -112,23 +109,19 @@ public abstract partial class CESharedTradingPlatformSystem : EntitySystem
             return false;
         if (!Proto.TryIndex(position, out var indexedPosition))
             return false;
-
-        if (user.Comp.Reputation[indexedPosition.Faction] < indexedPosition.ReputationLevel)
+        if (!user.Comp.Contracts.Contains(indexedPosition.Faction))
             return false;
 
         return true;
     }
 
-    public void AddReputation(Entity<CETradingReputationComponent?> user,
-        ProtoId<CETradingFactionPrototype> faction, float rep)
+    public void AddContractToPlayer(Entity<CETradingReputationComponent?> user,
+        ProtoId<CETradingFactionPrototype> faction)
     {
         if (!Resolve(user.Owner, ref user.Comp, false))
             return;
 
-        if (!user.Comp.Reputation.ContainsKey(faction))
-            user.Comp.Reputation.Add(faction, rep);
-        else
-            user.Comp.Reputation[faction] += rep;
+        user.Comp.Contracts.Add(faction);
 
         Dirty(user);
     }

@@ -14,8 +14,8 @@ public sealed partial class CETradingFactionPrototype : IPrototype
     public Color Color = Color.White;
 
     /// <summary>
-    /// If not null, this faction is automatically unlocked for players, and grants the specified amount of reputation to unlock the first positions.
+    /// faction is automatically unlocked for players at roundstart
     /// </summary>
     [DataField]
-    public float? RoundStart = null;
+    public bool RoundStart = false;
 }

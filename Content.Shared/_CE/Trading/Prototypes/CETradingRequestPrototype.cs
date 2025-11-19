@@ -23,9 +23,6 @@ public sealed partial class CETradingRequestPrototype : IPrototype
     [DataField]
     public int AdditionalReward = 10;
 
-    [DataField]
-    public float ReputationCashback = 0.015f;
-
     [DataField(required: true)]
     public List<CEWorkbenchCraftRequirement> Requirements = new();
 }

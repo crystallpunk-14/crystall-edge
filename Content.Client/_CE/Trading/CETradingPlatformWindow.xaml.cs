@@ -53,9 +53,9 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
         _proto.PrototypesReloaded += _ => CacheSkillProto();
         if (_cachedUser is not null)
         {
-            foreach (var (f, _) in _cachedUser.Value.Comp.Reputation)
+            foreach (var faction in _cachedUser.Value.Comp.Contracts)
             {
-                if (_proto.TryIndex(f, out var indexedFaction))
+                if (_proto.TryIndex(faction, out var indexedFaction))
                 {
                     SelectFaction(indexedFaction);
                     break;
@@ -117,15 +117,10 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
         }
 
         _selectedPosition = node;
-        var unlocked = _cachedUser.Value.Comp.Reputation[_selectedPosition.Faction] >= _selectedPosition.ReputationLevel;
 
         Name.Text = _tradingSystem.GetTradeName(_selectedPosition);
         Description.Text = _tradingSystem.GetTradeDescription(_selectedPosition);
-
         LocationView.Texture = _selectedPosition.Icon.Frame0();
-        BuyButton.Disabled = !unlocked;
-
-        UnlockCost.Text = _selectedPosition.ReputationLevel.ToString();
 
         BuyPriceHolder.RemoveAllChildren();
         var price = _tradingSystem.GetPrice(_selectedPosition) * _cachedPlatform.Value.Comp.PlatformMarkupProcent ?? 0;
@@ -174,9 +169,8 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
             if (position.Faction != _selectedFaction)
                 continue;
 
-            var unlocked = _cachedUser.Value.Comp.Reputation[position.Faction] >= position.ReputationLevel;
             var active = _tradingSystem.CanBuyPosition((_cachedUser.Value.Owner, _cachedUser.Value.Comp), position);
-            var node = new CENodeTreeElement(position.ID, unlocked, active, new Vector2(position.ReputationLevel.Float() * 50, position.UiPosition * 50) , position.Icon);
+            var node = new CENodeTreeElement(position.ID, true, active, new Vector2(position.UiPosition.X * 50, position.UiPosition.Y * 50) , position.Icon);
             nodeTreeElements.Add(node);
         }
 
@@ -203,14 +197,13 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
 
         //Faction tabs update
         TreeTabsContainer.RemoveAllChildren();
-        foreach (var (faction, rep) in _cachedUser.Value.Comp.Reputation)
+        foreach (var faction in _cachedUser.Value.Comp.Contracts)
         {
             if (!_proto.TryIndex(faction, out var indexedFaction))
                 continue;
             var factionButton = new CETradingFactionButtonControl(
                 indexedFaction.Color,
-                Loc.GetString(indexedFaction.Name),
-                rep);
+                Loc.GetString(indexedFaction.Name));
 
             factionButton.OnPressed += () =>
             {

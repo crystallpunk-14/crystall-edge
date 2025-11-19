@@ -11,12 +11,12 @@ public sealed partial class CETradingFactionButtonControl : Control
 {
     public event Action? OnPressed;
 
-    public CETradingFactionButtonControl(Color color, string label, FixedPoint2 reputation)
+    public CETradingFactionButtonControl(Color color, string label)
     {
         RobustXamlLoader.Load(this);
 
         ColorPanel.PanelOverride = new StyleBoxFlat { BackgroundColor = color };
-        SkillTreeLabel.Text = $"{reputation}   {label}";
+        SkillTreeLabel.Text = label;
 
         MainButton.OnPressed += args => OnPressed?.Invoke();
     }

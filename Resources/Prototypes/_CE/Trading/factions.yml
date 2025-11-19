@@ -2,4 +2,4 @@
   id: Horticulture
   color: "#3cb371"
   name: ce-trade-faction-horticulture
-  roundStart: 1
+  roundStart: true

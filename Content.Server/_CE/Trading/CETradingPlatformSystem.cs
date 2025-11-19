@@ -93,7 +93,6 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
         _audio.PlayPvs(ent.Comp.SellSound, Transform(ent).Coordinates);
         var price = GetPrice(indexedRequest) * ent.Comp.PlatformMarkupProcent ?? 0;
         _currency.GenerateMoney(price, Transform(ent).Coordinates);
-        AddReputation(args.Actor, args.Faction, price * indexedRequest.ReputationCashback);
         SpawnAtPosition(ent.Comp.SellVisual, Transform(ent).Coordinates);
 
         UpdateSellingUIState(ent);
@@ -204,8 +203,6 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
 
         if (indexedPosition.Service is not null)
             indexedPosition.Service.Buy(EntityManager, Proto, platform);
-
-        AddReputation(user, indexedPosition.Faction, price / 100);
 
         _audio.PlayPvs(platform.Comp.BuySound, Transform(platform).Coordinates);
 

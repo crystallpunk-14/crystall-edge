@@ -1,7 +1,7 @@
 - type: tradingPosition
   id: CEWoodenPlanks10
   faction: Horticulture
-  uiPosition: 7
+  uiPosition: 0, 0
   icon:
     sprite: _CE/Objects/Materials/wood.rsi
     state: planks_3
@@ -12,8 +12,7 @@
 - type: tradingPosition
   id: CEFoodApple
   faction: Horticulture
-  uiPosition: 8
-  reputationLevel: 2
+  uiPosition: 0, 1
   icon:
     sprite: _CE/Objects/Consumable/apple.rsi
     state: base1

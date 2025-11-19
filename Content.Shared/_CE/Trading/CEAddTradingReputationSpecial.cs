@@ -20,7 +20,7 @@ public sealed partial class CEAddTradingReputationSpecial : JobSpecial
 
         foreach (var faction in Factions)
         {
-            tradeSys.AddReputation(mob, faction, Reputation);
+            tradeSys.AddContractToPlayer(mob, faction);
         }
     }
 }

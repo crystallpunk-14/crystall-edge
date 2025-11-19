@@ -40,9 +40,6 @@ public sealed partial class CESellingRequestControl : Control
         var price = (int?)(originalPrice * markupProcent);
         PriceHolder.AddChild(new CEPriceControl(price ?? 10000));
 
-        //Rep reward
-        Reputation.Text = ((price ?? 0) * indexedRequest.ReputationCashback).ToString("0.00");
-
         RequestButton.OnPressed += _ => OnSellAttempt?.Invoke();
         RequestButton.Disabled = !active;
     }

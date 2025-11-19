@@ -32,11 +32,8 @@ public sealed partial class CETradingPositionPrototype : IPrototype
     [DataField(required: true)]
     public ProtoId<CETradingFactionPrototype> Faction;
 
-    [DataField]
-    public FixedPoint2 ReputationLevel = 0f;
-
     [DataField(required: true)]
-    public float UiPosition = default!;
+    public Vector2i UiPosition = default!;
 
     [DataField(required: true)]
     public CEStoreBuyService? Service = null;
