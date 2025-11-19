@@ -34,9 +34,9 @@ public sealed partial class CESellingRequestControl : Control
 
         //Coin reward
         PriceHolder.RemoveAllChildren();
-        var economySystem = _entityManager.System<CESharedStationEconomySystem>();
+        var tradingSys = _entityManager.System<CEClientTradingPlatformSystem>();
 
-        var originalPrice = economySystem.GetPrice(indexedRequest);
+        var originalPrice = tradingSys.GetPrice(indexedRequest);
         var price = (int?)(originalPrice * markupProcent);
         PriceHolder.AddChild(new CEPriceControl(price ?? 10000));
 

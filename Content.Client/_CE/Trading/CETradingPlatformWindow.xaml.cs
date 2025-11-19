@@ -128,7 +128,7 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
         UnlockCost.Text = _selectedPosition.ReputationLevel.ToString();
 
         BuyPriceHolder.RemoveAllChildren();
-        var price = _economySystem.GetPrice(_selectedPosition) * _cachedPlatform.Value.Comp.PlatformMarkupProcent ?? 0;
+        var price = _tradingSystem.GetPrice(_selectedPosition) * _cachedPlatform.Value.Comp.PlatformMarkupProcent ?? 0;
         BuyPriceHolder.AddChild(new CEPriceControl((int)price));
     }
 
