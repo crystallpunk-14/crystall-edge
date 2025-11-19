@@ -1,5 +1,0 @@
-- type: entity
-  id: test
-  components:
-  - type: CEZLevelViewer
-  - type: Eye
