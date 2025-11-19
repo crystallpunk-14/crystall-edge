@@ -111,9 +111,9 @@ public sealed partial class ScalingViewport
         if (playerXform.MapUid is null)
             return;
 
-        var lookUp = zLevelViewer.LookUp ? 1 : 0;
+        var highestDepth = zLevelViewer.ViewedZLevel > 0 ? zLevelViewer.ViewedZLevel : 0;
 
-        var lowestDepth = 0;
+        var lowestDepth = zLevelViewer.ViewedZLevel < 0 ? zLevelViewer.ViewedZLevel : 0; ;
         for (var i = 0; i >= -CESharedZLevelsSystem.MaxZLevelsBelowRendering; i--)
         {
             var checkingMap = playerXform.MapUid.Value;
@@ -133,7 +133,7 @@ public sealed partial class ScalingViewport
         }
 
         //From the lowest depth to the highest, render each level
-        for (var depth = lowestDepth; depth <= lookUp; depth++)
+        for (var depth = lowestDepth; depth <= highestDepth; depth++)
         {
             if (depth == 0)
                 viewport.Eye = _fallbackEye;
@@ -148,7 +148,7 @@ public sealed partial class ScalingViewport
                 Angle rotation = _fallbackEye.Rotation * -1;
                 var offset = rotation.ToWorldVec() * CEClientZLevelsSystem.ZLevelOffset * depth;
 
-                viewport.Eye = new ZEye(lowestDepth, depth, lookUp)
+                viewport.Eye = new ZEye(lowestDepth, depth, highestDepth)
                 {
                     Position = new MapCoordinates(_fallbackEye.Position.Position, mapComp.MapId),
                     DrawFov = _fallbackEye.DrawFov && depth >= 0,
