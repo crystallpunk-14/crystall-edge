@@ -135,7 +135,7 @@
     layers:
     - state: impact
       shader: unshaded
-      color: "#42fffc"
+      color: "#42c9ff"
     drawdepth: Effects
   - type: TimedDespawn
     lifetime: 2
@@ -143,7 +143,7 @@
     tags:
       - HideContextMenu
   - type: PointLight
-    color: "#42fffc"
+    color: "#42c9ff"
     enabled: true
     radius: 8
     energy: 8
