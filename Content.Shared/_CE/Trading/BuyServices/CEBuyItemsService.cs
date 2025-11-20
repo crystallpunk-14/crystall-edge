@@ -41,4 +41,9 @@ public sealed partial class CEBuyItemsService : CEStoreBuyService
 
         return indexedProduct.Description;
     }
+
+    public override EntProtoId GetTexture(IPrototypeManager protoMan)
+    {
+        return Product;
+    }
 }

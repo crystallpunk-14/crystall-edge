@@ -26,9 +26,6 @@ public abstract partial class CESharedTradingPlatformSystem
         if (position.Desc != null)
             return Loc.GetString(position.Desc);
 
-        if (position.Service is null)
-            return string.Empty;
-
         return position.Service.GetDesc(Proto);
     }
 
@@ -36,9 +33,6 @@ public abstract partial class CESharedTradingPlatformSystem
     {
         if (position.Name != null)
             return Loc.GetString(position.Name);
-
-        if (position.Service is null)
-            return string.Empty;
 
         return position.Service.GetName(Proto);
     }

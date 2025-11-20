@@ -1,8 +1,5 @@
-using System.Numerics;
-using Content.Shared.FixedPoint;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Utility;
 
 namespace Content.Shared._CE.Trading.Prototypes;
 
@@ -23,20 +20,11 @@ public sealed partial class CETradingPositionPrototype : IPrototype
     [DataField]
     public LocId? Desc;
 
-    /// <summary>
-    /// Icon for UI. If you leave null, the icon will try to generate from first Service.GetTexture()
-    /// </summary>
-    [DataField(required: true)]
-    public SpriteSpecifier Icon = default!;
-
     [DataField(required: true)]
     public ProtoId<CETradingFactionPrototype> Faction;
 
     [DataField(required: true)]
-    public Vector2i UiPosition = default!;
-
-    [DataField(required: true)]
-    public CEStoreBuyService? Service = null;
+    public CEStoreBuyService Service = default!;
 
     [DataField]
     public int PriceMarkup = 1;
@@ -57,4 +45,6 @@ public abstract partial class CEStoreBuyService
     public abstract string GetName(IPrototypeManager protoMan);
 
     public abstract string GetDesc(IPrototypeManager protoMan);
+
+    public abstract EntProtoId GetTexture(IPrototypeManager protoMan);
 }

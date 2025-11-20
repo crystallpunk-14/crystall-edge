@@ -3,3 +3,9 @@
   color: "#3cb371"
   name: ce-trade-faction-horticulture
   roundStart: true
+
+- type: tradingFaction
+  id: HomeDecor
+  color: "#3cb371" #TODO
+  name: ce-trade-faction-home-decor
+  roundStart: true

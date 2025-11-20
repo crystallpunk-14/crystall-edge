@@ -13,5 +13,5 @@ public sealed partial class CETradingReputationComponent : Component
     /// factions is unlocked for that player.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public HashSet<ProtoId<CETradingFactionPrototype>> Contracts = new();
+    public HashSet<ProtoId<CETradingFactionPrototype>> Factions = new();
 }

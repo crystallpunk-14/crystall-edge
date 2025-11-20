@@ -1,10 +1,6 @@
 - type: tradingPosition
   id: CEWoodenPlanks10
   faction: Horticulture
-  uiPosition: 0, 0
-  icon:
-    sprite: _CE/Objects/Materials/wood.rsi
-    state: planks_3
   service: !type:CEBuyItemsService
     product: CEWoodenPlanks20
     count: 1
@@ -12,10 +8,13 @@
 - type: tradingPosition
   id: CEFoodApple
   faction: Horticulture
-  uiPosition: 0, 1
-  icon:
-    sprite: _CE/Objects/Consumable/apple.rsi
-    state: base1
   service: !type:CEBuyItemsService
     product: CEFoodApple
+    count: 5
+
+- type: tradingPosition
+  id: CEFoodCabbage
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodCabbage
     count: 5

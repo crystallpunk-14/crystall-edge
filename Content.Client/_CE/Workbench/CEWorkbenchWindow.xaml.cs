@@ -62,7 +62,7 @@ public sealed partial class CEWorkbenchWindow : DefaultWindow
         if (_uncategorized.Count > 0 && OptionCategories.SelectedId == AllCategoryId)
         {
             var uncategorizedGridContainer = new GridContainer();
-            uncategorizedGridContainer.Columns = 5;
+            uncategorizedGridContainer.Columns = 10;
             uncategorizedGridContainer.VerticalExpand = true;
 
             CraftsContainer.AddChild(uncategorizedGridContainer);

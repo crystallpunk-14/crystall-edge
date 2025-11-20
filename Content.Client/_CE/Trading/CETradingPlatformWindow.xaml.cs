@@ -16,6 +16,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using static Robust.Shared.Localization.Loc;
 
 namespace Content.Client._CE.Trading;
 
@@ -23,23 +24,31 @@ namespace Content.Client._CE.Trading;
 public sealed partial class CETradingPlatformWindow : DefaultWindow
 {
     [Dependency] private readonly ILogManager _log = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IEntityManager _e = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
 
     private readonly CEClientTradingPlatformSystem _tradingSystem;
-    private readonly CEClientEconomySystem _economySystem;
+    private string _searchFilter = string.Empty;
 
-    private CETradingPlatformUiState? _cacheState;
+    private CETradingPlatformUiState? _cachedState;
     private Entity<CETradingReputationComponent>? _cachedUser;
     private Entity<CETradingPlatformComponent>? _cachedPlatform;
 
-    private IEnumerable<CETradingPositionPrototype> _allPositions = [];
+    private HashSet<CETradingPositionPrototype> _uncategorized = [];
 
     private ProtoId<CETradingFactionPrototype>? _selectedFaction;
     private CETradingPositionPrototype? _selectedPosition;
+
+    /// <summary>
+    /// Used for category dropdown filtering.
+    /// </summary>
+    private readonly Dictionary<int, LocId> _categoryIndexes = new();
+    private Dictionary<LocId, HashSet<CETradingPositionPrototype>> _categories = new();
+
     public event Action<ProtoId<CETradingPositionPrototype>>? OnBuy;
 
+    private const int AllCategoryId = -1;
     private ISawmill Sawmill { get; init; }
 
     public CETradingPlatformWindow()
@@ -49,13 +58,13 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
 
         Sawmill = _log.GetSawmill("ce_trading");
 
-        CacheSkillProto();
-        _proto.PrototypesReloaded += _ => CacheSkillProto();
+        CacheTradingProto();
+        _prototype.PrototypesReloaded += _ => CacheTradingProto();
         if (_cachedUser is not null)
         {
-            foreach (var faction in _cachedUser.Value.Comp.Contracts)
+            foreach (var faction in _cachedUser.Value.Comp.Factions)
             {
-                if (_proto.TryIndex(faction, out var indexedFaction))
+                if (_prototype.TryIndex(faction, out var indexedFaction))
                 {
                     SelectFaction(indexedFaction);
                     break;
@@ -64,14 +73,115 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
         }
 
         _tradingSystem = _e.System<CEClientTradingPlatformSystem>();
-        _economySystem = _e.System<CEClientEconomySystem>();
 
-        GraphControl.OnOffsetChanged += offset =>
-        {
-            ParallaxBackground.Offset = -offset * 0.25f + new Vector2(1000, 1000); //hardcoding is bad
-        };
-        GraphControl.OnNodeSelected += SelectNode;
+        SearchBar.OnTextChanged += OnSearchChanged;
         BuyButton.OnPressed += BuyPressed;
+        OptionCategories.OnItemSelected += OnCategoryItemSelected;
+    }
+
+
+    private void OnSearchChanged(LineEdit.LineEditEventArgs _)
+    {
+        _searchFilter = SearchBar.Text.Trim().ToLowerInvariant();
+        UpdatePositionVisibility();
+    }
+
+    private void OnCategoryItemSelected(OptionButton.ItemSelectedEventArgs obj)
+    {
+        OptionCategories.SelectId(obj.Id);
+        UpdatePositionVisibility();
+    }
+
+    private void UpdatePositionVisibility()
+    {
+        if (_cachedState is null)
+            return;
+
+        CraftsContainer.RemoveAllChildren();
+
+        if (_uncategorized.Any() && OptionCategories.SelectedId == AllCategoryId)
+        {
+            var uncategorizedGridContainer = new GridContainer();
+            uncategorizedGridContainer.Columns = 5;
+            uncategorizedGridContainer.VerticalExpand = true;
+
+            CraftsContainer.AddChild(uncategorizedGridContainer);
+            AddRecipeListToGrid(_uncategorized, uncategorizedGridContainer);
+        }
+
+        foreach (var category in _categories)
+        {
+            if (_categoryIndexes.TryGetValue(OptionCategories.SelectedId, out var selectedCategory) &&
+                category.Key != selectedCategory)
+                continue;
+
+            var categoryLabel = new RichTextLabel();
+            categoryLabel.Margin = new Thickness(5);
+            categoryLabel.Text = GetString(category.Key);
+            CraftsContainer.AddChild(categoryLabel);
+
+            var gridContainer = new GridContainer();
+            gridContainer.Columns = 5;
+            gridContainer.VerticalExpand = true;
+            CraftsContainer.AddChild(gridContainer);
+
+            AddRecipeListToGrid(category.Value, gridContainer);
+        }
+    }
+
+    private void AddRecipeListToGrid(IEnumerable<CETradingPositionPrototype> category, GridContainer gridContainer)
+    {
+        foreach (var entry in category)
+        {
+            if (!ProcessSearchFilter(entry))
+                continue;
+
+            if (!ProcessSearchCategoryFilter(entry))
+                continue;
+
+            var control = new CEBuyPositionControl(entry);
+            control.OnSelect += SelectPosition;
+
+            gridContainer.AddChild(control);
+        }
+    }
+
+    private bool ProcessSearchCategoryFilter(CETradingPositionPrototype indexedEntry)
+    {
+        // If we are searching through all categories, we simply skip the current filter
+        if (OptionCategories.SelectedId == AllCategoryId)
+            return true;
+
+        if (!_categoryIndexes.TryGetValue(OptionCategories.SelectedId, out var selectedCategory))
+        {
+            Sawmill.Error($"Non-existent {OptionCategories.SelectedId} category id selected. Filter skipped");
+            return true;
+        }
+
+        if (!_prototype.TryIndex(indexedEntry.Faction, out var indexedFaction))
+        {
+            Sawmill.Error($"Non-existent {indexedEntry.Faction} faction prototype id. Filter skipped");
+            return true;
+        }
+
+        return indexedFaction.Name == selectedCategory;
+    }
+
+    private bool ProcessSearchFilter(CETradingPositionPrototype indexedEntry)
+    {
+        if (_searchFilter == string.Empty)
+            return true;
+
+        var nameFounded = false;
+        var descFounded = false;
+
+        if (indexedEntry.Name is not null)
+            nameFounded = GetString(indexedEntry.Name).Contains(_searchFilter, StringComparison.InvariantCultureIgnoreCase);
+
+        if (indexedEntry.Desc is not null)
+            descFounded = GetString(indexedEntry.Desc).Contains(_searchFilter, StringComparison.InvariantCultureIgnoreCase);
+
+        return nameFounded || descFounded;
     }
 
     private void BuyPressed(BaseButton.ButtonEventArgs obj)
@@ -82,35 +192,15 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
         OnBuy?.Invoke(_selectedPosition.ID);
     }
 
-    private void SelectNode(CENodeTreeElement? node)
+    private void SelectPosition(CETradingPositionPrototype node)
     {
-        if (node == null)
+        if (_cachedUser is null || _cachedPlatform is null)
         {
             DeselectNode();
             return;
         }
 
-        if (_cacheState == null)
-        {
-            Sawmill.Error("Tried to select node without a cached state.");
-            return;
-        }
-
-        if (!_proto.TryIndex<CETradingPositionPrototype>(node.NodeKey, out var indexedPosition))
-            return;
-
-        SelectNode(indexedPosition);
-    }
-
-    private void SelectNode(CETradingPositionPrototype? node)
-    {
-        if (node is null || _cachedUser is null || _cachedPlatform is null)
-        {
-            DeselectNode();
-            return;
-        }
-
-        if (_cacheState == null)
+        if (_cachedState == null)
         {
             Sawmill.Error("Tried to select node without a cached state.");
             return;
@@ -120,7 +210,7 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
 
         Name.Text = _tradingSystem.GetTradeName(_selectedPosition);
         Description.Text = _tradingSystem.GetTradeDescription(_selectedPosition);
-        LocationView.Texture = _selectedPosition.Icon.Frame0();
+        LocationView.SetPrototype(_selectedPosition.Service.GetTexture(_prototype));
 
         BuyPriceHolder.RemoveAllChildren();
         var price = _tradingSystem.GetPrice(_selectedPosition) * _cachedPlatform.Value.Comp.PlatformMarkupProcent ?? 0;
@@ -131,94 +221,81 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
     {
         Name.Text = string.Empty;
         Description.Text = string.Empty;
-        LocationView.Texture = null;
+        LocationView.SetPrototype(null);
     }
 
-    private void CacheSkillProto()
+    private void CacheTradingProto()
     {
-        _allPositions = _proto.EnumeratePrototypes<CETradingPositionPrototype>();
-        UpdateGraphControl();
+        foreach (var proto in _prototype.EnumeratePrototypes<CETradingPositionPrototype>())
+        {
+            _uncategorized.Add(proto);
+        }
+        UpdatePositionVisibility();
     }
 
     public void UpdateState(CETradingPlatformUiState state)
     {
-        _cacheState = state;
+        _cachedState = state;
+
+        _categoryIndexes.Clear();
+        _categories.Clear();
+        _uncategorized.Clear();
+        OptionCategories.Clear();
+        OptionCategories.AddItem(GetString("ce-recipe-category-all"), AllCategoryId);
+
+        if (_player.LocalEntity is null)
+            return;
 
         if (!_e.TryGetComponent<CETradingReputationComponent>(_player.LocalEntity, out var repComp))
             return;
 
         _cachedUser = (_player.LocalEntity.Value, repComp);
 
+        // First, we sort all the recipes by priority and category.
+        var sortedRecipes = _prototype.EnumeratePrototypes<CETradingPositionPrototype>();
+
+        foreach (var entry in sortedRecipes)
+        {
+            if (!_prototype.TryIndex(entry.Faction, out var indexedFaction))
+            {
+                _uncategorized.Add(entry);
+                continue;
+            }
+
+            var factions = repComp.Factions;
+            if (!factions.Contains(indexedFaction))
+                continue;
+
+            if (!_categories.TryGetValue(indexedFaction.Name, out var entries))
+            {
+                entries = new();
+                _categories[indexedFaction.Name] = entries;
+            }
+
+            entries.Add(entry);
+        }
+
         var plat = _e.GetEntity(state.Platform);
         if (!_e.TryGetComponent<CETradingPlatformComponent>(plat, out var platComp))
             return;
 
+        var count = 0;
+        foreach (var category in _categories)
+        {
+            OptionCategories.AddItem(GetString(category.Key), count);
+            _categoryIndexes.Add(count, category.Key);
+            count++;
+        }
+
         _cachedPlatform = (plat, platComp);
-        UpdateGraphControl();
+        UpdatePositionVisibility();
     }
 
-    private void UpdateGraphControl()
-    {
-        if (_cachedUser is null)
-            return;
-
-        HashSet<CENodeTreeElement> nodeTreeElements = new();
-        var edges = new HashSet<(string, string)>();
-        foreach (var position in _allPositions)
-        {
-            if (position.Faction != _selectedFaction)
-                continue;
-
-            var active = _tradingSystem.CanBuyPosition((_cachedUser.Value.Owner, _cachedUser.Value.Comp), position);
-            var node = new CENodeTreeElement(position.ID, true, active, new Vector2(position.UiPosition.X * 50, position.UiPosition.Y * 50) , position.Icon);
-            nodeTreeElements.Add(node);
-        }
-
-        GraphControl.UpdateState(
-            new CENodeTreeUiState(
-                nodeTreeElements,
-                edges: edges,
-                frameIcon: new SpriteSpecifier.Rsi(
-                    new ResPath("/Textures/_CE/Interface/NodeTree/trading.rsi"),
-                    "frame"),
-                hoveredIcon: new SpriteSpecifier.Rsi(
-                    new ResPath("/Textures/_CE/Interface/NodeTree/trading.rsi"),
-                    "hovered"),
-                selectedIcon: new SpriteSpecifier.Rsi(
-                    new ResPath("/Textures/_CE/Interface/NodeTree/trading.rsi"),
-                    "selected"),
-                learnedIcon: new SpriteSpecifier.Rsi(
-                    new ResPath("/Textures/_CE/Interface/NodeTree/trading.rsi"),
-                    "learned"),
-                activeLineColor: new Color(172, 102, 190),
-                lineColor: new Color(83, 40, 121)
-            )
-        );
-
-        //Faction tabs update
-        TreeTabsContainer.RemoveAllChildren();
-        foreach (var faction in _cachedUser.Value.Comp.Contracts)
-        {
-            if (!_proto.TryIndex(faction, out var indexedFaction))
-                continue;
-            var factionButton = new CETradingFactionButtonControl(
-                indexedFaction.Color,
-                Loc.GetString(indexedFaction.Name));
-
-            factionButton.OnPressed += () =>
-            {
-                SelectFaction(indexedFaction);
-            };
-
-            TreeTabsContainer.AddChild(factionButton);
-        }
-        SelectNode(_selectedPosition);
-    }
 
     private void SelectFaction(CETradingFactionPrototype faction)
     {
         _selectedFaction = faction;
-        TreeName.Text = Loc.GetString("ce-trading-faction-prefix") + " " + Loc.GetString(faction.Name);
-        UpdateGraphControl();
+        //TreeName.Text = Loc.GetString("ce-trading-faction-prefix") + " " + Loc.GetString(faction.Name);
+        UpdatePositionVisibility();
     }
 }

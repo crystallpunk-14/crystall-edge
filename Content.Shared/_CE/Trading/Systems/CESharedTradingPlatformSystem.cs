@@ -35,7 +35,7 @@ public abstract partial class CESharedTradingPlatformSystem : EntitySystem
         foreach (var faction in Proto.EnumeratePrototypes<CETradingFactionPrototype>())
         {
             if (faction.RoundStart)
-                ent.Comp.Contracts.Add(faction);
+                ent.Comp.Factions.Add(faction);
         }
         Dirty(ent);
     }
@@ -50,7 +50,7 @@ public abstract partial class CESharedTradingPlatformSystem : EntitySystem
         args.Handled = true;
 
         var repComp = EnsureComp<CETradingReputationComponent>(args.User);
-        repComp.Contracts.Add(ent.Comp.Faction);
+        repComp.Factions.Add(ent.Comp.Faction);
         _audio.PlayLocal(new SoundCollectionSpecifier("CECoinImpact"), args.User, args.User);
         _popup.PopupClient(Loc.GetString("ce-trading-contract-use", ("name", Loc.GetString(indexedFaction.Name))), args.User, args.User);
 
@@ -109,7 +109,7 @@ public abstract partial class CESharedTradingPlatformSystem : EntitySystem
             return false;
         if (!Proto.TryIndex(position, out var indexedPosition))
             return false;
-        if (!user.Comp.Contracts.Contains(indexedPosition.Faction))
+        if (!user.Comp.Factions.Contains(indexedPosition.Faction))
             return false;
 
         return true;
@@ -121,7 +121,7 @@ public abstract partial class CESharedTradingPlatformSystem : EntitySystem
         if (!Resolve(user.Owner, ref user.Comp, false))
             return;
 
-        user.Comp.Contracts.Add(faction);
+        user.Comp.Factions.Add(faction);
 
         Dirty(user);
     }

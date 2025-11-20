@@ -66,7 +66,7 @@ public sealed partial class CESellingPlatformWindow : DefaultWindow
 
         //Faction tabs update
         TreeTabsContainer.RemoveAllChildren();
-        foreach (var faction in _cachedUser.Value.Comp.Contracts)
+        foreach (var faction in _cachedUser.Value.Comp.Factions)
         {
             if (!_proto.TryIndex(faction, out var indexedFaction))
                 continue;
@@ -84,7 +84,7 @@ public sealed partial class CESellingPlatformWindow : DefaultWindow
 
         if (_selectedFaction == null)
         {
-            var firstFaction = _cachedUser.Value.Comp.Contracts.First();
+            var firstFaction = _cachedUser.Value.Comp.Factions.First();
             if (_proto.TryIndex(firstFaction, out var indexedFaction))
                 SelectFaction(indexedFaction);
         }

@@ -201,8 +201,7 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
         platform.Comp.NextBuyTime = Timing.CurTime + TimeSpan.FromSeconds(1f);
         Dirty(platform);
 
-        if (indexedPosition.Service is not null)
-            indexedPosition.Service.Buy(EntityManager, Proto, platform);
+        indexedPosition.Service.Buy(EntityManager, Proto, platform);
 
         _audio.PlayPvs(platform.Comp.BuySound, Transform(platform).Coordinates);
 
