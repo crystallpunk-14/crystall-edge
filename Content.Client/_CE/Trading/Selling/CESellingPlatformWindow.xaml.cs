@@ -110,7 +110,7 @@ public sealed partial class CESellingPlatformWindow : DefaultWindow
         foreach (var request in _tradingSystem.GetRequests(faction))
         {
             var canFullfill = _tradingSystem.CanFulfillRequest(_cachedPlatform.Value, request);
-            var requestControl = new CESellingRequestControl(request, _cachedPlatform.Value.Comp.PlatformMarkupProcent, canFullfill);
+            var requestControl = new CESellingRequestControl(request, canFullfill);
 
             requestControl.OnSellAttempt += () => OnRequestSell?.Invoke((request, faction));
             Requests.AddChild(requestControl);

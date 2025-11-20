@@ -106,18 +106,6 @@ public abstract partial class CESharedTradingPlatformSystem : EntitySystem
         return [];
     }
 
-    public bool CanBuyPosition(Entity<CETradingReputationComponent?> user, ProtoId<CETradingPositionPrototype> position)
-    {
-        if (!Resolve(user.Owner, ref user.Comp, false))
-            return false;
-        if (!Proto.TryIndex(position, out var indexedPosition))
-            return false;
-        if (!user.Comp.Factions.Contains(indexedPosition.Faction))
-            return false;
-
-        return true;
-    }
-
     public void AddContractToPlayer(Entity<CETradingReputationComponent?> user,
         ProtoId<CETradingFactionPrototype> faction)
     {

@@ -18,7 +18,4 @@ public sealed partial class CESellingPlatformComponent : Component
 
     [DataField]
     public EntProtoId SellVisual = "CECashImpact";
-
-    [DataField]
-    public float PlatformMarkupProcent = 1f;
 }

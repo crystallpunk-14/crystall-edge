@@ -178,7 +178,7 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
         LocationView.SetPrototype(_selectedPosition.Service.GetTexture(_prototype));
 
         BuyPriceHolder.RemoveAllChildren();
-        var price = _tradingSystem.GetPrice(_selectedPosition) * _cachedPlatform.Value.Comp.PlatformMarkupProcent ?? 0;
+        var price = _tradingSystem.GetPrice(_selectedPosition) ?? 0;
         BuyPriceHolder.AddChild(new CEPriceControl((int)price));
 
         BuyButton.Disabled = _tradingSystem.GetPrice(node) > _cachedState.Price;

@@ -24,7 +24,6 @@ public sealed partial class CETradingPlatformComponent : Component
     [DataField]
     public EntProtoId BuyVisual = "CECashImpact";
 
-
     [DataField]
-    public float PlatformMarkupProcent = 1f;
+    public float EnergyCost = 10f;
 }

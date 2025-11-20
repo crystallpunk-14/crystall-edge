@@ -53,8 +53,10 @@
         nodeGroupID: MVPower
   - type: BatteryCharger
     voltage: High
+    node: input
   - type: BatteryDischarger
     voltage: Medium
+    node: output
   - type: PointLight
     radius: 2.5
     energy: 2

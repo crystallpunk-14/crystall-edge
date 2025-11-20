@@ -17,7 +17,7 @@ public sealed partial class CESellingRequestControl : Control
 
     public event Action? OnSellAttempt;
 
-    public CESellingRequestControl(ProtoId<CETradingRequestPrototype> request, float markupProcent, bool active)
+    public CESellingRequestControl(ProtoId<CETradingRequestPrototype> request, bool active)
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
@@ -35,9 +35,7 @@ public sealed partial class CESellingRequestControl : Control
         //Coin reward
         PriceHolder.RemoveAllChildren();
         var tradingSys = _entityManager.System<CEClientTradingPlatformSystem>();
-
-        var originalPrice = tradingSys.GetPrice(indexedRequest);
-        var price = (int?)(originalPrice * markupProcent);
+        var price = tradingSys.GetPrice(indexedRequest);
         PriceHolder.AddChild(new CEPriceControl(price ?? 10000));
 
         RequestButton.OnPressed += _ => OnSellAttempt?.Invoke();

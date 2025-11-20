@@ -1,5 +1,6 @@
 using Content.Server._CE.Currency;
 using Content.Server.Cargo.Systems;
+using Content.Server.Power.EntitySystems;
 using Content.Shared._CE.Trading;
 using Content.Shared._CE.Trading.Components;
 using Content.Shared._CE.Trading.Prototypes;
@@ -7,6 +8,7 @@ using Content.Shared._CE.Trading.Systems;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Placeable;
 using Content.Shared.Popups;
+using Content.Shared.Power.Components;
 using Content.Shared.Storage;
 using Content.Shared.Storage.Components;
 using Content.Shared.Tag;
@@ -26,6 +28,7 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
     [Dependency] private readonly CEEconomySystem _economy = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly UserInterfaceSystem _userInterface = default!;
+    [Dependency] private readonly BatterySystem _battery = default!;
 
     public static readonly ProtoId<TagPrototype> CoinTag = "CECoin";
 
@@ -91,7 +94,7 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
             balance += _price.GetPrice(placed);
         }
 
-        _userInterface.SetUiState(ent.Owner, CETradingUiKey.Sell, new CESellingPlatformUiState(GetNetEntity(ent), (int)(balance * ent.Comp.PlatformMarkupProcent)));
+        _userInterface.SetUiState(ent.Owner, CETradingUiKey.Sell, new CESellingPlatformUiState(GetNetEntity(ent), (int)balance));
     }
 
     private void UpdateTradingUIState(Entity<CETradingPlatformComponent> ent)
@@ -109,7 +112,7 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
             balance += _price.GetPrice(placed);
         }
 
-        _userInterface.SetUiState(ent.Owner, CETradingUiKey.Buy, new CETradingPlatformUiState(GetNetEntity(ent), (int)(balance * ent.Comp.PlatformMarkupProcent)));
+        _userInterface.SetUiState(ent.Owner, CETradingUiKey.Buy, new CETradingPlatformUiState(GetNetEntity(ent), (int)balance));
     }
 
     public bool CanSell(EntityUid uid)
@@ -132,63 +135,66 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
 
     private void OnBuyAttempt(Entity<CETradingPlatformComponent> ent, ref CETradingPositionBuyAttempt args)
     {
-        TryBuyPosition(args.Actor, ent, args.Position);
-        UpdateTradingUIState(ent);
-    }
+        if (Timing.CurTime < ent.Comp.NextBuyTime)
+            return;
 
-    public bool TryBuyPosition(Entity<CETradingReputationComponent?> user, Entity<CETradingPlatformComponent> platform, ProtoId<CETradingPositionPrototype> position)
-    {
-        if (Timing.CurTime < platform.Comp.NextBuyTime)
-            return false;
+        if (!Proto.TryIndex(args.Position, out var indexedPosition))
+            return;
 
-        if (!CanBuyPosition(user, position))
-            return false;
+        if (!TryComp<CETradingReputationComponent>(args.Actor, out var repComp))
+            return;
 
-        if (!Proto.TryIndex(position, out var indexedPosition))
-            return false;
+        if (!TryComp<ItemPlacerComponent>(ent, out var itemPlacer))
+            return;
 
-        if (!Resolve(user.Owner, ref user.Comp, false))
-            return false;
+        if (!repComp.Factions.Contains(indexedPosition.Faction))
+            return;
 
-        if (!TryComp<ItemPlacerComponent>(platform, out var itemPlacer))
-            return false;
+        if (TryComp<BatteryComponent>(ent, out var batteryComponent))
+        {
+            if (batteryComponent.CurrentCharge < ent.Comp.EnergyCost)
+                return;
+
+            _battery.TryUseCharge(ent, ent.Comp.EnergyCost, batteryComponent);
+        }
 
         //Top up balance
         double balance = 0;
         foreach (var placedEntity in itemPlacer.PlacedEntities)
         {
-            if (!_tag.HasTag(placedEntity, platform.Comp.CoinTag))
+            if (!_tag.HasTag(placedEntity, ent.Comp.CoinTag))
                 continue;
             balance += _price.GetPrice(placedEntity);
         }
 
-        var price = GetPrice(position) * platform.Comp.PlatformMarkupProcent ?? 10000;
+        var price = GetPrice(args.Position) ?? 10000;
         if (balance < price)
         {
             // Not enough balance to buy the position
-            return false;
+            return;
         }
 
         foreach (var placedEntity in itemPlacer.PlacedEntities)
         {
-            if (!_tag.HasTag(placedEntity, platform.Comp.CoinTag))
+            if (!_tag.HasTag(placedEntity, ent.Comp.CoinTag))
                 continue;
             QueueDel(placedEntity);
         }
 
         balance -= price;
 
-        platform.Comp.NextBuyTime = Timing.CurTime + TimeSpan.FromSeconds(1f);
-        Dirty(platform);
+        ent.Comp.NextBuyTime = Timing.CurTime + TimeSpan.FromSeconds(1f);
+        Dirty(ent);
 
-        indexedPosition.Service.Buy(EntityManager, Proto, platform);
+        indexedPosition.Service.Buy(EntityManager, Proto, ent);
 
-        _audio.PlayPvs(platform.Comp.BuySound, Transform(platform).Coordinates);
+        _audio.PlayPvs(ent.Comp.BuySound, Transform(ent).Coordinates);
 
         //return the change
-        _currency.GenerateMoney(balance, Transform(platform).Coordinates);
-        SpawnAtPosition(platform.Comp.BuyVisual, Transform(platform).Coordinates);
-        return true;
+        _currency.GenerateMoney(balance, Transform(ent).Coordinates);
+        SpawnAtPosition(ent.Comp.BuyVisual, Transform(ent).Coordinates);
+
+        UpdateTradingUIState(ent);
     }
 
     private void OnSellAttempt(Entity<CESellingPlatformComponent> ent, ref CETradingSellAttempt args)
@@ -215,7 +221,7 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
             return;
 
         _audio.PlayPvs(ent.Comp.SellSound, Transform(ent).Coordinates);
-        _currency.GenerateMoney(balance * ent.Comp.PlatformMarkupProcent, Transform(ent).Coordinates);
+        _currency.GenerateMoney(balance, Transform(ent).Coordinates);
         SpawnAtPosition(ent.Comp.SellVisual, Transform(ent).Coordinates);
 
         UpdateSellingUIState(ent);
@@ -241,7 +247,7 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
         }
 
         _audio.PlayPvs(ent.Comp.SellSound, Transform(ent).Coordinates);
-        var price = GetPrice(indexedRequest) * ent.Comp.PlatformMarkupProcent ?? 0;
+        var price = GetPrice(indexedRequest) ?? 0;
         _currency.GenerateMoney(price, Transform(ent).Coordinates);
         SpawnAtPosition(ent.Comp.SellVisual, Transform(ent).Coordinates);
 
