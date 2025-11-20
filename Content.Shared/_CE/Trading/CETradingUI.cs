@@ -10,9 +10,10 @@ public enum CETradingUiKey
 }
 
 [Serializable, NetSerializable]
-public sealed class CETradingPlatformUiState(NetEntity platform) : BoundUserInterfaceState
+public sealed class CETradingPlatformUiState(NetEntity platform, int price) : BoundUserInterfaceState
 {
     public NetEntity Platform = platform;
+    public int Price = price;
 }
 
 [Serializable, NetSerializable]

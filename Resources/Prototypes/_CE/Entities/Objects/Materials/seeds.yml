@@ -11,7 +11,7 @@
     state: seeds
   - type: CESeed
   - type: StackPrice
-    price: 0.2
+    price: 0.5
   - type: Stack
     count: 1
 

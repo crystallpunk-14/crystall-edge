@@ -24,7 +24,6 @@ public abstract partial class CESharedTradingPlatformSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        InitializeUI();
 
         SubscribeLocalEvent<CETradingReputationComponent, MapInitEvent>(OnReputationMapInit);
         SubscribeLocalEvent<CETradingContractComponent, UseInHandEvent>(OnContractUse);

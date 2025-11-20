@@ -11,11 +11,7 @@ using Robust.Client.Player;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
 using Robust.Client.UserInterface.XAML;
-using Robust.Client.Utility;
-using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Timing;
-using Robust.Shared.Utility;
 using static Robust.Shared.Localization.Loc;
 
 namespace Content.Client._CE.Trading;
@@ -35,9 +31,6 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
     private Entity<CETradingReputationComponent>? _cachedUser;
     private Entity<CETradingPlatformComponent>? _cachedPlatform;
 
-    private HashSet<CETradingPositionPrototype> _uncategorized = [];
-
-    private ProtoId<CETradingFactionPrototype>? _selectedFaction;
     private CETradingPositionPrototype? _selectedPosition;
 
     /// <summary>
@@ -57,28 +50,15 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
         IoCManager.InjectDependencies(this);
 
         Sawmill = _log.GetSawmill("ce_trading");
-
-        CacheTradingProto();
-        _prototype.PrototypesReloaded += _ => CacheTradingProto();
-        if (_cachedUser is not null)
-        {
-            foreach (var faction in _cachedUser.Value.Comp.Factions)
-            {
-                if (_prototype.TryIndex(faction, out var indexedFaction))
-                {
-                    SelectFaction(indexedFaction);
-                    break;
-                }
-            }
-        }
-
         _tradingSystem = _e.System<CEClientTradingPlatformSystem>();
+
+        UpdatePositionVisibility();
+        _prototype.PrototypesReloaded += _ => UpdatePositionVisibility();
 
         SearchBar.OnTextChanged += OnSearchChanged;
         BuyButton.OnPressed += BuyPressed;
         OptionCategories.OnItemSelected += OnCategoryItemSelected;
     }
-
 
     private void OnSearchChanged(LineEdit.LineEditEventArgs _)
     {
@@ -99,16 +79,6 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
 
         CraftsContainer.RemoveAllChildren();
 
-        if (_uncategorized.Any() && OptionCategories.SelectedId == AllCategoryId)
-        {
-            var uncategorizedGridContainer = new GridContainer();
-            uncategorizedGridContainer.Columns = 5;
-            uncategorizedGridContainer.VerticalExpand = true;
-
-            CraftsContainer.AddChild(uncategorizedGridContainer);
-            AddRecipeListToGrid(_uncategorized, uncategorizedGridContainer);
-        }
-
         foreach (var category in _categories)
         {
             if (_categoryIndexes.TryGetValue(OptionCategories.SelectedId, out var selectedCategory) &&
@@ -121,7 +91,7 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
             CraftsContainer.AddChild(categoryLabel);
 
             var gridContainer = new GridContainer();
-            gridContainer.Columns = 5;
+            gridContainer.Columns = 10;
             gridContainer.VerticalExpand = true;
             CraftsContainer.AddChild(gridContainer);
 
@@ -131,6 +101,9 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
 
     private void AddRecipeListToGrid(IEnumerable<CETradingPositionPrototype> category, GridContainer gridContainer)
     {
+        if (_cachedState is null)
+            return;
+
         foreach (var entry in category)
         {
             if (!ProcessSearchFilter(entry))
@@ -139,7 +112,8 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
             if (!ProcessSearchCategoryFilter(entry))
                 continue;
 
-            var control = new CEBuyPositionControl(entry);
+            var active = _tradingSystem.GetPrice(entry) <= _cachedState.Price;
+            var control = new CEBuyPositionControl(entry, active);
             control.OnSelect += SelectPosition;
 
             gridContainer.AddChild(control);
@@ -172,16 +146,7 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
         if (_searchFilter == string.Empty)
             return true;
 
-        var nameFounded = false;
-        var descFounded = false;
-
-        if (indexedEntry.Name is not null)
-            nameFounded = GetString(indexedEntry.Name).Contains(_searchFilter, StringComparison.InvariantCultureIgnoreCase);
-
-        if (indexedEntry.Desc is not null)
-            descFounded = GetString(indexedEntry.Desc).Contains(_searchFilter, StringComparison.InvariantCultureIgnoreCase);
-
-        return nameFounded || descFounded;
+        return _tradingSystem.GetTradeName(indexedEntry).Contains(_searchFilter);
     }
 
     private void BuyPressed(BaseButton.ButtonEventArgs obj)
@@ -215,6 +180,8 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
         BuyPriceHolder.RemoveAllChildren();
         var price = _tradingSystem.GetPrice(_selectedPosition) * _cachedPlatform.Value.Comp.PlatformMarkupProcent ?? 0;
         BuyPriceHolder.AddChild(new CEPriceControl((int)price));
+
+        BuyButton.Disabled = _tradingSystem.GetPrice(node) > _cachedState.Price;
     }
 
     private void DeselectNode()
@@ -224,22 +191,12 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
         LocationView.SetPrototype(null);
     }
 
-    private void CacheTradingProto()
-    {
-        foreach (var proto in _prototype.EnumeratePrototypes<CETradingPositionPrototype>())
-        {
-            _uncategorized.Add(proto);
-        }
-        UpdatePositionVisibility();
-    }
-
     public void UpdateState(CETradingPlatformUiState state)
     {
         _cachedState = state;
 
         _categoryIndexes.Clear();
         _categories.Clear();
-        _uncategorized.Clear();
         OptionCategories.Clear();
         OptionCategories.AddItem(GetString("ce-recipe-category-all"), AllCategoryId);
 
@@ -252,15 +209,13 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
         _cachedUser = (_player.LocalEntity.Value, repComp);
 
         // First, we sort all the recipes by priority and category.
-        var sortedRecipes = _prototype.EnumeratePrototypes<CETradingPositionPrototype>();
+        var sortedRecipes = _prototype.EnumeratePrototypes<CETradingPositionPrototype>()
+            .OrderBy(e => _tradingSystem.GetPrice(e));
 
         foreach (var entry in sortedRecipes)
         {
             if (!_prototype.TryIndex(entry.Faction, out var indexedFaction))
-            {
-                _uncategorized.Add(entry);
                 continue;
-            }
 
             var factions = repComp.Factions;
             if (!factions.Contains(indexedFaction))
@@ -288,14 +243,6 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
         }
 
         _cachedPlatform = (plat, platComp);
-        UpdatePositionVisibility();
-    }
-
-
-    private void SelectFaction(CETradingFactionPrototype faction)
-    {
-        _selectedFaction = faction;
-        //TreeName.Text = Loc.GetString("ce-trading-faction-prefix") + " " + Loc.GetString(faction.Name);
         UpdatePositionVisibility();
     }
 }

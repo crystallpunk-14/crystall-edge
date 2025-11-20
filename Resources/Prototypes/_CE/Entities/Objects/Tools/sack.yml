@@ -38,3 +38,6 @@
   - type: EyeProtection
   - type: IngestionBlocker
   - type: Blindfold
+  - type: PhysicalComposition
+    materialComposition:
+      CECloth: 30

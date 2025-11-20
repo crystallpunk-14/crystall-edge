@@ -7,7 +7,7 @@
   - type: Item
     size: Normal
   - type: StaticPrice
-    price: 5
+    price: 15
   - type: CESeed
     plantingTime: 4
 

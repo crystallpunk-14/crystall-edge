@@ -39,6 +39,15 @@ public sealed partial class CEWorkbenchRecipeControl : Control
         Button.OnPressed += _ => OnSelect?.Invoke(entry, _recipePrototype);
 
         UpdateView();
+        UpdateColor();
+    }
+
+    private void UpdateColor()
+    {
+        if (_craftable)
+            return;
+
+        Button.ModulateSelfOverride = Color.FromHex("#1f2124");
     }
 
     private void UpdateView()

@@ -1,4 +1,11 @@
 - type: tradingPosition
+  id: CEWoodenPlanks10
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEWoodenPlanks20
+    count: 1
+
+- type: tradingPosition
   id: CEFloorCarpetItemBlue10
   faction: HomeDecor
   service: !type:CEBuyItemsService

@@ -33,9 +33,6 @@
                                 <Label Name="Name" Access="Public" StyleClasses="LabelHeadingBigger" VAlign="Center"
                                        HorizontalExpand="True" HorizontalAlignment="Center" />
                             </BoxContainer>
-                            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" HorizontalAlignment="Center">
-                                <TextureRect VerticalAlignment="Center" Margin="20 0 5 0" HorizontalAlignment="Left" TextureScale="2, 2" TexturePath="/Textures/_CE/Interface/Misc/star.png"/>
-                            </BoxContainer>
                             <!-- Description -->
                             <BoxContainer HorizontalExpand="True">
                                 <RichTextLabel Name="Description" HorizontalExpand="True" Access="Public" />

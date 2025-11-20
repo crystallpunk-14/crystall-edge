@@ -13,14 +13,26 @@ public sealed partial class CEBuyPositionControl : Control
 
     public event Action<CETradingPositionPrototype>? OnSelect;
 
-    public CEBuyPositionControl(CETradingPositionPrototype entry)
+    private bool _active = false;
+
+    public CEBuyPositionControl(CETradingPositionPrototype entry, bool active)
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
 
         Button.OnPressed += _ => OnSelect?.Invoke(entry);
+        _active = active;
 
         UpdateView(entry);
+        UpdateColor();
+    }
+
+    private void UpdateColor()
+    {
+        if (_active)
+            return;
+
+        Button.ModulateSelfOverride = Color.FromHex("#1f2124");
     }
 
     private void UpdateView(CETradingPositionPrototype entry)

@@ -12,8 +12,6 @@ ce-trading-ui-cooldown = Cooldown:
 ce-trading-faction-prefix = Trading with:
 ce-trading-faction-request-prefix = Requests from:
 
-ce-trading-failure-popup-money = Not enough funds on the platform!
-
 ce-trading-contract-use = Trade with "{$name}" unlocked!
 
 ce-trading-empty-price = None!

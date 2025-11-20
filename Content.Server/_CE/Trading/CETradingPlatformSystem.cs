@@ -27,18 +27,168 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly UserInterfaceSystem _userInterface = default!;
 
+    public static readonly ProtoId<TagPrototype> CoinTag = "CECoin";
+
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CETradingPlatformComponent, CETradingPositionBuyAttempt>(OnBuyAttempt);
-
         SubscribeLocalEvent<CESellingPlatformComponent, BeforeActivatableUIOpenEvent>(OnBeforeSellingUIOpen);
-        SubscribeLocalEvent<CESellingPlatformComponent, ItemPlacedEvent>(OnItemPlaced);
-        SubscribeLocalEvent<CESellingPlatformComponent, ItemRemovedEvent>(OnItemRemoved);
+        SubscribeLocalEvent<CETradingPlatformComponent, BeforeActivatableUIOpenEvent>(OnBeforeTradingUIOpen);
 
+        SubscribeLocalEvent<CESellingPlatformComponent, ItemPlacedEvent>(OnSellItemPlaced);
+        SubscribeLocalEvent<CESellingPlatformComponent, ItemRemovedEvent>(OnSellItemRemoved);
+        SubscribeLocalEvent<CETradingPlatformComponent, ItemPlacedEvent>(OnBuyItemPlaced);
+        SubscribeLocalEvent<CETradingPlatformComponent, ItemRemovedEvent>(OnBuyItemRemoved);
+
+        SubscribeLocalEvent<CETradingPlatformComponent, CETradingPositionBuyAttempt>(OnBuyAttempt);
         SubscribeLocalEvent<CESellingPlatformComponent, CETradingSellAttempt>(OnSellAttempt);
         SubscribeLocalEvent<CESellingPlatformComponent, CETradingRequestSellAttempt>(OnSellRequestAttempt);
+    }
+
+    private void OnSellItemRemoved(Entity<CESellingPlatformComponent> ent, ref ItemRemovedEvent args)
+    {
+        UpdateSellingUIState(ent);
+    }
+
+    private void OnSellItemPlaced(Entity<CESellingPlatformComponent> ent, ref ItemPlacedEvent args)
+    {
+        UpdateSellingUIState(ent);
+    }
+
+    private void OnBuyItemPlaced(Entity<CETradingPlatformComponent> ent, ref ItemPlacedEvent args)
+    {
+        UpdateTradingUIState(ent);
+    }
+
+    private void OnBuyItemRemoved(Entity<CETradingPlatformComponent> ent, ref ItemRemovedEvent args)
+    {
+        UpdateTradingUIState(ent);
+    }
+
+    private void OnBeforeSellingUIOpen(Entity<CESellingPlatformComponent> ent, ref BeforeActivatableUIOpenEvent args)
+    {
+        UpdateSellingUIState(ent);
+    }
+
+    private void OnBeforeTradingUIOpen(Entity<CETradingPlatformComponent> ent, ref BeforeActivatableUIOpenEvent args)
+    {
+        UpdateTradingUIState(ent);
+    }
+
+    private void UpdateSellingUIState(Entity<CESellingPlatformComponent> ent)
+    {
+        if (!TryComp<ItemPlacerComponent>(ent, out var itemPlacer))
+            return;
+
+        //Calculate
+        double balance = 0;
+        foreach (var placed in itemPlacer.PlacedEntities)
+        {
+            if (!CanSell(placed))
+                continue;
+
+            balance += _price.GetPrice(placed);
+        }
+
+        _userInterface.SetUiState(ent.Owner, CETradingUiKey.Sell, new CESellingPlatformUiState(GetNetEntity(ent), (int)(balance * ent.Comp.PlatformMarkupProcent)));
+    }
+
+    private void UpdateTradingUIState(Entity<CETradingPlatformComponent> ent)
+    {
+        if (!TryComp<ItemPlacerComponent>(ent, out var itemPlacer))
+            return;
+
+        //Calculate
+        double balance = 0;
+        foreach (var placed in itemPlacer.PlacedEntities)
+        {
+            if (!_tag.HasTag(placed, CoinTag))
+                continue;
+
+            balance += _price.GetPrice(placed);
+        }
+
+        _userInterface.SetUiState(ent.Owner, CETradingUiKey.Buy, new CETradingPlatformUiState(GetNetEntity(ent), (int)(balance * ent.Comp.PlatformMarkupProcent)));
+    }
+
+    public bool CanSell(EntityUid uid)
+    {
+        if (_tag.HasTag(uid, CoinTag))
+            return false;
+        if (HasComp<MobStateComponent>(uid))
+            return false;
+        if (HasComp<EntityStorageComponent>(uid))
+            return false;
+        if (HasComp<StorageComponent>(uid))
+            return false;
+
+        var proto = MetaData(uid).EntityPrototype;
+        if (proto != null && !proto.ID.StartsWith("CE")) //Shitfix, we dont wanna sell anything vanilla (like mob organs)
+            return false;
+
+        return true;
+    }
+
+    private void OnBuyAttempt(Entity<CETradingPlatformComponent> ent, ref CETradingPositionBuyAttempt args)
+    {
+        TryBuyPosition(args.Actor, ent, args.Position);
+        UpdateTradingUIState(ent);
+    }
+
+    public bool TryBuyPosition(Entity<CETradingReputationComponent?> user, Entity<CETradingPlatformComponent> platform, ProtoId<CETradingPositionPrototype> position)
+    {
+        if (Timing.CurTime < platform.Comp.NextBuyTime)
+            return false;
+
+        if (!CanBuyPosition(user, position))
+            return false;
+
+        if (!Proto.TryIndex(position, out var indexedPosition))
+            return false;
+
+        if (!Resolve(user.Owner, ref user.Comp, false))
+            return false;
+
+        if (!TryComp<ItemPlacerComponent>(platform, out var itemPlacer))
+            return false;
+
+        //Top up balance
+        double balance = 0;
+        foreach (var placedEntity in itemPlacer.PlacedEntities)
+        {
+            if (!_tag.HasTag(placedEntity, platform.Comp.CoinTag))
+                continue;
+            balance += _price.GetPrice(placedEntity);
+        }
+
+        var price = GetPrice(position) * platform.Comp.PlatformMarkupProcent ?? 10000;
+        if (balance < price)
+        {
+            // Not enough balance to buy the position
+            return false;
+        }
+
+        foreach (var placedEntity in itemPlacer.PlacedEntities)
+        {
+            if (!_tag.HasTag(placedEntity, platform.Comp.CoinTag))
+                continue;
+            QueueDel(placedEntity);
+        }
+
+        balance -= price;
+
+        platform.Comp.NextBuyTime = Timing.CurTime + TimeSpan.FromSeconds(1f);
+        Dirty(platform);
+
+        indexedPosition.Service.Buy(EntityManager, Proto, platform);
+
+        _audio.PlayPvs(platform.Comp.BuySound, Transform(platform).Coordinates);
+
+        //return the change
+        _currency.GenerateMoney(balance, Transform(platform).Coordinates);
+        SpawnAtPosition(platform.Comp.BuyVisual, Transform(platform).Coordinates);
+        return true;
     }
 
     private void OnSellAttempt(Entity<CESellingPlatformComponent> ent, ref CETradingSellAttempt args)
@@ -96,118 +246,5 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
         SpawnAtPosition(ent.Comp.SellVisual, Transform(ent).Coordinates);
 
         UpdateSellingUIState(ent);
-    }
-
-    private void OnItemRemoved(Entity<CESellingPlatformComponent> ent, ref ItemRemovedEvent args)
-    {
-        UpdateSellingUIState(ent);
-    }
-
-    private void OnItemPlaced(Entity<CESellingPlatformComponent> ent, ref ItemPlacedEvent args)
-    {
-        UpdateSellingUIState(ent);
-    }
-
-    private void OnBuyAttempt(Entity<CETradingPlatformComponent> ent, ref CETradingPositionBuyAttempt args)
-    {
-        TryBuyPosition(args.Actor, ent, args.Position);
-        UpdateTradingUIState(ent, args.Actor);
-    }
-
-    private void OnBeforeSellingUIOpen(Entity<CESellingPlatformComponent> ent, ref BeforeActivatableUIOpenEvent args)
-    {
-        UpdateSellingUIState(ent);
-    }
-
-    private void UpdateSellingUIState(Entity<CESellingPlatformComponent> ent)
-    {
-        if (!TryComp<ItemPlacerComponent>(ent, out var itemPlacer))
-            return;
-
-        //Calculate
-        double balance = 0;
-        foreach (var placed in itemPlacer.PlacedEntities)
-        {
-            if (!CanSell(placed))
-                continue;
-
-            balance += _price.GetPrice(placed);
-        }
-
-        _userInterface.SetUiState(ent.Owner, CETradingUiKey.Sell, new CESellingPlatformUiState(GetNetEntity(ent), (int)(balance * ent.Comp.PlatformMarkupProcent)));
-    }
-
-    public bool CanSell(EntityUid uid)
-    {
-        if (_tag.HasTag(uid, "CECoin")) //Boo hardcoding
-            return false;
-        if (HasComp<MobStateComponent>(uid))
-            return false;
-        if (HasComp<EntityStorageComponent>(uid))
-            return false;
-        if (HasComp<StorageComponent>(uid))
-            return false;
-
-        var proto = MetaData(uid).EntityPrototype;
-        if (proto != null && !proto.ID.StartsWith("CE")) //Shitfix, we dont wanna sell anything vanilla (like mob organs)
-            return false;
-
-        return true;
-    }
-
-    public bool TryBuyPosition(Entity<CETradingReputationComponent?> user, Entity<CETradingPlatformComponent> platform, ProtoId<CETradingPositionPrototype> position)
-    {
-        if (Timing.CurTime < platform.Comp.NextBuyTime)
-            return false;
-
-        if (!CanBuyPosition(user, position))
-            return false;
-
-        if (!Proto.TryIndex(position, out var indexedPosition))
-            return false;
-
-        if (!Resolve(user.Owner, ref user.Comp, false))
-            return false;
-
-        if (!TryComp<ItemPlacerComponent>(platform, out var itemPlacer))
-            return false;
-
-        //Top up balance
-        double balance = 0;
-        foreach (var placedEntity in itemPlacer.PlacedEntities)
-        {
-            if (!_tag.HasTag(placedEntity, platform.Comp.CoinTag))
-                continue;
-            balance += _price.GetPrice(placedEntity);
-        }
-
-        var price = GetPrice(position) * platform.Comp.PlatformMarkupProcent ?? 10000;
-        if (balance < price)
-        {
-            // Not enough balance to buy the position
-            _popup.PopupEntity(Loc.GetString("ce-trading-failure-popup-money"), platform);
-            return false;
-        }
-
-        foreach (var placedEntity in itemPlacer.PlacedEntities)
-        {
-            if (!_tag.HasTag(placedEntity, platform.Comp.CoinTag))
-                continue;
-            QueueDel(placedEntity);
-        }
-
-        balance -= price;
-
-        platform.Comp.NextBuyTime = Timing.CurTime + TimeSpan.FromSeconds(1f);
-        Dirty(platform);
-
-        indexedPosition.Service.Buy(EntityManager, Proto, platform);
-
-        _audio.PlayPvs(platform.Comp.BuySound, Transform(platform).Coordinates);
-
-        //return the change
-        _currency.GenerateMoney(balance, Transform(platform).Coordinates);
-        SpawnAtPosition(platform.Comp.BuyVisual, Transform(platform).Coordinates);
-        return true;
     }
 }

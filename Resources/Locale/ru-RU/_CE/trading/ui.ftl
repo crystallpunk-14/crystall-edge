@@ -12,8 +12,6 @@ ce-trading-ui-cooldown = Перезарядка:
 ce-trading-faction-prefix = Торговля с:
 ce-trading-faction-request-prefix = Запросы от:
 
-ce-trading-failure-popup-money = Недостаточно средств на платформе!
-
 ce-trading-contract-use = Торговля с "{$name}" разблокирована!
 
 ce-trading-empty-price = Отсутствует!
