@@ -249,6 +249,14 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
         if (!_economy.TryRerollRequest(args.Faction, args.Request))
             return;
 
+        if (TryComp<BatteryComponent>(ent, out var batteryComponent))
+        {
+            if (batteryComponent.CurrentCharge < ent.Comp.EnergyCost)
+                return;
+
+            _battery.TryUseCharge(ent, ent.Comp.EnergyCost, batteryComponent);
+        }
+
         foreach (var req in indexedRequest.Requirements)
         {
             req.PostCraft(EntityManager, Proto, itemPlacer.PlacedEntities);
