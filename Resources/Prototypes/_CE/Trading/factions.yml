@@ -9,3 +9,9 @@
   color: "#3cb371" #TODO
   name: ce-trade-faction-home-decor
   roundStart: true
+
+- type: tradingFaction
+  id: Tailors
+  color: "#3cb371" #TODO
+  name: ce-trade-faction-tailors
+  roundStart: true
