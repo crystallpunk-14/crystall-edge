@@ -44,8 +44,8 @@
         - LowImpassable
         hard: false
   - type: Battery
-    maxCharge: 50
-    startingCharge: 0
+    maxCharge: 10
+    startingCharge: 10
   - type: ExaminableBattery
   - type: BatteryCharger
     voltage: Medium
@@ -103,6 +103,23 @@
         - MidImpassable
         - LowImpassable
         hard: false
+  - type: Battery
+    maxCharge: 10
+    startingCharge: 10
+  - type: ExaminableBattery
+  - type: BatteryCharger
+    voltage: Medium
+    node: input
+  - type: PowerNetworkBattery
+    maxSupply: 0
+    supplyRampTolerance: 1
+    maxChargeRate: 2
+  - type: NodeContainer
+    examinable: true
+    nodes:
+      input:
+        !type:CableDeviceNode
+        nodeGroupID: MVPower
 
 #- type: entity
 #  parent: BaseStructure

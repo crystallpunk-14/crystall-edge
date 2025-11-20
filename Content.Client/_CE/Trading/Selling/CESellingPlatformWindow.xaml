@@ -1,5 +1,6 @@
 <DefaultWindow xmlns="https://spacestation14.io"
                xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+               xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls"
                Name="Window"
                Title="{Loc 'ce-trading-ui-title'}"
                MinSize="400 300"
@@ -10,6 +11,17 @@
         <BoxContainer Margin="3" MinWidth="300" Orientation="Vertical" HorizontalExpand="False" VerticalExpand="True">
             <PanelContainer Margin="3" HorizontalExpand="True" VerticalExpand="True" RectClipContent="True">
                 <BoxContainer Margin="8" VerticalExpand="True" HorizontalExpand="True" VerticalAlignment="Bottom" Orientation="Vertical">
+
+                    <customControls:HSeparator StyleClasses="HighDivider" Margin="0 15 0 10" />
+
+                    <Label Name="EnergyLabel" Text="???" HorizontalAlignment="Center"/>
+                    <ProgressBar Name="EnergyProgressBar"
+                                 MinValue="0"
+                                 MaxValue="1"
+                                 SetHeight="20"
+                                 Margin="5 10 5 10">
+                    </ProgressBar>
+
                     <BoxContainer SetWidth="100" Name="SellPriceHolder" VerticalAlignment="Center" HorizontalExpand="True" HorizontalAlignment="Center" />
                     <SpriteView Name="SpriteView" Scale="4 4" Access="Public"/>
                     <Button Name="SellButton" StyleClasses="OpenBoth" Access="Public" MaxWidth="100" SetHeight="30">

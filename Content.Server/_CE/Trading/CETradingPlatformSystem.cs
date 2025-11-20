@@ -202,6 +202,14 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
         if (!TryComp<ItemPlacerComponent>(ent, out var itemPlacer))
             return;
 
+        if (TryComp<BatteryComponent>(ent, out var batteryComponent))
+        {
+            if (batteryComponent.CurrentCharge < ent.Comp.EnergyCost)
+                return;
+
+            _battery.TryUseCharge(ent, ent.Comp.EnergyCost, batteryComponent);
+        }
+
         double balance = 0;
         foreach (var placed in itemPlacer.PlacedEntities)
         {
