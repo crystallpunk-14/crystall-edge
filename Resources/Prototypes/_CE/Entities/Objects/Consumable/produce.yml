@@ -8,7 +8,7 @@
   - type: Item
     size: Tiny
   - type: Sprite
-    sprite: _CE/Objects/Consumable/wheat.rsi
+    sprite: _CE/Objects/Consumable/Food/wheat.rsi
     layers:
       - state: base1
         map: ["random"]
@@ -44,7 +44,7 @@
   - type: Item
     size: Tiny
   - type: Sprite
-    sprite: _CE/Objects/Consumable/cotton.rsi
+    sprite: _CE/Objects/Consumable/Food/cotton.rsi
     layers:
       - state: base1
         map: ["random"]
@@ -81,7 +81,7 @@
     flavors:
       - cabbage
   - type: Sprite
-    sprite: _CE/Objects/Consumable/cabbage.rsi
+    sprite: _CE/Objects/Consumable/Food/cabbage.rsi
     layers:
       - state: base1
         map: [ "random" ]
@@ -126,7 +126,7 @@
     flavors:
       - cabbage
   - type: Sprite
-    sprite: _CE/Objects/Consumable/cabbage.rsi
+    sprite: _CE/Objects/Consumable/Food/cabbage.rsi
     layers:
       - state: slice1
         map: [ "random" ]
@@ -165,7 +165,7 @@
     flavors:
       - pumpkin
   - type: Sprite
-    sprite: _CE/Objects/Consumable/pumpkin.rsi
+    sprite: _CE/Objects/Consumable/Food/pumpkin.rsi
     layers:
       - state: base1
         map: [ "random" ]
@@ -210,7 +210,7 @@
     flavors:
       - pumpkin
   - type: Sprite
-    sprite: _CE/Objects/Consumable/pumpkin.rsi
+    sprite: _CE/Objects/Consumable/Food/pumpkin.rsi
     layers:
       - state: slice1
         map: [ "random" ]
@@ -248,7 +248,7 @@
     flavors:
       - potatoes
   - type: Sprite
-    sprite: _CE/Objects/Consumable/potato.rsi
+    sprite: _CE/Objects/Consumable/Food/potato.rsi
     layers:
       - state: base1
         map: [ "random" ]
@@ -298,7 +298,7 @@
       - CEWater
       - CEcucumber
   - type: Sprite
-    sprite: _CE/Objects/Consumable/cucumber.rsi
+    sprite: _CE/Objects/Consumable/Food/cucumber.rsi
     layers:
       - state: base1
         map: [ "random" ]
@@ -345,7 +345,7 @@
       - CEWater
       - CEcucumber
   - type: Sprite
-    sprite: _CE/Objects/Consumable/cucumber.rsi
+    sprite: _CE/Objects/Consumable/Food/cucumber.rsi
     layers:
       - state: slice1
   - type: SolutionContainerManager
@@ -376,7 +376,7 @@
     flavors:
       - tomato
   - type: Sprite
-    sprite: _CE/Objects/Consumable/tomato.rsi
+    sprite: _CE/Objects/Consumable/Food/tomato.rsi
     layers:
       - state: base1
         map: [ "random" ]
@@ -447,7 +447,7 @@
     flavors:
       - tomato
   - type: Sprite
-    sprite: _CE/Objects/Consumable/tomato.rsi
+    sprite: _CE/Objects/Consumable/Food/tomato.rsi
     layers:
       - state: slice1
         map: [ "random" ]
@@ -490,7 +490,7 @@
         - ReagentId: Vitamin
           Quantity: 2.29
   - type: Sprite
-    sprite: _CE/Objects/Consumable/apple.rsi
+    sprite: _CE/Objects/Consumable/Food/apple.rsi
     layers:
       - state: base1
         map: [ "random" ]
@@ -535,7 +535,7 @@
     flavors:
       - apple
   - type: Sprite
-    sprite: _CE/Objects/Consumable/apple.rsi
+    sprite: _CE/Objects/Consumable/Food/apple.rsi
     layers:
       - state: slice1
         map: [ "random" ]
@@ -570,7 +570,7 @@
     flavors:
       - peppery
   - type: Sprite
-    sprite: _CE/Objects/Consumable/pepper.rsi
+    sprite: _CE/Objects/Consumable/Food/pepper.rsi
     layers:
       - state: base1
         map: [ "random" ]
@@ -613,7 +613,7 @@
     flavors:
       - peppery
   - type: Sprite
-    sprite: _CE/Objects/Consumable/pepper.rsi
+    sprite: _CE/Objects/Consumable/Food/pepper.rsi
     layers:
       - state: slice1
   - type: SolutionContainerManager
@@ -642,7 +642,7 @@
     flavors:
       - onion
   - type: Sprite
-    sprite: _CE/Objects/Consumable/onion.rsi
+    sprite: _CE/Objects/Consumable/Food/onion.rsi
     layers:
       - state: base1
         map: [ "random" ]
@@ -686,7 +686,7 @@
     flavors:
       - onion
   - type: Sprite
-    sprite: _CE/Objects/Consumable/onion.rsi
+    sprite: _CE/Objects/Consumable/Food/onion.rsi
     layers:
       - state: slice1
   - type: SolutionContainerManager
@@ -714,7 +714,7 @@
   - type: Item
     size: Tiny
   - type: Sprite
-    sprite: _CE/Objects/Consumable/chanterelle.rsi
+    sprite: _CE/Objects/Consumable/Food/chanterelle.rsi
     layers:
       - state: base1
         map: [ "random" ]
@@ -755,7 +755,7 @@
     shape:
     - 0, 0, 0, 1
   - type: Sprite
-    sprite: _CE/Objects/Consumable/sunflower.rsi
+    sprite: _CE/Objects/Consumable/Food/sunflower.rsi
     layers:
       - state: base1
         map: [ "random" ]
