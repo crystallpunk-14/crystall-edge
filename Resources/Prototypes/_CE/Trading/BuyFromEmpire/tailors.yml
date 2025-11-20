@@ -1,4 +1,18 @@
 - type: tradingPosition
+  id: CETradeContractTailors
+  faction: Tailors
+  service: !type:CEBuyItemsService
+    product: CETradeContractTailors
+    count: 1
+
+- type: tradingPosition
+  id: CECloth5
+  faction: Tailors
+  service: !type:CEBuyItemsService
+    product: CECloth5
+    count: 1
+
+- type: tradingPosition
   id: CEClothingCapeFur
   faction: Tailors
   service: !type:CEBuyItemsService

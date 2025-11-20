@@ -13,5 +13,6 @@ ce-trading-faction-prefix = Торговля с:
 ce-trading-faction-request-prefix = Запросы от:
 
 ce-trading-contract-use = Торговля с "{$name}" разблокирована!
+ce-trading-contract-already-have = Вы уже заключили контракт с "{$name}"!
 
 ce-trading-empty-price = Отсутствует!

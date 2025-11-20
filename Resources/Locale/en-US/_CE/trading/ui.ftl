@@ -13,5 +13,6 @@ ce-trading-faction-prefix = Trading with:
 ce-trading-faction-request-prefix = Requests from:
 
 ce-trading-contract-use = Trade with "{$name}" unlocked!
+ce-trading-contract-already-have = You already have a contract with "{$name}"!
 
 ce-trading-empty-price = None!

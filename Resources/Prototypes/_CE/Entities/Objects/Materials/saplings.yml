@@ -18,7 +18,7 @@
   parent: CESaplingBase
   components:
   - type: Sprite
-    sprite: _CE/Objects/Consumable/apple.rsi
+    sprite: _CE/Objects/Consumable/Food/apple.rsi
     state: seeds
   - type: CESeed
     plantProto: CEPlantAppleTree

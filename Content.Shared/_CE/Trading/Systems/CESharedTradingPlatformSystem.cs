@@ -43,19 +43,23 @@ public abstract partial class CESharedTradingPlatformSystem : EntitySystem
     {
         if (args.Handled)
             return;
-        if (!Proto.TryIndex(ent.Comp.Faction, out var indexedFaction))
+        if (!Proto.Resolve(ent.Comp.Faction, out var indexedFaction))
             return;
+        if (!TryComp<CETradingReputationComponent>(args.User, out var repComp))
+            return;
+        if (repComp.Factions.Contains(ent.Comp.Faction))
+        {
+            _popup.PopupClient(Loc.GetString("ce-trading-contract-already-have", ("name", Loc.GetString(indexedFaction.Name))), args.User, args.User);
+            return;
+        }
 
-        args.Handled = true;
-
-        var repComp = EnsureComp<CETradingReputationComponent>(args.User);
         repComp.Factions.Add(ent.Comp.Faction);
-        _audio.PlayLocal(new SoundCollectionSpecifier("CECoinImpact"), args.User, args.User);
+        _audio.PlayLocal(ent.Comp.UseSound, args.User, args.User);
         _popup.PopupClient(Loc.GetString("ce-trading-contract-use", ("name", Loc.GetString(indexedFaction.Name))), args.User, args.User);
 
+        args.Handled = true;
         PredictedQueueDel(ent);
     }
-
 
     public int? GetPrice(ProtoId<CETradingPositionPrototype> position)
     {
