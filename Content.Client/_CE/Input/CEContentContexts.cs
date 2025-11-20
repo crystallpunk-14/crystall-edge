@@ -1,0 +1,16 @@
+using Content.Shared._CE.Input;
+using Robust.Shared.Input;
+
+namespace Content.Client._CE.Input
+{
+    public static class CEContentContexts
+    {
+        public static void SetupContexts(IInputContextContainer contexts)
+        {
+            var human = contexts.GetContext("human");
+            human.AddFunction(CEContentKeyFunctions.SelectedZLayerDown);
+            human.AddFunction(CEContentKeyFunctions.SelectedZLayerUp);
+            human.AddFunction(CEContentKeyFunctions.ToggleZLayerRelation);
+        }
+    }
+}

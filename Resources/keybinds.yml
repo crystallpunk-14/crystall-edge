@@ -643,3 +643,14 @@ binds:
   type: State
   key: MouseRight
   canFocus: true
+- function: SelectedZLayerUp
+  type: State
+  key: NumpadNum6
+  mod1: Alt
+- function: SelectedZLayerDown
+  type: State
+  key: NumpadNum4
+  mod1: Alt
+- function: ToggleZLayerRelation
+  type: State
+  key: O
