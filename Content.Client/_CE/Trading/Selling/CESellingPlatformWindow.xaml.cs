@@ -66,7 +66,7 @@ public sealed partial class CESellingPlatformWindow : DefaultWindow
 
         if (_cachedUser.Value.Comp.Factions.Count == 0)
             return;
-        
+
         //Faction tabs update
         TreeTabsContainer.RemoveAllChildren();
         foreach (var faction in _cachedUser.Value.Comp.Factions)
