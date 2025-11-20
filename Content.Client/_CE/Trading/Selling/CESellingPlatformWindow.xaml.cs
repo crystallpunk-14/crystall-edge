@@ -64,6 +64,9 @@ public sealed partial class CESellingPlatformWindow : DefaultWindow
         SellPriceHolder.AddChild(new CEPriceControl(state.Price));
         SellButton.Disabled = state.Price == 0;
 
+        if (_cachedUser.Value.Comp.Factions.Count == 0)
+            return;
+        
         //Faction tabs update
         TreeTabsContainer.RemoveAllChildren();
         foreach (var faction in _cachedUser.Value.Comp.Factions)
