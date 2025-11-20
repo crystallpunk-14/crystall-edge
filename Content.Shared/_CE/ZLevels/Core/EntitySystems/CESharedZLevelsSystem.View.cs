@@ -11,7 +11,9 @@ public abstract partial class CESharedZLevelsSystem
     private void InitView()
     {
         SubscribeLocalEvent<CEZLevelViewerComponent, MoveEvent>(OnViewerMove);
+        SubscribeLocalEvent<CEZLevelViewerComponent, ChangeViewedZLayerEvent>(OnChangeSelectedZLayer);
         SubscribeLocalEvent<CEZLevelViewerComponent, CEToggleZLevelLookUpAction>(OnToggleLookUp);
+
     }
 
     protected virtual void OnViewerMove(Entity<CEZLevelViewerComponent> ent, ref MoveEvent args)
@@ -62,6 +64,20 @@ public abstract partial class CESharedZLevelsSystem
         var tileDef = (ContentTileDefinition)TilDefMan[(int)tileRef.Tile.TypeId];
 
         return !tileDef.Transparent;
+    }
+
+    private void OnChangeSelectedZLayer(Entity<CEZLevelViewerComponent> ent, ref ChangeViewedZLayerEvent args)
+    {
+        TrySetViewedZLevel(ent, args.NewValue);
+    }
+    private static void SetViewedZLevel(Entity<CEZLevelViewerComponent> ent, int value)
+    {
+        ent.Comp.ViewedZLevel = value;
+    }
+    public static bool TrySetViewedZLevel(Entity<CEZLevelViewerComponent> ent, int value)
+    {
+        SetViewedZLevel(ent, value);
+        return true;
     }
 }
 

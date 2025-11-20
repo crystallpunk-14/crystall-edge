@@ -40,6 +40,7 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
 
         InitMovement();
         InitView();
+        InitBind();
     }
 
     /// <summary>
