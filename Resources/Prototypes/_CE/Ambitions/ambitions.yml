@@ -1,0 +1,73 @@
+- type: ambition
+  id: StrongDiet
+  name: ce-ambition-strong-diet-name
+  desc: ce-ambition-strong-diet-desc
+  parsings:
+    REASON: !type:RandomDataset
+      dataset: CEAmbitionReason
+    FOOD: !type:RandomFood
+
+- type: ambition
+  id: FoodConservatism
+  name: ce-ambition-cookism-name
+  desc: ce-ambition-cookism-desc
+  parsings:
+    FOOD: !type:RandomFood
+
+- type: ambition
+  id: ItemMania
+  name: ce-ambition-item-mania-name
+  desc: ce-ambition-item-mania-desc
+  parsings:
+    REASON: !type:RandomDataset
+      dataset: CEAmbitionReason
+    ITEM: !type:RandomEntity
+      whitelist:
+        - Item
+
+- type: ambition
+  id: ItemPhobia
+  name: ce-ambition-item-phobia-name
+  desc: ce-ambition-item-phobia-desc
+  parsings:
+    REASON: !type:RandomDataset
+      dataset: CEAmbitionReason
+    ITEM: !type:RandomEntity
+
+- type: ambition
+  id: JobHate
+  name: ce-ambition-job-hate-name
+  desc: ce-ambition-job-hate-desc
+  parsings:
+    REASON: !type:RandomDataset
+      dataset: CEAmbitionReason
+    JOB: !type:RandomJob
+
+- type: ambition
+  id: JobLove
+  name: ce-ambition-job-love-name
+  desc: ce-ambition-job-love-desc
+  parsings:
+    REASON: !type:RandomDataset
+      dataset: CEAmbitionReason
+    JOB: !type:RandomJob
+
+- type: ambition
+  id: JobGift
+  name: ce-ambition-job-gift-name
+  desc: ce-ambition-job-gift-desc
+  parsings:
+    JOB: !type:RandomJob
+    ITEM: !type:RandomEntity
+      whitelist:
+        - Item
+
+- type: ambition
+  id: Earning
+  name: ce-ambition-become-rich-name
+  desc: ce-ambition-become-rich-desc
+  parsings:
+    COUNT: !type:RandomNumber
+      range:
+        min: 5
+        max: 10

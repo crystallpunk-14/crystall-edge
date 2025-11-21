@@ -1,0 +1,5 @@
+- type: localizedDataset
+  id: CEAmbitionReason
+  values:
+    prefix: ce-ambition-reason-
+    count: 10

@@ -1,0 +1,10 @@
+ce-ambition-reason-1 = моя бабушка трагично скончалась
+ce-ambition-reason-2 = у меня психологическая травма из детства
+ce-ambition-reason-3 = меня так попросили родственники
+ce-ambition-reason-4 = это очевидно, странно что этого не понимают другие
+ce-ambition-reason-5 = мне приснился сон
+ce-ambition-reason-6 = мне приснился кошмар
+ce-ambition-reason-7 = я прочитал умную книжку
+ce-ambition-reason-8 = меня заколдовали в прошлом
+ce-ambition-reason-9 = так меня воспитали
+ce-ambition-reason-10 = мне бесконечно нашептывают голоса в голове

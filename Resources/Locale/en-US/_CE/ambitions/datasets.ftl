@@ -1,0 +1,10 @@
+ce-ambition-reason-1 = my grandmother died tragically
+ce-ambition-reason-2 = i have psychological trauma from childhood
+ce-ambition-reason-3 = my relatives asked me to
+ce-ambition-reason-4 = it's obvious, it's strange that others don't understand this
+ce-ambition-reason-5 = i had a dream
+ce-ambition-reason-6 = i had a nightmare
+ce-ambition-reason-7 = i read an insightful book
+ce-ambition-reason-8 = i was bewitched in the past
+ce-ambition-reason-9 = that's how I was raised
+ce-ambition-reason-10 = voices whisper endlessly in my head
