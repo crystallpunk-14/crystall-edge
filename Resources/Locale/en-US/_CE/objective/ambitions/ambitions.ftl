@@ -1,10 +1,12 @@
+ce-objective-issuer-ambition = [color=pink]Personal ambitions[/color]
+
 ce-ambition-strong-diet-name = Strict diet
 ce-ambition-strong-diet-desc = Because of !REASON!, I decided that I would only eat !FOOD!.
 
 ce-ambition-cookism-name = Conservatism in food
 ce-ambition-cookism-desc = I can only cook !FOOD!, and that is clearly my calling. I will not be cooking any other food in the coming years.
 
-ce-ambition-item-mania-name = Dreams of !ITEM!
+ce-ambition-item-mania-name = Desire for possession
 ce-ambition-item-mania-desc = Because of !REASON!, I have long dreamed of getting my hands on !ITEM!...
 
 ce-ambition-item-phobia-name = Phobia

@@ -1,13 +1,4 @@
 - type: ambition
-  id: StrongDiet
-  name: ce-ambition-strong-diet-name
-  desc: ce-ambition-strong-diet-desc
-  parsings:
-    REASON: !type:RandomDataset
-      dataset: CEAmbitionReason
-    FOOD: !type:RandomFood
-
-- type: ambition
   id: FoodConservatism
   name: ce-ambition-cookism-name
   desc: ce-ambition-cookism-desc

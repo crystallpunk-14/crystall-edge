@@ -1,10 +1,12 @@
+ce-objective-issuer-ambition = [color=pink]Личные амбиции[/color]
+
 ce-ambition-strong-diet-name = Строгая диета
 ce-ambition-strong-diet-desc = Из-за того, что !REASON!, я решил что моей едой отныне будет только !FOOD!.
 
 ce-ambition-cookism-name = Консерватизм в еде
 ce-ambition-cookism-desc = Я умею готовить только !FOOD!, и это явно мое призвание. Я не буду готовить никакой другой еды в ближайшие годы.
 
-ce-ambition-item-mania-name = Мечты о !ITEM!
+ce-ambition-item-mania-name = Желание владения
 ce-ambition-item-mania-desc = Из-за того, что !REASON!, я давно мечтаю о том, чтобы заполучить себе !ITEM!...
 
 ce-ambition-item-phobia-name = Фобия
