@@ -27,7 +27,7 @@ public abstract partial class CESharedZLevelsSystem
             return;
 
         var oldvalue = comp!.ViewedZLevel;
-        var newvalue = oldvalue++;
+        var newvalue = oldvalue + 1;
 
         TrySetViewedZLevel(new Entity<CEZLevelViewerComponent>(player, comp), newvalue);
         // RaiseLocalEvent<ChangeViewedZLayerEvent>(new(oldvalue) { NewValue = newvalue });
@@ -41,7 +41,7 @@ public abstract partial class CESharedZLevelsSystem
             return;
 
         var oldvalue = comp!.ViewedZLevel;
-        var newvalue = oldvalue--;
+        var newvalue = oldvalue - 1;
 
         TrySetViewedZLevel(new Entity<CEZLevelViewerComponent>(player, comp), newvalue);
         //    RaiseLocalEvent<ChangeViewedZLayerEvent>(new(oldvalue) { NewValue = newvalue });
