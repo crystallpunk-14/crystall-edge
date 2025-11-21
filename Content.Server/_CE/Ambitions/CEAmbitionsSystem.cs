@@ -1,14 +1,13 @@
 using System.Diagnostics.CodeAnalysis;
-using Content.Server.Administration;
 using Content.Server.Mind;
 using Content.Shared._CE.Ambitions;
 using Content.Shared._CE.Ambitions.Components;
-using Content.Shared.Administration;
+using Content.Shared.GameTicking;
 using Content.Shared.Mind;
-using Content.Shared.Objectives;
+using Content.Shared.Mind.Components;
 using Content.Shared.Objectives.Components;
 using Content.Shared.Objectives.Systems;
-using Robust.Shared.Console;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -23,6 +22,7 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
     [Dependency] private readonly IComponentFactory _compFactory = default!;
     [Dependency] private readonly SharedObjectivesSystem _objectives = default!;
     [Dependency] private readonly MindSystem _mind = default!;
+    [Dependency] private readonly MetaDataSystem _meta = default!;
 
     private readonly HashSet<EntityPrototype> _ambitions = new();
 
@@ -32,7 +32,38 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
         CacheAmbitions();
 
         SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypesReloaded);
-        SubscribeLocalEvent<CEAmbitionsSetupComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawningComplete);
+        SubscribeLocalEvent<CEAmbitionsSetupComponent, MapInitEvent>(OnMindAdded);
+        SubscribeLocalEvent<CEAmbitionObjectiveComponent, ObjectiveAfterAssignEvent>(OnObjectiveAssigned);
+        SubscribeLocalEvent<CEAmbitionObjectiveComponent, ObjectiveGetProgressEvent>(OnGetProgress);
+    }
+
+    private void OnPlayerSpawningComplete(PlayerSpawnCompleteEvent ev)
+    {
+        EnsureComp<CEAmbitionsSetupComponent>(ev.Mob);
+    }
+
+    private void OnGetProgress(Entity<CEAmbitionObjectiveComponent> ent, ref ObjectiveGetProgressEvent args)
+    {
+        args.Progress = 1f;
+    }
+
+    private void OnObjectiveAssigned(Entity<CEAmbitionObjectiveComponent> ent, ref ObjectiveAfterAssignEvent args)
+    {
+        var title = Loc.GetString(ent.Comp.Name);
+        var desc = Loc.GetString(ent.Comp.Desc);
+
+        foreach (var (key, parseEntry) in ent.Comp.Parsings)
+        {
+            var parseKey = $"!{key}!";
+            var parseValue = parseEntry.GetText(EntityManager, _proto, _random);
+
+            title = title.Replace(parseKey, parseValue);
+            desc = desc.Replace(parseKey, parseValue);
+        }
+
+        _meta.SetEntityDescription(ent, desc);
+        _meta.SetEntityName(ent, title);
     }
 
     private void OnPrototypesReloaded(PrototypesReloadedEventArgs ev)
@@ -57,7 +88,7 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
         }
     }
 
-    private void OnMapInit(Entity<CEAmbitionsSetupComponent> ent, ref MapInitEvent args)
+    private void OnMindAdded(Entity<CEAmbitionsSetupComponent> ent, ref MapInitEvent args)
     {
         ent.Comp.EndTime = _timing.CurTime + ent.Comp.AvailableTime;
         var guardCounter = 20;
@@ -85,10 +116,10 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
 
         var suitableAmbition = true;
 
-        if (!TryComp<MindComponent>(ent, out var mind))
+        if (!_mind.TryGetMind(ent, out var mind, out var mindComp))
             return false;
 
-        foreach (var obj in mind.Objectives)
+        foreach (var obj in mindComp.Objectives)
         {
             if (MetaData(obj).EntityPrototype == objective)
                 suitableAmbition = false;

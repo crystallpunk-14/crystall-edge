@@ -3,6 +3,7 @@ using Content.Shared._CE.Trading.Prototypes;
 using Content.Shared._CE.Trading.Systems;
 using Content.Shared.Dataset;
 using Content.Shared.Destructible.Thresholds;
+using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Item;
 using Content.Shared.Roles;
 using JetBrains.Annotations;
@@ -76,11 +77,18 @@ public sealed partial class RandomEntity : CEAmbitionParsing
                 continue;
             if (!item.Categories.Contains(filter))
                 continue;
+            var suitable = true;
             foreach (var compName in Whitelist)
             {
                 if (!item.Components.TryGetComponent(compName, out _))
-                    continue;
+                {
+                    suitable = false;
+                    break;
+                }
             }
+
+            if (!suitable)
+                continue;
 
             all.Add(item);
         }
@@ -109,6 +117,23 @@ public sealed partial class RandomJob : CEAmbitionParsing
         foreach (var job in protoManager.EnumeratePrototypes<JobPrototype>())
         {
             if (!job.SetPreference)
+                continue;
+
+            all.Add(job);
+        }
+        return Loc.GetString(random.Pick(all).Name);
+    }
+}
+
+public sealed partial class RandomSpecies : CEAmbitionParsing
+{
+    public override string GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random)
+    {
+        List<SpeciesPrototype> all = new();
+
+        foreach (var job in protoManager.EnumeratePrototypes<SpeciesPrototype>())
+        {
+            if (!job.RoundStart)
                 continue;
 
             all.Add(job);

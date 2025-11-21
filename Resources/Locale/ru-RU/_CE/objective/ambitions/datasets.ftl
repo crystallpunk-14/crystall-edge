@@ -8,3 +8,14 @@ ce-ambition-reason-7 = я прочитал умную книжку
 ce-ambition-reason-8 = меня заколдовали в прошлом
 ce-ambition-reason-9 = так меня воспитали
 ce-ambition-reason-10 = мне бесконечно нашептывают голоса в голове
+
+ce-ambition-abstract-theme-1 = высота
+ce-ambition-abstract-theme-2 = тесные помещения
+ce-ambition-abstract-theme-3 = темнота
+ce-ambition-abstract-theme-4 = социальные взаимодействия
+ce-ambition-abstract-theme-5 = ночное время суток
+ce-ambition-abstract-theme-6 = дневное время суток
+ce-ambition-abstract-theme-7 = молчание
+ce-ambition-abstract-theme-8 = магическая энергия
+ce-ambition-abstract-theme-9 = кровь и насилие
+ce-ambition-abstract-theme-10 = вода

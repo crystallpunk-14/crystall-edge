@@ -8,3 +8,14 @@ ce-ambition-reason-7 = i read an insightful book
 ce-ambition-reason-8 = i was bewitched in the past
 ce-ambition-reason-9 = that's how I was raised
 ce-ambition-reason-10 = voices whisper endlessly in my head
+
+ce-ambition-abstract-theme-1 = heights
+ce-ambition-abstract-theme-2 = cramped spaces
+ce-ambition-abstract-theme-3 = darkness
+ce-ambition-abstract-theme-4 = social interactions
+ce-ambition-abstract-theme-5 = nighttime
+ce-ambition-abstract-theme-6 = daytime
+ce-ambition-abstract-theme-7 = silence
+ce-ambition-abstract-theme-8 = magical energy
+ce-ambition-abstract-theme-9 = blood and violence
+ce-ambition-abstract-theme-10 = water

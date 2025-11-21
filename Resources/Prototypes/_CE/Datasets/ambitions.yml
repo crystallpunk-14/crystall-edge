@@ -3,3 +3,9 @@
   values:
     prefix: ce-ambition-reason-
     count: 10
+
+- type: localizedDataset
+  id: CEAmbitionAbstractTopic
+  values:
+    prefix: ce-ambition-abstract-theme-
+    count: 10

@@ -6,11 +6,15 @@ ce-ambition-strong-diet-desc = Because of !REASON!, I decided that I would only 
 ce-ambition-cookism-name = Conservatism in food
 ce-ambition-cookism-desc = I can only cook !FOOD!, and that is clearly my calling. I will not be cooking any other food in the coming years.
 
-ce-ambition-item-mania-name = Desire for possession
-ce-ambition-item-mania-desc = Because of !REASON!, I have long dreamed of getting my hands on !ITEM!...
+ce-ambition-mania-name = Obsession
+ce-ambition-item-mania-desc = Because !REASON!, I've been dreaming about owning !ITEM! for a long time...
+ce-ambition-abstract-mania-desc = I love !TOPIC!! I want as much of it as possible in my life.
+ce-ambition-species-mania-desc = !SPECIES! are the best species in the world!
 
-ce-ambition-item-phobia-name = Phobia
+ce-ambition-phobia-name = Phobia
 ce-ambition-item-phobia-desc = Just the sight of !ITEM! fills me with animal fear!
+ce-ambition-abstract-phobia-desc = !TOPIC! fills me with primal fear!
+ce-ambition-species-phobia-desc = !SPECIES! are a terrifying species, I'm afraid to be near them!
 
 ce-ambition-job-hate-name = Disliking one's profession
 ce-ambition-job-hate-desc = I believe that every !JOB! is a terrible person because !REASON!
