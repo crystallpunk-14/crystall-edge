@@ -69,7 +69,7 @@
     name: ce-ambition-drama-master-name
     desc: ce-ambition-drama-master-desc
 
-# Modular
+# Modular (increased weight, because more replayable)
 
 - type: entity
   parent: CEBaseAmbitionObjective
@@ -78,6 +78,7 @@
   - type: CEAmbitionObjective
     name: ce-ambition-strong-diet-name
     desc: ce-ambition-strong-diet-desc
+    weight: 2
     parsings:
       REASON: !type:RandomDataset
         dataset: CEAmbitionReason
@@ -90,6 +91,7 @@
   - type: CEAmbitionObjective
     name: ce-ambition-cookism-name
     desc: ce-ambition-cookism-desc
+    weight: 2
     parsings:
       FOOD: !type:RandomFood
 
@@ -102,6 +104,7 @@
   - type: CEAmbitionObjective
     name: ce-ambition-mania-name
     desc: ce-ambition-item-mania-desc
+    weight: 3
     parsings:
       REASON: !type:RandomDataset
         dataset: CEAmbitionReason
@@ -127,6 +130,7 @@
   - type: CEAmbitionObjective
     name: ce-ambition-mania-name
     desc: ce-ambition-species-mania-desc
+    weight: 2
     parsings:
       SPECIES: !type:RandomSpecies
 
@@ -139,6 +143,7 @@
   - type: CEAmbitionObjective
     name: ce-ambition-phobia-name
     desc: ce-ambition-item-phobia-desc
+    weight: 3
     parsings:
       REASON: !type:RandomDataset
         dataset: CEAmbitionReason
@@ -162,6 +167,7 @@
   - type: CEAmbitionObjective
     name: ce-ambition-phobia-name
     desc: ce-ambition-species-phobia-desc
+    weight: 2
     parsings:
       SPECIES: !type:RandomSpecies
 
@@ -173,6 +179,7 @@
   - type: CEAmbitionObjective
     name: ce-ambition-job-hate-name
     desc: ce-ambition-job-hate-desc
+    weight: 2
     parsings:
       REASON: !type:RandomDataset
         dataset: CEAmbitionReason
@@ -185,6 +192,7 @@
   - type: CEAmbitionObjective
     name: ce-ambition-job-love-name
     desc: ce-ambition-job-love-desc
+    weight: 2
     parsings:
       REASON: !type:RandomDataset
         dataset: CEAmbitionReason
@@ -197,6 +205,7 @@
   - type: CEAmbitionObjective
     name: ce-ambition-job-gift-name
     desc: ce-ambition-job-gift-desc
+    weight: 3
     parsings:
       JOB: !type:RandomJob
       ITEM: !type:RandomEntity

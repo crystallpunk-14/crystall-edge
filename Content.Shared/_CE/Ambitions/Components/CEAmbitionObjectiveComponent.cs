@@ -16,4 +16,7 @@ public sealed partial class CEAmbitionObjectiveComponent : Component
 
     [DataField]
     public Dictionary<string, CEAmbitionParsing> Parsings = new();
+
+    [DataField]
+    public float Weight = 1f;
 }

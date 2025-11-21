@@ -24,7 +24,7 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
     [Dependency] private readonly MindSystem _mind = default!;
     [Dependency] private readonly MetaDataSystem _meta = default!;
 
-    private readonly HashSet<EntityPrototype> _ambitions = new();
+    private readonly List<(EntityPrototype prototype, float weight)> _ambitions = new();
 
     public override void Initialize()
     {
@@ -84,7 +84,7 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
             if (!objective.Components.TryGetComponent<CEAmbitionObjectiveComponent>(_compFactory, out var ambition))
                 continue;
 
-            _ambitions.Add(objective);
+            _ambitions.Add((objective, ambition.Weight));
         }
     }
 
@@ -116,12 +116,12 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
 
         var suitableAmbition = true;
 
-        if (!_mind.TryGetMind(ent, out var mind, out var mindComp))
+        if (!_mind.TryGetMind(ent, out _, out var mindComp))
             return false;
 
         foreach (var obj in mindComp.Objectives)
         {
-            if (MetaData(obj).EntityPrototype == objective)
+            if (MetaData(obj).EntityPrototype?.ID == objective.ID)
                 suitableAmbition = false;
         }
 
@@ -181,6 +181,22 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
             return null;
         }
 
-        return _random.Pick(_ambitions);
+        var totalWeight = 0f;
+        foreach (var (_, weight) in _ambitions)
+        {
+            totalWeight += weight;
+        }
+
+        var randomValue = _random.NextFloat() * totalWeight;
+        var currentWeight = 0f;
+
+        foreach (var (prototype, weight) in _ambitions)
+        {
+            currentWeight += weight;
+            if (randomValue <= currentWeight)
+                return prototype;
+        }
+
+        return _ambitions[^1].prototype;
     }
 }
