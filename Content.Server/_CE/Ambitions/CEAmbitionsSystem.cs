@@ -3,11 +3,7 @@ using Content.Server.Mind;
 using Content.Shared._CE.Ambitions;
 using Content.Shared._CE.Ambitions.Components;
 using Content.Shared.GameTicking;
-using Content.Shared.Mind;
-using Content.Shared.Mind.Components;
 using Content.Shared.Objectives.Components;
-using Content.Shared.Objectives.Systems;
-using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -20,7 +16,6 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IComponentFactory _compFactory = default!;
-    [Dependency] private readonly SharedObjectivesSystem _objectives = default!;
     [Dependency] private readonly MindSystem _mind = default!;
     [Dependency] private readonly MetaDataSystem _meta = default!;
 
@@ -144,36 +139,7 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
         return true;
     }
 
-    //private bool TryRerollAmbition(Entity<CEAmbitionsSetupComponent> ent, int index)
-    //{
-    //    if (ent.Comp.Ambitions.Count < index + 1)
-    //        return false;
-    //    var guardCounter = 20;
-//
-    //    ObjectiveInfo? newAmbition = null;
-    //    var generated = false;
-    //    while (generated != true)
-    //    {
-    //        newAmbition = GenerateAmbition();
-    //        if (CheckSuitableAmbition(ent, newAmbition))
-    //            generated = true;
-//
-    //        guardCounter--;
-    //        if (guardCounter == 0)
-    //        {
-    //            Log.Error("Ambitions were not rerolled after 20 tries");
-    //            break;
-    //        }
-    //    }
-//
-    //    if (!generated || newAmbition == null)
-    //        return false;
-//
-    //    ent.Comp.Ambitions[index] = newAmbition.Value;
-    //    return true;
-    //}
-
-    public EntityPrototype? GenerateAmbition()
+    private EntityPrototype? GenerateAmbition()
     {
         if (_ambitions.Count == 0)
         {
