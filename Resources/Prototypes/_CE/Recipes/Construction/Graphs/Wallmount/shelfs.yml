@@ -8,7 +8,7 @@
       edges:
         - to: CEWallmountBarShelfA
           steps:
-            - stackGroup: CEWood
+            - material: CEWood
               amount: 2
               doAfter: 2
     - node: CEWallmountBarShelfA
@@ -24,7 +24,7 @@
       edges:
         - to: CEWallmountBarShelfB
           steps:
-            - stackGroup: CEWood
+            - material: CEWood
               amount: 2
               doAfter: 2
     - node: CEWallmountBarShelfB
