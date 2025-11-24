@@ -1,31 +1,31 @@
 - type: constructionGraph
-  id: CP14WallmountBarShelfA
+  id: CEWallmountBarShelfA
   start: start
   graph:
     - node: start
       actions:
         - !type:DestroyEntity {}
       edges:
-        - to: CP14WallmountBarShelfA
+        - to: CEWallmountBarShelfA
           steps:
             - stackGroup: WoodenPlanks
               amount: 2
               doAfter: 2
-    - node: CP14WallmountBarShelfA
-      entity: CP14WallmountBarShelfA
+    - node: CEWallmountBarShelfA
+      entity: CEWallmountBarShelfA
 
 - type: constructionGraph
-  id: CP14WallmountBarShelfB
+  id: CEWallmountBarShelfB
   start: start
   graph:
     - node: start
       actions:
         - !type:DestroyEntity {}
       edges:
-        - to: CP14WallmountBarShelfB
+        - to: CEWallmountBarShelfB
           steps:
             - stackGroup: WoodenPlanks
               amount: 2
               doAfter: 2
-    - node: CP14WallmountBarShelfB
-      entity: CP14WallmountBarShelfB
+    - node: CEWallmountBarShelfB
+      entity: CEWallmountBarShelfB
