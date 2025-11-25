@@ -4,7 +4,6 @@ using Content.Server.Mind;
 using Content.Shared._CE.Ambitions;
 using Content.Shared._CE.Ambitions.Components;
 using Content.Shared.Actions;
-using Content.Shared.GameTicking;
 using Content.Shared.Objectives.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Player;
@@ -42,9 +41,24 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
 
         SubscribeLocalEvent<CEAmbitionsSetupComponent, CEAmbitionCreateMessage>(OnAmbitionCreateRequest);
         SubscribeLocalEvent<CEAmbitionsSetupComponent, CEAmbitionDeleteMessage>(OnAmbitionDeleteRequest);
+        SubscribeLocalEvent<CEAmbitionsSetupComponent, CEAmbitionLockMessage>(OnAmbitionLockRequest);
 
         SubscribeLocalEvent<CEAmbitionObjectiveComponent, ObjectiveAfterAssignEvent>(OnObjectiveAssigned);
         SubscribeLocalEvent<CEAmbitionObjectiveComponent, ObjectiveGetProgressEvent>(OnGetProgress);
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        var query = EntityQueryEnumerator<CEAmbitionsSetupComponent>();
+        while (query.MoveNext(out var uid, out var ambitionsSetup))
+        {
+            if (_timing.CurTime < ambitionsSetup.EndTime)
+                continue;
+
+            RemCompDeferred<CEAmbitionsSetupComponent>(uid);
+        }
     }
 
     private void OnAmbitionCreateRequest(Entity<CEAmbitionsSetupComponent> ent, ref CEAmbitionCreateMessage args)
@@ -91,6 +105,11 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
         var (_, objIndexInMind) = ambitions[args.Index];
         _mind.TryRemoveObjective(mind, mindId, objIndexInMind);
         UpdateUiState(ent);
+    }
+
+    private void OnAmbitionLockRequest(Entity<CEAmbitionsSetupComponent> ent, ref CEAmbitionLockMessage args)
+    {
+        RemCompDeferred<CEAmbitionsSetupComponent>(ent);
     }
 
     private void OnGetProgress(Entity<CEAmbitionObjectiveComponent> ent, ref ObjectiveGetProgressEvent args)
@@ -181,7 +200,7 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
             objectiveList.Add((meta.EntityName, meta.EntityDescription));
         }
 
-        var state = new CEAmbitionsBuiState(objectiveList, ent.Comp.RerollAmount, ent.Comp.MaxAmbitions);
+        var state = new CEAmbitionsBuiState(objectiveList, ent.Comp.RerollAmount, ent.Comp.MaxAmbitions, ent.Comp.EndTime, ent.Comp.AvailableTime);
         _userInterface.SetUiState(ent.Owner, CEAmbitionsUIKey.Key, state);
     }
 

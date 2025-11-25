@@ -3,3 +3,5 @@ ce-ambitions-ui-menu-guide = Ambitions are optional randomly generated tasks tha
 
 ce-ambitions-buttons-add = New ambition
 ce-ambitions-buttons-delete = Delete
+ce-ambitions-buttons-lock = Confirm selection
+ce-ambitions-timer = Time remaining:

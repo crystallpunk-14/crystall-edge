@@ -3,3 +3,5 @@ ce-ambitions-ui-menu-guide = Амбиции - это необязательны�
 
 ce-ambitions-buttons-add = Новая амбиция
 ce-ambitions-buttons-delete = Удалить
+ce-ambitions-buttons-lock = Подтвердить выбор
+ce-ambitions-timer = Осталось времени:

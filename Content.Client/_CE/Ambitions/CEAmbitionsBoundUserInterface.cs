@@ -24,6 +24,7 @@ public sealed class CEAmbitionsBoundUserInterface : BoundUserInterface
         _menu = this.CreateWindow<CEAmbitionsMenu>();
 
         _menu.OnNewAmbitionRequest += () => SendMessage(new CEAmbitionCreateMessage());
+        _menu.OnLockAmbitionRequest += () => SendMessage(new CEAmbitionLockMessage());
         _menu.OnDeleteAmbitionRequest += (index) => SendMessage(new CEAmbitionDeleteMessage(index));
     }
 

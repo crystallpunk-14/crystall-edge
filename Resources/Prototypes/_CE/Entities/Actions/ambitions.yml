@@ -8,8 +8,8 @@
     priority: -3
     itemIconStyle: NoItem
     icon:
-      sprite: Interface/Actions/actions_ai.rsi
-      state: state_laws
+      sprite: _CE/Actions/misc.rsi
+      state: ambitions
     useDelay: 0.5
   - type: InstantAction
     event: !type:CEToggleAmbitionsScreenEvent

@@ -7,8 +7,8 @@
     difficulty: 0
     issuer: ce-objective-issuer-ambition
     icon:
-      sprite: Structures/Machines/server.rsi
-      state: server
+      sprite: _CE/Actions/misc.rsi
+      state: ambitions
   - type: CEAmbitionObjective
 
 # Simple
