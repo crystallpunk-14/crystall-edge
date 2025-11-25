@@ -1,0 +1,21 @@
+- type: guideEntry
+  crystallPunkAllowed: true
+  id: CERules
+  name: guide-entry-rules
+  ruleEntry: true
+  text: "/ServerInfo/_CE/Rules/CE_Rules.xml"
+  children:
+  - CERulesRU
+  - CERulesEN
+
+- type: guideEntry
+  crystallPunkAllowed: true
+  id: CERulesRU
+  name: "(RU) Правила сервера"
+  text: "/ServerInfo/_CE/Rules/CE_Rules_RU.xml"
+
+- type: guideEntry
+  crystallPunkAllowed: true
+  id: CERulesEN
+  name: "(EN) Server rules"
+  text: "/ServerInfo/_CE/Rules/CE_Rules_EN.xml"

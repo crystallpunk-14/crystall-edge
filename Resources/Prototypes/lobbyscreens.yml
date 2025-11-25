@@ -1,48 +1,19 @@
 - type: lobbyBackground
-  id: Warden
-  background: /Textures/LobbyScreens/warden.webp
+  id: TypicalAlchemistDay
+  background: /Textures/_CE/LobbyScreens/typicalAlchemistDay.webp
 
 - type: lobbyBackground
-  id: Pharmacy
-  background: /Textures/LobbyScreens/pharmacy.webp
+  id: WeRich
+  background: /Textures/_CE/LobbyScreens/we_rich.webp
 
 - type: lobbyBackground
-  id: SSXIV
-  background: /Textures/LobbyScreens/ssxiv.webp
+  id: Angel
+  background: /Textures/_CE/LobbyScreens/angel.webp
 
 - type: lobbyBackground
-  id: Susstation
-  background: /Textures/LobbyScreens/susstation.webp
+  id: TeaTime
+  background: /Textures/_CE/LobbyScreens/tea_time.webp
 
 - type: lobbyBackground
-  id: SkellyVsTheRev
-  background: /Textures/LobbyScreens/skellyvstherev.webp
-
-- type: lobbyBackground
-  id: Doomed
-  background: /Textures/LobbyScreens/doomed.webp
-
-- type: lobbyBackground
-  id: Blueprint
-  background: /Textures/LobbyScreens/blueprint.webp
-
-- type: lobbyBackground
-  id: Behonker
-  background: /Textures/LobbyScreens/behonker.webp
-
-- type: lobbyBackground
-  id: TerminalStation
-  background: /Textures/LobbyScreens/terminalstation.webp
-
-- type: lobbyBackground
-  id: JustAWeekAway
-  background: /Textures/LobbyScreens/justaweekaway.webp
-
-- type: lobbyBackground
-  id: JaniShootout
-  background: /Textures/LobbyScreens/janishootout.webp
-
-- type: lobbyBackground
-  id: ReclaimerNuke
-  background: /Textures/LobbyScreens/reclaimer-nuke.webp
-  
+  id: Forestry
+  background: /Textures/_CE/LobbyScreens/forestry.webp
