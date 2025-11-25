@@ -1,4 +1,5 @@
 using Content.Shared._CE.Cooking.Prototypes;
+using Content.Shared._CE.LockKey;
 using Content.Shared._CE.Trading.Prototypes;
 using Content.Shared._CE.Trading.Systems;
 using Content.Shared.Dataset;
@@ -137,5 +138,22 @@ public sealed partial class RandomSpecies : CEAmbitionParsing
             all.Add(job);
         }
         return Loc.GetString(random.Pick(all).Name);
+    }
+}
+
+public sealed partial class RandomLocation : CEAmbitionParsing
+{
+    public override string GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random)
+    {
+        List<CELockTypePrototype> all = new();
+
+        foreach (var lockProto in protoManager.EnumeratePrototypes<CELockTypePrototype>())
+        {
+            if (lockProto.Name is null)
+                continue;
+
+            all.Add(lockProto);
+        }
+        return Loc.GetString(random.Pick(all).Name!);
     }
 }

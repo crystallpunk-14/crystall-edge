@@ -27,3 +27,6 @@ ce-ambition-job-gift-desc = Я хочу подарить !ITEM! каждому !
 
 ce-ambition-become-rich-name = Заработок
 ce-ambition-become-rich-desc = Я планирую заработать минимум !COUNT! золотых монет!
+
+ce-ambition-location-love-name = Мечты о доме
+ce-ambition-location-love-desc = !LOCATION! - лучшее место на свете. Хочу там жить.
