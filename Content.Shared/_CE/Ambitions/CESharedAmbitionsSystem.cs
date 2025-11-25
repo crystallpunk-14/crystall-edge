@@ -17,7 +17,6 @@ public enum CEAmbitionsUIKey : byte
     Key
 }
 
-
 [Serializable, NetSerializable]
 public sealed class CEAmbitionsBuiState(List<(string, string)> ambitions, int rerolls, int maxAmbitions) : BoundUserInterfaceState
 {
@@ -30,13 +29,7 @@ public sealed class CEAmbitionsBuiState(List<(string, string)> ambitions, int re
 public sealed class CEAmbitionCreateMessage : BoundUserInterfaceMessage;
 
 [Serializable, NetSerializable]
-public sealed class CEAmbitionDeleteMessage(NetEntity ambition) : BoundUserInterfaceMessage
+public sealed class CEAmbitionDeleteMessage(int index) : BoundUserInterfaceMessage
 {
-    public readonly NetEntity Ambition = ambition;
-}
-
-[Serializable, NetSerializable]
-public sealed class CEAmbitionRerollMessage(string title) : BoundUserInterfaceMessage
-{
-    public readonly string Title = title;
+    public readonly int Index = index;
 }

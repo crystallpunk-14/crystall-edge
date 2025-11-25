@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Content.Server.Mind;
 using Content.Shared._CE.Ambitions;
 using Content.Shared._CE.Ambitions.Components;
@@ -40,8 +41,7 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
         SubscribeLocalEvent<CEAmbitionsSetupComponent, BoundUIOpenedEvent>(OnBoundUIOpened);
 
         SubscribeLocalEvent<CEAmbitionsSetupComponent, CEAmbitionCreateMessage>(OnAmbitionCreateRequest);
-        //SubscribeLocalEvent<CEAmbitionsSetupComponent, CEAmbitionDeleteMessage>(OnAmbitionDeleteRequest);
-        SubscribeLocalEvent<CEAmbitionsSetupComponent, CEAmbitionRerollMessage>(OnAmbitionRerollRequest);
+        SubscribeLocalEvent<CEAmbitionsSetupComponent, CEAmbitionDeleteMessage>(OnAmbitionDeleteRequest);
 
         SubscribeLocalEvent<CEAmbitionObjectiveComponent, ObjectiveAfterAssignEvent>(OnObjectiveAssigned);
         SubscribeLocalEvent<CEAmbitionObjectiveComponent, ObjectiveGetProgressEvent>(OnGetProgress);
@@ -75,30 +75,22 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
         UpdateUiState(ent);
     }
 
-    private void OnAmbitionRerollRequest(Entity<CEAmbitionsSetupComponent> ent, ref CEAmbitionRerollMessage args)
+    private void OnAmbitionDeleteRequest(Entity<CEAmbitionsSetupComponent> ent, ref CEAmbitionDeleteMessage args)
     {
-        if (ent.Comp.RerollAmount <= 0)
-            return;
         if (!_mind.TryGetMind(ent.Owner, out var mind, out var mindId))
             return;
-        foreach (var objective in mindId.Objectives)
-        {
-            if (TerminatingOrDeleted(objective))
-                continue;
 
-            if (!HasComp<CEAmbitionObjectiveComponent>(objective))
-                continue;
+        var ambitions = mindId.Objectives
+            .Select((obj, idx) => (obj, idx))
+            .Where(t => !TerminatingOrDeleted(t.obj) && HasComp<CEAmbitionObjectiveComponent>(t.obj))
+            .ToList();
 
-            if (MetaData(objective).EntityName != args.Title)
-                continue;
-
-            QueueDel(objective);
-            TryAddAmbition(ent);
-            ent.Comp.RerollAmount--;
-            DirtyField(ent, ent.Comp, nameof(CEAmbitionsSetupComponent.RerollAmount));
-            UpdateUiState(ent);
+        if (args.Index < 0 || args.Index >= ambitions.Count)
             return;
-        }
+
+        var (_, objIndexInMind) = ambitions[args.Index];
+        _mind.TryRemoveObjective(mind, mindId, objIndexInMind);
+        UpdateUiState(ent);
     }
 
     private void OnGetProgress(Entity<CEAmbitionObjectiveComponent> ent, ref ObjectiveGetProgressEvent args)

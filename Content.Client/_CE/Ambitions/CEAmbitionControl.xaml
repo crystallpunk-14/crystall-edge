@@ -10,10 +10,10 @@
             <customControls:HSeparator Margin="0 5 0 5"/>
             <RichTextLabel Name="DescLabel"/>
             <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="0 5 0 0">
-                <Button Name="RerollButton"
-                        Text="{Loc 'ce-ambitions-buttons-reroll'}"
+                <Button Name="DeleteButton"
+                        Text="{Loc 'ce-ambitions-buttons-delete'}"
                         StyleClasses="OpenBoth"
-                        Disabled="True" />
+                        Disabled="False" />
             </BoxContainer>
         </BoxContainer>
     </PanelContainer>

@@ -18,18 +18,23 @@
                 <BoxContainer
                     Orientation="Vertical"
                     VerticalExpand="True"
-                    Margin="10 10 10 0">
+                    Margin="10 10 10 10">
                     <BoxContainer
                         Name="AmbitionsContainer"
                         Orientation="Vertical"
                         VerticalExpand="True"
                         Margin="10 10 10 0">
                     </BoxContainer>
-                <Button Name="AddAmbitionButton"
-                        Text="{Loc 'ce-ambitions-buttons-add'}"
-                        StyleClasses="OpenBoth"
-                        Access="Public"
-                        Disabled="False" />
+                    <BoxContainer
+                        Orientation="Horizontal"
+                        Margin="10 10 10 0">
+                        <Button Name="AddAmbitionButton"
+                                Text="{Loc 'ce-ambitions-buttons-add'}"
+                                StyleClasses="OpenBoth"
+                                HorizontalExpand="True"
+                                Access="Public"
+                                Disabled="False" />
+                    </BoxContainer>
                 </BoxContainer>
             </ScrollContainer>
         </PanelContainer>

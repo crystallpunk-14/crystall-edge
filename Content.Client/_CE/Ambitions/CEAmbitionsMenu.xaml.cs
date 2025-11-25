@@ -10,7 +10,7 @@ namespace Content.Client._CE.Ambitions;
 public sealed partial class CEAmbitionsMenu : FancyWindow
 {
     public event Action? OnNewAmbitionRequest;
-    public event Action<string>? OnRerollAmbitionRequest;
+    public event Action<int>? OnDeleteAmbitionRequest;
 
     public CEAmbitionsMenu()
     {
@@ -30,21 +30,23 @@ public sealed partial class CEAmbitionsMenu : FancyWindow
         state.Ambitions.Sort();
         AmbitionsContainer.Children.Clear();
 
-        AddAmbitionButton.Text = $"{Loc.GetString("ce-ambitions-buttons-add")} ({state.Ambitions.Count}/{state.MaxAmbitions})";
+        AddAmbitionButton.Text = $"{Loc.GetString("ce-ambitions-buttons-add")} ({state.Ambitions.Count}/{state.MaxAmbitions}) [{state.Rerolls}]";
         AddAmbitionButton.Disabled = state.Ambitions.Count >= state.MaxAmbitions;
 
+        var index = 0;
         foreach (var (name, desc) in state.Ambitions)
         {
-            var control = new CEAmbitionControl(uid, name, desc, state.Rerolls > 0);
+            var control = new CEAmbitionControl(uid, index, name, desc, state.Rerolls <= 0);
 
-            control.OnRerollAmbitionRequest += () => OnReroll(name);
+            control.OnDeleteAmbitionRequest += () => OnDelete(control.Index);
 
             AmbitionsContainer.AddChild(control);
+            index++;
         }
     }
 
-    private void OnReroll(string title)
+    private void OnDelete(int index)
     {
-        OnRerollAmbitionRequest?.Invoke(title);
+        OnDeleteAmbitionRequest?.Invoke(index);
     }
 }

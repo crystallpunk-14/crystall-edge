@@ -1,4 +1,3 @@
-using Content.Client.Silicons.Laws.Ui;
 using Content.Shared._CE.Ambitions;
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;
@@ -25,7 +24,7 @@ public sealed class CEAmbitionsBoundUserInterface : BoundUserInterface
         _menu = this.CreateWindow<CEAmbitionsMenu>();
 
         _menu.OnNewAmbitionRequest += () => SendMessage(new CEAmbitionCreateMessage());
-        _menu.OnRerollAmbitionRequest += (title) => SendMessage(new CEAmbitionRerollMessage(title));
+        _menu.OnDeleteAmbitionRequest += (index) => SendMessage(new CEAmbitionDeleteMessage(index));
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)
