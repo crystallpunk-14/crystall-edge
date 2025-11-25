@@ -10,6 +10,8 @@ namespace Content.Client._CE.Ambitions;
 public sealed partial class CEAmbitionsMenu : FancyWindow
 {
     public event Action? OnNewAmbitionRequest;
+    public event Action<string>? OnRerollAmbitionRequest;
+
     public CEAmbitionsMenu()
     {
         RobustXamlLoader.Load(this);
@@ -33,9 +35,16 @@ public sealed partial class CEAmbitionsMenu : FancyWindow
 
         foreach (var (name, desc) in state.Ambitions)
         {
-            var control = new CEAmbitionControl(uid, name, desc);
+            var control = new CEAmbitionControl(uid, name, desc, state.Rerolls > 0);
+
+            control.OnRerollAmbitionRequest += () => OnReroll(name);
 
             AmbitionsContainer.AddChild(control);
         }
+    }
+
+    private void OnReroll(string title)
+    {
+        OnRerollAmbitionRequest?.Invoke(title);
     }
 }

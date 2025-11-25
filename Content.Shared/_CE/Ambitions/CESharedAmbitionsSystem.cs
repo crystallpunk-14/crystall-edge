@@ -36,7 +36,7 @@ public sealed class CEAmbitionDeleteMessage(NetEntity ambition) : BoundUserInter
 }
 
 [Serializable, NetSerializable]
-public sealed class CEAmbitionRerollMessage(NetEntity ambition) : BoundUserInterfaceMessage
+public sealed class CEAmbitionRerollMessage(string title) : BoundUserInterfaceMessage
 {
-    public readonly NetEntity Ambition = ambition;
+    public readonly string Title = title;
 }

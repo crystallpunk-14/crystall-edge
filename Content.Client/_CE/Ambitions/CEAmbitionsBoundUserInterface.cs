@@ -25,6 +25,7 @@ public sealed class CEAmbitionsBoundUserInterface : BoundUserInterface
         _menu = this.CreateWindow<CEAmbitionsMenu>();
 
         _menu.OnNewAmbitionRequest += () => SendMessage(new CEAmbitionCreateMessage());
+        _menu.OnRerollAmbitionRequest += (title) => SendMessage(new CEAmbitionRerollMessage(title));
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)
