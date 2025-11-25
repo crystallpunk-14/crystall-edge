@@ -16,7 +16,7 @@
     canCollide: false
 
 - type: entity
-  id: CEWallmountBarShelfA
+  id: CEWallmountBarShelf
   name: bar shelf
   suffix: 1
   parent: CEBaseWallmount
@@ -46,22 +46,6 @@
   - type: ContainerContainer
     containers:
       storagebase: !type:Container
-  - type: Construction
-    graph: CEWallmountBarShelfA
-    node: CEWallmountBarShelfA
-
-- type: entity
-  id: CEWallmountBarShelfB
-  suffix: 2
-  parent: CEWallmountBarShelfA
-  components:
-  - type: Sprite
-    layers:
-    - state: shelf
-    - state: bottleB-0
-    - map: ["enum.StorageFillLayers.Fill"]
-  - type: StorageFillVisualizer
-    fillBaseName: bottleB
-  - type: Construction
-    graph: CEWallmountBarShelfB
-    node: CEWallmountBarShelfB
+  - type: construction
+    graph: CEWallmountBarShelf
+    node: CEWallmountBarShelf

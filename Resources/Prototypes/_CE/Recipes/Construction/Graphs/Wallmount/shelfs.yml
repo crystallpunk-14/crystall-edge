@@ -1,31 +1,15 @@
 - type: constructionGraph
-  id: CEWallmountBarShelfA
+  id: CEWallmountBarShelf
   start: start
   graph:
     - node: start
       actions:
         - !type:DestroyEntity {}
       edges:
-        - to: CEWallmountBarShelfA
+        - to: CEWallmountBarShelf
           steps:
             - material: CEWood
               amount: 2
               doAfter: 2
-    - node: CEWallmountBarShelfA
-      entity: CEWallmountBarShelfA
-
-- type: constructionGraph
-  id: CEWallmountBarShelfB
-  start: start
-  graph:
-    - node: start
-      actions:
-        - !type:DestroyEntity {}
-      edges:
-        - to: CEWallmountBarShelfB
-          steps:
-            - material: CEWood
-              amount: 2
-              doAfter: 2
-    - node: CEWallmountBarShelfB
-      entity: CEWallmountBarShelfB
+    - node: CEWallmountBarShelf
+      entity: CEWallmountBarShelf
