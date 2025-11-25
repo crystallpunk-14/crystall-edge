@@ -46,6 +46,6 @@
   - type: ContainerContainer
     containers:
       storagebase: !type:Container
-  - type: construction
+  - type: Construction
     graph: CEWallmountBarShelf
     node: CEWallmountBarShelf

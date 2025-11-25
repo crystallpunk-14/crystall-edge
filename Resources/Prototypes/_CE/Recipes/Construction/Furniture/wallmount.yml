@@ -1,6 +1,5 @@
 - type: construction
   hide: false
-  crystallPunkAllowed: true
   id: CEWallmountBarShelf
   graph: CEWallmountBarShelf
   startNode: start
