@@ -1,5 +1,5 @@
 - type: guideEntry
-  crystallPunkAllowed: true
+  hidden: false
   id: CERules
   name: guide-entry-rules
   ruleEntry: true
@@ -9,13 +9,13 @@
   - CERulesEN
 
 - type: guideEntry
-  crystallPunkAllowed: true
+  hidden: false
   id: CERulesRU
   name: "(RU) Правила сервера"
   text: "/ServerInfo/_CE/Rules/CE_Rules_RU.xml"
 
 - type: guideEntry
-  crystallPunkAllowed: true
+  hidden: false
   id: CERulesEN
   name: "(EN) Server rules"
   text: "/ServerInfo/_CE/Rules/CE_Rules_EN.xml"
