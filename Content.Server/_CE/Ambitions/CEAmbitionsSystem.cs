@@ -2,8 +2,11 @@ using System.Diagnostics.CodeAnalysis;
 using Content.Server.Mind;
 using Content.Shared._CE.Ambitions;
 using Content.Shared._CE.Ambitions.Components;
+using Content.Shared.Actions;
 using Content.Shared.GameTicking;
 using Content.Shared.Objectives.Components;
+using Robust.Server.GameObjects;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -18,6 +21,8 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
     [Dependency] private readonly IComponentFactory _compFactory = default!;
     [Dependency] private readonly MindSystem _mind = default!;
     [Dependency] private readonly MetaDataSystem _meta = default!;
+    [Dependency] private readonly UserInterfaceSystem _userInterface = default!;
+    [Dependency] private readonly SharedActionsSystem _actions = default!;
 
     private readonly List<(EntityPrototype prototype, float weight)> _ambitions = new();
 
@@ -27,15 +32,43 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
         CacheAmbitions();
 
         SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypesReloaded);
-        SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawningComplete);
-        SubscribeLocalEvent<CEAmbitionsSetupComponent, MapInitEvent>(OnMindAdded);
+
+        SubscribeLocalEvent<CEAmbitionsSetupComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<CEAmbitionsSetupComponent, ComponentRemove>(OnCompRemove);
+
+        SubscribeLocalEvent<CEAmbitionsSetupComponent, CEToggleAmbitionsScreenEvent>(OnToggleAmbitionsScreen);
+        SubscribeLocalEvent<CEAmbitionsSetupComponent, BoundUIOpenedEvent>(OnBoundUIOpened);
+
+        SubscribeLocalEvent<CEAmbitionsSetupComponent, CEAmbitionCreateMessage>(OnAmbitionCreateRequest);
+        //SubscribeLocalEvent<CEAmbitionsSetupComponent, CEAmbitionDeleteMessage>(OnAmbitionDeleteRequest);
+        //SubscribeLocalEvent<CEAmbitionsSetupComponent, CEAmbitionRerollMessage>(OnAmbitionRerollRequest);
+
         SubscribeLocalEvent<CEAmbitionObjectiveComponent, ObjectiveAfterAssignEvent>(OnObjectiveAssigned);
         SubscribeLocalEvent<CEAmbitionObjectiveComponent, ObjectiveGetProgressEvent>(OnGetProgress);
     }
 
-    private void OnPlayerSpawningComplete(PlayerSpawnCompleteEvent ev)
+    private void OnAmbitionCreateRequest(Entity<CEAmbitionsSetupComponent> ent, ref CEAmbitionCreateMessage args)
     {
-        EnsureComp<CEAmbitionsSetupComponent>(ev.Mob);
+        if (ent.Comp.RerollAmount <= 0)
+            return;
+
+        if (!_mind.TryGetMind(ent.Owner, out var mind, out var mindId))
+            return;
+
+        var ambitionCount = 0;
+        foreach (var objective in mindId.Objectives)
+        {
+            if (!HasComp<CEAmbitionObjectiveComponent>(objective))
+                continue;
+
+            ambitionCount++;
+        }
+
+        if (ambitionCount >= ent.Comp.MaxAmbitions)
+            return;
+
+        TryAddAmbition(ent);
+        UpdateUiState(ent);
     }
 
     private void OnGetProgress(Entity<CEAmbitionObjectiveComponent> ent, ref ObjectiveGetProgressEvent args)
@@ -74,7 +107,7 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
         _ambitions.Clear();
         foreach (var objective in _proto.EnumeratePrototypes<EntityPrototype>())
         {
-            if (!objective.Components.TryGetComponent<ObjectiveComponent>(_compFactory, out var objectiveComponent))
+            if (!objective.Components.TryGetComponent<ObjectiveComponent>(_compFactory, out _))
                 continue;
             if (!objective.Components.TryGetComponent<CEAmbitionObjectiveComponent>(_compFactory, out var ambition))
                 continue;
@@ -83,25 +116,51 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
         }
     }
 
-    private void OnMindAdded(Entity<CEAmbitionsSetupComponent> ent, ref MapInitEvent args)
+    private void OnMapInit(Entity<CEAmbitionsSetupComponent> ent, ref MapInitEvent args)
     {
+        _actions.AddAction(ent, ref ent.Comp.ToggleUiActionEntity, ent.Comp.ToggleUiAction);
+
         ent.Comp.EndTime = _timing.CurTime + ent.Comp.AvailableTime;
-        var guardCounter = 20;
+    }
 
-        var createdAmbitions = 0;
-        while (createdAmbitions < ent.Comp.MaxAmbitions)
+    private void OnCompRemove(Entity<CEAmbitionsSetupComponent> ent, ref ComponentRemove args)
+    {
+        _actions.RemoveAction(ent.Owner, ent.Comp.ToggleUiActionEntity);
+    }
+
+    private void OnToggleAmbitionsScreen(Entity<CEAmbitionsSetupComponent> ent, ref CEToggleAmbitionsScreenEvent args)
+    {
+        if (args.Handled || !TryComp<ActorComponent>(ent, out var actor))
+            return;
+
+        args.Handled = true;
+
+        _userInterface.TryToggleUi(ent.Owner, CEAmbitionsUIKey.Key, actor.PlayerSession);
+    }
+
+    private void OnBoundUIOpened(Entity<CEAmbitionsSetupComponent> ent, ref BoundUIOpenedEvent args)
+    {
+        UpdateUiState(ent);
+    }
+
+    private void UpdateUiState(Entity<CEAmbitionsSetupComponent> ent)
+    {
+        if (!_mind.TryGetMind(ent.Owner, out var mind, out var mindId))
+            return;
+
+        List<(string, string)> objectiveList = new();
+
+        foreach (var objective in mindId.Objectives)
         {
-            if (TryAddAmbition(ent))
-                createdAmbitions++;
-            else
-                guardCounter--;
+            if (!HasComp<CEAmbitionObjectiveComponent>(objective))
+                continue;
 
-            if (guardCounter == 0)
-            {
-                Log.Error("Ambitions were not generated after 20 tries for entity");
-                break;
-            }
+            var meta = MetaData(objective);
+            objectiveList.Add((meta.EntityName, meta.EntityDescription));
         }
+
+        var state = new CEAmbitionsBuiState(objectiveList, ent.Comp.RerollAmount, ent.Comp.MaxAmbitions);
+        _userInterface.SetUiState(ent.Owner, CEAmbitionsUIKey.Key, state);
     }
 
     private bool CheckSuitableAmbition(Entity<CEAmbitionsSetupComponent> ent, [NotNullWhen(true)] EntityPrototype? objective)

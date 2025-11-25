@@ -171,6 +171,8 @@
         type: HumanoidMarkingModifierBoundUserInterface
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
+      enum.CEAmbitionsUIKey.Key:
+        type: CEAmbitionsBoundUserInterface
   - type: Puller
   - type: Speech
     speechSounds: Alto
@@ -244,6 +246,7 @@
     sprite: _CE/Mobs/Effects/onfire.rsi
     normalState: Small_burning
     alternateState: Humanoid_burning
+  - type: CEAmbitionsSetup
 
 - type: entity
   save: false
