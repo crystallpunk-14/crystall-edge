@@ -1,0 +1,12 @@
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: CEBaseAmbitionObjective
+  components:
+  - type: Objective
+    difficulty: 0
+    issuer: ce-objective-issuer-ambition
+    icon:
+      sprite: _CE/Actions/misc.rsi
+      state: ambitions
+  - type: CEAmbitionObjective

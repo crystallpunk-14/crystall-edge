@@ -1,0 +1,50 @@
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEBaseTownfolkAmbition
+  abstract: true
+  components:
+  - type: CEAmbitionObjective
+    conditions:
+      - !type:RequiredJob
+        jobs:
+        - CETownfolk
+
+- type: entity
+  parent: CEBaseTownfolkAmbition
+  id: CEAmbitionHomeDream
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-location-love-name
+    desc: ce-ambition-location-love-desc
+    parsings:
+      LOCATION: !type:RandomLocation
+
+- type: entity
+  parent: CEBaseTownfolkAmbition
+  id: CEAmbitionJobGift
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-job-gift-name
+    desc: ce-ambition-job-gift-desc
+    weight: 3
+    parsings:
+      JOB: !type:RandomJob
+      ITEM: !type:RandomEntity
+        whitelist:
+          - Item
+
+- type: entity
+  parent: CEBaseTownfolkAmbition
+  id: CEAmbitionBardSoul
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-bard-soul-name
+    desc: ce-ambition-bard-soul-desc
+
+- type: entity
+  parent: CEBaseTownfolkAmbition
+  id: CEAmbitionDramaMaster
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-drama-master-name
+    desc: ce-ambition-drama-master-desc

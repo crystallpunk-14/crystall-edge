@@ -171,6 +171,8 @@
         type: HumanoidMarkingModifierBoundUserInterface
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
+      enum.CEAmbitionsUIKey.Key:
+        type: CEAmbitionsBoundUserInterface
   - type: Puller
   - type: Speech
     speechSounds: Alto
@@ -210,12 +212,11 @@
   - type: PassiveDamage
     allowedStates:
     - Alive
-    damageCap: 80
+    damageCap: 20
     damage:
       groups:
         Brute: -0.07
-        Burn: -0.05
-        Toxin: -0.03
+        Burn: -0.07
   - type: StatusEffects
     allowed:
     - Stun
@@ -244,6 +245,7 @@
     sprite: _CE/Mobs/Effects/onfire.rsi
     normalState: Small_burning
     alternateState: Humanoid_burning
+  - type: CEAmbitionsSetup
 
 - type: entity
   save: false

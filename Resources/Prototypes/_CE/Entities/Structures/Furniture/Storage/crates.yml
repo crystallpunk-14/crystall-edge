@@ -75,7 +75,7 @@
   #- CEBaseFlammable
   components:
   - type: Sprite
-    sprite: _CE/Structures/Furniture/Crates/large_wooden.rsi
+    sprite: _CE/Structures/Furniture/Storage/Crates/large_wooden.rsi
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: CEWood
@@ -108,7 +108,7 @@
   #- CEBaseFlammable
   components:
   - type: Sprite
-    sprite: _CE/Structures/Furniture/Crates/small_wooden.rsi
+    sprite: _CE/Structures/Furniture/Storage/Crates/small_wooden.rsi
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: CEWood
