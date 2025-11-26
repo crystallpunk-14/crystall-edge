@@ -3,8 +3,10 @@ using Content.Shared._CE.LockKey;
 using Content.Shared.Dataset;
 using Content.Shared.Destructible.Thresholds;
 using Content.Shared.Humanoid.Prototypes;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Roles;
 using JetBrains.Annotations;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
@@ -14,12 +16,12 @@ namespace Content.Shared._CE.Ambitions.Parsings;
 [MeansImplicitUse]
 public abstract partial class CEAmbitionParsing
 {
-    public abstract string GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random);
+    public abstract string GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner);
 }
 
 public sealed partial class RandomFood : CEAmbitionParsing
 {
-    public override string GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random)
+    public override string GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
     {
         List<CECookingRecipePrototype> allRecipes = new();
 
@@ -40,7 +42,7 @@ public sealed partial class RandomDataset : CEAmbitionParsing
     [DataField(required: true)]
     public ProtoId<LocalizedDatasetPrototype> Dataset;
 
-    public override string GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random)
+    public override string GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
     {
         if (!protoManager.Resolve(Dataset, out var resolvedDataset))
             return "error";
@@ -59,7 +61,7 @@ public sealed partial class RandomEntity : CEAmbitionParsing
     [DataField]
     public List<string> Whitelist = new();
 
-    public override string GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random)
+    public override string GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
     {
         List<EntityPrototype> all = new();
 
@@ -99,7 +101,7 @@ public sealed partial class RandomNumber : CEAmbitionParsing
     [DataField(required: true)]
     public MinMax Range;
 
-    public override string GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random)
+    public override string GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
     {
         return Range.Next(random).ToString();
     }
@@ -107,7 +109,7 @@ public sealed partial class RandomNumber : CEAmbitionParsing
 
 public sealed partial class RandomJob : CEAmbitionParsing
 {
-    public override string GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random)
+    public override string GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
     {
         List<JobPrototype> all = new();
 
@@ -124,7 +126,7 @@ public sealed partial class RandomJob : CEAmbitionParsing
 
 public sealed partial class RandomSpecies : CEAmbitionParsing
 {
-    public override string GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random)
+    public override string GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
     {
         List<SpeciesPrototype> all = new();
 
@@ -141,7 +143,7 @@ public sealed partial class RandomSpecies : CEAmbitionParsing
 
 public sealed partial class RandomLocation : CEAmbitionParsing
 {
-    public override string GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random)
+    public override string GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
     {
         List<CELockTypePrototype> all = new();
 
@@ -153,5 +155,29 @@ public sealed partial class RandomLocation : CEAmbitionParsing
             all.Add(lockProto);
         }
         return Loc.GetString(random.Pick(all).Name!);
+    }
+}
+
+public sealed partial class RandomOtherPerson : CEAmbitionParsing
+{
+    public override string GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
+    {
+        List<string> all = new();
+
+        foreach (var player in Filter.GetAllPlayers())
+        {
+            var attachedEntity = player.AttachedEntity;
+
+            if (attachedEntity is null || attachedEntity == owner)
+                continue;
+            if (!entManager.HasComponent<MobStateComponent>(attachedEntity))
+                continue;
+            if (!entManager.TryGetComponent<MetaDataComponent>(attachedEntity, out var metaData))
+                continue;
+
+            all.Add(metaData.EntityName);
+        }
+
+        return random.Pick(all);
     }
 }

@@ -45,3 +45,9 @@ ce-ambition-hoarder-desc = Мне нужен свой личный уголок,
 
 ce-ambition-drama-master-name = Мастер драмы
 ce-ambition-drama-master-desc = Я хочу привлечь к себе как можно больше внимания, сымитировав какой-то несчастный случай.
+
+ce-ambition-befriend-name = Дружба
+ce-ambition-befriend-desc = Мне хочется стать с !NAME! близкими друзьями.
+
+ce-ambition-enemy-name = Затаенная неприязнь
+ce-ambition-enemy-desc = !NAME! серьезно насолил мне в прошлом, и я не хочу даже видеть его. Пусть катится к черту.

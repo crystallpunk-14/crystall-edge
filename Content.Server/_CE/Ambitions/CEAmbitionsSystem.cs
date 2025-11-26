@@ -137,7 +137,7 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
         foreach (var (key, parseEntry) in ent.Comp.Parsings)
         {
             var parseKey = $"!{key}!";
-            var parseValue = parseEntry.GetText(EntityManager, _proto, _random);
+            var parseValue = parseEntry.GetText(EntityManager, _proto, _random, args.Mind.OwnedEntity);
 
             title = title.Replace(parseKey, parseValue);
             desc = desc.Replace(parseKey, parseValue);

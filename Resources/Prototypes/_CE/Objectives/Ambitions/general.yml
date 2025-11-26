@@ -1,13 +1,5 @@
 - type: entity
   parent: CEBaseAmbitionObjective
-  id: CEAmbitionBardSoul
-  components:
-  - type: CEAmbitionObjective
-    name: ce-ambition-bard-soul-name
-    desc: ce-ambition-bard-soul-desc
-
-- type: entity
-  parent: CEBaseAmbitionObjective
   id: CEAmbitionAlcoholic
   components:
   - type: CEAmbitionObjective
@@ -37,14 +29,6 @@
   - type: CEAmbitionObjective
     name: ce-ambition-liar-name
     desc: ce-ambition-liar-desc
-
-- type: entity
-  parent: CEBaseAmbitionObjective
-  id: CEAmbitionDramaMaster
-  components:
-  - type: CEAmbitionObjective
-    name: ce-ambition-drama-master-name
-    desc: ce-ambition-drama-master-desc
 
 - type: entity
   parent: CEBaseAmbitionObjective
@@ -143,3 +127,25 @@
         range:
           min: 5
           max: 10
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionBefriend
+  components:
+  - type: CEAmbitionObjective
+    weight: 3 #Socialization is fun
+    name: ce-ambition-befriend-name
+    desc: ce-ambition-befriend-desc
+    parsings:
+      NAME: !type:RandomOtherPerson
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionEnemy
+  components:
+  - type: CEAmbitionObjective
+    weight: 3 #Socialization is fun
+    name: ce-ambition-enemy-name
+    desc: ce-ambition-enemy-desc
+    parsings:
+      NAME: !type:RandomOtherPerson
