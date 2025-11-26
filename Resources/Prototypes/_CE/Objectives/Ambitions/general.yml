@@ -1,4 +1,50 @@
-# Modular (increased weight, because more replayable)
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionBardSoul
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-bard-soul-name
+    desc: ce-ambition-bard-soul-desc
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionAlcoholic
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-alcoholic-name
+    desc: ce-ambition-alcoholic-desc
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionFoodCritic
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-food-critic-name
+    desc: ce-ambition-food-critic-desc
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionWordOfHonor
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-word-of-honor-name
+    desc: ce-ambition-word-of-honor-desc
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionLiar
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-liar-name
+    desc: ce-ambition-liar-desc
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionDramaMaster
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-drama-master-name
+    desc: ce-ambition-drama-master-desc
 
 - type: entity
   parent: CEBaseAmbitionObjective
@@ -12,19 +58,6 @@
       REASON: !type:RandomDataset
         dataset: CEAmbitionReason
       FOOD: !type:RandomFood
-
-- type: entity
-  parent: CEBaseAmbitionObjective
-  id: CEAmbitionFoodConservatism
-  components:
-  - type: CEAmbitionObjective
-    name: ce-ambition-cookism-name
-    desc: ce-ambition-cookism-desc
-    weight: 2
-    parsings:
-      FOOD: !type:RandomFood
-
-# Mania
 
 - type: entity
   parent: CEBaseAmbitionObjective
@@ -63,8 +96,6 @@
     parsings:
       SPECIES: !type:RandomSpecies
 
-# Phobia
-
 - type: entity
   parent: CEBaseAmbitionObjective
   id: CEAmbitionItemPhobia
@@ -100,47 +131,6 @@
     parsings:
       SPECIES: !type:RandomSpecies
 
-
-- type: entity
-  parent: CEBaseAmbitionObjective
-  id: CEAmbitionJobHate
-  components:
-  - type: CEAmbitionObjective
-    name: ce-ambition-job-hate-name
-    desc: ce-ambition-job-hate-desc
-    weight: 2
-    parsings:
-      REASON: !type:RandomDataset
-        dataset: CEAmbitionReason
-      JOB: !type:RandomJob
-
-- type: entity
-  parent: CEBaseAmbitionObjective
-  id: CEAmbitionJobLove
-  components:
-  - type: CEAmbitionObjective
-    name: ce-ambition-job-love-name
-    desc: ce-ambition-job-love-desc
-    weight: 2
-    parsings:
-      REASON: !type:RandomDataset
-        dataset: CEAmbitionReason
-      JOB: !type:RandomJob
-
-- type: entity
-  parent: CEBaseAmbitionObjective
-  id: CEAmbitionJobGift
-  components:
-  - type: CEAmbitionObjective
-    name: ce-ambition-job-gift-name
-    desc: ce-ambition-job-gift-desc
-    weight: 3
-    parsings:
-      JOB: !type:RandomJob
-      ITEM: !type:RandomEntity
-        whitelist:
-          - Item
-
 - type: entity
   parent: CEBaseAmbitionObjective
   id: CEAmbitionEarning
@@ -153,14 +143,3 @@
         range:
           min: 5
           max: 10
-
-- type: entity
-  parent: CEBaseAmbitionObjective
-  id: CEAmbitionHomeDream
-  components:
-  - type: CEAmbitionObjective
-    name: ce-ambition-location-love-name
-    desc: ce-ambition-location-love-desc
-    parsings:
-      LOCATION: !type:RandomLocation
-  

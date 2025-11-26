@@ -16,12 +16,6 @@ ce-ambition-item-phobia-desc = Just the sight of !ITEM! fills me with animal fea
 ce-ambition-abstract-phobia-desc = !TOPIC! fills me with primal fear!
 ce-ambition-species-phobia-desc = !SPECIES! are a terrifying species, I'm afraid to be near them!
 
-ce-ambition-job-hate-name = Disliking one's profession
-ce-ambition-job-hate-desc = I believe that every !JOB! is a terrible person because !REASON!
-
-ce-ambition-job-love-name = Love for the profession
-ce-ambition-job-love-desc = I believe that every !JOB! is a wonderful person because !REASON!
-
 ce-ambition-job-gift-name = Charity event
 ce-ambition-job-gift-desc = I must give !ITEM! to every !JOB!!
 
@@ -30,3 +24,24 @@ ce-ambition-become-rich-desc = I plan to earn at least !COUNT! gold coins!
 
 ce-ambition-location-love-name = Dreams about home
 ce-ambition-location-love-desc = !LOCATION! is the best place in the world. I want to live there.
+
+ce-ambition-bard-soul-name = Bard's Soul
+ce-ambition-bard-soul-desc = I dream of performing in public, playing songs and entertaining people.
+
+ce-ambition-alcoholic-name = Alcoholic
+ce-ambition-alcoholic-desc = I can't resist drinking. Need to have another glass.
+
+ce-ambition-food-critic-name = Food Critic
+ce-ambition-food-critic-desc = I'm a renowned food critic. I must evaluate every dish.
+
+ce-ambition-word-of-honor-name = Word of Honor
+ce-ambition-word-of-honor-desc = I promise myself to never lie!
+
+ce-ambition-liar-name = Liar
+ce-ambition-liar-desc = Can I manage to never tell the truth?
+
+ce-ambition-hoarder-name = Compulsive Hoarder
+ce-ambition-hoarder-desc = I need my own personal corner where I can store EVERYTHING. In general, any items might be useful in the future, so I'll take them for myself.
+
+ce-ambition-drama-master-name = Drama Master
+ce-ambition-drama-master-desc = I want to attract as much attention as possible by faking some kind of accident.

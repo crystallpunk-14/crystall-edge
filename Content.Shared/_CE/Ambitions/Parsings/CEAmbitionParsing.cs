@@ -1,7 +1,5 @@
 using Content.Shared._CE.Cooking.Prototypes;
 using Content.Shared._CE.LockKey;
-using Content.Shared._CE.Trading.Prototypes;
-using Content.Shared._CE.Trading.Systems;
 using Content.Shared.Dataset;
 using Content.Shared.Destructible.Thresholds;
 using Content.Shared.Humanoid.Prototypes;

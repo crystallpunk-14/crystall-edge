@@ -1,0 +1,18 @@
+- type: entity
+  parent: CEBaseAmbitionObjective
+  abstract: true
+  id: CEBaseGoblinAmbition
+  components:
+  - type: CEAmbitionObjective
+    conditions:
+      - !type:RequiredSpecies
+        species:
+        - CEGoblin
+
+- type: entity
+  parent: CEBaseGoblinAmbition
+  id: CEAmbitionHoarder
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-hoarder-name
+    desc: ce-ambition-hoarder-desc

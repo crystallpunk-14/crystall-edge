@@ -83,9 +83,21 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
         if (ambitionCount >= ent.Comp.MaxAmbitions)
             return;
 
+        var added = false;
+        var guard = 0;
+        while (!added)
+        {
+            added = TryAddAmbition(ent);
+            guard++;
+            if (guard >= 20)
+                break;
+        }
+
+        if (!added)
+            return;
+
         ent.Comp.RerollAmount--;
         DirtyField(ent, ent.Comp, nameof(CEAmbitionsSetupComponent.RerollAmount));
-        TryAddAmbition(ent);
         UpdateUiState(ent);
     }
 
@@ -211,13 +223,28 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
 
         var suitableAmbition = true;
 
+        if (!objective.Components.TryGetComponent<CEAmbitionObjectiveComponent>(_compFactory, out var ambObj))
+            return false;
+
         if (!_mind.TryGetMind(ent, out _, out var mindComp))
             return false;
 
         foreach (var obj in mindComp.Objectives)
         {
             if (MetaData(obj).EntityPrototype?.ID == objective.ID)
+            {
                 suitableAmbition = false;
+                break;
+            }
+        }
+
+        foreach (var condition in ambObj.Conditions)
+        {
+            if (!condition.Check(EntityManager, _proto, ent.Owner))
+            {
+                suitableAmbition = false;
+                break;
+            }
         }
 
         return suitableAmbition;
