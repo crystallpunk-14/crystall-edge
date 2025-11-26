@@ -247,6 +247,17 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
             }
         }
 
+        foreach (var (_, parsing) in ambObj.Parsings)
+        {
+            //The text can only be null if everything goes wrong—for example,
+            //if it is not possible to find other players and their names.
+            if (parsing.GetText(EntityManager, _proto, _random, ent.Owner) is null)
+            {
+                suitableAmbition = false;
+                break;
+            }
+        }
+
         return suitableAmbition;
     }
 

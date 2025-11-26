@@ -16,24 +16,27 @@ namespace Content.Shared._CE.Ambitions.Parsings;
 [MeansImplicitUse]
 public abstract partial class CEAmbitionParsing
 {
-    public abstract string GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner);
+    public abstract string? GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner);
 }
 
 public sealed partial class RandomFood : CEAmbitionParsing
 {
-    public override string GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
+    public override string? GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
     {
-        List<CECookingRecipePrototype> allRecipes = new();
+        List<CECookingRecipePrototype> all = new();
 
         foreach (var recipe in protoManager.EnumeratePrototypes<CECookingRecipePrototype>())
         {
             if (recipe.FoodData.Name is null)
                 continue;
 
-            allRecipes.Add(recipe);
+            all.Add(recipe);
         }
 
-        return Loc.GetString(random.Pick(allRecipes).FoodData.Name!);
+        if (all.Count == 0)
+            return null;
+
+        return Loc.GetString(random.Pick(all).FoodData.Name!);
     }
 }
 
@@ -42,10 +45,10 @@ public sealed partial class RandomDataset : CEAmbitionParsing
     [DataField(required: true)]
     public ProtoId<LocalizedDatasetPrototype> Dataset;
 
-    public override string GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
+    public override string? GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
     {
         if (!protoManager.Resolve(Dataset, out var resolvedDataset))
-            return "error";
+            return null;
 
         var value = random.Pick(resolvedDataset.Values);
         return Loc.GetString(value);
@@ -61,12 +64,12 @@ public sealed partial class RandomEntity : CEAmbitionParsing
     [DataField]
     public List<string> Whitelist = new();
 
-    public override string GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
+    public override string? GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
     {
         List<EntityPrototype> all = new();
 
         if (!protoManager.TryIndex(Category, out var filter))
-            return "error";
+            return null;
 
         foreach (var item in protoManager.EnumeratePrototypes<EntityPrototype>())
         {
@@ -101,7 +104,7 @@ public sealed partial class RandomNumber : CEAmbitionParsing
     [DataField(required: true)]
     public MinMax Range;
 
-    public override string GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
+    public override string? GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
     {
         return Range.Next(random).ToString();
     }
@@ -109,7 +112,7 @@ public sealed partial class RandomNumber : CEAmbitionParsing
 
 public sealed partial class RandomJob : CEAmbitionParsing
 {
-    public override string GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
+    public override string? GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
     {
         List<JobPrototype> all = new();
 
@@ -120,13 +123,17 @@ public sealed partial class RandomJob : CEAmbitionParsing
 
             all.Add(job);
         }
+
+        if (all.Count == 0)
+            return null;
+
         return Loc.GetString(random.Pick(all).Name);
     }
 }
 
 public sealed partial class RandomSpecies : CEAmbitionParsing
 {
-    public override string GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
+    public override string? GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
     {
         List<SpeciesPrototype> all = new();
 
@@ -137,13 +144,17 @@ public sealed partial class RandomSpecies : CEAmbitionParsing
 
             all.Add(job);
         }
+
+        if (all.Count == 0)
+            return null;
+
         return Loc.GetString(random.Pick(all).Name);
     }
 }
 
 public sealed partial class RandomLocation : CEAmbitionParsing
 {
-    public override string GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
+    public override string? GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
     {
         List<CELockTypePrototype> all = new();
 
@@ -154,13 +165,16 @@ public sealed partial class RandomLocation : CEAmbitionParsing
 
             all.Add(lockProto);
         }
+        if (all.Count == 0)
+            return null;
+
         return Loc.GetString(random.Pick(all).Name!);
     }
 }
 
 public sealed partial class RandomOtherPerson : CEAmbitionParsing
 {
-    public override string GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
+    public override string? GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
     {
         List<string> all = new();
 
@@ -177,6 +191,9 @@ public sealed partial class RandomOtherPerson : CEAmbitionParsing
 
             all.Add(metaData.EntityName);
         }
+
+        if (all.Count == 0)
+            return null;
 
         return random.Pick(all);
     }

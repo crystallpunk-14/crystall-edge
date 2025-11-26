@@ -22,6 +22,9 @@ ce-ambition-job-gift-desc = I must give !ITEM! to every !JOB!!
 ce-ambition-become-rich-name = Making money
 ce-ambition-become-rich-desc = I plan to earn at least !COUNT! gold coins!
 
+ce-ambition-location-love-name = Dreams about home
+ce-ambition-location-love-desc = !LOCATION! is the best place in the world. I want to live there.
+
 ce-ambition-bard-soul-name = Bard's Soul
 ce-ambition-bard-soul-desc = I dream of performing in public, playing songs and entertaining people.
 
