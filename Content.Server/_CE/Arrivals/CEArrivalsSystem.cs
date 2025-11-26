@@ -105,7 +105,6 @@ public sealed class CEArrivalsSystem : EntitySystem
 
             // The player has successfully left arrivals and is also not on the shuttle. Remove their warp coupon.
             RemCompDeferred<PendingClockInComponent>(pUid);
-            RemCompDeferred<AutoOrientComponent>(pUid);
         }
     }
 
@@ -290,7 +289,6 @@ public sealed class CEArrivalsSystem : EntitySystem
             ev.Station);
 
         EnsureComp<PendingClockInComponent>(ev.SpawnResult.Value);
-        EnsureComp<AutoOrientComponent>(ev.SpawnResult.Value);
     }
 
     private bool TryGetArrivals(out EntityUid uid)

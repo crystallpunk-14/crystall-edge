@@ -1,9 +1,9 @@
 - type: entity
+  id: CEBucket
   parent:
   - BaseItem
   - DrinkBase
   - DrinkVisualsFill
-  id: CEBucket
   name: bucket
   description: It's a boring old bucket.
   categories: [ ForkFiltered ]

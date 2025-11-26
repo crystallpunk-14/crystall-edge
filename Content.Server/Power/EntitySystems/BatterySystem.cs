@@ -138,8 +138,8 @@ namespace Content.Server.Power.EntitySystems
                 return;
 
             var old = battery.MaxCharge;
-            battery.MaxCharge = Math.Max(value, 0);
-            battery.CurrentCharge = Math.Min(battery.CurrentCharge, battery.MaxCharge);
+            battery.MaxCharge = Math.Max(value, 0); DirtyField(uid, battery, nameof(BatteryComponent.MaxCharge)); //CrystallEdge autonetworking
+            battery.CurrentCharge = Math.Min(battery.CurrentCharge, battery.MaxCharge); DirtyField(uid, battery, nameof(BatteryComponent.CurrentCharge)); //CrystallEdge autonetworking
             if (MathHelper.CloseTo(battery.MaxCharge, old))
                 return;
 
@@ -153,7 +153,7 @@ namespace Content.Server.Power.EntitySystems
                 return;
 
             var old = battery.CurrentCharge;
-            battery.CurrentCharge = MathHelper.Clamp(value, 0, battery.MaxCharge);
+            battery.CurrentCharge = MathHelper.Clamp(value, 0, battery.MaxCharge); DirtyField(uid, battery, nameof(BatteryComponent.CurrentCharge)); //CrystallEdge autonetworking
             if (MathHelper.CloseTo(battery.CurrentCharge, old) &&
                 !(old != battery.CurrentCharge && battery.CurrentCharge == battery.MaxCharge))
             {
@@ -183,7 +183,7 @@ namespace Content.Server.Power.EntitySystems
 
             var newValue = Math.Clamp(battery.CurrentCharge + value, 0, battery.MaxCharge);
             var delta = newValue - battery.CurrentCharge;
-            battery.CurrentCharge = newValue;
+            battery.CurrentCharge = newValue; DirtyField(uid, battery, nameof(BatteryComponent.CurrentCharge)); //CrystallEdge autonetworking
 
             TrySetChargeCooldown(uid);
 

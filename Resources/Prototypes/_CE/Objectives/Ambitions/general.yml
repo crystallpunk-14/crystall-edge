@@ -1,0 +1,195 @@
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionAlcoholic
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-alcoholic-name
+    desc: ce-ambition-alcoholic-desc
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionFoodCritic
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-food-critic-name
+    desc: ce-ambition-food-critic-desc
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionWordOfHonor
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-word-of-honor-name
+    desc: ce-ambition-word-of-honor-desc
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionLiar
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-liar-name
+    desc: ce-ambition-liar-desc
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionStrongDiet
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-strong-diet-name
+    desc: ce-ambition-strong-diet-desc
+    weight: 2
+    parsings:
+      REASON: !type:RandomDataset
+        dataset: CEAmbitionReason
+      FOOD: !type:RandomFood
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionItemMania
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-mania-name
+    desc: ce-ambition-item-mania-desc
+    weight: 3
+    parsings:
+      REASON: !type:RandomDataset
+        dataset: CEAmbitionReason
+      ITEM: !type:RandomEntity
+        whitelist:
+          - Item
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionAbstractMania
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-mania-name
+    desc: ce-ambition-abstract-mania-desc
+    parsings:
+      TOPIC: !type:RandomDataset
+        dataset: CEAmbitionAbstractTopic
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionSpeciesMania
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-mania-name
+    desc: ce-ambition-species-mania-desc
+    weight: 2
+    parsings:
+      SPECIES: !type:RandomSpecies
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionItemPhobia
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-phobia-name
+    desc: ce-ambition-item-phobia-desc
+    weight: 3
+    parsings:
+      REASON: !type:RandomDataset
+        dataset: CEAmbitionReason
+      ITEM: !type:RandomEntity
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionAbstractPhobia
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-phobia-name
+    desc: ce-ambition-abstract-phobia-desc
+    parsings:
+      TOPIC: !type:RandomDataset
+        dataset: CEAmbitionAbstractTopic
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionSpeciesPhobia
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-phobia-name
+    desc: ce-ambition-species-phobia-desc
+    weight: 2
+    parsings:
+      SPECIES: !type:RandomSpecies
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionEarning
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-become-rich-name
+    desc: ce-ambition-become-rich-desc
+    parsings:
+      COUNT: !type:RandomNumber
+        range:
+          min: 5
+          max: 10
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionBefriend
+  components:
+  - type: CEAmbitionObjective
+    weight: 3 #Socialization is fun
+    name: ce-ambition-befriend-name
+    desc: ce-ambition-befriend-desc
+    parsings:
+      NAME: !type:RandomOtherPerson
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionEnemy
+  components:
+  - type: CEAmbitionObjective
+    weight: 3 #Socialization is fun
+    name: ce-ambition-enemy-name
+    desc: ce-ambition-enemy-desc
+    parsings:
+      NAME: !type:RandomOtherPerson
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionDate
+  components:
+  - type: CEAmbitionObjective
+    weight: 3 #Socialization is fun
+    name: ce-ambition-date-name
+    desc: ce-ambition-date-desc
+    parsings:
+      NAME: !type:RandomOtherPerson
+      FOOD: !type:RandomFood
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionProfessionChange
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-profession-change-name
+    desc: ce-ambition-profession-change-desc
+    parsings:
+      JOB: !type:RandomJob
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionManipulatorQuarrel
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-manipulator-name
+    desc: ce-ambition-manipulator-quarrel-desc
+    parsings:
+      NAME1: !type:RandomOtherPerson
+      NAME2: !type:RandomOtherPerson
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionManipulatorFriend
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-manipulator-name
+    desc: ce-ambition-manipulator-friend-desc
+    parsings:
+      NAME1: !type:RandomOtherPerson
+      NAME2: !type:RandomOtherPerson

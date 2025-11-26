@@ -1,0 +1,45 @@
+- type: entity
+  parent:
+  - CEChestGeneric
+#  - CEBaseFlammable
+  id: CEWoodenChest
+  name: wooden chest
+  description: A simple wooden chest for easy storage of junk.
+  components:
+  - type: Icon
+    sprite: _CE/Structures/Furniture/Storage/Chests/chest.rsi
+    state: icon
+  - type: Sprite
+    sprite: _CE/Structures/Furniture/Storage/Chests/chest.rsi
+    layers:
+    - state: base
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: closed
+      map: ["enum.StorageVisualLayers.Door"]
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: CEWoodStructural
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEWoodenPlanks1:
+            min: 3
+            max: 5
+          CEIronScrap1:
+            min: 1
+            max: 1
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Construction
+    graph: CEWoodenChest
+    node: CEWoodenChest
+    containers:
+    - entity_storage

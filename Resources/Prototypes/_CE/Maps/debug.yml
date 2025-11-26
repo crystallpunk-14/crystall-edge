@@ -64,3 +64,13 @@
                 amount: 5
               - id: CEBaseLockpick
                 amount: 1
+            CEMedical: !type:AllSelector #Tempmed remove later
+              children:
+              - id: CEGauze
+                amount: 6
+              - id: CEPlastiseal
+                amount: 4
+              - id: CEBloodpack
+                amount: 2
+              - id: CEMagicDefib
+                amount: 1

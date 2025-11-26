@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Created by TheShuEd (Github) ",
+  "size": {
+    "x": 39,
+    "y": 39
+  },
+  "states": [
+    {
+      "name": "base"
+    },
+    {
+      "name": "buy"
+    },
+    {
+      "name": "sell"
+    },
+    {
+      "name": "salary"
+    },
+    {
+      "name": "impact",
+      "delays": [
+        [
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.8
+        ]
+      ]
+    }
+  ]
+}

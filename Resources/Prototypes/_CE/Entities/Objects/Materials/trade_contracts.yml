@@ -1,0 +1,51 @@
+- type: entity
+  parent: BaseItem
+  id: CETradeContractBase
+  abstract: true
+  categories: [ ForkFiltered ]
+  name: trade contract
+  components:
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - Document
+  - type: Sprite
+    sprite: _CE/Objects/Materials/trade_contracts.rsi
+    state: blank
+  - type: StaticPrice
+    price: 10
+  - type: CETradingContract
+
+- type: entity
+  parent: CETradeContractBase
+  id: CETradeContractHomeDecor
+  description: Trading contract with the "Cozy House" store. Allows you to buy various decorations and nice things to furnish your home.
+  suffix: Home Decor
+  components:
+  - type: Sprite
+    state: house
+  - type: CETradingContract
+    faction: HomeDecor
+
+- type: entity
+  parent: CETradeContractBase
+  id: CETradeContractHorticulture
+  description: Trading contract with "Horticulture Consortium". Allows you to purchase seeds, plants and gardening tools.
+  suffix: Horticulture
+  components:
+  - type: Sprite
+    state: horticulture
+  - type: CETradingContract
+    faction: Horticulture
+
+- type: entity
+  parent: CETradeContractBase
+  id: CETradeContractTailors
+  description: Trading contract with the "Silk & Needle Tailors Guild". Allows you to purchase fabrics, clothing and tailoring tools.
+  suffix: Tailors
+  components:
+  - type: Sprite
+    state: tailors
+  - type: CETradingContract
+    faction: Tailors

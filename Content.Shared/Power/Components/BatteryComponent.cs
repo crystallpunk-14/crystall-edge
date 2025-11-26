@@ -1,11 +1,14 @@
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.Guidebook;
+using Robust.Shared.GameStates;
 
 namespace Content.Shared.Power.Components;
 
 /// <summary>
 /// Battery node on the pow3r network. Needs other components to connect to actual networks.
 /// </summary>
+[AutoGenerateComponentState(fieldDeltas: true)] //CrystallEdge
+[NetworkedComponent] //CrystallEdge
 [RegisterComponent]
 [Virtual]
 [Access(typeof(SharedBatterySystem))]
@@ -16,14 +19,14 @@ public partial class BatteryComponent : Component
     /// <summary>
     /// Maximum charge of the battery in joules (ie. watt seconds)
     /// </summary>
-    [DataField]
+    [DataField, AutoNetworkedField] //CrystallEdge autoNetworked
     [GuidebookData]
     public float MaxCharge;
 
     /// <summary>
     /// Current charge of the battery in joules (ie. watt seconds)
     /// </summary>
-    [DataField("startingCharge")]
+    [DataField("startingCharge"), AutoNetworkedField] //CrystallEdge autoNetworked
     public float CurrentCharge;
 
     /// <summary>

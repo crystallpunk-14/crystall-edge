@@ -12,6 +12,8 @@
   - type: Rotatable
     rotateWhileAnchored: true
   - type: CEZPhysics
+  - type: StaticPrice
+    price: 0 # Vanilla inheritance moment
 
 - type: entity
   name: wooden stool

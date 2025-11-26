@@ -10,7 +10,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._CE.Trading.Systems;
 
 //TODO: All of this should be removed when PricingSystem in the upstream moves to Shared.
-public abstract partial class CEEconomySystem : EntitySystem
+public abstract partial class CESharedEconomySystem : EntitySystem
 {
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;

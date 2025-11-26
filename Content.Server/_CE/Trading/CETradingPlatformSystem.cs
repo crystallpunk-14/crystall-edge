@@ -1,0 +1,272 @@
+using Content.Server._CE.Currency;
+using Content.Server.Cargo.Systems;
+using Content.Server.Power.EntitySystems;
+using Content.Shared._CE.Trading;
+using Content.Shared._CE.Trading.Components;
+using Content.Shared._CE.Trading.Prototypes;
+using Content.Shared._CE.Trading.Systems;
+using Content.Shared.Mobs.Components;
+using Content.Shared.Placeable;
+using Content.Shared.Popups;
+using Content.Shared.Power.Components;
+using Content.Shared.Storage;
+using Content.Shared.Storage.Components;
+using Content.Shared.Tag;
+using Content.Shared.UserInterface;
+using Robust.Server.GameObjects;
+using Robust.Shared.Audio.Systems;
+using Robust.Shared.Prototypes;
+
+namespace Content.Server._CE.Trading;
+
+public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSystem
+{
+    [Dependency] private readonly TagSystem _tag = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly PricingSystem _price = default!;
+    [Dependency] private readonly CECurrencySystem _currency = default!;
+    [Dependency] private readonly CEEconomySystem _economy = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly UserInterfaceSystem _userInterface = default!;
+    [Dependency] private readonly BatterySystem _battery = default!;
+
+    public static readonly ProtoId<TagPrototype> CoinTag = "CECoin";
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeLocalEvent<CESellingPlatformComponent, BeforeActivatableUIOpenEvent>(OnBeforeSellingUIOpen);
+        SubscribeLocalEvent<CETradingPlatformComponent, BeforeActivatableUIOpenEvent>(OnBeforeTradingUIOpen);
+
+        SubscribeLocalEvent<CESellingPlatformComponent, ItemPlacedEvent>(OnSellItemPlaced);
+        SubscribeLocalEvent<CESellingPlatformComponent, ItemRemovedEvent>(OnSellItemRemoved);
+        SubscribeLocalEvent<CETradingPlatformComponent, ItemPlacedEvent>(OnBuyItemPlaced);
+        SubscribeLocalEvent<CETradingPlatformComponent, ItemRemovedEvent>(OnBuyItemRemoved);
+
+        SubscribeLocalEvent<CETradingPlatformComponent, CETradingPositionBuyAttempt>(OnBuyAttempt);
+        SubscribeLocalEvent<CESellingPlatformComponent, CETradingSellAttempt>(OnSellAttempt);
+        SubscribeLocalEvent<CESellingPlatformComponent, CETradingRequestSellAttempt>(OnSellRequestAttempt);
+    }
+
+    private void OnSellItemRemoved(Entity<CESellingPlatformComponent> ent, ref ItemRemovedEvent args)
+    {
+        UpdateSellingUIState(ent);
+    }
+
+    private void OnSellItemPlaced(Entity<CESellingPlatformComponent> ent, ref ItemPlacedEvent args)
+    {
+        UpdateSellingUIState(ent);
+    }
+
+    private void OnBuyItemPlaced(Entity<CETradingPlatformComponent> ent, ref ItemPlacedEvent args)
+    {
+        UpdateTradingUIState(ent);
+    }
+
+    private void OnBuyItemRemoved(Entity<CETradingPlatformComponent> ent, ref ItemRemovedEvent args)
+    {
+        UpdateTradingUIState(ent);
+    }
+
+    private void OnBeforeSellingUIOpen(Entity<CESellingPlatformComponent> ent, ref BeforeActivatableUIOpenEvent args)
+    {
+        UpdateSellingUIState(ent);
+    }
+
+    private void OnBeforeTradingUIOpen(Entity<CETradingPlatformComponent> ent, ref BeforeActivatableUIOpenEvent args)
+    {
+        UpdateTradingUIState(ent);
+    }
+
+    private void UpdateSellingUIState(Entity<CESellingPlatformComponent> ent)
+    {
+        if (!TryComp<ItemPlacerComponent>(ent, out var itemPlacer))
+            return;
+
+        //Calculate
+        double balance = 0;
+        foreach (var placed in itemPlacer.PlacedEntities)
+        {
+            if (!CanSell(placed))
+                continue;
+
+            balance += _price.GetPrice(placed);
+        }
+
+        _userInterface.SetUiState(ent.Owner, CETradingUiKey.Sell, new CESellingPlatformUiState(GetNetEntity(ent), (int)balance));
+    }
+
+    private void UpdateTradingUIState(Entity<CETradingPlatformComponent> ent)
+    {
+        if (!TryComp<ItemPlacerComponent>(ent, out var itemPlacer))
+            return;
+
+        //Calculate
+        double balance = 0;
+        foreach (var placed in itemPlacer.PlacedEntities)
+        {
+            if (!_tag.HasTag(placed, CoinTag))
+                continue;
+
+            balance += _price.GetPrice(placed);
+        }
+
+        _userInterface.SetUiState(ent.Owner, CETradingUiKey.Buy, new CETradingPlatformUiState(GetNetEntity(ent), (int)balance));
+    }
+
+    public bool CanSell(EntityUid uid)
+    {
+        if (_tag.HasTag(uid, CoinTag))
+            return false;
+        if (HasComp<MobStateComponent>(uid))
+            return false;
+        if (HasComp<EntityStorageComponent>(uid))
+            return false;
+        if (HasComp<StorageComponent>(uid))
+            return false;
+
+        var proto = MetaData(uid).EntityPrototype;
+        if (proto != null && !proto.ID.StartsWith("CE")) //Shitfix, we dont wanna sell anything vanilla (like mob organs)
+            return false;
+
+        return true;
+    }
+
+    private void OnBuyAttempt(Entity<CETradingPlatformComponent> ent, ref CETradingPositionBuyAttempt args)
+    {
+        if (Timing.CurTime < ent.Comp.NextBuyTime)
+            return;
+
+        if (!Proto.TryIndex(args.Position, out var indexedPosition))
+            return;
+
+        if (!TryComp<CETradingReputationComponent>(args.Actor, out var repComp))
+            return;
+
+        if (!TryComp<ItemPlacerComponent>(ent, out var itemPlacer))
+            return;
+
+        if (!repComp.Factions.Contains(indexedPosition.Faction))
+            return;
+
+        if (TryComp<BatteryComponent>(ent, out var batteryComponent))
+        {
+            if (batteryComponent.CurrentCharge < ent.Comp.EnergyCost)
+                return;
+
+            _battery.TryUseCharge(ent, ent.Comp.EnergyCost, batteryComponent);
+        }
+
+        //Top up balance
+        double balance = 0;
+        foreach (var placedEntity in itemPlacer.PlacedEntities)
+        {
+            if (!_tag.HasTag(placedEntity, ent.Comp.CoinTag))
+                continue;
+            balance += _price.GetPrice(placedEntity);
+        }
+
+        var price = GetPrice(args.Position) ?? 10000;
+        if (balance < price)
+        {
+            // Not enough balance to buy the position
+            return;
+        }
+
+        foreach (var placedEntity in itemPlacer.PlacedEntities)
+        {
+            if (!_tag.HasTag(placedEntity, ent.Comp.CoinTag))
+                continue;
+            QueueDel(placedEntity);
+        }
+
+        balance -= price;
+
+        ent.Comp.NextBuyTime = Timing.CurTime + TimeSpan.FromSeconds(1f);
+        Dirty(ent);
+
+        indexedPosition.Service.Buy(EntityManager, Proto, ent);
+
+        _audio.PlayPvs(ent.Comp.BuySound, Transform(ent).Coordinates);
+
+        //return the change
+        _currency.GenerateMoney(balance, Transform(ent).Coordinates);
+        SpawnAtPosition(ent.Comp.BuyVisual, Transform(ent).Coordinates);
+
+        UpdateTradingUIState(ent);
+    }
+
+    private void OnSellAttempt(Entity<CESellingPlatformComponent> ent, ref CETradingSellAttempt args)
+    {
+        if (!TryComp<ItemPlacerComponent>(ent, out var itemPlacer))
+            return;
+
+        if (TryComp<BatteryComponent>(ent, out var batteryComponent))
+        {
+            if (batteryComponent.CurrentCharge < ent.Comp.EnergyCost)
+                return;
+
+            _battery.TryUseCharge(ent, ent.Comp.EnergyCost, batteryComponent);
+        }
+
+        double balance = 0;
+        foreach (var placed in itemPlacer.PlacedEntities)
+        {
+            if (!CanSell(placed))
+                continue;
+
+            var price = _price.GetPrice(placed);
+
+            if (price <= 0)
+                continue;
+
+            balance += _price.GetPrice(placed);
+            QueueDel(placed);
+        }
+
+        if (balance <= 0)
+            return;
+
+        _audio.PlayPvs(ent.Comp.SellSound, Transform(ent).Coordinates);
+        _currency.GenerateMoney(balance, Transform(ent).Coordinates);
+        SpawnAtPosition(ent.Comp.SellVisual, Transform(ent).Coordinates);
+
+        UpdateSellingUIState(ent);
+    }
+
+    private void OnSellRequestAttempt(Entity<CESellingPlatformComponent> ent, ref CETradingRequestSellAttempt args)
+    {
+        if (!TryComp<ItemPlacerComponent>(ent, out var itemPlacer))
+            return;
+
+        if (!CanFulfillRequest(ent, args.Request))
+            return;
+
+        if (!Proto.TryIndex(args.Request, out var indexedRequest))
+            return;
+
+        if (!_economy.TryRerollRequest(args.Faction, args.Request))
+            return;
+
+        if (TryComp<BatteryComponent>(ent, out var batteryComponent))
+        {
+            if (batteryComponent.CurrentCharge < ent.Comp.EnergyCost)
+                return;
+
+            _battery.TryUseCharge(ent, ent.Comp.EnergyCost, batteryComponent);
+        }
+
+        foreach (var req in indexedRequest.Requirements)
+        {
+            req.PostCraft(EntityManager, Proto, itemPlacer.PlacedEntities);
+        }
+
+        _audio.PlayPvs(ent.Comp.SellSound, Transform(ent).Coordinates);
+        var price = GetPrice(indexedRequest) ?? 0;
+        _currency.GenerateMoney(price, Transform(ent).Coordinates);
+        SpawnAtPosition(ent.Comp.SellVisual, Transform(ent).Coordinates);
+
+        UpdateSellingUIState(ent);
+    }
+}

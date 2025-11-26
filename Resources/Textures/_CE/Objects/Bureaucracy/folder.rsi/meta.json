@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Created by Max Gab, folders and passport by TheShuEd, stamps on paper by viator1748",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "folder_blue"
+    },
+    {
+      "name": "folder_red"
+    },
+    {
+      "name": "folder_green"
+    },
+    {
+      "name": "folder_purple"
+    }
+  ]
+}

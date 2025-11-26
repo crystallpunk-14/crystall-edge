@@ -11,7 +11,7 @@
     state: seeds
   - type: CESeed
   - type: StackPrice
-    price: 0.2
+    price: 0.5
   - type: Stack
     count: 1
 
@@ -22,7 +22,7 @@
   parent: CEBaseSeed
   components:
   - type: Sprite
-    sprite: _CE/Objects/Consumable/wheat.rsi
+    sprite: _CE/Objects/Consumable/Food/wheat.rsi
   - type: CESeed
     plantProto: CEPlantWheat
   - type: Stack
@@ -44,7 +44,7 @@
   parent: CEBaseSeed
   components:
   - type: Sprite
-    sprite: _CE/Objects/Consumable/pumpkin.rsi
+    sprite: _CE/Objects/Consumable/Food/pumpkin.rsi
   - type: CESeed
     plantProto: CEPlantPumpkin
   - type: Stack
@@ -66,7 +66,7 @@
   parent: CEBaseSeed
   components:
   - type: Sprite
-    sprite: _CE/Objects/Consumable/cabbage.rsi
+    sprite: _CE/Objects/Consumable/Food/cabbage.rsi
   - type: CESeed
     plantProto: CEPlantCabbage
   - type: Stack
@@ -88,7 +88,7 @@
   parent: CEBaseSeed
   components:
   - type: Sprite
-    sprite: _CE/Objects/Consumable/cucumber.rsi
+    sprite: _CE/Objects/Consumable/Food/cucumber.rsi
   - type: CESeed
     plantProto: CEPlantCucumber
   - type: Stack
@@ -110,7 +110,7 @@
   parent: CEBaseSeed
   components:
   - type: Sprite
-    sprite: _CE/Objects/Consumable/tomato.rsi
+    sprite: _CE/Objects/Consumable/Food/tomato.rsi
   - type: CESeed
     plantProto: CEPlantTomatoes
   - type: Stack
@@ -132,7 +132,7 @@
   parent: CEBaseSeed
   components:
   - type: Sprite
-    sprite: _CE/Objects/Consumable/pepper.rsi
+    sprite: _CE/Objects/Consumable/Food/pepper.rsi
   - type: CESeed
     plantProto: CEPlantPepper
   - type: Stack
@@ -154,7 +154,7 @@
   parent: CEBaseSeed
   components:
   - type: Sprite
-    sprite: _CE/Objects/Consumable/cotton.rsi
+    sprite: _CE/Objects/Consumable/Food/cotton.rsi
   - type: CESeed
     plantProto: CEPlantCotton
   - type: Stack
@@ -176,7 +176,7 @@
   parent: CEBaseSeed
   components:
   - type: Sprite
-    sprite: _CE/Objects/Consumable/sunflower.rsi
+    sprite: _CE/Objects/Consumable/Food/sunflower.rsi
   - type: CESeed
     plantProto: CEPlantSunflower
   - type: Stack

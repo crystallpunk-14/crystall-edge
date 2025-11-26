@@ -3,3 +3,9 @@
   abstract: true
   components:
     - type: CEStationArrivals
+
+- type: entity
+  id: CEBaseStationEconomy
+  abstract: true
+  components:
+  - type: CEStationEconomy

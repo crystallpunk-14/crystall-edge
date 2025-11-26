@@ -1,0 +1,21 @@
+#- type: entity
+#  parent: CEBaseAmbitionObjective
+#  id: CEBaseInnkeeperAmbition
+#  abstract: true
+#  components:
+#  - type: CEAmbitionObjective
+#    conditions:
+#      - !type:RequiredJob
+#        jobs:
+#        - CEInnkeeper
+
+#- type: entity
+#  parent: CEBaseInnkeeperAmbition
+#  id: CEAmbitionFoodConservatism
+#  components:
+#  - type: CEAmbitionObjective
+#    name: ce-ambition-cookism-name
+#    desc: ce-ambition-cookism-desc
+#    weight: 2
+#    parsings:
+#      FOOD: !type:RandomFood

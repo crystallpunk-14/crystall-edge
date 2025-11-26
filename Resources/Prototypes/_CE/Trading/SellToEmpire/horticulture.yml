@@ -1,0 +1,44 @@
+- type: tradingRequest
+  id: GreenSalad
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: GreenSalad
+    count: 20
+
+- type: tradingRequest
+  id: PumpkinPuree
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: PumpkinPuree
+    count: 20
+
+- type: tradingRequest
+  id: VegSoup
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: VegSoup
+    count: 20
+
+- type: tradingRequest
+  id: MashedPotato
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: MashedPotato
+    count: 20
+
+- type: tradingRequest
+  id: MashedPotatoSalad
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: MashedPotatoSalad
+    count: 20
