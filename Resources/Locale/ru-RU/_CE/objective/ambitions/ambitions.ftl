@@ -51,3 +51,13 @@ ce-ambition-befriend-desc = Мне хочется стать с !NAME! близ�
 
 ce-ambition-enemy-name = Затаенная неприязнь
 ce-ambition-enemy-desc = !NAME! серьезно насолил мне в прошлом, и я не хочу даже видеть его. Пусть катится к черту.
+
+ce-ambition-date-name = Свидание
+ce-ambition-date-desc = Хочется устроить свидание с !NAME!, на котором мы будем романтично есть !FOOD!...
+
+ce-ambition-profession-change-name = Смена профессии
+ce-ambition-profession-change-desc = Меня не устраивает кто я есть. Я считаю что если я стану !JOB!, моя жизнь станет куда лучше.
+
+ce-ambition-manipulator-name = Манипулятор
+ce-ambition-manipulator-quarrel-desc = Смогу ли я поссорить !NAME1! с !NAME2!?
+ce-ambition-manipulator-friend-desc = Смогу ли я сделать !NAME1! и !NAME2! близкими друзьями?

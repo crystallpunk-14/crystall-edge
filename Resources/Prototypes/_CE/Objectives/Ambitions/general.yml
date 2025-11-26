@@ -149,3 +149,47 @@
     desc: ce-ambition-enemy-desc
     parsings:
       NAME: !type:RandomOtherPerson
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionDate
+  components:
+  - type: CEAmbitionObjective
+    weight: 3 #Socialization is fun
+    name: ce-ambition-date-name
+    desc: ce-ambition-date-desc
+    parsings:
+      NAME: !type:RandomOtherPerson
+      FOOD: !type:RandomFood
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionProfessionChange
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-profession-change-name
+    desc: ce-ambition-profession-change-desc
+    parsings:
+      JOB: !type:RandomJob
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionManipulatorQuarrel
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-manipulator-name
+    desc: ce-ambition-manipulator-quarrel-desc
+    parsings:
+      NAME1: !type:RandomOtherPerson
+      NAME2: !type:RandomOtherPerson
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionManipulatorFriend
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-manipulator-name
+    desc: ce-ambition-manipulator-friend-desc
+    parsings:
+      NAME1: !type:RandomOtherPerson
+      NAME2: !type:RandomOtherPerson

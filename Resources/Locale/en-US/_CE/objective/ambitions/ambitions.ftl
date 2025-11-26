@@ -48,3 +48,13 @@ ce-ambition-befriend-desc = I want to become close friends with !NAME!.
 
 ce-ambition-enemy-name = Hidden Animosity
 ce-ambition-enemy-desc = !NAME! seriously wronged me in the past, and I don't even want to see them. They can go to hell.
+
+ce-ambition-date-name = Romantic Date
+ce-ambition-date-desc = I want to arrange a date with !NAME! where we romantically eat !FOOD!...
+
+ce-ambition-profession-change-name = Career Change
+ce-ambition-profession-change-desc = I'm not satisfied with who I am. I believe if I become a !JOB!, my life will be much better.
+
+ce-ambition-manipulator-name = Manipulator
+ce-ambition-manipulator-quarrel-desc = Can I make !NAME1! and !NAME2! fight with each other?
+ce-ambition-manipulator-friend-desc = Can I make !NAME1! and !NAME2! become close friends?
