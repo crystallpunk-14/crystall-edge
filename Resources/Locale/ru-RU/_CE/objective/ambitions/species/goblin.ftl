@@ -8,7 +8,7 @@ ce-ambition-goblin-trade-name = Гоблинская торговля
 ce-ambition-goblin-trade-desc = Выторгую у !NAME! его одежду или другие внешние предметы за что-то менее ценное.
 
 ce-ambition-big-boss-name = Большой босс
-ce-ambition-big-boss-desc = Убежу !COUNT! других гоблинов подчиняться мне сегодня.
+ce-ambition-big-boss-desc = Убедю !COUNT! других гоблинов подчиняться мне сегодня.
 
 ce-ambition-shiny-collector-name = Блестяшки!
 ce-ambition-shiny-collector-desc = Соберу !COUNT! блестящих или ярких предметов для своей коллекции.
