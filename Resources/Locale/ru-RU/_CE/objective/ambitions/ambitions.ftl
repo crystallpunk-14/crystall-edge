@@ -59,3 +59,19 @@ ce-ambition-manipulator-friend-desc = Смогу ли я сделать !NAME1! 
 
 ce-ambition-support-name = Поддержка
 ce-ambition-support-desc = Из-за того, что !REASON!, я хотел бы чтобы !NAME! был в порядке.
+
+ce-ambition-story-collector-name = Коллекционер историй
+ce-ambition-story-collector-desc = Я пишу книгу воспоминаний. Нужно узнать у !COUNT! людей их самую интересную историю из жизни.
+
+ce-ambition-secret-benefactor-name = Тайный благодетель
+ce-ambition-secret-benefactor-desc = Сегодня я буду анонимно помогать !NAME!. Они не должны узнать, что это я.
+
+ce-ambition-unusual-collector-name = Коллекционер необычного
+ce-ambition-unusual-collector-desc = Я собираю редкие вещи. Сегодня мне нужно найти !COUNT! экземпляров !ITEM!.
+
+ce-ambition-interior-designer-name = Дизайнер интерьеров
+ce-ambition-interior-designer-desc = Место !LOCATION! выглядит ужасно. Я должен его украсить и сделать уютным.
+
+ce-ambition-peacemaker-name = Миротворец
+ce-ambition-peacemaker-desc = Я не выношу конфликтов. Если увижу ссору, обязательно попытаюсь помирить спорящих.
+

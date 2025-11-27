@@ -59,3 +59,18 @@ ce-ambition-manipulator-friend-desc = Can I make !NAME1! and !NAME2! become clos
 
 ce-ambition-support-name = Support
 ce-ambition-support-desc = Because of !REASON!, I would like !NAME! to be okay.
+
+ce-ambition-story-collector-name = Story Collector
+ce-ambition-story-collector-desc = I'm writing a book of memories. I need to learn the most interesting life story from !COUNT! different people.
+
+ce-ambition-secret-benefactor-name = Secret Benefactor
+ce-ambition-secret-benefactor-desc = Today I will anonymously help !NAME!. They must not find out it's me.
+
+ce-ambition-unusual-collector-name = Collector of the Unusual
+ce-ambition-unusual-collector-desc = I collect rare items. Today I need to find !COUNT! copies of !ITEM!.
+
+ce-ambition-interior-designer-name = Interior Designer
+ce-ambition-interior-designer-desc = The place !LOCATION! looks terrible. I must decorate it and make it cozy.
+
+ce-ambition-peacemaker-name = Peacemaker
+ce-ambition-peacemaker-desc = I cannot stand conflicts. If I see a quarrel, I will definitely try to reconcile those arguing.

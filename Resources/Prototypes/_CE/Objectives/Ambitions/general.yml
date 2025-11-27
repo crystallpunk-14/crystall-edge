@@ -170,3 +170,65 @@
       REASON: !type:RandomDataset
         dataset: CEAmbitionReason
       NAME: !type:RandomOtherPerson
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionStoryCollector
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-story-collector-name
+    desc: ce-ambition-story-collector-desc
+    weight: 3 # Social interaction
+    parsings:
+      COUNT: !type:RandomNumber
+        range:
+          min: 3
+          max: 6
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionSecretBenefactor
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-secret-benefactor-name
+    desc: ce-ambition-secret-benefactor-desc
+    weight: 3 # Social interaction
+    parsings:
+      NAME: !type:RandomOtherPerson
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionUnusualCollector
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-unusual-collector-name
+    desc: ce-ambition-unusual-collector-desc
+    weight: 2
+    parsings:
+      COUNT: !type:RandomNumber
+        range:
+          min: 2
+          max: 5
+      ITEM: !type:RandomEntity
+        whitelist:
+          - Item
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionInteriorDesigner
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-interior-designer-name
+    desc: ce-ambition-interior-designer-desc
+    weight: 2
+    parsings:
+      LOCATION: !type:RandomLocation
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionPeacemaker
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-peacemaker-name
+    desc: ce-ambition-peacemaker-desc
+    weight: 2 # Roleplay challenge
