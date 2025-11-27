@@ -170,7 +170,7 @@
     name: ce-ambition-profession-change-name
     desc: ce-ambition-profession-change-desc
     parsings:
-      JOB: !type:RandomJob
+      JOB: !type:RandomOtherJob
 
 - type: entity
   parent: CEBaseAmbitionObjective
