@@ -12,7 +12,7 @@
   - CEGuardHead
   #- CEGeneralEyes
   - CEGuardCommanderCloak #
-  - CEGeneralGloves
+  #- CEGeneralGloves
   - CEGuardShirt
   - CEGuardPants
   - CEGeneralShoes
@@ -23,13 +23,11 @@
   - CEInvestigatorHead
   #- CEGeneralEyes
   - CEInvestigatorCloak #
-  - CEGeneralGloves
+  #- CEGeneralGloves
   - CEGuardShirt
   - CEGuardPants
   - CEGeneralShoes
-  - CEGeneralBack
-  - CEGeneralTrinkets
-  - CEGuardEquip
+  #- CEGeneralBack
 
 - type: roleLoadout
   id: JobCEGuard
@@ -37,7 +35,7 @@
   - CEGuardHead
   #- CEGeneralEyes
   - CEGuardCloak #
-  - CEGeneralGloves
+  #- CEGeneralGloves
   - CEGuardShirt
   - CEGuardPants
   - CEGeneralShoes
