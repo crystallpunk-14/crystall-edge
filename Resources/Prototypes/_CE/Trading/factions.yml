@@ -18,3 +18,8 @@
   id: Tailors
   color: "#75b3bb"
   name: ce-trade-faction-tailors
+
+- type: tradingFaction
+  id: EmpireGuard
+  color: "#2f6cd6"
+  name: ce-trade-faction-empire-guard

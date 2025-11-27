@@ -8,9 +8,6 @@ namespace Content.Shared._CE.Trading;
 public sealed partial class CEAddTradingReputationSpecial : JobSpecial
 {
     [DataField]
-    public float Reputation = 1f;
-
-    [DataField]
     public HashSet<ProtoId<CETradingFactionPrototype>> Factions = new();
 
     public override void AfterEquip(EntityUid mob)
