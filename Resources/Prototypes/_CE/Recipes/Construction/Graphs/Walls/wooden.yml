@@ -30,7 +30,7 @@
         - to: CEWallWooden
           steps:
             - material: CEWood
-              amount: 2
+              amount: 1
               doAfter: 1.5
             - material: CENail
               amount: 1
@@ -50,7 +50,7 @@
           completed:
             - !type:SpawnPrototype
               prototype: CEWoodenPlanks1
-              amount: 2
+              amount: 1
             - !type:SpawnPrototype
               prototype: CENail1
               amount: 1
