@@ -82,41 +82,6 @@
 
 - type: entity
   parent: CEBaseAmbitionObjective
-  id: CEAmbitionItemPhobia
-  components:
-  - type: CEAmbitionObjective
-    name: ce-ambition-phobia-name
-    desc: ce-ambition-item-phobia-desc
-    weight: 3
-    parsings:
-      REASON: !type:RandomDataset
-        dataset: CEAmbitionReason
-      ITEM: !type:RandomEntity
-
-- type: entity
-  parent: CEBaseAmbitionObjective
-  id: CEAmbitionAbstractPhobia
-  components:
-  - type: CEAmbitionObjective
-    name: ce-ambition-phobia-name
-    desc: ce-ambition-abstract-phobia-desc
-    parsings:
-      TOPIC: !type:RandomDataset
-        dataset: CEAmbitionAbstractTopic
-
-- type: entity
-  parent: CEBaseAmbitionObjective
-  id: CEAmbitionSpeciesPhobia
-  components:
-  - type: CEAmbitionObjective
-    name: ce-ambition-phobia-name
-    desc: ce-ambition-species-phobia-desc
-    weight: 2
-    parsings:
-      SPECIES: !type:RandomSpecies
-
-- type: entity
-  parent: CEBaseAmbitionObjective
   id: CEAmbitionEarning
   components:
   - type: CEAmbitionObjective
