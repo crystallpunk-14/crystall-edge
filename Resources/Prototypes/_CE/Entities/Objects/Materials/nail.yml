@@ -58,7 +58,7 @@
       path: /Audio/Effects/weak_hit2.ogg
 
 - type: entity
-  id: CENail110
+  id: CENail10
   parent: CENail1
   suffix: 10
   components:

@@ -37,7 +37,6 @@
 
 - type: markingPoints
   id: CEMobGoblinMarkingLimits
-  onlyWhitelisted: true
   points:
     Hair:
       points: 1
