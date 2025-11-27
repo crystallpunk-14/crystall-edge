@@ -1,0 +1,35 @@
+
+# Cloak
+
+- type: loadoutGroup
+  id: CEInvestigatorCloak
+  name: ce-loadout-investigator-cloak
+  loadouts:
+  - CEClothingCloakGuardInvestigator
+
+- type: loadout
+  id: CEClothingCloakGuardInvestigator
+  equipment:
+    cloak: CEClothingCloakGuardInvestigator
+
+
+# Head
+
+- type: loadoutGroup
+  id: CEInvestigatorHead
+  name: ce-loadout-investigator-head
+  minLimit: 1
+  loadouts:
+  - CEClothingHeadGuardInvestigatorHelmet
+  - CEClothingHeadGuardFedora
+  - CEClothingHeadGuardTriangular
+
+- type: loadout
+  id: CEClothingHeadGuardTriangular
+  equipment:
+    head: CEClothingHeadGuardTriangular
+
+- type: loadout
+  id: CEClothingHeadGuardInvestigatorHelmet
+  equipment:
+    head: CEClothingHeadGuardInvestigatorHelmet

@@ -1,0 +1,78 @@
+
+# Cloak
+
+- type: loadoutGroup
+  id: CEGuardCloak
+  name: ce-loadout-guard-cloak
+  minLimit: 0
+  loadouts:
+  - CEClothingCloakGuardBlue
+  - CEClothingCloakGuardSyurko
+
+- type: loadout
+  id: CEClothingCloakGuardBlue
+  equipment:
+    cloak: CEClothingCloakGuardBlue
+
+- type: loadout
+  id: CEClothingCloakGuardSyurko
+  equipment:
+    cloak: CEClothingCloakGuardSyurko
+
+# Head
+
+- type: loadoutGroup
+  id: CEGuardHead
+  name: ce-loadout-guard-head
+  minLimit: 1
+  loadouts:
+  - CEClothingHeadGuardHelmet
+  - CEClothingHeadGuardCorinthianHelmet
+  - CEClothingHeadGuardCap
+  - CEClothingHeadGuardFedora
+
+- type: loadout
+  id: CEClothingHeadGuardHelmet
+  equipment:
+    head: CEClothingHeadGuardHelmet
+
+- type: loadout
+  id: CEClothingHeadGuardCorinthianHelmet
+  equipment:
+    head: CEClothingHeadGuardCorinthianHelmet
+
+- type: loadout
+  id: CEClothingHeadGuardCap
+  equipment:
+    head: CEClothingHeadGuardCap
+
+- type: loadout
+  id: CEClothingHeadGuardFedora
+  equipment:
+    head: CEClothingHeadGuardFedora
+
+# Pants
+
+- type: loadoutGroup
+  id: CEGuardPants
+  name: ce-loadout-guard-pants
+  loadouts:
+  - CEClothingPantsGuardsChainmailSkirt
+
+- type: loadout
+  id: CEClothingPantsGuardsChainmailSkirt
+  equipment:
+    pants: CEClothingPantsGuardsChainmailSkirt
+
+# Shirt
+
+- type: loadoutGroup
+  id: CEGuardShirt
+  name: ce-loadout-guard-shirt
+  loadouts:
+  - CEClothingShirtGuardsChainmailShirtB
+
+- type: loadout
+  id: CEClothingShirtGuardsChainmailShirtB
+  equipment:
+    shirt: CEClothingShirtGuardsChainmailShirtB

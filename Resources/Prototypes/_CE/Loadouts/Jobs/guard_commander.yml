@@ -1,0 +1,13 @@
+# Cloak
+
+- type: loadoutGroup
+  id: CEGuardCommanderCloak
+  name: ce-loadout-guard-commander-cloak
+  loadouts:
+  - CEClothingCloakGuardCommander
+
+- type: loadout
+  id: CEClothingCloakGuardCommander
+  equipment:
+    cloak: CEClothingCloakGuardCommander
+
