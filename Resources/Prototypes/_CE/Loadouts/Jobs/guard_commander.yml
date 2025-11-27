@@ -2,7 +2,7 @@
 
 - type: loadoutGroup
   id: CEGuardCommanderCloak
-  name: ce-loadout-guard-commander-cloak
+  name: ce-loadout-cloak
   loadouts:
   - CEClothingCloakGuardCommander
 

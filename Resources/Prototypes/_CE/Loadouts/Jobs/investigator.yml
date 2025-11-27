@@ -3,33 +3,27 @@
 
 - type: loadoutGroup
   id: CEInvestigatorCloak
-  name: ce-loadout-investigator-cloak
+  name: ce-loadout-cloak
   loadouts:
-  - CEClothingCloakGuardInvestigator
+  - CEClothingCloakMantleInvestigator
 
 - type: loadout
-  id: CEClothingCloakGuardInvestigator
+  id: CEClothingCloakMantleInvestigator
   equipment:
-    cloak: CEClothingCloakGuardInvestigator
+    cloak: CEClothingCloakMantleInvestigator
 
 
 # Head
 
 - type: loadoutGroup
   id: CEInvestigatorHead
-  name: ce-loadout-investigator-head
+  name: ce-loadout-head
   minLimit: 1
   loadouts:
-  - CEClothingHeadGuardInvestigatorHelmet
-  - CEClothingHeadGuardFedora
-  - CEClothingHeadGuardTriangular
+  - CEClothingHeadHelmetInvestigator
+  - CEClothingHeadFedoraGuard
 
 - type: loadout
-  id: CEClothingHeadGuardTriangular
+  id: CEClothingHeadHelmetInvestigator
   equipment:
-    head: CEClothingHeadGuardTriangular
-
-- type: loadout
-  id: CEClothingHeadGuardInvestigatorHelmet
-  equipment:
-    head: CEClothingHeadGuardInvestigatorHelmet
+    head: CEClothingHeadHelmetInvestigator
