@@ -212,6 +212,8 @@
       ITEM: !type:RandomEntity
         whitelist:
           - Item
+        blacklist:
+          - Extractable # uhh, not the best way, but i wanna exclude organs
 
 - type: entity
   parent: CEBaseAmbitionObjective

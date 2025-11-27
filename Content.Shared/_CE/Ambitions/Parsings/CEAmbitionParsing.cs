@@ -66,6 +66,8 @@ public sealed partial class RandomEntity : CEAmbitionParsing
 
     [DataField]
     public List<string> Whitelist = new();
+    [DataField]
+    public List<string> Blacklist = new();
 
     public override string? GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
     {
@@ -86,6 +88,15 @@ public sealed partial class RandomEntity : CEAmbitionParsing
             foreach (var compName in Whitelist)
             {
                 if (!item.Components.TryGetComponent(compName, out _))
+                {
+                    suitable = false;
+                    break;
+                }
+            }
+
+            foreach (var compName in Blacklist)
+            {
+                if (item.Components.TryGetComponent(compName, out _))
                 {
                     suitable = false;
                     break;
