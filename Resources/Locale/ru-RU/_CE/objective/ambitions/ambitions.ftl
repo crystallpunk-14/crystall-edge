@@ -70,7 +70,7 @@ ce-ambition-unusual-collector-name = Коллекционер необычног
 ce-ambition-unusual-collector-desc = Я собираю редкие вещи. Сегодня мне нужно найти !COUNT! экземпляров !ITEM!.
 
 ce-ambition-interior-designer-name = Дизайнер интерьеров
-ce-ambition-interior-designer-desc = Место !LOCATION! выглядит ужасно. Я должен его украсить и сделать уютным.
+ce-ambition-interior-designer-desc = !LOCATION! выглядят ужасно. Я должен его украсить и сделать уютным.
 
 ce-ambition-peacemaker-name = Миротворец
 ce-ambition-peacemaker-desc = Я не выношу конфликтов. Если увижу ссору, обязательно попытаюсь помирить спорящих.

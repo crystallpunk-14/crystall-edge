@@ -16,3 +16,87 @@
   - type: CEAmbitionObjective
     name: ce-ambition-hoarder-name
     desc: ce-ambition-hoarder-desc
+
+- type: entity
+  parent: CEBaseGoblinAmbition
+  id: CEAmbitionBigBoom
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-big-boom-name
+    desc: ce-ambition-big-boom-desc
+    weight: 2
+
+- type: entity
+  parent: CEBaseGoblinAmbition
+  id: CEAmbitionTrickster
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-trickster-name
+    desc: ce-ambition-trickster-desc
+    weight: 2.5
+    parsings:
+      COUNT: !type:RandomNumber
+        range:
+          min: 2
+          max: 4
+
+- type: entity
+  parent: CEBaseGoblinAmbition
+  id: CEAmbitionGoblinTrade
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-goblin-trade-name
+    desc: ce-ambition-goblin-trade-desc
+    weight: 2
+    parsings:
+      NAME: !type:RandomOtherPerson
+
+- type: entity
+  parent: CEBaseGoblinAmbition
+  id: CEAmbitionBigBoss
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-big-boss-name
+    desc: ce-ambition-big-boss-desc
+    weight: 1.5
+    parsings:
+      COUNT: !type:RandomNumber
+        range:
+          min: 2
+          max: 4
+
+- type: entity
+  parent: CEBaseGoblinAmbition
+  id: CEAmbitionShinyCollector
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-shiny-collector-name
+    desc: ce-ambition-shiny-collector-desc
+    weight: 2.5
+    parsings:
+      COUNT: !type:RandomNumber
+        range:
+          min: 3
+          max: 6
+
+- type: entity
+  parent: CEBaseGoblinAmbition
+  id: CEAmbitionMushroomFarm
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-mushroom-farm-name
+    desc: ce-ambition-mushroom-farm-desc
+    weight: 2
+    parsings:
+      LOCATION: !type:RandomLocation
+
+- type: entity
+  parent: CEBaseGoblinAmbition
+  id: CEAmbitionUndergroundCozy
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-underground-cozy-name
+    desc: ce-ambition-underground-cozy-desc
+    weight: 2
+    parsings:
+      LOCATION: !type:RandomLocation

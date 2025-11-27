@@ -1,0 +1,61 @@
+- type: entity
+  parent: CEBaseAmbitionObjective
+  abstract: true
+  id: CEBaseTieflingAmbition
+  components:
+  - type: CEAmbitionObjective
+    conditions:
+      - !type:RequiredSpecies
+        species:
+        - CETiefling
+
+- type: entity
+  parent: CEBaseTieflingAmbition
+  id: CEAmbitionFierySoul
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-fiery-soul-name
+    desc: ce-ambition-fiery-soul-desc
+    weight: 2
+
+- type: entity
+  parent: CEBaseTieflingAmbition
+  id: CEAmbitionDevilsAdvocate
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-devils-advocate-name
+    desc: ce-ambition-devils-advocate-desc
+    weight: 2
+    parsings:
+      COUNT: !type:RandomNumber
+        range:
+          min: 2
+          max: 4
+
+- type: entity
+  parent: CEBaseTieflingAmbition
+  id: CEAmbitionInfernalCharisma
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-infernal-charisma-name
+    desc: ce-ambition-infernal-charisma-desc
+    weight: 2.5
+    parsings:
+      COUNT: !type:RandomNumber
+        range:
+          min: 2
+          max: 4
+
+- type: entity
+  parent: CEBaseTieflingAmbition
+  id: CEAmbitionRedemption
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-redemption-name
+    desc: ce-ambition-redemption-desc
+    weight: 2
+    parsings:
+      COUNT: !type:RandomNumber
+        range:
+          min: 3
+          max: 6

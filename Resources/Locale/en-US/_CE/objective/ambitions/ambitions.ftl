@@ -70,7 +70,7 @@ ce-ambition-unusual-collector-name = Collector of the Unusual
 ce-ambition-unusual-collector-desc = I collect rare items. Today I need to find !COUNT! copies of !ITEM!.
 
 ce-ambition-interior-designer-name = Interior Designer
-ce-ambition-interior-designer-desc = The place !LOCATION! looks terrible. I must decorate it and make it cozy.
+ce-ambition-interior-designer-desc = !LOCATION! looks terrible. I must decorate it and make it cozy.
 
 ce-ambition-peacemaker-name = Peacemaker
 ce-ambition-peacemaker-desc = I cannot stand conflicts. If I see a quarrel, I will definitely try to reconcile those arguing.
