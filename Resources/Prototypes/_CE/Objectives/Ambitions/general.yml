@@ -158,3 +158,15 @@
     parsings:
       NAME1: !type:RandomOtherPerson
       NAME2: !type:RandomOtherPerson
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionSupport
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-support-name
+    desc: ce-ambition-support-desc
+    parsings:
+      REASON: !type:RandomDataset
+        dataset: CEAmbitionReason
+      NAME: !type:RandomOtherPerson

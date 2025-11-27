@@ -56,3 +56,6 @@ ce-ambition-profession-change-desc = I'm not satisfied with who I am. I believe 
 ce-ambition-manipulator-name = Manipulator
 ce-ambition-manipulator-quarrel-desc = Can I make !NAME1! and !NAME2! fight with each other?
 ce-ambition-manipulator-friend-desc = Can I make !NAME1! and !NAME2! become close friends?
+
+ce-ambition-support-name = Support
+ce-ambition-support-desc = Because of that !REASON!, I would like !NAME! to be okay.

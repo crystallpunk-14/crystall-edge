@@ -56,3 +56,6 @@ ce-ambition-profession-change-desc = Меня не устраивает кто �
 ce-ambition-manipulator-name = Манипулятор
 ce-ambition-manipulator-quarrel-desc = Смогу ли я поссорить !NAME1! с !NAME2!?
 ce-ambition-manipulator-friend-desc = Смогу ли я сделать !NAME1! и !NAME2! близкими друзьями?
+
+ce-ambition-support-name = Поддержка
+ce-ambition-support-desc = Из-за того, что !REASON!, я хотел бы чтобы !NAME! был в порядке.
