@@ -97,11 +97,14 @@ public sealed partial class ExampleComponent : Component
 - Follow existing naming conventions for IDs
 - Entity IDs: `PascalCase` (e.g., `FoodBreadPlain`)
 - Prototype type prefix in ID (e.g., `ActionToggle...`, `Recipe...`)
+- It is good practice to use inheritance for entity-type prototypes, with an abstract parent prototype containing common data.
 
 ### Example Entity Prototype
 ```yaml
 - type: entity
   id: ExampleEntity
+  parent: ExampleParentEntity
+  abstract: true #For abstract parents
   name: example entity
   description: An example entity.
   components:
