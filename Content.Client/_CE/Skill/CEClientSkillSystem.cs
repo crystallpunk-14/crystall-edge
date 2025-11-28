@@ -49,7 +49,7 @@ public sealed partial class CEClientSkillSystem : CESharedSkillSystem
         var netEv = new CETryLearnSkillMessage(GetNetEntity(target.Value), skill.ID);
         RaiseNetworkEvent(netEv);
 
-        if (_proto.TryIndex(skill.Tree, out var indexedTree))
+        if (_proto.Resolve(skill.Tree, out var indexedTree))
         {
             _audio.PlayGlobal(indexedTree.LearnSound, target.Value, AudioParams.Default.WithVolume(6f));
         }

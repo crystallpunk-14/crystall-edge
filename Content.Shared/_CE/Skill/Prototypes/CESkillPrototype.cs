@@ -33,7 +33,7 @@ public sealed partial class CESkillPrototype : IPrototype
     public ProtoId<CESkillTreePrototype> Tree = default!;
 
     /// <summary>
-    ///  The cost to learn this skill. This is used to determine how many progress points are needed to learn the skill.
+    ///  The cost to learn this skill. This is used to determine how many skill points are needed to learn the skill.
     /// </summary>
     [DataField]
     public float LearnCost = 1f;

@@ -141,7 +141,7 @@ public sealed class CESkillUIController : UIController, IOnStateEntered<Gameplay
             return;
         }
 
-        if (!_proto.TryIndex<CESkillPrototype>(node.NodeKey, out var skill))
+        if (!_proto.Resolve<CESkillPrototype>(node.NodeKey, out var skill))
         {
             DeselectNode();
             return;
@@ -165,10 +165,10 @@ public sealed class CESkillUIController : UIController, IOnStateEntered<Gameplay
         if (_targetPlayer == null)
             return;
 
-        if (!_proto.TryIndex(skill.Tree, out var indexedTree))
+        if (!_proto.Resolve(skill.Tree, out var indexedTree))
             return;
 
-        if (!_proto.TryIndex(indexedTree.SkillType, out var indexedSkillType))
+        if (!_proto.Resolve(indexedTree.SkillType, out var indexedSkillType))
             return;
 
         _selectedSkill = skill;
@@ -237,7 +237,7 @@ public sealed class CESkillUIController : UIController, IOnStateEntered<Gameplay
         if (!EntityManager.TryGetComponent<CESkillStorageComponent>(_targetPlayer, out var storage))
             return;
 
-        if (!_proto.TryIndex(_selectedSkillTree.SkillType, out var indexedSkillType))
+        if (!_proto.Resolve(_selectedSkillTree.SkillType, out var indexedSkillType))
             return;
 
         var skillPointsMap = storage.SkillPoints;
@@ -270,7 +270,7 @@ public sealed class CESkillUIController : UIController, IOnStateEntered<Gameplay
                 switch (req)
                 {
                     case NeedPrerequisite prerequisite:
-                        if (!_proto.TryIndex(prerequisite.Prerequisite, out var prerequisiteSkill))
+                        if (!_proto.Resolve(prerequisite.Prerequisite, out var prerequisiteSkill))
                             continue;
 
                         if (prerequisiteSkill.Tree != _selectedSkillTree)
@@ -333,17 +333,17 @@ public sealed class CESkillUIController : UIController, IOnStateEntered<Gameplay
         _window.TreeTabsContainer.RemoveAllChildren();
         foreach (var tree in storage.AvailableSkillTrees)
         {
-            if (!_proto.TryIndex(tree, out var indexedTree))
+            if (!_proto.Resolve(tree, out var indexedTree))
                 return;
 
-            if (!_proto.TryIndex(indexedTree.SkillType, out var indexedSkillType))
+            if (!_proto.Resolve(indexedTree.SkillType, out var indexedSkillType))
                 return;
 
             float learnedPoints = 0;
             foreach (var skillId in storage.LearnedSkills)
             {
                 //TODO: Loop indexing each skill is bad
-                if (_proto.TryIndex(skillId, out var skill) && skill.Tree == tree)
+                if (_proto.Resolve(skillId, out var skill) && skill.Tree == tree)
                 {
                     if (_skill.HaveFreeSkill(_targetPlayer.Value, skillId))
                         continue;
@@ -351,17 +351,17 @@ public sealed class CESkillUIController : UIController, IOnStateEntered<Gameplay
                 }
             }
 
-            var treeButton2 = new CESkillTreeButtonControl(indexedTree.Color,
+            var treeButton = new CESkillTreeButtonControl(indexedTree.Color,
                 Loc.GetString(indexedTree.Name),
                 learnedPoints,
                 indexedSkillType.Icon?.Frame0());
-            treeButton2.ToolTip = Loc.GetString(indexedTree.Desc ?? string.Empty);
-            treeButton2.OnPressed += () =>
+            treeButton.ToolTip = Loc.GetString(indexedTree.Desc ?? string.Empty);
+            treeButton.OnPressed += () =>
             {
                 SelectTree(indexedTree);
             };
 
-            _window.TreeTabsContainer.AddChild(treeButton2);
+            _window.TreeTabsContainer.AddChild(treeButton);
         }
     }
 
@@ -370,7 +370,7 @@ public sealed class CESkillUIController : UIController, IOnStateEntered<Gameplay
         if (_window == null)
             return;
 
-        if (!_proto.TryIndex(tree, out var indexedTree))
+        if (!_proto.Resolve(tree, out var indexedTree))
             return;
 
         _selectedSkillTree = indexedTree;

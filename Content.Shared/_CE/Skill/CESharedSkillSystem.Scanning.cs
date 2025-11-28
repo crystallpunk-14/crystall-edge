@@ -44,10 +44,10 @@ public abstract partial class CESharedSkillSystem
 
         foreach (var skill in ent.Comp.LearnedSkills)
         {
-            if (!_proto.TryIndex(skill, out var indexedSkill))
+            if (!_proto.Resolve(skill, out var indexedSkill))
                 continue;
 
-            if(!_proto.TryIndex(indexedSkill.Tree, out var indexedTree))
+            if(!_proto.Resolve(indexedSkill.Tree, out var indexedTree))
                 continue;
 
             var skillName = GetSkillName(skill);

@@ -142,10 +142,10 @@ public abstract partial class CESharedSkillSystem : EntitySystem
         if (component.LearnedSkills.Contains(skill))
             return false;
 
-        if (!_proto.TryIndex(skill, out var indexedSkill))
+        if (!_proto.Resolve(skill, out var indexedSkill))
             return false;
 
-        if (!_proto.TryIndex(indexedSkill.Tree, out var indexedTree))
+        if (!_proto.Resolve(indexedSkill.Tree, out var indexedTree))
             return false;
 
         foreach (var effect in indexedSkill.Effects)
@@ -185,10 +185,10 @@ public abstract partial class CESharedSkillSystem : EntitySystem
         if (!component.LearnedSkills.Remove(skill))
             return false;
 
-        if (!_proto.TryIndex(skill, out var indexedSkill))
+        if (!_proto.Resolve(skill, out var indexedSkill))
             return false;
 
-        if (!_proto.TryIndex(indexedSkill.Tree, out var indexedTree))
+        if (!_proto.Resolve(indexedSkill.Tree, out var indexedTree))
             return false;
 
         foreach (var effect in indexedSkill.Effects)
@@ -236,7 +236,7 @@ public abstract partial class CESharedSkillSystem : EntitySystem
         ProtoId<CESkillPrototype> skill,
         CESkillStorageComponent? component = null)
     {
-        if (!_proto.TryIndex(skill, out var indexedSkill))
+        if (!_proto.Resolve(skill, out var indexedSkill))
             return false;
 
         return CanLearnSkill(target, indexedSkill, component);
@@ -252,7 +252,7 @@ public abstract partial class CESharedSkillSystem : EntitySystem
         if (!Resolve(target, ref component, false))
             return false;
 
-        if (!_proto.TryIndex(skill.Tree, out var indexedTree))
+        if (!_proto.Resolve(skill.Tree, out var indexedTree))
             return false;
 
         //Already learned
@@ -304,7 +304,7 @@ public abstract partial class CESharedSkillSystem : EntitySystem
     /// </summary>
     public string GetSkillName(ProtoId<CESkillPrototype> skill)
     {
-        if (!_proto.TryIndex(skill, out var indexedSkill))
+        if (!_proto.Resolve(skill, out var indexedSkill))
             return string.Empty;
 
         if (indexedSkill.Name is not null)
@@ -325,7 +325,7 @@ public abstract partial class CESharedSkillSystem : EntitySystem
     /// </summary>
     public string GetSkillDescription(ProtoId<CESkillPrototype> skill)
     {
-        if (!_proto.TryIndex(skill, out var indexedSkill))
+        if (!_proto.Resolve(skill, out var indexedSkill))
             return string.Empty;
 
         var sb = new StringBuilder();
@@ -354,7 +354,7 @@ public abstract partial class CESharedSkillSystem : EntitySystem
         var frontier = component.LearnedSkills.ToHashSet();
         foreach (var skill in component.LearnedSkills)
         {
-            if (!_proto.TryIndex(skill, out var indexedSkill))
+            if (!_proto.Resolve(skill, out var indexedSkill))
                 continue;
 
             if (HaveFreeSkill(target, skill))
@@ -408,7 +408,7 @@ public abstract partial class CESharedSkillSystem : EntitySystem
         if (!Resolve(target, ref component, false))
             return;
 
-        if (!_proto.TryIndex(type, out var indexedType))
+        if (!_proto.Resolve(type, out var indexedType))
             return;
 
         if (!component.SkillPoints.TryGetValue(type, out var skillContainer))
@@ -442,7 +442,7 @@ public abstract partial class CESharedSkillSystem : EntitySystem
         if (!Resolve(target, ref component, false))
             return;
 
-        if (!_proto.TryIndex(type, out var indexedType))
+        if (!_proto.Resolve(type, out var indexedType))
             return;
 
         if (!component.SkillPoints.TryGetValue(type, out var skillContainer))

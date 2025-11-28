@@ -40,7 +40,7 @@ Code specific to CrystallEdge (not from upstream Space Station 14) is located in
 - Maximum line length: **120 characters**
 - Always include final newline in files
 - Braces on new lines (Allman style)
-- You should try to minimize the use of LINQ wherever possible.
+- You should try to minimize the use of LINQ in heavy areas where frequent allocation can affect performance.
 
 ### Entity-Component-System (ECS) Architecture
 CrystallEdge uses an ECS architecture:

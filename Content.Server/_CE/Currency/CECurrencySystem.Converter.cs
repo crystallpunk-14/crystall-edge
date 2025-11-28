@@ -220,7 +220,7 @@ public sealed partial class CECurrencySystem
         remainder -= singleCurrency;
 
         if (TryComp<StackComponent>(ent, out var stack) &&
-            _proto.TryIndex<StackPrototype>(stack.StackTypeId, out var indexedStack))
+            _proto.Resolve(stack.StackTypeId, out var indexedStack))
         {
             AdjustStack(ent, stack, indexedStack, singleCurrency, ref remainder);
         }

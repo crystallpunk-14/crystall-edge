@@ -104,7 +104,7 @@ public sealed partial class CESellingPlatformWindow : DefaultWindow
         TreeTabsContainer.RemoveAllChildren();
         foreach (var faction in _cachedUser.Value.Comp.Factions)
         {
-            if (!_proto.TryIndex(faction, out var indexedFaction))
+            if (!_proto.Resolve(faction, out var indexedFaction))
                 continue;
             var factionButton = new CETradingFactionButtonControl(
                 indexedFaction.Color,
@@ -121,7 +121,7 @@ public sealed partial class CESellingPlatformWindow : DefaultWindow
         if (_selectedFaction == null)
         {
             var firstFaction = _cachedUser.Value.Comp.Factions.First();
-            if (_proto.TryIndex(firstFaction, out var indexedFaction))
+            if (_proto.Resolve(firstFaction, out var indexedFaction))
                 SelectFaction(indexedFaction);
         }
         else if (_selectedFaction != null)

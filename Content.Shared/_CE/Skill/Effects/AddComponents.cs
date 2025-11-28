@@ -1,4 +1,3 @@
-
 using Content.Shared._CE.Skill.Prototypes;
 using Robust.Shared.Prototypes;
 
