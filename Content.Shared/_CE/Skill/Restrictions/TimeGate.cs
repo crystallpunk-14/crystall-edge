@@ -15,7 +15,7 @@ public sealed partial class TimeGate : CESkillRestriction
         var timing = IoCManager.Resolve<IGameTiming>();
         var cfg = IoCManager.Resolve<IConfigurationManager>();
 
-        if (cfg.GetCVar(CCVars.CESkillTimers) == false)
+        if (!cfg.GetCVar(CCVars.CESkillTimers))
             return true;
 
         return timing.CurTime >= TimeSpan.FromMinutes(Minutes);
@@ -29,7 +29,7 @@ public sealed partial class TimeGate : CESkillRestriction
         var leftoverTime = TimeSpan.FromMinutes(Minutes) - timing.CurTime;
         leftoverTime = leftoverTime < TimeSpan.Zero ? TimeSpan.Zero : leftoverTime;
 
-        if (cfg.GetCVar(CCVars.CESkillTimers) == false)
+        if (!cfg.GetCVar(CCVars.CESkillTimers))
             return Loc.GetString("ce-skill-req-timegate-disabled", ("minute", Minutes));
 
         return Loc.GetString("ce-skill-req-timegate", ("minute", Minutes), ("left", Math.Ceiling(leftoverTime.TotalMinutes)));

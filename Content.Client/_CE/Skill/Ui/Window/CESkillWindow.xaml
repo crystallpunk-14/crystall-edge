@@ -1,10 +1,10 @@
-<window:CESkillWindow
+<window1:CESkillWindow
     xmlns="https://spacestation14.io"
-    xmlns:window="clr-namespace:Content.Client._CE.UserInterface.Systems.Skill.Window"
     xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
     xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls"
     xmlns:parallax="clr-namespace:Content.Client.Parallax"
     xmlns:nodeTree="clr-namespace:Content.Client._CE.UserInterface.Systems.NodeTree"
+    xmlns:window1="clr-namespace:Content.Client._CE.Skill.Ui.Window"
     Title="{Loc 'ce-skill-info-title'}"
     MinSize="700 350"
     SetSize="980 550">
@@ -84,4 +84,4 @@
             </PanelContainer>
         </BoxContainer>
     </BoxContainer>
-</window:CESkillWindow>
+</window1:CESkillWindow>

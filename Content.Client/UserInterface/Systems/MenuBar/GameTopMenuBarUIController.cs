@@ -1,4 +1,4 @@
-using Content.Client._CE.UserInterface.Systems.Skill;
+using Content.Client._CE.Skill.Ui;
 using Content.Client.UserInterface.Systems.Actions;
 using Content.Client.UserInterface.Systems.Admin;
 using Content.Client.UserInterface.Systems.Bwoink;

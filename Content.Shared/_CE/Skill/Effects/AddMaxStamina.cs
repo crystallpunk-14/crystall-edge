@@ -4,7 +4,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.Skill.Effects;
 
-public sealed partial class AddManaStamina : CESkillEffect
+public sealed partial class AddMaxStamina : CESkillEffect
 {
     [DataField]
     public float AdditionalStamina = 0;
@@ -27,12 +27,12 @@ public sealed partial class AddManaStamina : CESkillEffect
         entManager.Dirty(target, staminaComp);
     }
 
-    public override string? GetName(IEntityManager entMagager, IPrototypeManager protoManager)
+    public override string? GetName(IEntityManager entManager, IPrototypeManager protoManager)
     {
         return null;
     }
 
-    public override string? GetDescription(IEntityManager entMagager, IPrototypeManager protoManager, ProtoId<CESkillPrototype> skill)
+    public override string? GetDescription(IEntityManager entManager, IPrototypeManager protoManager, ProtoId<CESkillPrototype> skill)
     {
         return Loc.GetString("ce-skill-desc-add-stamina", ("stamina", AdditionalStamina.ToString()));
     }

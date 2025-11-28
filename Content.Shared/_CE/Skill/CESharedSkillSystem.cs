@@ -196,12 +196,10 @@ public abstract partial class CESharedSkillSystem : EntitySystem
             effect.RemoveSkill(EntityManager, target);
         }
 
-        if (!component.FreeLearnedSkills.Remove(skill))
+        if (!component.FreeLearnedSkills.Remove(skill) &&
+            component.SkillPoints.TryGetValue(indexedTree.SkillType, out var skillContainer))
         {
-            if (component.SkillPoints.TryGetValue(indexedTree.SkillType, out var skillContainer))
-            {
-                skillContainer.Sum -= indexedSkill.LearnCost;
-            }
+            skillContainer.Sum -= indexedSkill.LearnCost;
         }
 
         Dirty(target, component);
@@ -298,7 +296,7 @@ public abstract partial class CESharedSkillSystem : EntitySystem
         if (!TryAddSkill(target, skill, component))
             return false;
 
-        return false;
+        return true;
     }
 
     /// <summary>
@@ -318,6 +316,7 @@ public abstract partial class CESharedSkillSystem : EntitySystem
             if (name != null)
                 return name;
         }
+
         return string.Empty;
     }
 
@@ -363,11 +362,8 @@ public abstract partial class CESharedSkillSystem : EntitySystem
 
             foreach (var req in indexedSkill.Restrictions)
             {
-                if (req is NeedPrerequisite prerequisite)
-                {
-                    if (frontier.Contains(prerequisite.Prerequisite))
-                        frontier.Remove(prerequisite.Prerequisite);
-                }
+                if (req is NeedPrerequisite prerequisite && frontier.Contains(prerequisite.Prerequisite))
+                    frontier.Remove(prerequisite.Prerequisite);
             }
         }
 
@@ -397,7 +393,7 @@ public abstract partial class CESharedSkillSystem : EntitySystem
     }
 
     /// <summary>
-    /// Increases the number of memory points for a character, limited to a certain amount.
+    /// Increases the number of skill points for a character, limited to a certain amount.
     /// </summary>
     public void AddSkillPoints(EntityUid target,
         ProtoId<CESkillPointPrototype> type,
@@ -432,7 +428,7 @@ public abstract partial class CESharedSkillSystem : EntitySystem
     }
 
     /// <summary>
-    /// Removes memory points. If a character has accumulated skills exceeding the new memory limit, random skills will be removed.
+    /// Removes skill points. If a character has accumulated skills exceeding the new memory limit, random skills will be removed.
     /// </summary>
     public void RemoveSkillPoints(EntityUid target,
         ProtoId<CESkillPointPrototype> type,

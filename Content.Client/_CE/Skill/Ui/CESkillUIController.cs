@@ -1,16 +1,13 @@
 using System.Linq;
 using System.Numerics;
 using System.Text;
-using Content.Client._CE.Skill;
-using Content.Client._CE.Skill.Ui;
+using Content.Client._CE.Skill.Ui.Window;
 using Content.Client._CE.UserInterface.Systems.NodeTree;
-using Content.Client._CE.UserInterface.Systems.Skill.Window;
 using Content.Client.Gameplay;
 using Content.Client.UserInterface.Controls;
 using Content.Shared._CE.Skill.Components;
 using Content.Shared._CE.Skill.Prototypes;
 using Content.Shared._CE.Skill.Restrictions;
-using Content.Shared.Input;
 using Content.Shared._CE.Input;
 using JetBrains.Annotations;
 using Robust.Client.Player;
@@ -22,7 +19,7 @@ using Robust.Shared.Input.Binding;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
-namespace Content.Client._CE.UserInterface.Systems.Skill;
+namespace Content.Client._CE.Skill.Ui;
 
 [UsedImplicitly]
 public sealed class CESkillUIController : UIController, IOnStateEntered<GameplayState>, IOnStateExited<GameplayState>,

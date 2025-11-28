@@ -12,7 +12,7 @@ public abstract partial class CESkillEffect
 
     public abstract void RemoveSkill(IEntityManager entManager, EntityUid target);
 
-    public abstract string? GetName(IEntityManager entMagager, IPrototypeManager protoManager);
+    public abstract string? GetName(IEntityManager entManager, IPrototypeManager protoManager);
 
-    public abstract string? GetDescription(IEntityManager entMagager, IPrototypeManager protoManager, ProtoId<CESkillPrototype> skill);
+    public abstract string? GetDescription(IEntityManager entManager, IPrototypeManager protoManager, ProtoId<CESkillPrototype> skill);
 }

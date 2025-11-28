@@ -4,7 +4,7 @@ using Robust.Shared.Utility;
 namespace Content.Shared._CE.Skill.Prototypes;
 
 /// <summary>
-/// A group of skills combined into one “branch”
+/// Defines a type of skill point currency used for learning skills.
 /// </summary>
 [Prototype("skillPoint")]
 public sealed partial class CESkillPointPrototype : IPrototype

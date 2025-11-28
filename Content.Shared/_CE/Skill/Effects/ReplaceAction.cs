@@ -60,23 +60,23 @@ public sealed partial class ReplaceAction : CESkillEffect
         actionsSystem.AddAction(target, OldAction);
     }
 
-    public override string? GetName(IEntityManager entMagager, IPrototypeManager protoManager)
+    public override string? GetName(IEntityManager entManager, IPrototypeManager protoManager)
     {
         return !protoManager.TryIndex(NewAction, out var indexedAction) ? string.Empty : indexedAction.Name;
     }
 
-    public override string? GetDescription(IEntityManager entMagager, IPrototypeManager protoManager, ProtoId<CESkillPrototype> skill)
+    public override string? GetDescription(IEntityManager entManager, IPrototypeManager protoManager, ProtoId<CESkillPrototype> skill)
     {
-        var dummyAction = entMagager.Spawn(NewAction);
+        var dummyAction = entManager.Spawn(NewAction);
         var message = new FormattedMessage();
-        if (!entMagager.TryGetComponent<MetaDataComponent>(dummyAction, out var meta))
+        if (!entManager.TryGetComponent<MetaDataComponent>(dummyAction, out var meta))
             return null;
 
         message.AddText(meta.EntityDescription + "\n");
         var ev = new ExaminedEvent(message, dummyAction, dummyAction, true, true);
-        entMagager.EventBus.RaiseLocalEvent(dummyAction, ev);
+        entManager.EventBus.RaiseLocalEvent(dummyAction, ev);
 
-        entMagager.DeleteEntity(dummyAction);
+        entManager.DeleteEntity(dummyAction);
         return ev.GetTotalMessage().ToMarkup();
     }
 }

@@ -8,7 +8,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._CE.Skill.Components;
 
 /// <summary>
-/// Allows you to see what skills the creature possesses
+/// Represents a consumable item that grants skill points to the entity that consumes it.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class CESkillPointConsumableComponent : Component

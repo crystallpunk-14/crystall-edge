@@ -20,7 +20,7 @@ public sealed partial class CESkillStorageComponent : Component
     public HashSet<ProtoId<CESkillTreePrototype>> AvailableSkillTrees = new();
 
     /// <summary>
-    /// Tracks skills that are learned without spending memory points.
+    /// Tracks skills that are learned without spending skill points.
     /// the skills that are here are DOUBLED in the LearnedSkills,
     /// </summary>
     [DataField, AutoNetworkedField]

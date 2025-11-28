@@ -19,12 +19,12 @@ public sealed partial class AddComponents : CESkillEffect
         entManager.RemoveComponents(target, Components);
     }
 
-    public override string? GetName(IEntityManager entMagager, IPrototypeManager protoManager)
+    public override string? GetName(IEntityManager entManager, IPrototypeManager protoManager)
     {
         return null;
     }
 
-    public override string? GetDescription(IEntityManager entMagager, IPrototypeManager protoManager, ProtoId<CESkillPrototype> skill)
+    public override string? GetDescription(IEntityManager entManager, IPrototypeManager protoManager, ProtoId<CESkillPrototype> skill)
     {
         return null;
     }
