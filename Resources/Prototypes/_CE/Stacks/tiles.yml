@@ -63,7 +63,7 @@
 
 - type: stack
   id: CEFloorTileStoneMediumBriks
-  name: ce-tiles-stone-medium_briks
+  name: ce-tiles-stone-medium-briks
   spawn: CEFloorTileStoneMediumBriks
   icon: { sprite: _CE/Objects/tile.rsi, state: medium_briks }
   maxCount: 30
@@ -76,21 +76,21 @@
   maxCount: 30
 
 - type: stack
-  id: CEFloorStoneSquarePattern
+  id: CEFloorTileStoneSquarePattern
   name: ce-tiles-stone-square-pattern
   spawn: CEFloorStoneSquarePattern
   icon: { sprite: _CE/Objects/tile.rsi, state: square_pattern }
   maxCount: 30
 
 - type: stack
-  id: CEFloorStoneMediumCircles
+  id: CEFloorTileStoneMediumCircles
   name: ce-tiles-stone-medium-circles
   spawn: CEFloorStoneMediumCircles
   icon: { sprite: _CE/Objects/tile.rsi, state: medium_circles }
   maxCount: 30
 
 - type: stack
-  id: CEFloorStoneSmallCircles
+  id: CEFloorTileStoneSmallCircles
   name: ce-tiles-stone-small-circles
   spawn: CEFloorStoneSmallCircles
   icon: { sprite: _CE/Objects/tile.rsi, state: small_circles }

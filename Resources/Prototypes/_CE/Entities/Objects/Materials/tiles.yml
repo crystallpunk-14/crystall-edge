@@ -277,7 +277,7 @@
     state: small_circles
   - type: FloorTile
     outputs:
-      - CEStoneMiddleCircles
+      - CEStoneSmallCircles
   - type: Stack
     stackType: CEFloorTileStoneSmallCircles
   - type: PhysicalComposition
