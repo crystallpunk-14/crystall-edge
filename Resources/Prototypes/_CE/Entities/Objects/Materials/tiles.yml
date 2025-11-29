@@ -190,16 +190,16 @@
 
 - type: entity
   parent: CEFloorTileBase
-  id: CEFloorTileStoneLongBriks
-  name: stone long briks
+  id: CEFloorTileStoneLongBricks
+  name: stone long bricks
   components:
   - type: Sprite
-    state: long_briks
+    state: long_bricks
   - type: FloorTile
     outputs:
-      - CEStoneLongBriks
+      - CEStoneLongBricks
   - type: Stack
-    stackType: CEFloorTileStoneLongBriks
+    stackType: CEFloorTileStoneLongBricks
   - type: PhysicalComposition
     materialComposition:
       CEStone: 2
@@ -207,15 +207,15 @@
 - type: entity
   parent: CEFloorTileBase
   id: CEFloorTileStoneMediumBriks
-  name: stone medium briks
+  name: stone medium bricks
   components:
   - type: Sprite
-    state: medium_briks
+    state: medium_bricks
   - type: FloorTile
     outputs:
-      - CEStoneMediumBriks
+      - CEStoneMediumBricks
   - type: Stack
-    stackType: CEFloorTileStoneMediumBriks
+    stackType: CEFloorTileStoneMediumBricks
   - type: PhysicalComposition
     materialComposition:
       CEStone: 2

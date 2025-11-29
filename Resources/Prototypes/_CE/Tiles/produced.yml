@@ -145,9 +145,9 @@
 
 - type: tile
   editorHidden: false
-  id: CEStoneLongBriks
-  name: ce-tiles-stone-long-briks
-  sprite: /Textures/_CE/Tiles/Stonebricks/long_briks.png
+  id: CEStoneLongBricks
+  name: ce-tiles-stone-long-bricks
+  sprite: /Textures/_CE/Tiles/Stonebricks/long_bricks.png
   variants: 4
   placementVariants:
   - 1.0
@@ -171,13 +171,13 @@
   heatCapacity: 10000
   weather: true
   deconstructTools: [ Prying ]
-  itemDrop: CEFloorTileStoneLongBriks
+  itemDrop: CEFloorTileStoneLongBricks
 
 - type: tile
   editorHidden: false
-  id: CEStoneMediumBriks
-  name: ce-tiles-stone-medium-briks
-  sprite: /Textures/_CE/Tiles/Stonebricks/medium_briks.png
+  id: CEStoneMediumBricks
+  name: ce-tiles-stone-medium-bricks
+  sprite: /Textures/_CE/Tiles/Stonebricks/medium_bricks.png
   variants: 4
   placementVariants:
   - 1.0
@@ -201,7 +201,7 @@
   heatCapacity: 10000
   weather: true
   deconstructTools: [ Prying ]
-  itemDrop: CEFloorTileStoneMediumBriks
+  itemDrop: CEFloorTileStoneMediumBricks
 
 - type: tile
   editorHidden: false

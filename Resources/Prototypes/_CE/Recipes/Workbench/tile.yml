@@ -35,7 +35,7 @@
   resultCount: 5
 
 - type: CERecipe
-  id: CEFloorTileStoneLongBriks
+  id: CEFloorTileStoneLongBricks
   tag: CERecipeWorkbench
   category: FloorTile
   craftTime: 1
@@ -43,11 +43,11 @@
   - !type:StackResource
     stack: CEStone
     count: 1
-  result: CEFloorTileStoneLongBriks
+  result: CEFloorTileStoneLongBricks
   resultCount: 5
 
 - type: CERecipe
-  id: CEFloorTileStoneMediumBriks
+  id: CEFloorTileStoneMediumBricks
   tag: CERecipeWorkbench
   category: FloorTile
   craftTime: 1
@@ -55,7 +55,7 @@
   - !type:StackResource
     stack: CEStone
     count: 1
-  result: CEFloorTileStoneMediumBriks
+  result: CEFloorTileStoneMediumBricks
   resultCount: 5
 
 - type: CERecipe

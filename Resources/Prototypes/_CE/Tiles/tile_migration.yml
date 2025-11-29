@@ -95,12 +95,12 @@
   target: CEDirtSeedbed
 
 - type: tileAlias
-  id: CEFloorStoneLongBriks
-  target: CEStoneLongBriks
+  id: CEFloorStoneLongBricks
+  target: CEStoneLongBricks
 
 - type: tileAlias
-  id: CEFloorStoneMediumBriks
-  target: CEStoneMediumBriks
+  id: CEFloorStoneMediumBricks
+  target: CEStoneMediumBricks
 
 - type: tileAlias
   id: CEFloorStoneDiamond 

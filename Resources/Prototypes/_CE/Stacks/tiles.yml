@@ -55,17 +55,17 @@
   maxCount: 30
 
 - type: stack
-  id: CEFloorTileStoneLongBriks
-  name: ce-tiles-stone-long-briks 
-  spawn: CEFloorTileStoneLongBriks
-  icon: { sprite: _CE/Objects/tile.rsi, state: long_briks }
+  id: CEFloorTileStoneLongBricks
+  name: ce-tiles-stone-long-bricks 
+  spawn: CEFloorTileStoneLongBricks
+  icon: { sprite: _CE/Objects/tile.rsi, state: long_bricks }
   maxCount: 30
 
 - type: stack
-  id: CEFloorTileStoneMediumBriks
-  name: ce-tiles-stone-medium-briks
-  spawn: CEFloorTileStoneMediumBriks
-  icon: { sprite: _CE/Objects/tile.rsi, state: medium_briks }
+  id: CEFloorTileStoneMediumBricks
+  name: ce-tiles-stone-medium-bricks
+  spawn: CEFloorTileStoneMediumBricks
+  icon: { sprite: _CE/Objects/tile.rsi, state: medium_bricks }
   maxCount: 30
 
 - type: stack
