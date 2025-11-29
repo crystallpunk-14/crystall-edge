@@ -206,7 +206,7 @@
 
 - type: entity
   parent: CEFloorTileBase
-  id: CEFloorTileStoneMediumBriks
+  id: CEFloorTileStoneMediumBricks
   name: stone medium bricks
   components:
   - type: Sprite
