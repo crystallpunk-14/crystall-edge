@@ -98,9 +98,9 @@ public abstract partial class CESharedVampireSystem : EntitySystem
     {
         RemCompDeferred<CEVampireVisualsComponent>(ent);
 
-        //Bloodstream todo
+        // TODO: Restore original blood reagent when vampire component is removed
 
-        //Metabolism todo
+        // TODO: Reset metabolism changes when vampire component is removed
 
         //Actions
         foreach (var action in ent.Comp.Actions)
