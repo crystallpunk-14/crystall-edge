@@ -34,7 +34,7 @@ grid_fill = false
 auto_call_time = 0
 emergency = false
 arrivals = false
-ce_arrivals = False
+ce_arrivals = false
 preload_grids = false
 
 [admin]
