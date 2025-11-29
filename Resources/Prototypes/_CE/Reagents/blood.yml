@@ -130,12 +130,6 @@
           type: [ CEVampire ]
     Medicine:
       effects:
-      - !type:CEManaChange
-        manaDelta: 10
-        conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ CEVampire ]
-        safe: true
       - !type:HealthChange
         conditions:
         - !type:MetabolizerTypeCondition
@@ -178,13 +172,6 @@
           groups:
             Brute: -3
             Burn: -3
-      - !type:MovespeedModifier
-        conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ CEVampire ]
-        walkSpeedModifier: 1.1
-        sprintSpeedModifier: 1.1
-        statusLifetime: 1.5
   pricePerUnit: 0.05
 
 - type: reagent
