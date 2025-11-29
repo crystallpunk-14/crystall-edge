@@ -171,7 +171,7 @@
   heatCapacity: 10000
   weather: true
   deconstructTools: [ Prying ]
-  itemDrop: CEStoneLongBriks
+  itemDrop: CEFloorTileStoneLongBriks
 
 - type: tile
   editorHidden: false
@@ -201,7 +201,7 @@
   heatCapacity: 10000
   weather: true
   deconstructTools: [ Prying ]
-  itemDrop: CEStoneMediumBriks
+  itemDrop: CEFloorTileStoneMediumBriks
 
 - type: tile
   editorHidden: false
@@ -231,7 +231,7 @@
   heatCapacity: 10000
   weather: true
   deconstructTools: [ Prying ]
-  itemDrop: CEStoneDiamond
+  itemDrop: CEFloorTileStoneDiamond
 
 - type: tile
   editorHidden: false
@@ -291,7 +291,7 @@
   heatCapacity: 10000
   weather: true
   deconstructTools: [ Prying ]
-  itemDrop: CEStoneMediumCircles
+  itemDrop: CEFloorTileStoneMediumCircles
 
 - type: tile
   editorHidden: false

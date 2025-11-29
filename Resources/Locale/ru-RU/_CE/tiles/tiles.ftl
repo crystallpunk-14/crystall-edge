@@ -49,5 +49,5 @@ ce-tiles-stone-long-briks = каменный пол из длинных кирп
 ce-tiles-stone-medium-briks = каменный пол из средних крипичей
 ce-tiles-stone-diamond = каменный пол ромбовидной укладки
 ce-tiles-stone-square-pattern = пол с квадратным рисунком
-ce-tiles-stone-medium-circles = пол с средней круглой кменной плитной 
-ce-tiles-stone-small-circles = пол с малой круглой кменной плитной
+ce-tiles-stone-medium-circles = пол с средней круглой каменной плиткой 
+ce-tiles-stone-small-circles = пол с малой круглой каменной плиткой
