@@ -25,3 +25,6 @@ ce-vampire-tree-growing-self = Ваше сердце клана вырастае
 ce-vampire-tree-damaged = Ваше сердце клана атаковано!
 ce-vampire-tree-destroyed = Чужое сердце клана разрушено!
 ce-vampire-tree-destroyed-self = Ваше сердце клана разрушено!
+
+ce-skill-tree-vampire-name = Вампирские силы
+ce-skill-tree-vampire-desc = TODO

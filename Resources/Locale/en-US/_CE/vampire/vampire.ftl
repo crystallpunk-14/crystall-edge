@@ -25,3 +25,6 @@ ce-vampire-tree-growing-self = Your clan heart grows to level {$level}!
 ce-vampire-tree-damaged = Your clan's heart has been attacked!
 ce-vampire-tree-destroyed = Another clan heart has been destroyed!
 ce-vampire-tree-destroyed-self = Your clan's heart has been destroyed!
+
+ce-skill-tree-vampire-name = Vampire powers
+ce-skill-tree-vampire-desc = TODO
