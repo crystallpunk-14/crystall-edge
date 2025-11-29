@@ -14,10 +14,7 @@ public sealed class CECalculateManacostEvent(EntityUid? performer, FixedPoint2 i
 
     public float Multiplier = 1f;
 
-    public float GetManacost()
-    {
-        return (float)Manacost * Multiplier;
-    }
+    public float TotalManacost => (float)Manacost * Multiplier;
 
     public SlotFlags TargetSlots { get; } = SlotFlags.All;
 }

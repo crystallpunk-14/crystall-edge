@@ -17,9 +17,6 @@ public abstract partial class CESharedActionSystem
 
     private void OnMaterialCostActionPerformed(Entity<CEActionMaterialCostComponent> ent, ref ActionPerformedEvent args)
     {
-        if (ent.Comp.Requirement is null)
-            return;
-
         HashSet<EntityUid> heldedItems = new();
 
         foreach (var hand in _hand.EnumerateHands(args.Performer))
@@ -58,7 +55,7 @@ public abstract partial class CESharedActionSystem
             if (!innate)
                 RaiseLocalEvent(action.Container.Value, manaEv);
 
-            manaCost = manaEv.GetManacost();
+            manaCost = manaEv.TotalManacost;
         }
 
         //First - try to take mana from container
@@ -80,7 +77,7 @@ public abstract partial class CESharedActionSystem
         //_magicVision.SpawnMagicTrace(
         //        Transform(args.Performer).Coordinates,
         //        action.Icon,
-        //        Loc.GetString("cp14-magic-vision-used-spell", ("name", MetaData(ent).EntityName)),
+        //        Loc.GetString("ce-magic-vision-used-spell", ("name", MetaData(ent).EntityName)),
         //        TimeSpan.FromSeconds((float)ent.Comp.ManaCost * 50),
         //        args.Performer,
         //        null); //TODO: We need a way to pass spell target here
@@ -88,9 +85,6 @@ public abstract partial class CESharedActionSystem
 
     private void OnSkillPointCostActionPerformed(Entity<CEActionSkillPointCostComponent> ent, ref ActionPerformedEvent args)
     {
-        if (ent.Comp.SkillPoint is null)
-            return;
-
-        _skill.RemoveSkillPoints(args.Performer, ent.Comp.SkillPoint.Value,  ent.Comp.Count);
+        _skill.RemoveSkillPoints(args.Performer, ent.Comp.SkillPoint,  ent.Comp.Count);
     }
 }

@@ -10,10 +10,4 @@ public abstract partial class CESpellEffect
     public abstract void Effect(EntityManager entManager, CESpellEffectBaseArgs args);
 }
 
-public record CESpellEffectBaseArgs(EntityUid? User, EntityUid? Used, EntityUid? Target, EntityCoordinates? Position)
-{
-    public EntityUid? User = User;
-    public EntityUid? Used = Used;
-    public EntityUid? Target = Target;
-    public EntityCoordinates? Position = Position;
-}
+public record CESpellEffectBaseArgs(EntityUid? User, EntityUid? Used, EntityUid? Target, EntityCoordinates? Position);

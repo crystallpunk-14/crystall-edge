@@ -47,8 +47,6 @@ public sealed partial class CESpellProjectile : CESpellEffect
             return;
 
         var fromCoords = xform.Coordinates;
-
-
         var userVelocity = physics.GetMapLinearVelocity(args.User.Value);
 
         // If applicable, this ensures the projectile is parented to grid on spawn, instead of the map.

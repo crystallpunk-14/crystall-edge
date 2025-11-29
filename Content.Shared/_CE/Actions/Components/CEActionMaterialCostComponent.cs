@@ -9,5 +9,5 @@ namespace Content.Shared._CE.Actions.Components;
 public sealed partial class CEActionMaterialCostComponent : Component
 {
     [DataField(required: true)]
-    public CEWorkbenchCraftRequirement? Requirement;
+    public CEWorkbenchCraftRequirement Requirement;
 }

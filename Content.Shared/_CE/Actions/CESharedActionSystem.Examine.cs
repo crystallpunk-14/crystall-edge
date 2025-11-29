@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Shared._CE.Actions.Components;
 using Content.Shared.Examine;
 using Content.Shared.Mobs;
@@ -50,8 +49,7 @@ public abstract partial class CESharedActionSystem
 
     private void OnMaterialExamined(Entity<CEActionMaterialCostComponent> ent, ref ExaminedEvent args)
     {
-        if (ent.Comp.Requirement is not null)
-            args.PushMarkup(Loc.GetString("ce-magic-material-aspect") + " " + ent.Comp.Requirement.GetRequirementTitle(_proto));
+        args.PushMarkup(Loc.GetString("ce-magic-material-aspect") + " " + ent.Comp.Requirement.GetRequirementTitle(_proto));
     }
     private void OnMusicExamined(Entity<CEActionRequiredMusicToolComponent> ent, ref ExaminedEvent args)
     {
@@ -60,13 +58,25 @@ public abstract partial class CESharedActionSystem
 
     private void OnMobStateExamined(Entity<CEActionTargetMobStatusRequiredComponent> ent, ref ExaminedEvent args)
     {
-        var states = string.Join(", ",
-            ent.Comp.AllowedStates.Select(state => state switch
+        var states = "";
+        foreach (var state in ent.Comp.AllowedStates)
         {
-            MobState.Alive => Loc.GetString("ce-magic-spell-target-mob-state-live"),
-            MobState.Dead => Loc.GetString("ce-magic-spell-target-mob-state-dead"),
-            MobState.Critical => Loc.GetString("ce-magic-spell-target-mob-state-critical")
-        }));
+            if (states.Length > 0)
+                states += ", ";
+
+            switch (state)
+            {
+                case MobState.Alive:
+                    states += Loc.GetString("ce-magic-spell-target-mob-state-live");
+                    break;
+                case MobState.Dead:
+                    states += Loc.GetString("ce-magic-spell-target-mob-state-dead");
+                    break;
+                case MobState.Critical:
+                    states += Loc.GetString("ce-magic-spell-target-mob-state-critical");
+                    break;
+            }
+        }
 
         args.PushMarkup(Loc.GetString("ce-magic-spell-target-mob-state", ("state", states)));
     }

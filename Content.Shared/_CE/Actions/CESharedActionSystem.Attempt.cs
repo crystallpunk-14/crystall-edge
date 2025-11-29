@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Shared._CE.Actions.Components;
 using Content.Shared._CE.Actions.Events;
 using Content.Shared._CE.Skill.Components;
@@ -55,7 +54,7 @@ public abstract partial class CESharedActionSystem
             if (action.Container is not null)
                 RaiseLocalEvent(action.Container.Value, manaEv);
 
-            requiredMana = manaEv.GetManacost();
+            requiredMana = manaEv.TotalManacost;
         }
 
         //First - trying get mana from item
@@ -97,11 +96,9 @@ public abstract partial class CESharedActionSystem
         if (args.Cancelled)
             return;
 
-        if (TryComp<HandsComponent>(args.User, out var hands))
-        {
-            if (_hand.CountFreeHands((args.User, hands)) >= ent.Comp.FreeHandRequired)
-                return;
-        }
+        if (TryComp<HandsComponent>(args.User, out var hands) &&
+            _hand.CountFreeHands((args.User, hands)) >= ent.Comp.FreeHandRequired)
+            return;
 
         Popup.PopupClient(Loc.GetString("ce-magic-spell-need-somatic-component"), args.User, args.User);
         args.Cancelled = true;
@@ -119,9 +116,6 @@ public abstract partial class CESharedActionSystem
     private void OnMaterialActionAttempt(Entity<CEActionMaterialCostComponent> ent, ref ActionAttemptEvent args)
     {
         if (args.Cancelled)
-            return;
-
-        if (ent.Comp.Requirement is null)
             return;
 
         HashSet<EntityUid> heldedItems = new();
@@ -154,7 +148,7 @@ public abstract partial class CESharedActionSystem
 
     private void OnSkillPointActionAttempt(Entity<CEActionSkillPointCostComponent> ent, ref ActionAttemptEvent args)
     {
-        if (!_proto.Resolve(ent.Comp.SkillPoint, out var indexedSkillPoint) || ent.Comp.SkillPoint is null)
+        if (!_proto.Resolve(ent.Comp.SkillPoint, out var indexedSkillPoint))
             return;
 
         if (!TryComp<CESkillStorageComponent>(args.User, out var skillStorage))
@@ -169,7 +163,7 @@ public abstract partial class CESharedActionSystem
         }
 
         var points = skillStorage.SkillPoints;
-        if (points.TryGetValue(ent.Comp.SkillPoint.Value, out var currentPoints))
+        if (points.TryGetValue(ent.Comp.SkillPoint, out var currentPoints))
         {
             var freePoints = currentPoints.Max - currentPoints.Sum;
 
@@ -204,13 +198,19 @@ public abstract partial class CESharedActionSystem
 
         if (!ent.Comp.AllowedStates.Contains(mobStateComp.CurrentState))
         {
-            var states = string.Join(", ",
-                ent.Comp.AllowedStates.Select(state => state switch
-                {
-                    MobState.Alive => Loc.GetString("ce-magic-spell-target-mob-state-live"),
-                    MobState.Dead => Loc.GetString("ce-magic-spell-target-mob-state-dead"),
-                    MobState.Critical => Loc.GetString("ce-magic-spell-target-mob-state-critical")
-                }));
+            var states = "";
+            foreach (var state in ent.Comp.AllowedStates)
+            {
+                if (states.Length > 0)
+                    states += ", ";
+
+                if (state == MobState.Alive)
+                    states += Loc.GetString("ce-magic-spell-target-mob-state-live");
+                else if (state == MobState.Dead)
+                    states += Loc.GetString("ce-magic-spell-target-mob-state-dead");
+                else if (state == MobState.Critical)
+                    states += Loc.GetString("ce-magic-spell-target-mob-state-critical");
+            }
 
             Popup.PopupClient(Loc.GetString("ce-magic-spell-target-mob-state", ("state", states)),
                 args.User,

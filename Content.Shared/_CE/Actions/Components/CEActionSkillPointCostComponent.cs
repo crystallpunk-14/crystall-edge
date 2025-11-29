@@ -12,7 +12,7 @@ namespace Content.Shared._CE.Actions.Components;
 public sealed partial class CEActionSkillPointCostComponent : Component
 {
     [DataField(required: true)]
-    public ProtoId<CESkillPointPrototype>? SkillPoint;
+    public ProtoId<CESkillPointPrototype> SkillPoint;
 
     [DataField]
     public FixedPoint2 Count = 1f;
