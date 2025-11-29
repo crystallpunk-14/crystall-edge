@@ -14,10 +14,10 @@
 
 - files:
   - diamond.png
-  - medium_bricks.png
-  - medium_circles.png
-  - small_circles.png
-  - long_bricks.png
-  - square_pattern.png
+  - stonebricks_medium.png
+  - stonebricks_medium_circles.png
+  - stonebricks_small_circles.png
+  - stonebricks_long.png
+  - stonebricks_square_pattern.png
   license: "CC-BY-SA-3.0"
   copyright: "Created by etch_sketch (DISCORD)"

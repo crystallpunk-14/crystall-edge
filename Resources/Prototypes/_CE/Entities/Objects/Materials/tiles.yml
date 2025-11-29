@@ -191,10 +191,10 @@
 - type: entity
   parent: CEFloorTileBase
   id: CEFloorTileStoneLongBricks
-  name: stone long bricks
+  name: stonebricks long 
   components:
   - type: Sprite
-    state: long_bricks
+    state: stonebricks_long
   - type: FloorTile
     outputs:
       - CEStoneLongBricks
@@ -210,7 +210,7 @@
   name: stone medium bricks
   components:
   - type: Sprite
-    state: medium_bricks
+    state: stonebricks_medium
   - type: FloorTile
     outputs:
       - CEStoneMediumBricks
@@ -226,7 +226,7 @@
   name: stone square pattern
   components:
   - type: Sprite
-    state: square_pattern
+    state: stonebricks_square_pattern
   - type: FloorTile
     outputs:
       - CEStoneSquarePattern
@@ -242,7 +242,7 @@
   name: stone diamond
   components:
   - type: Sprite
-    state: diamond
+    state: stonebricks_diamond
   - type: FloorTile
     outputs:
       - CEStoneDiamond
@@ -258,7 +258,7 @@
   name: stone medium circles
   components:
   - type: Sprite
-    state: medium_circles
+    state: stonebricks_medium_circles
   - type: FloorTile
     outputs:
       - CEStoneMediumCircles
@@ -274,7 +274,7 @@
   name: stone small circles
   components:
   - type: Sprite
-    state: small_circles
+    state: stonebricks_small_circles
   - type: FloorTile
     outputs:
       - CEStoneSmallCircles

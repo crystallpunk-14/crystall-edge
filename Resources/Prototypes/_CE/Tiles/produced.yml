@@ -146,8 +146,8 @@
 - type: tile
   editorHidden: false
   id: CEStoneLongBricks
-  name: ce-tiles-stone-long-bricks
-  sprite: /Textures/_CE/Tiles/Stonebricks/long_bricks.png
+  name: ce-tiles-stonebricks-long-bricks
+  sprite: /Textures/_CE/Tiles/Stonebricks/stonebricks_long_bricks.png
   variants: 4
   placementVariants:
   - 1.0
@@ -176,8 +176,8 @@
 - type: tile
   editorHidden: false
   id: CEStoneMediumBricks
-  name: ce-tiles-stone-medium-bricks
-  sprite: /Textures/_CE/Tiles/Stonebricks/medium_bricks.png
+  name: ce-tiles-stonebricks-medium
+  sprite: /Textures/_CE/Tiles/Stonebricks/stonebricks_medium.png
   variants: 4
   placementVariants:
   - 1.0
@@ -206,8 +206,8 @@
 - type: tile
   editorHidden: false
   id: CEStoneDiamond
-  name: ce-tiles-stone-diamond
-  sprite: /Textures/_CE/Tiles/Stonebricks/diamond.png
+  name: ce-tiles-stonebricks-diamond
+  sprite: /Textures/_CE/Tiles/Stonebricks/stonebricks_diamond.png
   variants: 4
   placementVariants:
   - 1.0
@@ -236,8 +236,8 @@
 - type: tile
   editorHidden: false
   id: CEStoneSquarePattern
-  name: ce-tiles-stone-square-pattern
-  sprite: /Textures/_CE/Tiles/Stonebricks/square_pattern.png
+  name: ce-tiles-stonebricks-square-pattern
+  sprite: /Textures/_CE/Tiles/Stonebricks/stonebricks_square_pattern.png
   variants: 4
   placementVariants:
   - 1.0
@@ -266,8 +266,8 @@
 - type: tile
   editorHidden: false
   id: CEStoneMediumCircles
-  name: ce-tiles-stone-medium-circles
-  sprite: /Textures/_CE/Tiles/Stonebricks/medium_circles.png
+  name: ce-tiles-stonebricks-medium-circles
+  sprite: /Textures/_CE/Tiles/Stonebricks/stonebricks_medium_circles.png
   variants: 4
   placementVariants:
   - 1.0
@@ -296,8 +296,8 @@
 - type: tile
   editorHidden: false
   id: CEStoneSmallCircles
-  name: ce-tiles-stone-small-circles
-  sprite: /Textures/_CE/Tiles/Stonebricks/small_circles.png
+  name: ce-tiles-stonebricks-small-circles
+  sprite: /Textures/_CE/Tiles/Stonebricks/stonebricks_small_circles.png
   variants: 4
   placementVariants:
   - 1.0
