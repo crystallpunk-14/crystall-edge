@@ -82,7 +82,7 @@
   - type: Body
     prototype: CEHuman
     requiredLegs: 2
-  - type: Bloodstream  (Until alchemy is ported)
+  - type: Bloodstream
     bloodReagent: CEBloodGoblin
   - type: Fixtures
     fixtures: # Smaller hitbox & less weight

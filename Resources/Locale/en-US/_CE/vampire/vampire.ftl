@@ -5,11 +5,11 @@ ce-vampire-examine = [color=red]Bright red eyes and long fangs tell you that you
 ce-magic-spell-need-vampire-valid = Not available in the hidden vampire form.
 
 ce-vampire-tree-examine-friend = [color=green]This is the heart of your clan.[/color] Protect it with all your might.
-ce-vampire-tree-examine-enemy = [color=red]This is the heart of the enemy clan.[/color].
+ce-vampire-tree-examine-enemy = [color=red]This is the heart of the enemy clan.[/color]
 
 ce-vampire-tree-examine-level = Essences: ([color=red]{$essence}/{$left}[/color]). Current clan level: [color=red]{$level}[/color].
 
-ce-vampire-essence-holder-examine = This victim contains [color=red]{$essence} blood essence[/color].
+ce-vampire-essence-holder-examine = This victim still has [color=red]{$essence} blood essence[/color].
 
 ce-vampire-tree-other-title = Progress of other clans:
 ce-vampire-tree-other-info = - [color=red]({$essence}/{$left})[/color] essences, [color=red]{$lvl}[/color] level.
@@ -26,5 +26,7 @@ ce-vampire-tree-damaged = Your clan's heart has been attacked!
 ce-vampire-tree-destroyed = Another clan heart has been destroyed!
 ce-vampire-tree-destroyed-self = Your clan's heart has been destroyed!
 
-ce-skill-tree-vampire-name = Vampire powers
+ce-skill-tree-vampire-name = Vampire Powers
 ce-skill-tree-vampire-desc = TODO
+
+ce-admin-verb-text-make-vampire = Turn into a higher vampire.
