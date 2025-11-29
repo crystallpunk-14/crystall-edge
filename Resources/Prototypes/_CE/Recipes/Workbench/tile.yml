@@ -35,6 +35,78 @@
   resultCount: 5
 
 - type: CERecipe
+  id: CEFloorTileStoneLongBriks
+  tag: CERecipeWorkbench
+  category: FloorTile
+  craftTime: 1
+  requirements:
+  - !type:StackResource
+    stack: CEStone
+    count: 1
+  result: CEFloorTileStoneLongBriks
+  resultCount: 5
+
+- type: CERecipe
+  id: CEFloorTileStoneMediumBriks
+  tag: CERecipeWorkbench
+  category: FloorTile
+  craftTime: 1
+  requirements:
+  - !type:StackResource
+    stack: CEStone
+    count: 1
+  result: CEFloorTileStoneMediumBriks
+  resultCount: 5
+
+- type: CERecipe
+  id: CEFloorTileStoneDiamond
+  tag: CERecipeWorkbench
+  category: FloorTile
+  craftTime: 1
+  requirements:
+  - !type:StackResource
+    stack: CEStone
+    count: 1
+  result: CEFloorTileStoneDiamond
+  resultCount: 5
+
+- type: CERecipe
+  id: CEFloorTileStoneSquarePattern
+  tag: CERecipeWorkbench
+  category: FloorTile
+  craftTime: 1
+  requirements:
+  - !type:StackResource
+    stack: CEStone
+    count: 1
+  result: CEFloorTileStoneSquarePattern
+  resultCount: 5
+
+- type: CERecipe
+  id: CEFloorTileStoneMediumCircles
+  tag: CERecipeWorkbench
+  category: FloorTile
+  craftTime: 1
+  requirements:
+  - !type:StackResource
+    stack: CEStone
+    count: 1
+  result: CEFloorTileStoneMediumCircles
+  resultCount: 5
+
+- type: CERecipe
+  id: CEFloorTileStoneSmallCircles
+  tag: CERecipeWorkbench
+  category: FloorTile
+  craftTime: 1
+  requirements:
+  - !type:StackResource
+    stack: CEStone
+    count: 1
+  result: CEFloorTileStoneSmallCircles
+  resultCount: 5
+
+- type: CERecipe
   id: CEFloorTileStonebricksSquareCarved
   tag: CERecipeWorkbench
   category: FloorTile

@@ -11,3 +11,13 @@
   license: "CC-BY-SA-3.0"
   copyright: "Created by TheShuEd, midified by vladimir.s "
   source: "https://github.com/crystallpunk-14/crystall-punk-14/pull/290"
+
+- files:
+  - diamond.png
+  - medium_briks.png
+  - medium_circles.png
+  - small_circles.png
+  - long_briks.png
+  - square_pattern.png
+  license: "CC-BY-SA-3.0"
+  copyright: "Created by etch_sketch (DISCORD)"

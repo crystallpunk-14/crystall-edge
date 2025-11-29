@@ -44,3 +44,10 @@ ce-tiles-stonebricks-small-carved2 = carved brick floor
 ce-tiles-stonebricks-square-carved = carved brick floor
 ce-tiles-stonebricks = stonebrick floor
 ce-tiles-stonebricks-weather = street stonebrick floor
+
+ce-tiles-stone-long-briks = long stonebrick floor
+ce-tiles-stone-medium-briks = medium stonebrick floor
+ce-tiles-stone-diamond = diamond-pattern stone floor
+ce-tiles-stone-square-pattern = square-pattern stone floor
+ce-tiles-stone-medium-circles = medium-circle stone floor
+ce-tiles-stone-small-circles = small-circle stone floor

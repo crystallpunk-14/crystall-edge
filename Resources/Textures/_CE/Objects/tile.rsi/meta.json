@@ -36,6 +36,25 @@
     },
     {
       "name": "stonebrick_square_carved"
+    },
+    {
+      "name": "long_briks"
+    },
+    {
+      "name": "medium_briks" 
+    },
+    {
+      "name": "diamond"
+    },
+    {
+      "name": "square_pattern"
+    },
+    {
+      "name": "medium_circles"
+    },
+    {
+      "name": "small_circles"
     }
+
   ]
 }

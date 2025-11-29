@@ -190,6 +190,102 @@
 
 - type: entity
   parent: CEFloorTileBase
+  id: CEFloorTileStoneLongBriks
+  name: stone long briks
+  components:
+  - type: Sprite
+    state: long_briks
+  - type: FloorTile
+    outputs:
+      - CEStoneLongBriks
+  - type: Stack
+    stackType: CEFloorTileStoneLongBriks
+  - type: PhysicalComposition
+    materialComposition:
+      CEStone: 2
+
+- type: entity
+  parent: CEFloorTileBase
+  id: CEFloorTileStoneMediumBriks
+  name: stone medium briks
+  components:
+  - type: Sprite
+    state: medium_briks
+  - type: FloorTile
+    outputs:
+      - CEStoneMediumBriks
+  - type: Stack
+    stackType: CEFloorTileStoneMediumBriks
+  - type: PhysicalComposition
+    materialComposition:
+      CEStone: 2
+
+- type: entity
+  parent: CEFloorTileBase
+  id: CEFloorTileStoneSquarePattern
+  name: stone square pattern
+  components:
+  - type: Sprite
+    state: square_pattern
+  - type: FloorTile
+    outputs:
+      - CEStoneSquarePattern
+  - type: Stack
+    stackType: CEFloorTileStoneSquarePattern
+  - type: PhysicalComposition
+    materialComposition:
+      CEStone: 2
+
+- type: entity
+  parent: CEFloorTileBase
+  id: CEFloorTileStoneDiamond
+  name: stone diamond
+  components:
+  - type: Sprite
+    state: diamond
+  - type: FloorTile
+    outputs:
+      - CEStoneDiamond
+  - type: Stack
+    stackType: CEFloorTileStoneDiamond
+  - type: PhysicalComposition
+    materialComposition:
+      CEStone: 2
+
+- type: entity
+  parent: CEFloorTileBase
+  id: CEFloorTileStoneMediumCircles
+  name: stone medium circles
+  components:
+  - type: Sprite
+    state: medium_circles
+  - type: FloorTile
+    outputs:
+      - CEStoneMediumCircles
+  - type: Stack
+    stackType: CEFloorTileStoneMediumCircles
+  - type: PhysicalComposition
+    materialComposition:
+      CEStone: 2
+
+- type: entity
+  parent: CEFloorTileBase
+  id: CEFloorTileStoneSmallCircles
+  name: stone small circles
+  components:
+  - type: Sprite
+    state: small_circles
+  - type: FloorTile
+    outputs:
+      - CEStoneMiddleCircles
+  - type: Stack
+    stackType: CEFloorTileStoneSmallCircles
+  - type: PhysicalComposition
+    materialComposition:
+      CEStone: 2
+
+- type: entity
+  parent: CEFloorTileBase
   id: CEFloorTileStonebricksSquareCarved
   name: square carved stonebricks
   components:
