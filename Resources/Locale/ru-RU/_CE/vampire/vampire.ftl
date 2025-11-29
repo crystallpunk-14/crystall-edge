@@ -30,3 +30,4 @@ ce-skill-tree-vampire-name = Вампирские силы
 ce-skill-tree-vampire-desc = TODO
 
 ce-admin-verb-text-make-vampire = Превратить в высшего вампира.
+ce-roles-antag-vampire-briefing = Эд, не забудь вставить адекватный брифинг для вампиров. Игрок. Если ты это видишь, пингуй Эда с смешными эмодзями. и скрином этого сообщения.

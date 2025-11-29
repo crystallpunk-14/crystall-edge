@@ -59,7 +59,3 @@
   - type: Stack
     stackType: CEBloodEssence
     count: 1
-  - type: Material
-  - type: PhysicalComposition
-    materialComposition:
-      CEBloodEssence: 1

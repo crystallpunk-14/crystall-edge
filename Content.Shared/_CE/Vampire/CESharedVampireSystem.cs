@@ -121,6 +121,7 @@ public abstract partial class CESharedVampireSystem : EntitySystem
                     _skill.TryRemoveSkill(ent, skill);
             }
         }
+
         _skill.RemoveSkillPoints(ent, ent.Comp.SkillPointProto, ent.Comp.SkillPointCount);
         _skill.AddSkillPoints(ent, _memorySkillPointType, 2, null, true);
     }
@@ -130,7 +131,11 @@ public abstract partial class CESharedVampireSystem : EntitySystem
         if (_timing.IsFirstTimePredicted)
             _jitter.DoJitter(ent, ent.Comp.ToggleVisualsTime, true);
 
-        var doAfterArgs = new DoAfterArgs(EntityManager, ent, ent.Comp.ToggleVisualsTime, new CEVampireToggleVisualsDoAfter(), ent)
+        var doAfterArgs = new DoAfterArgs(EntityManager,
+            ent,
+            ent.Comp.ToggleVisualsTime,
+            new CEVampireToggleVisualsDoAfter(),
+            ent)
         {
             Hidden = true,
             NeedHand = false,
@@ -156,7 +161,8 @@ public abstract partial class CESharedVampireSystem : EntitySystem
         args.Handled = true;
     }
 
-    protected virtual void OnVampireVisualsShutdown(Entity<CEVampireVisualsComponent> vampire, ref ComponentShutdown args)
+    protected virtual void OnVampireVisualsShutdown(Entity<CEVampireVisualsComponent> vampire,
+        ref ComponentShutdown args)
     {
         if (!EntityManager.TryGetComponent(vampire, out HumanoidAppearanceComponent? humanoidAppearance))
             return;
@@ -194,17 +200,17 @@ public abstract partial class CESharedVampireSystem : EntitySystem
 
         var extractedEssence = MathF.Min(victim.Comp.Essence.Float(), amount.Float());
 
-        if (TryComp<BuckleComponent>(victim, out var buckle) && buckle.BuckledTo is not null)
-        {
-            if (TryComp<CEVampireAltarComponent>(buckle.BuckledTo, out var altar))
-            {
-                extractedEssence *= altar.Multiplier;
-            }
-        }
+        if (TryComp<BuckleComponent>(victim, out var buckle)
+            && buckle.BuckledTo is not null
+            && TryComp<CEVampireAltarComponent>(buckle.BuckledTo, out var altar))
+            extractedEssence *= altar.Multiplier;
 
         if (extractedEssence <= 0)
         {
-            _popup.PopupClient(Loc.GetString("ce-vampire-gather-essence-no-left"), victim, vampire, PopupType.SmallCaution);
+            _popup.PopupClient(Loc.GetString("ce-vampire-gather-essence-no-left"),
+                victim,
+                vampire,
+                PopupType.SmallCaution);
             return;
         }
 
@@ -215,12 +221,10 @@ public abstract partial class CESharedVampireSystem : EntitySystem
     }
 }
 
-
 public sealed partial class CEToggleVampireVisualsAction : InstantActionEvent;
 
 [Serializable, NetSerializable]
 public sealed partial class CEVampireToggleVisualsDoAfter : SimpleDoAfterEvent;
-
 
 // Appearance Data key
 [Serializable, NetSerializable]
