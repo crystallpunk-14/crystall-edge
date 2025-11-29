@@ -103,7 +103,7 @@
   target: CEStoneMediumBricks
 
 - type: tileAlias
-  id: CEFloorStoneDiamond 
+  id: CEFloorStoneDiamond
   target: CEStoneDiamond
 
 - type: tileAlias

@@ -56,7 +56,7 @@
 
 - type: stack
   id: CEFloorTileStoneLongBricks
-  name: ce-tiles-stone-long-bricks 
+  name: ce-tiles-stone-long-bricks
   spawn: CEFloorTileStoneLongBricks
   icon: { sprite: _CE/Objects/tile.rsi, state: long_bricks }
   maxCount: 30
