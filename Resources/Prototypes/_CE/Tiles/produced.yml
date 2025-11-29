@@ -147,7 +147,7 @@
   editorHidden: false
   id: CEStoneLongBricks
   name: ce-tiles-stonebricks-long-bricks
-  sprite: /Textures/_CE/Tiles/Stonebricks/stonebricks_long_bricks.png
+  sprite: /Textures/_CE/Tiles/Stonebricks/stonebricks_long.png
   variants: 4
   placementVariants:
   - 1.0
