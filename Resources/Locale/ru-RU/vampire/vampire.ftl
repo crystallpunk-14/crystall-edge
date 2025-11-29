@@ -28,3 +28,5 @@ ce-vampire-tree-destroyed-self = Ваше сердце клана разруше
 
 ce-skill-tree-vampire-name = Вампирские силы
 ce-skill-tree-vampire-desc = TODO
+
+ce-admin-verb-text-make-vampire = Превратить в высшего вампира.

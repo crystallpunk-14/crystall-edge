@@ -11,7 +11,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
-namespace Content.Server._CE.Ambitions;
+namespace Content.Server._CE.Objectives.Systems;
 
 public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
 {
