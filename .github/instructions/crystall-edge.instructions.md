@@ -25,6 +25,8 @@ Code specific to CrystallEdge (not from upstream Space Station 14) is located in
 - `Resources/Prototypes/_CE/`
 - `Resources/Locale/*/_CE/`
 
+The project is ported from the previous repository, which had the prefix `CP14`. All mentions of `CP14` should be replaced with `CE`.
+
 ## Coding Conventions
 
 ### C# Code Style
@@ -96,8 +98,8 @@ public sealed partial class ExampleComponent : Component
 - Use 2-space indentation for YAML
 - Follow existing naming conventions for IDs
 - Entity IDs: `PascalCase` (e.g., `FoodBreadPlain`)
-- Prototype type prefix in ID (e.g., `ActionToggle...`, `Recipe...`)
 - It is good practice to use inheritance for entity-type prototypes, with an abstract parent prototype containing common data.
+- The most general categories of items, if specified in the ID, should be at the beginning of the ID (e.g., `CEWeaponDagger`, not `CEDaggerWeapon`, because Weapon is a more general concept).
 
 ### Example Entity Prototype
 ```yaml
@@ -161,30 +163,6 @@ dotnet build -c Release   # Build in Release mode
 runserver.bat    # Start server (Windows)
 runclient.bat    # Start client (Windows)
 ```
-
-## Pull Request Guidelines
-
-### Required Information
-1. **About the PR**: Describe what changed
-2. **Why / Balance**: Explain reasoning and game balance impact
-3. **Media**: Screenshots/videos for visual changes
-4. **Changelog**: Use changelog format for player-facing changes
-
-### Changelog Format
-```
-:cl:
-- add: Added new feature
-- remove: Removed old feature
-- tweak: Changed existing behavior
-- fix: Fixed a bug
-```
-
-## Licensing
-
-- CrystallEdge-specific code (`_CE` folders): See `LICENSE_CE.TXT` - All rights reserved
-- Upstream Space Station 14 code: MIT License (`LICENSE.TXT`)
-- Assets: CC-BY-SA 4.0 unless specified otherwise
-- **Do not use CrystallEdge code in other projects without explicit permission**
 
 ## Additional Resources
 

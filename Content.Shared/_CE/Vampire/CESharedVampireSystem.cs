@@ -179,7 +179,7 @@ public abstract partial class CESharedVampireSystem : EntitySystem
 
     private void OnVampireExamine(Entity<CEVampireVisualsComponent> ent, ref ExaminedEvent args)
     {
-        args.PushMarkup(Loc.GetString("cp14-vampire-examine"));
+        args.PushMarkup(Loc.GetString("ce-vampire-examine"));
     }
 
     public void GatherEssence(Entity<CEVampireComponent?> vampire,
