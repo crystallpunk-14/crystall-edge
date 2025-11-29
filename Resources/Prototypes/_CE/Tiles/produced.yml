@@ -261,7 +261,7 @@
   heatCapacity: 10000
   weather: true
   deconstructTools: [ Prying ]
-  itemDrop: CEStoneFloorTileSquarePattern
+  itemDrop: CEFloorTileStoneSquarePattern
 
 - type: tile
   editorHidden: false
@@ -321,7 +321,7 @@
   heatCapacity: 10000
   weather: true
   deconstructTools: [ Prying ]
-  itemDrop: CEStoneFloorTileSmallCircles
+  itemDrop: CEFloorTileStoneSmallCircles
 
 - type: tile
   editorHidden: false
