@@ -19,9 +19,6 @@
       - CEMindRoleVampire
       components:
       - type: CEVampire
-        faction: Devourers
-      - type: CEShowVampireFaction
-        faction: Devourers
       - type: Hunger
         hungerThresholdAlerts:
           Peckish: CEVampirePeckish

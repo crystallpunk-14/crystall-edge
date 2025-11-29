@@ -15,6 +15,7 @@ public sealed partial class CEVampireComponent : Component
 {
     [DataField]
     public ProtoId<ReagentPrototype> NewBloodReagent = "CEBloodVampire";
+
     [DataField]
     public ProtoId<CESkillTreePrototype> SkillTreeProto = "Vampire";
 
@@ -42,7 +43,7 @@ public sealed partial class CEVampireComponent : Component
     [DataField]
     public List<EntityUid> Actions = new();
 
-    [DataField]
+    [DataField, AutoNetworkedField]
     public float HeatUnderSunTemperature = 12000f;
 
     [DataField]

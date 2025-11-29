@@ -1,0 +1,7 @@
+- type: entity
+  id: CEBaseGameRule
+  parent: BaseGameRule
+  abstract: true
+  components:
+  - type: GameRule
+    hidden: false
