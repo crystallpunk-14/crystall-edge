@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Shared._CE.Actions.Components;
 using Content.Shared._CE.Actions.Events;
+using Content.Shared._CE.Skill.Components;
 using Content.Shared.Actions.Components;
 using Content.Shared.Actions.Events;
 using Content.Shared.CombatMode.Pacification;
@@ -25,6 +26,7 @@ public abstract partial class CESharedActionSystem
         SubscribeLocalEvent<CEActionManaCostComponent, ActionAttemptEvent>(OnManacostActionAttempt);
         SubscribeLocalEvent<CEActionStaminaCostComponent, ActionAttemptEvent>(OnStaminaCostActionAttempt);
         SubscribeLocalEvent<CEActionDangerousComponent, ActionAttemptEvent>(OnDangerousActionAttempt);
+        SubscribeLocalEvent<CEActionSkillPointCostComponent, ActionAttemptEvent>(OnSkillPointActionAttempt);
 
         SubscribeLocalEvent<CEActionSSDBlockComponent, ActionValidateEvent>(OnActionSSDAttempt);
         SubscribeLocalEvent<CEActionTargetMobStatusRequiredComponent, ActionValidateEvent>(OnTargetMobStatusRequiredValidate);
@@ -147,6 +149,41 @@ public abstract partial class CESharedActionSystem
         {
             Popup.PopupClient(Loc.GetString("ce-magic-spell-pacified"), args.User, args.User);
             args.Cancelled = true;
+        }
+    }
+
+    private void OnSkillPointActionAttempt(Entity<CEActionSkillPointCostComponent> ent, ref ActionAttemptEvent args)
+    {
+        if (!_proto.Resolve(ent.Comp.SkillPoint, out var indexedSkillPoint) || ent.Comp.SkillPoint is null)
+            return;
+
+        if (!TryComp<CESkillStorageComponent>(args.User, out var skillStorage))
+        {
+            Popup.PopupClient(Loc.GetString("ce-magic-spell-skillpoint-not-enough",
+                    ("name", Loc.GetString(indexedSkillPoint.Name)),
+                    ("count", ent.Comp.Count)),
+                args.User,
+                args.User);
+            args.Cancelled = true;
+            return;
+        }
+
+        var points = skillStorage.SkillPoints;
+        if (points.TryGetValue(ent.Comp.SkillPoint.Value, out var currentPoints))
+        {
+            var freePoints = currentPoints.Max - currentPoints.Sum;
+
+            if (freePoints < ent.Comp.Count)
+            {
+                var d = ent.Comp.Count - freePoints;
+
+                Popup.PopupClient(Loc.GetString("ce-magic-spell-skillpoint-not-enough",
+                        ("name", Loc.GetString(indexedSkillPoint.Name)),
+                        ("count", d)),
+                    args.User,
+                    args.User);
+                args.Cancelled = true;
+            }
         }
     }
 

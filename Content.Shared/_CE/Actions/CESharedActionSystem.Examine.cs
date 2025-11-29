@@ -11,6 +11,7 @@ public abstract partial class CESharedActionSystem
     {
         SubscribeLocalEvent<CEActionManaCostComponent, ExaminedEvent>(OnManacostExamined);
         SubscribeLocalEvent<CEActionStaminaCostComponent, ExaminedEvent>(OnStaminaCostExamined);
+        SubscribeLocalEvent<CEActionSkillPointCostComponent, ExaminedEvent>(OnSkillPointCostExamined);
 
         SubscribeLocalEvent<CEActionSpeakingComponent, ExaminedEvent>(OnVerbalExamined);
         SubscribeLocalEvent<CEActionFreeHandsRequiredComponent, ExaminedEvent>(OnSomaticExamined);
@@ -27,6 +28,14 @@ public abstract partial class CESharedActionSystem
     private void OnStaminaCostExamined(Entity<CEActionStaminaCostComponent> ent, ref ExaminedEvent args)
     {
         args.PushMarkup($"{Loc.GetString("ce-magic-staminacost")}: [color=#3fba54]{ent.Comp.Stamina}[/color]", priority: 9);
+    }
+
+    private void OnSkillPointCostExamined(Entity<CEActionSkillPointCostComponent> ent, ref ExaminedEvent args)
+    {
+        if (!_proto.Resolve(ent.Comp.SkillPoint, out var indexedSkillPoint))
+            return;
+
+        args.PushMarkup($"{Loc.GetString("ce-magic-skillpointcost", ("name", Loc.GetString(indexedSkillPoint.Name)), ("count", ent.Comp.Count))}", priority: 9);
     }
 
     private void OnVerbalExamined(Entity<CEActionSpeakingComponent> ent, ref ExaminedEvent args)

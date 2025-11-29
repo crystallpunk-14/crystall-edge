@@ -12,6 +12,7 @@ public abstract partial class CESharedActionSystem
         SubscribeLocalEvent<CEActionMaterialCostComponent, ActionPerformedEvent>(OnMaterialCostActionPerformed);
         SubscribeLocalEvent<CEActionStaminaCostComponent, ActionPerformedEvent>(OnStaminaCostActionPerformed);
         SubscribeLocalEvent<CEActionManaCostComponent, ActionPerformedEvent>(OnManaCostActionPerformed);
+        SubscribeLocalEvent<CEActionSkillPointCostComponent, ActionPerformedEvent>(OnSkillPointCostActionPerformed);
     }
 
     private void OnMaterialCostActionPerformed(Entity<CEActionMaterialCostComponent> ent, ref ActionPerformedEvent args)
@@ -83,5 +84,13 @@ public abstract partial class CESharedActionSystem
         //        TimeSpan.FromSeconds((float)ent.Comp.ManaCost * 50),
         //        args.Performer,
         //        null); //TODO: We need a way to pass spell target here
+    }
+
+    private void OnSkillPointCostActionPerformed(Entity<CEActionSkillPointCostComponent> ent, ref ActionPerformedEvent args)
+    {
+        if (ent.Comp.SkillPoint is null)
+            return;
+
+        _skill.RemoveSkillPoints(args.Performer, ent.Comp.SkillPoint.Value,  ent.Comp.Count);
     }
 }
