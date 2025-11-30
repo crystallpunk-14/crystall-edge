@@ -20,7 +20,7 @@ public sealed partial class CEVampireClanHeartComponent : Component
     public string LevelPrefix = "orb";
 
     [DataField]
-    public EntProtoId LevelUpVfx = "CESkyLightningRed";
+    public EntProtoId? LevelUpVfx = null; // "CESkyLightningRed"
 
     [DataField]
     public FixedPoint2 Level2 = 5f;
