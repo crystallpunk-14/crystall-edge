@@ -26,7 +26,6 @@ ce-vampire-tree-damaged = Ваше сердце клана атаковано!
 ce-vampire-tree-destroyed = Чужое сердце клана разрушено!
 ce-vampire-tree-destroyed-self = Ваше сердце клана разрушено!
 
-ce-objective-issuer-vampire = Вампир
 ce-skill-tree-vampire-name = Вампирские силы
 ce-skill-tree-vampire-desc = Могущественные опасные силы, доступные только вампирам.
 
