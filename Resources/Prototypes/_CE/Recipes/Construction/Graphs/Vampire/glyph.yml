@@ -1,0 +1,15 @@
+#- type: constructionGraph
+#  id: CEVampirePortalGlyph
+#  start: start
+#  graph:
+#    - node: start
+#      edges:
+#        - to: CEVampirePortalGlyph
+#          completed:
+#            - !type:SnapToGrid
+#          steps:
+#            - material: CEBloodEssence
+#              amount: 1
+#              doAfter: 2
+#    - node: CEVampirePortalGlyph
+#      entity: CEVampirePortalGlyph

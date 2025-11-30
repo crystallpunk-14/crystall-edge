@@ -28,6 +28,7 @@ public sealed partial class CEVampireSystem : CESharedVampireSystem
     [Dependency] private readonly FlammableSystem _flammable = default!;
     [Dependency] private readonly CEDayCycleSystem _dayCycle = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
 
     public override void Initialize()
     {

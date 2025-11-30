@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Server.Administration.Managers;
 using Content.Server.Chat.Systems;
 using Content.Shared._CE.Vampire.Components;
@@ -24,6 +25,12 @@ public sealed partial class CEVampireSystem
     {
         if (ent.Comp.VampireOwner is null)
             return;
+
+        HashSet<Entity<CEVampireComponent>> nearbyVampires = new();
+        _lookup.GetEntitiesInRange(Transform(ent).Coordinates, 10f, nearbyVampires);
+
+        if (nearbyVampires.Count > 0)
+            ent.Comp.VampireOwner = nearbyVampires.First();
 
         AnnounceToVampire(ent.Comp.VampireOwner.Value, Loc.GetString("ce-vampire-tree-created"));
         AnnounceToEnemyVampires(ent.Comp.VampireOwner.Value, Loc.GetString("ce-vampire-tree-created"));

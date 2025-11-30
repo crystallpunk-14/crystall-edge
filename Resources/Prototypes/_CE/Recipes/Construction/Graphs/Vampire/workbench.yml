@@ -1,0 +1,18 @@
+- type: constructionGraph
+  id: CEWorkbenchVampire
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: CEWorkbenchVampire
+          completed:
+            - !type:SnapToGrid
+          steps:
+            - material: CEWood
+              amount: 3
+              doAfter: 2
+            - material: CECloth
+              amount: 2
+              doAfter: 2
+    - node: CEWorkbenchVampire
+      entity: CEWorkbenchVampire

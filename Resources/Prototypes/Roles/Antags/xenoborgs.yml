@@ -2,7 +2,7 @@
   id: MothershipCore
   name: roles-antag-mothership-core-name
   antagonist: true
-  setPreference: true
+  setPreference: false
   objective: roles-antag-mothership-core-objective
   requirements:
   - !type:RoleTimeRequirement
@@ -14,7 +14,7 @@
   id: Xenoborg
   name: roles-antag-xenoborg-name
   antagonist: true
-  setPreference: true
+  setPreference: false
   objective: roles-antag-xenoborg-objective
   requirements:
   - !type:RoleTimeRequirement
