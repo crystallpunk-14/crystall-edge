@@ -26,6 +26,7 @@ ce-vampire-tree-damaged = Your clan's heart has been attacked!
 ce-vampire-tree-destroyed = Another clan heart has been destroyed!
 ce-vampire-tree-destroyed-self = Your clan's heart has been destroyed!
 
+ce-objective-issuer-vampire = Vampire
 ce-skill-tree-vampire-name = Vampire Powers
 ce-skill-tree-vampire-desc = Powerful and dangerous abilities available only to vampires.
 

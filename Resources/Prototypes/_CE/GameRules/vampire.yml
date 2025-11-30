@@ -3,10 +3,9 @@
   parent: CEBaseGameRule
   id: CEGameRuleVampires
   components:
-  #- type: AntagObjectives
-  #  objectives:
-  #  - CEVampireObjectiveBloodPurity
-  #  - CEVampireObjectiveDefenseVillage
+  - type: AntagObjectives
+    objectives:
+    - CEVampireObjectiveBloodPurity
   - type: AntagSelection
     selectionTime: IntraPlayerSpawn
     definitions:
