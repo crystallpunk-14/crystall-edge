@@ -282,7 +282,6 @@ namespace Content.Client.Construction.UI
                 }
                 if (!requirementsMet)
                     continue;
-
                 //CrystallEdge end
 
                 if (!string.IsNullOrEmpty(search) && (recipe.Name is { } name &&

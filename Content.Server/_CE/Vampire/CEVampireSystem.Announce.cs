@@ -23,14 +23,17 @@ public sealed partial class CEVampireSystem
 
     private void OnHeartCreate(Entity<CEVampireClanHeartComponent> ent, ref MapInitEvent args)
     {
-        if (ent.Comp.VampireOwner is null)
-            return;
-
         HashSet<Entity<CEVampireComponent>> nearbyVampires = new();
         _lookup.GetEntitiesInRange(Transform(ent).Coordinates, 10f, nearbyVampires);
 
         if (nearbyVampires.Count > 0)
+        {
             ent.Comp.VampireOwner = nearbyVampires.First();
+            Dirty(ent);
+        }
+
+        if (ent.Comp.VampireOwner is null)
+            return;
 
         AnnounceToVampire(ent.Comp.VampireOwner.Value, Loc.GetString("ce-vampire-tree-created"));
         AnnounceToEnemyVampires(ent.Comp.VampireOwner.Value, Loc.GetString("ce-vampire-tree-created"));
