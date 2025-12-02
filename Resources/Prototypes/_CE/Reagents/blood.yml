@@ -54,6 +54,7 @@
   desc: ce-reagent-desc-blood
   metabolisms:
     Food:
+      effects:
       - !type:AdjustReagent
         reagent: UncookedAnimalProteins
         amount: 0.1

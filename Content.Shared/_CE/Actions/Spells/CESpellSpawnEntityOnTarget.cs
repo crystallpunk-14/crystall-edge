@@ -9,9 +9,6 @@ public sealed partial class CESpellSpawnEntityOnTarget : CESpellEffect
     [DataField]
     public List<EntProtoId> Spawns = new();
 
-    [DataField]
-    public bool Clientside = false;
-
     public override void Effect(EntityManager entManager, CESpellEffectBaseArgs args)
     {
         EntityCoordinates? targetPoint = null;
@@ -27,17 +24,7 @@ public sealed partial class CESpellSpawnEntityOnTarget : CESpellEffect
 
         foreach (var spawn in Spawns)
         {
-            if (Clientside)
-            {
-                if (!netMan.IsClient)
-                    continue;
-
-                entManager.SpawnAtPosition(spawn, targetPoint.Value);
-            }
-            else
-            {
-                entManager.PredictedSpawnAtPosition(spawn, targetPoint.Value);
-            }
+            entManager.PredictedSpawnAtPosition(spawn, targetPoint.Value);
         }
     }
 }
