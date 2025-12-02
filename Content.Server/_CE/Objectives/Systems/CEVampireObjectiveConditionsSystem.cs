@@ -28,37 +28,6 @@ public sealed class CEVampireObjectiveConditionsSystem : EntitySystem
         SubscribeLocalEvent<CEVampireBloodPurityConditionComponent, ObjectiveGetProgressEvent>(OnBloodPurityGetProgress);
     }
 
-    public float CalculateAlivePlayersPercentage()
-    {
-        var query = EntityQueryEnumerator<StationJobsComponent>();
-
-        var totalPlayers = 0f;
-        var alivePlayers = 0f;
-        while (query.MoveNext(out var uid, out var jobs))
-        {
-            totalPlayers += jobs.PlayerJobs.Count;
-
-            foreach (var (netUserId, jobsList) in jobs.PlayerJobs)
-            {
-                if (!_mind.TryGetMind(netUserId, out var mind))
-                    continue;
-
-                if (!_jobs.MindTryGetJob(mind, out var jobRole))
-                    continue;
-
-                var firstMindEntity = GetEntity(mind.Value.Comp.OriginalOwnedEntity);
-
-                if (firstMindEntity is null)
-                    continue;
-
-                if (!_mobState.IsDead(firstMindEntity.Value))
-                    alivePlayers++;
-            }
-        }
-
-        return totalPlayers > 0 ? (alivePlayers / totalPlayers) : 0f;
-    }
-
     private void OnBloodPurityAfterAssign(Entity<CEVampireBloodPurityConditionComponent> ent, ref ObjectiveAfterAssignEvent args)
     {
          _meta.SetEntityName(ent, Loc.GetString("ce-objective-vampire-pure-blood-title"));
