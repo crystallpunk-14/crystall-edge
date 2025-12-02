@@ -36,14 +36,33 @@ public sealed class CESurviveDaysRuleSystem : GameRuleSystem<CESurviveDaysRuleCo
         {
             survive.DaysSurvived++;
 
-            if (survive.DaysSurvived >= 7)
+            if (survive.DaysSurvived > 7)
             {
                 _roundEndSystem.EndRound();
+                RaiseNetworkEvent(new CEScreenPopupShowEvent($"End of week", $"Guys?", new SoundPathSpecifier("/Audio/_CE/Announce/darkness_boom.ogg")));
             }
             else
             {
-                RaiseNetworkEvent(new CEScreenPopupShowEvent($"День {survive.DaysSurvived}", "охуеть", new SoundPathSpecifier("/Audio/Animals/bear.ogg")));
+                RaiseNetworkEvent(new CEScreenPopupShowEvent($"{GetDayOfWeek(survive.DaysSurvived)}", $"Day ({survive.DaysSurvived}/7)", new SoundPathSpecifier("/Audio/_CE/Announce/darkness_boom.ogg")));
             }
+            break;
         }
     }
+
+    private string GetDayOfWeek(int day)
+    {
+        return day switch
+        {
+            1 => "Monday",
+            2 => "Tuesday",
+            3 => "Wednesday",
+            4 => "Thursday",
+            5 => "Friday",
+            6 => "Saturday",
+            7 => "Sunday",
+            _ => throw new ArgumentOutOfRangeException(nameof(day), "Day must be between 1 and 7")
+        };
+    }
+
+
 }

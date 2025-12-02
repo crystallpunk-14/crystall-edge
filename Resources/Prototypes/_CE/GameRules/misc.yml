@@ -1,3 +1,8 @@
+- type: entity
+  parent: CEBaseGameRule
+  id: CEGameRuleWeekRound
+  components:
+  - type: CESurviveDaysRule
 
 - type: entity
   parent: CEBaseGameRule

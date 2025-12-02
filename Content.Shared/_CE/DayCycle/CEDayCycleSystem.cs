@@ -1,8 +1,10 @@
+using Content.Shared.Administration;
 using Content.Shared.GameTicking;
 using Content.Shared.Light.Components;
 using Content.Shared.Light.EntitySystems;
 using Content.Shared.Storage.Components;
 using Content.Shared.Weather;
+using Robust.Shared.Console;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Timing;
 
@@ -81,13 +83,21 @@ public sealed class CEDayCycleSystem : EntitySystem
         if (!Resolve(map, ref map.Comp, false))
             return false;
 
+        return GetCurrentLightLevel(map) >= 0.4;
+    }
+
+    public float GetCurrentLightLevel(Entity<LightCycleComponent?> map)
+    {
+        if (!Resolve(map, ref map.Comp, false))
+            return 0f;
+
         var time = (float) _timing.CurTime
             .Add( map.Comp.Offset)
             .Subtract(_ticker.RoundStartTimeSpan)
             .Subtract(_meta.GetPauseTime(map))
             .TotalSeconds;
 
-        return SharedLightCycleSystem.CalculateLightLevel(map.Comp, time) >= 0.4;
+        return (float)SharedLightCycleSystem.CalculateLightLevel(map.Comp, time);
     }
 
     /// <summary>
@@ -120,6 +130,7 @@ public sealed class CEDayCycleSystem : EntitySystem
         return day;
     }
 }
+
 
 /// <summary>
 /// Called on the map with <see cref="LightCycleComponent"/> when night ends and dawn begins
