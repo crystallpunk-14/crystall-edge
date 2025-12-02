@@ -23,7 +23,7 @@ public sealed partial class CEZLevelsSystem : CESharedZLevelsSystem
 
     private void OnGameMapLoad(PostGameMapLoad ev)
     {
-        if (ev.GameMap.ZLevels.Count == 0)
+        if (ev.GameMap.MapsAbove.Count == 0 && ev.GameMap.MapsBelow.Count == 0)
             return;
 
         var stationNetwork = CreateZNetwork();
@@ -35,9 +35,11 @@ public sealed partial class CEZLevelsSystem : CESharedZLevelsSystem
 
         EntityManager.AddComponents(mainMap, ev.GameMap.ZLevelsComponentOverrides);
 
-        foreach (var (depth, path) in ev.GameMap.ZLevels)
+        //Loading maps below first
+        var depth = ev.GameMap.MapsBelow.Count * -1;
+        foreach (var mapBelow in ev.GameMap.MapsBelow)
         {
-            if (!_mapLoader.TryLoadMap(path, out var mapEnt, out _))
+            if (!_mapLoader.TryLoadMap(mapBelow, out var mapEnt, out _))
             {
                 Log.Error($"Failed to load map for Station zNetwork at depth {depth}!");
                 continue;
@@ -46,8 +48,29 @@ public sealed partial class CEZLevelsSystem : CESharedZLevelsSystem
             Log.Info($"Created map {mapEnt.Value.Comp.MapId} for Station zNetwork at level {depth}");
             EntityManager.AddComponents(mapEnt.Value, ev.GameMap.ZLevelsComponentOverrides);
             _map.InitializeMap(mapEnt.Value.Comp.MapId);
+            _meta.SetEntityName(mapEnt.Value, $"{ev.GameMap.MapName} [{depth}]");
             //var member = EnsureComp<StationMemberComponent>(mapEnt.Value); todo: station membership
             dict.Add(mapEnt.Value, depth);
+            depth++;
+        }
+
+        //Loading maps above next
+        depth = 1;
+        foreach (var mapAbove in ev.GameMap.MapsAbove)
+        {
+            if (!_mapLoader.TryLoadMap(mapAbove, out var mapEnt, out _))
+            {
+                Log.Error($"Failed to load map for Station zNetwork at depth {depth}!");
+                continue;
+            }
+
+            Log.Info($"Created map {mapEnt.Value.Comp.MapId} for Station zNetwork at level {depth}");
+            EntityManager.AddComponents(mapEnt.Value, ev.GameMap.ZLevelsComponentOverrides);
+            _map.InitializeMap(mapEnt.Value.Comp.MapId);
+            _meta.SetEntityName(mapEnt.Value, $"{ev.GameMap.MapName} [{depth}]");
+            //var member = EnsureComp<StationMemberComponent>(mapEnt.Value); todo: station membership
+            dict.Add(mapEnt.Value, depth);
+            depth++;
         }
 
         TryAddMapsIntoZNetwork(stationNetwork, dict);

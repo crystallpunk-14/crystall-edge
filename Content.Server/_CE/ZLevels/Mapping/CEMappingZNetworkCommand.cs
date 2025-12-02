@@ -30,7 +30,7 @@ public sealed class CEMappingZNetworkCommand : LocalizedEntityCommands
         var options = new List<CompletionOption>();
         foreach (var map in _proto.EnumeratePrototypes<GameMapPrototype>())
         {
-            if (map.ZLevels.Count > 0)
+            if (map.MapsAbove.Count > 0 || map.MapsBelow.Count > 0)
                 options.Add(new CompletionOption(map.ID, map.MapName));
         }
 
@@ -76,9 +76,11 @@ public sealed class CEMappingZNetworkCommand : LocalizedEntityCommands
         }
         dict.Add(defaultMapEnt.Value, 0);
         createdMaps.Add(defaultMapEnt.Value.Comp.MapId);
+        _meta.SetEntityName(defaultMapEnt.Value, $"Mapping {mapProto.MapName}");
 
-        //Load all zLevels
-        foreach (var (depth, path) in mapProto.ZLevels)
+        //Loading maps below first
+        var depth = mapProto.MapsBelow.Count * -1;
+        foreach (var path in mapProto.MapsBelow)
         {
             if (!_mapLoader.TryLoadMap(path, out var mapEnt, out _, opts))
             {
@@ -88,6 +90,23 @@ public sealed class CEMappingZNetworkCommand : LocalizedEntityCommands
 
             dict.Add(mapEnt.Value, depth);
             createdMaps.Add(mapEnt.Value.Comp.MapId);
+            _meta.SetEntityName(mapEnt.Value, $"Mapping {mapProto.MapName} [{depth}]");
+            depth++;
+        }
+
+        depth = 1;
+        foreach (var path in mapProto.MapsAbove)
+        {
+            if (!_mapLoader.TryLoadMap(path, out var mapEnt, out _, opts))
+            {
+                shell.WriteError($"Failed to load zNetwork map (depth {depth}): {path.ToString()}!");
+                return;
+            }
+
+            dict.Add(mapEnt.Value, depth);
+            createdMaps.Add(mapEnt.Value.Comp.MapId);
+            _meta.SetEntityName(mapEnt.Value, $"Mapping {mapProto.MapName} [{depth}]");
+            depth++;
         }
 
         //Was the maps actually created or did it fail somehow?
