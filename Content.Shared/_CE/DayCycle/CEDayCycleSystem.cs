@@ -3,8 +3,6 @@ using Content.Shared.Light.Components;
 using Content.Shared.Light.EntitySystems;
 using Content.Shared.Storage.Components;
 using Content.Shared.Weather;
-using Robust.Shared.Console;
-using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Timing;
 
@@ -23,7 +21,6 @@ public sealed class CEDayCycleSystem : EntitySystem
 
     private EntityQuery<MapGridComponent> _mapGridQuery;
     private EntityQuery<InsideEntityStorageComponent> _storageQuery;
-
 
     public override void Initialize()
     {
@@ -56,7 +53,7 @@ public sealed class CEDayCycleSystem : EntitySystem
                 {
                     if (newLightLevel < dayCycle.Threshold)
                     {
-                        var ev = new CEStartNightEvent();
+                        var ev = new CEStartNightEvent(uid);
                         RaiseLocalEvent(uid, ev, true);
                     }
                 }
@@ -69,7 +66,7 @@ public sealed class CEDayCycleSystem : EntitySystem
                 {
                     if (newLightLevel > dayCycle.Threshold)
                     {
-                        var ev = new CEStartDayEvent();
+                        var ev = new CEStartDayEvent(uid);
                         RaiseLocalEvent(uid, ev, true);
                     }
                 }
@@ -127,9 +124,15 @@ public sealed class CEDayCycleSystem : EntitySystem
 /// <summary>
 /// Called on the map with <see cref="LightCycleComponent"/> when night ends and dawn begins
 /// </summary>
-public sealed class CEStartNightEvent : EntityEventArgs { }
+public sealed class CEStartNightEvent(EntityUid mapUid) : EntityEventArgs
+{
+    public EntityUid MapUid = mapUid;
+}
 
 /// <summary>
 /// Called on the map with <see cref="LightCycleComponent"/> when day ends and night begins
 /// </summary>
-public sealed class CEStartDayEvent : EntityEventArgs { }
+public sealed class CEStartDayEvent(EntityUid mapUid) : EntityEventArgs
+{
+    public EntityUid MapUid = mapUid;
+}
