@@ -11,10 +11,10 @@
     - map: [ "enum.HumanoidVisualLayers.Snout" ]
     - map: [ "enum.HumanoidVisualLayers.Eyes" ]
       shader: unshaded # Gloving eyes
-#    - map: [ "vampire_fangs" ]
-#      sprite: _CE/Mobs/Species/Vampire/fangs.rsi
-#      state: human
-#      visible: false
+    - map: [ "vampire_fangs" ]
+      sprite: _CE/Mobs/Species/Vampire/fangs.rsi
+      state: human
+      visible: false
     - map: [ "enum.HumanoidVisualLayers.RArm" ]
     - map: [ "enum.HumanoidVisualLayers.LArm" ]
     - map: [ "enum.HumanoidVisualLayers.RLeg" ]
@@ -80,8 +80,8 @@
     requiredLegs: 2
 #  - type: CEAuraImprint
 #    imprintColor: "#31cc3b"
-#  - type: Bloodstream
-#    bloodReagent: CEBloodFlowerSap #Lol
+  - type: Bloodstream
+    bloodReagent: CEBloodSilva
   - type: Inventory
     templateId: CEHuman
     displacements:

@@ -1,0 +1,21 @@
+- type: constructionGraph
+  id: CEVampireStoneAltar
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: CEVampireStoneAltar
+          completed:
+            - !type:SnapToGrid
+          steps:
+            - material: CEStone
+              amount: 5
+              doAfter: 2
+            - material: CEIron
+              amount: 2
+              doAfter: 2
+            - material: CEBloodEssence
+              amount: 1
+              doAfter: 2
+    - node: CEVampireStoneAltar
+      entity: CEVampireStoneAltar

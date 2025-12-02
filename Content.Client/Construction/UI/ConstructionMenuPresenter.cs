@@ -270,6 +270,20 @@ namespace Content.Client.Construction.UI
                     || _whitelistSystem.IsWhitelistFail(recipe.EntityWhitelist, _playerManager.LocalEntity.Value))
                     continue;
 
+                //CrystallEdge requirements
+                var requirementsMet = true;
+                foreach (var req in recipe.CERestrictions)
+                {
+                    if (!req.Check(_entManager, _playerManager.LocalEntity.Value))
+                    {
+                        requirementsMet = false;
+                        break;
+                    }
+                }
+                if (!requirementsMet)
+                    continue;
+                //CrystallEdge end
+
                 if (!string.IsNullOrEmpty(search) && (recipe.Name is { } name &&
                                                       !name.Contains(search.Trim(),
                                                           StringComparison.InvariantCultureIgnoreCase)))

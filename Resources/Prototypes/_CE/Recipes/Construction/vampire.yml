@@ -1,0 +1,47 @@
+- type: construction
+  hide: false
+  id: CEWorkbenchVampire
+  graph: CEWorkbenchVampire
+  startNode: start
+  targetNode: CEWorkbenchVampire
+  category: ce-construction-category-vampire
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+  cERestrictions:
+    - !type:NeedPrerequisite
+      prerequisite: BloodEssenceCreation
+
+- type: construction
+  hide: false
+  id: CEVampireStoneAltar
+  graph: CEVampireStoneAltar
+  startNode: start
+  targetNode: CEVampireStoneAltar
+  category: ce-construction-category-vampire
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+  cERestrictions:
+    - !type:NeedPrerequisite
+      prerequisite: BloodEssenceCreation
+
+- type: construction
+  hide: false
+  id: CEVampireClanHeart
+  graph: CEVampireClanHeart
+  startNode: start
+  targetNode: CEVampireClanHeart
+  category: ce-construction-category-vampire
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+  cERestrictions:
+    - !type:NeedPrerequisite
+      prerequisite: BloodEssenceCreation

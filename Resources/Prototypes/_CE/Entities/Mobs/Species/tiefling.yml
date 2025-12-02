@@ -13,8 +13,8 @@
     prototype: CETiefling
     requiredLegs: 2
   - type: Wagging
-#  - type: Bloodstream
-#    bloodReagent: CEBloodTiefling
+  - type: Bloodstream
+    bloodReagent: CEBloodTiefling
   - type: Damageable
     damageContainer: CEBiological
     damageModifierSet: CETiefling

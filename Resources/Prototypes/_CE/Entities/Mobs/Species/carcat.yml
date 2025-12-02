@@ -10,10 +10,10 @@
     - map: [ "enum.HumanoidVisualLayers.Head" ]
     - map: [ "enum.HumanoidVisualLayers.Snout" ]
     - map: [ "enum.HumanoidVisualLayers.Eyes" ]
-#    - map: [ "vampire_fangs" ]
-#      sprite: _CE/Mobs/Species/Vampire/fangs.rsi
-#      state: carcat #Unique carcat fangs
-#      visible: false
+    - map: [ "vampire_fangs" ]
+      sprite: _CE/Mobs/Species/Vampire/fangs.rsi
+      state: carcat #Unique carcat fangs
+      visible: false
     - map: [ "enum.HumanoidVisualLayers.RArm" ]
     - map: [ "enum.HumanoidVisualLayers.LArm" ]
     - map: [ "enum.HumanoidVisualLayers.RLeg" ]
@@ -89,6 +89,8 @@
     footstepSoundCollection: null # Silent footstep
 #  - type: CEAuraImprint
 #    imprintColor: "#9e7e5d"
+  - type: Bloodstream
+    bloodReagent: CEBloodCarcat
   - type: Inventory
     templateId: CECarcat # Cant wear shoes
     speciesId: carcat

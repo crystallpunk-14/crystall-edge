@@ -9,7 +9,7 @@ public sealed class CERoundflowSystem : EntitySystem
 {
     public override void Initialize()
     {
-        SubscribeLocalEvent<MetaDataComponent, MobStateChangedEvent>(OnMobStateChanged);
+        //SubscribeLocalEvent<MetaDataComponent, MobStateChangedEvent>(OnMobStateChanged);
     }
 
     private void OnMobStateChanged(Entity<MetaDataComponent> ent, ref MobStateChangedEvent args)

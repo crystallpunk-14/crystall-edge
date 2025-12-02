@@ -316,7 +316,7 @@ public sealed class CESkillUIController : UIController, IOnStateEntered<Gameplay
             return;
 
         //If tree not selected, select the first one
-        if (_selectedSkillTree == null)
+        if (_selectedSkillTree == null && storage.AvailableSkillTrees.Count > 0)
         {
             var firstTree = storage.AvailableSkillTrees.First();
 

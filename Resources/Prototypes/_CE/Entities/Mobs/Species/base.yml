@@ -198,6 +198,7 @@
     weightlessModifier: 0.6
   - type: CETradingReputation
   - type: CEBlinker
+  - type: CESkillStorage
 
 - type: entity
   parent:

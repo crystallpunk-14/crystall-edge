@@ -502,6 +502,10 @@
     Food:
       effects:
       - !type:SatiateHunger
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ CEVampire ]
+          inverted: true
         factor: 1
 
 - type: reagent
