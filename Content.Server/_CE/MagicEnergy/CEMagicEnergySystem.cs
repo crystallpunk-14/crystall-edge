@@ -23,7 +23,7 @@ public sealed partial class CEMagicEnergySystem : CESharedMagicEnergySystem {
                 continue;
             energyRegen.NextUpdate = _timing.CurTime + energyRegen.UpdateFrequency;
 
-            _battery.ChangeCharge(uid, radReceiver.CurrentRadiation * energyRegen.Energy, battery);
+            _battery.ChangeCharge((uid, battery), radReceiver.CurrentRadiation * energyRegen.Energy);
         }
     }
 }

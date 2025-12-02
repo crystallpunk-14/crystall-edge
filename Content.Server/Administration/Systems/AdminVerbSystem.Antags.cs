@@ -1,3 +1,4 @@
+using Content.Server._CE.GameTicking.Components;
 using Content.Server.Antag;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules.Components;
@@ -31,6 +32,8 @@ public sealed partial class AdminVerbSystem
     private static readonly EntProtoId ParadoxCloneRuleId = "ParadoxCloneSpawn";
     private static readonly ProtoId<StartingGearPrototype> PirateGearId = "PirateGear";
 
+    private static readonly EntProtoId CEDefaultVampireRule = "CEGameRuleVampires";
+
     // All antag verbs have names so invokeverb works.
     private void AddAntagVerbs(GetVerbsEvent<Verb> args)
     {
@@ -47,6 +50,21 @@ public sealed partial class AdminVerbSystem
 
         var targetPlayer = targetActor.PlayerSession;
 
+        var vampireName = Loc.GetString("ce-admin-verb-text-make-vampire");
+        Verb vampire = new()
+        {
+            Text = vampireName,
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/_CE/Actions/vampire.rsi"), "bite"),
+            Act = () =>
+            {
+                _antag.ForceMakeAntag<CEVampireRuleComponent>(targetPlayer, CEDefaultVampireRule);
+            },
+            Impact = LogImpact.High,
+        };
+        args.Verbs.Add(vampire);
+
+        /* Disable vanilla antags
         var traitorName = Loc.GetString("admin-verb-text-make-traitor");
         Verb traitor = new()
         {
@@ -191,5 +209,6 @@ public sealed partial class AdminVerbSystem
 
         if (HasComp<HumanoidAppearanceComponent>(args.Target)) // only humanoids can be cloned
             args.Verbs.Add(paradox);
+            */
     }
 }

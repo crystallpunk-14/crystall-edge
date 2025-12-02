@@ -11,11 +11,6 @@ ce-ambition-item-mania-desc = Из-за того, что !REASON!, я давно
 ce-ambition-abstract-mania-desc = Мне так нравится !TOPIC!! Хочу чтобы этого было как можно больше в моей жизни.
 ce-ambition-species-mania-desc = !SPECIES! - лучшая раса на свете!
 
-ce-ambition-phobia-name = Фобия
-ce-ambition-item-phobia-desc = Один только вид !ITEM! вызывает во мне животный страх!
-ce-ambition-abstract-phobia-desc = !TOPIC! вызывает во мне животный страх!
-ce-ambition-species-phobia-desc = !SPECIES! - страшная раса, я боюсь находится рядом с ними!
-
 ce-ambition-job-gift-name = Благотворительная акция
 ce-ambition-job-gift-desc = Я хочу подарить !ITEM! каждому !JOB!!
 
@@ -61,3 +56,22 @@ ce-ambition-profession-change-desc = Меня не устраивает кто �
 ce-ambition-manipulator-name = Манипулятор
 ce-ambition-manipulator-quarrel-desc = Смогу ли я поссорить !NAME1! с !NAME2!?
 ce-ambition-manipulator-friend-desc = Смогу ли я сделать !NAME1! и !NAME2! близкими друзьями?
+
+ce-ambition-support-name = Поддержка
+ce-ambition-support-desc = Из-за того, что !REASON!, я хотел бы чтобы !NAME! был в порядке.
+
+ce-ambition-story-collector-name = Коллекционер историй
+ce-ambition-story-collector-desc = Я пишу книгу воспоминаний. Нужно узнать у !COUNT! людей их самую интересную историю из жизни.
+
+ce-ambition-secret-benefactor-name = Тайный благодетель
+ce-ambition-secret-benefactor-desc = Сегодня я буду анонимно помогать !NAME!. Они не должны узнать, что это я.
+
+ce-ambition-unusual-collector-name = Коллекционер необычного
+ce-ambition-unusual-collector-desc = Я собираю редкие вещи. Сегодня мне нужно найти !COUNT! экземпляров !ITEM!.
+
+ce-ambition-interior-designer-name = Дизайнер интерьеров
+ce-ambition-interior-designer-desc = !LOCATION! выглядит ужасно. Я должен его украсить и сделать уютным.
+
+ce-ambition-peacemaker-name = Миротворец
+ce-ambition-peacemaker-desc = Я не выношу конфликтов. Если увижу ссору, обязательно попытаюсь помирить спорящих.
+

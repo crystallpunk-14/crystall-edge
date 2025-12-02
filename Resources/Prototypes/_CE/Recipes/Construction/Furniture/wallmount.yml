@@ -1,0 +1,14 @@
+- type: construction
+  hide: false
+  id: CEWallmountBarShelf
+  graph: CEWallmountBarShelf
+  startNode: start
+  targetNode: CEWallmountBarShelf
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  canRotate: true
+  conditions:
+    - !type:TileNotBlocked
+    - !type:CEWallRequired

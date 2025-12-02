@@ -44,3 +44,10 @@ ce-tiles-stonebricks-small-carved2 = пол из резного кирпича
 ce-tiles-stonebricks-square-carved = пол из резного кирпича
 ce-tiles-stonebricks = каменный кирпичный пол
 ce-tiles-stonebricks-weather = уличный каменный кирпичный пол
+
+ce-tiles-stonebricks-long = каменный пол из длинных кирпичей
+ce-tiles-stonebricks-medium = каменный пол из средних кирпичей
+ce-tiles-stonebricks-diamond = каменный пол ромбовидной укладки
+ce-tiles-stonebricks-square-pattern = пол с квадратным рисунком
+ce-tiles-stonebricks-medium-circles = пол с средней круглой каменной плиткой
+ce-tiles-stonebricks-small-circles = пол с малой круглой каменной плиткой

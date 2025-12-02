@@ -12,3 +12,4 @@ ce-trade-faction-contracts = Zellasian Trade Guild
 ce-trade-faction-horticulture = Horticulture Consortium
 ce-trade-faction-home-decor = Cozy home
 ce-trade-faction-tailors = 'Silk & Needle' Tailors Guild
+ce-trade-faction-empire-guard = Imperial Guard Warehouse

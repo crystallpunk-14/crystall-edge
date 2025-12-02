@@ -43,10 +43,10 @@
     - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
     - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
     - map: [ "enum.HumanoidVisualLayers.Tail" ]
-#    - map: [ "vampire_fangs" ]
-#      sprite: _CE/Mobs/Species/Vampire/fangs.rsi
-#      state: goblin # Goblin fangs state
-#      visible: false
+    - map: [ "vampire_fangs" ]
+      sprite: _CE/Mobs/Species/Vampire/fangs.rsi
+      state: goblin # Goblin fangs state
+      visible: false
     - map: [ "mask" ]
     - map: [ "head" ]
     - map: [ "pocket1" ]
@@ -82,8 +82,8 @@
   - type: Body
     prototype: CEHuman
     requiredLegs: 2
-#  - type: Bloodstream  (Until alchemy is ported)
-#    bloodReagent: CEBloodGoblin
+  - type: Bloodstream
+    bloodReagent: CEBloodGoblin
   - type: Fixtures
     fixtures: # Smaller hitbox & less weight
       fix1:

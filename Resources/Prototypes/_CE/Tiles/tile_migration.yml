@@ -94,6 +94,30 @@
   id: CEFloorDirtSeedbed
   target: CEDirtSeedbed
 
+- type: tileAlias
+  id: CEFloorStoneLongBricks
+  target: CEStoneLongBricks
+
+- type: tileAlias
+  id: CEFloorStoneMediumBricks
+  target: CEStoneMediumBricks
+
+- type: tileAlias
+  id: CEFloorStoneDiamond
+  target: CEStoneDiamond
+
+- type: tileAlias
+  id: CEFloorStoneSquarePattern
+  target: CEStoneSquarePattern
+
+- type: tileAlias
+  id: CEFloorStoneMediumCircles
+  target: CEStoneMediumCircles
+
+- type: tileAlias
+  id: CEFloorStoneSmallCircles
+  target: CEStoneSmallCircles
+
 # OAK Wood Planks
 - type: tileAlias
   id: CEFloorOakWoodPlanks

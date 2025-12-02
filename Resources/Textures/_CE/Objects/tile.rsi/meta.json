@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-4.0",
-  "copyright": "Created by TheShuEd",
+  "copyright": "Created by TheShuEd and etch_sketch (DISCORD)",
   "size": {
     "x": 32,
     "y": 32
@@ -36,6 +36,25 @@
     },
     {
       "name": "stonebrick_square_carved"
+    },
+    {
+      "name": "stonebricks_long"
+    },
+    {
+      "name": "stonebricks_medium"
+    },
+    {
+      "name": "stonebricks_diamond"
+    },
+    {
+      "name": "stonebricks_square_pattern"
+    },
+    {
+      "name": "stonebricks_medium_circles"
+    },
+    {
+      "name": "stonebricks_small_circles"
     }
+
   ]
 }

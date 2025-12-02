@@ -1,0 +1,64 @@
+- type: entity
+  id: CEBaseMagicImpact
+  name: magic impact
+  description: manifestation of magical energy in the physical plane
+  abstract: true
+  components:
+  - type: TimedDespawn
+    lifetime: 1.6
+  - type: AnimationPlayer
+  - type: Tag
+    tags:
+      - HideContextMenu
+  - type: Sprite
+    drawdepth: Effects
+    sprite: _CE/Effects/Magic/cast_impact48.rsi
+    noRot: true
+
+- type: entity
+  id: CEImpactEffectBloodEssence
+  parent: CEBaseMagicImpact
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: _CE/Effects/cast_impact32.rsi
+    layers:
+    - state: burst
+      color: "#d60032"
+      shader: unshaded
+  - type: PointLight
+    color: "#d60032"
+    radius: 4.0
+    energy: 3.0
+  - type: LightFade
+    duration: 2.5
+  - type: TimedDespawn
+    lifetime: 2.5
+
+- type: entity
+  id: CEImpactEffectBloodEssenceInverse
+  parent: CEImpactEffectBloodEssence
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/cast_impact32.rsi
+    layers:
+    - state: burst_in
+      color: "#d60032"
+      shader: unshaded
+
+- type: entity
+  id: CEImpactEffectBloodEssence2
+  parent: CEImpactEffectBloodEssence
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/cast_impact32.rsi
+    layers:
+    - state: burst2
+      color: "#d60032"
+      shader: unshaded

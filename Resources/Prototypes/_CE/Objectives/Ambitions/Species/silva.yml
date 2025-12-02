@@ -1,0 +1,41 @@
+- type: entity
+  parent: CEBaseAmbitionObjective
+  abstract: true
+  id: CEBaseSilvaAmbition
+  components:
+  - type: CEAmbitionObjective
+    conditions:
+      - !type:RequiredSpecies
+        species:
+        - CESilva
+
+- type: entity
+  parent: CEBaseSilvaAmbition
+  id: CEAmbitionRootsMemory
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-roots-memory-name
+    desc: ce-ambition-roots-memory-desc
+    weight: 2
+    parsings:
+      LOCATION: !type:RandomLocation
+
+- type: entity
+  parent: CEBaseSilvaAmbition
+  id: CEAmbitionWaterOfLife
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-water-of-life-name
+    desc: ce-ambition-water-of-life-desc
+    weight: 2
+
+- type: entity
+  parent: CEBaseSilvaAmbition
+  id: CEAmbitionForestCathedral
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-forest-cathedral-name
+    desc: ce-ambition-forest-cathedral-desc
+    weight: 2
+    parsings:
+      LOCATION: !type:RandomLocation

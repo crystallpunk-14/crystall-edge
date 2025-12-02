@@ -1,0 +1,37 @@
+
+- type: entity
+  parent: CEBaseGameRule
+  id: CEGameRuleVampires
+  components:
+  - type: AntagObjectives
+    objectives:
+    - CEVampireObjectiveBloodPurity
+  - type: AntagSelection
+    selectionTime: IntraPlayerSpawn
+    definitions:
+    - prefRoles: [ CEVampire ]
+      min: 1
+      max: 3
+      playerRatio: 2
+      lateJoinAdditional: true
+      mindRoles:
+      - CEMindRoleVampire
+      components:
+      - type: CEVampire
+      - type: Hunger
+        hungerThresholdAlerts:
+          Peckish: CEVampirePeckish
+          Starving: CEVampireStarving
+          Dead: CEVampireStarving
+        starvingSlowdownModifier: 1.1 #Speed Up when hunger!
+      - type: PassiveDamage
+        allowedStates:
+        - Alive
+        - Critical
+        damage:
+          groups:
+            Brute: -3
+      briefing:
+        text: ce-roles-antag-vampire-briefing
+        color: "#630f24"
+        sound: "/Audio/_CE/Ambience/Antag/vampire.ogg"

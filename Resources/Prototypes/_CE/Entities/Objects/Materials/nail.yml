@@ -48,17 +48,12 @@
   - type: StepTrigger
     intersectRatio: 0.2
   - type: TriggerOnStepTrigger
-  - type: DamageOnTrigger
-    targetUser: true
-    damage:
-      types:
-        Piercing: 5
   - type: Slippery
     slipSound:
       path: /Audio/Effects/weak_hit2.ogg
 
 - type: entity
-  id: CENail110
+  id: CENail10
   parent: CENail1
   suffix: 10
   components:

@@ -58,7 +58,7 @@ public abstract partial class CESharedCookingSystem
         if (!TryComp<CEFoodHolderComponent>(ent, out var holder))
             return;
 
-        if (!_proto.TryIndex(args.Recipe, out var indexedRecipe))
+        if (!_proto.Resolve(args.Recipe, out var indexedRecipe))
             return;
 
         CreateFoodData(ent, indexedRecipe);

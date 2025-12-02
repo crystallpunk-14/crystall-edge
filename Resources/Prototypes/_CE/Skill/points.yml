@@ -1,0 +1,17 @@
+- type: skillPoint
+  id: Memory
+  name: ce-skill-point-memory
+  getPointPopup: ce-skill-popup-memory-added
+  losePointPopup: ce-skill-popup-memory-losed
+  icon:
+    sprite: _CE/Interface/Misc/skill_point.rsi
+    state: exp
+
+- type: skillPoint
+  id: Blood
+  name: ce-skill-point-vampire-blood
+  getPointPopup: ce-skill-popup-blood-added
+  losePointPopup: ce-skill-popup-blood-losed
+  icon:
+    sprite: _CE/Interface/Misc/skill_point.rsi
+    state: blood

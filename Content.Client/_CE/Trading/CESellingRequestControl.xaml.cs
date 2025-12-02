@@ -22,7 +22,7 @@ public sealed partial class CESellingRequestControl : Control
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
 
-        if (!_proto.TryIndex(request, out var indexedRequest))
+        if (!_proto.Resolve(request, out var indexedRequest))
             return;
 
         //Requirements

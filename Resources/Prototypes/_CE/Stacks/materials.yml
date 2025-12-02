@@ -74,3 +74,10 @@
   icon: { sprite: "_CE/Objects/Materials/ash.rsi", state: ash_1 }
   spawn: CEAsh1
   maxCount: 30
+
+- type: stack
+  id: CEBloodEssence
+  name: ce-stack-blood-essence
+  icon: { sprite: "_CE/Objects/Materials/blood_essence.rsi", state: drop }
+  spawn: CEBloodEssence
+  maxCount: 10

@@ -28,7 +28,7 @@
     desc: ce-ambition-job-gift-desc
     weight: 3
     parsings:
-      JOB: !type:RandomJob
+      JOB: !type:RandomOtherJob
       ITEM: !type:RandomEntity
         whitelist:
           - Item

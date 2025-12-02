@@ -1,0 +1,69 @@
+- type: entity
+  parent: CEBaseAmbitionObjective
+  abstract: true
+  id: CEBaseElfAmbition
+  components:
+  - type: CEAmbitionObjective
+    conditions:
+      - !type:RequiredSpecies
+        species:
+        - CEElf
+
+- type: entity
+  parent: CEBaseElfAmbition
+  id: CEAmbitionNatureHarmony
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-nature-harmony-name
+    desc: ce-ambition-nature-harmony-desc
+    weight: 2
+    parsings:
+      COUNT: !type:RandomNumber
+        range:
+          min: 2
+          max: 5
+
+- type: entity
+  parent: CEBaseElfAmbition
+  id: CEAmbitionElvenArt
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-elven-art-name
+    desc: ce-ambition-elven-art-desc
+    weight: 2
+    parsings:
+      LOCATION: !type:RandomLocation
+
+- type: entity
+  parent: CEBaseElfAmbition
+  id: CEAmbitionDisdainForHaste
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-disdain-for-haste-name
+    desc: ce-ambition-disdain-for-haste-desc
+    weight: 1.5
+
+- type: entity
+  parent: CEBaseElfAmbition
+  id: CEAmbitionRacialSuperiority
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-racial-superiority-name
+    desc: ce-ambition-racial-superiority-desc
+    weight: 1.5
+    parsings:
+      COUNT: !type:RandomNumber
+        range:
+          min: 2
+          max: 4
+
+- type: entity
+  parent: CEBaseElfAmbition
+  id: CEAmbitionMoonSong
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-moon-song-name
+    desc: ce-ambition-moon-song-desc
+    weight: 2
+    parsings:
+      NAME: !type:RandomOtherPerson

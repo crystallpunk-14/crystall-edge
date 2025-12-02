@@ -11,11 +11,6 @@ ce-ambition-item-mania-desc = Because !REASON!, I've been dreaming about owning 
 ce-ambition-abstract-mania-desc = I love !TOPIC!! I want as much of it as possible in my life.
 ce-ambition-species-mania-desc = !SPECIES! are the best species in the world!
 
-ce-ambition-phobia-name = Phobia
-ce-ambition-item-phobia-desc = Just the sight of !ITEM! fills me with animal fear!
-ce-ambition-abstract-phobia-desc = !TOPIC! fills me with primal fear!
-ce-ambition-species-phobia-desc = !SPECIES! are a terrifying species, I'm afraid to be near them!
-
 ce-ambition-job-gift-name = Charity event
 ce-ambition-job-gift-desc = I must give !ITEM! to every !JOB!!
 
@@ -61,3 +56,21 @@ ce-ambition-profession-change-desc = I'm not satisfied with who I am. I believe 
 ce-ambition-manipulator-name = Manipulator
 ce-ambition-manipulator-quarrel-desc = Can I make !NAME1! and !NAME2! fight with each other?
 ce-ambition-manipulator-friend-desc = Can I make !NAME1! and !NAME2! become close friends?
+
+ce-ambition-support-name = Support
+ce-ambition-support-desc = Because of !REASON!, I would like !NAME! to be okay.
+
+ce-ambition-story-collector-name = Story Collector
+ce-ambition-story-collector-desc = I'm writing a book of memories. I need to learn the most interesting life story from !COUNT! different people.
+
+ce-ambition-secret-benefactor-name = Secret Benefactor
+ce-ambition-secret-benefactor-desc = Today I will anonymously help !NAME!. They must not find out it's me.
+
+ce-ambition-unusual-collector-name = Collector of the Unusual
+ce-ambition-unusual-collector-desc = I collect rare items. Today I need to find !COUNT! copies of !ITEM!.
+
+ce-ambition-interior-designer-name = Interior Designer
+ce-ambition-interior-designer-desc = !LOCATION! looks terrible. I must decorate it and make it cozy.
+
+ce-ambition-peacemaker-name = Peacemaker
+ce-ambition-peacemaker-desc = I cannot stand conflicts. If I see a quarrel, I will definitely try to reconcile those arguing.

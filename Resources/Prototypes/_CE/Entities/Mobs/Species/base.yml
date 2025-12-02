@@ -197,6 +197,7 @@
     weightlessFriction: 2
     weightlessModifier: 0.6
   - type: CETradingReputation
+  - type: CESkillStorage
 
 - type: entity
   parent:

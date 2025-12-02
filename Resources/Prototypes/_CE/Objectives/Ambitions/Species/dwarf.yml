@@ -1,0 +1,33 @@
+- type: entity
+  parent: CEBaseAmbitionObjective
+  abstract: true
+  id: CEBaseDwarfAmbition
+  components:
+  - type: CEAmbitionObjective
+    conditions:
+      - !type:RequiredSpecies
+        species:
+        - CEDwarf
+
+- type: entity
+  parent: CEBaseDwarfAmbition
+  id: CEAmbitionUndergroundLonging
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-underground-longing-name
+    desc: ce-ambition-underground-longing-desc
+    weight: 2
+
+- type: entity
+  parent: CEBaseDwarfAmbition
+  id: CEAmbitionAncestorDebt
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-ancestor-debt-name
+    desc: ce-ambition-ancestor-debt-desc
+    weight: 2
+    parsings:
+      COUNT: !type:RandomNumber
+        range:
+          min: 2
+          max: 5

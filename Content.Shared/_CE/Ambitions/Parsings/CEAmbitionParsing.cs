@@ -3,8 +3,11 @@ using Content.Shared._CE.LockKey;
 using Content.Shared.Dataset;
 using Content.Shared.Destructible.Thresholds;
 using Content.Shared.Humanoid.Prototypes;
+using Content.Shared.Mind;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Roles;
+using Content.Shared.Roles.Components;
+using Content.Shared.Roles.Jobs;
 using JetBrains.Annotations;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -63,6 +66,8 @@ public sealed partial class RandomEntity : CEAmbitionParsing
 
     [DataField]
     public List<string> Whitelist = new();
+    [DataField]
+    public List<string> Blacklist = new();
 
     public override string? GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
     {
@@ -83,6 +88,15 @@ public sealed partial class RandomEntity : CEAmbitionParsing
             foreach (var compName in Whitelist)
             {
                 if (!item.Components.TryGetComponent(compName, out _))
+                {
+                    suitable = false;
+                    break;
+                }
+            }
+
+            foreach (var compName in Blacklist)
+            {
+                if (item.Components.TryGetComponent(compName, out _))
                 {
                     suitable = false;
                     break;
@@ -110,14 +124,29 @@ public sealed partial class RandomNumber : CEAmbitionParsing
     }
 }
 
-public sealed partial class RandomJob : CEAmbitionParsing
+public sealed partial class RandomOtherJob : CEAmbitionParsing
 {
     public override string? GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
     {
         List<JobPrototype> all = new();
 
+        var mindSys = entManager.System<SharedMindSystem>();
+        var jobSys = entManager.System<SharedJobSystem>();
+
+        if (owner == null)
+            return null;
+
+        if (!mindSys.TryGetMind(owner.Value, out var mindId, out var mind))
+            return null;
+
+        if (!jobSys.MindTryGetJob(mindId, out var currentJob))
+            return null;
+
         foreach (var job in protoManager.EnumeratePrototypes<JobPrototype>())
         {
+            if (currentJob == job)
+                continue;
+
             if (!job.SetPreference)
                 continue;
 

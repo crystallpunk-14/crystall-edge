@@ -82,41 +82,6 @@
 
 - type: entity
   parent: CEBaseAmbitionObjective
-  id: CEAmbitionItemPhobia
-  components:
-  - type: CEAmbitionObjective
-    name: ce-ambition-phobia-name
-    desc: ce-ambition-item-phobia-desc
-    weight: 3
-    parsings:
-      REASON: !type:RandomDataset
-        dataset: CEAmbitionReason
-      ITEM: !type:RandomEntity
-
-- type: entity
-  parent: CEBaseAmbitionObjective
-  id: CEAmbitionAbstractPhobia
-  components:
-  - type: CEAmbitionObjective
-    name: ce-ambition-phobia-name
-    desc: ce-ambition-abstract-phobia-desc
-    parsings:
-      TOPIC: !type:RandomDataset
-        dataset: CEAmbitionAbstractTopic
-
-- type: entity
-  parent: CEBaseAmbitionObjective
-  id: CEAmbitionSpeciesPhobia
-  components:
-  - type: CEAmbitionObjective
-    name: ce-ambition-phobia-name
-    desc: ce-ambition-species-phobia-desc
-    weight: 2
-    parsings:
-      SPECIES: !type:RandomSpecies
-
-- type: entity
-  parent: CEBaseAmbitionObjective
   id: CEAmbitionEarning
   components:
   - type: CEAmbitionObjective
@@ -170,7 +135,7 @@
     name: ce-ambition-profession-change-name
     desc: ce-ambition-profession-change-desc
     parsings:
-      JOB: !type:RandomJob
+      JOB: !type:RandomOtherJob
 
 - type: entity
   parent: CEBaseAmbitionObjective
@@ -193,3 +158,79 @@
     parsings:
       NAME1: !type:RandomOtherPerson
       NAME2: !type:RandomOtherPerson
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionSupport
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-support-name
+    desc: ce-ambition-support-desc
+    parsings:
+      REASON: !type:RandomDataset
+        dataset: CEAmbitionReason
+      NAME: !type:RandomOtherPerson
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionStoryCollector
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-story-collector-name
+    desc: ce-ambition-story-collector-desc
+    weight: 3 # Social interaction
+    parsings:
+      COUNT: !type:RandomNumber
+        range:
+          min: 3
+          max: 6
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionSecretBenefactor
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-secret-benefactor-name
+    desc: ce-ambition-secret-benefactor-desc
+    weight: 3 # Social interaction
+    parsings:
+      NAME: !type:RandomOtherPerson
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionUnusualCollector
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-unusual-collector-name
+    desc: ce-ambition-unusual-collector-desc
+    weight: 2
+    parsings:
+      COUNT: !type:RandomNumber
+        range:
+          min: 2
+          max: 5
+      ITEM: !type:RandomEntity
+        whitelist:
+          - Item
+        blacklist:
+          - Extractable # uhh, not the best way, but i wanna exclude organs
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionInteriorDesigner
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-interior-designer-name
+    desc: ce-ambition-interior-designer-desc
+    weight: 2
+    parsings:
+      LOCATION: !type:RandomLocation
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionPeacemaker
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-peacemaker-name
+    desc: ce-ambition-peacemaker-desc
+    weight: 2 # Roleplay challenge

@@ -616,3 +616,19 @@
   service: !type:CEBuyItemsService
     product: CEClothingShoesPinkSlippers
     count: 1
+
+- type: tradingPosition
+  id: CEClothingShirtDressMerchant
+  priceMarkup: 50
+  faction: Tailors
+  service: !type:CEBuyItemsService
+    product: CEClothingShirtDressMerchant
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingShirtMerchant
+  priceMarkup: 50
+  faction: Tailors
+  service: !type:CEBuyItemsService
+    product: CEClothingShirtMerchant
+    count: 1
