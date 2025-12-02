@@ -10,3 +10,15 @@
   - !type:UnlockConstructions
   - !type:AddAction
     action: CEActionSpellBloodEssenceCreation
+
+- type: skill
+  id: Bite
+  skillUiPosition: 0, 2
+  learnCost: 0
+  tree: Vampire
+  icon:
+      sprite: _CE/Actions/vampire.rsi
+      state: bite
+  effects:
+  - !type:AddAction
+    action: CEActionVampireBite

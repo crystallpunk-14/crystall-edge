@@ -124,6 +124,7 @@ public sealed partial class CEVampireSystem : CESharedVampireSystem
         {
             if (TryComp<MetabolizerComponent>(organUid, out var metabolizer) && metabolizer.MetabolizerTypes is not null)
             {
+                metabolizer.MetabolizerTypes.Clear();
                 metabolizer.MetabolizerTypes.Add(ent.Comp.MetabolizerType);
             }
         }

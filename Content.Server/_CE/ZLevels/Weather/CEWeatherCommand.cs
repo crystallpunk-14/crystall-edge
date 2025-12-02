@@ -106,7 +106,7 @@ public sealed class CEWeatherCommand : LocalizedCommands
 
 
 [AdminCommand(AdminFlags.Fun)]
-public sealed class CECheckTime : LocalizedEntityCommands
+public sealed class CECheckTime : LocalizedEntityCommands //Delete this before merge! Only for debug purposes
 {
     [Dependency] private readonly CEDayCycleSystem _dayCycle = default!;
     public override string Command => "checktime";

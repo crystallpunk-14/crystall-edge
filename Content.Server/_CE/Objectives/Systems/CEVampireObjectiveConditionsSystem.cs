@@ -17,9 +17,6 @@ public sealed class CEVampireObjectiveConditionsSystem : EntitySystem
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedJobSystem _jobs = default!;
 
-    public readonly float RequiredAlivePercentage = 0.5f;
-    public readonly int RequiredHeartLevel = 3;
-
     public override void Initialize()
     {
         base.Initialize();

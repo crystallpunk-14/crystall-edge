@@ -16,7 +16,7 @@ using Robust.Shared.Audio;
 namespace Content.Server._CE.GameTicking;
 
 /// <summary>
-/// TEMP SHITCODE PROTOTYPE SUSTEM. We rewrite it in future
+/// TEMP SHITCODE PROTOTYPE SYSTEM. Unlocalized strings is ok here. We rewrite it in future
 /// </summary>
 public sealed class CESurviveDaysRuleSystem : GameRuleSystem<CESurviveDaysRuleComponent>
 {
@@ -41,7 +41,7 @@ public sealed class CESurviveDaysRuleSystem : GameRuleSystem<CESurviveDaysRuleCo
 
         args.AddLine($"[head=2][color=#75c8ff]Results of the week[/color][/head]");
         var alivePercentage = CalculateAlivePlayersPercentage();
-        args.AddLine($"Alive Players Percentage: {alivePercentage * 100f:0.00}%");
+        args.AddLine($"Alive Players Percentage: {alivePercentage * 100f:0.0}%");
     }
 
     private void OnStartDay(CEStartDayEvent ev)
@@ -49,7 +49,7 @@ public sealed class CESurviveDaysRuleSystem : GameRuleSystem<CESurviveDaysRuleCo
         if (TryComp<CEZLevelMapComponent>(ev.MapUid, out var zlevelMap) && zlevelMap.Depth != 0)
             return; //We don't care about zlevels start day event
 
-        if (!TryComp<StationMemberComponent>(ev.MapUid, out var stationComp))
+        if (!HasComp<StationMemberComponent>(ev.MapUid))
             return;
 
         var query = QueryActiveRules();
