@@ -24,14 +24,6 @@ public abstract partial class SharedActionsSystem
         var netEnt = GetNetEntity(performer);
 
         //CrystallEdge doAfter start event
-        var target = GetEntity(input.EntityTarget);
-        EntityUid? used = null;
-
-        if (TryComp<ActionComponent>(ent, out var action) && HasComp<ItemComponent>(action.Container))
-        {
-            used = action.Container;
-        }
-
         var ceStartEv = new CEActionStartDoAfterEvent(netEnt, input);
         RaiseLocalEvent(ent, ceStartEv);
         //CrystallEdge end

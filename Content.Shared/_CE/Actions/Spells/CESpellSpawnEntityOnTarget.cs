@@ -21,10 +21,12 @@ public sealed partial class CESpellSpawnEntityOnTarget : CESpellEffect
             return;
 
         var netMan = IoCManager.Resolve<INetManager>();
+        if (netMan.IsClient)
+            return;
 
         foreach (var spawn in Spawns)
         {
-            entManager.PredictedSpawnAtPosition(spawn, targetPoint.Value);
+            entManager.SpawnAtPosition(spawn, targetPoint.Value);
         }
     }
 }

@@ -102,27 +102,3 @@ public sealed class CEWeatherCommand : LocalizedCommands
         return CompletionResult.Empty;
     }
 }
-
-
-
-[AdminCommand(AdminFlags.Fun)]
-public sealed class CECheckTime : LocalizedEntityCommands //Delete this before merge! Only for debug purposes
-{
-    [Dependency] private readonly CEDayCycleSystem _dayCycle = default!;
-    public override string Command => "checktime";
-    public override void Execute(IConsoleShell shell, string argStr, string[] args)
-    {
-        if (shell.Player?.AttachedEntity == null)
-            return;
-
-        var playerEnt = shell.Player.AttachedEntity.Value;
-
-        if (!EntityManager.TryGetComponent<TransformComponent>(playerEnt, out var xform))
-            return;
-
-        if (xform.MapUid is null)
-            return;
-
-        shell.WriteLine(_dayCycle.GetCurrentLightLevel(xform.MapUid.Value).ToString());
-    }
-}

@@ -133,7 +133,7 @@ public sealed class CEDayCycleSystem : EntitySystem
 
 
 /// <summary>
-/// Called on the map with <see cref="LightCycleComponent"/> when night ends and dawn begins
+/// Called on the map with <see cref="LightCycleComponent"/> when day ends and night begins
 /// </summary>
 public sealed class CEStartNightEvent(EntityUid mapUid) : EntityEventArgs
 {
@@ -141,7 +141,7 @@ public sealed class CEStartNightEvent(EntityUid mapUid) : EntityEventArgs
 }
 
 /// <summary>
-/// Called on the map with <see cref="LightCycleComponent"/> when day ends and night begins
+/// Called on the map with <see cref="LightCycleComponent"/> when night ends and dawn begins
 /// </summary>
 public sealed class CEStartDayEvent(EntityUid mapUid) : EntityEventArgs
 {

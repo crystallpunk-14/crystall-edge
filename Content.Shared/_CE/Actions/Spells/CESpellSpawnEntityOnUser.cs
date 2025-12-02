@@ -1,4 +1,3 @@
-using Robust.Shared.Map;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 
@@ -15,6 +14,8 @@ public sealed partial class CESpellSpawnEntityOnUser : CESpellEffect
             return;
 
         var netMan = IoCManager.Resolve<INetManager>();
+        if (netMan.IsClient)
+            return;
 
         foreach (var spawn in Spawns)
         {
