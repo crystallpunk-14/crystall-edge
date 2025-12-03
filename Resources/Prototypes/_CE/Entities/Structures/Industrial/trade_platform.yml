@@ -1,5 +1,7 @@
 - type: entity
-  parent: BaseStructure
+  parent:
+  - BaseStructure
+  - CEBaseMachinePowered
   id: CETradingPlatform
   name: buying dimensional platform
   description: Allows you to trade with the outside world, through retail trade transactions.
@@ -59,7 +61,7 @@
     nodes:
       input:
         !type:CableDeviceNode
-        nodeGroupID: MVPower
+        nodeGroupID: Apc
 
 - type: entity
   parent: BaseStructure
@@ -119,7 +121,7 @@
     nodes:
       input:
         !type:CableDeviceNode
-        nodeGroupID: MVPower
+        nodeGroupID: Apc
 
 #- type: entity
 #  parent: BaseStructure

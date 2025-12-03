@@ -46,7 +46,10 @@
     nodes:
       power:
         !type:CableNode
-        nodeGroupID: MVPower
+        nodeGroupID: Apc
+  - type: PowerProvider
+    voltage: Apc
+  - type: ExtensionCableProvider
   - type: Construction
     graph: CEPipeBrassMedium
     node: CEPipeBrassMedium
@@ -64,11 +67,11 @@
     nodes:
       power:
         !type:CableNode
-        nodeGroupID: MVPower
+        nodeGroupID: Apc
       power_vertical:
         !type:CECableVerticalNode
         up: true
-        nodeGroupID: MVPower
+        nodeGroupID: Apc
   - type: Construction
     graph: CEPipeBrassMedium
     node: CEPipeBrassMediumVerticalUp
@@ -86,11 +89,11 @@
     nodes:
       power:
         !type:CableNode
-        nodeGroupID: MVPower
+        nodeGroupID: Apc
       power_vertical:
         !type:CECableVerticalNode
         down: true
-        nodeGroupID: MVPower
+        nodeGroupID: Apc
   - type: Construction
     graph: CEPipeBrassMedium
     node: CEPipeBrassMediumVerticalDown
@@ -119,7 +122,7 @@
     nodes:
       power:
         !type:CableNode
-        nodeGroupID: MVPower
+        nodeGroupID: Apc
         active: false
   - type: UseDelay
   - type: GenericVisualizer
@@ -175,7 +178,7 @@
     nodes:
       power:
         !type:CableNode
-        nodeGroupID: MVPower
+        nodeGroupID: Apc
         active: true
 
 # Broken

@@ -40,7 +40,8 @@ public sealed partial class NearbyTilesPercentRule : RulesRule
         var matchingTileCount = 0;
 
         foreach (var tile in mapSys.GetTilesIntersecting(xform.GridUid.Value, grid, new Circle(transform.GetWorldPosition(xform),
-                     Range)))
+                     Range),
+                     ignoreEmpty: false)) //CrystallEdge - we wanna use Space tiles for wind ambient
         {
             // Only consider collidable anchored (for reasons some subfloor stuff has physics but non-collidable)
             if (IgnoreAnchored)
