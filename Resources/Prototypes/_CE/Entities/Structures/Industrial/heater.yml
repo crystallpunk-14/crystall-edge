@@ -63,7 +63,7 @@
   - type: ItemPlacer
     maxEntities: 0
   - type: CEEntityHeater
-    power: 500
+    power: 1000
   - type: Rotatable
   - type: Appearance
   - type: GenericVisualizer
