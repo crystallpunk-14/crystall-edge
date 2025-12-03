@@ -92,3 +92,8 @@
   license: "CC-BY-4.0"
   copyright: 'by Victor_Natas on Freesound.org'
   source: "https://freesound.org/people/Victor_Natas/sounds/616217/"
+
+- files: ["vampire_scream_cast.ogg", "vampire_scream_telegraphy.ogg"]
+  license: "CC-BY-NC-4.0"
+  copyright: 'by jdupre01 on Freesound.org'
+  source: "https://freesound.org/people/jdupre01/sounds/484984/"

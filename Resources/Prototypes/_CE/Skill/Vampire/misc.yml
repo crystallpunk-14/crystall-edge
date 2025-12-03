@@ -1,0 +1,36 @@
+- type: skill
+  id: BloodEssenceCreation
+  skillUiPosition: 0, 10
+  learnCost: 0
+  tree: Vampire
+  icon:
+      sprite: _CE/Actions/vampire.rsi
+      state: essence_create
+  effects:
+  - !type:UnlockConstructions
+  - !type:AddAction
+    action: CEActionSpellBloodEssenceCreation
+
+- type: skill
+  id: Bite
+  skillUiPosition: 0, 2
+  learnCost: 0
+  tree: Vampire
+  icon:
+      sprite: _CE/Actions/vampire.rsi
+      state: bite
+  effects:
+  - !type:AddAction
+    action: CEActionVampireBite
+
+- type: skill
+  id: Scream
+  skillUiPosition: 0, 4
+  learnCost: 0
+  tree: Vampire
+  icon:
+      sprite: _CE/Actions/vampire.rsi
+      state: power_kick_3
+  effects:
+  - !type:AddAction
+    action: CEActionVampireScream
