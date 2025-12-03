@@ -12,9 +12,9 @@ public sealed partial class CEAmbientLoopPrototype : IPrototype
 {
     [IdDataField] public string ID { get; } = string.Empty;
 
-    [ViewVariables(VVAccess.ReadWrite), DataField("sound", required: true)]
+    [DataField(required: true)]
     public SoundSpecifier Sound = default!;
 
-    [ViewVariables(VVAccess.ReadWrite), DataField("rules", required: true)]
+    [DataField(required: true)]
     public ProtoId<RulesPrototype> Rules = string.Empty;
 }

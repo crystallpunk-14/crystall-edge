@@ -59,15 +59,15 @@
 - type: soundCollection
   id: CENightForest
   files:
-    - /Audio/_CE/Animals/owl1.ogg
-    - /Audio/_CE/Animals/owl2.ogg
-    - /Audio/_CE/Animals/owl3.ogg
-    - /Audio/_CE/Animals/owl4.ogg
-    - /Audio/_CE/Animals/owl5.ogg
-    - /Audio/_CE/Animals/owl6.ogg
-    - /Audio/_CE/Animals/owl7.ogg
-    - /Audio/_CE/Animals/owl8.ogg
-    - /Audio/_CE/Animals/owl9.ogg
+    - /Audio/_CE/Ambience/owl1.ogg
+    - /Audio/_CE/Ambience/owl2.ogg
+    - /Audio/_CE/Ambience/owl3.ogg
+    - /Audio/_CE/Ambience/owl4.ogg
+    - /Audio/_CE/Ambience/owl5.ogg
+    - /Audio/_CE/Ambience/owl6.ogg
+    - /Audio/_CE/Ambience/owl7.ogg
+    - /Audio/_CE/Ambience/owl8.ogg
+    - /Audio/_CE/Ambience/owl9.ogg
 
 # Rules
 - type: rules

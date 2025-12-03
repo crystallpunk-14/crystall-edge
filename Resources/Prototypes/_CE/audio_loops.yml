@@ -15,14 +15,6 @@
   rules: NearWater
 
 - type: ambientLoop
-  id: Lurker
-  sound:
-    params:
-      volume: -12
-    path: /Audio/_CE/Effects/Lurker/ambient.ogg
-  rules: NearLurker
-
-- type: ambientLoop
   id: Cave
   sound:
     params:
@@ -85,12 +77,13 @@
       - CEGrassTall
       - CEDirt
       - CESand
+      - Space
       range: 5
 
 - type: rules
   id: GrassNight
   rules:
-    - !type:CEIsNight
+    - !type:CERuleIsNight
     - !type:NearbyTilesPercentRule
       ignoreAnchored: true
       percent: 0.5
@@ -103,7 +96,7 @@
 - type: rules
   id: DayForest
   rules:
-    - !type:CEIsNight
+    - !type:CERuleIsNight
       inverted: true
     - !type:NearbyEntitiesRule
       count: 3
@@ -130,14 +123,3 @@
         tags:
           - CEAmbientWater
       range: 4
-
-- type: rules
-  id: NearLurker
-  rules:
-    - !type:NearbyEntitiesRule
-      count: 1
-      whitelist:
-        tags:
-          - CEAmbientLurker
-      range: 6
-
