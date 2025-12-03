@@ -31,7 +31,33 @@
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: Metallic
-  #- type: Destructible
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors: #excess damage, don't spawn entities.
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:EmptyAllContainersBehaviour
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEIronScrap1:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+  #- type: Construction
   - type: PointLight
     enabled: false
     radius: 10
@@ -52,11 +78,8 @@
     range: 2
     sound:
       path: /Audio/Ambience/Objects/light_hum.ogg
-  - type: ContainerContainer
-    containers:
-      light_bulb: !type:ContainerSlot
   - type: ApcPowerReceiver
-    powerLoad: 0.1
+    powerLoad: 0.2
   - type: ExtensionCableReceiver
     receptionRange: 0
 

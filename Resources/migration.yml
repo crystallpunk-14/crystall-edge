@@ -17,6 +17,7 @@ CEWallStonebrickBrown: CEWallStoneBrickBrown
 CEBushSpawner: null
 CEPlantSage: null
 CENail110: CENail10
+CEAlwaysPoweredWallLight: CEWallLight
 
 # CrystallEdge migration zone end
 
