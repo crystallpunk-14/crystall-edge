@@ -1,4 +1,6 @@
 using System.Text;
+using Content.Server._CE.GameTicking.Components;
+using Content.Server.Antag;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
@@ -6,6 +8,7 @@ using Content.Server.Temperature.Systems;
 using Content.Shared._CE.DayCycle;
 using Content.Shared._CE.Vampire;
 using Content.Shared._CE.Vampire.Components;
+using Content.Shared.Actions.Events;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
@@ -15,6 +18,8 @@ using Content.Shared.Stacks;
 using Content.Shared.Temperature.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics.Events;
+using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Server._CE.Vampire;
@@ -29,6 +34,10 @@ public sealed partial class CEVampireSystem : CESharedVampireSystem
     [Dependency] private readonly CEDayCycleSystem _dayCycle = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly AntagSelectionSystem _antag = default!;
+
+    private static readonly EntProtoId DefaultVampireRule = "CEGameRuleVampires";
+    private static readonly EntProtoId VFX = "CEImpactEffectBloodEssence";
 
     public override void Initialize()
     {
@@ -37,6 +46,10 @@ public sealed partial class CEVampireSystem : CESharedVampireSystem
 
         SubscribeLocalEvent<CEVampireClanHeartComponent, StartCollideEvent>(OnStartCollide);
         SubscribeLocalEvent<CEVampireClanHeartComponent, ExaminedEvent>(OnExamined);
+
+        SubscribeLocalEvent<CEVampireComponent, CETransformIntoVampireActionEvent>(OnTransformIntoVampire);
+
+        SubscribeLocalEvent<CEActionVampireCandlesComponent, ActionAttemptEvent>(OnVampireCandlesCastAttempt);
     }
 
     private void OnStartCollide(Entity<CEVampireClanHeartComponent> ent, ref StartCollideEvent args)
@@ -94,6 +107,56 @@ public sealed partial class CEVampireSystem : CESharedVampireSystem
         }
 
         args.PushMarkup(sb.ToString());
+    }
+
+    private void OnTransformIntoVampire(Entity<CEVampireComponent> ent, ref CETransformIntoVampireActionEvent args)
+    {
+        if (HasComp<CEVampireComponent>(args.Target)) //Target already a vampire
+            return;
+
+        if (!TryComp<ActorComponent>(args.Target, out var actor))
+            return;
+
+        args.Handled = true;
+
+        _antag.ForceMakeAntag<CEVampireRuleComponent>(actor.PlayerSession, DefaultVampireRule);
+
+        var vamp = EnsureComp<CEVampireComponent>(args.Target);
+        vamp.HigherVampire = false;
+        Dirty(args.Target, vamp);
+        EnsureComp<CEVampireVisualsComponent>(args.Target); //Auto reveal vampire form for fun
+        Spawn(VFX, Transform(args.Target).Coordinates);
+    }
+
+    private void OnVampireCandlesCastAttempt(Entity<CEActionVampireCandlesComponent> ent, ref ActionAttemptEvent args)
+    {
+        //Flammable code server-only so we cant predict this, and put in server
+        if (args.Cancelled)
+            return;
+
+        var ignited = 0;
+        foreach (var candle in _lookup.GetEntitiesInRange<CEVampireCandleComponent>(Transform(args.User).Coordinates, ent.Comp.Range))
+        {
+            if (!TryComp<FlammableComponent>(candle, out var flammable))
+                continue;
+
+            if (!flammable.OnFire)
+                continue;
+
+            ignited++;
+
+            if (ignited >= ent.Comp.CandleCount)
+                break;
+        }
+
+        if (ignited < ent.Comp.CandleCount)
+        {
+            _popup.PopupEntity(
+                Loc.GetString("ce-magic-spell-need-ignited-vamp-candles", ("count", ent.Comp.CandleCount)),
+                args.User,
+                args.User);
+            args.Cancelled = true;
+        }
     }
 
     private void AddEssence(Entity<CEVampireClanHeartComponent> ent, FixedPoint2 amount)

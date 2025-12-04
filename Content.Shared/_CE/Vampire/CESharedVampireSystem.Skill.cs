@@ -2,6 +2,7 @@ using Content.Shared._CE.Skill.Components;
 using Content.Shared._CE.Skill.Prototypes;
 using Content.Shared._CE.Skill.Restrictions;
 using Content.Shared._CE.Vampire.Components;
+using Content.Shared.Actions;
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.Verbs;
@@ -21,33 +22,34 @@ public abstract partial class CESharedVampireSystem
         SubscribeLocalEvent<CEVampireComponent, CEVampireTeachingDoAfterEvent>(OnTeachDoAfter);
     }
 
-    private void OnGetVampireVerbs(Entity<CEVampireComponent> ent, ref GetVerbsEvent<Verb> args)
+    private void OnGetVampireVerbs(Entity<CEVampireComponent> minorVampire, ref GetVerbsEvent<Verb> args)
     {
-        if (ent.Owner == args.User)
+        var majorEnt = args.User;
+        if (minorVampire.Owner == majorEnt)
             return;
 
-        if (!TryComp<CESkillStorageComponent>(args.User, out var skillStorage))
+        if (!TryComp<CESkillStorageComponent>(minorVampire, out var minorSkillStorage))
             return;
 
-        if (!TryComp<CEVampireComponent>(args.User, out var vampireExaminer)) //Я остановился на том, что нужно зараты очков у старшего убрать, и дать младшему. Тут хуйня с целями
+        if (!TryComp<CEVampireComponent>(majorEnt, out var majorVampComp))
             return;
 
-        if (!vampireExaminer.HigherVampire) //Only higher vampires can teach.
+        if (!majorVampComp.HigherVampire) //Only higher vampires can teach.
             return;
 
-        if (ent.Comp.HigherVampire) //We cant teach higher vampires.
+        if (minorVampire.Comp.HigherVampire) //We cant teach higher vampires.
             return;
 
-        var skillPoints = skillStorage.SkillPoints;
-        if (!skillPoints.TryGetValue(ent.Comp.SkillPointProto, out var points))
+        var skillPoints = minorSkillStorage.SkillPoints;
+        if (!skillPoints.TryGetValue(minorVampire.Comp.SkillPointProto, out var points))
             return;
 
-        foreach (var skill in _skill.GetLearnableSkills(ent.Owner, false, false))
+        foreach (var skill in _skill.GetLearnableSkills(minorVampire.Owner, false, false))
         {
             if (!Proto.Resolve(skill, out var resolvedSkill))
                 continue;
 
-            if (resolvedSkill.Tree.Id != ent.Comp.SkillTreeProto.Id)
+            if (resolvedSkill.Tree.Id != minorVampire.Comp.SkillTreeProto.Id)
                 continue;
 
             //Custom restrictions check: we wanna check all restrictions except HigherVampire one
@@ -57,7 +59,7 @@ public abstract partial class CESharedVampireSystem
                 if (req is HigherVampire)
                     continue;
 
-                if (!req.Check(EntityManager, args.Target))
+                if (!req.Check(EntityManager, minorVampire))
                 {
                     reqPass = false;
                     break;
@@ -67,24 +69,22 @@ public abstract partial class CESharedVampireSystem
             if (!reqPass)
                 continue;
 
-            var user = args.User;
-            var target = args.Target;
-            var v = new Verb()
+            var v = new Verb
             {
                 Icon = resolvedSkill.Icon,
                 Category = VerbCategory.CEVampireLearn,
-                Text = $"{_skill.GetSkillName(skill)} [{resolvedSkill.LearnCost}]",
+                Text = $"{_skill.GetSkillName(skill)} [{resolvedSkill.LearnCost}/{points.Max - points.Sum}]",
                 Impact = LogImpact.High,
                 DoContactInteraction = true,
                 Disabled = points.Sum + resolvedSkill.LearnCost > points.Max,
                 Act = () =>
                 {
                     var doAfter = new DoAfterArgs(EntityManager,
-                        user,
+                        majorEnt,
                         1f,
                         new CEVampireTeachingDoAfterEvent(skill),
-                        user,
-                        target);
+                        majorEnt,
+                        minorVampire);
                     _doAfter.TryStartDoAfter(doAfter);
                 },
             };
@@ -120,3 +120,5 @@ public sealed partial class CEVampireTeachingDoAfterEvent : DoAfterEvent
 
     public override DoAfterEvent Clone() => this;
 }
+
+public sealed partial class CETransformIntoVampireActionEvent : EntityTargetActionEvent;

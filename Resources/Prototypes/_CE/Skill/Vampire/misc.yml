@@ -41,3 +41,19 @@
   - !type:HigherVampire
   - !type:NeedPrerequisite
     prerequisite: Bite
+
+- type: skill
+  id: CreateVampire
+  skillUiPosition: 2, 3
+  learnCost: 1
+  tree: Vampire
+  icon:
+      sprite: _CE/Actions/vampire.rsi
+      state: tree
+  effects:
+  - !type:AddAction
+    action: CEActionSpellVampireCreate
+  restrictions:
+  - !type:HigherVampire
+  - !type:NeedPrerequisite
+    prerequisite: BloodEssenceCreation

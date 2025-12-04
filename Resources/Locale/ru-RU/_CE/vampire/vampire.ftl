@@ -3,6 +3,7 @@ ce-heat-under-sun = Солнечный свет нестерпимо жжётс�
 ce-vampire-examine = [color=red]Ярко красные глаза и длинные клыки говорят вам, что перед вами опаснейший вампир. Ваши инстинкты кричат вам бежать или сражаться![/color]
 
 ce-magic-spell-need-vampire-valid = Недоступно в скрытой форме вампира.
+ce-magic-spell-need-ignited-vamp-candles = Необходимо {$count} зажженных вампирских свечей вокруг.
 
 ce-vampire-tree-examine-friend = [color=green]Это сердце вашего клана. [/color] Защищайте его всеми силами.
 ce-vampire-tree-examine-enemy = [color=red]Это сердце вражеского клана.[/color]
