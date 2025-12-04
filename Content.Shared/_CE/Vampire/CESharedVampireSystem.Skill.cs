@@ -106,7 +106,7 @@ public abstract partial class CESharedVampireSystem
 
 
 /// <summary>
-/// Called upon the highest vampire when he attempts to teach younger vampires skills
+/// Called when a higher vampire attempts to teach younger vampires skills.
 /// </summary>
 [Serializable, NetSerializable]
 public sealed partial class CEVampireTeachingDoAfterEvent : DoAfterEvent

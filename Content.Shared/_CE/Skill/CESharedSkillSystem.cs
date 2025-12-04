@@ -463,39 +463,38 @@ public abstract partial class CESharedSkillSystem : EntitySystem
     /// <summary>
     /// Removes skill points. If a character has accumulated skills exceeding the new memory limit, random skills will be removed.
     /// </summary>
-    public bool TryRemoveSkillPoints(EntityUid target,
+    public bool TryRemoveSkillPoints(Entity<CESkillStorageComponent?> ent,
         ProtoId<CESkillPointPrototype> type,
         FixedPoint2 points,
-        bool silent = false,
-        CESkillStorageComponent? component = null)
+        bool silent = false)
     {
         if (points <= 0)
             return true;
 
-        if (!Resolve(target, ref component, false))
+        if (!Resolve(ent, ref ent.Comp, false))
             return false;
 
         if (!_proto.Resolve(type, out var indexedType))
             return false;
 
-        if (!component.SkillPoints.TryGetValue(type, out var skillContainer))
+        if (!ent.Comp.SkillPoints.TryGetValue(type, out var skillContainer))
             return false;
 
         skillContainer.Max = FixedPoint2.Max(skillContainer.Max - points, 0);
-        Dirty(target, component);
+        Dirty(ent);
 
         if (indexedType.LosePointPopup is not null && !silent && _timing.IsFirstTimePredicted)
-            _popup.PopupClient(Loc.GetString(indexedType.LosePointPopup, ("count", points)), target, target);
+            _popup.PopupClient(Loc.GetString(indexedType.LosePointPopup, ("count", points)), ent, ent);
 
         while (skillContainer.Sum > skillContainer.Max)
         {
-            var frontier = GetFrontierSkills((target, component));
+            var frontier = GetFrontierSkills((ent, ent.Comp));
             if (frontier.Count == 0)
                 break;
 
             //Randomly remove one of the frontier skills
             var skill = _random.Pick(frontier);
-            TryRemoveSkill(target, skill, component);
+            TryRemoveSkill(ent, skill, ent.Comp);
         }
 
         return true;

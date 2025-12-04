@@ -82,7 +82,7 @@ public abstract partial class CESharedVampireSystem : EntitySystem
         _skill.AddSkillTree(ent, ent.Comp.SkillTreeProto);
 
         //Skill tree base nerf
-        _skill.TryRemoveSkillPoints(ent, _memorySkillPointType, 2, true);
+        _skill.TryRemoveSkillPoints(ent.Owner, _memorySkillPointType, 2, true);
 
         //Remove blood essence
         if (TryComp<CEVampireEssenceHolderComponent>(ent, out var essenceHolder))
@@ -123,7 +123,7 @@ public abstract partial class CESharedVampireSystem : EntitySystem
             }
         }
 
-        _skill.TryRemoveSkillPoints(ent, ent.Comp.SkillPointProto, ent.Comp.SkillPointCount);
+        _skill.TryRemoveSkillPoints(ent.Owner, ent.Comp.SkillPointProto, ent.Comp.SkillPointCount);
         _skill.TryAddSkillPoints((ent, storage), _memorySkillPointType, 2, null, true);
     }
 

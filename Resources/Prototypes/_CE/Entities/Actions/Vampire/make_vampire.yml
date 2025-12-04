@@ -2,7 +2,7 @@
   id: CEActionSpellVampireCreate
   parent: CEActionSpellBase
   name: Turn into a lesser vampire
-  description: You turn the chosen target into a lesser vampire that must obey you. Lower-level vampires cannot progress their skills without higher vampire.
+  description: You turn the chosen target into a lesser vampire that must obey you. Lesser vampires cannot progress their skills without a higher vampire.
   components:
   - type: CEActionDoAfterSlowdown
     speedMultiplier: 0.5
