@@ -31,3 +31,6 @@ ce-skill-tree-vampire-desc = Powerful and dangerous abilities available only to 
 
 ce-admin-verb-text-make-vampire = Turn into a higher vampire.
 ce-roles-antag-vampire-briefing = Ed, don't forget to insert an adequate briefing for vampires. Player, if you see this, ping Ed with funny emojis and a screenshot of this message.
+
+ce-skill-req-higher-vampire = Only a higher vampire can make you stronger.
+ce-verb-categories-vampire-learn = Train a young vampire.

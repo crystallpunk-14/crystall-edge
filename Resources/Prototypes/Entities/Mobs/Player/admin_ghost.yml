@@ -112,6 +112,7 @@
     damageCoefficient: 0
   # CrystallEdge
   - type: CEZLevelGhostMover
+  - type: CEShowVampireIcons
 
 - type: entity
   abstract: true

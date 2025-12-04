@@ -31,3 +31,6 @@ ce-skill-tree-vampire-desc = Могущественные опасные сил�
 
 ce-admin-verb-text-make-vampire = Превратить в высшего вампира.
 ce-roles-antag-vampire-briefing = Эд, не забудь вставить адекватный брифинг для вампиров. Игрок. Если ты это видишь, пингуй Эда с смешными эмодзями. и скрином этого сообщения.
+
+ce-skill-req-higher-vampire = Только высший вампир может сделать вас сильнее.
+ce-verb-categories-vampire-learn = Обучить молодого вампира

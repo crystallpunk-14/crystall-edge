@@ -1,14 +1,11 @@
 using Content.Shared._CE.Vampire.Components;
 using Content.Shared.Actions.Events;
 using Content.Shared.Examine;
-using Content.Shared.Mobs.Systems;
 
 namespace Content.Shared._CE.Vampire;
 
 public abstract partial class CESharedVampireSystem
 {
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-
     private void InitializeSpell()
     {
         SubscribeLocalEvent<CEMagicEffectVampireComponent, ActionAttemptEvent>(OnVampireCastAttempt);

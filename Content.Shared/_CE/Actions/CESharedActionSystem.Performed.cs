@@ -85,6 +85,6 @@ public abstract partial class CESharedActionSystem
 
     private void OnSkillPointCostActionPerformed(Entity<CEActionSkillPointCostComponent> ent, ref ActionPerformedEvent args)
     {
-        _skill.RemoveSkillPoints(args.Performer, ent.Comp.SkillPoint,  ent.Comp.Count);
+        _skill.TryRemoveSkillPoints(args.Performer, ent.Comp.SkillPoint,  ent.Comp.Count);
     }
 }

@@ -23,12 +23,12 @@
       - CEMindRoleVampire
       components:
       - type: CEVampire
+      - type: CEShowVampireIcons
       - type: Hunger
         hungerThresholdAlerts:
           Peckish: CEVampirePeckish
           Starving: CEVampireStarving
           Dead: CEVampireStarving
-        starvingSlowdownModifier: 1.1 #Speed Up when hunger!
       - type: PassiveDamage
         allowedStates:
         - Alive
