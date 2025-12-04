@@ -17,7 +17,7 @@
   - type: Sprite
     sprite: _CE/Structures/Industrial/Conveyor/floor.rsi
     state: base
-    drawdepth: BelowMobs
+    drawdepth: WallTops
   - type: Physics
     bodyType: Static
   - type: Anchorable

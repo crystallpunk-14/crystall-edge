@@ -23,7 +23,7 @@
     West: /Textures/_CE/Tiles/Grass/double_edge_W.png
   baseTurf: CEDirt
   deconstructTools: [ CEShovel ]
-  isSubfloor: false
+  isSubfloor: true
   footstepSounds:
     collection: FootstepGrass
   heatCapacity: 10000
@@ -54,7 +54,7 @@
     West: /Textures/_CE/Tiles/GrassLight/double_edge_W.png
   baseTurf: CEGrass
   deconstructTools: [ CEShovel ]
-  isSubfloor: false
+  isSubfloor: true
   footstepSounds:
     collection: FootstepGrass
   heatCapacity: 10000
@@ -85,7 +85,7 @@
     West: /Textures/_CE/Tiles/GrassTall/double_edge_W.png
   baseTurf: CEGrassLight
   deconstructTools: [ CEShovel ]
-  isSubfloor: false
+  isSubfloor: true
   footstepSounds:
     collection: FootstepGrass
   heatCapacity: 10000
@@ -116,7 +116,7 @@
     West: /Textures/_CE/Tiles/GrassBlood/double_edge_W.png
   baseTurf: CEDirt
   deconstructTools: [ CEShovel ]
-  isSubfloor: false
+  isSubfloor: true
   footstepSounds:
     collection: FootstepGrass
   heatCapacity: 10000
@@ -147,7 +147,7 @@
     West: /Textures/_CE/Tiles/GrassBloodLight/double_edge_W.png
   baseTurf: CEGrassBlood
   deconstructTools: [ CEShovel ]
-  isSubfloor: false
+  isSubfloor: true
   footstepSounds:
     collection: FootstepGrass
   heatCapacity: 10000
@@ -178,7 +178,7 @@
     West: /Textures/_CE/Tiles/GrassBloodTall/double_edge_W.png
   baseTurf: CEGrassLightBlood
   deconstructTools: [ CEShovel ]
-  isSubfloor: false
+  isSubfloor: true
   footstepSounds:
     collection: FootstepGrass
   heatCapacity: 10000
