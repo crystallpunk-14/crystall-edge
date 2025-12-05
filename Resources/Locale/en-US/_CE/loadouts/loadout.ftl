@@ -4,4 +4,4 @@ ce-loadout-pants = Pants
 ce-loadout-shoes = Shoes
 ce-loadout-cloak = Cloaks
 
-ce-loadout-music-tool = Music tool
+ce-loadout-music-tool = Musical instrument
