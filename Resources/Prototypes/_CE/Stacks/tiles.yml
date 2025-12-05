@@ -121,7 +121,7 @@
   id: CEFloorTileRoofRed
   name: ce-tiles-roof
   spawn: CEFloorTileRoofRed
-  icon: { sprite: _CE/Objects/Materials/seeds_tile.rsi, state: roof_red }
+  icon: { sprite: _CE/Objects/tile.rsi, state: roof_red }
   maxCount: 30
 
 
