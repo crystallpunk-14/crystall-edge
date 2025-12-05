@@ -69,3 +69,15 @@
         - WallLayer
         density: 1000
         hard: true
+
+- type: entity
+  parent: CEZLevelLadderCornerBase
+  id: CEZLevelLadderCornerInnerBase
+  abstract: true
+  placement:
+      mode: SnapgridCenter
+      snap:
+      - Wall
+  components:
+  - type: Sprite
+    state: internal_corner
