@@ -177,3 +177,15 @@
     count: 1
   result: CEFloorTileGlass
   resultCount: 5
+
+- type: CERecipe
+  id: CEFloorTileRoofRed
+  tag: CERecipeWorkbench
+  category: FloorTile
+  craftTime: 1
+  requirements:
+  - !type:StackResource
+    stack: CEStone
+    count: 1
+  result: CEFloorTileRoofRed
+  resultCount: 5

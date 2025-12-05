@@ -417,4 +417,4 @@
   heatCapacity: 10000
   weather: true
   deconstructTools: [ Prying ]
-  #itemDrop: CEFloorTileStonebricksSquareCarved
+  itemDrop: CEFloorTileRoofRed
