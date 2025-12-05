@@ -1,6 +1,6 @@
 - type: entity
   parent: BaseHandheldInstrument
-  id: CEFluteInstrument
+  id: CEInstrumentFlute
   name: flute
   description: A compact musical wind instrument, popular in villages as well as with large musical troupes.
   categories: [ ForkFiltered ]
@@ -22,7 +22,7 @@
 
 - type: entity
   parent: BaseHandheldInstrument
-  id: CELyraInstrument
+  id: CEInstrumentLyra
   name: lyra
   description: A common stringed instrument throughout Sylate, popular with various bards and musical troupes.
   categories: [ ForkFiltered ]
@@ -53,7 +53,7 @@
 
 - type: entity
   parent: BaseHandheldInstrument
-  id: CELuteInstrument
+  id: CEInstrumentLute
   name: lute
   description: A legend among bards.
   categories: [ ForkFiltered ]
@@ -91,7 +91,7 @@
 
 - type: entity
   parent: BaseHandheldInstrument
-  id: CESkeletonGuitarInstrument
+  id: CEInstrumentGuitarSkeleton
   name: skelute
   description: A true weapon for brutal rock skeletons. What does "rock" mean?
   categories: [ ForkFiltered ]

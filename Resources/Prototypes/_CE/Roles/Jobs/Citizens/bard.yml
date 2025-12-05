@@ -1,11 +1,11 @@
 - type: job
-  id: CETownfolk
+  id: CEBard
   setPreference: true
-  name: ce-job-name-townfolk
-  description: ce-job-desc-townfolk
-  playTimeTracker: CEJobTownfolk
+  name: ce-job-name-bard
+  description: ce-job-desc-bard
+  playTimeTracker: CEJobBard
   #startingGear: CEGuardGear
-  icon: CEJobIconTownfolk
+  icon: CEJobIconBard
   supervisors: ce-job-supervisors-empire
   canBeAntag: true
 

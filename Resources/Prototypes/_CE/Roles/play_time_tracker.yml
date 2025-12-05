@@ -12,7 +12,7 @@
 # Citizens
 
 - type: playTimeTracker
-  id: CEJobMayor
+  id: CEJobTownfolk
 
 - type: playTimeTracker
-  id: CEJobTownfolk
+  id: CEJobBard
