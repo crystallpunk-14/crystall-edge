@@ -64,14 +64,15 @@ public abstract partial class CESharedActionSystem
             var spellEv = new CESpellFromSpellStorageUsedEvent(args.Performer, ent, manaCost);
             RaiseLocalEvent(action.Container.Value, ref spellEv);
 
-            if (_battery.TryUseCharge((action.Container.Value, battery), (float)manaCost))
-                manaCost = 0;
+            var energyTaken = MathF.Min(battery.CurrentCharge, (float)manaCost);
+
+            _battery.ChangeCharge((action.Container.Value, battery), -(float)manaCost);
+            manaCost -= energyTaken;
         }
 
         //Second - action user
-        if (manaCost > 0 &&
-            TryComp<BatteryComponent>(args.Performer, out var playerMana))
-            _battery.UseCharge((args.Performer, playerMana), (float)manaCost);
+        if (manaCost > 0 && TryComp<BatteryComponent>(args.Performer, out var playerMana))
+            _battery.ChangeCharge((args.Performer, playerMana), -(float)manaCost);
 
         //And spawn mana trace
         //_magicVision.SpawnMagicTrace(

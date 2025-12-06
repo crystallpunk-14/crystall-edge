@@ -12,11 +12,18 @@ public sealed partial class BatterySystem
             return 0;
 
         //CrystallEdge overcharge energy
-        if (ent.Comp.CurrentCharge + amount > ent.Comp.MaxCharge)
+        if (amount > 0 && ent.Comp.CurrentCharge + amount > ent.Comp.MaxCharge)
         {
             var overcharge = (ent.Comp.CurrentCharge + amount) - ent.Comp.MaxCharge;
             var overchargeEv = new CEEnergyOverchargeEvent(overcharge);
             RaiseLocalEvent(ent, ref overchargeEv);
+        }
+
+        if (amount < 0 && ent.Comp.CurrentCharge + amount < 0)
+        {
+            var deficit = -amount - ent.Comp.CurrentCharge;
+            var deficitEv = new CEEnergyDeficitEvent(deficit);
+            RaiseLocalEvent(ent, ref deficitEv);
         }
         //CrystallEdge end
 
