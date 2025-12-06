@@ -35,9 +35,9 @@
     - type: Parallax
       parallax: CESky
     - type: SunShadowCycle
-      offset: 0
+      offset: 490
     - type: LightCycle
-      offset: 0
+      offset: 490
       originalColor: "#fff475"
     - type: SunShadow
     - type: MapLight

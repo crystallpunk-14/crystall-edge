@@ -12,6 +12,8 @@
   components:
   - type: PlacementReplacement
     key: walls
+  - type: Occluder
+    boundingBox: "-0.5,0.25,0.5,0.5"
   - type: Sprite
     state: straight
     drawdepth: Mobs
@@ -51,6 +53,8 @@
   components:
   - type: Sprite
     state: corner
+  - type: Occluder
+    enabled: false
   - type: CEZLevelHighGround
     corner: true
     heightCurve:
@@ -79,5 +83,8 @@
       snap:
       - Wall
   components:
+  - type: Occluder
+    enabled: true
+    boundingBox: "-0.5,-0.5,0.5,0.5"
   - type: Sprite
     state: internal_corner
