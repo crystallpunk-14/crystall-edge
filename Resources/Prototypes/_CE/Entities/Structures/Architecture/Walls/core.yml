@@ -1,0 +1,12 @@
+- type: entity
+  id: CEWallIronCore
+  name: iron ore core
+  description: "An extremely hard and iron-rich ore core. You can certainly break it with a pickaxe, but it's better to use some kind of automatic drill..."
+  parent: CEBaseWall
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Walls/iron_core.rsi
+  - type: Icon
+    sprite: _CE/Structures/Architecture/Walls/iron_core.rsi
+  - type: IconSmooth
+    base: wall
