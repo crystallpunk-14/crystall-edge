@@ -63,7 +63,7 @@
       types:
         Blunt: 10
         Piercing: 10
-        Structural: 10
+        Structural: 15
     range: 1
     attackRate: 1
   - type: Rotatable

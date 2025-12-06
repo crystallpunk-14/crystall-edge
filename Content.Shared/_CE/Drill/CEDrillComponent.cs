@@ -13,7 +13,7 @@ public sealed partial class CEDrillComponent : Component
     [DataField]
     public int CollisionMask = (int) (CollisionGroup.MobMask | CollisionGroup.Impassable | CollisionGroup.MachineMask | CollisionGroup.Opaque);
 
-    [DataField]
+    [DataField, AutoNetworkedField]
     public TimeSpan NextDamageTime = TimeSpan.Zero;
 
     [DataField]

@@ -3,7 +3,6 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.Effects;
 using Content.Shared.Jittering;
 using Content.Shared.Weapons.Melee;
-using Content.Shared.Weapons.Melee.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
