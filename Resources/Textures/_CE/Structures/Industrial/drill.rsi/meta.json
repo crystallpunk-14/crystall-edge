@@ -1,0 +1,23 @@
+{
+    "version": 1,
+    "size": {
+        "x": 54,
+        "y": 48
+    },
+	"license": "CC-BY-SA-3.0",
+	"copyright": "Created by TheShuEd (github)",
+    "states": [
+        {
+            "name": "base",
+            "directions": 4
+        },
+        {
+            "name": "drill_idle",
+            "directions": 4
+        },
+        {
+            "name": "drill_working",
+            "directions": 4
+        }
+    ]
+}
