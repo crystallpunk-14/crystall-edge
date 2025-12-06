@@ -23,7 +23,7 @@
   - type: CEOreVein
     table: !type:AllSelector
       children:
-      - id: CEStoneBlock1
+      - id: CEIronOre1
 
 - type: entity
   id: CEWallCrystallCore
