@@ -41,3 +41,5 @@
     startingCharge: 25
   - type: CEIrradiateOnDestroy
     irradiateCoefficient: 0.5
+  - type: StaticPrice
+    price: 3
