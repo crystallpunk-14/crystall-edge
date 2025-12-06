@@ -36,8 +36,6 @@
         hard: False
   - type: Conveyor
   - type: CEConveyor
-  - type: ExtensionCableReceiver
-    receptionRange: 0
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -48,6 +46,8 @@
           Reverse: { state: moving_backward }
   - type: ApcPowerReceiver
     powerLoad: 0.1
+  - type: ExtensionCableReceiver
+    receptionRange: 0
   - type: Construction
     graph: CEConveyorBelt
     node: CEConveyorBelt

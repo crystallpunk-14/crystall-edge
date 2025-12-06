@@ -18,7 +18,4 @@ public sealed partial class CESellingPlatformComponent : Component
 
     [DataField]
     public EntProtoId SellVisual = "CECashImpact";
-
-    [DataField]
-    public float EnergyCost = 10f;
 }

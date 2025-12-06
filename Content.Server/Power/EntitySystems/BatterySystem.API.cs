@@ -29,7 +29,7 @@ public sealed partial class BatterySystem
 
         var newValue = Math.Clamp(ent.Comp.CurrentCharge + amount, 0, ent.Comp.MaxCharge);
         var delta = newValue - ent.Comp.CurrentCharge;
-        ent.Comp.CurrentCharge = newValue; DirtyField(ent, nameof(BatteryComponent.CurrentCharge)); //CrystallEdge autonetworking
+        ent.Comp.CurrentCharge = newValue;
 
         TrySetChargeCooldown(ent.Owner);
 
@@ -61,7 +61,7 @@ public sealed partial class BatterySystem
             return;
 
         var oldCharge = ent.Comp.CurrentCharge;
-        ent.Comp.CurrentCharge = MathHelper.Clamp(value, 0, ent.Comp.MaxCharge); DirtyField(ent, nameof(BatteryComponent.CurrentCharge)); //CrystallEdge autonetworking
+        ent.Comp.CurrentCharge = MathHelper.Clamp(value, 0, ent.Comp.MaxCharge);
         if (MathHelper.CloseTo(ent.Comp.CurrentCharge, oldCharge) &&
             !(oldCharge != ent.Comp.CurrentCharge && ent.Comp.CurrentCharge == ent.Comp.MaxCharge))
         {
@@ -77,8 +77,8 @@ public sealed partial class BatterySystem
             return;
 
         var old = ent.Comp.MaxCharge;
-        ent.Comp.MaxCharge = Math.Max(value, 0); DirtyField(ent, nameof(BatteryComponent.MaxCharge)); //CrystallEdge autonetworking
-        ent.Comp.CurrentCharge = Math.Min(ent.Comp.CurrentCharge, ent.Comp.MaxCharge); DirtyField(ent, nameof(BatteryComponent.CurrentCharge)); //CrystallEdge autonetworking
+        ent.Comp.MaxCharge = Math.Max(value, 0);
+        ent.Comp.CurrentCharge = Math.Min(ent.Comp.CurrentCharge, ent.Comp.MaxCharge);
         if (MathHelper.CloseTo(ent.Comp.MaxCharge, old))
             return;
 
