@@ -25,7 +25,7 @@ public sealed partial class CEMagicEnergySystem : CESharedMagicEnergySystem {
 
             var change = radReceiver.CurrentRadiation * energyRegen.Energy;
             if (change == 0)
-                return;
+                continue;
 
             _battery.ChangeCharge((uid, battery), radReceiver.CurrentRadiation * energyRegen.Energy);
         }

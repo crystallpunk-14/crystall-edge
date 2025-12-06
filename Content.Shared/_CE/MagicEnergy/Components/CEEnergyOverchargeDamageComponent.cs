@@ -34,13 +34,13 @@ public sealed partial class CEEnergyOverchargeDamageComponent : Component
 }
 
 /// <summary>
-/// Damages the entity if it receives an excess of energy
+/// Damages the entity when it attempts to use more energy than is available (energy deficit)
 /// </summary>
 [RegisterComponent, NetworkedComponent]
 public sealed partial class CEEnergyDeficitDamageComponent : Component
 {
     /// <summary>
-    /// Damage received per unit of excess energy
+    /// Damage received per unit of energy deficit
     /// </summary>
     [DataField]
     public DamageSpecifier Damage = new()
