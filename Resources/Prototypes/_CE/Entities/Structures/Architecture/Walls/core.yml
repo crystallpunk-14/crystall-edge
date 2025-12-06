@@ -26,7 +26,7 @@
       - id: CEIronOre1
 
 - type: entity
-  id: CEWallCrystallCore
+  id: CEWallCrystalCore
   name: energy crystal core
   description: "A core made of concentrated arcane energy crystals. It's extremely dangerous and can only be mined with specialized equipment."
   parent: CEOreCoreBase

@@ -11,6 +11,9 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.Drill;
 
+/// <summary>
+/// Handles the automatic drilling behavior for stationary drills, including damage application and effects.
+/// </summary>
 public abstract class CESharedDrillSystem : EntitySystem
 {
     [Dependency] private readonly SharedTransformSystem _transform = default!;
@@ -22,7 +25,7 @@ public abstract class CESharedDrillSystem : EntitySystem
     [Dependency] private readonly MeleeSoundSystem _meleeSound = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
 
-    List<EntityUid> _temp = new();
+    private readonly List<EntityUid> _cachedEntityList = new();
 
     public override void Update(float frameTime)
     {
@@ -51,16 +54,16 @@ public abstract class CESharedDrillSystem : EntitySystem
             if (!rayCastResults.Any())
                 continue;
 
-            _temp.Clear();
+            _cachedEntityList.Clear();
             foreach (var hit in rayCastResults)
             {
                 _damageable.TryChangeDamage(hit.HitEntity, melee.Damage, false, true, uid);
 
                 _meleeSound.PlayHitSound(hit.HitEntity, uid, SharedMeleeWeaponSystem.GetHighestDamageSound(melee.Damage, _proto), null, melee);
-                _temp.Add(hit.HitEntity);
+                _cachedEntityList.Add(hit.HitEntity);
             }
 
-            _color.RaiseEffect(Color.Red, _temp, Filter.Pvs(uid, entityManager: EntityManager));
+            _color.RaiseEffect(Color.Red, _cachedEntityList, Filter.Pvs(uid, entityManager: EntityManager));
             _jitter.DoJitter(uid, freq, true, drill.JitterAmplitude, drill.JitterFreq);
         }
     }

@@ -5,6 +5,9 @@ using Robust.Shared.Audio.Systems;
 
 namespace Content.Shared._CE.OreVein;
 
+/// <summary>
+/// System that manages ore veins, spawning resources when specific damage thresholds are met.
+/// </summary>
 public sealed class CEOreVeinSystem : EntitySystem
 {
     [Dependency] private readonly DamageableSystem _damageable = default!;
@@ -27,8 +30,15 @@ public sealed class CEOreVeinSystem : EntitySystem
 
         var totalDamage = args.Damageable.Damage;
 
-        var allDamageTypesMet = requiredDamage.DamageDict.All(required =>
-            totalDamage.DamageDict.TryGetValue(required.Key, out var actualAmount) && actualAmount >= required.Value);
+        var allDamageTypesMet = true;
+        foreach (var required in requiredDamage.DamageDict)
+        {
+            if (!totalDamage.DamageDict.TryGetValue(required.Key, out var actualAmount) || actualAmount < required.Value)
+            {
+                allDamageTypesMet = false;
+                break;
+            }
+        }
 
         var targetSpawnPosition = Transform(ent).Coordinates;
 

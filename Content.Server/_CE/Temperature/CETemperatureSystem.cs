@@ -26,7 +26,7 @@ public sealed class CETemperatureSystem : EntitySystem
     private void OnPowerChanged(Entity<CEEntityHeaterComponent> ent, ref PowerChangedEvent args)
     {
         var enabled = args.Powered;
-        _ambient.SetAmbience(ent,  enabled);
+        _ambient.SetAmbience(ent, enabled);
         _pointLight.SetEnabled(ent, enabled);
     }
 

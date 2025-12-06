@@ -6,6 +6,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._CE.Drill;
 
+/// <inheritdoc/>
 public sealed class CEDrillSystem : CESharedDrillSystem
 {
     [Dependency] private readonly AmbientSoundSystem _ambient = default!;
@@ -22,7 +23,7 @@ public sealed class CEDrillSystem : CESharedDrillSystem
     private void OnPowerChanged(Entity<CEDrillComponent> ent, ref PowerConsumerReceivedChanged args)
     {
         var enabled = args.ReceivedPower >= args.DrawRate;
-        _ambient.SetAmbience(ent,  enabled);
+        _ambient.SetAmbience(ent, enabled);
         ent.Comp.Enabled = enabled;
 
         ent.Comp.NextDamageTime = _timing.CurTime + TimeSpan.FromSeconds(_random.NextDouble(0, 1));

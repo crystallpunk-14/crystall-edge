@@ -37,7 +37,7 @@
   id: CEIronOre
   name: ce-stack-iron-ore
   spawn: CEIronOre1
-  icon: { sprite: _CE/Objects/Materials/Metals/iron_ore.rsi, state: ore_2 }
+  icon: { sprite: _CE/Objects/Materials/Metals/iron_ore.rsi, state: ore2 }
   maxCount: 30
 
 - type: stack
