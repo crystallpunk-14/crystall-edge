@@ -18,13 +18,6 @@
       path: /Audio/Ambience/Objects/circular_saw.ogg
   - type: Fixtures
     fixtures:
-      brrt:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.2,-0.2,0.2,-0.05"
-        hard: false
-        layer:
-        - FullTileLayer
       collision:
         density: 800
         shape:
@@ -39,7 +32,7 @@
     anchored: true
     noRot: false
   - type: Sprite
-    drawdepth: OverMobs
+    drawdepth: Mobs
     offset: 0, 0
     sprite: _CE/Structures/Industrial/drill.rsi
     layers:
@@ -62,7 +55,12 @@
         drill:
           True: {state: drill_working}
           False: {state: drill_idle}
-  #- type: CERecycler
+  - type: CEDrill
+    damage:
+      types:
+        Blunt: 7
+        Piercing: 7
+        Structural: 20
   - type: Rotatable
   - type: PowerConsumer
     voltage: High
