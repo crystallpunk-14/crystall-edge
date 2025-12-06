@@ -56,12 +56,20 @@
           True: {state: drill_working}
           False: {state: drill_idle}
   - type: CEDrill
+    jitterFreq: 100
+    jitterAmplitude: 0.1
+  - type: MeleeWeapon
     damage:
       types:
-        Blunt: 7
-        Piercing: 7
-        Structural: 20
+        Blunt: 10
+        Piercing: 10
+        Structural: 10
+    range: 1
+    attackRate: 1
   - type: Rotatable
   - type: PowerConsumer
     voltage: High
     drawRate: 5
+  - type: StatusEffects
+    allowed:
+    - Jitter
