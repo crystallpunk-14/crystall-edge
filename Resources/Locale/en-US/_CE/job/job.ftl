@@ -11,8 +11,8 @@ ce-job-desc-investigator = Specialist in capturing and neutralizing particularly
 
 # Citizens
 
-ce-job-name-mayor = Mayor
-ce-job-desc-mayor = TODO
+ce-job-name-bard = Bard
+ce-job-desc-bard = Music, merriment, and jokes are your livelihood. Make this city's life more enjoyable, and try not to pass away in poverty.
 
 ce-job-name-townfolk = Townfolk
 ce-job-desc-townfolk = TODO

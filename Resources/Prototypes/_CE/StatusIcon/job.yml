@@ -43,8 +43,8 @@
 
 - type: jobIcon
   parent: CEJobIcon
-  id: CEJobIconMayor
+  id: CEJobIconBard
   icon:
-      sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-      state: Mayor
-  jobName: ce-job-name-mayor
+    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    state: Bard
+  jobName: ce-job-name-bard

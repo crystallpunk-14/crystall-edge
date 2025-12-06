@@ -150,12 +150,12 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
         if (!repComp.Factions.Contains(indexedPosition.Faction))
             return;
 
-        if (TryComp<BatteryComponent>(ent, out var batteryComponent))
+        if (TryComp<BatteryComponent>(ent, out var battery))
         {
-            if (batteryComponent.CurrentCharge < ent.Comp.EnergyCost)
+            if (battery.CurrentCharge < ent.Comp.EnergyCost)
                 return;
 
-            _battery.TryUseCharge(ent, ent.Comp.EnergyCost, batteryComponent);
+            _battery.TryUseCharge((ent, battery), ent.Comp.EnergyCost);
         }
 
         //Top up balance
@@ -202,12 +202,12 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
         if (!TryComp<ItemPlacerComponent>(ent, out var itemPlacer))
             return;
 
-        if (TryComp<BatteryComponent>(ent, out var batteryComponent))
+        if (TryComp<BatteryComponent>(ent, out var battery))
         {
-            if (batteryComponent.CurrentCharge < ent.Comp.EnergyCost)
+            if (battery.CurrentCharge < ent.Comp.EnergyCost)
                 return;
 
-            _battery.TryUseCharge(ent, ent.Comp.EnergyCost, batteryComponent);
+            _battery.TryUseCharge((ent, battery), ent.Comp.EnergyCost);
         }
 
         double balance = 0;
@@ -249,12 +249,12 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
         if (!_economy.TryRerollRequest(args.Faction, args.Request))
             return;
 
-        if (TryComp<BatteryComponent>(ent, out var batteryComponent))
+        if (TryComp<BatteryComponent>(ent, out var battery))
         {
-            if (batteryComponent.CurrentCharge < ent.Comp.EnergyCost)
+            if (battery.CurrentCharge < ent.Comp.EnergyCost)
                 return;
 
-            _battery.TryUseCharge(ent, ent.Comp.EnergyCost, batteryComponent);
+            _battery.TryUseCharge((ent, battery), ent.Comp.EnergyCost);
         }
 
         foreach (var req in indexedRequest.Requirements)

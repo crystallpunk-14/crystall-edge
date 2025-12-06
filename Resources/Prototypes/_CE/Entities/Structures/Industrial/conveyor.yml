@@ -17,7 +17,7 @@
   - type: Sprite
     sprite: _CE/Structures/Industrial/Conveyor/floor.rsi
     state: base
-    drawdepth: HighFloorObjects
+    drawdepth: WallTops
   - type: Physics
     bodyType: Static
   - type: Anchorable
@@ -35,6 +35,9 @@
         - ConveyorMask
         hard: False
   - type: Conveyor
+  - type: CEConveyor
+  - type: ExtensionCableReceiver
+    receptionRange: 0
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -43,14 +46,8 @@
           Off: { state: base }
           Forward: { state: moving_forward }
           Reverse: { state: moving_backward }
-  - type: PowerConsumer
-    voltage: Medium
-    drawRate: 0.5
-  - type: NodeContainer
-    nodes:
-      power:
-        !type:CableDeviceNode
-        nodeGroupID: MVPower
+  - type: ApcPowerReceiver
+    powerLoad: 0.1
   - type: Construction
     graph: CEConveyorBelt
     node: CEConveyorBelt

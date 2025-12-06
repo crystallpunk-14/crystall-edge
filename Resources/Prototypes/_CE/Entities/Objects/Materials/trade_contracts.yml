@@ -49,3 +49,14 @@
     state: tailors
   - type: CETradingContract
     faction: Tailors
+
+- type: entity
+  parent: CETradeContractBase
+  id: CETradeContractGuard
+  description: Access to trade with the personal warehouse of the imperial guard. Must not fall into the wrong hands!
+  suffix: Empire guard warehouse
+  components:
+  - type: Sprite
+    state: guard
+  - type: CETradingContract
+    faction: EmpireGuard

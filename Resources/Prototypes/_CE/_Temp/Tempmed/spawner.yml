@@ -1,0 +1,18 @@
+- type: entity
+  id: CESpawnPointGroupedTestMedical
+  name: Test spawnpoint Medical
+  parent: CESpawnPointGroupedBase
+  categories:
+  - Spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+  - type: CESpawnerMarker
+    weightedTypes:
+      CEMedical: 1
+      CECoin: 0
+      CEKey: 0
+
+- type: Tag
+  id: CEMedical

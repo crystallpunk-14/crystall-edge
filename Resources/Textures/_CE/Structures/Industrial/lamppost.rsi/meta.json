@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-4.0",
+  "copyright": "created by omsoyk",
+  "size": {
+    "x": 64,
+    "y": 96
+  },
+  "states": [
+    {
+      "name": "double"
+    },
+    {
+      "name": "single"
+    },
+    {
+      "name": "single_right"
+    },
+    {
+      "name": "light_double"
+    },
+    {
+      "name": "light_single"
+    },
+    {
+      "name": "light_single_right"
+    }
+  ]
+}

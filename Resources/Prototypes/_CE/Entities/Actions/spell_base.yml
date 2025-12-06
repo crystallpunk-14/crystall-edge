@@ -1,0 +1,8 @@
+- type: entity
+  id: CEActionSpellBase
+  abstract: true
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    sound: !type:SoundPathSpecifier
+      path: /Audio/Magic/rumble.ogg

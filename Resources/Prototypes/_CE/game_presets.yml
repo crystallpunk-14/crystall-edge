@@ -19,3 +19,11 @@
   maxPlayers: 5
   rules:
     - Sandbox
+
+- type: gamePreset
+  id: CEPeacefulWeek
+  name: ce-game-preset-peaceful-week-title
+  description: ce-game-preset-peaceful-week-description
+  showInVote: true
+  rules:
+  - CEGameRuleWeekRound

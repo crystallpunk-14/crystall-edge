@@ -42,7 +42,9 @@
   - /Audio/_CE/Effects/nailing4.ogg
 
 - type: soundCollection
-  id: CP14CrystalDings
+  id: CELearnSkill
   files:
-  - /Audio/_CE/Effects/crystal_ding.ogg
-  - /Audio/_CE/Effects/crystal_ding2.ogg
+    - /Audio/_CE/Effects/skill_up1.ogg
+    - /Audio/_CE/Effects/skill_up2.ogg
+    - /Audio/_CE/Effects/skill_up3.ogg
+    - /Audio/_CE/Effects/skill_up4.ogg

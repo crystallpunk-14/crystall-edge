@@ -43,10 +43,10 @@
     - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
     - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
     - map: [ "enum.HumanoidVisualLayers.Tail" ]
-#    - map: [ "vampire_fangs" ]
-#      sprite: _CE/Mobs/Species/Vampire/fangs.rsi
-#      state: goblin # Goblin fangs state
-#      visible: false
+    - map: [ "vampire_fangs" ]
+      sprite: _CE/Mobs/Species/Vampire/fangs.rsi
+      state: goblin # Goblin fangs state
+      visible: false
     - map: [ "mask" ]
     - map: [ "head" ]
     - map: [ "pocket1" ]
@@ -82,8 +82,8 @@
   - type: Body
     prototype: CEHuman
     requiredLegs: 2
-#  - type: Bloodstream  (Until alchemy is ported)
-#    bloodReagent: CEBloodGoblin
+  - type: Bloodstream
+    bloodReagent: CEBloodGoblin
   - type: Fixtures
     fixtures: # Smaller hitbox & less weight
       fix1:
@@ -102,14 +102,11 @@
   - type: PassiveDamage
     allowedStates:
     - Alive
-    damageCap: 80
+    damageCap: 40
     damage:
-#      types:
-#        CP14ManaDepletion: -0.05
       groups:
         Burn: -0.2
         Brute: -0.2
-        Toxin: -0.05
   - type: Stamina
     decay: 5 # 3 default
     critThreshold: 120 # 100 default

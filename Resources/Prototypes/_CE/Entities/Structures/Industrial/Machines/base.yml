@@ -1,0 +1,9 @@
+- type: entity
+  abstract: true
+  parent: BaseMachine
+  id: CEBaseMachinePowered
+  components:
+  - type: ApcPowerReceiver
+    powerLoad: 1
+  - type: ExtensionCableReceiver
+    receptionRange: 0

@@ -1,0 +1,23 @@
+- type: constructionGraph
+  id: CEGauze
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: cegauze
+      steps:
+      - material: CECloth
+        amount: 2
+        doAfter: 3
+
+  - node: cegauze
+    entity: CEGauze1
+
+- type: construction
+  hide: false
+  id: cegauze
+  graph: CEGauze
+  startNode: start
+  targetNode: cegauze
+  category: construction-category-tools
+  objectType: Item

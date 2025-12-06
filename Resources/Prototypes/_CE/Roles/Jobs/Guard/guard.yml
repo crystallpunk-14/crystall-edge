@@ -8,6 +8,10 @@
   icon: CEJobIconGuard
   supervisors: ce-job-supervisors-guard-commander
   canBeAntag: false
+  special:
+    - !type:CEAddTradingReputationSpecial
+      factions:
+      - EmpireGuard
 
 #- type: startingGear
 #  id: CEGuardGear

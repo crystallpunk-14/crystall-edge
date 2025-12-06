@@ -72,3 +72,46 @@
       property: Energy
       isLooped: true
       enabled: true
+
+- type: entity
+  id: CEDirtEffect
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/material_splash.rsi
+    drawdepth: Effects
+    noRot: true
+    layers:
+      - state: dirt1
+        map: [ "random" ]
+  - type: RandomSprite
+    available:
+      - random:
+          dirt1: ""
+          dirt2: ""
+  - type: TimedDespawn
+    lifetime: 2
+  - type: Tag
+    tags:
+      - HideContextMenu
+  - type: AnimationPlayer
+  - type: EmitSoundOnSpawn
+    sound:
+      collection: CEDigging
+
+- type: entity
+  id: CESnowEffect
+  parent: CEDirtEffect
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    layers:
+      - state: snow1
+        map: [ "random" ]
+  - type: RandomSprite
+    available:
+      - random:
+          snow1: ""
+          snow2: ""
