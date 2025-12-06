@@ -39,17 +39,17 @@
     Hair:
       points: 1
       required: false
-    #FacialHair:
-    #  points: 1
-    #  required: false
+    FacialHair:
+      points: 1
+      required: false
     Snout:
       points: 1
       required: true
       defaultMarkings: [ CECarrinBeak ]
-    #Tail:
-    #  points: 1
-    #  required: true
-    #  defaultMarkings: [ CECarrinTail ]
+    Tail:
+      points: 1
+      required: true
+      defaultMarkings: [ CECarrinTai1 ]
     #HeadTop:
     #  points: 1
     #  required: true
@@ -60,9 +60,10 @@
     #Legs:
     #  points: 2
     #  required: false
-    #Arms:
-    #  points: 2
-    #  required: false
+    Arms:
+      points: 1
+      required: true
+      defaultMarkings: [ CECarrinWings1 ]
 
 - type: humanoidBaseSprite
   id: CEMobCarrinEyes
