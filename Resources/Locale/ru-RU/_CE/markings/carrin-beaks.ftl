@@ -1,0 +1,16 @@
+marking-CECarrinBeak = Клюв
+marking-CECarrinBeak2 = Короткий тонкий клюв
+marking-CECarrinBeak3 = Выгнутый клюв 1
+marking-CECarrinBeak4 = Короткий клюв 1
+marking-CECarrinBeak5 = Выгнутый клюв 2
+marking-CECarrinBeak6 = Широкий клюв
+marking-CECarrinBeak7 = Прямой клюв
+marking-CECarrinBeak8 = Длинный клюв
+marking-CECarrinBeak9 = Высокий клюв
+marking-CECarrinBeak10 = Тонкий клюв
+marking-CECarrinBeak11 = Загнутый клюв
+marking-CECarrinBeak12 = Короткий загнутый клюв
+marking-CECarrinBeak13 = Короткий загнутый клюв 2
+marking-CECarrinBeak14 = Короткий клюв 2
+marking-CECarrinBeak15 = Короткий клюв 3
+marking-CECarrinBeak16 = Клюв пеликана

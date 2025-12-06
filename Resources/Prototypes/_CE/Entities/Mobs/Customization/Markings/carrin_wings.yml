@@ -1,74 +1,74 @@
 - type: marking
-  id: CP14CarrinWings1
+  id: CECarrinWings1
   bodyPart: Chest
   markingCategory: Arms
-  speciesRestriction: [ CP14Carrin]
+  speciesRestriction: [ CECarrin]
   sprites:
-  - sprite: _CP14/Mobs/Customization/carrin_wings.rsi
+  - sprite: _CE/Mobs/Customization/Markings/carrin_wings.rsi
     state: 1_primary
-  - sprite: _CP14/Mobs/Customization/carrin_wings.rsi
+  - sprite: _CE/Mobs/Customization/Markings/carrin_wings.rsi
     state: 1_secondary
 
 - type: marking
-  id: CP14CarrinWings2
+  id: CECarrinWings2
   bodyPart: Chest
   markingCategory: Arms
-  speciesRestriction: [ CP14Carrin]
+  speciesRestriction: [ CECarrin]
   sprites:
-  - sprite: _CP14/Mobs/Customization/carrin_wings.rsi
+  - sprite: _CE/Mobs/Customization/Markings/carrin_wings.rsi
     state: 2_primary
-  - sprite: _CP14/Mobs/Customization/carrin_wings.rsi
+  - sprite: _CE/Mobs/Customization/Markings/carrin_wings.rsi
     state: 2_secondary
 
 - type: marking
-  id: CP14CarrinWings3
+  id: CECarrinWings3
   bodyPart: Chest
   markingCategory: Arms
-  speciesRestriction: [ CP14Carrin]
+  speciesRestriction: [ CECarrin]
   sprites:
-  - sprite: _CP14/Mobs/Customization/carrin_wings.rsi
+  - sprite: _CE/Mobs/Customization/Markings/carrin_wings.rsi
     state: 3_primary
-  - sprite: _CP14/Mobs/Customization/carrin_wings.rsi
+  - sprite: _CE/Mobs/Customization/Markings/carrin_wings.rsi
     state: 3_secondary
 
 - type: marking
-  id: CP14CarrinWings4
+  id: CECarrinWings4
   bodyPart: Chest
   markingCategory: Arms
-  speciesRestriction: [ CP14Carrin]
+  speciesRestriction: [ CECarrin]
   sprites:
-  - sprite: _CP14/Mobs/Customization/carrin_wings.rsi
+  - sprite: _CE/Mobs/Customization/Markings/carrin_wings.rsi
     state: 4_primary
-  - sprite: _CP14/Mobs/Customization/carrin_wings.rsi
+  - sprite: _CE/Mobs/Customization/Markings/carrin_wings.rsi
     state: 4_secondary
 
 - type: marking
-  id: CP14CarrinWings5
+  id: CECarrinWings5
   bodyPart: Chest
   markingCategory: Arms
-  speciesRestriction: [ CP14Carrin]
+  speciesRestriction: [ CECarrin]
   sprites:
-  - sprite: _CP14/Mobs/Customization/carrin_wings.rsi
+  - sprite: _CE/Mobs/Customization/Markings/carrin_wings.rsi
     state: 5_primary
-  - sprite: _CP14/Mobs/Customization/carrin_wings.rsi
+  - sprite: _CE/Mobs/Customization/Markings/carrin_wings.rsi
     state: 5_secondary
 
 - type: marking
-  id: CP14CarrinWings6
+  id: CECarrinWings6
   bodyPart: Chest
   markingCategory: Arms
-  speciesRestriction: [ CP14Carrin]
+  speciesRestriction: [ CECarrin]
   sprites:
-  - sprite: _CP14/Mobs/Customization/carrin_wings.rsi
+  - sprite: _CE/Mobs/Customization/Markings/carrin_wings.rsi
     state: 6_primary
-  - sprite: _CP14/Mobs/Customization/carrin_wings.rsi
+  - sprite: _CE/Mobs/Customization/Markings/carrin_wings.rsi
     state: 6_secondary
 
 - type: marking
-  id: CP14CarrinWings7
+  id: CECarrinWings7
   bodyPart: Chest
   markingCategory: Arms
-  speciesRestriction: [ CP14Carrin]
+  speciesRestriction: [ CECarrin]
   sprites:
-  - sprite: _CP14/Mobs/Customization/carrin_wings.rsi
+  - sprite: _CE/Mobs/Customization/Markings/arrin_wings.rsi
     state: 7
