@@ -55,7 +55,7 @@
   - type: HumanoidAppearance
     species: CECarrin
   - type: Icon
-    sprite: CE/Mobs/Species/Carrin/parts.rsi
+    sprite: _CE/Mobs/Species/Carrin/parts.rsi
     state: full
   - type: Vocal
     sounds:
