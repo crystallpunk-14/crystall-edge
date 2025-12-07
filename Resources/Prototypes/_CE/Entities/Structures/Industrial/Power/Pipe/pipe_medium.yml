@@ -7,6 +7,8 @@
   placement:
     mode: SnapgridCenter
   components:
+  - type: Icon
+    sprite: _CE/Structures/Industrial/Power/Pipes/medium_flat.rsi
   - type: PlacementReplacement
     key: pipe_medium
   - type: CEPipeVisualizer
@@ -19,13 +21,12 @@
   parent: CEPipeBrassMediumBase
   name: small brass pipe
   components:
+  - type: Icon
+    state: pipe_0
   - type: Sprite
     sprite: _CE/Structures/Industrial/Power/Pipes/medium_flat.rsi
     state: pipe_15
     drawdepth: ThinWire
-  - type: Icon
-    sprite: _CE/Structures/Industrial/Power/Pipes/medium_flat.rsi
-    state: pipe_15
   - type: Destructible
     thresholds:
     - trigger:
@@ -110,6 +111,8 @@
   - type: InteractionOutline
   - type: CEToggleableConnector
     active: false
+  - type: Icon
+    state: valve_off
   - type: Sprite
     layers:
     - state: pipe_15
@@ -180,6 +183,8 @@
   parent: CEPipeBrassMediumValve
   suffix: Valve, On
   components:
+  - type: Icon
+    state: valve_on
   - type: CEToggleableConnector
     active: true
   - type: Sprite
@@ -286,13 +291,15 @@
 - type: entity
   id: CEPipeBrassMediumDelayer
   parent: CEPipeBrassMedium
-  name: delayer
-  description:
+  name: small pipe delayer
+  description: A small valve installed on the pipe allows the incoming energy to be delayed for a short period of time. Useful for controlling the timing of energy supply.
   suffix: 0.5s
   components:
   - type: InteractionOutline
   - type: CEDelayedConnector
     active: false
+  - type: Icon
+    state: delayer
   - type: Sprite
     layers:
     - state: pipe_15
@@ -329,9 +336,9 @@
         delayer_light:
           True: {visible: true}
           False: {visible: false}
-  #- type: Construction
-  #  graph: CEPipeBrassMedium
-  #  node: CEPipeBrassMediumValve
+  - type: Construction
+    graph: CEPipeBrassMedium
+    node: CEPipeBrassMediumDelayer
   - type: Destructible
     thresholds:
     - trigger:
@@ -349,8 +356,8 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalBreak
-      #- !type:ChangeConstructionNodeBehavior
-      #  node: CEPipeBrassMediumBroken
+      - !type:ChangeConstructionNodeBehavior
+        node: CEPipeBrassMediumBroken
   - type: PowerConsumer
     voltage: Apc
     drawRate: 0.1
