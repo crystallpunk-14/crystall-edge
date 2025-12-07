@@ -108,7 +108,7 @@
   suffix: Valve, Off
   components:
   - type: InteractionOutline
-  - type: CEToggleableCable
+  - type: CEToggleableConnector
     active: false
   - type: Sprite
     layers:
@@ -120,10 +120,26 @@
       map: ["valve_light"]
   - type: NodeContainer
     nodes:
-      power:
-        !type:CableNode
+      center:
+        !type:CEConnectorCenterNode
         nodeGroupID: Apc
         active: false
+      north:
+        !type:CEConnectorEdgeNode
+        direction: North
+        nodeGroupID: Apc
+      south:
+        !type:CEConnectorEdgeNode
+        direction: South
+        nodeGroupID: Apc
+      east:
+        !type:CEConnectorEdgeNode
+        direction: East
+        nodeGroupID: Apc
+      west:
+        !type:CEConnectorEdgeNode
+        direction: West
+        nodeGroupID: Apc
   - type: UseDelay
   - type: GenericVisualizer
     visuals:
@@ -164,7 +180,7 @@
   parent: CEPipeBrassMediumValve
   suffix: Valve, On
   components:
-  - type: CEToggleableCable
+  - type: CEToggleableConnector
     active: true
   - type: Sprite
     layers:
@@ -176,10 +192,26 @@
       map: ["valve_light"]
   - type: NodeContainer
     nodes:
-      power:
-        !type:CableNode
+      center:
+        !type:CEConnectorCenterNode
         nodeGroupID: Apc
         active: true
+      north:
+        !type:CEConnectorEdgeNode
+        direction: North
+        nodeGroupID: Apc
+      south:
+        !type:CEConnectorEdgeNode
+        direction: South
+        nodeGroupID: Apc
+      east:
+        !type:CEConnectorEdgeNode
+        direction: East
+        nodeGroupID: Apc
+      west:
+        !type:CEConnectorEdgeNode
+        direction: West
+        nodeGroupID: Apc
 
 # Broken
 

@@ -30,10 +30,10 @@ public sealed class CEPowerSystem : EntitySystem
 
         SubscribeLocalEvent<CEEnergyLeakComponent, PowerConsumerReceivedChanged>(OnPowerChanged);
         SubscribeLocalEvent<CEIrradiateOnDestroyComponent, DestructionEventArgs>(OnBatteryDestroyed);
-        SubscribeLocalEvent<CEToggleableCableComponent, ActivateInWorldEvent>(OnActivateInWorld);
+        SubscribeLocalEvent<CEToggleableConnectorComponent, ActivateInWorldEvent>(OnActivateInWorld);
     }
 
-    private void OnActivateInWorld(Entity<CEToggleableCableComponent> ent, ref ActivateInWorldEvent args)
+    private void OnActivateInWorld(Entity<CEToggleableConnectorComponent> ent, ref ActivateInWorldEvent args)
     {
         if (_useDelay.IsDelayed(ent.Owner))
             return;
@@ -45,7 +45,7 @@ public sealed class CEPowerSystem : EntitySystem
         ent.Comp.Active = newState;
         foreach (var node in nodeContainer.Nodes.Values)
         {
-            if (node is CableNode cableNode)
+            if (node is CEConnectorCenterNode cableNode)
             {
                 cableNode.Active = newState;
                 _nodeGroup.QueueReflood(node);

@@ -119,7 +119,7 @@
   suffix: Valve, Off
   components:
   - type: InteractionOutline
-  - type: CEToggleableCable
+  - type: CEToggleableConnector
     active: false
   - type: Sprite
     layers:
@@ -131,10 +131,26 @@
       map: ["valve_light"]
   - type: NodeContainer
     nodes:
-      power:
-        !type:CableNode
+      center:
+        !type:CEConnectorCenterNode
         nodeGroupID: HVPower
         active: false
+      north:
+        !type:CEConnectorEdgeNode
+        direction: North
+        nodeGroupID: HVPower
+      south:
+        !type:CEConnectorEdgeNode
+        direction: South
+        nodeGroupID: HVPower
+      east:
+        !type:CEConnectorEdgeNode
+        direction: East
+        nodeGroupID: HVPower
+      west:
+        !type:CEConnectorEdgeNode
+        direction: West
+        nodeGroupID: HVPower
   - type: UseDelay
   - type: GenericVisualizer
     visuals:
@@ -175,7 +191,7 @@
   parent: CEPipeBrassBigValve
   suffix: Valve, On
   components:
-  - type: CEToggleableCable
+  - type: CEToggleableConnector
     active: true
   - type: Sprite
     layers:
@@ -187,10 +203,26 @@
       map: ["valve_light"]
   - type: NodeContainer
     nodes:
-      power:
-        !type:CableNode
+      center:
+        !type:CEConnectorCenterNode
         nodeGroupID: HVPower
         active: true
+      north:
+        !type:CEConnectorEdgeNode
+        direction: North
+        nodeGroupID: HVPower
+      south:
+        !type:CEConnectorEdgeNode
+        direction: South
+        nodeGroupID: HVPower
+      east:
+        !type:CEConnectorEdgeNode
+        direction: East
+        nodeGroupID: HVPower
+      west:
+        !type:CEConnectorEdgeNode
+        direction: West
+        nodeGroupID: HVPower
 
 # Broken
 
