@@ -1,6 +1,6 @@
 - type: species
   id: CECarrin
-  name: CE-species-name-carrin
+  name: ce-species-name-carrin
   roundStart: true
   prototype: CEMobCarrin
   sprites: CEMobCarrinSprites
