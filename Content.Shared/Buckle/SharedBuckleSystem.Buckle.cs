@@ -9,6 +9,7 @@ using Content.Shared.Hands.Components;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Pulling.Events;
+using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Pulling.Events;
 using Content.Shared.Standing;
@@ -315,6 +316,11 @@ public abstract partial class SharedBuckleSystem
 
             return false;
         }
+
+        //CrystallEdge - block buckling through fence windows
+        if (!_interaction.InRangeUnobstructed(buckleUid, strapUid, collisionMask: CollisionGroup.MobMask))
+            return false;
+        //CrystallEdge End
 
         var buckleAttempt = new BuckleAttemptEvent((strapUid, strapComp), (buckleUid, buckleComp), user, popup);
         RaiseLocalEvent(buckleUid, ref buckleAttempt);

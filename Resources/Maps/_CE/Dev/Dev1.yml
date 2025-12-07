@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/05/2025 17:26:14
-  entityCount: 351
+  time: 12/07/2025 17:55:02
+  entityCount: 352
 maps:
 - 1
 grids:
@@ -131,6 +131,14 @@ entities:
     - type: Transform
       gridTraversal: False
       pos: 4.783035,1.3638729
+      parent: 1
+    - type: ViewSubscriber
+  - uid: 228
+    components:
+    - type: MetaData
+    - type: Transform
+      gridTraversal: False
+      pos: -16.932125,-9.830981
       parent: 1
     - type: ViewSubscriber
   - uid: 236
@@ -730,16 +738,9 @@ entities:
       rot: 3.141592653589793 rad
       pos: 9.5,-0.5
       parent: 1
-  - uid: 228
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 9.5,2.5
-      parent: 1
   - uid: 229
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: 8.5,2.5
       parent: 1
   - uid: 230
@@ -757,14 +758,17 @@ entities:
   - uid: 232
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 15.5,2.5
+      pos: 9.5,2.5
       parent: 1
   - uid: 233
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: 14.5,2.5
+      parent: 1
+  - uid: 352
+    components:
+    - type: Transform
+      pos: 15.5,2.5
       parent: 1
 - proto: CEFenceWooden
   entities:

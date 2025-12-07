@@ -17,8 +17,9 @@
   - type: Sprite
     offset: 0, 0.4
     drawdepth: Mobs
+    state: fence
   - type: Icon
-    state: full
+    state: fence
   - type: MeleeSound
     soundGroups:
       Brute:
@@ -45,10 +46,8 @@
   components:
   - type: Sprite
     sprite: _CE/Structures/Architecture/Fences/wooden.rsi
-    state: fence
   - type: Icon
     sprite: _CE/Structures/Architecture/Fences/wooden.rsi
-    state: fence
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: Wood
@@ -68,6 +67,6 @@
             max: 2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  #- type: Construction
-  #  graph: CEFenceWooden
-  #  node: CEFenceWooden
+  - type: Construction
+    graph: CEFenceWooden
+    node: CEFenceWooden

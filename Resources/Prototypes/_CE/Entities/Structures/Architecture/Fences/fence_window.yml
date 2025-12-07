@@ -1,10 +1,10 @@
 - type: entity
   parent: BaseStructure
-  id: CEBaseFenceBig
+  id: CEBaseFenceWindow
   abstract: true
   categories: [ ForkFiltered ]
-  name: big fence
-  description: You definitely need a towel to get to the other side
+  name: fence window
+  description: You can slip an object in here, but you sure as hell can't fit through.
   placement:
     mode: SnapgridCenter
     snap:
@@ -35,50 +35,18 @@
         mask:
         - Impassable
         layer:
-        - WallLayer
+        - MidImpassable
+        - HighImpassable
 
 - type: entity
-  parent:
-  - CEBaseFenceBig
-  id: CEFenceBigWooden
-  suffix: Wooden
-  components:
-  - type: Sprite
-    sprite: _CE/Structures/Architecture/Fences/wooden_big.rsi
-  - type: Icon
-    sprite: _CE/Structures/Architecture/Fences/wooden_big.rsi
-  - type: Damageable
-    damageContainer: Inorganic
-    damageModifierSet: Wood
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 150
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: WoodDestroy
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          CEWoodenPlanks1:
-            min: 2
-            max: 4
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-  - type: Construction
-    graph: CEFenceBigWooden
-    node: CEFenceBigWooden
-
-- type: entity
-  parent: CEBaseFenceBig
-  id: CEFenceBigIron
+  parent: CEBaseFenceWindow
+  id: CEFenceWindowIron
   suffix: Iron
   components:
   - type: Sprite
-    sprite: _CE/Structures/Architecture/Fences/iron_big.rsi
+    sprite: _CE/Structures/Architecture/Fences/iron_window.rsi
   - type: Icon
-    sprite: _CE/Structures/Architecture/Fences/iron_big.rsi
+    sprite: _CE/Structures/Architecture/Fences/iron_window.rsi
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: Metallic
@@ -94,11 +62,10 @@
       - !type:SpawnEntitiesBehavior
         spawn:
           CEIronScrap1:
-            min: 2
-            max: 4
+            min: 1
+            max: 2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: Construction
-    graph: CEFenceBigIron
-    node: CEFenceBigIron
-
+    graph: CEFenceWindowIron
+    node: CEFenceWindowIron

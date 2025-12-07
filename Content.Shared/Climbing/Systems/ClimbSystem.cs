@@ -475,7 +475,7 @@ public sealed partial class ClimbSystem : VirtualController
             return false;
         }
 
-        if (!_interactionSystem.InRangeUnobstructed(user, target, component.Range))
+        if (!_interactionSystem.InRangeUnobstructed(user, target, component.Range, collisionMask: CollisionGroup.MobMask)) //CrystallEdge replace with coordinates, and add collisionMask, to prevent climbing through fence windows
         {
             reason = Loc.GetString("comp-climbable-cant-reach");
             return false;
