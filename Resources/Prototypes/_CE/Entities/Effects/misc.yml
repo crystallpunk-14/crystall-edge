@@ -72,6 +72,10 @@
       property: Energy
       isLooped: true
       enabled: true
+  - type: RadiationSource
+    intensity: 3
+  - type: TimedDespawn
+    lifetime: 5
 
 - type: entity
   id: CEDirtEffect

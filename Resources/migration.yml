@@ -18,6 +18,7 @@ CEBushSpawner: null
 CEPlantSage: null
 CENail110: CENail10
 CEAlwaysPoweredWallLight: CEWallLight
+CEWallCrystal: CEWallCrystalCore
 
 # CrystallEdge migration zone end
 

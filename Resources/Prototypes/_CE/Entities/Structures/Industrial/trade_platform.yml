@@ -1,12 +1,13 @@
 - type: entity
   parent:
   - BaseStructure
-  - CEBaseMachinePowered
   id: CETradingPlatform
   name: buying dimensional platform
   description: Allows you to trade with the outside world, through retail trade transactions.
   categories: [ ForkFiltered ]
   components:
+  - type: PlacementReplacement
+    key: walls
   - type: Sprite
     drawdepth: FloorTiles
     snapCardinals: true
@@ -19,6 +20,7 @@
     state: base
   - type: ActivatableUI
     key: enum.CETradingUiKey.Buy
+  - type: ActivatableUIRequiresPower
   - type: Clickable
   - type: InteractionOutline
   - type: CETradingPlatform
@@ -45,23 +47,10 @@
         - MidImpassable
         - LowImpassable
         hard: false
-  - type: Battery
-    maxCharge: 10
-    startingCharge: 10
-  - type: ExaminableBattery
-  - type: BatteryCharger
-    voltage: Medium
-    node: input
-  - type: PowerNetworkBattery
-    maxSupply: 0
-    supplyRampTolerance: 1
-    maxChargeRate: 2
-  - type: NodeContainer
-    examinable: true
-    nodes:
-      input:
-        !type:CableDeviceNode
-        nodeGroupID: Apc
+  - type: ApcPowerReceiver
+    powerLoad: 0.1
+  - type: ExtensionCableReceiver
+    receptionRange: 0
 
 - type: entity
   parent: BaseStructure
@@ -70,6 +59,8 @@
   description: Allows you to sell any items and structures to the outside world. Fill the platform completely with mana to sell whatever you place on it.
   categories: [ ForkFiltered ]
   components:
+  - type: PlacementReplacement
+    key: walls
   - type: Sprite
     drawdepth: FloorTiles
     snapCardinals: true
@@ -88,6 +79,7 @@
     maxEntities: 0
   - type: ActivatableUI
     key: enum.CETradingUiKey.Sell
+  - type: ActivatableUIRequiresPower
   - type: UserInterface
     interfaces:
       enum.CETradingUiKey.Sell:
@@ -108,9 +100,8 @@
   - type: Battery
     maxCharge: 10
     startingCharge: 10
-  - type: ExaminableBattery
   - type: BatteryCharger
-    voltage: Medium
+    voltage: Apc
     node: input
   - type: PowerNetworkBattery
     maxSupply: 0
@@ -130,6 +121,8 @@
 #  description: allows you to quickly receive the salary you are entitled to (if, of course, you are supposed to receive a salary from the empire)
 #  categories: [ ForkFiltered ]
 #  components:
+#  - type: PlacementReplacement
+#    key: walls
 #  - type: Sprite
 #    drawdepth: FloorTiles
 #    snapCardinals: true

@@ -32,7 +32,6 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
     private CETradingPlatformUiState? _cachedState;
     private Entity<CETradingReputationComponent>? _cachedUser;
     private Entity<CETradingPlatformComponent>? _cachedPlatform;
-    private BatteryComponent? _batteryComponent;
 
     private CETradingPositionPrototype? _selectedPosition;
 
@@ -61,13 +60,6 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
         SearchBar.OnTextChanged += OnSearchChanged;
         BuyButton.OnPressed += BuyPressed;
         OptionCategories.OnItemSelected += OnCategoryItemSelected;
-    }
-
-    protected override void FrameUpdate(FrameEventArgs args)
-    {
-        base.FrameUpdate(args);
-
-        UpdateEnergyBar();
     }
 
     private void OnSearchChanged(LineEdit.LineEditEventArgs _)
@@ -199,29 +191,6 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
         LocationView.SetPrototype(null);
     }
 
-    public void UpdateEnergyBar()
-    {
-        if (_batteryComponent is null)
-        {
-            EnergyLabel.Visible = false;
-            EnergyProgressBar.Visible = false;
-            return;
-        }
-
-        EnergyLabel.Visible = true;
-        EnergyProgressBar.Visible = true;
-
-        var energyLevel = _batteryComponent.CurrentCharge / _batteryComponent.MaxCharge;
-        EnergyLabel.Text = Math.Round(energyLevel * 100) + "%";
-        EnergyProgressBar.Value = energyLevel;
-
-        BuyButton.Disabled = !(_selectedPosition is not null &&
-                             _cachedState is not null &&
-                             _cachedPlatform is not null &&
-                             _tradingSystem.GetPrice(_selectedPosition) <= _cachedState.Price &&
-                             _batteryComponent.CurrentCharge >= _cachedPlatform.Value.Comp.EnergyCost);
-    }
-
     public void UpdateState(CETradingPlatformUiState state)
     {
         _cachedState = state;
@@ -274,7 +243,6 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
         }
 
         _cachedPlatform = (plat, platComp);
-        _e.TryGetComponent(_cachedPlatform, out _batteryComponent);
 
         UpdatePositionVisibility();
     }

@@ -67,7 +67,7 @@ public sealed class CEBiomeSpawnerSystem : EntitySystem
 
         var vec = _transform.GetGridOrMapTilePosition(ent);
 
-        if (!_biome.TryGetTile(vec, biome.Layers, _globalSeed, map, out var tile))
+        if (!_biome.TryGetTile(vec, biome.Layers, _globalSeed, (gridUid, map), out var tile))
             return;
 
         // Set new tile

@@ -19,5 +19,6 @@ public sealed partial class CESpellStun: CESpellEffect
         var stun = entManager.System<SharedStunSystem>();
 
         stun.TryKnockdown(args.Target.Value, Duration, drop: DropItems);
+        stun.TryAddStunDuration(args.Target.Value, Duration);
     }
 }

@@ -1,5 +1,3 @@
-using System.Numerics;
-using Content.Server.Administration.Logs;
 using Content.Server.Audio;
 using Content.Server.Materials;
 using Content.Server.Power.Components;
@@ -12,7 +10,6 @@ using Content.Shared.Materials;
 using Content.Shared.Stacks;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Map;
 using Robust.Shared.Physics.Events;
 
 namespace Content.Server._CE.Recycler;
@@ -27,7 +24,6 @@ public sealed class CERecyclerSystem : CESharedRecyclerSystem
     [Dependency] private readonly AmbientSoundSystem _ambient = default!;
     [Dependency] private readonly SharedDestructibleSystem _destructible = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly IAdminLogManager _adminLog = default!;
 
     private EntityQuery<PowerConsumerComponent> _powerQuery;
 
