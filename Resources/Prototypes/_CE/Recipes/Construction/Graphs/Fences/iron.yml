@@ -18,7 +18,7 @@
         - to: start
           completed:
             - !type:SpawnPrototype
-              prototype: CEIronBars1
+              prototype: CEIronBar1
               amount: 2
             - !type:DeleteEntity {}
           steps:
