@@ -46,10 +46,10 @@
       points: 1
       required: true
       defaultMarkings: [ CECarrinBeak ]
-    Tail:
+    Chest:
       points: 1
       required: true
-      defaultMarkings: [ CECarrinTai1 ]
+      defaultMarkings: [ CECarrinTail1 ]
     #HeadTop:
     #  points: 1
     #  required: true

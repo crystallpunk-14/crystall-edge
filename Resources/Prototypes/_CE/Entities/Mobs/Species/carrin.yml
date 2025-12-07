@@ -14,7 +14,7 @@
     - map: [ "enum.HumanoidVisualLayers.RLeg" ]
     - map: [ "enum.HumanoidVisualLayers.LLeg" ]
     - shader: StencilClear
-      sprite: _CE/Mobs/Species/Human/parts.rsi
+      sprite: _CE/Mobs/Species/Carrin/parts.rsi
       state: l_leg
     - shader: StencilMask
       map: [ "enum.HumanoidVisualLayers.StencilMask" ]
@@ -142,7 +142,7 @@
           32:
             sprite: _CE/Mobs/Species/Carrin/displacement48.rsi
             state: neck
-          49:
+          48:
             sprite: _CE/Mobs/Species/Carrin/displacement48.rsi
             state: neck
   - type: Hands
@@ -150,9 +150,9 @@
       sizeMaps:
         32:
           sprite: _CE/Mobs/Species/Carrin/displacement.rsi
-          state: hands_left
+          state: hand_l
     rightHandDisplacement:
       sizeMaps:
         32:
           sprite: _CE/Mobs/Species/Carrin/displacement.rsi
-          state: hands_right
+          state: hand_r

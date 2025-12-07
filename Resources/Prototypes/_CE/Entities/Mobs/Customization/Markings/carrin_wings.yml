@@ -70,5 +70,5 @@
   markingCategory: Arms
   speciesRestriction: [ CECarrin]
   sprites:
-  - sprite: _CE/Mobs/Customization/Markings/arrin_wings.rsi
+  - sprite: _CE/Mobs/Customization/Markings/carrin_wings.rsi
     state: 7
