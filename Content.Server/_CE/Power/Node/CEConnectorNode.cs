@@ -5,7 +5,7 @@ using Robust.Shared.Map.Components;
 namespace Content.Server.Power.Nodes;
 
 /// <summary>
-/// TODO
+/// A node that connects to cables or active center nodes in a specific direction on the grid.
 /// </summary>
 [DataDefinition]
 public sealed partial class CEConnectorEdgeNode : Node
@@ -36,11 +36,8 @@ public sealed partial class CEConnectorEdgeNode : Node
                 nodeDirs.Add((dir, node));
             }
 
-            if (node is CEConnectorCenterNode center)
-            {
-                if (center.Active)
-                    nodeDirs.Add((dir, node));
-            }
+            if (node is CEConnectorCenterNode center && center.Active)
+                nodeDirs.Add((dir, node));
         }
 
         foreach (var (dir, node) in nodeDirs)
@@ -51,7 +48,7 @@ public sealed partial class CEConnectorEdgeNode : Node
 }
 
 /// <summary>
-/// TODO
+/// A central connector node that can be toggled to enable or disable connections to edge nodes.
 /// </summary>
 [DataDefinition]
 public sealed partial class CEConnectorCenterNode : Node

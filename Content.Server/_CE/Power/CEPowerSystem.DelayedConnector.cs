@@ -13,7 +13,7 @@ public sealed partial class CEPowerSystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
-    private void  InitializeDelayedConnector()
+    private void InitializeDelayedConnector()
     {
         SubscribeLocalEvent<CEDelayedConnectorComponent, PowerConsumerReceivedChanged>(OnDelayedPowerChanged);
         SubscribeLocalEvent<CEDelayedConnectorComponent, GetVerbsEvent<Verb>>(OnGetVerb);
@@ -34,7 +34,7 @@ public sealed partial class CEPowerSystem
             {
                 Priority = (int)option.TotalSeconds,
                 Category = VerbCategory.Lever,
-                Text = Loc.GetString("ce-power-repeater-verb", ("count", option.TotalSeconds)),
+                Text = Loc.GetString("ce-power-delayed-connector-verb", ("count", option.TotalSeconds)),
                 Impact = LogImpact.Low,
                 DoContactInteraction = true,
                 Act = () =>
@@ -55,7 +55,7 @@ public sealed partial class CEPowerSystem
         if (!args.IsInDetailsRange)
             return;
 
-        args.PushMarkup(Loc.GetString("ce-power-repeater-examined", ("count", ent.Comp.SelectedDelay.TotalSeconds)));
+        args.PushMarkup(Loc.GetString("ce-power-delayed-connector-examined", ("count", ent.Comp.SelectedDelay.TotalSeconds)));
     }
 
     private void OnDelayedPowerChanged(Entity<CEDelayedConnectorComponent> ent, ref PowerConsumerReceivedChanged args)

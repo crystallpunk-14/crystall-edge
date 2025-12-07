@@ -48,7 +48,7 @@ namespace Content.Server.Power.Nodes
                 {
                     nodeDirs.Add((dir, node));
                 }
-                //CrysrallEdge end
+                //CrystallEdge end
 
                 if (node is CableTerminalNode)
                 {
