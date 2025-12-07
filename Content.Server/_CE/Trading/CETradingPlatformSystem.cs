@@ -28,7 +28,6 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
     [Dependency] private readonly CEEconomySystem _economy = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly UserInterfaceSystem _userInterface = default!;
-    [Dependency] private readonly BatterySystem _battery = default!;
 
     public static readonly ProtoId<TagPrototype> CoinTag = "CECoin";
 
@@ -117,6 +116,8 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
 
     public bool CanSell(EntityUid uid)
     {
+        if (TerminatingOrDeleted(uid))
+            return false;
         if (_tag.HasTag(uid, CoinTag))
             return false;
         if (HasComp<MobStateComponent>(uid))
@@ -149,14 +150,6 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
 
         if (!repComp.Factions.Contains(indexedPosition.Faction))
             return;
-
-        if (TryComp<BatteryComponent>(ent, out var battery))
-        {
-            if (battery.CurrentCharge < ent.Comp.EnergyCost)
-                return;
-
-            _battery.TryUseCharge((ent, battery), ent.Comp.EnergyCost);
-        }
 
         //Top up balance
         double balance = 0;
@@ -202,14 +195,6 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
         if (!TryComp<ItemPlacerComponent>(ent, out var itemPlacer))
             return;
 
-        if (TryComp<BatteryComponent>(ent, out var battery))
-        {
-            if (battery.CurrentCharge < ent.Comp.EnergyCost)
-                return;
-
-            _battery.TryUseCharge((ent, battery), ent.Comp.EnergyCost);
-        }
-
         double balance = 0;
         foreach (var placed in itemPlacer.PlacedEntities)
         {
@@ -248,14 +233,6 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
 
         if (!_economy.TryRerollRequest(args.Faction, args.Request))
             return;
-
-        if (TryComp<BatteryComponent>(ent, out var battery))
-        {
-            if (battery.CurrentCharge < ent.Comp.EnergyCost)
-                return;
-
-            _battery.TryUseCharge((ent, battery), ent.Comp.EnergyCost);
-        }
 
         foreach (var req in indexedRequest.Requirements)
         {

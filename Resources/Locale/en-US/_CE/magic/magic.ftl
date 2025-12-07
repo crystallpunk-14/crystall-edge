@@ -1,4 +1,5 @@
 ce-energy-overcharge-popup = Too much energy!
+ce-energy-deficit-popup = Not enough mana!
 
 ce-magic-manacost = Mana cost
 

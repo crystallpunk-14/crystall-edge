@@ -1,4 +1,5 @@
 ce-energy-overcharge-popup = Слишком много энергии!
+ce-energy-deficit-popup = Недостаточно маны!
 
 ce-magic-manacost = Затраты маны
 
