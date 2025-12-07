@@ -70,7 +70,7 @@
       params:
         volume: 0.1
   - type: Body
-    prototype: CECarrin
+    prototype: CECarcat
     requiredLegs: 2
   - type: MeleeWeapon
     soundHit:

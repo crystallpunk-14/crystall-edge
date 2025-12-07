@@ -4,9 +4,9 @@
   markingCategory: Tail
   speciesRestriction: [ CECarrin ]
   sprites:
-  - sprite: _CE/Mobs/Customization/Markings/carrin_tail.rsi
+  - sprite: _CE/Mobs/Customization/carrin_tail.rsi
     state: 1_primary
-  - sprite: _CE/Mobs/Customization/Markings/carrin_tail.rsi
+  - sprite: _CE/Mobs/Customization/carrin_tail.rsi
     state: 1_secondary
 
 - type: marking
@@ -15,9 +15,9 @@
   markingCategory: Tail
   speciesRestriction: [ CECarrin ]
   sprites:
-  - sprite: _CE/Mobs/Customization/Markings/carrin_tail.rsi
+  - sprite: _CE/Mobs/Customization/carrin_tail.rsi
     state: 2_primary
-  - sprite: _CE/Mobs/Customization/Markings/carrin_tail.rsi
+  - sprite: _CE/Mobs/Customization/carrin_tail.rsi
     state: 2_secondary
 
 - type: marking
@@ -26,7 +26,7 @@
   markingCategory: Tail
   speciesRestriction: [ CECarrin ]
   sprites:
-  - sprite: _CE/Mobs/Customization/Markings/carrin_tail.rsi
+  - sprite: _CE/Mobs/Customization/carrin_tail.rsi
     state: 3
 
 - type: marking
@@ -35,7 +35,7 @@
   markingCategory: Tail
   speciesRestriction: [ CECarrin ]
   sprites:
-  - sprite: _CE/Mobs/Customization/Markings/carrin_tail.rsi
+  - sprite: _CE/Mobs/Customization/carrin_tail.rsi
     state: 4
 
 - type: marking
@@ -44,5 +44,5 @@
   markingCategory: Tail
   speciesRestriction: [ CECarrin ]
   sprites:
-  - sprite: _CE/Mobs/Customization/Markings/carrin_tail.rsi
+  - sprite: _CE/Mobs/Customization/carrin_tail.rsi
     state: 5

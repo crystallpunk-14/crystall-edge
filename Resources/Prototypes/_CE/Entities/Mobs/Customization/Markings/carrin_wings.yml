@@ -4,9 +4,9 @@
   markingCategory: Arms
   speciesRestriction: [ CECarrin]
   sprites:
-  - sprite: _CE/Mobs/Customization/Markings/carrin_wings.rsi
+  - sprite: _CE/Mobs/Customization/carrin_wings.rsi
     state: 1_primary
-  - sprite: _CE/Mobs/Customization/Markings/carrin_wings.rsi
+  - sprite: _CE/Mobs/Customization/carrin_wings.rsi
     state: 1_secondary
 
 - type: marking
@@ -15,9 +15,9 @@
   markingCategory: Arms
   speciesRestriction: [ CECarrin]
   sprites:
-  - sprite: _CE/Mobs/Customization/Markings/carrin_wings.rsi
+  - sprite: _CE/Mobs/Customization/carrin_wings.rsi
     state: 2_primary
-  - sprite: _CE/Mobs/Customization/Markings/carrin_wings.rsi
+  - sprite: _CE/Mobs/Customization/carrin_wings.rsi
     state: 2_secondary
 
 - type: marking
@@ -26,9 +26,9 @@
   markingCategory: Arms
   speciesRestriction: [ CECarrin]
   sprites:
-  - sprite: _CE/Mobs/Customization/Markings/carrin_wings.rsi
+  - sprite: _CE/Mobs/Customization/carrin_wings.rsi
     state: 3_primary
-  - sprite: _CE/Mobs/Customization/Markings/carrin_wings.rsi
+  - sprite: _CE/Mobs/Customization/carrin_wings.rsi
     state: 3_secondary
 
 - type: marking
@@ -37,9 +37,9 @@
   markingCategory: Arms
   speciesRestriction: [ CECarrin]
   sprites:
-  - sprite: _CE/Mobs/Customization/Markings/carrin_wings.rsi
+  - sprite: _CE/Mobs/Customization/carrin_wings.rsi
     state: 4_primary
-  - sprite: _CE/Mobs/Customization/Markings/carrin_wings.rsi
+  - sprite: _CE/Mobs/Customization/carrin_wings.rsi
     state: 4_secondary
 
 - type: marking
@@ -48,9 +48,9 @@
   markingCategory: Arms
   speciesRestriction: [ CECarrin]
   sprites:
-  - sprite: _CE/Mobs/Customization/Markings/carrin_wings.rsi
+  - sprite: _CE/Mobs/Customization/carrin_wings.rsi
     state: 5_primary
-  - sprite: _CE/Mobs/Customization/Markings/carrin_wings.rsi
+  - sprite: _CE/Mobs/Customization/carrin_wings.rsi
     state: 5_secondary
 
 - type: marking
@@ -59,9 +59,9 @@
   markingCategory: Arms
   speciesRestriction: [ CECarrin]
   sprites:
-  - sprite: _CE/Mobs/Customization/Markings/carrin_wings.rsi
+  - sprite: _CE/Mobs/Customization/carrin_wings.rsi
     state: 6_primary
-  - sprite: _CE/Mobs/Customization/Markings/carrin_wings.rsi
+  - sprite: _CE/Mobs/Customization/carrin_wings.rsi
     state: 6_secondary
 
 - type: marking
@@ -70,5 +70,5 @@
   markingCategory: Arms
   speciesRestriction: [ CECarrin]
   sprites:
-  - sprite: _CE/Mobs/Customization/Markings/carrin_wings.rsi
+  - sprite: _CE/Mobs/Customization/carrin_wings.rsi
     state: 7

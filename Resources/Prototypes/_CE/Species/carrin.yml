@@ -5,9 +5,9 @@
   prototype: CEMobCarrin
   sprites: CEMobCarrinSprites
   markingLimits: CEMobCarrinMarkingLimits
-  dollPrototype: CEMobCarrinDummy
+  dollPrototype: CEMobCarcatDummy
   skinColoration: Hues
-  defaultSkinTone: "#313131"
+  defaultSkinTone: "#edd9cc"
   maleFirstNames: CE_Names_Carrin_Male_First
   femaleFirstNames: CE_Names_Carrin_Female_First
   lastNames: CE_Names_Carrin_Last
