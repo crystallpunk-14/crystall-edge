@@ -90,7 +90,7 @@ public sealed class CERecyclerSystem : CESharedRecyclerSystem
             _material.EjectAllMaterial(ent.Owner, spawnPos, materialStorage);
         }
 
-        _destructible.DestroyEntity(other);
+        //_destructible.DestroyEntity(other);
         _transform.SetCoordinates(other, spawnPos); //To prevent double reclaiming
     }
 }
