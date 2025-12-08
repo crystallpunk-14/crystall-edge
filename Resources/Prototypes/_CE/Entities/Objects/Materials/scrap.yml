@@ -3,6 +3,7 @@
   parent: BaseItem
   name: iron scrap
   description: Crooked pieces of iron. Only to be melted down.
+  categories: [ ForkFiltered ]
   suffix: 1
   components:
   - type: Item
@@ -47,6 +48,7 @@
   parent: BaseItem
   name: brass scrap
   description: Crooked pieces of brass. The secret of producing this material has been lost. Only ancient ruins remain as a source of this valuable metal.
+  categories: [ ForkFiltered ]
   suffix: 1
   components:
   - type: Item
