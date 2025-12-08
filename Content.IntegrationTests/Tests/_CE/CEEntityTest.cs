@@ -1,8 +1,8 @@
+#nullable enable
+using System.Collections.Generic;
 using Robust.Shared.Prototypes;
 
 namespace Content.IntegrationTests.Tests._CE;
-
-#nullable enable
 
 [TestFixture]
 public sealed class CEEntityTest
@@ -22,6 +22,12 @@ public sealed class CEEntityTest
                 if (!protoManager.TryIndex<EntityCategoryPrototype>("ForkFiltered", out var indexedFilter))
                     return;
 
+                var ignoredProto = new HashSet<string> //This is vanilla chief engineer items that we dont wanna test
+                {
+                    "CEPDA",
+                    "CEIDCard",
+                };
+
                 foreach (var proto in protoManager.EnumeratePrototypes<EntityPrototype>())
                 {
                     if (!proto.ID.StartsWith("CE"))
@@ -30,7 +36,11 @@ public sealed class CEEntityTest
                     if (proto.Abstract || proto.HideSpawnMenu)
                         continue;
 
-                    Assert.That(proto.Categories.Contains(indexedFilter), $"CE fork proto: {proto} does not marked abstract, or have a HideSpawnMenu or ForkFiltered category");
+                    if (ignoredProto.Contains(proto.ID))
+                        continue;
+
+                    if (!proto.Categories.Contains(indexedFilter))
+                        Assert.Fail($"EntityPrototype: {proto} is not marked abstract, or does not have a HideSpawnMenu or ForkFiltered category");
                 }
             });
         });

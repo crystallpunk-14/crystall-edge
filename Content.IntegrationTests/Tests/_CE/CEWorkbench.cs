@@ -1,11 +1,10 @@
+#nullable enable
 using Content.Server.Cargo.Systems;
 using Content.Shared._CE.Workbench.Prototypes;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 
 namespace Content.IntegrationTests.Tests._CE;
-
-#nullable enable
 
 [TestFixture]
 public sealed class CEWorkbench
@@ -42,7 +41,8 @@ public sealed class CEWorkbench
                     resourcePrice = Math.Round(resourcePrice, 3);
                     resultPrice = Math.Round(resultPrice, 3);
 
-                    if (resourcePrice == 0 && resultPrice == 0)
+                    const double epsilon = 0.0001;
+                    if (Math.Abs(resourcePrice) < epsilon && Math.Abs(resultPrice) < epsilon)
                         continue;
 
                     var minLimit = resourcePrice;

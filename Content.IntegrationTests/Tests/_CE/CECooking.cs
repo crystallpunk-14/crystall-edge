@@ -3,6 +3,7 @@
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
 
+#nullable enable
 using System.Collections.Generic;
 using System.Linq;
 using Content.Shared._CE.Cooking;
@@ -14,8 +15,6 @@ using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 
 namespace Content.IntegrationTests.Tests._CE;
-
-#nullable enable
 
 [TestFixture]
 public sealed class CECooking
@@ -64,7 +63,7 @@ public sealed class CECooking
                     if (selectedRecipe != recipe)
                     {
                         Assert.Fail($"The {recipe.ID} recipe is impossible to cook! " +
-                                    $"Instead, the following dish was prepared: ${selectedRecipe?.ID ?? "NULL"} " +
+                                    $"Instead, the following dish was prepared: {selectedRecipe?.ID ?? "NULL"} " +
                                     $"\nRecipe complexity: {complexity}, selected recipe complexity: {selectedRecipeComplexity}.");
                     }
                 }
