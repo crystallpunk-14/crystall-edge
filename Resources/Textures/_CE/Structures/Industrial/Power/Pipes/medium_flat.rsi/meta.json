@@ -21,6 +21,14 @@
           ]
         },
         {
+            "name": "delayer",
+            "directions": 4
+        },
+        {
+            "name": "delayer_light",
+            "directions": 4
+        },
+        {
             "name": "pipe_0",
             "directions": 4
         },

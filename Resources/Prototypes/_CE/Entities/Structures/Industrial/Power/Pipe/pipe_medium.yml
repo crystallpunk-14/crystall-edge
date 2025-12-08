@@ -7,6 +7,8 @@
   placement:
     mode: SnapgridCenter
   components:
+  - type: Icon
+    sprite: _CE/Structures/Industrial/Power/Pipes/medium_flat.rsi
   - type: PlacementReplacement
     key: pipe_medium
   - type: CEPipeVisualizer
@@ -19,13 +21,12 @@
   parent: CEPipeBrassMediumBase
   name: small brass pipe
   components:
+  - type: Icon
+    state: pipe_0
   - type: Sprite
     sprite: _CE/Structures/Industrial/Power/Pipes/medium_flat.rsi
     state: pipe_15
     drawdepth: ThinWire
-  - type: Icon
-    sprite: _CE/Structures/Industrial/Power/Pipes/medium_flat.rsi
-    state: pipe_15
   - type: Destructible
     thresholds:
     - trigger:
@@ -108,8 +109,10 @@
   suffix: Valve, Off
   components:
   - type: InteractionOutline
-  - type: CEToggleableCable
+  - type: CEToggleableConnector
     active: false
+  - type: Icon
+    state: valve_off
   - type: Sprite
     layers:
     - state: pipe_15
@@ -120,10 +123,26 @@
       map: ["valve_light"]
   - type: NodeContainer
     nodes:
-      power:
-        !type:CableNode
+      center:
+        !type:CEConnectorCenterNode
         nodeGroupID: Apc
         active: false
+      north:
+        !type:CEConnectorEdgeNode
+        direction: North
+        nodeGroupID: Apc
+      south:
+        !type:CEConnectorEdgeNode
+        direction: South
+        nodeGroupID: Apc
+      east:
+        !type:CEConnectorEdgeNode
+        direction: East
+        nodeGroupID: Apc
+      west:
+        !type:CEConnectorEdgeNode
+        direction: West
+        nodeGroupID: Apc
   - type: UseDelay
   - type: GenericVisualizer
     visuals:
@@ -164,7 +183,9 @@
   parent: CEPipeBrassMediumValve
   suffix: Valve, On
   components:
-  - type: CEToggleableCable
+  - type: Icon
+    state: valve_on
+  - type: CEToggleableConnector
     active: true
   - type: Sprite
     layers:
@@ -176,10 +197,26 @@
       map: ["valve_light"]
   - type: NodeContainer
     nodes:
-      power:
-        !type:CableNode
+      center:
+        !type:CEConnectorCenterNode
         nodeGroupID: Apc
         active: true
+      north:
+        !type:CEConnectorEdgeNode
+        direction: North
+        nodeGroupID: Apc
+      south:
+        !type:CEConnectorEdgeNode
+        direction: South
+        nodeGroupID: Apc
+      east:
+        !type:CEConnectorEdgeNode
+        direction: East
+        nodeGroupID: Apc
+      west:
+        !type:CEConnectorEdgeNode
+        direction: West
+        nodeGroupID: Apc
 
 # Broken
 
@@ -248,3 +285,79 @@
     defaultTarget: CEPipeBrassMedium
   - type: CEPipeVisualizer
     statePrefix: broken_pipe_
+
+# Delayer
+
+- type: entity
+  id: CEPipeBrassMediumDelayer
+  parent: CEPipeBrassMedium
+  name: small pipe delayer
+  description: A small valve installed on the pipe allows the incoming energy to be delayed for a short period of time. Useful for controlling the timing of energy supply.
+  suffix: 0.5s
+  components:
+  - type: InteractionOutline
+  - type: CEDelayedConnector
+    active: false
+  - type: Icon
+    state: delayer
+  - type: Sprite
+    layers:
+    - state: pipe_15
+    - state: delayer
+    - state: delayer_light
+      shader: unshaded
+      visible: false
+      map: ["delayer_light"]
+  - type: NodeContainer
+    nodes:
+      center:
+        !type:CEConnectorCenterNode
+        nodeGroupID: Apc
+        active: false
+      north:
+        !type:CEConnectorEdgeNode
+        direction: North
+        nodeGroupID: Apc
+      south:
+        !type:CEConnectorEdgeNode
+        direction: South
+        nodeGroupID: Apc
+      east:
+        !type:CEConnectorEdgeNode
+        direction: East
+        nodeGroupID: Apc
+      west:
+        !type:CEConnectorEdgeNode
+        direction: West
+        nodeGroupID: Apc
+  - type: GenericVisualizer
+    visuals:
+      enum.CEToggleableCableVisuals.Enabled:
+        delayer_light:
+          True: {visible: true}
+          False: {visible: false}
+  - type: Construction
+    graph: CEPipeBrassMedium
+    node: CEPipeBrassMediumDelayer
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 25
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEBrassScrap1:
+            min: 1
+            max: 1
+          CEIronScrap1:
+            min: 1
+            max: 1
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:ChangeConstructionNodeBehavior
+        node: CEPipeBrassMediumBroken
+  - type: PowerConsumer
+    voltage: Apc
+    drawRate: 0.1

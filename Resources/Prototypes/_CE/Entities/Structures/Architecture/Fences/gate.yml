@@ -76,6 +76,6 @@
             max: 2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  #- type: Construction
-  #  graph: CEFenceGateWooden
-  #  node: CEFenceGateWooden
+  - type: Construction
+    graph: CEFenceGateWooden
+    node: CEFenceGateWooden

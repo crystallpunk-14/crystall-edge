@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/05/2025 17:26:15
-  entityCount: 227
+  time: 12/07/2025 17:55:02
+  entityCount: 229
 maps:
 - 1
 grids:
@@ -162,23 +162,21 @@ entities:
       parent: 1
 - proto: CEFenceBigWooden
   entities:
+  - uid: 90
+    components:
+    - type: Transform
+      pos: 8.5,2.5
+      parent: 1
+  - uid: 131
+    components:
+    - type: Transform
+      pos: 15.5,2.5
+      parent: 1
   - uid: 155
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 8.5,-0.5
-      parent: 1
-  - uid: 156
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 8.5,2.5
-      parent: 1
-  - uid: 157
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 15.5,2.5
       parent: 1
   - uid: 158
     components:
@@ -206,12 +204,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: -5.5,-14.5
       parent: 1
-  - uid: 90
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -4.5,-13.5
-      parent: 1
   - uid: 127
     components:
     - type: Transform
@@ -229,16 +221,22 @@ entities:
       rot: 3.141592653589793 rad
       pos: -7.5,-14.5
       parent: 1
-  - uid: 131
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -9.5,-13.5
-      parent: 1
   - uid: 132
     components:
     - type: Transform
       rot: 3.141592653589793 rad
+      pos: -9.5,-14.5
+      parent: 1
+  - uid: 156
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -9.5,-13.5
+      parent: 1
+  - uid: 157
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
       pos: -9.5,-14.5
       parent: 1
   - uid: 161
@@ -275,6 +273,18 @@ entities:
     components:
     - type: Transform
       pos: -4.5,-7.5
+      parent: 1
+  - uid: 228
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -4.5,-13.5
+      parent: 1
+  - uid: 229
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -4.5,-14.5
       parent: 1
 - proto: CEIronDoor
   entities:

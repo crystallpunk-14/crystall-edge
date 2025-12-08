@@ -4,7 +4,7 @@
   graph: CEWallmountBarShelf
   startNode: start
   targetNode: CEWallmountBarShelf
-  category: construction-category-structures
+  category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
