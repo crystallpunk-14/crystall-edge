@@ -25,6 +25,7 @@
         hard: false
         layer:
         - FullTileLayer
+        - ItemMask
       collision:
         density: 800
         shape:

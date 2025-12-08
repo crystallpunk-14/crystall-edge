@@ -1,4 +1,5 @@
 using Content.Server.Audio;
+using Content.Server.Destructible;
 using Content.Server.Materials;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
@@ -22,6 +23,7 @@ public sealed class CERecyclerSystem : CESharedRecyclerSystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly AmbientSoundSystem _ambient = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly DestructibleSystem _destructible = default!;
 
     private EntityQuery<PowerConsumerComponent> _powerQuery;
 
@@ -86,6 +88,7 @@ public sealed class CERecyclerSystem : CESharedRecyclerSystem
                 _material.TryChangeMaterialAmount((ent.Owner, materialStorage), physComp.MaterialComposition);
 
             _material.EjectAllMaterial(ent.Owner, spawnPos, materialStorage);
+            _destructible.DestroyEntity(other);
         }
 
         _transform.SetCoordinates(other, spawnPos); //To prevent double reclaiming
