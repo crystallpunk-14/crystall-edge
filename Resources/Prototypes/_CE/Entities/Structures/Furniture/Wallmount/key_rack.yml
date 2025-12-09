@@ -1,7 +1,6 @@
 - type: entity
   id: CEWallmountKeyRack
   name: key rack
-  suffix: 1
   parent: CEBaseWallmount
   description: Wooden wall board with slots for keys.
   components:

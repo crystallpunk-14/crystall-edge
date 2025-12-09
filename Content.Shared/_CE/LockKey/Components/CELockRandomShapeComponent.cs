@@ -12,5 +12,5 @@ public sealed partial class CELockRandomShapeComponent : Component
     /// Length of the shape to be generated.
     /// </summary>
     [DataField(required: true)]
-    public int Length = 3;
+    public int Length;
 }
