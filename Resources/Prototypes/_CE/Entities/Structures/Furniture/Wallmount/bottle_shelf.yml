@@ -19,7 +19,7 @@
     - 0,0,5,3
     maxItemSize: Normal
     storageInsertSound:
-      path: /Audio/Items/bottle_clunk2.ogg
+      path: /Audio/Items/bottle_clunk_2.ogg
       params:
         variation: 0.05
     storageRemoveSound:
