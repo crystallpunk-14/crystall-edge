@@ -2,20 +2,13 @@ using Content.Shared._CE.LockKey;
 using Content.Shared._CE.LockKey.Components;
 using Content.Shared.Station.Components;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Random;
 
 namespace Content.Server._CE.LockKey;
 
-public sealed partial class CEKeyDistributionSystem : EntitySystem
+public sealed partial class CELockKeySystem
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly CEKeyholeGenerationSystem _keyGeneration = default!;
-
-    public override void Initialize()
+    private void InitializeAbstractKey()
     {
-        base.Initialize();
-
         SubscribeLocalEvent<CEAbstractKeyComponent, MapInitEvent>(OnMapInit);
     }
 
@@ -55,7 +48,7 @@ public sealed partial class CEKeyDistributionSystem : EntitySystem
                 continue;
             }
 
-            _keyGeneration.SetShape((ent, key), indexedKey);
+            TrySetShapeFromProto((ent, key), indexedKey);
             distribution.Keys.Remove(indexedKey);
             return true;
         }

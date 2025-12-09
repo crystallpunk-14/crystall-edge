@@ -10,7 +10,7 @@ namespace Content.Shared._CE.LockKey.Components;
 public sealed partial class CEKeyComponent : Component
 {
     [DataField, AutoNetworkedField]
-    public List<int>? LockShape = null;
+    public List<int>? Shape = null;
 
     /// <summary>
     /// If not null, automatically generates a key for the specified category on initialization. This ensures that the lock will be opened with a key of the same category.

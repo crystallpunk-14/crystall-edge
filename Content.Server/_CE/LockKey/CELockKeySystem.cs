@@ -8,21 +8,25 @@ using Robust.Shared.Random;
 
 namespace Content.Server._CE.LockKey;
 
-public sealed partial class CEKeyholeGenerationSystem : EntitySystem
+public sealed partial class CELockKeySystem : CESharedLockKeySystem
 {
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly LabelSystem _label = default!;
 
-    private Dictionary<ProtoId<CELockTypePrototype>, List<int>> _roundKeyData = new(); //TODO: it won't survive saving and loading. This data must be stored in some component.
+    //TODO: it won't survive saving and loading. This data must be stored in some component.
+    private Dictionary<ProtoId<CELockTypePrototype>, List<int>> _roundKeyData = new();
 
     public override void Initialize()
     {
         base.Initialize();
+        InitializeAbstractKey();
 
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundEnd);
 
         SubscribeLocalEvent<CELockComponent, MapInitEvent>(OnLockInit);
+        SubscribeLocalEvent<CELockRandomShapeComponent, MapInitEvent>(OnLockRandomInit);
+
         SubscribeLocalEvent<CEKeyComponent, MapInitEvent>(OnKeyInit);
     }
 
@@ -36,7 +40,7 @@ public sealed partial class CEKeyholeGenerationSystem : EntitySystem
     {
         if (keyEnt.Comp.AutoGenerateShape != null)
         {
-            SetShape(keyEnt, keyEnt.Comp.AutoGenerateShape.Value);
+            TrySetShapeFromProto(keyEnt, keyEnt.Comp.AutoGenerateShape.Value);
         }
     }
 
@@ -44,61 +48,60 @@ public sealed partial class CEKeyholeGenerationSystem : EntitySystem
     {
         if (lockEnt.Comp.AutoGenerateShape != null)
         {
-            SetShape(lockEnt, lockEnt.Comp.AutoGenerateShape.Value);
+            TrySetShapeFromProto(lockEnt, lockEnt.Comp.AutoGenerateShape.Value);
         }
-        else if (lockEnt.Comp.AutoGenerateRandomShape != null)
+    }
+
+    private void OnLockRandomInit(Entity<CELockRandomShapeComponent> ent, ref MapInitEvent args)
+    {
+        var shape = new List<int>();
+        for (var i = 0; i < ent.Comp.Lenght; i++)
         {
-            SetRandomShape(lockEnt, lockEnt.Comp.AutoGenerateRandomShape.Value);
+            shape.Add(_random.Next(-DepthComplexity, DepthComplexity));
         }
+
+        TrySetShape((Entity<CELockComponent?>)ent.Owner, shape);
     }
     #endregion
 
     private List<int> GetKeyLockData(ProtoId<CELockTypePrototype> category)
     {
-        if (_roundKeyData.ContainsKey(category))
-            return new List<int>(_roundKeyData[category]);
+        if (_roundKeyData.TryGetValue(category, out var value))
+            return new List<int>(value);
 
         var newData = GenerateNewUniqueLockData(category);
         _roundKeyData[category] = newData;
         return newData;
     }
 
-    public void SetShape(Entity<CEKeyComponent> keyEnt, ProtoId<CELockTypePrototype> type)
+    private bool TrySetShapeFromProto(Entity<CEKeyComponent> keyEnt, ProtoId<CELockTypePrototype> type)
     {
-        keyEnt.Comp.LockShape = GetKeyLockData(type);
-        DirtyField(keyEnt, keyEnt.Comp, nameof(CEKeyComponent.LockShape));
+        if (!TrySetShape((keyEnt, keyEnt.Comp), GetKeyLockData(type)))
+            return false;
 
         var indexedType = _proto.Index(type);
         if (indexedType.Name is not null)
             _label.Label(keyEnt, Loc.GetString(indexedType.Name.Value));
+
+        return true;
     }
 
-    public void SetShape(Entity<CELockComponent> lockEnt, ProtoId<CELockTypePrototype> type)
+    public bool TrySetShapeFromProto(Entity<CELockComponent> lockEnt, ProtoId<CELockTypePrototype> type)
     {
-        lockEnt.Comp.LockShape = GetKeyLockData(type);
+        if (!TrySetShape((lockEnt, lockEnt.Comp), GetKeyLockData(type)))
+            return false;
 
         var indexedType = _proto.Index(type);
         if (indexedType.Name is not null)
             _label.Label(lockEnt, Loc.GetString(indexedType.Name.Value));
 
-        DirtyField(lockEnt, lockEnt.Comp, nameof(CELockComponent.LockShape));
+        return true;
     }
 
-    public void SetRandomShape(Entity<CELockComponent> lockEnt, int complexity)
-    {
-        lockEnt.Comp.LockShape = new List<int>();
-        for (var i = 0; i < complexity; i++)
-        {
-            lockEnt.Comp.LockShape.Add(_random.Next(-CESharedLockKeySystem.DepthComplexity, CESharedLockKeySystem.DepthComplexity));
-        }
-
-        DirtyField(lockEnt, lockEnt.Comp, nameof(CELockComponent.LockShape));
-    }
-
-    private List<int> GenerateNewUniqueLockData(ProtoId<CELockTypePrototype> category)
+    private List<int> GenerateNewUniqueLockData(ProtoId<CELockTypePrototype> type)
     {
         List<int> newKeyData = new();
-        var categoryData = _proto.Index(category);
+        var categoryData = _proto.Index(type);
         var iteration = 0;
 
         while (true)
@@ -107,7 +110,7 @@ public sealed partial class CEKeyholeGenerationSystem : EntitySystem
             newKeyData = new List<int>();
             for (var i = 0; i < categoryData.Complexity; i++)
             {
-                newKeyData.Add(_random.Next(-CESharedLockKeySystem.DepthComplexity, CESharedLockKeySystem.DepthComplexity));
+                newKeyData.Add(_random.Next(-DepthComplexity, DepthComplexity));
             }
 
             // Identity Check shit code
@@ -123,15 +126,13 @@ public sealed partial class CEKeyholeGenerationSystem : EntitySystem
             }
             if (unique)
                 return newKeyData;
-            else
-                iteration++;
+
+            iteration++;
 
             if (iteration > 100)
-            {
                 break;
-            }
         }
-        Log.Error("The unique key for CPLockSystem could not be generated!");
+        Log.Error($"The unique key {type} for CELockKeySystem could not be generated!");
         return newKeyData; //FUCK
     }
 }
