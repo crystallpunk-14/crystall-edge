@@ -27,7 +27,7 @@
   - type: Sprite
     state: key_iron
   - type: CEKey
-    lockShape:
+    shape:
     - 2
     - 2
     - 2

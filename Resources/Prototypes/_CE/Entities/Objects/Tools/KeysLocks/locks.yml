@@ -25,12 +25,12 @@
   - type: Sprite
     state: lock_iron
   - type: CELock
-    lockShape:
+    shape:
     - 2
     - 2
     - 2
     - 2
     - 2
-  #- type: PhysicalComposition
-  #  materialComposition:
-  #    CEIron: 10
+  - type: PhysicalComposition
+    materialComposition:
+      CEIron: 10
