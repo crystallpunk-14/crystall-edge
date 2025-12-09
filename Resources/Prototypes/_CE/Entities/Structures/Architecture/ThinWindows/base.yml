@@ -4,7 +4,7 @@
   abstract: true
   categories: [ ForkFiltered ]
   name: thin window
-  description: TODO
+  description: A narrow window that provides visibility while maintaining structure.
   placement:
     mode: SnapgridCenter
     snap:
