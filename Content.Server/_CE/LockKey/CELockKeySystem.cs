@@ -20,7 +20,6 @@ public sealed partial class CELockKeySystem : CESharedLockKeySystem
     public override void Initialize()
     {
         base.Initialize();
-        InitializeAbstractKey();
 
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundEnd);
 
@@ -54,13 +53,15 @@ public sealed partial class CELockKeySystem : CESharedLockKeySystem
 
     private void OnLockRandomInit(Entity<CELockRandomShapeComponent> ent, ref MapInitEvent args)
     {
+        if (!TryComp<CELockComponent>(ent, out var lockComp))
+            return;
         var shape = new List<int>();
         for (var i = 0; i < ent.Comp.Length; i++)
         {
             shape.Add(_random.Next(-DepthComplexity, DepthComplexity));
         }
 
-        TrySetShape((Entity<CELockComponent?>)ent.Owner, shape);
+        TrySetShape((ent, lockComp), shape);
     }
     #endregion
 

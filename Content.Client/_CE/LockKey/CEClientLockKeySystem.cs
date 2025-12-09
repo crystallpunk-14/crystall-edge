@@ -35,9 +35,6 @@ public sealed class CEKeyStatusControl : Control
     {
         base.FrameUpdate(args);
 
-        if (_parent.Comp.Shape is null)
-            return;
-
         var sb = new StringBuilder("(");
         foreach (var item in _parent.Comp.Shape)
         {
