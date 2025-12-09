@@ -68,9 +68,12 @@
     footstepSoundCollection:
       collection: CEStepCarrin
       params:
-        volume: 0.1
+        volume: -15
+  - type: MobMover
+    stepSoundMoveDistanceRunning: 1
+    stepSoundMoveDistanceWalking: 0.75
   - type: Body
-    prototype: CECarcat #TODO: Carrin body
+    prototype: CECarrin
     requiredLegs: 2
   - type: MeleeWeapon
     soundHit:
@@ -81,7 +84,7 @@
       types:
         Slash: 5 # 5 slash
   - type: Inventory
-    templateId: CECarcat # Cant wear shoes
+    templateId: CECarrin # Cant wear shoes, mask and gloves
     speciesId: carrin
     displacements:
       belt:

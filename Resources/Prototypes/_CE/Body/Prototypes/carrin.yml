@@ -1,0 +1,49 @@
+- type: body
+  id: CECarrin
+  name: human
+  root: torso
+  slots:
+    head:
+      part: CEHeadHuman
+      connections:
+      - torso
+      organs:
+        brain: OrganHumanBrain
+        eyes: OrganHumanEyes
+    torso:
+      part: TorsoHuman
+      connections:
+      - right_arm
+      - left_arm
+      - right_leg
+      - left_leg
+      organs:
+        lungs: OrganAnimalLungs
+        stomach: OrganAnimalStomach
+        liver: OrganAnimalLiver
+        heart: OrganAnimalHeart
+        kidneys: OrganAnimalKidneys
+    right_arm:
+      part: CERightArmHuman
+      connections:
+      - right_hand
+    left_arm:
+      part: CELeftArmHuman
+      connections:
+      - left_hand
+    right_hand:
+      part: CERightHandHuman
+    left_hand:
+      part: CELeftHandHuman
+    right_leg:
+      part: CERightLegHuman
+      connections:
+      - right_foot
+    left_leg:
+      part: CELeftLegHuman
+      connections:
+      - left_foot
+    right_foot:
+      part: CERightFootHuman
+    left_foot:
+      part: CELeftFootHuman
