@@ -182,7 +182,7 @@ public abstract partial class CESharedLockKeySystem : EntitySystem
         }
     }
 
-    private void TryUseKeyOnLock(EntityUid user, Entity<CELockComponent> target, Entity<CEKeyComponent> key)
+    private void UseKeyOnLock(EntityUid user, Entity<CELockComponent> target, Entity<CEKeyComponent> key)
     {
         if (!TryComp<LockComponent>(target, out var lockComp))
             return;

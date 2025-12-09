@@ -12,7 +12,7 @@ public abstract partial class CESharedLockKeySystem
         SubscribeLocalEvent<CEKeyComponent, GetVerbsEvent<UtilityVerb>>(GetKeysVerbs);
         SubscribeLocalEvent<CEKeyFileComponent, GetVerbsEvent<UtilityVerb>>(GetKeyFileVerbs);
         SubscribeLocalEvent<CELockpickComponent, GetVerbsEvent<UtilityVerb>>(GetLockpickVerbs);
-        SubscribeLocalEvent<CELockEditorComponent, GetVerbsEvent<UtilityVerb>>(GetLockEditerVerbs);
+        SubscribeLocalEvent<CELockEditorComponent, GetVerbsEvent<UtilityVerb>>(GetLockEditorVerbs);
     }
 
     private void GetKeysVerbs(Entity<CEKeyComponent> key, ref GetVerbsEvent<UtilityVerb> args)
@@ -33,7 +33,7 @@ public abstract partial class CESharedLockKeySystem
         {
             Act = () =>
             {
-                TryUseKeyOnLock(user, new Entity<CELockComponent>(target, ceLockComponent), key);
+                UseKeyOnLock(user, new Entity<CELockComponent>(target, ceLockComponent), key);
             },
             IconEntity = GetNetEntity(key),
             Text = Loc.GetString(
@@ -145,7 +145,7 @@ public abstract partial class CESharedLockKeySystem
         }
     }
 
-    private void GetLockEditerVerbs(Entity<CELockEditorComponent> ent, ref GetVerbsEvent<UtilityVerb> args)
+    private void GetLockEditorVerbs(Entity<CELockEditorComponent> ent, ref GetVerbsEvent<UtilityVerb> args)
     {
         if (!args.CanInteract || !args.CanAccess)
             return;

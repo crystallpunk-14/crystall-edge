@@ -34,9 +34,7 @@ public abstract partial class CESharedLockKeySystem
             return;
 
         args.Handled = true;
-
-        TryUseKeyOnLock(args.User, new Entity<CELockComponent>(args.Target.Value, ceLockComponent), key);
-        args.Handled = true;
+        UseKeyOnLock(args.User, new Entity<CELockComponent>(args.Target.Value, ceLockComponent), key);
     }
 
     private void OnKeyRingInteract(Entity<CEKeyRingComponent> keyring, ref AfterInteractEvent args)
@@ -75,7 +73,7 @@ public abstract partial class CESharedLockKeySystem
             if (!keyComp.Shape.SequenceEqual(ceLockComponent.Shape))
                 continue;
 
-            TryUseKeyOnLock(args.User,
+            UseKeyOnLock(args.User,
                 new Entity<CELockComponent>(args.Target.Value, ceLockComponent),
                 new Entity<CEKeyComponent>(key, keyComp));
             args.Handled = true;
@@ -103,8 +101,6 @@ public abstract partial class CESharedLockKeySystem
         if (!_ceLockQuery.TryComp(args.Target, out var targetCeLockComp))
             return;
 
-        args.Handled = true;
-
         if (targetCeLockComp.Shape is not null)
         {
             _popup.PopupPredicted(Loc.GetString("ce-lock-insert-fail-have-lock",
@@ -114,9 +110,9 @@ public abstract partial class CESharedLockKeySystem
             return;
         }
 
-        //Ok, all checks passed, we ready to install lock into entity
-
         args.Handled = true;
+
+        //Ok, all checks passed, we ready to install lock into entity
 
         _popup.PopupPredicted(Loc.GetString("ce-lock-insert-start", ("name", MetaData(args.Target.Value).EntityName), ("player", Identity.Name(args.User, EntityManager))),
             ent,

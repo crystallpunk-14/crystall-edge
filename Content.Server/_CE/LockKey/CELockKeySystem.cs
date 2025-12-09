@@ -55,7 +55,7 @@ public sealed partial class CELockKeySystem : CESharedLockKeySystem
     private void OnLockRandomInit(Entity<CELockRandomShapeComponent> ent, ref MapInitEvent args)
     {
         var shape = new List<int>();
-        for (var i = 0; i < ent.Comp.Lenght; i++)
+        for (var i = 0; i < ent.Comp.Length; i++)
         {
             shape.Add(_random.Next(-DepthComplexity, DepthComplexity));
         }
