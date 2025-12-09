@@ -24,7 +24,7 @@
     fillBaseName: ring
   - type: Storage
     grid:
-    - 0,0,5,1
+    - 0,0,2,1
     maxItemSize: Small
     whitelist:
       tags:

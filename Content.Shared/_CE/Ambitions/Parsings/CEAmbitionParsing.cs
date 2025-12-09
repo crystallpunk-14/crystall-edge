@@ -1,8 +1,10 @@
 using Content.Shared._CE.Cooking.Prototypes;
 using Content.Shared._CE.LockKey;
+using Content.Shared._CE.LockKey.Components;
 using Content.Shared.Dataset;
 using Content.Shared.Destructible.Thresholds;
 using Content.Shared.Humanoid.Prototypes;
+using Content.Shared.Lock;
 using Content.Shared.Mind;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Roles;
@@ -186,6 +188,16 @@ public sealed partial class RandomLocation : CEAmbitionParsing
     public override string? GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
     {
         List<CELockTypePrototype> all = new();
+
+        var query = entManager.EntityQueryEnumerator<CELockComponent>();
+        while (query.MoveNext(out var uid, out var lockComp))
+        {
+            if (lockComp.CanEmbedded)
+                continue;
+
+            if (lockComp.AutoGenerateShape is null)
+                continue;
+        }
 
         foreach (var lockProto in protoManager.EnumeratePrototypes<CELockTypePrototype>())
         {
