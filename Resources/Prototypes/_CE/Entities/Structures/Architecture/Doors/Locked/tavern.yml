@@ -1,5 +1,5 @@
 - type: entity
-  parent: CEWoodenDoor
+  parent: CEWoodenDoorWindowed
   id: CEWoodenDoorTavernHall
   suffix: Tavern Hall
   components:
@@ -11,6 +11,23 @@
 - type: entity
   parent:
   - CEWoodenDoorTavernHall
-  - CEWoodenDoorMirrored
+  - CEWoodenDoorWindowedMirrored
   id: CEWoodenDoorTavernHallMirrored
   suffix: Tavern Hall, Mirrored
+
+- type: entity
+  parent: CEWoodenDoor
+  id: CEWoodenDoorTavernStaff
+  suffix: Tavern Staff
+  components:
+  - type: CELock
+    autoGenerateShape: TavernStaff
+  - type: Lock
+    locked: true
+
+- type: entity
+  parent:
+    - CEWoodenDoorTavernStaff
+    - CEWoodenDoorMirrored
+  id: CEWoodenDoorTavernStaffMirrored
+  suffix: Tavern Staff, Mirrored

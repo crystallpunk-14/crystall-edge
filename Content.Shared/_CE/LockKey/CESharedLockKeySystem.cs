@@ -3,6 +3,7 @@ using System.Text;
 using Content.Shared._CE.LockKey.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Doors.Components;
+using Content.Shared.Doors.Systems;
 using Content.Shared.Examine;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
@@ -27,6 +28,7 @@ public abstract partial class CESharedLockKeySystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly UseDelaySystem _useDelay = default!;
+    [Dependency] private readonly SharedDoorSystem _door = default!;
 
     private EntityQuery<LockComponent> _lockQuery;
     private EntityQuery<CELockComponent> _ceLockQuery;
@@ -188,7 +190,10 @@ public abstract partial class CESharedLockKeySystem : EntitySystem
             return;
 
         if (_doorQuery.TryComp(target, out var doorComponent) && doorComponent.State == DoorState.Open)
-            return;
+        {
+            if (!_door.TryClose(target, doorComponent, user, true))
+                return;
+        }
 
         var keyShape = key.Comp.Shape;
         var lockShape = target.Comp.Shape;

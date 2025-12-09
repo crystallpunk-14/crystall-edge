@@ -8,63 +8,51 @@
     },
     "states": [
         {
-            "name": "bottleA-0",
-            "directions": 4
-        },
-        {
             "name": "shelf",
             "directions": 4
         },
         {
-            "name": "bottleA-1",
+            "name": "keys-0",
             "directions": 4
         },
         {
-            "name": "bottleA-2",
+            "name": "keys-1",
             "directions": 4
         },
         {
-            "name": "bottleA-3",
+            "name": "keys-2",
             "directions": 4
         },
         {
-            "name": "bottleA-4",
+            "name": "keys-3",
             "directions": 4
         },
         {
-            "name": "bottleA-5",
+            "name": "keys-4",
             "directions": 4
         },
         {
-            "name": "bottleA-6",
+            "name": "keys-5",
             "directions": 4
         },
         {
-            "name": "bottleB-0",
+            "name": "keys-6",
             "directions": 4
         },
         {
-            "name": "bottleB-1",
+            "name": "keys-7",
             "directions": 4
         },
         {
-            "name": "bottleB-2",
+            "name": "keys-8",
             "directions": 4
         },
         {
-            "name": "bottleB-3",
+            "name": "keys-9",
             "directions": 4
         },
         {
-            "name": "bottleB-4",
-            "directions": 4
-        },
-        {
-            "name": "bottleB-5",
-            "directions": 4
-        },
-        {
-            "name": "bottleB-6",
+            "name": "keys-10",
             "directions": 4
         }
     ]

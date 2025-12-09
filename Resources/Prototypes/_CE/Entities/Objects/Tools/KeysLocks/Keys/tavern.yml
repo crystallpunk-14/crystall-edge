@@ -5,3 +5,11 @@
   components:
   - type: CEKey
     autoGenerateShape: TavernHall
+
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyTavernStaff
+  suffix: Tavern Staff
+  components:
+  - type: CEKey
+    autoGenerateShape: TavernStaff

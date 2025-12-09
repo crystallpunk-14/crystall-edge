@@ -12,3 +12,18 @@
   conditions:
     - !type:TileNotBlocked
     - !type:CEWallRequired
+
+- type: construction
+  hide: false
+  id: CEWallmountKeyRack
+  graph: CEWallmountKeyRack
+  startNode: start
+  targetNode: CEWallmountKeyRack
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  canRotate: true
+  conditions:
+    - !type:TileNotBlocked
+    - !type:CEWallRequired
