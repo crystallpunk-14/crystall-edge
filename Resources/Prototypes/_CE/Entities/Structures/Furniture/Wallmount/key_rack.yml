@@ -15,6 +15,8 @@
     maxFillLevels: 11
     fillBaseName: keys
   - type: Storage
+    storageOpenSound: null
+    storageCloseSound: null
     grid:
     - 0,0,4,1
     maxItemSize: Tiny
