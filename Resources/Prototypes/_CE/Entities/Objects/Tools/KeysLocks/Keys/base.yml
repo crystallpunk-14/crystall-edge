@@ -33,16 +33,6 @@
     - 2
     - 2
     - 2
-  #- type: PhysicalComposition
-  #  materialComposition:
-  #    CEIron: 10
-
-- type: entity
-  parent: CEKeyIronBlank
-  id: CEKeyUniversal
-  name: omni key
-  suffix: Universal
-  categories: [ ForkFiltered, DoNotMap ]
-  components:
-  - type: CEKey
-  - type: CEKeyUniversal
+  - type: PhysicalComposition
+    materialComposition:
+      CEIron: 10
