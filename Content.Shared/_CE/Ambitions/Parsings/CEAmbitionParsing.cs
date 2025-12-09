@@ -187,7 +187,7 @@ public sealed partial class RandomLocation : CEAmbitionParsing
 {
     public override string? GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
     {
-        List<CELockTypePrototype> all = new();
+        List<ProtoId<CELockTypePrototype>> all = new();
 
         var query = entManager.EntityQueryEnumerator<CELockComponent>();
         while (query.MoveNext(out var uid, out var lockComp))
@@ -197,19 +197,21 @@ public sealed partial class RandomLocation : CEAmbitionParsing
 
             if (lockComp.AutoGenerateShape is null)
                 continue;
-        }
 
-        foreach (var lockProto in protoManager.EnumeratePrototypes<CELockTypePrototype>())
-        {
-            if (lockProto.Name is null)
+            if (all.Contains(lockComp.AutoGenerateShape.Value))
                 continue;
 
-            all.Add(lockProto);
+            all.Add(lockComp.AutoGenerateShape.Value);
         }
+
         if (all.Count == 0)
             return null;
 
-        return Loc.GetString(random.Pick(all).Name!);
+        var selected = random.Pick(all);
+        if (!protoManager.TryIndex(selected, out var prototype))
+            return null;
+
+        return Loc.GetString(prototype.Name!);
     }
 }
 
