@@ -57,17 +57,11 @@ public abstract partial class CESharedLockKeySystem
         if (!_ceLockQuery.TryComp(args.Target, out var ceLockComponent))
             return;
 
-        if (ceLockComponent.Shape == null)
-            return;
-
         args.Handled = true;
 
         foreach (var (key, _) in storageComp.StoredItems)
         {
             if (!_keyQuery.TryComp(key, out var keyComp))
-                continue;
-
-            if (keyComp.Shape == null)
                 continue;
 
             if (!keyComp.Shape.SequenceEqual(ceLockComponent.Shape))
@@ -97,18 +91,6 @@ public abstract partial class CESharedLockKeySystem
 
         if (!_lockQuery.TryComp(args.Target, out _))
             return;
-
-        if (!_ceLockQuery.TryComp(args.Target, out var targetCeLockComp))
-            return;
-
-        if (targetCeLockComp.Shape is not null)
-        {
-            _popup.PopupPredicted(Loc.GetString("ce-lock-insert-fail-have-lock",
-                    ("name", MetaData(args.Target.Value).EntityName)),
-                ent,
-                args.User);
-            return;
-        }
 
         args.Handled = true;
 

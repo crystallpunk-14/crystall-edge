@@ -11,7 +11,7 @@ namespace Content.Shared._CE.LockKey.Components;
 public sealed partial class CELockComponent : Component
 {
     [DataField, AutoNetworkedField]
-    public List<int>? Shape = null;
+    public List<int> Shape = new();
 
     /// <summary>
     /// On which element of the shape sequence the lock is now located. It's necessary for the mechanics of breaking and entering.

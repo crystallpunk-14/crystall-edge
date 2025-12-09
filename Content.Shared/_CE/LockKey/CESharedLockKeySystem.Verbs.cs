@@ -53,9 +53,6 @@ public abstract partial class CESharedLockKeySystem
         if (!_keyQuery.TryComp(args.Target, out var keyComp))
             return;
 
-        if (keyComp.Shape == null)
-            return;
-
         var target = args.Target;
         var user = args.User;
 
@@ -151,9 +148,6 @@ public abstract partial class CESharedLockKeySystem
             return;
 
         if (!_ceLockQuery.TryComp(args.Target, out var lockComp) || !lockComp.CanEmbedded)
-            return;
-
-        if (lockComp.Shape is null)
             return;
 
         var target = args.Target;

@@ -5,13 +5,9 @@ using Content.Shared.DoAfter;
 using Content.Shared.Doors.Components;
 using Content.Shared.Doors.Systems;
 using Content.Shared.Examine;
-using Content.Shared.IdentityManagement;
-using Content.Shared.Interaction;
 using Content.Shared.Lock;
 using Content.Shared.Popups;
-using Content.Shared.Storage;
 using Content.Shared.Timing;
-using Content.Shared.Verbs;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 using Robust.Shared.Serialization;
@@ -109,9 +105,6 @@ public abstract partial class CESharedLockKeySystem : EntitySystem
         if (args.Cancelled || args.Handled)
             return;
 
-        if (ent.Comp.Shape == null)
-            return;
-
         if (!_lockQuery.TryComp(ent, out var lockComp))
             return;
 
@@ -198,9 +191,6 @@ public abstract partial class CESharedLockKeySystem : EntitySystem
         var keyShape = key.Comp.Shape;
         var lockShape = target.Comp.Shape;
 
-        if (keyShape == null || lockShape == null)
-            return;
-
         var isEqual = keyShape.SequenceEqual(lockShape);
 
         // Make new shape for key and force equality for this use
@@ -225,9 +215,6 @@ public abstract partial class CESharedLockKeySystem : EntitySystem
     {
         var parent = Transform(ent).ParentUid;
         if (parent != args.Examiner)
-            return;
-
-        if (ent.Comp.Shape == null)
             return;
 
         var sb = new StringBuilder(Loc.GetString("ce-lock-examine-key", ("item", MetaData(ent).EntityName)));
