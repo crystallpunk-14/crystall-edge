@@ -53,6 +53,8 @@
         - type: StationJobs
           availableJobs:
             CETownfolk: [ -1, -1 ]
+            CEGuardCommander: [ 1, 1 ]
+            CETavernmaster: [ 1, 1 ]
         - type: CEStationSpawnerDistribution
           spawns:
             CECoin: !type:AllSelector

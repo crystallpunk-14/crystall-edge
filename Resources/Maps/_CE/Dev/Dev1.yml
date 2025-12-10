@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/10/2025 10:47:23
-  entityCount: 386
+  time: 12/10/2025 14:35:03
+  entityCount: 388
 maps:
 - 1
 grids:
@@ -32,7 +32,7 @@ entities:
   - uid: 1
     components:
     - type: MetaData
-      name: Map Entity
+      name: Mapping Dev [1]
     - type: Transform
     - type: Map
       mapPaused: True
@@ -203,6 +203,14 @@ entities:
     - type: Transform
       gridTraversal: False
       pos: -5.1592636,3.297735
+      parent: 1
+    - type: ViewSubscriber
+  - uid: 388
+    components:
+    - type: MetaData
+    - type: Transform
+      gridTraversal: False
+      pos: 0.29443625,-2.5974736
       parent: 1
     - type: ViewSubscriber
 - proto: CEBiomeSpawnerGrassland
@@ -1409,6 +1417,13 @@ entities:
     components:
     - type: Transform
       pos: -7.5,1.5
+      parent: 1
+- proto: CESpawnPointGuardCommander
+  entities:
+  - uid: 387
+    components:
+    - type: Transform
+      pos: -5.5,-10.5
       parent: 1
 - proto: CETableWoodenCounter
   entities:

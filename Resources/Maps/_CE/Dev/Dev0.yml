@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/10/2025 10:47:23
-  entityCount: 980
+  time: 12/10/2025 14:35:03
+  entityCount: 981
 maps:
 - 1
 grids:
@@ -33,7 +33,7 @@ entities:
   - uid: 1
     components:
     - type: MetaData
-      name: Map Entity
+      name: Mapping Dev
     - type: Transform
     - type: Map
       mapPaused: True
@@ -2288,7 +2288,7 @@ entities:
     - type: Transform
       pos: -7.921433,-0.27211463
       parent: 1
-- proto: CECoinPlatinum
+- proto: CECoinPlatinum10
   entities:
   - uid: 577
     components:
@@ -4007,6 +4007,13 @@ entities:
     components:
     - type: Transform
       pos: 6.5,-6.5
+      parent: 1
+- proto: CESpawnPointTavernmaster
+  entities:
+  - uid: 946
+    components:
+    - type: Transform
+      pos: -5.5,1.5
       parent: 1
 - proto: CESpawnPointTownfolk
   entities:
