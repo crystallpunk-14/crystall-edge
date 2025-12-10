@@ -4,13 +4,25 @@
   name: ce-job-name-bard
   description: ce-job-desc-bard
   playTimeTracker: CEJobBard
-  #startingGear: CEGuardGear
+  startingGear: CEBardGear
   icon: CEJobIconBard
   supervisors: ce-job-supervisors-empire
   canBeAntag: true
 
-#- type: startingGear
-#  id: CEGuardGear
-#  equipment:
-#    keys: CEKeyRingGuard
-#    belt: CEWalletFilledTest
+- type: startingGear
+  id: CEBardGear
+  equipment:
+    belt: CEWalletFilledBard
+
+- type: entity
+  id: CEWalletFilledBard
+  parent: CEWallet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents: #50cp total
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinCopper10
+    - id: CECoinCopper10

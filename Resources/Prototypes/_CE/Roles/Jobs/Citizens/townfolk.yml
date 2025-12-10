@@ -4,13 +4,27 @@
   name: ce-job-name-townfolk
   description: ce-job-desc-townfolk
   playTimeTracker: CEJobTownfolk
-  #startingGear: CEGuardGear
+  startingGear: CETownfolkGear
   icon: CEJobIconTownfolk
   supervisors: ce-job-supervisors-empire
   canBeAntag: true
 
-#- type: startingGear
-#  id: CEGuardGear
-#  equipment:
-#    keys: CEKeyRingGuard
-#    belt: CEWalletFilledTest
+- type: startingGear
+  id: CETownfolkGear
+  equipment:
+    belt: CEWalletFilledTownfolk
+
+- type: entity
+  id: CEWalletFilledTownfolk
+  parent: CEWallet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents: #200cp total
+    - id: CECoinGold1
+    - id: CECoinSilver5
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinCopper10

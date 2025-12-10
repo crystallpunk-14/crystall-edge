@@ -4,7 +4,7 @@
   name: ce-job-name-guard
   description: ce-job-desc-guard
   playTimeTracker: CEJobGuard
-  #startingGear: CEGuardGear
+  startingGear: CEGuardGear
   icon: CEJobIconGuard
   supervisors: ce-job-supervisors-guard-commander
   canBeAntag: false
@@ -13,8 +13,32 @@
       factions:
       - EmpireGuard
 
-#- type: startingGear
-#  id: CEGuardGear
-#  equipment:
-#    keys: CEKeyRingGuard
-#    belt: CEWalletFilledTest
+- type: startingGear
+  id: CEGuardGear
+  equipment:
+    keys: CEKeyRingGuard
+    belt: CEWalletFilledGuard
+
+
+- type: entity
+  id: CEWalletFilledGuard
+  parent: CEWallet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents: #100cp total
+    - id: CECoinSilver5
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinCopper10
+
+- type: entity
+  id: CEKeyRingGuard
+  parent: CEBaseKeyRing
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    #contents:
+    #- id: Keys here

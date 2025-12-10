@@ -20,6 +20,11 @@ CENail110: CENail10
 CEAlwaysPoweredWallLight: CEWallLight
 CEWallCrystal: CEWallCrystalCore
 
+CECoinCopper: CECoinCopper10
+CECoinSilver: CECoinSilver10
+CECoinGold: CECoinGold10
+CECoinPlatinum: CECoinPlatinum10
+
 # CrystallEdge migration zone end
 
 
