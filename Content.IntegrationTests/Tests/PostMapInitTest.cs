@@ -9,6 +9,7 @@ using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Systems;
 using Content.Server.Spawners.Components;
 using Content.Server.Station.Components;
+using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.CCVar;
 using Content.Shared.Roles;
 using Robust.Shared.Configuration;
@@ -384,13 +385,7 @@ namespace Content.IntegrationTests.Tests
                 try
                 {
                     var opts = DeserializationOptions.Default with { InitializeMaps = true };
-                    //ticker.LoadGameMap(protoManager.Index<GameMapPrototype>(mapProto), out mapId, opts);
-                    //CrystallEdge - zLevels testing
-                    var mapProtoDef = protoManager.Index<GameMapPrototype>(mapProto);
-
-                    ticker.LoadGameMap(mapProtoDef, out mapId, opts);
-                    if (mapProtoDef.)
-                    //CrystallEdge
+                    ticker.LoadGameMap(protoManager.Index<GameMapPrototype>(mapProto), out mapId, opts);
                 }
                 catch (Exception ex)
                 {
@@ -403,6 +398,14 @@ namespace Content.IntegrationTests.Tests
                 var memberQuery = entManager.GetEntityQuery<StationMemberComponent>();
 
                 var grids = mapManager.GetAllGrids(mapId).ToList();
+
+                //CrystallEdge add zlevels grids to the test
+                var query = entManager.EntityQueryEnumerator<CEZLevelMapComponent, MapGridComponent>();
+                while (query.MoveNext(out var uid, out var zNetwork, out var mapGrid))
+                {
+                    grids.Add((uid, mapGrid));
+                }
+
                 var gridUids = grids.Select(o => o.Owner).ToList();
                 targetGrid = gridUids.First();
 
