@@ -49,7 +49,6 @@ public sealed partial class CEZLevelsSystem : CESharedZLevelsSystem
             EntityManager.AddComponents(mapEnt.Value, ev.GameMap.ZLevelsComponentOverrides);
             _map.InitializeMap(mapEnt.Value.Comp.MapId);
             _meta.SetEntityName(mapEnt.Value, $"{ev.GameMap.MapName} [{depth}]");
-            //var member = EnsureComp<StationMemberComponent>(mapEnt.Value); todo: station membership
             dict.Add(mapEnt.Value, depth);
             depth++;
         }
@@ -68,7 +67,6 @@ public sealed partial class CEZLevelsSystem : CESharedZLevelsSystem
             EntityManager.AddComponents(mapEnt.Value, ev.GameMap.ZLevelsComponentOverrides);
             _map.InitializeMap(mapEnt.Value.Comp.MapId);
             _meta.SetEntityName(mapEnt.Value, $"{ev.GameMap.MapName} [{depth}]");
-            //var member = EnsureComp<StationMemberComponent>(mapEnt.Value); todo: station membership
             dict.Add(mapEnt.Value, depth);
             depth++;
         }
