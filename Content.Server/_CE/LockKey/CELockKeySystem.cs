@@ -37,18 +37,18 @@ public sealed partial class CELockKeySystem : CESharedLockKeySystem
 
     private void OnKeyInit(Entity<CEKeyComponent> keyEnt, ref MapInitEvent args)
     {
-        if (keyEnt.Comp.AutoGenerateShape != null)
-        {
-            TrySetShapeFromProto(keyEnt, keyEnt.Comp.AutoGenerateShape.Value);
-        }
+        if (keyEnt.Comp.AutoGenerateShape is null)
+            return;
+
+        TrySetShapeFromProto(keyEnt, keyEnt.Comp.AutoGenerateShape.Value);
     }
 
     private void OnLockInit(Entity<CELockComponent> lockEnt, ref MapInitEvent args)
     {
-        if (lockEnt.Comp.AutoGenerateShape != null)
-        {
-            TrySetShapeFromProto(lockEnt, lockEnt.Comp.AutoGenerateShape.Value);
-        }
+        if (lockEnt.Comp.AutoGenerateShape is null)
+            return;
+
+        TrySetShapeFromProto(lockEnt, lockEnt.Comp.AutoGenerateShape.Value);
     }
 
     private void OnLockRandomInit(Entity<CELockRandomShapeComponent> ent, ref MapInitEvent args)

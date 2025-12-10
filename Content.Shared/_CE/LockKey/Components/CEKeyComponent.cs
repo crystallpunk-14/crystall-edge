@@ -15,6 +15,6 @@ public sealed partial class CEKeyComponent : Component
     /// <summary>
     /// If not null, automatically generates a key for the specified category on initialization. This ensures that the lock will be opened with a key of the same category.
     /// </summary>
-    [DataField]
+    [DataField, AutoNetworkedField]
     public ProtoId<CELockTypePrototype>? AutoGenerateShape = null;
 }
