@@ -7,7 +7,7 @@
   - type: Sprite
     sprite: _CE/Markers/jobs.rsi
     snapCardinals: true
-    name: townfolk spawnpoint
+
 # Guards
 
 - type: entity
@@ -22,7 +22,7 @@
   - type: Sprite
     layers:
       - state: green
-    name: guard commander spawnpoint
+      - state: guard_commander
 
 - type: entity
   id: CESpawnPointGuard
@@ -36,7 +36,7 @@
   - type: Sprite
     layers:
       - state: green
-    name: guard spawnpoint
+      - state: guard
 
 - type: entity
   id: CESpawnPointInvestigator
@@ -50,7 +50,7 @@
   - type: Sprite
     layers:
       - state: green
-    name: investigator spawnpoint
+      - state: investigator
 
 # Tavern
 
