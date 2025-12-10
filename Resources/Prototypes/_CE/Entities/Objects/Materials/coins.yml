@@ -70,7 +70,7 @@
 - type: entity
   id: CECoinCopper10
   parent: CECoinCopper1
-  suffix: 10 coin
+  suffix: 10 coins
   components:
   - type: Sprite
     state: coin1
