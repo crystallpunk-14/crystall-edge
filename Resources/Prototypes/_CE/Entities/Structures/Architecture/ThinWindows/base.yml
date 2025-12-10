@@ -23,11 +23,17 @@
   - type: MeleeSound
     soundGroups:
       Brute:
-        path:
-          "/Audio/Weapons/boxingpunch1.ogg"
+        collection: GlassSmack
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: Glass
+  - type: InteractionPopup
+    interactSuccessString: comp-window-knock
+    messagePerceivedByOthers: comp-window-knock
+    interactSuccessSound:
+      path: /Audio/Effects/glass_knock.ogg
+  - type: ExaminableDamage
+    messages: WindowMessages
   - type: Fixtures
     fixtures:
       fix1:
@@ -52,14 +58,51 @@
         acts: [ "Destruction" ]
 
 - type: entity
-  parent: CEBaseThinWindow
+  parent: BaseStructure
   id: CEBaseThinWindowDoor
   abstract: true
   categories: [ ForkFiltered ]
   name: thin window door
   description: Thin window doors. What's your next move?
   components:
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        collection: GlassSmack
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Glass
+  - type: ExaminableDamage
+    messages: WindowMessages
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,0.1,0.5,0.3"
+        density: 1000
+        mask:
+        - FullTileMask
+        layer:
+        - GlassLayer
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WindowShatter
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
   - type: Sprite
+    offset: 0, 0.2
+    drawdepth: Mobs
     layers:
     - state: door_closed
       map: ["enum.DoorVisualLayers.Base"]
