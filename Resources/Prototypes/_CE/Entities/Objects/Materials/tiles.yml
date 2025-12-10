@@ -191,7 +191,7 @@
 - type: entity
   parent: CEFloorTileBase
   id: CEFloorTileStoneLongBricks
-  name: stonebricks long 
+  name: stonebricks long
   components:
   - type: Sprite
     state: stonebricks_long
@@ -296,6 +296,22 @@
       - CEStonebricksSquareCarved
   - type: Stack
     stackType: CEFloorTileStonebricksSquareCarved
+  - type: PhysicalComposition
+    materialComposition:
+      CEStone: 2
+
+- type: entity
+  parent: CEFloorTileBase
+  id: CEFloorTileRoofRed
+  name: red roof tile
+  components:
+  - type: Sprite
+    state: roof_red
+  - type: FloorTile
+    outputs:
+      - CERoofRed
+  - type: Stack
+    stackType: CEFloorTileRoofRed
   - type: PhysicalComposition
     materialComposition:
       CEStone: 2

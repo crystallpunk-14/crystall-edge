@@ -50,13 +50,14 @@
         nodeGroupID: HVPower
       output:
         !type:CableDeviceNode
-        nodeGroupID: MVPower
+        nodeGroupID: Apc
   - type: BatteryCharger
     voltage: High
     node: input
-  - type: BatteryDischarger
-    voltage: Medium
-    node: output
+  - type: PowerProvider
+    voltage: Apc
+  - type: Apc
+    voltage: Apc
   - type: PointLight
     radius: 2.5
     energy: 2
@@ -70,6 +71,10 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrong
+  - type: UserInterface
+    interfaces:
+      enum.ApcUiKey.Key:
+        type: ApcBoundUserInterface
   #- type: Destructible
   #  thresholds:
   #  - trigger:

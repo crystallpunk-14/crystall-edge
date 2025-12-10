@@ -1,0 +1,125 @@
+- type: ambientLoop
+  id: OpenWinds
+  sound:
+    params:
+      volume: -6
+    collection: CELoopWinds
+  rules: OpenWinds
+
+- type: ambientLoop
+  id: Water
+  sound:
+    params:
+      volume: 18
+    collection: CELoopWater
+  rules: NearWater
+
+- type: ambientLoop
+  id: Cave
+  sound:
+    params:
+      volume: 2
+    collection: CELoopCave
+  rules: CaveFloor
+
+- type: ambientLoop
+  id: NightGrass
+  sound:
+    params:
+      volume: 2
+    collection: CELoopNightGrass
+  rules: GrassNight
+
+- type: ambientLoop
+  id: ForestDay
+  sound:
+    params:
+      volume: 2
+    collection: CELoopForestDay
+  rules: DayForest
+
+# Sound collections
+- type: soundCollection
+  id: CELoopWinds
+  files:
+    - /Audio/_CE/Ambience/Loops/winds.ogg
+
+- type: soundCollection
+  id: CELoopWater
+  files:
+    - /Audio/_CE/Ambience/Loops/water.ogg
+
+- type: soundCollection
+  id: CELoopCave
+  files:
+    - /Audio/_CE/Ambience/Loops/cave.ogg
+
+- type: soundCollection
+  id: CELoopNightGrass
+  files:
+    - /Audio/_CE/Ambience/Loops/ambiforest_night.ogg
+
+- type: soundCollection
+  id: CELoopForestDay
+  files:
+    - /Audio/_CE/Ambience/Loops/ambiforest_day.ogg
+
+# Rules
+- type: rules
+  id: OpenWinds
+  rules:
+    - !type:NearbyTilesPercentRule
+      ignoreAnchored: true
+      percent: 0.5
+      tiles:
+      - CEGrass
+      - CEGrassLight
+      - CEGrassTall
+      - CEDirt
+      - CESand
+      - Space
+      range: 5
+
+- type: rules
+  id: GrassNight
+  rules:
+    - !type:CERuleIsNight
+    - !type:NearbyTilesPercentRule
+      ignoreAnchored: true
+      percent: 0.5
+      tiles:
+      - CEGrass
+      - CEGrassLight
+      - CEGrassTall
+      range: 5
+
+- type: rules
+  id: DayForest
+  rules:
+    - !type:CERuleIsNight
+      inverted: true
+    - !type:NearbyEntitiesRule
+      count: 3
+      whitelist:
+        tags:
+          - CEAmbientForest
+
+- type: rules
+  id: CaveFloor
+  rules:
+    - !type:NearbyTilesPercentRule
+      ignoreAnchored: true
+      percent: 0.5
+      tiles:
+      - CEStone
+      range: 5
+
+- type: rules
+  id: NearWater
+  rules:
+    - !type:NearbyEntitiesRule
+      count: 5
+      whitelist:
+        tags:
+          - CEAmbientWater
+      range: 4

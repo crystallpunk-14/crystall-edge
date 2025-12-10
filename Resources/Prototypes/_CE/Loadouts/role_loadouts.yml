@@ -7,6 +7,15 @@
   - CEGeneralShoes
 
 - type: roleLoadout
+  id: JobCEBard
+  groups:
+  - CEBardHead
+  - CEBardShirt
+  - CEBardPants
+  - CEBardShoes
+  - CEBardTool
+
+- type: roleLoadout
   id: JobCEGuardCommander
   groups:
   - CEGuardHead

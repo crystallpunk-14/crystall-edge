@@ -47,35 +47,6 @@ public sealed partial class CESellingPlatformWindow : DefaultWindow
         SellButton.OnPressed += _ => OnSell?.Invoke();
     }
 
-    protected override void FrameUpdate(FrameEventArgs args)
-    {
-        base.FrameUpdate(args);
-
-        UpdateEnergyBar();
-    }
-
-    public void UpdateEnergyBar()
-    {
-        if (_batteryComponent is null)
-        {
-            EnergyLabel.Visible = false;
-            EnergyProgressBar.Visible = false;
-            return;
-        }
-
-        EnergyLabel.Visible = true;
-        EnergyProgressBar.Visible = true;
-
-        var energyLevel = _batteryComponent.CurrentCharge / _batteryComponent.MaxCharge;
-        EnergyLabel.Text = Math.Round(energyLevel * 100) + "%";
-        EnergyProgressBar.Value = energyLevel;
-
-        SellButton.Disabled = !(_cachedState is not null &&
-                              _cachedPlatform is not null &&
-                              _cachedState.Price != 0 &&
-                              _batteryComponent.CurrentCharge >= _cachedPlatform.Value.Comp.EnergyCost);
-    }
-
     public void UpdateState(CESellingPlatformUiState state)
     {
         _cachedState = state;

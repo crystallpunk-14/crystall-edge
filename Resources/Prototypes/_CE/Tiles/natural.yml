@@ -14,7 +14,7 @@
   - 1.0
   - 1.0
   baseTurf: Space
-  isSubfloor: false
+  isSubfloor: true
   transparent: true
   deconstructTools: [ CEPickaxe ]
   heatCapacity: 10000
@@ -122,7 +122,7 @@
     West: /Textures/_CE/Tiles/Mycelium/double_edge_W.png
   baseTurf: CEDirt
   deconstructTools: [ CEShovel ]
-  isSubfloor: false
+  isSubfloor: true
   footstepSounds:
     collection: FootstepGrass
   heatCapacity: 10000
@@ -155,7 +155,7 @@
     West: /Textures/_CE/Tiles/MyceliumLight/double_edge_W.png
   baseTurf: CEMycelium
   deconstructTools: [ CEShovel ]
-  isSubfloor: false
+  isSubfloor: true
   footstepSounds:
     collection: FootstepGrass
   heatCapacity: 10000
@@ -216,7 +216,7 @@
     West: /Textures/_CE/Tiles/SnowDeepDeep/double_edge_W.png
   baseTurf: CEDirt
   deconstructTools: [ CEShovel ]
-  isSubfloor: false
+  isSubfloor: true
   footstepSounds:
     collection: FootstepSnow
   heatCapacity: 10000
@@ -247,7 +247,7 @@
     West: /Textures/_CE/Tiles/SnowDeep/double_edge_W.png
   baseTurf: CESnowDeepDeep
   deconstructTools: [ CEShovel ]
-  isSubfloor: false
+  isSubfloor: true
   footstepSounds:
     collection: FootstepSnow
   heatCapacity: 10000
@@ -278,7 +278,7 @@
     West: /Textures/_CE/Tiles/Snow/double_edge_W.png
   baseTurf: CESnowDeep
   deconstructTools: [ CEShovel ]
-  isSubfloor: false
+  isSubfloor: true
   footstepSounds:
     collection: FootstepSnow
   heatCapacity: 10000

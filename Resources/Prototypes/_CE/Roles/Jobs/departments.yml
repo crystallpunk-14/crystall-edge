@@ -15,8 +15,8 @@
   name: department-CECitizens
   description: department-CECitizens-desc
   weight: 0
-  color: "#bd7c21"
+  color: "#b3b3b3"
   editorHidden: false
   roles:
-  #- CEMayor
   - CETownfolk
+  - CEBard

@@ -84,6 +84,7 @@
   - type: RadiationReceiver
   - type: CEEnergyRadiationRegeneration
   - type: CEEnergyOverchargeDamage
+  - type: CEEnergyDeficitDamage
   - type: CEEnergyAlert
 
 - type: entity

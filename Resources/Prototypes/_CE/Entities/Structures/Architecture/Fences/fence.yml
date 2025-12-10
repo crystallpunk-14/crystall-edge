@@ -15,11 +15,11 @@
   - type: Physics
     bodyType: Static
   - type: Sprite
+    offset: 0, 0.4
     drawdepth: Mobs
+    state: fence
   - type: Icon
-    state: full
-  - type: PlacementReplacement
-    key: walls
+    state: fence
   - type: MeleeSound
     soundGroups:
       Brute:
@@ -30,18 +30,13 @@
       fix1:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.3,-0.3,0.3,0.3"
+          bounds: "-0.5,0.25,0.5,0.5"
         density: 1000
         layer:
         - LowImpassable
         - MidImpassable
-  - type: IconSmooth
-    key: CEfence
-    base: fence
-    additionalKeys:
-    - CEwall
   - type: Climbable
-    delay: 2.5
+    delay: 1.5
 
 - type: entity
   parent:
@@ -72,6 +67,6 @@
             max: 2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  #- type: Construction
-  #  graph: CEFenceWooden
-  #  node: CEFenceWooden
+  - type: Construction
+    graph: CEFenceWooden
+    node: CEFenceWooden

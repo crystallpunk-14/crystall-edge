@@ -19,7 +19,7 @@
     equipDelay: 0.25
     unequipDelay: 0.25
     quickEquip: false
-    #breakOnMove: false
+    equipWhileMoving: true
     slots:
     - HEAD
   - type: SolutionContainerManager

@@ -39,6 +39,7 @@ public abstract partial class CESharedVampireSystem : EntitySystem
     {
         base.Initialize();
         InitializeSpell();
+        InitializeSkills();
 
         SubscribeLocalEvent<CEVampireComponent, MapInitEvent>(OnVampireInit);
         SubscribeLocalEvent<CEVampireComponent, ComponentRemove>(OnVampireRemove);
@@ -77,11 +78,11 @@ public abstract partial class CESharedVampireSystem : EntitySystem
         }
 
         //Skill tree
-        _skill.AddSkillPoints(ent, ent.Comp.SkillPointProto, ent.Comp.SkillPointCount, silent: true);
+        _skill.TryAddSkillPoints(ent.Owner, ent.Comp.SkillPointProto, ent.Comp.SkillPointCount, silent: true);
         _skill.AddSkillTree(ent, ent.Comp.SkillTreeProto);
 
         //Skill tree base nerf
-        _skill.RemoveSkillPoints(ent, _memorySkillPointType, 2, true);
+        _skill.TryRemoveSkillPoints(ent.Owner, _memorySkillPointType, 2, true);
 
         //Remove blood essence
         if (TryComp<CEVampireEssenceHolderComponent>(ent, out var essenceHolder))
@@ -122,8 +123,8 @@ public abstract partial class CESharedVampireSystem : EntitySystem
             }
         }
 
-        _skill.RemoveSkillPoints(ent, ent.Comp.SkillPointProto, ent.Comp.SkillPointCount);
-        _skill.AddSkillPoints(ent, _memorySkillPointType, 2, null, true);
+        _skill.TryRemoveSkillPoints(ent.Owner, ent.Comp.SkillPointProto, ent.Comp.SkillPointCount);
+        _skill.TryAddSkillPoints((ent, storage), _memorySkillPointType, 2, null, true);
     }
 
     private void OnToggleVisuals(Entity<CEVampireComponent> ent, ref CEToggleVampireVisualsAction args)
@@ -214,7 +215,7 @@ public abstract partial class CESharedVampireSystem : EntitySystem
             return;
         }
 
-        _skill.AddSkillPoints(vampire, _skillPointType, extractedEssence);
+        _skill.TryAddSkillPoints(vampire.Owner, _skillPointType, extractedEssence);
         victim.Comp.Essence -= amount;
 
         Dirty(victim);

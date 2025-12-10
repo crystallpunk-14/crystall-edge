@@ -1,18 +1,20 @@
 using Content.Shared._CE.Vampire.Components;
 using Content.Shared.Actions.Events;
+using Content.Shared.Atmos.Components;
 using Content.Shared.Examine;
-using Content.Shared.Mobs.Systems;
 
 namespace Content.Shared._CE.Vampire;
 
 public abstract partial class CESharedVampireSystem
 {
-    [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
 
     private void InitializeSpell()
     {
         SubscribeLocalEvent<CEMagicEffectVampireComponent, ActionAttemptEvent>(OnVampireCastAttempt);
         SubscribeLocalEvent<CEMagicEffectVampireComponent, ExaminedEvent>(OnVampireCastExamine);
+
+        SubscribeLocalEvent<CEActionVampireCandlesComponent, ExaminedEvent>(OnVampireCandlesCastExamine);
     }
 
     private void OnVampireCastAttempt(Entity<CEMagicEffectVampireComponent> ent, ref ActionAttemptEvent args)
@@ -36,5 +38,10 @@ public abstract partial class CESharedVampireSystem
     private void OnVampireCastExamine(Entity<CEMagicEffectVampireComponent> ent, ref ExaminedEvent args)
     {
         args.PushMarkup($"{Loc.GetString("ce-magic-spell-need-vampire-valid")}");
+    }
+
+    private void OnVampireCandlesCastExamine(Entity<CEActionVampireCandlesComponent> ent, ref ExaminedEvent args)
+    {
+        args.PushMarkup($"{Loc.GetString("ce-magic-spell-need-ignited-vamp-candles", ("count", ent.Comp.CandleCount))}");
     }
 }

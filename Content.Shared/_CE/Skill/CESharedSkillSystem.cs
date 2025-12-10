@@ -68,7 +68,7 @@ public abstract partial class CESharedSkillSystem : EntitySystem
             if (TryComp<StackComponent>(ent, out var stack))
                 collect *= stack.Count;
 
-            AddSkillPoints(args.User, ent.Comp.PointType, collect);
+            TryAddSkillPoints(args.User, ent.Comp.PointType, collect);
         }
 
         var position = Transform(ent).Coordinates;
@@ -247,7 +247,9 @@ public abstract partial class CESharedSkillSystem : EntitySystem
     /// </summary>
     public bool CanLearnSkill(EntityUid target,
         CESkillPrototype skill,
-        CESkillStorageComponent? component = null)
+        CESkillStorageComponent? component = null,
+        bool checkSkillPoints = true,
+        bool checkRestrictions = true)
     {
         if (!Resolve(target, ref component, false))
             return false;
@@ -264,17 +266,23 @@ public abstract partial class CESharedSkillSystem : EntitySystem
             return false;
 
         //Check skill points
-        if (!component.SkillPoints.TryGetValue(indexedTree.SkillType, out var skillContainer))
-            return false;
-
-        if (skillContainer.Sum + skill.LearnCost > skillContainer.Max)
-            return false;
-
-        //Restrictions check
-        foreach (var req in skill.Restrictions)
+        if (checkSkillPoints)
         {
-            if (!req.Check(EntityManager, target))
+            if (!component.SkillPoints.TryGetValue(indexedTree.SkillType, out var skillContainer))
                 return false;
+
+            if (skillContainer.Sum + skill.LearnCost > skillContainer.Max)
+                return false;
+        }
+
+        if (checkRestrictions)
+        {
+            //Restrictions check
+            foreach (var req in skill.Restrictions)
+            {
+                if (!req.Check(EntityManager, target))
+                    return false;
+            }
         }
 
         return true;
@@ -342,22 +350,21 @@ public abstract partial class CESharedSkillSystem : EntitySystem
     }
 
     /// <summary>
-    /// Obtaining all skills that are not prerequisites for other skills of this creature
+    /// Obtaining all learned skills that are not prerequisites for other skills of this creature
     /// </summary>
-    public HashSet<ProtoId<CESkillPrototype>> GetFrontierSkills(EntityUid target,
-        CESkillStorageComponent? component = null)
+    public HashSet<ProtoId<CESkillPrototype>> GetFrontierSkills(Entity<CESkillStorageComponent?> ent)
     {
         var skills = new HashSet<ProtoId<CESkillPrototype>>();
-        if (!Resolve(target, ref component, false))
+        if (!Resolve(ent, ref ent.Comp, false))
             return skills;
 
-        var frontier = component.LearnedSkills.ToHashSet();
-        foreach (var skill in component.LearnedSkills)
+        var frontier = ent.Comp.LearnedSkills.ToHashSet();
+        foreach (var skill in ent.Comp.LearnedSkills)
         {
             if (!_proto.Resolve(skill, out var indexedSkill))
                 continue;
 
-            if (HaveFreeSkill(target, skill))
+            if (HaveFreeSkill(ent, skill))
                 continue;
 
             foreach (var req in indexedSkill.Restrictions)
@@ -371,22 +378,47 @@ public abstract partial class CESharedSkillSystem : EntitySystem
     }
 
     /// <summary>
+    /// Returns a list of all skills the entity can currently learn.
+    /// </summary>
+    public HashSet<ProtoId<CESkillPrototype>> GetLearnableSkills(Entity<CESkillStorageComponent?> ent,
+        bool checkSkillPoints = true,
+        bool checkRestrictions = true)
+    {
+        var skills = new HashSet<ProtoId<CESkillPrototype>>();
+
+        if (!Resolve(ent, ref ent.Comp, false))
+            return skills;
+
+        foreach (var skill in _proto.EnumeratePrototypes<CESkillPrototype>())
+        {
+            if (ent.Comp.LearnedSkills.Contains(skill))
+                continue;
+
+            if (!CanLearnSkill(ent.Owner, skill, ent.Comp, checkSkillPoints, checkRestrictions))
+                continue;
+
+            skills.Add(skill);
+        }
+
+        return skills;
+    }
+
+    /// <summary>
     ///  Helper function to reset skills to only learned skills
     /// </summary>
-    public bool TryResetSkills(EntityUid target,
-        CESkillStorageComponent? component = null)
+    public bool TryResetSkills(Entity<CESkillStorageComponent?> ent)
     {
-        if (!Resolve(target, ref component, false))
+        if (!Resolve(ent, ref ent.Comp, false))
             return false;
 
-        for (var i = component.LearnedSkills.Count - 1; i >= 0; i--)
+        for (var i = ent.Comp.LearnedSkills.Count - 1; i >= 0; i--)
         {
-            if (HaveFreeSkill(target, component.LearnedSkills[i], component))
+            if (HaveFreeSkill(ent, ent.Comp.LearnedSkills[i], ent.Comp))
             {
                 continue;
             }
 
-            TryRemoveSkill(target, component.LearnedSkills[i], component);
+            TryRemoveSkill(ent, ent.Comp.LearnedSkills[i], ent.Comp);
         }
 
         return true;
@@ -395,75 +427,77 @@ public abstract partial class CESharedSkillSystem : EntitySystem
     /// <summary>
     /// Increases the number of skill points for a character, limited to a certain amount.
     /// </summary>
-    public void AddSkillPoints(EntityUid target,
+    public bool TryAddSkillPoints(Entity<CESkillStorageComponent?> ent,
         ProtoId<CESkillPointPrototype> type,
         FixedPoint2 points,
         FixedPoint2? limit = null,
-        bool silent = false,
-        CESkillStorageComponent? component = null)
+        bool silent = false)
     {
         if (points <= 0)
-            return;
+            return true;
 
-        if (!Resolve(target, ref component, false))
-            return;
+        if (!Resolve(ent, ref ent.Comp, false))
+            return false;
 
         if (!_proto.Resolve(type, out var indexedType))
-            return;
+            return false;
 
-        if (!component.SkillPoints.TryGetValue(type, out var skillContainer))
+        if (!ent.Comp.SkillPoints.TryGetValue(type, out var skillContainer))
         {
             skillContainer = new CESkillPointContainerEntry();
-            component.SkillPoints[type] = skillContainer;
+            ent.Comp.SkillPoints[type] = skillContainer;
         }
 
         skillContainer.Max = limit is not null
             ? FixedPoint2.Min(skillContainer.Max + points, limit.Value)
             : skillContainer.Max + points;
 
-        DirtyField(target, component, nameof(CESkillStorageComponent.SkillPoints));
+        DirtyField(ent, ent.Comp, nameof(CESkillStorageComponent.SkillPoints));
 
         if (indexedType.GetPointPopup is not null && !silent && _timing.IsFirstTimePredicted)
-            _popup.PopupClient(Loc.GetString(indexedType.GetPointPopup, ("count", points)), target, target);
+            _popup.PopupClient(Loc.GetString(indexedType.GetPointPopup, ("count", points)), ent, ent);
+
+        return true;
     }
 
     /// <summary>
     /// Removes skill points. If a character has accumulated skills exceeding the new memory limit, random skills will be removed.
     /// </summary>
-    public void RemoveSkillPoints(EntityUid target,
+    public bool TryRemoveSkillPoints(Entity<CESkillStorageComponent?> ent,
         ProtoId<CESkillPointPrototype> type,
         FixedPoint2 points,
-        bool silent = false,
-        CESkillStorageComponent? component = null)
+        bool silent = false)
     {
         if (points <= 0)
-            return;
+            return true;
 
-        if (!Resolve(target, ref component, false))
-            return;
+        if (!Resolve(ent, ref ent.Comp, false))
+            return false;
 
         if (!_proto.Resolve(type, out var indexedType))
-            return;
+            return false;
 
-        if (!component.SkillPoints.TryGetValue(type, out var skillContainer))
-            return;
+        if (!ent.Comp.SkillPoints.TryGetValue(type, out var skillContainer))
+            return false;
 
         skillContainer.Max = FixedPoint2.Max(skillContainer.Max - points, 0);
-        Dirty(target, component);
+        Dirty(ent);
 
         if (indexedType.LosePointPopup is not null && !silent && _timing.IsFirstTimePredicted)
-            _popup.PopupClient(Loc.GetString(indexedType.LosePointPopup, ("count", points)), target, target);
+            _popup.PopupClient(Loc.GetString(indexedType.LosePointPopup, ("count", points)), ent, ent);
 
         while (skillContainer.Sum > skillContainer.Max)
         {
-            var frontier = GetFrontierSkills(target, component);
+            var frontier = GetFrontierSkills((ent, ent.Comp));
             if (frontier.Count == 0)
                 break;
 
             //Randomly remove one of the frontier skills
             var skill = _random.Pick(frontier);
-            TryRemoveSkill(target, skill, component);
+            TryRemoveSkill(ent, skill, ent.Comp);
         }
+
+        return true;
     }
 }
 

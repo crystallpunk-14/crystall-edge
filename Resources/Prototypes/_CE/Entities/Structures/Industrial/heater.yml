@@ -1,6 +1,7 @@
 - type: entity
   parent:
   - BaseMachine
+  - CEBaseMachinePowered
   id: CEHeater
   categories: [ ForkFiltered ]
   name: heater
@@ -62,24 +63,12 @@
   - type: ItemPlacer
     maxEntities: 0
   - type: CEEntityHeater
-    power: 500
+    power: 1000
   - type: Rotatable
-  - type: PowerConsumer
-    voltage: Medium
-    drawRate: 5
   - type: Appearance
   - type: GenericVisualizer
     visuals:
-      enum.CEPowerConsumerVisuals.Active:
+      enum.PowerDeviceVisuals.Powered:
         flames:
           True: {visible: true}
           False: {visible: false}
-  - type: NodeContainer
-    examinable: true
-    nodes:
-      input:
-        !type:CableDeviceNode
-        nodeGroupID: MVPower
-      power:
-        !type:CableNode
-        nodeGroupID: MVPower

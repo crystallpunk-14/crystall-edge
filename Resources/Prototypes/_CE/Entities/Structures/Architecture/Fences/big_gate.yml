@@ -76,9 +76,9 @@
             max: 4
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  #- type: Construction
-  #  graph: CEFenceGateBigWooden
-  #  node: CEFenceGateBigWooden
+  - type: Construction
+    graph: CEFenceGateBigWooden
+    node: CEFenceGateBigWooden
 
 - type: entity
   parent:
@@ -109,4 +109,7 @@
             max: 2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: Construction
+    graph: CEFenceGateBigIron
+    node: CEFenceGateBigIron
 

@@ -1,0 +1,17 @@
+- type: factionIcon
+  id: CEVampire
+  priority: 11
+  locationPreference: Left
+  icon:
+    sprite: /Textures/_CE/Interface/Misc/vampire_icons.rsi
+    state: Minor
+  showTo:
+    components:
+    - CEVampire
+
+- type: factionIcon
+  id: CEVampireHigher
+  parent: CEVampire
+  icon:
+    sprite: /Textures/_CE/Interface/Misc/vampire_icons.rsi
+    state: Major

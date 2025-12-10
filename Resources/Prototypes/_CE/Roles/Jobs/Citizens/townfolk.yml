@@ -7,7 +7,7 @@
   #startingGear: CEGuardGear
   icon: CEJobIconTownfolk
   supervisors: ce-job-supervisors-empire
-  canBeAntag: false
+  canBeAntag: true
 
 #- type: startingGear
 #  id: CEGuardGear

@@ -13,6 +13,12 @@ namespace Content.Shared._CE.Vampire.Components;
 [Access(typeof(CESharedVampireSystem))]
 public sealed partial class CEVampireComponent : Component
 {
+    /// <summary>
+    /// The difference between higher and lower vampires is that lower vampires are unable to learn skills independently.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool HigherVampire = true;
+
     [DataField]
     public ProtoId<ReagentPrototype> NewBloodReagent = "CEBloodVampire";
 

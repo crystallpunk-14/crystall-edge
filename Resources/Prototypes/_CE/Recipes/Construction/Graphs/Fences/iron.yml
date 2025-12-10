@@ -1,0 +1,80 @@
+- type: constructionGraph
+  id: CEFenceWindowIron
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: CEFenceWindowIron
+          completed:
+            - !type:SnapToGrid
+          steps:
+            - material: CEIron
+              amount: 2
+              doAfter: 8
+
+    - node: CEFenceWindowIron
+      entity: CEFenceWindowIron
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEIronBar1
+              amount: 2
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 8
+
+- type: constructionGraph
+  id: CEFenceGateBigIron
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: CEFenceGateBigIron
+          completed:
+            - !type:SnapToGrid
+          steps:
+            - material: CEIron
+              amount: 4
+              doAfter: 8
+
+    - node: CEFenceGateBigIron
+      entity: CEFenceGateBigIron
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEIronBar1
+              amount: 4
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 8
+
+- type: constructionGraph
+  id: CEFenceBigIron
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: CEFenceBigIron
+          completed:
+            - !type:SnapToGrid
+          steps:
+            - material: CEIron
+              amount: 4
+              doAfter: 8
+
+    - node: CEFenceBigIron
+      entity: CEFenceBigIron
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEIronBar1
+              amount: 4
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 8

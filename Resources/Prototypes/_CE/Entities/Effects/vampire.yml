@@ -12,7 +12,7 @@
       - HideContextMenu
   - type: Sprite
     drawdepth: Effects
-    sprite: _CE/Effects/Magic/cast_impact48.rsi
+    sprite: _CE/Effects/cast_impact48.rsi
     noRot: true
 
 - type: entity

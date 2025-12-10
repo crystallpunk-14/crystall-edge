@@ -31,7 +31,7 @@ public sealed class CEPipeVisSystem : EntitySystem
 
     private void UpdateAppearance(EntityUid uid, CEPipeVisComponent cableVis, ref NodeGroupsRebuilt args)
     {
-        if (!_nodeContainer.TryGetNode(uid, cableVis.Node, out CableNode? node))
+        if (!TryComp<NodeContainerComponent>(uid, out var nodeContainer))
             return;
 
         var transform = Transform(uid);
@@ -41,31 +41,38 @@ public sealed class CEPipeVisSystem : EntitySystem
         var mask = WireVisDirFlags.None;
         var tile = _map.TileIndicesFor((transform.GridUid.Value, grid), transform.Coordinates);
 
-        foreach (var reachable in
-                 node.GetReachableNodes(transform,
-                     _nodeQuery,
-                     _transformQuery,
-                     grid,
-                     EntityManager)) //CrystallEdge connect also disabled nodes, for pipe levers support
+        foreach (var (name, node) in nodeContainer.Nodes)
         {
-            if (reachable is not CableNode)
+            if (node is not CableNode && node is not CEConnectorEdgeNode)
                 continue;
 
-            if (reachable.NodeGroupID != node.NodeGroupID)
-                continue;
 
-            var otherTransform = Transform(reachable.Owner);
-            var otherTile = _map.TileIndicesFor((transform.GridUid.Value, grid), otherTransform.Coordinates);
-            var diff = otherTile - tile;
-
-            mask |= diff switch
+            foreach (var reachable in
+                     node.GetReachableNodes(transform,
+                         _nodeQuery,
+                         _transformQuery,
+                         grid,
+                         EntityManager))
             {
-                (0, 1) => WireVisDirFlags.North,
-                (0, -1) => WireVisDirFlags.South,
-                (1, 0) => WireVisDirFlags.East,
-                (-1, 0) => WireVisDirFlags.West,
-                _ => WireVisDirFlags.None
-            };
+                if (reachable is not CableNode && reachable is not CEConnectorEdgeNode)
+                    continue;
+
+                if (reachable.NodeGroupID != node.NodeGroupID)
+                    continue;
+
+                var otherTransform = Transform(reachable.Owner);
+                var otherTile = _map.TileIndicesFor((transform.GridUid.Value, grid), otherTransform.Coordinates);
+                var diff = otherTile - tile;
+
+                mask |= diff switch
+                {
+                    (0, 1) => WireVisDirFlags.North,
+                    (0, -1) => WireVisDirFlags.South,
+                    (1, 0) => WireVisDirFlags.East,
+                    (-1, 0) => WireVisDirFlags.West,
+                    _ => WireVisDirFlags.None
+                };
+            }
         }
 
         _appearance.SetData(uid, WireVisVisuals.ConnectedMask, mask);

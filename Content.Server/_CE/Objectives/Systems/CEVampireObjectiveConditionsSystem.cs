@@ -17,46 +17,12 @@ public sealed class CEVampireObjectiveConditionsSystem : EntitySystem
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedJobSystem _jobs = default!;
 
-    public readonly float RequiredAlivePercentage = 0.5f;
-    public readonly int RequiredHeartLevel = 3;
-
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<CEVampireBloodPurityConditionComponent, ObjectiveAfterAssignEvent>(OnBloodPurityAfterAssign);
         SubscribeLocalEvent<CEVampireBloodPurityConditionComponent, ObjectiveGetProgressEvent>(OnBloodPurityGetProgress);
-    }
-
-    public float CalculateAlivePlayersPercentage()
-    {
-        var query = EntityQueryEnumerator<StationJobsComponent>();
-
-        var totalPlayers = 0f;
-        var alivePlayers = 0f;
-        while (query.MoveNext(out var uid, out var jobs))
-        {
-            totalPlayers += jobs.PlayerJobs.Count;
-
-            foreach (var (netUserId, jobsList) in jobs.PlayerJobs)
-            {
-                if (!_mind.TryGetMind(netUserId, out var mind))
-                    continue;
-
-                if (!_jobs.MindTryGetJob(mind, out var jobRole))
-                    continue;
-
-                var firstMindEntity = GetEntity(mind.Value.Comp.OriginalOwnedEntity);
-
-                if (firstMindEntity is null)
-                    continue;
-
-                if (!_mobState.IsDead(firstMindEntity.Value))
-                    alivePlayers++;
-            }
-        }
-
-        return totalPlayers > 0 ? (alivePlayers / totalPlayers) : 0f;
     }
 
     private void OnBloodPurityAfterAssign(Entity<CEVampireBloodPurityConditionComponent> ent, ref ObjectiveAfterAssignEvent args)

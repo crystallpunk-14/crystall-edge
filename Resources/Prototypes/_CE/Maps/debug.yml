@@ -33,10 +33,12 @@
         moles:
           Oxygen: 21.824879
           Nitrogen: 82.10312
-    - type: SunShadowCycle
     - type: Parallax
       parallax: CESky
+    - type: SunShadowCycle
+      offset: 490
     - type: LightCycle
+      offset: 490
       originalColor: "#fff475"
     - type: SunShadow
     - type: MapLight

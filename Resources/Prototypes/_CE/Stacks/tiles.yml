@@ -117,4 +117,11 @@
   icon: { sprite: _CE/Objects/Materials/seeds_tile.rsi, state: mycelium }
   maxCount: 30
 
+- type: stack
+  id: CEFloorTileRoofRed
+  name: ce-tiles-roof
+  spawn: CEFloorTileRoofRed
+  icon: { sprite: _CE/Objects/tile.rsi, state: roof_red }
+  maxCount: 30
+
 

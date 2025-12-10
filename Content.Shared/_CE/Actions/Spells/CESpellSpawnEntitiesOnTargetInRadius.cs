@@ -1,4 +1,5 @@
 using Robust.Shared.Map;
+using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.Actions.Spells;
@@ -19,6 +20,10 @@ public sealed partial class CESpellSpawnEntitiesOnTargetInRadius : CESpellEffect
         if (targetPoint is null)
             return;
 
+        var netMan = IoCManager.Resolve<INetManager>();
+        if (netMan.IsClient)
+            return;
+
         // Spawn in center
         entManager.SpawnAtPosition(Spawn, targetPoint.Value);
 
@@ -28,7 +33,7 @@ public sealed partial class CESpellSpawnEntitiesOnTargetInRadius : CESpellEffect
             var direction = (DirectionFlag) (1 << i);
             var coords = targetPoint.Value.Offset(direction.AsDir().ToVec());
 
-            entManager.PredictedSpawnAtPosition(Spawn, coords);
+            entManager.SpawnAtPosition(Spawn, coords);
         }
     }
 }

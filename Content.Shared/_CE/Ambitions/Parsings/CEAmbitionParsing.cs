@@ -1,8 +1,10 @@
 using Content.Shared._CE.Cooking.Prototypes;
 using Content.Shared._CE.LockKey;
+using Content.Shared._CE.LockKey.Components;
 using Content.Shared.Dataset;
 using Content.Shared.Destructible.Thresholds;
 using Content.Shared.Humanoid.Prototypes;
+using Content.Shared.Lock;
 using Content.Shared.Mind;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Roles;
@@ -185,19 +187,31 @@ public sealed partial class RandomLocation : CEAmbitionParsing
 {
     public override string? GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
     {
-        List<CELockTypePrototype> all = new();
+        List<ProtoId<CELockTypePrototype>> all = new();
 
-        foreach (var lockProto in protoManager.EnumeratePrototypes<CELockTypePrototype>())
+        var query = entManager.EntityQueryEnumerator<CELockComponent>();
+        while (query.MoveNext(out var uid, out var lockComp))
         {
-            if (lockProto.Name is null)
+            if (lockComp.CanEmbedded)
                 continue;
 
-            all.Add(lockProto);
+            if (lockComp.AutoGenerateShape is null)
+                continue;
+
+            if (all.Contains(lockComp.AutoGenerateShape.Value))
+                continue;
+
+            all.Add(lockComp.AutoGenerateShape.Value);
         }
+
         if (all.Count == 0)
             return null;
 
-        return Loc.GetString(random.Pick(all).Name!);
+        var selected = random.Pick(all);
+        if (!protoManager.TryIndex(selected, out var prototype))
+            return null;
+
+        return Loc.GetString(prototype.Name!);
     }
 }
 
