@@ -16,5 +16,5 @@
   parent: BaseSmallStack
   id: CEBloodpack
   name: ce-stack-bloodpack
-  icon: { sprite: "_CE/Objects/Consumable/medical.rsi", state: bloodpack }
+  icon: { sprite: "/Textures/Objects/Specific/Medical/medical.rsi", state: bloodpack }
   spawn: CEBloodpack
