@@ -107,6 +107,7 @@ namespace Content.IntegrationTests.Tests
 
         private static readonly ProtoId<EntityCategoryPrototype> DoNotMapCategory = "DoNotMap";
 
+        /* //CrystallEdge disabled tests - we dont have shuttles and grids
         /// <summary>
         /// Asserts that specific files have been saved as grids and not maps.
         /// </summary>
@@ -190,6 +191,8 @@ namespace Content.IntegrationTests.Tests
 
             await pair.CleanReturnAsync();
         }
+
+        */
 
         [Test]
         public async Task NoSavedPostMapInitTest()
@@ -381,7 +384,13 @@ namespace Content.IntegrationTests.Tests
                 try
                 {
                     var opts = DeserializationOptions.Default with { InitializeMaps = true };
-                    ticker.LoadGameMap(protoManager.Index<GameMapPrototype>(mapProto), out mapId, opts);
+                    //ticker.LoadGameMap(protoManager.Index<GameMapPrototype>(mapProto), out mapId, opts);
+                    //CrystallEdge - zLevels testing
+                    var mapProtoDef = protoManager.Index<GameMapPrototype>(mapProto);
+
+                    ticker.LoadGameMap(mapProtoDef, out mapId, opts);
+                    if (mapProtoDef.)
+                    //CrystallEdge
                 }
                 catch (Exception ex)
                 {
