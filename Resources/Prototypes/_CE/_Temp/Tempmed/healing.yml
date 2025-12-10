@@ -9,7 +9,7 @@
   - type: Item
     size: Normal
   - type: Sprite
-    sprite: _CE/Objects/Specific/Medical/medical.rsi
+    sprite: _CE/Objects/Consumable/medical.rsi
     state: herbbandage_3
     layers:
       - state: herbbandage_3
@@ -67,7 +67,7 @@
   - type: Item
     size: Normal
   - type: Sprite
-    sprite: _CE/Objects/Specific/Medical/medical.rsi
+    sprite: _CE/Objects/Consumable/medical.rsi
     state: bandage_3
     layers:
       - state: bandage_3

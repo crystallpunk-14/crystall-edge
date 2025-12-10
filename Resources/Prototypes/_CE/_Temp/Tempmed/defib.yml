@@ -6,14 +6,15 @@
   categories: [ ForkFiltered ]
   components:
     - type: Sprite
-      sprite: _CE/Objects/Specific/Medical/healing_staff.rsi
+      sprite: _CE/Objects/Tools/healing_staff.rsi
       layers:
         - state: icon
     - type: Clothing
       equipDelay: 1
       unequipDelay: 1
-      sprite: _CE/Objects/Specific/Medical/healing_staff.rsi
+      sprite: _CE/Objects/Tools/healing_staff.rsi
       quickEquip: false
+      equipWhileMoving: true
       slots:
       - neck
     - type: Item
