@@ -16,12 +16,13 @@
 - type: gameMap
   id: Dev
   mapName: Dev
+  mapsBelow:
+  - /Maps/_CE/Dev/Dev-1.yml
   mapPath: /Maps/_CE/Dev/Dev0.yml
-  zLevels:
-    -1: /Maps/_CE/Dev/Dev-1.yml
-    1: /Maps/_CE/Dev/Dev1.yml
-    2: /Maps/_CE/Dev/Dev2.yml
-    3: /Maps/_CE/Dev/Dev3.yml
+  mapsAbove:
+  - /Maps/_CE/Dev/Dev1.yml
+  - /Maps/_CE/Dev/Dev2.yml
+  - /Maps/_CE/Dev/Dev3.yml
   zLevelsComponentOverrides:
     - type: MapAtmosphere
       space: False
