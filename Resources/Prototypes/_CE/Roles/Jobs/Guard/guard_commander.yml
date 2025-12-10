@@ -10,7 +10,7 @@
   joinNotifyCrew: true
   canBeAntag: false
   supervisors: ce-job-supervisors-empire
-  weight: 2
+  weight: 3
   #requirements:
   #  - !type:DepartmentTimeRequirement
   #    department: CEGuard

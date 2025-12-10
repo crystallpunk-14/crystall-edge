@@ -48,3 +48,37 @@
     sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
     state: Bard
   jobName: ce-job-name-bard
+
+# Tavern
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconTavernmaster
+  icon:
+    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    state: Tavernmaster
+  jobName: ce-job-name-tavernmaster
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconBartender
+  icon:
+    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    state: Bartender
+  jobName: ce-job-name-bartender
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconChef
+  icon:
+    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    state: Chef
+  jobName: ce-job-name-chef
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconFarmer
+  icon:
+    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    state: Farmer
+  jobName: ce-job-name-farmer

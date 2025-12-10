@@ -11,10 +11,23 @@
   - CEGuard
 
 - type: department
+  id: CETavern
+  name: department-CETavern
+  description: department-CETavern-desc
+  weight: 0
+  color: "#37f431"
+  editorHidden: false
+  roles:
+  - CETavernmaster
+  - CEChef
+  - CEBartender
+  - CEFarmer
+
+- type: department
   id: CECitizens
   name: department-CECitizens
   description: department-CECitizens-desc
-  weight: 0
+  weight: -1
   color: "#b3b3b3"
   editorHidden: false
   roles:
