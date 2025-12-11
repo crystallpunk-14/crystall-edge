@@ -1,3 +1,4 @@
+using Content.Client._CE.Input;
 using Content.Client.Administration.Managers;
 using Content.Client.Changelog;
 using Content.Client.Chat.Managers;
@@ -158,6 +159,7 @@ namespace Content.Client.Entry
 
             // Setup key contexts
             ContentContexts.SetupContexts(_inputManager.Contexts);
+            CEContentContexts.SetupContexts(_inputManager.Contexts); //CrystallEdge
 
             _parallaxManager.LoadDefaultParallax();
 
