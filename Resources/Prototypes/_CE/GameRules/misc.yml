@@ -3,6 +3,7 @@
   id: CEGameRule3Days
   components:
   - type: CELimitedDaysRule
+    max: 3
 
 - type: entity
   parent: CEBaseGameRule

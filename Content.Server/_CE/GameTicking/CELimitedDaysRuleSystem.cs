@@ -44,7 +44,7 @@ public sealed class CELimitedDaysRuleSystem : GameRuleSystem<CELimitedDaysRuleCo
                 $"An [color=red]unknown threat[/color] lurks in the city",
                 new SoundPathSpecifier("/Audio/_CE/Announce/darkness_boom.ogg", new AudioParams(){Pitch = 1.0f})),
                 ev.Player);
-            RaiseNetworkEvent(new CEScreenPopupShowEvent($"Days left: {limitedDays.FinalDay - limitedDays.DaysSurvived}",
+            RaiseNetworkEvent(new CEScreenPopupShowEvent($"Days left: {limitedDays.Max - limitedDays.Current}",
                 $"Survive and achieve your goals",
                 new SoundPathSpecifier("/Audio/_CE/Announce/darkness_boom.ogg", new AudioParams(){Pitch = 0.7f})),
                 ev.Player);
@@ -76,13 +76,13 @@ public sealed class CELimitedDaysRuleSystem : GameRuleSystem<CELimitedDaysRuleCo
         var query = QueryActiveRules();
         while (query.MoveNext(out _, out _, out var limitedDays, out _))
         {
-            limitedDays.DaysSurvived++;
+            limitedDays.Current++;
 
-            if (limitedDays.DaysSurvived >= limitedDays.FinalDay)
+            if (limitedDays.Current >= limitedDays.Max)
             {
                 _roundEndSystem.EndRound();
             }
-            RaiseNetworkEvent(new CEScreenPopupShowEvent($"Days left: {limitedDays.FinalDay - limitedDays.DaysSurvived}",
+            RaiseNetworkEvent(new CEScreenPopupShowEvent($"Days left: {limitedDays.Max - limitedDays.Current}",
                 $"",
                 new SoundPathSpecifier("/Audio/_CE/Announce/event_boom.ogg")));
 
