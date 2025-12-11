@@ -47,3 +47,14 @@
   - type: Construction
     graph: CEZLevelLadderStone
     node: CEZLevelLadderStoneCorner
+
+- type: entity
+  parent:
+  - CEZLevelLadderCornerInnerBase
+  - CEZLevelsLadderStoneBase
+  id: CEZLevelLadderStoneCornerInner
+  suffix: Stone Internal Corner
+  components:
+  - type: Construction
+    graph: CEZLevelLadderStone
+    node: CEZLevelLadderStoneCornerInner

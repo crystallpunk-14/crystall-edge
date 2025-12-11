@@ -32,6 +32,14 @@
     - node: CEZLevelLadderStoneCorner
       entity: CEZLevelLadderStoneCorner
       edges:
+        - to: CEZLevelLadderStoneCornerInner
+          steps:
+            - tool: Prying
+              doAfter: 2
+
+    - node: CEZLevelLadderStoneCornerInner
+      entity: CEZLevelLadderStoneCornerInner
+      edges:
         - to: CEZLevelLadderStone
           steps:
             - tool: Prying
