@@ -4,6 +4,8 @@ using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Timing;
+using Robust.Client.UserInterface.RichText;
+using Robust.Shared.Utility;
 
 namespace Content.Client._CE.RoundFlow;
 
@@ -13,12 +15,13 @@ public sealed class CEScreenPopupControl : Control
     private const float DelayTime = 3f;
 
     [Dependency] private readonly IResourceCache _resourceCache = default!;
+    [Dependency] private readonly FontTagHijackHolder _fontHijack = default!;
 
     public event Action? OnAnimationEnd;
 
     private readonly BoxContainer _vbox;
-    private readonly Label _titleLabel;
-    private readonly Label _reasonLabel;
+    private readonly RichTextLabel _titleLabel;
+    private readonly RichTextLabel _reasonLabel;
 
     private float _elapsedTime;
     private float _delayElapsedTime;
@@ -27,40 +30,64 @@ public sealed class CEScreenPopupControl : Control
     {
         IoCManager.InjectDependencies(this);
 
-        _titleLabel = new Label
+        _titleLabel = new RichTextLabel
         {
             HorizontalAlignment = HAlignment.Center,
             VerticalAlignment = VAlignment.Center,
-            FontOverride = _resourceCache.GetFont("/Fonts/_CE/Volkorn/VollkornSC-Bold.ttf", 64),
-            FontColorOverride = Color.White
+            Margin = new Thickness(10),
         };
 
-        _reasonLabel = new Label
+        _reasonLabel = new RichTextLabel
         {
             HorizontalAlignment = HAlignment.Center,
             VerticalAlignment = VAlignment.Center,
-            FontOverride = _resourceCache.GetFont("/Fonts/_CE/Volkorn/VollkornSC-Regular.ttf", 36),
-            FontColorOverride = Color.White
+            Margin = new Thickness(10),
         };
 
         _vbox = new BoxContainer
         {
             HorizontalExpand = true,
             VerticalExpand = true,
-            Orientation = BoxContainer.LayoutOrientation.Vertical
+            Orientation = BoxContainer.LayoutOrientation.Vertical,
         };
 
         _vbox.AddChild(_titleLabel);
         _vbox.AddChild(_reasonLabel);
         AddChild(_vbox);
 
-        _vbox.Margin = new Thickness(0, 60, 0, 0);
+        _vbox.Margin = new Thickness(0, 120, 0, 0);
+
+        // Register fonts for markup [font="_ce_popup_title"] and [font="_ce_popup_reason"].
+        var previousHijack = _fontHijack.Hijack;
+        _fontHijack.Hijack = (protoId, size) =>
+        {
+            // protoId implicitly converts to string
+            if (protoId == "_ce_popup_title")
+            {
+                return _resourceCache.GetFont("/Fonts/_CE/Volkorn/VollkornSC-Bold.ttf", size);
+            }
+
+            if (protoId == "_ce_popup_reason")
+            {
+                return _resourceCache.GetFont("/Fonts/_CE/Volkorn/VollkornSC-Regular.ttf", size);
+            }
+
+            return previousHijack?.Invoke(protoId, size);
+        };
+
+        // Notify UI that hijack changed so existing rich text controls update.
+        _fontHijack.HijackUpdated();
     }
 
     public void AnimationStart(CEScreenPopupShowEvent ev)
     {
-        _titleLabel.Text = ev.Title;
-        _reasonLabel.Text = ev.Description;
+        // Wrap with font tags so we use our CE fonts while still allowing [color=...] and other markup.
+        var titleMarkup = $"[font=\"_ce_popup_title\" size=64]{ev.Title}[/font]";
+        var reasonMarkup = $"[font=\"_ce_popup_reason\" size=36]{ev.Description}[/font]";
+
+        // Use permissive parsing so invalid markup is treated as text.
+        _titleLabel.SetMessage(FormattedMessage.FromMarkupPermissive(titleMarkup), null, Color.White);
+        _reasonLabel.SetMessage(FormattedMessage.FromMarkupPermissive(reasonMarkup), null, Color.White);
 
         _elapsedTime = 0f;
         _delayElapsedTime = 0f;

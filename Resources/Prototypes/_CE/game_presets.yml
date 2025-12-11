@@ -26,4 +26,4 @@
   description: ce-game-preset-peaceful-week-description
   showInVote: true
   rules:
-  - CEGameRuleWeekRound
+  - CEGameRule3Days
