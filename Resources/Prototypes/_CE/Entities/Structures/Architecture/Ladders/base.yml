@@ -19,7 +19,6 @@
     drawdepth: Mobs
   - type: Transform
     anchored: True
-  - type: InteractionOutline
   - type: Clickable
   - type: Physics
     bodyType: Static
