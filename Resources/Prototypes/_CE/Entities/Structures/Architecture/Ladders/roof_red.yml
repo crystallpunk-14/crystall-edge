@@ -33,7 +33,6 @@
   - CEZLevelLadderBase
   - CEZLevelsLadderRoofRedBase
   id: CEZLevelsLadderRoofRed
-  suffix: Straight
 
 - type: entity
   parent:
@@ -47,4 +46,4 @@
   - CEZLevelLadderCornerInnerBase
   - CEZLevelsLadderRoofRedBase
   id: CEZLevelsLadderRoofRedCornerInner
-  suffix: Internal Corner
+  suffix: Inner Corner
