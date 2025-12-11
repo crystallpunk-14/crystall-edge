@@ -1,0 +1,61 @@
+- type: entity
+  id: CEZLevelsLadderDirtCliffBase
+  abstract: true
+  name: dirt cliff
+  description: TODO
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Ladders/dirt_cliff.rsi
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Rock
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 30
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEDirtBlock1:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+- type: entity
+  parent:
+  - CEZLevelLadderBase
+  - CEZLevelsLadderDirtCliffBase
+  id: CEZLevelLadderDirtCliff
+  #components:
+  #- type: Construction
+  #  graph: CEZLevelLadderStone
+  #  node: CEZLevelLadderStone
+
+- type: entity
+  parent:
+  - CEZLevelLadderCornerBase
+  - CEZLevelsLadderDirtCliffBase
+  id: CEZLevelLadderDirtCliffCorner
+  suffix: Corner
+  #components:
+  #- type: Construction
+  #  graph: CEZLevelLadderStone
+  #  node: CEZLevelLadderStoneCorner
+
+- type: entity
+  parent:
+  - CEZLevelLadderCornerInnerBase
+  - CEZLevelsLadderDirtCliffBase
+  id: CEZLevelLadderDirtCliffCornerInner
+  suffix: Inner Corner
+  #components:
+  #- type: Construction
+  #  graph: CEZLevelLadderStone
+  #  node: CEZLevelLadderStoneCorner

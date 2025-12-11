@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/11/2025 20:11:20
-  entityCount: 338
+  time: 12/11/2025 21:49:33
+  entityCount: 340
 maps:
 - 1
 grids:
@@ -293,6 +293,14 @@ entities:
     - type: Transform
       gridTraversal: False
       pos: -9.139329,3.1377537
+      parent: 1
+    - type: ViewSubscriber
+  - uid: 340
+    components:
+    - type: MetaData
+    - type: Transform
+      gridTraversal: False
+      pos: -11.785282,-6.9098673
       parent: 1
     - type: ViewSubscriber
 - proto: CECrystalGrowths
@@ -1837,6 +1845,14 @@ entities:
     components:
     - type: Transform
       pos: -27.5,7.5
+      parent: 1
+- proto: CEZLevelLadderDirtCliff
+  entities:
+  - uid: 339
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -16.5,-18.5
       parent: 1
 - proto: CEZLevelLadderStone
   entities:
