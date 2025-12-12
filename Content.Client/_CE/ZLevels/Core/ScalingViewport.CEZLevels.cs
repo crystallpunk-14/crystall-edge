@@ -170,16 +170,16 @@ public sealed partial class ScalingViewport
                 viewport.Eye = _fallbackEye;
             else
             {
-                if (!_zLevels.TryMapOffset(playerXform.MapUid.Value, depth, out var mapUidBelow))
+                if (!_zLevels.TryMapOffset(playerXform.MapUid.Value, depth, out var mapUid))
                     continue;
 
-                if (!_mapQuery.Value.TryComp(mapUidBelow.Value, out var mapComp))
+                if (!_mapQuery.Value.TryComp(mapUid.Value, out var mapComp))
                     continue;
 
                 Angle rotation = _fallbackEye.Rotation * -1;
                 var offset = rotation.ToWorldVec() * CEClientZLevelsSystem.ZLevelOffset * depth;
 
-                viewport.Eye = new ZEye(lowestDepth, depth, highestDepth)
+                viewport.Eye = new ZEye(lowestCalculatedDepth, depth, highestCalculatedDepth)
                 {
                     Position = new MapCoordinates(_fallbackEye.Position.Position, mapComp.MapId),
                     DrawFov = _fallbackEye.DrawFov && depth >= 0,
@@ -190,7 +190,7 @@ public sealed partial class ScalingViewport
                 };
             }
 
-            viewport.ClearColor = depth == lowestDepth ? Color.Black : null;
+            viewport.ClearColor = depth == lowestCalculatedDepth ? Color.Black : null;
             viewport.Render();
         }
 
