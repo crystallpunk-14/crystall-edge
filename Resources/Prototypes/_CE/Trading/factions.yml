@@ -1,0 +1,25 @@
+- type: tradingFaction
+  id: Contracts
+  color: "#dab619"
+  name: ce-trade-faction-contracts
+  roundStart: true
+
+- type: tradingFaction
+  id: Horticulture
+  color: "#3cb371"
+  name: ce-trade-faction-horticulture
+
+- type: tradingFaction
+  id: HomeDecor
+  color: "#749a94"
+  name: ce-trade-faction-home-decor
+
+- type: tradingFaction
+  id: Tailors
+  color: "#75b3bb"
+  name: ce-trade-faction-tailors
+
+- type: tradingFaction
+  id: EmpireGuard
+  color: "#2f6cd6"
+  name: ce-trade-faction-empire-guard

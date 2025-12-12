@@ -1,0 +1,94 @@
+- type: tradingPosition
+  id: CETradeContractGuard
+  faction: EmpireGuard
+  service: !type:CEBuyItemsService
+    product: CETradeContractGuard
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingRaincoatGuard
+  faction: EmpireGuard
+  priceMarkup: 10
+  service: !type:CEBuyItemsService
+    product: CEClothingRaincoatGuard
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingSyurkoGuard
+  faction: EmpireGuard
+  priceMarkup: 10
+  service: !type:CEBuyItemsService
+    product: CEClothingSyurkoGuard
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingHeadHelmetGuard
+  faction: EmpireGuard
+  priceMarkup: 10
+  service: !type:CEBuyItemsService
+    product: CEClothingHeadHelmetGuard
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingHeadHelmetGuardCorinthian
+  faction: EmpireGuard
+  priceMarkup: 10
+  service: !type:CEBuyItemsService
+    product: CEClothingHeadHelmetGuardCorinthian
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingHeadCapGuard
+  faction: EmpireGuard
+  priceMarkup: 10
+  service: !type:CEBuyItemsService
+    product: CEClothingHeadCapGuard
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingHeadFedoraGuard
+  faction: EmpireGuard
+  priceMarkup: 10
+  service: !type:CEBuyItemsService
+    product: CEClothingHeadFedoraGuard
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingPantsGuard
+  faction: EmpireGuard
+  priceMarkup: 10
+  service: !type:CEBuyItemsService
+    product: CEClothingPantsGuard
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingShirtGuard
+  faction: EmpireGuard
+  priceMarkup: 10
+  service: !type:CEBuyItemsService
+    product: CEClothingShirtGuard
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingCloakMantleInvestigator
+  faction: EmpireGuard
+  priceMarkup: 10
+  service: !type:CEBuyItemsService
+    product: CEClothingCloakMantleInvestigator
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingHeadHelmetInvestigator
+  faction: EmpireGuard
+  priceMarkup: 10
+  service: !type:CEBuyItemsService
+    product: CEClothingHeadHelmetInvestigator
+    count: 1
+
+- type: tradingPosition
+  id: CERope
+  faction: EmpireGuard
+  priceMarkup: 10
+  service: !type:CEBuyItemsService
+    product: CERope
+    count: 1

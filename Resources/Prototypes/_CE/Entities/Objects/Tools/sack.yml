@@ -23,7 +23,7 @@
     delay: 0.5
   - type: Appearance
   - type: StorageFillVisualizer
-    maxFillLevels: 4
+    maxFillLevels: 3
     fillBaseName: icon
   - type: Dumpable
   - type: Clothing
@@ -38,3 +38,6 @@
   - type: EyeProtection
   - type: IngestionBlocker
   - type: Blindfold
+  - type: PhysicalComposition
+    materialComposition:
+      CECloth: 30

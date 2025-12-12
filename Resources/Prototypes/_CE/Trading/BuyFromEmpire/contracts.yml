@@ -1,0 +1,23 @@
+- type: tradingPosition
+  id: CETradeContractHomeDecorRoundstart
+  priceMarkup: 20
+  faction: Contracts
+  service: !type:CEBuyItemsService
+    product: CETradeContractHomeDecor
+    count: 1
+
+- type: tradingPosition
+  id: CETradeContractTailorsRoundstart
+  priceMarkup: 20
+  faction: Contracts
+  service: !type:CEBuyItemsService
+    product: CETradeContractTailors
+    count: 1
+
+- type: tradingPosition
+  id: CETradeContractHorticultureRoundstart
+  priceMarkup: 20
+  faction: Contracts
+  service: !type:CEBuyItemsService
+    product: CETradeContractHorticulture
+    count: 1

@@ -1,0 +1,43 @@
+- type: gameMap
+  id: Shaar
+  mapName: Shaar
+  mapsBelow:
+  - /Maps/_CE/Shaar/Shaar-2.yml
+  - /Maps/_CE/Shaar/Shaar-1.yml
+  mapPath: /Maps/_CE/Shaar/Shaar0.yml
+  mapsAbove:
+  - /Maps/_CE/Shaar/Shaar1.yml
+  - /Maps/_CE/Shaar/Shaar2.yml
+  - /Maps/_CE/Shaar/Shaar3.yml
+  zLevelsComponentOverrides:
+    - type: MapAtmosphere
+      space: False
+      mixture:
+        volume: 2500
+        immutable: True
+        temperature: 293.15
+        moles:
+          Oxygen: 21.824879
+          Nitrogen: 82.10312
+    - type: Parallax
+      parallax: CESky
+    - type: SunShadowCycle
+      offset: 490
+    - type: LightCycle
+      offset: 490
+      originalColor: "#fff475"
+    - type: SunShadow
+    - type: MapLight
+      ambientLightColor: "#efff75"
+  minPlayers: 0
+  stations:
+    Shaar:
+      stationProto: CEStandardImperialFloatingIsland
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: "Shaar"
+        - type: StationJobs
+          availableJobs:
+            CETownfolk: [ -1, -1 ]
+            #CEGuardCommander: [ 1, 1 ]
+            #CETavernmaster: [ 1, 1 ]

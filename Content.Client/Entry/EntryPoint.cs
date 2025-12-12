@@ -99,7 +99,6 @@ namespace Content.Client.Entry
             _componentFactory.IgnoreMissingComponents();
 
             // Do not add to these, they are legacy.
-            _componentFactory.RegisterClass<SharedGravityGeneratorComponent>();
             _componentFactory.RegisterClass<SharedAmeControllerComponent>();
             // Do not add to the above, they are legacy
 
@@ -160,6 +159,7 @@ namespace Content.Client.Entry
 
             // Setup key contexts
             ContentContexts.SetupContexts(_inputManager.Contexts);
+            CEContentContexts.SetupContexts(_inputManager.Contexts); //CrystallEdge
 
             _parallaxManager.LoadDefaultParallax();
             //CE

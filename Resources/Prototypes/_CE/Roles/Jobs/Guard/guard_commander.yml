@@ -4,20 +4,48 @@
   name: ce-job-name-guard-commander
   description: ce-job-desc-guard-commander
   playTimeTracker: CEJobGuardCommander
-  #startingGear: CEGuardCommanderGear
+  startingGear: CEGuardCommanderGear
   icon: CEJobIconGuardCommander
   requireAdminNotify: true
   joinNotifyCrew: true
   canBeAntag: false
   supervisors: ce-job-supervisors-empire
-  weight: 2
+  weight: 3
+  special:
+    - !type:CEAddTradingReputationSpecial
+      factions:
+      - EmpireGuard
   #requirements:
   #  - !type:DepartmentTimeRequirement
   #    department: CEGuard
   #    time: 10980 # 3 hours
 
-#- type: startingGear
-#  id: CEGuardCommanderGear
-#  equipment:
-#    keys: CEKeyRingGuardCommander
-#    belt: CEWalletFilledTest
+- type: startingGear
+  id: CEGuardCommanderGear
+  equipment:
+    keys: CEKeyRingGuardCommander
+    belt: CEWalletFilledGuardCommander
+
+- type: entity
+  id: CEWalletFilledGuardCommander
+  parent: CEWallet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents: #200cp total
+    - id: CECoinGold1
+    - id: CECoinSilver5
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinCopper10
+
+- type: entity
+  id: CEKeyRingGuardCommander
+  parent: CEBaseKeyRing
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    #contents:
+    #- id: Keys here

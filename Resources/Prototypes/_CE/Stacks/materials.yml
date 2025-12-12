@@ -34,6 +34,13 @@
   maxCount: 10
 
 - type: stack
+  id: CEIronOre
+  name: ce-stack-iron-ore
+  spawn: CEIronOre1
+  icon: { sprite: _CE/Objects/Materials/Metals/iron_ore.rsi, state: ore2 }
+  maxCount: 30
+
+- type: stack
   id: CEBrass
   name: ce-stack-brass-bars
   spawn: CEBrassBar1
@@ -74,3 +81,10 @@
   icon: { sprite: "_CE/Objects/Materials/ash.rsi", state: ash_1 }
   spawn: CEAsh1
   maxCount: 30
+
+- type: stack
+  id: CEBloodEssence
+  name: ce-stack-blood-essence
+  icon: { sprite: "_CE/Objects/Materials/blood_essence.rsi", state: drop }
+  spawn: CEBloodEssence
+  maxCount: 10

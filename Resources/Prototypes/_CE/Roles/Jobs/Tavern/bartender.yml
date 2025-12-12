@@ -1,0 +1,41 @@
+- type: job
+  id: CEBartender
+  setPreference: true
+  name: ce-job-name-bartender
+  description: ce-job-desc-bartender
+  playTimeTracker: CEJobBartender
+  startingGear: CEBartenderGear
+  icon: CEJobIconBartender
+  supervisors: ce-job-supervisors-empire
+  canBeAntag: true
+
+- type: startingGear
+  id: CEBartenderGear
+  equipment:
+    keys: CEKeyRingBartender
+    belt: CEWalletFilledBartender
+
+
+- type: entity
+  id: CEWalletFilledBartender
+  parent: CEWallet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents: #100cp total
+    - id: CECoinSilver5
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinCopper10
+
+- type: entity
+  id: CEKeyRingBartender
+  parent: CEBaseKeyRing
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+    - id: CEKeyTavernHall
+    - id: CEKeyTavernStaff

@@ -16,7 +16,7 @@ using Robust.Shared.Spawners;
 
 namespace Content.Server._CE.Power;
 
-public sealed class CEPowerSystem : EntitySystem
+public sealed partial class CEPowerSystem : EntitySystem
 {
     [Dependency] private readonly RadiationSystem _radiation = default!;
     [Dependency] private readonly PointLightSystem _pointLight = default!;
@@ -27,13 +27,35 @@ public sealed class CEPowerSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+        InitializeDelayedConnector();
 
         SubscribeLocalEvent<CEEnergyLeakComponent, PowerConsumerReceivedChanged>(OnPowerChanged);
         SubscribeLocalEvent<CEIrradiateOnDestroyComponent, DestructionEventArgs>(OnBatteryDestroyed);
-        SubscribeLocalEvent<CEToggleableCableComponent, ActivateInWorldEvent>(OnActivateInWorld);
+        SubscribeLocalEvent<CEToggleableConnectorComponent, ActivateInWorldEvent>(OnActivateInWorld);
     }
 
-    private void OnActivateInWorld(Entity<CEToggleableCableComponent> ent, ref ActivateInWorldEvent args)
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        UpdateDelayedConnectors(frameTime);
+    }
+
+    public void ToggleConnector(Entity<NodeContainerComponent> connector, bool status)
+    {
+        foreach (var node in connector.Comp.Nodes.Values)
+        {
+            if (node is CEConnectorCenterNode cableNode)
+            {
+                cableNode.Active = status;
+                _nodeGroup.QueueReflood(node);
+            }
+        }
+
+        _appearance.SetData(connector, CEToggleableCableVisuals.Enabled, status);
+    }
+
+    private void OnActivateInWorld(Entity<CEToggleableConnectorComponent> ent, ref ActivateInWorldEvent args)
     {
         if (_useDelay.IsDelayed(ent.Owner))
             return;
@@ -43,16 +65,8 @@ public sealed class CEPowerSystem : EntitySystem
 
         var newState = !ent.Comp.Active;
         ent.Comp.Active = newState;
-        foreach (var node in nodeContainer.Nodes.Values)
-        {
-            if (node is CableNode cableNode)
-            {
-                cableNode.Active = newState;
-                _nodeGroup.QueueReflood(node);
-            }
-        }
+        ToggleConnector((ent, nodeContainer), newState);
 
-        _appearance.SetData(ent, CEToggleableCableVisuals.Enabled, newState);
         _useDelay.TryResetDelay(ent);
     }
 

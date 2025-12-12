@@ -16,12 +16,13 @@
 - type: gameMap
   id: Dev
   mapName: Dev
+  mapsBelow:
+  - /Maps/_CE/Dev/Dev-1.yml
   mapPath: /Maps/_CE/Dev/Dev0.yml
-  zLevels:
-    -1: /Maps/_CE/Dev/Dev-1.yml
-    1: /Maps/_CE/Dev/Dev1.yml
-    2: /Maps/_CE/Dev/Dev2.yml
-    3: /Maps/_CE/Dev/Dev3.yml
+  mapsAbove:
+  - /Maps/_CE/Dev/Dev1.yml
+  - /Maps/_CE/Dev/Dev2.yml
+  - /Maps/_CE/Dev/Dev3.yml
   zLevelsComponentOverrides:
     - type: MapAtmosphere
       space: False
@@ -32,10 +33,12 @@
         moles:
           Oxygen: 21.824879
           Nitrogen: 82.10312
-    - type: SunShadowCycle
     - type: Parallax
       parallax: CESky
+    - type: SunShadowCycle
+      offset: 490
     - type: LightCycle
+      offset: 490
       originalColor: "#fff475"
     - type: SunShadow
     - type: MapLight
@@ -43,13 +46,15 @@
   minPlayers: 0
   stations:
     Dev:
-      stationProto: StandardNanotrasenStation
+      stationProto: CEStandardImperialFloatingIsland
       components:
         - type: StationNameSetup
           mapNameTemplate: "Dev"
         - type: StationJobs
           availableJobs:
             CETownfolk: [ -1, -1 ]
+            CEGuardCommander: [ 1, 1 ]
+            CETavernmaster: [ 1, 1 ]
         - type: CEStationSpawnerDistribution
           spawns:
             CECoin: !type:AllSelector
@@ -63,4 +68,14 @@
               - id: CEKeyIronBlank
                 amount: 5
               - id: CEBaseLockpick
+                amount: 1
+            CEMedical: !type:AllSelector #Tempmed remove later
+              children:
+              - id: CEGauze
+                amount: 6
+              - id: CEPlastiseal
+                amount: 4
+              - id: CEBloodpack
+                amount: 2
+              - id: CEMagicDefib
                 amount: 1

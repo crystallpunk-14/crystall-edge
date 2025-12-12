@@ -1,3 +1,4 @@
+using Content.Shared._CE.Input;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Hands.Components;
@@ -35,6 +36,9 @@ public sealed class SmartEquipSystem : EntitySystem
         CommandBinds.Builder
             .Bind(ContentKeyFunctions.SmartEquipBackpack, InputCmdHandler.FromDelegate(HandleSmartEquipBackpack, handle: false, outsidePrediction: false))
             .Bind(ContentKeyFunctions.SmartEquipBelt, InputCmdHandler.FromDelegate(HandleSmartEquipBelt, handle: false, outsidePrediction: false))
+            //CrystallEdge
+            .Bind(CEContentKeyFunctions.SmartEquipBelt2, InputCmdHandler.FromDelegate(HandleSmartEquipBelt2, handle: false, outsidePrediction: false))
+            //CrystallEdge
             .Bind(ContentKeyFunctions.SmartEquipPocket1, InputCmdHandler.FromDelegate(HandleSmartEquipPocket1, handle: false, outsidePrediction: false))
             .Bind(ContentKeyFunctions.SmartEquipPocket2, InputCmdHandler.FromDelegate(HandleSmartEquipPocket2, handle: false, outsidePrediction: false))
             .Bind(ContentKeyFunctions.SmartEquipSuitStorage, InputCmdHandler.FromDelegate(HandleSmartEquipSuitStorage, handle: false, outsidePrediction: false))
@@ -57,6 +61,13 @@ public sealed class SmartEquipSystem : EntitySystem
     {
         HandleSmartEquip(session, "belt");
     }
+
+    //CrystallEdge
+    private void HandleSmartEquipBelt2(ICommonSession? session)
+    {
+        HandleSmartEquip(session, "belt2");
+    }
+    //CrystallEdge end
 
     private void HandleSmartEquipPocket1(ICommonSession? session)
     {

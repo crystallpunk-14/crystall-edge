@@ -1,0 +1,43 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Created by jaraten(discord) ",
+    "size": {
+        "x": 32,
+        "y": 96
+    },
+    "states": [
+        {
+            "name": "shelf",
+            "directions": 4
+        },
+        {
+            "name": "bottle-0",
+            "directions": 4
+        },
+        {
+            "name": "bottle-1",
+            "directions": 4
+        },
+        {
+            "name": "bottle-2",
+            "directions": 4
+        },
+        {
+            "name": "bottle-3",
+            "directions": 4
+        },
+        {
+            "name": "bottle-4",
+            "directions": 4
+        },
+        {
+            "name": "bottle-5",
+            "directions": 4
+        },
+        {
+            "name": "bottle-6",
+            "directions": 4
+        }
+    ]
+}

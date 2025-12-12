@@ -7,11 +7,11 @@ namespace Content.Shared._CE.LockKey.Components;
 /// <summary>
 /// A component of a lock that stores its keyhole shape, complexity, and current state.
 /// </summary>
-[RegisterComponent, AutoGenerateComponentState(fieldDeltas: true), NetworkedComponent]
+[RegisterComponent, AutoGenerateComponentState(fieldDeltas: true), NetworkedComponent, Access(typeof(CESharedLockKeySystem))]
 public sealed partial class CELockComponent : Component
 {
     [DataField, AutoNetworkedField]
-    public List<int>? LockShape = null;
+    public List<int> Shape = new();
 
     /// <summary>
     /// On which element of the shape sequence the lock is now located. It's necessary for the mechanics of breaking and entering.
@@ -22,14 +22,8 @@ public sealed partial class CELockComponent : Component
     /// <summary>
     /// If not null, automatically generates a lock for the specified category on initialization. This ensures that the lock will be opened with a key of the same category.
     /// </summary>
-    [DataField]
+    [DataField, AutoNetworkedField]
     public ProtoId<CELockTypePrototype>? AutoGenerateShape = null;
-
-    /// <summary>
-    /// If not null, the lock will automatically generate a random shape on initialization with selected numbers of elements. Useful for random dungeons doors or chests for example.
-    /// </summary>
-    [DataField]
-    public int? AutoGenerateRandomShape = null;
 
     /// <summary>
     /// This component is used for two types of items: Entities themselves that are locked (doors, chests),
@@ -46,4 +40,7 @@ public sealed partial class CELockComponent : Component
         .WithVariation(0.05f)
         .WithVolume(0.5f),
     };
+
+    [DataField]
+    public TimeSpan EmbedDelay = TimeSpan.FromSeconds(2);
 }

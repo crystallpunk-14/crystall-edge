@@ -9,10 +9,24 @@
 - type: playTimeTracker
   id: CEJobInvestigator
 
+# Tavern
+
+- type: playTimeTracker
+  id: CEJobTavernmaster
+
+- type: playTimeTracker
+  id: CEJobBartender
+
+- type: playTimeTracker
+  id: CEJobChef
+
+- type: playTimeTracker
+  id: CEJobFarmer
+
 # Citizens
 
 - type: playTimeTracker
-  id: CEJobMayor
+  id: CEJobTownfolk
 
 - type: playTimeTracker
-  id: CEJobTownfolk
+  id: CEJobBard

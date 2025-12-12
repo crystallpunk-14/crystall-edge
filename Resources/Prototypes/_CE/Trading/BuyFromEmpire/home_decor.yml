@@ -1,0 +1,62 @@
+- type: tradingPosition
+  id: CETradeContractHomeDecor
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CETradeContractHomeDecor
+    count: 1
+
+- type: tradingPosition
+  id: CEWoodenPlanks10
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEWoodenPlanks20
+    count: 1
+
+- type: tradingPosition
+  id: CEFloorCarpetItemBlue10
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEFloorCarpetItemBlue10
+    count: 1
+
+- type: tradingPosition
+  id: CEFloorCarpetItemRed10
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEFloorCarpetItemRed10
+    count: 1
+
+- type: tradingPosition
+  id: CEFloorCarpetItemPurple10
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEFloorCarpetItemPurple10
+    count: 1
+
+- type: tradingPosition
+  id: CEFloorCarpetItemBlack10
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEFloorCarpetItemBlack10
+    count: 1
+
+- type: tradingPosition
+  id: CECandle
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CECandle
+    count: 1
+
+- type: tradingPosition
+  id: CECandelabra
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CECandelabra
+    count: 1
+
+- type: tradingPosition
+  id: CENail10
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CENail10
+    count: 1

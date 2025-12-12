@@ -1,0 +1,214 @@
+- type: entity
+  parent: CEBaseWorkbench
+  id: CEWorkbenchVampire
+  categories: [ ForkFiltered ]
+  name: vampire power point
+  description: A table imbued with vampire magic, allowing you to create items of dark arts.
+  components:
+  - type: Sprite
+    snapCardinals: true
+    sprite: _CE/Structures/Magic/Vampire/workbench.rsi
+    layers:
+    - state: base
+    - state: fx
+      shader: unshaded
+  - type: Icon
+    sprite: _CE/Structures/Magic/Vampire/workbench.rsi
+    state: base
+  - type: CEWorkbench
+    craftSound:
+      path: /Audio/_CE/Effects/vampire_craft.ogg
+      params:
+        variation: 0.125
+    recipeTags:
+    - CERecipeVampire
+  - type: LightBehaviour
+    behaviours:
+      - !type:PulseBehaviour
+        interpolate: Cubic
+        maxDuration: 8
+        startValue: 1.0
+        endValue: 3.0
+        property: Energy
+        isLooped: true
+        enabled: true
+  - type: PointLight
+    enabled: true
+    color: "#d60032"
+    energy: 1
+    radius: 3
+  - type: Construction
+    graph: CEWorkbenchVampire
+    node: CEWorkbenchVampire
+
+- type: entity
+  parent: BaseStructure
+  id: CEVampireClanHeartBase
+  abstract: true
+  categories: [ ForkFiltered ]
+  name: heart of vampire clan
+  description: The source of power for the vampire clan. By gathering the life force of its victims, the clan becomes stronger.
+  components:
+  - type: WarpPoint
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        density: 1000
+        layer:
+        - WallLayer
+  - type: Sprite
+    drawdepth: Mobs
+    snapCardinals: true
+    sprite: _CE/Structures/Magic/Vampire/heart.rsi
+  - type: Icon
+    sprite: _CE/Structures/Magic/Vampire/heart.rsi
+    state: base
+  - type: LightBehaviour
+    behaviours:
+      - !type:PulseBehaviour
+        interpolate: Cubic
+        maxDuration: 8
+        startValue: 1.0
+        endValue: 3.0
+        property: Energy
+        isLooped: true
+        enabled: true
+  - type: PointLight
+    enabled: true
+    color: "#d60032"
+    energy: 1
+    radius: 3
+  - type: CEVampireClanHeart
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.VampireClanLevelVisuals.Level:
+        level:
+          1: {state: orb1}
+          2: {state: orb2}
+          3: {state: orb3}
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: CEMetallic
+
+- type: entity
+  parent: CEVampireClanHeartBase
+  id: CEVampireClanHeart
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: devourers
+    - state: orb1
+      sprite: _CE/Structures/Magic/Vampire/heart_orb.rsi
+      shader: unshaded
+      offset: 0, 0.5
+      map: [ "level" ]
+  - type: Construction
+    graph: CEVampireClanHeart
+    node: CEVampireClanHeart
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:CEVampireAltarExplodeBehavior
+      #- !type:SpawnEntitiesBehavior
+      #  spawn:
+      #    CESkyLightningRed:
+      #      min: 1
+      #      max: 1
+      - !type:ChangeConstructionNodeBehavior
+        node: CEVampireClanHeartUnnameableFrame
+
+- type: entity
+  parent: BaseStructure
+  id: CEVampireClanHeartFrame
+  categories: [ ForkFiltered, HideSpawnMenu ]
+  name: clan heart frame
+  description: A majestic artifact of vampire culture. Unfinished.
+  components:
+  - type: Sprite
+    snapCardinals: true
+    sprite: _CE/Structures/Magic/Vampire/heart.rsi
+    layers:
+    - state: frame
+  - type: Construction
+    graph: CEVampireClanHeart
+    node: CEVampireClanHeartFrame
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: CEMetallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 20
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEStoneBlock1:
+            min: 1
+            max: 5
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  id: CEVampireStoneAltar
+  parent: Bed
+  categories: [ ForkFiltered ]
+  name: bloody altar
+  description: A gruesome stone altar splattered with blood. Doubles the amount of blood essence extracted from vampire victims.
+  components:
+  - type: CEVampireAltar
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Sprite
+    sprite: _CE/Structures/Magic/Vampire/altar.rsi
+    layers:
+    - state: base
+    - state: fx
+      shader: unshaded
+    noRot: true
+  - type: Icon
+    sprite: _CE/Structures/Magic/Vampire/altar.rsi
+    state: base
+  - type: Construction
+    graph: CEVampireStoneAltar
+    node: CEVampireStoneAltar
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: CERock
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 20
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEStoneBlock1:
+            min: 2
+            max: 4
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEBloodEssence:
+            min: 1
+            max: 1
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]

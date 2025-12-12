@@ -1,0 +1,26 @@
+- type: constructionGraph
+  id: CEVampireClanHeart
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: CEVampireClanHeartFrame
+          completed:
+            - !type:SnapToGrid
+          steps:
+            - material: CEStone
+              amount: 10
+              doAfter: 2
+
+    - node: CEVampireClanHeartFrame
+      entity: CEVampireClanHeartFrame
+      edges:
+        - to: CEVampireClanHeart
+          completed:
+            - !type:SnapToGrid
+          steps:
+            - material: CEBloodEssence
+              amount: 1
+              doAfter: 1
+    - node: CEVampireClanHeart
+      entity: CEVampireClanHeart

@@ -16,39 +16,8 @@
       "directions": 4
     },
     {
-      "name": "fence0",
+      "name": "fence",
       "directions": 4
-    },
-    {
-      "name": "fence1",
-      "directions": 4
-    },
-    {
-      "name": "fence2",
-      "directions": 4
-    },
-    {
-      "name": "fence3",
-      "directions": 4
-    },
-    {
-      "name": "fence4",
-      "directions": 4
-    },
-    {
-      "name": "fence5",
-      "directions": 4
-    },
-    {
-      "name": "fence6",
-      "directions": 4
-    },
-    {
-      "name": "fence7",
-      "directions": 4
-    },
-    {
-      "name": "full"
     }
   ]
 }

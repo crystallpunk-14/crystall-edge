@@ -22,6 +22,7 @@ public abstract class CESharedMagicEnergySystem : EntitySystem {
         SubscribeLocalEvent<CEEnergyAlertComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<CEEnergyAlertComponent, ChargeChangedEvent>(OnChargeUpdate);
         SubscribeLocalEvent<CEEnergyOverchargeDamageComponent, CEEnergyOverchargeEvent>(OnOvercharge);
+        SubscribeLocalEvent<CEEnergyDeficitDamageComponent, CEEnergyDeficitEvent>(OnDeficit);
         SubscribeLocalEvent<CEEnergyAlertComponent, ComponentShutdown>(OnShutdown);
     }
 
@@ -61,6 +62,17 @@ public abstract class CESharedMagicEnergySystem : EntitySystem {
         _audio.PlayPvs(ent.Comp.OverchargeSound, xform.Coordinates);
     }
 
+    private void OnDeficit(Entity<CEEnergyDeficitDamageComponent> ent, ref CEEnergyDeficitEvent args)
+    {
+        _damageable.TryChangeDamage(ent.Owner, ent.Comp.Damage * args.Deficit, interruptsDoAfters: false);
+        _jitter.DoJitter(ent, TimeSpan.FromSeconds(0.5f), true, 2, 8);
+        _popup.PopupEntity(Loc.GetString(ent.Comp.Popup), ent, PopupType.SmallCaution);
+
+        var xform = Transform(ent);
+        SpawnAtPosition(ent.Comp.VFX, xform.Coordinates);
+        _audio.PlayPvs(ent.Comp.OverchargeSound, xform.Coordinates);
+    }
+
     private void OnShutdown(Entity<CEEnergyAlertComponent> ent, ref ComponentShutdown args)
     {
         _alert.ClearAlert(ent.Owner, ent.Comp.AlertType);
@@ -75,4 +87,14 @@ public abstract class CESharedMagicEnergySystem : EntitySystem {
 public sealed class CEEnergyOverchargeEvent(float overcharge) : EntityEventArgs
 {
     public float Overcharge = overcharge;
+}
+
+/// <summary>
+/// Triggered when an entity attempts to use magic energy (mana) but does not have enough available.
+/// </summary>
+/// <param name="deficit">The amount of mana that was attempted to be used but was unavailable.</param>
+[ByRefEvent]
+public sealed class CEEnergyDeficitEvent(float deficit) : EntityEventArgs
+{
+    public float Deficit = deficit;
 }

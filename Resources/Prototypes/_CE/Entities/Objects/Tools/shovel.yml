@@ -27,7 +27,7 @@
         Slash: 5
   - type: Wieldable
   - type: Clothing
-    #breakOnMove: false
+    equipWhileMoving: true
     equipDelay: 1
     unequipDelay: 1
     slots:

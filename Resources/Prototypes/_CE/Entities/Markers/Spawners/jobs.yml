@@ -8,22 +8,6 @@
     sprite: _CE/Markers/jobs.rsi
     snapCardinals: true
 
-# Citizens
-
-- type: entity
-  id: CESpawnPointTownfolk
-  parent: CESpawnPointJobBase
-  name: townfolk
-  categories:
-  - Spawner
-  components:
-  - type: SpawnPoint
-    job_id: CETownfolk
-  - type: Sprite
-    layers:
-      - state: green
-      - state: commandant #TODO
-
 # Guards
 
 - type: entity
@@ -67,3 +51,91 @@
     layers:
       - state: green
       - state: investigator
+
+# Tavern
+
+- type: entity
+  id: CESpawnPointTavernmaster
+  parent: CESpawnPointJobBase
+  name: tavernmaster
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CETavernmaster
+  - type: Sprite
+    layers:
+      - state: green
+      - state: workman
+
+- type: entity
+  id: CESpawnPointBartender
+  parent: CESpawnPointJobBase
+  name: bartender
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEBartender
+  - type: Sprite
+    layers:
+      - state: green
+      - state: workman
+
+- type: entity
+  id: CESpawnPointChef
+  parent: CESpawnPointJobBase
+  name: chef
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEChef
+  - type: Sprite
+    layers:
+      - state: green
+      - state: workman
+
+- type: entity
+  id: CESpawnPointFarmer
+  parent: CESpawnPointJobBase
+  name: farmer
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEFarmer
+  - type: Sprite
+    layers:
+      - state: green
+      - state: workman
+
+# Citizens
+
+- type: entity
+  id: CESpawnPointBard
+  parent: CESpawnPointJobBase
+  name: bard
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEBard
+  - type: Sprite
+    layers:
+      - state: green
+      - state: workman
+
+- type: entity
+  id: CESpawnPointTownfolk
+  parent: CESpawnPointJobBase
+  name: townfolk
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CETownfolk
+  - type: Sprite
+    layers:
+      - state: green
+      - state: workman

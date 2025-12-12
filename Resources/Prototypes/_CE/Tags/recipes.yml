@@ -1,2 +1,5 @@
 - type: Tag
   id: CERecipeWorkbench
+
+- type: Tag
+  id: CERecipeVampire

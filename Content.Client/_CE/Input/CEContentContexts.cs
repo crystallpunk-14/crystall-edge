@@ -11,6 +11,9 @@ namespace Content.Client._CE.Input
             human.AddFunction(CEContentKeyFunctions.SelectedZLayerDown);
             human.AddFunction(CEContentKeyFunctions.SelectedZLayerUp);
             human.AddFunction(CEContentKeyFunctions.ToggleZLayerRelation);
+            human.AddFunction(CEContentKeyFunctions.OpenBelt2);
+            human.AddFunction(CEContentKeyFunctions.SmartEquipBelt2);
+            human.AddFunction(CEContentKeyFunctions.OpenSkillMenu);
         }
     }
 }

@@ -1,0 +1,41 @@
+- type: job
+  id: CEChef
+  setPreference: true
+  name: ce-job-name-chef
+  description: ce-job-desc-chef
+  playTimeTracker: CEJobChef
+  startingGear: CEChefGear
+  icon: CEJobIconChef
+  supervisors: ce-job-supervisors-empire
+  canBeAntag: true
+
+- type: startingGear
+  id: CEChefGear
+  equipment:
+    keys: CEKeyRingChef
+    belt: CEWalletFilledChef
+
+
+- type: entity
+  id: CEWalletFilledChef
+  parent: CEWallet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents: #100cp total
+    - id: CECoinSilver5
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinCopper10
+
+- type: entity
+  id: CEKeyRingChef
+  parent: CEBaseKeyRing
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+    - id: CEKeyTavernHall
+    - id: CEKeyTavernStaff

@@ -1,0 +1,103 @@
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyTavernHall
+  suffix: Tavern Hall
+  components:
+  - type: CEKey
+    autoGenerateShape: TavernHall
+
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyTavernStaff
+  suffix: Tavern Staff
+  components:
+  - type: CEKey
+    autoGenerateShape: TavernStaff
+
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyTavernHeadRoom
+  suffix: Tavern Head Room
+  components:
+  - type: CEKey
+    autoGenerateShape: TavernHeadRoom
+
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyTavernDorm1
+  suffix: Tavern Dorm 1
+  components:
+  - type: CEKey
+    autoGenerateShape: TavernDorm1
+
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyTavernDorm2
+  suffix: Tavern Dorm 2
+  components:
+  - type: CEKey
+    autoGenerateShape: TavernDorm2
+
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyTavernDorm3
+  suffix: Tavern Dorm 3
+  components:
+  - type: CEKey
+    autoGenerateShape: TavernDorm3
+
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyTavernDorm4
+  suffix: Tavern Dorm 4
+  components:
+  - type: CEKey
+    autoGenerateShape: TavernDorm4
+
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyTavernDorm5
+  suffix: Tavern Dorm 5
+  components:
+  - type: CEKey
+    autoGenerateShape: TavernDorm5
+
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyTavernDorm6
+  suffix: Tavern Dorm 6
+  components:
+  - type: CEKey
+    autoGenerateShape: TavernDorm6
+
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyTavernDorm7
+  suffix: Tavern Dorm 7
+  components:
+  - type: CEKey
+    autoGenerateShape: TavernDorm7
+
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyTavernDorm8
+  suffix: Tavern Dorm 8
+  components:
+  - type: CEKey
+    autoGenerateShape: TavernDorm8
+
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyTavernDorm9
+  suffix: Tavern Dorm 9
+  components:
+  - type: CEKey
+    autoGenerateShape: TavernDorm9
+
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyTavernDorm10
+  suffix: Tavern Dorm 10
+  components:
+  - type: CEKey
+    autoGenerateShape: TavernDorm10

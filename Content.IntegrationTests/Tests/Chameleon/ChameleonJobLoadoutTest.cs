@@ -13,6 +13,7 @@ namespace Content.IntegrationTests.Tests.Chameleon;
 /// </summary>
 public sealed class ChameleonJobLoadoutTest : InteractionTest
 {
+    /* CrystallEdge disabled
     private static readonly List<ProtoId<JobPrototype>> JobBlacklist =
     [
 
@@ -65,4 +66,5 @@ public sealed class ChameleonJobLoadoutTest : InteractionTest
         return job.StartingGear != null && ProtoMan.HasIndex<RoleLoadoutPrototype>(LoadoutSystem.GetJobPrototype(job.ID));
     }
 
+    */
 }

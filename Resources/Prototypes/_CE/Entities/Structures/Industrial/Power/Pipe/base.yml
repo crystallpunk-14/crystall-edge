@@ -15,4 +15,3 @@
     damageContainer: Inorganic
     damageModifierSet: Metallic
   - type: CEPipeVis
-    node: power

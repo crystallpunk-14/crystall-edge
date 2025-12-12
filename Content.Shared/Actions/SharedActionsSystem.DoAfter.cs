@@ -1,5 +1,8 @@
-﻿using Content.Shared.Actions.Events;
+﻿using Content.Shared._CE.Actions;
+using Content.Shared.Actions.Components;
+using Content.Shared.Actions.Events;
 using Content.Shared.DoAfter;
+using Content.Shared.Item;
 
 namespace Content.Shared.Actions;
 
@@ -19,6 +22,11 @@ public abstract partial class SharedActionsSystem
         var delay = ent.Comp.Delay;
 
         var netEnt = GetNetEntity(performer);
+
+        //CrystallEdge doAfter start event
+        var ceStartEv = new CEActionStartDoAfterEvent(netEnt, input);
+        RaiseLocalEvent(ent, ceStartEv);
+        //CrystallEdge end
 
         var actionDoAfterEvent = new ActionDoAfterEvent(netEnt, originalUseDelay, input);
 

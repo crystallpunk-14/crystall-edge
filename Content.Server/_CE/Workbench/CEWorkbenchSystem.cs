@@ -6,6 +6,7 @@
 using System.Numerics;
 using Content.Server.DoAfter;
 using Content.Server.Popups;
+using Content.Server.Stack;
 using Content.Shared._CE.Workbench;
 using Content.Shared._CE.Workbench.Prototypes;
 using Content.Shared.DoAfter;
@@ -27,6 +28,7 @@ public sealed partial class CEWorkbenchSystem : CESharedWorkbenchSystem
     [Dependency] private readonly UserInterfaceSystem _userInterface = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly StackSystem _stack = default!;
 
     public override void Initialize()
     {
@@ -122,6 +124,7 @@ public sealed partial class CEWorkbenchSystem : CESharedWorkbenchSystem
             foreach (var resultEntity in resultEntities)
             {
                 _transform.SetCoordinates(resultEntity, Transform(ent).Coordinates.Offset(new Vector2(_random.NextFloat(-0.25f, 0.25f), _random.NextFloat(-0.25f, 0.25f))));
+                _stack.TryMergeToContacts(resultEntity);
             }
         }
 

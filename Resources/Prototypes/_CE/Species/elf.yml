@@ -10,6 +10,10 @@
   maleFirstNames: CE_Names_Elf_Male_First
   femaleFirstNames: CE_Names_Elf_Female_First
   lastNames: CE_Names_Elf_Last
+  minAge: 18 #TODO: mention ages in the species guidebook entry
+  maxAge: 900
+  youngAge: 100
+  oldAge: 700
 
 - type: speciesBaseSprites
   id: CEMobElfSprites

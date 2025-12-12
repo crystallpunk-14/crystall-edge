@@ -1,0 +1,20 @@
+- type: entity
+  id: CEArrivalsDockPointMarker
+  name: arrivals dock point
+  parent: MarkerBase
+  description: Map this thing onto island map and arrivals map to indicate where arrivals shuttles should dock.
+  categories: [ ForkFiltered ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: _CE/Markers/misc.rsi
+        state: ship
+  - type: CEArrivalsShipDockPoint
+  - type: FTLSmashImmune

@@ -1,0 +1,41 @@
+- type: job
+  id: CEFarmer
+  setPreference: true
+  name: ce-job-name-farmer
+  description: ce-job-desc-farmer
+  playTimeTracker: CEJobFarmer
+  startingGear: CEFarmerGear
+  icon: CEJobIconFarmer
+  supervisors: ce-job-supervisors-empire
+  canBeAntag: true
+
+- type: startingGear
+  id: CEFarmerGear
+  equipment:
+    keys: CEKeyRingFarmer
+    belt: CEWalletFilledFarmer
+
+
+- type: entity
+  id: CEWalletFilledFarmer
+  parent: CEWallet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents: #100cp total
+    - id: CECoinSilver5
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinCopper10
+
+- type: entity
+  id: CEKeyRingFarmer
+  parent: CEBaseKeyRing
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+    - id: CEKeyTavernHall
+    - id: CEKeyTavernStaff

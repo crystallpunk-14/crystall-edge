@@ -8,6 +8,9 @@ namespace Content.Shared._CE.Input
     {
         public static readonly BoundKeyFunction SelectedZLayerUp = "SelectedZLayerUp";
         public static readonly BoundKeyFunction SelectedZLayerDown = "SelectedZLayerDown";
-        public static readonly BoundKeyFunction ToggleZLayerRelation = "ToggleZLayerRelation";
+        public static readonly BoundKeyFunction ToggleZLayerRelation = "ToggleZLayerRelation";   
+        public static readonly BoundKeyFunction OpenBelt2 = "OpenBelt2";
+        public static readonly BoundKeyFunction SmartEquipBelt2 = "SmartEquipBelt2";
+        public static readonly BoundKeyFunction OpenSkillMenu = "OpenSkillMenu";
     }
 }

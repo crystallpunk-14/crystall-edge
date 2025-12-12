@@ -9,6 +9,7 @@ using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Systems;
 using Content.Server.Spawners.Components;
 using Content.Server.Station.Components;
+using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.CCVar;
 using Content.Shared.Roles;
 using Robust.Shared.Configuration;
@@ -86,27 +87,12 @@ namespace Content.IntegrationTests.Tests
         private static readonly string[] GameMaps =
         {
             "Dev",
-            //"TestTeg",
-            //"Fland",
-            //"Packed",
-            //"Bagel",
-            //"CentComm",
-            //"Box",
-            //"Marathon",
-            //"MeteorArena",
-            //"Saltern",
-            //"Reach",
-            //"Oasis",
-            //"Amber",
-            //"Plasma",
-            //"Elkridge",
-            //"Relic",
-            //"dm01-entryway",
-            //"Exo",
+            "Shaar",
         };
 
         private static readonly ProtoId<EntityCategoryPrototype> DoNotMapCategory = "DoNotMap";
 
+        /* //CrystallEdge disabled tests - we dont have shuttles and grids
         /// <summary>
         /// Asserts that specific files have been saved as grids and not maps.
         /// </summary>
@@ -190,6 +176,8 @@ namespace Content.IntegrationTests.Tests
 
             await pair.CleanReturnAsync();
         }
+
+        */
 
         [Test]
         public async Task NoSavedPostMapInitTest()
@@ -394,6 +382,14 @@ namespace Content.IntegrationTests.Tests
                 var memberQuery = entManager.GetEntityQuery<StationMemberComponent>();
 
                 var grids = mapManager.GetAllGrids(mapId).ToList();
+
+                //CrystallEdge add zlevels grids to the test
+                var query = entManager.EntityQueryEnumerator<CEZLevelMapComponent, MapGridComponent>();
+                while (query.MoveNext(out var uid, out var zNetwork, out var mapGrid))
+                {
+                    grids.Add((uid, mapGrid));
+                }
+
                 var gridUids = grids.Select(o => o.Owner).ToList();
                 targetGrid = gridUids.First();
 

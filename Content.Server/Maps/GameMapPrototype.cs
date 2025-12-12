@@ -45,10 +45,18 @@ public sealed partial class GameMapPrototype : IPrototype
     public ResPath MapPath { get; private set; } = default!;
 
     /// <summary>
-    /// CrystallEdge: additional maps loading. <see cref="MapPath"/> working like 0 depth z-level
+    /// CrystallEdge: Additional maps loaded below the main map (at negative depth levels).
+    /// Each map in the list is loaded at depth -N, -N+1, ..., -1, with <see cref="MapPath"/> at depth 0.
     /// </summary>
     [DataField]
-    public Dictionary<int, ResPath> ZLevels = new();
+    public List<ResPath> MapsBelow = new();
+
+    /// <summary>
+    /// CrystallEdge: additional maps loaded above the main map (at positive depth levels).
+    /// Each map in the list is loaded at depth 1, 2, ..., N. <see cref="MapPath"/> works as depth 0.
+    /// </summary>
+    [DataField]
+    public List<ResPath> MapsAbove = new();
 
     /// <summary>
     /// CrystallEdge: ability to setup shared components for all zLevels

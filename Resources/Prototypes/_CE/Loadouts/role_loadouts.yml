@@ -5,3 +5,46 @@
   - CEGeneralShirt
   - CEGeneralPants
   - CEGeneralShoes
+
+- type: roleLoadout
+  id: JobCEBard
+  groups:
+  - CEBardHead
+  - CEBardShirt
+  - CEBardPants
+  - CEBardShoes
+  - CEBardTool
+
+- type: roleLoadout
+  id: JobCEGuardCommander
+  groups:
+  - CEGuardHead
+  #- CEGeneralEyes
+  - CEGuardCommanderCloak #
+  #- CEGeneralGloves
+  - CEGuardShirt
+  - CEGuardPants
+  - CEGeneralShoes
+
+- type: roleLoadout
+  id: JobCEInvestigator
+  groups:
+  - CEInvestigatorHead
+  #- CEGeneralEyes
+  - CEInvestigatorCloak #
+  #- CEGeneralGloves
+  - CEGuardShirt
+  - CEGuardPants
+  - CEGeneralShoes
+  #- CEGeneralBack
+
+- type: roleLoadout
+  id: JobCEGuard
+  groups:
+  - CEGuardHead
+  #- CEGeneralEyes
+  - CEGuardCloak #
+  #- CEGeneralGloves
+  - CEGuardShirt
+  - CEGuardPants
+  - CEGeneralShoes

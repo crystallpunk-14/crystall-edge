@@ -1,0 +1,11 @@
+- type: entity
+  parent: BaseMindRoleAntag
+  id: CEMindRoleVampire
+  categories: [ ForkFiltered ]
+  name: Vampire role
+  components:
+  - type: MindRole
+    antagPrototype: CEVampire
+    roleType: SoloAntagonist
+    exclusiveAntag: true
+  - type: CEVampireRole

@@ -245,29 +245,6 @@ public sealed partial class CEWorkbenchWindow : DefaultWindow
         return indexedCategory.Name == selectedCategory;
     }
 
-    private void RecipeSelect(CEWorkbenchUiRecipesState recipesState)
-    {
-        foreach (var entry in recipesState.Recipes)
-        {
-            RecipeSelect(entry, _prototype.Index(entry.ProtoId));
-            break;
-        }
-    }
-
-    private void RecipeSelect(CEWorkbenchUiRecipesEntry cachedEntry)
-    {
-        if (_cachedState is null)
-            return;
-
-        if (_cachedState.Recipes.Contains(cachedEntry))
-        {
-            Sawmill.Warning($"The selected cache option {cachedEntry} isn't found in recipes");
-            return;
-        }
-
-        RecipeSelect(cachedEntry, _prototype.Index(cachedEntry.ProtoId));
-    }
-
     private void RecipeSelect(CEWorkbenchUiRecipesEntry entry, CEWorkbenchRecipePrototype recipe)
     {
         _selectedEntry = entry;

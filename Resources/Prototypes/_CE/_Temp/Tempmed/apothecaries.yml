@@ -1,0 +1,58 @@
+- type: tradingFaction
+  id: ApothecariesGuild
+  color: "#749a94"
+  name: ce-trade-faction-apothecaries-guild
+
+- type: entity
+  parent: CETradeContractBase
+  id: CETradeContractApothecariesGuild
+  description: Trading contract with the "Apothecaries" store. Allows you to buy some medical supplies to treat the injured.
+  suffix: Apothecaries Guild
+  components:
+  - type: Sprite
+    state: apothecaries
+  - type: CETradingContract
+    faction: ApothecariesGuild
+
+- type: tradingPosition
+  id: CETradeContractApothecariesGuild
+  faction: ApothecariesGuild
+  service: !type:CEBuyItemsService
+    product: CETradeContractApothecariesGuild
+    count: 1
+
+- type: tradingPosition
+  id: CETradeContractApothecariesGuildRoundstart
+  priceMarkup: 20
+  faction: Contracts
+  service: !type:CEBuyItemsService
+    product: CETradeContractApothecariesGuild
+    count: 1
+
+- type: tradingPosition
+  id: CEGauze5
+  faction: ApothecariesGuild
+  service: !type:CEBuyItemsService
+    product: CEGauze
+    count: 1
+
+- type: tradingPosition
+  id: CEPlastiseal5
+  faction: ApothecariesGuild
+  service: !type:CEBuyItemsService
+    product: CEPlastiseal
+    count: 1
+
+- type: tradingPosition
+  id: CEBloodpack10
+  faction: ApothecariesGuild
+  service: !type:CEBuyItemsService
+    product: CEBloodpack
+    count: 1
+
+- type: tradingPosition
+  id: CEMagicDefib
+  faction: ApothecariesGuild
+  service: !type:CEBuyItemsService
+    product: CEMagicDefib
+    count: 1

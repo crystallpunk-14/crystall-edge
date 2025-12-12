@@ -162,6 +162,7 @@
   - type: FireVisuals
     lightColor: "#ff1100"
     normalState: blood_fire
+  - type: CEVampireCandle
 
 - type: entity
   parent: CECandle
@@ -183,3 +184,4 @@
         blood1: ""
         blood2: ""
         blood3: ""
+  - type: CEVampireCandle
