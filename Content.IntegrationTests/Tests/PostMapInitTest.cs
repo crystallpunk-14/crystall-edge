@@ -87,23 +87,7 @@ namespace Content.IntegrationTests.Tests
         private static readonly string[] GameMaps =
         {
             "Dev",
-            //"TestTeg",
-            //"Fland",
-            //"Packed",
-            //"Bagel",
-            //"CentComm",
-            //"Box",
-            //"Marathon",
-            //"MeteorArena",
-            //"Saltern",
-            //"Reach",
-            //"Oasis",
-            //"Amber",
-            //"Plasma",
-            //"Elkridge",
-            //"Relic",
-            //"dm01-entryway",
-            //"Exo",
+            "Shaar",
         };
 
         private static readonly ProtoId<EntityCategoryPrototype> DoNotMapCategory = "DoNotMap";
