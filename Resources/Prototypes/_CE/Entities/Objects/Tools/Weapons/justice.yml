@@ -1,65 +1,70 @@
 - type: entity
-  id: CEGunPeacekeeper
+  id: CEGunJustice
   parent:
   - BaseLaserRifle
-  - BaseGunWieldable
-  name: Peacekeeper
-  description: A low-charge energy rifle that fires a powerful repulsive beam of concentrated mana.
+  name: Justice Revolver
+  description: TODO
   categories: [ ForkFiltered ]
   components:
   - type: Sprite
-    sprite: _CE/Objects/Tools/Weapons/peacekeeper.rsi
+    sprite: _CE/Objects/Tools/Weapons/justice.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
-    - state: mag-unshaded-4
+    - state: mag-unshaded-3
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
   - type: Clothing
-    sprite: _CE/Objects/Tools/Weapons/peacekeeper.rsi
-    equipDelay: 1
-    unequipDelay: 1.5
+    sprite: _CE/Objects/Tools/Weapons/justice.rsi
+    equipDelay: 0.5
+    unequipDelay: 0.5
     equipWhileMoving: true
+    slots:
+    - belt
+  - type: MagazineVisuals
+    steps: 4
   - type: HitscanBatteryAmmoProvider
-    proto: CEPeaceKeeperHitscan
-    fireCost: 10
+    proto: CEJusticeHitscan
+    fireCost: 5
   - type: Battery
-    maxCharge: 50
-    startingCharge: 50
+    maxCharge: 40
+    startingCharge: 40
   - type: Gun
-    fireRate: 0.5
+    angleIncrease: 5
+    angleDecay: 20
+    minAngle: 0
+    maxAngle: 50
+    cameraRecoilScalar: 0.2
+    fireRate: 2.5
+    resetOnHandSelected: false
     soundGunshot:
-      path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
+      path: /Audio/_CE/Effects/peacekeeper_laser.ogg
       params:
         variation: 0.2
 
 - type: entity
   parent: BasicHitscan
-  id: CEPeaceKeeperHitscan
+  id: CEJusticeHitscan
   categories: [ HideSpawnMenu ]
   components:
   - type: HitscanBasicDamage
     damage:
       types:
-        Heat: 25
+        Heat: 10
   - type: CEHitscanSpellEffect
     effects:
-    - !type:CESpellThrowFromUser
-      distance: 1
-    - !type:CESpellStun
-      duration: 0.25
     - !type:CESpellIrradiate
-      charge: 10
+      charge: 5
     - !type:CESpellSpawnEntityOnUser
       spawns:
       - CEOverchargeVFX
   - type: HitscanBasicVisuals
     muzzleFlash:
-      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      sprite: _CE/Objects/Tools/Weapons/justice.rsi
       state: muzzle_blue
     travelFlash:
-      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      sprite: _CE/Objects/Tools/Weapons/justice.rsi
       state: beam_blue
     impactFlash:
-      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      sprite: _CE/Objects/Tools/Weapons/justice.rsi
       state: impact_blue
