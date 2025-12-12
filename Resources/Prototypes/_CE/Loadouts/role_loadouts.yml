@@ -1,19 +1,27 @@
+# Tavern
+
 - type: roleLoadout
-  id: JobCETownfolk
+  id: JobCETavernmaster
   groups:
-  - CETownfolkHead
+  - CETavernmasterHead #
+  #- CEGeneralEyes
+  - CETavernmasterCloak #
+  #- CEGeneralGloves
   - CEGeneralShirt
   - CEGeneralPants
   - CEGeneralShoes
 
 - type: roleLoadout
-  id: JobCEBard
+  id: JobCEChef
   groups:
-  - CEBardHead
-  - CEBardShirt
-  - CEBardPants
-  - CEBardShoes
-  - CEBardTool
+  - CEChefHead
+  #- CEGeneralEyes
+  #- CEGeneralGloves
+  - CEGeneralShirt
+  - CEGeneralPants
+  - CEGeneralShoes
+
+# Guard
 
 - type: roleLoadout
   id: JobCEGuardCommander
@@ -48,3 +56,22 @@
   - CEGuardShirt
   - CEGuardPants
   - CEGeneralShoes
+
+# Citizens
+
+- type: roleLoadout
+  id: JobCETownfolk
+  groups:
+  - CETownfolkHead
+  - CEGeneralShirt
+  - CEGeneralPants
+  - CEGeneralShoes
+
+- type: roleLoadout
+  id: JobCEBard
+  groups:
+  - CEBardHead
+  - CEBardShirt
+  - CEBardPants
+  - CEBardShoes
+  - CEBardTool

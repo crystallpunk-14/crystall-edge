@@ -1,5 +1,33 @@
-
 # Cloak
+
+## Guard Commander
+
+- type: loadoutGroup
+  id: CEGuardCommanderCloak
+  name: ce-loadout-cloak
+  loadouts:
+  - CEClothingCloakGuardCommander
+
+- type: loadout
+  id: CEClothingCloakGuardCommander
+  equipment:
+    cloak: CEClothingCloakGuardCommander
+
+
+## Investigator
+
+- type: loadoutGroup
+  id: CEInvestigatorCloak
+  name: ce-loadout-cloak
+  loadouts:
+  - CEClothingCloakMantleInvestigator
+
+- type: loadout
+  id: CEClothingCloakMantleInvestigator
+  equipment:
+    cloak: CEClothingCloakMantleInvestigator
+
+## Guard
 
 - type: loadoutGroup
   id: CEGuardCloak
@@ -20,6 +48,23 @@
     cloak: CEClothingSyurkoGuard
 
 # Head
+
+## Investigator
+
+- type: loadoutGroup
+  id: CEInvestigatorHead
+  name: ce-loadout-head
+  minLimit: 1
+  loadouts:
+  - CEClothingHeadHelmetInvestigator
+  - CEClothingHeadFedoraGuard
+
+- type: loadout
+  id: CEClothingHeadHelmetInvestigator
+  equipment:
+    head: CEClothingHeadHelmetInvestigator
+
+## Guard
 
 - type: loadoutGroup
   id: CEGuardHead

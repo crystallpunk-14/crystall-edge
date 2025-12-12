@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/12/2025 09:51:55
-  entityCount: 1090
+  time: 12/12/2025 11:19:31
+  entityCount: 1100
 maps:
 - 1
 grids:
@@ -262,6 +262,14 @@ entities:
     - type: Transform
       gridTraversal: False
       pos: -9.139329,3.1377537
+      parent: 1
+    - type: ViewSubscriber
+  - uid: 1092
+    components:
+    - type: MetaData
+    - type: Transform
+      gridTraversal: False
+      pos: 1.7241492,11.987063
       parent: 1
     - type: ViewSubscriber
 - proto: CEBiomeSpawnerGrassland
@@ -2329,7 +2337,7 @@ entities:
       pos: 6.5,16.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -5778.175
+      secondsUntilStateChange: -5854.8076
       state: Opening
 - proto: CEFenceWindowIron
   entities:
@@ -3270,6 +3278,57 @@ entities:
     components:
     - type: Transform
       pos: -11.5,4.5
+      parent: 1
+- proto: CESpawnPointChef
+  entities:
+  - uid: 1091
+    components:
+    - type: Transform
+      pos: 4.5,4.5
+      parent: 1
+  - uid: 1093
+    components:
+    - type: Transform
+      pos: 2.5,7.5
+      parent: 1
+  - uid: 1094
+    components:
+    - type: Transform
+      pos: 4.5,7.5
+      parent: 1
+  - uid: 1095
+    components:
+    - type: Transform
+      pos: 2.5,4.5
+      parent: 1
+- proto: CESpawnPointGuard
+  entities:
+  - uid: 1096
+    components:
+    - type: Transform
+      pos: 4.5,-14.5
+      parent: 1
+  - uid: 1097
+    components:
+    - type: Transform
+      pos: 5.5,-16.5
+      parent: 1
+  - uid: 1098
+    components:
+    - type: Transform
+      pos: 6.5,-14.5
+      parent: 1
+  - uid: 1099
+    components:
+    - type: Transform
+      pos: 3.5,-16.5
+      parent: 1
+- proto: CESpawnPointGuardCommander
+  entities:
+  - uid: 1100
+    components:
+    - type: Transform
+      pos: 0.5,-14.5
       parent: 1
 - proto: CESpawnPointTownfolk
   entities:

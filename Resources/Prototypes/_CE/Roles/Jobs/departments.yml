@@ -20,8 +20,8 @@
   roles:
   - CETavernmaster
   - CEChef
-  - CEBartender
-  - CEFarmer
+  #- CEBartender
+  #- CEFarmer
 
 - type: department
   id: CECitizens

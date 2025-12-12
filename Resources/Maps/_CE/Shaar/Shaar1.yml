@@ -4,7 +4,7 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/12/2025 09:51:56
+  time: 12/12/2025 11:19:31
   entityCount: 682
 maps:
 - 1
@@ -647,7 +647,7 @@ entities:
       pos: 1.5,-13.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -4003.6943
+      secondsUntilStateChange: -4080.3274
       state: Opening
 - proto: CEFenceWooden
   entities:

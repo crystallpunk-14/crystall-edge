@@ -1,0 +1,38 @@
+# Cloak
+
+## Tavernmaster
+
+- type: loadoutGroup
+  id: CETavernmasterCloak
+  name: ce-loadout-cloak
+  loadouts:
+  - CEClothingCloakTavernmaster
+
+- type: loadout
+  id: CEClothingCloakTavernmaster
+  equipment:
+    cloak: CEClothingCloakTavernmaster
+
+# Head
+
+- type: loadoutGroup
+  id: CETavernmasterHead
+  name: ce-loadout-head
+  loadouts:
+  - CEClothingHeadFedoraTavernmaster
+
+- type: loadout
+  id: CEClothingHeadFedoraTavernmaster
+  equipment:
+    head: CEClothingHeadFedoraTavernmaster
+
+- type: loadoutGroup
+  id: CEChefHead
+  name: ce-loadout-head
+  loadouts:
+  - CEClothingHeadBeretGuildGreen
+
+- type: loadout
+  id: CEClothingHeadBeretGuildGreen
+  equipment:
+    head: CEClothingHeadBeretGuildGreen
