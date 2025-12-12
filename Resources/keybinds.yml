@@ -645,11 +645,11 @@ binds:
   canFocus: true
 - function: SelectedZLayerUp
   type: State
-  key: NumpadNum6
+  key: NumpadAdd
   mod1: Alt
 - function: SelectedZLayerDown
   type: State
-  key: NumpadNum4
+  key: NumpadSubtract
   mod1: Alt
 - function: ToggleZLayerRelation
   type: State
