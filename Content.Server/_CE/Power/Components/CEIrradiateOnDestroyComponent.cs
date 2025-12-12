@@ -8,9 +8,6 @@ namespace Content.Server._CE.Power.Components;
 [RegisterComponent]
 public sealed partial class CEIrradiateOnDestroyComponent : Component
 {
-    [DataField]
-    public EntProtoId Proto = "CERadiationSourceVFX";
-
     /// <summary>
     /// How long will the radiation spike last?
     /// </summary>

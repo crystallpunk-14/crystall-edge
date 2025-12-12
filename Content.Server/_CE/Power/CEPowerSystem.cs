@@ -12,11 +12,13 @@ using Content.Shared.Power.Components;
 using Content.Shared.Radiation.Components;
 using Content.Shared.Timing;
 using Robust.Server.GameObjects;
+using Robust.Shared.Map;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Spawners;
 
 namespace Content.Server._CE.Power;
 
-public sealed partial class CEPowerSystem : EntitySystem
+public sealed partial class CEPowerSystem : CESharedPowerSystem
 {
     [Dependency] private readonly RadiationSystem _radiation = default!;
     [Dependency] private readonly PointLightSystem _pointLight = default!;
@@ -75,14 +77,7 @@ public sealed partial class CEPowerSystem : EntitySystem
         if (!TryComp<BatteryComponent>(ent, out var battery))
             return;
 
-        var vfx = SpawnAtPosition(ent.Comp.Proto, Transform(ent).Coordinates);
-
-        var radiation = EnsureComp<RadiationSourceComponent>(vfx);
-        radiation.Enabled = true;
-        radiation.Intensity = battery.CurrentCharge / ent.Comp.Time.Seconds * ent.Comp.IrradiateCoefficient;
-
-        var timeDespawn = EnsureComp<TimedDespawnComponent>(vfx);
-        timeDespawn.Lifetime = ent.Comp.Time.Seconds;
+        Irradiate(Transform(ent).Coordinates,  battery.CurrentCharge, ent.Comp.Time);
     }
 
     private void OnPowerChanged(Entity<CEEnergyLeakComponent> ent, ref PowerConsumerReceivedChanged args)
