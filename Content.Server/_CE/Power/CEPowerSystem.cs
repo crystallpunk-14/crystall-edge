@@ -12,9 +12,6 @@ using Content.Shared.Power.Components;
 using Content.Shared.Radiation.Components;
 using Content.Shared.Timing;
 using Robust.Server.GameObjects;
-using Robust.Shared.Map;
-using Robust.Shared.Prototypes;
-using Robust.Shared.Spawners;
 
 namespace Content.Server._CE.Power;
 
@@ -30,6 +27,7 @@ public sealed partial class CEPowerSystem : CESharedPowerSystem
     {
         base.Initialize();
         InitializeDelayedConnector();
+        InitializeCharger();
 
         SubscribeLocalEvent<CEEnergyLeakComponent, PowerConsumerReceivedChanged>(OnPowerChanged);
         SubscribeLocalEvent<CEIrradiateOnDestroyComponent, DestructionEventArgs>(OnBatteryDestroyed);
@@ -41,6 +39,7 @@ public sealed partial class CEPowerSystem : CESharedPowerSystem
         base.Update(frameTime);
 
         UpdateDelayedConnectors(frameTime);
+        UpdateChargers(frameTime);
     }
 
     public void ToggleConnector(Entity<NodeContainerComponent> connector, bool status)
@@ -82,7 +81,7 @@ public sealed partial class CEPowerSystem : CESharedPowerSystem
 
     private void OnPowerChanged(Entity<CEEnergyLeakComponent> ent, ref PowerConsumerReceivedChanged args)
     {
-        var enabled = args.ReceivedPower >= args.DrawRate;
+        var enabled = args.ReceivedPower >= 0;
 
         _pointLight.SetEnabled(ent, enabled);
 

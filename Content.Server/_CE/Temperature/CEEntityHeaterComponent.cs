@@ -1,17 +1,12 @@
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
-
 namespace Content.Server._CE.Temperature;
 
-/// <summary>
-///
-/// </summary>
-[RegisterComponent, Access(typeof(CETemperatureSystem))]
+[RegisterComponent, Access(typeof(CETemperatureSystem)), AutoGenerateComponentPause]
 public sealed partial class CEEntityHeaterComponent : Component
 {
     [DataField]
     public float Power = 500;
 
-    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), ViewVariables(VVAccess.ReadWrite)]
+    [DataField, AutoPausedField]
     public TimeSpan NextHeat = TimeSpan.Zero;
 
     [DataField]

@@ -43,7 +43,7 @@
   - type: HitscanBasicDamage
     damage:
       types:
-        Heat: 25
+        Shock: 25
   - type: CEHitscanSpellEffect
     effects:
     - !type:CESpellThrowFromUser

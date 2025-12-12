@@ -2,29 +2,20 @@
   parent:
   - BaseMachine
   - CEBaseMachinePowered
-  id: CEHeater
+  id: CECharger
   categories: [ ForkFiltered ]
-  name: heater
-  description: a mechanism that converts energy into a controlled burning flame
+  name: energy charger
+  description: A mechanism that allows fill with mana anything, from tools to goblins.
   components:
   - type: AmbientSound
     enabled: false
     volume: -8
     range: 5
     sound:
-      path: /Audio/Ambience/Objects/fireplace.ogg
+      path: /Audio/Ambience/Objects/anomaly_generator.ogg
   - type: Fixtures
     fixtures:
       fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.45,-0.45,0.45,0.45"
-        density: 55
-        mask: # tables should collide with other tables
-        - TableMask
-        layer:
-        - TableLayer
-      fix2:
         shape:
           !type:PhysShapeAabb
           bounds: "-0.4,-0.4,0.4,0.4"
@@ -39,34 +30,40 @@
     anchored: true
     noRot: false
   - type: Sprite
-    sprite: _CE/Structures/Industrial/furnace.rsi
+    snapCardinals: true
+    sprite: _CE/Structures/Industrial/charger.rsi
     state: base
     layers:
     - state: base
-    - state: burning
-      shader: unshaded
-      visible: false
-      map: [ "flames" ]
+    - state: rotator_off
+      map: [ "rotator" ]
+    - state: glass
+    - state: sparks
+      map: [ "sparks" ]
   - type: Icon
-    sprite: _CE/Structures/Industrial/furnace.rsi
+    sprite: _CE/Structures/Industrial/charger.rsi
     state: base
   - type: PointLight
-    radius: 5
-    energy: 3
-    color: "#dd931c"
+    radius: 2
+    energy: 4
+    color: "#1cddba"
     enabled: false
-  - type: Climbable
   - type: Clickable
   - type: PlaceableSurface
   - type: ItemPlacer
     maxEntities: 0
-  - type: CEEntityHeater
-    power: 1000
+  - type: ApcPowerReceiver
+    powerLoad: 3
+  - type: CEChargingPlatform
+    charge: 3
   - type: Rotatable
   - type: Appearance
   - type: GenericVisualizer
     visuals:
       enum.PowerDeviceVisuals.Powered:
-        flames:
+        rotator:
+          True: {state: rotator_on}
+          False: {state: rotator_off}
+        sparks:
           True: {visible: true}
           False: {visible: false}
