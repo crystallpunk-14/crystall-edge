@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/11/2025 21:49:33
-  entityCount: 974
+  time: 12/12/2025 09:51:55
+  entityCount: 976
 maps:
 - 1
 grids:
@@ -240,6 +240,14 @@ entities:
     - type: Transform
       gridTraversal: False
       pos: -11.785282,-6.9098673
+      parent: 1
+    - type: ViewSubscriber
+  - uid: 976
+    components:
+    - type: MetaData
+    - type: Transform
+      gridTraversal: False
+      pos: -4.3349886,-16.314724
       parent: 1
     - type: ViewSubscriber
 - proto: CEArrivalsDockPointMarker
@@ -603,7 +611,7 @@ entities:
       pos: -26.5,-9.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -948.17316
+      secondsUntilStateChange: -995.2424
       state: Opening
 - proto: CEFenceWooden
   entities:
@@ -2011,6 +2019,13 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 25.5,-4.5
+      parent: 1
+- proto: CESpawnPointTownfolk
+  entities:
+  - uid: 975
+    components:
+    - type: Transform
+      pos: -20.5,-13.5
       parent: 1
 - proto: CEStoneBlock1
   entities:
