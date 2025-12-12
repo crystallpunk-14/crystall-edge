@@ -29,8 +29,7 @@ public abstract partial class CESharedZLevelsSystem
         var oldvalue = comp!.ViewedZLevel;
         var newvalue = oldvalue + 1;
 
-        TrySetViewedZLevel(new Entity<CEZLevelViewerComponent>(player, comp), newvalue);
-        // RaiseLocalEvent<ChangeViewedZLayerEvent>(new(oldvalue) { NewValue = newvalue });
+        RaisePredictiveEvent<ChangeViewedZLayerEvent>(new(GetNetEntity(player), newvalue));
     }
     private void HandleSelectedZLayerDown(ICommonSession? playerSession)
     {
@@ -43,9 +42,7 @@ public abstract partial class CESharedZLevelsSystem
         var oldvalue = comp!.ViewedZLevel;
         var newvalue = oldvalue - 1;
 
-        TrySetViewedZLevel(new Entity<CEZLevelViewerComponent>(player, comp), newvalue);
-        //    RaiseLocalEvent<ChangeViewedZLayerEvent>(new(oldvalue) { NewValue = newvalue });
-
+        RaisePredictiveEvent<ChangeViewedZLayerEvent>(new(GetNetEntity(player), newvalue));
     }
     //todo
     private void HandleToggleZLayerRelation(ICommonSession? playerSession)

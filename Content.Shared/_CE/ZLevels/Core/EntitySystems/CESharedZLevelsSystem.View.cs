@@ -11,9 +11,8 @@ public abstract partial class CESharedZLevelsSystem
     private void InitView()
     {
         SubscribeLocalEvent<CEZLevelViewerComponent, MoveEvent>(OnViewerMove);
-        SubscribeLocalEvent<CEZLevelViewerComponent, ChangeViewedZLayerEvent>(OnChangeSelectedZLayer);
+        SubscribeAllEvent<ChangeViewedZLayerEvent>(OnChangeSelectedZLayer);
         SubscribeLocalEvent<CEZLevelViewerComponent, CEToggleZLevelLookUpAction>(OnToggleLookUp);
-
     }
 
     protected virtual void OnViewerMove(Entity<CEZLevelViewerComponent> ent, ref MoveEvent args)
@@ -66,15 +65,25 @@ public abstract partial class CESharedZLevelsSystem
         return !tileDef.Transparent;
     }
 
-    private void OnChangeSelectedZLayer(Entity<CEZLevelViewerComponent> ent, ref ChangeViewedZLayerEvent args)
+    private void OnChangeSelectedZLayer(ChangeViewedZLayerEvent args)
     {
-        TrySetViewedZLevel(ent, args.NewValue);
+        if (args.Target is null) return;
+
+        var ent = GetEntity(args.Target);
+
+        if (!TryComp<CEZLevelViewerComponent>(ent, out var comp))
+            return;
+
+        Entity<CEZLevelViewerComponent> target = (ent.Value, comp);
+
+        TrySetViewedZLevel(target, args.NewValue);
     }
-    private static void SetViewedZLevel(Entity<CEZLevelViewerComponent> ent, int value)
+    private void SetViewedZLevel(Entity<CEZLevelViewerComponent> ent, int value)
     {
         ent.Comp.ViewedZLevel = value;
+        DirtyField(ent, ent.Comp, nameof(CEZLevelViewerComponent.ViewedZLevel));
     }
-    public static bool TrySetViewedZLevel(Entity<CEZLevelViewerComponent> ent, int value)
+    public bool TrySetViewedZLevel(Entity<CEZLevelViewerComponent> ent, int value)
     {
         SetViewedZLevel(ent, value);
         return true;

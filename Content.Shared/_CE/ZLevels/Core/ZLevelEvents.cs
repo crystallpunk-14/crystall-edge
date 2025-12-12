@@ -1,3 +1,16 @@
+using Content.Shared.Actions.Components;
+using Robust.Shared.Serialization;
+
 namespace Content.Shared._CE.ZLevels.Core.EntitySystems;
 
-public struct ChangeViewedZLayerEvent(int oldvalue) { public int NewValue; public readonly int OldValue = oldvalue; }
+/// <summary>
+/// Sent by the client to request performing YourAction.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class ChangeViewedZLayerEvent
+(NetEntity? target, int newValue)
+ : EntityEventArgs
+{
+    public readonly NetEntity? Target = target;
+    public int NewValue = newValue;
+}
