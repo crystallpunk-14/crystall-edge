@@ -31,7 +31,6 @@ public sealed partial class CEPowerSystem
         var query = EntityQueryEnumerator<CEChargingPlatformComponent, ItemPlacerComponent>();
         while (query.MoveNext(out var uid, out var charger, out var itemPlacer))
         {
-
             if (_timing.CurTime < charger.NextCharge)
                 continue;
 

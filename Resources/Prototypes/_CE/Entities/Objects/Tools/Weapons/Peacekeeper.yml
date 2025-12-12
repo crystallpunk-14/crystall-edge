@@ -48,10 +48,8 @@
     effects:
     - !type:CESpellThrowFromUser
       distance: 1
-    - !type:CESpellStun
-      duration: 0.25
     - !type:CESpellIrradiate
-      charge: 10
+      charge: 5
     - !type:CESpellSpawnEntityOnUser
       spawns:
       - CEOverchargeVFX

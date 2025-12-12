@@ -5,7 +5,7 @@
   id: CECharger
   categories: [ ForkFiltered ]
   name: energy charger
-  description: A mechanism that allows fill with mana anything, from tools to goblins.
+  description: A mechanism that allows filling with mana anything, from tools to goblins.
   components:
   - type: AmbientSound
     enabled: false

@@ -62,8 +62,6 @@
         Shock: 10
   - type: CEHitscanSpellEffect
     effects:
-    - !type:CESpellIrradiate
-      charge: 5
     - !type:CESpellSpawnEntityOnUser
       spawns:
       - CEOverchargeVFX
