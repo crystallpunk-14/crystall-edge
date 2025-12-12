@@ -31,7 +31,6 @@
     - type: SunShadow
     - type: MapLight
       ambientLightColor: "#efff75"
-  minPlayers: 0
   stations:
     Shaar:
       stationProto: CEStandardImperialFloatingIsland
