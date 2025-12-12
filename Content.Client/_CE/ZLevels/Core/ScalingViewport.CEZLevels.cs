@@ -111,8 +111,8 @@ public sealed partial class ScalingViewport
         if (playerXform.MapUid is null)
             return;
 
-        var highestDepth = 0;
-        var lowestDepth = 3;
+        var highestDepth = CESharedZLevelsSystem.DefaultZLevelsAboveRendering;
+        var lowestDepth = CESharedZLevelsSystem.DefaultZLevelsBelowRendering;
 
         if (zLevelViewer.LookUp)
         {
