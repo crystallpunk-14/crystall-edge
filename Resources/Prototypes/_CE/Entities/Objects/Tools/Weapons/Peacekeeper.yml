@@ -32,6 +32,8 @@
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
       params:
         variation: 0.2
+  - type: StaticPrice
+    price: 350
 
 - type: entity
   parent: BasicHitscan

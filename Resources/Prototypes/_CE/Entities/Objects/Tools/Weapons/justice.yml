@@ -1,11 +1,14 @@
 - type: entity
   id: CEGunJustice
   parent:
-  - BaseLaserRifle
+  - BaseWeaponBattery
   name: Justice Revolver
-  description: TODO
+  description: A fast and convenient guard revolver that can be easily fired with two hands.
   categories: [ ForkFiltered ]
   components:
+  - type: Item
+    size: Normal
+  - type: Appearance
   - type: Sprite
     sprite: _CE/Objects/Tools/Weapons/justice.rsi
     layers:
@@ -22,6 +25,7 @@
     slots:
     - belt
   - type: MagazineVisuals
+    magState: mag
     steps: 4
   - type: HitscanBatteryAmmoProvider
     proto: CEJusticeHitscan
@@ -30,6 +34,9 @@
     maxCharge: 40
     startingCharge: 40
   - type: Gun
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
     angleIncrease: 5
     angleDecay: 20
     minAngle: 0
@@ -41,6 +48,8 @@
       path: /Audio/_CE/Effects/peacekeeper_laser.ogg
       params:
         variation: 0.2
+  - type: StaticPrice
+    price: 150
 
 - type: entity
   parent: BasicHitscan
