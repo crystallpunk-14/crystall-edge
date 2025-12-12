@@ -111,10 +111,21 @@ public sealed partial class ScalingViewport
         if (playerXform.MapUid is null)
             return;
 
-        var highestDepth = zLevelViewer.ViewedZLevel > 0 ? zLevelViewer.ViewedZLevel : 0;
+        var highestDepth = 0;
+        var lowestDepth = 3;
 
-        var lowestDepth = zLevelViewer.ViewedZLevel < 0 ? zLevelViewer.ViewedZLevel : 0; ;
-        for (var i = 0; i >= -CESharedZLevelsSystem.MaxZLevelsBelowRendering; i--)
+        if (zLevelViewer.LookUp)
+        {
+            highestDepth = zLevelViewer.ViewedZLevel > 0 ? zLevelViewer.ViewedZLevel : 0;
+
+            lowestDepth = zLevelViewer.ViewedZLevel < 0 ? Math.Abs(zLevelViewer.ViewedZLevel) : 0;
+
+        }
+        var lowestCalculatedDepth = 0;
+        var highestCalculatedDepth = 0;
+
+        //Calculates lowest Depth to avoid Rendering empty maps
+        for (var i = 0; i >= -Math.Min(lowestDepth, CESharedZLevelsSystem.MaxZLevelsBelowRendering); i--)
         {
             var checkingMap = playerXform.MapUid.Value;
 
@@ -126,14 +137,34 @@ public sealed partial class ScalingViewport
                 checkingMap = mapUidBelow.Value;
             }
 
-            lowestDepth = i;
+            lowestCalculatedDepth = i;
 
             if (!TryFindEmptyTiles(checkingMap))
                 break;
         }
 
+        //Calculates highest Depth to avoid Rendering empty maps
+        for (var i = 0; i <= Math.Min(highestDepth, CESharedZLevelsSystem.MaxZLevelsAboveRendering); i++)
+        {
+            var checkingMap = playerXform.MapUid.Value;
+
+            if (i != 0)
+            {
+                if (!_zLevels.TryMapOffset(playerXform.MapUid.Value, i, out var mapUidBelow))
+                    continue;
+
+                checkingMap = mapUidBelow.Value;
+            }
+
+            highestCalculatedDepth = i;
+
+            if (!TryFindEmptyTiles(checkingMap))
+                break;
+        }
+
+
         //From the lowest depth to the highest, render each level
-        for (var depth = lowestDepth; depth <= highestDepth; depth++)
+        for (var depth = lowestCalculatedDepth; depth <= highestCalculatedDepth; depth++)
         {
             if (depth == 0)
                 viewport.Eye = _fallbackEye;
