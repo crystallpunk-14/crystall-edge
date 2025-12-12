@@ -29,3 +29,6 @@ ce-lock-insert-fail-have-lock = {$name} already has a lock installed!
 ce-lock-insert-success = The new lock has been successfully installed in {$name}!
 
 ce-lock-key-transforming = The key changing its shape!
+
+ce-directional-latch-cannot-unlock = It doesn't unlock from this side!
+ce-directional-latch-cannot-lock = It doesn't lock on this side!

@@ -140,5 +140,5 @@
         variation: 0.03
         volume: -5
   - type: Lock
-    locked: false
-  - type: CELock #Empty, for installing new locks
+    locked: true
+  - type: CEDirectionalLatch

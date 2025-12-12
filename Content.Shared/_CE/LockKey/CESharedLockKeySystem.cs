@@ -25,6 +25,7 @@ public abstract partial class CESharedLockKeySystem : EntitySystem
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly UseDelaySystem _useDelay = default!;
     [Dependency] private readonly SharedDoorSystem _door = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     private EntityQuery<LockComponent> _lockQuery;
     private EntityQuery<CELockComponent> _ceLockQuery;
@@ -39,6 +40,7 @@ public abstract partial class CESharedLockKeySystem : EntitySystem
 
         VerbsInit();
         VerbsInteractions();
+        DirectionalLatchInit();
 
         _lockQuery = GetEntityQuery<LockComponent>();
         _ceLockQuery = GetEntityQuery<CELockComponent>();
