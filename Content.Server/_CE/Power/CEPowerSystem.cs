@@ -23,11 +23,15 @@ public sealed partial class CEPowerSystem : CESharedPowerSystem
     [Dependency] private readonly NodeGroupSystem _nodeGroup = default!;
     [Dependency] private readonly UseDelaySystem _useDelay = default!;
 
+    private EntityQuery<BatteryComponent> _batteryQuery;
+
     public override void Initialize()
     {
         base.Initialize();
         InitializeDelayedConnector();
         InitializeCharger();
+
+        _batteryQuery = GetEntityQuery<BatteryComponent>();
 
         SubscribeLocalEvent<CEEnergyLeakComponent, PowerConsumerReceivedChanged>(OnPowerChanged);
         SubscribeLocalEvent<CEIrradiateOnDestroyComponent, DestructionEventArgs>(OnBatteryDestroyed);

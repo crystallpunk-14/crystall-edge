@@ -44,7 +44,8 @@ public sealed partial class CEPowerSystem
 
             foreach (var placed in itemPlacer.PlacedEntities)
             {
-                _battery.ChangeCharge(placed, charger.Charge / itemPlacer.PlacedEntities.Count);
+                if (_batteryQuery.TryComp(placed, out var battery))
+                    _battery.ChangeCharge((placed, battery), charger.Charge / itemPlacer.PlacedEntities.Count);
             }
         }
     }
