@@ -53,7 +53,7 @@
     locked: true
 
 - type: entity
-  parent: CEIronDoorWindowed
+  parent: CEFenceGateBigIron
   id: CEIronDoorGuardCage1
   suffix: Guard Cage 1
   components:
@@ -63,7 +63,7 @@
     locked: true
 
 - type: entity
-  parent: CEIronDoorWindowed
+  parent: CEFenceGateBigIron
   id: CEIronDoorGuardCage2
   suffix: Guard Cage 2
   components:
@@ -73,7 +73,7 @@
     locked: true
 
 - type: entity
-  parent: CEIronDoorWindowed
+  parent: CEFenceGateBigIron
   id: CEIronDoorGuardCage3
   suffix: Guard Cage 3
   components:
@@ -83,7 +83,7 @@
     locked: true
 
 - type: entity
-  parent: CEIronDoorWindowed
+  parent: CEFenceGateBigIron
   id: CEIronDoorGuardCage4
   suffix: Guard Cage 4
   components:
@@ -93,7 +93,7 @@
     locked: true
 
 - type: entity
-  parent: CEIronDoorWindowed
+  parent: CEFenceGateBigIron
   id: CEIronDoorGuardCage5
   suffix: Guard Cage 5
   components:

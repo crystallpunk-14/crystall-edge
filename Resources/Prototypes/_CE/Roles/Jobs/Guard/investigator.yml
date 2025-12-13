@@ -40,5 +40,6 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: StorageFill
-    #contents:
-    #- id: Keys here
+    contents:
+    - id: CEKeyGuardHall
+    - id: CEKeyGuardStaff
