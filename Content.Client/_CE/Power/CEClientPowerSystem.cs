@@ -1,4 +1,3 @@
-using System.Text;
 using Content.Client.Items;
 using Content.Client.Light.Components;
 using Content.Client.Light.EntitySystems;
@@ -19,7 +18,6 @@ public sealed class CEClientPowerSystem : VisualizerSystem<CEEnergyLeakComponent
     public override void Initialize()
     {
         base.Initialize();
-
 
         Subs.ItemStatus<CEEnergyTransferGloveComponent>(ent => new CEManaGloveStatusControl(ent));
     }
