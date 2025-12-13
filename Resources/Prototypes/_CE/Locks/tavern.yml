@@ -66,15 +66,3 @@
   id: TavernDorm10
   complexity: 3
   name: ce-lock-shape-tavern-dorm-10
-
-# Guard
-
-- type: lockType
-  id: GuardHall
-  complexity: 3
-  name: ce-lock-shape-guard-hall
-
-- type: lockType
-  id: GuardStaff
-  complexity: 5
-  name: ce-lock-shape-guard-staff

@@ -1,3 +1,5 @@
+# Tavern
+
 ce-lock-shape-tavern-hall = tavern hall
 ce-lock-shape-tavern-staff = tavern service areas
 ce-lock-shape-tavern-head-room = tavern owner's room
@@ -13,5 +15,15 @@ ce-lock-shape-tavern-dorm-8 = tavern room 8
 ce-lock-shape-tavern-dorm-9 = tavern room 9
 ce-lock-shape-tavern-dorm-10 = tavern room 10
 
+# Guard
+
 ce-lock-shape-guard-hall = guard campus entrance hall
 ce-lock-shape-guard-staff = guard campus internal areas
+ce-lock-shape-guard-armory = guard armory
+ce-lock-shape-guard-head-room = guard commander office
+
+ce-lock-shape-guard-cage-1 = prison cage 1
+ce-lock-shape-guard-cage-2 = prison cage 2
+ce-lock-shape-guard-cage-3 = prison cage 3
+ce-lock-shape-guard-cage-4 = prison cage 4
+ce-lock-shape-guard-cage-5 = prison cage 5

@@ -14,6 +14,15 @@
       "name": "key_iron"
     },
     {
+      "name": "key_tavern_room"
+    },
+    {
+      "name": "key_guard"
+    },
+    {
+      "name": "key_guard_commander"
+    },
+    {
       "name": "lock_iron"
     },
     {
