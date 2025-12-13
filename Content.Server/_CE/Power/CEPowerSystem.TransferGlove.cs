@@ -6,6 +6,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Throwing;
 using Content.Shared.Timing;
+using Robust.Server.Audio;
 
 namespace Content.Server._CE.Power;
 
@@ -13,6 +14,7 @@ public sealed partial class CEPowerSystem
 {
     [Dependency] private readonly ThrowingSystem _throw = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
 
     private void InitializeGlove()
     {
@@ -32,14 +34,17 @@ public sealed partial class CEPowerSystem
         var user = args.User;
         var target = args.Target.Value;
 
+        _useDelay.TryResetDelay(ent);
+        _audio.PlayPvs(ent.Comp.UseSound, ent);
+
         if (!_batteryQuery.TryComp(user, out var userBattery))
         {
-            //popup todo
+            _popup.PopupEntity(Loc.GetString("ce-energy-transfer-glove-cant-use"), ent, args.User);
             return;
         }
 
-        _useDelay.TryResetDelay(ent);
         _batteryQuery.TryComp(target, out var batteryTarget);
+        SpawnAtPosition(ent.Comp.VFX, Transform(args.Target.Value).Coordinates);
 
         if (ent.Comp.ConsumeMode)
         {
@@ -75,9 +80,10 @@ public sealed partial class CEPowerSystem
     private void OnGloveExamined(Entity<CEEnergyTransferGloveComponent> ent, ref ExaminedEvent args)
     {
         args.PushMarkup(Loc.GetString("ce-energy-transfer-glove-examine",
-            ("mode", ent.Comp.ConsumeMode
-                ? Loc.GetString("ce-energy-transfer-glove-examine-drain")
-                : Loc.GetString("ce-energy-transfer-glove-examine-transfer"))));
+            ("mode",
+                Loc.GetString(ent.Comp.ConsumeMode
+                    ? "ce-energy-transfer-glove-mode-drain"
+                    : "ce-energy-transfer-glove-mode-transfer"))));
     }
 
     private void PushFromUser(EntityUid target, EntityUid user, float distance, float power)
@@ -102,14 +108,16 @@ public sealed partial class CEPowerSystem
 
     private void OnUseInHand(Entity<CEEnergyTransferGloveComponent> ent, ref UseInHandEvent args)
     {
-        if (args.Handled)
+        if (args.Handled || _useDelay.IsDelayed(ent.Owner))
             return;
 
-        if (_useDelay.IsDelayed(ent.Owner))
-            return;
+        args.Handled = true;
 
         _useDelay.TryResetDelay(ent);
 
         ent.Comp.ConsumeMode = !ent.Comp.ConsumeMode;
+        Dirty(ent);
+
+        _audio.PlayPvs(ent.Comp.ConsumeMode ? ent.Comp.ConsumeModeSound : ent.Comp.TransferModeSound, ent);
     }
 }

@@ -112,7 +112,7 @@
         acts: [ "Destruction" ]
   - type: FloorTile
     placeTileSound:
-      collection: CEDigging #TODO
+      path: /Audio/Items/genhit.ogg
       params:
         variation: 0.03
         volume: 2

@@ -33,7 +33,13 @@
   - type: CEEnergyTransferGlove
   - type: UseDelay
     delay: 0.5
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - gloves
   #- type: PhysicalComposition
   #  materialComposition:
   #    CEWood: 10
   #    CEIron: 10
+  - type: StaticPrice
+    price: 75

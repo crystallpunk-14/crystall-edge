@@ -34,6 +34,21 @@
     lifetime: 1
 
 - type: entity
+  id: CEOverchargeSmallVFX
+  parent: CEOverchargeVFX
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Industrial/Power/Pipes/medium_flat.rsi
+    layers:
+    - state: electrified
+      shader: unshaded
+      map: ["random"]
+  - type: RandomSprite
+    available:
+    - random:
+        electrified: Inherit
+
+- type: entity
   id: CERadiationSourceVFX
   categories: [ HideSpawnMenu ]
   suffix: VFX
