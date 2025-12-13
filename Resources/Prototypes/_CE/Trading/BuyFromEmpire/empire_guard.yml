@@ -14,11 +14,11 @@
     count: 1
 
 - type: tradingPosition
-  id: CEClothingSyurkoGuard
+  id: CEClothingShirtSyurkoGuard
   faction: EmpireGuard
   priceMarkup: 10
   service: !type:CEBuyItemsService
-    product: CEClothingSyurkoGuard
+    product: CEClothingShirtSyurkoGuard
     count: 1
 
 - type: tradingPosition
@@ -105,4 +105,11 @@
   faction: EmpireGuard
   service: !type:CEBuyItemsService
     product: CEGunPeacekeeper
+    count: 1
+
+- type: tradingPosition
+  id: CEManaTransferGlove
+  faction: EmpireGuard
+  service: !type:CEBuyItemsService
+    product: CEManaTransferGlove
     count: 1

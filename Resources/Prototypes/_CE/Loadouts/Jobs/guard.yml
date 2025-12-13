@@ -35,17 +35,11 @@
   minLimit: 0
   loadouts:
   - CEClothingRaincoatGuard
-  - CEClothingSyurkoGuard
 
 - type: loadout
   id: CEClothingRaincoatGuard
   equipment:
     cloak: CEClothingRaincoatGuard
-
-- type: loadout
-  id: CEClothingShirtSyurkoGuard
-  equipment:
-    cloak: CEClothingSyurkoGuard
 
 # Head
 
@@ -116,8 +110,14 @@
   name: ce-loadout-shirt
   loadouts:
   - CEClothingShirtGuard
+  - CEClothingShirtSyurkoGuard
 
 - type: loadout
   id: CEClothingShirtGuard
   equipment:
     shirt: CEClothingShirtGuard
+
+- type: loadout
+  id: CEClothingShirtSyurkoGuard
+  equipment:
+    shirt: CEClothingShirtSyurkoGuard

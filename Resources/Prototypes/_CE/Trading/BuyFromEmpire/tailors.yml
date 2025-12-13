@@ -101,42 +101,42 @@
   id: CEClothingShirtSyurkoBlack
   faction: Tailors
   service: !type:CEBuyItemsService
-    product: CEClothingSyurkoBlack
+    product: CEClothingShirtSyurkoBlack
     count: 1
 
 - type: tradingPosition
   id: CEClothingShirtSyurkoBlue
   faction: Tailors
   service: !type:CEBuyItemsService
-    product: CEClothingSyurkoBlue
+    product: CEClothingShirtSyurkoBlue
     count: 1
 
 - type: tradingPosition
   id: CEClothingShirtSyurkoGreen
   faction: Tailors
   service: !type:CEBuyItemsService
-    product: CEClothingSyurkoGreen
+    product: CEClothingShirtSyurkoGreen
     count: 1
 
 - type: tradingPosition
   id: CEClothingShirtSyurkoRed
   faction: Tailors
   service: !type:CEBuyItemsService
-    product: CEClothingSyurkoRed
+    product: CEClothingShirtSyurkoRed
     count: 1
 
 - type: tradingPosition
   id: CEClothingShirtSyurkoWhite
   faction: Tailors
   service: !type:CEBuyItemsService
-    product: CEClothingSyurkoWhite
+    product: CEClothingShirtSyurkoWhite
     count: 1
 
 - type: tradingPosition
   id: CEClothingShirtSyurkoYellow
   faction: Tailors
   service: !type:CEBuyItemsService
-    product: CEClothingSyurkoYellow
+    product: CEClothingShirtSyurkoYellow
     count: 1
 
 - type: tradingPosition
