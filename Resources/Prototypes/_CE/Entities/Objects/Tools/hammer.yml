@@ -25,12 +25,8 @@
       types:
         Blunt: 5
         Structural: 3
-    #animation: CEWeaponArcSlash
-    #wideAnimation: CEWeaponArcSlash
     soundHit:
       collection: MetalThud
-    #cPAnimationLength: 0.25
-    #cPAnimationOffset: 1
   - type: Clothing
     slots:
     - belt

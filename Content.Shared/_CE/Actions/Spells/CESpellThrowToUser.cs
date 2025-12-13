@@ -1,4 +1,3 @@
-using Content.Shared._CE.Actions.Spells;
 using Content.Shared.Projectiles;
 using Content.Shared.Throwing;
 
@@ -8,6 +7,7 @@ public sealed partial class CESpellThrowToUser : CESpellEffect
 {
     [DataField]
     public float ThrowPower = 10f;
+
     public override void Effect(EntityManager entManager, CESpellEffectBaseArgs args)
     {
         if (args.Target is null)

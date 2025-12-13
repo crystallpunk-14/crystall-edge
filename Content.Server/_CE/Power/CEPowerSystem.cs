@@ -8,10 +8,12 @@ using Content.Shared._CE.Power.Components;
 using Content.Shared.Destructible;
 using Content.Shared.Interaction;
 using Content.Shared.NodeContainer;
+using Content.Shared.Popups;
 using Content.Shared.Power.Components;
 using Content.Shared.Radiation.Components;
 using Content.Shared.Timing;
 using Robust.Server.GameObjects;
+using Robust.Shared.Timing;
 
 namespace Content.Server._CE.Power;
 
@@ -22,6 +24,8 @@ public sealed partial class CEPowerSystem : CESharedPowerSystem
     [Dependency] private readonly AppearanceSystem _appearance = default!;
     [Dependency] private readonly NodeGroupSystem _nodeGroup = default!;
     [Dependency] private readonly UseDelaySystem _useDelay = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
 
     private EntityQuery<BatteryComponent> _batteryQuery;
 
@@ -30,6 +34,7 @@ public sealed partial class CEPowerSystem : CESharedPowerSystem
         base.Initialize();
         InitializeDelayedConnector();
         InitializeCharger();
+        InitializeGlove();
 
         _batteryQuery = GetEntityQuery<BatteryComponent>();
 

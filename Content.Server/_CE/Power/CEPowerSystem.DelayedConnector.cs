@@ -3,16 +3,12 @@ using Content.Server.Power.EntitySystems;
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.NodeContainer;
-using Content.Shared.Popups;
 using Content.Shared.Verbs;
-using Robust.Shared.Timing;
 
 namespace Content.Server._CE.Power;
 
 public sealed partial class CEPowerSystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
     private void InitializeDelayedConnector()
     {
         SubscribeLocalEvent<CEDelayedConnectorComponent, PowerConsumerReceivedChanged>(OnDelayedPowerChanged);
