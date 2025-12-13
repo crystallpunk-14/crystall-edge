@@ -11,6 +11,10 @@
       "name": "icon"
     },
     {
+      "name": "equipped-HAND",
+      "directions": 4
+    },
+    {
       "name": "inhand-right",
       "directions": 4
     },

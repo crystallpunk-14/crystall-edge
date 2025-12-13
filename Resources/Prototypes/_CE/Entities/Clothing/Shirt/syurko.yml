@@ -1,83 +1,83 @@
 - type: entity
   parent:
-  - CEClothingCloakBase
-  id: CEClothingSyurkoBlack
+  - CEClothingShirtBase
+  id: CEClothingShirtSyurkoBlack
   name: black syurko
   description: A traditional syurko cloak in black.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Cloak/Syurko/black.rsi
+    sprite: _CE/Clothing/Shirt/Syurko/black.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Cloak/Syurko/black.rsi
+    sprite: _CE/Clothing/Shirt/Syurko/black.rsi
 
 - type: entity
   parent:
-  - CEClothingCloakBase
-  id: CEClothingSyurkoBlue
+  - CEClothingShirtBase
+  id: CEClothingShirtSyurkoBlue
   name: blue syurko
   description: A blue syurko cloak with distinct cultural patterns.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Cloak/Syurko/blue.rsi
+    sprite: _CE/Clothing/Shirt/Syurko/blue.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Cloak/Syurko/blue.rsi
+    sprite: _CE/Clothing/Shirt/Syurko/blue.rsi
 
 - type: entity
   parent:
-  - CEClothingCloakBase
-  id: CEClothingSyurkoGreen
+  - CEClothingShirtBase
+  id: CEClothingShirtSyurkoGreen
   name: green syurko
   description: A green syurko cloak often used in ceremonial settings.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Cloak/Syurko/green.rsi
+    sprite: _CE/Clothing/Shirt/Syurko/green.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Cloak/Syurko/green.rsi
+    sprite: _CE/Clothing/Shirt/Syurko/green.rsi
 
 - type: entity
   parent:
-  - CEClothingCloakBase
-  id: CEClothingSyurkoGuard
+  - CEClothingShirtBase
+  id: CEClothingShirtSyurkoGuard
   name: guard syurko
   description: A syurko styled for guard uniforms.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Cloak/Syurko/guard.rsi
+    sprite: _CE/Clothing/Shirt/Syurko/guard.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Cloak/Syurko/guard.rsi
+    sprite: _CE/Clothing/Shirt/Syurko/guard.rsi
 
 - type: entity
   parent:
-  - CEClothingCloakBase
-  id: CEClothingSyurkoRed
+  - CEClothingShirtBase
+  id: CEClothingShirtSyurkoRed
   name: red syurko
   description: A bright red syurko favored by certain regions.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Cloak/Syurko/red.rsi
+    sprite: _CE/Clothing/Shirt/Syurko/red.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Cloak/Syurko/red.rsi
+    sprite: _CE/Clothing/Shirt/Syurko/red.rsi
 
 - type: entity
   parent:
-  - CEClothingCloakBase
-  id: CEClothingSyurkoWhite
+  - CEClothingShirtBase
+  id: CEClothingShirtSyurkoWhite
   name: white syurko
   description: A pristine white syurko, often used for ceremonies.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Cloak/Syurko/white.rsi
+    sprite: _CE/Clothing/Shirt/Syurko/white.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Cloak/Syurko/white.rsi
+    sprite: _CE/Clothing/Shirt/Syurko/white.rsi
 
 - type: entity
   parent:
-  - CEClothingCloakBase
-  id: CEClothingSyurkoYellow
+  - CEClothingShirtBase
+  id: CEClothingShirtSyurkoYellow
   name: yellow syurko
   description: A yellow syurko that stands out in parades and festivals.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Cloak/Syurko/yellow.rsi
+    sprite: _CE/Clothing/Shirt/Syurko/yellow.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Cloak/Syurko/yellow.rsi
+    sprite: _CE/Clothing/Shirt/Syurko/yellow.rsi
