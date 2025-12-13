@@ -20,31 +20,31 @@ ent-CERightFootHuman = None
 
 ent-BaselineHealthAnalyzer = None
 
-ent-CEActionAmbitionsView = Edit ambitions
-    .desc = During the first 5 minutes after appearing in the game, you can set your character's personal ambitions.
+ent-CEActionAmbitionsView = Отредактировать амбиции
+    .desc = На протяжении первых 5 минут после появления в игре вы можете установить личные амбиции вашего персонажа.
 
-ent-CEActionZLevelUp = Move up
-    .desc = Move up one Z-Level
+ent-CEActionZLevelUp = Подняться
+    .desc = Подняться на один уровень вверх
 
-ent-CEActionZLevelDown = Move down
-    .desc = Move down one Z-Level
+ent-CEActionZLevelDown = Спуститься
+    .desc = Спуститься на один уровень вниз
 
-ent-CEActionToggleLookUp = Look up
-    .desc = You lift your head and look up at the sky.
+ent-CEActionToggleLookUp = Посмотреть вверх
+    .desc = Вы поднимаете голову и смотрите на небо.
 
-ent-CEActionVampireBite = Vampire bite
-    .desc = You suck the blood and very essence of life from your victim. (The amount of essence in each player is limited)
+ent-CEActionVampireBite = Укус вампира
+    .desc = Вы сосёте кровь и саму сущность жизни из своей жертвы. (Количество сущности в каждом игроке ограничено)
 
 ent-CEImpactEffectVampireBite = None
 
-ent-CEActionSpellBloodEssenceCreation = Form the essence of blood
-    .desc = You extract the essence of life stolen from other beings from your body to pass on to other vampires or use in rituals.
+ent-CEActionSpellBloodEssenceCreation = Сформировать сущность крови
+    .desc = Вы извлекаете сущность жизни, украденную у других существ из вашего тела, чтобы передать её другим вампирам или использовать в ритуалах.
 
-ent-CEActionSpellVampireCreate = Turn into a lesser vampire
-    .desc = You turn the chosen target into a lesser vampire that must obey you. Lesser vampires cannot progress their skills without a higher vampire.
+ent-CEActionSpellVampireCreate = Превратить в младшего вампира
+    .desc = Вы превращаете выбранную цель в младшего вампира, который должен вам подчиняться. Младшие вампиры не могут развивать свои способности без старшего вампира.
 
-ent-CEActionVampireScream = Deafening scream
-    .desc = You let out a powerful scream that deafens everyone nearby for a few seconds.
+ent-CEActionVampireScream = Оглушающий крик
+    .desc = Вы издаёте мощный крик, который оглушает всех рядом на несколько секунд.
 
 ent-CEImpactEffectVampireScreamTelegraphy = { ent-CEBaseMagicImpact }
     .desc = { ent-CEBaseMagicImpact.desc }
@@ -52,316 +52,316 @@ ent-CEImpactEffectVampireScreamTelegraphy = { ent-CEBaseMagicImpact }
 ent-CEImpactEffectVampireScream = { ent-CEBaseMagicImpact }
     .desc = { ent-CEBaseMagicImpact.desc }
 
-ent-CEActionVampireToggleVisuals = Vampiric nature
-    .desc = You reveal or hide your vampire nature. When you are in your revealed form, you can use more powerful abilities, but you suffer from sunlight.
+ent-CEActionVampireToggleVisuals = Вампирическая природа
+    .desc = Вы раскрываете или скрываете свою вампирическую природу. Когда вы находитесь в раскрытой форме, вы можете использовать более мощные способности, но страдаете от солнечного света.
 
 ent-CEClothingCloakBase = None
 
-ent-CEClothingHeadBandanaAlchemist = alchemist's bandana
-    .desc = Hides your hair from chemical fumes
+ent-CEClothingHeadBandanaAlchemist = платок алхимика
+    .desc = Скрывает ваши волосы от химических паров
 
 ent-CEClothingHeadBase = None
 
-ent-CEClothingHeadBeretAlchemist = alchemist's beret
-    .desc = A scholarly beret worn by practitioners of the alchemical arts. The fabric seems to shimmer with traces of arcane knowledge.
+ent-CEClothingHeadBeretAlchemist = берет алхимика
+    .desc = Учёный берет, носимый практикующими магами алхимии. Ткань, кажется, мерцает следами древних знаний.
 
-ent-CEClothingHeadBeretGuild = adventurer's guild beret
-    .desc = A distinctive beret worn by members of the adventurer's guild.
+ent-CEClothingHeadBeretGuild = берет гильдии приключенцев
+    .desc = Отличительный берет, носимый членами гильдии приключенцев.
 
-ent-CEClothingHeadBeretGuildBlue = blue guild worker's beret
-    .desc = A blue beret worn by workers of the adventurer's guild.
+ent-CEClothingHeadBeretGuildBlue = синий берет рабочего гильдии
+    .desc = Синий берет, носимый рабочими гильдии приключенцев.
 
-ent-CEClothingHeadBeretGuildGreen = green guild worker's beret
-    .desc = A green beret worn by field operatives of the adventurer's guild.
+ent-CEClothingHeadBeretGuildGreen = зелёный берет рабочего гильдии
+    .desc = Зелёный берет, носимый полевыми оперативами гильдии приключенцев.
 
-ent-CEClothingHeadBeretGuildRed = red guild worker's beret
-    .desc = A red beret worn by combat specialists of the adventurer's guild.
+ent-CEClothingHeadBeretGuildRed = красный берет рабочего гильдии
+    .desc = Красный берет, носимый боевыми специалистами гильдии приключенцев.
 
-ent-CEClothingHeadBeretGuildYellow = yellow guild worker's beret
-    .desc = A yellow beret worn by scholars and researchers of the adventurer's guild.
+ent-CEClothingHeadBeretGuildYellow = жёлтый берет рабочего гильдии
+    .desc = Жёлтый берет, носимый учёными и исследователями гильдии приключенцев.
 
-ent-CEClothingHeadBeretMercenary = mercenary's beret
-    .desc = A weathered beret worn by freelance mercenaries. Its worn appearance speaks of countless battles and contracts fulfilled for the highest bidder.
+ent-CEClothingHeadBeretMercenary = берет наёмника
+    .desc = Потёртый берет, носимый свободными наёмниками. Его изношенный вид говорит о бесчисленных битвах и контрактах.
 
-ent-CEClothingHeadCapGuard = guard cap
-    .desc = Standard issue cap worn by city guards.
+ent-CEClothingHeadCapGuard = кепка стражника
+    .desc = Стандартная кепка, носимая городскими стражниками.
 
-ent-CEClothingHeadFedoraGuard = guard fedora
-    .desc = A stylish fedora worn by city guards.
+ent-CEClothingHeadFedoraGuard = шляпа-федора стражника
+    .desc = Стильная шляпа-федора, носимая городскими стражниками.
 
-ent-CEClothingHeadFedoraTavernmaster = tavernmaster's fedora
-    .desc = A stylish fedora worn by the tavernmaster.
+ent-CEClothingHeadFedoraTavernmaster = шляпа-федора хозяина трактира
+    .desc = Стильная шляпа-федора, носимая главным трактирщиком.
 
-ent-CEClothingHeadFedoraHunterBlack = black hunter's fedora
-    .desc = A sleek black fedora favored by skilled hunters.
+ent-CEClothingHeadFedoraHunterBlack = чёрная шляпа-федора охотника
+    .desc = Гладкая чёрная шляпа-федора, любимая опытными охотниками.
 
-ent-CEClothingHeadFedoraHunterBlue = blue hunter's fedora
-    .desc = A distinctive blue fedora worn by hunters.
+ent-CEClothingHeadFedoraHunterBlue = синяя шляпа-федора охотника
+    .desc = Отличительная синяя шляпа-федора, носимая охотниками.
 
-ent-CEClothingHeadFedoraHunterGreen = green hunter's fedora
-    .desc = A forest green fedora perfect for hunters.
+ent-CEClothingHeadFedoraHunterGreen = зелёная шляпа-федора охотника
+    .desc = Зелёная шляпа-федора цвета леса, идеальная для охотников.
 
-ent-CEClothingHeadFedoraHunterRed = red hunter's fedora
-    .desc = A bold red fedora worn by veteran hunters.
+ent-CEClothingHeadFedoraHunterRed = красная шляпа-федора охотника
+    .desc = Смелая красная шляпа-федора, носимая опытными охотниками.
 
-ent-CEClothingHeadHelmetGuard = guard helmet
-    .desc = A sturdy helmet worn by city guards for protection in dangerous situations.
+ent-CEClothingHeadHelmetGuard = шлем стражника
+    .desc = Прочный шлем, носимый городскими стражниками для защиты в опасных ситуациях.
 
-ent-CEClothingHeadHelmetGuardCorinthian = corinthian guard helmet
-    .desc = An ornate corinthian-style helmet worn by elite city guards. Its classical design commands respect and authority.
+ent-CEClothingHeadHelmetGuardCorinthian = коринфский шлем стражника
+    .desc = Изукрашенный коринфский шлем, носимый элитными городскими стражниками. Его классический дизайн вызывает уважение и авторитет.
 
-ent-CEClothingHeadHelmetInvestigator = investigator helmet
-    .desc = A specialized helmet worn by investigators. Designed for protection while maintaining visibility and mobility during investigations.
+ent-CEClothingHeadHelmetInvestigator = шлем дознавателя
+    .desc = Специализированный шлем, носимый дознавателя. Разработан для защиты при сохранении видимости и мобильности.
 
-ent-CEClothingHeadMetalHeadband = metal headband
-    .desc = A simple but effective metal headband that provides minimal protection while keeping hair out of the way.
+ent-CEClothingHeadMetalHeadband = металлический головной убор
+    .desc = Простой, но эффективный металлический головной убор, обеспечивающий минимальную защиту и порядок волос.
 
-ent-CEClothingHeadAmanitaHelmet = amanita helmet
-    .desc = A peculiar helmet shaped like an amanita mushroom.
+ent-CEClothingHeadAmanitaHelmet = шлем аманиты
+    .desc = Необычный шлем в форме гриба аманиты.
 
-ent-CEClothingHeadBowlerHat = bowler hat
-    .desc = A classic bowler hat that exudes sophistication and old-world charm.
+ent-CEClothingHeadBowlerHat = котелок
+    .desc = Классический котелок, который излучает утонченность и очарование старого света.
 
-ent-CEClothingHeadBowlerGoldenHat = golden bowler hat
-    .desc = An exquisite golden bowler hat that speaks of wealth and prestige. A symbol of high society.
+ent-CEClothingHeadBowlerGoldenHat = золотой котелок
+    .desc = Изысканный золотой котелок, свидетельствующий о богатстве и престиже. Символ высшего общества.
 
-ent-CEClothingHeadChristmasHat = christmas hat
-    .desc = A festive holiday hat that brings joy and Christmas spirit wherever you go.
+ent-CEClothingHeadChristmasHat = рождественская шапка
+    .desc = Праздничная новогодняя шапка, которая приносит радость и рождественский дух везде, куда бы вы ни пошли.
 
-ent-CEClothingHeadJestersCap = jester's cap
-    .desc = A colorful and whimsical jester's cap complete with bells. Perfect for entertaining crowds or confusing enemies.
+ent-CEClothingHeadJestersCap = колпак шута
+    .desc = Разноцветный причудливый колпак шута с колокольчиками. Идеален для развлечения толпы или запутывания врагов.
 
-ent-CEClothingHeadKasaHat = kasa hat
-    .desc = A traditional wide-brimmed straw hat that provides excellent protection from sun and rain.
+ent-CEClothingHeadKasaHat = шляпа каса
+    .desc = Традиционная широкополая соломенная шляпа, обеспечивающая отличную защиту от солнца и дождя.
 
-ent-CEClothingHeadStrawHat = straw hat
-    .desc = A simple but practical straw hat perfect for working outdoors or casual wear.
+ent-CEClothingHeadStrawHat = соломенная шляпа
+    .desc = Простая, но практичная соломенная шляпа, идеальная для работы на открытом воздухе или повседневной носки.
 
-ent-CEClothingHeadWreath = wreath
-    .desc = A decorative wreath that can be worn as a crown. Made from woven branches and leaves.
+ent-CEClothingHeadWreath = венок
+    .desc = Декоративный венок, который можно носить как корону. Сделан из переплетённых веток и листьев.
 
-ent-CEClothingHeadTriangularGuard = guard triangular hat
-    .desc = A distinctive triangular hat worn by guards. Its unique shape makes it easy to identify guard personnel from a distance.
+ent-CEClothingHeadTriangularGuard = треугольная шляпа стражника
+    .desc = Отличительная треугольная шляпа, носимая стражниками. Её уникальная форма облегчает идентификацию персонала охраны издалека.
 
-ent-CEClothingHeadTriangularLeather = leather triangular hat
-    .desc = A practical triangular hat made from quality leather. Durable and weather-resistant.
+ent-CEClothingHeadTriangularLeather = кожаная треугольная шляпа
+    .desc = Практичная треугольная шляпа из качественной кожи. Прочная и устойчивая к погоде.
 
-ent-CEClothingHeadTriangularLeatherGolden = golden leather triangular hat
-    .desc = An luxurious triangular hat made from fine leather with golden accents. A mark of high status and wealth.
+ent-CEClothingHeadTriangularLeatherGolden = золотая кожаная треугольная шляпа
+    .desc = Роскошная треугольная шляпа из прекрасной кожи с золотыми вставками. Знак высокого статуса и богатства.
 
 ent-CEClothingPantsBase = None
-    .desc = Pants to cover my thighs from the cold.
+    .desc = Штаны, чтобы защитить мои бедра от холода.
 
 ent-CEClothingPantsDress = None
-    .desc = A roomy, feminine skirt
+    .desc = Просторная, женственная юбка
 
-ent-CEClothingPantsAristocratic = aristocratic pants
-    .desc = Aristocratic pants, fit for a noble.
+ent-CEClothingPantsAristocratic = аристократические штаны
+    .desc = Аристократические штаны, достойные дворянина.
 
-ent-CEClothingPantsBlue = blue pants
-    .desc = Simple blue pants suitable for everyday wear.
+ent-CEClothingPantsBlue = синие штаны
+    .desc = Простые синие штаны, подходящие для повседневной носки.
 
-ent-CEClothingPantsBrown = brown pants
-    .desc = Sturdy brown pants designed for work and travel.
+ent-CEClothingPantsBrown = коричневые штаны
+    .desc = Прочные коричневые штаны, предназначенные для работы и путешествий.
 
-ent-CEClothingPantsGreen = green pants
-    .desc = Comfortable green pants that blend well with natural surroundings.
+ent-CEClothingPantsGreen = зелёные штаны
+    .desc = Удобные зелёные штаны, хорошо гармонирующие с природным окружением.
 
-ent-CEClothingPantsGuard = guard pants
-    .desc = Standard issue pants worn by city guards.
+ent-CEClothingPantsGuard = штаны стражника
+    .desc = Стандартные штаны, носимые городскими стражниками.
 
-ent-CEClothingPantsHakama = hakama
-    .desc = Traditional hakama trousers often worn with ceremonial outfits.
+ent-CEClothingPantsHakama = хакама
+    .desc = Традиционные хакама, часто носимые с церемониальной одеждой.
 
-ent-CEClothingPantsHunter = hunter's pants
-    .desc = Rugged pants favored by hunters for durability and mobility.
+ent-CEClothingPantsHunter = штаны охотника
+    .desc = Прочные штаны, любимые охотниками за долговечность и мобильность.
 
-ent-CEClothingPantsJesters = jester's pants
-    .desc = Colorful and playful pants worn by jesters and performers.
+ent-CEClothingPantsJesters = штаны шута
+    .desc = Яркие и игривые штаны, носимые шутами и артистами.
 
-ent-CEClothingPantsLoincloth = loincloth
-    .desc = Minimalist loincloth often used in traditional or tribal attire.
+ent-CEClothingPantsLoincloth = набедренник
+    .desc = Минималистичный набедренник, часто используемый в традиционной или племенной одежде.
 
-ent-CEClothingPantsMercenary = mercenary pants
-    .desc = Tough pants built for combat and long campaigns.
+ent-CEClothingPantsMercenary = штаны наёмника
+    .desc = Прочные штаны, созданные для боя и долгих кампаний.
 
-ent-CEClothingPantsMerchantsPantaloons = merchant's pantaloons
-    .desc = Decorative pantaloons favored by merchants and traders.
+ent-CEClothingPantsMerchantsPantaloons = шаровары купца
+    .desc = Декоративные шаровары, любимые торговцами и торговцами.
 
-ent-CEClothingPantsWhite = white pants
-    .desc = Clean white pants commonly used in formal and ceremonial outfits.
+ent-CEClothingPantsWhite = белые штаны
+    .desc = Чистые белые штаны, обычно используемые в формальной и церемониальной одежде.
 
 ent-CEClothingShirtBase = None
-    .desc = Pleasant to the touch material, in a comfortable loose shirt shape.
+    .desc = Приятный на ощупь материал в удобной, свободной форме рубашки.
 
-ent-CEClothingShirtDressBlack = black dress
-    .desc = A sleek black dress suitable for formal occasions.
+ent-CEClothingShirtDressBlack = чёрное платье
+    .desc = Гладкое чёрное платье, подходящее для официальных случаев.
 
-ent-CEClothingShirtDressBlue = blue dress
-    .desc = An elegant blue dress perfect for special events.
+ent-CEClothingShirtDressBlue = синее платье
+    .desc = Элегантное синее платье, идеальное для особых событий.
 
-ent-CEClothingShirtDressBlueOpen = open blue dress
-    .desc = A stylish blue dress with an open design for a more relaxed look.
+ent-CEClothingShirtDressBlueOpen = открытое синее платье
+    .desc = Стильное синее платье с открытым дизайном для более расслабленного вида.
 
-ent-CEClothingShirtDressBlueYellow = blue and yellow dress
-    .desc = A vibrant dress combining blue and yellow colors in an attractive pattern.
+ent-CEClothingShirtDressBlueYellow = сине-жёлтое платье
+    .desc = Яркое платье, сочетающее синий и жёлтый цвета в привлекательном узоре.
 
-ent-CEClothingShirtDressGreenBelt = green dress with belt
-    .desc = A lovely green dress accented with a decorative belt.
+ent-CEClothingShirtDressGreenBelt = зелёное платье с поясом
+    .desc = Прекрасное зелёное платье, акцентированное декоративным поясом.
 
-ent-CEClothingShirtDressGreenBelt2 = green dress with wide belt
-    .desc = A charming green dress featuring a wide decorative belt.
+ent-CEClothingShirtDressGreenBelt2 = зелёное платье с широким поясом
+    .desc = Очаровательное зелёное платье с широким декоративным поясом.
 
-ent-CEClothingShirtDressLightGreen = light green dress
-    .desc = A delicate light green dress with a soft, flowing design.
+ent-CEClothingShirtDressLightGreen = светло-зелёное платье
+    .desc = Нежное светло-зелёное платье с мягким, текучим дизайном.
 
-ent-CEClothingShirtDressMaid = maid dress
-    .desc = A classic maid uniform dress, perfect for domestic service or cosplay.
+ent-CEClothingShirtDressMaid = платье горничной
+    .desc = Классическое форменное платье горничной, идеальное для домашнего обслуживания или косплея.
 
-ent-CEClothingShirtDressOpenRed = open red dress
-    .desc = A bold red dress with an open design that commands attention.
+ent-CEClothingShirtDressOpenRed = открытое красное платье
+    .desc = Смелое красное платье с открытым дизайном, привлекающее внимание.
 
-ent-CEClothingShirtDressOpenYellow = open yellow dress
-    .desc = A bright yellow dress with an open style for a cheerful appearance.
+ent-CEClothingShirtDressOpenYellow = открытое жёлтое платье
+    .desc = Яркое жёлтое платье с открытым стилем для весёлого внешнего вида.
 
-ent-CEClothingShirtDressRed = red dress
-    .desc = A stunning red dress that makes a bold fashion statement.
+ent-CEClothingShirtDressRed = красное платье
+    .desc = Ошеломляющее красное платье, которое делает смелое модное заявление.
 
-ent-CEClothingShirtDressWhiteBlue = white and blue dress
-    .desc = An elegant dress combining white and blue in a sophisticated pattern.
+ent-CEClothingShirtDressWhiteBlue = бело-синее платье
+    .desc = Элегантное платье, сочетающее белый и синий в изысканном узоре.
 
-ent-CEClothingShirtDressWhiteBlue2 = white and blue dress variant
-    .desc = Another beautiful variation of white and blue dress design.
+ent-CEClothingShirtDressWhiteBlue2 = бело-синее платье, вариант 2
+    .desc = Ещё одна прекрасная вариация дизайна бело-синего платья.
 
-ent-CEClothingShirtDressWhiteBrown = white and brown dress
-    .desc = A classic dress featuring white and brown earth tones.
+ent-CEClothingShirtDressWhiteBrown = бело-коричневое платье
+    .desc = Классическое платье, сочетающее белый и коричневый земляные тона.
 
-ent-CEClothingShirtDressWhiteBrown2 = white and brown dress variant 2
-    .desc = A refined variation of the white and brown dress style.
+ent-CEClothingShirtDressWhiteBrown2 = бело-коричневое платье, вариант 2
+    .desc = Утончённая вариация стиля бело-коричневого платья.
 
-ent-CEClothingShirtDressWhiteBrown3 = white and brown dress variant 3
-    .desc = A third elegant variation of the white and brown dress design.
+ent-CEClothingShirtDressWhiteBrown3 = бело-коричневое платье, вариант 3
+    .desc = Третья элегантная вариация дизайна бело-коричневого платья.
 
-ent-CEClothingShirtDressWhiteCollar = white dress with collar
-    .desc = A sophisticated white dress featuring a distinctive collar design.
+ent-CEClothingShirtDressWhiteCollar = белое платье с воротником
+    .desc = Изысканное белое платье с отличительным дизайном воротника.
 
-ent-CEClothingShirtDressWhiteGreen = white and green dress
-    .desc = A fresh and elegant dress combining white and green colors.
+ent-CEClothingShirtDressWhiteGreen = бело-зелёное платье
+    .desc = Свежее и элегантное платье, сочетающее белый и зелёный цвета.
 
-ent-CEClothingShirtDressWhiteGreenYellow = white, green and yellow dress
-    .desc = A vibrant dress featuring a tricolor design of white, green, and yellow.
+ent-CEClothingShirtDressWhiteGreenYellow = бело-зелёно-жёлтое платье
+    .desc = Яркое платье с трёхцветным дизайном из белого, зелёного и жёлтого.
 
-ent-CEClothingShirtDressWhiteRedBlue = white, red and blue dress
-    .desc = A patriotic dress featuring white, red, and blue colors.
+ent-CEClothingShirtDressWhiteRedBlue = бело-красно-синее платье
+    .desc = Патриотическое платье, сочетающее белый, красный и синий цвета.
 
-ent-CEClothingShirtDressYellowBlue = yellow and blue dress
-    .desc = A cheerful dress combining bright yellow and blue colors.
+ent-CEClothingShirtDressYellowBlue = жёлто-синее платье
+    .desc = Весёлое платье, сочетающее яркий жёлтый и синий цвета.
 
-ent-CEClothingShirtDressYellowCollar = yellow dress with collar
-    .desc = A bright yellow dress featuring an elegant collar design.
+ent-CEClothingShirtDressYellowCollar = жёлтое платье с воротником
+    .desc = Яркое жёлтое платье с элегантным дизайном воротника.
 
-ent-CEClothingShirtDressYellowWizard = yellow wizard dress
-    .desc = A mystical yellow dress with wizard-like qualities and design.
+ent-CEClothingShirtDressYellowWizard = жёлтое платье волшебника
+    .desc = Мистическое жёлтое платье с волшебными качествами и дизайном.
 
-ent-CEClothingShirtDressMerchant = merchant's dress
-    .desc = Mysterious merchants, who had not been seen for hundreds of years, wore exactly this type of clothing.
+ent-CEClothingShirtDressMerchant = платье купца
+    .desc = Таинственные купцы, которых не видели сотни лет, носили ровно этот тип одежды.
 
-ent-CEClothingShirtWarriorGarb = warrior garb
-    .desc = A rugged and practical garment worn by warriors and fighters. Built for durability and freedom of movement in combat.
+ent-CEClothingShirtWarriorGarb = боевое облачение
+    .desc = Грубое и практичное облачение, носимое воинами и бойцами. Созданная для прочности и свободы движений в бою.
 
-ent-CEClothingShirtBlack = black shirt
-    .desc = A classic black shirt suitable for any occasion.
+ent-CEClothingShirtBlack = чёрная рубашка
+    .desc = Классическая чёрная рубашка, подходящая для любого случая.
 
-ent-CEClothingShirtBlue = blue shirt
-    .desc = A comfortable blue shirt perfect for casual wear.
+ent-CEClothingShirtBlue = синяя рубашка
+    .desc = Удобная синяя рубашка, идеальная для повседневной носки.
 
-ent-CEClothingShirtBlueCollar = blue shirt with collar
-    .desc = A professional blue shirt featuring a distinctive collar design.
+ent-CEClothingShirtBlueCollar = синяя рубашка с воротником
+    .desc = Профессиональная синяя рубашка с отличительным дизайном воротника.
 
-ent-CEClothingShirtBlueGreen = blue and green shirt
-    .desc = A vibrant shirt combining blue and green colors in an attractive pattern.
+ent-CEClothingShirtBlueGreen = сине-зелёная рубашка
+    .desc = Яркая рубашка, сочетающая синий и зелёный цвета в привлекательном узоре.
 
-ent-CEClothingShirtGray = gray shirt
-    .desc = A neutral gray shirt that goes well with anything.
+ent-CEClothingShirtGray = серая рубашка
+    .desc = Нейтральная серая рубашка, которая хорошо сочетается со всем.
 
-ent-CEClothingShirtGreenYellow = green and yellow shirt
-    .desc = A lively shirt featuring green and yellow colors.
+ent-CEClothingShirtGreenYellow = зелёно-жёлтая рубашка
+    .desc = Живая рубашка, сочетающая зелёный и жёлтый цвета.
 
-ent-CEClothingShirtJestersAttire = jester's attire
-    .desc = A colorful and whimsical shirt worn by jesters and entertainers.
+ent-CEClothingShirtJestersAttire = наряд шута
+    .desc = Разноцветная и причудливая рубашка, носимая шутами и артистами.
 
-ent-CEClothingShirtMercenary = mercenary shirt
-    .desc = A rugged shirt worn by freelance mercenaries and soldiers of fortune.
+ent-CEClothingShirtMercenary = рубашка наёмника
+    .desc = Грубая рубашка, носимая свободными наёмниками и солдатами удачи.
 
-ent-CEClothingShirtOpenBlue = open blue shirt
-    .desc = A casual blue shirt with an open style for relaxed wear.
+ent-CEClothingShirtOpenBlue = открытая синяя рубашка
+    .desc = Повседневная синяя рубашка с открытым стилем для расслабленной носки.
 
-ent-CEClothingShirtOpenRed = open red shirt
-    .desc = A bold red shirt with an open design for a confident look.
+ent-CEClothingShirtOpenRed = открытая красная рубашка
+    .desc = Смелая красная рубашка с открытым дизайном для уверенного вида.
 
-ent-CEClothingShirtOpenYellow = open yellow shirt
-    .desc = A bright yellow shirt with an open style for a cheerful appearance.
+ent-CEClothingShirtOpenYellow = открытая жёлтая рубашка
+    .desc = Яркая жёлтая рубашка с открытым стилем для весёлого внешнего вида.
 
-ent-CEClothingShirtPurple = purple shirt
-    .desc = An elegant purple shirt that stands out in any crowd.
+ent-CEClothingShirtPurple = фиолетовая рубашка
+    .desc = Элегантная фиолетовая рубашка, которая выделяется в любой толпе.
 
-ent-CEClothingShirtRed = red shirt
-    .desc = A striking red shirt that makes a bold statement.
+ent-CEClothingShirtRed = красная рубашка
+    .desc = Поразительная красная рубашка, которая делает смелое заявление.
 
-ent-CEClothingShirtWhite = white shirt
-    .desc = A clean and classic white shirt suitable for formal occasions.
+ent-CEClothingShirtWhite = белая рубашка
+    .desc = Чистая и классическая белая рубашка, подходящая для официальных случаев.
 
-ent-CEClothingShirtWhiteBrown = white and brown shirt
-    .desc = A sophisticated shirt combining white and brown earth tones.
+ent-CEClothingShirtWhiteBrown = бело-коричневая рубашка
+    .desc = Изысканная рубашка, сочетающая белый и коричневый земляные тона.
 
-ent-CEClothingShirtWhiteCollar = white shirt with collar
-    .desc = A professional white shirt featuring a prominent collar design.
+ent-CEClothingShirtWhiteCollar = белая рубашка с воротником
+    .desc = Профессиональная белая рубашка с выступающим дизайном воротника.
 
-ent-CEClothingShirtYellow = yellow shirt
-    .desc = A bright and cheerful yellow shirt that radiates positivity.
+ent-CEClothingShirtYellow = жёлтая рубашка
+    .desc = Яркая и весёлая жёлтая рубашка, которая излучает позитив.
 
-ent-CEClothingShirtYellowCollar = yellow shirt with collar
-    .desc = A vibrant yellow shirt featuring an elegant collar design.
+ent-CEClothingShirtYellowCollar = жёлтая рубашка с воротником
+    .desc = Яркая жёлтая рубашка с элегантным дизайном воротника.
 
-ent-CEClothingShirtGuard = guard's shirt
-    .desc = The shirt worn by the imperial guard. All identical, in a single, strict style.
+ent-CEClothingShirtGuard = рубашка стражника
+    .desc = Рубашка, носимая имперской охраной. Все идентичны в едином, строгом стиле.
 
-ent-CEClothingShirtMerchant = merchant's shirt
-    .desc = Mysterious merchants, who had not been seen for hundreds of years, wore exactly this type of clothing.
+ent-CEClothingShirtMerchant = рубашка купца
+    .desc = Таинственные купцы, которых не видели сотни лет, носили ровно этот тип одежды.
 
 ent-CEClothingShoesBase = None
 
-ent-CEClothingShoesBlack = simple black boots
-    .desc = They won't hold moisture, but it's better than going barefoot.
+ent-CEClothingShoesBlack = простые чёрные сапоги
+    .desc = Они не будут задерживать влагу, но это лучше, чем ходить босиком.
 
-ent-CEClothingShoesAristocraticBlack = aristocratic black boots
-    .desc = They're expensive enough that you don't want to go caving in them.
+ent-CEClothingShoesAristocraticBlack = аристократические чёрные сапоги
+    .desc = Они достаточно дорогие, чтобы не хотеть ходить в них в пещеру.
 
-ent-CEClothingShoesSandals = sandals
-    .desc = Sandals made of rough leather and metal fastenings
+ent-CEClothingShoesSandals = сандалии
+    .desc = Сандалии из грубой кожи и металлических крепежей
 
-ent-CEClothingShoesLongLeatherBoots = long leather boots
-    .desc = the perfect tool for kicking left and right
+ent-CEClothingShoesLongLeatherBoots = длинные кожаные сапоги
+    .desc = Идеальный инструмент для пинков влево и вправо
 
-ent-CEClothingShoesJestersRingers = jester's ringers
-    .desc = Everyone around you should know that you exist, buddy.
+ent-CEClothingShoesJestersRingers = звенящие башмаки шута
+    .desc = Все вокруг вас должны знать, что вы существуете, приятель.
 
-ent-CEClothingShoesPinkSlippers = pink slippers
-    .desc = Pink slippers made of the rarest pink llama fur. Despite its peculiar appearance, it is a very expensive shoe.
+ent-CEClothingShoesPinkSlippers = розовые тапочки
+    .desc = Розовые тапочки из редчайшего розового меха ламы. Несмотря на странный вид, это очень дорогая обувь.
 
-ent-CEOverchargeVFX = magic overcharge
+ent-CEOverchargeVFX = перегрузка магии
     .suffix = VFX
 
 ent-CEOverchargeSmallVFX = { ent-CEOverchargeVFX }
     .suffix = VFX
 
-ent-CERadiationSourceVFX = radiation source
+ent-CERadiationSourceVFX = источник радиации
     .suffix = VFX
 
 ent-CESnowEffect = None
 
-ent-CEBaseMagicImpact = magic impact
-    .desc = manifestation of magical energy in the physical plane
+ent-CEBaseMagicImpact = магический удар
+    .desc = проявление магической энергии в физическом плане
 
 ent-CEImpactEffectBloodEssence = { ent-CEBaseMagicImpact }
     .desc = { ent-CEBaseMagicImpact.desc }
@@ -372,41 +372,41 @@ ent-CEImpactEffectBloodEssenceInverse = { ent-CEImpactEffectBloodEssence }
 ent-CEImpactEffectBloodEssence2 = { ent-CEImpactEffectBloodEssence }
     .desc = { ent-CEImpactEffectBloodEssence.desc }
 
-ent-CEArrivalsDockPointMarker = arrivals dock point
-    .desc = Map this thing onto island map and arrivals map to indicate where arrivals shuttles should dock.
+ent-CEArrivalsDockPointMarker = точка док прибытия
+    .desc = Нанесите эту вещь на карту острова и карту прибытия, чтобы указать, где должны причаливать челноки прибытия.
 
-ent-CEBaseBiomeSpawner = biome spawner
-    .desc = Spawns of various biomes on the map.
+ent-CEBaseBiomeSpawner = спаунер биома
+    .desc = Спауны различных биомов на карте.
 
 ent-CEBiomeSpawnerGrassland = { ent-CEBaseBiomeSpawner }
     .desc = { ent-CEBaseBiomeSpawner.desc }
-    .suffix = Grassland
+    .suffix = Степь
 
 ent-CESpawnPointGroupedBase = None
 
-ent-CESpawnPointGroupedTest = Test spawnpoint Key
+ent-CESpawnPointGroupedTest = Пробная точка спауна ключ
 
-ent-CESpawnPointGroupedTest2 = Test spawnpoint Coin
+ent-CESpawnPointGroupedTest2 = Пробная точка спауна монета
 
 ent-CESpawnPointJobBase = None
 
-ent-CESpawnPointGuardCommander = guard commander
+ent-CESpawnPointGuardCommander = командир охраны
 
-ent-CESpawnPointGuard = guard
+ent-CESpawnPointGuard = стражник
 
-ent-CESpawnPointInvestigator = investigator
+ent-CESpawnPointInvestigator = следователь
 
-ent-CESpawnPointTavernmaster = tavernmaster
+ent-CESpawnPointTavernmaster = трактирщик
 
-ent-CESpawnPointBartender = bartender
+ent-CESpawnPointBartender = бармен
 
-ent-CESpawnPointChef = chef
+ent-CESpawnPointChef = шеф-повар
 
-ent-CESpawnPointFarmer = farmer
+ent-CESpawnPointFarmer = фермер
 
-ent-CESpawnPointBard = bard
+ent-CESpawnPointBard = бард
 
-ent-CESpawnPointTownfolk = townfolk
+ent-CESpawnPointTownfolk = жители города
 
 ent-CEMobCarcat = { ent-CEBaseMobCarcat }
 
@@ -424,40 +424,40 @@ ent-CEMobSilva = { ent-CEBaseMobSilva }
 
 ent-CEMobTiefling = { ent-CEBaseMobTiefling }
 
-ent-CEBaseMobCarcat = Mr. Cat
+ent-CEBaseMobCarcat = Мистер Кот
 
 ent-CEMobCarcatDummy = None
 
-ent-CEBaseMobCarrin = Mr. Birb
+ent-CEBaseMobCarrin = Мистер Пташка
 
 ent-CEMobCarrinDummy = None
 
-ent-CEBaseMobDwarf = Mr. Dwarf
+ent-CEBaseMobDwarf = Мистер Гном
 
 ent-CEMobDwarfDummy = None
 
-ent-CEBaseMobElf = Mr. Elf
+ent-CEBaseMobElf = Мистер Эльф
 
 ent-CEMobElfDummy = None
 
-ent-CEBaseMobGoblin = Mr. Goblin
+ent-CEBaseMobGoblin = Мистер Гоблин
 
 ent-CEMobGoblinDummy = None
 
-ent-CEBaseMobHuman = Mr. Human
+ent-CEBaseMobHuman = Мистер Человек
 
 ent-CEMobHumanDummy = None
 
-ent-CEBaseMobSilva = Mr. Silva
+ent-CEBaseMobSilva = Мистер Сильва
 
 ent-CEMobSilvaDummy = None
 
-ent-CEBaseMobTiefling = Mr. Tiefling
+ent-CEBaseMobTiefling = Мистер Тифлинг
 
 ent-CEMobTieflingDummy = None
 
-ent-CEPaperFolderBase = folder
-    .desc = A folder filled with some paperwork.
+ent-CEPaperFolderBase = папка
+    .desc = Папка, заполненная какой-то документацией.
 
 ent-CEPaperFolderBlue = { ent-CEPaperFolderBase }
     .desc = { ent-CEPaperFolderBase.desc }
@@ -473,151 +473,151 @@ ent-CEPaperFolderPurple = { ent-CEPaperFolderBase }
 
 ent-CEBasePaper = None
 
-ent-CEPaper = paper
-    .desc = A piece of white paper
+ent-CEPaper = бумага
+    .desc = Лист белой бумаги
 
-ent-CEPenFeather = fountain pen
-    .desc = A sharp clipped feather of a bird, adapted as a writing implement.
+ent-CEPenFeather = перьевая ручка
+    .desc = Острый обрезанный перо птицы, адаптированный в качестве письменного инструмента.
 
-ent-CEBookBase = book
-    .desc = A hardcover book.
+ent-CEBookBase = книга
+    .desc = Книга в твёрдом переплёте.
 
 ent-CEBookWriteableBase = { ent-CEBookBase }
     .desc = { ent-CEBookBase.desc }
 
 ent-CEGuidebookBase = { ent-CEBookBase }
     .desc = { ent-CEBookBase.desc }
-    .suffix = Guidebook
+    .suffix = Путеводитель
 
-ent-CEBookTieflingGambit = Tiefling's Gambit
-    .desc = Rules for gambling with dice, created by Callista Zyanur.
+ent-CEBookTieflingGambit = Гамбит Тифлинга
+    .desc = Правила игры в кости, созданные Каллистой Зянур.
 
-ent-CEBookPantheonGodsSileita = Pantheon of Gods of Sileita
-    .desc = Description of the gods of our world, Sileita, may they bless our existence forever and ever.
+ent-CEBookPantheonGodsSileita = Пантеон богов Силеиты
+    .desc = Описание богов нашего мира, Силеиты, да благословляют они наше существование вечно.
 
-ent-CEBookPantheonGodsSileitaImitators = Pantheon of Gods of Sileita - Imitators of the Gods
-    .desc = An addition to the main part of the book, which they did not wish to include in the general edition.
+ent-CEBookPantheonGodsSileitaImitators = Пантеон богов Силеиты - Имитаторы богов
+    .desc = Дополнение к основной части книги, которое они не желали включать в общее издание.
 
 ent-CEBookRandom = { ent-CEBookWriteableBase }
-    .desc = Each book is unique! What is hidden in this one?
-    .suffix = Random visual
+    .desc = Каждая книга уникальна! Что скрывается в этой?
+    .suffix = Случайный визуальный
 
-ent-CEWheat = wheat bushel
-    .desc = You have the choice of either planting the grains again or grinding them into flour.
+ent-CEWheat = пучок пшеницы
+    .desc = У вас есть выбор: либо пересадить зёрна заново, либо смолоть их в муку.
 
-ent-CECotton = cotton
-    .desc = A plant raw fiber used to make cotton fabric.
+ent-CECotton = хлопок
+    .desc = Сырое волокно растения, используемое для изготовления хлопчатобумажной ткани.
 
-ent-CEFoodCabbage = cabbage
-    .desc = Green edible ball.
+ent-CEFoodCabbage = капуста
+    .desc = Зелёный съедобный шар.
 
-ent-CEFoodCabbageSlice = cabbage leaf
-    .desc = Time to make green salads.
+ent-CEFoodCabbageSlice = капустный лист
+    .desc = Время готовить зелёные салаты.
 
-ent-CEFoodPumpkin = pumpkin
-    .desc = Big, cool pumpkin.
+ent-CEFoodPumpkin = тыква
+    .desc = Большая, классная тыква.
 
-ent-CEFoodPumpkinSlice = pumpkin slice
-    .desc = Sliced pumpkin, ready to be cooked or eaten raw.
+ent-CEFoodPumpkinSlice = ломтик тыквы
+    .desc = Нарезанная тыква, готовая к приготовлению или употреблению в сыром виде.
 
-ent-CEFoodPotato = potato
-    .desc = Cute potato.
+ent-CEFoodPotato = картофель
+    .desc = Симпатичный картофель.
 
-ent-CEFoodCucumber = cucumber
-    .desc = An oblong green vegetable. Refreshing!
+ent-CEFoodCucumber = огурец
+    .desc = Удлинённый зелёный овощ. Освежающий!
 
-ent-CEFoodCucumberSlice = cucumber slice
-    .desc = An evenly cut cucumber, still as green and watery.
+ent-CEFoodCucumberSlice = ломтик огурца
+    .desc = Огурец, нарезанный ровно, всё ещё такой же зелёный и водянистый.
 
-ent-CEFoodTomatoesSlice = tomato slice
-    .desc = Thin red tomato slice. It's no longer as nice to throw at people as whole tomatoes.
+ent-CEFoodTomatoesSlice = ломтик помидора
+    .desc = Тонкий красный ломтик помидора. Он уже не так приятен для бросания в людей, как целые помидоры.
 
-ent-CEFoodApple = apple
-    .desc = A fruit for lovers of a quick snack.
+ent-CEFoodApple = яблоко
+    .desc = Фрукт для любителей быстрого перекуса.
 
 ent-CEFoodAppleFalling = { ent-CEFoodApple }
     .desc = { ent-CEFoodApple.desc }
-    .suffix = Falling
+    .suffix = Падающее
 
-ent-CEFoodAppleSlice = apple slice
-    .desc = Small slices to eat at one time.
+ent-CEFoodAppleSlice = ломтик яблока
+    .desc = Маленькие ломтики для одноразового употребления.
 
-ent-CEFoodPepper = pepper
-    .desc = Red and sweetish.
+ent-CEFoodPepper = перец
+    .desc = Красный и сладковатый.
 
-ent-CEFoodPepperSlice = pepper slice
-    .desc = Still as red and sweetish.
+ent-CEFoodPepperSlice = ломтик перца
+    .desc = По-прежнему красный и сладковатый.
 
-ent-CEFoodOnion = onion
-    .desc = If you eat too much, you can cry tears of joy.
+ent-CEFoodOnion = лук
+    .desc = Если вы съедите слишком много, вы можете плакать от радости.
 
-ent-CEFoodOnionSlice = onion ring
-    .desc = A more tolerable and easy to eat onion ring.
+ent-CEFoodOnionSlice = кольцо лука
+    .desc = Более переносимое и легкое в употреблении кольцо лука.
 
-ent-CEFoodChanterelle = chanterelle
-    .desc = A delicious mushroom.
+ent-CEFoodChanterelle = лисичка
+    .desc = Вкусный гриб.
 
-ent-CEFoodSunflowerHead = sunflower head
-    .desc = A cut flower from a cheerful, sun-loving plant. Inside are lots of delicious seeds.
+ent-CEFoodSunflowerHead = подсолнечная головка
+    .desc = Срезанный цветок от весёлого растения, любящего солнце. Внутри много вкусных семян.
 
 ent-CEBowlBase = None
-    .desc = This is your bowl for a delicious soups!
+    .desc = Это ваша чаша для вкусного супа!
 
-ent-CEBowlWooden = wooden bowl
+ent-CEBowlWooden = деревянная чаша
     .desc = { ent-CEBowlBase.desc }
 
-ent-CEBowlIron = iron bowl
+ent-CEBowlIron = железная чаша
     .desc = { ent-CEBowlBase.desc }
 
 ent-CEFoodPiePieceBase = None
 
-ent-CEFoodPiePieceTrash = a piece of disgusting pie
-    .desc = On the outside, it looked appealing and delicious, but on the inside, it was simply awful.
+ent-CEFoodPiePieceTrash = кусок отвратительного пирога
+    .desc = Снаружи он выглядел привлекательным и вкусным, но внутри был просто ужасен.
 
-ent-CEFoodPiePieceMeat = a piece of meat pie
-    .desc = Pie with juicy meat.
+ent-CEFoodPiePieceMeat = кусок мясного пирога
+    .desc = Пирог с сочным мясом.
 
-ent-CEFoodPiePiecePumpkin = a piece of pumpkin pie
-    .desc = Pumpkin pie. Sweet and delicate.
+ent-CEFoodPiePiecePumpkin = кусок тыквенного пирога
+    .desc = Тыквенный пирог. Сладкий и нежный.
 
-ent-CEFoodPiePieceVeg = a piece of vegetable pie
-    .desc = Vegetables and herbs inside
+ent-CEFoodPiePieceVeg = кусок овощного пирога
+    .desc = Овощи и травы внутри
 
 ent-CEPlateBase = None
-    .desc = This is your plate for a delicious meal!
+    .desc = Это ваша тарелка для вкусного приёма пищи!
 
-ent-CEPlateWooden = wooden plate
+ent-CEPlateWooden = деревянная тарелка
     .desc = { ent-CEPlateBase.desc }
 
-ent-CEPlateIron = iron plate
+ent-CEPlateIron = железная тарелка
     .desc = { ent-CEPlateBase.desc }
 
 ent-CECandleBase = None
 
-ent-CECandle = candle
-    .desc = A thin wick threaded through fat.
+ent-CECandle = свеча
+    .desc = Тонкий фитиль, пропущенный через жир.
 
-ent-CECandelabra = candelabra
-    .desc = Several candles, beautifully placed on a metal support.
+ent-CECandelabra = канделябр
+    .desc = Несколько свечей, красиво размещённых на металлической подставке.
 
-ent-CECandelabraBlood = candelabra of crimson candles
+ent-CECandelabraBlood = канделябр с малиновыми свечами
     .desc = { ent-CECandelabra.desc }
-    .suffix = Vampire, DO NOT MAP
+    .suffix = Вампир, НЕ КАРТИРОВАТЬ
 
-ent-CECandleBlood = crimson candle
+ent-CECandleBlood = малиновая свеча
     .desc = { ent-CECandle.desc }
-    .suffix = Vampire, DO NOT MAP
+    .suffix = Вампир, НЕ КАРТИРОВАТЬ
 
-ent-CEAsh1 = ash
-    .desc = It used to be something that could be interesting and useful, now it's not.
+ent-CEAsh1 = пепел
+    .desc = Раньше это было что-то, что могло быть интересным и полезным, теперь это не так.
     .suffix = 1
 
 ent-CEAsh30 = { ent-CEAsh1 }
     .desc = { ent-CEAsh1.desc }
     .suffix = 30
 
-ent-CEIronBar1 = iron bar
-    .desc = A heavy piece of refined iron
+ent-CEIronBar1 = железный брусок
+    .desc = Тяжёлый кусок рафинированного железа
     .suffix = 1
 
 ent-CEIronBar5 = { ent-CEIronBar1 }
@@ -628,8 +628,8 @@ ent-CEIronBar10 = { ent-CEIronBar1 }
     .desc = { ent-CEIronBar1.desc }
     .suffix = 10
 
-ent-CEBrassBar1 = brass bar
-    .desc = The secret of how this metal is made has been lost over time, but that only makes it more valuable: it's the only metal that can isolate arcane energy, and without it, most modern tech wouldn't be possible.
+ent-CEBrassBar1 = латунный брусок
+    .desc = Секрет того, как производится этот металл, со временем был потерян, но это только делает его более ценным: это единственный металл, который может изолировать arcane energy, и без него большинство современных технологий были бы невозможны.
     .suffix = 1
 
 ent-CEBrassBar5 = { ent-CEBrassBar1 }
@@ -640,43 +640,43 @@ ent-CEBrassBar10 = { ent-CEBrassBar1 }
     .desc = { ent-CEBrassBar1.desc }
     .suffix = 10
 
-ent-CEFloorTileItemBase = carpet
-    .desc = Rolled up carpet for easy transport.
+ent-CEFloorTileItemBase = ковёр
+    .desc = Свёрнутый ковёр для удобной транспортировки.
 
-ent-CEFloorCarpetItemBlue1 = blue carpet
+ent-CEFloorCarpetItemBlue1 = синий ковёр
     .desc = { ent-CEFloorTileItemBase.desc }
-    .suffix = Blue
+    .suffix = Синий
 
-ent-CEFloorCarpetItemRed1 = red carpet
+ent-CEFloorCarpetItemRed1 = красный ковёр
     .desc = { ent-CEFloorTileItemBase.desc }
-    .suffix = Red
+    .suffix = Красный
 
-ent-CEFloorCarpetItemPurple1 = purple carpet
+ent-CEFloorCarpetItemPurple1 = фиолетовый ковёр
     .desc = { ent-CEFloorTileItemBase.desc }
-    .suffix = Purple
+    .suffix = Фиолетовый
 
-ent-CEFloorCarpetItemBlack1 = black carpet
+ent-CEFloorCarpetItemBlack1 = чёрный ковёр
     .desc = { ent-CEFloorTileItemBase.desc }
-    .suffix = Black
+    .suffix = Чёрный
 
 ent-CEFloorCarpetItemBlue10 = { ent-CEFloorCarpetItemBlue1 }
     .desc = { ent-CEFloorCarpetItemBlue1.desc }
-    .suffix = Blue 10
+    .suffix = Синий 10
 
 ent-CEFloorCarpetItemRed10 = { ent-CEFloorCarpetItemRed1 }
     .desc = { ent-CEFloorCarpetItemRed1.desc }
-    .suffix = Red 10
+    .suffix = Красный 10
 
 ent-CEFloorCarpetItemPurple10 = { ent-CEFloorCarpetItemPurple1 }
     .desc = { ent-CEFloorCarpetItemPurple1.desc }
-    .suffix = Purple 10
+    .suffix = Фиолетовый 10
 
 ent-CEFloorCarpetItemBlack10 = { ent-CEFloorCarpetItemBlack1 }
     .desc = { ent-CEFloorCarpetItemBlack1.desc }
-    .suffix = Black 10
+    .suffix = Чёрный 10
 
-ent-CECloth1 = cloth
-    .desc = White cloth roll
+ent-CECloth1 = ткань
+    .desc = Рулон белой ткани
     .suffix = 1
 
 ent-CECloth5 = { ent-CECloth1 }
@@ -689,56 +689,56 @@ ent-CECloth10 = { ent-CECloth1 }
 
 ent-CECoinBase = None
 
-ent-CECoinCopper1 = copper coin
-    .desc = The smallest denomination coin. Copper.
-    .suffix = 1 coin
+ent-CECoinCopper1 = медная монета
+    .desc = Монета самого маленького номинала. Медь.
+    .suffix = 1 монета
 
 ent-CECoinCopper5 = { ent-CECoinCopper1 }
     .desc = { ent-CECoinCopper1.desc }
-    .suffix = 5 coins
+    .suffix = 5 монет
 
 ent-CECoinCopper10 = { ent-CECoinCopper1 }
     .desc = { ent-CECoinCopper1.desc }
-    .suffix = 10 coins
+    .suffix = 10 монет
 
-ent-CECoinSilver1 = silver coin
-    .desc = A valuable coin made from a precisely calibrated silver alloy... and something else. Equal in value to ten coppers.
-    .suffix = 1 coin
+ent-CECoinSilver1 = серебряная монета
+    .desc = Ценная монета, сделанная из точно откалиброванного серебряного сплава... и чего-то ещё. Стоит десять медных.
+    .suffix = 1 монета
 
 ent-CECoinSilver5 = { ent-CECoinSilver1 }
     .desc = { ent-CECoinSilver1.desc }
-    .suffix = 5 coins
+    .suffix = 5 монет
 
 ent-CECoinSilver10 = { ent-CECoinSilver1 }
     .desc = { ent-CECoinSilver1.desc }
-    .suffix = 10 coins
+    .suffix = 10 монет
 
-ent-CECoinGold1 = gold coin
-    .desc = A gold, big, beautiful coin. Valuable enough to be stolen by bandits. Equal in value to ten silver coins.
-    .suffix = 1 coin
+ent-CECoinGold1 = золотая монета
+    .desc = Золотая, большая, красивая монета. Достаточно ценная, чтобы быть украденной бандитами. Стоит десять серебряных монет.
+    .suffix = 1 монета
 
 ent-CECoinGold5 = { ent-CECoinGold1 }
     .desc = { ent-CECoinGold1.desc }
-    .suffix = 5 coins
+    .suffix = 5 монет
 
 ent-CECoinGold10 = { ent-CECoinGold1 }
     .desc = { ent-CECoinGold1.desc }
-    .suffix = 10 coins
+    .suffix = 10 монет
 
-ent-CECoinPlatinum1 = platinum coin
-    .desc = A platinum coin? It's so rare. Ten gold pieces is the price of one.
-    .suffix = 1 coin
+ent-CECoinPlatinum1 = платиновая монета
+    .desc = Платиновая монета? Она так редка. Цена десяти золотых за одну.
+    .suffix = 1 монета
 
 ent-CECoinPlatinum5 = { ent-CECoinPlatinum1 }
     .desc = { ent-CECoinPlatinum1.desc }
-    .suffix = 5 coins
+    .suffix = 5 монет
 
 ent-CECoinPlatinum10 = { ent-CECoinPlatinum1 }
     .desc = { ent-CECoinPlatinum1.desc }
-    .suffix = 10 coins
+    .suffix = 10 монет
 
-ent-CEGlassSheet1 = glass sheet
-    .desc = Treated quartz glass, transmits light well, and is nice to look at!
+ent-CEGlassSheet1 = стеклянный лист
+    .desc = Обработанное кварцевое стекло, хорошо пропускает свет и приятно смотреть!
 
 ent-CEGlassSheet5 = { ent-CEGlassSheet1 }
     .desc = { ent-CEGlassSheet1.desc }
@@ -750,16 +750,16 @@ ent-CEGlassSheet10 = { ent-CEGlassSheet1 }
 
 ent-CEGlassShard = None
 
-ent-CENail1 = nails
-    .desc = A basic carpenter's tool that allows you to do unimaginable things with wood.
+ent-CENail1 = гвозди
+    .desc = Базовый инструмент плотника, позволяющий делать немыслимые вещи с деревом.
     .suffix = 1
 
 ent-CENail10 = { ent-CENail1 }
     .desc = { ent-CENail1.desc }
     .suffix = 10
 
-ent-CEIronOre1 = iron ore
-    .desc = A chunk of iron-rich ore. Can be smelted down into usable iron bars.
+ent-CEIronOre1 = железная руда
+    .desc = Кусок железорудного агломерата. Может быть переплавлена в полезные железные бруски.
     .suffix = 1
 
 ent-CEIronOre10 = { ent-CEIronOre1 }
@@ -770,15 +770,15 @@ ent-CEIronOre30 = { ent-CEIronOre1 }
     .desc = { ent-CEIronOre1.desc }
     .suffix = 30
 
-ent-CEDirtBlock1 = dirt block
-    .desc = A block of excellent black soil.
+ent-CEDirtBlock1 = грязный блок
+    .desc = Блок отличной чёрной земли.
 
 ent-CEDirtBlock10 = { ent-CEDirtBlock1 }
     .desc = { ent-CEDirtBlock1.desc }
     .suffix = 10
 
-ent-CEStoneBlock1 = stone block
-    .desc = A block of cold stone.
+ent-CEStoneBlock1 = каменный блок
+    .desc = Блок холодного камня.
 
 ent-CEStoneBlock10 = { ent-CEStoneBlock1 }
     .desc = { ent-CEStoneBlock1.desc }
@@ -786,11 +786,11 @@ ent-CEStoneBlock10 = { ent-CEStoneBlock1 }
 
 ent-CESaplingBase = None
 
-ent-CESeedAppleTree = apple tree saplings
-    .desc = Apple tree saplings. Plant them to grow apple trees.
+ent-CESeedAppleTree = саженцы яблони
+    .desc = Саженцы яблони. Посадите их, чтобы вырастить яблони.
 
-ent-CEIronScrap1 = iron scrap
-    .desc = Crooked pieces of iron. Only to be melted down.
+ent-CEIronScrap1 = железный лом
+    .desc = Кривые куски железа. Только для переплавки.
     .suffix = 1
 
 ent-CEIronScrap5 = { ent-CEIronScrap1 }
@@ -801,8 +801,8 @@ ent-CEIronScrap10 = { ent-CEIronScrap1 }
     .desc = { ent-CEIronScrap1.desc }
     .suffix = 10
 
-ent-CEBrassScrap1 = brass scrap
-    .desc = Crooked pieces of brass. The secret of producing this material has been lost. Only ancient ruins remain as a source of this valuable metal.
+ent-CEBrassScrap1 = латунный лом
+    .desc = Кривые куски латуни. Секрет производства этого материала был утерян. Только древние руины остаются источником этого ценного металла.
     .suffix = 1
 
 ent-CEBrassScrap5 = { ent-CEBrassScrap1 }
@@ -816,64 +816,64 @@ ent-CEBrassScrap10 = { ent-CEBrassScrap1 }
 ent-CEBaseSeed = None
     .suffix = 1
 
-ent-CESeedWheat = wheat seeds
-    .desc = Small wheat seeds. What will you do with them? Grind them into flour, or plant them again?
+ent-CESeedWheat = семена пшеницы
+    .desc = Мелкие семена пшеницы. Что вы с ними будете делать? Смолоть их в муку или пересадить заново?
     .suffix = 1
 
 ent-CESeedWheat30 = { ent-CESeedWheat }
     .desc = { ent-CESeedWheat.desc }
     .suffix = 30
 
-ent-CESeedPumpkin = pumpkin seeds
-    .desc = Pumpkin seeds. Some pumpkin seems to have been gutted and butchered.
+ent-CESeedPumpkin = семена тыквы
+    .desc = Семена тыквы. Кажется, какую-то тыкву выпотрошили и разрезали.
     .suffix = 1
 
 ent-CESeedPumpkin30 = { ent-CESeedPumpkin }
     .desc = { ent-CESeedPumpkin.desc }
     .suffix = 30
 
-ent-CESeedCabbage = cabbage seeds
-    .desc = Oh, no, my cabbage!
+ent-CESeedCabbage = семена капусты
+    .desc = О нет, моя капуста!
     .suffix = 1
 
 ent-CESeedCabbage30 = { ent-CESeedCabbage }
     .desc = { ent-CESeedCabbage.desc }
     .suffix = 30
 
-ent-CESeedCucumber = cucumber seeds
-    .desc = Are cucumber seeds. You know what to do with them.
+ent-CESeedCucumber = семена огурца
+    .desc = Семена огурца. Вы знаете, что с ними делать.
     .suffix = 1
 
 ent-CESeedCucumber30 = { ent-CESeedCucumber }
     .desc = { ent-CESeedCucumber.desc }
     .suffix = 30
 
-ent-CESeedTomato = tomato seeds
-    .desc = It looks like powder! They're so small, these seeds.
+ent-CESeedTomato = семена помидора
+    .desc = Похоже на порошок! Они такие маленькие, эти семена.
     .suffix = 1
 
 ent-CESeedTomato30 = { ent-CESeedTomato }
     .desc = { ent-CESeedTomato.desc }
     .suffix = 30
 
-ent-CESeedPepper = pepper seeds
-    .desc = Pepper seeds, with a peppercorn inside.
+ent-CESeedPepper = семена перца
+    .desc = Семена перца с перцем внутри.
     .suffix = 1
 
 ent-CESeedPepper30 = { ent-CESeedPepper }
     .desc = { ent-CESeedPepper.desc }
     .suffix = 30
 
-ent-CESeedCotton = cotton seeds
-    .desc = Cotton seeds. It's time to grow some pants!
+ent-CESeedCotton = семена хлопка
+    .desc = Семена хлопка. Пора вырастить какие-нибудь штаны!
     .suffix = 1
 
 ent-CESeedCotton30 = { ent-CESeedCotton }
     .desc = { ent-CESeedCotton.desc }
     .suffix = 30
 
-ent-CESeedSunflower = sunflower seeds
-    .desc = Sunflower seeds!
+ent-CESeedSunflower = семена подсолнуха
+    .desc = Семена подсолнуха!
     .suffix = 1
 
 ent-CESeedSunflower30 = { ent-CESeedSunflower }
@@ -881,61 +881,61 @@ ent-CESeedSunflower30 = { ent-CESeedSunflower }
     .suffix = 30
 
 ent-CEFloorTileBase = None
-    .desc = Makes the floor more pleasant for your feet. And your eyes.
+    .desc = Делает пол более приятным для ваших ног. И для ваших глаз.
 
-ent-CEFloorTileGlass = glass floor tile
+ent-CEFloorTileGlass = стеклянная плитка пола
     .desc = { ent-CEFloorTileBase.desc }
 
-ent-CEFloorTileOakWoodplanks = oak woodplanks
+ent-CEFloorTileOakWoodplanks = дубовые доски пола
     .desc = { ent-CEFloorTileBase.desc }
 
-ent-CEFloorTileOakWoodplanksBig = oak big woodplanks
+ent-CEFloorTileOakWoodplanksBig = большие дубовые доски пола
     .desc = { ent-CEFloorTileBase.desc }
 
-ent-CEFloorTileOakWoodplanksCruciform = oak cruciform woodplanks
+ent-CEFloorTileOakWoodplanksCruciform = крестообразные дубовые доски пола
     .desc = { ent-CEFloorTileBase.desc }
 
-ent-CEFloorTileOakWoodplanksStairs = oak stairs woodplanks
+ent-CEFloorTileOakWoodplanksStairs = лестничные дубовые доски пола
     .desc = { ent-CEFloorTileBase.desc }
 
-ent-CEFloorTileStonebricks = stonebrick
+ent-CEFloorTileStonebricks = каменный кирпич
     .desc = { ent-CEFloorTileBase.desc }
 
-ent-CEFloorTileStonebricksSmallCarved = small carved stonebricks
+ent-CEFloorTileStonebricksSmallCarved = маленькие резные каменные кирпичи
     .desc = { ent-CEFloorTileBase.desc }
 
-ent-CEFloorTileStonebricksSmallCarved2 = small carved stonebricks 2
+ent-CEFloorTileStonebricksSmallCarved2 = маленькие резные каменные кирпичи 2
     .desc = { ent-CEFloorTileBase.desc }
 
-ent-CEFloorTileStoneLongBricks = stonebricks long
+ent-CEFloorTileStoneLongBricks = длинные каменные кирпичи
     .desc = { ent-CEFloorTileBase.desc }
 
-ent-CEFloorTileStoneMediumBricks = stone medium bricks
+ent-CEFloorTileStoneMediumBricks = средние каменные кирпичи
     .desc = { ent-CEFloorTileBase.desc }
 
-ent-CEFloorTileStoneSquarePattern = stone square pattern
+ent-CEFloorTileStoneSquarePattern = каменный квадратный узор
     .desc = { ent-CEFloorTileBase.desc }
 
-ent-CEFloorTileStoneDiamond = stone diamond
+ent-CEFloorTileStoneDiamond = каменный ромб
     .desc = { ent-CEFloorTileBase.desc }
 
-ent-CEFloorTileStoneMediumCircles = stone medium circles
+ent-CEFloorTileStoneMediumCircles = каменные средние круги
     .desc = { ent-CEFloorTileBase.desc }
 
-ent-CEFloorTileStoneSmallCircles = stone small circles
+ent-CEFloorTileStoneSmallCircles = каменные маленькие круги
     .desc = { ent-CEFloorTileBase.desc }
 
-ent-CEFloorTileStonebricksSquareCarved = square carved stonebricks
+ent-CEFloorTileStonebricksSquareCarved = квадратные резные каменные кирпичи
     .desc = { ent-CEFloorTileBase.desc }
 
-ent-CEFloorTileRoofRed = red roof tile
+ent-CEFloorTileRoofRed = красная кровельная плитка
     .desc = { ent-CEFloorTileBase.desc }
 
 ent-CEFloorTileGrassBagBase = None
-    .desc = A bag of grass seed. A pinch of natural magic and the dirt is covered with a beautiful lawn in the blink of an eye!
+    .desc = Мешок с семенами травы. Щепотка природной магии и грязь покрывается красивым газоном в мгновение ока!
     .suffix = 1
 
-ent-CEFloorTileGrass = grass bag
+ent-CEFloorTileGrass = мешок травы
     .desc = { ent-CEFloorTileGrassBagBase.desc }
     .suffix = 1
 
@@ -943,7 +943,7 @@ ent-CEFloorTileGrass30 = { ent-CEFloorTileGrass }
     .desc = { ent-CEFloorTileGrass.desc }
     .suffix = 30
 
-ent-CEFloorTileMycelium = mycelium bag
+ent-CEFloorTileMycelium = мешок мицелия
     .desc = { ent-CEFloorTileGrassBagBase.desc }
     .suffix = 1
 
@@ -951,29 +951,29 @@ ent-CEFloorTileMycelium30 = { ent-CEFloorTileMycelium }
     .desc = { ent-CEFloorTileMycelium.desc }
     .suffix = 30
 
-ent-CETradeContractBase = trade contract
+ent-CETradeContractBase = торговый контракт
 
 ent-CETradeContractHomeDecor = { ent-CETradeContractBase }
-    .desc = Trading contract with the "Cozy House" store. Allows you to buy various decorations and nice things to furnish your home.
-    .suffix = Home Decor
+    .desc = Торговый контракт с магазином "Уютный дом". Позволяет вам покупать различные украшения и приятные вещи для обустройства вашего дома.
+    .suffix = Домашний декор
 
 ent-CETradeContractHorticulture = { ent-CETradeContractBase }
-    .desc = Trading contract with "Horticulture Consortium". Allows you to purchase seeds, plants and gardening tools.
-    .suffix = Horticulture
+    .desc = Торговый контракт с "Консорциумом садоводства". Позволяет вам покупать семена, растения и инструменты для садоводства.
+    .suffix = Садоводство
 
 ent-CETradeContractTailors = { ent-CETradeContractBase }
-    .desc = Trading contract with the "Silk & Needle Tailors Guild". Allows you to purchase fabrics, clothing and tailoring tools.
-    .suffix = Tailors
+    .desc = Торговый контракт с гильдией портных "Шелк и игла". Позволяет вам покупать ткани, одежду и инструменты портного.
+    .suffix = Портные
 
 ent-CETradeContractGuard = { ent-CETradeContractBase }
-    .desc = Access to trade with the personal warehouse of the imperial guard. Must not fall into the wrong hands!
-    .suffix = Empire guard warehouse
+    .desc = Доступ к торговле с личным складом имперской охраны. Не должно попадать в неправильные руки!
+    .suffix = Склад имперской охраны
 
-ent-CEWoodLog = wooden log
-    .desc = A piece of unprocessed wood. Good material for building, or starting a fire.
+ent-CEWoodLog = деревянное бревно
+    .desc = Кусок необработанного дерева. Хороший материал для строительства или разведения огня.
 
-ent-CEWoodenPlanks1 = wooden planks
-    .desc = Treated and ready-to-use wood.
+ent-CEWoodenPlanks1 = деревянные доски
+    .desc = Обработанная и готовая к использованию древесина.
     .suffix = 1
 
 ent-CEWoodenPlanks10 = { ent-CEWoodenPlanks1 }
@@ -984,125 +984,125 @@ ent-CEWoodenPlanks20 = { ent-CEWoodenPlanks1 }
     .desc = { ent-CEWoodenPlanks1.desc }
     .suffix = 20
 
-ent-CEBaseKeyRing = key ring
-    .desc = Allows you to comfortably store a large number of keys in one place.
-    .suffix = Empty
+ent-CEBaseKeyRing = кольцо для ключей
+    .desc = Позволяет вам удобно хранить большое количество ключей в одном месте.
+    .suffix = Пусто
 
-ent-CEWallet = wallet
-    .desc = A small wallet, handy for storing coins.
-    .suffix = Empty
+ent-CEWallet = кошелёк
+    .desc = Маленький кошелёк, удобный для хранения монет.
+    .suffix = Пусто
 
-ent-CECrayon = crayon
-    .desc = A colourful crayon.
+ent-CECrayon = мелок
+    .desc = Разноцветный мелок.
 
 ent-CECrayonWhite = { ent-CECrayon }
     .desc = { ent-CECrayon.desc }
-    .suffix = White
+    .suffix = Белый
 
 ent-CECrayonRainbow = { ent-CECrayon }
     .desc = { ent-CECrayon.desc }
-    .suffix = Artifact, Rainbow
+    .suffix = Артефакт, Радуга
 
 ent-CECrayonBlack = { ent-CECrayon }
     .desc = { ent-CECrayon.desc }
-    .suffix = Black
+    .suffix = Чёрный
 
 ent-CECrayonRed = { ent-CECrayon }
     .desc = { ent-CECrayon.desc }
-    .suffix = Red
+    .suffix = Красный
 
 ent-CECrayonYellow = { ent-CECrayon }
     .desc = { ent-CECrayon.desc }
-    .suffix = Yellow
+    .suffix = Жёлтый
 
 ent-CECrayonGreen = { ent-CECrayon }
     .desc = { ent-CECrayon.desc }
-    .suffix = Green
+    .suffix = Зелёный
 
 ent-CECrayonBlue = { ent-CECrayon }
     .desc = { ent-CECrayon.desc }
-    .suffix = Blue
+    .suffix = Синий
 
 ent-CECrayonPurple = { ent-CECrayon }
     .desc = { ent-CECrayon.desc }
-    .suffix = Purple
+    .suffix = Фиолетовый
 
-ent-CECrowbar = crowbar
-    .desc = A sturdy iron crowbar, useful for prying things open.
+ent-CECrowbar = лом
+    .desc = Прочный железный лом, полезный для открывания вещей.
 
-ent-CEFork = fork
-    .desc = Thousands of years of progress, and there it is, the fork.
+ent-CEFork = вилка
+    .desc = Тысячи лет прогресса и вот он, вилка.
 
-ent-CESpoon = spoon
-    .desc = It is considered the first tool for eating, not counting the hands.
+ent-CESpoon = ложка
+    .desc = Считается первым инструментом для еды, не считая рук.
 
-ent-CEWeaponDaggerIron = iron dagger
-    .desc = A standard dagger made of iron.
+ent-CEWeaponDaggerIron = железный кинжал
+    .desc = Стандартный кинжал из железа.
 
-ent-CEWeaponDaggerHatchet = hatchet
-    .desc = A small hatchet, commonly used as a kitchen utensil for preparing food.
+ent-CEWeaponDaggerHatchet = топорик
+    .desc = Маленький топорик, обычно используемый как кухонный инструмент для подготовки еды.
 
-ent-CEWeaponDaggerSickle = sickle
-    .desc = A curved blade used for harvesting crops, but can be deadly in skilled hands.
+ent-CEWeaponDaggerSickle = серп
+    .desc = Изогнутое лезвие, используемое для сбора урожая, но может быть смертельным в опытных руках.
 
-ent-CEWeaponHammerIron = iron hammer
-    .desc = A standard hammer made of iron.
+ent-CEWeaponHammerIron = железный молот
+    .desc = Стандартный молот из железа.
 
-ent-CEInstrumentFlute = flute
-    .desc = A compact musical wind instrument, popular in villages as well as with large musical troupes.
+ent-CEInstrumentFlute = флейта
+    .desc = Компактный музыкальный духовой инструмент, популярный в деревнях и в больших музыкальных труппах.
 
-ent-CEInstrumentLyra = lyra
-    .desc = A common stringed instrument throughout Sylate, popular with various bards and musical troupes.
+ent-CEInstrumentLyra = лира
+    .desc = Распространённый струнный инструмент по всему Силате, популярный среди различных бардов и музыкальных труп.
 
-ent-CEInstrumentLute = lute
-    .desc = A legend among bards.
+ent-CEInstrumentLute = лютня
+    .desc = Легенда среди бардов.
 
-ent-CEInstrumentGuitarSkeleton = skelute
-    .desc = A true weapon for brutal rock skeletons. What does "rock" mean?
+ent-CEInstrumentGuitarSkeleton = скелетная гитара
+    .desc = Истинное оружие для жестокого рок-скелета. Что означает "рок"?
 
-ent-CEWeaponPickaxeIron = iron pickaxe
-    .desc = A sturdy iron pickaxe, perfect for mining and not for combat.
+ent-CEWeaponPickaxeIron = железная кирка
+    .desc = Прочная железная кирка, идеальная для добычи, а не для боя.
 
-ent-CERope = rope
-    .desc = Multifunctional rope. You can tie something with it. Or someone.
+ent-CERope = верёвка
+    .desc = Многофункциональная верёвка. Вы можете что-то завязать ею. Или кого-то.
 
-ent-CESack = cloth sack
+ent-CESack = тканевой мешок
 
-ent-CEScrewdriver = screwdriver
-    .desc = Industrial grade torque in a small screwdriving package.
+ent-CEScrewdriver = отвёртка
+    .desc = Промышленная крутящий момент в маленьком пакете отвёрток.
 
-ent-CEWeaponShovelIron = iron shovel
-    .desc = A sturdy iron shovel, perfect for digging and not for combat.
+ent-CEWeaponShovelIron = железная лопата
+    .desc = Прочная железная лопата, идеальная для копания, а не для боя.
 
 ent-CECookerBase = None
 
-ent-CECookingPot = cooking pot
-    .desc = Container for cooking Grand Soup.
+ent-CECookingPot = кастрюля
+    .desc = Контейнер для приготовления Большого Супа.
 
-ent-CEFryingPan = frying pan
-    .desc = You can always watch three things: how fire burns, how water flows, and how delicious meat is cooked.
+ent-CEFryingPan = сковорода
+    .desc = Вы всегда можете смотреть три вещи: как горит огонь, как течёт вода и как готовится вкусное мясо.
 
-ent-CEPlatePie = pie plate
-    .desc = A mould for making a delicious pie.
+ent-CEPlatePie = форма для пирога
+    .desc = Форма для изготовления вкусного пирога.
 
-ent-CEBaseLockpick = iron lockpick
-    .desc = A thief's tool that, with proper skill and skill, allows you to pick any lock.
+ent-CEBaseLockpick = железный монтировочный инструмент
+    .desc = Инструмент вора, который при надлежащем мастерстве позволяет вскрыть любой замок.
 
-ent-CEKeyFile = key file
-    .desc = A file, ideal for sharpening keys, and reshaping them.
+ent-CEKeyFile = файл ключа
+    .desc = Файл, идеальный для заточки ключей и переделки их.
 
-ent-CEBaseLock = lock
-    .desc = A small device customized only for a specific key shape. Attach it to doors or chests that have no lock and feel the spirit of security.
+ent-CEBaseLock = замок
+    .desc = Небольшое устройство, настроенное только для определённой формы ключа. Прикрепите его к дверям или сундукам, у которых нет замка, и почувствуйте дух безопасности.
 
-ent-CELockIron = iron lock
+ent-CELockIron = железный замок
     .desc = { ent-CEBaseLock.desc }
 
-ent-CEKeyUniversal = omni key
+ent-CEKeyUniversal = универсальный ключ
     .desc = { ent-CEBaseKey.desc }
-    .suffix = Admeme Only, Do Not Map
+    .suffix = Только для администраторов, не картировать
 
-ent-CEBaseKey = key
-    .desc = A small, intricate piece of metal that opens some locks. Don't give it to anyone!
+ent-CEBaseKey = ключ
+    .desc = Маленький, замысловатый кусок металла, который открывает некоторые замки. Никому его не отдавайте!
 
 ent-CEKeyIronBlank = { ent-CEBaseKey }
     .desc = { ent-CEBaseKey.desc }
@@ -1112,94 +1112,94 @@ ent-CEKeyGuardBase = { ent-CEKeyIronBlank }
 
 ent-CEKeyGuardHall = { ent-CEKeyGuardBase }
     .desc = { ent-CEKeyGuardBase.desc }
-    .suffix = Guard Hall
+    .suffix = Зал охраны
 
 ent-CEKeyGuardStaff = { ent-CEKeyGuardBase }
     .desc = { ent-CEKeyGuardBase.desc }
-    .suffix = Guard Staff
+    .suffix = Персонал охраны
 
 ent-CEKeyGuardArmory = { ent-CEKeyGuardBase }
     .desc = { ent-CEKeyGuardBase.desc }
-    .suffix = Guard Armory
+    .suffix = Армория охраны
 
 ent-CEKeyGuardHeadRoom = { ent-CEKeyGuardBase }
     .desc = { ent-CEKeyGuardBase.desc }
-    .suffix = Guard Head Room
+    .suffix = Кабинет главы охраны
 
 ent-CEKeyGuardCage1 = { ent-CEKeyGuardBase }
     .desc = { ent-CEKeyGuardBase.desc }
-    .suffix = Guard Cage 1
+    .suffix = Клетка охраны 1
 
 ent-CEKeyGuardCage2 = { ent-CEKeyGuardBase }
     .desc = { ent-CEKeyGuardBase.desc }
-    .suffix = Guard Cage 2
+    .suffix = Клетка охраны 2
 
 ent-CEKeyGuardCage3 = { ent-CEKeyGuardBase }
     .desc = { ent-CEKeyGuardBase.desc }
-    .suffix = Guard Cage 3
+    .suffix = Клетка охраны 3
 
 ent-CEKeyGuardCage4 = { ent-CEKeyGuardBase }
     .desc = { ent-CEKeyGuardBase.desc }
-    .suffix = Guard Cage 4
+    .suffix = Клетка охраны 4
 
 ent-CEKeyGuardCage5 = { ent-CEKeyGuardBase }
     .desc = { ent-CEKeyGuardBase.desc }
-    .suffix = Guard Cage 5
+    .suffix = Клетка охраны 5
 
 ent-CEKeyTavernHall = { ent-CEKeyIronBlank }
     .desc = { ent-CEKeyIronBlank.desc }
-    .suffix = Tavern Hall
+    .suffix = Зал таверны
 
 ent-CEKeyTavernStaff = { ent-CEKeyIronBlank }
     .desc = { ent-CEKeyIronBlank.desc }
-    .suffix = Tavern Staff
+    .suffix = Персонал таверны
 
 ent-CEKeyTavernHeadRoom = { ent-CEKeyIronBlank }
     .desc = { ent-CEKeyIronBlank.desc }
-    .suffix = Tavern Head Room
+    .suffix = Кабинет главы таверны
 
 ent-CEKeyTavernRoomBase = { ent-CEKeyIronBlank }
     .desc = { ent-CEKeyIronBlank.desc }
 
 ent-CEKeyTavernDorm1 = { ent-CEKeyTavernRoomBase }
     .desc = { ent-CEKeyTavernRoomBase.desc }
-    .suffix = Tavern Dorm 1
+    .suffix = Общежитие таверны 1
 
 ent-CEKeyTavernDorm2 = { ent-CEKeyTavernRoomBase }
     .desc = { ent-CEKeyTavernRoomBase.desc }
-    .suffix = Tavern Dorm 2
+    .suffix = Общежитие таверны 2
 
 ent-CEKeyTavernDorm3 = { ent-CEKeyTavernRoomBase }
     .desc = { ent-CEKeyTavernRoomBase.desc }
-    .suffix = Tavern Dorm 3
+    .suffix = Общежитие таверны 3
 
 ent-CEKeyTavernDorm4 = { ent-CEKeyTavernRoomBase }
     .desc = { ent-CEKeyTavernRoomBase.desc }
-    .suffix = Tavern Dorm 4
+    .suffix = Общежитие таверны 4
 
 ent-CEKeyTavernDorm5 = { ent-CEKeyTavernRoomBase }
     .desc = { ent-CEKeyTavernRoomBase.desc }
-    .suffix = Tavern Dorm 5
+    .suffix = Общежитие таверны 5
 
 ent-CEKeyTavernDorm6 = { ent-CEKeyTavernRoomBase }
     .desc = { ent-CEKeyTavernRoomBase.desc }
-    .suffix = Tavern Dorm 6
+    .suffix = Общежитие таверны 6
 
 ent-CEKeyTavernDorm7 = { ent-CEKeyTavernRoomBase }
     .desc = { ent-CEKeyTavernRoomBase.desc }
-    .suffix = Tavern Dorm 7
+    .suffix = Общежитие таверны 7
 
 ent-CEKeyTavernDorm8 = { ent-CEKeyTavernRoomBase }
     .desc = { ent-CEKeyTavernRoomBase.desc }
-    .suffix = Tavern Dorm 8
+    .suffix = Общежитие таверны 8
 
 ent-CEKeyTavernDorm9 = { ent-CEKeyTavernRoomBase }
     .desc = { ent-CEKeyTavernRoomBase.desc }
-    .suffix = Tavern Dorm 9
+    .suffix = Общежитие таверны 9
 
 ent-CEKeyTavernDorm10 = { ent-CEKeyTavernRoomBase }
     .desc = { ent-CEKeyTavernRoomBase.desc }
-    .suffix = Tavern Dorm 10
+    .suffix = Общежитие таверны 10
 
 ent-CEJusticeHitscan = None
 
@@ -1209,358 +1209,358 @@ ent-CEBaseDoor = None
 
 ent-CEBaseDoorFrame = None
 
-ent-CEWoodenDoorFrame = wooden door frame
-    .desc = An unfinished wooden door.
+ent-CEWoodenDoorFrame = деревянная дверная рама
+    .desc = Незавершённая деревянная дверь.
 
 ent-CEWoodenDoorFrameMirrored = { ent-CEWoodenDoorFrame }
     .desc = { ent-CEWoodenDoorFrame.desc }
 
-ent-CEIronDoorFrame = iron door frame
-    .desc = An unfinished iron door.
+ent-CEIronDoorFrame = железная дверная рама
+    .desc = Незавершённая железная дверь.
 
 ent-CEIronDoorFrameMirrored = { ent-CEIronDoorFrame }
     .desc = { ent-CEIronDoorFrame.desc }
 
 ent-CEIronDoorMirrored = { ent-CEIronDoor }
     .desc = { ent-CEIronDoor.desc }
-    .suffix = Opened, Mirrored
+    .suffix = Открыта, Зеркало
 
 ent-CEIronDoorWindowedMirrored = { ent-CEIronDoorWindowed }
     .desc = { ent-CEIronDoorWindowed.desc }
-    .suffix = Opened, Mirrored
+    .suffix = Открыта, Зеркало
 
 ent-CEWoodenDoorMirrored = { ent-CEWoodenDoor }
     .desc = { ent-CEWoodenDoor.desc }
-    .suffix = Opened, Mirrored
+    .suffix = Открыта, Зеркало
 
 ent-CEWoodenDoorWindowedMirrored = { ent-CEWoodenDoorWindowed }
     .desc = { ent-CEWoodenDoorWindowed.desc }
-    .suffix = Opened, Mirrored
+    .suffix = Открыта, Зеркало
 
 ent-CEIronDoorGuardHall = { ent-CEIronDoorWindowed }
     .desc = { ent-CEIronDoorWindowed.desc }
-    .suffix = Guard Hall
+    .suffix = Зал охраны
 
 ent-CEIronDoorGuardStaff = { ent-CEIronDoor }
     .desc = { ent-CEIronDoor.desc }
-    .suffix = Guard Staff
+    .suffix = Персонал охраны
 
 ent-CEIronDoorGuardArmory = { ent-CEIronDoor }
     .desc = { ent-CEIronDoor.desc }
-    .suffix = Guard Armory
+    .suffix = Армория охраны
 
 ent-CEIronDoorGuardHeadRoom = { ent-CEIronDoor }
     .desc = { ent-CEIronDoor.desc }
-    .suffix = Guard Head Room
+    .suffix = Кабинет главы охраны
 
 ent-CEIronDoorGuardCage1 = { ent-CEBaseFenceGateBig }
     .desc = { ent-CEBaseFenceGateBig.desc }
-    .suffix = Guard Cage 1
+    .suffix = Клетка охраны 1
 
 ent-CEIronDoorGuardCage2 = { ent-CEBaseFenceGateBig }
     .desc = { ent-CEBaseFenceGateBig.desc }
-    .suffix = Guard Cage 2
+    .suffix = Клетка охраны 2
 
 ent-CEIronDoorGuardCage3 = { ent-CEBaseFenceGateBig }
     .desc = { ent-CEBaseFenceGateBig.desc }
-    .suffix = Guard Cage 3
+    .suffix = Клетка охраны 3
 
 ent-CEIronDoorGuardCage4 = { ent-CEBaseFenceGateBig }
     .desc = { ent-CEBaseFenceGateBig.desc }
-    .suffix = Guard Cage 4
+    .suffix = Клетка охраны 4
 
 ent-CEIronDoorGuardCage5 = { ent-CEBaseFenceGateBig }
     .desc = { ent-CEBaseFenceGateBig.desc }
-    .suffix = Guard Cage 5
+    .suffix = Клетка охраны 5
 
 ent-CEWoodenDoorTavernHall = { ent-CEWoodenDoorWindowed }
     .desc = { ent-CEWoodenDoorWindowed.desc }
-    .suffix = Tavern Hall
+    .suffix = Зал таверны
 
 ent-CEWoodenDoorTavernStaff = { ent-CEWoodenDoor }
     .desc = { ent-CEWoodenDoor.desc }
-    .suffix = Tavern Staff
+    .suffix = Персонал таверны
 
 ent-CEIronDoorTavernHeadRoom = { ent-CEIronDoor }
     .desc = { ent-CEIronDoor.desc }
-    .suffix = Tavern Head Room
+    .suffix = Кабинет главы таверны
 
 ent-CEWoodenDoorTavernDorm1 = { ent-CEWoodenDoor }
     .desc = { ent-CEWoodenDoor.desc }
-    .suffix = Tavern Dorm 1
+    .suffix = Общежитие таверны 1
 
-ent-CEWoodenDoorTavernDorm2 = { ent-CEWoodenDoor }
+ent-CEWoodenDoorTavernDorm2 = {{ ent-CEWoodenDoor }}
     .desc = { ent-CEWoodenDoor.desc }
-    .suffix = Tavern Dorm 2
+    .suffix = Общежитие таверны 2
 
 ent-CEWoodenDoorTavernDorm3 = { ent-CEWoodenDoor }
     .desc = { ent-CEWoodenDoor.desc }
-    .suffix = Tavern Dorm 3
+    .suffix = Общежитие таверны 3
 
 ent-CEWoodenDoorTavernDorm4 = { ent-CEWoodenDoor }
     .desc = { ent-CEWoodenDoor.desc }
-    .suffix = Tavern Dorm 4
+    .suffix = Общежитие таверны 4
 
-ent-CEWoodenDoorTavernDorm5 = { ent-CEWoodenDoor }
+ent-CEWoodenDoorTavernDorm5 = {{ ent-CEWoodenDoor }}
     .desc = { ent-CEWoodenDoor.desc }
-    .suffix = Tavern Dorm 5
+    .suffix = Общежитие таверны 5
 
 ent-CEWoodenDoorTavernDorm6 = { ent-CEWoodenDoor }
     .desc = { ent-CEWoodenDoor.desc }
-    .suffix = Tavern Dorm 6
+    .suffix = Общежитие таверны 6
 
 ent-CEWoodenDoorTavernDorm7 = { ent-CEWoodenDoor }
     .desc = { ent-CEWoodenDoor.desc }
-    .suffix = Tavern Dorm 7
+    .suffix = Общежитие таверны 7
 
 ent-CEWoodenDoorTavernDorm8 = { ent-CEWoodenDoor }
     .desc = { ent-CEWoodenDoor.desc }
-    .suffix = Tavern Dorm 8
+    .suffix = Общежитие таверны 8
 
 ent-CEWoodenDoorTavernDorm9 = { ent-CEWoodenDoor }
     .desc = { ent-CEWoodenDoor.desc }
-    .suffix = Tavern Dorm 9
+    .suffix = Общежитие таверны 9
 
-ent-CEWoodenDoorTavernDorm10 = { ent-CEWoodenDoor }
+ent-CEWoodenDoorTavernDorm10 = {{ ent-CEWoodenDoor }}
     .desc = { ent-CEWoodenDoor.desc }
-    .suffix = Tavern Dorm 10
+    .suffix = Общежитие таверны 10
 
-ent-CEBaseFenceBig = big fence
-    .desc = You definitely need a towel to get to the other side
+ent-CEBaseFenceBig = большой забор
+    .desc = Вам определённо нужно полотенце, чтобы добраться на другую сторону
 
 ent-CEFenceBigIron = { ent-CEBaseFenceBig }
     .desc = { ent-CEBaseFenceBig.desc }
-    .suffix = Iron
+    .suffix = Железо
 
-ent-CEBaseFenceGateBig = fence big gate
-    .desc = Big man-sized gates. What's your next move?
+ent-CEBaseFenceGateBig = ворота большого забора
+    .desc = Большие ворота в человеческий рост. Каков твой следующий ход?
 
-ent-CEBaseFence = fence
-    .desc = A low fence restricting movement in a purely nominal way.
+ent-CEBaseFence = забор
+    .desc = Низкий забор, ограничивающий движение только номинальным образом.
 
-ent-CEBaseFenceWindow = fence window
-    .desc = You can slip an object in here, but you sure as hell can't fit through.
+ent-CEBaseFenceWindow = окно забора
+    .desc = Вы можете просунуть сюда предмет, но пройти вам точно не удастся.
 
 ent-CEFenceWindowIron = { ent-CEBaseFenceWindow }
     .desc = { ent-CEBaseFenceWindow.desc }
-    .suffix = Iron
+    .suffix = Железо
 
-ent-CEBaseFenceGate = fence gate
-    .desc = You have two paths. You can open the door like a normal person, or you can climb over the door like a funny person.
+ent-CEBaseFenceGate = ворота забора
+    .desc = У вас есть два пути. Вы можете открыть дверь как обычный человек или перелезть через дверь как забавный человек.
 
-ent-CEZLevelLadderBase = stairs
-    .desc = Be careful, the higher you ascend, the more painful the fall.
+ent-CEZLevelLadderBase = лестница
+    .desc = Будьте осторожны, чем выше вы поднимаетесь, тем болезненнее падение.
 
 ent-CEZLevelLadderCornerBase = { ent-CEZLevelLadderBase }
     .desc = { ent-CEZLevelLadderBase.desc }
 
-ent-CEZLevelLadderCornerInnerBase = { ent-CEZLevelLadderCornerBase }
+ent-CEZLevelLadderCornerInnerBase = {{ ent-CEZLevelLadderCornerBase }}
     .desc = { ent-CEZLevelLadderCornerBase.desc }
 
-ent-CEZLevelsLadderDirtCliffBase = dirt cliff
+ent-CEZLevelsLadderDirtCliffBase = грязный обрыв
     .desc = TODO
 
-ent-CEZLevelsLadderRoofRedBase = roof tile
-    .desc = Red tiles, for covering building roofs.
+ent-CEZLevelsLadderRoofRedBase = кровельная плитка
+    .desc = Красные плитки для покрытия крыш зданий.
 
-ent-CEZLevelsLadderStoneBase = stone ladder
+ent-CEZLevelsLadderStoneBase = каменная лестница
 
-ent-CEZLevelsLadderWoodenBase = wooden ladder
+ent-CEZLevelsLadderWoodenBase = деревянная лестница
 
-ent-CEBaseThinWindow = thin window
-    .desc = A narrow window that provides visibility while maintaining structure.
+ent-CEBaseThinWindow = тонкое окно
+    .desc = Узкое окно, обеспечивающее видимость при сохранении структуры.
 
-ent-CEBaseThinWindowDoor = thin window door
-    .desc = Thin window doors. What's your next move?
+ent-CEBaseThinWindowDoor = тонкая дверь с окном
+    .desc = Тонкие дверцы с окном. Каков твой следующий ход?
 
 ent-CEBaseThinWindowIron = None
-    .suffix = Iron
+    .suffix = Железо
 
-ent-CEBaseWall = wall
-    .desc = Sturdy enough to cover you from threats or cold winds.
+ent-CEBaseWall = стена
+    .desc = Достаточно прочная, чтобы защитить вас от угроз или холодных ветров.
 
 ent-CEBaseWallFrame = None
-    .desc = This wall is now in an indeterminate state between existence and non-existence.
+    .desc = Эта стена находится в неопределённом состоянии между существованием и несуществованием.
 
-ent-CEOreCoreBase = { ent-CEBaseWall }
+ent-CEOreCoreBase = {{ ent-CEBaseWall }}
     .desc = { ent-CEBaseWall.desc }
 
-ent-CEWallIronCore = iron ore core
-    .desc = An extremely hard and iron-rich ore core. You can certainly break it with a pickaxe, but it's better to use some kind of automatic drill...
+ent-CEWallIronCore = ядро железной руды
+    .desc = Невероятно твёрдое и железорудное ядро. Вы можете разбить его киркой, но лучше использовать какой-нибудь автоматический бур...
 
-ent-CEWallCrystalCore = energy crystal core
-    .desc = A core made of concentrated arcane energy crystals. It's extremely dangerous and can only be mined with specialized equipment.
+ent-CEWallCrystalCore = ядро кристалла энергии
+    .desc = Ядро, сделанное из кристаллов сконцентрированной магической энергии. Это чрезвычайно опасно и может быть добыто только со специализированным оборудованием.
 
-ent-CEWallInvinsible = invinsible barrier
-    .desc = invinsible and indestructible wall for admemes.
+ent-CEWallInvinsible = невидимый барьер
+    .desc = Невидимая и неразрушимая стена для администраторов.
 
-ent-CEWallStone = rock
-    .desc = A solid stone natural wall. It has a cave-like coldness to it.
+ent-CEWallStone = скала
+    .desc = Твёрдая каменная естественная стена. Она имеет пещеру холода.
 
-ent-CEWallStoneIndestructable = dense rock
-    .desc = An extremely durable stone. Your tools don't seem to be enough to break through it.
-    .suffix = Undestructable
+ent-CEWallStoneIndestructable = плотная скала
+    .desc = Чрезвычайно прочный камень. Похоже, ваши инструменты недостаточны, чтобы пробить его.
+    .suffix = Неразрушимая
 
-ent-CEWallDirt = earth wall
-    .desc = A tall pile of dirt. Can a house be built from it?
+ent-CEWallDirt = земляная стена
+    .desc = Высокий груз грязи. Можно ли из неё построить дом?
 
-ent-CEWallSnow = snow wall
-    .desc = A tall pile of snow. Can a house be built from it?
+ent-CEWallSnow = снежная стена
+    .desc = Высокий груд снега. Можно ли из него построить дом?
 
-ent-CEWallFrameStoneBrick = stone brick wall base
+ent-CEWallFrameStoneBrick = основание каменной кирпичной стены
     .desc = { ent-CEBaseWallFrame.desc }
 
-ent-CEWallStoneBrick = stone brick wall
+ent-CEWallStoneBrick = каменная кирпичная стена
     .desc = { ent-CEBaseWall.desc }
 
-ent-CEWallStoneBrickOld = old stone brick wall
+ent-CEWallStoneBrickOld = старая каменная кирпичная стена
     .desc = { ent-CEBaseWall.desc }
 
-ent-CEWallStoneBrickBrown = brown stone brick wall
+ent-CEWallStoneBrickBrown = коричневая каменная кирпичная стена
     .desc = { ent-CEBaseWall.desc }
 
 ent-CEWindowBase = None
 
 ent-CEBaseWindowFrame = None
-    .desc = Provides a nice breeze. The gap looks big enough to climb through.
+    .desc = Обеспечивает приятный ветерок. Щель выглядит достаточно большой, чтобы пройти.
 
 ent-CEBaseWindowFrameBroken = None
-    .desc = Broken window. You can get in, but the sharp splinters will tear your skin.
+    .desc = Разбитое окно. Вы можете войти, но острые осколки разрежут вашу кожу.
 
 ent-CECarpetBlue = { ent-CECarpetBase }
     .desc = { ent-CECarpetBase.desc }
-    .suffix = Blue
+    .suffix = Синий
 
 ent-CECarpetRed = { ent-CECarpetBase }
     .desc = { ent-CECarpetBase.desc }
-    .suffix = Red
+    .suffix = Красный
 
-ent-CECarpetPurple = { ent-CECarpetBase }
+ent-CECarpetPurple = {{ ent-CECarpetBase }}
     .desc = { ent-CECarpetBase.desc }
-    .suffix = Purple
+    .suffix = Фиолетовый
 
 ent-CECarpetBlack = { ent-CECarpetBase }
     .desc = { ent-CECarpetBase.desc }
-    .suffix = Black
+    .suffix = Чёрный
 
-ent-CECashConverter = cash converter
-    .desc = A simple magical device connected by small portals to the empire's central bank. It allows you to convert coins between denominations, and doesn't even charge interest! That's generous.
+ent-CECashConverter = конвертер денег
+    .desc = Простое магическое устройство, соединённое маленькими порталами с центральным банком империи. Это позволяет вам конвертировать монеты между номиналами и даже не берёт комиссию! Это щедро.
 
-ent-CEChairStoolWooden = wooden stool
+ent-CEChairStoolWooden = деревянный табурет
     .desc = { ent-CEChairWooden.desc }
 
-ent-CEChairStoolMetallic = wooden stool
+ent-CEChairStoolMetallic = деревянный табурет
     .desc = { ent-CEChairWooden.desc }
-    .suffix = Metallic
+    .suffix = Металлический
 
-ent-CEChairStoolMetallicRed = wooden stool
-    .desc = { ent-CEChairWooden.desc }
-    .suffix = Metallic Red
+ent-CEChairStoolMetallicRed = деревянный табурет
+    .desc = {{ ent-CEChairWooden.desc }}
+    .suffix = Металлический красный
 
-ent-CECurtainsWhite = { ent-CEBaseCurtains }
+ent-CECurtainsWhite = {{ ent-CEBaseCurtains }}
     .desc = { ent-CEBaseCurtains.desc }
-    .suffix = White
+    .suffix = Белый
 
 ent-CECurtainsWhiteOpened = { ent-CECurtainsWhite }
     .desc = { ent-CECurtainsWhite.desc }
-    .suffix = White, Open
+    .suffix = Белый, Открыты
 
-ent-CECurtainsBlue = { ent-CEBaseCurtains }
+ent-CECurtainsBlue = {{ ent-CEBaseCurtains }}
     .desc = { ent-CEBaseCurtains.desc }
-    .suffix = Blue
+    .suffix = Синий
 
 ent-CECurtainsBlueOpened = { ent-CECurtainsBlue }
     .desc = { ent-CECurtainsBlue.desc }
-    .suffix = Blue, Open
+    .suffix = Синий, Открыты
 
 ent-CECurtainsRed = { ent-CEBaseCurtains }
     .desc = { ent-CEBaseCurtains.desc }
-    .suffix = Red
+    .suffix = Красный
 
 ent-CECurtainsRedOpened = { ent-CECurtainsRed }
     .desc = { ent-CECurtainsRed.desc }
-    .suffix = Red, Open
+    .suffix = Красный, Открыты
 
-ent-CEChestGeneric = chest
-    .desc = Chest.
+ent-CEChestGeneric = сундук
+    .desc = Сундук.
 
 ent-CEBaseCrate = None
 
 ent-CEBaseSmallCrate = None
 
-ent-CETableWoodenFrame = wooden table frame
-    .desc = Base for any wooden table
+ent-CETableWoodenFrame = каркас стола
+    .desc = Основание для любого дервянного стола.
 
-ent-CETableWooden = wooden table
-    .desc = A simple table made of boards.
+ent-CETableWooden = деревянный стол
+    .desc = Простой стол, сделанный из досок.
 
-ent-CETableWoodenMetallic = wooden reinforced table
-    .desc = A simple table made of boards, with metal border reinforcements.
+ent-CETableWoodenMetallic = усиленный деревянный стол
+    .desc = Простой стол, сделанный из досок, с металлическими краевыми усилениями.
 
-ent-CETableWoodenMetallicCounter = wooden reinforced counter
-    .desc = A simple counter made of boards, with metal border reinforcements.
+ent-CETableWoodenMetallicCounter = усиленная деревянная стойка
+    .desc = Простая стойка, сделанная из досок, с металлическими краевыми усилениями.
 
-ent-CETableWoodenRound = round wooden table
-    .desc = A simple table made of boards.
+ent-CETableWoodenRound = круглый деревянный стол
+    .desc = Простой стол, сделанный из досок.
 
-ent-CETableWoodenCounter = wooden counter
+ent-CETableWoodenCounter = деревянная стойка
     .desc = { ent-CETableWooden.desc }
 
-ent-CEWallmountBarShelf = bar shelf
-    .desc = Wall shelves to store your wine collection
+ent-CEWallmountBarShelf = барная полка
+    .desc = Настенные полки для хранения вашей винной коллекции
 
-ent-CEWallmountKeyRack = key rack
-    .desc = Wooden wall board with slots for keys.
+ent-CEWallmountKeyRack = вешалка для ключей
+    .desc = Деревянная настенная доска с пазами для ключей.
 
-ent-CEConveyorBelt = conveyor belt
-    .desc = TODO
+ent-CEConveyorBelt = конвейерная лента
+    .desc = Транспортирует предметы в указанном направлении.
 
-ent-CEConveyorLadder = conveyor ladder
-    .desc = TODO
+ent-CEConveyorLadder = конвейерная лестница
+    .desc = Перемещает предметы между уровнями.
 
 ent-CEConveyorLadderReverse = { ent-CEConveyorLadder }
     .desc = { ent-CEConveyorLadder.desc }
-    .suffix = Reverse
+    .suffix = Обратная
 
-ent-CEShuttleWingBase = airship wing
-    .desc = Giant webbed wings, capable, along with magic, of holding the heaviest objects in the air.
+ent-CEShuttleWingBase = крыло дирижабля
+    .desc = Гигантские перепончатые крылья, способные, вместе с магией, удерживать в воздухе самые тяжёлые объекты.
 
 ent-CEShuttleWingSmallR = { ent-CEShuttleWingBase }
     .desc = { ent-CEShuttleWingBase.desc }
-    .suffix = Right, Small
+    .suffix = Правое, Малое
 
 ent-CEShuttleWingSmallL = { ent-CEShuttleWingBase }
     .desc = { ent-CEShuttleWingBase.desc }
-    .suffix = Left, Small
+    .suffix = Левое, Малое
 
 ent-CEShuttleWingBigL = { ent-CEShuttleWingBase }
     .desc = { ent-CEShuttleWingBase.desc }
-    .suffix = Left, Big
+    .suffix = Левое, Большое
 
 ent-CEShuttleWingBigR = { ent-CEShuttleWingBase }
     .desc = { ent-CEShuttleWingBase.desc }
-    .suffix = Right, Big
+    .suffix = Правое, Большое
 
-ent-CELamppostBase = lamppost
-    .desc = TODO
+ent-CELamppostBase = фонарный столб
+    .desc = Высокий столб с фонарём, освещающий окружающие территории.
 
 ent-CELamppostSingle = { ent-CELamppostBase }
     .desc = { ent-CELamppostBase.desc }
-    .suffix = Single
+    .suffix = Одинарный
 
 ent-CELamppostDouble = { ent-CELamppostBase }
     .desc = { ent-CELamppostBase.desc }
-    .suffix = Double
+    .suffix = Двойной
 
 ent-CELamppostCurve = { ent-CELamppostBase }
     .desc = { ent-CELamppostBase.desc }
-    .suffix = Curve
+    .suffix = Изогнутый
 
-ent-CETradingSellingPlatform = selling dimensional platform
-    .desc = Allows you to sell any items and structures to the outside world. Fill the platform completely with mana to sell whatever you place on it.
+ent-CETradingSellingPlatform = продающая измерительная платформа
+    .desc = Позволяет продавать любые предметы и структуры во внешний мир. Полностью заполните платформу маной, чтобы продать всё, что вы на неё поместили.
 
-ent-CEWallLightBase = wall lamp
-    .desc = A light fixture. Draws power and produces light.
+ent-CEWallLightBase = настенная лампа
+    .desc = Осветительный прибор. Потребляет энергию и производит свет.
 
 ent-CEWallLight = { ent-CEWallLightBase }
     .desc = { ent-CEWallLightBase.desc }
@@ -1581,105 +1581,105 @@ ent-CEDistributionUnitBasic = { ent-CEDistributionUnitBase }
 ent-CEDistributionUnitEmpty = { ent-CEDistributionUnitBase }
     .suffix = Empty
 
-ent-CEPipeBrassBig = brass pipe
+ent-CEPipeBrassBig = латунная труба
     .desc = { ent-CEPipeBrassBigBase.desc }
 
-ent-CEPipeBrassBigVerticalUp = brass pipe up
+ent-CEPipeBrassBigVerticalUp = латунная труба вверх
     .desc = { ent-CEPipeBrassBig.desc }
 
-ent-CEPipeBrassBigVerticalDown = brass pipe down
+ent-CEPipeBrassBigVerticalDown = латунная труба вниз
     .desc = { ent-CEPipeBrassBig.desc }
 
-ent-CEPipeBrassBigValve = pipe valve
-    .desc = A valve installed on a brass pipe, allowing for the regulation of arcane energy flow through the pipe.
-    .suffix = Valve, Off
+ent-CEPipeBrassBigValve = клапан трубы
+    .desc = Клапан, установленный на латунной трубе, позволяющий регулировать поток магической энергии через трубу.
+    .suffix = Клапан, Выкл
 
 ent-CEPipeBrassBigValveOn = { ent-CEPipeBrassBigValve }
     .desc = { ent-CEPipeBrassBigValve.desc }
-    .suffix = Valve, On
+    .suffix = Клапан, Вкл
 
 ent-CEPipeBrassBigBroken = { ent-CEPipeBrassBig }
-    .desc = Damaged brass pipe. The arcane energy flowing through them will flow here and may pose a serious danger to creatures susceptible to magic.
-    .suffix = Broken
+    .desc = Повреждённая латунная труба. Магическая энергия, протекающая через неё, будет вытекать здесь и может представлять серьёзную опасность для существ, восприимчивых к магии.
+    .suffix = Сломана
 
-ent-CEPipeBrassBigDelayer = pipe delayer
-    .desc = A small valve installed on the pipe allows the incoming energy to be delayed for a short period of time. Useful for controlling the timing of energy supply.
-    .suffix = 0.5s
+ent-CEPipeBrassBigDelayer = задержка трубы
+    .desc = Маленький клапан, установленный на трубе, позволяет задержать поступающую энергию на короткий период времени. Полезно для контроля времени подачи энергии.
+    .suffix = 0.5с
 
 ent-CEPipeBrassMediumBase = None
-    .desc = Insulated brass pipe with iron supports. A standardized method of transmitting arcane energy over long distances. However, any holes or cracks can lead to energy leakage and harm to surrounding creatures susceptible to magic.
+    .desc = Изолированная латунная труба с железными опорами. Стандартизированный метод передачи магической энергии на большие расстояния. Однако любые отверстия или трещины могут привести к утечке энергии и нанести вред окружающим существам, восприимчивым к магии.
 
-ent-CEPipeBrassMedium = small brass pipe
+ent-CEPipeBrassMedium = малая латунная труба
     .desc = { ent-CEPipeBrassMediumBase.desc }
 
-ent-CEPipeBrassMediumVerticalUp = small brass pipe up
+ent-CEPipeBrassMediumVerticalUp = малая латунная труба вверх
     .desc = { ent-CEPipeBrassMedium.desc }
 
-ent-CEPipeBrassMediumVerticalDown = small brass pipe down
+ent-CEPipeBrassMediumVerticalDown = малая латунная труба вниз
     .desc = { ent-CEPipeBrassMedium.desc }
 
-ent-CEPipeBrassMediumValve = small valve
-    .desc = A valve installed on a brass pipe, allowing for the regulation of arcane energy flow through the pipe.
-    .suffix = Valve, Off
+ent-CEPipeBrassMediumValve = малый клапан
+    .desc = Клапан, установленный на латунной трубе, позволяющий регулировать поток магической энергии через трубу.
+    .suffix = Клапан, Выкл
 
 ent-CEPipeBrassMediumValveOn = { ent-CEPipeBrassMediumValve }
     .desc = { ent-CEPipeBrassMediumValve.desc }
-    .suffix = Valve, On
+    .suffix = Клапан, Вкл
 
 ent-CEPipeBrassMediumBroken = { ent-CEPipeBrassMedium }
-    .desc = Damaged brass pipe. The arcane energy flowing through them will flow here and may pose a serious danger to creatures susceptible to magic.
-    .suffix = Broken
+    .desc = Повреждённая латунная труба. Магическая энергия, протекающая через неё, будет вытекать здесь и может представлять серьёзную опасность для существ, восприимчивых к магии.
+    .suffix = Сломана
 
-ent-CEPipeBrassMediumDelayer = small pipe delayer
-    .desc = A small valve installed on the pipe allows the incoming energy to be delayed for a short period of time. Useful for controlling the timing of energy supply.
-    .suffix = 0.5s
+ent-CEPipeBrassMediumDelayer = малая задержка трубы
+    .desc = Маленький клапан, установленный на трубе, позволяет задержать поступающую энергию на короткий период времени. Полезно для контроля времени подачи энергии.
+    .suffix = 0.5с
 
-ent-CEWorkbenchVampire = vampire power point
-    .desc = A table imbued with vampire magic, allowing you to create items of dark arts.
+ent-CEWorkbenchVampire = точка силы вампиров
+    .desc = Стол, пропитанный вампирской магией, позволяющий создавать предметы тёмных искусств.
 
-ent-CEVampireClanHeartBase = heart of vampire clan
-    .desc = The source of power for the vampire clan. By gathering the life force of its victims, the clan becomes stronger.
+ent-CEVampireClanHeartBase = сердце вампирского клана
+    .desc = Источник силы для вампирского клана. Собирая жизненную силу своих жертв, клан становится сильнее.
 
 ent-CEVampireClanHeart = { ent-CEVampireClanHeartBase }
     .desc = { ent-CEVampireClanHeartBase.desc }
 
-ent-CEVampireClanHeartFrame = clan heart frame
-    .desc = A majestic artifact of vampire culture. Unfinished.
+ent-CEVampireClanHeartFrame = рама сердца клана
+    .desc = Величественный артефакт вампирской культуры. Незавершён.
 
-ent-CEVampireStoneAltar = bloody altar
-    .desc = A gruesome stone altar splattered with blood. Doubles the amount of blood essence extracted from vampire victims.
+ent-CEVampireStoneAltar = кровавый алтарь
+    .desc = Жуткий каменный алтарь, залитый кровью. Удваивает количество кровавой сущности, извлекаемой из жертв вампиров.
 
 ent-CEHighBushRandom = { ent-CEHighBush }
     .desc = { ent-CEHighBush.desc }
-    .suffix = Random growth
+    .suffix = Случайный рост
 
 ent-CEHighBushFull = { ent-CEHighBush }
     .desc = { ent-CEHighBush.desc }
-    .suffix = Full growth
+    .suffix = Полный рост
 
-ent-CECrystalGrowths = crystalline growths
-    .desc = Crystallized magical energy that appears in places with high concentrations of mana. Can be used as a one-time source of energy.
+ent-CECrystalGrowths = кристаллические наросты
+    .desc = Кристаллизованная магическая энергия, появляющаяся в местах с высокой концентрацией маны. Может использоваться как одноразовый источник энергии.
 
-ent-CEFloorCrystal = crystal growths
-    .desc = Crystallized magical energy that appears in places with high concentrations of mana. Can be used as a one-time source of energy.
+ent-CEFloorCrystal = кристаллические наросты
+    .desc = Кристаллизованная магическая энергия, появляющаяся в местах с высокой концентрацией маны. Может использоваться как одноразовый источник энергии.
 
-ent-CEBaseRock = rock
-    .desc = A piece of rock. Hard, heavy, useless.
+ent-CEBaseRock = камень
+    .desc = Кусок камня. Твёрдый, тяжёлый, бесполезный.
 
 ent-CERockSmall = { ent-CEBaseRock }
     .desc = { ent-CEBaseRock.desc }
-    .suffix = Small
+    .suffix = Маленький
 
 ent-CERockBig = { ent-CEBaseRock }
     .desc = { ent-CEBaseRock.desc }
-    .suffix = Big
+    .suffix = Большой
 
 ent-CERockBigMoss = { ent-CERockBig }
     .desc = { ent-CERockBig.desc }
-    .suffix = Big. Moss.
+    .suffix = Большой. Мох.
 
-ent-CESpiderWeb = spider web
-    .desc = It's stringy and sticky.
+ent-CESpiderWeb = паутина
+    .desc = Нитевидная и липкая.
 
 ent-CEPlantBase = None
 
@@ -1691,10 +1691,10 @@ ent-CEPlantBaseMetabolizer1Day = None
 
 ent-CEPlantBaseMetabolizer2Day = None
 
-ent-CEBaseTree = tree
-    .desc = Decades of life and growth, saturating the surrounding nature with fresh air.
+ent-CEBaseTree = дерево
+    .desc = Десятилетия жизни и роста, насыщающие окружающую природу свежим воздухом.
 
-ent-CEBaseTreeLarge = large tree
+ent-CEBaseTreeLarge = большое дерево
     .desc = { ent-CEBaseTree.desc }
 
 ent-CEFloraTreeGreen = { ent-CEBaseTree }
@@ -1714,27 +1714,27 @@ ent-CEFloraTreeGreenLarge = { ent-CEBaseTreeLarge }
 
 ent-CEFloraTreeBirchSmall = { ent-CEBaseTree }
     .desc = { ent-CEBaseTree.desc }
-    .suffix = Small
+    .suffix = Маленькая
 
 ent-CEFloraTreeBirchMedium = { ent-CEBaseTree }
     .desc = { ent-CEBaseTree.desc }
-    .suffix = Medium
+    .suffix = Средняя
 
 ent-CEFloraTreeBirchLarge = { ent-CEBaseTree }
     .desc = { ent-CEBaseTree.desc }
-    .suffix = Large
+    .suffix = Большая
 
 ent-CEFloraTreeSpruceSmall = { ent-CEBaseTree }
     .desc = { ent-CEBaseTree.desc }
-    .suffix = Small
+    .suffix = Маленькая
 
 ent-CEFloraTreeSpruceMedium = { ent-CEBaseTree }
     .desc = { ent-CEBaseTree.desc }
-    .suffix = Medium
+    .suffix = Средняя
 
 ent-CEFloraTreeSpruceLarge = { ent-CEBaseTree }
     .desc = { ent-CEBaseTree.desc }
-    .suffix = Large
+    .suffix = Большая
 
 ent-CEBaseGameRule = None
 
@@ -2178,136 +2178,136 @@ ent-CEThinWindowDoorIron = { ent-CEBaseThinWindowDoor }
     .desc = { ent-CEBaseThinWindowDoor.desc }
     .suffix = Iron
 
-ent-CEWallLeaf = leaf wall
-    .desc = Dense, marginal bushes. You can climb through them, but watch out for thorny branches!
+ent-CEWallLeaf = лиственная стена
+    .desc = Плотные, краевые кусты. Вы можете пролезть через них, но берегитесь колючих веток!
 
-ent-CEWallWoodenPalisade = palisade
-    .desc = A wall of sharp logs. Not that it's a safe haven.
+ent-CEWallWoodenPalisade = частокол
+    .desc = Стена из острых брёвен. Не то чтобы это безопасное убежище.
 
-ent-CEWallFrameWooden = wooden wall frame
+ent-CEWallFrameWooden = деревянная рама стены
     .desc = { ent-CEBaseWallFrame.desc }
 
-ent-CEWallWooden = wooden wall
+ent-CEWallWooden = деревянная стена
     .desc = { ent-CEBaseWall.desc }
 
-ent-CEWindowFrameStone = stone window frame
+ent-CEWindowFrameStone = каменная оконная рама
     .desc = { ent-CEBaseWindowFrame.desc }
 
-ent-CEWindowStone = stone window
-    .desc = A stone wall with a glass window in it.
-    .suffix = Blue Default
+ent-CEWindowStone = каменное окно
+    .desc = Каменная стена со стеклянным окном в ней.
+    .suffix = Синее по умолчанию
 
 ent-CEWindowStoneGreen = { ent-CEWindowStone }
     .desc = { ent-CEWindowStone.desc }
-    .suffix = Green
+    .suffix = Зелёное
 
 ent-CEWindowStonePurple = { ent-CEWindowStone }
     .desc = { ent-CEWindowStone.desc }
-    .suffix = Purple
+    .suffix = Фиолетовое
 
-ent-CEWindowWooden = wooden window
-    .desc = A wooden wall with a glass window in it.
+ent-CEWindowWooden = деревянное окно
+    .desc = Деревянная стена со стеклянным окном в ней.
 
-ent-CEWindowFrameWooden = wooden window frame
+ent-CEWindowFrameWooden = деревянная оконная рама
     .desc = { ent-CEBaseWindowFrame.desc }
 
-ent-CEWoodenBed = wooden bed
-    .desc = Wooden bed. Better than nothing.
+ent-CEWoodenBed = деревянная кровать
+    .desc = Деревянная кровать. Лучше, чем ничего.
 
-ent-CECarpetBase = carpet
-    .desc = Fancy walking surface.
+ent-CECarpetBase = ковёр
+    .desc = Изысканная поверхность для ходьбы.
 
-ent-CEChairWooden = wooden chair
-    .desc = Made of the most common planks. Simple and effective!
+ent-CEChairWooden = деревянный стул
+    .desc = Сделан из самых обычных досок. Просто и эффективно!
 
-ent-CEBaseCurtains = curtains
-    .desc = Hides what others shouldn't see.
+ent-CEBaseCurtains = занавески
+    .desc = Скрывают то, что другим не следует видеть.
 
-ent-CETarget = target
-    .desc = A target for marksmanship practice.
+ent-CETarget = мишень
+    .desc = Мишень для практики стрельбы.
 
-ent-CETargetStake = target stake
-    .desc = A wooden stand on which to fix a target for firing.
+ent-CETargetStake = столб для мишени
+    .desc = Деревянная подставка, на которой закрепляется мишень для стрельбы.
 
-ent-CETargetEffigy = target effigy
-    .desc = The target is a scarecrow for practising close combat strikes.... or magic.
+ent-CETargetEffigy = чучело-мишень
+    .desc = Мишень-чучело для практики ударов в ближнем бою... или магии.
 
-ent-CEWoodenChest = wooden chest
-    .desc = A simple wooden chest for easy storage of junk.
+ent-CEWoodenChest = деревянный сундук
+    .desc = Простой деревянный сундук для лёгкого хранения хлама.
 
-ent-CELargeWoodenCrate = large wooden crate
-    .desc = Solid wooden crate.
+ent-CELargeWoodenCrate = большой деревянный ящик
+    .desc = Прочный деревянный ящик.
 
-ent-CESmallWoodenCrate = small wooden crate
-    .desc = Solid wooden crate.
+ent-CESmallWoodenCrate = малый деревянный ящик
+    .desc = Прочный деревянный ящик.
 
 ent-CEWoodenTableBase = None
 
-ent-CEWorkbench = workbench
-    .desc = Table for the production of various basic tools.
+ent-CEWorkbench = верстак
+    .desc = Стол для производства различных базовых инструментов.
 
-ent-CECharger = energy charger
-    .desc = A mechanism that allows filling with mana anything, from tools to goblins.
+ent-CECharger = энергетическая зарядная станция
+    .desc = Механизм, который позволяет заполнять маной что угодно, от инструментов до гоблинов.
 
-ent-CEDrill = stationary drill
-    .desc = A large industrial drill capable of destroying anything with a constant supply of energy. It was designed by imperial engineers to extract particularly hard ore deposits.
+ent-CEDrill = стационарная дрель
+    .desc = Большая промышленная дрель, способная разрушить что угодно при постоянной подаче энергии. Она была разработана имперскими инженерами для добычи особо твёрдых рудных залежей.
 
-ent-CEHeater = heater
-    .desc = a mechanism that converts energy into a controlled burning flame
+ent-CEHeater = нагреватель
+    .desc = Механизм, который преобразует энергию в контролируемое горящее пламя.
 
-ent-CERecycler = recycler
-    .desc = A large destructive machine used to extract energy from magical items by destroying them. It can also be used as a way to recycle items into basic materials.
+ent-CERecycler = переработчик
+    .desc = Большая разрушительная машина, используемая для извлечения энергии из магических предметов путём их уничтожения. Также может использоваться как способ переработки предметов в базовые материалы.
 
-ent-CETradingPlatform = buying dimensional platform
-    .desc = Allows you to trade with the outside world, through retail trade transactions.
+ent-CETradingPlatform = покупающая измерительная платформа
+    .desc = Позволяет торговать с внешним миром через розничные торговые сделки.
 
-ent-CEManaCollectorBase = mana collector
-    .desc = A structure that collects ambient magical energy from the environment and stores it for later use.
+ent-CEManaCollectorBase = коллектор маны
+    .desc = Структура, которая собирает окружающую магическую энергию из окружающей среды и хранит её для последующего использования.
 
-ent-CEDistributionUnitBase = power distribution unit
+ent-CEDistributionUnitBase = блок распределения энергии
 
-ent-CEPipeTerminal = terminal
-    .desc = TODO
+ent-CEPipeTerminal = терминал
+    .desc = Конец трубопровода.
 
 ent-CEPipeBrassBigBase = None
-    .desc = Insulated brass pipe with iron supports. A standardized method of transmitting arcane energy over long distances. However, any holes or cracks can lead to energy leakage and harm to surrounding creatures susceptible to magic.
+    .desc = Изолированная латунная труба с железными опорами. Стандартизированный метод передачи магической энергии на большие расстояния. Однако любые отверстия или трещины могут привести к утечке энергии и нанести вред окружающим существам, восприимчивым к магии.
 
-ent-CEHighBush = bush
-    .desc = Thick fast-growing weed
+ent-CEHighBush = куст
+    .desc = Толстый быстрорастущий сорняк
 
-ent-CEPlantAppleTree = apple tree
-    .desc = A sturdy tree that bears delicious apples.
+ent-CEPlantAppleTree = яблоня
+    .desc = Крепкое дерево, приносящее вкусные яблоки.
 
-ent-CEPlantCabbage = cabbage
-    .desc = You see a cabbage in front of you. Perhaps you were born in one.
+ent-CEPlantCabbage = капуста
+    .desc = Вы видите перед собой капусту. Возможно, вы родились в одной из них.
 
-ent-CEPlantChanterelle = chanterelle
-    .desc = A type of wild mushroom with a distinctive yellow color and a slightly fruity aroma.
+ent-CEPlantChanterelle = лисичка
+    .desc = Вид дикого гриба с характерным жёлтым цветом и слегка фруктовым ароматом.
 
-ent-CEPlantCotton = cotton
-    .desc = In a way, you're growing future clothes.
+ent-CEPlantCotton = хлопок
+    .desc = В некотором смысле вы выращиваете будущую одежду.
 
-ent-CEPlantCucumber = cucumber
-    .desc = Don't trust people who know how to turn into pickles.
+ent-CEPlantCucumber = огурец
+    .desc = Не доверяйте людям, которые умеют превращаться в огурцы.
 
-ent-CEPlantOnion = onion
-    .desc = He's so cute it brings tears to my eyes to cut him up.
+ent-CEPlantOnion = лук
+    .desc = Он такой милый, что до слёз, когда его режешь.
 
-ent-CEPlantPepper = pepper
-    .desc = Russian roulette. Are you hot, or are you sweet peppers?
+ent-CEPlantPepper = перец
+    .desc = Русская рулетка. Острый он, или сладкий перец?
 
-ent-CEPlantPotato = potato
-    .desc = Some like to associate themselves with potatoes. People like that are not bad people.
+ent-CEPlantPotato = картофель
+    .desc = Некоторые любят ассоциировать себя с картошкой. Такие люди не плохие люди.
 
-ent-CEPlantPumpkin = pumpkin
-    .desc = Legends say there is a pumpkin king who stares into your soul through the crowns of trees.
+ent-CEPlantPumpkin = тыква
+    .desc = Легенды гласят, что есть тыквенный король, который смотрит в вашу душу сквозь кроны деревьев.
 
-ent-CEPlantSunflower = sunflower
-    .desc = A tall, sun-loving plant that produces large, bright yellow flowers.
+ent-CEPlantSunflower = подсолнух
+    .desc = Высокое солнцелюбивое растение, которое производит крупные ярко-жёлтые цветы.
 
-ent-CEPlantTomatoes = tomatoes
-    .desc = On the one hand, it's a delicious fruit. But why eat it when it's much more fun to use tomatoes as a throwing projectile?
+ent-CEPlantTomatoes = помидоры
+    .desc = С одной стороны, это вкусный фрукт. Но зачем его есть, когда гораздо веселее использовать помидоры как метательный снаряд?
 
-ent-CEPlantWheat = wheat
-    .desc = Most popular crop. Unpretentious, it opens the way to an abundance of flour products.
+ent-CEPlantWheat = пшеница
+    .desc = Самая популярная культура. Неприхотливая, она открывает путь к изобилию мучных изделий.
 
