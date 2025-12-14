@@ -59,6 +59,8 @@
       - CEOverchargeVFX
     - !type:CESpellStaminaDamage
       damage: 40
+  - type: Clothing
+    quickEquip: false
   - type: Appearance
   - type: ToggleableVisuals
     spriteLayer: charge
