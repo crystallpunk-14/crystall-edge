@@ -87,10 +87,9 @@ public abstract class CESharedMeleeEnergyEffectSystem : EntitySystem
         ent.Comp.Active = active;
         DirtyField(ent, ent.Comp, nameof(CEMeleeEnergyEffectComponent.Active));
 
-        if (active)
-            ent.Comp.DeactivateTime = Timing.CurTime + ent.Comp.ActiveDuration;
-        else
-            ent.Comp.DeactivateTime = TimeSpan.Zero;
+        ent.Comp.DeactivateTime = active
+            ? Timing.CurTime + ent.Comp.ActiveDuration
+            : TimeSpan.Zero;
         DirtyField(ent, ent.Comp, nameof(CEMeleeEnergyEffectComponent.DeactivateTime));
 
         Appearance.SetData(ent.Owner, CEMeleeEnergyState.Active, active);
