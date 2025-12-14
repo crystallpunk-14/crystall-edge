@@ -45,7 +45,7 @@
   description: A standard dagger made of iron.
   components:
   - type: Sprite
-    sprite: _CE/Objects/Tools/Dagger/iron.rsi
+    sprite: _CE/Objects/Tools/Weapons/Melee/Dagger/iron.rsi
     state: icon
   - type: PhysicalComposition
     materialComposition:
@@ -59,7 +59,7 @@
   description: A small hatchet, commonly used as a kitchen utensil for preparing food.
   components:
   - type: Sprite
-    sprite: _CE/Objects/Tools/Dagger/hatchet.rsi
+    sprite: _CE/Objects/Tools/Weapons/Melee/Dagger/hatchet.rsi
     state: icon
   - type: PhysicalComposition
     materialComposition:
@@ -73,7 +73,7 @@
   description: A curved blade used for harvesting crops, but can be deadly in skilled hands.
   components:
   - type: Sprite
-    sprite: _CE/Objects/Tools/Dagger/sickle.rsi
+    sprite: _CE/Objects/Tools/Weapons/Melee/Dagger/sickle.rsi
     state: icon
   - type: PhysicalComposition
     materialComposition:

@@ -10,7 +10,7 @@
     size: Normal
   - type: Appearance
   - type: Sprite
-    sprite: _CE/Objects/Tools/Weapons/justice.rsi
+    sprite: _CE/Objects/Tools/Weapons/Guns/justice.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -18,7 +18,7 @@
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
   - type: Clothing
-    sprite: _CE/Objects/Tools/Weapons/justice.rsi
+    sprite: _CE/Objects/Tools/Weapons/Guns/justice.rsi
     equipDelay: 0.5
     unequipDelay: 0.5
     equipWhileMoving: true
@@ -67,11 +67,11 @@
       - CEOverchargeVFX
   - type: HitscanBasicVisuals
     muzzleFlash:
-      sprite: _CE/Objects/Tools/Weapons/justice.rsi
+      sprite: _CE/Objects/Tools/Weapons/Guns/justice.rsi
       state: muzzle_blue
     travelFlash:
-      sprite: _CE/Objects/Tools/Weapons/justice.rsi
+      sprite: _CE/Objects/Tools/Weapons/Guns/justice.rsi
       state: beam_blue
     impactFlash:
-      sprite: _CE/Objects/Tools/Weapons/justice.rsi
+      sprite: _CE/Objects/Tools/Weapons/Guns/justice.rsi
       state: impact_blue

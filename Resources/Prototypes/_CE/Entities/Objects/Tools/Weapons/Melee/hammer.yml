@@ -49,7 +49,7 @@
   description: A standard hammer made of iron.
   components:
   - type: Sprite
-    sprite: _CE/Objects/Tools/Hammer/iron.rsi
+    sprite: _CE/Objects/Tools/Weapons/Melee/Hammer/iron.rsi
     state: icon
   - type: PhysicalComposition
     materialComposition:

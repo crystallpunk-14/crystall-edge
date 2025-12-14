@@ -64,7 +64,7 @@
   components:
   - type: MeleeWeapon
     range: 1.0 # 1.5 standart
-    #cPAnimationOffset: -0.75
+    animationOffset: 0.75
 
 - type: entity
   abstract: true
@@ -72,8 +72,6 @@
   categories: [ HideSpawnMenu, ForkFiltered ]
   components:
   - type: Sharp
-  #- type: CESharpened
-  #- type: CESharpeningStone
   - type: UseDelay
   - type: Tool
     qualities:
