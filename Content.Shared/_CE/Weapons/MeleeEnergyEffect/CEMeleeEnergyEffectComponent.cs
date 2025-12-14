@@ -6,39 +6,73 @@ using Robust.Shared.Serialization;
 namespace Content.Shared._CE.Weapons.MeleeEnergyEffect;
 
 /// <summary>
-///
+/// Component that adds energy-based melee effects to weapons.
+/// This component manages the activation and deactivation of special energy effects on melee weapons,
+/// including effect triggering on hits, battery charge tracking, and audio-visual feedback.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true), AutoGenerateComponentPause]
 public sealed partial class CEMeleeEnergyEffectComponent : Component
 {
+    /// <summary>
+    /// Whether the energy effect is currently active on this weapon.
+    /// </summary>
     [DataField, AutoNetworkedField]
     public bool Active;
 
+    /// <summary>
+    /// Energy cost in battery units required to activate the effect.
+    /// </summary>
     [DataField]
     public float EnergyRequired = 10f;
 
+    /// <summary>
+    /// Unique identifier key for use delay tracking to prevent rapid reactivation.
+    /// </summary>
     [DataField]
     public string UseDelayKey = "charging";
 
+    /// <summary>
+    /// List of spell effects to apply to targets hit while the weapon is active.
+    /// </summary>
     [DataField(required: true)]
     public List<CESpellEffect> Effects = new();
 
-    // Batteries aren't predicted which means we need to track the battery and manually count it ourselves woo!
+    /// <summary>
+    /// Current number of available hits before battery depletion.
+    /// Batteries aren't predicted, so this value is manually tracked and synchronized.
+    /// </summary>
     [DataField, AutoNetworkedField]
     public int Hits;
 
+    /// <summary>
+    /// Maximum number of available hits based on total battery capacity.
+    /// Calculated as MaxCharge / EnergyRequired.
+    /// </summary>
     [DataField, AutoNetworkedField]
     public int Capacity;
 
+    /// <summary>
+    /// Duration for which the effect remains active after activation.
+    /// </summary>
     [DataField]
     public TimeSpan ActiveDuration = TimeSpan.FromSeconds(5);
 
+    /// <summary>
+    /// Time when the active effect should automatically deactivate.
+    /// Set to zero when the effect is inactive.
+    /// </summary>
     [DataField, AutoNetworkedField, AutoPausedField]
     public TimeSpan DeactivateTime = TimeSpan.Zero;
 
+    /// <summary>
+    /// Sound to play when the energy effect is activated.
+    /// </summary>
     [DataField]
     public SoundSpecifier ActivateSound = new SoundPathSpecifier("/Audio/Effects/sparks1.ogg"); //TODO normal sound
 
+    /// <summary>
+    /// Sound to play when the energy effect is deactivated.
+    /// </summary>
     [DataField]
     public SoundSpecifier DeactivateSound = new SoundPathSpecifier("/Audio/Effects/sparks2.ogg"); //TODO normal sound
 }
