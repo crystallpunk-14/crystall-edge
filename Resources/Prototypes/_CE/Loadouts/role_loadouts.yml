@@ -47,7 +47,7 @@
   - CEGuardShirt
   - CEGuardPants
   - CEGeneralShoes
-  - CEGeneralBack
+  - CEGeneralBag
 
 - type: roleLoadout
   id: JobCEGuard

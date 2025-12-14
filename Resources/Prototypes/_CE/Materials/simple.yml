@@ -44,10 +44,8 @@
 
 - type: material
   id: CELeather
-  stackEntity: CELeather1
   name: ce-material-leather
   unit: materials-unit-roll
-  icon: { sprite: _CE/Objects/Ingredients/leather.rsi, state: leather }
   color: "#a78a63"
   price: 1.2
 
