@@ -1,6 +1,7 @@
 using Content.Server.Power.EntitySystems;
 using Content.Shared._CE.Weapons.MeleeEnergyEffect;
 using Content.Shared.Interaction.Events;
+using Content.Shared.Power;
 using Content.Shared.Power.Components;
 using Robust.Shared.Audio.Systems;
 
@@ -16,6 +17,13 @@ public sealed class CEMeleeEnergyEffectSystem : CESharedMeleeEnergyEffectSystem
         base.Initialize();
 
         SubscribeLocalEvent<CEMeleeEnergyEffectComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<CEMeleeEnergyEffectComponent, ChargeChangedEvent>(OnChargeChanged);
+    }
+
+    private void OnChargeChanged(Entity<CEMeleeEnergyEffectComponent> ent, ref ChargeChangedEvent args)
+    {
+        if (ent.Comp.EnergyRequired > 0 && TryComp<BatteryComponent>(ent, out var battery))
+            UpdateBattery(ent, battery);
     }
 
     private void OnMapInit(Entity<CEMeleeEnergyEffectComponent> ent, ref MapInitEvent args)

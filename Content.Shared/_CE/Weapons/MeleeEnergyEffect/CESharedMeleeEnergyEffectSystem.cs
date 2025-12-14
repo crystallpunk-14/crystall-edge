@@ -1,6 +1,7 @@
 using Content.Shared._CE.Actions.Spells;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Timing;
+using Content.Shared.Toggleable;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Timing;
 
@@ -91,5 +92,6 @@ public abstract class CESharedMeleeEnergyEffectSystem : EntitySystem
         DirtyField(ent, ent.Comp, nameof(CEMeleeEnergyEffectComponent.DeactivateTime));
 
         Appearance.SetData(ent.Owner, CEMeleeEnergyState.Active, active);
+        Appearance.SetData(ent, ToggleableVisuals.Enabled, active);
     }
 }

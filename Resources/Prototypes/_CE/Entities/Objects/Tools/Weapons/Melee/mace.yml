@@ -21,7 +21,7 @@
     damage:
       types:
         Blunt: 13
-  - type: Wieldable
+  - type: MultiHandedItem
   - type: Clothing
     slots:
     - neck
@@ -60,10 +60,14 @@
     - !type:CESpellStaminaDamage
       damage: 40
   - type: Appearance
-  - type: GenericVisualizer
-    visuals:
-      enum.CEMeleeEnergyState.Active:
-        charge:
-          True: { visible: true }
-          False: { visible: false }
+  - type: ToggleableVisuals
+    spriteLayer: charge
+    inhandVisuals:
+      left:
+      - state: inhand-left-charge
+        shader: unshaded
+      right:
+      - state: inhand-right-charge
+        shader: unshaded
+
 
