@@ -47,7 +47,7 @@ public sealed class CEMeleeEnergyEffectSystem : CESharedMeleeEnergyEffectSystem
             UpdateBattery(ent, battery);
         }
 
-        SetActiveStatus(ent, true);
+        SetActiveStatus(ent, true, args.User);
     }
 
     private void UpdateBattery(Entity<CEMeleeEnergyEffectComponent> ent, BatteryComponent battery)

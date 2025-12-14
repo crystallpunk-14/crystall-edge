@@ -1,4 +1,5 @@
 using Content.Shared._CE.Actions.Spells;
+using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 
@@ -34,6 +35,12 @@ public sealed partial class CEMeleeEnergyEffectComponent : Component
 
     [DataField, AutoNetworkedField, AutoPausedField]
     public TimeSpan DeactivateTime = TimeSpan.Zero;
+
+    [DataField]
+    public SoundSpecifier ActivateSound = new SoundPathSpecifier("/Audio/Effects/sparks1.ogg"); //TODO normal sound
+
+    [DataField]
+    public SoundSpecifier DeactivateSound = new SoundPathSpecifier("/Audio/Effects/sparks2.ogg"); //TODO normal sound
 }
 
 [Serializable, NetSerializable]

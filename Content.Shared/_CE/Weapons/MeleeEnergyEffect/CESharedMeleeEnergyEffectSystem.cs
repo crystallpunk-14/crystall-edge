@@ -3,6 +3,7 @@ using Content.Shared.Interaction.Events;
 using Content.Shared.Timing;
 using Content.Shared.Toggleable;
 using Content.Shared.Weapons.Melee.Events;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.Weapons.MeleeEnergyEffect;
@@ -12,6 +13,7 @@ public abstract class CESharedMeleeEnergyEffectSystem : EntitySystem
     [Dependency] private readonly UseDelaySystem _useDelay = default!;
     [Dependency] protected readonly IGameTiming Timing = default!;
     [Dependency] protected readonly SharedAppearanceSystem Appearance = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
 
     public override void Initialize()
     {
@@ -37,7 +39,7 @@ public abstract class CESharedMeleeEnergyEffectSystem : EntitySystem
             if (Timing.CurTime < comp.DeactivateTime)
                 continue;
 
-            SetActiveStatus((ent, comp), false);
+            SetActiveStatus((ent, comp), false, null);
         }
     }
 
@@ -77,10 +79,10 @@ public abstract class CESharedMeleeEnergyEffectSystem : EntitySystem
             }
         }
 
-        SetActiveStatus(ent, false);
+        SetActiveStatus(ent, false, args.User);
     }
 
-    public void SetActiveStatus(Entity<CEMeleeEnergyEffectComponent> ent, bool active)
+    public void SetActiveStatus(Entity<CEMeleeEnergyEffectComponent> ent, bool active, EntityUid? user)
     {
         ent.Comp.Active = active;
         DirtyField(ent, ent.Comp, nameof(CEMeleeEnergyEffectComponent.Active));
@@ -93,5 +95,7 @@ public abstract class CESharedMeleeEnergyEffectSystem : EntitySystem
 
         Appearance.SetData(ent.Owner, CEMeleeEnergyState.Active, active);
         Appearance.SetData(ent, ToggleableVisuals.Enabled, active);
+
+        _audio.PlayPredicted(active ? ent.Comp.ActivateSound : ent.Comp.DeactivateSound, ent, user);
     }
 }
