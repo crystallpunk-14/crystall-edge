@@ -46,6 +46,7 @@
   id: CELeather
   name: ce-material-leather
   unit: materials-unit-roll
+  icon: { sprite: _CE/Objects/Materials/leather.rsi, state: leather }
   color: "#a78a63"
   price: 1.2
 
