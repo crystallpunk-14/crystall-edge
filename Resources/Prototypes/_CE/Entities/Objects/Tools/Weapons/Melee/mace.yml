@@ -37,6 +37,11 @@
   components:
   - type: Sprite
     sprite: _CE/Objects/Tools/Weapons/Melee/mace/guardrail.rsi
+    layers:
+    - state: icon
+    - state: charge
+      visible: false
+      map: [ "charge" ]
     state: icon
   - type: Battery
     startingCharge: 50
@@ -54,3 +59,11 @@
       - CEOverchargeVFX
     - !type:CESpellStaminaDamage
       damage: 40
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.CEMeleeEnergyState.Active:
+        charge:
+          True: { visible: true }
+          False: { visible: false }
+

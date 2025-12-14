@@ -2,12 +2,15 @@ using Content.Shared._CE.Actions.Spells;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Timing;
 using Content.Shared.Weapons.Melee.Events;
+using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.Weapons.MeleeEnergyEffect;
 
 public abstract class CESharedMeleeEnergyEffectSystem : EntitySystem
 {
     [Dependency] private readonly UseDelaySystem _useDelay = default!;
+    [Dependency] protected readonly IGameTiming Timing = default!;
+    [Dependency] protected readonly SharedAppearanceSystem Appearance = default!;
 
     public override void Initialize()
     {
@@ -15,6 +18,26 @@ public abstract class CESharedMeleeEnergyEffectSystem : EntitySystem
 
         SubscribeLocalEvent<CEMeleeEnergyEffectComponent, UseInHandEvent>(OnUseInHand);
         SubscribeLocalEvent<CEMeleeEnergyEffectComponent, MeleeHitEvent>(OnMeleeAttack);
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        var query = EntityQueryEnumerator<CEMeleeEnergyEffectComponent>();
+        while (query.MoveNext(out var ent, out var comp))
+        {
+            if (!comp.Active)
+                continue;
+
+            if (comp.DeactivateTime == TimeSpan.Zero)
+                continue;
+
+            if (Timing.CurTime < comp.DeactivateTime)
+                continue;
+
+            SetActiveStatus((ent, comp), false);
+        }
     }
 
     protected virtual void OnUseInHand(Entity<CEMeleeEnergyEffectComponent> ent, ref UseInHandEvent args)
@@ -53,7 +76,20 @@ public abstract class CESharedMeleeEnergyEffectSystem : EntitySystem
             }
         }
 
-        ent.Comp.Active = false;
+        SetActiveStatus(ent, false);
+    }
+
+    public void SetActiveStatus(Entity<CEMeleeEnergyEffectComponent> ent, bool active)
+    {
+        ent.Comp.Active = active;
         DirtyField(ent, ent.Comp, nameof(CEMeleeEnergyEffectComponent.Active));
+
+        if (active)
+            ent.Comp.DeactivateTime = Timing.CurTime + ent.Comp.ActiveDuration;
+        else
+            ent.Comp.DeactivateTime = TimeSpan.Zero;
+        DirtyField(ent, ent.Comp, nameof(CEMeleeEnergyEffectComponent.DeactivateTime));
+
+        Appearance.SetData(ent.Owner, CEMeleeEnergyState.Active, active);
     }
 }

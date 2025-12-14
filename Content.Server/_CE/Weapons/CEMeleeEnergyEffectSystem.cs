@@ -39,8 +39,7 @@ public sealed class CEMeleeEnergyEffectSystem : CESharedMeleeEnergyEffectSystem
             UpdateBattery(ent, battery);
         }
 
-        ent.Comp.Active = true;
-        DirtyField(ent, ent.Comp, nameof(CEMeleeEnergyEffectComponent.Active));
+        SetActiveStatus(ent, true);
     }
 
     private void UpdateBattery(Entity<CEMeleeEnergyEffectComponent> ent, BatteryComponent battery)

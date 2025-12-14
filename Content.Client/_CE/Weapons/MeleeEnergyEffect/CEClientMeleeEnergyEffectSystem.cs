@@ -2,6 +2,7 @@ using Content.Client.Items;
 using Content.Client.Stylesheets;
 using Content.Client.Weapons.Ranged.ItemStatus;
 using Content.Shared._CE.Weapons.MeleeEnergyEffect;
+using Robust.Client.GameObjects;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Timing;
@@ -15,7 +16,6 @@ public sealed class CEClientMeleeEnergyEffectSystem : CESharedMeleeEnergyEffectS
         base.Initialize();
 
         Subs.ItemStatus<CEMeleeEnergyEffectComponent>(ent => new CEMeleeEnergyEffectStatusControl(ent));
-
     }
 
     public sealed class CEMeleeEnergyEffectStatusControl : Control
