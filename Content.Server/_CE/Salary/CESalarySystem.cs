@@ -20,21 +20,45 @@ public sealed partial class CESalarySystem : EntitySystem
 
         SubscribeLocalEvent<CESalaryPayrollComponent, ExaminedEvent>(OnExamined);
         SubscribeLocalEvent<CESalaryPayrollComponent, InteractHandEvent>(OnInteract);
+        SubscribeLocalEvent<CESalaryCounterComponent, MapInitEvent>(OnMapInit);
     }
 
-    public override void Update(float frameTime)
+    private void OnMapInit(Entity<CESalaryCounterComponent> ent, ref MapInitEvent args)
     {
-        base.Update(frameTime);
+        // Initialize the first salary time
+        if (ent.Comp.NextSalaryTime == TimeSpan.Zero)
+            ent.Comp.NextSalaryTime = _timing.CurTime + ent.Comp.Frequency;
+    }
 
-        var query = EntityQueryEnumerator<CESalaryCounterComponent>();
-        while (query.MoveNext(out var ent, out var counter))
+    /// <summary>
+    /// Calculates and updates the accumulated unpaid salary based on elapsed time since last update.
+    /// This method checks how many salary payment periods have passed and adds the corresponding amount.
+    /// </summary>
+    private void UpdateAccumulatedSalary(Entity<CESalaryCounterComponent> counter)
+    {
+        var currentTime = _timing.CurTime;
+        
+        // If no next salary time is set, initialize it
+        if (counter.Comp.NextSalaryTime == TimeSpan.Zero)
         {
-            if (_timing.CurTime < counter.NextSalaryTime)
-                continue;
-
-            counter.NextSalaryTime = _timing.CurTime + counter.Frequency;
-            counter.UnpaidSalary += counter.Salary;
+            counter.Comp.NextSalaryTime = currentTime + counter.Comp.Frequency;
+            return;
         }
+
+        // Calculate how many full salary periods have elapsed
+        var elapsedTime = currentTime - counter.Comp.NextSalaryTime + counter.Comp.Frequency;
+        if (elapsedTime <= TimeSpan.Zero)
+            return;
+
+        var periodsElapsed = (int)(elapsedTime / counter.Comp.Frequency);
+        if (periodsElapsed <= 0)
+            return;
+
+        // Add accumulated salary for all elapsed periods
+        counter.Comp.UnpaidSalary += counter.Comp.Salary * periodsElapsed;
+        
+        // Update next salary time, accounting for all elapsed periods
+        counter.Comp.NextSalaryTime += counter.Comp.Frequency * periodsElapsed;
     }
 
     private void OnExamined(Entity<CESalaryPayrollComponent> ent, ref ExaminedEvent args)
@@ -44,6 +68,9 @@ public sealed partial class CESalarySystem : EntitySystem
             args.PushMarkup(Loc.GetString("ce-salary-payroll-examine-unsupported-job"));
             return;
         }
+
+        // Update accumulated salary before displaying
+        UpdateAccumulatedSalary((args.Examiner, counter));
 
         if (counter.UnpaidSalary <= 0)
         {
@@ -70,6 +97,9 @@ public sealed partial class CESalarySystem : EntitySystem
             _popup.PopupEntity(Loc.GetString("ce-salary-payroll-examine-unsupported-job"), args.User, args.User);
             return;
         }
+
+        // Update accumulated salary before withdrawal
+        UpdateAccumulatedSalary((args.User, counter));
 
         if (counter.UnpaidSalary <= 0)
         {
