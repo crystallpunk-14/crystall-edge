@@ -1122,7 +1122,7 @@ ent-CEKeyGuardStaff = { ent-CEKeyGuardBase }
 
 ent-CEKeyGuardArmory = { ent-CEKeyGuardBase }
     .desc = { ent-CEKeyGuardBase.desc }
-    .suffix = Армория охраны
+    .suffix = Оружейная охраны
 
 ent-CEKeyGuardHeadRoom = { ent-CEKeyGuardBase }
     .desc = { ent-CEKeyGuardBase.desc }
@@ -1225,19 +1225,19 @@ ent-CEIronDoorFrameMirrored = { ent-CEIronDoorFrame }
 
 ent-CEIronDoorMirrored = { ent-CEIronDoor }
     .desc = { ent-CEIronDoor.desc }
-    .suffix = Открыта, Зеркало
+    .suffix = Открыта, Отзеркалено
 
 ent-CEIronDoorWindowedMirrored = { ent-CEIronDoorWindowed }
     .desc = { ent-CEIronDoorWindowed.desc }
-    .suffix = Открыта, Зеркало
+    .suffix = Открыта, Отзеркалено
 
 ent-CEWoodenDoorMirrored = { ent-CEWoodenDoor }
     .desc = { ent-CEWoodenDoor.desc }
-    .suffix = Открыта, Зеркало
+    .suffix = Открыта, Отзеркалено
 
 ent-CEWoodenDoorWindowedMirrored = { ent-CEWoodenDoorWindowed }
     .desc = { ent-CEWoodenDoorWindowed.desc }
-    .suffix = Открыта, Зеркало
+    .suffix = Открыта, Отзеркалено
 
 ent-CEIronDoorGuardHall = { ent-CEIronDoorWindowed }
     .desc = { ent-CEIronDoorWindowed.desc }
@@ -1249,7 +1249,7 @@ ent-CEIronDoorGuardStaff = { ent-CEIronDoor }
 
 ent-CEIronDoorGuardArmory = { ent-CEIronDoor }
     .desc = { ent-CEIronDoor.desc }
-    .suffix = Армория охраны
+    .suffix = Оружейная охраны
 
 ent-CEIronDoorGuardHeadRoom = { ent-CEIronDoor }
     .desc = { ent-CEIronDoor.desc }
@@ -2100,19 +2100,19 @@ ent-CEWoodenDoorWindowed = деревянная дверь с окном
 
 ent-CEIronDoorGuardHallMirrored = { ent-CEIronDoorGuardHall }
     .desc = { ent-CEIronDoorGuardHall.desc }
-    .suffix = Зал охраны, Зеркало
+    .suffix = Зал охраны, Отзеркалено
 
 ent-CEIronDoorGuardArmoryMirrored = { ent-CEIronDoorGuardArmory }
     .desc = { ent-CEIronDoorGuardArmory.desc }
-    .suffix = Армория охраны, Зеркало
+    .suffix = Оружейная охраны, Отзеркалено
 
 ent-CEWoodenDoorTavernHallMirrored = { ent-CEWoodenDoorTavernHall }
     .desc = { ent-CEWoodenDoorTavernHall.desc }
-    .suffix = Зал таверны, Зеркало
+    .suffix = Зал таверны, Отзеркалено
 
 ent-CEWoodenDoorTavernStaffMirrored = { ent-CEWoodenDoorTavernStaff }
     .desc = { ent-CEWoodenDoorTavernStaff.desc }
-    .suffix = Персонал таверны, Зеркало
+    .suffix = Персонал таверны, Отзеркалено
 
 ent-CEFenceBigWooden = { ent-CEBaseFenceBig }
     .desc = { ent-CEBaseFenceBig.desc }

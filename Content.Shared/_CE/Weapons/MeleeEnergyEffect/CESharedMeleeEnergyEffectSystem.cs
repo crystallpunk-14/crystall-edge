@@ -1,5 +1,6 @@
 using Content.Shared._CE.Actions.Spells;
 using Content.Shared.Interaction.Events;
+using Content.Shared.Popups;
 using Content.Shared.Timing;
 using Content.Shared.Toggleable;
 using Content.Shared.Weapons.Melee.Events;
@@ -10,10 +11,12 @@ namespace Content.Shared._CE.Weapons.MeleeEnergyEffect;
 
 public abstract class CESharedMeleeEnergyEffectSystem : EntitySystem
 {
-    [Dependency] private readonly UseDelaySystem _useDelay = default!;
     [Dependency] protected readonly IGameTiming Timing = default!;
     [Dependency] protected readonly SharedAppearanceSystem Appearance = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] protected readonly SharedPopupSystem Popup = default!;
+    [Dependency] protected readonly SharedAudioSystem Audio = default!;
+
+    [Dependency] private readonly UseDelaySystem _useDelay = default!;
 
     public override void Initialize()
     {
@@ -60,7 +63,6 @@ public abstract class CESharedMeleeEnergyEffectSystem : EntitySystem
         }
 
         args.Handled = true;
-        //Predicted audio or popup for instant feedback
     }
 
     private void OnMeleeAttack(Entity<CEMeleeEnergyEffectComponent> ent, ref MeleeHitEvent args)
@@ -96,6 +98,6 @@ public abstract class CESharedMeleeEnergyEffectSystem : EntitySystem
         Appearance.SetData(ent.Owner, CEMeleeEnergyState.Active, active);
         Appearance.SetData(ent, ToggleableVisuals.Enabled, active);
 
-        _audio.PlayPredicted(active ? ent.Comp.ActivateSound : ent.Comp.DeactivateSound, ent, user);
+        Audio.PlayPredicted(active ? ent.Comp.ActivateSound : ent.Comp.DeactivateSound, ent, user);
     }
 }

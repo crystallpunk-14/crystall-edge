@@ -3,14 +3,12 @@ using Content.Shared._CE.Weapons.MeleeEnergyEffect;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Power;
 using Content.Shared.Power.Components;
-using Robust.Shared.Audio.Systems;
 
 namespace Content.Server._CE.Weapons;
 
 public sealed class CEMeleeEnergyEffectSystem : CESharedMeleeEnergyEffectSystem
 {
     [Dependency] private readonly BatterySystem _battery = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
 
     public override void Initialize()
     {
@@ -40,14 +38,15 @@ public sealed class CEMeleeEnergyEffectSystem : CESharedMeleeEnergyEffectSystem
         {
             if (battery.CurrentCharge < ent.Comp.EnergyRequired)
             {
-                //popup or audio
+                Popup.PopupEntity(Loc.GetString("ce-melee-energy-effect-no-energy"), ent.Owner);
+                Audio.PlayPvs(ent.Comp.NoEnergySound, ent.Owner);
                 return;
             }
             _battery.ChangeCharge((ent, battery), -ent.Comp.EnergyRequired);
             UpdateBattery(ent, battery);
         }
 
-        SetActiveStatus(ent, true, args.User);
+        SetActiveStatus(ent, true, null); //Uhh we dont pass user because its only used for PredictedAudio, and its not works when called from server
     }
 
     private void UpdateBattery(Entity<CEMeleeEnergyEffectComponent> ent, BatteryComponent battery)

@@ -68,13 +68,16 @@ public sealed partial class CEMeleeEnergyEffectComponent : Component
     /// Sound to play when the energy effect is activated.
     /// </summary>
     [DataField]
-    public SoundSpecifier ActivateSound = new SoundPathSpecifier("/Audio/Effects/sparks1.ogg"); //TODO normal sound
+    public SoundSpecifier ActivateSound = new SoundPathSpecifier("/Audio/_CE/Effects/energy_charge.ogg", new AudioParams{Variation = 0.15f});
 
     /// <summary>
     /// Sound to play when the energy effect is deactivated.
     /// </summary>
     [DataField]
-    public SoundSpecifier DeactivateSound = new SoundPathSpecifier("/Audio/Effects/sparks2.ogg"); //TODO normal sound
+    public SoundSpecifier DeactivateSound = new SoundPathSpecifier("/Audio/_CE/Effects/energy_pulse2.ogg", new AudioParams{Variation = 0.15f});
+
+    [DataField]
+    public SoundSpecifier NoEnergySound = new SoundCollectionSpecifier("sparks");
 }
 
 [Serializable, NetSerializable]

@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  id: CEBaseWeaponTwoHandedMace
+  id: CEBaseWeaponMaceTwoHanded
   parent:
   - BaseItem
   - CEBaseWeaponChemical
@@ -30,13 +30,13 @@
     unequipDelay: 1.5
 
 - type: entity
-  parent: CEBaseWeaponTwoHandedMace
-  id: CEWeaponTwoHandedMaceGuardrail
+  parent: CEBaseWeaponMaceTwoHanded
+  id: CEWeaponMaceTwoHandedGuardrail
   name: guardrail mace
-  description: TODO
+  description: A mana-powered heavy mace used by guards. When activated, it delivers a powerful blow that knocks back targets and drains their stamina.
   components:
   - type: Sprite
-    sprite: _CE/Objects/Tools/Weapons/Melee/mace/guardrail.rsi
+    sprite: _CE/Objects/Tools/Weapons/Melee/Mace/guardrail.rsi
     layers:
     - state: icon
     - state: charge
