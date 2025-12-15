@@ -58,6 +58,7 @@
     corner: true
     heightCurve:
     - 1.05
+    - 1.05
     - 0.5
     - 0.1
   - type: Fixtures

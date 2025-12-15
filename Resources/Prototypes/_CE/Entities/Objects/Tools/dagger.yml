@@ -29,12 +29,8 @@
       types:
         Slash: 2
         Piercing: 3
-    #animation: CEWeaponArcThrust
-    #wideAnimation: CEWeaponArcSlash
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
-    #cPAnimationLength: 0.15
-    #cPAnimationOffset: 0.75
   - type: Clothing
     slots:
     - belt

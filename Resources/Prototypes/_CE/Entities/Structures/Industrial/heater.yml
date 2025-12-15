@@ -7,8 +7,6 @@
   name: heater
   description: a mechanism that converts energy into a controlled burning flame
   components:
-  - type: PlacementReplacement
-    key: pipe_big
   - type: AmbientSound
     enabled: false
     volume: -8

@@ -1,0 +1,48 @@
+# Guard
+
+- type: lockType
+  id: GuardHall
+  complexity: 3
+  name: ce-lock-shape-guard-hall
+
+- type: lockType
+  id: GuardStaff
+  complexity: 5
+  name: ce-lock-shape-guard-staff
+
+- type: lockType
+  id: GuardArmory
+  complexity: 7
+  name: ce-lock-shape-guard-armory
+
+- type: lockType
+  id: GuardHeadRoom
+  complexity: 5
+  name: ce-lock-shape-guard-head-room
+
+# Cages
+
+- type: lockType
+  id: GuardCage1
+  complexity: 3
+  name: ce-lock-shape-guard-cage-1
+
+- type: lockType
+  id: GuardCage2
+  complexity: 3
+  name: ce-lock-shape-guard-cage-2
+
+- type: lockType
+  id: GuardCage3
+  complexity: 3
+  name: ce-lock-shape-guard-cage-3
+
+- type: lockType
+  id: GuardCage4
+  complexity: 3
+  name: ce-lock-shape-guard-cage-4
+
+- type: lockType
+  id: GuardCage5
+  complexity: 3
+  name: ce-lock-shape-guard-cage-5

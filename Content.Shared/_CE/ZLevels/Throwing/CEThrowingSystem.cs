@@ -18,7 +18,7 @@ public sealed class CEThrowingSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CEZLevelViewerComponent, ThrowEvent>(OnThrow);
+        //SubscribeLocalEvent<CEZLevelViewerComponent, ThrowEvent>(OnThrow); //Temporaly disabled because bugs
     }
 
     public double NeededUpForce(float currentHeight, float targetHeight)

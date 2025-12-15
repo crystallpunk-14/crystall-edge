@@ -75,7 +75,6 @@ public abstract partial class CESharedLockKeySystem : EntitySystem
             QueueDel(args.Used);
     }
 
-
     public bool TrySetShape(Entity<CELockComponent?> ent, List<int>? shape)
     {
         if (!Resolve(ent, ref ent.Comp, false))

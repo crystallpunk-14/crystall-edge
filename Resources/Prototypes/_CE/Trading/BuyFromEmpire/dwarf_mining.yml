@@ -1,0 +1,74 @@
+
+- type: tradingPosition
+  id: CECrowbar
+  faction: DwarfMiners
+  service: !type:CEBuyItemsService
+    product: CECrowbar
+    count: 1
+
+- type: tradingPosition
+  id: CEWrench
+  faction: DwarfMiners
+  service: !type:CEBuyItemsService
+    product: CEWrench
+    count: 1
+
+- type: tradingPosition
+  id: CEWeaponPickaxeIron
+  priceMarkup: 10
+  faction: DwarfMiners
+  service: !type:CEBuyItemsService
+    product: CEWeaponPickaxeIron
+    count: 1
+
+- type: tradingPosition
+  id: CEBrassBar10
+  faction: DwarfMiners
+  service: !type:CEBuyItemsService
+    product: CEBrassBar10
+    count: 1
+
+- type: tradingPosition
+  id: CEIronBar10
+  faction: DwarfMiners
+  service: !type:CEBuyItemsService
+    product: CEIronBar10
+    count: 1
+
+- type: tradingPosition
+  id: Lantern #TODO remove vanilla lantern and replace with CE lantern
+  faction: DwarfMiners
+  service: !type:CEBuyItemsService
+    product: Lantern
+    count: 1
+
+- type: tradingPosition
+  id: CEManaTransferGloveMining
+  priceMarkup: 10
+  faction: DwarfMiners
+  service: !type:CEBuyItemsService
+    product: CEManaTransferGlove
+    count: 1
+
+- type: tradingPosition
+  id: CEStoneBlock10
+  priceMarkup: 10
+  faction: DwarfMiners
+  service: !type:CEBuyItemsService
+    product: CEStoneBlock10
+    count: 1
+
+- type: tradingPosition
+  id: CEDirtBlock10
+  priceMarkup: 10
+  faction: DwarfMiners
+  service: !type:CEBuyItemsService
+    product: CEDirtBlock10
+    count: 1
+
+- type: tradingPosition
+  id: ClothingBackpackSalvage #TODO remove vanilla lantern and replace with CE lantern
+  faction: DwarfMiners
+  service: !type:CEBuyItemsService
+    product: ClothingBackpackSalvage
+    count: 1

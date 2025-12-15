@@ -21,3 +21,11 @@
   service: !type:CEBuyItemsService
     product: CETradeContractHorticulture
     count: 1
+
+- type: tradingPosition
+  id: CETradeContractDwarfMinersRoundstart
+  priceMarkup: 20
+  faction: Contracts
+  service: !type:CEBuyItemsService
+    product: CETradeContractDwarfMiners
+    count: 1

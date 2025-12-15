@@ -60,3 +60,14 @@
     state: guard
   - type: CETradingContract
     faction: EmpireGuard
+
+- type: entity
+  parent: CETradeContractBase
+  id: CETradeContractDwarfMiners
+  description: Access to trade with the personal warehouse of the Dwarf Steel. Contains various mining supplies and equipment.
+  suffix: Dwarf miners warehouse
+  components:
+  - type: Sprite
+    state: dwarf_mining
+  - type: CETradingContract
+    faction: DwarfMiners

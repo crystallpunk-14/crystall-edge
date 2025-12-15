@@ -384,7 +384,7 @@ entities:
     - type: Transform
       pos: 35.78214,-13.440595
       parent: 1
-- proto: CEClothingSyurkoBlue
+- proto: CEClothingShirtSyurkoBlue
   entities:
   - uid: 585
     components:

@@ -1,0 +1,77 @@
+- type: entity
+  id: CEGunJustice
+  parent:
+  - BaseWeaponBattery
+  name: Justice Revolver
+  description: A fast and convenient guard revolver that can be easily fired with two hands.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Normal
+  - type: Appearance
+  - type: Sprite
+    sprite: _CE/Objects/Tools/Weapons/justice.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-3
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Clothing
+    sprite: _CE/Objects/Tools/Weapons/justice.rsi
+    equipDelay: 0.5
+    unequipDelay: 0.5
+    equipWhileMoving: true
+    slots:
+    - belt
+  - type: MagazineVisuals
+    magState: mag
+    steps: 4
+  - type: HitscanBatteryAmmoProvider
+    proto: CEJusticeHitscan
+    fireCost: 5
+  - type: Battery
+    maxCharge: 40
+    startingCharge: 40
+  - type: Gun
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    angleIncrease: 5
+    angleDecay: 20
+    minAngle: 0
+    maxAngle: 50
+    cameraRecoilScalar: 0.2
+    fireRate: 2.5
+    resetOnHandSelected: false
+    soundGunshot:
+      path: /Audio/_CE/Effects/peacekeeper_laser.ogg
+      params:
+        variation: 0.2
+  - type: StaticPrice
+    price: 150
+
+- type: entity
+  parent: BasicHitscan
+  id: CEJusticeHitscan
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Shock: 10
+  - type: CEHitscanSpellEffect
+    effects:
+    - !type:CESpellSpawnEntityOnUser
+      spawns:
+      - CEOverchargeVFX
+  - type: HitscanBasicVisuals
+    muzzleFlash:
+      sprite: _CE/Objects/Tools/Weapons/justice.rsi
+      state: muzzle_blue
+    travelFlash:
+      sprite: _CE/Objects/Tools/Weapons/justice.rsi
+      state: beam_blue
+    impactFlash:
+      sprite: _CE/Objects/Tools/Weapons/justice.rsi
+      state: impact_blue

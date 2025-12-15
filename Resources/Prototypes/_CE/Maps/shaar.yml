@@ -1,6 +1,8 @@
 - type: gameMap
   id: Shaar
   mapName: Shaar
+  minPlayers: 1
+  maxPlayers: 20
   mapsBelow:
   - /Maps/_CE/Shaar/Shaar-2.yml
   - /Maps/_CE/Shaar/Shaar-1.yml
@@ -29,7 +31,6 @@
     - type: SunShadow
     - type: MapLight
       ambientLightColor: "#efff75"
-  minPlayers: 0
   stations:
     Shaar:
       stationProto: CEStandardImperialFloatingIsland
@@ -38,6 +39,12 @@
           mapNameTemplate: "Shaar"
         - type: StationJobs
           availableJobs:
+            #Guard (5)
+            CEGuardCommander: [ 1, 1 ]
+            CEGuard: [ 4, 4 ]
+            #Tavern (4)
+            CETavernmaster: [ 1, 1 ]
+            CEChef: [ 3, 3 ]
+            #Citizens
+            CEBard: [ 2, 2 ]
             CETownfolk: [ -1, -1 ]
-            #CEGuardCommander: [ 1, 1 ]
-            #CETavernmaster: [ 1, 1 ]

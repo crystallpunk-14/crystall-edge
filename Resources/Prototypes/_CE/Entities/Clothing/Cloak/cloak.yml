@@ -37,9 +37,9 @@
 - type: entity
   parent:
   - CEClothingCloakBase
-  id: CEClothingCloakGuildmaster
-  name: guildmaster's cloak
-  description: A ceremonial cloak worn by the guildmaster, symbolizing leadership.
+  id: CEClothingCloakTavernmaster
+  name: tavernmaster's cloak
+  description: A ceremonial cloak worn by the tavernmaster, symbolizing leadership.
   components:
   - type: Sprite
     sprite: _CE/Clothing/Cloak/Cloak/guildmaster.rsi

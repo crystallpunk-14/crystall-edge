@@ -1,0 +1,294 @@
+- type: entity
+  parent: CEBaseMobSpeciesOrganic
+  id: CEBaseMobCarrin
+  name: Mr. Birb
+  abstract: true
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "enum.HumanoidVisualLayers.Chest" ]
+    - map: [ "enum.HumanoidVisualLayers.Head" ]
+    - map: [ "enum.HumanoidVisualLayers.Eyes" ]
+    - map: [ "enum.HumanoidVisualLayers.RArm" ]
+    - map: [ "enum.HumanoidVisualLayers.LArm" ]
+    - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+    - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+    - shader: StencilClear
+      sprite: _CE/Mobs/Species/Carrin/parts.rsi
+      state: l_leg
+    - shader: StencilMask
+      map: [ "enum.HumanoidVisualLayers.StencilMask" ]
+      sprite: Mobs/Customization/masking_helpers.rsi
+      state: unisex_full
+      visible: false
+    - map: [ "enum.HumanoidVisualLayers.LFoot" ]
+    - map: [ "enum.HumanoidVisualLayers.RFoot" ]
+    - map: [ "pants" ]
+    - map: [ "shoes" ]
+    - map: [ "shirt" ]
+    - map: [ "enum.HumanoidVisualLayers.LHand" ]
+    - map: [ "enum.HumanoidVisualLayers.RHand" ]
+    - map: [ "gloves" ]
+    - map: [ "ears" ]
+    - map: [ "outerClothing" ]
+    - map: [ "cloak" ]
+    - map: [ "eyes" ]
+    - map: [ "belt" ]
+    - map: [ "belt2" ]
+    - map: [ "neck" ]
+    - map: [ "back" ]
+    - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
+    - map: [ "enum.HumanoidVisualLayers.Hair" ]
+    - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
+    - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+    - map: [ "enum.HumanoidVisualLayers.Tail" ]
+    - map: [ "mask" ]
+    - map: [ "head" ]
+    - map: [ "enum.HumanoidVisualLayers.Snout" ] # Snout over head
+    - map: [ "pocket1" ]
+    - map: [ "pocket2" ]
+    - map: ["enum.HumanoidVisualLayers.Handcuffs"]
+      color: "#ffffff"
+      sprite: Objects/Misc/handcuffs.rsi
+      state: body-overlay-2
+      visible: false
+  - type: HumanoidAppearance
+    species: CECarrin
+  - type: Icon
+    sprite: _CE/Mobs/Species/Carrin/parts.rsi
+    state: full
+  - type: Vocal
+    sounds:
+      Male: CEUnisexCarcat    #TODO: change to carrin sound
+      Female: CEUnisexCarcat
+      Unsexed: CEUnisexCarcat
+  - type: Speech
+    speechSounds: CECarcat #TODO: change to carrin sound
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: CEStepCarrin
+      params:
+        volume: -15
+  - type: MobMover
+    stepSoundMoveDistanceRunning: 1
+    stepSoundMoveDistanceWalking: 0.75
+  - type: Body
+    prototype: CECarrin
+    requiredLegs: 2
+  - type: MeleeWeapon
+    soundHit:
+      collection: AlienClaw
+    angle: 30
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Slash: 5 # 5 slash
+  - type: Inventory
+    templateId: CECarrin # Cant wear shoes, mask and gloves
+    speciesId: carrin
+    displacements:
+      belt:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Carrin/displacement.rsi
+            state: cloak
+      cloak:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Carrin/displacement.rsi
+            state: cloak
+      back:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Carrin/displacement.rsi
+            state: cloak
+      eyes:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Carrin/displacement.rsi
+            state: eyes
+      head:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Carrin/displacement48.rsi
+            state: head
+          48:
+            sprite: _CE/Mobs/Species/Carrin/displacement48.rsi
+            state: head
+      mask:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Carrin/displacement.rsi
+            state: mask
+      pants:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Carrin/displacement.rsi
+            state: pants
+      shirt:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Carrin/displacement.rsi
+            state: shirt
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Carrin/displacement.rsi
+            state: shirt
+      gloves:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Carrin/displacement.rsi
+            state: gloves
+      neck:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Carrin/displacement48.rsi
+            state: neck
+          48:
+            sprite: _CE/Mobs/Species/Carrin/displacement48.rsi
+            state: neck
+  - type: Hands
+    leftHandDisplacement:
+      sizeMaps:
+        32:
+          sprite: _CE/Mobs/Species/Carrin/displacement.rsi
+          state: hand_l
+    rightHandDisplacement:
+      sizeMaps:
+        32:
+          sprite: _CE/Mobs/Species/Carrin/displacement.rsi
+          state: hand_r
+
+- type: entity
+  parent: CEBaseSpeciesDummy
+  id: CEMobCarrinDummy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "enum.HumanoidVisualLayers.Chest" ]
+    - map: [ "enum.HumanoidVisualLayers.Head" ]
+    - map: [ "enum.HumanoidVisualLayers.Eyes" ]
+    - map: [ "enum.HumanoidVisualLayers.RArm" ]
+    - map: [ "enum.HumanoidVisualLayers.LArm" ]
+    - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+    - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+    - shader: StencilClear
+      sprite: _CE/Mobs/Species/Carrin/parts.rsi
+      state: l_leg
+    - shader: StencilMask
+      map: [ "enum.HumanoidVisualLayers.StencilMask" ]
+      sprite: Mobs/Customization/masking_helpers.rsi
+      state: unisex_full
+      visible: false
+    - map: [ "enum.HumanoidVisualLayers.LFoot" ]
+    - map: [ "enum.HumanoidVisualLayers.RFoot" ]
+    - map: [ "pants" ]
+    - map: [ "shoes" ]
+    - map: [ "shirt" ]
+    - map: [ "enum.HumanoidVisualLayers.LHand" ]
+    - map: [ "enum.HumanoidVisualLayers.RHand" ]
+    - map: [ "gloves" ]
+    - map: [ "ears" ]
+    - map: [ "outerClothing" ]
+    - map: [ "cloak" ]
+    - map: [ "eyes" ]
+    - map: [ "belt" ]
+    - map: [ "belt2" ]
+    - map: [ "neck" ]
+    - map: [ "back" ]
+    - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
+    - map: [ "enum.HumanoidVisualLayers.Hair" ]
+    - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
+    - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+    - map: [ "enum.HumanoidVisualLayers.Tail" ]
+    - map: [ "mask" ]
+    - map: [ "head" ]
+    - map: [ "enum.HumanoidVisualLayers.Snout" ] # Snout over head
+    - map: [ "pocket1" ]
+    - map: [ "pocket2" ]
+    - map: ["enum.HumanoidVisualLayers.Handcuffs"]
+      color: "#ffffff"
+      sprite: Objects/Misc/handcuffs.rsi
+      state: body-overlay-2
+      visible: false
+  - type: HumanoidAppearance
+    species: CECarrin
+  - type: Inventory
+    templateId: CECarcat # Cant wear shoes
+    speciesId: carrin
+    displacements:
+      belt:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Carrin/displacement.rsi
+            state: cloak
+      cloak:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Carrin/displacement.rsi
+            state: cloak
+      back:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Carrin/displacement.rsi
+            state: cloak
+      eyes:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Carrin/displacement.rsi
+            state: eyes
+      head:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Carrin/displacement48.rsi
+            state: head
+          48:
+            sprite: _CE/Mobs/Species/Carrin/displacement48.rsi
+            state: head
+      mask:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Carrin/displacement.rsi
+            state: mask
+      pants:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Carrin/displacement.rsi
+            state: pants
+      shirt:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Carrin/displacement.rsi
+            state: shirt
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Carrin/displacement.rsi
+            state: shirt
+      gloves:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Carrin/displacement.rsi
+            state: gloves
+      neck:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Carrin/displacement48.rsi
+            state: neck
+          48:
+            sprite: _CE/Mobs/Species/Carrin/displacement48.rsi
+            state: neck
+  - type: Hands
+    leftHandDisplacement:
+      sizeMaps:
+        32:
+          sprite: _CE/Mobs/Species/Carrin/displacement.rsi
+          state: hand_l
+    rightHandDisplacement:
+      sizeMaps:
+        32:
+          sprite: _CE/Mobs/Species/Carrin/displacement.rsi
+          state: hand_r
+
