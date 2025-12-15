@@ -26,10 +26,10 @@ public sealed partial class CEMeleeEnergyEffectComponent : Component
     public float EnergyRequired = 10f;
 
     /// <summary>
-    /// Unique identifier key for use delay tracking to prevent rapid reactivation.
+    /// If true, a charged effect attack does not deal standard weapon damage.
     /// </summary>
     [DataField]
-    public string UseDelayKey = "charging";
+    public bool RemoveBaseDamage = true;
 
     /// <summary>
     /// List of spell effects to apply to targets hit while the weapon is active.

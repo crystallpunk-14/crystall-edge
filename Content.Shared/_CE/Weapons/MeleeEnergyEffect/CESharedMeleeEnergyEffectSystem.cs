@@ -24,6 +24,7 @@ public abstract class CESharedMeleeEnergyEffectSystem : EntitySystem
 
         SubscribeLocalEvent<CEMeleeEnergyEffectComponent, UseInHandEvent>(OnUseInHand);
         SubscribeLocalEvent<CEMeleeEnergyEffectComponent, MeleeHitEvent>(OnMeleeAttack);
+        SubscribeLocalEvent<CEMeleeEnergyEffectComponent, GetMeleeDamageEvent>(OnGetMeleeDamage);
     }
 
     public override void Update(float frameTime)
@@ -56,13 +57,11 @@ public abstract class CESharedMeleeEnergyEffectSystem : EntitySystem
 
         if (TryComp<UseDelayComponent>(ent, out var delay))
         {
-            if (_useDelay.IsDelayed((ent.Owner, delay), ent.Comp.UseDelayKey))
+            if (_useDelay.IsDelayed((ent.Owner, delay)))
                 return;
 
-            _useDelay.TryResetDelay((ent.Owner, delay), false, ent.Comp.UseDelayKey);
+            _useDelay.TryResetDelay((ent.Owner, delay));
         }
-
-        args.Handled = true;
     }
 
     private void OnMeleeAttack(Entity<CEMeleeEnergyEffectComponent> ent, ref MeleeHitEvent args)
@@ -82,6 +81,15 @@ public abstract class CESharedMeleeEnergyEffectSystem : EntitySystem
         }
 
         SetActiveStatus(ent, false, args.User);
+    }
+
+    private void OnGetMeleeDamage(Entity<CEMeleeEnergyEffectComponent> ent, ref GetMeleeDamageEvent args)
+    {
+        if (!ent.Comp.RemoveBaseDamage)
+            return;
+
+        if (ent.Comp.Active)
+            args.Damage *= 0;
     }
 
     public void SetActiveStatus(Entity<CEMeleeEnergyEffectComponent> ent, bool active, EntityUid? user)

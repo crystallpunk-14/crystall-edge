@@ -14,13 +14,9 @@
     wideAnimationRotation: -90
     damage:
       types:
-        Slash: 7
+        Blunt: 20
     soundHit:
       collection: MetalThud
-  - type: IncreaseDamageOnWield
-    damage:
-      types:
-        Blunt: 13
   - type: MultiHandedItem
   - type: Clothing
     slots:
@@ -47,9 +43,7 @@
     startingCharge: 50
     maxCharge: 50
   - type: UseDelay
-    delays:
-      charging:
-        length: 5
+    delay: 5
   - type: CEMeleeEnergyEffect
     effects:
     - !type:CESpellThrowFromUser

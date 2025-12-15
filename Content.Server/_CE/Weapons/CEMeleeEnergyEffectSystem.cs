@@ -34,6 +34,12 @@ public sealed class CEMeleeEnergyEffectSystem : CESharedMeleeEnergyEffectSystem
     {
         base.OnUseInHand(ent, ref args);
 
+        if (args.Handled)
+            return;
+
+        if (ent.Comp.Active)
+            return;
+
         if (ent.Comp.EnergyRequired > 0 && TryComp<BatteryComponent>(ent, out var battery))
         {
             if (battery.CurrentCharge < ent.Comp.EnergyRequired)
