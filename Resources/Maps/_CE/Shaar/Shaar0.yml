@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/13/2025 14:55:15
-  entityCount: 1322
+  time: 12/15/2025 11:26:04
+  entityCount: 1323
 maps:
 - 1
 grids:
@@ -271,6 +271,14 @@ entities:
     - type: Transform
       gridTraversal: False
       pos: 2.1983144,-4.6846976
+      parent: 1
+    - type: ViewSubscriber
+  - uid: 1323
+    components:
+    - type: MetaData
+    - type: Transform
+      gridTraversal: False
+      pos: 0.40747786,-17.440937
       parent: 1
     - type: ViewSubscriber
 - proto: CEBiomeSpawnerGrassland
@@ -2790,7 +2798,7 @@ entities:
       pos: 6.5,16.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -12123.059
+      secondsUntilStateChange: -12161.706
       state: Opening
 - proto: CEFenceWindowIron
   entities:
