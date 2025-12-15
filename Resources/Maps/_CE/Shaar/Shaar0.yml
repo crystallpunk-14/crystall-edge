@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/15/2025 11:26:04
-  entityCount: 1323
+  time: 12/15/2025 12:13:38
+  entityCount: 1324
 maps:
 - 1
 grids:
@@ -2798,7 +2798,7 @@ entities:
       pos: 6.5,16.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -12161.706
+      secondsUntilStateChange: -12202.091
       state: Opening
 - proto: CEFenceWindowIron
   entities:
@@ -4527,6 +4527,13 @@ entities:
     components:
     - type: Transform
       pos: -14.382562,3.7291644
+      parent: 1
+- proto: CESalaryPlatform
+  entities:
+  - uid: 1324
+    components:
+    - type: Transform
+      pos: -3.5,-11.5
       parent: 1
 - proto: CESeedAppleTree
   entities:

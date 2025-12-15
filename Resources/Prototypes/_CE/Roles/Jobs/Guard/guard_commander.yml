@@ -15,6 +15,10 @@
     - !type:CEAddTradingReputationSpecial
       factions:
       - EmpireGuard
+    - !type:AddComponentSpecial
+      components:
+      - type: CESalaryCounter
+        salary: 200
   #requirements:
   #  - !type:DepartmentTimeRequirement
   #    department: CEGuard
