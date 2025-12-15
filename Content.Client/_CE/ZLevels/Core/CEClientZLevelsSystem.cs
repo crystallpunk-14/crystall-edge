@@ -16,7 +16,6 @@ public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
     [Dependency] private readonly SpriteSystem _sprite = default!;
     [Dependency] private readonly IEyeManager _eye = default!;
 
-    public static float ZLevelOffset = 0.7f;
 
     public override void Initialize()
     {

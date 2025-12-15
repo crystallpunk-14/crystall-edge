@@ -30,6 +30,8 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
     private EntityQuery<CEZLevelMapComponent> _zMapQuery;
     private EntityQuery<MapGridComponent> _gridQuery;
 
+    public const float ZLevelOffset = 0.7f;
+
     public override void Initialize()
     {
         base.Initialize();
