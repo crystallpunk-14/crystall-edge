@@ -20,7 +20,7 @@ public abstract partial class CESharedZLevelsSystem
     public const int DefaultZLevelsBelowRendering = 3;
     public const int DefaultZLevelsAboveRendering = 0;
 
-    private const float ZGravityForce = 9.8f;
+    public const float ZGravityForce = 9.8f;
     private const float ZVelocityLimit = 20.0f;
 
     /// <summary>
