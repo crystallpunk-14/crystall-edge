@@ -31,8 +31,8 @@ public sealed partial class CESalarySystem : EntitySystem
         {
             if (_timing.CurTime < counter.NextSalaryTime)
                 continue;
-            counter.NextSalaryTime = _timing.CurTime + counter.Frequency;
 
+            counter.NextSalaryTime = _timing.CurTime + counter.Frequency;
             counter.UnpaidSalary += counter.Salary;
         }
     }
