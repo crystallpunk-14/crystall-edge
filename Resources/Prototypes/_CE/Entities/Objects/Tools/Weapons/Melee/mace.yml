@@ -65,5 +65,7 @@
       right:
       - state: inhand-right-charge
         shader: unshaded
+  - type: StaticPrice
+    price: 100
 
 
