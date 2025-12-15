@@ -665,6 +665,15 @@ binds:
   canFocus: true
 - function: SelectedZLayerUp
   type: State
+  key: NumpadNum3
+- function: SelectedZLayerReset
+  type: State
+  key: NumpadNum2
+- function: SelectedZLayerDown
+  type: State
+  key: NumpadNum1
+- function: SelectedZLayerUp
+  type: State
   key: NumpadAdd
   mod1: Alt
 - function: SelectedZLayerDown

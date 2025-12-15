@@ -10,6 +10,7 @@ namespace Content.Client._CE.Input
             var human = contexts.GetContext("human");
             human.AddFunction(CEContentKeyFunctions.SelectedZLayerDown);
             human.AddFunction(CEContentKeyFunctions.SelectedZLayerUp);
+            human.AddFunction(CEContentKeyFunctions.SelectedZLayerReset);
             human.AddFunction(CEContentKeyFunctions.ToggleZLayerRelation);
             human.AddFunction(CEContentKeyFunctions.OpenBelt2);
             human.AddFunction(CEContentKeyFunctions.SmartEquipBelt2);

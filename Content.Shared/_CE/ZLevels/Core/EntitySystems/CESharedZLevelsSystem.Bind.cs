@@ -15,10 +15,22 @@ public abstract partial class CESharedZLevelsSystem
         CommandBinds.Builder
             .Bind(CEContentKeyFunctions.SelectedZLayerUp, InputCmdHandler.FromDelegate(HandleSelectedZLayerUp))
             .Bind(CEContentKeyFunctions.SelectedZLayerDown, InputCmdHandler.FromDelegate(HandleSelectedZLayerDown))
+            .Bind(CEContentKeyFunctions.SelectedZLayerReset, InputCmdHandler.FromDelegate(HandleSelectedZLayerReset))
             .Bind(CEContentKeyFunctions.ToggleZLayerRelation, InputCmdHandler.FromDelegate(HandleToggleZLayerRelation))
             .Register<CESharedZLevelsSystem>();
     }
 
+    private void HandleSelectedZLayerReset(ICommonSession? playerSession)
+    {
+        if (playerSession?.AttachedEntity is not { Valid: true } player || !Exists(player))
+            return;
+        if (!TryComp<CEZLevelViewerComponent>(player, out var comp))
+            return;
+
+        var newvalue = 0;
+
+        RaisePredictiveEvent<ChangeViewedZLayerEvent>(new(GetNetEntity(player), newvalue));
+    }
     private void HandleSelectedZLayerUp(ICommonSession? playerSession)
     {
         if (playerSession?.AttachedEntity is not { Valid: true } player || !Exists(player))

@@ -324,6 +324,7 @@ namespace Content.Client.Options.UI.Tabs
             AddHeader("ui-options-header-text-ce");
             AddButton(CEContentKeyFunctions.SelectedZLayerUp);
             AddButton(CEContentKeyFunctions.SelectedZLayerDown);
+            AddButton(CEContentKeyFunctions.SelectedZLayerReset);
             AddButton(CEContentKeyFunctions.ToggleZLayerRelation);
             //CE end
 
