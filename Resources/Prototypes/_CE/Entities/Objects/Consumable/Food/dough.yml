@@ -159,7 +159,7 @@
 - type: entity
   id: CEFoodBreadBunBottom
   parent: CEFoodDoughMedium
-  name: botton bread bun
+  name: bottom bread bun
   description: It's like regular bread, only smaller and funnier. And cut in half.
   components:
   - type: Sprite
