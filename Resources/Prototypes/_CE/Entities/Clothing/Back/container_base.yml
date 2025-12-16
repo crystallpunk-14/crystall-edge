@@ -2,14 +2,13 @@
   abstract: true
   parent:
   - Clothing
-  - ContentsExplosionResistanceBase
   id: CEClothingBackContainerBase
   categories: [ ForkFiltered ]
   components:
   - type: Item
     size: Huge
   - type: Sprite
-    sprite: _CE/Clothing/Back/Backpacks/backpack_t2.rsi
+    sprite: _CE/Clothing/Back/Backpacks/backpack.rsi
     state: icon
   - type: Clothing
     equipDelay: 0.4
@@ -28,8 +27,6 @@
         ents: []
   - type: UseDelay
     delay: 0.5
-  - type: ExplosionResistance
-    damageCoefficient: 0.9
   - type: UserInterface
     interfaces:
       enum.StorageUiKey.Key:
