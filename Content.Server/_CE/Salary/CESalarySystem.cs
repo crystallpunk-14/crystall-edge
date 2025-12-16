@@ -37,7 +37,7 @@ public sealed partial class CESalarySystem : EntitySystem
     private void UpdateAccumulatedSalary(Entity<CESalaryCounterComponent> counter)
     {
         var currentTime = _timing.CurTime;
-        
+
         // If no next salary time is set, initialize it
         if (counter.Comp.NextSalaryTime == TimeSpan.Zero)
         {
@@ -56,7 +56,7 @@ public sealed partial class CESalarySystem : EntitySystem
 
         // Add accumulated salary for all elapsed periods
         counter.Comp.UnpaidSalary += counter.Comp.Salary * periodsElapsed;
-        
+
         // Update next salary time, accounting for all elapsed periods
         counter.Comp.NextSalaryTime += counter.Comp.Frequency * periodsElapsed;
     }
@@ -73,13 +73,9 @@ public sealed partial class CESalarySystem : EntitySystem
         UpdateAccumulatedSalary((args.Examiner, counter));
 
         if (counter.UnpaidSalary <= 0)
-        {
             args.PushMarkup(Loc.GetString("ce-salary-payroll-examine-empty"));
-        }
         else
-        {
             args.PushMarkup(Loc.GetString("ce-salary-payroll-examine", ("count", _currency.GetCurrencyPrettyString(counter.UnpaidSalary))));
-        }
 
         //Timer
         var remainingToSalaryTime = counter.NextSalaryTime - _timing.CurTime;

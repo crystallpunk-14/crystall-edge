@@ -242,3 +242,38 @@
   service: !type:CEBuyItemsService
     product: CESpoon
     count: 3
+
+- type: tradingPosition
+  id: CEFoodCheeseWheel
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodCheeseWheel
+    count: 1
+
+- type: tradingPosition
+  id: CEFoodBlueCheeseWheel
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodBlueCheeseWheel
+    count: 1
+
+- type: tradingPosition
+  id: CEFoodAgedCheeseWheel
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodAgedCheeseWheel
+    count: 1
+
+- type: tradingPosition
+  id: CEFoodDoughLarge
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodDoughLarge
+    count: 1
+
+- type: tradingPosition
+  id: CEFoodEgg
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodEgg
+    count: 5
