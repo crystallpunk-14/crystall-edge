@@ -277,3 +277,31 @@
   service: !type:CEBuyItemsService
     product: CEFoodEgg
     count: 5
+
+- type: tradingPosition
+  id: CEBowlWooden
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEBowlWooden
+    count: 1
+
+- type: tradingPosition
+  id: CEBowlIron
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEBowlIron
+    count: 1
+
+- type: tradingPosition
+  id: CEPlateWooden
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEPlateWooden
+    count: 1
+
+- type: tradingPosition
+  id: CEPlateIron
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEPlateIron
+    count: 1
