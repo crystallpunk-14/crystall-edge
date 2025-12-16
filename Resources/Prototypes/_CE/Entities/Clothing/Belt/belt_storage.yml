@@ -10,7 +10,7 @@
     equipDelay: 0.8
     unequipDelay: 0.3
   - type: Sprite
-    sprite: _CE/Clothing/Belt/backpack_t0.rsi
+    sprite: _CE/Clothing/Belt/sack.rsi
   - type: Storage
     grid: # 15
     - 0,0,4,1 # 5*2=10
@@ -27,7 +27,7 @@
     slots:
     - belt
   - type: Sprite
-    sprite: _CE/Clothing/Belt/satchel_t0.rsi
+    sprite: _CE/Clothing/Belt/pouch.rsi
   - type: Storage
     grid: # 14
     - 0,0,1,1 # 2x2=4

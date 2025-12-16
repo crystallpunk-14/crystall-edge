@@ -316,7 +316,7 @@
   equipment:
     shoes: CEClothingShoesLongLeatherBoots
 
-#Bag
+# Bags
 
 - type: loadoutGroup
   id: CEGeneralBag
