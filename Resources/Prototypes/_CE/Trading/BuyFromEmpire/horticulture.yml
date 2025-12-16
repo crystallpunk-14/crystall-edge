@@ -1,11 +1,4 @@
 - type: tradingPosition
-  id: CETradeContractHorticulture
-  faction: Horticulture
-  service: !type:CEBuyItemsService
-    product: CETradeContractHorticulture
-    count: 1
-
-- type: tradingPosition
   id: CEWheat
   faction: Horticulture
   service: !type:CEBuyItemsService
