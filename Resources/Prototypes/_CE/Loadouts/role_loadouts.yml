@@ -10,6 +10,7 @@
   - CEGeneralShirt
   - CEGeneralPants
   - CEGeneralShoes
+  - CEGeneralBag
 
 - type: roleLoadout
   id: JobCEChef
@@ -20,6 +21,7 @@
   - CEGeneralShirt
   - CEGeneralPants
   - CEGeneralShoes
+  - CEGeneralBag
 
 # Guard
 
@@ -33,6 +35,7 @@
   - CEGuardShirt
   - CEGuardPants
   - CEGeneralShoes
+  - CEGeneralBag
 
 - type: roleLoadout
   id: JobCEInvestigator
@@ -44,7 +47,7 @@
   - CEGuardShirt
   - CEGuardPants
   - CEGeneralShoes
-  #- CEGeneralBack
+  - CEGeneralBag
 
 - type: roleLoadout
   id: JobCEGuard
@@ -56,6 +59,7 @@
   - CEGuardShirt
   - CEGuardPants
   - CEGeneralShoes
+  - CEGeneralBag
 
 # Citizens
 
@@ -66,6 +70,7 @@
   - CEGeneralShirt
   - CEGeneralPants
   - CEGeneralShoes
+  - CEGeneralBag
 
 - type: roleLoadout
   id: JobCEBard
@@ -75,3 +80,4 @@
   - CEBardPants
   - CEBardShoes
   - CEBardTool
+  - CEGeneralBag
