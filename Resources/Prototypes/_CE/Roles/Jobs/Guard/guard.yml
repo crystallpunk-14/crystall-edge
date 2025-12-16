@@ -12,6 +12,10 @@
     - !type:CEAddTradingReputationSpecial
       factions:
       - EmpireGuard
+    - !type:AddComponentSpecial
+      components:
+      - type: CESalaryCounter
+        salary: 50
 
 - type: startingGear
   id: CEGuardGear

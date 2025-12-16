@@ -2,7 +2,7 @@
   parent:
   - BaseStructure
   id: CETradingPlatform
-  name: buying dimensional platform
+  name: buying platform
   description: Allows you to trade with the outside world, through retail trade transactions.
   categories: [ ForkFiltered ]
   components:
@@ -55,7 +55,7 @@
 - type: entity
   parent: BaseStructure
   id: CETradingSellingPlatform
-  name: selling dimensional platform
+  name: selling platform
   description: Allows you to sell any items and structures to the outside world. Fill the platform completely with mana to sell whatever you place on it.
   categories: [ ForkFiltered ]
   components:
@@ -114,44 +114,44 @@
         !type:CableDeviceNode
         nodeGroupID: Apc
 
-#- type: entity
-#  parent: BaseStructure
-#  id: CESalaryPlatform
-#  name: salary dimensional platform
-#  description: allows you to quickly receive the salary you are entitled to (if, of course, you are supposed to receive a salary from the empire)
-#  categories: [ ForkFiltered ]
-#  components:
-#  - type: PlacementReplacement
-#    key: walls
-#  - type: Sprite
-#    drawdepth: FloorTiles
-#    snapCardinals: true
-#    sprite: _CE/Structures/Industrial/buy_platform.rsi
-#    layers:
-#    - state: base
-#    - state: salary
-#  - type: Clickable
-#  - type: InteractionOutline
-#  - type: CESalaryPairoll
-#  - type: PlaceableSurface
-#  - type: ItemPlacer
-#    maxEntities: 0
-#    whitelist:
-#      tags:
-#      - CECoin
-#  - type: Fixtures
-#    fixtures:
-#      fix1:
-#        shape:
-#          !type:PhysShapeAabb
-#          bounds: "-0.4,-0.4,0.4,0.4"
-#        mask:
-#        - TabletopMachineMask
-#        layer:
-#        - Impassable
-#        - MidImpassable
-#        - LowImpassable
-#        hard: false
+- type: entity
+  parent: BaseStructure
+  id: CESalaryPlatform
+  name: salary platform
+  description: Allows you to quickly receive the salary you are entitled to (if, of course, you are supposed to receive a salary from the empire)
+  categories: [ ForkFiltered ]
+  components:
+  - type: PlacementReplacement
+    key: walls
+  - type: Sprite
+    drawdepth: FloorTiles
+    snapCardinals: true
+    sprite: _CE/Structures/Industrial/buy_platform.rsi
+    layers:
+    - state: base
+    - state: salary
+  - type: Clickable
+  - type: InteractionOutline
+  - type: CESalaryPayroll
+  - type: PlaceableSurface
+  - type: ItemPlacer
+    maxEntities: 0
+    whitelist:
+      tags:
+      - CECoin
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        mask:
+        - TabletopMachineMask
+        layer:
+        - Impassable
+        - MidImpassable
+        - LowImpassable
+        hard: false
 
 - type: entity
   id: CECashImpact

@@ -1,0 +1,124 @@
+# Base
+
+- type: entity
+  parent: [FoodInjectableBase, ItemHeftyBase]
+  id: CEFoodEggBase
+  description: An egg!
+  abstract: true
+  categories: [ ForkFiltered ]
+  components:
+  - type: Edible
+    trash:
+    - CEEggshells
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Food/egg.rsi
+    state: brown
+  - type: Item
+    size: Tiny
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 6
+        reagents:
+        - ReagentId: Egg
+          Quantity: 6
+        - ReagentId: Protein
+          Quantity: 2
+  - type: DrawableSolution
+    solution: food
+  # egg fragile
+  - type: DamageOnHighSpeedImpact
+    minimumSpeed: 0.1
+    damage:
+      types:
+        Blunt: 1
+  - type: Damageable
+    damageContainer: Biological
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: desecration
+      - !type:SpillBehavior
+        solution: food
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEEggshells:
+            min: 1
+            max: 1
+          # Wow double-yolk you're so lucky!
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Temperature
+    currentTemperature: 290
+  - type: InternalTemperature
+    # ~1mm shell and ~1cm of albumen
+    thickness: 0.011
+    area: 0.04
+    # conductivity of egg shell based on a paper from Romanoff and Romanoff (1949)
+    conductivity: 0.456
+  - type: Tag
+    tags:
+    - CEEgg
+    - CEFitInFryingPan
+
+# Splat
+- type: entity
+  name: eggshells
+  parent: BaseItem
+  id: CEEggshells
+  description: You're walkin' on 'em bud.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Edible
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Food/egg.rsi
+    state: brown_shell
+  - type: Item
+    size: Tiny
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 2
+        reagents:
+        - ReagentId: Egg
+          Quantity: 1
+
+- type: entity
+  parent: CEFoodEggBase
+  id: CEFoodEgg
+  name: egg
+  components:
+  - type: Sprite
+    layers:
+      - state: icon
+        map: [ "random" ]
+  - type: RandomSprite
+    available:
+      - random:
+          brown: ""
+          icon: ""
+  - type: CETemperatureTransformation
+    entries:
+    - temperatureRange: 400, 500
+      transformTo: CEFoodEgg
+
+- type: entity
+  id: CEFoodEggCooked
+  parent: CEFoodEgg
+  name: cooked egg
+  components:
+  - type: Edible
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 6
+        reagents:
+        - ReagentId: EggCooked
+          Quantity: 6
+        - ReagentId: Protein
+          Quantity: 2

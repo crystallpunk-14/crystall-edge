@@ -25,7 +25,7 @@
   - type: Material
   - type: PhysicalComposition
     materialComposition:
-      CEIron: 2
+      CEIron: 1
 
 - type: entity
   id: CEIronOre10

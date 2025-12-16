@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/13/2025 14:55:15
-  entityCount: 454
+  time: 12/16/2025 13:54:35
+  entityCount: 458
 maps:
 - 1
 grids:
@@ -303,6 +303,14 @@ entities:
       pos: -1.5130261,-12.370946
       parent: 1
     - type: ViewSubscriber
+  - uid: 232
+    components:
+    - type: MetaData
+    - type: Transform
+      gridTraversal: False
+      pos: 23.29096,-5.5945244
+      parent: 1
+    - type: ViewSubscriber
   - uid: 316
     components:
     - type: MetaData
@@ -365,6 +373,30 @@ entities:
     - type: Transform
       gridTraversal: False
       pos: -17.707325,-9.622794
+      parent: 1
+    - type: ViewSubscriber
+  - uid: 455
+    components:
+    - type: MetaData
+    - type: Transform
+      gridTraversal: False
+      pos: 0.40747786,-17.440937
+      parent: 1
+    - type: ViewSubscriber
+  - uid: 456
+    components:
+    - type: MetaData
+    - type: Transform
+      gridTraversal: False
+      pos: -0.7249419,-15.684632
+      parent: 1
+    - type: ViewSubscriber
+  - uid: 457
+    components:
+    - type: MetaData
+    - type: Transform
+      gridTraversal: False
+      pos: 4.195055,13.572957
       parent: 1
     - type: ViewSubscriber
 - proto: CECrystalGrowths
@@ -656,9 +688,9 @@ entities:
     - type: Transform
       pos: -17.5,-6.5
       parent: 1
-- proto: CESmallWoodenCrate
+- proto: CESmallWoodenCrateFilled
   entities:
-  - uid: 232
+  - uid: 458
     components:
     - type: Transform
       rot: 1.5707963267948966 rad

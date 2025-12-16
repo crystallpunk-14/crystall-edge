@@ -1,0 +1,242 @@
+- type: entity
+  id: CEFoodDoughLarge
+  parent: FoodInjectableBase
+  name: large piece of dough
+  description: The perfect ingredient for any flour product. The only thing left to do is to shape it.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Normal
+  - type: Temperature
+  - type: FlavorProfile
+    flavors:
+      - bread #TODO smth disguisting. raw dough
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Food/dough.rsi
+    state: dough_large
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 25
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 20
+        - ReagentId: UncookedAnimalProteins
+          Quantity: 2
+  - type: SliceableFood
+    count: 4
+    slice: CEFoodDoughMedium
+  - type: CETemperatureTransformation
+    entries:
+    - temperatureRange: 400, 500
+      transformTo: CEFoodBread
+  - type: Tag
+    tags:
+    - CEDough
+
+- type: entity
+  id: CEFoodBread
+  parent: CEFoodDoughLarge
+  name: bread
+  description: Crispy and so flavourful!
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Food/dough.rsi
+    state: bread_cooked
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 20
+        - ReagentId: Protein
+          Quantity: 2
+  - type: SliceableFood
+    count: 4
+    slice: CEFoodBreadSlice
+  - type: CETemperatureTransformation
+    autoTransformOnCooked: false
+    entries:
+    - temperatureRange: 400, 500
+      transformTo: CEAsh1
+  - type: Tag
+    tags:
+    - CEDough
+
+- type: entity
+  id: CEFoodBreadSlice
+  parent: CEFoodDoughMedium
+  name: bread slice
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Food/dough.rsi
+    state: bread_slice
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 7 # 1/4 bread
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
+        - ReagentId: Protein
+          Quantity: 0.5
+  - type: CETemperatureTransformation
+    autoTransformOnCooked: false
+    entries:
+    - temperatureRange: 400, 500
+      transformTo: null
+  - type: Tag
+    tags:
+    - CEDough
+
+- type: entity
+  id: CEFoodDoughMedium
+  parent: FoodInjectableBase
+  name: medium piece of dough
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Tiny
+  - type: Temperature
+  - type: FlavorProfile
+    flavors:
+      - bread #TODO smth disguisting. raw dough
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Food/dough.rsi
+    state: dough_medium
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 7 # 1/4 large dough
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
+        - ReagentId: UncookedAnimalProteins
+          Quantity: 0.5
+  - type: CETemperatureTransformation
+    entries:
+    - temperatureRange: 400, 500
+      transformTo: CEFoodBreadBun
+  - type: Tag
+    tags:
+    - CEDough
+
+- type: entity
+  id: CEFoodBreadBun
+  parent: CEFoodDoughMedium
+  name: bread bun
+  description: it's like regular bread, only smaller and funnier.
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Food/dough.rsi
+    state: bun_cooked
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 6 # 1/4 large dough
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5.2
+        - ReagentId: Protein
+          Quantity: 0.5
+  - type: Butcherable
+    butcherDelay: 1
+    spawned:
+      - id: CEFoodBreadBunBottom
+        amount: 1
+      - id: CEFoodBreadBunTop
+        amount: 1
+  - type: CETemperatureTransformation
+    autoTransformOnCooked: false
+    entries:
+    - temperatureRange: 400, 500
+      transformTo: CEAsh1
+  - type: Tag
+    tags:
+    - CEDough
+
+- type: entity
+  id: CEFoodBreadBunBottom
+  parent: CEFoodDoughMedium
+  name: bottom bread bun
+  description: It's like regular bread, only smaller and funnier. And cut in half.
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Food/dough.rsi
+    layers:
+    - state: bun_cooked_slice_bottom
+  - type: Appearance
+  - type: FoodMetamorphableByAdding
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 4 # 1/2 bun
+        canReact: false
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 2.6
+        - ReagentId: Protein
+          Quantity: 0.25
+  - type: CETemperatureTransformation
+    autoTransformOnCooked: false
+    entries:
+    - temperatureRange: 400, 500
+      transformTo: CEAsh1
+  - type: Tag
+    tags:
+    - CEDough
+
+- type: entity
+  id: CEFoodBreadBunTop
+  parent: CEFoodDoughMedium
+  name: top bread bun
+  description: It's like regular bread, only smaller and funnier. And cut in half.
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Food/dough.rsi
+    state: bun_cooked_slice_top
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 4 # 1/2 bun
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 2.6
+        - ReagentId: Protein
+          Quantity: 0.25
+  - type: CETemperatureTransformation
+    autoTransformOnCooked: false
+    entries:
+    - temperatureRange: 400, 500
+      transformTo: CEAsh1
+  - type: Tag
+    tags:
+    - CEDough
+
+- type: entity
+  id: CEFoodDoughMediumFlat
+  parent: CEFoodDoughMedium
+  name: rolled dough
+  components:
+  - type: Item
+    size: Normal
+  - type: Sprite
+    state: dough_medium_flat
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 7 # 1/4 large dough
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
+        - ReagentId: UncookedAnimalProteins
+          Quantity: 0.5
+  - type: CETemperatureTransformation
+    autoTransformOnCooked: false
+    entries:
+    - temperatureRange: 400, 500
+      transformTo: CEAsh1 #TODO: лаваш?
+  - type: Tag
+    tags:
+    - CEDough

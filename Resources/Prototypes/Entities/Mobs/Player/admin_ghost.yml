@@ -113,6 +113,7 @@
   # CrystallEdge
   - type: CEZLevelGhostMover
   - type: CEShowVampireIcons
+  - type: CETradingReputation
 
 - type: entity
   abstract: true

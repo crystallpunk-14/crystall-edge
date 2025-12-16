@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/13/2025 14:55:16
-  entityCount: 1603
+  time: 12/16/2025 13:54:35
+  entityCount: 1607
 maps:
 - 1
 grids:
@@ -222,6 +222,22 @@ entities:
     - type: Transform
       gridTraversal: False
       pos: -1.5130261,-12.370946
+      parent: 1
+    - type: ViewSubscriber
+  - uid: 1604
+    components:
+    - type: MetaData
+    - type: Transform
+      gridTraversal: False
+      pos: -0.7249419,-15.684632
+      parent: 1
+    - type: ViewSubscriber
+  - uid: 1606
+    components:
+    - type: MetaData
+    - type: Transform
+      gridTraversal: False
+      pos: 4.195055,13.572957
       parent: 1
     - type: ViewSubscriber
 - proto: CEArrivalsDockPointMarker
@@ -764,7 +780,7 @@ entities:
       pos: -26.5,-9.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -7340.126
+      secondsUntilStateChange: -8151.595
       state: Opening
 - proto: CEFenceWooden
   entities:
@@ -2316,21 +2332,6 @@ entities:
       parent: 1
 - proto: CERope
   entities:
-  - uid: 1014
-    components:
-    - type: Transform
-      pos: 1.3718073,-18.261274
-      parent: 1
-  - uid: 1015
-    components:
-    - type: Transform
-      pos: 1.4730393,-18.384962
-      parent: 1
-  - uid: 1016
-    components:
-    - type: Transform
-      pos: 1.5517759,-18.50865
-      parent: 1
   - uid: 1017
     components:
     - type: Transform
@@ -2360,6 +2361,13 @@ entities:
     components:
     - type: Transform
       pos: 2.6653268,-18.542383
+      parent: 1
+- proto: CESmallWoodenCrateFilled
+  entities:
+  - uid: 1607
+    components:
+    - type: Transform
+      pos: -7.5,-19.5
       parent: 1
 - proto: CESpawnPointBard
   entities:
@@ -8471,6 +8479,24 @@ entities:
     - type: Transform
       pos: 5.5,-6.5
       parent: 1
+- proto: CEWeaponMaceTwoHandedGuardrail
+  entities:
+  - uid: 1014
+    components:
+    - type: Transform
+      pos: 1.5266528,-18.194311
+      parent: 1
+  - uid: 1015
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 1.4929093,-18.340487
+      parent: 1
+  - uid: 1016
+    components:
+    - type: Transform
+      pos: 1.5491494,-18.55413
+      parent: 1
 - proto: CEWeaponPickaxeIron
   entities:
   - uid: 730
@@ -8762,6 +8788,13 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -24.5,7.5
+      parent: 1
+- proto: Lantern
+  entities:
+  - uid: 1605
+    components:
+    - type: Transform
+      pos: 12.271603,-0.32623821
       parent: 1
 - proto: SpawnPointLatejoin
   entities:

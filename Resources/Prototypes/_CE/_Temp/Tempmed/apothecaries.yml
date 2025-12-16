@@ -2,6 +2,7 @@
   id: ApothecariesGuild
   color: "#749a94"
   name: ce-trade-faction-apothecaries-guild
+  roundStart: true
 
 - type: entity
   parent: CETradeContractBase
@@ -13,21 +14,6 @@
     state: apothecaries
   - type: CETradingContract
     faction: ApothecariesGuild
-
-- type: tradingPosition
-  id: CETradeContractApothecariesGuild
-  faction: ApothecariesGuild
-  service: !type:CEBuyItemsService
-    product: CETradeContractApothecariesGuild
-    count: 1
-
-- type: tradingPosition
-  id: CETradeContractApothecariesGuildRoundstart
-  priceMarkup: 20
-  faction: Contracts
-  service: !type:CEBuyItemsService
-    product: CETradeContractApothecariesGuild
-    count: 1
 
 - type: tradingPosition
   id: CEGauze5

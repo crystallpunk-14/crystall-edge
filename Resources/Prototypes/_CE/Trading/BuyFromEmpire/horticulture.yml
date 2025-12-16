@@ -1,11 +1,4 @@
 - type: tradingPosition
-  id: CETradeContractHorticulture
-  faction: Horticulture
-  service: !type:CEBuyItemsService
-    product: CETradeContractHorticulture
-    count: 1
-
-- type: tradingPosition
   id: CEWheat
   faction: Horticulture
   service: !type:CEBuyItemsService
@@ -242,3 +235,66 @@
   service: !type:CEBuyItemsService
     product: CESpoon
     count: 3
+
+- type: tradingPosition
+  id: CEFoodCheeseWheel
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodCheeseWheel
+    count: 1
+
+- type: tradingPosition
+  id: CEFoodBlueCheeseWheel
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodBlueCheeseWheel
+    count: 1
+
+- type: tradingPosition
+  id: CEFoodAgedCheeseWheel
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodAgedCheeseWheel
+    count: 1
+
+- type: tradingPosition
+  id: CEFoodDoughLarge
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodDoughLarge
+    count: 1
+
+- type: tradingPosition
+  id: CEFoodEgg
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodEgg
+    count: 5
+
+- type: tradingPosition
+  id: CEBowlWooden
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEBowlWooden
+    count: 1
+
+- type: tradingPosition
+  id: CEBowlIron
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEBowlIron
+    count: 1
+
+- type: tradingPosition
+  id: CEPlateWooden
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEPlateWooden
+    count: 1
+
+- type: tradingPosition
+  id: CEPlateIron
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEPlateIron
+    count: 1

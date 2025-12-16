@@ -7,8 +7,6 @@
   components:
   - type: Item
     size: Normal
-    shape:
-    - 0,0,1,2 # 2x3
   - type: Sprite
     sprite: _CE/Objects/Materials/wood.rsi
     layers:
