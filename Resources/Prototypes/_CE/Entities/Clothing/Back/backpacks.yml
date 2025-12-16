@@ -29,12 +29,14 @@
 - type: entity
   parent: CEClothingBackBackpackBase
   id: CEClothingBackBackpack
-  name: Backpack
+  name: backpack
   description: A standard backpack with decent storage space. Perfect for everyday use. It covers your back from blows!
   components:
   - type: Clothing
     slots:
     - back
+    equipDelay: 1.5
+    unequipDelay: 2
   - type: Sprite
     sprite: _CE/Clothing/Back/Backpacks/backpack.rsi
   - type: Storage
@@ -49,21 +51,23 @@
 - type: entity
   parent: CEClothingBackSatchelBase
   id: CEClothingBackSatchel
-  name: Rustic Satchel
+  name: rustic satchel
   description: A handcrafted leather satchel with rustic charm. Provides modest storage with traditional styling. Can be worn on the over the shoulder.
   components:
   - type: Clothing
     slots:
     - back
+    equipDelay: 1.5
+    unequipDelay: 2
   - type: Sprite
     sprite: _CE/Clothing/Back/Satchel/satchel.rsi
   - type: Storage
     grid: # 32
-    - 0,1,1,3 # 2x3=6
-    - 3,0,3,3 # 1x4=4
+    - 0,0,0,3 # 1x4=4
+    - 2,1,3,3 # 2x3=6
     - 5,0,7,3 # 3x4=12
-    - 9,0,9,3 # 1x4=4
-    - 11,1,12,3 # 2x3=6
+    - 9,1,10,3 # 2x3=6
+    - 12,0,12,3 # 1x4=4
   - type: PhysicalComposition
     materialComposition:
       CELeather: 15 # 15u CELeather (3x5u)

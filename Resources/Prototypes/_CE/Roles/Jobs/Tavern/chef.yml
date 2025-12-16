@@ -13,7 +13,7 @@
   id: CEChefGear
   equipment:
     keys: CEKeyRingChef
-    belt: CEWalletFilledChef
+    pocket1: CEWalletFilledChef
 
 
 - type: entity
