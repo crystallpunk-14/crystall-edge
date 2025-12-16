@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/16/2025 10:41:49
-  entityCount: 897
+  time: 12/16/2025 13:54:35
+  entityCount: 908
 maps:
 - 1
 grids:
@@ -1112,13 +1112,33 @@ entities:
       rot: 3.141592653589793 rad
       pos: -2.5,5.5
       parent: 1
-- proto: CELargeWoodenCrate
+- proto: CELargeWoodenCrateFilled
   entities:
-  - uid: 730
+  - uid: 731
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -0.5,-10.5
+      parent: 1
+  - uid: 732
+    components:
+    - type: Transform
+      pos: 9.5,-11.5
+      parent: 1
+  - uid: 898
+    components:
+    - type: Transform
+      pos: -6.5,7.5
+      parent: 1
+  - uid: 905
+    components:
+    - type: Transform
+      pos: -2.5,-16.5
+      parent: 1
+  - uid: 908
+    components:
+    - type: Transform
+      pos: -27.5,4.5
       parent: 1
 - proto: CEPaper
   entities:
@@ -1928,17 +1948,59 @@ entities:
       fixtures: {}
 - proto: CESmallWoodenCrate
   entities:
-  - uid: 731
+  - uid: 907
+    components:
+    - type: Transform
+      pos: -22.5,3.5
+      parent: 1
+- proto: CESmallWoodenCrateFilled
+  entities:
+  - uid: 278
+    components:
+    - type: Transform
+      pos: -22.5,4.5
+      parent: 1
+  - uid: 730
+    components:
+    - type: Transform
+      pos: -5.5,7.5
+      parent: 1
+  - uid: 899
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -3.5,-11.5
       parent: 1
-  - uid: 732
+  - uid: 900
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -0.5,-16.5
+      parent: 1
+  - uid: 901
+    components:
+    - type: Transform
+      pos: 8.5,-11.5
+      parent: 1
+  - uid: 902
+    components:
+    - type: Transform
+      pos: 9.5,-12.5
+      parent: 1
+  - uid: 903
+    components:
+    - type: Transform
+      pos: 7.5,-11.5
+      parent: 1
+  - uid: 904
+    components:
+    - type: Transform
+      pos: 0.5,-10.5
+      parent: 1
+  - uid: 906
+    components:
+    - type: Transform
+      pos: -23.5,3.5
       parent: 1
 - proto: CESpawnPointGuardCommander
   entities:
@@ -2306,11 +2368,6 @@ entities:
       parent: 1
 - proto: CETarget
   entities:
-  - uid: 278
-    components:
-    - type: Transform
-      pos: 9.5,-11.5
-      parent: 1
   - uid: 304
     components:
     - type: Transform

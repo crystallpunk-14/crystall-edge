@@ -6,6 +6,8 @@
   categories: [ ForkFiltered ]
   abstract: true
   components:
+  - type: Item
+    size: Normal
   - type: Stack
     count: 1
   - type: Sprite

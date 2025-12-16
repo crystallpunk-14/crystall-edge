@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/16/2025 10:41:49
-  entityCount: 457
+  time: 12/16/2025 13:54:35
+  entityCount: 458
 maps:
 - 1
 grids:
@@ -301,6 +301,14 @@ entities:
     - type: Transform
       gridTraversal: False
       pos: -1.5130261,-12.370946
+      parent: 1
+    - type: ViewSubscriber
+  - uid: 232
+    components:
+    - type: MetaData
+    - type: Transform
+      gridTraversal: False
+      pos: 23.29096,-5.5945244
       parent: 1
     - type: ViewSubscriber
   - uid: 316
@@ -680,9 +688,9 @@ entities:
     - type: Transform
       pos: -17.5,-6.5
       parent: 1
-- proto: CESmallWoodenCrate
+- proto: CESmallWoodenCrateFilled
   entities:
-  - uid: 232
+  - uid: 458
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
