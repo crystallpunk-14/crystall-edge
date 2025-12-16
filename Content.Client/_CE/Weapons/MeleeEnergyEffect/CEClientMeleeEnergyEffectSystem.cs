@@ -17,48 +17,48 @@ public sealed class CEClientMeleeEnergyEffectSystem : CESharedMeleeEnergyEffectS
 
         Subs.ItemStatus<CEMeleeEnergyEffectComponent>(ent => new CEMeleeEnergyEffectStatusControl(ent));
     }
+}
 
-    public sealed class CEMeleeEnergyEffectStatusControl : Control
+public sealed class CEMeleeEnergyEffectStatusControl : Control
+{
+    private readonly Entity<CEMeleeEnergyEffectComponent> _parent;
+    private readonly BatteryBulletRenderer _bullets;
+    private readonly Label _ammoCount;
+
+    public CEMeleeEnergyEffectStatusControl(Entity<CEMeleeEnergyEffectComponent> parent)
     {
-        private readonly Entity<CEMeleeEnergyEffectComponent> _parent;
-        private readonly BatteryBulletRenderer _bullets;
-        private readonly Label _ammoCount;
+        _parent = parent;
+        MinHeight = 15;
+        HorizontalExpand = true;
+        VerticalAlignment = VAlignment.Center;
 
-        public CEMeleeEnergyEffectStatusControl(Entity<CEMeleeEnergyEffectComponent> parent)
+        AddChild(new BoxContainer
         {
-            _parent = parent;
-            MinHeight = 15;
-            HorizontalExpand = true;
-            VerticalAlignment = VAlignment.Center;
-
-            AddChild(new BoxContainer
+            Orientation = BoxContainer.LayoutOrientation.Horizontal,
+            Children =
             {
-                Orientation = BoxContainer.LayoutOrientation.Horizontal,
-                Children =
+                (_bullets = new BatteryBulletRenderer
                 {
-                    (_bullets = new BatteryBulletRenderer
-                    {
-                        Margin = new Thickness(0, 0, 5, 0),
-                        HorizontalExpand = true
-                    }),
-                    (_ammoCount = new Label
-                    {
-                        StyleClasses = { StyleClass.ItemStatus },
-                        HorizontalAlignment = HAlignment.Right,
-                        VerticalAlignment = VAlignment.Bottom
-                    }),
-                }
-            });
-        }
+                    Margin = new Thickness(0, 0, 5, 0),
+                    HorizontalExpand = true
+                }),
+                (_ammoCount = new Label
+                {
+                    StyleClasses = { StyleClass.ItemStatus },
+                    HorizontalAlignment = HAlignment.Right,
+                    VerticalAlignment = VAlignment.Bottom
+                }),
+            }
+        });
+    }
 
-        protected override void FrameUpdate(FrameEventArgs args)
-        {
-            _ammoCount.Visible = true;
+    protected override void FrameUpdate(FrameEventArgs args)
+    {
+        _ammoCount.Visible = true;
 
-            _ammoCount.Text = $"x{ _parent.Comp.Hits:00}";
+        _ammoCount.Text = $"x{ _parent.Comp.Hits:00}";
 
-            _bullets.Capacity = _parent.Comp.Capacity;
-            _bullets.Count = _parent.Comp.Hits;
-        }
+        _bullets.Capacity = _parent.Comp.Capacity;
+        _bullets.Count = _parent.Comp.Hits;
     }
 }
