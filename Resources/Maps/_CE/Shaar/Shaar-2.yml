@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/15/2025 12:13:38
-  entityCount: 456
+  time: 12/16/2025 10:41:49
+  entityCount: 457
 maps:
 - 1
 grids:
@@ -381,6 +381,14 @@ entities:
     - type: Transform
       gridTraversal: False
       pos: -0.7249419,-15.684632
+      parent: 1
+    - type: ViewSubscriber
+  - uid: 457
+    components:
+    - type: MetaData
+    - type: Transform
+      gridTraversal: False
+      pos: 4.195055,13.572957
       parent: 1
     - type: ViewSubscriber
 - proto: CECrystalGrowths
