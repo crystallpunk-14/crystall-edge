@@ -625,3 +625,29 @@
   service: !type:CEBuyItemsService
     product: CEClothingShirtMerchant
     count: 1
+
+# Bags
+
+- type: tradingPosition
+  id: CEClothingBeltPouch
+  priceMarkup: 25
+  faction: Tailors
+  service: !type:CEBuyItemsService
+    product: CEClothingBeltPouch
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingBackBackpack
+  priceMarkup: 25
+  faction: Tailors
+  service: !type:CEBuyItemsService
+    product: CEClothingBackBackpack
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingBackSatchel
+  priceMarkup: 25
+  faction: Tailors
+  service: !type:CEBuyItemsService
+    product: CEClothingBackSatchel
+    count: 1

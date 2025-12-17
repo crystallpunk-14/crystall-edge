@@ -20,6 +20,12 @@
     equipDelay: 1
     unequipDelay: 1.5
     equipWhileMoving: true
+    slots:
+    - neck
+  - type: Item
+    size: Ginormous
+    shape:
+    - 0, 0, 4, 1 # 2x5
   - type: HitscanBatteryAmmoProvider
     proto: CEPeaceKeeperHitscan
     fireCost: 10

@@ -43,6 +43,14 @@
   price: 0.3
 
 - type: material
+  id: CELeather
+  name: ce-material-leather
+  unit: materials-unit-roll
+  icon: { sprite: _CE/Objects/Materials/leather.rsi, state: leather }
+  color: "#a78a63"
+  price: 1.2
+
+- type: material
   id: CEIron
   stackEntity: CEIronScrap1
   name: ce-material-iron

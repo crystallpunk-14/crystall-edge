@@ -13,7 +13,7 @@
   id: CEBartenderGear
   equipment:
     keys: CEKeyRingBartender
-    belt: CEWalletFilledBartender
+    pocket1: CEWalletFilledBartender
 
 
 - type: entity

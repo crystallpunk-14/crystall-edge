@@ -38,7 +38,7 @@
   - type: Clothing
     slots: [belt]
   - type: Item
-    size: Normal
+    size: Small
   #- type: Butcherable
   #  butcheringType: Knife
   #  spawned:

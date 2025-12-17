@@ -25,7 +25,8 @@
   id: CEInvestigatorGear
   equipment:
     keys: CEKeyRingInvestigator
-    belt: CEWalletFilledInvestigator
+    pocket1: CEWalletFilledInvestigator
+    belt2: CEGunJustice
 
 
 - type: entity

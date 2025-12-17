@@ -4,6 +4,7 @@ ce-stack-wood-planks = деревянные доски
 ce-stack-cloth = рулоны ткани
 ce-stack-flora = пучки травы
 ce-stack-nails = гвозди
+ce-stack-leather = кожа
 
 ce-stack-iron-bars = железные слитки
 ce-stack-brass-bars = латунные слитки

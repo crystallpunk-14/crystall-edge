@@ -16,7 +16,7 @@
   id: CETavernmasterGear
   equipment:
     keys: CEKeyRingTavernmaster
-    belt: CEWalletFilledTavernmaster
+    pocket1: CEWalletFilledTavernmaster
 
 
 - type: entity

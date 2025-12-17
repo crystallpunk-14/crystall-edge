@@ -12,7 +12,7 @@
 - type: startingGear
   id: CEBardGear
   equipment:
-    belt: CEWalletFilledBard
+    pocket1: CEWalletFilledBard
 
 - type: entity
   id: CEWalletFilledBard

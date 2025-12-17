@@ -12,7 +12,7 @@
 - type: startingGear
   id: CETownfolkGear
   equipment:
-    belt: CEWalletFilledTownfolk
+    pocket1: CEWalletFilledTownfolk
 
 - type: entity
   id: CEWalletFilledTownfolk

@@ -28,7 +28,8 @@
   id: CEGuardCommanderGear
   equipment:
     keys: CEKeyRingGuardCommander
-    belt: CEWalletFilledGuardCommander
+    pocket1: CEWalletFilledGuardCommander
+    belt2: CEGunJustice
 
 - type: entity
   id: CEWalletFilledGuardCommander

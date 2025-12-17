@@ -65,10 +65,3 @@
   service: !type:CEBuyItemsService
     product: CEDirtBlock10
     count: 1
-
-- type: tradingPosition
-  id: ClothingBackpackSalvage #TODO remove vanilla lantern and replace with CE lantern
-  faction: DwarfMiners
-  service: !type:CEBuyItemsService
-    product: ClothingBackpackSalvage
-    count: 1

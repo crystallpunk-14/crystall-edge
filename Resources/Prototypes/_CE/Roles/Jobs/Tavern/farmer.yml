@@ -13,7 +13,7 @@
   id: CEFarmerGear
   equipment:
     keys: CEKeyRingFarmer
-    belt: CEWalletFilledFarmer
+    pocket1: CEWalletFilledFarmer
 
 
 - type: entity

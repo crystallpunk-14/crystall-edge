@@ -21,7 +21,8 @@
   id: CEGuardGear
   equipment:
     keys: CEKeyRingGuard
-    belt: CEWalletFilledGuard
+    pocket1: CEWalletFilledGuard
+    belt2: CEGunJustice
 
 
 - type: entity

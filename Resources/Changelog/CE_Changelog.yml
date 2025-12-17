@@ -11,4 +11,15 @@
     type: Fix
   id: 1000
   time: '2025-06-02T18:40:15.0000000+00:00'
+  url: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+- author: TheShuEd
+  changes:
+  - message: Increase salary frequency for guards from 20 minutes to 12 munutes
+    type: Tweak
+  - message: Fixed lighting and fences on the Arrivals ship and map
+    type: Fix
+  - message: The roof of the guard building is now locked on the Shaar map.
+    type: Fix
+  id: 1002
+  time: '2025-06-06T18:40:15.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-punk-14/pull/1359
