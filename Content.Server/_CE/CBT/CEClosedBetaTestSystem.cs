@@ -55,7 +55,7 @@ public sealed partial class CEClosedBetaTestSystem : EntitySystem
     {
         var curLang = _cfg.GetCVar(CCVars.ServerLanguage);
 
-        var ruDays = now.DayOfWeek is DayOfWeek.Tuesday || now.DayOfWeek is DayOfWeek.Thursday || now.DayOfWeek is DayOfWeek.Saturday;
+        var ruDays = now.DayOfWeek is DayOfWeek.Tuesday or DayOfWeek.Thursday or DayOfWeek.Saturday;
 
         if (ruDays && curLang != "ru-RU")
         {
@@ -81,7 +81,7 @@ public sealed partial class CEClosedBetaTestSystem : EntitySystem
 
     private void LimitPlaytimeRule(DateTime now)
     {
-        var isWeekend = now.DayOfWeek is DayOfWeek.Saturday || now.DayOfWeek is DayOfWeek.Sunday;
+        var isWeekend = now.DayOfWeek is DayOfWeek.Saturday or DayOfWeek.Sunday;
 
         var allowedRuPlaytime = isWeekend && now.Hour is >= 13 and < 17;
         var allowedEngPlaytime = isWeekend && now.Hour is >= 17 and < 21;
@@ -103,7 +103,7 @@ public sealed partial class CEClosedBetaTestSystem : EntitySystem
 
     private void ApplyAnnouncements(DateTime now)
     {
-        var ruDays = now.DayOfWeek is DayOfWeek.Tuesday || now.DayOfWeek is DayOfWeek.Thursday || now.DayOfWeek is DayOfWeek.Saturday;
+        var ruDays = now.DayOfWeek is DayOfWeek.Tuesday or DayOfWeek.Thursday or DayOfWeek.Saturday;
 
         var timeMap = new (int Hour, int Minute, Action Action)[]
         {

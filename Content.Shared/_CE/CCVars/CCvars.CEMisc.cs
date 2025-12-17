@@ -20,5 +20,5 @@ public sealed partial class CCVars
     /// Automatically shuts down the server outside of the CBT plytime. Shitcoded enough, but it's temporary anyway
     /// </summary>
     public static readonly CVarDef<bool> CEClosedBetaTest =
-        CVarDef.Create("game.closet_beta_test", false, CVar.SERVERONLY);
+        CVarDef.Create("game.closed_beta_test", false, CVar.SERVERONLY);
 }
