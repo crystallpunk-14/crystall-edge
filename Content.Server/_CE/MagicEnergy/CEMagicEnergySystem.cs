@@ -10,8 +10,8 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._CE.MagicEnergy;
 
-public sealed partial class CEMagicEnergySystem : CESharedMagicEnergySystem {
-
+public sealed partial class CEMagicEnergySystem : CESharedMagicEnergySystem
+{
     [Dependency] private readonly BatterySystem _battery = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
@@ -20,7 +20,6 @@ public sealed partial class CEMagicEnergySystem : CESharedMagicEnergySystem {
         base.Initialize();
 
         SubscribeLocalEvent<CEEnergyRadiationArmorComponent, InventoryRelayedEvent<CEEnergyRadiationDefenceCalculateEvent>>((e, c, ev) => OnDefenceCalculate(e, c, ev.Args));
-        SubscribeLocalEvent<CEEnergyRadiationArmorComponent, ExaminedEvent>(OnExamined);
     }
 
     private void OnDefenceCalculate(EntityUid uid, CEEnergyRadiationArmorComponent armor, CEEnergyRadiationDefenceCalculateEvent args)
@@ -52,15 +51,5 @@ public sealed partial class CEMagicEnergySystem : CESharedMagicEnergySystem {
 
             _battery.ChangeCharge((uid, battery), change * multiplier);
         }
-    }
-
-    private void OnExamined(Entity<CEEnergyRadiationArmorComponent> ent, ref ExaminedEvent args)
-    {
-        if (ent.Comp.Armor <= 0)
-            return;
-
-        var defence = Math.Min(ent.Comp.Armor, 1);
-
-        args.PushMarkup(Loc.GetString("ce-energy-armor-examined", ("value", defence * 100)));
     }
 }

@@ -47,6 +47,13 @@
   #  uiWindowPos: 2,1
   #  strippingWindowPos: 1,5
   #  displayName: Shoes
+  - name: outerClothing
+    slotTexture: suit
+    slotFlags: OUTERCLOTHING
+    stripTime: 6
+    uiWindowPos: 2,2
+    strippingWindowPos: 1,2
+    displayName: Suit
   - name: cloak
     slotTexture: cloak
     slotFlags: CLOAK

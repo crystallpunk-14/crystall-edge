@@ -65,3 +65,19 @@
   service: !type:CEBuyItemsService
     product: CEDirtBlock10
     count: 1
+
+- type: tradingPosition
+  id: CEClothingHeadHelmetBrassInsulator
+  priceMarkup: 1
+  faction: DwarfMiners
+  service: !type:CEBuyItemsService
+    product: CEClothingHeadHelmetBrassInsulator
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingOuterClothingBrassInsulator
+  priceMarkup: 1
+  faction: DwarfMiners
+  service: !type:CEBuyItemsService
+    product: CEClothingOuterClothingBrassInsulator
+    count: 1

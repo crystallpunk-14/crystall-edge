@@ -3,15 +3,15 @@
     "license": "CC-BY-SA-4.0",
     "copyright": "Created by TheShuEd",
     "size": {
-        "x": 48,
-        "y": 48
+        "x": 32,
+        "y": 32
     },
     "states": [
         {
             "name": "icon"
         },
         {
-            "name": "equipped-HELMET",
+            "name": "equipped-OUTERCLOTHING",
             "directions": 4
         },
         {

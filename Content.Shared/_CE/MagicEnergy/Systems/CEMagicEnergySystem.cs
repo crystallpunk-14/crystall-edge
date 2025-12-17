@@ -1,6 +1,7 @@
 using Content.Shared._CE.MagicEnergy.Components;
 using Content.Shared.Alert;
 using Content.Shared.Damage.Systems;
+using Content.Shared.Examine;
 using Content.Shared.Jittering;
 using Content.Shared.Popups;
 using Content.Shared.Power;
@@ -24,6 +25,8 @@ public abstract class CESharedMagicEnergySystem : EntitySystem {
         SubscribeLocalEvent<CEEnergyOverchargeDamageComponent, CEEnergyOverchargeEvent>(OnOvercharge);
         SubscribeLocalEvent<CEEnergyDeficitDamageComponent, CEEnergyDeficitEvent>(OnDeficit);
         SubscribeLocalEvent<CEEnergyAlertComponent, ComponentShutdown>(OnShutdown);
+
+        SubscribeLocalEvent<CEEnergyRadiationArmorComponent, ExaminedEvent>(OnExamined);
     }
 
     private void OnChargeUpdate(Entity<CEEnergyAlertComponent> ent, ref ChargeChangedEvent args)
@@ -76,6 +79,16 @@ public abstract class CESharedMagicEnergySystem : EntitySystem {
     private void OnShutdown(Entity<CEEnergyAlertComponent> ent, ref ComponentShutdown args)
     {
         _alert.ClearAlert(ent.Owner, ent.Comp.AlertType);
+    }
+
+    private void OnExamined(Entity<CEEnergyRadiationArmorComponent> ent, ref ExaminedEvent args)
+    {
+        if (ent.Comp.Armor <= 0)
+            return;
+
+        var defence = Math.Min(ent.Comp.Armor, 1);
+
+        args.PushMarkup(Loc.GetString("ce-energy-armor-examined", ("value", Math.Round(defence * 100))));
     }
 }
 
