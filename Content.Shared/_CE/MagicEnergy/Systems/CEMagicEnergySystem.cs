@@ -11,13 +11,14 @@ using Robust.Shared.Audio.Systems;
 
 namespace Content.Shared._CE.MagicEnergy.Systems;
 
-public abstract class CESharedMagicEnergySystem : EntitySystem {
-
+public abstract class CESharedMagicEnergySystem : EntitySystem
+{
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly SharedJitteringSystem _jitter = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly AlertsSystem _alert = default!;
+
     public override void Initialize()
     {
         SubscribeLocalEvent<CEEnergyAlertComponent, ComponentStartup>(OnStartup);
@@ -51,7 +52,7 @@ public abstract class CESharedMagicEnergySystem : EntitySystem {
             battery.MaxCharge,
             _alert.GetMaxSeverity(energyAlert.AlertType));
 
-        _alert.ShowAlert(ent, energyAlert.AlertType, (short) level);
+        _alert.ShowAlert(ent, energyAlert.AlertType, (short)level);
     }
 
     private void OnOvercharge(Entity<CEEnergyOverchargeDamageComponent> ent, ref CEEnergyOverchargeEvent args)
