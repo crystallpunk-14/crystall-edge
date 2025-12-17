@@ -32,6 +32,7 @@
         collection: GlassSmash
   - type: Physics
     bodyType: Static
+    canCollide: false
   - type: TileEmission
     color: "#00ddff"
   - type: Fixtures
@@ -43,19 +44,9 @@
           bounds: "-0.45,-0.45,0.45,0.45"
         density: 60
         mask:
-        - HalfWallLayer
+        - TableMask
         layer:
-        - MidImpassable
-        - LowImpassable
-      fix2: #For melee or laser
-        hard: true
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.35,-0.35,0.35,0.35"
-        mask:
-        - FullTileMask
-        layer:
-        - Opaque
+        - TableLayer
   - type: Appearance
   - type: Destructible
     thresholds:
