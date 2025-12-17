@@ -19,7 +19,7 @@ public sealed partial class CESalaryCounterComponent : Component
     /// Time interval between automatic salary payments.
     /// </summary>
     [DataField]
-    public TimeSpan Frequency = TimeSpan.FromMinutes(20);
+    public TimeSpan Frequency = TimeSpan.FromMinutes(12);
 
     /// <summary>
     /// Amount of currency to add to <see cref="UnpaidSalary"/> each time <see cref="Frequency"/> elapses.
