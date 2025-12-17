@@ -32,11 +32,6 @@
             - material: CEIron
               amount: 1
               doAfter: 1
-        - to: CEPipeBrassMediumDelayer
-          steps:
-            - material: CEBrass
-              amount: 1
-              doAfter: 1
 
     - node: CEPipeBrassMediumVerticalDown
       entity: CEPipeBrassMediumVerticalDown
@@ -80,18 +75,6 @@
           completed:
             - !type:SpawnPrototype
               prototype: CEIronBar1
-              amount: 1
-
-    - node: CEPipeBrassMediumDelayer
-      entity: CEPipeBrassMediumDelayer
-      edges:
-        - to: CEPipeBrassMedium
-          steps:
-            - tool: Prying
-              doAfter: 1
-          completed:
-            - !type:SpawnPrototype
-              prototype: CEBrassBar1
               amount: 1
 
     - node: CEPipeBrassMediumBroken

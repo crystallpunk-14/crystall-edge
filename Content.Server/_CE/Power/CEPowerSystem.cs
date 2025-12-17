@@ -32,7 +32,6 @@ public sealed partial class CEPowerSystem : CESharedPowerSystem
     public override void Initialize()
     {
         base.Initialize();
-        InitializeDelayedConnector();
         InitializeCharger();
         InitializeGlove();
 
@@ -47,7 +46,6 @@ public sealed partial class CEPowerSystem : CESharedPowerSystem
     {
         base.Update(frameTime);
 
-        UpdateDelayedConnectors(frameTime);
         UpdateChargers(frameTime);
     }
 

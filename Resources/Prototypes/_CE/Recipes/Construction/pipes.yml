@@ -52,19 +52,6 @@
 
 - type: construction
   hide: false
-  id: CEPipeBrassBigDelayer
-  graph: CEPipeBrassBig
-  startNode: start
-  targetNode: CEPipeBrassBigDelayer
-  category: construction-category-machines
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canBuildInImpassable: false
-  conditions:
-    - !type:TileNotBlocked
-
-- type: construction
-  hide: false
   id: CEPipeBrassMedium
   graph: CEPipeBrassMedium
   startNode: start
@@ -108,19 +95,6 @@
   graph: CEPipeBrassMedium
   startNode: start
   targetNode: CEPipeBrassMediumValve
-  category: construction-category-machines
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canBuildInImpassable: false
-  conditions:
-    - !type:TileNotBlocked
-
-- type: construction
-  hide: false
-  id: CEPipeBrassMediumDelayer
-  graph: CEPipeBrassMedium
-  startNode: start
-  targetNode: CEPipeBrassMediumDelayer
   category: construction-category-machines
   objectType: Structure
   placementMode: SnapgridCenter
