@@ -16,5 +16,5 @@ public sealed partial class CEEnergyRadiationArmorComponent : Component
     /// between 0 and 1 when calculating the final energy gain multiplier.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public float Armor = 0f;
+    public float Armor;
 }
