@@ -1,0 +1,1 @@
+ce-energy-armor-examined = Reduces [color=#32b0e6]mana absorption from space[/color] by [color=yellow]{$value}%[/color]
