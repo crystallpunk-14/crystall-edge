@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/16/2025 13:54:35
-  entityCount: 285
+  time: 12/17/2025 13:47:13
+  entityCount: 295
 maps:
 - 1
 grids:
@@ -191,6 +191,18 @@ entities:
     - type: Transform
       pos: -4.5,-13.5
       parent: 1
+  - uid: 286
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -6.5,-12.5
+      parent: 1
+  - uid: 295
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -6.5,-11.5
+      parent: 1
 - proto: CEFenceWooden
   entities:
   - uid: 13
@@ -239,6 +251,54 @@ entities:
     components:
     - type: Transform
       pos: -6.5,4.5
+      parent: 1
+  - uid: 287
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -7.5,-16.5
+      parent: 1
+  - uid: 288
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -7.5,-17.5
+      parent: 1
+  - uid: 289
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -7.5,-17.5
+      parent: 1
+  - uid: 290
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -6.5,-17.5
+      parent: 1
+  - uid: 291
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -5.5,-17.5
+      parent: 1
+  - uid: 292
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -4.5,-17.5
+      parent: 1
+  - uid: 293
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -3.5,-17.5
+      parent: 1
+  - uid: 294
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -2.5,-17.5
       parent: 1
 - proto: CEFloorCrystal
   entities:
@@ -1542,14 +1602,12 @@ entities:
   - uid: 114
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -5.5,-13.5
+      pos: -6.5,-16.5
       parent: 1
   - uid: 118
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -5.5,-14.5
+      pos: -5.5,-16.5
       parent: 1
 - proto: CEZLevelsLadderRoofRed
   entities:

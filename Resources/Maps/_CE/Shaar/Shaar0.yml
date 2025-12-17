@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/16/2025 13:54:34
-  entityCount: 1445
+  time: 12/17/2025 13:47:12
+  entityCount: 1446
 maps:
 - 1
 grids:
@@ -287,6 +287,14 @@ entities:
     - type: Transform
       gridTraversal: False
       pos: 23.29096,-5.5945244
+      parent: 1
+    - type: ViewSubscriber
+  - uid: 1446
+    components:
+    - type: MetaData
+    - type: Transform
+      gridTraversal: False
+      pos: 3.6194649,-7.6666408
       parent: 1
     - type: ViewSubscriber
 - proto: ActionToggleLight
@@ -2626,7 +2634,7 @@ entities:
       pos: 6.5,16.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -12934.528
+      secondsUntilStateChange: -12994.099
       state: Opening
 - proto: CEFenceWindowIron
   entities:
