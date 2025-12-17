@@ -46,7 +46,6 @@ public sealed partial class CEPowerSystem : CESharedPowerSystem
     {
         base.Update(frameTime);
 
-        UpdateDelayedConnectors(frameTime);
         UpdateChargers(frameTime);
     }
 
