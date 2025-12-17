@@ -7,7 +7,9 @@
   categories: [ ForkFiltered ]
   components:
   - type: Item
-    size: Normal
+    size: Large
+    shape:
+    - 0, 0, 2, 1 # 2x3
   - type: Appearance
   - type: Sprite
     sprite: _CE/Objects/Tools/Weapons/Guns/justice.rsi

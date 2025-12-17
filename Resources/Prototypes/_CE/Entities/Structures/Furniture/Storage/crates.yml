@@ -22,7 +22,7 @@
   - type: Storage
     grid:
     - 0,0,7,7
-    maxItemSize: Large
+    maxItemSize: Ginormous
     storageOpenSound: /Audio/Effects/closetopen.ogg
     storageCloseSound: /Audio/Effects/closetclose.ogg
   - type: UserInterface
@@ -64,7 +64,7 @@
   - type: Storage
     grid:
     - 0,0,5,5
-    maxItemSize: Normal
+    maxItemSize: Large
 
 - type: entity
   id: CELargeWoodenCrate
