@@ -25,6 +25,9 @@ CECoinSilver: CECoinSilver10
 CECoinGold: CECoinGold10
 CECoinPlatinum: CECoinPlatinum10
 
+CEPipeBrassMediumDelayer: CEPipeBrassMedium
+CEPipeBrassBigDelayer: CEPipeBrassBig
+
 # CrystallEdge migration zone end
 
 

@@ -32,11 +32,6 @@
             - material: CEIron
               amount: 1
               doAfter: 1
-        - to: CEPipeBrassBigDelayer
-          steps:
-            - material: CEBrass
-              amount: 1
-              doAfter: 1
 
     - node: CEPipeBrassBigVerticalDown
       entity: CEPipeBrassBigVerticalDown
@@ -80,18 +75,6 @@
           completed:
             - !type:SpawnPrototype
               prototype: CEIronBar1
-              amount: 1
-
-    - node: CEPipeBrassBigDelayer
-      entity: CEPipeBrassBigDelayer
-      edges:
-        - to: CEPipeBrassBig
-          steps:
-            - tool: Prying
-              doAfter: 1
-          completed:
-            - !type:SpawnPrototype
-              prototype: CEBrassBar1
               amount: 1
 
     - node: CEPipeBrassBigBroken
