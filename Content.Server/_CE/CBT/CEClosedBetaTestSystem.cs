@@ -44,7 +44,7 @@ public sealed partial class CEClosedBetaTestSystem : EntitySystem
             return;
 
         _nextUpdateTime = _timing.CurTime + _updateFrequency;
-        var now = DateTime.UtcNow.AddHours(0);
+        var now = DateTime.UtcNow;
 
         LanguageRule(now);
         LimitPlaytimeRule(now);
@@ -83,7 +83,10 @@ public sealed partial class CEClosedBetaTestSystem : EntitySystem
     {
         var isWeekend = now.DayOfWeek is DayOfWeek.Saturday || now.DayOfWeek is DayOfWeek.Sunday;
 
-        if (isWeekend)
+        var allowedRuPlaytime = isWeekend && now.Hour is >= 13 and < 17;
+        var allowedEngPlaytime = isWeekend && now.Hour is >= 17 and < 21;
+
+        if (isWeekend && (allowedRuPlaytime || allowedEngPlaytime))
         {
             if (_ticker.Paused)
                 _ticker.TogglePause();
