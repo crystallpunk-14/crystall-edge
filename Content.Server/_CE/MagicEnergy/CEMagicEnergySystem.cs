@@ -2,8 +2,6 @@ using Content.Server.Power.EntitySystems;
 using Content.Server.Radiation.Components;
 using Content.Shared._CE.MagicEnergy.Components;
 using Content.Shared._CE.MagicEnergy.Systems;
-using Content.Shared.Electrocution;
-using Content.Shared.Examine;
 using Content.Shared.Inventory;
 using Content.Shared.Power.Components;
 using Robust.Shared.Timing;
