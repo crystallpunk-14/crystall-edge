@@ -43,15 +43,14 @@ public sealed partial class CEPowerSystem
             return;
         }
 
-        _batteryQuery.TryComp(target, out var batteryTarget);
+        if (!_batteryQuery.TryComp(target, out var batteryTarget))
+            return;
         SpawnAtPosition(ent.Comp.VFX, Transform(args.Target.Value).Coordinates);
 
         if (ent.Comp.ConsumeMode)
         {
-            if (batteryTarget is null)
-                return;
-
             var drained = -_battery.ChangeCharge((target, batteryTarget), -ent.Comp.TransferAmount);
+
             if (drained <= 0)
                 return;
 
@@ -65,9 +64,6 @@ public sealed partial class CEPowerSystem
         {
             var spent = -_battery.ChangeCharge((user, userBattery), -ent.Comp.TransferAmount);
             PushFromUser(target, user, ent.Comp.ThrowDistance, ent.Comp.ThrowPower);
-
-            if (batteryTarget is null)
-                return;
 
             if (spent <= 0)
                 return;
