@@ -23,6 +23,6 @@ ce-wine-brand-9 = Cloud
 ce-wine-brand-10 = Talmar
 ce-wine-brand-11 = Danuoll
 ce-wine-brand-12 = Emerald
-ce-wine-brand-13 = Dwarven
+ce-wine-brand-13 = sparkling
 ce-wine-brand-14 = Underground
 ce-wine-brand-15 = Dark Elven

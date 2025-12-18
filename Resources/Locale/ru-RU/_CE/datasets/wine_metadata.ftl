@@ -23,6 +23,6 @@ ce-wine-brand-9 = облачного
 ce-wine-brand-10 = Талморского
 ce-wine-brand-11 = Дануолского
 ce-wine-brand-12 = изумрудного
-ce-wine-brand-13 = дворфийского
+ce-wine-brand-13 = шипучего
 ce-wine-brand-14 = подземного
 ce-wine-brand-15 = темноэльфийского

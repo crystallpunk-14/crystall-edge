@@ -11,7 +11,7 @@ ce-whiskey-state-8 = amber
 ce-whiskey-state-9 = murky
 ce-whiskey-state-10 = rare
 
-ce-whiskey-brand-1 = Wingless Сarrin
+ce-whiskey-brand-1 = Wingless Carrin
 ce-whiskey-brand-2 = Papa Jones
 ce-whiskey-brand-3 = Crystal Hole
 ce-whiskey-brand-4 = Chest Living

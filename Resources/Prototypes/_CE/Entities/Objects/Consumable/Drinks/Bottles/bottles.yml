@@ -102,8 +102,8 @@
 
 - type: entity
   parent: CEDrinkBottleBase
-  id: CEBottleSypurGrenadineine
-  name: sypur grenadine bottle
+  id: CEBottleSyrupGrenadineine
+  name: syrup grenadine bottle
   description: Thick, sweet syrup with a rich ruby color, traditionally made from pomegranate juice, perfect for cocktails and mocktails alike.
   suffix: Empty
   components:
@@ -121,9 +121,9 @@
 
 - type: entity
   parent: CEDrinkBottleBase
-  id: CEBottleSypurSugar
-  name: sugar sypur bottle
-  description: TODO
+  id: CEBottleSyrupSugar
+  name: sugar syrup bottle
+  description:  A simple sugar syrup used to sweeten cocktails, coffees, and other beverages.
   suffix: Empty
   components:
   - type: Sprite
