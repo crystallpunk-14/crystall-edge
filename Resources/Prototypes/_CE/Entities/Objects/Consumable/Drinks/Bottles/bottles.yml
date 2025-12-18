@@ -6,7 +6,6 @@
   suffix: Empty
   components:
   - type: Sprite
-    noRot: true
     sprite: _CE/Objects/Consumable/Drinks/Bottles/wine.rsi
     layers:
     - state: fill-1
@@ -59,7 +58,6 @@
   suffix: Empty
   components:
   - type: Sprite
-    noRot: true
     sprite: _CE/Objects/Consumable/Drinks/Bottles/vodka.rsi
     layers:
     - state: fill-1
@@ -73,3 +71,24 @@
     - CENamesVodkaState
     - CENamesVodkaBrand
     nameFormat: ce-vodka-name-format
+  - type: SolutionContainerVisuals
+    maxFillLevels: 5
+
+- type: entity
+  parent: CEDrinkBottleBase
+  id: CEBottleSypurGrenadineine
+  name: sypur grenadine bottle
+  description: Thick, sweet syrup with a rich ruby color, traditionally made from pomegranate juice, perfect for cocktails and mocktails alike.
+  suffix: Empty
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Drinks/Bottles/syrup_grenadine.rsi
+    layers:
+    - state: fill-1
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+    - state: icon
+    - state: stopper
+      map: ["enum.OpenableVisuals.Layer"]
+  - type: SolutionContainerVisuals
+    maxFillLevels: 5

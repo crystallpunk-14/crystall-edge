@@ -20,6 +20,7 @@
           True: {visible: false} # lid off
           False: {visible: true} # lid on
   - type: Sprite
+    noRot: true
     layers:
     - state: fill-1
       map: ["enum.SolutionContainerLayers.Fill"]
