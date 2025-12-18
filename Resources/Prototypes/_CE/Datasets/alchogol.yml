@@ -1,0 +1,11 @@
+- type: localizedDataset
+  id: CENamesWineState
+  values:
+    prefix: ce-wine-state-
+    count: 10
+
+- type: localizedDataset
+  id: CENamesWineBrand
+  values:
+    prefix: ce-wine-brand-
+    count: 15

@@ -1,0 +1,29 @@
+- type: entity
+  parent: CEDrinkBottleBase
+  id: CEBottleWine
+  name: wine bottle
+  description: A bouquet of scents from the last century.
+  suffix: Empty
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: _CE/Objects/Consumable/Drinks/Bottles/wine.rsi
+    layers:
+    - state: fill-1
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+    - state: icon
+      map: ["random"]
+    - state: stopper
+      map: ["enum.OpenableVisuals.Layer"]
+  - type: RandomSprite
+    available:
+      - random:
+          icon: ""
+          icon2: ""
+          icon3: ""
+  - type: RandomMetadata
+    nameSegments:
+    - CENamesWineState
+    - CENamesWineBrand
+    nameFormat: ce-wine-name-format
