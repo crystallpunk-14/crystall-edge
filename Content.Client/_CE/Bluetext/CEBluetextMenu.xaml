@@ -22,7 +22,7 @@
                 <Label Name="CharCountLabel"
                        Margin="4"
                        HorizontalAlignment="Right"
-                       Text="(0/1024)"
+                       Text="(0/1000)"
                     />
             </BoxContainer>
         </PanelContainer>

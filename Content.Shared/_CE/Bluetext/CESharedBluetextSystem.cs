@@ -6,6 +6,8 @@ namespace Content.Shared._CE.Bluetext;
 
 public abstract class CESharedBlueTextSystem : EntitySystem
 {
+    public const int MaxTextLength = 1000;
+
     [Dependency] protected readonly SharedMindSystem Mind = default!;
 }
 
@@ -21,6 +23,12 @@ public enum CEBluetextUIKey : byte
 
 [Serializable, NetSerializable]
 public sealed class CEBluetextBuiState(string text) : BoundUserInterfaceState
+{
+    public string Text = text;
+}
+
+[Serializable, NetSerializable]
+public sealed class CEBluetextSubmitMessage(string text) : BoundUserInterfaceMessage
 {
     public string Text = text;
 }

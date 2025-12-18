@@ -1,6 +1,8 @@
 using Content.Shared._CE.Bluetext;
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;
+using Robust.Shared.ViewVariables;
+
 namespace Content.Client._CE.Bluetext;
 
 [UsedImplicitly]
@@ -21,6 +23,7 @@ public sealed class CEBluetextBoundUserInterface : BoundUserInterface
         base.Open();
 
         _menu = this.CreateWindow<CEBluetextMenu>();
+        _menu.OnSubmitBluetext += HandleSubmitBluetext;
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)
@@ -43,7 +46,20 @@ public sealed class CEBluetextBoundUserInterface : BoundUserInterface
         if (!disposing)
             return;
 
+        if (_menu != null)
+        {
+            _menu.OnSubmitBluetext -= HandleSubmitBluetext;
+        }
+
         _menu?.Dispose();
         _menu = null;
+    }
+
+    private void HandleSubmitBluetext(string text)
+    {
+        if (_menu == null)
+            return;
+
+        SendMessage(new CEBluetextSubmitMessage(text));
     }
 }
