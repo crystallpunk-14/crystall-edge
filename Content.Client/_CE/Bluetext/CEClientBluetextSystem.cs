@@ -6,8 +6,6 @@ namespace Content.Client._CE.Bluetext;
 
 public sealed class CEClientBluetextSystem : CESharedBlueTextSystem
 {
-    [Dependency] private readonly CharacterInfoSystem _characterInfo = default!;
-
     public override void Initialize()
     {
         base.Initialize();
@@ -29,7 +27,7 @@ public sealed class CEClientBluetextSystem : CESharedBlueTextSystem
             Margin = new Thickness(5)
         };
 
-        btn.OnPressed += _ => { /* Intentionally does nothing for now */ };
+        btn.OnPressed += _ => RaiseNetworkEvent(new CEToggleBluetextScreenEvent());
 
         ev.Controls.Add(btn);
     }

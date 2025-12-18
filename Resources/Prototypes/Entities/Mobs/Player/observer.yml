@@ -29,6 +29,10 @@
         - GhostImpassable
   #CrystallEdge
   - type: CEZLevelGhostMover
+  - type: UserInterface
+    interfaces:
+      enum.CEBluetextUIKey.Key:
+        type: CEBluetextBoundUserInterface
 
 # shared parent between aghosts, replay spectators and normal observers
 - type: entity

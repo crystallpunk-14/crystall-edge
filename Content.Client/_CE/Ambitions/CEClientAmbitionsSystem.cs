@@ -1,15 +1,12 @@
 using Content.Client.CharacterInfo;
 using Content.Shared._CE.Ambitions;
 using Content.Shared._CE.Ambitions.Components;
-using Robust.Client.Player;
 using Robust.Client.UserInterface.Controls;
 
 namespace Content.Client._CE.Ambitions;
 
 public sealed class CEClientAmbitionsSystem : EntitySystem
 {
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-
     public override void Initialize()
     {
         base.Initialize();
@@ -25,17 +22,8 @@ public sealed class CEClientAmbitionsSystem : EntitySystem
             Margin = new Thickness(5)
         };
 
-        btn.OnPressed += _ => OnOpenAmbitionsUI(ent);
+        btn.OnPressed += _ => RaiseNetworkEvent(new CEToggleAmbitionsScreenEvent());
 
         args.Controls.Add(btn);
-    }
-
-    private void OnOpenAmbitionsUI(Entity<CEAmbitionsSetupComponent> entity)
-    {
-        var session = _playerManager.LocalSession;
-        if (session == null)
-            return;
-
-        RaiseNetworkEvent(new CEToggleAmbitionsScreenEvent());
     }
 }

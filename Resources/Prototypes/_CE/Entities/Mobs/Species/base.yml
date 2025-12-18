@@ -173,6 +173,8 @@
         type: StrippableBoundUserInterface
       enum.CEAmbitionsUIKey.Key:
         type: CEAmbitionsBoundUserInterface
+      enum.CEBluetextUIKey.Key:
+        type: CEBluetextBoundUserInterface
   - type: Puller
   - type: Speech
     speechSounds: Alto

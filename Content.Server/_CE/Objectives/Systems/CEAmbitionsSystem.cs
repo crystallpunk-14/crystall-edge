@@ -3,13 +3,11 @@ using System.Linq;
 using Content.Server.Mind;
 using Content.Shared._CE.Ambitions;
 using Content.Shared._CE.Ambitions.Components;
-using Content.Shared.Actions;
 using Content.Shared.Objectives.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Robust.Shared.Timing;
 
 namespace Content.Server._CE.Objectives.Systems;
 
@@ -17,12 +15,10 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
 {
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IComponentFactory _compFactory = default!;
     [Dependency] private readonly MindSystem _mind = default!;
     [Dependency] private readonly MetaDataSystem _meta = default!;
     [Dependency] private readonly UserInterfaceSystem _userInterface = default!;
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
 
     private readonly List<(EntityPrototype prototype, float weight)> _ambitions = new();
 
