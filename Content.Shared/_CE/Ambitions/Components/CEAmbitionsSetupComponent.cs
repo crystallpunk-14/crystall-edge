@@ -23,10 +23,4 @@ public sealed partial class CEAmbitionsSetupComponent : Component
     /// </summary>
     [DataField]
     public int MaxAmbitions = 3;
-
-    [DataField]
-    public EntProtoId ToggleUiAction = "CEActionAmbitionsView";
-
-    [DataField, AutoNetworkedField]
-    public EntityUid? ToggleUiActionEntity;
 }

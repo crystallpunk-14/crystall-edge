@@ -5,7 +5,8 @@ namespace Content.Shared._CE.Ambitions;
 
 public abstract class CESharedAmbitionsSystem : EntitySystem;
 
-public sealed partial class CEToggleAmbitionsScreenEvent : InstantActionEvent;
+[NetSerializable, Serializable]
+public sealed partial class CEToggleAmbitionsScreenEvent : EntityEventArgs;
 
 [NetSerializable, Serializable]
 public enum CEAmbitionsUIKey : byte
