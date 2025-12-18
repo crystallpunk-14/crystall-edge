@@ -7,6 +7,30 @@
 
 - type: entity
   parent: CEBaseGameRule
+  id: CEGameRuleThieves
+  components:
+  - type: AntagObjectives
+    objectives:
+    - CEThiefObjectiveBeCool
+    - CEThiefObjectiveBeSafe
+  - type: AntagSelection
+    selectionTime: IntraPlayerSpawn
+    antagName: ce-roles-antag-thief-name
+    definitions:
+    - prefRoles: [ CEThief ]
+      min: 1
+      max: 3
+      playerRatio: 5
+      lateJoinAdditional: true
+      mindRoles:
+      - CEMindRoleThief
+      briefing:
+        text: ce-roles-antag-thief-briefing
+        color: "#527c5e"
+        sound: "/Audio/_CE/Ambience/Antag/vampire.ogg"
+
+- type: entity
+  parent: CEBaseGameRule
   id: CEGameRuleVampires
   components:
   - type: AntagObjectives
@@ -41,3 +65,4 @@
         text: ce-roles-antag-vampire-briefing
         color: "#630f24"
         sound: "/Audio/_CE/Ambience/Antag/vampire.ogg"
+

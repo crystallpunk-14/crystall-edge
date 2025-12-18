@@ -1,9 +1,9 @@
 - type: antag
-  id: CEVampire
-  name: ce-roles-antag-vampire-name
+  id: CEThief
+  name: ce-roles-antag-thief-name
   antagonist: true
-  setPreference: false
-  objective: ce-roles-antag-vampire-objective
+  setPreference: true
+  objective: ce-roles-antag-thief-objective
   requirements:
   - !type:OverallPlaytimeRequirement
     time: 7200 # 2h

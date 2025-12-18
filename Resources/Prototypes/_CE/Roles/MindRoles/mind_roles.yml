@@ -9,3 +9,14 @@
     roleType: SoloAntagonist
     exclusiveAntag: true
   - type: CEVampireRole
+
+- type: entity
+  parent: BaseMindRoleAntag
+  id: CEMindRoleThief
+  categories: [ ForkFiltered ]
+  name: Thief role
+  components:
+  - type: MindRole
+    antagPrototype: CEThief
+    roleType: SoloAntagonist
+    exclusiveAntag: true
