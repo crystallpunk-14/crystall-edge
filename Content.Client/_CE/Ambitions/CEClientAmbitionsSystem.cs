@@ -36,6 +36,6 @@ public sealed class CEClientAmbitionsSystem : EntitySystem
         if (session == null)
             return;
 
-        RaiseNetworkEvent(new CEToggleAmbitionsScreenEvent(), session);
+        RaiseNetworkEvent(new CEToggleAmbitionsScreenEvent());
     }
 }

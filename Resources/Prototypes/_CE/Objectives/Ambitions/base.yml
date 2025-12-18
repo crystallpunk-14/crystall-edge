@@ -7,6 +7,6 @@
     difficulty: 0
     issuer: ce-objective-issuer-ambition
     icon:
-      sprite: _CE/Actions/misc.rsi
-      state: ambitions
+      sprite: _CE/Objects/Materials/leather.rsi # TODO Better icon
+      state: rugged_leather
   - type: CEAmbitionObjective

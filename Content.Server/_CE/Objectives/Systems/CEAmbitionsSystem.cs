@@ -33,8 +33,6 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
 
         SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypesReloaded);
 
-        SubscribeLocalEvent<CEAmbitionsSetupComponent, MapInitEvent>(OnMapInit);
-
         SubscribeNetworkEvent<CEToggleAmbitionsScreenEvent>(OnToggleAmbitions);
 
         SubscribeLocalEvent<CEAmbitionsSetupComponent, BoundUIOpenedEvent>(OnBoundUIOpened);
@@ -45,20 +43,6 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
 
         SubscribeLocalEvent<CEAmbitionObjectiveComponent, ObjectiveAfterAssignEvent>(OnObjectiveAssigned);
         SubscribeLocalEvent<CEAmbitionObjectiveComponent, ObjectiveGetProgressEvent>(OnGetProgress);
-    }
-
-    public override void Update(float frameTime)
-    {
-        base.Update(frameTime);
-
-        var query = EntityQueryEnumerator<CEAmbitionsSetupComponent>();
-        while (query.MoveNext(out var uid, out var ambitionsSetup))
-        {
-            if (_timing.CurTime < ambitionsSetup.EndTime)
-                continue;
-
-            RemCompDeferred<CEAmbitionsSetupComponent>(uid);
-        }
     }
 
     private void OnAmbitionCreateRequest(Entity<CEAmbitionsSetupComponent> ent, ref CEAmbitionCreateMessage args)
@@ -126,7 +110,7 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
 
     private void OnGetProgress(Entity<CEAmbitionObjectiveComponent> ent, ref ObjectiveGetProgressEvent args)
     {
-        args.Progress = 1f;
+        args.Progress = 0f;
     }
 
     private void OnObjectiveAssigned(Entity<CEAmbitionObjectiveComponent> ent, ref ObjectiveAfterAssignEvent args)
@@ -169,21 +153,18 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
         }
     }
 
-    private void OnMapInit(Entity<CEAmbitionsSetupComponent> ent, ref MapInitEvent args)
-    {
-        ent.Comp.EndTime = _timing.CurTime + ent.Comp.AvailableTime;
-    }
-
     private void OnToggleAmbitions(CEToggleAmbitionsScreenEvent msg, EntitySessionEventArgs args)
     {
-        var ent = args.SenderSession.AttachedEntity;
+        if (args.SenderSession.AttachedEntity is not {Valid: true} ent)
+            return;
+
         if (!TryComp<CEAmbitionsSetupComponent>(ent, out var ambitions))
             return;
 
         if (!TryComp<ActorComponent>(ent, out var actor))
             return;
 
-        _userInterface.TryToggleUi(ent.Value, CEAmbitionsUIKey.Key, actor.PlayerSession);
+        _userInterface.TryToggleUi(ent, CEAmbitionsUIKey.Key, actor.PlayerSession);
     }
 
     private void OnBoundUIOpened(Entity<CEAmbitionsSetupComponent> ent, ref BoundUIOpenedEvent args)
@@ -207,7 +188,7 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
             objectiveList.Add((meta.EntityName, meta.EntityDescription));
         }
 
-        var state = new CEAmbitionsBuiState(objectiveList, ent.Comp.RerollAmount, ent.Comp.MaxAmbitions, ent.Comp.EndTime, ent.Comp.AvailableTime);
+        var state = new CEAmbitionsBuiState(objectiveList, ent.Comp.RerollAmount, ent.Comp.MaxAmbitions);
         _userInterface.SetUiState(ent.Owner, CEAmbitionsUIKey.Key, state);
     }
 

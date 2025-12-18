@@ -12,11 +12,17 @@ public sealed class CEClientBluetextSystem : CESharedBlueTextSystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CEBlueTextTrackerComponent, CharacterInfoSystem.GetCharacterInfoControlsEvent>(OnGetCharacterInfoControls);
+        SubscribeLocalEvent<CharacterInfoSystem.GetCharacterInfoControlsEvent>(OnGetCharacterInfoControls);
     }
 
-    private void OnGetCharacterInfoControls(Entity<CEBlueTextTrackerComponent> ent, ref CharacterInfoSystem.GetCharacterInfoControlsEvent args)
+    private void OnGetCharacterInfoControls(ref CharacterInfoSystem.GetCharacterInfoControlsEvent ev)
     {
+        if (!Mind.TryGetMind(ev.Entity, out var mind, out var mindComp))
+            return;
+
+        if (!TryComp<CEBlueTextTrackerComponent>(mind, out var blueText))
+            return;
+
         var btn = new Button
         {
             Text = Loc.GetString("ce-bluetext-open-button"),
@@ -25,6 +31,6 @@ public sealed class CEClientBluetextSystem : CESharedBlueTextSystem
 
         btn.OnPressed += _ => { /* Intentionally does nothing for now */ };
 
-        args.Controls.Add(btn);
+        ev.Controls.Add(btn);
     }
 }

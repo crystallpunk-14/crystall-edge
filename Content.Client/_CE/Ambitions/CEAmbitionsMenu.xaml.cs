@@ -12,7 +12,6 @@ public sealed partial class CEAmbitionsMenu : FancyWindow
 {
     [Dependency] private readonly IGameTiming _timing = default!;
 
-    private CEAmbitionsBuiState? _state;
     public event Action? OnNewAmbitionRequest;
     public event Action? OnLockAmbitionRequest;
     public event Action<int>? OnDeleteAmbitionRequest;
@@ -24,20 +23,6 @@ public sealed partial class CEAmbitionsMenu : FancyWindow
 
         AddAmbitionButton.OnPressed += AddAmbitionButton_OnPressed;
         LockAmbitionButton.OnPressed += LockAmbitionButton_OnPressed;
-    }
-
-    protected override void FrameUpdate(FrameEventArgs args)
-    {
-        base.FrameUpdate(args);
-
-        if (_state is null)
-            return;
-
-        var remainingTime = _state.EndTime - _timing.CurTime;
-        var progressPercentage = Math.Clamp(remainingTime.TotalSeconds / _state.MaxTime.TotalSeconds, 0, 1);
-
-        TimeBar.Value = (float)progressPercentage;
-        TimeLabel.Text = $"{Loc.GetString("ce-ambitions-timer")} {remainingTime:mm\\:ss}";
     }
 
     private void LockAmbitionButton_OnPressed(BaseButton.ButtonEventArgs obj)
@@ -53,7 +38,6 @@ public sealed partial class CEAmbitionsMenu : FancyWindow
 
     public void Update(EntityUid uid, CEAmbitionsBuiState state)
     {
-        _state = state;
         AmbitionsContainer.Children.Clear();
 
         AddAmbitionButton.Text = $"{Loc.GetString("ce-ambitions-buttons-add")} ({state.Ambitions.Count}/{state.MaxAmbitions}) [{state.Rerolls}]";

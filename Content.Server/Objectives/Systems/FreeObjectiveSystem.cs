@@ -15,6 +15,6 @@ public sealed class FreeObjectiveSystem : EntitySystem
     // You automatically greentext, there's not much else to it
     private void OnGetProgress(Entity<FreeObjectiveComponent> ent, ref ObjectiveGetProgressEvent args)
     {
-        args.Progress = 1f;
+        args.Progress = 0f; //CrystallEdge from 1 to 0
     }
 }

@@ -15,13 +15,11 @@ public enum CEAmbitionsUIKey : byte
 }
 
 [Serializable, NetSerializable]
-public sealed class CEAmbitionsBuiState(List<(string, string)> ambitions, int rerolls, int maxAmbitions, TimeSpan endTime, TimeSpan maxTime) : BoundUserInterfaceState
+public sealed class CEAmbitionsBuiState(List<(string, string)> ambitions, int rerolls, int maxAmbitions) : BoundUserInterfaceState
 {
     public List<(string, string)> Ambitions = ambitions;
     public int Rerolls = rerolls;
     public int MaxAmbitions = maxAmbitions;
-    public TimeSpan EndTime = endTime;
-    public TimeSpan MaxTime = maxTime;
 }
 
 [Serializable, NetSerializable]
