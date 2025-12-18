@@ -1,9 +1,10 @@
 using Content.Server.Antag;
 using Content.Server.Mind;
+using Content.Shared._CE.Bluetext;
 
 namespace Content.Server._CE.Bluetext;
 
-public sealed class CEBlueTextSystem : EntitySystem
+public sealed class CEBlueTextSystem : CESharedBlueTextSystem
 {
     [Dependency] private readonly MindSystem _mind = default!;
     public override void Initialize()
