@@ -9,3 +9,15 @@
   values:
     prefix: ce-wine-brand-
     count: 15
+
+- type: localizedDataset
+  id: CENamesWhiskeyState
+  values:
+    prefix: ce-whiskey-state-
+    count: 10
+
+- type: localizedDataset
+  id: CENamesWhiskeyBrand
+  values:
+    prefix: ce-whiskey-brand-
+    count: 15

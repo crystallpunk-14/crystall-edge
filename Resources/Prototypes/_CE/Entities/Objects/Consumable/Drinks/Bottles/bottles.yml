@@ -27,3 +27,26 @@
     - CENamesWineState
     - CENamesWineBrand
     nameFormat: ce-wine-name-format
+
+- type: entity
+  parent: CEDrinkBottleBase
+  id: CEBottleWhiskey
+  name: whiskey bottle
+  description: A strong drink for strong people.
+  suffix: Empty
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: _CE/Objects/Consumable/Drinks/Bottles/whiskey.rsi
+    layers:
+    - state: fill-1
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+    - state: icon
+    - state: stopper
+      map: ["enum.OpenableVisuals.Layer"]
+  - type: RandomMetadata
+    nameSegments:
+    - CENamesWhiskeyState
+    - CENamesWhiskeyBrand
+    nameFormat: ce-whiskey-name-format
