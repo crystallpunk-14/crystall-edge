@@ -9,6 +9,7 @@
   parent: CEBaseGameRule
   id: CEGameRuleThieves
   components:
+  - type: CEBlueTextRule
   - type: AntagObjectives
     objectives:
     - CEThiefObjectiveBeCool
