@@ -33,3 +33,15 @@
   values:
     prefix: ce-vodka-brand-
     count: 15
+
+- type: localizedDataset
+  id: CENamesRumState
+  values:
+    prefix: ce-rum-state-
+    count: 10
+
+- type: localizedDataset
+  id: CENamesRumBrand
+  values:
+    prefix: ce-rum-brand-
+    count: 15

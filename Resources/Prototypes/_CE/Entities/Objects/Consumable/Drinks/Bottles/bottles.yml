@@ -76,6 +76,32 @@
 
 - type: entity
   parent: CEDrinkBottleBase
+  id: CEBottleRum
+  name: rum bottle
+  description: Tropical spirit with notes of caramel and exotic adventure.
+  suffix: Empty
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Drinks/Bottles/rum.rsi
+    layers:
+    - state: fill-1
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+    - state: icon
+    - state: stopper
+      map: ["enum.OpenableVisuals.Layer"]
+  - type: RandomMetadata
+    nameSegments:
+    - CENamesRumState
+    - CENamesRumBrand
+    nameFormat: ce-rum-name-format
+  - type: SolutionContainerVisuals
+    maxFillLevels: 6
+
+# Syrups
+
+- type: entity
+  parent: CEDrinkBottleBase
   id: CEBottleSypurGrenadineine
   name: sypur grenadine bottle
   description: Thick, sweet syrup with a rich ruby color, traditionally made from pomegranate juice, perfect for cocktails and mocktails alike.
@@ -92,3 +118,22 @@
       map: ["enum.OpenableVisuals.Layer"]
   - type: SolutionContainerVisuals
     maxFillLevels: 5
+
+- type: entity
+  parent: CEDrinkBottleBase
+  id: CEBottleSypurSugar
+  name: sugar sypur bottle
+  description: TODO
+  suffix: Empty
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Drinks/Bottles/syrup_sugar.rsi
+    layers:
+    - state: fill-1
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+    - state: icon
+    - state: stopper
+      map: ["enum.OpenableVisuals.Layer"]
+  - type: SolutionContainerVisuals
+    maxFillLevels: 4
