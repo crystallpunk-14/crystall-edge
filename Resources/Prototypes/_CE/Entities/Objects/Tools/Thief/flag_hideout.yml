@@ -1,0 +1,48 @@
+- type: entity
+  #parent: BaseMinorContraband
+  id: CEThiefHideoutFlag
+  name: thief hideout flag
+  description: "The mark of a professional thief, as if to say: This is my territory. Take anything from here, and you're done for."
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Normal
+  - type: EmitSoundOnCollide
+    sound:
+      collection: WeakHit
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Effects/drop.ogg
+      params:
+        volume: 2
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.4,0.25,0.1"
+        density: 20
+        mask:
+          - Impassable
+  - type: Foldable
+    folded: true
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.FoldedVisuals.State:
+        foldedLayer:
+          True: { state: folded }
+          False: { state: flag }
+  - type: Sprite
+    sprite: _CE/Structures/Furniture/thief_flag_temp.rsi
+    drawdepth: Mobs
+    noRot: true
+    layers:
+      - state: folded
+        map: [ "foldedLayer" ]
+  - type: CEZPhysics
+  - type: CEThiefHideout

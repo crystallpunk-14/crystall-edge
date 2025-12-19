@@ -36,7 +36,7 @@
   name: ce-skill-thief-pickpocketing-speed-name
   desc: ce-skill-thief-pickpocketing-speed-desc
   skillUiPosition: 2, 1
-  learnCost: 0
+  learnCost: 1
   tree: Thief
   icon:
       sprite: _CE/Interface/Skills/thief.rsi
@@ -55,7 +55,7 @@
   name: ce-skill-thief-pickpocketing-moving-name
   desc: ce-skill-thief-pickpocketing-moving-desc
   skillUiPosition: 2, 3
-  learnCost: 0
+  learnCost: 2
   tree: Thief
   icon:
       sprite: _CE/Interface/Skills/thief.rsi

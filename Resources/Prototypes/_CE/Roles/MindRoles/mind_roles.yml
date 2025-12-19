@@ -20,3 +20,4 @@
     antagPrototype: CEThief
     roleType: SoloAntagonist
     exclusiveAntag: true
+  - type: CEThiefRole

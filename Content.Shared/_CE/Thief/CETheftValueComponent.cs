@@ -1,0 +1,17 @@
+using Robust.Shared.GameStates;
+
+namespace Content.Shared._CE.Thief;
+
+/// <summary>
+/// Must be found on unique, irreplaceable entities, the number of which is limited on the map.
+/// When stolen by a thief, they give him skill points.
+/// </summary>
+[RegisterComponent, NetworkedComponent]
+public sealed partial class CETheftValueComponent : Component
+{
+    /// <summary>
+    ///
+    /// </summary>
+    [DataField]
+    public float Difficulty = 1f;
+}
