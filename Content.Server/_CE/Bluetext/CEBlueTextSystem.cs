@@ -17,8 +17,8 @@ public sealed class CEBlueTextSystem : CESharedBlueTextSystem
 
         SubscribeLocalEvent<CEBlueTextRuleComponent, AfterAntagEntitySelectedEvent>(OnAntagAttached);
 
-        SubscribeNetworkEvent<CEToggleBlueTextScreenEvent>(OnToggleBluetext);
-        SubscribeLocalEvent<ActorComponent, CEBlueTextSubmitMessage>(OnSubmitBluetext);
+        SubscribeNetworkEvent<CEToggleBlueTextScreenEvent>(OnToggleBlueText);
+        SubscribeLocalEvent<ActorComponent, CEBlueTextSubmitMessage>(OnSubmitBluetText);
     }
 
     private void OnAntagAttached(Entity<CEBlueTextRuleComponent> ent, ref AfterAntagEntitySelectedEvent args)
@@ -29,7 +29,7 @@ public sealed class CEBlueTextSystem : CESharedBlueTextSystem
         EnsureComp<CEBlueTextTrackerComponent>(mind);
     }
 
-    private void OnToggleBluetext(CEToggleBlueTextScreenEvent ev, EntitySessionEventArgs args)
+    private void OnToggleBlueText(CEToggleBlueTextScreenEvent ev, EntitySessionEventArgs args)
     {
         if (args.SenderSession.AttachedEntity is not {Valid: true} ent)
             return;
@@ -49,7 +49,7 @@ public sealed class CEBlueTextSystem : CESharedBlueTextSystem
         _userInterface.SetUiState(ent, CEBlueTextUIKey.Key, state);
     }
 
-    private void OnSubmitBluetext(Entity<ActorComponent> ent, ref CEBlueTextSubmitMessage args)
+    private void OnSubmitBluetText(Entity<ActorComponent> ent, ref CEBlueTextSubmitMessage args)
     {
         if (!_mind.TryGetMind(ent, out var mind, out var mindComp))
             return;
@@ -63,7 +63,6 @@ public sealed class CEBlueTextSystem : CESharedBlueTextSystem
             text = text[..MaxTextLength];
 
         blueText.BlueText = text;
-        Dirty(mind, blueText);
 
         var state = new CEBlueTextBuiState(blueText.BlueText);
         _userInterface.SetUiState(ent.Owner, CEBlueTextUIKey.Key, state);
