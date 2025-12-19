@@ -71,3 +71,17 @@
     state: dwarf_mining
   - type: CETradingContract
     faction: DwarfMiners
+
+# Antag
+
+- type: entity
+  parent: CETradeContractBase
+  id: CETradeContractBlackMarket
+  description: Access to trade in illegal goods on the black market. Be careful and don't buy goods in front of others, because they will clearly not be happy about the arsenal that helps you steal from their pockets.
+  categories: [ DoNotMap, ForkFiltered ]
+  suffix: BlackMarket, DO NOT MAP
+  components:
+  - type: Sprite
+    state: black
+  - type: CETradingContract
+    faction: BlackMarket

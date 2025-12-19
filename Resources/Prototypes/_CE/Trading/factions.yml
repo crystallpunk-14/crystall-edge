@@ -36,3 +36,10 @@
   id: EmpireGuard
   color: "#2f6cd6"
   name: ce-trade-faction-empire-guard
+
+# Antags
+
+- type: tradingFaction
+  id: BlackMarket
+  color: "#4a0e0e"
+  name: ce-trade-faction-black-market

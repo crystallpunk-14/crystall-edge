@@ -8,3 +8,9 @@
   - !type:OverallPlaytimeRequirement
     time: 7200 # 2h
   #guides: TODO
+
+- type: startingGear
+  id: CEThiefGear
+  storage:
+    back:
+    - CETradeContractBlackMarket
