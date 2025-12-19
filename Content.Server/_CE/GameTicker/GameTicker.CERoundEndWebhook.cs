@@ -83,7 +83,7 @@ public sealed partial class GameTicker
     {
         var chunks = new List<string>();
 
-        // Reserve space for the part indicator: "[999/999]\n" = ~12 chars
+        // Use the provided maxLength as the limit for each chunk.
         var effectiveMaxLength = maxLength - 20;
 
         if (message.Length <= effectiveMaxLength)
@@ -124,7 +124,7 @@ public sealed partial class GameTicker
                             // If even a single word is too long, truncate it
                             if (word.Length > effectiveMaxLength)
                             {
-                                chunks.Add(word.Substring(0, effectiveMaxLength - 3) + "...");
+                                chunks.Add(word[..(effectiveMaxLength - 3)] + "...");
                             }
                             else
                             {

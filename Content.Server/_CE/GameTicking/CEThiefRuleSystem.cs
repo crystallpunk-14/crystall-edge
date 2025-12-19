@@ -8,13 +8,4 @@ namespace Content.Server._CE.GameTicking;
 
 public sealed class CEThiefRuleSystem : GameRuleSystem<CEThiefRuleComponent>
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-
-    protected override void AppendRoundEndText(EntityUid uid,
-        CEThiefRuleComponent component,
-        GameRuleComponent gameRule,
-        ref RoundEndTextAppendEvent args)
-    {
-        base.AppendRoundEndText(uid, component, gameRule, ref args);
-    }
 }
