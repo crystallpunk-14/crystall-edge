@@ -1,0 +1,64 @@
+- type: skillTree
+  id: Thief
+  name: ce-skill-tree-thief-name
+  desc: ce-skill-tree-thief-desc
+  skillType: Memory
+  color: "#1b7b46"
+  parallax: AspidParallax
+  hoveredIcon:
+    sprite: _CE/Interface/NodeTree/thief.rsi
+    state: hovered
+  learnedIcon:
+    sprite: _CE/Interface/NodeTree/thief.rsi
+    state: learned
+  selectionIcon:
+    sprite: _CE/Interface/NodeTree/thief.rsi
+    state: selected
+
+- type: skill
+  id: Pickpocketing
+  skillUiPosition: 0, 2
+  learnCost: 0
+  tree: Thief
+  icon:
+      sprite: _CE/Interface/Skills/thief.rsi
+      state: pickpocketing
+  effects:
+  - !type:AddComponents
+    components:
+    - type: Thieving
+      stripTimeReduction: 0
+
+- type: skill
+  id: PickpocketingSpeedUpgrade
+  skillUiPosition: 2, 1
+  learnCost: 0
+  tree: Thief
+  icon:
+      sprite: _CE/Interface/Skills/thief.rsi
+      state: pickpocketing_speed
+  effects:
+  - !type:AddComponents
+    components:
+    - type: Thieving
+      stripTimeReduction: 0
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: Pickpocketing
+
+- type: skill
+  id: PickpocketingMovingUpgrade
+  skillUiPosition: 2, 3
+  learnCost: 0
+  tree: Thief
+  icon:
+      sprite: _CE/Interface/Skills/thief.rsi
+      state: pickpocketing_moving
+  effects:
+  - !type:AddComponents
+    components:
+    - type: Thieving
+      stripTimeReduction: 0
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: Pickpocketing

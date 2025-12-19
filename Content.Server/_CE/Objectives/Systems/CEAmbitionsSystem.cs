@@ -106,7 +106,7 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
 
     private void OnGetProgress(Entity<CEAmbitionObjectiveComponent> ent, ref ObjectiveGetProgressEvent args)
     {
-        args.Progress = 1f;
+        args.Progress = 0f;
     }
 
     private void OnObjectiveAssigned(Entity<CEAmbitionObjectiveComponent> ent, ref ObjectiveAfterAssignEvent args)

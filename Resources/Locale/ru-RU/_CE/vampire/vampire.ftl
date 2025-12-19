@@ -27,9 +27,6 @@ ce-vampire-tree-damaged = Ваше сердце клана атаковано!
 ce-vampire-tree-destroyed = Чужое сердце клана разрушено!
 ce-vampire-tree-destroyed-self = Ваше сердце клана разрушено!
 
-ce-skill-tree-vampire-name = Вампирские силы
-ce-skill-tree-vampire-desc = Могущественные опасные силы, доступные только вампирам.
-
 ce-admin-verb-text-make-vampire = Превратить в высшего вампира.
 ce-roles-antag-vampire-briefing = Эд, не забудь вставить адекватный брифинг для вампиров. Игрок. Если ты это видишь, пингуй Эда с смешными эмодзями. и скрином этого сообщения.
 
