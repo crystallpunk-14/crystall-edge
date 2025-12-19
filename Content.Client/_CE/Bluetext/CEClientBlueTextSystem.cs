@@ -1,10 +1,10 @@
 using Content.Client.CharacterInfo;
 using Robust.Client.UserInterface.Controls;
-using Content.Shared._CE.Bluetext;
+using Content.Shared._CE.BlueText;
 
-namespace Content.Client._CE.Bluetext;
+namespace Content.Client._CE.BlueText;
 
-public sealed class CEClientBluetextSystem : CESharedBlueTextSystem
+public sealed class CEClientBlueTextSystem : CESharedBlueTextSystem
 {
     public override void Initialize()
     {
@@ -27,7 +27,7 @@ public sealed class CEClientBluetextSystem : CESharedBlueTextSystem
             Margin = new Thickness(5)
         };
 
-        btn.OnPressed += _ => RaiseNetworkEvent(new CEToggleBluetextScreenEvent());
+        btn.OnPressed += _ => RaiseNetworkEvent(new CEToggleBlueTextScreenEvent());
 
         ev.Controls.Add(btn);
     }

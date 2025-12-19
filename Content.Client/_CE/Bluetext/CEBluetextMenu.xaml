@@ -15,7 +15,7 @@
             <BoxContainer Orientation="Vertical"
                           HorizontalExpand="True"
                           VerticalExpand="True">
-                <TextEdit Name="BluetextInput"
+                <TextEdit Name="BlueTextInput"
                           HorizontalExpand="True"
                           VerticalExpand="True"
                           Access="Public" />
@@ -29,7 +29,7 @@
         <RichTextLabel Text = "{Loc 'ce-bluetext-ui-window-tip'}"
                        Margin="12"
                        HorizontalAlignment="Left"/>
-        <Button Name="SubmitBluetext"
+        <Button Name="SubmitBlueText"
                 Margin="12"
                 StyleClasses="negative"
                 Text="{Loc 'ce-bluetext-ui-submit'}" />

@@ -1,19 +1,18 @@
-using Content.Shared._CE.Bluetext;
+using Content.Shared._CE.BlueText;
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;
-using Robust.Shared.ViewVariables;
 
-namespace Content.Client._CE.Bluetext;
+namespace Content.Client._CE.BlueText;
 
 [UsedImplicitly]
-public sealed class CEBluetextBoundUserInterface : BoundUserInterface
+public sealed class CEBlueTextBoundUserInterface : BoundUserInterface
 {
     [ViewVariables]
-    private CEBluetextMenu? _menu;
+    private CEBlueTextMenu? _menu;
 
     private EntityUid _owner;
 
-    public CEBluetextBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
+    public CEBlueTextBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
     {
         _owner = owner;
     }
@@ -22,8 +21,8 @@ public sealed class CEBluetextBoundUserInterface : BoundUserInterface
     {
         base.Open();
 
-        _menu = this.CreateWindow<CEBluetextMenu>();
-        _menu.OnSubmitBluetext += HandleSubmitBluetext;
+        _menu = this.CreateWindow<CEBlueTextMenu>();
+        _menu.OnSubmitBlueText += HandleSubmitBlueText;
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)
@@ -33,7 +32,7 @@ public sealed class CEBluetextBoundUserInterface : BoundUserInterface
         if (_menu == null)
             return;
 
-        if (state is not CEBluetextBuiState bluetextState)
+        if (state is not CEBlueTextBuiState bluetextState)
             return;
 
         _menu.Update(_owner, bluetextState);
@@ -47,19 +46,17 @@ public sealed class CEBluetextBoundUserInterface : BoundUserInterface
             return;
 
         if (_menu != null)
-        {
-            _menu.OnSubmitBluetext -= HandleSubmitBluetext;
-        }
+            _menu.OnSubmitBlueText -= HandleSubmitBlueText;
 
         _menu?.Dispose();
         _menu = null;
     }
 
-    private void HandleSubmitBluetext(string text)
+    private void HandleSubmitBlueText(string text)
     {
         if (_menu == null)
             return;
 
-        SendMessage(new CEBluetextSubmitMessage(text));
+        SendMessage(new CEBlueTextSubmitMessage(text));
     }
 }

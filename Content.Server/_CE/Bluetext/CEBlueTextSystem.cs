@@ -1,10 +1,10 @@
 using Content.Server.Antag;
 using Content.Server.Mind;
-using Content.Shared._CE.Bluetext;
+using Content.Shared._CE.BlueText;
 using Robust.Server.GameObjects;
 using Robust.Shared.Player;
 
-namespace Content.Server._CE.Bluetext;
+namespace Content.Server._CE.BlueText;
 
 public sealed class CEBlueTextSystem : CESharedBlueTextSystem
 {
@@ -17,8 +17,8 @@ public sealed class CEBlueTextSystem : CESharedBlueTextSystem
 
         SubscribeLocalEvent<CEBlueTextRuleComponent, AfterAntagEntitySelectedEvent>(OnAntagAttached);
 
-        SubscribeNetworkEvent<CEToggleBluetextScreenEvent>(OnToggleBluetext);
-        SubscribeLocalEvent<ActorComponent, CEBluetextSubmitMessage>(OnSubmitBluetext);
+        SubscribeNetworkEvent<CEToggleBlueTextScreenEvent>(OnToggleBluetext);
+        SubscribeLocalEvent<ActorComponent, CEBlueTextSubmitMessage>(OnSubmitBluetext);
     }
 
     private void OnAntagAttached(Entity<CEBlueTextRuleComponent> ent, ref AfterAntagEntitySelectedEvent args)
@@ -29,7 +29,7 @@ public sealed class CEBlueTextSystem : CESharedBlueTextSystem
         EnsureComp<CEBlueTextTrackerComponent>(mind);
     }
 
-    private void OnToggleBluetext(CEToggleBluetextScreenEvent ev, EntitySessionEventArgs args)
+    private void OnToggleBluetext(CEToggleBlueTextScreenEvent ev, EntitySessionEventArgs args)
     {
         if (args.SenderSession.AttachedEntity is not {Valid: true} ent)
             return;
@@ -43,13 +43,13 @@ public sealed class CEBlueTextSystem : CESharedBlueTextSystem
         if (!TryComp<ActorComponent>(ent, out var actor))
             return;
 
-        _userInterface.TryToggleUi(ent, CEBluetextUIKey.Key, actor.PlayerSession);
+        _userInterface.TryToggleUi(ent, CEBlueTextUIKey.Key, actor.PlayerSession);
 
-        var state = new CEBluetextBuiState(blueText.BlueText);
-        _userInterface.SetUiState(ent, CEBluetextUIKey.Key, state);
+        var state = new CEBlueTextBuiState(blueText.BlueText);
+        _userInterface.SetUiState(ent, CEBlueTextUIKey.Key, state);
     }
 
-    private void OnSubmitBluetext(Entity<ActorComponent> ent, ref CEBluetextSubmitMessage args)
+    private void OnSubmitBluetext(Entity<ActorComponent> ent, ref CEBlueTextSubmitMessage args)
     {
         if (!_mind.TryGetMind(ent, out var mind, out var mindComp))
             return;
@@ -65,7 +65,7 @@ public sealed class CEBlueTextSystem : CESharedBlueTextSystem
         blueText.BlueText = text;
         Dirty(mind, blueText);
 
-        var state = new CEBluetextBuiState(blueText.BlueText);
-        _userInterface.SetUiState(ent.Owner, CEBluetextUIKey.Key, state);
+        var state = new CEBlueTextBuiState(blueText.BlueText);
+        _userInterface.SetUiState(ent.Owner, CEBlueTextUIKey.Key, state);
     }
 }

@@ -16,7 +16,7 @@
     - CEThiefObjectiveBeSafe
   - type: AntagSelection
     selectionTime: IntraPlayerSpawn
-    antagName: ce-roles-antag-thief-name
+    agentName: ce-roles-antag-thief-name
     definitions:
     - prefRoles: [ CEThief ]
       min: 1
