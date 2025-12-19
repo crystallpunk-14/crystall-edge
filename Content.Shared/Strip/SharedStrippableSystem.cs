@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._CE.Thief;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CombatMode;
 using Content.Shared.Cuffs;
@@ -220,7 +221,7 @@ public abstract class SharedStrippableSystem : EntitySystem
             Hidden = stealth,
             AttemptFrequency = AttemptFrequency.EveryTick,
             BreakOnDamage = true,
-            BreakOnMove = true,
+            BreakOnMove = !stealth || !HasComp<CEThievingStripOnMovingComponent>(user), //CrystallEdge thieving on moving
             NeedHand = true,
             DuplicateCondition = DuplicateConditions.SameTool
         };
@@ -323,7 +324,7 @@ public abstract class SharedStrippableSystem : EntitySystem
             Hidden = stealth,
             AttemptFrequency = AttemptFrequency.EveryTick,
             BreakOnDamage = true,
-            BreakOnMove = true,
+            BreakOnMove = !stealth || !HasComp<CEThievingStripOnMovingComponent>(user), //CrystallEdge thieving on moving
             NeedHand = true,
             BreakOnHandChange = false, // Allow simultaneously removing multiple items.
             DuplicateCondition = DuplicateConditions.SameTool
@@ -427,7 +428,7 @@ public abstract class SharedStrippableSystem : EntitySystem
             Hidden = stealth,
             AttemptFrequency = AttemptFrequency.EveryTick,
             BreakOnDamage = true,
-            BreakOnMove = true,
+            BreakOnMove = !stealth || !HasComp<CEThievingStripOnMovingComponent>(user), //CrystallEdge thieving on moving
             NeedHand = true,
             DuplicateCondition = DuplicateConditions.SameTool
         };
@@ -537,7 +538,7 @@ public abstract class SharedStrippableSystem : EntitySystem
             Hidden = stealth,
             AttemptFrequency = AttemptFrequency.EveryTick,
             BreakOnDamage = true,
-            BreakOnMove = true,
+            BreakOnMove = !stealth || !HasComp<CEThievingStripOnMovingComponent>(user), //CrystallEdge thieving on moving
             NeedHand = true,
             BreakOnHandChange = false, // Allow simultaneously removing multiple items.
             DuplicateCondition = DuplicateConditions.SameTool
