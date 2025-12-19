@@ -21,4 +21,10 @@ public sealed partial class CCVars
     /// </summary>
     public static readonly CVarDef<bool> CEClosedBetaTest =
         CVarDef.Create("game.closed_beta_test", false, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     Controls if round-end window shows custom objective summary for antags
+    /// </summary>
+    public static readonly CVarDef<bool>
+        CEGameShowBlueText = CVarDef.Create("game.showbluetext", true, CVar.ARCHIVE | CVar.SERVERONLY);
 }

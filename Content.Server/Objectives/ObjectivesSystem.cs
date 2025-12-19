@@ -12,6 +12,7 @@ using Robust.Shared.Random;
 using System.Linq;
 using System.Text;
 using Content.Server.Objectives.Commands;
+using Content.Shared._CE.BlueText;
 using Content.Shared.CCVar;
 using Content.Shared.Prototypes;
 using Content.Shared.Roles.Jobs;
@@ -34,6 +35,7 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
     private IEnumerable<string>? _objectives;
 
     private bool _showGreentext;
+    private bool _showBluetext; //CrystallEdge
 
     public override void Initialize()
     {
@@ -42,6 +44,7 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
         SubscribeLocalEvent<RoundEndTextAppendEvent>(OnRoundEndText);
 
         Subs.CVar(_cfg, CCVars.GameShowGreentext, value => _showGreentext = value, true);
+        Subs.CVar(_cfg, CCVars.CEGameShowBlueText, value => _showBluetext = value, true);
 
         _prototypeManager.PrototypesReloaded += CreateCompletions;
     }
@@ -172,6 +175,9 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
                     if (!_showGreentext)
                     {
                         agentSummary.AppendLine(objectiveTitle);
+                        //CrystallEdge add description
+                        agentSummary.AppendLine(info.Value.Description + "\n");
+                        //CrystallEdge end
                     }
                     else if (progress > 0.99f)
                     {
@@ -208,6 +214,13 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
                     }
                 }
             }
+
+            //CrystallEdge bluetext showing
+            if (_showBluetext && TryComp<CEBlueTextTrackerComponent>(mindId, out var blueTracker))
+            {
+                agentSummary.AppendLine($"[color=#3d9fdb]{blueTracker.BlueText}[/color]");
+            }
+            //CrystallEdge end
 
             var successRate = totalObjectives > 0 ? (float) completedObjectives / totalObjectives : 0f;
             agentSummaries.Add((agentSummary.ToString(), successRate, completedObjectives));

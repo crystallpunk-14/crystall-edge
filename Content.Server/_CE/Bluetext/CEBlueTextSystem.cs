@@ -1,7 +1,9 @@
 using Content.Server.Antag;
 using Content.Server.Mind;
 using Content.Shared._CE.BlueText;
+using Content.Shared.CCVar;
 using Robust.Server.GameObjects;
+using Robust.Shared.Configuration;
 using Robust.Shared.Player;
 
 namespace Content.Server._CE.BlueText;
@@ -10,6 +12,7 @@ public sealed class CEBlueTextSystem : CESharedBlueTextSystem
 {
     [Dependency] private readonly MindSystem _mind = default!;
     [Dependency] private readonly UserInterfaceSystem _userInterface = default!;
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
 
     public override void Initialize()
     {
@@ -41,6 +44,9 @@ public sealed class CEBlueTextSystem : CESharedBlueTextSystem
             return;
 
         if (!TryComp<ActorComponent>(ent, out var actor))
+            return;
+
+        if (!_cfg.GetCVar(CCVars.CEGameShowBlueText))
             return;
 
         _userInterface.TryToggleUi(ent, CEBlueTextUIKey.Key, actor.PlayerSession);
