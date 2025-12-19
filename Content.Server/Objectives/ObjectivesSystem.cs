@@ -159,7 +159,7 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
                 //TO DO:
                 //check for the right group here. Getting the target issuer is easy: objectiveGroup.Key
                 //It should be compared to the type of the group's issuer.
-                agentSummary.AppendLine(objectiveGroup.Key);
+                agentSummary.AppendLine("### " + objectiveGroup.Key); //CrystallEdge discord format ###
 
                 foreach (var objective in objectiveGroup)
                 {
@@ -176,7 +176,7 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
                     {
                         agentSummary.AppendLine(objectiveTitle);
                         //CrystallEdge add description
-                        agentSummary.AppendLine(info.Value.Description + "\n");
+                        agentSummary.AppendLine("-# " + info.Value.Description);
                         //CrystallEdge end
                     }
                     else if (progress > 0.99f)
@@ -216,7 +216,7 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
             }
 
             //CrystallEdge bluetext showing
-            if (_showBluetext && TryComp<CEBlueTextTrackerComponent>(mindId, out var blueTracker))
+            if (_showBluetext && TryComp<CEBlueTextTrackerComponent>(mindId, out var blueTracker) && blueTracker.BlueText.Length > 0)
             {
                 agentSummary.AppendLine($"`[color=#3d9fdb]{blueTracker.BlueText}[/color]`");
             }

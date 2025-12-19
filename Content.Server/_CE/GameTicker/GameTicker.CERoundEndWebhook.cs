@@ -1,12 +1,15 @@
 using System.Text;
+using System.Threading.Tasks;
 using Content.Server.Discord;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
+using Robust.Shared.Utility;
 
 namespace Content.Server.GameTicking;
 
 public sealed partial class GameTicker
 {
+    private const int DiscordMessageMaxLength = 2000;
     private WebhookIdentifier? _roundEndWebhookIdentifier;
     private void InitializeCrystallEdgeRoundEndWebhook()
     {
@@ -36,7 +39,8 @@ public sealed partial class GameTicker
         //Round end text
         sb.AppendLine(ev.RoundEndText);
 
-        SendRoundEndSummaryDiscordMessage(sb.ToString());
+        var cleanText = FormattedMessage.RemoveMarkupPermissive(sb.ToString());
+        SendRoundEndSummaryDiscordMessage(cleanText);
     }
 
     private async void SendRoundEndSummaryDiscordMessage(string roundEndSummary)
@@ -46,13 +50,113 @@ public sealed partial class GameTicker
             if (_roundEndWebhookIdentifier == null)
                 return;
 
-            var payload = new WebhookPayload { Content = roundEndSummary };
+            // Split message into chunks if it exceeds Discord's character limit
+            if (roundEndSummary.Length <= DiscordMessageMaxLength)
+            {
+                var payload = new WebhookPayload { Content = roundEndSummary };
+                await _discord.CreateMessage(_roundEndWebhookIdentifier.Value, payload);
+            }
+            else
+            {
+                // Split the message into multiple parts
+                var chunks = SplitMessage(roundEndSummary, DiscordMessageMaxLength);
+                for (var i = 0; i < chunks.Count; i++)
+                {
+                    var chunk = chunks[i];
 
-            await _discord.CreateMessage(_roundEndWebhookIdentifier.Value, payload);
+                    var payload = new WebhookPayload { Content = chunk };
+                    await _discord.CreateMessage(_roundEndWebhookIdentifier.Value, payload);
+
+                    // Small delay between messages to avoid rate limiting
+                    if (i < chunks.Count - 1)
+                        await Task.Delay(500);
+                }
+            }
         }
         catch (Exception e)
         {
             Log.Error($"Error while sending discord round end summary message:\n{e}");
         }
+    }
+
+    private List<string> SplitMessage(string message, int maxLength)
+    {
+        var chunks = new List<string>();
+
+        // Reserve space for the part indicator: "[999/999]\n" = ~12 chars
+        var effectiveMaxLength = maxLength - 20;
+
+        if (message.Length <= effectiveMaxLength)
+        {
+            chunks.Add(message);
+            return chunks;
+        }
+
+        var lines = message.Split('\n');
+        var currentChunk = new StringBuilder();
+
+        foreach (var line in lines)
+        {
+            // If adding this line would exceed the limit
+            if (currentChunk.Length + line.Length + 1 > effectiveMaxLength)
+            {
+                // Save current chunk if it's not empty
+                if (currentChunk.Length > 0)
+                {
+                    chunks.Add(currentChunk.ToString());
+                    currentChunk.Clear();
+                }
+
+                // If a single line is too long, split it by words
+                if (line.Length > effectiveMaxLength)
+                {
+                    var words = line.Split(' ');
+                    foreach (var word in words)
+                    {
+                        if (currentChunk.Length + word.Length + 1 > effectiveMaxLength)
+                        {
+                            if (currentChunk.Length > 0)
+                            {
+                                chunks.Add(currentChunk.ToString());
+                                currentChunk.Clear();
+                            }
+
+                            // If even a single word is too long, truncate it
+                            if (word.Length > effectiveMaxLength)
+                            {
+                                chunks.Add(word.Substring(0, effectiveMaxLength - 3) + "...");
+                            }
+                            else
+                            {
+                                currentChunk.Append(word);
+                            }
+                        }
+                        else
+                        {
+                            if (currentChunk.Length > 0)
+                                currentChunk.Append(' ');
+                            currentChunk.Append(word);
+                        }
+                    }
+                    currentChunk.AppendLine();
+                }
+                else
+                {
+                    currentChunk.AppendLine(line);
+                }
+            }
+            else
+            {
+                currentChunk.AppendLine(line);
+            }
+        }
+
+        // Add the last chunk if it's not empty
+        if (currentChunk.Length > 0)
+        {
+            chunks.Add(currentChunk.ToString());
+        }
+
+        return chunks;
     }
 }
