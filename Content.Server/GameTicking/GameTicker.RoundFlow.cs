@@ -597,6 +597,7 @@ namespace Content.Server.GameTicking
             );
             RaiseNetworkEvent(roundEndMessageEvent);
             RaiseLocalEvent(roundEndMessageEvent);
+            RoundEndSummarySendToDiscord(roundEndMessageEvent); //CrystallEdge
 
             _replayRoundPlayerInfo = listOfPlayerInfoFinal;
             _replayRoundText = roundEndText;

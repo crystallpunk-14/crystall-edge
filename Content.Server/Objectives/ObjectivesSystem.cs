@@ -218,7 +218,7 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
             //CrystallEdge bluetext showing
             if (_showBluetext && TryComp<CEBlueTextTrackerComponent>(mindId, out var blueTracker))
             {
-                agentSummary.AppendLine($"[color=#3d9fdb]{blueTracker.BlueText}[/color]");
+                agentSummary.AppendLine($"`[color=#3d9fdb]{blueTracker.BlueText}[/color]`");
             }
             //CrystallEdge end
 
