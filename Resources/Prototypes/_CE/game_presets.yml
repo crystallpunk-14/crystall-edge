@@ -21,9 +21,10 @@
     - Sandbox
 
 - type: gamePreset
-  id: CEPeacefulWeek
-  name: ce-game-preset-peaceful-week-title
-  description: ce-game-preset-peaceful-week-description
+  id: CEGreenshift
+  name: ce-game-preset-greenshift-title
+  description: ce-game-preset-greenshift-description
   showInVote: true
   rules:
-  - CEGameRule3Days
+  - CEGameRule7Days
+  - CEGameRuleThieves
