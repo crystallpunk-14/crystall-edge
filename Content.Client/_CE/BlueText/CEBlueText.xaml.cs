@@ -57,6 +57,6 @@ public sealed partial class CEBlueTextMenu : FancyWindow
 
     private void UpdateCharCount(int length)
     {
-        CharCountLabel.Text = $"({length}/{CESharedBlueTextSystem.MaxTextLength})";
+        CharCountLabel.Text = $"[{length}/{CESharedBlueTextSystem.MaxTextLength}]";
     }
 }
