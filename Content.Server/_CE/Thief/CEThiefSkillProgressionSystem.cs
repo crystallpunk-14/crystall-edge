@@ -4,8 +4,10 @@ using Content.Shared._CE.Skill;
 using Content.Shared._CE.Skill.Components;
 using Content.Shared._CE.Thief;
 using Content.Shared.Foldable;
+using Content.Shared.Inventory;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
+using Content.Shared.Storage;
 
 namespace Content.Server._CE.Thief;
 
@@ -15,6 +17,7 @@ public sealed partial class CEThiefSkillProgressionSystem : EntitySystem
     [Dependency] private readonly RoleSystem _role = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly CESharedSkillSystem _skill = default!;
+    [Dependency] private readonly InventorySystem _inventory = default!;
 
     public override void Initialize()
     {
@@ -35,7 +38,7 @@ public sealed partial class CEThiefSkillProgressionSystem : EntitySystem
 
         foreach (var mindContainer in minds)
         {
-            if(!_mind.TryGetMind(mindContainer, out var mindId, out var mindComp, mindContainer.Comp))
+            if (!_mind.TryGetMind(mindContainer, out var mindId, out var mindComp, mindContainer.Comp))
                 continue;
             if (!_role.MindHasRole<CEThiefRoleComponent>(mindId))
                 continue;
@@ -85,9 +88,15 @@ public sealed partial class CEThiefSkillProgressionSystem : EntitySystem
 
     private float GetThiefScore(EntityUid thiefMind)
     {
-        var query = EntityQueryEnumerator<CEThiefHideoutComponent, TransformComponent>();
+        if (!TryComp<MindComponent>(thiefMind, out var mindComp))
+            return 0f;
+        if (mindComp.OwnedEntity is null)
+            return 0f;
 
         var score = 0f;
+
+        // Calculate score from items in hideouts
+        var query = EntityQueryEnumerator<CEThiefHideoutComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out var hideout, out var xform))
         {
             if (hideout.ThiefMind != thiefMind)
@@ -96,6 +105,33 @@ public sealed partial class CEThiefSkillProgressionSystem : EntitySystem
             foreach (var item in _lookup.GetEntitiesInRange<CETheftValueComponent>(xform.Coordinates, hideout.ScanRange))
             {
                 score += item.Comp.Difficulty;
+            }
+        }
+
+        // Calculate score from items in thief's inventory
+        var thief = mindComp.OwnedEntity.Value;
+
+        // Check inventory slots
+        if (_inventory.TryGetContainerSlotEnumerator(thief, out var containerSlotEnumerator))
+        {
+            while (containerSlotEnumerator.MoveNext(out var containerSlot))
+            {
+                if (!containerSlot.ContainedEntity.HasValue)
+                    continue;
+
+                // Check the item itself
+                if (TryComp<CETheftValueComponent>(containerSlot.ContainedEntity.Value, out var theftValue))
+                    score += theftValue.Difficulty;
+
+                // Check items inside storage containers (bags, backpacks, etc.)
+                if (TryComp<StorageComponent>(containerSlot.ContainedEntity.Value, out var storage))
+                {
+                    foreach (var storedEntity in storage.Container.ContainedEntities)
+                    {
+                        if (TryComp<CETheftValueComponent>(storedEntity, out var storedTheftValue))
+                            score += storedTheftValue.Difficulty;
+                    }
+                }
             }
         }
 
