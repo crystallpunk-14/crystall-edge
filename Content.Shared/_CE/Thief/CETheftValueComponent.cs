@@ -1,3 +1,4 @@
+using Content.Shared.Actions;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared._CE.Thief;
@@ -15,3 +16,5 @@ public sealed partial class CETheftValueComponent : Component
     [DataField]
     public float Difficulty = 1f;
 }
+
+public sealed partial class CEThiefShowTreasuresEvent : InstantActionEvent;

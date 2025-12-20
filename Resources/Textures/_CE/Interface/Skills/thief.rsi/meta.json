@@ -15,6 +15,9 @@
     },
     {
       "name": "pickpocketing_speed"
+    },
+    {
+      "name": "treasure_show"
     }
   ]
 }
