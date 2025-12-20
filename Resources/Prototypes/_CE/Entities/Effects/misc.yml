@@ -164,12 +164,3 @@
     duration: 0.9
   - type: TimedDespawn
     lifetime: 0.9
-
-- type: entity
-  parent: CETreasureSparkVFX
-  id: CETreasureSparkVFXThiefSound
-  suffix: VFX + Thief Sound
-  components:
-  - type: EmitSoundOnSpawn
-    sound:
-      path: /Audio/_CE/Effects/treasure_effect.ogg

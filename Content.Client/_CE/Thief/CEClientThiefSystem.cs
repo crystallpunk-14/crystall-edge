@@ -1,4 +1,6 @@
 using Content.Shared._CE.Thief;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
@@ -6,7 +8,10 @@ namespace Content.Client._CE.Thief;
 
 public sealed partial class CEClientThiefSystem : EntitySystem
 {
-    private EntProtoId _vfx = "CETreasureSparkVFXThiefSound";
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
+
+    private EntProtoId _vfx = "CETreasureSparkVFX";
+    private SoundSpecifier _sound = new SoundPathSpecifier("/Audio/_CE/Effects/treasure_effect.ogg");
     public override void Initialize()
     {
         base.Initialize();
@@ -20,6 +25,7 @@ public sealed partial class CEClientThiefSystem : EntitySystem
         while (query.MoveNext(out var uid, out var theftValue, out var transform))
         {
             SpawnAtPosition(_vfx, transform.Coordinates);
+            _audio.PlayPvs(_sound, transform.Coordinates);
         }
     }
 }
