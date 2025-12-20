@@ -6,7 +6,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._CE.Roles;
 
 /// <summary>
-/// Added to mind role entities to tag that they are a thief.
+///
 /// </summary>
 [RegisterComponent, NetworkedComponent]
 public sealed partial class CEThiefRoleComponent : BaseMindRoleComponent
@@ -16,4 +16,10 @@ public sealed partial class CEThiefRoleComponent : BaseMindRoleComponent
 
     [DataField]
     public ProtoId<CESkillPointPrototype> SkillPointType = "Memory";
+
+    /// <summary>
+    /// This value is calculated during initialization by reading the number of values in the game
+    /// </summary>
+    [DataField]
+    public float MaxScore = 0f;
 }

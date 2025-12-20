@@ -1,4 +1,5 @@
 using Content.Server.Roles;
+using Content.Shared._CE.DayCycle;
 using Content.Shared._CE.Roles;
 using Content.Shared._CE.Skill;
 using Content.Shared._CE.Skill.Components;
@@ -24,6 +25,26 @@ public sealed partial class CEThiefSkillProgressionSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<CEThiefHideoutComponent, FoldedEvent>(OnFolded);
+        SubscribeLocalEvent<CEThiefRoleComponent, MapInitEvent>(OnMapInit);
+
+        SubscribeLocalEvent<CEGlobalStartDayEvent>(OnStartDay);
+    }
+
+    private void OnStartDay(CEGlobalStartDayEvent ev)
+    {
+        var query = EntityQueryEnumerator<MindComponent>();
+        while (query.MoveNext(out var mindId, out var mindComp))
+        {
+            if (!_role.MindHasRole<CEThiefRoleComponent>(mindId, out var thiefRole))
+                continue;
+
+            UpdateThiefSkillProgression(mindId, thiefRole);
+        }
+    }
+
+    private void OnMapInit(Entity<CEThiefRoleComponent> ent, ref MapInitEvent args)
+    {
+        ent.Comp.MaxScore = GetMaxScore();
     }
 
     /// <summary>
@@ -48,23 +69,20 @@ public sealed partial class CEThiefSkillProgressionSystem : EntitySystem
         }
     }
 
-    private void UpdateThiefSkillProgression(EntityUid thiefMind)
+    private void UpdateThiefSkillProgression(EntityUid thiefMind, CEThiefRoleComponent thiefRole)
     {
-        if (!_mind.TryGetMind(thiefMind, out var mindId, out var mindComp))
+        if (!TryComp<MindComponent>(thiefMind, out var mindComp))
             return;
 
         if (!TryComp<CESkillStorageComponent>(mindComp.OwnedEntity, out var skillStorage))
             return;
 
-        if (!_role.MindHasRole<CEThiefRoleComponent>(thiefMind, out var thiefRole))
-            return;
-
-        var successPercentage = GetThiefSuccessPercentage(thiefMind);
-        var maxSkillPoints = thiefRole.Value.Comp2.MaxSkillPointsFromStealing;
+        var successPercentage = GetThiefSuccessPercentage(thiefMind, thiefRole);
+        var maxSkillPoints = thiefRole.MaxSkillPointsFromStealing;
         var skillPointsToAward = maxSkillPoints * successPercentage;
 
         var skillPoints = skillStorage.SkillPoints;
-        if (!skillPoints.TryGetValue(thiefRole.Value.Comp2.SkillPointType, out var currentPoints))
+        if (!skillPoints.TryGetValue(thiefRole.SkillPointType, out var currentPoints))
             return;
 
         var needAddSkillPoints = skillPointsToAward - currentPoints.Max;
@@ -72,18 +90,18 @@ public sealed partial class CEThiefSkillProgressionSystem : EntitySystem
         if (needAddSkillPoints <= 0f)
             return;
 
-        _skill.TryAddSkillPoints(mindComp.OwnedEntity.Value, thiefRole.Value.Comp2.SkillPointType, needAddSkillPoints);
+        _skill.TryAddSkillPoints(mindComp.OwnedEntity.Value, thiefRole.SkillPointType, needAddSkillPoints);
     }
 
-    private float GetThiefSuccessPercentage(EntityUid thiefMind)
+    private float GetThiefSuccessPercentage(EntityUid thiefMind, CEThiefRoleComponent thiefRole)
     {
         var thiefScore = GetThiefScore(thiefMind);
-        var maxScore = GetMaxScore();
+        var maxScore = thiefRole.MaxScore;
 
         if (maxScore <= 0f)
             return 0f;
 
-        return thiefScore / maxScore;
+        return Math.Clamp(thiefScore / maxScore, 0, 1);
     }
 
     private float GetThiefScore(EntityUid thiefMind)

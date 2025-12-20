@@ -90,8 +90,6 @@ entities:
       chunkCollection:
         version: 2
         nodes: []
-    - type: BecomesStation
-      id: Dev
     - type: Forensics
       residues: []
       dnas: []

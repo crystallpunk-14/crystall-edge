@@ -86,8 +86,6 @@ entities:
       chunkCollection:
         version: 2
         nodes: []
-    - type: BecomesStation
-      id: Dev
     - type: SunShadowCycle
       directions:
       - direction: 0,3
