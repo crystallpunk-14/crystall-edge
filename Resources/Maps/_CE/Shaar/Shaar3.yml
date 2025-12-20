@@ -4,7 +4,7 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/17/2025 13:47:13
+  time: 12/20/2025 12:39:29
   entityCount: 45
 maps:
 - 1
@@ -88,6 +88,7 @@ entities:
       fibers: []
       fingerprints: []
     - type: RadiationGridResistance
+    - type: ExplosionAirtightGrid
   - uid: 2
     components:
     - type: MetaData

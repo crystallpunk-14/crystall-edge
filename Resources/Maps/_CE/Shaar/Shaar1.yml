@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/17/2025 13:47:13
-  entityCount: 909
+  time: 12/20/2025 12:39:28
+  entityCount: 912
 maps:
 - 1
 grids:
@@ -126,6 +126,7 @@ entities:
       fibers: []
       fingerprints: []
     - type: RadiationGridResistance
+    - type: ExplosionAirtightGrid
   - uid: 40
     components:
     - type: MetaData
@@ -222,6 +223,21 @@ entities:
       pos: 3.6194649,-7.6666408
       parent: 1
     - type: ViewSubscriber
+  - uid: 912
+    components:
+    - type: MetaData
+    - type: Transform
+      gridTraversal: False
+      pos: -2.8425062,-11.663216
+      parent: 1
+    - type: ViewSubscriber
+- proto: CEBowlIronTreasure
+  entities:
+  - uid: 910
+    components:
+    - type: Transform
+      pos: -0.7701452,3.5211957
+      parent: 1
 - proto: CEBucket
   entities:
   - uid: 702
@@ -1096,6 +1112,14 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 33.5,-3.5
+      parent: 1
+- proto: CEGunPeacekeeperGolden
+  entities:
+  - uid: 911
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 2.5782588,-19.7667
       parent: 1
 - proto: CEIronDoorGuardHeadRoom
   entities:

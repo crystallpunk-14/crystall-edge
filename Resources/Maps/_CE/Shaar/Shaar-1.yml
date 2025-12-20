@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/17/2025 13:47:13
-  entityCount: 1608
+  time: 12/20/2025 12:39:28
+  entityCount: 1621
 maps:
 - 1
 grids:
@@ -144,6 +144,7 @@ entities:
       fibers: []
       fingerprints: []
     - type: RadiationGridResistance
+    - type: ExplosionAirtightGrid
   - uid: 3
     components:
     - type: MetaData
@@ -190,6 +191,14 @@ entities:
     - type: Transform
       gridTraversal: False
       pos: 16.255348,-4.1103864
+      parent: 1
+    - type: ViewSubscriber
+  - uid: 896
+    components:
+    - type: MetaData
+    - type: Transform
+      gridTraversal: False
+      pos: -2.8425062,-11.663216
       parent: 1
     - type: ViewSubscriber
   - uid: 974
@@ -394,6 +403,14 @@ entities:
       rot: 3.141592653589793 rad
       pos: 23.090456,-3.5278919
       parent: 1
+- proto: CEChairStoolWooden
+  entities:
+  - uid: 1621
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 32.335796,-10.3384495
+      parent: 1
 - proto: CEChairWooden
   entities:
   - uid: 103
@@ -422,6 +439,20 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 0.5,-12.5
       parent: 1
+- proto: CECoinCopper1
+  entities:
+  - uid: 627
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 31.715542,-10.563337
+      parent: 1
+  - uid: 718
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 31.27687,-10.664536
+      parent: 1
 - proto: CECoinCopper10
   entities:
   - uid: 989
@@ -438,6 +469,14 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+- proto: CECoinSilver1
+  entities:
+  - uid: 1616
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 31.475756,-10.525782
+      parent: 1
 - proto: CECoinSilver5
   entities:
   - uid: 991
@@ -528,6 +567,11 @@ entities:
     components:
     - type: Transform
       pos: 20.455755,-2.6103873
+      parent: 1
+  - uid: 1611
+    components:
+    - type: Transform
+      pos: 26.76555,-12.382261
       parent: 1
 - proto: CEDistributionUnitBasic
   entities:
@@ -733,6 +777,36 @@ entities:
       rot: 3.141592653589793 rad
       pos: -7.5,-13.5
       parent: 1
+  - uid: 1612
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 28.5,-13.5
+      parent: 1
+  - uid: 1617
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 29.5,-13.5
+      parent: 1
+  - uid: 1618
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 30.5,-12.5
+      parent: 1
+  - uid: 1619
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 29.5,-13.5
+      parent: 1
+  - uid: 1620
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 30.5,-12.5
+      parent: 1
 - proto: CEFenceBigWooden
   entities:
   - uid: 138
@@ -788,7 +862,7 @@ entities:
       pos: -26.5,-9.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -8211.166
+      secondsUntilStateChange: -8498.503
       state: Opening
 - proto: CEFenceWooden
   entities:
@@ -1239,6 +1313,21 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -12.5,-4.5
       parent: 1
+  - uid: 1613
+    components:
+    - type: Transform
+      pos: 25.5,-11.5
+      parent: 1
+  - uid: 1614
+    components:
+    - type: Transform
+      pos: 27.5,-9.5
+      parent: 1
+  - uid: 1615
+    components:
+    - type: Transform
+      pos: 26.5,-7.5
+      parent: 1
 - proto: CEGunJustice
   entities:
   - uid: 1004
@@ -1282,6 +1371,13 @@ entities:
     components:
     - type: Transform
       pos: 2.0916789,-20.465172
+      parent: 1
+- proto: CEGunPeacekeeperGolden
+  entities:
+  - uid: 1609
+    components:
+    - type: Transform
+      pos: 2.0400443,-20.79391
       parent: 1
 - proto: CEIronDoor
   entities:
@@ -1775,6 +1871,13 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
+  - uid: 1415
+    components:
+    - type: Transform
+      pos: -23.5,-8.5
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
   - uid: 1416
     components:
     - type: Transform
@@ -1838,6 +1941,13 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
+  - uid: 1425
+    components:
+    - type: Transform
+      pos: -17.5,-7.5
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
   - uid: 1426
     components:
     - type: Transform
@@ -1880,6 +1990,13 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
+  - uid: 1433
+    components:
+    - type: Transform
+      pos: -9.5,-7.5
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
   - uid: 1437
     components:
     - type: Transform
@@ -1919,6 +2036,13 @@ entities:
     components:
     - type: Transform
       pos: -2.5,-7.5
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1443
+    components:
+    - type: Transform
+      pos: -1.5,-7.5
       parent: 1
     - type: Fixtures
       fixtures: {}
@@ -1968,6 +2092,13 @@ entities:
     components:
     - type: Transform
       pos: 5.5,-7.5
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1451
+    components:
+    - type: Transform
+      pos: 6.5,-7.5
       parent: 1
     - type: Fixtures
       fixtures: {}
@@ -2206,43 +2337,6 @@ entities:
     components:
     - type: Transform
       pos: -1.5,-6.5
-      parent: 1
-    - type: Fixtures
-      fixtures: {}
-- proto: CEPipeBrassMediumDelayer
-  entities:
-  - uid: 1415
-    components:
-    - type: Transform
-      pos: -23.5,-8.5
-      parent: 1
-    - type: Fixtures
-      fixtures: {}
-  - uid: 1425
-    components:
-    - type: Transform
-      pos: -17.5,-7.5
-      parent: 1
-    - type: Fixtures
-      fixtures: {}
-  - uid: 1433
-    components:
-    - type: Transform
-      pos: -9.5,-7.5
-      parent: 1
-    - type: Fixtures
-      fixtures: {}
-  - uid: 1443
-    components:
-    - type: Transform
-      pos: -1.5,-7.5
-      parent: 1
-    - type: Fixtures
-      fixtures: {}
-  - uid: 1451
-    components:
-    - type: Transform
-      pos: 6.5,-7.5
       parent: 1
     - type: Fixtures
       fixtures: {}
@@ -3302,11 +3396,6 @@ entities:
     - type: Transform
       pos: -7.5,3.5
       parent: 1
-  - uid: 896
-    components:
-    - type: Transform
-      pos: -6.5,3.5
-      parent: 1
   - uid: 897
     components:
     - type: Transform
@@ -4286,10 +4375,10 @@ entities:
       parent: 1
 - proto: CEWallIronCore
   entities:
-  - uid: 718
+  - uid: 623
     components:
     - type: Transform
-      pos: 11.5,-8.5
+      pos: -6.5,3.5
       parent: 1
   - uid: 719
     components:
@@ -5535,15 +5624,10 @@ entities:
     - type: Transform
       pos: 30.5,-11.5
       parent: 1
-  - uid: 623
-    components:
-    - type: Transform
-      pos: 31.5,-11.5
-      parent: 1
   - uid: 624
     components:
     - type: Transform
-      pos: 32.5,-10.5
+      pos: 11.5,-8.5
       parent: 1
   - uid: 625
     components:
@@ -5554,11 +5638,6 @@ entities:
     components:
     - type: Transform
       pos: 32.5,-8.5
-      parent: 1
-  - uid: 627
-    components:
-    - type: Transform
-      pos: 31.5,-10.5
       parent: 1
   - uid: 628
     components:
@@ -8803,6 +8882,12 @@ entities:
     components:
     - type: Transform
       pos: 12.271603,-0.32623821
+      parent: 1
+  - uid: 1610
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 12.2907715,-11.681971
       parent: 1
 - proto: SpawnPointLatejoin
   entities:

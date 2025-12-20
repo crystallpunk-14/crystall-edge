@@ -75,6 +75,7 @@
   id: CEGunPeacekeeperGolden
   name: golden Peacemaker
   description: A low-charge energy rifle that fires a powerful repulsive beam of concentrated mana. This is a special item, made as a one-off piece to order for the guard commander. It has a slightly higher ammunition capacity.
+  suffix: Theft Target
   components:
   - type: CETheftValue
     difficulty: 5
