@@ -37,10 +37,10 @@
       parallax: CESky
     - type: SunShadowCycle
       offset: 490
-      duration: 10
+      duration: 30
     - type: LightCycle
       offset: 490
-      duration: 10
+      duration: 30
       originalColor: "#fff475"
     - type: SunShadow
     - type: MapLight

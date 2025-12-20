@@ -12,7 +12,7 @@ namespace Content.Shared._CE.Roles;
 public sealed partial class CEThiefRoleComponent : BaseMindRoleComponent
 {
     [DataField]
-    public float MaxSkillPointsFromStealing = 3f;
+    public float MaxSkillPointsFromStealing = 5f;
 
     [DataField]
     public ProtoId<CESkillPointPrototype> SkillPointType = "Memory";
@@ -22,4 +22,10 @@ public sealed partial class CEThiefRoleComponent : BaseMindRoleComponent
     /// </summary>
     [DataField]
     public float MaxScore = 0f;
+
+    /// <summary>
+    /// Previous best score from past days
+    /// </summary>
+    [DataField]
+    public float PreviousBestScore = 0f;
 }

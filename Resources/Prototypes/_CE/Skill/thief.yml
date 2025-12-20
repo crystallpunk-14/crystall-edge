@@ -20,7 +20,7 @@
   name: ce-skill-thief-pickpocketing-name
   desc: ce-skill-thief-pickpocketing-desc
   skillUiPosition: 0, 2
-  learnCost: 1
+  learnCost: 0
   tree: Thief
   icon:
       sprite: _CE/Interface/Skills/thief.rsi

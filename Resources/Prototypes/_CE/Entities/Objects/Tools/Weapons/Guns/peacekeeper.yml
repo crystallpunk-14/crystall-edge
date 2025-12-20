@@ -83,4 +83,6 @@
   - type: PredictedBattery
     maxCharge: 80
     startingCharge: 80
+  - type: StaticPrice
+    price: 550
 

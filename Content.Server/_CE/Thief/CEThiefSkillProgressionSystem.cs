@@ -1,14 +1,19 @@
+using System.Text;
+using Content.Server.Chat.Managers;
 using Content.Server.Roles;
 using Content.Shared._CE.DayCycle;
 using Content.Shared._CE.Roles;
 using Content.Shared._CE.Skill;
 using Content.Shared._CE.Skill.Components;
 using Content.Shared._CE.Thief;
+using Content.Shared.Chat;
 using Content.Shared.Foldable;
-using Content.Shared.Inventory;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
-using Content.Shared.Storage;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
+using Robust.Shared.Containers;
+using Robust.Shared.Player;
 
 namespace Content.Server._CE.Thief;
 
@@ -18,11 +23,23 @@ public sealed partial class CEThiefSkillProgressionSystem : EntitySystem
     [Dependency] private readonly RoleSystem _role = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly CESharedSkillSystem _skill = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!;
+    [Dependency] private readonly IChatManager _chat = default!;
+    [Dependency] private readonly ISharedPlayerManager _player = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
+
+    private readonly Color _messageColor = Color.FromSrgb(new Color(123, 173, 137));
+    private SoundSpecifier _newDaySound = new SoundPathSpecifier("/Audio/_CE/Announce/vampire.ogg");
+
+    private EntityQuery<ContainerManagerComponent> _containerQuery;
+    private EntityQuery<CETheftValueComponent> _theftValueQuery;
+    private HashSet<EntityUid> _countedItems = new();
 
     public override void Initialize()
     {
         base.Initialize();
+
+        _containerQuery = GetEntityQuery<ContainerManagerComponent>();
+        _theftValueQuery = GetEntityQuery<CETheftValueComponent>();
 
         SubscribeLocalEvent<CEThiefHideoutComponent, FoldedEvent>(OnFolded);
         SubscribeLocalEvent<CEThiefRoleComponent, MapInitEvent>(OnMapInit);
@@ -78,6 +95,7 @@ public sealed partial class CEThiefSkillProgressionSystem : EntitySystem
             return;
 
         var successPercentage = GetThiefSuccessPercentage(thiefMind, thiefRole);
+        var currentScore = GetThiefScore(thiefMind);
         var maxSkillPoints = thiefRole.MaxSkillPointsFromStealing;
         var skillPointsToAward = maxSkillPoints * successPercentage;
 
@@ -87,10 +105,46 @@ public sealed partial class CEThiefSkillProgressionSystem : EntitySystem
 
         var needAddSkillPoints = skillPointsToAward - currentPoints.Max;
 
-        if (needAddSkillPoints <= 0f)
-            return;
+        // Send chat messages
+        if (_player.TryGetSessionById(mindComp.UserId, out var session))
+        {
+            var messageBuilder = new StringBuilder();
+            var percentString = $"{successPercentage * 100:F1}%";
+            messageBuilder.AppendLine(Loc.GetString("ce-thief-progression-new-day", ("percent", percentString)));
 
-        _skill.TryAddSkillPoints(mindComp.OwnedEntity.Value, thiefRole.SkillPointType, needAddSkillPoints);
+            // Check if this is a new record
+            if (currentScore > thiefRole.PreviousBestScore)
+            {
+                var improvement = ((currentScore - thiefRole.PreviousBestScore) / thiefRole.MaxScore) * 100;
+                var improvementString = $"{improvement:F1}%";
+                messageBuilder.AppendLine(Loc.GetString("ce-thief-progression-record", ("improvement", improvementString)));
+                thiefRole.PreviousBestScore = currentScore;
+            }
+
+            // Add skill points info if any were awarded
+            if (needAddSkillPoints > 0f)
+            {
+                var pointsString = $"{needAddSkillPoints:F1}";
+                messageBuilder.AppendLine(Loc.GetString("ce-thief-progression-skill-gain", ("points", pointsString)));
+                _skill.TryAddSkillPoints(mindComp.OwnedEntity.Value, thiefRole.SkillPointType, needAddSkillPoints);
+            }
+
+            var message = messageBuilder.ToString().TrimEnd();
+            var wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", message));
+            _chat.ChatMessageToOne(ChatChannel.Server,
+                message,
+                wrappedMessage,
+                default,
+                false,
+                session.Channel,
+                _messageColor);
+            _audio.PlayEntity(_newDaySound, mindComp.OwnedEntity.Value, mindComp.OwnedEntity.Value);
+        }
+        else if (needAddSkillPoints > 0f)
+        {
+            // If no session but still need to add points
+            _skill.TryAddSkillPoints(mindComp.OwnedEntity.Value, thiefRole.SkillPointType, needAddSkillPoints);
+        }
     }
 
     private float GetThiefSuccessPercentage(EntityUid thiefMind, CEThiefRoleComponent thiefRole)
@@ -113,6 +167,8 @@ public sealed partial class CEThiefSkillProgressionSystem : EntitySystem
 
         var score = 0f;
 
+        _countedItems.Clear();
+
         // Calculate score from items in hideouts
         var query = EntityQueryEnumerator<CEThiefHideoutComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out var hideout, out var xform))
@@ -122,36 +178,45 @@ public sealed partial class CEThiefSkillProgressionSystem : EntitySystem
 
             foreach (var item in _lookup.GetEntitiesInRange<CETheftValueComponent>(xform.Coordinates, hideout.ScanRange))
             {
+                if (_countedItems.Contains(item.Owner))
+                    continue;
+
                 score += item.Comp.Difficulty;
+                _countedItems.Add(item.Owner);
             }
         }
 
         // Calculate score from items in thief's inventory
         var thief = mindComp.OwnedEntity.Value;
 
-        // Check inventory slots
-        if (_inventory.TryGetContainerSlotEnumerator(thief, out var containerSlotEnumerator))
+        // Recursively check all containers (inventory, bags, implants, etc.)
+        if (!_containerQuery.TryGetComponent(thief, out var currentManager))
+            return score;
+
+        var containerStack = new Stack<ContainerManagerComponent>();
+
+        do
         {
-            while (containerSlotEnumerator.MoveNext(out var containerSlot))
+            foreach (var container in currentManager.Containers.Values)
             {
-                if (!containerSlot.ContainedEntity.HasValue)
-                    continue;
-
-                // Check the item itself
-                if (TryComp<CETheftValueComponent>(containerSlot.ContainedEntity.Value, out var theftValue))
-                    score += theftValue.Difficulty;
-
-                // Check items inside storage containers (bags, backpacks, etc.)
-                if (TryComp<StorageComponent>(containerSlot.ContainedEntity.Value, out var storage))
+                foreach (var entity in container.ContainedEntities)
                 {
-                    foreach (var storedEntity in storage.Container.ContainedEntities)
+                    // Check if this entity has theft value
+                    if (_theftValueQuery.TryGetComponent(entity, out var theftValue))
                     {
-                        if (TryComp<CETheftValueComponent>(storedEntity, out var storedTheftValue))
-                            score += storedTheftValue.Difficulty;
+                        if (!_countedItems.Contains(entity))
+                        {
+                            score += theftValue.Difficulty;
+                            _countedItems.Add(entity);
+                        }
                     }
+
+                    // If it is a container, check its contents recursively
+                    if (_containerQuery.TryGetComponent(entity, out var containerManager))
+                        containerStack.Push(containerManager);
                 }
             }
-        }
+        } while (containerStack.TryPop(out currentManager));
 
         return score;
     }
