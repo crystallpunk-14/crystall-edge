@@ -134,3 +134,42 @@
       - random:
           snow1: ""
           snow2: ""
+
+- type: entity
+  id: CETreasureSparkVFX
+  categories: [ ForkFiltered ]
+  save: false
+  suffix: VFX
+  name: treasure spark
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/treasure_sparks.rsi
+    drawdepth: Effects
+    layers:
+    - state: sparks
+      shader: unshaded
+  - type: Physics
+    canCollide: false
+  - type: Tag
+    tags:
+      - HideContextMenu
+  - type: PointLight
+    color: "#ffeb13"
+    enabled: true
+    radius: 2
+    energy: 4
+    netsync: false
+    castShadows: false
+  - type: LightFade
+    duration: 0.9
+  - type: TimedDespawn
+    lifetime: 0.9
+
+- type: entity
+  parent: CETreasureSparkVFX
+  id: CETreasureSparkVFXThiefSound
+  suffix: VFX + Thief Sound
+  components:
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/_CE/Effects/treasure_effect.ogg

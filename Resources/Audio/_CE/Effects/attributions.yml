@@ -112,3 +112,8 @@
   license: "CC-BY-4.0"
   copyright: 'by tjcason on Freesound.org'
   source: "https://freesound.org/people/tjcason/sounds/390475/"
+
+- files: ["treasure_effect.ogg""]
+  license: "CC0-1.0"
+  copyright: 'by el_boss on Freesound.org'
+  source: "https://freesound.org/people/el_boss/sounds/817813/"
