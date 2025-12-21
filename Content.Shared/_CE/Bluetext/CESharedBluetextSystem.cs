@@ -10,7 +10,7 @@ public abstract class CESharedBlueTextSystem : EntitySystem
 }
 
 /// <summary>
-/// Message sended from client to server to save the blue text inputted by the player.
+/// Message sent from client to server to save the blue text inputted by the player.
 /// </summary>
 public sealed class CEBlueTextSaveMessage : NetMessage
 {
