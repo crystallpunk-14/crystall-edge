@@ -8651,7 +8651,7 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -1.5,14.5
       parent: 1
-- proto: Lantern
+- proto: CELantern
   entities:
   - uid: 358
     components:

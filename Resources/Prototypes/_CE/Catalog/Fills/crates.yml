@@ -48,6 +48,8 @@
         weight: 2
       - id: CEWrench
         weight: 2
+      - id: CELantern
+        weight: 2
       - id: CECrowbar
         weight: 2
       - id: CEManaTransferGlove
@@ -71,9 +73,6 @@
         - id: CEInstrumentLyra
         - id: CEInstrumentLute
         - id: CECandle
-      - !type:GroupSelector
-        children:
-        - id: Lantern #TODO replace with CE lantern
       - id: CERope
       - id: CEFork
       - id: CESpoon

@@ -43,10 +43,10 @@
     count: 1
 
 - type: tradingPosition
-  id: Lantern #TODO remove vanilla lantern and replace with CE lantern
+  id: CELantern
   faction: DwarfMiners
   service: !type:CEBuyItemsService
-    product: Lantern
+    product: CELantern
     count: 1
 
 - type: tradingPosition
