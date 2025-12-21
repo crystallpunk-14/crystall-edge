@@ -55,9 +55,9 @@
   maxCount: 10
 
 - type: stack
-  id: CEBrassScrap
+  id: CEScrapBrass
   name: ce-stack-brass-scrap
-  spawn: CEBrassScrap1
+  spawn: CEScrapBrass1
   icon: { sprite: _CE/Objects/Materials/Metals/brass_scrap.rsi, state: scrap_2 }
   maxCount: 10
 

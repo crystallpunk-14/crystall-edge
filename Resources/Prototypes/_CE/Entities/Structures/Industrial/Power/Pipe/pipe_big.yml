@@ -49,7 +49,7 @@
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
-          CEBrassScrap1:
+          CEScrapBrass1:
             min: 1
             max: 1
       - !type:PlaySoundBehavior
@@ -179,7 +179,7 @@
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
-          CEBrassScrap1:
+          CEScrapBrass1:
             min: 1
             max: 1
           CEScrapIron1:
@@ -261,7 +261,7 @@
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
-          CEBrassScrap1:
+          CEScrapBrass1:
             min: 1
             max: 1
       - !type:PlaySoundBehavior

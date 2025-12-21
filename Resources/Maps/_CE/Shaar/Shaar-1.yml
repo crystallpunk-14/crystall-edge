@@ -378,7 +378,7 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -20.5,-16.5
       parent: 1
-- proto: CEBrassScrap1
+- proto: CEScrapBrass1
   entities:
   - uid: 334
     components:

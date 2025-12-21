@@ -44,7 +44,7 @@
     count: 10
 
 - type: entity
-  id: CEBrassScrap1
+  id: CEScrapBrass1
   parent: BaseItem
   name: brass scrap
   description: Crooked pieces of brass. The secret of producing this material has been lost. Only ancient ruins remain as a source of this valuable metal.
@@ -60,7 +60,7 @@
         map: ["base"]
   - type: Appearance
   - type: Stack
-    stackType: CEBrassScrap
+    stackType: CEScrapBrass
     count: 1
     baseLayer: base
     layerStates:
@@ -73,16 +73,16 @@
       CEBrass: 10
 
 - type: entity
-  id: CEBrassScrap5
-  parent: CEBrassScrap1
+  id: CEScrapBrass5
+  parent: CEScrapBrass1
   suffix: 5
   components:
   - type: Stack
     count: 5
 
 - type: entity
-  id: CEBrassScrap10
-  parent: CEBrassScrap1
+  id: CEScrapBrass10
+  parent: CEScrapBrass1
   suffix: 10
   components:
   - type: Stack
