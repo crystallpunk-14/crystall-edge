@@ -61,8 +61,8 @@
   - type: MeleeWeapon
     damage:
       types:
-        Blunt: 10
-        Piercing: 10
+        Blunt: 12
+        Piercing: 12
         Structural: 15
     range: 1
     attackRate: 1

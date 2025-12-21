@@ -27,6 +27,14 @@
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEIronScrap1:
+            min: 1
+            max: 2
   #    - !type:ChangeConstructionNodeBehavior
   #      node: CEIronDoorFrame
   #- type: Construction
