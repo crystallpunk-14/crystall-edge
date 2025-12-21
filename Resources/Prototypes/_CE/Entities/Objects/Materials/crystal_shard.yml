@@ -39,7 +39,16 @@
   - type: Battery
     maxCharge: 25
     startingCharge: 25
+  - type: PowerCell
   - type: CEIrradiateOnDestroy
     irradiateCoefficient: 0.5
   - type: StaticPrice
     price: 3
+  - type: CEEnergyOverchargeDamage
+    damage:
+      types:
+        Blunt: 2
+  - type: CEEnergyDeficitDamage
+    damage:
+      types:
+        Blunt: 2

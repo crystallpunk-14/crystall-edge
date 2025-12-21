@@ -43,6 +43,9 @@ public abstract partial class CESharedPowerSystem : EntitySystem
         if (!TryComp<BatteryComponent>(ent, out var battery))
             return;
 
+        if (battery.LastCharge <= 0f)
+            return;
+
         Irradiate(Transform(ent).Coordinates, battery.LastCharge, ent.Comp.Time);
     }
 
