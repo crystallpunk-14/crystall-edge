@@ -47,16 +47,12 @@ public abstract partial class CESharedPowerSystem
             if (drained <= 0)
                 return;
 
-            var drainedPercent = drained / ent.Comp.TransferAmount;
-
             Battery.ChangeCharge((user, userBattery), drained);
-            PullTowardsUser(target, user, ent.Comp.PullDistance * drainedPercent, ent.Comp.ThrowPower);
             args.Handled = true;
         }
         else
         {
             var spent = -Battery.ChangeCharge((user, userBattery), -ent.Comp.TransferAmount);
-            PushFromUser(target, user, ent.Comp.ThrowDistance, ent.Comp.ThrowPower);
 
             if (batteryTarget is null)
                 return;
@@ -76,26 +72,6 @@ public abstract partial class CESharedPowerSystem
                 Loc.GetString(ent.Comp.ConsumeMode
                     ? "ce-energy-transfer-glove-mode-drain"
                     : "ce-energy-transfer-glove-mode-transfer"))));
-    }
-
-    private void PushFromUser(EntityUid target, EntityUid user, float distance, float power)
-    {
-        var dir = _transform.GetWorldPosition(target) - _transform.GetWorldPosition(user);
-        if (dir == Vector2.Zero)
-            return;
-
-        var displacement = Vector2.Normalize(dir) * distance;
-        _throw.TryThrow(target, displacement, power, user, doSpin: true);
-    }
-
-    private void PullTowardsUser(EntityUid target, EntityUid user, float distance, float power)
-    {
-        var dir = _transform.GetWorldPosition(user) - _transform.GetWorldPosition(target);
-        if (dir == Vector2.Zero)
-            return;
-
-        var displacement = Vector2.Normalize(dir) * distance;
-        _throw.TryThrow(target, displacement, power, user, doSpin: true);
     }
 
     private void OnUseInHand(Entity<CEEnergyTransferGloveComponent> ent, ref UseInHandEvent args)
