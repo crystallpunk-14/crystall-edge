@@ -1,0 +1,95 @@
+- type: entity
+  parent:
+  - BaseItem
+  id: CELantern
+  name: lantern
+  description: A device that converts energy from crystals into a source of directional light. Convenient for traveling.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Tools/lantern.rsi
+    noRot: false
+    layers:
+    - state: icon
+    - state: light_icon
+      color: "#d68f4d"
+      map: ["crystal"]
+      visible: false
+    - state: light_icon
+      color: "#d68f4d"
+      map: ["light"]
+      visible: false
+      shader: unshaded
+  - type: Clothing
+    equipDelay: 0.25
+    unequipDelay: 0.25
+    sprite: _CE/Objects/Tools/lantern.rsi
+    quickEquip: false
+    breakOnMove: false
+    slots:
+    - belt
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: CEMetallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 20
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEScrapCopper:
+            min: 1
+            max: 2
+          CEScrapIron:
+            min: 0
+            max: 1
+  - type: MeleeWeapon
+    attackRate: 0.6
+    wideAnimationRotation: 10
+    damage:
+      types:
+        Blunt: 8
+    soundHit:
+      collection: MetalThud
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/toolbox_drop.ogg
+  - type: Item
+    size: Normal
+    shape:
+    - 0, 0, 1, 1
+    sprite: _CE/Objects/Tools/lantern.rsi
+  - type: Rotatable
+  - type: PointLight
+    enabled: true
+    color: "#d68f4d"
+    mask: /Textures/_CE/Effects/LightMasks/crystal_cone.png
+    autoRot: true
+    energy: 3
+    radius: 6
+  - type: Appearance
+  #- type: GenericVisualizer
+  #  visuals:
+  #    enum.CEMagicSlotVisuals.Inserted:
+  #      crystal:
+  #        True: { visible: true }
+  #        False: { visible: false }
+  #    enum.CEMagicSlotVisuals.Powered:
+  #      light:
+  #        True: { visible: true }
+  #        False: { visible: false }
+  #- type: CEMagicLantern
+  #- type: CEMagicEnergyDraw
+  #  energy: -0.1
+  #  delay: 3
+  - type: PhysicalComposition
+    materialComposition:
+      CEBrass: 10
+      CEIron: 10
