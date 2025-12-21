@@ -141,7 +141,7 @@ public sealed partial class AnchorableSystem : EntitySystem
 
         var xform = Transform(uid);
         if (TryComp<PhysicsComponent>(uid, out var anchorBody) &&
-            !TileFree(xform.Coordinates, anchorBody))
+            !TileFree(xform.Coordinates, anchorBody) && !component.CanAnchorOnOccupied) //CrystallEdge CanAnchorOnOccupied addition
         {
             _popup.PopupClient(Loc.GetString("anchorable-occupied"), uid, args.User);
             return;
@@ -236,7 +236,7 @@ public sealed partial class AnchorableSystem : EntitySystem
         _adminLogger.Add(LogType.Anchor, LogImpact.Low, $"{ToPrettyString(userUid):user} is trying to anchor {ToPrettyString(uid):entity} to {transform.Coordinates:targetlocation}");
 
         if (TryComp<PhysicsComponent>(uid, out var anchorBody) &&
-            !TileFree(transform.Coordinates, anchorBody))
+            !TileFree(transform.Coordinates, anchorBody) && !anchorable.CanAnchorOnOccupied) //CrystallEdge CanAnchorOnOccupied addition
         {
             _popup.PopupClient(Loc.GetString("anchorable-occupied"), uid, userUid);
             return;

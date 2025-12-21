@@ -21,6 +21,7 @@
   - type: Physics
     bodyType: Static
   - type: Anchorable
+    canAnchorOnOccupied: true
   - type: Pullable
   - type: Fixtures
     fixtures:
