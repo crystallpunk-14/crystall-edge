@@ -3,6 +3,7 @@ using Content.Shared._CE.Power.Components;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
+using Content.Shared.Power.Components;
 
 namespace Content.Shared._CE.Power;
 
@@ -35,34 +36,37 @@ public abstract partial class CESharedPowerSystem
             return;
         }
 
-        BatteryQuery.TryComp(target, out var batteryTarget);
+        // Try to get battery from PowerCell slot first, fallback to direct BatteryComponent
+        if (!_powerCell.TryGetBatteryFromSlot((target, null), out var batteryTarget))
+        {
+            if (BatteryQuery.TryComp(target, out var directBattery))
+                batteryTarget = (target, directBattery);
+        }
+
+        if (batteryTarget is null)
+            return;
+
         SpawnAtPosition(ent.Comp.VFX, Transform(args.Target.Value).Coordinates);
 
         if (ent.Comp.ConsumeMode)
         {
-            if (batteryTarget is null)
-                return;
-
-            var drained = -Battery.ChangeCharge((target, batteryTarget), -ent.Comp.TransferAmount);
+            var drained = -Battery.ChangeCharge((batteryTarget.Value.Owner, batteryTarget.Value.Comp), -ent.Comp.TransferAmount);
             if (drained <= 0)
                 return;
 
             Battery.ChangeCharge((user, userBattery), drained);
-            args.Handled = true;
         }
         else
         {
             var spent = -Battery.ChangeCharge((user, userBattery), -ent.Comp.TransferAmount);
 
-            if (batteryTarget is null)
-                return;
-
             if (spent <= 0)
                 return;
 
-            Battery.ChangeCharge((target, batteryTarget), spent);
-            args.Handled = true;
+            Battery.ChangeCharge((batteryTarget.Value.Owner, batteryTarget.Value.Comp), spent);
         }
+
+        args.Handled = true;
     }
 
     private void OnGloveExamined(Entity<CEEnergyTransferGloveComponent> ent, ref ExaminedEvent args)

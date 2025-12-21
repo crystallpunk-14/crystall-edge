@@ -4,6 +4,7 @@ using Content.Shared.Destructible;
 using Content.Shared.Popups;
 using Content.Shared.Power.Components;
 using Content.Shared.Power.EntitySystems;
+using Content.Shared.PowerCell;
 using Content.Shared.Radiation.Components;
 using Content.Shared.Timing;
 using Robust.Shared.Audio.Systems;
@@ -23,6 +24,7 @@ public abstract partial class CESharedPowerSystem : EntitySystem
     [Dependency] protected readonly SharedBatterySystem Battery = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly PowerCellSystem _powerCell = default!;
 
     private readonly EntProtoId _irradiationProto = "CERadiationSourceVFX";
 
