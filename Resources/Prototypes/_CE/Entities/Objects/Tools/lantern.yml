@@ -52,10 +52,12 @@
     spriteLayer: light
     inhandVisuals:
       left:
-      - state: inhand-left-light
+      - state: light_inhand-left
+        color: "#4da1d6"
         shader: unshaded
       right:
-      - state: inhand-right-light
+      - state: light_inhand-right
+        color: "#4da1d6"
         shader: unshaded
   - type: ItemTogglePointLight
   - type: PowerCellSlot
