@@ -315,3 +315,19 @@
   - type: PhysicalComposition
     materialComposition:
       CEStone: 2
+
+- type: entity
+  parent: CEFloorTileBase
+  id: CEFloorTileRoofGreen
+  name: green roof tile
+  components:
+  - type: Sprite
+    state: roof_green
+  - type: FloorTile
+    outputs:
+      - CERoofGreen
+  - type: Stack
+    stackType: CEFloorTileRoofGreen
+  - type: PhysicalComposition
+    materialComposition:
+      CEStone: 2
