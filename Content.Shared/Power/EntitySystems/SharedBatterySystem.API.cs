@@ -1,3 +1,4 @@
+using Content.Shared._CE.MagicEnergy.Systems;
 using Content.Shared.Power.Components;
 using JetBrains.Annotations;
 
@@ -21,6 +22,22 @@ public abstract partial class SharedBatterySystem
     {
         if (!Resolve(ent, ref ent.Comp))
             return 0;
+
+        //CrystallEdge overcharge energy
+        if (amount > 0 && ent.Comp.LastCharge + amount > ent.Comp.MaxCharge)
+        {
+            var overcharge = (ent.Comp.LastCharge + amount) - ent.Comp.MaxCharge;
+            var overchargeEv = new CEEnergyOverchargeEvent(overcharge);
+            RaiseLocalEvent(ent, ref overchargeEv);
+        }
+
+        if (amount < 0 && ent.Comp.LastCharge + amount < 0)
+        {
+            var deficit = -amount - ent.Comp.LastCharge;
+            var deficitEv = new CEEnergyDeficitEvent(deficit);
+            RaiseLocalEvent(ent, ref deficitEv);
+        }
+        //CrystallEdge end
 
         var oldValue = GetCharge(ent);
         var newValue = Math.Clamp(oldValue + amount, 0, ent.Comp.MaxCharge);
