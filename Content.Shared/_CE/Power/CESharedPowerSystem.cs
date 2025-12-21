@@ -21,10 +21,10 @@ public abstract partial class CESharedPowerSystem : EntitySystem
     [Dependency] protected readonly UseDelaySystem UseDelay = default!;
     [Dependency] protected readonly SharedAmbientSoundSystem Ambient = default!;
     [Dependency] protected readonly IGameTiming Timing = default!;
+    [Dependency] protected readonly PowerCellSystem PowerCell = default!;
     [Dependency] protected readonly SharedBatterySystem Battery = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly PowerCellSystem _powerCell = default!;
 
     private readonly EntProtoId _irradiationProto = "CERadiationSourceVFX";
 

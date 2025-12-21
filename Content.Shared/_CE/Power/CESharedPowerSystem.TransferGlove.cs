@@ -37,7 +37,7 @@ public abstract partial class CESharedPowerSystem
         }
 
         // Try to get battery from PowerCell slot first, fallback to direct BatteryComponent
-        if (!_powerCell.TryGetBatteryFromSlot((target, null), out var batteryTarget))
+        if (!PowerCell.TryGetBatteryFromSlot((target, null), out var batteryTarget))
         {
             if (BatteryQuery.TryComp(target, out var directBattery))
                 batteryTarget = (target, directBattery);

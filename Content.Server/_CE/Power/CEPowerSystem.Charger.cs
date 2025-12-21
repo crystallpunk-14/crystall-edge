@@ -40,8 +40,11 @@ public sealed partial class CEPowerSystem
 
             foreach (var placed in itemPlacer.PlacedEntities)
             {
-                if (BatteryQuery.TryComp(placed, out var battery))
-                    Battery.ChangeCharge((placed, battery), charger.Charge / itemPlacer.PlacedEntities.Count);
+                // Try to get battery from PowerCell slot first, fallback to direct BatteryComponent
+                if (PowerCell.TryGetBatteryFromSlot((placed, null), out var battery))
+                    Battery.ChangeCharge((battery.Value.Owner, battery.Value.Comp), charger.Charge / itemPlacer.PlacedEntities.Count);
+                else if (BatteryQuery.TryComp(placed, out var directBattery))
+                    Battery.ChangeCharge((placed, directBattery), charger.Charge / itemPlacer.PlacedEntities.Count);
             }
         }
     }

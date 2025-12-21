@@ -66,31 +66,9 @@
     unequipDelay: 0.25
     sprite: _CE/Objects/Tools/lantern.rsi
     quickEquip: false
-    breakOnMove: false
+    equipWhileMoving: true
     slots:
     - belt
-  - type: Damageable
-    damageContainer: StructuralInorganic
-    damageModifierSet: CEMetallic
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 20
-      behaviors:
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MetalBreak
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          CEScrapBrass:
-            min: 0
-            max: 1
-          CEScrapIron:
-            min: 0
-            max: 1
   - type: MeleeWeapon
     attackRate: 1.6
     range: 0.8
