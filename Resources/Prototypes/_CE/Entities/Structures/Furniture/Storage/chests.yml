@@ -30,7 +30,7 @@
           CEWoodenPlanks1:
             min: 3
             max: 5
-          CEIronScrap1:
+          CEScrapIron1:
             min: 1
             max: 1
       - !type:PlaySoundBehavior

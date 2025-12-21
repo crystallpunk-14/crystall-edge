@@ -52,7 +52,7 @@
 
 - type: material
   id: CEIron
-  stackEntity: CEIronScrap1
+  stackEntity: CEScrapIron1
   name: ce-material-iron
   unit: materials-unit-bar
   icon: { sprite: _CE/Objects/Materials/Metals/iron_bar.rsi, state: bar_2 }

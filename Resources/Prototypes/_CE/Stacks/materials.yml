@@ -48,9 +48,9 @@
   maxCount: 10
 
 - type: stack
-  id: CEIronScrap
+  id: CEScrapIron
   name: ce-stack-iron-scrap
-  spawn: CEIronScrap1
+  spawn: CEScrapIron1
   icon: { sprite: _CE/Objects/Materials/Metals/iron_scrap.rsi, state: scrap_2 }
   maxCount: 10
 
