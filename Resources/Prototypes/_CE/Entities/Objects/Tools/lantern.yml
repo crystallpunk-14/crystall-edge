@@ -10,19 +10,9 @@
     wattage: 0.1
     addPrefix: true
     blinkingBehaviourId: blinking
-    radiatingBehaviourId: radiating
-  - type: LightBehaviour #TODO change
+    radiatingBehaviourId: blinking
+  - type: LightBehaviour
     behaviours:
-    - !type:FadeBehaviour
-      id: radiating
-      interpolate: Nearest
-      minDuration: 0.02
-      maxDuration: 0.06
-      startValue: 0.0
-      endValue: 3.0
-      property: Energy
-      isLooped: true
-      enabled: false
     - !type:RandomizeBehaviour
       id: blinking
       interpolate: Nearest
@@ -65,8 +55,8 @@
     cellSlotId: cell_slot
   - type: ItemSlots
     slots:
-      cell_slot: #TODO crystal slot
-        name: power-cell-slot-component-slot-name-default
+      cell_slot:
+        name: ce-magic-energy-crystal-slot-name
         startingItem: CEEnergyCrystalShard
   - type: ContainerContainer
     containers:
