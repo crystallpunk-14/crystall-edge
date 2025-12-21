@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Content.Client._CE.Stylesheets.Stylesheets;
 using Content.Client.Stylesheets.Stylesheets;
 using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
@@ -20,6 +21,8 @@ namespace Content.Client.Stylesheets
 
         public Stylesheet SheetNanotrasen { get; private set; } = default!;
         public Stylesheet SheetSystem { get; private set; } = default!;
+
+        public Stylesheet CEStyle  { get; private set; } = default!; // CE Stylesheet
 
         [Obsolete("Update to use SheetNanotrasen instead")]
         public Stylesheet SheetNano { get; private set; } = default!;
@@ -49,10 +52,11 @@ namespace Content.Client.Stylesheets
             Stylesheets = new Dictionary<string, Stylesheet>();
             SheetNanotrasen = Init(new NanotrasenStylesheet(new BaseStylesheet.NoConfig(), this));
             SheetSystem = Init(new SystemStylesheet(new BaseStylesheet.NoConfig(), this));
+            CEStyle = Init(new CEStylesheet(new BaseStylesheet.NoConfig(), this)); // CE Stylesheet
             SheetNano = new StyleNano(_resCache).Stylesheet; // TODO: REMOVE (obsolete)
             SheetSpace = new StyleSpace(_resCache).Stylesheet; // TODO: REMOVE (obsolete)
 
-            _userInterfaceManager.Stylesheet = SheetNanotrasen;
+            _userInterfaceManager.Stylesheet = CEStyle; // CE default style override
 
             // warn about unused sheetlets
             if (UnusedSheetlets.Count > 0)
