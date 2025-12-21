@@ -8,7 +8,7 @@
   components:
   - type: HandheldLight
     wattage: 0.1
-    addPrefix: true
+    addPrefix: false
     blinkingBehaviourId: blinking
     radiatingBehaviourId: blinking
   - type: LightBehaviour
@@ -50,6 +50,13 @@
   - type: Appearance
   - type: ToggleableVisuals
     spriteLayer: light
+    inhandVisuals:
+      left:
+      - state: inhand-left-light
+        shader: unshaded
+      right:
+      - state: inhand-right-light
+        shader: unshaded
   - type: ItemTogglePointLight
   - type: PowerCellSlot
     cellSlotId: cell_slot
