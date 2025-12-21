@@ -37,19 +37,21 @@ public abstract partial class CESharedPowerSystem
         }
 
         // Try to get battery from PowerCell slot first, fallback to direct BatteryComponent
-        if (!PowerCell.TryGetBatteryFromSlot((target, null), out var batteryTarget))
+        Entity<BatteryComponent>? batteryTarget;
+        if (!PowerCell.TryGetBatteryFromSlot((target, null), out batteryTarget))
         {
             if (BatteryQuery.TryComp(target, out var directBattery))
                 batteryTarget = (target, directBattery);
         }
 
-        if (batteryTarget is null)
-            return;
-
         SpawnAtPosition(ent.Comp.VFX, Transform(args.Target.Value).Coordinates);
 
         if (ent.Comp.ConsumeMode)
         {
+            // Drain mode: only works if target has a battery
+            if (batteryTarget is null)
+                return;
+
             var drained = -Battery.ChangeCharge((batteryTarget.Value.Owner, batteryTarget.Value.Comp), -ent.Comp.TransferAmount);
             if (drained <= 0)
                 return;
@@ -58,12 +60,14 @@ public abstract partial class CESharedPowerSystem
         }
         else
         {
+            // Transfer mode: can dump energy even if target has no battery (into the air)
             var spent = -Battery.ChangeCharge((user, userBattery), -ent.Comp.TransferAmount);
 
             if (spent <= 0)
                 return;
 
-            Battery.ChangeCharge((batteryTarget.Value.Owner, batteryTarget.Value.Comp), spent);
+            if (batteryTarget is not null)
+                Battery.ChangeCharge((batteryTarget.Value.Owner, batteryTarget.Value.Comp), spent);
         }
 
         args.Handled = true;

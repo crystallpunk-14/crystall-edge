@@ -57,7 +57,7 @@
     slots:
       cell_slot:
         name: ce-magic-energy-crystal-slot-name
-        startingItem: CEEnergyCrystalShard
+        startingItem: CEEnergyCrystalCell
   - type: ContainerContainer
     containers:
       cell_slot: !type:ContainerSlot {}

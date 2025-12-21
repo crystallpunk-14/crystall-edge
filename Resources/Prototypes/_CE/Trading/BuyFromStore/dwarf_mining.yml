@@ -88,3 +88,10 @@
   service: !type:CEBuyItemsService
     product: CEClothingOuterClothingBrassInsulator
     count: 1
+
+- type: tradingPosition
+  id: CEEnergyCrystalCell
+  faction: DwarfMiners
+  service: !type:CEBuyItemsService
+    product: CEEnergyCrystalCell
+    count: 1
