@@ -64,8 +64,8 @@
       - !type:SpawnEntitiesBehavior
         spawn:
           CEStoneBlock1:
-            min: 4
-            max: 5
+            min: 3
+            max: 4
       - !type:ChangeConstructionNodeBehavior
         node: CEWallFrameStoneBrick
   - type: Construction
