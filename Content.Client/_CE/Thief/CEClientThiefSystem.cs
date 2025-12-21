@@ -10,8 +10,8 @@ public sealed partial class CEClientThiefSystem : EntitySystem
 {
     [Dependency] private readonly SharedAudioSystem _audio = default!;
 
-    private EntProtoId _vfx = "CETreasureSparkVFX";
-    private SoundSpecifier _sound = new SoundPathSpecifier("/Audio/_CE/Effects/treasure_effect.ogg");
+    private readonly EntProtoId _vfx = "CETreasureSparkVFX";
+    private readonly SoundSpecifier _sound = new SoundPathSpecifier("/Audio/_CE/Effects/treasure_effect.ogg");
     public override void Initialize()
     {
         base.Initialize();

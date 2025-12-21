@@ -28,11 +28,11 @@ public sealed partial class CEThiefSkillProgressionSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
 
     private readonly Color _messageColor = Color.FromSrgb(new Color(123, 173, 137));
-    private SoundSpecifier _newDaySound = new SoundPathSpecifier("/Audio/_CE/Announce/vampire.ogg");
+    private readonly SoundSpecifier _newDaySound = new SoundPathSpecifier("/Audio/_CE/Announce/vampire.ogg");
 
     private EntityQuery<ContainerManagerComponent> _containerQuery;
     private EntityQuery<CETheftValueComponent> _theftValueQuery;
-    private HashSet<EntityUid> _countedItems = new();
+    private readonly HashSet<EntityUid> _countedItems = new();
 
     public override void Initialize()
     {
@@ -117,7 +117,8 @@ public sealed partial class CEThiefSkillProgressionSystem : EntitySystem
             {
                 var improvement = ((currentScore - thiefRole.PreviousBestScore) / thiefRole.MaxScore) * 100;
                 var improvementString = $"{improvement:F1}%";
-                messageBuilder.AppendLine(Loc.GetString("ce-thief-progression-record", ("improvement", improvementString)));
+                messageBuilder.AppendLine(Loc.GetString("ce-thief-progression-record",
+                    ("improvement", improvementString)));
                 thiefRole.PreviousBestScore = currentScore;
             }
 
@@ -176,7 +177,8 @@ public sealed partial class CEThiefSkillProgressionSystem : EntitySystem
             if (hideout.ThiefMind != thiefMind)
                 continue;
 
-            foreach (var item in _lookup.GetEntitiesInRange<CETheftValueComponent>(xform.Coordinates, hideout.ScanRange))
+            foreach (var item in
+                     _lookup.GetEntitiesInRange<CETheftValueComponent>(xform.Coordinates, hideout.ScanRange))
             {
                 if (_countedItems.Contains(item.Owner))
                     continue;
@@ -202,13 +204,11 @@ public sealed partial class CEThiefSkillProgressionSystem : EntitySystem
                 foreach (var entity in container.ContainedEntities)
                 {
                     // Check if this entity has theft value
-                    if (_theftValueQuery.TryGetComponent(entity, out var theftValue))
+                    if (_theftValueQuery.TryGetComponent(entity, out var theftValue) &&
+                        !_countedItems.Contains(entity))
                     {
-                        if (!_countedItems.Contains(entity))
-                        {
-                            score += theftValue.Difficulty;
-                            _countedItems.Add(entity);
-                        }
+                        score += theftValue.Difficulty;
+                        _countedItems.Add(entity);
                     }
 
                     // If it is a container, check its contents recursively

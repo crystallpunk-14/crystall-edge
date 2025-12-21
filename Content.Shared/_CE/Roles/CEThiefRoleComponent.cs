@@ -6,7 +6,9 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._CE.Roles;
 
 /// <summary>
-///
+/// Added to mind role entities to tag that they are a thief. Also tracking their progression and rewards.
+/// Stores configuration for how many skill points can be earned from stealing,
+/// which skill point type to award, and scoring data used to measure performance.
 /// </summary>
 [RegisterComponent, NetworkedComponent]
 public sealed partial class CEThiefRoleComponent : BaseMindRoleComponent

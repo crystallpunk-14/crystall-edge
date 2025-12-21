@@ -11,7 +11,8 @@ namespace Content.Shared._CE.Thief;
 public sealed partial class CETheftValueComponent : Component
 {
     /// <summary>
-    ///
+    /// Relative theft value of this entity for thieves.
+    /// Higher values indicate more valuable or important targets that grant more reward when stolen.
     /// </summary>
     [DataField]
     public float Difficulty = 1f;
