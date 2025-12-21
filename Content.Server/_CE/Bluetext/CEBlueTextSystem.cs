@@ -1,19 +1,17 @@
+using Content.Server.Administration.Logs;
 using Content.Server.Antag;
 using Content.Server.Mind;
 using Content.Shared._CE.BlueText;
-using Content.Shared.CCVar;
-using Content.Shared.Players;
-using Robust.Server.GameObjects;
-using Robust.Shared.Configuration;
-using Robust.Shared.Player;
+using Content.Shared.Database;
+using Robust.Shared.Network;
 
 namespace Content.Server._CE.BlueText;
 
 public sealed class CEBlueTextSystem : CESharedBlueTextSystem
 {
     [Dependency] private readonly MindSystem _mind = default!;
-    [Dependency] private readonly UserInterfaceSystem _userInterface = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private readonly IServerNetManager _net = default!;
+    [Dependency] private readonly IAdminLogManager _adminLog = default!;
 
     public override void Initialize()
     {
@@ -21,8 +19,20 @@ public sealed class CEBlueTextSystem : CESharedBlueTextSystem
 
         SubscribeLocalEvent<CEBlueTextRuleComponent, AfterAntagEntitySelectedEvent>(OnAntagAttached);
 
-        SubscribeNetworkEvent<CEToggleBlueTextScreenEvent>(OnToggleBlueText);
-        SubscribeLocalEvent<ActorComponent, CEBlueTextSaveMessage>(OnSaveBlueText);
+        _net.RegisterNetMessage<CEBlueTextSaveMessage>(OnSaveBlueText);
+    }
+
+    private void OnSaveBlueText(CEBlueTextSaveMessage message)
+    {
+        if (!_mind.TryGetMind(message.MsgChannel.UserId, out var mind))
+            return;
+
+        if (!TryComp<CEBlueTextTrackerComponent>(mind, out var blueText))
+            return;
+
+        blueText.BlueText = message.Text.Length > MaxTextLength ? message.Text[..MaxTextLength] : message.Text;
+        Dirty(mind.Value, blueText);
+        _adminLog.Add(LogType.Mind, $"{ToPrettyString(mind.Value.Comp.OwnedEntity)} has updated their blue text to: \"{blueText.BlueText}\"");
     }
 
     private void OnAntagAttached(Entity<CEBlueTextRuleComponent> ent, ref AfterAntagEntitySelectedEvent args)
@@ -31,41 +41,5 @@ public sealed class CEBlueTextSystem : CESharedBlueTextSystem
             return;
 
         EnsureComp<CEBlueTextTrackerComponent>(mind);
-    }
-
-    private void OnToggleBlueText(CEToggleBlueTextScreenEvent ev, EntitySessionEventArgs args)
-    {
-        if (args.SenderSession.AttachedEntity is not {Valid: true} ent)
-            return;
-
-        if (!TryComp<CEBlueTextTrackerComponent>(args.SenderSession.GetMind(), out var blueText))
-            return;
-
-        if (!_cfg.GetCVar(CCVars.CEGameShowBlueText))
-            return;
-
-        _userInterface.TryToggleUi(ent, CEBlueTextUIKey.Key, args.SenderSession);
-
-        var state = new CEBlueTextBuiState(blueText.BlueText);
-        _userInterface.SetUiState(ent, CEBlueTextUIKey.Key, state);
-    }
-
-    private void OnSaveBlueText(Entity<ActorComponent> ent, ref CEBlueTextSaveMessage args)
-    {
-        if (!_mind.TryGetMind(ent, out var mind, out var mindComp))
-            return;
-
-        if (!TryComp<CEBlueTextTrackerComponent>(mind, out var blueText))
-            return;
-
-        var text = args.Text;
-
-        if (text.Length > MaxTextLength)
-            text = text[..MaxTextLength];
-
-        blueText.BlueText = text;
-
-        var state = new CEBlueTextBuiState(blueText.BlueText);
-        _userInterface.SetUiState(ent.Owner, CEBlueTextUIKey.Key, state);
     }
 }

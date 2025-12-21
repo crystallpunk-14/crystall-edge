@@ -12,8 +12,6 @@ public sealed partial class CEBlueTextMenu : FancyWindow
 {
     public event Action<string>? OnSubmitBlueText;
 
-    private bool _edited;
-
     public CEBlueTextMenu()
     {
         RobustXamlLoader.Load(this);
@@ -30,12 +28,9 @@ public sealed partial class CEBlueTextMenu : FancyWindow
         Close();
     }
 
-    public void Update(EntityUid owner, CEBlueTextBuiState state)
+    public void Update(string blueText)
     {
-        if (_edited)
-            return;
-
-        var text = state.Text;
+        var text = blueText;
 
         if (text.Length > CESharedBlueTextSystem.MaxTextLength)
             text = text[..CESharedBlueTextSystem.MaxTextLength];
@@ -49,7 +44,6 @@ public sealed partial class CEBlueTextMenu : FancyWindow
 
     private void OnTextChanged()
     {
-        _edited = true;
         ClampAndUpdate();
     }
 
@@ -57,12 +51,7 @@ public sealed partial class CEBlueTextMenu : FancyWindow
     {
         var text = Rope.Collapse(BlueTextInput.TextRope);
 
-        UpdateCharCount(text.Length);
+        CharCountLabel.Text = $"[{text.Length}/{CESharedBlueTextSystem.MaxTextLength}]";
         SubmitBlueText.Disabled = string.IsNullOrWhiteSpace(text) || text.Length > CESharedBlueTextSystem.MaxTextLength;
-    }
-
-    private void UpdateCharCount(int length)
-    {
-        CharCountLabel.Text = $"[{length}/{CESharedBlueTextSystem.MaxTextLength}]";
     }
 }

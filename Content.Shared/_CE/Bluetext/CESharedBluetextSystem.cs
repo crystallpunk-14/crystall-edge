@@ -1,4 +1,5 @@
-using Content.Shared.Mind;
+using Lidgren.Network;
+using Robust.Shared.Network;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._CE.BlueText;
@@ -6,28 +7,26 @@ namespace Content.Shared._CE.BlueText;
 public abstract class CESharedBlueTextSystem : EntitySystem
 {
     public const int MaxTextLength = 1000;
-
-    [Dependency] protected readonly SharedMindSystem Mind = default!;
 }
 
-
-[NetSerializable, Serializable]
-public sealed partial class CEToggleBlueTextScreenEvent : EntityEventArgs;
-
-[NetSerializable, Serializable]
-public enum CEBlueTextUIKey : byte
+/// <summary>
+/// Message sended from client to server to save the blue text inputted by the player.
+/// </summary>
+public sealed class CEBlueTextSaveMessage : NetMessage
 {
-    Key,
-}
+    public override MsgGroups MsgGroup => MsgGroups.EntityEvent;
 
-[Serializable, NetSerializable]
-public sealed class CEBlueTextBuiState(string text) : BoundUserInterfaceState
-{
-    public string Text = text;
-}
+    public string Text = string.Empty;
 
-[Serializable, NetSerializable]
-public sealed class CEBlueTextSaveMessage(string text) : BoundUserInterfaceMessage
-{
-    public string Text = text;
+    public override void ReadFromBuffer(NetIncomingMessage buffer, IRobustSerializer serializer)
+    {
+        Text = buffer.ReadString();
+    }
+
+    public override void WriteToBuffer(NetOutgoingMessage buffer, IRobustSerializer serializer)
+    {
+        buffer.Write(Text);
+    }
+
+    public override NetDeliveryMethod DeliveryMethod => NetDeliveryMethod.ReliableUnordered;
 }
