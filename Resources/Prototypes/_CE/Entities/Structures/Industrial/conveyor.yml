@@ -9,7 +9,6 @@
   - type: PlacementReplacement
     key: walls
   - type: Rotatable
-    rotateWhileAnchored: true
   - type: Clickable
   - type: InteractionOutline
   - type: Transform
@@ -37,6 +36,7 @@
         hard: False
   - type: Conveyor
   - type: CEConveyor
+  - type: CEFunnelActivator
   - type: Appearance
   - type: GenericVisualizer
     visuals:
