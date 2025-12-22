@@ -1,0 +1,41 @@
+- type: entity
+  id: CEItemReceiver
+  parent:
+  - BaseMachine
+  name: item receiver
+  description: TIDI
+  categories: [ ForkFiltered ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Fixtures
+    fixtures:
+      collect:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.2,-0.2,0.2,-0.05"
+        hard: false
+        layer:
+        - FullTileLayer
+        - ItemMask
+      collision:
+        density: 100
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        hard: true
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+  - type: Transform
+    anchored: true
+    noRot: false
+  - type: Sprite
+    drawdepth: Mobs
+    offset: 0, 0
+    sprite: _CE/Structures/Industrial/item_receiver.rsi
+    layers:
+    - state: base
+  - type: CEItemReceiver
+  - type: Rotatable
