@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/21/2025 15:41:13
-  entityCount: 1521
+  time: 12/22/2025 21:14:06
+  entityCount: 1522
 maps:
 - 1
 grids:
@@ -312,6 +312,14 @@ entities:
     - type: Transform
       gridTraversal: False
       pos: -2.1203287,2.7746491
+      parent: 1
+    - type: ViewSubscriber
+  - uid: 1522
+    components:
+    - type: MetaData
+    - type: Transform
+      gridTraversal: False
+      pos: -2.9223285,-7.139414
       parent: 1
     - type: ViewSubscriber
 - proto: ActionToggleLight
@@ -2713,7 +2721,7 @@ entities:
       pos: 6.5,16.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -14349.657
+      secondsUntilStateChange: -14491.786
       state: Opening
 - proto: CEFenceWindowIron
   entities:
@@ -4176,16 +4184,15 @@ entities:
       parent: 1
     - type: HandheldLight
       toggleActionEntity: 1330
-      turnOffSound: !type:SoundPathSpecifier
-        path: /Audio/Items/flashlight_off.ogg
-      turnOnFailSound: !type:SoundPathSpecifier
-        path: /Audio/Machines/button.ogg
-      turnOnSound: !type:SoundPathSpecifier
-        path: /Audio/Items/flashlight_on.ogg
     - type: ContainerContainer
       containers:
-        cell_slot: !type:ContainerSlot {}
+        cell_slot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
         actions: !type:Container
+          showEnts: False
+          occludes: True
           ents:
           - 1330
     - type: ActionsContainer

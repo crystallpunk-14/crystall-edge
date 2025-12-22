@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/21/2025 15:41:13
-  entityCount: 582
+  time: 12/22/2025 21:14:07
+  entityCount: 580
 maps:
 - 1
 grids:
@@ -254,6 +254,14 @@ entities:
     - type: Transform
       gridTraversal: False
       pos: 0.9349208,-13.360889
+      parent: 1
+    - type: ViewSubscriber
+  - uid: 145
+    components:
+    - type: MetaData
+    - type: Transform
+      gridTraversal: False
+      pos: -2.9223285,-7.139414
       parent: 1
     - type: ViewSubscriber
   - uid: 156
@@ -728,6 +736,11 @@ entities:
       parent: 1
 - proto: CEWallCrystalCore
   entities:
+  - uid: 137
+    components:
+    - type: Transform
+      pos: 14.5,-3.5
+      parent: 1
   - uid: 182
     components:
     - type: Transform
@@ -2112,11 +2125,6 @@ entities:
     - type: Transform
       pos: 14.5,2.5
       parent: 1
-  - uid: 137
-    components:
-    - type: Transform
-      pos: 14.5,-1.5
-      parent: 1
   - uid: 138
     components:
     - type: Transform
@@ -2151,16 +2159,6 @@ entities:
     components:
     - type: Transform
       pos: 12.5,-1.5
-      parent: 1
-  - uid: 145
-    components:
-    - type: Transform
-      pos: 14.5,-2.5
-      parent: 1
-  - uid: 146
-    components:
-    - type: Transform
-      pos: 15.5,-1.5
       parent: 1
   - uid: 147
     components:
@@ -2471,11 +2469,6 @@ entities:
     components:
     - type: Transform
       pos: 17.5,-1.5
-      parent: 1
-  - uid: 240
-    components:
-    - type: Transform
-      pos: 14.5,-3.5
       parent: 1
   - uid: 241
     components:
