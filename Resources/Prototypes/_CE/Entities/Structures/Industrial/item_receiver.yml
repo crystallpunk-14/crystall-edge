@@ -1,9 +1,9 @@
 - type: entity
-  id: CEItemReceiver
+  id: CEFunnel
   parent:
   - BaseMachine
-  name: item receiver
-  description: TIDI
+  name: funnel
+  description: A device for placing items inside storage facilities or removing items from them. To extract items, attach a conveyor belt.
   categories: [ ForkFiltered ]
   placement:
     mode: SnapgridCenter
@@ -13,7 +13,7 @@
       collect:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.2,-0.2,0.2,-0.05"
+          bounds: "-0.3,0.2,0.3,0.3"
         hard: false
         layer:
         - FullTileLayer
@@ -22,7 +22,7 @@
         density: 100
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.4,-0.4,0.4,0.4"
+          bounds: "-0.4,0.1,0.4,0.4"
         hard: true
         mask:
         - TableMask
@@ -34,7 +34,7 @@
   - type: Sprite
     drawdepth: Mobs
     offset: 0, 0
-    sprite: _CE/Structures/Industrial/item_receiver.rsi
+    sprite: _CE/Structures/Industrial/funnel.rsi
     layers:
     - state: base
   - type: CEItemReceiver
