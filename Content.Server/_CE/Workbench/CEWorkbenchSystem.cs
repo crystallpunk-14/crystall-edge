@@ -65,6 +65,7 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
             return;
 
         ent.Comp.SelectedRecipe = args.Recipe;
+        UpdateUIRecipes((ent, ent.Comp));
     }
 
     private void UpdateUIRecipes(Entity<CEWorkbenchComponent?> entity)

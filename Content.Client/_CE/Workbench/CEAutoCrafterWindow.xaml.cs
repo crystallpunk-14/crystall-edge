@@ -103,7 +103,7 @@ public sealed partial class CEAutoCrafterWindow : DefaultWindow
             if (!ProcessSearchCategoryFilter(indexedEntry))
                 continue;
 
-            var control = new CEWorkbenchRecipeControl(entry, _cachedState?.SelectedRecipe == entry.ProtoId, false);
+            var control = new CEWorkbenchRecipeControl(entry, _cachedState?.SelectedRecipe == entry.ProtoId);
             control.OnSelect += RecipeSelect;
 
             gridContainer.AddChild(control);

@@ -20,7 +20,7 @@ public sealed class CEWorkbenchUiClickRecipeMessage(ProtoId<CEWorkbenchRecipePro
 [Serializable, NetSerializable]
 public sealed class CEWorkbenchUiRecipesState(List<CEWorkbenchUiRecipesEntry> recipes, ProtoId<CEWorkbenchRecipePrototype>? selectedRecipe) : BoundUserInterfaceState
 {
-    public readonly ProtoId<CEWorkbenchRecipePrototype>? SelectedRecipe = null;
+    public readonly ProtoId<CEWorkbenchRecipePrototype>? SelectedRecipe = selectedRecipe;
     public readonly List<CEWorkbenchUiRecipesEntry> Recipes = recipes;
 }
 

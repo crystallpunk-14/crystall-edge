@@ -22,7 +22,7 @@ public sealed partial class CEWorkbenchRecipeControl : Control
     private readonly bool _craftable;
     private bool _highlight;
 
-    public CEWorkbenchRecipeControl(CEWorkbenchUiRecipesEntry entry, bool highlight = false, bool canBeDisabled = true)
+    public CEWorkbenchRecipeControl(CEWorkbenchUiRecipesEntry entry, bool highlight = false)
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
@@ -30,7 +30,7 @@ public sealed partial class CEWorkbenchRecipeControl : Control
         _sprite = _entity.System<SpriteSystem>();
 
         _recipePrototype = _prototype.Index(entry.ProtoId);
-        _craftable = entry.Craftable || !canBeDisabled;
+        _craftable = entry.Craftable;
         _highlight = highlight;
 
         Button.OnPressed += _ => OnSelect?.Invoke(entry, _recipePrototype);
@@ -47,10 +47,19 @@ public sealed partial class CEWorkbenchRecipeControl : Control
 
     private void UpdateColor()
     {
-        if (_craftable)
+        if (_highlight)
+        {
+            Button.ModulateSelfOverride = Color.FromHex("#53b58b");
             return;
+        }
 
-        Button.ModulateSelfOverride = _highlight ? Color.FromHex("#53b58b") : Color.FromHex("#1f2124");
+        if (!_craftable)
+        {
+            Button.ModulateSelfOverride = Color.FromHex("#1f2124");
+            return;
+        }
+
+        Button.ModulateSelfOverride = null;
     }
 
     private void UpdateView()
