@@ -72,38 +72,16 @@ public sealed partial class CEWorkbenchSystem
             return;
         }
 
-        //Check conditions
-        var passConditions = true;
-        foreach (var condition in recipe.Conditions)
-        {
-            if (!condition.CheckCondition(EntityManager, _proto, ent, args.User))
-            {
-                condition.FailedEffect(EntityManager, _proto, ent, args.User);
-                passConditions = false;
-            }
-            condition.PostCraft(EntityManager, _proto, ent, args.User);
-        }
+        // Check conditions
+        var passConditions = CheckRecipeConditions(recipe, ent, args.User);
 
-        foreach (var req in recipe.Requirements)
-        {
-            req.PostCraft(EntityManager, _proto, resources);
-        }
+        // Consume resources
+        ConsumeRecipeResources(recipe, resources);
 
+        // Spawn result only if conditions passed
         if (passConditions)
         {
-            var resultEntities = new HashSet<EntityUid>();
-            for (var i = 0; i < recipe.ResultCount; i++)
-            {
-                var resultEntity = Spawn(recipe.Result);
-                resultEntities.Add(resultEntity);
-            }
-
-            //We teleport result to workbench AFTER craft.
-            foreach (var resultEntity in resultEntities)
-            {
-                _transform.SetCoordinates(resultEntity, Transform(ent).Coordinates.Offset(new Vector2(_random.NextFloat(-0.25f, 0.25f), _random.NextFloat(-0.25f, 0.25f))));
-                _stack.TryMergeToContacts(resultEntity);
-            }
+            SpawnRecipeResult(recipe, ent);
         }
 
         UpdateUIRecipes(ent.Owner);

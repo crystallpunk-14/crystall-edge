@@ -1,3 +1,4 @@
+using System.Numerics;
 using Content.Server.DoAfter;
 using Content.Server.Popups;
 using Content.Server.Stack;
@@ -105,7 +106,7 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
         _userInterface.SetUiState(entity.Owner, CEWorkbenchUiKey.Key, new CEWorkbenchUiRecipesState(recipes, entity.Comp.SelectedRecipe));
     }
 
-    private bool CanCraftRecipe(CEWorkbenchRecipePrototype recipe, HashSet<EntityUid> entities, EntityUid user)
+    private bool CanCraftRecipe(CEWorkbenchRecipePrototype recipe, HashSet<EntityUid> entities, EntityUid? user = null)
     {
         foreach (var req in recipe.Requirements)
         {
@@ -114,5 +115,56 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
         }
 
         return true;
+    }
+
+    /// <summary>
+    /// Checks recipe conditions and triggers failure effects.
+    /// </summary>
+    /// <returns>True if all conditions pass, otherwise false.</returns>
+    private bool CheckRecipeConditions(CEWorkbenchRecipePrototype recipe, EntityUid workbench, EntityUid? user)
+    {
+        var passConditions = true;
+        foreach (var condition in recipe.Conditions)
+        {
+            if (!condition.CheckCondition(EntityManager, _proto, workbench, user))
+            {
+                condition.FailedEffect(EntityManager, _proto, workbench, user);
+                passConditions = false;
+            }
+            condition.PostCraft(EntityManager, _proto, workbench, user);
+        }
+
+        return passConditions;
+    }
+
+    /// <summary>
+    /// Consumes resources required for crafting.
+    /// </summary>
+    private void ConsumeRecipeResources(CEWorkbenchRecipePrototype recipe, HashSet<EntityUid> resources)
+    {
+        foreach (var req in recipe.Requirements)
+        {
+            req.PostCraft(EntityManager, _proto, resources);
+        }
+    }
+
+    /// <summary>
+    /// Spawns the craft result and places it near the workbench.
+    /// </summary>
+    private void SpawnRecipeResult(CEWorkbenchRecipePrototype recipe, EntityUid workbench)
+    {
+        var resultEntities = new HashSet<EntityUid>();
+        for (var i = 0; i < recipe.ResultCount; i++)
+        {
+            var resultEntity = Spawn(recipe.Result);
+            resultEntities.Add(resultEntity);
+        }
+
+        // Teleport result to workbench AFTER crafting
+        foreach (var resultEntity in resultEntities)
+        {
+            _transform.SetCoordinates(resultEntity, Transform(workbench).Coordinates.Offset(new Vector2(_random.NextFloat(-0.25f, 0.25f), _random.NextFloat(-0.25f, 0.25f))));
+            _stack.TryMergeToContacts(resultEntity);
+        }
     }
 }

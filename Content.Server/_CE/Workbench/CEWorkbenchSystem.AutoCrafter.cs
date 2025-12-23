@@ -21,7 +21,34 @@ public sealed partial class CEWorkbenchSystem
         if (args.Cancelled || args.Handled)
             return;
 
-        Log.Error("Auto crafter finished crafting: " + args.Recipe);
+        if (!_proto.Resolve(args.Recipe, out var recipe))
+            return;
+
+        var getResource = new CEWorkbenchGetResourcesEvent();
+        RaiseLocalEvent(ent.Owner, getResource);
+
+        var resources = getResource.Resources;
+
+        if (!CanCraftRecipe(recipe, resources))
+        {
+            _popup.PopupEntity(Loc.GetString("ce-workbench-cant-craft"), ent);
+            return;
+        }
+
+        // Check conditions (autocrafter works without a user)
+        var passConditions = CheckRecipeConditions(recipe, ent, null);
+
+        // Consume resources
+        ConsumeRecipeResources(recipe, resources);
+
+        // Spawn result only if conditions passed
+        if (passConditions)
+        {
+            SpawnRecipeResult(recipe, ent);
+        }
+
+        UpdateUIRecipes(ent.Owner);
+        args.Handled = true;
     }
 
     public override void Update(float frameTime)
@@ -31,19 +58,27 @@ public sealed partial class CEWorkbenchSystem
         var query = EntityQueryEnumerator<CEWorkbenchAutoCrafterComponent, CEWorkbenchComponent>();
         while (query.MoveNext(out var uid, out var autoCrafter, out var workbench))
         {
+            if (_timing.CurTime < autoCrafter.NextCraftTime)
+                return;
+            autoCrafter.NextCraftTime = _timing.CurTime + autoCrafter.CraftDelay; // Just for prevent spamming checks
+
             if (workbench.SelectedRecipe is null)
                 return;
 
             if (autoCrafter.ActiveDoAfter is not null)
                 return;
-
-            if (_timing.CurTime < autoCrafter.NextCraftTime)
-                return;
-
+            
             if (!this.IsPowered(uid, EntityManager))
                 return;
 
             if (!_proto.Resolve(workbench.SelectedRecipe.Value, out var recipe))
+                return;
+
+            // Check if we have resources to craft before starting DoAfter
+            var getResource = new CEWorkbenchGetResourcesEvent();
+            RaiseLocalEvent(uid, getResource);
+
+            if (!CanCraftRecipe(recipe, getResource.Resources))
                 return;
 
             var craftDoAfter = new CECraftDoAfterEvent
