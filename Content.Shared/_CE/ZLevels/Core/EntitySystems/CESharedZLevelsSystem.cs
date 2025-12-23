@@ -1,3 +1,8 @@
+/*
+ * This file is sublicensed under MIT License
+ * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
+ */
+
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Shared._CE.ZLevels.Core.Components;

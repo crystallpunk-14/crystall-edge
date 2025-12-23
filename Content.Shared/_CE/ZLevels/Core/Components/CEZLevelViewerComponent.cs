@@ -1,3 +1,8 @@
+/*
+ * This file is sublicensed under MIT License
+ * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
+ */
+
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -23,7 +28,4 @@ public sealed partial class CEZLevelViewerComponent : Component
 
     [DataField, AutoNetworkedField]
     public EntityUid? ZLevelActionEntity;
-
-    [DataField, AutoNetworkedField]
-    public float ThrowUpForce = 5f; //I dont really like this in viewer component
 }

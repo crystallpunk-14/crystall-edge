@@ -1,3 +1,8 @@
+/*
+ * This file is sublicensed under MIT License
+ * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
+ */
+
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.Actions;
 using Content.Shared.Maps;
@@ -59,7 +64,7 @@ public abstract partial class CESharedZLevelsSystem
         if (!_map.TryGetTileRef(mapAboveUid.Value, mapAboveGrid, _transform.GetWorldPosition(ent), out var tileRef))
             return false;
 
-        var tileDef = (ContentTileDefinition)TilDefMan[(int)tileRef.Tile.TypeId];
+        var tileDef = (ContentTileDefinition)TilDefMan[tileRef.Tile.TypeId];
 
         return !tileDef.Transparent;
     }

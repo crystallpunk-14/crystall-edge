@@ -1,4 +1,10 @@
+/*
+ * This file is sublicensed under MIT License
+ * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
+ */
+
 using System.Numerics;
+using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared._CE.ZLevels.Core.Components;
@@ -7,7 +13,7 @@ namespace Content.Shared._CE.ZLevels.Core.Components;
 /// Allows an entity to move up and down the z-levels by gravity or jumping
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true),
- Access(typeof(Core.EntitySystems.CESharedZLevelsSystem))]
+ Access(typeof(CESharedZLevelsSystem))]
 public sealed partial class CEZPhysicsComponent : Component
 {
     /// <summary>

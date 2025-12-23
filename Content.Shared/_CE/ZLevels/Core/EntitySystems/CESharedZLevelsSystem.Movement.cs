@@ -1,3 +1,8 @@
+/*
+ * This file is sublicensed under MIT License
+ * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
+ */
+
 using System.Numerics;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.Chasm;
@@ -39,7 +44,7 @@ public abstract partial class CESharedZLevelsSystem
         SubscribeLocalEvent<PhysicsComponent, CEZLevelHitEvent>(OnFallAreaImpact);
     }
 
-    private void OnFallDamage(Entity<DamageableComponent> ent, ref CEZLevelHitEvent args)
+    private void OnFallDamage(Entity<DamageableComponent> ent, ref CEZLevelHitEvent args) //TODO unhardcode
     {
         var knockdownTime = MathF.Min(args.ImpactPower * 0.25f, 5f);
         _stun.TryKnockdown(ent.Owner, TimeSpan.FromSeconds(knockdownTime));
@@ -82,7 +87,7 @@ public abstract partial class CESharedZLevelsSystem
             if (xform.ParentUid != xform.MapUid)
                 continue;
 
-            if (!_zMapQuery.TryComp(xform.MapUid, out var zMapComp))
+            if (!_zMapQuery.HasComp(xform.MapUid))
                 continue;
 
             var oldVelocity = zPhys.Velocity;

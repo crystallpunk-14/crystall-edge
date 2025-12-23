@@ -1,3 +1,8 @@
+/*
+ * This file is sublicensed under MIT License
+ * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
+ */
+
 using System.Numerics;
 using Content.Client.Viewport;
 using Robust.Client.Graphics;
@@ -17,10 +22,12 @@ public sealed class CEZLevelBlurOverlay : Overlay
     public override bool RequestScreenTexture => true;
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
 
+    private readonly ProtoId<ShaderPrototype> _zBlurShader = "CEZBlur";
+
     public CEZLevelBlurOverlay()
     {
         IoCManager.InjectDependencies(this);
-        _blurShader = _proto.Index<ShaderPrototype>("CEZBlur").InstanceUnique();
+        _blurShader = _proto.Index(_zBlurShader).InstanceUnique();
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
