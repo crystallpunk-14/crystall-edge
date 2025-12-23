@@ -37,6 +37,7 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
 
         SubscribeLocalEvent<CEWorkbenchComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<CEWorkbenchComponent, BeforeActivatableUIOpenEvent>(OnBeforeUIOpen);
+        SubscribeLocalEvent<CEWorkbenchComponent, CEWorkbenchUiClickRecipeMessage>(OnSetRecipe);
     }
 
     private void OnMapInit(Entity<CEWorkbenchComponent> ent, ref MapInitEvent args)
@@ -56,6 +57,14 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
     private void OnBeforeUIOpen(Entity<CEWorkbenchComponent> ent, ref BeforeActivatableUIOpenEvent args)
     {
         UpdateUIRecipes((ent, ent.Comp));
+    }
+
+    private void OnSetRecipe(Entity<CEWorkbenchComponent> ent, ref CEWorkbenchUiClickRecipeMessage args)
+    {
+        if (!ent.Comp.Recipes.Contains(args.Recipe))
+            return;
+
+        ent.Comp.SelectedRecipe = args.Recipe;
     }
 
     private void UpdateUIRecipes(Entity<CEWorkbenchComponent?> entity)
@@ -90,7 +99,7 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
             recipes.Add(entry);
         }
 
-        _userInterface.SetUiState(entity.Owner, CEWorkbenchUiKey.Key, new CEWorkbenchUiRecipesState(recipes));
+        _userInterface.SetUiState(entity.Owner, CEWorkbenchUiKey.Key, new CEWorkbenchUiRecipesState(recipes, entity.Comp.SelectedRecipe));
     }
 
     private bool CanCraftRecipe(CEWorkbenchRecipePrototype recipe, HashSet<EntityUid> entities, EntityUid user)

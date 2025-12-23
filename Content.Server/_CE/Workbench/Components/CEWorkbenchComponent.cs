@@ -30,6 +30,9 @@ public sealed partial class CEWorkbenchComponent : Component
     [DataField]
     public List<ProtoId<TagPrototype>> RecipeTags = new();
 
+    [DataField]
+    public ProtoId<CEWorkbenchRecipePrototype>? SelectedRecipe;
+
     /// <summary>
     /// Played during crafting. Can be overwritten by the crafting sound of a specific recipe.
     /// </summary>

@@ -11,23 +11,16 @@ public enum CEWorkbenchUiKey
 }
 
 [Serializable, NetSerializable]
-public sealed class CEWorkbenchUiCraftAttemptStartMessage(ProtoId<CEWorkbenchRecipePrototype> recipe)
+public sealed class CEWorkbenchUiClickRecipeMessage(ProtoId<CEWorkbenchRecipePrototype> recipe)
     : BoundUserInterfaceMessage
 {
     public readonly ProtoId<CEWorkbenchRecipePrototype> Recipe = recipe;
 }
 
 [Serializable, NetSerializable]
-public sealed class CEWorkbenchUiSetAutoCraftMessage(ProtoId<CEWorkbenchRecipePrototype> recipe)
-    : BoundUserInterfaceMessage
+public sealed class CEWorkbenchUiRecipesState(List<CEWorkbenchUiRecipesEntry> recipes, ProtoId<CEWorkbenchRecipePrototype>? selectedRecipe) : BoundUserInterfaceState
 {
-    public readonly ProtoId<CEWorkbenchRecipePrototype> Recipe = recipe;
-}
-
-
-[Serializable, NetSerializable]
-public sealed class CEWorkbenchUiRecipesState(List<CEWorkbenchUiRecipesEntry> recipes) : BoundUserInterfaceState
-{
+    public readonly ProtoId<CEWorkbenchRecipePrototype>? SelectedRecipe = null;
     public readonly List<CEWorkbenchUiRecipesEntry> Recipes = recipes;
 }
 

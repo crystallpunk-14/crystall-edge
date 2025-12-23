@@ -10,6 +10,4 @@ namespace Content.Server._CE.Workbench;
 [Access(typeof(CEWorkbenchSystem))]
 public sealed partial class CEWorkbenchAutoCrafterComponent : Component
 {
-    [DataField]
-    public ProtoId<CEWorkbenchRecipePrototype>? SelectedRecipe;
 }

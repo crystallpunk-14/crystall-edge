@@ -9,11 +9,11 @@ public sealed partial class CEWorkbenchSystem
 {
     private void InitUserCrafter()
     {
-        SubscribeLocalEvent<CEWorkbenchUserCrafterComponent, CEWorkbenchUiCraftAttemptStartMessage>(OnCraft);
+        SubscribeLocalEvent<CEWorkbenchUserCrafterComponent, CEWorkbenchUiClickRecipeMessage>(OnCraft);
         SubscribeLocalEvent<CEWorkbenchUserCrafterComponent, CECraftDoAfterEvent>(OnUserCraftFinished);
     }
 
-    private void OnCraft(Entity<CEWorkbenchUserCrafterComponent> ent, ref CEWorkbenchUiCraftAttemptStartMessage args)
+    private void OnCraft(Entity<CEWorkbenchUserCrafterComponent> ent, ref CEWorkbenchUiClickRecipeMessage args)
     {
         if (!_workbenchQuery.TryComp(ent, out var workbench))
             return;
