@@ -87,6 +87,7 @@
         - MidImpassable
         - LowImpassable
         hard: false
+  - type: DoAfter
 
 - type: entity
   parent:

@@ -9,6 +9,7 @@ using Robust.Server.Containers;
 using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 
 namespace Content.Server._CE.Workbench;
 
@@ -23,6 +24,7 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly StackSystem _stack = default!;
     [Dependency] private readonly ContainerSystem _container = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     private EntityQuery<CEWorkbenchComponent> _workbenchQuery;
 

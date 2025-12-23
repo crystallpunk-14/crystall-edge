@@ -1,13 +1,20 @@
-using Content.Shared._CE.Workbench.Prototypes;
-using Robust.Shared.Prototypes;
+using Content.Shared.DoAfter;
 
 namespace Content.Server._CE.Workbench;
 
 /// <summary>
 ///
 /// </summary>
-[RegisterComponent]
+[RegisterComponent, AutoGenerateComponentPause]
 [Access(typeof(CEWorkbenchSystem))]
 public sealed partial class CEWorkbenchAutoCrafterComponent : Component
 {
+    [DataField]
+    public DoAfterId? ActiveDoAfter;
+
+    [DataField]
+    public TimeSpan CraftDelay = TimeSpan.FromSeconds(1f);
+
+    [DataField, AutoPausedField]
+    public TimeSpan NextCraftTime = TimeSpan.Zero;
 }
