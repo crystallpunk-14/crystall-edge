@@ -1,7 +1,11 @@
+/*
+ * This file is sublicensed under MIT License
+ * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
+ */
+
 using Content.Server._CE.ZLevels.Core;
 using Content.Server.Administration;
 using Content.Server.GameTicking;
-using Content.Server.Maps;
 using Content.Shared.Administration;
 using Content.Shared.Maps;
 using Robust.Server.GameObjects;

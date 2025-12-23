@@ -1,3 +1,8 @@
+/*
+ * This file is sublicensed under MIT License
+ * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
+ */
+
 using Content.Server._CE.PVS;
 using Content.Shared._CE.ZLevels.Core.Components;
 using JetBrains.Annotations;
@@ -7,7 +12,7 @@ namespace Content.Server._CE.ZLevels.Core;
 public sealed partial class CEZLevelsSystem
 {
     /// <summary>
-    /// creates a new entity zLevelNetwork
+    /// Creates a new entity zLevelNetwork
     /// </summary>
     [PublicAPI]
     public Entity<CEZLevelsNetworkComponent> CreateZNetwork()
@@ -21,7 +26,7 @@ public sealed partial class CEZLevelsSystem
     }
 
     /// <summary>
-    /// attempts to add the specified map to the zNetwork network at the specified depth
+    /// Attempts to add the specified map to the zNetwork network at the specified depth
     /// </summary>
     private bool TryAddMapIntoZNetwork(Entity<CEZLevelsNetworkComponent> network, EntityUid mapUid, int depth)
     {

@@ -1,3 +1,8 @@
+/*
+ * This file is sublicensed under MIT License
+ * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
+ */
+
 using Content.Server.Administration;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.Administration;

@@ -1,4 +1,8 @@
-using Content.Shared._CE.ZLevels;
+/*
+ * This file is sublicensed under MIT License
+ * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
+ */
+
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.Ghost;
 using Robust.Shared.Physics;

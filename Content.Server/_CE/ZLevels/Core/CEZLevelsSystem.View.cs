@@ -1,3 +1,8 @@
+/*
+ * This file is sublicensed under MIT License
+ * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
+ */
+
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.IdentityManagement;
@@ -93,7 +98,7 @@ public sealed partial class CEZLevelsSystem
 
     private void OnZLevelFall(Entity<CEZPhysicsComponent> ent, ref CEZLevelFallEvent args)
     {
-        //A dirty trick: we call PredictedPopup on the falling entity.
+        //A dirty trick: we call PredictedPopup on the falling entity on SERVER.
         //This means that the one who is falling does not see the popup itself, but everyone around them does. This is what we need.
         _popup.PopupPredictedCoordinates(Loc.GetString("ce-zlevel-falling-popup", ("name", Identity.Name(ent, EntityManager))), Transform(ent).Coordinates, ent);
     }

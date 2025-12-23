@@ -1,6 +1,10 @@
+/*
+ * This file is sublicensed under MIT License
+ * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
+ */
+
 using System.Linq;
 using Content.Server.Administration;
-using Content.Shared._CE.DayCycle;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Weather;
 using Content.Shared.Administration;
