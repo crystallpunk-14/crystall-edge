@@ -16,7 +16,7 @@ public enum CEWorkbenchUiKey
 }
 
 [Serializable, NetSerializable]
-public sealed class CEWorkbenchUiCraftMessage(ProtoId<CEWorkbenchRecipePrototype> recipe)
+public sealed class CEWorkbenchUiCraftAttemptStartMessage(ProtoId<CEWorkbenchRecipePrototype> recipe)
     : BoundUserInterfaceMessage
 {
     public readonly ProtoId<CEWorkbenchRecipePrototype> Recipe = recipe;

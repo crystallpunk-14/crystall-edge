@@ -22,7 +22,7 @@ public sealed class CEWorkbenchBoundUserInterface : BoundUserInterface
 
         _window = this.CreateWindow<CEWorkbenchWindow>();
 
-        _window.OnCraft += entry => SendMessage(new CEWorkbenchUiCraftMessage(entry.ProtoId));
+        _window.OnCraft += entry => SendMessage(new CEWorkbenchUiCraftAttemptStartMessage(entry.ProtoId));
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)

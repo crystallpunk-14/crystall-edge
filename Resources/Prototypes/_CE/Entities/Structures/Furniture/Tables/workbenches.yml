@@ -18,6 +18,7 @@
     singleUser: true
   - type: Climbable
   - type: Clickable
+  - type: CEWorkbenchUserCrafter
   - type: CEWorkbench
     craftSpeed: 1
   - type: InteractionOutline

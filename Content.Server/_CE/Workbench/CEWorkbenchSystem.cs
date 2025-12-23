@@ -3,14 +3,11 @@
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
 
-using System.Numerics;
 using Content.Server.DoAfter;
 using Content.Server.Popups;
 using Content.Server.Stack;
 using Content.Shared._CE.Workbench;
 using Content.Shared._CE.Workbench.Prototypes;
-using Content.Shared.DoAfter;
-using Content.Shared.Placeable;
 using Content.Shared.UserInterface;
 using Robust.Server.Audio;
 using Robust.Server.Containers;
@@ -32,21 +29,19 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
     [Dependency] private readonly StackSystem _stack = default!;
     [Dependency] private readonly ContainerSystem _container = default!;
 
+    private EntityQuery<CEWorkbenchComponent> _workbenchQuery;
+
     public override void Initialize()
     {
         base.Initialize();
         InitProviders();
         InitAutoCrafter();
+        InitUserCrafter();
+
+        _workbenchQuery = GetEntityQuery<CEWorkbenchComponent>();
 
         SubscribeLocalEvent<CEWorkbenchComponent, MapInitEvent>(OnMapInit);
-
-        SubscribeLocalEvent<CEWorkbenchComponent, ItemPlacedEvent>(OnItemPlaced);
-        SubscribeLocalEvent<CEWorkbenchComponent, ItemRemovedEvent>(OnItemRemoved);
-
         SubscribeLocalEvent<CEWorkbenchComponent, BeforeActivatableUIOpenEvent>(OnBeforeUIOpen);
-        SubscribeLocalEvent<CEWorkbenchComponent, CEWorkbenchUiCraftMessage>(OnCraft);
-
-        SubscribeLocalEvent<CEWorkbenchComponent, CECraftDoAfterEvent>(OnCraftFinished);
     }
 
     private void OnMapInit(Entity<CEWorkbenchComponent> ent, ref MapInitEvent args)
@@ -63,91 +58,16 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
         }
     }
 
-    private void OnItemRemoved(Entity<CEWorkbenchComponent> ent, ref ItemRemovedEvent args)
-    {
-        UpdateUIRecipes(ent);
-    }
-
-    private void OnItemPlaced(Entity<CEWorkbenchComponent> ent, ref ItemPlacedEvent args)
-    {
-        UpdateUIRecipes(ent);
-    }
-
     private void OnBeforeUIOpen(Entity<CEWorkbenchComponent> ent, ref BeforeActivatableUIOpenEvent args)
     {
-        UpdateUIRecipes(ent);
+        UpdateUIRecipes((ent, ent.Comp));
     }
 
-    private void OnCraft(Entity<CEWorkbenchComponent> entity, ref CEWorkbenchUiCraftMessage args)
+    private void UpdateUIRecipes(Entity<CEWorkbenchComponent?> entity)
     {
-        if (!entity.Comp.Recipes.Contains(args.Recipe))
+        if (!Resolve(entity, ref entity.Comp, false))
             return;
 
-        if (!_proto.Resolve(args.Recipe, out var prototype))
-            return;
-
-        StartCraft(entity, args.Actor, prototype);
-    }
-
-    private void OnCraftFinished(Entity<CEWorkbenchComponent> ent, ref CECraftDoAfterEvent args)
-    {
-        if (args.Cancelled || args.Handled)
-            return;
-
-        if (!_proto.Resolve(args.Recipe, out var recipe))
-            return;
-
-        var getResource = new CEWorkbenchGetResourcesEvent();
-        RaiseLocalEvent(ent.Owner, getResource);
-
-        var resources = getResource.Resources;
-
-        if (!CanCraftRecipe(recipe, resources, args.User))
-        {
-            _popup.PopupEntity(Loc.GetString("ce-workbench-cant-craft"), ent, args.User);
-            return;
-        }
-
-        //Check conditions
-        var passConditions = true;
-        foreach (var condition in recipe.Conditions)
-        {
-            if (!condition.CheckCondition(EntityManager, _proto, ent, args.User))
-            {
-                condition.FailedEffect(EntityManager, _proto, ent, args.User);
-                passConditions = false;
-            }
-            condition.PostCraft(EntityManager, _proto, ent, args.User);
-        }
-
-        foreach (var req in recipe.Requirements)
-        {
-            req.PostCraft(EntityManager, _proto, resources);
-        }
-
-        if (passConditions)
-        {
-            var resultEntities = new HashSet<EntityUid>();
-            for (var i = 0; i < recipe.ResultCount; i++)
-            {
-                var resultEntity = Spawn(recipe.Result);
-                resultEntities.Add(resultEntity);
-            }
-
-            //We teleport result to workbench AFTER craft.
-            foreach (var resultEntity in resultEntities)
-            {
-                _transform.SetCoordinates(resultEntity, Transform(ent).Coordinates.Offset(new Vector2(_random.NextFloat(-0.25f, 0.25f), _random.NextFloat(-0.25f, 0.25f))));
-                _stack.TryMergeToContacts(resultEntity);
-            }
-        }
-
-        UpdateUIRecipes(ent);
-        args.Handled = true;
-    }
-
-    private void UpdateUIRecipes(Entity<CEWorkbenchComponent> entity)
-    {
         var getResource = new CEWorkbenchGetResourcesEvent();
         RaiseLocalEvent(entity, getResource);
 
@@ -176,31 +96,6 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
         }
 
         _userInterface.SetUiState(entity.Owner, CEWorkbenchUiKey.Key, new CEWorkbenchUiRecipesState(recipes));
-    }
-
-    private void StartCraft(Entity<CEWorkbenchComponent> workbench,
-        EntityUid user,
-        CEWorkbenchRecipePrototype recipe)
-    {
-        var craftDoAfter = new CECraftDoAfterEvent
-        {
-            Recipe = recipe.ID,
-        };
-
-        var doAfterArgs = new DoAfterArgs(EntityManager,
-            user,
-            recipe.CraftTime * workbench.Comp.CraftSpeed,
-            craftDoAfter,
-            workbench,
-            workbench)
-        {
-            BreakOnMove = true,
-            BreakOnDamage = true,
-            NeedHand = true,
-        };
-
-        _doAfter.TryStartDoAfter(doAfterArgs);
-        _audio.PlayPvs(recipe.OverrideCraftSound ?? workbench.Comp.CraftSound, workbench);
     }
 
     private bool CanCraftRecipe(CEWorkbenchRecipePrototype recipe, HashSet<EntityUid> entities, EntityUid user)
