@@ -23,9 +23,6 @@ public sealed partial class CEWorkbenchComponent : Component
     [DataField]
     public float CraftSpeed = 1f;
 
-    [DataField]
-    public float WorkbenchRadius = 1.5f;
-
     /// <summary>
     /// List of recipes available for crafting on this type of workbench
     /// </summary>

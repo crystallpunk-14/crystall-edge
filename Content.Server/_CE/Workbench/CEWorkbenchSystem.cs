@@ -13,13 +13,14 @@ using Content.Shared.DoAfter;
 using Content.Shared.Placeable;
 using Content.Shared.UserInterface;
 using Robust.Server.Audio;
+using Robust.Server.Containers;
 using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Server._CE.Workbench;
 
-public sealed partial class CEWorkbenchSystem : CESharedWorkbenchSystem
+public sealed partial class CEWorkbenchSystem : EntitySystem
 {
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly DoAfterSystem _doAfter = default!;
@@ -29,11 +30,13 @@ public sealed partial class CEWorkbenchSystem : CESharedWorkbenchSystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly StackSystem _stack = default!;
+    [Dependency] private readonly ContainerSystem _container = default!;
 
     public override void Initialize()
     {
         base.Initialize();
         InitProviders();
+        InitAutoCrafter();
 
         SubscribeLocalEvent<CEWorkbenchComponent, MapInitEvent>(OnMapInit);
 
@@ -73,6 +76,17 @@ public sealed partial class CEWorkbenchSystem : CESharedWorkbenchSystem
     private void OnBeforeUIOpen(Entity<CEWorkbenchComponent> ent, ref BeforeActivatableUIOpenEvent args)
     {
         UpdateUIRecipes(ent);
+    }
+
+    private void OnCraft(Entity<CEWorkbenchComponent> entity, ref CEWorkbenchUiCraftMessage args)
+    {
+        if (!entity.Comp.Recipes.Contains(args.Recipe))
+            return;
+
+        if (!_proto.Resolve(args.Recipe, out var prototype))
+            return;
+
+        StartCraft(entity, args.Actor, prototype);
     }
 
     private void OnCraftFinished(Entity<CEWorkbenchComponent> ent, ref CECraftDoAfterEvent args)
@@ -130,6 +144,38 @@ public sealed partial class CEWorkbenchSystem : CESharedWorkbenchSystem
 
         UpdateUIRecipes(ent);
         args.Handled = true;
+    }
+
+    private void UpdateUIRecipes(Entity<CEWorkbenchComponent> entity)
+    {
+        var getResource = new CEWorkbenchGetResourcesEvent();
+        RaiseLocalEvent(entity, getResource);
+
+        var resources = getResource.Resources;
+
+        var recipes = new List<CEWorkbenchUiRecipesEntry>();
+        foreach (var recipeId in entity.Comp.Recipes)
+        {
+            if (!_proto.Resolve(recipeId, out var indexedRecipe))
+                continue;
+
+            var canCraft = true;
+
+            foreach (var requirement in indexedRecipe.Requirements)
+            {
+                if (!requirement.CheckRequirement(EntityManager, _proto, resources))
+                {
+                    canCraft = false;
+                    break;
+                }
+            }
+
+            var entry = new CEWorkbenchUiRecipesEntry(recipeId, canCraft);
+
+            recipes.Add(entry);
+        }
+
+        _userInterface.SetUiState(entity.Owner, CEWorkbenchUiKey.Key, new CEWorkbenchUiRecipesState(recipes));
     }
 
     private void StartCraft(Entity<CEWorkbenchComponent> workbench,

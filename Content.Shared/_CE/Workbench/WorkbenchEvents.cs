@@ -10,10 +10,6 @@ using Robust.Shared.Serialization;
 
 namespace Content.Shared._CE.Workbench;
 
-public abstract class CESharedWorkbenchSystem : EntitySystem
-{
-}
-
 [Serializable, NetSerializable]
 public sealed partial class CECraftDoAfterEvent : DoAfterEvent
 {
