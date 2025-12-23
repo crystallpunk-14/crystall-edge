@@ -13,9 +13,9 @@ public sealed partial class CEWorkbenchSystem
         SubscribeLocalEvent<CEWorkbenchUserCrafterComponent, CECraftDoAfterEvent>(OnUserCraftFinished);
     }
 
-    private void OnCraft(Entity<CEWorkbenchUserCrafterComponent> entity, ref CEWorkbenchUiCraftAttemptStartMessage args)
+    private void OnCraft(Entity<CEWorkbenchUserCrafterComponent> ent, ref CEWorkbenchUiCraftAttemptStartMessage args)
     {
-        if (!_workbenchQuery.TryComp(entity, out var workbench))
+        if (!_workbenchQuery.TryComp(ent, out var workbench))
             return;
 
         if (!workbench.Recipes.Contains(args.Recipe))
@@ -24,7 +24,7 @@ public sealed partial class CEWorkbenchSystem
         if (!_proto.Resolve(args.Recipe, out var prototype))
             return;
 
-        StartUserCraft(entity, args.Actor, prototype, workbench);
+        StartUserCraft(ent, args.Actor, prototype, workbench);
     }
 
     private void StartUserCraft(Entity<CEWorkbenchUserCrafterComponent> ent,
