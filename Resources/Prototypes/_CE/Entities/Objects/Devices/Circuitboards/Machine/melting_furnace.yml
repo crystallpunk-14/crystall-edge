@@ -1,0 +1,13 @@
+#- type: entity
+#  parent: BaseMachineCircuitboard
+#  id: CEMachineCircuitboardMeltingFurnace
+#  name: melting furnace core board
+#  description: A machine board for the CE melting furnace.
+#  components:
+#  - type: Sprite
+#    sprite: _CE/Structures/Industrial/machine_core.rsi
+#    state: box_0
+#  - type: MachineBoard
+#    prototype: CEMeltingFurnace
+#    stackRequirements:
+#      Manipulator: 2

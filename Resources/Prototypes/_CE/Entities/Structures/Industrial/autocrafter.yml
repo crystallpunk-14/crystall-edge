@@ -84,7 +84,7 @@
 - type: entity
   parent:
   - CEBaseAutoCrafter
-  id: CEWorkbenchAutoMeltingFurnace
+  id: CEMeltingFurnace
   name: melting furnace
   components:
   - type: Sprite

@@ -1,0 +1,12 @@
+- type: construction
+  hide: false
+  id: CEMachineFurnace
+  graph: CEMachineFurnace
+  startNode: start
+  targetNode: machine
+  category: construction-category-machines
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  icon:
+    sprite: _CE/Structures/Industrial/machine_core.rsi
+    state: box_0
