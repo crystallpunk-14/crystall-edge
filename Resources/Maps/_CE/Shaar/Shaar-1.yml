@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/24/2025 17:18:59
-  entityCount: 1657
+  time: 12/24/2025 18:00:32
+  entityCount: 1640
 maps:
 - 1
 grids:
@@ -145,142 +145,6 @@ entities:
       fingerprints: []
     - type: RadiationGridResistance
     - type: ExplosionAirtightGrid
-  - uid: 3
-    components:
-    - type: MetaData
-    - type: Transform
-      gridTraversal: False
-      pos: 1.5307314,2.418663
-      parent: 1
-    - type: ViewSubscriber
-  - uid: 80
-    components:
-    - type: MetaData
-    - type: Transform
-      gridTraversal: False
-      pos: -6.5835147,14.767353
-      parent: 1
-    - type: ViewSubscriber
-  - uid: 125
-    components:
-    - type: MetaData
-    - type: Transform
-      gridTraversal: False
-      pos: -22.51996,-8.978285
-      parent: 1
-    - type: ViewSubscriber
-  - uid: 142
-    components:
-    - type: MetaData
-    - type: Transform
-      gridTraversal: False
-      pos: -15.045906,10.136562
-      parent: 1
-    - type: ViewSubscriber
-  - uid: 209
-    components:
-    - type: MetaData
-    - type: Transform
-      gridTraversal: False
-      pos: 2.0494306,10.350585
-      parent: 1
-    - type: ViewSubscriber
-  - uid: 377
-    components:
-    - type: MetaData
-    - type: Transform
-      gridTraversal: False
-      pos: 16.255348,-4.1103864
-      parent: 1
-    - type: ViewSubscriber
-  - uid: 896
-    components:
-    - type: MetaData
-    - type: Transform
-      gridTraversal: False
-      pos: -2.8425062,-11.663216
-      parent: 1
-    - type: ViewSubscriber
-  - uid: 974
-    components:
-    - type: MetaData
-    - type: Transform
-      gridTraversal: False
-      pos: -11.785282,-6.9098673
-      parent: 1
-    - type: ViewSubscriber
-  - uid: 978
-    components:
-    - type: MetaData
-    - type: Transform
-      gridTraversal: False
-      pos: 1.7241492,11.987063
-      parent: 1
-    - type: ViewSubscriber
-  - uid: 979
-    components:
-    - type: MetaData
-    - type: Transform
-      gridTraversal: False
-      pos: 0.2959606,-18.893307
-      parent: 1
-    - type: ViewSubscriber
-  - uid: 1084
-    components:
-    - type: MetaData
-    - type: Transform
-      gridTraversal: False
-      pos: -1.5130261,-12.370946
-      parent: 1
-    - type: ViewSubscriber
-  - uid: 1604
-    components:
-    - type: MetaData
-    - type: Transform
-      gridTraversal: False
-      pos: -0.7249419,-15.684632
-      parent: 1
-    - type: ViewSubscriber
-  - uid: 1606
-    components:
-    - type: MetaData
-    - type: Transform
-      gridTraversal: False
-      pos: 4.195055,13.572957
-      parent: 1
-    - type: ViewSubscriber
-  - uid: 1608
-    components:
-    - type: MetaData
-    - type: Transform
-      gridTraversal: False
-      pos: 3.6194649,-7.6666408
-      parent: 1
-    - type: ViewSubscriber
-  - uid: 1622
-    components:
-    - type: MetaData
-    - type: Transform
-      gridTraversal: False
-      pos: -26.07605,6.1329236
-      parent: 1
-    - type: ViewSubscriber
-  - uid: 1627
-    components:
-    - type: MetaData
-    - type: Transform
-      gridTraversal: False
-      pos: -26.088385,3.0966523
-      parent: 1
-    - type: ViewSubscriber
-  - uid: 1650
-    components:
-    - type: MetaData
-    - type: Transform
-      gridTraversal: False
-      pos: -26.692438,-9.452552
-      parent: 1
-    - type: ViewSubscriber
 - proto: CEArrivalsDockPointMarker
   entities:
   - uid: 300
@@ -893,7 +757,7 @@ entities:
       pos: -26.5,-9.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -10402.223
+      secondsUntilStateChange: -10411.268
       state: Opening
 - proto: CEFenceWooden
   entities:

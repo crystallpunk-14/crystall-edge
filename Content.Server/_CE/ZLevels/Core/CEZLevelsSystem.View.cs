@@ -10,6 +10,7 @@ using Content.Shared.Popups;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.ZLevels.Core;
 
@@ -17,6 +18,8 @@ public sealed partial class CEZLevelsSystem
 {
     [Dependency] private readonly ViewSubscriberSystem _viewSubscriber = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
+
+    private readonly EntProtoId _zEyeProto = "CEZZLevelEye";
 
     private void InitView()
     {
@@ -78,7 +81,7 @@ public sealed partial class CEZLevelsSystem
             if (!TryMapOffset(map.Value, -i, out var mapUidBelow))
                 break;
 
-            var newEye = SpawnAtPosition(null, new EntityCoordinates(mapUidBelow.Value, globalPos));
+            var newEye = SpawnAtPosition(_zEyeProto, new EntityCoordinates(mapUidBelow.Value, globalPos));
 
             Transform(newEye).GridTraversal = false;
             _viewSubscriber.AddViewSubscriber(newEye, actor.PlayerSession);
@@ -88,7 +91,7 @@ public sealed partial class CEZLevelsSystem
         // We constantly load the upper z-level for the client so that you can quickly look up and climb stairs without PVS lag.
         if (TryMapUp(map.Value, out var aboveMapUid))
         {
-            var newEye = SpawnAtPosition(null, new EntityCoordinates(aboveMapUid.Value, globalPos));
+            var newEye = SpawnAtPosition(_zEyeProto, new EntityCoordinates(aboveMapUid.Value, globalPos));
 
             Transform(newEye).GridTraversal = false;
             _viewSubscriber.AddViewSubscriber(newEye, actor.PlayerSession);
