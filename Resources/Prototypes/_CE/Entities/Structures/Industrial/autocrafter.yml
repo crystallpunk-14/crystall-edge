@@ -8,13 +8,6 @@
   name: automatic workbench
   description: An automated crafting station that continuously produces the selected recipe.
   components:
-  - type: Sprite
-    snapCardinals: true
-    sprite: _CE/Structures/Furniture/Tables/workbench.rsi
-    state: filler
-  - type: Icon
-    sprite: _CE/Structures/Furniture/Tables/workbench.rsi
-    state: filler
   - type: ActivatableUI
     key: enum.CEWorkbenchUiKey.Key
     requiresComplex: true
@@ -83,18 +76,9 @@
         mask: # tables should collide with other tables
         - TableMask
         layer:
-        - TableLayer
-      fix2:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.4,-0.4,0.4,0.4"
-        mask:
-        - TabletopMachineMask
-        layer:
         - Impassable
         - MidImpassable
         - LowImpassable
-        hard: false
   - type: DoAfter
   - type: ApcPowerReceiver
     powerLoad: 2
@@ -106,12 +90,25 @@
   name: melting furnace
   components:
   - type: Sprite
-    state: workbench
+    snapCardinals: true
+    drawdepth: Mobs
+    sprite: _CE/Structures/Industrial/melting_furnace.rsi
+    layers:
+    - state: base
+    - state: fire
+      visible: false
+      shader: unshaded
+      map: ["fire"]
   - type: Icon
-    state: workbench
-  - type: FootstepModifier
-    footstepSoundCollection:
-      collection: FootstepWood
+    sprite: _CE/Structures/Industrial/melting_furnace.rsi
+    state: base
   - type: CEWorkbench
     recipeTags:
     - CERecipeMeltingFurnace
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        fire:
+          True: {visible: true}
+          False: {visible: false}
