@@ -1,0 +1,23 @@
+- type: CERecipe
+  id: CEIronBar1
+  tag: CERecipeMeltingFurnace
+  category: Materials
+  craftTime: 2
+  requirements:
+  - !type:MaterialResource
+    material: CEIron
+    count: 10
+  result: CEIronBar1
+  resultCount: 1
+
+- type: CERecipe
+  id: CEBrassBar1
+  tag: CERecipeMeltingFurnace
+  category: Materials
+  craftTime: 2
+  requirements:
+  - !type:MaterialResource
+    material: CEBrass
+    count: 10
+  result: CEBrassBar1
+  resultCount: 1

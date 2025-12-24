@@ -106,7 +106,7 @@
 - type: entity
   parent:
   - CEBaseAutoCrafter
-  id: CEAutoCrafter
+  id: CEWorkbenchAutoMeltingFurnace
   components:
   - type: Sprite
     state: workbench
@@ -115,12 +115,6 @@
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepWood
-  #- type: FireVisuals
-  #  sprite: _CE/Effects/fire.rsi
-  #  normalState: full
-  - type: Construction
-    graph: CEWorkbench
-    node: CEWorkbench
   - type: CEWorkbench
     recipeTags:
-    - CERecipeWorkbench
+    - CERecipeMeltingFurnace
