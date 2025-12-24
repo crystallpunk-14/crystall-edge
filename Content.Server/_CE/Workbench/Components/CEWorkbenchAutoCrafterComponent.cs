@@ -3,7 +3,7 @@ using Content.Shared.DoAfter;
 namespace Content.Server._CE.Workbench;
 
 /// <summary>
-///
+/// Enables a workbench to automatically craft the selected recipe when powered, without user interaction.
 /// </summary>
 [RegisterComponent, AutoGenerateComponentPause]
 [Access(typeof(CEWorkbenchSystem))]
