@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/24/2025 10:40:24
-  entityCount: 1650
+  time: 12/24/2025 17:18:59
+  entityCount: 1657
 maps:
 - 1
 grids:
@@ -543,6 +543,18 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -2.5,-5.5
       parent: 1
+  - uid: 1655
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -3.5,0.5
+      parent: 1
+  - uid: 1656
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -4.5,0.5
+      parent: 1
 - proto: CEConveyorLadderReverse
   entities:
   - uid: 442
@@ -881,7 +893,7 @@ entities:
       pos: -26.5,-9.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -9936.413
+      secondsUntilStateChange: -10402.223
       state: Opening
 - proto: CEFenceWooden
   entities:
@@ -1389,6 +1401,12 @@ entities:
     components:
     - type: Transform
       pos: -4.5,-6.5
+      parent: 1
+  - uid: 1654
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -2.5,0.5
       parent: 1
 - proto: CEGunJustice
   entities:
@@ -8952,6 +8970,28 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+- proto: CEWorkbenchAutoMeltingFurnace
+  entities:
+  - uid: 1651
+    components:
+    - type: Transform
+      pos: 0.5,0.5
+      parent: 1
+  - uid: 1652
+    components:
+    - type: Transform
+      pos: -0.5,0.5
+      parent: 1
+  - uid: 1653
+    components:
+    - type: Transform
+      pos: -1.5,0.5
+      parent: 1
+  - uid: 1657
+    components:
+    - type: Transform
+      pos: -6.5,-7.5
+      parent: 1
 - proto: CEWrench
   entities:
   - uid: 1628
