@@ -1,0 +1,79 @@
+- type: entity
+  id: CEWallStoneOreCoal
+  parent: CEWallStone
+  suffix: Coal Ore
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Walls/cave_stone_coal.rsi
+  - type: Icon
+    sprite: _CE/Structures/Architecture/Walls/cave_stone_coal.rsi
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/picaxe2.ogg
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEStoneBlock1:
+            min: 3
+            max: 5
+          CECoal1:
+            min: 3
+            max: 5
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+- type: entity
+  id: CEWallStoneOreIron
+  parent: CEWallStone
+  suffix: Iron Ore
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Walls/cave_stone_iron.rsi
+  - type: Icon
+    sprite: _CE/Structures/Architecture/Walls/cave_stone_iron.rsi
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/picaxe2.ogg
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEStoneBlock1:
+            min: 3
+            max: 5
+          CEIronOre1:
+            min: 3
+            max: 5
+      - !type:DoActsBehavior
+        acts: ["Destruction"]

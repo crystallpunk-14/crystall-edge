@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/22/2025 21:14:07
-  entityCount: 1646
+  time: 12/24/2025 10:40:24
+  entityCount: 1650
 maps:
 - 1
 grids:
@@ -271,6 +271,14 @@ entities:
     - type: Transform
       gridTraversal: False
       pos: -26.088385,3.0966523
+      parent: 1
+    - type: ViewSubscriber
+  - uid: 1650
+    components:
+    - type: MetaData
+    - type: Transform
+      gridTraversal: False
+      pos: -26.692438,-9.452552
       parent: 1
     - type: ViewSubscriber
 - proto: CEArrivalsDockPointMarker
@@ -873,7 +881,7 @@ entities:
       pos: -26.5,-9.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -9708.854
+      secondsUntilStateChange: -9936.413
       state: Opening
 - proto: CEFenceWooden
   entities:
@@ -1338,6 +1346,21 @@ entities:
     components:
     - type: Transform
       pos: 26.5,-7.5
+      parent: 1
+  - uid: 1647
+    components:
+    - type: Transform
+      pos: 18.5,-10.5
+      parent: 1
+  - uid: 1648
+    components:
+    - type: Transform
+      pos: 21.5,-3.5
+      parent: 1
+  - uid: 1649
+    components:
+    - type: Transform
+      pos: 24.5,-4.5
       parent: 1
 - proto: CEFoodAgedCheeseSlice
   entities:
@@ -4565,11 +4588,6 @@ entities:
     - type: Transform
       pos: -6.5,3.5
       parent: 1
-  - uid: 719
-    components:
-    - type: Transform
-      pos: 19.5,-0.5
-      parent: 1
   - uid: 740
     components:
     - type: Transform
@@ -6213,6 +6231,11 @@ entities:
     components:
     - type: Transform
       pos: 23.5,-7.5
+      parent: 1
+  - uid: 719
+    components:
+    - type: Transform
+      pos: 19.5,-0.5
       parent: 1
   - uid: 723
     components:
