@@ -1,7 +1,3 @@
-# Example prototype for AutoCrafter
-# This file demonstrates how to use the CEWorkbenchAutoCrafter component
-# You can customize this based on your needs
-
 - type: entity
   parent:
   - BaseMachine

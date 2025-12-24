@@ -121,7 +121,7 @@ public sealed partial class CEFunnelSystem : EntitySystem
                 continue;
 
             var success = false;
-            if (ent.Comp.ContainerCheckId == "storagebase")
+            if (ent.Comp.ContainerCheckId == StorageComponent.ContainerId)
                 success = _storage.Insert(anchoredEntity.Value, target, out _, user: null);
             else
                 success = _container.Insert(target, container);

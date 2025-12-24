@@ -52,27 +52,27 @@ public sealed partial class CEWorkbenchSystem
         while (query.MoveNext(out var uid, out var autoCrafter, out var workbench))
         {
             if (_timing.CurTime < autoCrafter.NextCraftTime)
-                return;
+                continue;
             autoCrafter.NextCraftTime = _timing.CurTime + autoCrafter.CraftDelay; // Just for prevent spamming checks
 
             if (workbench.SelectedRecipe is null)
-                return;
+                continue;
 
             if (autoCrafter.ActiveDoAfter is not null)
-                return;
+                continue;
 
             if (!this.IsPowered(uid, EntityManager))
-                return;
+                continue;
 
             if (!_proto.Resolve(workbench.SelectedRecipe.Value, out var recipe))
-                return;
+                continue;
 
             // Check if we have resources to craft before starting DoAfter
             var getResource = new CEWorkbenchGetResourcesEvent();
             RaiseLocalEvent(uid, getResource);
 
             if (!CanCraftRecipe(recipe, getResource.Resources))
-                return;
+                continue;
 
             var craftDoAfter = new CECraftDoAfterEvent
             {
