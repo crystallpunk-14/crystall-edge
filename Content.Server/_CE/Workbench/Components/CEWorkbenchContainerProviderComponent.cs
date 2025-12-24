@@ -7,6 +7,9 @@ namespace Content.Server._CE.Workbench;
 [Access(typeof(CEWorkbenchSystem))]
 public sealed partial class CEWorkbenchContainerProviderComponent : Component
 {
+    /// <summary>
+    /// The name of the container to check for craftable resources.
+    /// </summary>
     [DataField(required: true)]
     public string ContainerName;
 }
