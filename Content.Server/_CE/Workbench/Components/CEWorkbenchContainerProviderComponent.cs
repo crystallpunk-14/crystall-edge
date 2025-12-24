@@ -1,7 +1,7 @@
 namespace Content.Server._CE.Workbench;
 
 /// <summary>
-/// Provides resources to the workbench located in container in same entity
+/// Provides resources to the workbench located in a container in the same entity.
 /// </summary>
 [RegisterComponent]
 [Access(typeof(CEWorkbenchSystem))]
