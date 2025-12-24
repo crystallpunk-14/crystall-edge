@@ -21,7 +21,6 @@ public sealed partial class CEPowerSystem : CESharedPowerSystem
     public override void Initialize()
     {
         base.Initialize();
-        InitializeCharger();
 
         SubscribeLocalEvent<CEEnergyLeakComponent, PowerConsumerReceivedChanged>(OnPowerChanged);
         SubscribeLocalEvent<CEToggleableConnectorComponent, ActivateInWorldEvent>(OnActivateInWorld);

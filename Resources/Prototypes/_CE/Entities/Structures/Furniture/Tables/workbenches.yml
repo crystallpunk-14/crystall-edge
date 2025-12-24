@@ -106,3 +106,5 @@
   - type: CEWorkbench
     recipeTags:
     - CERecipeWorkbench
+    craftSound:
+      collection: CEHammering

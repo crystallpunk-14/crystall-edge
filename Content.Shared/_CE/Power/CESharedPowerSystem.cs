@@ -2,6 +2,7 @@ using Content.Shared._CE.Power.Components;
 using Content.Shared.Audio;
 using Content.Shared.Destructible;
 using Content.Shared.Popups;
+using Content.Shared.Power;
 using Content.Shared.Power.Components;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.PowerCell;
@@ -38,6 +39,18 @@ public abstract partial class CESharedPowerSystem : EntitySystem
         BatteryQuery = GetEntityQuery<BatteryComponent>();
 
         SubscribeLocalEvent<CEIrradiateOnDestroyComponent, DestructionEventArgs>(OnBatteryDestroyed);
+        SubscribeLocalEvent<CEPowerAmbientSoundComponent, PowerChangedEvent>(OnAmbientPowerChanged);
+        SubscribeLocalEvent<CEPowerPointLightComponent, PowerChangedEvent>(OnLightPowerChanged);
+    }
+
+    private void OnLightPowerChanged(Entity<CEPowerPointLightComponent> ent, ref PowerChangedEvent args)
+    {
+        PointLight.SetEnabled(ent, args.Powered);
+    }
+
+    private void OnAmbientPowerChanged(Entity<CEPowerAmbientSoundComponent> ent, ref PowerChangedEvent args)
+    {
+        Ambient.SetAmbience(ent, args.Powered);
     }
 
     private void OnBatteryDestroyed(Entity<CEIrradiateOnDestroyComponent> ent, ref DestructionEventArgs args)

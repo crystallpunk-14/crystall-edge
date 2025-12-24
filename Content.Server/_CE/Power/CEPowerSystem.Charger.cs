@@ -2,24 +2,11 @@ using System.Linq;
 using Content.Server.Power.EntitySystems;
 using Content.Shared._CE.Power.Components;
 using Content.Shared.Placeable;
-using Content.Shared.Power;
 
 namespace Content.Server._CE.Power;
 
 public sealed partial class CEPowerSystem
 {
-    private void InitializeCharger()
-    {
-        SubscribeLocalEvent<CEChargingPlatformComponent, PowerChangedEvent>(OnChargerChange);
-    }
-
-    private void OnChargerChange(Entity<CEChargingPlatformComponent> ent, ref PowerChangedEvent args)
-    {
-        var enabled = args.Powered;
-        Ambient.SetAmbience(ent, enabled);
-        PointLight.SetEnabled(ent, enabled);
-    }
-
     private void UpdateChargers(float frameTime)
     {
         base.Update(frameTime);

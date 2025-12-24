@@ -101,8 +101,13 @@
     sprite: _CE/Structures/Industrial/melting_furnace.rsi
     state: base
   - type: CEWorkbench
+    vfx: CEFireWhooshEffect
     recipeTags:
     - CERecipeMeltingFurnace
+    craftSound:
+      path: /Audio/_CE/Effects/furnace_start.ogg
+      params:
+        variation: 0.05
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -110,3 +115,16 @@
         fire:
           True: {visible: true}
           False: {visible: false}
+  - type: CEPowerAmbientSound
+  - type: CEPowerPointLight
+  - type: AmbientSound
+    enabled: false
+    volume: -8
+    range: 5
+    sound:
+      path: /Audio/Ambience/Objects/fireplace.ogg
+  - type: PointLight
+    radius: 2
+    energy: 4
+    color: "#dda31c"
+    enabled: false

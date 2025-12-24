@@ -13,6 +13,8 @@
     range: 5
     sound:
       path: /Audio/Ambience/Objects/anomaly_generator.ogg
+  - type: CEPowerAmbientSound
+  - type: CEPowerPointLight
   - type: Fixtures
     fixtures:
       fix1:

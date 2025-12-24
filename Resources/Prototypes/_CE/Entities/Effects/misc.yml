@@ -36,6 +36,7 @@
 - type: entity
   id: CEOverchargeSmallVFX
   parent: CEOverchargeVFX
+  name: smol magic overcharge
   components:
   - type: Sprite
     sprite: _CE/Structures/Industrial/Power/Pipes/medium_flat.rsi
@@ -164,3 +165,35 @@
     duration: 0.9
   - type: TimedDespawn
     lifetime: 0.9
+
+- type: entity
+  id: CEFireWhooshEffect
+  categories: [ ForkFiltered ]
+  name: fire whoosh
+  suffix: VFX
+  save: false
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/cast_impact48.rsi
+    drawdepth: Effects
+    layers:
+    - state: particles_up
+      shader: unshaded
+      color: "#dda31c"
+  - type: Tag
+    tags:
+      - HideContextMenu
+  - type: PointLight
+    color: "#dda31c"
+    enabled: true
+    radius: 4
+    energy: 6
+    netsync: false
+    castShadows: false
+  - type: LightFade
+    duration: 1.5
+  - type: TimedDespawn
+    lifetime: 1.5
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/_CE/Effects/furnace_end.ogg

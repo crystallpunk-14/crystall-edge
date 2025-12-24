@@ -30,7 +30,7 @@ public sealed partial class CEWorkbenchSystem
     private void StartUserCraft(Entity<CEWorkbenchUserCrafterComponent> ent,
         EntityUid user,
         CEWorkbenchRecipePrototype recipe,
-        CEWorkbenchComponent workbenchComp)
+        CEWorkbenchComponent workbench)
     {
         var craftDoAfter = new CECraftDoAfterEvent
         {
@@ -39,7 +39,7 @@ public sealed partial class CEWorkbenchSystem
 
         var doAfterArgs = new DoAfterArgs(EntityManager,
             user,
-            recipe.CraftTime * workbenchComp.CraftSpeed,
+            recipe.CraftTime * workbench.CraftSpeed,
             craftDoAfter,
             ent,
             ent)
@@ -50,7 +50,7 @@ public sealed partial class CEWorkbenchSystem
         };
 
         _doAfter.TryStartDoAfter(doAfterArgs);
-        _audio.PlayPvs(recipe.OverrideCraftSound ?? workbenchComp.CraftSound, ent);
+        _audio.PlayPvs(recipe.OverrideCraftSound ?? workbench.CraftSound, ent);
     }
 
     private void OnUserCraftFinished(Entity<CEWorkbenchUserCrafterComponent> ent, ref CECraftDoAfterEvent args)
@@ -59,6 +59,9 @@ public sealed partial class CEWorkbenchSystem
             return;
 
         if (!_proto.Resolve(args.Recipe, out var recipe))
+            return;
+
+        if (!_workbenchQuery.TryComp(ent, out var workbench))
             return;
 
         var getResource = new CEWorkbenchGetResourcesEvent();
@@ -76,6 +79,8 @@ public sealed partial class CEWorkbenchSystem
 
         if (CheckRecipeConditions(recipe, ent, args.User))
             SpawnRecipeResult(recipe, ent);
+
+        SpawnAtPosition(workbench.Vfx, Transform(ent).Coordinates);
 
         UpdateUIRecipes(ent.Owner);
         args.Handled = true;

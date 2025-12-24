@@ -24,6 +24,9 @@ public sealed partial class CEWorkbenchSystem
         if (!_proto.Resolve(args.Recipe, out var recipe))
             return;
 
+        if (!_workbenchQuery.TryComp(ent, out var workbench))
+            return;
+
         var getResource = new CEWorkbenchGetResourcesEvent();
         RaiseLocalEvent(ent.Owner, getResource);
 
@@ -40,6 +43,7 @@ public sealed partial class CEWorkbenchSystem
         if (CheckRecipeConditions(recipe, ent, null))
             SpawnRecipeResult(recipe, ent);
 
+        SpawnAtPosition(workbench.Vfx, Transform(ent).Coordinates);
         UpdateUIRecipes(ent.Owner);
         args.Handled = true;
     }
