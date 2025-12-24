@@ -76,9 +76,7 @@
         mask: # tables should collide with other tables
         - TableMask
         layer:
-        - Impassable
-        - MidImpassable
-        - LowImpassable
+        - TableLayer
   - type: DoAfter
   - type: ApcPowerReceiver
     powerLoad: 2
