@@ -45,8 +45,8 @@ public sealed class CEWorkbench
                     if (Math.Abs(resourcePrice) < epsilon && Math.Abs(resultPrice) < epsilon)
                         continue;
 
-                    var minLimit = resourcePrice;
-                    var maxLimit = resourcePrice * 2;
+                    var minLimit = resourcePrice * 0.8;
+                    var maxLimit = resourcePrice * 1.2;
                     if (resultPrice < minLimit)
                     {
                         Assert.Fail($"The ingredients to craft the [{recipe.ID}] cost more than the result of the crafting. \nCrafting: [{recipe.Result.Id} x{recipe.ResultCount}]. \nExpected price range: from {minLimit} to {maxLimit}. \nCurrent price: {resultPrice}");
