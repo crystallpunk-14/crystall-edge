@@ -5,6 +5,7 @@
 
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
+using Content.Shared.Actions;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Popups;
 using Robust.Server.GameObjects;
@@ -16,6 +17,7 @@ namespace Content.Server._CE.ZLevels.Core;
 
 public sealed partial class CEZLevelsSystem
 {
+    [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly ViewSubscriberSystem _viewSubscriber = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
 
@@ -26,8 +28,23 @@ public sealed partial class CEZLevelsSystem
         SubscribeLocalEvent<PlayerAttachedEvent>(OnPlayerAttached);
         SubscribeLocalEvent<PlayerDetachedEvent>(OnPlayerDetached);
 
-        SubscribeLocalEvent<CEZLevelViewerComponent, EntParentChangedMessage>(OnViewerParentChange);
+        SubscribeLocalEvent<CEZLevelViewerComponent, MapInitEvent>(OnViewerInit);
+        SubscribeLocalEvent<CEZLevelViewerComponent, ComponentRemove>(OnCompRemove);
+
+        SubscribeLocalEvent<CEZLevelViewerComponent, MapUidChangedEvent>(OnViewerMapUidChanged);
         SubscribeLocalEvent<CEZPhysicsComponent, CEZLevelFallEvent>(OnZLevelFall);
+    }
+
+    private void OnViewerInit(Entity<CEZLevelViewerComponent> ent, ref MapInitEvent args)
+    {
+        _actions.AddAction(ent, ref ent.Comp.ZLevelActionEntity, ent.Comp.ActionProto);
+        _meta.AddFlag(ent, MetaDataFlags.ExtraTransformEvents);
+    }
+
+    private void OnCompRemove(Entity<CEZLevelViewerComponent> ent, ref ComponentRemove args)
+    {
+        _actions.RemoveAction(ent.Comp.ZLevelActionEntity);
+        _meta.RemoveFlag(ent, MetaDataFlags.ExtraTransformEvents);
     }
 
     protected override void OnViewerMove(Entity<CEZLevelViewerComponent> ent, ref MoveEvent args)
@@ -51,7 +68,7 @@ public sealed partial class CEZLevelsSystem
         RemComp<CEZLevelViewerComponent>(ev.Entity);
     }
 
-    private void OnViewerParentChange(Entity<CEZLevelViewerComponent> ent, ref EntParentChangedMessage args)
+    private void OnViewerMapUidChanged(Entity<CEZLevelViewerComponent> ent, ref MapUidChangedEvent args)
     {
         UpdateViewer(ent);
     }
