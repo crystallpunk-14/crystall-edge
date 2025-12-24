@@ -5,6 +5,7 @@ ce-stack-cloth = rolls of fabric
 ce-stack-flora = tufts of grass
 ce-stack-nails = nails
 ce-stack-leather = leather
+ce-stack-coal = coal
 
 ce-stack-iron-bars = iron bars
 ce-stack-brass-bars = brass bars

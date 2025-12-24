@@ -7,6 +7,9 @@
   - !type:MaterialResource
     material: CEIron
     count: 10
+  - !type:StackResource
+    stack: CECoal
+    count: 2
   result: CEIronBar1
   resultCount: 1
 
@@ -19,5 +22,8 @@
   - !type:MaterialResource
     material: CEBrass
     count: 10
+  - !type:StackResource
+    stack: CECoal
+    count: 1
   result: CEBrassBar1
   resultCount: 1

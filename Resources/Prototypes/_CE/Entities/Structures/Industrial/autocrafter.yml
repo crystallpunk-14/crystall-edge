@@ -107,6 +107,7 @@
   parent:
   - CEBaseAutoCrafter
   id: CEWorkbenchAutoMeltingFurnace
+  name: melting furnace
   components:
   - type: Sprite
     state: workbench

@@ -43,6 +43,13 @@
     count: 1
 
 - type: tradingPosition
+  id: CECoal10
+  faction: DwarfMiners
+  service: !type:CEBuyItemsService
+    product: CECoal10
+    count: 1
+
+- type: tradingPosition
   id: CELantern
   faction: DwarfMiners
   service: !type:CEBuyItemsService

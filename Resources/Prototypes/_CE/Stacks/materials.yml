@@ -41,6 +41,13 @@
   maxCount: 30
 
 - type: stack
+  id: CECoal
+  name: ce-stack-coal
+  icon: { sprite: "_CE/Objects/Materials/coal.rsi", state: ore1 }
+  spawn: CECoal1
+  maxCount: 30
+
+- type: stack
   id: CEBrass
   name: ce-stack-brass-bars
   spawn: CEBrassBar1
