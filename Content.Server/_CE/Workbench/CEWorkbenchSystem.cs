@@ -8,6 +8,7 @@ using Content.Shared.UserInterface;
 using Robust.Server.Audio;
 using Robust.Server.Containers;
 using Robust.Server.GameObjects;
+using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -26,6 +27,7 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
     [Dependency] private readonly StackSystem _stack = default!;
     [Dependency] private readonly ContainerSystem _container = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly PhysicsSystem _physics = default!;
 
     private EntityQuery<CEWorkbenchComponent> _workbenchQuery;
 
@@ -165,6 +167,7 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
         {
             _transform.SetCoordinates(resultEntity, Transform(workbench).Coordinates.Offset(new Vector2(_random.NextFloat(-0.25f, 0.25f), _random.NextFloat(-0.25f, 0.25f))));
             _stack.TryMergeToContacts(resultEntity);
+            _physics.WakeBody(resultEntity);
         }
     }
 }

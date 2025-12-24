@@ -1,4 +1,5 @@
 using Content.Server.Power.EntitySystems;
+using Content.Server.Storage.EntitySystems;
 using Content.Shared._CE.Funnel;
 using Content.Shared.Power;
 using Content.Shared.Power.Components;
@@ -21,6 +22,7 @@ public sealed partial class CEFunnelSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly INetManager _net = default!;
+    [Dependency] private readonly StorageSystem _storage = default!;
 
     public override void Initialize()
     {
@@ -118,7 +120,13 @@ public sealed partial class CEFunnelSystem : EntitySystem
             if (!_container.TryGetContainer(anchoredEntity.Value, ent.Comp.ContainerCheckId, out var container))
                 continue;
 
-            if (!_container.Insert(target, container))
+            var success = false;
+            if (ent.Comp.ContainerCheckId == "storagebase")
+                success = _storage.Insert(anchoredEntity.Value, target, out _, user: null);
+            else
+                success = _container.Insert(target, container);
+
+            if (!success)
                 continue;
 
             _audio.PlayPredicted(ent.Comp.InsertSound, xform.Coordinates, null);
