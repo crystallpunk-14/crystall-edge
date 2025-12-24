@@ -26,6 +26,8 @@
   - type: PhysicalComposition
     materialComposition:
       CEIron: 10
+  - type: StackPrice
+    price: 3
 
 - type: entity
   id: CEIronBar5
@@ -71,6 +73,8 @@
   - type: PhysicalComposition
     materialComposition:
       CEBrass: 10
+  - type: StackPrice
+    price: 3
 
 - type: entity
   id: CEBrassBar5

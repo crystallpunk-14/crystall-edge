@@ -48,7 +48,7 @@
   unit: materials-unit-roll
   icon: { sprite: _CE/Objects/Materials/leather.rsi, state: leather }
   color: "#a78a63"
-  price: 1.2
+  price: 0.8
 
 - type: material
   id: CEIron
@@ -57,7 +57,7 @@
   unit: materials-unit-bar
   icon: { sprite: _CE/Objects/Materials/Metals/iron_scrap.rsi, state: scrap }
   color: "#9093a1"
-  price: 2
+  price: 1.2
 
 - type: material
   id: CEBrass
@@ -66,4 +66,4 @@
   unit: materials-unit-bar
   icon: { sprite: _CE/Objects/Materials/Metals/brass_scrap.rsi, state: scrap }
   color: "#bb7547"
-  price: 2
+  price: 1.4

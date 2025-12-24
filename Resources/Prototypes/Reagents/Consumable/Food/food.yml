@@ -20,7 +20,7 @@
     amount: 1.5
   - !type:PlantAdjustHealth
     amount: 0.75
-  pricePerUnit: 2
+  pricePerUnit: 0.5
 
 - type: reagent
   id: Vitamin #Anything "healthy"
@@ -53,7 +53,7 @@
     amount: 0.5
   - !type:PlantAdjustHealth
     amount: 1.5
-  pricePerUnit: 2.5
+  pricePerUnit: 0.75
 
 - type: reagent
   id: Protein #Meat and beans
@@ -78,7 +78,7 @@
         - !type:MetabolizerTypeCondition
           type: [ CEVampire ]
           inverted: true
-  pricePerUnit: 3
+  pricePerUnit: 0.9
 
 - type: reagent
   id: Sugar #Candy and grains
