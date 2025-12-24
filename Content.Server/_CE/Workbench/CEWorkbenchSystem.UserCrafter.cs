@@ -72,17 +72,10 @@ public sealed partial class CEWorkbenchSystem
             return;
         }
 
-        // Check conditions
-        var passConditions = CheckRecipeConditions(recipe, ent, args.User);
-
-        // Consume resources
         ConsumeRecipeResources(recipe, resources);
 
-        // Spawn result only if conditions passed
-        if (passConditions)
-        {
+        if (CheckRecipeConditions(recipe, ent, args.User))
             SpawnRecipeResult(recipe, ent);
-        }
 
         UpdateUIRecipes(ent.Owner);
         args.Handled = true;

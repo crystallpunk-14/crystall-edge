@@ -26,6 +26,8 @@
   - type: Climbable
   - type: Clickable
   - type: CEWorkbenchAutoCrafter
+  - type: CEWorkbenchContainerProvider
+    containerName: storagebase
   - type: CEWorkbench
     craftSpeed: 1
   - type: InteractionOutline
@@ -33,6 +35,18 @@
     interfaces:
       enum.CEWorkbenchUiKey.Key:
         type: CEAutoCrafterBoundUserInterface
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: Storage
+    grid:
+    - 0,0,7,7
+    maxItemSize: Ginormous
+    storageOpenSound: /Audio/Effects/closetopen.ogg
+    storageCloseSound: /Audio/Effects/closetclose.ogg
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: [ ]
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: CEWood
@@ -62,10 +76,6 @@
           CEWoodenPlanks1:
             min: 1
             max: 2
-  - type: PlaceableSurface
-  - type: CEWorkbenchPlaceableProvider
-  - type: ItemPlacer
-    maxEntities: 0
   - type: Fixtures
     fixtures:
       fix1:

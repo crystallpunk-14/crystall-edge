@@ -17,20 +17,6 @@ public sealed partial class CEFunnelComponent : Component
     public string FixtureId = "collect";
 
     /// <summary>
-    /// A whitelist for entities that can be collected by this receiver.
-    /// If specified, only entities matching this whitelist will be collected.
-    /// </summary>
-    [DataField]
-    public EntityWhitelist? Whitelist;
-
-    /// <summary>
-    /// A blacklist for entities that cannot be collected by this receiver.
-    /// Entities matching this blacklist will be ignored even if they match the whitelist.
-    /// </summary>
-    [DataField]
-    public EntityWhitelist? Blacklist;
-
-    /// <summary>
     /// The sound played when an item is successfully inserted into storage.
     /// </summary>
     [DataField]
@@ -50,4 +36,7 @@ public sealed partial class CEFunnelComponent : Component
 
     [DataField, AutoPausedField]
     public TimeSpan NextExtractionTime = TimeSpan.Zero;
+
+    [DataField]
+    public string ContainerCheckId = "storagebase";
 }

@@ -35,17 +35,10 @@ public sealed partial class CEWorkbenchSystem
             return;
         }
 
-        // Check conditions (autocrafter works without a user)
-        var passConditions = CheckRecipeConditions(recipe, ent, null);
-
-        // Consume resources
         ConsumeRecipeResources(recipe, resources);
 
-        // Spawn result only if conditions passed
-        if (passConditions)
-        {
+        if (CheckRecipeConditions(recipe, ent, null))
             SpawnRecipeResult(recipe, ent);
-        }
 
         UpdateUIRecipes(ent.Owner);
         args.Handled = true;
@@ -67,7 +60,7 @@ public sealed partial class CEWorkbenchSystem
 
             if (autoCrafter.ActiveDoAfter is not null)
                 return;
-            
+
             if (!this.IsPowered(uid, EntityManager))
                 return;
 
@@ -100,6 +93,7 @@ public sealed partial class CEWorkbenchSystem
             };
 
             _doAfter.TryStartDoAfter(doAfterArgs, out var doAfterId);
+            _audio.PlayPvs(recipe.OverrideCraftSound ?? workbench.CraftSound, uid);
             autoCrafter.ActiveDoAfter = doAfterId;
             autoCrafter.NextCraftTime = _timing.CurTime + autoCrafter.CraftDelay + craftTime;
         }
