@@ -24,6 +24,10 @@
 - changed-files:
   - any-glob-to-any-file: '**/*.cs'
 
+"zLevels":
+- changed-files:
+  - any-glob-to-any-file: '**/_CE/ZLevels/**/*.cs'
+
 "YML":
 - changed-files:
   - any-glob-to-any-file: '**/*.yml'
