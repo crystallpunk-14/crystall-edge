@@ -9,7 +9,7 @@
     count: 10
   - !type:StackResource
     stack: CECoal
-    count: 2
+    count: 1
   result: CEIronBar1
   resultCount: 1
 
