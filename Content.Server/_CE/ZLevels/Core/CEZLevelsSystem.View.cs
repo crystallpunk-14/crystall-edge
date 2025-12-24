@@ -21,7 +21,7 @@ public sealed partial class CEZLevelsSystem
     [Dependency] private readonly ViewSubscriberSystem _viewSubscriber = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
 
-    private readonly EntProtoId _zEyeProto = "CEZZLevelEye";
+    private readonly EntProtoId _zEyeProto = "CEZLevelEye";
 
     private void InitView()
     {
