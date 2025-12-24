@@ -40,6 +40,7 @@
   - type: Storage
     grid:
     - 0,0,7,7
+    openOnActivate: false
     maxItemSize: Ginormous
     storageOpenSound: /Audio/Effects/closetopen.ogg
     storageCloseSound: /Audio/Effects/closetclose.ogg
