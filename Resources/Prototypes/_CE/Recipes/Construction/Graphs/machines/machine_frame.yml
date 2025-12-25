@@ -47,6 +47,16 @@
                 - !type:EmptyAllContainers
                 - !type:MachineFrameRegenerateProgress
 
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 2
+              completed:
+                - !type:SpawnPrototype
+                  prototype: CEBrassBar1
+                  amount: 2
+                - !type:DeleteEntity
+
     - node: machine
       entity: !type:BoardNodeEntity { container: machine_board }
       edges:

@@ -77,7 +77,7 @@
           components:
           - MachineBoard
   - type: Construction
-    graph: CEMachineFurnace
+    graph: CEMachine
     node: machineFrame
     defaultTarget: machine
     containers:

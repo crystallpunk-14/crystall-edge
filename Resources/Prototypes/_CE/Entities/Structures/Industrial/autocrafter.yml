@@ -2,6 +2,7 @@
   parent:
   - BaseMachine
   - CEBaseMachinePowered
+  - CEConstructibleMachine
   id: CEBaseAutoCrafter
   categories: [ ForkFiltered ]
   abstract: true
@@ -37,6 +38,8 @@
     containers:
       storagebase: !type:Container
         ents: [ ]
+      machine_board: !type:Container
+      machine_parts: !type:Container
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: CEWood
