@@ -55,6 +55,13 @@
   maxCount: 10
 
 - type: stack
+  id: CEBrassSheet
+  name: ce-stack-brass-sheet
+  spawn: CEBrassSheet1
+  icon: { sprite: _CE/Objects/Materials/Metals/brass_bar.rsi, state: sheet_2 }
+  maxCount: 10
+
+- type: stack
   id: CEScrapIron
   name: ce-stack-iron-scrap
   spawn: CEScrapIron1
