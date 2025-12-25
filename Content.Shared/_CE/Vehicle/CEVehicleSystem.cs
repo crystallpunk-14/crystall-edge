@@ -78,7 +78,7 @@ public sealed partial class CEVehicleSystem : EntitySystem
             args.Entities.Add(operatorUid);
     }
 
-    private void OnOperatorShutdown(Entity<VehicleOperatorComponent> ent, ref ComponentShutdown args)
+    private void OnOperatorShutdown(Entity<CEVehicleOperatorComponent> ent, ref ComponentShutdown args)
     {
         TryRemoveOperator((ent, ent));
     }
@@ -97,7 +97,7 @@ public sealed partial class CEVehicleSystem : EntitySystem
 
         // Do not run logic if the entity is already operating a vehicle.
         // However, if they are operating *this* vehicle, return true (they are indeed the operator)
-        if (TryComp<VehicleOperatorComponent>(uid, out var eOperator))
+        if (TryComp<CEVehicleOperatorComponent>(uid, out var eOperator))
             return eOperator.Vehicle == entity.Owner;
 
         if (!removeExisting && entity.Comp.Operator is not null)
@@ -108,13 +108,13 @@ public sealed partial class CEVehicleSystem : EntitySystem
 
         var oldOperator = entity.Comp.Operator;
 
-        if (entity.Comp.Operator is { } currentOperator && TryComp<VehicleOperatorComponent>(currentOperator, out var currentOperatorComponent))
+        if (entity.Comp.Operator is { } currentOperator && TryComp<CEVehicleOperatorComponent>(currentOperator, out var currentOperatorComponent))
         {
             var exitEvent = new CEOnVehicleExitedEvent(entity, currentOperator);
             RaiseLocalEvent(currentOperator, ref exitEvent);
 
             currentOperatorComponent.Vehicle = null;
-            RemCompDeferred<VehicleOperatorComponent>(currentOperator);
+            RemCompDeferred<CEVehicleOperatorComponent>(currentOperator);
             RemCompDeferred<RelayInputMoverComponent>(currentOperator);
         }
 
@@ -123,7 +123,7 @@ public sealed partial class CEVehicleSystem : EntitySystem
         if (uid != null)
         {
             // AddComp used for noisy fail. This should never be an issue.
-            var vehicleOperator = AddComp<VehicleOperatorComponent>(uid.Value);
+            var vehicleOperator = AddComp<CEVehicleOperatorComponent>(uid.Value);
             vehicleOperator.Vehicle = entity.Owner;
             Dirty(uid.Value, vehicleOperator);
 
@@ -163,7 +163,7 @@ public sealed partial class CEVehicleSystem : EntitySystem
     /// <param name="operatorEntity">The operator who is riding a vehicle</param>
     /// <returns>If the operator was removed successfully or if the entity was not operating a vehicle.</returns>
     [PublicAPI]
-    public bool TryRemoveOperator(Entity<VehicleOperatorComponent?> operatorEntity)
+    public bool TryRemoveOperator(Entity<CEVehicleOperatorComponent?> operatorEntity)
     {
         if (!Resolve(operatorEntity, ref operatorEntity.Comp, false))
             return true;
@@ -180,7 +180,7 @@ public sealed partial class CEVehicleSystem : EntitySystem
     /// <param name="entity"></param>
     /// <param name="operatorEnt"></param>
     [PublicAPI]
-    public bool TryGetOperator(Entity<CEVehicleComponent?> entity, [NotNullWhen(true)] out Entity<VehicleOperatorComponent>? operatorEnt)
+    public bool TryGetOperator(Entity<CEVehicleComponent?> entity, [NotNullWhen(true)] out Entity<CEVehicleOperatorComponent>? operatorEnt)
     {
         operatorEnt = null;
         if (!Resolve(entity, ref entity.Comp))
@@ -189,7 +189,7 @@ public sealed partial class CEVehicleSystem : EntitySystem
         if (entity.Comp.Operator is not { } operatorUid)
             return false;
 
-        if (!TryComp<VehicleOperatorComponent>(operatorUid, out var operatorComponent))
+        if (!TryComp<CEVehicleOperatorComponent>(operatorUid, out var operatorComponent))
             return false;
 
         operatorEnt = (operatorUid, operatorComponent);
