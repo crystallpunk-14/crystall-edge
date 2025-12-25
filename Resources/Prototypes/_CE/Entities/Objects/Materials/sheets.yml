@@ -1,56 +1,8 @@
 - type: entity
-  id: CEIronBar1
+  id: CEBrassSheet1
   parent: BaseItem
-  name: iron bar
-  suffix: 1
-  description: A heavy piece of refined iron
-  categories: [ ForkFiltered ]
-  components:
-  - type: Item
-    size: Normal
-  - type: Sprite
-    sprite: _CE/Objects/Materials/Metals/iron_bar.rsi
-    layers:
-      - state: bar
-        map: ["base"]
-  - type: Appearance
-  - type: Stack
-    stackType: CEIronBar
-    count: 1
-    baseLayer: base
-    layerStates:
-    - bar
-    - bar_2
-    - bar_3
-  - type: Material
-  - type: PhysicalComposition
-    materialComposition:
-      CEIron: 10
-  - type: StackPrice
-    price: 3
-
-- type: entity
-  id: CEIronBar5
-  parent: CEIronBar1
-  suffix: 5
-  components:
-  - type: Stack
-    count: 5
-
-- type: entity
-  id: CEIronBar10
-  parent: CEIronBar1
-  suffix: 10
-  components:
-  - type: Stack
-    count: 10
-
-- type: entity
-  id: CEBrassBar1
-  parent: BaseItem
-  name: brass bar
-  suffix: 1
-  description: "The secret of how this metal is made has been lost over time, but that only makes it more valuable: it's the only metal that can isolate arcane energy, and without it, most modern tech wouldn't be possible."
+  name: brass sheet
+  description: Brass bars, hammered thin into sheets. Useful for crafting.
   categories: [ ForkFiltered ]
   components:
   - type: Item
@@ -58,35 +10,79 @@
   - type: Sprite
     sprite: _CE/Objects/Materials/Metals/brass_bar.rsi
     layers:
-      - state: bar
+      - state: sheet
         map: ["base"]
   - type: Appearance
   - type: Stack
-    stackType: CEBrassBar
+    stackType: CEBrassSheet
     count: 1
     baseLayer: base
     layerStates:
-    - bar
-    - bar_2
-    - bar_3
+    - sheet
+    - sheet_2
+    - sheet_3
   - type: Material
   - type: PhysicalComposition
     materialComposition:
-      CEBrass: 10
-  - type: StackPrice
-    price: 3
+      CEBrass: 5
 
 - type: entity
-  id: CEBrassBar5
-  parent: CEBrassBar1
+  id: CEBrassSheet5
+  parent: CEBrassSheet1
   suffix: 5
   components:
   - type: Stack
     count: 5
 
 - type: entity
-  id: CEBrassBar10
-  parent: CEBrassBar1
+  id: CEBrassSheet10
+  parent: CEBrassSheet1
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+
+
+- type: entity
+  id: CEGlassSheet1
+  parent: BaseItem
+  name: glass sheet
+  description: Treated quartz glass, transmits light well, and is nice to look at!
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Normal
+  - type: Sprite
+    sprite: _CE/Objects/Materials/glass.rsi
+    layers:
+      - state: glass
+        map: ["base"]
+  - type: Appearance
+  - type: Stack
+    stackType: CEGlass
+    count: 1
+    baseLayer: base
+    layerStates:
+    - glass
+    - glass_2
+    - glass_3
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      CEGlass: 5
+
+- type: entity
+  id: CEGlassSheet5
+  parent: CEGlassSheet1
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5
+
+- type: entity
+  id: CEGlassSheet10
+  parent: CEGlassSheet1
   suffix: 10
   components:
   - type: Stack

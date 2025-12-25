@@ -11,7 +11,7 @@
             - material: CEStone
               amount: 5
               doAfter: 2
-            - material: CEIron
+            - material: CEIronBar
               amount: 2
               doAfter: 2
             - material: CEBloodEssence

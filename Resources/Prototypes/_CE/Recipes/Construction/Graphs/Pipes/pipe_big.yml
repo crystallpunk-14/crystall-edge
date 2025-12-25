@@ -8,7 +8,7 @@
       edges:
         - to: CEPipeBrassBig
           steps:
-            - material: CEBrass
+            - material: CEBrassBar
               amount: 2
               doAfter: 1
 
@@ -29,7 +29,7 @@
               doAfter: 1
         - to: CEPipeBrassBigValve
           steps:
-            - material: CEIron
+            - material: CEIronBar
               amount: 1
               doAfter: 1
 
@@ -82,6 +82,6 @@
       edges:
         - to: CEPipeBrassBig
           steps:
-            - material: CEBrass
+            - material: CEBrassBar
               amount: 1
               doAfter: 1

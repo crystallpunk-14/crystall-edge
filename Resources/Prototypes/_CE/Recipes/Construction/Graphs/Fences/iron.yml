@@ -8,7 +8,7 @@
           completed:
             - !type:SnapToGrid
           steps:
-            - material: CEIron
+            - material: CEIronBar
               amount: 2
               doAfter: 8
 
@@ -35,7 +35,7 @@
           completed:
             - !type:SnapToGrid
           steps:
-            - material: CEIron
+            - material: CEIronBar
               amount: 4
               doAfter: 8
 
@@ -62,7 +62,7 @@
           completed:
             - !type:SnapToGrid
           steps:
-            - material: CEIron
+            - material: CEIronBar
               amount: 4
               doAfter: 8
 

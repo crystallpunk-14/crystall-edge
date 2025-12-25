@@ -33,5 +33,5 @@
   - type: MachineBoard
     prototype: CEMeltingFurnace
     stackRequirements:
-      CEBrass: 2
+      CEBrassBar: 2
       CEIron: 2

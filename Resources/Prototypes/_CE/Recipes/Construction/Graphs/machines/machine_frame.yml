@@ -8,7 +8,7 @@
           conditions:
             - !type:EntityAnchored
           steps:
-            - material: CEBrass
+            - material: CEBrassBar
               amount: 2
               doAfter: 0.5
 

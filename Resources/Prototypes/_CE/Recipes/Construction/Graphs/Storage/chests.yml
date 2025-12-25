@@ -11,7 +11,7 @@
             - material: CEWood
               amount: 5
               doAfter: 2
-            - material: CEIron
+            - material: CEIronBar
               amount: 1
               doAfter: 2
 
