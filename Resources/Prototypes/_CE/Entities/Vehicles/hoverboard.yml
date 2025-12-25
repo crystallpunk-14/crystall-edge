@@ -23,7 +23,6 @@
     damageContainer: Inorganic
     damageModifierSet: Metallic
   - type: MovementSpeedModifier
-    weightlessModifier: 0
     acceleration: 1
     friction: 6
     frictionNoInput: 12
