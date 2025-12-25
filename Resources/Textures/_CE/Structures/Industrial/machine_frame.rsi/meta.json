@@ -8,16 +8,16 @@
 	"copyright": "Created by TheShuEd (github)",
     "states": [
         {
-            "name": "box_0"
+            "name": "box"
         },
         {
-            "name": "box_1"
-        },
-        {
-            "name": "box_2"
+            "name": "box_core"
         },
         {
             "name": "destroyed"
+        },
+        {
+            "name": "plating"
         }
     ]
 }

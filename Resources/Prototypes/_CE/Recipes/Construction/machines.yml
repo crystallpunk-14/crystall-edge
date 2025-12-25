@@ -1,7 +1,7 @@
 - type: construction
   hide: false
-  id: CEMachineFurnace
-  graph: CEMachineFurnace
+  id: CEMachine
+  graph: CEMachine
   startNode: start
   targetNode: machine
   category: construction-category-machines

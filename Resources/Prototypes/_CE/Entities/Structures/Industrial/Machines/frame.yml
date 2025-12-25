@@ -10,7 +10,6 @@
     drawdepth: Mobs
     sprite: _CE/Structures/Industrial/machine_frame.rsi
     snapCardinals: true
-    state: box_0
   - type: Transform
     anchored: false
     noRot: true
@@ -37,53 +36,11 @@
     damageModifierSet: Metallic
 
 - type: entity
-  parent: CEMachineFrameBase
-  id: CEMachineFrameUnfinished
-  suffix: Unfinished
-  components:
-  - type: Sprite
-    state: box_0
-  - type: Construction
-    graph: CEMachineFurnace
-    defaultTarget: machineFrame
-    node: missingMetal
-    containers:
-    - machine_board
-    - machine_parts
-  - type: ContainerContainer
-    containers:
-      machine_board: !type:Container
-      machine_parts: !type:Container
-  - type: Destructible
-    thresholds:
-    - trigger: # Excess damage, don't spawn entities
-        !type:DamageTrigger
-        damage: 200
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MetalBreak
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
-    - trigger:
-        !type:DamageTrigger
-        damage: 100
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MetalBreak
-      - !type:ChangeConstructionNodeBehavior
-        node: start
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
-
-- type: entity
   id: CEMachineFrame
   parent: CEMachineFrameBase
-  suffix: Ready
   components:
   - type: Sprite
-    state: box_1
+    state: box
   - type: Destructible
     thresholds:
     - trigger: # Excess damage, don't spawn entities
@@ -114,7 +71,7 @@
   - type: Appearance
   - type: ItemMapper
     mapLayers:
-      box_2:
+      box_core:
         minCount: 1
         whitelist:
           components:
@@ -149,9 +106,6 @@
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
-          CEScrapIron1:
-            min: 1
-            max: 2
           CEScrapBrass1:
             min: 1
             max: 2

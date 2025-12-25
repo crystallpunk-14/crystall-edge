@@ -49,23 +49,20 @@
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
-      - !type:PlaySoundBehavior
-        sound:
-          collection: WoodDestroy
+      #- !type:PlaySoundBehavior
+      #  sound:
+      #    collection: WoodDestroy
     - trigger:
         !type:DamageTrigger
         damage: 60
       behaviors:
+      - !type:ChangeConstructionNodeBehavior
+        node: machineFrame
       - !type:DoActsBehavior
         acts: ["Destruction"]
-      - !type:PlaySoundBehavior
-        sound:
-          collection: WoodDestroy
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          CEWoodenPlanks1:
-            min: 1
-            max: 2
+      #- !type:PlaySoundBehavior
+      #  sound:
+      #    collection: WoodDestroy
   - type: Fixtures
     fixtures:
       fix1:
@@ -80,6 +77,8 @@
   - type: DoAfter
   - type: ApcPowerReceiver
     powerLoad: 2
+  - type: Machine
+    board: CEMachineCoreMeltingFurnace
 
 - type: entity
   parent:

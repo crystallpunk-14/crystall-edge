@@ -1,0 +1,37 @@
+- type: entity
+  id: CEBaseMachineCore
+  parent: BaseItem
+  name: machine core
+  description: TODO
+  abstract: true
+  categories: [ ForkFiltered ]
+  components:
+  - type: MachineBoard
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _CE/Structures/Industrial/machine_cores.rsi
+    state: generic
+  - type: Item
+    storedRotation: -90
+  - type: StaticPrice
+    price: 100
+  #- type: PhysicalComposition
+  #  materialComposition:
+  #    Glass: 230
+  #  chemicalComposition:
+  #    Silicon: 20
+  - type: Circuitboard
+
+- type: entity
+  id: CEMachineCoreMeltingFurnace
+  parent: CEBaseMachineCore
+  name: melting furnace core
+  components:
+  - type: Sprite
+    state: melting_furnace
+  - type: MachineBoard
+    prototype: CEMeltingFurnace
+    stackRequirements:
+      CEBrass: 2
+      CEIron: 2
