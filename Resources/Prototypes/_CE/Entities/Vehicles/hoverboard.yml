@@ -1,6 +1,6 @@
 
 - type: entity
-  id: VehicleWheelchair
+  id: CEVehicleHoverboard
   parent: 
   - CEBaseVehicleStrap
   - BaseFoldable
