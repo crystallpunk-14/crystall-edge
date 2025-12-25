@@ -80,6 +80,9 @@ public abstract partial class CESharedZLevelsSystem
 
     private void SetActiveStatus(EntityUid ent, bool active)
     {
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
         if (active)
             EnsureComp<CEActiveZPhysicsComponent>(ent);
         else
