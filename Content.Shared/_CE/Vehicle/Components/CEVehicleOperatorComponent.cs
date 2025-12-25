@@ -7,7 +7,7 @@ namespace Content.Shared._CE.Vehicle.Components;
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 [Access(typeof(CEVehicleSystem))]
-public sealed partial class VehicleOperatorComponent : Component
+public sealed partial class CEVehicleOperatorComponent : Component
 {
     /// <summary>
     /// The vehicle we are currently operating.
