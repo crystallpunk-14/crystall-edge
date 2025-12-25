@@ -6,7 +6,7 @@
   - BaseFoldable
   - BaseItem
   name: hoverboard
-  description: floating personal transport device
+  description: Floating personal transport device
   components:
   - type: Sprite
     sprite: Objects/Vehicles/wheelchair.rsi
