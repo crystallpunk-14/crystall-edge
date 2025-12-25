@@ -36,7 +36,7 @@ public sealed partial class CEVehicleSystem : EntitySystem
         SubscribeLocalEvent<CEVehicleComponent, ComponentShutdown>(OnVehicleShutdown);
         SubscribeLocalEvent<CEVehicleComponent, GetAdditionalAccessEvent>(OnVehicleGetAdditionalAccess);
 
-        SubscribeLocalEvent<VehicleOperatorComponent, ComponentShutdown>(OnOperatorShutdown);
+        SubscribeLocalEvent<CEVehicleOperatorComponent, ComponentShutdown>(OnOperatorShutdown);
     }
 
     /// <remarks>
