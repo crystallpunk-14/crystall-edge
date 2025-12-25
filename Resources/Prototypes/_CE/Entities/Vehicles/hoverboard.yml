@@ -1,0 +1,46 @@
+
+- type: entity
+  id: CEVehicleHoverboard
+  parent: 
+  - CEBaseVehicleStrap
+  - BaseFoldable
+  - BaseItem
+  name: hoverboard
+  description: Floating personal transport device
+  components:
+  - type: Sprite
+    sprite: Objects/Vehicles/wheelchair.rsi
+    layers:
+    - state: vehicle
+      map: ["unfoldedLayer"]
+    - state: vehicle_folded
+      map: ["foldedLayer"]
+      visible: false
+  - type: Appearance
+  - type: Item
+    size: Ginormous
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Metallic
+  - type: MovementSpeedModifier
+    acceleration: 1
+    friction: 6
+    frictionNoInput: 12
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 6
+  - type: Strap
+    buckleOffset: "0,-0.05"
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.2
+        density: 360
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - TableLayer
+  - type: StaticPrice
+    price: 70

@@ -166,11 +166,13 @@ public abstract partial class SharedMoverController : VirtualController
                 dirtied = true;
             }
 
-            if (relayTargetMover.CanMove != mover.CanMove)
-            {
-                relayTargetMover.CanMove = mover.CanMove;
-                dirtied = true;
-            }
+            //CrystallEdge: vehicle port
+            //if (relayTargetMover.CanMove != mover.CanMove)
+            //{
+            //    relayTargetMover.CanMove = mover.CanMove;
+            //    dirtied = true;
+            //}
+            //CrystallEdge: vehicle port end
 
             if (dirtied)
             {

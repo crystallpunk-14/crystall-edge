@@ -13,16 +13,7 @@ grids:
 orphans: []
 nullspace: []
 tilemap:
-  5: Space
-  1: CEFloorCobblestone
-  2: CEFloorDirt
-  0: CEFloorGrass
-  7: CEFloorGrassLight
-  8: CEFloorGrassTall
-  9: CEFloorOakWoodPlanksBig
-  3: CEFloorStone
-  4: CEFloorStonebricks
-  6: CEFloorStonebricksSquareCarved
+  0: Space
 entities:
 - proto: ""
   entities:

@@ -9,15 +9,16 @@ using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
 
-namespace Content.Server._CE.ZLevels.Core;
+namespace Content.Shared._CE.ZLevels.Core.EntitySystems;
 
-public sealed partial class CEZLevelsSystem
+public abstract partial class CESharedZLevelsSystem
 {
     private void InitializeActivation()
     {
         SubscribeLocalEvent<CEZPhysicsComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<CEZPhysicsComponent, AnchorStateChangedEvent>(OnAnchorStateChange);
         SubscribeLocalEvent<CEZPhysicsComponent, PhysicsBodyTypeChangedEvent>(OnPhysicsBodyTypeChange);
+        SubscribeLocalEvent<CEZPhysicsComponent, EntParentChangedMessage>(OnParentChanged);
     }
 
     private void OnAnchorStateChange(Entity<CEZPhysicsComponent> ent, ref AnchorStateChangedEvent args)
@@ -35,12 +36,23 @@ public sealed partial class CEZLevelsSystem
         CheckActivation(ent);
     }
 
+    private void OnParentChanged(Entity<CEZPhysicsComponent> ent, ref EntParentChangedMessage args)
+    {
+        CheckActivation(ent);
+    }
+
     private void CheckActivation(Entity<CEZPhysicsComponent> ent)
     {
         if (TerminatingOrDeleted(ent))
             return;
 
         var xform = Transform(ent);
+
+        if (xform.ParentUid != xform.MapUid)
+        {
+            SetActiveStatus(ent, false);
+            return;
+        }
 
         if (HasComp<GhostComponent>(ent))
         {
@@ -68,6 +80,9 @@ public sealed partial class CEZLevelsSystem
 
     private void SetActiveStatus(EntityUid ent, bool active)
     {
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
         if (active)
             EnsureComp<CEActiveZPhysicsComponent>(ent);
         else
