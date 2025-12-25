@@ -84,9 +84,6 @@ public abstract partial class CESharedZLevelsSystem
         var query = EntityQueryEnumerator<CEZPhysicsComponent, CEActiveZPhysicsComponent, TransformComponent, PhysicsComponent>();
         while (query.MoveNext(out var uid, out var zPhys, out _, out var xform, out var physics))
         {
-            if (xform.ParentUid != xform.MapUid)
-                continue;
-
             if (!_zMapQuery.HasComp(xform.MapUid))
                 continue;
 
