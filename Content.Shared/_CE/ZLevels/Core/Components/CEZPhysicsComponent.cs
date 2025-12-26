@@ -35,6 +35,9 @@ public sealed partial class CEZPhysicsComponent : Component
     [DataField, AutoNetworkedField]
     public float Bounciness = 0.3f;
 
+    [DataField, AutoNetworkedField]
+    public float GravityMultiplier = 1f;
+
     // Visuals
 
     /// <summary>
