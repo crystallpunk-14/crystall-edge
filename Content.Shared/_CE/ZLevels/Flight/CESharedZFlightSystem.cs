@@ -26,13 +26,27 @@ public abstract class CESharedZFlightSystem : EntitySystem
 
     private void OnZLevelDown(Entity<CEZFlyerComponent> ent, ref CEZFlightActionDown args)
     {
-        ent.Comp.TargetMapHeight--;
+        var map = Transform(ent).MapUid;
+        if (map is null)
+            return;
+
+        if (!_zLevel.TryMapDown(map.Value, out var mapBelow))
+            return;
+
+        ent.Comp.TargetMapHeight = mapBelow.Value.Comp.Depth;
         DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.TargetMapHeight));
     }
 
     private void OnZLevelUp(Entity<CEZFlyerComponent> ent, ref CEZFlightActionUp args)
     {
-        ent.Comp.TargetMapHeight++;
+        var map = Transform(ent).MapUid;
+        if (map is null)
+            return;
+
+        if (!_zLevel.TryMapUp(map.Value, out var mapAbove))
+            return;
+
+        ent.Comp.TargetMapHeight = mapAbove.Value.Comp.Depth;
         DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.TargetMapHeight));
     }
 
