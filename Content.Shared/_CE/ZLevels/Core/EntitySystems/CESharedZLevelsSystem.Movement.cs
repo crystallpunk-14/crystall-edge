@@ -432,7 +432,7 @@ public sealed class CEZLevelHitEvent(float impactPower) : EntityEventArgs
 }
 
 /// <summary>
-/// is called every frame to calculate the current vertical velocity of the object with CEActiveZPhysicsComponent
+/// Is called every frame to calculate the current vertical velocity of the object with CEActiveZPhysicsComponent.
 /// </summary>
 public sealed class CEGetZVelocityEvent() : EntityEventArgs
 {
