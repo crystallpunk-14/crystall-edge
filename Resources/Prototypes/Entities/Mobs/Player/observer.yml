@@ -16,7 +16,7 @@
   - type: MovementIgnoreGravity
   - type: Physics
     bodyType: KinematicController
-    bodyStatus: InAir
+    #bodyStatus: InAir
   - type: CanMoveInAir
   - type: Fixtures
     fixtures:
@@ -29,6 +29,11 @@
         - GhostImpassable
   #CrystallEdge
   - type: CEZLevelGhostMover
+  #- type: CEZPhysics
+  #  gravityMultiplier: 0
+  #  ghost: true
+  #- type: CEZFlyer
+  #  active: true
 
 # shared parent between aghosts, replay spectators and normal observers
 - type: entity

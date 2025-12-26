@@ -30,6 +30,12 @@ public sealed partial class CEZPhysicsComponent : Component
     [DataField, AutoNetworkedField]
     public float LocalPosition;
 
+    /// <summary>
+    /// Cached value of the current z-level map height
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public int CurrentZLevel;
+
     // Physics
 
     [DataField, AutoNetworkedField]
@@ -59,4 +65,10 @@ public sealed partial class CEZPhysicsComponent : Component
     /// </summary>
     [DataField]
     public Vector2 SpriteOffsetDefault = Vector2.Zero;
+
+    /// <summary>
+    /// This entity ignores floor and roof tiles when moving between z-levels.
+    /// </summary>
+    [DataField]
+    public bool Ghost = false;
 }

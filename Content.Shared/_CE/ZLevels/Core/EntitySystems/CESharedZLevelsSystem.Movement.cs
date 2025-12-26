@@ -41,9 +41,16 @@ public abstract partial class CESharedZLevelsSystem
         _highgroundQuery = GetEntityQuery<CEZLevelHighGroundComponent>();
 
         SubscribeLocalEvent<CEZPhysicsComponent, CEGetZVelocityEvent>(OnGetVelocity);
+        SubscribeLocalEvent<CEZPhysicsComponent, CEZLevelMoveEvent>(OnZPhysicsMove);
 
         SubscribeLocalEvent<DamageableComponent, CEZLevelHitEvent>(OnFallDamage);
         SubscribeLocalEvent<PhysicsComponent, CEZLevelHitEvent>(OnFallAreaImpact);
+    }
+
+    private void OnZPhysicsMove(Entity<CEZPhysicsComponent> ent, ref CEZLevelMoveEvent args)
+    {
+        ent.Comp.CurrentZLevel = args.CurrentZLevel;
+        DirtyField(ent, ent.Comp, nameof(CEZPhysicsComponent.CurrentZLevel));
     }
 
     private void OnGetVelocity(Entity<CEZPhysicsComponent> ent, ref CEGetZVelocityEvent args)
@@ -91,16 +98,13 @@ public abstract partial class CESharedZLevelsSystem
         var query = EntityQueryEnumerator<CEZPhysicsComponent, CEActiveZPhysicsComponent, TransformComponent, PhysicsComponent>();
         while (query.MoveNext(out var uid, out var zPhys, out _, out var xform, out var physics))
         {
-            if (!_zMapQuery.HasComp(xform.MapUid))
-                continue;
-
             var oldVelocity = zPhys.Velocity;
             var oldHeight = zPhys.LocalPosition;
 
             if (physics.BodyStatus == BodyStatus.OnGround)
             {
                 //Velocity application
-                var velocityEv = new CEGetZVelocityEvent();
+                var velocityEv = new CEGetZVelocityEvent((uid, zPhys));
                 RaiseLocalEvent(uid, velocityEv);
 
                 zPhys.Velocity += velocityEv.VelocityDelta * frameTime;
@@ -147,7 +151,7 @@ public abstract partial class CESharedZLevelsSystem
 
             if (zPhys.LocalPosition >= 1) //Need teleport to ZLevel up
             {
-                if (HasTileAbove(uid)) //Hit roof
+                if (!zPhys.Ghost && HasTileAbove(uid)) //Hit roof
                 {
                     if (MathF.Abs(zPhys.Velocity) >= ImpactVelocityLimit)
                     {
@@ -189,6 +193,9 @@ public abstract partial class CESharedZLevelsSystem
         stickyGround = false;
         if (!Resolve(target, ref target.Comp, false))
             return 0; //maybe in future: simpler distance calculation for entities without zPhysComp?
+
+        if (target.Comp.Ghost)
+            return maxFloors;
 
         var xform = Transform(target);
         if (!_zMapQuery.TryComp(xform.MapUid, out var zMapComp))
@@ -327,6 +334,16 @@ public abstract partial class CESharedZLevelsSystem
         DirtyField(ent, ent.Comp, nameof(CEZPhysicsComponent.LocalPosition));
     }
 
+    [PublicAPI]
+    public void SetZGravity(Entity<CEZPhysicsComponent?> ent, float newGravityMultiplier)
+    {
+        if (!Resolve(ent.Owner, ref ent.Comp))
+            return;
+
+        ent.Comp.GravityMultiplier = newGravityMultiplier;
+        DirtyField(ent, ent.Comp, nameof(CEZPhysicsComponent.GravityMultiplier));
+    }
+
     /// <summary>
     /// Sets the vertical velocity for the entity. Positive values make the entity fly upward. Negative values make it fly downward.
     /// </summary>
@@ -370,7 +387,7 @@ public abstract partial class CESharedZLevelsSystem
 
         _transform.SetMapCoordinates(ent, new MapCoordinates(_transform.GetWorldPosition(ent), targetMapComp.MapId));
 
-        var ev = new CEZLevelMoveEvent(offset);
+        var ev = new CEZLevelMoveEvent(offset, targetMap.Value.Comp.Depth);
         RaiseLocalEvent(ent, ev);
 
         return true;
@@ -412,9 +429,14 @@ public abstract partial class CESharedZLevelsSystem
 /// Is called on an entity when it moves between z-levels.
 /// </summary>
 /// <param name="offset">How many levels were crossed. If negative, it means there was a downward movement. If positive, it means an upward movement.</param>
-public sealed class CEZLevelMoveEvent(int offset) : EntityEventArgs
+public sealed class CEZLevelMoveEvent(int offset, int level) : EntityEventArgs
 {
+    /// <summary>
+    /// How many levels were crossed. If negative, it means there was a downward movement. If positive, it means an upward movement.
+    /// </summary>
     public int Offset = offset;
+
+    public int CurrentZLevel = level;
 }
 
 /// <summary>
@@ -434,7 +456,8 @@ public sealed class CEZLevelHitEvent(float impactPower) : EntityEventArgs
 /// <summary>
 /// Is called every frame to calculate the current vertical velocity of the object with CEActiveZPhysicsComponent.
 /// </summary>
-public sealed class CEGetZVelocityEvent() : EntityEventArgs
+public sealed class CEGetZVelocityEvent(Entity<CEZPhysicsComponent> target) : EntityEventArgs
 {
+    public Entity<CEZPhysicsComponent> Target = target;
     public float VelocityDelta = 0;
 }

@@ -1,7 +1,7 @@
 
 - type: entity
   id: CEVehicleHoverboard
-  parent: 
+  parent:
   - CEBaseVehicleStrap
   - BaseFoldable
   - BaseItem
@@ -22,10 +22,11 @@
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: Metallic
+  - type: DamageOnHighSpeedImpact
+    minimumSpeed: 1
   - type: MovementSpeedModifier
-    acceleration: 1
-    friction: 6
-    frictionNoInput: 12
+    baseAcceleration: 2
+    baseFriction: 2
     baseWalkSpeed: 4.5
     baseSprintSpeed: 6
   - type: Strap
@@ -44,3 +45,6 @@
         - TableLayer
   - type: StaticPrice
     price: 70
+  - type: CEZFlyer
+  - type: CEVehicleFlyer
+  - type: CEVehicleThrowOperatorOnDamage
