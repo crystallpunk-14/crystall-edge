@@ -174,7 +174,7 @@
   requirements:
   - !type:StackResource
     stack: CEGlass
-    count: 1
+    count: 2
   result: CEFloorTileGlass
   resultCount: 5
 

@@ -34,6 +34,13 @@
   maxCount: 10
 
 - type: stack
+  id: CEIronSheet
+  name: ce-stack-iron-sheet
+  spawn: CEIronSheet1
+  icon: { sprite: _CE/Objects/Materials/Metals/iron_bar.rsi, state: sheet_2 }
+  maxCount: 10
+
+- type: stack
   id: CEIronOre
   name: ce-stack-iron-ore
   spawn: CEIronOre1
