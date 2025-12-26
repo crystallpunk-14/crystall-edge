@@ -1,6 +1,7 @@
 - type: entity
   id: CEDrill
   parent:
+  - CEConstructibleMachine
   - BaseMachine
   name: stationary drill
   description: A large industrial drill capable of destroying anything with a constant supply of energy. It was designed by imperial engineers to extract particularly hard ore deposits.
@@ -8,6 +9,8 @@
   placement:
     mode: SnapgridCenter
   components:
+  - type: Machine
+    board: CEMachineCoreDrill
   - type: PlacementReplacement
     key: pipe_big
   - type: AmbientSound

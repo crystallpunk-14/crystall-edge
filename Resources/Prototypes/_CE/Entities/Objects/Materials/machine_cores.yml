@@ -26,7 +26,7 @@
 - type: entity
   id: CEMachineCoreMeltingFurnace
   parent: CEBaseMachineCore
-  name: melting furnace core
+  name: melting furnace machine core
   components:
   - type: Sprite
     state: melting_furnace
@@ -39,12 +39,21 @@
 - type: entity
   id: CEMachineCoreRecycler
   parent: CEBaseMachineCore
-  name: recycler core
+  name: recycler machine core
   components:
-  #- type: Sprite
-  #  state: melting_furnace
   - type: MachineBoard
     prototype: CERecycler
+    stackRequirements:
+      CEMachinePartEnergyLine: 1
+      CEBrassSheet: 2
+
+- type: entity
+  id: CEMachineCoreDrill
+  parent: CEBaseMachineCore
+  name: drill machine core
+  components:
+  - type: MachineBoard
+    prototype: CEDrill
     stackRequirements:
       CEMachinePartEnergyLine: 1
       CEBrassSheet: 2
