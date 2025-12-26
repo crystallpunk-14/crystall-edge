@@ -67,3 +67,43 @@
     prototype: CECharger
     stackRequirements:
       CEMachinePartEnergyLine: 4
+
+- type: entity
+  id: CEMachineCoreFunnel
+  parent: CEBaseMachineCore
+  name: funnel machine core
+  components:
+  - type: MachineBoard
+    prototype: CEFunnel
+    stackRequirements:
+      CEBrassSheet: 1
+
+- type: entity
+  id: CEMachineCoreTradingPlatform
+  parent: CEBaseMachineCore
+  name: trading platform machine core
+  components:
+  - type: MachineBoard
+    prototype: CETradingPlatform
+    stackRequirements:
+      CEBrassSheet: 1
+
+- type: entity
+  id: CEMachineCoreSellingPlatform
+  parent: CEBaseMachineCore
+  name: selling platform machine core
+  components:
+  - type: MachineBoard
+    prototype: CETradingSellingPlatform
+    stackRequirements:
+      CEBrassSheet: 1
+
+- type: entity
+  id: CEMachineCoreSalaryPlatform
+  parent: CEBaseMachineCore
+  name: salary platform machine core
+  components:
+  - type: MachineBoard
+    prototype: CESalaryPlatform
+    stackRequirements:
+      CEBrassSheet: 1
