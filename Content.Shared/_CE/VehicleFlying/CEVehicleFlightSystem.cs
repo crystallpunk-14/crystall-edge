@@ -20,7 +20,16 @@ public sealed class CEVehicleFlightSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<CEVehicleFlyerComponent, CEVehicleOperatorSetEvent>(OnOperatorSet);
+        SubscribeLocalEvent<CEVehicleFlyerComponent, CEFlightStoppedEvent>(OnFlightStop);
+
         SubscribeLocalEvent<CEVehicleThrowOperatorOnDamageComponent, DamageChangedEvent>(OnTakeDamage);
+    }
+
+    private void OnFlightStop(Entity<CEVehicleFlyerComponent> ent, ref CEFlightStoppedEvent args)
+    {
+        if (!TryComp<CEVehicleComponent>(ent, out var vehicle))
+            return;
+        _vehicle.TryRemoveOperator((ent, vehicle));
     }
 
     private void OnTakeDamage(Entity<CEVehicleThrowOperatorOnDamageComponent> ent, ref DamageChangedEvent args)

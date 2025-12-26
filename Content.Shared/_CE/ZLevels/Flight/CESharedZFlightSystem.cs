@@ -55,25 +55,20 @@ public abstract class CESharedZFlightSystem : EntitySystem
 
         var distanceToTarget = targetPos - currentPos;
 
-        // Обычное движение к цели с покачиванием
         var targetVelocity = Math.Clamp(distanceToTarget * ent.Comp.FlightSpeed, -ent.Comp.FlightSpeed, ent.Comp.FlightSpeed);
         var velocityDelta = targetVelocity - currentVelocity;
 
-        // Границы целевого уровня
         var upperBound = ent.Comp.TargetMapHeight + 0.9f;
         var lowerBound = ent.Comp.TargetMapHeight + 0.1f;
 
-        // Проверяем следующую позицию с учетом новой скорости
         var newVelocity = currentVelocity + velocityDelta;
         var nextPos = currentPos + newVelocity;
 
-        // Если выходим за верхнюю границу - корректируем скорость
         if (nextPos > upperBound)
         {
             var maxAllowedVelocity = upperBound - currentPos;
             velocityDelta = maxAllowedVelocity - currentVelocity;
         }
-        // Если выходим за нижнюю границу - корректируем скорость
         else if (nextPos < lowerBound)
         {
             var maxAllowedVelocity = lowerBound - currentPos;

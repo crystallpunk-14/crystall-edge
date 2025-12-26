@@ -46,3 +46,9 @@
   - type: CEZFlyer
   - type: CEVehicleFlyer
   - type: CEVehicleThrowOperatorOnDamage
+  - type: CEZFlyerBattery
+    energyDraw: 1
+  - type: Battery
+    maxCharge: 100
+    startingCharge: 100
+  - type: ExaminableBattery

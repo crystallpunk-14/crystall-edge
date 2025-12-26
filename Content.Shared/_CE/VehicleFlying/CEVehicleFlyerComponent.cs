@@ -9,4 +9,6 @@ namespace Content.Shared._CE.VehicleFlying;
 [RegisterComponent, NetworkedComponent, Access(typeof(CESharedZFlightSystem))]
 public sealed partial class CEVehicleFlyerComponent : Component
 {
+    [DataField]
+    public float PowerConsume = 1f;
 }

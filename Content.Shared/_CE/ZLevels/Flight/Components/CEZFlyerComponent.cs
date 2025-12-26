@@ -40,4 +40,13 @@ public sealed partial class CEZFlyerComponent : Component
 
     [DataField, AutoNetworkedField]
     public EntityUid? ZLevelDownActionEntity;
+
+    /// <summary>
+    /// Spawned on client only every tick in flight state
+    /// </summary>
+    [DataField]
+    public EntProtoId? FlightVfx = "CEOverchargeSmallVFX";
+
+    [DataField]
+    public TimeSpan NextVfx = TimeSpan.Zero;
 }
