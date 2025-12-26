@@ -104,7 +104,6 @@ public abstract partial class CESharedZLevelsSystem
                 RaiseLocalEvent(uid, velocityEv);
 
                 zPhys.Velocity += velocityEv.VelocityDelta * frameTime;
-                //zPhys.Velocity -= ZGravityForce * frameTime;
             }
 
             //Movement application
@@ -113,11 +112,9 @@ public abstract partial class CESharedZLevelsSystem
             var stickyGround = false;
             if (zPhys.Velocity < 0) //Falling down
             {
-                var checkFloorBelow = zPhys.LocalPosition + zPhys.Velocity < 0;
                 var distanceToGround = DistanceToGround(
                     (uid, zPhys),
-                    out stickyGround,
-                    checkFloorBelow ? 1 : 0);
+                    out stickyGround);
 
                 if ((distanceToGround <= 0.05f || stickyGround) && distanceToGround <= MaxStepHeight)
                     zPhys.LocalPosition -= distanceToGround;
@@ -318,6 +315,16 @@ public abstract partial class CESharedZLevelsSystem
             return true;
 
         return false;
+    }
+
+    [PublicAPI]
+    public void SetZPosition(Entity<CEZPhysicsComponent?> ent, float newPosition)
+    {
+        if (!Resolve(ent.Owner, ref ent.Comp))
+            return;
+
+        ent.Comp.LocalPosition = newPosition;
+        DirtyField(ent, ent.Comp, nameof(CEZPhysicsComponent.LocalPosition));
     }
 
     /// <summary>

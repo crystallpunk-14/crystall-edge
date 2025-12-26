@@ -39,6 +39,9 @@ public abstract partial class CESharedZLevelsSystem
     private void OnParentChanged(Entity<CEZPhysicsComponent> ent, ref EntParentChangedMessage args)
     {
         CheckActivation(ent);
+
+        if (ZPhyzQuery.TryComp(args.OldParent, out var oldParentZPhys))
+            SetZPosition((ent, ent), oldParentZPhys.LocalPosition);
     }
 
     private void CheckActivation(Entity<CEZPhysicsComponent> ent)
