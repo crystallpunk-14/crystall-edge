@@ -1,0 +1,6 @@
+- type: stack
+  id: CEMachinePartEnergyLine
+  name: ce-stack-energy-line
+  spawn: CEMachinePartEnergyLine1
+  icon: { sprite: _CE/Objects/Materials/machine_parts.rsi, state: energy_line }
+  maxCount: 5

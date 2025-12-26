@@ -29,8 +29,8 @@
                 sprite: _CE/Structures/Industrial/machine_cores.rsi
                 state: generic
               guideIconParts:
-                sprite: Objects/Misc/stock_parts.rsi #TODO
-                state: scan_module
+                sprite: _CE/Objects/Materials/machine_parts.rsi
+                state: energy_line
           steps:
             - tool: Screwing
               doAfter: 0.5

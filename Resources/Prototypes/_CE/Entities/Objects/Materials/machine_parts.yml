@@ -1,0 +1,34 @@
+- type: entity
+  id: CEMachinePartEnergyLine1
+  parent: BaseItem
+  name: energyline
+  suffix: 1
+  description: Reinforced energy cells connected in a line. A mechanical component often used to create large machines.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Normal
+  - type: Sprite
+    sprite: _CE/Objects/Materials/machine_parts.rsi
+    layers:
+      - state: energy_line
+        map: ["base"]
+  - type: Appearance
+  - type: Stack
+    stackType: CEMachinePartEnergyLine
+    count: 1
+    baseLayer: base
+    layerStates:
+    - energy_line
+    - energy_line_2
+    - energy_line_3
+  - type: StackPrice
+    price: 50
+
+- type: entity
+  id: CEMachinePartEnergyLine5
+  parent: CEMachinePartEnergyLine1
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5
