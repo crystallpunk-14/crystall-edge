@@ -11,6 +11,9 @@ ce-stack-iron-bars = iron bars
 ce-stack-brass-bars = brass bars
 ce-stack-gold-bars = gold bars
 
+ce-stack-iron-sheet = iron sheets
+ce-stack-brass-sheet = brass sheets
+
 ce-stack-iron-scrap = iron scrap
 ce-stack-brass-scrap = brass scrap
 ce-stack-gold-scrap = gold scrap

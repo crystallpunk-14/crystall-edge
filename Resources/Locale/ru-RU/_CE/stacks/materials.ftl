@@ -11,6 +11,9 @@ ce-stack-iron-bars = железные слитки
 ce-stack-brass-bars = латунные слитки
 ce-stack-gold-bars = золотые слитки
 
+ce-stack-iron-sheet = железные пластины
+ce-stack-brass-sheet = латунные пластины
+
 ce-stack-iron-scrap = железный металлолом
 ce-stack-brass-scrap = латунный металлолом
 ce-stack-gold-scrap = золотой металлолом

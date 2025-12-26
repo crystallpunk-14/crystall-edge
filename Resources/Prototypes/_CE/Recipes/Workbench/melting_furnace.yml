@@ -5,7 +5,7 @@
   craftTime: 2
   requirements:
   - !type:MaterialResource
-    material: CEIronBar
+    material: CEIron
     count: 10
   - !type:StackResource
     stack: CECoal
@@ -20,7 +20,7 @@
   craftTime: 2
   requirements:
   - !type:MaterialResource
-    material: CEBrassBar
+    material: CEBrass
     count: 10
   - !type:StackResource
     stack: CECoal
@@ -35,7 +35,7 @@
   craftTime: 2
   requirements:
   - !type:MaterialResource
-    material: CEBrassBar
+    material: CEBrass
     count: 5
   - !type:StackResource
     stack: CECoal
