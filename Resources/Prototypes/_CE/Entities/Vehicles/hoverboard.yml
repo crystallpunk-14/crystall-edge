@@ -22,13 +22,11 @@
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: Metallic
-  - type: DamageOnHighSpeedImpact
-    minimumSpeed: 1
   - type: MovementSpeedModifier
     baseAcceleration: 2
     baseFriction: 2
-    baseWalkSpeed: 4.5
-    baseSprintSpeed: 6
+    baseWalkSpeed: 3
+    baseSprintSpeed: 4
   - type: Strap
     buckleOffset: "0,-0.05"
   - type: Fixtures

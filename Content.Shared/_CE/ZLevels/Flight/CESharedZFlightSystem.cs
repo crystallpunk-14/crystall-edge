@@ -1,6 +1,7 @@
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared._CE.ZLevels.Flight.Components;
+using Content.Shared.Actions;
 
 namespace Content.Shared._CE.ZLevels.Flight;
 
@@ -8,25 +9,31 @@ public abstract class CESharedZFlightSystem : EntitySystem
 {
     [Dependency] private readonly CESharedZLevelsSystem _zLevel = default!;
 
-    private EntityQuery<CEZPhysicsComponent> _zPhyzQuery = default!;
+    protected EntityQuery<CEZPhysicsComponent> ZPhyzQuery = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        _zPhyzQuery = GetEntityQuery<CEZPhysicsComponent>();
+        ZPhyzQuery = GetEntityQuery<CEZPhysicsComponent>();
 
-        SubscribeLocalEvent<CEZFlyerComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<CEZPhysicsComponent, CEFlightStartedEvent>(OnStartFlight);
-
         SubscribeLocalEvent<CEZFlyerComponent, CEGetZVelocityEvent>(OnGetZVelocity);
+
+        SubscribeLocalEvent<CEZFlyerComponent, CEZFlightActionUp>(OnZLevelUp);
+        SubscribeLocalEvent<CEZFlyerComponent, CEZFlightActionDown>(OnZLevelDown);
     }
 
-    private void OnMapInit(Entity<CEZFlyerComponent> ent, ref MapInitEvent args)
+    private void OnZLevelDown(Entity<CEZFlyerComponent> ent, ref CEZFlightActionDown args)
     {
-        if (!_zPhyzQuery.TryComp(ent, out var zPhys))
-            return;
-        SetTargetHeight(ent, zPhys.CurrentZLevel);
+        ent.Comp.TargetMapHeight--;
+        DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.TargetMapHeight));
+    }
+
+    private void OnZLevelUp(Entity<CEZFlyerComponent> ent, ref CEZFlightActionUp args)
+    {
+        ent.Comp.TargetMapHeight++;
+        DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.TargetMapHeight));
     }
 
     private void OnStartFlight(Entity<CEZPhysicsComponent> ent, ref CEFlightStartedEvent args)
@@ -49,7 +56,7 @@ public abstract class CESharedZFlightSystem : EntitySystem
         var distanceToTarget = targetPos - currentPos;
 
         // Обычное движение к цели с покачиванием
-        var targetVelocity = Math.Clamp(distanceToTarget, -ent.Comp.FlightSpeed, ent.Comp.FlightSpeed);
+        var targetVelocity = Math.Clamp(distanceToTarget * ent.Comp.FlightSpeed, -ent.Comp.FlightSpeed, ent.Comp.FlightSpeed);
         var velocityDelta = targetVelocity - currentVelocity;
 
         // Границы целевого уровня
@@ -148,3 +155,18 @@ public sealed class CEFlightStartedEvent : EntityEventArgs;
 /// Called on an entity when it exits flight mode
 /// </summary>
 public sealed class CEFlightStoppedEvent : EntityEventArgs;
+
+
+/// <summary>
+///
+/// </summary>
+public sealed partial class CEZFlightActionUp : InstantActionEvent
+{
+}
+
+/// <summary>
+///
+/// </summary>
+public sealed partial class CEZFlightActionDown : InstantActionEvent
+{
+}

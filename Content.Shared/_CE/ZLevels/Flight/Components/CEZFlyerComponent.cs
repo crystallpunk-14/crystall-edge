@@ -4,6 +4,7 @@
  */
 
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.ZLevels.Flight.Components;
 
@@ -27,4 +28,16 @@ public sealed partial class CEZFlyerComponent : Component
 
     [DataField]
     public float DefaultGravityIntensity = 1f;
+
+    [DataField]
+    public EntProtoId UpActionProto = "CEActionZFlightUp";
+
+    [DataField, AutoNetworkedField]
+    public EntityUid? ZLevelUpActionEntity;
+
+    [DataField]
+    public EntProtoId DownActionProto = "CEActionZFlightDown";
+
+    [DataField, AutoNetworkedField]
+    public EntityUid? ZLevelDownActionEntity;
 }
