@@ -13,7 +13,7 @@
     sprite: _CE/Structures/Industrial/machine_cores.rsi
     state: generic
   - type: Item
-    storedRotation: -90
+    size: Normal
   - type: StaticPrice
     price: 100
   #- type: PhysicalComposition
@@ -57,3 +57,13 @@
     stackRequirements:
       CEMachinePartEnergyLine: 1
       CEBrassSheet: 2
+
+- type: entity
+  id: CEMachineCoreCharger
+  parent: CEBaseMachineCore
+  name: charger machine core
+  components:
+  - type: MachineBoard
+    prototype: CECharger
+    stackRequirements:
+      CEMachinePartEnergyLine: 4

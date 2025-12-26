@@ -61,6 +61,8 @@
   id: CEMeltingFurnace
   name: melting furnace
   components:
+  - type: Machine
+    board: CEMachineCoreMeltingFurnace
   - type: Sprite
     snapCardinals: true
     drawdepth: Mobs
@@ -74,8 +76,6 @@
   - type: Icon
     sprite: _CE/Structures/Industrial/melting_furnace.rsi
     state: base
-  - type: Machine
-    board: CEMachineCoreMeltingFurnace
   - type: CEWorkbench
     vfx: CEFireWhooshEffect
     recipeTags:
