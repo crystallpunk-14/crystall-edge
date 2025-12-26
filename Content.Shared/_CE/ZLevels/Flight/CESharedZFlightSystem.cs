@@ -2,12 +2,14 @@ using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared._CE.ZLevels.Flight.Components;
 using Content.Shared.Actions;
+using Content.Shared.Audio;
 
 namespace Content.Shared._CE.ZLevels.Flight;
 
 public abstract class CESharedZFlightSystem : EntitySystem
 {
     [Dependency] private readonly CESharedZLevelsSystem _zLevel = default!;
+    [Dependency] private readonly SharedAmbientSoundSystem _ambient = default!;
 
     protected EntityQuery<CEZPhysicsComponent> ZPhyzQuery = default!;
 
@@ -18,12 +20,12 @@ public abstract class CESharedZFlightSystem : EntitySystem
         ZPhyzQuery = GetEntityQuery<CEZPhysicsComponent>();
 
         SubscribeLocalEvent<CEZPhysicsComponent, CEFlightStartedEvent>(OnStartFlight);
+        SubscribeLocalEvent<CEZPhysicsComponent, CEFlightStoppedEvent>(OnStartStop);
         SubscribeLocalEvent<CEZFlyerComponent, CEGetZVelocityEvent>(OnGetZVelocity);
 
         SubscribeLocalEvent<CEZFlyerComponent, CEZFlightActionUp>(OnZLevelUp);
         SubscribeLocalEvent<CEZFlyerComponent, CEZFlightActionDown>(OnZLevelDown);
     }
-
     private void OnZLevelDown(Entity<CEZFlyerComponent> ent, ref CEZFlightActionDown args)
     {
         var map = Transform(ent).MapUid;
@@ -55,7 +57,15 @@ public abstract class CESharedZFlightSystem : EntitySystem
         if (!TryComp<CEZFlyerComponent>(ent, out var flyerComp))
             return;
         SetTargetHeight((ent,flyerComp), ent.Comp.CurrentZLevel);
+
+        _ambient.SetAmbience(ent, true);
     }
+
+    private void OnStartStop(Entity<CEZPhysicsComponent> ent, ref CEFlightStoppedEvent args)
+    {
+        _ambient.SetAmbience(ent, false);
+    }
+
 
     private void OnGetZVelocity(Entity<CEZFlyerComponent> ent, ref CEGetZVelocityEvent args)
     {

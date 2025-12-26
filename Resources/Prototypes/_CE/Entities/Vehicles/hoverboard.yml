@@ -25,8 +25,8 @@
   - type: MovementSpeedModifier
     baseAcceleration: 2
     baseFriction: 2
-    baseWalkSpeed: 3
-    baseSprintSpeed: 4
+    baseWalkSpeed: 5
+    baseSprintSpeed: 7
   - type: Strap
     buckleOffset: "0,-0.05"
   - type: Fixtures
@@ -43,6 +43,12 @@
         - TableLayer
   - type: StaticPrice
     price: 70
+  - type: AmbientSound
+    enabled: false
+    volume: 2
+    range: 5
+    sound:
+      path: /Audio/_CE/Ambience/hoverboard.ogg
   - type: CEZFlyer
   - type: CEVehicleFlyer
   - type: CEVehicleThrowOperatorOnDamage

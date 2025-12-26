@@ -25,6 +25,13 @@ public sealed partial class CEZLevelsSystem : CESharedZLevelsSystem
         SubscribeLocalEvent<PostGameMapLoad>(OnGameMapLoad);
     }
 
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        UpdateView(frameTime);
+    }
+
     private void OnGameMapLoad(PostGameMapLoad ev)
     {
         if (ev.GameMap.MapsAbove.Count == 0 && ev.GameMap.MapsBelow.Count == 0)
