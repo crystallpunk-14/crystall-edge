@@ -1,6 +1,7 @@
 - type: entity
   id: CERecycler
   parent:
+  - CEConstructibleMachine
   - BaseMachine
   name: recycler
   description: A large destructive machine used to extract energy from magical items by destroying them. It can also be used as a way to recycle items into basic materials.
@@ -8,6 +9,8 @@
   placement:
     mode: SnapgridCenter
   components:
+  - type: Machine
+    board: CEMachineCoreRecycler
   - type: PlacementReplacement
     key: pipe_big
   - type: AmbientSound

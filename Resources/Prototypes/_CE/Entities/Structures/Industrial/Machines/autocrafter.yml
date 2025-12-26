@@ -1,8 +1,8 @@
 - type: entity
   parent:
-  - BaseMachine
-  - CEBaseMachinePowered
   - CEConstructibleMachine
+  - CEBaseMachinePowered
+  - BaseMachine
   id: CEBaseAutoCrafter
   categories: [ ForkFiltered ]
   abstract: true
@@ -40,32 +40,6 @@
         ents: [ ]
       machine_board: !type:Container
       machine_parts: !type:Container
-  - type: Damageable
-    damageContainer: Inorganic
-    damageModifierSet: CEWood
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTypeTrigger
-        damageType: Heat
-        damage: 40
-      behaviors:
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
-      #- !type:PlaySoundBehavior
-      #  sound:
-      #    collection: WoodDestroy
-    - trigger:
-        !type:DamageTrigger
-        damage: 60
-      behaviors:
-      - !type:ChangeConstructionNodeBehavior
-        node: machineFrame
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
-      #- !type:PlaySoundBehavior
-      #  sound:
-      #    collection: WoodDestroy
   - type: Fixtures
     fixtures:
       fix1:

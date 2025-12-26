@@ -35,3 +35,16 @@
     stackRequirements:
       CEMachinePartEnergyLine: 1
       CEBrassSheet: 2
+
+- type: entity
+  id: CEMachineCoreRecycler
+  parent: CEBaseMachineCore
+  name: recycler core
+  components:
+  #- type: Sprite
+  #  state: melting_furnace
+  - type: MachineBoard
+    prototype: CERecycler
+    stackRequirements:
+      CEMachinePartEnergyLine: 1
+      CEBrassSheet: 2
