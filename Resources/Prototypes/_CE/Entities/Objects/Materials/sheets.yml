@@ -43,6 +43,14 @@
     count: 10
 
 - type: entity
+  id: CEBrassSheet20
+  parent: CEBrassSheet1
+  suffix: 20
+  components:
+  - type: Stack
+    count: 20
+
+- type: entity
   id: CEIronSheet1
   parent: BaseItem
   name: iron sheet
@@ -85,6 +93,14 @@
   components:
   - type: Stack
     count: 10
+
+- type: entity
+  id: CEIronSheet20
+  parent: CEIronSheet1
+  suffix: 20
+  components:
+  - type: Stack
+    count: 20
 
 - type: entity
   id: CEGlassSheet1
