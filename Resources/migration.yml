@@ -28,6 +28,8 @@ CECoinPlatinum: CECoinPlatinum10
 CEPipeBrassMediumDelayer: CEPipeBrassMedium
 CEPipeBrassBigDelayer: CEPipeBrassBig
 
+CEWorkbenchAutoMeltingFurnace: CEMeltingFurnace
+
 # CrystallEdge migration zone end
 
 
