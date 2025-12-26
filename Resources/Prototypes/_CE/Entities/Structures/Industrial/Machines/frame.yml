@@ -60,7 +60,7 @@
         sound:
           collection: MetalBreak
       - !type:ChangeConstructionNodeBehavior
-        node: missingWires
+        node: destroyed
       - !type:DoActsBehavior
         acts: ["Destruction"]
   - type: MachineFrame
@@ -90,8 +90,8 @@
   name: destroyed machine frame
   components:
   - type: Construction
-    graph: Machine
-    node: destroyedMachineFrame
+    graph: CEMachine
+    node: destroyed
   - type: Destructible
     thresholds:
     - trigger: # Excess damage, don't spawn entities

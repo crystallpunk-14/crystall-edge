@@ -7,6 +7,3 @@
   category: construction-category-machines
   placementMode: SnapgridCenter
   canBuildInImpassable: false
-  icon:
-    sprite: _CE/Structures/Industrial/machine_core.rsi
-    state: box_0

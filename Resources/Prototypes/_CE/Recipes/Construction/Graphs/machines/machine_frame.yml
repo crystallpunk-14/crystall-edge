@@ -70,3 +70,19 @@
           steps:
             - tool: Prying
               doAfter: 2
+    
+    - node: destroyed
+      entity: CEMachineFrameDestroyed
+      actions:
+        - !type:EmptyAllContainers
+        - !type:MachineFrameRegenerateProgress
+      edges:
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 2
+              completed:
+                - !type:SpawnPrototype
+                  prototype: CEScrapBrass1
+                  amount: 2
+                - !type:DeleteEntity

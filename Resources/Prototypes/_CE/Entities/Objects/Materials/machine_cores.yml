@@ -2,7 +2,7 @@
   id: CEBaseMachineCore
   parent: BaseItem
   name: machine core
-  description: TODO
+  description: A modular control core containing the circuitry and logic needed to assemble and operate advanced machines.
   abstract: true
   categories: [ ForkFiltered ]
   components:
@@ -34,4 +34,4 @@
     prototype: CEMeltingFurnace
     stackRequirements:
       CEBrassBar: 2
-      CEIron: 2
+      CEIronBar: 2

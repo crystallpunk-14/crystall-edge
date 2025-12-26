@@ -27,3 +27,18 @@
     count: 1
   result: CEBrassBar1
   resultCount: 1
+
+- type: CERecipe
+  id: CEBrassSheet1
+  tag: CERecipeMeltingFurnace
+  category: Materials
+  craftTime: 2
+  requirements:
+  - !type:MaterialResource
+    material: CEBrassBar
+    count: 5
+  - !type:StackResource
+    stack: CECoal
+    count: 1
+  result: CEBrassSheet1
+  resultCount: 1

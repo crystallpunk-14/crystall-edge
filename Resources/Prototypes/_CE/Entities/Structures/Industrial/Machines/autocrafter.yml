@@ -80,8 +80,6 @@
   - type: DoAfter
   - type: ApcPowerReceiver
     powerLoad: 2
-  - type: Machine
-    board: CEMachineCoreMeltingFurnace
 
 - type: entity
   parent:
@@ -102,6 +100,8 @@
   - type: Icon
     sprite: _CE/Structures/Industrial/melting_furnace.rsi
     state: base
+  - type: Machine
+    board: CEMachineCoreMeltingFurnace
   - type: CEWorkbench
     vfx: CEFireWhooshEffect
     recipeTags:
