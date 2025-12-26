@@ -1,12 +1,15 @@
 - type: entity
   parent:
-  - BaseMachine
+  - CEConstructibleMachine
   - CEBaseMachinePowered
+  - BaseMachine
   id: CEHeater
   categories: [ ForkFiltered ]
   name: heater
   description: a mechanism that converts energy into a controlled burning flame
   components:
+  - type: Machine
+    board: CEMachineCoreHeater
   - type: AmbientSound
     enabled: false
     volume: -8

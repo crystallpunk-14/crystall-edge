@@ -107,3 +107,46 @@
     prototype: CESalaryPlatform
     stackRequirements:
       CEBrassSheet: 1
+
+- type: entity
+  id: CEMachineCoreHeater
+  parent: CEBaseMachineCore
+  name: heater machine core
+  components:
+  - type: MachineBoard
+    prototype: CEHeater
+    stackRequirements:
+      CEMachinePartEnergyLine: 1
+      CEBrassSheet: 1
+
+- type: entity
+  id: CEMachineCoreDistributionUnit
+  parent: CEBaseMachineCore
+  name: distribution unit machine core
+  components:
+  - type: MachineBoard
+    prototype: CEDistributionUnitBasic
+    stackRequirements:
+      CEMachinePartEnergyLine: 2
+      CEBrassSheet: 3
+
+- type: entity
+  id: CEMachineCoreManaCollector
+  parent: CEBaseMachineCore
+  name: mana collector machine core
+  components:
+  - type: MachineBoard
+    prototype: CEManaCollectorEmpty
+    stackRequirements:
+      CEMachinePartEnergyLine: 2
+      CEBrassSheet: 2
+
+- type: entity
+  id: CEMachineCoreTerminal
+  parent: CEBaseMachineCore
+  name: terminal machine core
+  components:
+  - type: MachineBoard
+    prototype: CEPipeTerminal
+    stackRequirements:
+      CEBrassSheet: 1

@@ -1,12 +1,16 @@
 - type: entity
   abstract: true
-  parent: [ BaseMachine, ConstructibleMachine ]
+  parent: 
+  - CEConstructibleMachine
+  - BaseMachine
   id: CEDistributionUnitBase
   categories: [ ForkFiltered ]
   name: power distribution unit
   placement:
     mode: SnapgridCenter
   components:
+  - type: Machine
+    board: CEMachineCoreDistributionUnit
   - type: PlacementReplacement
     key: walls
   #- type: AmbientSound
