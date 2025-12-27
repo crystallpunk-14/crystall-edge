@@ -246,6 +246,102 @@
   equipment:
     shirt: CEClothingShirtWarriorGarb
 
+# Eyes
+
+- type: loadoutGroup
+  id: CEGeneralEyes
+  name: ce-loadout-goggles
+  minLimit: 0
+  loadouts:
+  - CEClothingEyesMonocle
+  - CEClothingEyesGlasses
+  - CEClothingEyesEyePatch
+
+- type: loadout
+  id: CEClothingEyesMonocle
+  equipment:
+    eyes: CEClothingEyesMonocle
+
+- type: loadout
+  id: CEClothingEyesGlasses
+  equipment:
+    eyes: CEClothingEyesGlasses
+
+- type: loadout
+  id: CEClothingEyesEyePatch
+  equipment:
+    eyes: CEClothingEyesEyePatch
+
+# Masks
+
+- type: loadoutGroup
+  id: CEGeneralMasks
+  name: ce-loadout-masks
+  minLimit: 0
+  loadouts:
+  - CEClothingMaskSinner
+  - CEClothingMaskSteelMask
+  - CEClothingMaskMime
+  - CEClothingMaskNeckerchief
+  - CEClothingMaskRedNeckerchief
+  - CEClothingMaskGreenNeckerchief
+
+- type: loadout
+  id: CEClothingMaskSinner
+  equipment:
+    mask: CEClothingMaskSinner
+
+- type: loadout
+  id: CEClothingMaskSteelMask
+  equipment:
+    mask: CEClothingMaskSteelMask
+
+- type: loadout
+  id: CEClothingMaskNeckerchief
+  equipment:
+    mask: CEClothingMaskNeckerchief
+
+- type: loadout
+  id: CEClothingMaskRedNeckerchief
+  equipment:
+    mask: CEClothingMaskRedNeckerchief
+
+- type: loadout
+  id: CEClothingMaskGreenNeckerchief
+  equipment:
+    mask: CEClothingMaskGreenNeckerchief
+
+- type: loadout
+  id: CEClothingMaskMime
+  equipment:
+    mask: CEClothingMaskMime
+
+# Gloves
+
+- type: loadoutGroup
+  id: CEGeneralGloves
+  name: ce-loadout-gloves
+  minLimit: 0
+  loadouts:
+  - CEClothingGlovesGirdles
+  - CEClothingGlovesJagermeister
+  - CEClothingGlovesBlacksmith
+
+- type: loadout
+  id: CEClothingGlovesGirdles
+  equipment:
+    gloves: CEClothingGlovesGirdles
+
+- type: loadout
+  id: CEClothingGlovesJagermeister
+  equipment:
+    gloves: CEClothingGlovesJagermeister
+
+- type: loadout
+  id: CEClothingGlovesBlacksmith
+  equipment:
+    gloves: CEClothingGlovesBlacksmith
+
 # Pants
 
 - type: loadoutGroup
