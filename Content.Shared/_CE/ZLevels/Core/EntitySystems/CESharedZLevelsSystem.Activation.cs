@@ -4,7 +4,6 @@
  */
 
 using Content.Shared._CE.ZLevels.Core.Components;
-using Content.Shared.Ghost;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;

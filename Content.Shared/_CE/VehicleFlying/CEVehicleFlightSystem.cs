@@ -1,3 +1,4 @@
+using Content.Shared._CE.Vehicle;
 using Content.Shared._CE.Vehicle.Components;
 using Content.Shared._CE.ZLevels.Flight;
 using Content.Shared._CE.ZLevels.Flight.Components;
@@ -9,12 +10,38 @@ public sealed class CEVehicleFlightSystem : EntitySystem
 {
     [Dependency] private readonly CESharedZFlightSystem _flight = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
+    [Dependency] private readonly CEVehicleSystem _vehicle = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<CEVehicleFlyerComponent, CEVehicleOperatorSetEvent>(OnOperatorSet);
+        SubscribeLocalEvent<CEVehicleFlyerComponent, CEVehicleCanRunEvent>(OnCheckCanRun);
+        SubscribeLocalEvent<CEVehicleFlyerComponent, CEFlightStartedEvent>(OnFlightStart);
+        SubscribeLocalEvent<CEVehicleFlyerComponent, CEFlightStoppedEvent>(OnFlightStop);
+    }
+
+    private void OnFlightStop(Entity<CEVehicleFlyerComponent> ent, ref CEFlightStoppedEvent args)
+    {
+        _vehicle.RefreshCanRun(ent.Owner);
+    }
+
+    private void OnFlightStart(Entity<CEVehicleFlyerComponent> ent, ref CEFlightStartedEvent args)
+    {
+        _vehicle.RefreshCanRun(ent.Owner);
+    }
+
+    private void OnCheckCanRun(Entity<CEVehicleFlyerComponent> ent, ref CEVehicleCanRunEvent args)
+    {
+        if (!args.CanRun)
+            return;
+
+        if (!TryComp<CEZFlyerComponent>(ent.Owner, out var flyerComp))
+            return;
+
+        if (!flyerComp.Active)
+            args.CanRun = false;
     }
 
     private void OnOperatorSet(Entity<CEVehicleFlyerComponent> ent, ref CEVehicleOperatorSetEvent args)

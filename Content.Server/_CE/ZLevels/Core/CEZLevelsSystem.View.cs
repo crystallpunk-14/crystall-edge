@@ -66,6 +66,11 @@ public sealed partial class CEZLevelsSystem
     {
         _actions.RemoveAction(ent.Comp.ZLevelActionEntity);
         _meta.RemoveFlag(ent, MetaDataFlags.ExtraTransformEvents);
+
+        foreach (var eye in ent.Comp.Eyes)
+        {
+            QueueDel(eye);
+        }
     }
 
     private void OnPlayerAttached(PlayerAttachedEvent ev)
