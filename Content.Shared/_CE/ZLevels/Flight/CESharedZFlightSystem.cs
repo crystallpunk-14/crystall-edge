@@ -3,6 +3,8 @@ using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared._CE.ZLevels.Flight.Components;
 using Content.Shared.Actions;
 using Content.Shared.Audio;
+using Content.Shared.Stunnable;
+using Content.Shared.Toggleable;
 using JetBrains.Annotations;
 using Robust.Shared.Serialization;
 
@@ -13,6 +15,7 @@ public abstract class CESharedZFlightSystem : EntitySystem
     [Dependency] private readonly CESharedZLevelsSystem _zLevel = default!;
     [Dependency] private readonly SharedAmbientSoundSystem _ambient = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private readonly SharedActionsSystem _actions = default!;
 
     protected EntityQuery<CEZPhysicsComponent> ZPhyzQuery;
 
@@ -28,7 +31,20 @@ public abstract class CESharedZFlightSystem : EntitySystem
 
         SubscribeLocalEvent<CEZFlyerComponent, CEZFlightActionUp>(OnZLevelUp);
         SubscribeLocalEvent<CEZFlyerComponent, CEZFlightActionDown>(OnZLevelDown);
-        SubscribeLocalEvent<CEZFlyerComponent, CEZFlightActionToggle>(OnZLevelToggle);
+        SubscribeLocalEvent<CEZFlyerComponent, ToggleActionEvent>(OnZLevelToggle);
+
+        SubscribeLocalEvent<CEZFlyerComponent, StunnedEvent>(OnStunned);
+        SubscribeLocalEvent<CEZFlyerComponent, KnockedDownEvent>(OnKnockdowned);
+    }
+
+    private void OnKnockdowned(Entity<CEZFlyerComponent> ent, ref KnockedDownEvent args)
+    {
+        DeactivateFlight((ent, ent));
+    }
+
+    private void OnStunned(Entity<CEZFlyerComponent> ent, ref StunnedEvent args)
+    {
+        DeactivateFlight((ent, ent));
     }
 
     private void OnStartFlight(Entity<CEZPhysicsComponent> ent, ref CEFlightStartedEvent args)
@@ -118,7 +134,7 @@ public abstract class CESharedZFlightSystem : EntitySystem
         args.Handled = true;
     }
 
-    private void OnZLevelToggle(Entity<CEZFlyerComponent> ent, ref CEZFlightActionToggle args)
+    private void OnZLevelToggle(Entity<CEZFlyerComponent> ent, ref ToggleActionEvent args)
     {
         if (args.Handled)
             return;
@@ -154,6 +170,10 @@ public abstract class CESharedZFlightSystem : EntitySystem
 
         _zLevel.SetZGravity((ent, zPhys), 0);
 
+        // Update toggle action icon state
+        if (ent.Comp.ZLevelToggleActionEntity != null)
+            _actions.SetToggled(ent.Comp.ZLevelToggleActionEntity, true);
+
         RaiseLocalEvent(ent, new CEFlightStartedEvent());
         return true;
     }
@@ -174,6 +194,10 @@ public abstract class CESharedZFlightSystem : EntitySystem
         DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.Active));
 
         _zLevel.SetZGravity((ent, zPhys), ent.Comp.DefaultGravityIntensity);
+
+        // Update toggle action icon state
+        if (ent.Comp.ZLevelToggleActionEntity != null)
+            _actions.SetToggled(ent.Comp.ZLevelToggleActionEntity, false);
 
         RaiseLocalEvent(ent, new CEFlightStoppedEvent());
     }
@@ -213,13 +237,6 @@ public sealed partial class CEZFlightActionUp : InstantActionEvent
 /// Instant Action, lowering the target flight level by 1
 /// </summary>
 public sealed partial class CEZFlightActionDown : InstantActionEvent
-{
-}
-
-/// <summary>
-/// Instant Action, turning flight mode on and off
-/// </summary>
-public sealed partial class CEZFlightActionToggle : InstantActionEvent
 {
 }
 

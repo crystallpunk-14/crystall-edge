@@ -21,6 +21,9 @@
         },
         {
             "name": "toggle_flight"
+        },
+        {
+            "name": "toggle_flight_on"
         }
     ]
 }
