@@ -1,18 +1,13 @@
-using Content.Shared._CE.Vehicle;
 using Content.Shared._CE.Vehicle.Components;
 using Content.Shared._CE.ZLevels.Flight;
 using Content.Shared._CE.ZLevels.Flight.Components;
 using Content.Shared.Actions;
-using Content.Shared.Damage.Systems;
-using Content.Shared.Stunnable;
 
 namespace Content.Shared._CE.VehicleFlying;
 
 public sealed class CEVehicleFlightSystem : EntitySystem
 {
     [Dependency] private readonly CESharedZFlightSystem _flight = default!;
-    [Dependency] private readonly CEVehicleSystem _vehicle = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
 
     public override void Initialize()

@@ -55,12 +55,21 @@ public abstract class CESharedZFlightSystem : EntitySystem
 
         _ambient.SetAmbience(ent, true);
         _appearance.SetData(ent, CEFlightVisuals.Active, true);
+
+        _actions.SetEnabled(flyerComp.ZLevelDownActionEntity, true);
+        _actions.SetEnabled(flyerComp.ZLevelUpActionEntity, true);
     }
 
     private void OnStopFlight(Entity<CEZPhysicsComponent> ent, ref CEFlightStoppedEvent args)
     {
+        if (!TryComp<CEZFlyerComponent>(ent, out var flyerComp))
+            return;
+
         _ambient.SetAmbience(ent, false);
         _appearance.SetData(ent, CEFlightVisuals.Active, false);
+
+        _actions.SetEnabled(flyerComp.ZLevelDownActionEntity, false);
+        _actions.SetEnabled(flyerComp.ZLevelUpActionEntity, false);
     }
 
     private void OnGetZVelocity(Entity<CEZFlyerComponent> ent, ref CEGetZVelocityEvent args)

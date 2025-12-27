@@ -33,5 +33,8 @@ public sealed class CEZFlightSystem : CESharedZFlightSystem
         _actions.AddAction(ent, ref ent.Comp.ZLevelUpActionEntity, ent.Comp.UpActionProto);
         _actions.AddAction(ent, ref ent.Comp.ZLevelDownActionEntity, ent.Comp.DownActionProto);
         _actions.AddAction(ent, ref ent.Comp.ZLevelToggleActionEntity, ent.Comp.ToggleActionProto);
+
+        _actions.SetEnabled(ent.Comp.ZLevelDownActionEntity, ent.Comp.Active);
+        _actions.SetEnabled(ent.Comp.ZLevelUpActionEntity, ent.Comp.Active);
     }
 }
