@@ -14,13 +14,6 @@
     state: generic
   - type: Item
     size: Normal
-  - type: StaticPrice
-    price: 100
-  #- type: PhysicalComposition
-  #  materialComposition:
-  #    Glass: 230
-  #  chemicalComposition:
-  #    Silicon: 20
   - type: Circuitboard
 
 - type: entity
@@ -35,6 +28,8 @@
     stackRequirements:
       CEMachinePartEnergyLine: 1
       CEBrassSheet: 2
+  - type: StaticPrice
+    price: 130
 
 - type: entity
   id: CEMachineCoreRecycler
@@ -46,6 +41,8 @@
     stackRequirements:
       CEMachinePartEnergyLine: 1
       CEBrassSheet: 2
+  - type: StaticPrice
+    price: 100
 
 - type: entity
   id: CEMachineCoreDrill
@@ -57,6 +54,8 @@
     stackRequirements:
       CEMachinePartEnergyLine: 1
       CEBrassSheet: 2
+  - type: StaticPrice
+    price: 100
 
 - type: entity
   id: CEMachineCoreCharger
@@ -67,6 +66,8 @@
     prototype: CECharger
     stackRequirements:
       CEMachinePartEnergyLine: 4
+  - type: StaticPrice
+    price: 150
 
 - type: entity
   id: CEMachineCoreFunnel
@@ -77,6 +78,8 @@
     prototype: CEFunnel
     stackRequirements:
       CEBrassSheet: 1
+  - type: StaticPrice
+    price: 50
 
 - type: entity
   id: CEMachineCoreTradingPlatform

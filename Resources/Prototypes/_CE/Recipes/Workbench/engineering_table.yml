@@ -155,6 +155,24 @@
   result: CELantern
   resultCount: 1
 
+- type: CERecipe
+  id: CEManaTransferGlove
+  tag: CERecipeEngineeringTable
+  category: Tools
+  craftTime: 1.0
+  requirements:
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 1
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 3
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 2
+  result: CEManaTransferGlove
+  resultCount: 1
+
 # Machine cores
 
 - type: CERecipe
@@ -164,14 +182,77 @@
   craftTime: 2.0
   requirements:
   - !type:StackResource
-    stack: CEMachinePartCoalDiffuser
-    count: 2
-  - !type:StackResource
     stack: CEBrassSheet
     count: 5
+  - !type:StackResource
+    stack: CEMachinePartCoalDiffuser
+    count: 2
   - !type:StackResource
     stack: CEIronBar
     count: 1
   result: CEMachineCoreMeltingFurnace
+  resultCount: 1
+
+- type: CERecipe
+  id: CEMachineCoreRecycler
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 1
+  - !type:StackResource
+    stack: CEIronRod
+    count: 18
+  result: CEMachineCoreRecycler
+  resultCount: 1
+
+- type: CERecipe
+  id: CEMachineCoreDrill
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 1
+  - !type:StackResource
+    stack: CEIronRod
+    count: 18
+  result: CEMachineCoreDrill
+  resultCount: 1
+
+- type: CERecipe
+  id: CEMachineCoreCharger
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 3
+  result: CEMachineCoreCharger
+  resultCount: 1
+
+- type: CERecipe
+  id: CEMachineCoreFunnel
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  result: CEMachineCoreFunnel
   resultCount: 1
 
