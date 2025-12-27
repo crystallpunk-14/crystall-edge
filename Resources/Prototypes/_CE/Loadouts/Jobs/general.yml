@@ -246,6 +246,68 @@
   equipment:
     shirt: CEClothingShirtWarriorGarb
 
+# Cloak
+
+- type: loadoutGroup
+  id: CEGeneralCLoak
+  name: ce-loadout-cloak
+  minLimit: 0
+  loadouts:
+  - CEClothingCapeBarbarian
+  - CEClothingCapeFur
+  - CEClothingCapeFur2
+  - CEClothingCloakBlue
+  - CEClothingCloakInsulatedMantle
+  - CEClothingCoatFur
+  - CEClothingCoatFurBrown
+  - CEClothingRaincoatGreen
+  - CEClothingRaincoatWhite
+
+- type: loadout
+  id: CEClothingCapeBarbarian
+  equipment:
+    cloak: CEClothingCapeBarbarian
+
+- type: loadout
+  id: CEClothingCapeFur
+  equipment:
+    cloak: CEClothingCapeFur
+
+- type: loadout
+  id: CEClothingCapeFur2
+  equipment:
+    cloak: CEClothingCapeFur2
+
+- type: loadout
+  id: CEClothingCloakBlue
+  equipment:
+    cloak: CEClothingCloakBlue
+
+- type: loadout
+  id: CEClothingCloakInsulatedMantle
+  equipment:
+    cloak: CEClothingCloakInsulatedMantle
+
+- type: loadout
+  id: CEClothingCoatFur
+  equipment:
+    cloak: CEClothingCoatFur
+
+- type: loadout
+  id: CEClothingCoatFurBrown
+  equipment:
+    cloak: CEClothingCoatFurBrown
+
+- type: loadout
+  id: CEClothingRaincoatGreen
+  equipment:
+    cloak: CEClothingRaincoatGreen
+
+- type: loadout
+  id: CEClothingRaincoatWhite
+  equipment:
+    cloak: CEClothingRaincoatWhite
+
 # Eyes
 
 - type: loadoutGroup
