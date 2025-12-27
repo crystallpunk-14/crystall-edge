@@ -6,7 +6,7 @@
   components:
   - type: Sprite
     layers:
-    - map: [ "wings" ]
+    - map: [ "wings" ] #Wings
       sprite: _CE/Mobs/Species/Carrin/parts.rsi
       state: wings
       visible: false
@@ -88,6 +88,9 @@
       types:
         Slash: 5 # 5 slash
   # Flying birb!
+  - type: CESkinColoredLayers
+    maps:
+    - wings
   - type: CEZFlyer # Flying birb!!!
   - type: CEZFlyerBlockHands
   - type: CEZFlyerStamina

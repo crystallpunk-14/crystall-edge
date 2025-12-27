@@ -34,10 +34,10 @@ public abstract class CESharedZFlightSystem : EntitySystem
         SubscribeLocalEvent<CEZFlyerComponent, ToggleActionEvent>(OnZLevelToggle);
 
         SubscribeLocalEvent<CEZFlyerComponent, StunnedEvent>(OnStunned);
-        SubscribeLocalEvent<CEZFlyerComponent, KnockedDownEvent>(OnKnockdowned);
+        SubscribeLocalEvent<CEZFlyerComponent, KnockedDownEvent>(OnKnockDowned);
     }
 
-    private void OnKnockdowned(Entity<CEZFlyerComponent> ent, ref KnockedDownEvent args)
+    private void OnKnockDowned(Entity<CEZFlyerComponent> ent, ref KnockedDownEvent args)
     {
         DeactivateFlight((ent, ent));
     }
