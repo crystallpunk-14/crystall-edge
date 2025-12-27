@@ -223,3 +223,16 @@
   id: 1022
   time: '2025-12-24T17:33:39.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/196
+- author: TheShuEd
+  changes:
+  - message: Guard hoverboard added. A flying single-seater vehicle powered by a battery.
+      Also theft targets.
+    type: Add
+  - message: Carrins can now fly! Stamina is depleted very quickly during flight,
+      and the use of hands is not possible.
+    type: Add
+  - message: Damage from falls greatly reduced
+    type: Tweak
+  id: 1023
+  time: '2025-12-27T18:59:57.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/202

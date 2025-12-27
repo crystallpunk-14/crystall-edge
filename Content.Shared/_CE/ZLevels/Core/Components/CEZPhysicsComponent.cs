@@ -30,6 +30,12 @@ public sealed partial class CEZPhysicsComponent : Component
     [DataField, AutoNetworkedField]
     public float LocalPosition;
 
+    /// <summary>
+    /// Cached value of the current z-level map height
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public int CurrentZLevel;
+
     // Physics
 
     [DataField, AutoNetworkedField]

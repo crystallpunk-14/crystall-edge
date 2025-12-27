@@ -8,6 +8,7 @@
   - type: Sprite
     sprite: _CE/Effects/energy_overcharge.rsi
     drawdepth: Effects
+    noRot: true
     layers:
     - state: electrified
       shader: unshaded

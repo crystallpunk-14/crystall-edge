@@ -12,16 +12,21 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
 
 namespace Content.Server._CE.ZLevels.Core;
 
 public sealed partial class CEZLevelsSystem
 {
+    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly ViewSubscriberSystem _viewSubscriber = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
 
     private readonly EntProtoId _zEyeProto = "CEZLevelEye";
+
+    private readonly TimeSpan _zLevelViewerUpdateRate = TimeSpan.FromSeconds(1f);
+    private TimeSpan _nextZLevelViewerUpdate = TimeSpan.Zero;
 
     private void InitView()
     {
@@ -35,6 +40,22 @@ public sealed partial class CEZLevelsSystem
         SubscribeLocalEvent<CEZPhysicsComponent, CEZLevelFallEvent>(OnZLevelFall);
     }
 
+    private void UpdateView(float frameTime)
+    {
+        if (_timing.CurTime < _nextZLevelViewerUpdate)
+            return;
+        _nextZLevelViewerUpdate = _timing.CurTime + _zLevelViewerUpdateRate;
+
+        var query = EntityQueryEnumerator<CEZLevelViewerComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var viewer, out var xform))
+        {
+            foreach (var eye in viewer.Eyes)
+            {
+                _transform.SetWorldPosition(eye, _transform.GetWorldPosition(xform));
+            }
+        }
+    }
+
     private void OnViewerInit(Entity<CEZLevelViewerComponent> ent, ref MapInitEvent args)
     {
         _actions.AddAction(ent, ref ent.Comp.ZLevelActionEntity, ent.Comp.ActionProto);
@@ -45,15 +66,10 @@ public sealed partial class CEZLevelsSystem
     {
         _actions.RemoveAction(ent.Comp.ZLevelActionEntity);
         _meta.RemoveFlag(ent, MetaDataFlags.ExtraTransformEvents);
-    }
-
-    protected override void OnViewerMove(Entity<CEZLevelViewerComponent> ent, ref MoveEvent args)
-    {
-        base.OnViewerMove(ent, ref args);
 
         foreach (var eye in ent.Comp.Eyes)
         {
-            _transform.SetWorldPosition(eye, _transform.GetWorldPosition(ent));
+            QueueDel(eye);
         }
     }
 

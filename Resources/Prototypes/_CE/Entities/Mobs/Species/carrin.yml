@@ -6,6 +6,10 @@
   components:
   - type: Sprite
     layers:
+    - map: [ "wings" ] #Wings
+      sprite: _CE/Mobs/Species/Carrin/parts.rsi
+      state: wings
+      visible: false
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
     - map: [ "enum.HumanoidVisualLayers.Head" ]
     - map: [ "enum.HumanoidVisualLayers.Eyes" ]
@@ -83,6 +87,28 @@
     damage:
       types:
         Slash: 5 # 5 slash
+  # Flying birb!
+  - type: CESkinColoredLayers
+    maps:
+    - wings
+  - type: CEZFlyer # Flying birb!!!
+    startFlightDoAfter: 1.5
+  - type: CEZFlyerBlockHands
+  - type: CEZFlyerStamina
+    staminaDraw: 15
+  - type: AmbientSound
+    enabled: false
+    volume: 2
+    range: 5
+    sound:
+      path: /Audio/_CE/Ambience/wings_loop.ogg
+  - type: GenericVisualizer
+    visuals:
+      enum.CEFlightVisuals.Active:
+        wings:
+          True: { visible: true }
+          False: { visible: false }
+  #
   - type: Inventory
     templateId: CECarrin # Cant wear shoes, mask and gloves
     speciesId: carrin

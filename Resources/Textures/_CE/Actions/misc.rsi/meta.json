@@ -17,10 +17,13 @@
             "name": "up"
         },
         {
-            "name": "roof"
+            "name": "respawn"
         },
         {
-            "name": "respawn"
+            "name": "toggle_flight"
+        },
+        {
+            "name": "toggle_flight_on"
         }
     ]
 }
