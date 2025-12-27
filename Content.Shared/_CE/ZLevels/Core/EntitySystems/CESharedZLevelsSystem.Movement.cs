@@ -151,7 +151,7 @@ public abstract partial class CESharedZLevelsSystem
 
             if (zPhys.LocalPosition >= 1) //Need teleport to ZLevel up
             {
-                if (!zPhys.Ghost && HasTileAbove(uid)) //Hit roof
+                if (HasTileAbove(uid)) //Hit roof
                 {
                     if (MathF.Abs(zPhys.Velocity) >= ImpactVelocityLimit)
                     {
@@ -193,9 +193,6 @@ public abstract partial class CESharedZLevelsSystem
         stickyGround = false;
         if (!Resolve(target, ref target.Comp, false))
             return 0; //maybe in future: simpler distance calculation for entities without zPhysComp?
-
-        if (target.Comp.Ghost)
-            return maxFloors;
 
         var xform = Transform(target);
         if (!_zMapQuery.TryComp(xform.MapUid, out var zMapComp))

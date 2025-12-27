@@ -62,12 +62,6 @@ public abstract partial class CESharedZLevelsSystem
             return;
         }
 
-        //if (!_zMapQuery.HasComp(xform.MapUid))
-        //{
-        //    SetActiveStatus(ent, false);
-        //    return;
-        //}
-
         if (xform.Anchored)
         {
             SetActiveStatus(ent, false);

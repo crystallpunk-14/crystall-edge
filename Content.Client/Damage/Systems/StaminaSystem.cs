@@ -1,5 +1,4 @@
 ﻿using Content.Client.Stunnable;
-using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Mobs;

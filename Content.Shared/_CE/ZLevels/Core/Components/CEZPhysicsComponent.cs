@@ -65,10 +65,4 @@ public sealed partial class CEZPhysicsComponent : Component
     /// </summary>
     [DataField]
     public Vector2 SpriteOffsetDefault = Vector2.Zero;
-
-    /// <summary>
-    /// This entity ignores floor and roof tiles when moving between z-levels.
-    /// </summary>
-    [DataField]
-    public bool Ghost = false;
 }
