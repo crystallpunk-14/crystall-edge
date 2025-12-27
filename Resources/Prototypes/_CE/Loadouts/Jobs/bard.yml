@@ -19,11 +19,6 @@
   equipment:
     head: CEClothingHeadBeretMercenary
 
-- type: loadout
-  id: CEClothingHeadFedoraHunterRed
-  equipment:
-    head: CEClothingHeadFedoraHunterRed
-
 # Shirt
 
 - type: loadoutGroup

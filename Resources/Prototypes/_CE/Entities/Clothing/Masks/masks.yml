@@ -92,9 +92,9 @@
   - type: Clothing
     sprite: _CE/Clothing/Masks/bone_mask.rsi
   - type: IdentityBlocker
-  - type: AddAccentClothing
-    accent: ReplacementAccent
-    replacement: CEskeleton
+#  - type: AddAccentClothing
+#    accent: ReplacementAccent
+#    replacement: CEskeleton
 
 - type: entity
   parent: CEClothingMaskBase
@@ -107,9 +107,6 @@
   - type: Clothing
     sprite: _CE/Clothing/Masks/horned_bone_mask.rsi
   - type: IdentityBlocker
-  - type: AddAccentClothing
-    accent: ReplacementAccent
-    replacement: CEskeleton
 
 - type: entity
   parent: CEClothingMaskBase
