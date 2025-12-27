@@ -3,6 +3,7 @@ using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared._CE.ZLevels.Flight.Components;
 using Content.Shared.Actions;
 using Content.Shared.Audio;
+using Content.Shared.DoAfter;
 using Content.Shared.Stunnable;
 using Content.Shared.Toggleable;
 using JetBrains.Annotations;
@@ -16,6 +17,7 @@ public abstract class CESharedZFlightSystem : EntitySystem
     [Dependency] private readonly SharedAmbientSoundSystem _ambient = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
+    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
 
     protected EntityQuery<CEZPhysicsComponent> ZPhyzQuery;
 
@@ -32,6 +34,7 @@ public abstract class CESharedZFlightSystem : EntitySystem
         SubscribeLocalEvent<CEZFlyerComponent, CEZFlightActionUp>(OnZLevelUp);
         SubscribeLocalEvent<CEZFlyerComponent, CEZFlightActionDown>(OnZLevelDown);
         SubscribeLocalEvent<CEZFlyerComponent, ToggleActionEvent>(OnZLevelToggle);
+        SubscribeLocalEvent<CEZFlyerComponent, CEStartFlightDoAfterEvent>(OnStartFlightDoAfter);
 
         SubscribeLocalEvent<CEZFlyerComponent, StunnedEvent>(OnStunned);
         SubscribeLocalEvent<CEZFlyerComponent, KnockedDownEvent>(OnKnockDowned);
@@ -53,8 +56,7 @@ public abstract class CESharedZFlightSystem : EntitySystem
             return;
         SetTargetHeight((ent, flyerComp), ent.Comp.CurrentZLevel);
 
-        _ambient.SetAmbience(ent, true);
-        _appearance.SetData(ent, CEFlightVisuals.Active, true);
+        StartFlightVisuals((ent, flyerComp));
 
         _actions.SetEnabled(flyerComp.ZLevelDownActionEntity, true);
         _actions.SetEnabled(flyerComp.ZLevelUpActionEntity, true);
@@ -65,8 +67,7 @@ public abstract class CESharedZFlightSystem : EntitySystem
         if (!TryComp<CEZFlyerComponent>(ent, out var flyerComp))
             return;
 
-        _ambient.SetAmbience(ent, false);
-        _appearance.SetData(ent, CEFlightVisuals.Active, false);
+        StopFlightVisuals((ent, flyerComp));
 
         _actions.SetEnabled(flyerComp.ZLevelDownActionEntity, false);
         _actions.SetEnabled(flyerComp.ZLevelUpActionEntity, false);
@@ -149,10 +150,47 @@ public abstract class CESharedZFlightSystem : EntitySystem
             return;
 
         if (ent.Comp.Active)
+        {
             DeactivateFlight((ent, ent));
+        }
         else
-            TryActivateFlight((ent, ent));
+        {
+            // If StartFlightDoAfter is set, start a doAfter before activating flight
+            if (ent.Comp.StartFlightDoAfter != null)
+            {
+                //Preventive start flying visuals
+                StartFlightVisuals(ent);
 
+                var doAfter = new DoAfterArgs(EntityManager, ent, ent.Comp.StartFlightDoAfter.Value, new CEStartFlightDoAfterEvent(), ent)
+                {
+                    BreakOnMove = false,
+                    BlockDuplicate = true,
+                    BreakOnDamage = true,
+                    CancelDuplicate = true,
+                };
+
+                _doAfter.TryStartDoAfter(doAfter);
+            }
+            else
+            {
+                // No delay, activate flight immediately
+                TryActivateFlight((ent, ent));
+            }
+        }
+
+        args.Handled = true;
+    }
+
+    private void OnStartFlightDoAfter(Entity<CEZFlyerComponent> ent, ref CEStartFlightDoAfterEvent args)
+    {
+
+        if (args.Cancelled || args.Handled)
+        {
+            StopFlightVisuals(ent);
+            return;
+        }
+
+        TryActivateFlight((ent, ent));
         args.Handled = true;
     }
 
@@ -217,6 +255,18 @@ public abstract class CESharedZFlightSystem : EntitySystem
         ent.Comp.TargetMapHeight = targetHeight;
         DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.TargetMapHeight));
     }
+
+    private void StartFlightVisuals(Entity<CEZFlyerComponent> ent)
+    {
+        _appearance.SetData(ent, CEFlightVisuals.Active, true);
+        _ambient.SetAmbience(ent, true);
+    }
+
+    private void StopFlightVisuals(Entity<CEZFlyerComponent> ent)
+    {
+        _appearance.SetData(ent, CEFlightVisuals.Active, false);
+        _ambient.SetAmbience(ent, false);
+    }
 }
 
 /// <summary>
@@ -254,4 +304,12 @@ public sealed partial class CEZFlightActionDown : InstantActionEvent
 public enum CEFlightVisuals
 {
     Active,
+}
+
+/// <summary>
+/// DoAfter event for starting flight with a delay
+/// </summary>
+[Serializable, NetSerializable]
+public sealed partial class CEStartFlightDoAfterEvent : SimpleDoAfterEvent
+{
 }

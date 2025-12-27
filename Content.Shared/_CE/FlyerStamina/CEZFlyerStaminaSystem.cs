@@ -31,7 +31,7 @@ public sealed class CEZFlyerStaminaSystem : EntitySystem
         if (!TryComp<StaminaComponent>(ent, out var stamina))
             return;
 
-        if (stamina.Critical || stamina.AfterCritical)
+        if (stamina.Critical)
             args.Cancel();
     }
 

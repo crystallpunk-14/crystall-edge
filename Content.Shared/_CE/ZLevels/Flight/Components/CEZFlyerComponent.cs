@@ -52,4 +52,7 @@ public sealed partial class CEZFlyerComponent : Component
 
     [DataField]
     public TimeSpan NextVfx = TimeSpan.Zero;
+
+    [DataField]
+    public TimeSpan? StartFlightDoAfter;
 }
