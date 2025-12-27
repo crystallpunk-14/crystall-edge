@@ -28,6 +28,12 @@ public abstract partial class CESharedZLevelsSystem
 
     private void OnMapInit(Entity<CEZPhysicsComponent> ent, ref MapInitEvent args)
     {
+        if (!TryComp<CEZLevelMapComponent>(Transform(ent).MapUid, out var zLevelMap))
+            return;
+
+        ent.Comp.CurrentZLevel = zLevelMap.Depth;
+        DirtyField(ent, ent.Comp, nameof(CEZPhysicsComponent.CurrentZLevel));
+
         CheckActivation(ent);
     }
 
