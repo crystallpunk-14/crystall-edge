@@ -83,9 +83,17 @@
     damage:
       types:
         Slash: 5 # 5 slash
+  # Flying birb!
   - type: CEZFlyer # Flying birb!!!
   - type: CEZFlyerStamina
     staminaDraw: 15
+  - type: AmbientSound
+    enabled: false
+    volume: 2
+    range: 5
+    sound:
+      path: /Audio/_CE/Ambience/wings_loop.ogg
+  #
   - type: Inventory
     templateId: CECarrin # Cant wear shoes, mask and gloves
     speciesId: carrin
