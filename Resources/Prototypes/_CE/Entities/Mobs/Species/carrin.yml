@@ -89,6 +89,7 @@
         Slash: 5 # 5 slash
   # Flying birb!
   - type: CEZFlyer # Flying birb!!!
+  - type: CEZFlyerBlockHands
   - type: CEZFlyerStamina
     staminaDraw: 15
   - type: AmbientSound
