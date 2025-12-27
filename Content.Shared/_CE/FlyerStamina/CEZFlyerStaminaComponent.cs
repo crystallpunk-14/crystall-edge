@@ -5,8 +5,7 @@ namespace Content.Shared._CE.FlyerStamina;
 /// <summary>
 /// Limit flight by stamina
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentPause,
- Access(typeof(CEZFlyerStaminaSystem))]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentPause, Access(typeof(CEZFlyerStaminaSystem))]
 public sealed partial class CEZFlyerStaminaComponent : Component
 {
     [DataField]

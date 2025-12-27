@@ -6,8 +6,7 @@ namespace Content.Shared._CE.FlyerHands;
 /// <summary>
 /// Prevents the use of hands during flight
 /// </summary>
-[RegisterComponent, NetworkedComponent,
- Access(typeof(CESharedZFlightSystem))]
+[RegisterComponent, NetworkedComponent,Access(typeof(CESharedZFlightSystem))]
 public sealed partial class CEZFlyerBlockHandsComponent : Component
 {
 }

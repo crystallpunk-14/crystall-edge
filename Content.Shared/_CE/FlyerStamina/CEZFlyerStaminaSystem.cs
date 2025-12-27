@@ -48,7 +48,7 @@ public sealed class CEZFlyerStaminaSystem : EntitySystem
             flyerStamina.NextConsumeTime = _timing.CurTime + flyerStamina.StaminaConsumeFrequency;
 
             if (!flyer.Active)
-                return;
+                continue;
 
             _stamina.TakeStaminaDamage(uid, flyerStamina.StaminaDraw);
         }

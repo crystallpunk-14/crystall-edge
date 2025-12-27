@@ -4,11 +4,9 @@ using Robust.Shared.GameStates;
 namespace Content.Shared._CE.VehicleFlying;
 
 /// <summary>
-/// Controls CEFlyerComponent based on transport status
+/// Provide flying actions to operator
 /// </summary>
-[RegisterComponent, NetworkedComponent, Access(typeof(CESharedZFlightSystem))]
+[RegisterComponent, NetworkedComponent, Access(typeof(CEVehicleFlightSystem))]
 public sealed partial class CEVehicleFlyerComponent : Component
 {
-    [DataField]
-    public float PowerConsume = 1f;
 }
