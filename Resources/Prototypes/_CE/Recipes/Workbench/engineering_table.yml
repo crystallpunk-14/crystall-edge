@@ -256,3 +256,39 @@
   result: CEMachineCoreFunnel
   resultCount: 1
 
+- type: CERecipe
+  id: CEMachineCoreTradingPlatform
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartDimensionalMatrix
+    count: 1
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 5
+  result: CEMachineCoreTradingPlatform
+  resultCount: 1
+
+- type: CERecipe
+  id: CEMachineCoreSellingPlatform
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartDimensionalMatrix
+    count: 1
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 2
+  result: CEMachineCoreSellingPlatform
+  resultCount: 1
+

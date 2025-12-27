@@ -90,6 +90,8 @@
     prototype: CETradingPlatform
     stackRequirements:
       CEBrassSheet: 1
+  - type: StaticPrice
+    price: 140
 
 - type: entity
   id: CEMachineCoreSellingPlatform
@@ -100,6 +102,8 @@
     prototype: CETradingSellingPlatform
     stackRequirements:
       CEBrassSheet: 1
+  - type: StaticPrice
+    price: 180
 
 - type: entity
   id: CEMachineCoreSalaryPlatform

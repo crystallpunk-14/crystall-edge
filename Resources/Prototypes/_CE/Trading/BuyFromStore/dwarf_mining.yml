@@ -102,3 +102,10 @@
   service: !type:CEBuyItemsService
     product: CEEnergyCrystalCell
     count: 1
+
+- type: tradingPosition
+  id: CEMachinePartDimensionalMatrix1
+  faction: DwarfMiners
+  service: !type:CEBuyItemsService
+    product: CEMachinePartDimensionalMatrix1
+    count: 1
