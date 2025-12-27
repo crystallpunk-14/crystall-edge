@@ -122,7 +122,7 @@
   parent: CEClothingEyesBase
   id: CEClothingEyesMerchantMonocle
   name: merchant's monocle
-  description: High-quality magnifiyng monocle infused with magic to help you determine the exact price of any item.
+  description: High-quality magnifying monocle infused with magic to help you determine the exact price of any item.
   components:
   - type: Sprite
     sprite: _CE/Clothing/Eyes/merchant_monocle.rsi

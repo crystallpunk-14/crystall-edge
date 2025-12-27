@@ -17,7 +17,7 @@
   parent: CEClothingMaskBase
   id: CEClothingMaskSinner
   name: sinner's mask
-  description: A mask intented to be worn by not the brightest individuals. Executioners put them on themselves and the victim before execution.
+  description: A mask intended to be worn by not the brightest individuals. Executioners put them on themselves and the victim before execution.
   components:
   - type: Sprite
     sprite: _CE/Clothing/Masks/sinner.rsi
