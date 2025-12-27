@@ -249,7 +249,7 @@
 # Cloak
 
 - type: loadoutGroup
-  id: CEGeneralCLoak
+  id: CEGeneralCloak
   name: ce-loadout-cloak
   minLimit: 0
   loadouts:
