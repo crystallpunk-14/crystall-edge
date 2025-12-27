@@ -4,7 +4,6 @@
  */
 
 using Content.Shared._CE.ZLevels.Core.Components;
-using Content.Shared.Ghost;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
@@ -29,6 +28,12 @@ public abstract partial class CESharedZLevelsSystem
     private void OnMapInit(Entity<CEZPhysicsComponent> ent, ref MapInitEvent args)
     {
         CheckActivation(ent);
+
+        if (!TryComp<CEZLevelMapComponent>(Transform(ent).MapUid, out var zLevelMap))
+            return;
+
+        ent.Comp.CurrentZLevel = zLevelMap.Depth;
+        DirtyField(ent, ent.Comp, nameof(CEZPhysicsComponent.CurrentZLevel));
     }
 
     private void OnPhysicsBodyTypeChange(Entity<CEZPhysicsComponent> ent, ref PhysicsBodyTypeChangedEvent args)
@@ -39,6 +44,9 @@ public abstract partial class CESharedZLevelsSystem
     private void OnParentChanged(Entity<CEZPhysicsComponent> ent, ref EntParentChangedMessage args)
     {
         CheckActivation(ent);
+
+        if (ZPhyzQuery.TryComp(args.OldParent, out var oldParentZPhys))
+            SetZPosition((ent, ent), oldParentZPhys.LocalPosition);
     }
 
     private void CheckActivation(Entity<CEZPhysicsComponent> ent)
@@ -49,12 +57,6 @@ public abstract partial class CESharedZLevelsSystem
         var xform = Transform(ent);
 
         if (xform.ParentUid != xform.MapUid)
-        {
-            SetActiveStatus(ent, false);
-            return;
-        }
-
-        if (HasComp<GhostComponent>(ent))
         {
             SetActiveStatus(ent, false);
             return;

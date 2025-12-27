@@ -1,20 +1,21 @@
 
 - type: entity
   id: CEVehicleHoverboard
-  parent: 
+  parent:
   - CEBaseVehicleStrap
-  - BaseFoldable
   - BaseItem
   name: hoverboard
   description: Floating personal transport device
   components:
   - type: Sprite
-    sprite: Objects/Vehicles/wheelchair.rsi
+    drawdepth: Items
+    sprite: _CE/Vehicles/hoverboard.rsi
+    offset: "0, -0.5"
     layers:
-    - state: vehicle
-      map: ["unfoldedLayer"]
-    - state: vehicle_folded
-      map: ["foldedLayer"]
+    - state: base
+    - state: active
+      shader: unshaded
+      map: ["flight"]
       visible: false
   - type: Appearance
   - type: Item
@@ -22,14 +23,14 @@
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: Metallic
+  - type: DamageOnHighSpeedImpact
+    minimumSpeed: 5
   - type: MovementSpeedModifier
-    acceleration: 1
-    friction: 6
-    frictionNoInput: 12
-    baseWalkSpeed: 4.5
-    baseSprintSpeed: 6
+    baseAcceleration: 2
+    baseFriction: 2
+    baseWalkSpeed: 5
+    baseSprintSpeed: 7
   - type: Strap
-    buckleOffset: "0,-0.05"
   - type: Fixtures
     fixtures:
       fix1:
@@ -44,3 +45,26 @@
         - TableLayer
   - type: StaticPrice
     price: 70
+  - type: AmbientSound
+    enabled: false
+    volume: 2
+    range: 5
+    sound:
+      path: /Audio/_CE/Ambience/hoverboard.ogg
+  - type: CEZFlyer
+    flightVfx: CEOverchargeSmallVFX
+  - type: CEVehicleFlyer
+  - type: CEZFlyerBattery
+    energyDraw: 1
+  - type: Battery
+    maxCharge: 100
+    startingCharge: 100
+  - type: ExaminableBattery
+  - type: GenericVisualizer
+    visuals:
+      enum.CEFlightVisuals.Active:
+        flight:
+          True: { visible: true }
+          False: { visible: false }
+  - type: CETheftValue
+    difficulty: 2

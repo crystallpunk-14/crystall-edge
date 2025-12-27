@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/24/2025 18:00:33
-  entityCount: 933
+  time: 12/27/2025 18:05:04
+  entityCount: 934
 maps:
 - 1
 grids:
@@ -141,13 +141,6 @@ entities:
       canCollide: False
     - type: InsideEntityStorage
       storage: 759
-- proto: CEBucket
-  entities:
-  - uid: 702
-    components:
-    - type: Transform
-      pos: -2.2586224,-11.310878
-      parent: 1
 - proto: CECarpetBlack
   entities:
   - uid: 257
@@ -2031,12 +2024,6 @@ entities:
     - type: Transform
       pos: -5.5,7.5
       parent: 1
-  - uid: 899
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -3.5,-11.5
-      parent: 1
   - uid: 900
     components:
     - type: Transform
@@ -2720,6 +2707,23 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 6.5,-17.5
+      parent: 1
+- proto: CEVehicleHoverboard
+  entities:
+  - uid: 40
+    components:
+    - type: Transform
+      pos: -3.5360777,-11.238875
+      parent: 1
+  - uid: 197
+    components:
+    - type: Transform
+      pos: -2.9624312,-11.317586
+      parent: 1
+  - uid: 249
+    components:
+    - type: Transform
+      pos: -2.4337752,-11.306341
       parent: 1
 - proto: CEWallCrystalCore
   entities:

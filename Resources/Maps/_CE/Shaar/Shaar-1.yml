@@ -4,7 +4,7 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/24/2025 18:00:32
+  time: 12/27/2025 18:05:04
   entityCount: 1640
 maps:
 - 1
@@ -757,7 +757,7 @@ entities:
       pos: -26.5,-9.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -10411.268
+      secondsUntilStateChange: -10711.333
       state: Opening
 - proto: CEFenceWooden
   entities:
@@ -3471,11 +3471,6 @@ entities:
     - type: Transform
       pos: -10.5,3.5
       parent: 1
-  - uid: 892
-    components:
-    - type: Transform
-      pos: 6.5,7.5
-      parent: 1
   - uid: 893
     components:
     - type: Transform
@@ -3500,11 +3495,6 @@ entities:
     components:
     - type: Transform
       pos: 6.5,5.5
-      parent: 1
-  - uid: 908
-    components:
-    - type: Transform
-      pos: 6.5,6.5
       parent: 1
   - uid: 909
     components:
@@ -4041,11 +4031,6 @@ entities:
     - type: Transform
       pos: -3.5,5.5
       parent: 1
-  - uid: 1313
-    components:
-    - type: Transform
-      pos: -3.5,4.5
-      parent: 1
   - uid: 1314
     components:
     - type: Transform
@@ -4121,11 +4106,6 @@ entities:
     - type: Transform
       pos: 0.5,8.5
       parent: 1
-  - uid: 1330
-    components:
-    - type: Transform
-      pos: 0.5,7.5
-      parent: 1
   - uid: 1331
     components:
     - type: Transform
@@ -4145,11 +4125,6 @@ entities:
     components:
     - type: Transform
       pos: 1.5,7.5
-      parent: 1
-  - uid: 1336
-    components:
-    - type: Transform
-      pos: 1.5,6.5
       parent: 1
   - uid: 1337
     components:
@@ -4181,60 +4156,15 @@ entities:
     - type: Transform
       pos: 3.5,8.5
       parent: 1
-  - uid: 1345
-    components:
-    - type: Transform
-      pos: 3.5,7.5
-      parent: 1
-  - uid: 1346
-    components:
-    - type: Transform
-      pos: 3.5,6.5
-      parent: 1
-  - uid: 1347
-    components:
-    - type: Transform
-      pos: 3.5,5.5
-      parent: 1
   - uid: 1350
     components:
     - type: Transform
       pos: 4.5,8.5
       parent: 1
-  - uid: 1351
-    components:
-    - type: Transform
-      pos: 4.5,7.5
-      parent: 1
-  - uid: 1352
-    components:
-    - type: Transform
-      pos: 4.5,6.5
-      parent: 1
-  - uid: 1353
-    components:
-    - type: Transform
-      pos: 4.5,5.5
-      parent: 1
   - uid: 1356
     components:
     - type: Transform
       pos: 5.5,8.5
-      parent: 1
-  - uid: 1357
-    components:
-    - type: Transform
-      pos: 5.5,7.5
-      parent: 1
-  - uid: 1358
-    components:
-    - type: Transform
-      pos: 5.5,6.5
-      parent: 1
-  - uid: 1359
-    components:
-    - type: Transform
-      pos: 5.5,5.5
       parent: 1
   - uid: 1436
     components:
@@ -6569,16 +6499,6 @@ entities:
     - type: Transform
       pos: -2.5,3.5
       parent: 1
-  - uid: 901
-    components:
-    - type: Transform
-      pos: -1.5,3.5
-      parent: 1
-  - uid: 902
-    components:
-    - type: Transform
-      pos: 0.5,3.5
-      parent: 1
   - uid: 903
     components:
     - type: Transform
@@ -6593,11 +6513,6 @@ entities:
     components:
     - type: Transform
       pos: 6.5,3.5
-      parent: 1
-  - uid: 906
-    components:
-    - type: Transform
-      pos: -0.5,3.5
       parent: 1
   - uid: 1086
     components:
@@ -7639,11 +7554,6 @@ entities:
     - type: Transform
       pos: 7.5,8.5
       parent: 1
-  - uid: 1374
-    components:
-    - type: Transform
-      pos: 7.5,7.5
-      parent: 1
   - uid: 1375
     components:
     - type: Transform
@@ -7658,16 +7568,6 @@ entities:
     components:
     - type: Transform
       pos: 7.5,4.5
-      parent: 1
-  - uid: 1378
-    components:
-    - type: Transform
-      pos: 7.5,3.5
-      parent: 1
-  - uid: 1379
-    components:
-    - type: Transform
-      pos: 8.5,4.5
       parent: 1
   - uid: 1380
     components:
@@ -7698,21 +7598,6 @@ entities:
     components:
     - type: Transform
       pos: 1.5,2.5
-      parent: 1
-  - uid: 1386
-    components:
-    - type: Transform
-      pos: 0.5,2.5
-      parent: 1
-  - uid: 1387
-    components:
-    - type: Transform
-      pos: -0.5,2.5
-      parent: 1
-  - uid: 1388
-    components:
-    - type: Transform
-      pos: -1.5,2.5
       parent: 1
   - uid: 1389
     components:
@@ -7753,16 +7638,6 @@ entities:
     components:
     - type: Transform
       pos: 1.5,1.5
-      parent: 1
-  - uid: 1397
-    components:
-    - type: Transform
-      pos: 0.5,1.5
-      parent: 1
-  - uid: 1398
-    components:
-    - type: Transform
-      pos: -0.5,1.5
       parent: 1
   - uid: 1399
     components:
@@ -7848,11 +7723,6 @@ entities:
     components:
     - type: Transform
       pos: 2.5,0.5
-      parent: 1
-  - uid: 1594
-    components:
-    - type: Transform
-      pos: 1.5,0.5
       parent: 1
   - uid: 1595
     components:
@@ -8650,6 +8520,140 @@ entities:
     components:
     - type: Transform
       pos: 5.5,-6.5
+      parent: 1
+- proto: CEWallStoneOreCoal
+  entities:
+  - uid: 3
+    components:
+    - type: Transform
+      pos: 6.5,7.5
+      parent: 1
+  - uid: 80
+    components:
+    - type: Transform
+      pos: 6.5,6.5
+      parent: 1
+  - uid: 125
+    components:
+    - type: Transform
+      pos: -3.5,4.5
+      parent: 1
+  - uid: 142
+    components:
+    - type: Transform
+      pos: 0.5,7.5
+      parent: 1
+  - uid: 209
+    components:
+    - type: Transform
+      pos: 1.5,6.5
+      parent: 1
+  - uid: 377
+    components:
+    - type: Transform
+      pos: 3.5,7.5
+      parent: 1
+  - uid: 892
+    components:
+    - type: Transform
+      pos: 3.5,6.5
+      parent: 1
+  - uid: 896
+    components:
+    - type: Transform
+      pos: 3.5,5.5
+      parent: 1
+  - uid: 901
+    components:
+    - type: Transform
+      pos: 4.5,7.5
+      parent: 1
+  - uid: 902
+    components:
+    - type: Transform
+      pos: 4.5,6.5
+      parent: 1
+  - uid: 906
+    components:
+    - type: Transform
+      pos: 4.5,5.5
+      parent: 1
+  - uid: 908
+    components:
+    - type: Transform
+      pos: 5.5,7.5
+      parent: 1
+  - uid: 974
+    components:
+    - type: Transform
+      pos: 5.5,6.5
+      parent: 1
+  - uid: 978
+    components:
+    - type: Transform
+      pos: 5.5,5.5
+      parent: 1
+  - uid: 979
+    components:
+    - type: Transform
+      pos: -1.5,3.5
+      parent: 1
+  - uid: 1084
+    components:
+    - type: Transform
+      pos: 0.5,3.5
+      parent: 1
+  - uid: 1313
+    components:
+    - type: Transform
+      pos: -0.5,3.5
+      parent: 1
+  - uid: 1330
+    components:
+    - type: Transform
+      pos: 7.5,7.5
+      parent: 1
+  - uid: 1346
+    components:
+    - type: Transform
+      pos: 0.5,2.5
+      parent: 1
+  - uid: 1347
+    components:
+    - type: Transform
+      pos: -0.5,2.5
+      parent: 1
+  - uid: 1351
+    components:
+    - type: Transform
+      pos: -1.5,2.5
+      parent: 1
+  - uid: 1352
+    components:
+    - type: Transform
+      pos: 0.5,1.5
+      parent: 1
+  - uid: 1353
+    components:
+    - type: Transform
+      pos: -0.5,1.5
+      parent: 1
+  - uid: 1357
+    components:
+    - type: Transform
+      pos: 1.5,0.5
+      parent: 1
+- proto: CEWallStoneOreIron
+  entities:
+  - uid: 1336
+    components:
+    - type: Transform
+      pos: 7.5,3.5
+      parent: 1
+  - uid: 1345
+    components:
+    - type: Transform
+      pos: 8.5,4.5
       parent: 1
 - proto: CEWeaponMaceTwoHandedGuardrail
   entities:

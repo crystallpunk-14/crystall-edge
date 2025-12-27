@@ -35,6 +35,8 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
     private EntityQuery<CEZLevelMapComponent> _zMapQuery;
     private EntityQuery<MapGridComponent> _gridQuery;
 
+    protected EntityQuery<CEZPhysicsComponent> ZPhyzQuery = default!;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -42,6 +44,7 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
         _mapQuery = GetEntityQuery<MapComponent>();
         _zMapQuery = GetEntityQuery<CEZLevelMapComponent>();
         _gridQuery = GetEntityQuery<MapGridComponent>();
+        ZPhyzQuery = GetEntityQuery<CEZPhysicsComponent>();
 
         InitMovement();
         InitView();
