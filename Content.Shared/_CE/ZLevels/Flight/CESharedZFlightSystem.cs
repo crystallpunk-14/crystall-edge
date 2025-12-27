@@ -20,7 +20,7 @@ public abstract class CESharedZFlightSystem : EntitySystem
         ZPhyzQuery = GetEntityQuery<CEZPhysicsComponent>();
 
         SubscribeLocalEvent<CEZPhysicsComponent, CEFlightStartedEvent>(OnStartFlight);
-        SubscribeLocalEvent<CEZPhysicsComponent, CEFlightStoppedEvent>(OnStartStop);
+        SubscribeLocalEvent<CEZPhysicsComponent, CEFlightStoppedEvent>(OnStopFlight);
         SubscribeLocalEvent<CEZFlyerComponent, CEGetZVelocityEvent>(OnGetZVelocity);
 
         SubscribeLocalEvent<CEZFlyerComponent, CEZFlightActionUp>(OnZLevelUp);
@@ -61,11 +61,10 @@ public abstract class CESharedZFlightSystem : EntitySystem
         _ambient.SetAmbience(ent, true);
     }
 
-    private void OnStartStop(Entity<CEZPhysicsComponent> ent, ref CEFlightStoppedEvent args)
+    private void OnStopFlight(Entity<CEZPhysicsComponent> ent, ref CEFlightStoppedEvent args)
     {
         _ambient.SetAmbience(ent, false);
     }
-
 
     private void OnGetZVelocity(Entity<CEZFlyerComponent> ent, ref CEGetZVelocityEvent args)
     {

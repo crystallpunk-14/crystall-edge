@@ -400,6 +400,11 @@ public abstract partial class SharedStaminaSystem : EntitySystem
         if (StunSystem.TryUpdateParalyzeDuration(uid, component.StunTime))
             StunSystem.TrySeeingStars(uid);
 
+        //CrystallEdge
+        var ev = new CEEnterStaminaCritEvent();
+        RaiseLocalEvent(uid, ev);
+        //CrystallEdge end
+
         // Give them buffer before being able to be re-stunned
         component.NextUpdate = Timing.CurTime + component.StunTime + StamCritBufferTime;
         EnsureComp<ActiveStaminaComponent>(uid);

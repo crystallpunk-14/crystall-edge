@@ -10,3 +10,8 @@ public record struct BeforeStaminaDamageEvent(float Value, bool Cancelled = fals
 {
     SlotFlags IInventoryRelayEvent.TargetSlots =>  ~SlotFlags.POCKET;
 }
+
+/// <summary>
+/// CrystallEdge: Need stamina event for stamina flyer
+/// </summary>
+public sealed class CEEnterStaminaCritEvent : EntityEventArgs;

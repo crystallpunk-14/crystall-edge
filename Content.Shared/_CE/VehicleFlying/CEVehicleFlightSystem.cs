@@ -57,24 +57,32 @@ public sealed class CEVehicleFlightSystem : EntitySystem
             _flight.DeactivateFlight(ent.Owner);
 
             if (args.OldOperator is not null)
-            {
-                if (flyerComp.ZLevelUpActionEntity is not null)
-                    _actions.RemoveProvidedAction(args.OldOperator.Value, ent.Owner, flyerComp.ZLevelUpActionEntity.Value);
-                if (flyerComp.ZLevelDownActionEntity is not null)
-                    _actions.RemoveProvidedAction(args.OldOperator.Value, ent.Owner, flyerComp.ZLevelDownActionEntity.Value);
-            }
+                RemoveFlightActionsFromOperator((ent, flyerComp), args.OldOperator.Value);
         }
         else
         {
-            List<EntityUid> actionsList = new();
-
-            if (flyerComp.ZLevelDownActionEntity is not null)
-                actionsList.Add(flyerComp.ZLevelDownActionEntity.Value);
-            if (flyerComp.ZLevelUpActionEntity is not null)
-                actionsList.Add(flyerComp.ZLevelUpActionEntity.Value);
-
-            _actions.GrantActions(args.NewOperator.Value, actionsList, ent.Owner);
+            GrantFlightActionsToOperator((ent, flyerComp), args.NewOperator.Value);
             _flight.TryActivateFlight(ent.Owner);
         }
+    }
+
+    private void GrantFlightActionsToOperator(Entity<CEZFlyerComponent> flyer, EntityUid user)
+    {
+        List<EntityUid> actionsList = new();
+
+        if (flyer.Comp.ZLevelDownActionEntity is not null)
+            actionsList.Add(flyer.Comp.ZLevelDownActionEntity.Value);
+        if (flyer.Comp.ZLevelUpActionEntity is not null)
+            actionsList.Add(flyer.Comp.ZLevelUpActionEntity.Value);
+
+        _actions.GrantActions(user, actionsList, flyer.Owner);
+    }
+
+    private void RemoveFlightActionsFromOperator(Entity<CEZFlyerComponent> flyer, EntityUid user)
+    {
+        if (flyer.Comp.ZLevelUpActionEntity is not null)
+            _actions.RemoveProvidedAction(user, flyer.Owner, flyer.Comp.ZLevelUpActionEntity.Value);
+        if (flyer.Comp.ZLevelDownActionEntity is not null)
+            _actions.RemoveProvidedAction(user, flyer.Owner, flyer.Comp.ZLevelDownActionEntity.Value);
     }
 }
