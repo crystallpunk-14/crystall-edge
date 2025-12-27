@@ -10,7 +10,7 @@ namespace Content.Shared._CE.FlyerStamina;
 public sealed partial class CEZFlyerStaminaComponent : Component
 {
     [DataField]
-    public float StaminaDraw = 2f;
+    public float StaminaDraw = 15f;
 
     [DataField]
     public TimeSpan StaminaConsumeFrequency = TimeSpan.FromSeconds(1f);

@@ -54,29 +54,3 @@
 #    popup: CE-respawn-action-popup
 #  - type: InstantAction
 #    event: !type:CERespawnAction
-
-- type: entity
-  id: CEActionZFlightUp
-  name: Move up
-  description: Move up one Z-Level
-  components:
-  - type: Action
-    checkCanInteract: false
-    icon:
-      sprite: _CE/Actions/misc.rsi
-      state: up
-  - type: InstantAction
-    event: !type:CEZFlightActionUp
-
-- type: entity
-  id: CEActionZFlightDown
-  name: Move down
-  description: Move down one Z-Level
-  components:
-  - type: Action
-    checkCanInteract: false
-    icon:
-      sprite: _CE/Actions/misc.rsi
-      state: down
-  - type: InstantAction
-    event: !type:CEZFlightActionDown

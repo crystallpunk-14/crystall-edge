@@ -20,6 +20,7 @@ public sealed class CEZFlightSystem : CESharedZFlightSystem
     {
         _actions.RemoveAction(ent.Comp.ZLevelUpActionEntity);
         _actions.RemoveAction(ent.Comp.ZLevelDownActionEntity);
+        _actions.RemoveAction(ent.Comp.ZLevelToggleActionEntity);
     }
 
     private void OnMapInit(Entity<CEZFlyerComponent> ent, ref MapInitEvent args)
@@ -31,5 +32,6 @@ public sealed class CEZFlightSystem : CESharedZFlightSystem
 
         _actions.AddAction(ent, ref ent.Comp.ZLevelUpActionEntity, ent.Comp.UpActionProto);
         _actions.AddAction(ent, ref ent.Comp.ZLevelDownActionEntity, ent.Comp.DownActionProto);
+        _actions.AddAction(ent, ref ent.Comp.ZLevelToggleActionEntity, ent.Comp.ToggleActionProto);
     }
 }

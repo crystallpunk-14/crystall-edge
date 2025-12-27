@@ -50,8 +50,8 @@
     sound:
       path: /Audio/_CE/Ambience/hoverboard.ogg
   - type: CEZFlyer
+    flightVfx: CEOverchargeSmallVFX
   - type: CEVehicleFlyer
-  - type: CEVehicleThrowOperatorOnDamage
   - type: CEZFlyerBattery
     energyDraw: 1
   - type: Battery

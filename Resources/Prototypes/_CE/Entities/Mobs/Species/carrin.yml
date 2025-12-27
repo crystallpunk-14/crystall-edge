@@ -83,6 +83,9 @@
     damage:
       types:
         Slash: 5 # 5 slash
+  - type: CEZFlyer # Flying birb!!!
+  - type: CEZFlyerStamina
+    staminaDraw: 15
   - type: Inventory
     templateId: CECarrin # Cant wear shoes, mask and gloves
     speciesId: carrin

@@ -18,9 +18,6 @@ public sealed partial class CEZFlyerComponent : Component
     [DataField, AutoNetworkedField]
     public bool Active;
 
-    /// <summary>
-    ///
-    /// </summary>
     [DataField, AutoNetworkedField]
     public int TargetMapHeight = 0;
 
@@ -42,11 +39,17 @@ public sealed partial class CEZFlyerComponent : Component
     [DataField, AutoNetworkedField]
     public EntityUid? ZLevelDownActionEntity;
 
+    [DataField]
+    public EntProtoId ToggleActionProto = "CEActionZFlightToggle";
+
+    [DataField, AutoNetworkedField]
+    public EntityUid? ZLevelToggleActionEntity;
+
     /// <summary>
     /// Spawned on client only every tick in flight state
     /// </summary>
     [DataField]
-    public EntProtoId? FlightVfx = "CEOverchargeSmallVFX";
+    public EntProtoId? FlightVfx;
 
     [DataField]
     public TimeSpan NextVfx = TimeSpan.Zero;

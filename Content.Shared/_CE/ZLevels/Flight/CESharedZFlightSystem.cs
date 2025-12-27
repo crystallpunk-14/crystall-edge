@@ -3,6 +3,7 @@ using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared._CE.ZLevels.Flight.Components;
 using Content.Shared.Actions;
 using Content.Shared.Audio;
+using JetBrains.Annotations;
 
 namespace Content.Shared._CE.ZLevels.Flight;
 
@@ -11,7 +12,7 @@ public abstract class CESharedZFlightSystem : EntitySystem
     [Dependency] private readonly CESharedZLevelsSystem _zLevel = default!;
     [Dependency] private readonly SharedAmbientSoundSystem _ambient = default!;
 
-    protected EntityQuery<CEZPhysicsComponent> ZPhyzQuery = default!;
+    protected EntityQuery<CEZPhysicsComponent> ZPhyzQuery;
 
     public override void Initialize()
     {
@@ -25,31 +26,7 @@ public abstract class CESharedZFlightSystem : EntitySystem
 
         SubscribeLocalEvent<CEZFlyerComponent, CEZFlightActionUp>(OnZLevelUp);
         SubscribeLocalEvent<CEZFlyerComponent, CEZFlightActionDown>(OnZLevelDown);
-    }
-    private void OnZLevelDown(Entity<CEZFlyerComponent> ent, ref CEZFlightActionDown args)
-    {
-        var map = Transform(ent).MapUid;
-        if (map is null)
-            return;
-
-        if (!_zLevel.TryMapDown(map.Value, out var mapBelow))
-            return;
-
-        ent.Comp.TargetMapHeight = mapBelow.Value.Comp.Depth;
-        DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.TargetMapHeight));
-    }
-
-    private void OnZLevelUp(Entity<CEZFlyerComponent> ent, ref CEZFlightActionUp args)
-    {
-        var map = Transform(ent).MapUid;
-        if (map is null)
-            return;
-
-        if (!_zLevel.TryMapUp(map.Value, out var mapAbove))
-            return;
-
-        ent.Comp.TargetMapHeight = mapAbove.Value.Comp.Depth;
-        DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.TargetMapHeight));
+        SubscribeLocalEvent<CEZFlyerComponent, CEZFlightActionToggle>(OnZLevelToggle);
     }
 
     private void OnStartFlight(Entity<CEZPhysicsComponent> ent, ref CEFlightStartedEvent args)
@@ -101,6 +78,56 @@ public abstract class CESharedZFlightSystem : EntitySystem
         args.VelocityDelta = velocityDelta;
     }
 
+    private void OnZLevelUp(Entity<CEZFlyerComponent> ent, ref CEZFlightActionUp args)
+    {
+        if (args.Handled)
+            return;
+
+        var map = Transform(ent).MapUid;
+        if (map is null)
+            return;
+
+        if (!_zLevel.TryMapUp(map.Value, out var mapAbove))
+            return;
+
+        ent.Comp.TargetMapHeight = mapAbove.Value.Comp.Depth;
+        DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.TargetMapHeight));
+
+        args.Handled = true;
+    }
+
+    private void OnZLevelDown(Entity<CEZFlyerComponent> ent, ref CEZFlightActionDown args)
+    {
+        if (args.Handled)
+            return;
+
+        var map = Transform(ent).MapUid;
+        if (map is null)
+            return;
+
+        if (!_zLevel.TryMapDown(map.Value, out var mapBelow))
+            return;
+
+        ent.Comp.TargetMapHeight = mapBelow.Value.Comp.Depth;
+        DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.TargetMapHeight));
+
+        args.Handled = true;
+    }
+
+    private void OnZLevelToggle(Entity<CEZFlyerComponent> ent, ref CEZFlightActionToggle args)
+    {
+        if (args.Handled)
+            return;
+
+        if (ent.Comp.Active)
+            DeactivateFlight((ent, ent));
+        else
+            TryActivateFlight((ent, ent));
+
+        args.Handled = true;
+    }
+
+    [PublicAPI]
     public bool TryActivateFlight(Entity<CEZFlyerComponent?> ent, CEZPhysicsComponent? zPhys = null)
     {
         if (!Resolve(ent, ref ent.Comp, false))
@@ -127,6 +154,7 @@ public abstract class CESharedZFlightSystem : EntitySystem
         return true;
     }
 
+    [PublicAPI]
     public void DeactivateFlight(Entity<CEZFlyerComponent?> ent, CEZPhysicsComponent? zPhys = null)
     {
         if (!Resolve(ent, ref ent.Comp, false))
@@ -146,15 +174,10 @@ public abstract class CESharedZFlightSystem : EntitySystem
         RaiseLocalEvent(ent, new CEFlightStoppedEvent());
     }
 
+    [PublicAPI]
     public void SetTargetHeight(Entity<CEZFlyerComponent> ent, int targetHeight)
     {
         ent.Comp.TargetMapHeight = targetHeight;
-        DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.TargetMapHeight));
-    }
-
-    public void AdjustTargetHeight(Entity<CEZFlyerComponent> ent, int heightDelta)
-    {
-        ent.Comp.TargetMapHeight += heightDelta;
         DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.TargetMapHeight));
     }
 }
@@ -176,15 +199,22 @@ public sealed class CEFlightStoppedEvent : EntityEventArgs;
 
 
 /// <summary>
-///
+/// Instant Action, raising the target flight level by 1
 /// </summary>
 public sealed partial class CEZFlightActionUp : InstantActionEvent
 {
 }
 
 /// <summary>
-///
+/// Instant Action, lowering the target flight level by 1
 /// </summary>
 public sealed partial class CEZFlightActionDown : InstantActionEvent
+{
+}
+
+/// <summary>
+/// Instant Action, turning flight mode on and off
+/// </summary>
+public sealed partial class CEZFlightActionToggle : InstantActionEvent
 {
 }

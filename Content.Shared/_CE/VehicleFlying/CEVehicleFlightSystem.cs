@@ -20,31 +20,6 @@ public sealed class CEVehicleFlightSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<CEVehicleFlyerComponent, CEVehicleOperatorSetEvent>(OnOperatorSet);
-        SubscribeLocalEvent<CEVehicleFlyerComponent, CEFlightStoppedEvent>(OnFlightStop);
-
-        SubscribeLocalEvent<CEVehicleThrowOperatorOnDamageComponent, DamageChangedEvent>(OnTakeDamage);
-    }
-
-    private void OnFlightStop(Entity<CEVehicleFlyerComponent> ent, ref CEFlightStoppedEvent args)
-    {
-        if (!TryComp<CEVehicleComponent>(ent, out var vehicle))
-            return;
-        _vehicle.TryRemoveOperator((ent, vehicle));
-    }
-
-    private void OnTakeDamage(Entity<CEVehicleThrowOperatorOnDamageComponent> ent, ref DamageChangedEvent args)
-    {
-        if (!args.DamageIncreased)
-            return;
-
-        if (!TryComp<CEVehicleComponent>(ent.Owner, out var vehicleComp))
-            return;
-
-        if (vehicleComp.Operator is null)
-            return;
-
-        _stun.TryKnockdown(vehicleComp.Operator.Value, ent.Comp.StunTime);
-        _vehicle.TryRemoveOperator((ent, vehicleComp));
     }
 
     private void OnOperatorSet(Entity<CEVehicleFlyerComponent> ent, ref CEVehicleOperatorSetEvent args)
@@ -62,7 +37,6 @@ public sealed class CEVehicleFlightSystem : EntitySystem
         else
         {
             GrantFlightActionsToOperator((ent, flyerComp), args.NewOperator.Value);
-            _flight.TryActivateFlight(ent.Owner);
         }
     }
 
@@ -70,10 +44,12 @@ public sealed class CEVehicleFlightSystem : EntitySystem
     {
         List<EntityUid> actionsList = new();
 
-        if (flyer.Comp.ZLevelDownActionEntity is not null)
-            actionsList.Add(flyer.Comp.ZLevelDownActionEntity.Value);
         if (flyer.Comp.ZLevelUpActionEntity is not null)
             actionsList.Add(flyer.Comp.ZLevelUpActionEntity.Value);
+        if (flyer.Comp.ZLevelDownActionEntity is not null)
+            actionsList.Add(flyer.Comp.ZLevelDownActionEntity.Value);
+        if (flyer.Comp.ZLevelToggleActionEntity is not null)
+            actionsList.Add(flyer.Comp.ZLevelToggleActionEntity.Value);
 
         _actions.GrantActions(user, actionsList, flyer.Owner);
     }
@@ -84,5 +60,7 @@ public sealed class CEVehicleFlightSystem : EntitySystem
             _actions.RemoveProvidedAction(user, flyer.Owner, flyer.Comp.ZLevelUpActionEntity.Value);
         if (flyer.Comp.ZLevelDownActionEntity is not null)
             _actions.RemoveProvidedAction(user, flyer.Owner, flyer.Comp.ZLevelDownActionEntity.Value);
+        if (flyer.Comp.ZLevelToggleActionEntity is not null)
+            _actions.RemoveProvidedAction(user, flyer.Owner, flyer.Comp.ZLevelToggleActionEntity.Value);
     }
 }
