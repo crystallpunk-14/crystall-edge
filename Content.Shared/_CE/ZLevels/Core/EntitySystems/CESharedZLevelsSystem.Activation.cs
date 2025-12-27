@@ -27,13 +27,13 @@ public abstract partial class CESharedZLevelsSystem
 
     private void OnMapInit(Entity<CEZPhysicsComponent> ent, ref MapInitEvent args)
     {
+        CheckActivation(ent);
+
         if (!TryComp<CEZLevelMapComponent>(Transform(ent).MapUid, out var zLevelMap))
             return;
 
         ent.Comp.CurrentZLevel = zLevelMap.Depth;
         DirtyField(ent, ent.Comp, nameof(CEZPhysicsComponent.CurrentZLevel));
-
-        CheckActivation(ent);
     }
 
     private void OnPhysicsBodyTypeChange(Entity<CEZPhysicsComponent> ent, ref PhysicsBodyTypeChangedEvent args)
@@ -62,11 +62,11 @@ public abstract partial class CESharedZLevelsSystem
             return;
         }
 
-        if (!_zMapQuery.HasComp(xform.MapUid))
-        {
-            SetActiveStatus(ent, false);
-            return;
-        }
+        //if (!_zMapQuery.HasComp(xform.MapUid))
+        //{
+        //    SetActiveStatus(ent, false);
+        //    return;
+        //}
 
         if (xform.Anchored)
         {
