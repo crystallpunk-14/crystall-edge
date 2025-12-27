@@ -9,7 +9,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._CE.ZLevels.Flight.Components;
 
 /// <summary>
-///
+/// A basic component that allows entities to fly between z-levels.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true), Access(typeof(CESharedZFlightSystem))]
 public sealed partial class CEZFlyerComponent : Component

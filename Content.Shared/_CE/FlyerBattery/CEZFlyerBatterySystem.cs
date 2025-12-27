@@ -51,7 +51,7 @@ public sealed class CEZFlyerBatterySystem : EntitySystem
             flyBattery.NextConsumeTime = _timing.CurTime + flyBattery.EnergyConsumeFrequency;
 
             if (!fly.Active)
-                return;
+                continue;
 
             _battery.UseCharge((uid, battery), flyBattery.EnergyDraw);
         }

@@ -51,7 +51,7 @@ public abstract class CESharedZFlightSystem : EntitySystem
     {
         if (!TryComp<CEZFlyerComponent>(ent, out var flyerComp))
             return;
-        SetTargetHeight((ent,flyerComp), ent.Comp.CurrentZLevel);
+        SetTargetHeight((ent, flyerComp), ent.Comp.CurrentZLevel);
 
         _ambient.SetAmbience(ent, true);
         _appearance.SetData(ent, CEFlightVisuals.Active, true);
