@@ -4,6 +4,7 @@ using Content.Shared._CE.ZLevels.Flight.Components;
 using Content.Shared.Actions;
 using Content.Shared.Audio;
 using Content.Shared.DoAfter;
+using Content.Shared.Mobs;
 using Content.Shared.Stunnable;
 using Content.Shared.Toggleable;
 using JetBrains.Annotations;
@@ -38,6 +39,12 @@ public abstract class CESharedZFlightSystem : EntitySystem
 
         SubscribeLocalEvent<CEZFlyerComponent, StunnedEvent>(OnStunned);
         SubscribeLocalEvent<CEZFlyerComponent, KnockedDownEvent>(OnKnockDowned);
+        SubscribeLocalEvent<CEZFlyerComponent, MobStateChangedEvent>(OnMobStateChanged);
+    }
+
+    private void OnMobStateChanged(Entity<CEZFlyerComponent> ent, ref MobStateChangedEvent args)
+    {
+        DeactivateFlight((ent, ent));
     }
 
     private void OnKnockDowned(Entity<CEZFlyerComponent> ent, ref KnockedDownEvent args)
