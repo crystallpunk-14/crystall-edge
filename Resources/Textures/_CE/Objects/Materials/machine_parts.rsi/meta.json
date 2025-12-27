@@ -15,6 +15,15 @@
       },
       {
         "name": "energy_line_3"
+      },
+      {
+        "name": "coal_diffuser"
+      },
+      {
+        "name": "coal_diffuser_2"
+      },
+      {
+        "name": "coal_diffuser_3"
       }
     ]
   }

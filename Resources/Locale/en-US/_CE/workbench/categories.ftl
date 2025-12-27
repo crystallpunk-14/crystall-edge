@@ -8,3 +8,4 @@ ce-recipe-category-armor = Armor
 ce-recipe-category-carpet = Carpets
 ce-recipe-category-wallpaper = Wallpapers
 ce-recipe-category-clothing = Clothing
+ce-recipe-category-machine-core = Machine cores

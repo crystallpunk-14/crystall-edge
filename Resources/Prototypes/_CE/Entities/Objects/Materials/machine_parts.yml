@@ -23,11 +23,55 @@
     - energy_line_2
     - energy_line_3
   - type: StackPrice
-    price: 50
+    price: 12
+  - type: PhysicalComposition
+    materialComposition:
+      CEIron: 4
+      CEBrass: 15
 
 - type: entity
   id: CEMachinePartEnergyLine5
   parent: CEMachinePartEnergyLine1
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5
+
+- type: entity
+  id: CEMachinePartCoalDiffuser1
+  parent: BaseItem
+  name: coal diffuser
+  suffix: 1
+  description: Glass-carbon energy dissipator. Used as a material for mechanical engineering.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Normal
+  - type: Sprite
+    sprite: _CE/Objects/Materials/machine_parts.rsi
+    layers:
+      - state: coal_diffuser
+        map: ["base"]
+  - type: Appearance
+  - type: Stack
+    stackType: CEMachinePartCoalDiffuser
+    count: 1
+    baseLayer: base
+    layerStates:
+    - coal_diffuser
+    - coal_diffuser_2
+    - coal_diffuser_3
+  - type: StackPrice
+    price: 5 # Coal + Work
+  - type: PhysicalComposition
+    materialComposition:
+      CEIron: 5
+      CEBrass: 20
+      CEGlass: 10
+
+- type: entity
+  id: CEMachinePartCoalDiffuser5
+  parent: CEMachinePartCoalDiffuser1
   suffix: 5
   components:
   - type: Stack
