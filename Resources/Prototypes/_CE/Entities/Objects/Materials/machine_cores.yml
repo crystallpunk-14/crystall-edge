@@ -86,6 +86,8 @@
   parent: CEBaseMachineCore
   name: trading platform machine core
   components:
+  - type: Sprite
+    state: dimensional
   - type: MachineBoard
     prototype: CETradingPlatform
     stackRequirements:
@@ -98,6 +100,8 @@
   parent: CEBaseMachineCore
   name: selling platform machine core
   components:
+  - type: Sprite
+    state: dimensional
   - type: MachineBoard
     prototype: CETradingSellingPlatform
     stackRequirements:
@@ -110,6 +114,8 @@
   parent: CEBaseMachineCore
   name: salary platform machine core
   components:
+  - type: Sprite
+    state: dimensional
   - type: MachineBoard
     prototype: CESalaryPlatform
     stackRequirements:

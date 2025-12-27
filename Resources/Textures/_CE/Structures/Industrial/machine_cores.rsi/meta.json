@@ -12,6 +12,9 @@
         },
         {
             "name": "melting_furnace"
+        },
+        {
+            "name": "dimensional"
         }
     ]
 }
