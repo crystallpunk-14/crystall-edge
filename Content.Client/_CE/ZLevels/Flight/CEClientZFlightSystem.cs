@@ -12,12 +12,13 @@ public sealed class CEClientZFlightSystem : CESharedZFlightSystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
+
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
 
-        var query = EntityQueryEnumerator<CEZFlyerComponent, CEZPhysicsComponent, TransformComponent>();
-        while (query.MoveNext(out var uid, out var flyer, out var zPhys, out var xform))
+        var query = EntityQueryEnumerator<CEZFlyerComponent, CEZPhysicsComponent, TransformComponent, SpriteComponent>();
+        while (query.MoveNext(out var uid, out var flyer, out var zPhys, out var xform, out var sprite))
         {
             if (!flyer.Active)
                 continue;
@@ -27,7 +28,7 @@ public sealed class CEClientZFlightSystem : CESharedZFlightSystem
 
             var vfx = SpawnAtPosition(flyer.FlightVfx, xform.Coordinates);
 
-            _sprite.SetOffset(vfx, new Vector2(0, zPhys.LocalPosition * CEClientZLevelsSystem.ZLevelOffset) + zPhys.SpriteOffsetDefault);
+            _sprite.SetOffset((vfx, sprite), new Vector2(0, zPhys.LocalPosition * CEClientZLevelsSystem.ZLevelOffset) + zPhys.SpriteOffsetDefault);
         }
     }
 }

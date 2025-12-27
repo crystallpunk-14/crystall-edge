@@ -64,7 +64,7 @@ public abstract partial class CESharedZLevelsSystem
         _stun.TryKnockdown(ent.Owner, TimeSpan.FromSeconds(knockdownTime));
 
         var damageType = _proto.Index<DamageTypePrototype>("Blunt");
-        var damageAmount = MathF.Pow(args.ImpactPower, 2);
+        var damageAmount = args.ImpactPower * 2f;
 
         _damage.TryChangeDamage(ent.Owner, new DamageSpecifier(damageType, damageAmount));
     }
@@ -85,7 +85,7 @@ public abstract partial class CESharedZLevelsSystem
             _stun.TryKnockdown(victim, TimeSpan.FromSeconds(knockdownTime));
 
             var damageType = _proto.Index<DamageTypePrototype>("Blunt");
-            var damageAmount = args.ImpactPower * ent.Comp.Mass * 0.25f;
+            var damageAmount = args.ImpactPower * ent.Comp.Mass * 0.15f;
 
             _damage.TryChangeDamage(victim, new DamageSpecifier(damageType, damageAmount));
         }
