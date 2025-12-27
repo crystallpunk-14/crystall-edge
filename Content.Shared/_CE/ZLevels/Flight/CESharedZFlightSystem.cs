@@ -4,6 +4,7 @@ using Content.Shared._CE.ZLevels.Flight.Components;
 using Content.Shared.Actions;
 using Content.Shared.Audio;
 using JetBrains.Annotations;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._CE.ZLevels.Flight;
 
@@ -11,6 +12,7 @@ public abstract class CESharedZFlightSystem : EntitySystem
 {
     [Dependency] private readonly CESharedZLevelsSystem _zLevel = default!;
     [Dependency] private readonly SharedAmbientSoundSystem _ambient = default!;
+    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
 
     protected EntityQuery<CEZPhysicsComponent> ZPhyzQuery;
 
@@ -36,11 +38,13 @@ public abstract class CESharedZFlightSystem : EntitySystem
         SetTargetHeight((ent,flyerComp), ent.Comp.CurrentZLevel);
 
         _ambient.SetAmbience(ent, true);
+        _appearance.SetData(ent, CEFlightVisuals.Active, true);
     }
 
     private void OnStopFlight(Entity<CEZPhysicsComponent> ent, ref CEFlightStoppedEvent args)
     {
         _ambient.SetAmbience(ent, false);
+        _appearance.SetData(ent, CEFlightVisuals.Active, false);
     }
 
     private void OnGetZVelocity(Entity<CEZFlyerComponent> ent, ref CEGetZVelocityEvent args)
@@ -217,4 +221,11 @@ public sealed partial class CEZFlightActionDown : InstantActionEvent
 /// </summary>
 public sealed partial class CEZFlightActionToggle : InstantActionEvent
 {
+}
+
+
+[Serializable, NetSerializable]
+public enum CEFlightVisuals
+{
+    Active,
 }
