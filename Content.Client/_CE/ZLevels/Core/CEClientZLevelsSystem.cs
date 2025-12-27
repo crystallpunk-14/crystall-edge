@@ -35,7 +35,7 @@ public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
     private void OnEyeOffset(Entity<CEZPhysicsComponent> ent, ref GetEyeOffsetEvent args)
     {
         Angle rotation = _eye.CurrentEye.Rotation * -1;
-        var localPosition = GetVisualsLocalPosition(ent, Transform(ent));
+        var localPosition = GetVisualsLocalPosition((ent, ent), Transform(ent));
         var offset = rotation.RotateVec(new Vector2(0, localPosition * ZLevelOffset));
         args.Offset += offset;
     }
@@ -69,8 +69,13 @@ public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
         }
     }
 
-    public float GetVisualsLocalPosition(Entity<CEZPhysicsComponent> ent, TransformComponent xform)
+    public float GetVisualsLocalPosition(Entity<CEZPhysicsComponent?> ent, TransformComponent? xform = null)
     {
+        if (!Resolve(ent, ref ent.Comp, false))
+            return 0;
+        if (!Resolve(ent, ref xform, false))
+            return 0;
+
         var pos = ent.Comp.LocalPosition;
 
         if (xform.ParentUid != xform.MapUid && ZPhyzQuery.TryComp(xform.ParentUid, out var parentZPhys))
