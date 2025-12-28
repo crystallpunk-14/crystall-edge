@@ -53,3 +53,10 @@
   service: !type:CEBuyItemsService
     product: CENail10
     count: 1
+
+- type: tradingPosition
+  id: CEGlassSheet10
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEGlassSheet10
+    count: 1
