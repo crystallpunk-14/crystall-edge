@@ -117,7 +117,8 @@
   description: A place for creating various engineering machine parts.
   components:
   - type: Sprite
-    state: workbench
+    state: filler
+    color: "#e2871f"
   - type: Icon
     state: workbench
   #- type: Construction

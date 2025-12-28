@@ -116,12 +116,20 @@
   components:
   - type: Sprite
     sprite: _CE/Objects/Materials/brass_pipes.rsi
-    state: valve
+    layers:
+    - state: valve
+      map: ["base"]
+  - type: Appearance
   - type: Item
     size: Normal
   - type: Stack
     stackType: CEPipeValve
     count: 1
+    baseLayer: base
+    layerStates:
+    - valve
+    - valve_2
+    - valve_3
   - type: PhysicalComposition
     materialComposition:
       CEIron: 2
