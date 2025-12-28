@@ -7,6 +7,8 @@
   categories: [ ForkFiltered ]
   components:
   - type: MachineBoard
+    stackRequirements:
+      CEBrassSheet: 1
   - type: Sprite
     noRot: true
     drawdepth: Mobs
@@ -25,9 +27,6 @@
     state: melting_furnace
   - type: MachineBoard
     prototype: CEMeltingFurnace
-    stackRequirements:
-      CEMachinePartEnergyLine: 1
-      CEBrassSheet: 2
   - type: StaticPrice
     price: 130
 
@@ -38,9 +37,6 @@
   components:
   - type: MachineBoard
     prototype: CERecycler
-    stackRequirements:
-      CEMachinePartEnergyLine: 1
-      CEBrassSheet: 2
   - type: StaticPrice
     price: 100
 
@@ -51,9 +47,6 @@
   components:
   - type: MachineBoard
     prototype: CEDrill
-    stackRequirements:
-      CEMachinePartEnergyLine: 1
-      CEBrassSheet: 2
   - type: StaticPrice
     price: 100
 
@@ -64,8 +57,6 @@
   components:
   - type: MachineBoard
     prototype: CECharger
-    stackRequirements:
-      CEMachinePartEnergyLine: 4
   - type: StaticPrice
     price: 150
 
@@ -76,8 +67,6 @@
   components:
   - type: MachineBoard
     prototype: CEFunnel
-    stackRequirements:
-      CEBrassSheet: 1
   - type: StaticPrice
     price: 40
 
@@ -90,8 +79,6 @@
     state: dimensional
   - type: MachineBoard
     prototype: CETradingPlatform
-    stackRequirements:
-      CEBrassSheet: 1
   - type: StaticPrice
     price: 140
 
@@ -104,8 +91,6 @@
     state: dimensional
   - type: MachineBoard
     prototype: CETradingSellingPlatform
-    stackRequirements:
-      CEBrassSheet: 1
   - type: StaticPrice
     price: 180
 
@@ -118,8 +103,6 @@
     state: dimensional
   - type: MachineBoard
     prototype: CESalaryPlatform
-    stackRequirements:
-      CEBrassSheet: 1
 
 - type: entity
   id: CEMachineCoreHeater
@@ -128,9 +111,6 @@
   components:
   - type: MachineBoard
     prototype: CEHeater
-    stackRequirements:
-      CEMachinePartEnergyLine: 1
-      CEBrassSheet: 1
 
 - type: entity
   id: CEMachineCoreDistributionUnit
@@ -139,9 +119,6 @@
   components:
   - type: MachineBoard
     prototype: CEDistributionUnitBasic
-    stackRequirements:
-      CEMachinePartEnergyLine: 2
-      CEBrassSheet: 3
 
 - type: entity
   id: CEMachineCoreManaCollector
@@ -150,9 +127,6 @@
   components:
   - type: MachineBoard
     prototype: CEManaCollectorEmpty
-    stackRequirements:
-      CEMachinePartEnergyLine: 2
-      CEBrassSheet: 2
 
 - type: entity
   id: CEMachineCoreTerminal
@@ -161,5 +135,3 @@
   components:
   - type: MachineBoard
     prototype: CEPipeTerminal
-    stackRequirements:
-      CEBrassSheet: 1

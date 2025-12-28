@@ -286,6 +286,5 @@
   - type: Construction
     graph: CEPipeBrassMedium
     node: CEPipeBrassMediumBroken
-    defaultTarget: CEPipeBrassMedium
   - type: CEPipeVisualizer
     statePrefix: broken_pipe_
