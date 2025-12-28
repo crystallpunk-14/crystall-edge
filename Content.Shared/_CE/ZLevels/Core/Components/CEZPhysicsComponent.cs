@@ -39,7 +39,7 @@ public sealed partial class CEZPhysicsComponent : Component
     public int CurrentZLevel;
 
     /// <summary>
-    /// Cached value of the current distance to the ground in the current z-level. Updates only on MoveEnet and when tiles below change.
+    /// Cached value of the current distance to the ground in the current z-level. Updates only on MoveEvent and when tiles below change.
     /// </summary>
     [DataField]
     public float CurrentGroundHeight;
