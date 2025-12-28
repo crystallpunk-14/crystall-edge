@@ -5,24 +5,10 @@
     - node: start
       actions:
         - !type:DestroyEntity {}
-      edges:
-        - to: CEPipeBrassMedium
-          steps:
-            - material: CEBrassBar
-              amount: 1
-              doAfter: 1
 
     - node: CEPipeBrassMedium
       entity: CEPipeBrassMedium
       edges:
-        - to: start
-          steps:
-            - tool: Prying
-              doAfter: 1
-          completed:
-            - !type:SpawnPrototype
-              prototype: CEBrassBar1
-              amount: 1
         - to: CEPipeBrassMediumVerticalDown
           steps:
             - tool: Anchoring
@@ -36,14 +22,6 @@
     - node: CEPipeBrassMediumVerticalDown
       entity: CEPipeBrassMediumVerticalDown
       edges:
-        - to: start
-          steps:
-            - tool: Prying
-              doAfter: 1
-          completed:
-            - !type:SpawnPrototype
-              prototype: CEBrassBar1
-              amount: 1
         - to: CEPipeBrassMediumVerticalUp
           steps:
             - tool: Anchoring
@@ -52,14 +30,6 @@
     - node: CEPipeBrassMediumVerticalUp
       entity: CEPipeBrassMediumVerticalUp
       edges:
-        - to: start
-          steps:
-            - tool: Prying
-              doAfter: 1
-          completed:
-            - !type:SpawnPrototype
-              prototype: CEBrassBar1
-              amount: 1
         - to: CEPipeBrassMedium
           steps:
             - tool: Anchoring

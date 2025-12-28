@@ -1,0 +1,109 @@
+- type: entity
+  id: CEBrassPipeStackBase
+  abstract: true
+  parent: BaseItem
+  name: metal pipes
+  categories: [ ForkFiltered ]
+  suffix: Full
+  components:
+  - type: Item
+    size: Small
+  - type: CablePlacer
+  - type: Stack
+  - type: Clickable
+  - type: Appearance
+
+- type: entity
+  id: CEMediumBrassPipe1
+  parent: CEBrassPipeStackBase
+  name: medium brass pipe
+  suffix: 1
+  description: TODO
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Materials/brass_pipes.rsi
+    layers:
+    - state: smol_pipe
+      map: ["base"]
+  - type: Item
+    sprite: _CE/Objects/Materials/brass_pipes.rsi
+    size: Small
+    storedRotation: 90
+  - type: Stack
+    count: 1
+    stackType: CEMediumBrassPipe
+    baseLayer: base
+    layerStates:
+    - smol_pipe
+    - smol_pipe_2
+    - smol_pipe_3
+  #- type: StackPrice
+  #  price: 2.25
+  - type: PhysicalComposition
+    materialComposition:
+      CEBrass: 2
+  - type: CablePlacer
+    cablePrototypeID: CEPipeBrassMedium
+    blockingWireType: Apc
+
+- type: entity
+  parent: CEMediumBrassPipe1
+  id: CEMediumBrassPipe15
+  suffix: 15
+  components:
+  - type: Stack
+    count: 15
+
+- type: entity
+  parent: CEMediumBrassPipe1
+  id: CEMediumBrassPipe30
+  suffix: 30
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  id: CEBigBrassPipe1
+  parent: CEBrassPipeStackBase
+  name: big brass pipe
+  suffix: 1
+  description: TODO
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Materials/brass_pipes.rsi
+    layers:
+    - state: pipe
+      map: ["base"]
+  - type: Item
+    sprite: _CE/Objects/Materials/brass_pipes.rsi
+    size: Normal
+  - type: Stack
+    count: 1
+    stackType: CEBigBrassPipe
+    baseLayer: base
+    layerStates:
+    - pipe
+    - pipe_2
+    - pipe_3
+  - type: PhysicalComposition
+    materialComposition:
+      CEBrass: 4
+  - type: CablePlacer
+    cablePrototypeID: CEPipeBrassBig
+    blockingWireType: HighVoltage
+
+- type: entity
+  parent: CEBigBrassPipe1
+  id: CEBigBrassPipe15
+  suffix: 15
+  components:
+  - type: Stack
+    count: 15
+
+- type: entity
+  parent: CEBigBrassPipe1
+  id: CEBigBrassPipe30
+  suffix: 30
+  components:
+  - type: Stack
+    count: 30

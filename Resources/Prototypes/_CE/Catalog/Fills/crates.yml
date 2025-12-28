@@ -73,6 +73,7 @@
         - id: CEMachinePartDimensionalMatrix1
         - id: CEMachinePartCoalDiffuser1
       - !type:GroupSelector
+        children:
         - id: CEStoneBlock10
         - id: CEDirtBlock10
         - id: CENail10

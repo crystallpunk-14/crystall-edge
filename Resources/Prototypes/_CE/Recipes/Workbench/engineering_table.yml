@@ -57,6 +57,30 @@
 # Tools
 
 - type: CERecipe
+  id: CEMediumBrassPipe15
+  tag: CERecipeEngineeringTable
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 6
+  result: CEMediumBrassPipe1
+  resultCount: 15
+
+- type: CERecipe
+  id: CEBigBrassPipe15
+  tag: CERecipeEngineeringTable
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 12
+  result: CEBigBrassPipe1
+  resultCount: 15
+
+- type: CERecipe
   id: CEWrench
   tag: CERecipeEngineeringTable
   category: Tools
