@@ -162,9 +162,6 @@
   craftTime: 1.0
   requirements:
   - !type:StackResource
-    stack: CEIronRod
-    count: 5
-  - !type:StackResource
     stack: CEIronSheet
     count: 2
   - !type:StackResource
