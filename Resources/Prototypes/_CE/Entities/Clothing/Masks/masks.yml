@@ -15,19 +15,6 @@
 
 - type: entity
   parent: CEClothingMaskBase
-  id: CEClothingMaskSinner
-  name: sinner's mask
-  description: A mask intended to be worn by not the brightest individuals. Executioners put them on themselves and the victim before execution.
-  components:
-  - type: Sprite
-    sprite: _CE/Clothing/Masks/sinner.rsi
-  - type: Clothing
-    sprite: _CE/Clothing/Masks/sinner.rsi
-  - type: IdentityBlocker
-  - type: IngestionBlocker
-
-- type: entity
-  parent: CEClothingMaskBase
   id: CEClothingMaskSteelMask
   name: steel mask
   description: A steel mask that protects the face from the external effects of iron.

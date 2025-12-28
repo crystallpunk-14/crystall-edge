@@ -341,22 +341,10 @@
   name: ce-loadout-masks
   minLimit: 0
   loadouts:
-  - CEClothingMaskSinner
-  - CEClothingMaskSteelMask
   - CEClothingMaskMime
   - CEClothingMaskNeckerchief
   - CEClothingMaskRedNeckerchief
   - CEClothingMaskGreenNeckerchief
-
-- type: loadout
-  id: CEClothingMaskSinner
-  equipment:
-    mask: CEClothingMaskSinner
-
-- type: loadout
-  id: CEClothingMaskSteelMask
-  equipment:
-    mask: CEClothingMaskSteelMask
 
 - type: loadout
   id: CEClothingMaskNeckerchief
@@ -385,14 +373,8 @@
   name: ce-loadout-gloves
   minLimit: 0
   loadouts:
-  - CEClothingGlovesGirdles
   - CEClothingGlovesJagermeister
   - CEClothingGlovesBlacksmith
-
-- type: loadout
-  id: CEClothingGlovesGirdles
-  equipment:
-    gloves: CEClothingGlovesGirdles
 
 - type: loadout
   id: CEClothingGlovesJagermeister
@@ -412,16 +394,9 @@
   minLimit: 1
   loadouts:
   - CEClothingPantsBrown
-  - CEClothingPantsBlue
   - CEClothingPantsGreen
   - CEClothingPantsHakama
   - CEClothingPantsLoincloth
-  - CEClothingPantsWhite
-
-- type: loadout
-  id: CEClothingPantsBlue
-  equipment:
-    pants: CEClothingPantsBlue
 
 - type: loadout
   id: CEClothingPantsBrown
@@ -442,11 +417,6 @@
   id: CEClothingPantsLoincloth
   equipment:
     pants: CEClothingPantsLoincloth
-
-- type: loadout
-  id: CEClothingPantsWhite
-  equipment:
-    pants: CEClothingPantsWhite
 
 # Shoes
 
