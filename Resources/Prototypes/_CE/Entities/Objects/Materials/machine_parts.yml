@@ -23,7 +23,7 @@
     - energy_line_2
     - energy_line_3
   - type: StackPrice
-    price: 12
+    price: 20
   - type: PhysicalComposition
     materialComposition:
       CEIron: 4

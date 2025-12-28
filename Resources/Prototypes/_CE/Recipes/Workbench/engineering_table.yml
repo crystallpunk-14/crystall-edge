@@ -148,7 +148,7 @@
     count: 5
   - !type:StackResource
     stack: CEIronSheet
-    count: 1
+    count: 2
   - !type:StackResource
     stack: CEWood
     count: 2
@@ -166,7 +166,7 @@
     count: 5
   - !type:StackResource
     stack: CEIronSheet
-    count: 1
+    count: 2
   - !type:StackResource
     stack: CEWood
     count: 2
