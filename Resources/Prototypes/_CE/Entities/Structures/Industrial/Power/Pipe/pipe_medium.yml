@@ -15,6 +15,10 @@
     statePrefix: pipe_
   - type: Physics
     canCollide: false
+  - type: Cable
+    cuttingQuality: Prying
+    cableDroppedOnCutPrototype: CEMediumBrassPipe1
+    cableType: Apc
 
 - type: entity
   id: CEPipeBrassMedium
@@ -282,6 +286,5 @@
   - type: Construction
     graph: CEPipeBrassMedium
     node: CEPipeBrassMediumBroken
-    defaultTarget: CEPipeBrassMedium
   - type: CEPipeVisualizer
     statePrefix: broken_pipe_

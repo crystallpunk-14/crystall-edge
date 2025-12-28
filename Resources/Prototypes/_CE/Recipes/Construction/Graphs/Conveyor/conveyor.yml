@@ -8,10 +8,10 @@
       edges:
         - to: CEConveyorBelt
           steps:
-            - material: CEIron
+            - material: CEIronBar
               amount: 1
               doAfter: 1
-            - material: CEBrass
+            - material: CEBrassBar
               amount: 1
               doAfter: 1
 

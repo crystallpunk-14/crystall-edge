@@ -1,7 +1,8 @@
 - type: entity
   parent:
-  - BaseMachine
+  - CEConstructibleMachine
   - CEBaseMachinePowered
+  - BaseMachine
   id: CEBaseAutoCrafter
   categories: [ ForkFiltered ]
   abstract: true
@@ -37,35 +38,8 @@
     containers:
       storagebase: !type:Container
         ents: [ ]
-  - type: Damageable
-    damageContainer: Inorganic
-    damageModifierSet: CEWood
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTypeTrigger
-        damageType: Heat
-        damage: 40
-      behaviors:
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
-      - !type:PlaySoundBehavior
-        sound:
-          collection: WoodDestroy
-    - trigger:
-        !type:DamageTrigger
-        damage: 60
-      behaviors:
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
-      - !type:PlaySoundBehavior
-        sound:
-          collection: WoodDestroy
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          CEWoodenPlanks1:
-            min: 1
-            max: 2
+      machine_board: !type:Container
+      machine_parts: !type:Container
   - type: Fixtures
     fixtures:
       fix1:
@@ -84,9 +58,11 @@
 - type: entity
   parent:
   - CEBaseAutoCrafter
-  id: CEWorkbenchAutoMeltingFurnace
+  id: CEMeltingFurnace
   name: melting furnace
   components:
+  - type: Machine
+    board: CEMachineCoreMeltingFurnace
   - type: Sprite
     snapCardinals: true
     drawdepth: Mobs

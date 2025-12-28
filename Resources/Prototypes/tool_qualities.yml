@@ -3,7 +3,7 @@
   name: tool-quality-anchoring-name
   toolName: tool-quality-anchoring-tool-name
   spawn: Wrench
-  icon: { sprite: Objects/Tools/wrench.rsi, state: icon }
+  icon: { sprite: _CE/Objects/Tools/wrench.rsi, state: icon }
 
 - type: tool
   id: Prying
@@ -17,7 +17,7 @@
   name: tool-quality-screwing-name
   toolName: tool-quality-screwing-tool-name
   spawn: Screwdriver
-  icon: { sprite: Objects/Tools/screwdriver.rsi, state: screwdriver-map }
+  icon: { sprite: _CE/Objects/Tools/screwdriver.rsi, state: icon }
 
 - type: tool
   id: Cutting
@@ -45,7 +45,7 @@
   name: tool-quality-slicing-name
   toolName: tool-quality-slicing-tool-name
   spawn: KitchenKnife
-  icon: { sprite: Objects/Weapons/Melee/kitchen_knife.rsi, state: icon }
+  icon: { sprite: _CE/Objects/Tools/Weapons/Melee/Dagger/iron.rsi, state: icon }
 
 - type: tool
   id: Sawing

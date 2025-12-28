@@ -8,3 +8,4 @@ ce-recipe-category-armor = Броня
 ce-recipe-category-carpet = Ковры
 ce-recipe-category-wallpaper = Обои
 ce-recipe-category-clothing = Одежда
+ce-recipe-category-machine-core = Машинные ядра

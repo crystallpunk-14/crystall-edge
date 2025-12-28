@@ -1,12 +1,15 @@
 - type: entity
   parent:
-  - BaseMachine
+  - CEConstructibleMachine
   - CEBaseMachinePowered
+  - BaseMachine
   id: CETradingPlatform
   name: buying platform
   description: Allows you to trade with the outside world, through retail trade transactions.
   categories: [ ForkFiltered ]
   components:
+  - type: Machine
+    board: CEMachineCoreTradingPlatform
   - type: PlacementReplacement
     key: walls
   - type: Sprite
@@ -55,13 +58,16 @@
 
 - type: entity
   parent:
-  - BaseMachine
+  - CEConstructibleMachine
   - CEBaseMachinePowered
+  - BaseMachine
   id: CETradingSellingPlatform
   name: selling platform
   description: Allows you to sell any items and structures to the outside world. Fill the platform completely with mana to sell whatever you place on it.
   categories: [ ForkFiltered ]
   components:
+  - type: Machine
+    board: CEMachineCoreSellingPlatform
   - type: PlacementReplacement
     key: walls
   - type: Sprite
@@ -111,13 +117,16 @@
 
 - type: entity
   parent:
-  - BaseMachine
+  - CEConstructibleMachine
   - CEBaseMachinePowered
+  - BaseMachine
   id: CESalaryPlatform
   name: salary platform
   description: Allows you to quickly receive the salary you are entitled to (if, of course, you are supposed to receive a salary from the empire)
   categories: [ ForkFiltered ]
   components:
+  - type: Machine
+    board: CEMachineCoreSalaryPlatform
   - type: PlacementReplacement
     key: walls
   - type: Sprite
@@ -154,7 +163,9 @@
 
 - type: entity
   id: CECashImpact
-  categories: [ HideSpawnMenu ]
+  categories: [ ForkFiltered ]
+  name: cash impact
+  suffix: VFX
   save: false
   components:
   - type: Sprite
@@ -163,7 +174,7 @@
     layers:
     - state: impact
       shader: unshaded
-      color: "#42c9ff"
+      color: "#69279f"
     drawdepth: Effects
   - type: TimedDespawn
     lifetime: 2
@@ -171,7 +182,7 @@
     tags:
       - HideContextMenu
   - type: PointLight
-    color: "#42c9ff"
+    color: "#69279f"
     enabled: true
     radius: 8
     energy: 8

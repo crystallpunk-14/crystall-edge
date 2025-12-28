@@ -31,6 +31,8 @@ CEPipeBrassBigDelayer: CEPipeBrassBig
 CEClothingPantsBlue: CEClothingPantsBrown
 CEClothingPantsWhite: CEClothingPantsBrown
 
+CEWorkbenchAutoMeltingFurnace: CEMeltingFurnace
+
 # CrystallEdge migration zone end
 
 

@@ -15,6 +15,10 @@
     key: pipe_big
   - type: CEPipeVisualizer
     statePrefix: pipe_
+  - type: Cable
+    cuttingQuality: Prying
+    cableDroppedOnCutPrototype: CEBigBrassPipe1
+    cableType: HighVoltage
 
 - type: entity
   id: CEPipeBrassBig
@@ -294,6 +298,5 @@
   - type: Construction
     graph: CEPipeBrassBig
     node: CEPipeBrassBigBroken
-    defaultTarget: CEPipeBrassBig
   - type: CEPipeVisualizer
     statePrefix: broken_pipe_

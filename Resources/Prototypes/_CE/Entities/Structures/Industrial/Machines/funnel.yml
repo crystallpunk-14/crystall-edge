@@ -1,6 +1,7 @@
 - type: entity
   id: CEFunnel
   parent:
+  - CEConstructibleMachine
   - BaseMachine
   name: funnel
   description: A device for placing items inside storage facilities or removing items from them. To extract items, attach a conveyor belt.
@@ -8,6 +9,8 @@
   placement:
     mode: SnapgridCenter
   components:
+  - type: Machine
+    board: CEMachineCoreFunnel
   - type: Fixtures
     fixtures:
       collect:

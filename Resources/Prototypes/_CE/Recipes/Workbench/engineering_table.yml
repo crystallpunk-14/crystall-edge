@@ -1,0 +1,327 @@
+# Materials
+
+- type: CERecipe
+  id: CEMachinePartCoalDiffuser
+  tag: CERecipeEngineeringTable
+  category: Materials
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassBar
+    count: 2
+  - !type:StackResource
+    stack: CEIronRod
+    count: 5
+  - !type:StackResource
+    stack: CECoal
+    count: 3
+  - !type:StackResource
+    stack: CEGlass
+    count: 2
+  result: CEMachinePartCoalDiffuser1
+  resultCount: 1
+
+- type: CERecipe
+  id: CEMachinePartEnergyLine1
+  tag: CERecipeEngineeringTable
+  category: Materials
+  craftTime: 2.0
+  requirements:
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 2
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 3
+  - !type:StackResource
+    stack: CEIronRod
+    count: 2
+  result: CEMachinePartEnergyLine1
+  resultCount: 1
+
+- type: CERecipe
+  id: CEEnergyCrystalCell
+  tag: CERecipeEngineeringTable
+  category: Materials
+  craftTime: 1.0
+  requirements:
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalShard
+    count: 1
+  - !type:StackResource
+    stack: CEBrassBar
+    count: 1
+  result: CEEnergyCrystalCell
+  resultCount: 1
+
+# Tools
+
+- type: CERecipe
+  id: CEMediumBrassPipe15
+  tag: CERecipeEngineeringTable
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 6
+  result: CEMediumBrassPipe1
+  resultCount: 15
+
+- type: CERecipe
+  id: CEBigBrassPipe15
+  tag: CERecipeEngineeringTable
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 12
+  result: CEBigBrassPipe1
+  resultCount: 15
+
+- type: CERecipe
+  id: CEPipeValve10
+  tag: CERecipeEngineeringTable
+  category: Tools
+  craftTime: 1.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronBar
+    count: 2
+  result: CEPipeValve1
+  resultCount: 10
+
+- type: CERecipe
+  id: CEWrench
+  tag: CERecipeEngineeringTable
+  category: Tools
+  craftTime: 1.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronRod
+    count: 1
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 1
+  result: CEWrench
+  resultCount: 1
+
+- type: CERecipe
+  id: CECrowbar
+  tag: CERecipeEngineeringTable
+  category: Tools
+  craftTime: 1.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronRod
+    count: 1
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 1
+  result: CECrowbar
+  resultCount: 1
+
+- type: CERecipe
+  id: CEScrewdriver
+  tag: CERecipeEngineeringTable
+  category: Tools
+  craftTime: 1.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronRod
+    count: 1
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 1
+  result: CEScrewdriver
+  resultCount: 1
+
+- type: CERecipe
+  id: CEWeaponPickaxeIron
+  tag: CERecipeEngineeringTable
+  category: Tools
+  craftTime: 1.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronRod
+    count: 5
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 2
+  - !type:StackResource
+    stack: CEWood
+    count: 2
+  result: CEWeaponPickaxeIron
+  resultCount: 1
+
+- type: CERecipe
+  id: CEWeaponShovelIron
+  tag: CERecipeEngineeringTable
+  category: Tools
+  craftTime: 1.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 2
+  - !type:StackResource
+    stack: CEWood
+    count: 2
+  result: CEWeaponShovelIron
+  resultCount: 1
+
+- type: CERecipe
+  id: CELantern
+  tag: CERecipeEngineeringTable
+  category: Tools
+  craftTime: 1.0
+  requirements:
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 1
+  - !type:StackResource
+    stack: CEIronBar
+    count: 1
+  - !type:StackResource
+    stack: CEBrassRod
+    count: 3
+  result: CELantern
+  resultCount: 1
+
+- type: CERecipe
+  id: CEManaTransferGlove
+  tag: CERecipeEngineeringTable
+  category: Tools
+  craftTime: 1.0
+  requirements:
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 1
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 3
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 2
+  result: CEManaTransferGlove
+  resultCount: 1
+
+# Machine cores
+
+- type: CERecipe
+  id: CEMachineCoreMeltingFurnace
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartCoalDiffuser
+    count: 2
+  - !type:StackResource
+    stack: CEIronBar
+    count: 1
+  result: CEMachineCoreMeltingFurnace
+  resultCount: 1
+
+- type: CERecipe
+  id: CEMachineCoreRecycler
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 1
+  - !type:StackResource
+    stack: CEIronRod
+    count: 18
+  result: CEMachineCoreRecycler
+  resultCount: 1
+
+- type: CERecipe
+  id: CEMachineCoreDrill
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 1
+  - !type:StackResource
+    stack: CEIronRod
+    count: 18
+  result: CEMachineCoreDrill
+  resultCount: 1
+
+- type: CERecipe
+  id: CEMachineCoreCharger
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 3
+  result: CEMachineCoreCharger
+  resultCount: 1
+
+- type: CERecipe
+  id: CEMachineCoreFunnel
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  result: CEMachineCoreFunnel
+  resultCount: 1
+
+- type: CERecipe
+  id: CEMachineCoreTradingPlatform
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartDimensionalMatrix
+    count: 1
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 5
+  result: CEMachineCoreTradingPlatform
+  resultCount: 1
+
+- type: CERecipe
+  id: CEMachineCoreSellingPlatform
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartDimensionalMatrix
+    count: 1
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 2
+  result: CEMachineCoreSellingPlatform
+  resultCount: 1
+

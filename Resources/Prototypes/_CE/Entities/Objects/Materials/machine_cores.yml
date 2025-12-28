@@ -1,0 +1,137 @@
+- type: entity
+  id: CEBaseMachineCore
+  parent: BaseItem
+  name: machine core
+  description: A modular control core containing the circuitry and logic needed to assemble and operate advanced machines.
+  abstract: true
+  categories: [ ForkFiltered ]
+  components:
+  - type: MachineBoard
+    stackRequirements:
+      CEBrassSheet: 1
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _CE/Structures/Industrial/machine_cores.rsi
+    state: generic
+  - type: Item
+    size: Normal
+  - type: Circuitboard
+
+- type: entity
+  id: CEMachineCoreMeltingFurnace
+  parent: CEBaseMachineCore
+  name: melting furnace machine core
+  components:
+  - type: Sprite
+    state: melting_furnace
+  - type: MachineBoard
+    prototype: CEMeltingFurnace
+  - type: StaticPrice
+    price: 130
+
+- type: entity
+  id: CEMachineCoreRecycler
+  parent: CEBaseMachineCore
+  name: recycler machine core
+  components:
+  - type: MachineBoard
+    prototype: CERecycler
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  id: CEMachineCoreDrill
+  parent: CEBaseMachineCore
+  name: drill machine core
+  components:
+  - type: MachineBoard
+    prototype: CEDrill
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  id: CEMachineCoreCharger
+  parent: CEBaseMachineCore
+  name: charger machine core
+  components:
+  - type: MachineBoard
+    prototype: CECharger
+  - type: StaticPrice
+    price: 150
+
+- type: entity
+  id: CEMachineCoreFunnel
+  parent: CEBaseMachineCore
+  name: funnel machine core
+  components:
+  - type: MachineBoard
+    prototype: CEFunnel
+  - type: StaticPrice
+    price: 40
+
+- type: entity
+  id: CEMachineCoreTradingPlatform
+  parent: CEBaseMachineCore
+  name: trading platform machine core
+  components:
+  - type: Sprite
+    state: dimensional
+  - type: MachineBoard
+    prototype: CETradingPlatform
+  - type: StaticPrice
+    price: 140
+
+- type: entity
+  id: CEMachineCoreSellingPlatform
+  parent: CEBaseMachineCore
+  name: selling platform machine core
+  components:
+  - type: Sprite
+    state: dimensional
+  - type: MachineBoard
+    prototype: CETradingSellingPlatform
+  - type: StaticPrice
+    price: 180
+
+- type: entity
+  id: CEMachineCoreSalaryPlatform
+  parent: CEBaseMachineCore
+  name: salary platform machine core
+  components:
+  - type: Sprite
+    state: dimensional
+  - type: MachineBoard
+    prototype: CESalaryPlatform
+
+- type: entity
+  id: CEMachineCoreHeater
+  parent: CEBaseMachineCore
+  name: heater machine core
+  components:
+  - type: MachineBoard
+    prototype: CEHeater
+
+- type: entity
+  id: CEMachineCoreDistributionUnit
+  parent: CEBaseMachineCore
+  name: distribution unit machine core
+  components:
+  - type: MachineBoard
+    prototype: CEDistributionUnitBasic
+
+- type: entity
+  id: CEMachineCoreManaCollector
+  parent: CEBaseMachineCore
+  name: mana collector machine core
+  components:
+  - type: MachineBoard
+    prototype: CEManaCollectorEmpty
+
+- type: entity
+  id: CEMachineCoreTerminal
+  parent: CEBaseMachineCore
+  name: terminal machine core
+  components:
+  - type: MachineBoard
+    prototype: CEPipeTerminal

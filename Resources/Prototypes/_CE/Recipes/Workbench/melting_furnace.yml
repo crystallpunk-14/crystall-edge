@@ -1,8 +1,10 @@
+# Ingot
+
 - type: CERecipe
   id: CEIronBar1
   tag: CERecipeMeltingFurnace
   category: Materials
-  craftTime: 2
+  craftTime: 2.5
   requirements:
   - !type:MaterialResource
     material: CEIron
@@ -17,7 +19,7 @@
   id: CEBrassBar1
   tag: CERecipeMeltingFurnace
   category: Materials
-  craftTime: 2
+  craftTime: 2.5
   requirements:
   - !type:MaterialResource
     material: CEBrass
@@ -27,3 +29,67 @@
     count: 1
   result: CEBrassBar1
   resultCount: 1
+
+# Sheet
+
+- type: CERecipe
+  id: CEBrassSheet1
+  tag: CERecipeMeltingFurnace
+  category: Materials
+  craftTime: 2.5
+  requirements:
+  - !type:MaterialResource
+    material: CEBrass
+    count: 10
+  - !type:StackResource
+    stack: CECoal
+    count: 1
+  result: CEBrassSheet1
+  resultCount: 2
+
+- type: CERecipe
+  id: CEIronSheet1
+  tag: CERecipeMeltingFurnace
+  category: Materials
+  craftTime: 2.5
+  requirements:
+  - !type:MaterialResource
+    material: CEIron
+    count: 10
+  - !type:StackResource
+    stack: CECoal
+    count: 1
+  result: CEIronSheet1
+  resultCount: 2
+
+# Rod
+
+- type: CERecipe
+  id: CEIronRod1
+  tag: CERecipeMeltingFurnace
+  category: Materials
+  craftTime: 2.5
+  requirements:
+  - !type:MaterialResource
+    material: CEIron
+    count: 10
+  - !type:StackResource
+    stack: CECoal
+    count: 1
+  result: CEIronRod1
+  resultCount: 5
+
+- type: CERecipe
+  id: CEBrassRod1
+  tag: CERecipeMeltingFurnace
+  category: Materials
+  craftTime: 2.5
+  requirements:
+  - !type:MaterialResource
+    material: CEBrass
+    count: 10
+  - !type:StackResource
+    stack: CECoal
+    count: 1
+  result: CEBrassRod1
+  resultCount: 5

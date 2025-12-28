@@ -56,12 +56,27 @@
       - id: CEWeaponDaggerIron
       - id: CEPlastiseal
       - id: CEGauze
-      - id: CEGlassSheet5
-      - id: CEIronBar5
-      - id: CEBrassBar5
-      - id: CENail10
-      - id: CEStoneBlock10
-      - id: CEDirtBlock10
+      - !type:GroupSelector
+        weight: 2
+        children:
+        - id: CEGlassSheet5
+        - id: CEIronBar1
+        - id: CEBrassBar1
+        - id: CEBrassRod15
+        - id: CEIronRod15
+        - id: CEBrassSheet5
+        - id: CEIronSheet5
+      - !type:GroupSelector
+        weight: 0.1
+        children:
+        - id: CEMachinePartEnergyLine1
+        - id: CEMachinePartDimensionalMatrix1
+        - id: CEMachinePartCoalDiffuser1
+      - !type:GroupSelector
+        children:
+        - id: CEStoneBlock10
+        - id: CEDirtBlock10
+        - id: CENail10
       #- id: CETorch
       #- id: CELighter
       - id: CEKeyFile
@@ -99,8 +114,14 @@
     - id: CEPenFeather
     - id: CEFoodPotato
     - id: CEFoodOnion
+    - !type:GroupSelector
+      children:
+      - id: CEFoodAgedCheesePart
+      - id: CEFoodBlueCheesePart
+      - id: CEFoodCheesePart
     - id: CEFoodPiePieceTrash
     - id: CECloth10
+    - id: CEClothingHeadChristmasHat
     - id: CEClothingHeadWreath
     - !type:GroupSelector
       children:

@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/27/2025 18:05:03
-  entityCount: 1530
+  time: 12/28/2025 10:57:05
+  entityCount: 1531
 maps:
 - 1
 grids:
@@ -2546,7 +2546,7 @@ entities:
       pos: 6.5,16.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -15494.266
+      secondsUntilStateChange: -15822.531
       state: Opening
 - proto: CEFenceWindowIron
   entities:
@@ -8507,6 +8507,13 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -8.5,5.5
+      parent: 1
+- proto: CEWoodenPlanks20
+  entities:
+  - uid: 243
+    components:
+    - type: Transform
+      pos: -30.064955,-7.5260305
       parent: 1
 - proto: CEWorkbench
   entities:

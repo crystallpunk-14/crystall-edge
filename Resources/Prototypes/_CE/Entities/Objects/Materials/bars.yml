@@ -15,7 +15,7 @@
         map: ["base"]
   - type: Appearance
   - type: Stack
-    stackType: CEIron
+    stackType: CEIronBar
     count: 1
     baseLayer: base
     layerStates:
@@ -62,7 +62,7 @@
         map: ["base"]
   - type: Appearance
   - type: Stack
-    stackType: CEBrass
+    stackType: CEBrassBar
     count: 1
     baseLayer: base
     layerStates:

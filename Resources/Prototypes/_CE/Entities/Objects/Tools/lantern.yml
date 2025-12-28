@@ -97,5 +97,5 @@
   - type: Rotatable
   - type: PhysicalComposition
     materialComposition:
-      CEBrass: 10
       CEIron: 10
+      CEBrass: 6

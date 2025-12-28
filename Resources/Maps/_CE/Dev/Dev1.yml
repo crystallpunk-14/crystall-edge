@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/10/2025 14:35:03
-  entityCount: 388
+  time: 12/25/2025 21:30:23
+  entityCount: 373
 maps:
 - 1
 grids:
@@ -91,6 +91,7 @@ entities:
       fibers: []
       fingerprints: []
     - type: RadiationGridResistance
+    - type: ExplosionAirtightGrid
 - proto: CEBiomeSpawnerGrassland
   entities:
   - uid: 241

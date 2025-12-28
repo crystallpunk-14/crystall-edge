@@ -23,7 +23,7 @@
   - type: ToolTileCompatible
   - type: PhysicalComposition
     materialComposition:
-      CEIron: 10
+      CEIron: 7
   - type: Prying
   - type: Sprite
     sprite: _CE/Objects/Tools/crowbar.rsi

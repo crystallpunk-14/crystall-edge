@@ -27,11 +27,25 @@
   maxCount: 10
 
 - type: stack
-  id: CEIron
+  id: CEIronBar
   name: ce-stack-iron-bars
   spawn: CEIronBar1
   icon: { sprite: _CE/Objects/Materials/Metals/iron_bar.rsi, state: bar_2 }
   maxCount: 10
+
+- type: stack
+  id: CEIronSheet
+  name: ce-stack-iron-sheet
+  spawn: CEIronSheet1
+  icon: { sprite: _CE/Objects/Materials/Metals/iron_bar.rsi, state: sheet_2 }
+  maxCount: 20
+
+- type: stack
+  id: CEIronRod
+  name: ce-stack-iron-rod
+  spawn: CEIronRod1
+  icon: { sprite: _CE/Objects/Materials/Metals/iron_bar.rsi, state: rod_2 }
+  maxCount: 40
 
 - type: stack
   id: CEIronOre
@@ -48,11 +62,25 @@
   maxCount: 30
 
 - type: stack
-  id: CEBrass
+  id: CEBrassBar
   name: ce-stack-brass-bars
   spawn: CEBrassBar1
   icon: { sprite: _CE/Objects/Materials/Metals/brass_bar.rsi, state: bar_2 }
   maxCount: 10
+
+- type: stack
+  id: CEBrassSheet
+  name: ce-stack-brass-sheet
+  spawn: CEBrassSheet1
+  icon: { sprite: _CE/Objects/Materials/Metals/brass_bar.rsi, state: sheet_2 }
+  maxCount: 20
+
+- type: stack
+  id: CEBrassRod
+  name: ce-stack-brass-rod
+  spawn: CEBrassRod1
+  icon: { sprite: _CE/Objects/Materials/Metals/brass_bar.rsi, state: rod_2 }
+  maxCount: 40
 
 - type: stack
   id: CEScrapIron

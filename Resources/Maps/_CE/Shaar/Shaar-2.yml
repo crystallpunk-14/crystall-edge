@@ -4,7 +4,7 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/27/2025 18:05:03
+  time: 12/28/2025 10:57:05
   entityCount: 559
 maps:
 - 1
@@ -243,6 +243,13 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 14.5,-2.5
+      parent: 1
+- proto: CEMeltingFurnace
+  entities:
+  - uid: 586
+    components:
+    - type: Transform
+      pos: 14.5,-0.5
       parent: 1
 - proto: CEPipeBrassBig
   entities:
@@ -2876,13 +2883,6 @@ entities:
     components:
     - type: Transform
       pos: 7.491313,-8.624699
-      parent: 1
-- proto: CEWorkbenchAutoMeltingFurnace
-  entities:
-  - uid: 586
-    components:
-    - type: Transform
-      pos: 14.5,-0.5
       parent: 1
 - proto: CEZLevelLadderDirtCliff
   entities:

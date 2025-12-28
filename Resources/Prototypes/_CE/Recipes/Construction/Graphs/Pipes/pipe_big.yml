@@ -5,45 +5,23 @@
     - node: start
       actions:
         - !type:DestroyEntity {}
-      edges:
-        - to: CEPipeBrassBig
-          steps:
-            - material: CEBrass
-              amount: 2
-              doAfter: 1
 
     - node: CEPipeBrassBig
       entity: CEPipeBrassBig
       edges:
-        - to: start
-          steps:
-            - tool: Prying
-              doAfter: 1
-          completed:
-            - !type:SpawnPrototype
-              prototype: CEBrassBar1
-              amount: 2
         - to: CEPipeBrassBigVerticalDown
           steps:
             - tool: Anchoring
               doAfter: 1
         - to: CEPipeBrassBigValve
           steps:
-            - material: CEIron
+            - material: CEPipeValve
               amount: 1
               doAfter: 1
 
     - node: CEPipeBrassBigVerticalDown
       entity: CEPipeBrassBigVerticalDown
       edges:
-        - to: start
-          steps:
-            - tool: Prying
-              doAfter: 1
-          completed:
-            - !type:SpawnPrototype
-              prototype: CEBrassBar1
-              amount: 2
         - to: CEPipeBrassBigVerticalUp
           steps:
             - tool: Anchoring
@@ -52,14 +30,6 @@
     - node: CEPipeBrassBigVerticalUp
       entity: CEPipeBrassBigVerticalUp
       edges:
-        - to: start
-          steps:
-            - tool: Prying
-              doAfter: 1
-          completed:
-            - !type:SpawnPrototype
-              prototype: CEBrassBar1
-              amount: 2
         - to: CEPipeBrassBig
           steps:
             - tool: Anchoring
@@ -67,21 +37,6 @@
 
     - node: CEPipeBrassBigValve
       entity: CEPipeBrassBigValve
-      edges:
-        - to: CEPipeBrassBig
-          steps:
-            - tool: Prying
-              doAfter: 1
-          completed:
-            - !type:SpawnPrototype
-              prototype: CEIronBar1
-              amount: 1
 
     - node: CEPipeBrassBigBroken
       entity: CEPipeBrassBigBroken
-      edges:
-        - to: CEPipeBrassBig
-          steps:
-            - material: CEBrass
-              amount: 1
-              doAfter: 1

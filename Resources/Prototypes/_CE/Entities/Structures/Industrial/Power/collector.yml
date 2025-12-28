@@ -2,12 +2,16 @@
   abstract: true
   id: CEManaCollectorBase
   categories: [ ForkFiltered ]
-  parent: [ BaseMachine, ConstructibleMachine ]
+  parent: 
+  - CEConstructibleMachine
+  - BaseMachine
   name: mana collector
   description: A structure that collects ambient magical energy from the environment and stores it for later use.
   placement:
     mode: SnapgridCenter
   components:
+  - type: Machine
+    board: CEMachineCoreManaCollector
   - type: PlacementReplacement
     key: walls
   #- type: AmbientSound
