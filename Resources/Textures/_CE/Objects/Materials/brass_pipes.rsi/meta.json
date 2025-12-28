@@ -24,6 +24,15 @@
       },
       {
         "name": "pipe_3"
+      },
+      {
+        "name": "valve"
+      },
+      {
+        "name": "valve_2"
+      },
+      {
+        "name": "valve_3"
       }
     ]
   }

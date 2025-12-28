@@ -81,6 +81,18 @@
   resultCount: 15
 
 - type: CERecipe
+  id: CEPipeValve10
+  tag: CERecipeEngineeringTable
+  category: Tools
+  craftTime: 1.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronBar
+    count: 2
+  result: CEPipeValve1
+  resultCount: 10
+
+- type: CERecipe
   id: CEWrench
   tag: CERecipeEngineeringTable
   category: Tools

@@ -15,7 +15,7 @@
               doAfter: 1
         - to: CEPipeBrassBigValve
           steps:
-            - material: CEIronBar
+            - material: CEPipeValve
               amount: 1
               doAfter: 1
 
@@ -37,21 +37,6 @@
 
     - node: CEPipeBrassBigValve
       entity: CEPipeBrassBigValve
-      edges:
-        - to: CEPipeBrassBig
-          steps:
-            - tool: Prying
-              doAfter: 1
-          completed:
-            - !type:SpawnPrototype
-              prototype: CEIronBar1
-              amount: 1
 
     - node: CEPipeBrassBigBroken
       entity: CEPipeBrassBigBroken
-      edges:
-        - to: CEPipeBrassBig
-          steps:
-            - material: CEBrassBar
-              amount: 1
-              doAfter: 1

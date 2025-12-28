@@ -38,3 +38,4 @@ ce-stack-dimensional-matrix = dimensional matrices
 
 ce-stack-medium-brass-pipe = brass pipes
 ce-stack-big-brass-pipe = big brass pipes
+ce-stack-pipe-valve = pipe valves
