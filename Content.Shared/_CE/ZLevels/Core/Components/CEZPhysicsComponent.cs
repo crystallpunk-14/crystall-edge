@@ -30,11 +30,25 @@ public sealed partial class CEZPhysicsComponent : Component
     [DataField, AutoNetworkedField]
     public float LocalPosition;
 
+    /// Optimization Caches
+
     /// <summary>
     /// Cached value of the current z-level map height
     /// </summary>
     [DataField, AutoNetworkedField]
     public int CurrentZLevel;
+
+    /// <summary>
+    /// Cached value of the current distance to the ground in the current z-level. Updates only on MoveEvent and when tiles below change.
+    /// </summary>
+    [DataField]
+    public float CurrentGroundHeight;
+
+    /// <summary>
+    /// Cached value of whether the entity is currently on sticky ground (ladders).
+    /// </summary>
+    [DataField]
+    public bool CurrentStickyGround;
 
     // Physics
 

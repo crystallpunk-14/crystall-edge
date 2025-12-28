@@ -37,7 +37,7 @@ public sealed partial class CEZLevelsSystem
         SubscribeLocalEvent<CEZLevelViewerComponent, ComponentRemove>(OnCompRemove);
 
         SubscribeLocalEvent<CEZLevelViewerComponent, MapUidChangedEvent>(OnViewerMapUidChanged);
-        SubscribeLocalEvent<CEZPhysicsComponent, CEZLevelFallEvent>(OnZLevelFall);
+        SubscribeLocalEvent<CEZPhysicsComponent, CEZLevelFallMapEvent>(OnZLevelFall);
     }
 
     private void UpdateView(float frameTime)
@@ -132,7 +132,7 @@ public sealed partial class CEZLevelsSystem
         }
     }
 
-    private void OnZLevelFall(Entity<CEZPhysicsComponent> ent, ref CEZLevelFallEvent args)
+    private void OnZLevelFall(Entity<CEZPhysicsComponent> ent, ref CEZLevelFallMapEvent args)
     {
         //A dirty trick: we call PredictedPopup on the falling entity on SERVER.
         //This means that the one who is falling does not see the popup itself, but everyone around them does. This is what we need.

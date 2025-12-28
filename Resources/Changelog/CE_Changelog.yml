@@ -236,3 +236,22 @@
   id: 1023
   time: '2025-12-27T18:59:57.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/202
+- author: TheShuEd
+  changes:
+  - message: All mechanisms can now be constructed by players!
+    type: Add
+  - message: All mechanisms now break correctly and can be disassembled into their
+      component parts.
+    type: Tweak
+  - message: Brass pipes are now much cheaper to manufacture.
+    type: Add
+  id: 1024
+  time: '2025-12-28T11:29:58.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/200
+- author: TheShuEd
+  changes:
+  - message: Carcats can now see in the dark
+    type: Add
+  id: 1025
+  time: '2025-12-28T12:08:39.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/205
