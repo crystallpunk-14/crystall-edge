@@ -50,8 +50,7 @@ public abstract partial class CESharedZLevelsSystem
 
     private void CacheMovement(Entity<CEZPhysicsComponent> ent)
     {
-        var gh = ComputeGroundHeightInternal((ent, ent), out var sticky, 1);
-        ent.Comp.CurrentGroundHeight = gh;
+        ent.Comp.CurrentGroundHeight = ComputeGroundHeightInternal((ent, ent), out var sticky);
         ent.Comp.CurrentStickyGround = sticky;
     }
 
@@ -195,10 +194,9 @@ public abstract partial class CESharedZLevelsSystem
     }
 
     /// <summary>
-    /// Returns the distance to the floor. Returns <see cref="maxFloors"/> if the distance is too great.
+    /// Returns the last cached distance to the floor.
     /// </summary>
     /// <param name="target">The entity, the distance to the floor which we calculate</param>
-    /// <param name="maxFloors">How many z-levels down are we prepared to check? The default is 1, since in most cases we don't need to check more than that.</param>
     /// <returns></returns>
     public float DistanceToGround(Entity<CEZPhysicsComponent?> target)
     {
@@ -211,7 +209,7 @@ public abstract partial class CESharedZLevelsSystem
     /// <summary>
     /// Computes the "ground height" relative to the entity's current Z-level baseline.
     /// Returns values where 0 means ground on the same level, -1 means ground one level below,
-    /// and intermediate values are possible for highground entities (stairs).
+    /// and intermediate values are possible for high ground entities (stairs).
     /// </summary>
     private float ComputeGroundHeightInternal(Entity<CEZPhysicsComponent?> target, out bool stickyGround, int maxFloors = 1)
     {
