@@ -1,4 +1,10 @@
+/*
+ * This file is sublicensed under MIT License
+ * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
+ */
+
 using System.Numerics;
+using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared._CE.ZLevels.Core.Components;
@@ -7,7 +13,7 @@ namespace Content.Shared._CE.ZLevels.Core.Components;
 /// Allows an entity to move up and down the z-levels by gravity or jumping
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true),
- Access(typeof(Core.EntitySystems.CESharedZLevelsSystem))]
+ Access(typeof(CESharedZLevelsSystem))]
 public sealed partial class CEZPhysicsComponent : Component
 {
     /// <summary>
@@ -24,10 +30,33 @@ public sealed partial class CEZPhysicsComponent : Component
     [DataField, AutoNetworkedField]
     public float LocalPosition;
 
+    /// Optimization Caches
+
+    /// <summary>
+    /// Cached value of the current z-level map height
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public int CurrentZLevel;
+
+    /// <summary>
+    /// Cached value of the current distance to the ground in the current z-level. Updates only on MoveEvent and when tiles below change.
+    /// </summary>
+    [DataField]
+    public float CurrentGroundHeight;
+
+    /// <summary>
+    /// Cached value of whether the entity is currently on sticky ground (ladders).
+    /// </summary>
+    [DataField]
+    public bool CurrentStickyGround;
+
     // Physics
 
     [DataField, AutoNetworkedField]
     public float Bounciness = 0.3f;
+
+    [DataField, AutoNetworkedField]
+    public float GravityMultiplier = 1f;
 
     // Visuals
 

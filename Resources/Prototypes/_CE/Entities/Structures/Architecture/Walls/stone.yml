@@ -13,7 +13,7 @@
     state: frame
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: Rock
+    damageModifierSet: CERockStructural
   - type: Destructible
     thresholds:
     - trigger:
@@ -49,12 +49,12 @@
     base: stonebricks
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: Rock
+    damageModifierSet: CERockStructural
   - type: Destructible
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 70
+        damage: 200
       behaviors:
       - !type:PlaySoundBehavior
         sound:
@@ -64,8 +64,8 @@
       - !type:SpawnEntitiesBehavior
         spawn:
           CEStoneBlock1:
-            min: 1
-            max: 2
+            min: 3
+            max: 4
       - !type:ChangeConstructionNodeBehavior
         node: CEWallFrameStoneBrick
   - type: Construction
@@ -83,6 +83,27 @@
     sprite: _CE/Structures/Architecture/Walls/brick_stone_old.rsi
   - type: IconSmooth
     base: stonebricks
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: CERockStructural
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEStoneBlock1:
+            min: 4
+            max: 5
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
 
 - type: entity
   id: CEWallStoneBrickBrown
@@ -95,3 +116,24 @@
     sprite: _CE/Structures/Architecture/Walls/bricks_brown.rsi
   - type: IconSmooth
     base: bricksA
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: CERockStructural
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEStoneBlock1:
+            min: 4
+            max: 5
+      - !type:DoActsBehavior
+        acts: ["Destruction"]

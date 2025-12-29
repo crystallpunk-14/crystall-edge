@@ -1,0 +1,192 @@
+- type: entity
+  parent:
+  - CEConstructibleMachine
+  - CEBaseMachinePowered
+  - BaseMachine
+  id: CETradingPlatform
+  name: buying platform
+  description: Allows you to trade with the outside world, through retail trade transactions.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Machine
+    board: CEMachineCoreTradingPlatform
+  - type: PlacementReplacement
+    key: walls
+  - type: Sprite
+    drawdepth: FloorTiles
+    snapCardinals: true
+    sprite: _CE/Structures/Industrial/buy_platform.rsi
+    layers:
+    - state: base
+    - state: buy
+  - type: Icon
+    sprite: _CE/Structures/Industrial/buy_platform.rsi
+    state: base
+  - type: ActivatableUI
+    key: enum.CETradingUiKey.Buy
+  - type: ActivatableUIRequiresPower
+  - type: Clickable
+  - type: InteractionOutline
+  - type: CETradingPlatform
+  - type: UserInterface
+    interfaces:
+      enum.CETradingUiKey.Buy:
+        type: CETradingPlatformBoundUserInterface
+  - type: PlaceableSurface
+  - type: ItemPlacer
+    maxEntities: 0
+    whitelist:
+      tags:
+      - CECoin
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        mask:
+        - TabletopMachineMask
+        layer:
+        - Impassable
+        - MidImpassable
+        - LowImpassable
+        hard: false
+  - type: ApcPowerReceiver
+    powerLoad: 0.1
+  - type: ExtensionCableReceiver
+    receptionRange: 0
+
+- type: entity
+  parent:
+  - CEConstructibleMachine
+  - CEBaseMachinePowered
+  - BaseMachine
+  id: CETradingSellingPlatform
+  name: selling platform
+  description: Allows you to sell any items and structures to the outside world. Fill the platform completely with mana to sell whatever you place on it.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Machine
+    board: CEMachineCoreSellingPlatform
+  - type: PlacementReplacement
+    key: walls
+  - type: Sprite
+    drawdepth: FloorTiles
+    snapCardinals: true
+    sprite: _CE/Structures/Industrial/buy_platform.rsi
+    layers:
+    - state: base
+    - state: sell
+  - type: Icon
+    sprite: _CE/Structures/Industrial/buy_platform.rsi
+    state: base
+  - type: Clickable
+  - type: InteractionOutline
+  - type: CESellingPlatform
+  - type: PlaceableSurface
+  - type: ItemPlacer
+    maxEntities: 0
+  - type: ActivatableUI
+    key: enum.CETradingUiKey.Sell
+  - type: ActivatableUIRequiresPower
+  - type: UserInterface
+    interfaces:
+      enum.CETradingUiKey.Sell:
+        type: CESellingPlatformBoundUserInterface
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        mask:
+        - TabletopMachineMask
+        layer:
+        - Impassable
+        - MidImpassable
+        - LowImpassable
+        hard: false
+  - type: ApcPowerReceiver
+    powerLoad: 0.1
+  - type: NodeContainer
+    examinable: true
+    nodes:
+      input:
+        !type:CableDeviceNode
+        nodeGroupID: Apc
+
+- type: entity
+  parent:
+  - CEConstructibleMachine
+  - CEBaseMachinePowered
+  - BaseMachine
+  id: CESalaryPlatform
+  name: salary platform
+  description: Allows you to quickly receive the salary you are entitled to (if, of course, you are supposed to receive a salary from the empire)
+  categories: [ ForkFiltered ]
+  components:
+  - type: Machine
+    board: CEMachineCoreSalaryPlatform
+  - type: PlacementReplacement
+    key: walls
+  - type: Sprite
+    drawdepth: FloorTiles
+    snapCardinals: true
+    sprite: _CE/Structures/Industrial/buy_platform.rsi
+    layers:
+    - state: base
+    - state: salary
+  - type: Clickable
+  - type: InteractionOutline
+  - type: CESalaryPayroll
+  - type: PlaceableSurface
+  - type: ItemPlacer
+    maxEntities: 0
+    whitelist:
+      tags:
+      - CECoin
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        mask:
+        - TabletopMachineMask
+        layer:
+        - Impassable
+        - MidImpassable
+        - LowImpassable
+        hard: false
+  - type: ApcPowerReceiver
+    powerLoad: 0.1
+
+- type: entity
+  id: CECashImpact
+  categories: [ ForkFiltered ]
+  name: cash impact
+  suffix: VFX
+  save: false
+  components:
+  - type: Sprite
+    snapCardinals: true
+    sprite: _CE/Structures/Industrial/buy_platform.rsi
+    layers:
+    - state: impact
+      shader: unshaded
+      color: "#69279f"
+    drawdepth: Effects
+  - type: TimedDespawn
+    lifetime: 2
+  - type: Tag
+    tags:
+      - HideContextMenu
+  - type: PointLight
+    color: "#69279f"
+    enabled: true
+    radius: 8
+    energy: 8
+    netsync: false
+  - type: LightFade
+    duration: 2
+

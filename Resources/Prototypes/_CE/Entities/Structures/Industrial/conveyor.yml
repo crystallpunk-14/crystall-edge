@@ -9,7 +9,6 @@
   - type: PlacementReplacement
     key: walls
   - type: Rotatable
-    rotateWhileAnchored: true
   - type: Clickable
   - type: InteractionOutline
   - type: Transform
@@ -21,6 +20,7 @@
   - type: Physics
     bodyType: Static
   - type: Anchorable
+    canAnchorOnOccupied: true
   - type: Pullable
   - type: Fixtures
     fixtures:
@@ -36,6 +36,7 @@
         hard: False
   - type: Conveyor
   - type: CEConveyor
+  - type: CEFunnelActivator
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -62,10 +63,10 @@
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
-          CEBrassScrap1:
+          CEScrapBrass1:
             min: 1
             max: 1
-          CEIronScrap1:
+          CEScrapIron1:
             min: 1
             max: 1
       - !type:PlaySoundBehavior

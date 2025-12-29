@@ -1,3 +1,8 @@
+/*
+ * This file is sublicensed under MIT License
+ * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
+ */
+
 using Content.Server.GameTicking;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Robust.Server.GameObjects;
@@ -16,9 +21,15 @@ public sealed partial class CEZLevelsSystem : CESharedZLevelsSystem
     {
         base.Initialize();
         InitView();
-        InitializeActivation();
 
         SubscribeLocalEvent<PostGameMapLoad>(OnGameMapLoad);
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        UpdateView(frameTime);
     }
 
     private void OnGameMapLoad(PostGameMapLoad ev)

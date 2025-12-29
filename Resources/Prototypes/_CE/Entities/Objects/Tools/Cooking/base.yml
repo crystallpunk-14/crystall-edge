@@ -31,7 +31,6 @@
     - 0,0,3,3
     whitelist:
       components:
-        - Food
         - Edible
       tags:
         - CEFitInFryingPan #Todo delete this tag from game

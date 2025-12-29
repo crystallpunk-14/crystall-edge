@@ -14,7 +14,10 @@
     requiredLegs: 2
   - type: Wagging
   - type: Bloodstream
-    bloodReagent: CEBloodTiefling
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: CEBloodTiefling
+        Quantity: 1
   - type: Damageable
     damageContainer: CEBiological
     damageModifierSet: CETiefling

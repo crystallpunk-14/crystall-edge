@@ -83,7 +83,10 @@
     prototype: CEHuman
     requiredLegs: 2
   - type: Bloodstream
-    bloodReagent: CEBloodGoblin
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: CEBloodGoblin
+        Quantity: 1
   - type: Fixtures
     fixtures: # Smaller hitbox & less weight
       fix1:
@@ -107,10 +110,6 @@
       groups:
         Burn: -0.2
         Brute: -0.2
-  - type: Stamina
-    decay: 5 # 3 default
-    critThreshold: 120 # 100 default
-    stunTime: 4 #6 default
 #  - type: CEMagicEnergyContainer #SMALL mana container
 #    maxEnergy: 25
 #    energy: 25

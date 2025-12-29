@@ -236,10 +236,10 @@ public sealed class BulletRender : BaseBulletRenderer
 
 public sealed class BatteryBulletRenderer : BaseBulletRenderer
 {
-    private static readonly Color ItemColor = Color.FromHex("#E00000");
+    private static readonly Color ItemColor = Color.FromHex("#3e8eea"); //CrystallEdge color edited to fit magic energy theme
     private static readonly Color ItemColorGone = Color.Black;
 
-    private const int SizeH = 10;
+    private const int SizeH = 5; //CrystallEdge edited from 10 to 5
     private const int SizeV = 10;
     private const int Separation = 4;
 

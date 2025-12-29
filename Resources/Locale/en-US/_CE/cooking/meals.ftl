@@ -4,6 +4,9 @@ ce-meal-recipe-trash-desc = One glance makes you feel nauseous.
 ce-meal-recipe-burned-trash-name = burnt mass
 ce-meal-recipe-burned-trash-desc = This could have been a delicious meal, but the cook overdid it with the heat treatment.
 
+ce-meal-recipe-scrambled-eggs-name = scrambled eggs
+ce-meal-recipe-scrambled-eggs-desc = Scrambled eggs – a simple and hearty dish.
+
 ce-meal-recipe-green-salad-name = vegetable salad
 ce-meal-recipe-green-salad-desc = Green salad made from various herbs and vegetables.
 

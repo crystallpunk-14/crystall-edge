@@ -3,3 +3,9 @@
 
 - type: Tag
   id: CERecipeVampire
+
+- type: Tag
+  id: CERecipeMeltingFurnace
+
+- type: Tag
+  id: CERecipeEngineeringTable

@@ -1,0 +1,17 @@
+- type: antag
+  id: CEThief
+  name: ce-roles-antag-thief-name
+  antagonist: true
+  setPreference: true
+  objective: ce-roles-antag-thief-objective
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 7200 # 2h
+  #guides: TODO
+
+- type: startingGear
+  id: CEThiefGear
+  storage:
+    back:
+    - CETradeContractBlackMarket
+    - CEThiefHideoutFlag

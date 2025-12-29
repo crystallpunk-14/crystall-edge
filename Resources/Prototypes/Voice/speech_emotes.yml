@@ -25,6 +25,11 @@
     - yells
     - yelled
     - yelling
+    # RU-Localization-Start
+    - кричит
+    - орёт
+    - визжит
+    # RU-Localization-End
 
 - type: emote
   id: Laugh
@@ -54,6 +59,15 @@
     - chortle
     - chortles
     - chortling
+    # RU-Localization-Start
+    - смеется
+    - смеётся
+    - хохочет
+    - хихикает
+    - хихикнул
+    - хихикнула
+    - ржёт
+    # RU-Localization-End
 
 - type: emote
   id: Honk
@@ -72,6 +86,10 @@
     - honks
     - honked
     - honking
+    # RU-Localization-Start
+    - хонк
+    - хонкает
+    # RU-Localization-End
 
 - type: emote
   id: Sigh
@@ -89,6 +107,11 @@
     - sigh
     - sighs
     - sighed
+    # RU-Localization-Start
+    - вздыхает
+    - вздохнул
+    - вздохнула
+    # RU-Localization-End
 
 - type: emote
   id: Whistle
@@ -106,6 +129,11 @@
     - whistle
     - whistles
     - whistleblowing
+    # RU-Localization-Start
+    - свистит
+    - свистнул
+    - свистнула
+    # RU-Localization-End
 
 - type: emote
   id: Crying
@@ -126,6 +154,10 @@
     - sob
     - sobs
     - sobbing
+    # RU-Localization-Start
+    - плачет
+    - рыдает
+    # RU-Localization-End
 
 - type: emote
   id: Squish
@@ -144,6 +176,9 @@
     - squish
     - squishing
     - squishes
+    # RU-Localization-Start
+    - хлюпает
+    # RU-Localization-End
 
 - type: emote
   id: Chitter
@@ -162,6 +197,9 @@
    - chitter
    - chitters
    - chittered
+   # RU-Localization-Start
+   - стрекочет
+   # RU-Localization-End
 
 - type: emote
   id: Squeak
@@ -180,6 +218,9 @@
    - squeak
    - squeaks
    - squeaked
+   # RU-Localization-Start
+   - пищит
+   # RU-Localization-End
 
 - type: emote
   id: Click
@@ -197,6 +238,10 @@
   chatTriggers:
    - click
    - clicks
+   # RU-Localization-Start
+   - клац
+   - клацает
+   # RU-Localization-End
 
 # Vulpkanin
 - type: emote
@@ -216,6 +261,11 @@
   - barks
   - barked
   - barking
+   # RU-Localization-Start
+  - лает
+  - гавкает
+  - тявкает
+   # RU-Localization-End
 
 - type: emote
   id: Snarl
@@ -234,6 +284,10 @@
   - snarls
   - snarled
   - snarling
+   # RU-Localization-Start
+  - огрызается
+  - оскаливается
+   # RU-Localization-End
 
 - type: emote
   id: Whine
@@ -252,6 +306,12 @@
   - whines
   - whined
   - whining
+   # RU-Localization-Start
+  - скулит
+  - похныкивает
+  - поскуливает
+  - жалобно воет
+   # RU-Localization-End
 
 - type: emote
   id: Howl
@@ -270,6 +330,11 @@
   - howls
   - howling
   - howled
+   # RU-Localization-Start
+  - воет
+  - завывает
+  - подвывает
+   # RU-Localization-End
 
 - type: emote
   id: Growl
@@ -288,6 +353,11 @@
   - growls
   - growled
   - growling
+   # RU-Localization-Start
+  - рычит
+  - ворчит
+  - урчит
+   # RU-Localization-End
 
 # hand emotes
 - type: emote
@@ -306,6 +376,15 @@
     - claps
     - clapping
     - clapped
+   # RU-Localization-Start
+    - хлопает
+    - хлопнул
+    - хлопнула
+    - хлопает в ладоши
+    - хлопнул в ладоши
+    - хлопнула в ладоши
+    - аплодирует
+   # RU-Localization-End
 
 - type: emote
   id: ClapSingle
@@ -325,6 +404,11 @@
     - claps her hands together
     - claps his hands together
     - claps its hands together
+   # RU-Localization-Start
+    - делает хлопок
+    - хлопает один раз
+    - ударяет в ладоши
+   # RU-Localization-End
 
 - type: emote
   id: Snap
@@ -351,6 +435,20 @@
     - snaps its fingers
     - snapping fingers
     - snapped fingers
+   # RU-Localization-Start
+    - щелкает
+    - щелкнул
+    - щелкнула
+    - щёлкает
+    - щёлкнул
+    - щёлкнула
+    - щелкает пальцами
+    - щелкнул пальцами
+    - щелкнула пальцами
+    - щёлкает пальцами
+    - щёлкнул пальцами
+    - щёлкнула пальцами
+   # RU-Localization-End
 
 - type: emote
   id: Thump
@@ -376,6 +474,13 @@
     - thumps her tail
     - thumps his tail
     - thumps its tail
+   # RU-Localization-Start
+    - стучит хвостом
+    - стукнул хвостом
+    - стукнула хвостом
+    - стукнул своим хвостом
+    - стукнула своим хвостом
+   # RU-Localization-End
 
 - type: emote
   id: Salute
@@ -392,6 +497,12 @@
   chatTriggers:
     - salute
     - salutes
+   # RU-Localization-Start
+    - салютует
+    - отдаёт честь
+    - отдал честь
+    - отдала честь
+   # RU-Localization-End
 
 - type: emote
   id: Gasp
@@ -404,6 +515,9 @@
    - gasp
    - gasps
    - gasped
+   # RU-Localization-Start
+   - задыхается
+   # RU-Localization-End
 
 - type: emote
   id: DefaultDeathgasp
@@ -445,6 +559,11 @@
     - buzz
     - buzzed
     - buzzes
+   # RU-Localization-Start
+    - жужжит
+    - зажужжал
+    - зажужжала
+   # RU-Localization-End
 
 - type: emote
   id: Weh
@@ -479,6 +598,9 @@
     - chirps
     - chirped
     - chirping
+   # RU-Localization-Start
+    - чирикает
+   # RU-Localization-End
 
 # Machine Emotes
 - type: emote
@@ -498,6 +620,9 @@
     - beeps
     - beeped
     - beeping
+   # RU-Localization-Start
+    - бип
+   # RU-Localization-End
 
 - type: emote
   id: Chime
@@ -516,6 +641,9 @@
     - chimes
     - chimed
     - chiming
+   # RU-Localization-Start
+    - дзынь
+   # RU-Localization-End
 
 - type: emote
   id: Buzz-Two
@@ -540,6 +668,14 @@
     - buzzes twice
     - buzzing twice
     - buzzed twice
+   # RU-Localization-Start
+    - бипбуп
+    - бип буп
+    - бип-буп
+    - бипбип
+    - бип бип
+    - бип-бип
+   # RU-Localization-End
 
 - type: emote
   id: Ping
@@ -558,3 +694,6 @@
     - pings
     - pinged
     - pinging
+   # RU-Localization-Start
+    - пинг
+   # RU-Localization-End

@@ -1,0 +1,42 @@
+
+- type: tradingPosition
+  id: CEBottleWine
+  faction: Alcohol
+  service: !type:CEBuyItemsService
+    product: CEBottleWine
+    count: 1
+
+- type: tradingPosition
+  id: CEBottleWhiskey
+  faction: Alcohol
+  service: !type:CEBuyItemsService
+    product: CEBottleWhiskey
+    count: 1
+
+- type: tradingPosition
+  id: CEBottleVodka
+  faction: Alcohol
+  service: !type:CEBuyItemsService
+    product: CEBottleVodka
+    count: 1
+
+- type: tradingPosition
+  id: CEBottleRum
+  faction: Alcohol
+  service: !type:CEBuyItemsService
+    product: CEBottleRum
+    count: 1
+
+- type: tradingPosition
+  id: CEBottleSyrupGrenadineine
+  faction: Alcohol
+  service: !type:CEBuyItemsService
+    product: CEBottleSyrupGrenadineine
+    count: 1
+
+- type: tradingPosition
+  id: CEBottleSyrupSugar
+  faction: Alcohol
+  service: !type:CEBuyItemsService
+    product: CEBottleSyrupSugar
+    count: 1

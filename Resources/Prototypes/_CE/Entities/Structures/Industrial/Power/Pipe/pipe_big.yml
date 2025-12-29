@@ -15,6 +15,10 @@
     key: pipe_big
   - type: CEPipeVisualizer
     statePrefix: pipe_
+  - type: Cable
+    cuttingQuality: Prying
+    cableDroppedOnCutPrototype: CEBigBrassPipe1
+    cableType: HighVoltage
 
 - type: entity
   id: CEPipeBrassBig
@@ -49,7 +53,7 @@
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
-          CEBrassScrap1:
+          CEScrapBrass1:
             min: 1
             max: 1
       - !type:PlaySoundBehavior
@@ -179,10 +183,10 @@
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
-          CEBrassScrap1:
+          CEScrapBrass1:
             min: 1
             max: 1
-          CEIronScrap1:
+          CEScrapIron1:
             min: 1
             max: 1
       - !type:PlaySoundBehavior
@@ -261,7 +265,7 @@
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
-          CEBrassScrap1:
+          CEScrapBrass1:
             min: 1
             max: 1
       - !type:PlaySoundBehavior
@@ -294,82 +298,5 @@
   - type: Construction
     graph: CEPipeBrassBig
     node: CEPipeBrassBigBroken
-    defaultTarget: CEPipeBrassBig
   - type: CEPipeVisualizer
     statePrefix: broken_pipe_
-
-# Delayer
-
-- type: entity
-  id: CEPipeBrassBigDelayer
-  parent: CEPipeBrassBig
-  name: pipe delayer
-  description: A small valve installed on the pipe allows the incoming energy to be delayed for a short period of time. Useful for controlling the timing of energy supply.
-  suffix: 0.5s
-  components:
-  - type: InteractionOutline
-  - type: CEDelayedConnector
-    active: false
-  - type: Icon
-    state: delayer
-  - type: Sprite
-    layers:
-    - state: pipe_15
-    - state: delayer
-    - state: delayer_light
-      shader: unshaded
-      visible: false
-      map: ["delayer_light"]
-  - type: NodeContainer
-    nodes:
-      center:
-        !type:CEConnectorCenterNode
-        nodeGroupID: HVPower
-        active: false
-      north:
-        !type:CEConnectorEdgeNode
-        direction: North
-        nodeGroupID: HVPower
-      south:
-        !type:CEConnectorEdgeNode
-        direction: South
-        nodeGroupID: HVPower
-      east:
-        !type:CEConnectorEdgeNode
-        direction: East
-        nodeGroupID: HVPower
-      west:
-        !type:CEConnectorEdgeNode
-        direction: West
-        nodeGroupID: HVPower
-  - type: GenericVisualizer
-    visuals:
-      enum.CEToggleableCableVisuals.Enabled:
-        delayer_light:
-          True: {visible: true}
-          False: {visible: false}
-  - type: Construction
-    graph: CEPipeBrassBig
-    node: CEPipeBrassBigDelayer
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 25
-      behaviors:
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          CEBrassScrap1:
-            min: 1
-            max: 1
-          CEIronScrap1:
-            min: 1
-            max: 1
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MetalBreak
-      - !type:ChangeConstructionNodeBehavior
-        node: CEPipeBrassBigBroken
-  - type: PowerConsumer
-    voltage: High
-    drawRate: 0.1

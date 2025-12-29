@@ -2,7 +2,7 @@
   parent: BaseItem
   id: CEBaseLockpick
   name: iron lockpick
-  description: A thief's tool that, with proper skill and skill, allows you to pick any lock.
+  description: A thief's tool that, with proper skill, allows you to pick any lock.
   categories: [ ForkFiltered ]
   components:
   - type: Item
@@ -15,9 +15,9 @@
   - type: Tag
     tags:
     - CELockpick
-  #- type: PhysicalComposition
-  #  materialComposition:
-  #    CEIron: 10
+  - type: PhysicalComposition
+    materialComposition:
+      CEIron: 10
 
 - type: entity
   parent: BaseItem

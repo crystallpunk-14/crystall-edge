@@ -30,6 +30,5 @@ public sealed partial class ConveyorController
             SetState(ent, ConveyorState.Off, conv);
         }
         UpdateAppearance(ent, conv);
-        Dirty(ent);
     }
 }

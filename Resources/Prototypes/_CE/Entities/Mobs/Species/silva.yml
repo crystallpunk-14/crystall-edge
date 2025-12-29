@@ -81,7 +81,10 @@
 #  - type: CEAuraImprint
 #    imprintColor: "#31cc3b"
   - type: Bloodstream
-    bloodReagent: CEBloodSilva
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: CEBloodSilva
+        Quantity: 1
   - type: Inventory
     templateId: CEHuman
     displacements:

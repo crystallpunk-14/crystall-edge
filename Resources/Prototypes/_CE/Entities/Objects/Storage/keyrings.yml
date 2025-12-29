@@ -40,7 +40,6 @@
   - type: Clothing
     quickEquip: false
     slots:
-    - keys
     - belt
   - type: PhysicalComposition
     materialComposition:

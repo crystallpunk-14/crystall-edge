@@ -27,7 +27,7 @@
     - !type:TileNotBlocked
 
 - type: construction
-  hide: true #2boring, need make graphs better
+  hide: false
   id: CEWallDirt
   graph: CEWallDirt
   startNode: start

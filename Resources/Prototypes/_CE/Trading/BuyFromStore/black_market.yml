@@ -1,0 +1,22 @@
+- type: tradingPosition
+  id: CETradeContractBlackMarket
+  faction: BlackMarket
+  priceMarkup: 500
+  service: !type:CEBuyItemsService
+    product: CETradeContractBlackMarket
+    count: 1
+
+- type: tradingPosition
+  id: CEBaseLockpick
+  faction: BlackMarket
+  service: !type:CEBuyItemsService
+    product: CEBaseLockpick
+    count: 1
+
+- type: tradingPosition
+  id: CEThiefHideoutFlag
+  faction: BlackMarket
+  priceMarkup: 10
+  service: !type:CEBuyItemsService
+    product: CEThiefHideoutFlag
+    count: 1

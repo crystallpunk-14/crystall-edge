@@ -12,13 +12,13 @@ public abstract partial class CEWorkbenchCraftCondition
         EntityManager entManager,
         IPrototypeManager protoManager,
         EntityUid workbench,
-        EntityUid user);
+        EntityUid? user);
 
     public virtual void PostCraft(
         EntityManager entManager,
         IPrototypeManager protoManager,
         EntityUid workbench,
-        EntityUid user)
+        EntityUid? user)
     {
 
     }
@@ -27,7 +27,7 @@ public abstract partial class CEWorkbenchCraftCondition
         EntityManager entManager,
         IPrototypeManager protoManager,
         EntityUid workbench,
-        EntityUid user);
+        EntityUid? user);
 
     /// <summary>
     /// This text will be displayed in the description of the craft conditions. Write something like ‘The workbench must be filled to 100% mana.’ here
@@ -36,7 +36,7 @@ public abstract partial class CEWorkbenchCraftCondition
         EntityManager entManager,
         IPrototypeManager protoManager,
         EntityUid workbench,
-        EntityUid user)
+        EntityUid? user)
     {
         return string.Empty;
     }

@@ -106,7 +106,6 @@ public sealed partial class ClothingComponent : Component
     /// <summary>
     ///     A scale applied to all layers.
     /// </summary>
-    /// 
     [DataField]
     public Vector2 Scale = Vector2.One;
 }

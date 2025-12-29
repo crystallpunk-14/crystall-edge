@@ -44,7 +44,7 @@
     - herbbandage_2
     - herbbandage_3
   - type: StackPrice
-    price: 8
+    price: 2
 
 - type: entity
   id: CEPlastiseal1
@@ -98,9 +98,8 @@
     - bandage
     - bandage_2
     - bandage_3
-  - type: PhysicalComposition
-    materialComposition:
-      CECloth: 20
+  - type: StackPrice
+    price: 2
 
 - type: entity
   id: CEGauze1

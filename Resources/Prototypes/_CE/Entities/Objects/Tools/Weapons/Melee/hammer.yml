@@ -1,0 +1,57 @@
+- type: entity
+  abstract: true
+  id: CEBaseWeaponHammer
+  parent:
+  - BaseItem
+  - CEBaseWeaponThrowable
+  components:
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,2,0
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 5
+        Structural: 3
+  - type: MeleeWeapon
+    resetOnHandSelected: true
+    autoAttack: true
+    attackRate: 2
+    range: 1
+    angle: 60
+    wideAnimationRotation: -90
+    damage:
+      types:
+        Blunt: 5
+        Structural: 3
+    soundHit:
+      collection: MetalThud
+  - type: Clothing
+    slots:
+    - belt
+    equipWhileMoving: true
+    equipDelay: 0.5
+    unequipDelay: 0.5
+  - type: Tool
+    qualities:
+      - CEHammering
+    useSound:
+      collection: CEHammering
+      params:
+        variation: 0.03
+        volume: 2
+
+- type: entity
+  parent: CEBaseWeaponHammer
+  id: CEWeaponHammerIron
+  name: iron hammer
+  description: A standard hammer made of iron.
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Tools/Weapons/Melee/Hammer/iron.rsi
+    state: icon
+  - type: PhysicalComposition
+    materialComposition:
+      CEWood: 10
+      CEIron: 10

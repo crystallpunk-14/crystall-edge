@@ -315,3 +315,23 @@
   id: CEClothingShoesLongLeatherBoots
   equipment:
     shoes: CEClothingShoesLongLeatherBoots
+
+# Bags
+
+- type: loadoutGroup
+  id: CEGeneralBag
+  name: ce-loadout-bag
+  minLimit: 1
+  loadouts:
+  - CEClothingBackBackpack
+  - CEClothingBackSatchel
+
+- type: loadout
+  id: CEClothingBackBackpack
+  equipment:
+    back: CEClothingBackBackpack
+
+- type: loadout
+  id: CEClothingBackSatchel
+  equipment:
+    back: CEClothingBackSatchel

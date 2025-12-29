@@ -33,6 +33,8 @@
     sprite: _CE/Clothing/Cloak/Cloak/guard_commander.rsi
   - type: Clothing
     sprite: _CE/Clothing/Cloak/Cloak/guard_commander.rsi
+  - type: CETheftValue
+    difficulty: 2
 
 - type: entity
   parent:
@@ -45,6 +47,8 @@
     sprite: _CE/Clothing/Cloak/Cloak/guildmaster.rsi
   - type: Clothing
     sprite: _CE/Clothing/Cloak/Cloak/guildmaster.rsi
+  - type: CETheftValue
+    difficulty: 1
 
 - type: entity
   parent:

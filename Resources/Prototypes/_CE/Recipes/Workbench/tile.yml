@@ -174,7 +174,7 @@
   requirements:
   - !type:StackResource
     stack: CEGlass
-    count: 1
+    count: 2
   result: CEFloorTileGlass
   resultCount: 5
 
@@ -188,4 +188,16 @@
     stack: CEStone
     count: 1
   result: CEFloorTileRoofRed
+  resultCount: 5
+
+- type: CERecipe
+  id: CEFloorTileRoofGreen
+  tag: CERecipeWorkbench
+  category: FloorTile
+  craftTime: 1
+  requirements:
+  - !type:StackResource
+    stack: CEStone
+    count: 1
+  result: CEFloorTileRoofGreen
   resultCount: 5

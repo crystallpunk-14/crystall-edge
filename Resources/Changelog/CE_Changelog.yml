@@ -11,4 +11,262 @@
     type: Fix
   id: 1000
   time: '2025-06-02T18:40:15.0000000+00:00'
+  url: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+- author: TheShuEd
+  changes:
+  - message: Increase salary frequency for guards from 20 minutes to 12 munutes
+    type: Tweak
+  - message: Fixed lighting and fences on the Arrivals ship and map
+    type: Fix
+  - message: The roof of the guard building is now locked on the Shaar map.
+    type: Fix
+  id: 1002
+  time: '2025-06-06T18:40:15.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-punk-14/pull/1359
+- author: TheShuEd
+  changes:
+  - message: Added a new inventory slot for armor
+    type: Add
+  - message: "Added \u201Cbrass insulator\u201D armor set, providing minor protection\
+      \ against physical damage and excellent protection against magical radiation.\
+      \ For future engineers. Currently available for purchase in stores."
+    type: Add
+  id: 1003
+  time: '2025-06-07T18:40:15.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/132
+- author: TheShuEd
+  changes:
+  - message: Added automated changelogs, try 5
+    type: Add
+  id: 1004
+  time: '2025-12-17T22:30:05.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/138
+- author: TheShuEd
+  changes:
+  - message: Added automated changelogs, try 6
+    type: Add
+  id: 1005
+  time: '2025-12-17T22:35:45.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/139
+- author: TheShuEd
+  changes:
+  - message: "Added trading faction Alcohol Company \u201CRed Heather\u201D. You can\
+      \ buy various alcoholic bottles there!"
+    type: Add
+  id: 1006
+  time: '2025-12-18T11:09:50.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/141
+- author: Oberfuhrer
+  changes:
+  - message: Fixed missing component for the stun effect
+    type: Fix
+  id: 1007
+  time: '2025-12-18T11:18:54.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/140
+- author: Oberfuhrer
+  changes:
+  - message: Emotions can now be used via chat in Russian
+    type: Add
+  id: 1008
+  time: '2025-12-18T12:22:25.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/131
+- author: TheShuEd
+  changes:
+  - message: "The antagonist \u201CThief\u201D has been added. No special equipment\
+      \ yet."
+    type: Add
+  - message: Ambitions are no longer limited by time, and the button for adjusting
+      them has been moved to the CharacterInfo Menu.
+    type: Tweak
+  - message: Added BlueText system, allowing antagonist players to save the results
+      of their adventures and display them on the Round End Screen.
+    type: Add
+  - message: The end-of-round text is now broadcast on Discord.
+    type: Add
+  id: 1009
+  time: '2025-12-19T11:09:30.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/143
+- author: Oberfuhrer
+  changes:
+  - message: FIxed item spawning in the backpack via personalization
+    type: Fix
+  id: 1010
+  time: '2025-12-19T11:09:50.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/144
+- author: Oberfuhrer
+  changes:
+  - message: Added Scrambled Eggs recipe
+    type: Add
+  id: 1011
+  time: '2025-12-19T11:10:49.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/145
+- author: TheShuEd
+  changes:
+  - message: Synced with Upstream
+    type: Add
+  id: 1012
+  time: '2025-12-19T15:47:41.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/103
+- author: TheShuEd
+  changes:
+  - message: Added Golden Peacemaker, a unique weapon that is the target of a thief's
+      theft
+    type: Add
+  - message: Added a precious soup cup
+    type: Add
+  - message: Added a hiding place for the thief
+    type: Add
+  - message: Added a skill for the thief that allows him to track down jewels
+    type: Add
+  - message: Added skills for the thief related to pickpocketing
+    type: Add
+  id: 1013
+  time: '2025-12-20T13:31:03.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/149
+- author: TheShuEd
+  changes:
+  - message: Hotfix upstream sync
+    type: Add
+  - message: Fixed mana glove and charging platform
+    type: Fix
+  - message: Fixed trading platforms & salary platform working without power
+    type: Fix
+  id: 1014
+  time: '2025-12-21T10:59:02.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/151
+- author: Oberfuhrer
+  changes:
+  - message: Hammer added to trade platform's purchase list.
+    type: Add
+  id: 1015
+  time: '2025-12-21T11:06:26.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/153
+- author: Oberfuhrer
+  changes:
+  - message: Nails don't slip when wearing shoes.
+    type: Tweak
+  id: 1016
+  time: '2025-12-21T11:12:01.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/154
+- author: TheShuEd
+  changes:
+  - message: 'Shaar: The chiefs'' rooms now have spare keys to the entire building.'
+    type: Add
+  - message: 'Shaar: More details and secrets around map.'
+    type: Add
+  - message: 'Shaar: Redesign Tavern roof.'
+    type: Add
+  - message: Added ability to build dirt walls
+    type: Add
+  - message: You can anchor conveyours under drill and recyclers now!
+    type: Fix
+  - message: large brick stone walls are now destructible.
+    type: Fix
+  - message: Drills now can break iron doors.
+    type: Fix
+  id: 1017
+  time: '2025-12-21T12:37:46.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/155
+- author: TheShuEd
+  changes:
+  - message: Fixed an issue where Bluetext could not be edited after death.
+    type: Fix
+  id: 1018
+  time: '2025-12-21T17:45:47.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/170
+- author: TheShuEd
+  changes:
+  - message: Crystal lanterns added! Crystal shards work as batteries for this lamp.
+      All references to standard ss14 lanterns and power cells have been removed.
+    type: Add
+  - message: The mana glove no longer attracts or repels on use.
+    type: Remove
+  - message: Green roof tiles have been added. The roof of the tavern on Shaar is
+      now green.
+    type: Add
+  - message: Energy crystals are now destroyed by a lack or excess of energy! An excess
+      of energy causes a standard burst of radiation.
+    type: Add
+  - message: "Energy cells have been added \u2014 crystal shards encased in brass\
+      \ to protect them from accidental breakage. Used by default in lanterns. Can\
+      \ be purchased in the store."
+    type: Add
+  id: 1019
+  time: '2025-12-21T17:52:57.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/171
+- author: TheShuEd
+  changes:
+  - message: Added a Funnel - simple machine that automatically inserts items into
+      a nearby grid-inv attached to the floor on the adjacent tile. Can also eject
+      item from containers if has active conveyor underneath.
+    type: Add
+  id: 1020
+  time: '2025-12-22T22:07:30.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/172
+- author: Oberfuhrer
+  changes:
+  - message: Fixed the gasp emote in critical states.
+    type: Fix
+  id: 1021
+  time: '2025-12-23T12:13:38.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/193
+- author: TheShuEd
+  changes:
+  - message: Coal & Coal ore walls has been added. Also can be buyed in store.
+    type: Add
+  - message: Iron ore walls added.
+    type: Add
+  - message: Added automated melting furnace, can be combined with funnels and conveyors.
+    type: Add
+  - message: food and metalls have become much cheaper
+    type: Tweak
+  id: 1022
+  time: '2025-12-24T17:33:39.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/196
+- author: TheShuEd
+  changes:
+  - message: Guard hoverboard added. A flying single-seater vehicle powered by a battery.
+      Also theft targets.
+    type: Add
+  - message: Carrins can now fly! Stamina is depleted very quickly during flight,
+      and the use of hands is not possible.
+    type: Add
+  - message: Damage from falls greatly reduced
+    type: Tweak
+  id: 1023
+  time: '2025-12-27T18:59:57.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/202
+- author: TheShuEd
+  changes:
+  - message: All mechanisms can now be constructed by players!
+    type: Add
+  - message: All mechanisms now break correctly and can be disassembled into their
+      component parts.
+    type: Tweak
+  - message: Brass pipes are now much cheaper to manufacture.
+    type: Add
+  id: 1024
+  time: '2025-12-28T11:29:58.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/200
+- author: TheShuEd
+  changes:
+  - message: Carcats can now see in the dark
+    type: Add
+  id: 1025
+  time: '2025-12-28T12:08:39.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/205
+- author: Oberfuhrer
+  changes:
+  - message: Fixed workbench unscrewing.
+    type: Fix
+  id: 1026
+  time: '2025-12-29T09:54:36.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/223
+- author: TheShuEd
+  changes:
+  - message: Keys slot was deleted from hotbar. Rounstart keys moved to second belt
+      slot.
+    type: Remove
+  id: 1027
+  time: '2025-12-29T10:51:24.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/224

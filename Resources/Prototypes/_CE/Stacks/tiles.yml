@@ -124,4 +124,11 @@
   icon: { sprite: _CE/Objects/tile.rsi, state: roof_red }
   maxCount: 30
 
+- type: stack
+  id: CEFloorTileRoofGreen
+  name: ce-tiles-roof
+  spawn: CEFloorTileRoofGreen
+  icon: { sprite: _CE/Objects/tile.rsi, state: roof_green }
+  maxCount: 30
+
 

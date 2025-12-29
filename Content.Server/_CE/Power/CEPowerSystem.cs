@@ -5,41 +5,24 @@ using Content.Server.Power.Nodes;
 using Content.Server.Radiation.Systems;
 using Content.Shared._CE.Power;
 using Content.Shared._CE.Power.Components;
-using Content.Shared.Destructible;
 using Content.Shared.Interaction;
 using Content.Shared.NodeContainer;
-using Content.Shared.Popups;
-using Content.Shared.Power.Components;
 using Content.Shared.Radiation.Components;
-using Content.Shared.Timing;
 using Robust.Server.GameObjects;
-using Robust.Shared.Timing;
 
 namespace Content.Server._CE.Power;
 
 public sealed partial class CEPowerSystem : CESharedPowerSystem
 {
     [Dependency] private readonly RadiationSystem _radiation = default!;
-    [Dependency] private readonly PointLightSystem _pointLight = default!;
     [Dependency] private readonly AppearanceSystem _appearance = default!;
     [Dependency] private readonly NodeGroupSystem _nodeGroup = default!;
-    [Dependency] private readonly UseDelaySystem _useDelay = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-
-    private EntityQuery<BatteryComponent> _batteryQuery;
 
     public override void Initialize()
     {
         base.Initialize();
-        InitializeDelayedConnector();
-        InitializeCharger();
-        InitializeGlove();
-
-        _batteryQuery = GetEntityQuery<BatteryComponent>();
 
         SubscribeLocalEvent<CEEnergyLeakComponent, PowerConsumerReceivedChanged>(OnPowerChanged);
-        SubscribeLocalEvent<CEIrradiateOnDestroyComponent, DestructionEventArgs>(OnBatteryDestroyed);
         SubscribeLocalEvent<CEToggleableConnectorComponent, ActivateInWorldEvent>(OnActivateInWorld);
     }
 
@@ -47,7 +30,6 @@ public sealed partial class CEPowerSystem : CESharedPowerSystem
     {
         base.Update(frameTime);
 
-        UpdateDelayedConnectors(frameTime);
         UpdateChargers(frameTime);
     }
 
@@ -67,7 +49,7 @@ public sealed partial class CEPowerSystem : CESharedPowerSystem
 
     private void OnActivateInWorld(Entity<CEToggleableConnectorComponent> ent, ref ActivateInWorldEvent args)
     {
-        if (_useDelay.IsDelayed(ent.Owner))
+        if (UseDelay.IsDelayed(ent.Owner))
             return;
 
         if (!TryComp<NodeContainerComponent>(ent, out var nodeContainer))
@@ -77,22 +59,14 @@ public sealed partial class CEPowerSystem : CESharedPowerSystem
         ent.Comp.Active = newState;
         ToggleConnector((ent, nodeContainer), newState);
 
-        _useDelay.TryResetDelay(ent);
-    }
-
-    private void OnBatteryDestroyed(Entity<CEIrradiateOnDestroyComponent> ent, ref DestructionEventArgs args)
-    {
-        if (!TryComp<BatteryComponent>(ent, out var battery))
-            return;
-
-        Irradiate(Transform(ent).Coordinates, battery.CurrentCharge, ent.Comp.Time);
+        UseDelay.TryResetDelay(ent);
     }
 
     private void OnPowerChanged(Entity<CEEnergyLeakComponent> ent, ref PowerConsumerReceivedChanged args)
     {
         var enabled = args.ReceivedPower >= 0;
 
-        _pointLight.SetEnabled(ent, enabled);
+        PointLight.SetEnabled(ent, enabled);
 
         if (TryComp<RadiationSourceComponent>(ent, out var radComp))
         {

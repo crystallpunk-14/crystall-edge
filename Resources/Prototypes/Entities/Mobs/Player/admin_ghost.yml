@@ -111,8 +111,8 @@
   - type: ExplosionResistance
     damageCoefficient: 0
   # CrystallEdge
-  - type: CEZLevelGhostMover
   - type: CEShowVampireIcons
+  - type: CETradingReputation
 
 - type: entity
   abstract: true

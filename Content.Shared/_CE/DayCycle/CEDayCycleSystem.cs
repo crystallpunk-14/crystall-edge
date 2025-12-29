@@ -1,10 +1,9 @@
-using Content.Shared.Administration;
+using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.GameTicking;
 using Content.Shared.Light.Components;
 using Content.Shared.Light.EntitySystems;
 using Content.Shared.Storage.Components;
 using Content.Shared.Weather;
-using Robust.Shared.Console;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Timing;
 
@@ -30,6 +29,21 @@ public sealed class CEDayCycleSystem : EntitySystem
 
         _mapGridQuery = GetEntityQuery<MapGridComponent>();
         _storageQuery = GetEntityQuery<InsideEntityStorageComponent>();
+
+        SubscribeLocalEvent<CEZLevelMapComponent, CEStartDayEvent>(OnStartDay);
+        SubscribeLocalEvent<CEZLevelMapComponent, CEStartNightEvent>(OnStartNight);
+    }
+
+    private void OnStartDay(Entity<CEZLevelMapComponent> ent, ref CEStartDayEvent args)
+    {
+        if (ent.Comp.Depth == 0)
+            RaiseLocalEvent(new CEGlobalStartDayEvent());
+    }
+
+    private void OnStartNight(Entity<CEZLevelMapComponent> ent, ref CEStartNightEvent args)
+    {
+        if (ent.Comp.Depth == 0)
+            RaiseLocalEvent(new CEGlobalStartNightEvent());
     }
 
     public override void Update(float frameTime)
@@ -146,4 +160,18 @@ public sealed class CEStartNightEvent(EntityUid mapUid) : EntityEventArgs
 public sealed class CEStartDayEvent(EntityUid mapUid) : EntityEventArgs
 {
     public EntityUid MapUid = mapUid;
+}
+
+/// <summary>
+/// called as bloadcast when the day begins on the main station map
+/// </summary>
+public sealed class CEGlobalStartDayEvent : EntityEventArgs
+{
+}
+
+/// <summary>
+/// called as bloadcast when the night begins on the main station map
+/// </summary>
+public sealed class CEGlobalStartNightEvent : EntityEventArgs
+{
 }

@@ -15,6 +15,10 @@
     - !type:CEAddTradingReputationSpecial
       factions:
       - EmpireGuard
+    - !type:AddComponentSpecial
+      components:
+      - type: CESalaryCounter
+        salary: 200
   #requirements:
   #  - !type:DepartmentTimeRequirement
   #    department: CEGuard
@@ -23,8 +27,9 @@
 - type: startingGear
   id: CEGuardCommanderGear
   equipment:
-    keys: CEKeyRingGuardCommander
-    belt: CEWalletFilledGuardCommander
+    belt: CEKeyRingGuardCommander
+    belt2: CEGunJustice
+    pocket1: CEWalletFilledGuardCommander
 
 - type: entity
   id: CEWalletFilledGuardCommander

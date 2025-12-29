@@ -52,3 +52,13 @@
   license: "CC-BY-4.0"
   copyright: 'by Benboncan of Freesound.org. Cropped and mixed from stereo to mono.'
   source: "https://freesound.org/people/Benboncan/sounds/64544/"
+
+- files: ["hoverboard.ogg"]
+  license: "CC0-1.0"
+  copyright: 'by denstoltejyde of Freesound.org.'
+  source: "https://freesound.org/people/denstoltejyde/sounds/553745/"
+
+- files: ["wings_loop.ogg"]
+  license: "CC0-1.0"
+  copyright: 'by tothrec2 of Freesound.org.'
+  source: "https://freesound.org/people/tothrec2/sounds/596541/"

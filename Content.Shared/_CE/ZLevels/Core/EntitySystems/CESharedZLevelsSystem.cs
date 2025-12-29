@@ -1,3 +1,8 @@
+/*
+ * This file is sublicensed under MIT License
+ * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
+ */
+
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Shared._CE.ZLevels.Core.Components;
@@ -30,6 +35,8 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
     private EntityQuery<CEZLevelMapComponent> _zMapQuery;
     private EntityQuery<MapGridComponent> _gridQuery;
 
+    protected EntityQuery<CEZPhysicsComponent> ZPhyzQuery = default!;
+
     public const float ZLevelOffset = 0.7f;
 
     public override void Initialize()
@@ -39,9 +46,11 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
         _mapQuery = GetEntityQuery<MapComponent>();
         _zMapQuery = GetEntityQuery<CEZLevelMapComponent>();
         _gridQuery = GetEntityQuery<MapGridComponent>();
+        ZPhyzQuery = GetEntityQuery<CEZPhysicsComponent>();
 
         InitMovement();
         InitView();
+        InitializeActivation();
         InitBind();
     }
 

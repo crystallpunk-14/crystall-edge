@@ -1,0 +1,90 @@
+- type: entity
+  id: CEZLevelsLadderRoofBase
+  name: roof tile
+  description: Roof tiles, for covering building roofs.
+  abstract: true
+  components:
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Rock
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 30
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEStoneBlock1:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+# Red
+
+- type: entity
+  parent:
+  - CEZLevelLadderBase
+  - CEZLevelsLadderRoofBase
+  id: CEZLevelsLadderRoofRed
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Ladders/roof_red.rsi
+
+- type: entity
+  parent:
+  - CEZLevelLadderCornerBase
+  - CEZLevelsLadderRoofBase
+  id: CEZLevelsLadderRoofRedCorner
+  suffix: Corner
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Ladders/roof_red.rsi
+
+- type: entity
+  parent:
+  - CEZLevelLadderCornerInnerBase
+  - CEZLevelsLadderRoofBase
+  id: CEZLevelsLadderRoofRedCornerInner
+  suffix: Inner Corner
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Ladders/roof_red.rsi
+
+# Green
+
+- type: entity
+  parent:
+  - CEZLevelLadderBase
+  - CEZLevelsLadderRoofBase
+  id: CEZLevelsLadderRoofGreen
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Ladders/roof_green.rsi
+
+- type: entity
+  parent:
+  - CEZLevelLadderCornerBase
+  - CEZLevelsLadderRoofBase
+  id: CEZLevelsLadderRoofGreenCorner
+  suffix: Corner
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Ladders/roof_green.rsi
+
+- type: entity
+  parent:
+  - CEZLevelLadderCornerInnerBase
+  - CEZLevelsLadderRoofBase
+  id: CEZLevelsLadderRoofGreenCornerInner
+  suffix: Inner Corner
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Ladders/roof_green.rsi
+

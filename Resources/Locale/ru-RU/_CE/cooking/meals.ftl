@@ -4,6 +4,9 @@ ce-meal-recipe-trash-desc = Один взгляд вызывает у вас р�
 ce-meal-recipe-burned-trash-name = сгоревшая масса
 ce-meal-recipe-burned-trash-desc = Это могло быть вкусной едой, но повар перестарался с термической обработкой.
 
+ce-meal-recipe-scrambled-eggs-name = яишница
+ce-meal-recipe-scrambled-eggs-desc = Яишница — простое и сытное блюдо.
+
 ce-meal-recipe-green-salad-name = овощной салат
 ce-meal-recipe-green-salad-desc = Зеленый салат из различных трав и овощей.
 

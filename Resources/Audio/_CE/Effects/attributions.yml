@@ -102,3 +102,33 @@
   license: "CC-BY-4.0"
   copyright: 'by 211redman112 on Freesound.org'
   source: "https://freesound.org/people/211redman112/sounds/234083/"
+
+- files: ["energy_pulse.ogg"]
+  license: "CC-BY-4.0"
+  copyright: 'by SilverIllusionist on Freesound.org'
+  source: "https://freesound.org/people/SilverIllusionist/sounds/673531/"
+
+- files: ["energy_charge.ogg", "energy_pulse2.ogg"]
+  license: "CC-BY-4.0"
+  copyright: 'by tjcason on Freesound.org'
+  source: "https://freesound.org/people/tjcason/sounds/390475/"
+
+- files: ["treasure_effect.ogg"]
+  license: "CC0-1.0"
+  copyright: 'by el_boss on Freesound.org'
+  source: "https://freesound.org/people/el_boss/sounds/817813/"
+
+- files: ["crystal_eject.ogg", "crystal_insert.ogg"]
+  license: "CC-BY-4.0"
+  copyright: 'by Joachim_Berger of Freesound.org. Cropped by TheShuEd.'
+  source: "https://freesound.org/people/Joachim_Berger/sounds/660526/"
+
+- files: ["furnace_end.ogg"]
+  license: "CC0-1.0"
+  copyright: 'by GrimGrum of Freesound.org. Cropped and mixed from stereo to mono.'
+  source: "https://freesound.org/people/GrimGrum/sounds/412558/"
+
+- files: ["furnace_start.ogg"]
+  license: "CC-BY-NC-4.0"
+  copyright: 'by pushtobreak of Freesound.org. Cropped and mixed from stereo to mono.'
+  source: "https://freesound.org/people/pushtobreak/sounds/17759/"

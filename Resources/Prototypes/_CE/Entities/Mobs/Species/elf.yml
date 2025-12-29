@@ -29,7 +29,10 @@
     prototype: CEElf
     requiredLegs: 2
   - type: Bloodstream
-    bloodReagent: CEBloodElf
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: CEBloodElf
+        Quantity: 1
 #  - type: CP14MagicEnergyContainer #Increased mana container
 #    maxEnergy: 200
 #    energy: 200

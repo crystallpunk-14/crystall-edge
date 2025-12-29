@@ -8,6 +8,14 @@
   icon: CEJobIconInvestigator
   supervisors: ce-job-supervisors-guard-commander
   canBeAntag: false
+  special:
+    - !type:CEAddTradingReputationSpecial
+      factions:
+      - EmpireGuard
+    - !type:AddComponentSpecial
+      components:
+      - type: CESalaryCounter
+        salary: 75
   #requirements:
   #  - !type:DepartmentTimeRequirement
   #    department: CEGuard
@@ -16,8 +24,9 @@
 - type: startingGear
   id: CEInvestigatorGear
   equipment:
-    keys: CEKeyRingInvestigator
-    belt: CEWalletFilledInvestigator
+    belt: CEKeyRingInvestigator
+    belt2: CEGunJustice
+    pocket1: CEWalletFilledInvestigator
 
 
 - type: entity

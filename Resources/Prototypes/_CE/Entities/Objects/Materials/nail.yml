@@ -48,6 +48,7 @@
   - type: StepTrigger
     intersectRatio: 0.2
   - type: TriggerOnStepTrigger
+  - type: PreventableStepTrigger
   - type: Slippery
     slipSound:
       path: /Audio/Effects/weak_hit2.ogg

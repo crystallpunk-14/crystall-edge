@@ -1,12 +1,16 @@
 - type: entity
   abstract: true
-  parent: [ BaseMachine, ConstructibleMachine ]
+  parent: 
+  - CEConstructibleMachine
+  - BaseMachine
   id: CEDistributionUnitBase
   categories: [ ForkFiltered ]
   name: power distribution unit
   placement:
     mode: SnapgridCenter
   components:
+  - type: Machine
+    board: CEMachineCoreDistributionUnit
   - type: PlacementReplacement
     key: walls
   #- type: AmbientSound
@@ -39,6 +43,11 @@
   #  numChargeLevels: 1
   - type: Appearance
   - type: Battery
+    # Very important:
+    # Disable networking to prevent the battery getting continuously dirtied every tick as it interacts with the power network.
+    # This can not be done by changing the charge rate as the power supply ramps up over time.
+    # This disables prediction for this battery.
+    netsync: false
     maxCharge: 250
     startingCharge: 0
   - type: ExaminableBattery #TODO Change to mana specific

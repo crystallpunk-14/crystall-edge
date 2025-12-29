@@ -56,6 +56,13 @@
 #      blacklist:
 #        tags:
 #          - PetOnly
+    - name: outerClothing
+      slotTexture: suit
+      slotFlags: OUTERCLOTHING
+      stripTime: 6
+      uiWindowPos: 2,2
+      strippingWindowPos: 1,2
+      displayName: Suit
     - name: cloak
       slotTexture: cloak
       slotFlags: CLOAK
@@ -71,15 +78,6 @@
       strippingWindowPos: 0,4
       dependsOn: pants
       displayName: Belt
-    - name: keys
-      slotTexture: keys
-      slotFlags: KEYS
-      slotGroup: SecondHotbar
-      uiWindowPos: 0,0
-      strippingWindowPos: 2,5
-      dependsOn: pants
-      displayName: Keys
-      stripHidden: true
     - name: back
       slotTexture: back
       slotFlags: BACK

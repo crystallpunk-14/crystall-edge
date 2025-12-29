@@ -12,8 +12,8 @@
 - type: startingGear
   id: CEFarmerGear
   equipment:
-    keys: CEKeyRingFarmer
-    belt: CEWalletFilledFarmer
+    belt: CEKeyRingFarmer
+    pocket1: CEWalletFilledFarmer
 
 
 - type: entity

@@ -1,5 +1,38 @@
 - type: entity
   abstract: true
+  id: CEConstructibleMachine
+  components:
+  - type: Animateable
+  - type: Machine
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+  - type: Construction
+    graph: CEMachine
+    node: machine
+    containers:
+    - machine_parts
+    - machine_board
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 80
+      behaviors:
+      - !type:ChangeConstructionNodeBehavior
+        node: machineFrame
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+
+- type: entity
+  abstract: true
   parent: BaseMachine
   id: CEBaseMachinePowered
   components:

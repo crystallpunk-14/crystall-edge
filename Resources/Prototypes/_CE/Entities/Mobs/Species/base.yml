@@ -207,6 +207,7 @@
   - MobFlammable
   - CEMobStarving
   - CEBaseMobSpecies
+  - CEMobRespirator
   id: CEBaseMobSpeciesOrganic
   save: false
   abstract: true
@@ -243,7 +244,10 @@
     - Adrenaline
   - type: Blindable
   - type: Bloodstream
-    bloodReagent: CEBlood
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: CEBlood
+        Quantity: 1
   - type: FireVisuals
     sprite: _CE/Mobs/Effects/onfire.rsi
     normalState: Small_burning

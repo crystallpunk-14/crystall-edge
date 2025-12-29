@@ -64,7 +64,7 @@ public abstract partial class CESharedActionSystem
             var spellEv = new CESpellFromSpellStorageUsedEvent(args.Performer, ent, manaCost);
             RaiseLocalEvent(action.Container.Value, ref spellEv);
 
-            var energyTaken = MathF.Min(battery.CurrentCharge, (float)manaCost);
+            var energyTaken = MathF.Min(battery.LastCharge, (float)manaCost);
 
             _battery.ChangeCharge((action.Container.Value, battery), -(float)manaCost);
             manaCost -= energyTaken;

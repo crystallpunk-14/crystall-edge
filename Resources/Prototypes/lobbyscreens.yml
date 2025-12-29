@@ -1,19 +1,29 @@
 - type: lobbyBackground
   id: TypicalAlchemistDay
   background: /Textures/_CE/LobbyScreens/typicalAlchemistDay.webp
+  title: ce-lobby-state-background-alchemistday-title
+  artist: ce-lobby-state-background-alchemistday-artist
 
 - type: lobbyBackground
   id: WeRich
   background: /Textures/_CE/LobbyScreens/we_rich.webp
+  title: ce-lobby-state-background-werich-title
+  artist: ce-lobby-state-background-werich-artist
 
 - type: lobbyBackground
   id: Angel
   background: /Textures/_CE/LobbyScreens/angel.webp
+  title: ce-lobby-state-background-angel-title
+  artist: ce-lobby-state-background-angel-artist
 
 - type: lobbyBackground
   id: TeaTime
   background: /Textures/_CE/LobbyScreens/tea_time.webp
+  title: ce-lobby-state-background-teatime-title
+  artist: ce-lobby-state-background-teatime-artist
 
 - type: lobbyBackground
   id: Forestry
   background: /Textures/_CE/LobbyScreens/forestry.webp
+  title: ce-lobby-state-background-forestry-title
+  artist: ce-lobby-state-background-forestry-artist

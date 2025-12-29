@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/10/2025 14:35:03
-  entityCount: 17
+  time: 12/25/2025 21:30:23
+  entityCount: 15
 maps:
 - 1
 grids:
@@ -77,8 +77,6 @@ entities:
       chunkCollection:
         version: 2
         nodes: []
-    - type: BecomesStation
-      id: Dev
     - type: SunShadowCycle
       directions:
       - direction: 0,3
@@ -104,22 +102,7 @@ entities:
       fibers: []
       fingerprints: []
     - type: RadiationGridResistance
-  - uid: 2
-    components:
-    - type: MetaData
-    - type: Transform
-      gridTraversal: False
-      pos: -0.14840114,-4.295363
-      parent: 1
-    - type: ViewSubscriber
-  - uid: 9
-    components:
-    - type: MetaData
-    - type: Transform
-      gridTraversal: False
-      pos: -5.1592636,3.297735
-      parent: 1
-    - type: ViewSubscriber
+    - type: ExplosionAirtightGrid
 - proto: CEPipeBrassMedium
   entities:
   - uid: 5

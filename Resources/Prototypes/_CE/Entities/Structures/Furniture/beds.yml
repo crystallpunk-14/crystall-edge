@@ -7,11 +7,13 @@
   description: Wooden bed. Better than nothing.
   categories: [ ForkFiltered ]
   components:
-  #- type: HealOnBuckle
-  #  damage:
-  #    types:
-  #      Poison: -0.1
-  #      Blunt: -0.1
+  - type: HealOnBuckle
+    damage:
+      types:
+        Poison: -0.2
+        Cold: -0.4
+        Blunt: -0.2
+        Shock: -0.2
   - type: Physics
     bodyType: Static
   - type: Fixtures

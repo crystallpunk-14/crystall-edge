@@ -59,7 +59,7 @@ public abstract partial class CESharedActionSystem
 
         //First - trying get mana from item
         if (action.Container is not null && TryComp<BatteryComponent>(action.Container, out var battery))
-            requiredMana = MathF.Max(0, (float)(requiredMana - battery.CurrentCharge));
+            requiredMana = MathF.Max(0, (float)(requiredMana - battery.LastCharge));
 
         if (requiredMana <= 0)
             return;
@@ -72,7 +72,7 @@ public abstract partial class CESharedActionSystem
             return;
         }
 
-        if (playerMana.CurrentCharge < requiredMana && _timing.IsFirstTimePredicted)
+        if (playerMana.LastCharge < requiredMana && _timing.IsFirstTimePredicted)
             Popup.PopupClient(Loc.GetString($"ce-magic-spell-not-enough-mana-cast-warning-{_random.Next(5)}"),
                 args.User,
                 args.User,

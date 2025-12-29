@@ -30,6 +30,7 @@
         sound:
           collection: MeatLaserImpact
   - type: Stamina
+  - type: StunVisuals
   - type: MobState
   - type: MobThresholds
     thresholds:
@@ -72,6 +73,20 @@
         Cold: 0.25
         Bloodloss: 0.25
   - type: Thirst
+
+# Used for mobs that need to breathe
+- type: entity
+  save: false
+  id: CEMobRespirator
+  abstract: true
+  components:
+  - type: Respirator
+    damage:
+      types:
+        Asphyxiation: 2
+    damageRecovery:
+      types:
+        Asphyxiation: -1.0
 
 - type: entity
   id: CEMobMagical

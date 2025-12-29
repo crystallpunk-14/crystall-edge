@@ -1,7 +1,14 @@
+/*
+ * This file is sublicensed under MIT License
+ * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
+ */
+
 using System.Numerics;
+using Content.Client.Damage.Systems;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Camera;
+using Content.Shared.Damage.Components;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 
@@ -15,6 +22,7 @@ public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
     [Dependency] private readonly IOverlayManager _overlay = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
     [Dependency] private readonly IEyeManager _eye = default!;
+    [Dependency] private readonly AnimationPlayerSystem _animation = default!;
 
 
     public override void Initialize()
@@ -29,7 +37,8 @@ public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
     private void OnEyeOffset(Entity<CEZPhysicsComponent> ent, ref GetEyeOffsetEvent args)
     {
         Angle rotation = _eye.CurrentEye.Rotation * -1;
-        var offset = rotation.RotateVec(new Vector2(0, ent.Comp.LocalPosition * ZLevelOffset)); //_eye.CurrentEye.Rotation.ToWorldVec();
+        var localPosition = GetVisualsLocalPosition((ent, ent), Transform(ent));
+        var offset = rotation.RotateVec(new Vector2(0, localPosition * ZLevelOffset));
         args.Offset += offset;
     }
 
@@ -50,17 +59,45 @@ public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
     {
         base.Update(frameTime);
 
-        var query = EntityQueryEnumerator<CEActiveZPhysicsComponent, CEZPhysicsComponent, SpriteComponent>();
-        while (query.MoveNext(out var uid, out var _, out var zPhys, out var sprite))
+        var query = EntityQueryEnumerator<CEZPhysicsComponent, SpriteComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var zPhys, out var sprite, out var xform))
         {
-            if (zPhys.LocalPosition != 0)
-                sprite.NoRotation = true;
-            else
-                sprite.NoRotation = zPhys.NoRotDefault;
+            var localPosition = GetVisualsLocalPosition((uid, zPhys), xform);
 
-            _sprite.SetOffset((uid, sprite), zPhys.SpriteOffsetDefault + new Vector2(0, zPhys.LocalPosition * ZLevelOffset));
-            _sprite.SetDrawDepth((uid, sprite), zPhys.LocalPosition > 0 ? (int)Shared.DrawDepth.DrawDepth.OverMobs : zPhys.DrawDepthDefault);
+            sprite.NoRotation = localPosition != 0 || zPhys.NoRotDefault;
+
+            _sprite.SetOffset((uid, sprite), zPhys.SpriteOffsetDefault + new Vector2(0, localPosition * ZLevelOffset));
+            _sprite.SetDrawDepth((uid, sprite), localPosition > 0 ? (int)Shared.DrawDepth.DrawDepth.OverMobs : zPhys.DrawDepthDefault);
         }
+
+        // Update StartOffset for entities with running fatigue animations
+        // This allows animations to follow dynamic offset changes (e.g., from Z-levels system)
+        var query2 = EntityQueryEnumerator<StaminaComponent, SpriteComponent, CEZPhysicsComponent>();
+        while (query2.MoveNext(out var uid, out var stamina, out var sprite, out var zPhys))
+        {
+            // Only update if animation is running
+            if (!_animation.HasRunningAnimation(uid, StaminaSystem.StaminaAnimationKey))
+                continue;
+
+            // Update the base offset to track changes made by other systems
+            stamina.StartOffset = zPhys.SpriteOffsetDefault;
+        }
+    }
+
+
+    public float GetVisualsLocalPosition(Entity<CEZPhysicsComponent?> ent, TransformComponent? xform = null)
+    {
+        if (!Resolve(ent, ref ent.Comp, false))
+            return 0;
+        if (!Resolve(ent, ref xform, false))
+            return 0;
+
+        var pos = ent.Comp.LocalPosition;
+
+        if (xform.ParentUid != xform.MapUid && ZPhyzQuery.TryComp(xform.ParentUid, out var parentZPhys))
+            pos = parentZPhys.LocalPosition;
+
+        return pos;
     }
 
     public override void Shutdown()

@@ -15,3 +15,13 @@ public sealed class UpdateCanMoveEvent : CancellableEntityEventArgs
 
     public EntityUid Uid { get; }
 }
+
+//CrystallEdge: vehicles
+
+/// <summary>
+/// Event raised directed on an entity when their value of <see cref="InputMoverComponent.CanMove"/> is updated.
+/// </summary>
+[ByRefEvent]
+public readonly record struct CECanMoveUpdatedEvent(bool CanMove);
+
+//CrystallEdge: vehicles end

@@ -15,6 +15,9 @@
         },
         {
             "name": "iron"
+        },
+        {
+            "name": "iron_treasure"
         }
     ]
 }

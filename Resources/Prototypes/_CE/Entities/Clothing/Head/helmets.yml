@@ -19,6 +19,11 @@
     sprite: _CE/Clothing/Head/Helmets/guard_corinthian.rsi
   - type: Clothing
     sprite: _CE/Clothing/Head/Helmets/guard_corinthian.rsi
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - HeadTop
+    - HeadSide
 
 - type: entity
   parent: CEClothingHeadBase
@@ -41,3 +46,28 @@
     sprite: _CE/Clothing/Head/Helmets/metalheadband.rsi
   - type: Clothing
     sprite: _CE/Clothing/Head/Helmets/metalheadband.rsi
+
+- type: entity
+  parent: CEClothingHeadBase
+  id: CEClothingHeadHelmetBrassInsulator
+  name: brass insulator
+  description: A simple but effective magical energy insulator for the head. Not the most robust protection, but it works great for shielding against excess magical energy.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Head/Helmets/brass_insulator.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Head/Helmets/brass_insulator.rsi
+  - type: CEEnergyRadiationArmor
+    armor: 0.25
+  - type: MultiHandedItem
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - HeadTop
+    - HeadSide
+  - type: Armor
+    modifiers:
+      coefficients:
+        Shock: 0.9
+  - type: StaticPrice
+    price: 100

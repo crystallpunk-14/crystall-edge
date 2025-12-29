@@ -19,12 +19,13 @@ log_late_msg = false
 
 [game]
 hostname = "⚔️ CrystallEdge ⚔️ [MRP]"
-desc = "History of the City of Sword and Magic. A social economic sandbox reinventing the Space Station 14 concept in fantasy style"
+desc = "History of the Floating Island city of Sword and Magic. A social sandbox reinventing the Space Station 14 concept in fantasy style"
 lobbyenabled = true
 soft_max_players = 30
 maxplayers = 40
 lobbyduration = 300
 role_timers = true
+closed_beta_test = true
 
 [server]
 rules_file = "CERules"

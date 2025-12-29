@@ -3,6 +3,7 @@
 - type: roleLoadout
   id: JobCETavernmaster
   groups:
+  - CEGeneralBag
   - CETavernmasterHead #
   #- CEGeneralEyes
   - CETavernmasterCloak #
@@ -14,6 +15,7 @@
 - type: roleLoadout
   id: JobCEChef
   groups:
+  - CEGeneralBag
   - CEChefHead
   #- CEGeneralEyes
   #- CEGeneralGloves
@@ -26,6 +28,7 @@
 - type: roleLoadout
   id: JobCEGuardCommander
   groups:
+  - CEGeneralBag
   - CEGuardHead
   #- CEGeneralEyes
   - CEGuardCommanderCloak #
@@ -37,6 +40,7 @@
 - type: roleLoadout
   id: JobCEInvestigator
   groups:
+  - CEGeneralBag
   - CEInvestigatorHead
   #- CEGeneralEyes
   - CEInvestigatorCloak #
@@ -44,11 +48,11 @@
   - CEGuardShirt
   - CEGuardPants
   - CEGeneralShoes
-  #- CEGeneralBack
 
 - type: roleLoadout
   id: JobCEGuard
   groups:
+  - CEGeneralBag
   - CEGuardHead
   #- CEGeneralEyes
   - CEGuardCloak #
@@ -62,6 +66,7 @@
 - type: roleLoadout
   id: JobCETownfolk
   groups:
+  - CEGeneralBag
   - CETownfolkHead
   - CEGeneralShirt
   - CEGeneralPants
@@ -70,6 +75,7 @@
 - type: roleLoadout
   id: JobCEBard
   groups:
+  - CEGeneralBag
   - CEBardHead
   - CEBardShirt
   - CEBardPants

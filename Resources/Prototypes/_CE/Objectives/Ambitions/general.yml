@@ -234,3 +234,46 @@
     name: ce-ambition-peacemaker-name
     desc: ce-ambition-peacemaker-desc
     weight: 2 # Roleplay challenge
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionParanoidal
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-paranoidal-name
+    desc: ce-ambition-paranoidal-desc
+    weight: 2 # Fun
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionInnocentSoul
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-innocent-soul-name
+    desc: ce-ambition-innocent-soul-desc
+    weight: 2 # Fun
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionHoverboard
+  components:
+  - type: CEAmbitionObjective
+    conditions:
+      - !type:RequiredSpecies #Dont make sense for carrins
+        inverted: true
+        species:
+        - CECarrin
+    name: ce-ambition-hoverboard-name
+    desc: ce-ambition-hoverboard-desc
+    weight: 1
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionHoverboardRace
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-hoverboard-race-name
+    desc: ce-ambition-hoverboard-race-desc
+    weight: 1
+    parsings:
+      NAME: !type:RandomOtherPerson

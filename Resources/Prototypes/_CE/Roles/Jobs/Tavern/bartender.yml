@@ -12,8 +12,8 @@
 - type: startingGear
   id: CEBartenderGear
   equipment:
-    keys: CEKeyRingBartender
-    belt: CEWalletFilledBartender
+    belt: CEKeyRingBartender
+    pocket1: CEWalletFilledBartender
 
 
 - type: entity

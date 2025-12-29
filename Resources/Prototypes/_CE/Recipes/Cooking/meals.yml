@@ -13,6 +13,20 @@
 # 1 req
 
 - type: CECookingRecipe
+  id: ScrambledEggs
+  foodType: Meal
+  foodData:
+    name: ce-meal-recipe-scrambled-eggs-name
+    desc: ce-meal-recipe-scrambled-eggs-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Meals/food.rsi
+      state: scrambled_eggs
+  requirements:
+  - !type:TagRequired
+    tags:
+    - CEEgg
+
+- type: CECookingRecipe
   id: GreenSalad
   foodType: Meal
   foodData:

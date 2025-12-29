@@ -55,11 +55,12 @@ namespace Content.Client.RoundEnd
             };
             var roundEndSummaryContainer = new BoxContainer
             {
-                Orientation = LayoutOrientation.Vertical
+                Orientation = LayoutOrientation.Vertical,
+                HorizontalExpand = true //CrystallEdge added: wrap lines
             };
 
             //Gamemode Name
-            var gamemodeLabel = new RichTextLabel();
+            var gamemodeLabel = new RichTextLabel { MaxWidth = 450 };  //CrystallEdge added: wrap lines
             var gamemodeMessage = new FormattedMessage();
             gamemodeMessage.AddMarkupOrThrow(Loc.GetString("round-end-summary-window-round-id-label", ("roundId", roundId)));
             gamemodeMessage.AddText(" ");
@@ -68,7 +69,7 @@ namespace Content.Client.RoundEnd
             roundEndSummaryContainer.AddChild(gamemodeLabel);
 
             //Duration
-            var roundTimeLabel = new RichTextLabel();
+            var roundTimeLabel = new RichTextLabel { MaxWidth = 450 };  //CrystallEdge added: wrap lines
             roundTimeLabel.SetMarkup(Loc.GetString("round-end-summary-window-duration-label",
                                                    ("hours", roundDuration.Hours),
                                                    ("minutes", roundDuration.Minutes),
@@ -78,7 +79,7 @@ namespace Content.Client.RoundEnd
             //Round end text
             if (!string.IsNullOrEmpty(roundEnd))
             {
-                var roundEndLabel = new RichTextLabel();
+                var roundEndLabel = new RichTextLabel { MaxWidth = 450 };  //CrystallEdge added: wrap lines
                 roundEndLabel.SetMarkup(roundEnd);
                 roundEndSummaryContainer.AddChild(roundEndLabel);
             }

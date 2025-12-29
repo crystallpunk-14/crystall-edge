@@ -93,7 +93,7 @@
           collection: MetalBreak
       - !type:SpawnEntitiesBehavior
         spawn:
-          CEIronScrap1:
+          CEScrapIron1:
             min: 2
             max: 4
       - !type:DoActsBehavior
