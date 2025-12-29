@@ -36,7 +36,6 @@
     - map: [ "ears" ]
     - map: [ "outerClothing" ]
     - map: [ "cloak" ]
-    - map: [ "eyes" ]
     - map: [ "belt" ]
     - map: [ "belt2" ]
     - map: [ "neck" ]
@@ -45,6 +44,7 @@
     - map: [ "enum.HumanoidVisualLayers.Hair" ]
     - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
     - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+    - map: [ "eyes" ] # differen sequence of layers for correct display
     - map: [ "enum.HumanoidVisualLayers.Tail" ]
     - map: [ "mask" ]
     - map: [ "head" ]
@@ -224,10 +224,10 @@
     - map: [ "neck" ]
     - map: [ "back" ]
     - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
-    - map: [ "eyes" ]
     - map: [ "enum.HumanoidVisualLayers.Hair" ]
     - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
     - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+    - map: [ "eyes" ] # differen sequence of layers for correct display
     - map: [ "enum.HumanoidVisualLayers.Tail" ]
     - map: [ "mask" ]
     - map: [ "head" ]
