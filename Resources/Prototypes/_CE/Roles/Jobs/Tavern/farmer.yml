@@ -12,7 +12,7 @@
 - type: startingGear
   id: CEFarmerGear
   equipment:
-    keys: CEKeyRingFarmer
+    belt1: CEKeyRingFarmer
     pocket1: CEWalletFilledFarmer
 
 

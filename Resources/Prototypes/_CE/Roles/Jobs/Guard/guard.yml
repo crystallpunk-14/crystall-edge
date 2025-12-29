@@ -20,9 +20,9 @@
 - type: startingGear
   id: CEGuardGear
   equipment:
-    keys: CEKeyRingGuard
-    pocket1: CEWalletFilledGuard
+    belt1: CEKeyRingGuard
     belt2: CEGunJustice
+    pocket1: CEWalletFilledGuard
 
 
 - type: entity

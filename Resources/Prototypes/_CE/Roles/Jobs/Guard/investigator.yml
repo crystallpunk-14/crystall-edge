@@ -24,9 +24,9 @@
 - type: startingGear
   id: CEInvestigatorGear
   equipment:
-    keys: CEKeyRingInvestigator
-    pocket1: CEWalletFilledInvestigator
+    belt1: CEKeyRingInvestigator
     belt2: CEGunJustice
+    pocket1: CEWalletFilledInvestigator
 
 
 - type: entity
