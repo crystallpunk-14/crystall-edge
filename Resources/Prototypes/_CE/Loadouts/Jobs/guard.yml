@@ -37,9 +37,9 @@
   - CEClothingCloakRaincoatGuard
 
 - type: loadout
-  id: CEClothingRaincoatGuard
+  id: CEClothingCloakRaincoatGuard
   equipment:
-    cloak: CEClothingRaincoatGuard
+    cloak: CEClothingCloakRaincoatGuard
 
 # Head
 
