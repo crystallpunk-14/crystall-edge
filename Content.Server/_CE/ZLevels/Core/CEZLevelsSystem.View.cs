@@ -124,6 +124,9 @@ public sealed partial class CEZLevelsSystem
         // We constantly load the upper z-level for the client so that you can quickly look up and climb stairs without PVS lag.
         for (var i = 1; i <= MaxZLevelsAboveRendering; i++)
         {
+            if (!TryMapOffset(map.Value, i, out var aboveMapUid))
+                break;
+
             var newEye = SpawnAtPosition(_zEyeProto, new EntityCoordinates(aboveMapUid.Value, globalPos));
 
             Transform(newEye).GridTraversal = false;
