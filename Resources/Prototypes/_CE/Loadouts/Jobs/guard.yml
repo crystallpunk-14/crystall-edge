@@ -34,7 +34,7 @@
   name: ce-loadout-cloak
   minLimit: 0
   loadouts:
-  - CEClothingRaincoatGuard
+  - CEClothingCloakRaincoatGuard
 
 - type: loadout
   id: CEClothingRaincoatGuard
