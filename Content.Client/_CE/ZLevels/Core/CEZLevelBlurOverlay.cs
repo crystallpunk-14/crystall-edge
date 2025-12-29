@@ -35,7 +35,10 @@ public sealed class CEZLevelBlurOverlay : Overlay
         if (args.Viewport.Eye is not ScalingViewport.ZEye zeye)
             return false;
 
-        if (zeye.Depth >= 0)
+        if (zeye.Depth >= zeye.HighestDepth)
+            return false;
+
+        if (zeye.Depth == 0)
             return false;
 
         if (args.MapId == MapId.Nullspace)
