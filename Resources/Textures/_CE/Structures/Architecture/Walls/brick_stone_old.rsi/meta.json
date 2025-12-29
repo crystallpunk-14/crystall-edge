@@ -14,6 +14,10 @@
       "name": "frame"
     },
     {
+      "name": "corner",
+      "directions": 4
+    },
+    {
       "name": "stonebricks0",
       "directions": 4
     },

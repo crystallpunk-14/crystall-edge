@@ -69,3 +69,53 @@
         layer:
         - WallLayer
         density: 1000
+
+- type: entity
+  id: CEBaseWallDiagonal
+  categories: [ ForkFiltered ]
+  parent: BaseStructure
+  abstract: true
+  description: TODO
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wall
+  suffix: Diagonal
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+  - type: PlacementReplacement
+    key: walls
+  - type: Transform
+    anchored: true
+    noRot: false
+  - type: IconSmooth
+    mode: NoSprite
+    key: CEwall
+    base: state
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PolygonShape
+            vertices:
+            - "0.5,0.5"
+            - "0.5,-0.5"
+            - "-0.5,0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        density: 1000
+  - type: CEZLevelHighGround
+    corner: true
+    heightCurve:
+    - 1.05
+    - 1.05
+    - 1.05
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0

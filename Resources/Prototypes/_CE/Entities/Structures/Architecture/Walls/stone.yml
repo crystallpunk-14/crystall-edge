@@ -106,6 +106,40 @@
         acts: ["Destruction"]
 
 - type: entity
+  id: CEWallStoneBrickOldDiagonal
+  name: old stone brick diagonal wall
+  parent: CEBaseWallDiagonal
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Walls/brick_stone_old.rsi
+    state: corner
+  - type: Icon
+    sprite: _CE/Structures/Architecture/Walls/brick_stone_old.rsi
+    state: corner
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: CERockStructural
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEStoneBlock1:
+            min: 2
+            max: 3
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+
+- type: entity
   id: CEWallStoneBrickBrown
   name: brown stone brick wall
   parent: CEBaseWall
