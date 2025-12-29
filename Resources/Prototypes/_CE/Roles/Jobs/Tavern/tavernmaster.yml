@@ -15,7 +15,7 @@
 - type: startingGear
   id: CETavernmasterGear
   equipment:
-    belt1: CEKeyRingTavernmaster
+    belt: CEKeyRingTavernmaster
     pocket1: CEWalletFilledTavernmaster
 
 

@@ -20,7 +20,7 @@
 - type: startingGear
   id: CEGuardGear
   equipment:
-    belt1: CEKeyRingGuard
+    belt: CEKeyRingGuard
     belt2: CEGunJustice
     pocket1: CEWalletFilledGuard
 
