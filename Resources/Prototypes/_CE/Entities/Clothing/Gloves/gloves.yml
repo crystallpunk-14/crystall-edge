@@ -1,21 +1,4 @@
 - type: entity
-  abstract: true
-  parent: Clothing
-  id: CEClothingGlovesBase
-  categories: [ ForkFiltered ]
-  components:
-  - type: Clothing
-    equipDelay: 0.2
-    unequipDelay: 0.2
-    slots:
-    - gloves
-  - type: Sprite
-    state: icon
-  - type: Item
-    size: Normal
-    storedRotation: -90
-
-- type: entity
   parent: CEClothingGlovesBase
   id: CEClothingGlovesGirdles
   name: iron girdles
@@ -25,12 +8,6 @@
     sprite: _CE/Clothing/Gloves/girdles.rsi
   - type: Clothing
     sprite: _CE/Clothing/Gloves/girdles.rsi
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0.99
-        Slash: 0.98
-        Piercing: 0.99
   - type: PhysicalComposition
     materialComposition:
       CEIron: 10

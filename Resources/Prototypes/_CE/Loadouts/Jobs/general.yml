@@ -253,30 +253,30 @@
   name: ce-loadout-cloak
   minLimit: 0
   loadouts:
-  - CEClothingCapeBarbarian
-  - CEClothingCapeFur
-  - CEClothingCapeFur2
-  - CEClothingCloakBlue
-  - CEClothingCloakInsulatedMantle
-  - CEClothingCoatFur
-  - CEClothingCoatFurBrown
-  - CEClothingRaincoatGreen
-  - CEClothingRaincoatWhite
+  - CEClothingCloakCapeBarbarian
+  - CEClothingCloakCapeFur
+  - CEClothingCloakCapeFur2
+  - CEClothingCloakCloakBlue
+  - CEClothingCloakCloakInsulatedMantle
+  - CEClothingCloakCoatFur
+  - CEClothingCloakCoatFurBrown
+  - CEClothingCloakRaincoatGreen
+  - CEClothingCloakRaincoatWhite
 
 - type: loadout
-  id: CEClothingCapeBarbarian
+  id: CEClothingCloakCapeBarbarian
   equipment:
-    cloak: CEClothingCapeBarbarian
+    cloak: CEClothingCloakCapeBarbarian
 
 - type: loadout
-  id: CEClothingCapeFur
+  id: CEClothingCloakCapeFur
   equipment:
-    cloak: CEClothingCapeFur
+    cloak: CEClothingCloakCapeFur
 
 - type: loadout
-  id: CEClothingCapeFur2
+  id: CEClothingCloakCapeFur2
   equipment:
-    cloak: CEClothingCapeFur2
+    cloak: CEClothingCloakCapeFur2
 
 - type: loadout
   id: CEClothingCloakBlue
@@ -289,24 +289,24 @@
     cloak: CEClothingCloakInsulatedMantle
 
 - type: loadout
-  id: CEClothingCoatFur
+  id: CEClothingCloakCoatFur
   equipment:
-    cloak: CEClothingCoatFur
+    cloak: CEClothingCloakCoatFur
 
 - type: loadout
-  id: CEClothingCoatFurBrown
+  id: CEClothingCloakCoatFurBrown
   equipment:
-    cloak: CEClothingCoatFurBrown
+    cloak: CEClothingCloakCoatFurBrown
 
 - type: loadout
-  id: CEClothingRaincoatGreen
+  id: CEClothingCloakRaincoatGreen
   equipment:
-    cloak: CEClothingRaincoatGreen
+    cloak: CEClothingCloakRaincoatGreen
 
 - type: loadout
-  id: CEClothingRaincoatWhite
+  id: CEClothingCloakRaincoatWhite
   equipment:
-    cloak: CEClothingRaincoatWhite
+    cloak: CEClothingCloakRaincoatWhite
 
 # Eyes
 
@@ -333,38 +333,6 @@
   id: CEClothingEyesEyePatch
   equipment:
     eyes: CEClothingEyesEyePatch
-
-# Masks
-
-- type: loadoutGroup
-  id: CEGeneralMasks
-  name: ce-loadout-masks
-  minLimit: 0
-  loadouts:
-  - CEClothingMaskMime
-  - CEClothingMaskNeckerchief
-  - CEClothingMaskRedNeckerchief
-  - CEClothingMaskGreenNeckerchief
-
-- type: loadout
-  id: CEClothingMaskNeckerchief
-  equipment:
-    mask: CEClothingMaskNeckerchief
-
-- type: loadout
-  id: CEClothingMaskRedNeckerchief
-  equipment:
-    mask: CEClothingMaskRedNeckerchief
-
-- type: loadout
-  id: CEClothingMaskGreenNeckerchief
-  equipment:
-    mask: CEClothingMaskGreenNeckerchief
-
-- type: loadout
-  id: CEClothingMaskMime
-  equipment:
-    mask: CEClothingMaskMime
 
 # Gloves
 

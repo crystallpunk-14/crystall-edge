@@ -1,20 +1,5 @@
 - type: entity
-  abstract: true
-  parent: Clothing
-  id: CEClothingMaskBase
-  categories: [ ForkFiltered ]
-  components:
-  - type: Sprite
-    state: icon
-  - type: Item
-    size: Normal
-  - type: Clothing
-    equipDelay: 0.7
-    unequipDelay: 0.4
-    slots: [mask]
-
-- type: entity
-  parent: CEClothingMaskBase
+  parent: CEClothingMaskIdentityBlockerBase
   id: CEClothingMaskSteelMask
   name: steel mask
   description: A steel mask that protects the face from the external effects of iron.
@@ -23,14 +8,12 @@
     sprite: _CE/Clothing/Masks/steel_mask.rsi
   - type: Clothing
     sprite: _CE/Clothing/Masks/steel_mask.rsi
-  - type: IdentityBlocker
-  - type: IngestionBlocker
   - type: PhysicalComposition
     materialComposition:
       CEIron: 20
 
 - type: entity
-  parent: CEClothingMaskBase
+  parent: CEClothingMaskIdentityBlockerBase
   id: CEClothingMaskNeckerchief
   name: neckerchief
   description: It hides your face to the best of its ability.
@@ -39,11 +22,9 @@
     sprite: _CE/Clothing/Masks/neckerchief.rsi
   - type: Clothing
     sprite: _CE/Clothing/Masks/neckerchief.rsi
-  - type: IdentityBlocker
-  - type: IngestionBlocker
 
 - type: entity
-  parent: CEClothingMaskBase
+  parent: CEClothingMaskIdentityBlockerBase
   id: CEClothingMaskRedNeckerchief
   name: red neckerchief
   description: It hides your face to the best of its ability.
@@ -52,11 +33,9 @@
     sprite: _CE/Clothing/Masks/red_neckerchief.rsi
   - type: Clothing
     sprite: _CE/Clothing/Masks/red_neckerchief.rsi
-  - type: IdentityBlocker
-  - type: IngestionBlocker
 
 - type: entity
-  parent: CEClothingMaskBase
+  parent: CEClothingMaskIdentityBlockerBase
   id: CEClothingMaskGreenNeckerchief
   name: green neckerchief
   description: It hides your face to the best of its ability.
@@ -65,26 +44,20 @@
     sprite: _CE/Clothing/Masks/green_neckerchief.rsi
   - type: Clothing
     sprite: _CE/Clothing/Masks/green_neckerchief.rsi
-  - type: IdentityBlocker
-  - type: IngestionBlocker
 
 - type: entity
-  parent: CEClothingMaskBase
+  parent: CEClothingMaskIdentityBlockerBase
   id: CEClothingMaskBoneMask
   name: bone mask
-  description: An enchanted mask formerly belonging to a magical creature.
+  description: A bone mask of human.
   components:
   - type: Sprite
     sprite: _CE/Clothing/Masks/bone_mask.rsi
   - type: Clothing
     sprite: _CE/Clothing/Masks/bone_mask.rsi
-  - type: IdentityBlocker
-#  - type: AddAccentClothing
-#    accent: ReplacementAccent
-#    replacement: CEskeleton
 
 - type: entity
-  parent: CEClothingMaskBase
+  parent: CEClothingMaskIdentityBlockerBase
   id: CEClothingMaskBoneHornedMask
   name: horned bone mask
   description: A bone mask of some kind of animal.
@@ -93,10 +66,9 @@
     sprite: _CE/Clothing/Masks/horned_bone_mask.rsi
   - type: Clothing
     sprite: _CE/Clothing/Masks/horned_bone_mask.rsi
-  - type: IdentityBlocker
 
 - type: entity
-  parent: CEClothingMaskBase
+  parent: CEClothingMaskIdentityBlockerBase
   id: CEClothingMaskMime
   name: mask of silence
   description: ...
@@ -105,6 +77,4 @@
     sprite: _CE/Clothing/Masks/mime_mask.rsi
   - type: Clothing
     sprite: _CE/Clothing/Masks/mime_mask.rsi
-  - type: IdentityBlocker
-  - type: IngestionBlocker
 

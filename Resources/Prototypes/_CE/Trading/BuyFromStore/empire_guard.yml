@@ -6,11 +6,11 @@
     count: 1
 
 - type: tradingPosition
-  id: CEClothingRaincoatGuard
+  id: CEClothingCloakRaincoatGuard
   faction: EmpireGuard
   priceMarkup: 10
   service: !type:CEBuyItemsService
-    product: CEClothingRaincoatGuard
+    product: CEClothingCloakRaincoatGuard
     count: 1
 
 - type: tradingPosition
@@ -119,18 +119,4 @@
   faction: EmpireGuard
   service: !type:CEBuyItemsService
     product: CEWeaponMaceTwoHandedGuardrail
-    count: 1
-
-- type: tradingPosition
-  id: CEClothingMaskSteelMask
-  faction: EmpireGuard
-  service: !type:CEBuyItemsService
-    product: CEClothingMaskSteelMask
-    count: 1
-
-- type: tradingPosition
-  id: CEClothingGlovesGirdles
-  faction: EmpireGuard
-  service: !type:CEBuyItemsService
-    product: CEClothingGlovesGirdles
     count: 1
