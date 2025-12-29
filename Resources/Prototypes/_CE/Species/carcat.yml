@@ -24,7 +24,7 @@
     #Hair: CEMobCarcatAnyMarking
     #FacialHair: CEMobCarcatAnyMarking
     Snout: CEMobCarcatMarkingMatchSkin
-    Tail: CEMobCarcatMarkingMatchSkin
+    Tail: CEMobCarcatAnyMarking
     Chest: CEMobCarcatTorso
     Eyes: CEMobCarcatEyes
     LArm: CEMobCarcatLArm

@@ -1,0 +1,43 @@
+#- type: gameMap
+#  id: EmptyTemplate
+#  mapName: EmptyTemplate
+#  minPlayers: 1
+#  maxPlayers: 20
+#  mapsBelow:
+#  - /Maps/_CE/Empty.yml
+#  - /Maps/_CE/Empty.yml
+#  mapPath: /Maps/_CE/Empty.yml
+#  mapsAbove:
+#  - /Maps/_CE/Empty.yml
+#  - /Maps/_CE/Empty.yml
+#  - /Maps/_CE/Empty.yml
+#  zLevelsComponentOverrides:
+#    - type: MapAtmosphere
+#      space: False
+#      mixture:
+#        volume: 2500
+#        immutable: True
+#        temperature: 293.15
+#        moles:
+#          Oxygen: 21.824879
+#          Nitrogen: 82.10312
+#    - type: Parallax
+#      parallax: CESky
+#    - type: SunShadowCycle
+#      offset: 490
+#    - type: LightCycle
+#      offset: 490
+#      originalColor: "#b8d9dc"
+#    - type: SunShadow
+#    - type: MapLight
+#      ambientLightColor: "#b8d9dc"
+#  stations:
+#    EmptyTemplate:
+#      stationProto: CEStandardImperialFloatingIsland
+#      components:
+#        - type: StationNameSetup
+#          mapNameTemplate: "EmptyTemplate"
+#        - type: StationJobs
+#          availableJobs:
+#            CETownfolk: [ -1, -1 ]
+#
