@@ -123,7 +123,7 @@ public sealed partial class ScalingViewport
         {
             highestDepth = zLevelViewer.ViewedZLevel > 0 ? zLevelViewer.ViewedZLevel : 0;
 
-            lowestDepth = zLevelViewer.ViewedZLevel < 0 ? Math.Abs(zLevelViewer.ViewedZLevel) : 0;
+            lowestDepth = zLevelViewer.ViewedZLevel < 0 ? Math.Abs(zLevelViewer.ViewedZLevel) : 1; // making one layer below you visbile prevents a bug that would otherwise just show a black layer
 
         }
         var lowestCalculatedDepth = 0;
