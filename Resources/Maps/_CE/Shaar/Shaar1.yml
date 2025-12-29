@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/28/2025 10:57:05
-  entityCount: 942
+  time: 12/28/2025 19:41:10
+  entityCount: 935
 maps:
 - 1
 grids:
@@ -131,17 +131,13 @@ entities:
       fingerprints: []
     - type: RadiationGridResistance
     - type: ExplosionAirtightGrid
-- proto: CEBigBrassPipe30
+- proto: CEBigBrassPipe1
   entities:
-  - uid: 303
+  - uid: 334
     components:
     - type: Transform
-      pos: -23.42464,4.562628
-      parent: 1
-  - uid: 320
-    components:
-    - type: Transform
-      pos: -24.133179,4.393434
+      rot: 3.141592653589793 rad
+      pos: -24.324574,3.9928436
       parent: 1
 - proto: CEBowlIronTreasure
   entities:
@@ -534,12 +530,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 26.552069,-16.529402
       parent: 1
-  - uid: 607
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 29.560577,-11.709551
-      parent: 1
   - uid: 668
     components:
     - type: Transform
@@ -736,6 +726,13 @@ entities:
     components:
     - type: Transform
       pos: -6.5,-11.5
+      parent: 1
+- proto: CEEngineeringTable
+  entities:
+  - uid: 337
+    components:
+    - type: Transform
+      pos: -25.5,3.5
       parent: 1
 - proto: CEFenceBigIron
   entities:
@@ -995,12 +992,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 18.5,-2.5
       parent: 1
-  - uid: 612
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 27.5,-15.5
-      parent: 1
   - uid: 613
     components:
     - type: Transform
@@ -1210,28 +1201,6 @@ entities:
     components:
     - type: Transform
       pos: -27.5,4.5
-      parent: 1
-- proto: CEMediumBrassPipe30
-  entities:
-  - uid: 334
-    components:
-    - type: Transform
-      pos: -25.397278,4.342834
-      parent: 1
-  - uid: 337
-    components:
-    - type: Transform
-      pos: -25.144197,4.663299
-      parent: 1
-  - uid: 505
-    components:
-    - type: Transform
-      pos: -24.90799,4.4103007
-      parent: 1
-  - uid: 623
-    components:
-    - type: Transform
-      pos: -26.073574,4.5115
       parent: 1
 - proto: CEPaper
   entities:
@@ -3015,6 +2984,12 @@ entities:
     - type: Transform
       pos: -5.5,-11.5
       parent: 1
+  - uid: 303
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -2.5,-11.5
+      parent: 1
   - uid: 760
     components:
     - type: Transform
@@ -4789,13 +4764,6 @@ entities:
     - type: Transform
       pos: -1.2325811,-12.449274
       parent: 1
-- proto: CEWorkbench
-  entities:
-  - uid: 925
-    components:
-    - type: Transform
-      pos: -25.5,3.5
-      parent: 1
 - proto: CEZLevelLadderDirtCliff
   entities:
   - uid: 321
@@ -4973,22 +4941,11 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 23.5,-19.5
       parent: 1
-  - uid: 663
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 27.5,-15.5
-      parent: 1
   - uid: 664
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 30.5,-11.5
-      parent: 1
-  - uid: 665
-    components:
-    - type: Transform
-      pos: 29.5,-11.5
       parent: 1
   - uid: 666
     components:
@@ -5028,6 +4985,12 @@ entities:
       parent: 1
 - proto: CEZLevelLadderDirtCliffCornerInner
   entities:
+  - uid: 320
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 29.5,-11.5
+      parent: 1
   - uid: 446
     components:
     - type: Transform

@@ -55,7 +55,7 @@
     flightVfx: CEOverchargeSmallVFX
   - type: CEVehicleFlyer
   - type: CEZFlyerBattery
-    energyDraw: 3
+    energyDraw: 2
   - type: Battery
     maxCharge: 100
     startingCharge: 100

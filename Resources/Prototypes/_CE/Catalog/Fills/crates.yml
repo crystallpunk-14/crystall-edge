@@ -80,6 +80,8 @@
       #- id: CETorch
       #- id: CELighter
       - id: CEKeyFile
+      - id: CEBaseLockpick
+        weight: 0.1
       - id: CELockIron
         weight: 0.3
       - !type:GroupSelector

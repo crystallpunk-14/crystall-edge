@@ -74,3 +74,15 @@ ce-ambition-interior-designer-desc = !LOCATION! looks terrible. I must decorate 
 
 ce-ambition-peacemaker-name = Peacemaker
 ce-ambition-peacemaker-desc = I cannot stand conflicts. If I see a quarrel, I will definitely try to reconcile those arguing.
+
+ce-ambition-paranoidal-name = Paranoid
+ce-ambition-paranoidal-desc = I'm sure everyone around me is lying to me!
+
+ce-ambition-innocent-soul-name = Naive Soul
+ce-ambition-innocent-soul-desc = I take everything at face value! People can't lie to me, can they?
+
+ce-ambition-hoverboard-name = Passion for Flying
+ce-ambition-hoverboard-desc = I want to have my own hoverboard and fly through the skies on it...
+
+ce-ambition-hoverboard-race-name = Racer
+ce-ambition-hoverboard-race-desc = I want to race hoverboards with !NAME!.
