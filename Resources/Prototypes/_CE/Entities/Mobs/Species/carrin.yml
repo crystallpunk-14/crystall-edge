@@ -242,7 +242,7 @@
   - type: HumanoidAppearance
     species: CECarrin
   - type: Inventory
-    templateId: CECarrin # Cant wear shoes
+    templateId: CECarrin # Cant wear shoes, masks and gloves
     speciesId: carrin
     displacements:
       belt:
