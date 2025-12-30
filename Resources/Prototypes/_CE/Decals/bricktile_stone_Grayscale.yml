@@ -1,0 +1,135 @@
+﻿- type: decal
+  id: CEBrickTileGrayScaleStoneBox
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/stone_Grayscale.rsi
+    state: stone_box
+
+- type: decal
+  id: CEBrickTileGrayScaleStoneCornerNe
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/stone_Grayscale.rsi
+    state: stone_corner_ne
+
+- type: decal
+  id: CEBrickTileGrayScaleStoneCornerSe
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/stone_Grayscale.rsi
+    state: stone_corner_se
+
+- type: decal
+  id: CEBrickTileGrayScaleStoneCornerNw
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/stone_Grayscale.rsi
+    state: stone_corner_nw
+
+- type: decal
+  id: CEBrickTileGrayScaleStoneCornerSw
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/stone_Grayscale.rsi
+    state: stone_corner_sw
+
+- type: decal
+  id: CEBrickTileGrayScaleStoneInnerNe
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/stone_Grayscale.rsi
+    state: stone_inner_ne
+
+- type: decal
+  id: CEBrickTileGrayScaleStoneInnerSe
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/stone_Grayscale.rsi
+    state: stone_inner_se
+
+- type: decal
+  id: CEBrickTileGrayScaleStoneInnerNw
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/stone_Grayscale.rsi
+    state: stone_inner_nw
+
+- type: decal
+  id: CEBrickTileGrayScaleStoneInnerSw
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/stone_Grayscale.rsi
+    state: stone_inner_sw
+
+- type: decal
+  id: CEBrickTileGrayScaleStoneEndN
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/stone_Grayscale.rsi
+    state: stone_end_n
+
+- type: decal
+  id: CEBrickTileGrayScaleStoneEndE
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/stone_Grayscale.rsi
+    state: stone_end_e
+
+- type: decal
+  id: CEBrickTileGrayScaleStoneEndS
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/stone_Grayscale.rsi
+    state: stone_end_s
+
+- type: decal
+  id: CEBrickTileGrayScaleStoneEndW
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/stone_Grayscale.rsi
+    state: stone_end_w
+
+- type: decal
+  id: CEBrickTileGrayScaleStoneLineN
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/stone_Grayscale.rsi
+    state: stone_line_n
+
+- type: decal
+  id: CEBrickTileGrayScaleStoneLineE
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/stone_Grayscale.rsi
+    state: stone_line_e
+
+- type: decal
+  id: CEBrickTileGrayScaleStoneLineS
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/stone_Grayscale.rsi
+    state: stone_line_s
+
+- type: decal
+  id: CEBrickTileGrayScaleStoneLineW
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/stone_Grayscale.rsi
+    state: stone_line_w

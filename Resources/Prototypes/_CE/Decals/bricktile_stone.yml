@@ -1,0 +1,135 @@
+﻿- type: decal
+  id: CEBrickTileStoneBox
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/Stone.rsi
+    state: stone_box
+
+- type: decal
+  id: CEBrickTileStoneCornerNe
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/Stone.rsi
+    state: stone_corner_ne
+
+- type: decal
+  id: CEBrickTileStoneCornerSe
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/Stone.rsi
+    state: stone_corner_se
+
+- type: decal
+  id: CEBrickTileStoneCornerNw
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/Stone.rsi
+    state: stone_corner_nw
+
+- type: decal
+  id: CEBrickTileStoneCornerSw
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/Stone.rsi
+    state: stone_corner_sw
+
+- type: decal
+  id: CEBrickTileStoneInnerNe
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/Stone.rsi
+    state: stone_inner_ne
+
+- type: decal
+  id: CEBrickTileStoneInnerSe
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/Stone.rsi
+    state: stone_inner_se
+
+- type: decal
+  id: CEBrickTileStoneInnerNw
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/Stone.rsi
+    state: stone_inner_nw
+
+- type: decal
+  id: CEBrickTileStoneInnerSw
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/Stone.rsi
+    state: stone_inner_sw
+
+- type: decal
+  id: CEBrickTileStoneEndN
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/Stone.rsi
+    state: stone_end_n
+
+- type: decal
+  id: CEBrickTileStoneEndE
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/Stone.rsi
+    state: stone_end_e
+
+- type: decal
+  id: CEBrickTileStoneEndS
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/Stone.rsi
+    state: stone_end_s
+
+- type: decal
+  id: CEBrickTileStoneEndW
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/Stone.rsi
+    state: stone_end_w
+
+- type: decal
+  id: CEBrickTileStoneLineN
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/Stone.rsi
+    state: stone_line_n
+
+- type: decal
+  id: CEBrickTileStoneLineE
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/Stone.rsi
+    state: stone_line_e
+
+- type: decal
+  id: CEBrickTileStoneLineS
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/Stone.rsi
+    state: stone_line_s
+
+- type: decal
+  id: CEBrickTileStoneLineW
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/Stone.rsi
+    state: stone_line_w

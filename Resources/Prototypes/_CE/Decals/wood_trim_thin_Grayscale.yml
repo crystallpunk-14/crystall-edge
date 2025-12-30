@@ -1,0 +1,135 @@
+﻿- type: decal
+  id: CEWoodTrimThinGrayScaleBox
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/wood_trim_Grayscale.rsi
+    state: thin_box
+
+- type: decal
+  id: CEWoodTrimThinGrayScaleCornerNe
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/wood_trim_Grayscale.rsi
+    state: thin_corner_ne
+
+- type: decal
+  id: CEWoodTrimThinGrayScaleCornerSes
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/wood_trim_Grayscale.rsi
+    state: thin_corner_se
+
+- type: decal
+  id: CEWoodTrimThinGrayScaleCornerNw
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/wood_trim_Grayscale.rsi
+    state: thin_corner_nw
+
+- type: decal
+  id: CEWoodTrimThinGrayScaleCornerSw
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/wood_trim_Grayscale.rsi
+    state: thin_corner_sw
+
+- type: decal
+  id: CEWoodTrimThinGrayScaleInnerNe
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/wood_trim_Grayscale.rsi
+    state: thin_inner_ne
+
+- type: decal
+  id: CEWoodTrimThinGrayScaleInnerSe
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/wood_trim_Grayscale.rsi
+    state: thin_inner_se
+
+- type: decal
+  id: CEWoodTrimThinGrayScaleInnerNw
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/wood_trim_Grayscale.rsi
+    state: thin_inner_nw
+
+- type: decal
+  id: CEWoodTrimThinGrayScaleInnerSw
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/wood_trim_Grayscale.rsi
+    state: thin_inner_sw
+
+- type: decal
+  id: CEWoodTrimThinGrayScaleEndN
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/wood_trim_Grayscale.rsi
+    state: thin_end_n
+
+- type: decal
+  id: CEWoodTrimThinGrayScaleEndE
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/wood_trim_Grayscale.rsi
+    state: thin_end_e
+
+- type: decal
+  id: CEWoodTrimThinGrayScaleEndS
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/wood_trim_Grayscale.rsi
+    state: thin_end_s
+
+- type: decal
+  id: CEWoodTrimThinGrayScaleEndW
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/wood_trim_Grayscale.rsi
+    state: thin_end_w
+
+- type: decal
+  id: CEWoodTrimThinGrayScaleLineN
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/wood_trim_Grayscale.rsi
+    state: thin_line_n
+
+- type: decal
+  id: CEWoodTrimThinGrayScaleLineE
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/wood_trim_Grayscale.rsi
+    state: thin_line_e
+
+- type: decal
+  id: CEWoodTrimThinGrayScaleLineS
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/wood_trim_Grayscale.rsi
+    state: thin_line_s
+
+- type: decal
+  id: CEWoodTrimThinGrayScaleLineW
+  defaultSnap: true
+  showMenu: true
+  sprite:
+    sprite: _CE/Decals/wood_trim_Grayscale.rsi
+    state: thin_line_w
