@@ -34,3 +34,15 @@
       - state: frame
   - type: CEBiomeSpawner
     biome: CEGrassland
+
+- type: entity
+  id: CEBiomeSpawnerSnowland
+  parent: CEBaseBiomeSpawner
+  suffix: Snowland
+  components:
+  - type: Sprite
+    layers:
+      - state: snow
+      - state: frame
+  - type: CEBiomeSpawner
+    biome: CESnowland

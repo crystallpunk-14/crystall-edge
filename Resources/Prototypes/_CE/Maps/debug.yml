@@ -41,10 +41,10 @@
     - type: LightCycle
       offset: 100
       duration: 300
-      originalColor: "#fff475"
+      originalColor: "#75e3ff"
     - type: SunShadow
     - type: MapLight
-      ambientLightColor: "#efff75"
+      ambientLightColor: "#75e3ff"
   minPlayers: 0
   stations:
     Dev:

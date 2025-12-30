@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/25/2025 21:30:23
-  entityCount: 242
+  time: 12/30/2025 23:42:20
+  entityCount: 251
 maps:
 - 1
 grids:
@@ -631,6 +631,56 @@ entities:
     components:
     - type: Transform
       pos: -7.5,-1.5
+      parent: 1
+- proto: CESnowdrift
+  entities:
+  - uid: 2
+    components:
+    - type: Transform
+      anchored: False
+      pos: -20.5,5.5
+      parent: 1
+  - uid: 67
+    components:
+    - type: Transform
+      anchored: False
+      pos: -17.5,2.5
+      parent: 1
+  - uid: 122
+    components:
+    - type: Transform
+      anchored: False
+      pos: -20.5,2.5
+      parent: 1
+  - uid: 141
+    components:
+    - type: Transform
+      pos: -9.5,-13.5
+      parent: 1
+  - uid: 227
+    components:
+    - type: Transform
+      pos: -9.5,-14.5
+      parent: 1
+  - uid: 248
+    components:
+    - type: Transform
+      pos: -8.5,-14.5
+      parent: 1
+  - uid: 249
+    components:
+    - type: Transform
+      pos: -6.5,-14.5
+      parent: 1
+  - uid: 250
+    components:
+    - type: Transform
+      pos: -5.5,-14.5
+      parent: 1
+  - uid: 251
+    components:
+    - type: Transform
+      pos: -4.5,-14.5
       parent: 1
 - proto: CETableWoodenCounter
   entities:
