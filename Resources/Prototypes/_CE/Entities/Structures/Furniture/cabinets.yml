@@ -1,0 +1,112 @@
+- type: entity
+  id: CECabinetBase
+  parent: BaseStructure
+  categories: [ ForkFiltered ]
+  abstract: true
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+      - map: [ base ]
+        state: icon
+  - type: Storage
+    grid:
+    - 0,0,6,3
+    maxItemSize: Normal
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: GenericVisualizer
+    visuals:
+      enum.StorageVisuals.Open:
+        base:
+          True: { state: icon-open }
+          False: { state: icon }
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.05,0.45,0.45"
+        density: 155
+        mask:
+        - MachineMask
+        layer:
+        - WallLayer
+  - type: InteractionOutline
+  - type: Clickable
+  - type: Anchorable
+  - type: Rotatable
+  - type: Appearance
+  - type: Transform
+    anchored: true
+  - type: Lock
+    locked: false
+
+- type: entity
+  name: wooden cabinet
+  parent:
+  - CECabinetBase
+#  - CEBaseFlammableSpreading
+  id: CEWoodenCabinet
+  description: A regular wooden cabinet.
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Furniture/Dressers/wood_cabinet.rsi
+    state: icons
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: CEWood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEWoodenPlanks1:
+            min: 1
+            max: 3
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Construction
+    graph: CEWoodenCabinet
+    node: CEWoodenCabinet
+
+- type: entity
+  parent: CECabinetBase
+  id: CEIronCabinet
+  name: iron cabinet
+  description: an iron cabinet. Sturdy, lockable. You can store your valuables here without fear of some burglar taking it all for himself.
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Furniture/Dressers/iron_cabinet.rsi
+    state: icons
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: CEMetallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 75
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEScrapIron:
+            min: 1
+            max: 3
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Construction
+    graph: CEIronCabinet
+    node: CEIronCabinet
+
