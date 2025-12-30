@@ -64,6 +64,8 @@
     sprite: _CE/Structures/Architecture/Walls/dirt.rsi
   - type: IconSmooth
     base: wall
+  - type: CEAutoTilePlacement
+    tile: CEDirt
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: Rock
@@ -106,6 +108,8 @@
     sprite: _CE/Structures/Architecture/Walls/leaf.rsi
   - type: Icon
     sprite: _CE/Structures/Architecture/Walls/leaf.rsi
+  - type: CEAutoTilePlacement
+    tile: CEDirt
   - type: IconSmooth
     key: CEwallLeaf
     base: wall
@@ -191,6 +195,8 @@
     sprite: _CE/Structures/Architecture/Walls/snow.rsi
   - type: Icon
     sprite: _CE/Structures/Architecture/Walls/snow.rsi
+  - type: CEAutoTilePlacement
+    tile: CESnowDeepDeep
   - type: IconSmooth
     base: wall
   - type: Damageable

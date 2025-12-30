@@ -22,6 +22,7 @@
     state: full
   - type: PlacementReplacement
     key: walls
+  - type: CEAutoTilePlacement
   - type: Occluder
   - type: Fixtures
     fixtures:
