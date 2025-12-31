@@ -10,6 +10,7 @@
   - type: Item
     size: Tiny
   - type: Sprite
+    noRot: true
     sprite: _CE/Objects/Tools/snowball.rsi
     layers:
     - state: ball
@@ -29,19 +30,6 @@
     damage:
       types:
         Blunt: 3
-  - type: MeleeWeapon
-    attackRate: 1.8
-    wideAnimationRotation: 225
-    wideAnimation: CEWeaponArcSlash
-    damage:
-      types:
-        Cold: 0
-    soundHit:
-      path: /Audio/_CE/Effects/snowball.ogg
-      params:
-        variation: 0.250
-        volume: 15
-    cPAnimationLength: 0.15
   - type: DamageOtherOnHit
     damage:
       types:
