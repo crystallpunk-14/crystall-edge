@@ -103,7 +103,7 @@
     - !type:BiomeMetaLayer
       template: CESnowlandForest
     - !type:BiomeTileLayer
-      tile: CEBase
+      tile: CEStone
       invert: true
       threshold: 0.5
       noise:
@@ -120,7 +120,7 @@
         domainWarpAmp: 285
     - !type:BiomeEntityLayer # Walls
       allowedTiles:
-        - CEBase
+        - CEStone
       threshold: -1.0
       entities:
         - CEWallSnow
