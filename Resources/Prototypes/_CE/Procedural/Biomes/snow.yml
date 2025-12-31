@@ -98,7 +98,7 @@
 # Hills
 
 - type: biomeTemplate
-  id: CESnowlandHills # Холмы
+  id: CESnowlandHills
   layers:
     - !type:BiomeMetaLayer
       template: CESnowlandForest
