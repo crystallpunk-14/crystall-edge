@@ -60,3 +60,17 @@
   service: !type:CEBuyItemsService
     product: CEGlassSheet10
     count: 1
+
+- type: tradingPosition
+  id: CEMannequinHumanMale
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEMannequinHumanMale
+    count: 1
+
+- type: tradingPosition
+  id: CEMannequinCarcat
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEMannequinCarcat
+    count: 1

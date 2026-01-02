@@ -106,6 +106,8 @@
     interfaces:
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
+  - type: StaticPrice
+    price: 25
 
 - type: entity
   id: CEMannequinHumanMale
@@ -139,6 +141,8 @@
   - CEMobCarcatInventoryTemplate
   name: carcat mannequin
   components:
+  - type: Inventory
+    templateId: CECarcat
   - type: Sprite
     layers:
     - map: [ "mannequin" ]
