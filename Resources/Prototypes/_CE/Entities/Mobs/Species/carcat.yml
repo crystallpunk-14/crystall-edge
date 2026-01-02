@@ -1,5 +1,7 @@
 - type: entity
-  parent: CEBaseMobSpeciesOrganic
+  parent:
+  - CEBaseMobSpeciesOrganic
+  - CEMobCarcatInventoryTemplate
   id: CEBaseMobCarcat
   name: Mr. Cat
   abstract: true
@@ -94,90 +96,21 @@
       reagents:
       - ReagentId: CEBloodCarcat
         Quantity: 1
-  - type: Inventory
-    templateId: CECarcat # Cant wear shoes
-    speciesId: carcat
-    displacements:
-      belt:
-        sizeMaps:
-          32:
-            sprite: _CE/Mobs/Species/Carcat/displacement.rsi
-            state: cloak
-      cloak:
-        sizeMaps:
-          32:
-            sprite: _CE/Mobs/Species/Carcat/displacement.rsi
-            state: cloak
-      back:
-        sizeMaps:
-          32:
-            sprite: _CE/Mobs/Species/Carcat/displacement.rsi
-            state: cloak
-      eyes:
-        sizeMaps:
-          32:
-            sprite: _CE/Mobs/Species/Carcat/displacement.rsi
-            state: eyes
-      head:
-        sizeMaps:
-          32:
-            sprite: _CE/Mobs/Species/Carcat/displacement48.rsi
-            state: head
-          48:
-            sprite: _CE/Mobs/Species/Carcat/displacement48.rsi
-            state: head
-      mask:
-        sizeMaps:
-          32:
-            sprite: _CE/Mobs/Species/Carcat/displacement.rsi
-            state: mask
-      pants:
-        sizeMaps:
-          32:
-            sprite: _CE/Mobs/Species/Carcat/displacement.rsi
-            state: pants
-      shirt:
-        sizeMaps:
-          32:
-            sprite: _CE/Mobs/Species/Carcat/displacement.rsi
-            state: shirt
-      outerClothing:
-        sizeMaps:
-          32:
-            sprite: _CE/Mobs/Species/Carcat/displacement.rsi
-            state: shirt
-      gloves:
-        sizeMaps:
-          32:
-            sprite: _CE/Mobs/Species/Carcat/displacement.rsi
-            state: gloves
-      neck:
-        sizeMaps:
-          32:
-            sprite: _CE/Mobs/Species/Carcat/displacement48.rsi
-            state: neck
-          49:
-            sprite: _CE/Mobs/Species/Carcat/displacement48.rsi
-            state: neck
-  - type: Hands
-    leftHandDisplacement:
-      sizeMaps:
-        32:
-          sprite: _CE/Mobs/Species/Carcat/displacement.rsi
-          state: hands_left
-    rightHandDisplacement:
-      sizeMaps:
-        32:
-          sprite: _CE/Mobs/Species/Carcat/displacement.rsi
-          state: hands_right
 
 - type: entity
-  parent: CEBaseSpeciesDummy
+  parent:
+  - CEBaseSpeciesDummy
+  - CEMobCarcatInventoryTemplate
   id: CEMobCarcatDummy
   categories: [ HideSpawnMenu ]
   components:
   - type: HumanoidAppearance
     species: CECarcat
+
+- type: entity
+  id: CEMobCarcatInventoryTemplate
+  abstract: true
+  components:
   - type: Inventory
     templateId: CECarcat
     speciesId: carcat
@@ -254,4 +187,3 @@
         32:
           sprite: _CE/Mobs/Species/Carcat/displacement.rsi
           state: hands_right
-
