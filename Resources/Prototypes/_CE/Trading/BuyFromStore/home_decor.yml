@@ -74,3 +74,73 @@
   service: !type:CEBuyItemsService
     product: CEMannequinCarcat
     count: 1
+
+- type: tradingPosition
+  id: CEHumanPlushie
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEHumanPlushie
+    count: 1
+
+- type: tradingPosition
+  id: CEDwarfPlushie
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEDwarfPlushie
+    count: 1
+
+- type: tradingPosition
+  id: CEElfPlushie
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEElfPlushie
+    count: 1
+
+- type: tradingPosition
+  id: CEGoblinPlushie
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEGoblinPlushie
+    count: 1
+
+- type: tradingPosition
+  id: CESilvaPlushie
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CESilvaPlushie
+    count: 1
+
+- type: tradingPosition
+  id: CETieflingPlushie
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CETieflingPlushie
+    count: 1
+
+- type: tradingPosition
+  id: CECarcatPlushie
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CECarcatPlushie
+    count: 1
+
+- type: tradingPosition
+  id: CEFrogPlushie
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEFrogPlushie
+    count: 1
+
+- type: tradingPosition
+  id: CESkeletonPlushie
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CESkeletonPlushie
+    count: 1
+
+- type: tradingPosition
+  id: CEAgaricPlushie
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEAgaricPlushie
+    count: 1

@@ -1,0 +1,136 @@
+- type: entity
+  parent: BaseItem
+  id: CEBasePlushie
+  categories: [ ForkFiltered ]
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Decorations/plushies.rsi
+  - type: Item
+    size: Normal
+  - type: EmitSoundOnUse
+    sound:
+      collection: ToySqueak
+  - type: EmitSoundOnActivate
+    sound:
+      collection: ToySqueak
+  - type: EmitSoundOnCollide
+    sound:
+      collection: ToySqueak
+  - type: EmitSoundOnLand
+    sound:
+      collection: ToyFall
+  - type: EmitSoundOnTrigger
+    sound:
+      collection: ToySqueak
+  - type: UseDelay
+    delay: 1.0
+  - type: MeleeWeapon
+    autoAttack: true
+    attackRate: 0.8
+    wideAnimationRotation: 180
+    soundHit:
+      collection: ToySqueak
+    damage:
+      types:
+        Blunt: 0
+    hidden: true
+  - type: StaticPrice
+    price: 5
+  - type: PhysicalComposition
+    materialComposition:
+      CECloth: 20
+
+# Race plushies
+
+- type: entity
+  parent: CEBasePlushie
+  id: CEHumanPlushie
+  name: human plushie
+  description: The most basic one doesn't mean the worst one!
+  components:
+  - type: Sprite
+    state: human
+
+- type: entity
+  parent: CEBasePlushie
+  id: CEDwarfPlushie
+  name: dwarf plushie
+  description: A very short, but sturdy lad... A good one to drink with, or from. Rock and stone!
+  components:
+  - type: Sprite
+    state: dwarf
+
+- type: entity
+  parent: CEBasePlushie
+  id: CEElfPlushie
+  name: elf plushie
+  description: It is unclear, if that thing is a man or a woman... But it can hold a bit of mana!
+  components:
+  - type: Sprite
+    state: elf
+
+- type: entity
+  parent: [ CEBasePlushie, BaseStorageItem ]
+  id: CEGoblinPlushie
+  name: goblin plushie
+  description: A sneaky one, for sure... It seems like you can put a coin in it, but it's not clear if you can get it back!
+  components:
+  - type: Sprite
+    state: goblin
+
+- type: entity
+  parent: [ CEBasePlushie, BaseStorageItem ]
+  id: CESilvaPlushie
+  name: silva plushie
+  description: A little cute bush! You can put some seeds in it, but sadly, they won't grow...
+  components:
+  - type: Sprite
+    state: silva
+
+- type: entity
+  parent: CEBasePlushie
+  id: CETieflingPlushie
+  name: tiefling plushie
+  description: Be careful, don't stab your finger on the horn! So hot...
+  components:
+  - type: Sprite
+    state: tiefling
+
+- type: entity
+  parent: CEBasePlushie
+  id: CECarcatPlushie
+  name: carcat plushie
+  description: Look at this adorable snout! Likes to be petted, sharpen its claws, and butcher dead bodies...
+  components:
+  - type: Sprite
+    state: carcat
+
+# Misc plushies
+
+- type: entity
+  parent: CEBasePlushie
+  id: CEFrogPlushie
+  name: frog plushie
+  description: Croak-croak.
+  components:
+  - type: Sprite
+    state: frog
+
+- type: entity
+  parent: CEBasePlushie
+  id: CESkeletonPlushie
+  name: skeleton plushie
+  description: These skeletons are meowing... Weird...
+  components:
+  - type: Sprite
+    state: skeleton
+
+- type: entity
+  parent: CEBasePlushie
+  id: CEAgaricPlushie
+  name: myconide plushie
+  description: The mushrooms are alive! I swear!
+  components:
+  - type: Sprite
+    state: agaric
