@@ -107,7 +107,7 @@
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
   - type: StaticPrice
-    price: 25
+    price: 50
 
 - type: entity
   id: CEMannequinHumanMale
