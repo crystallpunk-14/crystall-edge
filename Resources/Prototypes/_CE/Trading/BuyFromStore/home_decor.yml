@@ -3,144 +3,141 @@
   faction: HomeDecor
   service: !type:CEBuyItemsService
     product: CEWoodenPlanks20
-    count: 1
 
 - type: tradingPosition
   id: CEFloorCarpetItemBlue10
   faction: HomeDecor
   service: !type:CEBuyItemsService
     product: CEFloorCarpetItemBlue10
-    count: 1
 
 - type: tradingPosition
   id: CEFloorCarpetItemRed10
   faction: HomeDecor
   service: !type:CEBuyItemsService
     product: CEFloorCarpetItemRed10
-    count: 1
 
 - type: tradingPosition
   id: CEFloorCarpetItemPurple10
   faction: HomeDecor
   service: !type:CEBuyItemsService
     product: CEFloorCarpetItemPurple10
-    count: 1
 
 - type: tradingPosition
   id: CEFloorCarpetItemBlack10
   faction: HomeDecor
   service: !type:CEBuyItemsService
     product: CEFloorCarpetItemBlack10
-    count: 1
 
 - type: tradingPosition
   id: CECandle
   faction: HomeDecor
   service: !type:CEBuyItemsService
     product: CECandle
-    count: 1
 
 - type: tradingPosition
   id: CECandelabra
   faction: HomeDecor
   service: !type:CEBuyItemsService
     product: CECandelabra
-    count: 1
 
 - type: tradingPosition
   id: CENail10
   faction: HomeDecor
   service: !type:CEBuyItemsService
     product: CENail10
-    count: 1
 
 - type: tradingPosition
   id: CEGlassSheet10
   faction: HomeDecor
   service: !type:CEBuyItemsService
     product: CEGlassSheet10
-    count: 1
 
 - type: tradingPosition
   id: CEMannequinHumanMale
   faction: HomeDecor
   service: !type:CEBuyItemsService
     product: CEMannequinHumanMale
-    count: 1
 
 - type: tradingPosition
   id: CEMannequinCarcat
   faction: HomeDecor
   service: !type:CEBuyItemsService
     product: CEMannequinCarcat
-    count: 1
 
 - type: tradingPosition
-  id: CEHumanPlushie
+  id: CEPlushieHuman
   faction: HomeDecor
   service: !type:CEBuyItemsService
-    product: CEHumanPlushie
-    count: 1
+    product: CEPlushieHuman
 
 - type: tradingPosition
-  id: CEDwarfPlushie
+  id: CEPlushieDwarf
   faction: HomeDecor
   service: !type:CEBuyItemsService
-    product: CEDwarfPlushie
-    count: 1
+    product: CEPlushieDwarf
 
 - type: tradingPosition
-  id: CEElfPlushie
+  id: CEPlushieElf
   faction: HomeDecor
   service: !type:CEBuyItemsService
-    product: CEElfPlushie
-    count: 1
+    product: CEPlushieElf
 
 - type: tradingPosition
-  id: CEGoblinPlushie
+  id: CEPlushieGoblin
   faction: HomeDecor
   service: !type:CEBuyItemsService
-    product: CEGoblinPlushie
-    count: 1
+    product: CEPlushieGoblin
 
 - type: tradingPosition
-  id: CESilvaPlushie
+  id: CEPlushieSilva
   faction: HomeDecor
   service: !type:CEBuyItemsService
-    product: CESilvaPlushie
-    count: 1
+    product: CEPlushieSilva
 
 - type: tradingPosition
-  id: CETieflingPlushie
+  id: CEPlushieTiefling
   faction: HomeDecor
   service: !type:CEBuyItemsService
-    product: CETieflingPlushie
-    count: 1
+    product: CEPlushieTiefling
 
 - type: tradingPosition
-  id: CECarcatPlushie
+  id: CEPlushieCarcat
   faction: HomeDecor
   service: !type:CEBuyItemsService
-    product: CECarcatPlushie
-    count: 1
+    product: CEPlushieCarcat
 
 - type: tradingPosition
-  id: CEFrogPlushie
+  id: CEPlushieFrog
   faction: HomeDecor
   service: !type:CEBuyItemsService
-    product: CEFrogPlushie
-    count: 1
+    product: CEPlushieFrog
 
 - type: tradingPosition
-  id: CESkeletonPlushie
+  id: CEPlushieSkeleton
   faction: HomeDecor
   service: !type:CEBuyItemsService
-    product: CESkeletonPlushie
-    count: 1
+    product: CEPlushieSkeleton
 
 - type: tradingPosition
-  id: CEAgaricPlushie
+  id: CEPlushieAgaric
   faction: HomeDecor
   service: !type:CEBuyItemsService
-    product: CEAgaricPlushie
-    count: 1
+    product: CEPlushieAgaric
+
+- type: tradingPosition
+  id: CEPlushieZombie
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEPlushieZombie
+
+- type: tradingPosition
+  id: CEPlushieLumi
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEPlushieLumi
+
+- type: tradingPosition
+  id: CEPlushieFlem
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEPlushieFlem
