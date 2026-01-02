@@ -4,7 +4,7 @@
   parent:
   - Mannequin
   categories: [ ForkFiltered ]
-  description: A handy stand for clothing or armour.
+  description: A handy stand for clothing or armor.
   components:
   - type: Appearance
   - type: Sprite
