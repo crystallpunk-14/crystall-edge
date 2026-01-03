@@ -137,3 +137,8 @@
   license: "CC0-1.0"
   copyright: 'by bajko of Freesound.org.'
   source: "https://freesound.org/people/bajko/sounds/378058/"
+
+- files: ["bell.ogg", "bell_short"]
+  license: "CC0-1.0"
+  copyright: 'Created by Fenodyrie on Freesound.org'
+  source: "https://freesound.org/people/Fenodyrie/sounds/583950/"
