@@ -7,7 +7,7 @@
   - /Audio/_CE/Effects/Footsteps/carrin_step3.ogg
 
 - type: soundCollection
-  id: CP14StepBones
+  id: CEStepBones
   files:
   - /Audio/_CE/Effects/Footsteps/bones1.ogg
   - /Audio/_CE/Effects/Footsteps/bones2.ogg
