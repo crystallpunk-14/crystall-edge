@@ -6,3 +6,6 @@
 
 - type: Tag
   id: CELockpick
+
+- type: Tag
+  id: CEScissors

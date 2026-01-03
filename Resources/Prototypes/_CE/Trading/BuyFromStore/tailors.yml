@@ -679,3 +679,13 @@
   service: !type:CEBuyItemsService
     product: CEClothingBackSatchel
     count: 1
+
+# Tools
+
+- type: tradingPosition
+  id: CEScissors
+  priceMarkup: 25
+  faction: Tailors
+  service: !type:CEBuyItemsService
+    product: CEScissors
+    count: 1

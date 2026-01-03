@@ -142,3 +142,9 @@
   license: "CC0-1.0"
   copyright: 'Created by AKkingStudio on Freesound.org'
   source: "https://freesound.org/people/AKkingStudio/sounds/784768/"
+
+- files: ["snowball.ogg"]
+  license: "CC0-1.0"
+  copyright: 'by bajko of Freesound.org.'
+  source: "https://freesound.org/people/bajko/sounds/378058/"
+

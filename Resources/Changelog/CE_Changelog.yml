@@ -293,3 +293,20 @@
   id: 1030
   time: '2025-12-29T22:02:19.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/227
+- author: TheShuEd
+  changes:
+  - message: Added snowdrifts, snowballs, and transparent ice walls.
+    type: Add
+  - message: "Added 2 types of mannequins: Human and \u0421ar\u0441at. Mannequins\
+      \ can be purchased on the trading platform."
+    type: Add
+  - message: Scissors have been added, allowing you to change your hairstyle and beard.
+      You can buy them on the trading platform or find them in crates.
+    type: Add
+  - message: Shaar map is now snowy.
+    type: Tweak
+  - message: Plush toys have been added! You can buy them on the trading platform.
+    type: Add
+  id: 1031
+  time: '2026-01-02T15:22:46.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/234
