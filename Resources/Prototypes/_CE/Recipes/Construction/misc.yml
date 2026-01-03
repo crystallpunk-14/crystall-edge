@@ -1,0 +1,12 @@
+- type: construction
+  crystallPunkAllowed: true
+  id: CEBaseTombstone
+  graph: CEBaseTombstone
+  startNode: start
+  targetNode: CEBaseTombstone
+  category: construction-category-misc
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
