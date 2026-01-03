@@ -1,5 +1,5 @@
 - type: construction
-  crystallPunkAllowed: true
+  hide: false
   id: CEBaseTombstone
   graph: CEBaseTombstone
   startNode: start
