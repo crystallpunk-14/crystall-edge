@@ -65,55 +65,6 @@
 
 - type: entity
   parent: CEBaseBoneStructure
-  id: CEBoneRemainsBoneHound
-  name: bone remains hound
-  description: The bones of a hound that died a long time ago... or very recently.
-  components:
-  - type: Sprite
-    noRot: true
-    sprite: _CE/Mobs/Monster/bone_hound.rsi
-    drawdepth: BelowFloor
-    layers:
-      - state: dead
-  - type: FootstepModifier
-    footstepSoundCollection:
-      collection: CEStepBones
-      params:
-        volume: 4
-  - type: Fixtures
-    fixtures:
-      fix1:
-        hard: false
-        shape:
-          !type:PhysShapeCircle
-          radius: 0.2
-        density: 50
-        mask:
-        - SlipLayer
-        layer:
-        - ItemMask
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 10
-      behaviors:
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-        - !type:SpawnEntitiesBehavior
-          spawn:
-            CEBone1:
-              min: 2
-              max: 4
-            CEClothingMaskBoneHornedMask:
-              min: 0
-              max: 1
-        - !type:PlaySoundBehavior
-          sound:
-            collection: CEBoneCrack
-
-- type: entity
-  parent: CEBaseBoneStructure
   id: CEBoneSpine
   name: bone spine 
   description: The large bony torso of an unknown creature, as if it had been torn to pieces.
