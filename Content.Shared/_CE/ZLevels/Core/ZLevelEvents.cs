@@ -1,10 +1,9 @@
-using Content.Shared.Actions.Components;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._CE.ZLevels.Core.EntitySystems;
 
 /// <summary>
-/// Sent by the client to request performing YourAction.
+/// Sent by the client to request changing the currently viewed Z-layer level.
 /// </summary>
 [Serializable, NetSerializable]
 public sealed class ChangeViewedZLayerEvent

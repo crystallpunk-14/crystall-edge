@@ -39,10 +39,9 @@ public sealed partial class CEZLevelViewerComponent : Component
     public EntityUid? ZLevelActionEntity;
 }
 
-[Flags]
 public enum ZLevelViewRelation : byte
 {
     Static = 1,  //In Relation to the Worlds Base ZLevel
     Absolute = 2, //In Relation to Grids base ZLevel
-    Relative = 4, //In Relation to current Entity ZLevel
+    Relative = 3, //In Relation to current Entity ZLevel
 }

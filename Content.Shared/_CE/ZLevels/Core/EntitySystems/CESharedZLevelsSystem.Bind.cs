@@ -38,7 +38,7 @@ public abstract partial class CESharedZLevelsSystem
         if (!TryComp<CEZLevelViewerComponent>(player, out var comp))
             return;
 
-        var oldvalue = comp!.ViewedZLevel;
+        var oldvalue = comp.ViewedZLevel;
         var newvalue = oldvalue + 1;
 
         RaisePredictiveEvent<ChangeViewedZLayerEvent>(new(GetNetEntity(player), newvalue));
@@ -51,7 +51,7 @@ public abstract partial class CESharedZLevelsSystem
         if (!TryComp<CEZLevelViewerComponent>(player, out var comp))
             return;
 
-        var oldvalue = comp!.ViewedZLevel;
+        var oldvalue = comp.ViewedZLevel;
         var newvalue = oldvalue - 1;
 
         RaisePredictiveEvent<ChangeViewedZLayerEvent>(new(GetNetEntity(player), newvalue));

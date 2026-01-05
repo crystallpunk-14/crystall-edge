@@ -90,6 +90,8 @@ public abstract partial class CESharedZLevelsSystem
     }
     public bool TrySetViewedZLevel(Entity<CEZLevelViewerComponent> ent, int value)
     {
+        //todo: Add Validations if needed
+
         SetViewedZLevel(ent, value);
         return true;
     }

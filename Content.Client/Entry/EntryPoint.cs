@@ -84,7 +84,7 @@ namespace Content.Client.Entry
 
             foreach (var callback in TestingCallbacks)
             {
-                var cast = (ClientModuleTestingCallbacks)callback;
+                var cast = (ClientModuleTestingCallbacks) callback;
                 cast.ClientBeforeIoC?.Invoke();
             }
         }
@@ -161,6 +161,7 @@ namespace Content.Client.Entry
             CEContentContexts.SetupContexts(_inputManager.Contexts); //CrystallEdge
 
             _parallaxManager.LoadDefaultParallax();
+
             _overlayManager.AddOverlay(new SingularityOverlay());
             _overlayManager.AddOverlay(new RadiationPulseOverlay());
             _chatManager.Initialize();
@@ -208,7 +209,7 @@ namespace Content.Client.Entry
             else if (_gameController.LaunchState.FromLauncher)
             {
                 _stateManager.RequestStateChange<LauncherConnecting>();
-                var state = (LauncherConnecting)_stateManager.CurrentState;
+                var state = (LauncherConnecting) _stateManager.CurrentState;
 
                 if (disconnected)
                 {

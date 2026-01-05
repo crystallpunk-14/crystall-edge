@@ -123,7 +123,13 @@ public sealed partial class ScalingViewport
         {
             highestDepth = zLevelViewer.ViewedZLevel > 0 ? zLevelViewer.ViewedZLevel : 0;
 
-            lowestDepth = zLevelViewer.ViewedZLevel < 0 ? Math.Abs(zLevelViewer.ViewedZLevel) : 1; // making one layer below you visbile prevents a bug that would otherwise just show a black layer
+            // When looking up, always render at least one layer below the player.
+            // If no below-player layer is included (i.e. lowestDepth == 0 while we only render higher Z-levels),
+            // the map rendering pipeline can end up drawing against an effectively empty base layer and the
+            // viewport falls back to a black background, appearing as if a solid black map layer is shown.
+            // Forcing lowestDepth to be at least 1 ensures there is always a concrete map layer beneath any
+            // viewed upper layers and avoids this “black layer” rendering bug.
+            lowestDepth = zLevelViewer.ViewedZLevel < 0 ? Math.Abs(zLevelViewer.ViewedZLevel) : 1;
 
         }
         var lowestCalculatedDepth = 0;

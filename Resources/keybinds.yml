@@ -680,6 +680,6 @@ binds:
   type: State
   key: NumpadSubtract
   mod1: Alt
-- function: ToggleZLayerRelation
-  type: State
-  key: O
+# - function: ToggleZLayerRelation
+#   type: State
+#   key: O

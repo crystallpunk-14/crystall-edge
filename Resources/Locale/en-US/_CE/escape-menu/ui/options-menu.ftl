@@ -5,7 +5,7 @@ ce-ui-options-postprocess = Cosmetic Post Processing
 ce-ui-options-postprocess-tooltip =
     Enables additive lighting and other post-processing effects. Has a low impact on performance.
 
-ui-options-header-text-ce = Crystall Edge specific options
+ui-options-header-text-ce = CrystallEdge specific options
 
 ui-options-function-selected-z-layer-up = Increases selected Z Layer
 ui-options-function-selected-z-layer-down = Decreases selected Z Layer
