@@ -172,6 +172,14 @@ namespace Content.Client.Options.UI.Tabs
             AddButton(ContentKeyFunctions.ZoomOut);
             AddButton(ContentKeyFunctions.ResetZoom);
 
+            //CE
+            AddHeader("ui-options-header-text-ce");
+            AddButton(CEContentKeyFunctions.SelectedZLayerUp);
+            AddButton(CEContentKeyFunctions.SelectedZLayerDown);
+            AddButton(CEContentKeyFunctions.SelectedZLayerReset);
+            AddButton(CEContentKeyFunctions.ToggleZLayerRelation);
+            //CE end
+
             AddHeader("ui-options-header-interaction-basic");
             AddButton(EngineKeyFunctions.Use);
             AddButton(EngineKeyFunctions.UseSecondary);
@@ -319,14 +327,6 @@ namespace Content.Client.Options.UI.Tabs
             AddButton(EngineKeyFunctions.TextTabComplete);
             AddButton(EngineKeyFunctions.TextCompleteNext);
             AddButton(EngineKeyFunctions.TextCompletePrev);
-
-            //CE
-            AddHeader("ui-options-header-text-ce");
-            AddButton(CEContentKeyFunctions.SelectedZLayerUp);
-            AddButton(CEContentKeyFunctions.SelectedZLayerDown);
-            AddButton(CEContentKeyFunctions.SelectedZLayerReset);
-            AddButton(CEContentKeyFunctions.ToggleZLayerRelation);
-            //CE end
 
             foreach (var control in _keyControls.Values)
             {
