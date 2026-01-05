@@ -97,6 +97,12 @@ public abstract partial class CESharedZLevelsSystem
     }
 }
 
+public enum CEZLayerAlertSeverity : short
+{
+    negative = -1,
+    neutral = 0,
+    positive = 1,
+}
 public sealed partial class CEToggleZLevelLookUpAction : InstantActionEvent
 {
 }

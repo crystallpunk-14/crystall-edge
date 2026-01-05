@@ -4,6 +4,7 @@
  */
 
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
+using Content.Shared.Alert;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -31,6 +32,11 @@ public sealed partial class CEZLevelViewerComponent : Component
 
     [DataField, AutoNetworkedField]
     public int ViewedZLevel;
+
+    [DataField]
+    public ProtoId<AlertPrototype> ZLayerAlert = "CEZLayer";
+    [DataField]
+    public CEZLayerAlertSeverity ZLayerAlertSeverity = CEZLayerAlertSeverity.neutral;
 
     [DataField]
     public EntProtoId ActionProto = "CEActionToggleLookUp";
