@@ -10,5 +10,5 @@ ui-options-header-text-ce = Crystall Edge specific options
 ui-options-function-selected-z-layer-up = Increases selected Z Layer
 ui-options-function-selected-z-layer-down = Decreases selected Z Layer
 ui-options-function-selected-z-layer-reset = Resets selected Z Layer
-ui-options-function-toggle-selected-z-layer-relation = Swaps between Z Layer relations
+ui-options-function-toggle-z-layer-relation = Swaps between Z Layer relations
 
