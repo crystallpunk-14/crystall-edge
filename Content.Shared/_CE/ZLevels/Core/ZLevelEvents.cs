@@ -13,3 +13,9 @@ public sealed class ChangeViewedZLayerEvent
     public readonly NetEntity? Target = target;
     public int NewValue = newValue;
 }
+[Serializable, NetSerializable]
+public sealed class CEViewedZLayerChangedEvent( int value)
+{
+    public readonly int Value = value;
+}
+
