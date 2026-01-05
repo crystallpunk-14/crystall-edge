@@ -3,7 +3,6 @@ using Robust.Shared.Input;
 namespace Content.Shared._CE.Input
 {
     [KeyFunctions]
-
     public static class CEContentKeyFunctions
     {
         public static readonly BoundKeyFunction SelectedZLayerUp = "SelectedZLayerUp";
