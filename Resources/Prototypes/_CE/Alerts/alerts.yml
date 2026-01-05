@@ -31,6 +31,37 @@
   maxSeverity: 11
 
 - type: alert
+  id: CEZLayer
+  alertViewEntity: CESelectedZLayer
+  icons:
+  - sprite: /Textures/_CE/Interface/Alerts/counter_icons.rsi
+    state: negative
+  - sprite: /Textures/_CE/Interface/Alerts/counter_icons.rsi
+    state: neutral
+  - sprite: /Textures/_CE/Interface/Alerts/counter_icons.rsi
+    state: positive
+  minSeverity: -1
+  maxSeverity: 1
+  severity:
+  name: ce-alerts-z-layer-name
+  description: ce-alerts-z-layer-description
+
+- type: entity
+  id: CESelectedZLayer
+  components:
+  - type: GenericCounterAlert
+  - type: Sprite
+    sprite: /Textures/Interface/Alerts/generic_counter.rsi
+    layers:
+    - map: [ "enum.AlertVisualLayers.Base" ]
+    - map: [ "1" ]
+      offset: 0.25, 0
+    - map: [ "10" ]
+      offset: 0.125, 0
+    - map: [ "100" ]
+
+
+- type: alert
   id: CEVampireStarving
   category: Hunger
   icons:
