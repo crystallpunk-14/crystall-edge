@@ -5,9 +5,9 @@
   groups:
   - CEGeneralBag
   - CETavernmasterHead #
-  #- CEGeneralEyes
+  - CEGeneralEyes
   - CETavernmasterCloak #
-  #- CEGeneralGloves
+  - CEGeneralGloves
   - CEGeneralShirt
   - CEGeneralPants
   - CEGeneralShoes
@@ -17,8 +17,8 @@
   groups:
   - CEGeneralBag
   - CEChefHead
-  #- CEGeneralEyes
-  #- CEGeneralGloves
+  - CEGeneralEyes
+  - CEGeneralGloves
   - CEGeneralShirt
   - CEGeneralPants
   - CEGeneralShoes
@@ -30,9 +30,9 @@
   groups:
   - CEGeneralBag
   - CEGuardHead
-  #- CEGeneralEyes
+  - CEGeneralEyes
   - CEGuardCommanderCloak #
-  #- CEGeneralGloves
+  - CEGeneralGloves
   - CEGuardShirt
   - CEGuardPants
   - CEGeneralShoes
@@ -42,9 +42,9 @@
   groups:
   - CEGeneralBag
   - CEInvestigatorHead
-  #- CEGeneralEyes
+  - CEGeneralEyes
   - CEInvestigatorCloak #
-  #- CEGeneralGloves
+  - CEGeneralGloves
   - CEGuardShirt
   - CEGuardPants
   - CEGeneralShoes
@@ -54,9 +54,9 @@
   groups:
   - CEGeneralBag
   - CEGuardHead
-  #- CEGeneralEyes
-  - CEGuardCloak #
-  #- CEGeneralGloves
+  - CEGeneralEyes
+  - CEGuardCloak
+  - CEGeneralGloves
   - CEGuardShirt
   - CEGuardPants
   - CEGeneralShoes
@@ -68,6 +68,9 @@
   groups:
   - CEGeneralBag
   - CETownfolkHead
+  - CEGeneralEyes
+  - CEGeneralCloak
+  - CEGeneralGloves
   - CEGeneralShirt
   - CEGeneralPants
   - CEGeneralShoes
@@ -77,6 +80,9 @@
   groups:
   - CEGeneralBag
   - CEBardHead
+  - CEGeneralEyes
+  - CEGeneralCloak
+  - CEGeneralGloves
   - CEBardShirt
   - CEBardPants
   - CEBardShoes

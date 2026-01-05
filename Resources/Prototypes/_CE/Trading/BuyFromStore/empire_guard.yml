@@ -6,11 +6,11 @@
     count: 1
 
 - type: tradingPosition
-  id: CEClothingRaincoatGuard
+  id: CEClothingCloakRaincoatGuard
   faction: EmpireGuard
   priceMarkup: 10
   service: !type:CEBuyItemsService
-    product: CEClothingRaincoatGuard
+    product: CEClothingCloakRaincoatGuard
     count: 1
 
 - type: tradingPosition

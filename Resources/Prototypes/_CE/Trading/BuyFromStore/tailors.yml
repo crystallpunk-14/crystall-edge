@@ -6,24 +6,24 @@
     count: 1
 
 - type: tradingPosition
-  id: CEClothingCapeFur
+  id: CEClothingCloakCapeFur
   faction: Tailors
   service: !type:CEBuyItemsService
-    product: CEClothingCapeFur
+    product: CEClothingCloakCapeFur
     count: 1
 
 - type: tradingPosition
-  id: CEClothingCapeFur2
+  id: CEClothingCloakCapeFur2
   faction: Tailors
   service: !type:CEBuyItemsService
-    product: CEClothingCapeFur2
+    product: CEClothingCloakCapeFur2
     count: 1
 
 - type: tradingPosition
-  id: CEClothingCapeBarbarian
+  id: CEClothingCloakCapeBarbarian
   faction: Tailors
   service: !type:CEBuyItemsService
-    product: CEClothingCapeBarbarian
+    product: CEClothingCloakCapeBarbarian
     count: 1
 
 - type: tradingPosition
@@ -41,17 +41,17 @@
     count: 1
 
 - type: tradingPosition
-  id: CEClothingCoatFur
+  id: CEClothingCloakCoatFur
   faction: Tailors
   service: !type:CEBuyItemsService
-    product: CEClothingCoatFur
+    product: CEClothingCloakCoatFur
     count: 1
 
 - type: tradingPosition
-  id: CEClothingCoatFurBrown
+  id: CEClothingCloakCoatFurBrown
   faction: Tailors
   service: !type:CEBuyItemsService
-    product: CEClothingCoatFurBrown
+    product: CEClothingCloakCoatFurBrown
     count: 1
 
 - type: tradingPosition
@@ -77,17 +77,17 @@
     count: 1
 
 - type: tradingPosition
-  id: CEClothingRaincoatGreen
+  id: CEClothingCloakRaincoatGreen
   faction: Tailors
   service: !type:CEBuyItemsService
-    product: CEClothingRaincoatGreen
+    product: CEClothingCloakRaincoatGreen
     count: 1
 
 - type: tradingPosition
-  id: CEClothingRaincoatWhite
+  id: CEClothingCloakRaincoatWhite
   faction: Tailors
   service: !type:CEBuyItemsService
-    product: CEClothingRaincoatWhite
+    product: CEClothingCloakRaincoatWhite
     count: 1
 
 - type: tradingPosition
@@ -210,13 +210,6 @@
     count: 1
 
 - type: tradingPosition
-  id: CEClothingPantsBlue
-  faction: Tailors
-  service: !type:CEBuyItemsService
-    product: CEClothingPantsBlue
-    count: 1
-
-- type: tradingPosition
   id: CEClothingPantsBrown
   faction: Tailors
   service: !type:CEBuyItemsService
@@ -263,13 +256,6 @@
   faction: Tailors
   service: !type:CEBuyItemsService
     product: CEClothingPantsMercenary
-    count: 1
-
-- type: tradingPosition
-  id: CEClothingPantsWhite
-  faction: Tailors
-  service: !type:CEBuyItemsService
-    product: CEClothingPantsWhite
     count: 1
 
 - type: tradingPosition
@@ -626,6 +612,48 @@
     product: CEClothingShirtMerchant
     count: 1
 
+- type: tradingPosition
+  id: CEClothingGlovesJagermeister
+  faction: Tailors
+  service: !type:CEBuyItemsService
+    product: CEClothingGlovesJagermeister
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingGlovesBlacksmith
+  faction: Tailors
+  service: !type:CEBuyItemsService
+    product: CEClothingGlovesBlacksmith
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingMaskNeckerchief
+  faction: Tailors
+  service: !type:CEBuyItemsService
+    product: CEClothingMaskNeckerchief
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingMaskRedNeckerchief
+  faction: Tailors
+  service: !type:CEBuyItemsService
+    product: CEClothingMaskRedNeckerchief
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingMaskGreenNeckerchief
+  faction: Tailors
+  service: !type:CEBuyItemsService
+    product: CEClothingMaskGreenNeckerchief
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingMaskMime
+  faction: Tailors
+  service: !type:CEBuyItemsService
+    product: CEClothingMaskMime
+    count: 1
+
 # Bags
 
 - type: tradingPosition
@@ -650,4 +678,14 @@
   faction: Tailors
   service: !type:CEBuyItemsService
     product: CEClothingBackSatchel
+    count: 1
+
+# Tools
+
+- type: tradingPosition
+  id: CEScissors
+  priceMarkup: 25
+  faction: Tailors
+  service: !type:CEBuyItemsService
+    product: CEScissors
     count: 1

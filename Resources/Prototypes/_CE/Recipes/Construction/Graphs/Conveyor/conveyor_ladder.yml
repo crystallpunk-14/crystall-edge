@@ -20,7 +20,7 @@
       edges:
         - to: start
           steps:
-            - tool: Welding
+            - tool: Prying
               doAfter: 1
           completed:
             - !type:SpawnPrototype
@@ -39,7 +39,7 @@
       edges:
         - to: start
           steps:
-            - tool: Welding
+            - tool: Prying
               doAfter: 1
           completed:
             - !type:SpawnPrototype

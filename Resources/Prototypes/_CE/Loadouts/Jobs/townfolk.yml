@@ -8,6 +8,12 @@
   - CEClothingHeadKasaHat
   - CEClothingHeadStrawHat
   - CEClothingHeadWreath
+  - CEClothingHeadFedoraHunterBlack
+  - CEClothingHeadFedoraHunterBlue
+  - CEClothingHeadFedoraHunterGreen
+  - CEClothingHeadFedoraHunterRed
+  - CEClothingHeadChristmasHat
+  - CEClothingHeadTriangularLeather
 
 - type: loadout
   id: CEClothingHeadKasaHat
@@ -23,3 +29,33 @@
   id: CEClothingHeadWreath
   equipment:
     head: CEClothingHeadWreath
+
+- type: loadout
+  id: CEClothingHeadFedoraHunterBlack
+  equipment:
+    head: CEClothingHeadFedoraHunterBlack
+
+- type: loadout
+  id: CEClothingHeadFedoraHunterBlue
+  equipment:
+    head: CEClothingHeadFedoraHunterBlue
+
+- type: loadout
+  id: CEClothingHeadFedoraHunterGreen
+  equipment:
+    head: CEClothingHeadFedoraHunterGreen
+
+- type: loadout
+  id: CEClothingHeadFedoraHunterRed
+  equipment:
+    head: CEClothingHeadFedoraHunterRed
+
+- type: loadout
+  id: CEClothingHeadChristmasHat
+  equipment:
+    head: CEClothingHeadChristmasHat
+
+- type: loadout
+  id: CEClothingHeadTriangularLeather
+  equipment:
+    head: CEClothingHeadTriangularLeather

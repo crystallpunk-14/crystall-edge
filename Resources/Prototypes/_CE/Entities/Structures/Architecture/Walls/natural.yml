@@ -64,6 +64,8 @@
     sprite: _CE/Structures/Architecture/Walls/dirt.rsi
   - type: IconSmooth
     base: wall
+  - type: CEAutoTilePlacement
+    tile: CEDirt
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: Rock
@@ -106,6 +108,8 @@
     sprite: _CE/Structures/Architecture/Walls/leaf.rsi
   - type: Icon
     sprite: _CE/Structures/Architecture/Walls/leaf.rsi
+  - type: CEAutoTilePlacement
+    tile: CEDirt
   - type: IconSmooth
     key: CEwallLeaf
     base: wall
@@ -191,6 +195,8 @@
     sprite: _CE/Structures/Architecture/Walls/snow.rsi
   - type: Icon
     sprite: _CE/Structures/Architecture/Walls/snow.rsi
+  - type: CEAutoTilePlacement
+    tile: CESnowDeepDeep
   - type: IconSmooth
     base: wall
   - type: Damageable
@@ -208,21 +214,21 @@
         !type:DamageTrigger
         damage: 30
       behaviors:
-      #- !type:PlaySoundBehavior
-      #  sound:
-      #    path: /Audio/_CE/Effects/snowball.ogg
-      #    params:
-      #      variation: 0.250
-      #      volume: 15
-      #- !type:SpawnEntitiesBehavior
-      #  spawn:
-      #    CESnowball:
-      #      min: 3
-      #      max: 5
-      #- !type:SpawnEntitiesBehavior
-      #  spawn:
-      #    CESnowEffect:
-      #      min: 2
-      #      max: 3
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/_CE/Effects/snowball.ogg
+          params:
+            variation: 0.250
+            volume: 15
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CESnowball:
+            min: 3
+            max: 5
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CESnowEffect:
+            min: 2
+            max: 3
       - !type:DoActsBehavior
         acts: ["Destruction"]

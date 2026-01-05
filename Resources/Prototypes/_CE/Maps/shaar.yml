@@ -27,10 +27,10 @@
       offset: 490
     - type: LightCycle
       offset: 490
-      originalColor: "#b8d9dc"
+      originalColor: "#75e3ff"
     - type: SunShadow
     - type: MapLight
-      ambientLightColor: "#b8d9dc"
+      ambientLightColor: "#75e3ff"
   stations:
     Shaar:
       stationProto: CEStandardImperialFloatingIsland

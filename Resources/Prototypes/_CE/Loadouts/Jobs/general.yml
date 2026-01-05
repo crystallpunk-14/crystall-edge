@@ -246,6 +246,114 @@
   equipment:
     shirt: CEClothingShirtWarriorGarb
 
+# Cloak
+
+- type: loadoutGroup
+  id: CEGeneralCloak
+  name: ce-loadout-cloak
+  minLimit: 0
+  loadouts:
+  - CEClothingCloakCapeBarbarian
+  - CEClothingCloakCapeFur
+  - CEClothingCloakCapeFur2
+  - CEClothingCloakBlue
+  - CEClothingCloakInsulatedMantle
+  - CEClothingCloakCoatFur
+  - CEClothingCloakCoatFurBrown
+  - CEClothingCloakRaincoatGreen
+  - CEClothingCloakRaincoatWhite
+
+- type: loadout
+  id: CEClothingCloakCapeBarbarian
+  equipment:
+    cloak: CEClothingCloakCapeBarbarian
+
+- type: loadout
+  id: CEClothingCloakCapeFur
+  equipment:
+    cloak: CEClothingCloakCapeFur
+
+- type: loadout
+  id: CEClothingCloakCapeFur2
+  equipment:
+    cloak: CEClothingCloakCapeFur2
+
+- type: loadout
+  id: CEClothingCloakBlue
+  equipment:
+    cloak: CEClothingCloakBlue
+
+- type: loadout
+  id: CEClothingCloakInsulatedMantle
+  equipment:
+    cloak: CEClothingCloakInsulatedMantle
+
+- type: loadout
+  id: CEClothingCloakCoatFur
+  equipment:
+    cloak: CEClothingCloakCoatFur
+
+- type: loadout
+  id: CEClothingCloakCoatFurBrown
+  equipment:
+    cloak: CEClothingCloakCoatFurBrown
+
+- type: loadout
+  id: CEClothingCloakRaincoatGreen
+  equipment:
+    cloak: CEClothingCloakRaincoatGreen
+
+- type: loadout
+  id: CEClothingCloakRaincoatWhite
+  equipment:
+    cloak: CEClothingCloakRaincoatWhite
+
+# Eyes
+
+- type: loadoutGroup
+  id: CEGeneralEyes
+  name: ce-loadout-goggles
+  minLimit: 0
+  loadouts:
+  - CEClothingEyesMonocle
+  - CEClothingEyesGlasses
+  - CEClothingEyesEyePatch
+
+- type: loadout
+  id: CEClothingEyesMonocle
+  equipment:
+    eyes: CEClothingEyesMonocle
+
+- type: loadout
+  id: CEClothingEyesGlasses
+  equipment:
+    eyes: CEClothingEyesGlasses
+
+- type: loadout
+  id: CEClothingEyesEyePatch
+  equipment:
+    eyes: CEClothingEyesEyePatch
+
+# Gloves
+
+- type: loadoutGroup
+  id: CEGeneralGloves
+  name: ce-loadout-gloves
+  minLimit: 0
+  loadouts:
+  - CEClothingGlovesJagermeister
+  - CEClothingGlovesBlacksmith
+
+- type: loadout
+  id: CEClothingGlovesJagermeister
+  equipment:
+    gloves: CEClothingGlovesJagermeister
+
+- type: loadout
+  id: CEClothingGlovesBlacksmith
+  equipment:
+    gloves: CEClothingGlovesBlacksmith
+
 # Pants
 
 - type: loadoutGroup
@@ -254,16 +362,9 @@
   minLimit: 1
   loadouts:
   - CEClothingPantsBrown
-  - CEClothingPantsBlue
   - CEClothingPantsGreen
   - CEClothingPantsHakama
   - CEClothingPantsLoincloth
-  - CEClothingPantsWhite
-
-- type: loadout
-  id: CEClothingPantsBlue
-  equipment:
-    pants: CEClothingPantsBlue
 
 - type: loadout
   id: CEClothingPantsBrown
@@ -284,11 +385,6 @@
   id: CEClothingPantsLoincloth
   equipment:
     pants: CEClothingPantsLoincloth
-
-- type: loadout
-  id: CEClothingPantsWhite
-  equipment:
-    pants: CEClothingPantsWhite
 
 # Shoes
 

@@ -3,60 +3,141 @@
   faction: HomeDecor
   service: !type:CEBuyItemsService
     product: CEWoodenPlanks20
-    count: 1
 
 - type: tradingPosition
   id: CEFloorCarpetItemBlue10
   faction: HomeDecor
   service: !type:CEBuyItemsService
     product: CEFloorCarpetItemBlue10
-    count: 1
 
 - type: tradingPosition
   id: CEFloorCarpetItemRed10
   faction: HomeDecor
   service: !type:CEBuyItemsService
     product: CEFloorCarpetItemRed10
-    count: 1
 
 - type: tradingPosition
   id: CEFloorCarpetItemPurple10
   faction: HomeDecor
   service: !type:CEBuyItemsService
     product: CEFloorCarpetItemPurple10
-    count: 1
 
 - type: tradingPosition
   id: CEFloorCarpetItemBlack10
   faction: HomeDecor
   service: !type:CEBuyItemsService
     product: CEFloorCarpetItemBlack10
-    count: 1
 
 - type: tradingPosition
   id: CECandle
   faction: HomeDecor
   service: !type:CEBuyItemsService
     product: CECandle
-    count: 1
 
 - type: tradingPosition
   id: CECandelabra
   faction: HomeDecor
   service: !type:CEBuyItemsService
     product: CECandelabra
-    count: 1
 
 - type: tradingPosition
   id: CENail10
   faction: HomeDecor
   service: !type:CEBuyItemsService
     product: CENail10
-    count: 1
 
 - type: tradingPosition
   id: CEGlassSheet10
   faction: HomeDecor
   service: !type:CEBuyItemsService
     product: CEGlassSheet10
-    count: 1
+
+- type: tradingPosition
+  id: CEMannequinHumanMale
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEMannequinHumanMale
+
+- type: tradingPosition
+  id: CEMannequinCarcat
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEMannequinCarcat
+
+- type: tradingPosition
+  id: CEPlushieHuman
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEPlushieHuman
+
+- type: tradingPosition
+  id: CEPlushieDwarf
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEPlushieDwarf
+
+- type: tradingPosition
+  id: CEPlushieElf
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEPlushieElf
+
+- type: tradingPosition
+  id: CEPlushieGoblin
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEPlushieGoblin
+
+- type: tradingPosition
+  id: CEPlushieSilva
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEPlushieSilva
+
+- type: tradingPosition
+  id: CEPlushieTiefling
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEPlushieTiefling
+
+- type: tradingPosition
+  id: CEPlushieCarcat
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEPlushieCarcat
+
+- type: tradingPosition
+  id: CEPlushieFrog
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEPlushieFrog
+
+- type: tradingPosition
+  id: CEPlushieSkeleton
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEPlushieSkeleton
+
+- type: tradingPosition
+  id: CEPlushieAgaric
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEPlushieAgaric
+
+- type: tradingPosition
+  id: CEPlushieZombie
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEPlushieZombie
+
+- type: tradingPosition
+  id: CEPlushieLumi
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEPlushieLumi
+
+- type: tradingPosition
+  id: CEPlushieFlem
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEPlushieFlem

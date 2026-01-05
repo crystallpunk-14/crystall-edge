@@ -34,12 +34,12 @@
   name: ce-loadout-cloak
   minLimit: 0
   loadouts:
-  - CEClothingRaincoatGuard
+  - CEClothingCloakRaincoatGuard
 
 - type: loadout
-  id: CEClothingRaincoatGuard
+  id: CEClothingCloakRaincoatGuard
   equipment:
-    cloak: CEClothingRaincoatGuard
+    cloak: CEClothingCloakRaincoatGuard
 
 # Head
 

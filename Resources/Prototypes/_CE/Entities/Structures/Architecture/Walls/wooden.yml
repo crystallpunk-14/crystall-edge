@@ -11,6 +11,8 @@
     sprite: _CE/Structures/Architecture/Walls/wooden_palisad.rsi
   - type: Icon
     sprite: _CE/Structures/Architecture/Walls/wooden_palisad.rsi
+  - type: CEAutoTilePlacement
+    tile: CEOakWoodPlanks
   - type: IconSmooth
     key: CEpalisade
     additionalKeys:
@@ -58,6 +60,8 @@
   - type: Icon
     sprite: _CE/Structures/Architecture/Walls/wooden.rsi
     state: frame
+  - type: CEAutoTilePlacement
+    tile: CEPlanks
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: CEWoodStructural
@@ -91,6 +95,8 @@
     sprite: _CE/Structures/Architecture/Walls/wooden.rsi
   - type: Icon
     sprite: _CE/Structures/Architecture/Walls/wooden.rsi
+  - type: CEAutoTilePlacement
+    tile: CEOakWoodPlanks
   - type: IconSmooth
     base: wood
   - type: Damageable

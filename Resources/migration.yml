@@ -28,6 +28,9 @@ CECoinPlatinum: CECoinPlatinum10
 CEPipeBrassMediumDelayer: CEPipeBrassMedium
 CEPipeBrassBigDelayer: CEPipeBrassBig
 
+CEClothingPantsBlue: CEClothingPantsBrown
+CEClothingPantsWhite: CEClothingPantsBrown
+
 CEWorkbenchAutoMeltingFurnace: CEMeltingFurnace
 
 # CrystallEdge migration zone end
