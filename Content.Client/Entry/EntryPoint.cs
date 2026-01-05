@@ -161,9 +161,6 @@ namespace Content.Client.Entry
             CEContentContexts.SetupContexts(_inputManager.Contexts); //CrystallEdge
 
             _parallaxManager.LoadDefaultParallax();
-            //CE
-            CEContentContexts.SetupContexts(_inputManager.Contexts);
-            //CE end
             _overlayManager.AddOverlay(new SingularityOverlay());
             _overlayManager.AddOverlay(new RadiationPulseOverlay());
             _chatManager.Initialize();
