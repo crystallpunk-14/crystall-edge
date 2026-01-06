@@ -29,13 +29,13 @@
       right:
       - state: lit-inhand-right
         shader: unshaded
-  - type: GenericVisualizer
-    visuals:
-      enum.FireplaceFuelVisuals.Status:
-        fuel:
-          Empty: { state: torch-spent }
-          Medium: { state: torch-unlit }
-          Full: { state: torch-unlit }
+  #- type: GenericVisualizer
+  #  visuals:
+  #    enum.FireplaceFuelVisuals.Status:
+  #      fuel:
+  #        Empty: { state: torch-spent }
+  #        Medium: { state: torch-unlit }
+  #        Full: { state: torch-unlit }
   #- type: CP14DelayedIgnitionSource
   #- type: CP14IgnitionModifier
   #  hideCaution: true

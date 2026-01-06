@@ -72,13 +72,13 @@
   - type: FireVisuals
     sprite: _CE/Structures/Furniture/torch_floor.rsi
     normalState: fire
-  - type: GenericVisualizer
-    visuals:
-      enum.FireplaceFuelVisuals.Status:
-        fuel:
-          Empty: { state: burned }
-          Medium: { state: base }
-          Full: { state: base }
+  #- type: GenericVisualizer
+  #  visuals:
+  #    enum.FireplaceFuelVisuals.Status:
+  #      fuel:
+  #        Empty: { state: burned }
+  #        Medium: { state: base }
+  #        Full: { state: base }
   #- type: Construction
   #  graph: CEFloorTorch
   #  node: CEFloorTorch
@@ -142,13 +142,13 @@
   - type: FireVisuals
     sprite: _CE/Structures/Furniture/wallmount_torch.rsi
     normalState: fire
-  - type: GenericVisualizer
-    visuals:
-      enum.FireplaceFuelVisuals.Status:
-        fuel:
-          Empty: { state: burned }
-          Medium: { state: base }
-          Full: { state: base }
+  #- type: GenericVisualizer
+  #  visuals:
+  #    enum.FireplaceFuelVisuals.Status:
+  #      fuel:
+  #        Empty: { state: burned }
+  #        Medium: { state: base }
+  #        Full: { state: base }
   #- type: Construction
   #  graph: CEWallmountTorch
   #  node: CEWallmountTorch
