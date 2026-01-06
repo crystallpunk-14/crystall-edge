@@ -59,9 +59,9 @@
     slice: CEFoodPumpkinSlice
   - type: Tag
     tags:
-    - CP14FarmFood
-    - CP14Vegetable
-    - CP14Pumpkin
+  #  - CEFarmFood
+    - CEVegetable
+    - CEPumpkin
 
 
 - type: entity
