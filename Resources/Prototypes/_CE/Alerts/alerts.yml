@@ -42,7 +42,6 @@
     state: positive
   minSeverity: -1
   maxSeverity: 1
-  severity:
   name: ce-alerts-z-layer-name
   description: ce-alerts-z-layer-description
 
