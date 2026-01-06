@@ -48,6 +48,7 @@
 
 - type: entity
   id: CESelectedZLayer
+  categories: [ ForkFiltered ]
   components:
   - type: GenericCounterAlert
   - type: Sprite
