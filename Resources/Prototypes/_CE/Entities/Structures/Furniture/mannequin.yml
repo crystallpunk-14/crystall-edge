@@ -197,15 +197,8 @@
     - map: [ "mannequin" ]
       sprite: _CE/Structures/Furniture/mannequin32.rsi
       state: snowman
-    - map: [ "pants" ]
-    - map: [ "shirt" ]
-    - map: [ "gloves" ]
-    - map: [ "outerClothing" ]
     - map: [ "cloak" ]
     - map: [ "eyes" ]
-    - map: [ "belt" ]
-    - map: [ "belt2" ]
-    - map: [ "neck" ]
     - map: [ "mask" ]
     - map: [ "head" ]
   - type: Damageable
