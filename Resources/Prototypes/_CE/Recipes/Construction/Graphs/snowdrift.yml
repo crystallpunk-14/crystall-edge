@@ -11,7 +11,7 @@
               doAfter: 1
           completed:
             - !type:SpawnPrototype
-              prototype: CESnowball
+              prototype: CESnowBlock1
               amount: 3
             - !type:SpawnPrototype
               prototype: CESnowEffect
@@ -34,3 +34,17 @@
               doAfter: 1
     - node: ball
       entity: CESnowball
+
+- type: constructionGraph
+  id: CEMannequinSnowman
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: CEMannequinSnowman
+          steps:
+            - material: CESnow
+              amount: 5
+              doAfter: 3
+    - node: CEMannequinSnowman
+      entity: CEMannequinSnowman
