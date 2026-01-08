@@ -44,7 +44,21 @@
         - to: CEMannequinSnowman
           steps:
             - material: CESnow
-              amount: 5
-              doAfter: 3
+              amount: 4
+              doAfter: 2
     - node: CEMannequinSnowman
       entity: CEMannequinSnowman
+
+- type: constructionGraph
+  id: CEWallSnow
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: CEWallSnow
+          steps:
+            - material: CESnow
+              amount: 4
+              doAfter: 2
+    - node: CEWallSnow
+      entity: CEWallSnow
