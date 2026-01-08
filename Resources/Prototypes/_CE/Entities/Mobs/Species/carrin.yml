@@ -93,6 +93,7 @@
     - wings
   - type: CEZFlyer # Flying birb!!!
     startFlightDoAfter: 1.5
+  - type: CEControllableFlight
   - type: CEZFlyerBlockHands
   - type: CEZFlyerStamina
     staminaDraw: 15
