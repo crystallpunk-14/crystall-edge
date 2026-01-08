@@ -37,6 +37,7 @@ public abstract class CESharedZFlightSystem : EntitySystem
         SubscribeLocalEvent<CEZPhysicsComponent, CEFlightStartedEvent>(OnStartFlight);
         SubscribeLocalEvent<CEZPhysicsComponent, CEFlightStoppedEvent>(OnStopFlight);
         SubscribeLocalEvent<CEZFlyerComponent, CEGetZVelocityEvent>(OnGetZVelocity);
+        SubscribeLocalEvent<CEZFlyerComponent, CECheckGravityEvent>(OnGetGravity);
 
         SubscribeLocalEvent<CEZFlyerComponent, CEZFlightActionUp>(OnZLevelUp);
         SubscribeLocalEvent<CEZFlyerComponent, CEZFlightActionDown>(OnZLevelDown);
@@ -131,6 +132,12 @@ public abstract class CESharedZFlightSystem : EntitySystem
         }
 
         args.VelocityDelta = velocityDelta;
+    }
+
+    private void OnGetGravity(Entity<CEZFlyerComponent> ent, ref CECheckGravityEvent args)
+    {
+        if (ent.Comp.Active)
+            args.Gravity *= 0;
     }
 
     private void OnZLevelUp(Entity<CEZFlyerComponent> ent, ref CEZFlightActionUp args)
@@ -240,7 +247,7 @@ public abstract class CESharedZFlightSystem : EntitySystem
         ent.Comp.Active = true;
         DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.Active));
 
-        _zLevel.SetZGravity((ent, zPhys), 0);
+        _zLevel.UpdateGravityState((ent, zPhys));
 
         // Update toggle action icon state
         if (ent.Comp.ZLevelToggleActionEntity != null)
@@ -265,7 +272,7 @@ public abstract class CESharedZFlightSystem : EntitySystem
         ent.Comp.Active = false;
         DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.Active));
 
-        _zLevel.SetZGravity((ent, zPhys), ent.Comp.DefaultGravityIntensity);
+        _zLevel.UpdateGravityState((ent, zPhys));
 
         // Update toggle action icon state
         if (ent.Comp.ZLevelToggleActionEntity != null)

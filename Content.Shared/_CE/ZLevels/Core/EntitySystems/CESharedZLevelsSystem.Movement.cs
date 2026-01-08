@@ -362,7 +362,18 @@ public abstract partial class CESharedZLevelsSystem
     }
 
     [PublicAPI]
-    public void SetZGravity(Entity<CEZPhysicsComponent?> ent, float newGravityMultiplier)
+    public void UpdateGravityState(Entity<CEZPhysicsComponent?> ent)
+    {
+        if (!Resolve(ent.Owner, ref ent.Comp))
+            return;
+
+        var ev = new CECheckGravityEvent();
+        RaiseLocalEvent(ent.Owner, ev);
+
+        SetZGravity(ent, ev.Gravity);
+    }
+
+    private void SetZGravity(Entity<CEZPhysicsComponent?> ent, float newGravityMultiplier)
     {
         if (!Resolve(ent.Owner, ref ent.Comp))
             return;
@@ -487,4 +498,12 @@ public sealed class CEGetZVelocityEvent(Entity<CEZPhysicsComponent> target) : En
 {
     public Entity<CEZPhysicsComponent> Target = target;
     public float VelocityDelta = 0;
+}
+
+/// <summary>
+/// Called when UpdateGravityState is used to update the current strength of the active z-level gravity. Various systems can subscribe to this to disable gravity.
+/// </summary>
+public sealed class CECheckGravityEvent : EntityEventArgs
+{
+    public float Gravity = 1f;
 }
