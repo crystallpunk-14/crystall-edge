@@ -1,0 +1,70 @@
+- type: entity
+  abstract: true
+  id: CEBaseWeaponClub
+  parent:
+  - BaseItem
+  - CEBaseWeaponThrowable
+  components:
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,2,0
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 5
+        Structural: 3
+  - type: MeleeWeapon
+    resetOnHandSelected: true
+    autoAttack: true
+    attackRate: 1
+    range: 1
+    angle: 60
+    wideAnimationRotation: -90
+    damage:
+      types:
+        Blunt: 15
+        Structural: 3
+    soundHit:
+      collection: MetalThud
+  - type: Clothing
+    slots:
+    - belt
+    equipWhileMoving: true
+    equipDelay: 0.5
+    unequipDelay: 0.5
+  - type: Tool
+    qualities:
+      - CEHammering
+    useSound:
+      collection: CEHammering
+      params:
+        variation: 0.03
+        volume: 2
+
+- type: entity
+  parent: CEBaseWeaponClub
+  id: CEWeaponClubGuard
+  name: guard club
+  description: A mana-powered club used by guards. When activated, it delivers a blow that knocks back targets slightly and drains their stamina.
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Tools/Weapons/Melee/Hammer/iron.rsi
+    state: icon
+  - type: Battery
+    startingCharge: 30
+    maxCharge: 30
+  - type: UseDelay
+    delay: 2.5
+  - type: CEMeleeEnergyEffect
+    energyCost: 5
+    removeBaseDamage: true
+    activeDuration: 2.5
+    effects:
+    - !type:CESpellThrowFromUser
+      distance: 0.5
+    - !type:CESpellSpawnEntityOnTarget
+      spawns:
+      - CEOverchargeVFX
+    - !type:CESpellStaminaDamage
+      damage: 30

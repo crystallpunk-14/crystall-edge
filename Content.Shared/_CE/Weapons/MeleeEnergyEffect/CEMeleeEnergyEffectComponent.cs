@@ -22,13 +22,13 @@ public sealed partial class CEMeleeEnergyEffectComponent : Component
     /// <summary>
     /// Energy cost in battery units required to activate the effect.
     /// </summary>
-    [DataField]
-    public float EnergyRequired = 10f;
+    [DataField(required: true)]
+    public float EnergyCost = 10f;
 
     /// <summary>
     /// If true, a charged effect attack does not deal standard weapon damage.
     /// </summary>
-    [DataField]
+    [DataField(required: true)]
     public bool RemoveBaseDamage = true;
 
     /// <summary>
@@ -46,7 +46,7 @@ public sealed partial class CEMeleeEnergyEffectComponent : Component
 
     /// <summary>
     /// Maximum number of available hits based on total battery capacity.
-    /// Calculated as MaxCharge / EnergyRequired.
+    /// Calculated as MaxCharge / EnergyCost.
     /// </summary>
     [DataField, AutoNetworkedField]
     public int Capacity;
@@ -54,7 +54,7 @@ public sealed partial class CEMeleeEnergyEffectComponent : Component
     /// <summary>
     /// Duration for which the effect remains active after activation.
     /// </summary>
-    [DataField]
+    [DataField(required: true)]
     public TimeSpan ActiveDuration = TimeSpan.FromSeconds(5);
 
     /// <summary>

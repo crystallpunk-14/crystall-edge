@@ -3,7 +3,7 @@ using Content.Shared.Trigger.Systems;
 
 namespace Content.Shared._CE.Actions.Spells;
 
-public sealed partial class CESpellStun: CESpellEffect
+public sealed partial class CESpellKnockdown: CESpellEffect
 {
     [DataField(required: true)]
     public TimeSpan Duration = TimeSpan.FromSeconds(1f);

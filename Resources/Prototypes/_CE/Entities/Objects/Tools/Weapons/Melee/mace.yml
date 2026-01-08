@@ -47,6 +47,9 @@
   - type: UseDelay
     delay: 5
   - type: CEMeleeEnergyEffect
+    energyCost: 10
+    removeBaseDamage: true
+    activeDuration: 5
     effects:
     - !type:CESpellThrowFromUser
       distance: 3

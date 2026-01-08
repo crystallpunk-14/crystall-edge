@@ -20,13 +20,13 @@ public sealed class CEMeleeEnergyEffectSystem : CESharedMeleeEnergyEffectSystem
 
     private void OnChargeChanged(Entity<CEMeleeEnergyEffectComponent> ent, ref ChargeChangedEvent args)
     {
-        if (ent.Comp.EnergyRequired > 0 && TryComp<BatteryComponent>(ent, out var battery))
+        if (ent.Comp.EnergyCost > 0 && TryComp<BatteryComponent>(ent, out var battery))
             UpdateBattery(ent, battery);
     }
 
     private void OnMapInit(Entity<CEMeleeEnergyEffectComponent> ent, ref MapInitEvent args)
     {
-        if (ent.Comp.EnergyRequired > 0 && TryComp<BatteryComponent>(ent, out var battery))
+        if (ent.Comp.EnergyCost > 0 && TryComp<BatteryComponent>(ent, out var battery))
             UpdateBattery(ent, battery);
     }
 
@@ -40,15 +40,15 @@ public sealed class CEMeleeEnergyEffectSystem : CESharedMeleeEnergyEffectSystem
         if (ent.Comp.Active)
             return;
 
-        if (ent.Comp.EnergyRequired > 0 && TryComp<BatteryComponent>(ent, out var battery))
+        if (ent.Comp.EnergyCost > 0 && TryComp<BatteryComponent>(ent, out var battery))
         {
-            if (battery.LastCharge < ent.Comp.EnergyRequired)
+            if (battery.LastCharge < ent.Comp.EnergyCost)
             {
                 Popup.PopupEntity(Loc.GetString("ce-melee-energy-effect-no-energy"), ent.Owner);
                 Audio.PlayPvs(ent.Comp.NoEnergySound, ent.Owner);
                 return;
             }
-            _battery.ChangeCharge((ent, battery), -ent.Comp.EnergyRequired);
+            _battery.ChangeCharge((ent, battery), -ent.Comp.EnergyCost);
             UpdateBattery(ent, battery);
         }
 
@@ -57,8 +57,8 @@ public sealed class CEMeleeEnergyEffectSystem : CESharedMeleeEnergyEffectSystem
 
     private void UpdateBattery(Entity<CEMeleeEnergyEffectComponent> ent, BatteryComponent battery)
     {
-        ent.Comp.Capacity = (int)(battery.MaxCharge / ent.Comp.EnergyRequired);
-        ent.Comp.Hits = (int)(battery.LastCharge / ent.Comp.EnergyRequired);
+        ent.Comp.Capacity = (int)(battery.MaxCharge / ent.Comp.EnergyCost);
+        ent.Comp.Hits = (int)(battery.LastCharge / ent.Comp.EnergyCost);
         DirtyField(ent, ent.Comp, nameof(CEMeleeEnergyEffectComponent.Hits));
         DirtyField(ent, ent.Comp, nameof(CEMeleeEnergyEffectComponent.Capacity));
     }
