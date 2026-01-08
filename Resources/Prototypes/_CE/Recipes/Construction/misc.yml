@@ -1,0 +1,8 @@
+- type: construction
+  hide: false
+  id: CESnowball
+  graph: CESnowball
+  startNode: start
+  targetNode: ball
+  category: construction-category-weapons
+  objectType: Item

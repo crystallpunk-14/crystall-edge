@@ -21,3 +21,16 @@
             - !type:DeleteEntity {}
     - node: CESnowdrift
 
+- type: constructionGraph
+  id: CESnowball
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: ball
+          steps:
+            - material: CESnow
+              amount: 1
+              doAfter: 1
+    - node: ball
+      entity: CESnowball

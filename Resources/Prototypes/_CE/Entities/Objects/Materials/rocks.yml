@@ -114,6 +114,12 @@
     - snow
     - snow_2
     - snow_3
+  - type: FloorTile
+    placeTileSound: /Audio/_CE/Effects/snowball.ogg
+    outputs:
+      - CESnow
+      - CESnowDeep
+      - CESnowDeepDeep
 
 - type: entity
   id: CESnowBlock10
