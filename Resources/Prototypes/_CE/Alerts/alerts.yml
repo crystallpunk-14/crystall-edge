@@ -50,7 +50,6 @@
 
 - type: alert
   id: CEAirCaught
-  category: AirCaught
   icons:
   - sprite: /Textures/_CE/Interface/Alerts/flight.rsi
     state: wing

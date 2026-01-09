@@ -11,6 +11,6 @@
     whitelist:
       components:
       - CEZPhysics
-  - type: CEGravityCatchedStatusEffect
+  - type: CEGravityCaughtStatusEffect
   - type: StatusEffectAlert
     alert: CEAirCaught
