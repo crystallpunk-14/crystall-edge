@@ -3,7 +3,6 @@
     xmlns:controls="clr-namespace:Content.Client._CE.Roadmap"
     MinSize="900 400"
     SetSize="900 800"
-    MaxSize="900 1200"
     Title="{Loc ce-escape-roadmap}">
     <ScrollContainer>
         <BoxContainer Orientation="Vertical">

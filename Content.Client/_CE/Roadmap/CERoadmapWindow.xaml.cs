@@ -27,7 +27,6 @@ public sealed partial class CERoadmapWindow : DefaultWindow
         base.EnteredTree();
 
         _prototypeManager = IoCManager.Resolve<IPrototypeManager>();
-        RepopulateRoadmapItems();
     }
 
     public void RepopulateRoadmapItems()

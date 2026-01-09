@@ -8,3 +8,4 @@ ce-roadmap-category-general = GENERAL
 ce-roadmap-category-guard = GUARD
 ce-roadmap-category-farming = FARMING
 ce-roadmap-category-engineering = ENGINEERING
+ce-roadmap-category-antagonist = ANTAGONISTS

@@ -1,4 +1,10 @@
 - type: roadmapCategory
+  id: Antagonist
+  title: ce-roadmap-category-antagonist
+  color: "#8f2121"
+  priority: 4
+
+- type: roadmapCategory
   id: Guard
   title: ce-roadmap-category-guard
   color: "#2f78d1"
