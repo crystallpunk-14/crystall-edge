@@ -11,7 +11,7 @@
     noRot: true
     sprite: _CE/Structures/Decoration/tombstone.rsi
     drawdepth: Mobs
-#    offset: 0,0.3
+    offset: 0,0.3
   - type: Physics
     bodyType: Static
   - type: Fixtures
