@@ -5,6 +5,7 @@
   description: You listen to your intuition, searching for treasures near you. If they are nearby, you can notice them and even hear them from a distance. Don't worry, it's just your subconscious playing tricks on you, and no one around you will notice.
   components:
   - type: Action
+    useDelay: 1
     clientExclusive: true
     icon:
       sprite: _CE/Interface/Skills/thief.rsi
