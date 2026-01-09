@@ -67,3 +67,11 @@
   icon: { sprite: _CE/Objects/Materials/Metals/brass_scrap.rsi, state: scrap }
   color: "#bb7547"
   price: 1.4
+
+- type: material
+  id: CEBone
+  stackEntity: CEBone1
+  name: materials-bone
+  icon: { sprite: _CE/Objects/Materials/bones.rsi, state: bone_2 }
+  color: "#9C9C9C"
+  price: 0.15

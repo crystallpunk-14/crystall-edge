@@ -1,5 +1,7 @@
 - type: entity
   id: CEBaseTombstone
+  parent: BaseStructure
+  abstract: true
   name: tombstone
   description: A piece of stone placed in memory of the dead.
   categories: [ ForkFiltered ]
@@ -9,16 +11,7 @@
     noRot: true
     sprite: _CE/Structures/Decoration/tombstone.rsi
     drawdepth: Mobs
-    offset: 0,0.3
-    layers:
-      - state: tomb
-        map: ["random"]
-  - type: RandomSprite
-    available:
-    - random:
-        cross: ""
-        cross2: ""
-        tomb: ""
+#    offset: 0,0.3
   - type: Physics
     bodyType: Static
   - type: Fixtures
@@ -50,10 +43,39 @@
         - !type:SpawnEntitiesBehavior
           spawn:
             CEStoneBlock1:
-              min: 1
-              max: 4
+              min: 3
+              max: 5
   - type: Climbable
-  - type: Construction
-    graph: CEBaseTombstone
-    node: CEBaseTombstone
 
+- type: entity
+  id: CETombstone
+  parent: CEBaseTombstone
+  components:
+  - type: Sprite
+    layers:
+      - state: tomb
+  - type: Construction
+    graph: CETombstone
+    node: CETombstone
+
+- type: entity
+  id: CETombstoneCross
+  parent: CEBaseTombstone
+  components:
+  - type: Sprite
+    layers:
+      - state: cross
+  - type: Construction
+    graph: CETombstoneCross
+    node: CETombstoneCross
+
+- type: entity
+  id: CETombstoneCross2
+  parent: CEBaseTombstone
+  components:
+  - type: Sprite
+    layers:
+      - state: cross2
+  - type: Construction
+    graph: CETombstoneCross2
+    node: CETombstoneCross2

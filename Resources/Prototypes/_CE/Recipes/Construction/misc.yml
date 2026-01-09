@@ -22,10 +22,36 @@
 
 - type: construction
   hide: false
-  id: CEBaseTombstone
-  graph: CEBaseTombstone
+  id: CETombstone
+  graph: CETombstone
   startNode: start
-  targetNode: CEBaseTombstone
+  targetNode: CETombstone
+  category: construction-category-misc
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  hide: false
+  id: CETombstoneCross
+  graph: CETombstoneCross
+  startNode: start
+  targetNode: CETombstoneCross
+  category: construction-category-misc
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  hide: false
+  id: CETombstoneCross2
+  graph: CETombstoneCross2
+  startNode: start
+  targetNode: CETombstoneCross2
   category: construction-category-misc
   objectType: Structure
   placementMode: SnapgridCenter

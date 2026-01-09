@@ -129,7 +129,7 @@
     layers:
     - state: statue1
     drawdepth: Mobs
-    offset: "0.0,0.5"
+    offset: "0.0,0.8"
   - type: Fixtures
     fixtures:
       fix1:

@@ -24,7 +24,13 @@
   - type: Material
   - type: PhysicalComposition
     materialComposition:
-      CEGlass: 10
+      CEBone: 10
+  - type: EmitSoundOnLand
+    sound:
+      collection: CEStepBones
+  - type: EmitSoundOnDrop
+    sound:
+      collection: CEStepBones
 
 - type: entity
   id: CEBone5

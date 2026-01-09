@@ -9,6 +9,15 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: CESkeleton
+  - type: Climbable
+  - type: GlassTable
+    climberDamage:
+      types:
+        Blunt: 1
+    tableDamage:
+      types:
+        Blunt: 65
+    tableMassLimit: 60
 
 - type: entity
   parent: CEBaseBoneStructure
