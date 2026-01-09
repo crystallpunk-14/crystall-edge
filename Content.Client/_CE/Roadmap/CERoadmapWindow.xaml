@@ -1,0 +1,41 @@
+<controls:CERoadmapWindow
+    xmlns="https://spacestation14.io"
+    xmlns:controls="clr-namespace:Content.Client._CE.Roadmap"
+    MinSize="900 400"
+    SetSize="900 800"
+    MaxSize="900 1200"
+    Title="{Loc cm-ui-roadmap}">
+    <ScrollContainer>
+        <BoxContainer Orientation="Vertical">
+            <BoxContainer Orientation="Horizontal">
+                <RichTextLabel Name="Header" Access="Public" Margin="0 15 0 10" />
+                <Control HorizontalExpand="True" />
+                <BoxContainer Orientation="Vertical" Margin="0 0 20 0">
+                    <BoxContainer Orientation="Horizontal">
+                        <Button Name="DiscordButton" Access="Public" Text="{Loc 'rmc-ui-discord'}"
+                                Visible="False" StyleClasses="OpenRight" HorizontalExpand="True" />
+                        <Button Name="PatreonButton" Access="Public" Text="{Loc 'rmc-ui-patreon'}"
+                                Visible="False" StyleClasses="OpenBoth" HorizontalExpand="True" />
+                        <Button Name="CreditsButton" Access="Public" Text="Credits" StyleClasses="OpenLeft" />
+                    </BoxContainer>
+                    <Label HorizontalExpand="True" Align="Right" VerticalAlignment="Bottom"
+                           Text="*This is not an exhaustive list" />
+                </BoxContainer>
+            </BoxContainer>
+            <BoxContainer Name="Columns" Access="Public" Orientation="Horizontal">
+                <BoxContainer Name="FirstVersion" Access="Public" Orientation="Vertical" HorizontalExpand="True" Margin="0 0 20 0">
+                    <controls:CERoadmapVersionHeader Text="Current version" />
+                    <controls:CERoadmapItem ItemState="Partial" HeaderText="PvE" Text="A separate player vs AI gamemode on a second server with campaigns ran by the community." />
+                    <controls:CERoadmapItem ItemState="Complete" HeaderText="Nuke and King endgame" />
+                    </BoxContainer>
+                <BoxContainer Name="SecondVersion" Access="Public" Orientation="Vertical"  HorizontalExpand="True" Margin="0 0 20 0">
+                    <controls:CERoadmapVersionHeader Text="Upcoming" />
+                    <controls:CERoadmapItem ItemState="InProgress" HeaderText="Synthetics" />
+                </BoxContainer>
+                <BoxContainer Name="ThirdVersion" Access="Public" Orientation="Vertical"  HorizontalExpand="True" Margin="0 0 20 0">
+                    <controls:CERoadmapVersionHeader Text="Future versions" />
+                </BoxContainer>
+            </BoxContainer>
+        </BoxContainer>
+    </ScrollContainer>
+</controls:CERoadmapWindow>
