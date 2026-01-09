@@ -3,6 +3,7 @@
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
 
+using System.Diagnostics.CodeAnalysis;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.Actions;
 using Content.Shared.Alert;
