@@ -130,13 +130,13 @@ public abstract partial class CESharedZLevelsSystem
             //Movement application
             zPhys.LocalPosition += zPhys.Velocity * frameTime;
 
+            var distanceToGround = zPhys.LocalPosition - zPhys.CurrentGroundHeight;
+
+            if ((distanceToGround <= 0.05f || zPhys.CurrentStickyGround) && distanceToGround <= MaxStepHeight)
+                zPhys.LocalPosition -= distanceToGround; //Sticky move
+
             if (zPhys.Velocity < 0) //Falling down
             {
-                var distanceToGround = zPhys.LocalPosition - zPhys.CurrentGroundHeight;
-
-                if ((distanceToGround <= 0.05f || zPhys.CurrentStickyGround) && distanceToGround <= MaxStepHeight)
-                    zPhys.LocalPosition -= distanceToGround; //Sticky move
-
                 if (distanceToGround <= 0.05f) //There`s a ground
                 {
                     if (MathF.Abs(zPhys.Velocity) >= ImpactVelocityLimit)
