@@ -1,3 +1,4 @@
+using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Body.Events;
 using Content.Shared.Damage.Events;
 using Content.Shared.Mobs.Events;
@@ -15,6 +16,11 @@ public sealed partial class StatusEffectsSystem
 {
     private void InitializeRelay()
     {
+        //CrystallEdge zone
+        SubscribeLocalEvent<StatusEffectContainerComponent, CECheckGravityEvent>(RelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, CEGetZVelocityEvent>(RelayStatusEffectEvent);
+        //CrystallEdge zone end
+
         SubscribeLocalEvent<StatusEffectContainerComponent, LocalPlayerAttachedEvent>(RelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, LocalPlayerDetachedEvent>(RelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, RejuvenateEvent>(RelayStatusEffectEvent);

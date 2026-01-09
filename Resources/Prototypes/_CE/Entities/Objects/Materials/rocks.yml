@@ -88,3 +88,43 @@
   components:
   - type: Stack
     count: 10
+
+
+- type: entity
+  id: CESnowBlock1
+  parent: BaseItem
+  name: snow block
+  description: A block of compacted snow.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Normal
+  - type: Sprite
+    noRot: true
+    sprite: _CE/Objects/Materials/snow.rsi
+    layers:
+      - state: snow
+        map: ["base"]
+  - type: Appearance
+  - type: Stack
+    stackType: CESnow
+    count: 1
+    baseLayer: base
+    layerStates:
+    - snow
+    - snow_2
+    - snow_3
+  - type: FloorTile
+    placeTileSound: /Audio/_CE/Effects/snowball.ogg
+    outputs:
+      - CESnow
+      - CESnowDeep
+      - CESnowDeepDeep
+
+- type: entity
+  id: CESnowBlock10
+  parent: CESnowBlock1
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
