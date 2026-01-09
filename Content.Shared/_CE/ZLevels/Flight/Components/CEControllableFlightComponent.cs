@@ -9,7 +9,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._CE.ZLevels.Flight.Components;
 
 /// <summary>
-/// Allows entity to control your own flight status
+/// Allows an entity to control its own flight status
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true),
  Access(typeof(CESharedZFlightSystem))]
