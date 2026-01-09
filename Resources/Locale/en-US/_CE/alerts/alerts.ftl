@@ -8,4 +8,4 @@ ce-alerts-confused-aura-name = Confused aura
 ce-alerts-confused-aura-desc = Your magical aura is altered, and you leave false traces when using magic spells.
 
 ce-alerts-aircaught-name = Caught in the air
-ce-alerts-aircaught-desc = You are caught by an air current that prevents you from falling lower.
+ce-alerts-aircaught-desc = You are caught by an air current that prevents you from falling lower or rising higher.
