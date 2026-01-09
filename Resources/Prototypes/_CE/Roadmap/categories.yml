@@ -1,0 +1,29 @@
+- type: roadmapCategory
+  id: Antagonist
+  title: ce-roadmap-category-antagonist
+  color: "#8f2121"
+  priority: 4
+
+- type: roadmapCategory
+  id: Guard
+  title: ce-roadmap-category-guard
+  color: "#2f78d1"
+  priority: 3
+
+- type: roadmapCategory
+  id: Engineering
+  title: ce-roadmap-category-engineering
+  color: "#c77629"
+  priority: 2
+
+- type: roadmapCategory
+  id: Farming
+  title: ce-roadmap-category-farming
+  color: "#53e34e"
+  priority: 1
+
+- type: roadmapCategory
+  id: General
+  title: ce-roadmap-category-general
+  color: "#8d8d8d"
+  priority: 0

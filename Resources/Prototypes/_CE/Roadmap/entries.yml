@@ -1,0 +1,96 @@
+# Ready
+
+- type: roadmapItem
+  id: BasicFarming
+  name: ce-roadmap-farming-basic-farming-name
+  desc: ce-roadmap-farming-basic-farming-desc
+  category: Farming
+  status: Done
+
+- type: roadmapItem
+  id: MachineConstruction
+  name: ce-roadmap-engineering-machine-construction-name
+  desc: ce-roadmap-engineering-machine-construction-desc
+  category: Engineering
+  status: Done
+
+- type: roadmapItem
+  id: PowerNet
+  name: ce-roadmap-engineering-powernet-name
+  desc: ce-roadmap-engineering-powernet-desc
+  category: Engineering
+  status: Done
+
+- type: roadmapItem
+  id: Flights
+  name: ce-roadmap-general-fligths-name
+  desc: ce-roadmap-general-fligths-desc
+  category: General
+  status: Done
+
+- type: roadmapItem
+  id: Thief
+  name: ce-roadmap-antagonists-thief-name
+  desc: ce-roadmap-antagonists-thief-desc
+  category: Antagonist
+  status: Done
+
+- type: roadmapItem
+  id: ZLevels
+  name: ce-roadmap-general-zlevels-name
+  desc: ce-roadmap-general-zlevels-desc
+  category: General
+  status: Done
+
+# In Progress
+
+- type: roadmapItem
+  id: AirCrystals
+  name: ce-roadmap-engineering-air-crystals-name
+  desc: ce-roadmap-engineering-air-crystals-desc
+  category: Engineering
+  status: InProgress
+
+- type: roadmapItem
+  id: Automation
+  name: ce-roadmap-engineering-automation-name
+  desc: ce-roadmap-engineering-automation-desc
+  category: Engineering
+  status: InProgress
+
+# Backlog
+
+- type: roadmapItem
+  id: HardLabor
+  name: ce-roadmap-guard-hard-labor-name
+  desc: ce-roadmap-guard-hard-labor-desc
+  category: Guard
+  status: Backlog
+
+- type: roadmapItem
+  id: Silvas
+  name: ce-roadmap-farming-silvas-name
+  desc: ce-roadmap-farming-silvas-desc
+  category: Farming
+  status: Backlog
+
+- type: roadmapItem
+  id: MagicMutations
+  name: ce-roadmap-farming-magic-mutations-name
+  desc: ce-roadmap-farming-magic-mutations-desc
+  category: Farming
+  status: Backlog
+
+- type: roadmapItem
+  id: Weather
+  name: ce-roadmap-general-weather-name
+  desc: ce-roadmap-general-weather-desc
+  category: General
+  status: Backlog
+
+- type: roadmapItem
+  id: Lurker
+  name: ce-roadmap-antagonists-lurker-name
+  desc: ce-roadmap-antagonists-lurker-desc
+  category: Antagonist
+  status: Backlog

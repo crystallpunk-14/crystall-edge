@@ -65,9 +65,9 @@
         acts: ["Destruction"]
       - !type:SpawnEntitiesBehavior
         spawn:
-          CESnowball:
+          CESnowBlock1:
             min: 1
-            max: 3
+            max: 2
       - !type:SpawnEntitiesBehavior
         spawn:
           CESnowEffect:

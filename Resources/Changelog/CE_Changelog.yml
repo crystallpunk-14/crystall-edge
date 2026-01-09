@@ -310,3 +310,27 @@
   id: 1031
   time: '2026-01-02T15:22:46.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/234
+- author: TheShuEd
+  changes:
+  - message: Snow stacks added! Up to 10 pieces of snow.
+    type: Add
+  - message: All snow structures now drop snow blocks instead of snowballs.
+    type: Tweak
+  - message: Snow tiles now drop snow blocks, and snow blocks can be placed on the
+      ground to create snow tiles.
+    type: Add
+  - message: Added recipes for building snow walls and snowballs from snow blocks.
+    type: Add
+  - message: Snowmen added! You can build them from snow blocks and put hats on them!
+    type: Add
+  id: 1032
+  time: '2026-01-08T22:49:29.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/243
+- author: TheShuEd
+  changes:
+  - message: Roadmap added! You can follow the current development plans for the project
+      directly within the game.
+    type: Add
+  id: 1033
+  time: '2026-01-09T11:35:50.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/245

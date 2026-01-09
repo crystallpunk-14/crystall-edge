@@ -1,13 +1,13 @@
 - type: entity
   id: CEMannequinBase
   abstract: true
-  parent:
-  - Mannequin
+  parent: StripableInventoryBase
   categories: [ ForkFiltered ]
   description: A handy stand for clothing or armor.
   components:
   - type: Appearance
   - type: Sprite
+    drawdepth: Mobs
     noRot: true
   - type: Rotatable
   - type: Fixtures
@@ -23,21 +23,6 @@
         - MidImpassable
         - BulletImpassable
   - type: InteractionOutline
-  - type: Damageable
-    damageContainer: Inorganic
-    damageModifierSet: CEWood
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 50
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: WoodDestroy
-      - !type:EmptyAllContainersBehaviour
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
   - type: ContainerContainer
     containers:
       shirt: !type:ContainerSlot
@@ -100,18 +85,20 @@
         showEnts: False
         occludes: False
         ent: null
+  - type: Inventory
+    templateId: mannequin
   - type: InventorySlots
   - type: Strippable
   - type: UserInterface
     interfaces:
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
-  - type: StaticPrice
-    price: 50
 
 - type: entity
   id: CEMannequinHumanMale
-  parent: CEMannequinBase
+  parent:
+  - CEMannequinBase
+  - BaseStructureDynamic
   name: human male mannequin
   components:
   - type: Sprite
@@ -133,12 +120,30 @@
     - map: [ "head" ]
   - type: Inventory
     templateId: CEHuman
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: CEWood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:EmptyAllContainersBehaviour
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: StaticPrice
+    price: 50
 
 - type: entity
   id: CEMannequinCarcat
   parent:
   - CEMannequinBase
   - CEMobCarcatInventoryTemplate
+  - BaseStructureDynamic
   name: carcat mannequin
   components:
   - type: Inventory
@@ -159,3 +164,69 @@
     - map: [ "neck" ]
     - map: [ "mask" ]
     - map: [ "head" ]
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: CEWood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:EmptyAllContainersBehaviour
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: StaticPrice
+    price: 50
+
+- type: entity
+  id: CEMannequinSnowman
+  parent:
+  - CEMannequinBase
+  - BaseStructure
+  name: snowman
+  description: Someone had the idea to stack up big snowballs, and for some reason people call it a snow "man".
+  components:
+  - type: Inventory
+    templateId: CESnowman
+  - type: Sprite
+    layers:
+    - map: [ "mannequin" ]
+      sprite: _CE/Structures/Furniture/mannequin32.rsi
+      state: snowman
+    - map: [ "cloak" ]
+    - map: [ "eyes" ]
+    - map: [ "mask" ]
+    - map: [ "head" ]
+  - type: Damageable
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Heat
+        damage: 20
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+    - trigger:
+        !type:DamageTrigger
+        damage: 40
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CESnowBlock1:
+            min: 2
+            max: 3
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CESnowEffect:
+            min: 1
+            max: 2
+  - type: Construction
+    graph: CEMannequinSnowman
+    node: CEMannequinSnowman
