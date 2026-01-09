@@ -41,6 +41,20 @@
     - !type:TileNotBlocked
 
 - type: construction
+  hide: false
+  id: CEWallSnow
+  graph: CEWallSnow
+  startNode: start
+  targetNode: CEWallSnow
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
   hide: true #2boring, need make graphs better
   id: CEWallStoneBrick
   graph: CEWallStoneBrick

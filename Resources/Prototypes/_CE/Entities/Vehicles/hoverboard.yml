@@ -54,6 +54,7 @@
   - type: CEZFlyer
     flightVfx: CEOverchargeSmallVFX
   - type: CEVehicleFlyer
+  - type: CEControllableFlight
   - type: CEZFlyerBattery
     energyDraw: 2
   - type: Battery

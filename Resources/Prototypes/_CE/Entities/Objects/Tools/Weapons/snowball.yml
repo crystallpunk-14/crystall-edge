@@ -41,6 +41,9 @@
       params:
         variation: 0.250
         volume: 15
+  - type: Construction
+    graph: CESnowball
+    node: ball
   - type: Damageable
   - type: Destructible
     thresholds:

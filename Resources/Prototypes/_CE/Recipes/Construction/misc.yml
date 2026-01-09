@@ -1,0 +1,21 @@
+- type: construction
+  hide: false
+  id: CESnowball
+  graph: CESnowball
+  startNode: start
+  targetNode: ball
+  category: construction-category-weapons
+  objectType: Item
+
+- type: construction
+  hide: false
+  id: CEMannequinSnowman
+  graph: CEMannequinSnowman
+  startNode: start
+  targetNode: CEMannequinSnowman
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked

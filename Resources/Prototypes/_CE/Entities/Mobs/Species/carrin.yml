@@ -92,6 +92,7 @@
     maps:
     - wings
   - type: CEZFlyer # Flying birb!!!
+  - type: CEControllableFlight
     startFlightDoAfter: 1.5
   - type: CEZFlyerBlockHands
   - type: CEZFlyerStamina

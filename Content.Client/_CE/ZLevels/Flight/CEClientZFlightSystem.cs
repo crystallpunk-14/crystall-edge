@@ -28,7 +28,7 @@ public sealed class CEClientZFlightSystem : CESharedZFlightSystem
 
             var vfx = SpawnAtPosition(flyer.FlightVfx, xform.Coordinates);
 
-            _sprite.SetOffset((vfx, sprite), new Vector2(0, zPhys.LocalPosition * CEClientZLevelsSystem.ZLevelOffset) + zPhys.SpriteOffsetDefault);
+            _sprite.SetOffset(vfx, new Vector2(0, zPhys.LocalPosition * CEClientZLevelsSystem.ZLevelOffset) + zPhys.SpriteOffsetDefault);
         }
     }
 }

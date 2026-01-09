@@ -81,6 +81,14 @@
     count: 1
 
 - type: tradingPosition
+  id: CESnowBlock10
+  priceMarkup: 5
+  faction: DwarfMiners
+  service: !type:CEBuyItemsService
+    product: CESnowBlock10
+    count: 1
+
+- type: tradingPosition
   id: CEClothingHeadHelmetBrassInsulator
   priceMarkup: 1
   faction: DwarfMiners

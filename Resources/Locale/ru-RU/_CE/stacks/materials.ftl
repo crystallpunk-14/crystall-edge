@@ -1,5 +1,6 @@
 ce-stack-dirt-block = блоки земли
 ce-stack-stone-block = каменные блоки
+ce-stack-snow-block = снежные блоки
 ce-stack-wood-planks = деревянные доски
 ce-stack-cloth = рулоны ткани
 ce-stack-flora = пучки травы
