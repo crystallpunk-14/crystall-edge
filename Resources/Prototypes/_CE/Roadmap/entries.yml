@@ -1,0 +1,40 @@
+# Ready
+
+- type: roadmapItem
+  id: BasicFarming
+  name: ce-roadmap-farming-basic-farming-name
+  desc: ce-roadmap-farming-basic-farming-desc
+  category: Farming
+  status: Done
+
+- type: roadmapItem
+  id: MachineConstruction
+  name: ce-roadmap-engineering-machine-construction-name
+  desc: ce-roadmap-engineering-machine-construction-desc
+  category: Engineering
+  status: Done
+
+- type: roadmapItem
+  id: PowerNet
+  name: ce-roadmap-engineering-powernet-name
+  desc: ce-roadmap-engineering-powernet-desc
+  category: Engineering
+  status: Done
+
+# In Progress
+
+- type: roadmapItem
+  id: ZLevels
+  name: ce-roadmap-general-zlevels-name
+  desc: ce-roadmap-general-zlevels-desc
+  category: General
+  status: InProgress
+
+# Backlog
+
+- type: roadmapItem
+  id: HardLabor
+  name: ce-roadmap-guard-hard-labor-name
+  desc: ce-roadmap-guard-hard-labor-desc
+  category: Guard
+  status: Backlog

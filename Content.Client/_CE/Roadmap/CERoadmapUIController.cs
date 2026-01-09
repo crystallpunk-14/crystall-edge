@@ -65,5 +65,6 @@ public sealed class CERoadmapUIController : UIController, IOnStateEntered<LobbyS
         _window.CreditsButton.OnPressed += _ => new CreditsWindow().OpenCentered();
 
         _window.OpenCentered();
+        _window.RepopulateRoadmapItems();
     }
 }

@@ -27,18 +27,9 @@
                 </BoxContainer>
             </BoxContainer>
             <BoxContainer Name="Columns" Access="Public" Orientation="Horizontal">
-                <BoxContainer Name="FirstVersion" Access="Public" Orientation="Vertical" HorizontalExpand="True" Margin="0 0 20 0">
-                    <controls:CERoadmapVersionHeader Text="{Loc ce-roadmap-header-done}" />
-                    <controls:CERoadmapItem ItemState="Partial" HeaderText="PvE" Text="A separate player vs AI gamemode on a second server with campaigns ran by the community." />
-                    <controls:CERoadmapItem ItemState="Complete" HeaderText="Nuke and King endgame" />
-                    </BoxContainer>
-                <BoxContainer Name="SecondVersion" Access="Public" Orientation="Vertical"  HorizontalExpand="True" Margin="0 0 20 0">
-                    <controls:CERoadmapVersionHeader Text="{Loc ce-roadmap-header-in-progress}" />
-                    <controls:CERoadmapItem ItemState="InProgress" HeaderText="Synthetics" />
-                </BoxContainer>
-                <BoxContainer Name="ThirdVersion" Access="Public" Orientation="Vertical"  HorizontalExpand="True" Margin="0 0 20 0">
-                    <controls:CERoadmapVersionHeader Text="{Loc ce-roadmap-header-backlogs}" />
-                </BoxContainer>
+                <BoxContainer Name="FirstVersion" Access="Public" Orientation="Vertical" HorizontalExpand="True" Margin="0 0 20 0" />
+                <BoxContainer Name="SecondVersion" Access="Public" Orientation="Vertical"  HorizontalExpand="True" Margin="0 0 20 0" />
+                <BoxContainer Name="ThirdVersion" Access="Public" Orientation="Vertical"  HorizontalExpand="True" Margin="0 0 20 0" />
             </BoxContainer>
         </BoxContainer>
     </ScrollContainer>
