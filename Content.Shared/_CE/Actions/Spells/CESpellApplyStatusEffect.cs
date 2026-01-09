@@ -6,7 +6,7 @@ namespace Content.Shared._CE.Actions.Spells;
 public sealed partial class CESpellApplyStatusEffect : CESpellEffect
 {
     [DataField(required: true)]
-    public EntProtoId StatusEffect = default;
+    public EntProtoId StatusEffect;
 
     [DataField(required: true)]
     public TimeSpan Duration = TimeSpan.FromSeconds(1f);

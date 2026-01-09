@@ -32,7 +32,7 @@ public abstract partial class CESharedZLevelsSystem
     /// <summary>
     /// The minimum speed required to trigger LandEvent events.
     /// </summary>
-    private const float ImpactVelocityLimit = 5.0f;
+    private const float ImpactVelocityLimit = 5f;
 
     private EntityQuery<CEZLevelHighGroundComponent> _highgroundQuery;
 
@@ -41,7 +41,7 @@ public abstract partial class CESharedZLevelsSystem
         _highgroundQuery = GetEntityQuery<CEZLevelHighGroundComponent>();
 
         SubscribeLocalEvent<CEZPhysicsComponent, CEGetZVelocityEvent>(OnGetVelocity);
-        SubscribeLocalEvent<CEZPhysicsComponent, CEZLevelMapMoveEvent>(OnZPhysicsMove);
+        SubscribeLocalEvent<CEZPhysicsComponent, CEZLevelMapMoveEvent>(OnZLevelMapMove);
         SubscribeLocalEvent<CEZPhysicsComponent, MoveEvent>(OnMoveEvent);
 
         SubscribeLocalEvent<DamageableComponent, CEZLevelHitEvent>(OnFallDamage);
@@ -59,7 +59,7 @@ public abstract partial class CESharedZLevelsSystem
         CacheMovement(ent);
     }
 
-    private void OnZPhysicsMove(Entity<CEZPhysicsComponent> ent, ref CEZLevelMapMoveEvent args)
+    private void OnZLevelMapMove(Entity<CEZPhysicsComponent> ent, ref CEZLevelMapMoveEvent args)
     {
         ent.Comp.CurrentZLevel = args.CurrentZLevel;
         DirtyField(ent, ent.Comp, nameof(CEZPhysicsComponent.CurrentZLevel));

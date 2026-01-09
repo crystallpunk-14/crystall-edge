@@ -6,3 +6,6 @@ ce-alerts-health-desc = Запас жизненных сил. Чем меньш�
 
 ce-alerts-confused-aura-name = Спутанная аура
 ce-alerts-confused-aura-desc = Ваша магическая аура изменена, и вы оставляете ненастоящие следы, используя магические заклинания.
+
+ce-alerts-aircaught-name = В воздушной ловушке
+ce-alerts-aircaught-desc = Вы подхвачены воздушным потоком, который не дает вам упасть ниже.
