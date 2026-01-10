@@ -348,3 +348,10 @@
   id: 1035
   time: '2026-01-09T21:58:07.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/236
+- author: TheShuEd
+  changes:
+  - message: Fixed a bug where you couldn't climb stairs while flying.
+    type: Fix
+  id: 1036
+  time: '2026-01-09T22:00:50.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/246
