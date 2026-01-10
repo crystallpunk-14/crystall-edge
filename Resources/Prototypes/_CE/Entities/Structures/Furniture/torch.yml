@@ -3,6 +3,7 @@
   abstract: true
   description: A good, reliable light source. Too bad it doesn't last.
   categories: [ ForkFiltered ]
+  suffix: NOT WORKING
   components:
   - type: InteractionOutline
   - type: Damageable
