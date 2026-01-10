@@ -2,7 +2,7 @@
   name: ground tobacco
   parent: BaseItem
   id: CEGroundTobacco
-  description: Grinded and dried tabac leaves, some like it is a cur.
+  description: Grinded and dried tabac leaves, some like it is a cure.
   categories: [ ForkFiltered ]
   components:
   - type: Item

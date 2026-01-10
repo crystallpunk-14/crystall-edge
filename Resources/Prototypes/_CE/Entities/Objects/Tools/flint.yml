@@ -4,6 +4,7 @@
   name: flint and steel
   description: Setting things on fire
   categories: [ ForkFiltered ]
+  suffix: NOT WORKING
   components:
   - type: Item
     size: Tiny

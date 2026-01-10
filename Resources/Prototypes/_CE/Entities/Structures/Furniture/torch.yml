@@ -1,5 +1,5 @@
 - type: entity
-  id: CEBaseTorch
+  id: CEBaseTorch # Burning does not work fully, not ported
   abstract: true
   description: A good, reliable light source. Too bad it doesn't last.
   categories: [ ForkFiltered ]
@@ -16,13 +16,6 @@
         behaviors:
           - !type:DoActsBehavior
             acts: [ "Destruction" ]
-  #- type: CEFlammableAmbientSound
-  - type: AmbientSound
-    enabled: false
-    volume: -15
-    range: 5
-    sound:
-      path: /Audio/Ambience/Objects/fireplace.ogg
   - type: Reactive
     groups:
       Flammable: [ Touch ]
@@ -79,16 +72,6 @@
   #        Empty: { state: burned }
   #        Medium: { state: base }
   #        Full: { state: base }
-  #- type: Construction
-  #  graph: CEFloorTorch
-  #  node: CEFloorTorch
-
-#- type: entity
-#  parent: CEFloorTorch
-#  id: CEFloorTorchIgnited
-#  suffix: Ignited
-#  components:
-#  - type: CEAutoIgnite
 
 - type: entity
   id: CEFloorTorchAlwaysPowered
@@ -149,16 +132,6 @@
   #        Empty: { state: burned }
   #        Medium: { state: base }
   #        Full: { state: base }
-  #- type: Construction
-  #  graph: CEWallmountTorch
-  #  node: CEWallmountTorch
-
-#- type: entity
-#  parent: CEWallmountTorch
-#  id: CEWallmountTorchIgnited
-#  suffix: Ignited
-#  components:
-#  - type: CEAutoIgnite
 
 - type: entity
   id: CEWallmountTorchAlwaysPowered

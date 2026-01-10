@@ -16,6 +16,7 @@
           base2: ""
           base3: ""
           base4: ""
+  - type: IdentityBlocker
   - type: Clothing
     quickEquip: false
     sprite: _CE/Clothing/Head/Misc/halloween_pumpkin_helmet.rsi
@@ -23,7 +24,7 @@
     slots:
     - HEAD
 
-# The reason, why i don't make a child from CP14FoodPumpkin is simple - CP14FoodPumpkin has a randomsprite, which is copied to this base prototype
+# The reason, why i don't make a child from CEFoodPumpkin is simple - CEFoodPumpkin has a randomsprite, which is copied to this base prototype
 - type: entity
   parent: FoodInjectableBase
   id: CEHalloweenPumpkinEmmisiveBase
@@ -38,7 +39,6 @@
     energy: 0.9
     color: "#FEE68E"
     castShadows: true
-
   - type: Item
     size: Normal
   - type: FlavorProfile
@@ -59,7 +59,7 @@
     slice: CEFoodPumpkinSlice
   - type: Tag
     tags:
-  #  - CEFarmFood
+ #  - CEFarmFood
     - CEVegetable
     - CEPumpkin
 
