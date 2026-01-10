@@ -86,7 +86,7 @@
     bloodReferenceSolution:
       reagents:
       - ReagentId: CEBloodGoblin
-        Quantity: 1
+        Quantity: 300
   - type: Fixtures
     fixtures: # Smaller hitbox & less weight
       fix1:
