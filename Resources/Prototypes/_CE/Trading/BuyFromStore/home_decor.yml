@@ -141,3 +141,9 @@
   faction: HomeDecor
   service: !type:CEBuyItemsService
     product: CEPlushieFlem
+
+- type: tradingPosition
+  id: CEOpenSign
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEOpenSign
