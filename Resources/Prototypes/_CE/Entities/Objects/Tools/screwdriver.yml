@@ -21,7 +21,7 @@
     sprite: _CE/Objects/Tools/screwdriver.rsi
     storedRotation: -90
   - type: MeleeWeapon
-    wideAnimationRotation: -90
+    wideAnimationRotation: 90
     attackRate: 1
     damage:
       types:

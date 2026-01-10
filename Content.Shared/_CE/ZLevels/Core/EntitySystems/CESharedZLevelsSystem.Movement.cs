@@ -132,8 +132,13 @@ public abstract partial class CESharedZLevelsSystem
 
             var distanceToGround = zPhys.LocalPosition - zPhys.CurrentGroundHeight;
 
-            if (zPhys.AutoStep && (distanceToGround <= 0.05f || zPhys.CurrentStickyGround) && distanceToGround <= MaxStepHeight)
-                zPhys.LocalPosition -= distanceToGround; //Sticky move
+            // AutoStep: lift entity up if floor is higher
+            if (zPhys.AutoStep && distanceToGround < 0 && distanceToGround >= -MaxStepHeight)
+                zPhys.LocalPosition -= distanceToGround; //Lift up
+
+            // Sticky ground: only pull down when slowly falling on sticky surfaces (ladders)
+            if (zPhys.CurrentStickyGround && distanceToGround > 0 && distanceToGround <= 0.5f)
+                zPhys.LocalPosition -= distanceToGround; //Sticky move down
 
             if (zPhys.Velocity < 0) //Falling down
             {
@@ -288,7 +293,7 @@ public abstract partial class CESharedZLevelsSystem
 
                 var groundYInterp = MathHelper.Lerp(y0, y1, frac);
 
-                if (target.Comp.Velocity < -0 && target.Comp.Velocity > -2 && heightComp.Stick)
+                if (target.Comp.Velocity < 0 && target.Comp.Velocity > -2f && heightComp.Stick)
                     stickyGround = true;
 
                 return -floor + groundYInterp;
