@@ -10,7 +10,7 @@ namespace Content.Shared._CE.Skill.Prototypes;
 [Prototype("skillTree")]
 public sealed partial class CESkillTreePrototype : IPrototype
 {
-    [IdDataField] public string ID { get; } = default!;
+    [IdDataField] public string ID { get; private set; } = default!;
 
     [DataField(required: true)]
     public LocId Name;

@@ -1,4 +1,6 @@
-﻿using Content.Client.Changelog;
+﻿using Content.Client._CE.Roadmap;
+using Content.Client.Changelog;
+using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Systems.EscapeMenu;
 using Content.Client.UserInterface.Systems.Guidebook;
 using Content.Shared.CCVar;
@@ -47,6 +49,16 @@ namespace Content.Client.Info
             var changelogButton = new ChangelogButton();
             changelogButton.OnPressed += args => UserInterfaceManager.GetUIController<ChangelogUIController>().ToggleWindow();
             buttons.AddChild(changelogButton);
+
+
+            // CrystallEdge Roadmap
+            var roadmapButton = new Button
+            {
+                Text = Loc.GetString("ce-escape-roadmap"),
+            };
+            roadmapButton.OnPressed += _ => UserInterfaceManager.GetUIController<CERoadmapUIController>().ToggleRoadmap();
+            buttons.AddChild(roadmapButton);
+            // CrystallEdge Roadmap end
 
             void AddInfoButton(string loc, CVarDef<string> cVar)
             {

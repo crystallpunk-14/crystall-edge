@@ -10,7 +10,7 @@ namespace Content.Shared._CE.Audio.Prototypes;
 [Prototype("ambientLoop")]
 public sealed partial class CEAmbientLoopPrototype : IPrototype
 {
-    [IdDataField] public string ID { get; } = string.Empty;
+    [IdDataField] public string ID { get; private set; } = default!;
 
     [DataField(required: true)]
     public SoundSpecifier Sound = default!;

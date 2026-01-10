@@ -1,0 +1,16 @@
+- type: entity
+  parent: MobStatusEffectDebuff
+  id: CEStatusEffectAirCaught
+  name: air caught
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/wind.rsi
+    state: wind
+    drawdepth: Effects
+  - type: StatusEffect
+    whitelist:
+      components:
+      - CEZPhysics
+  - type: CEGravityCaughtStatusEffect
+  - type: StatusEffectAlert
+    alert: CEAirCaught

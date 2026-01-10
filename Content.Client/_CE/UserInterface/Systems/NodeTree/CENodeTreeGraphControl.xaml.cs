@@ -6,7 +6,6 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Client.Utility;
 using Robust.Shared.Input;
-using Serilog;
 
 namespace Content.Client._CE.UserInterface.Systems.NodeTree;
 

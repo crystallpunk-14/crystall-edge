@@ -216,6 +216,7 @@
     West: /Textures/_CE/Tiles/SnowDeepDeep/double_edge_W.png
   baseTurf: CEDirt
   deconstructTools: [ CEShovel ]
+  itemDrop: CESnowBlock1
   isSubfloor: true
   footstepSounds:
     collection: FootstepSnow
@@ -247,6 +248,7 @@
     West: /Textures/_CE/Tiles/SnowDeep/double_edge_W.png
   baseTurf: CESnowDeepDeep
   deconstructTools: [ CEShovel ]
+  itemDrop: CESnowBlock1
   isSubfloor: true
   footstepSounds:
     collection: FootstepSnow
@@ -278,6 +280,7 @@
     West: /Textures/_CE/Tiles/Snow/double_edge_W.png
   baseTurf: CESnowDeep
   deconstructTools: [ CEShovel ]
+  itemDrop: CESnowBlock1
   isSubfloor: true
   footstepSounds:
     collection: FootstepSnow
