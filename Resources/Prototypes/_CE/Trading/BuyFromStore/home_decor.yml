@@ -143,6 +143,12 @@
     product: CEPlushieFlem
 
 - type: tradingPosition
+  id: CEPlushieCarrin
+  faction: HomeDecor
+  service: !type:CEBuyItemsService
+    product: CEPlushieCarrin
+
+- type: tradingPosition
   id: CEOpenSign
   faction: HomeDecor
   service: !type:CEBuyItemsService
