@@ -1,9 +1,3 @@
-- type: tradingFaction
-  id: ApothecariesGuild
-  color: "#749a94"
-  name: ce-trade-faction-apothecaries-guild
-  roundStart: true
-
 - type: tradingPosition
   id: CEGauze5
   faction: ApothecariesGuild
