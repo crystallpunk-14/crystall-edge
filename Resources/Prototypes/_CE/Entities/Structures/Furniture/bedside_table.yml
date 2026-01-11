@@ -56,7 +56,7 @@
   components:
   - type: Sprite
     sprite: _CE/Structures/Furniture/bedside_table.rsi
-    state: icons
+    state: icon
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: CEWood

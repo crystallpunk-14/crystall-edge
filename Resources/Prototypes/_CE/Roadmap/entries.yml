@@ -52,13 +52,6 @@
 # In Progress
 
 - type: roadmapItem
-  id: AirCrystals
-  name: ce-roadmap-engineering-air-crystals-name
-  desc: ce-roadmap-engineering-air-crystals-desc
-  category: Engineering
-  status: InProgress
-
-- type: roadmapItem
   id: Automation
   name: ce-roadmap-engineering-automation-name
   desc: ce-roadmap-engineering-automation-desc
@@ -79,7 +72,21 @@
   category: Guard
   status: InProgress
 
+- type: roadmapItem
+  id: PersonalRealEstate
+  name: ce-roadmap-general-personal-real-estate-name
+  desc: ce-roadmap-general-personal-real-estate-desc
+  category: General
+  status: InProgress
+
 # Backlog
+
+- type: roadmapItem
+  id: AirCrystals
+  name: ce-roadmap-engineering-air-crystals-name
+  desc: ce-roadmap-engineering-air-crystals-desc
+  category: Engineering
+  status: Backlog
 
 - type: roadmapItem
   id: HardLabor
@@ -114,13 +121,6 @@
   name: ce-roadmap-antagonists-lurker-name
   desc: ce-roadmap-antagonists-lurker-desc
   category: Antagonist
-  status: Backlog
-
-- type: roadmapItem
-  id: PersonalRealEstate
-  name: ce-roadmap-general-personal-real-estate-name
-  desc: ce-roadmap-general-personal-real-estate-desc
-  category: General
   status: Backlog
 
 - type: roadmapItem

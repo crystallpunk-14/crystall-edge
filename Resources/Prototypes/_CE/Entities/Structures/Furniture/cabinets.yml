@@ -62,7 +62,7 @@
   components:
   - type: Sprite
     sprite: _CE/Structures/Furniture/cabinet.rsi
-    state: icons
+    state: icon
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: CEWood
