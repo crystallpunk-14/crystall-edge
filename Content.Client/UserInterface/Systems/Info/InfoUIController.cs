@@ -25,6 +25,8 @@ public sealed class InfoUIController : UIController, IOnStateExited<GameplayStat
 
     protected override string SawmillName => "rules";
 
+    public event Action? Accepted; //CrystallEdge roadmap
+
     public override void Initialize()
     {
         base.Initialize();
@@ -85,6 +87,7 @@ public sealed class InfoUIController : UIController, IOnStateExited<GameplayStat
 
         _rulesPopup?.Orphan();
         _rulesPopup = null;
+        Accepted?.Invoke(); //CrystallEdge
     }
 
     public GuideEntryPrototype GetCoreRuleEntry()
