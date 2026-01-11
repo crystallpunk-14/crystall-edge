@@ -4,17 +4,6 @@
   name: ce-trade-faction-apothecaries-guild
   roundStart: true
 
-- type: entity
-  parent: CETradeContractBase
-  id: CETradeContractApothecariesGuild
-  description: Trading contract with the "Apothecaries" store. Allows you to buy some medical supplies to treat the injured.
-  suffix: Apothecaries Guild
-  components:
-  - type: Sprite
-    state: apothecaries
-  - type: CETradingContract
-    faction: ApothecariesGuild
-
 - type: tradingPosition
   id: CEGauze5
   faction: ApothecariesGuild

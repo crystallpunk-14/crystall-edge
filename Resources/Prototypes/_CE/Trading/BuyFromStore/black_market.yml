@@ -1,12 +1,4 @@
 - type: tradingPosition
-  id: CETradeContractBlackMarket
-  faction: BlackMarket
-  priceMarkup: 500
-  service: !type:CEBuyItemsService
-    product: CETradeContractBlackMarket
-    count: 1
-
-- type: tradingPosition
   id: CEBaseLockpick
   faction: BlackMarket
   service: !type:CEBuyItemsService

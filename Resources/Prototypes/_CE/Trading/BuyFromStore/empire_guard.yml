@@ -1,11 +1,4 @@
 - type: tradingPosition
-  id: CETradeContractGuard
-  faction: EmpireGuard
-  service: !type:CEBuyItemsService
-    product: CETradeContractGuard
-    count: 1
-
-- type: tradingPosition
   id: CEClothingCloakRaincoatGuard
   faction: EmpireGuard
   priceMarkup: 10

@@ -54,6 +54,19 @@
                             <BoxContainer SetWidth="100" Name="BuyPriceHolder" VerticalAlignment="Center" HorizontalExpand="True" HorizontalAlignment="Center" />
                         </BoxContainer>
                     </BoxContainer>
+                    <BoxContainer Name="SellBox" Orientation="Horizontal" HorizontalExpand="True" Visible="True" Margin="0 6 0 0">
+                        <Button Name="SellButton" Text="{Loc 'ce-trading-ui-button-sell'}"
+                                ToolTip="{Loc 'ce-trading-ui-button-sell-tooltip'}" StyleClasses="OpenRight"
+                                HorizontalExpand="True" MinHeight="35" Access="Public"/>
+                        <BoxContainer Orientation="Horizontal">
+                            <BoxContainer SetWidth="100" Name="SellPriceHolder" VerticalAlignment="Center" HorizontalExpand="True" HorizontalAlignment="Center" />
+                        </BoxContainer>
+                    </BoxContainer>
+
+                    <Label Name="TreeName" />
+                    <ScrollContainer HorizontalExpand="True" VerticalExpand="True" MinSize="0 100" HScrollEnabled="False">
+                        <BoxContainer Name="Requests" Orientation="Vertical" HorizontalExpand="True" VerticalAlignment="Top"/>
+                    </ScrollContainer>
                 </BoxContainer>
             </BoxContainer>
         </BoxContainer>

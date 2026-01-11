@@ -25,41 +25,8 @@ public abstract partial class CESharedTradingPlatformSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CETradingReputationComponent, MapInitEvent>(OnReputationMapInit);
-        SubscribeLocalEvent<CETradingContractComponent, UseInHandEvent>(OnContractUse);
     }
 
-    private void OnReputationMapInit(Entity<CETradingReputationComponent> ent, ref MapInitEvent args)
-    {
-        foreach (var faction in Proto.EnumeratePrototypes<CETradingFactionPrototype>())
-        {
-            if (faction.RoundStart)
-                ent.Comp.Factions.Add(faction);
-        }
-        Dirty(ent);
-    }
-
-    private void OnContractUse(Entity<CETradingContractComponent> ent, ref UseInHandEvent args)
-    {
-        if (args.Handled)
-            return;
-        if (!Proto.Resolve(ent.Comp.Faction, out var indexedFaction))
-            return;
-        if (!TryComp<CETradingReputationComponent>(args.User, out var repComp))
-            return;
-        if (repComp.Factions.Contains(ent.Comp.Faction))
-        {
-            _popup.PopupClient(Loc.GetString("ce-trading-contract-already-have", ("name", Loc.GetString(indexedFaction.Name))), args.User, args.User);
-            return;
-        }
-
-        repComp.Factions.Add(ent.Comp.Faction);
-        _audio.PlayLocal(ent.Comp.UseSound, args.User, args.User);
-        _popup.PopupClient(Loc.GetString("ce-trading-contract-use", ("name", Loc.GetString(indexedFaction.Name))), args.User, args.User);
-
-        args.Handled = true;
-        PredictedQueueDel(ent);
-    }
 
     public int? GetPrice(ProtoId<CETradingPositionPrototype> position)
     {
@@ -106,17 +73,6 @@ public abstract partial class CESharedTradingPlatformSystem : EntitySystem
         return [];
     }
 
-    public void AddContractToPlayer(Entity<CETradingReputationComponent?> user,
-        ProtoId<CETradingFactionPrototype> faction)
-    {
-        if (!Resolve(user.Owner, ref user.Comp, false))
-            return;
-
-        user.Comp.Factions.Add(faction);
-
-        Dirty(user);
-    }
-
     public bool CanFulfillRequest(EntityUid platform, ProtoId<CETradingRequestPrototype> request)
     {
         if (!TryComp<ItemPlacerComponent>(platform, out var itemPlacer))
@@ -136,7 +92,7 @@ public abstract partial class CESharedTradingPlatformSystem : EntitySystem
 }
 
 [Serializable, NetSerializable]
-public sealed class CETradingPositionBuyAttempt(ProtoId<CETradingPositionPrototype> position) : BoundUserInterfaceMessage
+public sealed class CETradingBuyAttempt(ProtoId<CETradingPositionPrototype> position) : BoundUserInterfaceMessage
 {
     public readonly ProtoId<CETradingPositionPrototype> Position = position;
 }

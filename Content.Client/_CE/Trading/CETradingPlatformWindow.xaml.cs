@@ -42,6 +42,8 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
     private Dictionary<LocId, HashSet<CETradingPositionPrototype>> _categories = new();
 
     public event Action<ProtoId<CETradingPositionPrototype>>? OnBuy;
+    public event Action? OnSell;
+    public event Action<ProtoId<CETradingRequestPrototype>>? OnRequestSell;
 
     private const int AllCategoryId = -1;
     private ISawmill Sawmill { get; init; }
@@ -59,6 +61,7 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
 
         SearchBar.OnTextChanged += OnSearchChanged;
         BuyButton.OnPressed += BuyPressed;
+        SellButton.OnPressed += _ => OnSell?.Invoke();
         OptionCategories.OnItemSelected += OnCategoryItemSelected;
     }
 
@@ -114,7 +117,7 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
             if (!ProcessSearchCategoryFilter(entry))
                 continue;
 
-            var active = _tradingSystem.GetPrice(entry) <= _cachedState.Price;
+            var active = _tradingSystem.GetPrice(entry) <= _cachedState.BuyBalance;
             var control = new CEBuyPositionControl(entry, active);
             control.OnSelect += SelectPosition;
 
@@ -208,31 +211,30 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
 
         _cachedUser = (_player.LocalEntity.Value, repComp);
 
-        // First, we sort all the recipes by priority and category.
+        // Prepare positions filtered to the platform's faction (we'll populate categories after resolving faction)
         var sortedRecipes = _prototype.EnumeratePrototypes<CETradingPositionPrototype>()
+            .Where(e => e.Faction == state.Faction)
             .OrderBy(e => _tradingSystem.GetPrice(e));
-
-        foreach (var entry in sortedRecipes)
-        {
-            if (!_prototype.TryIndex(entry.Faction, out var indexedFaction))
-                continue;
-
-            var factions = repComp.Factions;
-            if (!factions.Contains(indexedFaction))
-                continue;
-
-            if (!_categories.TryGetValue(indexedFaction.Name, out var entries))
-            {
-                entries = new();
-                _categories[indexedFaction.Name] = entries;
-            }
-
-            entries.Add(entry);
-        }
 
         var plat = _e.GetEntity(state.Platform);
         if (!_e.TryGetComponent<CETradingPlatformComponent>(plat, out var platComp))
             return;
+
+        // Resolve platform faction and populate categories/requests only if the player has the faction
+        if (_prototype.Resolve(state.Faction, out var platformFactionProto))
+        {
+            var factions = repComp.Factions;
+            if (factions.Contains(platformFactionProto))
+            {
+                var entries = new HashSet<CETradingPositionPrototype>();
+                foreach (var entry in sortedRecipes)
+                {
+                    entries.Add(entry);
+                }
+
+                _categories[platformFactionProto.Name] = entries;
+            }
+        }
 
         var count = 0;
         foreach (var category in _categories)
@@ -243,6 +245,25 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
         }
 
         _cachedPlatform = (plat, platComp);
+
+        // Sell UI
+        SellPriceHolder.RemoveAllChildren();
+        SellPriceHolder.AddChild(new CEPriceControl(state.SellBalance));
+
+        if (_prototype.TryIndex(state.Faction, out var platformFaction))
+            TreeName.Text = Loc.GetString("ce-trading-faction-request-prefix") + " " + Loc.GetString(platformFaction.Name);
+        else
+            TreeName.Text = string.Empty;
+
+        Requests.RemoveAllChildren();
+        foreach (var request in _tradingSystem.GetRequests(state.Faction))
+        {
+            var canFullfill = _tradingSystem.CanFulfillRequest(_cachedPlatform.Value, request);
+            var requestControl = new CESellingRequestControl(request, canFullfill);
+
+            requestControl.OnSellAttempt += () => OnRequestSell?.Invoke(request);
+            Requests.AddChild(requestControl);
+        }
 
         UpdatePositionVisibility();
     }

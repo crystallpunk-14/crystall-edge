@@ -90,9 +90,6 @@ public abstract partial class CESharedVampireSystem : EntitySystem
             essenceHolder.Essence = 0;
             Dirty(ent, essenceHolder);
         }
-
-        //Additional trade faction
-        _trade.AddContractToPlayer(ent.Owner, _tradeFaction);
     }
 
     private void OnVampireRemove(Entity<CEVampireComponent> ent, ref ComponentRemove args)
