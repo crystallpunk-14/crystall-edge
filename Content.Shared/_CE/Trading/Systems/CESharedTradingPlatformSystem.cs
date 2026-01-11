@@ -24,7 +24,7 @@ public abstract partial class CESharedTradingPlatformSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
+    
     }
 
 
@@ -89,6 +89,7 @@ public abstract partial class CESharedTradingPlatformSystem : EntitySystem
 
         return true;
     }
+
 }
 
 [Serializable, NetSerializable]

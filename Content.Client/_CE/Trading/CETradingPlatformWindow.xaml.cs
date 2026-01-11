@@ -30,7 +30,6 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
     private string _searchFilter = string.Empty;
 
     private CETradingPlatformUiState? _cachedState;
-    private Entity<CETradingReputationComponent>? _cachedUser;
     private Entity<CETradingPlatformComponent>? _cachedPlatform;
 
     private CETradingPositionPrototype? _selectedPosition;
@@ -164,7 +163,7 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
 
     private void SelectPosition(CETradingPositionPrototype node)
     {
-        if (_cachedUser is null || _cachedPlatform is null)
+        if (_cachedPlatform is null)
         {
             DeselectNode();
             return;
@@ -206,11 +205,6 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
         if (_player.LocalEntity is null)
             return;
 
-        if (!_e.TryGetComponent<CETradingReputationComponent>(_player.LocalEntity, out var repComp))
-            return;
-
-        _cachedUser = (_player.LocalEntity.Value, repComp);
-
         // Prepare positions filtered to the platform's faction (we'll populate categories after resolving faction)
         var sortedRecipes = _prototype.EnumeratePrototypes<CETradingPositionPrototype>()
             .Where(e => e.Faction == state.Faction)
@@ -220,20 +214,16 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
         if (!_e.TryGetComponent<CETradingPlatformComponent>(plat, out var platComp))
             return;
 
-        // Resolve platform faction and populate categories/requests only if the player has the faction
+        // Resolve platform faction and populate categories/requests
         if (_prototype.Resolve(state.Faction, out var platformFactionProto))
         {
-            var factions = repComp.Factions;
-            if (factions.Contains(platformFactionProto))
+            var entries = new HashSet<CETradingPositionPrototype>();
+            foreach (var entry in sortedRecipes)
             {
-                var entries = new HashSet<CETradingPositionPrototype>();
-                foreach (var entry in sortedRecipes)
-                {
-                    entries.Add(entry);
-                }
-
-                _categories[platformFactionProto.Name] = entries;
+                entries.Add(entry);
             }
+
+            _categories[platformFactionProto.Name] = entries;
         }
 
         var count = 0;

@@ -116,17 +116,12 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
 
         if (!Proto.TryIndex(args.Position, out var indexedPosition))
             return;
-        if (!TryComp<CETradingReputationComponent>(args.Actor, out var repComp))
-            return;
 
         // Ensure the platform is for the same faction as the position being bought
         if (ent.Comp.Faction != indexedPosition.Faction)
             return;
 
         if (!TryComp<ItemPlacerComponent>(ent, out var itemPlacer))
-            return;
-
-        if (!repComp.Factions.Contains(indexedPosition.Faction))
             return;
 
         //Top up balance
