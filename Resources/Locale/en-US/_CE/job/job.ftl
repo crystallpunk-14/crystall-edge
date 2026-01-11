@@ -30,3 +30,6 @@ ce-job-desc-bard = Music, fun, and jokes are your job and bread. Make this city'
 
 ce-job-name-townfolk = Townfolk
 ce-job-desc-townfolk = A free citizen who has saved enough money to take a week off and do whatever their heart desires.
+
+ce-job-name-tailor-merchant = Tailor merchant
+ce-job-desc-tailor-merchant = A free citizen who has acquired ownership of a small clothing shop.

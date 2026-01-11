@@ -1,0 +1,15 @@
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyTailorShop
+  suffix: Tailor Shop
+  components:
+  - type: CEKey
+    autoGenerateShape: TailorShop
+
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyTailorHome
+  suffix: Tailor Home
+  components:
+  - type: CEKey
+    autoGenerateShape: TailorHome

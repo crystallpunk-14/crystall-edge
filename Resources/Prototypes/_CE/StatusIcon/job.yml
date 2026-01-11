@@ -31,24 +31,6 @@
     state: Investigator
   jobName: ce-job-name-investigator
 
-# Citizens
-
-- type: jobIcon
-  parent: CEJobIcon
-  id: CEJobIconTownfolk
-  icon:
-    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-    state: Townfolk
-  jobName: ce-job-name-townfolk
-
-- type: jobIcon
-  parent: CEJobIcon
-  id: CEJobIconBard
-  icon:
-    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-    state: Bard
-  jobName: ce-job-name-bard
-
 # Tavern
 
 - type: jobIcon
@@ -82,3 +64,29 @@
     sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
     state: Farmer
   jobName: ce-job-name-farmer
+
+# Citizens
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconBard
+  icon:
+    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    state: Bard
+  jobName: ce-job-name-bard
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconTownfolk
+  icon:
+    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    state: Townfolk
+  jobName: ce-job-name-townfolk
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconTailorMerchant
+  icon:
+    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    state: TailorMerchant
+  jobName: ce-job-name-tailor-merchant

@@ -1,0 +1,9 @@
+- type: lockType
+  id: TailorShop
+  complexity: 3
+  name: ce-lock-shape-tailor-shop
+
+- type: lockType
+  id: TailorHome
+  complexity: 4
+  name: ce-lock-shape-tailor-home

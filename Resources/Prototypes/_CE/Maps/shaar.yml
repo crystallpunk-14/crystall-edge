@@ -48,3 +48,4 @@
             #Citizens
             CEBard: [ 2, 2 ]
             CETownfolk: [ -1, -1 ]
+            CETailorMerchant: [ 1, 1 ]

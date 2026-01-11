@@ -30,3 +30,6 @@
 
 - type: playTimeTracker
   id: CEJobBard
+
+- type: playTimeTracker
+  id: CEJobTailorMerchant

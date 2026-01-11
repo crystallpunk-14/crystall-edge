@@ -27,3 +27,8 @@ ce-lock-shape-guard-cage-2 = тюремная клетка 2
 ce-lock-shape-guard-cage-3 = тюремная клетка 3
 ce-lock-shape-guard-cage-4 = тюремная клетка 4
 ce-lock-shape-guard-cage-5 = тюремная клетка 5
+
+# Citizens
+
+ce-lock-shape-tailor-shop = магазин одежды
+ce-lock-shape-tailor-home = дом хозяина магазина одежды

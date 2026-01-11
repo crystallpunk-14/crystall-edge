@@ -139,3 +139,17 @@
     layers:
       - state: green
       - state: workman
+
+- type: entity
+  id: CESpawnPointTailorMerchant
+  parent: CESpawnPointJobBase
+  name: tailor merchant
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CETownfolk #TODO
+  - type: Sprite
+    layers:
+      - state: green
+      - state: workman

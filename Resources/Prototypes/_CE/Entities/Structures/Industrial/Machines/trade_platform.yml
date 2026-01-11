@@ -101,6 +101,21 @@
 - type: entity
   parent:
   - CETradingPlatformBase
+  id: CETradingPlatformTailors
+  name: tailors trading platform
+  description: A trading platform tied to the Tailors faction.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: buy
+  - type: CETradingPlatform
+    faction: Tailors
+
+- type: entity
+  parent:
+  - CETradingPlatformBase
   id: CETradingPlatformHorticulture
   name: Horticulture trading platform
   description: A trading platform tied to the Horticulture faction.
