@@ -2,7 +2,7 @@
   id: CEOpenSign
   name: flip sign "Open"
   description: A small double-sided sign that can be turned over
-  parent: 
+  parent:
   - BaseItem
   categories: [ ForkFiltered ]
   components:
@@ -19,6 +19,11 @@
     mirrorEntity: CEClosedSign
   - type: Appearance
   - type: InteractionOutline
+  - type: CELocalizationVisuals
+    mapStates:
+      signState:
+        ru-RU: ru_open_sign
+        en-US: en_open_sign
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: CEWood
@@ -61,7 +66,7 @@
   id: CEClosedSign
   name: flip sign "Closed"
   description: A small double-sided sign that can be turned over
-  parent: 
+  parent:
   - CEOpenSign
   categories: [ ForkFiltered ]
   components:
@@ -74,3 +79,8 @@
         map: [signState]
   - type: Flippable
     mirrorEntity: CEOpenSign
+  - type: CELocalizationVisuals
+    mapStates:
+      signState:
+        ru-RU: ru_close_sign
+        en-US: en_close_sign

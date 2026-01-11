@@ -386,9 +386,8 @@
   - message: All species now have the correct amount of blood so you wont die from
       bloodloss as much now.
     type: Fix
-  - message: All species now have the correct amount of blood so you wont die from
-      bloodloss as much now.
-    type: Water quenches thirst again!
+  - message: Water quenches thirst again!
+    type: Fix
   id: 1039
   time: '2026-01-11T09:50:55.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/253
