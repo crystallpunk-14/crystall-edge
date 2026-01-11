@@ -100,6 +100,21 @@
 
 - type: entity
   parent:
+  - CETradingPlatformBase
+  id: CETradingPlatformHorticulture
+  name: Horticulture trading platform
+  description: A trading platform tied to the Horticulture faction.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: buy
+  - type: CETradingPlatform
+    faction: Horticulture
+
+- type: entity
+  parent:
   - CEConstructibleMachine
   - CEBaseMachinePowered
   - BaseMachine

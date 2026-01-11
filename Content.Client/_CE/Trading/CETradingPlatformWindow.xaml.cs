@@ -266,7 +266,7 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
             .Select(name => _prototype.EnumeratePrototypes<CEWorkbenchRecipeCategoryPrototype>()
                 .FirstOrDefault(c => c.Name == name))
             .Where(c => c != null)
-            .OrderByDescending(c => c!.Priority)
+            .OrderBy(c => c!.Priority)
             .ToList();
 
         var count = 0;

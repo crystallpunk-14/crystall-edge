@@ -1,11 +1,6 @@
 using Content.Shared._CE.Trading.Components;
 using Content.Shared._CE.Trading.Prototypes;
-using Content.Shared.Interaction.Events;
 using Content.Shared.Placeable;
-using Content.Shared.Popups;
-using Robust.Shared.Audio;
-using Robust.Shared.Audio.Systems;
-using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
@@ -14,12 +9,8 @@ namespace Content.Shared._CE.Trading.Systems;
 
 public abstract partial class CESharedTradingPlatformSystem : EntitySystem
 {
-    [Dependency] private readonly SharedUserInterfaceSystem _userInterface = default!;
     [Dependency] protected readonly IPrototypeManager Proto = default!;
     [Dependency] protected readonly IGameTiming Timing = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
 
     public int? GetPrice(ProtoId<CETradingPositionPrototype> position)
     {
