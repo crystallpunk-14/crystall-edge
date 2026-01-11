@@ -73,7 +73,6 @@ public abstract partial class CESharedTradingPlatformSystem : EntitySystem
 
         return true;
     }
-
 }
 
 [Serializable, NetSerializable]

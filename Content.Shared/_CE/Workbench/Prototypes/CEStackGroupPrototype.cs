@@ -18,7 +18,7 @@ public sealed partial class CEStackGroupPrototype : IPrototype
     public string ID { get; private set; } = default!;
 
     [DataField(required: true)]
-    public LocId Name = default!;
+    public LocId Name;
 
     [DataField(required: true)]
     public List<ProtoId<StackPrototype>> Stacks = new();
