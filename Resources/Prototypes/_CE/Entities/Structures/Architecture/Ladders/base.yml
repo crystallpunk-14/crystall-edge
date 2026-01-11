@@ -10,6 +10,8 @@
       snap:
       - Wall
   components:
+  - type: CEAutoTilePlacement
+    tile: CEPlanks
   - type: PlacementReplacement
     key: walls
   - type: Occluder

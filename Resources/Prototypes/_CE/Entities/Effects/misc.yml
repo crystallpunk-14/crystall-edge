@@ -96,7 +96,9 @@
 
 - type: entity
   id: CEDirtEffect
-  categories: [ HideSpawnMenu ]
+  name: dirt effect
+  categories: [ ForkFiltered ]
+  suffix: VFX
   save: false
   components:
   - type: Sprite
@@ -124,7 +126,9 @@
 - type: entity
   id: CESnowEffect
   parent: CEDirtEffect
-  categories: [ HideSpawnMenu ]
+  name: snow effect
+  suffix: VFX
+  categories: [ ForkFiltered ]
   save: false
   components:
   - type: Sprite
@@ -136,6 +140,12 @@
       - random:
           snow1: ""
           snow2: ""
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/_CE/Effects/snowball.ogg
+      params:
+        variation: 0.250
+        volume: 15
 
 - type: entity
   id: CETreasureSparkVFX

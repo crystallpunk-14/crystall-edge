@@ -17,7 +17,7 @@
     bloodReferenceSolution:
       reagents:
       - ReagentId: CEBloodTiefling
-        Quantity: 1
+        Quantity: 300
   - type: Damageable
     damageContainer: CEBiological
     damageModifierSet: CETiefling

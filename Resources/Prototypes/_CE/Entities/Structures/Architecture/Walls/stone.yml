@@ -11,6 +11,8 @@
   - type: Icon
     sprite: _CE/Structures/Architecture/Walls/bricks_stone.rsi
     state: frame
+  - type: CEAutoTilePlacement
+    tile: CEStonebricks
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: CERockStructural
@@ -45,6 +47,8 @@
     sprite: _CE/Structures/Architecture/Walls/bricks_stone.rsi
   - type: Icon
     sprite: _CE/Structures/Architecture/Walls/bricks_stone.rsi
+  - type: CEAutoTilePlacement
+    tile: CEStonebricks
   - type: IconSmooth
     base: stonebricks
   - type: Damageable
@@ -81,6 +85,8 @@
     sprite: _CE/Structures/Architecture/Walls/brick_stone_old.rsi
   - type: Icon
     sprite: _CE/Structures/Architecture/Walls/brick_stone_old.rsi
+  - type: CEAutoTilePlacement
+    tile: CEStonebricks
   - type: IconSmooth
     base: stonebricks
   - type: Damageable
@@ -114,6 +120,8 @@
     sprite: _CE/Structures/Architecture/Walls/bricks_brown.rsi
   - type: Icon
     sprite: _CE/Structures/Architecture/Walls/bricks_brown.rsi
+  - type: CEAutoTilePlacement
+    tile: CEStonebricks
   - type: IconSmooth
     base: bricksA
   - type: Damageable

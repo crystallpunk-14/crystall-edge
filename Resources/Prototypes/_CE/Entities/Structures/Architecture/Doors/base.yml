@@ -21,6 +21,8 @@
   - type: CELock #Empty, for installing new locks
   - type: PlacementReplacement
     key: walls
+  - type: CEAutoTilePlacement
+    tile: CEPlanks
   - type: CEDoorInteractionPopup
     interactSound:
       collection: CEDoorknob

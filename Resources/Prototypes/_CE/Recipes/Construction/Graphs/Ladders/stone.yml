@@ -15,15 +15,15 @@
     - node: CEZLevelLadderStone
       entity: CEZLevelLadderStone
       edges:
-        #- to: start
-        #  completed:
-        #    - !type:SpawnPrototype
-        #      prototype: CEStoneBlock1
-        #      amount: 2
-        #    - !type:DeleteEntity {}
-        #  steps:
-        #    - tool: Prying
-        #      doAfter: 2
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEStoneBlock1
+              amount: 2
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 2
         - to: CEZLevelLadderStoneCorner
           steps:
             - tool: Prying

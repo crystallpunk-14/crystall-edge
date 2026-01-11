@@ -14,6 +14,8 @@
   - type: IconSmooth
     key: CEwindow
     base: window
+  - type: CEAutoTilePlacement
+    tile: CEPlanks
   - type: PlacementReplacement
     key: walls
   - type: Fixtures

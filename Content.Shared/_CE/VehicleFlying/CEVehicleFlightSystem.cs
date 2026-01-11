@@ -46,7 +46,7 @@ public sealed class CEVehicleFlightSystem : EntitySystem
 
     private void OnOperatorSet(Entity<CEVehicleFlyerComponent> ent, ref CEVehicleOperatorSetEvent args)
     {
-        if (!TryComp<CEZFlyerComponent>(ent.Owner, out var flyerComp))
+        if (!TryComp<CEControllableFlightComponent>(ent.Owner, out var flyerComp))
             return;
 
         if (args.NewOperator is null)
@@ -62,7 +62,7 @@ public sealed class CEVehicleFlightSystem : EntitySystem
         }
     }
 
-    private void GrantFlightActionsToOperator(Entity<CEZFlyerComponent> flyer, EntityUid user)
+    private void GrantFlightActionsToOperator(Entity<CEControllableFlightComponent> flyer, EntityUid user)
     {
         List<EntityUid> actionsList = new();
 
@@ -76,7 +76,7 @@ public sealed class CEVehicleFlightSystem : EntitySystem
         _actions.GrantActions(user, actionsList, flyer.Owner);
     }
 
-    private void RemoveFlightActionsFromOperator(Entity<CEZFlyerComponent> flyer, EntityUid user)
+    private void RemoveFlightActionsFromOperator(Entity<CEControllableFlightComponent> flyer, EntityUid user)
     {
         if (flyer.Comp.ZLevelUpActionEntity is not null)
             _actions.RemoveProvidedAction(user, flyer.Owner, flyer.Comp.ZLevelUpActionEntity.Value);

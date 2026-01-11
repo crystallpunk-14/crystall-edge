@@ -5,3 +5,11 @@
   - /Audio/_CE/Effects/Footsteps/carrin_step1.ogg
   - /Audio/_CE/Effects/Footsteps/carrin_step2.ogg
   - /Audio/_CE/Effects/Footsteps/carrin_step3.ogg
+
+- type: soundCollection
+  id: CEStepBones
+  files:
+  - /Audio/_CE/Effects/Footsteps/bones1.ogg
+  - /Audio/_CE/Effects/Footsteps/bones2.ogg
+  - /Audio/_CE/Effects/Footsteps/bones3.ogg
+  - /Audio/_CE/Effects/Footsteps/bones4.ogg
