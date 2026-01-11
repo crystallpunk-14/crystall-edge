@@ -79,3 +79,8 @@
         map: [signState]
   - type: Flippable
     mirrorEntity: CEOpenSign
+  - type: CELocalizationVisuals
+    mapStates:
+      signState:
+        ru-RU: ru_close_sign
+        en-US: en_close_sign
