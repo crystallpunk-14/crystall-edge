@@ -21,13 +21,6 @@ public abstract partial class CESharedTradingPlatformSystem : EntitySystem
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    
-    }
-
-
     public int? GetPrice(ProtoId<CETradingPositionPrototype> position)
     {
         var query = EntityQueryEnumerator<CEStationEconomyComponent>();
