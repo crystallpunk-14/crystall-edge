@@ -80,7 +80,7 @@
                 <BoxContainer Name="CraftsContainer" Orientation="Vertical" HorizontalExpand="True" VerticalAlignment="Top"/>
             </ScrollContainer>
         </BoxContainer>
- 
+
         <customControls:VSeparator StyleClasses="LowDivider" />
 
         <!-- Special requests (right) -->

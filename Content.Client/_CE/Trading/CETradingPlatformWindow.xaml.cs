@@ -95,15 +95,27 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
             AddRecipeListToGrid(_uncategorized, uncategorizedGridContainer);
         }
 
-        foreach (var category in _categories)
+        // Sort categories by priority (highest first)
+        var sortedCategories = _categories
+            .Select(kvp => new
+            {
+                Category = _prototype.EnumeratePrototypes<CEWorkbenchRecipeCategoryPrototype>()
+                    .FirstOrDefault(c => c.Name == kvp.Key),
+                Positions = kvp.Value
+            })
+            .Where(x => x.Category != null)
+            .OrderByDescending(x => x.Category!.Priority)
+            .ToList();
+
+        foreach (var item in sortedCategories)
         {
             if (_categoryIndexes.TryGetValue(OptionCategories.SelectedId, out var selectedCategory) &&
-                category.Key != selectedCategory)
+                item.Category!.Name != selectedCategory)
                 continue;
 
             var categoryLabel = new RichTextLabel();
             categoryLabel.Margin = new Thickness(5);
-            categoryLabel.Text = GetString(category.Key);
+            categoryLabel.Text = GetString(item.Category!.Name);
             CraftsContainer.AddChild(categoryLabel);
 
             var gridContainer = new GridContainer();
@@ -111,7 +123,7 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
             gridContainer.VerticalExpand = true;
             CraftsContainer.AddChild(gridContainer);
 
-            AddRecipeListToGrid(category.Value, gridContainer);
+            AddRecipeListToGrid(item.Positions, gridContainer);
         }
     }
 
@@ -120,7 +132,10 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
         if (_cachedState is null)
             return;
 
-        foreach (var entry in category)
+        // Sort by price within category (cheapest first)
+        var sortedByPrice = category.OrderBy(e => _tradingSystem.GetPrice(e) ?? double.MaxValue);
+
+        foreach (var entry in sortedByPrice)
         {
             if (!ProcessSearchFilter(entry))
                 continue;
@@ -266,7 +281,7 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
             .Select(name => _prototype.EnumeratePrototypes<CEWorkbenchRecipeCategoryPrototype>()
                 .FirstOrDefault(c => c.Name == name))
             .Where(c => c != null)
-            .OrderBy(c => c!.Priority)
+            .OrderByDescending(c => c!.Priority)
             .ToList();
 
         var count = 0;
