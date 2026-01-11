@@ -68,7 +68,7 @@
   groups:
   - CEGeneralBag
   - CETownfolkHead
-  - CEGeneralEyes
+  - CEMerchantEyes #
   - CEGeneralCloak
   - CEGeneralGloves
   - CEGeneralShirt

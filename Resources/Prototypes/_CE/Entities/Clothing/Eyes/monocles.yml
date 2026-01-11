@@ -28,6 +28,7 @@
 - type: entity
   parent: CEClothingEyesBase
   id: CEClothingEyesMerchantMonocle
+  suffix: Theft target
   name: merchant's monocle
   description: High-quality magnifying monocle infused with magic to help you determine the exact price of any item.
   components:
@@ -39,6 +40,7 @@
   - type: StaticPrice
     price: 30
   - type: VisionCorrection
+  - type: CETheftValue
 
 - type: entity
   parent: CEClothingEyesBase
