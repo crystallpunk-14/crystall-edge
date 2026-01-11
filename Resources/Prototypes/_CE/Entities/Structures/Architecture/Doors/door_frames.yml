@@ -77,11 +77,11 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 50
+        damage: 100
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
-          CEIronBar1:
+          CEIronSheet1:
             min: 1
             max: 2
       - !type:DoActsBehavior

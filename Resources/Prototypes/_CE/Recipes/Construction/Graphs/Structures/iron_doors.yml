@@ -46,7 +46,7 @@
           - !type:EntityAnchored {}
           steps:
             - material: CEIronSheet
-              amount: 1
+              amount: 3
               doAfter: 1.5
             - material: CENail
               amount: 2
@@ -61,7 +61,7 @@
               amount: 2
               doAfter: 1.5
             - material: CEIronSheet
-              amount: 1
+              amount: 3
               doAfter: 1.5
             - material: CENail
               amount: 2
@@ -95,7 +95,7 @@
           - !type:EntityAnchored {}
           steps:
             - material: CEIronSheet
-              amount: 1
+              amount: 3
               doAfter: 1.5
             - material: CENail
               amount: 2
@@ -110,7 +110,7 @@
               amount: 2
               doAfter: 1.5
             - material: CEIronSheet
-              amount: 1
+              amount: 3
               doAfter: 1.5
             - material: CENail
               amount: 2
@@ -137,7 +137,7 @@
           completed:
             - !type:SpawnPrototype
               prototype: CEIronSheet1
-              amount: 1
+              amount: 3
             - !type:SpawnPrototype
               prototype: CENail1
               amount: 2
@@ -157,7 +157,7 @@
           completed:
             - !type:SpawnPrototype
               prototype: CEIronSheet1
-              amount: 1
+              amount: 3
             - !type:SpawnPrototype
               prototype: CENail1
               amount: 2
@@ -180,7 +180,7 @@
               amount: 2
             - !type:SpawnPrototype
               prototype: CEIronSheet1
-              amount: 1
+              amount: 3
             - !type:SpawnPrototype
               prototype: CENail1
               amount: 2
@@ -203,7 +203,7 @@
               amount: 2
             - !type:SpawnPrototype
               prototype: CEIronSheet1
-              amount: 1
+              amount: 3
             - !type:SpawnPrototype
               prototype: CENail1
               amount: 2
