@@ -130,6 +130,53 @@
 
 - type: entity
   parent:
+  - CETradingPlatformBase
+  id: CETradingPlatformDwarfMiners
+  name: dwarf miners trading platform
+  description: A trading platform tied to the Dwarf Miners faction.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: buy
+  - type: CETradingPlatform
+    faction: DwarfMiners
+
+- type: entity
+  parent:
+  - CETradingPlatformBase
+  id: CETradingPlatformAlcohol
+  name: alcohol trading platform
+  description: A trading platform tied to the Alcohol faction.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: buy
+  - type: CETradingPlatform
+    faction: Alcohol
+
+- type: entity
+  parent:
+  - CETradingPlatformBase
+  id: CETradingPlatformApothecariesGuild
+  name: apothecaries guild trading platform
+  description: A trading platform tied to the Apothecaries Guild faction.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: buy
+  - type: CETradingPlatform
+    faction: ApothecariesGuild
+
+#
+
+- type: entity
+  parent:
   - CEConstructibleMachine
   - CEBaseMachinePowered
   - BaseMachine
