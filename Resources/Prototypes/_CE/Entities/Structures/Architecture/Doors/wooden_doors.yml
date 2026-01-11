@@ -18,7 +18,7 @@
     closeSound:
       path: /Audio/Effects/door_close.ogg
   - type: Damageable
-    damageContainer: Inorganic
+    damageContainer: StructuralInorganic
     damageModifierSet: CEWoodStructural
   - type: Destructible
     thresholds:
