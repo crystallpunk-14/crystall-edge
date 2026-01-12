@@ -1,0 +1,66 @@
+- type: entity
+  name: wood bench
+  id: CEBenchWood
+  parent:
+  - SeatBase
+  description: A bench carved from wood, a comfortable part of the interior designed for sitting and relaxing.
+  categories: [ ForkFiltered ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: CEWood
+  - type: Rotatable
+  - type: Sprite
+    noRot: false
+    sprite: _CE/Structures/Furniture/bench.rsi
+    layers:
+    - state: wooden
+  - type: Physics
+    bodyType: Static
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEWoodenPlanks1:
+            min: 2
+            max: 4
+  - type: Construction
+    graph: CEBenchWood
+    node: CEBenchWood
+
+- type: entity
+  id: CEBenchWoodBirch
+  parent: CEBenchWood
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Furniture/bench.rsi
+    layers:
+    - state: birch
+
+- type: entity
+  id: CEBenchWoodSpruce
+  parent: CEBenchWood
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Furniture/bench.rsi
+    layers:
+    - state: spruce

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-4.0",
-  "copyright": "Created by TheShuEd (Github), modified by vladimir.s. stool_wooden by SketchiiArtist (Github)",
+  "copyright": "Created by TheShuEd (Github), modified by vladimir.s. stool_wooden by SketchiiArtist (Github), wooden_red by Gogenych",
   "size": {
     "x": 32,
     "y": 32
@@ -9,6 +9,10 @@
   "states": [
     {
       "name": "wooden",
+      "directions": 4
+    },
+    {
+      "name": "wooden_red",
       "directions": 4
     },
     {

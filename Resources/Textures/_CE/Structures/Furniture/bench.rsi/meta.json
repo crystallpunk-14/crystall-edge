@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-4.0",
+  "copyright": "wooden bench created by omsoyk (Discord). Birch and spruce created by dinazewwr; ",
+  "size": {
+    "x": 48,
+    "y": 48
+  },
+  "states": [
+    {
+      "name": "wooden",
+      "directions": 4
+    },
+    {
+      "name": "birch",
+      "directions": 4
+    },
+    {
+      "name": "spruce",
+      "directions": 4
+    }
+  ]
+}
+
