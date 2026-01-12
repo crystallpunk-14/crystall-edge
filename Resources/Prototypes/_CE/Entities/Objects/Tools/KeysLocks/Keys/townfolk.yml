@@ -13,3 +13,19 @@
   components:
   - type: CEKey
     autoGenerateShape: TailorHome
+
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyPharmacyShop
+  suffix: Pharmacy Shop
+  components:
+  - type: CEKey
+    autoGenerateShape: PharmacyShop
+
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyPharmacyHome
+  suffix: Pharmacy Home
+  components:
+  - type: CEKey
+    autoGenerateShape: PharmacyHome

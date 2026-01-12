@@ -32,3 +32,5 @@ ce-lock-shape-guard-cage-5 = prison cage 5
 
 ce-lock-shape-tailor-shop = clothing store
 ce-lock-shape-tailor-home = clothing store owner's home
+ce-lock-shape-pharmacy-shop = pharmacy
+ce-lock-shape-pharmacy-home = pharmacy owner's home

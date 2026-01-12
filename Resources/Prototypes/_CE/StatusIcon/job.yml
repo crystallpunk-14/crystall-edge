@@ -90,3 +90,11 @@
     sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
     state: TailorMerchant
   jobName: ce-job-name-tailor-merchant
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconPharmacistMerchant
+  icon:
+    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    state: PharmacistMerchant
+  jobName: ce-job-name-pharmacist-merchant

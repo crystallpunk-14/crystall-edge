@@ -33,3 +33,6 @@ ce-job-desc-townfolk = A free citizen who has saved enough money to take a week 
 
 ce-job-name-tailor-merchant = Tailor merchant
 ce-job-desc-tailor-merchant = A free citizen who has acquired ownership of a small clothing shop.
+
+ce-job-name-pharmacist-merchant = Pharmacist merchant
+ce-job-desc-pharmacist-merchant = A free citizen who owns a small pharmacy, selling medicines and herbs.

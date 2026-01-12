@@ -24,3 +24,30 @@
     autoGenerateShape: TailorHome
   - type: Lock
     locked: true
+
+- type: entity
+  parent: CEWoodenDoorWindowed
+  id: CEWoodenDoorPharmacyShop
+  suffix: Pharmacy Shop
+  components:
+  - type: CELock
+    autoGenerateShape: PharmacyShop
+  - type: Lock
+    locked: false
+
+- type: entity
+  parent:
+  - CEWoodenDoorPharmacyShop
+  - CEWoodenDoorWindowedMirrored
+  id: CEWoodenDoorPharmacyShopMirrored
+  suffix: Pharmacy Shop, Mirrored
+
+- type: entity
+  parent: CEWoodenDoor
+  id: CEWoodenDoorPharmacyHome
+  suffix: Pharmacy Home
+  components:
+  - type: CELock
+    autoGenerateShape: PharmacyHome
+  - type: Lock
+    locked: true

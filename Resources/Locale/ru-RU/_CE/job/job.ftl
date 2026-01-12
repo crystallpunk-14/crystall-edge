@@ -33,3 +33,6 @@ ce-job-desc-townfolk = Свободный гражданин, накопивши
 
 ce-job-name-tailor-merchant = Торговец одеждой
 ce-job-desc-tailor-merchant = Свободный гражданин, заполучивший в свою собственность небольшой магазинчик одежды.
+
+ce-job-name-pharmacist-merchant = Торговец-аптекарь
+ce-job-desc-pharmacist-merchant = Свободный гражданин, владеющий небольшой аптекой и торгующий лекарствами и травами.

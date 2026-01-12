@@ -32,3 +32,5 @@ ce-lock-shape-guard-cage-5 = тюремная клетка 5
 
 ce-lock-shape-tailor-shop = магазин одежды
 ce-lock-shape-tailor-home = дом хозяина магазина одежды
+ce-lock-shape-pharmacy-shop = аптека
+ce-lock-shape-pharmacy-home = дом хозяина аптеки

@@ -36,6 +36,9 @@
     },
     {
       "name": "TailorMerchant"
+    },
+    {
+      "name": "PharmacistMerchant"
     }
   ]
 }

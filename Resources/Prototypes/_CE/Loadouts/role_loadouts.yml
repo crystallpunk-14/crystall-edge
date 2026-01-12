@@ -76,6 +76,18 @@
   - CEGeneralShoes
 
 - type: roleLoadout
+  id: JobCEPharmacistMerchant
+  groups:
+  - CEGeneralBag
+  - CETownfolkHead
+  - CEMerchantEyes #
+  - CEGeneralCloak
+  - CEGeneralGloves
+  - CEGeneralShirt
+  - CEGeneralPants
+  - CEGeneralShoes
+
+- type: roleLoadout
   id: JobCETownfolk
   groups:
   - CEGeneralBag
