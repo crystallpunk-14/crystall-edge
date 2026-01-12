@@ -169,6 +169,7 @@
 - type: tradingPosition
   id: CEPlushieCarrin
   faction: HomeDecor
+  category: Materials
   service: !type:CEBuyItemsService
     product: CEPlushieCarrin
 
@@ -185,3 +186,19 @@
   category: Materials
   service: !type:CEBuyItemsService
     product: CEBell
+
+- type: tradingPosition
+  id: CEd20Dice
+  priceMarkup: 5
+  faction: HomeDecor
+  category: Materials
+  service: !type:CEBuyItemsService
+    product: CEd20Dice
+
+- type: tradingPosition
+  id: CEd6Dice
+  priceMarkup: 5
+  faction: HomeDecor
+  category: Materials
+  service: !type:CEBuyItemsService
+    product: CEd6Dice

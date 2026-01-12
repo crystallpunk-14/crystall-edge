@@ -36,3 +36,6 @@ ce-job-desc-tailor-merchant = Свободный гражданин, запол�
 
 ce-job-name-pharmacist-merchant = Торговец-аптекарь
 ce-job-desc-pharmacist-merchant = Свободный гражданин, владеющий небольшой аптекой и торгующий лекарствами и травами.
+
+ce-job-name-homegoods-merchant = Торговец декорациями
+ce-job-desc-homegoods-merchant = Свободный гражданин, владеющий небольшим магазином с предметами для дома и декором.

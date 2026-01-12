@@ -36,3 +36,6 @@
 
 - type: playTimeTracker
   id: CEJobPharmacistMerchant
+
+- type: playTimeTracker
+  id: CEJobHomeGoodsMerchant

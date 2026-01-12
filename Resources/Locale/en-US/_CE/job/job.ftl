@@ -36,3 +36,6 @@ ce-job-desc-tailor-merchant = A free citizen who has acquired ownership of a sma
 
 ce-job-name-pharmacist-merchant = Pharmacist merchant
 ce-job-desc-pharmacist-merchant = A free citizen who owns a small pharmacy, selling medicines and herbs.
+
+ce-job-name-homegoods-merchant = Homegoods merchant
+ce-job-desc-homegoods-merchant = A free citizen who owns a small shop selling home decorations and household items.

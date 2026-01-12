@@ -27,6 +27,32 @@
 
 - type: entity
   parent: CEWoodenDoorWindowed
+  id: CEWoodenDoorHomeGoodsShop
+  suffix: Home Goods Shop
+  components:
+  - type: CELock
+    autoGenerateShape: HomeGoodsShop
+  - type: Lock
+    locked: false
+
+- type: entity
+  parent:
+  - CEWoodenDoorHomeGoodsShop
+  - CEWoodenDoorWindowedMirrored
+  id: CEWoodenDoorHomeGoodsShopMirrored
+  suffix: Home Goods Shop, Mirrored
+
+- type: entity
+  parent: CEWoodenDoor
+  id: CEWoodenDoorHomeGoodsHome
+  suffix: Home Goods Home
+  components:
+  - type: CELock
+    autoGenerateShape: HomeGoodsHome
+  - type: Lock
+    locked: true
+- type: entity
+  parent: CEWoodenDoorWindowed
   id: CEWoodenDoorPharmacyShop
   suffix: Pharmacy Shop
   components:

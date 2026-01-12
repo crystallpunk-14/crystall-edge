@@ -34,3 +34,5 @@ ce-lock-shape-tailor-shop = магазин одежды
 ce-lock-shape-tailor-home = дом хозяина магазина одежды
 ce-lock-shape-pharmacy-shop = аптека
 ce-lock-shape-pharmacy-home = дом хозяина аптеки
+ce-lock-shape-homegoods-shop = магазин товаров для дома
+ce-lock-shape-homegoods-home = дом хозяина магазина товаров для дома

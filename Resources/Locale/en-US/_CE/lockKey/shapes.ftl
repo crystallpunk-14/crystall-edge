@@ -34,3 +34,5 @@ ce-lock-shape-tailor-shop = clothing store
 ce-lock-shape-tailor-home = clothing store owner's home
 ce-lock-shape-pharmacy-shop = pharmacy
 ce-lock-shape-pharmacy-home = pharmacy owner's home
+ce-lock-shape-homegoods-shop = homegoods shop
+ce-lock-shape-homegoods-home = homegoods shop owner's home

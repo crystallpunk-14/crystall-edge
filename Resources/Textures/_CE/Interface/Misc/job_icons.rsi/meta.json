@@ -39,6 +39,9 @@
     },
     {
       "name": "PharmacistMerchant"
+    },
+    {
+      "name": "HomeGoodsMerchant"
     }
   ]
 }

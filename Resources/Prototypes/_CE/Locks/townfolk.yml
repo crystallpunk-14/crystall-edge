@@ -17,3 +17,13 @@
   id: PharmacyHome
   complexity: 4
   name: ce-lock-shape-pharmacy-home
+
+- type: lockType
+  id: HomeGoodsShop
+  complexity: 3
+  name: ce-lock-shape-homegoods-shop
+
+- type: lockType
+  id: HomeGoodsHome
+  complexity: 4
+  name: ce-lock-shape-homegoods-home

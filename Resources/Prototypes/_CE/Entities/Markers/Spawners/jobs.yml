@@ -167,3 +167,17 @@
     layers:
       - state: green
       - state: workman
+
+- type: entity
+  id: CESpawnPointHomeGoodsMerchant
+  parent: CESpawnPointJobBase
+  name: home goods merchant
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEHomeGoodsMerchant
+  - type: Sprite
+    layers:
+      - state: green
+      - state: workman

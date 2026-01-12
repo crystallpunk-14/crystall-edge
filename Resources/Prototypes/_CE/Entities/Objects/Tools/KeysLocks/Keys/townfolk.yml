@@ -29,3 +29,19 @@
   components:
   - type: CEKey
     autoGenerateShape: PharmacyHome
+
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyHomeGoodsShop
+  suffix: Home Goods Shop
+  components:
+  - type: CEKey
+    autoGenerateShape: HomeGoodsShop
+
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyHomeGoodsHome
+  suffix: Home Goods Home
+  components:
+  - type: CEKey
+    autoGenerateShape: HomeGoodsHome
