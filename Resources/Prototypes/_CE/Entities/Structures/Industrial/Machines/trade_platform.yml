@@ -54,8 +54,8 @@
 - type: entity
   parent:
   - CETradingPlatformBase
-  id: CETradingPlatform
-  name: Empire Guard trading platform
+  id: CETradingPlatformEmpireGuard
+  name: empire Guard trading platform
   description: Standard trading platform tied to the Empire Guard faction.
   categories: [ ForkFiltered ]
   components:
