@@ -1,0 +1,66 @@
+- type: entity
+  id: CECobwebRight1
+  parent:
+  - CEBaseWallmount
+#  - CEBaseFlammable
+  name: cobweb
+  description: The sticky web is surprisingly strong and unpleasant.
+  categories: [ ForkFiltered ]
+  suffix: Right. Corner.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Clickable
+  - type: Sprite
+    sprite: _CE/Structures/Decoration/cobweb.rsi
+    state: cobweb_right1
+  - type: Transform
+    anchored: true
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: CEWood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 20
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: SpriteFade
+  - type: SpeedModifierContacts
+    walkSpeedModifier: 0.5
+    sprintSpeedModifier: 0.5
+#  - type: CEIgnitionModifier
+#    ignitionTimeModifier: 0.75
+#    hideCaution: true
+  - type: FireVisuals
+    sprite: Mobs/Effects/onfire.rsi
+    normalState: Mouse_burning # I need a burning sprite on the Wallmount
+
+- type: entity
+  id: CECobwebLeft1
+  parent: CECobwebRight1
+  suffix: Left. Corner.
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Decoration/cobweb.rsi
+    state: cobweb_left1
+
+- type: entity
+  id: CECobwebLeft2
+  parent: CECobwebRight1
+  suffix: Left. Flat.
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Decoration/cobweb.rsi
+    state: cobweb_left2
+
+- type: entity
+  id: CECobwebRight2
+  parent: CECobwebLeft2
+  suffix: Right. Flat.
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Decoration/cobweb.rsi
+    state: cobweb_right2

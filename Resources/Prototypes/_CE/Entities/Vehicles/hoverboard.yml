@@ -23,8 +23,6 @@
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: Metallic
-  - type: DamageOnHighSpeedImpact
-    minimumSpeed: 5
   - type: MovementSpeedModifier
     baseAcceleration: 2
     baseFriction: 2

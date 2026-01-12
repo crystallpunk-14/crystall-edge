@@ -3,3 +3,8 @@
   license: "CC0-1.0"
   copyright: "Sound from 5ro4: https://freesound.org/people/5ro4/"
   source: "https://freesound.org/people/5ro4/sounds/611105/"
+
+- files: ["bones1.ogg", "bones2.ogg", "bones3.ogg", "bones4.ogg"]
+  license: "CC0-1.0"
+  copyright: "Sound from nayahnaidoo: https://freesound.org/people/nayahnaidoo/"
+  source: "https://freesound.org/people/nayahnaidoo/sounds/656054/"

@@ -5,3 +5,4 @@ ce-material-cloth = Ткань
 ce-material-leather = Кожа
 ce-material-iron = Железо
 ce-material-brass = Латунь
+ce-material-bone = Кости

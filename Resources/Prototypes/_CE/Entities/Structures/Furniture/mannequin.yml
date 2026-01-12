@@ -209,12 +209,14 @@
         damageType: Heat
         damage: 20
       behaviors:
+      - !type:EmptyAllContainersBehaviour
       - !type:DoActsBehavior
         acts: ["Destruction"]
     - trigger:
         !type:DamageTrigger
         damage: 40
       behaviors:
+      - !type:EmptyAllContainersBehaviour
       - !type:DoActsBehavior
         acts: ["Destruction"]
       - !type:SpawnEntitiesBehavior

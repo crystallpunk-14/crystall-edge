@@ -5,7 +5,7 @@ namespace Content.Shared._CE.Roadmap;
 [Prototype("roadmapItem")]
 public sealed partial class CERoadmapItemPrototype : IPrototype
 {
-    [IdDataField] public string ID { get; } = default!;
+    [IdDataField] public string ID { get; private set; } = default!;
 
     [DataField(required: true)]
     public RoadmapStatus Status;
@@ -23,7 +23,7 @@ public sealed partial class CERoadmapItemPrototype : IPrototype
 [Prototype("roadmapCategory")]
 public sealed partial class CERoadmapItemCategory : IPrototype
 {
-    [IdDataField] public string ID { get; } = default!;
+    [IdDataField] public string ID { get; private set; } = default!;
 
     [DataField(required: true)]
     public LocId Title;

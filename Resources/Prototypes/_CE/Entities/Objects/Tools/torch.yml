@@ -1,0 +1,64 @@
+- type: entity
+  id: CETorch # Burning does not work fully, not ported
+  parent:
+  - BaseItem
+  - CEBaseTorch
+  name: torch
+  description: At its core, a stick burning on one side. Used to light up the area.
+  categories: [ ForkFiltered ]
+  suffix: NOT WORKING
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Tools/torch.rsi
+    layers:
+      - state: torch-unlit
+        map: ["fuel"]
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,0,2
+    storedRotation: -65
+  - type: FireVisuals
+    sprite: _CE/Objects/Tools/torch.rsi
+    normalState: lit-overlay
+  - type: ToggleableLightVisuals
+    spriteLayer: null
+    inhandVisuals:
+      left:
+      - state: lit-inhand-left
+        shader: unshaded
+      right:
+      - state: lit-inhand-right
+        shader: unshaded
+  #- type: GenericVisualizer
+  #  visuals:
+  #    enum.FireplaceFuelVisuals.Status:
+  #      fuel:
+  #        Empty: { state: torch-spent }
+  #        Medium: { state: torch-unlit }
+  #        Full: { state: torch-unlit }
+  #- type: CP14DelayedIgnitionSource
+  #- type: CP14IgnitionModifier
+  #  hideCaution: true
+  - type: MeleeWeapon
+    attackRate: 1.5
+    wideAnimationRotation: 240
+    wideAnimation: WeaponArcSlash # Vanilla animation
+    damage:
+      types:
+        Blunt: 4
+  #- type: CP14FlammableBonusDamage
+  - type: UseDelay
+  - type: ExtinguishOnInteract
+    extinguishAttemptSound:
+      path: /Audio/Items/candle_blowing.ogg
+      params:
+        variation: 0.05
+        volume: 10
+  - type: Tag
+    tags:
+    - CETorch
+  - type: PhysicalComposition
+    materialComposition:
+      CEWood: 10
+      CECloth: 10

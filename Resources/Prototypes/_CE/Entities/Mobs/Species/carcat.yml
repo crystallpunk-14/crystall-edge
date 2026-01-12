@@ -95,7 +95,7 @@
     bloodReferenceSolution:
       reagents:
       - ReagentId: CEBloodCarcat
-        Quantity: 1
+        Quantity: 300
 
 - type: entity
   parent:

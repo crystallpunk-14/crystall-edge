@@ -16,7 +16,6 @@
     price: 0 # Vanilla inheritance moment
 
 - type: entity
-  name: wooden stool
   id: CEChairStoolWooden
   parent: CEChairWooden
   components:
@@ -24,7 +23,6 @@
     state: stool_wooden
 
 - type: entity
-  name: wooden stool
   id: CEChairStoolMetallic
   parent: CEChairWooden
   suffix: Metallic
@@ -33,10 +31,17 @@
     state: stool_metall
 
 - type: entity
-  name: wooden stool
   id: CEChairStoolMetallicRed
   suffix: Metallic Red
   parent: CEChairWooden
   components:
   - type: Sprite
     state: stool_metall_red
+
+- type: entity
+  id: CEChairStoolWoodenRed
+  suffix: Wooden Red
+  parent: CEChairWooden
+  components:
+  - type: Sprite
+    state: wooden_red
