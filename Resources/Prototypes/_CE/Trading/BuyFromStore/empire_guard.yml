@@ -128,3 +128,11 @@
     product: CEWeaponMaceTwoHandedGuardrail
     count: 1
   category: Weapon
+
+- type: tradingPosition
+  id: CEMachineCoreTradingPlatformEmpireGuard
+  faction: EmpireGuard
+  service: !type:CEBuyItemsService
+    product: CEMachineCoreTradingPlatformEmpireGuard
+    count: 1
+  category: MachineCore

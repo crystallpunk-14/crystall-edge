@@ -290,7 +290,7 @@
   resultCount: 1
 
 - type: CERecipe
-  id: CEMachineCoreTradingPlatform
+  id: CEMachineCoreTradingPlatformHomeDecor
   tag: CERecipeEngineeringTable
   category: MachineCore
   craftTime: 2.0
@@ -304,11 +304,11 @@
   - !type:StackResource
     stack: CEIronSheet
     count: 5
-  result: CEMachineCoreTradingPlatform
+  result: CEMachineCoreTradingPlatformHomeDecor
   resultCount: 1
 
 - type: CERecipe
-  id: CEMachineCoreSellingPlatform
+  id: CEMachineCoreTradingPlatformTailors
   tag: CERecipeEngineeringTable
   category: MachineCore
   craftTime: 2.0
@@ -320,8 +320,80 @@
     stack: CEMachinePartDimensionalMatrix
     count: 1
   - !type:StackResource
-    stack: CEMachinePartEnergyLine
-    count: 2
-  result: CEMachineCoreSellingPlatform
+    stack: CEIronSheet
+    count: 5
+  result: CEMachineCoreTradingPlatformTailors
+  resultCount: 1
+
+- type: CERecipe
+  id: CEMachineCoreTradingPlatformHorticulture
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartDimensionalMatrix
+    count: 1
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 5
+  result: CEMachineCoreTradingPlatformHorticulture
+  resultCount: 1
+
+- type: CERecipe
+  id: CEMachineCoreTradingPlatformDwarfMiners
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartDimensionalMatrix
+    count: 1
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 5
+  result: CEMachineCoreTradingPlatformDwarfMiners
+  resultCount: 1
+
+- type: CERecipe
+  id: CEMachineCoreTradingPlatformAlcohol
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartDimensionalMatrix
+    count: 1
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 5
+  result: CEMachineCoreTradingPlatformAlcohol
+  resultCount: 1
+
+- type: CERecipe
+  id: CEMachineCoreTradingPlatformApothecariesGuild
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartDimensionalMatrix
+    count: 1
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 5
+  result: CEMachineCoreTradingPlatformApothecariesGuild
   resultCount: 1
 

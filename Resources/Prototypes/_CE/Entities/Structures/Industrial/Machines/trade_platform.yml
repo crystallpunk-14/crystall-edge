@@ -59,8 +59,8 @@
   description: Standard trading platform tied to the Empire Guard faction.
   categories: [ ForkFiltered ]
   components:
-  #- type: Machine
-  #  board: CEMachineCoreTradingPlatform
+  - type: Machine
+    board: CEMachineCoreTradingPlatformEmpireGuard
   - type: Sprite
     layers:
     - state: base
@@ -76,6 +76,8 @@
   description: A trading platform servicing black market factions.
   categories: [ ForkFiltered ]
   components:
+  - type: Machine
+    board: CEMachineCoreTradingPlatformBlackMarket
   - type: Sprite
     layers:
     - state: base
@@ -91,6 +93,8 @@
   description: A trading platform tied to the Home Decor faction.
   categories: [ ForkFiltered ]
   components:
+  - type: Machine
+    board: CEMachineCoreTradingPlatformHomeDecor
   - type: Sprite
     layers:
     - state: base
@@ -106,6 +110,8 @@
   description: A trading platform tied to the Tailors faction.
   categories: [ ForkFiltered ]
   components:
+  - type: Machine
+    board: CEMachineCoreTradingPlatformTailors
   - type: Sprite
     layers:
     - state: base
@@ -121,6 +127,8 @@
   description: A trading platform tied to the Horticulture faction.
   categories: [ ForkFiltered ]
   components:
+  - type: Machine
+    board: CEMachineCoreTradingPlatformHorticulture
   - type: Sprite
     layers:
     - state: base
@@ -136,6 +144,8 @@
   description: A trading platform tied to the Dwarf Miners faction.
   categories: [ ForkFiltered ]
   components:
+  - type: Machine
+    board: CEMachineCoreTradingPlatformDwarfMiners
   - type: Sprite
     layers:
     - state: base
@@ -151,6 +161,8 @@
   description: A trading platform tied to the Alcohol faction.
   categories: [ ForkFiltered ]
   components:
+  - type: Machine
+    board: CEMachineCoreTradingPlatformAlcohol
   - type: Sprite
     layers:
     - state: base
@@ -166,6 +178,8 @@
   description: A trading platform tied to the Apothecaries Guild faction.
   categories: [ ForkFiltered ]
   components:
+  - type: Machine
+    board: CEMachineCoreTradingPlatformApothecariesGuild
   - type: Sprite
     layers:
     - state: base
