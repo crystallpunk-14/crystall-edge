@@ -115,7 +115,7 @@
 # Trading
 
 - type: entity
-  abstarct: true
+  abstract: true
   parent: CEBaseMachineCore
   id: CEMachineCoreTradingBase
   name: trading platform machine core
