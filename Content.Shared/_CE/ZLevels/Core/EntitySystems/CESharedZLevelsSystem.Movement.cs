@@ -14,7 +14,6 @@ using JetBrains.Annotations;
 using Robust.Shared.Audio;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
-using Robust.Shared.Maths;
 using Robust.Shared.Physics.Components;
 
 namespace Content.Shared._CE.ZLevels.Core.EntitySystems;
@@ -47,7 +46,7 @@ public abstract partial class CESharedZLevelsSystem
         SubscribeLocalEvent<CEActiveZPhysicsComponent, ComponentInit>(OnActiveInit);
 
         SubscribeLocalEvent<CEZPhysicsComponent, MoveEvent>(OnMoveEvent);
-        SubscribeLocalEvent<CEZLevelMapComponent, TileChangedEvent>(OnTileChdanged);
+        SubscribeLocalEvent<CEZLevelMapComponent, TileChangedEvent>(OnTileChanged);
 
         SubscribeLocalEvent<DamageableComponent, CEZLevelHitEvent>(OnFallDamage);
         SubscribeLocalEvent<PhysicsComponent, CEZLevelHitEvent>(OnFallAreaImpact);
@@ -60,7 +59,7 @@ public abstract partial class CESharedZLevelsSystem
         CacheMovement((ent, zComp));
     }
 
-    private void OnTileChdanged(Entity<CEZLevelMapComponent> ent, ref TileChangedEvent args)
+    private void OnTileChanged(Entity<CEZLevelMapComponent> ent, ref TileChangedEvent args)
     {
         if (!TryComp<MapGridComponent>(args.Entity, out var grid))
             return;
