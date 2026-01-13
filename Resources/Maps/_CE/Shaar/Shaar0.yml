@@ -4,8 +4,8 @@ meta:
   engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 01/12/2026 20:11:45
-  entityCount: 1701
+  time: 01/13/2026 09:48:46
+  entityCount: 1706
 maps:
 - 1
 grids:
@@ -1469,13 +1469,6 @@ entities:
       inSlotFlag: EYES
     - type: Physics
       canCollide: False
-- proto: CEClothingHeadAmanitaHelmet
-  entities:
-  - uid: 1486
-    components:
-    - type: Transform
-      pos: -30.543016,3.6428761
-      parent: 1
 - proto: CEClothingHeadChristmasHat
   entities:
   - uid: 229
@@ -2153,7 +2146,7 @@ entities:
       pos: 6.5,16.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -25394.95
+      secondsUntilStateChange: -25580.957
       state: Opening
   - uid: 619
     components:
@@ -5325,6 +5318,34 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
+  - uid: 1703
+    components:
+    - type: Transform
+      pos: -25.5,5.5
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1704
+    components:
+    - type: Transform
+      pos: -24.5,5.5
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1705
+    components:
+    - type: Transform
+      pos: -23.5,5.5
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1706
+    components:
+    - type: Transform
+      pos: -22.5,5.5
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
 - proto: CEPipeBrassMediumValve
   entities:
   - uid: 1215
@@ -5403,6 +5424,13 @@ entities:
     components:
     - type: Transform
       pos: -15.5,4.5
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1702
+    components:
+    - type: Transform
+      pos: -26.5,5.5
       parent: 1
     - type: Fixtures
       fixtures: {}
@@ -6272,13 +6300,15 @@ entities:
     - type: Transform
       pos: 15.5,0.5
       parent: 1
-- proto: CESpawnPointTownfolk
+- proto: CESpawnPointTailorMerchant
   entities:
-  - uid: 246
+  - uid: 1035
     components:
     - type: Transform
       pos: -23.5,-0.5
       parent: 1
+- proto: CESpawnPointTownfolk
+  entities:
   - uid: 1087
     components:
     - type: Transform
@@ -7067,6 +7097,13 @@ entities:
     - type: Transform
       pos: 17.5,-1.5
       parent: 1
+- proto: CETradingPlatformDwarfMiners
+  entities:
+  - uid: 1486
+    components:
+    - type: Transform
+      pos: -23.5,5.5
+      parent: 1
 - proto: CETradingPlatformHomeDecor
   entities:
   - uid: 1590
@@ -7430,6 +7467,11 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -2.5,-2.5
+      parent: 1
+  - uid: 1037
+    components:
+    - type: Transform
+      pos: -22.5,5.5
       parent: 1
   - uid: 1133
     components:
@@ -8584,20 +8626,10 @@ entities:
     - type: Transform
       pos: 21.5,1.5
       parent: 1
-  - uid: 1035
-    components:
-    - type: Transform
-      pos: 20.5,-9.5
-      parent: 1
   - uid: 1036
     components:
     - type: Transform
       pos: 19.5,-7.5
-      parent: 1
-  - uid: 1037
-    components:
-    - type: Transform
-      pos: 19.5,-10.5
       parent: 1
   - uid: 1038
     components:
@@ -10374,6 +10406,12 @@ entities:
       parent: 1
 - proto: CEZLevelsLadderRoofRed
   entities:
+  - uid: 246
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -30.5,3.5
+      parent: 1
   - uid: 526
     components:
     - type: Transform
