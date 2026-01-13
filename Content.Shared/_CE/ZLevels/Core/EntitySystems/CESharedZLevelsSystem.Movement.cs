@@ -13,6 +13,8 @@ using Content.Shared.Throwing;
 using JetBrains.Annotations;
 using Robust.Shared.Audio;
 using Robust.Shared.Map;
+using Robust.Shared.Map.Components;
+using Robust.Shared.Maths;
 using Robust.Shared.Physics.Components;
 
 namespace Content.Shared._CE.ZLevels.Core.EntitySystems;
@@ -42,10 +44,46 @@ public abstract partial class CESharedZLevelsSystem
 
         SubscribeLocalEvent<CEZPhysicsComponent, CEGetZVelocityEvent>(OnGetVelocity);
         SubscribeLocalEvent<CEZPhysicsComponent, CEZLevelMapMoveEvent>(OnZLevelMapMove);
+        SubscribeLocalEvent<CEActiveZPhysicsComponent, ComponentInit>(OnActiveInit);
+
         SubscribeLocalEvent<CEZPhysicsComponent, MoveEvent>(OnMoveEvent);
+        SubscribeLocalEvent<CEZLevelMapComponent, TileChangedEvent>(OnTileChdanged);
 
         SubscribeLocalEvent<DamageableComponent, CEZLevelHitEvent>(OnFallDamage);
         SubscribeLocalEvent<PhysicsComponent, CEZLevelHitEvent>(OnFallAreaImpact);
+    }
+
+    private void OnActiveInit(Entity<CEActiveZPhysicsComponent> ent, ref ComponentInit args)
+    {
+        if (!ZPhyzQuery.TryComp(ent, out var zComp))
+            return;
+        CacheMovement((ent, zComp));
+    }
+
+    private void OnTileChdanged(Entity<CEZLevelMapComponent> ent, ref TileChangedEvent args)
+    {
+        if (!TryComp<MapGridComponent>(args.Entity, out var grid))
+            return;
+
+        // For each changed tile compute its world AABB and query all entities intersecting it
+        foreach (var change in args.Changes)
+        {
+            var mapCoords = _map.GridTileToWorld(args.Entity, grid, change.GridIndices);
+
+            var half = grid.TileSizeHalfVector;
+            var min = mapCoords.Position - half;
+            var max = mapCoords.Position + half;
+            var aabb = new Box2(min, max);
+
+            var ents = _lookup.GetEntitiesIntersecting(mapCoords.MapId, aabb);
+            foreach (var uid in ents)
+            {
+                if (!ZPhyzQuery.TryComp(uid, out var zComp))
+                    continue;
+
+                CacheMovement((uid, zComp));
+            }
+        }
     }
 
     private void CacheMovement(Entity<CEZPhysicsComponent> ent)
