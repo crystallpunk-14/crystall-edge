@@ -1,0 +1,30 @@
+- type: entity
+  id: CEFurnitureConstructionFrameWooden
+  categories: [ ForkFiltered ]
+  parent: BaseStructure
+  name: furniture construction frame
+  description: TODO
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _CE/Structures/Furniture/Tables/workbench.rsi
+    state: filler
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        density: 150
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: CERadialConstruction
+    availablePrototypes:
+    - CEBookshelfWooden
+    - CECabinetWooden
+    - CEBenchWood
+    - CEBenchWoodBirch
+    - CEBenchWoodSpruce
+    - CEBedsideTableWooden
