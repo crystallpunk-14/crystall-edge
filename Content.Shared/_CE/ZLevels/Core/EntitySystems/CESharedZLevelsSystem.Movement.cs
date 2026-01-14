@@ -20,8 +20,6 @@ namespace Content.Shared._CE.ZLevels.Core.EntitySystems;
 
 public abstract partial class CESharedZLevelsSystem
 {
-    public const int MaxZLevelsBelowRendering = 3;
-
     private const float ZGravityForce = 9.8f;
     private const float ZVelocityLimit = 20.0f;
 

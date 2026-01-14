@@ -121,10 +121,13 @@ public sealed partial class CEZLevelsSystem
             eyes.Add(newEye);
         }
 
-        // We constantly load the upper z-level for the client so that you can quickly look up and climb stairs without PVS lag.
-        if (TryMapUp(map.Value, out var aboveMapUid))
+        // We constantly load the upper z-levels for the client so that you can quickly look up and climb stairs without PVS lag.
+        for (var i = 1; i <= MaxZLevelsAboveRendering; i++)
         {
-            var newEye = SpawnAtPosition(_zEyeProto, new EntityCoordinates(aboveMapUid.Value, globalPos));
+            if (!TryMapOffset(map.Value, i, out var mapUidAbove))
+                break;
+
+            var newEye = SpawnAtPosition(_zEyeProto, new EntityCoordinates(mapUidAbove.Value, globalPos));
 
             Transform(newEye).GridTraversal = false;
             _viewSubscriber.AddViewSubscriber(newEye, actor.PlayerSession);

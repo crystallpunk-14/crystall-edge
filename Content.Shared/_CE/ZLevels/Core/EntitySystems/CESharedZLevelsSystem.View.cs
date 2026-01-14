@@ -12,23 +12,13 @@ namespace Content.Shared._CE.ZLevels.Core.EntitySystems;
 
 public abstract partial class CESharedZLevelsSystem
 {
+    public const int MaxZLevelsBelowRendering = 3;
+    public const int MaxZLevelsAboveRendering = 3;
+
     [Dependency] protected readonly ITileDefinitionManager TilDefMan = default!;
     private void InitView()
     {
-        SubscribeLocalEvent<CEZLevelViewerComponent, MoveEvent>(OnViewerMove);
         SubscribeLocalEvent<CEZLevelViewerComponent, CEToggleZLevelLookUpAction>(OnToggleLookUp);
-    }
-
-    protected virtual void OnViewerMove(Entity<CEZLevelViewerComponent> ent, ref MoveEvent args)
-    {
-        if (!ent.Comp.LookUp)
-            return;
-
-        if (!HasOpaqueAbove(ent))
-            return;
-
-        ent.Comp.LookUp = false;
-        DirtyField(ent, ent.Comp, nameof(CEZLevelViewerComponent.LookUp));
     }
 
     private void OnToggleLookUp(Entity<CEZLevelViewerComponent> ent, ref CEToggleZLevelLookUpAction args)
@@ -38,35 +28,46 @@ public abstract partial class CESharedZLevelsSystem
 
         args.Handled = true;
 
-        if (HasOpaqueAbove(ent))
-        {
-            _popup.PopupClient(Loc.GetString("ce-zlevel-look-up-fail"), ent, ent);
-            return;
-        }
-
         ent.Comp.LookUp = !ent.Comp.LookUp;
         DirtyField(ent, ent.Comp, nameof(CEZLevelViewerComponent.LookUp));
     }
 
-    public bool HasOpaqueAbove(EntityUid ent, Entity<CEZLevelMapComponent?>? currentMapUid = null)
+    /// <summary>
+    /// Calculates the maximum number of z-levels above that are visible from the entity's current position.
+    /// Stops when an opaque tile is encountered.
+    /// </summary>
+    public int GetVisibleZLevelsAbove(EntityUid ent, Entity<CEZLevelMapComponent?>? currentMapUid = null)
     {
         currentMapUid ??= Transform(ent).MapUid;
 
         if (currentMapUid is null)
-            return false;
+            return 0;
 
-        if (!TryMapUp(currentMapUid.Value, out var mapAboveUid))
-            return false;
+        var visibleLevels = 0;
+        var checkMapUid = currentMapUid.Value.Owner;
 
-        if (!_gridQuery.TryComp(mapAboveUid.Value, out var mapAboveGrid))
-            return false;
+        for (var i = 1; i <= MaxZLevelsAboveRendering; i++)
+        {
+            if (!TryMapUp(checkMapUid, out var mapAboveUid))
+                break;
 
-        if (!_map.TryGetTileRef(mapAboveUid.Value, mapAboveGrid, _transform.GetWorldPosition(ent), out var tileRef))
-            return false;
+            checkMapUid = mapAboveUid.Value.Owner;
 
-        var tileDef = (ContentTileDefinition)TilDefMan[tileRef.Tile.TypeId];
+            if (!_gridQuery.TryComp(mapAboveUid.Value, out var mapAboveGrid))
+                break;
 
-        return !tileDef.Transparent;
+            if (!_map.TryGetTileRef(mapAboveUid.Value, mapAboveGrid, _transform.GetWorldPosition(ent), out var tileRef))
+                break;
+
+            var tileDef = (ContentTileDefinition)TilDefMan[tileRef.Tile.TypeId];
+
+            if (!tileDef.Transparent)
+                break;
+
+            visibleLevels++;
+        }
+
+        return visibleLevels;
     }
 }
 
