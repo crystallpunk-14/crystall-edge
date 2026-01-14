@@ -19,8 +19,5 @@ public sealed partial class CERadialConstructionComponent : Component
     public float Delay = 1;
 
     [DataField]
-    public SoundSpecifier? Sound;
-
-    [DataField]
     public ProtoId<ToolQualityPrototype> RequiredQuality = "CEHammering";
 }

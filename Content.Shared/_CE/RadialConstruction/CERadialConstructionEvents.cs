@@ -26,14 +26,3 @@ public sealed partial class CERadialConstructionFinishedEvent : SimpleDoAfterEve
         TargetPrototype = targetPrototype;
     }
 }
-
-[Serializable, NetSerializable]
-public sealed class CERadialConstructionUIState : BoundUserInterfaceState
-{
-    public NetEntity ToolUid;
-
-    public CERadialConstructionUIState(NetEntity toolUid)
-    {
-        ToolUid = toolUid;
-    }
-}

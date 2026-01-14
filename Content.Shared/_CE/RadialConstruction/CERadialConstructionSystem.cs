@@ -1,4 +1,5 @@
 using Content.Shared.Examine;
+using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Tools.Components;
 using Content.Shared.Tools.Systems;
@@ -12,6 +13,7 @@ public sealed partial class CERadialConstructionSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly SharedToolSystem _tool = default!;
+    [Dependency] private readonly SharedHandsSystem _hands = default!;
 
     public override void Initialize()
     {
@@ -36,9 +38,7 @@ public sealed partial class CERadialConstructionSystem : EntitySystem
 
         // Open the radial menu UI on the client
         var uiSystem = EntityManager.System<SharedUserInterfaceSystem>();
-        var toolNetEntity = EntityManager.GetNetEntity(args.Used);
         uiSystem.OpenUi(ent.Owner, CERadialConstructionUiKey.Key, args.User);
-        uiSystem.SetUiState(ent.Owner, CERadialConstructionUiKey.Key, new CERadialConstructionUIState(toolNetEntity));
     }
 
     private void OnRadialConstructionMessage(Entity<CERadialConstructionComponent> ent, ref CERadialConstructionMessage args)
@@ -47,10 +47,23 @@ public sealed partial class CERadialConstructionSystem : EntitySystem
         if (!ent.Comp.AvailablePrototypes.Contains(args.ProtoId))
             return;
 
-        var toolUid = GetEntity(args.ToolUid);
+        // Find a tool with the required quality in the actor's hands
+        EntityUid? toolUid = null;
+        foreach (var heldItem in _hands.EnumerateHeld(args.Actor))
+        {
+            if (TryComp<ToolComponent>(heldItem, out var tool) &&
+                _tool.HasQuality(heldItem, ent.Comp.RequiredQuality, tool))
+            {
+                toolUid = heldItem;
+                break;
+            }
+        }
+
+        if (toolUid == null)
+            return;
 
         _tool.UseTool(
-            toolUid,
+            toolUid.Value,
             args.Actor,
             ent.Owner,
             ent.Comp.Delay,
@@ -65,8 +78,6 @@ public sealed partial class CERadialConstructionSystem : EntitySystem
             return;
 
         args.Handled = true;
-
-        _audio.PlayPvs(ent.Comp.Sound, ent.Owner);
 
         // Get the position and rotation before deleting the frame
         var xform = Transform(ent.Owner);

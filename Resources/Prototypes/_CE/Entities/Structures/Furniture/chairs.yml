@@ -42,8 +42,6 @@
   - type: Sprite
     state: frame
   - type: CERadialConstruction
-    sound:
-      collection: CEHammering
     availablePrototypes:
     - CEChairWooden
     - CEChairStoolWooden
