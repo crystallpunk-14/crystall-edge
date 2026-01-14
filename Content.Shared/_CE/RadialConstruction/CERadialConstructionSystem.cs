@@ -14,6 +14,7 @@ public sealed partial class CERadialConstructionSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly SharedToolSystem _tool = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
+    [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
 
     public override void Initialize()
     {
@@ -37,8 +38,7 @@ public sealed partial class CERadialConstructionSystem : EntitySystem
         args.Handled = true;
 
         // Open the radial menu UI on the client
-        var uiSystem = EntityManager.System<SharedUserInterfaceSystem>();
-        uiSystem.OpenUi(ent.Owner, CERadialConstructionUiKey.Key, args.User);
+        _ui.OpenUi(ent.Owner, CERadialConstructionUiKey.Key, args.User);
     }
 
     private void OnRadialConstructionMessage(Entity<CERadialConstructionComponent> ent, ref CERadialConstructionMessage args)
