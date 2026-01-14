@@ -1,17 +1,17 @@
 - type: constructionGraph
-  id: CEWoodenBed
+  id: CEBedFrameWooden
   start: start
   graph:
     - node: start
       actions:
         - !type:DestroyEntity {}
       edges:
-        - to: CEWoodenBed
+        - to: CEBedFrameWooden
           steps:
             - material: CEWood
               amount: 2
             - material: CECloth
               amount: 1
               doAfter: 2
-    - node: CEWoodenBed
-      entity: CEWoodenBed
+    - node: CEBedFrameWooden
+      entity: CEBedFrameWooden

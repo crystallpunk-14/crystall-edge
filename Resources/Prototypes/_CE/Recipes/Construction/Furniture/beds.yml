@@ -1,9 +1,9 @@
 - type: construction
   hide: false
-  id: CEWoodenBed
-  graph: CEWoodenBed
+  id: CEBedFrameWooden
+  graph: CEBedFrameWooden
   startNode: start
-  targetNode: CEWoodenBed
+  targetNode: CEBedFrameWooden
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
