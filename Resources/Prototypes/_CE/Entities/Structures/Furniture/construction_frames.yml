@@ -28,3 +28,7 @@
     - CEBenchWoodBirch
     - CEBenchWoodSpruce
     - CEBedsideTableWooden
+  - type: UserInterface
+    interfaces:
+      enum.CERadialConstructionUiKey.Key:
+        type: CERadialConstructionMenuBoundUserInterface

@@ -6,7 +6,8 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._CE.RadialConstruction;
 
 /// <summary>
-///
+/// Component that allows entities to be crafted/constructed from a radial menu
+/// when interacted with using a tool that has the required quality.
 /// </summary>
 [RegisterComponent, NetworkedComponent]
 public sealed partial class CERadialConstructionComponent : Component
