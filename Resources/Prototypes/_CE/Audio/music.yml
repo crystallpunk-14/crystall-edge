@@ -49,13 +49,13 @@
   id: CEAmbienceMagic
   files:
     - /Audio/_CE/Ambience/ambi.ogg
-    #- /Audio/_CE/Ambience/ambimagic1.ogg
-    #- /Audio/_CE/Ambience/ambimagic2.ogg
-    #- /Audio/_CE/Ambience/ambimagic3.ogg
-    #- /Audio/_CE/Ambience/ambimagic4.ogg
-    #- /Audio/_CE/Ambience/ambimagic5.ogg
-    #- /Audio/_CE/Ambience/ambimagic6.ogg
-    #- /Audio/_CE/Ambience/ambiAlchemy.ogg
+    - /Audio/_CE/Ambience/ambimagic1.ogg
+    - /Audio/_CE/Ambience/ambimagic2.ogg
+    - /Audio/_CE/Ambience/ambimagic3.ogg
+    - /Audio/_CE/Ambience/ambimagic4.ogg
+    - /Audio/_CE/Ambience/ambimagic5.ogg
+    - /Audio/_CE/Ambience/ambimagic6.ogg
+    - /Audio/_CE/Ambience/ambiAlchemy.ogg
 
 - type: soundCollection
   id: CENightForest

@@ -28,6 +28,9 @@
     - CEBenchWoodBirch
     - CEBenchWoodSpruce
     - CEBedsideTableWooden
+    - CEWoodenBed
+    - CEMannequinHumanMale
+    - CEMannequinCarcat
   - type: UserInterface
     interfaces:
       enum.CERadialConstructionUiKey.Key:

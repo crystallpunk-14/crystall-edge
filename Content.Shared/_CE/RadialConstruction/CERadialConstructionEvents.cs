@@ -1,3 +1,4 @@
+using Content.Shared.DoAfter;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
@@ -13,4 +14,13 @@ public sealed class CERadialConstructionMessage(EntProtoId protoId) : BoundUserI
 public enum CERadialConstructionUiKey : byte
 {
     Key
+}
+
+[Serializable, NetSerializable]
+public sealed partial class CERadialConstructionDoAfterEvent : DoAfterEvent
+{
+    [DataField(required: true)]
+    public EntProtoId TargetPrototype = default!;
+
+    public override DoAfterEvent Clone() => this;
 }
