@@ -1,7 +1,6 @@
 using Content.Client.UserInterface.Controls;
 using Content.Shared._CE.RadialConstruction;
 using JetBrains.Annotations;
-using Robust.Client.GameObjects;
 using Robust.Client.UserInterface;
 using Robust.Shared.Prototypes;
 

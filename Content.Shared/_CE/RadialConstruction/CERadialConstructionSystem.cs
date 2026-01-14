@@ -1,14 +1,17 @@
-using Content.Shared.DoAfter;
+using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Tools.Components;
+using Content.Shared.Tools.Systems;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.RadialConstruction;
 
 public sealed partial class CERadialConstructionSystem : EntitySystem
 {
-    [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private readonly SharedToolSystem _tool = default!;
 
     public override void Initialize()
     {
@@ -16,7 +19,8 @@ public sealed partial class CERadialConstructionSystem : EntitySystem
 
         SubscribeLocalEvent<CERadialConstructionComponent, InteractUsingEvent>(OnInteract);
         SubscribeLocalEvent<CERadialConstructionComponent, CERadialConstructionMessage>(OnRadialConstructionMessage);
-        SubscribeLocalEvent<CERadialConstructionComponent, CERadialConstructionDoAfterEvent>(OnDoAfterComplete);
+        SubscribeLocalEvent<CERadialConstructionComponent, CERadialConstructionFinishedEvent>(OnFinished);
+        SubscribeLocalEvent<CERadialConstructionComponent, ExaminedEvent>(OnExamined);
     }
 
     private void OnInteract(Entity<CERadialConstructionComponent> ent, ref InteractUsingEvent args)
@@ -32,7 +36,9 @@ public sealed partial class CERadialConstructionSystem : EntitySystem
 
         // Open the radial menu UI on the client
         var uiSystem = EntityManager.System<SharedUserInterfaceSystem>();
+        var toolNetEntity = EntityManager.GetNetEntity(args.Used);
         uiSystem.OpenUi(ent.Owner, CERadialConstructionUiKey.Key, args.User);
+        uiSystem.SetUiState(ent.Owner, CERadialConstructionUiKey.Key, new CERadialConstructionUIState(toolNetEntity));
     }
 
     private void OnRadialConstructionMessage(Entity<CERadialConstructionComponent> ent, ref CERadialConstructionMessage args)
@@ -41,21 +47,19 @@ public sealed partial class CERadialConstructionSystem : EntitySystem
         if (!ent.Comp.AvailablePrototypes.Contains(args.ProtoId))
             return;
 
+        var toolUid = GetEntity(args.ToolUid);
 
-        var doAfter = new CERadialConstructionDoAfterEvent { TargetPrototype = args.ProtoId };
-        // Start the DoAfter
-        var doAfterArgs = new DoAfterArgs(EntityManager, args.Actor, ent.Comp.Delay, doAfter, ent.Owner, ent.Owner)
-        {
-            BreakOnMove = true,
-            BlockDuplicate = true,
-            BreakOnDamage = true,
-            CancelDuplicate = true,
-        };
-
-        _doAfterSystem.TryStartDoAfter(doAfterArgs);
+        _tool.UseTool(
+            toolUid,
+            args.Actor,
+            ent.Owner,
+            ent.Comp.Delay,
+            ent.Comp.RequiredQuality,
+            new CERadialConstructionFinishedEvent(args.ProtoId)
+        );
     }
 
-    private void OnDoAfterComplete(Entity<CERadialConstructionComponent> ent, ref CERadialConstructionDoAfterEvent args)
+    private void OnFinished(Entity<CERadialConstructionComponent> ent, ref CERadialConstructionFinishedEvent args)
     {
         if (args.Cancelled || args.Handled)
             return;
@@ -78,5 +82,13 @@ public sealed partial class CERadialConstructionSystem : EntitySystem
         // Apply the same rotation
         var spawnedXform = Transform(spawned);
         spawnedXform.LocalRotation = rotation;
+    }
+
+    private void OnExamined(Entity<CERadialConstructionComponent> ent, ref ExaminedEvent args)
+    {
+        if (!_proto.TryIndex(ent.Comp.RequiredQuality, out var qualityProto))
+            return;
+
+        args.PushMarkup(Loc.GetString("ce-radial-construction-examine", ("toolName", Loc.GetString(qualityProto.ToolName))));
     }
 }

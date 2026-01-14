@@ -16,11 +16,11 @@ public sealed partial class CERadialConstructionComponent : Component
     public List<EntProtoId> AvailablePrototypes = new();
 
     [DataField]
-    public TimeSpan Delay = TimeSpan.FromSeconds(1);
+    public float Delay = 1;
 
     [DataField]
     public SoundSpecifier? Sound;
 
     [DataField]
-    public ProtoId<ToolQualityPrototype> RequiredQuality = "Screwing";
+    public ProtoId<ToolQualityPrototype> RequiredQuality = "CEHammering";
 }

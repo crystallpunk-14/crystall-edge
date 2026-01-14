@@ -17,10 +17,23 @@ public enum CERadialConstructionUiKey : byte
 }
 
 [Serializable, NetSerializable]
-public sealed partial class CERadialConstructionDoAfterEvent : DoAfterEvent
+public sealed partial class CERadialConstructionFinishedEvent : SimpleDoAfterEvent
 {
-    [DataField(required: true)]
-    public EntProtoId TargetPrototype = default!;
+    public EntProtoId TargetPrototype;
 
-    public override DoAfterEvent Clone() => this;
+    public CERadialConstructionFinishedEvent(EntProtoId targetPrototype)
+    {
+        TargetPrototype = targetPrototype;
+    }
+}
+
+[Serializable, NetSerializable]
+public sealed class CERadialConstructionUIState : BoundUserInterfaceState
+{
+    public NetEntity ToolUid;
+
+    public CERadialConstructionUIState(NetEntity toolUid)
+    {
+        ToolUid = toolUid;
+    }
 }

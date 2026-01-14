@@ -48,6 +48,8 @@
     graph: CEBedFrameWooden
     node: CEBedFrameWooden
   - type: CERadialConstruction
+    sound:
+      collection: CEHammering
     availablePrototypes:
     - CEWoodenBed
     - CEWoodenBedLight
