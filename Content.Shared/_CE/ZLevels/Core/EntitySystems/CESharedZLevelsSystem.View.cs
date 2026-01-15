@@ -31,7 +31,6 @@ public abstract partial class CESharedZLevelsSystem
         SubscribeAllEvent<ChangeViewedZLayerEvent>(OnChangeSelectedZLayer);
         SubscribeLocalEvent<CEZLevelViewerComponent, CEViewedZLayerChangedEvent>(OnViewedZLayerChanged);
 
-        SubscribeLocalEvent<CEZLevelViewerComponent, CEToggleZLevelLookUpAction>(OnToggleLookUp);
         SubscribeLocalEvent<CEZLevelViewerComponent, ComponentStartup>(OnZLevelViewerStartup);
         SubscribeLocalEvent<CEZLevelViewerComponent, GetGenericAlertCounterAmountEvent>(OnGetCounterAmount);
     }
