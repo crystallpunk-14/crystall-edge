@@ -27,7 +27,6 @@ public abstract partial class CESharedZLevelsSystem
 
     private void InitView()
     {
-        SubscribeLocalEvent<CEZLevelViewerComponent, MoveEvent>(OnViewerMove);
         SubscribeAllEvent<ChangeViewedZLayerEvent>(OnChangeSelectedZLayer);
         SubscribeLocalEvent<CEZLevelViewerComponent, CEViewedZLayerChangedEvent>(OnViewedZLayerChanged);
 
@@ -52,57 +51,40 @@ public abstract partial class CESharedZLevelsSystem
 
         args.Amount = Math.Abs(selected_z_layer);
     }
-    protected virtual void OnViewerMove(Entity<CEZLevelViewerComponent> ent, ref MoveEvent args)
-    {
-        if (HasOpaqueAbove(ent, ent.Comp.ViewedZLevel, out var ceiling))
-            return;
-
-    }
 
 
-    public bool HasOpaqueAbove(EntityUid ent, int range, [NotNullWhen(true)] out Entity<CEZLevelMapComponent>? ceiling, Entity<CEZLevelMapComponent?>? currentMapUid = null)
-    {
-        currentMapUid ??= Transform(ent).MapUid;
-        ceiling = null;
-        if (range < 0) throw new($"{nameof(range)} value of {range} is Negative.");
-
-        if (currentMapUid is null)
-            return false;
-
-        if (!TryMapOffset(currentMapUid.Value, range, out var mapAboveUid))
-            return false;
-
-        if (!_gridQuery.TryComp(mapAboveUid.Value, out var mapAboveGrid))
-            return false;
-
-        if (!_map.TryGetTileRef(mapAboveUid.Value, mapAboveGrid, _transform.GetWorldPosition(ent), out var tileRef))
-            return false;
-
-        var tileDef = (ContentTileDefinition)TilDefMan[tileRef.Tile.TypeId];
-        ceiling=mapAboveUid;
-        return !tileDef.Transparent;
-
-    }
-
-    public bool HasOpaqueAbove(EntityUid ent, Entity<CEZLevelMapComponent?>? currentMapUid = null)
+    public int GetVisibleZLevelsAbove(EntityUid ent, Entity<CEZLevelMapComponent?>? currentMapUid = null)
     {
         currentMapUid ??= Transform(ent).MapUid;
 
         if (currentMapUid is null)
-            return false;
+            return 0;
 
-        if (!TryMapUp(currentMapUid.Value, out var mapAboveUid))
-            return false;
+        var visibleLevels = 0;
+        var checkMapUid = currentMapUid.Value.Owner;
 
-        if (!_gridQuery.TryComp(mapAboveUid.Value, out var mapAboveGrid))
-            return false;
+        for (var i = 1; i <= MaxZLevelsAboveRendering; i++)
+        {
+            if (!TryMapUp(checkMapUid, out var mapAboveUid))
+                break;
 
-        if (!_map.TryGetTileRef(mapAboveUid.Value, mapAboveGrid, _transform.GetWorldPosition(ent), out var tileRef))
-            return false;
+            checkMapUid = mapAboveUid.Value.Owner;
 
-        var tileDef = (ContentTileDefinition)TilDefMan[tileRef.Tile.TypeId];
+            if (!_gridQuery.TryComp(mapAboveUid.Value, out var mapAboveGrid))
+                break;
 
-        return !tileDef.Transparent;
+            if (!_map.TryGetTileRef(mapAboveUid.Value, mapAboveGrid, _transform.GetWorldPosition(ent), out var tileRef))
+                break;
+
+            var tileDef = (ContentTileDefinition)TilDefMan[tileRef.Tile.TypeId];
+
+            if (!tileDef.Transparent)
+                break;
+
+            visibleLevels++;
+        }
+
+        return visibleLevels;
     }
 
     private void OnViewedZLayerChanged(Entity<CEZLevelViewerComponent> ent, ref CEViewedZLayerChangedEvent args)
