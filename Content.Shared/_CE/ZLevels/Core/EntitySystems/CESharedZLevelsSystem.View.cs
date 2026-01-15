@@ -16,6 +16,12 @@ namespace Content.Shared._CE.ZLevels.Core.EntitySystems;
 
 public abstract partial class CESharedZLevelsSystem
 {
+    public const int MaxZLevelsBelowRendering = 3;
+    public const int MaxZLevelsAboveRendering = 3;
+
+    public const int DefaultZLevelsBelowRendering = 3;
+    public const int DefaultZLevelsAboveRendering = 0;
+
     [Dependency] protected readonly ITileDefinitionManager TilDefMan = default!;
     [Dependency] private readonly AlertsSystem _alert = default!;
 
