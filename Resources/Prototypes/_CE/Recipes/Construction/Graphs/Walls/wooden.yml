@@ -27,7 +27,7 @@
               doAfter: 1
             - tool: Prying
               doAfter: 2
-        - to: CEWallWooden
+        - to: CEWallFrameWoodenFinished
           steps:
             - material: CEWood
               amount: 1
@@ -38,8 +38,8 @@
             - tool: CEHammering
               doAfter: 1
 
-    - node: CEWallWooden
-      entity: CEWallWooden
+    - node: CEWallFrameWoodenFinished
+      entity: CEWallFrameWoodenFinished
       edges:
         - to: CEWallFrameWooden
           steps:
