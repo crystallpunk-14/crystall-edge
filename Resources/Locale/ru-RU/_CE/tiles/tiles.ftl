@@ -62,3 +62,4 @@ ce-tiles-stonebricks-medium-circles = пол с средней круглой к
 ce-tiles-stonebricks-small-circles = пол с малой круглой каменной плиткой
 
 ce-floor-tile-examine = Можно установить как [color=#FFFF00]{ $tileName }[/color] поверх [color=#FFFF00]{ $baseName }[/color]
+ce-floor-tile-wrong-turf = Нельзя установить здесь.
