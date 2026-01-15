@@ -18,4 +18,11 @@ public sealed partial class CETheftValueComponent : Component
     public float Difficulty = 1f;
 }
 
-public sealed partial class CEThiefShowTreasuresEvent : InstantActionEvent;
+public sealed partial class CEThiefShowTreasuresEvent : InstantActionEvent
+{
+    /// <summary>
+    /// The distance at which treasures can be sensed.
+    /// </summary>
+    [DataField]
+    public float SenseDistance = 30f;
+};
