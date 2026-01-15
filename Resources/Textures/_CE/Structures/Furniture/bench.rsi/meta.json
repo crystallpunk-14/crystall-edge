@@ -8,6 +8,10 @@
   },
   "states": [
     {
+      "name": "frame",
+      "directions": 4
+    },
+    {
       "name": "wooden",
       "directions": 4
     },

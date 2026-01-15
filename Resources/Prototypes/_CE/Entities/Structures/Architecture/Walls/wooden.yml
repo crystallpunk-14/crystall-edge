@@ -63,6 +63,7 @@
   - type: Construction
     graph: CEWallWooden
     node: CEWallFrameWoodenFinished
+    defaultTarget: null
   - type: CERadialConstruction
     availablePrototypes:
     - CEWallWooden

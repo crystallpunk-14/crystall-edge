@@ -44,6 +44,9 @@ CETradeContractDwarfMiners: null
 CETradeContractBlackMarket: null
 CETradeContractApothecariesGuild: null
 
+CEBenchWoodSpruce: CEBenchWoodDark
+CEBenchWoodBirch: CEBenchWoodLight
+
 # CrystallEdge migration zone end
 
 

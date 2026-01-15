@@ -48,19 +48,31 @@
     node: CEBenchWood
 
 - type: entity
-  id: CEBenchWoodBirch
+  id: CEBenchWoodFrame
   parent: CEBenchWood
   components:
   - type: Sprite
-    sprite: _CE/Structures/Furniture/bench.rsi
-    layers:
-    - state: birch
+    state: frame
+  - type: CERadialConstruction
+    availablePrototypes:
+    - CEBenchWoodLight
+    - CEBenchWoodDark
+    - CEBenchWood
+  - type: UserInterface
+    interfaces:
+      enum.CERadialConstructionUiKey.Key:
+        type: CERadialConstructionMenuBoundUserInterface
 
 - type: entity
-  id: CEBenchWoodSpruce
+  id: CEBenchWoodLight
   parent: CEBenchWood
   components:
   - type: Sprite
-    sprite: _CE/Structures/Furniture/bench.rsi
-    layers:
-    - state: spruce
+    state: light
+
+- type: entity
+  id: CEBenchWoodDark
+  parent: CEBenchWood
+  components:
+  - type: Sprite
+    state: dark
