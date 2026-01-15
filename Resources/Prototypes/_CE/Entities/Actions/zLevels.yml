@@ -24,18 +24,6 @@
   - type: InstantAction
     event: !type:CEZLevelActionDown
 
-- type: entity
-  id: CEActionToggleLookUp
-  name: Look up
-  description: You lift your head and look up at the sky.
-  components:
-  - type: Action
-    checkCanInteract: false
-    icon:
-      sprite: _CE/Actions/misc.rsi
-      state: eye
-  - type: InstantAction
-    event: !type:CEToggleZLevelLookUpAction
 
 #- type: entity
 #  id: CEActionRespawn

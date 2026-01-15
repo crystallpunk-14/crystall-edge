@@ -19,12 +19,6 @@ public sealed partial class CEZLevelViewerComponent : Component
     public HashSet<EntityUid> Eyes = new();
 
     /// <summary>
-    /// We can look at 1 z-level up.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public bool LookUp;
-
-    /// <summary>
     /// Viewed ZLevel relative to entities current ZLevel position.
     /// </summary>
     [DataField, AutoNetworkedField]
@@ -38,11 +32,6 @@ public sealed partial class CEZLevelViewerComponent : Component
     [DataField]
     public CEZLayerAlertSeverity ZLayerAlertSeverity = CEZLayerAlertSeverity.neutral;
 
-    [DataField]
-    public EntProtoId ActionProto = "CEActionToggleLookUp";
-
-    [DataField, AutoNetworkedField]
-    public EntityUid? ZLevelActionEntity;
 }
 
 public enum ZLevelViewRelation : byte
