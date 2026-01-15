@@ -13,6 +13,7 @@ using Robust.Client.Player;
 using Robust.Shared.Graphics;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using System.Linq;
 
 namespace Content.Client.Viewport;
 
@@ -116,6 +117,7 @@ public sealed partial class ScalingViewport
         if (playerXform.MapUid is null)
             return;
 
+        var ceilingHeight= _zLevels.GetVisibleZLevelsAbove(_player.LocalEntity.Value,playerXform.MapUid);
         var highestDepth = CESharedZLevelsSystem.DefaultZLevelsAboveRendering;
         var lowestDepth = CESharedZLevelsSystem.DefaultZLevelsBelowRendering;
 
@@ -133,7 +135,7 @@ public sealed partial class ScalingViewport
         var highestCalculatedDepth = 0;
 
         //Calculates lowest Depth to avoid Rendering empty maps
-        for (var i = 0; i >= -Math.Min(lowestDepth, CESharedZLevelsSystem.MaxZLevelsBelowRendering); i--)
+        for (var i = 0; i >= -((int[])[lowestDepth, CESharedZLevelsSystem.MaxZLevelsBelowRendering]).Min(); i--)
         {
             var checkingMap = playerXform.MapUid.Value;
 
@@ -152,7 +154,7 @@ public sealed partial class ScalingViewport
         }
 
         //Calculates highest Depth to avoid Rendering empty maps
-        for (var i = 0; i <= Math.Min(highestDepth, CESharedZLevelsSystem.MaxZLevelsAboveRendering); i++)
+        for (var i = 0; i <= ((int[])[highestDepth, CESharedZLevelsSystem.MaxZLevelsAboveRendering, ceilingHeight]).Min(); i++)
         {
             var checkingMap = playerXform.MapUid.Value;
 
