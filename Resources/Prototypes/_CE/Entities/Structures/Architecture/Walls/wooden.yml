@@ -66,6 +66,7 @@
   - type: CERadialConstruction
     availablePrototypes:
     - CEWallWooden
+    - CEWallWoodenDecorated
     - CEWallWoodenDark
     - CEWallWoodenLight
   - type: UserInterface
@@ -114,6 +115,16 @@
     sprite: _CE/Structures/Architecture/Walls/Wooden/wooden.rsi
   - type: Icon
     sprite: _CE/Structures/Architecture/Walls/Wooden/wooden.rsi
+
+- type: entity
+  id: CEWallWoodenDecorated
+  parent: CEWallWoodenBase
+  suffix: Decorated
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Walls/Wooden/wooden_decorated.rsi
+  - type: Icon
+    sprite: _CE/Structures/Architecture/Walls/Wooden/wooden_decorated.rsi
 
 - type: entity
   id: CEWallWoodenDark
