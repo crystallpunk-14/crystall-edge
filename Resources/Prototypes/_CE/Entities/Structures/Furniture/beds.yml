@@ -67,11 +67,15 @@
   components:
   - type: HealOnBuckle
     damage:
-      types:
-        Poison: -0.2
-        Cold: -0.4
-        Blunt: -0.2
-        Shock: -0.2
+      types: #Todo: temporarly increased healing till med is implemented
+        Poison: -1 #-0.2
+        Cold: -2 #-0.4
+        Blunt: -1 #-0.2
+        Shock: -1 #-0.2
+        Heat: -1 #-0
+        Slash: -1 #0
+        Piercing: -1 #0
+        Bloodloss: -0.5 #0
   - type: Fixtures
     fixtures:
       fix1:
