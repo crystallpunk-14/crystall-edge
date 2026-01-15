@@ -27,3 +27,12 @@ ce-lock-shape-guard-cage-2 = prison cage 2
 ce-lock-shape-guard-cage-3 = prison cage 3
 ce-lock-shape-guard-cage-4 = prison cage 4
 ce-lock-shape-guard-cage-5 = prison cage 5
+
+# Citizens
+
+ce-lock-shape-tailor-shop = clothing store
+ce-lock-shape-tailor-home = clothing store owner's home
+ce-lock-shape-pharmacy-shop = pharmacy
+ce-lock-shape-pharmacy-home = pharmacy owner's home
+ce-lock-shape-homegoods-shop = homegoods shop
+ce-lock-shape-homegoods-home = homegoods shop owner's home

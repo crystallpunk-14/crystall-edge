@@ -1,0 +1,45 @@
+- type: entity
+  id: CEWallWoodenPalisade
+  name: palisade
+  description: A wall of sharp logs. Not that it's a safe haven.
+  parent:
+  - CEBaseWall
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Walls/wooden_palisade.rsi
+  - type: Icon
+    sprite: _CE/Structures/Architecture/Walls/wooden_palisade.rsi
+  - type: CEAutoTilePlacement
+    tile: CEOakWoodPlanks
+  - type: IconSmooth
+    key: CEpalisade
+    additionalKeys:
+    - CEwall
+    base: wood
+  - type: Tag
+  - type: Occluder
+    enabled: false
+  - type: Airtight
+    airBlocked: false
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: CEWoodStructural
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEWoodenPlanks1:
+            min: 1
+            max: 2
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Construction
+    graph: CEWallWoodenPalisade
+    node: CEWallWoodenPalisade

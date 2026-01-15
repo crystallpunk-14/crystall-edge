@@ -4,7 +4,7 @@
   id: CEChairWooden
   categories: [ ForkFiltered ]
   parent:
-  - UnanchoredChairBase
+  - SeatBase
   components:
   - type: Sprite
     sprite: _CE/Structures/Furniture/chairs.rsi
@@ -14,6 +14,47 @@
   - type: CEZPhysics
   - type: StaticPrice
     price: 0 # Vanilla inheritance moment
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: CEWood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEWoodenPlanks1:
+            min: 1
+            max: 1
+
+- type: entity
+  id: CEChairFrame
+  parent: CEChairWooden
+  name: wooden chair frame
+  components:
+  - type: Sprite
+    state: frame
+  - type: CERadialConstruction
+    availablePrototypes:
+    - CEChairWooden
+    - CEChairStoolWooden
+    - CEChairStoolMetallic
+    - CEChairStoolMetallicRed
+    - CEChairStoolWoodenRed
+  - type: Construction
+    graph: CEChairFrame
+    node: CEChairFrame
+  - type: UserInterface
+    interfaces:
+      enum.CERadialConstructionUiKey.Key:
+        type: CERadialConstructionMenuBoundUserInterface
 
 - type: entity
   id: CEChairStoolWooden

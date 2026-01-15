@@ -1,3 +1,4 @@
+using Content.Shared._CE.Trading.Prototypes;
 using Content.Shared._CE.Trading.Systems;
 using Content.Shared.Tag;
 using Robust.Shared.Audio;
@@ -23,4 +24,16 @@ public sealed partial class CETradingPlatformComponent : Component
 
     [DataField]
     public EntProtoId BuyVisual = "CECashImpact";
+
+    [DataField]
+    public SoundSpecifier SellSound = new SoundPathSpecifier("/Audio/_CE/Effects/cash.ogg")
+    {
+        Params = AudioParams.Default.WithVariation(0.1f)
+    };
+
+    [DataField]
+    public EntProtoId SellVisual = "CECashImpact";
+
+    [DataField(required: true)]
+    public ProtoId<CETradingFactionPrototype> Faction = default!;
 }

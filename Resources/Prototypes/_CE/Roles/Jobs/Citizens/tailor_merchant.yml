@@ -1,0 +1,40 @@
+- type: job
+  id: CETailorMerchant
+  setPreference: true
+  name: ce-job-name-tailor-merchant
+  description: ce-job-desc-tailor-merchant
+  playTimeTracker: CEJobTailorMerchant
+  startingGear: CETailorMerchantGear
+  icon: CEJobIconTailorMerchant
+  supervisors: ce-job-supervisors-empire
+  canBeAntag: true
+
+- type: startingGear
+  id: CETailorMerchantGear
+  equipment:
+    pocket1: CEWalletFilledTailorMerchant
+    belt: CEKeyRingTailorMerchant
+
+- type: entity
+  id: CEWalletFilledTailorMerchant
+  parent: CEWallet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents: #100cp total
+    - id: CECoinSilver5
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinCopper10
+
+- type: entity
+  id: CEKeyRingTailorMerchant
+  parent: CEBaseKeyRing
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+    - id: CEKeyTailorShop
+    - id: CEKeyTailorHome

@@ -106,6 +106,9 @@
   components:
   - type: HumanoidAppearance
     species: CECarcat
+  - type: Inventory
+    templateId: CECarcat
+    speciesId: carcat
 
 - type: entity
   id: CEMobCarcatInventoryTemplate

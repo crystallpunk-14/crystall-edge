@@ -1,161 +1,204 @@
 - type: tradingPosition
   id: CEWoodenPlanks10
   faction: HomeDecor
+  category: Materials
   service: !type:CEBuyItemsService
     product: CEWoodenPlanks20
 
 - type: tradingPosition
   id: CEFloorCarpetItemBlue10
   faction: HomeDecor
+  category: Carpet
   service: !type:CEBuyItemsService
     product: CEFloorCarpetItemBlue10
 
 - type: tradingPosition
   id: CEFloorCarpetItemRed10
   faction: HomeDecor
+  category: Carpet
   service: !type:CEBuyItemsService
     product: CEFloorCarpetItemRed10
 
 - type: tradingPosition
   id: CEFloorCarpetItemPurple10
   faction: HomeDecor
+  category: Carpet
   service: !type:CEBuyItemsService
     product: CEFloorCarpetItemPurple10
 
 - type: tradingPosition
   id: CEFloorCarpetItemBlack10
   faction: HomeDecor
+  category: Carpet
   service: !type:CEBuyItemsService
     product: CEFloorCarpetItemBlack10
 
 - type: tradingPosition
   id: CECandle
   faction: HomeDecor
+  category: Materials
   service: !type:CEBuyItemsService
     product: CECandle
 
 - type: tradingPosition
   id: CECandelabra
   faction: HomeDecor
+  category: Materials
   service: !type:CEBuyItemsService
     product: CECandelabra
 
 - type: tradingPosition
   id: CENail10
   faction: HomeDecor
+  category: Materials
   service: !type:CEBuyItemsService
     product: CENail10
 
 - type: tradingPosition
   id: CEGlassSheet10
   faction: HomeDecor
+  category: Materials
   service: !type:CEBuyItemsService
     product: CEGlassSheet10
 
 - type: tradingPosition
   id: CEMannequinHumanMale
   faction: HomeDecor
+  category: Materials
   service: !type:CEBuyItemsService
     product: CEMannequinHumanMale
 
 - type: tradingPosition
   id: CEMannequinCarcat
   faction: HomeDecor
+  category: Materials
   service: !type:CEBuyItemsService
     product: CEMannequinCarcat
 
 - type: tradingPosition
   id: CEPlushieHuman
   faction: HomeDecor
+  category: Materials
   service: !type:CEBuyItemsService
     product: CEPlushieHuman
 
 - type: tradingPosition
   id: CEPlushieDwarf
   faction: HomeDecor
+  category: Materials
   service: !type:CEBuyItemsService
     product: CEPlushieDwarf
 
 - type: tradingPosition
   id: CEPlushieElf
   faction: HomeDecor
+  category: Materials
   service: !type:CEBuyItemsService
     product: CEPlushieElf
 
 - type: tradingPosition
   id: CEPlushieGoblin
   faction: HomeDecor
+  category: Materials
   service: !type:CEBuyItemsService
     product: CEPlushieGoblin
 
 - type: tradingPosition
   id: CEPlushieSilva
   faction: HomeDecor
+  category: Materials
   service: !type:CEBuyItemsService
     product: CEPlushieSilva
 
 - type: tradingPosition
   id: CEPlushieTiefling
   faction: HomeDecor
+  category: Materials
   service: !type:CEBuyItemsService
     product: CEPlushieTiefling
 
 - type: tradingPosition
   id: CEPlushieCarcat
   faction: HomeDecor
+  category: Materials
   service: !type:CEBuyItemsService
     product: CEPlushieCarcat
 
 - type: tradingPosition
   id: CEPlushieFrog
   faction: HomeDecor
+  category: Materials
   service: !type:CEBuyItemsService
     product: CEPlushieFrog
 
 - type: tradingPosition
   id: CEPlushieSkeleton
   faction: HomeDecor
+  category: Materials
   service: !type:CEBuyItemsService
     product: CEPlushieSkeleton
 
 - type: tradingPosition
   id: CEPlushieAgaric
   faction: HomeDecor
+  category: Materials
   service: !type:CEBuyItemsService
     product: CEPlushieAgaric
 
 - type: tradingPosition
   id: CEPlushieZombie
   faction: HomeDecor
+  category: Materials
   service: !type:CEBuyItemsService
     product: CEPlushieZombie
 
 - type: tradingPosition
   id: CEPlushieLumi
   faction: HomeDecor
+  category: Materials
   service: !type:CEBuyItemsService
     product: CEPlushieLumi
 
 - type: tradingPosition
   id: CEPlushieFlem
   faction: HomeDecor
+  category: Materials
   service: !type:CEBuyItemsService
     product: CEPlushieFlem
 
 - type: tradingPosition
   id: CEPlushieCarrin
   faction: HomeDecor
+  category: Materials
   service: !type:CEBuyItemsService
     product: CEPlushieCarrin
 
 - type: tradingPosition
   id: CEOpenSign
   faction: HomeDecor
+  category: Materials
   service: !type:CEBuyItemsService
     product: CEOpenSign
 
 - type: tradingPosition
   id: CEBell
   faction: HomeDecor
+  category: Materials
   service: !type:CEBuyItemsService
     product: CEBell
+
+- type: tradingPosition
+  id: CEd20Dice
+  priceMarkup: 5
+  faction: HomeDecor
+  category: Materials
+  service: !type:CEBuyItemsService
+    product: CEd20Dice
+
+- type: tradingPosition
+  id: CEd6Dice
+  priceMarkup: 5
+  faction: HomeDecor
+  category: Materials
+  service: !type:CEBuyItemsService
+    product: CEd6Dice

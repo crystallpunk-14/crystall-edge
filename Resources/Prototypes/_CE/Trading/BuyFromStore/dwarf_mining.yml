@@ -2,6 +2,7 @@
 - type: tradingPosition
   id: CECrowbar
   faction: DwarfMiners
+  category: Tools
   service: !type:CEBuyItemsService
     product: CECrowbar
     count: 1
@@ -9,6 +10,7 @@
 - type: tradingPosition
   id: CEWeaponHammerIron
   faction: DwarfMiners
+  category: Weapon
   service: !type:CEBuyItemsService
     product: CEWeaponHammerIron
     count: 1
@@ -16,6 +18,7 @@
 - type: tradingPosition
   id: CEWrench
   faction: DwarfMiners
+  category: Tools
   service: !type:CEBuyItemsService
     product: CEWrench
     count: 1
@@ -24,6 +27,7 @@
   id: CEWeaponPickaxeIron
   priceMarkup: 10
   faction: DwarfMiners
+  category: Weapon
   service: !type:CEBuyItemsService
     product: CEWeaponPickaxeIron
     count: 1
@@ -31,6 +35,7 @@
 - type: tradingPosition
   id: CEBrassBar10
   faction: DwarfMiners
+  category: Materials
   service: !type:CEBuyItemsService
     product: CEBrassBar10
     count: 1
@@ -38,6 +43,7 @@
 - type: tradingPosition
   id: CEIronBar10
   faction: DwarfMiners
+  category: Materials
   service: !type:CEBuyItemsService
     product: CEIronBar10
     count: 1
@@ -45,6 +51,7 @@
 - type: tradingPosition
   id: CECoal10
   faction: DwarfMiners
+  category: Materials
   service: !type:CEBuyItemsService
     product: CECoal10
     count: 1
@@ -52,6 +59,7 @@
 - type: tradingPosition
   id: CELantern
   faction: DwarfMiners
+  category: Tools
   service: !type:CEBuyItemsService
     product: CELantern
     count: 1
@@ -60,6 +68,7 @@
   id: CEManaTransferGloveMining
   priceMarkup: 10
   faction: DwarfMiners
+  category: Tools
   service: !type:CEBuyItemsService
     product: CEManaTransferGlove
     count: 1
@@ -68,6 +77,7 @@
   id: CEStoneBlock10
   priceMarkup: 10
   faction: DwarfMiners
+  category: Materials
   service: !type:CEBuyItemsService
     product: CEStoneBlock10
     count: 1
@@ -76,6 +86,7 @@
   id: CEDirtBlock10
   priceMarkup: 10
   faction: DwarfMiners
+  category: Materials
   service: !type:CEBuyItemsService
     product: CEDirtBlock10
     count: 1
@@ -84,6 +95,7 @@
   id: CESnowBlock10
   priceMarkup: 5
   faction: DwarfMiners
+  category: Materials
   service: !type:CEBuyItemsService
     product: CESnowBlock10
     count: 1
@@ -92,6 +104,7 @@
   id: CEClothingHeadHelmetBrassInsulator
   priceMarkup: 1
   faction: DwarfMiners
+  category: Clothing
   service: !type:CEBuyItemsService
     product: CEClothingHeadHelmetBrassInsulator
     count: 1
@@ -100,6 +113,7 @@
   id: CEClothingOuterClothingBrassInsulator
   priceMarkup: 1
   faction: DwarfMiners
+  category: Clothing
   service: !type:CEBuyItemsService
     product: CEClothingOuterClothingBrassInsulator
     count: 1
@@ -107,6 +121,7 @@
 - type: tradingPosition
   id: CEEnergyCrystalCell
   faction: DwarfMiners
+  category: Materials
   service: !type:CEBuyItemsService
     product: CEEnergyCrystalCell
     count: 1
@@ -114,6 +129,7 @@
 - type: tradingPosition
   id: CEMachinePartDimensionalMatrix1
   faction: DwarfMiners
+  category: MachineCore
   service: !type:CEBuyItemsService
     product: CEMachinePartDimensionalMatrix1
     count: 1
@@ -121,6 +137,7 @@
 - type: tradingPosition
   id: CEScrewdriver
   faction: DwarfMiners
+  category: Tools
   service: !type:CEBuyItemsService
     product: CEScrewdriver
     count: 1

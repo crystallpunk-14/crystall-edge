@@ -62,3 +62,8 @@
   license: "CC0-1.0"
   copyright: 'by tothrec2 of Freesound.org.'
   source: "https://freesound.org/people/tothrec2/sounds/596541/"
+
+- files: ["ambi.ogg"]
+  license: "CC-BY-4.0"
+  copyright: 'by xkeril of Freesound.org.'
+  source: "https://freesound.org/people/xkeril/sounds/639585/"

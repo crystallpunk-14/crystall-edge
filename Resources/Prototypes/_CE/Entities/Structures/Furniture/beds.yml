@@ -1,19 +1,10 @@
 - type: entity
-  name: wooden bed
-  id: CEWoodenBed
+  name: bed frame
+  id: CEBedFrameWooden
   parent:
   - BaseStructure
-  #- CEBaseFlammableSpreading
-  description: Wooden bed. Better than nothing.
   categories: [ ForkFiltered ]
   components:
-  - type: HealOnBuckle
-    damage:
-      types:
-        Poison: -0.2
-        Cold: -0.4
-        Blunt: -0.2
-        Shock: -0.2
   - type: Physics
     bodyType: Static
   - type: Fixtures
@@ -26,14 +17,9 @@
         mask:
         - TableMask
   - type: Sprite
-    sprite: _CE/Structures/Furniture/Beds/wooden.rsi
-    state: icon
+    sprite: _CE/Structures/Furniture/beds.rsi
+    state: frame2
     noRot: true
-  - type: Strap
-    position: Down
-    rotation: -90
-  - type: PlaceableSurface
-    placeCentered: true
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: CEWood
@@ -59,5 +45,82 @@
   - type: Anchorable
   - type: Pullable
   - type: Construction
-    graph: CEWoodenBed
-    node: CEWoodenBed
+    graph: CEBedFrameWooden
+    node: CEBedFrameWooden
+  - type: CERadialConstruction
+    availablePrototypes:
+    - CEWoodenBed
+    - CEWoodenBedLight
+  - type: UserInterface
+    interfaces:
+      enum.CERadialConstructionUiKey.Key:
+        type: CERadialConstructionMenuBoundUserInterface
+
+- type: entity
+  name: wooden bed
+  id: CEWoodenBedBase
+  abstract: true
+  parent:
+  - BaseStructure
+  description: Wooden bed. Better than nothing.
+  categories: [ ForkFiltered ]
+  components:
+  - type: HealOnBuckle
+    damage:
+      types:
+        Poison: -0.2
+        Cold: -0.4
+        Blunt: -0.2
+        Shock: -0.2
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.05"
+        density: 190
+        mask:
+        - TableMask
+  - type: Strap
+    position: Down
+    rotation: -90
+  - type: Sprite
+    noRot: true
+  - type: InteractionOutline
+  - type: PlaceableSurface
+    placeCentered: true
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: CEWood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 75
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEWoodenPlanks1:
+            min: 1
+            max: 2
+
+- type: entity
+  id: CEWoodenBed
+  parent: CEWoodenBedBase
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Furniture/beds.rsi
+    state: wooden
+
+- type: entity
+  id: CEWoodenBedLight
+  parent: CEWoodenBedBase
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Furniture/beds.rsi
+    state: light

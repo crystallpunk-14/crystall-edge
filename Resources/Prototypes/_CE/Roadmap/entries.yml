@@ -49,6 +49,13 @@
   category: General
   status: Done
 
+- type: roadmapItem
+  id: TradeWithEmpire
+  name: ce-roadmap-general-trade-with-empire-name
+  desc: ce-roadmap-general-trade-with-empire-desc
+  category: General
+  status: Done
+
 # In Progress
 
 - type: roadmapItem
@@ -56,13 +63,6 @@
   name: ce-roadmap-engineering-automation-name
   desc: ce-roadmap-engineering-automation-desc
   category: Engineering
-  status: InProgress
-
-- type: roadmapItem
-  id: TradeWithEmpire
-  name: ce-roadmap-general-trade-with-empire-name
-  desc: ce-roadmap-general-trade-with-empire-desc
-  category: General
   status: InProgress
 
 - type: roadmapItem
