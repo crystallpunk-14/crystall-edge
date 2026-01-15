@@ -1,4 +1,13 @@
 # Base
+ce-tiles-space = пустое пространство
+
+# First layer
+
+ce-tiles-iron-rods = железные прутья
+ce-tiles-brass-rods = латунные прутья
+ce-tiles-planks = досчатая опора
+
+
 ce-tiles-base = каменная толща
 
 # Natural
@@ -23,7 +32,6 @@ ce-tiles-mycelium-light = густой мицелий
 ce-tiles-foundation = фундамент
 ce-tiles-dirt-seedbed = земляная грядка
 ce-tiles-glass = стеклянный пол
-ce-tiles-planks = досчатая опора
 ce-tiles-roof = черепица
 
 ce-tiles-oak-woodplanks = дубовые доски
@@ -52,3 +60,5 @@ ce-tiles-stonebricks-diamond = каменный пол ромбовидной у
 ce-tiles-stonebricks-square-pattern = пол с квадратным рисунком
 ce-tiles-stonebricks-medium-circles = пол с средней круглой каменной плиткой
 ce-tiles-stonebricks-small-circles = пол с малой круглой каменной плиткой
+
+ce-floor-tile-examine = Можно установить как [color=#FFFF00]{ $tileName }[/color] поверх [color=#FFFF00]{ $baseName }[/color]
