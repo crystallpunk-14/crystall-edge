@@ -4,22 +4,21 @@ using Content.Client.Resources;
 using Content.Client.Viewport;
 using Content.Shared.Interaction;
 using Content.Shared.Maps;
-using Content.Shared.Tiles;
+using Content.Shared.Tools.Components;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.Player;
 using Robust.Client.ResourceManagement;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
-using Robust.Shared.Prototypes;
 
 namespace Content.Client._CE.Tiles;
 
 /// <summary>
 /// Overlay that displays a sprite over the tile the cursor is hovering over
-/// when the player is holding an item with FloorTileComponent
+/// when the player is holding a tool with ToolTileCompatibleComponent
 /// </summary>
-public sealed class CEFloorTileSelectionOverlay : Overlay
+public sealed class CEToolTileOverlay : Overlay
 {
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly IInputManager _inputManager = default!;
@@ -27,26 +26,25 @@ public sealed class CEFloorTileSelectionOverlay : Overlay
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly IResourceCache _resourceCache = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
 
     private readonly SharedMapSystem _mapSystem;
     private readonly HandsSystem _handsSystem;
-    private readonly FloorTileSystem _floorTileSystem;
     private readonly SharedInteractionSystem _interactionSystem;
+    private readonly EntityLookupSystem _lookupSystem;
 
     private readonly Texture _texture;
 
     public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowEntities;
 
-    public CEFloorTileSelectionOverlay()
+    public CEToolTileOverlay()
     {
         IoCManager.InjectDependencies(this);
 
         _mapSystem = _entityManager.System<SharedMapSystem>();
         _handsSystem = _entityManager.System<HandsSystem>();
-        _floorTileSystem = _entityManager.System<FloorTileSystem>();
         _interactionSystem = _entityManager.System<SharedInteractionSystem>();
+        _lookupSystem = _entityManager.System<EntityLookupSystem>();
 
         _texture = _resourceCache.GetTexture("/Textures/_CE/Markers/biome.rsi/frame.png");
     }
@@ -64,13 +62,11 @@ public sealed class CEFloorTileSelectionOverlay : Overlay
         if (_playerManager.LocalSession?.AttachedEntity is not { } player)
             return;
 
-        // Get active hand item with FloorTileComponent
+        // Get active hand item with ToolTileCompatibleComponent and ToolComponent
         var activeItem = _handsSystem.GetActiveItem(player);
-        if (activeItem == null || !_entityManager.TryGetComponent<FloorTileComponent>(activeItem.Value, out var floorTile))
-            return;
-
-        // Check if FloorTileComponent has valid outputs
-        if (floorTile.Outputs == null || floorTile.Outputs.Count == 0)
+        if (activeItem == null ||
+            !_entityManager.TryGetComponent<ToolTileCompatibleComponent>(activeItem.Value, out var toolTileComp) ||
+            !_entityManager.TryGetComponent<ToolComponent>(activeItem.Value, out var toolComp))
             return;
 
         // Get mouse screen position
@@ -79,7 +75,7 @@ public sealed class CEFloorTileSelectionOverlay : Overlay
         // Convert to map coordinates
         var mouseMapPos = _eyeManager.PixelToMap(mouseScreenPos);
 
-        //Check if the tile is in interaction range and unobstructed
+        // Check if the tile is in interaction range and unobstructed
         if (!_interactionSystem.InRangeUnobstructed(player, mouseMapPos))
             return;
 
@@ -93,35 +89,44 @@ public sealed class CEFloorTileSelectionOverlay : Overlay
         // Get tile indices at mouse position
         var tileIndices = _mapSystem.TileIndicesFor(gridUid, grid, mouseMapPos);
 
-        //
+        // Get tile center position in world coordinates
+        var tileCenter = _mapSystem.GridTileToWorld(gridUid, grid, tileIndices);
+
+        // Check if there are any entities at the tile position
+        // Don't show overlay if there are entities blocking the tile
+        var entities = _lookupSystem.GetEntitiesIntersecting(mouseMapPos.MapId,
+            new Box2(tileCenter.Position, tileCenter.Position),
+            LookupFlags.Approximate | LookupFlags.Static | LookupFlags.Dynamic);
+
+        // Filter out the player and the grid itself
+        var hasBlockingEntities = false;
+        foreach (var entity in entities)
+        {
+            if (entity == player || entity == gridUid)
+                continue;
+
+            hasBlockingEntities = true;
+            break;
+        }
+
+        if (hasBlockingEntities)
+            return;
+
         // Get current tile at position
         var currentTile = _mapSystem.GetTileRef(gridUid, grid, tileIndices);
         var currentTileDef = (ContentTileDefinition)_tileDefinitionManager[currentTile.Tile.TypeId];
 
-        // Check if any of the output tiles can be placed on the current tile
-        var canPlace = false;
-        foreach (var output in floorTile.Outputs)
-        {
-            if (!_proto.Resolve(output, out var targetTileDef))
-                continue;
-
-            // Check if this tile can be placed on the current tile's baseTurf
-            if (_floorTileSystem.HasBaseTurf(targetTileDef, currentTileDef.ID))
-            {
-                canPlace = true;
-                break;
-            }
-        }
-
-        // Get tile center position in world coordinates
-        var tileCenter = _mapSystem.GridTileToWorld(gridUid, grid, tileIndices);
+        // Check if the tool can deconstruct this tile
+        // Tool can work if it has any of the required deconstruct tools AND tile has baseTurf
+        var qualities = toolComp.Qualities;
+        var canDeconstruct = qualities.ContainsAny(currentTileDef.DeconstructTools);
 
         // Offset to center of the tile (GridTileToWorld returns bottom-left corner)
         var tileCenterOffset = tileCenter.Position - new Vector2(grid.TileSize / 2f, grid.TileSize / 2f);
 
         // Draw sprite centered on the tile
-        // Red if can't place, white with transparency if can place
-        var color = canPlace ? Color.White.WithAlpha(0.7f) : Color.Red.WithAlpha(0.7f);
+        // White if can deconstruct, red if can't
+        var color = canDeconstruct ? Color.White.WithAlpha(0.7f) : Color.Red.WithAlpha(0.7f);
         worldHandle.DrawTexture(_texture, tileCenterOffset, color);
     }
 }
