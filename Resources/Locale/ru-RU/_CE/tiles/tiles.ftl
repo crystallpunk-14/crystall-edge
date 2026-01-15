@@ -61,5 +61,7 @@ ce-tiles-stonebricks-square-pattern = пол с квадратным рисун�
 ce-tiles-stonebricks-medium-circles = пол с средней круглой каменной плиткой
 ce-tiles-stonebricks-small-circles = пол с малой круглой каменной плиткой
 
-ce-floor-tile-examine = Можно установить как [color=#FFFF00]{ $tileName }[/color] поверх [color=#FFFF00]{ $baseName }[/color]
+ce-floor-tile-examine = Можно установить как [color=#FFFF00]{$tileName}[/color] поверх [color=#FFFF00]{ $baseName }[/color]
 ce-floor-tile-wrong-turf = Нельзя установить здесь.
+ce-floor-tile-wrong-tool = Здесь нужно: {$toolNames}
+ce-floor-tile-tool-separator = или

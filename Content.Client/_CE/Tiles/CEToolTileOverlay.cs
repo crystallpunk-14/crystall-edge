@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Client.Gameplay;
 using Content.Client.Hands.Systems;
 using Content.Client.Resources;
 using Content.Client.Viewport;
@@ -9,6 +10,7 @@ using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.Player;
 using Robust.Client.ResourceManagement;
+using Robust.Client.State;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
 
@@ -27,11 +29,11 @@ public sealed class CEToolTileOverlay : Overlay
     [Dependency] private readonly IResourceCache _resourceCache = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
+    [Dependency] private readonly IStateManager _stateManager = default!;
 
     private readonly SharedMapSystem _mapSystem;
     private readonly HandsSystem _handsSystem;
     private readonly SharedInteractionSystem _interactionSystem;
-    private readonly EntityLookupSystem _lookupSystem;
 
     private readonly Texture _texture;
 
@@ -44,7 +46,6 @@ public sealed class CEToolTileOverlay : Overlay
         _mapSystem = _entityManager.System<SharedMapSystem>();
         _handsSystem = _entityManager.System<HandsSystem>();
         _interactionSystem = _entityManager.System<SharedInteractionSystem>();
-        _lookupSystem = _entityManager.System<EntityLookupSystem>();
 
         _texture = _resourceCache.GetTexture("/Textures/_CE/Markers/biome.rsi/frame.png");
     }
@@ -86,31 +87,20 @@ public sealed class CEToolTileOverlay : Overlay
         if (!_mapManager.TryFindGridAt(mouseMapPos, out var gridUid, out var grid))
             return;
 
+        // Check if there is any entity under cursor using the same method as InteractionOutline
+        // Don't show overlay if there are entities at the mouse position
+        if (_stateManager.CurrentState is GameplayStateBase screen)
+        {
+            var entityUnderCursor = screen.GetClickedEntity(mouseMapPos);
+            if (entityUnderCursor != null && entityUnderCursor != player && entityUnderCursor != gridUid)
+                return;
+        }
+
         // Get tile indices at mouse position
         var tileIndices = _mapSystem.TileIndicesFor(gridUid, grid, mouseMapPos);
 
         // Get tile center position in world coordinates
         var tileCenter = _mapSystem.GridTileToWorld(gridUid, grid, tileIndices);
-
-        // Check if there are any entities at the tile position
-        // Don't show overlay if there are entities blocking the tile
-        var entities = _lookupSystem.GetEntitiesIntersecting(mouseMapPos.MapId,
-            new Box2(tileCenter.Position, tileCenter.Position),
-            LookupFlags.Approximate | LookupFlags.Static | LookupFlags.Dynamic);
-
-        // Filter out the player and the grid itself
-        var hasBlockingEntities = false;
-        foreach (var entity in entities)
-        {
-            if (entity == player || entity == gridUid)
-                continue;
-
-            hasBlockingEntities = true;
-            break;
-        }
-
-        if (hasBlockingEntities)
-            return;
 
         // Get current tile at position
         var currentTile = _mapSystem.GetTileRef(gridUid, grid, tileIndices);

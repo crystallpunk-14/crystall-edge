@@ -61,3 +61,5 @@ ce-tiles-stonebricks-small-circles = small-circle stone floor
 
 ce-floor-tile-examine = Can be placed as [color=#FFFF00]{$tileName}[/color] over [color=#FFFF00]{$baseName}[/color]
 ce-floor-tile-wrong-turf = Cannot be placed here.
+ce-floor-tile-wrong-tool = Need here: {$toolNames}
+ce-floor-tile-tool-separator = or
