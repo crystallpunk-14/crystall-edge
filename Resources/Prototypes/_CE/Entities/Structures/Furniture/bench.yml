@@ -17,8 +17,7 @@
   - type: Sprite
     noRot: false
     sprite: _CE/Structures/Furniture/bench.rsi
-    layers:
-    - state: wooden
+    state: wooden
   - type: Physics
     bodyType: Static
   - type: Destructible
@@ -49,6 +48,7 @@
 
 - type: entity
   id: CEBenchWoodFrame
+  name: bench frame
   parent: CEBenchWood
   components:
   - type: Sprite
