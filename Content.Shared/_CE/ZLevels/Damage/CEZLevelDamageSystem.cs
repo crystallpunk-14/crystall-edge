@@ -30,6 +30,7 @@ public sealed class CEZLevelDamageSystem : EntitySystem
     public float BaseFallingDamage { get; private set; }
     public float BaseFallingOtherDamage { get; private set; }
     public float BaseFallingStunTime { get; private set; }
+    public float BaseFallingOtherStunTime { get; private set; }
 
     private static readonly ProtoId<DamageTypePrototype> BluntDamageType = "Blunt";
     private static readonly EntProtoId FallVFX = "CEDustEffect";
@@ -43,6 +44,7 @@ public sealed class CEZLevelDamageSystem : EntitySystem
         _config.OnValueChanged(CCVars.CEBaseFallingDamage, i => BaseFallingDamage = i, true);
         _config.OnValueChanged(CCVars.CEBaseFallingOtherDamage, i => BaseFallingOtherDamage = i, true);
         _config.OnValueChanged(CCVars.CEBaseFallingStunTime, i => BaseFallingStunTime = i, true);
+        _config.OnValueChanged(CCVars.CEBaseFallingOtherStunTime, i => BaseFallingOtherStunTime = i, true);
     }
 
     private void OnFallDamage(Entity<PhysicsComponent> ent, ref CEZLevelHitEvent args)
@@ -53,7 +55,7 @@ public sealed class CEZLevelDamageSystem : EntitySystem
         var damageToOtherEv = new CEZFallingOnTargetDamageCalculateEvent(args.ImpactPower);
         RaiseLocalEvent(ent, damageToOtherEv);
         var otherDamage = damageToOtherEv.DamageMultiplier * BaseFallingOtherDamage * args.ImpactPower * ent.Comp.Mass;
-        var otherStun = damageToOtherEv.StunMultiplier * BaseFallingStunTime * args.ImpactPower * ent.Comp.Mass;
+        var otherStun = damageToOtherEv.StunMultiplier * BaseFallingOtherStunTime * args.ImpactPower * ent.Comp.Mass;
 
         //Edit self damage
         var damageToSelfEv = new CEZFallingDamageCalculateEvent(ent, args.ImpactPower);
