@@ -4,7 +4,6 @@
  */
 
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
-using Content.Shared._CE.ZLevels.Damage.Components;
 using Content.Shared.CCVar;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
@@ -46,40 +45,37 @@ public abstract partial class CEZLevelDamageSystem : EntitySystem
 
     private void OnFallDamage(Entity<DamageableComponent> ent, ref CEZLevelHitEvent args)
     {
-        if (!_physicsQuery.TryComp(ent, out var physics))
-            return;
-
         var damageModifier = 1f;
         var stunModifier = 1f;
 
         var damageToOtherEv = new CEZFallingOnTargetDamageCalculateEvent();
-        RaiseLocalEvent(ent, ref damageToOtherEv);
+        RaiseLocalEvent(ent, damageToOtherEv);
         var otherDamage = damageToOtherEv.DamageMultiplier * BaseFallingDamage * args.ImpactPower;
         var otherStun = damageToOtherEv.StunMultiplier * BaseFallingStunTime * args.ImpactPower;
 
         //Edit self damage
         var damageToSelfEv = new CEZFallingDamageCalculateEvent(ent);
-        RaiseLocalEvent(ent, ref damageToSelfEv);
+        RaiseLocalEvent(ent, damageToSelfEv);
         damageModifier *= damageToSelfEv.DamageMultiplier;
         stunModifier *= damageToSelfEv.StunMultiplier;
 
         var entitiesAround = _lookup.GetEntitiesInRange(ent, 0.25f, LookupFlags.Uncontained);
-        entitiesAround.Remove(ent); //Dont count self
+        entitiesAround.Remove(ent); //Don't count self
 
         //Process entities we fell into
         var imFallOnEv = new CEZImFallOnEvent(entitiesAround, args.ImpactPower);
-        RaiseLocalEvent(ent, ref imFallOnEv);
+        RaiseLocalEvent(ent, imFallOnEv);
 
         foreach (var victim in entitiesAround)
         {
             //Other entities edit our damage
             var editDamageToSelfEv = new CEZFallingDamageCalculateEvent(ent);
-            RaiseLocalEvent(victim, ref damageToSelfEv);
+            RaiseLocalEvent(victim, editDamageToSelfEv);
             damageModifier *= editDamageToSelfEv.DamageMultiplier;
             stunModifier *= editDamageToSelfEv.StunMultiplier;
 
             var fellOnMeEv = new CEZFellOnMeEvent(ent, args.ImpactPower);
-            RaiseLocalEvent(victim, ref fellOnMeEv);
+            RaiseLocalEvent(victim, fellOnMeEv);
 
             //Affect other entities
             if (otherStun > 0)
@@ -120,7 +116,7 @@ public sealed class CEZFallingOnTargetDamageCalculateEvent() : EntityEventArgs
 }
 
 /// <summary>
-///
+/// Event raised on a falling entity to inform it about the entities it is landing on and the impact speed.
 /// </summary>
 public sealed class CEZImFallOnEvent(HashSet<EntityUid> targets, float speed) : EntityEventArgs
 {
@@ -128,6 +124,9 @@ public sealed class CEZImFallOnEvent(HashSet<EntityUid> targets, float speed) : 
     public float Speed = speed;
 }
 
+/// <summary>
+/// Event raised on an entity that is being fallen on to inform it about the falling entity and the impact speed.
+/// </summary>
 public sealed class CEZFellOnMeEvent(EntityUid fallen, float speed) : EntityEventArgs
 {
     public EntityUid Fallen = fallen;
