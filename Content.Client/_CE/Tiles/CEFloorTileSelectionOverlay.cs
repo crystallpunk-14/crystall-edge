@@ -93,7 +93,6 @@ public sealed class CEFloorTileSelectionOverlay : Overlay
         // Get tile indices at mouse position
         var tileIndices = _mapSystem.TileIndicesFor(gridUid, grid, mouseMapPos);
 
-        //
         // Get current tile at position
         var currentTile = _mapSystem.GetTileRef(gridUid, grid, tileIndices);
         var currentTileDef = (ContentTileDefinition)_tileDefinitionManager[currentTile.Tile.TypeId];
