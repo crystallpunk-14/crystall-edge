@@ -40,6 +40,7 @@
     - type: SunShadow
     - type: MapLight
       ambientLightColor: '#75BCFFFF'
+    - type: CEMapCollapsing
   minPlayers: 0
   stations:
     Dev:
