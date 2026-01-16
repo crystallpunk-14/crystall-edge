@@ -6,7 +6,6 @@
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.CCVar;
 using Content.Shared.Damage;
-using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Stunnable;
@@ -16,7 +15,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.ZLevels.Damage;
 
-public abstract partial class CEZLevelDamageSystem : EntitySystem
+public sealed class CEZLevelDamageSystem : EntitySystem
 {
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly DamageableSystem _damage = default!;
@@ -24,9 +23,8 @@ public abstract partial class CEZLevelDamageSystem : EntitySystem
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly IConfigurationManager _config = default!;
 
-    private EntityQuery<PhysicsComponent> _physicsQuery;
-
     public float BaseFallingDamage { get; private set; }
+    public float BaseFallingOtherDamage { get; private set; }
     public float BaseFallingStunTime { get; private set; }
 
     private static readonly ProtoId<DamageTypePrototype> BluntDamageType = "Blunt";
@@ -35,23 +33,22 @@ public abstract partial class CEZLevelDamageSystem : EntitySystem
     {
         base.Initialize();
 
-        _physicsQuery = GetEntityQuery<PhysicsComponent>();
-
-        SubscribeLocalEvent<DamageableComponent, CEZLevelHitEvent>(OnFallDamage);
+        SubscribeLocalEvent<PhysicsComponent, CEZLevelHitEvent>(OnFallDamage);
 
         _config.OnValueChanged(CCVars.CEBaseFallingDamage, i => BaseFallingDamage = i, true);
+        _config.OnValueChanged(CCVars.CEBaseFallingOtherDamage, i => BaseFallingOtherDamage = i, true);
         _config.OnValueChanged(CCVars.CEBaseFallingStunTime, i => BaseFallingStunTime = i, true);
     }
 
-    private void OnFallDamage(Entity<DamageableComponent> ent, ref CEZLevelHitEvent args)
+    private void OnFallDamage(Entity<PhysicsComponent> ent, ref CEZLevelHitEvent args)
     {
         var damageModifier = 1f;
         var stunModifier = 1f;
 
         var damageToOtherEv = new CEZFallingOnTargetDamageCalculateEvent();
         RaiseLocalEvent(ent, damageToOtherEv);
-        var otherDamage = damageToOtherEv.DamageMultiplier * BaseFallingDamage * args.ImpactPower;
-        var otherStun = damageToOtherEv.StunMultiplier * BaseFallingStunTime * args.ImpactPower;
+        var otherDamage = damageToOtherEv.DamageMultiplier * BaseFallingOtherDamage * args.ImpactPower * ent.Comp.Mass;
+        var otherStun = damageToOtherEv.StunMultiplier * BaseFallingStunTime * args.ImpactPower * ent.Comp.Mass;
 
         //Edit self damage
         var damageToSelfEv = new CEZFallingDamageCalculateEvent(ent);
@@ -84,11 +81,11 @@ public abstract partial class CEZLevelDamageSystem : EntitySystem
                 _damage.TryChangeDamage(victim, new DamageSpecifier(_proto.Index(BluntDamageType), otherDamage));
         }
 
-        var damageAmount = args.ImpactPower * BaseFallingDamage * damageModifier;
+        var damageAmount = args.ImpactPower * args.ImpactPower * BaseFallingDamage * damageModifier;
         if (damageAmount > 0)
             _damage.TryChangeDamage(ent.Owner, new DamageSpecifier(_proto.Index(BluntDamageType), damageAmount));
 
-        var knockdownTime = MathF.Min(args.ImpactPower * BaseFallingStunTime * stunModifier, 5f);
+        var knockdownTime = MathF.Min(args.ImpactPower * args.ImpactPower * BaseFallingStunTime * stunModifier, 5f);
         if (knockdownTime > 0)
             _stun.TryKnockdown(ent.Owner, TimeSpan.FromSeconds(knockdownTime));
     }
