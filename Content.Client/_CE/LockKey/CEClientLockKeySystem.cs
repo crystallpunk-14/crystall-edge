@@ -1,6 +1,7 @@
 using System.Text;
 using Content.Client.Items;
 using Content.Client.Stylesheets;
+using Content.Shared._CE.LockKey;
 using Content.Shared._CE.LockKey.Components;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
@@ -8,7 +9,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Client._CE.LockKey;
 
-public sealed class CEClientLockKeySystem : EntitySystem
+public sealed class CEClientLockKeySystem : CESharedLockKeySystem
 {
     public override void Initialize()
     {
@@ -26,7 +27,7 @@ public sealed class CEKeyStatusControl : Control
     {
         _parent = parent;
 
-        _label = new RichTextLabel { StyleClasses = { StyleNano.StyleClassItemStatus } };
+        _label = new RichTextLabel { StyleClasses = { StyleClass.ItemStatus } };
         AddChild(_label);
     }
 
@@ -34,11 +35,8 @@ public sealed class CEKeyStatusControl : Control
     {
         base.FrameUpdate(args);
 
-        if (_parent.Comp.LockShape is null)
-            return;
-
         var sb = new StringBuilder("(");
-        foreach (var item in _parent.Comp.LockShape)
+        foreach (var item in _parent.Comp.Shape)
         {
             sb.Append($"{item} ");
         }

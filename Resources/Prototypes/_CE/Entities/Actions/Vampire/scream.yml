@@ -1,0 +1,76 @@
+- type: entity
+  id: CEActionVampireScream
+  parent: CEActionSpellBase
+  name: Deafening scream
+  description: You let out a powerful scream that deafens everyone nearby for a few seconds.
+  components:
+  - type: CEActionDoAfterSlowdown
+    speedMultiplier: 0.4
+  - type: CEMagicEffectVampire
+  - type: CEActionManaCost
+    manaCost: 20
+  - type: CEActionDangerous
+  - type: Action
+    useDelay: 15
+    icon:
+      sprite: _CE/Actions/vampire.rsi
+      state: power_kick_3
+  - type: DoAfterArgs
+    delay: 1.5
+  - type: InstantAction
+    event: !type:CEInstantModularEffectEvent
+      telegraphyEffects:
+      - !type:CESpellSpawnEntityOnUser
+        spawns:
+        - CEImpactEffectVampireScreamTelegraphy
+      effects:
+      - !type:CESpellSpawnEntityOnUser
+        spawns:
+        - CEImpactEffectVampireScream
+      - !type:CESpellArea
+        range: 2
+        maxTargets: 8
+        affectCaster: false
+        effects:
+        - !type:CESpellStun
+          duration: 4
+
+- type: entity
+  id: CEImpactEffectVampireScreamTelegraphy
+  parent: CEBaseMagicImpact
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    layers:
+    - state: circle_decrease
+      color: red
+      unshaded: true
+  - type: EmitSoundOnSpawn
+    sound: !type:SoundPathSpecifier
+      path: /Audio/_CE/Effects/vampire_scream_telegraphy.ogg
+  - type: TimedDespawn
+    lifetime: 1.5
+
+- type: entity
+  id: CEImpactEffectVampireScream
+  parent: CEBaseMagicImpact
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    layers:
+    - state: circle_increase
+      color: red
+      unshaded: true
+  - type: EmitSoundOnSpawn
+    sound: !type:SoundPathSpecifier
+      path: /Audio/_CE/Effects/vampire_scream_cast.ogg
+  - type: TimedDespawn
+    lifetime: 4
+  - type: LightFade
+    duration: 4
+  - type: PointLight
+    color: "#d60032"
+    radius: 4.0
+    energy: 8.0

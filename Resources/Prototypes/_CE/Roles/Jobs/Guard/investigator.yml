@@ -4,17 +4,48 @@
   name: ce-job-name-investigator
   description: ce-job-desc-investigator
   playTimeTracker: CEJobInvestigator
-  #startingGear: CEInvestigatorGear
+  startingGear: CEInvestigatorGear
   icon: CEJobIconInvestigator
   supervisors: ce-job-supervisors-guard-commander
   canBeAntag: false
+  special:
+    - !type:AddComponentSpecial
+      components:
+      - type: CESalaryCounter
+        salary: 75
   #requirements:
   #  - !type:DepartmentTimeRequirement
   #    department: CEGuard
   #    time: 3600 # 1 hours
 
-#- type: startingGear
-#  id: CEInvestigatorGear
-#  equipment:
-#    keys: CEKeyRingGuard
-#    belt: CEWalletFilledTest
+- type: startingGear
+  id: CEInvestigatorGear
+  equipment:
+    belt: CEKeyRingInvestigator
+    belt2: CEGunJustice
+    pocket1: CEWalletFilledInvestigator
+
+
+- type: entity
+  id: CEWalletFilledInvestigator
+  parent: CEWallet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents: #100cp total
+    - id: CECoinSilver5
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinCopper10
+
+- type: entity
+  id: CEKeyRingInvestigator
+  parent: CEBaseKeyRing
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+    - id: CEKeyGuardHall
+    - id: CEKeyGuardStaff

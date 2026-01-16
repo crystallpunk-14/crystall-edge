@@ -7,7 +7,7 @@ namespace Content.Shared._CE.LockKey;
 /// Allows a group of doors and keys to have the same shape within the same round and fit together,
 /// but is randomized from round to round
 /// </summary>
-[Prototype("CELockType")]
+[Prototype("lockType")]
 public sealed partial class CELockTypePrototype : IPrototype
 {
     [ViewVariables]

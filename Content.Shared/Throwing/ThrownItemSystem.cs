@@ -1,5 +1,5 @@
 using System.Linq;
-using Content.Shared._CE.ZLevels.EntitySystems;
+using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Shared.Gravity;
@@ -131,7 +131,7 @@ namespace Content.Shared.Throwing
             _broadphase.RegenerateContacts((uid, physics));
 
             //CrystallEdge dont call LandEvent if we dont have ground
-            if (_zLevels.DistanceToGround(uid, out _) > 0)
+            if (_zLevels.DistanceToGround(uid) > 0.5f)
                 return;
             //CrystallEdge end
             var landEvent = new LandEvent(thrownItem.Thrower, playSound);

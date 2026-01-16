@@ -1,0 +1,43 @@
+- type: entity
+  name: cloth sack
+  parent: BaseStorageItem
+  id: CESack
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Tools/sack.rsi
+    layers:
+      - state: icon-0
+        map: ["enum.StorageFillLayers.Fill"]
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,3,3
+    quickInsert: true
+    areaInsert: true
+    storageOpenSound:
+      collection: trashBagRustle
+    storageInsertSound:
+      collection: trashBagRustle
+  - type: UseDelay
+    delay: 0.5
+  - type: Appearance
+  - type: StorageFillVisualizer
+    maxFillLevels: 3
+    fillBaseName: icon
+  - type: Dumpable
+  - type: Clothing
+    slots: [head]
+    sprite: _CE/Objects/Tools/sack.rsi
+  - type: Item
+    size: Large
+    shape:
+    - 0, 0, 3, 3
+  - type: FlashImmunity
+  - type: IdentityBlocker
+  - type: EyeProtection
+  - type: IngestionBlocker
+  - type: Blindfold
+  - type: PhysicalComposition
+    materialComposition:
+      CECloth: 30

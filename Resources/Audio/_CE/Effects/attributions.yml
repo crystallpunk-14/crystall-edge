@@ -67,3 +67,88 @@
   license: "CC-BY-4.0"
   copyright: 'by InspectorJ of Freesound.org. Cropped and mixed from stereo to mono.'
   source: "https://freesound.org/people/InspectorJ/sounds/406048/"
+
+- files: ["pan_open.ogg", "pan_close.ogg"]
+  license: "CC0-1.0"
+  copyright: 'Created by RossBell on Freesound.org'
+  source: "https://freesound.org/people/RossBell/sounds/389428/"
+
+- files: ["cash.ogg"]
+  license: "CC0-1.0"
+  copyright: 'Created by Zott820 on Freesound.org'
+  source: "https://freesound.org/people/Zott820/sounds/209578/"
+
+- files: ["essence_consume.ogg"]
+  license: "CC0-1.0"
+  copyright: 'by DustyWind on Freesound.org'
+  source: "https://freesound.org/people/DustyWind/sounds/715784/"
+
+- files: ["skill_up1.ogg", "skill_up2.ogg", "skill_up3.ogg", "skill_up4.ogg"]
+  license: "CC0-1.0"
+  copyright: 'by IENBA on Freesound.org'
+  source: "https://freesound.org/people/IENBA/sounds/752275/"
+
+- files: ["vampire_craft.ogg"]
+  license: "CC-BY-4.0"
+  copyright: 'by Victor_Natas on Freesound.org'
+  source: "https://freesound.org/people/Victor_Natas/sounds/616217/"
+
+- files: ["vampire_scream_cast.ogg", "vampire_scream_telegraphy.ogg"]
+  license: "CC-BY-NC-4.0"
+  copyright: 'by jdupre01 on Freesound.org'
+  source: "https://freesound.org/people/jdupre01/sounds/484984/"
+
+- files: ["peacekeeper_laser.ogg"]
+  license: "CC-BY-4.0"
+  copyright: 'by 211redman112 on Freesound.org'
+  source: "https://freesound.org/people/211redman112/sounds/234083/"
+
+- files: ["energy_pulse.ogg"]
+  license: "CC-BY-4.0"
+  copyright: 'by SilverIllusionist on Freesound.org'
+  source: "https://freesound.org/people/SilverIllusionist/sounds/673531/"
+
+- files: ["energy_charge.ogg", "energy_pulse2.ogg"]
+  license: "CC-BY-4.0"
+  copyright: 'by tjcason on Freesound.org'
+  source: "https://freesound.org/people/tjcason/sounds/390475/"
+
+- files: ["treasure_effect.ogg"]
+  license: "CC0-1.0"
+  copyright: 'by el_boss on Freesound.org'
+  source: "https://freesound.org/people/el_boss/sounds/817813/"
+
+- files: ["crystal_eject.ogg", "crystal_insert.ogg"]
+  license: "CC-BY-4.0"
+  copyright: 'by Joachim_Berger of Freesound.org. Cropped by TheShuEd.'
+  source: "https://freesound.org/people/Joachim_Berger/sounds/660526/"
+
+- files: ["furnace_end.ogg"]
+  license: "CC0-1.0"
+  copyright: 'by GrimGrum of Freesound.org. Cropped and mixed from stereo to mono.'
+  source: "https://freesound.org/people/GrimGrum/sounds/412558/"
+
+- files: ["furnace_start.ogg"]
+  license: "CC-BY-NC-4.0"
+  copyright: 'by pushtobreak of Freesound.org. Cropped and mixed from stereo to mono.'
+  source: "https://freesound.org/people/pushtobreak/sounds/17759/"
+
+- files: ["bone_crush1.ogg"]
+  license: "CC-BY-3.0"
+  copyright: 'Created by miksmusic on Freesound.org'
+  source: "https://freesound.org/people/miksmusic/sounds/497704/"
+
+- files: ["bone_crush2.ogg"]
+  license: "CC0-1.0"
+  copyright: 'Created by AKkingStudio on Freesound.org'
+  source: "https://freesound.org/people/AKkingStudio/sounds/784768/"
+
+- files: ["snowball.ogg"]
+  license: "CC0-1.0"
+  copyright: 'by bajko of Freesound.org.'
+  source: "https://freesound.org/people/bajko/sounds/378058/"
+
+- files: ["bell.ogg", "bell_short"]
+  license: "CC0-1.0"
+  copyright: 'Created by Fenodyrie on Freesound.org'
+  source: "https://freesound.org/people/Fenodyrie/sounds/583950/"

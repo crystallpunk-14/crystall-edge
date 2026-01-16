@@ -1,0 +1,61 @@
+- type: entity
+  id: CEPlatePie
+  parent: CECookerBase
+  name: pie plate
+  description: A mould for making a delicious pie.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Food/Pies/plate.rsi
+    layers:
+    - state: iron
+    - map: ["cp14_foodLayers"]
+    - map: ["enum.StorageFillLayers.Fill"]
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,1,1
+  - type: PhysicalComposition
+    materialComposition:
+      CEIron: 10 # 1 iron bar = 1 plate pie in craft
+  - type: CEFoodCooker
+    foodType: Pie
+    solutionId: cooker
+  - type: CEFoodHolder
+    foodType: Pie
+    solutionId: cooker
+  - type: Storage
+    maxItemSize: Small
+    grid:
+    - 0,0,2,2
+  - type: Appearance
+  - type: StorageFillVisualizer
+    maxFillLevels: 3
+    fillBaseName: raw
+  - type: SolutionContainerManager
+    solutions:
+      cooker:
+        maxVol: 50
+  - type: AmbientSound
+    sound:
+      path: /Audio/_CE/Ambience/pan_frying.ogg
+  - type: GenericVisualizer
+    visuals:
+      enum.CECookingVisuals.Cooking:
+        cook:
+          True: { visible: true }
+          False: { visible: false }
+      enum.CECookingVisuals.Burning:
+        burn:
+          True: { visible: true }
+          False: { visible: false }
+  - type: Edible
+    edible: Food
+    transferAmount: 2.5
+    solution: cooker
+    trash:
+    - CEPlatePie
+  - type: Spillable
+    solution: cooker
+  - type: SolutionContainerVisuals
+  - type: SliceableFood

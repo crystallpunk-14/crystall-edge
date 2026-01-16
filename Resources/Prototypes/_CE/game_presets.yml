@@ -19,3 +19,12 @@
   maxPlayers: 5
   rules:
     - Sandbox
+
+- type: gamePreset
+  id: CEGreenshift
+  name: ce-game-preset-greenshift-title
+  description: ce-game-preset-greenshift-description
+  showInVote: true
+  rules:
+  - CEGameRule7Days
+  - CEGameRuleThieves

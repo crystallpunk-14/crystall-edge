@@ -130,6 +130,10 @@
     Food:
       effects:
       - !type:SatiateHunger
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ CEVampire ]
+          inverted: true
         factor: 0.5
       - !type:SatiateThirst
         factor: -0.5 # high salt content
@@ -182,6 +186,10 @@
       # 12 diona blood for 1 unit of syrup, this stuff better be worthwhile.
       effects:
       - !type:SatiateHunger
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ CEVampire ]
+          inverted: true
         factor: 6.0 #Stronger than cookedramen
   footstepSound:
     collection: FootstepSlime

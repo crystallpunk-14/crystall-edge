@@ -1,0 +1,6 @@
+marking-CECarcatHeadStripes = Tiger (head)
+marking-CECarcatTorsoStripes = Tiger (torso)
+marking-CECarcatArmLeftStripes = Tiger (left arm)
+marking-CECarcatArmRightStripes = Tiger (right arm)
+marking-CECarcatLegLeftStripes = Tiger (left leg)
+marking-CECarcatLegRightStripes = Tiger (right leg)

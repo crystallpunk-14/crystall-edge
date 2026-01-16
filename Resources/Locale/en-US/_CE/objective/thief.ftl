@@ -1,0 +1,2 @@
+ce-objective-issuer-thief = [color=#527c5e]Thieving nature[/color]
+ce-roles-antag-thief-briefing = You are a criminal with extensive experience in shady work and access to illicit tools. Tired of the quiet life of a pickpocket, you’ve decided to leave your mark on history by robbing a guarded floating island. Your task is to take everything of value you can find without being caught by the local guards.

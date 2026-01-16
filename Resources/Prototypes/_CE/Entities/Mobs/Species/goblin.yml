@@ -33,20 +33,20 @@
     - map: [ "ears" ]
     - map: [ "outerClothing" ]
     - map: [ "cloak" ]
-    - map: [ "eyes" ]
     - map: [ "belt" ]
     - map: [ "belt2" ]
     - map: [ "neck" ]
     - map: [ "back" ]
     - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
+    - map: [ "eyes" ]
     - map: [ "enum.HumanoidVisualLayers.Hair" ]
     - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
     - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
     - map: [ "enum.HumanoidVisualLayers.Tail" ]
-#    - map: [ "vampire_fangs" ]
-#      sprite: _CE/Mobs/Species/Vampire/fangs.rsi
-#      state: goblin # Goblin fangs state
-#      visible: false
+    - map: [ "vampire_fangs" ]
+      sprite: _CE/Mobs/Species/Vampire/fangs.rsi
+      state: goblin # Goblin fangs state
+      visible: false
     - map: [ "mask" ]
     - map: [ "head" ]
     - map: [ "pocket1" ]
@@ -82,8 +82,11 @@
   - type: Body
     prototype: CEHuman
     requiredLegs: 2
-#  - type: Bloodstream  (Until alchemy is ported)
-#    bloodReagent: CEBloodGoblin
+  - type: Bloodstream
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: CEBloodGoblin
+        Quantity: 300
   - type: Fixtures
     fixtures: # Smaller hitbox & less weight
       fix1:
@@ -102,18 +105,11 @@
   - type: PassiveDamage
     allowedStates:
     - Alive
-    damageCap: 80
+    damageCap: 40
     damage:
-#      types:
-#        CP14ManaDepletion: -0.05
       groups:
         Burn: -0.2
         Brute: -0.2
-        Toxin: -0.05
-  - type: Stamina
-    decay: 5 # 3 default
-    critThreshold: 120 # 100 default
-    stunTime: 4 #6 default
 #  - type: CEMagicEnergyContainer #SMALL mana container
 #    maxEnergy: 25
 #    energy: 25

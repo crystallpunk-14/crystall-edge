@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "license": "All rights reserved",
+  "copyright": "Created by jaraten(discord) , modified by vladimir.s",
+  "size": {
+    "x": 32,
+    "y": 96
+  },
+  "states": [
+    {
+      "name": "icon",
+      "directions": 4
+    },
+    {
+      "name": "base",
+      "directions": 4
+    },
+    {
+      "name": "base_open",
+      "directions": 4
+    },
+    {
+      "name": "base_door",
+      "directions": 4
+    }
+  ]
+}

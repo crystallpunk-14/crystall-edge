@@ -1,0 +1,32 @@
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: CEBaseThiefObjective
+  components:
+  - type: Objective
+    issuer: ce-objective-issuer-thief
+    difficulty: 1
+
+- type: entity
+  parent: CEBaseThiefObjective
+  id: CEThiefObjectiveBeCool
+  name: Become the greatest thief in history
+  description: Pull off a heist that everyone will talk about.
+  components:
+  - type: Objective
+    icon:
+      sprite: _CE/Objects/Materials/Currency/coin_gp.rsi
+      state: coin10
+  - type: FreeObjective
+
+- type: entity
+  parent: CEBaseThiefObjective
+  id: CEThiefObjectiveBeSafe
+  name: Stay alive and free
+  description: What good is wealth if you're dead or in prison?
+  components:
+  - type: Objective
+    icon:
+      sprite: _CE/Objects/Tools/rope.rsi
+      state: icon
+  - type: FreeObjective

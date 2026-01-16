@@ -1,8 +1,3 @@
-/*
- * This file is sublicensed under MIT License
- * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
- */
-
 using Content.Shared.Tag;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
@@ -10,7 +5,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._CE.Workbench.Prototypes;
 
 [Prototype("CERecipe")]
-public sealed class CEWorkbenchRecipePrototype : IPrototype
+public sealed partial class CEWorkbenchRecipePrototype : IPrototype
 {
     [IdDataField]
     public string ID { get; private set; } = default!;

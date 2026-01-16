@@ -1,0 +1,23 @@
+ce-ambition-reason-1 = моя бабушка трагично скончалась
+ce-ambition-reason-2 = у меня психологическая травма из детства
+ce-ambition-reason-3 = меня так попросили родственники
+ce-ambition-reason-4 = это очевидно, странно что этого не понимают другие
+ce-ambition-reason-5 = мне приснился сон
+ce-ambition-reason-6 = мне приснился кошмар
+ce-ambition-reason-7 = я прочитал умную книжку
+ce-ambition-reason-8 = меня заколдовали в прошлом
+ce-ambition-reason-9 = так меня воспитали
+ce-ambition-reason-10 = мне бесконечно нашептывают голоса в голове
+
+ce-ambition-abstract-theme-1 = высота
+ce-ambition-abstract-theme-2 = тесные помещения
+ce-ambition-abstract-theme-3 = темнота
+ce-ambition-abstract-theme-4 = социальные взаимодействия
+ce-ambition-abstract-theme-5 = ночное время суток
+ce-ambition-abstract-theme-6 = дневное время суток
+ce-ambition-abstract-theme-7 = молчание
+ce-ambition-abstract-theme-8 = магическая энергия
+ce-ambition-abstract-theme-9 = кровь и насилие
+ce-ambition-abstract-theme-10 = вода
+ce-ambition-abstract-theme-11 = трава
+ce-ambition-abstract-theme-12 = деньги

@@ -34,7 +34,7 @@ public sealed partial class LightCycleComponent : Component
     /// Trench of the oscillation.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public float MinLightLevel = 0.15f; //CrystallEdge increase from 0 to 0.15
+    public float MinLightLevel = 0.3f; //CrystallEdge increase from 0 to 0.3
 
     /// <summary>
     /// Peak of the oscillation

@@ -8,10 +8,16 @@
   "copyright": "Created by TheShuEd (Github)",
   "states": [
     {
-      "name": "CovenantAgent"
+      "name": "Bard"
     },
     {
-      "name": "CovenantHead"
+      "name": "Bartender"
+    },
+    {
+      "name": "Chef"
+    },
+    {
+      "name": "Farmer"
     },
     {
       "name": "Guard"
@@ -20,25 +26,22 @@
       "name": "GuardCommander"
     },
     {
-      "name": "Guildmaster"
-    },
-    {
-      "name": "GuildWorker"
-    },
-    {
-      "name": "Innkeeper"
-    },
-    {
       "name": "Investigator"
     },
     {
-      "name": "Mayor"
-    },
-    {
-      "name": "Mercenary"
+      "name": "Tavernmaster"
     },
     {
       "name": "Townfolk"
+    },
+    {
+      "name": "TailorMerchant"
+    },
+    {
+      "name": "PharmacistMerchant"
+    },
+    {
+      "name": "HomeGoodsMerchant"
     }
   ]
 }

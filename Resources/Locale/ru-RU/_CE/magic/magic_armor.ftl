@@ -1,0 +1,1 @@
+ce-energy-armor-examined = Понижает [color=#32b0e6]поглощение маны из пространства[/color] на [color=yellow]{$value}%[/color]

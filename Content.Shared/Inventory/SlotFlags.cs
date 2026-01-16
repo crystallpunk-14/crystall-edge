@@ -31,7 +31,6 @@ public enum SlotFlags
     PANTS = 1 << 17,
     SHIRT = 1 << 18,
     CLOAK = 1 << 19,
-    KEYS = 1 << 20,
     //CrystallEdge zone end
     All = ~NONE,
 

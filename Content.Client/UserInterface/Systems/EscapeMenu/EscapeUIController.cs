@@ -1,4 +1,5 @@
-﻿using Content.Client.Gameplay;
+﻿using Content.Client._CE.Roadmap;
+using Content.Client.Gameplay;
 using Content.Client.UserInterface.Controls;
 using Content.Client.UserInterface.Systems.Guidebook;
 using Content.Client.UserInterface.Systems.Info;
@@ -68,6 +69,14 @@ public sealed class EscapeUIController : UIController, IOnStateEntered<GameplayS
             CloseEscapeWindow();
             _changelog.ToggleWindow();
         };
+
+        //CrystallEdge roadmap
+        _escapeWindow.CERoadmapButton.OnPressed += _ =>
+        {
+            CloseEscapeWindow();
+            UIManager.GetUIController<CERoadmapUIController>().ToggleRoadmap();
+        };
+        //CrystallEdge roadmap end
 
         _escapeWindow.RulesButton.OnPressed += _ =>
         {

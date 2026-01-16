@@ -1,0 +1,16 @@
+marking-CECarrinBeak = Beak
+marking-CECarrinBeak2 = Short thin beak
+marking-CECarrinBeak3 = Curved beak 1
+marking-CECarrinBeak4 = Short beak 1
+marking-CECarrinBeak5 = Curved beak 2
+marking-CECarrinBeak6 = Wide beak
+marking-CECarrinBeak7 = Straight beak
+marking-CECarrinBeak8 = Long beak
+marking-CECarrinBeak9 = High beak
+marking-CECarrinBeak10 = Thin beak
+marking-CECarrinBeak11 = Hooked beak
+marking-CECarrinBeak12 = Short hooked beak
+marking-CECarrinBeak13 = Short hooked beak 2
+marking-CECarrinBeak14 = Short beak 2
+marking-CECarrinBeak15 = Short beak 3
+marking-CECarrinBeak16 = Pelican beak

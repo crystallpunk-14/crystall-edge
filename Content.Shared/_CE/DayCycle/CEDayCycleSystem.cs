@@ -1,10 +1,9 @@
+using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.GameTicking;
 using Content.Shared.Light.Components;
 using Content.Shared.Light.EntitySystems;
 using Content.Shared.Storage.Components;
 using Content.Shared.Weather;
-using Robust.Shared.Console;
-using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Timing;
 
@@ -24,13 +23,27 @@ public sealed class CEDayCycleSystem : EntitySystem
     private EntityQuery<MapGridComponent> _mapGridQuery;
     private EntityQuery<InsideEntityStorageComponent> _storageQuery;
 
-
     public override void Initialize()
     {
         base.Initialize();
 
         _mapGridQuery = GetEntityQuery<MapGridComponent>();
         _storageQuery = GetEntityQuery<InsideEntityStorageComponent>();
+
+        SubscribeLocalEvent<CEZLevelMapComponent, CEStartDayEvent>(OnStartDay);
+        SubscribeLocalEvent<CEZLevelMapComponent, CEStartNightEvent>(OnStartNight);
+    }
+
+    private void OnStartDay(Entity<CEZLevelMapComponent> ent, ref CEStartDayEvent args)
+    {
+        if (ent.Comp.Depth == 0)
+            RaiseLocalEvent(new CEGlobalStartDayEvent());
+    }
+
+    private void OnStartNight(Entity<CEZLevelMapComponent> ent, ref CEStartNightEvent args)
+    {
+        if (ent.Comp.Depth == 0)
+            RaiseLocalEvent(new CEGlobalStartNightEvent());
     }
 
     public override void Update(float frameTime)
@@ -56,7 +69,7 @@ public sealed class CEDayCycleSystem : EntitySystem
                 {
                     if (newLightLevel < dayCycle.Threshold)
                     {
-                        var ev = new CEStartNightEvent();
+                        var ev = new CEStartNightEvent(uid);
                         RaiseLocalEvent(uid, ev, true);
                     }
                 }
@@ -69,7 +82,7 @@ public sealed class CEDayCycleSystem : EntitySystem
                 {
                     if (newLightLevel > dayCycle.Threshold)
                     {
-                        var ev = new CEStartDayEvent();
+                        var ev = new CEStartDayEvent(uid);
                         RaiseLocalEvent(uid, ev, true);
                     }
                 }
@@ -84,13 +97,21 @@ public sealed class CEDayCycleSystem : EntitySystem
         if (!Resolve(map, ref map.Comp, false))
             return false;
 
+        return GetCurrentLightLevel(map) >= 0.4;
+    }
+
+    public float GetCurrentLightLevel(Entity<LightCycleComponent?> map)
+    {
+        if (!Resolve(map, ref map.Comp, false))
+            return 0f;
+
         var time = (float) _timing.CurTime
             .Add( map.Comp.Offset)
             .Subtract(_ticker.RoundStartTimeSpan)
             .Subtract(_meta.GetPauseTime(map))
             .TotalSeconds;
 
-        return SharedLightCycleSystem.CalculateLightLevel(map.Comp, time) >= 0.4;
+        return (float)SharedLightCycleSystem.CalculateLightLevel(map.Comp, time);
     }
 
     /// <summary>
@@ -124,12 +145,33 @@ public sealed class CEDayCycleSystem : EntitySystem
     }
 }
 
-/// <summary>
-/// Called on the map with <see cref="LightCycleComponent"/> when night ends and dawn begins
-/// </summary>
-public sealed class CEStartNightEvent : EntityEventArgs { }
 
 /// <summary>
 /// Called on the map with <see cref="LightCycleComponent"/> when day ends and night begins
 /// </summary>
-public sealed class CEStartDayEvent : EntityEventArgs { }
+public sealed class CEStartNightEvent(EntityUid mapUid) : EntityEventArgs
+{
+    public EntityUid MapUid = mapUid;
+}
+
+/// <summary>
+/// Called on the map with <see cref="LightCycleComponent"/> when night ends and dawn begins
+/// </summary>
+public sealed class CEStartDayEvent(EntityUid mapUid) : EntityEventArgs
+{
+    public EntityUid MapUid = mapUid;
+}
+
+/// <summary>
+/// called as bloadcast when the day begins on the main station map
+/// </summary>
+public sealed class CEGlobalStartDayEvent : EntityEventArgs
+{
+}
+
+/// <summary>
+/// called as bloadcast when the night begins on the main station map
+/// </summary>
+public sealed class CEGlobalStartNightEvent : EntityEventArgs
+{
+}

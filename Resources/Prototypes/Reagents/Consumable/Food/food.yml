@@ -11,12 +11,16 @@
     Food:
       effects:
       - !type:SatiateHunger
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ CEVampire ]
+          inverted: true
   plantMetabolism:
   - !type:PlantAdjustNutrition
     amount: 1.5
   - !type:PlantAdjustHealth
     amount: 0.75
-  pricePerUnit: 2
+  pricePerUnit: 0.5
 
 - type: reagent
   id: Vitamin #Anything "healthy"
@@ -39,13 +43,17 @@
       - !type:ModifyBleed
         amount: -0.25
       - !type:SatiateHunger #Numbers are balanced with this in mind + it helps limit how much healing you can get from food
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ CEVampire ]
+          inverted: true
   # Lets plants benefit too
   plantMetabolism:
   - !type:PlantAdjustNutrition
     amount: 0.5
   - !type:PlantAdjustHealth
     amount: 1.5
-  pricePerUnit: 2.5
+  pricePerUnit: 0.75
 
 - type: reagent
   id: Protein #Meat and beans
@@ -66,7 +74,11 @@
       - !type:ModifyBloodLevel
         amount: 1 # weaker than iron but pretty good all things considered
       - !type:SatiateHunger
-  pricePerUnit: 3
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ CEVampire ]
+          inverted: true
+  pricePerUnit: 0.9
 
 - type: reagent
   id: Sugar #Candy and grains
@@ -85,6 +97,9 @@
         - !type:ReagentCondition #Only satiates when eaten with nutriment
           reagent: Nutriment
           min: 0.1
+        - !type:MetabolizerTypeCondition
+          type: [ CEVampire ]
+          inverted: true
         factor: 1
   plantMetabolism:
   - !type:PlantAdjustNutrition

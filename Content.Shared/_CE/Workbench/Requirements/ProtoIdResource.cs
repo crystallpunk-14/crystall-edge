@@ -1,8 +1,3 @@
-/*
- * This file is sublicensed under MIT License
- * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
- */
-
 using Content.Shared._CE.Trading.Systems;
 using Robust.Shared.Prototypes;
 
@@ -52,7 +47,7 @@ public sealed partial class ProtoIdResource : CEWorkbenchCraftRequirement
         if (!protoManager.TryIndex(ProtoId, out var indexedProto))
             return 0;
 
-        var priceSys = entManager.System<CEEconomySystem>();
+        var priceSys = entManager.System<CESharedEconomySystem>();
 
         return priceSys.GetEstimatedPrice(indexedProto) * Count;
     }

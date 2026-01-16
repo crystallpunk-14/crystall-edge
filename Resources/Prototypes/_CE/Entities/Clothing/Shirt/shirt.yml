@@ -195,3 +195,25 @@
     sprite: _CE/Clothing/Shirt/Shirt/yellow_collar.rsi
   - type: Clothing
     sprite: _CE/Clothing/Shirt/Shirt/yellow_collar.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtGuard
+  name: guard's shirt
+  description: The shirt worn by the imperial guard. All identical, in a single, strict style.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Shirt/guard.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Shirt/guard.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtMerchant
+  name: merchant's shirt
+  description: Mysterious merchants, who had not been seen for hundreds of years, wore exactly this type of clothing.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Shirt/merchant.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Shirt/merchant.rsi

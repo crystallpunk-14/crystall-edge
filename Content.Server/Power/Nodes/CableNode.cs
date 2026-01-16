@@ -9,24 +9,6 @@ namespace Content.Server.Power.Nodes
     [DataDefinition]
     public sealed partial class CableNode : Node
     {
-        /// <summary>
-        /// CrystallEdge - If disabled, this cable will never connect.
-        /// </summary>
-        /// <remarks>
-        /// If you change this,
-        /// you must manually call <see cref="NodeGroupSystem.QueueReflood"/> to update the node connections.
-        /// </remarks>
-        [DataField]
-        public bool Active = true;
-
-        public override bool Connectable(IEntityManager entMan, TransformComponent? xform = null)
-        {
-            if (!Active)
-                return false;
-
-            return base.Connectable(entMan, xform);
-        }
-
         public override IEnumerable<Node> GetReachableNodes(TransformComponent xform,
             EntityQuery<NodeContainerComponent> nodeQuery,
             EntityQuery<TransformComponent> xformQuery,
@@ -62,7 +44,11 @@ namespace Content.Server.Power.Nodes
                     // vertical
                     nodeDirs.Add((Direction.Invalid, node));
                 }
-                //CrysrallEdge end
+                if (node is CEConnectorEdgeNode edge && edge.Direction == dir.GetOpposite())
+                {
+                    nodeDirs.Add((dir, node));
+                }
+                //CrystallEdge end
 
                 if (node is CableTerminalNode)
                 {

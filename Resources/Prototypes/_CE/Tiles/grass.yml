@@ -23,7 +23,7 @@
     West: /Textures/_CE/Tiles/Grass/double_edge_W.png
   baseTurf: CEDirt
   deconstructTools: [ CEShovel ]
-  isSubfloor: false
+  isSubfloor: true
   footstepSounds:
     collection: FootstepGrass
   heatCapacity: 10000
@@ -52,9 +52,9 @@
     East: /Textures/_CE/Tiles/GrassLight/double_edge_E.png
     North: /Textures/_CE/Tiles/GrassLight/double_edge_N.png
     West: /Textures/_CE/Tiles/GrassLight/double_edge_W.png
-  baseTurf: CEDirt
+  baseTurf: CEGrass
   deconstructTools: [ CEShovel ]
-  isSubfloor: false
+  isSubfloor: true
   footstepSounds:
     collection: FootstepGrass
   heatCapacity: 10000
@@ -83,9 +83,9 @@
     East: /Textures/_CE/Tiles/GrassTall/double_edge_E.png
     North: /Textures/_CE/Tiles/GrassTall/double_edge_N.png
     West: /Textures/_CE/Tiles/GrassTall/double_edge_W.png
-  baseTurf: CEDirt
+  baseTurf: CEGrassLight
   deconstructTools: [ CEShovel ]
-  isSubfloor: false
+  isSubfloor: true
   footstepSounds:
     collection: FootstepGrass
   heatCapacity: 10000
@@ -116,7 +116,7 @@
     West: /Textures/_CE/Tiles/GrassBlood/double_edge_W.png
   baseTurf: CEDirt
   deconstructTools: [ CEShovel ]
-  isSubfloor: false
+  isSubfloor: true
   footstepSounds:
     collection: FootstepGrass
   heatCapacity: 10000
@@ -145,9 +145,9 @@
     East: /Textures/_CE/Tiles/GrassBloodLight/double_edge_E.png
     North: /Textures/_CE/Tiles/GrassBloodLight/double_edge_N.png
     West: /Textures/_CE/Tiles/GrassBloodLight/double_edge_W.png
-  baseTurf: CEDirt
+  baseTurf: CEGrassBlood
   deconstructTools: [ CEShovel ]
-  isSubfloor: false
+  isSubfloor: true
   footstepSounds:
     collection: FootstepGrass
   heatCapacity: 10000
@@ -176,9 +176,9 @@
     East: /Textures/_CE/Tiles/GrassBloodTall/double_edge_E.png
     North: /Textures/_CE/Tiles/GrassBloodTall/double_edge_N.png
     West: /Textures/_CE/Tiles/GrassBloodTall/double_edge_W.png
-  baseTurf: CEDirt
+  baseTurf: CEGrassLightBlood
   deconstructTools: [ CEShovel ]
-  isSubfloor: false
+  isSubfloor: true
   footstepSounds:
     collection: FootstepGrass
   heatCapacity: 10000

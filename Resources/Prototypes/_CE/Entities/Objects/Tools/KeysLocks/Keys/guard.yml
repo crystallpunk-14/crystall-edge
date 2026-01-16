@@ -1,0 +1,83 @@
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyGuardBase
+  abstract: true
+  components:
+  - type: Sprite
+    state: key_guard
+
+- type: entity
+  parent: CEKeyGuardBase
+  id: CEKeyGuardHall
+  suffix: Guard Hall
+  components:
+  - type: CEKey
+    autoGenerateShape: GuardHall
+
+- type: entity
+  parent: CEKeyGuardBase
+  id: CEKeyGuardStaff
+  suffix: Guard Staff
+  components:
+  - type: CEKey
+    autoGenerateShape: GuardStaff
+
+- type: entity
+  parent: CEKeyGuardBase
+  id: CEKeyGuardArmory
+  suffix: Guard Armory
+  components:
+  - type: Sprite
+    state: key_guard_commander
+  - type: CEKey
+    autoGenerateShape: GuardArmory
+
+- type: entity
+  parent: CEKeyGuardBase
+  id: CEKeyGuardHeadRoom
+  suffix: Guard Head Room
+  components:
+  - type: Sprite
+    state: key_guard_commander
+  - type: CEKey
+    autoGenerateShape: GuardHeadRoom
+
+- type: entity
+  parent: CEKeyGuardBase
+  id: CEKeyGuardCage1
+  suffix: Guard Cage 1
+  components:
+  - type: CEKey
+    autoGenerateShape: GuardCage1
+
+- type: entity
+  parent: CEKeyGuardBase
+  id: CEKeyGuardCage2
+  suffix: Guard Cage 2
+  components:
+  - type: CEKey
+    autoGenerateShape: GuardCage2
+
+- type: entity
+  parent: CEKeyGuardBase
+  id: CEKeyGuardCage3
+  suffix: Guard Cage 3
+  components:
+  - type: CEKey
+    autoGenerateShape: GuardCage3
+
+- type: entity
+  parent: CEKeyGuardBase
+  id: CEKeyGuardCage4
+  suffix: Guard Cage 4
+  components:
+  - type: CEKey
+    autoGenerateShape: GuardCage4
+
+- type: entity
+  parent: CEKeyGuardBase
+  id: CEKeyGuardCage5
+  suffix: Guard Cage 5
+  components:
+  - type: CEKey
+    autoGenerateShape: GuardCage5

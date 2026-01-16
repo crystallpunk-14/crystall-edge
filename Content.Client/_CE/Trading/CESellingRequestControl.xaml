@@ -1,0 +1,33 @@
+<Control xmlns="https://spacestation14.io"
+         xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+         HorizontalExpand="True"
+         Margin="5">
+    <BoxContainer Orientation="Vertical" HorizontalExpand="True">
+        <PanelContainer Margin="0 10 0 0" VerticalExpand="True">
+            <PanelContainer.PanelOverride>
+                <graphics:StyleBoxFlat BackgroundColor="#35363b" />
+            </PanelContainer.PanelOverride>
+
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
+                <!-- Request requirements content -->
+                <!-- Added by code -->
+                <BoxContainer
+                    Name="ItemRequirements"
+                    Margin="10"
+                    Orientation="Vertical" VerticalExpand="True"
+                    HorizontalExpand="True" />
+                <!-- Reward -->
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True">
+                    <BoxContainer Orientation="Horizontal" Margin="0 0 0 10">
+                        <BoxContainer SetWidth="100" Name="PriceHolder" VerticalAlignment="Center"
+                                      HorizontalExpand="True" HorizontalAlignment="Right" />
+                    </BoxContainer>
+                </BoxContainer>
+            </BoxContainer>
+        </PanelContainer>
+        <!-- Request Button -->
+        <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
+            <Button Name="RequestButton" HorizontalExpand="True" Text="{Loc ce-trading-ui-request-sell}" ToolTip="{Loc ce-trading-ui-request-sell-tooltip}"/>
+        </BoxContainer>
+    </BoxContainer>
+</Control>

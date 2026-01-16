@@ -1,0 +1,15 @@
+- type: constructionGraph
+  id: CEWallmountKeyRack
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: CEWallmountKeyRack
+          steps:
+            - material: CEWood
+              amount: 2
+              doAfter: 2
+    - node: CEWallmountKeyRack
+      entity: CEWallmountKeyRack

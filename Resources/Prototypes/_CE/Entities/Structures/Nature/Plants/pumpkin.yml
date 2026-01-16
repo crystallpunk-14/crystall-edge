@@ -1,0 +1,28 @@
+- type: entity
+  id: CEPlantPumpkin
+  parent:
+  - CEPlantBase
+  - CEPlantBaseSolarEnergy
+  - CEPlantBaseSingleHarvest
+  - CEPlantBaseFloralDelicateType
+  - CEPlantBaseGrowing4Day
+  - CEPlantBaseMetabolizer1Day
+  - CEPlantBaseMetabolizerWater
+  name: pumpkin
+  description: Legends say there is a pumpkin king who stares into your soul through the crowns of trees.
+  components:
+  - type: CEPlantVisuals
+    growthSteps: 5
+    readyVariations: 2
+  - type: Sprite
+    sprite: _CE/Structures/Nature/Farm/pumpkin.rsi
+    layers:
+    - state: liq-1
+      sprite: _CE/Structures/Nature/Farm/watered.rsi
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+    - state: grow-1
+      map: ["enum.PlantVisualLayers.Base"]
+  - type: CEPlantAdditionalProduceOnInteract
+    produce:
+      CEFoodPumpkin: 4

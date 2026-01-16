@@ -1,5 +1,5 @@
-using Content.Shared.ActionBlocker;
 using Content.Shared.Movement.Components;
+using Content.Shared.Movement.Events;
 
 namespace Content.Shared.Movement.Systems;
 
@@ -11,6 +11,7 @@ public abstract partial class SharedMoverController
         SubscribeLocalEvent<MovementRelayTargetComponent, ComponentShutdown>(OnTargetRelayShutdown);
         SubscribeLocalEvent<MovementRelayTargetComponent, AfterAutoHandleStateEvent>(OnAfterRelayTargetState);
         SubscribeLocalEvent<RelayInputMoverComponent, AfterAutoHandleStateEvent>(OnAfterRelayState);
+        SubscribeLocalEvent<RelayInputMoverComponent, CECanMoveUpdatedEvent>(OnRelayCanMoveUpdated); //CrystallEdge vehicle port
     }
 
     private void OnAfterRelayTargetState(Entity<MovementRelayTargetComponent> entity, ref AfterAutoHandleStateEvent args)
@@ -22,6 +23,17 @@ public abstract partial class SharedMoverController
     {
         PhysicsSystem.UpdateIsPredicted(entity.Owner);
     }
+
+    //CrystallEdge vehicle
+    private void OnRelayCanMoveUpdated(Entity<RelayInputMoverComponent> ent, ref CECanMoveUpdatedEvent args)
+    {
+        if (args.CanMove)
+            return;
+
+        if (MoverQuery.TryComp(ent.Comp.RelayEntity, out var inputMoverComponent))
+            SetMoveInput((ent.Comp.RelayEntity, inputMoverComponent), MoveButtons.None);
+    }
+    //CrystallEdge vehicle end
 
     /// <summary>
     ///     Sets the relay entity and marks the component as dirty. This only exists because people have previously
@@ -61,6 +73,7 @@ public abstract partial class SharedMoverController
         Dirty(uid, component);
         Dirty(relayEntity, targetComp);
         _blocker.UpdateCanMove(uid);
+        UpdateMoverStatus((relayEntity, null, targetComp));
     }
 
     private void OnRelayShutdown(Entity<RelayInputMoverComponent> entity, ref ComponentShutdown args)
@@ -80,7 +93,7 @@ public abstract partial class SharedMoverController
         _blocker.UpdateCanMove(entity.Owner);
     }
 
-    private void OnTargetRelayShutdown(Entity<MovementRelayTargetComponent> entity, ref ComponentShutdown args)
+    protected virtual void OnTargetRelayShutdown(Entity<MovementRelayTargetComponent> entity, ref ComponentShutdown args)
     {
         PhysicsSystem.UpdateIsPredicted(entity.Owner);
         PhysicsSystem.UpdateIsPredicted(entity.Comp.Source);
@@ -91,4 +104,6 @@ public abstract partial class SharedMoverController
         if (TryComp(entity.Comp.Source, out RelayInputMoverComponent? relay) && relay.LifeStage <= ComponentLifeStage.Running)
             RemComp(entity.Comp.Source, relay);
     }
+
+    protected virtual void UpdateMoverStatus(Entity<InputMoverComponent?, MovementRelayTargetComponent?> ent) { }
 }

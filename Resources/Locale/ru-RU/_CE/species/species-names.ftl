@@ -631,3 +631,60 @@ ce-species-name-carcat-first-47 = Грохот Камнепада
 ce-species-name-carcat-first-48 = Запах Старой Бумаги
 ce-species-name-carcat-first-49 = Ночной Перекрёсток
 ce-species-name-carcat-first-50 = Мгла Дремучего Леса
+
+# CARRIN
+
+ce-species-name-carrin-male-first-1 = Кайрик
+ce-species-name-carrin-male-first-2 = Тшарен
+ce-species-name-carrin-male-first-3 = Виарок
+ce-species-name-carrin-male-first-4 = Рейлик
+ce-species-name-carrin-male-first-5 = Оштен
+ce-species-name-carrin-male-first-6 = Чиррак
+ce-species-name-carrin-male-first-7 = Луарк
+ce-species-name-carrin-male-first-8 = Фенви
+ce-species-name-carrin-male-first-9 = Сайор
+ce-species-name-carrin-male-first-10 = Джирик
+ce-species-name-carrin-male-first-11 = Аршиен
+ce-species-name-carrin-male-first-12 = Риалар
+ce-species-name-carrin-male-first-13 = Фен’тес
+ce-species-name-carrin-male-first-14 = Ширан
+ce-species-name-carrin-male-first-15 = Олуир
+
+
+ce-species-name-carrin-female-first-1 = Шиара
+ce-species-name-carrin-female-first-2 = Виенн
+ce-species-name-carrin-female-first-3 = Киали
+ce-species-name-carrin-female-first-4 = Раэнна
+ce-species-name-carrin-female-first-5 = Тшарри
+ce-species-name-carrin-female-first-6 = Лювия
+ce-species-name-carrin-female-first-7 = Серикса
+ce-species-name-carrin-female-first-8 = Энвиа
+ce-species-name-carrin-female-first-9 = Файлир
+ce-species-name-carrin-female-first-10 = Оруэлла
+ce-species-name-carrin-female-first-11 = Наири
+ce-species-name-carrin-female-first-12 = Лиавен
+ce-species-name-carrin-female-first-13 = Файла
+ce-species-name-carrin-female-first-14 = Эшари
+ce-species-name-carrin-female-first-15 = Ренния
+
+ce-species-name-carrin-last-1 = Кай’Рил
+ce-species-name-carrin-last-2 = Ши’Вари
+ce-species-name-carrin-last-3 = Тшар’Вейн
+ce-species-name-carrin-last-4 = Ри’Эн
+ce-species-name-carrin-last-5 = Фа’Таар
+ce-species-name-carrin-last-6 = Ли’Ксар
+ce-species-name-carrin-last-7 = Аш’Таар
+ce-species-name-carrin-last-8 = Лу’Вари
+ce-species-name-carrin-last-9 = Ра’Рил
+ce-species-name-carrin-last-10 = Хай’Таар
+ce-species-name-carrin-last-11 = Тэ’Вари
+ce-species-name-carrin-last-12 = Фай’Рил
+ce-species-name-carrin-last-13 = Ша’Таар
+ce-species-name-carrin-last-14 = Лу’Эн
+ce-species-name-carrin-last-15 = Ра’Вейн
+ce-species-name-carrin-last-16 = Ксу’Ксар
+ce-species-name-carrin-last-17 = Йа’Рил
+ce-species-name-carrin-last-18 = Ай’Вари
+ce-species-name-carrin-last-19 = Чи’Вейн
+ce-species-name-carrin-last-20 = Ву’Эн
+

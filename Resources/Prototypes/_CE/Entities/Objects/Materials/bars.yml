@@ -15,7 +15,7 @@
         map: ["base"]
   - type: Appearance
   - type: Stack
-    stackType: CEIron
+    stackType: CEIronBar
     count: 1
     baseLayer: base
     layerStates:
@@ -26,6 +26,8 @@
   - type: PhysicalComposition
     materialComposition:
       CEIron: 10
+  - type: StackPrice
+    price: 3
 
 - type: entity
   id: CEIronBar5
@@ -60,7 +62,7 @@
         map: ["base"]
   - type: Appearance
   - type: Stack
-    stackType: CEBrass
+    stackType: CEBrassBar
     count: 1
     baseLayer: base
     layerStates:
@@ -71,6 +73,8 @@
   - type: PhysicalComposition
     materialComposition:
       CEBrass: 10
+  - type: StackPrice
+    price: 3
 
 - type: entity
   id: CEBrassBar5

@@ -1,0 +1,33 @@
+- type: constructionGraph
+  id: CEBedFrameWooden
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: CEBedFrameWooden
+          steps:
+            - material: CEWood
+              amount: 2
+            - material: CECloth
+              amount: 1
+              doAfter: 2
+    - node: CEBedFrameWooden
+      entity: CEBedFrameWooden
+
+- type: constructionGraph
+  id: CEChairFrame
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: CEChairFrame
+          steps:
+            - material: CEWood
+              amount: 1
+              doAfter: 1
+    - node: CEChairFrame
+      entity: CEChairFrame

@@ -48,7 +48,6 @@ public sealed class ClientClothingSystem : ClothingSystem
         {"pants", "PANTS"},
         {"shirt", "SHIRT"},
         {"cloak", "CLOAK"},
-        {"keys", "KEYS"},
         //CrystallEdge zone end
     };
 

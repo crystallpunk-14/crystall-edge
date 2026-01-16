@@ -24,6 +24,12 @@ namespace Content.Shared.Construction.Components
         [ViewVariables(VVAccess.ReadWrite)]
         [DataField]
         public float Delay = 1f;
+
+        /// <summary>
+        /// CrystallEdge addition: we wanna be able to anchor conveyors under drills and other things.
+        /// </summary>
+        [DataField]
+        public bool CanAnchorOnOccupied = false;
     }
 
     [Flags]

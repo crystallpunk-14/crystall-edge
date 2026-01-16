@@ -9,7 +9,7 @@
     sound:
       path: /Audio/Items/crowbar_drop.ogg
   - type: MeleeWeapon
-    wideAnimationRotation: -135
+    wideAnimationRotation: 90
     damage:
       types:
         Blunt: 8
@@ -23,7 +23,7 @@
   - type: ToolTileCompatible
   - type: PhysicalComposition
     materialComposition:
-      CEIron: 10
+      CEIron: 7
   - type: Prying
   - type: Sprite
     sprite: _CE/Objects/Tools/crowbar.rsi

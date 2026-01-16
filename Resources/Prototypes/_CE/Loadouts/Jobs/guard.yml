@@ -1,0 +1,123 @@
+# Cloak
+
+## Guard Commander
+
+- type: loadoutGroup
+  id: CEGuardCommanderCloak
+  name: ce-loadout-cloak
+  loadouts:
+  - CEClothingCloakGuardCommander
+
+- type: loadout
+  id: CEClothingCloakGuardCommander
+  equipment:
+    cloak: CEClothingCloakGuardCommander
+
+
+## Investigator
+
+- type: loadoutGroup
+  id: CEInvestigatorCloak
+  name: ce-loadout-cloak
+  loadouts:
+  - CEClothingCloakMantleInvestigator
+
+- type: loadout
+  id: CEClothingCloakMantleInvestigator
+  equipment:
+    cloak: CEClothingCloakMantleInvestigator
+
+## Guard
+
+- type: loadoutGroup
+  id: CEGuardCloak
+  name: ce-loadout-cloak
+  minLimit: 0
+  loadouts:
+  - CEClothingCloakRaincoatGuard
+
+- type: loadout
+  id: CEClothingCloakRaincoatGuard
+  equipment:
+    cloak: CEClothingCloakRaincoatGuard
+
+# Head
+
+## Investigator
+
+- type: loadoutGroup
+  id: CEInvestigatorHead
+  name: ce-loadout-head
+  minLimit: 1
+  loadouts:
+  - CEClothingHeadHelmetInvestigator
+  - CEClothingHeadFedoraGuard
+
+- type: loadout
+  id: CEClothingHeadHelmetInvestigator
+  equipment:
+    head: CEClothingHeadHelmetInvestigator
+
+## Guard
+
+- type: loadoutGroup
+  id: CEGuardHead
+  name: ce-loadout-head
+  minLimit: 1
+  loadouts:
+  - CEClothingHeadHelmetGuard
+  - CEClothingHeadHelmetGuardCorinthian
+  - CEClothingHeadCapGuard
+  - CEClothingHeadFedoraGuard
+
+- type: loadout
+  id: CEClothingHeadHelmetGuard
+  equipment:
+    head: CEClothingHeadHelmetGuard
+
+- type: loadout
+  id: CEClothingHeadHelmetGuardCorinthian
+  equipment:
+    head: CEClothingHeadHelmetGuardCorinthian
+
+- type: loadout
+  id: CEClothingHeadCapGuard
+  equipment:
+    head: CEClothingHeadCapGuard
+
+- type: loadout
+  id: CEClothingHeadFedoraGuard
+  equipment:
+    head: CEClothingHeadFedoraGuard
+
+# Pants
+
+- type: loadoutGroup
+  id: CEGuardPants
+  name: ce-loadout-pants
+  loadouts:
+  - CEClothingPantsGuard
+
+- type: loadout
+  id: CEClothingPantsGuard
+  equipment:
+    pants: CEClothingPantsGuard
+
+# Shirt
+
+- type: loadoutGroup
+  id: CEGuardShirt
+  name: ce-loadout-shirt
+  loadouts:
+  - CEClothingShirtGuard
+  - CEClothingShirtSyurkoGuard
+
+- type: loadout
+  id: CEClothingShirtGuard
+  equipment:
+    shirt: CEClothingShirtGuard
+
+- type: loadout
+  id: CEClothingShirtSyurkoGuard
+  equipment:
+    shirt: CEClothingShirtSyurkoGuard

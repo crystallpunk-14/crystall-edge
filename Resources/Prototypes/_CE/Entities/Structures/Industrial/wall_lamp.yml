@@ -1,0 +1,99 @@
+- type: entity
+  id: CEWallLightBase
+  name: wall lamp
+  description: A light fixture. Draws power and produces light.
+  abstract: true
+  categories: [ ForkFiltered ]
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wallmount
+  components:
+  - type: Transform
+    anchored: true
+  - type: Clickable
+  - type: InteractionOutline
+  #- type: Construction
+  - type: Sprite
+    sprite: _CE/Structures/Industrial/wall_lamp.rsi
+    drawdepth: Mobs
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,0.5,0.4,0.35"
+        density: 190
+        mask:
+        - None
+        layer:
+        - TabletopMachineLayer
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors: #excess damage, don't spawn entities.
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:EmptyAllContainersBehaviour
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEScrapIron1:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+  - type: PointLight
+    enabled: true
+    radius: 6
+    energy: 1.0
+    softness: 0.9
+    color: "#f8ab58"
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
+  - type: LitOnPowered
+  - type: AmbientOnPowered
+  - type: AmbientSound
+    volume: -15
+    range: 2
+    sound:
+      path: /Audio/Ambience/Objects/light_hum.ogg
+  - type: ApcPowerReceiver
+    powerLoad: 0.1
+  - type: ExtensionCableReceiver
+    receptionRange: 0
+  - type: PlacementReplacement
+    key: lights
+
+- type: entity
+  parent: CEWallLightBase
+  id: CEWallLight
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - map: ["enum.PowerDeviceVisualLayers.Powered"]
+      state: glow
+      shader: unshaded
+      color: "#f8ab58"

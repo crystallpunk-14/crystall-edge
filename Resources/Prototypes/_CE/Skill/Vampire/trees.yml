@@ -1,0 +1,7 @@
+- type: skillTree
+  id: Vampire
+  name: ce-skill-tree-vampire-name
+  desc: ce-skill-tree-vampire-desc
+  skillType: Blood
+  color: "#b01e34"
+  parallax: CEBlood

@@ -1,11 +1,8 @@
-using System.Numerics;
 using Content.Shared.CCVar;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
-using Robust.Shared.Graphics;
-using Robust.Shared.Physics;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client._CE.PostProcess;

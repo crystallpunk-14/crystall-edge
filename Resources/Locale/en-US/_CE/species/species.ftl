@@ -6,3 +6,4 @@ ce-species-name-goblin = Goblin
 ce-species-name-silva = Silva
 ce-species-name-carcat = Carcat
 ce-species-name-skeleton = Skeleton
+ce-species-name-carrin = Carrin

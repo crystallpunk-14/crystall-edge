@@ -1,0 +1,8 @@
+- type: Tag
+  id: CEAmbientLurker
+  
+- type: Tag
+  id: CEAmbientWater
+  
+- type: Tag
+  id: CEAmbientForest

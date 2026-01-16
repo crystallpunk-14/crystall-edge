@@ -29,3 +29,6 @@ ce-lock-insert-fail-have-lock = В {$name} уже установлен замо�
 ce-lock-insert-success = Новый замок успешно установлен в {$name}!
 
 ce-lock-key-transforming = Ключ изменяет свою форму!
+
+ce-directional-latch-cannot-unlock = Не отпирается с этой стороны!
+ce-directional-latch-cannot-lock = Не запирается с этой стороны!

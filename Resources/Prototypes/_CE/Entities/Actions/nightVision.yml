@@ -1,0 +1,58 @@
+- type: entity
+  id: CEActionToggleNightVision
+  name: Toggle Night Vision
+  parent: BaseMentalAction
+  description: You begin to see the world in a special way that allows you to see even in total darkness.
+  components:
+  - type: Action
+    icon: Interface/VerbIcons/light.svg.192dpi.png
+    clientExclusive: true
+    checkCanInteract: false
+  - type: InstantAction
+    event: !type:CEToggleNightVisionEvent
+
+- type: entity
+  id: CENightVisionLight
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Tag
+    tags:
+    - HideContextMenu
+  - type: PointLight
+    radius: 8
+    energy: 1
+    softness: 10
+    color: "#ffa38c"
+    netsync: false
+    autoRot: true
+
+#- type: entity
+#  id: CEActionToggleNightVisionVampire
+#  name: Toggle Night Vision
+#  parent: BaseMentalAction
+#  description: You begin to see the world in a special way that allows you to see even in total darkness.
+#  components:
+#  - type: Action
+#    icon:
+#      sprite: _CE/Actions/Spells/vampire.rsi
+#      state: night_vision
+#    clientExclusive: true
+#    checkCanInteract: false
+#  - type: InstantAction
+#    event: !type:CEToggleNightVisionEvent
+#
+#- type: entity
+#  id: CENightVisionVampire
+#  categories: [ HideSpawnMenu ]
+#  components:
+#  - type: Tag
+#    tags:
+#    - HideContextMenu
+#  - type: PointLight
+#    radius: 6
+#    energy: 2
+#    softness: 10
+#    color: "#fc1e26"
+#    netsync: false
+#    autoRot: true
+

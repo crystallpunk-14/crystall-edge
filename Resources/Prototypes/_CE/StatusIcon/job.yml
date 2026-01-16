@@ -31,7 +31,49 @@
     state: Investigator
   jobName: ce-job-name-investigator
 
+# Tavern
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconTavernmaster
+  icon:
+    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    state: Tavernmaster
+  jobName: ce-job-name-tavernmaster
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconBartender
+  icon:
+    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    state: Bartender
+  jobName: ce-job-name-bartender
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconChef
+  icon:
+    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    state: Chef
+  jobName: ce-job-name-chef
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconFarmer
+  icon:
+    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    state: Farmer
+  jobName: ce-job-name-farmer
+
 # Citizens
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconBard
+  icon:
+    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    state: Bard
+  jobName: ce-job-name-bard
 
 - type: jobIcon
   parent: CEJobIcon
@@ -43,52 +85,24 @@
 
 - type: jobIcon
   parent: CEJobIcon
-  id: CEJobIconMayor
-  icon:
-      sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-      state: Mayor
-  jobName: ce-job-name-mayor
-
-# Mercenaries
-
-- type: jobIcon
-  parent: CEJobIcon
-  id: CEJobIconGuildmaster
+  id: CEJobIconTailorMerchant
   icon:
     sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-    state: Guildmaster
-  jobName: ce-job-name-guildmaster
+    state: TailorMerchant
+  jobName: ce-job-name-tailor-merchant
 
 - type: jobIcon
   parent: CEJobIcon
-  id: CEJobIconGuildWorker
+  id: CEJobIconPharmacistMerchant
   icon:
     sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-    state: GuildWorker
-  jobName: ce-job-name-guildworker
+    state: PharmacistMerchant
+  jobName: ce-job-name-pharmacist-merchant
 
 - type: jobIcon
   parent: CEJobIcon
-  id: CEJobIconMercenary
+  id: CEJobIconHomeGoodsMerchant
   icon:
-      sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-      state: Mercenary
-  jobName: ce-job-name-mercenary
-
-# Black Covenant
-
-- type: jobIcon
-  parent: CEJobIcon
-  id: CEJobIconCovenantHead
-  icon:
-      sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-      state: CovenantHead
-  jobName: ce-job-name-covenant-head
-
-- type: jobIcon
-  parent: CEJobIcon
-  id: CEJobIconCovenantAgent
-  icon:
-      sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-      state: CovenantAgent
-  jobName: ce-job-name-covenant-agent
+    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    state: HomeGoodsMerchant
+  jobName: ce-job-name-homegoods-merchant

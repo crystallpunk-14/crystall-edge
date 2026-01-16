@@ -1,7 +1,125 @@
+# Tavern
+
 - type: roleLoadout
-  id: JobCETownfolk
+  id: JobCETavernmaster
   groups:
-  - CETownfolkHead
+  - CEGeneralBag
+  - CETavernmasterHead #
+  - CEGeneralEyes
+  - CETavernmasterCloak #
+  - CEGeneralGloves
   - CEGeneralShirt
   - CEGeneralPants
   - CEGeneralShoes
+
+- type: roleLoadout
+  id: JobCEChef
+  groups:
+  - CEGeneralBag
+  - CEChefHead
+  - CEGeneralEyes
+  - CEGeneralGloves
+  - CEGeneralShirt
+  - CEGeneralPants
+  - CEGeneralShoes
+
+# Guard
+
+- type: roleLoadout
+  id: JobCEGuardCommander
+  groups:
+  - CEGeneralBag
+  - CEGuardHead
+  - CEGeneralEyes
+  - CEGuardCommanderCloak #
+  - CEGeneralGloves
+  - CEGuardShirt
+  - CEGuardPants
+  - CEGeneralShoes
+
+- type: roleLoadout
+  id: JobCEInvestigator
+  groups:
+  - CEGeneralBag
+  - CEInvestigatorHead
+  - CEGeneralEyes
+  - CEInvestigatorCloak #
+  - CEGeneralGloves
+  - CEGuardShirt
+  - CEGuardPants
+  - CEGeneralShoes
+
+- type: roleLoadout
+  id: JobCEGuard
+  groups:
+  - CEGeneralBag
+  - CEGuardHead
+  - CEGeneralEyes
+  - CEGuardCloak
+  - CEGeneralGloves
+  - CEGuardShirt
+  - CEGuardPants
+  - CEGeneralShoes
+
+# Citizens
+
+- type: roleLoadout
+  id: JobCETailorMerchant
+  groups:
+  - CEGeneralBag
+  - CETownfolkHead
+  - CEMerchantEyes #
+  - CEGeneralCloak
+  - CEGeneralGloves
+  - CEGeneralShirt
+  - CEGeneralPants
+  - CEGeneralShoes
+
+- type: roleLoadout
+  id: JobCEPharmacistMerchant
+  groups:
+  - CEGeneralBag
+  - CETownfolkHead
+  - CEMerchantEyes #
+  - CEGeneralCloak
+  - CEGeneralGloves
+  - CEGeneralShirt
+  - CEGeneralPants
+  - CEGeneralShoes
+
+- type: roleLoadout
+  id: JobCEHomeGoodsMerchant
+  groups:
+  - CEGeneralBag
+  - CETownfolkHead
+  - CEMerchantEyes
+  - CEGeneralCloak
+  - CEGeneralGloves
+  - CEGeneralShirt
+  - CEGeneralPants
+  - CEGeneralShoes
+
+- type: roleLoadout
+  id: JobCETownfolk
+  groups:
+  - CEGeneralBag
+  - CETownfolkHead
+  - CEGeneralEyes
+  - CEGeneralCloak
+  - CEGeneralGloves
+  - CEGeneralShirt
+  - CEGeneralPants
+  - CEGeneralShoes
+
+- type: roleLoadout
+  id: JobCEBard
+  groups:
+  - CEGeneralBag
+  - CEBardHead
+  - CEGeneralEyes
+  - CEGeneralCloak
+  - CEGeneralGloves
+  - CEBardShirt
+  - CEBardPants
+  - CEBardShoes
+  - CEBardTool

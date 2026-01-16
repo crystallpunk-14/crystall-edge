@@ -10,6 +10,10 @@
   maleFirstNames: CE_Names_Tiefling_Male_First
   femaleFirstNames: CE_Names_Tiefling_Female_First
   lastNames: CE_Names_Tiefling_Last
+  minAge: 18 #TODO: mention ages in the species guidebook entry
+  maxAge: 120
+  youngAge: 50
+  oldAge: 80
 
 # The lack of a layer means that
 # this person cannot have round-start anything
