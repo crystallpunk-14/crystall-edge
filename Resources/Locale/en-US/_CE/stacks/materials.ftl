@@ -1,5 +1,6 @@
 ce-stack-dirt-block = dirt blocks
 ce-stack-stone-block = stone blocks
+ce-stack-snow-block = snow blocks
 ce-stack-wood-planks = wooden planks
 ce-stack-cloth = rolls of fabric
 ce-stack-flora = tufts of grass

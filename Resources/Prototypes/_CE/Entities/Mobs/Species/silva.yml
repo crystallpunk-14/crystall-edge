@@ -84,7 +84,7 @@
     bloodReferenceSolution:
       reagents:
       - ReagentId: CEBloodSilva
-        Quantity: 1
+        Quantity: 300
   - type: Inventory
     templateId: CEHuman
     displacements:

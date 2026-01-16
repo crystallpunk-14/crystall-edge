@@ -97,8 +97,8 @@
       - id: CEFloorTileGrass30
       - id: CEFloorTileMycelium30
       - id: CEEnergyCrystalShard
-      #- id: CEd20Dice
-      #- id: CEd6Dice
+      - id: CEd20Dice
+      - id: CEd6Dice
       - id: CECoinCopper5
         weight: 0.5
 
@@ -114,6 +114,7 @@
       - id: CEPaperFolderGreen
       - id: CEPaperFolderPurple
       - id: CEPaper
+    - id: CEHandLabeler
     - id: CEPenFeather
     - id: CEFoodPotato
     - id: CEFoodOnion

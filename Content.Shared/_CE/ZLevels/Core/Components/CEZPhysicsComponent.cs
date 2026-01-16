@@ -79,4 +79,10 @@ public sealed partial class CEZPhysicsComponent : Component
     /// </summary>
     [DataField]
     public Vector2 SpriteOffsetDefault = Vector2.Zero;
+
+    /// <summary>
+    /// automatically rises if the current localPosition is lower than the height. Enabled by default, but for ghosts, for example, there is no point in climbing stairs
+    /// </summary>
+    [DataField]
+    public bool AutoStep = true;
 }

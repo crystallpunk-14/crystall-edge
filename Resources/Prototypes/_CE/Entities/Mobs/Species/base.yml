@@ -247,7 +247,7 @@
     bloodReferenceSolution:
       reagents:
       - ReagentId: CEBlood
-        Quantity: 1
+        Quantity: 300
   - type: FireVisuals
     sprite: _CE/Mobs/Effects/onfire.rsi
     normalState: Small_burning
