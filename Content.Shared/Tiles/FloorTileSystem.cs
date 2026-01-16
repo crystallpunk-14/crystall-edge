@@ -152,7 +152,7 @@ public sealed class FloorTileSystem : EntitySystem
                     return;
                 }
 
-                //CrystallEdge telegraph wrong turf
+                //CrystallEdge telegraphing wrong turf
                 _popup.PopupPredictedCoordinates(Loc.GetString("ce-floor-tile-wrong-turf"), location, args.User);
                 //CrystallEdge
             }
