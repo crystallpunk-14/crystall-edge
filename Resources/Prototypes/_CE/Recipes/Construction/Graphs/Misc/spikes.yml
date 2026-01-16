@@ -1,0 +1,15 @@
+- type: constructionGraph
+  id: CEWoodenSpikes
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: CEWoodenSpikes
+          steps:
+            - material: CEWood
+              amount: 2
+              doAfter: 2
+    - node: CEWoodenSpikes
+      entity: CEWoodenSpikes

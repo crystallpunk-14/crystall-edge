@@ -8,10 +8,12 @@ using Content.Shared.CCVar;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
+using Content.Shared.Effects;
 using Content.Shared.Stunnable;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using Robust.Shared.Physics.Components;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
@@ -26,6 +28,7 @@ public sealed class CEZLevelDamageSystem : EntitySystem
     [Dependency] private readonly IConfigurationManager _config = default!;
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly SharedColorFlashEffectSystem _color = default!;
 
     public float BaseFallingDamage { get; private set; }
     public float BaseFallingOtherDamage { get; private set; }
@@ -51,6 +54,8 @@ public sealed class CEZLevelDamageSystem : EntitySystem
     {
         var damageModifier = 1f;
         var stunModifier = 1f;
+
+        List<EntityUid> redDamageFlash = new();
 
         var damageToOtherEv = new CEZFallingOnTargetDamageCalculateEvent(args.ImpactPower);
         RaiseLocalEvent(ent, damageToOtherEv);
@@ -85,12 +90,20 @@ public sealed class CEZLevelDamageSystem : EntitySystem
             if (otherStun > 0)
                 _stun.TryKnockdown(victim, TimeSpan.FromSeconds(otherStun));
             if (otherDamage > 0)
+            {
                 _damage.TryChangeDamage(victim, new DamageSpecifier(_proto.Index(BluntDamageType), otherDamage));
+                redDamageFlash.Add(victim);
+            }
         }
 
         var damageAmount = args.ImpactPower * args.ImpactPower * BaseFallingDamage * damageModifier;
         if (damageAmount > 0)
+        {
             _damage.TryChangeDamage(ent.Owner, new DamageSpecifier(_proto.Index(BluntDamageType), damageAmount));
+            redDamageFlash.Add(ent.Owner);
+        }
+
+        _color.RaiseEffect(Color.Red, redDamageFlash, Filter.Pvs(ent, entityManager: EntityManager));
 
         var knockdownTime = MathF.Min(args.ImpactPower * args.ImpactPower * BaseFallingStunTime * stunModifier, 5f);
         if (knockdownTime > 0)
