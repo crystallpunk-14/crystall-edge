@@ -3,6 +3,7 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.Effects;
 using Content.Shared.Jittering;
 using Content.Shared.Weapons.Melee;
+using Robust.Shared.Network;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
@@ -24,6 +25,7 @@ public abstract class CESharedDrillSystem : EntitySystem
     [Dependency] private readonly SharedJitteringSystem _jitter = default!;
     [Dependency] private readonly MeleeSoundSystem _meleeSound = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private readonly INetManager _net = default!;
 
     private readonly List<EntityUid> _cachedEntityList = new();
 
@@ -63,7 +65,8 @@ public abstract class CESharedDrillSystem : EntitySystem
                 _cachedEntityList.Add(hit.HitEntity);
             }
 
-            _color.RaiseEffect(Color.Red, _cachedEntityList, Filter.Pvs(uid, entityManager: EntityManager));
+            if (_net.IsClient)
+                _color.RaiseEffect(Color.Red, _cachedEntityList, Filter.Pvs(uid, entityManager: EntityManager));
             _jitter.DoJitter(uid, freq, true, drill.JitterAmplitude, drill.JitterFreq);
         }
     }

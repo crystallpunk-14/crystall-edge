@@ -62,7 +62,7 @@ public sealed class CEZLevelDamageSystem : EntitySystem
         var otherDamage = damageToOtherEv.DamageMultiplier * BaseFallingOtherDamage * args.ImpactPower * ent.Comp.Mass;
         var otherStun = damageToOtherEv.StunMultiplier * BaseFallingOtherStunTime * args.ImpactPower * ent.Comp.Mass;
 
-        //Edit self damage
+        // Calculate damage modifiers for the falling entity
         var damageToSelfEv = new CEZFallingDamageCalculateEvent(ent, args.ImpactPower);
         RaiseLocalEvent(ent, damageToSelfEv);
         damageModifier *= damageToSelfEv.DamageMultiplier;
@@ -77,7 +77,7 @@ public sealed class CEZLevelDamageSystem : EntitySystem
 
         foreach (var victim in entitiesAround)
         {
-            //Other entities edit our damage
+            // Calculate damage modifiers from entities being fallen upon
             var editDamageToSelfEv = new CEZFallingDamageCalculateEvent(ent, args.ImpactPower);
             RaiseLocalEvent(victim, editDamageToSelfEv);
             damageModifier *= editDamageToSelfEv.DamageMultiplier;
@@ -86,21 +86,21 @@ public sealed class CEZLevelDamageSystem : EntitySystem
             var fellOnMeEv = new CEZFellOnMeEvent(ent, args.ImpactPower);
             RaiseLocalEvent(victim, fellOnMeEv);
 
-            //Affect other entities
+            // Apply damage and stun to entities that were fallen upon
             if (otherStun > 0)
                 _stun.TryKnockdown(victim, TimeSpan.FromSeconds(otherStun));
             if (otherDamage > 0)
             {
-                _damage.TryChangeDamage(victim, new DamageSpecifier(_proto.Index(BluntDamageType), otherDamage));
-                redDamageFlash.Add(victim);
+                if (_damage.TryChangeDamage(victim, new DamageSpecifier(_proto.Index(BluntDamageType), otherDamage)) && _net.IsClient)
+                    redDamageFlash.Add(victim);
             }
         }
 
         var damageAmount = args.ImpactPower * args.ImpactPower * BaseFallingDamage * damageModifier;
         if (damageAmount > 0)
         {
-            _damage.TryChangeDamage(ent.Owner, new DamageSpecifier(_proto.Index(BluntDamageType), damageAmount));
-            redDamageFlash.Add(ent.Owner);
+            if (_damage.TryChangeDamage(ent.Owner, new DamageSpecifier(_proto.Index(BluntDamageType), damageAmount)) && _net.IsClient)
+                redDamageFlash.Add(ent.Owner);
         }
 
         _color.RaiseEffect(Color.Red, redDamageFlash, Filter.Pvs(ent, entityManager: EntityManager));
