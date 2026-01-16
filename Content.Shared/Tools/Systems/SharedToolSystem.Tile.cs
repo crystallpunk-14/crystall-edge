@@ -76,7 +76,7 @@ public abstract partial class SharedToolSystem
 
         if (!tool.Qualities.ContainsAny(tileDef.DeconstructTools))
         {
-            //CrystallEdge telegraphy for wrong tool
+            //CrystallEdge telegraphing for wrong tool
             // Get list of required tool names for popup message
             var toolNames = new List<string>();
             foreach (var toolQuality in tileDef.DeconstructTools)
