@@ -34,11 +34,12 @@ public sealed class CEMapCollapsingSystem : EntitySystem
         if (!_mapGridQuery.TryComp(ent, out var mapGrid))
             return;
         _zLevel.TryMapDown(ent.Owner, out var belowMapUid); //TODO: recalculate even without map down
-        _mapGridQuery.TryComp(belowMapUid, out var belowMapGrid);
+        if(!_mapGridQuery.TryComp(belowMapUid, out var belowMapGrid))
+            return;
 
         foreach (var entry in args.Changes)
         {
-            RecalculateSupport(ent, mapGrid, (belowMapUid, belowMapGrid), entry.GridIndices);
+            RecalculateSupport(ent, mapGrid, belowMapUid.HasValue ? (belowMapUid.Value, belowMapGrid) : null, entry.GridIndices);
         }
     }
 
@@ -80,7 +81,7 @@ public sealed class CEMapCollapsingSystem : EntitySystem
         RecalculateSupport((aboveMapUid.Value, collapsingComp), aboveMapGrid, (ent, mapGrid), indices);
     }
 
-    private void RecalculateSupport(Entity<CEMapCollapsingComponent> ent, MapGridComponent currentMapGrid, Entity<MapGridComponent?>? belowMap, Vector2i tilePos)
+    private void RecalculateSupport(Entity<CEMapCollapsingComponent> ent, MapGridComponent currentMapGrid, Entity<MapGridComponent>? belowMap, Vector2i tilePos)
     {
         if (!_mapGridQuery.TryComp(ent.Owner, out var mapGrid))
         {
@@ -100,7 +101,7 @@ public sealed class CEMapCollapsingSystem : EntitySystem
             return;
         }
 
-        var enumerator = _map.GetAnchoredEntitiesEnumerator(belowMap, belowMap.Comp, tilePos);
+        var enumerator = _map.GetAnchoredEntitiesEnumerator(belowMap.Value, belowMap.Value.Comp, tilePos);
         while (enumerator.MoveNext(out var anchored))
         {
 
