@@ -1,0 +1,16 @@
+- type: tradingPosition
+  id: CEBaseLockpick
+  faction: BlackMarket
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CEBaseLockpick
+    count: 1
+
+- type: tradingPosition
+  id: CEThiefHideoutFlag
+  faction: BlackMarket
+  priceMarkup: 10
+  category: Materials
+  service: !type:CEBuyItemsService
+    product: CEThiefHideoutFlag
+    count: 1

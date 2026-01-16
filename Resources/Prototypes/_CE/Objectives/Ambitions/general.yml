@@ -1,0 +1,279 @@
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionAlcoholic
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-alcoholic-name
+    desc: ce-ambition-alcoholic-desc
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionFoodCritic
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-food-critic-name
+    desc: ce-ambition-food-critic-desc
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionWordOfHonor
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-word-of-honor-name
+    desc: ce-ambition-word-of-honor-desc
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionLiar
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-liar-name
+    desc: ce-ambition-liar-desc
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionStrongDiet
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-strong-diet-name
+    desc: ce-ambition-strong-diet-desc
+    weight: 2
+    parsings:
+      REASON: !type:RandomDataset
+        dataset: CEAmbitionReason
+      FOOD: !type:RandomFood
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionItemMania
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-mania-name
+    desc: ce-ambition-item-mania-desc
+    weight: 3
+    parsings:
+      REASON: !type:RandomDataset
+        dataset: CEAmbitionReason
+      ITEM: !type:RandomEntity
+        whitelist:
+          - Item
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionAbstractMania
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-mania-name
+    desc: ce-ambition-abstract-mania-desc
+    parsings:
+      TOPIC: !type:RandomDataset
+        dataset: CEAmbitionAbstractTopic
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionSpeciesMania
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-mania-name
+    desc: ce-ambition-species-mania-desc
+    weight: 2
+    parsings:
+      SPECIES: !type:RandomSpecies
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionEarning
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-become-rich-name
+    desc: ce-ambition-become-rich-desc
+    parsings:
+      COUNT: !type:RandomNumber
+        range:
+          min: 5
+          max: 10
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionBefriend
+  components:
+  - type: CEAmbitionObjective
+    weight: 3 #Socialization is fun
+    name: ce-ambition-befriend-name
+    desc: ce-ambition-befriend-desc
+    parsings:
+      NAME: !type:RandomOtherPerson
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionEnemy
+  components:
+  - type: CEAmbitionObjective
+    weight: 3 #Socialization is fun
+    name: ce-ambition-enemy-name
+    desc: ce-ambition-enemy-desc
+    parsings:
+      NAME: !type:RandomOtherPerson
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionDate
+  components:
+  - type: CEAmbitionObjective
+    weight: 3 #Socialization is fun
+    name: ce-ambition-date-name
+    desc: ce-ambition-date-desc
+    parsings:
+      NAME: !type:RandomOtherPerson
+      FOOD: !type:RandomFood
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionProfessionChange
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-profession-change-name
+    desc: ce-ambition-profession-change-desc
+    parsings:
+      JOB: !type:RandomOtherJob
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionManipulatorQuarrel
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-manipulator-name
+    desc: ce-ambition-manipulator-quarrel-desc
+    parsings:
+      NAME1: !type:RandomOtherPerson
+      NAME2: !type:RandomOtherPerson
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionManipulatorFriend
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-manipulator-name
+    desc: ce-ambition-manipulator-friend-desc
+    parsings:
+      NAME1: !type:RandomOtherPerson
+      NAME2: !type:RandomOtherPerson
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionSupport
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-support-name
+    desc: ce-ambition-support-desc
+    parsings:
+      REASON: !type:RandomDataset
+        dataset: CEAmbitionReason
+      NAME: !type:RandomOtherPerson
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionStoryCollector
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-story-collector-name
+    desc: ce-ambition-story-collector-desc
+    weight: 3 # Social interaction
+    parsings:
+      COUNT: !type:RandomNumber
+        range:
+          min: 3
+          max: 6
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionSecretBenefactor
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-secret-benefactor-name
+    desc: ce-ambition-secret-benefactor-desc
+    weight: 3 # Social interaction
+    parsings:
+      NAME: !type:RandomOtherPerson
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionUnusualCollector
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-unusual-collector-name
+    desc: ce-ambition-unusual-collector-desc
+    weight: 2
+    parsings:
+      COUNT: !type:RandomNumber
+        range:
+          min: 2
+          max: 5
+      ITEM: !type:RandomEntity
+        whitelist:
+          - Item
+        blacklist:
+          - Extractable # uhh, not the best way, but i wanna exclude organs
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionInteriorDesigner
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-interior-designer-name
+    desc: ce-ambition-interior-designer-desc
+    weight: 2
+    parsings:
+      LOCATION: !type:RandomLocation
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionPeacemaker
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-peacemaker-name
+    desc: ce-ambition-peacemaker-desc
+    weight: 2 # Roleplay challenge
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionParanoidal
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-paranoidal-name
+    desc: ce-ambition-paranoidal-desc
+    weight: 2 # Fun
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionInnocentSoul
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-innocent-soul-name
+    desc: ce-ambition-innocent-soul-desc
+    weight: 2 # Fun
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionHoverboard
+  components:
+  - type: CEAmbitionObjective
+    conditions:
+      - !type:RequiredSpecies #Dont make sense for carrins
+        inverted: true
+        species:
+        - CECarrin
+    name: ce-ambition-hoverboard-name
+    desc: ce-ambition-hoverboard-desc
+    weight: 1
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionHoverboardRace
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-hoverboard-race-name
+    desc: ce-ambition-hoverboard-race-desc
+    weight: 1
+    parsings:
+      NAME: !type:RandomOtherPerson

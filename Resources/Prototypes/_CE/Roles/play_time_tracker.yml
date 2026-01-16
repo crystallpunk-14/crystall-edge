@@ -9,29 +9,33 @@
 - type: playTimeTracker
   id: CEJobInvestigator
 
-# Citizens
+# Tavern
 
 - type: playTimeTracker
-  id: CEJobMayor
+  id: CEJobTavernmaster
+
+- type: playTimeTracker
+  id: CEJobBartender
+
+- type: playTimeTracker
+  id: CEJobChef
+
+- type: playTimeTracker
+  id: CEJobFarmer
+
+# Citizens
 
 - type: playTimeTracker
   id: CEJobTownfolk
 
-# Mercenaries
+- type: playTimeTracker
+  id: CEJobBard
 
 - type: playTimeTracker
-  id: CEJobGuildmaster
+  id: CEJobTailorMerchant
 
 - type: playTimeTracker
-  id: CEJobGuildWorker
+  id: CEJobPharmacistMerchant
 
 - type: playTimeTracker
-  id: CEJobMercenary
-
-# Black Covenant
-
-- type: playTimeTracker
-  id: CEJobCovenantHead
-
-- type: playTimeTracker
-  id: CEJobCovenantAgent
+  id: CEJobHomeGoodsMerchant

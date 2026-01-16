@@ -1,0 +1,9 @@
+- type: construction
+  hide: false
+  id: CEMachine
+  graph: CEMachine
+  startNode: start
+  targetNode: machine
+  category: construction-category-machines
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false

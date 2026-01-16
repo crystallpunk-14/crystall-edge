@@ -1,0 +1,45 @@
+# Public
+
+- type: tradingFaction
+  id: Horticulture
+  color: "#3cb371"
+  name: ce-trade-faction-horticulture
+
+- type: tradingFaction
+  id: HomeDecor
+  color: "#749a94"
+  name: ce-trade-faction-home-decor
+
+- type: tradingFaction
+  id: Tailors
+  color: "#75b3bb"
+  name: ce-trade-faction-tailors
+
+- type: tradingFaction
+  id: DwarfMiners
+  color: "#76503c"
+  name: ce-trade-faction-dwarf-mining
+
+- type: tradingFaction
+  id: Alcohol
+  color: "#b03060"
+  name: ce-trade-faction-alcohol
+
+# Departamental
+
+- type: tradingFaction
+  id: EmpireGuard
+  color: "#2f6cd6"
+  name: ce-trade-faction-empire-guard
+
+- type: tradingFaction
+  id: ApothecariesGuild
+  color: "#749a94"
+  name: ce-trade-faction-apothecaries-guild
+
+# Antags
+
+- type: tradingFaction
+  id: BlackMarket
+  color: "#4a0e0e"
+  name: ce-trade-faction-black-market

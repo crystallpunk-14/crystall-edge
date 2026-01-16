@@ -75,10 +75,10 @@ namespace Content.Shared.Containers.ItemSlots
         public EntityWhitelist? Blacklist;
 
         [DataField]
-        public SoundSpecifier? InsertSound = new SoundPathSpecifier("/Audio/Weapons/Guns/MagIn/revolver_magin.ogg");
+        public SoundSpecifier? InsertSound = new SoundPathSpecifier("/Audio/_CE/Effects/crystal_insert.ogg"); //CrystallEdge sound replaced
 
         [DataField]
-        public SoundSpecifier? EjectSound = new SoundPathSpecifier("/Audio/Weapons/Guns/MagOut/revolver_magout.ogg");
+        public SoundSpecifier? EjectSound = new SoundPathSpecifier("/Audio/_CE/Effects/crystal_eject.ogg"); //CrystallEdge sound replaced
 
         /// <summary>
         ///     The name of this item slot. This will be shown to the user in the verb menu.

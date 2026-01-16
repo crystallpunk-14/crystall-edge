@@ -1,0 +1,30 @@
+ce-rum-name-format = бутылка {$part0} рома "{$part1}"
+
+ce-rum-state-1 = тёмного
+ce-rum-state-2 = золотого
+ce-rum-state-3 = белого
+ce-rum-state-4 = пряного
+ce-rum-state-5 = карамельного
+ce-rum-state-6 = выдержанного
+ce-rum-state-7 = тропического
+ce-rum-state-8 = дубового
+ce-rum-state-9 = янтарного
+ce-rum-state-10 = островного
+
+ce-rum-brand-1 = Ромовая баба
+ce-rum-brand-2 = Море лун
+ce-rum-brand-3 = Левиафан
+ce-rum-brand-4 = Летучий корсар
+ce-rum-brand-5 = Забытый клад
+ce-rum-brand-6 = Бальзам для печени
+ce-rum-brand-7 = Пляска святого Вита
+ce-rum-brand-8 = Чёрный пират
+ce-rum-brand-9 = Сахарные пески
+ce-rum-brand-10 = Доктор Липски
+ce-rum-brand-11 = Молодые ветра
+ce-rum-brand-12 = Уставший моряк
+ce-rum-brand-13 = Ржавчина
+ce-rum-brand-14 = Авантюрист
+ce-rum-brand-15 = Дядюшка Пит
+ce-rum-brand-16 = Дикий Кот
+ce-rum-brand-17 = Дитинар

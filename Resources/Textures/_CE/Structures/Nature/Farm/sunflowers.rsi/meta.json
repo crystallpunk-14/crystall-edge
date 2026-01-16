@@ -1,0 +1,26 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-4.0",
+    "copyright": "Created by iowaku (Discord)",
+    "size": {
+        "x": 64,
+        "y": 64
+    },
+    "states": [
+        {
+            "name": "grow-1"
+        },
+        {
+            "name": "grow-2"
+        },
+        {
+            "name": "grown-1"
+        },
+        {
+            "name": "grown-2"
+        },
+        {
+            "name": "grown-3"
+        }
+    ]
+}

@@ -30,6 +30,7 @@
         sound:
           collection: MeatLaserImpact
   - type: Stamina
+  - type: StunVisuals
   - type: MobState
   - type: MobThresholds
     thresholds:
@@ -73,6 +74,20 @@
         Bloodloss: 0.25
   - type: Thirst
 
+# Used for mobs that need to breathe
+- type: entity
+  save: false
+  id: CEMobRespirator
+  abstract: true
+  components:
+  - type: Respirator
+    damage:
+      types:
+        Asphyxiation: 2
+    damageRecovery:
+      types:
+        Asphyxiation: -1.0
+
 - type: entity
   id: CEMobMagical
   abstract: true
@@ -84,6 +99,7 @@
   - type: RadiationReceiver
   - type: CEEnergyRadiationRegeneration
   - type: CEEnergyOverchargeDamage
+  - type: CEEnergyDeficitDamage
   - type: CEEnergyAlert
 
 - type: entity
@@ -100,10 +116,11 @@
     normalBodyTemperature: 310.15
     thermalRegulationTemperatureThreshold: 2
   - type: Temperature
-    heatDamageThreshold: 325
-    coldDamageThreshold: 260
     currentTemperature: 310.15
     specificHeat: 42
+  - type: TemperatureDamage
+    heatDamageThreshold: 325
+    coldDamageThreshold: 260
     coldDamage:
       types:
         Cold: 1 #per second, scales with temperature & other constants

@@ -1,0 +1,15 @@
+{
+    "version": 1,
+    "size": {
+        "x": 34,
+        "y": 54
+    },
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Created by TheShuEd (github)",
+    "states": [
+        {
+            "name": "base",
+            "directions": 4
+        }
+    ]
+}

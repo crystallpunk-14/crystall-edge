@@ -98,3 +98,15 @@
     Shock: 1.25
     Poison: 0.5
     Caustic: 0.5
+
+- type: damageModifierSet
+  id: CESkeleton
+  coefficients:
+    Blunt: 1.2
+    Piercing: 0.8
+    Cold: 0.0
+    Poison: 0.0
+    Radiation: 0.0
+    Asphyxiation: 0.0
+    Bloodloss: 0.0
+    Cellular: 0.0

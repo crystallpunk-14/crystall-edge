@@ -1,0 +1,138 @@
+- type: tradingPosition
+  id: CEClothingCloakRaincoatGuard
+  faction: EmpireGuard
+  priceMarkup: 10
+  category: Clothing
+  service: !type:CEBuyItemsService
+    product: CEClothingCloakRaincoatGuard
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingShirtSyurkoGuard
+  faction: EmpireGuard
+  priceMarkup: 10
+  category: Clothing
+  service: !type:CEBuyItemsService
+    product: CEClothingShirtSyurkoGuard
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingHeadHelmetGuard
+  faction: EmpireGuard
+  priceMarkup: 10
+  category: Clothing
+  service: !type:CEBuyItemsService
+    product: CEClothingHeadHelmetGuard
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingHeadHelmetGuardCorinthian
+  faction: EmpireGuard
+  priceMarkup: 10
+  category: Clothing
+  service: !type:CEBuyItemsService
+    product: CEClothingHeadHelmetGuardCorinthian
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingHeadCapGuard
+  faction: EmpireGuard
+  priceMarkup: 10
+  category: Clothing
+  service: !type:CEBuyItemsService
+    product: CEClothingHeadCapGuard
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingHeadFedoraGuard
+  faction: EmpireGuard
+  priceMarkup: 10
+  category: Clothing
+  service: !type:CEBuyItemsService
+    product: CEClothingHeadFedoraGuard
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingPantsGuard
+  faction: EmpireGuard
+  priceMarkup: 10
+  category: Clothing
+  service: !type:CEBuyItemsService
+    product: CEClothingPantsGuard
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingShirtGuard
+  faction: EmpireGuard
+  priceMarkup: 10
+  category: Clothing
+  service: !type:CEBuyItemsService
+    product: CEClothingShirtGuard
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingCloakMantleInvestigator
+  faction: EmpireGuard
+  priceMarkup: 10
+  category: Clothing
+  service: !type:CEBuyItemsService
+    product: CEClothingCloakMantleInvestigator
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingHeadHelmetInvestigator
+  faction: EmpireGuard
+  priceMarkup: 10
+  category: Clothing
+  service: !type:CEBuyItemsService
+    product: CEClothingHeadHelmetInvestigator
+    count: 1
+
+- type: tradingPosition
+  id: CERope
+  faction: EmpireGuard
+  priceMarkup: 10
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CERope
+    count: 1
+
+- type: tradingPosition
+  id: CEGunJustice
+  faction: EmpireGuard
+  service: !type:CEBuyItemsService
+    product: CEGunJustice
+    count: 1
+  category: Weapon
+
+- type: tradingPosition
+  id: CEGunPeacekeeper
+  faction: EmpireGuard
+  service: !type:CEBuyItemsService
+    product: CEGunPeacekeeper
+    count: 1
+  category: Weapon
+
+- type: tradingPosition
+  id: CEManaTransferGlove
+  faction: EmpireGuard
+  service: !type:CEBuyItemsService
+    product: CEManaTransferGlove
+    count: 1
+  category: Tools
+
+- type: tradingPosition
+  id: CEWeaponMaceTwoHandedGuardrail
+  faction: EmpireGuard
+  service: !type:CEBuyItemsService
+    product: CEWeaponMaceTwoHandedGuardrail
+    count: 1
+  category: Weapon
+
+- type: tradingPosition
+  id: CEMachineCoreTradingPlatformEmpireGuard
+  faction: EmpireGuard
+  service: !type:CEBuyItemsService
+    product: CEMachineCoreTradingPlatformEmpireGuard
+    count: 1
+  category: MachineCore

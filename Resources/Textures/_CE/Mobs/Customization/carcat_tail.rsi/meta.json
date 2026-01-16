@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "license": "All right reserved",
+  "license": "All rights reserved",
   "copyright": "Created by omsoyk (github)",
   "size": {
     "x": 48,
@@ -12,7 +12,7 @@
       "directions": 4
     },
     {
-      "name": "tail_waggin",
+      "name": "tail_wagging",
       "directions": 4,
       "delays": [
         [
@@ -66,7 +66,65 @@
       "directions": 4
     },
     {
-      "name": "tail_fluffy_waggin",
+      "name": "tail_fluffy_end",
+      "directions": 4
+    },
+    {
+      "name": "tail_fluffy_wagging",
+      "directions": 4,
+      "delays": [
+        [
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15
+        ],
+        [
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15
+        ],
+        [
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15
+        ],
+        [
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15
+        ]
+      ]
+    },
+    {
+      "name": "tail_fluffy_wagging_end",
       "directions": 4,
       "delays": [
         [

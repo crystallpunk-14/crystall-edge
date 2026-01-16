@@ -1,0 +1,101 @@
+- type: entity
+  parent:
+  - BaseItem
+  id: CELantern
+  name: lantern
+  description: A device that converts energy from crystals into a source of directional light. Convenient for traveling.
+  categories: [ ForkFiltered ]
+  components:
+  - type: HandheldLight
+    wattage: 0.1
+    addPrefix: false
+    blinkingBehaviourId: blinking
+    radiatingBehaviourId: blinking
+  - type: LightBehaviour
+    behaviours:
+    - !type:RandomizeBehaviour
+      id: blinking
+      interpolate: Nearest
+      minDuration: 0.02
+      maxDuration: 0.06
+      startValue: 0.0
+      endValue: 3.0
+      property: Energy
+      isLooped: true
+      enabled: false
+  - type: Sprite
+    sprite: _CE/Objects/Tools/lantern.rsi
+    noRot: false
+    layers:
+    - state: icon
+    - state: light_icon
+      color: "#4da1d6"
+      map: ["crystal"]
+      visible: false
+    - state: light_icon
+      color: "#4da1d6"
+      shader: unshaded
+      visible: false
+      map: ["light"]
+  - type: UseDelay
+    delay: 1
+  - type: PointLight
+    enabled: false
+    mask: /Textures/_CE/Effects/LightMasks/crystal_cone.png
+    autoRot: true
+    energy: 3
+    radius: 6
+    color: "#4da1d6"
+    netsync: false
+  - type: Appearance
+  - type: ToggleableVisuals
+    spriteLayer: light
+    inhandVisuals:
+      left:
+      - state: light_inhand-left
+        color: "#4da1d6"
+        shader: unshaded
+      right:
+      - state: light_inhand-right
+        color: "#4da1d6"
+        shader: unshaded
+  - type: ItemTogglePointLight
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: ce-magic-energy-crystal-slot-name
+        startingItem: CEEnergyCrystalCell
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot {}
+  - type: Clothing
+    equipDelay: 0.25
+    unequipDelay: 0.25
+    sprite: _CE/Objects/Tools/lantern.rsi
+    quickEquip: false
+    equipWhileMoving: true
+    slots:
+    - belt
+  - type: MeleeWeapon
+    attackRate: 1.6
+    range: 0.8
+    animationOffset: 0.5
+    damage:
+      types:
+        Blunt: 7
+    soundHit:
+      collection: MetalThud
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/toolbox_drop.ogg
+  - type: Item
+    size: Normal
+    shape:
+    - 0, 0, 1, 1
+  - type: Rotatable
+  - type: PhysicalComposition
+    materialComposition:
+      CEIron: 10
+      CEBrass: 6

@@ -1,0 +1,49 @@
+- type: entity
+  parent: CEBaseAmbitionObjective
+  abstract: true
+  id: CEBaseCarcatAmbition
+  components:
+  - type: CEAmbitionObjective
+    conditions:
+      - !type:RequiredSpecies
+        species:
+        - CECarcat
+
+- type: entity
+  parent: CEBaseCarcatAmbition
+  id: CEAmbitionTerritorialMarks
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-territorial-marks-name
+    desc: ce-ambition-territorial-marks-desc
+    weight: 2
+    parsings:
+      LOCATION: !type:RandomLocation
+
+- type: entity
+  parent: CEBaseCarcatAmbition
+  id: CEAmbitionNineLives
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-nine-lives-name
+    desc: ce-ambition-nine-lives-desc
+    weight: 1.5
+    parsings:
+      COUNT: !type:RandomNumber
+        range:
+          min: 2
+          max: 4
+
+- type: entity
+  parent: CEBaseCarcatAmbition
+  id: CEAmbitionCatCouncil
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-cat-council-name
+    desc: ce-ambition-cat-council-desc
+    weight: 2
+    parsings:
+      COUNT: !type:RandomNumber
+        range:
+          min: 2
+          max: 4

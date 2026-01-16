@@ -9,5 +9,15 @@
   - single_edge_SE.png
   - single_edge_SW.png
   license: "CC-BY-SA-3.0"
-  copyright: "Created by TheShuEd, midified by vladimir.s "
+  copyright: "Created by TheShuEd, modified by vladimir.s "
   source: "https://github.com/crystallpunk-14/crystall-punk-14/pull/290"
+
+- files:
+  - diamond.png
+  - stonebricks_medium.png
+  - stonebricks_medium_circles.png
+  - stonebricks_small_circles.png
+  - stonebricks_long.png
+  - stonebricks_square_pattern.png
+  license: "CC-BY-SA-3.0"
+  copyright: "Created by etch_sketch (DISCORD)"

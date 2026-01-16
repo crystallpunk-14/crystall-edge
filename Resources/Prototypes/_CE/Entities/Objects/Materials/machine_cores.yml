@@ -1,0 +1,190 @@
+- type: entity
+  id: CEBaseMachineCore
+  parent: BaseItem
+  name: machine core
+  description: A modular control core containing the circuitry and logic needed to assemble and operate advanced machines.
+  abstract: true
+  categories: [ ForkFiltered ]
+  components:
+  - type: MachineBoard
+    stackRequirements:
+      CEBrassSheet: 1
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _CE/Structures/Industrial/machine_cores.rsi
+    state: generic
+  - type: Item
+    size: Normal
+  - type: Circuitboard
+
+- type: entity
+  id: CEMachineCoreMeltingFurnace
+  parent: CEBaseMachineCore
+  name: melting furnace machine core
+  components:
+  - type: Sprite
+    state: melting_furnace
+  - type: MachineBoard
+    prototype: CEMeltingFurnace
+  - type: StaticPrice
+    price: 130
+
+- type: entity
+  id: CEMachineCoreRecycler
+  parent: CEBaseMachineCore
+  name: recycler machine core
+  components:
+  - type: MachineBoard
+    prototype: CERecycler
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  id: CEMachineCoreDrill
+  parent: CEBaseMachineCore
+  name: drill machine core
+  components:
+  - type: MachineBoard
+    prototype: CEDrill
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  id: CEMachineCoreCharger
+  parent: CEBaseMachineCore
+  name: charger machine core
+  components:
+  - type: MachineBoard
+    prototype: CECharger
+  - type: StaticPrice
+    price: 150
+
+- type: entity
+  id: CEMachineCoreFunnel
+  parent: CEBaseMachineCore
+  name: funnel machine core
+  components:
+  - type: MachineBoard
+    prototype: CEFunnel
+  - type: StaticPrice
+    price: 40
+
+- type: entity
+  id: CEMachineCoreSalaryPlatform
+  parent: CEBaseMachineCore
+  name: salary platform machine core
+  components:
+  - type: Sprite
+    state: dimensional
+  - type: MachineBoard
+    prototype: CESalaryPlatform
+
+- type: entity
+  id: CEMachineCoreHeater
+  parent: CEBaseMachineCore
+  name: heater machine core
+  components:
+  - type: MachineBoard
+    prototype: CEHeater
+
+- type: entity
+  id: CEMachineCoreDistributionUnit
+  parent: CEBaseMachineCore
+  name: distribution unit machine core
+  components:
+  - type: MachineBoard
+    prototype: CEDistributionUnitBasic
+
+- type: entity
+  id: CEMachineCoreManaCollector
+  parent: CEBaseMachineCore
+  name: mana collector machine core
+  components:
+  - type: MachineBoard
+    prototype: CEManaCollectorEmpty
+
+- type: entity
+  id: CEMachineCoreTerminal
+  parent: CEBaseMachineCore
+  name: terminal machine core
+  components:
+  - type: MachineBoard
+    prototype: CEPipeTerminal
+
+# Trading
+
+- type: entity
+  abstract: true
+  parent: CEBaseMachineCore
+  id: CEMachineCoreTradingBase
+  name: trading platform machine core
+  components:
+  - type: Sprite
+    state: dimensional
+  - type: StaticPrice
+    price: 140
+
+- type: entity
+  id: CEMachineCoreTradingPlatformEmpireGuard
+  parent: CEMachineCoreTradingBase
+  name: trading platform machine core (Empire Guard)
+  components:
+  - type: MachineBoard
+    prototype: CETradingPlatformEmpireGuard
+
+- type: entity
+  id: CEMachineCoreTradingPlatformBlackMarket
+  parent: CEMachineCoreTradingBase
+  name: trading platform machine core (Black Market)
+  components:
+  - type: MachineBoard
+    prototype: CETradingPlatformBlackMarket
+
+- type: entity
+  id: CEMachineCoreTradingPlatformHomeDecor
+  parent: CEMachineCoreTradingBase
+  name: trading platform machine core (Home Decor)
+  components:
+  - type: MachineBoard
+    prototype: CETradingPlatformHomeDecor
+
+- type: entity
+  id: CEMachineCoreTradingPlatformTailors
+  parent: CEMachineCoreTradingBase
+  name: trading platform machine core (Tailors)
+  components:
+  - type: MachineBoard
+    prototype: CETradingPlatformTailors
+
+- type: entity
+  id: CEMachineCoreTradingPlatformHorticulture
+  parent: CEMachineCoreTradingBase
+  name: trading platform machine core (Horticulture)
+  components:
+  - type: MachineBoard
+    prototype: CETradingPlatformHorticulture
+
+- type: entity
+  id: CEMachineCoreTradingPlatformDwarfMiners
+  parent: CEMachineCoreTradingBase
+  name: trading platform machine core (Dwarf Miners)
+  components:
+  - type: MachineBoard
+    prototype: CETradingPlatformDwarfMiners
+
+- type: entity
+  id: CEMachineCoreTradingPlatformAlcohol
+  parent: CEMachineCoreTradingBase
+  name: trading platform machine core (Alcohol)
+  components:
+  - type: MachineBoard
+    prototype: CETradingPlatformAlcohol
+
+- type: entity
+  id: CEMachineCoreTradingPlatformApothecariesGuild
+  parent: CEMachineCoreTradingBase
+  name: trading platform machine core (Apothecaries Guild)
+  components:
+  - type: MachineBoard
+    prototype: CETradingPlatformApothecariesGuild

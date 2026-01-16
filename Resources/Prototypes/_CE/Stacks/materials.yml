@@ -13,6 +13,13 @@
   maxCount: 10
 
 - type: stack
+  id: CESnow
+  name: ce-stack-snow-block
+  spawn: CESnowBlock1
+  icon: { sprite: _CE/Objects/Materials/snow.rsi, state: snow_2 }
+  maxCount: 10
+
+- type: stack
   id: CEWood
   name: ce-stack-wood-planks
   spawn: CEWoodenPlanks1
@@ -27,30 +34,72 @@
   maxCount: 10
 
 - type: stack
-  id: CEIron
+  id: CEIronBar
   name: ce-stack-iron-bars
   spawn: CEIronBar1
   icon: { sprite: _CE/Objects/Materials/Metals/iron_bar.rsi, state: bar_2 }
   maxCount: 10
 
 - type: stack
-  id: CEBrass
+  id: CEIronSheet
+  name: ce-stack-iron-sheet
+  spawn: CEIronSheet1
+  icon: { sprite: _CE/Objects/Materials/Metals/iron_bar.rsi, state: sheet_2 }
+  maxCount: 20
+
+- type: stack
+  id: CEIronRod
+  name: ce-stack-iron-rod
+  spawn: CEIronRod1
+  icon: { sprite: _CE/Objects/Materials/Metals/iron_bar.rsi, state: rod_2 }
+  maxCount: 40
+
+- type: stack
+  id: CEIronOre
+  name: ce-stack-iron-ore
+  spawn: CEIronOre1
+  icon: { sprite: _CE/Objects/Materials/Metals/iron_ore.rsi, state: ore2 }
+  maxCount: 30
+
+- type: stack
+  id: CECoal
+  name: ce-stack-coal
+  icon: { sprite: "_CE/Objects/Materials/coal.rsi", state: ore1 }
+  spawn: CECoal1
+  maxCount: 30
+
+- type: stack
+  id: CEBrassBar
   name: ce-stack-brass-bars
   spawn: CEBrassBar1
   icon: { sprite: _CE/Objects/Materials/Metals/brass_bar.rsi, state: bar_2 }
   maxCount: 10
 
 - type: stack
-  id: CEIronScrap
+  id: CEBrassSheet
+  name: ce-stack-brass-sheet
+  spawn: CEBrassSheet1
+  icon: { sprite: _CE/Objects/Materials/Metals/brass_bar.rsi, state: sheet_2 }
+  maxCount: 20
+
+- type: stack
+  id: CEBrassRod
+  name: ce-stack-brass-rod
+  spawn: CEBrassRod1
+  icon: { sprite: _CE/Objects/Materials/Metals/brass_bar.rsi, state: rod_2 }
+  maxCount: 40
+
+- type: stack
+  id: CEScrapIron
   name: ce-stack-iron-scrap
-  spawn: CEIronScrap1
+  spawn: CEScrapIron1
   icon: { sprite: _CE/Objects/Materials/Metals/iron_scrap.rsi, state: scrap_2 }
   maxCount: 10
 
 - type: stack
-  id: CEBrassScrap
+  id: CEScrapBrass
   name: ce-stack-brass-scrap
-  spawn: CEBrassScrap1
+  spawn: CEScrapBrass1
   icon: { sprite: _CE/Objects/Materials/Metals/brass_scrap.rsi, state: scrap_2 }
   maxCount: 10
 
@@ -59,4 +108,32 @@
   name: ce-stack-glass-sheet
   spawn: CEGlassSheet1
   icon: { sprite: _CE/Objects/Materials/glass.rsi, state: glass_2 }
+  maxCount: 10
+
+- type: stack
+  id: CENail
+  name: ce-stack-nails
+  spawn: CENail1
+  icon: { sprite: _CE/Objects/Materials/nails.rsi, state: nail_2 }
+  maxCount: 10
+
+- type: stack
+  id: CEAsh
+  name: ce-stack-ash-pile
+  icon: { sprite: "_CE/Objects/Materials/ash.rsi", state: ash_1 }
+  spawn: CEAsh1
+  maxCount: 30
+
+- type: stack
+  id: CEBloodEssence
+  name: ce-stack-blood-essence
+  icon: { sprite: "_CE/Objects/Materials/blood_essence.rsi", state: drop }
+  spawn: CEBloodEssence
+  maxCount: 10
+
+- type: stack
+  id: CEBone
+  name: ce-stack-bones-pile
+  icon: { sprite: _CE/Objects/Materials/bones.rsi, state: bone_1 }
+  spawn: CEBone1
   maxCount: 10

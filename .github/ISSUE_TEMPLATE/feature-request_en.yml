@@ -23,6 +23,6 @@ body:
         Explain how it would improve the game, or what problems it would fix. Suggestions without proper reasoning and reasons for the addition may be closed.
 
         Example:
-        Currently, ____ often occurs in the round, which is why ____ is missing. This role could close this need by doing _____. 
+        Currently, ____ often occurs in the round, which is why ____ is missing. This role could close this need by doing _____.
     validations:
-      required: true
+      required: false

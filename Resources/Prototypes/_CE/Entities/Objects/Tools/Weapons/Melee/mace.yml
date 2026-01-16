@@ -1,0 +1,73 @@
+- type: entity
+  abstract: true
+  id: CEBaseWeaponMaceTwoHanded
+  parent:
+  - BaseItem
+  - CEBaseWeaponChemical
+  components:
+  - type: Item
+    size: Ginormous
+    shape:
+    - 0, 0, 4, 2 # 3x5
+  - type: MeleeWeapon
+    attackRate: 0.6
+    range: 1.6
+    angle: 140
+    wideAnimationRotation: -90
+    damage:
+      types:
+        Blunt: 20
+    soundHit:
+      collection: MetalThud
+  - type: MultiHandedItem
+  - type: Clothing
+    slots:
+    - neck
+    equipWhileMoving: true
+    equipDelay: 1
+    unequipDelay: 1.5
+
+- type: entity
+  parent: CEBaseWeaponMaceTwoHanded
+  id: CEWeaponMaceTwoHandedGuardrail
+  name: guardrail mace
+  description: A mana-powered heavy mace used by guards. When activated, it delivers a powerful blow that knocks back targets and drains their stamina.
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Tools/Weapons/Melee/Mace/guardrail.rsi
+    layers:
+    - state: icon
+    - state: charge
+      visible: false
+      map: [ "charge" ]
+    state: icon
+  - type: Battery
+    startingCharge: 50
+    maxCharge: 50
+  - type: UseDelay
+    delay: 5
+  - type: CEMeleeEnergyEffect
+    effects:
+    - !type:CESpellThrowFromUser
+      distance: 3
+    - !type:CESpellSpawnEntityOnTarget
+      spawns:
+      - CEOverchargeVFX
+    - !type:CESpellStaminaDamage
+      damage: 40
+  - type: Clothing
+    quickEquip: false
+  - type: Appearance
+  - type: ToggleableVisuals
+    spriteLayer: charge
+    inhandVisuals:
+      left:
+      - state: inhand-left-charge
+        shader: unshaded
+      right:
+      - state: inhand-right-charge
+        shader: unshaded
+  - type: StaticPrice
+    price: 100
+
+

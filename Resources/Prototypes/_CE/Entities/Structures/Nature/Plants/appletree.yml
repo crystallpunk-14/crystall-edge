@@ -1,0 +1,43 @@
+- type: entity
+  id: CEPlantAppleTree
+  parent:
+  - CEPlantTreeBase
+  - CEPlantBaseSolarEnergy
+  - CEPlantBaseFloralWildType
+  - CEPlantBaseGrowing4Day
+  - CEPlantBaseMetabolizer1Day
+  - CEPlantBaseMetabolizerWater
+  name: apple tree
+  description: A sturdy tree that bears delicious apples.
+  components:
+  - type: CEPlantVisuals
+    growthSteps: 4
+    readyVariations: 2
+  - type: Sprite
+    sprite: _CE/Structures/Nature/Farm/apple_tree.rsi
+    layers:
+    - state: liq-1
+      sprite: _CE/Structures/Nature/Farm/watered.rsi
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+    - state: grow-1
+      offset: 0, 0.9
+      map: ["enum.PlantVisualLayers.Base"]
+    - state: produce-apple-var1-state1
+      offset: 0, 0.9
+      visible: false
+      map: ["Produce-apple"]
+  - type: CEPlantProducing
+    gatherOffset: 2
+    gatherKeys:
+      apple:
+        result: CEFoodAppleFalling
+        maxProduce: 4
+        visualStateCount: 2
+        growthPerUpdate: 0.0833 # After 4 days, we start spamming apples 2 times a day
+  - type: CEPlantGatherOnInteract
+    gatherKeys:
+    - apple
+    toolWhitelist:
+      components:
+      - Sharp

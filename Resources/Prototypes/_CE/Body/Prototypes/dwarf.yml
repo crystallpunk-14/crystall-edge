@@ -18,10 +18,10 @@
         - right_leg
         - left_leg
       organs:
-        heart: CEOrganDwarfHeart
+        heart: OrganHumanHeart
         lungs: OrganHumanLungs
-        stomach: CEDwarfOrganDwarfStomach
-        liver: CEDwarfOrganDwarfLiver
+        stomach: OrganHumanStomach
+        liver: OrganHumanLiver
         kidneys: OrganHumanKidneys
     right_arm:
       part: CERightArmHuman

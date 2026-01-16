@@ -1,0 +1,6 @@
+marking-CECarcatHeadStripes = Тигр (голова)
+marking-CECarcatTorsoStripes = Тигр (торс)
+marking-CECarcatArmLeftStripes = Тигр (левая рука)
+marking-CECarcatArmRightStripes = Тигр (правая рука)
+marking-CECarcatLegLeftStripes = Тигр (левая нога)
+marking-CECarcatLegRightStripes = Тигр (правая нога)

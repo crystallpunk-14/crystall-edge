@@ -114,3 +114,23 @@
   values:
     prefix: ce-species-name-carcat-first-
     count: 50
+    
+# Carrin
+
+- type: localizedDataset
+  id: CE_Names_Carrin_Male_First
+  values:
+    prefix: ce-species-name-carrin-male-first-
+    count: 15
+
+- type: localizedDataset
+  id: CE_Names_Carrin_Female_First
+  values:
+    prefix: ce-species-name-carrin-female-first-
+    count: 15
+
+- type: localizedDataset
+  id: CE_Names_Carrin_Last
+  values:
+    prefix: ce-species-name-carrin-last-
+    count: 20

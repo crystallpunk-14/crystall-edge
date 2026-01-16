@@ -1,0 +1,152 @@
+
+# the most basic components that ANY growing structure must have + basic parameters
+- type: entity
+  id: CEPlantBase
+  parent: BaseStructure
+  abstract: true
+  categories: [ ForkFiltered ]
+  components:
+  - type: CEPlant
+    resource: 0
+    energy: 0
+    energyMax: 5
+    resourceMax: 5
+    growthLevel: 0
+  - type: Sprite
+    snapCardinals: true
+    drawdepth: FloorTiles
+  - type: PlacementReplacement
+    key: CEPlant
+  - type: InteractionOutline
+  - type: Physics
+    canCollide: false
+    bodyType: Static
+  - type: Damageable
+    damageContainer: Biological
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        collection: CEGrassGathering
+        params:
+          variation: 0.03
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 50 #Overkill
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+      - trigger:
+          !type:DamageTypeTrigger
+          damageType: Heat
+          damage: 15
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+          - !type:SpawnEntitiesBehavior
+            spawn:
+              CEAsh1:
+                min: 1
+                max: 2
+      - trigger:
+          !type:DamageTrigger
+          damage: 25
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+          #- !type:SpawnEntitiesBehavior
+          #  spawn:
+          #    CEFloraMaterial1:
+          #      min: 2
+          #      max: 3
+  - type: Fixtures
+    fixtures:
+      fix1:
+        hard: false
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 60
+        mask:
+        - HalfWallLayer
+        layer:
+        - MidImpassable
+        - LowImpassable
+      fix2: #For melee or laser
+        hard: true
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.35,-0.35,0.35,0.35"
+        mask:
+        - FullTileMask
+        layer:
+        - Opaque
+  - type: Appearance
+  - type: FireVisuals
+    #sprite: _CE/Effects/fire.rsi
+    #normalState: full
+    #alternateState: full2
+
+- type: entity
+  parent: CEPlantBase
+  id: CEPlantTreeBase
+  abstract: true
+  components:
+  - type: Physics
+    canCollide: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.2,-0.2,0.2,0.2"
+        density: 1000
+        layer:
+        - WallLayer
+  - type: Sprite
+    snapCardinals: false
+    noRot: true
+    drawdepth: Mobs
+  - type: CEPlantAdditionalProduceOnDestruct
+    produce:
+      CEWoodLog: 3
+  - type: CEWaveShader
+    speed: 3
+    dis: 4
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Wood
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        path: /Audio/Effects/chop.ogg
+        params:
+          variation: 0.05
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Heat
+        damage: 50
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 75
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/tree_fell.ogg
+          params:
+            volume: 5
+            variation: 0.05
+      - !type:DoActsBehavior
+        acts: [ "Destruction", "Breakage" ]

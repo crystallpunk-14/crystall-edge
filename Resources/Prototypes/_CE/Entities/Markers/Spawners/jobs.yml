@@ -8,36 +8,6 @@
     sprite: _CE/Markers/jobs.rsi
     snapCardinals: true
 
-# Citizens
-
-- type: entity
-  id: CESpawnPointMayor
-  parent: CESpawnPointJobBase
-  name: mayor
-  categories:
-  - Spawner
-  components:
-  - type: SpawnPoint
-    job_id: CEMayor
-  - type: Sprite
-    layers:
-      - state: green
-      - state: workman #TODO
-
-- type: entity
-  id: CESpawnPointTownfolk
-  parent: CESpawnPointJobBase
-  name: townfolk
-  categories:
-  - Spawner
-  components:
-  - type: SpawnPoint
-    job_id: CETownfolk
-  - type: Sprite
-    layers:
-      - state: green
-      - state: commandant #TODO
-
 # Guards
 
 - type: entity
@@ -82,46 +52,132 @@
       - state: green
       - state: investigator
 
-# Mercenaries
+# Tavern
 
 - type: entity
-  id: CESpawnPointGuildmaster
+  id: CESpawnPointTavernmaster
   parent: CESpawnPointJobBase
-  name: guildmaster
+  name: tavernmaster
   categories:
   - Spawner
   components:
   - type: SpawnPoint
-    job_id: CEGuildmaster
-  - type: Sprite
-    layers:
-      - state: green
-      - state: guildmaster
-
-- type: entity
-  id: CESpawnPointGuildWorker
-  parent: CESpawnPointJobBase
-  name: guild worker
-  categories:
-  - Spawner
-  components:
-  - type: SpawnPoint
-    job_id: CEGuildWorker
+    job_id: CETavernmaster
   - type: Sprite
     layers:
       - state: green
       - state: workman
 
 - type: entity
-  id: CESpawnPointMercenary
+  id: CESpawnPointBartender
   parent: CESpawnPointJobBase
-  name: mercenary
+  name: bartender
   categories:
   - Spawner
   components:
   - type: SpawnPoint
-    job_id: CEMercenary
+    job_id: CEBartender
   - type: Sprite
     layers:
       - state: green
-      - state: adventurer
+      - state: workman
+
+- type: entity
+  id: CESpawnPointChef
+  parent: CESpawnPointJobBase
+  name: chef
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEChef
+  - type: Sprite
+    layers:
+      - state: green
+      - state: workman
+
+- type: entity
+  id: CESpawnPointFarmer
+  parent: CESpawnPointJobBase
+  name: farmer
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEFarmer
+  - type: Sprite
+    layers:
+      - state: green
+      - state: workman
+
+# Citizens
+
+- type: entity
+  id: CESpawnPointBard
+  parent: CESpawnPointJobBase
+  name: bard
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEBard
+  - type: Sprite
+    layers:
+      - state: green
+      - state: workman
+
+- type: entity
+  id: CESpawnPointTownfolk
+  parent: CESpawnPointJobBase
+  name: townfolk
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CETownfolk
+  - type: Sprite
+    layers:
+      - state: green
+      - state: workman
+
+- type: entity
+  id: CESpawnPointTailorMerchant
+  parent: CESpawnPointJobBase
+  name: tailor merchant
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CETailorMerchant
+  - type: Sprite
+    layers:
+      - state: green
+      - state: workman
+
+- type: entity
+  id: CESpawnPointPharmacistMerchant
+  parent: CESpawnPointJobBase
+  name: pharmacist merchant
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEPharmacistMerchant
+  - type: Sprite
+    layers:
+      - state: green
+      - state: workman
+
+- type: entity
+  id: CESpawnPointHomeGoodsMerchant
+  parent: CESpawnPointJobBase
+  name: home goods merchant
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEHomeGoodsMerchant
+  - type: Sprite
+    layers:
+      - state: green
+      - state: workman

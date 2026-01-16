@@ -1,0 +1,69 @@
+
+- type: entity
+  id: CEVehicleHoverboard
+  parent:
+  - CEBaseVehicleStrap
+  - BaseItem
+  name: hoverboard
+  description: Floating personal transport device
+  components:
+  - type: Sprite
+    drawdepth: Items
+    sprite: _CE/Vehicles/hoverboard.rsi
+    offset: "0, -0.5"
+    layers:
+    - state: base
+    - state: active
+      shader: unshaded
+      map: ["flight"]
+      visible: false
+  - type: Appearance
+  - type: Item
+    size: Ginormous
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Metallic
+  - type: MovementSpeedModifier
+    baseAcceleration: 2
+    baseFriction: 2
+    baseWalkSpeed: 5
+    baseSprintSpeed: 7
+  - type: Strap
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.2
+        density: 360
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - TableLayer
+  - type: StaticPrice
+    price: 70
+  - type: AmbientSound
+    enabled: false
+    volume: 2
+    range: 5
+    sound:
+      path: /Audio/_CE/Ambience/hoverboard.ogg
+  - type: CEZFlyer
+    flightVfx: CEOverchargeSmallVFX
+  - type: CEVehicleFlyer
+  - type: CEControllableFlight
+  - type: CEZFlyerBattery
+    energyDraw: 2
+  - type: Battery
+    maxCharge: 100
+    startingCharge: 100
+  - type: ExaminableBattery
+  - type: GenericVisualizer
+    visuals:
+      enum.CEFlightVisuals.Active:
+        flight:
+          True: { visible: true }
+          False: { visible: false }
+  - type: CETheftValue
+    difficulty: 2

@@ -11,6 +11,10 @@
   maleFirstNames: CE_Names_Carcat_First
   femaleFirstNames: CE_Names_Carcat_First
   naming: First
+  minAge: 18 #TODO: mention ages in the species guidebook entry
+  maxAge: 110
+  youngAge: 20
+  oldAge: 80
 
 - type: speciesBaseSprites
   id: CEMobCarcatSprites
@@ -20,7 +24,7 @@
     #Hair: CEMobCarcatAnyMarking
     #FacialHair: CEMobCarcatAnyMarking
     Snout: CEMobCarcatMarkingMatchSkin
-    Tail: CEMobCarcatMarkingMatchSkin
+    Tail: CEMobCarcatAnyMarking
     Chest: CEMobCarcatTorso
     Eyes: CEMobCarcatEyes
     LArm: CEMobCarcatLArm
@@ -34,35 +38,46 @@
 
 - type: markingPoints
   id: CEMobCarcatMarkingLimits
-  onlyWhitelisted: true
   points:
+    Head:
+      points: 1
+      required: false
+      onlyWhitelisted: true
     Hair:
       points: 1
       required: false
-    #FacialHair:
-    #  points: 1
-    #  required: false
+      onlyWhitelisted: true
+    FacialHair:
+      points: 1
+      required: false
+      onlyWhitelisted: true
     Snout:
       points: 1
       required: true
       defaultMarkings: [ CECarcatNose ]
+      onlyWhitelisted: true
     Tail:
       points: 1
       required: true
       defaultMarkings: [ CECarcatTail ]
+      onlyWhitelisted: true
     HeadTop:
       points: 1
       required: true
       defaultMarkings: [ CECarcatEars ]
-    #Chest:
-    #  points: 1
-    #  required: false
-    #Legs:
-    #  points: 2
-    #  required: false
-    #Arms:
-    #  points: 2
-    #  required: false
+      onlyWhitelisted: true
+    Chest:
+      points: 1
+      required: false
+      onlyWhitelisted: true
+    Legs:
+      points: 2
+      required: false
+      onlyWhitelisted: true
+    Arms:
+      points: 2
+      required: false
+      onlyWhitelisted: true
 
 - type: humanoidBaseSprite
   id: CEMobCarcatEyes

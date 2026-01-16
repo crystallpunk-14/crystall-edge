@@ -4,7 +4,7 @@
   markingCategory: Tail
   speciesRestriction: [ CECarcat ]
   followSkinColor: true
-  forcedColoring: true
+  forcedColoring: false
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_tail.rsi
       state: tail
@@ -15,10 +15,12 @@
   markingCategory: Tail
   speciesRestriction: [ CECarcat ]
   followSkinColor: true
-  forcedColoring: true
+  forcedColoring: false
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_tail.rsi
       state: tail_fluffy
+    - sprite: _CE/Mobs/Customization/carcat_tail.rsi
+      state: tail_fluffy_end
 
 # Animation
 
@@ -28,10 +30,10 @@
   markingCategory: Tail
   speciesRestriction: []
   followSkinColor: true
-  forcedColoring: true
+  forcedColoring: false
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_tail.rsi
-      state: tail_waggin
+      state: tail_wagging
 
 - type: marking
   id: CECarcatTailFluffyAnimated
@@ -39,7 +41,9 @@
   markingCategory: Tail
   speciesRestriction: []
   followSkinColor: true
-  forcedColoring: true
+  forcedColoring: false
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_tail.rsi
-      state: tail_fluffy_waggin
+      state: tail_fluffy_wagging
+    - sprite: _CE/Mobs/Customization/carcat_tail.rsi
+      state: tail_fluffy_wagging_end

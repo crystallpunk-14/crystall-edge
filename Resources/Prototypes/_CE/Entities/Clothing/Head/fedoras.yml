@@ -11,9 +11,9 @@
 
 - type: entity
   parent: CEClothingHeadBase
-  id: CEClothingHeadFedoraGuildmaster
-  name: guildmaster's fedora
-  description: A stylish fedora worn by the guildmaster.
+  id: CEClothingHeadFedoraTavernmaster
+  name: tavernmaster's fedora
+  description: A stylish fedora worn by the tavernmaster.
   components:
   - type: Sprite
     sprite: _CE/Clothing/Head/Fedoras/guildmaster.rsi

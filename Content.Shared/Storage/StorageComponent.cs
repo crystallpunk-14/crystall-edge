@@ -151,6 +151,12 @@ namespace Content.Shared.Storage
         public bool HideStackVisualsWhenClosed = true;
 
         /// <summary>
+        /// CrystallEdge: these items will be interrupted as early as the attempted interaction stage. Used for cooking, when we need use buckets with water into cooker pot
+        /// </summary>
+        [DataField]
+        public EntityWhitelist? Ignorelist;
+
+        /// <summary>
         /// Entities with this tag won't trigger storage sound.
         /// </summary>
         [DataField]

@@ -1,0 +1,51 @@
+- type: construction
+  hide: false
+  id: CEZLevelLadderWooden
+  graph: CEZLevelLadderWooden
+  startNode: start
+  targetNode: CEZLevelLadderWooden
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  hide: false
+  id: CEZLevelLadderWoodenCorner
+  graph: CEZLevelLadderWooden
+  startNode: start
+  targetNode: CEZLevelLadderWoodenCorner
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  hide: false
+  id: CEZLevelLadderStone
+  graph: CEZLevelLadderStone
+  startNode: start
+  targetNode: CEZLevelLadderStone
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  hide: false
+  id: CEZLevelLadderStoneCorner
+  graph: CEZLevelLadderStone
+  startNode: start
+  targetNode: CEZLevelLadderStoneCorner
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked

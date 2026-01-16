@@ -7,8 +7,10 @@ using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.Hands.Components;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Pulling.Events;
+using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Pulling.Events;
 using Content.Shared.Standing;
@@ -175,6 +177,17 @@ public abstract partial class SharedBuckleSystem
 
     private void OnBuckleUpdateCanMove(EntityUid uid, BuckleComponent component, UpdateCanMoveEvent args)
     {
+        //CrystallEdge: vehicle port
+
+        // If we're relaying then don't cancel.
+        // NOTE: I don't love this solution. It's by far the easiest but i hate having it be a consideration.
+        // We need to have a more logical way of distinguishing between a "physical" movement being blocked
+        // And simply being unable to move due to being unconscious, dead, etc. -EMO
+        if (HasComp<RelayInputMoverComponent>(uid))
+            return;
+
+        //CrystallEdge: vehicle port end
+
         if (component.Buckled)
             args.Cancel();
     }
@@ -235,7 +248,7 @@ public abstract partial class SharedBuckleSystem
 
         // Does it pass the Whitelist
         if (_whitelistSystem.IsWhitelistFail(strapComp.Whitelist, buckleUid) ||
-            _whitelistSystem.IsBlacklistPass(strapComp.Blacklist, buckleUid))
+            _whitelistSystem.IsWhitelistPass(strapComp.Blacklist, buckleUid))
         {
             if (popup)
                 _popup.PopupClient(Loc.GetString("buckle-component-cannot-fit-message"), user, PopupType.Medium);
@@ -315,6 +328,11 @@ public abstract partial class SharedBuckleSystem
 
             return false;
         }
+
+        //CrystallEdge - block buckling through fence windows
+        if (!_interaction.InRangeUnobstructed(buckleUid, strapUid, collisionMask: CollisionGroup.MobMask))
+            return false;
+        //CrystallEdge End
 
         var buckleAttempt = new BuckleAttemptEvent((strapUid, strapComp), (buckleUid, buckleComp), user, popup);
         RaiseLocalEvent(buckleUid, ref buckleAttempt);
@@ -467,7 +485,7 @@ public abstract partial class SharedBuckleSystem
             // TODO: This is doing 4 moveevents this is why I left the warning in, if you're going to remove it make it only do 1 moveevent.
             if (strap.Comp.BuckleOffset != Vector2.Zero)
             {
-                buckleXform.Coordinates = oldBuckledXform.Coordinates.Offset(strap.Comp.BuckleOffset);
+                _transform.SetCoordinates(buckle, buckleXform, oldBuckledXform.Coordinates.Offset(strap.Comp.BuckleOffset));
             }
         }
 

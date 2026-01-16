@@ -1,0 +1,31 @@
+- type: entity
+  id: CEPlantChanterelle
+  parent:
+  - CEPlantBase
+  - CEPlantBaseDarknessEnergy
+  - CEPlantBaseSingleHarvest
+  - CEPlantBaseFungalType
+  - CEPlantBaseGrowing1Day
+  - CEPlantBaseMetabolizerHalfDay
+  - CEPlantBaseMetabolizerWater
+  - CEPlantBaseSpreading
+  name: chanterelle
+  description: A type of wild mushroom with a distinctive yellow color and a slightly fruity aroma.
+  components:
+  - type: CEPlantVisuals
+    growthSteps: 2
+    readyVariations: 4
+  - type: Sprite
+    sprite: _CE/Structures/Nature/Farm/chanterelle.rsi
+    layers:
+    - state: liq-1
+      sprite: _CE/Structures/Nature/Farm/watered.rsi
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+    - state: grow-1
+      map: ["enum.PlantVisualLayers.Base"]
+  - type: CEPlantAdditionalProduceOnInteract
+    produce:
+      CEFoodChanterelle: 2
+  - type: CEPlantKudzu
+    proto: CEPlantChanterelle

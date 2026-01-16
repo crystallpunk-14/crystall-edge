@@ -24,13 +24,13 @@ public sealed partial class AntagPrototype : IPrototype
     ///     The name of this antag as displayed to players.
     /// </summary>
     [DataField("name")]
-    public string Name { get; private set; } = "";
+    public LocId Name { get; private set; } = ""; //CrystallEdge changed to LocId
 
     /// <summary>
     ///     The antag's objective, shown in a tooltip in the antag preference menu or as a ghost role description.
     /// </summary>
     [DataField("objective", required: true)]
-    public string Objective { get; private set; } = "";
+    public LocId Objective { get; private set; } = ""; //CrystallEdge changed to LocId
 
     /// <summary>
     ///     Whether or not the antag role is one of the bad guys.

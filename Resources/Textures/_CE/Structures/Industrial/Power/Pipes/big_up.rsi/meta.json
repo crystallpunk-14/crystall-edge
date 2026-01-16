@@ -1,0 +1,75 @@
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 64
+    },
+	"license": "CC-BY-SA-3.0",
+	"copyright": "Created by TheShuEd (github)",
+    "states": [
+        {
+            "name": "pipe_0",
+            "directions": 4
+        },
+        {
+            "name": "pipe_1",
+            "directions": 4
+        },
+        {
+            "name": "pipe_2",
+            "directions": 4
+        },
+        {
+            "name": "pipe_3",
+            "directions": 4
+        },
+        {
+            "name": "pipe_4",
+            "directions": 4
+        },
+        {
+            "name": "pipe_5",
+            "directions": 4
+        },
+        {
+            "name": "pipe_6",
+            "directions": 4
+        },
+        {
+            "name": "pipe_7",
+            "directions": 4
+        },
+        {
+            "name": "pipe_8",
+            "directions": 4
+        },
+        {
+            "name": "pipe_9",
+            "directions": 4
+        },
+        {
+            "name": "pipe_10",
+            "directions": 4
+        },
+        {
+            "name": "pipe_11",
+            "directions": 4
+        },
+        {
+            "name": "pipe_12",
+            "directions": 4
+        },
+        {
+            "name": "pipe_13",
+            "directions": 4
+        },
+        {
+            "name": "pipe_14",
+            "directions": 4
+        },
+        {
+            "name": "pipe_15",
+            "directions": 4
+        }
+    ]
+}

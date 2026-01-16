@@ -1,0 +1,139 @@
+- type: entity
+  parent: CEDrinkBottleBase
+  id: CEBottleWine
+  name: wine bottle
+  description: A bouquet of scents from the last century.
+  suffix: Empty
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Drinks/Bottles/wine.rsi
+    layers:
+    - state: fill-1
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+    - state: icon
+      map: ["random"]
+    - state: stopper
+      map: ["enum.OpenableVisuals.Layer"]
+  - type: RandomSprite
+    available:
+      - random:
+          icon: ""
+          icon2: ""
+          icon3: ""
+  - type: RandomMetadata
+    nameSegments:
+    - CENamesWineState
+    - CENamesWineBrand
+    nameFormat: ce-wine-name-format
+
+- type: entity
+  parent: CEDrinkBottleBase
+  id: CEBottleWhiskey
+  name: whiskey bottle
+  description: A strong drink for strong people.
+  suffix: Empty
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: _CE/Objects/Consumable/Drinks/Bottles/whiskey.rsi
+    layers:
+    - state: fill-1
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+    - state: icon
+    - state: stopper
+      map: ["enum.OpenableVisuals.Layer"]
+  - type: RandomMetadata
+    nameSegments:
+    - CENamesWhiskeyState
+    - CENamesWhiskeyBrand
+    nameFormat: ce-whiskey-name-format
+
+- type: entity
+  parent: CEDrinkBottleBase
+  id: CEBottleVodka
+  name: vodka bottle
+  description: Pure crystalline spirits for the refined palate.
+  suffix: Empty
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Drinks/Bottles/vodka.rsi
+    layers:
+    - state: fill-1
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+    - state: icon
+    - state: stopper
+      map: ["enum.OpenableVisuals.Layer"]
+  - type: RandomMetadata
+    nameSegments:
+    - CENamesVodkaState
+    - CENamesVodkaBrand
+    nameFormat: ce-vodka-name-format
+  - type: SolutionContainerVisuals
+    maxFillLevels: 5
+
+- type: entity
+  parent: CEDrinkBottleBase
+  id: CEBottleRum
+  name: rum bottle
+  description: Tropical spirit with notes of caramel and exotic adventure.
+  suffix: Empty
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Drinks/Bottles/rum.rsi
+    layers:
+    - state: fill-1
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+    - state: icon
+    - state: stopper
+      map: ["enum.OpenableVisuals.Layer"]
+  - type: RandomMetadata
+    nameSegments:
+    - CENamesRumState
+    - CENamesRumBrand
+    nameFormat: ce-rum-name-format
+  - type: SolutionContainerVisuals
+    maxFillLevels: 6
+
+# Syrups
+
+- type: entity
+  parent: CEDrinkBottleBase
+  id: CEBottleSyrupGrenadineine
+  name: syrup grenadine bottle
+  description: Thick, sweet syrup with a rich ruby color, traditionally made from pomegranate juice, perfect for cocktails and mocktails alike.
+  suffix: Empty
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Drinks/Bottles/syrup_grenadine.rsi
+    layers:
+    - state: fill-1
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+    - state: icon
+    - state: stopper
+      map: ["enum.OpenableVisuals.Layer"]
+  - type: SolutionContainerVisuals
+    maxFillLevels: 5
+
+- type: entity
+  parent: CEDrinkBottleBase
+  id: CEBottleSyrupSugar
+  name: sugar syrup bottle
+  description:  A simple sugar syrup used to sweeten cocktails, coffees, and other beverages.
+  suffix: Empty
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Drinks/Bottles/syrup_sugar.rsi
+    layers:
+    - state: fill-1
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+    - state: icon
+    - state: stopper
+      map: ["enum.OpenableVisuals.Layer"]
+  - type: SolutionContainerVisuals
+    maxFillLevels: 4

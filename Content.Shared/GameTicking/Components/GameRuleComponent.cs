@@ -37,7 +37,7 @@ public sealed partial class GameRuleComponent : Component
     public MinMax? Delay;
 
     /// <summary>
-    /// BASELINE - Hide gamerules from autocompletion for "addgamerule" admin commands. True by default - for filtering all vanilla gamerules.
+    /// CrystallEdge - Hide gamerules from autocompletion for "addgamerule" admin commands. True by default - for filtering all vanilla gamerules.
     /// </summary>
     [DataField]
     public bool Hidden = true;

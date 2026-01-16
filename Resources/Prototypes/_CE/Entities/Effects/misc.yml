@@ -8,6 +8,7 @@
   - type: Sprite
     sprite: _CE/Effects/energy_overcharge.rsi
     drawdepth: Effects
+    noRot: true
     layers:
     - state: electrified
       shader: unshaded
@@ -32,6 +33,22 @@
     duration: 1
   - type: TimedDespawn
     lifetime: 1
+
+- type: entity
+  id: CEOverchargeSmallVFX
+  parent: CEOverchargeVFX
+  name: smol magic overcharge
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Industrial/Power/Pipes/medium_flat.rsi
+    layers:
+    - state: electrified
+      shader: unshaded
+      map: ["random"]
+  - type: RandomSprite
+    available:
+    - random:
+        electrified: Inherit
 
 - type: entity
   id: CERadiationSourceVFX
@@ -72,3 +89,122 @@
       property: Energy
       isLooped: true
       enabled: true
+  - type: RadiationSource
+    intensity: 3
+  - type: TimedDespawn
+    lifetime: 5
+
+- type: entity
+  id: CEDirtEffect
+  name: dirt effect
+  categories: [ ForkFiltered ]
+  suffix: VFX
+  save: false
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/material_splash.rsi
+    drawdepth: Effects
+    noRot: true
+    layers:
+      - state: dirt1
+        map: [ "random" ]
+  - type: RandomSprite
+    available:
+      - random:
+          dirt1: ""
+          dirt2: ""
+  - type: TimedDespawn
+    lifetime: 2
+  - type: Tag
+    tags:
+      - HideContextMenu
+  - type: AnimationPlayer
+  - type: EmitSoundOnSpawn
+    sound:
+      collection: CEDigging
+
+- type: entity
+  id: CESnowEffect
+  parent: CEDirtEffect
+  name: snow effect
+  suffix: VFX
+  categories: [ ForkFiltered ]
+  save: false
+  components:
+  - type: Sprite
+    layers:
+      - state: snow1
+        map: [ "random" ]
+  - type: RandomSprite
+    available:
+      - random:
+          snow1: ""
+          snow2: ""
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/_CE/Effects/snowball.ogg
+      params:
+        variation: 0.250
+        volume: 15
+
+- type: entity
+  id: CETreasureSparkVFX
+  categories: [ ForkFiltered ]
+  save: false
+  suffix: VFX
+  name: treasure spark
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/treasure_sparks.rsi
+    drawdepth: Effects
+    layers:
+    - state: sparks
+      shader: unshaded
+  - type: Physics
+    canCollide: false
+  - type: Tag
+    tags:
+      - HideContextMenu
+  - type: PointLight
+    color: "#ffeb13"
+    enabled: true
+    radius: 2
+    energy: 4
+    netsync: false
+    castShadows: false
+  - type: LightFade
+    duration: 0.9
+  - type: TimedDespawn
+    lifetime: 0.9
+
+- type: entity
+  id: CEFireWhooshEffect
+  categories: [ ForkFiltered ]
+  name: fire whoosh
+  suffix: VFX
+  save: false
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/cast_impact48.rsi
+    drawdepth: Effects
+    layers:
+    - state: particles_up
+      shader: unshaded
+      color: "#dda31c"
+  - type: Tag
+    tags:
+      - HideContextMenu
+  - type: PointLight
+    color: "#dda31c"
+    enabled: true
+    radius: 4
+    energy: 6
+    netsync: false
+    castShadows: false
+  - type: LightFade
+    duration: 1.5
+  - type: TimedDespawn
+    lifetime: 1.5
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/_CE/Effects/furnace_end.ogg

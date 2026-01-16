@@ -1,0 +1,40 @@
+- type: job
+  id: CEPharmacistMerchant
+  setPreference: true
+  name: ce-job-name-pharmacist-merchant
+  description: ce-job-desc-pharmacist-merchant
+  playTimeTracker: CEJobPharmacistMerchant
+  startingGear: CEPharmacistMerchantGear
+  icon: CEJobIconPharmacistMerchant
+  supervisors: ce-job-supervisors-empire
+  canBeAntag: true
+
+- type: startingGear
+  id: CEPharmacistMerchantGear
+  equipment:
+    pocket1: CEWalletFilledPharmacistMerchant
+    belt: CEKeyRingPharmacistMerchant
+
+- type: entity
+  id: CEWalletFilledPharmacistMerchant
+  parent: CEWallet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents: #100cp total
+    - id: CECoinSilver5
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinCopper10
+
+- type: entity
+  id: CEKeyRingPharmacistMerchant
+  parent: CEBaseKeyRing
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+    - id: CEKeyPharmacyShop
+    - id: CEKeyPharmacyHome

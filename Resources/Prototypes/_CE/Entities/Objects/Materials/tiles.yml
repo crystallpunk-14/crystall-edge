@@ -54,7 +54,7 @@
     stackType: CEFloorTileGlass
   - type: PhysicalComposition
     materialComposition:
-      CEGlass: 5
+      CEGlass: 2
 
 - type: entity
   parent: CEFloorTileBase
@@ -75,7 +75,7 @@
     stackType: CEFloorTileOakWoodplanks
   - type: PhysicalComposition
     materialComposition:
-      CEWood: 5
+      CEWood: 2
 
 - type: entity
   parent: CEFloorTileBase
@@ -96,7 +96,7 @@
     stackType: CEFloorTileOakWoodplanksBig
   - type: PhysicalComposition
     materialComposition:
-      CEWood: 5
+      CEWood: 2
 
 - type: entity
   parent: CEFloorTileBase
@@ -117,7 +117,7 @@
     stackType: CEFloorTileOakWoodplanksCruciform
   - type: PhysicalComposition
     materialComposition:
-      CEWood: 5
+      CEWood: 2
 
 - type: entity
   parent: CEFloorTileBase
@@ -138,7 +138,7 @@
     stackType: CEFloorTileOakWoodplanksStairs
   - type: PhysicalComposition
     materialComposition:
-      CEWood: 5
+      CEWood: 2
 
 - type: entity
   parent: CEFloorTileBase
@@ -154,7 +154,7 @@
     stackType: CEFloorTileStonebricks
   - type: PhysicalComposition
     materialComposition:
-      CEStone: 5
+      CEStone: 2
 
 - type: entity
   parent: CEFloorTileBase
@@ -170,7 +170,7 @@
     stackType: CEFloorTileStonebricksSmallCarved
   - type: PhysicalComposition
     materialComposition:
-      CEStone: 5
+      CEStone: 2
 
 - type: entity
   parent: CEFloorTileBase
@@ -186,7 +186,103 @@
     stackType: CEFloorTileStonebricksSmallCarved2
   - type: PhysicalComposition
     materialComposition:
-      CEStone: 5
+      CEStone: 2
+
+- type: entity
+  parent: CEFloorTileBase
+  id: CEFloorTileStoneLongBricks
+  name: stonebricks long
+  components:
+  - type: Sprite
+    state: stonebricks_long
+  - type: FloorTile
+    outputs:
+      - CEStoneLongBricks
+  - type: Stack
+    stackType: CEFloorTileStoneLongBricks
+  - type: PhysicalComposition
+    materialComposition:
+      CEStone: 2
+
+- type: entity
+  parent: CEFloorTileBase
+  id: CEFloorTileStoneMediumBricks
+  name: stone medium bricks
+  components:
+  - type: Sprite
+    state: stonebricks_medium
+  - type: FloorTile
+    outputs:
+      - CEStoneMediumBricks
+  - type: Stack
+    stackType: CEFloorTileStoneMediumBricks
+  - type: PhysicalComposition
+    materialComposition:
+      CEStone: 2
+
+- type: entity
+  parent: CEFloorTileBase
+  id: CEFloorTileStoneSquarePattern
+  name: stone square pattern
+  components:
+  - type: Sprite
+    state: stonebricks_square_pattern
+  - type: FloorTile
+    outputs:
+      - CEStoneSquarePattern
+  - type: Stack
+    stackType: CEFloorTileStoneSquarePattern
+  - type: PhysicalComposition
+    materialComposition:
+      CEStone: 2
+
+- type: entity
+  parent: CEFloorTileBase
+  id: CEFloorTileStoneDiamond
+  name: stone diamond
+  components:
+  - type: Sprite
+    state: stonebricks_diamond
+  - type: FloorTile
+    outputs:
+      - CEStoneDiamond
+  - type: Stack
+    stackType: CEFloorTileStoneDiamond
+  - type: PhysicalComposition
+    materialComposition:
+      CEStone: 2
+
+- type: entity
+  parent: CEFloorTileBase
+  id: CEFloorTileStoneMediumCircles
+  name: stone medium circles
+  components:
+  - type: Sprite
+    state: stonebricks_medium_circles
+  - type: FloorTile
+    outputs:
+      - CEStoneMediumCircles
+  - type: Stack
+    stackType: CEFloorTileStoneMediumCircles
+  - type: PhysicalComposition
+    materialComposition:
+      CEStone: 2
+
+- type: entity
+  parent: CEFloorTileBase
+  id: CEFloorTileStoneSmallCircles
+  name: stone small circles
+  components:
+  - type: Sprite
+    state: stonebricks_small_circles
+  - type: FloorTile
+    outputs:
+      - CEStoneSmallCircles
+  - type: Stack
+    stackType: CEFloorTileStoneSmallCircles
+  - type: PhysicalComposition
+    materialComposition:
+      CEStone: 2
 
 - type: entity
   parent: CEFloorTileBase
@@ -202,4 +298,36 @@
     stackType: CEFloorTileStonebricksSquareCarved
   - type: PhysicalComposition
     materialComposition:
-      CEStone: 5
+      CEStone: 2
+
+- type: entity
+  parent: CEFloorTileBase
+  id: CEFloorTileRoofRed
+  name: red roof tile
+  components:
+  - type: Sprite
+    state: roof_red
+  - type: FloorTile
+    outputs:
+      - CERoofRed
+  - type: Stack
+    stackType: CEFloorTileRoofRed
+  - type: PhysicalComposition
+    materialComposition:
+      CEStone: 2
+
+- type: entity
+  parent: CEFloorTileBase
+  id: CEFloorTileRoofGreen
+  name: green roof tile
+  components:
+  - type: Sprite
+    state: roof_green
+  - type: FloorTile
+    outputs:
+      - CERoofGreen
+  - type: Stack
+    stackType: CEFloorTileRoofGreen
+  - type: PhysicalComposition
+    materialComposition:
+      CEStone: 2

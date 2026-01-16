@@ -6,6 +6,7 @@
            xmlns:xe="clr-namespace:Content.Client.UserInterface.XamlExtensions"
            xmlns:ui="clr-namespace:Content.Client.UserInterface.Controls"
            xmlns:widgets="clr-namespace:Content.Client.UserInterface.Systems.MenuBar.Widgets"
+           xmlns:isc="clr-namespace:Content.Shared._CE.Input;assembly=Content.Shared"
            Name = "MenuButtons"
            VerticalExpand="False"
            Orientation="Horizontal"
@@ -33,6 +34,18 @@
         HorizontalExpand="True"
         AppendStyleClass="{x:Static style:StyleClass.ButtonSquare}"
         />
+    <!-- CrystallEdge UI part -->
+    <ui:MenuButton
+        Name="CESkillButton"
+        Access="Internal"
+        Icon="{xe:Tex '/Textures/Interface/students-cap.svg.192dpi.png'}"
+        ToolTip="{Loc 'ce-game-hud-open-skill-menu-button-tooltip'}"
+        BoundKey = "{x:Static isc:CEContentKeyFunctions.OpenSkillMenu}"
+        MinSize="42 64"
+        HorizontalExpand="True"
+        AppendStyleClass="{x:Static style:StyleClass.ButtonSquare}"
+    />
+    <!-- CrystallEdge UI part end -->
     <ui:MenuButton
         Name="CharacterButton"
         Access="Internal"

@@ -1,0 +1,157 @@
+- type: species
+  id: CECarrin
+  name: ce-species-name-carrin
+  roundStart: true
+  prototype: CEMobCarrin
+  sprites: CEMobCarrinSprites
+  markingLimits: CEMobCarrinMarkingLimits
+  dollPrototype: CEMobCarrinDummy
+  skinColoration: Hues
+  defaultSkinTone: "#edd9cc"
+  maleFirstNames: CE_Names_Carrin_Male_First
+  femaleFirstNames: CE_Names_Carrin_Female_First
+  lastNames: CE_Names_Carrin_Last
+
+- type: speciesBaseSprites
+  id: CEMobCarrinSprites
+  sprites:
+    Head: CEMobCarrinHead
+    HeadTop: CEMobCarrinMarkingMatchSkin
+    Hair: CEMobCarrinAnyMarking
+    FacialHair: CEMobCarrinMarkingMatchSkin
+    Snout: CEMobCarrinAnyMarking
+    Tail: CEMobCarrinMarkingMatchSkin
+    Chest: CEMobCarrinTorso
+    Eyes: CEMobCarrinEyes
+    LArm: CEMobCarrinLArm
+    RArm: CEMobCarrinRArm
+    LHand: CEMobCarrinLHand
+    RHand: CEMobCarrinRHand
+    LLeg: CEMobCarrinLLeg
+    RLeg: CEMobCarrinRLeg
+    LFoot: CEMobCarrinLFoot
+    RFoot: CEMobCarrinRFoot
+
+- type: markingPoints
+  id: CEMobCarrinMarkingLimits
+  onlyWhitelisted: true
+  points:
+    Hair:
+      points: 1
+      required: false
+    FacialHair:
+      points: 1
+      required: false
+    Snout:
+      points: 1
+      required: true
+      defaultMarkings: [ CECarrinBeak ]
+    Tail:
+      points: 1
+      required: true
+      defaultMarkings: [ CECarrinTail1 ]
+    Arms:
+      points: 1
+      required: true
+      defaultMarkings: [ CECarrinWings1 ]
+
+- type: humanoidBaseSprite
+  id: CEMobCarrinEyes
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carrin/parts.rsi
+    state: eyes
+
+- type: humanoidBaseSprite
+  id: CEMobCarrinAnyMarking
+
+- type: humanoidBaseSprite
+  id: CEMobCarrinMarkingMatchSkin
+  markingsMatchSkin: true
+
+- type: humanoidBaseSprite
+  id: CEMobCarrinMarkingBeak
+
+- type: humanoidBaseSprite
+  id: CEMobCarrinHead
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carrin/parts.rsi
+    state: head
+
+- type: humanoidBaseSprite
+  id: CEMobCarrinHeadMale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carrin/parts.rsi
+    state: head
+
+- type: humanoidBaseSprite
+  id: CEMobCarrinHeadFemale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carrin/parts.rsi
+    state: head
+
+- type: humanoidBaseSprite
+  id: CEMobCarrinTorso
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carrin/parts.rsi
+    state: torso
+
+- type: humanoidBaseSprite
+  id: CEMobCarrinTorsoMale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carrin/parts.rsi
+    state: torso
+
+- type: humanoidBaseSprite
+  id: CEMobCarrinTorsoFemale
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carrin/parts.rsi
+    state: torso
+
+- type: humanoidBaseSprite
+  id: CEMobCarrinLLeg
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carrin/parts.rsi
+    state: l_leg
+
+- type: humanoidBaseSprite
+  id: CEMobCarrinLArm
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carrin/parts.rsi
+    state: l_arm
+
+- type: humanoidBaseSprite
+  id: CEMobCarrinLHand
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carrin/parts.rsi
+    state: l_hand
+
+- type: humanoidBaseSprite
+  id: CEMobCarrinLFoot
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carrin/parts.rsi
+    state: l_foot
+
+- type: humanoidBaseSprite
+  id: CEMobCarrinRLeg
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carrin/parts.rsi
+    state: r_leg
+
+- type: humanoidBaseSprite
+  id: CEMobCarrinRArm
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carrin/parts.rsi
+    state: r_arm
+
+- type: humanoidBaseSprite
+  id: CEMobCarrinRHand
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carrin/parts.rsi
+    state: r_hand
+
+- type: humanoidBaseSprite
+  id: CEMobCarrinRFoot
+  baseSprite:
+    sprite: _CE/Mobs/Species/Carrin/parts.rsi
+    state: r_foot
+

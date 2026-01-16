@@ -187,7 +187,7 @@ namespace Content.Server.Construction
 
                             // TODO allow taking from several stacks.
                             // Also update crafting steps to check if it works.
-                            var splitStack = _stackSystem.Split(entity, materialStep.Amount, user.ToCoordinates(0, 0), stack);
+                            var splitStack = _stackSystem.Split((entity, stack), materialStep.Amount, user.ToCoordinates(0, 0));
 
                             if (splitStack == null)
                                 continue;
@@ -344,6 +344,17 @@ namespace Content.Server.Construction
                 return false;
             }
 
+            //CrystallEdge requirements
+            foreach (var req in constructionPrototype.CERestrictions)
+            {
+                if (!req.Check(EntityManager, user))
+                {
+                    _popup.PopupEntity(req.GetDescription(EntityManager, PrototypeManager), user, user);
+                    return false;
+                }
+            }
+            //CrystallEdge requirements end
+
             var startNode = constructionGraph.Nodes[constructionPrototype.StartNode];
             var targetNode = constructionGraph.Nodes[constructionPrototype.TargetNode];
             var pathFind = constructionGraph.Path(startNode.Name, targetNode.Name);
@@ -428,6 +439,17 @@ namespace Content.Server.Construction
                 _popup.PopupEntity(Loc.GetString("construction-system-cannot-start"), user, user);
                 return;
             }
+
+            //CrystallEdge requirements
+            foreach (var req in constructionPrototype.CERestrictions)
+            {
+                if (!req.Check(EntityManager, user))
+                {
+                    _popup.PopupEntity(req.GetDescription(EntityManager, PrototypeManager), user, user);
+                    return;
+                }
+            }
+            //CrystallEdge requirements end
 
             if (_container.IsEntityInContainer(user))
             {

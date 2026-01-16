@@ -90,6 +90,7 @@ namespace Content.Server.GameTicking
             // Initialize the other parts of the game ticker.
             InitializeStatusShell();
             InitializeCVars();
+            InitializeCrystallEdgeRoundEndWebhook(); //CrystallEdge obviously
             InitializePlayer();
             InitializeLobbyBackground();
             InitializeGamePreset();

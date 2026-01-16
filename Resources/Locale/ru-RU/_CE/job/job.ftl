@@ -7,31 +7,35 @@ ce-job-name-guard = Стражник
 ce-job-desc-guard = Боевая единица империи, поклявшаяся защищать ее народ. Следите за безопасностью, и обороняйте других от возможных опасностей.
 
 ce-job-name-investigator = Дознаватель
-ce-job-desc-investigator = Специалист по ловле и обезвреживанию особо опасных магических преступников. 
+ce-job-desc-investigator = Специалист по ловле и обезвреживанию особо опасных преступников.
+
+# Tavern
+
+ce-job-name-tavernmaster = Хозяин трактира
+ce-job-desc-tavernmaster = Организуйте работу своих работников, чтобы максимизировать прибыль... Или нет.
+
+ce-job-name-bartender = Бармен
+ce-job-desc-bartender = Не реализовано.
+
+ce-job-name-chef = Повар
+ce-job-desc-chef = Не реализовано.
+
+ce-job-name-farmer = Фермер
+ce-job-desc-farmer = Ваш огород - ваша крепость. Выращивайте что угодно, и экспериментируйте с облучением растений, чтобы получать ранее несуществовавшие виды продукции.
 
 # Citizens
 
-ce-job-name-mayor = Мэр
-ce-job-desc-mayor = TODO
+ce-job-name-bard = Бард
+ce-job-desc-bard = Музыка, веселье и шутки - ваша работа и хлеб. Делайте жизнь этого города веселее, и постарайтесь не умереть в нищете.
 
 ce-job-name-townfolk = Горожанин
-ce-job-desc-townfolk = TODO
+ce-job-desc-townfolk = Свободный гражданин, накопивший денег достаточно, чтобы позволить себе взять отпуск на неделю, и заниматься тем, что душа пожелает.
 
-# Mercenaries
+ce-job-name-tailor-merchant = Торговец одеждой
+ce-job-desc-tailor-merchant = Свободный гражданин, заполучивший в свою собственность небольшой магазинчик одежды.
 
-ce-job-name-guildmaster = Гильдмастер
-ce-job-desc-guildmaster = TODO
+ce-job-name-pharmacist-merchant = Торговец-аптекарь
+ce-job-desc-pharmacist-merchant = Свободный гражданин, владеющий небольшой аптекой и торгующий лекарствами и травами.
 
-ce-job-name-guildworker = Работник гильдии
-ce-job-desc-guildworker = TODO
-
-ce-job-name-mercenary = Наемник
-ce-job-desc-mercenary = TODO
-
-# Black Covenant
-
-ce-job-name-covenant-head = Глава ковенанта
-ce-job-desc-covenant-head = TODO
-
-ce-job-name-covenant-agent = Агент
-ce-job-desc-covenant-agent = TODO
+ce-job-name-homegoods-merchant = Торговец декорациями
+ce-job-desc-homegoods-merchant = Свободный гражданин, владеющий небольшим магазином с предметами для дома и декором.

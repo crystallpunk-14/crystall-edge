@@ -1,0 +1,27 @@
+- type: construction
+  hide: false
+  id: CEWindowWooden
+  graph: CEWindowWooden
+  startNode: start
+  targetNode: CEWindowWooden
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  hide: true #2boring, need make graphs better
+  id: CEWindowStone
+  graph: CEWindowStone
+  startNode: start
+  targetNode: CEWindowStone
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked

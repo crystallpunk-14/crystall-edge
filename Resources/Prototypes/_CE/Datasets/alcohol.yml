@@ -1,0 +1,47 @@
+- type: localizedDataset
+  id: CENamesWineState
+  values:
+    prefix: ce-wine-state-
+    count: 10
+
+- type: localizedDataset
+  id: CENamesWineBrand
+  values:
+    prefix: ce-wine-brand-
+    count: 15
+
+- type: localizedDataset
+  id: CENamesWhiskeyState
+  values:
+    prefix: ce-whiskey-state-
+    count: 10
+
+- type: localizedDataset
+  id: CENamesWhiskeyBrand
+  values:
+    prefix: ce-whiskey-brand-
+    count: 15
+
+- type: localizedDataset
+  id: CENamesVodkaState
+  values:
+    prefix: ce-vodka-state-
+    count: 10
+
+- type: localizedDataset
+  id: CENamesVodkaBrand
+  values:
+    prefix: ce-vodka-brand-
+    count: 15
+
+- type: localizedDataset
+  id: CENamesRumState
+  values:
+    prefix: ce-rum-state-
+    count: 10
+
+- type: localizedDataset
+  id: CENamesRumBrand
+  values:
+    prefix: ce-rum-brand-
+    count: 17

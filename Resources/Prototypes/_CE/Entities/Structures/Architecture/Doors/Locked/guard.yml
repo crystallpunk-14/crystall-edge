@@ -1,0 +1,103 @@
+- type: entity
+  parent: CEIronDoorWindowed
+  id: CEIronDoorGuardHall
+  suffix: Guard Hall
+  components:
+  - type: CELock
+    autoGenerateShape: GuardHall
+  - type: Lock
+    locked: false
+
+- type: entity
+  parent:
+    - CEIronDoorGuardHall
+    - CEIronDoorWindowedMirrored
+  id: CEIronDoorGuardHallMirrored
+  suffix: Guard Hall, Mirrored
+
+- type: entity
+  parent: CEIronDoor
+  id: CEIronDoorGuardStaff
+  suffix: Guard Staff
+  components:
+  - type: CELock
+    autoGenerateShape: GuardStaff
+  - type: Lock
+    locked: true
+
+- type: entity
+  parent: CEIronDoor
+  id: CEIronDoorGuardArmory
+  suffix: Guard Armory
+  components:
+  - type: CELock
+    autoGenerateShape: GuardArmory
+  - type: Lock
+    locked: true
+
+- type: entity
+  parent:
+    - CEIronDoorGuardArmory
+    - CEIronDoorMirrored
+  id: CEIronDoorGuardArmoryMirrored
+  suffix: Guard Armory, Mirrored
+
+- type: entity
+  parent: CEIronDoor
+  id: CEIronDoorGuardHeadRoom
+  suffix: Guard Head Room
+  components:
+  - type: CELock
+    autoGenerateShape: GuardHeadRoom
+  - type: Lock
+    locked: true
+
+- type: entity
+  parent: CEFenceGateBigIron
+  id: CEIronDoorGuardCage1
+  suffix: Guard Cage 1
+  components:
+  - type: CELock
+    autoGenerateShape: GuardCage1
+  - type: Lock
+    locked: true
+
+- type: entity
+  parent: CEFenceGateBigIron
+  id: CEIronDoorGuardCage2
+  suffix: Guard Cage 2
+  components:
+  - type: CELock
+    autoGenerateShape: GuardCage2
+  - type: Lock
+    locked: true
+
+- type: entity
+  parent: CEFenceGateBigIron
+  id: CEIronDoorGuardCage3
+  suffix: Guard Cage 3
+  components:
+  - type: CELock
+    autoGenerateShape: GuardCage3
+  - type: Lock
+    locked: true
+
+- type: entity
+  parent: CEFenceGateBigIron
+  id: CEIronDoorGuardCage4
+  suffix: Guard Cage 4
+  components:
+  - type: CELock
+    autoGenerateShape: GuardCage4
+  - type: Lock
+    locked: true
+
+- type: entity
+  parent: CEFenceGateBigIron
+  id: CEIronDoorGuardCage5
+  suffix: Guard Cage 5
+  components:
+  - type: CELock
+    autoGenerateShape: GuardCage5
+  - type: Lock
+    locked: true

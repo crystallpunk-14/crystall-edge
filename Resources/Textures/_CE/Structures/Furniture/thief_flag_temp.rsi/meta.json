@@ -1,0 +1,17 @@
+{
+    "version": 1,
+    "license": "All rights reserved",
+    "copyright": "Created by TheShuEd (Github)",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "folded"
+        },
+        {
+            "name": "flag"
+        }
+    ]
+}

@@ -8,8 +8,8 @@
       connections:
         - torso
       organs:
-        brain: CEOrganSilvaBrain
-        eyes: CEOrganSilvaEyes
+        brain: OrganHumanBrain
+        eyes: OrganHumanEyes
     torso:
       part: TorsoDiona
       connections:
@@ -18,8 +18,11 @@
         - right_leg
         - left_leg
       organs:
-        lungs: CEOrganSilvaLungs
-        stomach: CEOrganSilvaStomach
+        heart: OrganHumanHeart
+        lungs: OrganHumanLungs
+        stomach: OrganHumanStomach
+        liver: OrganHumanLiver
+        kidneys: OrganHumanKidneys
     right_arm:
       part: CERightArmHuman
       connections:

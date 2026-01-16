@@ -1,0 +1,30 @@
+ce-rum-name-format = bottle of {$part0} "{$part1}" rum
+
+ce-rum-state-1 = dark
+ce-rum-state-2 = golden
+ce-rum-state-3 = white
+ce-rum-state-4 = spiced
+ce-rum-state-5 = caramel
+ce-rum-state-6 = aged
+ce-rum-state-7 = tropical
+ce-rum-state-8 = oak-barrel
+ce-rum-state-9 = amber
+ce-rum-state-10 = island
+
+ce-rum-brand-1 = Rum Baba
+ce-rum-brand-2 = Sea of Moons
+ce-rum-brand-3 = Leviathan
+ce-rum-brand-4 = Flying Corsair
+ce-rum-brand-5 = Forgotten Treasure
+ce-rum-brand-6 = Liver Balm
+ce-rum-brand-7 = Saint Vitus Dance
+ce-rum-brand-8 = Black Pirate
+ce-rum-brand-9 = Sugar desert
+ce-rum-brand-10 = Doctor Lipsky
+ce-rum-brand-11 = Young Winds
+ce-rum-brand-12 = Weary Sailor
+ce-rum-brand-13 = Rust
+ce-rum-brand-14 = Adventurer
+ce-rum-brand-15 = Uncle Pete
+ce-rum-brand-16 = Wild Cat
+ce-rum-brand-17 = Ditinar

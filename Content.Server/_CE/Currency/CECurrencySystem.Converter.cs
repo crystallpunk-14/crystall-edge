@@ -139,7 +139,7 @@ public sealed partial class CECurrencySystem
         remainder = target;
         HashSet<EntityUid> spawns = new();
 
-        if (!_proto.TryIndex(currencyType, out var indexedCurrency))
+        if (!_proto.Resolve(currencyType, out var indexedCurrency))
             return spawns;
 
         var ent = Spawn(currencyType, coordinates);
@@ -220,7 +220,7 @@ public sealed partial class CECurrencySystem
         remainder -= singleCurrency;
 
         if (TryComp<StackComponent>(ent, out var stack) &&
-            _proto.TryIndex<StackPrototype>(stack.StackTypeId, out var indexedStack))
+            _proto.Resolve(stack.StackTypeId, out var indexedStack))
         {
             AdjustStack(ent, stack, indexedStack, singleCurrency, ref remainder);
         }

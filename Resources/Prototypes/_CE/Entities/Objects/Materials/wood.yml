@@ -7,8 +7,6 @@
   components:
   - type: Item
     size: Normal
-    shape:
-    - 0,0,1,2 # 2x3
   - type: Sprite
     sprite: _CE/Objects/Materials/wood.rsi
     layers:
@@ -112,7 +110,7 @@
         acts: [ "Destruction" ]
   - type: FloorTile
     placeTileSound:
-      collection: CEDigging #TODO
+      path: /Audio/Items/genhit.ogg
       params:
         variation: 0.03
         volume: 2

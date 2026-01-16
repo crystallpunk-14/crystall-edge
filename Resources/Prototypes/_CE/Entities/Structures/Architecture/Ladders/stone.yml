@@ -1,0 +1,60 @@
+- type: entity
+  id: CEZLevelsLadderStoneBase
+  abstract: true
+  name: stone ladder
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Ladders/stone.rsi
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Rock
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 30
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEStoneBlock1:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+- type: entity
+  parent:
+  - CEZLevelLadderBase
+  - CEZLevelsLadderStoneBase
+  id: CEZLevelLadderStone
+  components:
+  - type: Construction
+    graph: CEZLevelLadderStone
+    node: CEZLevelLadderStone
+
+- type: entity
+  parent:
+  - CEZLevelLadderCornerBase
+  - CEZLevelsLadderStoneBase
+  id: CEZLevelLadderStoneCorner
+  suffix: Corner
+  components:
+  - type: Construction
+    graph: CEZLevelLadderStone
+    node: CEZLevelLadderStoneCorner
+
+- type: entity
+  parent:
+  - CEZLevelLadderCornerInnerBase
+  - CEZLevelsLadderStoneBase
+  id: CEZLevelLadderStoneCornerInner
+  suffix: Inner Corner
+  components:
+  - type: Construction
+    graph: CEZLevelLadderStone
+    node: CEZLevelLadderStoneCornerInner

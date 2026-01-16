@@ -1,0 +1,59 @@
+- type: entity
+  id: CEPlantBaseMetabolizer
+  abstract: true
+  components:
+  - type: Sprite
+    layers:
+    - state: liq-1
+      sprite: _CE/Structures/Nature/Farm/watered.rsi
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+  - type: CEPlantMetabolizer
+    solution: plant
+  - type: SolutionContainerManager
+    solutions:
+      plant:
+        maxVol: 50
+  #- type: CEWeatherRefillable
+  #  solution: plant
+  - type: RefillableSolution
+    solution: plant
+    maxRefill: 50
+  - type: SolutionContainerVisuals
+    maxFillLevels: 4
+    fillBaseName: liq-
+    solutionName: plant
+
+- type: entity
+  parent: CEPlantBaseMetabolizer
+  id: CEPlantBaseMetabolizerHalfDay
+  abstract: true
+  components:
+  - type: CEPlantMetabolizer
+    solutionPerUpdate: 3.33 # Fully dry in 15 minutes (1 day is 24 minute, so Need to be watered twice at day)
+
+- type: entity
+  parent: CEPlantBaseMetabolizer
+  id: CEPlantBaseMetabolizer1Day
+  abstract: true
+  components:
+  - type: CEPlantMetabolizer
+    solutionPerUpdate: 2 # Fully dry in 25 minutes (1 day is 24 minute, so Need to be watered once at day)
+
+- type: entity
+  parent: CEPlantBaseMetabolizer
+  id: CEPlantBaseMetabolizer2Day
+  abstract: true
+  components:
+  - type: CEPlantMetabolizer
+    solutionPerUpdate: 1 # Fully dry in 50 minutes (1 day is 24 minute, so Need to be watered once at 2 days)
+
+- type: entity
+  id: CEPlantBaseMetabolizerWater
+  abstract: true
+  components:
+  - type: CEPlantMetabolizer
+    metabolization:
+      Water:
+        - !type:AffectPlantValues
+          resource: 1

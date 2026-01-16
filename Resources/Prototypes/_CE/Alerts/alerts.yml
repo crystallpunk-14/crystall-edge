@@ -29,3 +29,29 @@
   description: ce-alerts-magic-energy-desc
   minSeverity: 0
   maxSeverity: 11
+
+- type: alert
+  id: CEVampireStarving
+  category: Hunger
+  icons:
+  - sprite: /Textures/_CE/Interface/Alerts/vampire_hunger.rsi
+    state: starving
+  name: alerts-starving-name
+  description: alerts-starving-desc
+
+- type: alert
+  id: CEVampirePeckish
+  category: Hunger
+  icons:
+  - sprite: /Textures/_CE/Interface/Alerts/vampire_hunger.rsi
+    state: peckish
+  name: alerts-hunger-name
+  description: alerts-hunger-desc
+
+- type: alert
+  id: CEAirCaught
+  icons:
+  - sprite: /Textures/_CE/Interface/Alerts/flight.rsi
+    state: wing
+  name: ce-alerts-aircaught-name
+  description: ce-alerts-aircaught-desc

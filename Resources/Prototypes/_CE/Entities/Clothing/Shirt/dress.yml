@@ -250,3 +250,14 @@
     sprite: _CE/Clothing/Shirt/Dress/yellow_wizard.rsi
   - type: Clothing
     sprite: _CE/Clothing/Shirt/Dress/yellow_wizard.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtDressMerchant
+  name: merchant's dress
+  description: Mysterious merchants, who had not been seen for hundreds of years, wore exactly this type of clothing.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Dress/merchant.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Dress/merchant.rsi

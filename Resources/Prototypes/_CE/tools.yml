@@ -3,18 +3,18 @@
   name: ce-tool-quality-shovel-name
   toolName: ce-tool-quality-shovel-tool-name
   spawn: CEWeaponShovelIron
-  icon: { sprite: _CE/Objects/Tools/Shovel/iron.rsi, state: icon}
+  icon: { sprite: _CE/Objects/Tools/Weapons/Melee/Shovel/iron.rsi, state: icon}
 
 - type: tool
   id: CEPickaxe
   name: ce-tool-quality-pickaxe-name
   toolName: ce-tool-quality-pickaxe-tool-name
   spawn: CEWeaponPickaxeIron
-  icon: { sprite: _CE/Objects/Tools/Pickaxe/iron.rsi, state: icon}
+  icon: { sprite: _CE/Objects/Tools/Weapons/Melee/Pickaxe/iron.rsi, state: icon}
 
-#- type: tool
-#  id: CP14Hammering
-#  name: cp14-tool-quality-hammering-name
-#  toolName: cp14-tool-quality-hammering-tool-name
-#  spawn: CP14WeaponHammerIron
-#  icon: { sprite: _CP14/Objects/Weapons/Melee/Hammer/iron.rsi, state: icon}
+- type: tool
+  id: CEHammering
+  name: ce-tool-quality-hammering-name
+  toolName: ce-tool-quality-hammering-tool-name
+  spawn: CEBaseWeaponHammer
+  icon: { sprite: _CE/Objects/Tools/Weapons/Melee/Hammer/iron.rsi, state: icon}

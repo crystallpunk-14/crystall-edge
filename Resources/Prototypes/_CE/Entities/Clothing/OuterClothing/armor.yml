@@ -1,0 +1,26 @@
+- type: entity
+  parent: CEClothingOuterClothingBase
+  id: CEClothingOuterClothingBrassInsulator
+  name: brass insulator chestplate
+  description: A simple but effective magical energy insulator for the chest. Not the most robust protection, but it works great for shielding against excess magical energy.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/OuterClothing/brass_insulator.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/OuterClothing/brass_insulator.rsi
+  - type: MultiHandedItem
+  - type: CEEnergyRadiationArmor
+    armor: 0.5
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Shock: 0.75
+  - type: ClothingSpeedModifier
+    walkModifier: 0.7
+    sprintModifier: 0.7
+  - type: HeldSpeedModifier
+  - type: StaticPrice
+    price: 300

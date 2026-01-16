@@ -11,17 +11,6 @@
 
 - type: entity
   parent: CEClothingPantsBase
-  id: CEClothingPantsBlue
-  name: blue pants
-  description: Simple blue pants suitable for everyday wear.
-  components:
-  - type: Sprite
-    sprite: _CE/Clothing/Pants/blue.rsi
-  - type: Clothing
-    sprite: _CE/Clothing/Pants/blue.rsi
-
-- type: entity
-  parent: CEClothingPantsBase
   id: CEClothingPantsBrown
   name: brown pants
   description: Sturdy brown pants designed for work and travel.
@@ -118,14 +107,3 @@
     sprite: _CE/Clothing/Pants/merchants_pantaloons.rsi
   - type: Clothing
     sprite: _CE/Clothing/Pants/merchants_pantaloons.rsi
-
-- type: entity
-  parent: CEClothingPantsBase
-  id: CEClothingPantsWhite
-  name: white pants
-  description: Clean white pants commonly used in formal and ceremonial outfits.
-  components:
-  - type: Sprite
-    sprite: _CE/Clothing/Pants/white.rsi
-  - type: Clothing
-    sprite: _CE/Clothing/Pants/white.rsi

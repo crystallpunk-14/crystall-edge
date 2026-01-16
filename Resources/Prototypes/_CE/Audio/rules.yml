@@ -1,0 +1,54 @@
+
+- type: rules
+  id: AlwaysTrue
+  rules:
+    - !type:AlwaysTrueRule
+
+- type: rules
+  id: UnderOpenSky
+  rules:
+    - !type:CEWeatherAffect
+
+- type: rules
+  id: GrassNight
+  rules:
+    - !type:CEIsNight
+    - !type:NearbyTilesPercentRule
+      ignoreAnchored: true
+      percent: 0.5
+      tiles:
+      - CEGrass
+      - CEGrassLight
+      - CEGrassTall
+      range: 5
+
+- type: rules
+  id: DayForest
+  rules:
+    - !type:CEIsNight
+      inverted: true
+    - !type:NearbyEntitiesRule
+      count: 3
+      whitelist:
+        tags:
+          - CEAmbientForest
+
+- type: rules
+  id: CaveFloor
+  rules:
+    - !type:NearbyTilesPercentRule
+      ignoreAnchored: true
+      percent: 0.5
+      tiles:
+      - CEStone
+      range: 5
+
+- type: rules
+  id: NearWater
+  rules:
+    - !type:NearbyEntitiesRule
+      count: 5
+      whitelist:
+        tags:
+          - CEAmbientWater
+      range: 4

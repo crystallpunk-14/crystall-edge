@@ -1,0 +1,27 @@
+- type: entity
+  abstract: true
+  id: CEPlantBaseGrowingHalfDay
+  components:
+  - type: CEPlantGrowing
+    growthPerUpdate: 0.0833 # 12 minutes (0.5 day) to full grow
+
+- type: entity
+  abstract: true
+  id: CEPlantBaseGrowing1Day
+  components:
+  - type: CEPlantGrowing
+    growthPerUpdate: 0.0416 # 24 minutes (1 day) to full grow
+
+- type: entity
+  abstract: true
+  id: CEPlantBaseGrowing2Day
+  components:
+  - type: CEPlantGrowing
+    growthPerUpdate: 0.0208 # 48 minutes (2 days) to full grow
+
+- type: entity
+  abstract: true
+  id: CEPlantBaseGrowing4Day
+  components:
+  - type: CEPlantGrowing
+    growthPerUpdate: 0.0104 # 96 minutes (4 days)  to full grow
