@@ -7,13 +7,10 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.ActionBlocker;
-using Content.Shared.Damage.Systems;
 using Content.Shared.Popups;
-using Content.Shared.Stunnable;
 using JetBrains.Annotations;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map.Components;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.ZLevels.Core.EntitySystems;
@@ -22,13 +19,10 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly ActionBlockerSystem _blocker = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
 
     private EntityQuery<MapComponent> _mapQuery;

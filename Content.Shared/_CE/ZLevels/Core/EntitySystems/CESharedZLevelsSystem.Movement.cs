@@ -33,7 +33,7 @@ public abstract partial class CESharedZLevelsSystem
     /// <summary>
     /// The minimum speed required to trigger LandEvent events.
     /// </summary>
-    private const float ImpactVelocityLimit = 5f;
+    private const float ImpactVelocityLimit = 3f;
 
     private EntityQuery<CEZLevelHighGroundComponent> _highgroundQuery;
 
@@ -47,9 +47,6 @@ public abstract partial class CESharedZLevelsSystem
 
         SubscribeLocalEvent<CEZPhysicsComponent, MoveEvent>(OnMoveEvent);
         SubscribeLocalEvent<CEZLevelMapComponent, TileChangedEvent>(OnTileChanged);
-
-        SubscribeLocalEvent<DamageableComponent, CEZLevelHitEvent>(OnFallDamage);
-        SubscribeLocalEvent<PhysicsComponent, CEZLevelHitEvent>(OnFallAreaImpact);
     }
 
     private void OnActiveInit(Entity<CEActiveZPhysicsComponent> ent, ref ComponentInit args)
@@ -107,39 +104,6 @@ public abstract partial class CESharedZLevelsSystem
     private void OnGetVelocity(Entity<CEZPhysicsComponent> ent, ref CEGetZVelocityEvent args)
     {
         args.VelocityDelta -= ZGravityForce * ent.Comp.GravityMultiplier;
-    }
-
-    private void OnFallDamage(Entity<DamageableComponent> ent, ref CEZLevelHitEvent args) //TODO unhardcode
-    {
-        var knockdownTime = MathF.Min(args.ImpactPower * 0.25f, 5f);
-        _stun.TryKnockdown(ent.Owner, TimeSpan.FromSeconds(knockdownTime));
-
-        var damageType = _proto.Index<DamageTypePrototype>("Blunt");
-        var damageAmount = args.ImpactPower * 2f;
-
-        _damage.TryChangeDamage(ent.Owner, new DamageSpecifier(damageType, damageAmount));
-    }
-
-    /// <summary>
-    /// Cause AoE damage in impact point
-    /// </summary>
-    private void OnFallAreaImpact(Entity<PhysicsComponent> ent, ref CEZLevelHitEvent args)
-    {
-        var entitiesAround = _lookup.GetEntitiesInRange(ent, 0.25f, LookupFlags.Uncontained);
-
-        foreach (var victim in entitiesAround)
-        {
-            if (victim == ent.Owner)
-                continue;
-
-            var knockdownTime = MathF.Min(args.ImpactPower * ent.Comp.Mass * 0.1f, 10f);
-            _stun.TryKnockdown(victim, TimeSpan.FromSeconds(knockdownTime));
-
-            var damageType = _proto.Index<DamageTypePrototype>("Blunt");
-            var damageAmount = args.ImpactPower * ent.Comp.Mass * 0.15f;
-
-            _damage.TryChangeDamage(victim, new DamageSpecifier(damageType, damageAmount));
-        }
     }
 
     public override void Update(float frameTime)
@@ -530,6 +494,9 @@ public sealed class CEZLevelFallMapEvent : EntityEventArgs;
 /// <param name="impactPower">The speed at the moment of impact. Always positive</param>
 public sealed class CEZLevelHitEvent(float impactPower) : EntityEventArgs
 {
+    /// <summary>
+    /// The speed at the moment of impact. Always positive
+    /// </summary>
     public float ImpactPower = impactPower;
 }
 
