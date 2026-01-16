@@ -1,9 +1,12 @@
-using Content.Shared._CE.ZLevels.Damage;
+/*
+ * This file is sublicensed under MIT License
+ * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
+ */
+
 using Content.Shared.Popups;
 using Content.Shared.Standing;
-using Content.Shared.Stunnable;
 
-namespace Content.Shared._CE.SoftPaws;
+namespace Content.Shared._CE.ZLevels.Damage.SoftPaws;
 
 public sealed class CESoftPawsSystem : EntitySystem
 {

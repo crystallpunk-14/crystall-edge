@@ -1,6 +1,11 @@
+/*
+ * This file is sublicensed under MIT License
+ * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
+ */
+
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._CE.SoftPaws;
+namespace Content.Shared._CE.ZLevels.Damage.SoftPaws;
 
 /// <summary>
 /// Reduces fall damage and removes stun if the fall speed does not exceed a certain limit.
