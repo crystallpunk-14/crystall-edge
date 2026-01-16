@@ -10,8 +10,10 @@ using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Stunnable;
 using Robust.Shared.Configuration;
+using Robust.Shared.Network;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.ZLevels.Damage;
 
@@ -22,12 +24,15 @@ public sealed class CEZLevelDamageSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly IConfigurationManager _config = default!;
+    [Dependency] private readonly INetManager _net = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     public float BaseFallingDamage { get; private set; }
     public float BaseFallingOtherDamage { get; private set; }
     public float BaseFallingStunTime { get; private set; }
 
     private static readonly ProtoId<DamageTypePrototype> BluntDamageType = "Blunt";
+    private static readonly EntProtoId FallVFX = "CEDustEffect";
 
     public override void Initialize()
     {
@@ -45,13 +50,13 @@ public sealed class CEZLevelDamageSystem : EntitySystem
         var damageModifier = 1f;
         var stunModifier = 1f;
 
-        var damageToOtherEv = new CEZFallingOnTargetDamageCalculateEvent();
+        var damageToOtherEv = new CEZFallingOnTargetDamageCalculateEvent(args.ImpactPower);
         RaiseLocalEvent(ent, damageToOtherEv);
         var otherDamage = damageToOtherEv.DamageMultiplier * BaseFallingOtherDamage * args.ImpactPower * ent.Comp.Mass;
         var otherStun = damageToOtherEv.StunMultiplier * BaseFallingStunTime * args.ImpactPower * ent.Comp.Mass;
 
         //Edit self damage
-        var damageToSelfEv = new CEZFallingDamageCalculateEvent(ent);
+        var damageToSelfEv = new CEZFallingDamageCalculateEvent(ent, args.ImpactPower);
         RaiseLocalEvent(ent, damageToSelfEv);
         damageModifier *= damageToSelfEv.DamageMultiplier;
         stunModifier *= damageToSelfEv.StunMultiplier;
@@ -66,7 +71,7 @@ public sealed class CEZLevelDamageSystem : EntitySystem
         foreach (var victim in entitiesAround)
         {
             //Other entities edit our damage
-            var editDamageToSelfEv = new CEZFallingDamageCalculateEvent(ent);
+            var editDamageToSelfEv = new CEZFallingDamageCalculateEvent(ent, args.ImpactPower);
             RaiseLocalEvent(victim, editDamageToSelfEv);
             damageModifier *= editDamageToSelfEv.DamageMultiplier;
             stunModifier *= editDamageToSelfEv.StunMultiplier;
@@ -88,6 +93,9 @@ public sealed class CEZLevelDamageSystem : EntitySystem
         var knockdownTime = MathF.Min(args.ImpactPower * args.ImpactPower * BaseFallingStunTime * stunModifier, 5f);
         if (knockdownTime > 0)
             _stun.TryKnockdown(ent.Owner, TimeSpan.FromSeconds(knockdownTime));
+
+        if (_net.IsClient && _timing.IsFirstTimePredicted) //Only visuals so client only
+            SpawnAtPosition(FallVFX, Transform(ent).Coordinates);
     }
 }
 
@@ -95,21 +103,23 @@ public sealed class CEZLevelDamageSystem : EntitySystem
 /// This event is triggered both on the entity that fell and on all entities that it fell on.
 /// Together, they calculate the damage and the duration that should be applied to the fallen entity.
 /// </summary>
-public sealed class CEZFallingDamageCalculateEvent(EntityUid fallen) : EntityEventArgs
+public sealed class CEZFallingDamageCalculateEvent(EntityUid fallen, float speed) : EntityEventArgs
 {
     public EntityUid Fallen = fallen;
 
     public float DamageMultiplier = 1;
     public float StunMultiplier = 1;
+    public float Speed = speed;
 }
 
 /// <summary>
 /// Called on a falling entity to calculate how much damage it should inflict on everything it falls on.
 /// </summary>
-public sealed class CEZFallingOnTargetDamageCalculateEvent() : EntityEventArgs
+public sealed class CEZFallingOnTargetDamageCalculateEvent(float speed) : EntityEventArgs
 {
     public float DamageMultiplier = 1;
     public float StunMultiplier = 1;
+    public float Speed = speed;
 }
 
 /// <summary>
