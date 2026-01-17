@@ -30,8 +30,8 @@ public sealed class CEFloorTileSelectionOverlay : Overlay
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
-    [Dependency] private readonly SpriteSystem _sprite = default!;
 
+    private readonly SpriteSystem _sprite;
     private readonly SharedMapSystem _mapSystem;
     private readonly HandsSystem _handsSystem;
     private readonly FloorTileSystem _floorTileSystem;
@@ -49,6 +49,7 @@ public sealed class CEFloorTileSelectionOverlay : Overlay
         _handsSystem = _entityManager.System<HandsSystem>();
         _floorTileSystem = _entityManager.System<FloorTileSystem>();
         _interactionSystem = _entityManager.System<SharedInteractionSystem>();
+        _sprite = _entityManager.System<SpriteSystem>();
 
         _texture = _sprite.Frame0(
             new SpriteSpecifier.Rsi(new ResPath("/Textures/_CE/Markers/biome.rsi"), "frame"));

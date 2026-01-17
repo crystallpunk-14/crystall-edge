@@ -31,8 +31,8 @@ public sealed class CEToolTileOverlay : Overlay
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
     [Dependency] private readonly IStateManager _stateManager = default!;
-    [Dependency] private readonly SpriteSystem _sprite = default!;
 
+    private readonly SpriteSystem _sprite;
     private readonly SharedMapSystem _mapSystem;
     private readonly HandsSystem _handsSystem;
     private readonly SharedInteractionSystem _interactionSystem;
@@ -48,6 +48,7 @@ public sealed class CEToolTileOverlay : Overlay
         _mapSystem = _entityManager.System<SharedMapSystem>();
         _handsSystem = _entityManager.System<HandsSystem>();
         _interactionSystem = _entityManager.System<SharedInteractionSystem>();
+        _sprite = _entityManager.System<SpriteSystem>();
 
         _texture = _sprite.Frame0(
             new SpriteSpecifier.Rsi(new ResPath("/Textures/_CE/Markers/biome.rsi"), "frame"));
