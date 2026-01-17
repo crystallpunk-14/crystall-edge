@@ -42,6 +42,7 @@
       offset: 100
       duration: 300
       originalColor: "#75e3ff"
+    - type: CEZLevelMapRoof
     - type: SunShadow
     - type: MapLight
       ambientLightColor: "#75e3ff"

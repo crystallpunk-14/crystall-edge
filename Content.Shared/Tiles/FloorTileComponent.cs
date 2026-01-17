@@ -15,6 +15,9 @@ namespace Content.Shared.Tiles
         [DataField]
         public List<ProtoId<ContentTileDefinition>>? Outputs;
 
+        [DataField("placeDelay")]
+        public TimeSpan PlaceDelay = TimeSpan.FromSeconds(1);
+
         [DataField("placeTileSound")] public SoundSpecifier PlaceTileSound =
             new SoundPathSpecifier("/Audio/Items/genhit.ogg")
             {

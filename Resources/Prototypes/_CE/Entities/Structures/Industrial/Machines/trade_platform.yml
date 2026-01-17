@@ -1,15 +1,15 @@
+
 - type: entity
+  id: CETradingPlatformBase
+  abstract: true
+  name: trading platform
+  description: Abstract base prototype for trading platforms.
   parent:
   - CEConstructibleMachine
   - CEBaseMachinePowered
   - BaseMachine
-  id: CETradingPlatform
-  name: buying platform
-  description: Allows you to trade with the outside world, through retail trade transactions.
   categories: [ ForkFiltered ]
   components:
-  - type: Machine
-    board: CEMachineCoreTradingPlatform
   - type: PlacementReplacement
     key: walls
   - type: Sprite
@@ -18,7 +18,6 @@
     sprite: _CE/Structures/Industrial/buy_platform.rsi
     layers:
     - state: base
-    - state: buy
   - type: Icon
     sprite: _CE/Structures/Industrial/buy_platform.rsi
     state: base
@@ -27,17 +26,9 @@
   - type: ActivatableUIRequiresPower
   - type: Clickable
   - type: InteractionOutline
-  - type: CETradingPlatform
-  - type: UserInterface
-    interfaces:
-      enum.CETradingUiKey.Buy:
-        type: CETradingPlatformBoundUserInterface
   - type: PlaceableSurface
   - type: ItemPlacer
     maxEntities: 0
-    whitelist:
-      tags:
-      - CECoin
   - type: Fixtures
     fixtures:
       fix1:
@@ -53,67 +44,150 @@
         hard: false
   - type: ApcPowerReceiver
     powerLoad: 0.1
+  - type: UserInterface
+    interfaces:
+      enum.CETradingUiKey.Buy:
+        type: CETradingPlatformBoundUserInterface
   - type: ExtensionCableReceiver
     receptionRange: 0
 
 - type: entity
   parent:
-  - CEConstructibleMachine
-  - CEBaseMachinePowered
-  - BaseMachine
-  id: CETradingSellingPlatform
-  name: selling platform
-  description: Allows you to sell any items and structures to the outside world. Fill the platform completely with mana to sell whatever you place on it.
+  - CETradingPlatformBase
+  id: CETradingPlatformEmpireGuard
+  name: empire Guard trading platform
+  description: Standard trading platform tied to the Empire Guard faction.
   categories: [ ForkFiltered ]
   components:
   - type: Machine
-    board: CEMachineCoreSellingPlatform
-  - type: PlacementReplacement
-    key: walls
+    board: CEMachineCoreTradingPlatformEmpireGuard
   - type: Sprite
-    drawdepth: FloorTiles
-    snapCardinals: true
-    sprite: _CE/Structures/Industrial/buy_platform.rsi
+    layers:
+    - state: base
+    - state: buy
+  - type: CETradingPlatform
+    faction: EmpireGuard
+
+- type: entity
+  parent:
+  - CETradingPlatformBase
+  id: CETradingPlatformBlackMarket
+  name: black market trading platform
+  description: A trading platform servicing black market factions.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Machine
+    board: CEMachineCoreTradingPlatformBlackMarket
+  - type: Sprite
     layers:
     - state: base
     - state: sell
-  - type: Icon
-    sprite: _CE/Structures/Industrial/buy_platform.rsi
-    state: base
-  - type: Clickable
-  - type: InteractionOutline
-  - type: CESellingPlatform
-  - type: PlaceableSurface
-  - type: ItemPlacer
-    maxEntities: 0
-  - type: ActivatableUI
-    key: enum.CETradingUiKey.Sell
-  - type: ActivatableUIRequiresPower
-  - type: UserInterface
-    interfaces:
-      enum.CETradingUiKey.Sell:
-        type: CESellingPlatformBoundUserInterface
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.4,-0.4,0.4,0.4"
-        mask:
-        - TabletopMachineMask
-        layer:
-        - Impassable
-        - MidImpassable
-        - LowImpassable
-        hard: false
-  - type: ApcPowerReceiver
-    powerLoad: 0.1
-  - type: NodeContainer
-    examinable: true
-    nodes:
-      input:
-        !type:CableDeviceNode
-        nodeGroupID: Apc
+  - type: CETradingPlatform
+    faction: BlackMarket
+
+- type: entity
+  parent:
+  - CETradingPlatformBase
+  id: CETradingPlatformHomeDecor
+  name: home decor trading platform
+  description: A trading platform tied to the Home Decor faction.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Machine
+    board: CEMachineCoreTradingPlatformHomeDecor
+  - type: Sprite
+    layers:
+    - state: base
+    - state: buy
+  - type: CETradingPlatform
+    faction: HomeDecor
+
+- type: entity
+  parent:
+  - CETradingPlatformBase
+  id: CETradingPlatformTailors
+  name: tailors trading platform
+  description: A trading platform tied to the Tailors faction.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Machine
+    board: CEMachineCoreTradingPlatformTailors
+  - type: Sprite
+    layers:
+    - state: base
+    - state: buy
+  - type: CETradingPlatform
+    faction: Tailors
+
+- type: entity
+  parent:
+  - CETradingPlatformBase
+  id: CETradingPlatformHorticulture
+  name: Horticulture trading platform
+  description: A trading platform tied to the Horticulture faction.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Machine
+    board: CEMachineCoreTradingPlatformHorticulture
+  - type: Sprite
+    layers:
+    - state: base
+    - state: buy
+  - type: CETradingPlatform
+    faction: Horticulture
+
+- type: entity
+  parent:
+  - CETradingPlatformBase
+  id: CETradingPlatformDwarfMiners
+  name: dwarf miners trading platform
+  description: A trading platform tied to the Dwarf Miners faction.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Machine
+    board: CEMachineCoreTradingPlatformDwarfMiners
+  - type: Sprite
+    layers:
+    - state: base
+    - state: buy
+  - type: CETradingPlatform
+    faction: DwarfMiners
+
+- type: entity
+  parent:
+  - CETradingPlatformBase
+  id: CETradingPlatformAlcohol
+  name: alcohol trading platform
+  description: A trading platform tied to the Alcohol faction.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Machine
+    board: CEMachineCoreTradingPlatformAlcohol
+  - type: Sprite
+    layers:
+    - state: base
+    - state: buy
+  - type: CETradingPlatform
+    faction: Alcohol
+
+- type: entity
+  parent:
+  - CETradingPlatformBase
+  id: CETradingPlatformApothecariesGuild
+  name: apothecaries guild trading platform
+  description: A trading platform tied to the Apothecaries Guild faction.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Machine
+    board: CEMachineCoreTradingPlatformApothecariesGuild
+  - type: Sprite
+    layers:
+    - state: base
+    - state: buy
+  - type: CETradingPlatform
+    faction: ApothecariesGuild
+
+#
 
 - type: entity
   parent:

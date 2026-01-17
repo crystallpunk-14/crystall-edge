@@ -49,14 +49,14 @@
   category: General
   status: Done
 
-# In Progress
-
 - type: roadmapItem
-  id: AirCrystals
-  name: ce-roadmap-engineering-air-crystals-name
-  desc: ce-roadmap-engineering-air-crystals-desc
-  category: Engineering
-  status: InProgress
+  id: TradeWithEmpire
+  name: ce-roadmap-general-trade-with-empire-name
+  desc: ce-roadmap-general-trade-with-empire-desc
+  category: General
+  status: Done
+
+# In Progress
 
 - type: roadmapItem
   id: Automation
@@ -66,20 +66,27 @@
   status: InProgress
 
 - type: roadmapItem
-  id: TradeWithEmpire
-  name: ce-roadmap-general-trade-with-empire-name
-  desc: ce-roadmap-general-trade-with-empire-desc
-  category: General
-  status: InProgress
-
-- type: roadmapItem
   id: GuardDepartment
   name: ce-roadmap-guard-guard-department-name
   desc: ce-roadmap-guard-guard-department-desc
   category: Guard
   status: InProgress
 
+- type: roadmapItem
+  id: PersonalRealEstate
+  name: ce-roadmap-general-personal-real-estate-name
+  desc: ce-roadmap-general-personal-real-estate-desc
+  category: General
+  status: InProgress
+
 # Backlog
+
+- type: roadmapItem
+  id: AirCrystals
+  name: ce-roadmap-engineering-air-crystals-name
+  desc: ce-roadmap-engineering-air-crystals-desc
+  category: Engineering
+  status: Backlog
 
 - type: roadmapItem
   id: HardLabor
@@ -114,13 +121,6 @@
   name: ce-roadmap-antagonists-lurker-name
   desc: ce-roadmap-antagonists-lurker-desc
   category: Antagonist
-  status: Backlog
-
-- type: roadmapItem
-  id: PersonalRealEstate
-  name: ce-roadmap-general-personal-real-estate-name
-  desc: ce-roadmap-general-personal-real-estate-desc
-  category: General
   status: Backlog
 
 - type: roadmapItem

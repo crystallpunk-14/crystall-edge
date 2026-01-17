@@ -12,9 +12,6 @@
   supervisors: ce-job-supervisors-empire
   weight: 3
   special:
-    - !type:CEAddTradingReputationSpecial
-      factions:
-      - EmpireGuard
     - !type:AddComponentSpecial
       components:
       - type: CESalaryCounter

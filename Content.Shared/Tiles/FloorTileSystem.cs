@@ -3,6 +3,7 @@ using System.Linq;
 using System.Numerics;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
+using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
 using Content.Shared.Maps;
 using Content.Shared.Physics;
@@ -22,6 +23,7 @@ namespace Content.Shared.Tiles;
 
 public sealed class FloorTileSystem : EntitySystem
 {
+    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!; //CrystallEdge
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly INetManager _netManager = default!;
@@ -48,6 +50,7 @@ public sealed class FloorTileSystem : EntitySystem
     {
         base.Initialize();
         SubscribeLocalEvent<FloorTileComponent, AfterInteractEvent>(OnAfterInteract);
+        SubscribeLocalEvent<FloorTileComponent, FloorTileDoAfterEvent>(OnFloorTileDoAfter); //CrystallEdge
     }
 
     private void OnAfterInteract(EntityUid uid, FloorTileComponent component, AfterInteractEvent args)
@@ -144,13 +147,28 @@ public sealed class FloorTileSystem : EntitySystem
 
                 if (HasBaseTurf(currentTileDefinition, baseTurf.ID))
                 {
-                    if (!_stackSystem.TryUse((uid, stack), 1))
-                        continue;
-
-                    PlaceAt(args.User, gridUid, mapGrid, location, currentTileDefinition.TileId, component.PlaceTileSound);
-                    args.Handled = true;
+                    //CrystallEdge: placing tiles doAfters
+                    // Start doAfter for placing tile
+                    var doAfterEvent = new FloorTileDoAfterEvent()
+                    {
+                        Location = GetNetCoordinates(location),
+                        TargetGrid = GetNetEntity(gridUid),
+                        TileId = _tileDefinitionManager[currentTile].TileId,
+                    };
+                    var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, component.PlaceDelay, doAfterEvent, uid)
+                    {
+                        BreakOnMove = true,
+                        BreakOnDamage = true,
+                        NeedHand = true,
+                    };
+                    args.Handled = _doAfter.TryStartDoAfter(doAfterEventArgs);
+                    //CrystallEdge end
                     return;
                 }
+
+                //CrystallEdge telegraphing wrong turf
+                _popup.PopupPredictedCoordinates(Loc.GetString("ce-floor-tile-wrong-turf"), location, args.User);
+                //CrystallEdge end
             }
             else if (HasBaseTurf(currentTileDefinition, ContentTileDefinition.SpaceID))
             {
@@ -170,6 +188,29 @@ public sealed class FloorTileSystem : EntitySystem
             }
         }
     }
+
+    //CrystallEdge placing tiles doAfter
+    private void OnFloorTileDoAfter(EntityUid uid, FloorTileComponent component, FloorTileDoAfterEvent args)
+    {
+        if (args.Handled || args.Cancelled)
+            return;
+
+        if (!_stackSystem.TryUse(uid, 1))
+            return;
+
+        var grid = GetEntity(args.TargetGrid);
+        if (grid != null)
+        {
+            // Place on existing grid
+            if (!TryComp<MapGridComponent>(grid, out var mapGrid))
+                return;
+
+            PlaceAt(args.User, grid.Value, mapGrid, GetCoordinates(args.Location), args.TileId, args.PlaceSound, args.Offset);
+        }
+
+        args.Handled = true;
+    }
+    //CrystallEdge end
 
     public bool HasBaseTurf(ContentTileDefinition tileDef, string baseTurf)
     {

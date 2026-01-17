@@ -1,4 +1,7 @@
 using Robust.Shared.Serialization;
+using Robust.Shared.Network;
+using Robust.Shared.Prototypes;
+using Content.Shared._CE.Trading.Prototypes;
 
 namespace Content.Shared._CE.Trading;
 
@@ -10,17 +13,12 @@ public enum CETradingUiKey
 }
 
 [Serializable, NetSerializable]
-public sealed class CETradingPlatformUiState(NetEntity platform, int price) : BoundUserInterfaceState
+public sealed class CETradingPlatformUiState(NetEntity platform, int buyBalance, int sellBalance, ProtoId<CETradingFactionPrototype> faction) : BoundUserInterfaceState
 {
     public NetEntity Platform = platform;
-    public int Price = price;
-}
-
-[Serializable, NetSerializable]
-public sealed class CESellingPlatformUiState(NetEntity platform, int price) : BoundUserInterfaceState
-{
-    public NetEntity Platform = platform;
-    public int Price = price;
+    public int BuyBalance = buyBalance;
+    public int SellBalance = sellBalance;
+    public ProtoId<CETradingFactionPrototype> Faction = faction;
 }
 
 [Serializable, NetSerializable]

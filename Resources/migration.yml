@@ -33,6 +33,20 @@ CEClothingPantsWhite: CEClothingPantsBrown
 
 CEWorkbenchAutoMeltingFurnace: CEMeltingFurnace
 
+CETradingSellingPlatform: null
+CETradingPlatform: null
+
+CETradeContractHomeDecor: null
+CETradeContractHorticulture: null
+CETradeContractTailors: null
+CETradeContractGuard: null
+CETradeContractDwarfMiners: null
+CETradeContractBlackMarket: null
+CETradeContractApothecariesGuild: null
+
+CEBenchWoodSpruce: CEBenchWoodDark
+CEBenchWoodBirch: CEBenchWoodLight
+
 # CrystallEdge migration zone end
 
 

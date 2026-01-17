@@ -112,7 +112,6 @@
     damageCoefficient: 0
   # CrystallEdge
   - type: CEShowVampireIcons
-  - type: CETradingReputation
 
 - type: entity
   abstract: true

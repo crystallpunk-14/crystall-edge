@@ -161,3 +161,12 @@
   components:
   - type: Sprite
     state: flem
+
+- type: entity
+  parent: CEPlushieBase
+  id: CEPlushieCarrin
+  name: carrin plushie
+  description: Caw? CAW! CAW!
+  components:
+  - type: Sprite
+    state: carrin

@@ -1,0 +1,27 @@
+- type: construction
+  hide: false
+  id: CEChairFrame
+  graph: CEChairFrame
+  startNode: start
+  targetNode: CEChairFrame
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  hide: false
+  id: CEBedFrameWooden
+  graph: CEBedFrameWooden
+  startNode: start
+  targetNode: CEBedFrameWooden
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
