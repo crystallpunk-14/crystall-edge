@@ -26,11 +26,6 @@ public abstract partial class CESharedZLevelsSystem
     private const float ZVelocityLimit = 20.0f;
 
     /// <summary>
-    /// The maximum height at which a player will automatically climb higher when stepping on a highground entity.
-    /// </summary>
-    private const float MaxStepHeight = 0.5f;
-
-    /// <summary>
     /// The minimum speed required to trigger LandEvent events.
     /// </summary>
     private const float ImpactVelocityLimit = 3f;
@@ -138,7 +133,7 @@ public abstract partial class CESharedZLevelsSystem
                 zPhys.LocalPosition -= distanceToGround; //Lift up
 
             // Sticky ground: only pull down when slowly falling on sticky surfaces (ladders)
-            if (zPhys.CurrentStickyGround && distanceToGround > 0 && distanceToGround <= MaxStepHeight)
+            if (zPhys.CurrentStickyGround)
                 zPhys.LocalPosition -= distanceToGround; //Sticky move down
 
             if (zPhys.Velocity < 0) //Falling down
@@ -216,7 +211,7 @@ public abstract partial class CESharedZLevelsSystem
     }
 
     /// <summary>
-    /// Computes the "ground height" relative to the entity's current Z-level baseline.
+    /// Computes the "ground height" relative to the entity's current Z-level.
     /// Returns values where 0 means ground on the same level, -1 means ground one level below,
     /// and intermediate values are possible for high ground entities (stairs).
     /// </summary>
