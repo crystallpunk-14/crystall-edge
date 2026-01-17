@@ -27,6 +27,9 @@
   - type: Clothing
     sprite: _CE/Vehicles/hoverboard.rsi
     quickEquip: false
+    equipDelay: 1.5
+    unequipDelay: 1.5
+    equipWhileMoving: true
     slots:
       - neck
   - type: Appearance
@@ -98,3 +101,8 @@
           True: {visible: false}
   - type: CETheftValue
     difficulty: 2
+  - type: MultiHandedItem
+  - type: ClothingSpeedModifier
+    walkModifier: 0.8
+    sprintModifier: 0.8
+  - type: HeldSpeedModifier
