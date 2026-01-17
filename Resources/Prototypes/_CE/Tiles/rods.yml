@@ -43,6 +43,46 @@
 
 - type: tile
   editorHidden: false
+  id: CEIronPlating
+  name: ce-tiles-iron-plating
+  sprite: /Textures/_CE/Tiles/iron_plating.png
+  variants: 3
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: CEIronRods
+  isSubfloor: true
+  footstepSounds:
+    collection: FootstepCatwalk
+  heatCapacity: 10000
+  deconstructTools: [ Prying ]
+  itemDrop: CEIronSheet1
+  transparent: true
+  weather: true
+
+- type: tile
+  editorHidden: false
+  id: CEBrassPlating
+  name: ce-tiles-brass-plating
+  sprite: /Textures/_CE/Tiles/brass_plating.png
+  variants: 3
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: CEBrassRods
+  isSubfloor: true
+  footstepSounds:
+    collection: FootstepCatwalk
+  heatCapacity: 10000
+  deconstructTools: [ Prying ]
+  itemDrop: CEBrassSheet1
+  transparent: true
+  weather: true
+
+- type: tile
+  editorHidden: false
   id: CEBrassRods
   name: ce-tiles-brass-rods
   sprite: /Textures/_CE/Tiles/brass_rods.png

@@ -25,6 +25,15 @@
   - type: PhysicalComposition
     materialComposition:
       CEBrass: 5
+  - type: FloorTile
+    placeDelay: 2
+    placeTileSound:
+      path: /Audio/Items/genhit.ogg
+      params:
+        variation: 0.03
+        volume: 2
+    outputs:
+      - CEBrassPlating
 
 - type: entity
   id: CEBrassSheet5
@@ -77,6 +86,15 @@
   - type: PhysicalComposition
     materialComposition:
       CEIron: 5
+  - type: FloorTile
+    placeDelay: 2
+    placeTileSound:
+      path: /Audio/Items/genhit.ogg
+      params:
+        variation: 0.03
+        volume: 2
+    outputs:
+      - CEIronPlating
 
 - type: entity
   id: CEIronSheet5

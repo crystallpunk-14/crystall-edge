@@ -7,6 +7,8 @@ ce-tiles-iron-rods = железные прутья
 ce-tiles-brass-rods = латунные прутья
 ce-tiles-planks = досчатая опора
 
+ce-tiles-iron-plating = железное покрытие
+ce-tiles-brass-plating = латунное покрытие
 
 ce-tiles-base = каменная толща
 

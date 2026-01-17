@@ -8,6 +8,9 @@ ce-tiles-iron-rods = iron rods
 ce-tiles-brass-rods = brass rods
 ce-tiles-planks = plank support
 
+ce-tiles-iron-plating = iron plating
+ce-tiles-brass-plating = brass plating
+
 # Natural
 ce-tiles-grass = grass
 ce-tiles-grass-light = light grass
