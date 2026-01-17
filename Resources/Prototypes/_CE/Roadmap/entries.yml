@@ -56,6 +56,13 @@
   category: General
   status: Done
 
+- type: roadmapItem
+  id: GuardDepartment
+  name: ce-roadmap-guard-guard-department-name
+  desc: ce-roadmap-guard-guard-department-desc
+  category: Guard
+  status: Done
+
 # In Progress
 
 - type: roadmapItem
@@ -63,13 +70,6 @@
   name: ce-roadmap-engineering-automation-name
   desc: ce-roadmap-engineering-automation-desc
   category: Engineering
-  status: InProgress
-
-- type: roadmapItem
-  id: GuardDepartment
-  name: ce-roadmap-guard-guard-department-name
-  desc: ce-roadmap-guard-guard-department-desc
-  category: Guard
   status: InProgress
 
 - type: roadmapItem
