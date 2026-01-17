@@ -6,6 +6,7 @@ using Content.Client.Viewport;
 using Content.Shared.Interaction;
 using Content.Shared.Maps;
 using Content.Shared.Tools.Components;
+using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.Player;
@@ -13,6 +14,7 @@ using Robust.Client.ResourceManagement;
 using Robust.Client.State;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
+using Robust.Shared.Utility;
 
 namespace Content.Client._CE.Tiles;
 
@@ -26,10 +28,10 @@ public sealed class CEToolTileOverlay : Overlay
     [Dependency] private readonly IInputManager _inputManager = default!;
     [Dependency] private readonly IEyeManager _eyeManager = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
-    [Dependency] private readonly IResourceCache _resourceCache = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
     [Dependency] private readonly IStateManager _stateManager = default!;
+    [Dependency] private readonly SpriteSystem _sprite = default!;
 
     private readonly SharedMapSystem _mapSystem;
     private readonly HandsSystem _handsSystem;
@@ -47,7 +49,8 @@ public sealed class CEToolTileOverlay : Overlay
         _handsSystem = _entityManager.System<HandsSystem>();
         _interactionSystem = _entityManager.System<SharedInteractionSystem>();
 
-        _texture = _resourceCache.GetTexture("/Textures/_CE/Markers/biome.rsi/frame.png");
+        _texture = _sprite.Frame0(
+            new SpriteSpecifier.Rsi(new ResPath("/Textures/_CE/Markers/biome.rsi"), "frame"));
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)

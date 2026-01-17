@@ -5,6 +5,7 @@ using Content.Client.Viewport;
 using Content.Shared.Interaction;
 using Content.Shared.Maps;
 using Content.Shared.Tiles;
+using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.Player;
@@ -12,6 +13,7 @@ using Robust.Client.ResourceManagement;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Client._CE.Tiles;
 
@@ -25,10 +27,10 @@ public sealed class CEFloorTileSelectionOverlay : Overlay
     [Dependency] private readonly IInputManager _inputManager = default!;
     [Dependency] private readonly IEyeManager _eyeManager = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
-    [Dependency] private readonly IResourceCache _resourceCache = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
+    [Dependency] private readonly SpriteSystem _sprite = default!;
 
     private readonly SharedMapSystem _mapSystem;
     private readonly HandsSystem _handsSystem;
@@ -48,7 +50,8 @@ public sealed class CEFloorTileSelectionOverlay : Overlay
         _floorTileSystem = _entityManager.System<FloorTileSystem>();
         _interactionSystem = _entityManager.System<SharedInteractionSystem>();
 
-        _texture = _resourceCache.GetTexture("/Textures/_CE/Markers/biome.rsi/frame.png");
+        _texture = _sprite.Frame0(
+            new SpriteSpecifier.Rsi(new ResPath("/Textures/_CE/Markers/biome.rsi"), "frame"));
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
