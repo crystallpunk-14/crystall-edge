@@ -96,6 +96,7 @@
       #- id: CEBookGuildMoral
       - id: CEBookPantheonGodsSileita
       - id: CEBookPantheonGodsSileitaImitators
+      - id: CEGuidebookImperialLaws
     #Empty random
     - id: CEBookRandom
       amount: !type:RangeNumberSelector

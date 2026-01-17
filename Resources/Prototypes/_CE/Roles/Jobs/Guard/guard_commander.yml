@@ -27,6 +27,7 @@
     belt: CEKeyRingGuardCommander
     belt2: CEGunJustice
     pocket1: CEWalletFilledGuardCommander
+    pocket2: CEGuidebookImperialLaws
 
 - type: entity
   id: CEWalletFilledGuardCommander

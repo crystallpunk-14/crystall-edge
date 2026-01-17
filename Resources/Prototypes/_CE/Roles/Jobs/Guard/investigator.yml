@@ -24,6 +24,7 @@
     belt: CEKeyRingInvestigator
     belt2: CEGunJustice
     pocket1: CEWalletFilledInvestigator
+    pocket2: CEGuidebookImperialLaws
 
 
 - type: entity
