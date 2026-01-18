@@ -23,6 +23,14 @@
 - type: playTimeTracker
   id: CEJobFarmer
 
+# Engineering
+
+- type: playTimeTracker
+  id: CEJobBrigadier
+
+- type: playTimeTracker
+  id: CEJobTechnician
+
 # Citizens
 
 - type: playTimeTracker

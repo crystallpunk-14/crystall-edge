@@ -61,6 +61,32 @@
   - CEGuardPants
   - CEGeneralShoes
 
+# Engineering
+
+- type: roleLoadout
+  id: JobCEBrigadier
+  groups:
+  - CEGeneralBag
+  - CETownfolkHead
+  - CEGeneralEyes
+  - CEGeneralCloak
+  - CEGeneralGloves
+  - CEGeneralShirt
+  - CEGeneralPants
+  - CEGeneralShoes
+
+- type: roleLoadout
+  id: JobCETechnician
+  groups:
+  - CEGeneralBag
+  - CETownfolkHead
+  - CEGeneralEyes
+  - CEGeneralCloak
+  - CEGeneralGloves
+  - CEGeneralShirt
+  - CEGeneralPants
+  - CEGeneralShoes
+
 # Citizens
 
 - type: roleLoadout

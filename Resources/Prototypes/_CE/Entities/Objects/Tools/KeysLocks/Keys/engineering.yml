@@ -1,0 +1,15 @@
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyEngineeringHall
+  suffix: Engineering Hall
+  components:
+  - type: CEKey
+    autoGenerateShape: EngineeringHall
+
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyEngineeringStaff
+  suffix: Engineering Staff
+  components:
+  - type: CEKey
+    autoGenerateShape: EngineeringStaff
