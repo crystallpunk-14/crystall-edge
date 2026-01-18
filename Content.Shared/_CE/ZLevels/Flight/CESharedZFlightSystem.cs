@@ -89,7 +89,7 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
 
         var zPhys = args.Target.Comp;
         var currentPos = zPhys.CurrentZLevel + zPhys.LocalPosition;
-        var targetPos = ent.Comp.TargetMapHeight + 0.5f;
+        var targetPos = ent.Comp.TargetMapHeight + 0.2f;
         var currentVelocity = zPhys.Velocity;
 
         var distanceToTarget = targetPos - currentPos;
