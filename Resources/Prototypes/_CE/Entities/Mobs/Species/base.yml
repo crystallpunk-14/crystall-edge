@@ -204,7 +204,6 @@
   parent:
   - MobBloodstream
   - MobFlammable
-  - CEMobStarving
   - CEBaseMobSpecies
   - CEMobRespirator
   id: CEBaseMobSpeciesOrganic
