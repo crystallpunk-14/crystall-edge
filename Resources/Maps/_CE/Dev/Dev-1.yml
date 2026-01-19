@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 12/25/2025 21:30:23
-  entityCount: 331
+  time: 12/30/2025 23:42:20
+  entityCount: 338
 maps:
 - 1
 grids:
@@ -99,12 +99,6 @@ entities:
     - type: ExplosionAirtightGrid
 - proto: CECrystalGrowths
   entities:
-  - uid: 3
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 1.2414402,-11.67541
-      parent: 1
   - uid: 4
     components:
     - type: Transform
@@ -363,6 +357,48 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -25.5,4.5
+      parent: 1
+- proto: CESnowdrift
+  entities:
+  - uid: 3
+    components:
+    - type: Transform
+      pos: 1.5,-13.5
+      parent: 1
+  - uid: 134
+    components:
+    - type: Transform
+      pos: 2.5,-11.5
+      parent: 1
+  - uid: 158
+    components:
+    - type: Transform
+      pos: 2.5,-12.5
+      parent: 1
+  - uid: 159
+    components:
+    - type: Transform
+      pos: 0.5,-14.5
+      parent: 1
+  - uid: 161
+    components:
+    - type: Transform
+      pos: -0.5,-15.5
+      parent: 1
+  - uid: 162
+    components:
+    - type: Transform
+      pos: -1.5,-15.5
+      parent: 1
+  - uid: 293
+    components:
+    - type: Transform
+      pos: -0.5,-14.5
+      parent: 1
+  - uid: 295
+    components:
+    - type: Transform
+      pos: -2.5,-14.5
       parent: 1
 - proto: CEWallCrystalCore
   entities:

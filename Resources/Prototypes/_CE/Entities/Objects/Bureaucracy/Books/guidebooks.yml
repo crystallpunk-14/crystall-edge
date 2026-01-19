@@ -1,0 +1,21 @@
+- type: entity
+  id: CEGuidebookImperialLaws
+  parent: CEGuidebookBase
+  name: imperial laws
+  description: A book about Imperial Laws.
+  components:
+  - type: Sprite
+    layers:
+    - state: paper
+    - state: cover_base
+      color: "#ce7f3e"
+    - state: decor_frame
+      color: "#2589db"
+    - state: icon_plate
+      color: "#5591e0"
+    - state: bookmark_short
+    - state: icon_religion
+  - type: GuideHelp
+    guides:
+    - CEImperialLawsRU
+    - CEImperialLawsEN

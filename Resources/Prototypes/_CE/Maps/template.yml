@@ -28,6 +28,7 @@
 #    - type: LightCycle
 #      offset: 490
 #      originalColor: "#b8d9dc"
+#    - type: CEZLevelMapRoof
 #    - type: SunShadow
 #    - type: MapLight
 #      ambientLightColor: "#b8d9dc"

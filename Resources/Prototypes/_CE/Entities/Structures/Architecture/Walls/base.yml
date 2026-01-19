@@ -22,6 +22,7 @@
     state: full
   - type: PlacementReplacement
     key: walls
+  - type: CEAutoTilePlacement
   - type: Occluder
   - type: Fixtures
     fixtures:
@@ -49,13 +50,11 @@
   components:
   - type: Sprite
     drawdepth: Mobs
-    snapCardinals: true
   - type: PlacementReplacement
     key: walls
   - type: Transform
     anchored: true
     noRot: false
-  - type: SpriteFade
   - type: Physics
     bodyType: Static
   - type: Fixtures
@@ -69,6 +68,7 @@
         layer:
         - WallLayer
         density: 1000
+  - type: CEZLevelHighGround
 
 - type: entity
   id: CEBaseWallDiagonal

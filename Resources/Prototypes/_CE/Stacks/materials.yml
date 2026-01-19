@@ -13,6 +13,13 @@
   maxCount: 10
 
 - type: stack
+  id: CESnow
+  name: ce-stack-snow-block
+  spawn: CESnowBlock1
+  icon: { sprite: _CE/Objects/Materials/snow.rsi, state: snow_2 }
+  maxCount: 10
+
+- type: stack
   id: CEWood
   name: ce-stack-wood-planks
   spawn: CEWoodenPlanks1
@@ -122,4 +129,11 @@
   name: ce-stack-blood-essence
   icon: { sprite: "_CE/Objects/Materials/blood_essence.rsi", state: drop }
   spawn: CEBloodEssence
+  maxCount: 10
+
+- type: stack
+  id: CEBone
+  name: ce-stack-bones-pile
+  icon: { sprite: _CE/Objects/Materials/bones.rsi, state: bone_1 }
+  spawn: CEBone1
   maxCount: 10

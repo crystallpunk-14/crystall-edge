@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Created by TheShuEd",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "full"
+    },
+    {
+      "name": "spike_0",
+      "directions": 4
+    },
+    {
+      "name": "spike_1",
+      "directions": 4
+    },
+    {
+      "name": "spike_2",
+      "directions": 4
+    },
+    {
+      "name": "spike_3",
+      "directions": 4
+    },
+    {
+      "name": "spike_4",
+      "directions": 4
+    },
+    {
+      "name": "spike_5",
+      "directions": 4
+    },
+    {
+      "name": "spike_6",
+      "directions": 4
+    },
+    {
+      "name": "spike_7",
+      "directions": 4
+    }
+  ]
+}

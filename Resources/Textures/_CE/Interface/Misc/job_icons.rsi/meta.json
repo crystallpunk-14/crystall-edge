@@ -33,6 +33,15 @@
     },
     {
       "name": "Townfolk"
+    },
+    {
+      "name": "TailorMerchant"
+    },
+    {
+      "name": "PharmacistMerchant"
+    },
+    {
+      "name": "HomeGoodsMerchant"
     }
   ]
 }

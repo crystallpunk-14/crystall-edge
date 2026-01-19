@@ -34,17 +34,19 @@ public abstract class CESharedRoofSystem : EntitySystem
         GridQuery = GetEntityQuery<MapGridComponent>();
         RoofQuery = GetEntityQuery<RoofComponent>();
 
-        SubscribeLocalEvent<CEZLevelMapComponent, TileChangedEvent>(OnTileChanged);
+        SubscribeLocalEvent<CEZLevelMapRoofComponent, TileChangedEvent>(OnTileChanged);
     }
 
     /// <summary>
     /// When changing tiles, we iteratively go down to the end of the ZLevels network, repeatedly calculating whether the tiles at the bottom now have a roof or not.
     /// </summary>
-    private void OnTileChanged(Entity<CEZLevelMapComponent> ent, ref TileChangedEvent args)
+    private void OnTileChanged(Entity<CEZLevelMapRoofComponent> ent, ref TileChangedEvent args)
     {
         if (!GridQuery.TryComp(ent, out var currentMapGrid))
             return;
         if (!RoofQuery.TryComp(ent, out var currentRoof))
+            return;
+        if (!TryComp<CEZLevelMapComponent>(ent, out var zLevelMapComp))
             return;
 
         if (args.Changes.Length == 0)
@@ -60,7 +62,7 @@ public abstract class CESharedRoofSystem : EntitySystem
             roofMap.Add(change.GridIndices, roovedAbove || roovedTile);
         }
 
-        var mapsBelow = ZLevel.GetAllMapsBelow(ent);
+        var mapsBelow = ZLevel.GetAllMapsBelow((ent, zLevelMapComp));
 
         if (mapsBelow.Count == 0)
             return;

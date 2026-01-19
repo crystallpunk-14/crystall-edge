@@ -1,9 +1,9 @@
 - type: construction
   hide: false
-  id: CEWoodenWall
+  id: CEWallFrameWoodenFinished
   graph: CEWallWooden
   startNode: start
-  targetNode: CEWallWooden
+  targetNode: CEWallFrameWoodenFinished
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
@@ -32,6 +32,20 @@
   graph: CEWallDirt
   startNode: start
   targetNode: CEWallDirt
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  hide: false
+  id: CEWallSnow
+  graph: CEWallSnow
+  startNode: start
+  targetNode: CEWallSnow
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter

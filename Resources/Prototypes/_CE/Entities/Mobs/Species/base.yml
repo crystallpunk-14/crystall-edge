@@ -196,7 +196,6 @@
     weightlessAcceleration: 0.8 # Slow swimming
     weightlessFriction: 2
     weightlessModifier: 0.6
-  - type: CETradingReputation
   - type: CEBlinker
   - type: CESkillStorage
   - type: CEVampireEssenceHolder
@@ -247,7 +246,7 @@
     bloodReferenceSolution:
       reagents:
       - ReagentId: CEBlood
-        Quantity: 1
+        Quantity: 300
   - type: FireVisuals
     sprite: _CE/Mobs/Effects/onfire.rsi
     normalState: Small_burning

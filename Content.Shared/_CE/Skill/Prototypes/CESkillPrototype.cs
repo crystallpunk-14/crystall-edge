@@ -12,7 +12,7 @@ namespace Content.Shared._CE.Skill.Prototypes;
 [Prototype("skill")]
 public sealed partial class CESkillPrototype : IPrototype
 {
-    [IdDataField] public string ID { get; } = default!;
+    [IdDataField] public string ID { get; private set; } = default!;
 
     /// <summary>
     /// Skill Title. If you leave null, the name will try to generate from Effect.GetName()
