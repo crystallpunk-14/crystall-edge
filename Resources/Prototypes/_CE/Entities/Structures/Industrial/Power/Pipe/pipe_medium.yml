@@ -268,7 +268,7 @@
   - type: CEEnergyLeak
     leakPercentage: 1
   - type: PointLight
-    radius: 1.5
+    radius: 2
     energy: 2
     color: "#309fdf"
     enabled: false
