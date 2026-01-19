@@ -1,6 +1,4 @@
 ce-guidebook-cooking-requirements-header = Requirements
-ce-guidebook-cooking-cook-time-header = Cook time
-ce-guidebook-cooking-cook-time = { $time }
 
 ce-guidebook-cooking-requirement-none = None
 ce-guidebook-cooking-requirement-any = Any

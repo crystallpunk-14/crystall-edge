@@ -1,6 +1,4 @@
 ce-guidebook-cooking-requirements-header = Требования
-ce-guidebook-cooking-cook-time-header = Время приготовления
-ce-guidebook-cooking-cook-time = { $time }
 
 ce-guidebook-cooking-requirement-none = Нет
 ce-guidebook-cooking-requirement-any = Любые

@@ -122,7 +122,6 @@ public sealed partial class CEGuideCookingRecipeEmbed : PanelContainer, IDocumen
         var msg = new FormattedMessage();
         msg.AddMarkupOrThrow(Loc.GetString("ce-guidebook-cooking-cook-time", ("time", time)));
         msg.Pop();
-        CookTimeLabel.SetMessage(msg);
     }
 
     private void GenerateRequirements(CECookingRecipePrototype recipe)
