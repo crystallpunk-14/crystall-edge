@@ -57,9 +57,8 @@
     count: 5
     sliceTime: 2
     slice: CEFoodPumpkinSlice
-  - type: Tag
+  - type: CEFoodTag
     tags:
- #  - CEFarmFood
     - CEVegetable
     - CEPumpkin
 

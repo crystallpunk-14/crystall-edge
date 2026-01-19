@@ -37,7 +37,7 @@ public sealed class CECooking
                 foreach (var recipe in protoMan.EnumeratePrototypes<CECookingRecipePrototype>())
                 {
                     var solution = new Solution();
-                    var allTags = new List<ProtoId<TagPrototype>>();
+                    var allTags = new List<ProtoId<CEFoodTagPrototype>>();
                     foreach (var req in recipe.Requirements)
                     {
                         switch (req)

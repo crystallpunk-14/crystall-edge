@@ -107,11 +107,11 @@
   - type: CEAdditionalSliceableDrop
     loot:
       CESeedCabbage: 1
-  - type: Tag
+  - type: CEFoodTag
     tags:
+    - CECabbage
     - CEVegetable
     - CESalad
-    - CECabbage
 
 - type: entity
   id: CEFoodCabbageSlice
@@ -146,11 +146,11 @@
           Quantity: 0.83
         - ReagentId: Vitamin
           Quantity: 0.14
-  - type: Tag
+  - type: CEFoodTag
     tags:
+    - CECabbage
     - CEVegetable
     - CESalad
-    - CECabbage
 
 - type: entity
   id: CEFoodPumpkin
@@ -192,7 +192,7 @@
   - type: CEAdditionalSliceableDrop
     loot:
       CESeedPumpkin: 1
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEVegetable
     - CEPumpkin
@@ -230,7 +230,7 @@
           Quantity: 1.33
         - ReagentId: Vitamin
           Quantity: 0.57
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEVegetable
     - CEPumpkin
@@ -279,7 +279,7 @@
   #  entries:
   #  - temperatureRange: 400, 500
   #    transformTo: CEFoodPotatoHot
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEVegetable
     - CEPotato
@@ -327,7 +327,7 @@
   - type: CEAdditionalSliceableDrop
     loot:
       CESeedCucumber: 1
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEVegetable
 
@@ -359,7 +359,7 @@
           Quantity: 1
         - ReagentId: Water
           Quantity: 1.5
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEVegetable
 
@@ -430,7 +430,7 @@
     damage:
       types:
         Blunt: 1
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEVegetable
 
@@ -464,7 +464,7 @@
           Quantity: 0.33
         - ReagentId: Vitamin
           Quantity: 0.57
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEVegetable
 
@@ -596,7 +596,7 @@
           Quantity: 2.67
         - ReagentId: Vitamin
           Quantity: 3.43
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEVegetable
 
@@ -625,7 +625,7 @@
           Quantity: 2
         - ReagentId: Vitamin
           Quantity: 1
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEVegetable
 
@@ -669,7 +669,7 @@
     slice: CEFoodOnionSlice
   - type: CESeed
     plantProto: CEPlantOnion
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEVegetable
 
@@ -700,7 +700,7 @@
           Quantity: 1
         - ReagentId: Allicin
           Quantity: 0.8
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEVegetable
 

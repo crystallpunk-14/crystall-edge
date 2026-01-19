@@ -3,10 +3,10 @@
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
 
+using Content.Shared._CE.Cooking.Prototypes;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
-using Content.Shared.Tag;
 using Robust.Shared.Prototypes;
 using YamlDotNet.Serialization.Schemas;
 
@@ -22,7 +22,7 @@ public sealed partial class ReagentRequired : CECookingCraftRequirement
 
     public override bool CheckRequirement(IEntityManager entManager,
         IPrototypeManager protoManager,
-        List<ProtoId<TagPrototype>> placedTags,
+        List<ProtoId<CEFoodTagPrototype>> placedFoodTags,
         Solution? solution = null)
     {
         if (solution is null)

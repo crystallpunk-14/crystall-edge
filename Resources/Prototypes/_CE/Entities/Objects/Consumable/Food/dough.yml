@@ -30,7 +30,7 @@
     entries:
     - temperatureRange: 400, 500
       transformTo: CEFoodBread
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEDough
 
@@ -60,7 +60,7 @@
     entries:
     - temperatureRange: 400, 500
       transformTo: CEAsh1
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEDough
 
@@ -86,7 +86,7 @@
     entries:
     - temperatureRange: 400, 500
       transformTo: null
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEDough
 
@@ -118,7 +118,7 @@
     entries:
     - temperatureRange: 400, 500
       transformTo: CEFoodBreadBun
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEDough
 
@@ -152,7 +152,7 @@
     entries:
     - temperatureRange: 400, 500
       transformTo: CEAsh1
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEDough
 
@@ -183,7 +183,7 @@
     entries:
     - temperatureRange: 400, 500
       transformTo: CEAsh1
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEDough
 
@@ -210,7 +210,7 @@
     entries:
     - temperatureRange: 400, 500
       transformTo: CEAsh1
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEDough
 
@@ -237,6 +237,6 @@
     entries:
     - temperatureRange: 400, 500
       transformTo: CEAsh1 #TODO: лаваш?
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEDough

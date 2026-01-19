@@ -3,9 +3,8 @@
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
 
-using System.Linq;
 using Content.Shared.Chemistry.Components;
-using Content.Shared.Tag;
+using Content.Shared._CE.Cooking.Prototypes;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.Cooking.Requirements;
@@ -16,17 +15,17 @@ public sealed partial class TagRequired : CECookingCraftRequirement
     /// Any of this tags accepted
     /// </summary>
     [DataField(required: true)]
-    public List<ProtoId<TagPrototype>> Tags = default!;
+    public List<ProtoId<CEFoodTagPrototype>> Tags = default!;
 
     [DataField]
     public bool AllowOtherTags = true;
 
     public override bool CheckRequirement(IEntityManager entManager,
         IPrototypeManager protoManager,
-        List<ProtoId<TagPrototype>> placedTags,
+        List<ProtoId<CEFoodTagPrototype>> placedFoodTags,
         Solution? solution = null)
     {
-        foreach (var placedTag in placedTags)
+        foreach (var placedTag in placedFoodTags)
         {
             if (Tags.Contains(placedTag))
                 return true;
@@ -42,7 +41,17 @@ public sealed partial class TagRequired : CECookingCraftRequirement
 
     public override string GetGuidebookDescription(IPrototypeManager protoManager)
     {
-        var tags = string.Join(", ", Tags.Select(t => t.Id));
+        var names = new List<string>();
+        foreach (var tag in Tags)
+        {
+            if (protoManager.TryIndex(tag, out var foodTag))
+                names.Add(Loc.GetString(foodTag.Name));
+            else
+                names.Add(tag.Id);
+        }
+
+        var separator = Loc.GetString("ce-guidebook-cooking-or-separator");
+        var tags = string.Join($" {separator} ", names);
         return Loc.GetString(
             "ce-guidebook-cooking-requirement-tag-required",
             ("tags", tags));

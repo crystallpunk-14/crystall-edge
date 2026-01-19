@@ -27,7 +27,7 @@
   - type: SliceableFood
     count: 5
     slice: CEFoodCheesePart
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CECheese
 
@@ -65,7 +65,7 @@
   - type: SliceableFood
     count: 3
     slice: CEFoodCheeseSlice
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CECheese
 
@@ -101,7 +101,7 @@
           Quantity: 1.4
         - ReagentId: Protein
           Quantity: 1
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CECheese
 
@@ -133,7 +133,7 @@
     slice: CEFoodBlueCheesePart
   - type: StaticPrice
     price: 20
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CECheese
 
@@ -171,7 +171,7 @@
     slice: CEFoodBlueCheeseSlice
   - type: StaticPrice
     price: 4
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CECheese
 
@@ -206,7 +206,7 @@
           Quantity: 1.5 # 4.5/3
   - type: StaticPrice
     price: 1
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CECheese
 
@@ -238,7 +238,7 @@
     slice: CEFoodAgedCheesePart
   - type: StaticPrice
     price: 35
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CECheese
 
@@ -276,7 +276,7 @@
     slice: CEFoodAgedCheeseSlice
   - type: StaticPrice
     price: 7
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CECheese
 
@@ -311,6 +311,6 @@
           Quantity: 2 # 6/3
   - type: StaticPrice
     price: 2
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CECheese

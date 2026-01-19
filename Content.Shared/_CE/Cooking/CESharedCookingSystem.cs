@@ -16,7 +16,6 @@ using Content.Shared.Examine;
 using Content.Shared.Fluids;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Popups;
-using Content.Shared.Tag;
 using Robust.Shared.Containers;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
@@ -222,22 +221,22 @@ public abstract partial class CESharedCookingSystem : EntitySystem
 
         _solution.TryGetSolution(ent.Owner, ent.Comp.SolutionId, out _, out var solution);
 
-        //Get all tags
-        var allTags = new List<ProtoId<TagPrototype>>();
+        //Get all food tags from placed ingredients
+        var allFoodTags = new List<ProtoId<CEFoodTagPrototype>>();
         foreach (var contained in container.ContainedEntities)
         {
-            if (!TryComp<TagComponent>(contained, out var tags))
+            if (!TryComp<CEFoodTagComponent>(contained, out var foodTags))
                 continue;
 
-            allTags.AddRange(tags.Tags);
+            allFoodTags.AddRange(foodTags.Tags);
         }
 
-        return GetRecipe(ent.Comp.FoodType, solution, allTags);
+        return GetRecipe(ent.Comp.FoodType, solution, allFoodTags);
     }
 
     public CECookingRecipePrototype? GetRecipe(ProtoId<CEFoodTypePrototype> foodType,
         Solution? solution,
-        List<ProtoId<TagPrototype>> allTags)
+        List<ProtoId<CEFoodTagPrototype>> allFoodTags)
     {
         if (OrderedRecipes.Count == 0)
         {
@@ -254,7 +253,7 @@ public abstract partial class CESharedCookingSystem : EntitySystem
             var conditionsMet = true;
             foreach (var condition in recipe.Requirements)
             {
-                if (!condition.CheckRequirement(EntityManager, _proto, allTags, solution))
+                if (!condition.CheckRequirement(EntityManager, _proto, allFoodTags, solution))
                 {
                     conditionsMet = false;
                     break;
