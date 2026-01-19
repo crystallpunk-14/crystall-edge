@@ -1,5 +1,5 @@
 <Document>
 # Блюда
 
-<CEGuideCookingRecipeGroupEmbed FoodType="Meal"/>
+<CEGuideCookingRecipeGroupEmbed FoodType="Meal" Plate="CEPlateIron"/>
 </Document>

@@ -1,5 +1,5 @@
 <Document>
 # Soups
 
-<CEGuideCookingRecipeGroupEmbed FoodType="Soup"/>
+<CEGuideCookingRecipeGroupEmbed FoodType="Soup" Plate="CEBowlIron"/>
 </Document>

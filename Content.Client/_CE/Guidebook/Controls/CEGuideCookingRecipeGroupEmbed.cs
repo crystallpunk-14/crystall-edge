@@ -29,9 +29,9 @@ public sealed class CEGuideCookingRecipeGroupEmbed : BoxContainer, IDocumentTag
         MouseFilter = MouseFilterMode.Stop;
     }
 
-    public CEGuideCookingRecipeGroupEmbed(string foodType) : this()
+    public CEGuideCookingRecipeGroupEmbed(string foodType, string? plateTexture = null) : this()
     {
-        CreateEntries(foodType);
+        CreateEntries(foodType, plateTexture);
     }
 
     public bool TryParseTag(Dictionary<string, string> args, [NotNullWhen(true)] out Control? control)
@@ -44,12 +44,14 @@ public sealed class CEGuideCookingRecipeGroupEmbed : BoxContainer, IDocumentTag
             return false;
         }
 
-        CreateEntries(foodType);
+        args.TryGetValue("PlateTexture", out var plateTexture);
+
+        CreateEntries(foodType, plateTexture);
         control = this;
         return true;
     }
 
-    private void CreateEntries(string foodType)
+    private void CreateEntries(string foodType, string? plateTexture = null)
     {
         var prototypes = _prototype.EnumeratePrototypes<CECookingRecipePrototype>()
             .Where(p => p.FoodType.Id.Equals(foodType))
@@ -58,7 +60,10 @@ public sealed class CEGuideCookingRecipeGroupEmbed : BoxContainer, IDocumentTag
 
         foreach (var recipe in prototypes)
         {
-            AddChild(new CEGuideCookingRecipeEmbed(recipe));
+            var embed = new CEGuideCookingRecipeEmbed(recipe);
+            if (plateTexture != null)
+                embed.SetPlateTexture(plateTexture);
+            AddChild(embed);
         }
     }
 

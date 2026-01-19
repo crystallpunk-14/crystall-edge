@@ -16,7 +16,10 @@
         </PanelContainer>
 
         <BoxContainer Orientation="Horizontal" Margin="10" SeparationOverride="10">
-            <TextureRect Name="IconTexture" Stretch="KeepAspectCentered" SetSize="72 72" Margin="2"/>
+            <BoxContainer Name="IconContainer" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextureRect Name="PlateTextureRect" Stretch="KeepAspectCentered" SetSize="80 80" Margin="2" Visible="False"/>
+                <TextureRect Name="IconTexture" Stretch="KeepAspectCentered" SetSize="72 72" Margin="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </BoxContainer>
 
             <GridContainer Columns="2" HorizontalExpand="True">
                 <BoxContainer Orientation="Vertical" HorizontalExpand="True">
