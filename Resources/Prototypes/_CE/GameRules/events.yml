@@ -28,5 +28,6 @@
     range:
       min: 3
       max: 10
-    #replaceVfx: null #TODO: Add VFX for pipe breaking
-    #replaceSound: null #TODO: Add sound for pipe breaking
+    replaceVfx: CEOverchargeBrightVFX
+    replaceSound:
+      collection: MetalBreak
