@@ -47,6 +47,13 @@ CETradeContractApothecariesGuild: null
 CEBenchWoodSpruce: CEBenchWoodDark
 CEBenchWoodBirch: CEBenchWoodLight
 
+CEPlatePie: CENail1
+CEFoodPiePieceTrash: null
+CEFoodPiePieceMeat: null
+CEFoodPiePiecePumpkin: null
+CEFoodPiePieceVeg: null
+
+
 # CrystallEdge migration zone end
 
 

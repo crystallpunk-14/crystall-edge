@@ -7,7 +7,6 @@
   children:
   - CECookingMealsEN
   - CECookingSoupsEN
-  - CECookingPiesEN
 
 - type: guideEntry
   hidden: false
@@ -23,12 +22,7 @@
   name: Soups
   text: "/ServerInfo/_CE/Guidebook_EN/Cooking/Soups.xml"
 
-- type: guideEntry
-  hidden: false
-  locFilter: "en-US"
-  id: CECookingPiesEN
-  name: Pies
-  text: "/ServerInfo/_CE/Guidebook_EN/Cooking/Pies.xml"
+
 
 - type: guideEntry
   hidden: false
@@ -39,7 +33,6 @@
   children:
   - CECookingMealsRU
   - CECookingSoupsRU
-  - CECookingPiesRU
 
 - type: guideEntry
   hidden: false
@@ -54,10 +47,3 @@
   id: CECookingSoupsRU
   name: Супы
   text: "/ServerInfo/_CE/Guidebook_RU/Cooking/Soups.xml"
-
-- type: guideEntry
-  hidden: false
-  locFilter: "ru-RU"
-  id: CECookingPiesRU
-  name: Пироги
-  text: "/ServerInfo/_CE/Guidebook_RU/Cooking/Pies.xml"

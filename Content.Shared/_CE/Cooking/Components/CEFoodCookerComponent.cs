@@ -68,8 +68,6 @@ public sealed partial class CEFoodData
         Visuals = new List<PrototypeLayerData>(data.Visuals);
         Trash = new List<EntProtoId>(data.Trash);
         Flavors = new HashSet<LocId>(data.Flavors);
-        SliceProto = data.SliceProto;
-        SliceCount = data.SliceCount;
     }
 
     [DataField]
@@ -89,12 +87,6 @@ public sealed partial class CEFoodData
 
     [DataField]
     public HashSet<LocId> Flavors = new();
-
-    [DataField]
-    public EntProtoId? SliceProto;
-
-    [DataField]
-    public ushort SliceCount = 5;
 }
 
 [Serializable, NetSerializable]

@@ -56,22 +56,6 @@ public sealed class CECookingSystem : CESharedCookingSystem
         }
     }
 
-    protected override bool TryTransferFood(Entity<CEFoodHolderComponent> target, Entity<CEFoodHolderComponent> source)
-    {
-        if (base.TryTransferFood(target, source))
-        {
-            //Sliceable
-            if (source.Comp.FoodData?.SliceProto is not null)
-            {
-                var sliceable = EnsureComp<SliceableFoodComponent>(target);
-                sliceable.Slice = source.Comp.FoodData.SliceProto;
-                sliceable.TotalCount = source.Comp.FoodData.SliceCount;
-            }
-        }
-
-        return true;
-    }
-
     protected override void OnCookBurned(Entity<CEFoodCookerComponent> ent, ref CEBurningDoAfter args)
     {
         if (args.Cancelled || args.Handled)
@@ -81,20 +65,6 @@ public sealed class CECookingSystem : CESharedCookingSystem
 
         //if (_random.Prob(ent.Comp.BurntAdditionalSpawnProb))
         //    Spawn(ent.Comp.BurntAdditionalSpawn, Transform(ent).Coordinates);
-    }
-
-    protected override void UpdateFoodDataVisuals(Entity<CEFoodHolderComponent> ent, CEFoodData data, bool rename = true)
-    {
-        base.UpdateFoodDataVisuals(ent, data, rename);
-
-        if (ent.Comp.FoodData?.SliceProto is null)
-            return;
-
-        if (!TryComp<SliceableFoodComponent>(ent, out var sliceable))
-            return;
-
-        sliceable.Slice = ent.Comp.FoodData.SliceProto;
-        sliceable.TotalCount = ent.Comp.FoodData.SliceCount;
     }
 
     protected override void OnCookFinished(Entity<CEFoodCookerComponent> ent, ref CECookingDoAfter args)
