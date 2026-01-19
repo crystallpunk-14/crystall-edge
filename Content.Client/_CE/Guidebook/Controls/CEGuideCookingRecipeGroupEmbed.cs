@@ -53,11 +53,17 @@ public sealed class CEGuideCookingRecipeGroupEmbed : BoxContainer, IDocumentTag
     {
         var prototypes = _prototype.EnumeratePrototypes<CECookingRecipePrototype>()
             .Where(p => p.FoodType.Id.Equals(foodType))
-            .OrderBy(p => Loc.GetString(p.FoodData.Name ?? "ce-guidebook-cooking-unknown-food-name"));
+            .OrderBy(GetRecipeComplexity)
+            .ThenBy(p => Loc.GetString(p.FoodData.Name ?? "ce-guidebook-cooking-unknown-food-name"));
 
         foreach (var recipe in prototypes)
         {
             AddChild(new CEGuideCookingRecipeEmbed(recipe));
         }
+    }
+
+    private static float GetRecipeComplexity(CECookingRecipePrototype recipe)
+    {
+        return recipe.Requirements.Sum(r => r.GetComplexity());
     }
 }
