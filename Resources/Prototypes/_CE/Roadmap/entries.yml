@@ -79,6 +79,13 @@
   category: General
   status: InProgress
 
+- type: roadmapItem
+  id: RandomGameEvents
+  name: ce-roadmap-general-random-game-events-name
+  desc: ce-roadmap-general-random-game-events-desc
+  category: General
+  status: InProgress
+
 # Backlog
 
 - type: roadmapItem
@@ -128,13 +135,6 @@
   name: ce-roadmap-medical-alchemy-name
   desc: ce-roadmap-medical-alchemy-desc
   category: Medical
-  status: Backlog
-
-- type: roadmapItem
-  id: RandomGameEvents
-  name: ce-roadmap-general-random-game-events-name
-  desc: ce-roadmap-general-random-game-events-desc
-  category: General
   status: Backlog
 
 - type: roadmapItem
