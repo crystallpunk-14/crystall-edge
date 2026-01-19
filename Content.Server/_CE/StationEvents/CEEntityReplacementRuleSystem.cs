@@ -15,12 +15,12 @@ public sealed class CEEntityReplacementRuleSystem : StationEventSystem<CEEntityR
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
 
-    protected override void Added(EntityUid ruleUld,
+    protected override void Added(EntityUid ruleUid,
         CEEntityReplacementRuleComponent component,
         GameRuleComponent gameRule,
         GameRuleAddedEvent args)
     {
-        base.Added(ruleUld, component, gameRule, args);
+        base.Added(ruleUid, component, gameRule, args);
 
         List<EntityUid> allEntity = new();
 
