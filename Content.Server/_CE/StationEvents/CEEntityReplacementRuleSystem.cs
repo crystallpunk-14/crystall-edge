@@ -15,14 +15,14 @@ public sealed class CEEntityReplacementRuleSystem : StationEventSystem<CEEntityR
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
 
-    protected override void Added(EntityUid ruleUid,
+    protected override void Started(EntityUid ruleUid,
         CEEntityReplacementRuleComponent component,
         GameRuleComponent gameRule,
-        GameRuleAddedEvent args)
+        GameRuleStartedEvent args)
     {
-        base.Added(ruleUid, component, gameRule, args);
+        base.Started(ruleUid, component, gameRule, args);
 
-        List<EntityUid> allEntity = new();
+        List<EntityUid> allEntities = new();
 
         var replacementCount = component.Range.Next(_random);
 
@@ -34,21 +34,16 @@ public sealed class CEEntityReplacementRuleSystem : StationEventSystem<CEEntityR
             if (!component.ReplacementMap.Keys.Contains(meta.EntityPrototype))
                 continue;
 
-            allEntity.Add(uid);
+            allEntities.Add(uid);
         }
 
-        Log.Info($"Replacement count: {replacementCount}");
-        Log.Info($"All entity: {allEntity.Count}");
-        List<EntityUid> targets = new();
-        while (replacementCount > 0 && allEntity.Any())
+        var targetCount = Math.Min(replacementCount, allEntities.Count);
+        _random.Shuffle(allEntities);
+        var targets = new List<EntityUid>(targetCount);
+        for (var i = 0; i < targetCount; i++)
         {
-            var target = allEntity[_random.Next(allEntity.Count)];
-            targets.Add(target);
-            allEntity.Remove(target);
-            replacementCount--;
+            targets.Add(allEntities[i]);
         }
-
-        Log.Info($"Available targets: {targets.Count}");
 
         foreach (var target in targets)
         {
@@ -64,7 +59,6 @@ public sealed class CEEntityReplacementRuleSystem : StationEventSystem<CEEntityR
             if (!component.ReplacementMap.TryGetValue(proto, out var replacement))
                 continue;
 
-            Log.Info($"Replace entity from {proto} to {replacement}");
             SpawnAtPosition(replacement, coordinates);
             _audio.PlayPvs(component.ReplaceSound, coordinates);
             QueueDel(target);
