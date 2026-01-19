@@ -136,36 +136,8 @@ public sealed partial class CEGuideCookingRecipeEmbed : PanelContainer, IDocumen
 
         foreach (var requirement in recipe.Requirements)
         {
-            switch (requirement)
-            {
-                case AlwaysMet:
-                    AddRequirementLine(Loc.GetString("ce-guidebook-cooking-requirement-any"));
-                    break;
-
-                case TagRequired tagRequired:
-                    AddRequirementLine(Loc.GetString(
-                        "ce-guidebook-cooking-requirement-tag-required",
-                        ("tags", FormatTags(tagRequired.Tags))));
-                    break;
-
-                case TagBlocked tagBlocked:
-                    AddRequirementLine(Loc.GetString(
-                        "ce-guidebook-cooking-requirement-tag-blocked",
-                        ("tags", FormatTags(tagBlocked.Tags))));
-                    break;
-
-                case ReagentRequired reagentRequired:
-                    AddRequirementLine(Loc.GetString(
-                        "ce-guidebook-cooking-requirement-reagent-required",
-                        ("reagents", FormatReagents(reagentRequired.Reagents)),
-                        ("amount", FormatAmount(reagentRequired.Amount))));
-                    break;
-
-                default:
-                    _sawmill.Warning($"Unknown CE cooking requirement type: {requirement.GetType().Name}");
-                    AddRequirementLine(Loc.GetString("ce-guidebook-cooking-requirement-unknown"));
-                    break;
-            }
+            var description = requirement.GetGuidebookDescription(_prototype);
+            AddRequirementLine(description);
         }
     }
 
@@ -174,29 +146,5 @@ public sealed partial class CEGuideCookingRecipeEmbed : PanelContainer, IDocumen
         var label = new RichTextLabel();
         label.SetMarkup(text);
         RequirementsContainer.AddChild(label);
-    }
-
-    private string FormatTags(IEnumerable<ProtoId<TagPrototype>> tags)
-    {
-        return string.Join(", ", tags.Select(t => t.Id));
-    }
-
-    private string FormatReagents(IEnumerable<ProtoId<ReagentPrototype>> reagents)
-    {
-        var names = new List<string>();
-        foreach (var reagentId in reagents)
-        {
-            if (_prototype.TryIndex(reagentId, out var reagent))
-                names.Add(reagent.LocalizedName);
-            else
-                names.Add(reagentId.Id);
-        }
-
-        return string.Join(", ", names);
-    }
-
-    private static string FormatAmount(FixedPoint2 amount)
-    {
-        return amount.ToString();
     }
 }

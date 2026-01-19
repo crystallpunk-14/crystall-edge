@@ -48,4 +48,27 @@ public sealed partial class ReagentRequired : CECookingCraftRequirement
     {
         return 1;
     }
+
+    public override string GetGuidebookDescription(IPrototypeManager protoManager)
+    {
+        var names = new List<string>();
+        foreach (var reagentId in Reagents)
+        {
+            if (protoManager.TryIndex(reagentId, out var reagent))
+            {
+                var colorHex = reagent.SubstanceColor.ToHex();
+                names.Add($"[color=#{colorHex}]{reagent.LocalizedName}[/color]");
+            }
+            else
+            {
+                names.Add(reagentId.Id);
+            }
+        }
+
+        var reagents = string.Join(", ", names);
+        return Loc.GetString(
+            "ce-guidebook-cooking-requirement-reagent-required",
+            ("reagents", reagents),
+            ("amount", Amount.ToString()));
+    }
 }

@@ -23,4 +23,9 @@ public sealed partial class AlwaysMet : CECookingCraftRequirement
     {
         return 0;
     }
+
+    public override string GetGuidebookDescription(IPrototypeManager protoManager)
+    {
+        return Loc.GetString("ce-guidebook-cooking-requirement-any");
+    }
 }

@@ -25,4 +25,9 @@ public abstract partial class CECookingCraftRequirement
         Solution? solution = null);
 
     public abstract float GetComplexity();
+
+    /// <summary>
+    /// Returns a formatted string describing this requirement for guidebook display.
+    /// </summary>
+    public abstract string GetGuidebookDescription(IPrototypeManager protoManager);
 }

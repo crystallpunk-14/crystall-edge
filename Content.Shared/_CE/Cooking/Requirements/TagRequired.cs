@@ -3,6 +3,7 @@
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
 
+using System.Linq;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Tag;
 using Robust.Shared.Prototypes;
@@ -37,5 +38,13 @@ public sealed partial class TagRequired : CECookingCraftRequirement
     public override float GetComplexity()
     {
         return AllowOtherTags ? 5 : 1;
+    }
+
+    public override string GetGuidebookDescription(IPrototypeManager protoManager)
+    {
+        var tags = string.Join(", ", Tags.Select(t => t.Id));
+        return Loc.GetString(
+            "ce-guidebook-cooking-requirement-tag-required",
+            ("tags", tags));
     }
 }
