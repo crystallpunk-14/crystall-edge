@@ -55,14 +55,9 @@ public sealed partial class ReagentRequired : CECookingCraftRequirement
         foreach (var reagentId in Reagents)
         {
             if (protoManager.TryIndex(reagentId, out var reagent))
-            {
-                var colorHex = reagent.SubstanceColor.ToHex();
-                names.Add($"[color=#{colorHex}]{reagent.LocalizedName}[/color]");
-            }
+                names.Add(reagent.LocalizedName);
             else
-            {
                 names.Add(reagentId.Id);
-            }
         }
 
         var reagents = string.Join(", ", names);
