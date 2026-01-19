@@ -219,13 +219,6 @@
     count: 1
 
 - type: tradingPosition
-  id: CEPlatePie
-  faction: Horticulture
-  service: !type:CEBuyItemsService
-    product: CEPlatePie
-    count: 1
-
-- type: tradingPosition
   id: CEFryingPan
   faction: Horticulture
   category: Tools

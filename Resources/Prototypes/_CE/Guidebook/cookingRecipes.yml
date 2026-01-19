@@ -14,6 +14,7 @@
   id: CECookingMealsEN
   name: Meals
   text: "/ServerInfo/_CE/Guidebook_EN/Cooking/Meals.xml"
+  filterEnabled: True
 
 - type: guideEntry
   hidden: false
@@ -21,6 +22,7 @@
   id: CECookingSoupsEN
   name: Soups
   text: "/ServerInfo/_CE/Guidebook_EN/Cooking/Soups.xml"
+  filterEnabled: True
 
 
 
@@ -40,6 +42,7 @@
   id: CECookingMealsRU
   name: Блюда
   text: "/ServerInfo/_CE/Guidebook_RU/Cooking/Meals.xml"
+  filterEnabled: True
 
 - type: guideEntry
   hidden: false
@@ -47,3 +50,4 @@
   id: CECookingSoupsRU
   name: Супы
   text: "/ServerInfo/_CE/Guidebook_RU/Cooking/Soups.xml"
+  filterEnabled: True
