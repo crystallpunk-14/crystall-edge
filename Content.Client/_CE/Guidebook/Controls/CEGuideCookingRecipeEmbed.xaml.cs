@@ -79,17 +79,17 @@ public sealed partial class CEGuideCookingRecipeEmbed : PanelContainer, IDocumen
         GenerateDescription(recipe);
     }
 
-    public void SetPlateTexture(string texturePath)
+    public void SetPlateSprite(string rsiPath, string state)
     {
         try
         {
-            var texture = _sprite.Frame0(new SpriteSpecifier.Rsi(new ResPath(texturePath), "icon"));
+            var texture = _sprite.Frame0(new SpriteSpecifier.Rsi(new ResPath(rsiPath), state));
             PlateTextureRect.Texture = texture;
             PlateTextureRect.Visible = true;
         }
         catch (Exception e)
         {
-            _sawmill.Warning($"Failed to load plate texture {texturePath}: {e.Message}");
+            _sawmill.Warning($"Failed to load plate sprite {rsiPath}:{state}: {e.Message}");
             PlateTextureRect.Visible = false;
         }
     }

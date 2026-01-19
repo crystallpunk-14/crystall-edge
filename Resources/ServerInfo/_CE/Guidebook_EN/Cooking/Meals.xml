@@ -1,5 +1,8 @@
 <Document>
 # Meals
 
-<CEGuideCookingRecipeGroupEmbed FoodType="Meal" Plate="CEPlateIron"/>
+<CEGuideCookingRecipeGroupEmbed
+FoodType="Meal"
+PlateRsi="_CE/Objects/Consumable/Food/Meals/plates.rsi"
+PlateState="iron"/>
 </Document>

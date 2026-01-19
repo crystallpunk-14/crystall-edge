@@ -1,5 +1,8 @@
 <Document>
 # Soups
 
-<CEGuideCookingRecipeGroupEmbed FoodType="Soup" Plate="CEBowlIron"/>
+<CEGuideCookingRecipeGroupEmbed
+FoodType="Soup"
+PlateRsi="_CE/Objects/Consumable/Food/Soups/bowls.rsi"
+PlateState="iron"/>
 </Document>

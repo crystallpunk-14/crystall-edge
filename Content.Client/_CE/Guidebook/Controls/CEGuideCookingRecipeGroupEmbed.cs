@@ -29,9 +29,9 @@ public sealed class CEGuideCookingRecipeGroupEmbed : BoxContainer, IDocumentTag
         MouseFilter = MouseFilterMode.Stop;
     }
 
-    public CEGuideCookingRecipeGroupEmbed(string foodType, string? plateTexture = null) : this()
+    public CEGuideCookingRecipeGroupEmbed(string foodType, string? plateRsi = null, string? plateState = null) : this()
     {
-        CreateEntries(foodType, plateTexture);
+        CreateEntries(foodType, plateRsi, plateState);
     }
 
     public bool TryParseTag(Dictionary<string, string> args, [NotNullWhen(true)] out Control? control)
@@ -44,14 +44,15 @@ public sealed class CEGuideCookingRecipeGroupEmbed : BoxContainer, IDocumentTag
             return false;
         }
 
-        args.TryGetValue("PlateTexture", out var plateTexture);
+        args.TryGetValue("PlateRsi", out var plateRsi);
+        args.TryGetValue("PlateState", out var plateState);
 
-        CreateEntries(foodType, plateTexture);
+        CreateEntries(foodType, plateRsi, plateState);
         control = this;
         return true;
     }
 
-    private void CreateEntries(string foodType, string? plateTexture = null)
+    private void CreateEntries(string foodType, string? plateRsi = null, string? plateState = null)
     {
         var prototypes = _prototype.EnumeratePrototypes<CECookingRecipePrototype>()
             .Where(p => p.FoodType.Id.Equals(foodType))
@@ -61,8 +62,8 @@ public sealed class CEGuideCookingRecipeGroupEmbed : BoxContainer, IDocumentTag
         foreach (var recipe in prototypes)
         {
             var embed = new CEGuideCookingRecipeEmbed(recipe);
-            if (plateTexture != null)
-                embed.SetPlateTexture(plateTexture);
+            if (plateRsi != null && plateState != null)
+                embed.SetPlateSprite(plateRsi, plateState);
             AddChild(embed);
         }
     }
