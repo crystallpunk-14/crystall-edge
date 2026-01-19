@@ -1,0 +1,63 @@
+- type: guideEntry
+  hidden: false
+  locFilter: "en-US"
+  id: CECookingRecipesEN
+  name: Cooking Recipes
+  text: "/ServerInfo/_CE/Guidebook_EN/Cooking/Recipes.xml"
+  children:
+  - CECookingMealsEN
+  - CECookingSoupsEN
+  - CECookingPiesEN
+
+- type: guideEntry
+  hidden: false
+  locFilter: "en-US"
+  id: CECookingMealsEN
+  name: Meals
+  text: "/ServerInfo/_CE/Guidebook_EN/Cooking/Meals.xml"
+
+- type: guideEntry
+  hidden: false
+  locFilter: "en-US"
+  id: CECookingSoupsEN
+  name: Soups
+  text: "/ServerInfo/_CE/Guidebook_EN/Cooking/Soups.xml"
+
+- type: guideEntry
+  hidden: false
+  locFilter: "en-US"
+  id: CECookingPiesEN
+  name: Pies
+  text: "/ServerInfo/_CE/Guidebook_EN/Cooking/Pies.xml"
+
+- type: guideEntry
+  hidden: false
+  locFilter: "ru-RU"
+  id: CECookingRecipesRU
+  name: Рецепты готовки
+  text: "/ServerInfo/_CE/Guidebook_RU/Cooking/Recipes.xml"
+  children:
+  - CECookingMealsRU
+  - CECookingSoupsRU
+  - CECookingPiesRU
+
+- type: guideEntry
+  hidden: false
+  locFilter: "ru-RU"
+  id: CECookingMealsRU
+  name: Блюда
+  text: "/ServerInfo/_CE/Guidebook_RU/Cooking/Meals.xml"
+
+- type: guideEntry
+  hidden: false
+  locFilter: "ru-RU"
+  id: CECookingSoupsRU
+  name: Супы
+  text: "/ServerInfo/_CE/Guidebook_RU/Cooking/Soups.xml"
+
+- type: guideEntry
+  hidden: false
+  locFilter: "ru-RU"
+  id: CECookingPiesRU
+  name: Пироги
+  text: "/ServerInfo/_CE/Guidebook_RU/Cooking/Pies.xml"
