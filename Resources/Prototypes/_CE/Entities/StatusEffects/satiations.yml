@@ -35,8 +35,8 @@
           ignoreResistances: true
           damage:
             groups:
-              Brute: -0.1
-              Burn: -0.1
+              Brute: -0.2
+              Burn: -0.2
 
 - type: entity
   parent: StatusEffectBase

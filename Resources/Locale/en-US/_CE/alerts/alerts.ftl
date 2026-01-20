@@ -15,7 +15,7 @@ ce-alerts-fed-name = Fed
 ce-alerts-fed-desc = You've eaten well, feel satisfied, and your health is passively recovering.
 
 ce-alerts-well-fed-name = Stuffed
-ce-alerts-well-fed-desc = You've eaten a bit too much! Your health is passively recovering, but it's harder for you to move because of your full stomach.
+ce-alerts-well-fed-desc = You've eaten a bit too much! Your health is passively recovering, even more than usual, but it's harder for you to move because of your full stomach.
 
 ce-alerts-overfed-name = Overstuffed
 ce-alerts-overfed-desc = You've eaten WAY too much! Really, this is over the top. You're experiencing physical pain from your overfilled stomach, and it's hard for you to move.

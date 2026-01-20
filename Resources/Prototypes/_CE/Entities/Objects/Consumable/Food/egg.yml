@@ -22,7 +22,7 @@
         reagents:
         - ReagentId: Egg
           Quantity: 6
-        - ReagentId: Protein
+        - ReagentId: CENutriment
           Quantity: 2
   - type: DrawableSolution
     solution: food
@@ -123,5 +123,5 @@
         reagents:
         - ReagentId: EggCooked
           Quantity: 6
-        - ReagentId: Protein
+        - ReagentId: CENutriment
           Quantity: 2
