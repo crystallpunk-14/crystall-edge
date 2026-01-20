@@ -2,8 +2,8 @@
   hidden: false
   locFilter: "en-US"
   id: CECookingRecipesEN
-  name: Cooking
-  text: "/ServerInfo/_CE/Guidebook_EN/Cooking/Recipes.xml"
+  name: Food and cooking
+  text: "/ServerInfo/_CE/Guidebook_EN/Cooking/Cooking.xml"
   children:
   - CECookingMealsEN
   - CECookingSoupsEN
@@ -13,7 +13,7 @@
   locFilter: "en-US"
   id: CECookingMealsEN
   name: Meals
-  text: "/ServerInfo/_CE/Guidebook_EN/Cooking/Meals.xml"
+  text: "/ServerInfo/_CE/Guidebook_EN/Cooking/Recipes/Meals.xml"
   filterEnabled: True
 
 - type: guideEntry
@@ -21,7 +21,7 @@
   locFilter: "en-US"
   id: CECookingSoupsEN
   name: Soups
-  text: "/ServerInfo/_CE/Guidebook_EN/Cooking/Soups.xml"
+  text: "/ServerInfo/_CE/Guidebook_EN/Cooking/Recipes/Soups.xml"
   filterEnabled: True
 
 
@@ -30,8 +30,8 @@
   hidden: false
   locFilter: "ru-RU"
   id: CECookingRecipesRU
-  name: Приготовление пищи
-  text: "/ServerInfo/_CE/Guidebook_RU/Cooking/Recipes.xml"
+  name: Питание и кулинария
+  text: "/ServerInfo/_CE/Guidebook_RU/Cooking/Cooking.xml"
   children:
   - CECookingMealsRU
   - CECookingSoupsRU
@@ -41,7 +41,7 @@
   locFilter: "ru-RU"
   id: CECookingMealsRU
   name: Блюда
-  text: "/ServerInfo/_CE/Guidebook_RU/Cooking/Meals.xml"
+  text: "/ServerInfo/_CE/Guidebook_RU/Cooking/Recipes/Meals.xml"
   filterEnabled: True
 
 - type: guideEntry
@@ -49,5 +49,5 @@
   locFilter: "ru-RU"
   id: CECookingSoupsRU
   name: Супы
-  text: "/ServerInfo/_CE/Guidebook_RU/Cooking/Soups.xml"
+  text: "/ServerInfo/_CE/Guidebook_RU/Cooking/Recipes/Soups.xml"
   filterEnabled: True

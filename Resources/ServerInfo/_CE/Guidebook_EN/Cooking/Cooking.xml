@@ -1,0 +1,58 @@
+<Document>
+
+# Food and Water
+In CrystallEdge, your characters have [color=yellow]no hunger or thirst[/color].
+If you don't drink or eat, you won't suffer any negative effects.
+
+However, you can eat and drink to gain long-lasting beneficial bonuses.
+
+## Nutrition
+
+Eating enables your character's [color=yellow]passive health regeneration[/color].
+This regeneration bonus is [color=yellow]doubled[/color] if you overeat, but at the cost of [color=yellow]slowing you down[/color]: it's physically difficult to move with an overfilled belly.
+
+Be careful: excessive gluttony can lead to negative consequences... even irreversible ones.
+
+<Box>
+	<GuideEntityEmbed Entity="CEFork"/>
+	<GuideEntityEmbed Entity="CEFoodCheesePart"/>
+	<GuideEntityEmbed Entity="CEFoodApple"/>
+	<GuideEntityEmbed Entity="CEFoodBread"/>
+	<GuideEntityEmbed Entity="CEFoodCabbage"/>
+	<GuideEntityEmbed Entity="CESpoon"/>
+</Box>
+
+## Drinks
+
+Drinks [color=yellow]increase your maximum stamina capacity[/color].
+This bonus is [color=yellow]doubled[/color] if you drink enough, but as with nutrition, it will [color=yellow]slow your character[/color].
+
+Excessive drinking can also lead to negative consequences...
+
+<Box>
+	<GuideEntityEmbed Entity="CEBottleRum"/>
+	<GuideEntityEmbed Entity="CEBottleWine"/>
+	<GuideEntityEmbed Entity="CEBottleWhiskey"/>
+</Box>
+
+[color=yellow][/color]
+
+# Cooking
+
+At the moment, there's no difference between eating raw ingredients and cooked meals,
+but in the future cooked food will provide additional bonuses beyond the basic effects of satiety.
+
+The cooking process is very simple.
+Currently, you can cook [color=yellow]dishes[/color] and [color=yellow]soups[/color] using a frying pan or a cooking pot respectively.
+
+<Box>
+	<GuideEntityEmbed Entity="CEFryingPan"/>
+	<GuideEntityEmbed Entity="CEHeater"/>
+	<GuideEntityEmbed Entity="CECookingPot"/>
+</Box>
+
+To cook a dish, put the required ingredients inside and place the pan or pot on the heat.
+Keep an eye on the cooking process, and don't forget to take it off in time,
+otherwise your dish or soup will turn into burnt mush.
+
+</Document>
