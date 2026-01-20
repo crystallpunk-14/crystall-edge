@@ -23,3 +23,7 @@
       reagents:
       - ReagentId: CEWater
         Quantity: 100
+  - type: Edible
+    solution: tank
+    edible: Drink
+
