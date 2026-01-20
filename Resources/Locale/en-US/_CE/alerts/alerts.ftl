@@ -9,3 +9,16 @@ ce-alerts-confused-aura-desc = Your magical aura is altered, and you leave false
 
 ce-alerts-aircaught-name = Caught in the air
 ce-alerts-aircaught-desc = You are caught by an air current that prevents you from falling lower or rising higher.
+# Hunger
+
+ce-alerts-fed-name = Fed
+ce-alerts-fed-desc = You've eaten well, feel satisfied, and your health is passively recovering.
+
+ce-alerts-well-fed-name = Stuffed
+ce-alerts-well-fed-desc = You've eaten a bit too much! Your health is passively recovering, but it's harder for you to move because of your full stomach.
+
+ce-alerts-overfed-name = Overstuffed
+ce-alerts-overfed-desc = You've eaten WAY too much! Really, this is over the top. You're experiencing physical pain from your overfilled stomach, and it's hard for you to move.
+
+ce-alerts-deadfed-name = Death by gluttony
+ce-alerts-deadfed-desc = Gluttony is a deadly sin. And you've broken it.

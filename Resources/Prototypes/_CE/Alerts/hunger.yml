@@ -1,0 +1,31 @@
+- type: alert
+  id: CEFed
+  icons:
+  - sprite: /Textures/_CE/Interface/Alerts/hunger.rsi
+    state: fed
+  name: ce-alerts-fed-name
+  description: ce-alerts-fed-desc
+
+- type: alert
+  id: CEWellFed
+  icons:
+  - sprite: /Textures/_CE/Interface/Alerts/hunger.rsi
+    state: wellfed
+  name: ce-alerts-well-fed-name
+  description: ce-alerts-well-fed-desc
+
+- type: alert
+  id: CEOverFed
+  icons:
+  - sprite: /Textures/_CE/Interface/Alerts/hunger.rsi
+    state: overfed
+  name: ce-alerts-overfed-name
+  description: ce-alerts-overfed-desc
+
+- type: alert
+  id: CEDeadFed
+  icons:
+  - sprite: /Textures/_CE/Interface/Alerts/hunger.rsi
+    state: deadfed
+  name: ce-alerts-deadfed-name
+  description: ce-alerts-deadfed-desc

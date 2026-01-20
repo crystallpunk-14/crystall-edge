@@ -5,7 +5,17 @@
   name: fed
   components:
   - type: StatusEffectAlert
-    alert: Peckish #TODO
+    alert: CEFed
+  - type: CEStatusEffectApplySpell
+    effects:
+      - !type:CESpellApplyEntityEffect
+        effects:
+        - !type:HealthChange
+          ignoreResistances: true
+          damage:
+            groups:
+              Brute: -0.1
+              Burn: -0.1
 
 - type: entity
   parent: StatusEffectBase
@@ -13,7 +23,17 @@
   name: well-fed
   components:
   - type: StatusEffectAlert
-    alert: Thirsty #TODO
+    alert: CEWellFed
+  - type: CEStatusEffectApplySpell
+    effects:
+      - !type:CESpellApplyEntityEffect
+        effects:
+        - !type:HealthChange
+          ignoreResistances: true
+          damage:
+            groups:
+              Brute: -0.1
+              Burn: -0.1
 
 - type: entity
   parent: StatusEffectBase
@@ -21,4 +41,32 @@
   name: overfed
   components:
   - type: StatusEffectAlert
-    alert: VowOfSilence #TODO
+    alert: CEOverFed
+  - type: CEStatusEffectApplySpell
+    effects:
+      - !type:CESpellApplyEntityEffect
+        effects:
+        - !type:HealthChange
+          ignoreResistances: true
+          damage:
+            groups:
+              Burn: -0.1
+            types:
+              Blunt: 0.5
+
+- type: entity
+  parent: StatusEffectBase
+  id: CEStatusEffectOverfedInstantDeath
+  name: overfed
+  components:
+  - type: StatusEffectAlert
+    alert: CEDeadFed
+  - type: CEStatusEffectApplySpell
+    effects:
+      - !type:CESpellApplyEntityEffect
+        effects:
+        - !type:HealthChange
+          ignoreResistances: true
+          damage:
+            types:
+              Blunt: 60
