@@ -2,6 +2,9 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.Cooking.Prototypes;
 
+/// <summary>
+/// Localized food tag used by the cooking system.
+/// </summary>
 [Prototype("CEFoodTag")]
 public sealed partial class CEFoodTagPrototype : IPrototype
 {

@@ -23,8 +23,8 @@ public sealed partial class CEGuideCookingRecipeEmbed : PanelContainer, IDocumen
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly ILogManager _logManager = default!;
 
-    private SpriteSystem _sprite = default!;
-    private ISawmill _sawmill = default!;
+    private readonly SpriteSystem _sprite = default!;
+    private readonly ISawmill _sawmill = default!;
 
     public CEGuideCookingRecipeEmbed()
     {
@@ -75,7 +75,6 @@ public sealed partial class CEGuideCookingRecipeEmbed : PanelContainer, IDocumen
     {
         GenerateHeader(recipe);
         GenerateRequirements(recipe);
-        GenerateCookTime(recipe.CookingTime);
         GenerateDescription(recipe);
     }
 
@@ -96,8 +95,11 @@ public sealed partial class CEGuideCookingRecipeEmbed : PanelContainer, IDocumen
 
     private void GenerateHeader(CECookingRecipePrototype recipe)
     {
-        var layer = recipe.FoodData.Visuals.First();
+        var layer = recipe.FoodData.Visuals.FirstOrDefault();
 
+        if (layer is null)
+            return;
+        
         if (layer.RsiPath is null && layer.State is null)
             _sawmill.Warning($"CE cooking recipe \"{recipe.ID}\" has no valid visual data.");
 
@@ -128,13 +130,6 @@ public sealed partial class CEGuideCookingRecipeEmbed : PanelContainer, IDocumen
         ResultDescription.SetMarkup(Loc.GetString(descKey));
     }
 
-    private void GenerateCookTime(TimeSpan time)
-    {
-        var msg = new FormattedMessage();
-        msg.AddMarkupOrThrow(Loc.GetString("ce-guidebook-cooking-cook-time", ("time", time)));
-        msg.Pop();
-    }
-
     private void GenerateRequirements(CECookingRecipePrototype recipe)
     {
         RequirementsContainer.RemoveAllChildren();
@@ -147,8 +142,7 @@ public sealed partial class CEGuideCookingRecipeEmbed : PanelContainer, IDocumen
 
         foreach (var requirement in recipe.Requirements)
         {
-            var description = requirement.GetGuidebookDescription(_prototype);
-            AddRequirementLine(description);
+            AddRequirementLine(requirement.GetGuidebookDescription(_prototype));
         }
     }
 

@@ -9,18 +9,3 @@ ce-guidebook-cooking-requirement-reagent-required = Долить: [color=yellow]
 ce-guidebook-cooking-requirement-unknown = Неизвестное требование
 
 ce-guidebook-cooking-unknown-food-name = Неизвестная еда
-
-# Ingredient tags
-ce-cooking-tag-egg = Яйцо
-ce-cooking-tag-salad = Салатная зелень
-ce-cooking-tag-vegetable = Овощи
-ce-cooking-tag-meat = Мясо
-ce-cooking-tag-meat-slice = Ломтик мяса
-ce-cooking-tag-meat-monster = Мясо чудовища
-ce-cooking-tag-meat-pig = Свинина
-ce-cooking-tag-meat-leg = Ножка мяса
-ce-cooking-tag-cheese = Сыр
-ce-cooking-tag-pumpkin = Тыква
-ce-cooking-tag-dough = Тесто
-ce-cooking-tag-potato = Картофель
-ce-cooking-tag-cabbage = Капуста

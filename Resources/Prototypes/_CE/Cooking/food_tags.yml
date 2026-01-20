@@ -1,10 +1,4 @@
-- type: CEFoodTag
-  id: CEEgg
-  name: ce-cooking-tag-egg
-
-- type: CEFoodTag
-  id: CESalad
-  name: ce-cooking-tag-salad
+# Generic categories
 
 - type: CEFoodTag
   id: CEVegetable
@@ -13,6 +7,20 @@
 - type: CEFoodTag
   id: CEMeat
   name: ce-cooking-tag-meat
+
+- type: CEFoodTag
+  id: CEFruit
+  name: ce-cooking-tag-fruit
+
+# More specific ingredients
+
+- type: CEFoodTag
+  id: CEEgg
+  name: ce-cooking-tag-egg
+
+- type: CEFoodTag
+  id: CESalad
+  name: ce-cooking-tag-salad
 
 - type: CEFoodTag
   id: CEMeatSlice
@@ -49,3 +57,7 @@
 - type: CEFoodTag
   id: CECabbage
   name: ce-cooking-tag-cabbage
+
+- type: CEFoodTag
+  id: CEWheat
+  name: ce-cooking-tag-wheat

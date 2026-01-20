@@ -24,15 +24,15 @@
         reagents:
         - ReagentId: Flour
           Quantity: 5
-  - type: Tag
-    tags:
-    - CEWheat
   - type: SliceableFood
     count: 2
     sliceTime: 1.5
     slice: CESeedWheat
   - type: StaticPrice
     price: 1
+  - type: CEFoodTag
+    tags:
+    - CEWheat
 
 - type: entity
   id: CECotton
@@ -510,7 +510,7 @@
     count: 4
     sliceTime: 1.5
     slice: CEFoodAppleSlice
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEFruits
 

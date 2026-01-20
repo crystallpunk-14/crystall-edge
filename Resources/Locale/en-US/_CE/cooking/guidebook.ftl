@@ -10,17 +10,3 @@ ce-guidebook-cooking-requirement-unknown = Unknown requirement
 
 ce-guidebook-cooking-unknown-food-name = Unknown food
 
-# Ingredient tags
-ce-cooking-tag-egg = Egg
-ce-cooking-tag-salad = Salad greens
-ce-cooking-tag-vegetable = Vegetables
-ce-cooking-tag-meat = Meat
-ce-cooking-tag-meat-slice = Meat slice
-ce-cooking-tag-meat-monster = Monster meat
-ce-cooking-tag-meat-pig = Pork
-ce-cooking-tag-meat-leg = Leg meat
-ce-cooking-tag-cheese = Cheese
-ce-cooking-tag-pumpkin = Pumpkin
-ce-cooking-tag-dough = Dough
-ce-cooking-tag-potato = Potato
-ce-cooking-tag-cabbage = Cabbage
