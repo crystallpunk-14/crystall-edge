@@ -6,9 +6,6 @@
   components:
   - type: Physics
     bodyType: Static
-  - type: Damageable
-    damageContainer: StructuralInorganic
-    damageModifierSet: CESkeleton
   - type: Climbable
   - type: GlassTable
     climberDamage:
@@ -75,7 +72,7 @@
 - type: entity
   parent: CEBaseBoneStructure
   id: CEBoneSpine
-  name: bone spine 
+  name: bone spine
   description: The large bony torso of an unknown creature, as if it had been torn to pieces.
   components:
   - type: Sprite
@@ -115,7 +112,7 @@
 - type: entity
   parent: CEBaseBoneStructure
   id: CEBoneDragon
-  name: bone dragon 
+  name: bone dragon
   description: The large skeleton of a dragon, the possibility of encountering such a creature is both fascinating and terrifying.
   components:
   - type: Sprite
