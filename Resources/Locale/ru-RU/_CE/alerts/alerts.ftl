@@ -23,3 +23,17 @@ ce-alerts-overfed-desc = Вы съели СЛИШКОМ много! Нет, пр
 
 ce-alerts-deadfed-name = Смерть от обжорства
 ce-alerts-deadfed-desc = Обжорство - смертный грех. И вы его нарушили.
+
+# Thirst
+
+ce-alerts-hydrated-name = Напился
+ce-alerts-hydrated-desc = Вы напились и чувствуете себя отлично. Объем вашей выносливости повышен.
+
+ce-alerts-well-hydrated-name = Слегка перепил
+ce-alerts-well-hydrated-desc = Вы много пили! Объем вашей выносливости сильно повышен, но вам тяжелее двигаться из-за избытка жидкости.
+
+ce-alerts-overhydrated-name = Перенасыщен водой
+ce-alerts-overhydrated-desc = Вы СЛИШКОМ много пили! Ваше тело с трудом справляется с избытком жидкости, ваши движения серьёзно затруднены.
+
+ce-alerts-deadhydrated-name = Смерть от гидратации
+ce-alerts-deadhydrated-desc = Гипонатриемия это не шутка. Ваше тело не смогло выдержать перегрузку водой.

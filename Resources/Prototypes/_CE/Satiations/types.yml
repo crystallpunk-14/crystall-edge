@@ -10,3 +10,16 @@
     50: CEStatusEffectWellFed
     75: CEStatusEffectOverfed
     95: CEStatusEffectOverfedInstantDeath
+
+- type: satiationType
+  id: Thirst
+  min: 0
+  max: 100
+  default: 0
+  decayRate: 0.0347
+  statusEffectsThresholds:
+    0: null
+    10: CEStatusEffectHydrated
+    50: CEStatusEffectWellHydrated
+    75: CEStatusEffectOverhydrated
+    95: CEStatusEffectOverhydratedInstantCollapse

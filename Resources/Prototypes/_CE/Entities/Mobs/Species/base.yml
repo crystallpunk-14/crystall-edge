@@ -202,6 +202,7 @@
   - type: CESatiations
     satiations:
       Hunger: 0
+      Thirst: 0
 
 - type: entity
   parent:

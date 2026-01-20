@@ -11814,7 +11814,7 @@ entities:
       parent: 1
     - type: CEZPhysics
       currentGroundHeight: 1.05
-- proto: FloorWaterEntity
+- proto: CEWaterFloorEntity
   entities:
   - uid: 337
     components:

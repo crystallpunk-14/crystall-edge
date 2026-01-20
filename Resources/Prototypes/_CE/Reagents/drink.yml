@@ -1,0 +1,17 @@
+- type: reagent
+  id: CEWater
+  name: reagent-name-water
+  desc: reagent-desc-water
+  evaporationSpeed: 0.3
+  absorbent: true
+  physicalDesc: reagent-physical-desc-translucent
+  flavor: water
+  color: "#75b1f0"
+  recognizable: true
+  friction: 0.4
+  metabolisms:
+    Drink:
+      effects:
+      - !type:CESatiate
+        satiationType: Thirst
+        amount: 0.5

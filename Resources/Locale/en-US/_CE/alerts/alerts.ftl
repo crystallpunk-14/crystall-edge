@@ -22,3 +22,17 @@ ce-alerts-overfed-desc = You've eaten WAY too much! Really, this is over the top
 
 ce-alerts-deadfed-name = Death by gluttony
 ce-alerts-deadfed-desc = Gluttony is a deadly sin. And you've broken it.
+
+# Thirst
+
+ce-alerts-hydrated-name = Hydrated
+ce-alerts-hydrated-desc = You've drunk well and feel refreshed. Your stamina capacity is increased.
+
+ce-alerts-well-hydrated-name = Well quenched
+ce-alerts-well-hydrated-desc = You've drunk plenty! Your stamina capacity is greatly increased, but it's harder for you to move due to the excess fluid.
+
+ce-alerts-overhydrated-name = Waterlogged
+ce-alerts-overhydrated-desc = You've drunk WAY too much! Your body is struggling with the excess fluid, and your movements are severely hindered.
+
+ce-alerts-deadhydrated-name = Death by hydration
+ce-alerts-deadhydrated-desc = Hyponatremia is no joke. Your body couldn't handle the water overload.
