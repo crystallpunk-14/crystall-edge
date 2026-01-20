@@ -213,15 +213,6 @@
   save: false
   abstract: true
   components:
-  # Organs
-  - type: PassiveDamage
-    allowedStates:
-    - Alive
-    damageCap: 20
-    damage:
-      groups:
-        Brute: -0.07
-        Burn: -0.07
   - type: StatusEffects
     allowed:
     - Stun

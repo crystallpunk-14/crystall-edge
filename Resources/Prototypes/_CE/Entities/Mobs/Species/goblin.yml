@@ -99,17 +99,6 @@
         - MobMask
         layer:
         - MobLayer
-  - type: Damageable
-    damageContainer: CEBiological
-    damageModifierSet: CEGoblin #+25% all damage, -50% poison
-  - type: PassiveDamage
-    allowedStates:
-    - Alive
-    damageCap: 40
-    damage:
-      groups:
-        Burn: -0.2
-        Brute: -0.2
 #  - type: CEMagicEnergyContainer #SMALL mana container
 #    maxEnergy: 25
 #    energy: 25
