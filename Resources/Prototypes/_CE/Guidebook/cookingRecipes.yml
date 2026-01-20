@@ -2,7 +2,7 @@
   hidden: false
   locFilter: "en-US"
   id: CECookingRecipesEN
-  name: Cooking Recipes
+  name: Cooking
   text: "/ServerInfo/_CE/Guidebook_EN/Cooking/Recipes.xml"
   children:
   - CECookingMealsEN
@@ -30,7 +30,7 @@
   hidden: false
   locFilter: "ru-RU"
   id: CECookingRecipesRU
-  name: Рецепты готовки
+  name: Приготовление пищи
   text: "/ServerInfo/_CE/Guidebook_RU/Cooking/Recipes.xml"
   children:
   - CECookingMealsRU
