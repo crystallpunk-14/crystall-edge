@@ -1,0 +1,24 @@
+
+- type: entity
+  parent: StatusEffectBase
+  id: CEStatusEffectFed
+  name: fed
+  components:
+  - type: StatusEffectAlert
+    alert: Peckish #TODO
+
+- type: entity
+  parent: StatusEffectBase
+  id: CEStatusEffectWellFed
+  name: well-fed
+  components:
+  - type: StatusEffectAlert
+    alert: Thirsty #TODO
+
+- type: entity
+  parent: StatusEffectBase
+  id: CEStatusEffectOverfed
+  name: overfed
+  components:
+  - type: StatusEffectAlert
+    alert: VowOfSilence #TODO

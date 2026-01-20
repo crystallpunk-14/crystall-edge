@@ -199,6 +199,9 @@
   - type: CEBlinker
   - type: CESkillStorage
   - type: CEVampireEssenceHolder
+  - type: CESatiations
+    satiations:
+      Hunger: 0
 
 - type: entity
   parent:

@@ -99,7 +99,7 @@ public sealed partial class CEGuideCookingRecipeEmbed : PanelContainer, IDocumen
 
         if (layer is null)
             return;
-        
+
         if (layer.RsiPath is null && layer.State is null)
             _sawmill.Warning($"CE cooking recipe \"{recipe.ID}\" has no valid visual data.");
 
