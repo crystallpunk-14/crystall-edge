@@ -9,7 +9,7 @@
   name: ce-cooking-tag-meat
 
 - type: CEFoodTag
-  id: CEFruit
+  id: CEFruits
   name: ce-cooking-tag-fruit
 
 # More specific ingredients

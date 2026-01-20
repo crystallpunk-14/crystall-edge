@@ -531,7 +531,7 @@
         reagents:
         - ReagentId: CENutriment
           Quantity: 1.4
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEFruits
 
