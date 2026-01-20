@@ -1,10 +1,10 @@
 using Content.Shared._CE.Actions.Spells;
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._CE.StatusEffect;
+namespace Content.Shared._CE.StatusEffect.SpellApply;
 
 /// <summary>
-/// Allows you to see what skills the creature possesses
+///
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentPause]
 public sealed partial class CEStatusEffectApplySpellComponent : Component

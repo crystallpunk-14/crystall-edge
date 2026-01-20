@@ -24,6 +24,9 @@
   components:
   - type: StatusEffectAlert
     alert: CEWellFed
+  - type: CESpeedModifyStatusEffect
+    walk: 0.8
+    sprint: 0.7
   - type: CEStatusEffectApplySpell
     effects:
       - !type:CESpellApplyEntityEffect
@@ -42,6 +45,9 @@
   components:
   - type: StatusEffectAlert
     alert: CEOverFed
+  - type: CESpeedModifyStatusEffect
+    walk: 0.6
+    sprint: 0.5
   - type: CEStatusEffectApplySpell
     effects:
       - !type:CESpellApplyEntityEffect
@@ -61,6 +67,9 @@
   components:
   - type: StatusEffectAlert
     alert: CEDeadFed
+  - type: CESpeedModifyStatusEffect
+    walk: 0.3
+    sprint: 0.2
   - type: CEStatusEffectApplySpell
     effects:
       - !type:CESpellApplyEntityEffect

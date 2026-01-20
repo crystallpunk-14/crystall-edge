@@ -2,7 +2,7 @@ using Content.Shared._CE.Actions.Spells;
 using Content.Shared.StatusEffectNew.Components;
 using Robust.Shared.Timing;
 
-namespace Content.Shared._CE.StatusEffect;
+namespace Content.Shared._CE.StatusEffect.SpellApply;
 
 public sealed class CEStatusEffectApplySpellSystem : EntitySystem
 {
