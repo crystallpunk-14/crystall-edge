@@ -18,12 +18,12 @@
         - ReagentId: CEWater
           Quantity: 9999999
   - type: SolutionRegeneration
-    solution: tank
+    solution: pool
     generated:
       reagents:
       - ReagentId: CEWater
         Quantity: 100
   - type: Edible
-    solution: tank
+    solution: pool
     edible: Drink
 
