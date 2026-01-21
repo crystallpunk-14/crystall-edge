@@ -2,7 +2,6 @@
   id: Hunger
   min: 0
   max: 100
-  default: 0
   decayRate: 0.0347 # ~29 second for 1 point, 24 minutes (1 ingame day) from 50 to 0
   statusEffectsThresholds:
     0: null
@@ -15,7 +14,6 @@
   id: Thirst
   min: 0
   max: 100
-  default: 0
   decayRate: 0.0347 # ~29 second for 1 point, 24 minutes (1 ingame day) from 50 to 0
   statusEffectsThresholds:
     0: null
