@@ -21,7 +21,7 @@
       fix1:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.45,-0.45,0.45,0.45"
+          bounds: "-0.45,-0.1,0.45,0.45"
         density: 55
         mask: # tables should collide with other tables
         - TableMask
@@ -30,7 +30,7 @@
       fix2:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.4,-0.4,0.4,0.4"
+          bounds: "-0.3,-0.0,0.3,0.35"
         mask:
         - TabletopMachineMask
         layer:
