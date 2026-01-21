@@ -850,10 +850,10 @@
   - type: RandomSprite
     available:
       - random:
-          mole_meat1: CEcookedMeat
-          mole_meat2: CEcookedMeat
-          mole_meat3: CEcookedMeat
-          mole_meat4: CEcookedMeat
+          mole_meat1: ""
+          mole_meat2: ""
+          mole_meat3: ""
+          mole_meat4: ""
   - type: CETemperatureTransformation
     autoTransformOnCooked: false
     entries:
