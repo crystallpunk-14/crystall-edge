@@ -27,6 +27,9 @@ public sealed partial class CEFoodHolderComponent : Component
     [DataField]
     public bool CanGiveFood;
 
+    /// <summary>
+    /// Soup, Meal, Kebabs? Different types of food
+    /// </summary>
     [DataField(required: true)]
     public ProtoId<CEFoodTypePrototype> FoodType;
 

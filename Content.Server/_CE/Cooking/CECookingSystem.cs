@@ -80,7 +80,7 @@ public sealed class CECookingSystem : CESharedCookingSystem
 
     private void TryTransformAll(Entity<CEFoodCookerComponent> ent)
     {
-        if (!_container.TryGetContainer(ent, ent.Comp.ContainerId, out var container))
+        if (!Container.TryGetContainer(ent, ent.Comp.ContainerId, out var container))
             return;
 
         var containedEntities = container.ContainedEntities.ToList();

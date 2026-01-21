@@ -118,7 +118,7 @@ public abstract partial class CESharedCookingSystem
 
     private void OnTemperatureChange(Entity<CEFoodCookerComponent> ent, ref OnTemperatureChangeEvent args)
     {
-        if (!_container.TryGetContainer(ent, ent.Comp.ContainerId, out var container))
+        if (!Container.TryGetContainer(ent, ent.Comp.ContainerId, out var container))
             return;
 
         if (!TryComp<CEFoodHolderComponent>(ent, out var holder))
