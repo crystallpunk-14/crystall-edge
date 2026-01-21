@@ -4,7 +4,8 @@ using Robust.Shared.GameStates;
 namespace Content.Shared._CE.StatusEffect.SpellApply;
 
 /// <summary>
-///
+///     Holds configuration for periodically applying one or more spell effects
+///     while a status effect is active on an entity.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentPause]
 public sealed partial class CEStatusEffectApplySpellComponent : Component

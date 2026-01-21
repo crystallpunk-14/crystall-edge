@@ -6,7 +6,7 @@
   decayRate: 0.0347 # ~29 second for 1 point, 24 minutes (1 ingame day) from 50 to 0
   statusEffectsThresholds:
     0: null
-    10: CEStatusEffectFed
+    5: CEStatusEffectFed
     50: CEStatusEffectWellFed
     75: CEStatusEffectOverfed
     95: CEStatusEffectOverfedInstantDeath
@@ -16,10 +16,10 @@
   min: 0
   max: 100
   default: 0
-  decayRate: 0.0347
+  decayRate: 0.0347 # ~29 second for 1 point, 24 minutes (1 ingame day) from 50 to 0
   statusEffectsThresholds:
     0: null
-    10: CEStatusEffectHydrated
+    5: CEStatusEffectHydrated
     50: CEStatusEffectWellHydrated
     75: CEStatusEffectOverhydrated
     95: CEStatusEffectOverhydratedInstantCollapse

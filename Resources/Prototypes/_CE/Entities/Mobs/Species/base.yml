@@ -201,8 +201,8 @@
   - type: CEVampireEssenceHolder
   - type: CESatiations
     satiations:
-      Hunger: 0
-      Thirst: 0
+      Hunger: 10
+      Thirst: 10
 
 - type: entity
   parent:

@@ -11,6 +11,21 @@ public abstract partial class CESharedSatiationSystem : EntitySystem
     [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
     [Dependency] private readonly INetManager _net = default!;
 
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeLocalEvent<CESatiationsComponent, MapInitEvent>(OnMapInit);
+    }
+
+    private void OnMapInit(Entity<CESatiationsComponent> ent, ref MapInitEvent args)
+    {
+        foreach (var satiation in ent.Comp.Satiations)
+        {
+            SetSatiationLevel((ent, ent.Comp), satiation.Key, satiation.Value);
+        }
+    }
+
     /// <summary>
     /// Adds a new satiation type to an entity with an optional default value.
     /// </summary>
@@ -18,21 +33,17 @@ public abstract partial class CESharedSatiationSystem : EntitySystem
     /// <param name="satiationType">Type of satiation to add</param>
     /// <param name="defaultValue">Initial satiation value. If null, uses the prototype's default value</param>
     /// <returns>True if satiation type was successfully added, false if it already exists or prototype is invalid</returns>
-    public void AddSatiationType(EntityUid ent, ProtoId<CESatiationTypePrototype> satiationType, float? defaultValue = null)
+    public void AddSatiationType(EntityUid ent, ProtoId<CESatiationTypePrototype> satiationType, float defaultValue)
     {
         if (_net.IsClient)
             return;
 
-        if (!_proto.Resolve(satiationType, out var indexedSatiationType))
-            return;
-
         var satiationComp = EnsureComp<CESatiationsComponent>(ent);
 
-        if (satiationComp.Satiations.ContainsKey(satiationType))
+        if (!satiationComp.Satiations.TryAdd(satiationType, defaultValue))
             return;
-
-        var defaultSatiationValue = defaultValue ?? indexedSatiationType.Default;
-        SetSatiationLevel((ent, satiationComp), satiationType, defaultSatiationValue);
+        
+        SetSatiationLevel((ent, satiationComp), satiationType, defaultValue);
     }
 
     /// <summary>

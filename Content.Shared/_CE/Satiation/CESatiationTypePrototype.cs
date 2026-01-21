@@ -14,9 +14,6 @@ public sealed partial class CESatiationTypePrototype : IPrototype
     [DataField]
     public float Max = 100;
 
-    [DataField]
-    public float Default = 0;
-
     /// <summary>
     /// Decaying per second
     /// </summary>
