@@ -199,9 +199,6 @@
           Quantity: 3
         - ReagentId: Egg
           Quantity: 6
-  - type: FoodSequenceElement
-    entries:
-      CESandwich: CECutletSandwich
   - type: CETemperatureTransformation
     entries:
     - temperatureRange: 400, 500
@@ -209,7 +206,6 @@
   - type: CEFoodTag
     tags:
     - CEMeat
-    - CEMeatCutlet
 
 - type: entity
   id: CEFoodMeatLambCutletCooked
@@ -228,9 +224,6 @@
           Quantity: 13
         - ReagentId: EggCooked
           Quantity: 6
-  - type: FoodSequenceElement
-    entries:
-      CESandwich: CECutletCookedSandwich
   - type: CETemperatureTransformation
     autoTransformOnCooked: false
     entries:
