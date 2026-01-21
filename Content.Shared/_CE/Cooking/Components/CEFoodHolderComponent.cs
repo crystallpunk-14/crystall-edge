@@ -49,4 +49,7 @@ public sealed partial class CEFoodHolderComponent : Component
     public string TargetLayerMap = "ce_foodLayers";
 
     public HashSet<string> RevealedLayers = new();
+
+    [DataField]
+    public bool AutoRename = true;
 }

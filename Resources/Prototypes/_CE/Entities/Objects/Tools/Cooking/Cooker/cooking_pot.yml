@@ -29,6 +29,7 @@
     displacementRsiPath: _CE/Objects/Consumable/Food/Soups/displacement_pot.rsi
     maxDisplacementFillLevels: 2
     canGiveFood: true
+    autoRename: false
   - type: CEFoodCooker
     foodType: Soup
     solutionId: cooker

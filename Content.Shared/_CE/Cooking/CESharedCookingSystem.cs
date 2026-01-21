@@ -128,7 +128,7 @@ public abstract partial class CESharedCookingSystem : EntitySystem
         {
             if (targetSolution.Volume > 0)
             {
-                if (_timing.IsFirstTimePredicted)
+                if (_net.IsServer)
                 {
                     _popup.PopupEntity(
                         Loc.GetString("ce-cooking-popup-not-empty", ("name", MetaData(target).EntityName)),
@@ -169,9 +169,9 @@ public abstract partial class CESharedCookingSystem : EntitySystem
         return true;
     }
 
-    private void SetFoodData(Entity<CEFoodHolderComponent> ent, CEFoodData data)
+    private void SetFoodData(Entity<CEFoodHolderComponent> ent, CEFoodData? data)
     {
-        ent.Comp.FoodData = new CEFoodData(data);
+        ent.Comp.FoodData = data is not null ? new CEFoodData(data) : null;
         DirtyField(ent, ent.Comp, nameof(CEFoodHolderComponent.FoodData));
         UpdateFoodDataVisuals(ent);
     }
@@ -185,10 +185,13 @@ public abstract partial class CESharedCookingSystem : EntitySystem
             return;
 
         //Name and Description
-        if (data.Name is not null)
-            _metaData.SetEntityName(ent, Loc.GetString(data.Name));
-        if (data.Desc is not null)
-            _metaData.SetEntityDescription(ent, Loc.GetString(data.Desc));
+        if (ent.Comp.AutoRename)
+        {
+            if (data.Name is not null)
+                _metaData.SetEntityName(ent, Loc.GetString(data.Name));
+            if (data.Desc is not null)
+                _metaData.SetEntityDescription(ent, Loc.GetString(data.Desc));
+        }
 
         //Flavors
         EnsureComp<FlavorProfileComponent>(ent, out var flavorComp);
@@ -196,13 +199,6 @@ public abstract partial class CESharedCookingSystem : EntitySystem
         foreach (var flavor in data.Flavors)
         {
             flavorComp.Flavors.Add(flavor);
-        }
-
-        //Visuals
-        foreach (var layer in data.Visuals)
-        {
-            if (_random.Prob(0.5f))
-                layer.Scale = new Vector2(-1, 1);
         }
 
         Dirty(ent);

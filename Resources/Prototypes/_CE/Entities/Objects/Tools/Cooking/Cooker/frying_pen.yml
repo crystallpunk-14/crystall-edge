@@ -41,6 +41,7 @@
     displacementRsiPath: _CE/Objects/Consumable/Food/Meals/displacement_pan.rsi
     maxDisplacementFillLevels: 2
     canGiveFood: true
+    autoRename: false
   - type: Item
     size: Ginormous
   - type: MultiHandedItem

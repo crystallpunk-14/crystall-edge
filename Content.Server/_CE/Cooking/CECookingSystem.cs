@@ -20,18 +20,7 @@ public sealed class CECookingSystem : CESharedCookingSystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CEFoodHolderComponent, SolutionContainerChangedEvent>(OnHolderChanged);
         SubscribeLocalEvent<CETemperatureTransformationComponent, OnTemperatureChangeEvent>(OnTemperatureChanged);
-    }
-
-    private void OnHolderChanged(Entity<CEFoodHolderComponent> ent, ref SolutionContainerChangedEvent args)
-    {
-        if (args.Solution.Volume != 0)
-            return;
-
-        ent.Comp.FoodData = null;
-        Dirty(ent);
-        UpdateFoodDataVisuals(ent);
     }
 
     private void OnTemperatureChanged(Entity<CETemperatureTransformationComponent> start,
