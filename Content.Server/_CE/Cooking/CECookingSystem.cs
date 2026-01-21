@@ -28,8 +28,8 @@ public sealed class CECookingSystem : CESharedCookingSystem
     {
         foreach (var entry in start.Comp.Entries)
         {
-            if (!(args.CurrentTemperature >= entry.TemperatureRange.X) ||
-                !(args.CurrentTemperature < entry.TemperatureRange.Y))
+            if (args.CurrentTemperature < entry.TemperatureRange.X ||
+                args.CurrentTemperature >= entry.TemperatureRange.Y)
                 continue;
 
             if (entry.TransformTo == null)

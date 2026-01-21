@@ -48,7 +48,7 @@ public abstract partial class CESharedCookingSystem
             return;
 
         if (container.ContainedEntities.Count <= 0 &&
-            holder.FoodData is null) //We can or cooking (null foodData) or burning (zero contained)
+            holder.FoodData is null) // We can be either cooking (null foodData) or burning (zero contained)
         {
             StopCooking(ent);
             return;
