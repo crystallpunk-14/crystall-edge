@@ -75,7 +75,9 @@ public sealed partial class CEPassportSystem : EntitySystem
         if (_proto.TryIndex(ev.Profile.Species, out var indexedSpecies))
             sb.AppendLine(Loc.GetString("ce-passport-species", ("species", Loc.GetString(indexedSpecies.Name))));
         //Birthday
-        var birthday = $"{_random.Next(40) + 1}.{_random.Next(12) + 1}.{_current_year - ev.Profile.Age}";
+        var birthyear = _current_year - ev.Profile.Age;
+        var isNegativeBirthyear = birthyear <= 0;
+        var birthday = $"{_random.Next(40) + 1}.{_random.Next(12) + 1}.{(isNegativeBirthyear ? $"{Math.Abs(birthyear) + 1} BC" : birthyear)}";
         sb.AppendLine(Loc.GetString("ce-passport-birth-date", ("birthday", birthday)));
         //Job
         if (ev.JobId is not null && _proto.TryIndex<JobPrototype>(ev.JobId, out var indexedJob))
