@@ -190,7 +190,6 @@ public abstract partial class CESharedCookingSystem : EntitySystem
         if (data.Desc is not null)
             _metaData.SetEntityDescription(ent, Loc.GetString(data.Desc));
 
-
         //Flavors
         EnsureComp<FlavorProfileComponent>(ent, out var flavorComp);
         flavorComp.Flavors.Clear();
@@ -205,6 +204,8 @@ public abstract partial class CESharedCookingSystem : EntitySystem
             if (_random.Prob(0.5f))
                 layer.Scale = new Vector2(-1, 1);
         }
+
+        Dirty(ent);
     }
 
     private CECookingRecipePrototype? GetRecipe(Entity<CEFoodCookerComponent> ent)

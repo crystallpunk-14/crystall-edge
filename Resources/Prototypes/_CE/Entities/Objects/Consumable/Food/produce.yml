@@ -493,6 +493,7 @@
   - type: CEFoodTag
     tags:
     - CEFruits
+    - CEApple
 
 - type: entity
   parent: CEFoodApple
@@ -534,6 +535,7 @@
   - type: CEFoodTag
     tags:
     - CEFruits
+    - CEApple
 
 - type: entity
   id: CEFoodPepper

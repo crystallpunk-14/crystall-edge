@@ -19,6 +19,10 @@
 # More specific ingredients
 
 - type: CEFoodTag
+  id: CEApple
+  name: ce-cooking-tag-apple
+
+- type: CEFoodTag
   id: CEEgg
   name: ce-cooking-tag-egg
 

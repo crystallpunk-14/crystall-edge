@@ -1,6 +1,9 @@
 ce-meal-recipe-trash-name = inedible slop
 ce-meal-recipe-trash-desc = One glance makes you feel nauseous.
 
+ce-meal-recipe-baked-apples-name = baked apples
+ce-meal-recipe-baked-apples-desc = Sweet apples baked until soft. A simple but delicious treat.
+
 ce-meal-recipe-burned-trash-name = burnt mass
 ce-meal-recipe-burned-trash-desc = This could have been a delicious meal, but the cook overdid it with the heat treatment.
 

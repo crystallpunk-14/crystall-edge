@@ -2,6 +2,7 @@ ce-cooking-tag-vegetable = Овощи
 ce-cooking-tag-meat = Мясо
 ce-cooking-tag-fruit = Фрукты
 
+ce-cooking-tag-apple = Яблоко
 ce-cooking-tag-egg = Яйцо
 ce-cooking-tag-salad = Салатная зелень
 ce-cooking-tag-meat-slice = Ломтик мяса

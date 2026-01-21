@@ -13,6 +13,20 @@
 # 1 req
 
 - type: CECookingRecipe
+  id: BakedApples
+  foodType: Meal
+  foodData:
+    name: ce-meal-recipe-baked-apples-name
+    desc: ce-meal-recipe-baked-apples-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Meals/food.rsi
+      state: baked_apples
+  requirements:
+  - !type:TagRequired
+    tags:
+    - CEApple
+
+- type: CECookingRecipe
   id: ScrambledEggs
   foodType: Meal
   foodData:

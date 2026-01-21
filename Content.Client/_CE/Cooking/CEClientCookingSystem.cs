@@ -54,8 +54,8 @@ public sealed class CEClientCookingSystem : CESharedCookingSystem
 
         ent.Comp.RevealedLayers.Clear();
 
-
-        _sprite.LayerMapTryGet((ent, sprite), ent.Comp.TargetLayerMap, out var index, false);
+        if (!_sprite.LayerMapTryGet((ent, sprite), ent.Comp.TargetLayerMap, out var index, true))
+            return;
 
         var fillLevel = (float)solution.Volume / (float)solution.MaxVolume;
         if (fillLevel > 1)
