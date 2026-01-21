@@ -39,16 +39,21 @@ public abstract partial class CESharedCookingSystem
 
     private void OnInsertAttempt(Entity<CEFoodCookerComponent> ent, ref ContainerIsInsertingAttemptEvent args)
     {
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
         if (args.Cancelled)
             return;
 
         if (!TryComp<CEFoodHolderComponent>(ent, out var holder))
             return;
 
-        if (holder.FoodData is not null)
-        {
-            _popup.PopupEntity(Loc.GetString("ce-cooking-popup-not-empty", ("name", MetaData(ent).EntityName)), ent);
-            args.Cancel();
-        }
+        if (holder.FoodData is null)
+            return;
+
+        //Canceling inserting entities if FoodData not empty
+
+        _popup.PopupEntity(Loc.GetString("ce-cooking-popup-not-empty", ("name", MetaData(ent).EntityName)), ent);
+        args.Cancel();
     }
 }

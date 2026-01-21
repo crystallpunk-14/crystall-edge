@@ -4,20 +4,17 @@
  */
 
 using System.Linq;
-using Content.Server.Nutrition.Components;
 using Content.Server.Temperature.Systems;
 using Content.Shared._CE.Cooking;
 using Content.Shared._CE.Cooking.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Temperature;
-using Robust.Shared.Random;
 
 namespace Content.Server._CE.Cooking;
 
 public sealed class CECookingSystem : CESharedCookingSystem
 {
     [Dependency] private readonly TemperatureSystem _temperature = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
 
     public override void Initialize()
     {
@@ -34,25 +31,25 @@ public sealed class CECookingSystem : CESharedCookingSystem
 
         ent.Comp.FoodData = null;
         Dirty(ent);
+        UpdateFoodDataVisuals(ent);
     }
 
     private void OnTemperatureChanged(Entity<CETemperatureTransformationComponent> start,
         ref OnTemperatureChangeEvent args)
     {
-        var xform = Transform(start);
         foreach (var entry in start.Comp.Entries)
         {
-            if (args.CurrentTemperature >= entry.TemperatureRange.X &&
-                args.CurrentTemperature < entry.TemperatureRange.Y)
-            {
-                if (entry.TransformTo == null)
-                    continue;
+            if (!(args.CurrentTemperature >= entry.TemperatureRange.X) ||
+                !(args.CurrentTemperature < entry.TemperatureRange.Y))
+                continue;
 
-                SpawnNextToOrDrop(entry.TransformTo, start);
-                Del(start);
+            if (entry.TransformTo == null)
+                continue;
 
-                break;
-            }
+            SpawnNextToOrDrop(entry.TransformTo, start);
+            Del(start);
+
+            break;
         }
     }
 

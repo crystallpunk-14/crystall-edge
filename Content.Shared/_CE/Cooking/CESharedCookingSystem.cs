@@ -78,7 +78,7 @@ public abstract partial class CESharedCookingSystem : EntitySystem
 
     private void OnPrototypesReloaded(PrototypesReloadedEventArgs ev)
     {
-        if (!ev.WasModified<EntityPrototype>())
+        if (!ev.WasModified<CECookingRecipePrototype>())
             return;
 
         CacheAndOrderRecipes();
@@ -128,8 +128,13 @@ public abstract partial class CESharedCookingSystem : EntitySystem
         {
             if (targetSolution.Volume > 0)
             {
-                _popup.PopupEntity(Loc.GetString("ce-cooking-popup-not-empty", ("name", MetaData(target).EntityName)),
-                    target); //TODO: Fix spamming popup
+                if (_timing.IsFirstTimePredicted)
+                {
+                    _popup.PopupEntity(
+                        Loc.GetString("ce-cooking-popup-not-empty", ("name", MetaData(target).EntityName)),
+                        target); //TODO: Fix spamming popup
+                }
+
                 return false;
             }
 
@@ -156,7 +161,6 @@ public abstract partial class CESharedCookingSystem : EntitySystem
         if (source.Comp.FoodData is not null)
             SetFoodData(target, source.Comp.FoodData);
 
-
         Dirty(target);
         Dirty(source);
 
@@ -172,9 +176,8 @@ public abstract partial class CESharedCookingSystem : EntitySystem
         UpdateFoodDataVisuals(ent);
     }
 
-    private void UpdateFoodDataVisuals(
-        Entity<CEFoodHolderComponent> ent,
-        bool rename = true)
+    protected void UpdateFoodDataVisuals(
+        Entity<CEFoodHolderComponent> ent)
     {
         var data = ent.Comp.FoodData;
 
@@ -182,16 +185,15 @@ public abstract partial class CESharedCookingSystem : EntitySystem
             return;
 
         //Name and Description
-        if (rename)
-        {
-            if (data.Name is not null)
-                _metaData.SetEntityName(ent, Loc.GetString(data.Name));
-            if (data.Desc is not null)
-                _metaData.SetEntityDescription(ent, Loc.GetString(data.Desc));
-        }
+        if (data.Name is not null)
+            _metaData.SetEntityName(ent, Loc.GetString(data.Name));
+        if (data.Desc is not null)
+            _metaData.SetEntityDescription(ent, Loc.GetString(data.Desc));
+
 
         //Flavors
         EnsureComp<FlavorProfileComponent>(ent, out var flavorComp);
+        flavorComp.Flavors.Clear();
         foreach (var flavor in data.Flavors)
         {
             flavorComp.Flavors.Add(flavor);
@@ -261,8 +263,16 @@ public abstract partial class CESharedCookingSystem : EntitySystem
         return selectedRecipe;
     }
 
-    protected void CreateFoodData(Entity<CEFoodCookerComponent> ent, CECookingRecipePrototype recipe)
+    /// <summary>
+    /// Combines all reagents and items inside the FoodHolder, adding a visual representation of food.
+    /// </summary>
+    /// <param name="ent"></param>
+    /// <param name="recipe"></param>
+    private void Cook(Entity<CEFoodCookerComponent> ent, CECookingRecipePrototype recipe)
     {
+        if (!TryComp<CEFoodHolderComponent>(ent.Owner, out var holder))
+            return;
+
         if (!Solution.TryGetSolution(ent.Owner, ent.Comp.SolutionId, out var soln, out var solution))
             return;
 
@@ -308,16 +318,10 @@ public abstract partial class CESharedCookingSystem : EntitySystem
         if (solution.Volume <= 0)
             return;
 
-        if (TryComp<CEFoodHolderComponent>(ent.Owner, out var holder))
-        {
-            holder.FoodData = newData;
-            Dirty(ent.Owner, holder);
-        }
-
-        Dirty(ent);
+        SetFoodData((ent, holder), newData);
     }
 
-    protected void BurntFood(Entity<CEFoodCookerComponent> ent)
+    private void BurntFood(Entity<CEFoodCookerComponent> ent)
     {
         if (!TryComp<CEFoodHolderComponent>(ent, out var holder) || holder.FoodData is null)
             return;
@@ -325,19 +329,20 @@ public abstract partial class CESharedCookingSystem : EntitySystem
         if (!Solution.TryGetSolution(ent.Owner, ent.Comp.SolutionId, out var soln, out var solution))
             return;
 
-        //Brown visual
-        foreach (var visuals in holder.FoodData.Visuals)
-        {
-            visuals.Color = Color.FromHex("#212121");
-        }
-
-        holder.FoodData.Name = Loc.GetString("ce-meal-recipe-burned-trash-name");
-        holder.FoodData.Desc = Loc.GetString("ce-meal-recipe-burned-trash-desc");
-
         var replacedVolume = solution.Volume / 2;
         solution.SplitSolution(replacedVolume);
         solution.AddReagent(_burntFoodReagent, replacedVolume / 2);
 
-        DirtyField(ent.Owner, holder, nameof(CEFoodHolderComponent.FoodData));
+        var newData = new CEFoodData(holder.FoodData);
+        //Brown visual
+        foreach (var visuals in newData.Visuals)
+        {
+            visuals.Color = Color.FromHex("#212121");
+        }
+
+        newData.Name = Loc.GetString("ce-meal-recipe-burned-trash-name");
+        newData.Desc = Loc.GetString("ce-meal-recipe-burned-trash-desc");
+
+        SetFoodData((ent, holder), newData);
     }
 }
