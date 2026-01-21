@@ -1,3 +1,7 @@
+- type: Tag
+  id: CEFitInFryingPan
+
+
 # Generic categories
 
 - type: CEFoodTag
