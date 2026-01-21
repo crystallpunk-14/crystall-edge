@@ -232,7 +232,6 @@
   - type: CEFoodTag
     tags:
     - CEMeat
-    - CEMeatCutlet
 
 # Frog Leg
 - type: entity

@@ -153,13 +153,6 @@
     count: 1
 
 - type: tradingPosition
-  id: CEFoodMeatMonsterLeg
-  faction: Horticulture
-  service: !type:CEBuyItemsService
-    product: CEFoodMeatMonsterLeg
-    count: 1
-
-- type: tradingPosition
   id: CESeedWheat30
   faction: Horticulture
   category: Materials
