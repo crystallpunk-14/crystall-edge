@@ -26,6 +26,9 @@ ce-alerts-deadfed-desc = Gluttony is a deadly sin. And you've broken it.
 ce-alerts-good-food-aftertaste-name = Pleasant aftertaste
 ce-alerts-good-food-aftertaste-desc = High-quality prepared food provides you with an additional bonus to health regeneration.
 
+ce-alerts-bad-food-aftertaste-name = Disgusting aftertaste
+ce-alerts-bad-food-aftertaste-desc = Poorly prepared food causes you to feel nauseous.
+
 # Thirst
 
 ce-alerts-hydrated-name = Hydrated

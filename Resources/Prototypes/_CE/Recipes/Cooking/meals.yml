@@ -7,6 +7,8 @@
     visuals:
     - sprite: _CE/Objects/Consumable/Food/Meals/food.rsi
       state: trash
+    statusEffects:
+      CEStatusEffectBadFoodVomit: 1
   requirements:
   - !type:AlwaysMet
 

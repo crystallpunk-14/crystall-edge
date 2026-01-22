@@ -7,6 +7,8 @@
     visuals:
     - sprite: _CE/Objects/Consumable/Food/Soups/food.rsi
       state: trash
+    statusEffects:
+      CEStatusEffectBadFoodVomit: 1
   requirements:
   - !type:AlwaysMet
 
@@ -29,7 +31,7 @@
   - !type:ReagentRequired
     amount: 20
     reagents:
-    - Water
+    - CEWater
   - !type:TagRequired
     tags:
     - CEMeat
@@ -47,7 +49,7 @@
   - !type:ReagentRequired
     amount: 20
     reagents:
-    - Water
+    - CEWater
   - !type:TagRequired
     tags:
     - CECheese
@@ -65,7 +67,7 @@
   - !type:ReagentRequired
     amount: 20
     reagents:
-    - Water #TODO: Milk Cream!!
+    - CEWater #TODO: Milk Cream!!
   - !type:TagRequired
     tags:
     - CEPumpkin
@@ -85,7 +87,7 @@
   - !type:ReagentRequired
     amount: 20
     reagents:
-    - Water
+    - CEWater
   - !type:TagRequired
     tags:
     - CESalad
@@ -107,7 +109,7 @@
   - !type:ReagentRequired
     amount: 20
     reagents:
-    - Water
+    - CEWater
   - !type:TagRequired
     tags:
     - CEMeat
@@ -128,7 +130,7 @@
   - !type:ReagentRequired
     amount: 20
     reagents:
-    - Water
+    - CEWater
   - !type:TagRequired
     tags:
     - CEMeat
@@ -150,7 +152,7 @@
   - !type:ReagentRequired
     amount: 20
     reagents:
-    - Water
+    - CEWater
   - !type:TagRequired
     tags:
     - CEMeatMonster

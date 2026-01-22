@@ -27,6 +27,9 @@ ce-alerts-deadfed-desc = Обжорство - смертный грех. И вы
 ce-alerts-good-food-aftertaste-name = Приятное послевкусие
 ce-alerts-good-food-aftertaste-desc = Качественно приготовленная еда дает вам дополнительный бонус к регенерации здоровья.
 
+ce-alerts-bad-food-aftertaste-name = Отвратительное послевкусие
+ce-alerts-bad-food-aftertaste-desc = Ужасно приготовленная еда вызывает у вас рвотные позывы.
+
 # Thirst
 
 ce-alerts-hydrated-name = Напился
