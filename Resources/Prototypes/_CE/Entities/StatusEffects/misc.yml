@@ -45,4 +45,4 @@
       - !type:CESpellApplyEntityEffect
         effects:
         - !type:Vomit
-          probability: 0.3
+          probability: 0.1

@@ -64,11 +64,6 @@ public abstract partial class CESharedCookingSystem : EntitySystem
         SubscribeLocalEvent<CEFoodHolderComponent, ExaminedEvent>(OnExaminedEvent);
     }
 
-    public override void Update(float frameTime)
-    {
-        UpdateDoAfter(frameTime);
-    }
-
     private void CacheAndOrderRecipes()
     {
         _orderedRecipes = _proto.EnumeratePrototypes<CECookingRecipePrototype>()

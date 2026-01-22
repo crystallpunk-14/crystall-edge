@@ -21,16 +21,6 @@ public abstract partial class CESharedCookingSystem
         SubscribeLocalEvent<CEFoodCookerComponent, CEBurningDoAfter>(OnCookBurned);
     }
 
-    private void UpdateDoAfter(float frameTime)
-    {
-        var query = EntityQueryEnumerator<CEFoodCookerComponent>();
-        while (query.MoveNext(out var uid, out var cooker))
-        {
-            if (Timing.CurTime > cooker.LastHeatingTime + cooker.HeatingFrequencyRequired)
-                StopCooking((uid, cooker));
-        }
-    }
-
     private void OnParentChanged(Entity<CEFoodCookerComponent> ent, ref EntParentChangedMessage args)
     {
         StopCooking(ent);

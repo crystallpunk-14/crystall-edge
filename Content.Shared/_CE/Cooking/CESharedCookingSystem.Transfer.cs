@@ -35,7 +35,7 @@ public abstract partial class CESharedCookingSystem
         var recipeComplexity = GetRecipeComplexity(ent.Comp.FoodData.CurrentRecipe);
         foreach (var (effect, duration) in ent.Comp.FoodData.StatusEffects)
         {
-            var effectDuration = eatAmount * duration * recipeComplexity;
+            var effectDuration = eatAmount * duration * Math.Max(recipeComplexity, 1);
             _statusEffect.TryAddStatusEffectDuration(args.Target, effect, TimeSpan.FromSeconds((float)effectDuration));
         }
     }

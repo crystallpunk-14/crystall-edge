@@ -95,7 +95,7 @@ public sealed partial class CEGuideCookingRecipeEmbed : PanelContainer, IDocumen
             if (!_prototype.Resolve(effectProto, out var indexedEffect))
                 continue;
 
-            var strength = Math.Max(recipe.GetComplexity(), 1) * basePower;
+            var strength = Math.Max(recipe.GetComplexity(), 1);
             var strengthText = MathF.Round(strength).ToString();
 
             var label = new RichTextLabel();

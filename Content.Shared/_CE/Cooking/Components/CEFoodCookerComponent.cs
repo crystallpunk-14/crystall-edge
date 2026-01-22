@@ -92,7 +92,7 @@ public sealed partial class CEFoodData
     [DataField]
     public Dictionary<EntProtoId, float> StatusEffects = new()
     {
-        {"CEStatusEffectGoodFoodRegen", 1f }
+        {"CEStatusEffectGoodFoodRegen", 2f }
     };
 }
 
