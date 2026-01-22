@@ -1,20 +1,13 @@
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Movement.Pulling.Components;
-using Content.Shared.Movement.Pulling.Events;
 using Content.Shared.Movement.Pulling.Systems;
-using Content.Shared.Pulling.Events;
-using Robust.Shared.Map;
-using Robust.Shared.Physics;
-using Robust.Shared.Physics.Systems;
 
 namespace Content.Shared._CE.ZLevels.Pulling;
 
 public sealed class CEZLevelPullingSystem : EntitySystem
 {
     [Dependency] private readonly PullingSystem _pulling = default!;
-    [Dependency] private readonly SharedJointSystem _joint = default!;
     [Dependency] private readonly CESharedZLevelsSystem _zlevel = default!;
-
     [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     public override void Initialize()
@@ -23,7 +16,6 @@ public sealed class CEZLevelPullingSystem : EntitySystem
 
         SubscribeLocalEvent<CEZLevelActivePullerComponent, CEZLevelMapMoveEvent>(OnZlevelMapMove);
         SubscribeLocalEvent<ActivePullerComponent, CETryZLevelMapMoveEvent>(OnZlevelMapMoving);
-
     }
 
     private void OnZlevelMapMoving(Entity<ActivePullerComponent> ent, ref CETryZLevelMapMoveEvent args)
@@ -35,9 +27,7 @@ public sealed class CEZLevelPullingSystem : EntitySystem
         var pulledEnt = _pulling.GetPulling(ent);
         if (pulledEnt is null) return;
 
-
         AddComp<CEZLevelActivePullerComponent>(ent, new() { PulledEnt = pulledEnt.Value });
-
     }
 
     private void OnZlevelMapMove(Entity<CEZLevelActivePullerComponent> ent, ref CEZLevelMapMoveEvent args)
@@ -54,6 +44,5 @@ public sealed class CEZLevelPullingSystem : EntitySystem
 
         RemComp<CEZLevelActivePullerComponent>(ent);
     }
-
 }
 
