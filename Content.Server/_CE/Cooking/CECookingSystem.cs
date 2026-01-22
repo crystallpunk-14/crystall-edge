@@ -20,7 +20,40 @@ public sealed class CECookingSystem : CESharedCookingSystem
     {
         base.Initialize();
 
+        SubscribeLocalEvent<CEFoodCookerComponent, OnTemperatureChangeEvent>(OnCookerTemperatureChange);
         SubscribeLocalEvent<CETemperatureTransformationComponent, OnTemperatureChangeEvent>(OnTemperatureChanged);
+    }
+
+    private void OnCookerTemperatureChange(Entity<CEFoodCookerComponent> ent, ref OnTemperatureChangeEvent args)
+    {
+        if (args.TemperatureDelta <= 0)
+            return;
+
+        if (!Container.TryGetContainer(ent, ent.Comp.ContainerId, out var container))
+            return;
+
+        if (!TryComp<CEFoodHolderComponent>(ent, out var holder))
+            return;
+
+        if (container.ContainedEntities.Count <= 0 &&
+            holder.FoodData is null) // We can be either cooking (null foodData) or burning (zero contained)
+        {
+            StopCooking(ent);
+            return;
+        }
+
+        ent.Comp.LastHeatingTime = Timing.CurTime;
+
+        if (!DoAfter.IsRunning(ent.Comp.DoAfterId) && holder.FoodData is null)
+        {
+            var recipe = GetRecipe(ent);
+            if (recipe is not null)
+                StartCooking(ent, recipe);
+        }
+        else
+        {
+            StartBurning(ent);
+        }
     }
 
     private void OnTemperatureChanged(Entity<CETemperatureTransformationComponent> start,

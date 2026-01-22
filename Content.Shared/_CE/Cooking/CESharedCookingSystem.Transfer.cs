@@ -72,7 +72,7 @@ public abstract partial class CESharedCookingSystem
 
     private void OnInsertAttempt(Entity<CEFoodCookerComponent> ent, ref ContainerIsInsertingAttemptEvent args)
     {
-        if (!_timing.IsFirstTimePredicted)
+        if (!Timing.IsFirstTimePredicted)
             return;
 
         if (args.Cancelled)

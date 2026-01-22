@@ -3,24 +3,18 @@
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
 
-using System.Linq;
 using Content.Shared._CE.Cooking.Components;
 using Content.Shared._CE.Cooking.Prototypes;
 using Content.Shared.DoAfter;
-using Content.Shared.Temperature;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
-using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.Cooking;
 
 public abstract partial class CESharedCookingSystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-
     private void InitDoAfter()
     {
-        SubscribeLocalEvent<CEFoodCookerComponent, OnTemperatureChangeEvent>(OnTemperatureChange);
         SubscribeLocalEvent<CEFoodCookerComponent, EntParentChangedMessage>(OnParentChanged);
 
         SubscribeLocalEvent<CEFoodCookerComponent, CECookingDoAfter>(OnCookFinished);
@@ -32,40 +26,8 @@ public abstract partial class CESharedCookingSystem
         var query = EntityQueryEnumerator<CEFoodCookerComponent>();
         while (query.MoveNext(out var uid, out var cooker))
         {
-            if (_timing.CurTime > cooker.LastHeatingTime + cooker.HeatingFrequencyRequired)
+            if (Timing.CurTime > cooker.LastHeatingTime + cooker.HeatingFrequencyRequired)
                 StopCooking((uid, cooker));
-        }
-    }
-
-    private void OnTemperatureChange(Entity<CEFoodCookerComponent> ent, ref OnTemperatureChangeEvent args)
-    {
-        if (args.TemperatureDelta <= 0)
-            return;
-
-        if (!Container.TryGetContainer(ent, ent.Comp.ContainerId, out var container))
-            return;
-
-        if (!TryComp<CEFoodHolderComponent>(ent, out var holder))
-            return;
-
-        if (container.ContainedEntities.Count <= 0 &&
-            holder.FoodData is null) // We can be either cooking (null foodData) or burning (zero contained)
-        {
-            StopCooking(ent);
-            return;
-        }
-
-        ent.Comp.LastHeatingTime = _timing.CurTime;
-
-        if (!_doAfter.IsRunning(ent.Comp.DoAfterId) && holder.FoodData is null)
-        {
-            var recipe = GetRecipe(ent);
-            if (recipe is not null)
-                StartCooking(ent, recipe);
-        }
-        else
-        {
-            StartBurning(ent);
         }
     }
 
@@ -74,9 +36,9 @@ public abstract partial class CESharedCookingSystem
         StopCooking(ent);
     }
 
-    private void StartCooking(Entity<CEFoodCookerComponent> ent, CECookingRecipePrototype recipe)
+    protected void StartCooking(Entity<CEFoodCookerComponent> ent, CECookingRecipePrototype recipe)
     {
-        if (_doAfter.IsRunning(ent.Comp.DoAfterId))
+        if (DoAfter.IsRunning(ent.Comp.DoAfterId))
             return;
 
         _appearance.SetData(ent, CECookingVisuals.Cooking, true);
@@ -88,14 +50,16 @@ public abstract partial class CESharedCookingSystem
             RequireCanInteract = false,
         };
 
-        _doAfter.TryStartDoAfter(doAfterArgs, out var doAfterId);
+        DoAfter.TryStartDoAfter(doAfterArgs, out var doAfterId);
         ent.Comp.DoAfterId = doAfterId;
         _ambientSound.SetAmbience(ent, true);
+
+        Dirty(ent);
     }
 
-    private void StartBurning(Entity<CEFoodCookerComponent> ent)
+    protected void StartBurning(Entity<CEFoodCookerComponent> ent)
     {
-        if (_doAfter.IsRunning(ent.Comp.DoAfterId))
+        if (DoAfter.IsRunning(ent.Comp.DoAfterId))
             return;
 
         _appearance.SetData(ent, CECookingVisuals.Burning, true);
@@ -107,16 +71,18 @@ public abstract partial class CESharedCookingSystem
             RequireCanInteract = false,
         };
 
-        _doAfter.TryStartDoAfter(doAfterArgs, out var doAfterId);
+        DoAfter.TryStartDoAfter(doAfterArgs, out var doAfterId);
         ent.Comp.DoAfterId = doAfterId;
         _ambientSound.SetAmbience(ent, true);
+
+        Dirty(ent);
     }
 
-    private void StopCooking(Entity<CEFoodCookerComponent> ent)
+    protected void StopCooking(Entity<CEFoodCookerComponent> ent)
     {
-        if (_doAfter.IsRunning(ent.Comp.DoAfterId))
+        if (DoAfter.IsRunning(ent.Comp.DoAfterId))
         {
-            _doAfter.Cancel(ent.Comp.DoAfterId);
+            DoAfter.Cancel(ent.Comp.DoAfterId);
             ent.Comp.DoAfterId = null;
         }
 
@@ -124,6 +90,8 @@ public abstract partial class CESharedCookingSystem
         _appearance.SetData(ent, CECookingVisuals.Burning, false);
 
         _ambientSound.SetAmbience(ent, false);
+
+        Dirty(ent);
     }
 
     protected virtual void OnCookBurned(Entity<CEFoodCookerComponent> ent, ref CEBurningDoAfter args)

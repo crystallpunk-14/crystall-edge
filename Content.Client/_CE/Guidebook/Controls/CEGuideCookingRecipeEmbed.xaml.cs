@@ -90,15 +90,12 @@ public sealed partial class CEGuideCookingRecipeEmbed : PanelContainer, IDocumen
         EffectsContainer.Visible = true;
         EffectsContainer.RemoveAllChildren();
 
-        // Compute recipe complexity
-        var complexity = recipe.GetComplexity();
-
         foreach (var (effectProto, basePower) in recipe.FoodData.StatusEffects)
         {
             if (!_prototype.Resolve(effectProto, out var indexedEffect))
                 continue;
 
-            var strength = complexity * basePower;
+            var strength = Math.Max(recipe.GetComplexity(), 1) * basePower;
             var strengthText = MathF.Round(strength).ToString();
 
             var label = new RichTextLabel();

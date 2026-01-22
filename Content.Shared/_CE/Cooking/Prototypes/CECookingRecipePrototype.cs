@@ -40,6 +40,6 @@ public sealed partial class CECookingRecipePrototype : IPrototype
     /// </summary>
     public float GetComplexity()
     {
-        return Math.Max(1, Requirements.Sum(r => r.GetComplexity()));
+        return Math.Max(0, Requirements.Sum(r => r.GetComplexity()));
     }
 }
