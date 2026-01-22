@@ -32,9 +32,6 @@ public sealed partial class CECookingRecipePrototype : IPrototype
     [DataField(required: true)]
     public ProtoId<CEFoodTypePrototype> FoodType;
 
-    [DataField]
-    public TimeSpan CookingTime = TimeSpan.FromSeconds(20f);
-
     /// <summary>
     /// Calculates the total complexity of this recipe by summing the complexity of all requirements.
     /// </summary>

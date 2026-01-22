@@ -31,8 +31,6 @@ public sealed class CECookingSystem : CESharedCookingSystem
         var query = EntityQueryEnumerator<CEFoodCookerComponent>();
         while (query.MoveNext(out var uid, out var cooker))
         {
-            // Only stop cooking if DoAfter is not running and heating has stopped
-            // This prevents stopping while the cooking process (DoAfter) is still running
             if (DoAfter.IsRunning(cooker.DoAfterId) &&
                 Timing.CurTime > cooker.LastHeatingTime + cooker.HeatingFrequencyRequired)
                 StopCooking((uid, cooker));
