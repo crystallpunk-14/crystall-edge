@@ -423,6 +423,10 @@ public abstract partial class CESharedZLevelsSystem
         if (!_mapQuery.TryComp(targetMap, out var targetMapComp))
             return false;
 
+        var trymove = new CETryZLevelMapMoveEvent(offset, targetMap.Value.Comp.Depth);
+        RaiseLocalEvent(ent, ref trymove);
+
+        if(trymove.Cancelled) return false;
 
         _transform.SetMapCoordinates(ent, new MapCoordinates(_transform.GetWorldPosition(ent), targetMapComp.MapId));
 
@@ -469,6 +473,21 @@ public abstract partial class CESharedZLevelsSystem
 /// </summary>
 /// <param name="offset">How many levels were crossed. If negative, it means there was a downward movement. If positive, it means an upward movement.</param>
 public sealed class CEZLevelMapMoveEvent(int offset, int level) : EntityEventArgs
+{
+    /// <summary>
+    /// How many levels were crossed. If negative, it means there was a downward movement. If positive, it means an upward movement.
+    /// </summary>
+    public int Offset = offset;
+
+    public int CurrentZLevel = level;
+}
+
+/// <summary>
+/// Is called on an entity when it tries to move between z-levels.
+/// </summary>
+/// <param name="offset">How many levels are tried to be crossed. If negative, it means there was a downward movement. If positive, it means an upward movement.</param>
+[ByRefEvent]
+public sealed class CETryZLevelMapMoveEvent(int offset, int level) : CancellableEntityEventArgs
 {
     /// <summary>
     /// How many levels were crossed. If negative, it means there was a downward movement. If positive, it means an upward movement.
