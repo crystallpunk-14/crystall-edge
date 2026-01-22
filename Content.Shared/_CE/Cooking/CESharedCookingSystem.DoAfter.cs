@@ -3,6 +3,7 @@
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
 
+using System.Linq;
 using Content.Shared._CE.Cooking.Components;
 using Content.Shared._CE.Cooking.Prototypes;
 using Content.Shared.DoAfter;
@@ -154,6 +155,17 @@ public abstract partial class CESharedCookingSystem
         UpdateFoodDataVisuals((ent, holder));
 
         args.Handled = true;
+    }
+
+    private float GetRecipeComplexity(ProtoId<CECookingRecipePrototype>? recipe)
+    {
+        if (recipe is null)
+            return 0;
+
+        if (!_proto.Resolve(recipe.Value, out var indexedRecipe))
+            return 0;
+
+        return indexedRecipe.Requirements.Sum(r => r.GetComplexity());
     }
 }
 
