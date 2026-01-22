@@ -43,9 +43,13 @@ public sealed class CEZLevelPullingSystem : EntitySystem
     private void OnZlevelMapMove(Entity<CEZLevelActivePullerComponent> ent, ref CEZLevelMapMoveEvent args)
     {
         var pulledEnt = ent.Comp.PulledEnt;
-        _zlevel.TryMove(pulledEnt, args.Offset);
-        _transform.SetCoordinates(pulledEnt, Transform(ent).Coordinates);
+        if (!_zlevel.TryMove(pulledEnt, args.Offset))
+        {
+            RemComp<CEZLevelActivePullerComponent>(ent);
+            return;
+        }
 
+        _transform.SetCoordinates(pulledEnt, Transform(ent).Coordinates);
         _pulling.TryStartPull(ent, pulledEnt);
 
         RemComp<CEZLevelActivePullerComponent>(ent);
