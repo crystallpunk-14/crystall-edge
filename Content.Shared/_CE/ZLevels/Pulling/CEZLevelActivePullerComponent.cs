@@ -6,5 +6,6 @@ namespace Content.Shared._CE.ZLevels.Pulling;
 [RegisterComponent]
 public sealed partial class CEZLevelActivePullerComponent : Component
 {
+    [DataField]
     public EntityUid PulledEnt;
 }
