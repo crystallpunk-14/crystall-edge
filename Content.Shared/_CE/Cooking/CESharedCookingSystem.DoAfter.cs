@@ -36,14 +36,15 @@ public abstract partial class CESharedCookingSystem
         StopCooking(ent);
     }
 
-    protected void StartCooking(Entity<CEFoodCookerComponent> ent, CECookingRecipePrototype recipe)
+    protected void StartCooking(Entity<CEFoodCookerComponent> ent)
     {
         if (DoAfter.IsRunning(ent.Comp.DoAfterId))
             return;
 
         _appearance.SetData(ent, CECookingVisuals.Cooking, true);
 
-        var doAfterArgs = new DoAfterArgs(EntityManager, ent, recipe.CookingTime, new CECookingDoAfter(recipe.ID), ent)
+        // Recipe will be determined at the end of cooking based on current contents
+        var doAfterArgs = new DoAfterArgs(EntityManager, ent, TimeSpan.FromSeconds(20), new CECookingDoAfter(), ent)
         {
             NeedHand = false,
             BreakOnWeightlessMove = false,
@@ -116,10 +117,12 @@ public abstract partial class CESharedCookingSystem
         if (!TryComp<CEFoodHolderComponent>(ent, out var holder))
             return;
 
-        if (!_proto.Resolve(args.Recipe, out var indexedRecipe))
+        // Recipe is determined at the end of cooking based on current ingredients
+        var recipe = GetRecipe(ent);
+        if (recipe is null)
             return;
 
-        Cook(ent, indexedRecipe);
+        Cook(ent, recipe);
         UpdateFoodDataVisuals((ent, holder));
 
         args.Handled = true;
@@ -138,18 +141,7 @@ public abstract partial class CESharedCookingSystem
 }
 
 [Serializable, NetSerializable]
-public sealed partial class CECookingDoAfter : DoAfterEvent
-{
-    [DataField]
-    public ProtoId<CECookingRecipePrototype> Recipe;
-
-    public CECookingDoAfter(ProtoId<CECookingRecipePrototype> recipe)
-    {
-        Recipe = recipe;
-    }
-
-    public override DoAfterEvent Clone() => this;
-}
+public sealed partial class CECookingDoAfter : SimpleDoAfterEvent;
 
 [Serializable, NetSerializable]
 public sealed partial class CEBurningDoAfter : SimpleDoAfterEvent;

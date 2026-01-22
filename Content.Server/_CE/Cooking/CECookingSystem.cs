@@ -46,9 +46,7 @@ public sealed class CECookingSystem : CESharedCookingSystem
 
         if (!DoAfter.IsRunning(ent.Comp.DoAfterId) && holder.FoodData is null)
         {
-            var recipe = GetRecipe(ent);
-            if (recipe is not null)
-                StartCooking(ent, recipe);
+            StartCooking(ent);
         }
         else
         {
