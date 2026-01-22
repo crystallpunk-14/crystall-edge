@@ -12,10 +12,10 @@ namespace Content.Shared._CE.ZLevels.Pulling;
 public sealed class CEZLevelPullingSystem : EntitySystem
 {
     [Dependency] private PullingSystem _pulling = default!;
-    [Dependency] private SharedJointSystem _joint = default!;
-    [Dependency] private CESharedZLevelsSystem _zlevel = default!;
+    [Dependency] private readonly SharedJointSystem _joint = default!;
+    [Dependency] private readonly CESharedZLevelsSystem _zlevel = default!;
 
-    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     public override void Initialize()
     {
