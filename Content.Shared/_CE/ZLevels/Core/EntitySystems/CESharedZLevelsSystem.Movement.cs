@@ -483,7 +483,8 @@ public sealed class CEZLevelMapMoveEvent(int offset, int level) : EntityEventArg
 }
 
 /// <summary>
-/// Is called on an entity when it tries to move between z-levels.
+/// Is raised on an entity when it tries to move between z-levels.
+/// This is a cancellable event that occurs before the movement, whereas CEZLevelMapMoveEvent occurs after the movement.
 /// </summary>
 /// <param name="offset">How many levels are tried to be crossed. If negative, it means there was a downward movement. If positive, it means an upward movement.</param>
 [ByRefEvent]

@@ -1,7 +1,7 @@
 namespace Content.Shared._CE.ZLevels.Pulling;
 
 /// <summary>
-/// Component that indicates that an entity is currently pulling some other entity.
+/// Temporary component added during z-level transitions to track the entity being pulled across z-levels.
 /// </summary>
 [RegisterComponent]
 public sealed partial class CEZLevelActivePullerComponent : Component
