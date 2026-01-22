@@ -36,5 +36,7 @@
         <BoxContainer Margin="10">
             <RichTextLabel Name="ResultDescription" HorizontalAlignment="Left"/>
         </BoxContainer>
+
+        <BoxContainer Name="EffectsContainer" Orientation="Vertical" Margin="10" Visible="False"/>
     </BoxContainer>
 </PanelContainer>
