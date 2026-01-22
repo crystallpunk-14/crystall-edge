@@ -1165,7 +1165,7 @@
   id: CEFoodMeatFlemLeg
   parent: CEFoodMeatBase
   name: raw flem leg
-  description: Probally not the best part to eat. but you never know until you try.
+  description: Probably not the best part to eat. but you never know until you try.
   components:
   - type: FlavorProfile
     flavors:
