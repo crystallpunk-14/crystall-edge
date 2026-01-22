@@ -132,7 +132,7 @@ public abstract partial class CESharedCookingSystem : EntitySystem
                 {
                     _popup.PopupEntity(
                         Loc.GetString("ce-cooking-popup-not-empty", ("name", MetaData(target).EntityName)),
-                        target); //TODO: Fix spamming popup
+                        target);
                 }
 
                 return false;
