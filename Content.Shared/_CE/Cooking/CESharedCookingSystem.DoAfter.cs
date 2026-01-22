@@ -55,7 +55,6 @@ public abstract partial class CESharedCookingSystem
         }
 
         ent.Comp.LastHeatingTime = _timing.CurTime;
-        DirtyField(ent.Owner, ent.Comp, nameof(CEFoodCookerComponent.LastHeatingTime));
 
         if (!_doAfter.IsRunning(ent.Comp.DoAfterId) && holder.FoodData is null)
         {

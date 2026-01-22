@@ -172,7 +172,6 @@ public abstract partial class CESharedCookingSystem : EntitySystem
     private void SetFoodData(Entity<CEFoodHolderComponent> ent, CEFoodData? data)
     {
         ent.Comp.FoodData = data is not null ? new CEFoodData(data) : null;
-        DirtyField(ent, ent.Comp, nameof(CEFoodHolderComponent.FoodData));
         UpdateFoodDataVisuals(ent);
     }
 
