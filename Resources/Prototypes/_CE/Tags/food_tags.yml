@@ -1,3 +1,7 @@
+- type: Tag
+  id: CEFitInFryingPan
+
+
 # Generic categories
 
 - type: CEFoodTag
@@ -13,6 +17,10 @@
   name: ce-cooking-tag-fruit
 
 # More specific ingredients
+
+- type: CEFoodTag
+  id: CEApple
+  name: ce-cooking-tag-apple
 
 - type: CEFoodTag
   id: CEEgg

@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC-BY-SA-4.0",
-    "copyright": "Created by prazat911, trash by TheShuEd, green_salad by Aeoli",
+    "copyright": "Created by prazat911, trash by TheShuEd, green_salad by Aeoli, baked_apples by Dinazzewr",
     "size": {
         "x": 32,
         "y": 32
@@ -9,6 +9,9 @@
     "states": [
         {
             "name": "bread_plate"
+        },
+        {
+            "name": "baked_apples"
         },
         {
             "name": "cheese_bread"

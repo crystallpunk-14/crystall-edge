@@ -5,8 +5,10 @@
 
 using Content.Shared._CE.Cooking.Components;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Storage;
+using Content.Shared.Throwing;
 using Robust.Shared.Containers;
 
 namespace Content.Shared._CE.Cooking;
@@ -17,6 +19,7 @@ public abstract partial class CESharedCookingSystem
     {
         SubscribeLocalEvent<CEFoodHolderComponent, AfterInteractEvent>(OnAfterInteract);
         SubscribeLocalEvent<CEFoodHolderComponent, InteractUsingEvent>(OnInteractUsing);
+        SubscribeLocalEvent<CEFoodHolderComponent, SolutionContainerChangedEvent>(OnHolderSolutionChanged);
 
         SubscribeLocalEvent<CEFoodCookerComponent, ContainerIsInsertingAttemptEvent>(OnInsertAttempt);
     }
@@ -37,18 +40,39 @@ public abstract partial class CESharedCookingSystem
         TryTransferFood(ent, (args.Target.Value, target));
     }
 
+    private void OnHolderSolutionChanged(Entity<CEFoodHolderComponent> ent, ref SolutionContainerChangedEvent args)
+    {
+        // Check if this is the solution we care about
+        if (ent.Comp.SolutionId == null || ent.Comp.SolutionId != args.SolutionId)
+            return;
+
+        // Clear food data when solution is empty
+        if (args.Solution.Volume == 0)
+        {
+            SetFoodData(ent, null);
+            UpdateFoodDataVisuals(ent);
+        }
+    }
+
     private void OnInsertAttempt(Entity<CEFoodCookerComponent> ent, ref ContainerIsInsertingAttemptEvent args)
     {
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
         if (args.Cancelled)
             return;
 
         if (!TryComp<CEFoodHolderComponent>(ent, out var holder))
             return;
 
-        if (holder.FoodData is not null)
-        {
+        if (holder.FoodData is null)
+            return;
+
+        //Canceling inserting entities if FoodData not empty
+
+        if (_net.IsServer)
             _popup.PopupEntity(Loc.GetString("ce-cooking-popup-not-empty", ("name", MetaData(ent).EntityName)), ent);
-            args.Cancel();
-        }
+
+        args.Cancel();
     }
 }

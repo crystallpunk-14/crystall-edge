@@ -43,7 +43,7 @@ public sealed class CEClientCookingSystem : CESharedCookingSystem
         if (ent.Comp.FoodData is null)
             return;
 
-        if (!_solution.TryGetSolution(ent.Owner, ent.Comp.SolutionId, out var soln, out var solution))
+        if (!Solution.TryGetSolution(ent.Owner, ent.Comp.SolutionId, out var soln, out var solution))
             return;
 
         //Remove old layers
@@ -54,8 +54,8 @@ public sealed class CEClientCookingSystem : CESharedCookingSystem
 
         ent.Comp.RevealedLayers.Clear();
 
-
-        _sprite.LayerMapTryGet((ent, sprite), ent.Comp.TargetLayerMap, out var index, false);
+        if (!_sprite.LayerMapTryGet((ent, sprite), ent.Comp.TargetLayerMap, out var index, true))
+            return;
 
         var fillLevel = (float)solution.Volume / (float)solution.MaxVolume;
         if (fillLevel > 1)

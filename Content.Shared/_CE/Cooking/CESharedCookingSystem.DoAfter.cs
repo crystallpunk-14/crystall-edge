@@ -16,6 +16,7 @@ namespace Content.Shared._CE.Cooking;
 public abstract partial class CESharedCookingSystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
+
     private void InitDoAfter()
     {
         SubscribeLocalEvent<CEFoodCookerComponent, OnTemperatureChangeEvent>(OnTemperatureChange);
@@ -28,43 +29,48 @@ public abstract partial class CESharedCookingSystem
     private void UpdateDoAfter(float frameTime)
     {
         var query = EntityQueryEnumerator<CEFoodCookerComponent>();
-        while(query.MoveNext(out var uid, out var cooker))
+        while (query.MoveNext(out var uid, out var cooker))
         {
-            if (_timing.CurTime > cooker.LastHeatingTime + cooker.HeatingFrequencyRequired && _doAfter.IsRunning(cooker.DoAfterId))
-                _doAfter.Cancel(cooker.DoAfterId);
+            if (_timing.CurTime > cooker.LastHeatingTime + cooker.HeatingFrequencyRequired)
+                StopCooking((uid, cooker));
         }
     }
 
-
-    protected virtual void OnCookBurned(Entity<CEFoodCookerComponent> ent, ref CEBurningDoAfter args)
+    private void OnTemperatureChange(Entity<CEFoodCookerComponent> ent, ref OnTemperatureChangeEvent args)
     {
-        StopCooking(ent);
-
-        if (args.Cancelled || args.Handled)
+        if (args.TemperatureDelta <= 0)
             return;
 
-        BurntFood(ent);
-
-        args.Handled = true;
-    }
-
-    protected virtual void OnCookFinished(Entity<CEFoodCookerComponent> ent, ref CECookingDoAfter args)
-    {
-        StopCooking(ent);
-
-        if (args.Cancelled || args.Handled)
+        if (!Container.TryGetContainer(ent, ent.Comp.ContainerId, out var container))
             return;
 
         if (!TryComp<CEFoodHolderComponent>(ent, out var holder))
             return;
 
-        if (!_proto.Resolve(args.Recipe, out var indexedRecipe))
+        if (container.ContainedEntities.Count <= 0 &&
+            holder.FoodData is null) // We can be either cooking (null foodData) or burning (zero contained)
+        {
+            StopCooking(ent);
             return;
+        }
 
-        CreateFoodData(ent, indexedRecipe);
-        UpdateFoodDataVisuals((ent, holder), ent.Comp.RenameCooker);
+        ent.Comp.LastHeatingTime = _timing.CurTime;
 
-        args.Handled = true;
+        if (!_doAfter.IsRunning(ent.Comp.DoAfterId) && holder.FoodData is null)
+        {
+            var recipe = GetRecipe(ent);
+            if (recipe is not null)
+                StartCooking(ent, recipe);
+        }
+        else
+        {
+            StartBurning(ent);
+        }
+    }
+
+    private void OnParentChanged(Entity<CEFoodCookerComponent> ent, ref EntParentChangedMessage args)
+    {
+        StopCooking(ent);
     }
 
     private void StartCooking(Entity<CEFoodCookerComponent> ent, CECookingRecipePrototype recipe)
@@ -105,10 +111,13 @@ public abstract partial class CESharedCookingSystem
         _ambientSound.SetAmbience(ent, true);
     }
 
-    protected void StopCooking(Entity<CEFoodCookerComponent> ent)
+    private void StopCooking(Entity<CEFoodCookerComponent> ent)
     {
         if (_doAfter.IsRunning(ent.Comp.DoAfterId))
+        {
             _doAfter.Cancel(ent.Comp.DoAfterId);
+            ent.Comp.DoAfterId = null;
+        }
 
         _appearance.SetData(ent, CECookingVisuals.Cooking, false);
         _appearance.SetData(ent, CECookingVisuals.Burning, false);
@@ -116,45 +125,35 @@ public abstract partial class CESharedCookingSystem
         _ambientSound.SetAmbience(ent, false);
     }
 
-    private void OnTemperatureChange(Entity<CEFoodCookerComponent> ent, ref OnTemperatureChangeEvent args)
+    protected virtual void OnCookBurned(Entity<CEFoodCookerComponent> ent, ref CEBurningDoAfter args)
     {
-        if (!_container.TryGetContainer(ent, ent.Comp.ContainerId, out var container))
+        StopCooking(ent);
+
+        if (args.Cancelled || args.Handled)
+            return;
+
+        BurntFood(ent);
+
+        args.Handled = true;
+    }
+
+    protected virtual void OnCookFinished(Entity<CEFoodCookerComponent> ent, ref CECookingDoAfter args)
+    {
+        StopCooking(ent);
+
+        if (args.Cancelled || args.Handled)
             return;
 
         if (!TryComp<CEFoodHolderComponent>(ent, out var holder))
             return;
 
-        if (container.ContainedEntities.Count <= 0 && holder.FoodData is null)
-        {
-            StopCooking(ent);
+        if (!_proto.Resolve(args.Recipe, out var indexedRecipe))
             return;
-        }
 
-        if (args.TemperatureDelta > 0)
-        {
-            ent.Comp.LastHeatingTime = _timing.CurTime;
-            DirtyField(ent.Owner,ent.Comp, nameof(CEFoodCookerComponent.LastHeatingTime));
+        Cook(ent, indexedRecipe);
+        UpdateFoodDataVisuals((ent, holder));
 
-            if (!_doAfter.IsRunning(ent.Comp.DoAfterId) && holder.FoodData is null)
-            {
-                var recipe = GetRecipe(ent);
-                if (recipe is not null)
-                    StartCooking(ent, recipe);
-            }
-            else
-            {
-                StartBurning(ent);
-            }
-        }
-        else
-        {
-            StopCooking(ent);
-        }
-    }
-
-    private void OnParentChanged(Entity<CEFoodCookerComponent> ent, ref EntParentChangedMessage args)
-    {
-        StopCooking(ent);
+        args.Handled = true;
     }
 }
 

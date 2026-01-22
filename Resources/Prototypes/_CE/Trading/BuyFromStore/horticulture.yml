@@ -83,6 +83,76 @@
     count: 5
 
 - type: tradingPosition
+  id: CEFoodMeatLamb
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodMeatLamb
+    count: 1
+
+- type: tradingPosition
+  id: CEFoodMeatFrogLeg
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodMeatFrogLeg
+    count: 1
+
+- type: tradingPosition
+  id: CEFoodMeatDino
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodMeatDino
+    count: 1
+
+- type: tradingPosition
+  id: CEFoodMeatHydra
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodMeatHydra
+    count: 1
+
+- type: tradingPosition
+  id: CEFoodMeatRabbit
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodMeatRabbit
+    count: 1
+
+- type: tradingPosition
+  id: CEFoodMeatPig
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodMeatPig
+    count: 1
+
+- type: tradingPosition
+  id: CEFoodMeatPigLeg
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodMeatPigLeg
+    count: 1
+
+- type: tradingPosition
+  id: CEFoodMeatBoar
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodMeatBoar
+    count: 1
+
+- type: tradingPosition
+  id: CEFoodMeatMonster
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodMeatMonster
+    count: 1
+
+- type: tradingPosition
+  id: CEFoodMeatMonsterLeg
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodMeatMonsterLeg
+    count: 1
+
+- type: tradingPosition
   id: CESeedWheat30
   faction: Horticulture
   category: Materials

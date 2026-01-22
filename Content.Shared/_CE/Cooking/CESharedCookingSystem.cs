@@ -25,9 +25,9 @@ namespace Content.Shared._CE.Cooking;
 
 public abstract partial class CESharedCookingSystem : EntitySystem
 {
-    [Dependency] protected readonly SharedContainerSystem _container = default!;
+    [Dependency] protected readonly SharedContainerSystem Container = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] protected readonly SharedSolutionContainerSystem _solution = default!;
+    [Dependency] protected readonly SharedSolutionContainerSystem Solution = default!;
     [Dependency] private readonly MetaDataSystem _metaData = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
@@ -49,7 +49,7 @@ public abstract partial class CESharedCookingSystem : EntitySystem
     /// The easiest recipes are usually the most “abstract,”
     /// so they will be suitable for the largest number of recipes.
     /// </summary>
-    protected List<CECookingRecipePrototype> OrderedRecipes = [];
+    private List<CECookingRecipePrototype> _orderedRecipes = [];
 
     public override void Initialize()
     {
@@ -70,7 +70,7 @@ public abstract partial class CESharedCookingSystem : EntitySystem
 
     private void CacheAndOrderRecipes()
     {
-        OrderedRecipes = _proto.EnumeratePrototypes<CECookingRecipePrototype>()
+        _orderedRecipes = _proto.EnumeratePrototypes<CECookingRecipePrototype>()
             .Where(recipe => recipe.Requirements.Count > 0) // Only include recipes with requirements
             .OrderByDescending(recipe => recipe.Requirements.Sum(condition => condition.GetComplexity()))
             .ToList();
@@ -78,7 +78,7 @@ public abstract partial class CESharedCookingSystem : EntitySystem
 
     private void OnPrototypesReloaded(PrototypesReloadedEventArgs ev)
     {
-        if (!ev.WasModified<EntityPrototype>())
+        if (!ev.WasModified<CECookingRecipePrototype>())
             return;
 
         CacheAndOrderRecipes();
@@ -89,7 +89,7 @@ public abstract partial class CESharedCookingSystem : EntitySystem
         if (ent.Comp.FoodData?.Name is null)
             return;
 
-        if (!_solution.TryGetSolution(ent.Owner, ent.Comp.SolutionId, out _, out var solution))
+        if (!Solution.TryGetSolution(ent.Owner, ent.Comp.SolutionId, out _, out var solution))
             return;
 
         if (solution.Volume == 0)
@@ -102,11 +102,10 @@ public abstract partial class CESharedCookingSystem : EntitySystem
             ("count", remaining)));
     }
 
-
     /// <summary>
     /// Transfer food data from cooker to holder
     /// </summary>
-    protected virtual bool TryTransferFood(Entity<CEFoodHolderComponent> target,
+    private bool TryTransferFood(Entity<CEFoodHolderComponent> target,
         Entity<CEFoodHolderComponent> source)
     {
         if (!source.Comp.CanGiveFood || !target.Comp.CanAcceptFood)
@@ -121,30 +120,33 @@ public abstract partial class CESharedCookingSystem : EntitySystem
         if (!TryComp<EdibleComponent>(target, out var holderFoodComp))
             return false;
 
-        if (!_solution.TryGetSolution(source.Owner, source.Comp.SolutionId, out var cookerSoln, out var cookerSolution))
+        if (!Solution.TryGetSolution(source.Owner, source.Comp.SolutionId, out var sourceSoln, out var sourceSolution))
             return false;
 
         //Solutions
-        if (_solution.TryGetSolution(target.Owner, holderFoodComp.Solution, out var holderSoln, out var solution))
+        if (Solution.TryGetSolution(target.Owner, holderFoodComp.Solution, out var targetSoln, out var targetSolution))
         {
-            if (solution.Volume > 0)
+            if (targetSolution.Volume > 0)
             {
-                _popup.PopupEntity(Loc.GetString("ce-cooking-popup-not-empty", ("name", MetaData(target).EntityName)),
-                    target);
+                if (_net.IsServer)
+                {
+                    _popup.PopupEntity(
+                        Loc.GetString("ce-cooking-popup-not-empty", ("name", MetaData(target).EntityName)),
+                        target);
+                }
+
                 return false;
             }
 
-            _solution.TryTransferSolution(holderSoln.Value, cookerSolution, solution.MaxVolume);
+            Solution.TryTransferSolution(targetSoln.Value, sourceSolution, targetSolution.MaxVolume);
         }
 
         //Trash
         //If we have a lot of trash, we put 1 random trash in each plate. If it's a last plate (out of solution in cooker), we put all the remaining trash in it.
         if (source.Comp.FoodData?.Trash.Count > 0)
         {
-            if (cookerSolution.Volume <= 0)
-            {
+            if (sourceSolution.Volume <= 0)
                 holderFoodComp.Trash.AddRange(source.Comp.FoodData.Trash);
-            }
             else
             {
                 if (_net.IsServer)
@@ -157,35 +159,32 @@ public abstract partial class CESharedCookingSystem : EntitySystem
         }
 
         if (source.Comp.FoodData is not null)
-            UpdateFoodDataVisuals(target, source.Comp.FoodData);
+            SetFoodData(target, source.Comp.FoodData);
 
         Dirty(target);
         Dirty(source);
 
-        _solution.UpdateChemicals(cookerSoln.Value);
+        Solution.UpdateChemicals(sourceSoln.Value);
 
         return true;
     }
 
-    private void UpdateFoodDataVisuals(
-        Entity<CEFoodHolderComponent> ent,
-        bool rename = true)
+    private void SetFoodData(Entity<CEFoodHolderComponent> ent, CEFoodData? data)
+    {
+        ent.Comp.FoodData = data is not null ? new CEFoodData(data) : null;
+        UpdateFoodDataVisuals(ent);
+    }
+
+    protected void UpdateFoodDataVisuals(
+        Entity<CEFoodHolderComponent> ent)
     {
         var data = ent.Comp.FoodData;
 
         if (data is null)
             return;
 
-        UpdateFoodDataVisuals(ent, data, rename);
-    }
-
-    protected virtual void UpdateFoodDataVisuals(
-        Entity<CEFoodHolderComponent> ent,
-        CEFoodData data,
-        bool rename = true)
-    {
         //Name and Description
-        if (rename)
+        if (ent.Comp.AutoRename)
         {
             if (data.Name is not null)
                 _metaData.SetEntityName(ent, Loc.GetString(data.Name));
@@ -195,31 +194,21 @@ public abstract partial class CESharedCookingSystem : EntitySystem
 
         //Flavors
         EnsureComp<FlavorProfileComponent>(ent, out var flavorComp);
+        flavorComp.Flavors.Clear();
         foreach (var flavor in data.Flavors)
         {
             flavorComp.Flavors.Add(flavor);
         }
 
-        //Visuals
-        ent.Comp.FoodData = new CEFoodData(data);
-        foreach (var layer in data.Visuals)
-        {
-            if (_random.Prob(0.5f))
-                layer.Scale = new Vector2(-1, 1);
-        }
-
-        DirtyField(ent, ent.Comp, nameof(CEFoodHolderComponent.FoodData));
-
-        //Sliceable
-        // > on server overrided side
+        Dirty(ent);
     }
 
-    public CECookingRecipePrototype? GetRecipe(Entity<CEFoodCookerComponent> ent)
+    private CECookingRecipePrototype? GetRecipe(Entity<CEFoodCookerComponent> ent)
     {
-        if (!_container.TryGetContainer(ent, ent.Comp.ContainerId, out var container))
+        if (!Container.TryGetContainer(ent, ent.Comp.ContainerId, out var container))
             return null;
 
-        _solution.TryGetSolution(ent.Owner, ent.Comp.SolutionId, out _, out var solution);
+        Solution.TryGetSolution(ent.Owner, ent.Comp.SolutionId, out _, out var solution);
 
         //Get all food tags from placed ingredients
         var allFoodTags = new List<ProtoId<CEFoodTagPrototype>>();
@@ -238,14 +227,14 @@ public abstract partial class CESharedCookingSystem : EntitySystem
         Solution? solution,
         List<ProtoId<CEFoodTagPrototype>> allFoodTags)
     {
-        if (OrderedRecipes.Count == 0)
+        if (_orderedRecipes.Count == 0)
         {
             throw new InvalidOperationException(
                 "No cooking recipes found. Please ensure that the CECookingRecipePrototype is defined and loaded.");
         }
 
         CECookingRecipePrototype? selectedRecipe = null;
-        foreach (var recipe in OrderedRecipes)
+        foreach (var recipe in _orderedRecipes)
         {
             if (recipe.FoodType != foodType)
                 continue;
@@ -270,12 +259,20 @@ public abstract partial class CESharedCookingSystem : EntitySystem
         return selectedRecipe;
     }
 
-    protected void CreateFoodData(Entity<CEFoodCookerComponent> ent, CECookingRecipePrototype recipe)
+    /// <summary>
+    /// Combines all reagents and items inside the FoodHolder, adding a visual representation of food.
+    /// </summary>
+    /// <param name="ent"></param>
+    /// <param name="recipe"></param>
+    private void Cook(Entity<CEFoodCookerComponent> ent, CECookingRecipePrototype recipe)
     {
-        if (!_solution.TryGetSolution(ent.Owner, ent.Comp.SolutionId, out var soln, out var solution))
+        if (!TryComp<CEFoodHolderComponent>(ent.Owner, out var holder))
             return;
 
-        if (!_container.TryGetContainer(ent, ent.Comp.ContainerId, out var container))
+        if (!Solution.TryGetSolution(ent.Owner, ent.Comp.SolutionId, out var soln, out var solution))
+            return;
+
+        if (!Container.TryGetContainer(ent, ent.Comp.ContainerId, out var container))
             return;
 
         var newData = new CEFoodData(recipe.FoodData);
@@ -292,9 +289,9 @@ public abstract partial class CESharedCookingSystem : EntitySystem
                 newData.Trash.AddRange(food.Trash);
 
                 //Merge solutions
-                if (_solution.TryGetSolution(contained, food.Solution, out _, out var foodSolution))
+                if (Solution.TryGetSolution(contained, food.Solution, out _, out var foodSolution))
                 {
-                    _solution.TryMixAndOverflow(soln.Value, foodSolution, solution.MaxVolume, out var overflowed);
+                    Solution.TryMixAndOverflow(soln.Value, foodSolution, solution.MaxVolume, out var overflowed);
                     if (overflowed is not null)
                     {
                         _puddle.TrySplashSpillAt(ent, Transform(ent).Coordinates, overflowed, out _);
@@ -317,36 +314,31 @@ public abstract partial class CESharedCookingSystem : EntitySystem
         if (solution.Volume <= 0)
             return;
 
-        if (TryComp<CEFoodHolderComponent>(ent.Owner, out var holder))
-        {
-            holder.FoodData = newData;
-            Dirty(ent.Owner, holder);
-        }
-
-        Dirty(ent);
+        SetFoodData((ent, holder), newData);
     }
 
-    protected void BurntFood(Entity<CEFoodCookerComponent> ent)
+    private void BurntFood(Entity<CEFoodCookerComponent> ent)
     {
         if (!TryComp<CEFoodHolderComponent>(ent, out var holder) || holder.FoodData is null)
             return;
 
-        if (!_solution.TryGetSolution(ent.Owner, ent.Comp.SolutionId, out var soln, out var solution))
+        if (!Solution.TryGetSolution(ent.Owner, ent.Comp.SolutionId, out var soln, out var solution))
             return;
-
-        //Brown visual
-        foreach (var visuals in holder.FoodData.Visuals)
-        {
-            visuals.Color = Color.FromHex("#212121");
-        }
-
-        holder.FoodData.Name = Loc.GetString("ce-meal-recipe-burned-trash-name");
-        holder.FoodData.Desc = Loc.GetString("ce-meal-recipe-burned-trash-desc");
 
         var replacedVolume = solution.Volume / 2;
         solution.SplitSolution(replacedVolume);
         solution.AddReagent(_burntFoodReagent, replacedVolume / 2);
 
-        DirtyField(ent.Owner, holder, nameof(CEFoodHolderComponent.FoodData));
+        var newData = new CEFoodData(holder.FoodData);
+        //Brown visual
+        foreach (var visuals in newData.Visuals)
+        {
+            visuals.Color = Color.FromHex("#212121");
+        }
+
+        newData.Name = Loc.GetString("ce-meal-recipe-burned-trash-name");
+        newData.Desc = Loc.GetString("ce-meal-recipe-burned-trash-desc");
+
+        SetFoodData((ent, holder), newData);
     }
 }

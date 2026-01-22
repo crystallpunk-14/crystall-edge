@@ -20,8 +20,8 @@ public sealed partial class CEFoodCookerComponent : Component
     [DataField(required: true)]
     public ProtoId<CEFoodTypePrototype> FoodType;
 
-    [DataField]
-    public string ContainerId;
+    [DataField(required: true)]
+    public string ContainerId = string.Empty;
 
     [DataField]
     public string? SolutionId;
@@ -49,11 +49,8 @@ public sealed partial class CEFoodCookerComponent : Component
     //[DataField]
     //public EntProtoId? BurntAdditionalSpawn = "CEFire";
 
-    [DataField]
-    public float BurntAdditionalSpawnProb = 0.2f;
-
-    [DataField]
-    public bool RenameCooker = false;
+    //[DataField]
+    //public float BurntAdditionalSpawnProb = 0.2f;
 }
 
 [Serializable]

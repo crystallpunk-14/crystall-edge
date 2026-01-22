@@ -1,6 +1,9 @@
 ce-meal-recipe-trash-name = несьедобная бурда
 ce-meal-recipe-trash-desc = Один взгляд вызывает у вас рвотные спазмы.
 
+ce-meal-recipe-baked-apples-name = печеные яблоки
+ce-meal-recipe-baked-apples-desc = Сладкие яблоки, запеченные до мягкости. Простой, но вкусный десерт.
+
 ce-meal-recipe-burned-trash-name = сгоревшая масса
 ce-meal-recipe-burned-trash-desc = Это могло быть вкусной едой, но повар перестарался с термической обработкой.
 

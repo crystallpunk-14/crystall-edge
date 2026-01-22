@@ -12,7 +12,7 @@ namespace Content.Shared._CE.Cooking.Components;
 /// <summary>
 /// Food of the specified type can be transferred to this entity.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true, raiseAfterAutoHandleState: true), Access(typeof(CESharedCookingSystem))]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(raiseAfterAutoHandleState: true), Access(typeof(CESharedCookingSystem))]
 public sealed partial class CEFoodHolderComponent : Component
 {
     /// <summary>
@@ -27,6 +27,9 @@ public sealed partial class CEFoodHolderComponent : Component
     [DataField]
     public bool CanGiveFood;
 
+    /// <summary>
+    /// Soup, Meal, Kebabs? Different types of food
+    /// </summary>
     [DataField(required: true)]
     public ProtoId<CEFoodTypePrototype> FoodType;
 
@@ -46,4 +49,7 @@ public sealed partial class CEFoodHolderComponent : Component
     public string TargetLayerMap = "ce_foodLayers";
 
     public HashSet<string> RevealedLayers = new();
+
+    [DataField]
+    public bool AutoRename = true;
 }

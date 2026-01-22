@@ -17,6 +17,7 @@ public sealed partial class FlavorProfileComponent : Component
     [DataField]
     public HashSet<string> IgnoreReagents { get; private set; } = new()
     {
+        "CENutriment", //CrystallEdge
         "Nutriment",
         "Vitamin",
         "Protein",
