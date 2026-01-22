@@ -3,6 +3,7 @@
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
 
+using System.Linq;
 using Content.Shared._CE.Cooking.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
@@ -33,4 +34,12 @@ public sealed partial class CECookingRecipePrototype : IPrototype
 
     [DataField]
     public TimeSpan CookingTime = TimeSpan.FromSeconds(20f);
+
+    /// <summary>
+    /// Calculates the total complexity of this recipe by summing the complexity of all requirements.
+    /// </summary>
+    public float GetComplexity()
+    {
+        return Math.Max(1, Requirements.Sum(r => r.GetComplexity()));
+    }
 }

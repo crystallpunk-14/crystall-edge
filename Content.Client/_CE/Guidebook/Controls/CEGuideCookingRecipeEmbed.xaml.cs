@@ -91,7 +91,7 @@ public sealed partial class CEGuideCookingRecipeEmbed : PanelContainer, IDocumen
         EffectsContainer.RemoveAllChildren();
 
         // Compute recipe complexity
-        var complexity = recipe.Requirements.Sum(r => r.GetComplexity());
+        var complexity = recipe.GetComplexity();
 
         foreach (var (effectProto, basePower) in recipe.FoodData.StatusEffects)
         {
@@ -99,7 +99,7 @@ public sealed partial class CEGuideCookingRecipeEmbed : PanelContainer, IDocumen
                 continue;
 
             var strength = complexity * basePower;
-            var strengthText = strength.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture);
+            var strengthText = MathF.Round(strength).ToString();
 
             var label = new RichTextLabel();
             var text = Loc.GetString("ce-guidebook-cooking-effect-line", ("effect", indexedEffect.Name), ("strength", strengthText));

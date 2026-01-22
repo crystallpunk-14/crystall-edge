@@ -56,7 +56,7 @@ public sealed class CEGuideCookingRecipeGroupEmbed : BoxContainer, IDocumentTag
     {
         var prototypes = _prototype.EnumeratePrototypes<CECookingRecipePrototype>()
             .Where(p => p.FoodType.Id.Equals(foodType))
-            .OrderBy(GetRecipeComplexity)
+            .OrderBy(p => p.GetComplexity())
             .ThenBy(p => Loc.GetString(p.FoodData.Name ?? "ce-guidebook-cooking-unknown-food-name"));
 
         foreach (var recipe in prototypes)
@@ -66,10 +66,5 @@ public sealed class CEGuideCookingRecipeGroupEmbed : BoxContainer, IDocumentTag
                 embed.SetPlateSprite(plateRsi, plateState);
             AddChild(embed);
         }
-    }
-
-    private static float GetRecipeComplexity(CECookingRecipePrototype recipe)
-    {
-        return recipe.Requirements.Sum(r => r.GetComplexity());
     }
 }

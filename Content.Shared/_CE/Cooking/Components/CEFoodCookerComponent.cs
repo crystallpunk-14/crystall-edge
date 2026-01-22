@@ -90,7 +90,10 @@ public sealed partial class CEFoodData
     /// Status effects granted by consuming food with this FoodData. Effects stack, in seconds, and are multiplied by the number of units consumed.
     /// </summary>
     [DataField]
-    public Dictionary<EntProtoId, float> StatusEffects = new();
+    public Dictionary<EntProtoId, float> StatusEffects = new()
+    {
+        {"CEStatusEffectGoodFoodRegen", 1f }
+    };
 }
 
 [Serializable, NetSerializable]

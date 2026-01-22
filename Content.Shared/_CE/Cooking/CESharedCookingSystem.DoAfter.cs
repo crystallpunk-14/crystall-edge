@@ -165,7 +165,7 @@ public abstract partial class CESharedCookingSystem
         if (!_proto.Resolve(recipe.Value, out var indexedRecipe))
             return 0;
 
-        return indexedRecipe.Requirements.Sum(r => r.GetComplexity());
+        return indexedRecipe.GetComplexity();
     }
 }
 

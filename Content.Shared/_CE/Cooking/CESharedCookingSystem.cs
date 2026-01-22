@@ -71,7 +71,7 @@ public abstract partial class CESharedCookingSystem : EntitySystem
     {
         _orderedRecipes = _proto.EnumeratePrototypes<CECookingRecipePrototype>()
             .Where(recipe => recipe.Requirements.Count > 0) // Only include recipes with requirements
-            .OrderByDescending(recipe => recipe.Requirements.Sum(condition => condition.GetComplexity()))
+            .OrderByDescending(recipe => recipe.GetComplexity())
             .ToList();
     }
 

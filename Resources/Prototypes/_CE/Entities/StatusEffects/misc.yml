@@ -14,3 +14,21 @@
   - type: CEGravityCaughtStatusEffect
   - type: StatusEffectAlert
     alert: CEAirCaught
+
+- type: entity
+  parent: StatusEffectBase
+  id: CEStatusEffectGoodFoodRegen
+  name: pleasant aftertaste
+  components:
+  - type: StatusEffectAlert
+    alert: CEGoodFoodAftertaste
+  - type: CEStatusEffectApplySpell
+    effects:
+      - !type:CESpellApplyEntityEffect
+        effects:
+        - !type:HealthChange
+          ignoreResistances: true
+          damage:
+            groups:
+              Brute: -0.1
+              Burn: -0.1

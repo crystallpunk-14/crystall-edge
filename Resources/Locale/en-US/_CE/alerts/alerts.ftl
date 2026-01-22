@@ -23,6 +23,9 @@ ce-alerts-overfed-desc = You've eaten WAY too much! Really, this is over the top
 ce-alerts-deadfed-name = Death by gluttony
 ce-alerts-deadfed-desc = Gluttony is a deadly sin. And you've broken it.
 
+ce-alerts-good-food-aftertaste-name = Pleasant aftertaste
+ce-alerts-good-food-aftertaste-desc = High-quality prepared food provides you with an additional bonus to health regeneration.
+
 # Thirst
 
 ce-alerts-hydrated-name = Hydrated
