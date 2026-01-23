@@ -5,7 +5,7 @@
   - CEPlantBaseDarknessEnergy
   - CEPlantBaseSingleHarvest
   - CEPlantBaseFungalType
-  - CEPlantBaseGrowing1Day
+  - CEPlantBaseGrowingHalfDay
   - CEPlantBaseMetabolizerHalfDay
   - CEPlantBaseMetabolizerWater
   - CEPlantBaseSpreading

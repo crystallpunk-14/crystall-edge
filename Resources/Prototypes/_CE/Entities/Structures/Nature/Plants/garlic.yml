@@ -5,7 +5,7 @@
   - CEPlantBaseSolarEnergy
   - CEPlantBaseSingleHarvest
   - CEPlantBaseFloralDelicateType
-  - CEPlantBaseGrowing2Day
+  - CEPlantBaseGrowing1Day
   - CEPlantBaseMetabolizer1Day
   - CEPlantBaseMetabolizerWater
   name: garlic
