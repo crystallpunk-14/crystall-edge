@@ -72,6 +72,24 @@
     tags:
     - CEPumpkin
 
+- type: CECookingRecipe
+  id: PorridgePlain
+  foodType: Soup
+  foodData:
+    name: ce-porridge-recipe-plain-name
+    desc: ce-porridge-recipe-plain-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Soups/food.rsi
+      state: porridge
+  requirements:
+  - !type:ReagentRequired
+    amount: 20
+    reagents:
+    - CEWater
+  - !type:TagRequired
+    tags:
+    - CEWheat
+
 # 3 req
 
 - type: CECookingRecipe
@@ -159,3 +177,66 @@
   - !type:TagRequired
     tags:
     - CEEgg
+
+- type: CECookingRecipe
+  id: PorridgeApple
+  foodType: Soup
+  foodData:
+    name: ce-porridge-recipe-apple-name
+    desc: ce-porridge-recipe-apple-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Soups/food.rsi
+      state: porridge_apple
+  requirements:
+  - !type:ReagentRequired
+    amount: 20
+    reagents:
+    - CEWater
+  - !type:TagRequired
+    tags:
+    - CEWheat
+  - !type:TagRequired
+    tags:
+    - CEApple
+
+- type: CECookingRecipe
+  id: PorridgeMeat
+  foodType: Soup
+  foodData:
+    name: ce-porridge-recipe-meat-name
+    desc: ce-porridge-recipe-meat-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Soups/food.rsi
+      state: porridge_meat
+  requirements:
+  - !type:ReagentRequired
+    amount: 20
+    reagents:
+    - CEWater
+  - !type:TagRequired
+    tags:
+    - CEWheat
+  - !type:TagRequired
+    tags:
+    - CEMeat
+
+- type: CECookingRecipe
+  id: PorridgePumpkin
+  foodType: Soup
+  foodData:
+    name: ce-porridge-recipe-pumpkin-name
+    desc: ce-porridge-recipe-pumpkin-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Soups/food.rsi
+      state: porridge_pumpkin
+  requirements:
+  - !type:ReagentRequired
+    amount: 20
+    reagents:
+    - CEWater
+  - !type:TagRequired
+    tags:
+    - CEWheat
+  - !type:TagRequired
+    tags:
+    - CEPumpkin

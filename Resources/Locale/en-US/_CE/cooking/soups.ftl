@@ -21,3 +21,15 @@ ce-soup-recipe-pumpkin-puree-desc = The delicate creamy taste of sweet pumpkin. 
 
 ce-soup-recipe-monster-brew-name = monstrous bibimbap
 ce-soup-recipe-monster-brew-desc = Exotic soup made from monster meat and eggs.
+
+ce-porridge-recipe-plain-name = oat porridge
+ce-porridge-recipe-plain-desc = Warm oat porridge made with water and wheat.
+
+ce-porridge-recipe-apple-name = oat porridge with apple
+ce-porridge-recipe-apple-desc = Sweet oat porridge with pieces of apple.
+
+ce-porridge-recipe-meat-name = oat porridge with meat
+ce-porridge-recipe-meat-desc = Hearty oat porridge simmered with chunks of meat.
+
+ce-porridge-recipe-pumpkin-name = oat porridge with pumpkin
+ce-porridge-recipe-pumpkin-desc = Creamy oat porridge blended with pumpkin.
