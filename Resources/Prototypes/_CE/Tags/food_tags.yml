@@ -69,3 +69,7 @@
 - type: CEFoodTag
   id: CEWheat
   name: ce-cooking-tag-wheat
+
+- type: CEFoodTag
+  id: CEPepper
+  name: ce-cooking-tag-pepper

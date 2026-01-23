@@ -577,6 +577,7 @@
   - type: CEFoodTag
     tags:
     - CEVegetable
+    - CEPepper
 
 - type: entity
   id: CEFoodPepperSlice
@@ -604,6 +605,7 @@
   - type: CEFoodTag
     tags:
     - CEVegetable
+    - CEPepper
 
 - type: entity
   id: CEFoodOnion

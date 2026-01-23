@@ -15,3 +15,4 @@ ce-cooking-tag-dough = Dough
 ce-cooking-tag-potato = Potato
 ce-cooking-tag-cabbage = Cabbage
 ce-cooking-tag-wheat = Wheat
+ce-cooking-tag-pepper = Pepper

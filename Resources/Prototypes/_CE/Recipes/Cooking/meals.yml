@@ -118,7 +118,7 @@
     - CEVegetable
   - !type:TagRequired
     tags:
-    - CEMeat
+    - CEMeatSlice
 
 - type: CECookingRecipe
   id: MonsterEgg
@@ -189,6 +189,23 @@
     tags:
     - CECheese
 
+- type: CECookingRecipe
+  id: StirFry
+  foodType: Meal
+  foodData:
+    name: ce-meal-recipe-stir-fry-name
+    desc: ce-meal-recipe-stir-fry-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Meals/food.rsi
+      state: stir_fry
+  requirements:
+  - !type:TagRequired
+    tags:
+    - CEMeat
+  - !type:TagRequired
+    tags:
+    - CEVegetable
+
 # 3 req
 
 - type: CECookingRecipe
@@ -231,6 +248,43 @@
     tags:
     - CEPotato
 
+- type: CECookingRecipe
+  id: PorkRoulade
+  foodType: Meal
+  foodData:
+    name: ce-meal-recipe-pork-roulade-name
+    desc: ce-meal-recipe-pork-roulade-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Meals/food.rsi
+      state: pork_roulade
+  requirements:
+  - !type:TagRequired
+    tags:
+    - CEMeatPig
+  - !type:TagRequired
+    tags:
+    - CEVegetable
+
+- type: CECookingRecipe
+  id: StuffedBellPepper
+  foodType: Meal
+  foodData:
+    name: ce-meal-recipe-stuffed-bell-pepper-name
+    desc: ce-meal-recipe-stuffed-bell-pepper-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Meals/food.rsi
+      state: stuffed_bell_pepper
+  requirements:
+  - !type:TagRequired
+    tags:
+    - CEPepper
+  - !type:TagRequired
+    tags:
+    - CEMeat
+  - !type:TagRequired
+    tags:
+    - CECheese
+
 # 4 req
 
 - type: CECookingRecipe
@@ -255,3 +309,14 @@
   - !type:TagRequired
     tags:
     - CESalad
+
+# Unused meal sprites lacking ingredients/tags:
+# - beef_rice
+# - beef_rice_greens
+# - cheese_broccoli_egg_bake
+# - corn_pepper_meat
+# - fish_cakes
+# - fish_potato_tomato
+# - garlic_bread
+# - omurice-like
+# - potato_wedges_chicken

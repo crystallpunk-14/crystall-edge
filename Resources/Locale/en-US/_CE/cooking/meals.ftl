@@ -45,3 +45,12 @@ ce-meal-recipe-mashed-potato-desc = Today we have morally smashed potatoes on pl
 
 ce-meal-recipe-cheese-bread-name = sandwiches with processed cheese
 ce-meal-recipe-cheese-bread-desc = Crispy toasted bread with melted, stringy hot cheese on top.
+
+ce-meal-recipe-stir-fry-name = stir-fry
+ce-meal-recipe-stir-fry-desc = Quick-fried meat and vegetables. Simple and tasty.
+
+ce-meal-recipe-pork-roulade-name = pork roulade
+ce-meal-recipe-pork-roulade-desc = Rolled pork with vegetables. A classic dish.
+
+ce-meal-recipe-stuffed-bell-pepper-name = stuffed bell pepper
+ce-meal-recipe-stuffed-bell-pepper-desc = Bell pepper stuffed with meat and cheese.
