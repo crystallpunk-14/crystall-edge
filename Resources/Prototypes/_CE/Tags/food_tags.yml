@@ -73,3 +73,15 @@
 - type: CEFoodTag
   id: CEPepper
   name: ce-cooking-tag-pepper
+
+- type: CEFoodTag
+  id: CEGarlic
+  name: ce-cooking-tag-garlic
+
+- type: CEFoodTag
+  id: CECorn
+  name: ce-cooking-tag-corn
+
+- type: CEFoodTag
+  id: CECarrot
+  name: ce-cooking-tag-carrot

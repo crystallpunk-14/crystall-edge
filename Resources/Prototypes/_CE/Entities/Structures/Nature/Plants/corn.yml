@@ -26,3 +26,6 @@
   - type: CEWaveShader
     speed: 2.8
     dis: 4
+  - type: CEPlantAdditionalProduceOnInteract
+    produce:
+      CEFoodCorn: 4

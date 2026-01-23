@@ -23,3 +23,6 @@
       visible: false
     - state: grow-1
       map: ["enum.PlantVisualLayers.Base"]
+  - type: CEPlantAdditionalProduceOnInteract
+    produce:
+      CEFoodGarlic: 4
