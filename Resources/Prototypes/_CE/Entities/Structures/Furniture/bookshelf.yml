@@ -92,8 +92,6 @@
     #  - id: CEGuidebookAlchemy
     #Lore books
     - !type:GroupSelector
-      amount: !type:RangeNumberSelector
-        range: 0, 5
       children:
       - id: CEBookPantheonGodsSileita
       - id: CEBookPantheonGodsSileitaImitators
