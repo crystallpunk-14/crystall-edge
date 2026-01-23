@@ -220,7 +220,7 @@
   parent: CEBaseSeed
   components:
   - type: Sprite
-    sprite: Objects/Specific/Hydroponics/carrot.rsi
+    sprite: _CE/Objects/Consumable/Food/carrot.rsi
   - type: CESeed
     plantProto: CEPlantCarrot
   - type: Stack

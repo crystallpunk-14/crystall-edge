@@ -733,7 +733,10 @@
     flavors:
       - carrot
   - type: Sprite
-    sprite: Objects/Specific/Hydroponics/carrot.rsi
+    sprite: _CE/Objects/Consumable/Food/carrot.rsi
+    layers:
+      - state: base1
+        map: [ "random" ]
   - type: RandomSprite
     available:
       - random:
@@ -772,7 +775,7 @@
     flavors:
       - carrot
   - type: Sprite
-    sprite: Objects/Specific/Hydroponics/carrot.rsi
+    sprite: _CE/Objects/Consumable/Food/carrot.rsi
     layers:
       - state: slice1
   - type: SolutionContainerManager
