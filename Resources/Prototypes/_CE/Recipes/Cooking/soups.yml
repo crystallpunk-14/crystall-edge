@@ -241,12 +241,57 @@
     tags:
     - CEPumpkin
 
+- type: CECookingRecipe
+  id: VegCarrotSoup
+  foodType: Soup
+  foodData:
+    name: ce-soup-recipe-vegcarrot-name
+    desc: ce-soup-recipe-vegcarrot-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Soups/food.rsi
+      state: cucumber
+  requirements:
+  - !type:ReagentRequired
+    amount: 20
+    reagents:
+    - CEWater
+  - !type:TagRequired
+    tags:
+    - CECarrot
+  - !type:TagRequired
+    tags:
+    - CECucumber
+
+# 4 req
+
+- type: CECookingRecipe
+  id: CornPorridge
+  foodType: Soup
+  foodData:
+    name: ce-soup-recipe-cornporridge-name
+    desc: ce-soup-recipe-cornporridge-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Soups/food.rsi
+      state: corn
+  requirements:
+  - !type:ReagentRequired
+    amount: 20
+    reagents:
+    - CEWater
+  - !type:TagRequired
+    tags:
+    - CEWheat
+  - !type:TagRequired
+    tags:
+    - CECorn
+  - !type:TagRequired
+    tags:
+    - CESalad
+
 # Unused soup.rsi states lacking recipes:
 # - flyagaric
 # - flylumish
 # - lumish
-# - chicken
-# - corn
 # - cucumber
 # - fish
 # - kharcho

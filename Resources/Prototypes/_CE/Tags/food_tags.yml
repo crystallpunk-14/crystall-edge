@@ -85,3 +85,7 @@
 - type: CEFoodTag
   id: CECarrot
   name: ce-cooking-tag-carrot
+
+- type: CEFoodTag
+  id: CECucumber
+  name: ce-cooking-tag-cucumber

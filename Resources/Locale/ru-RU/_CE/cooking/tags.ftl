@@ -20,3 +20,4 @@ ce-cooking-tag-garlic = Чеснок
 ce-cooking-tag-corn = Кукуруза
 
 ce-cooking-tag-carrot = Морковь
+ce-cooking-tag-cucumber = Огурец

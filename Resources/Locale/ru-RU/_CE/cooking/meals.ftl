@@ -54,3 +54,12 @@ ce-meal-recipe-pork-roulade-desc = Свернутая свинина с овощ
 
 ce-meal-recipe-stuffed-bell-pepper-name = фаршированный перец
 ce-meal-recipe-stuffed-bell-pepper-desc = Болгарский перец, фаршированный мясом и сыром.
+
+ce-meal-recipe-green-omelette-name = Омлет с зеленью
+ce-meal-recipe-green-omelette-desc = Запеченный яичный омлет, обильно посыпанный зеленью
+
+ce-meal-recipe-garlic-bread-name = Чесночный хлеб
+ce-meal-recipe-garlic-bread-desc = Прожаренный до хрустящей корочки хлеб с пряным чесночным ароматом. Остренько. Хрустит.
+
+ce-meal-recipe-corn-pepper-meat-name = Жаркое с кукурузой и перцем
+ce-meal-recipe-corn-pepper-meat-desc = Аппетитное жаркое из кукурузы, болгарского перца и сочного мяса.

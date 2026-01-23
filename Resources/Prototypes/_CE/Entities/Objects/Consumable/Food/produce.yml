@@ -318,6 +318,7 @@
   - type: CEFoodTag
     tags:
     - CEVegetable
+    - CECucumber
 
 - type: entity
   id: CEFoodCucumberSlice
@@ -348,6 +349,7 @@
   - type: CEFoodTag
     tags:
     - CEVegetable
+    - CECucumber
 
 - type: entity
   id: CEFoodTomatoes

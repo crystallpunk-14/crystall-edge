@@ -103,6 +103,41 @@
 # 2 req
 
 - type: CECookingRecipe
+  id: GreenOmelette
+  foodType: Meal
+  foodData:
+    name: ce-meal-recipe-green-omelette-name
+    desc: ce-meal-recipe-green-omelette-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Meals/food.rsi
+      state: green_omelette
+  requirements:
+  - !type:TagRequired
+    tags:
+    - CESalad
+    - CEVegetable
+  - !type:TagRequired
+    tags:
+    - CEEgg
+
+- type: CECookingRecipe
+  id: GarlicBread
+  foodType: Meal
+  foodData:
+    name: ce-meal-recipe-garlic-bread-name
+    desc: ce-meal-recipe-garlic-bread-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Meals/food.rsi
+      state: garlic_bread
+  requirements:
+  - !type:TagRequired
+    tags:
+    - CEDough
+  - !type:TagRequired
+    tags:
+    - CEGarlic
+
+- type: CECookingRecipe
   id: GreenSaladMeat
   foodType: Meal
   foodData:
@@ -229,6 +264,27 @@
     - CEMeat
 
 - type: CECookingRecipe
+  id: CornPepperMeat
+  foodType: Meal
+  foodData:
+    name: ce-meal-recipe-corn-pepper-meat-name
+    desc: ce-meal-recipe-corn-pepper-meat-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Meals/food.rsi
+      state: corn_pepper_meat
+  requirements:
+  - !type:TagRequired
+    tags:
+    - CECorn
+  - !type:TagRequired
+    tags:
+    - CEPepper
+  - !type:TagRequired
+    tags:
+    - CEMeat
+    - CEMeatSlice
+
+- type: CECookingRecipe
   id: StuffedPotato
   foodType: Meal
   foodData:
@@ -313,10 +369,7 @@
 # Unused meal sprites lacking ingredients/tags:
 # - beef_rice
 # - beef_rice_greens
-# - cheese_broccoli_egg_bake
-# - corn_pepper_meat
 # - fish_cakes
 # - fish_potato_tomato
-# - garlic_bread
 # - omurice-like
 # - potato_wedges_chicken

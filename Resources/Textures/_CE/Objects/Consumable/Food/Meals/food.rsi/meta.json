@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC-BY-SA-4.0",
-    "copyright": "Created by prazat911, trash by TheShuEd, green_salad by Aeoli, baked_apples by Dinazzewr, beef_rice, beef_rice_greens, cheese_broccoli_egg_bake, corn_pepper_meat, fish_cakes, fish_potato_tomato, garlic_bread, omurice-like, pork_roulade, potato_wedges_chicken, stir-fry, stuffed_bell_pepper by iowaku (Discord)",
+    "copyright": "Created by prazat911, trash by TheShuEd, green_salad by Aeoli, baked_apples by Dinazzewr, beef_rice, beef_rice_greens, green_omelette, corn_pepper_meat, fish_cakes, fish_potato_tomato, garlic_bread, omurice-like, pork_roulade, potato_wedges_chicken, stir-fry, stuffed_bell_pepper by iowaku (Discord)",
     "size": {
         "x": 32,
         "y": 32
@@ -23,7 +23,7 @@
             "name": "cheese_bread"
         },
         {
-            "name": "cheese_broccoli_egg_bake"
+            "name": "green_omelette"
         },
         {
             "name": "corn_pepper_meat"

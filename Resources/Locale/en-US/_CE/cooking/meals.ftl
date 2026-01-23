@@ -54,3 +54,12 @@ ce-meal-recipe-pork-roulade-desc = Rolled pork with vegetables. A classic dish.
 
 ce-meal-recipe-stuffed-bell-pepper-name = stuffed bell pepper
 ce-meal-recipe-stuffed-bell-pepper-desc = Bell pepper stuffed with meat and cheese.
+
+ce-meal-recipe-green-omelette-name = Green Omelette
+ce-meal-recipe-green-omelette-desc = A baked egg omelette generously sprinkled with greens.
+
+ce-meal-recipe-garlic-bread-name = Garlic Bread
+ce-meal-recipe-garlic-bread-desc = Toasted bread with a spicy garlic aroma and a crispy crust. A little sharp. Crunchy.
+
+ce-meal-recipe-corn-pepper-meat-name = Corn & Pepper Stir-Fry
+ce-meal-recipe-corn-pepper-meat-desc = A hearty stir-fry featuring corn, bell pepper and savory meat.

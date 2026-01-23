@@ -20,3 +20,4 @@ ce-cooking-tag-garlic = Garlic
 ce-cooking-tag-corn = Corn
 
 ce-cooking-tag-carrot = Carrot
+ce-cooking-tag-cucumber = Cucumber

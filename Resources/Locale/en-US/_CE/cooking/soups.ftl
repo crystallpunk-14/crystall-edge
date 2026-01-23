@@ -22,6 +22,12 @@ ce-soup-recipe-pumpkin-puree-desc = The delicate creamy taste of sweet pumpkin. 
 ce-soup-recipe-monster-brew-name = monstrous bibimbap
 ce-soup-recipe-monster-brew-desc = Exotic soup made from monster meat and eggs.
 
+ce-soup-recipe-vegcarrot-name = Vegetable Stew
+ce-soup-recipe-vegcarrot-desc = A hearty stew of cucumber and carrot, simmered in water.
+
+ce-soup-recipe-cornporridge-name = Corn Porridge
+ce-soup-recipe-cornporridge-desc = A creamy porridge made from corn and wheat with a touch of greens.
+
 ce-porridge-recipe-plain-name = oat porridge
 ce-porridge-recipe-plain-desc = Warm oat porridge made with water and wheat.
 
