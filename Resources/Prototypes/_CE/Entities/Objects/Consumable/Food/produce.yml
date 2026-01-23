@@ -647,6 +647,8 @@
           Quantity: 1
         - ReagentId: Allicin
           Quantity: 1
+  - type: CESeed
+    plantProto: CEPlantGarlic
   - type: CEFoodTag
     tags:
     - CEVegetable
@@ -815,8 +817,6 @@
         reagents:
         - ReagentId: CENutriment
           Quantity: 3
-  - type: CESeed
-    plantProto: CEPlantGarlic
   - type: CEFoodTag
     tags:
     - CEVegetable

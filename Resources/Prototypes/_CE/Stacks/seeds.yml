@@ -72,5 +72,5 @@
   id: CESeedCarrot
   name: ce-stack-carrot-seeds
   spawn: CESeedCarrot
-  icon: { sprite: Objects/Specific/Hydroponics/carrot.rsi, state: seeds }
+  icon: { sprite: _CE/Objects/Consumable/Food/carrot.rsi, state: seeds }
   maxCount: 30
