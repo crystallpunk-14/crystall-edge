@@ -38,24 +38,38 @@ public sealed partial class CEClosedBetaTestSystem : EntitySystem
     // Мне просто лень каждый раз запускать и выключать сервер ручками.
     public override void Update(float frameTime)
     {
-        base.Update(frameTime);
-
         if (!_enabled || _timing.CurTime < _nextUpdateTime)
             return;
 
         _nextUpdateTime = _timing.CurTime + _updateFrequency;
         var now = DateTime.UtcNow;
 
+        OpenWeekendRule(now);
         LanguageRule(now);
         LimitPlaytimeRule(now);
         ApplyAnnouncements(now);
+    }
+
+    private void OpenWeekendRule(DateTime now)
+    {
+        var whitelistEnabled = _cfg.GetCVar(CCVars.WhitelistEnabled);
+        var isOpenWeekend = now.DayOfWeek is DayOfWeek.Saturday || now.DayOfWeek is DayOfWeek.Sunday;
+
+        if (isOpenWeekend && whitelistEnabled)
+        {
+            _cfg.SetCVar(CCVars.WhitelistEnabled, false);
+        }
+        else if (!isOpenWeekend && !whitelistEnabled)
+        {
+            _cfg.SetCVar(CCVars.WhitelistEnabled, true);
+        }
     }
 
     private void LanguageRule(DateTime now)
     {
         var curLang = _cfg.GetCVar(CCVars.ServerLanguage);
 
-        var ruDays = now.DayOfWeek is DayOfWeek.Tuesday or DayOfWeek.Thursday or DayOfWeek.Saturday;
+        var ruDays = now.DayOfWeek is DayOfWeek.Tuesday || now.DayOfWeek is DayOfWeek.Thursday || now.DayOfWeek is DayOfWeek.Saturday;
 
         if (ruDays && curLang != "ru-RU")
         {
