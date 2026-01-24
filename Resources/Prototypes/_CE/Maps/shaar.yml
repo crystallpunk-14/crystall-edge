@@ -46,9 +46,6 @@
             #Tavern (4)
             CETavernmaster: [ 1, 1 ]
             CEChef: [ 3, 3 ]
-            #Engineering
-            CEBrigadier: [ 1, 1 ]
-            CETechnician: [ 2, 2 ]
             #Citizens
             CEBard: [ 2, 2 ]
             CETownfolk: [ -1, -1 ]
