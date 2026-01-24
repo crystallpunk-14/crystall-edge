@@ -65,6 +65,24 @@
     state: Farmer
   jobName: ce-job-name-farmer
 
+# Engineering
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconBrigadier
+  icon:
+    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    state: Brigadier
+  jobName: ce-job-name-brigadier
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconTechnician
+  icon:
+    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    state: Technician
+  jobName: ce-job-name-technician
+
 # Citizens
 
 - type: jobIcon

@@ -4,9 +4,14 @@
   name: air caught
   components:
   - type: Sprite
+    noRot: true
     sprite: _CE/Effects/wind.rsi
+    layers:
+    - state: wind
+      unshaded: true
+      color: "#00ddff"
     state: wind
-    drawdepth: Effects
+    drawdepth: Mobs
   - type: StatusEffect
     whitelist:
       components:
@@ -14,6 +19,24 @@
   - type: CEGravityCaughtStatusEffect
   - type: StatusEffectAlert
     alert: CEAirCaught
+  - type: ConditionalSpawner
+    prototypes:
+    - CEOverchargeBrightVFX
+  - type: PointLight
+    color: "#00ddff"
+    enabled: true
+    radius: 5
+    energy: 6
+    netsync: false
+  - type: LightFade
+    duration: 15
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/_CE/Effects/energy_pulse_glass.ogg
+  - type: CESpeedModifyStatusEffect
+    walk: 0.6
+    sprint: 0.5
+
 
 - type: entity
   parent: StatusEffectBase

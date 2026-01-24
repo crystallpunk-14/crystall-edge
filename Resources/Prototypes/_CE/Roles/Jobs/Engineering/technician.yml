@@ -1,0 +1,46 @@
+- type: job
+  id: CETechnician
+  setPreference: false #temp
+  name: ce-job-name-technician
+  description: ce-job-desc-technician
+  playTimeTracker: CEJobTechnician
+  startingGear: CETechnicianGear
+  icon: CEJobIconTechnician
+  supervisors: ce-job-supervisors-brigadier
+  canBeAntag: false
+  special:
+    - !type:AddComponentSpecial
+      components:
+      - type: CESalaryCounter
+        salary: 50
+
+- type: startingGear
+  id: CETechnicianGear
+  equipment:
+    belt: CEKeyRingTechnician
+    pocket1: CEWalletFilledTechnician
+
+
+- type: entity
+  id: CEWalletFilledTechnician
+  parent: CEWallet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents: #100cp total
+    - id: CECoinSilver5
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinCopper10
+
+- type: entity
+  id: CEKeyRingTechnician
+  parent: CEBaseKeyRing
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+    - id: CEKeyEngineeringHall
+    - id: CEKeyEngineeringStaff
