@@ -49,3 +49,7 @@
     enabled: false
     volume: 5
     range: 5
+  - type: GuideHelp
+    guides:
+    - CECookingRecipesEN
+    - CECookingRecipesRU

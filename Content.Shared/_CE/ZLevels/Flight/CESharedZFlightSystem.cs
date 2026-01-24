@@ -10,6 +10,7 @@ using Content.Shared.Actions;
 using Content.Shared.Audio;
 using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
+using Content.Shared.Gravity;
 using Content.Shared.Mobs;
 using Content.Shared.Stunnable;
 using JetBrains.Annotations;
@@ -24,6 +25,7 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private readonly SharedGravitySystem _gravity = default!;
 
     protected EntityQuery<CEZPhysicsComponent> ZPhyzQuery;
 
@@ -38,11 +40,21 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
         SubscribeLocalEvent<CEZPhysicsComponent, CEFlightStoppedEvent>(OnStopFlight);
         SubscribeLocalEvent<CEZFlyerComponent, CEGetZVelocityEvent>(OnGetZVelocity);
         SubscribeLocalEvent<CEZFlyerComponent, CECheckGravityEvent>(OnGetGravity);
+        SubscribeLocalEvent<CEZFlyerComponent, IsWeightlessEvent>(CheckWeightless);
 
         SubscribeLocalEvent<CEZFlyerComponent, StunnedEvent>(OnStunned);
         SubscribeLocalEvent<CEZFlyerComponent, KnockedDownEvent>(OnKnockDowned);
         SubscribeLocalEvent<CEZFlyerComponent, MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<CEZFlyerComponent, DamageChangedEvent>(OnDamageChanged);
+    }
+
+    private void CheckWeightless(Entity<CEZFlyerComponent> ent, ref IsWeightlessEvent args)
+    {
+        if (!ent.Comp.Active || args.Handled)
+            return;
+
+        args.IsWeightless = true;
+        args.Handled = true;
     }
 
     private void OnDamageChanged(Entity<CEZFlyerComponent> ent, ref DamageChangedEvent args)
@@ -89,7 +101,7 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
 
         var zPhys = args.Target.Comp;
         var currentPos = zPhys.CurrentZLevel + zPhys.LocalPosition;
-        var targetPos = ent.Comp.TargetMapHeight + 0.5f;
+        var targetPos = ent.Comp.TargetMapHeight + 0.2f;
         var currentVelocity = zPhys.Velocity;
 
         var distanceToTarget = targetPos - currentPos;
@@ -145,6 +157,7 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
         DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.Active));
 
         _zLevel.UpdateGravityState((ent, zPhys));
+        _gravity.RefreshWeightless(ent.Owner);
 
         RaiseLocalEvent(ent, new CEFlightStartedEvent());
         return true;
@@ -166,6 +179,7 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
         DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.Active));
 
         _zLevel.UpdateGravityState((ent, zPhys));
+        _gravity.RefreshWeightless(ent.Owner);
 
         RaiseLocalEvent(ent, new CEFlightStoppedEvent());
     }
