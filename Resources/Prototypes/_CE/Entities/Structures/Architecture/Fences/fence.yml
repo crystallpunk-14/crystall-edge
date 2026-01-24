@@ -93,11 +93,6 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalBreak
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          CEScrapBrass1:
-            min: 2
-            max: 4
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: Construction
@@ -126,11 +121,6 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalBreak
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          CEScrapIron1:
-            min: 2
-            max: 4
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: Construction
