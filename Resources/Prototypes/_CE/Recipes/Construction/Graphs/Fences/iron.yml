@@ -8,9 +8,9 @@
           completed:
             - !type:SnapToGrid
           steps:
-            - material: CEIronBar
-              amount: 2
-              doAfter: 8
+            - material: CEIronRod
+              amount: 5
+              doAfter: 5
 
     - node: CEFenceWindowIron
       entity: CEFenceWindowIron
@@ -18,12 +18,39 @@
         - to: start
           completed:
             - !type:SpawnPrototype
-              prototype: CEIronBar1
-              amount: 2
+              prototype: CEIronRod1
+              amount: 5
             - !type:DeleteEntity {}
           steps:
             - tool: Prying
-              doAfter: 8
+              doAfter: 5
+
+- type: constructionGraph
+  id: CEFenceIron
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: CEFenceIron
+          completed:
+            - !type:SnapToGrid
+          steps:
+            - material: CEIronRod
+              amount: 5
+              doAfter: 5
+
+    - node: CEFenceIron
+      entity: CEFenceIron
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEIronRod1
+              amount: 5
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 5
 
 - type: constructionGraph
   id: CEFenceGateBigIron
@@ -35,9 +62,9 @@
           completed:
             - !type:SnapToGrid
           steps:
-            - material: CEIronBar
-              amount: 4
-              doAfter: 8
+            - material: CEIronRod
+              amount: 8
+              doAfter: 5
 
     - node: CEFenceGateBigIron
       entity: CEFenceGateBigIron
@@ -45,12 +72,12 @@
         - to: start
           completed:
             - !type:SpawnPrototype
-              prototype: CEIronBar1
-              amount: 4
+              prototype: CEIronRod1
+              amount: 8
             - !type:DeleteEntity {}
           steps:
             - tool: Prying
-              doAfter: 8
+              doAfter: 5
 
 - type: constructionGraph
   id: CEFenceBigIron
@@ -62,9 +89,9 @@
           completed:
             - !type:SnapToGrid
           steps:
-            - material: CEIronBar
-              amount: 4
-              doAfter: 8
+            - material: CEIronRod
+              amount: 8
+              doAfter: 5
 
     - node: CEFenceBigIron
       entity: CEFenceBigIron
@@ -72,9 +99,9 @@
         - to: start
           completed:
             - !type:SpawnPrototype
-              prototype: CEIronBar1
-              amount: 4
+              prototype: CEIronRod1
+              amount: 8
             - !type:DeleteEntity {}
           steps:
             - tool: Prying
-              doAfter: 8
+              doAfter: 5
