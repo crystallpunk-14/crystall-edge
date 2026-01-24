@@ -9,3 +9,4 @@ ce-loadout-gloves = Gloves
 ce-loadout-masks = Masks
 
 ce-loadout-music-tool = Musical instrument
+ce-loadout-instruments = Instruments

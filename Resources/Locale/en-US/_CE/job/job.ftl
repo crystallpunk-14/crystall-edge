@@ -23,6 +23,14 @@ ce-job-desc-chef = Not implemented.
 ce-job-name-farmer = Farmer
 ce-job-desc-farmer = Your garden is your fortress. Grow anything and experiment with irradiating plants to get previously unknown products.
 
+# Engineering
+
+ce-job-name-brigadier = Brigadier
+ce-job-desc-brigadier = Lead the engineering forces, oversee all technical operations, and ensure the realm's infrastructure is maintained.
+
+ce-job-name-technician = Technician
+ce-job-desc-technician = Perform technical repairs and maintenance work. Assist the Brigadier in keeping everything operational.
+
 # Citizens
 
 ce-job-name-bard = Bard

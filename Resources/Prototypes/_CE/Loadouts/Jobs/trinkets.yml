@@ -1,0 +1,25 @@
+- type: loadoutGroup
+  id: CEGeneralInstruments
+  name: ce-loadout-instruments
+  minLimit: 1
+  loadouts:
+  - CESafeFallingAmulet
+  - CEManaTransferGlove
+  - CECoinSilver10
+
+- type: loadout
+  id: CESafeFallingAmulet
+  equipment:
+    belt2: CESafeFallingAmulet
+
+- type: loadout
+  id: CEManaTransferGlove
+  storage:
+    back:
+    - CEManaTransferGlove
+
+- type: loadout
+  id: CECoinSilver10
+  storage:
+    back:
+    - CECoinSilver10

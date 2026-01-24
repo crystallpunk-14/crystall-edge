@@ -28,6 +28,11 @@ ce-lock-shape-guard-cage-3 = prison cage 3
 ce-lock-shape-guard-cage-4 = prison cage 4
 ce-lock-shape-guard-cage-5 = prison cage 5
 
+# Engineering
+
+ce-lock-shape-engineering-hall = engineering hall
+ce-lock-shape-engineering-staff = engineering work areas
+
 # Citizens
 
 ce-lock-shape-tailor-shop = clothing store

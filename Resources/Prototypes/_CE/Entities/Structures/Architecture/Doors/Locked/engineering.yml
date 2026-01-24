@@ -1,0 +1,33 @@
+- type: entity
+  parent: CEIronDoorWindowed
+  id: CEIronDoorEngineeringHall
+  suffix: Engineering Hall
+  components:
+  - type: CELock
+    autoGenerateShape: EngineeringHall
+  - type: Lock
+    locked: false
+
+- type: entity
+  parent:
+    - CEIronDoorEngineeringHall
+    - CEIronDoorWindowedMirrored
+  id: CEIronDoorEngineeringHallMirrored
+  suffix: Engineering Hall, Mirrored
+
+- type: entity
+  parent: CEIronDoor
+  id: CEIronDoorEngineeringStaff
+  suffix: Engineering Staff
+  components:
+  - type: CELock
+    autoGenerateShape: EngineeringStaff
+  - type: Lock
+    locked: true
+
+- type: entity
+  parent:
+    - CEIronDoorEngineeringStaff
+    - CEIronDoorMirrored
+  id: CEIronDoorEngineeringStaffMirrored
+  suffix: Engineering Staff, Mirrored

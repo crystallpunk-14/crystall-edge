@@ -1,4 +1,5 @@
 using Content.Shared._CE.MagicEnergy.Components;
+using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Armor;
 using Content.Shared.Atmos;
 using Content.Shared.Chat;
@@ -40,6 +41,7 @@ public partial class InventorySystem
     {
         //CrystallEdge relays
         SubscribeLocalEvent<InventoryComponent, CEEnergyRadiationDefenceCalculateEvent>(RelayInventoryEvent);
+        SubscribeLocalEvent<InventoryComponent, CEZLevelChasmAttempt>(RelayInventoryEvent);
         //CrystallEdge end
 
         SubscribeLocalEvent<InventoryComponent, DamageModifyEvent>(RelayInventoryEvent);

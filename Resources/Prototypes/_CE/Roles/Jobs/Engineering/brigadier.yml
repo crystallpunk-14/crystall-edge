@@ -1,0 +1,53 @@
+- type: job
+  id: CEBrigadier
+  setPreference: false #temp
+  name: ce-job-name-brigadier
+  description: ce-job-desc-brigadier
+  playTimeTracker: CEJobBrigadier
+  startingGear: CEBrigadierGear
+  icon: CEJobIconBrigadier
+  requireAdminNotify: true
+  joinNotifyCrew: true
+  canBeAntag: false
+  supervisors: ce-job-supervisors-empire
+  weight: 3
+  special:
+    - !type:AddComponentSpecial
+      components:
+      - type: CESalaryCounter
+        salary: 200
+  #requirements:
+  #  - !type:DepartmentTimeRequirement
+  #    department: CEEngineering
+  #    time: 10980 # 3 hours
+
+- type: startingGear
+  id: CEBrigadierGear
+  equipment:
+    belt: CEKeyRingBrigadier
+    pocket1: CEWalletFilledBrigadier
+
+- type: entity
+  id: CEWalletFilledBrigadier
+  parent: CEWallet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents: #200cp total
+    - id: CECoinGold1
+    - id: CECoinSilver5
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinCopper10
+
+- type: entity
+  id: CEKeyRingBrigadier
+  parent: CEBaseKeyRing
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+    - id: CEKeyEngineeringHall
+    - id: CEKeyEngineeringStaff
