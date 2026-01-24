@@ -32,7 +32,7 @@
         maxTargets: 8
         affectCaster: false
         effects:
-        - !type:CESpellStun
+        - !type:CESpellKnockdown
           duration: 4
 
 - type: entity
