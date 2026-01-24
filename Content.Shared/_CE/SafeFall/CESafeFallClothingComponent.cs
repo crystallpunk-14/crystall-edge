@@ -14,5 +14,5 @@ public sealed partial class CESafeFallClothingComponent : Component
     public TimeSpan Duration = TimeSpan.FromSeconds(15);
 
     [DataField]
-    public float EnergyCost = 10f;
+    public TimeSpan StunDuration = TimeSpan.FromSeconds(1);
 }
