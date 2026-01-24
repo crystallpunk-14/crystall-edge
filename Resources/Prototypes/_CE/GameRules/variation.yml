@@ -1,0 +1,57 @@
+- type: entity
+  id: CEBaseVariationPass
+  parent: CEBaseGameRule
+  abstract: true
+  components:
+  - type: StationVariationPassRule
+
+- type: entity
+  id: CEGameRuleCoalOreDistributionVariationPass
+  parent: CEBaseVariationPass
+  components:
+  - type: CERockReplaceVariationPass
+  - type: EntityReplaceVariationPass
+    entitiesPerReplacementAverage: 10
+    entitiesPerReplacementStdDev: 8
+    replacements:
+    - id: CEWallStoneOreCoal
+      weight: 1
+
+- type: entity
+  id: CEGameRuleIronOreDistributionVariationPass
+  parent: CEBaseVariationPass
+  components:
+  - type: CERockReplaceVariationPass
+  - type: EntityReplaceVariationPass
+    entitiesPerReplacementAverage: 10
+    entitiesPerReplacementStdDev: 8
+    replacements:
+    - id: CEWallStoneOreIron
+      weight: 1
+
+- type: entity
+  id: CEGameRuleWallsDamagedVariationPass
+  parent: BaseVariationPass
+  components:
+  - type: WallReplaceVariationPass
+  - type: EntityReplaceVariationPass
+    entitiesPerReplacementAverage: 50
+    entitiesPerReplacementStdDev: 10
+    replacements:
+    - id: CEWallFrameWooden
+
+# Static entity replacement example - replaces a specific number of entities
+# Usage: Mark your replaceable entities with CEStaticEntityReplacementMarkerComponent
+# and create a variation pass rule similar to this example:
+#
+# - type: entity
+#   id: CEStaticReplacementExampleVariationPass
+#   parent: CEBaseVariationPass
+#   components:
+#   - type: CEStaticEntityReplacementVariationPass
+#     entitiesToReplace: 5
+#   - type: EntityReplaceVariationPass
+#     entitiesPerReplacementAverage: 1
+#     entitiesPerReplacementStdDev: 0
+#     replacements:
+#     - id: YourReplacementEntityId
