@@ -4,7 +4,7 @@ meta:
   engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 01/23/2026 19:02:48
+  time: 01/24/2026 19:35:22
   entityCount: 656
 maps:
 - 1
@@ -2164,29 +2164,6 @@ entities:
       parent: 1
     - type: CEZPhysics
       currentGroundHeight: 1.05
-- proto: CEWallIronCore
-  entities:
-  - uid: 316
-    components:
-    - type: Transform
-      pos: 10.5,-25.5
-      parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
-  - uid: 321
-    components:
-    - type: Transform
-      pos: 11.5,-24.5
-      parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
-  - uid: 322
-    components:
-    - type: Transform
-      pos: 10.5,-24.5
-      parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
 - proto: CEWallLight
   entities:
   - uid: 134
@@ -2696,6 +2673,11 @@ entities:
       parent: 1
     - type: CEZPhysics
       currentGroundHeight: 1.05
+  - uid: 313
+    components:
+    - type: Transform
+      pos: 10.5,-24.5
+      parent: 1
   - uid: 314
     components:
     - type: Transform
@@ -2710,6 +2692,11 @@ entities:
       parent: 1
     - type: CEZPhysics
       currentGroundHeight: 1.05
+  - uid: 316
+    components:
+    - type: Transform
+      pos: 10.5,-25.5
+      parent: 1
   - uid: 317
     components:
     - type: Transform
@@ -2717,6 +2704,11 @@ entities:
       parent: 1
     - type: CEZPhysics
       currentGroundHeight: 1.05
+  - uid: 318
+    components:
+    - type: Transform
+      pos: 10.5,-26.5
+      parent: 1
   - uid: 319
     components:
     - type: Transform
@@ -2731,6 +2723,16 @@ entities:
       parent: 1
     - type: CEZPhysics
       currentGroundHeight: 1.05
+  - uid: 321
+    components:
+    - type: Transform
+      pos: 11.5,-24.5
+      parent: 1
+  - uid: 322
+    components:
+    - type: Transform
+      pos: 13.5,-25.5
+      parent: 1
   - uid: 323
     components:
     - type: Transform
@@ -2738,6 +2740,11 @@ entities:
       parent: 1
     - type: CEZPhysics
       currentGroundHeight: 1.05
+  - uid: 324
+    components:
+    - type: Transform
+      pos: 8.5,-24.5
+      parent: 1
   - uid: 325
     components:
     - type: Transform
@@ -2905,29 +2912,6 @@ entities:
     components:
     - type: Transform
       pos: 17.5,-8.5
-      parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
-- proto: CEWallStoneOreIron
-  entities:
-  - uid: 313
-    components:
-    - type: Transform
-      pos: 10.5,-26.5
-      parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
-  - uid: 318
-    components:
-    - type: Transform
-      pos: 13.5,-25.5
-      parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
-  - uid: 324
-    components:
-    - type: Transform
-      pos: 8.5,-24.5
       parent: 1
     - type: CEZPhysics
       currentGroundHeight: 1.05

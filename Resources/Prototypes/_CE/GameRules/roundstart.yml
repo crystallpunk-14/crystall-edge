@@ -39,7 +39,6 @@
           Memory:
             max: 0
 
-
 - type: entity
   parent: CEBaseGameRule
   id: CEGameRuleVampires
@@ -77,3 +76,19 @@
         color: "#630f24"
         sound: "/Audio/_CE/Ambience/Antag/vampire.ogg"
 
+
+# variation passes
+- type: entity
+  id: CEBasicRoundstartVariation
+  parent: CEBaseGameRule
+  components:
+  - type: RoundstartStationVariationRule
+    rules:
+    # Ore veins
+    - id: CEGameRuleCoalOreDistributionVariationPass
+    - id: CEGameRuleIronOreDistributionVariationPass
+    - id: CEGameRuleWallsDamagedVariationPass
+    # Cores
+    - id: CEStaticIronCoreVariationPass
+    - id: CEStaticCoalCoreVariationPass
+    - id: CEStaticCrystalCoreVariationPass

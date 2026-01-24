@@ -4,8 +4,10 @@
  */
 
 using Content.Server._CE.ZLevels.Core;
+using Content.Server._CE.ZLevels.Core.Components;
 using Content.Server.Administration;
 using Content.Server.GameTicking;
+using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.Administration;
 using Content.Shared.Maps;
 using Robust.Server.GameObjects;
@@ -22,6 +24,7 @@ namespace Content.Server._CE.ZLevels.Mapping;
 public sealed class CEMappingZNetworkCommand : LocalizedEntityCommands
 {
     [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private readonly IComponentFactory _compFactory = default!;
     [Dependency] private readonly MapLoaderSystem _mapLoader = default!;
     [Dependency] private readonly CEZLevelsSystem _zLevel = default!;
     [Dependency] private readonly MetaDataSystem _meta = default!;
@@ -35,7 +38,21 @@ public sealed class CEMappingZNetworkCommand : LocalizedEntityCommands
         var options = new List<CompletionOption>();
         foreach (var map in _proto.EnumeratePrototypes<GameMapPrototype>())
         {
-            if (map.MapsAbove.Count > 0 || map.MapsBelow.Count > 0)
+            // Check if any station in this map has CEStationZLevelsComponent  component with maps
+            var hasZLevels = false;
+            foreach (var station in map.Stations.Values)
+            {
+                if (station.StationComponentOverrides.TryGetComponent<CEStationZLevelsComponent>(_compFactory, out var zNetwork))
+                {
+                    if (zNetwork.MapsAbove.Count > 0 || zNetwork.MapsBelow.Count > 0)
+                    {
+                        hasZLevels = true;
+                        break;
+                    }
+                }
+            }
+
+            if (hasZLevels)
                 options.Add(new CompletionOption(map.ID, map.MapName));
         }
 
@@ -63,6 +80,23 @@ public sealed class CEMappingZNetworkCommand : LocalizedEntityCommands
             return;
         }
 
+        // Find the first station with CEStationZLevelsComponent
+        CEStationZLevelsComponent? zNetwork = null;
+        foreach (var station in mapProto.Stations.Values)
+        {
+            if (station.StationComponentOverrides.TryGetComponent<CEStationZLevelsComponent>(_compFactory, out var zNet))
+            {
+                zNetwork = zNet;
+                break;
+            }
+        }
+
+        if (zNetwork == null)
+        {
+            shell.WriteError($"No station with CEStationZLevelsComponent  found in map {mapProto.ID}");
+            return;
+        }
+
         //Ok all parsing is done, we start creating maps
 
         var network = _zLevel.CreateZNetwork();
@@ -84,8 +118,8 @@ public sealed class CEMappingZNetworkCommand : LocalizedEntityCommands
         _meta.SetEntityName(defaultMapEnt.Value, $"Mapping {mapProto.MapName}");
 
         //Loading maps below first
-        var depth = mapProto.MapsBelow.Count * -1;
-        foreach (var path in mapProto.MapsBelow)
+        var depth = zNetwork.MapsBelow.Count * -1;
+        foreach (var path in zNetwork.MapsBelow)
         {
             if (!_mapLoader.TryLoadMap(path, out var mapEnt, out _, opts))
             {
@@ -100,7 +134,7 @@ public sealed class CEMappingZNetworkCommand : LocalizedEntityCommands
         }
 
         depth = 1;
-        foreach (var path in mapProto.MapsAbove)
+        foreach (var path in zNetwork.MapsAbove)
         {
             if (!_mapLoader.TryLoadMap(path, out var mapEnt, out _, opts))
             {
