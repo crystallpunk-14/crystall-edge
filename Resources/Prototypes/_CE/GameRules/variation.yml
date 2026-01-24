@@ -40,18 +40,32 @@
     replacements:
     - id: CEWallFrameWooden
 
-# Static entity replacement example - replaces a specific number of entities
-# Usage: Mark your replaceable entities with CEStaticEntityReplacementMarkerComponent
-# and create a variation pass rule similar to this example:
-#
-# - type: entity
-#   id: CEStaticReplacementExampleVariationPass
-#   parent: CEBaseVariationPass
-#   components:
-#   - type: CEStaticEntityReplacementVariationPass
-#     entitiesToReplace: 5
-#   - type: EntityReplaceVariationPass
-#     entitiesPerReplacementAverage: 1
-#     entitiesPerReplacementStdDev: 0
-#     replacements:
-#     - id: YourReplacementEntityId
+# Example of static entity replacement variation pass
+# Unlike EntityReplaceVariationPass which uses probabilistic replacement,
+# this system replaces an exact number of entities
+- type: entity
+  id: CEStaticIronCoreVariationPass
+  parent: CEBaseVariationPass
+  components:
+  - type: CEStaticEntityReplacementVariationPass
+    replacementCount: 5
+    replacementMap:
+      CEWallStone: CEWallIronCore
+
+- type: entity
+  id: CEStaticCoalCoreVariationPass
+  parent: CEBaseVariationPass
+  components:
+  - type: CEStaticEntityReplacementVariationPass
+    replacementCount: 7
+    replacementMap:
+      CEWallStone: CEWallCoalCore
+
+- type: entity
+  id: CEStaticCrystalCoreVariationPass
+  parent: CEBaseVariationPass
+  components:
+  - type: CEStaticEntityReplacementVariationPass
+    replacementCount: 7
+    replacementMap:
+      CEWallStone: CEWallCrystalCore

@@ -88,3 +88,7 @@
     - id: CEGameRuleCoalOreDistributionVariationPass
     - id: CEGameRuleIronOreDistributionVariationPass
     - id: CEGameRuleWallsDamagedVariationPass
+    # Cores
+    - id: CEStaticIronCoreVariationPass
+    - id: CEStaticCoalCoreVariationPass
+    - id: CEStaticCrystalCoreVariationPass
