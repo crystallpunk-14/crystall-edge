@@ -46,3 +46,25 @@
         effects:
         - !type:Vomit
           probability: 0.1
+
+- type: entity
+  parent: MobStatusEffectDebuff
+  id: CEStatusEffectVulnerability
+  name: vulnerability
+  components:
+  - type: StatusEffectAlert
+    alert: CEVulnerability
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _CE/Effects/cast_impact48.rsi
+    noRot: true
+    layers:
+    - state: particles_down
+      shader: unshaded
+      color: "#a81e33"
+  - type: PointLight
+    radius: 2.5
+    energy: 0.9
+    color: "#a81e33"
+  - type: CEDamageModifierStatusEffect
+    globalDefence: 1.4

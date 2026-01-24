@@ -51,6 +51,9 @@
     removeBaseDamage: true
     activeDuration: 5
     effects:
+    - !type:CESpellApplyStatusEffect #TODO remove this just for testing
+      statusEffect: CEStatusEffectVulnerability
+      duration: 100
     - !type:CESpellThrowFromUser
       distance: 3
     - !type:CESpellSpawnEntityOnTarget

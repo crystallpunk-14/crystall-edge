@@ -55,3 +55,11 @@
     state: wing
   name: ce-alerts-aircaught-name
   description: ce-alerts-aircaught-desc
+
+- type: alert
+  id: CEVulnerability
+  icons:
+  - sprite: /Textures/_CE/Interface/Alerts/vulnerability.rsi
+    state: vulnerability
+  name: ce-alerts-vulnerability-name
+  description: ce-alerts-vulnerability-desc
