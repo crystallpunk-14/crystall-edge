@@ -4,7 +4,8 @@ using Robust.Shared.Utility;
 namespace Content.Server._CE.ZLevels.Core.Components;
 
 /// <summary>
-///
+/// Component that stores Z-level network configuration for a station, including maps to load above and below
+/// the main station level and shared component overrides applied across all Z-levels.
 /// </summary>
 [RegisterComponent]
 public sealed partial class CEStationZLevelsComponent : Component

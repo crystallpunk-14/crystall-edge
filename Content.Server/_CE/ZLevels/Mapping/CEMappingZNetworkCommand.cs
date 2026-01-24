@@ -38,7 +38,7 @@ public sealed class CEMappingZNetworkCommand : LocalizedEntityCommands
         var options = new List<CompletionOption>();
         foreach (var map in _proto.EnumeratePrototypes<GameMapPrototype>())
         {
-            // Check if any station in this map has CEStationZNetwork component with maps
+            // Check if any station in this map has CEStationZLevelsComponent  component with maps
             var hasZLevels = false;
             foreach (var station in map.Stations.Values)
             {
@@ -93,7 +93,7 @@ public sealed class CEMappingZNetworkCommand : LocalizedEntityCommands
 
         if (zNetwork == null)
         {
-            shell.WriteError($"No station with CEStationZNetwork found in map {mapProto.ID}");
+            shell.WriteError($"No station with CEStationZLevelsComponent  found in map {mapProto.ID}");
             return;
         }
 
