@@ -30,3 +30,12 @@
 
 - type: playTimeTracker
   id: CEJobBard
+
+- type: playTimeTracker
+  id: CEJobTailorMerchant
+
+- type: playTimeTracker
+  id: CEJobPharmacistMerchant
+
+- type: playTimeTracker
+  id: CEJobHomeGoodsMerchant

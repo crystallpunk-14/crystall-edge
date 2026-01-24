@@ -1,0 +1,28 @@
+- type: entity
+  id: CEPlantGarlic
+  parent:
+  - CEPlantBase
+  - CEPlantBaseSolarEnergy
+  - CEPlantBaseSingleHarvest
+  - CEPlantBaseFloralDelicateType
+  - CEPlantBaseGrowing1Day
+  - CEPlantBaseMetabolizer1Day
+  - CEPlantBaseMetabolizerWater
+  name: garlic
+  description: Only humans figured out how to take a sharp, unpalatable root vegetable and use it as a seasoning wherever possible.
+  components:
+  - type: CEPlantVisuals
+    growthSteps: 5
+    readyVariations: 1
+  - type: Sprite
+    sprite: _CE/Structures/Nature/Farm/garlic.rsi
+    layers:
+    - state: liq-1
+      sprite: _CE/Structures/Nature/Farm/watered.rsi
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+    - state: grow-1
+      map: ["enum.PlantVisualLayers.Base"]
+  - type: CEPlantAdditionalProduceOnInteract
+    produce:
+      CEFoodGarlic: 4

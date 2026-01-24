@@ -1,0 +1,40 @@
+- type: job
+  id: CEHomeGoodsMerchant
+  setPreference: true
+  name: ce-job-name-homegoods-merchant
+  description: ce-job-desc-homegoods-merchant
+  playTimeTracker: CEJobHomeGoodsMerchant
+  startingGear: CEHomeGoodsMerchantGear
+  icon: CEJobIconHomeGoodsMerchant
+  supervisors: ce-job-supervisors-empire
+  canBeAntag: true
+
+- type: startingGear
+  id: CEHomeGoodsMerchantGear
+  equipment:
+    pocket1: CEWalletFilledHomeGoodsMerchant
+    belt: CEKeyRingHomeGoodsMerchant
+
+- type: entity
+  id: CEWalletFilledHomeGoodsMerchant
+  parent: CEWallet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents: #100cp total
+    - id: CECoinSilver5
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinCopper10
+
+- type: entity
+  id: CEKeyRingHomeGoodsMerchant
+  parent: CEBaseKeyRing
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+    - id: CEKeyHomeGoodsShop
+    - id: CEKeyHomeGoodsHome

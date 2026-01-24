@@ -64,6 +64,42 @@
 # Citizens
 
 - type: roleLoadout
+  id: JobCETailorMerchant
+  groups:
+  - CEGeneralBag
+  - CETownfolkHead
+  - CEMerchantEyes #
+  - CEGeneralCloak
+  - CEGeneralGloves
+  - CEGeneralShirt
+  - CEGeneralPants
+  - CEGeneralShoes
+
+- type: roleLoadout
+  id: JobCEPharmacistMerchant
+  groups:
+  - CEGeneralBag
+  - CETownfolkHead
+  - CEMerchantEyes #
+  - CEGeneralCloak
+  - CEGeneralGloves
+  - CEGeneralShirt
+  - CEGeneralPants
+  - CEGeneralShoes
+
+- type: roleLoadout
+  id: JobCEHomeGoodsMerchant
+  groups:
+  - CEGeneralBag
+  - CETownfolkHead
+  - CEMerchantEyes
+  - CEGeneralCloak
+  - CEGeneralGloves
+  - CEGeneralShirt
+  - CEGeneralPants
+  - CEGeneralShoes
+
+- type: roleLoadout
   id: JobCETownfolk
   groups:
   - CEGeneralBag

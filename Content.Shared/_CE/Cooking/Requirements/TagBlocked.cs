@@ -4,7 +4,7 @@
  */
 
 using Content.Shared.Chemistry.Components;
-using Content.Shared.Tag;
+using Content.Shared._CE.Cooking.Prototypes;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.Cooking.Requirements;
@@ -12,14 +12,14 @@ namespace Content.Shared._CE.Cooking.Requirements;
 public sealed partial class TagBlocked : CECookingCraftRequirement
 {
     [DataField(required: true)]
-    public HashSet<ProtoId<TagPrototype>> Tags = default!;
+    public HashSet<ProtoId<CEFoodTagPrototype>> Tags = default!;
 
     public override bool CheckRequirement(IEntityManager entManager,
         IPrototypeManager protoManager,
-        List<ProtoId<TagPrototype>> placedTags,
+        List<ProtoId<CEFoodTagPrototype>> placedFoodTags,
         Solution? solution = null)
     {
-        foreach (var placedTag in placedTags)
+        foreach (var placedTag in placedFoodTags)
         {
             if (Tags.Contains(placedTag))
                 return false;
@@ -30,6 +30,25 @@ public sealed partial class TagBlocked : CECookingCraftRequirement
 
     public override float GetComplexity()
     {
-        return Tags.Count * -1;
+        // Each blocked tag adds a small complexity since it makes the recipe more specific
+        // But blocking is easier than requiring, so we use a smaller multiplier
+        return Tags.Count * 0.1f;
+    }
+
+    public override string GetGuidebookDescription(IPrototypeManager protoManager)
+    {
+        var names = new List<string>();
+        foreach (var tag in Tags)
+        {
+            if (protoManager.TryIndex(tag, out var foodTag))
+                names.Add(Loc.GetString(foodTag.Name));
+            else
+                names.Add(tag.Id);
+        }
+
+        var tags = string.Join(", ", names);
+        return Loc.GetString(
+            "ce-guidebook-cooking-requirement-tag-blocked",
+            ("tags", tags));
     }
 }

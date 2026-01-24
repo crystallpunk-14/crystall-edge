@@ -20,14 +20,12 @@
       food:
         maxVol: 30
         reagents:
-        - ReagentId: Nutriment
-          Quantity: 21
-        - ReagentId: Protein
-          Quantity: 15 # 5 parts * 3 slices * 1 protein
+        - ReagentId: CENutriment
+          Quantity: 36 # 5 parts * 3 slices
   - type: SliceableFood
     count: 5
     slice: CEFoodCheesePart
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CECheese
 
@@ -58,14 +56,12 @@
     solutions:
       food:
         reagents:
-        - ReagentId: Nutriment
-          Quantity: 4.2
-        - ReagentId: Protein
-          Quantity: 3 # 3 slices * 1 protein
+        - ReagentId: CENutriment
+          Quantity: 7.2 # 3 slices
   - type: SliceableFood
     count: 3
     slice: CEFoodCheeseSlice
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CECheese
 
@@ -97,15 +93,13 @@
       food:
         maxVol: 2 # 1/3 cheese part
         reagents:
-        - ReagentId: Nutriment
-          Quantity: 1.4
-        - ReagentId: Protein
-          Quantity: 1
-  - type: Tag
+        - ReagentId: CENutriment
+          Quantity: 2.4
+  - type: CEFoodTag
     tags:
     - CECheese
 
-# Blue Cheese (50% more protein)
+# Blue Cheese (50% more food)
 - type: entity
   id: CEFoodBlueCheeseWheel
   parent: CEFoodCheeseWheel
@@ -124,16 +118,14 @@
       food:
         maxVol: 30
         reagents:
-        - ReagentId: Nutriment
-          Quantity: 30
-        - ReagentId: Protein
-          Quantity: 22.5 # 15 * 1.5 (50% more)
+        - ReagentId: CENutriment
+          Quantity: 52.5 # 15 * 1.5 (50% more)
   - type: SliceableFood
     count: 5
     slice: CEFoodBlueCheesePart
   - type: StaticPrice
     price: 20
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CECheese
 
@@ -162,16 +154,14 @@
       food:
         maxVol: 6 # 1/5 of wheel
         reagents:
-        - ReagentId: Nutriment
-          Quantity: 6 # 30/5
-        - ReagentId: Protein
-          Quantity: 4.5 # 22.5/5
+        - ReagentId: CENutriment
+          Quantity: 10.5 # 52.5/5
   - type: SliceableFood
     count: 3
     slice: CEFoodBlueCheeseSlice
   - type: StaticPrice
     price: 4
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CECheese
 
@@ -200,17 +190,15 @@
       food:
         maxVol: 2 # 1/3 of part
         reagents:
-        - ReagentId: Nutriment
-          Quantity: 2 # 6/3
-        - ReagentId: Protein
-          Quantity: 1.5 # 4.5/3
+        - ReagentId: CENutriment
+          Quantity: 3.5 # 10.5/3
   - type: StaticPrice
     price: 1
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CECheese
 
-# Aged Cheese (100% more protein)
+# Aged Cheese (100% more food)
 - type: entity
   id: CEFoodAgedCheeseWheel
   parent: CEFoodCheeseWheel
@@ -229,16 +217,14 @@
       food:
         maxVol: 30
         reagents:
-        - ReagentId: Nutriment
-          Quantity: 45
-        - ReagentId: Protein
-          Quantity: 30 # 15 * 2 (100% more)
+        - ReagentId: CENutriment
+          Quantity: 75 # (100% more)
   - type: SliceableFood
     count: 5
     slice: CEFoodAgedCheesePart
   - type: StaticPrice
     price: 35
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CECheese
 
@@ -267,16 +253,14 @@
       food:
         maxVol: 6 # 1/5 of wheel
         reagents:
-        - ReagentId: Nutriment
-          Quantity: 9 # 45/5
-        - ReagentId: Protein
-          Quantity: 6 # 30/5
+        - ReagentId: CENutriment
+          Quantity: 15 # 75/5
   - type: SliceableFood
     count: 3
     slice: CEFoodAgedCheeseSlice
   - type: StaticPrice
     price: 7
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CECheese
 
@@ -305,12 +289,10 @@
       food:
         maxVol: 2 # 1/3 of part
         reagents:
-        - ReagentId: Nutriment
-          Quantity: 3 # 9/3
-        - ReagentId: Protein
-          Quantity: 2 # 6/3
+        - ReagentId: CENutriment
+          Quantity: 5 # 15/3
   - type: StaticPrice
     price: 2
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CECheese

@@ -35,6 +35,16 @@
     lifetime: 1
 
 - type: entity
+  id: CEOverchargeBrightVFX
+  parent: CEOverchargeVFX
+  suffix: Bright
+  components:
+  - type: PointLight
+    radius: 5
+    energy: 5
+    netsync: false
+
+- type: entity
   id: CEOverchargeSmallVFX
   parent: CEOverchargeVFX
   name: smol magic overcharge
@@ -146,6 +156,26 @@
       params:
         variation: 0.250
         volume: 15
+
+- type: entity
+  id: CEDustEffect
+  name: dust effect
+  suffix: VFX
+  categories: [ ForkFiltered ]
+  save: false
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/dust.rsi
+    drawdepth: Items
+    layers:
+    - state: dust
+  - type: Physics
+    canCollide: false
+  - type: Tag
+    tags:
+      - HideContextMenu
+  - type: TimedDespawn
+    lifetime: 0.5
 
 - type: entity
   id: CETreasureSparkVFX

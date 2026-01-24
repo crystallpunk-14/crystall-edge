@@ -6,6 +6,8 @@
   components:
   - type: InteractionOutline
   - type: Physics
+  - type: Anchorable
+    delay: 2
   - type: Fixtures
     fixtures:
       fix1:
@@ -29,7 +31,7 @@
     drawdepth: Mobs
     state: closed
   - type: Damageable
-    damageContainer: Inorganic
+    damageContainer: StructuralInorganic
     damageModifierSet: CEWoodStructural
   - type: Destructible
     thresholds:
@@ -44,9 +46,9 @@
             max: 2
       - !type:DoActsBehavior
         acts: ["Destruction"]
-  #- type: Construction
-  #  graph: CEWoodenDoor
-  #  node: CEWoodenDoorFrame
+  - type: Construction
+    graph: CEWoodenDoor
+    node: CEWoodenDoorFrame
 
 - type: entity
   parent: CEWoodenDoorFrame
@@ -54,9 +56,9 @@
   components:
   - type: Sprite
     state: closed_mirrored
-  #- type: Construction
-  #  graph: CEWoodenDoor
-  #  node: CEWoodenDoorFrameMirrored
+  - type: Construction
+    graph: CEWoodenDoor
+    node: CEWoodenDoorFrameMirrored
 
 - type: entity
   parent: CEBaseDoorFrame
@@ -69,24 +71,24 @@
     drawdepth: Mobs
     state: closed
   - type: Damageable
-    damageContainer: Inorganic
+    damageContainer: StructuralInorganic
     damageModifierSet: CEMetallic
   - type: Destructible
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 50
+        damage: 100
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
-          CEIronBar1:
+          CEIronSheet1:
             min: 1
             max: 2
       - !type:DoActsBehavior
         acts: ["Destruction"]
-  #- type: Construction
-  #  graph: CEIronDoor
-  #  node: CEIronDoorFrame
+  - type: Construction
+    graph: CEIronDoor
+    node: CEIronDoorFrame
 
 - type: entity
   parent: CEIronDoorFrame
@@ -94,7 +96,7 @@
   components:
   - type: Sprite
     state: closed_mirrored
-  #- type: Construction
-  #  graph: CEIronDoor
-  #  node: CEIronDoorFrameMirrored
+  - type: Construction
+    graph: CEIronDoor
+    node: CEIronDoorFrameMirrored
 

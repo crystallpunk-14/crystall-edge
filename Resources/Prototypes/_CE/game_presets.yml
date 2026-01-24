@@ -28,3 +28,4 @@
   rules:
   - CEGameRule7Days
   - CEGameRuleThieves
+  - CERampingStationEventScheduler

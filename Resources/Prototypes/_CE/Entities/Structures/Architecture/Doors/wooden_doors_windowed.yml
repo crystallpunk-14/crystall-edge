@@ -21,7 +21,7 @@
     closeSound:
       path: /Audio/Effects/door_close.ogg
   - type: Damageable
-    damageContainer: Inorganic
+    damageContainer: StructuralInorganic
     damageModifierSet: CEWoodStructural
   - type: Destructible
     thresholds:
@@ -36,11 +36,11 @@
           CEWoodenPlanks1:
             min: 1
             max: 2
-  #    - !type:ChangeConstructionNodeBehavior
-  #      node: CEWoodenDoorFrame
-  #- type: Construction
-  #  graph: CEWoodenDoor
-  #  node: CEWoodenDoorWindowed
+      - !type:ChangeConstructionNodeBehavior
+        node: CEWoodenDoorFrame
+  - type: Construction
+    graph: CEWoodenDoor
+    node: CEWoodenDoorWindowed
 
 - type: entity
   id: CEWoodenDoorWindowedMirrored
@@ -50,6 +50,6 @@
   - type: Door
     openSpriteState: open_mirrored
     closedSpriteState: closed_mirrored
-  #- type: Construction
-  #  graph: CEWoodenDoor
-  #  node: CEWoodenDoorWindowedMirrored
+  - type: Construction
+    graph: CEWoodenDoor
+    node: CEWoodenDoorWindowedMirrored

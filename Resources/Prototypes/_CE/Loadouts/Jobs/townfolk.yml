@@ -59,3 +59,17 @@
   id: CEClothingHeadTriangularLeather
   equipment:
     head: CEClothingHeadTriangularLeather
+
+# Goggles / Eyes
+
+- type: loadoutGroup
+  id: CEMerchantEyes
+  name: ce-loadout-goggles
+  minLimit: 1
+  loadouts:
+  - CEClothingEyesMerchantMonocle
+
+- type: loadout
+  id: CEClothingEyesMerchantMonocle
+  equipment:
+    eyes: CEClothingEyesMerchantMonocle

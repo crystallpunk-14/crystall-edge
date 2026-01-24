@@ -75,7 +75,29 @@ public abstract partial class SharedToolSystem
         var tileDef = (ContentTileDefinition) _tileDefManager[tileRef.Tile.TypeId];
 
         if (!tool.Qualities.ContainsAny(tileDef.DeconstructTools))
+        {
+            //CrystallEdge telegraphing for wrong tool
+            // Get list of required tool names for popup message
+            var toolNames = new List<string>();
+            foreach (var toolQuality in tileDef.DeconstructTools)
+            {
+                if (_protoMan.TryIndex<ToolQualityPrototype>(toolQuality, out var protoToolQuality))
+                    toolNames.Add(Loc.GetString(protoToolQuality.ToolName));
+            }
+
+            if (toolNames.Count > 0)
+            {
+                var separator = " " + Loc.GetString("ce-floor-tile-tool-separator") + " ";
+                var toolNamesString = string.Join(separator, toolNames);
+                _popup.PopupClient(
+                    Loc.GetString("ce-floor-tile-wrong-tool", ("toolNames", toolNamesString)),
+                    clickLocation,
+                    user);
+            }
+            //CrystallEdge end
+
             return false;
+        }
 
         if (string.IsNullOrWhiteSpace(tileDef.BaseTurf))
             return false;

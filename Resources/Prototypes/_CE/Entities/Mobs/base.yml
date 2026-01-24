@@ -61,19 +61,6 @@
       path: /Audio/Effects/hit_kick.ogg
   - type: Pullable
 
-# Used for mobs that need food & water for life
-- type: entity
-  id: CEMobStarving
-  abstract: true
-  categories: [ ForkFiltered ]
-  components:
-  - type: Hunger
-    starvationDamage:
-      types:
-        Cold: 0.25
-        Bloodloss: 0.25
-  - type: Thirst
-
 # Used for mobs that need to breathe
 - type: entity
   save: false

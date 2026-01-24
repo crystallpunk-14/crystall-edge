@@ -22,7 +22,7 @@
         reagents:
         - ReagentId: Egg
           Quantity: 6
-        - ReagentId: Protein
+        - ReagentId: CENutriment
           Quantity: 2
   - type: DrawableSolution
     solution: food
@@ -63,8 +63,10 @@
     conductivity: 0.456
   - type: Tag
     tags:
-    - CEEgg
     - CEFitInFryingPan
+  - type: CEFoodTag
+    tags:
+    - CEEgg
 
 # Splat
 - type: entity
@@ -121,5 +123,5 @@
         reagents:
         - ReagentId: EggCooked
           Quantity: 6
-        - ReagentId: Protein
+        - ReagentId: CENutriment
           Quantity: 2

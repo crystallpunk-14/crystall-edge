@@ -1,5 +1,6 @@
 using Content.Shared._CE.Trading.Prototypes;
 using Content.Shared.Stacks;
+using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.Trading.BuyServices;
@@ -16,9 +17,12 @@ public sealed partial class CEBuyItemsService : CEStoreBuyService
         IPrototypeManager prototype,
         EntityUid platform)
     {
+        var physSys = entManager.System<SharedPhysicsSystem>();
+
         for (var i = 0; i < Count; i++)
         {
-            entManager.SpawnNextToOrDrop(Product, platform);
+            var spawned = entManager.SpawnNextToOrDrop(Product, platform);
+            physSys.WakeBody(spawned);
         }
     }
 

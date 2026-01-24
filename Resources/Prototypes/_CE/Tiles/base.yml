@@ -1,16 +1,3 @@
-# Tile structure:
-# Space
-# Base rock
-# - Dirt
-#   - Grass variants
-# - Gravel
-# - Sand
-# - other natural tiles
-# - Fundament
-#   - Wood planks
-#   - Stonebricks
-#   - other produced tiles
-
 - type: tile
   editorHidden: false
   id: CEStone

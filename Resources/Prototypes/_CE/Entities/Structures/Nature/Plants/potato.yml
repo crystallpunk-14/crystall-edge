@@ -5,7 +5,7 @@
   - CEPlantBaseSolarEnergy
   - CEPlantBaseSingleHarvest
   - CEPlantBaseFloralDelicateType
-  - CEPlantBaseGrowing4Day
+  - CEPlantBaseGrowing2Day
   - CEPlantBaseMetabolizer1Day
   - CEPlantBaseMetabolizerWater
   name: potato

@@ -11,7 +11,7 @@
   description: Don't trust people who know how to turn into pickles.
   components:
   - type: CEPlantVisuals
-    growthSteps: 5
+    growthSteps: 6
     readyVariations: 2
   - type: Sprite
     sprite: _CE/Structures/Nature/Farm/cucumber.rsi

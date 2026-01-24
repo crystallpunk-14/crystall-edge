@@ -1,0 +1,148 @@
+
+- type: entity
+  parent: StatusEffectBase
+  id: CEStatusEffectFed
+  name: fed
+  components:
+  - type: StatusEffectAlert
+    alert: CEFed
+  - type: CEStatusEffectApplySpell
+    effects:
+      - !type:CESpellApplyEntityEffect
+        effects:
+        - !type:HealthChange
+          ignoreResistances: true
+          damage:
+            groups:
+              Brute: -0.1
+              Burn: -0.1
+
+- type: entity
+  parent: StatusEffectBase
+  id: CEStatusEffectWellFed
+  name: well-fed
+  components:
+  - type: StatusEffectAlert
+    alert: CEWellFed
+  - type: CESpeedModifyStatusEffect
+    walk: 0.8
+    sprint: 0.7
+  - type: CEStatusEffectApplySpell
+    effects:
+      - !type:CESpellApplyEntityEffect
+        effects:
+        - !type:HealthChange
+          ignoreResistances: true
+          damage:
+            groups:
+              Brute: -0.2
+              Burn: -0.2
+
+- type: entity
+  parent: StatusEffectBase
+  id: CEStatusEffectOverfed
+  name: overfed
+  components:
+  - type: StatusEffectAlert
+    alert: CEOverFed
+  - type: CESpeedModifyStatusEffect
+    walk: 0.6
+    sprint: 0.5
+  - type: CEStatusEffectApplySpell
+    effects:
+      - !type:CESpellApplyEntityEffect
+        effects:
+        - !type:HealthChange
+          ignoreResistances: true
+          damage:
+            groups:
+              Burn: -0.1
+            types:
+              Blunt: 0.5
+
+- type: entity
+  parent: StatusEffectBase
+  id: CEStatusEffectOverfedInstantDeath
+  name: overfed
+  components:
+  - type: StatusEffectAlert
+    alert: CEDeadFed
+  - type: CESpeedModifyStatusEffect
+    walk: 0.3
+    sprint: 0.2
+  - type: CEStatusEffectApplySpell
+    effects:
+      - !type:CESpellApplyEntityEffect
+        effects:
+        - !type:HealthChange
+          ignoreResistances: true
+          damage:
+            types:
+              Blunt: 60
+
+# Thirst
+
+- type: entity
+  parent: StatusEffectBase
+  id: CEStatusEffectHydrated
+  name: hydrated
+  components:
+  - type: StatusEffectAlert
+    alert: CEHydrated
+  - type: StaminaModifierStatusEffect
+    modifier: 1.2
+
+- type: entity
+  parent: StatusEffectBase
+  id: CEStatusEffectWellHydrated
+  name: well-hydrated
+  components:
+  - type: StatusEffectAlert
+    alert: CEWellHydrated
+  - type: CESpeedModifyStatusEffect
+    walk: 0.8
+    sprint: 0.7
+  - type: StaminaModifierStatusEffect
+    modifier: 1.4
+
+- type: entity
+  parent: StatusEffectBase
+  id: CEStatusEffectOverhydrated
+  name: overhydrated
+  components:
+  - type: StatusEffectAlert
+    alert: CEOverHydrated
+  - type: CESpeedModifyStatusEffect
+    walk: 0.6
+    sprint: 0.5
+  - type: StaminaModifierStatusEffect
+    modifier: 1.4
+  - type: CEStatusEffectApplySpell
+    effects:
+      - !type:CESpellApplyEntityEffect
+        effects:
+        - !type:HealthChange
+          ignoreResistances: true
+          damage:
+            types:
+              Blunt: 0.5
+
+- type: entity
+  parent: StatusEffectBase
+  id: CEStatusEffectOverhydratedInstantCollapse
+  name: overhydrated
+  components:
+  - type: StatusEffectAlert
+    alert: CEDeadHydrated
+  - type: CESpeedModifyStatusEffect
+    walk: 0.3
+    sprint: 0.2
+  - type: CEStatusEffectApplySpell
+    effects:
+      - !type:CESpellApplyEntityEffect
+        effects:
+        - !type:HealthChange
+          ignoreResistances: true
+          damage:
+            types:
+              Blunt: 60

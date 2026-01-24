@@ -13,10 +13,10 @@ public sealed class CEAutoTilePlacementSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CEAutoTilePlacementComponent, MapInitEvent>(OnInit);
+        SubscribeLocalEvent<CEAutoTilePlacementComponent, ComponentInit>(OnInit);
     }
 
-    private void OnInit(Entity<CEAutoTilePlacementComponent> ent, ref MapInitEvent args)
+    private void OnInit(Entity<CEAutoTilePlacementComponent> ent, ref ComponentInit args)
     {
         var xform = Transform(ent);
         var coord = xform.Coordinates;

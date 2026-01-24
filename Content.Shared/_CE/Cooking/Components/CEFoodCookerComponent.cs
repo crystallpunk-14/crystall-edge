@@ -20,8 +20,8 @@ public sealed partial class CEFoodCookerComponent : Component
     [DataField(required: true)]
     public ProtoId<CEFoodTypePrototype> FoodType;
 
-    [DataField]
-    public string ContainerId;
+    [DataField(required: true)]
+    public string ContainerId = string.Empty;
 
     [DataField]
     public string? SolutionId;
@@ -49,11 +49,8 @@ public sealed partial class CEFoodCookerComponent : Component
     //[DataField]
     //public EntProtoId? BurntAdditionalSpawn = "CEFire";
 
-    [DataField]
-    public float BurntAdditionalSpawnProb = 0.2f;
-
-    [DataField]
-    public bool RenameCooker = false;
+    //[DataField]
+    //public float BurntAdditionalSpawnProb = 0.2f;
 }
 
 [Serializable]
@@ -68,8 +65,7 @@ public sealed partial class CEFoodData
         Visuals = new List<PrototypeLayerData>(data.Visuals);
         Trash = new List<EntProtoId>(data.Trash);
         Flavors = new HashSet<LocId>(data.Flavors);
-        SliceProto = data.SliceProto;
-        SliceCount = data.SliceCount;
+        StatusEffects = new Dictionary<EntProtoId, float>(data.StatusEffects);
     }
 
     [DataField]
@@ -90,11 +86,14 @@ public sealed partial class CEFoodData
     [DataField]
     public HashSet<LocId> Flavors = new();
 
+    /// <summary>
+    /// Status effects granted by consuming food with this FoodData. Effects stack, in seconds, and are multiplied by the number of units consumed.
+    /// </summary>
     [DataField]
-    public EntProtoId? SliceProto;
-
-    [DataField]
-    public ushort SliceCount = 5;
+    public Dictionary<EntProtoId, float> StatusEffects = new()
+    {
+        {"CEStatusEffectGoodFoodRegen", 2f }
+    };
 }
 
 [Serializable, NetSerializable]

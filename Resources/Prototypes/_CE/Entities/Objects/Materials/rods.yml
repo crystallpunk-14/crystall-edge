@@ -25,6 +25,14 @@
   - type: PhysicalComposition
     materialComposition:
       CEBrass: 2
+  - type: FloorTile
+    placeTileSound:
+      path: /Audio/Items/genhit.ogg
+      params:
+        variation: 0.03
+        volume: 2
+    outputs:
+      - CEBrassRods
 
 - type: entity
   id: CEBrassRod15
@@ -69,6 +77,14 @@
   - type: PhysicalComposition
     materialComposition:
       CEIron: 2
+  - type: FloorTile
+    placeTileSound:
+      path: /Audio/Items/genhit.ogg
+      params:
+        variation: 0.03
+        volume: 2
+    outputs:
+      - CEIronRods
 
 - type: entity
   id: CEIronRod15

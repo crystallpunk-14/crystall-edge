@@ -49,14 +49,21 @@
   category: General
   status: Done
 
-# In Progress
+- type: roadmapItem
+  id: TradeWithEmpire
+  name: ce-roadmap-general-trade-with-empire-name
+  desc: ce-roadmap-general-trade-with-empire-desc
+  category: General
+  status: Done
 
 - type: roadmapItem
-  id: AirCrystals
-  name: ce-roadmap-engineering-air-crystals-name
-  desc: ce-roadmap-engineering-air-crystals-desc
-  category: Engineering
-  status: InProgress
+  id: GuardDepartment
+  name: ce-roadmap-guard-guard-department-name
+  desc: ce-roadmap-guard-guard-department-desc
+  category: Guard
+  status: Done
+
+# In Progress
 
 - type: roadmapItem
   id: Automation
@@ -66,20 +73,27 @@
   status: InProgress
 
 - type: roadmapItem
-  id: TradeWithEmpire
-  name: ce-roadmap-general-trade-with-empire-name
-  desc: ce-roadmap-general-trade-with-empire-desc
+  id: PersonalRealEstate
+  name: ce-roadmap-general-personal-real-estate-name
+  desc: ce-roadmap-general-personal-real-estate-desc
   category: General
   status: InProgress
 
 - type: roadmapItem
-  id: GuardDepartment
-  name: ce-roadmap-guard-guard-department-name
-  desc: ce-roadmap-guard-guard-department-desc
-  category: Guard
+  id: RandomGameEvents
+  name: ce-roadmap-general-random-game-events-name
+  desc: ce-roadmap-general-random-game-events-desc
+  category: General
   status: InProgress
 
 # Backlog
+
+- type: roadmapItem
+  id: AirCrystals
+  name: ce-roadmap-engineering-air-crystals-name
+  desc: ce-roadmap-engineering-air-crystals-desc
+  category: Engineering
+  status: Backlog
 
 - type: roadmapItem
   id: HardLabor
@@ -117,24 +131,10 @@
   status: Backlog
 
 - type: roadmapItem
-  id: PersonalRealEstate
-  name: ce-roadmap-general-personal-real-estate-name
-  desc: ce-roadmap-general-personal-real-estate-desc
-  category: General
-  status: Backlog
-
-- type: roadmapItem
   id: Alchemy
   name: ce-roadmap-medical-alchemy-name
   desc: ce-roadmap-medical-alchemy-desc
   category: Medical
-  status: Backlog
-
-- type: roadmapItem
-  id: RandomGameEvents
-  name: ce-roadmap-general-random-game-events-name
-  desc: ce-roadmap-general-random-game-events-desc
-  category: General
   status: Backlog
 
 - type: roadmapItem

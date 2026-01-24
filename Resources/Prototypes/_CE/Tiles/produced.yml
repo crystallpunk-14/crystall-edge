@@ -1,26 +1,5 @@
 - type: tile
   editorHidden: false
-  id: CEPlanks
-  name: ce-tiles-planks
-  sprite: /Textures/_CE/Tiles/planks.png
-  variants: 4
-  placementVariants:
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  baseTurf: Space
-  isSubfloor: true
-  footstepSounds:
-    collection: FootstepWood
-  heatCapacity: 10000
-  deconstructTools: [ Prying ]
-  itemDrop: CEWoodenPlanks1
-  transparent: true
-  weather: true
-
-- type: tile
-  editorHidden: false
   id: CEStonebricks
   name: ce-tiles-stonebricks
   sprite: /Textures/_CE/Tiles/Stonebricks/stonebricks.png

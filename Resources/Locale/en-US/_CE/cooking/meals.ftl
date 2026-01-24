@@ -1,6 +1,9 @@
 ce-meal-recipe-trash-name = inedible slop
 ce-meal-recipe-trash-desc = One glance makes you feel nauseous.
 
+ce-meal-recipe-baked-apples-name = baked apples
+ce-meal-recipe-baked-apples-desc = Sweet apples baked until soft. A simple but delicious treat.
+
 ce-meal-recipe-burned-trash-name = burnt mass
 ce-meal-recipe-burned-trash-desc = This could have been a delicious meal, but the cook overdid it with the heat treatment.
 
@@ -42,3 +45,21 @@ ce-meal-recipe-mashed-potato-desc = Today we have morally smashed potatoes on pl
 
 ce-meal-recipe-cheese-bread-name = sandwiches with processed cheese
 ce-meal-recipe-cheese-bread-desc = Crispy toasted bread with melted, stringy hot cheese on top.
+
+ce-meal-recipe-stir-fry-name = stir-fry
+ce-meal-recipe-stir-fry-desc = Quick-fried meat and vegetables. Simple and tasty.
+
+ce-meal-recipe-pork-roulade-name = pork roulade
+ce-meal-recipe-pork-roulade-desc = Rolled pork with vegetables. A classic dish.
+
+ce-meal-recipe-stuffed-bell-pepper-name = stuffed bell pepper
+ce-meal-recipe-stuffed-bell-pepper-desc = Bell pepper stuffed with meat and cheese.
+
+ce-meal-recipe-green-omelette-name = Green Omelette
+ce-meal-recipe-green-omelette-desc = A baked egg omelette generously sprinkled with greens.
+
+ce-meal-recipe-garlic-bread-name = Garlic Bread
+ce-meal-recipe-garlic-bread-desc = Toasted bread with a spicy garlic aroma and a crispy crust. A little sharp. Crunchy.
+
+ce-meal-recipe-corn-pepper-meat-name = Corn & Pepper Stir-Fry
+ce-meal-recipe-corn-pepper-meat-desc = A hearty stir-fry featuring corn, bell pepper and savory meat.

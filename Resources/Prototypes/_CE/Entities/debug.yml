@@ -2,3 +2,28 @@
   parent: HandheldHealthAnalyzerUnpowered
   id: BaselineHealthAnalyzer
   categories: [ ForkFiltered ]
+
+- type: entity
+  parent: FloorWaterEntity
+  id: CEWaterFloorEntity
+  categories: [ ForkFiltered ]
+  components:
+  - type: PlacementReplacement
+    key: walls
+  - type: SolutionContainerManager
+    solutions:
+      pool:
+        maxVol: 9999999 #.inf seems to break the whole yaml file, but would definitely be preferable.
+        reagents:
+        - ReagentId: CEWater
+          Quantity: 9999999
+  - type: SolutionRegeneration
+    solution: pool
+    generated:
+      reagents:
+      - ReagentId: CEWater
+        Quantity: 100
+  - type: Edible
+    solution: pool
+    edible: Drink
+
