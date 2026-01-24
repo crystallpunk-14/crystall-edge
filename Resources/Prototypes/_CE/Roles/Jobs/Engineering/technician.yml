@@ -1,6 +1,6 @@
 - type: job
   id: CETechnician
-  setPreference: true
+  setPreference: false #temp
   name: ce-job-name-technician
   description: ce-job-desc-technician
   playTimeTracker: CEJobTechnician

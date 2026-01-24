@@ -1,6 +1,6 @@
 - type: job
   id: CEBrigadier
-  setPreference: true
+  setPreference: false #temp
   name: ce-job-name-brigadier
   description: ce-job-desc-brigadier
   playTimeTracker: CEJobBrigadier
