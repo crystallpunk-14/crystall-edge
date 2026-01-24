@@ -5,6 +5,10 @@
   components:
   - type: Sprite
     sprite: _CE/Effects/wind.rsi
+    layers:
+    - state: wind
+      unshaded: true
+      color: "#00ddff"
     state: wind
     drawdepth: Effects
   - type: StatusEffect
@@ -14,6 +18,15 @@
   - type: CEGravityCaughtStatusEffect
   - type: StatusEffectAlert
     alert: CEAirCaught
+  - type: ConditionalSpawner
+    prototypes:
+    - CEOverchargeBrightVFX
+  - type: PointLight
+    color: "#00ddff"
+    enabled: true
+    radius: 2
+    energy: 4
+    netsync: false
 
 - type: entity
   parent: StatusEffectBase
