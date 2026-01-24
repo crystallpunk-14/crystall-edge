@@ -11,7 +11,8 @@
       "name": "full"
     },
     {
-      "name": "frame"
+      "name": "frame",
+      "directions": 4
     },
     {
       "name": "stonebricks0",
