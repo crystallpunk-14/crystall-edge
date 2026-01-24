@@ -55,3 +55,37 @@
     materialComposition:
       CEWood: 10
       CEIron: 10
+
+- type: entity
+  parent: CEBaseWeaponHammer
+  id: CEWeaponClubGuard
+  name: guard club
+  description: A mana-powered club used by guards. When activated, it delivers a blow that knocks back targets slightly and drains their stamina.
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Tools/Weapons/Melee/Hammer/iron.rsi #TODO needs a sprite
+    state: icon
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 15
+        Structural: 3
+  - type: Battery
+    startingCharge: 30
+    maxCharge: 30
+  - type: UseDelay
+    delay: 2.5
+  - type: CEMeleeEnergyEffect
+    energyCost: 5
+    removeBaseDamage: true
+    activeDuration: 2.5
+    effects:
+    - !type:CESpellThrowFromUser
+      distance: 0.5
+    - !type:CESpellSpawnEntityOnTarget
+      spawns:
+      - CEOverchargeVFX
+    - !type:CESpellStaminaDamage
+      damage: 30
+    - type: Tool
+      speedModifier: 0.5
