@@ -3,6 +3,3 @@
 
 - type: CEFoodType
   id: Soup
-
-- type: CEFoodType
-  id: Pie

@@ -1,0 +1,20 @@
+<Document>
+# Meals
+
+All meals are cooked using a frying pan.
+
+<Box>
+  <GuideEntityEmbed Entity="CEFork"/>
+  <GuideEntityEmbed Entity="CEPlateIron"/>
+  <GuideEntityEmbed Entity="CEFryingPan"/>
+</Box>
+
+To prepare a meal, place the necessary ingredients inside and put the frying pan on the stove. 
+After a while, your meal will be ready! The main thing is [color=red]not to forget to remove it from the heat[/color], otherwise your meal will turn into a burnt mess.
+
+<CEGuideCookingRecipeGroupEmbed
+FoodType="Meal"
+PlateRsi="_CE/Objects/Consumable/Food/Meals/plates.rsi"
+PlateState="iron"/>
+
+</Document>

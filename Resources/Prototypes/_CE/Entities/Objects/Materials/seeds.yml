@@ -190,3 +190,47 @@
   - type: Stack
     stackType: CESeedSunflower
     count: 30
+
+- type: entity
+  id: CESeedCorn
+  name: corn seeds
+  description: Tiny corn seeds for planting.
+  parent: CEBaseSeed
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Food/corn.rsi
+  - type: CESeed
+    plantProto: CEPlantCorn
+  - type: Stack
+    stackType: CESeedCorn
+
+- type: entity
+  id: CESeedCorn30
+  parent: CESeedCorn
+  suffix: 30
+  components:
+  - type: Stack
+    stackType: CESeedCorn
+    count: 30
+
+- type: entity
+  id: CESeedCarrot
+  name: carrot seeds
+  description: Tiny carrot seeds for planting.
+  parent: CEBaseSeed
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Food/carrot.rsi
+  - type: CESeed
+    plantProto: CEPlantCarrot
+  - type: Stack
+    stackType: CESeedCarrot
+
+- type: entity
+  id: CESeedCarrot30
+  parent: CESeedCarrot
+  suffix: 30
+  components:
+  - type: Stack
+    stackType: CESeedCarrot
+    count: 30

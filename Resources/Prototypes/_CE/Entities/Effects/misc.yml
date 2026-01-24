@@ -35,6 +35,16 @@
     lifetime: 1
 
 - type: entity
+  id: CEOverchargeBrightVFX
+  parent: CEOverchargeVFX
+  suffix: Bright
+  components:
+  - type: PointLight
+    radius: 5
+    energy: 5
+    netsync: false
+
+- type: entity
   id: CEOverchargeSmallVFX
   parent: CEOverchargeVFX
   name: smol magic overcharge

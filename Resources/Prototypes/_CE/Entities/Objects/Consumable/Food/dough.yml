@@ -19,7 +19,7 @@
       food:
         maxVol: 25
         reagents:
-        - ReagentId: Nutriment
+        - ReagentId: CENutriment
           Quantity: 20
         - ReagentId: UncookedAnimalProteins
           Quantity: 2
@@ -30,7 +30,7 @@
     entries:
     - temperatureRange: 400, 500
       transformTo: CEFoodBread
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEDough
 
@@ -48,10 +48,8 @@
       food:
         maxVol: 30
         reagents:
-        - ReagentId: Nutriment
-          Quantity: 20
-        - ReagentId: Protein
-          Quantity: 2
+        - ReagentId: CENutriment
+          Quantity: 22
   - type: SliceableFood
     count: 4
     slice: CEFoodBreadSlice
@@ -60,7 +58,7 @@
     entries:
     - temperatureRange: 400, 500
       transformTo: CEAsh1
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEDough
 
@@ -77,16 +75,14 @@
       food:
         maxVol: 7 # 1/4 bread
         reagents:
-        - ReagentId: Nutriment
-          Quantity: 5
-        - ReagentId: Protein
-          Quantity: 0.5
+        - ReagentId: CENutriment
+          Quantity: 5.5
   - type: CETemperatureTransformation
     autoTransformOnCooked: false
     entries:
     - temperatureRange: 400, 500
       transformTo: null
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEDough
 
@@ -110,7 +106,7 @@
       food:
         maxVol: 7 # 1/4 large dough
         reagents:
-        - ReagentId: Nutriment
+        - ReagentId: CENutriment
           Quantity: 5
         - ReagentId: UncookedAnimalProteins
           Quantity: 0.5
@@ -118,7 +114,7 @@
     entries:
     - temperatureRange: 400, 500
       transformTo: CEFoodBreadBun
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEDough
 
@@ -136,10 +132,8 @@
       food:
         maxVol: 6 # 1/4 large dough
         reagents:
-        - ReagentId: Nutriment
-          Quantity: 5.2
-        - ReagentId: Protein
-          Quantity: 0.5
+        - ReagentId: CENutriment
+          Quantity: 5.7
   - type: Butcherable
     butcherDelay: 1
     spawned:
@@ -152,7 +146,7 @@
     entries:
     - temperatureRange: 400, 500
       transformTo: CEAsh1
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEDough
 
@@ -174,16 +168,14 @@
         maxVol: 4 # 1/2 bun
         canReact: false
         reagents:
-        - ReagentId: Nutriment
-          Quantity: 2.6
-        - ReagentId: Protein
-          Quantity: 0.25
+        - ReagentId: CENutriment
+          Quantity: 2.85
   - type: CETemperatureTransformation
     autoTransformOnCooked: false
     entries:
     - temperatureRange: 400, 500
       transformTo: CEAsh1
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEDough
 
@@ -201,16 +193,14 @@
       food:
         maxVol: 4 # 1/2 bun
         reagents:
-        - ReagentId: Nutriment
-          Quantity: 2.6
-        - ReagentId: Protein
-          Quantity: 0.25
+        - ReagentId: CENutriment
+          Quantity: 2.85
   - type: CETemperatureTransformation
     autoTransformOnCooked: false
     entries:
     - temperatureRange: 400, 500
       transformTo: CEAsh1
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEDough
 
@@ -228,7 +218,7 @@
       food:
         maxVol: 7 # 1/4 large dough
         reagents:
-        - ReagentId: Nutriment
+        - ReagentId: CENutriment
           Quantity: 5
         - ReagentId: UncookedAnimalProteins
           Quantity: 0.5
@@ -237,6 +227,6 @@
     entries:
     - temperatureRange: 400, 500
       transformTo: CEAsh1 #TODO: лаваш?
-  - type: Tag
+  - type: CEFoodTag
     tags:
     - CEDough

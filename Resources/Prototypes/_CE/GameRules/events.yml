@@ -1,0 +1,33 @@
+- type: entity
+  id: CERampingStationEventScheduler
+  parent: CEBaseGameRule
+  components:
+  - type: RampingStationEventScheduler
+    averageEndTime: 120
+    scheduledGameRules: !type:NestedSelector
+      tableId: CEEventsTable
+
+- type: entityTable
+  id: CEEventsTable
+  table: !type:AllSelector
+    children:
+    - id: CERandomPipeBreak
+
+- type: entity
+  parent: CEBaseGameRule
+  id: CERandomPipeBreak
+  components:
+  - type: StationEvent
+    weight: 5
+    duration: 1
+    minimumPlayers: 5
+  - type: CEEntityReplacementRule
+    replacementMap:
+      CEPipeBrassMedium: CEPipeBrassMediumBroken
+      CEPipeBrassBig: CEPipeBrassBigBroken
+    range:
+      min: 3
+      max: 10
+    replaceVfx: CEOverchargeBrightVFX
+    replaceSound:
+      collection: MetalBreak

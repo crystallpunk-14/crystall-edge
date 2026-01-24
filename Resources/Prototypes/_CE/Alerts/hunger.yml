@@ -1,0 +1,47 @@
+- type: alert
+  id: CEFed
+  icons:
+  - sprite: /Textures/_CE/Interface/Alerts/hunger.rsi
+    state: fed
+  name: ce-alerts-fed-name
+  description: ce-alerts-fed-desc
+
+- type: alert
+  id: CEWellFed
+  icons:
+  - sprite: /Textures/_CE/Interface/Alerts/hunger.rsi
+    state: wellfed
+  name: ce-alerts-well-fed-name
+  description: ce-alerts-well-fed-desc
+
+- type: alert
+  id: CEOverFed
+  icons:
+  - sprite: /Textures/_CE/Interface/Alerts/hunger.rsi
+    state: overfed
+  name: ce-alerts-overfed-name
+  description: ce-alerts-overfed-desc
+
+- type: alert
+  id: CEDeadFed
+  icons:
+  - sprite: /Textures/_CE/Interface/Alerts/hunger.rsi
+    state: deadfed
+  name: ce-alerts-deadfed-name
+  description: ce-alerts-deadfed-desc
+
+- type: alert
+  id: CEGoodFoodAftertaste
+  icons:
+  - sprite: /Textures/_CE/Interface/Alerts/hunger.rsi
+    state: love
+  name: ce-alerts-good-food-aftertaste-name
+  description: ce-alerts-good-food-aftertaste-desc
+
+- type: alert
+  id: CEBadFoodAftertaste
+  icons:
+  - sprite: /Textures/_CE/Objects/Consumable/Food/Meals/food.rsi
+    state: trash
+  name: ce-alerts-bad-food-aftertaste-name
+  description: ce-alerts-bad-food-aftertaste-desc

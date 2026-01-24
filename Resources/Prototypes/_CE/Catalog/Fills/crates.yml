@@ -123,7 +123,6 @@
       - id: CEFoodAgedCheesePart
       - id: CEFoodBlueCheesePart
       - id: CEFoodCheesePart
-    - id: CEFoodPiePieceTrash
     - id: CECloth10
     - id: CEClothingHeadChristmasHat
     - id: CEClothingHeadWreath

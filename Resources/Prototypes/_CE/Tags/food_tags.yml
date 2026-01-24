@@ -1,0 +1,91 @@
+- type: Tag
+  id: CEFitInFryingPan
+
+
+# Generic categories
+
+- type: CEFoodTag
+  id: CEVegetable
+  name: ce-cooking-tag-vegetable
+
+- type: CEFoodTag
+  id: CEMeat
+  name: ce-cooking-tag-meat
+
+- type: CEFoodTag
+  id: CEFruits
+  name: ce-cooking-tag-fruit
+
+# More specific ingredients
+
+- type: CEFoodTag
+  id: CEApple
+  name: ce-cooking-tag-apple
+
+- type: CEFoodTag
+  id: CEEgg
+  name: ce-cooking-tag-egg
+
+- type: CEFoodTag
+  id: CESalad
+  name: ce-cooking-tag-salad
+
+- type: CEFoodTag
+  id: CEMeatSlice
+  name: ce-cooking-tag-meat-slice
+
+- type: CEFoodTag
+  id: CEMeatMonster
+  name: ce-cooking-tag-meat-monster
+
+- type: CEFoodTag
+  id: CEMeatPig
+  name: ce-cooking-tag-meat-pig
+
+- type: CEFoodTag
+  id: CEMeatLeg
+  name: ce-cooking-tag-meat-leg
+
+- type: CEFoodTag
+  id: CECheese
+  name: ce-cooking-tag-cheese
+
+- type: CEFoodTag
+  id: CEPumpkin
+  name: ce-cooking-tag-pumpkin
+
+- type: CEFoodTag
+  id: CEDough
+  name: ce-cooking-tag-dough
+
+- type: CEFoodTag
+  id: CEPotato
+  name: ce-cooking-tag-potato
+
+- type: CEFoodTag
+  id: CECabbage
+  name: ce-cooking-tag-cabbage
+
+- type: CEFoodTag
+  id: CEWheat
+  name: ce-cooking-tag-wheat
+
+- type: CEFoodTag
+  id: CEPepper
+  name: ce-cooking-tag-pepper
+
+- type: CEFoodTag
+  id: CEGarlic
+  name: ce-cooking-tag-garlic
+
+- type: CEFoodTag
+  id: CECorn
+  name: ce-cooking-tag-corn
+
+- type: CEFoodTag
+  id: CECarrot
+  name: ce-cooking-tag-carrot
+
+- type: CEFoodTag
+  id: CECucumber
+  name: ce-cooking-tag-cucumber

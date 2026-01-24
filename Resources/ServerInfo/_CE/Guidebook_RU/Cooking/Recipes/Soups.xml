@@ -1,0 +1,20 @@
+<Document>
+# Супы
+
+Все супы готовятся при помощи кастрюли. Ее особенность - возможность [color=yellow]совмещать как твердые ингредиенты, так и жидкости[/color].
+
+<Box>
+  <GuideEntityEmbed Entity="CESpoon"/>
+  <GuideEntityEmbed Entity="CEBowlIron"/>
+  <GuideEntityEmbed Entity="CECookingPot"/>
+</Box>
+
+Чтобы приготовить суп, налейте внутрь необходимые жидкости, положите внутрь нужные ингредиенты и поставьте кастрюлю на огонь. 
+Через некоторое время ваш суп будет готов! Главное - [color=red]не забудьте снять с огня[/color], иначе он превратится в сгоревшее месиво.
+
+<CEGuideCookingRecipeGroupEmbed
+FoodType="Soup"
+PlateRsi="_CE/Objects/Consumable/Food/Soups/bowls.rsi"
+PlateState="iron"/>
+
+</Document>

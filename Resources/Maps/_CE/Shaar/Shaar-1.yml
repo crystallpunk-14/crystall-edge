@@ -4,8 +4,8 @@ meta:
   engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 01/17/2026 18:04:23
-  entityCount: 1794
+  time: 01/23/2026 19:02:48
+  entityCount: 1799
 maps:
 - 1
 grids:
@@ -1107,7 +1107,7 @@ entities:
       pos: -26.5,-9.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -24731.984
+      secondsUntilStateChange: -24828.04
       state: Opening
 - proto: CEFenceWooden
   entities:
@@ -1714,12 +1714,37 @@ entities:
     - type: Transform
       pos: 21.5,-16.5
       parent: 1
-- proto: CEFoodPiePieceTrash
+- proto: CEFoodGarlic
   entities:
   - uid: 1624
     components:
     - type: Transform
-      pos: 5.2953897,-18.157892
+      pos: 21.273468,-20.024303
+      parent: 1
+  - uid: 1795
+    components:
+    - type: Transform
+      pos: 21.700964,-20.125624
+      parent: 1
+  - uid: 1796
+    components:
+    - type: Transform
+      pos: 21.419764,-20.271803
+      parent: 1
+  - uid: 1797
+    components:
+    - type: Transform
+      pos: 21.700964,-20.350512
+      parent: 1
+  - uid: 1798
+    components:
+    - type: Transform
+      pos: 21.374771,-20.485445
+      parent: 1
+  - uid: 1799
+    components:
+    - type: Transform
+      pos: 21.734707,-20.552912
       parent: 1
 - proto: CEFoodPotato
   entities:

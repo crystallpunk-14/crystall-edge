@@ -1,0 +1,19 @@
+<Document>
+# Soups
+
+All soups are prepared using a pot. Its special feature is the ability to [color=yellow]combine both solid ingredients and liquids[/color].
+
+<Box>
+  <GuideEntityEmbed Entity="CESpoon"/>
+  <GuideEntityEmbed Entity="CEBowlIron"/>
+  <GuideEntityEmbed Entity="CECookingPot"/>
+</Box>
+
+To make soup, pour the necessary liquids into the pot, add the necessary ingredients, and place the pot on the stove. 
+After a while, your soup will be ready! The main thing is [color=red]not to forget to remove it from the heat[/color], otherwise your soup will turn into a burnt mess.
+
+<CEGuideCookingRecipeGroupEmbed
+FoodType="Soup"
+PlateRsi="_CE/Objects/Consumable/Food/Soups/bowls.rsi"
+PlateState="iron"/>
+</Document>

@@ -1,0 +1,31 @@
+- type: alert
+  id: CEHydrated
+  icons:
+  - sprite: /Textures/_CE/Interface/Alerts/thirst.rsi
+    state: fed
+  name: ce-alerts-hydrated-name
+  description: ce-alerts-hydrated-desc
+
+- type: alert
+  id: CEWellHydrated
+  icons:
+  - sprite: /Textures/_CE/Interface/Alerts/thirst.rsi
+    state: wellfed
+  name: ce-alerts-well-hydrated-name
+  description: ce-alerts-well-hydrated-desc
+
+- type: alert
+  id: CEOverHydrated
+  icons:
+  - sprite: /Textures/_CE/Interface/Alerts/thirst.rsi
+    state: overfed
+  name: ce-alerts-overhydrated-name
+  description: ce-alerts-overhydrated-desc
+
+- type: alert
+  id: CEDeadHydrated
+  icons:
+  - sprite: /Textures/_CE/Interface/Alerts/thirst.rsi
+    state: deadfed
+  name: ce-alerts-deadhydrated-name
+  description: ce-alerts-deadhydrated-desc

@@ -49,17 +49,14 @@
       food:
         maxVol: 30
         reagents:
-        - ReagentId: PumpkinFlesh
-          Quantity: 10
-        - ReagentId: Vitamin
-          Quantity: 2
+        - ReagentId: CENutriment
+          Quantity: 12
   - type: SliceableFood
     count: 5
     sliceTime: 2
     slice: CEFoodPumpkinSlice
-  - type: Tag
+  - type: CEFoodTag
     tags:
- #  - CEFarmFood
     - CEVegetable
     - CEPumpkin
 
