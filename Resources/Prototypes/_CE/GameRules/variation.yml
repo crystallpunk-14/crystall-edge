@@ -40,9 +40,6 @@
     replacements:
     - id: CEWallFrameWooden
 
-# Example of static entity replacement variation pass
-# Unlike EntityReplaceVariationPass which uses probabilistic replacement,
-# this system replaces an exact number of entities
 - type: entity
   id: CEStaticIronCoreVariationPass
   parent: CEBaseVariationPass
