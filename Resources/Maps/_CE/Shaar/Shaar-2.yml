@@ -4,8 +4,8 @@ meta:
   engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 01/25/2026 12:18:51
-  entityCount: 1217
+  time: 01/25/2026 12:22:37
+  entityCount: 1220
 maps:
 - 1
 grids:
@@ -674,6 +674,23 @@ entities:
     components:
     - type: Transform
       pos: -13.5,6.5
+      parent: 1
+- proto: CEEngineeringTable
+  entities:
+  - uid: 1217
+    components:
+    - type: Transform
+      pos: -17.5,2.5
+      parent: 1
+  - uid: 1218
+    components:
+    - type: Transform
+      pos: -18.5,2.5
+      parent: 1
+  - uid: 1219
+    components:
+    - type: Transform
+      pos: -15.5,13.5
       parent: 1
 - proto: CEFenceBigIron
   entities:
