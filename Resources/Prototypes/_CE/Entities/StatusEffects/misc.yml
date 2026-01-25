@@ -69,3 +69,23 @@
         effects:
         - !type:Vomit
           probability: 0.1
+
+- type: entity
+  id: CEStatusEffectGlowing
+  name: glowing
+  components:
+  - type: StatusEffect
+  - type: StatusEffectAlert
+    alert: CEGlowing
+  - type: Sprite
+    drawdepth: Effects
+    sprite: _CE/Effects/sphere_of_light.rsi
+    offset: 0, 1
+    noRot: true
+    layers:
+    - state: icon
+      shader: unshaded
+  - type: PointLight
+    radius: 5.0
+    energy: 1
+    color: "#efedff"

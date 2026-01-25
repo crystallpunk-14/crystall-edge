@@ -1,0 +1,12 @@
+- type: skill
+  id: SphereOfLight
+  skillUiPosition: 2, 7
+  learnCost: 1
+  tree: ElfMagic
+  icon:
+    sprite: _CE/Actions/elf_magic.rsi
+    state: sphere_of_light
+  effects:
+  - !type:AddAction
+    action: CEActionSpellSphereOfLight
+

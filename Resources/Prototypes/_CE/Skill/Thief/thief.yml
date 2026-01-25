@@ -1,20 +1,3 @@
-- type: skillTree
-  id: Thief
-  name: ce-skill-tree-thief-name
-  desc: ce-skill-tree-thief-desc
-  skillType: Memory
-  color: "#1b7b46"
-  parallax: AspidParallax
-  hoveredIcon:
-    sprite: _CE/Interface/NodeTree/thief.rsi
-    state: hovered
-  learnedIcon:
-    sprite: _CE/Interface/NodeTree/thief.rsi
-    state: learned
-  selectedIcon:
-    sprite: _CE/Interface/NodeTree/thief.rsi
-    state: selected
-
 - type: skill
   id: Pickpocketing
   name: ce-skill-thief-pickpocketing-name
