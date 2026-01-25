@@ -15,3 +15,10 @@
   icon:
     sprite: _CE/Interface/Misc/skill_point.rsi
     state: blood
+
+- type: skillPoint
+  id: ElfMagic
+  name: ce-skill-point-elf-magic
+  icon:
+    sprite: _CE/Interface/Misc/skill_point.rsi
+    state: elf
