@@ -1,0 +1,10 @@
+<Document>
+# Люди
+
+<Box>
+<GuideEntityEmbed Entity="CEMobHuman" Caption="Человек"/>
+</Box>
+
+Пока что не имеют значимых геймплейных особенностей.
+
+</Document>
