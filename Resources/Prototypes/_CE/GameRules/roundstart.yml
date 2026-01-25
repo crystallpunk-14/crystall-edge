@@ -31,13 +31,6 @@
         text: ce-roles-antag-thief-briefing
         color: "#527c5e"
         sound: "/Audio/_CE/Ambience/Antag/vampire.ogg"
-      components:
-      - type: CESkillStorage
-        availableSkillTrees:
-        - Thief
-        skillPoints:
-          Memory:
-            max: 0
 
 - type: entity
   parent: CEBaseGameRule

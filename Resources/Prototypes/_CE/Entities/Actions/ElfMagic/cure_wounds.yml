@@ -1,0 +1,75 @@
+- type: entity
+  id: CEActionSpellCureWounds
+  parent: CEActionSpellBase
+  name: Cure wounds
+  description: You heal the target from physical damage
+  components:
+  - type: CEActionDoAfterSlowdown
+    speedMultiplier: 0.5
+  - type: CEActionManaCost
+    manaCost: 20
+  - type: DoAfterArgs
+    delay: 1.5
+    breakOnDamage: true
+  - type: CEActionSpeaking
+    startSpeech: "Et curabuntur..."
+    endSpeech: "vulnera tua"
+  - type: CEActionTargetMobStatusRequired
+  - type: CEActionDoAfterVisuals
+    proto: CERuneCureWounds
+  - type: Action
+    useDelay: 10
+    icon:
+      sprite: _CE/Actions/elf_magic.rsi
+      state: cure_wounds
+  - type: TargetAction
+    range: 7
+    interactOnMiss: false
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - MobState
+    event: !type:CEEntityTargetModularEffectEvent
+      telegraphyEffects:
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - CEImpactEffectCureWounds
+      effects:
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - CEImpactEffectCureWounds
+      - !type:CESpellApplyEntityEffect
+        effects:
+        - !type:HealthChange
+          damage:
+            types:
+              Slash: -10
+              Blunt: -10
+              Piercing: -10
+        - !type:Jitter
+
+- type: entity
+  id: CERuneCureWounds
+  parent: CEBaseMagicRune
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: PointLight
+    color: "#328643"
+  - type: Sprite
+    layers:
+    - state: sun
+      color: "#79b330"
+      shader: unshaded
+
+- type: entity
+  id: CEImpactEffectCureWounds
+  parent: CEBaseMagicImpact
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    layers:
+    - state: particles_up
+      color: "#79b330"
+      shader: unshaded
