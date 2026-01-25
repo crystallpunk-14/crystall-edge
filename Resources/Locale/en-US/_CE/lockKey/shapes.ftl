@@ -32,6 +32,10 @@ ce-lock-shape-guard-cage-5 = prison cage 5
 
 ce-lock-shape-engineering-hall = engineering hall
 ce-lock-shape-engineering-staff = engineering work areas
+ce-lock-shape-engineering-generator = generator room
+ce-lock-shape-engineering-tunnels = engineering tunnels
+ce-lock-shape-engineering-brigadier = brigadier's office
+ce-lock-shape-engineering-storage = engineering storage
 
 # Citizens
 

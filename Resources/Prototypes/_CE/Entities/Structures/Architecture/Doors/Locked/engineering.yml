@@ -23,7 +23,7 @@
   - type: CELock
     autoGenerateShape: EngineeringStaff
   - type: Lock
-    locked: true
+    locked: false #Temp
 
 - type: entity
   parent:
@@ -31,3 +31,81 @@
     - CEIronDoorMirrored
   id: CEIronDoorEngineeringStaffMirrored
   suffix: Engineering Staff, Mirrored
+
+- type: entity
+  parent: CEIronDoor
+  id: CEIronDoorEngineeringGenerator
+  suffix: Engineering Generator
+  components:
+  - type: CELock
+    autoGenerateShape: EngineeringGenerator
+  - type: Lock
+    locked: false #Temp
+
+- type: entity
+  parent:
+    - CEIronDoorEngineeringGenerator
+    - CEIronDoorMirrored
+  id: CEIronDoorEngineeringGeneratorMirrored
+  suffix: Engineering Generator, Mirrored
+
+- type: entity
+  parent: CEIronDoor
+  id: CEIronDoorEngineeringTunnels
+  suffix: Engineering Tunnels
+  components:
+  - type: CELock
+    autoGenerateShape: EngineeringTunnels
+  - type: Lock
+    locked: false #Temp
+
+- type: entity
+  parent:
+    - CEIronDoorEngineeringTunnels
+    - CEIronDoorMirrored
+  id: CEIronDoorEngineeringTunnelsMirrored
+  suffix: Engineering Tunnels, Mirrored
+
+- type: entity
+  parent: CEIronDoor
+  id: CEIronDoorEngineeringBrigadier
+  suffix: Engineering Brigadier
+  components:
+  - type: CELock
+    autoGenerateShape: EngineeringBrigadier
+  - type: Lock
+    locked: false #Temp
+
+- type: entity
+  parent:
+    - CEIronDoorEngineeringBrigadier
+    - CEIronDoorMirrored
+  id: CEIronDoorEngineeringBrigadierMirrored
+  suffix: Engineering Brigadier, Mirrored
+
+- type: entity
+  parent: CEIronDoor
+  id: CEIronDoorEngineeringStorage
+  suffix: Engineering Storage
+  components:
+  - type: CELock
+    autoGenerateShape: EngineeringStorage
+  - type: Lock
+    locked: false #Temp
+
+- type: entity
+  parent:
+    - CEIronDoorEngineeringStorage
+    - CEIronDoorMirrored
+  id: CEIronDoorEngineeringStorageMirrored
+  suffix: Engineering Storage, Mirrored
+
+- type: entity
+  parent: CEFenceGateBigIron
+  id: CEIronGrateEngineeringTunnels
+  suffix: Engineering Tunnels
+  components:
+  - type: CELock
+    autoGenerateShape: EngineeringTunnels
+  - type: Lock
+    locked: false #Temp

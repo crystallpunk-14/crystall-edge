@@ -1219,6 +1219,7 @@
   defaultCleanable: true
   defaultCustomColor: true
   defaultSnap: false
+  showMenu: true
   sprite:
     sprite: Effects/crayondecals.rsi
     state: p
