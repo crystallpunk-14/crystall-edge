@@ -1,0 +1,10 @@
+<Document>
+# Tieflings
+
+<Box>
+<GuideEntityEmbed Entity="CEMobTiefling" Caption="Tiefling"/>
+</Box>
+
+Currently have no significant gameplay features.
+
+</Document>

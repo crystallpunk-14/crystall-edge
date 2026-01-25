@@ -1,0 +1,143 @@
+- type: guideEntry
+  hidden: false
+  locFilter: "en-US"
+  id: CESpeciesGuideEN
+  name: Playable Races
+  text: "/ServerInfo/_CE/Guidebook_EN/Species/Species.xml"
+  filterEnabled: True
+  children:
+  - CEHumanGuideEN
+  - CEElfGuideEN
+  - CECarcatGuideEN
+  - CECarrinGuideEN
+  - CEGoblinGuideEN
+  - CESilvaGuideEN
+  - CETieflingGuideEN
+
+- type: guideEntry
+  hidden: false
+  locFilter: "ru-RU"
+  id: CESpeciesGuideRU
+  name: Игровые расы
+  text: "/ServerInfo/_CE/Guidebook_RU/Species/Species.xml"
+  filterEnabled: True
+  children:
+  - CEHumanGuideRU
+  - CEElfGuideRU
+  - CECarcatGuideRU
+  - CECarrinGuideRU
+  - CEGoblinGuideRU
+  - CESilvaGuideRU
+  - CETieflingGuideRU
+
+- type: guideEntry
+  hidden: false
+  locFilter: "en-US"
+  id: CEHumanGuideEN
+  name: Humans
+  text: "/ServerInfo/_CE/Guidebook_EN/Species/Human.xml"
+  filterEnabled: True
+
+- type: guideEntry
+  hidden: false
+  locFilter: "ru-RU"
+  id: CEHumanGuideRU
+  name: Люди
+  text: "/ServerInfo/_CE/Guidebook_RU/Species/Human.xml"
+  filterEnabled: True
+
+- type: guideEntry
+  hidden: false
+  locFilter: "en-US"
+  id: CEElfGuideEN
+  name: Elves
+  text: "/ServerInfo/_CE/Guidebook_EN/Species/Elf.xml"
+  filterEnabled: True
+
+- type: guideEntry
+  hidden: false
+  locFilter: "ru-RU"
+  id: CEElfGuideRU
+  name: Эльфы
+  text: "/ServerInfo/_CE/Guidebook_RU/Species/Elf.xml"
+  filterEnabled: True
+
+- type: guideEntry
+  hidden: false
+  locFilter: "en-US"
+  id: CECarcatGuideEN
+  name: Carcats
+  text: "/ServerInfo/_CE/Guidebook_EN/Species/Carcat.xml"
+  filterEnabled: True
+
+- type: guideEntry
+  hidden: false
+  locFilter: "ru-RU"
+  id: CECarcatGuideRU
+  name: Каркаты
+  text: "/ServerInfo/_CE/Guidebook_RU/Species/Carcat.xml"
+  filterEnabled: True
+
+- type: guideEntry
+  hidden: false
+  locFilter: "en-US"
+  id: CECarrinGuideEN
+  name: Carrins
+  text: "/ServerInfo/_CE/Guidebook_EN/Species/Carrin.xml"
+  filterEnabled: True
+
+- type: guideEntry
+  hidden: false
+  locFilter: "ru-RU"
+  id: CECarrinGuideRU
+  name: Каррины
+  text: "/ServerInfo/_CE/Guidebook_RU/Species/Carrin.xml"
+  filterEnabled: True
+
+- type: guideEntry
+  hidden: false
+  locFilter: "en-US"
+  id: CEGoblinGuideEN
+  name: Goblins
+  text: "/ServerInfo/_CE/Guidebook_EN/Species/Goblin.xml"
+  filterEnabled: True
+
+- type: guideEntry
+  hidden: false
+  locFilter: "ru-RU"
+  id: CEGoblinGuideRU
+  name: Гоблины
+  text: "/ServerInfo/_CE/Guidebook_RU/Species/Goblin.xml"
+  filterEnabled: True
+
+- type: guideEntry
+  hidden: false
+  locFilter: "en-US"
+  id: CESilvaGuideEN
+  name: Silvas
+  text: "/ServerInfo/_CE/Guidebook_EN/Species/Silva.xml"
+  filterEnabled: True
+
+- type: guideEntry
+  hidden: false
+  locFilter: "ru-RU"
+  id: CESilvaGuideRU
+  name: Сильвы
+  text: "/ServerInfo/_CE/Guidebook_RU/Species/Silva.xml"
+  filterEnabled: True
+
+- type: guideEntry
+  hidden: false
+  locFilter: "en-US"
+  id: CETieflingGuideEN
+  name: Tieflings
+  text: "/ServerInfo/_CE/Guidebook_EN/Species/Tiefling.xml"
+  filterEnabled: True
+
+- type: guideEntry
+  hidden: false
+  locFilter: "ru-RU"
+  id: CETieflingGuideRU
+  name: Тифлинги
+  text: "/ServerInfo/_CE/Guidebook_RU/Species/Tiefling.xml"
+  filterEnabled: True
