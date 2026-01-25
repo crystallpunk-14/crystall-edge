@@ -24,8 +24,9 @@
 - type: startingGear
   id: CEGuardCommanderGear
   equipment:
-    belt: CEKeyRingGuardCommander
+    belt: CEWeaponClubGuard
     pocket1: CEWalletFilledGuardCommander
+    pocket2: CEKeyRingGuardCommander
   storage:
     back:
     - CEGuidebookImperialLaws

@@ -87,5 +87,5 @@
       - CEOverchargeVFX
     - !type:CESpellStaminaDamage
       damage: 30
-    - type: Tool
-      speedModifier: 0.5
+  - type: Tool
+    speedModifier: 0.5
