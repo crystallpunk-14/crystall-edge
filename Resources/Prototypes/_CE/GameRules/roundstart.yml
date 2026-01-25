@@ -25,6 +25,8 @@
       playerRatio: 3
       startingGear: CEThiefGear
       lateJoinAdditional: true
+      components:
+      - type: Pacified
       mindRoles:
       - CEMindRoleThief
       briefing:
