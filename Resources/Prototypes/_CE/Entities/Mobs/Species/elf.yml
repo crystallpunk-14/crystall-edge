@@ -29,6 +29,10 @@
     skillPoints:
       ElfMagic:
         max: 2
+  - type: CEEnergyOverchargeDamage
+    damage:
+      types:
+        Slash: 0 # Zero overcharge damage
 #  - type: CEAuraImprint
 #    imprintLength: 10 #Long imprint hehe
 #    imprintColor: "#42aaf5"
