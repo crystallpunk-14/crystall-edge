@@ -12,6 +12,12 @@
     },
     {
       "name": "cure_wounds"
+    },
+    {
+      "name": "water_creation"
+    },
+    {
+      "name": "ice_dagger"
     }
   ]
 }

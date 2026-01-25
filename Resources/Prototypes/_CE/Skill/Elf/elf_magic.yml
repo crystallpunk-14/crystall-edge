@@ -22,3 +22,15 @@
   - !type:AddAction
     action: CEActionSpellCureWounds
 
+- type: skill
+  id: WaterCreation
+  skillUiPosition: 6, 7
+  learnCost: 1
+  tree: ElfMagic
+  icon:
+    sprite: _CE/Actions/elf_magic.rsi
+    state: water_creation
+  effects:
+  - !type:AddAction
+    action: CEActionSpellWaterCreation
+
