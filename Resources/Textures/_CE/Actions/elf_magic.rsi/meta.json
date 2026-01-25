@@ -9,6 +9,9 @@
   "states": [
     {
       "name": "sphere_of_light"
+    },
+    {
+      "name": "cure_wounds"
     }
   ]
 }

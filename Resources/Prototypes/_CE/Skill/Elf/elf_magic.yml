@@ -10,3 +10,15 @@
   - !type:AddAction
     action: CEActionSpellSphereOfLight
 
+- type: skill
+  id: CureWounds
+  skillUiPosition: 4, 7
+  learnCost: 1
+  tree: ElfMagic
+  icon:
+    sprite: _CE/Actions/elf_magic.rsi
+    state: cure_wounds
+  effects:
+  - !type:AddAction
+    action: CEActionSpellCureWounds
+
