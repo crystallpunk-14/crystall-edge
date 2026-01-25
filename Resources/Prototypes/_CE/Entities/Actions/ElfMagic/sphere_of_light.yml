@@ -5,7 +5,7 @@
   description: Materialization of a bright and safe light source.
   components:
   - type: CEActionManaCost
-    manaCost: 10
+    manaCost: 20
   - type: CEActionSpeaking
     startSpeech: "Appare in manu tua..."
     endSpeech: "sphaera lucis"
@@ -34,7 +34,7 @@
         - CEImpactEffectSphereOfLight
       - !type:CESpellApplyStatusEffect
         statusEffect: CEStatusEffectGlowing
-        duration: 120
+        duration: 60
 
 - type: entity
   id: CERuneSphereOfLight
