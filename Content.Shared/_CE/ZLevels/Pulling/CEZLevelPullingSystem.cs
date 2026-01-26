@@ -56,16 +56,15 @@ public sealed class CEZLevelPullingSystem : EntitySystem
                 continue;
             }
 
-            var targetPosition = _transform.GetWorldPosition(comp.TargetPuller.Value);
-            // Move entity towards target position
+            // Move entity towards target position (saved position of puller at transition start)
             var currentPos = _transform.GetWorldPosition(uid);
-            var direction = (targetPosition - currentPos).Normalized();
-            var distance = (targetPosition - currentPos).Length();
+            var direction = (comp.TargetPosition - currentPos).Normalized();
+            var distance = (comp.TargetPosition - currentPos).Length();
             var moveDistance = comp.TransitionSpeed * frameTime;
 
             if (moveDistance >= distance)
             {
-                _transform.SetWorldPosition(uid, targetPosition);
+                _transform.SetWorldPosition(uid, comp.TargetPosition);
             }
             else
             {
@@ -91,9 +90,10 @@ public sealed class CEZLevelPullingSystem : EntitySystem
         var transComp = EnsureComp<CEZLevelPullingTransitionComponent>(pulledEntity);
         transComp.TargetPuller = ent;
         transComp.StartPosition = _transform.GetWorldPosition(pulledEntity);
+        transComp.TargetPosition = pullerPos;  // Save puller's position at the moment of transition
         transComp.TargetZLevel = args.CurrentZLevel + args.Offset;
 
-        var distance = Vector2.Distance(transComp.StartPosition, _transform.GetWorldPosition(transComp.TargetPuller.Value));
+        var distance = Vector2.Distance(transComp.StartPosition, transComp.TargetPosition);
         var duration = TimeSpan.FromSeconds(distance / transComp.TransitionSpeed);
         transComp.NextTransition = _timing.CurTime + duration;
 

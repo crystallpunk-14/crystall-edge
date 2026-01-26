@@ -18,10 +18,16 @@ namespace Content.Shared._CE.ZLevels.Pulling;
 public sealed partial class CEZLevelPullingTransitionComponent : Component
 {
     /// <summary>
-    /// The starting world position of the puller when the transition began.
+    /// The starting world position of the pulled entity when the transition began.
     /// </summary>
     [DataField, AutoNetworkedField]
     public Vector2 StartPosition;
+
+    /// <summary>
+    /// The position of the puller when the transition began (target position to move towards).
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public Vector2 TargetPosition;
 
     /// <summary>
     /// Reference to the puller entity.
