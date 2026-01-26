@@ -15,3 +15,9 @@ ce-cooking-tag-dough = Dough
 ce-cooking-tag-potato = Potato
 ce-cooking-tag-cabbage = Cabbage
 ce-cooking-tag-wheat = Wheat
+ce-cooking-tag-pepper = Pepper
+ce-cooking-tag-garlic = Garlic
+ce-cooking-tag-corn = Corn
+
+ce-cooking-tag-carrot = Carrot
+ce-cooking-tag-cucumber = Cucumber

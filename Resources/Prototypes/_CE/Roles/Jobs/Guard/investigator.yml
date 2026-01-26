@@ -22,9 +22,11 @@
   id: CEInvestigatorGear
   equipment:
     belt: CEKeyRingInvestigator
-    belt2: CEGunJustice
     pocket1: CEWalletFilledInvestigator
-    pocket2: CEGuidebookImperialLaws
+  storage:
+    back:
+    - CEGuidebookImperialLaws
+    - CEGunJustice
 
 
 - type: entity

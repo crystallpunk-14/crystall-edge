@@ -6,66 +6,19 @@
 using Content.Shared._CE.Cooking.Components;
 using Content.Shared._CE.Cooking.Prototypes;
 using Content.Shared.DoAfter;
-using Content.Shared.Temperature;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
-using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.Cooking;
 
 public abstract partial class CESharedCookingSystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-
     private void InitDoAfter()
     {
-        SubscribeLocalEvent<CEFoodCookerComponent, OnTemperatureChangeEvent>(OnTemperatureChange);
         SubscribeLocalEvent<CEFoodCookerComponent, EntParentChangedMessage>(OnParentChanged);
 
         SubscribeLocalEvent<CEFoodCookerComponent, CECookingDoAfter>(OnCookFinished);
         SubscribeLocalEvent<CEFoodCookerComponent, CEBurningDoAfter>(OnCookBurned);
-    }
-
-    private void UpdateDoAfter(float frameTime)
-    {
-        var query = EntityQueryEnumerator<CEFoodCookerComponent>();
-        while (query.MoveNext(out var uid, out var cooker))
-        {
-            if (_timing.CurTime > cooker.LastHeatingTime + cooker.HeatingFrequencyRequired)
-                StopCooking((uid, cooker));
-        }
-    }
-
-    private void OnTemperatureChange(Entity<CEFoodCookerComponent> ent, ref OnTemperatureChangeEvent args)
-    {
-        if (args.TemperatureDelta <= 0)
-            return;
-
-        if (!Container.TryGetContainer(ent, ent.Comp.ContainerId, out var container))
-            return;
-
-        if (!TryComp<CEFoodHolderComponent>(ent, out var holder))
-            return;
-
-        if (container.ContainedEntities.Count <= 0 &&
-            holder.FoodData is null) // We can be either cooking (null foodData) or burning (zero contained)
-        {
-            StopCooking(ent);
-            return;
-        }
-
-        ent.Comp.LastHeatingTime = _timing.CurTime;
-
-        if (!_doAfter.IsRunning(ent.Comp.DoAfterId) && holder.FoodData is null)
-        {
-            var recipe = GetRecipe(ent);
-            if (recipe is not null)
-                StartCooking(ent, recipe);
-        }
-        else
-        {
-            StartBurning(ent);
-        }
     }
 
     private void OnParentChanged(Entity<CEFoodCookerComponent> ent, ref EntParentChangedMessage args)
@@ -73,28 +26,31 @@ public abstract partial class CESharedCookingSystem
         StopCooking(ent);
     }
 
-    private void StartCooking(Entity<CEFoodCookerComponent> ent, CECookingRecipePrototype recipe)
+    protected void StartCooking(Entity<CEFoodCookerComponent> ent)
     {
-        if (_doAfter.IsRunning(ent.Comp.DoAfterId))
+        if (DoAfter.IsRunning(ent.Comp.DoAfterId))
             return;
 
         _appearance.SetData(ent, CECookingVisuals.Cooking, true);
 
-        var doAfterArgs = new DoAfterArgs(EntityManager, ent, recipe.CookingTime, new CECookingDoAfter(recipe.ID), ent)
+        // Recipe will be determined at the end of cooking based on current contents
+        var doAfterArgs = new DoAfterArgs(EntityManager, ent, TimeSpan.FromSeconds(20), new CECookingDoAfter(), ent)
         {
             NeedHand = false,
             BreakOnWeightlessMove = false,
             RequireCanInteract = false,
         };
 
-        _doAfter.TryStartDoAfter(doAfterArgs, out var doAfterId);
+        DoAfter.TryStartDoAfter(doAfterArgs, out var doAfterId);
         ent.Comp.DoAfterId = doAfterId;
         _ambientSound.SetAmbience(ent, true);
+
+        Dirty(ent);
     }
 
-    private void StartBurning(Entity<CEFoodCookerComponent> ent)
+    protected void StartBurning(Entity<CEFoodCookerComponent> ent)
     {
-        if (_doAfter.IsRunning(ent.Comp.DoAfterId))
+        if (DoAfter.IsRunning(ent.Comp.DoAfterId))
             return;
 
         _appearance.SetData(ent, CECookingVisuals.Burning, true);
@@ -106,16 +62,18 @@ public abstract partial class CESharedCookingSystem
             RequireCanInteract = false,
         };
 
-        _doAfter.TryStartDoAfter(doAfterArgs, out var doAfterId);
+        DoAfter.TryStartDoAfter(doAfterArgs, out var doAfterId);
         ent.Comp.DoAfterId = doAfterId;
         _ambientSound.SetAmbience(ent, true);
+
+        Dirty(ent);
     }
 
-    private void StopCooking(Entity<CEFoodCookerComponent> ent)
+    protected void StopCooking(Entity<CEFoodCookerComponent> ent)
     {
-        if (_doAfter.IsRunning(ent.Comp.DoAfterId))
+        if (DoAfter.IsRunning(ent.Comp.DoAfterId))
         {
-            _doAfter.Cancel(ent.Comp.DoAfterId);
+            DoAfter.Cancel(ent.Comp.DoAfterId);
             ent.Comp.DoAfterId = null;
         }
 
@@ -123,6 +81,8 @@ public abstract partial class CESharedCookingSystem
         _appearance.SetData(ent, CECookingVisuals.Burning, false);
 
         _ambientSound.SetAmbience(ent, false);
+
+        Dirty(ent);
     }
 
     protected virtual void OnCookBurned(Entity<CEFoodCookerComponent> ent, ref CEBurningDoAfter args)
@@ -147,29 +107,31 @@ public abstract partial class CESharedCookingSystem
         if (!TryComp<CEFoodHolderComponent>(ent, out var holder))
             return;
 
-        if (!_proto.Resolve(args.Recipe, out var indexedRecipe))
+        // Recipe is determined at the end of cooking based on current ingredients
+        var recipe = GetRecipe(ent);
+        if (recipe is null)
             return;
 
-        Cook(ent, indexedRecipe);
+        Cook(ent, recipe);
         UpdateFoodDataVisuals((ent, holder));
 
         args.Handled = true;
     }
+
+    private float GetRecipeComplexity(ProtoId<CECookingRecipePrototype>? recipe)
+    {
+        if (recipe is null)
+            return 0;
+
+        if (!_proto.Resolve(recipe.Value, out var indexedRecipe))
+            return 0;
+
+        return indexedRecipe.GetComplexity();
+    }
 }
 
 [Serializable, NetSerializable]
-public sealed partial class CECookingDoAfter : DoAfterEvent
-{
-    [DataField]
-    public ProtoId<CECookingRecipePrototype> Recipe;
-
-    public CECookingDoAfter(ProtoId<CECookingRecipePrototype> recipe)
-    {
-        Recipe = recipe;
-    }
-
-    public override DoAfterEvent Clone() => this;
-}
+public sealed partial class CECookingDoAfter : SimpleDoAfterEvent;
 
 [Serializable, NetSerializable]
 public sealed partial class CEBurningDoAfter : SimpleDoAfterEvent;

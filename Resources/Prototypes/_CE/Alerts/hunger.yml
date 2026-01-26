@@ -29,3 +29,19 @@
     state: deadfed
   name: ce-alerts-deadfed-name
   description: ce-alerts-deadfed-desc
+
+- type: alert
+  id: CEGoodFoodAftertaste
+  icons:
+  - sprite: /Textures/_CE/Interface/Alerts/hunger.rsi
+    state: love
+  name: ce-alerts-good-food-aftertaste-name
+  description: ce-alerts-good-food-aftertaste-desc
+
+- type: alert
+  id: CEBadFoodAftertaste
+  icons:
+  - sprite: /Textures/_CE/Objects/Consumable/Food/Meals/food.rsi
+    state: trash
+  name: ce-alerts-bad-food-aftertaste-name
+  description: ce-alerts-bad-food-aftertaste-desc

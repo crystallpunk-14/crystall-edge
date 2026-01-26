@@ -69,3 +69,23 @@
 - type: CEFoodTag
   id: CEWheat
   name: ce-cooking-tag-wheat
+
+- type: CEFoodTag
+  id: CEPepper
+  name: ce-cooking-tag-pepper
+
+- type: CEFoodTag
+  id: CEGarlic
+  name: ce-cooking-tag-garlic
+
+- type: CEFoodTag
+  id: CECorn
+  name: ce-cooking-tag-corn
+
+- type: CEFoodTag
+  id: CECarrot
+  name: ce-cooking-tag-carrot
+
+- type: CEFoodTag
+  id: CECucumber
+  name: ce-cooking-tag-cucumber

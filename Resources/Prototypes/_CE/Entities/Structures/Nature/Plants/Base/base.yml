@@ -87,6 +87,10 @@
     #sprite: _CE/Effects/fire.rsi
     #normalState: full
     #alternateState: full2
+  - type: GuideHelp
+    guides:
+    - CEFarmingGuideEN
+    - CEFarmingGuideRU
 
 - type: entity
   parent: CEPlantBase

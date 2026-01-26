@@ -60,3 +60,17 @@
   spawn: CESeedSunflower
   icon: { sprite: _CE/Objects/Consumable/Food/sunflower.rsi, state: seeds }
   maxCount: 30
+
+- type: stack
+  id: CESeedCorn
+  name: ce-stack-corn-seeds
+  spawn: CESeedCorn
+  icon: { sprite: _CE/Objects/Consumable/Food/corn.rsi, state: seeds }
+  maxCount: 30
+
+- type: stack
+  id: CESeedCarrot
+  name: ce-stack-carrot-seeds
+  spawn: CESeedCarrot
+  icon: { sprite: _CE/Objects/Consumable/Food/carrot.rsi, state: seeds }
+  maxCount: 30

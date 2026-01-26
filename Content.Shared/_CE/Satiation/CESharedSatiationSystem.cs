@@ -22,7 +22,7 @@ public abstract partial class CESharedSatiationSystem : EntitySystem
     {
         foreach (var satiation in ent.Comp.Satiations)
         {
-            SetSatiationLevel((ent, ent.Comp), satiation.Key, satiation.Value);
+            SetSatiationLevel((ent, ent.Comp), satiation.Key, satiation.Value, forceEffectUpdate: true);
         }
     }
 
@@ -42,7 +42,7 @@ public abstract partial class CESharedSatiationSystem : EntitySystem
 
         if (!satiationComp.Satiations.TryAdd(satiationType, defaultValue))
             return;
-        
+
         SetSatiationLevel((ent, satiationComp), satiationType, defaultValue);
     }
 
@@ -103,7 +103,7 @@ public abstract partial class CESharedSatiationSystem : EntitySystem
     /// <param name="satiationType">Type of satiation to modify</param>
     /// <param name="newValue">New satiation value to set</param>
     /// <returns>True if value was successfully set, false otherwise</returns>
-    public void SetSatiationLevel(Entity<CESatiationsComponent?> ent, ProtoId<CESatiationTypePrototype> satiationType, float newValue)
+    public void SetSatiationLevel(Entity<CESatiationsComponent?> ent, ProtoId<CESatiationTypePrototype> satiationType, float newValue, bool forceEffectUpdate = false)
     {
         if (_net.IsClient)
             return;
@@ -127,7 +127,7 @@ public abstract partial class CESharedSatiationSystem : EntitySystem
         var newStatusEffect = GetStatusEffectForValue(indexedSatiationType, newValue);
 
         // If the status effect has changed, remove the old one and apply the new one
-        if (oldStatusEffect != newStatusEffect)
+        if (oldStatusEffect != newStatusEffect || forceEffectUpdate)
         {
             // Remove old status effect if it exists
             if (oldStatusEffect != null)

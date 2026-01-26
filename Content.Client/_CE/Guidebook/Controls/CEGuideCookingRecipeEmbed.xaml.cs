@@ -76,6 +76,33 @@ public sealed partial class CEGuideCookingRecipeEmbed : PanelContainer, IDocumen
         GenerateHeader(recipe);
         GenerateRequirements(recipe);
         GenerateDescription(recipe);
+        GenerateEffects(recipe);
+    }
+
+    private void GenerateEffects(CECookingRecipePrototype recipe)
+    {
+        if (recipe.FoodData?.StatusEffects == null || recipe.FoodData.StatusEffects.Count == 0)
+        {
+            EffectsContainer.Visible = false;
+            return;
+        }
+
+        EffectsContainer.Visible = true;
+        EffectsContainer.RemoveAllChildren();
+
+        foreach (var (effectProto, basePower) in recipe.FoodData.StatusEffects)
+        {
+            if (!_prototype.Resolve(effectProto, out var indexedEffect))
+                continue;
+
+            var strength = Math.Max(recipe.GetComplexity(), 1);
+            var strengthText = MathF.Round(strength).ToString();
+
+            var label = new RichTextLabel();
+            var text = Loc.GetString("ce-guidebook-cooking-effect-line", ("effect", indexedEffect.Name), ("strength", strengthText));
+            label.SetMarkup(text);
+            EffectsContainer.AddChild(label);
+        }
     }
 
     public void SetPlateSprite(string rsiPath, string state)

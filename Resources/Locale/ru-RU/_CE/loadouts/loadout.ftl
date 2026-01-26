@@ -9,3 +9,4 @@ ce-loadout-gloves = Перчатки
 ce-loadout-masks = Маски
 
 ce-loadout-music-tool = Музыкальный инструмент
+ce-loadout-instruments = Инструменты

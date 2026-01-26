@@ -28,6 +28,15 @@ ce-lock-shape-guard-cage-3 = тюремная клетка 3
 ce-lock-shape-guard-cage-4 = тюремная клетка 4
 ce-lock-shape-guard-cage-5 = тюремная клетка 5
 
+# Engineering
+
+ce-lock-shape-engineering-hall = инженерный холл
+ce-lock-shape-engineering-staff = рабочие помещения инженеров
+ce-lock-shape-engineering-generator = генераторная
+ce-lock-shape-engineering-tunnels = инженерные туннели
+ce-lock-shape-engineering-brigadier = кабинет бригадира
+ce-lock-shape-engineering-storage = инженерный склад
+
 # Citizens
 
 ce-lock-shape-tailor-shop = магазин одежды

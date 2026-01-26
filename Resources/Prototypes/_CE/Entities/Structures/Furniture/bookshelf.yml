@@ -93,14 +93,15 @@
     #Lore books
     - !type:GroupSelector
       children:
-      #- id: CEBookGuildMoral
       - id: CEBookPantheonGodsSileita
       - id: CEBookPantheonGodsSileitaImitators
       - id: CEGuidebookImperialLaws
+      - id: CEGuidebookFarmingGuide
+      - id: CEGuidebookCookingRecipes
     #Empty random
     - id: CEBookRandom
       amount: !type:RangeNumberSelector
-        range: 0, 15
+        range: 0, 10
 
 - type: entity
   id: CEBookshelfWoodenFilled

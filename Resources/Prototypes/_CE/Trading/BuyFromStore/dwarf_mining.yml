@@ -141,3 +141,11 @@
   service: !type:CEBuyItemsService
     product: CEScrewdriver
     count: 1
+
+- type: tradingPosition
+  id: CESafeFallingAmulet
+  faction: DwarfMiners
+  category: Clothing
+  service: !type:CEBuyItemsService
+    product: CESafeFallingAmulet
+    count: 1

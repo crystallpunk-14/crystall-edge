@@ -18,10 +18,3 @@
   components:
   - type: CEPlantGrowing
     growthPerUpdate: 0.0208 # 48 minutes (2 days) to full grow
-
-- type: entity
-  abstract: true
-  id: CEPlantBaseGrowing4Day
-  components:
-  - type: CEPlantGrowing
-    growthPerUpdate: 0.0104 # 96 minutes (4 days)  to full grow

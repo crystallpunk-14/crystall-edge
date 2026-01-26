@@ -2,6 +2,7 @@
   id: CEDrill
   parent:
   - CEConstructibleMachine
+  - CEBaseMachinePowered
   - BaseMachine
   name: stationary drill
   description: A large industrial drill capable of destroying anything with a constant supply of energy. It was designed by imperial engineers to extract particularly hard ore deposits.
@@ -42,19 +43,10 @@
     - state: base
     - state: drill_idle
       map: [ "drill" ]
-  - type: NodeContainer
-    examinable: true
-    nodes:
-      input:
-        !type:CableDeviceNode
-        nodeGroupID: HVPower
-      power:
-        !type:CableNode
-        nodeGroupID: HVPower
   - type: Appearance
   - type: GenericVisualizer
     visuals:
-      enum.CEPowerConsumerVisuals.Active:
+      enum.PowerDeviceVisuals.Powered:
         drill:
           True: {state: drill_working}
           False: {state: drill_idle}
@@ -70,9 +62,8 @@
     range: 1
     attackRate: 1
   - type: Rotatable
-  - type: PowerConsumer
-    voltage: High
-    drawRate: 5
   - type: StatusEffects
     allowed:
     - Jitter
+  - type: ApcPowerReceiver
+    powerLoad: 2

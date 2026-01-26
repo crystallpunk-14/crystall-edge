@@ -1,0 +1,68 @@
+- type: entity
+  id: CEBaseVariationPass
+  parent: CEBaseGameRule
+  abstract: true
+  components:
+  - type: StationVariationPassRule
+
+- type: entity
+  id: CEGameRuleCoalOreDistributionVariationPass
+  parent: CEBaseVariationPass
+  components:
+  - type: CERockReplaceVariationPass
+  - type: EntityReplaceVariationPass
+    entitiesPerReplacementAverage: 10
+    entitiesPerReplacementStdDev: 8
+    replacements:
+    - id: CEWallStoneOreCoal
+      weight: 1
+
+- type: entity
+  id: CEGameRuleIronOreDistributionVariationPass
+  parent: CEBaseVariationPass
+  components:
+  - type: CERockReplaceVariationPass
+  - type: EntityReplaceVariationPass
+    entitiesPerReplacementAverage: 10
+    entitiesPerReplacementStdDev: 8
+    replacements:
+    - id: CEWallStoneOreIron
+      weight: 1
+
+- type: entity
+  id: CEGameRuleWallsDamagedVariationPass
+  parent: BaseVariationPass
+  components:
+  - type: WallReplaceVariationPass
+  - type: EntityReplaceVariationPass
+    entitiesPerReplacementAverage: 50
+    entitiesPerReplacementStdDev: 10
+    replacements:
+    - id: CEWallFrameWooden
+
+- type: entity
+  id: CEStaticIronCoreVariationPass
+  parent: CEBaseVariationPass
+  components:
+  - type: CEStaticEntityReplacementVariationPass
+    replacementCount: 5
+    replacementMap:
+      CEWallStone: CEWallIronCore
+
+- type: entity
+  id: CEStaticCoalCoreVariationPass
+  parent: CEBaseVariationPass
+  components:
+  - type: CEStaticEntityReplacementVariationPass
+    replacementCount: 7
+    replacementMap:
+      CEWallStone: CEWallCoalCore
+
+- type: entity
+  id: CEStaticCrystalCoreVariationPass
+  parent: CEBaseVariationPass
+  components:
+  - type: CEStaticEntityReplacementVariationPass
+    replacementCount: 7
+    replacementMap:
+      CEWallStone: CEWallCrystalCore

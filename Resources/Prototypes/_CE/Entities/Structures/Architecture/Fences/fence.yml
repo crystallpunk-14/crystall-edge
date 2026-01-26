@@ -70,3 +70,59 @@
   - type: Construction
     graph: CEFenceWooden
     node: CEFenceWooden
+
+- type: entity
+  parent:
+  - CEBaseFence
+  id: CEFenceBrass
+  suffix: Brass
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Fences/brass.rsi
+  - type: Icon
+    sprite: _CE/Structures/Architecture/Fences/brass.rsi
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Construction
+    graph: CEFenceBrass
+    node: CEFenceBrass
+
+- type: entity
+  parent:
+  - CEBaseFence
+  id: CEFenceIron
+  suffix: Iron
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Fences/iron.rsi
+  - type: Icon
+    sprite: _CE/Structures/Architecture/Fences/iron.rsi
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Construction
+    graph: CEFenceIron
+    node: CEFenceIron

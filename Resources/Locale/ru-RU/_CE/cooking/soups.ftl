@@ -21,3 +21,21 @@ ce-soup-recipe-pumpkin-puree-desc = Нежнейший сливочный вку
 
 ce-soup-recipe-monster-brew-name = ужасающий пибимпаб
 ce-soup-recipe-monster-brew-desc = Экзотический суп из мяса монстров и яйца.
+
+ce-soup-recipe-vegcarrot-name = Овощная похлебка
+ce-soup-recipe-vegcarrot-desc = Похлёбка из огурцов и моркови, медленно варенная в воде.
+
+ce-soup-recipe-cornporridge-name = Кукурузная каша
+ce-soup-recipe-cornporridge-desc = Нежная каша из кукурузы и пшеницы с добавлением зелени.
+
+ce-porridge-recipe-plain-name = овсянка
+ce-porridge-recipe-plain-desc = Тёплая овсяная каша, приготовленная из пшеницы и воды.
+
+ce-porridge-recipe-apple-name = овсянка с яблоками
+ce-porridge-recipe-apple-desc = Сладкая каша с кусочками яблока.
+
+ce-porridge-recipe-meat-name = овсянка с мясом
+ce-porridge-recipe-meat-desc = Сытная каша, томлёная с кусочками мяса.
+
+ce-porridge-recipe-pumpkin-name = овсянка с тыквой
+ce-porridge-recipe-pumpkin-desc = Нежная каша с тыквенным пюре.

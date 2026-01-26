@@ -27,6 +27,10 @@
     transferAmount: 2.5
   - type: Spillable
     solution: food
+  - type: GuideHelp
+    guides:
+    - CECookingRecipesEN
+    - CECookingRecipesRU
 
 - type: entity
   id: CEBowlWooden

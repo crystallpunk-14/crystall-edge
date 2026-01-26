@@ -15,3 +15,9 @@ ce-cooking-tag-dough = Тесто
 ce-cooking-tag-potato = Картофель
 ce-cooking-tag-cabbage = Капуста
 ce-cooking-tag-wheat = Пшеница
+ce-cooking-tag-pepper = Перец
+ce-cooking-tag-garlic = Чеснок
+ce-cooking-tag-corn = Кукуруза
+
+ce-cooking-tag-carrot = Морковь
+ce-cooking-tag-cucumber = Огурец

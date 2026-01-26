@@ -96,7 +96,7 @@
     startFlightDoAfter: 1.5
   - type: CEZFlyerBlockHands
   - type: CEZFlyerStamina
-    staminaDraw: 15
+    staminaDraw: 10
   - type: AmbientSound
     enabled: false
     volume: 2

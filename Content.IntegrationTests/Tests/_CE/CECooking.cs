@@ -58,8 +58,8 @@ public sealed class CECooking
 
                     var selectedRecipe = cookSys.GetRecipe(recipe.FoodType, solution, allTags);
 
-                    var complexity = recipe.Requirements.Sum(req => req.GetComplexity());
-                    var selectedRecipeComplexity = selectedRecipe?.Requirements.Sum(req => req.GetComplexity()) ?? 0;
+                    var complexity = recipe.GetComplexity();
+                    var selectedRecipeComplexity = selectedRecipe?.GetComplexity() ?? 0;
                     if (selectedRecipe != recipe)
                     {
                         Assert.Fail($"The {recipe.ID} recipe is impossible to cook! " +

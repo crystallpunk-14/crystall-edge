@@ -1,0 +1,32 @@
+- type: skillTree
+  id: Vampire
+  name: ce-skill-tree-vampire-name
+  desc: ce-skill-tree-vampire-desc
+  skillType: Blood
+  color: "#b01e34"
+  parallax: CEBlood
+
+- type: skillTree
+  id: ElfMagic
+  name: ce-skill-tree-elf-magic-name
+  desc: ce-skill-tree-elf-magic-desc
+  skillType: ElfMagic
+  color: "#42aaf5"
+  parallax: Default
+
+- type: skillTree
+  id: Thief
+  name: ce-skill-tree-thief-name
+  desc: ce-skill-tree-thief-desc
+  skillType: Memory
+  color: "#1b7b46"
+  parallax: AspidParallax
+  hoveredIcon:
+    sprite: _CE/Interface/NodeTree/thief.rsi
+    state: hovered
+  learnedIcon:
+    sprite: _CE/Interface/NodeTree/thief.rsi
+    state: learned
+  selectedIcon:
+    sprite: _CE/Interface/NodeTree/thief.rsi
+    state: selected

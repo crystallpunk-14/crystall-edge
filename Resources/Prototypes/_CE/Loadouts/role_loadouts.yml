@@ -11,6 +11,7 @@
   - CEGeneralShirt
   - CEGeneralPants
   - CEGeneralShoes
+  - CEGeneralInstruments
 
 - type: roleLoadout
   id: JobCEChef
@@ -22,6 +23,7 @@
   - CEGeneralShirt
   - CEGeneralPants
   - CEGeneralShoes
+  - CEGeneralInstruments
 
 # Guard
 
@@ -36,6 +38,7 @@
   - CEGuardShirt
   - CEGuardPants
   - CEGeneralShoes
+  - CEGeneralInstruments
 
 - type: roleLoadout
   id: JobCEInvestigator
@@ -48,6 +51,7 @@
   - CEGuardShirt
   - CEGuardPants
   - CEGeneralShoes
+  - CEGeneralInstruments
 
 - type: roleLoadout
   id: JobCEGuard
@@ -60,6 +64,35 @@
   - CEGuardShirt
   - CEGuardPants
   - CEGeneralShoes
+  - CEGeneralInstruments
+
+# Engineering
+
+- type: roleLoadout
+  id: JobCEBrigadier
+  groups:
+  - CEGeneralBag
+  - CETownfolkHead
+  - CEGeneralEyes
+  - CEGeneralCloak
+  - CEGeneralGloves
+  - CEGeneralShirt
+  - CEGeneralPants
+  - CEGeneralShoes
+  - CEGeneralInstruments
+
+- type: roleLoadout
+  id: JobCETechnician
+  groups:
+  - CEGeneralBag
+  - CETownfolkHead
+  - CEGeneralEyes
+  - CEGeneralCloak
+  - CEGeneralGloves
+  - CEGeneralShirt
+  - CEGeneralPants
+  - CEGeneralShoes
+  - CEGeneralInstruments
 
 # Citizens
 
@@ -74,6 +107,7 @@
   - CEGeneralShirt
   - CEGeneralPants
   - CEGeneralShoes
+  - CEGeneralInstruments
 
 - type: roleLoadout
   id: JobCEPharmacistMerchant
@@ -86,6 +120,7 @@
   - CEGeneralShirt
   - CEGeneralPants
   - CEGeneralShoes
+  - CEGeneralInstruments
 
 - type: roleLoadout
   id: JobCEHomeGoodsMerchant
@@ -98,6 +133,7 @@
   - CEGeneralShirt
   - CEGeneralPants
   - CEGeneralShoes
+  - CEGeneralInstruments
 
 - type: roleLoadout
   id: JobCETownfolk
@@ -110,6 +146,7 @@
   - CEGeneralShirt
   - CEGeneralPants
   - CEGeneralShoes
+  - CEGeneralInstruments
 
 - type: roleLoadout
   id: JobCEBard
@@ -123,3 +160,4 @@
   - CEBardPants
   - CEBardShoes
   - CEBardTool
+  - CEGeneralInstruments

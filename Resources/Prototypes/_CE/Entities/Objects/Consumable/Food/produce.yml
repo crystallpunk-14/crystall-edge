@@ -318,6 +318,7 @@
   - type: CEFoodTag
     tags:
     - CEVegetable
+    - CECucumber
 
 - type: entity
   id: CEFoodCucumberSlice
@@ -348,6 +349,7 @@
   - type: CEFoodTag
     tags:
     - CEVegetable
+    - CECucumber
 
 - type: entity
   id: CEFoodTomatoes
@@ -577,6 +579,220 @@
   - type: CEFoodTag
     tags:
     - CEVegetable
+    - CEPepper
+
+- type: entity
+  id: CEFoodGarlic
+  parent: FoodInjectableBase
+  categories: [ ForkFiltered ]
+  name: garlic
+  description: A bulb of garlic, full of flavor and pungency.
+  components:
+  - type: Item
+    size: Tiny
+  - type: FlavorProfile
+    flavors:
+      - garlic
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Food/garlic.rsi
+    layers:
+      - state: base1
+        map: [ "random" ]
+  - type: RandomSprite
+    available:
+      - random:
+          base1: ""
+          base2: ""
+          base3: ""
+  - type: SliceableFood
+    count: 4
+    sliceTime: 1.5
+    slice: CEFoodGarlicClove
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 12
+        reagents:
+        - ReagentId: CENutriment
+          Quantity: 4
+        - ReagentId: Allicin
+          Quantity: 4
+  - type: CEFoodTag
+    tags:
+    - CEVegetable
+    - CEGarlic
+
+- type: entity
+  id: CEFoodGarlicClove
+  parent: FoodInjectableBase
+  categories: [ ForkFiltered ]
+  name: garlic clove
+  description: A single clove of garlic, potent and aromatic.
+  components:
+  - type: Item
+    size: Tiny
+  - type: FlavorProfile
+    flavors:
+      - garlic
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Food/garlic.rsi
+    layers:
+      - state: slice1
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 3
+        reagents:
+        - ReagentId: CENutriment
+          Quantity: 1
+        - ReagentId: Allicin
+          Quantity: 1
+  - type: CESeed
+    plantProto: CEPlantGarlic
+  - type: CEFoodTag
+    tags:
+    - CEVegetable
+    - CEGarlic
+
+- type: entity
+  id: CEFoodCorn
+  parent: FoodInjectableBase
+  categories: [ ForkFiltered ]
+  name: ear of corn
+  description: Needs some butter! And some cooking...
+  components:
+  - type: Item
+    storedRotation: 45
+  - type: FlavorProfile
+    flavors:
+      - corn
+  - type: SliceableFood
+    count: 3
+    sliceTime: 1.5
+    slice: CEFoodCornKernel
+  - type: CEAdditionalSliceableDrop
+    loot:
+      CESeedCorn: 1
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 25
+        reagents:
+        - ReagentId: CENutriment
+          Quantity: 20
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Food/corn.rsi
+    layers:
+      - state: base1
+        map: [ "random" ]
+  - type: RandomSprite
+    available:
+      - random:
+          base1: ""
+          base2: ""
+          base3: ""
+  - type: CEFoodTag
+    tags:
+    - CEVegetable
+    - CECorn
+
+- type: entity
+  id: CEFoodCornKernel
+  parent: FoodInjectableBase
+  categories: [ ForkFiltered ]
+  name: corn kernel
+  description: A single kernel of corn.
+  components:
+  - type: Item
+    size: Tiny
+  - type: FlavorProfile
+    flavors:
+      - corn
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Food/corn.rsi
+    layers:
+      - state: slice1
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 7
+        reagents:
+        - ReagentId: CENutriment
+          Quantity: 5
+  - type: CEFoodTag
+    tags:
+    - CEVegetable
+    - CECorn
+
+- type: entity
+  id: CEFoodCarrot
+  parent: FoodInjectableBase
+  categories: [ ForkFiltered ]
+  name: carrot
+  description: A bright orange carrot, crunchy and sweet.
+  components:
+  - type: Item
+    size: Tiny
+  - type: FlavorProfile
+    flavors:
+      - carrot
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Food/carrot.rsi
+    layers:
+      - state: base1
+        map: [ "random" ]
+  - type: RandomSprite
+    available:
+      - random:
+          base1: ""
+          base2: ""
+          base3: ""
+  - type: SliceableFood
+    count: 3
+    sliceTime: 1.5
+    slice: CEFoodCarrotSlice
+  - type: CEAdditionalSliceableDrop
+    loot:
+      CESeedCarrot: 1
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 15
+        reagents:
+        - ReagentId: CENutriment
+          Quantity: 12
+  - type: CEFoodTag
+    tags:
+    - CEVegetable
+    - CECarrot
+
+- type: entity
+  id: CEFoodCarrotSlice
+  parent: FoodInjectableBase
+  categories: [ ForkFiltered ]
+  name: carrot slice
+  description: A neatly sliced piece of carrot.
+  components:
+  - type: Item
+    size: Tiny
+  - type: FlavorProfile
+    flavors:
+      - carrot
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Food/carrot.rsi
+    layers:
+      - state: slice1
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 6
+        reagents:
+        - ReagentId: CENutriment
+          Quantity: 4
+  - type: CEFoodTag
+    tags:
+    - CEVegetable
+    - CECarrot
 
 - type: entity
   id: CEFoodPepperSlice
@@ -604,6 +820,7 @@
   - type: CEFoodTag
     tags:
     - CEVegetable
+    - CEPepper
 
 - type: entity
   id: CEFoodOnion

@@ -7,6 +7,8 @@
     visuals:
     - sprite: _CE/Objects/Consumable/Food/Soups/food.rsi
       state: trash
+    statusEffects:
+      CEStatusEffectBadFoodVomit: 10
   requirements:
   - !type:AlwaysMet
 
@@ -29,7 +31,7 @@
   - !type:ReagentRequired
     amount: 20
     reagents:
-    - Water
+    - CEWater
   - !type:TagRequired
     tags:
     - CEMeat
@@ -47,7 +49,7 @@
   - !type:ReagentRequired
     amount: 20
     reagents:
-    - Water
+    - CEWater
   - !type:TagRequired
     tags:
     - CECheese
@@ -65,10 +67,28 @@
   - !type:ReagentRequired
     amount: 20
     reagents:
-    - Water #TODO: Milk Cream!!
+    - CEWater #TODO: Milk Cream!!
   - !type:TagRequired
     tags:
     - CEPumpkin
+
+- type: CECookingRecipe
+  id: PorridgePlain
+  foodType: Soup
+  foodData:
+    name: ce-porridge-recipe-plain-name
+    desc: ce-porridge-recipe-plain-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Soups/food.rsi
+      state: porridge
+  requirements:
+  - !type:ReagentRequired
+    amount: 20
+    reagents:
+    - CEWater
+  - !type:TagRequired
+    tags:
+    - CEWheat
 
 # 3 req
 
@@ -85,7 +105,7 @@
   - !type:ReagentRequired
     amount: 20
     reagents:
-    - Water
+    - CEWater
   - !type:TagRequired
     tags:
     - CESalad
@@ -107,7 +127,7 @@
   - !type:ReagentRequired
     amount: 20
     reagents:
-    - Water
+    - CEWater
   - !type:TagRequired
     tags:
     - CEMeat
@@ -128,7 +148,7 @@
   - !type:ReagentRequired
     amount: 20
     reagents:
-    - Water
+    - CEWater
   - !type:TagRequired
     tags:
     - CEMeat
@@ -150,10 +170,127 @@
   - !type:ReagentRequired
     amount: 20
     reagents:
-    - Water
+    - CEWater
   - !type:TagRequired
     tags:
     - CEMeatMonster
   - !type:TagRequired
     tags:
     - CEEgg
+
+- type: CECookingRecipe
+  id: PorridgeApple
+  foodType: Soup
+  foodData:
+    name: ce-porridge-recipe-apple-name
+    desc: ce-porridge-recipe-apple-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Soups/food.rsi
+      state: porridge_apple
+  requirements:
+  - !type:ReagentRequired
+    amount: 20
+    reagents:
+    - CEWater
+  - !type:TagRequired
+    tags:
+    - CEWheat
+  - !type:TagRequired
+    tags:
+    - CEApple
+
+- type: CECookingRecipe
+  id: PorridgeMeat
+  foodType: Soup
+  foodData:
+    name: ce-porridge-recipe-meat-name
+    desc: ce-porridge-recipe-meat-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Soups/food.rsi
+      state: porridge_meat
+  requirements:
+  - !type:ReagentRequired
+    amount: 20
+    reagents:
+    - CEWater
+  - !type:TagRequired
+    tags:
+    - CEWheat
+  - !type:TagRequired
+    tags:
+    - CEMeat
+
+- type: CECookingRecipe
+  id: PorridgePumpkin
+  foodType: Soup
+  foodData:
+    name: ce-porridge-recipe-pumpkin-name
+    desc: ce-porridge-recipe-pumpkin-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Soups/food.rsi
+      state: porridge_pumpkin
+  requirements:
+  - !type:ReagentRequired
+    amount: 20
+    reagents:
+    - CEWater
+  - !type:TagRequired
+    tags:
+    - CEWheat
+  - !type:TagRequired
+    tags:
+    - CEPumpkin
+
+- type: CECookingRecipe
+  id: VegCarrotSoup
+  foodType: Soup
+  foodData:
+    name: ce-soup-recipe-vegcarrot-name
+    desc: ce-soup-recipe-vegcarrot-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Soups/food.rsi
+      state: cucumber
+  requirements:
+  - !type:ReagentRequired
+    amount: 20
+    reagents:
+    - CEWater
+  - !type:TagRequired
+    tags:
+    - CECarrot
+  - !type:TagRequired
+    tags:
+    - CECucumber
+
+# 4 req
+
+- type: CECookingRecipe
+  id: CornPorridge
+  foodType: Soup
+  foodData:
+    name: ce-soup-recipe-cornporridge-name
+    desc: ce-soup-recipe-cornporridge-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Soups/food.rsi
+      state: corn
+  requirements:
+  - !type:ReagentRequired
+    amount: 20
+    reagents:
+    - CEWater
+  - !type:TagRequired
+    tags:
+    - CEWheat
+  - !type:TagRequired
+    tags:
+    - CECorn
+  - !type:TagRequired
+    tags:
+    - CESalad
+
+# Unused soup.rsi states lacking recipes:
+# - flyagaric
+# - flylumish
+# - lumish
+# - fish
+# - kharcho

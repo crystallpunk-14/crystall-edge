@@ -46,7 +46,14 @@ public sealed partial class ReagentRequired : CECookingCraftRequirement
 
     public override float GetComplexity()
     {
-        return 1;
+        // Base complexity from number of reagent alternatives (fewer options = harder)
+        var baseComplexity = Reagents.Count > 0 ? 1.5f / Reagents.Count : 1.5f;
+        
+        // Amount multiplier: normalize to base of 10u, scale logarithmically
+        // 5u = 0.7x, 10u = 1.0x, 20u = 1.3x, 50u = 1.7x
+        var amountMultiplier = 1.0f + (MathF.Log((float)Amount / 10f) * 0.5f);
+        
+        return baseComplexity * Math.Max(0.5f, amountMultiplier);
     }
 
     public override string GetGuidebookDescription(IPrototypeManager protoManager)

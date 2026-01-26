@@ -1,6 +1,7 @@
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Body.Events;
 using Content.Shared.Damage.Events;
+using Content.Shared.Gravity;
 using Content.Shared.Mobs.Events;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
@@ -19,6 +20,7 @@ public sealed partial class StatusEffectsSystem
         //CrystallEdge zone
         SubscribeLocalEvent<StatusEffectContainerComponent, CECheckGravityEvent>(RelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, CEGetZVelocityEvent>(RelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, IsWeightlessEvent>(RefRelayStatusEffectEvent);
         //CrystallEdge zone end
 
         SubscribeLocalEvent<StatusEffectContainerComponent, LocalPlayerAttachedEvent>(RelayStatusEffectEvent);

@@ -4,7 +4,6 @@
  */
 
 using System.Linq;
-using System.Numerics;
 using Content.Shared._CE.Cooking.Components;
 using Content.Shared._CE.Cooking.Prototypes;
 using Content.Shared.Audio;
@@ -20,20 +19,22 @@ using Robust.Shared.Containers;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.Cooking;
 
 public abstract partial class CESharedCookingSystem : EntitySystem
 {
     [Dependency] protected readonly SharedContainerSystem Container = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] protected readonly SharedSolutionContainerSystem Solution = default!;
+    [Dependency] protected readonly SharedDoAfterSystem DoAfter = default!;
+    [Dependency] protected readonly IGameTiming Timing = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly MetaDataSystem _metaData = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedPuddleSystem _puddle = default!;
     [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly SharedAmbientSoundSystem _ambientSound = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
 
@@ -63,16 +64,11 @@ public abstract partial class CESharedCookingSystem : EntitySystem
         SubscribeLocalEvent<CEFoodHolderComponent, ExaminedEvent>(OnExaminedEvent);
     }
 
-    public override void Update(float frameTime)
-    {
-        UpdateDoAfter(frameTime);
-    }
-
     private void CacheAndOrderRecipes()
     {
         _orderedRecipes = _proto.EnumeratePrototypes<CECookingRecipePrototype>()
             .Where(recipe => recipe.Requirements.Count > 0) // Only include recipes with requirements
-            .OrderByDescending(recipe => recipe.Requirements.Sum(condition => condition.GetComplexity()))
+            .OrderByDescending(recipe => recipe.GetComplexity())
             .ToList();
     }
 
@@ -203,7 +199,7 @@ public abstract partial class CESharedCookingSystem : EntitySystem
         Dirty(ent);
     }
 
-    private CECookingRecipePrototype? GetRecipe(Entity<CEFoodCookerComponent> ent)
+    public CECookingRecipePrototype? GetRecipe(Entity<CEFoodCookerComponent> ent)
     {
         if (!Container.TryGetContainer(ent, ent.Comp.ContainerId, out var container))
             return null;

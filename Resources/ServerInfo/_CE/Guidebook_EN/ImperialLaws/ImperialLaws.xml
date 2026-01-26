@@ -1,12 +1,17 @@
 <Document>
 
 # Punishment System
+## Minor and Minor-Medium Offenses:
 
 1.	Monetary/Material fines
 
 2.	Community service
 
-3.	Ban on conducting activity (For craftsmen)
+3.	Ban on conducting activity (For craftsmens and merchants)
+
+4.	An apology to the injured party
+
+## Medium and Medium-Serious Offenses:
 
 4.	Exile from city territory
 
@@ -14,11 +19,13 @@
 
 6.	Retribution through duel
 
+## Serious Crimes:
+
 7.	Sent to the arena (If available)
 
 8.	Public execution
 
-# Punishment Modifiers
+# Сrime Modifiers
 ## Mitigating modifiers:
 
 1.	Self-defense – If the crime was committed to protect one's own life, property, or other people from threat, the punishment may be mitigated or completely cancelled.
@@ -29,6 +36,8 @@
 
 4.	Repentance – If the criminal sincerely repents and is willing to cooperate, the punishment may be mitigated or replaced with compensation to the injured party.
 
+Effect : The punishment is mitigated by one step (for example, the average violation is considered as easy-average).
+
 ## Aggravating modifiers:
 1.	Recidivism – Repeated commission of a similar or more serious crime. Toughens punishment, up to reinforced exile or harsh conditions.
 
@@ -38,12 +47,18 @@
 
 4.	Intention to continue violations – If the criminal, by words or actions, confirms that after release they will continue to commit violations (Works only upon re-arrest).
 
-5.	Victims – If the crime led to serious injuries, death, or destruction of important objects, the punishment is toughened.
+Effect : Increases the punishment in the current category.
 
-6.	Organizer – The one who planned and directed the crime. The punishment will be the strictest (Works only for group violations).
+## Extremely aggravating modifiers:
 
-7.	Direct attack – If the criminal acted openly and threatened others, this affects the toughening of punishment.
+1.	Victims – If the crime led to serious injuries, death, or destruction of important objects, the punishment is toughened.
 
-8.	Wartime – If the crime was committed during a crisis or war, the punishment is toughened (e.g., for sabotage).
+2.	Organizer – The one who planned and directed the crime. The punishment will be the strictest (Works only for group violations).
+
+3.	Direct attack – If the criminal acted openly and threatened others, this affects the toughening of punishment.
+
+4.	Wartime – If the crime was committed during a crisis or war, the punishment is toughened (e.g., for sabotage).
+
+Effect: Transfer of the crime to the following category.
 
 </Document>

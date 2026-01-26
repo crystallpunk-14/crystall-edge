@@ -30,7 +30,9 @@ public sealed partial class TagBlocked : CECookingCraftRequirement
 
     public override float GetComplexity()
     {
-        return Tags.Count * -1;
+        // Each blocked tag adds a small complexity since it makes the recipe more specific
+        // But blocking is easier than requiring, so we use a smaller multiplier
+        return Tags.Count * 0.1f;
     }
 
     public override string GetGuidebookDescription(IPrototypeManager protoManager)

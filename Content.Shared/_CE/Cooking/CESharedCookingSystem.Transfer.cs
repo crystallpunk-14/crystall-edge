@@ -4,24 +4,40 @@
  */
 
 using Content.Shared._CE.Cooking.Components;
-using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Interaction;
-using Content.Shared.Storage;
-using Content.Shared.Throwing;
+using Content.Shared.Nutrition;
+using Content.Shared.StatusEffectNew;
 using Robust.Shared.Containers;
 
 namespace Content.Shared._CE.Cooking;
 
 public abstract partial class CESharedCookingSystem
 {
+    [Dependency] private readonly StatusEffectsSystem _statusEffect = default!;
+
     private void InitTransfer()
     {
         SubscribeLocalEvent<CEFoodHolderComponent, AfterInteractEvent>(OnAfterInteract);
         SubscribeLocalEvent<CEFoodHolderComponent, InteractUsingEvent>(OnInteractUsing);
         SubscribeLocalEvent<CEFoodHolderComponent, SolutionContainerChangedEvent>(OnHolderSolutionChanged);
+        SubscribeLocalEvent<CEFoodHolderComponent, IngestedEvent>(OnEat);
 
         SubscribeLocalEvent<CEFoodCookerComponent, ContainerIsInsertingAttemptEvent>(OnInsertAttempt);
+    }
+
+    private void OnEat(Entity<CEFoodHolderComponent> ent, ref IngestedEvent args)
+    {
+        if (ent.Comp.FoodData is null)
+            return;
+
+        var eatAmount = args.Split.Volume;
+        var recipeComplexity = GetRecipeComplexity(ent.Comp.FoodData.CurrentRecipe);
+        foreach (var (effect, duration) in ent.Comp.FoodData.StatusEffects)
+        {
+            var effectDuration = eatAmount * duration * Math.Max(recipeComplexity, 1);
+            _statusEffect.TryAddStatusEffectDuration(args.Target, effect, TimeSpan.FromSeconds((float)effectDuration));
+        }
     }
 
     private void OnInteractUsing(Entity<CEFoodHolderComponent> target, ref InteractUsingEvent args)
@@ -56,7 +72,7 @@ public abstract partial class CESharedCookingSystem
 
     private void OnInsertAttempt(Entity<CEFoodCookerComponent> ent, ref ContainerIsInsertingAttemptEvent args)
     {
-        if (!_timing.IsFirstTimePredicted)
+        if (!Timing.IsFirstTimePredicted)
             return;
 
         if (args.Cancelled)

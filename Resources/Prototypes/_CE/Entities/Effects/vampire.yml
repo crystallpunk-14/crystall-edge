@@ -1,21 +1,4 @@
 - type: entity
-  id: CEBaseMagicImpact
-  name: magic impact
-  description: manifestation of magical energy in the physical plane
-  abstract: true
-  components:
-  - type: TimedDespawn
-    lifetime: 1.6
-  - type: AnimationPlayer
-  - type: Tag
-    tags:
-      - HideContextMenu
-  - type: Sprite
-    drawdepth: Effects
-    sprite: _CE/Effects/cast_impact48.rsi
-    noRot: true
-
-- type: entity
   id: CEImpactEffectBloodEssence
   parent: CEBaseMagicImpact
   categories: [ HideSpawnMenu ]

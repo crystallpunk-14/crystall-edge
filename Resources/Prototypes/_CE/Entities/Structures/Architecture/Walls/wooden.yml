@@ -107,6 +107,7 @@
   - type: Construction
     graph: CEWallWooden
     node: CEWallFrameWoodenFinished
+  - type: WallReplacementMarker
 
 - type: entity
   id: CEWallWooden

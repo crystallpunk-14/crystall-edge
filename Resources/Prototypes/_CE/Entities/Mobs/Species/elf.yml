@@ -23,17 +23,16 @@
       reagents:
       - ReagentId: CEBloodElf
         Quantity: 300
-#  - type: CP14MagicEnergyContainer #Increased mana container
-#    maxEnergy: 200
-#    energy: 200
-#  - type: CP14MagicEnergyDraw #No mana regeneration :3
-#    energy: 0
-#    delay: 3
-#  - type: CESkillStorage #Innate metamagic + trance
-#    freeLearnedSkills:
-#    - MetamagicT1
-#    - MetamagicT2
-#    - CEActionSpellManaTrance
+  - type: CESkillStorage #Innate magic tricks
+    availableSkillTrees:
+    - ElfMagic
+    skillPoints:
+      ElfMagic:
+        max: 2
+  - type: CEEnergyOverchargeDamage
+    damage:
+      types:
+        Slash: 0 # Zero overcharge damage
 #  - type: CEAuraImprint
 #    imprintLength: 10 #Long imprint hehe
 #    imprintColor: "#42aaf5"

@@ -55,3 +55,9 @@
     state: wing
   name: ce-alerts-aircaught-name
   description: ce-alerts-aircaught-desc
+
+- type: alert
+  id: CEGlowing
+  icons:
+  - sprite: _CE/Actions/elf_magic.rsi
+    state: sphere_of_light

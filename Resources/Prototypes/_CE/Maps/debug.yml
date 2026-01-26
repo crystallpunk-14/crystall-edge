@@ -16,36 +16,7 @@
 - type: gameMap
   id: Dev
   mapName: Dev
-  mapsBelow:
-  - /Maps/_CE/Dev/Dev-1.yml
   mapPath: /Maps/_CE/Dev/Dev0.yml
-  mapsAbove:
-  - /Maps/_CE/Dev/Dev1.yml
-  - /Maps/_CE/Dev/Dev2.yml
-  - /Maps/_CE/Dev/Dev3.yml
-  zLevelsComponentOverrides:
-    - type: MapAtmosphere
-      space: False
-      mixture:
-        volume: 2500
-        immutable: True
-        temperature: 293.15
-        moles:
-          Oxygen: 21.824879
-          Nitrogen: 82.10312
-    - type: Parallax
-      parallax: CESky
-    - type: SunShadowCycle
-      offset: 100
-      duration: 300
-    - type: LightCycle
-      offset: 100
-      duration: 300
-      originalColor: "#75e3ff"
-    - type: CEZLevelMapRoof
-    - type: SunShadow
-    - type: MapLight
-      ambientLightColor: "#75e3ff"
   minPlayers: 0
   stations:
     Dev:
@@ -58,6 +29,36 @@
             CETownfolk: [ -1, -1 ]
             CEGuardCommander: [ 1, 1 ]
             CETavernmaster: [ 1, 1 ]
+        - type: CEStationZLevels
+          mapsAbove:
+          - /Maps/_CE/Dev/Dev1.yml
+          - /Maps/_CE/Dev/Dev2.yml
+          - /Maps/_CE/Dev/Dev3.yml
+          mapsBelow:
+          - /Maps/_CE/Dev/Dev-1.yml
+          zLevelsComponentOverrides:
+            - type: MapAtmosphere
+              space: False
+              mixture:
+                volume: 2500
+                immutable: True
+                temperature: 293.15
+                moles:
+                  Oxygen: 21.824879
+                  Nitrogen: 82.10312
+            - type: Parallax
+              parallax: CESky
+            - type: SunShadowCycle
+              offset: 100
+              duration: 300
+            - type: LightCycle
+              offset: 100
+              duration: 300
+              originalColor: "#75e3ff"
+            - type: CEZLevelMapRoof
+            - type: SunShadow
+            - type: MapLight
+              ambientLightColor: "#75e3ff"
         - type: CEStationSpawnerDistribution
           spawns:
             CECoin: !type:AllSelector

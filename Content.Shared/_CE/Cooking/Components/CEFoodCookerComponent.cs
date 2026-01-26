@@ -65,6 +65,7 @@ public sealed partial class CEFoodData
         Visuals = new List<PrototypeLayerData>(data.Visuals);
         Trash = new List<EntProtoId>(data.Trash);
         Flavors = new HashSet<LocId>(data.Flavors);
+        StatusEffects = new Dictionary<EntProtoId, float>(data.StatusEffects);
     }
 
     [DataField]
@@ -84,6 +85,15 @@ public sealed partial class CEFoodData
 
     [DataField]
     public HashSet<LocId> Flavors = new();
+
+    /// <summary>
+    /// Status effects granted by consuming food with this FoodData. Effects stack, in seconds, and are multiplied by the number of units consumed.
+    /// </summary>
+    [DataField]
+    public Dictionary<EntProtoId, float> StatusEffects = new()
+    {
+        {"CEStatusEffectGoodFoodRegen", 2f }
+    };
 }
 
 [Serializable, NetSerializable]

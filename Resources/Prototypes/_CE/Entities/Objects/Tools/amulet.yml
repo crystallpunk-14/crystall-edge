@@ -1,0 +1,25 @@
+- type: entity
+  id: CESafeFallingAmulet
+  parent: BaseItem
+  name: Emergency Levitation Amulet
+  description: An essential piece of everyday equipment for residents of the flying islands, protecting them from accidental falls from the island. Put it on your belt, and if you accidentally fall from the island, you will have a chance to save yourself.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Normal
+  - type: Sprite
+    sprite: _CE/Objects/Tools/amulets.rsi
+    layers:
+    - state: safe_faling
+    - state: safe_faling_unshaded
+      shader: unshaded
+  - type: CESafeFallClothing
+  - type: Clothing
+    equipDelay: 0.25
+    unequipDelay: 0.25
+    quickEquip: false
+    equipWhileMoving: true
+    slots:
+    - BELT
+  - type: StaticPrice
+    price: 75
