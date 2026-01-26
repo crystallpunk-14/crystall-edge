@@ -144,6 +144,12 @@ public sealed class CEZLevelPullingSystem : EntitySystem
             return;
         }
 
+        if (!_actionBlocker.CanInteract(comp.TargetPuller.Value, uid))
+        {
+            RemComp<CEZLevelPullingTransitionComponent>(uid);
+            return;
+        }
+
         // Try to resume pulling from the puller
         _pulling.TryStartPull(comp.TargetPuller.Value, uid);
         RemComp<CEZLevelPullingTransitionComponent>(uid);
