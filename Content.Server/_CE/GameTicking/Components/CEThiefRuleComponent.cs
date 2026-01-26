@@ -13,5 +13,5 @@ public sealed partial class CEThiefRuleComponent : Component
     public ProtoId<CESkillTreePrototype> ThiefSkillTree = "Thief";
 
     [DataField]
-    public ProtoId<CESkillPointPrototype> SkillPointType = "Memory"; //TODO: fix dublicating with CEThiefRoleComponent
+    public ProtoId<CESkillPointPrototype> SkillPointType = "Memory"; //TODO: fix duplicating with CEThiefRoleComponent
 }
