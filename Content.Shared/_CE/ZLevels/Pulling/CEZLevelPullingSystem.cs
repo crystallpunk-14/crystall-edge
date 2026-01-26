@@ -5,7 +5,7 @@ using Content.Shared.Pulling.Events;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.ZLevels.Pulling;
-
+//this is workaround, it works most of the time, im sad
 public sealed class CEZLevelPullingSystem : EntitySystem
 {
     [Dependency] private readonly PullingSystem _pulling = default!;
