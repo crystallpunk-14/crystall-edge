@@ -433,9 +433,6 @@ public abstract partial class CESharedSkillSystem : EntitySystem
         FixedPoint2? limit = null,
         bool silent = false)
     {
-        if (points <= 0)
-            return true;
-
         if (!Resolve(ent, ref ent.Comp, false))
             return false;
 
@@ -453,6 +450,9 @@ public abstract partial class CESharedSkillSystem : EntitySystem
             : skillContainer.Max + points;
 
         DirtyField(ent, ent.Comp, nameof(CESkillStorageComponent.SkillPoints));
+
+        if (points <= 0)
+            return true;
 
         if (indexedType.GetPointPopup is not null && !silent && _timing.IsFirstTimePredicted)
             _popup.PopupClient(Loc.GetString(indexedType.GetPointPopup, ("count", points)), ent, ent);
