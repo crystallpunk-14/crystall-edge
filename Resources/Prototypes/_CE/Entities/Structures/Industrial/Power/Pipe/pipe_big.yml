@@ -287,3 +287,5 @@
     node: CEPipeBrassBigBroken
   - type: CEPipeVisualizer
     statePrefix: broken_pipe_
+  - type: Cable
+    cableDroppedOnCutPrototype: CEOverchargeSmallVFX
