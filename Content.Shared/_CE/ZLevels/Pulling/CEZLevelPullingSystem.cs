@@ -1,6 +1,8 @@
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Systems;
+using Content.Shared.Pulling.Events;
+using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.ZLevels.Pulling;
 
@@ -9,6 +11,8 @@ public sealed class CEZLevelPullingSystem : EntitySystem
     [Dependency] private readonly PullingSystem _pulling = default!;
     [Dependency] private readonly CESharedZLevelsSystem _zlevel = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
+
 
     public override void Initialize()
     {
@@ -17,74 +21,93 @@ public sealed class CEZLevelPullingSystem : EntitySystem
         SubscribeLocalEvent<CEZLevelActivePullerComponent, CEZLevelMapMoveEvent>(OnZlevelMapMovePuller);
         SubscribeLocalEvent<CEZLevelActivePulledComponent, MoveEvent>(OnZlevelMapMovePulled);
         SubscribeLocalEvent<ActivePullerComponent, CETryZLevelMapMoveEvent>(OnZlevelMapMoving);
+        //SubscribeLocalEvent<CEZLevelActivePullerComponent, StartPullAttemptEvent>(OnPullingStart);
     }
 
-    private void OnZlevelMapMoving(Entity<ActivePullerComponent> ent, ref CETryZLevelMapMoveEvent args)
+    private void OnZlevelMapMoving(Entity<ActivePullerComponent> pullerEnt, ref CETryZLevelMapMoveEvent args)
     {
+        if (!_timing.IsFirstTimePredicted) return;
+
         if (args.Cancelled) return;
 
-        if (!_pulling.IsPulling(ent)) return;
+        if (!_pulling.IsPulling(pullerEnt)) return;
 
-        var pulledEnt = _pulling.GetPulling(ent);
+        var pulledEnt = _pulling.GetPulling(pullerEnt);
         if (!pulledEnt.HasValue) return;
 
-        AddComp<CEZLevelActivePullerComponent>(ent, new() { PulledEnt = pulledEnt.Value });
-        AddComp<CEZLevelActivePulledComponent>(pulledEnt.Value, new() { PullerEnt = ent });
+        var pullerComp = EnsureComp<CEZLevelActivePullerComponent>(pullerEnt);
+        var pulledComp = EnsureComp<CEZLevelActivePulledComponent>(pulledEnt.Value);
+
+        pulledComp.PullerEnt = pullerEnt;
+        pullerComp.PulledEnt = pulledEnt.Value;
+
+        Dirty(pullerEnt, pullerComp);
+        Dirty(pulledEnt.Value, pulledComp);
 
         _pulling.TryStopPull(pulledEnt.Value, Comp<PullableComponent>(pulledEnt.Value));
     }
 
-    private void OnZlevelMapMovePuller(Entity<CEZLevelActivePullerComponent> ent, ref CEZLevelMapMoveEvent args)
+    private void OnZlevelMapMovePuller(Entity<CEZLevelActivePullerComponent> pullerEnt, ref CEZLevelMapMoveEvent args)
     {
-        var pulledEnt = ent.Comp.PulledEnt;
+        if (!_timing.IsFirstTimePredicted) return;
+
+        var pulledEnt = pullerEnt.Comp.PulledEnt;
         if (!TryComp<CEZLevelActivePulledComponent>(pulledEnt, out var pulledComp))
         {
-            RemComp<CEZLevelActivePullerComponent>(ent);
+            RemComp<CEZLevelActivePullerComponent>(pullerEnt);
             return;
         }
-        if (pulledComp.PullerEnt != ent.Owner)
+        if (pulledComp.PullerEnt != pullerEnt.Owner)
         {
             RemComp<CEZLevelActivePulledComponent>(pulledEnt);
-            RemComp<CEZLevelActivePullerComponent>(ent);
+            RemComp<CEZLevelActivePullerComponent>(pullerEnt);
             return;
         }
         if (!_zlevel.TryMove(pulledEnt, args.Offset))
         {
             RemComp<CEZLevelActivePulledComponent>(pulledEnt);
-            RemComp<CEZLevelActivePullerComponent>(ent);
+            RemComp<CEZLevelActivePullerComponent>(pullerEnt);
             return;
         }
-        _transform.SetCoordinates(pulledEnt, Transform(ent).Coordinates);
+        _transform.SetCoordinates(pulledEnt, Transform(pullerEnt).Coordinates);
 
 
-        RemComp<CEZLevelActivePullerComponent>(ent);
-
+        RemComp<CEZLevelActivePulledComponent>(pulledEnt);
+        RemComp<CEZLevelActivePullerComponent>(pullerEnt);
     }
-    private void OnZlevelMapMovePulled(Entity<CEZLevelActivePulledComponent> ent, ref MoveEvent args)
+    private void OnZlevelMapMovePulled(Entity<CEZLevelActivePulledComponent> pulledEnt, ref MoveEvent args)
     {
-        var pullerEnt = ent.Comp.PullerEnt;
+        if (!_timing.IsFirstTimePredicted) return;
+
+        var pullerEnt = pulledEnt.Comp.PullerEnt;
         if (!TryComp<CEZLevelActivePullerComponent>(pullerEnt, out var pullerComp))
         {
-            RemComp<CEZLevelActivePulledComponent>(ent);
+            RemComp<CEZLevelActivePulledComponent>(pulledEnt);
             return;
         }
-        if (pullerComp.PulledEnt != ent.Owner)
+        if (pullerComp.PulledEnt != pulledEnt.Owner)
         {
-            RemComp<CEZLevelActivePulledComponent>(ent);
+            RemComp<CEZLevelActivePulledComponent>(pulledEnt);
             RemComp<CEZLevelActivePullerComponent>(pullerEnt);
             return;
         }
 
 
-        if (!_pulling.CanPull(pullerEnt, ent))
+        if (!_pulling.CanPull(pullerEnt, pulledEnt))
         {
-            RemComp<CEZLevelActivePulledComponent>(ent);
+            RemComp<CEZLevelActivePulledComponent>(pulledEnt);
             return;
         }
+        _pulling.TryStartPull(pullerEnt, pulledEnt);
 
-        _pulling.TryStartPull(pullerEnt, ent);
+        RemComp<CEZLevelActivePulledComponent>(pulledEnt);
+        RemComp<CEZLevelActivePullerComponent>(pulledEnt);
+    }
 
-        RemComp<CEZLevelActivePulledComponent>(ent);
+    private void OnPullingStart(Entity<CEZLevelActivePullerComponent> ent, ref StartPullAttemptEvent args)
+    {
+        if (_pulling.IsPulling(ent))
+            args.Cancel();
     }
 }
 

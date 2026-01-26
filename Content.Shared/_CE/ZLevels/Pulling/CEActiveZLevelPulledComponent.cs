@@ -1,11 +1,13 @@
+using Robust.Shared.GameStates;
+
 namespace Content.Shared._CE.ZLevels.Pulling;
 
 /// <summary>
 /// Temporary component added during z-level transitions to track the entity pulling this entity across z-levels.
 /// </summary>
-[RegisterComponent]
+[RegisterComponent, AutoGenerateComponentState, NetworkedComponent]
 public sealed partial class CEZLevelActivePulledComponent : Component
 {
-    [DataField]
+    [DataField, AutoNetworkedField]
     public EntityUid PullerEnt;
 }
