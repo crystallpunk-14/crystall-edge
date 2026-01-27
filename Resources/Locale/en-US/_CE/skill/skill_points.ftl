@@ -1,3 +1,4 @@
 ce-skill-point-memory = Memory
 ce-skill-point-vampire-blood = Blood essence
 ce-skill-point-elf-magic = Elf Magic
+ce-skill-point-lurker = Prey essence
