@@ -1,17 +1,17 @@
 - type: entity
   abstract: true
-  id: CEManaCollectorBase
+  id: CEAccumulatorVesselBase
   categories: [ ForkFiltered ]
   parent: 
   - CEConstructibleMachine
   - BaseMachine
-  name: mana collector
-  description: A structure that collects ambient magical energy from the environment and stores it for later use.
+  name: accumulator vessel
+  description: A structure that collects magical energy and stores it for later use.
   placement:
     mode: SnapgridCenter
   components:
   - type: Machine
-    board: CEMachineCoreManaCollector
+    board: CEMachineCoreAccumulatorVessel
   - type: PlacementReplacement
     key: walls
   #- type: AmbientSound
@@ -84,8 +84,8 @@
     price: 100
 
 - type: entity
-  parent: CEManaCollectorBase
-  id: CEManaCollector
+  parent: CEAccumulatorVesselBase
+  id: CEAccumulatorVessel
   suffix: Charged
   components:
   - type: Battery
@@ -93,8 +93,8 @@
     startingCharge: 1000
 
 - type: entity
-  parent: CEManaCollectorBase
-  id: CEManaCollectorEmpty
+  parent: CEAccumulatorVesselBase
+  id: CEAccumulatorVesselEmpty
   suffix: Empty
   components:
   - type: Battery

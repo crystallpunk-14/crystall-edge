@@ -97,12 +97,12 @@
     prototype: CEDistributionUnitBasic
 
 - type: entity
-  id: CEMachineCoreManaCollector
+  id: CEMachineCoreAccumulatorVessel
   parent: CEBaseMachineCore
-  name: mana collector machine core
+  name: accumulator vessel machine core
   components:
   - type: MachineBoard
-    prototype: CEManaCollectorEmpty
+    prototype: CEAccumulatorVesselEmpty
 
 - type: entity
   id: CEMachineCoreTerminal
