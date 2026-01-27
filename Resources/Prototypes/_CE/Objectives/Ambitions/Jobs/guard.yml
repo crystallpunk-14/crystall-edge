@@ -13,6 +13,7 @@
   parent: CEBaseGuardAmbition
   id: CEAmbitionSuspicion
   components:
+  - type: CEAmbitionObjective
     name: ce-ambition-suspicion-name
     desc: ce-ambition-suspicion-desc
     weight: 2
