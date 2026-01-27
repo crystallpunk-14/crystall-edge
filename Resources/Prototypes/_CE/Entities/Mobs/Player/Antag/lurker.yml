@@ -24,7 +24,7 @@
     prototype: Animal
   - type: CombatMode
   - type: Stamina
-    critThreshold: 200
+    baseCritThreshold: 200
   - type: Grammar
     attributes:
       gender: epicene
