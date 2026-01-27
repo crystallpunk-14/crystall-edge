@@ -108,5 +108,14 @@ ce-ambition-faked-death-desc = Все должны поверить в то, ч�
 ce-ambition-extremist-name = Экстремал
 ce-ambition-extremist-desc = Острые ощущения как смысл моей жизни. Спрыгивать с крыш в сугробы, ходить по краю пропасти... Это просто мой образ жизни.
 
+ce-ambition-thief-vengeance-name = Это личное
+ce-ambition-thief-vengeance-desc = Бедняга !NAME! перешел мне дорогу в прошлом - я не потерплю этого. Я отниму у него все что ему дорого. Оставлю его в одних штанах. Буквально.
+
+ce-ambition-thief-carcat-mischief-name = Кошачье бесоебство
+ce-ambition-thief-carcat-mischief-desc = Я люблю смотреть как вещи падают вниз. Мне нужно скинуть как можно больше чужих вещей с острова.
+
+ce-ambition-thief-lair-name = Мое логово
+сe-ambition-thief-lair-desc = Из-за того что !REASON!, я должен обустроить свое логово в !LOCATION!.
+
 ce-ambition-fashionista-name = Модник
 ce-ambition-fashionista-desc = Хочу быть одетым по последнему писку моды.

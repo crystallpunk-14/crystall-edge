@@ -108,5 +108,14 @@ ce-ambition-faked-death-desc = Everyone must believe that I am dead.
 ce-ambition-extremist-name = Extreme Enthusiast
 ce-ambition-extremist-desc = Thrills are the meaning of my life. Jumping off roofs into snowdrifts, walking on the edge of a cliff... It's simply my way of life.
 
+ce-ambition-thief-vengeance-name = It's Personal
+ce-ambition-thief-vengeance-desc = Poor !NAME! got in my way in the past - I won't tolerate it. I'll take away everything dear to him. I'll leave him in his pants alone. Literally.
+
+ce-ambition-thief-carcat-mischief-name = Feline Mischief
+ce-ambition-thief-carcat-mischief-desc = I love watching things fall down. I need to throw as many people's things off the island as possible.
+
+ce-ambition-thief-lair-name = My Lair
+ce-ambition-thief-lair-desc = Because !REASON!, I must set up my lair in !LOCATION!.
+
 ce-ambition-fashionista-name = Fashionista
 ce-ambition-fashionista-desc = I want to be dressed in the latest fashion.
