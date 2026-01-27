@@ -40,7 +40,7 @@
         - !type:MovementSpeedModifier
           walkSpeedModifier: 0.2
           sprintSpeedModifier: 0.2
-          statusLifetime: 2
+          time: 2
         - !type:Jitter
         - !type:GenericStatusEffect
           key: Pacified
