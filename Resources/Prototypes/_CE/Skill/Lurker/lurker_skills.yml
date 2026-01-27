@@ -1,6 +1,6 @@
 - type: skill
   id: Fear
-  skillUiPosition: 2, 7
+  skillUiPosition: 2, 4
   learnCost: 0
   tree: Lurker
   icon:
@@ -12,7 +12,7 @@
 
 - type: skill
   id: Kick
-  skillUiPosition: 3, 7
+  skillUiPosition: 2, 7
   learnCost: 0
   tree: Lurker
   icon:
@@ -24,7 +24,7 @@
 
 - type: skill
   id: Step
-  skillUiPosition: 4, 7
+  skillUiPosition: 2, 10
   learnCost: 0
   tree: Lurker
   icon:
