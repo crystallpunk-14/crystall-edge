@@ -86,3 +86,27 @@ ce-ambition-hoverboard-desc = I want to have my own hoverboard and fly through t
 
 ce-ambition-hoverboard-race-name = Racer
 ce-ambition-hoverboard-race-desc = I want to race hoverboards with !NAME!.
+
+ce-ambition-safety-name = Safety protocol
+ce-ambition-safety-desc = I must make sure every citizen has an emergency levitation amulet. No one must die by falling off the island.
+
+ce-ambition-suspicion-name = Suspicion
+ce-ambition-suspicion-desc = I'm convinced that !NAME! is a criminal, but I can't prove it.
+
+ce-ambition-harsh-commander-name = Harsh commander
+ce-ambition-harsh-commander-desc = My subordinates must obey me without question or they will be dismissed.
+
+ce-ambition-kind-commander-name = Kindest guard commander
+ce-ambition-kind-commander-desc = Everyone deserves a second chance. My kind words will surely convince others not to repeat their mistakes.
+
+ce-ambition-gluttony-name = Deadly Sin: Gluttony
+ce-ambition-gluttony-desc = Delicious food is the best thing in this world. If I die, it should be from overeating.
+
+ce-ambition-faked-death-name = Death Staging
+ce-ambition-faked-death-desc = Everyone must believe that I am dead.
+
+ce-ambition-extremist-name = Extreme Enthusiast
+ce-ambition-extremist-desc = Thrills are the meaning of my life. Jumping off roofs into snowdrifts, walking on the edge of a cliff... It's simply my way of life.
+
+ce-ambition-fashionista-name = Fashionista
+ce-ambition-fashionista-desc = I want to be dressed in the latest fashion.

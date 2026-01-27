@@ -48,3 +48,10 @@
   - type: CEAmbitionObjective
     name: ce-ambition-drama-master-name
     desc: ce-ambition-drama-master-desc
+- type: entity
+  parent: CEBaseTownfolkAmbition
+  id: CEAmbitionFashionista
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-fashionista-name
+    desc: ce-ambition-fashionista-desc

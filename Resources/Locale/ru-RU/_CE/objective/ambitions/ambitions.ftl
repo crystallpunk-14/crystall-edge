@@ -86,3 +86,27 @@ ce-ambition-hoverboard-desc = Я так хочу иметь свой личны�
 
 ce-ambition-hoverboard-race-name = Гонщик
 ce-ambition-hoverboard-race-desc = Хочу устроить гонку на ховербордах с !NAME!.
+
+ce-ambition-safety-name = Техника безопасности
+ce-ambition-safety-desc = Я должен проследить чтобы у каждого горожанина был амулет аварийной левитации. Никто не должен погибнуть, упав с острова
+
+ce-ambition-suspicion-name = Подозрения
+ce-ambition-suspicion-desc = Я уверен что !NAME! - преступник, но я не могу этого доказать
+
+ce-ambition-harsh-commander-name = Суровый начальник
+ce-ambition-harsh-commander-desc = Мои подчиненные должны беспрекословно подчиняться мне, иначе будут уволены.
+
+ce-ambition-kind-commander-name = Самый добрый командир стражи
+ce-ambition-kind-commander-desc = Все заслуживают второго шанса. Мое доброе слово точно сможет убедить остальных не повторять их ошибок.
+
+ce-ambition-gluttony-name = Смертельный грех: Обжорство
+ce-ambition-gluttony-desc = Вкусная еда - лучшее что есть в этом мире. Если я и умру, то это должна быть смерть от переедания.
+
+ce-ambition-faked-death-name = Постановка смерти
+ce-ambition-faked-death-desc = Все должны поверить в то, что я умер.
+
+ce-ambition-extremist-name = Экстремал
+ce-ambition-extremist-desc = Острые ощущения как смысл моей жизни. Спрыгивать с крыш в сугробы, ходить по краю пропасти... Это просто мой образ жизни.
+
+ce-ambition-fashionista-name = Модник
+ce-ambition-fashionista-desc = Хочу быть одетым по последнему писку моды.
