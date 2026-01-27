@@ -127,4 +127,4 @@ ce-ambition-fashionista-name = Модник
 ce-ambition-fashionista-desc = Хочу быть одетым по последнему писку моды.
 
 ce-ambition-nesting-name = Гнездование
-ce-ambition-nesting-desc = Хочу построить гнездо в каком нибудь высоком месте. B желательно, жить там не одному.
+ce-ambition-nesting-desc = Хочу построить гнездо в каком-нибудь высоком месте. И желательно жить там не одному.
