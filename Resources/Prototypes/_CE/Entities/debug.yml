@@ -27,3 +27,11 @@
     solution: pool
     edible: Drink
 
+- type: entity
+  parent: ComputerPowerMonitoring
+  id: CEComputerPowerMonitoring
+  categories: [ ForkFiltered ]
+  suffix: Debug, 0W
+  components:
+  - type: ApcPowerReceiver
+    powerLoad: 0

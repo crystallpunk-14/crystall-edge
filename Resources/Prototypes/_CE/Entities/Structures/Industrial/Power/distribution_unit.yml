@@ -63,6 +63,12 @@
   - type: BatteryCharger
     voltage: High
     node: input
+  - type: PowerMonitoringDevice
+    group: APC
+    sourceNode: input
+    loadNode: output
+    sprite: Structures/Power/power.rsi
+    state: distribution
   - type: PowerProvider
     voltage: Apc
   - type: Apc

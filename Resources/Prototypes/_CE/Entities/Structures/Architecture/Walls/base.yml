@@ -36,6 +36,7 @@
         - WallLayer
         density: 1000
   - type: CEZLevelHighGround
+  - type: CEOccludePipes
 
 - type: entity
   id: CEBaseWallFrame

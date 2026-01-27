@@ -20,8 +20,7 @@
   #  sound:
   #    path: /Audio/Ambience/Objects/periodic_beep.ogg
   - type: Sprite
-    sprite: _CE/Structures/Industrial/Power/collector.rsi
-    snapCardinals: true
+    sprite: _CE/Structures/Industrial/Power/accumulator.rsi
     drawdepth: Mobs
     layers:
       - state: base
@@ -67,6 +66,12 @@
   - type: BatteryCharger
     voltage: High
     node: input
+  - type: PowerMonitoringDevice
+    group: SMES
+    sourceNode: input
+    loadNode: output
+    sprite: Structures/Power/power.rsi
+    state: accumulator
   - type: PowerNetworkBattery
     maxSupply: 10
     maxChargeRate: 10
@@ -82,6 +87,7 @@
     damageModifierSet: StructuralMetallicStrong
   - type: StaticPrice
     price: 100
+  - type: CEOccludePipes
 
 - type: entity
   parent: CEAccumulatorVesselBase

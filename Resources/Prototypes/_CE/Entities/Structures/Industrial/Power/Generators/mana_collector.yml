@@ -42,6 +42,11 @@
     maxCharge: 100
   - type: ExaminableBattery #TODO Change to mana specific
   - type: BatteryDischarger
+  - type: PowerMonitoringDevice
+    group: Generator
+    loadNode: input
+    sprite: Structures/Power/power.rsi
+    state: generator
   - type: PowerNetworkBattery
     maxSupply: 10
     maxChargeRate: 10
