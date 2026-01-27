@@ -115,7 +115,7 @@ ce-ambition-thief-carcat-mischief-name = Кошачье бесоебство
 ce-ambition-thief-carcat-mischief-desc = Я люблю смотреть как вещи падают вниз. Мне нужно скинуть как можно больше чужих вещей с острова.
 
 ce-ambition-thief-lair-name = Мое логово
-сe-ambition-thief-lair-desc = Из-за того что !REASON!, я должен обустроить свое логово в !LOCATION!.
+ce-ambition-thief-lair-desc = Из-за того что !REASON!, я должен обустроить свое логово в !LOCATION!.
 
 ce-ambition-thief-carrin-magpie-name = Сорока
 ce-ambition-thief-carrin-magpie-desc = Мне очень нравятся блестящие вещи. Хочу собрать большую коллекцию разных блестяшек.
