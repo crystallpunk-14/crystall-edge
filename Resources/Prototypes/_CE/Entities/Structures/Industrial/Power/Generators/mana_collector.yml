@@ -1,7 +1,7 @@
 - type: entity
   id: CEGeneratorMagicCapacitor
   categories: [ ForkFiltered ]
-  parent: 
+  parent:
   - CEConstructibleMachine
   - BaseMachine
   name: air capacitor
@@ -19,12 +19,22 @@
   #  sound:
   #    path: /Audio/Ambience/Objects/periodic_beep.ogg
   - type: Sprite
-    sprite: _CE/Structures/Industrial/Power/accumulator.rsi #TODO
-    snapCardinals: true
+    sprite: _CE/Structures/Industrial/Power/Generator/collector.rsi #TODO
     drawdepth: Mobs
     layers:
       - state: base
-        color: cyan
+      - sprite: _CE/Effects/cast_impact48.rsi
+        state: circle_decrease
+        color: "#00ffff48"
+        visible: false
+        map: [ "active" ]
+  - type: GenericVisualizer
+    visuals:
+      enum.CERadiationReceiverVisuals.Active:
+        active:
+          True: { visible: true }
+          False: { visible: false }
+  - type: CERadiationReceiverVisuals
   - type: Appearance
   - type: NodeContainer
     examinable: true
