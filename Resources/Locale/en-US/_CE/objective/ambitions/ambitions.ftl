@@ -117,5 +117,14 @@ ce-ambition-thief-carcat-mischief-desc = I love watching things fall down. I nee
 ce-ambition-thief-lair-name = My Lair
 ce-ambition-thief-lair-desc = Because !REASON!, I must set up my lair in !LOCATION!.
 
+ce-ambition-thief-carrin-magpie-name = Magpie
+ce-ambition-thief-carrin-magpie-desc = I love shiny things so much. I want to collect a big collection of different shiny things.
+
+ce-ambition-thief-blind-justice-name = Blind Justice
+ce-ambition-thief-blind-justice-desc = I want the rich to get richer and the poor to get poorer.
+
 ce-ambition-fashionista-name = Fashionista
 ce-ambition-fashionista-desc = I want to be dressed in the latest fashion.
+
+ce-ambition-nesting-name = Nesting
+ce-ambition-nesting-desc = I want to build a nest in some high place. Preferably, not live there alone.

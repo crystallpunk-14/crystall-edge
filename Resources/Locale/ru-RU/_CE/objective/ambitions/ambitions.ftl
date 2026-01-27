@@ -117,5 +117,14 @@ ce-ambition-thief-carcat-mischief-desc = Я люблю смотреть как �
 ce-ambition-thief-lair-name = Мое логово
 сe-ambition-thief-lair-desc = Из-за того что !REASON!, я должен обустроить свое логово в !LOCATION!.
 
+ce-ambition-thief-carrin-magpie-name = Сорока
+ce-ambition-thief-carrin-magpie-desc = Мне очень нравятся блестящие вещи. Хочу собрать большую коллекцию разных блестяшек.
+
+ce-ambition-thief-blind-justice-name = Слепая справедливость
+ce-ambition-thief-blind-justice-desc = Я хочу чтобы богатые стали богаче а бедные беднее.
+
 ce-ambition-fashionista-name = Модник
 ce-ambition-fashionista-desc = Хочу быть одетым по последнему писку моды.
+
+ce-ambition-nesting-name = Гнездование
+ce-ambition-nesting-desc = Хочу построить гнездо в каком нибудь высоком месте. B желательно, жить там не одному.

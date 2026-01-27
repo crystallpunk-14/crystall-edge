@@ -19,9 +19,8 @@
       NAME: !type:RandomOtherPerson
 
 - type: entity
-  parent: CEBaseAmbitionObjective
-  id: CEBaseThiefCarcatAmbition
-  abstract: true
+  parent: CEBaseThiefAmbition
+  id: CEAmbitionThiefCarcatMischief
   components:
   - type: CEAmbitionObjective
     conditions:
@@ -29,13 +28,6 @@
       - !type:RequiredSpecies
         species:
         - CECarcat
-    weight: 3 #Antag ambitions are fun!!
-
-- type: entity
-  parent: CEBaseThiefCarcatAmbition
-  id: CEAmbitionThiefCarcatMischief
-  components:
-  - type: CEAmbitionObjective
     name: ce-ambition-thief-carcat-mischief-name
     desc: ce-ambition-thief-carcat-mischief-desc
 
@@ -51,3 +43,24 @@
       REASON: !type:RandomDataset
         dataset: CEAmbitionReason
       LOCATION: !type:RandomLocation
+
+- type: entity
+  parent: CEBaseThiefAmbition
+  id: CEAmbitionThiefCarrinMagpie
+  components:
+  - type: CEAmbitionObjective
+    conditions:
+      - !type:RequiredThiefRole
+      - !type:RequiredSpecies
+        species:
+        - CECarrin
+    name: ce-ambition-thief-carrin-magpie-name
+    desc: ce-ambition-thief-carrin-magpie-desc
+
+- type: entity
+  parent: CEBaseThiefAmbition
+  id: CEAmbitionThiefBlindJustice
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-thief-blind-justice-name
+    desc: ce-ambition-thief-blind-justice-desc
