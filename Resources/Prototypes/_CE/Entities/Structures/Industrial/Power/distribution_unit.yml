@@ -20,7 +20,6 @@
   #    path: /Audio/Ambience/Objects/periodic_beep.ogg
   - type: Sprite
     sprite: _CE/Structures/Industrial/Power/distribution_unit.rsi
-    snapCardinals: true
     drawdepth: Mobs
     layers:
       - state: base
@@ -110,6 +109,7 @@
   #    - !type:ExplodeBehavior
   - type: StaticPrice
     price: 100
+  - type: CEOccludePipes
 
 - type: entity
   parent: CEDistributionUnitBase

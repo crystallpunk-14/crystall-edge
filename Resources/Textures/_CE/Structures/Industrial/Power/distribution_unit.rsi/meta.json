@@ -20,13 +20,16 @@
             "name": "discharging2"
         },
         {
-            "name": "base"
+            "name": "base",
+            "directions": 4
         },
         {
-            "name": "glass"
+            "name": "glass",
+            "directions": 4
         },
         {
-            "name": "top"
+            "name": "top",
+            "directions": 4
         },
         {
             "name": "fill-1",

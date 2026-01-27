@@ -19,7 +19,7 @@
   #  sound:
   #    path: /Audio/Ambience/Objects/periodic_beep.ogg
   - type: Sprite
-    sprite: _CE/Structures/Industrial/Power/collector.rsi #TODO
+    sprite: _CE/Structures/Industrial/Power/accumulator.rsi #TODO
     snapCardinals: true
     drawdepth: Mobs
     layers:
