@@ -1,0 +1,56 @@
+- type: entity
+  id: CEGeneratorMagicCapacitor
+  categories: [ ForkFiltered ]
+  parent: 
+  - CEConstructibleMachine
+  - BaseMachine
+  name: air capacitor
+  description: Absorbs magical energy diffusing in the air, condenses it into a liquid form that can be transported through brass pipes.
+  placement:
+    mode: SnapgridCenter
+  components:
+  #- type: Machine
+  #  board: CEMachineCoreAccumulatorVessel
+  - type: PlacementReplacement
+    key: walls
+  #- type: AmbientSound
+  #  volume: -7
+  #  range: 3
+  #  sound:
+  #    path: /Audio/Ambience/Objects/periodic_beep.ogg
+  - type: Sprite
+    sprite: _CE/Structures/Industrial/Power/collector.rsi #TODO
+    snapCardinals: true
+    drawdepth: Mobs
+    layers:
+      - state: base
+        color: cyan
+  - type: Appearance
+  - type: NodeContainer
+    examinable: true
+    nodes:
+      input:
+        !type:CableDeviceNode
+        nodeGroupID: HVPower
+  - type: Battery
+    # Very important:
+    # Disable networking to prevent the battery getting continuously dirtied every tick as it interacts with the power network.
+    # This can not be done by changing the charge rate as the power supply ramps up over time.
+    # This disables prediction for this battery.
+    netsync: false
+    startingCharge: 0
+    maxCharge: 100
+  - type: ExaminableBattery #TODO Change to mana specific
+  - type: BatteryDischarger
+  - type: PowerNetworkBattery
+    maxSupply: 10
+    maxChargeRate: 10
+    supplyRampTolerance: 10
+    supplyRampRate: 1
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallicStrong
+  - type: RadiationReceiver
+  - type: CEEnergyRadiationRegeneration
+    energy: 1
+  #- type: CEEnergyOverchargeDamage
