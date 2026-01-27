@@ -12,7 +12,7 @@
   - type: Action
     useDelay: 30
     icon:
-      sprite: _CE/Actions/Spells/lurker.rsi
+      sprite: _CE/Actions/lurker.rsi
       state: step
   - type: TargetAction
     checkCanAccess: false

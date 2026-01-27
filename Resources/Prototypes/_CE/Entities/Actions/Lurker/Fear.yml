@@ -11,7 +11,7 @@
   - type: Action
     useDelay: 30
     icon:
-      sprite: _CE/Actions/Spells/lurker.rsi
+      sprite: _CE/Actions/lurker.rsi
       state: fear
   - type: TargetAction
     range: 15
@@ -37,7 +37,7 @@
       - !type:CESpellRevealStealthUser
       - !type:CESpellApplyEntityEffect
         effects:
-        - !type:MovespeedModifier
+        - !type:MovementSpeedModifier
           walkSpeedModifier: 0.2
           sprintSpeedModifier: 0.2
           statusLifetime: 2

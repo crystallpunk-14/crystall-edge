@@ -103,9 +103,11 @@
     - Lurker
     freeLearnedSkills:
     - Fear
+    - Kick
+    - Step
     skillPoints:
       Lurker:
-       max: 2
+       max: 0
   - type: Stealth
     enabledOnDeath: false
     maxVisibility: 1.2

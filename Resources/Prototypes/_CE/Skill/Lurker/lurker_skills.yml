@@ -2,11 +2,34 @@
   id: Fear
   skillUiPosition: 2, 7
   learnCost: 0
-  skillTree: Lurker
+  tree: Lurker
   icon:
-    sprite: _CE/Actions/elf_magic.rsi
-    state: sphere_of_light
+    sprite: _CE/Actions/lurker.rsi
+    state: fear
   effects:
   - !type:AddAction
     action: CEActionSpellLurkerFear
 
+- type: skill
+  id: Kick
+  skillUiPosition: 3, 7
+  learnCost: 0
+  tree: Lurker
+  icon:
+    sprite: _CE/Actions/lurker.rsi
+    state: kick
+  effects:
+  - !type:AddAction
+    action: CEActionSpellLurkerKick
+
+- type: skill
+  id: Step
+  skillUiPosition: 4, 7
+  learnCost: 0
+  tree: Lurker
+  icon:
+    sprite: _CE/Actions/lurker.rsi
+    state: step
+  effects:
+  - !type:AddAction
+    action: CEActionSpellLurkerStep
