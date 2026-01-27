@@ -1,0 +1,12 @@
+- type: skill
+  id: Fear
+  skillUiPosition: 2, 7
+  learnCost: 0
+  skillTree: Lurker
+  icon:
+    sprite: _CE/Actions/elf_magic.rsi
+    state: sphere_of_light
+  effects:
+  - !type:AddAction
+    action: CEActionSpellLurkerFear
+

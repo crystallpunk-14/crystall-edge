@@ -1,0 +1,42 @@
+- type: entity
+  id: CEActionSpellLurkerStep
+  parent: CEActionSpellBase
+  name: Shadow step
+  description: A step through the gash of reality that allows you to cover a small of distance quickly.
+  components:
+  - type: CEActionDoAfterVisuals
+    proto: CERuneLurkerFear
+  - type: DoAfterArgs
+    delay: 1.0
+    hidden: true
+  - type: Action
+    useDelay: 30
+    icon:
+      sprite: _CE/Actions/Spells/lurker.rsi
+      state: step
+  - type: TargetAction
+    checkCanAccess: false
+    range: 10
+  - type: WorldTargetAction
+    event: !type:CEWorldTargetModularEffectEvent
+      telegraphyEffects:
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - CEImpactEffectLurkerStep
+      effects:
+      - !type:CESpellCasterTeleport
+        needVision: false
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - CELurkerRitualSound
+
+- type: entity
+  id: CEImpactEffectLurkerStep
+  parent: CEBaseMagicImpact
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    layers:
+    - state: wave_up
+      color: "#2b2c32"

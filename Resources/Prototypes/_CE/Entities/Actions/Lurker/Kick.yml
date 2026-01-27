@@ -1,0 +1,49 @@
+- type: entity
+  id: CEActionSpellLurkerKick
+  parent: CEActionSpellBase
+  name: Crushing attack
+  description: You prepare a powerful melee strike that will knock your target back with force and stun them for a long time.
+  components:
+  - type: CEActionStaminaCost
+    stamina: 20
+  - type: DoAfterArgs
+    delay: 2.5
+    distanceThreshold: 2.5
+    breakOnDamage: true
+  - type: CEActionEmoting
+    startEmote: ce-kick-lurker-start
+    endEmote: ce-kick-lurker
+  - type: CEActionDangerous
+  - type: Action
+    useDelay: 20
+    icon:
+      sprite: _CE/Actions/Spells/lurker.rsi
+      state: kick
+  - type: TargetAction
+    range: 2
+  - type: EntityTargetAction
+    canTargetSelf: false
+    event: !type:CEEntityTargetModularEffectEvent
+      telegraphyEffects:
+      - !type:CESpellRevealStealthUser
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - CELurkerRitualSound
+      effects:
+      - !type:CESpellRevealStealthUser
+      - !type:CESpellApplyEntityEffect
+        effects:
+        - !type:Paralyze
+          paralyzeTime: 15
+      - !type:CESpellThrowFromUser
+        throwPower: 4
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - CEDustEffectKickSound
+      - !type:CESpellApplyEntityEffect
+        effects:
+        - !type:HealthChange
+          ignoreResistances: false
+          damage:
+            types:
+              Blunt: 10

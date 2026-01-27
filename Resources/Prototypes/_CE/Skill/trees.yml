@@ -30,3 +30,10 @@
   selectedIcon:
     sprite: _CE/Interface/NodeTree/thief.rsi
     state: selected
+
+- type: skillTree
+  id: Lurker
+  name: ce-skill-tree-lurker-name
+  desc: ce-skill-tree-lurker-desc
+  skillType: Lurker
+  color: "#480950"

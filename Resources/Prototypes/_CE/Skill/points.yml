@@ -22,3 +22,10 @@
   icon:
     sprite: _CE/Interface/Misc/skill_point.rsi
     state: elf
+
+- type: skillPoint
+  id: Lurker
+  name: ce-skill-point-lurker
+  icon:
+    sprite: _CE/Interface/Misc/skill_point.rsi
+    state: exp

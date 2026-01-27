@@ -1,0 +1,93 @@
+- type: entity
+  id: CEActionSpellLurkerFear
+  parent: CEActionSpellBase
+  name: Primal terror
+  description: You plunge the target into primal terror, robbing them of the ability to fight and speak.
+  components:
+  - type: CEActionDoAfterSlowdown
+    speedMultiplier: 0.4
+  - type: CEActionDoAfterVisuals
+    proto: CERuneLurkerFear
+  - type: Action
+    useDelay: 30
+    icon:
+      sprite: _CE/Actions/Spells/lurker.rsi
+      state: fear
+  - type: TargetAction
+    range: 15
+    interactOnMiss: false
+  - type: DoAfterArgs
+    delay: 1
+    hidden: true
+    breakOnDamage: true
+    repeat: true
+  - type: EntityTargetAction
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:CEEntityTargetModularEffectEvent
+      effects:
+      - !type:CESpellSpawnEntityOnUser
+        spawns:
+        - CERuneLurkerFearImpact
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - CEImpactEffectLurkerFear
+      - !type:CESpellRevealStealthUser
+      - !type:CESpellApplyEntityEffect
+        effects:
+        - !type:MovespeedModifier
+          walkSpeedModifier: 0.2
+          sprintSpeedModifier: 0.2
+          statusLifetime: 2
+        - !type:Jitter
+        - !type:GenericStatusEffect
+          key: Pacified
+          component: Pacified
+          type: Add
+          time: 2
+
+- type: entity
+  id: CEImpactEffectLurkerFear
+  parent: CEBaseMagicImpact
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/Magic/cast_impact.rsi
+    layers:
+    - state: particles_down
+      color: "#6c5f82"
+      shader: unshaded
+
+- type: entity
+  id: CERuneLurkerFear
+  parent: CEBaseMagicRune
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: PointLight
+    color: "#6c5f82"
+  - type: Sprite
+    layers:
+    - state: double_outer
+      color: "#6c5f82"
+      shader: unshaded
+
+- type: entity
+  id: CERuneLurkerFearImpact
+  parent: CEBaseMagicImpact
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: PointLight
+    color: "#6c5f82"
+    radius: 3
+    energy: 8
+    netsync: false
+  - type: Sprite
+    layers:
+    - state: particles_up
+      color: "#6c5f82"
+      shader: unshaded
+  - type: LightFade
+    duration: 1
