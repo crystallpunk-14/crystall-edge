@@ -61,6 +61,35 @@ public partial class RadiationSystem
         var debugRays = debug ? new List<DebugRadiationRay>() : null;
         var receiversTotalRads = new ValueList<(Entity<RadiationReceiverComponent>, float)>();
 
+#region CrystallEdge
+        //CrystallEdge: splitting radiation power between all receivers
+
+        // Track how many receivers each source affects to properly distribute energy
+        var sourceReceiverCounts = new Dictionary<EntityUid, int>();
+        foreach (var source in _sources)
+        {
+            sourceReceiverCounts[source.Entity.Owner] = 1; //+1 a non-existent entity that consumes energy. Conditionally, energy is released into the air.
+        }
+
+        // First pass: count receivers for each source
+        while (destinations.MoveNext(out var destUid, out var dest, out var destTrs))
+        {
+            var destWorld = _transform.GetWorldPosition(destTrs);
+
+            foreach (var source in _sources)
+            {
+                // check if ray can reach destination entity
+                if (Irradiate(source, destUid, destTrs, destWorld, false) is { ReachedDestination: true })
+                {
+                    sourceReceiverCounts[source.Entity.Owner]++;
+                }
+            }
+        }
+
+        // Reset destination enumerator for second pass
+        destinations = EntityQueryEnumerator<RadiationReceiverComponent, TransformComponent>();
+#endregion
+
         // TODO RADIATION Parallelize
         // Would need to give receiversTotalRads a fixed size.
         // Also the _grids list needs to be local to a job. (or better yet cached in SourceData)
@@ -77,9 +106,15 @@ public partial class RadiationSystem
                 if (Irradiate(source, destUid, destTrs, destWorld, debug) is not { } ray)
                     continue;
 
-                // add rads to total rad exposure
+#region CrystallEdge
+                // add rads to total rad exposure, divided by number of receivers for this source
                 if (ray.ReachedDestination)
-                    rads += ray.Rads;
+                {
+                    var receiverCount = sourceReceiverCounts[source.Entity.Owner];
+                    var dividedRads = receiverCount > 0 ? ray.Rads / receiverCount : ray.Rads;
+                    rads += dividedRads;
+                }
+#endregion
 
                 if (!debug)
                     continue;
