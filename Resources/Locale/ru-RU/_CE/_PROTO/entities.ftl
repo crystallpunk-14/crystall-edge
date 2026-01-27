@@ -2315,3 +2315,29 @@ ent-CEPlantTomatoes = помидоры
 ent-CEPlantWheat = пшеница
     .desc = Самая популярная культура. Неприхотливая, она открывает путь к изобилию мучных изделий.
 
+ent-CEActionSpellLurkerFear = Первобытный ужас
+    .desc = Вы погружаете цель в первобытный ужас, лишая её способности сражаться и говорить.
+
+ent-CEImpactEffectLurkerFear = { ent-CEBaseMagicImpact }
+    .desc = { ent-CEBaseMagicImpact.desc }
+
+ent-CERuneLurkerFear = { ent-CEBaseMagicRune }
+    .desc = { ent-CEBaseMagicRune.desc }
+
+ent-CERuneLurkerFearImpact = { ent-CEBaseMagicImpact }
+    .desc = { ent-CEBaseMagicImpact.desc }
+
+ent-CEActionSpellLurkerKick = Сокрушительная атака
+    .desc = Вы готовите мощный удар ближнего боя, который с силой отбросит вашу цель назад и надолго оглушит её.
+
+ent-CEActionSpellLurkerStep = Теневой шаг
+    .desc = Шаг сквозь прореху реальности, позволяющий быстро преодолеть небольшое расстояние.
+
+ent-CEImpactEffectLurkerStep = { ent-CEBaseMagicImpact }
+    .desc = { ent-CEBaseMagicImpact.desc }
+    
+ent-CEMobLurker = луркер
+
+ent-CELurkerRitualSound = ритуал луркера с дальним звуком
+
+ent-SpawnPointGhostDemiplaneLurker = точка спавна роли призрака
