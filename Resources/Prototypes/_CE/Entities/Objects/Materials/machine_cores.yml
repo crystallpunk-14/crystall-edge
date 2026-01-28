@@ -95,6 +95,8 @@
   components:
   - type: MachineBoard
     prototype: CEDistributionUnitBasic
+  - type: StaticPrice
+    price: 150
 
 - type: entity
   id: CEMachineCoreAccumulatorVessel
@@ -103,6 +105,8 @@
   components:
   - type: MachineBoard
     prototype: CEAccumulatorVesselEmpty
+  - type: StaticPrice
+    price: 350
 
 - type: entity
   id: CEMachineCoreTerminal
@@ -119,6 +123,8 @@
   components:
   - type: MachineBoard
     prototype: CEGeneratorMagicCapacitor
+  - type: StaticPrice
+    price: 200
 
 # Trading
 
