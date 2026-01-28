@@ -217,3 +217,25 @@
     sprite: _CE/Clothing/Shirt/Shirt/merchant.rsi
   - type: Clothing
     sprite: _CE/Clothing/Shirt/Shirt/merchant.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtEngineeringJacket
+  name: engineering jacket
+  description: A durable engineering jacket designed for practical use in technical environments.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Shirt/Engineering/jacket.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Shirt/Engineering/jacket.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtEngineeringShirt
+  name: engineering shirt
+  description: A durable engineering shirt designed for practical use in technical environments.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Shirt/Engineering/shirt.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Shirt/Engineering/shirt.rsi
