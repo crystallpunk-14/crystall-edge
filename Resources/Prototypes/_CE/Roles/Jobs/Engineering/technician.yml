@@ -8,11 +8,6 @@
   icon: CEJobIconTechnician
   supervisors: ce-job-supervisors-brigadier
   canBeAntag: false
-  special:
-    - !type:AddComponentSpecial
-      components:
-      - type: CESalaryCounter
-        salary: 50
 
 - type: startingGear
   id: CETechnicianGear
@@ -44,3 +39,6 @@
     contents:
     - id: CEKeyEngineeringHall
     - id: CEKeyEngineeringStaff
+    - id: CEKeyEngineeringGenerator
+    - id: CEKeyEngineeringTunnels
+    - id: CEKeyEngineeringStorage
