@@ -71,7 +71,7 @@
   - type: Sprite
     noRot: true
     color: "#FFFFFF33"
-    sprite: /Textures/_CE/Effects/Magic/blood_moon_curse.rsi
+    sprite: /Textures/_CE/Effects/blood_moon_curse.rsi
     drawdepth: Effects
     layers:
     - state: icon
