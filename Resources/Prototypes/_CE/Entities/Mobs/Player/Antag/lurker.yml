@@ -29,7 +29,7 @@
     attributes:
       gender: epicene
   - type: Bloodstream
-    bloodReagent: CEBloodAnimal
+    bloodSolutionName: CEBloodAnimal
   - type: Tag
     tags:
       - FootstepSound
