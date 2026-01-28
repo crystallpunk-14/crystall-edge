@@ -53,6 +53,10 @@ CEFoodPiePieceMeat: null
 CEFoodPiePiecePumpkin: null
 CEFoodPiePieceVeg: null
 
+CEManaCollector: CEAccumulatorVessel
+CEManaCollectorEmpty: CEAccumulatorVesselEmpty
+CEMachineCoreManaCollector: CEMachineCoreAccumulatorVessel
+CEPipeTerminal: null
 
 # CrystallEdge migration zone end
 

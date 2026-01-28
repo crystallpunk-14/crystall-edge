@@ -227,6 +227,27 @@
   resultCount: 1
 
 - type: CERecipe
+  id: CEMachineCoreGeneratorMagicCapacitor
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassBar
+    count: 3
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 3
+  - !type:StackResource
+    stack: CEMachinePartCoalDiffuser 
+    count: 2
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 1
+  result: CEMachineCoreGeneratorMagicCapacitor
+  resultCount: 1
+
+- type: CERecipe
   id: CEMachineCoreRecycler
   tag: CERecipeEngineeringTable
   category: MachineCore
@@ -275,6 +296,42 @@
     stack: CEMachinePartEnergyLine
     count: 3
   result: CEMachineCoreCharger
+  resultCount: 1
+
+- type: CERecipe
+  id: CEMachineCoreAccumulatorVessel
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:StackResource
+    stack: CEGlass
+    count: 10
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 6
+  result: CEMachineCoreAccumulatorVessel
+  resultCount: 1
+
+- type: CERecipe
+  id: CEMachineCoreDistributionUnit
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 3
+  - !type:StackResource
+    stack: CEGlass
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 3
+  result: CEMachineCoreDistributionUnit
   resultCount: 1
 
 - type: CERecipe

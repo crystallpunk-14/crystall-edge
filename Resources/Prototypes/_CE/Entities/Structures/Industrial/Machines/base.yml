@@ -40,3 +40,19 @@
     powerLoad: 1
   - type: ExtensionCableReceiver
     receptionRange: 0
+
+- type: entity
+  abstract: true
+  id: CEBaseMachineBigPipeConnectable
+  components:
+  - type: PlacementReplacement
+    key: pipe_big
+  - type: NodeContainer
+    examinable: true
+    nodes:
+      input:
+        !type:CableDeviceNode
+        nodeGroupID: HVPower
+      power:
+        !type:CableNode
+        nodeGroupID: HVPower

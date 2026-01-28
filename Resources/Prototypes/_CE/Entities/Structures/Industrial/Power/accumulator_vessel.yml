@@ -1,27 +1,25 @@
 - type: entity
   abstract: true
-  id: CEManaCollectorBase
+  id: CEAccumulatorVesselBase
   categories: [ ForkFiltered ]
   parent: 
+  - CEBaseMachineBigPipeConnectable
   - CEConstructibleMachine
   - BaseMachine
-  name: mana collector
-  description: A structure that collects ambient magical energy from the environment and stores it for later use.
+  name: accumulator vessel
+  description: A structure that collects magical energy and stores it for later use.
   placement:
     mode: SnapgridCenter
   components:
   - type: Machine
-    board: CEMachineCoreManaCollector
-  - type: PlacementReplacement
-    key: walls
+    board: CEMachineCoreAccumulatorVessel
   #- type: AmbientSound
   #  volume: -7
   #  range: 3
   #  sound:
   #    path: /Audio/Ambience/Objects/periodic_beep.ogg
   - type: Sprite
-    sprite: _CE/Structures/Industrial/Power/collector.rsi
-    snapCardinals: true
+    sprite: _CE/Structures/Industrial/Power/accumulator.rsi
     drawdepth: Mobs
     layers:
       - state: base
@@ -56,7 +54,10 @@
     examinable: true
     nodes:
       input:
-        !type:CableTerminalPortNode
+        !type:CableDeviceNode
+        nodeGroupID: HVPower
+      power:
+        !type:CableNode
         nodeGroupID: HVPower
       output:
         !type:CableDeviceNode
@@ -67,6 +68,12 @@
   - type: BatteryCharger
     voltage: High
     node: input
+  - type: PowerMonitoringDevice
+    group: SMES
+    sourceNode: input
+    loadNode: output
+    sprite: Structures/Power/power.rsi
+    state: accumulator
   - type: PowerNetworkBattery
     maxSupply: 10
     maxChargeRate: 10
@@ -84,8 +91,8 @@
     price: 100
 
 - type: entity
-  parent: CEManaCollectorBase
-  id: CEManaCollector
+  parent: CEAccumulatorVesselBase
+  id: CEAccumulatorVessel
   suffix: Charged
   components:
   - type: Battery
@@ -93,8 +100,8 @@
     startingCharge: 1000
 
 - type: entity
-  parent: CEManaCollectorBase
-  id: CEManaCollectorEmpty
+  parent: CEAccumulatorVesselBase
+  id: CEAccumulatorVesselEmpty
   suffix: Empty
   components:
   - type: Battery

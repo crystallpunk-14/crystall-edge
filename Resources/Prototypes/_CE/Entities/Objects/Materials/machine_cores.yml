@@ -95,14 +95,18 @@
   components:
   - type: MachineBoard
     prototype: CEDistributionUnitBasic
+  - type: StaticPrice
+    price: 150
 
 - type: entity
-  id: CEMachineCoreManaCollector
+  id: CEMachineCoreAccumulatorVessel
   parent: CEBaseMachineCore
-  name: mana collector machine core
+  name: accumulator vessel machine core
   components:
   - type: MachineBoard
-    prototype: CEManaCollectorEmpty
+    prototype: CEAccumulatorVesselEmpty
+  - type: StaticPrice
+    price: 350
 
 - type: entity
   id: CEMachineCoreTerminal
@@ -110,7 +114,17 @@
   name: terminal machine core
   components:
   - type: MachineBoard
-    prototype: CEPipeTerminal
+    prototype: CEPipeTerminalDebug
+
+- type: entity
+  id: CEMachineCoreGeneratorMagicCapacitor 
+  parent: CEBaseMachineCore
+  name: magic capacitor machine core
+  components:
+  - type: MachineBoard
+    prototype: CEGeneratorMagicCapacitor
+  - type: StaticPrice
+    price: 200
 
 # Trading
 

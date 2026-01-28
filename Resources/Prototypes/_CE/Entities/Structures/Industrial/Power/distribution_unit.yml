@@ -12,7 +12,7 @@
   - type: Machine
     board: CEMachineCoreDistributionUnit
   - type: PlacementReplacement
-    key: walls
+    key: pipe_big
   #- type: AmbientSound
   #  volume: -7
   #  range: 3
@@ -20,7 +20,6 @@
   #    path: /Audio/Ambience/Objects/periodic_beep.ogg
   - type: Sprite
     sprite: _CE/Structures/Industrial/Power/distribution_unit.rsi
-    snapCardinals: true
     drawdepth: Mobs
     layers:
       - state: base
@@ -36,11 +35,11 @@
       - map: ["enum.SmesVisualLayers.Output"]
         state: discharging1
         shader: unshaded
-  #- type: Smes #TODO: fix visuals
-  #  chargeOverlayPrefix: fill-
-  #  inputOverlayPrefix: charging
-  #  outputOverlayPrefix: discharging
-  #  numChargeLevels: 1
+  - type: Smes #TODO: fix visuals
+    chargeOverlayPrefix: fill-
+    inputOverlayPrefix: charging
+    outputOverlayPrefix: discharging
+    numChargeLevels: 1
   - type: Appearance
   - type: Battery
     # Very important:
@@ -55,7 +54,7 @@
     examinable: true
     nodes:
       input:
-        !type:CableDeviceNode
+        !type:CableNode
         nodeGroupID: HVPower
       output:
         !type:CableDeviceNode
@@ -63,6 +62,12 @@
   - type: BatteryCharger
     voltage: High
     node: input
+  - type: PowerMonitoringDevice
+    group: APC
+    sourceNode: input
+    loadNode: output
+    sprite: Structures/Power/power.rsi
+    state: distribution
   - type: PowerProvider
     voltage: Apc
   - type: Apc
@@ -84,24 +89,6 @@
     interfaces:
       enum.ApcUiKey.Key:
         type: ApcBoundUserInterface
-  #- type: Destructible
-  #  thresholds:
-  #  - trigger:
-  #      !type:DamageTrigger
-  #      damage: 200
-  #    behaviors:
-  #    - !type:DoActsBehavior
-  #      acts: [ "Destruction" ]
-  #  - trigger:
-  #      !type:DamageTrigger
-  #      damage: 100
-  #    behaviors:
-  #    - !type:DoActsBehavior
-  #      acts: ["Destruction"]
-  #    - !type:PlaySoundBehavior
-  #      sound:
-  #        collection: MetalGlassBreak
-  #    - !type:ExplodeBehavior
   - type: StaticPrice
     price: 100
 

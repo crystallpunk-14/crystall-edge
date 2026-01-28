@@ -6,6 +6,7 @@ using Content.Server.Power.EntitySystems;
 using Content.Shared._CE.Recycler;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Materials;
 using Content.Shared.Stacks;
 using Content.Shared.Whitelist;
@@ -24,6 +25,7 @@ public sealed class CERecyclerSystem : CESharedRecyclerSystem
     [Dependency] private readonly AmbientSoundSystem _ambient = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly DestructibleSystem _destructible = default!;
+    [Dependency] private readonly DamageableSystem _damageable = default!;
 
     private EntityQuery<PowerConsumerComponent> _powerQuery;
 
@@ -63,11 +65,7 @@ public sealed class CERecyclerSystem : CESharedRecyclerSystem
 
         var xform = Transform(ent);
         _audio.PlayPvs(ent.Comp.RecycleSound, xform.Coordinates);
-        if (TryComp<BodyComponent>(other, out var bodyComp))
-        {
-            _body.GibBody(other, true, bodyComp);
-            return;
-        }
+        _damageable.TryChangeDamage(other, ent.Comp.Damage);
 
         var spawnPos =
             xform.Coordinates.Offset(xform.LocalRotation.ToWorldVec().Normalized() * ent.Comp.SpawnOffset);

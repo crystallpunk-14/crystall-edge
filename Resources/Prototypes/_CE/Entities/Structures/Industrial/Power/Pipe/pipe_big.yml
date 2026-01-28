@@ -19,6 +19,7 @@
     cuttingQuality: Prying
     cableDroppedOnCutPrototype: CEBigBrassPipe1
     cableType: HighVoltage
+  - type: CEUnderWall
 
 - type: entity
   id: CEPipeBrassBig
@@ -31,7 +32,6 @@
     sprite: _CE/Structures/Industrial/Power/Pipes/big_flat.rsi
     state: pipe_15
     drawdepth: Mobs
-    offset: 0, 0.01
   - type: Fixtures
     fixtures:
       fix1:
