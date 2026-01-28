@@ -55,7 +55,7 @@
   save: false
   components:
   - type: Sprite
-    sprite: _CE/Effects/Magic/cast_impact.rsi
+    sprite: _CE/Effects/cast_impact48.rsi
     layers:
     - state: particles_down
       color: "#6c5f82"
