@@ -8,4 +8,4 @@ ce-skill-tree-thief-name = Thievery
 ce-skill-tree-thief-desc = Secret knowledge of the trade of pickpockets, thieves, swindlers, and other truly free folk who ignore imposed moral and ethical norms.
 
 ce-skill-tree-lurker-name= Lurker
-ce-skill-tree-lurker-desc= Strenghen your Body to hunt more prey.
+ce-skill-tree-lurker-desc= Strengthen your Body to hunt more prey.
