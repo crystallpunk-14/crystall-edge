@@ -86,6 +86,13 @@
   category: General
   status: InProgress
 
+- type: roadmapItem
+  id: Lurker
+  name: ce-roadmap-antagonists-lurker-name
+  desc: ce-roadmap-antagonists-lurker-desc
+  category: Antagonist
+  status: InProgress
+
 # Backlog
 
 - type: roadmapItem
@@ -121,13 +128,6 @@
   name: ce-roadmap-general-weather-name
   desc: ce-roadmap-general-weather-desc
   category: General
-  status: Backlog
-
-- type: roadmapItem
-  id: Lurker
-  name: ce-roadmap-antagonists-lurker-name
-  desc: ce-roadmap-antagonists-lurker-desc
-  category: Antagonist
   status: Backlog
 
 - type: roadmapItem
