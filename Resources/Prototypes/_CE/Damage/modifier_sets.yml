@@ -78,3 +78,13 @@
     Piercing: 10
     Heat: 10
     Structural: 10
+
+- type: damageModifierSet
+  id: CEDinosaur
+  coefficients:
+    Blunt: 0.9
+    Slash: 0.7
+    Piercing: 1.2
+    Heat: 0.8
+    Cold: 1.4
+    Poison: 0.8
