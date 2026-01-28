@@ -1,6 +1,7 @@
 - type: entity
   id: CEMeleeCritEffect
   categories: [ HideSpawnMenu ]
+  suffix: VFX
   save: false
   components:
   - type: Sprite
@@ -22,40 +23,9 @@
       - HideContextMenu
 
 - type: entity
-  id: CESnowEffect
-  parent: CEDirtEffect
-  categories: [ HideSpawnMenu ]
-  save: false
-  components:
-  - type: Sprite
-    layers:
-      - state: snow1
-        map: [ "random" ]
-  - type: RandomSprite
-    available:
-      - random:
-          snow1: ""
-          snow2: ""
-
-- type: entity
-  id: CEDustEffect
-  categories: [ HideSpawnMenu ]
-  save: false
-  components:
-  - type: TimedDespawn
-    lifetime: 0.4
-  - type: Sprite
-    drawdepth: Items
-    sprite: _CE/Effects/dust.rsi
-    state: dust
-  - type: Tag
-    tags:
-      - HideContextMenu
-  - type: AnimationPlayer
-
-- type: entity
   id: CEMagicBeam1
   categories: [ HideSpawnMenu ]
+  suffix: VFX
   save: false
   components:
   - type: Sprite
@@ -76,6 +46,7 @@
 - type: entity
   id: CEElectrifiedEffect
   categories: [ HideSpawnMenu ]
+  suffix: VFX
   save: false
   components:
   - type: Sprite
@@ -95,6 +66,7 @@
 - type: entity
   id: CEBloodMoonCurseEffect
   categories: [ HideSpawnMenu ]
+  suffix: VFX
   components:
   - type: Sprite
     noRot: true
@@ -112,6 +84,7 @@
 - type: entity
   id: CELiquidDropDummy
   categories: [ HideSpawnMenu ]
+  suffix: VFX
   components:
   - type: Sprite
     sprite: _CE/Objects/Misc/liquid_drop.rsi
