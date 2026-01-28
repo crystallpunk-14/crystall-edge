@@ -18,8 +18,6 @@ public sealed partial class CESpellKnockdown : CESpellEffect
         if (args.Target is null || args.User is null)
             return;
 
-        var targetEntity = args.Target.Value;
-
         var stun = entManager.System<SharedStunSystem>();
 
         stun.TryKnockdown(args.Target.Value, Time, true, true, DropItems);
