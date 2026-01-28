@@ -299,6 +299,42 @@
   resultCount: 1
 
 - type: CERecipe
+  id: CEMachineCoreAccumulatorVessel
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:StackResource
+    stack: CEGlass
+    count: 10
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 6
+  result: CEMachineCoreAccumulatorVessel
+  resultCount: 1
+
+- type: CERecipe
+  id: CEMachineCoreDistributionUnit
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 3
+  - !type:StackResource
+    stack: CEGlass
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 3
+  result: CEMachineCoreDistributionUnit
+  resultCount: 1
+
+- type: CERecipe
   id: CEMachineCoreFunnel
   tag: CERecipeEngineeringTable
   category: MachineCore

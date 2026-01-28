@@ -12,7 +12,7 @@
   - type: Machine
     board: CEMachineCoreDistributionUnit
   - type: PlacementReplacement
-    key: walls
+    key: pipe_big
   #- type: AmbientSound
   #  volume: -7
   #  range: 3
@@ -35,11 +35,11 @@
       - map: ["enum.SmesVisualLayers.Output"]
         state: discharging1
         shader: unshaded
-  #- type: Smes #TODO: fix visuals
-  #  chargeOverlayPrefix: fill-
-  #  inputOverlayPrefix: charging
-  #  outputOverlayPrefix: discharging
-  #  numChargeLevels: 1
+  - type: Smes #TODO: fix visuals
+    chargeOverlayPrefix: fill-
+    inputOverlayPrefix: charging
+    outputOverlayPrefix: discharging
+    numChargeLevels: 1
   - type: Appearance
   - type: Battery
     # Very important:
@@ -54,7 +54,7 @@
     examinable: true
     nodes:
       input:
-        !type:CableDeviceNode
+        !type:CableNode
         nodeGroupID: HVPower
       output:
         !type:CableDeviceNode
@@ -89,27 +89,8 @@
     interfaces:
       enum.ApcUiKey.Key:
         type: ApcBoundUserInterface
-  #- type: Destructible
-  #  thresholds:
-  #  - trigger:
-  #      !type:DamageTrigger
-  #      damage: 200
-  #    behaviors:
-  #    - !type:DoActsBehavior
-  #      acts: [ "Destruction" ]
-  #  - trigger:
-  #      !type:DamageTrigger
-  #      damage: 100
-  #    behaviors:
-  #    - !type:DoActsBehavior
-  #      acts: ["Destruction"]
-  #    - !type:PlaySoundBehavior
-  #      sound:
-  #        collection: MetalGlassBreak
-  #    - !type:ExplodeBehavior
   - type: StaticPrice
     price: 100
-  - type: CEOccludePipes
 
 - type: entity
   parent: CEDistributionUnitBase

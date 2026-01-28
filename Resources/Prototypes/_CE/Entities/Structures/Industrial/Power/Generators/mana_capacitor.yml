@@ -25,7 +25,7 @@
       - state: base
       - sprite: _CE/Effects/cast_impact48.rsi
         state: circle_decrease
-        color: "#00ddff5b"
+        color: "#2d8ad65b"
         visible: false
         map: [ "active" ]
   - type: GenericVisualizer
