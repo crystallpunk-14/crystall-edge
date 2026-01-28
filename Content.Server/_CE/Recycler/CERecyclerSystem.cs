@@ -8,6 +8,7 @@ using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Materials;
+using Content.Shared.Power;
 using Content.Shared.Stacks;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio.Systems;
@@ -18,7 +19,6 @@ namespace Content.Server._CE.Recycler;
 /// <inheritdoc/>
 public sealed class CERecyclerSystem : CESharedRecyclerSystem
 {
-    [Dependency] private readonly SharedBodySystem _body = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
     [Dependency] private readonly MaterialStorageSystem _material = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
@@ -27,28 +27,22 @@ public sealed class CERecyclerSystem : CESharedRecyclerSystem
     [Dependency] private readonly DestructibleSystem _destructible = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
 
-    private EntityQuery<PowerConsumerComponent> _powerQuery;
-
     public override void Initialize()
     {
         base.Initialize();
 
-        _powerQuery = GetEntityQuery<PowerConsumerComponent>();
-
         SubscribeLocalEvent<CERecyclerComponent, StartCollideEvent>(OnCollide);
-        SubscribeLocalEvent<CERecyclerComponent, PowerConsumerReceivedChanged>(OnPowerChanged);
+        SubscribeLocalEvent<CERecyclerComponent, PowerChangedEvent>(OnPowerChanged);
     }
 
-    private void OnPowerChanged(Entity<CERecyclerComponent> ent, ref PowerConsumerReceivedChanged args)
+    private void OnPowerChanged(Entity<CERecyclerComponent> ent, ref PowerChangedEvent args)
     {
-        _ambient.SetAmbience(ent,  args.ReceivedPower >= args.DrawRate);
+        _ambient.SetAmbience(ent,  args.Powered);
     }
 
     private void OnCollide(Entity<CERecyclerComponent> ent, ref StartCollideEvent args)
     {
-        if (!_powerQuery.TryComp(ent, out var consumer))
-            return;
-        if (consumer.ReceivedPower < consumer.DrawRate)
+        if (!this.IsPowered(ent.Owner, EntityManager))
             return;
         if (args.OurFixtureId != ent.Comp.FixtureId)
             return;

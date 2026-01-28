@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: 
+  parent:
   - CEConstructibleMachine
   - BaseMachine
   id: CEDistributionUnitBase
@@ -100,6 +100,21 @@
   - type: Battery
     maxCharge: 250
     startingCharge: 250
+  - type: Sprite
+    layers:
+      - state: base
+      - state: fill-9
+        shader: unshaded
+        map: ["enum.SmesVisualLayers.Charge"]
+        visible: true
+      - state: glass
+      - state: top
+      - map: ["enum.SmesVisualLayers.Input"]
+        state: charging0
+        shader: unshaded
+      - map: ["enum.SmesVisualLayers.Output"]
+        state: discharging1
+        shader: unshaded
 
 - type: entity
   parent: CEDistributionUnitBase

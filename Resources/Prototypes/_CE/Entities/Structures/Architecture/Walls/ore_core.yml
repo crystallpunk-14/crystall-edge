@@ -60,5 +60,8 @@
   - type: CEOreVein
     table: !type:AllSelector
       children:
-      - id: CERadiationSourceVFX
+      - id: CEStrongRadiationSourceVFX
       - id: CEEnergyCrystalShard
+    damage:
+      types:
+        Structural: 30

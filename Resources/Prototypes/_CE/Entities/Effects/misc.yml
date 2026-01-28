@@ -104,6 +104,18 @@
   - type: TimedDespawn
     lifetime: 5
 
+
+- type: entity
+  parent: CERadiationSourceVFX
+  id: CEStrongRadiationSourceVFX
+  categories: [ HideSpawnMenu ]
+  suffix: VFX, Strong radiation
+  name: radiation source
+  components:
+  - type: RadiationSource
+    intensity: 15
+    slope: 1
+
 - type: entity
   id: CEDirtEffect
   name: dirt effect

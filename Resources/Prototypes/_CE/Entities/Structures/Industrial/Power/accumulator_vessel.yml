@@ -2,7 +2,7 @@
   abstract: true
   id: CEAccumulatorVesselBase
   categories: [ ForkFiltered ]
-  parent: 
+  parent:
   - CEBaseMachineBigPipeConnectable
   - CEConstructibleMachine
   - BaseMachine
@@ -72,8 +72,9 @@
     group: SMES
     sourceNode: input
     loadNode: output
-    sprite: Structures/Power/power.rsi
-    state: accumulator
+    collectionName: smes
+    sprite: Structures/Power/smes.rsi
+    state: static
   - type: PowerNetworkBattery
     maxSupply: 10
     maxChargeRate: 10
@@ -98,6 +99,21 @@
   - type: Battery
     maxCharge: 1000
     startingCharge: 1000
+  - type: Sprite
+    layers:
+      - state: base
+      - map: ["enum.SmesVisualLayers.Charge"]
+        state: "fill-9"
+        shader: unshaded
+        visible: true
+      - state: glass
+      - state: top
+      - map: ["enum.SmesVisualLayers.Input"]
+        state: charging0
+        shader: unshaded
+      - map: ["enum.SmesVisualLayers.Output"]
+        state: dicharging1
+        shader: unshaded
 
 - type: entity
   parent: CEAccumulatorVesselBase

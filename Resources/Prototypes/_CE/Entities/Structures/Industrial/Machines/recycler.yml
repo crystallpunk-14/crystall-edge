@@ -1,8 +1,8 @@
 - type: entity
   id: CERecycler
   parent:
-  - CEBaseMachineBigPipeConnectable
   - CEConstructibleMachine
+  - CEBaseMachinePowered
   - BaseMachine
   name: recycler
   description: A large destructive machine used to extract energy from magical items by destroying them. It can also be used as a way to recycle items into basic materials.
@@ -55,12 +55,9 @@
   - type: Appearance
   - type: GenericVisualizer
     visuals:
-      enum.CEPowerConsumerVisuals.Active:
-        blades:
+      enum.PowerDeviceVisuals.Powered:
+        drill:
           True: {state: blades_on}
           False: {state: blades_off}
   - type: CERecycler
   - type: Rotatable
-  - type: PowerConsumer
-    voltage: High
-    drawRate: 5

@@ -13,7 +13,7 @@
     board: CEMachineCoreGeneratorMagicCapacitor
   - type: PlacementReplacement
     key: pipe_big
-  #- type: AmbientSound 
+  #- type: AmbientSound
   #  volume: -7
   #  range: 3
   #  sound:
@@ -58,10 +58,10 @@
   - type: PowerMonitoringDevice
     group: Generator
     loadNode: input
-    sprite: Structures/Power/power.rsi
-    state: generator
+    sprite: _CE/Structures/Industrial/Power/Generator/capacitor.rsi
+    state: base
   - type: PowerNetworkBattery
-    maxSupply: 10
+    maxSupply: 20
     maxChargeRate: 10
     supplyRampTolerance: 10
     supplyRampRate: 1
