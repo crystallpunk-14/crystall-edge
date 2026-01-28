@@ -1,0 +1,39 @@
+
+# Shirt
+
+- type: loadoutGroup
+  id: CEEngineeringShirt
+  name: ce-loadout-shirt
+  loadouts:
+  - CEClothingShirtEngineeringShirt
+  - CEClothingShirtEngineeringJacket
+  - CEClothingShirtEngineeringDress
+
+- type: loadout
+  id: CEClothingShirtEngineeringShirt
+  equipment:
+    shirt: CEClothingShirtEngineeringShirt
+
+- type: loadout
+  id: CEClothingShirtEngineeringJacket
+  equipment:
+    shirt: CEClothingShirtEngineeringJacket
+
+- type: loadout
+  id: CEClothingShirtEngineeringDress
+  equipment:
+    shirt: CEClothingShirtEngineeringDress
+
+
+# Pants
+
+- type: loadoutGroup
+  id: CEEngineeringPants
+  name: ce-loadout-pants
+  loadouts:
+  - CEClothingPantsEngineering
+
+- type: loadout
+  id: CEClothingPantsEngineering
+  equipment:
+    pants: CEClothingPantsEngineering
