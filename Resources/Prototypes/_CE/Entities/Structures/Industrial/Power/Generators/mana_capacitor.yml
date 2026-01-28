@@ -12,7 +12,7 @@
   - type: Machine
     board: CEMachineCoreGeneratorMagicCapacitor
   - type: PlacementReplacement
-    key: walls
+    key: pipe_big
   #- type: AmbientSound 
   #  volume: -7
   #  range: 3
@@ -41,6 +41,9 @@
     nodes:
       input:
         !type:CableDeviceNode
+        nodeGroupID: HVPower
+      power:
+        !type:CableNode
         nodeGroupID: HVPower
   - type: Battery
     # Very important:
