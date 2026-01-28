@@ -85,6 +85,8 @@
   parent: CEBaseMachineCore
   name: heater machine core
   components:
+  - type: Sprite
+    state: melting_furnace
   - type: MachineBoard
     prototype: CEHeater
 
@@ -93,6 +95,8 @@
   parent: CEBaseMachineCore
   name: distribution unit machine core
   components:
+  - type: Sprite
+    state: power
   - type: MachineBoard
     prototype: CEDistributionUnitBasic
   - type: StaticPrice
@@ -103,6 +107,8 @@
   parent: CEBaseMachineCore
   name: accumulator vessel machine core
   components:
+  - type: Sprite
+    state: power
   - type: MachineBoard
     prototype: CEAccumulatorVesselEmpty
   - type: StaticPrice
@@ -117,10 +123,12 @@
     prototype: CEPipeTerminalDebug
 
 - type: entity
-  id: CEMachineCoreGeneratorMagicCapacitor 
+  id: CEMachineCoreGeneratorMagicCapacitor
   parent: CEBaseMachineCore
   name: magic capacitor machine core
   components:
+  - type: Sprite
+    state: power
   - type: MachineBoard
     prototype: CEGeneratorMagicCapacitor
   - type: StaticPrice
