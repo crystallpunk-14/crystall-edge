@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Shared.Damage;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
@@ -33,6 +34,16 @@ public sealed partial class CERecyclerComponent : Component
         Params = new()
         {
             Variation = 0.1f,
+        }
+    };
+
+    [DataField]
+    public DamageSpecifier Damage = new()
+    {
+        DamageDict = new()
+        {
+            { "Blunt", 40 },
+            { "Slash", 40 }
         }
     };
 }

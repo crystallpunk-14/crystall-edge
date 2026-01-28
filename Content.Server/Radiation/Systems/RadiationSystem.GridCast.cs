@@ -71,22 +71,29 @@ public partial class RadiationSystem
             sourceReceiverCounts[source.Entity.Owner] = 1; //+1 a non-existent entity that consumes energy. Conditionally, energy is released into the air.
         }
 
-        // First pass: count receivers for each source
+        // Single pass: count receivers and calculate radiation simultaneously
+        // This avoids iterating through all receivers twice (once for counting, once for calculation)
+        var receiverRayData = new Dictionary<(EntityUid, EntityUid), RadiationRay>();
+
         while (destinations.MoveNext(out var destUid, out var dest, out var destTrs))
         {
             var destWorld = _transform.GetWorldPosition(destTrs);
 
             foreach (var source in _sources)
             {
-                // check if ray can reach destination entity
-                if (Irradiate(source, destUid, destTrs, destWorld, false) is { ReachedDestination: true })
+                // send ray towards destination entity
+                if (Irradiate(source, destUid, destTrs, destWorld, debug) is not { } ray)
+                    continue;
+
+                receiverRayData[(source.Entity.Owner, destUid)] = ray;
+
+                // Count receivers for each source (only for rays that reached destination)
+                if (ray.ReachedDestination)
                 {
                     sourceReceiverCounts[source.Entity.Owner]++;
                 }
             }
         }
-
-        // Reset destination enumerator for second pass
         destinations = EntityQueryEnumerator<RadiationReceiverComponent, TransformComponent>();
 #endregion
 
@@ -97,16 +104,14 @@ public partial class RadiationSystem
         // Or just make it threadsafe?
         while (destinations.MoveNext(out var destUid, out var dest, out var destTrs))
         {
-            var destWorld = _transform.GetWorldPosition(destTrs);
-
             var rads = 0f;
             foreach (var source in _sources)
             {
-                // send ray towards destination entity
-                if (Irradiate(source, destUid, destTrs, destWorld, debug) is not { } ray)
+#region CrystallEdge
+                var key = (source.Entity.Owner, destUid);
+                if (!receiverRayData.TryGetValue(key, out var ray))
                     continue;
 
-#region CrystallEdge
                 // add rads to total rad exposure, divided by number of receivers for this source
                 if (ray.ReachedDestination)
                 {

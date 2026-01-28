@@ -110,7 +110,7 @@
   name: terminal machine core
   components:
   - type: MachineBoard
-    prototype: CEPipeTerminal
+    prototype: CEPipeTerminalDebug
 
 - type: entity
   id: CEMachineCoreGeneratorMagicCapacitor 
