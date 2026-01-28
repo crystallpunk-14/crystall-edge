@@ -112,6 +112,14 @@
   - type: MachineBoard
     prototype: CEPipeTerminal
 
+- type: entity
+  id: CEMachineCoreGeneratorMagicCapacitor 
+  parent: CEBaseMachineCore
+  name: magic capacitor machine core
+  components:
+  - type: MachineBoard
+    prototype: CEGeneratorMagicCapacitor
+
 # Trading
 
 - type: entity

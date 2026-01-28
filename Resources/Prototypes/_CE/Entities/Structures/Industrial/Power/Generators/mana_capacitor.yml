@@ -9,11 +9,11 @@
   placement:
     mode: SnapgridCenter
   components:
-  #- type: Machine
-  #  board: CEMachineCoreAccumulatorVessel
+  - type: Machine
+    board: CEMachineCoreGeneratorMagicCapacitor
   - type: PlacementReplacement
     key: walls
-  #- type: AmbientSound
+  #- type: AmbientSound 
   #  volume: -7
   #  range: 3
   #  sound:
