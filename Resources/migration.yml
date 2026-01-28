@@ -58,6 +58,11 @@ CEManaCollectorEmpty: CEAccumulatorVesselEmpty
 CEMachineCoreManaCollector: CEMachineCoreAccumulatorVessel
 CEPipeTerminal: null
 
+CEClothingHeadFedoraHunterBlack: CEClothingHeadFedoraBlack
+CEClothingHeadFedoraHunterBlue: CEClothingHeadFedoraBlue
+CEClothingHeadFedoraHunterGreen: CEClothingHeadFedoraGreen
+CEClothingHeadFedoraHunterRed: CEClothingHeadFedoraRed
+
 # CrystallEdge migration zone end
 
 

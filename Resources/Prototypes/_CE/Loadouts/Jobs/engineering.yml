@@ -1,4 +1,27 @@
 
+## Cloak
+
+- type: loadoutGroup
+  id: CEBrigadierCloak
+  name: ce-loadout-cloak
+  loadouts:
+  - CEClothingCloakBrigadier
+
+- type: loadout
+  id: CEClothingCloakBrigadier
+  equipment:
+    cloak: CEClothingCloakBrigadier
+
+# Head
+
+- type: loadoutGroup
+  id: CETechnicianHead
+  name: ce-loadout-head
+  minLimit: 0
+  loadouts:
+  - CEClothingHeadFedoraBrown
+  - CEClothingHeadFedoraBlack
+
 # Shirt
 
 - type: loadoutGroup

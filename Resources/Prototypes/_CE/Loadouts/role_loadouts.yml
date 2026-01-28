@@ -72,9 +72,9 @@
   id: JobCEBrigadier
   groups:
   - CEGeneralBag
-  - CETownfolkHead
+  - CETechnicianHead #
   - CEGeneralEyes
-  - CEGeneralCloak
+  - CEBrigadierCloak #
   - CEGeneralGloves
   - CEEngineeringShirt #
   - CEEngineeringPants #
@@ -85,7 +85,7 @@
   id: JobCETechnician
   groups:
   - CEGeneralBag
-  - CETownfolkHead
+  - CETechnicianHead #
   - CEGeneralEyes
   - CEGeneralGloves
   - CEEngineeringShirt #
