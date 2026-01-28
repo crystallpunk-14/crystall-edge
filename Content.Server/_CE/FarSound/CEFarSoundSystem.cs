@@ -21,9 +21,9 @@ public sealed class CEFarSoundSystem : EntitySystem
 
     private void OnTrigger(Entity<CEFarSoundComponent> ent, ref TriggerEvent args)
     {
-        var mapPos =  _transform.GetMapCoordinates(ent);
+        var mapPos = _transform.GetMapCoordinates(ent);
         var entPos = Transform(ent).Coordinates;
-        //Play close  sound
+        //Play close sound
         _audio.PlayPvs(ent.Comp.CloseSound, entPos);
 
         //Play far sound
