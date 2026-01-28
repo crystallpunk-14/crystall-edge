@@ -7,4 +7,10 @@
   id: CEHostileEveryone
   hostile:
   - CEImperial
+  - CEMonster
 
+- type: npcFaction
+  id: CEMonster
+  hostile:
+  - CEImperial
+  - CEHostileEveryone
