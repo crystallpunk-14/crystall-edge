@@ -1,0 +1,6 @@
+- type: soundCollection
+  id: CELurkerRitual
+  files:
+    - /Audio/_CE/Effects/Lurker/ritual1.ogg
+    - /Audio/_CE/Effects/Lurker/ritual2.ogg
+    - /Audio/_CE/Effects/Lurker/ritual3.ogg
