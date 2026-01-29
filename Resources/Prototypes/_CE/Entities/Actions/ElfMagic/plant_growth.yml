@@ -2,7 +2,7 @@
   id: CEActionSpellPlantGrowth
   parent: CEActionSpellBase
   name: Plant Growth
-  description: Materialization of a bright and safe light source.
+  description: Gives vital nutrients to the plants, making them grow faster.
   components:
   - type: CEActionManaCost
     manaCost: 10
