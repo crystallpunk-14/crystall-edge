@@ -1,0 +1,61 @@
+- type: entity
+  id: CEActionSpellPlantGrowth
+  parent: CEActionSpellBase
+  name: Plant Growth
+  description: Materialization of a bright and safe light source.
+  components:
+  - type: CEActionManaCost
+    manaCost: 10
+  - type: CEActionSpeaking
+    startSpeech: "Crescis cum fervore..."
+    endSpeech: "Sic crescere!"
+  - type: CEActionFreeHandsRequired
+  - type: CEActionDoAfterVisuals
+    proto: CERunePlantGrowth
+  - type: Action
+    useDelay: 5
+    icon:
+      sprite: _CE/Actions/elf_magic.rsi
+      state: sphere_of_light
+  - type: DoAfterArgs
+    delay: 0.5
+  - type: TargetAction
+    range: 3
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - CEPlantComponent
+    event: !type:CEEntityTargetModularEffectEvent
+      effects:
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - CEImpactEffectPlantGrowth
+          - type: PlantAffectGrowth
+            amount: 5.0
+            probability: 1.0
+
+- type: entity
+  id: CERunePlantGrowth
+  parent: CEBaseMagicRune
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: PointLight
+    color: "#efedff"
+  - type: Sprite
+    layers:
+    - state: medium_circle
+      color: "#0d802b"
+      shader: unshaded
+
+- type: entity
+  id: CEImpactEffectPlantGrowth
+  parent: CEBaseMagicImpact
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    layers:
+    - state: double_outer
+      color: "#5eff89"
+      shader: unshaded
