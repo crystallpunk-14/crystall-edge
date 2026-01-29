@@ -32,7 +32,7 @@
         - CEImpactEffectPlantGrowth
       - !type:CESpellApplyEntityEffect
         effects:
-        - type: PlantAffectGrowth
+        - !type:PlantAffectGrowth
           amount: 5.0
           probability: 1.0
 
