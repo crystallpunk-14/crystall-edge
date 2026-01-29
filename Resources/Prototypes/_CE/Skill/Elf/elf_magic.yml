@@ -34,3 +34,15 @@
   - !type:AddAction
     action: CEActionSpellWaterCreation
 
+    - type: skill
+  id: PlantGrowth
+  skillUiPosition: 8, 7
+  learnCost: 1
+  tree: ElfMagic
+  icon:
+    sprite: _CE/Actions/elf_magic.rsi
+    state: water_creation
+  effects:
+  - !type:AddAction
+    action: CEActionSpellPlantGrowth
+
