@@ -24,7 +24,7 @@
   - type: EntityTargetAction
     whitelist:
       components:
-      - CEPlantComponent
+      - CEPlant
     event: !type:CEEntityTargetModularEffectEvent
       effects:
       - !type:CESpellSpawnEntityOnTarget
