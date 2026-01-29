@@ -41,7 +41,7 @@
   tree: ElfMagic
   icon:
     sprite: _CE/Actions/elf_magic.rsi
-    state: water_creation
+    state: ice_dagger
   effects:
   - !type:AddAction
     action: CEActionSpellPlantGrowth
