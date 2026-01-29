@@ -16,7 +16,7 @@
     useDelay: 5
     icon:
       sprite: _CE/Actions/elf_magic.rsi
-      state: sphere_of_light
+      state: plant_growth
   - type: DoAfterArgs
     delay: 0.5
   - type: TargetAction
