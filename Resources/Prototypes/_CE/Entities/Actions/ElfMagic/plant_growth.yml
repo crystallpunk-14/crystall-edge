@@ -30,9 +30,11 @@
       - !type:CESpellSpawnEntityOnTarget
         spawns:
         - CEImpactEffectPlantGrowth
-          - type: PlantAffectGrowth
-            amount: 5.0
-            probability: 1.0
+      - !type:CESpellApplyEntityEffect
+        effects:
+        - type: PlantAffectGrowth
+          amount: 5.0
+          probability: 1.0
 
 - type: entity
   id: CERunePlantGrowth
@@ -56,6 +58,6 @@
   components:
   - type: Sprite
     layers:
-    - state: double_outer
+    - state: sun
       color: "#5eff89"
       shader: unshaded
