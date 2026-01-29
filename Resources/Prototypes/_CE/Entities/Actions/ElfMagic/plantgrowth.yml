@@ -11,7 +11,7 @@
     endSpeech: "Sic crescere!"
   - type: CEActionFreeHandsRequired
   - type: CEActionDoAfterVisuals
-    proto: CERuneCureWounds
+    proto: CERunePlantGrowth
   - type: Action
     useDelay: 5
     icon:
