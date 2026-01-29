@@ -55,7 +55,7 @@
   parent: CEBaseMagicImpact
   categories: [ HideSpawnMenu ]
   save: false
-  components:
+  - type: Sprite
     sprite: _CE/Effects/cast_rune.rsi
     layers:
     - state: sun
