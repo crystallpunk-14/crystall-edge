@@ -34,7 +34,7 @@
   - !type:AddAction
     action: CEActionSpellWaterCreation
 
-    - type: skill
+- type: skill
   id: PlantGrowth
   skillUiPosition: 8, 7
   learnCost: 1
