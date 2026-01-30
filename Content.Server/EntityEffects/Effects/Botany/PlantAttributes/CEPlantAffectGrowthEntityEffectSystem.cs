@@ -8,7 +8,7 @@ namespace Content.Server.EntityEffects.Effects.Botany.PlantAttributes
 {
     public sealed partial class CEPlantAffectGrowthEntityEffectSystem : EntityEffectSystem<CEPlantComponent, PlantAffectGrowth>
     {
-        [Dependency] private readonly CEFarmingSystem _ceFarming = default!;
+        [Dependency] private readonly CEFarmingSystem _farming = default!;
 
         protected override void Effect(Entity<CEPlantComponent> entity, ref EntityEffectEvent<PlantAffectGrowth> args)
         {
