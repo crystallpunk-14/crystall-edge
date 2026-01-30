@@ -85,3 +85,14 @@
     sprite: _CE/Clothing/Head/Misc/wreath.rsi
   - type: Clothing
     sprite: _CE/Clothing/Head/Misc/wreath.rsi
+
+- type: entity
+  parent: CEClothingHeadBase
+  id: CEClothingHeadBowlerLeather
+  name: leather bowler hat
+  description: It looks sturdy enough to withstand a couple of stone falls on the forehead. But that's not certain.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Head/Misc/bowler_leather_hat.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Head/Misc/bowler_leather_hat.rsi
