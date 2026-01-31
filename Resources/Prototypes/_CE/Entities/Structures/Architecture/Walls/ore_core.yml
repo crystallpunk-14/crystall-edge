@@ -8,6 +8,10 @@
       types:
         Structural: 60
   - type: WaypointerTrackable
+  - type: GuideHelp
+    guides:
+    - CEMiningGuideEN
+    - CEMiningGuideRU
 
 - type: entity
   id: CEWallIronCore

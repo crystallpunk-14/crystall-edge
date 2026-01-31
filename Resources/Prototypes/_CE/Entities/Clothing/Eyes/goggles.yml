@@ -41,3 +41,7 @@
   - type: ShowWaypointer
     waypointerProtoIds:
     - CEOreCoreWaypointer
+  - type: GuideHelp
+    guides:
+    - CEMiningGuideEN
+    - CEMiningGuideRU

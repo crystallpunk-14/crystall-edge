@@ -1,12 +1,14 @@
 - type: entity
   id: CEWallStoneOreCoal
-  parent: CEWallStone
+  parent: CEBaseWall
   suffix: Coal Ore
   components:
   - type: Sprite
     sprite: _CE/Structures/Architecture/Walls/cave_stone_coal.rsi
   - type: Icon
     sprite: _CE/Structures/Architecture/Walls/cave_stone_coal.rsi
+  - type: IconSmooth
+    base: wall
   - type: Destructible
     thresholds:
     - trigger:
@@ -37,16 +39,25 @@
             max: 5
       - !type:DoActsBehavior
         acts: ["Destruction"]
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: CERockStructural
+  - type: GuideHelp
+    guides:
+    - CEMiningGuideEN
+    - CEMiningGuideRU
 
 - type: entity
   id: CEWallStoneOreIron
-  parent: CEWallStone
+  parent: CEBaseWall
   suffix: Iron Ore
   components:
   - type: Sprite
     sprite: _CE/Structures/Architecture/Walls/cave_stone_iron.rsi
   - type: Icon
     sprite: _CE/Structures/Architecture/Walls/cave_stone_iron.rsi
+  - type: IconSmooth
+    base: wall
   - type: Destructible
     thresholds:
     - trigger:
@@ -77,3 +88,10 @@
             max: 5
       - !type:DoActsBehavior
         acts: ["Destruction"]
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: CERockStructural
+  - type: GuideHelp
+    guides:
+    - CEMiningGuideEN
+    - CEMiningGuideRU

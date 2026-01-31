@@ -67,3 +67,7 @@
     - Jitter
   - type: ApcPowerReceiver
     powerLoad: 2
+  - type: GuideHelp
+    guides:
+    - CEMiningGuideEN
+    - CEMiningGuideRU
