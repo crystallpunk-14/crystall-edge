@@ -4,7 +4,7 @@ meta:
   engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 01/31/2026 11:48:42
+  time: 01/31/2026 17:31:21
   entityCount: 1720
 maps:
 - 1
@@ -3295,7 +3295,7 @@ entities:
       pos: 6.5,16.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -40315.797
+      secondsUntilStateChange: -41116.383
       state: Opening
   - uid: 619
     components:
