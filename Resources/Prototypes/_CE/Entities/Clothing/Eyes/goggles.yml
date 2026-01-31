@@ -45,3 +45,5 @@
     guides:
     - CEMiningGuideEN
     - CEMiningGuideRU
+  - type: StaticPrice
+    price: 60
