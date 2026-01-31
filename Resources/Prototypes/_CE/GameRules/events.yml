@@ -22,6 +22,8 @@
     startAnnouncementColor: "#18abf5"
     startAudio:
       path: /Audio/_CE/Announce/broken_pipe_far.ogg
+      params:
+        volume: 10
     weight: 5
     duration: 1
     minimumPlayers: 5
