@@ -80,6 +80,7 @@
         volume: 2
     outputs:
       - CECobblestone
+      - CEStone
 
 - type: entity
   id: CEStoneBlock10
