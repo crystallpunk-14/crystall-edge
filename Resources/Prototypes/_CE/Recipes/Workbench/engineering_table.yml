@@ -206,6 +206,24 @@
   result: CEManaTransferGlove
   resultCount: 1
 
+- type: CERecipe
+  id: CEClothingEyesMiningGlasses
+  tag: CERecipeEngineeringTable
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEGlass
+    count: 3
+  - !type:StackResource
+    stack: CEBrassRod
+    count: 2
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 1
+  result: CEClothingEyesMiningGlasses
+  resultCount: 1
+
 # Machine cores
 
 - type: CERecipe
@@ -239,7 +257,7 @@
     stack: CEIronSheet
     count: 3
   - !type:StackResource
-    stack: CEMachinePartCoalDiffuser 
+    stack: CEMachinePartCoalDiffuser
     count: 2
   - !type:StackResource
     stack: CEMachinePartEnergyLine

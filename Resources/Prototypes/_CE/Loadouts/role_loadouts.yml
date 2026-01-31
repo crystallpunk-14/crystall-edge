@@ -73,7 +73,7 @@
   groups:
   - CEGeneralBag
   - CETechnicianHead #
-  - CEGeneralEyes
+  - CEEngineeringEyes #
   - CEBrigadierCloak #
   - CEGeneralGloves
   - CEEngineeringShirt #
@@ -86,7 +86,7 @@
   groups:
   - CEGeneralBag
   - CETechnicianHead #
-  - CEGeneralEyes
+  - CEEngineeringEyes #
   - CEGeneralGloves
   - CEEngineeringShirt #
   - CEEngineeringPants #

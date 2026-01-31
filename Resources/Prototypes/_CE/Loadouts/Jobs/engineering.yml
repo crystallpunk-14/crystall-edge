@@ -22,6 +22,23 @@
   - CEClothingHeadFedoraBrown
   - CEClothingHeadFedoraBlack
 
+# Goggles / Eyes
+
+- type: loadoutGroup
+  id: CEEngineeringEyes
+  name: ce-loadout-goggles
+  minLimit: 0
+  loadouts:
+  - CEClothingEyesMiningGlasses
+  - CEClothingEyesMonocle
+  - CEClothingEyesGlasses
+  - CEClothingEyesEyePatch
+
+- type: loadout
+  id: CEClothingEyesMiningGlasses
+  equipment:
+    eyes: CEClothingEyesMiningGlasses
+
 # Shirt
 
 - type: loadoutGroup
