@@ -67,7 +67,7 @@
     allowed:
     - Jitter
   - type: ApcPowerReceiver
-    powerLoad: 2
+    powerLoad: 1
   - type: GuideHelp
     guides:
     - CEMiningGuideEN
