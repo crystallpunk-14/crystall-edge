@@ -23,6 +23,12 @@
   - CEClothingHeadFedoraBlack
   - CEClothingHeadBowlerLeather
 
+- type: loadout
+  id: CEClothingHeadBowlerLeather
+  equipment:
+    head: CEClothingHeadBowlerLeather
+
+
 # Shirt
 
 - type: loadoutGroup
