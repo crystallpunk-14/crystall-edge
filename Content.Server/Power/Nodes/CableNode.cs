@@ -44,7 +44,7 @@ namespace Content.Server.Power.Nodes
                     // vertical
                     nodeDirs.Add((Direction.Invalid, node));
                 }
-                if (node is CEConnectorEdgeNode edge && edge.Direction == dir.GetOpposite())
+                if (node is CEConnectorEdgeNode edge && dir != Direction.Invalid && edge.Direction == dir.GetOpposite())
                 {
                     nodeDirs.Add((dir, node));
                 }
