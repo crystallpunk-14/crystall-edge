@@ -2,3 +2,8 @@
   license: "CC0-1.0"
   copyright: "adapted from Screaming Brain Studios, recolored by TheShuEd"
   source: "https://opengameart.org/content/seamless-space-backgrounds"
+
+- files: ["Clouds.png", "Clouds2.png", "Clouds3.png", "Clouds3_rot.png", "Clouds2_Dark.png", "Clouds3_Dark.png", "Clouds3_Dark_rot.png", "Hazelayer_Blue.png", "Hazelayer_Green.png", "Hazelayer_Red.png", "Terrain_Lava.png", "Terrain_Lava_Unshaded.png", "Terrain_Mountains.png", "Terrain_Ocean.png"]
+  license: "All rights reserved"
+  copyright: "By AftrLite for CrystallEdge. Exclusive usage and modification rights granted to Copyright Holder of CrystallEdge."
+  source: "https://github.com/crystallpunk-14/crystall-edge"
