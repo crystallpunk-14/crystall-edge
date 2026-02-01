@@ -64,6 +64,10 @@ public sealed class CEStaticEntityReplacementVariationPassSystem : VariationPass
         // Perform replacements
         foreach (var targetUid in entitiesToReplace)
         {
+            // Skip if entity was already deleted by a prior variation pass
+            if (!Exists(targetUid))
+                continue;
+
             var targetMeta = MetaData(targetUid);
             if (targetMeta.EntityPrototype is null)
                 continue;
@@ -73,7 +77,7 @@ public sealed class CEStaticEntityReplacementVariationPassSystem : VariationPass
                 continue;
 
             // Delete the original entity
-            QueueReplace(targetUid, replacementProto);
+            Replace(targetUid, replacementProto);
         }
 
         while (_queuedSpawns.TryDequeue(out var tup))
@@ -86,11 +90,11 @@ public sealed class CEStaticEntityReplacementVariationPassSystem : VariationPass
         Log.Debug($"Static entity replacement took {stopwatch.Elapsed} with {Stations.GetTileCount(args.Station.AsNullable())} tiles");
     }
 
-    private void QueueReplace(Entity<TransformComponent> ent, EntProtoId replacement)
+    private void Replace(Entity<TransformComponent> ent, EntProtoId replacement)
     {
         var coords = ent.Comp.Coordinates;
         var rot = ent.Comp.LocalRotation;
-        QueueDel(ent);
+        Del(ent);
 
         _queuedSpawns.Enqueue((replacement, coords, rot));
     }
