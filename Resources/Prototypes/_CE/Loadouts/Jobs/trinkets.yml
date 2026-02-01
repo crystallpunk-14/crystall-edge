@@ -2,6 +2,7 @@
   id: CEGeneralInstruments
   name: ce-loadout-instruments
   minLimit: 2
+  maxLimit: 2
   loadouts:
   - CESafeFallingAmulet
   - CELantern
