@@ -1,3 +1,4 @@
+using Content.Shared._CE.Roles;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Mind;
@@ -21,7 +22,7 @@ public abstract partial class CEAmbitionCondition
 public sealed partial class RequiredSpecies : CEAmbitionCondition
 {
     [DataField(required: true)]
-    public HashSet<ProtoId<SpeciesPrototype>> Species;
+    public HashSet<ProtoId<SpeciesPrototype>> Species = new();
 
     public override bool Check(IEntityManager entManager, IPrototypeManager protoManager, EntityUid owner)
     {
@@ -38,7 +39,7 @@ public sealed partial class RequiredSpecies : CEAmbitionCondition
 public sealed partial class RequiredJob : CEAmbitionCondition
 {
     [DataField(required: true)]
-    public HashSet<ProtoId<JobPrototype>> Jobs;
+    public HashSet<ProtoId<JobPrototype>> Jobs = new();
 
     public override bool Check(IEntityManager entManager, IPrototypeManager protoManager, EntityUid owner)
     {
@@ -55,5 +56,69 @@ public sealed partial class RequiredJob : CEAmbitionCondition
             return !Jobs.Contains(jobProto);
 
         return Jobs.Contains(jobProto);
+    }
+}
+
+public sealed partial class RequiredDepartment : CEAmbitionCondition
+{
+    [DataField(required: true)]
+    public HashSet<ProtoId<DepartmentPrototype>> Departments = new();
+
+    public override bool Check(IEntityManager entManager, IPrototypeManager protoManager, EntityUid owner)
+    {
+        var mindSystem = entManager.System<SharedMindSystem>();
+        var jobSystem = entManager.System<SharedJobSystem>();
+
+        if (!mindSystem.TryGetMind(owner, out var mindId, out var mind))
+            return false;
+
+        if (!jobSystem.MindTryGetJob(mindId, out var jobProto))
+            return false;
+
+        var matched = false;
+
+        foreach (var deptId in Departments)
+        {
+            if (!protoManager.Resolve(deptId, out var department))
+                continue;
+
+            if (!department.Roles.Contains(jobProto))
+                continue;
+
+            matched = true;
+            break;
+        }
+
+        if (Inverted)
+            return !matched;
+
+        return matched;
+    }
+}
+
+public sealed partial class RequiredThiefRole : CEAmbitionCondition
+{
+    public override bool Check(IEntityManager entManager, IPrototypeManager protoManager, EntityUid owner)
+    {
+        var mindSystem = entManager.System<SharedMindSystem>();
+
+        if (!mindSystem.TryGetMind(owner, out var mindId, out var mind))
+            return false;
+
+        var matched = false;
+
+        foreach (var roleId in mind.MindRoleContainer.ContainedEntities)
+        {
+            if (entManager.HasComponent<CEThiefRoleComponent>(roleId))
+            {
+                matched = true;
+                break;
+            }
+        }
+
+        if (Inverted)
+            return !matched;
+
+        return matched;
     }
 }

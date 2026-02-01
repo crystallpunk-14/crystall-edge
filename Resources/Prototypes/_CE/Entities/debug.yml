@@ -1,5 +1,5 @@
 - type: entity
-  parent: HandheldHealthAnalyzerUnpowered
+  parent: HandheldHealthAnalyzer
   id: BaselineHealthAnalyzer
   categories: [ ForkFiltered ]
 
@@ -27,3 +27,11 @@
     solution: pool
     edible: Drink
 
+- type: entity
+  parent: ComputerPowerMonitoring
+  id: CEComputerPowerMonitoring
+  categories: [ ForkFiltered ]
+  suffix: Debug, 0W
+  components:
+  - type: ApcPowerReceiver
+    powerLoad: 0

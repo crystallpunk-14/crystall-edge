@@ -107,3 +107,14 @@
     sprite: _CE/Clothing/Pants/merchants_pantaloons.rsi
   - type: Clothing
     sprite: _CE/Clothing/Pants/merchants_pantaloons.rsi
+
+- type: entity
+  parent: CEClothingPantsBase
+  id: CEClothingPantsEngineering
+  name: engineering pants
+  description: Durable pants for durable people.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Pants/Engineering/pants.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Pants/Engineering/pants.rsi

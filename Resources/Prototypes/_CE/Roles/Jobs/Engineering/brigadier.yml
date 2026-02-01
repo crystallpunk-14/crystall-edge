@@ -1,6 +1,6 @@
 - type: job
   id: CEBrigadier
-  setPreference: false #temp
+  setPreference: true
   name: ce-job-name-brigadier
   description: ce-job-desc-brigadier
   playTimeTracker: CEJobBrigadier
@@ -11,11 +11,6 @@
   canBeAntag: false
   supervisors: ce-job-supervisors-empire
   weight: 3
-  special:
-    - !type:AddComponentSpecial
-      components:
-      - type: CESalaryCounter
-        salary: 200
   #requirements:
   #  - !type:DepartmentTimeRequirement
   #    department: CEEngineering
@@ -51,3 +46,7 @@
     contents:
     - id: CEKeyEngineeringHall
     - id: CEKeyEngineeringStaff
+    - id: CEKeyEngineeringGenerator
+    - id: CEKeyEngineeringTunnels
+    - id: CEKeyEngineeringBrigadier
+    - id: CEKeyEngineeringStorage

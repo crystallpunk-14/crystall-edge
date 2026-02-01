@@ -249,7 +249,7 @@
         acts: [ "Destruction" ]
   - type: PowerConsumer
     voltage: Apc
-    drawRate: 2
+    drawRate: 1
   - type: RadiationSource
     intensity: 0
   - type: CEEnergyLeak

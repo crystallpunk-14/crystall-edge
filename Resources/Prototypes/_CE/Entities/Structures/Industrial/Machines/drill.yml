@@ -62,8 +62,13 @@
     range: 1
     attackRate: 1
   - type: Rotatable
+    rotateWhileAnchored: true
   - type: StatusEffects
     allowed:
     - Jitter
   - type: ApcPowerReceiver
-    powerLoad: 2
+    powerLoad: 1
+  - type: GuideHelp
+    guides:
+    - CEMiningGuideEN
+    - CEMiningGuideRU

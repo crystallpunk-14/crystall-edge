@@ -26,18 +26,4 @@ public sealed partial class CEStaticEntityReplacementVariationPassComponent : Co
     /// </summary>
     [DataField]
     public int ReplacementCount = 10;
-
-    /// <summary>
-    /// Optional whitelist for additional filtering of entities before replacement.
-    /// Only entities that pass this whitelist will be considered for replacement.
-    /// </summary>
-    [DataField]
-    public EntityWhitelist? Whitelist;
-
-    /// <summary>
-    /// Optional blacklist to exclude certain entities from replacement.
-    /// Entities matching this blacklist will never be replaced.
-    /// </summary>
-    [DataField]
-    public EntityWhitelist? Blacklist;
 }

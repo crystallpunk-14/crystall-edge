@@ -1,0 +1,60 @@
+<Document>
+# Шахтерское дело
+
+Шахтерское дело - один из основных методов добычи ресурсов в CrystallEdge.
+На текущий момент, вы можете добывать следующие важные ресурсы:
+
+
+<Box>
+  <GuideEntityEmbed Entity="CECoal30"/>
+  <GuideEntityEmbed Entity="CEEnergyCrystalShard" Caption="Кристалл"/>
+  <GuideEntityEmbed Entity="CEIronOre30"/>
+</Box>
+
+Есть 2 основных метода добычи:
+
+## Ручная добыча
+
+На острове вы можете найти большое количество руды и кристаллов, которые при раскопках дают вам ресурсы.
+Это быстрый способ добыть ресурсы, но ограниченный, так как новая руда не появляется.
+
+
+<Box>
+  <GuideEntityEmbed Entity="CEWeaponPickaxeIron"/>
+</Box>
+<Box>
+  <GuideEntityEmbed Entity="CEWallStoneOreCoal" Caption="Угольная руда"/>
+  <GuideEntityEmbed Entity="CEFloorCrystal" Caption=""/>
+  <GuideEntityEmbed Entity="CECrystalGrowths" Caption="Кристаллы"/>
+  <GuideEntityEmbed Entity="CEFloorCrystal" Caption=""/>
+  <GuideEntityEmbed Entity="CEWallStoneOreIron" Caption="Железная руда"/>
+</Box>
+
+## Автоматизированная добыча
+
+Исследуя карту, вы можете найти особые залежи "Рудных ядер", которые являются [color=yellow]бесконечным источником ресурсов[/color].
+
+<Box>
+  <GuideEntityEmbed Entity="CEWallCoalCore"/>
+  <GuideEntityEmbed Entity="CEWallCrystalCore"/>
+  <GuideEntityEmbed Entity="CEWallIronCore"/>
+</Box>
+
+Чтобы их найти (а они каждый раунд появляются в разных местах), используйте шахтерские очки:
+
+<Box>
+  <GuideEntityEmbed Entity="CEClothingEyesMiningGlasses"/>
+</Box>
+
+Добывать их вручную хоть и возможно, но это долго и утомительно, поэтому вы можете использовать автоматизированные буры и конвееры для эффективной добычи и транспортировки ресурсов.
+
+<Box>
+  <GuideEntityEmbed Entity="CEDrill"/>
+  <GuideEntityEmbed Entity="CEConveyorBelt"/>
+  <GuideEntityEmbed Entity="CEMeltingFurnace"/>
+</Box>
+
+
+
+
+</Document>

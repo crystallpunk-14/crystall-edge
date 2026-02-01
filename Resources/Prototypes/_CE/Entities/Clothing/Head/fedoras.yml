@@ -22,44 +22,55 @@
 
 - type: entity
   parent: CEClothingHeadBase
-  id: CEClothingHeadFedoraHunterBlack
-  name: black hunter's fedora
+  id: CEClothingHeadFedoraBlack
+  name: black fedora
   description: A sleek black fedora favored by skilled hunters.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Head/Fedoras/hunter_black.rsi
+    sprite: _CE/Clothing/Head/Fedoras/black.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Head/Fedoras/hunter_black.rsi
+    sprite: _CE/Clothing/Head/Fedoras/black.rsi
 
 - type: entity
   parent: CEClothingHeadBase
-  id: CEClothingHeadFedoraHunterBlue
-  name: blue hunter's fedora
+  id: CEClothingHeadFedoraBlue
+  name: blue fedora
   description: A distinctive blue fedora worn by hunters.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Head/Fedoras/hunter_blue.rsi
+    sprite: _CE/Clothing/Head/Fedoras/blue.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Head/Fedoras/hunter_blue.rsi
+    sprite: _CE/Clothing/Head/Fedoras/blue.rsi
 
 - type: entity
   parent: CEClothingHeadBase
-  id: CEClothingHeadFedoraHunterGreen
-  name: green hunter's fedora
+  id: CEClothingHeadFedoraGreen
+  name: green fedora
   description: A forest green fedora perfect for hunters.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Head/Fedoras/hunter_green.rsi
+    sprite: _CE/Clothing/Head/Fedoras/green.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Head/Fedoras/hunter_green.rsi
+    sprite: _CE/Clothing/Head/Fedoras/green.rsi
 
 - type: entity
   parent: CEClothingHeadBase
-  id: CEClothingHeadFedoraHunterRed
-  name: red hunter's fedora
+  id: CEClothingHeadFedoraRed
+  name: red fedora
   description: A bold red fedora worn by veteran hunters.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Head/Fedoras/hunter_red.rsi
+    sprite: _CE/Clothing/Head/Fedoras/red.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Head/Fedoras/hunter_red.rsi
+    sprite: _CE/Clothing/Head/Fedoras/red.rsi
+
+- type: entity
+  parent: CEClothingHeadBase
+  id: CEClothingHeadFedoraBrown
+  name: brown fedora
+  description: A bold brown fedora worn by veteran hunters.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Head/Fedoras/brown.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Head/Fedoras/brown.rsi

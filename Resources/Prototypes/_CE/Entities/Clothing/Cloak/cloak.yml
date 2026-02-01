@@ -39,6 +39,22 @@
 - type: entity
   parent:
   - CEClothingCloakBase
+  id: CEClothingCloakBrigadier
+  name: brigadier's cloak
+  description: A status item that only senior foremen responsible for the integrity of the island are allowed to wear. The fabric is stitched with thin brass threads, providing excellent insulation from magical radiation.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Cloak/Cloak/brigadier.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Cloak/Cloak/brigadier.rsi
+  - type: CETheftValue
+    difficulty: 1
+  - type: CEEnergyRadiationArmor
+    armor: 0.75
+
+- type: entity
+  parent:
+  - CEClothingCloakBase
   id: CEClothingCloakTavernmaster
   name: tavernmaster's cloak
   description: A ceremonial cloak worn by the tavernmaster, symbolizing leadership.

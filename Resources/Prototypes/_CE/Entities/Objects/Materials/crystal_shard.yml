@@ -43,7 +43,7 @@
   - type: CEIrradiateOnDestroy
     irradiateCoefficient: 0.5
   - type: StaticPrice
-    price: 3
+    price: 1
   - type: CEEnergyOverchargeDamage
     damage:
       types:

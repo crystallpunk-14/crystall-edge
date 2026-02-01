@@ -1,0 +1,18 @@
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEBaseGuardDepartmentAmbition
+  abstract: true
+  components:
+  - type: CEAmbitionObjective
+    conditions:
+      - !type:RequiredDepartment
+        departments:
+        - CEGuard
+
+- type: entity
+  parent: CEBaseGuardDepartmentAmbition
+  id: CEAmbitionSafety
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-safety-name
+    desc: ce-ambition-safety-desc

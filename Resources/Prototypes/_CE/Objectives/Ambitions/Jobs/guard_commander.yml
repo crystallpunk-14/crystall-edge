@@ -1,0 +1,26 @@
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEBaseGuardCommanderAmbition
+  abstract: true
+  components:
+  - type: CEAmbitionObjective
+    conditions:
+      - !type:RequiredJob
+        jobs:
+        - CEGuardCommander
+
+- type: entity
+  parent: CEBaseGuardCommanderAmbition
+  id: CEAmbitionHarshCommander
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-harsh-commander-name
+    desc: ce-ambition-harsh-commander-desc
+
+- type: entity
+  parent: CEBaseGuardCommanderAmbition
+  id: CEAmbitionKindCommander
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-kind-commander-name
+    desc: ce-ambition-kind-commander-desc

@@ -80,7 +80,7 @@
     sound:
       path: /Audio/Ambience/Objects/light_hum.ogg
   - type: ApcPowerReceiver
-    powerLoad: 0.1
+    powerLoad: 0.05
   - type: ExtensionCableReceiver
     receptionRange: 0
   - type: PlacementReplacement
