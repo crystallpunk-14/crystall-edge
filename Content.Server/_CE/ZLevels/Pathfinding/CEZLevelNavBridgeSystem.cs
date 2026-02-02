@@ -29,39 +29,52 @@ public sealed partial class CEZLevelNavBridgeSystem : EntitySystem
     private void OnMapInit(Entity<CEZLevelNavBridgeComponent> ent, ref MapInitEvent args)
     {
         var targetMap = ent.Comp.TargetMap;
-        if (targetMap is null) return;
+        var targetEnt = ent.Comp.TargetEntity;
+
+        if (targetMap is null && !UpdateTargetMap(ent)) return;
+        if (targetEnt is null && !UpdateTargetEntity(ent)) return;
+
         if (!_map.TryGetMap(targetMap, out var targetMapEnt)) return;
         if (!HasComp<CEZLevelMapComponent>(targetMapEnt)) return;
-        if (ent.Comp.TargetEntity is null) return;
 
         EntityCoordinates transitionPoint1 = new(ent.Owner, ent.Comp.TransitionPoint);
-        EntityCoordinates transitionPoint2 = new(ent.Comp.TargetEntity.Value, ent.Comp.TransitionPoint);
+        EntityCoordinates transitionPoint2 = new(targetEnt!.Value, ent.Comp.TransitionPoint);
 
-        _pathfinding.TryCreatePortal(transitionPoint1, transitionPoint2, out var handle);
+        if (!_pathfinding.TryCreatePortal(transitionPoint1, transitionPoint2, out var handle)) return;
 
         ent.Comp.PortalHandels.Add(transitionPoint2, handle);
     }
-
-
-    private void OnInit(Entity<CEZLevelNavBridgeComponent> ent, ref ComponentStartup args)
+    public bool UpdateTargetEntity(Entity<CEZLevelNavBridgeComponent> ent)
     {
-        var entMapid = Transform(ent).MapID;
-
-        if (!_map.TryGetMap(entMapid, out var entMapEnt)) return;
-        if (!HasComp<CEZLevelMapComponent>(entMapEnt)) return;
-        if (!_zLevel.TryMapUp(entMapEnt.Value, out var newMapEnt)) return;
-
-        ent.Comp.TargetMap ??= Transform(newMapEnt.Value).MapID;
-
         var targetMap = ent.Comp.TargetMap;
 
-        if (!_map.TryGetMap(targetMap, out var targetMapEnt)) return;
-        if (!HasComp<CEZLevelMapComponent>(targetMapEnt)) return;
+        if (!_map.TryGetMap(targetMap, out var targetMapEnt)) return false;
+        if (!HasComp<CEZLevelMapComponent>(targetMapEnt)) return false;
 
         var transitionPoint = ent.Comp.TransitionPoint;
         var mapTransitionPoint = _transform.ToMapCoordinates(new EntityCoordinates(ent, transitionPoint));
         var targetEnt = _entity.Spawn(null, new MapCoordinates(mapTransitionPoint.Position, targetMap.Value));
 
         ent.Comp.TargetEntity = targetEnt;
+        return true;
+    }
+
+    public bool UpdateTargetMap(Entity<CEZLevelNavBridgeComponent> ent)
+    {
+        var entMapid = Transform(ent).MapID;
+
+        if (!_map.TryGetMap(entMapid, out var entMapEnt)) return false;
+        if (!_zLevel.TryMapUp(entMapEnt.Value, out var newMapEnt)) return false;
+        if (!HasComp<CEZLevelMapComponent>(entMapEnt)) return false;
+
+        ent.Comp.TargetMap = Transform(newMapEnt.Value).MapID;
+        return true;
+    }
+
+
+    private void OnInit(Entity<CEZLevelNavBridgeComponent> ent, ref ComponentStartup args)
+    {
+        UpdateTargetMap(ent);
+        UpdateTargetEntity(ent);
     }
 }

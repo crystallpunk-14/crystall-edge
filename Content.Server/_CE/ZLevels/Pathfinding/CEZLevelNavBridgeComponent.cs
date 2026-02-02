@@ -6,11 +6,11 @@ namespace Content.Server._CE.ZLevels.Pathfinding;
 [RegisterComponent]
 public sealed partial class CEZLevelNavBridgeComponent : Component
 {
-    [DataField]
-    public MapId? TargetMap;
+    [ViewVariables]
+    public MapId? TargetMap = null;
 
-    [DataField]
-    public EntityUid? TargetEntity;
+    [ViewVariables]
+    public EntityUid? TargetEntity = null;
 
     [DataField]
     public Vector2 TransitionPoint = Vector2.Zero;
