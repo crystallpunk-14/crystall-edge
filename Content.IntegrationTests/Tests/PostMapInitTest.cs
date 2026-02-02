@@ -272,12 +272,12 @@ namespace Content.IntegrationTests.Tests
         }
 
         /// <summary>
-        /// CrystallEdge - we ensuring that maps doesnt have any vanilla entities
+        /// CrystallEdge - we ensure that maps don't have any vanilla entities
         /// </summary>
         private void CECheckOnlyForkFiltered(ResPath map, YamlNode node, IPrototypeManager protoManager)
         {
             //ignore all vanilla maps
-            if (!map.ToString().StartsWith("CE"))
+            if (!map.ToString().Contains("_CE"))
                 return;
 
             var yamlEntities = node["entities"];
