@@ -35,7 +35,6 @@ public sealed partial class AdminVerbSystem
     private static readonly EntProtoId DefaultNinjaRule = "NinjaSpawn";
     private static readonly ProtoId<StartingGearPrototype> PirateGearId = "PirateGear";
 
-    private static readonly EntProtoId CEDefaultVampireRule = "CEGameRuleVampires";
     private static readonly EntProtoId CEDefaultThievesRule = "CEGameRuleThieves";
 
     // All antag verbs have names so invokeverb works.
@@ -53,20 +52,6 @@ public sealed partial class AdminVerbSystem
             return;
 
         var targetPlayer = targetActor.PlayerSession;
-
-        //var vampireName = Loc.GetString("ce-admin-verb-text-make-vampire");
-        //Verb vampire = new()
-        //{
-        //    Text = vampireName,
-        //    Category = VerbCategory.Antag,
-        //    Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/_CE/Actions/vampire.rsi"), "bite"),
-        //    Act = () =>
-        //    {
-        //        _antag.ForceMakeAntag<CEVampireRuleComponent>(targetPlayer, CEDefaultVampireRule);
-        //    },
-        //    Impact = LogImpact.High,
-        //};
-        //args.Verbs.Add(vampire);
 
         var thiefName = Loc.GetString("ce-roles-antag-thief-name");
         Verb thief = new()
