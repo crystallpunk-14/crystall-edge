@@ -28,11 +28,11 @@ public sealed partial class CEZLevelNavBridgeSystem : EntitySystem
 
     private void OnMapInit(Entity<CEZLevelNavBridgeComponent> ent, ref MapInitEvent args)
     {
+        if ( ent.Comp.TargetMap is null && !UpdateTargetMap(ent)) return;
+        if (ent.Comp.TargetEntity is null && !UpdateTargetEntity(ent)) return;
+
         var targetMap = ent.Comp.TargetMap;
         var targetEnt = ent.Comp.TargetEntity;
-
-        if (targetMap is null && !UpdateTargetMap(ent)) return;
-        if (targetEnt is null && !UpdateTargetEntity(ent)) return;
 
         if (!_map.TryGetMap(targetMap, out var targetMapEnt)) return;
         if (!HasComp<CEZLevelMapComponent>(targetMapEnt)) return;
