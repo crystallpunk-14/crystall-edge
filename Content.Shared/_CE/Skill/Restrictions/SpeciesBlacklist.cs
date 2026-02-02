@@ -13,7 +13,7 @@ public sealed partial class SpeciesBlacklist : CESkillRestriction
 
     public override bool Check(IEntityManager entManager, EntityUid target)
     {
-        if (!entManager.TryGetComponent<HumanoidAppearanceComponent>(target, out var appearance))
+        if (!entManager.TryGetComponent<HumanoidProfileComponent>(target, out var appearance))
             return false;
 
         return appearance.Species != Species;

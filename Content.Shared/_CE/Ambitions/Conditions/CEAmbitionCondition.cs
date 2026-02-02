@@ -26,7 +26,7 @@ public sealed partial class RequiredSpecies : CEAmbitionCondition
 
     public override bool Check(IEntityManager entManager, IPrototypeManager protoManager, EntityUid owner)
     {
-        if (!entManager.TryGetComponent(owner, out HumanoidAppearanceComponent? humanoid))
+        if (!entManager.TryGetComponent(owner, out HumanoidProfileComponent? humanoid))
             return false;
 
         if (Inverted)
