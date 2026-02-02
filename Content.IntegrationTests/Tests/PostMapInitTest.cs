@@ -222,6 +222,7 @@ namespace Content.IntegrationTests.Tests
                 // TODO MAP TESTS
                 // Move this to some separate test?
                 CheckDoNotMap(map, root, protoManager);
+                CECheckOnlyForkFiltered(map, root, protoManager); //CrystallEdge
 
                 if (version >= 7)
                 {
@@ -268,6 +269,35 @@ namespace Content.IntegrationTests.Tests
                 return false;
 
             return allowedProtos.Contains(protoId);
+        }
+
+        /// <summary>
+        /// CrystallEdge - we ensuring that maps doesnt have any vanilla entities
+        /// </summary>
+        private void CECheckOnlyForkFiltered(ResPath map, YamlNode node, IPrototypeManager protoManager)
+        {
+            //ignore all vanilla maps
+            if (!map.ToString().StartsWith("CE"))
+                return;
+
+            var yamlEntities = node["entities"];
+            if (!protoManager.TryIndex<EntityCategoryPrototype>("ForkFiltered", out var filterCategory))
+                return;
+
+            Assert.Multiple(() =>
+            {
+                foreach (var yamlEntity in (YamlSequenceNode)yamlEntities)
+                {
+                    var protoId = yamlEntity["proto"].AsString();
+
+                    // This doesn't properly handle prototype migrations, but thats not a significant issue.
+                    if (!protoManager.TryIndex(protoId, out var proto, false))
+                        continue;
+
+                    Assert.That(proto.Categories.Contains(filterCategory),
+                        $"\nMap {map} contains entities without FORK FILTERED category ({proto.Name})");
+                }
+            });
         }
 
         /// <summary>
