@@ -98,7 +98,7 @@ public sealed class CEGameMapMappingZNetworkCommand : LocalizedEntityCommands
 
         //Ok all parsing is done, we start creating maps
 
-        var network = _zLevel.CreateZNetwork();
+        var network = _zLevel.CreateZNetwork(zNetwork.ZLevelsComponentOverrides);
         _meta.SetEntityName(network, $"Mapping zNetwork: {mapProto.MapName}");
         Dictionary<EntityUid, int> dict = new();
 

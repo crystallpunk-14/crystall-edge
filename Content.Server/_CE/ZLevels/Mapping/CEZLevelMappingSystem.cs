@@ -5,6 +5,7 @@
 
 using Content.Server._CE.ZLevels.Core;
 using Content.Shared._CE.ZLevels.Core.Components;
+using Robust.Shared.Map.Components;
 
 namespace Content.Server._CE.ZLevels.Mapping;
 
@@ -24,6 +25,21 @@ public sealed class CEZLevelMappingSystem : EntitySystem
     {
         if (_map.IsInitialized(ent))
             EntityManager.AddComponents(ent, args.Network.Comp.Components);
+        else
+        {
+            var hasInitializedMaps = false;
+            foreach (var existingMapUid in args.Network.Comp.ZLevels.Values)
+            {
+                if (existingMapUid.HasValue && _map.IsInitialized(existingMapUid.Value))
+                {
+                    hasInitializedMaps = true;
+                    break;
+                }
+            }
+
+            if (hasInitializedMaps)
+                _map.InitializeMap(ent.Owner);
+        }
     }
 
     private void OnMapInit(Entity<CEZLevelMapComponent> ent, ref MapInitEvent args)
