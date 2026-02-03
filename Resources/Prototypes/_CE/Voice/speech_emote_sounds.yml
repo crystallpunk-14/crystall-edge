@@ -45,7 +45,9 @@
     variation: 0.125
   sounds:
     Scream:
-      path: /Audio/_CE/Voice/Carcat/carcat_scream.ogg
+      path: /Audio/_CE/Voice/Carrin/carrin-scream.ogg
+    Laugh:
+      path: /Audio/_CE/Voice/Carrin/carrin-laugh.ogg
     CECaw:
       path: /Audio/_CE/Voice/Carrin/carrin-exclaim-caw.ogg
     Gasp:
