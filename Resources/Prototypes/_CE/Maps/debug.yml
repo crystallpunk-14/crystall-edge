@@ -83,3 +83,34 @@
                 amount: 2
               - id: CEMagicDefib
                 amount: 1
+
+- type: zMap
+  id: Empty
+  maps:
+  - /Maps/_CE/Empty.yml
+  - /Maps/_CE/Empty.yml
+  - /Maps/_CE/Empty.yml
+  - /Maps/_CE/Empty.yml
+  - /Maps/_CE/Empty.yml
+  - /Maps/_CE/Empty.yml
+  components:
+    - type: MapAtmosphere
+      space: False
+      mixture:
+        volume: 2500
+        immutable: True
+        temperature: 293.15
+        moles:
+          Oxygen: 21.824879
+          Nitrogen: 82.10312
+    - type: Parallax
+      parallax: CESky
+    - type: SunShadowCycle
+      offset: 490
+    - type: LightCycle
+      offset: 490
+      originalColor: "#c8fdff"
+    - type: CEZLevelMapRoof
+    - type: SunShadow
+    - type: MapLight
+      ambientLightColor: "#c8fdff"

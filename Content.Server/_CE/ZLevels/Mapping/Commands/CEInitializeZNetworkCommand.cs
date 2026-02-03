@@ -19,7 +19,7 @@ public sealed class CEInitializeZNetworkCommand : LocalizedEntityCommands
     [Dependency] private readonly MapSystem _map = default!;
 
     public override string Command => "znetwork-initialize";
-    public override string Description => "Initialize all zNetwork maps. Warning! This will not add all components, that writed in gamemap prototype! So i think this command is useless, because all maps dont have lightning or even atmos :(";
+    public override string Description => "Initialize all zNetwork maps.";
 
     public override CompletionResult GetCompletion(IConsoleShell shell, string[] args)
     {
