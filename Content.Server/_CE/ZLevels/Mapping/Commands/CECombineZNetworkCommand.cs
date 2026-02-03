@@ -10,7 +10,7 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Console;
 using Robust.Shared.Map;
 
-namespace Content.Server._CE.ZLevels.Mapping;
+namespace Content.Server._CE.ZLevels.Mapping.Commands;
 
 [AdminCommand(AdminFlags.Server | AdminFlags.Mapping)]
 public sealed class CECombineZNetworkCommand : LocalizedEntityCommands
