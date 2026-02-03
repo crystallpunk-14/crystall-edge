@@ -77,16 +77,24 @@ public sealed partial class CEZLevelNavBridgeSystem : EntitySystem
 
     private void OnStartup(Entity<CEZLevelNavBridgeComponent> ent, ref ComponentStartup args)
     {
+        if (ent.Comp.PortalHandels.Count > 0)
+            ClearHandels(ent);
         UpdateTargetMap(ent);
         UpdateTargetEntity(ent);
     }
 
     private void OnShutdown(Entity<CEZLevelNavBridgeComponent> ent, ref ComponentShutdown args)
     {
+        ClearHandels(ent);
+    }
+
+    private void ClearHandels(Entity<CEZLevelNavBridgeComponent> ent)
+    {
         foreach (var handle in ent.Comp.PortalHandels)
         {
             _pathfinding.RemovePortal(handle.Value);
             _entity.DeleteEntity(handle.Key.EntityId);
         }
+        ent.Comp.PortalHandels.Clear();
     }
 }
