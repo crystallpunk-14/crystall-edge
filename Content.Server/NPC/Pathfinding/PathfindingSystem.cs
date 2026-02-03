@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Content.Server.Administration.Managers;
 using Content.Server.Destructible;
 using Content.Server.NPC.Systems;
+using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.Access.Components;
 using Content.Shared.Administration;
 using Content.Shared.Climbing.Components;
@@ -192,7 +193,13 @@ namespace Content.Server.NPC.Pathfinding
             var mapUidB = _transform.GetMap(coordsB);
             handle = -1;
 
-            if (mapUidA != mapUidB || mapUidA == null)
+            if (
+                /*CE Start */
+                !(HasComp<CEZLevelMapComponent>(mapUidA) &&
+                HasComp<CEZLevelMapComponent>(mapUidB)) &&
+                /*CE END*/
+                (mapUidA != mapUidB || mapUidA == null)
+                  )
             {
                 return false;
             }
