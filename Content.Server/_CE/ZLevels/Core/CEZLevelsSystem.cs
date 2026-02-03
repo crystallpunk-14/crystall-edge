@@ -34,7 +34,7 @@ public sealed partial class CEZLevelsSystem : CESharedZLevelsSystem
             return;
 
         var stationName = MetaData(ent).EntityName;
-        var stationNetwork = CreateZNetwork();
+        var stationNetwork = CreateZNetwork(ent.Comp.ZLevelsComponentOverrides);
         ent.Comp.ZNetworkEntity = stationNetwork;
         _meta.SetEntityName(ent.Comp.ZNetworkEntity.Value, $"Station z-Network: {stationName}");
 
@@ -45,8 +45,6 @@ public sealed partial class CEZLevelsSystem : CESharedZLevelsSystem
 
         Dictionary<EntityUid, int> dict = new();
         dict.Add(mainMap.Value, 0);
-
-        EntityManager.AddComponents(mainMap.Value, ent.Comp.ZLevelsComponentOverrides);
 
         //Loading maps below first
         var depth = ent.Comp.MapsBelow.Count * -1;
@@ -59,7 +57,6 @@ public sealed partial class CEZLevelsSystem : CESharedZLevelsSystem
             }
 
             Log.Info($"Created map {mapEnt.Value.Comp.MapId} for Station zNetwork at level {depth}");
-            EntityManager.AddComponents(mapEnt.Value, ent.Comp.ZLevelsComponentOverrides);
             _map.InitializeMap(mapEnt.Value.Comp.MapId);
             _meta.SetEntityName(mapEnt.Value, $"{stationName} [{depth}]");
             _station.AddGridToStation(ent, mapEnt.Value);
@@ -78,7 +75,6 @@ public sealed partial class CEZLevelsSystem : CESharedZLevelsSystem
             }
 
             Log.Info($"Created map {mapEnt.Value.Comp.MapId} for Station zNetwork at level {depth}");
-            EntityManager.AddComponents(mapEnt.Value, ent.Comp.ZLevelsComponentOverrides);
             _map.InitializeMap(mapEnt.Value.Comp.MapId);
             _meta.SetEntityName(mapEnt.Value, $"{stationName} [{depth}]");
             _station.AddGridToStation(ent, mapEnt.Value);

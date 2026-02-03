@@ -30,12 +30,12 @@
             CEGuardCommander: [ 1, 1 ]
             CETavernmaster: [ 1, 1 ]
         - type: CEStationZLevels
+          mapsBelow:
+          - /Maps/_CE/Dev/Dev-1.yml
           mapsAbove:
           - /Maps/_CE/Dev/Dev1.yml
           - /Maps/_CE/Dev/Dev2.yml
           - /Maps/_CE/Dev/Dev3.yml
-          mapsBelow:
-          - /Maps/_CE/Dev/Dev-1.yml
           zLevelsComponentOverrides:
             - type: MapAtmosphere
               space: False

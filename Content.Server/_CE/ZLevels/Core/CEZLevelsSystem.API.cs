@@ -6,6 +6,7 @@
 using Content.Server._CE.PVS;
 using Content.Shared._CE.ZLevels.Core.Components;
 using JetBrains.Annotations;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.ZLevels.Core;
 
@@ -15,12 +16,14 @@ public sealed partial class CEZLevelsSystem
     /// Creates a new entity zLevelNetwork
     /// </summary>
     [PublicAPI]
-    public Entity<CEZLevelsNetworkComponent> CreateZNetwork()
+    public Entity<CEZLevelsNetworkComponent> CreateZNetwork(ComponentRegistry? components = null)
     {
         var ent = Spawn();
 
         var zLevel = EnsureComp<CEZLevelsNetworkComponent>(ent);
         EnsureComp<CEPvsOverrideComponent>(ent);
+
+        zLevel.Components = components ?? new ComponentRegistry();
 
         return (ent, zLevel);
     }
@@ -50,7 +53,6 @@ public sealed partial class CEZLevelsSystem
 
         network.Comp.ZLevels.Add(depth, mapUid);
         EnsureComp<CEZLevelMapComponent>(mapUid).Depth = depth;
-
         return true;
     }
 
