@@ -1,4 +1,5 @@
 using Content.Server._CE.ZLevels.Core;
+using Content.Server.Construction.Completions;
 using Content.Server.NPC.Pathfinding;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
@@ -22,13 +23,15 @@ public sealed partial class CEZLevelNavBridgeSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CEZLevelNavBridgeComponent, ComponentStartup>(OnInit);
+        SubscribeLocalEvent<CEZLevelNavBridgeComponent, ComponentStartup>(OnStartup);
+        SubscribeLocalEvent<CEZLevelNavBridgeComponent, ComponentShutdown>(OnShutdown);
+
         SubscribeLocalEvent<CEZLevelNavBridgeComponent, MapInitEvent>(OnMapInit, after: [typeof(CESharedZLevelsSystem)]);
     }
 
     private void OnMapInit(Entity<CEZLevelNavBridgeComponent> ent, ref MapInitEvent args)
     {
-        if ( ent.Comp.TargetMap is null && !UpdateTargetMap(ent)) return;
+        if (ent.Comp.TargetMap is null && !UpdateTargetMap(ent)) return;
         if (ent.Comp.TargetEntity is null && !UpdateTargetEntity(ent)) return;
 
         var targetMap = ent.Comp.TargetMap;
@@ -72,9 +75,18 @@ public sealed partial class CEZLevelNavBridgeSystem : EntitySystem
     }
 
 
-    private void OnInit(Entity<CEZLevelNavBridgeComponent> ent, ref ComponentStartup args)
+    private void OnStartup(Entity<CEZLevelNavBridgeComponent> ent, ref ComponentStartup args)
     {
         UpdateTargetMap(ent);
         UpdateTargetEntity(ent);
+    }
+
+    private void OnShutdown(Entity<CEZLevelNavBridgeComponent> ent, ref ComponentShutdown args)
+    {
+        foreach (var handle in ent.Comp.PortalHandels)
+        {
+            _pathfinding.RemovePortal(handle.Value);
+            _entity.DeleteEntity(handle.Key.EntityId);
+        }
     }
 }
