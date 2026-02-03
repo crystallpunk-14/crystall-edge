@@ -1,0 +1,66 @@
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEBaseThiefAmbition
+  abstract: true
+  components:
+  - type: CEAmbitionObjective
+    conditions:
+      - !type:RequiredThiefRole
+    weight: 3 #Antag ambitions are fun!!
+
+- type: entity
+  parent: CEBaseThiefAmbition
+  id: CEAmbitionThiefVengeance
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-thief-vengeance-name
+    desc: ce-ambition-thief-vengeance-desc
+    parsings:
+      NAME: !type:RandomOtherPerson
+
+- type: entity
+  parent: CEBaseThiefAmbition
+  id: CEAmbitionThiefCarcatMischief
+  components:
+  - type: CEAmbitionObjective
+    conditions:
+      - !type:RequiredThiefRole
+      - !type:RequiredSpecies
+        species:
+        - CECarcat
+    name: ce-ambition-thief-carcat-mischief-name
+    desc: ce-ambition-thief-carcat-mischief-desc
+
+- type: entity
+  parent: CEBaseThiefAmbition
+  id: CEAmbitionThiefLair
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-thief-lair-name
+    desc: ce-ambition-thief-lair-desc
+    weight: 2
+    parsings:
+      REASON: !type:RandomDataset
+        dataset: CEAmbitionReason
+      LOCATION: !type:RandomLocation
+
+- type: entity
+  parent: CEBaseThiefAmbition
+  id: CEAmbitionThiefCarrinMagpie
+  components:
+  - type: CEAmbitionObjective
+    conditions:
+      - !type:RequiredThiefRole
+      - !type:RequiredSpecies
+        species:
+        - CECarrin
+    name: ce-ambition-thief-carrin-magpie-name
+    desc: ce-ambition-thief-carrin-magpie-desc
+
+- type: entity
+  parent: CEBaseThiefAmbition
+  id: CEAmbitionThiefBlindJustice
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-thief-blind-justice-name
+    desc: ce-ambition-thief-blind-justice-desc

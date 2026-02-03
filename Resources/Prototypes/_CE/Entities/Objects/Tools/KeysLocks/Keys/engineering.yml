@@ -1,5 +1,13 @@
 - type: entity
   parent: CEKeyIronBlank
+  id: CEKeyEngineeringBase
+  abstract: true
+  components:
+  - type: Sprite
+    state: key_brass
+
+- type: entity
+  parent: CEKeyEngineeringBase
   id: CEKeyEngineeringHall
   suffix: Engineering Hall
   components:
@@ -7,7 +15,7 @@
     autoGenerateShape: EngineeringHall
 
 - type: entity
-  parent: CEKeyIronBlank
+  parent: CEKeyEngineeringBase
   id: CEKeyEngineeringStaff
   suffix: Engineering Staff
   components:
@@ -15,7 +23,7 @@
     autoGenerateShape: EngineeringStaff
 
 - type: entity
-  parent: CEKeyIronBlank
+  parent: CEKeyEngineeringBase
   id: CEKeyEngineeringGenerator
   suffix: Engineering Generator
   components:
@@ -23,7 +31,7 @@
     autoGenerateShape: EngineeringGenerator
 
 - type: entity
-  parent: CEKeyIronBlank
+  parent: CEKeyEngineeringBase
   id: CEKeyEngineeringTunnels
   suffix: Engineering Tunnels
   components:
@@ -31,7 +39,7 @@
     autoGenerateShape: EngineeringTunnels
 
 - type: entity
-  parent: CEKeyIronBlank
+  parent: CEKeyEngineeringBase
   id: CEKeyEngineeringBrigadier
   suffix: Engineering Brigadier
   components:
@@ -39,7 +47,7 @@
     autoGenerateShape: EngineeringBrigadier
 
 - type: entity
-  parent: CEKeyIronBlank
+  parent: CEKeyEngineeringBase
   id: CEKeyEngineeringStorage
   suffix: Engineering Storage
   components:

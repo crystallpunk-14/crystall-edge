@@ -1,0 +1,21 @@
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEBaseGuardAmbition
+  abstract: true
+  components:
+  - type: CEAmbitionObjective
+    conditions:
+      - !type:RequiredJob
+        jobs:
+        - CEGuard
+
+- type: entity
+  parent: CEBaseGuardAmbition
+  id: CEAmbitionSuspicion
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-suspicion-name
+    desc: ce-ambition-suspicion-desc
+    weight: 2
+    parsings:
+      NAME: !type:RandomOtherPerson

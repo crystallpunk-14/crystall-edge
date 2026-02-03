@@ -7,7 +7,7 @@
   categories: [ ForkFiltered ]
   components:
   - type: HandheldLight
-    wattage: 0.1
+    wattage: 0.01
     addPrefix: false
     blinkingBehaviourId: blinking
     radiatingBehaviourId: blinking
@@ -43,9 +43,9 @@
     enabled: false
     mask: /Textures/_CE/Effects/LightMasks/crystal_cone.png
     autoRot: true
-    energy: 3
+    energy: 6
     radius: 6
-    color: "#4da1d6"
+    color: "#9cc8e3"
     netsync: false
   - type: Appearance
   - type: ToggleableVisuals

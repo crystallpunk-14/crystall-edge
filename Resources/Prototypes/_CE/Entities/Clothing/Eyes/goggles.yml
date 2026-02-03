@@ -27,12 +27,23 @@
 
 - type: entity
   parent: CEClothingEyesGogglesFoldableBase
-  id: CEClothingEyesThaumaturgyGlasses
-  name: thaumaturgy glasses
-  description: Goggles that allow you to scan magical items and creatures to clearly see the amount of energy left in them.
+  id: CEClothingEyesMiningGlasses
+  name: mining glasses
+  description: Miner's glasses tuned to search for nearby ore veins.
   components:
+  - type: Item
+    size: Normal #Temporary fix, until waypointers stop working out of pockets
   - type: Sprite
-    sprite: _CE/Clothing/Eyes/thaumaturgy_glasses.rsi
+    sprite: _CE/Clothing/Eyes/mining_glasses.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Eyes/thaumaturgy_glasses.rsi
+    sprite: _CE/Clothing/Eyes/mining_glasses.rsi
   - type: VisionCorrection
+  - type: ShowWaypointer
+    waypointerProtoIds:
+    - CEOreCoreWaypointer
+  - type: GuideHelp
+    guides:
+    - CEMiningGuideEN
+    - CEMiningGuideRU
+  - type: StaticPrice
+    price: 60

@@ -277,3 +277,27 @@
     weight: 1
     parsings:
       NAME: !type:RandomOtherPerson
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionGluttony
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-gluttony-name
+    desc: ce-ambition-gluttony-desc
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionFakedDeath
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-faked-death-name
+    desc: ce-ambition-faked-death-desc
+
+- type: entity
+  parent: CEBaseAmbitionObjective
+  id: CEAmbitionExtremist
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-extremist-name
+    desc: ce-ambition-extremist-desc

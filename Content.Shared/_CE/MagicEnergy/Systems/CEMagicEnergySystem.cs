@@ -57,6 +57,9 @@ public abstract class CESharedMagicEnergySystem : EntitySystem
 
     private void OnOvercharge(Entity<CEEnergyOverchargeDamageComponent> ent, ref CEEnergyOverchargeEvent args)
     {
+        if (ent.Comp.Damage.GetTotal() <= 0)
+            return;
+
         _damageable.TryChangeDamage(ent.Owner, ent.Comp.Damage * args.Overcharge, interruptsDoAfters: false);
         _jitter.DoJitter(ent, TimeSpan.FromSeconds(0.5f), true, 2, 8);
         _popup.PopupEntity(Loc.GetString(ent.Comp.Popup), ent, PopupType.SmallCaution);
@@ -68,6 +71,9 @@ public abstract class CESharedMagicEnergySystem : EntitySystem
 
     private void OnDeficit(Entity<CEEnergyDeficitDamageComponent> ent, ref CEEnergyDeficitEvent args)
     {
+        if (ent.Comp.Damage.GetTotal() <= 0)
+            return;
+
         _damageable.TryChangeDamage(ent.Owner, ent.Comp.Damage * args.Deficit, interruptsDoAfters: false);
         _jitter.DoJitter(ent, TimeSpan.FromSeconds(0.5f), true, 2, 8);
         _popup.PopupEntity(Loc.GetString(ent.Comp.Popup), ent, PopupType.SmallCaution);

@@ -45,7 +45,7 @@
   parent: CEBaseVariationPass
   components:
   - type: CEStaticEntityReplacementVariationPass
-    replacementCount: 5
+    replacementCount: 7
     replacementMap:
       CEWallStone: CEWallIronCore
 

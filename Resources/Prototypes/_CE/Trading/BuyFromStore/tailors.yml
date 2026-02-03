@@ -160,35 +160,43 @@
     count: 1
 
 - type: tradingPosition
-  id: CEClothingHeadFedoraHunterBlack
+  id: CEClothingHeadFedoraBlack
   faction: Tailors
   category: Clothing
   service: !type:CEBuyItemsService
-    product: CEClothingHeadFedoraHunterBlack
+    product: CEClothingHeadFedoraBlack
     count: 1
 
 - type: tradingPosition
-  id: CEClothingHeadFedoraHunterBlue
+  id: CEClothingHeadFedoraBlue
   faction: Tailors
   category: Clothing
   service: !type:CEBuyItemsService
-    product: CEClothingHeadFedoraHunterBlue
+    product: CEClothingHeadFedoraBlue
     count: 1
 
 - type: tradingPosition
-  id: CEClothingHeadFedoraHunterGreen
+  id: CEClothingHeadFedoraGreen
   faction: Tailors
   category: Clothing
   service: !type:CEBuyItemsService
-    product: CEClothingHeadFedoraHunterGreen
+    product: CEClothingHeadFedoraGreen
     count: 1
 
 - type: tradingPosition
-  id: CEClothingHeadFedoraHunterRed
+  id: CEClothingHeadFedoraRed
   faction: Tailors
   category: Clothing
   service: !type:CEBuyItemsService
-    product: CEClothingHeadFedoraHunterRed
+    product: CEClothingHeadFedoraRed
+    count: 1
+
+- type: tradingPosition
+  id: CEClothingHeadFedoraBrown
+  faction: Tailors
+  category: Clothing
+  service: !type:CEBuyItemsService
+    product: CEClothingHeadFedoraBrown
     count: 1
 
 - type: tradingPosition

@@ -1,9 +1,11 @@
 - type: loadoutGroup
   id: CEGeneralInstruments
   name: ce-loadout-instruments
-  minLimit: 1
+  minLimit: 2
+  maxLimit: 2
   loadouts:
   - CESafeFallingAmulet
+  - CELantern
   - CEManaTransferGlove
   - CECoinSilver10
 
@@ -17,6 +19,12 @@
   storage:
     back:
     - CEManaTransferGlove
+
+- type: loadout
+  id: CELantern
+  storage:
+    back:
+    - CELantern
 
 - type: loadout
   id: CECoinSilver10

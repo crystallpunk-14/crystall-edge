@@ -72,12 +72,12 @@
   id: JobCEBrigadier
   groups:
   - CEGeneralBag
-  - CETownfolkHead
-  - CEGeneralEyes
-  - CEGeneralCloak
+  - CETechnicianHead #
+  - CEEngineeringEyes #
+  - CEBrigadierCloak #
   - CEGeneralGloves
-  - CEGeneralShirt
-  - CEGeneralPants
+  - CEEngineeringShirt #
+  - CEEngineeringPants #
   - CEGeneralShoes
   - CEGeneralInstruments
 
@@ -85,12 +85,11 @@
   id: JobCETechnician
   groups:
   - CEGeneralBag
-  - CETownfolkHead
-  - CEGeneralEyes
-  - CEGeneralCloak
+  - CETechnicianHead #
+  - CEEngineeringEyes #
   - CEGeneralGloves
-  - CEGeneralShirt
-  - CEGeneralPants
+  - CEEngineeringShirt #
+  - CEEngineeringPants #
   - CEGeneralShoes
   - CEGeneralInstruments
 
@@ -100,7 +99,7 @@
   id: JobCETailorMerchant
   groups:
   - CEGeneralBag
-  - CETownfolkHead
+  - CETownfolkHead #
   - CEMerchantEyes #
   - CEGeneralCloak
   - CEGeneralGloves
@@ -113,7 +112,7 @@
   id: JobCEPharmacistMerchant
   groups:
   - CEGeneralBag
-  - CETownfolkHead
+  - CETownfolkHead #
   - CEMerchantEyes #
   - CEGeneralCloak
   - CEGeneralGloves
@@ -126,8 +125,8 @@
   id: JobCEHomeGoodsMerchant
   groups:
   - CEGeneralBag
-  - CETownfolkHead
-  - CEMerchantEyes
+  - CETownfolkHead #
+  - CEMerchantEyes #
   - CEGeneralCloak
   - CEGeneralGloves
   - CEGeneralShirt
@@ -139,7 +138,7 @@
   id: JobCETownfolk
   groups:
   - CEGeneralBag
-  - CETownfolkHead
+  - CETownfolkHead #
   - CEGeneralEyes
   - CEGeneralCloak
   - CEGeneralGloves
@@ -152,12 +151,12 @@
   id: JobCEBard
   groups:
   - CEGeneralBag
-  - CEBardHead
+  - CEBardHead #
   - CEGeneralEyes
   - CEGeneralCloak
   - CEGeneralGloves
-  - CEBardShirt
-  - CEBardPants
-  - CEBardShoes
-  - CEBardTool
+  - CEBardShirt #
+  - CEBardPants #
+  - CEBardShoes #
+  - CEBardTool #
   - CEGeneralInstruments

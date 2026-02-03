@@ -1,0 +1,55 @@
+<Document>
+# Mining
+
+Mining is one of the main methods of resource extraction in CrystallEdge.
+Currently, you can mine the following important resources:
+
+<Box>
+  <GuideEntityEmbed Entity="CECoal30"/>
+  <GuideEntityEmbed Entity="CEEnergyCrystalShard" Caption="Crystal"/>
+  <GuideEntityEmbed Entity="CEIronOre30"/>
+</Box>
+
+There are two main mining methods:
+
+## Manual Mining
+
+On the island, you can find a large amount of ore and crystals, which yield resources when excavated.
+This is a quick way to obtain resources, but it is limited, as new ore does not appear.
+
+<Box>
+  <GuideEntityEmbed Entity="CEWeaponPickaxeIron"/>
+</Box>
+<Box>
+  <GuideEntityEmbed Entity="CEWallStoneOreCoal" Caption="Coal Ore"/>
+  <GuideEntityEmbed Entity="CEFloorCrystal" Caption=""/>
+  <GuideEntityEmbed Entity="CECrystalGrowths" Caption="Crystals"/>
+  <GuideEntityEmbed Entity="CEFloorCrystal" Caption=""/>
+  <GuideEntityEmbed Entity="CEWallStoneOreIron" Caption="Iron Ore"/>
+</Box>
+
+## Automated Mining
+
+While exploring the map, you may find special deposits called "Ore Cores," which provide [color=yellow]an infinite source of resources[/color].
+
+<Box>
+  <GuideEntityEmbed Entity="CEWallCoalCore"/>
+  <GuideEntityEmbed Entity="CEWallCrystalCore"/>
+  <GuideEntityEmbed Entity="CEWallIronCore"/>
+</Box>
+
+To find them (and they appear in different places each round), use mining goggles:
+
+<Box>
+  <GuideEntityEmbed Entity="CEClothingEyesMiningGlasses"/>
+</Box>
+
+You can mine them manually, but it is slow and tedious, so you can use automated drills and conveyors for efficient mining and transportation of resources.
+
+<Box>
+  <GuideEntityEmbed Entity="CEDrill"/>
+  <GuideEntityEmbed Entity="CEConveyorBelt"/>
+  <GuideEntityEmbed Entity="CEMeltingFurnace"/>
+</Box>
+
+</Document>

@@ -261,3 +261,14 @@
     sprite: _CE/Clothing/Shirt/Dress/merchant.rsi
   - type: Clothing
     sprite: _CE/Clothing/Shirt/Dress/merchant.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtEngineeringDress
+  name: engineering dress
+  description: Girls also do physically demanding jobs, and they still want to look cute!
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Dress/Engineering/dress.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Dress/Engineering/dress.rsi

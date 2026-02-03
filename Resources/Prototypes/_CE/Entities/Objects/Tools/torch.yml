@@ -21,15 +21,6 @@
   - type: FireVisuals
     sprite: _CE/Objects/Tools/torch.rsi
     normalState: lit-overlay
-  - type: ToggleableLightVisuals
-    spriteLayer: null
-    inhandVisuals:
-      left:
-      - state: lit-inhand-left
-        shader: unshaded
-      right:
-      - state: lit-inhand-right
-        shader: unshaded
   #- type: GenericVisualizer
   #  visuals:
   #    enum.FireplaceFuelVisuals.Status:
@@ -43,7 +34,7 @@
   - type: MeleeWeapon
     attackRate: 1.5
     wideAnimationRotation: 240
-    wideAnimation: WeaponArcSlash # Vanilla animation
+    wideAnimation: WeaponArcSlash
     damage:
       types:
         Blunt: 4

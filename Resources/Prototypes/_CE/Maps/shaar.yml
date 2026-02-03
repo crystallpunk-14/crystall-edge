@@ -15,6 +15,9 @@
             #Guard (5)
             CEGuardCommander: [ 1, 1 ]
             CEGuard: [ 4, 4 ]
+            #Engineering (4)
+            CEBrigadier: [ 1, 1 ]
+            CETechnician: [ 3, 3 ]
             #Tavern (4)
             CETavernmaster: [ 1, 1 ]
             CEChef: [ 3, 3 ]

@@ -49,6 +49,7 @@
   - type: Construction
     graph: CEWoodenDoor
     node: CEWoodenDoorFrame
+    defaultTarget: CEWoodenDoor
 
 - type: entity
   parent: CEWoodenDoorFrame
@@ -99,4 +100,5 @@
   - type: Construction
     graph: CEIronDoor
     node: CEIronDoorFrameMirrored
+    defaultTarget: CEIronDoor
 
