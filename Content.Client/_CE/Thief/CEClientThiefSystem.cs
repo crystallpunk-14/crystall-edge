@@ -6,7 +6,6 @@ using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Timing;
 
 namespace Content.Client._CE.Thief;
 
@@ -15,7 +14,6 @@ public sealed partial class CEClientThiefSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
 
     private readonly EntProtoId _vfx = "CETreasureSparkVFX";
     private readonly SoundSpecifier _sound = new SoundPathSpecifier("/Audio/_CE/Effects/treasure_effect.ogg");
@@ -28,8 +26,7 @@ public sealed partial class CEClientThiefSystem : EntitySystem
 
     private void OnShowTreasures(Entity<ActorComponent> ent, ref CEThiefShowTreasuresEvent args)
     {
-        if (!_gameTiming.IsFirstTimePredicted)
-            return;
+        args.Handled = true;
 
         var query = EntityQueryEnumerator<CETheftValueComponent, TransformComponent>();
         var count = 0;
