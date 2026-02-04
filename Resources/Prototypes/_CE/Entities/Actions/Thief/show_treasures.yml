@@ -6,7 +6,6 @@
   components:
   - type: Action
     useDelay: 3
-    clientExclusive: true
     icon:
       sprite: _CE/Interface/Skills/thief.rsi
       state: treasure_show

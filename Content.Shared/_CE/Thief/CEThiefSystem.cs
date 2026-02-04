@@ -1,18 +1,18 @@
-using Content.Client.Popups;
 using Content.Shared._CE.Thief;
 using Content.Shared.Coordinates;
 using Content.Shared.Interaction;
+using Content.Shared.Popups;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
-namespace Content.Client._CE.Thief;
+namespace Content.Shared._CE.Thief;
 
-public sealed partial class CEClientThiefSystem : EntitySystem
+public sealed partial class CEThiefSystem : EntitySystem
 {
     [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     private readonly EntProtoId _vfx = "CETreasureSparkVFX";
@@ -31,7 +31,7 @@ public sealed partial class CEClientThiefSystem : EntitySystem
         var query = EntityQueryEnumerator<CETheftValueComponent, TransformComponent>();
         var count = 0;
 
-        while (query.MoveNext(out var uid, out var theftValue, out var transform))
+        while (query.MoveNext(out _, out _, out var transform))
         {
             var entCoords = _transform.GetWorldPosition(ent.Owner);
             var trsCoords = _transform.GetWorldPosition(transform);
@@ -40,9 +40,10 @@ public sealed partial class CEClientThiefSystem : EntitySystem
                 continue;
 
             count += 1;
+
             SpawnAtPosition(_vfx, transform.Coordinates);
             _audio.PlayPvs(_sound, transform.Coordinates);
         }
-        _popup.PopupEntity(Loc.GetString("ce-action-thief-show-treasures", ("amount", count)), ent);
+        _popup.PopupEntity(Loc.GetString("ce-action-thief-show-treasures", ("amount", count)), ent, ent);
     }
 }
