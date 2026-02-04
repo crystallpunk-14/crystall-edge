@@ -13,7 +13,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Utility;
 
-namespace Content.Server._CE.ZLevels.Mapping;
+namespace Content.Server._CE.ZLevels.Mapping.Commands;
 
 [AdminCommand(AdminFlags.Server | AdminFlags.Mapping)]
 public sealed class CESaveZNetworkCommand : LocalizedEntityCommands

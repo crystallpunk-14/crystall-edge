@@ -30,12 +30,12 @@
             CEGuardCommander: [ 1, 1 ]
             CETavernmaster: [ 1, 1 ]
         - type: CEStationZLevels
+          mapsBelow:
+          - /Maps/_CE/Dev/Dev-1.yml
           mapsAbove:
           - /Maps/_CE/Dev/Dev1.yml
           - /Maps/_CE/Dev/Dev2.yml
           - /Maps/_CE/Dev/Dev3.yml
-          mapsBelow:
-          - /Maps/_CE/Dev/Dev-1.yml
           zLevelsComponentOverrides:
             - type: MapAtmosphere
               space: False
@@ -83,3 +83,34 @@
                 amount: 2
               - id: CEMagicDefib
                 amount: 1
+
+- type: zMap
+  id: Empty
+  maps:
+  - /Maps/_CE/Empty.yml
+  - /Maps/_CE/Empty.yml
+  - /Maps/_CE/Empty.yml
+  - /Maps/_CE/Empty.yml
+  - /Maps/_CE/Empty.yml
+  - /Maps/_CE/Empty.yml
+  components:
+    - type: MapAtmosphere
+      space: False
+      mixture:
+        volume: 2500
+        immutable: True
+        temperature: 293.15
+        moles:
+          Oxygen: 21.824879
+          Nitrogen: 82.10312
+    - type: Parallax
+      parallax: CESky
+    - type: SunShadowCycle
+      offset: 490
+    - type: LightCycle
+      offset: 490
+      originalColor: "#c8fdff"
+    - type: CEZLevelMapRoof
+    - type: SunShadow
+    - type: MapLight
+      ambientLightColor: "#c8fdff"

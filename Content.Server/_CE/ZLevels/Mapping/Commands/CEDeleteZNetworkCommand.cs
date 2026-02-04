@@ -6,20 +6,17 @@
 using Content.Server.Administration;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.Administration;
-using Robust.Server.GameObjects;
 using Robust.Shared.Console;
-using Robust.Shared.Map.Components;
 
-namespace Content.Server._CE.ZLevels.Mapping;
+namespace Content.Server._CE.ZLevels.Mapping.Commands;
 
 [AdminCommand(AdminFlags.Server | AdminFlags.Mapping)]
-public sealed class CEInitializeZNetworkCommand : LocalizedEntityCommands
+public sealed class CEDeleteZNetworkCommand : LocalizedEntityCommands
 {
     [Dependency] private readonly IEntityManager _entities = default!;
-    [Dependency] private readonly MapSystem _map = default!;
 
-    public override string Command => "znetwork-initialize";
-    public override string Description => "Initialize all zNetwork maps. Warning! This will not add all components, that writed in gamemap prototype! So i think this command is useless, because all maps dont have lightning or even atmos :(";
+    public override string Command => "znetwork-delete";
+    public override string Description => "Delete all maps into selected zNetwork + zNetwork entity";
 
     public override CompletionResult GetCompletion(IConsoleShell shell, string[] args)
     {
@@ -29,7 +26,6 @@ public sealed class CEInitializeZNetworkCommand : LocalizedEntityCommands
         {
             options.Add(new CompletionOption(_entities.GetNetEntity(uid).ToString(), meta.EntityName));
         }
-
         return CompletionResult.FromHintOptions(options, "zNetwork net entity");
     }
 
@@ -37,7 +33,7 @@ public sealed class CEInitializeZNetworkCommand : LocalizedEntityCommands
     {
         if (args.Length != 1)
         {
-            shell.WriteError(Loc.GetString("shell-wrong-arguments-number"));
+            shell.WriteError("Wrong arguments count.");
             return;
         }
 
@@ -57,27 +53,13 @@ public sealed class CEInitializeZNetworkCommand : LocalizedEntityCommands
             return;
         }
 
-        foreach (var (_, mapUid) in levelComp.ZLevels)
+        //Delete all maps
+        foreach (var (depth, mapUid) in levelComp.ZLevels)
         {
-            if (!_entities.TryGetComponent<MapComponent>(mapUid, out var mapComp))
-            {
-                shell.WriteError($"Map entity {mapUid} doesnt have MapComponent.");
-                continue;
-            }
-
-            if (!_map.MapExists(mapComp.MapId))
-            {
-                shell.WriteError($"Map with ID {mapComp.MapId} does not exist.");
-                continue;
-            }
-
-            if (_map.IsInitialized(mapComp.MapId))
-            {
-                shell.WriteLine($"Map with ID {mapComp.MapId} is already initialized.");
-                continue;
-            }
-            _map.InitializeMap(mapComp.MapId);
-            shell.WriteLine($"Map with ID {mapComp.MapId} has been initialized.");
+            _entities.QueueDeleteEntity(mapUid);
         }
+        _entities.QueueDeleteEntity(target);
+
+        shell.WriteLine("ZNetwork and all its maps deleted.");
     }
 }

@@ -94,6 +94,27 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
     }
 
     [PublicAPI]
+    public bool TryZNetwork(Entity<CEZLevelMapComponent?> inputMapUid,
+        [NotNullWhen(true)] out Entity<CEZLevelsNetworkComponent>? zNetwork)
+    {
+        zNetwork = null;
+        if (!Resolve(inputMapUid, ref inputMapUid.Comp, false))
+            return false;
+
+        var query = EntityQueryEnumerator<CEZLevelsNetworkComponent>();
+        while (query.MoveNext(out var uid, out var network))
+        {
+            if (!network.ZLevels.ContainsValue(inputMapUid))
+                continue;
+
+            zNetwork = (uid, network);
+            return true;
+        }
+
+        return false;
+    }
+
+    [PublicAPI]
     public bool TryMapUp(Entity<CEZLevelMapComponent?> inputMapUid,
         [NotNullWhen(true)] out Entity<CEZLevelMapComponent>? aboveMapUid)
     {
