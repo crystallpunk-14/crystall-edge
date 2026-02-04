@@ -44,6 +44,11 @@ public abstract class BaseEntityReplaceVariationPassSystem<TEntComp, TGameRuleCo
         var enumerator = AllEntityQuery<TEntComp, TransformComponent>();
         while (enumerator.MoveNext(out var uid, out _, out var xform))
         {
+            // CrystallEdge - Skip if entity was already deleted by a prior variation pass
+            if (!Exists(uid))
+                continue;
+            //CrystallEdge end
+
             if (!IsMemberOfStation((uid, xform), ref args))
                 continue;
 
@@ -65,7 +70,7 @@ public abstract class BaseEntityReplaceVariationPassSystem<TEntComp, TGameRuleCo
     {
         var coords = ent.Comp.Coordinates;
         var rot = ent.Comp.LocalRotation;
-        QueueDel(ent);
+        Del(ent); //CrystallEdge replaced QueueDel to Del
 
         foreach (var spawn in EntitySpawnCollection.GetSpawns(replacements, RobustRandom))
         {

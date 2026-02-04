@@ -1,5 +1,15 @@
 # Base
 ce-tiles-base = rock strata
+ce-tiles-space = empty space
+
+# First layer
+
+ce-tiles-iron-rods = iron rods
+ce-tiles-brass-rods = brass rods
+ce-tiles-planks = plank support
+
+ce-tiles-iron-plating = iron plating
+ce-tiles-brass-plating = brass plating
 
 # Natural
 ce-tiles-grass = grass
@@ -23,7 +33,6 @@ ce-tiles-mycelium-light = dense mycelium
 ce-tiles-foundation = foundation
 ce-tiles-dirt-seedbed = dirt seedbed
 ce-tiles-glass = glass floor
-ce-tiles-planks = plank support
 ce-tiles-roof = roof tile
 
 ce-tiles-oak-woodplanks = oak woodplanks
@@ -52,3 +61,8 @@ ce-tiles-stonebricks-diamond = diamond-pattern stone floor
 ce-tiles-stonebricks-square-pattern = square-pattern stone floor
 ce-tiles-stonebricks-medium-circles = medium-circle stone floor
 ce-tiles-stonebricks-small-circles = small-circle stone floor
+
+ce-floor-tile-examine = Can be placed as [color=#FFFF00]{$tileName}[/color] over [color=#FFFF00]{$baseName}[/color]
+ce-floor-tile-wrong-turf = Cannot be placed here.
+ce-floor-tile-wrong-tool = Need here: {$toolNames}
+ce-floor-tile-tool-separator = or

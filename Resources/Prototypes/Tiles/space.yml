@@ -1,9 +1,9 @@
 - type: tile
   id: Space
-  name: tiles-space
+  name: ce-tiles-space
   editorHidden: false
   edgeSpritePriority: 10000
-  #friction: 0 #CrystallEdge
+  friction: 0.2 #CrystallEdge
   weather: true #CrystallEdge
   transparent: true #CrystallEdge
   isSubfloor: true

@@ -24,6 +24,17 @@
   #- CEFarmer
 
 - type: department
+  id: CEEngineering
+  name: department-CEEngineering
+  description: department-CEEngineering-desc
+  weight: 8
+  color: "#ccaa44"
+  editorHidden: false
+  roles:
+  - CEBrigadier
+  - CETechnician
+
+- type: department
   id: CECitizens
   name: department-CECitizens
   description: department-CECitizens-desc
@@ -33,3 +44,6 @@
   roles:
   - CETownfolk
   - CEBard
+  - CETailorMerchant
+  - CEPharmacistMerchant
+  - CEHomeGoodsMerchant

@@ -154,7 +154,6 @@
   - type: SSDIndicator
   - type: StandingState
   - type: MindContainer
-    showExamineInfo: true
   - type: InteractionPopup
     successChance: 1
     interactSuccessString: hugging-success-generic
@@ -196,31 +195,24 @@
     weightlessAcceleration: 0.8 # Slow swimming
     weightlessFriction: 2
     weightlessModifier: 0.6
-  - type: CETradingReputation
   - type: CEBlinker
   - type: CESkillStorage
   - type: CEVampireEssenceHolder
+  - type: CESatiations
+    satiations:
+      Hunger: 10
+      Thirst: 10
 
 - type: entity
   parent:
   - MobBloodstream
   - MobFlammable
-  - CEMobStarving
   - CEBaseMobSpecies
   - CEMobRespirator
   id: CEBaseMobSpeciesOrganic
   save: false
   abstract: true
   components:
-  # Organs
-  - type: PassiveDamage
-    allowedStates:
-    - Alive
-    damageCap: 20
-    damage:
-      groups:
-        Brute: -0.07
-        Burn: -0.07
   - type: StatusEffects
     allowed:
     - Stun
@@ -247,7 +239,7 @@
     bloodReferenceSolution:
       reagents:
       - ReagentId: CEBlood
-        Quantity: 1
+        Quantity: 300
   - type: FireVisuals
     sprite: _CE/Mobs/Effects/onfire.rsi
     normalState: Small_burning

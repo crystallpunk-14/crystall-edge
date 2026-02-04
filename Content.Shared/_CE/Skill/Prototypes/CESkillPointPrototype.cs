@@ -9,7 +9,7 @@ namespace Content.Shared._CE.Skill.Prototypes;
 [Prototype("skillPoint")]
 public sealed partial class CESkillPointPrototype : IPrototype
 {
-    [IdDataField] public string ID { get; } = default!;
+    [IdDataField] public string ID { get; private set; } = default!;
 
     [DataField(required: true)]
     public LocId Name;

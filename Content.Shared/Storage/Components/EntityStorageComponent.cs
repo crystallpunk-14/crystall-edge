@@ -106,7 +106,7 @@ public sealed partial class EntityStorageComponent : Component, IGasMixtureHolde
     /// Whether or not the container is sealed and traps air inside of it.
     /// </summary>
     [DataField]
-    public bool Airtight = true;
+    public bool Airtight = false; // CrystallEdge: Airtight false. Doesn't work on planetmaps without GridAtmos. Players just die inside chests and cabinets.
 
     /// <summary>
     /// Whether or not the entitystorage is open or closed.

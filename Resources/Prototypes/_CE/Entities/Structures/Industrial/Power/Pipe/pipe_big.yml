@@ -19,6 +19,7 @@
     cuttingQuality: Prying
     cableDroppedOnCutPrototype: CEBigBrassPipe1
     cableType: HighVoltage
+  - type: CEUnderWall
 
 - type: entity
   id: CEPipeBrassBig
@@ -31,7 +32,6 @@
     sprite: _CE/Structures/Industrial/Power/Pipes/big_flat.rsi
     state: pipe_15
     drawdepth: Mobs
-    offset: 0, 0.01
   - type: Fixtures
     fixtures:
       fix1:
@@ -51,11 +51,6 @@
         !type:DamageTrigger
         damage: 25
       behaviors:
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          CEScrapBrass1:
-            min: 1
-            max: 1
       - !type:PlaySoundBehavior
         sound:
           collection: MetalBreak
@@ -183,9 +178,6 @@
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
-          CEScrapBrass1:
-            min: 1
-            max: 1
           CEScrapIron1:
             min: 1
             max: 1
@@ -263,11 +255,6 @@
         !type:DamageTrigger
         damage: 50
       behaviors:
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          CEScrapBrass1:
-            min: 1
-            max: 1
       - !type:PlaySoundBehavior
         sound:
           collection: MetalBreak
@@ -275,7 +262,7 @@
         acts: [ "Destruction" ]
   - type: PowerConsumer
     voltage: High
-    drawRate: 5
+    drawRate: 2
   - type: RadiationSource
     intensity: 0
   - type: CEEnergyLeak
@@ -300,3 +287,5 @@
     node: CEPipeBrassBigBroken
   - type: CEPipeVisualizer
     statePrefix: broken_pipe_
+  - type: Cable
+    cableDroppedOnCutPrototype: CEOverchargeSmallVFX

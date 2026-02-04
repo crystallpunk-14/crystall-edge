@@ -6,6 +6,7 @@
 using Content.Server._CE.PVS;
 using Content.Shared._CE.ZLevels.Core.Components;
 using JetBrains.Annotations;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.ZLevels.Core;
 
@@ -15,12 +16,14 @@ public sealed partial class CEZLevelsSystem
     /// Creates a new entity zLevelNetwork
     /// </summary>
     [PublicAPI]
-    public Entity<CEZLevelsNetworkComponent> CreateZNetwork()
+    public Entity<CEZLevelsNetworkComponent> CreateZNetwork(ComponentRegistry? components = null)
     {
         var ent = Spawn();
 
         var zLevel = EnsureComp<CEZLevelsNetworkComponent>(ent);
         EnsureComp<CEPvsOverrideComponent>(ent);
+
+        zLevel.Components = components ?? new ComponentRegistry();
 
         return (ent, zLevel);
     }
@@ -49,7 +52,12 @@ public sealed partial class CEZLevelsSystem
         }
 
         network.Comp.ZLevels.Add(depth, mapUid);
-        EnsureComp<CEZLevelMapComponent>(mapUid).Depth = depth;
+        var zlevel = EnsureComp<CEZLevelMapComponent>(mapUid);
+        zlevel.Depth = depth;
+        Dirty(network);
+        Dirty(mapUid, zlevel);
+
+        RaiseLocalEvent(mapUid, new CEMapAddedIntoZNetworkEvent(network, depth));
 
         return true;
     }
@@ -73,3 +81,12 @@ public sealed partial class CEZLevelsSystem
 /// Called on ZLevel Network Entity, when maps added or removed from network
 /// </summary>
 public sealed class CEZLevelNetworkUpdatedEvent : EntityEventArgs;
+
+/// <summary>
+/// Called on map, when it added to ZNetwork
+/// </summary>
+public sealed class CEMapAddedIntoZNetworkEvent(Entity<CEZLevelsNetworkComponent> network, int depth) : EntityEventArgs
+{
+    public Entity<CEZLevelsNetworkComponent> Network = network;
+    public int Depth = depth;
+}

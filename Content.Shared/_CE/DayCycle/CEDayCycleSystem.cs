@@ -3,7 +3,6 @@ using Content.Shared.GameTicking;
 using Content.Shared.Light.Components;
 using Content.Shared.Light.EntitySystems;
 using Content.Shared.Storage.Components;
-using Content.Shared.Weather;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Timing;
 
@@ -18,7 +17,7 @@ public sealed class CEDayCycleSystem : EntitySystem
     [Dependency] private readonly MetaDataSystem _meta = default!;
     [Dependency] private readonly SharedGameTicker _ticker = default!;
     [Dependency] private readonly SharedMapSystem _maps = default!;
-    [Dependency] private readonly SharedWeatherSystem _weather = default!;
+    [Dependency] private readonly SharedRoofSystem _roof = default!;
 
     private EntityQuery<MapGridComponent> _mapGridQuery;
     private EntityQuery<InsideEntityStorageComponent> _storageQuery;
@@ -136,9 +135,12 @@ public sealed class CEDayCycleSystem : EntitySystem
         if (!_mapGridQuery.TryComp(grid, out var gridComp))
             return day;
 
-        if (!_weather.CanWeatherAffect(grid.Value,
-                gridComp,
-                _maps.GetTileRef(xform.GridUid.Value, gridComp, xform.Coordinates)))
+        if (!TryComp<RoofComponent>(grid.Value, out var roofComp))
+            return day;
+
+        // Check if the tile is illuminated (not under a roof)
+        var tileRef = _maps.GetTileRef(xform.GridUid.Value, gridComp, xform.Coordinates);
+        if (_roof.IsRooved((grid.Value, gridComp, roofComp), tileRef.GridIndices))
             return false;
 
         return day;

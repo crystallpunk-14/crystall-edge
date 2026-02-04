@@ -1,0 +1,36 @@
+- type: skill
+  id: SphereOfLight
+  skillUiPosition: 2, 7
+  learnCost: 1
+  tree: ElfMagic
+  icon:
+    sprite: _CE/Actions/elf_magic.rsi
+    state: sphere_of_light
+  effects:
+  - !type:AddAction
+    action: CEActionSpellSphereOfLight
+
+- type: skill
+  id: CureWounds
+  skillUiPosition: 4, 7
+  learnCost: 1
+  tree: ElfMagic
+  icon:
+    sprite: _CE/Actions/elf_magic.rsi
+    state: cure_wounds
+  effects:
+  - !type:AddAction
+    action: CEActionSpellCureWounds
+
+- type: skill
+  id: WaterCreation
+  skillUiPosition: 6, 7
+  learnCost: 1
+  tree: ElfMagic
+  icon:
+    sprite: _CE/Actions/elf_magic.rsi
+    state: water_creation
+  effects:
+  - !type:AddAction
+    action: CEActionSpellWaterCreation
+

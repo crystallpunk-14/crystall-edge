@@ -1,0 +1,20 @@
+<Document>
+# Блюда
+
+Все блюда готовятся при помощи сковороды.
+
+<Box>
+  <GuideEntityEmbed Entity="CEFork"/>
+  <GuideEntityEmbed Entity="CEPlateIron"/>
+  <GuideEntityEmbed Entity="CEFryingPan"/>
+</Box>
+
+Чтобы приготовить блюдо, положите внутрь нужные ингредиенты и поставьте сковороду на огонь. 
+Через некоторое время ваше блюдо будет готово! Главное - [color=red]не забудьте снять с огня[/color], иначе ваше блюдо превратится в сгоревшее месиво.
+
+<CEGuideCookingRecipeGroupEmbed
+FoodType="Meal"
+PlateRsi="_CE/Objects/Consumable/Food/Meals/plates.rsi"
+PlateState="iron"/>
+
+</Document>

@@ -7,7 +7,7 @@
   showInVote: true
   description: secret-description
   rules:
-    - Secret
+  - Secret
 
 - type: gamePreset
   id: BaselineSandbox
@@ -18,7 +18,8 @@
   showInVote: false
   maxPlayers: 5
   rules:
-    - Sandbox
+  - Sandbox
+  - CEBasicRoundstartVariation
 
 - type: gamePreset
   id: CEGreenshift
@@ -28,3 +29,5 @@
   rules:
   - CEGameRule7Days
   - CEGameRuleThieves
+  - CERampingStationEventScheduler
+  - CEBasicRoundstartVariation

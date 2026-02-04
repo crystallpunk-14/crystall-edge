@@ -12,16 +12,6 @@
           32:
             sprite: _CE/Mobs/Species/Elf/displacement.rsi
             state: male_shirt
-  - type: PassiveDamage
-    allowedStates:
-    - Alive
-    damageCap: 20
-    damage:
-      types:
-        Shock: -0.07
-      groups:
-        Brute: -0.07
-        Burn: -0.07
   - type: Icon
     sprite: _CE/Mobs/Species/Elf/parts.rsi
     state: full
@@ -32,18 +22,17 @@
     bloodReferenceSolution:
       reagents:
       - ReagentId: CEBloodElf
-        Quantity: 1
-#  - type: CP14MagicEnergyContainer #Increased mana container
-#    maxEnergy: 200
-#    energy: 200
-#  - type: CP14MagicEnergyDraw #No mana regeneration :3
-#    energy: 0
-#    delay: 3
-#  - type: CESkillStorage #Innate metamagic + trance
-#    freeLearnedSkills:
-#    - MetamagicT1
-#    - MetamagicT2
-#    - CEActionSpellManaTrance
+        Quantity: 300
+  - type: CESkillStorage #Innate magic tricks
+    availableSkillTrees:
+    - ElfMagic
+    skillPoints:
+      ElfMagic:
+        max: 2
+  - type: CEEnergyOverchargeDamage
+    damage:
+      types:
+        Slash: 0 # Zero overcharge damage
 #  - type: CEAuraImprint
 #    imprintLength: 10 #Long imprint hehe
 #    imprintColor: "#42aaf5"

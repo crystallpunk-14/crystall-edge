@@ -1,0 +1,68 @@
+<Document>
+
+# Farming
+
+<Box>
+  <GuideEntityEmbed Entity="CEGuidebookFarmingDummy"/>
+</Box>
+
+You have the ability to grow various plants and crops in CrystallEdge!
+
+# Seeds
+
+To start growing plants, you will need seeds.
+Seeds are typically obtained by [color=yellow]cutting fruits[/color] using a sharp tool.
+
+[color=yellow]Not all plants have seeds[/color]! For example, to grow potatoes, you need to plant the tubers themselves.
+
+<Box>
+  <GuideEntityEmbed Entity="CEFoodPepper"/>
+  <GuideEntityEmbed Entity="CEWeaponDaggerHatchet"/>
+  <GuideEntityEmbed Entity="CEFoodPepperSlice"/>
+  <GuideEntityEmbed Entity="CESeedPepper"/>
+</Box>
+
+# Soil
+
+Different plants may require different types of soil for planting.
+Also, some types of soil may be more or less effective, affecting the growth rate of the plant.
+
+You can find out how effective the soil type being used is by examining the growing plant.
+
+- Most domesticated crops grow best on [color=yellow]soil beds[/color]. You can create a bed by using dirt blocks on top of soil tiles.
+- Mushrooms grow best on [color=yellow]Mycelium[/color]. Mycelium seeds can be purchased from the store and placed on the ground.
+- Wild plants grow effectively right on [color=yellow]grass tiles[/color].
+- You can also use a shovel to remove grass, mycelium, and dig up soil.
+
+<Box>
+  <GuideEntityEmbed Entity="CEDirtBlock10"/>
+  <GuideEntityEmbed Entity="CEFloorTileGrass"/>
+  <GuideEntityEmbed Entity="CEFloorTileMycelium"/>
+</Box>
+<Box>
+  <GuideEntityEmbed Entity="CEWeaponShovelIron"/>
+</Box>
+
+# Watering
+
+To make a plant grow faster, it must be [color=yellow]watered[/color]. In the future, different plants may require different reagents, but for now it's only water...
+The only water source in the game right now is unfinished - these are unattractive water tiles that exist on every map.
+
+If you don't water the plant, it won't die, but it will grow significantly slower.
+
+Different plants require watering at different frequencies - some need to be watered twice a day, while others only need it once every 2 days.
+
+Examine the plant to see if it has drunk all the water or not.
+
+<Box>
+  <GuideEntityEmbed Entity="CEBucket"/>
+  <GuideEntityEmbed Entity="CEWaterFloorEntity"/>
+  <GuideEntityEmbed Entity="CEBucket"/>
+</Box>
+
+# Lighting
+
+Most plants require [color=yellow]natural light[/color] to grow.
+Mushrooms are an exception - they prefer darkness.
+
+</Document>

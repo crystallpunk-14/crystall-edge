@@ -65,6 +65,32 @@
 
 - type: construction
   hide: false
+  id: CEFenceIron
+  graph: CEFenceIron
+  startNode: start
+  targetNode: CEFenceIron
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  hide: false
+  id: CEFenceBrass
+  graph: CEFenceBrass
+  startNode: start
+  targetNode: CEFenceBrass
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  hide: false
   id: CEFenceGateBigIron
   graph: CEFenceGateBigIron
   startNode: start

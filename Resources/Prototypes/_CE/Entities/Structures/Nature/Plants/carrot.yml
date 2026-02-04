@@ -1,0 +1,28 @@
+- type: entity
+  id: CEPlantCarrot
+  parent:
+  - CEPlantBase
+  - CEPlantBaseSolarEnergy
+  - CEPlantBaseSingleHarvest
+  - CEPlantBaseFloralDelicateType
+  - CEPlantBaseGrowing1Day
+  - CEPlantBaseMetabolizer1Day
+  - CEPlantBaseMetabolizerWater
+  name: carrot
+  description: In this world, they have not yet learned to use carrots as noses for snowmen.
+  components:
+  - type: CEPlantVisuals
+    growthSteps: 5
+    readyVariations: 1
+  - type: Sprite
+    sprite: _CE/Structures/Nature/Farm/carrot.rsi
+    layers:
+    - state: liq-1
+      sprite: _CE/Structures/Nature/Farm/watered.rsi
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+    - state: grow-1
+      map: ["enum.PlantVisualLayers.Base"]
+  - type: CEPlantAdditionalProduceOnInteract
+    produce:
+      CEFoodCarrot: 3

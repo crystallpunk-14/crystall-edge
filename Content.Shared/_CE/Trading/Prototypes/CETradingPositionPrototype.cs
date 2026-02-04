@@ -1,3 +1,4 @@
+using Content.Shared._CE.Workbench.Prototypes;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 
@@ -34,6 +35,9 @@ public sealed partial class CETradingPositionPrototype : IPrototype
     /// </summary>
     [DataField]
     public float PriceFluctuation = 0.6f;
+
+    [DataField]
+    public ProtoId<CEWorkbenchRecipeCategoryPrototype>? Category;
 }
 
 [ImplicitDataDefinitionForInheritors]

@@ -2,24 +2,36 @@
   id: Antagonist
   title: ce-roadmap-category-antagonist
   color: "#8f2121"
-  priority: 4
+  priority: 6
 
 - type: roadmapCategory
   id: Guard
   title: ce-roadmap-category-guard
   color: "#2f78d1"
-  priority: 3
+  priority: 5
 
 - type: roadmapCategory
   id: Engineering
   title: ce-roadmap-category-engineering
   color: "#c77629"
-  priority: 2
+  priority: 4
 
 - type: roadmapCategory
   id: Farming
   title: ce-roadmap-category-farming
   color: "#53e34e"
+  priority: 3
+
+- type: roadmapCategory
+  id: Medical
+  title: ce-roadmap-category-medical
+  color: "#39da94"
+  priority: 2
+
+- type: roadmapCategory
+  id: Adventures
+  title: ce-roadmap-category-adventures
+  color: "#d350da"
   priority: 1
 
 - type: roadmapCategory

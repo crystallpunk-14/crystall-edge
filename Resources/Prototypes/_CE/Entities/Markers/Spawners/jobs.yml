@@ -139,3 +139,75 @@
     layers:
       - state: green
       - state: workman
+
+- type: entity
+  id: CESpawnPointTailorMerchant
+  parent: CESpawnPointJobBase
+  name: tailor merchant
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CETailorMerchant
+  - type: Sprite
+    layers:
+      - state: green
+      - state: workman
+
+- type: entity
+  id: CESpawnPointPharmacistMerchant
+  parent: CESpawnPointJobBase
+  name: pharmacist merchant
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEPharmacistMerchant
+  - type: Sprite
+    layers:
+      - state: green
+      - state: workman
+
+- type: entity
+  id: CESpawnPointHomeGoodsMerchant
+  parent: CESpawnPointJobBase
+  name: home goods merchant
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEHomeGoodsMerchant
+  - type: Sprite
+    layers:
+      - state: green
+      - state: workman
+
+# Engineering
+
+- type: entity
+  id: CESpawnPointBrigadier
+  parent: CESpawnPointJobBase
+  name: brigadier
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEBrigadier
+  - type: Sprite
+    layers:
+      - state: green
+      - state: workman
+
+- type: entity
+  id: CESpawnPointTechnician
+  parent: CESpawnPointJobBase
+  name: technician
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CETechnician
+  - type: Sprite
+    layers:
+      - state: green
+      - state: workman

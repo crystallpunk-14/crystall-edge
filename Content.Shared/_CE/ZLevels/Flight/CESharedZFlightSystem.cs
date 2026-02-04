@@ -10,43 +10,51 @@ using Content.Shared.Actions;
 using Content.Shared.Audio;
 using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
+using Content.Shared.Gravity;
 using Content.Shared.Mobs;
 using Content.Shared.Stunnable;
-using Content.Shared.Toggleable;
 using JetBrains.Annotations;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._CE.ZLevels.Flight;
 
-public abstract class CESharedZFlightSystem : EntitySystem
+public abstract partial class CESharedZFlightSystem : EntitySystem
 {
     [Dependency] private readonly CESharedZLevelsSystem _zLevel = default!;
     [Dependency] private readonly SharedAmbientSoundSystem _ambient = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private readonly SharedGravitySystem _gravity = default!;
 
     protected EntityQuery<CEZPhysicsComponent> ZPhyzQuery;
 
     public override void Initialize()
     {
         base.Initialize();
+        InitializeControllable();
 
         ZPhyzQuery = GetEntityQuery<CEZPhysicsComponent>();
 
         SubscribeLocalEvent<CEZPhysicsComponent, CEFlightStartedEvent>(OnStartFlight);
         SubscribeLocalEvent<CEZPhysicsComponent, CEFlightStoppedEvent>(OnStopFlight);
         SubscribeLocalEvent<CEZFlyerComponent, CEGetZVelocityEvent>(OnGetZVelocity);
-
-        SubscribeLocalEvent<CEZFlyerComponent, CEZFlightActionUp>(OnZLevelUp);
-        SubscribeLocalEvent<CEZFlyerComponent, CEZFlightActionDown>(OnZLevelDown);
-        SubscribeLocalEvent<CEZFlyerComponent, ToggleActionEvent>(OnZLevelToggle);
-        SubscribeLocalEvent<CEZFlyerComponent, CEStartFlightDoAfterEvent>(OnStartFlightDoAfter);
+        SubscribeLocalEvent<CEZFlyerComponent, CECheckGravityEvent>(OnGetGravity);
+        SubscribeLocalEvent<CEZFlyerComponent, IsWeightlessEvent>(CheckWeightless);
 
         SubscribeLocalEvent<CEZFlyerComponent, StunnedEvent>(OnStunned);
         SubscribeLocalEvent<CEZFlyerComponent, KnockedDownEvent>(OnKnockDowned);
         SubscribeLocalEvent<CEZFlyerComponent, MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<CEZFlyerComponent, DamageChangedEvent>(OnDamageChanged);
+    }
+
+    private void CheckWeightless(Entity<CEZFlyerComponent> ent, ref IsWeightlessEvent args)
+    {
+        if (!ent.Comp.Active || args.Handled)
+            return;
+
+        args.IsWeightless = true;
+        args.Handled = true;
     }
 
     private void OnDamageChanged(Entity<CEZFlyerComponent> ent, ref DamageChangedEvent args)
@@ -77,25 +85,13 @@ public abstract class CESharedZFlightSystem : EntitySystem
 
     private void OnStartFlight(Entity<CEZPhysicsComponent> ent, ref CEFlightStartedEvent args)
     {
-        if (!TryComp<CEZFlyerComponent>(ent, out var flyerComp))
-            return;
-        SetTargetHeight((ent, flyerComp), ent.Comp.CurrentZLevel);
-
-        StartFlightVisuals((ent, flyerComp));
-
-        _actions.SetEnabled(flyerComp.ZLevelDownActionEntity, true);
-        _actions.SetEnabled(flyerComp.ZLevelUpActionEntity, true);
+        SetTargetHeight(ent.Owner, ent.Comp.CurrentZLevel);
+        StartFlightVisuals(ent.Owner);
     }
 
     private void OnStopFlight(Entity<CEZPhysicsComponent> ent, ref CEFlightStoppedEvent args)
     {
-        if (!TryComp<CEZFlyerComponent>(ent, out var flyerComp))
-            return;
-
-        StopFlightVisuals((ent, flyerComp));
-
-        _actions.SetEnabled(flyerComp.ZLevelDownActionEntity, false);
-        _actions.SetEnabled(flyerComp.ZLevelUpActionEntity, false);
+        StopFlightVisuals(ent.Owner);
     }
 
     private void OnGetZVelocity(Entity<CEZFlyerComponent> ent, ref CEGetZVelocityEvent args)
@@ -105,7 +101,7 @@ public abstract class CESharedZFlightSystem : EntitySystem
 
         var zPhys = args.Target.Comp;
         var currentPos = zPhys.CurrentZLevel + zPhys.LocalPosition;
-        var targetPos = ent.Comp.TargetMapHeight + 0.5f;
+        var targetPos = ent.Comp.TargetMapHeight + 0.2f;
         var currentVelocity = zPhys.Velocity;
 
         var distanceToTarget = targetPos - currentPos;
@@ -133,90 +129,10 @@ public abstract class CESharedZFlightSystem : EntitySystem
         args.VelocityDelta = velocityDelta;
     }
 
-    private void OnZLevelUp(Entity<CEZFlyerComponent> ent, ref CEZFlightActionUp args)
+    private void OnGetGravity(Entity<CEZFlyerComponent> ent, ref CECheckGravityEvent args)
     {
-        if (args.Handled)
-            return;
-
-        var map = Transform(ent).MapUid;
-        if (map is null)
-            return;
-
-        if (!_zLevel.TryMapUp(map.Value, out var mapAbove))
-            return;
-
-        ent.Comp.TargetMapHeight = mapAbove.Value.Comp.Depth;
-        DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.TargetMapHeight));
-
-        args.Handled = true;
-    }
-
-    private void OnZLevelDown(Entity<CEZFlyerComponent> ent, ref CEZFlightActionDown args)
-    {
-        if (args.Handled)
-            return;
-
-        var map = Transform(ent).MapUid;
-        if (map is null)
-            return;
-
-        if (!_zLevel.TryMapDown(map.Value, out var mapBelow))
-            return;
-
-        ent.Comp.TargetMapHeight = mapBelow.Value.Comp.Depth;
-        DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.TargetMapHeight));
-
-        args.Handled = true;
-    }
-
-    private void OnZLevelToggle(Entity<CEZFlyerComponent> ent, ref ToggleActionEvent args)
-    {
-        if (args.Handled)
-            return;
-
         if (ent.Comp.Active)
-        {
-            DeactivateFlight((ent, ent));
-        }
-        else
-        {
-            // If StartFlightDoAfter is set, start a doAfter before activating flight
-            if (ent.Comp.StartFlightDoAfter != null)
-            {
-                //Preventive start flying visuals
-                StartFlightVisuals(ent);
-
-                var doAfter = new DoAfterArgs(EntityManager, ent, ent.Comp.StartFlightDoAfter.Value, new CEStartFlightDoAfterEvent(), ent)
-                {
-                    BreakOnMove = false,
-                    BlockDuplicate = true,
-                    BreakOnDamage = true,
-                    CancelDuplicate = true,
-                };
-
-                _doAfter.TryStartDoAfter(doAfter);
-            }
-            else
-            {
-                // No delay, activate flight immediately
-                TryActivateFlight((ent, ent));
-            }
-        }
-
-        args.Handled = true;
-    }
-
-    private void OnStartFlightDoAfter(Entity<CEZFlyerComponent> ent, ref CEStartFlightDoAfterEvent args)
-    {
-
-        if (args.Cancelled || args.Handled)
-        {
-            StopFlightVisuals(ent);
-            return;
-        }
-
-        TryActivateFlight((ent, ent));
-        args.Handled = true;
+            args.Gravity *= 0;
     }
 
     [PublicAPI]
@@ -240,11 +156,8 @@ public abstract class CESharedZFlightSystem : EntitySystem
         ent.Comp.Active = true;
         DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.Active));
 
-        _zLevel.SetZGravity((ent, zPhys), 0);
-
-        // Update toggle action icon state
-        if (ent.Comp.ZLevelToggleActionEntity != null)
-            _actions.SetToggled(ent.Comp.ZLevelToggleActionEntity, true);
+        _zLevel.UpdateGravityState((ent, zPhys));
+        _gravity.RefreshWeightless(ent.Owner);
 
         RaiseLocalEvent(ent, new CEFlightStartedEvent());
         return true;
@@ -265,30 +178,36 @@ public abstract class CESharedZFlightSystem : EntitySystem
         ent.Comp.Active = false;
         DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.Active));
 
-        _zLevel.SetZGravity((ent, zPhys), ent.Comp.DefaultGravityIntensity);
-
-        // Update toggle action icon state
-        if (ent.Comp.ZLevelToggleActionEntity != null)
-            _actions.SetToggled(ent.Comp.ZLevelToggleActionEntity, false);
+        _zLevel.UpdateGravityState((ent, zPhys));
+        _gravity.RefreshWeightless(ent.Owner);
 
         RaiseLocalEvent(ent, new CEFlightStoppedEvent());
     }
 
     [PublicAPI]
-    public void SetTargetHeight(Entity<CEZFlyerComponent> ent, int targetHeight)
+    public void SetTargetHeight(Entity<CEZFlyerComponent?> ent, int targetHeight)
     {
+        if (!Resolve(ent, ref ent.Comp, false))
+            return;
+
         ent.Comp.TargetMapHeight = targetHeight;
         DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.TargetMapHeight));
     }
 
-    private void StartFlightVisuals(Entity<CEZFlyerComponent> ent)
+    private void StartFlightVisuals(Entity<CEZFlyerComponent?> ent)
     {
+        if (!Resolve(ent, ref ent.Comp, false))
+            return;
+
         _appearance.SetData(ent, CEFlightVisuals.Active, true);
         _ambient.SetAmbience(ent, true);
     }
 
-    private void StopFlightVisuals(Entity<CEZFlyerComponent> ent)
+    private void StopFlightVisuals(Entity<CEZFlyerComponent?> ent)
     {
+        if (!Resolve(ent, ref ent.Comp, false))
+            return;
+
         _appearance.SetData(ent, CEFlightVisuals.Active, false);
         _ambient.SetAmbience(ent, false);
     }

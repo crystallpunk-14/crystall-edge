@@ -62,6 +62,27 @@
     count: 5
 
 - type: tradingPosition
+  id: CEFoodGarlic
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodGarlic
+    count: 5
+
+- type: tradingPosition
+  id: CEFoodCorn
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodCorn
+    count: 5
+
+- type: tradingPosition
+  id: CEFoodCarrot
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodCarrot
+    count: 5
+
+- type: tradingPosition
   id: CEFoodOnion
   faction: Horticulture
   service: !type:CEBuyItemsService
@@ -83,8 +104,79 @@
     count: 5
 
 - type: tradingPosition
+  id: CEFoodMeatLamb
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodMeatLamb
+    count: 1
+
+- type: tradingPosition
+  id: CEFoodMeatFrogLeg
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodMeatFrogLeg
+    count: 1
+
+- type: tradingPosition
+  id: CEFoodMeatDino
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodMeatDino
+    count: 1
+
+- type: tradingPosition
+  id: CEFoodMeatHydra
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodMeatHydra
+    count: 1
+
+- type: tradingPosition
+  id: CEFoodMeatRabbit
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodMeatRabbit
+    count: 1
+
+- type: tradingPosition
+  id: CEFoodMeatPig
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodMeatPig
+    count: 1
+
+- type: tradingPosition
+  id: CEFoodMeatPigLeg
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodMeatPigLeg
+    count: 1
+
+- type: tradingPosition
+  id: CEFoodMeatBoar
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodMeatBoar
+    count: 1
+
+- type: tradingPosition
+  id: CEFoodMeatMonster
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodMeatMonster
+    count: 1
+
+- type: tradingPosition
+  id: CEFoodMeatMonsterLeg
+  faction: Horticulture
+  service: !type:CEBuyItemsService
+    product: CEFoodMeatMonsterLeg
+    count: 1
+
+- type: tradingPosition
   id: CESeedWheat30
   faction: Horticulture
+  category: Materials
   service: !type:CEBuyItemsService
     product: CESeedWheat30
     count: 1
@@ -92,6 +184,7 @@
 - type: tradingPosition
   id: CESeedPumpkin30
   faction: Horticulture
+  category: Materials
   service: !type:CEBuyItemsService
     product: CESeedPumpkin30
     count: 1
@@ -99,6 +192,7 @@
 - type: tradingPosition
   id: CESeedCabbage30
   faction: Horticulture
+  category: Materials
   service: !type:CEBuyItemsService
     product: CESeedCabbage30
     count: 1
@@ -106,6 +200,7 @@
 - type: tradingPosition
   id: CESeedCucumber30
   faction: Horticulture
+  category: Materials
   service: !type:CEBuyItemsService
     product: CESeedCucumber30
     count: 1
@@ -113,6 +208,7 @@
 - type: tradingPosition
   id: CESeedTomato30
   faction: Horticulture
+  category: Materials
   service: !type:CEBuyItemsService
     product: CESeedTomato30
     count: 1
@@ -120,13 +216,23 @@
 - type: tradingPosition
   id: CESeedPepper30
   faction: Horticulture
+  category: Materials
   service: !type:CEBuyItemsService
     product: CESeedPepper30
     count: 1
 
 - type: tradingPosition
+  id: CESeedCarrot30
+  faction: Horticulture
+  category: Materials
+  service: !type:CEBuyItemsService
+    product: CESeedCarrot30
+    count: 1
+
+- type: tradingPosition
   id: CESeedCotton30
   faction: Horticulture
+  category: Materials
   service: !type:CEBuyItemsService
     product: CESeedCotton30
     count: 1
@@ -134,13 +240,23 @@
 - type: tradingPosition
   id: CESeedSunflower30
   faction: Horticulture
+  category: Materials
   service: !type:CEBuyItemsService
     product: CESeedSunflower30
     count: 1
 
 - type: tradingPosition
+  id: CESeedCorn30
+  faction: Horticulture
+  category: Materials
+  service: !type:CEBuyItemsService
+    product: CESeedCorn30
+    count: 1
+
+- type: tradingPosition
   id: CESeedAppleTree
   faction: Horticulture
+  category: Materials
   service: !type:CEBuyItemsService
     product: CESeedAppleTree
     count: 1
@@ -148,6 +264,7 @@
 - type: tradingPosition
   id: CEFloorTileGrass30
   faction: Horticulture
+  category: FloorTile
   service: !type:CEBuyItemsService
     product: CEFloorTileGrass30
     count: 1
@@ -155,6 +272,7 @@
 - type: tradingPosition
   id: CEFloorTileMycelium30
   faction: Horticulture
+  category: FloorTile
   service: !type:CEBuyItemsService
     product: CEFloorTileMycelium30
     count: 1
@@ -162,6 +280,7 @@
 - type: tradingPosition
   id: CEWoodLog
   faction: Horticulture
+  category: Materials
   service: !type:CEBuyItemsService
     product: CEWoodLog
     count: 1
@@ -169,6 +288,7 @@
 - type: tradingPosition
   id: CESack
   faction: Horticulture
+  category: Tools
   service: !type:CEBuyItemsService
     product: CESack
     count: 1
@@ -176,6 +296,7 @@
 - type: tradingPosition
   id: CEBucket
   faction: Horticulture
+  category: Tools
   service: !type:CEBuyItemsService
     product: CEBucket
     count: 1
@@ -183,6 +304,7 @@
 - type: tradingPosition
   id: CEWeaponDaggerHatchet
   faction: Horticulture
+  category: Tools
   service: !type:CEBuyItemsService
     product: CEWeaponDaggerHatchet
     count: 1
@@ -190,6 +312,7 @@
 - type: tradingPosition
   id: CEWeaponDaggerSickle
   faction: Horticulture
+  category: Tools
   service: !type:CEBuyItemsService
     product: CEWeaponDaggerSickle
     count: 1
@@ -197,20 +320,15 @@
 - type: tradingPosition
   id: CEWeaponShovelIron
   faction: Horticulture
+  category: Tools
   service: !type:CEBuyItemsService
     product: CEWeaponShovelIron
     count: 1
 
 - type: tradingPosition
-  id: CEPlatePie
-  faction: Horticulture
-  service: !type:CEBuyItemsService
-    product: CEPlatePie
-    count: 1
-
-- type: tradingPosition
   id: CEFryingPan
   faction: Horticulture
+  category: Tools
   service: !type:CEBuyItemsService
     product: CEFryingPan
     count: 1
@@ -218,6 +336,7 @@
 - type: tradingPosition
   id: CECookingPot
   faction: Horticulture
+  category: Tools
   service: !type:CEBuyItemsService
     product: CECookingPot
     count: 1
@@ -225,6 +344,7 @@
 - type: tradingPosition
   id: CEFork
   faction: Horticulture
+  category: Tools
   service: !type:CEBuyItemsService
     product: CEFork
     count: 3
@@ -232,6 +352,7 @@
 - type: tradingPosition
   id: CESpoon
   faction: Horticulture
+  category: Tools
   service: !type:CEBuyItemsService
     product: CESpoon
     count: 3
@@ -274,6 +395,7 @@
 - type: tradingPosition
   id: CEBowlWooden
   faction: Horticulture
+  category: Tools
   service: !type:CEBuyItemsService
     product: CEBowlWooden
     count: 1
@@ -281,6 +403,7 @@
 - type: tradingPosition
   id: CEBowlIron
   faction: Horticulture
+  category: Tools
   service: !type:CEBuyItemsService
     product: CEBowlIron
     count: 1
@@ -288,6 +411,7 @@
 - type: tradingPosition
   id: CEPlateWooden
   faction: Horticulture
+  category: Tools
   service: !type:CEBuyItemsService
     product: CEPlateWooden
     count: 1
@@ -295,6 +419,7 @@
 - type: tradingPosition
   id: CEPlateIron
   faction: Horticulture
+  category: Tools
   service: !type:CEBuyItemsService
     product: CEPlateIron
     count: 1

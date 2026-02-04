@@ -17,7 +17,7 @@ public sealed partial class CEThiefRoleComponent : BaseMindRoleComponent
     public float MaxSkillPointsFromStealing = 5f;
 
     [DataField]
-    public ProtoId<CESkillPointPrototype> SkillPointType = "Memory";
+    public ProtoId<CESkillPointPrototype> SkillPointType = "Memory"; //TODO: fix duplicating with CEThiefRuleComponent
 
     /// <summary>
     /// This value is calculated during initialization by reading the number of values in the game

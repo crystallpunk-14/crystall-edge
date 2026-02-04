@@ -35,83 +35,58 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CESellingPlatformComponent, BeforeActivatableUIOpenEvent>(OnBeforeSellingUIOpen);
-        SubscribeLocalEvent<CETradingPlatformComponent, BeforeActivatableUIOpenEvent>(OnBeforeTradingUIOpen);
+        SubscribeLocalEvent<CETradingPlatformComponent, BeforeActivatableUIOpenEvent>(OnBeforeActivatableUIOpen);
 
-        SubscribeLocalEvent<CESellingPlatformComponent, ItemPlacedEvent>(OnSellItemPlaced);
-        SubscribeLocalEvent<CESellingPlatformComponent, ItemRemovedEvent>(OnSellItemRemoved);
-        SubscribeLocalEvent<CETradingPlatformComponent, ItemPlacedEvent>(OnBuyItemPlaced);
-        SubscribeLocalEvent<CETradingPlatformComponent, ItemRemovedEvent>(OnBuyItemRemoved);
+        SubscribeLocalEvent<CETradingPlatformComponent, ItemPlacedEvent>(OnItemPlaced);
+        SubscribeLocalEvent<CETradingPlatformComponent, ItemRemovedEvent>(OnItemRemoved);
 
-        SubscribeLocalEvent<CETradingPlatformComponent, CETradingPositionBuyAttempt>(OnBuyAttempt);
-        SubscribeLocalEvent<CESellingPlatformComponent, CETradingSellAttempt>(OnSellAttempt);
-        SubscribeLocalEvent<CESellingPlatformComponent, CETradingRequestSellAttempt>(OnSellRequestAttempt);
+        SubscribeLocalEvent<CETradingPlatformComponent, CETradingBuyAttempt>(OnBuyAttempt);
+        SubscribeLocalEvent<CETradingPlatformComponent, CETradingSellAttempt>(OnSellAttempt);
+        SubscribeLocalEvent<CETradingPlatformComponent, CETradingRequestSellAttempt>(OnSellRequestAttempt);
     }
 
-    private void OnSellItemRemoved(Entity<CESellingPlatformComponent> ent, ref ItemRemovedEvent args)
+    private void OnItemPlaced(Entity<CETradingPlatformComponent> ent, ref ItemPlacedEvent args)
     {
-        UpdateSellingUIState(ent);
+        UpdatePlatformUIState(ent);
     }
 
-    private void OnSellItemPlaced(Entity<CESellingPlatformComponent> ent, ref ItemPlacedEvent args)
+    private void OnItemRemoved(Entity<CETradingPlatformComponent> ent, ref ItemRemovedEvent args)
     {
-        UpdateSellingUIState(ent);
+        UpdatePlatformUIState(ent);
     }
 
-    private void OnBuyItemPlaced(Entity<CETradingPlatformComponent> ent, ref ItemPlacedEvent args)
+    private void OnBeforeActivatableUIOpen(Entity<CETradingPlatformComponent> ent, ref BeforeActivatableUIOpenEvent args)
     {
-        UpdateTradingUIState(ent);
+        UpdatePlatformUIState(ent);
     }
 
-    private void OnBuyItemRemoved(Entity<CETradingPlatformComponent> ent, ref ItemRemovedEvent args)
-    {
-        UpdateTradingUIState(ent);
-    }
-
-    private void OnBeforeSellingUIOpen(Entity<CESellingPlatformComponent> ent, ref BeforeActivatableUIOpenEvent args)
-    {
-        UpdateSellingUIState(ent);
-    }
-
-    private void OnBeforeTradingUIOpen(Entity<CETradingPlatformComponent> ent, ref BeforeActivatableUIOpenEvent args)
-    {
-        UpdateTradingUIState(ent);
-    }
-
-    private void UpdateSellingUIState(Entity<CESellingPlatformComponent> ent)
+    private void UpdatePlatformUIState(Entity<CETradingPlatformComponent> ent)
     {
         if (!TryComp<ItemPlacerComponent>(ent, out var itemPlacer))
             return;
 
-        //Calculate
-        double balance = 0;
+        // Calculate sell balance
+        double sellBalance = 0;
         foreach (var placed in itemPlacer.PlacedEntities)
         {
             if (!CanSell(placed))
                 continue;
 
-            balance += _price.GetPrice(placed);
+            sellBalance += _price.GetPrice(placed);
         }
 
-        _userInterface.SetUiState(ent.Owner, CETradingUiKey.Sell, new CESellingPlatformUiState(GetNetEntity(ent), (int)balance));
-    }
-
-    private void UpdateTradingUIState(Entity<CETradingPlatformComponent> ent)
-    {
-        if (!TryComp<ItemPlacerComponent>(ent, out var itemPlacer))
-            return;
-
-        //Calculate
-        double balance = 0;
+        // Calculate buy balance
+        double buyBalance = 0;
         foreach (var placed in itemPlacer.PlacedEntities)
         {
-            if (!_tag.HasTag(placed, CoinTag))
+            if (!_tag.HasTag(placed, ent.Comp.CoinTag))
                 continue;
 
-            balance += _price.GetPrice(placed);
+            buyBalance += _price.GetPrice(placed);
         }
 
-        _userInterface.SetUiState(ent.Owner, CETradingUiKey.Buy, new CETradingPlatformUiState(GetNetEntity(ent), (int)balance));
+        var faction = ent.Comp.Faction;
+        _userInterface.SetUiState(ent.Owner, CETradingUiKey.Buy, new CETradingPlatformUiState(GetNetEntity(ent), (int)buyBalance, (int)sellBalance, faction));
     }
 
     public bool CanSell(EntityUid uid)
@@ -134,7 +109,7 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
         return true;
     }
 
-    private void OnBuyAttempt(Entity<CETradingPlatformComponent> ent, ref CETradingPositionBuyAttempt args)
+    private void OnBuyAttempt(Entity<CETradingPlatformComponent> ent, ref CETradingBuyAttempt args)
     {
         if (Timing.CurTime < ent.Comp.NextBuyTime)
             return;
@@ -142,13 +117,11 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
         if (!Proto.TryIndex(args.Position, out var indexedPosition))
             return;
 
-        if (!TryComp<CETradingReputationComponent>(args.Actor, out var repComp))
+        // Ensure the platform is for the same faction as the position being bought
+        if (ent.Comp.Faction != indexedPosition.Faction)
             return;
 
         if (!TryComp<ItemPlacerComponent>(ent, out var itemPlacer))
-            return;
-
-        if (!repComp.Factions.Contains(indexedPosition.Faction))
             return;
 
         //Top up balance
@@ -187,10 +160,10 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
         _currency.GenerateMoney(balance, Transform(ent).Coordinates);
         SpawnAtPosition(ent.Comp.BuyVisual, Transform(ent).Coordinates);
 
-        UpdateTradingUIState(ent);
+        UpdatePlatformUIState(ent);
     }
 
-    private void OnSellAttempt(Entity<CESellingPlatformComponent> ent, ref CETradingSellAttempt args)
+    private void OnSellAttempt(Entity<CETradingPlatformComponent> ent, ref CETradingSellAttempt args)
     {
         if (!TryComp<ItemPlacerComponent>(ent, out var itemPlacer))
             return;
@@ -217,10 +190,10 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
         _currency.GenerateMoney(balance, Transform(ent).Coordinates);
         SpawnAtPosition(ent.Comp.SellVisual, Transform(ent).Coordinates);
 
-        UpdateSellingUIState(ent);
+        UpdatePlatformUIState(ent);
     }
 
-    private void OnSellRequestAttempt(Entity<CESellingPlatformComponent> ent, ref CETradingRequestSellAttempt args)
+    private void OnSellRequestAttempt(Entity<CETradingPlatformComponent> ent, ref CETradingRequestSellAttempt args)
     {
         if (!TryComp<ItemPlacerComponent>(ent, out var itemPlacer))
             return;
@@ -244,6 +217,6 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
         _currency.GenerateMoney(price, Transform(ent).Coordinates);
         SpawnAtPosition(ent.Comp.SellVisual, Transform(ent).Coordinates);
 
-        UpdateSellingUIState(ent);
+        UpdatePlatformUIState(ent);
     }
 }

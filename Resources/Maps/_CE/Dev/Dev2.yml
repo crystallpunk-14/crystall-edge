@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 268.0.0
+  engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 12/30/2025 23:42:20
-  entityCount: 251
+  time: 01/28/2026 15:28:56
+  entityCount: 250
 maps:
 - 1
 grids:
@@ -335,11 +335,6 @@ entities:
     components:
     - type: Transform
       pos: -7.5,2.5
-      parent: 1
-  - uid: 225
-    components:
-    - type: Transform
-      pos: -7.5,1.5
       parent: 1
   - uid: 226
     components:

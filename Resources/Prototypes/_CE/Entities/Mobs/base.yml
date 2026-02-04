@@ -61,19 +61,6 @@
       path: /Audio/Effects/hit_kick.ogg
   - type: Pullable
 
-# Used for mobs that need food & water for life
-- type: entity
-  id: CEMobStarving
-  abstract: true
-  categories: [ ForkFiltered ]
-  components:
-  - type: Hunger
-    starvationDamage:
-      types:
-        Cold: 0.25
-        Bloodloss: 0.25
-  - type: Thirst
-
 # Used for mobs that need to breathe
 - type: entity
   save: false
@@ -116,10 +103,11 @@
     normalBodyTemperature: 310.15
     thermalRegulationTemperatureThreshold: 2
   - type: Temperature
-    heatDamageThreshold: 325
-    coldDamageThreshold: 260
     currentTemperature: 310.15
     specificHeat: 42
+  - type: TemperatureDamage
+    heatDamageThreshold: 325
+    coldDamageThreshold: 260
     coldDamage:
       types:
         Cold: 1 #per second, scales with temperature & other constants

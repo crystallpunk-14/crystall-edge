@@ -1,0 +1,126 @@
+- type: entity
+  id: CEActionSpellWaterCreation
+  parent: CEActionSpellBase
+  name: Water creation
+  description: Creating a clot of water that is held in a floating balloon shape for some time
+  components:
+  - type: CEActionManaCost
+    manaCost: 10
+  - type: CEActionFreeHandsRequired
+  - type: CEActionDoAfterVisuals
+    proto: CERuneWaterCreation
+  - type: Action
+    useDelay: 10
+    icon:
+      sprite: _CE/Actions/elf_magic.rsi
+      state: water_creation
+  - type: DoAfterArgs
+    delay: 1
+  - type: InstantAction
+    event: !type:CEInstantModularEffectEvent
+      effects:
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - CEImpactEffectWaterCreation
+      - !type:CESpellSpawnInHandEntity
+        spawns:
+        - CELiquidDropWater
+
+- type: entity
+  id: CERuneWaterCreation
+  parent: CEBaseMagicRune
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: PointLight
+    color: "#5eabeb"
+  - type: Sprite
+    layers:
+    - state: medium_line
+      color: "#5eabeb"
+      shader: unshaded
+
+- type: entity
+  id: CELiquidDropWater
+  parent:
+  - BaseItem
+  - ItemHeftyBase
+  name: floating liquid drop
+  description: A clot of liquid held in the shape of a ball by magic
+  suffix: Water
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Ginormous
+  - type: SolutionContainerManager
+    solutions:
+      drop:
+        maxVol: 10
+        reagents:
+        - ReagentId: CEWater
+          Quantity: 10
+  - type: LandAtCursor
+  - type: DamageOnHighSpeedImpact
+    minimumSpeed: 0.1
+    damage:
+      types:
+        Blunt: 1
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: desecration
+      - !type:SpillBehavior
+        solution: drop
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: PassiveDamage # Around 8 damage a minute healed
+    damage:
+      groups:
+        Brute: 0.016 # ~ 1 minute
+  - type: Damageable
+    damageContainer: Biological
+  - type: Edible
+    edible: Drink
+    solution: drop
+    delay: 0.5
+    forceFeedDelay: 1.5
+  - type: ExaminableSolution
+    solution: drop
+  - type: RefillableSolution
+    solution: drop
+  - type: InjectableSolution
+    solution: drop
+  - type: FitsInDispenser
+    solution: drop
+  - type: MixableSolution
+    solution: drop
+  - type: SolutionItemStatus
+    solution: drop
+  - type: Appearance
+  - type: Sprite
+    sprite: _CE/Objects/Misc/liquid_drop.rsi
+    layers:
+      - state: liq-1
+        map: ["enum.SolutionContainerLayers.Fill"]
+  - type: SolutionContainerVisuals
+    maxFillLevels: 1
+    fillBaseName: liq-
+    inHandsMaxFillLevels: 1
+    inHandsFillBaseName: -fill
+
+- type: entity
+  id: CEImpactEffectWaterCreation
+  parent: CEBaseMagicImpact
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    layers:
+    - state: particles_up
+      color: "#5eabeb"
+      shader: unshaded

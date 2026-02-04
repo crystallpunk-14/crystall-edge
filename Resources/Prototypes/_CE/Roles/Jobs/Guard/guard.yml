@@ -9,9 +9,6 @@
   supervisors: ce-job-supervisors-guard-commander
   canBeAntag: false
   special:
-    - !type:CEAddTradingReputationSpecial
-      factions:
-      - EmpireGuard
     - !type:AddComponentSpecial
       components:
       - type: CESalaryCounter
@@ -21,8 +18,11 @@
   id: CEGuardGear
   equipment:
     belt: CEKeyRingGuard
-    belt2: CEGunJustice
     pocket1: CEWalletFilledGuard
+  storage:
+    back:
+    - CEGuidebookImperialLaws
+    - CEGunJustice
 
 
 - type: entity

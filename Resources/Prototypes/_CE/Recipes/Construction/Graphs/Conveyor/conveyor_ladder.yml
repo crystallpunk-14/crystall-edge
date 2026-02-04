@@ -8,10 +8,10 @@
       edges:
         - to: CEConveyorLadder
           steps:
-            - material: CEIronBar
+            - material: CEIronSheet
               amount: 1
               doAfter: 1
-            - material: CEBrassBar
+            - material: CEBrassRod
               amount: 1
               doAfter: 1
 
@@ -24,10 +24,10 @@
               doAfter: 1
           completed:
             - !type:SpawnPrototype
-              prototype: CEIronBar1
+              prototype: CEIronSheet1
               amount: 1
             - !type:SpawnPrototype
-              prototype: CEBrassBar1
+              prototype: CEBrassRod1
               amount: 1
         - to: CEConveyorLadderReverse
           steps:
@@ -43,10 +43,10 @@
               doAfter: 1
           completed:
             - !type:SpawnPrototype
-              prototype: CEIronBar1
+              prototype: CEIronSheet1
               amount: 1
             - !type:SpawnPrototype
-              prototype: CEBrassBar1
+              prototype: CEBrassRod1
               amount: 1
         - to: CEConveyorLadder
           steps:

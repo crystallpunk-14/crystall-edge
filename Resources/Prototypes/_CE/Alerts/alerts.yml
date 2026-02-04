@@ -47,3 +47,17 @@
     state: peckish
   name: alerts-hunger-name
   description: alerts-hunger-desc
+
+- type: alert
+  id: CEAirCaught
+  icons:
+  - sprite: /Textures/_CE/Interface/Alerts/flight.rsi
+    state: wing
+  name: ce-alerts-aircaught-name
+  description: ce-alerts-aircaught-desc
+
+- type: alert
+  id: CEGlowing
+  icons:
+  - sprite: _CE/Actions/elf_magic.rsi
+    state: sphere_of_light

@@ -4,31 +4,26 @@
   id: Horticulture
   color: "#3cb371"
   name: ce-trade-faction-horticulture
-  roundStart: true
 
 - type: tradingFaction
   id: HomeDecor
   color: "#749a94"
   name: ce-trade-faction-home-decor
-  roundStart: true
 
 - type: tradingFaction
   id: Tailors
   color: "#75b3bb"
   name: ce-trade-faction-tailors
-  roundStart: true
 
 - type: tradingFaction
   id: DwarfMiners
   color: "#76503c"
   name: ce-trade-faction-dwarf-mining
-  roundStart: true
 
 - type: tradingFaction
   id: Alcohol
   color: "#b03060"
   name: ce-trade-faction-alcohol
-  roundStart: true
 
 # Departamental
 
@@ -36,6 +31,11 @@
   id: EmpireGuard
   color: "#2f6cd6"
   name: ce-trade-faction-empire-guard
+
+- type: tradingFaction
+  id: ApothecariesGuild
+  color: "#749a94"
+  name: ce-trade-faction-apothecaries-guild
 
 # Antags
 

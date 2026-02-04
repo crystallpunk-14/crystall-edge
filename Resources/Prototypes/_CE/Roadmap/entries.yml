@@ -42,14 +42,28 @@
   category: General
   status: Done
 
-# In Progress
+- type: roadmapItem
+  id: Ambitions
+  name: ce-roadmap-general-ambitions-name
+  desc: ce-roadmap-general-ambitions-desc
+  category: General
+  status: Done
 
 - type: roadmapItem
-  id: AirCrystals
-  name: ce-roadmap-engineering-air-crystals-name
-  desc: ce-roadmap-engineering-air-crystals-desc
-  category: Engineering
-  status: InProgress
+  id: TradeWithEmpire
+  name: ce-roadmap-general-trade-with-empire-name
+  desc: ce-roadmap-general-trade-with-empire-desc
+  category: General
+  status: Done
+
+- type: roadmapItem
+  id: GuardDepartment
+  name: ce-roadmap-guard-guard-department-name
+  desc: ce-roadmap-guard-guard-department-desc
+  category: Guard
+  status: Done
+
+# In Progress
 
 - type: roadmapItem
   id: Automation
@@ -58,7 +72,28 @@
   category: Engineering
   status: InProgress
 
+- type: roadmapItem
+  id: PersonalRealEstate
+  name: ce-roadmap-general-personal-real-estate-name
+  desc: ce-roadmap-general-personal-real-estate-desc
+  category: General
+  status: InProgress
+
+- type: roadmapItem
+  id: RandomGameEvents
+  name: ce-roadmap-general-random-game-events-name
+  desc: ce-roadmap-general-random-game-events-desc
+  category: General
+  status: InProgress
+
 # Backlog
+
+- type: roadmapItem
+  id: AirCrystals
+  name: ce-roadmap-engineering-air-crystals-name
+  desc: ce-roadmap-engineering-air-crystals-desc
+  category: Engineering
+  status: Backlog
 
 - type: roadmapItem
   id: HardLabor
@@ -93,4 +128,46 @@
   name: ce-roadmap-antagonists-lurker-name
   desc: ce-roadmap-antagonists-lurker-desc
   category: Antagonist
+  status: Backlog
+
+- type: roadmapItem
+  id: Alchemy
+  name: ce-roadmap-medical-alchemy-name
+  desc: ce-roadmap-medical-alchemy-desc
+  category: Medical
+  status: Backlog
+
+- type: roadmapItem
+  id: Hospital
+  name: ce-roadmap-medical-hospital-name
+  desc: ce-roadmap-medical-hospital-desc
+  category: Medical
+  status: Backlog
+
+- type: roadmapItem
+  id: MagicVision
+  name: ce-roadmap-guard-magic-vision-name
+  desc: ce-roadmap-guard-magic-vision-desc
+  category: Guard
+  status: Backlog
+
+- type: roadmapItem
+  id: Expeditions
+  name: ce-roadmap-adventures-expeditions-name
+  desc: ce-roadmap-adventures-expeditions-desc
+  category: Adventures
+  status: Backlog
+
+- type: roadmapItem
+  id: BuildingCollapse
+  name: ce-roadmap-engineering-building-collapse-name
+  desc: ce-roadmap-engineering-building-collapse-desc
+  category: Engineering
+  status: Backlog
+
+- type: roadmapItem
+  id: FireSpread
+  name: ce-roadmap-engineering-fire-spread-name
+  desc: ce-roadmap-engineering-fire-spread-desc
+  category: Engineering
   status: Backlog

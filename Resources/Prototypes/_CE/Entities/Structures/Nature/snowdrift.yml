@@ -22,6 +22,9 @@
     base: state
     additionalKeys:
     - CEwall
+  - type: CESafeFalling
+    damageMultiplier: 0
+    stunMultiplier: 0.5
   - type: FloorOccluder
   - type: Transform
     anchored: true

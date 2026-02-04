@@ -1,12 +1,16 @@
 using System.Linq;
+using Content.Shared.Audio;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Effects;
 using Content.Shared.Jittering;
+using Content.Shared.Power;
 using Content.Shared.Weapons.Melee;
+using Robust.Shared.Network;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.Drill;
@@ -14,7 +18,7 @@ namespace Content.Shared._CE.Drill;
 /// <summary>
 /// Handles the automatic drilling behavior for stationary drills, including damage application and effects.
 /// </summary>
-public abstract class CESharedDrillSystem : EntitySystem
+public sealed class CESharedDrillSystem : EntitySystem
 {
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
@@ -24,8 +28,28 @@ public abstract class CESharedDrillSystem : EntitySystem
     [Dependency] private readonly SharedJitteringSystem _jitter = default!;
     [Dependency] private readonly MeleeSoundSystem _meleeSound = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private readonly INetManager _net = default!;
+    [Dependency] private readonly SharedAmbientSoundSystem _ambient = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
 
     private readonly List<EntityUid> _cachedEntityList = new();
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeLocalEvent<CEDrillComponent, PowerChangedEvent>(OnPowerChange);
+    }
+
+    private void OnPowerChange(Entity<CEDrillComponent> ent, ref PowerChangedEvent args)
+    {
+        var enabled = args.Powered;
+        _ambient.SetAmbience(ent, enabled);
+        ent.Comp.Enabled = enabled;
+
+        ent.Comp.NextDamageTime = _timing.CurTime + TimeSpan.FromSeconds(_random.NextDouble(0, 1));
+        Dirty(ent);
+    }
 
     public override void Update(float frameTime)
     {
@@ -63,7 +87,8 @@ public abstract class CESharedDrillSystem : EntitySystem
                 _cachedEntityList.Add(hit.HitEntity);
             }
 
-            _color.RaiseEffect(Color.Red, _cachedEntityList, Filter.Pvs(uid, entityManager: EntityManager));
+            if (_net.IsClient)
+                _color.RaiseEffect(Color.Red, _cachedEntityList, Filter.Pvs(uid, entityManager: EntityManager));
             _jitter.DoJitter(uid, freq, true, drill.JitterAmplitude, drill.JitterFreq);
         }
     }

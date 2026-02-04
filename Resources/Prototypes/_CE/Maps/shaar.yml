@@ -3,34 +3,7 @@
   mapName: Shaar
   minPlayers: 1
   maxPlayers: 20
-  mapsBelow:
-  - /Maps/_CE/Shaar/Shaar-2.yml
-  - /Maps/_CE/Shaar/Shaar-1.yml
   mapPath: /Maps/_CE/Shaar/Shaar0.yml
-  mapsAbove:
-  - /Maps/_CE/Shaar/Shaar1.yml
-  - /Maps/_CE/Shaar/Shaar2.yml
-  - /Maps/_CE/Shaar/Shaar3.yml
-  zLevelsComponentOverrides:
-    - type: MapAtmosphere
-      space: False
-      mixture:
-        volume: 2500
-        immutable: True
-        temperature: 293.15
-        moles:
-          Oxygen: 21.824879
-          Nitrogen: 82.10312
-    - type: Parallax
-      parallax: CESky
-    - type: SunShadowCycle
-      offset: 490
-    - type: LightCycle
-      offset: 490
-      originalColor: "#75e3ff"
-    - type: SunShadow
-    - type: MapLight
-      ambientLightColor: "#75e3ff"
   stations:
     Shaar:
       stationProto: CEStandardImperialFloatingIsland
@@ -42,9 +15,44 @@
             #Guard (5)
             CEGuardCommander: [ 1, 1 ]
             CEGuard: [ 4, 4 ]
+            #Engineering (4)
+            CEBrigadier: [ 1, 1 ]
+            CETechnician: [ 3, 3 ]
             #Tavern (4)
             CETavernmaster: [ 1, 1 ]
             CEChef: [ 3, 3 ]
             #Citizens
             CEBard: [ 2, 2 ]
             CETownfolk: [ -1, -1 ]
+            CETailorMerchant: [ 1, 1 ]
+            CEPharmacistMerchant: [ 1, 1 ]
+            CEHomeGoodsMerchant: [ 1, 1 ]
+        - type: CEStationZLevels
+          mapsBelow:
+          - /Maps/_CE/Shaar/Shaar-2.yml
+          - /Maps/_CE/Shaar/Shaar-1.yml
+          mapsAbove:
+          - /Maps/_CE/Shaar/Shaar1.yml
+          - /Maps/_CE/Shaar/Shaar2.yml
+          - /Maps/_CE/Shaar/Shaar3.yml
+          zLevelsComponentOverrides:
+            - type: MapAtmosphere
+              space: False
+              mixture:
+                volume: 2500
+                immutable: True
+                temperature: 293.15
+                moles:
+                  Oxygen: 21.824879
+                  Nitrogen: 82.10312
+            - type: Parallax
+              parallax: CESky
+            - type: SunShadowCycle
+              offset: 490
+            - type: LightCycle
+              offset: 490
+              originalColor: "#75e3ff"
+            - type: CEZLevelMapRoof
+            - type: SunShadow
+            - type: MapLight
+              ambientLightColor: "#75e3ff"

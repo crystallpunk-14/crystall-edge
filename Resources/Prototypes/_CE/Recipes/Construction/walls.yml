@@ -1,9 +1,9 @@
 - type: construction
   hide: false
-  id: CEWoodenWall
+  id: CEWallFrameWoodenFinished
   graph: CEWallWooden
   startNode: start
-  targetNode: CEWallWooden
+  targetNode: CEWallFrameWoodenFinished
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter

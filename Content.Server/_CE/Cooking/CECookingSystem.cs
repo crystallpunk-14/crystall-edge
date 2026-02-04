@@ -4,72 +4,86 @@
  */
 
 using System.Linq;
-using Content.Server.Nutrition.Components;
 using Content.Server.Temperature.Systems;
 using Content.Shared._CE.Cooking;
 using Content.Shared._CE.Cooking.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Temperature;
-using Robust.Shared.Random;
 
 namespace Content.Server._CE.Cooking;
 
 public sealed class CECookingSystem : CESharedCookingSystem
 {
     [Dependency] private readonly TemperatureSystem _temperature = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CEFoodHolderComponent, SolutionContainerChangedEvent>(OnHolderChanged);
+        SubscribeLocalEvent<CEFoodCookerComponent, OnTemperatureChangeEvent>(OnCookerTemperatureChange);
         SubscribeLocalEvent<CETemperatureTransformationComponent, OnTemperatureChangeEvent>(OnTemperatureChanged);
     }
 
-    private void OnHolderChanged(Entity<CEFoodHolderComponent> ent, ref SolutionContainerChangedEvent args)
+    public override void Update(float frameTime)
     {
-        if (args.Solution.Volume != 0)
+        base.Update(frameTime);
+
+        var query = EntityQueryEnumerator<CEFoodCookerComponent>();
+        while (query.MoveNext(out var uid, out var cooker))
+        {
+            if (DoAfter.IsRunning(cooker.DoAfterId) &&
+                Timing.CurTime > cooker.LastHeatingTime + cooker.HeatingFrequencyRequired)
+                StopCooking((uid, cooker));
+        }
+    }
+
+    private void OnCookerTemperatureChange(Entity<CEFoodCookerComponent> ent, ref OnTemperatureChangeEvent args)
+    {
+        if (args.TemperatureDelta <= 0)
             return;
 
-        ent.Comp.FoodData = null;
-        Dirty(ent);
+        if (!Container.TryGetContainer(ent, ent.Comp.ContainerId, out var container))
+            return;
+
+        if (!TryComp<CEFoodHolderComponent>(ent, out var holder))
+            return;
+
+        if (container.ContainedEntities.Count <= 0 &&
+            holder.FoodData is null) // We can be either cooking (null foodData) or burning (zero contained)
+        {
+            StopCooking(ent);
+            return;
+        }
+
+        ent.Comp.LastHeatingTime = Timing.CurTime;
+
+        if (!DoAfter.IsRunning(ent.Comp.DoAfterId) && holder.FoodData is null)
+        {
+            StartCooking(ent);
+        }
+        else
+        {
+            StartBurning(ent);
+        }
     }
 
     private void OnTemperatureChanged(Entity<CETemperatureTransformationComponent> start,
         ref OnTemperatureChangeEvent args)
     {
-        var xform = Transform(start);
         foreach (var entry in start.Comp.Entries)
         {
-            if (args.CurrentTemperature >= entry.TemperatureRange.X &&
-                args.CurrentTemperature < entry.TemperatureRange.Y)
-            {
-                if (entry.TransformTo == null)
-                    continue;
+            if (args.CurrentTemperature < entry.TemperatureRange.X ||
+                args.CurrentTemperature >= entry.TemperatureRange.Y)
+                continue;
 
-                SpawnNextToOrDrop(entry.TransformTo, start);
-                Del(start);
+            if (entry.TransformTo == null)
+                continue;
 
-                break;
-            }
+            SpawnNextToOrDrop(entry.TransformTo, start);
+            Del(start);
+
+            break;
         }
-    }
-
-    protected override bool TryTransferFood(Entity<CEFoodHolderComponent> target, Entity<CEFoodHolderComponent> source)
-    {
-        if (base.TryTransferFood(target, source))
-        {
-            //Sliceable
-            if (source.Comp.FoodData?.SliceProto is not null)
-            {
-                var sliceable = EnsureComp<SliceableFoodComponent>(target);
-                sliceable.Slice = source.Comp.FoodData.SliceProto;
-                sliceable.TotalCount = source.Comp.FoodData.SliceCount;
-            }
-        }
-
-        return true;
     }
 
     protected override void OnCookBurned(Entity<CEFoodCookerComponent> ent, ref CEBurningDoAfter args)
@@ -81,20 +95,6 @@ public sealed class CECookingSystem : CESharedCookingSystem
 
         //if (_random.Prob(ent.Comp.BurntAdditionalSpawnProb))
         //    Spawn(ent.Comp.BurntAdditionalSpawn, Transform(ent).Coordinates);
-    }
-
-    protected override void UpdateFoodDataVisuals(Entity<CEFoodHolderComponent> ent, CEFoodData data, bool rename = true)
-    {
-        base.UpdateFoodDataVisuals(ent, data, rename);
-
-        if (ent.Comp.FoodData?.SliceProto is null)
-            return;
-
-        if (!TryComp<SliceableFoodComponent>(ent, out var sliceable))
-            return;
-
-        sliceable.Slice = ent.Comp.FoodData.SliceProto;
-        sliceable.TotalCount = ent.Comp.FoodData.SliceCount;
     }
 
     protected override void OnCookFinished(Entity<CEFoodCookerComponent> ent, ref CECookingDoAfter args)
@@ -110,7 +110,7 @@ public sealed class CECookingSystem : CESharedCookingSystem
 
     private void TryTransformAll(Entity<CEFoodCookerComponent> ent)
     {
-        if (!_container.TryGetContainer(ent, ent.Comp.ContainerId, out var container))
+        if (!Container.TryGetContainer(ent, ent.Comp.ContainerId, out var container))
             return;
 
         var containedEntities = container.ContainedEntities.ToList();

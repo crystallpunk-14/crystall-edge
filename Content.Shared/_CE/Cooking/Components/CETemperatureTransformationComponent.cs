@@ -27,7 +27,7 @@ public sealed partial class CETemperatureTransformationComponent : Component
 }
 
 [DataRecord]
-public record struct CETemperatureTransformEntry()
+public partial record struct CETemperatureTransformEntry()
 {
     public EntProtoId? TransformTo { get; set; } = null;
     public Vector2 TemperatureRange { get; set; } = new();

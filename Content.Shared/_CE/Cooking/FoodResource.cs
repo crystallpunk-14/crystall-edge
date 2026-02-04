@@ -80,7 +80,7 @@ public sealed partial class FoodResource : CEWorkbenchCraftRequirement
         if (!protoManager.TryIndex(Recipe, out var indexedRecipe))
             return 0;
 
-        var complexity = indexedRecipe.Requirements.Sum(req => req.GetComplexity());
+        var complexity = indexedRecipe.GetComplexity();
 
         return complexity * 6;
     }

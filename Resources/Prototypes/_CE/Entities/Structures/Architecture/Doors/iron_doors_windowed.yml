@@ -20,13 +20,13 @@
     closeSound:
       path: /Audio/Effects/door_close.ogg
   - type: Damageable
-    damageContainer: Inorganic
+    damageContainer: StructuralInorganic
     damageModifierSet: CEMetallicStructural
   - type: Destructible
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 75
+        damage: 125
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
@@ -38,11 +38,11 @@
           CEScrapIron1:
             min: 1
             max: 2
-  #    - !type:ChangeConstructionNodeBehavior
-  #      node: CEIronDoorFrame
-  #- type: Construction
-  #  graph: CEIronDoor
-  #  node: CEIronDoor
+      - !type:ChangeConstructionNodeBehavior
+        node: CEIronDoorFrame
+  - type: Construction
+    graph: CEIronDoor
+    node: CEIronDoorWindowed
 
 - type: entity
   id: CEIronDoorWindowedMirrored
@@ -52,6 +52,6 @@
   - type: Door
     openSpriteState: open_mirrored
     closedSpriteState: closed_mirrored
-  #- type: Construction
-  #  graph: CEIronDoor
-  #  node: CEIronDoorMirrored
+  - type: Construction
+    graph: CEIronDoor
+    node: CEIronDoorWindowedMirrored

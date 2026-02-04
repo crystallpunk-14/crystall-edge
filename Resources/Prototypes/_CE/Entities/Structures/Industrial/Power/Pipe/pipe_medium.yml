@@ -37,11 +37,6 @@
         !type:DamageTrigger
         damage: 25
       behaviors:
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          CEScrapBrass1:
-            min: 1
-            max: 1
       - !type:PlaySoundBehavior
         sound:
           collection: MetalBreak
@@ -170,9 +165,6 @@
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
-          CEScrapBrass1:
-            min: 1
-            max: 1
           CEScrapIron1:
             min: 1
             max: 1
@@ -250,11 +242,6 @@
         !type:DamageTrigger
         damage: 50
       behaviors:
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          CEScrapBrass1:
-            min: 1
-            max: 1
       - !type:PlaySoundBehavior
         sound:
           collection: MetalBreak
@@ -262,13 +249,13 @@
         acts: [ "Destruction" ]
   - type: PowerConsumer
     voltage: Apc
-    drawRate: 2
+    drawRate: 1
   - type: RadiationSource
     intensity: 0
   - type: CEEnergyLeak
     leakPercentage: 1
   - type: PointLight
-    radius: 1.5
+    radius: 2
     energy: 2
     color: "#309fdf"
     enabled: false
@@ -288,3 +275,5 @@
     node: CEPipeBrassMediumBroken
   - type: CEPipeVisualizer
     statePrefix: broken_pipe_
+  - type: Cable
+    cableDroppedOnCutPrototype: CEOverchargeSmallVFX

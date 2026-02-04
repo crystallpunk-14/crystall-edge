@@ -14,6 +14,25 @@
     {
       "name": "active",
       "directions": 4
+    },
+    {
+      "name": "equipped-NECK",
+      "directions": 4
+    },
+    {
+      "name": "buckled",
+      "directions": 4
+    },
+    {
+      "name": "folded"
+    },
+    {
+      "name": "inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right",
+      "directions": 4
     }
   ]
 }

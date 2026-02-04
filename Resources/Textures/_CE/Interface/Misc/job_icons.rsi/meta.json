@@ -14,6 +14,9 @@
       "name": "Bartender"
     },
     {
+      "name": "Brigadier"
+    },
+    {
       "name": "Chef"
     },
     {
@@ -32,7 +35,19 @@
       "name": "Tavernmaster"
     },
     {
+      "name": "Technician"
+    },
+    {
       "name": "Townfolk"
+    },
+    {
+      "name": "TailorMerchant"
+    },
+    {
+      "name": "PharmacistMerchant"
+    },
+    {
+      "name": "HomeGoodsMerchant"
     }
   ]
 }

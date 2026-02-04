@@ -1,0 +1,42 @@
+<PanelContainer xmlns="https://spacestation14.io"
+                xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+                Margin="5 5 5 5">
+    <PanelContainer.PanelOverride>
+        <gfx:StyleBoxFlat BorderThickness="1" BorderColor="#777777"/>
+    </PanelContainer.PanelOverride>
+
+    <BoxContainer Orientation="Vertical">
+        <PanelContainer HorizontalExpand="True">
+            <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center" Margin="6 3 6 3">
+                <RichTextLabel Name="ResultName"/>
+            </BoxContainer>
+            <PanelContainer.PanelOverride>
+                <gfx:StyleBoxFlat BackgroundColor="#393c3f"/>
+            </PanelContainer.PanelOverride>
+        </PanelContainer>
+
+        <BoxContainer Orientation="Horizontal" Margin="10" SeparationOverride="10">
+            <PanelContainer SetSize="80 80" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <TextureRect
+                    Name="PlateTextureRect"
+                    Stretch="KeepAspectCentered" Visible="False"/>
+                <TextureRect
+                    Name="IconTexture"
+                    Stretch="KeepAspectCentered"/>
+            </PanelContainer>
+
+            <GridContainer Columns="2" HorizontalExpand="True">
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True">
+                    <Label Text="{Loc 'ce-guidebook-cooking-requirements-header'}"/>
+                    <BoxContainer Name="RequirementsContainer" Orientation="Vertical"/>
+                </BoxContainer>
+            </GridContainer>
+        </BoxContainer>
+
+        <BoxContainer Margin="10">
+            <RichTextLabel Name="ResultDescription" HorizontalAlignment="Left"/>
+        </BoxContainer>
+
+        <BoxContainer Name="EffectsContainer" Orientation="Vertical" Margin="10" Visible="False"/>
+    </BoxContainer>
+</PanelContainer>
