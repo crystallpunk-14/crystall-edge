@@ -1,7 +1,8 @@
 - type: entity
-  id: CEPipeTerminal
+  id: CEPipeTerminalDebug
   name: terminal
   description: TODO
+  suffix: DONT WORKING
   categories: [ ForkFiltered ]
   parent:
   - CEConstructibleMachine

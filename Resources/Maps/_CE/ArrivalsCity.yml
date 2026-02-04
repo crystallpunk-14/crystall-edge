@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 268.0.0
+  engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 12/17/2025 13:49:59
-  entityCount: 744
+  time: 01/31/2026 17:33:42
+  entityCount: 745
 maps:
 - 1
 grids:
@@ -145,6 +145,7 @@ entities:
       fibers: []
       fingerprints: []
     - type: RadiationGridResistance
+    - type: ExplosionAirtightGrid
 - proto: CEArrivalsDockPointMarker
   entities:
   - uid: 48
@@ -159,6 +160,55 @@ entities:
     components:
     - type: Transform
       pos: 42.631386,4.6770744
+      parent: 1
+- proto: CEBenchWood
+  entities:
+  - uid: 10
+    components:
+    - type: Transform
+      pos: 31.5,1.5
+      parent: 1
+  - uid: 87
+    components:
+    - type: Transform
+      pos: 36.5,1.5
+      parent: 1
+  - uid: 94
+    components:
+    - type: Transform
+      pos: 29.5,1.5
+      parent: 1
+  - uid: 101
+    components:
+    - type: Transform
+      pos: 35.5,1.5
+      parent: 1
+  - uid: 610
+    components:
+    - type: Transform
+      pos: 30.5,1.5
+      parent: 1
+  - uid: 611
+    components:
+    - type: Transform
+      pos: 26.5,1.5
+      parent: 1
+  - uid: 745
+    components:
+    - type: Transform
+      pos: 24.5,1.5
+      parent: 1
+- proto: CEBenchWoodFrame
+  entities:
+  - uid: 609
+    components:
+    - type: Transform
+      pos: 34.5,1.5
+      parent: 1
+  - uid: 649
+    components:
+    - type: Transform
+      pos: 25.5,1.5
       parent: 1
 - proto: CEBrassBar1
   entities:
@@ -199,20 +249,6 @@ entities:
     - type: Transform
       pos: 35.5,7.5
       parent: 1
-- proto: CEChairStoolWooden
-  entities:
-  - uid: 608
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 34.522118,1.678312
-      parent: 1
-  - uid: 609
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 35.534435,1.678312
-      parent: 1
 - proto: CEChairWooden
   entities:
   - uid: 603
@@ -244,16 +280,6 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 39.623974,8.213511
-      parent: 1
-  - uid: 610
-    components:
-    - type: Transform
-      pos: 31.552649,1.6108459
-      parent: 1
-  - uid: 611
-    components:
-    - type: Transform
-      pos: 30.405352,1.6333345
       parent: 1
 - proto: CEClothingHeadAmanitaHelmet
   entities:
@@ -501,15 +527,14 @@ entities:
     - type: Transform
       pos: 34.736076,-18.609348
       parent: 1
-- proto: CEFoodPiePieceTrash
+- proto: CEIronDoor
   entities:
   - uid: 133
     components:
     - type: Transform
-      pos: 29.014048,8.497249
+      rot: 3.141592653589793 rad
+      pos: 38.5,9.5
       parent: 1
-- proto: CEIronDoor
-  entities:
   - uid: 200
     components:
     - type: Transform
@@ -517,6 +542,12 @@ entities:
       parent: 1
 - proto: CEIronDoorMirrored
   entities:
+  - uid: 134
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 37.5,9.5
+      parent: 1
   - uid: 199
     components:
     - type: Transform
@@ -535,42 +566,12 @@ entities:
     - type: Transform
       pos: 37.5,2.5
       parent: 1
-  - uid: 101
-    components:
-    - type: Transform
-      pos: 37.5,9.5
-      parent: 1
 - proto: CEIronDoorWindowedMirrored
   entities:
-  - uid: 10
-    components:
-    - type: Transform
-      pos: 38.5,9.5
-      parent: 1
   - uid: 148
     components:
     - type: Transform
       pos: 38.5,2.5
-      parent: 1
-- proto: CELamppostDouble
-  entities:
-  - uid: 647
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 31.5,12.5
-      parent: 1
-  - uid: 648
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 43.5,12.5
-      parent: 1
-  - uid: 649
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 37.5,12.5
       parent: 1
 - proto: CELargeWoodenCrate
   entities:
@@ -696,6 +697,13 @@ entities:
       parent: 1
 - proto: CEPipeBrassMedium
   entities:
+  - uid: 176
+    components:
+    - type: Transform
+      pos: 39.5,3.5
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
   - uid: 622
     components:
     - type: Transform
@@ -868,6 +876,20 @@ entities:
     components:
     - type: Transform
       pos: 36.5,10.5
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 647
+    components:
+    - type: Transform
+      pos: 37.5,3.5
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 648
+    components:
+    - type: Transform
+      pos: 38.5,3.5
       parent: 1
     - type: Fixtures
       fixtures: {}
@@ -2627,17 +2649,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 41.5,-10.5
       parent: 1
-  - uid: 134
-    components:
-    - type: Transform
-      pos: 35.5,7.5
-      parent: 1
-  - uid: 135
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 35.5,5.5
-      parent: 1
   - uid: 136
     components:
     - type: Transform
@@ -2660,18 +2671,6 @@ entities:
     components:
     - type: Transform
       pos: 47.5,14.5
-      parent: 1
-  - uid: 167
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 35.5,10.5
-      parent: 1
-  - uid: 176
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 40.5,10.5
       parent: 1
   - uid: 207
     components:
@@ -2718,6 +2717,12 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 42.5,-4.5
+      parent: 1
+  - uid: 608
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 39.5,3.5
       parent: 1
 - proto: CEWallStoneBrickBrown
   entities:
@@ -4261,14 +4266,16 @@ entities:
       parent: 1
 - proto: SpawnPointLatejoin
   entities:
-  - uid: 87
+  - uid: 135
     components:
     - type: Transform
-      pos: 38.5,7.5
+      rot: 3.141592653589793 rad
+      pos: 38.5,4.5
       parent: 1
-  - uid: 94
+  - uid: 167
     components:
     - type: Transform
-      pos: 37.5,7.5
+      rot: 3.141592653589793 rad
+      pos: 37.5,4.5
       parent: 1
 ...

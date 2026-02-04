@@ -1,0 +1,18 @@
+- type: entity
+  parent: CEBaseAmbitionObjective
+  abstract: true
+  id: CEBaseCarrinAmbition
+  components:
+  - type: CEAmbitionObjective
+    conditions:
+      - !type:RequiredSpecies
+        species:
+        - CECarrin
+
+- type: entity
+  parent: CEBaseCarrinAmbition
+  id: CEAmbitionNesting
+  components:
+  - type: CEAmbitionObjective
+    name: ce-ambition-nesting-name
+    desc: ce-ambition-nesting-desc

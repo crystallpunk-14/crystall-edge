@@ -23,7 +23,7 @@
   - type: CELock
     autoGenerateShape: EngineeringStaff
   - type: Lock
-    locked: false #Temp
+    locked: true
 
 - type: entity
   parent:
@@ -40,7 +40,7 @@
   - type: CELock
     autoGenerateShape: EngineeringGenerator
   - type: Lock
-    locked: false #Temp
+    locked: true
 
 - type: entity
   parent:
@@ -57,7 +57,7 @@
   - type: CELock
     autoGenerateShape: EngineeringTunnels
   - type: Lock
-    locked: false #Temp
+    locked: true
 
 - type: entity
   parent:
@@ -74,7 +74,7 @@
   - type: CELock
     autoGenerateShape: EngineeringBrigadier
   - type: Lock
-    locked: false #Temp
+    locked: true
 
 - type: entity
   parent:
@@ -91,7 +91,7 @@
   - type: CELock
     autoGenerateShape: EngineeringStorage
   - type: Lock
-    locked: false #Temp
+    locked: true
 
 - type: entity
   parent:
@@ -108,4 +108,4 @@
   - type: CELock
     autoGenerateShape: EngineeringTunnels
   - type: Lock
-    locked: false #Temp
+    locked: true

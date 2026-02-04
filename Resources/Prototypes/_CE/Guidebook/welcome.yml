@@ -8,6 +8,7 @@
   - CESpeciesGuideEN
   - CECookingRecipesEN
   - CEFarmingGuideEN
+  - CEMiningGuideEN
   - CEImperialLawsEN
 
 - type: guideEntry
@@ -20,4 +21,5 @@
   - CESpeciesGuideRU
   - CECookingRecipesRU
   - CEFarmingGuideRU
+  - CEMiningGuideRU
   - CEImperialLawsRU

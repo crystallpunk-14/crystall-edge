@@ -86,3 +86,45 @@ ce-ambition-hoverboard-desc = I want to have my own hoverboard and fly through t
 
 ce-ambition-hoverboard-race-name = Racer
 ce-ambition-hoverboard-race-desc = I want to race hoverboards with !NAME!.
+
+ce-ambition-safety-name = Safety protocol
+ce-ambition-safety-desc = I must make sure every citizen has an emergency levitation amulet. No one must die by falling off the island.
+
+ce-ambition-suspicion-name = Suspicion
+ce-ambition-suspicion-desc = I'm convinced that !NAME! is a criminal, but I can't prove it.
+
+ce-ambition-harsh-commander-name = Harsh commander
+ce-ambition-harsh-commander-desc = My subordinates must obey me without question or they will be dismissed.
+
+ce-ambition-kind-commander-name = Kindest guard commander
+ce-ambition-kind-commander-desc = Everyone deserves a second chance. My kind words will surely convince others not to repeat their mistakes.
+
+ce-ambition-gluttony-name = Deadly Sin: Gluttony
+ce-ambition-gluttony-desc = Delicious food is the best thing in this world. If I die, it should be from overeating.
+
+ce-ambition-faked-death-name = Death Staging
+ce-ambition-faked-death-desc = Everyone must believe that I am dead.
+
+ce-ambition-extremist-name = Extreme Enthusiast
+ce-ambition-extremist-desc = Thrills are the meaning of my life. Jumping off roofs into snowdrifts, walking on the edge of a cliff... It's simply my way of life.
+
+ce-ambition-thief-vengeance-name = It's Personal
+ce-ambition-thief-vengeance-desc = Poor !NAME! got in my way in the past - I won't tolerate it. I'll take away everything dear to him. I'll leave him in his pants alone. Literally.
+
+ce-ambition-thief-carcat-mischief-name = Feline Mischief
+ce-ambition-thief-carcat-mischief-desc = I love watching things fall down. I need to throw as many people's things off the island as possible.
+
+ce-ambition-thief-lair-name = My Lair
+ce-ambition-thief-lair-desc = Because !REASON!, I must set up my lair in !LOCATION!.
+
+ce-ambition-thief-carrin-magpie-name = Magpie
+ce-ambition-thief-carrin-magpie-desc = I love shiny things so much. I want to collect a big collection of different shiny things.
+
+ce-ambition-thief-blind-justice-name = Blind Justice
+ce-ambition-thief-blind-justice-desc = I want the rich to get richer and the poor to get poorer.
+
+ce-ambition-fashionista-name = Fashionista
+ce-ambition-fashionista-desc = I want to be dressed in the latest fashion.
+
+ce-ambition-nesting-name = Nesting
+ce-ambition-nesting-desc = I want to build a nest in some high place. Preferably, not live there alone.

@@ -87,7 +87,7 @@ binds:
   key: NumpadNum5
 # Misc
 # CrystallEdge Zone
-- function: CP14OpenSkillMenu
+- function: OpenSkillMenu
   type: State
   key: R
 - function: OpenBelt2

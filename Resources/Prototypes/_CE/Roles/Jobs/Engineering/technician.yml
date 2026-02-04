@@ -1,6 +1,6 @@
 - type: job
   id: CETechnician
-  setPreference: false #temp
+  setPreference: true
   name: ce-job-name-technician
   description: ce-job-desc-technician
   playTimeTracker: CEJobTechnician
@@ -8,11 +8,6 @@
   icon: CEJobIconTechnician
   supervisors: ce-job-supervisors-brigadier
   canBeAntag: false
-  special:
-    - !type:AddComponentSpecial
-      components:
-      - type: CESalaryCounter
-        salary: 50
 
 - type: startingGear
   id: CETechnicianGear
@@ -44,3 +39,6 @@
     contents:
     - id: CEKeyEngineeringHall
     - id: CEKeyEngineeringStaff
+    - id: CEKeyEngineeringGenerator
+    - id: CEKeyEngineeringTunnels
+    - id: CEKeyEngineeringStorage
