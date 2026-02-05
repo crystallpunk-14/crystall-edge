@@ -11,6 +11,7 @@
       - Wall
   components:
   - type: CEZLevelNavBridge
+    transitionPoint: "1.2,0"
   - type: CEAutoTilePlacement
     tile: CEPlanks
   - type: PlacementReplacement
