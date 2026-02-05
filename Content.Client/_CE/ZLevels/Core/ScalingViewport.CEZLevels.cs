@@ -22,6 +22,7 @@ public sealed partial class ScalingViewport
     [Dependency] private readonly IEyeManager _eyeManager = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly ITileDefinitionManager _tile = default!;
+    [Dependency] private readonly IOverlayManager _overlayManager = default!;
 
     private CEClientZLevelsSystem? _zLevels;
     private SharedMapSystem? _mapSystem;
@@ -137,13 +138,53 @@ public sealed partial class ScalingViewport
                 break;
         }
 
+        // Try to locate the placement overlay so we can temporarily disable it while rendering z-levels
+        Overlay? placementOverlay = null;
+
+        // Search for placement overlay by type name
+        // yeah i know this is junky af but i don't have any other solutions
+        foreach (var overlay in _overlayManager.AllOverlays)
+        {
+            if (overlay.GetType().Name == "PlacementOverlay")
+            {
+                placementOverlay = overlay;
+                break;
+            }
+        }
+
+        var placementRemoved = false;
+
         //From the lowest depth to the highest, render each level
         for (var depth = lowestDepth; depth <= lookUp; depth++)
         {
             if (depth == 0)
+            {
                 viewport.Eye = _fallbackEye;
+
+                // Restore placement overlay for the base layer
+                if (placementRemoved && placementOverlay is not null)
+                {
+                    try
+                    {
+                        _overlayManager.AddOverlay(placementOverlay);
+                        placementRemoved = false;
+                    }
+                    catch { }
+                }
+            }
             else
             {
+                // Remove placement overlay before rendering z-levels so it will only display on ours
+                if (!placementRemoved && placementOverlay is not null)
+                {
+                    try
+                    {
+                        _overlayManager.RemoveOverlay(placementOverlay);
+                        placementRemoved = true;
+                    }
+                    catch { }
+                }
+
                 if (!_zLevels.TryMapOffset(playerXform.MapUid.Value, depth, out var mapUidBelow))
                     continue;
 
@@ -166,6 +207,16 @@ public sealed partial class ScalingViewport
 
             viewport.ClearColor = depth == lowestDepth ? Color.Black : null;
             viewport.Render();
+        }
+
+        // Restore placement overlay
+        if (placementRemoved && placementOverlay is not null)
+        {
+            try
+            {
+                _overlayManager.AddOverlay(placementOverlay);
+            }
+            catch { }
         }
 
         // Restore the Eye
