@@ -54,7 +54,7 @@ public sealed partial class CEZLevelNavBridgeSystem : EntitySystem
         if (!_map.TryGetMap(targetMap, out var targetMapEnt)) return false;
         if (!HasComp<CEZLevelMapComponent>(targetMapEnt)) return false;
 
-        var transitionPoint = ent.Comp.TransitionPoint;
+        var transitionPoint = Transform(ent).LocalRotation.RotateVec(ent.Comp.TransitionPoint);
         var mapTransitionPoint = _transform.ToMapCoordinates(new EntityCoordinates(ent, transitionPoint));
         var targetEnt = _entity.Spawn(null, new MapCoordinates(mapTransitionPoint.Position, targetMap.Value));
 
