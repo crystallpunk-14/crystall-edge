@@ -1,3 +1,4 @@
+using System.Numerics;
 using Content.Shared._CE.Thief;
 using Content.Shared.Coordinates;
 using Content.Shared.Interaction;
@@ -49,7 +50,7 @@ public sealed partial class CEThiefSystem : EntitySystem
             var entCoords = _transform.GetWorldPosition(ent.Owner);
             var trsCoords = _transform.GetWorldPosition(transform);
 
-            if ((entCoords - trsCoords).Length() > args.SenseDistance)
+            if (Vector2.Distance(entCoords, trsCoords) > args.SenseDistance)
                 continue;
 
             count += 1;
