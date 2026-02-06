@@ -50,7 +50,6 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
         SubscribeLocalEvent<CEZFlyerComponent, MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<CEZFlyerComponent, DamageChangedEvent>(OnDamageChanged);
         SubscribeLocalEvent<StandingStateComponent, CEStartFlightAttemptEvent>(OnStandingStartFlightAttempt);
-
     }
 
     private void CheckWeightless(Entity<CEZFlyerComponent> ent, ref IsWeightlessEvent args)
