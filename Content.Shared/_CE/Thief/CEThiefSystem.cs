@@ -1,7 +1,4 @@
 using System.Numerics;
-using Content.Shared._CE.Thief;
-using Content.Shared.Coordinates;
-using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -33,7 +30,7 @@ public sealed partial class CEThiefSystem : EntitySystem
     {
         if (args.Handled)
             return;
-        
+
         args.Handled = true;
 
         if (!_gameTiming.IsFirstTimePredicted)
