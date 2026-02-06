@@ -12,6 +12,8 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
 using Content.Shared.Gravity;
 using Content.Shared.Mobs;
+using Content.Shared.Popups;
+using Content.Shared.Standing;
 using Content.Shared.Stunnable;
 using JetBrains.Annotations;
 using Robust.Shared.Serialization;
@@ -26,6 +28,8 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly SharedGravitySystem _gravity = default!;
+    [Dependency] private readonly StandingStateSystem _standing = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
 
     protected EntityQuery<CEZPhysicsComponent> ZPhyzQuery;
 
@@ -33,6 +37,7 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
     {
         base.Initialize();
         InitializeControllable();
+        InitializeConditions();
 
         ZPhyzQuery = GetEntityQuery<CEZPhysicsComponent>();
 
