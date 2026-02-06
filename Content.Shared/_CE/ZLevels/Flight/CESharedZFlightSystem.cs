@@ -37,7 +37,6 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
     {
         base.Initialize();
         InitializeControllable();
-        InitializeConditions();
 
         ZPhyzQuery = GetEntityQuery<CEZPhysicsComponent>();
 
@@ -51,6 +50,8 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
         SubscribeLocalEvent<CEZFlyerComponent, KnockedDownEvent>(OnKnockDowned);
         SubscribeLocalEvent<CEZFlyerComponent, MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<CEZFlyerComponent, DamageChangedEvent>(OnDamageChanged);
+        SubscribeLocalEvent<StandingStateComponent, CEStartFlightAttemptEvent>(OnStandingStartFlightAttempt);
+
     }
 
     private void CheckWeightless(Entity<CEZFlyerComponent> ent, ref IsWeightlessEvent args)
@@ -86,6 +87,12 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
     private void OnStunned(Entity<CEZFlyerComponent> ent, ref StunnedEvent args)
     {
         DeactivateFlight((ent, ent));
+    }
+    private void OnStandingStartFlightAttempt(Entity<StandingStateComponent> ent, ref CEStartFlightAttemptEvent args)
+    {
+        if (ent.Comp.Standing) return;
+        args.Cancel();
+        _popup.PopupClient(Loc.GetString("ce-flight-lying-down"), ent, ent);
     }
 
     private void OnStartFlight(Entity<CEZPhysicsComponent> ent, ref CEFlightStartedEvent args)
