@@ -15,6 +15,6 @@ public abstract partial class CESharedZFlightSystem
     {
         if (ent.Comp.Standing) return;
         args.Cancel();
-        _popup.PopupClient("ce-flight-while-lying-down", ent);
+        _popup.PopupClient(Loc.GetString("ce-flight-lying-down"), ent, ent);
     }
 }
