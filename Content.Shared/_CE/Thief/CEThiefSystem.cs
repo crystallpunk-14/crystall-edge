@@ -30,6 +30,9 @@ public sealed partial class CEThiefSystem : EntitySystem
 
     private void OnShowTreasures(Entity<ActorComponent> ent, ref CEThiefShowTreasuresEvent args)
     {
+        if (args.Handled)
+            return;
+        
         args.Handled = true;
 
         if (!_gameTiming.IsFirstTimePredicted)
