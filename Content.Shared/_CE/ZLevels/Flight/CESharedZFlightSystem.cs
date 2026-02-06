@@ -28,7 +28,6 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly SharedGravitySystem _gravity = default!;
-    [Dependency] private readonly StandingStateSystem _standing = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
 
     protected EntityQuery<CEZPhysicsComponent> ZPhyzQuery;
