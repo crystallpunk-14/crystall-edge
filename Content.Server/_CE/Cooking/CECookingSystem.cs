@@ -39,6 +39,9 @@ public sealed class CECookingSystem : CESharedCookingSystem
 
     private void OnCookerTemperatureChange(Entity<CEFoodCookerComponent> ent, ref OnTemperatureChangeEvent args)
     {
+        if (Container.IsEntityInContainer(ent))
+            return;
+
         if (args.TemperatureDelta <= 0)
             return;
 
