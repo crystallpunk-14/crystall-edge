@@ -18,20 +18,20 @@ public abstract partial class SharedBatterySystem
     /// </summary>
     /// <returns>The actually changed amount.</returns>
     [PublicAPI]
-    public float ChangeCharge(Entity<BatteryComponent?> ent, float amount)
+    public float ChangeCharge(Entity<BatteryComponent?> ent, float amount, bool safe = false) // WD EDIT: safe
     {
         if (!Resolve(ent, ref ent.Comp))
             return 0;
 
         //CrystallEdge overcharge energy
-        if (amount > 0 && ent.Comp.LastCharge + amount > ent.Comp.MaxCharge)
+        if (!safe && amount > 0 && ent.Comp.LastCharge + amount > ent.Comp.MaxCharge) // WD EDIT: safe
         {
             var overcharge = (ent.Comp.LastCharge + amount) - ent.Comp.MaxCharge;
             var overchargeEv = new CEEnergyOverchargeEvent(overcharge);
             RaiseLocalEvent(ent, ref overchargeEv);
         }
 
-        if (amount < 0 && ent.Comp.LastCharge + amount < 0)
+        if (!safe && amount < 0 && ent.Comp.LastCharge + amount < 0) // WD EDIT: safe
         {
             var deficit = -amount - ent.Comp.LastCharge;
             var deficitEv = new CEEnergyDeficitEvent(deficit);

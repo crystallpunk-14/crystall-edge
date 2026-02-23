@@ -1,0 +1,68 @@
+﻿- type: entity
+  id: WhiteActionAirSaturation
+  parent: CEActionSpellBase
+  name: Air saturation
+  description: You surround the target with fresh air, healing suffocation. This can sustain the dying.
+  components:
+  - type: CEActionDoAfterSlowdown
+    speedMultiplier: 0.4
+  - type: CEActionManaCost
+    manaCost: 5
+  - type: DoAfterArgs
+    repeat: true
+    delay: 2
+    breakOnDamage: true
+  - type: CEActionDoAfterVisuals
+    proto: WhiteRuneAirSaturation
+  - type: Action
+    useDelay: 2
+    icon:
+      sprite: _White/Actions/Spells/healing.rsi
+      state: air_saturation
+  - type: TargetAction
+    range: 2
+    interactOnMiss: false
+  - type: EntityTargetAction
+    event: !type:CEEntityTargetModularEffectEvent
+      effects:
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - WhiteImpactEffectAirSaturation
+      - !type:CESpellApplyEntityEffect
+        effects:
+        - !type:HealthChange
+          damage:
+            types:
+              Asphyxiation: -5
+        - !type:Jitter
+
+# Effects
+
+- type: entity
+  id: WhiteImpactEffectAirSaturation
+  parent: CEBaseMagicImpact
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    layers:
+    - state: particles_up
+      color: "#c0e8fa"
+      shader: unshaded
+
+- type: entity
+  id: WhiteRuneAirSaturation
+  parent: CEBaseMagicRune
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: PointLight
+    color: "#c0e8fa"
+  - type: Sprite
+    layers:
+    - state: sun
+      color: "#5096d4"
+      shader: unshaded
+    - state: medium_circle
+      color: "#c0e8fa"
+      shader: unshaded

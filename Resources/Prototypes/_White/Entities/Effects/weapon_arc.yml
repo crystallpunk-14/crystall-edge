@@ -1,0 +1,17 @@
+﻿- type: entity
+  id: WhiteWeaponArcSlash
+  parent: WeaponArcStatic
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: WeaponArcVisuals
+    animation: WhiteSlash
+
+- type: entity
+  id: WhiteWeaponArcThrust
+  parent: WeaponArcStatic
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: WeaponArcVisuals
+    animation: WhiteThrust

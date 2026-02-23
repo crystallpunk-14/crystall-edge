@@ -1,0 +1,176 @@
+﻿using System.Numerics;
+using Content.Shared._White.MagicVision;
+using Content.Shared._White.MagicVision.Components;
+using Content.Shared.Examine;
+using Content.Shared.StatusEffectNew;
+using Robust.Client.Audio;
+using Robust.Client.GameObjects;
+using Robust.Client.Graphics;
+using Robust.Client.Player;
+using Robust.Client.Timing;
+using Robust.Shared.Audio;
+using Robust.Shared.Map;
+using Robust.Shared.Player;
+using Robust.Shared.Utility;
+
+namespace Content.Client._White.MagicVision;
+
+public sealed class WhiteMagicVisionSystem : WhiteSharedMagicVisionSystem
+{
+    [Dependency] private readonly IClientGameTiming _gameTiming = default!;
+    [Dependency] private readonly IOverlayManager _overlayMan = default!;
+    [Dependency] private readonly IPlayerManager _player = default!;
+
+    [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly SpriteSystem _sprite = default!;
+    [Dependency] private readonly StatusEffectsSystem _status = default!;
+    [Dependency] private readonly TransformSystem _transform = default!;
+
+    private WhiteMagicVisionOverlay? _overlay;
+    private WhiteMagicVisionNoirOverlay? _overlay2;
+
+    private TimeSpan _nextUpdate = TimeSpan.Zero;
+
+    private readonly SoundSpecifier _startSound = new SoundPathSpecifier(new ResPath("/Audio/Effects/eye_open.ogg"));
+    private readonly SoundSpecifier _endSound = new SoundPathSpecifier(new ResPath("/Audio/Effects/eye_close.ogg"));
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeLocalEvent<WhiteMagicVisionMarkerComponent, AfterAutoHandleStateEvent>(OnHandleStateMarker);
+
+        SubscribeLocalEvent<WhiteMagicVisionStatusEffectComponent, StatusEffectRelayedEvent<LocalPlayerAttachedEvent>>(OnPlayerAttached);
+        SubscribeLocalEvent<WhiteMagicVisionStatusEffectComponent, StatusEffectRelayedEvent<LocalPlayerDetachedEvent>>(OnPlayerDetached);
+
+        SubscribeLocalEvent<WhiteMagicVisionStatusEffectComponent, StatusEffectAppliedEvent>(OnStatusEffectApplied);
+        SubscribeLocalEvent<WhiteMagicVisionStatusEffectComponent, StatusEffectRemovedEvent>(OnStatusEffectRemoved);
+
+    }
+
+    private void OnPlayerAttached(Entity<WhiteMagicVisionStatusEffectComponent> ent, ref StatusEffectRelayedEvent<LocalPlayerAttachedEvent> args)
+    {
+        if (args.Args.Entity != _player.LocalEntity)
+            return;
+
+        ApplyOverlay(ent);
+    }
+
+    private void OnStatusEffectApplied(Entity<WhiteMagicVisionStatusEffectComponent> ent, ref StatusEffectAppliedEvent args)
+    {
+        if (args.Target != _player.LocalEntity)
+            return;
+
+        //Prevents it from being applied twice
+        if (_gameTiming.IsFirstTimePredicted)
+            return;
+
+        ApplyOverlay(ent);
+    }
+
+    private void OnPlayerDetached(Entity<WhiteMagicVisionStatusEffectComponent> ent, ref StatusEffectRelayedEvent<LocalPlayerDetachedEvent> args)
+    {
+        if (args.Args.Entity != _player.LocalEntity)
+            return;
+
+        RemoveOverlay(ent);
+    }
+
+    private void OnStatusEffectRemoved(Entity<WhiteMagicVisionStatusEffectComponent> ent, ref StatusEffectRemovedEvent args)
+    {
+        if (args.Target != _player.LocalEntity)
+            return;
+
+        //Prevents it from beeing removed twice
+        if (_gameTiming.IsFirstTimePredicted)
+            return;
+
+        RemoveOverlay(ent);
+    }
+
+    protected override void OnExamined(Entity<WhiteMagicVisionMarkerComponent> ent, ref ExaminedEvent args)
+    {
+        base.OnExamined(ent, ref args);
+
+        if (ent.Comp.TargetCoordinates is null)
+            return;
+
+        var originPosition = _transform.GetWorldPosition(ent);
+        var targetPosition = _transform.ToWorldPosition(ent.Comp.TargetCoordinates.Value);
+
+        if ((targetPosition - originPosition).Length() < 0.5f)
+            return;
+
+        Angle angle = new(targetPosition - originPosition);
+
+        var pointer = Spawn(ent.Comp.PointerProto, new MapCoordinates(originPosition, _transform.GetMapId(Transform(ent).Coordinates)));
+
+        _transform.SetWorldRotation(pointer, angle + Angle.FromDegrees(90));
+    }
+
+    private void OnHandleStateMarker(Entity<WhiteMagicVisionMarkerComponent> ent, ref AfterAutoHandleStateEvent args)
+    {
+        if (!TryComp<SpriteComponent>(ent, out var sprite))
+            return;
+        if (ent.Comp.Icon is null)
+            return;
+
+        var layer = _sprite.AddLayer(ent.Owner, ent.Comp.Icon);
+        sprite.LayerSetShader(layer, "unshaded");
+        _sprite.LayerSetScale(ent.Owner, layer, new Vector2(0.5f, 0.5f));
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        if (_gameTiming.CurTime < _nextUpdate)
+            return;
+
+        _nextUpdate = _gameTiming.CurTime + TimeSpan.FromSeconds(0.5f);
+        var queryFade = EntityQueryEnumerator<WhiteMagicVisionMarkerComponent, SpriteComponent>();
+        while (queryFade.MoveNext(out var uid, out var fade, out var sprite))
+        {
+            UpdateOpaque((uid, fade), sprite);
+        }
+    }
+
+    private void UpdateOpaque(Entity<WhiteMagicVisionMarkerComponent> ent, SpriteComponent sprite)
+    {
+        var progress = Math.Clamp((_gameTiming.CurTime.TotalSeconds - ent.Comp.SpawnTime.TotalSeconds) / (ent.Comp.EndTime.TotalSeconds - ent.Comp.SpawnTime.TotalSeconds), 0, 1);
+        var alpha = 1 - progress;
+        _sprite.SetColor((ent.Owner, sprite), Color.White.WithAlpha((float)alpha));
+    }
+
+    private void ApplyOverlay(Entity<WhiteMagicVisionStatusEffectComponent> ent)
+    {
+        _overlay = new WhiteMagicVisionOverlay();
+        _overlayMan.AddOverlay(_overlay);
+        _overlay.StartOverlay = _gameTiming.CurTime;
+
+        _overlay2 = new WhiteMagicVisionNoirOverlay();
+        _overlayMan.AddOverlay(_overlay2);
+
+        _audio.PlayGlobal(_startSound, ent);
+    }
+
+    private void RemoveOverlay(Entity<WhiteMagicVisionStatusEffectComponent> ent)
+    {
+        // Check if it is the last Magic Vision Status Effect
+        if (_status.HasEffectComp<WhiteMagicVisionStatusEffectComponent>(_player.LocalEntity))
+            return;
+
+        if (_overlay != null)
+        {
+            _overlayMan.RemoveOverlay(_overlay);
+            _overlay = null;
+        }
+        if (_overlay2 != null)
+        {
+            _overlayMan.RemoveOverlay(_overlay2);
+            _overlay2 = null;
+        }
+
+        _audio.PlayGlobal(_endSound, ent);
+    }
+}

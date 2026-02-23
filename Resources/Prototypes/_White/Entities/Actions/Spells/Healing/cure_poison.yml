@@ -1,0 +1,80 @@
+﻿- type: entity
+  id: WhiteActionSpellBloodPurification
+  parent: CEActionSpellBase
+  name: Blood purification
+  description: You cleanse the target's blood of poisons and acids, and restore its volume slightly
+  components:
+  - type: CEActionDoAfterSlowdown
+    speedMultiplier: 0.5
+  - type: CEActionManaCost
+    manaCost: 10
+  - type: CEActionSpeaking
+    startSpeech: "Nella coda..."
+    endSpeech: "sta il veleno"
+  - type: CEActionTargetMobStatusRequired
+  - type: CEActionDoAfterVisuals
+    proto: WhiteRuneBloodPurification
+  - type: Action
+    useDelay: 5
+    icon:
+      sprite: _White/Actions/Spells/healing.rsi
+      state: cure_poison
+  - type: TargetAction
+    range: 7
+    interactOnMiss: false
+  - type: DoAfterArgs
+    delay: 1.5
+    breakOnDamage: true
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - MobState
+    event: !type:CEEntityTargetModularEffectEvent
+      telegraphyEffects:
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - WhiteImpactEffectBloodPurification
+      effects:
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - WhiteImpactEffectBloodPurification
+      - !type:CESpellApplyEntityEffect
+        effects:
+        - !type:HealthChange
+          damage:
+            types:
+              Poison: -10
+              Bloodloss: -10
+              Caustic: -10
+        - !type:Jitter
+        - !type:ModifyBloodLevel
+          amount: 25
+
+- type: entity
+  id: WhiteRuneBloodPurification
+  parent: CEBaseMagicRune
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: PointLight
+    color: "#328643"
+  - type: Sprite
+    layers:
+    - state: sun
+      color: "#79b330"
+      shader: unshaded
+    - state: double_outer
+      color: "#a1252f"
+      shader: unshaded
+
+- type: entity
+  id: WhiteImpactEffectBloodPurification
+  parent: CEBaseMagicImpact
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    layers:
+    - state: particles_up
+      color: "#79b330"
+      shader: unshaded

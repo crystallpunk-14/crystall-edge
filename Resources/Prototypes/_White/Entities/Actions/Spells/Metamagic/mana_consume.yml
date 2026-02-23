@@ -1,0 +1,79 @@
+﻿- type: entity
+  id: WhiteActionSpellManaConsume
+  parent: CEActionSpellBase
+  name: Mana consume
+  description: You absorb a small amount of mana from the target.
+  components:
+  - type: CEActionDoAfterVisuals
+    proto: WhiteRuneManaConsume
+  - type: Action
+    useDelay: 5
+    icon:
+      sprite: _White/Actions/Spells/metamagic.rsi
+      state: mana_consume
+  - type: DoAfterArgs
+    repeat: true
+    breakOnMove: true
+    delay: 1
+    breakOnDamage: true
+  - type: TargetAction
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - Battery
+    event: !type:CEEntityTargetModularEffectEvent
+      telegraphyEffects:
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - WhiteImpactEffectManaConsume
+      effects:
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - WhiteImpactEffectManaConsume
+      - !type:WhiteSpellConsumeCharge
+        charge: 10
+
+- type: entity
+  id: WhiteActionSpellManaConsumeElf
+  parent: WhiteActionSpellManaConsume
+  name: Carefull mana consume
+  description: You absorb mana at a tremendous rate without dealing damage to the mana holder.
+  components:
+  - type: EntityTargetAction
+    event: !type:CEEntityTargetModularEffectEvent
+      effects:
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - WhiteImpactEffectManaConsume
+      - !type:WhiteSpellConsumeCharge
+        safe: true
+        charge: 20
+
+- type: entity
+  id: WhiteRuneManaConsume
+  parent: CEBaseMagicRune
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: PointLight
+    color: "#5096d4"
+  - type: Sprite
+    layers:
+    - state: medium_line
+      color: "#5096d4"
+      shader: unshaded
+    - state: double_outer
+      color: "#5096d4"
+      shader: unshaded
+
+- type: entity
+  id: WhiteImpactEffectManaConsume
+  parent: CEBaseMagicImpact
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    layers:
+    - state: particles_down
+      color: "#5096d4"
+      shader: unshaded

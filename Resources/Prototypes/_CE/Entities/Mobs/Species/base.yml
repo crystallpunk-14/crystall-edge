@@ -197,6 +197,19 @@
     weightlessModifier: 0.6
   - type: CEBlinker
   - type: CESkillStorage
+    # WD EDIT START
+    skillPoints:
+      Memory:
+        max: 5
+    availableSkillTrees:
+    - Athletic
+    - Craftsmanship
+    - Electromancy
+    - Healing
+    - Hydrosophistry
+    - Illusion
+    - Metamagic
+    # WD EDIT END
   - type: CEVampireEssenceHolder
   - type: CESatiations
     satiations:

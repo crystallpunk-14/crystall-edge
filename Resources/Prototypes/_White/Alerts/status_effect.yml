@@ -1,0 +1,5 @@
+﻿- type: alert
+  id: WhiteMagicArmor
+  icons:
+  - sprite: /Textures/_White/Actions/Spells/metamagic.rsi
+    state: magic_armor

@@ -1,0 +1,86 @@
+﻿- type: entity
+  id: WhiteActionSpellSearchOfLife
+  parent: CEActionSpellBase
+  name: Search of life
+  description: Detects all living things in a large radius around you.
+  components:
+  - type: CEActionManaCost
+    manaCost: 30
+  - type: CEActionSpeaking
+    startSpeech: "Ego vultus..."
+    endSpeech: "parumper vita"
+  - type: CEActionFreeHandsRequired
+  - type: CEActionDoAfterVisuals
+    proto: WhiteRuneSearchOfLife
+  - type: DoAfterArgs
+    delay: 1.5
+    breakOnDamage: true
+  - type: Action
+    useDelay: 30
+    icon:
+      sprite: _White/Actions/Spells/illusion.rsi
+      state: search_of_life
+  - type: InstantAction
+    event: !type:CEInstantModularEffectEvent
+      effects:
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - WhiteImpactEffectSearchOfLife
+      - !type:WhiteSpellPointerToAlive
+        pointerEntity: WhiteSearchOfLifePointer
+        searchRange: 30
+
+- type: entity
+  id: WhiteImpactEffectSearchOfLife
+  parent: CEBaseMagicImpact
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    layers:
+    - state: particles_up
+      color: "#efedff"
+      shader: unshaded
+    - state: circle_increase
+      color: "#79b330"
+      shader: unshaded
+
+- type: entity
+  id: WhiteRuneSearchOfLife
+  parent: CEBaseMagicRune
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: PointLight
+    color: "#328643"
+  - type: Sprite
+    layers:
+    - state: sun
+      color: "#efedff"
+      shader: unshaded
+    - state: double_outer
+      color: "#79b330"
+      shader: unshaded
+
+- type: entity
+  id: WhiteSearchOfLifePointer
+  name: pointer
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _White/Effects/Magic/pointer.rsi
+    offset: 0, -1
+    layers:
+    - state: pointer
+      shader: unshaded
+    drawdepth: LowFloors
+  - type: PointLight
+    netSync: false
+    radius: 3
+    color: "#ffffff"
+    energy: 0.2
+  - type: TimedDespawn
+    lifetime: 8
+  - type: Tag
+    tags:
+    - HideContextMenu

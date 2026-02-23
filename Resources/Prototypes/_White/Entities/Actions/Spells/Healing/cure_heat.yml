@@ -1,0 +1,78 @@
+﻿- type: entity
+  id: WhiteActionSpellCureBurn
+  parent: CEActionSpellBase
+  name: Cure burn
+  description: You heal skin damage caused by excessive cooling or heating.
+  components:
+  - type: CEActionDoAfterSlowdown
+    speedMultiplier: 0.5
+  - type: CEActionManaCost
+    manaCost: 10
+  - type: CEActionTargetMobStatusRequired
+  - type: CEActionSpeaking
+    startSpeech: "Pellis dolorem..."
+    endSpeech: "non novit"
+  - type: CEActionDoAfterVisuals
+    proto: WhiteRuneCureBurn
+  - type: Action
+    useDelay: 5
+    icon:
+      sprite: _White/Actions/Spells/healing.rsi
+      state: cure_burn
+  - type: DoAfterArgs
+    delay: 1.5
+    breakOnDamage: true
+  - type: TargetAction
+    range: 7
+    interactOnMiss: false
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - MobState
+    event: !type:CEEntityTargetModularEffectEvent
+      telegraphyEffects:
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - WhiteImpactEffectCureBurn
+      effects:
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - WhiteImpactEffectCureBurn
+      - !type:CESpellApplyEntityEffect
+        effects:
+        - !type:HealthChange
+          damage:
+            types:
+              Cold: -10
+              Heat: -10
+              Shock: -10
+        - !type:Jitter
+
+- type: entity
+  id: WhiteRuneCureBurn
+  parent: CEBaseMagicRune
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: PointLight
+    color: "#328643"
+  - type: Sprite
+    layers:
+    - state: sun
+      color: "#79b330"
+      shader: unshaded
+    - state: double_outer
+      color: "#ed9b4a"
+      shader: unshaded
+
+- type: entity
+  id: WhiteImpactEffectCureBurn
+  parent: CEBaseMagicImpact
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    layers:
+    - state: particles_up
+      color: "#79b330"
+      shader: unshaded

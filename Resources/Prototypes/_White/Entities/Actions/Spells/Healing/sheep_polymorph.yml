@@ -1,0 +1,74 @@
+﻿- type: entity
+  id: WhiteActionSpellSheepPolymorph
+  parent: CEActionSpellBase
+  name: Sheep polymorph
+  description: You curse the target, turning it into a silly sheep for a short period of time.
+  components:
+  - type: Sprite
+    sprite: _White/Actions/Spells/misc.rsi
+    state: polymorph
+  - type: CEActionDoAfterSlowdown
+    speedMultiplier: 0.5
+  - type: CEActionManaCost
+    manaCost: 30
+  - type: CEActionSpeaking
+    startSpeech: "Pascam et custodiam..."
+    endSpeech: "pecora tua"
+  - type: CEActionDoAfterVisuals
+    proto: WhiteRuneSheepPolymorph
+  - type: CEActionTargetMobStatusRequired
+  - type: Action
+    useDelay: 30
+    icon:
+      sprite: _White/Actions/Spells/misc.rsi
+      state: polymorph
+  - type: TargetAction
+    range: 3
+    interactOnMiss: false
+  - type: DoAfterArgs
+    delay: 1.5
+    breakOnDamage: true
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - MobState
+    event: !type:CEEntityTargetModularEffectEvent
+      telegraphyEffects:
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - WhiteImpactEffectSheepPolymorph
+      effects:
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - WhiteImpactEffectSheepPolymorph
+      - !type:CESpellApplyEntityEffect
+        effects:
+        - !type:Polymorph
+          prototype: WhiteSheep
+
+- type: entity
+  id: WhiteRuneSheepPolymorph
+  parent: CEBaseMagicRune
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: PointLight
+    color: "#8532a8"
+  - type: Sprite
+    layers:
+    - state: sun
+      color: "#8532a8"
+      shader: unshaded
+    - state: double_outer
+      color: "#db35c8"
+      shader: unshaded
+
+- type: entity
+  id: WhiteImpactEffectSheepPolymorph
+  parent: CEBaseMagicImpact
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - state: particles_up
+      color: "#db35c8"
+      shader: unshaded

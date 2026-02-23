@@ -20,4 +20,8 @@ public enum WeaponArcAnimation : byte
     None,
     Thrust,
     Slash,
+    // WD EDIT START
+    WhiteSlash,
+    WhiteThrust
+    // WD EDIT END
 }

@@ -1,0 +1,39 @@
+﻿- type: reagent
+  id: WhiteAle
+  name: white-reagent-name-ale
+  parent: BaseAlcohol
+  desc: white-reagent-desc-white-ale
+  physicalDesc: reagent-physical-desc-bubbly
+  flavor: WhiteAle
+  color: "#663100"
+  recognizable: true
+  fizziness: 0.6
+  metabolisms:
+    Poison:
+      metabolismRate: 0.2
+      effects:
+      - !type:Emote
+        emote: Laugh
+        probability: 0.05
+  pricePerUnit: 0.1
+
+
+# Magic beer from spell, cost nothing
+- type: reagent
+  id: WhiteMagicBeer
+  name: white-reagent-name-bottomless
+  parent: BaseAlcohol
+  desc: white-reagent-desc-ale
+  physicalDesc: reagent-physical-desc-bubbly
+  flavor: WhiteBottomless
+  color: "#2d1914"
+  recognizable: true
+  metabolisms:
+    Drink:
+      effects:
+      - !type:SatiateThirst
+        factor: 2
+      - !type:AdjustReagent
+        reagent: WhiteAle
+        amount: 0.2
+  pricePerUnit: 0

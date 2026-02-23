@@ -1,0 +1,29 @@
+﻿- type: skill
+  id: AlchemyVision
+  skillUiPosition: 0, 0
+  tree: Craftsmanship
+  name: white-skill-alchemy-vision-name
+  desc: white-skill-alchemy-vision-desc
+  learnCost: 1
+  icon:
+    sprite: _CE/Clothing/Eyes/alchemy_glasses.rsi
+    state: icon
+  effects:
+  - !type:AddComponents
+    components:
+    - type: SolutionScanner
+
+- type: skill
+  id: TraderWit
+  skillUiPosition: 10, 0
+  tree: Craftsmanship
+  name: white-skill-trader-wit-name
+  desc: white-skill-trader-wit-desc
+  learnCost: 1
+  icon:
+    sprite: _CE/Objects/Materials/Currency/coin_pp.rsi
+    state: coin8
+  effects:
+  - !type:AddComponents
+    components:
+    - type: CEPriceScanner

@@ -1,0 +1,27 @@
+﻿# Entities that are entirely magical and can be destroyed by dispelling magic.
+- type: entity
+  id: WhiteSpectralBase
+  categories: [ ForkFiltered ]
+  abstract: true
+  components:
+  - type: Battery
+    maxEnergy: 1
+    startingCharge: 1
+  - type: CEEnergyAlert
+  - type: CEEnergyOverchargeDamage
+  - type: CEEnergyDeficitDamage
+  - type: Damageable
+    damageContainer: WhiteSpectral
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 10
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/eye_close.ogg
+          params:
+            volume: 6
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]

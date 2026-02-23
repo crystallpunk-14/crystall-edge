@@ -1,0 +1,86 @@
+﻿- type: entity
+  id: WhiteActionSpellLightningStrikeSmall
+  parent: CEActionSpellBase
+  name: Small lightning strike
+  description: You charge a lightning bolt that burns a medium amount of stamina from the target.
+  components:
+  - type: CEActionDoAfterSlowdown
+    speedMultiplier: 0.5
+  - type: CEActionManaCost
+    manaCost: 7
+  - type: CEActionDangerous
+  - type: Action
+    useDelay: 4
+    icon:
+      sprite: _White/Actions/Spells/electromancy.rsi
+      state: lightning_strike_small
+  - type: TargetAction
+    range: 3
+  - type: EntityTargetAction
+    canTargetSelf: false
+    event: !type:CEEntityTargetModularEffectEvent
+      effects:
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - WhiteElectrifiedEffect
+      - !type:SpellCreateBeam
+        beamProto: WhiteLightningStrikeSmallBeam
+      - !type:CESpellApplyEntityEffect
+        effects:
+        - !type:Jitter
+        - !type:WhiteStaminaChange
+          staminaDelta: -15
+        - !type:HealthChange
+          ignoreResistances: false
+          damage:
+            types:
+              Shock: 4
+      - !type:CESpellThrowFromUser
+        throwPower: 2
+        distance: 0.5
+
+- type: entity
+  name: lightning
+  id: WhiteLightningStrikeSmallBeam
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _White/Effects/Beams/lightning.rsi
+    drawdepth: Effects
+    layers:
+    - state: lightning_small
+      shader: unshaded
+  - type: Physics
+    canCollide: false
+  - type: PointLight
+    enabled: true
+    color: "#e8ff4c"
+    radius: 1.2
+    softness: 1
+    autoRot: true
+    castShadows: false
+  - type: Beam
+    sound:
+      collection: sparks
+  - type: TimedDespawn
+    lifetime: 1
+  - type: LightFade
+    duration: 1
+  - type: Tag
+    tags:
+    - HideContextMenu
+  - type: WhiteSpellEffectOnCollide
+    effects:
+    - !type:CESpellSpawnEntityOnTarget
+      spawns:
+      - WhiteElectrifiedEffect
+    - !type:CESpellApplyEntityEffect
+      effects:
+      - !type:HealthChange
+        ignoreResistances: false
+        damage:
+          types:
+            Shock: 2
+      - !type:Jitter
+      - !type:WhiteStaminaChange
+        staminaDelta: -8

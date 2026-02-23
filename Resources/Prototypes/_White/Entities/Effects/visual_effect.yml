@@ -1,0 +1,18 @@
+﻿- type: entity
+  id: WhiteElectrifiedEffect
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    sprite: Effects/electricity.rsi
+    drawdepth: Effects
+    layers:
+    - state: electrified
+      shader: unshaded
+  - type: Physics
+    canCollide: false
+  - type: TimedDespawn
+    lifetime: 2
+  - type: Tag
+    tags:
+    - HideContextMenu

@@ -1,0 +1,92 @@
+﻿- type: entity
+  id: WhiteActionSpellFlashLight
+  parent: CEActionSpellBase
+  name: Flash Light
+  description: Creates a flash of bright, blinding light.
+  components:
+  - type: CEActionManaCost
+    manaCost: 10
+  - type: CEActionSpeaking
+    startSpeech: "Lux clara..."
+    endSpeech: "excaecant inimicos meos"
+  - type: CEActionDoAfterVisuals
+    proto: WhiteRuneFlashLight
+  - type: DoAfterArgs
+    delay: 0.5
+    breakOnDamage: true
+  - type: Action
+    useDelay: 6
+    icon:
+      sprite: _White/Actions/Spells/illusion.rsi
+      state: flash_light
+  - type: TargetAction
+    range: 10
+  - type: WorldTargetAction
+    event: !type:CEWorldTargetModularEffectEvent
+      telegraphyEffects:
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - WhiteImpactEffectFlashLight
+      effects:
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - WhiteSpawnEffectFlashLight
+
+- type: entity
+  id: WhiteRuneFlashLight
+  parent: CEBaseMagicRune
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: PointLight
+    color: "#efedff"
+  - type: Sprite
+    layers:
+    - state: sun
+      color: "#efedff"
+      shader: unshaded
+
+- type: entity
+  id: WhiteImpactEffectFlashLight
+  parent: CEBaseMagicImpact
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    layers:
+    - state: particles_up
+      color: "#efedff"
+      shader: unshaded
+
+- type: entity
+  id: WhiteSpawnEffectFlashLight
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/goldbikehorn.rsi
+    visible: false
+    state: icon
+  - type: TriggerOnSpawn
+  - type: TimedDespawn
+    lifetime: 5
+  - type: FlashOnTrigger
+    range: 4
+    duration: 4
+  - type: SpawnOnTrigger
+    proto: WhiteSpellFlashEffect
+
+- type: entity
+  id: WhiteSpellFlashEffect
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: PointLight
+    enabled: true
+    radius: 5
+    energy: 14
+    netsync: false
+  - type: LightFade
+    duration: 0.5
+  - type: TimedDespawn
+    lifetime: 0.5

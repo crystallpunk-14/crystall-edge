@@ -1,0 +1,70 @@
+﻿- type: entity
+  id: WhiteActionSpellSpeedBallade
+  parent: CEActionSpellBase
+  name: Speed ballade
+  description: Your music is filled with accelerating magic, speeding up the movement of all creatures nearby
+  components:
+  - type: CEActionDoAfterSlowdown
+    speedMultiplier: 1
+  - type: CEActionManaCost
+    manaCost: 1
+  - type: DoAfterArgs
+    hidden: true
+    repeat: true
+    delay: 1
+  - type: CEActionRequiredMusicTool
+  - type: CEActionDoAfterVisuals
+    proto: WhiteRuneSpeedBallade
+  - type: Action
+    useDelay: 15
+    icon:
+      sprite: _White/Actions/Spells/electromancy.rsi
+      state: speed_music
+  - type: InstantAction
+    event: !type:CEInstantModularEffectEvent
+      effects:
+      - !type:CESpellArea
+        affectCaster: true
+        range: 5
+        maxTargets: 4
+        whitelist:
+          components:
+          - MobState
+        effects:
+        - !type:CESpellSpawnEntityOnTarget
+          spawns:
+          - WhiteImpactEffectSpeedBallade
+        - !type:CESpellApplyEntityEffect
+          effects:
+          - !type:MovementSpeedModifier
+            walkSpeedModifier: 1.2
+            sprintSpeedModifier: 1.2
+            statusLifetime: 1.8
+
+- type: entity
+  id: WhiteImpactEffectSpeedBallade
+  parent: CEBaseMagicImpact
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    sprite: _White/Effects/music.rsi
+    layers:
+    - state: notes_5
+      color: "#e8cb56"
+      shader: unshaded
+
+- type: entity
+  id: WhiteRuneSpeedBallade
+  parent: CEBaseMagicRune
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: PointLight
+    color: "#e8cb56"
+  - type: Sprite
+    sprite: _White/Effects/music.rsi
+    layers:
+    - state: notes_3
+      color: "#e8cb56"
+      shader: unshaded

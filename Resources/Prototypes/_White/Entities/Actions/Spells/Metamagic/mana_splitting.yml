@@ -1,0 +1,76 @@
+﻿- type: entity
+  id: WhiteActionSpellMagicSplitting
+  parent: CEActionSpellBase
+  name: Magic splitting
+  description: You destroy the very essence of magic, interrupting spell casts, destroying mana and more.
+  components:
+  - type: CEActionDoAfterSlowdown
+    speedMultiplier: 0.7
+  - type: CEActionManaCost
+    manaCost: 10
+  - type: DoAfterArgs
+    delay: 1
+    repeat: true
+    breakOnMove: true
+    breakOnDamage: true
+  - type: CEActionDoAfterVisuals
+    proto: WhiteRuneMagicSplitting
+  - type: Action
+    useDelay: 15
+    icon:
+      sprite: _White/Actions/Spells/metamagic.rsi
+      state: counter_spell
+  - type: TargetAction
+    range: 5
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - Battery
+    event: !type:CEEntityTargetModularEffectEvent
+      effects:
+      - !type:WhiteSpellMixSolution
+        reactionTypes:
+        - WhiteMagicSplitting
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - WhiteImpactEffectMagicSplitting
+      - !type:CESpellApplyEntityEffect
+        effects:
+        - !type:WhiteChargeChange
+          chargeDelta: -5
+          safe: false
+
+- type: entity
+  id: WhiteRuneMagicSplitting
+  parent: CEBaseMagicRune
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: PointLight
+    color: "#601fc2"
+  - type: Sprite
+    layers:
+    - state: medium_circle
+      color: "#601fc2"
+      shader: unshaded
+
+- type: entity
+  id: WhiteImpactEffectMagicSplitting
+  parent: CEBaseMagicImpact
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    sprite: Effects/electricity.rsi
+    layers:
+    - state: electrified
+      color: "#601fc2"
+      shader: unshaded
+  - type: PointLight
+    color: "#601fc2"
+    enabled: true
+    radius: 2
+    energy: 2
+    netsync: false
+  - type: LightFade
+    duration: 1

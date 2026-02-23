@@ -1,6 +1,7 @@
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Body.Events;
 using Content.Shared.Damage.Events;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Gravity;
 using Content.Shared.Mobs.Events;
 using Content.Shared.Movement.Events;
@@ -43,6 +44,10 @@ public sealed partial class StatusEffectsSystem
         SubscribeLocalEvent<StatusEffectContainerComponent, AccentGetEvent>(RelayStatusEffectEvent);
 
         SubscribeLocalEvent<StatusEffectContainerComponent, BleedModifierEvent>(RefRelayStatusEffectEvent);
+
+        // WD EDIT START
+        SubscribeLocalEvent<StatusEffectContainerComponent, DamageModifyEvent>(RelayStatusEffectEvent);
+        // WD EDIT END
     }
 
     private void RefRelayStatusEffectEvent<T>(EntityUid uid, StatusEffectContainerComponent component, ref T args) where T : struct

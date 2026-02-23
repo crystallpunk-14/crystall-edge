@@ -1,0 +1,96 @@
+﻿# T1
+
+- type: skill
+  id: HealingT1
+  skillUiPosition: 1, 0
+  tree: Healing
+  name: white-skill-healing-t1-name
+  learnCost: 0.5
+  icon:
+    sprite: _White/Interface/Skills/basic.rsi
+    state: healing
+
+- type: skill
+  id: HealingAirSaturation
+  skillUiPosition: 0, 6
+  tree: Healing
+  icon:
+    sprite: _White/Actions/Spells/healing.rsi
+    state: air_saturation
+  effects:
+  - !type:AddAction
+    action: WhiteActionAirSaturation
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: HealingT1
+
+- type: skill
+  id: HealingBloodPurification
+  skillUiPosition: 2, 6
+  tree: Healing
+  icon:
+    sprite: _White/Actions/Spells/healing.rsi
+    state: cure_poison
+  effects:
+  - !type:AddAction
+    action: WhiteActionSpellBloodPurification
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: HealingT1
+
+- type: skill
+  id: HealingSheepPolymorph
+  skillUiPosition: 0, 4
+  tree: Healing
+  icon:
+    sprite: _White/Actions/Spells/misc.rsi
+    state: polymorph
+  effects:
+  - !type:AddAction
+    action: WhiteActionSpellSheepPolymorph
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: HealingT1
+
+# T2
+
+- type: skill
+  id: HealingT2
+  skillUiPosition: 7, 0
+  tree: Healing
+  name: white-skill-healing-t2-name
+  learnCost: 0.5
+  icon:
+    sprite: _White/Interface/Skills/basic.rsi
+    state: healing2
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: HealingT1
+
+- type: skill
+  id: HealingCureBurn
+  skillUiPosition: 6, 4
+  tree: Healing
+  icon:
+    sprite: _White/Actions/Spells/healing.rsi
+    state: cure_burn
+  effects:
+  - !type:AddAction
+    action: WhiteActionSpellCureBurn
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: HealingT2
+
+- type: skill
+  id: HealingCureWounds
+  skillUiPosition: 6, 6
+  tree: Healing
+  icon:
+    sprite: _White/Actions/Spells/healing.rsi
+    state: cure_wounds
+  effects:
+  - !type:AddAction
+    action: WhiteActionSpellCureWounds
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: HealingT2

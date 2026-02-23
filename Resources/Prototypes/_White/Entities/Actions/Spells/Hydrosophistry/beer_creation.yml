@@ -1,0 +1,79 @@
+﻿- type: entity
+  id: WhiteActionSpellBeerCreation
+  parent: CEActionSpellBase
+  name: Beer creation
+  description: A secret spell that materializes beer from pure mana.
+  components:
+  - type: Sprite
+    sprite: _White/Actions/Spells/hydrosophistry.rsi
+    state: beer_creation
+  - type: CEActionManaCost
+    manaCost: 20
+  - type: CEActionSpeaking
+    startSpeech: "beer..."
+    endSpeech: "Arriva la birra"
+  - type: CEActionFreeHandsRequired
+  - type: CEActionDoAfterVisuals
+    proto: RuneBeerCreation
+  - type: Action
+    useDelay: 10
+    icon:
+      sprite: _White/Actions/Spells/hydrosophistry.rsi
+      state: beer_creation
+  - type: DoAfterArgs
+    delay: 1
+  - type: InstantAction
+    event: !type:CEInstantModularEffectEvent
+      effects:
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - WhiteImpactEffectBeerCreation
+      - !type:CESpellSpawnInHandEntity
+        spawns:
+        - WhiteLiquidDropBeer
+
+- type: entity
+  id: WhiteRuneBeerCreation
+  parent: CEBaseMagicRune
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: PointLight
+    color: "#5eabeb"
+  - type: Sprite
+    layers:
+    - state: medium_line
+      color: "#9e522c"
+      shader: unshaded
+    - state: medium_circle
+      color: "#5eabeb"
+      shader: unshaded
+
+- type: entity
+  id: WhiteLiquidDropBeer
+  parent: CELiquidDropWater
+  categories: [ ForkFiltered ]
+  suffix: Beer
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drop:
+        maxVol: 10
+        reagents:
+        - ReagentId: MagicBeer
+          Quantity: 10
+
+- type: entity
+  id: WhiteImpactEffectBeerCreation
+  parent: CEBaseMagicImpact
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    layers:
+    - state: particles_up
+      color: "#5eabeb"
+      shader: unshaded
+    - state: particles_down
+      color: "#9e522c"
+      shader: unshaded

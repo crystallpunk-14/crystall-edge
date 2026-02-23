@@ -1,0 +1,67 @@
+﻿- type: entity
+  id: WhiteActionSpellIceShards
+  parent: CEActionSpellBase
+  name: Ice Shards
+  description: Fast ice needles, for rapid shooting of targets.
+  components:
+  - type: Sprite
+    sprite: _White/Actions/Spells/hydrosophistry.rsi
+    state: ice_shards
+  - type: CEActionManaCost
+    manaCost: 5
+  - type: CEActionSpeaking
+    endSpeech: "Glacies acus!"
+  - type: CEActionDangerous
+  - type: Action
+    useDelay: 0.5
+    icon:
+      sprite: _White/Actions/Spells/hydrosophistry.rsi
+      state: ice_shards
+  - type: TargetAction
+    repeat: true
+    checkCanAccess: false
+    range: 60
+  - type: WorldTargetAction
+    event: !type:CEWorldTargetModularEffectEvent
+      effects:
+      - !type:CESpellProjectile
+        prototype: WhiteIceShard
+      - !type:CESpellSpawnEntityOnUser
+        spawns:
+        - WhiteImpactEffectWaterCreation
+
+- type: entity
+  id: WhiteRuneIceShards
+  parent: CEBaseMagicRune
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: PointLight
+    color: "#5eabeb"
+  - type: Sprite
+    layers:
+    - state: double_outer
+      color: "#5eabeb"
+      shader: unshaded
+
+- type: entity
+  id: WhiteIceShard
+  parent: BaseBullet
+  name: ice shard
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: PointLight
+    color: "#5eabeb"
+    radius: 1.1
+    energy: 1.0
+  - type: Projectile
+    damage:
+      types:
+        Cold: 5
+        Piercing: 2.5
+  - type: Sprite
+    sprite: _White/Effects/Magic/ice_shard.rsi
+    layers:
+    - state: shard
+      shader: unshaded

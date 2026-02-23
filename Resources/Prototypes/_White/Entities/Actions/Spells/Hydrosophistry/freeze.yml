@@ -1,0 +1,71 @@
+﻿- type: entity
+  id: WhiteActionSpellFreeze
+  parent: CEActionSpellBase
+  name: Freeze
+  description: You begin to severely cool down the target, slowing its movement speed.
+  components:
+  - type: CEActionDoAfterSlowdown
+    speedMultiplier: 0.8
+  - type: CEActionManaCost
+    manaCost: 7
+  - type: CEActionSpeaking
+    startSpeech: "Vos adepto frigus..."
+  - type: CEActionDoAfterVisuals
+    proto: WhiteRunePlantFreeze
+  - type: CEActionDangerous
+  - type: DoAfterArgs
+    repeat: true
+    breakOnDamage: true
+    delay: 1.5
+    distanceThreshold: 5
+  - type: Action
+    useDelay: 15
+    icon:
+      sprite: _White/Actions/Spells/hydrosophistry.rsi
+      state: freeze
+  - type: TargetAction
+    range: 5
+    interactOnMiss: false
+  - type: EntityTargetAction
+    event: !type:CEEntityTargetModularEffectEvent
+      effects:
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - WhiteImpactEffectFreeze
+      - !type:WhiteAdjustAllSolutionThermalEnergy
+        delta: -1200 # One full use cools 100u from ~300k to ~250k
+      - !type:CESpellApplyEntityEffect
+        effects:
+        - !type:MovementSpeedModifier
+          walkSpeedModifier: 0.5
+          sprintSpeedModifier: 0.5
+          statusLifetime: 2
+        - !type:AdjustTemperature
+          amount: -12000
+        - !type:Extinguish
+
+- type: entity
+  id: WhiteImpactEffectFreeze
+  parent: CEBaseMagicImpact
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    layers:
+    - state: circle_decrease
+      color: "#5eabeb"
+      shader: unshaded
+
+- type: entity
+  id: WhiteRunePlantFreeze
+  parent: CEBaseMagicRune
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: PointLight
+    color: "#5eabeb"
+  - type: Sprite
+    layers:
+    - state: medium_circle
+      color: "#5eabeb"
+      shader: unshaded

@@ -1,0 +1,61 @@
+﻿- type: entity
+  id: WhiteActionSpellKick
+  parent: CEActionSpellBase
+  name: Kick
+  description: You perform an epic leg kick at your chosen object, pushing it away from you.
+  components:
+  - type: CEActionDoAfterSlowdown
+    speedMultiplier: 0.4
+  - type: CEActionStaminaCost
+    stamina: 40
+  - type: CEActionEmoting
+    startEmote: white-kick-emote-start
+    endEmote: white-kick-emote
+  - type: CEActionDangerous
+  - type: DoAfterArgs
+    breakOnHandChange: false
+    distanceThreshold: 1.5
+    delay: 0.5
+  - type: Action
+    useDelay: 5
+    sound: null
+    icon:
+      sprite: _White/Actions/Spells/athletic.rsi
+      state: kick
+  - type: TargetAction
+    range: 1
+  - type: EntityTargetAction
+    canTargetSelf: false
+    whitelist:
+      components:
+      - Body
+      - Item
+      - Anchorable
+    event: !type:CEEntityTargetModularEffectEvent
+      effects:
+      - !type:WhiteSpellKnockdown
+      - !type:CESpellThrowFromUser
+        distance: 1.5
+        throwPower: 5
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - WhiteDustEffectKickSound
+      - !type:CESpellApplyEntityEffect
+        effects:
+        - !type:HealthChange
+          ignoreResistances: false
+          damage:
+            types:
+              Blunt: 5
+
+- type: entity
+  id: WhiteDustEffectKickSound
+  parent: CEDustEffect
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: EmitSoundOnSpawn
+    sound: !type:SoundPathSpecifier
+      path: /Audio/Effects/hit_kick.ogg
+      params:
+        pitch: 1

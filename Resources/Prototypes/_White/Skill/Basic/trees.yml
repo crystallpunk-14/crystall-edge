@@ -1,0 +1,48 @@
+﻿- type: skillTree
+  id: Athletic
+  name: white-skill-tree-athletic-name
+  desc: white-skill-tree-athletic-desc
+  skillType: Memory
+  color: "#8bdb7f"
+
+- type: skillTree
+  id: Craftsmanship
+  name: white-skill-tree-craftsmanship-name
+  desc: white-skill-tree-craftsmanship-desc
+  skillType: Memory
+  color: "#a04b00"
+
+- type: skillTree
+  id: Electromancy
+  name: white-skill-tree-electromancy-name
+  desc: white-skill-tree-electromancy-desc
+  skillType: Memory
+  color: "#e8ff4c"
+
+- type: skillTree
+  id: Healing
+  name: white-skill-tree-healing-name
+  desc: white-skill-tree-healing-desc
+  skillType: Memory
+  color: "#51cf72"
+
+- type: skillTree
+  id: Hydrosophistry
+  name: white-skill-tree-hydrosophistry-name
+  desc: white-skill-tree-hydrosophistry-desc
+  skillType: Memory
+  color: "#1554a1"
+
+- type: skillTree
+  id: Illusion
+  name: white-skill-tree-illusion-name
+  desc: white-skill-tree-illusion-desc
+  skillType: Memory
+  color: "#f55faf"
+
+- type: skillTree
+  id: Metamagic
+  name: white-skill-tree-metamagic-name
+  desc: white-skill-tree-metamagic-desc
+  skillType: Memory
+  color: "#56e5f5"

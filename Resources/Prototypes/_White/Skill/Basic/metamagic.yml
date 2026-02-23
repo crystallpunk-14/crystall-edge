@@ -1,0 +1,189 @@
+# T1
+
+- type: skill
+  id: MetamagicT1
+  skillUiPosition: 1, 0
+  tree: Metamagic
+  name: white-skill-metamagic-t1-name
+  learnCost: 0.5
+  icon:
+    sprite: _White/Interface/Skills/basic.rsi
+    state: metamagic
+  effects:
+  - !type:WhiteAddMaxCharge
+    additionalCharge: 25
+
+- type: skill
+  id: MetamagicManaGift
+  skillUiPosition: 0, 2
+  learnCost: 0.5
+  tree: Metamagic
+  icon:
+    sprite: _White/Actions/Spells/metamagic.rsi
+    state: mana_gift
+  effects:
+  - !type:AddAction
+    action: WhiteActionSpellManaGift
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: MetamagicT1
+
+- type: skill
+  id: MetamagicManaGiftElf
+  skillUiPosition: 0, 4
+  learnCost: 0
+  tree: Metamagic
+  icon:
+    sprite: _White/Actions/Spells/metamagic.rsi
+    state: mana_gift
+  effects:
+  - !type:ReplaceAction
+    oldAction: WhiteActionSpellManaGift
+    newAction: WhiteActionSpellManaGiftElf
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: MetamagicManaGift
+  - !type:SpeciesWhitelist
+    species: CEElf
+
+- type: skill
+  id: MetamagicManaConsume
+  skillUiPosition: 2, 2
+  learnCost: 0.5
+  tree: Metamagic
+  icon:
+    sprite: _White/Actions/Spells/metamagic.rsi
+    state: mana_consume
+  effects:
+  - !type:AddAction
+    action: WhiteActionSpellManaConsume
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: MetamagicT1
+
+- type: skill
+  id: MetamagicManaConsumeElf
+  skillUiPosition: 2, 4
+  learnCost: 0
+  tree: Metamagic
+  icon:
+    sprite: _White/Actions/Spells/metamagic.rsi
+    state: mana_consume
+  effects:
+  - !type:ReplaceAction
+    oldAction: WhiteActionSpellManaConsume
+    newAction: WhiteActionSpellManaConsumeElf
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: MetamagicManaConsume
+  - !type:SpeciesWhitelist
+    species: CEElf
+
+- type: skill
+  id: MetamagicMagicBallade
+  skillUiPosition: 1, 6
+  tree: Metamagic
+  icon:
+    sprite: _White/Actions/Spells/metamagic.rsi
+    state: magic_music
+  effects:
+  - !type:AddAction
+    action: WhiteActionSpellMagicBallade
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: MetamagicT1
+
+# T2
+
+- type: skill
+  id: MetamagicT2
+  skillUiPosition: 7, 0
+  tree: Metamagic
+  name: white-skill-metamagic-t2-name
+  learnCost: 0.5
+  icon:
+    sprite: _White/Interface/Skills/basic.rsi
+    state: metamagic2
+  effects:
+  - !type:WhiteAddMaxCharge
+    additionalCharge: 25
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: MetamagicT1
+
+- type: skill
+  id: MetamagicMagicSplitting
+  skillUiPosition: 6, 2
+  tree: Metamagic
+  icon:
+    sprite: _White/Actions/Spells/metamagic.rsi
+    state: counter_spell
+  effects:
+  - !type:AddAction
+    action: WhiteActionSpellMagicSplitting
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: MetamagicT2
+
+- type: skill
+  id: MetamagicManaTrance
+  skillUiPosition: 8, 2
+  learnCost: 0
+  tree: Metamagic
+  icon:
+    sprite: _White/Actions/Spells/metamagic.rsi
+    state: mana_trance
+  effects:
+  - !type:AddAction
+    action: WhiteActionSpellManaTrance
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: MetamagicT2
+  - !type:SpeciesWhitelist
+    species: CEElf
+
+- type: skill
+  id: MetamagicMagicVision
+  skillUiPosition: 6, 4
+  tree: Metamagic
+  icon:
+    sprite: _White/Actions/Spells/metamagic.rsi
+    state: magic_vision
+  effects:
+  - !type:AddAction
+    action: WhiteActionToggleMagicVision
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: MetamagicT2
+
+- type: skill
+  id: MetamagicMagicArmor
+  skillUiPosition: 8, 4
+  tree: Metamagic
+  icon:
+    sprite: _White/Actions/Spells/metamagic.rsi
+    state: magic_armor
+  effects:
+  - !type:AddAction
+    action: WhiteActionSpellMagicArmor
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: MetamagicT2
+
+# T3
+
+- type: skill
+  id: MetamagicT3
+  skillUiPosition: 13, 0
+  tree: Metamagic
+  name: white-skill-metamagic-t3-name
+  learnCost: 0.5
+  icon:
+    sprite: _White/Interface/Skills/basic.rsi
+    state: metamagic3
+  effects:
+  - !type:WhiteAddMaxCharge
+    additionalCharge: 25
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: MetamagicT2

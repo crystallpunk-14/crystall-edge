@@ -1,0 +1,71 @@
+﻿- type: entity
+  id: WhiteActionSpellPeaceBallade
+  parent: CEActionSpellBase
+  name: Peace ballade
+  description: Your music is filled with peaceful magic, forbidding anyone near you to fight.
+  components:
+  - type: CEActionDoAfterSlowdown
+    speedMultiplier: 0.8
+  - type: CEActionManaCost
+    manaCost: 2
+  - type: DoAfterArgs
+    hidden: true
+    repeat: true
+    delay: 1
+  - type: CEActionRequiredMusicTool
+  - type: CEActionDoAfterVisuals
+    proto: WhiteRunePeaceBallade
+  - type: Action
+    sound: null
+    icon:
+      sprite: _White/Actions/Spells/illusion.rsi
+      state: peace_music
+  - type: InstantAction
+    event: !type:CEInstantModularEffectEvent
+      effects:
+      - !type:CESpellArea
+        range: 4
+        maxTargets: 8
+        affectCaster: true
+        whitelist:
+          components:
+          - MobState
+        effects:
+        - !type:CESpellSpawnEntityOnTarget
+          spawns:
+          - WhiteImpactEffectPeaceBallade
+        - !type:CESpellApplyEntityEffect
+          effects:
+          - !type:GenericStatusEffect
+            key: Pacified
+            component: Pacified
+            type: Add
+            time: 1.8
+
+- type: entity
+  id: WhiteImpactEffectPeaceBallade
+  parent: CEBaseMagicImpact
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    sprite: _White/Effects/music.rsi
+    layers:
+    - state: notes_5
+      color: "#bd4fda"
+      shader: unshaded
+
+- type: entity
+  id: WhiteRunePeaceBallade
+  parent: CEBaseMagicRune
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: PointLight
+    color: "#bd4fda"
+  - type: Sprite
+    sprite: _White/Effects/music.rsi
+    layers:
+    - state: notes_3
+      color: "#bd4fda"
+      shader: unshaded

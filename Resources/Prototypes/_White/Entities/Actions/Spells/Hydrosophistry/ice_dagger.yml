@@ -1,0 +1,65 @@
+﻿- type: entity
+  id: WhiteActionSpellIceDagger
+  parent: CEActionSpellBase
+  name: Ice dagger
+  description: You form an icy sharp dagger that will do for temporary use.
+  components:
+  - type: CEActionManaCost
+    manaCost: 25
+  - type: CEActionSpeaking
+    startSpeech: "Un pittore sulla..."
+    endSpeech: "soglia della mano"
+  - type: CEActionFreeHandsRequired
+  - type: CEActionDoAfterVisuals
+    proto: WhiteRuneWaterCreation
+  - type: DoAfterArgs
+    delay: 0.5
+  - type: Action
+    useDelay: 5
+    icon:
+      sprite: _White/Actions/Spells/hydrosophistry.rsi
+      state: ice_dagger
+  - type: InstantAction
+    event: !type:CEInstantModularEffectEvent
+      effects:
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - WhiteImpactEffectWaterCreation
+      - !type:CESpellSpawnInHandEntity
+        spawns:
+        - WhiteWeaponDaggerIce
+
+- type: entity
+  name: ice dagger
+  id: WhiteWeaponDaggerIce
+  parent: CEBaseWeaponDagger
+  description: A sharp ice dagger, not very durable but can temporarily replace real weapons.
+  components:
+  - type: Sprite
+    sprite: _White/Objects/Weapons/Melee/Dagger/ice.rsi
+    state: icon
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 3
+        Piercing: 3
+        Cold: 4
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Slash: 3
+        Piercing: 3
+        Cold: 4
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 20
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: TimedDespawn
+    lifetime: 60

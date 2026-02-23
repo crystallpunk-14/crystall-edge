@@ -1,0 +1,113 @@
+# T1
+
+- type: skill
+  id: HydrosophistryT1
+  skillUiPosition: 1, 0
+  tree: Hydrosophistry
+  name: white-skill-hydrosophistry-t1-name
+  learnCost: 0.5
+  icon:
+    sprite: _White/Interface/Skills/basic.rsi
+    state: hydrosophistry
+
+- type: skill
+  id: HydrosophistryWaterCreation
+  skillUiPosition: 1, 4
+  tree: Hydrosophistry
+  icon:
+    sprite: _White/Actions/Spells/hydrosophistry.rsi
+    state: water_creation
+  effects:
+  - !type:AddAction
+    action: WhiteActionSpellWaterCreation
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: HydrosophistryT1
+
+- type: skill
+  id: HydrosophistryBeerCreation
+  skillUiPosition: 1, 8
+  tree: Hydrosophistry
+  learnCost: 0
+  icon:
+    sprite: _White/Actions/Spells/hydrosophistry.rsi
+    state: beer_creation
+  effects:
+  - !type:AddAction
+    action: WhiteActionSpellBeerCreation
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: HydrosophistryWaterCreation
+  - !type:SpeciesWhitelist
+    species: CP14Dwarf
+
+- type: skill
+  id: HydrosophistryIceDagger
+  skillUiPosition: 0, 6
+  tree: Hydrosophistry
+  icon:
+    sprite: _White/Actions/Spells/hydrosophistry.rsi
+    state: ice_dagger
+  effects:
+  - !type:AddAction
+    action: WhiteActionSpellIceDagger
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: HydrosophistryT1
+
+- type: skill
+  id: HydrosophistryIceArrow
+  skillUiPosition: 2, 6
+  tree: Hydrosophistry
+  icon:
+    sprite: _White/Actions/Spells/hydrosophistry.rsi
+    state: ice_arrow
+  effects:
+  - !type:AddAction
+    action: WhiteActionSpellIceArrow
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: HydrosophistryT1
+
+# T2
+
+- type: skill
+  id: HydrosophistryT2
+  skillUiPosition: 7, 0
+  tree: Hydrosophistry
+  name: white-skill-hydrosophistry-t2-name
+  learnCost: 0.5
+  icon:
+    sprite: _White/Interface/Skills/basic.rsi
+    state: hydrosophistry2
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: HydrosophistryT1
+
+- type: skill
+  id: HydrosophistryFreeze
+  skillUiPosition: 6, 4
+  tree: Hydrosophistry
+  icon:
+    sprite: _White/Actions/Spells/hydrosophistry.rsi
+    state: freeze
+  effects:
+  - !type:AddAction
+    action: WhiteActionSpellFreeze
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: HydrosophistryT2
+
+- type: skill
+  id: HydrosophistryIceShards
+  skillUiPosition: 8, 4
+  tree: Hydrosophistry
+  icon:
+    sprite: _White/Actions/Spells/hydrosophistry.rsi
+    state: ice_shards
+  effects:
+  - !type:AddAction
+    action: WhiteActionSpellIceShards
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: HydrosophistryT2

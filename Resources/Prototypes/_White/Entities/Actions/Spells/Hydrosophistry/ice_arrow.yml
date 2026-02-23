@@ -1,0 +1,61 @@
+﻿- type: entity
+  id: WhiteActionSpellIceArrow
+  parent: CEActionSpellBase
+  name: Ice arrow
+  description: You create a temporary sharp ice arrow that can be used as a disposable bow projectile.
+  components:
+  - type: CEActionManaCost
+    manaCost: 7
+  - type: CEActionSpeaking
+    startSpeech: "Sagitta glaciei..."
+    endSpeech: "in manu mea"
+  - type: CEActionFreeHandsRequired
+  - type: CEActionDoAfterVisuals
+    proto: WhiteRuneWaterCreation
+  - type: DoAfterArgs
+    delay: 0.5
+  - type: Action
+    useDelay: 5
+    icon:
+      sprite: _White/Actions/Spells/hydrosophistry.rsi
+      state: ice_arrow
+  - type: InstantAction
+    event: !type:CEInstantModularEffectEvent
+      effects:
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - WhiteImpactEffectWaterCreation
+      - !type:CESpellSpawnInHandEntity
+        spawns:
+        - WhiteIceArrow
+
+- type: entity
+  id: WhiteIceArrow
+  parent: WhiteArrowBase
+  name: ice arrow
+  description: A sharp ice arrow created with magic. It melts and will soon disappear, but you can shoot it once with your bow.
+  components:
+  - type: Sprite
+    sprite: _White/Objects/Weapons/Ranged/Projectiles/ice_arrow.rsi
+    layers:
+    - state: icon
+    - state: solution1
+      map: ["enum.SolutionContainerLayers.Fill"]
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 15
+        Cold: 5
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 10
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: TimedDespawn
+    lifetime: 240

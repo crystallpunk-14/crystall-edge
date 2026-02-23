@@ -1,0 +1,63 @@
+﻿- type: entity
+  id: WhiteActionSpellSphereOfLight
+  parent: CEActionSpellBase
+  name: Sphere of Light
+  description: Materialization of a bright and safe light source.
+  components:
+  - type: CEActionManaCost
+    manaCost: 10
+  - type: CEActionSpeaking
+    startSpeech: "Appare in manu tua..."
+    endSpeech: "sphaera lucis"
+  - type: CEActionFreeHandsRequired
+  - type: CEActionDoAfterVisuals
+    proto: WhiteRuneSphereOfLight
+  - type: Action
+    useDelay: 30
+    icon:
+      sprite: _White/Actions/Spells/illusion.rsi
+      state: sphere_of_light
+  - type: DoAfterArgs
+    delay: 0.5
+  - type: TargetAction
+    range: 5
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - MobState
+      - Item
+      - Anchorable
+    event: !type:CEEntityTargetModularEffectEvent
+      effects:
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - WhiteImpactEffectSphereOfLight
+      - !type:CESpellApplyStatusEffect
+        statusEffect: CEStatusEffectGlowing
+        duration: 120
+
+- type: entity
+  id: WhiteRuneSphereOfLight
+  parent: CEBaseMagicRune
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: PointLight
+    color: "#efedff"
+  - type: Sprite
+    layers:
+    - state: sun
+      color: "#efedff"
+      shader: unshaded
+
+- type: entity
+  id: WhiteImpactEffectSphereOfLight
+  parent: CEBaseMagicImpact
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    layers:
+    - state: particles_up
+      color: "#efedff"
+      shader: unshaded

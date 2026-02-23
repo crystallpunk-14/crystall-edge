@@ -1,0 +1,83 @@
+# T1
+
+- type: skill
+  id: IllusionT1
+  skillUiPosition: 1, 0
+  tree: Illusion
+  name: white-skill-illusion-t1-name
+  learnCost: 0.5
+  icon:
+    sprite: _White/Interface/Skills/basic.rsi
+    state: illusion
+
+- type: skill
+  id: IllusionSphereOfLight
+  skillUiPosition: 0, 4
+  tree: Illusion
+  icon:
+    sprite: _White/Actions/Spells/illusion.rsi
+    state: sphere_of_light
+  effects:
+  - !type:AddAction
+    action: WhiteActionSpellSphereOfLight
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: IllusionT1
+
+- type: skill
+  id: CIllusionSearchOfLife
+  skillUiPosition: 2, 4
+  learnCost: 1
+  tree: Illusion
+  icon:
+    sprite: _White/Actions/Spells/illusion.rsi
+    state: search_of_life
+  effects:
+  - !type:AddAction
+    action: WhiteActionSpellSearchOfLife
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: IllusionT1
+
+# T2
+
+- type: skill
+  id: IllusionT2
+  skillUiPosition: 7, 0
+  tree: Illusion
+  name: white-skill-illusion-t2-name
+  learnCost: 0.5
+  icon:
+    sprite: _White/Interface/Skills/basic.rsi
+    state: illusion2
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: IllusionT1
+
+- type: skill
+  id: IllusionFlashLight
+  skillUiPosition: 6, 4
+  tree: Illusion
+  icon:
+    sprite: _White/Actions/Spells/illusion.rsi
+    state: flash_light
+  effects:
+  - !type:AddAction
+    action: WhiteActionSpellFlashLight
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: IllusionT2
+
+- type: skill
+  id: IllusionPeaceBallade
+  skillUiPosition: 8, 4
+  tree: Illusion
+  icon:
+    sprite: _White/Actions/Spells/illusion.rsi
+    state: peace_music
+  effects:
+  - !type:AddAction
+    action: WhiteActionSpellPeaceBallade
+  restrictions:
+  - !type:NeedPrerequisite
+    prerequisite: IllusionT2

@@ -1,0 +1,57 @@
+﻿- type: entity
+  id: WhiteActionSpellSecondWind
+  parent:
+  - CEActionSpellBase
+  - BaseMentalAction
+  name: Second wind
+  description: Through pain and blood, you find a second wind, instantly restoring your stamina.
+  components:
+  - type: Action
+    useDelay: 10
+    sound: null
+    icon:
+      sprite: _White/Actions/Spells/athletic.rsi
+      state: second_wind
+  - type: InstantAction
+    event: !type:CEInstantModularEffectEvent
+      effects:
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - WhiteImpactEffectSecondWind
+      - !type:CESpellApplyEntityEffect
+        effects:
+        - !type:Jitter
+        - !type:MovementSpeedModifier
+          walkSpeedModifier: 1.15
+          sprintSpeedModifier: 1.15
+          statusLifetime: 2
+        - !type:WhiteStaminaChange
+          staminaDelta: 100
+        - !type:HealthChange
+          damage:
+            types:
+              Blunt: 20
+        - !type:ModifyStatusEffect
+          effectProto: StatusEffectStunned
+          time: 6
+          type: Remove
+
+- type: entity
+  id: WhiteImpactEffectSecondWind
+  parent: CEBaseMagicImpact
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    layers:
+    - state: circle_increase
+      color: "#b30713"
+      shader: unshaded
+  - type: EmitSoundOnSpawn
+    sound: !type:SoundPathSpecifier
+      path: /Audio/_White/Effects/heartbeat.ogg
+  - type: PointLight
+    color: "#b30713"
+    radius: 2.0
+    energy: 2.0
+  - type: LightFade

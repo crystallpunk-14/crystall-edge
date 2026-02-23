@@ -1,0 +1,18 @@
+﻿- type: entity
+  id: WhiteMagicVisionStatusEffect
+  parent: MobStatusEffectBase
+  name: Magical vision
+  components:
+  - type: StatusEffect
+  - type: WhiteMagicVisionStatusEffect
+
+- type: entity
+  id: WhiteMetaMagicVisionSpellStatusEffect
+  parent: WhiteMagicVisionStatusEffect
+  name: Magical vision spell
+  components:
+  - type: WhiteEntityEffectsStatusEffect
+    effects:
+    - !type:WhiteChargeChange
+      chargeDelta: -5
+      safe: false

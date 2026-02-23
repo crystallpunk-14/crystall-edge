@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Created by .kreks., peace_music, signal_light_blue, signal_light_red, signal_light_yellow by TheShuEd",
+  "states": [
+    {
+      "name": "flash_light"
+    },
+    {
+      "name": "peace_music"
+    },
+    {
+      "name": "signal_light_blue"
+    },
+    {
+      "name": "search_of_life"
+    },
+    {
+      "name": "signal_light_red"
+    },
+    {
+      "name": "signal_light_yellow"
+    },
+    {
+      "name": "sphere_of_light"
+    }
+  ]
+}

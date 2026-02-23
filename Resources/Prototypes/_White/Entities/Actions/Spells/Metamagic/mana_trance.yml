@@ -1,0 +1,49 @@
+﻿- type: entity
+  id: WhiteActionSpellManaTrance
+  parent: CEActionSpellBase
+  name: Mana trance
+  description: You go into a trance for a while, restoring mana.
+  components:
+  - type: CEActionDoAfterSlowdown
+    speedMultiplier: 0.05
+  - type: DoAfterArgs
+    repeat: true
+    delay: 1
+    hidden: true
+    breakOnDamage: true
+  - type: CEActionDoAfterVisuals
+    proto: WhiteRuneManaTrance
+  - type: Action
+    useDelay: 60
+    icon:
+      sprite: _White/Actions/Spells/metamagic.rsi
+      state: mana_trance
+  - type: InstantAction
+    event: !type:CEInstantModularEffectEvent
+      effects:
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - WhiteImpactEffectManaGift
+      - !type:CESpellApplyEntityEffect
+        effects:
+        - !type:WhiteChargeChange
+          chargeDelta: 2
+          safe: true
+        - !type:HealthChange
+          damage:
+            types:
+              CP14ManaDepletion: -0.1
+
+- type: entity
+  id: WhiteRuneManaTrance
+  parent: CEBaseMagicRune
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: PointLight
+    color: "#5096d4"
+  - type: Sprite
+    layers:
+    - state: sun
+      color: "#5096d4"
+      shader: unshaded

@@ -1,0 +1,11 @@
+﻿- type: entity
+  id: WhiteMobStarving
+  abstract: true
+  categories: [ ForkFiltered ]
+  components:
+  - type: Hunger
+    starvationDamage:
+      types:
+        Cold: 0.25
+        Bloodloss: 0.25
+  - type: Thirst

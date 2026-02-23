@@ -1,0 +1,6 @@
+﻿- type: mixingCategory
+  id: WhiteMagicSplitting
+  verbText: white-mixing-verb-magic-splitting
+  icon:
+    sprite: _White/Actions/Spells/metamagic.rsi
+    state: counter_spell

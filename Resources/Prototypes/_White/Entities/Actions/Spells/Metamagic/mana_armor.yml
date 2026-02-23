@@ -1,0 +1,36 @@
+﻿- type: entity
+  id: WhiteActionSpellMagicArmor
+  parent: CEActionSpellBase
+  name: Magic Armor
+  description: You surround the target with a short-lived magical barrier that absorbs some of the damage it receives.
+  components:
+  - type: CEActionDoAfterSlowdown
+    speedMultiplier: 0.5
+  - type: CEActionManaCost
+    manaCost: 15
+  - type: DoAfterArgs
+    delay: 1.0
+    breakOnDamage: true
+  - type: CEActionDoAfterVisuals
+    proto: WhiteRuneManaTrance
+  - type: Action
+    useDelay: 10
+    icon:
+      sprite: _White/Actions/Spells/metamagic.rsi
+      state: magic_armor
+  - type: TargetAction
+    range: 5
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - MobState
+      - Item
+      - Anchorable
+    event: !type:CEEntityTargetModularEffectEvent
+      effects:
+      - !type:CESpellSpawnEntityOnTarget
+        spawns:
+        - WhiteImpactEffectManaGift
+      - !type:CESpellApplyStatusEffect
+        statusEffect: WhiteStatusEffectMagicArmor
+        duration: 20

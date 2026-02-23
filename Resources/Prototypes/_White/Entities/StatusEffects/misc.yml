@@ -1,0 +1,29 @@
+﻿- type: entity
+  id: WhiteStatusEffectMagicArmor
+  parent: MobStatusEffectBase
+  components:
+  - type: StatusEffect
+  - type: StatusEffectAlert
+    alert: WhiteMagicArmor
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _CE/Effects/cast_rune.rsi
+    noRot: true
+    layers:
+    - state: sphere
+      shader: unshaded
+      color: "#5096d4"
+    - state: circle_increase
+      sprite: _CE/Effects/cast_impact48.rsi
+      shader: unshaded
+      color: "#74eaf2"
+  - type: PointLight
+    radius: 2.5
+    energy: 0.9
+    color: "#5096d4"
+  - type: WhiteDamageModifierStatusEffect
+    globalDefence: 0.6
+    #defence: #TODO When stone armor spell appears, divide responsibilities: magical armor protects against elemental damage, stone armor protects against physical damage.
+    #  Cold: 0.5
+    #  Heat: 0.5
+    #  Shock: 0.5

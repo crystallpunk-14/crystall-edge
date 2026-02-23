@@ -1,0 +1,70 @@
+﻿- type: entity
+  id: WhiteActionSpellMagicBallade
+  parent: CEActionSpellBase
+  name: Magic ballade
+  description: With your music, you infuse the objects around you with mana
+  components:
+  - type: CEActionDoAfterSlowdown
+    speedMultiplier: 0.8
+  - type: CEActionManaCost
+    manaCost: 5
+    canModifyManacost: false
+  - type: DoAfterArgs
+    hidden: true
+    repeat: true
+    delay: 1
+  - type: CEActionRequiredMusicTool
+  - type: CEActionDoAfterVisuals
+    proto: CERuneMagicBallade
+  - type: Action
+    sound: null
+    useDelay: 15
+    icon:
+      sprite: _White/Actions/Spells/metamagic.rsi
+      state: magic_music
+  - type: InstantAction
+    event: !type:CEInstantModularEffectEvent
+      effects:
+      - !type:CESpellArea
+        range: 5
+        maxTargets: 5
+        whitelist:
+          components:
+          - Battery
+        effects:
+        - !type:CESpellSpawnEntityOnTarget
+          spawns:
+          - WhiteImpactEffectMagicBallade
+        - !type:CESpellApplyEntityEffect
+          effects:
+          - !type:WhiteChargeChange
+            chargeDelta: 1.2
+            safe: true
+
+- type: entity
+  id: WhiteImpactEffectMagicBallade
+  parent: CEBaseMagicImpact
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    sprite: _White/Effects/music.rsi
+    layers:
+    - state: notes_5
+      color: "#5096d4"
+      shader: unshaded
+
+- type: entity
+  id: WhiteRuneMagicBallade
+  parent: CEBaseMagicRune
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: PointLight
+    color: "#5096d4"
+  - type: Sprite
+    sprite: _White/Effects/music.rsi
+    layers:
+    - state: notes_3
+      color: "#5096d4"
+      shader: unshaded

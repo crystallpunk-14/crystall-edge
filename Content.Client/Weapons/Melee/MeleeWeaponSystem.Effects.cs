@@ -91,6 +91,22 @@ public sealed partial class MeleeWeaponSystem
                 if (arcComponent.Fadeout)
                     _animation.Play(animationUid, GetFadeAnimation(sprite, 0f, 0.15f), FadeAnimationKey);
                 break;
+            // WD EDIT START
+            case WeaponArcAnimation.WhiteSlash:
+                track = EnsureComp<TrackUserComponent>(animationUid);
+                track.User = user;
+                _animation.Play(animationUid, WhiteGetSlashAnimation((animationUid, sprite), angle, spriteRotation, length, offset), SlashAnimationKey);
+                if (arcComponent.Fadeout)
+                    _animation.Play(animationUid, GetFadeAnimation(sprite, length * 0.5f, length + 0.15f), FadeAnimationKey);
+                break;
+            case WeaponArcAnimation.WhiteThrust:
+                track = EnsureComp<TrackUserComponent>(animationUid);
+                track.User = user;
+                _animation.Play(animationUid, WhiteGetThrustAnimation((animationUid, sprite), -offset * 2, spriteRotation, length), ThrustAnimationKey);
+                if (arcComponent.Fadeout)
+                    _animation.Play(animationUid, GetFadeAnimation(sprite, length * 0.5f, length + 0.15f), FadeAnimationKey);
+                break;
+            // WD EDIT END
         }
     }
 
@@ -241,4 +257,79 @@ public sealed partial class MeleeWeaponSystem
             TransformSystem.SetWorldPosition(uid, targetPos);
         }
     }
+
+    // WD EDIT START
+    private Animation WhiteGetSlashAnimation(Entity<SpriteComponent> sprite, Angle arc, Angle spriteRotation, float length, float offset = -1f)
+    {
+        var startRotation = sprite.Comp.Rotation + (arc * 0.5f);
+        var endRotation = sprite.Comp.Rotation - (arc * 0.5f);
+
+        var startRotationOffset = startRotation.RotateVec(new Vector2(0f, -offset * 0.9f));
+        var minRotationOffset = sprite.Comp.Rotation.RotateVec(new Vector2(0f, -offset * 1.1f));
+        var endRotationOffset = endRotation.RotateVec(new Vector2(0f, -offset * 0.9f));
+
+        startRotation += spriteRotation;
+        endRotation += spriteRotation;
+        sprite.Comp.NoRotation = true;
+
+        return new Animation()
+        {
+            Length = TimeSpan.FromSeconds(length + 0.05f),
+            AnimationTracks =
+            {
+                new AnimationTrackComponentProperty()
+                {
+                    ComponentType = typeof(SpriteComponent),
+                    Property = nameof(SpriteComponent.Rotation),
+                    KeyFrames =
+                    {
+                        new AnimationTrackProperty.KeyFrame(Angle.Lerp(startRotation,endRotation,0.0f), length * 0.0f),
+                        new AnimationTrackProperty.KeyFrame(Angle.Lerp(startRotation,endRotation,0.5f), length * 0.3f),
+                        new AnimationTrackProperty.KeyFrame(Angle.Lerp(startRotation,endRotation,1.0f), length * 0.6f),
+                        new AnimationTrackProperty.KeyFrame(Angle.Lerp(startRotation,endRotation,0.8f), length * 1.0f),
+                    }
+                },
+                new AnimationTrackComponentProperty()
+                {
+                    ComponentType = typeof(SpriteComponent),
+                    Property = nameof(SpriteComponent.Offset),
+                    KeyFrames =
+                    {
+                        new AnimationTrackProperty.KeyFrame(Vector2.Lerp(startRotationOffset,endRotationOffset,0.0f), length * 0.0f),
+                        new AnimationTrackProperty.KeyFrame(minRotationOffset, length * 0.3f),
+                        new AnimationTrackProperty.KeyFrame(Vector2.Lerp(startRotationOffset,endRotationOffset,1.0f), length * 0.6f),
+                        new AnimationTrackProperty.KeyFrame(Vector2.Lerp(startRotationOffset,endRotationOffset,0.8f), length * 1.0f),
+                    }
+                },
+            }
+        };
+    }
+
+    private Animation WhiteGetThrustAnimation(Entity<SpriteComponent> sprite, float offset, Angle spriteRotation, float length)
+    {
+        var startOffset = sprite.Comp.Rotation.RotateVec(new Vector2(0f, 0f));
+        var endOffset = sprite.Comp.Rotation.RotateVec(new Vector2(0f, offset / 2));
+
+        _sprite.SetRotation(sprite.AsNullable(), sprite.Comp.Rotation + spriteRotation);
+
+        return new Animation()
+        {
+            Length = TimeSpan.FromSeconds(length),
+            AnimationTracks =
+            {
+                new AnimationTrackComponentProperty()
+                {
+                    ComponentType = typeof(SpriteComponent),
+                    Property = nameof(SpriteComponent.Offset),
+                    KeyFrames =
+                    {
+                        new AnimationTrackProperty.KeyFrame(Vector2.Lerp(startOffset, endOffset, 0f), length * 0f),
+                        new AnimationTrackProperty.KeyFrame(Vector2.Lerp(startOffset, endOffset, 1f), length * 0.5f),
+                        new AnimationTrackProperty.KeyFrame(Vector2.Lerp(startOffset, endOffset, 0.9f), length * 0.8f),
+                    }
+                },
+            }
+        };
+    }
+    // WD EDIT END
 }

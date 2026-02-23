@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Created by TheShuEd",
+  "states": [
+    {
+      "name": "counter_spell"
+    },
+    {
+      "name": "counter_spell_small"
+    },
+    {
+      "name": "magic_armor"
+    },
+    {
+      "name": "magic_music"
+    },
+    {
+      "name": "mana_consume"
+    },
+    {
+      "name": "mana"
+    },
+    {
+      "name": "mana_gift"
+    },
+    {
+      "name": "mana_trance"
+    },
+    {
+      "name": "magic_vision"
+    },
+    {
+      "name": "magic_vision_shuffled"
+    }
+  ]
+}

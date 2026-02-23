@@ -1,0 +1,9 @@
+﻿- type: flavor
+  id: WhiteBottomless
+  flavorType: Complex
+  description: white-flavor-complex-bottomless
+
+- type: flavor
+  id: WhiteWhiteAle
+  flavorType: Complex
+  description: white-flavor-complex-white-ale
