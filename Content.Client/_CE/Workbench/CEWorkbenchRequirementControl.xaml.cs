@@ -25,7 +25,7 @@ public sealed partial class CEWorkbenchRequirementControl : Control
 
     public CEWorkbenchRequirementControl(CEWorkbenchCraftRequirement requirement) : this()
     {
-        Name.Text = requirement.GetRequirementTitle(_proto);
+        NameLabel.Text = requirement.GetRequirementTitle(_proto);
 
         var texture = requirement.GetRequirementTexture(_proto);
         if (texture is not null)

@@ -205,7 +205,7 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
 
         _selectedPosition = node;
 
-        Name.Text = _tradingSystem.GetTradeName(_selectedPosition);
+        NameLabel.Text = _tradingSystem.GetTradeName(_selectedPosition);
         Description.Text = _tradingSystem.GetTradeDescription(_selectedPosition);
         LocationView.SetPrototype(_selectedPosition.Service.GetTexture(_prototype));
 
@@ -216,7 +216,7 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
 
     private void DeselectNode()
     {
-        Name.Text = string.Empty;
+        NameLabel.Text = string.Empty;
         Description.Text = string.Empty;
         LocationView.SetPrototype(null);
     }

@@ -1,7 +1,6 @@
 <DefaultWindow xmlns="https://spacestation14.io"
                xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
                xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls"
-               Name="Window"
                Title="{Loc 'ce-trading-ui-title'}"
                MinSize="1450 800"
                SetSize="1450 800">
@@ -30,7 +29,7 @@
                         <BoxContainer Name="InfoContainer" Orientation="Vertical" HorizontalExpand="True"
                                       VerticalExpand="True">
                             <BoxContainer HorizontalExpand="True">
-                                <Label Name="Name" Access="Public" StyleClasses="LabelHeadingBigger" VAlign="Center"
+                                <Label Name="NameLabel" Access="Public" StyleClasses="LabelHeadingBigger" VAlign="Center"
                                        HorizontalExpand="True" HorizontalAlignment="Center" />
                             </BoxContainer>
                             <!-- Description -->

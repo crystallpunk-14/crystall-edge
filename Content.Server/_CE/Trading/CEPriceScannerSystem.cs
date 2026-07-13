@@ -34,7 +34,7 @@ public sealed partial class CEPriceScannerSystem : EntitySystem
     {
         if (!IsAbleExamine(args.Examiner))
             return;
-        if (_tag.HasTag(args.Examined, "CECoin"))
+        if (_tag.HasTag(args.Examined, CETradingPlatformSystem.CoinTag))
             return;
         if (HasComp<MobStateComponent>(uid))
             return;

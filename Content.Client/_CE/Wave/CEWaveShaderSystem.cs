@@ -13,6 +13,8 @@ public sealed partial class CEWaveShaderSystem : EntitySystem
     [Dependency] private IPrototypeManager _protoMan = default!;
     [Dependency] private IRobustRandom _random = default!;
 
+    private static readonly ProtoId<ShaderPrototype> WaveShader = "CEWave";
+
     private ShaderInstance _shader = default!;
     private bool _enabled;
 
@@ -20,7 +22,7 @@ public sealed partial class CEWaveShaderSystem : EntitySystem
     {
         base.Initialize();
 
-        _shader = _protoMan.Index<ShaderPrototype>("CEWave").InstanceUnique();
+        _shader = _protoMan.Index(WaveShader).InstanceUnique();
         _enabled = _cfg.GetCVar(CCVars.CEWaveShaderEnabled);
 
         SubscribeLocalEvent<CEWaveShaderComponent, ComponentStartup>(OnStartup);

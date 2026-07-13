@@ -13,7 +13,7 @@ public sealed partial class CEClientVampireSystem : CESharedVampireSystem
     {
         base.OnVampireVisualsInit(vampire, ref args);
 
-        if (!EntityManager.TryGetComponent(vampire, out SpriteComponent? sprite))
+        if (!TryComp(vampire, out SpriteComponent? sprite))
             return;
 
         if (_sprite.LayerMapTryGet(vampire.Owner, vampire.Comp.FangsMap, out var fangsLayerIndex, false))
@@ -27,7 +27,7 @@ public sealed partial class CEClientVampireSystem : CESharedVampireSystem
     {
         base.OnVampireVisualsShutdown(vampire, ref args);
 
-        if (!EntityManager.TryGetComponent(vampire, out SpriteComponent? sprite))
+        if (!TryComp(vampire, out SpriteComponent? sprite))
             return;
 
         if (_sprite.LayerMapTryGet(vampire.Owner, vampire.Comp.FangsMap, out var fangsLayerIndex, false))

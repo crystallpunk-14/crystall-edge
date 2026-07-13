@@ -16,6 +16,8 @@ public sealed partial class CEPostProcessOverlay : Overlay
     [Dependency] private IPlayerManager _player = default!;
     [Dependency] private IPrototypeManager _proto = default!;
 
+    private static readonly ProtoId<ShaderPrototype> PostProcessShader = "CEPostProcess";
+
     public override bool RequestScreenTexture => true;
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
     private readonly ShaderInstance _basePostProcessShader;
@@ -23,7 +25,7 @@ public sealed partial class CEPostProcessOverlay : Overlay
     public CEPostProcessOverlay()
     {
         IoCManager.InjectDependencies(this);
-        _basePostProcessShader = _proto.Index<ShaderPrototype>("CEPostProcess").InstanceUnique();
+        _basePostProcessShader = _proto.Index(PostProcessShader).InstanceUnique();
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
