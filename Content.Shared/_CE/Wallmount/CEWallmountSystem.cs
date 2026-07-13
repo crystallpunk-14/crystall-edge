@@ -7,7 +7,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.Wallmount;
 
-public sealed class CEWallmountSystem : EntitySystem
+public sealed partial class CEWallmountSystem : EntitySystem
 {
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private TagSystem _tag = default!;

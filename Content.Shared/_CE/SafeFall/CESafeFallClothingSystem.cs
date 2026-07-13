@@ -6,7 +6,7 @@ using Content.Shared.Stunnable;
 
 namespace Content.Shared._CE.SafeFall;
 
-public sealed class CESafeFallClothingSystem : EntitySystem
+public sealed partial class CESafeFallClothingSystem : EntitySystem
 {
     [Dependency] private StatusEffectsSystem _statusEffect = default!;
     [Dependency] private SharedPopupSystem _popup = default!;

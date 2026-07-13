@@ -19,7 +19,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.ZLevels.Damage;
 
-public sealed class CEZLevelDamageSystem : EntitySystem
+public sealed partial class CEZLevelDamageSystem : EntitySystem
 {
     [Dependency] private SharedStunSystem _stun = default!;
     [Dependency] private DamageableSystem _damage = default!;

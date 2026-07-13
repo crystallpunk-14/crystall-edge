@@ -5,7 +5,7 @@ using Content.Shared.StatusEffectNew;
 
 namespace Content.Shared._CE.FlightStatusEffect;
 
-public sealed class CEGravityCaughtStatusEffectSystem : EntitySystem
+public sealed partial class CEGravityCaughtStatusEffectSystem : EntitySystem
 {
     [Dependency] private CESharedZLevelsSystem _zLevels = default!;
     [Dependency] private SharedGravitySystem _gravity = default!;

@@ -9,7 +9,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.Weapons.MeleeEnergyEffect;
 
-public abstract class CESharedMeleeEnergyEffectSystem : EntitySystem
+public abstract partial class CESharedMeleeEnergyEffectSystem : EntitySystem
 {
     [Dependency] protected IGameTiming Timing = default!;
     [Dependency] protected SharedAppearanceSystem Appearance = default!;

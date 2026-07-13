@@ -6,7 +6,7 @@ using Content.Shared.Actions;
 
 namespace Content.Shared._CE.VehicleFlying;
 
-public sealed class CEVehicleFlightSystem : EntitySystem
+public sealed partial class CEVehicleFlightSystem : EntitySystem
 {
     [Dependency] private CESharedZFlightSystem _flight = default!;
     [Dependency] private SharedActionsSystem _actions = default!;

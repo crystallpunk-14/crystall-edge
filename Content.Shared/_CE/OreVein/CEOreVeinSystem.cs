@@ -8,7 +8,7 @@ namespace Content.Shared._CE.OreVein;
 /// <summary>
 /// System that manages ore veins, spawning resources when specific damage thresholds are met.
 /// </summary>
-public sealed class CEOreVeinSystem : EntitySystem
+public sealed partial class CEOreVeinSystem : EntitySystem
 {
     [Dependency] private DamageableSystem _damageable = default!;
     [Dependency] private SharedAudioSystem _audio = default!;

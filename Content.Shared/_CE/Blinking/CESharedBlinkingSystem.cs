@@ -12,7 +12,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.Blinking;
 
-public abstract class CESharedBlinkingSystem : EntitySystem
+public abstract partial class CESharedBlinkingSystem : EntitySystem
 {
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IRobustRandom _random = default!;

@@ -5,7 +5,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.FloorTile;
 
-public sealed class CEFloorTileExamineSystem : EntitySystem
+public sealed partial class CEFloorTileExamineSystem : EntitySystem
 {
     [Dependency] private IPrototypeManager _proto = default!;
 

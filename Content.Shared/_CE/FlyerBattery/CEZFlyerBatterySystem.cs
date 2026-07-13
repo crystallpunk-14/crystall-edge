@@ -8,7 +8,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.FlyerBattery;
 
-public sealed class CEZFlyerBatterySystem : EntitySystem
+public sealed partial class CEZFlyerBatterySystem : EntitySystem
 {
     [Dependency] private CESharedZFlightSystem _flight = default!;
     [Dependency] private SharedBatterySystem _battery = default!;

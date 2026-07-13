@@ -18,7 +18,7 @@ namespace Content.Shared._CE.Drill;
 /// <summary>
 /// Handles the automatic drilling behavior for stationary drills, including damage application and effects.
 /// </summary>
-public sealed class CESharedDrillSystem : EntitySystem
+public sealed partial class CESharedDrillSystem : EntitySystem
 {
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private IGameTiming _timing = default!;

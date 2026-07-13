@@ -7,7 +7,7 @@ using Content.Shared.Damage.Systems;
 
 namespace Content.Shared._CE.ZLevels.Damage.FallingDamage;
 
-public sealed class CEFallingDamageSystem : EntitySystem
+public sealed partial class CEFallingDamageSystem : EntitySystem
 {
     [Dependency] private DamageableSystem _damage = default!;
     public override void Initialize()

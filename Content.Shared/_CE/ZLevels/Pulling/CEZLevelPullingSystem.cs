@@ -13,7 +13,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.ZLevels.Pulling;
 
-public sealed class CEZLevelPullingSystem : EntitySystem
+public sealed partial class CEZLevelPullingSystem : EntitySystem
 {
     [Dependency] private PullingSystem _pulling = default!;
     [Dependency] private SharedTransformSystem _transform = default!;

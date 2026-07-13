@@ -7,7 +7,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.FlyerStamina;
 
-public sealed class CEZFlyerStaminaSystem : EntitySystem
+public sealed partial class CEZFlyerStaminaSystem : EntitySystem
 {
     [Dependency] private CESharedZFlightSystem _flight = default!;
     [Dependency] private SharedStaminaSystem _stamina = default!;

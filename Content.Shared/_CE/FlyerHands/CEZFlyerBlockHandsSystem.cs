@@ -6,7 +6,7 @@ using Content.Shared.Item;
 
 namespace Content.Shared._CE.FlyerHands;
 
-public sealed class CEZFlyerBlockHandsSystem : EntitySystem
+public sealed partial class CEZFlyerBlockHandsSystem : EntitySystem
 {
     [Dependency] private SharedHandsSystem _hands = default!;
 

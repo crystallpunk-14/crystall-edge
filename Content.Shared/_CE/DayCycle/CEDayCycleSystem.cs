@@ -11,7 +11,7 @@ namespace Content.Shared._CE.DayCycle;
 /// <summary>
 /// This is an add-on to the LightCycle system that helps you determine what time of day it is on the map
 /// </summary>
-public sealed class CEDayCycleSystem : EntitySystem
+public sealed partial class CEDayCycleSystem : EntitySystem
 {
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private MetaDataSystem _meta = default!;

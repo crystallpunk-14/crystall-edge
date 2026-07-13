@@ -6,7 +6,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.Door;
 
-public sealed class CEDoorInteractionPopupSystem : EntitySystem
+public sealed partial class CEDoorInteractionPopupSystem : EntitySystem
 {
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private SharedPopupSystem _popup = default!;

@@ -2,7 +2,7 @@ using Content.Shared.Actions;
 
 namespace Content.Shared._CE.NightVision;
 
-public abstract class CESharedNightVisionSystem : EntitySystem
+public abstract partial class CESharedNightVisionSystem : EntitySystem
 {
     [Dependency] private SharedActionsSystem _actions = default!;
 

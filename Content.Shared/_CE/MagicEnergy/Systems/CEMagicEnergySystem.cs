@@ -11,7 +11,7 @@ using Robust.Shared.Audio.Systems;
 
 namespace Content.Shared._CE.MagicEnergy.Systems;
 
-public abstract class CESharedMagicEnergySystem : EntitySystem
+public abstract partial class CESharedMagicEnergySystem : EntitySystem
 {
     [Dependency] private DamageableSystem _damageable = default!;
     [Dependency] private SharedJitteringSystem _jitter = default!;

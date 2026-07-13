@@ -13,7 +13,7 @@ namespace Content.Shared._CE.ZLevels.Weather;
 /// <summary>
 /// A subsystem that connects WeatherSystem with ZLevelSystem. Allows you to control the weather for the entire z-network at once.
 /// </summary>
-public sealed class CEWeatherSystem : EntitySystem
+public sealed partial class CEWeatherSystem : EntitySystem
 {
     [Dependency] private SharedWeatherSystem _weather = default!;
 

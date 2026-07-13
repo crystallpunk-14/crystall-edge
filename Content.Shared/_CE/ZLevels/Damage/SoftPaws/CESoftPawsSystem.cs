@@ -8,7 +8,7 @@ using Content.Shared.Standing;
 
 namespace Content.Shared._CE.ZLevels.Damage.SoftPaws;
 
-public sealed class CESoftPawsSystem : EntitySystem
+public sealed partial class CESoftPawsSystem : EntitySystem
 {
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private StandingStateSystem _standingState = default!;
