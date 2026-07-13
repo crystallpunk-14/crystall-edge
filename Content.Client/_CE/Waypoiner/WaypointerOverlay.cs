@@ -19,7 +19,7 @@ namespace Content.Client.Waypointer;
 /// <summary>
 /// This Overlay draws the waypointers on the screen.
 /// </summary>
-public sealed class WaypointerOverlay : Overlay
+public sealed partial class WaypointerOverlay : Overlay
 {
     private static readonly ProtoId<ShaderPrototype> UnshadedShader = "unshaded";
 

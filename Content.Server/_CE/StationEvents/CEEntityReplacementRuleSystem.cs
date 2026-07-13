@@ -10,7 +10,7 @@ namespace Content.Server._CE.StationEvents;
 /// <summary>
 /// Station event system that randomly replaces selected entities with mapped prototypes,
 /// optionally playing visual and audio effects at the replacement location.
-public sealed class CEEntityReplacementRuleSystem : StationEventSystem<CEEntityReplacementRuleComponent>
+public sealed partial class CEEntityReplacementRuleSystem : StationEventSystem<CEEntityReplacementRuleComponent>
 {
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private SharedAudioSystem _audio = default!;

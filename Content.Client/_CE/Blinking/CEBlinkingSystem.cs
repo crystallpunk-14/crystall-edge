@@ -14,7 +14,7 @@ using Robust.Client.Graphics;
 namespace Content.Client._CE.Blinking;
 
 /// <inheritdoc/>
-public sealed class CEBlinkingSystem : CESharedBlinkingSystem
+public sealed partial class CEBlinkingSystem : CESharedBlinkingSystem
 {
     [Dependency] private AnimationPlayerSystem _animationPlayer = default!;
     [Dependency] private SpriteSystem _sprite = default!;

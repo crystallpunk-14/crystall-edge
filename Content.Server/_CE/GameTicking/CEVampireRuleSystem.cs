@@ -7,7 +7,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.GameTicking;
 
-public sealed class CEVampireRuleSystem : GameRuleSystem<CEVampireRuleComponent>
+public sealed partial class CEVampireRuleSystem : GameRuleSystem<CEVampireRuleComponent>
 {
     [Dependency] private CEVampireObjectiveConditionsSystem _condition = default!;
     [Dependency] private IPrototypeManager _proto = default!;

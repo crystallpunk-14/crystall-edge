@@ -5,7 +5,7 @@ using Robust.Client.UserInterface;
 
 namespace Content.Client._CE.RoundFlow;
 
-public sealed class CEClientRoundflowSystem : EntitySystem
+public sealed partial class CEClientRoundflowSystem : EntitySystem
 {
     [Dependency] private AudioSystem _audio = default!;
     [Dependency] private IUserInterfaceManager _userInterface = default!;

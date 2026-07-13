@@ -4,7 +4,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Client._CE.Vampire;
 
-public sealed class CEClientVampireSystem : CESharedVampireSystem
+public sealed partial class CEClientVampireSystem : CESharedVampireSystem
 {
     [Dependency] private SpriteSystem _sprite = default!;
     [Dependency] private IGameTiming _timing = default!;

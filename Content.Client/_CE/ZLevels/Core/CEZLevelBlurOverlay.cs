@@ -13,7 +13,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Client._CE.ZLevels.Core;
 
-public sealed class CEZLevelBlurOverlay : Overlay
+public sealed partial class CEZLevelBlurOverlay : Overlay
 {
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IEntityManager _entity = default!;

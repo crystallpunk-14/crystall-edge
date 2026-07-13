@@ -7,7 +7,7 @@ using Robust.Shared.Random;
 
 namespace Content.Client._CE.Wave;
 
-public sealed class CEWaveShaderSystem : EntitySystem
+public sealed partial class CEWaveShaderSystem : EntitySystem
 {
     [Dependency] private IConfigurationManager _cfg = default!;
     [Dependency] private IPrototypeManager _protoMan = default!;

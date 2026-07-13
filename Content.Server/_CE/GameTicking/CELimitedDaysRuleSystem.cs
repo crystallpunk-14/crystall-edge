@@ -19,7 +19,7 @@ namespace Content.Server._CE.GameTicking;
 /// <summary>
 /// TEMP SHITCODE PROTOTYPE SYSTEM. Unlocalized strings is ok here. We rewrite it in future
 /// </summary>
-public sealed class CELimitedDaysRuleSystem : GameRuleSystem<CELimitedDaysRuleComponent>
+public sealed partial class CELimitedDaysRuleSystem : GameRuleSystem<CELimitedDaysRuleComponent>
 {
     [Dependency] private RoundEndSystem _roundEndSystem = default!;
     [Dependency] private SharedMindSystem _mind = default!;

@@ -16,7 +16,7 @@ using Robust.Shared.Random;
 
 namespace Content.Server._CE.BiomeSpawner;
 
-public sealed class CEBiomeSpawnerSystem : EntitySystem
+public sealed partial class CEBiomeSpawnerSystem : EntitySystem
 {
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private BiomeSystem _biome = default!;

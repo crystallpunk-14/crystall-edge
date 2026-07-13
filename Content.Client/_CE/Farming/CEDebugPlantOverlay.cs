@@ -8,7 +8,7 @@ using Robust.Shared.Map.Components;
 
 namespace Content.Client._CE.Farming;
 
-public sealed class CEDebugPlantOverlay : Overlay
+public sealed partial class CEDebugPlantOverlay : Overlay
 {
     [Dependency] private IEntityManager _entityManager = default!;
     [Dependency] private IResourceCache _cache = default!;
@@ -58,7 +58,7 @@ public sealed class CEDebugPlantOverlay : Overlay
     }
 }
 
-public sealed class CEShowPlantDebugCommand : LocalizedCommands
+public sealed partial class CEShowPlantDebugCommand : LocalizedCommands
 {
     [Dependency] private IOverlayManager _overlayManager = default!;
     public override string Command => "showplantdebug";

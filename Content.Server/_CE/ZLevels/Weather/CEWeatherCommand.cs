@@ -16,7 +16,7 @@ using Robust.Shared.Timing;
 namespace Content.Server._CE.ZLevels.Weather;
 
 [AdminCommand(AdminFlags.Fun)]
-public sealed class CEWeatherCommand : LocalizedCommands
+public sealed partial class CEWeatherCommand : LocalizedCommands
 {
     [Dependency] private IEntityManager _entities = default!;
     [Dependency] private IPrototypeManager _proto = default!;

@@ -7,7 +7,7 @@ using Robust.Shared.Network;
 
 namespace Content.Server._CE.BlueText;
 
-public sealed class CEBlueTextSystem : CESharedBlueTextSystem
+public sealed partial class CEBlueTextSystem : CESharedBlueTextSystem
 {
     [Dependency] private MindSystem _mind = default!;
     [Dependency] private IServerNetManager _net = default!;

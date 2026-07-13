@@ -5,7 +5,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Client._CE.Humanoid;
 
-public sealed class CESimpleSkinColorationSystem : EntitySystem
+public sealed partial class CESimpleSkinColorationSystem : EntitySystem
 {
     [Dependency] private SpriteSystem _sprite = default!;
     [Dependency] private SharedVisualBodySystem _visualBody = default!;

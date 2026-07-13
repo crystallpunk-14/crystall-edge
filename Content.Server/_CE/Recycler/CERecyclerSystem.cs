@@ -17,7 +17,7 @@ using Robust.Shared.Physics.Events;
 namespace Content.Server._CE.Recycler;
 
 /// <inheritdoc/>
-public sealed class CERecyclerSystem : CESharedRecyclerSystem
+public sealed partial class CERecyclerSystem : CESharedRecyclerSystem
 {
     [Dependency] private EntityWhitelistSystem _whitelist = default!;
     [Dependency] private MaterialStorageSystem _material = default!;

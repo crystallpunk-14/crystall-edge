@@ -5,7 +5,7 @@ using Robust.Shared.Map.Components;
 
 namespace Content.Client._CE.UnderWall;
 
-public sealed class CEUnderWallSystem : EntitySystem
+public sealed partial class CEUnderWallSystem : EntitySystem
 {
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private SpriteSystem _sprite = default!;

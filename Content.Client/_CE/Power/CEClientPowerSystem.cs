@@ -11,7 +11,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Client._CE.Power;
 
-public sealed class CEClientPowerSystem : VisualizerSystem<CEEnergyLeakComponent>
+public sealed partial class CEClientPowerSystem : VisualizerSystem<CEEnergyLeakComponent>
 {
     [Dependency] private LightBehaviorSystem _light = default!;
 

@@ -13,7 +13,7 @@ using Robust.Shared.Map;
 namespace Content.Server._CE.ZLevels.Mapping.Commands;
 
 [AdminCommand(AdminFlags.Server | AdminFlags.Mapping)]
-public sealed class CECombineZNetworkCommand : LocalizedEntityCommands
+public sealed partial class CECombineZNetworkCommand : LocalizedEntityCommands
 {
     [Dependency] private IEntityManager _entities = default!;
     [Dependency] private MapSystem _map = default!;

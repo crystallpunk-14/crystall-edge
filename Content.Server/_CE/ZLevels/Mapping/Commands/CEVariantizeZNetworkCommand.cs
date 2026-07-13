@@ -15,7 +15,7 @@ using Robust.Shared.Map.Components;
 namespace Content.Server._CE.ZLevels.Mapping.Commands;
 
 [AdminCommand(AdminFlags.Server | AdminFlags.Mapping)]
-public sealed class CEVariantizeZNetworkCommand : LocalizedEntityCommands
+public sealed partial class CEVariantizeZNetworkCommand : LocalizedEntityCommands
 {
     [Dependency] private IEntityManager _entities = default!;
     [Dependency] private MapSystem _map = default!;

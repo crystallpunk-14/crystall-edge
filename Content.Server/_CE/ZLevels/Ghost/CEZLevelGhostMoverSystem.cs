@@ -8,7 +8,7 @@ using Content.Shared.Actions;
 
 namespace Content.Server._CE.ZLevels.Ghost;
 
-public sealed class CEZLevelGhostMoverSystem : CESharedZLevelGhostMoverSystem
+public sealed partial class CEZLevelGhostMoverSystem : CESharedZLevelGhostMoverSystem
 {
     [Dependency] private SharedActionsSystem _actions = default!;
 

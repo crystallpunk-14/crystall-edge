@@ -4,7 +4,7 @@ using Content.Shared._CE.Radiation;
 
 namespace Content.Server._CE.Radiation;
 
-public sealed class CERadiationReceiverVisualsSystem : EntitySystem
+public sealed partial class CERadiationReceiverVisualsSystem : EntitySystem
 {
     [Dependency] private SharedAppearanceSystem _appearance = default!;
 

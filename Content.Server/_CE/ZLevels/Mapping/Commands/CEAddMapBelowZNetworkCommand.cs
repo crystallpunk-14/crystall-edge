@@ -18,7 +18,7 @@ using Robust.Shared.Utility;
 namespace Content.Server._CE.ZLevels.Mapping.Commands;
 
 [AdminCommand(AdminFlags.Server | AdminFlags.Mapping)]
-public sealed class CEAddMapBelowZNetworkCommand : LocalizedEntityCommands
+public sealed partial class CEAddMapBelowZNetworkCommand : LocalizedEntityCommands
 {
     [Dependency] private IEntityManager _entities = default!;
     [Dependency] private IResourceManager _resourceMgr = default!;

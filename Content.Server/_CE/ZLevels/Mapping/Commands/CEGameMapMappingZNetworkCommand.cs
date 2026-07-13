@@ -20,7 +20,7 @@ using Robust.Shared.Utility;
 namespace Content.Server._CE.ZLevels.Mapping.Commands;
 
 [AdminCommand(AdminFlags.Server | AdminFlags.Mapping)]
-public sealed class CEGameMapMappingZNetworkCommand : LocalizedEntityCommands
+public sealed partial class CEGameMapMappingZNetworkCommand : LocalizedEntityCommands
 {
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IComponentFactory _compFactory = default!;

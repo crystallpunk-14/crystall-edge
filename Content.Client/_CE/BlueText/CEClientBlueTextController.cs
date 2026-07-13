@@ -10,7 +10,7 @@ using Robust.Shared.Network;
 
 namespace Content.Client._CE.BlueText;
 
-public sealed class CEClientBlueTextController : UIController
+public sealed partial class CEClientBlueTextController : UIController
 {
     [Dependency] private IEntityManager _entManager = default!;
     [Dependency] private IConfigurationManager _cfg = default!;

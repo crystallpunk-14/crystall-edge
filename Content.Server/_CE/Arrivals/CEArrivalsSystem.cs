@@ -26,7 +26,7 @@ namespace Content.Server._CE.Arrivals;
 /// <summary>
 /// If enabled spawns players on a separate arrivals station before they can transfer to the main station.
 /// </summary>
-public sealed class CEArrivalsSystem : EntitySystem
+public sealed partial class CEArrivalsSystem : EntitySystem
 {
     [Dependency] private IConfigurationManager _cfgManager = default!;
     [Dependency] private IGameTiming _timing = default!;

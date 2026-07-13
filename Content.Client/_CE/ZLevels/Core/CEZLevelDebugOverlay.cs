@@ -13,7 +13,7 @@ using Robust.Shared.Enums;
 
 namespace Content.Client._CE.ZLevels.Core;
 
-public sealed class CEZLevelDebugOverlay : Overlay
+public sealed partial class CEZLevelDebugOverlay : Overlay
 {
     [Dependency] private IEntityManager _entityManager = default!;
     [Dependency] private IResourceCache _cache = default!;
@@ -56,7 +56,7 @@ public sealed class CEZLevelDebugOverlay : Overlay
     }
 }
 
-public sealed class CEShowZLevelDebugCommand : LocalizedCommands
+public sealed partial class CEShowZLevelDebugCommand : LocalizedCommands
 {
     [Dependency] private IOverlayManager _overlayManager = default!;
     public override string Command => "showzleveldebug";

@@ -20,7 +20,7 @@ using Robust.Shared.Player;
 
 namespace Content.Server._CE.GameTicking;
 
-public sealed class CEThiefRuleSystem : GameRuleSystem<CEThiefRuleComponent>
+public sealed partial class CEThiefRuleSystem : GameRuleSystem<CEThiefRuleComponent>
 {
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private RoleSystem _role = default!;

@@ -8,7 +8,7 @@ using Content.Shared.Mobs.Components;
 
 namespace Content.Server._CE.Trading;
 
-public sealed class CEPriceScannerSystem : EntitySystem
+public sealed partial class CEPriceScannerSystem : EntitySystem
 {
     [Dependency] private PricingSystem _price = default!;
     [Dependency] private TagSystem _tag = default!;

@@ -9,7 +9,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._CE.Temperature;
 
-public sealed class CETemperatureSystem : EntitySystem
+public sealed partial class CETemperatureSystem : EntitySystem
 {
     [Dependency] private AmbientSoundSystem _ambient = default!;
     [Dependency] private IGameTiming _timing = default!;

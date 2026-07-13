@@ -10,7 +10,7 @@ namespace Content.Client._CE.Tiles;
 /// <summary>
 /// System for displaying overlay sprites over tiles when holding items with FloorTileComponent or ToolTileCompatibleComponent
 /// </summary>
-public sealed class CEFloorTileSelectionSystem : EntitySystem
+public sealed partial class CEFloorTileSelectionSystem : EntitySystem
 {
     [Dependency] private IPlayerManager _playerManager = default!;
     [Dependency] private IOverlayManager _overlayManager = default!;

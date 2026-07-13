@@ -7,7 +7,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Client._CE.RadialConstruction;
 
 [UsedImplicitly]
-public sealed class CERadialConstructionMenuBoundUserInterface : BoundUserInterface
+public sealed partial class CERadialConstructionMenuBoundUserInterface : BoundUserInterface
 {
     [Dependency] private IPrototypeManager _prototypeManager = default!;
 

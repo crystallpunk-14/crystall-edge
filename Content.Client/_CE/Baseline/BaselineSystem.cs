@@ -8,7 +8,7 @@ namespace Content.Client._CE.Baseline;
 /// On the client side, it automatically enables entity filtering to hide all vanilla ss14 entities
 /// not marked with the ForkFiltered category from the spawn menu.
 /// </summary>
-public sealed class BaselineSystem : EntitySystem
+public sealed partial class BaselineSystem : EntitySystem
 {
     [Dependency] private IConfigurationManager _cfg = default!;
 

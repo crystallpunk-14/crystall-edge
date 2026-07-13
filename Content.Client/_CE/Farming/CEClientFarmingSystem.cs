@@ -6,7 +6,7 @@ using Robust.Shared.Random;
 
 namespace Content.Client._CE.Farming;
 
-public sealed class CEClientFarmingSystem : CESharedFarmingSystem
+public sealed partial class CEClientFarmingSystem : CESharedFarmingSystem
 {
     [Dependency] private SpriteSystem _sprite = default!;
     [Dependency] private IRobustRandom _random = default!;

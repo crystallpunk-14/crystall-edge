@@ -11,7 +11,7 @@ using Robust.Shared.Random;
 
 namespace Content.Server._CE.Objectives.Systems;
 
-public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
+public sealed partial class CEAmbitionsSystem : CESharedAmbitionsSystem
 {
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IRobustRandom _random = default!;
@@ -221,7 +221,7 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
 
         foreach (var (_, parsing) in ambObj.Parsings)
         {
-            //The text can only be null if everything goes wrongвЂ”for example,
+            //The text can only be null if everything goes wrongРІР‚вЂќfor example,
             //if it is not possible to find other players and their names.
             if (parsing.GetText(EntityManager, _proto, _random, ent.Owner) is null)
             {

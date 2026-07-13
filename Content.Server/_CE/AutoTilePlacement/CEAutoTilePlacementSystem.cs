@@ -4,7 +4,7 @@ using Robust.Shared.Map.Components;
 
 namespace Content.Server._CE.AutoTilePlacement;
 
-public sealed class CEAutoTilePlacementSystem : EntitySystem
+public sealed partial class CEAutoTilePlacementSystem : EntitySystem
 {
     [Dependency] private TileSystem _tile = default!;
     [Dependency] private ITileDefinitionManager _tiledef = default!;

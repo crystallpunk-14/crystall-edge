@@ -10,7 +10,7 @@ using Robust.Shared.Map.Components;
 namespace Content.Server._CE.Power;
 
 [UsedImplicitly]
-public sealed class CEPipeVisSystem : EntitySystem
+public sealed partial class CEPipeVisSystem : EntitySystem
 {
     [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private SharedMapSystem _map = default!;

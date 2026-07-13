@@ -4,7 +4,7 @@ using Robust.Shared.Configuration;
 
 namespace Content.Client._CE.Localization;
 
-public sealed class CELocalizationVisualsSystem : EntitySystem
+public sealed partial class CELocalizationVisualsSystem : EntitySystem
 {
     [Dependency] private IConfigurationManager _cfg = default!;
     [Dependency] private SpriteSystem _sprite = default!;

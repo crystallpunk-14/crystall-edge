@@ -9,7 +9,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Client._CE.Vampire;
 
-public sealed class CEShowVampireIconsSystem : EquipmentHudSystem<CEShowVampireIconsComponent>
+public sealed partial class CEShowVampireIconsSystem : EquipmentHudSystem<CEShowVampireIconsComponent>
 {
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IPlayerManager _player = default!;

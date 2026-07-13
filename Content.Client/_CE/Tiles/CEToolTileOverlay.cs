@@ -22,7 +22,7 @@ namespace Content.Client._CE.Tiles;
 /// Overlay that displays a sprite over the tile the cursor is hovering over
 /// when the player is holding a tool with ToolTileCompatibleComponent
 /// </summary>
-public sealed class CEToolTileOverlay : Overlay
+public sealed partial class CEToolTileOverlay : Overlay
 {
     [Dependency] private IEntityManager _entityManager = default!;
     [Dependency] private IInputManager _inputManager = default!;

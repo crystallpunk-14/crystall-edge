@@ -12,7 +12,7 @@ using Robust.Client.GameObjects;
 
 namespace Content.Client._CE.Cooking;
 
-public sealed class CEClientCookingSystem : CESharedCookingSystem
+public sealed partial class CEClientCookingSystem : CESharedCookingSystem
 {
     [Dependency] private SpriteSystem _sprite = default!;
     [Dependency] private DisplacementMapSystem _displacement = default!;

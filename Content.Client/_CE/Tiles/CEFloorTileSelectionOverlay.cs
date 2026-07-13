@@ -21,7 +21,7 @@ namespace Content.Client._CE.Tiles;
 /// Overlay that displays a sprite over the tile the cursor is hovering over
 /// when the player is holding an item with FloorTileComponent
 /// </summary>
-public sealed class CEFloorTileSelectionOverlay : Overlay
+public sealed partial class CEFloorTileSelectionOverlay : Overlay
 {
     [Dependency] private IEntityManager _entityManager = default!;
     [Dependency] private IInputManager _inputManager = default!;

@@ -13,7 +13,7 @@ namespace Content.Server.Waypointer;
 /// <summary>
 /// This handles the PVSOverrides for the Waypointer System.
 /// </summary>
-public sealed class WaypointerSystem : SharedWaypointerSystem
+public sealed partial class WaypointerSystem : SharedWaypointerSystem
 {
     [Dependency] private IEntityManager _entity = default!;
     [Dependency] private IPlayerManager _player = default!;

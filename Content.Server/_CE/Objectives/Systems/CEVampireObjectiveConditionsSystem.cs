@@ -9,7 +9,7 @@ using Content.Shared.Roles.Jobs;
 
 namespace Content.Server._CE.Objectives.Systems;
 
-public sealed class CEVampireObjectiveConditionsSystem : EntitySystem
+public sealed partial class CEVampireObjectiveConditionsSystem : EntitySystem
 {
     [Dependency] private MetaDataSystem _meta = default!;
     [Dependency] private SharedObjectivesSystem _objectives = default!;

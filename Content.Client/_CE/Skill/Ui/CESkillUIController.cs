@@ -22,7 +22,7 @@ using Robust.Shared.Utility;
 namespace Content.Client._CE.Skill.Ui;
 
 [UsedImplicitly]
-public sealed class CESkillUIController : UIController, IOnStateEntered<GameplayState>, IOnStateExited<GameplayState>,
+public sealed partial class CESkillUIController : UIController, IOnStateEntered<GameplayState>, IOnStateExited<GameplayState>,
     IOnSystemChanged<CEClientSkillSystem>
 {
     [Dependency] private IPlayerManager _playerManager = default!;
