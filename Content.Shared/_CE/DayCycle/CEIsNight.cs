@@ -1,3 +1,4 @@
+using Content.Shared.Light.Components;
 using Content.Shared.Random.Rules;
 using Content.Shared.Weather;
 using Robust.Shared.Map.Components;
@@ -41,10 +42,12 @@ public sealed partial class CEWeatherAffect : RulesRule
         if (!entManager.TryGetComponent<MapGridComponent>(gridUid.Value, out var grid))
             return false;
 
+        entManager.TryGetComponent<RoofComponent>(gridUid.Value, out var roof);
+
         var coordinates = transform.GetMapCoordinates(uid);
         var tileRef = mapSystem.GetTileRef(gridUid.Value, grid, coordinates);
 
-        var weatherAffect = weather.CanWeatherAffect(gridUid.Value, grid, tileRef);
+        var weatherAffect = weather.CanWeatherAffect((gridUid.Value, grid, roof), tileRef);
 
         return Inverted ? !weatherAffect : weatherAffect;
     }
