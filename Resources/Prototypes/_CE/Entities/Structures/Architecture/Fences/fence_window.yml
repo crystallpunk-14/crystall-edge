@@ -48,8 +48,9 @@
   - type: Icon
     sprite: _CE/Structures/Architecture/Fences/iron_window.rsi
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:

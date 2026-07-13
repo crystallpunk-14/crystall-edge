@@ -410,6 +410,7 @@
       - ReagentId: JuiceTomato
         Quantity: 10
   - type: Damageable
+  - type: Injurable
     damageContainer: Biological
   - type: DamageOnHighSpeedImpact
     minimumSpeed: 0.1

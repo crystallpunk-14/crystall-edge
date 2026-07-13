@@ -42,6 +42,7 @@
   - type: Physics
   - type: Climbable
   - type: Damageable
+  - type: Injurable
     damageContainer: Inorganic
   - type: Destructible
     thresholds:
@@ -98,6 +99,7 @@
   - type: Physics
   - type: Climbable
   - type: Damageable
+  - type: Injurable
     damageContainer: Inorganic
   - type: Destructible
     thresholds:
@@ -157,6 +159,7 @@
   - type: Transform
     anchored: false
   - type: Damageable
+  - type: Injurable
     damageContainer: Inorganic
   - type: Destructible
     thresholds:

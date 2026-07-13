@@ -12,6 +12,7 @@
     bodyType: Static
   - type: Appearance
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: Inorganic
   - type: CEPipeVis

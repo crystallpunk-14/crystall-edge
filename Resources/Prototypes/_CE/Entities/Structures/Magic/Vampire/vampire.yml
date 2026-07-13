@@ -91,9 +91,11 @@
           2: {state: orb2}
           3: {state: orb3}
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: CEMetallic
+  - type: Injurable
 
+  - type: Injurable
+    damageContainer: Inorganic
 - type: entity
   parent: CEVampireClanHeartBase
   id: CEVampireClanHeart
@@ -144,8 +146,9 @@
     graph: CEVampireClanHeart
     node: CEVampireClanHeartFrame
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: CEMetallic
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -187,8 +190,9 @@
     graph: CEVampireStoneAltar
     node: CEVampireStoneAltar
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: CERock
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:

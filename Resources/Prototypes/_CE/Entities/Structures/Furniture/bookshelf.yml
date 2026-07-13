@@ -54,8 +54,9 @@
         layer:
         - MachineLayer
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: CEWood
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:

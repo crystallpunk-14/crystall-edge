@@ -11,18 +11,19 @@
   - !type:AddAction
     action: CEActionVampireBite
 
-- type: skill
-  id: BloodEssenceCreation
-  skillUiPosition: 0, 4
-  learnCost: 0
-  tree: Vampire
-  icon:
-      sprite: _CE/Actions/vampire.rsi
-      state: essence_create
-  effects:
-  - !type:UnlockConstructions
-  - !type:AddAction
-    action: CEActionSpellBloodEssenceCreation
+#CrystallEdge: disabled, its action references CEBloodEssence which was never created (WIP feature)
+#- type: skill
+#  id: BloodEssenceCreation
+#  skillUiPosition: 0, 4
+#  learnCost: 0
+#  tree: Vampire
+#  icon:
+#      sprite: _CE/Actions/vampire.rsi
+#      state: essence_create
+#  effects:
+#  - !type:UnlockConstructions
+#  - !type:AddAction
+#    action: CEActionSpellBloodEssenceCreation
 
 # Tier 1
 
@@ -55,5 +56,6 @@
     action: CEActionSpellVampireCreate
   restrictions:
   - !type:HigherVampire
-  - !type:NeedPrerequisite
-    prerequisite: BloodEssenceCreation
+  #CrystallEdge: BloodEssenceCreation skill disabled, prerequisite removed
+  #- !type:NeedPrerequisite
+  #  prerequisite: BloodEssenceCreation

@@ -58,8 +58,9 @@
   - type: Icon
     sprite: _CE/Structures/Architecture/Fences/wooden_big.rsi
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Wood
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -91,8 +92,9 @@
   - type: Icon
     sprite: _CE/Structures/Architecture/Fences/iron_big.rsi
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:

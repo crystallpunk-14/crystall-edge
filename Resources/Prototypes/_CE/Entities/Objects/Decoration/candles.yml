@@ -71,6 +71,7 @@
   #      shader: unshaded
   - type: Damageable
     damageModifierSet: Wood
+  - type: Injurable
   - type: Destructible
     thresholds:
     - trigger:
@@ -113,6 +114,7 @@
     normalState: triple_fire
   - type: Damageable
     damageModifierSet: CEMetallic
+  - type: Injurable
   #- type: ToggleableLightVisuals #TODO inhands
   #  spriteLayer: null
   #  inhandVisuals:

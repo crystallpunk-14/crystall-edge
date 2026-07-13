@@ -66,8 +66,9 @@
     supplyRampTolerance: 10
     supplyRampRate: 1
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrong
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: RadiationReceiver
   - type: CEEnergyRadiationRegeneration
     energy: 1

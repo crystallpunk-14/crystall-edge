@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: CEBaseCrate
   abstract: true
   parent: BaseStructureDynamic
@@ -77,8 +77,9 @@
   - type: Sprite
     sprite: _CE/Structures/Furniture/Storage/Crates/large_wooden.rsi
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: CEWood
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -110,8 +111,9 @@
   - type: Sprite
     sprite: _CE/Structures/Furniture/Storage/Crates/small_wooden.rsi
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: CEWood
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:

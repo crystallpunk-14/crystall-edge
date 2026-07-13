@@ -121,8 +121,9 @@
   - type: Inventory
     templateId: CEHuman
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: CEWood
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -165,8 +166,9 @@
     - map: [ "mask" ]
     - map: [ "head" ]
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: CEWood
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -202,6 +204,7 @@
     - map: [ "mask" ]
     - map: [ "head" ]
   - type: Damageable
+  - type: Injurable
   - type: Destructible
     thresholds:
     - trigger:

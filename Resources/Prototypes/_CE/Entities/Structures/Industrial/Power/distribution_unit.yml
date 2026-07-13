@@ -83,8 +83,9 @@
     supplyRampTolerance: 5
     supplyRampRate: 1
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrong
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: UserInterface
     interfaces:
       enum.ApcUiKey.Key:
