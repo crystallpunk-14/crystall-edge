@@ -2,7 +2,6 @@
   id: CETieflingHorns
   bodyPart: HeadTop
   groupWhitelist: [ CETiefling ]
-  followSkinColor: true
   sprites:
   - sprite: _CE/Mobs/Customization/tiefling_horns.rsi
     state: horn1
@@ -11,7 +10,6 @@
   id: CETieflingHorns2
   bodyPart: HeadTop
   groupWhitelist: [ CETiefling ]
-  followSkinColor: true
   sprites:
   - sprite: _CE/Mobs/Customization/tiefling_horns.rsi
     state: horn2
@@ -20,7 +18,6 @@
   id: CETieflingHorns3
   bodyPart: HeadTop
   groupWhitelist: [ CETiefling ]
-  followSkinColor: true
   sprites:
   - sprite: _CE/Mobs/Customization/tiefling_horns.rsi
     state: horn3
@@ -29,7 +26,6 @@
   id: CETieflingHorns3Broken
   bodyPart: HeadTop
   groupWhitelist: [ CETiefling ]
-  followSkinColor: true
   sprites:
   - sprite: _CE/Mobs/Customization/tiefling_horns.rsi
     state: horn3_broken
@@ -38,7 +34,6 @@
   id: CETieflingHorns4
   bodyPart: HeadTop
   groupWhitelist: [ CETiefling ]
-  followSkinColor: true
   sprites:
   - sprite: _CE/Mobs/Customization/tiefling_horns.rsi
     state: horn4
@@ -47,7 +42,6 @@
   id: CETieflingHorns5
   bodyPart: HeadTop
   groupWhitelist: [ CETiefling ]
-  followSkinColor: true
   sprites:
   - sprite: _CE/Mobs/Customization/tiefling_horns.rsi
     state: horn5
@@ -56,7 +50,6 @@
   id: CETieflingHorns5Broken
   bodyPart: HeadTop
   groupWhitelist: [ CETiefling ]
-  followSkinColor: true
   sprites:
   - sprite: _CE/Mobs/Customization/tiefling_horns.rsi
     state: horn5_broken
@@ -65,7 +58,6 @@
   id: CETieflingHorns6
   bodyPart: HeadTop
   groupWhitelist: [ CETiefling ]
-  followSkinColor: true
   sprites:
   - sprite: _CE/Mobs/Customization/tiefling_horns.rsi
     state: horn6
@@ -74,7 +66,6 @@
   id: CETieflingHorns7
   bodyPart: HeadTop
   groupWhitelist: [ CETiefling ]
-  followSkinColor: true
   sprites:
   - sprite: _CE/Mobs/Customization/tiefling_horns.rsi
     state: horn7
@@ -83,7 +74,6 @@
   id: CETieflingHorns8
   bodyPart: HeadTop
   groupWhitelist: [ CETiefling ]
-  followSkinColor: true
   sprites:
   - sprite: _CE/Mobs/Customization/tiefling_horns.rsi
     state: horn8
@@ -92,7 +82,6 @@
   id: CETieflingHorns9
   bodyPart: HeadTop
   groupWhitelist: [ CETiefling ]
-  followSkinColor: true
   sprites:
   - sprite: _CE/Mobs/Customization/tiefling_horns.rsi
     state: horn9

@@ -1,7 +1,6 @@
 - type: marking
   id: CECarcatHeadStripes
   bodyPart: Head
-  followSkinColor: true
   groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_wool/head.rsi
@@ -10,7 +9,6 @@
 - type: marking
   id: CECarcatTorsoStripes
   bodyPart: Chest
-  followSkinColor: true
   groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_wool/torso.rsi
@@ -19,7 +17,6 @@
 - type: marking
   id: CECarcatArmLeftStripes
   bodyPart: LArm
-  followSkinColor: true
   groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_wool/left_hand.rsi
@@ -28,7 +25,6 @@
 - type: marking
   id: CECarcatArmRightStripes
   bodyPart: RArm
-  followSkinColor: true
   groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_wool/right_hand.rsi
@@ -37,7 +33,6 @@
 - type: marking
   id: CECarcatLegLeftStripes
   bodyPart: LLeg
-  followSkinColor: true
   groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_wool/left_leg.rsi
@@ -46,7 +41,6 @@
 - type: marking
   id: CECarcatLegRightStripes
   bodyPart: RLeg
-  followSkinColor: true
   groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_wool/right_leg.rsi

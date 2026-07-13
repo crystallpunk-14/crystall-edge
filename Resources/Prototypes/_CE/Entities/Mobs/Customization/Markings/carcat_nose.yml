@@ -1,7 +1,6 @@
 - type: marking
   id: CECarcatNose
   bodyPart: Snout
-  followSkinColor: true
   forcedColoring: true
   groupWhitelist: [ CECarcat ]
   sprites:
@@ -11,7 +10,6 @@
 - type: marking
   id: CECarcatNose2
   bodyPart: Snout
-  followSkinColor: true
   forcedColoring: true
   groupWhitelist: [ CECarcat ]
   sprites:
@@ -21,7 +19,6 @@
 - type: marking
   id: CECarcatNose3
   bodyPart: Snout
-  followSkinColor: true
   forcedColoring: true
   groupWhitelist: [ CECarcat ]
   sprites:
@@ -31,7 +28,6 @@
 - type: marking
   id: CECarcatNose4
   bodyPart: Snout
-  followSkinColor: true
   forcedColoring: true
   groupWhitelist: [ CECarcat ]
   sprites:
@@ -41,7 +37,6 @@
 - type: marking
   id: CECarcatNose5
   bodyPart: Snout
-  followSkinColor: true
   forcedColoring: true
   groupWhitelist: [ CECarcat ]
   sprites:
@@ -51,7 +46,6 @@
 - type: marking
   id: CECarcatNose6
   bodyPart: Snout
-  followSkinColor: true
   forcedColoring: true
   groupWhitelist: [ CECarcat ]
   sprites:

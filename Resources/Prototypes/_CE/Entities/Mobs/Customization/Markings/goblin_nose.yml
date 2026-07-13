@@ -1,7 +1,6 @@
 - type: marking
   id: CEGoblinNose
   bodyPart: Snout
-  followSkinColor: true
   forcedColoring: true
   groupWhitelist: [ CEGoblin ]
   sprites:
@@ -11,7 +10,6 @@
 - type: marking
   id: CEGoblinNose2
   bodyPart: Snout
-  followSkinColor: true
   forcedColoring: true
   groupWhitelist: [ CEGoblin ]
   sprites:
@@ -21,7 +19,6 @@
 - type: marking
   id: CEGoblinNose3
   bodyPart: Snout
-  followSkinColor: true
   forcedColoring: true
   groupWhitelist: [ CEGoblin ]
   sprites:
