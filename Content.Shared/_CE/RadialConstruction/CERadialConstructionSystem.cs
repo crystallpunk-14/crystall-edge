@@ -10,7 +10,6 @@ namespace Content.Shared._CE.RadialConstruction;
 
 public sealed partial class CERadialConstructionSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly SharedToolSystem _tool = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;

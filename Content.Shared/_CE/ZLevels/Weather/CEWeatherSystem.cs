@@ -6,6 +6,7 @@
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.Weather;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.ZLevels.Weather;
 
@@ -16,7 +17,7 @@ public sealed class CEWeatherSystem : EntitySystem
 {
     [Dependency] private readonly SharedWeatherSystem _weather = default!;
 
-    public void SetWeather(Entity<CEZLevelsNetworkComponent?> network, WeatherPrototype? proto, TimeSpan? endTime)
+    public void SetWeather(Entity<CEZLevelsNetworkComponent?> network, EntProtoId? proto, TimeSpan? endTime)
     {
         if (!Resolve(network, ref network.Comp))
             return;
@@ -26,7 +27,7 @@ public sealed class CEWeatherSystem : EntitySystem
             if (!TryComp<MapComponent>(map, out var mapComp))
                 continue;
 
-            _weather.SetWeather(mapComp.MapId, proto, endTime);
+            _weather.TrySetWeather(mapComp.MapId, proto, out _, endTime);
         }
     }
 }

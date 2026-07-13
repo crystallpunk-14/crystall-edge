@@ -36,7 +36,7 @@ public abstract partial class CESharedFarmingSystem : EntitySystem
 
     protected EntityQuery<CEPlantComponent> PlantQuery;
     protected EntityQuery<CEPlantProducingComponent> PlantProducingQuery;
-    protected EntityQuery<SolutionContainerManagerComponent> SolutionQuery;
+    protected EntityQuery<SolutionManagerComponent> SolutionQuery;
 
     public override void Initialize()
     {
@@ -48,7 +48,7 @@ public abstract partial class CESharedFarmingSystem : EntitySystem
 
         PlantQuery = GetEntityQuery<CEPlantComponent>();
         PlantProducingQuery = GetEntityQuery<CEPlantProducingComponent>();
-        SolutionQuery = GetEntityQuery<SolutionContainerManagerComponent>();
+        SolutionQuery = GetEntityQuery<SolutionManagerComponent>();
 
         SubscribeLocalEvent<CEPlantComponent, AnchorStateChangedEvent>(OnAnchorStateChanged);
     }

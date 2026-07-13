@@ -93,21 +93,9 @@ public abstract partial class CESharedEconomySystem : EntitySystem
     {
         var price = 0.0;
 
-        if (prototype.Components.TryGetValue(Factory.GetComponentName<SolutionContainerManagerComponent>(), out var solManager))
+        foreach (var (_, solution) in _solutionContainerSystem.EnumerateSolutions(prototype))
         {
-            var solComp = (SolutionContainerManagerComponent) solManager.Component;
-            price += GetSolutionPrice(solComp);
-        }
-
-        return price;
-    }
-    private double GetSolutionPrice(SolutionContainerManagerComponent component)
-    {
-        var price = 0.0;
-
-        foreach (var (_, prototype) in _solutionContainerSystem.EnumerateSolutions(component))
-        {
-            foreach (var (reagent, quantity) in prototype.Contents)
+            foreach (var (reagent, quantity) in solution.Contents)
             {
                 if (!_prototypeManager.TryIndex<ReagentPrototype>(reagent.Prototype, out var reagentProto))
                     continue;

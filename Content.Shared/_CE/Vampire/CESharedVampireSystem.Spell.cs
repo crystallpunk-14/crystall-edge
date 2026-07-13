@@ -7,8 +7,6 @@ namespace Content.Shared._CE.Vampire;
 
 public abstract partial class CESharedVampireSystem
 {
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-
     private void InitializeSpell()
     {
         SubscribeLocalEvent<CEMagicEffectVampireComponent, ActionAttemptEvent>(OnVampireCastAttempt);

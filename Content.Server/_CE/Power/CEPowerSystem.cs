@@ -71,7 +71,7 @@ public sealed partial class CEPowerSystem : CESharedPowerSystem
         if (TryComp<RadiationSourceComponent>(ent, out var radComp))
         {
             _radiation.SetSourceEnabled((ent.Owner, radComp), enabled);
-            radComp.Intensity = args.ReceivedPower * ent.Comp.LeakPercentage;
+            _radiation.SetIntensity((ent.Owner, radComp), args.ReceivedPower * ent.Comp.LeakPercentage);
         }
 
         ent.Comp.CurrentLeak = args.ReceivedPower * ent.Comp.LeakPercentage;

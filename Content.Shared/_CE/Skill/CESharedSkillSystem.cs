@@ -29,21 +29,14 @@ public abstract partial class CESharedSkillSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly ExamineSystemShared _examine = default!;
-    [Dependency] private readonly ThrowingSystem _throwing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly ISharedAdminManager _admin = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
 
-    private EntityQuery<CESkillStorageComponent> _skillStorageQuery;
-
     public override void Initialize()
     {
         base.Initialize();
-
-        _skillStorageQuery = GetEntityQuery<CESkillStorageComponent>();
 
         SubscribeLocalEvent<CESkillStorageComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<CESkillPointConsumableComponent, UseInHandEvent>(OnInteracted);

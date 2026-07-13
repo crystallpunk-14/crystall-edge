@@ -41,7 +41,7 @@ public abstract partial class SharedWeatherSystem : EntitySystem
         if (Resolve(ent, ref ent.Comp2, false) && _roof.IsRooved((ent, ent.Comp1, ent.Comp2), tileRef.GridIndices))
             return false;
 
-        if (_zLevel.HasTileAbove(tileRef.GridIndices, ent)) //CrystallEdge - we need also custom check for zLevel roofs above empty (unrooved by roofSystem) tiles
+        if (_zLevel.HasTileAbove(tileRef.GridIndices, (ent.Owner, null))) //CrystallEdge - we need also custom check for zLevel roofs above empty (unrooved by roofSystem) tiles
             return false;
 
         var tileDef = (ContentTileDefinition)_tileDefManager[tileRef.Tile.TypeId];

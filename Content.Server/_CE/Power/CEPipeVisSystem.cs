@@ -13,7 +13,6 @@ namespace Content.Server._CE.Power;
 public sealed class CEPipeVisSystem : EntitySystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly NodeContainerSystem _nodeContainer = default!;
     [Dependency] private readonly SharedMapSystem _map = default!;
 
     private EntityQuery<TransformComponent> _transformQuery;
@@ -48,10 +47,10 @@ public sealed class CEPipeVisSystem : EntitySystem
 
 
             foreach (var reachable in
-                     node.GetReachableNodes(transform,
+                     node.GetReachableNodes((uid, transform),
                          _nodeQuery,
                          _transformQuery,
-                         grid,
+                         (transform.GridUid.Value, grid),
                          EntityManager))
             {
                 if (reachable is not CableNode && reachable is not CEConnectorEdgeNode)

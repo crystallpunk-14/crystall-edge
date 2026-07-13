@@ -10,9 +10,11 @@ using Content.Shared._CE.Vampire;
 using Content.Shared._CE.Vampire.Components;
 using Content.Shared.Actions.Events;
 using Content.Shared.Atmos.Components;
+using Content.Shared.Body;
 using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
 using Content.Shared.Ghost;
+using Content.Shared.Metabolism;
 using Content.Shared.Popups;
 using Content.Shared.Stacks;
 using Content.Shared.Temperature.Components;
@@ -183,12 +185,15 @@ public sealed partial class CEVampireSystem : CESharedVampireSystem
         base.OnVampireInit(ent, ref args);
 
         //Metabolism
-        foreach (var (organUid, _) in _body.GetBodyOrgans(ent))
+        if (_body.TryGetOrgansWithComponent<MetabolizerComponent>((ent.Owner, null), out var organs))
         {
-            if (TryComp<MetabolizerComponent>(organUid, out var metabolizer) && metabolizer.MetabolizerTypes is not null)
+            foreach (var (_, metabolizer) in organs)
             {
-                metabolizer.MetabolizerTypes.Clear();
-                metabolizer.MetabolizerTypes.Add(ent.Comp.MetabolizerType);
+                if (metabolizer.MetabolizerTypes is not null)
+                {
+                    metabolizer.MetabolizerTypes.Clear();
+                    metabolizer.MetabolizerTypes.Add(ent.Comp.MetabolizerType);
+                }
             }
         }
     }

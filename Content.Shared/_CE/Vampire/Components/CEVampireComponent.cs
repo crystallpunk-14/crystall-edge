@@ -1,7 +1,7 @@
 using Content.Shared._CE.Skill.Prototypes;
-using Content.Shared.Body.Prototypes;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
+using Content.Shared.Metabolism;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 

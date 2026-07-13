@@ -28,7 +28,7 @@ public sealed class CEOreVeinSystem : EntitySystem
 
         var requiredDamage = ent.Comp.Damage;
 
-        var totalDamage = args.Damageable.Damage;
+        var totalDamage = _damageable.GetAllDamage((ent.Owner, args.Damageable));
 
         var allDamageTypesMet = true;
         foreach (var required in requiredDamage.DamageDict)

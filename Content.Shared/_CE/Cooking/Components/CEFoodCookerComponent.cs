@@ -23,8 +23,8 @@ public sealed partial class CEFoodCookerComponent : Component
     [DataField(required: true)]
     public string ContainerId = string.Empty;
 
-    [DataField]
-    public string? SolutionId;
+    [DataField(required: true)]
+    public string SolutionId = string.Empty;
 
     public DoAfterId? DoAfterId = null;
 

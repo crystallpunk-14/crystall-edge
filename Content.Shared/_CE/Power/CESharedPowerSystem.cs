@@ -7,6 +7,7 @@ using Content.Shared.Power.Components;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.PowerCell;
 using Content.Shared.Radiation.Components;
+using Content.Shared.Radiation.Systems;
 using Content.Shared.Timing;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
@@ -26,6 +27,7 @@ public abstract partial class CESharedPowerSystem : EntitySystem
     [Dependency] protected readonly SharedBatterySystem Battery = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly SharedRadiationSystem _radiation = default!;
 
     private readonly EntProtoId _irradiationProto = "CERadiationSourceVFX";
 
@@ -69,9 +71,8 @@ public abstract partial class CESharedPowerSystem : EntitySystem
         var vfx = SpawnAtPosition(_irradiationProto, position);
 
         var totalSec = (float)seconds.TotalSeconds;
-        var radiation = EnsureComp<RadiationSourceComponent>(vfx);
-        radiation.Enabled = true;
-        radiation.Intensity = charge / totalSec;
+        EnsureComp<RadiationSourceComponent>(vfx);
+        _radiation.SetIntensity(vfx, charge / totalSec);
 
         var timeDespawn = EnsureComp<TimedDespawnComponent>(vfx);
         timeDespawn.Lifetime = totalSec;

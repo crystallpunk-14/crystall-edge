@@ -132,18 +132,12 @@ namespace Content.Shared.Maps
         /// <summary>
         ///     Hide this tile in the tile placement editor.
         /// </summary>
-        [DataField] public bool EditorHidden { get; private set; } = false;
+        [DataField] public bool EditorHidden { get; private set; } = true; //CrystallEdge: defaults to true for vanilla tile filtering; CE's own tiles opt back in with editorHidden: false
 
         public void AssignTileId(ushort id)
         {
             TileId = id;
         }
-
-        /// <summary>
-        /// CrystallEdge: Vanilla tile filtering
-        /// </summary>
-        [DataField]
-        public bool EditorHidden { get; private set; } = true;
 
         /// <summary>
         /// CrystallEdge: used for lightning calculation through zlevels

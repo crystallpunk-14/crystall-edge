@@ -28,8 +28,8 @@ public sealed class CEFloorTileExamineSystem : EntitySystem
 
             var tileName = Loc.GetString(indexedTile.Name);
 
-            var baseName = indexedTile.BaseTurf;
-            if (!string.IsNullOrEmpty(baseName) && _proto.TryIndex<ContentTileDefinition>(baseName, out var baseProto))
+            var baseName = indexedTile.BaseTurf ?? "unknown";
+            if (!string.IsNullOrEmpty(baseName) && _proto.TryIndex(baseName, out var baseProto))
             {
                 baseName = Loc.GetString(baseProto.Name);
             }

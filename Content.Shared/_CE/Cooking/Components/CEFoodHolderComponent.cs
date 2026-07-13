@@ -33,8 +33,8 @@ public sealed partial class CEFoodHolderComponent : Component
     [DataField(required: true)]
     public ProtoId<CEFoodTypePrototype> FoodType;
 
-    [DataField]
-    public string? SolutionId;
+    [DataField(required: true)]
+    public string SolutionId = string.Empty;
 
     [DataField]
     public int MaxDisplacementFillLevels = 8;
