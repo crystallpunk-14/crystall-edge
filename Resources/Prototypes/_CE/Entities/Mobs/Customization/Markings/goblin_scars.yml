@@ -1,9 +1,8 @@
 - type: marking
   id: CEGoblinScarCheekLeft
   bodyPart: Head
-  markingCategory: Head
   followSkinColor: true
-  speciesRestriction: [ CEGoblin ]
+  groupWhitelist: [ CEGoblin ]
   sprites:
     - sprite: _CE/Mobs/Customization/goblin_scars.rsi
       state: scar_cheek_left
@@ -11,9 +10,8 @@
 - type: marking
   id: CEGoblinScarCheekRight
   bodyPart: Head
-  markingCategory: Head
   followSkinColor: true
-  speciesRestriction: [ CEGoblin ]
+  groupWhitelist: [ CEGoblin ]
   sprites:
     - sprite: _CE/Mobs/Customization/goblin_scars.rsi
       state: scar_cheek_right
@@ -21,9 +19,8 @@
 - type: marking
   id: CEGoblinScarChestLeft
   bodyPart: Chest
-  markingCategory: Chest
   followSkinColor: true
-  speciesRestriction: [ CEGoblin ]
+  groupWhitelist: [ CEGoblin ]
   sprites:
     - sprite: _CE/Mobs/Customization/goblin_scars.rsi
       state: scar_chest_left
@@ -31,9 +28,8 @@
 - type: marking
   id: CEGoblinScarChestRight
   bodyPart: Chest
-  markingCategory: Chest
   followSkinColor: true
-  speciesRestriction: [ CEGoblin ]
+  groupWhitelist: [ CEGoblin ]
   sprites:
     - sprite: _CE/Mobs/Customization/goblin_scars.rsi
       state: scar_chest_right
@@ -41,9 +37,8 @@
 - type: marking
   id: CEGoblinScarCutLeft
   bodyPart: Head
-  markingCategory: Head
   followSkinColor: true
-  speciesRestriction: [ CEGoblin ]
+  groupWhitelist: [ CEGoblin ]
   sprites:
     - sprite: _CE/Mobs/Customization/goblin_scars.rsi
       state: scar_cut_left
@@ -51,9 +46,8 @@
 - type: marking
   id: CEGoblinScarCutRight
   bodyPart: Head
-  markingCategory: Head
   followSkinColor: true
-  speciesRestriction: [ CEGoblin ]
+  groupWhitelist: [ CEGoblin ]
   sprites:
     - sprite: _CE/Mobs/Customization/goblin_scars.rsi
       state: scar_cut_right
@@ -61,9 +55,8 @@
 - type: marking
   id: CEGoblinScarEyeLeft
   bodyPart: Head
-  markingCategory: Head
   followSkinColor: true
-  speciesRestriction: [ CEGoblin ]
+  groupWhitelist: [ CEGoblin ]
   sprites:
     - sprite: _CE/Mobs/Customization/goblin_scars.rsi
       state: scar_eye_left
@@ -71,9 +64,8 @@
 - type: marking
   id: CEGoblinScarEyeRight
   bodyPart: Head
-  markingCategory: Head
   followSkinColor: true
-  speciesRestriction: [ CEGoblin ]
+  groupWhitelist: [ CEGoblin ]
   sprites:
     - sprite: _CE/Mobs/Customization/goblin_scars.rsi
       state: scar_eye_right
@@ -81,9 +73,8 @@
 - type: marking
   id: CEGoblinScarEyebrowLeft
   bodyPart: Head
-  markingCategory: Head
   followSkinColor: true
-  speciesRestriction: [ CEGoblin ]
+  groupWhitelist: [ CEGoblin ]
   sprites:
     - sprite: _CE/Mobs/Customization/goblin_scars.rsi
       state: scar_eyebrow_left
@@ -91,9 +82,8 @@
 - type: marking
   id: CEGoblinScarEyebrowRight
   bodyPart: Head
-  markingCategory: Head
   followSkinColor: true
-  speciesRestriction: [ CEGoblin ]
+  groupWhitelist: [ CEGoblin ]
   sprites:
     - sprite: _CE/Mobs/Customization/goblin_scars.rsi
       state: scar_eyebrow_right
@@ -101,9 +91,8 @@
 - type: marking
   id: CEGoblinScarHalfFaceLeft
   bodyPart: Head
-  markingCategory: Head
   followSkinColor: true
-  speciesRestriction: [ CEGoblin ]
+  groupWhitelist: [ CEGoblin ]
   sprites:
     - sprite: _CE/Mobs/Customization/goblin_scars.rsi
       state: scar_half_face_left
@@ -111,9 +100,8 @@
 - type: marking
   id: CEGoblinScarHalfFaceRight
   bodyPart: Head
-  markingCategory: Head
   followSkinColor: true
-  speciesRestriction: [ CEGoblin ]
+  groupWhitelist: [ CEGoblin ]
   sprites:
     - sprite: _CE/Mobs/Customization/goblin_scars.rsi
       state: scar_half_face_right
@@ -121,9 +109,8 @@
 - type: marking
   id: CEGoblinScarNearRibLeft
   bodyPart: Chest
-  markingCategory: Chest
   followSkinColor: true
-  speciesRestriction: [ CEGoblin ]
+  groupWhitelist: [ CEGoblin ]
   sprites:
     - sprite: _CE/Mobs/Customization/goblin_scars.rsi
       state: scar_near_rib_left
@@ -131,9 +118,8 @@
 - type: marking
   id: CEGoblinScarNearRibRight
   bodyPart: Chest
-  markingCategory: Chest
   followSkinColor: true
-  speciesRestriction: [ CEGoblin ]
+  groupWhitelist: [ CEGoblin ]
   sprites:
     - sprite: _CE/Mobs/Customization/goblin_scars.rsi
       state: scar_near_rib_right
@@ -141,9 +127,8 @@
 - type: marking
   id: CEGoblinScarNose
   bodyPart: Head
-  markingCategory: Head
   followSkinColor: true
-  speciesRestriction: [ CEGoblin ]
+  groupWhitelist: [ CEGoblin ]
   sprites:
     - sprite: _CE/Mobs/Customization/goblin_scars.rsi
       state: scar_nose

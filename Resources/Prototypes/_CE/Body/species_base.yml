@@ -1,15 +1,8 @@
 - type: entity
-  save: false
-  parent:
-  - BaseMob
-  - MobCombat
-  - CEMobDamageable
-  - CEMobMagical
-  - CEMobTemperature
-  - MobPolymorphable
-  id: CEBaseMobSpecies
-  categories: [ ForkFiltered ]
+  id: CEBaseSpeciesAppearance
+  parent: BaseSpeciesAppearance
   abstract: true
+  save: false
   components:
   - type: Sprite
     layers:
@@ -51,6 +44,21 @@
       sprite: Objects/Misc/handcuffs.rsi
       state: body-overlay-2
       visible: false
+
+- type: entity
+  save: false
+  parent:
+  - BaseMob
+  - MobCombat
+  - CEMobDamageable
+  - CEMobMagical
+  - CEMobTemperature
+  - MobPolymorphable
+  - CEBaseSpeciesAppearance
+  id: CEBaseSpeciesMob
+  categories: [ ForkFiltered ]
+  abstract: true
+  components:
   - type: DamageVisuals
     thresholds: [ 10, 20, 30, 50, 70, 100 ]
     targetLayers:
@@ -77,8 +85,6 @@
   - type: RotationVisuals
     defaultRotation: 90
     horizontalRotation: 90
-  - type: HumanoidAppearance
-    species: CEHuman
   - type: SlowOnDamage
     speedModifierThresholds:
       60: 0.7
@@ -123,15 +129,8 @@
     - Flashed
     - RadiationProtection
     - Adrenaline
-  - type: Body
-    prototype: CEHuman
-    requiredLegs: 2
   - type: Crawler
   - type: Identity
-  - type: Hands
-  - type: ComplexInteraction
-  - type: Inventory
-  - type: InventorySlots
   - type: Climbing
   - type: Cuffable
   - type: Ensnareable
@@ -207,9 +206,9 @@
   parent:
   - MobBloodstream
   - MobFlammable
-  - CEBaseMobSpecies
+  - CEBaseSpeciesMob
   - CEMobRespirator
-  id: CEBaseMobSpeciesOrganic
+  id: CEBaseSpeciesMobOrganic
   save: false
   abstract: true
   components:
@@ -245,67 +244,3 @@
     normalState: Small_burning
     alternateState: Humanoid_burning
   - type: CEAmbitionsSetup
-
-- type: entity
-  save: false
-  id: CEBaseSpeciesDummy
-  abstract: true
-  components:
-  - type: Hands
-  - type: Inventory
-    templateId: CEHuman
-  - type: InventorySlots
-  - type: ContainerContainer
-  - type: Icon
-    sprite: _CE/Mobs/Species/Human/parts.rsi
-    state: full
-  - type: Sprite
-    layers:
-    - map: [ "enum.HumanoidVisualLayers.Chest" ]
-    - map: [ "enum.HumanoidVisualLayers.Head" ]
-    - map: [ "enum.HumanoidVisualLayers.Snout" ]
-    - map: [ "enum.HumanoidVisualLayers.Eyes" ]
-    - map: [ "enum.HumanoidVisualLayers.RArm" ]
-    - map: [ "enum.HumanoidVisualLayers.LArm" ]
-    - map: [ "enum.HumanoidVisualLayers.RLeg" ]
-    - map: [ "enum.HumanoidVisualLayers.LLeg" ]
-    - map: [ "enum.HumanoidVisualLayers.LFoot" ]
-    - map: [ "enum.HumanoidVisualLayers.RFoot" ]
-    - map: [ "pants" ]
-    - map: [ "shoes" ]
-    - map: [ "shirt" ]
-    - map: [ "enum.HumanoidVisualLayers.LHand" ]
-    - map: [ "enum.HumanoidVisualLayers.RHand" ]
-    - map: [ "gloves" ]
-    - map: [ "ears" ]
-    - map: [ "outerClothing" ]
-    - map: [ "cloak" ]
-    - map: [ "belt" ]
-    - map: [ "belt2" ]
-    - map: [ "neck" ]
-    - map: [ "back" ]
-    - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
-    - map: [ "eyes" ]
-    - map: [ "enum.HumanoidVisualLayers.Hair" ]
-    - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
-    - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
-    - map: [ "enum.HumanoidVisualLayers.Tail" ]
-    - map: [ "mask" ]
-    - map: [ "head" ]
-    - map: [ "pocket1" ]
-    - map: [ "pocket2" ]
-    - map: ["enum.HumanoidVisualLayers.Handcuffs"]
-      color: "#ffffff"
-      sprite: Objects/Misc/handcuffs.rsi
-      state: body-overlay-2
-      visible: false
-  - type: Appearance
-  - type: HumanoidAppearance
-    species: CEHuman
-  - type: Body
-    prototype: CEHuman
-    requiredLegs: 2
-  - type: UserInterface
-    interfaces:
-      enum.HumanoidMarkingModifierKey.Key: # sure, this can go here too
-        type: HumanoidMarkingModifierBoundUserInterface

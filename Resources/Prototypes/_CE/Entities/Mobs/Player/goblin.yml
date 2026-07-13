@@ -1,4 +1,0 @@
-- type: entity
-  save: false
-  parent: CEBaseMobGoblin
-  id: CEMobGoblin

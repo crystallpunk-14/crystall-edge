@@ -1,8 +1,7 @@
 - type: marking
   id: CECarcatTail
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ CECarcat ]
+  groupWhitelist: [ CECarcat ]
   followSkinColor: true
   forcedColoring: false
   sprites:
@@ -12,8 +11,7 @@
 - type: marking
   id: CECarcatTailFluffy
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ CECarcat ]
+  groupWhitelist: [ CECarcat ]
   followSkinColor: true
   forcedColoring: false
   sprites:
@@ -27,8 +25,6 @@
 - type: marking
   id: CECarcatTailAnimated
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: []
   followSkinColor: true
   forcedColoring: false
   sprites:
@@ -38,8 +34,6 @@
 - type: marking
   id: CECarcatTailFluffyAnimated
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: []
   followSkinColor: true
   forcedColoring: false
   sprites:

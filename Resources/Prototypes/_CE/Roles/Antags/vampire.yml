@@ -8,3 +8,29 @@
   - !type:OverallPlaytimeRequirement
     time: 7200 # 2h
   #guides: TODO
+
+- type: antagSpecifier
+  id: CEVampire
+  prefRoles:
+  - CEVampire
+  mindRoles:
+  - CEMindRoleVampire
+  components:
+  - type: CEVampire
+  - type: CEShowVampireIcons
+  - type: Hunger
+    hungerThresholdAlerts:
+      Peckish: CEVampirePeckish
+      Starving: CEVampireStarving
+      Dead: CEVampireStarving
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    - Critical
+    damage:
+      groups:
+        Brute: -3
+  briefing:
+    text: ce-roles-antag-vampire-briefing
+    color: "#630f24"
+    sound: "/Audio/_CE/Ambience/Antag/vampire.ogg"

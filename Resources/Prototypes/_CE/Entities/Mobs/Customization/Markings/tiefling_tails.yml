@@ -1,8 +1,7 @@
 - type: marking
   id: CETieflingTail
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ CETiefling ]
+  groupWhitelist: [ CETiefling ]
   followSkinColor: true
   forcedColoring: true
   sprites:
@@ -12,8 +11,7 @@
 - type: marking
   id: CETieflingTailSpades
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ CETiefling ]
+  groupWhitelist: [ CETiefling ]
   followSkinColor: true
   forcedColoring: true
   sprites:
@@ -28,8 +26,6 @@
 - type: marking
   id: CETieflingTailAnimated
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: []
   followSkinColor: true
   forcedColoring: true
   sprites:
@@ -39,8 +35,6 @@
 - type: marking
   id: CETieflingTailSpadesAnimated
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: []
   followSkinColor: true
   forcedColoring: true
   sprites:
