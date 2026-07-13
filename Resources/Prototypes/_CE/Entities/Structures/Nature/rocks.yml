@@ -14,8 +14,6 @@
   - type: Damageable
     damageModifierSet: Rock
   - type: Injurable
-
-  - type: Injurable
     damageContainer: StructuralInorganic
 - type: entity
   id: CERockSmall

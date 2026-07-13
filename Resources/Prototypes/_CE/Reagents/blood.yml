@@ -35,9 +35,11 @@
         - !type:MetabolizerTypeCondition
           type: [ CEVampire ]
         damage:
-          groups:
-            Brute: -5
-            Burn: -2
+          types:
+            Blunt: -5
+            Slash: -5
+            Piercing: -5
+            Heat: -2
   pricePerUnit: 0.2
 
 - type: reagent

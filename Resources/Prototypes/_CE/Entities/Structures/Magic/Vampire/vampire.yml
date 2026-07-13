@@ -93,8 +93,6 @@
   - type: Damageable
     damageModifierSet: CEMetallic
   - type: Injurable
-
-  - type: Injurable
     damageContainer: Inorganic
 - type: entity
   parent: CEVampireClanHeartBase

@@ -13,9 +13,11 @@
         - !type:HealthChange
           ignoreResistances: true
           damage:
-            groups:
-              Brute: -0.1
-              Burn: -0.1
+            types:
+              Blunt: -0.1
+              Slash: -0.1
+              Piercing: -0.1
+              Heat: -0.1
 
 - type: entity
   parent: StatusEffectBase
@@ -34,9 +36,11 @@
         - !type:HealthChange
           ignoreResistances: true
           damage:
-            groups:
-              Brute: -0.2
-              Burn: -0.2
+            types:
+              Blunt: -0.2
+              Slash: -0.2
+              Piercing: -0.2
+              Heat: -0.2
 
 - type: entity
   parent: StatusEffectBase
@@ -55,9 +59,8 @@
         - !type:HealthChange
           ignoreResistances: true
           damage:
-            groups:
-              Burn: -0.1
             types:
+              Heat: -0.1
               Blunt: 0.5
 
 - type: entity
