@@ -7,8 +7,8 @@ namespace Content.Client._CE.UnderWall;
 
 public sealed class CEUnderWallSystem : EntitySystem
 {
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly SpriteSystem _sprite = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     public override void Initialize()
     {

@@ -10,9 +10,9 @@ namespace Content.Server._CE.Vampire;
 
 public sealed partial class CEVampireSystem
 {
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly IAdminManager _admin = default!;
+    [Dependency] private ChatSystem _chat = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private IAdminManager _admin = default!;
 
     private void InitializeAnnounces()
     {

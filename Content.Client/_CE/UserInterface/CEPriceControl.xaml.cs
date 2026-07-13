@@ -9,7 +9,7 @@ namespace Content.Client._CE.UserInterface;
 [GenerateTypedNameReferences]
 public sealed partial class CEPriceControl : Control
 {
-    [Dependency] private readonly IEntityManager _entity = default!;
+    [Dependency] private IEntityManager _entity = default!;
 
     public CEPriceControl(int price)
     {

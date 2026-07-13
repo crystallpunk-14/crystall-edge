@@ -23,9 +23,9 @@ public sealed class WaypointerOverlay : Overlay
 {
     private static readonly ProtoId<ShaderPrototype> UnshadedShader = "unshaded";
 
-    [Dependency] private readonly IEntityManager _entity = default!;
-    [Dependency] private readonly IPlayerManager  _player = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private IEntityManager _entity = default!;
+    [Dependency] private IPlayerManager  _player = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
 
     private readonly SharedPhysicsSystem _physics;
     private readonly SpriteSystem _sprite;

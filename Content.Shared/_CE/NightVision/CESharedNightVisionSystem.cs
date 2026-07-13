@@ -4,7 +4,7 @@ namespace Content.Shared._CE.NightVision;
 
 public abstract class CESharedNightVisionSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
+    [Dependency] private SharedActionsSystem _actions = default!;
 
     public override void Initialize()
     {

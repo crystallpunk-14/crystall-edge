@@ -6,8 +6,8 @@ namespace Content.Client._CE.Vampire;
 
 public sealed class CEClientVampireSystem : CESharedVampireSystem
 {
-    [Dependency] private readonly SpriteSystem _sprite = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     protected override void OnVampireVisualsInit(Entity<CEVampireVisualsComponent> vampire, ref ComponentInit args)
     {

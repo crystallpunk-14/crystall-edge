@@ -16,8 +16,8 @@ namespace Content.Client._CE.Blinking;
 /// <inheritdoc/>
 public sealed class CEBlinkingSystem : CESharedBlinkingSystem
 {
-    [Dependency] private readonly AnimationPlayerSystem _animationPlayer = default!;
-    [Dependency] private readonly SpriteSystem _sprite = default!;
+    [Dependency] private AnimationPlayerSystem _animationPlayer = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     private const string AnimationKey = "anim-blink";
 

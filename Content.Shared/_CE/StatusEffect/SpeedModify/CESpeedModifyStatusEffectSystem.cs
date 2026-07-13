@@ -5,7 +5,7 @@ namespace Content.Shared._CE.StatusEffect.SpeedModify;
 
 public sealed class CESpeedModifyStatusEffectSystem : EntitySystem
 {
-    [Dependency] private readonly MovementSpeedModifierSystem _speedModifier = default!;
+    [Dependency] private MovementSpeedModifierSystem _speedModifier = default!;
     public override void Initialize()
     {
         base.Initialize();

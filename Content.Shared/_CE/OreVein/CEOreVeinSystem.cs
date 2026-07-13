@@ -10,9 +10,9 @@ namespace Content.Shared._CE.OreVein;
 /// </summary>
 public sealed class CEOreVeinSystem : EntitySystem
 {
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly EntityTableSystem _table = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private EntityTableSystem _table = default!;
 
     public override void Initialize()
     {

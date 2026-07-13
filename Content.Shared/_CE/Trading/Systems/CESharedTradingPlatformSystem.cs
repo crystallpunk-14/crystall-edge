@@ -9,8 +9,8 @@ namespace Content.Shared._CE.Trading.Systems;
 
 public abstract partial class CESharedTradingPlatformSystem : EntitySystem
 {
-    [Dependency] protected readonly IPrototypeManager Proto = default!;
-    [Dependency] protected readonly IGameTiming Timing = default!;
+    [Dependency] protected IPrototypeManager Proto = default!;
+    [Dependency] protected IGameTiming Timing = default!;
 
     public int? GetPrice(ProtoId<CETradingPositionPrototype> position)
     {

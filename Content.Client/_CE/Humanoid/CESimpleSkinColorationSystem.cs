@@ -7,8 +7,8 @@ namespace Content.Client._CE.Humanoid;
 
 public sealed class CESimpleSkinColorationSystem : EntitySystem
 {
-    [Dependency] private readonly SpriteSystem _sprite = default!;
-    [Dependency] private readonly SharedVisualBodySystem _visualBody = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
+    [Dependency] private SharedVisualBodySystem _visualBody = default!;
 
     //CrystallEdge: any non-eye organ carries the body's general skin tone; Torso is always present on a humanoid
     private readonly ProtoId<OrganCategoryPrototype> _skinToneOrganCategory = "Torso";

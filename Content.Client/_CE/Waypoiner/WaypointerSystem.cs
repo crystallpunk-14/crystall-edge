@@ -13,10 +13,10 @@ namespace Content.Client.Waypointer;
 /// </summary>
 public sealed class WaypointerSystem : SharedWaypointerSystem
 {
-    [Dependency] private readonly IPlayerManager  _player = default!;
-    [Dependency] private readonly IClientGameTiming _timing = default!;
-    [Dependency] private readonly IOverlayManager _overlay = default!;
-    [Dependency] private readonly ActionsSystem _actions = default!;
+    [Dependency] private IPlayerManager  _player = default!;
+    [Dependency] private IClientGameTiming _timing = default!;
+    [Dependency] private IOverlayManager _overlay = default!;
+    [Dependency] private ActionsSystem _actions = default!;
 
     private WaypointerOverlay _waypointerOverlay = default!;
 

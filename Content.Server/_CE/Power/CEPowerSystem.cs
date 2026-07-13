@@ -14,9 +14,9 @@ namespace Content.Server._CE.Power;
 
 public sealed partial class CEPowerSystem : CESharedPowerSystem
 {
-    [Dependency] private readonly RadiationSystem _radiation = default!;
-    [Dependency] private readonly AppearanceSystem _appearance = default!;
-    [Dependency] private readonly NodeGroupSystem _nodeGroup = default!;
+    [Dependency] private RadiationSystem _radiation = default!;
+    [Dependency] private AppearanceSystem _appearance = default!;
+    [Dependency] private NodeGroupSystem _nodeGroup = default!;
 
     public override void Initialize()
     {

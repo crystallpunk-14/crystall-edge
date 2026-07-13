@@ -28,16 +28,16 @@ namespace Content.Server._CE.Arrivals;
 /// </summary>
 public sealed class CEArrivalsSystem : EntitySystem
 {
-    [Dependency] private readonly IConfigurationManager _cfgManager = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly GameTicker _ticker = default!;
-    [Dependency] private readonly MapLoaderSystem _loader = default!;
-    [Dependency] private readonly MetaDataSystem _metaData = default!;
-    [Dependency] private readonly SharedMapSystem _mapSystem = default!;
-    [Dependency] private readonly ShuttleSystem _shuttles = default!;
-    [Dependency] private readonly StationSpawningSystem _stationSpawning = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private IConfigurationManager _cfgManager = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private GameTicker _ticker = default!;
+    [Dependency] private MapLoaderSystem _loader = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;
+    [Dependency] private SharedMapSystem _mapSystem = default!;
+    [Dependency] private ShuttleSystem _shuttles = default!;
+    [Dependency] private StationSpawningSystem _stationSpawning = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     private EntityQuery<CEArrivalsSourceComponent> _arrivalsSourceQuery;
     private EntityQuery<TransformComponent> _xformQuery;

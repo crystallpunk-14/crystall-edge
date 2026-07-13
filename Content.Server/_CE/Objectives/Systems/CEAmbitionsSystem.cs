@@ -13,12 +13,12 @@ namespace Content.Server._CE.Objectives.Systems;
 
 public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IComponentFactory _compFactory = default!;
-    [Dependency] private readonly MindSystem _mind = default!;
-    [Dependency] private readonly MetaDataSystem _meta = default!;
-    [Dependency] private readonly UserInterfaceSystem _userInterface = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private IComponentFactory _compFactory = default!;
+    [Dependency] private MindSystem _mind = default!;
+    [Dependency] private MetaDataSystem _meta = default!;
+    [Dependency] private UserInterfaceSystem _userInterface = default!;
 
     private readonly List<(EntityPrototype prototype, float weight)> _ambitions = new();
 
@@ -221,7 +221,7 @@ public sealed class CEAmbitionsSystem : CESharedAmbitionsSystem
 
         foreach (var (_, parsing) in ambObj.Parsings)
         {
-            //The text can only be null if everything goes wrong—for example,
+            //The text can only be null if everything goes wrongвЂ”for example,
             //if it is not possible to find other players and their names.
             if (parsing.GetText(EntityManager, _proto, _random, ent.Owner) is null)
             {

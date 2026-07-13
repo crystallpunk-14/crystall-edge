@@ -12,8 +12,8 @@ namespace Content.Server._CE.Power;
 [UsedImplicitly]
 public sealed class CEPipeVisSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private SharedMapSystem _map = default!;
 
     private EntityQuery<TransformComponent> _transformQuery;
     private EntityQuery<NodeContainerComponent> _nodeQuery;

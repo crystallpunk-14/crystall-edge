@@ -13,7 +13,7 @@ namespace Content.Client._CE.Power;
 
 public sealed class CEClientPowerSystem : VisualizerSystem<CEEnergyLeakComponent>
 {
-    [Dependency] private readonly LightBehaviorSystem _light = default!;
+    [Dependency] private LightBehaviorSystem _light = default!;
 
     public override void Initialize()
     {

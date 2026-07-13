@@ -10,7 +10,7 @@ namespace Content.Client._CE.Baseline;
 /// </summary>
 public sealed class BaselineSystem : EntitySystem
 {
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
 
     public override void Initialize()
     {

@@ -6,8 +6,8 @@ namespace Content.Server._CE.Satiation;
 
 public sealed partial class CESatiationSystem : CESharedSatiationSystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
 
     public override void Update(float frameTime)
     {

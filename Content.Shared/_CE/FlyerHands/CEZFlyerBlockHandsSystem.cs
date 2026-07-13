@@ -8,7 +8,7 @@ namespace Content.Shared._CE.FlyerHands;
 
 public sealed class CEZFlyerBlockHandsSystem : EntitySystem
 {
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
 
     public override void Initialize()
     {

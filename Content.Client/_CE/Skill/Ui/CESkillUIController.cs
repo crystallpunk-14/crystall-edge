@@ -25,9 +25,9 @@ namespace Content.Client._CE.Skill.Ui;
 public sealed class CESkillUIController : UIController, IOnStateEntered<GameplayState>, IOnStateExited<GameplayState>,
     IOnSystemChanged<CEClientSkillSystem>
 {
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly IEntityManager _entManager = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private IEntityManager _entManager = default!;
     [UISystemDependency] private readonly CEClientSkillSystem _skill = default!;
 
     private CESkillWindow? _window;

@@ -16,10 +16,10 @@ namespace Content.Client._CE.Trading;
 [GenerateTypedNameReferences]
 public sealed partial class CETradingPlatformWindow : DefaultWindow
 {
-    [Dependency] private readonly ILogManager _log = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IPlayerManager _player = default!;
+    [Dependency] private ILogManager _log = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IPlayerManager _player = default!;
 
     private readonly CEClientTradingPlatformSystem _tradingSystem;
     private string _searchFilter = string.Empty;

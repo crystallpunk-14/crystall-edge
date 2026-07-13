@@ -8,9 +8,9 @@ namespace Content.Shared._CE.VehicleFlying;
 
 public sealed class CEVehicleFlightSystem : EntitySystem
 {
-    [Dependency] private readonly CESharedZFlightSystem _flight = default!;
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
-    [Dependency] private readonly CEVehicleSystem _vehicle = default!;
+    [Dependency] private CESharedZFlightSystem _flight = default!;
+    [Dependency] private SharedActionsSystem _actions = default!;
+    [Dependency] private CEVehicleSystem _vehicle = default!;
 
     public override void Initialize()
     {

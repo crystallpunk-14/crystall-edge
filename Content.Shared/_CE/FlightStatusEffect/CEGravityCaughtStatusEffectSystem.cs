@@ -7,8 +7,8 @@ namespace Content.Shared._CE.FlightStatusEffect;
 
 public sealed class CEGravityCaughtStatusEffectSystem : EntitySystem
 {
-    [Dependency] private readonly CESharedZLevelsSystem _zLevels = default!;
-    [Dependency] private readonly SharedGravitySystem _gravity = default!;
+    [Dependency] private CESharedZLevelsSystem _zLevels = default!;
+    [Dependency] private SharedGravitySystem _gravity = default!;
     public override void Initialize()
     {
         base.Initialize();

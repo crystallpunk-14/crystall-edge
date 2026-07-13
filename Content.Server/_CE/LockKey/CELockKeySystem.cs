@@ -10,9 +10,9 @@ namespace Content.Server._CE.LockKey;
 
 public sealed partial class CELockKeySystem : CESharedLockKeySystem
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly LabelSystem _label = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private LabelSystem _label = default!;
 
     //TODO: it won't survive saving and loading. This data must be stored in some component.
     private Dictionary<ProtoId<CELockTypePrototype>, List<int>> _roundKeyData = new();

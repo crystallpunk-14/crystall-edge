@@ -22,13 +22,13 @@ namespace Content.Server._CE.GameTicking;
 
 public sealed class CEThiefRuleSystem : GameRuleSystem<CEThiefRuleComponent>
 {
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly RoleSystem _role = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly CESharedSkillSystem _skill = default!;
-    [Dependency] private readonly IChatManager _chat = default!;
-    [Dependency] private readonly ISharedPlayerManager _player = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private RoleSystem _role = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private CESharedSkillSystem _skill = default!;
+    [Dependency] private IChatManager _chat = default!;
+    [Dependency] private ISharedPlayerManager _player = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
 
 
     private readonly Color _messageColor = Color.FromSrgb(new Color(123, 173, 137));

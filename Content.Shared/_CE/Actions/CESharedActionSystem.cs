@@ -15,17 +15,17 @@ namespace Content.Shared._CE.Actions;
 
 public abstract partial class CESharedActionSystem : EntitySystem
 {
-    [Dependency] protected readonly SharedPopupSystem Popup = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly SharedHandsSystem _hand = default!;
-    [Dependency] private readonly CESharedMagicEnergySystem _magicEnergy = default!;
-    [Dependency] private readonly SharedBatterySystem _battery = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly SharedStaminaSystem _stamina = default!;
-    [Dependency] private readonly CESharedSkillSystem _skill = default!;
-    //[Dependency] private readonly CESharedMagicVisionSystem _magicVision = default!;
-    [Dependency] private readonly MovementSpeedModifierSystem _movement = default!;
+    [Dependency] protected SharedPopupSystem Popup = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private SharedHandsSystem _hand = default!;
+    [Dependency] private CESharedMagicEnergySystem _magicEnergy = default!;
+    [Dependency] private SharedBatterySystem _battery = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private SharedStaminaSystem _stamina = default!;
+    [Dependency] private CESharedSkillSystem _skill = default!;
+    //[Dependency] private CESharedMagicVisionSystem _magicVision = default!;
+    [Dependency] private MovementSpeedModifierSystem _movement = default!;
 
     private EntityQuery<ActionComponent> _actionQuery;
 

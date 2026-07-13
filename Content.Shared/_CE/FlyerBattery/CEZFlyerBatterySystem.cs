@@ -10,9 +10,9 @@ namespace Content.Shared._CE.FlyerBattery;
 
 public sealed class CEZFlyerBatterySystem : EntitySystem
 {
-    [Dependency] private readonly CESharedZFlightSystem _flight = default!;
-    [Dependency] private readonly SharedBatterySystem _battery = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private CESharedZFlightSystem _flight = default!;
+    [Dependency] private SharedBatterySystem _battery = default!;
+    [Dependency] private IGameTiming _timing = default!;
     public override void Initialize()
     {
         base.Initialize();

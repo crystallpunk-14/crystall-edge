@@ -10,8 +10,8 @@ namespace Content.Server._CE.MagicEnergy;
 
 public sealed partial class CEMagicEnergySystem : CESharedMagicEnergySystem
 {
-    [Dependency] private readonly BatterySystem _battery = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private BatterySystem _battery = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     public override void Initialize()
     {

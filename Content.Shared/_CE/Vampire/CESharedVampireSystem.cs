@@ -21,15 +21,15 @@ namespace Content.Shared._CE.Vampire;
 
 public abstract partial class CESharedVampireSystem : EntitySystem
 {
-    [Dependency] private readonly SharedBloodstreamSystem _bloodstream = default!;
-    [Dependency] private readonly SharedVisualBodySystem _visualBody = default!;
-    [Dependency] private readonly SharedActionsSystem _action = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly SharedJitteringSystem _jitter = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly CESharedSkillSystem _skill = default!;
-    [Dependency] protected readonly IPrototypeManager Proto = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private SharedBloodstreamSystem _bloodstream = default!;
+    [Dependency] private SharedVisualBodySystem _visualBody = default!;
+    [Dependency] private SharedActionsSystem _action = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private SharedJitteringSystem _jitter = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private CESharedSkillSystem _skill = default!;
+    [Dependency] protected IPrototypeManager Proto = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     private readonly ProtoId<CESkillPointPrototype> _skillPointType = "Blood";
     private readonly ProtoId<CESkillPointPrototype> _memorySkillPointType = "Memory";

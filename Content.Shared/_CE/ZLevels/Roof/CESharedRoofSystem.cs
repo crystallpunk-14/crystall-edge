@@ -19,10 +19,10 @@ namespace Content.Shared._CE.ZLevels.Roof;
 /// </summary>
 public abstract class CESharedRoofSystem : EntitySystem
 {
-    [Dependency] protected readonly CESharedZLevelsSystem ZLevel = default!;
-    [Dependency] protected readonly SharedRoofSystem Roof = default!;
-    [Dependency] protected readonly SharedMapSystem Map = default!;
-    [Dependency] protected readonly ITileDefinitionManager TilDefMan = default!;
+    [Dependency] protected CESharedZLevelsSystem ZLevel = default!;
+    [Dependency] protected SharedRoofSystem Roof = default!;
+    [Dependency] protected SharedMapSystem Map = default!;
+    [Dependency] protected ITileDefinitionManager TilDefMan = default!;
 
     protected EntityQuery<MapGridComponent> GridQuery;
     protected EntityQuery<RoofComponent> RoofQuery;

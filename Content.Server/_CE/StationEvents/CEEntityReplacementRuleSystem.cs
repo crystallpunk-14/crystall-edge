@@ -12,8 +12,8 @@ namespace Content.Server._CE.StationEvents;
 /// optionally playing visual and audio effects at the replacement location.
 public sealed class CEEntityReplacementRuleSystem : StationEventSystem<CEEntityReplacementRuleComponent>
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
 
     protected override void Started(EntityUid ruleUid,
         CEEntityReplacementRuleComponent component,

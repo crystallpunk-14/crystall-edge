@@ -11,12 +11,12 @@ namespace Content.Shared._CE.Weapons.MeleeEnergyEffect;
 
 public abstract class CESharedMeleeEnergyEffectSystem : EntitySystem
 {
-    [Dependency] protected readonly IGameTiming Timing = default!;
-    [Dependency] protected readonly SharedAppearanceSystem Appearance = default!;
-    [Dependency] protected readonly SharedPopupSystem Popup = default!;
-    [Dependency] protected readonly SharedAudioSystem Audio = default!;
+    [Dependency] protected IGameTiming Timing = default!;
+    [Dependency] protected SharedAppearanceSystem Appearance = default!;
+    [Dependency] protected SharedPopupSystem Popup = default!;
+    [Dependency] protected SharedAudioSystem Audio = default!;
 
-    [Dependency] private readonly UseDelaySystem _useDelay = default!;
+    [Dependency] private UseDelaySystem _useDelay = default!;
 
     public override void Initialize()
     {

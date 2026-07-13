@@ -21,10 +21,10 @@ namespace Content.Server._CE.GameTicking;
 /// </summary>
 public sealed class CELimitedDaysRuleSystem : GameRuleSystem<CELimitedDaysRuleComponent>
 {
-    [Dependency] private readonly RoundEndSystem _roundEndSystem = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly SharedJobSystem _jobs = default!;
+    [Dependency] private RoundEndSystem _roundEndSystem = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private SharedJobSystem _jobs = default!;
 
     public override void Initialize()
     {

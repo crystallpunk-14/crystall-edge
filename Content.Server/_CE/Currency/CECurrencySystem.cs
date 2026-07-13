@@ -11,12 +11,12 @@ namespace Content.Server._CE.Currency;
 
 public sealed partial class CECurrencySystem : CESharedCurrencySystem
 {
-    [Dependency] private readonly PopupSystem _popup = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
-    [Dependency] private readonly StackSystem _stack = default!;
-    [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly PricingSystem _price = default!;
+    [Dependency] private PopupSystem _popup = default!;
+    [Dependency] private EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private StackSystem _stack = default!;
+    [Dependency] private AudioSystem _audio = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private PricingSystem _price = default!;
 
     public override void Initialize()
     {

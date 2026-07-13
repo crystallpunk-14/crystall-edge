@@ -11,11 +11,11 @@ namespace Content.Server._CE.Objectives.Systems;
 
 public sealed class CEVampireObjectiveConditionsSystem : EntitySystem
 {
-    [Dependency] private readonly MetaDataSystem _meta = default!;
-    [Dependency] private readonly SharedObjectivesSystem _objectives = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly SharedJobSystem _jobs = default!;
+    [Dependency] private MetaDataSystem _meta = default!;
+    [Dependency] private SharedObjectivesSystem _objectives = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private SharedJobSystem _jobs = default!;
 
     public override void Initialize()
     {

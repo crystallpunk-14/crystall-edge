@@ -11,10 +11,10 @@ namespace Content.Client._CE.PostProcess;
 // Ideally, for performance reasons, post processing designed to be present at all times, such as additive light blending or tonemapping, should be done as part of a single shader pass.
 public sealed class CEPostProcessOverlay : Overlay
 {
-    [Dependency] private readonly IEntityManager _entMan = default!;
-    [Dependency] private readonly ILightManager _lightManager = default!;
-    [Dependency] private readonly IPlayerManager _player = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private IEntityManager _entMan = default!;
+    [Dependency] private ILightManager _lightManager = default!;
+    [Dependency] private IPlayerManager _player = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
 
     public override bool RequestScreenTexture => true;
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
@@ -69,8 +69,8 @@ public sealed class CEPostProcessOverlay : Overlay
 
 public sealed class CEPostProcessSystem : EntitySystem
 {
-    [Dependency] private readonly IOverlayManager _overlay = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private IOverlayManager _overlay = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
 
     public override void Initialize()
     {

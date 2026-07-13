@@ -14,7 +14,7 @@ namespace Content.Shared._CE.Cooking;
 
 public abstract partial class CESharedCookingSystem
 {
-    [Dependency] private readonly StatusEffectsSystem _statusEffect = default!;
+    [Dependency] private StatusEffectsSystem _statusEffect = default!;
 
     private void InitTransfer()
     {

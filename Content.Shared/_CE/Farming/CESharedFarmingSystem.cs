@@ -18,21 +18,21 @@ namespace Content.Shared._CE.Farming;
 
 public abstract partial class CESharedFarmingSystem : EntitySystem
 {
-    [Dependency] protected readonly SharedMapSystem MapSystem = default!;
-    [Dependency] protected readonly TurfSystem Turf = default!;
-    [Dependency] protected readonly CEDayCycleSystem DayCycle = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedDestructibleSystem _destructible = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly IComponentFactory _compFactory = default!;
-    [Dependency] private readonly SharedStackSystem _stack = default!;
+    [Dependency] protected SharedMapSystem MapSystem = default!;
+    [Dependency] protected TurfSystem Turf = default!;
+    [Dependency] protected CEDayCycleSystem DayCycle = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedDestructibleSystem _destructible = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private IComponentFactory _compFactory = default!;
+    [Dependency] private SharedStackSystem _stack = default!;
 
     protected EntityQuery<CEPlantComponent> PlantQuery;
     protected EntityQuery<CEPlantProducingComponent> PlantProducingQuery;

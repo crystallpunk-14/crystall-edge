@@ -7,9 +7,9 @@ namespace Content.Client._CE.RoundFlow;
 
 public sealed class CEClientRoundflowSystem : EntitySystem
 {
-    [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly IUserInterfaceManager _userInterface = default!;
-    [Dependency] private readonly IPlayerManager _player = default!;
+    [Dependency] private AudioSystem _audio = default!;
+    [Dependency] private IUserInterfaceManager _userInterface = default!;
+    [Dependency] private IPlayerManager _player = default!;
 
     private CEScreenPopupControl _ui = default!;
     private bool _remove;

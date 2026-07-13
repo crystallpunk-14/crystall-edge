@@ -7,7 +7,7 @@ namespace Content.Shared._CE.FloorTile;
 
 public sealed class CEFloorTileExamineSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
 
     public override void Initialize()
     {

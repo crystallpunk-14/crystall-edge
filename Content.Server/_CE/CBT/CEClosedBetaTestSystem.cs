@@ -11,12 +11,12 @@ namespace Content.Server._CE.CBT;
 
 public sealed partial class CEClosedBetaTestSystem : EntitySystem
 {
-    [Dependency] private readonly IConsoleHost _consoleHost = default!;
-    [Dependency] private readonly GameTicker _ticker = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly ChatSystem _chatSystem = default!;
-    [Dependency] private readonly RoundEndSystem _roundEnd = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private IConsoleHost _consoleHost = default!;
+    [Dependency] private GameTicker _ticker = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private ChatSystem _chatSystem = default!;
+    [Dependency] private RoundEndSystem _roundEnd = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
 
     private TimeSpan _nextUpdateTime = TimeSpan.Zero;
     private readonly TimeSpan _updateFrequency = TimeSpan.FromSeconds(60f);
@@ -33,9 +33,9 @@ public sealed partial class CEClosedBetaTestSystem : EntitySystem
             true);
     }
 
-    // Вы можете сказать: Эд, ты ебанулся? Это же лютый щиткод!
-    // И я вам отвечу: Да. Но сама система ограничения времени работы сервера - временная штука на этап разработки, которая будет удалена.
-    // Мне просто лень каждый раз запускать и выключать сервер ручками.
+    // Р’С‹ РјРѕР¶РµС‚Рµ СЃРєР°Р·Р°С‚СЊ: Р­Рґ, С‚С‹ РµР±Р°РЅСѓР»СЃСЏ? Р­С‚Рѕ Р¶Рµ Р»СЋС‚С‹Р№ С‰РёС‚РєРѕРґ!
+    // Р СЏ РІР°Рј РѕС‚РІРµС‡Сѓ: Р”Р°. РќРѕ СЃР°РјР° СЃРёСЃС‚РµРјР° РѕРіСЂР°РЅРёС‡РµРЅРёСЏ РІСЂРµРјРµРЅРё СЂР°Р±РѕС‚С‹ СЃРµСЂРІРµСЂР° - РІСЂРµРјРµРЅРЅР°СЏ С€С‚СѓРєР° РЅР° СЌС‚Р°Рї СЂР°Р·СЂР°Р±РѕС‚РєРё, РєРѕС‚РѕСЂР°СЏ Р±СѓРґРµС‚ СѓРґР°Р»РµРЅР°.
+    // РњРЅРµ РїСЂРѕСЃС‚Рѕ Р»РµРЅСЊ РєР°Р¶РґС‹Р№ СЂР°Р· Р·Р°РїСѓСЃРєР°С‚СЊ Рё РІС‹РєР»СЋС‡Р°С‚СЊ СЃРµСЂРІРµСЂ СЂСѓС‡РєР°РјРё.
     public override void Update(float frameTime)
     {
         base.Update(frameTime);

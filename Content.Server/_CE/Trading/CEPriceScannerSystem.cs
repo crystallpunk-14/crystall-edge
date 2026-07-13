@@ -10,10 +10,10 @@ namespace Content.Server._CE.Trading;
 
 public sealed class CEPriceScannerSystem : EntitySystem
 {
-    [Dependency] private readonly PricingSystem _price = default!;
-    [Dependency] private readonly TagSystem _tag = default!;
-    [Dependency] private readonly InventorySystem _invSystem = default!;
-    [Dependency] private readonly CESharedCurrencySystem _currency = default!;
+    [Dependency] private PricingSystem _price = default!;
+    [Dependency] private TagSystem _tag = default!;
+    [Dependency] private InventorySystem _invSystem = default!;
+    [Dependency] private CESharedCurrencySystem _currency = default!;
 
     public override void Initialize()
     {

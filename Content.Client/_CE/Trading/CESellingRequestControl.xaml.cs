@@ -12,8 +12,8 @@ namespace Content.Client._CE.Trading;
 [GenerateTypedNameReferences]
 public sealed partial class CESellingRequestControl : Control
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly IEntityManager _entityManager = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
 
     public event Action? OnSellAttempt;
 

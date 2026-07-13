@@ -8,7 +8,7 @@ namespace Content.Server._CE.Weapons;
 
 public sealed class CEMeleeEnergyEffectSystem : CESharedMeleeEnergyEffectSystem
 {
-    [Dependency] private readonly BatterySystem _battery = default!;
+    [Dependency] private BatterySystem _battery = default!;
 
     public override void Initialize()
     {
