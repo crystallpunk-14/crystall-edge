@@ -11,7 +11,7 @@
     params:
       volume: 6
   metabolisms:
-    Food:
+    Metabolites:
       effects:
       - !type:SatiateHunger
         conditions:
@@ -28,7 +28,7 @@
           inverted: true
         reagent: UncookedAnimalProteins
         amount: 0.1
-    Medicine:
+    Bloodstream:
       effects:
       - !type:HealthChange
         conditions:
@@ -55,7 +55,7 @@
   name: ce-reagent-name-blood
   desc: ce-reagent-desc-blood
   metabolisms:
-    Food:
+    Metabolites:
       effects:
       - !type:AdjustReagent
         reagent: UncookedAnimalProteins

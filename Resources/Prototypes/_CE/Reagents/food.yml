@@ -7,7 +7,7 @@
   flavor: nutriment
   color: "#24591F"
   metabolisms:
-    Food:
+    Metabolites:
       effects:
       - !type:CESatiate
         satiationType: Hunger

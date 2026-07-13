@@ -61,6 +61,25 @@
     enum.HumanoidVisualLayers.Special:
       limit: 0
       required: false
+  appearances:
+    enum.HumanoidVisualLayers.Head:
+      matchSkin: true
+    enum.HumanoidVisualLayers.Snout:
+      matchSkin: true
+    enum.HumanoidVisualLayers.Tail:
+      matchSkin: true
+    enum.HumanoidVisualLayers.HeadTop:
+      matchSkin: true
+    enum.HumanoidVisualLayers.Chest:
+      matchSkin: true
+    enum.HumanoidVisualLayers.LArm:
+      matchSkin: true
+    enum.HumanoidVisualLayers.RArm:
+      matchSkin: true
+    enum.HumanoidVisualLayers.LLeg:
+      matchSkin: true
+    enum.HumanoidVisualLayers.RLeg:
+      matchSkin: true
 
 - type: entity
   id: CEMobCarcatInventoryTemplate
