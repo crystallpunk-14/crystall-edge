@@ -12,6 +12,8 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
 using Content.Shared.Gravity;
 using Content.Shared.Mobs;
+using Content.Shared.Popups;
+using Content.Shared.Standing;
 using Content.Shared.Stunnable;
 using JetBrains.Annotations;
 using Robust.Shared.Serialization;
@@ -26,6 +28,7 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly SharedGravitySystem _gravity = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
 
     protected EntityQuery<CEZPhysicsComponent> ZPhyzQuery;
 
@@ -46,6 +49,7 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
         SubscribeLocalEvent<CEZFlyerComponent, KnockedDownEvent>(OnKnockDowned);
         SubscribeLocalEvent<CEZFlyerComponent, MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<CEZFlyerComponent, DamageChangedEvent>(OnDamageChanged);
+        SubscribeLocalEvent<StandingStateComponent, CEStartFlightAttemptEvent>(OnStandingStartFlightAttempt);
     }
 
     private void CheckWeightless(Entity<CEZFlyerComponent> ent, ref IsWeightlessEvent args)
@@ -81,6 +85,12 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
     private void OnStunned(Entity<CEZFlyerComponent> ent, ref StunnedEvent args)
     {
         DeactivateFlight((ent, ent));
+    }
+    private void OnStandingStartFlightAttempt(Entity<StandingStateComponent> ent, ref CEStartFlightAttemptEvent args)
+    {
+        if (ent.Comp.Standing) return;
+        args.Cancel();
+        _popup.PopupClient(Loc.GetString("ce-flight-lying-down"), ent, ent);
     }
 
     private void OnStartFlight(Entity<CEZPhysicsComponent> ent, ref CEFlightStartedEvent args)
