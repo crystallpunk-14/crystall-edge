@@ -7,6 +7,8 @@ namespace Content.IntegrationTests.Tests._CE;
 [TestFixture]
 public sealed class CEEntityTest
 {
+    private static readonly ProtoId<EntityCategoryPrototype> ForkFilteredCategory = "ForkFiltered";
+
     [Test]
     public async Task CheckAllCEEntityHasForkFilteredCategory()
     {
@@ -19,7 +21,7 @@ public sealed class CEEntityTest
         {
             Assert.Multiple(() =>
             {
-                if (!protoManager.TryIndex<EntityCategoryPrototype>("ForkFiltered", out var indexedFilter))
+                if (!protoManager.TryIndex(ForkFilteredCategory, out var indexedFilter))
                     return;
 
                 var ignoredProto = new HashSet<string> //This is vanilla chief engineer items that we dont wanna test
