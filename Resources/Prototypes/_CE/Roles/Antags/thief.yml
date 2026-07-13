@@ -17,6 +17,7 @@
     - CEThiefHideoutFlag
 
 - type: antagSpecifier
+  parent: CERestrictedAntag
   id: CEThief
   prefRoles:
   - CEThief

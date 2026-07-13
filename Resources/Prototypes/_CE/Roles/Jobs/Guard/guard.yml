@@ -7,7 +7,6 @@
   startingGear: CEGuardGear
   icon: CEJobIconGuard
   supervisors: ce-job-supervisors-guard-commander
-  canBeAntag: false
   special:
     - !type:AddComponentSpecial
       components:

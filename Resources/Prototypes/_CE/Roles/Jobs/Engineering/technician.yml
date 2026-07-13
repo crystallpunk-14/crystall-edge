@@ -7,7 +7,6 @@
   startingGear: CETechnicianGear
   icon: CEJobIconTechnician
   supervisors: ce-job-supervisors-brigadier
-  canBeAntag: false
 
 - type: startingGear
   id: CETechnicianGear

@@ -10,6 +10,7 @@
   #guides: TODO
 
 - type: antagSpecifier
+  parent: CERestrictedAntag
   id: CEVampire
   prefRoles:
   - CEVampire

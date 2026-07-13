@@ -7,7 +7,6 @@
   startingGear: CEInvestigatorGear
   icon: CEJobIconInvestigator
   supervisors: ce-job-supervisors-guard-commander
-  canBeAntag: false
   special:
     - !type:AddComponentSpecial
       components:
