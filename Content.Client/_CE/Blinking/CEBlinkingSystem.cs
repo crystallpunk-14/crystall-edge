@@ -49,7 +49,7 @@ public sealed partial class CEBlinkingSystem : CESharedBlinkingSystem
         if (!_sprite.TryGetLayer(ent.Owner, HumanoidVisualLayers.Eyes, out var layer, false))
             return;
 
-        var animation = new Animation
+        var animation = new Robust.Client.Animations.Animation
         {
             Length = TimeSpan.FromSeconds(0.5f),
             AnimationTracks =
