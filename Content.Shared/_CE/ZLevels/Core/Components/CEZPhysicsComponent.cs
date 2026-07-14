@@ -121,5 +121,5 @@ public sealed partial class CEZPhysicsComponent : Component
     /// While true, ProcessZPhysics skips this entity entirely: no gravity, no ground sync, no BodyStatus sync.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public bool Suspended;
+    public bool Disabled;
 }

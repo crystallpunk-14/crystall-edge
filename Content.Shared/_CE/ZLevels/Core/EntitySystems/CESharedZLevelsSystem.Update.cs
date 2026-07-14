@@ -64,7 +64,7 @@ public abstract partial class CESharedZLevelsSystem
     {
         var zPhysicsComponent = entity.Comp1;
 
-        if (zPhysicsComponent.Suspended)
+        if (zPhysicsComponent.Disabled)
             return;
 
         UpdateCalls++;

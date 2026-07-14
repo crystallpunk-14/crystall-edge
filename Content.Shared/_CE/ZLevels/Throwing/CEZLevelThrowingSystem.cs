@@ -20,13 +20,13 @@ public sealed partial class CEZLevelThrowingSystem : EntitySystem
 
     private void OnThrown(Entity<CEZPhysicsComponent> ent, ref ThrownEvent args)
     {
-        ent.Comp.Suspended = true;
-        DirtyField(ent, ent.Comp, nameof(CEZPhysicsComponent.Suspended));
+        ent.Comp.Disabled = true;
+        DirtyField(ent, ent.Comp, nameof(CEZPhysicsComponent.Disabled));
     }
 
     private void OnStopThrow(Entity<CEZPhysicsComponent> ent, ref StopThrowEvent args)
     {
-        ent.Comp.Suspended = false;
-        DirtyField(ent, ent.Comp, nameof(CEZPhysicsComponent.Suspended));
+        ent.Comp.Disabled = false;
+        DirtyField(ent, ent.Comp, nameof(CEZPhysicsComponent.Disabled));
     }
 }
