@@ -5,7 +5,7 @@ namespace Content.Shared._CE.Actions.Spells;
 public sealed partial class CESpellApplyEntityEffectOnUser : CESpellEffect
 {
     [DataField(required: true, serverOnly: true)]
-    public List<EntityEffect> Effects = new();
+    public List<Shared.EntityEffects.EntityEffect> Effects = new();
 
     public override void Effect(EntityManager entManager, CESpellEffectBaseArgs args)
     {
