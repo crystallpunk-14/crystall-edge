@@ -363,6 +363,9 @@ public abstract partial class CESharedZLevelsSystem
         var attempt = new CEZLevelChasmAttempt(ent);
         RaiseLocalEvent(ent, attempt);
 
+        if (attempt.Cancelled)
+            return false;
+
         var audio = new SoundPathSpecifier("/Audio/Effects/falling.ogg");
         _audio.PlayPredicted(audio, Transform(ent).Coordinates, ent);
         var falling = AddComp<ChasmFallingComponent>(ent);

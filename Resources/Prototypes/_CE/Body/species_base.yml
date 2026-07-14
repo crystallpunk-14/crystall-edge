@@ -112,6 +112,7 @@
       Heat:
         collection:
           MeatLaserImpact
+  - type: CanMoveInAir
   - type: Reactive
     groups:
       Flammable: [ Touch ]
