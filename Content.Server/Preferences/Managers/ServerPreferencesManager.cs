@@ -186,7 +186,12 @@ namespace Content.Server.Preferences.Managers
                 antags.ToHashSet(),
                 traits.ToHashSet(),
                 loadouts
-            );
+            )
+            {
+                // CrystallEdge: bark speech settings
+                BarkVoice = profile.BarkVoice,
+                BarkPitch = profile.BarkPitch,
+            };
         }
 
         private async void HandleSelectCharacterMessage(MsgSelectCharacter message)

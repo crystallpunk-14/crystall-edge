@@ -231,6 +231,25 @@ namespace Content.Client.Lobby.UI
 
             #endregion SpawnPriority
 
+            #region CrystallEdge: Bark Voice
+
+            RefreshBarkVoices();
+
+            BarkVoiceButton.OnItemSelected += args =>
+            {
+                BarkVoiceButton.SelectId(args.Id);
+                SetBarkVoice(_barkVoices[args.Id].ID);
+            };
+
+            BarkPitchSlider.OnValueChanged += _ =>
+            {
+                SetBarkPitch(BarkPitchSlider.Value / 100f);
+            };
+
+            BarkPreviewButton.OnPressed += _ => OnBarkPreviewPressed();
+
+            #endregion CrystallEdge: Bark Voice
+
             #region Eyes
 
             EyeColorPicker.OnEyeColorPicked += newColor =>
@@ -381,8 +400,10 @@ namespace Content.Client.Lobby.UI
             RefreshJobs();
             RefreshLoadouts();
             RefreshSpecies();
+            RefreshBarkVoices(); // CrystallEdge
             RefreshTraits();
             RefreshFlavorText();
+            UpdateBarkControls(); // CrystallEdge
             ReloadPreview();
 
             if (Profile != null)

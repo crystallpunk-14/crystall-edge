@@ -15,7 +15,7 @@ namespace Content.Server.Database.Migrations.Sqlite
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "10.0.0");
+            modelBuilder.HasAnnotation("ProductVersion", "10.0.6");
 
             modelBuilder.Entity("Content.Server.Database.Admin", b =>
                 {
@@ -982,6 +982,15 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Property<int>("Age")
                         .HasColumnType("INTEGER")
                         .HasColumnName("age");
+
+                    b.Property<float>("BarkPitch")
+                        .HasColumnType("REAL")
+                        .HasColumnName("bark_pitch");
+
+                    b.Property<string>("BarkVoice")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("bark_voice");
 
                     b.Property<string>("CharacterName")
                         .IsRequired()
