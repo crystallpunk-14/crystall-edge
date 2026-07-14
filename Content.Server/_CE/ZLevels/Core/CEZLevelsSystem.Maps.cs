@@ -4,7 +4,7 @@
  */
 
 using System.Linq;
-using Content.Server._CE.ZLevels.PVS;
+using Content.Server._CE.PVS;
 using Content.Shared._CE.ZLevels.Core.Components;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;

@@ -156,7 +156,10 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
         ent.Comp.Active = true;
         DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.Active));
 
+        zPhys.VelocityRaiseEvent = true;
+
         _zLevel.UpdateGravityState((ent, zPhys));
+        _zLevel.WakeBody((ent, zPhys));
         _gravity.RefreshWeightless(ent.Owner);
 
         RaiseLocalEvent(ent, new CEFlightStartedEvent());
@@ -177,6 +180,8 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
 
         ent.Comp.Active = false;
         DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.Active));
+
+        zPhys.VelocityRaiseEvent = false;
 
         _zLevel.UpdateGravityState((ent, zPhys));
         _gravity.RefreshWeightless(ent.Owner);

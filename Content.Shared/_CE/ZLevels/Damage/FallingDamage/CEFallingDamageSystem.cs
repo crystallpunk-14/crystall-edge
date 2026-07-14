@@ -3,14 +3,13 @@
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
 
-using Content.Shared._CE.Health;
-using Content.Shared._CE.TileEffects.Core;
+using Content.Shared.Damage.Systems;
 
 namespace Content.Shared._CE.ZLevels.Damage.FallingDamage;
 
 public sealed partial class CEFallingDamageSystem : EntitySystem
 {
-    [Dependency] private CESharedDamageableSystem _damageable = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
     public override void Initialize()
     {
         base.Initialize();
@@ -20,10 +19,6 @@ public sealed partial class CEFallingDamageSystem : EntitySystem
 
     private void OnFallOnMe(Entity<CEFallingDamageComponent> ent, ref CEZFellOnMeEvent args)
     {
-        EntityUid? source = null;
-        if (TryComp<CETileEffectComponent>(ent, out var tileEffect))
-            source = tileEffect.Source;
-
-        _damageable.TakeDamage(args.Fallen, ent.Comp.Damage * args.Speed, source: source);
+        _damageable.TryChangeDamage(args.Fallen, ent.Comp.Damage * args.Speed);
     }
 }

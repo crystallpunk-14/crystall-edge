@@ -3,10 +3,11 @@
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
 
-using Content.Shared._CE.Health;
-using Content.Shared._CE.Health.Prototypes;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.CCVar;
+using Content.Shared.Damage;
+using Content.Shared.Damage.Prototypes;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Stunnable;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
@@ -19,18 +20,19 @@ namespace Content.Shared._CE.ZLevels.Damage;
 public sealed partial class CEZLevelDamageSystem : EntitySystem
 {
     [Dependency] private SharedStunSystem _stun = default!;
-    [Dependency] private CESharedDamageableSystem _damageable = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private IConfigurationManager _config = default!;
     [Dependency] private INetManager _net = default!;
     [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
 
     public float BaseFallingDamage { get; private set; }
     public float BaseFallingOtherDamage { get; private set; }
     public float BaseFallingStunTime { get; private set; }
     public float BaseFallingOtherStunTime { get; private set; }
 
-    private static readonly ProtoId<CEDamageTypePrototype> PhysicalDamageType = "Physical";
+    private static readonly ProtoId<DamageTypePrototype> PhysicalDamageType = "Blunt";
     private static readonly EntProtoId FallVFX = "CEDustEffect";
 
     public override void Initialize()
@@ -47,12 +49,16 @@ public sealed partial class CEZLevelDamageSystem : EntitySystem
 
     private void OnFallDamage(Entity<PhysicsComponent> ent, ref CEZLevelHitEvent args)
     {
+        if (!_proto.Resolve(PhysicalDamageType, out var damageType))
+            return;
+
         var damageModifier = 1f;
         var stunModifier = 1f;
 
         var damageToOtherEv = new CEZFallingOnTargetDamageCalculateEvent(args.ImpactPower);
         RaiseLocalEvent(ent, damageToOtherEv);
-        var otherDamage = damageToOtherEv.DamageMultiplier * BaseFallingOtherDamage * args.ImpactPower * args.ImpactPower;
+        var otherDamage = damageToOtherEv.DamageMultiplier * BaseFallingOtherDamage * args.ImpactPower *
+                          args.ImpactPower;
         var otherStun = damageToOtherEv.StunMultiplier * BaseFallingOtherStunTime * args.ImpactPower * args.ImpactPower;
 
         // Calculate damage modifiers for the falling entity
@@ -90,8 +96,8 @@ public sealed partial class CEZLevelDamageSystem : EntitySystem
                 _stun.TryKnockdown(victim, TimeSpan.FromSeconds(otherStun));
             if (otherDamage > 0)
             {
-                var otherDmgSpec = new CEDamageSpecifier(PhysicalDamageType, (int)otherDamage);
-                _damageable.TakeDamage(victim, otherDmgSpec, ent);
+                var otherDmgSpec = new DamageSpecifier(damageType, otherDamage);
+                _damageable.ChangeDamage(victim, otherDmgSpec);
             }
         }
 
@@ -101,8 +107,8 @@ public sealed partial class CEZLevelDamageSystem : EntitySystem
         var damageAmount = args.ImpactPower * args.ImpactPower * BaseFallingDamage * damageModifier;
         if (damageAmount > 0)
         {
-            var selfDmgSpec = new CEDamageSpecifier(PhysicalDamageType, (int)damageAmount);
-            _damageable.TakeDamage(ent.Owner, selfDmgSpec);
+            var selfDmgSpec = new DamageSpecifier(damageType, damageAmount);
+            _damageable.ChangeDamage(ent.Owner, selfDmgSpec);
         }
 
         var knockdownTime = MathF.Min(args.ImpactPower * args.ImpactPower * BaseFallingStunTime * stunModifier, 5f);

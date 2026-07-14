@@ -6,6 +6,7 @@
 using System.Numerics;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.Chasm;
+using Content.Shared.Inventory;
 using JetBrains.Annotations;
 using Robust.Shared.Audio;
 using Robust.Shared.Map;
@@ -269,7 +270,7 @@ public abstract partial class CESharedZLevelsSystem
             return;
 
         var ev = new CECheckGravityEvent();
-        RaiseLocalEvent(ent.Owner, ref ev);
+        RaiseLocalEvent(ent.Owner, ev);
 
         SetZGravity(ent, ev.Gravity);
     }
@@ -328,6 +329,9 @@ public abstract partial class CESharedZLevelsSystem
 
         var worldRot = _transform.GetWorldRotation(ent);
 
+        var beforeEv = new CEZLevelBeforeMapMoveEvent(offset, targetMap.Comp.Depth);
+        RaiseLocalEvent(ent, ref beforeEv);
+
         _transform.SetMapCoordinates(ent, new MapCoordinates(_transform.GetWorldPosition(ent), targetMapComp.MapId));
         _transform.SetWorldRotation(ent, worldRot);
 
@@ -355,6 +359,9 @@ public abstract partial class CESharedZLevelsSystem
         //welp, that default Chasm behavior. Not really good, but ok for now.
         if (HasComp<ChasmFallingComponent>(ent))
             return false; //Already falling
+
+        var attempt = new CEZLevelChasmAttempt(ent);
+        RaiseLocalEvent(ent, attempt);
 
         var audio = new SoundPathSpecifier("/Audio/Effects/falling.ogg");
         _audio.PlayPredicted(audio, Transform(ent).Coordinates, ent);
@@ -384,6 +391,21 @@ public abstract partial class CESharedZLevelsSystem
 }
 
 /// <summary>
+/// Is called on an entity right before it moves between z-levels.
+/// </summary>
+/// <param name="offset">How many levels were crossed. If negative, it means there was a downward movement. If positive, it means an upward movement.</param>
+[ByRefEvent]
+public struct CEZLevelBeforeMapMoveEvent(int offset, int level)
+{
+    /// <summary>
+    /// How many levels were crossed. If negative, it means there was a downward movement. If positive, it means an upward movement.
+    /// </summary>
+    public int Offset = offset;
+
+    public int CurrentZLevel = level;
+}
+
+/// <summary>
 /// Is called on an entity when it moves between z-levels.
 /// </summary>
 /// <param name="offset">How many levels were crossed. If negative, it means there was a downward movement. If positive, it means an upward movement.</param>
@@ -403,6 +425,15 @@ public struct CEZLevelMapMoveEvent(int offset, int level)
 /// </summary>
 [ByRefEvent]
 public struct CEZLevelFallMapEvent;
+
+/// <summary>
+///Called upon the essence before attempting to fall into the abyss
+/// </summary>
+public sealed class CEZLevelChasmAttempt(EntityUid falled) : CancellableEntityEventArgs, IInventoryRelayEvent
+{
+    public EntityUid Falled = falled;
+    public SlotFlags TargetSlots => SlotFlags.All;
+}
 
 /// <summary>
 /// It is called on an entity when it hits the floor or ceiling with force.
@@ -430,8 +461,7 @@ public struct CEGetZVelocityEvent(Entity<CEZPhysicsComponent> target)
 /// <summary>
 /// Called when UpdateGravityState is used to update the current strength of the active z-level gravity. Various systems can subscribe to this to disable gravity.
 /// </summary>
-[ByRefEvent]
-public struct CECheckGravityEvent()
+public sealed class CECheckGravityEvent : EntityEventArgs
 {
     public float Gravity = 1f;
 }

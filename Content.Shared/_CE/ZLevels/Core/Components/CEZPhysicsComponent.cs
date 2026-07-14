@@ -73,6 +73,10 @@ public sealed partial class CEZPhysicsComponent : Component
     [DataField]
     public bool VelocityGravity = true;
 
+    /// <summary>
+    /// If true, CEGetZVelocityEvent is raised every physics tick so systems (e.g. flight) can adjust Velocity.
+    /// Off by default to avoid the event overhead for entities that never need custom vertical control.
+    /// </summary>
     [DataField]
     public bool VelocityRaiseEvent;
 

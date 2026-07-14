@@ -37,9 +37,21 @@ public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
     private void OnEyeOffset(Entity<CEZPhysicsComponent> ent, ref GetEyeOffsetEvent args)
     {
         Angle rotation = _eye.CurrentEye.Rotation * -1;
-        var localPosition = ent.Comp.LocalPosition;
+        var localPosition = GetVisualLocalPosition(ent, ent.Comp, Transform(ent), ZPhysicsQuery);
         var offset = rotation.RotateVec(new Vector2(0, localPosition * ZLevelOffset));
         args.Offset += offset;
+    }
+
+    /// <summary>
+    /// Entities riding/parented onto another Z-physics body (e.g. a rider buckled to a flying vehicle)
+    /// never step their own LocalPosition, so they must visually follow the parent's height instead.
+    /// </summary>
+    internal static float GetVisualLocalPosition(EntityUid uid, CEZPhysicsComponent zPhys, TransformComponent xform, EntityQuery<CEZPhysicsComponent> zPhysicsQuery)
+    {
+        if (xform.ParentUid != xform.MapUid && zPhysicsQuery.TryComp(xform.ParentUid, out var parentZPhys))
+            return parentZPhys.LocalPosition;
+
+        return zPhys.LocalPosition;
     }
 
     private void OnStartup(Entity<CEZPhysicsComponent> ent, ref ComponentStartup args)
@@ -84,10 +96,10 @@ internal sealed partial class CEClientZLevelsPreAnimSystem : EntitySystem
     {
         // Phase 1 (per render frame): strip any Z left from last frame so the animation player
         // always starts from a Z-free base, and Phase 2 can add exactly one Z contribution.
-        var query = EntityQueryEnumerator<CEZPhysicsComponent, SpriteComponent>();
-        while (query.MoveNext(out var uid, out var zPhys, out var sprite))
+        var query = EntityQueryEnumerator<CEZPhysicsComponent, SpriteComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var zPhys, out var sprite, out var xform))
         {
-            var localPosition = zPhys.LocalPosition;
+            var localPosition = CEClientZLevelsSystem.GetVisualLocalPosition(uid, zPhys, xform, _zPhysQuery);
             _sprite.SetOffset((uid, sprite), zPhys.SpriteOffsetDefault);
             _sprite.SetDrawDepth((uid, sprite), localPosition > 0 ? (int)Shared.DrawDepth.DrawDepth.OverMobs : zPhys.DrawDepthDefault);
         }
@@ -118,6 +130,7 @@ internal sealed partial class CEClientZLevelsPostAnimSystem : EntitySystem
 {
     [Dependency] private SpriteSystem _sprite = default!;
     [Dependency] private SharedTransformSystem _xform = default!;
+    [Dependency] private EntityQuery<CEZPhysicsComponent> _zPhysQuery = default!;
 
     public override void Initialize()
     {
@@ -134,7 +147,8 @@ internal sealed partial class CEClientZLevelsPostAnimSystem : EntitySystem
         var query = EntityQueryEnumerator<CEZPhysicsComponent, SpriteComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out var zPhys, out var sprite, out var xform))
         {
-            var rawZ = new Vector2(0, zPhys.LocalPosition * CESharedZLevelsSystem.ZLevelOffset);
+            var localPosition = CEClientZLevelsSystem.GetVisualLocalPosition(uid, zPhys, xform, _zPhysQuery);
+            var rawZ = new Vector2(0, localPosition * CESharedZLevelsSystem.ZLevelOffset);
             Vector2 zOffset;
             if (sprite.NoRotation)
                 zOffset = rawZ;
