@@ -57,7 +57,7 @@ public abstract partial class CESharedZFlightSystem
         if (!_zLevel.TryMapUp(map.Value, out var mapAbove))
             return;
 
-        flyerComp.TargetMapHeight = mapAbove.Value.Comp.Depth;
+        flyerComp.TargetMapHeight = mapAbove.Comp.Depth;
         DirtyField(ent, flyerComp, nameof(CEZFlyerComponent.TargetMapHeight));
 
         args.Handled = true;
@@ -78,7 +78,7 @@ public abstract partial class CESharedZFlightSystem
         if (!_zLevel.TryMapDown(map.Value, out var mapBelow))
             return;
 
-        flyerComp.TargetMapHeight = mapBelow.Value.Comp.Depth;
+        flyerComp.TargetMapHeight = mapBelow.Comp.Depth;
         DirtyField(ent, flyerComp, nameof(CEZFlyerComponent.TargetMapHeight));
 
         args.Handled = true;

@@ -3,7 +3,7 @@
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
 
-using Content.Shared.Damage;
+using Content.Shared._CE.Health;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared._CE.ZLevels.Damage.FallingDamage;
@@ -15,5 +15,5 @@ namespace Content.Shared._CE.ZLevels.Damage.FallingDamage;
 public sealed partial class CEFallingDamageComponent : Component
 {
     [DataField(required: true), AutoNetworkedField]
-    public DamageSpecifier Damage = new();
+    public CEDamageSpecifier Damage = new();
 }

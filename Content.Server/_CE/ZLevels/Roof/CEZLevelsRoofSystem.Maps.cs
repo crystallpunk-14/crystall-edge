@@ -6,30 +6,24 @@
 using System.Linq;
 using Content.Server._CE.ZLevels.Core;
 using Content.Shared._CE.ZLevels.Core.Components;
-using Content.Shared._CE.ZLevels.Roof;
 using Content.Shared.Light.Components;
 using Content.Shared.Maps;
 
 namespace Content.Server._CE.ZLevels.Roof;
 
-/// <inheritdoc/>
-public sealed class CERoofSystem : CESharedRoofSystem
+public sealed partial class CEZLevelsRoofSystem
 {
-    private readonly HashSet<Vector2i> _roofMap = new();
-
-    public override void Initialize()
+    private void InitMaps()
     {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEZLevelsNetworkComponent, CEZLevelNetworkUpdatedEvent>(OnNetworkUpdated);
+        SubscribeLocalEvent<CEZMapNetworkComponent, CEZLevelMapNetworkUpdatedEvent>(OnMapNetworkUpdated);
     }
 
-    private void OnNetworkUpdated(Entity<CEZLevelsNetworkComponent> ent, ref CEZLevelNetworkUpdatedEvent args)
+    private void OnMapNetworkUpdated(Entity<CEZMapNetworkComponent> ent, ref CEZLevelMapNetworkUpdatedEvent args)
     {
-        RecalculateNetworkRoofs(ent);
+        RecalculateMapRoofs(ent);
     }
 
-    public void RecalculateNetworkRoofs(Entity<CEZLevelsNetworkComponent> network)
+    private void RecalculateMapRoofs(Entity<CEZMapNetworkComponent> network)
     {
         _roofMap.Clear();
 

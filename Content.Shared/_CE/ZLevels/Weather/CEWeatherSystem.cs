@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is sublicensed under MIT License
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
@@ -17,7 +17,7 @@ public sealed partial class CEWeatherSystem : EntitySystem
 {
     [Dependency] private SharedWeatherSystem _weather = default!;
 
-    public void SetWeather(Entity<CEZLevelsNetworkComponent?> network, EntProtoId? proto, TimeSpan? endTime)
+    public void SetWeather(Entity<CEZMapNetworkComponent?> network, EntProtoId? proto, TimeSpan? duration)
     {
         if (!Resolve(network, ref network.Comp))
             return;
@@ -27,7 +27,7 @@ public sealed partial class CEWeatherSystem : EntitySystem
             if (!TryComp<MapComponent>(map, out var mapComp))
                 continue;
 
-            _weather.TrySetWeather(mapComp.MapId, proto, out _, endTime);
+            _weather.TrySetWeather(mapComp.MapId, proto, out _, duration);
         }
     }
 }

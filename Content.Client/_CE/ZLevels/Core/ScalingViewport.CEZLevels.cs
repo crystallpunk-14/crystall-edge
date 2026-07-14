@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is sublicensed under MIT License
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
@@ -128,7 +128,7 @@ public sealed partial class ScalingViewport
                 if (!_zLevels.TryMapOffset(playerXform.MapUid.Value, i, out var mapUidBelow))
                     continue;
 
-                checkingMap = mapUidBelow.Value;
+                checkingMap = mapUidBelow;
             }
 
             lowestDepth = i;
@@ -147,7 +147,7 @@ public sealed partial class ScalingViewport
                 if (!_zLevels.TryMapOffset(playerXform.MapUid.Value, depth, out var mapUidBelow))
                     continue;
 
-                if (!_mapQuery.Value.TryComp(mapUidBelow.Value, out var mapComp))
+                if (!_mapQuery.Value.TryComp(mapUidBelow, out var mapComp))
                     continue;
 
                 Angle rotation = _fallbackEye.Rotation * -1;
@@ -173,7 +173,7 @@ public sealed partial class ScalingViewport
         viewport.Eye = Eye;
     }
 
-    public sealed class ZEye(int lowest, int depth, int high) : Robust.Shared.Graphics.Eye
+    public sealed partial class ZEye(int lowest, int depth, int high) : Robust.Shared.Graphics.Eye
     {
         public int LowestDepth = lowest;
         public int Depth = depth;
