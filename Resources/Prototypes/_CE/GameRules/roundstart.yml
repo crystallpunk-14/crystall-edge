@@ -9,6 +9,8 @@
   parent: CEBaseGameRule
   id: CEGameRuleThieves
   components:
+  - type: GameRule
+    minPlayers: 3
   - type: CEThiefRule
   - type: CEBlueTextRule
   - type: AntagObjectives

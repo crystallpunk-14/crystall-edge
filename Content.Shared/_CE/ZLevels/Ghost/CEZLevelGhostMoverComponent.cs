@@ -31,13 +31,9 @@ public sealed partial class CEZLevelGhostMoverComponent : Component
 /// <summary>
 /// Should be relayed upon using the action.
 /// </summary>
-public sealed partial class CEZLevelActionUp : InstantActionEvent
-{
-}
+public sealed partial class CEZLevelActionUp : InstantActionEvent;
 
 /// <summary>
 /// Should be relayed upon using the action.
 /// </summary>
-public sealed partial class CEZLevelActionDown : InstantActionEvent
-{
-}
+public sealed partial class CEZLevelActionDown : InstantActionEvent;

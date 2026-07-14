@@ -1,8 +1,9 @@
-/*
+﻿/*
  * This file is sublicensed under MIT License
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
 
+using System.Linq;
 using Content.Server.Administration;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Weather;
@@ -11,7 +12,6 @@ using Content.Shared.Prototypes;
 using Content.Shared.Weather;
 using Robust.Shared.Console;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Timing;
 
 namespace Content.Server._CE.ZLevels.Weather;
 
@@ -20,7 +20,6 @@ public sealed partial class CEWeatherCommand : LocalizedCommands
 {
     [Dependency] private IEntityManager _entities = default!;
     [Dependency] private IPrototypeManager _proto = default!;
-    [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IComponentFactory _compFactory = default!;
 
     public override string Command => "znetwork-weather";
@@ -40,13 +39,13 @@ public sealed partial class CEWeatherCommand : LocalizedCommands
         if (!NetEntity.TryParse(args[0], out var targetNet) ||
             !_entities.TryGetEntity(targetNet, out target))
         {
-            shell.WriteError($"Unable to find entity {args[1]}");
+            shell.WriteError($"Unable to find entity {args[0]}");
             return;
         }
 
-        if (!_entities.TryGetComponent<CEZLevelsNetworkComponent>(target, out var levelComp))
+        if (!_entities.TryGetComponent<CEZMapNetworkComponent>(target, out var levelComp))
         {
-            shell.WriteError($"Target entity doesnt have CEZLevelsNetworkComponent {args[1]}");
+            shell.WriteError($"Target entity doesnt have CEZLevelsNetworkComponent {args[0]}");
             return;
         }
 
@@ -61,13 +60,12 @@ public sealed partial class CEWeatherCommand : LocalizedCommands
         }
 
         //Time parsing
-        TimeSpan? endTime = null;
+        TimeSpan? duration = null;
         if (args.Length == 3)
         {
-            var curTime = _timing.CurTime;
             if (int.TryParse(args[2], out var durationInt))
             {
-                endTime = curTime + TimeSpan.FromSeconds(durationInt);
+                duration = TimeSpan.FromSeconds(durationInt);
             }
             else
             {
@@ -75,7 +73,7 @@ public sealed partial class CEWeatherCommand : LocalizedCommands
             }
         }
 
-        _entities.System<CEWeatherSystem>().SetWeather((target.Value, levelComp), weatherProto, endTime);
+        _entities.System<CEWeatherSystem>().SetWeather((target.Value, levelComp), weatherProto, duration);
     }
 
     public override CompletionResult GetCompletion(IConsoleShell shell, string[] args)
@@ -83,7 +81,7 @@ public sealed partial class CEWeatherCommand : LocalizedCommands
         if (args.Length == 1)
         {
             var options = new List<CompletionOption>();
-            var query = _entities.EntityQueryEnumerator<CEZLevelsNetworkComponent, MetaDataComponent>();
+            var query = _entities.EntityQueryEnumerator<CEZMapNetworkComponent, MetaDataComponent>();
             while (query.MoveNext(out var uid, out _, out var meta))
             {
                 options.Add(new CompletionOption(_entities.GetNetEntity(uid).ToString(), meta.EntityName));
@@ -104,8 +102,7 @@ public sealed partial class CEWeatherCommand : LocalizedCommands
 
                 opts.Add(new CompletionOption(proto.ID, proto.Name));
             }
-            opts.Add(new CompletionOption("null", Loc.GetString("cmd-weather-null")));
-            return CompletionResult.FromHintOptions(opts, Loc.GetString("cmd-weather-hint"));
+            return CompletionResult.FromHintOptions(opts, Loc.GetString("cmd-weather-hint-prototype"));
         }
 
         if (args.Length == 3)

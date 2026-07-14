@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is sublicensed under MIT License
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
@@ -35,7 +35,7 @@ public sealed partial class CEAddMapBelowZNetworkCommand : LocalizedEntityComman
         {
             case 1:
                 var options = new List<CompletionOption>();
-                var query = _entities.EntityQueryEnumerator<CEZLevelsNetworkComponent, MetaDataComponent>();
+                var query = _entities.EntityQueryEnumerator<CEZMapNetworkComponent, MetaDataComponent>();
                 while (query.MoveNext(out var uid, out var zLevelComp, out var meta))
                 {
                     options.Add(new CompletionOption(_entities.GetNetEntity(uid).ToString(), meta.EntityName));
@@ -73,7 +73,7 @@ public sealed partial class CEAddMapBelowZNetworkCommand : LocalizedEntityComman
             return;
         }
 
-        if (!_entities.TryGetComponent<CEZLevelsNetworkComponent>(target, out var levelComp))
+        if (!_entities.TryGetComponent<CEZMapNetworkComponent>(target, out var levelComp))
         {
             shell.WriteError($"Target entity doesn't have CEZLevelsNetworkComponent {args[0]}");
             return;
@@ -105,7 +105,7 @@ public sealed partial class CEAddMapBelowZNetworkCommand : LocalizedEntityComman
         // Add the map to the network
         var dict = new Dictionary<EntityUid, int> { { mapEnt.Value, newDepth } };
 
-        if (!_zLevel.TryAddMapsIntoZNetwork((target.Value, levelComp), dict))
+        if (!_zLevel.TryAddMapsIntoNetwork((target.Value, levelComp), dict))
         {
             shell.WriteError($"Failed to add map to z-network at depth {newDepth}.");
             _entities.QueueDeleteEntity(mapEnt.Value);

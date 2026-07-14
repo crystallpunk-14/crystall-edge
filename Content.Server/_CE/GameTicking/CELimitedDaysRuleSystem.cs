@@ -67,7 +67,7 @@ public sealed partial class CELimitedDaysRuleSystem : GameRuleSystem<CELimitedDa
 
     private void OnStartDay(CEStartDayEvent ev)
     {
-        if (TryComp<CEZLevelMapComponent>(ev.MapUid, out var zlevelMap) && zlevelMap.Depth != 0)
+        if (TryComp<CEZMapComponent>(ev.MapUid, out var zlevelMap) && zlevelMap.Depth != 0)
             return; //We don't care about zlevels start day event
 
         if (!HasComp<StationMemberComponent>(ev.MapUid))

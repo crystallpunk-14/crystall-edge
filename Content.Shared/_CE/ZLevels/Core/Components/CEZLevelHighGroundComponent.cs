@@ -25,14 +25,16 @@ public sealed partial class CEZLevelHighGroundComponent : Component
     };
 
     /// <summary>
-    /// Forcibly attaches the entity to itself along the z-axis if the character descends smoothly. Needed for prevent falling from staircases.
+    /// Forcibly attaches the entity to itself along the z-axis if the character descends smoothly.
+    /// Needed for prevent falling from staircases.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public bool Stick = false;
+    public bool Stick;
 
     /// <summary>
-    /// SHITCODE - we cant mapping entities rotated by 45 radians, so we just use this
+    /// We cant mapping entities rotated by 45 radians, so we just use this.
+    /// La shitcode.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public bool Corner = false;
+    public bool Corner;
 }

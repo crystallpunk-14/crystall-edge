@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is sublicensed under MIT License
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
@@ -156,7 +156,10 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
         ent.Comp.Active = true;
         DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.Active));
 
+        zPhys.VelocityRaiseEvent = true;
+
         _zLevel.UpdateGravityState((ent, zPhys));
+        _zLevel.WakeBody((ent, zPhys));
         _gravity.RefreshWeightless(ent.Owner);
 
         RaiseLocalEvent(ent, new CEFlightStartedEvent());
@@ -177,6 +180,8 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
 
         ent.Comp.Active = false;
         DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.Active));
+
+        zPhys.VelocityRaiseEvent = false;
 
         _zLevel.UpdateGravityState((ent, zPhys));
         _gravity.RefreshWeightless(ent.Owner);
@@ -216,17 +221,17 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
 /// <summary>
 /// Called on an entity when it attempts to start flight mode. Subscribe and cancel this event if you want to cancel your flight for any reason.
 /// </summary>
-public sealed class CEStartFlightAttemptEvent : CancellableEntityEventArgs;
+public sealed partial class CEStartFlightAttemptEvent : CancellableEntityEventArgs;
 
 /// <summary>
 /// Called on an entity when it enters flight mode
 /// </summary>
-public sealed class CEFlightStartedEvent : EntityEventArgs;
+public sealed partial class CEFlightStartedEvent : EntityEventArgs;
 
 /// <summary>
 /// Called on an entity when it exits flight mode
 /// </summary>
-public sealed class CEFlightStoppedEvent : EntityEventArgs;
+public sealed partial class CEFlightStoppedEvent : EntityEventArgs;
 
 
 /// <summary>

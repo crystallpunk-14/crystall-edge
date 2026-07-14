@@ -124,7 +124,6 @@
       - id: CEFoodBlueCheesePart
       - id: CEFoodCheesePart
     - id: CECloth10
-    - id: CEClothingHeadChristmasHat
     - id: CEClothingHeadWreath
     - !type:GroupSelector
       children:

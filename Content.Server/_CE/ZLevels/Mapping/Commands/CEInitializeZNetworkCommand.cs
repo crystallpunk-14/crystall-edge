@@ -1,14 +1,13 @@
-/*
+﻿/*
  * This file is sublicensed under MIT License
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
 
+using Content.Server._CE.ZLevels.Core;
 using Content.Server.Administration;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.Administration;
-using Robust.Server.GameObjects;
 using Robust.Shared.Console;
-using Robust.Shared.Map.Components;
 
 namespace Content.Server._CE.ZLevels.Mapping.Commands;
 
@@ -16,7 +15,7 @@ namespace Content.Server._CE.ZLevels.Mapping.Commands;
 public sealed partial class CEInitializeZNetworkCommand : LocalizedEntityCommands
 {
     [Dependency] private IEntityManager _entities = default!;
-    [Dependency] private MapSystem _map = default!;
+    [Dependency] private CEZLevelsSystem _zLevels = default!;
 
     public override string Command => "znetwork-initialize";
     public override string Description => "Initialize all zNetwork maps.";
@@ -24,7 +23,7 @@ public sealed partial class CEInitializeZNetworkCommand : LocalizedEntityCommand
     public override CompletionResult GetCompletion(IConsoleShell shell, string[] args)
     {
         var options = new List<CompletionOption>();
-        var query = _entities.EntityQueryEnumerator<CEZLevelsNetworkComponent, MetaDataComponent>();
+        var query = _entities.EntityQueryEnumerator<CEZMapNetworkComponent, MetaDataComponent>();
         while (query.MoveNext(out var uid, out var zLevelComp, out var meta))
         {
             options.Add(new CompletionOption(_entities.GetNetEntity(uid).ToString(), meta.EntityName));
@@ -51,33 +50,13 @@ public sealed partial class CEInitializeZNetworkCommand : LocalizedEntityCommand
             return;
         }
 
-        if (!_entities.TryGetComponent<CEZLevelsNetworkComponent>(target, out var levelComp))
+        if (!_entities.TryGetComponent<CEZMapNetworkComponent>(target, out var levelComp))
         {
             shell.WriteError($"Target entity doesnt have CEZLevelsNetworkComponent {args[1]}");
             return;
         }
 
-        foreach (var (_, mapUid) in levelComp.ZLevels)
-        {
-            if (!_entities.TryGetComponent<MapComponent>(mapUid, out var mapComp))
-            {
-                shell.WriteError($"Map entity {mapUid} doesnt have MapComponent.");
-                continue;
-            }
-
-            if (!_map.MapExists(mapComp.MapId))
-            {
-                shell.WriteError($"Map with ID {mapComp.MapId} does not exist.");
-                continue;
-            }
-
-            if (_map.IsInitialized(mapComp.MapId))
-            {
-                shell.WriteLine($"Map with ID {mapComp.MapId} is already initialized.");
-                continue;
-            }
-            _map.InitializeMap(mapComp.MapId);
-            shell.WriteLine($"Map with ID {mapComp.MapId} has been initialized.");
-        }
+        _zLevels.InitializeZNetwork((target.Value, levelComp));
+        shell.WriteLine("Done.");
     }
 }

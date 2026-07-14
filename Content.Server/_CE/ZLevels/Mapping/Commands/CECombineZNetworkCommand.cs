@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is sublicensed under MIT License
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
@@ -68,7 +68,7 @@ public sealed partial class CECombineZNetworkCommand : LocalizedEntityCommands
             maps.Add(mapId);
         }
 
-        var network = _zLevels.CreateZNetwork();
+        var network = _zLevels.CreateMapNetwork();
         _meta.SetEntityName(network, $"Combined zNetwork: {network.Owner.Id}");
         var counter = 0;
         Dictionary<EntityUid, int> dict = new();
@@ -78,7 +78,7 @@ public sealed partial class CECombineZNetworkCommand : LocalizedEntityCommands
             counter++;
         }
 
-        var success = _zLevels.TryAddMapsIntoZNetwork(network, dict);
+        var success = _zLevels.TryAddMapsIntoNetwork(network, dict);
 
         if (success)
             shell.WriteLine($"Created z-level network! Z-Network entity: {network}");

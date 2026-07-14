@@ -29,17 +29,17 @@ public sealed partial class CEDayCycleSystem : EntitySystem
         _mapGridQuery = GetEntityQuery<MapGridComponent>();
         _storageQuery = GetEntityQuery<InsideEntityStorageComponent>();
 
-        SubscribeLocalEvent<CEZLevelMapComponent, CEStartDayEvent>(OnStartDay);
-        SubscribeLocalEvent<CEZLevelMapComponent, CEStartNightEvent>(OnStartNight);
+        SubscribeLocalEvent<CEZMapComponent, CEStartDayEvent>(OnStartDay);
+        SubscribeLocalEvent<CEZMapComponent, CEStartNightEvent>(OnStartNight);
     }
 
-    private void OnStartDay(Entity<CEZLevelMapComponent> ent, ref CEStartDayEvent args)
+    private void OnStartDay(Entity<CEZMapComponent> ent, ref CEStartDayEvent args)
     {
         if (ent.Comp.Depth == 0)
             RaiseLocalEvent(new CEGlobalStartDayEvent());
     }
 
-    private void OnStartNight(Entity<CEZLevelMapComponent> ent, ref CEStartNightEvent args)
+    private void OnStartNight(Entity<CEZMapComponent> ent, ref CEStartNightEvent args)
     {
         if (ent.Comp.Depth == 0)
             RaiseLocalEvent(new CEGlobalStartNightEvent());

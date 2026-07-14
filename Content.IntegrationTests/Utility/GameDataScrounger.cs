@@ -169,14 +169,14 @@ public static partial class GameDataScrounger
             // Take a directory off the stack.
             var dir = explorationStack.Pop();
 
-            if (ignoreList.Contains(dir))
+            if (ignoreList.Contains(Path.GetFullPath(dir)))
                 continue; // It's all abstract anyway.
 
             explorationStack.AddRange(Directory.EnumerateDirectories(dir));
 
             foreach (var file in Directory.EnumerateFiles(dir, "*.yml"))
             {
-                if (ignoreList.Contains(file))
+                if (ignoreList.Contains(Path.GetFullPath(file)))
                     continue; // It's all abstract anyway.
 
                 foreach (var (kind, id) in IndexPrototypesIn(file))
@@ -359,7 +359,9 @@ public static partial class GameDataScrounger
                     if (entry is not YamlScalarNode { Value: {} value })
                         throw new Exception($"An entry in {path} is not a valid YAML scalar/string literal. Entry: {entry}");
 
-                    ignores.Add(value);
+                    // Entries are VFS-style paths (e.g. "/Prototypes/Maps") rooted at the resources directory,
+                    // while directory/file traversal in Scrounge() deals in absolute disk paths.
+                    ignores.Add(Path.GetFullPath($"{resDir}{value}"));
                 }
             }
         }

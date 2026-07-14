@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is sublicensed under MIT License
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
@@ -98,7 +98,7 @@ public sealed partial class CEGameMapMappingZNetworkCommand : LocalizedEntityCom
 
         //Ok all parsing is done, we start creating maps
 
-        var network = _zLevel.CreateZNetwork(zNetwork.ZLevelsComponentOverrides);
+        var network = _zLevel.CreateMapNetwork(zNetwork.ZLevelsComponentOverrides);
         _meta.SetEntityName(network, $"Mapping zNetwork: {mapProto.MapName}");
         Dictionary<EntityUid, int> dict = new();
 
@@ -158,7 +158,7 @@ public sealed partial class CEGameMapMappingZNetworkCommand : LocalizedEntityCom
             }
         }
 
-        if (!_zLevel.TryAddMapsIntoZNetwork(network, dict))
+        if (!_zLevel.TryAddMapsIntoNetwork(network, dict))
         {
             shell.WriteError($"Failed to create zNetwork from loaded maps!");
             return;

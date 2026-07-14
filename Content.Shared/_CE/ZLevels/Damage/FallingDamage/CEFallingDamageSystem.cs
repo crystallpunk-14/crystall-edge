@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is sublicensed under MIT License
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
@@ -9,7 +9,7 @@ namespace Content.Shared._CE.ZLevels.Damage.FallingDamage;
 
 public sealed partial class CEFallingDamageSystem : EntitySystem
 {
-    [Dependency] private DamageableSystem _damage = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
     public override void Initialize()
     {
         base.Initialize();
@@ -19,6 +19,6 @@ public sealed partial class CEFallingDamageSystem : EntitySystem
 
     private void OnFallOnMe(Entity<CEFallingDamageComponent> ent, ref CEZFellOnMeEvent args)
     {
-        _damage.TryChangeDamage(args.Fallen, ent.Comp.Damage * args.Speed);
+        _damageable.TryChangeDamage(args.Fallen, ent.Comp.Damage * args.Speed);
     }
 }

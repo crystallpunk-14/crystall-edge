@@ -40,9 +40,9 @@ public sealed partial class CECableVerticalNode : Node
 
         var zLevelsSys = entMan.System<CEZLevelsSystem>();
 
-        if (Up && zLevelsSys.TryMapUp(xform.Comp.MapUid.Value, out var mapAbove) && entMan.TryGetComponent<MapGridComponent>(mapAbove.Value.Owner, out var mapAboveGrid))
+        if (Up && zLevelsSys.TryMapUp(xform.Comp.MapUid.Value, out var mapAbove) && entMan.TryGetComponent<MapGridComponent>(mapAbove.Owner, out var mapAboveGrid))
         {
-            var nodesAbove = NodeHelpers.GetNodesInTile(nodeQuery, (mapAbove.Value.Owner, mapAboveGrid), gridIndex, mapSystem);
+            var nodesAbove = NodeHelpers.GetNodesInTile(nodeQuery, (mapAbove.Owner, mapAboveGrid), gridIndex, mapSystem);
 
             foreach (var nodeAbove in nodesAbove)
             {
@@ -51,9 +51,9 @@ public sealed partial class CECableVerticalNode : Node
             }
         }
 
-        if (Down && zLevelsSys.TryMapDown(xform.Comp.MapUid.Value, out var mapDown) && entMan.TryGetComponent<MapGridComponent>(mapDown.Value.Owner, out var mapDownGrid))
+        if (Down && zLevelsSys.TryMapDown(xform.Comp.MapUid.Value, out var mapDown) && entMan.TryGetComponent<MapGridComponent>(mapDown.Owner, out var mapDownGrid))
         {
-            var nodesDown = NodeHelpers.GetNodesInTile(nodeQuery, (mapDown.Value.Owner, mapDownGrid), gridIndex, mapSystem);
+            var nodesDown = NodeHelpers.GetNodesInTile(nodeQuery, (mapDown.Owner, mapDownGrid), gridIndex, mapSystem);
 
             foreach (var nodeDown in nodesDown)
             {
