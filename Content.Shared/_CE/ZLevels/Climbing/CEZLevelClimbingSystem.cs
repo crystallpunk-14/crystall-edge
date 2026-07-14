@@ -19,6 +19,9 @@ public sealed class CEZLevelClimbingSystem : EntitySystem
 
     private void OnPreventCollide(Entity<CEZPhysicsComponent> ent, ref PreventCollideEvent args)
     {
+        if (ent.Comp.Suspended)
+            return;
+
         if (!TryComp<PhysicsComponent>(ent, out var physics) || physics.BodyStatus != BodyStatus.InAir)
             return;
 
