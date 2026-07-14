@@ -62,9 +62,12 @@ public abstract partial class CESharedZLevelsSystem
 
     private void ProcessZPhysics(Entity<CEZPhysicsComponent, PhysicsComponent> entity, float frameTime)
     {
-        UpdateCalls++;
-
         var zPhysicsComponent = entity.Comp1;
+
+        if (zPhysicsComponent.Suspended)
+            return;
+
+        UpdateCalls++;
 
         var oldVelocity = zPhysicsComponent.Velocity;
         var oldHeight = zPhysicsComponent.LocalPosition;
