@@ -39,8 +39,9 @@
     #inHandsMaxFillLevels: 3 #TODO: draw inhands
     #inHandsFillBaseName: -fill-
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: FlimsyGlass
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger: # Overkill threshold

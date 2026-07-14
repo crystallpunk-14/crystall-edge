@@ -11,13 +11,13 @@ using Robust.Shared.Audio.Systems;
 
 namespace Content.Shared._CE.MagicEnergy.Systems;
 
-public abstract class CESharedMagicEnergySystem : EntitySystem
+public abstract partial class CESharedMagicEnergySystem : EntitySystem
 {
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly SharedJitteringSystem _jitter = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly AlertsSystem _alert = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private SharedJitteringSystem _jitter = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private AlertsSystem _alert = default!;
 
     public override void Initialize()
     {

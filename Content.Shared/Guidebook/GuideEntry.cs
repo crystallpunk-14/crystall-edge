@@ -26,7 +26,7 @@ public class GuideEntry
     /// <summary>
     ///     The name of this guide. This gets localized.
     /// </summary>
-    [DataField(required: true)] public string Name = default!;
+    [DataField(required: true)] public string Name = default!; //CrystallEdge: from LocId to string to allow multilanguak titles
 
     /// <summary>
     ///     The "children" of this guide for when guides are shown in a tree / table of contents.
@@ -48,13 +48,13 @@ public class GuideEntry
     [DataField] public int Priority = 0;
 
     /// <summary>
-    /// BASELINE - All vanilla guidebooks are hidden by default.
+    /// CrystallEdge - All vanilla guidebooks are hidden by default.
     /// </summary>
     [DataField]
     public bool Hidden = true;
 
     /// <summary>
-    /// BASELINE - Ability to disable guidebooks in the wrong language. Use "ru-RU" or "en-US" for example, check ContentLocalizationManager.Culture
+    /// CrystallEdge - Ability to disable guidebooks in the wrong language. Use "ru-RU" or "en-US" for example, check ContentLocalizationManager.Culture
     /// </summary>
     [DataField]
     public string? LocFilter;

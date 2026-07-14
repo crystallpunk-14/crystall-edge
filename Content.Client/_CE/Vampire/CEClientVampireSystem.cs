@@ -4,16 +4,16 @@ using Robust.Shared.Timing;
 
 namespace Content.Client._CE.Vampire;
 
-public sealed class CEClientVampireSystem : CESharedVampireSystem
+public sealed partial class CEClientVampireSystem : CESharedVampireSystem
 {
-    [Dependency] private readonly SpriteSystem _sprite = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     protected override void OnVampireVisualsInit(Entity<CEVampireVisualsComponent> vampire, ref ComponentInit args)
     {
         base.OnVampireVisualsInit(vampire, ref args);
 
-        if (!EntityManager.TryGetComponent(vampire, out SpriteComponent? sprite))
+        if (!TryComp(vampire, out SpriteComponent? sprite))
             return;
 
         if (_sprite.LayerMapTryGet(vampire.Owner, vampire.Comp.FangsMap, out var fangsLayerIndex, false))
@@ -27,7 +27,7 @@ public sealed class CEClientVampireSystem : CESharedVampireSystem
     {
         base.OnVampireVisualsShutdown(vampire, ref args);
 
-        if (!EntityManager.TryGetComponent(vampire, out SpriteComponent? sprite))
+        if (!TryComp(vampire, out SpriteComponent? sprite))
             return;
 
         if (_sprite.LayerMapTryGet(vampire.Owner, vampire.Comp.FangsMap, out var fangsLayerIndex, false))

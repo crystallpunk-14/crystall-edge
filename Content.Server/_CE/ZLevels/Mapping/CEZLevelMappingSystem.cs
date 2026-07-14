@@ -9,10 +9,10 @@ using Robust.Shared.Map.Components;
 
 namespace Content.Server._CE.ZLevels.Mapping;
 
-public sealed class CEZLevelMappingSystem : EntitySystem
+public sealed partial class CEZLevelMappingSystem : EntitySystem
 {
-    [Dependency] private readonly CEZLevelsSystem _zLevels = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
+    [Dependency] private CEZLevelsSystem _zLevels = default!;
+    [Dependency] private SharedMapSystem _map = default!;
     public override void Initialize()
     {
         base.Initialize();

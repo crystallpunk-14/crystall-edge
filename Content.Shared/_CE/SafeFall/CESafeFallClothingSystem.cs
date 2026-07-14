@@ -6,11 +6,11 @@ using Content.Shared.Stunnable;
 
 namespace Content.Shared._CE.SafeFall;
 
-public sealed class CESafeFallClothingSystem : EntitySystem
+public sealed partial class CESafeFallClothingSystem : EntitySystem
 {
-    [Dependency] private readonly StatusEffectsSystem _statusEffect = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!;
+    [Dependency] private StatusEffectsSystem _statusEffect = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedStunSystem _stun = default!;
 
     public override void Initialize()
     {

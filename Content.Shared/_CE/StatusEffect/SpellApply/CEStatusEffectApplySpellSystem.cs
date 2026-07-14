@@ -4,9 +4,9 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.StatusEffect.SpellApply;
 
-public sealed class CEStatusEffectApplySpellSystem : EntitySystem
+public sealed partial class CEStatusEffectApplySpellSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     public override void Update(float frameTime)
     {

@@ -1,8 +1,7 @@
 - type: marking
   id: CECarrinBeak
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ CECarrin ]
+  groupWhitelist: [ CECarrin ]
   sprites:
     - sprite: _CE/Mobs/Customization/carrin_beak.rsi
       state: 1
@@ -10,8 +9,7 @@
 - type: marking
   id: CECarrinBeak2
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ CECarrin ]
+  groupWhitelist: [ CECarrin ]
   sprites:
     - sprite: _CE/Mobs/Customization/carrin_beak.rsi
       state: 2
@@ -19,8 +17,7 @@
 - type: marking
   id: CECarrinBeak3
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ CECarrin ]
+  groupWhitelist: [ CECarrin ]
   sprites:
     - sprite: _CE/Mobs/Customization/carrin_beak.rsi
       state: 3
@@ -28,8 +25,7 @@
 - type: marking
   id: CECarrinBeak4
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ CECarrin ]
+  groupWhitelist: [ CECarrin ]
   sprites:
     - sprite: _CE/Mobs/Customization/carrin_beak.rsi
       state: 4
@@ -37,8 +33,7 @@
 - type: marking
   id: CECarrinBeak5
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ CECarrin ]
+  groupWhitelist: [ CECarrin ]
   sprites:
     - sprite: _CE/Mobs/Customization/carrin_beak.rsi
       state: 5
@@ -46,8 +41,7 @@
 - type: marking
   id: CECarrinBeak6
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ CECarrin ]
+  groupWhitelist: [ CECarrin ]
   sprites:
     - sprite: _CE/Mobs/Customization/carrin_beak.rsi
       state: 6
@@ -55,8 +49,7 @@
 - type: marking
   id: CECarrinBeak7
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ CECarrin ]
+  groupWhitelist: [ CECarrin ]
   sprites:
     - sprite: _CE/Mobs/Customization/carrin_beak.rsi
       state: 7
@@ -64,8 +57,7 @@
 - type: marking
   id: CECarrinBeak8
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ CECarrin ]
+  groupWhitelist: [ CECarrin ]
   sprites:
     - sprite: _CE/Mobs/Customization/carrin_beak.rsi
       state: 8
@@ -73,8 +65,7 @@
 - type: marking
   id: CECarrinBeak9
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ CECarrin ]
+  groupWhitelist: [ CECarrin ]
   sprites:
     - sprite: _CE/Mobs/Customization/carrin_beak.rsi
       state: 9
@@ -82,8 +73,7 @@
 - type: marking
   id: CECarrinBeak10
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ CECarrin ]
+  groupWhitelist: [ CECarrin ]
   sprites:
     - sprite: _CE/Mobs/Customization/carrin_beak.rsi
       state: 10
@@ -91,8 +81,7 @@
 - type: marking
   id: CECarrinBeak11
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ CECarrin ]
+  groupWhitelist: [ CECarrin ]
   sprites:
     - sprite: _CE/Mobs/Customization/carrin_beak.rsi
       state: 11
@@ -100,8 +89,7 @@
 - type: marking
   id: CECarrinBeak12
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ CECarrin ]
+  groupWhitelist: [ CECarrin ]
   sprites:
     - sprite: _CE/Mobs/Customization/carrin_beak.rsi
       state: 12
@@ -109,8 +97,7 @@
 - type: marking
   id: CECarrinBeak13
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ CECarrin ]
+  groupWhitelist: [ CECarrin ]
   sprites:
     - sprite: _CE/Mobs/Customization/carrin_beak.rsi
       state: 13
@@ -118,8 +105,7 @@
 - type: marking
   id: CECarrinBeak14
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ CECarrin ]
+  groupWhitelist: [ CECarrin ]
   sprites:
     - sprite: _CE/Mobs/Customization/carrin_beak.rsi
       state: 14
@@ -127,8 +113,7 @@
 - type: marking
   id: CECarrinBeak15
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ CECarrin ]
+  groupWhitelist: [ CECarrin ]
   sprites:
     - sprite: _CE/Mobs/Customization/carrin_beak.rsi
       state: 15
@@ -136,8 +121,7 @@
 - type: marking
   id: CECarrinBeak16
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ CECarrin ]
+  groupWhitelist: [ CECarrin ]
   sprites:
     - sprite: _CE/Mobs/Customization/carrin_beak.rsi
       state: 16

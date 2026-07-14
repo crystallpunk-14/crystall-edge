@@ -1,4 +1,4 @@
-﻿using Content.Shared.CCVar;
+using Content.Shared.CCVar;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Configuration;
@@ -7,11 +7,13 @@ using Robust.Shared.Random;
 
 namespace Content.Client._CE.Wave;
 
-public sealed class CEWaveShaderSystem : EntitySystem
+public sealed partial class CEWaveShaderSystem : EntitySystem
 {
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly IPrototypeManager _protoMan = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private IPrototypeManager _protoMan = default!;
+    [Dependency] private IRobustRandom _random = default!;
+
+    private static readonly ProtoId<ShaderPrototype> WaveShader = "CEWave";
 
     private ShaderInstance _shader = default!;
     private bool _enabled;
@@ -20,7 +22,7 @@ public sealed class CEWaveShaderSystem : EntitySystem
     {
         base.Initialize();
 
-        _shader = _protoMan.Index<ShaderPrototype>("CEWave").InstanceUnique();
+        _shader = _protoMan.Index(WaveShader).InstanceUnique();
         _enabled = _cfg.GetCVar(CCVars.CEWaveShaderEnabled);
 
         SubscribeLocalEvent<CEWaveShaderComponent, ComponentStartup>(OnStartup);

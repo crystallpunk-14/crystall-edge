@@ -9,9 +9,9 @@ using Content.Shared._CE.ZLevels.Flight.Components;
 
 namespace Content.Server._CE.ZLevels.Flight;
 
-public sealed class CEZFlightSystem : CESharedZFlightSystem
+public sealed partial class CEZFlightSystem : CESharedZFlightSystem
 {
-    [Dependency] private readonly ActionsSystem _actions = default!;
+    [Dependency] private ActionsSystem _actions = default!;
 
     public override void Initialize()
     {

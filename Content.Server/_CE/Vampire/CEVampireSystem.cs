@@ -10,9 +10,11 @@ using Content.Shared._CE.Vampire;
 using Content.Shared._CE.Vampire.Components;
 using Content.Shared.Actions.Events;
 using Content.Shared.Atmos.Components;
+using Content.Shared.Body;
 using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
 using Content.Shared.Ghost;
+using Content.Shared.Metabolism;
 using Content.Shared.Popups;
 using Content.Shared.Stacks;
 using Content.Shared.Temperature.Components;
@@ -26,15 +28,15 @@ namespace Content.Server._CE.Vampire;
 
 public sealed partial class CEVampireSystem : CESharedVampireSystem
 {
-    [Dependency] private readonly BodySystem _body = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly TemperatureSystem _temperature = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly FlammableSystem _flammable = default!;
-    [Dependency] private readonly CEDayCycleSystem _dayCycle = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly AntagSelectionSystem _antag = default!;
+    [Dependency] private BodySystem _body = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private TemperatureSystem _temperature = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private FlammableSystem _flammable = default!;
+    [Dependency] private CEDayCycleSystem _dayCycle = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private AntagSelectionSystem _antag = default!;
 
     private static readonly EntProtoId DefaultVampireRule = "CEGameRuleVampires";
     private static readonly EntProtoId VFX = "CEImpactEffectBloodEssence";
@@ -90,7 +92,7 @@ public sealed partial class CEVampireSystem : CESharedVampireSystem
         sb.Append(Loc.GetString("ce-vampire-tree-examine-level",
             ("level", ent.Comp.Level),
             ("essence", ent.Comp.EssenceFromLevelStart),
-            ("left", ent.Comp.EssenceToNextLevel?.ToString() ?? "∞")) + "\n"+ "\n");
+            ("left", ent.Comp.EssenceToNextLevel?.ToString() ?? "в€ћ")) + "\n"+ "\n");
 
         var query = EntityQueryEnumerator<CEVampireClanHeartComponent>();
 
@@ -102,7 +104,7 @@ public sealed partial class CEVampireSystem : CESharedVampireSystem
 
             sb.Append(Loc.GetString("ce-vampire-tree-other-info",
                 ("essence", heart.EssenceFromLevelStart),
-                ("left", heart.EssenceToNextLevel?.ToString() ?? "∞"),
+                ("left", heart.EssenceToNextLevel?.ToString() ?? "в€ћ"),
                 ("lvl", heart.Level)) + "\n");
         }
 
@@ -183,12 +185,15 @@ public sealed partial class CEVampireSystem : CESharedVampireSystem
         base.OnVampireInit(ent, ref args);
 
         //Metabolism
-        foreach (var (organUid, _) in _body.GetBodyOrgans(ent))
+        if (_body.TryGetOrgansWithComponent<MetabolizerComponent>((ent.Owner, null), out var organs))
         {
-            if (TryComp<MetabolizerComponent>(organUid, out var metabolizer) && metabolizer.MetabolizerTypes is not null)
+            foreach (var (_, metabolizer) in organs)
             {
-                metabolizer.MetabolizerTypes.Clear();
-                metabolizer.MetabolizerTypes.Add(ent.Comp.MetabolizerType);
+                if (metabolizer.MetabolizerTypes is not null)
+                {
+                    metabolizer.MetabolizerTypes.Clear();
+                    metabolizer.MetabolizerTypes.Add(ent.Comp.MetabolizerType);
+                }
             }
         }
     }

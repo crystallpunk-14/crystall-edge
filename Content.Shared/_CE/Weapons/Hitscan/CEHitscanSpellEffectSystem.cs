@@ -7,7 +7,7 @@ namespace Content.Shared._CE.Weapons.Hitscan;
 
 public sealed partial class CEHitscanSpellEffectSystem : EntitySystem
 {
-    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private EntityWhitelistSystem _whitelist = default!;
 
     public override void Initialize()
     {

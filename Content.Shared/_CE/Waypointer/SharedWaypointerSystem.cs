@@ -28,7 +28,7 @@ public abstract class SharedWaypointerSystem : EntitySystem
 
     private void OnEquip(Entity<ShowWaypointerComponent> clothing, ref GotEquippedEvent args)
     {
-        if (HasComp<WaypointerComponent>(args.Equipee))
+        if (HasComp<WaypointerComponent>(args.EquipTarget))
             return;
 
         var comp = new WaypointerComponent
@@ -37,13 +37,13 @@ public abstract class SharedWaypointerSystem : EntitySystem
             WaypointerProtoIds = clothing.Comp.WaypointerProtoIds,
         };
 
-        AddComp(args.Equipee, comp);
-        Dirty(args.Equipee, comp);
+        AddComp(args.EquipTarget, comp);
+        Dirty(args.EquipTarget, comp);
     }
 
     private void OnUnequip(Entity<ShowWaypointerComponent> clothing, ref GotUnequippedEvent args)
     {
-        RemComp<WaypointerComponent>(args.Equipee);
+        RemComp<WaypointerComponent>(args.EquipTarget);
     }
 }
 

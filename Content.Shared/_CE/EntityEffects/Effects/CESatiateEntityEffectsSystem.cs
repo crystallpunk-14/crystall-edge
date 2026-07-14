@@ -5,7 +5,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._CE.EntityEffects.Effects;
 public sealed partial class CESatiateEntityEffectsSystem : EntityEffectSystem<CESatiationsComponent, CESatiate>
 {
-    [Dependency] private readonly CESharedSatiationSystem _satiation = default!;
+    [Dependency] private CESharedSatiationSystem _satiation = default!;
 
     protected override void Effect(Entity<CESatiationsComponent> entity, ref EntityEffectEvent<CESatiate> args)
     {

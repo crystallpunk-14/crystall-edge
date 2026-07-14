@@ -8,10 +8,10 @@ using Robust.Shared.Map.Components;
 
 namespace Content.Client._CE.Farming;
 
-public sealed class CEDebugPlantOverlay : Overlay
+public sealed partial class CEDebugPlantOverlay : Overlay
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IResourceCache _cache = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IResourceCache _cache = default!;
     private readonly SharedTransformSystem _transform = default!;
     public override OverlaySpace Space => OverlaySpace.ScreenSpace;
 
@@ -58,9 +58,9 @@ public sealed class CEDebugPlantOverlay : Overlay
     }
 }
 
-public sealed class CEShowPlantDebugCommand : LocalizedCommands
+public sealed partial class CEShowPlantDebugCommand : LocalizedCommands
 {
-    [Dependency] private readonly IOverlayManager _overlayManager = default!;
+    [Dependency] private IOverlayManager _overlayManager = default!;
     public override string Command => "showplantdebug";
 
     public override void Execute(IConsoleShell shell, string argStr, string[] args)

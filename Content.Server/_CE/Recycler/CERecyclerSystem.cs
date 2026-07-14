@@ -17,15 +17,15 @@ using Robust.Shared.Physics.Events;
 namespace Content.Server._CE.Recycler;
 
 /// <inheritdoc/>
-public sealed class CERecyclerSystem : CESharedRecyclerSystem
+public sealed partial class CERecyclerSystem : CESharedRecyclerSystem
 {
-    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
-    [Dependency] private readonly MaterialStorageSystem _material = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly AmbientSoundSystem _ambient = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly DestructibleSystem _destructible = default!;
-    [Dependency] private readonly DamageableSystem _damageable = default!;
+    [Dependency] private EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private MaterialStorageSystem _material = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private AmbientSoundSystem _ambient = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private DestructibleSystem _destructible = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
 
     public override void Initialize()
     {

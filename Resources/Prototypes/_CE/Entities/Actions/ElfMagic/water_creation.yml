@@ -80,9 +80,12 @@
         acts: [ "Destruction" ]
   - type: PassiveDamage # Around 8 damage a minute healed
     damage:
-      groups:
-        Brute: 0.016 # ~ 1 minute
+      types:
+        Blunt: 0.016 # ~ 1 minute
+        Slash: 0.016
+        Piercing: 0.016
   - type: Damageable
+  - type: Injurable
     damageContainer: Biological
   - type: Edible
     edible: Drink

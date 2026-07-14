@@ -37,8 +37,9 @@
     sprite: _CE/Vehicles/hoverboard.rsi
     size: Ginormous
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: Inorganic
   - type: MovementSpeedModifier
     baseAcceleration: 2
     baseFriction: 2

@@ -18,7 +18,6 @@
         - ReagentId: CEWater
           Quantity: 9999999
   - type: SolutionRegeneration
-    solution: pool
     generated:
       reagents:
       - ReagentId: CEWater

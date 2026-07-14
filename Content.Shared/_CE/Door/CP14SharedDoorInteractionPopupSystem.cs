@@ -6,11 +6,11 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.Door;
 
-public sealed class CEDoorInteractionPopupSystem : EntitySystem
+public sealed partial class CEDoorInteractionPopupSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
 
     public override void Initialize()
     {

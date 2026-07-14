@@ -15,9 +15,9 @@ public sealed partial class CEWorkbenchWindow : DefaultWindow
 {
     private const int AllCategoryId = -1;
 
-    [Dependency] private readonly IPlayerManager _player = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly ILogManager _log = default!;
+    [Dependency] private IPlayerManager _player = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private ILogManager _log = default!;
 
     public event Action<CEWorkbenchUiRecipesEntry>? OnCraft;
 

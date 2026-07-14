@@ -16,10 +16,10 @@ namespace Content.Client._CE.Trading;
 [GenerateTypedNameReferences]
 public sealed partial class CETradingPlatformWindow : DefaultWindow
 {
-    [Dependency] private readonly ILogManager _log = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IPlayerManager _player = default!;
+    [Dependency] private ILogManager _log = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IPlayerManager _player = default!;
 
     private readonly CEClientTradingPlatformSystem _tradingSystem;
     private string _searchFilter = string.Empty;
@@ -205,7 +205,7 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
 
         _selectedPosition = node;
 
-        Name.Text = _tradingSystem.GetTradeName(_selectedPosition);
+        NameLabel.Text = _tradingSystem.GetTradeName(_selectedPosition);
         Description.Text = _tradingSystem.GetTradeDescription(_selectedPosition);
         LocationView.SetPrototype(_selectedPosition.Service.GetTexture(_prototype));
 
@@ -216,7 +216,7 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
 
     private void DeselectNode()
     {
-        Name.Text = string.Empty;
+        NameLabel.Text = string.Empty;
         Description.Text = string.Empty;
         LocationView.SetPrototype(null);
     }

@@ -17,8 +17,9 @@
     - state: closed
       map: ["enum.StorageVisualLayers.Door"]
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: CEWoodStructural
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:

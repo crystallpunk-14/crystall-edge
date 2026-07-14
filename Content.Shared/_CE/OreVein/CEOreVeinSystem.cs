@@ -8,11 +8,11 @@ namespace Content.Shared._CE.OreVein;
 /// <summary>
 /// System that manages ore veins, spawning resources when specific damage thresholds are met.
 /// </summary>
-public sealed class CEOreVeinSystem : EntitySystem
+public sealed partial class CEOreVeinSystem : EntitySystem
 {
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly EntityTableSystem _table = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private EntityTableSystem _table = default!;
 
     public override void Initialize()
     {
@@ -28,7 +28,7 @@ public sealed class CEOreVeinSystem : EntitySystem
 
         var requiredDamage = ent.Comp.Damage;
 
-        var totalDamage = args.Damageable.Damage;
+        var totalDamage = _damageable.GetAllDamage((ent.Owner, args.Damageable));
 
         var allDamageTypesMet = true;
         foreach (var required in requiredDamage.DamageDict)

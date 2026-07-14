@@ -10,11 +10,10 @@ using Robust.Shared.Map.Components;
 namespace Content.Server._CE.Power;
 
 [UsedImplicitly]
-public sealed class CEPipeVisSystem : EntitySystem
+public sealed partial class CEPipeVisSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly NodeContainerSystem _nodeContainer = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private SharedMapSystem _map = default!;
 
     private EntityQuery<TransformComponent> _transformQuery;
     private EntityQuery<NodeContainerComponent> _nodeQuery;
@@ -48,10 +47,10 @@ public sealed class CEPipeVisSystem : EntitySystem
 
 
             foreach (var reachable in
-                     node.GetReachableNodes(transform,
+                     node.GetReachableNodes((uid, transform),
                          _nodeQuery,
                          _transformQuery,
-                         grid,
+                         (transform.GridUid.Value, grid),
                          EntityManager))
             {
                 if (reachable is not CableNode && reachable is not CEConnectorEdgeNode)

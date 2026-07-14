@@ -7,9 +7,9 @@ namespace Content.Shared._CE.Satiation;
 
 public abstract partial class CESharedSatiationSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
-    [Dependency] private readonly INetManager _net = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private StatusEffectsSystem _statusEffects = default!;
+    [Dependency] private INetManager _net = default!;
 
     public override void Initialize()
     {

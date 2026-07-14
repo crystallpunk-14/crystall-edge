@@ -10,7 +10,7 @@ namespace Content.Client._CE.Ambitions;
 [GenerateTypedNameReferences]
 public sealed partial class CEAmbitionsMenu : FancyWindow
 {
-    [Dependency] private readonly IEntityManager _entMan = default!;
+    [Dependency] private IEntityManager _entMan = default!;
 
     private CharacterInfoSystem? _characterInfo;
 

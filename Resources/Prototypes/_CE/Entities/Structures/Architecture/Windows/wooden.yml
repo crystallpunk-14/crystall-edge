@@ -40,8 +40,9 @@
   - type: Icon
     sprite: _CE/Structures/Architecture/Windows/wooden_frame.rsi
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: CEWoodStructural
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:

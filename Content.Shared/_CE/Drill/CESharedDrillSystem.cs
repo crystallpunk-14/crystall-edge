@@ -18,19 +18,19 @@ namespace Content.Shared._CE.Drill;
 /// <summary>
 /// Handles the automatic drilling behavior for stationary drills, including damage application and effects.
 /// </summary>
-public sealed class CESharedDrillSystem : EntitySystem
+public sealed partial class CESharedDrillSystem : EntitySystem
 {
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly SharedColorFlashEffectSystem _color = default!;
-    [Dependency] private readonly SharedJitteringSystem _jitter = default!;
-    [Dependency] private readonly MeleeSoundSystem _meleeSound = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly SharedAmbientSoundSystem _ambient = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private SharedColorFlashEffectSystem _color = default!;
+    [Dependency] private SharedJitteringSystem _jitter = default!;
+    [Dependency] private MeleeSoundSystem _meleeSound = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] private SharedAmbientSoundSystem _ambient = default!;
+    [Dependency] private IRobustRandom _random = default!;
 
     private readonly List<EntityUid> _cachedEntityList = new();
 

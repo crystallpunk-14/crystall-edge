@@ -13,10 +13,10 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Client._CE.ZLevels.Core;
 
-public sealed class CEZLevelBlurOverlay : Overlay
+public sealed partial class CEZLevelBlurOverlay : Overlay
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly IEntityManager _entity = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private IEntityManager _entity = default!;
     private readonly ShaderInstance? _blurShader;
 
     public override bool RequestScreenTexture => true;

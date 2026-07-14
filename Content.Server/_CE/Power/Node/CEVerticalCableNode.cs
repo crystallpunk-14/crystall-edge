@@ -14,24 +14,25 @@ public sealed partial class CECableVerticalNode : Node
     [DataField]
     public bool Down;
 
-    public override IEnumerable<Node> GetReachableNodes(TransformComponent xform,
+    public override IEnumerable<Node> GetReachableNodes(Entity<TransformComponent> xform,
         EntityQuery<NodeContainerComponent> nodeQuery,
         EntityQuery<TransformComponent> xformQuery,
-        MapGridComponent? grid,
+        Entity<MapGridComponent>? grid,
         IEntityManager entMan)
     {
-        if (!xform.Anchored || grid == null)
+        if (!xform.Comp.Anchored || grid is not { } gridEnt)
             yield break;
 
-        var gridIndex = grid.TileIndicesFor(xform.Coordinates);
+        var mapSystem = entMan.System<SharedMapSystem>();
+        var gridIndex = mapSystem.TileIndicesFor(gridEnt, xform.Comp.Coordinates);
 
-        if (xform.MapUid is null)
+        if (xform.Comp.MapUid is null)
             yield break;
 
         List<Node> outputNodes = new();
 
 
-        foreach (var node in NodeHelpers.GetNodesInTile(nodeQuery, grid, gridIndex))
+        foreach (var node in NodeHelpers.GetNodesInTile(nodeQuery, gridEnt, gridIndex, mapSystem))
         {
             if (node is CableNode)
                 outputNodes.Add(node);
@@ -39,9 +40,9 @@ public sealed partial class CECableVerticalNode : Node
 
         var zLevelsSys = entMan.System<CEZLevelsSystem>();
 
-        if (Up && zLevelsSys.TryMapUp(xform.MapUid.Value, out var mapAbove) && entMan.TryGetComponent<MapGridComponent>(mapAbove, out var mapAboveGrid))
+        if (Up && zLevelsSys.TryMapUp(xform.Comp.MapUid.Value, out var mapAbove) && entMan.TryGetComponent<MapGridComponent>(mapAbove.Value.Owner, out var mapAboveGrid))
         {
-            var nodesAbove = NodeHelpers.GetNodesInTile(nodeQuery, mapAboveGrid, gridIndex);
+            var nodesAbove = NodeHelpers.GetNodesInTile(nodeQuery, (mapAbove.Value.Owner, mapAboveGrid), gridIndex, mapSystem);
 
             foreach (var nodeAbove in nodesAbove)
             {
@@ -50,9 +51,9 @@ public sealed partial class CECableVerticalNode : Node
             }
         }
 
-        if (Down && zLevelsSys.TryMapDown(xform.MapUid.Value, out var mapDown) && entMan.TryGetComponent<MapGridComponent>(mapDown, out var mapDownGrid))
+        if (Down && zLevelsSys.TryMapDown(xform.Comp.MapUid.Value, out var mapDown) && entMan.TryGetComponent<MapGridComponent>(mapDown.Value.Owner, out var mapDownGrid))
         {
-            var nodesDown = NodeHelpers.GetNodesInTile(nodeQuery, mapDownGrid, gridIndex);
+            var nodesDown = NodeHelpers.GetNodesInTile(nodeQuery, (mapDown.Value.Owner, mapDownGrid), gridIndex, mapSystem);
 
             foreach (var nodeDown in nodesDown)
             {

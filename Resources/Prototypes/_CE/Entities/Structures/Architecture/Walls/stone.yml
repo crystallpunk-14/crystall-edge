@@ -14,8 +14,9 @@
   - type: CEAutoTilePlacement
     tile: CEStonebricks
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: CERockStructural
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -52,8 +53,9 @@
   - type: IconSmooth
     base: stonebricks
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: CERockStructural
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -90,8 +92,9 @@
   - type: IconSmooth
     base: stonebricks
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: CERockStructural
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -125,8 +128,9 @@
   - type: IconSmooth
     base: bricksA
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: CERockStructural
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:

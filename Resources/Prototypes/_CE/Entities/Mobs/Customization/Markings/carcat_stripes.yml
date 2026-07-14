@@ -1,9 +1,7 @@
 - type: marking
   id: CECarcatHeadStripes
   bodyPart: Head
-  markingCategory: Head
-  followSkinColor: true
-  speciesRestriction: [ CECarcat ]
+  groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_wool/head.rsi
       state: stripes
@@ -11,9 +9,7 @@
 - type: marking
   id: CECarcatTorsoStripes
   bodyPart: Chest
-  markingCategory: Chest
-  followSkinColor: true
-  speciesRestriction: [ CECarcat ]
+  groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_wool/torso.rsi
       state: stripes
@@ -21,9 +17,7 @@
 - type: marking
   id: CECarcatArmLeftStripes
   bodyPart: LArm
-  markingCategory: Arms
-  followSkinColor: true
-  speciesRestriction: [ CECarcat ]
+  groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_wool/left_hand.rsi
       state: stripes
@@ -31,9 +25,7 @@
 - type: marking
   id: CECarcatArmRightStripes
   bodyPart: RArm
-  markingCategory: Arms
-  followSkinColor: true
-  speciesRestriction: [ CECarcat ]
+  groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_wool/right_hand.rsi
       state: stripes
@@ -41,9 +33,7 @@
 - type: marking
   id: CECarcatLegLeftStripes
   bodyPart: LLeg
-  markingCategory: Legs
-  followSkinColor: true
-  speciesRestriction: [ CECarcat ]
+  groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_wool/left_leg.rsi
       state: stripes
@@ -51,9 +41,7 @@
 - type: marking
   id: CECarcatLegRightStripes
   bodyPart: RLeg
-  markingCategory: Legs
-  followSkinColor: true
-  speciesRestriction: [ CECarcat ]
+  groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_wool/right_leg.rsi
       state: stripes

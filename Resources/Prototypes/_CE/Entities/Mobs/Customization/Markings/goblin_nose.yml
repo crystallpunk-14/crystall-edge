@@ -1,10 +1,8 @@
 - type: marking
   id: CEGoblinNose
   bodyPart: Snout
-  markingCategory: Snout
-  followSkinColor: true
   forcedColoring: true
-  speciesRestriction: [ CEGoblin ]
+  groupWhitelist: [ CEGoblin ]
   sprites:
     - sprite: _CE/Mobs/Customization/goblin_nose.rsi
       state: nose1
@@ -12,10 +10,8 @@
 - type: marking
   id: CEGoblinNose2
   bodyPart: Snout
-  markingCategory: Snout
-  followSkinColor: true
   forcedColoring: true
-  speciesRestriction: [ CEGoblin ]
+  groupWhitelist: [ CEGoblin ]
   sprites:
     - sprite: _CE/Mobs/Customization/goblin_nose.rsi
       state: nose2
@@ -23,10 +19,8 @@
 - type: marking
   id: CEGoblinNose3
   bodyPart: Snout
-  markingCategory: Snout
-  followSkinColor: true
   forcedColoring: true
-  speciesRestriction: [ CEGoblin ]
+  groupWhitelist: [ CEGoblin ]
   sprites:
     - sprite: _CE/Mobs/Customization/goblin_nose.rsi
       state: nose3

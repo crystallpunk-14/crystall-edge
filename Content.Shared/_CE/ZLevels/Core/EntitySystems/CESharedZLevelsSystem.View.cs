@@ -12,7 +12,7 @@ namespace Content.Shared._CE.ZLevels.Core.EntitySystems;
 
 public abstract partial class CESharedZLevelsSystem
 {
-    [Dependency] protected readonly ITileDefinitionManager TilDefMan = default!;
+    [Dependency] protected ITileDefinitionManager TilDefMan = default!;
     private void InitView()
     {
         SubscribeLocalEvent<CEZLevelViewerComponent, MoveEvent>(OnViewerMove);

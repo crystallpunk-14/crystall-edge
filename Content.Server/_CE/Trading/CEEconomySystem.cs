@@ -14,11 +14,11 @@ namespace Content.Server._CE.Trading;
 
 public sealed partial class CEEconomySystem : CESharedEconomySystem
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly PricingSystem _price = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly GameTicker _gameTicker = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private PricingSystem _price = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private GameTicker _gameTicker = default!;
 
     public override void Initialize()
     {

@@ -9,8 +9,9 @@
   - type: Icon
     sprite: _CE/Structures/Architecture/Windows/stone_frame.rsi
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Rock #TODO
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:

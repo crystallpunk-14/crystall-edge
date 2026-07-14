@@ -7,10 +7,10 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.GameTicking;
 
-public sealed class CEVampireRuleSystem : GameRuleSystem<CEVampireRuleComponent>
+public sealed partial class CEVampireRuleSystem : GameRuleSystem<CEVampireRuleComponent>
 {
-    [Dependency] private readonly CEVampireObjectiveConditionsSystem _condition = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private CEVampireObjectiveConditionsSystem _condition = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
 
     protected override void AppendRoundEndText(EntityUid uid,
         CEVampireRuleComponent component,

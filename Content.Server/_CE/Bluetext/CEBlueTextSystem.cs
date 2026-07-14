@@ -7,11 +7,11 @@ using Robust.Shared.Network;
 
 namespace Content.Server._CE.BlueText;
 
-public sealed class CEBlueTextSystem : CESharedBlueTextSystem
+public sealed partial class CEBlueTextSystem : CESharedBlueTextSystem
 {
-    [Dependency] private readonly MindSystem _mind = default!;
-    [Dependency] private readonly IServerNetManager _net = default!;
-    [Dependency] private readonly IAdminLogManager _adminLog = default!;
+    [Dependency] private MindSystem _mind = default!;
+    [Dependency] private IServerNetManager _net = default!;
+    [Dependency] private IAdminLogManager _adminLog = default!;
 
     public override void Initialize()
     {

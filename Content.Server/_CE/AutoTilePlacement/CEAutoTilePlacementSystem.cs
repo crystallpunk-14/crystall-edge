@@ -4,11 +4,11 @@ using Robust.Shared.Map.Components;
 
 namespace Content.Server._CE.AutoTilePlacement;
 
-public sealed class CEAutoTilePlacementSystem : EntitySystem
+public sealed partial class CEAutoTilePlacementSystem : EntitySystem
 {
-    [Dependency] private readonly TileSystem _tile = default!;
-    [Dependency] private readonly ITileDefinitionManager _tiledef = default!;
-    [Dependency] private readonly SharedMapSystem _maps = default!;
+    [Dependency] private TileSystem _tile = default!;
+    [Dependency] private ITileDefinitionManager _tiledef = default!;
+    [Dependency] private SharedMapSystem _maps = default!;
     public override void Initialize()
     {
         base.Initialize();

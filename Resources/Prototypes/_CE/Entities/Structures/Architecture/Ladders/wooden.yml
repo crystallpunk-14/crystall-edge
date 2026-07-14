@@ -6,8 +6,9 @@
   - type: Sprite
     sprite: _CE/Structures/Architecture/Ladders/wooden.rsi
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: CEWoodStructural
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:

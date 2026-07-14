@@ -7,9 +7,9 @@ namespace Content.Server._CE.Sliceable;
 
 public sealed partial class CEAdditionalSliceableDropSystem : EntitySystem
 {
-    [Dependency] private readonly TransformSystem _transform = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly StackSystem _stack = default!;
+    [Dependency] private TransformSystem _transform = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private StackSystem _stack = default!;
 
     public override void Initialize()
     {

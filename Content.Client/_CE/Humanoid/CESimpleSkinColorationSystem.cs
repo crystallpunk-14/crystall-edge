@@ -1,12 +1,17 @@
 using Content.Shared._CE.Humanoid;
-using Content.Shared.Humanoid;
+using Content.Shared.Body;
 using Robust.Client.GameObjects;
+using Robust.Shared.Prototypes;
 
 namespace Content.Client._CE.Humanoid;
 
-public sealed class CESimpleSkinColorationSystem : EntitySystem
+public sealed partial class CESimpleSkinColorationSystem : EntitySystem
 {
-    [Dependency] private readonly SpriteSystem _sprite = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
+    [Dependency] private SharedVisualBodySystem _visualBody = default!;
+
+    //CrystallEdge: any non-eye organ carries the body's general skin tone; Torso is always present on a humanoid
+    private readonly ProtoId<OrganCategoryPrototype> _skinToneOrganCategory = "Torso";
 
     public override void Initialize()
     {
@@ -19,13 +24,17 @@ public sealed class CESimpleSkinColorationSystem : EntitySystem
     {
         if (!TryComp<SpriteComponent>(ent, out var sprite))
             return;
-        if (!TryComp<HumanoidAppearanceComponent>(ent, out var humanoid))
+
+        if (!_visualBody.TryGatherMarkingsData((ent.Owner, null), null, out var profiles, out _, out _) ||
+            !profiles.TryGetValue(_skinToneOrganCategory, out var bodyProfile))
             return;
 
         foreach (var map in ent.Comp.Maps)
         {
-            var index = _sprite.LayerMapGet((ent, sprite), map);
-            _sprite.LayerSetColor((ent, sprite), index, humanoid.SkinColor);
+            if (!_sprite.LayerMapTryGet((ent, sprite), map, out var index, true))
+                continue;
+
+            _sprite.LayerSetColor((ent, sprite), index, bodyProfile.SkinColor);
         }
     }
 }

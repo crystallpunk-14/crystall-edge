@@ -64,8 +64,9 @@
     sprite: _CE/Structures/Furniture/cabinet.rsi
     state: icon
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: CEWood
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:

@@ -1,10 +1,8 @@
 - type: marking
   id: CECarcatNose
   bodyPart: Snout
-  markingCategory: Snout
-  followSkinColor: true
   forcedColoring: true
-  speciesRestriction: [ CECarcat ]
+  groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_nose.rsi
       state: 1
@@ -12,10 +10,8 @@
 - type: marking
   id: CECarcatNose2
   bodyPart: Snout
-  markingCategory: Snout
-  followSkinColor: true
   forcedColoring: true
-  speciesRestriction: [ CECarcat ]
+  groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_nose.rsi
       state: 2
@@ -23,10 +19,8 @@
 - type: marking
   id: CECarcatNose3
   bodyPart: Snout
-  markingCategory: Snout
-  followSkinColor: true
   forcedColoring: true
-  speciesRestriction: [ CECarcat ]
+  groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_nose.rsi
       state: 3
@@ -34,10 +28,8 @@
 - type: marking
   id: CECarcatNose4
   bodyPart: Snout
-  markingCategory: Snout
-  followSkinColor: true
   forcedColoring: true
-  speciesRestriction: [ CECarcat ]
+  groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_nose.rsi
       state: 4
@@ -45,10 +37,8 @@
 - type: marking
   id: CECarcatNose5
   bodyPart: Snout
-  markingCategory: Snout
-  followSkinColor: true
   forcedColoring: true
-  speciesRestriction: [ CECarcat ]
+  groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_nose.rsi
       state: 5
@@ -56,10 +46,8 @@
 - type: marking
   id: CECarcatNose6
   bodyPart: Snout
-  markingCategory: Snout
-  followSkinColor: true
   forcedColoring: true
-  speciesRestriction: [ CECarcat ]
+  groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_nose.rsi
       state: 6

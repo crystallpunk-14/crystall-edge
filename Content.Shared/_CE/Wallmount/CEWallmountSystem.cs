@@ -7,12 +7,12 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.Wallmount;
 
-public sealed class CEWallmountSystem : EntitySystem
+public sealed partial class CEWallmountSystem : EntitySystem
 {
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly TagSystem _tag = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly INetManager _net = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private TagSystem _tag = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private INetManager _net = default!;
 
     public static readonly ProtoId<TagPrototype>[] WallTags = ["Wall", "Window"];
 

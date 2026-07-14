@@ -15,3 +15,16 @@
     back:
     - CEMachineCoreTradingPlatformBlackMarket
     - CEThiefHideoutFlag
+
+- type: antagSpecifier
+  parent: CERestrictedAntag
+  id: CEThief
+  prefRoles:
+  - CEThief
+  startingGear: CEThiefGear
+  mindRoles:
+  - CEMindRoleThief
+  briefing:
+    text: ce-roles-antag-thief-briefing
+    color: "#527c5e"
+    sound: "/Audio/_CE/Ambience/Antag/vampire.ogg"

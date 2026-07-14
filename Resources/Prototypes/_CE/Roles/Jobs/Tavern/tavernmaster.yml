@@ -9,7 +9,6 @@
   supervisors: ce-job-supervisors-empire
   requireAdminNotify: true
   joinNotifyCrew: true
-  canBeAntag: true
   weight: 2
 
 - type: startingGear

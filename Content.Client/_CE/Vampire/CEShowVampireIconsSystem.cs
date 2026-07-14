@@ -9,11 +9,11 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Client._CE.Vampire;
 
-public sealed class CEShowVampireIconsSystem : EquipmentHudSystem<CEShowVampireIconsComponent>
+public sealed partial class CEShowVampireIconsSystem : EquipmentHudSystem<CEShowVampireIconsComponent>
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly IPlayerManager _player = default!;
-    [Dependency] private readonly IClientAdminManager _admin = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private IPlayerManager _player = default!;
+    [Dependency] private IClientAdminManager _admin = default!;
 
     private readonly ProtoId<FactionIconPrototype> _vampireIcon = "CEVampire";
     private readonly ProtoId<FactionIconPrototype> _vampireHigherIcon = "CEVampireHigher";

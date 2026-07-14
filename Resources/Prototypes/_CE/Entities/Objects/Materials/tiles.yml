@@ -19,6 +19,7 @@
         variation: 0.03
         volume: 2
   - type: Damageable
+  - type: Injurable
     damageContainer: Inorganic
   - type: Destructible
     thresholds:

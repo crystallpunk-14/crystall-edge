@@ -8,7 +8,7 @@ namespace Content.Client._CE.Thief;
 
 public sealed partial class CEClientThiefSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
 
     private readonly EntProtoId _vfx = "CETreasureSparkVFX";
     private readonly SoundSpecifier _sound = new SoundPathSpecifier("/Audio/_CE/Effects/treasure_effect.ogg");

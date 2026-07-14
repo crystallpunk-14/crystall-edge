@@ -11,11 +11,11 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._CE.Spawner;
 
-public partial class CESpawnerSystem : EntitySystem
+public sealed partial class CESpawnerSystem : EntitySystem
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly EntityTableSystem _entityTable = default!;
-    [Dependency] private readonly StationSystem _station = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private EntityTableSystem _entityTable = default!;
+    [Dependency] private StationSystem _station = default!;
 
     public override void Initialize()
     {

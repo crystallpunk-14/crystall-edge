@@ -19,12 +19,12 @@ namespace Content.Server._CE.GameTicking;
 /// <summary>
 /// TEMP SHITCODE PROTOTYPE SYSTEM. Unlocalized strings is ok here. We rewrite it in future
 /// </summary>
-public sealed class CELimitedDaysRuleSystem : GameRuleSystem<CELimitedDaysRuleComponent>
+public sealed partial class CELimitedDaysRuleSystem : GameRuleSystem<CELimitedDaysRuleComponent>
 {
-    [Dependency] private readonly RoundEndSystem _roundEndSystem = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly SharedJobSystem _jobs = default!;
+    [Dependency] private RoundEndSystem _roundEndSystem = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private SharedJobSystem _jobs = default!;
 
     public override void Initialize()
     {

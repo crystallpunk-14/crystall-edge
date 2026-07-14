@@ -9,12 +9,12 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._CE.Temperature;
 
-public sealed class CETemperatureSystem : EntitySystem
+public sealed partial class CETemperatureSystem : EntitySystem
 {
-    [Dependency] private readonly AmbientSoundSystem _ambient = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly TemperatureSystem _temperature = default!;
-    [Dependency] private readonly PointLightSystem _pointLight = default!;
+    [Dependency] private AmbientSoundSystem _ambient = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private TemperatureSystem _temperature = default!;
+    [Dependency] private PointLightSystem _pointLight = default!;
 
     public override void Initialize()
     {

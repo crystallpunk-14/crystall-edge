@@ -5,12 +5,12 @@ using Content.Shared._CE.Trading.Prototypes;
 using Content.Shared._CE.Trading.Systems;
 using Content.Shared._CE.Vampire.Components;
 using Content.Shared.Actions;
+using Content.Shared.Body;
 using Content.Shared.Body.Systems;
 using Content.Shared.Buckle.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
-using Content.Shared.Humanoid;
 using Content.Shared.Jittering;
 using Content.Shared.Popups;
 using Robust.Shared.Prototypes;
@@ -21,19 +21,19 @@ namespace Content.Shared._CE.Vampire;
 
 public abstract partial class CESharedVampireSystem : EntitySystem
 {
-    [Dependency] private readonly SharedBloodstreamSystem _bloodstream = default!;
-    [Dependency] private readonly SharedActionsSystem _action = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly SharedJitteringSystem _jitter = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly CESharedSkillSystem _skill = default!;
-    [Dependency] protected readonly IPrototypeManager Proto = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly CESharedTradingPlatformSystem _trade = default!;
+    [Dependency] private SharedBloodstreamSystem _bloodstream = default!;
+    [Dependency] private SharedVisualBodySystem _visualBody = default!;
+    [Dependency] private SharedActionsSystem _action = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private SharedJitteringSystem _jitter = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private CESharedSkillSystem _skill = default!;
+    [Dependency] protected IPrototypeManager Proto = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     private readonly ProtoId<CESkillPointPrototype> _skillPointType = "Blood";
     private readonly ProtoId<CESkillPointPrototype> _memorySkillPointType = "Memory";
-    private readonly ProtoId<CETradingFactionPrototype> _tradeFaction = "VampireMarket";
+    private readonly ProtoId<OrganCategoryPrototype> _eyesOrganCategory = "Eyes";
 
     public override void Initialize()
     {
@@ -162,23 +162,24 @@ public abstract partial class CESharedVampireSystem : EntitySystem
     protected virtual void OnVampireVisualsShutdown(Entity<CEVampireVisualsComponent> vampire,
         ref ComponentShutdown args)
     {
-        if (!EntityManager.TryGetComponent(vampire, out HumanoidAppearanceComponent? humanoidAppearance))
-            return;
-
-        humanoidAppearance.EyeColor = vampire.Comp.OriginalEyesColor;
-
-        Dirty(vampire, humanoidAppearance);
+        _visualBody.ApplyProfiles(vampire.Owner, new Dictionary<ProtoId<OrganCategoryPrototype>, OrganProfileData>
+        {
+            [_eyesOrganCategory] = new() { EyeColor = vampire.Comp.OriginalEyesColor },
+        });
     }
 
     protected virtual void OnVampireVisualsInit(Entity<CEVampireVisualsComponent> vampire, ref ComponentInit args)
     {
-        if (!EntityManager.TryGetComponent(vampire, out HumanoidAppearanceComponent? humanoidAppearance))
+        if (!_visualBody.TryGatherMarkingsData((vampire.Owner, null), null, out var profiles, out _, out _) ||
+            !profiles.TryGetValue(_eyesOrganCategory, out var eyesProfile))
             return;
 
-        vampire.Comp.OriginalEyesColor = humanoidAppearance.EyeColor;
-        humanoidAppearance.EyeColor = vampire.Comp.EyesColor;
+        vampire.Comp.OriginalEyesColor = eyesProfile.EyeColor;
 
-        Dirty(vampire, humanoidAppearance);
+        _visualBody.ApplyProfiles(vampire.Owner, new Dictionary<ProtoId<OrganCategoryPrototype>, OrganProfileData>
+        {
+            [_eyesOrganCategory] = new() { EyeColor = vampire.Comp.EyesColor },
+        });
     }
 
     private void OnVampireExamine(Entity<CEVampireVisualsComponent> ent, ref ExaminedEvent args)

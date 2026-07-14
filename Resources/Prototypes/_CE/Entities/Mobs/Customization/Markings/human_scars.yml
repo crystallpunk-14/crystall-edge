@@ -1,8 +1,6 @@
 - type: marking
   id: CEHumanScarCheekLeft
   bodyPart: Head
-  markingCategory: Head
-  followSkinColor: true
   sprites:
     - sprite: _CE/Mobs/Customization/human_scars.rsi
       state: scar_cheek_left
@@ -10,8 +8,6 @@
 - type: marking
   id: CEHumanScarCheekRight
   bodyPart: Head
-  markingCategory: Head
-  followSkinColor: true
   sprites:
     - sprite: _CE/Mobs/Customization/human_scars.rsi
       state: scar_cheek_right
@@ -19,8 +15,6 @@
 - type: marking
   id: CEHumanScarChestLeft
   bodyPart: Chest
-  markingCategory: Chest
-  followSkinColor: true
   sprites:
     - sprite: _CE/Mobs/Customization/human_scars.rsi
       state: scar_chest_left
@@ -28,8 +22,6 @@
 - type: marking
   id: CEHumanScarChestRight
   bodyPart: Chest
-  markingCategory: Chest
-  followSkinColor: true
   sprites:
     - sprite: _CE/Mobs/Customization/human_scars.rsi
       state: scar_chest_right
@@ -37,8 +29,6 @@
 - type: marking
   id: CEHumanScarCutLeft
   bodyPart: Head
-  markingCategory: Head
-  followSkinColor: true
   sprites:
     - sprite: _CE/Mobs/Customization/human_scars.rsi
       state: scar_cut_left
@@ -46,8 +36,6 @@
 - type: marking
   id: CEHumanScarCutRight
   bodyPart: Head
-  markingCategory: Head
-  followSkinColor: true
   sprites:
     - sprite: _CE/Mobs/Customization/human_scars.rsi
       state: scar_cut_right
@@ -55,8 +43,6 @@
 - type: marking
   id: CEHumanScarEyeLeft
   bodyPart: Head
-  markingCategory: Head
-  followSkinColor: true
   sprites:
     - sprite: _CE/Mobs/Customization/human_scars.rsi
       state: scar_eye_left
@@ -64,8 +50,6 @@
 - type: marking
   id: CEHumanScarEyeRight
   bodyPart: Head
-  markingCategory: Head
-  followSkinColor: true
   sprites:
     - sprite: _CE/Mobs/Customization/human_scars.rsi
       state: scar_eye_right
@@ -73,8 +57,6 @@
 - type: marking
   id: CEHumanScarEyebrowLeft
   bodyPart: Head
-  markingCategory: Head
-  followSkinColor: true
   sprites:
     - sprite: _CE/Mobs/Customization/human_scars.rsi
       state: scar_eyebrow_left
@@ -82,8 +64,6 @@
 - type: marking
   id: CEHumanScarEyebrowRight
   bodyPart: Head
-  markingCategory: Head
-  followSkinColor: true
   sprites:
     - sprite: _CE/Mobs/Customization/human_scars.rsi
       state: scar_eyebrow_right
@@ -91,8 +71,6 @@
 - type: marking
   id: CEHumanScarHalfFaceLeft
   bodyPart: Head
-  markingCategory: Head
-  followSkinColor: true
   sprites:
     - sprite: _CE/Mobs/Customization/human_scars.rsi
       state: scar_half_face_left
@@ -100,8 +78,6 @@
 - type: marking
   id: CEHumanScarHalfFaceRight
   bodyPart: Head
-  markingCategory: Head
-  followSkinColor: true
   sprites:
     - sprite: _CE/Mobs/Customization/human_scars.rsi
       state: scar_half_face_right
@@ -109,8 +85,6 @@
 - type: marking
   id: CEHumanScarNearRibLeft
   bodyPart: Chest
-  markingCategory: Chest
-  followSkinColor: true
   sprites:
     - sprite: _CE/Mobs/Customization/human_scars.rsi
       state: scar_near_rib_left
@@ -118,8 +92,6 @@
 - type: marking
   id: CEHumanScarNearRibRight
   bodyPart: Chest
-  markingCategory: Chest
-  followSkinColor: true
   sprites:
     - sprite: _CE/Mobs/Customization/human_scars.rsi
       state: scar_near_rib_right
@@ -127,8 +99,6 @@
 - type: marking
   id: CEHumanScarNose
   bodyPart: Head
-  markingCategory: Head
-  followSkinColor: true
   sprites:
     - sprite: _CE/Mobs/Customization/human_scars.rsi
       state: scar_nose
