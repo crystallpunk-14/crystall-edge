@@ -1,32 +1,32 @@
 using Content.Shared._CE.ZLevels.Core.Components;
-using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Throwing;
 
 namespace Content.Shared._CE.ZLevels.Throwing;
 
+/// <summary>
+/// Keeps z-physics out of the way of a vanilla throw: while an entity is actually being
+/// thrown, its horizontal flight distance/timing is fully governed by ThrowingSystem's
+/// friction-based model, so z-physics gravity/ground-sync/BodyStatus-sync must not run
+/// for it (that fight is what caused throws to land short or overshoot the cursor).
+/// </summary>
 public sealed partial class CEZLevelThrowingSystem : EntitySystem
 {
-    [Dependency] private CESharedZLevelsSystem _zLevels = default!;
-
     public override void Initialize()
     {
         base.Initialize();
         SubscribeLocalEvent<CEZPhysicsComponent, ThrownEvent>(OnThrown);
+        SubscribeLocalEvent<CEZPhysicsComponent, StopThrowEvent>(OnStopThrow);
     }
 
     private void OnThrown(Entity<CEZPhysicsComponent> ent, ref ThrownEvent args)
     {
-        if (!TryComp<ThrownItemComponent>(ent, out var thrown)
-            || thrown.LandTime is not { } landTime
-            || thrown.ThrownTime is not { } thrownTime)
-            return;
+        ent.Comp.Disabled = true;
+        DirtyField(ent, ent.Comp, nameof(CEZPhysicsComponent.Disabled));
+    }
 
-        var flyTime = (float)(landTime - thrownTime).TotalSeconds;
-        if (flyTime <= 0f)
-            return;
-
-        var distToGround = ent.Comp.LocalPosition - ent.Comp.CachedGroundHeight;
-        var v0 = MathF.Max(0f, (0.5f * CESharedZLevelsSystem.ZGravityForce * flyTime - distToGround / flyTime) * 2f);
-        _zLevels.SetZVelocity((ent.Owner, ent.Comp), v0);
+    private void OnStopThrow(Entity<CEZPhysicsComponent> ent, ref StopThrowEvent args)
+    {
+        ent.Comp.Disabled = false;
+        DirtyField(ent, ent.Comp, nameof(CEZPhysicsComponent.Disabled));
     }
 }

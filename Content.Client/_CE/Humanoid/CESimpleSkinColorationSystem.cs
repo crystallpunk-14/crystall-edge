@@ -8,7 +8,6 @@ namespace Content.Client._CE.Humanoid;
 public sealed partial class CESimpleSkinColorationSystem : EntitySystem
 {
     [Dependency] private SpriteSystem _sprite = default!;
-    [Dependency] private SharedVisualBodySystem _visualBody = default!;
 
     //CrystallEdge: any non-eye organ carries the body's general skin tone; Torso is always present on a humanoid
     private readonly ProtoId<OrganCategoryPrototype> _skinToneOrganCategory = "Torso";
@@ -17,24 +16,28 @@ public sealed partial class CESimpleSkinColorationSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CESkinColoredLayersComponent, ComponentStartup>(OnStartup);
+        //CrystallEdge: hook the organ's own startup, not the body's - Robust applies an entity's networked state
+        //(Profile.SkinColor, OrganComponent.Body) before running its ComponentStartup, even for entities received
+        //over the network, so the data is already valid here. The body's own lifecycle events fire too early instead,
+        //before its organs exist.
+        SubscribeLocalEvent<VisualOrganComponent, ComponentStartup>(OnOrganStartup);
     }
 
-    private void OnStartup(Entity<CESkinColoredLayersComponent> ent, ref ComponentStartup args)
+    private void OnOrganStartup(Entity<VisualOrganComponent> ent, ref ComponentStartup args)
     {
-        if (!TryComp<SpriteComponent>(ent, out var sprite))
+        var organ = Comp<OrganComponent>(ent);
+        if (organ.Category != _skinToneOrganCategory || organ.Body is not { } body)
             return;
 
-        if (!_visualBody.TryGatherMarkingsData((ent.Owner, null), null, out var profiles, out _, out _) ||
-            !profiles.TryGetValue(_skinToneOrganCategory, out var bodyProfile))
+        if (!TryComp<CESkinColoredLayersComponent>(body, out var layers) || !TryComp<SpriteComponent>(body, out var sprite))
             return;
 
-        foreach (var map in ent.Comp.Maps)
+        foreach (var map in layers.Maps)
         {
-            if (!_sprite.LayerMapTryGet((ent, sprite), map, out var index, true))
+            if (!_sprite.LayerMapTryGet((body, sprite), map, out var index, true))
                 continue;
 
-            _sprite.LayerSetColor((ent, sprite), index, bodyProfile.SkinColor);
+            _sprite.LayerSetColor((body, sprite), index, ent.Comp.Profile.SkinColor);
         }
     }
 }
