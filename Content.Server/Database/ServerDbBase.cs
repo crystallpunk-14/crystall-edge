@@ -218,6 +218,8 @@ namespace Content.Server.Database
             profile.EyeColor = appearance.EyeColor.ToHex();
             profile.SkinColor = appearance.SkinColor.ToHex();
             profile.SpawnPriority = (int) humanoid.SpawnPriority;
+            profile.BarkVoice = humanoid.BarkVoice; //CrystallEdge
+            profile.BarkPitch = humanoid.BarkPitch; //CrystallEdge
             profile.OrganMarkings = JsonSerializer.SerializeToDocument(dataNode.ToJsonNode());
 
             // support for downgrades - at some point this should be removed

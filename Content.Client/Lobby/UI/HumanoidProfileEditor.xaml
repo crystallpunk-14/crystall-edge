@@ -92,6 +92,19 @@
                                     <Control HorizontalExpand="True"/>
                                     <OptionButton Name="SpawnPriorityButton" HorizontalAlignment="Right" />
                                 </BoxContainer>
+                                <!-- CrystallEdge: Bark Voice -->
+                                <BoxContainer HorizontalExpand="True">
+                                    <Label Text="{Loc 'humanoid-profile-editor-bark-voice-label'}" />
+                                    <Control HorizontalExpand="True"/>
+                                    <OptionButton Name="BarkVoiceButton" HorizontalAlignment="Right" />
+                                </BoxContainer>
+                                <!-- CrystallEdge: Bark Pitch -->
+                                <BoxContainer HorizontalExpand="True">
+                                    <Label Text="{Loc 'humanoid-profile-editor-bark-pitch-label'}" />
+                                    <Control HorizontalExpand="True"/>
+                                    <Slider Name="BarkPitchSlider" HorizontalExpand="True" MinValue="0" MaxValue="100" Value="50" MinSize="100 0" />
+                                    <Button Name="BarkPreviewButton" Text="▶" MinSize="32 0" />
+                                </BoxContainer>
                             </BoxContainer>
                             <!-- Skin -->
                             <BoxContainer Margin="10" HorizontalExpand="True" Orientation="Vertical">

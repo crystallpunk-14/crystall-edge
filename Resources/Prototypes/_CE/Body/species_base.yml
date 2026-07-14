@@ -175,6 +175,8 @@
   - type: Puller
   - type: Speech
     speechSounds: Alto
+  - type: CEBarkSpeech
+    barkSpeech: Ed
   - type: DamageForceSay
   - type: Vocal
     sounds:

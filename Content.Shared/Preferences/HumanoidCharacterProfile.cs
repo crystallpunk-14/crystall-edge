@@ -1,6 +1,7 @@
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Content.Shared._CE.Speech;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
 using Content.Shared.Humanoid;
@@ -95,6 +96,14 @@ namespace Content.Shared.Preferences
         [DataField]
         public HumanoidCharacterAppearance Appearance { get; set; } = new();
 
+        // CrystallEdge: bark voice profile and pitch
+        [DataField]
+        public ProtoId<CEBarkSpeechPrototype> BarkVoice { get; set; } = "Ed";
+
+        [DataField]
+        public float BarkPitch { get; set; } = 1.0f;
+        // CrystallEdge end
+
         /// <summary>
         /// When spawning into a round what's the preferred spot to spawn.
         /// </summary>
@@ -183,6 +192,9 @@ namespace Content.Shared.Preferences
                 new HashSet<ProtoId<TraitPrototype>>(other.TraitPreferences),
                 new Dictionary<string, RoleLoadout>(other.Loadouts))
         {
+            //CrystallEdge barks
+            BarkVoice = other.BarkVoice;
+            BarkPitch = other.BarkPitch;
         }
 
         /// <summary>
@@ -303,6 +315,18 @@ namespace Content.Shared.Preferences
         {
             return new(this) { Appearance = appearance };
         }
+
+        //CrystallEdge
+        public HumanoidCharacterProfile WithBarkVoice(ProtoId<CEBarkSpeechPrototype> barkVoice)
+        {
+            return new(this) { BarkVoice = barkVoice };
+        }
+
+        public HumanoidCharacterProfile WithBarkPitch(float barkPitch)
+        {
+            return new(this) { BarkPitch = barkPitch };
+        }
+        //CrystallEdge end
 
         public HumanoidCharacterProfile WithSpawnPriorityPreference(SpawnPriorityPreference spawnPriority)
         {
@@ -474,6 +498,10 @@ namespace Content.Shared.Preferences
             if (!_traitPreferences.SequenceEqual(other._traitPreferences)) return false;
             if (!Loadouts.SequenceEqual(other.Loadouts)) return false;
             if (FlavorText != other.FlavorText) return false;
+            // CrystallEdge: bark voice comparison
+            if (BarkVoice != other.BarkVoice) return false;
+            if (!BarkPitch.Equals(other.BarkPitch)) return false;
+            // CrystallEdge end
             return Appearance.Equals(other.Appearance);
         }
 
@@ -609,6 +637,16 @@ namespace Content.Shared.Preferences
             Appearance = appearance;
             SpawnPriority = spawnPriority;
 
+            // CrystallEdge: validate bark voice and pitch
+            if (!prototypeManager.TryIndex(BarkVoice, out var barkProto) || !barkProto.Selectable)
+                BarkVoice = "Ed";
+
+            if (BarkPitch <= 0f)
+                BarkPitch = 1.0f;
+
+            BarkPitch = Math.Clamp(BarkPitch, 0.75f, 1.5f);
+            // CrystallEdge end
+
             _jobPriorities.Clear();
 
             foreach (var (job, priority) in priorities)
@@ -729,6 +767,10 @@ namespace Content.Shared.Preferences
             hashCode.Add(Appearance);
             hashCode.Add((int)SpawnPriority);
             hashCode.Add((int)PreferenceUnavailable);
+            // CrystallEdge: bark voice hash
+            hashCode.Add(BarkVoice);
+            hashCode.Add(BarkPitch);
+            // CrystallEdge end
             return hashCode.ToHashCode();
         }
 
