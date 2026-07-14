@@ -42,7 +42,7 @@ public sealed partial class CrayonSystem : SharedCrayonSystem
     private void OnMapInit(Entity<CrayonComponent> ent, ref MapInitEvent args)
     {
         // Get the first one from the catalog and set it as default
-        var decal = _prototypeManager.EnumeratePrototypes<DecalPrototype>().FirstOrDefault(x => x.Tags.Contains("crayon"));
+        var decal = _prototypeManager.EnumeratePrototypes<DecalPrototype>().FirstOrDefault(x => x.Tags.Contains("CEcrayon")); //CrystallEdge
         ent.Comp.SelectedState = decal?.ID ?? string.Empty;
         Dirty(ent);
     }

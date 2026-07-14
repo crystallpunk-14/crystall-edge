@@ -13,6 +13,8 @@
     closeTimeTwo: 0
     openTimeOne: 0
     openTimeTwo: 0
+    openingAnimationTime: 0
+    closingAnimationTime: 0
     closedDrawDepth: Mobs
     openDrawDepth: Mobs
     openingSpriteState: open
