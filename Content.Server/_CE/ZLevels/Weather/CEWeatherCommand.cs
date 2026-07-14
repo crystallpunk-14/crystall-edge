@@ -12,7 +12,6 @@ using Content.Shared.Prototypes;
 using Content.Shared.Weather;
 using Robust.Shared.Console;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Timing;
 
 namespace Content.Server._CE.ZLevels.Weather;
 
@@ -21,7 +20,6 @@ public sealed partial class CEWeatherCommand : LocalizedCommands
 {
     [Dependency] private IEntityManager _entities = default!;
     [Dependency] private IPrototypeManager _proto = default!;
-    [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IComponentFactory _compFactory = default!;
 
     public override string Command => "znetwork-weather";
@@ -41,13 +39,13 @@ public sealed partial class CEWeatherCommand : LocalizedCommands
         if (!NetEntity.TryParse(args[0], out var targetNet) ||
             !_entities.TryGetEntity(targetNet, out target))
         {
-            shell.WriteError($"Unable to find entity {args[1]}");
+            shell.WriteError($"Unable to find entity {args[0]}");
             return;
         }
 
         if (!_entities.TryGetComponent<CEZMapNetworkComponent>(target, out var levelComp))
         {
-            shell.WriteError($"Target entity doesnt have CEZLevelsNetworkComponent {args[1]}");
+            shell.WriteError($"Target entity doesnt have CEZLevelsNetworkComponent {args[0]}");
             return;
         }
 
@@ -65,10 +63,9 @@ public sealed partial class CEWeatherCommand : LocalizedCommands
         TimeSpan? duration = null;
         if (args.Length == 3)
         {
-            var curTime = _timing.CurTime;
             if (int.TryParse(args[2], out var durationInt))
             {
-                duration = curTime + TimeSpan.FromSeconds(durationInt);
+                duration = TimeSpan.FromSeconds(durationInt);
             }
             else
             {

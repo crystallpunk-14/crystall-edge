@@ -42,18 +42,21 @@ public sealed partial class CEZLevelsSystem
             {
                 Log.Error($"Failed attempt to add map {mapUid} to ZLevelNetwork {network}: This map is already in another network {otherNetwork}.");
                 success = false;
+                continue;
             }
 
             if (network.Comp.ZLevels.ContainsKey(depth))
             {
                 Log.Error($"Failed to add map {mapUid} to ZLevelNetwork {network}: This depth is already occupied.");
                 success = false;
+                continue;
             }
 
             if (network.Comp.ZLevels.ContainsValue(mapUid))
             {
                 Log.Error($"Failed attempt to add map {mapUid} to ZLevelNetwork {network} at depth {depth}: This map is already in this network.");
                 success = false;
+                continue;
             }
 
             network.Comp.ZLevels[depth] = mapUid;
@@ -69,10 +72,26 @@ public sealed partial class CEZLevelsSystem
             levelMapComponent.NetworkUid = network;
 
             if (network.Comp.ZLevels.TryGetValue(depth + 1, out var aboveMapUid))
+            {
                 levelMapComponent.MapAbove = aboveMapUid;
 
+                if (aboveMapUid is { } aboveUid && TryComp<CEZMapComponent>(aboveUid, out var aboveMapComponent))
+                {
+                    aboveMapComponent.MapBelow = mapUid;
+                    Dirty(aboveUid, aboveMapComponent);
+                }
+            }
+
             if (network.Comp.ZLevels.TryGetValue(depth - 1, out var belowMapUid))
+            {
                 levelMapComponent.MapBelow = belowMapUid;
+
+                if (belowMapUid is { } belowUid && TryComp<CEZMapComponent>(belowUid, out var belowMapComponent))
+                {
+                    belowMapComponent.MapAbove = mapUid;
+                    Dirty(belowUid, belowMapComponent);
+                }
+            }
 
             Dirty(mapUid, levelMapComponent);
 
@@ -128,10 +147,15 @@ public sealed partial class CEZLevelsSystem
         var comp = network.Comp;
         var list = comp.SortedZLevels;
 
-        // Zero handling
-        if (comp.SortedMin == depth && comp.SortedMax == depth)
+        // First entry: anchor the cache at whatever depth this map actually is,
+        // instead of assuming it's 0 (SortedMin/SortedMax's default value).
+        if (list.Count == 0)
         {
             list.Add(value);
+
+            comp.SortedMin = depth;
+            comp.SortedMax = depth;
+            Dirty(network);
             return;
         }
 
