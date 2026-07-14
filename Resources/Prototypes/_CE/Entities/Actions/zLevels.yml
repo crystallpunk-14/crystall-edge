@@ -25,6 +25,7 @@
     event: !type:CEZLevelActionDown
 
 - type: entity
+  parent: BaseToggleAction
   id: CEActionToggleLookUp
   name: Look up
   description: You lift your head and look up at the sky.
@@ -33,9 +34,10 @@
     checkCanInteract: false
     icon:
       sprite: _CE/Actions/misc.rsi
-      state: eye
-  - type: InstantAction
-    event: !type:CEToggleZLevelLookUpAction
+      state: eye_down
+    iconOn:
+      sprite: _CE/Actions/misc.rsi
+      state: eye_up
 
 #- type: entity
 #  id: CEActionRespawn

@@ -14,6 +14,12 @@
             "name": "eye"
         },
         {
+            "name": "eye_down"
+        },
+        {
+            "name": "eye_up"
+        },
+        {
             "name": "up"
         },
         {
