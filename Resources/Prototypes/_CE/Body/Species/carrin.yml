@@ -208,8 +208,8 @@
 
 - type: entity
   parent:
-  - CEBaseSpeciesMobOrganic
   - CEAppearanceCarrin
+  - CEBaseSpeciesMobOrganic
   id: CEMobCarrin
   name: Mr. Birb
   components:

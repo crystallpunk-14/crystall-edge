@@ -146,8 +146,8 @@
 
 - type: entity
   parent:
-  - CEBaseSpeciesMobOrganic
   - CEAppearanceElf
+  - CEBaseSpeciesMobOrganic
   id: CEMobElf
   name: Mr. Elf
   components:

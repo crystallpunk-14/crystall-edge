@@ -174,8 +174,8 @@
 
 - type: entity
   parent:
-  - CEBaseSpeciesMobOrganic
   - CEAppearanceSilva
+  - CEBaseSpeciesMobOrganic
   id: CEMobSilva
   name: Mr. Silva
   components:

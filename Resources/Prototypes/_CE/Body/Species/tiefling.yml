@@ -131,8 +131,8 @@
 
 - type: entity
   parent:
-  - CEBaseSpeciesMobOrganic
   - CEAppearanceTiefling
+  - CEBaseSpeciesMobOrganic
   id: CEMobTiefling
   name: Mr. Tiefling
   components:

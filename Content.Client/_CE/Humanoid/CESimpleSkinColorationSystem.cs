@@ -31,7 +31,9 @@ public sealed partial class CESimpleSkinColorationSystem : EntitySystem
 
         foreach (var map in ent.Comp.Maps)
         {
-            var index = _sprite.LayerMapGet((ent, sprite), map);
+            if (!_sprite.LayerMapTryGet((ent, sprite), map, out var index, true))
+                continue;
+
             _sprite.LayerSetColor((ent, sprite), index, bodyProfile.SkinColor);
         }
     }

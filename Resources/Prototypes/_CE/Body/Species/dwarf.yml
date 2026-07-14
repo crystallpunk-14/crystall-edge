@@ -95,8 +95,8 @@
 
 - type: entity
   parent:
-  - CEBaseSpeciesMobOrganic
   - CEAppearanceDwarf
+  - CEBaseSpeciesMobOrganic
   id: CEMobDwarf
   name: Mr. Dwarf
   components:

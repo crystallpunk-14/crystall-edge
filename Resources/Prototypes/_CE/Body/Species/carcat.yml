@@ -245,8 +245,8 @@
 
 - type: entity
   parent:
-  - CEBaseSpeciesMobOrganic
   - CEAppearanceCarcat
+  - CEBaseSpeciesMobOrganic
   id: CEMobCarcat
   name: Mr. Cat
   components:

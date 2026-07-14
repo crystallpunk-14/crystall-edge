@@ -124,8 +124,8 @@
 
 - type: entity
   parent:
-  - CEBaseSpeciesMobOrganic
   - CEAppearanceHuman
+  - CEBaseSpeciesMobOrganic
   id: CEMobHuman
   name: Mr. Human
   components:

@@ -212,8 +212,8 @@
 
 - type: entity
   parent:
-  - CEBaseSpeciesMobOrganic
   - CEAppearanceGoblin
+  - CEBaseSpeciesMobOrganic
   id: CEMobGoblin
   name: Mr. Goblin
   components:
