@@ -15,7 +15,13 @@
     openTimeTwo: 0
     closedDrawDepth: Mobs
     openDrawDepth: Mobs
+    openingSpriteState: open
+    closingSpriteState: closed
     canPry: false
+    openSound:
+      path: /Audio/Effects/door_open.ogg
+    closeSound:
+      path: /Audio/Effects/door_close.ogg
   - type: Lock
     locked: false
   - type: CELock #Empty, for installing new locks
