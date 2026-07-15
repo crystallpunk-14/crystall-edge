@@ -27,3 +27,9 @@
   background: /Textures/_CE/LobbyScreens/forestry.webp
   title: ce-lobby-state-background-forestry-title
   artist: ce-lobby-state-background-forestry-artist
+
+- type: lobbyBackground
+  id: Walking
+  background: /Textures/_CE/LobbyScreens/walking.webp
+  title: ce-lobby-state-background-walking-title
+  artist: ce-lobby-state-background-walking-artist

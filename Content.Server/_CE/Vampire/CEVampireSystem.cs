@@ -185,7 +185,8 @@ public sealed partial class CEVampireSystem : CESharedVampireSystem
         base.OnVampireInit(ent, ref args);
 
         //Metabolism
-        if (_body.TryGetOrgansWithComponent<MetabolizerComponent>((ent.Owner, null), out var organs))
+        if (HasComp<BodyComponent>(ent.Owner) &&
+            _body.TryGetOrgansWithComponent<MetabolizerComponent>((ent.Owner, null), out var organs))
         {
             foreach (var (_, metabolizer) in organs)
             {
