@@ -20,8 +20,6 @@
   - type: IconSmooth
     key: CEWoodenSpikes
     base: spike_
-    additionalKeys:
-    - CEwall
   - type: Transform
     anchored: true
   - type: CEFallingDamage
