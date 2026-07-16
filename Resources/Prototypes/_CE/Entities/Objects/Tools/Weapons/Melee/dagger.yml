@@ -20,17 +20,31 @@
       types:
         Slash: 4
         Piercing: 8
-  - type: MeleeWeapon
-    attackRate: 2
-    range: 1
-    angle: 60
-    wideAnimationRotation: -90
-    damage:
-      types:
-        Slash: 2
-        Piercing: 3
-    soundHit:
+  - type: CEWeapon
+    range: 0.4
+    hitSound:
       path: /Audio/Weapons/bladeslice.ogg
+    effectSlots:
+      OnHit:
+      - !type:Damage
+        damage:
+          types:
+            Slash: 2
+            Piercing: 3
+      OnHeavyHit:
+      - !type:Damage
+        damage:
+          types:
+            Slash: 2
+            Piercing: 3
+    animations:
+      Primary:
+      - anim: DaggerAttackLight1
+      - anim: DaggerAttackLight2
+      Secondary:
+      - anim: DaggerAttackHeavy
+  - type: CERotationForAnimation
+    rotation: -90
   - type: Clothing
     slots:
     - belt

@@ -1,0 +1,103 @@
+- type: entityEffectAnimation
+  id: Punch1
+  movementSpeed: 0.3
+  duration: 0.4
+  events:
+    0:
+    - !type:PlaySound
+      sound:
+        path: /Audio/_CE/Effects/Weapon/slash_wooden2.ogg
+    - !type:UsedEntityAnimation
+      dummyEntity: CEPunchEffect
+      offsetAnimation:
+      - time: 0.0
+        offset: -0.3, -0.1
+        easing: QuadIn
+      - time: 0.1
+        offset: -0.2, -0.7
+        easing: QuadOut
+      - time: 0.25
+        offset: 0.3, -0.3
+        easing: QuadOut
+
+      rotationAnimation:
+      - time: 0.0
+        rotation: 20
+      - time: 0.1
+        rotation: 0
+      - time: 0.25
+        rotation: -20
+
+      colorAnimation:
+      - time: 0.0
+        color: "#ffffff"
+        easing: Linear
+      - time: 0.2
+        color: "#ffffff"
+        easing: QuadOut
+      - time: 0.3
+        color: "#ffffff00"  # Fade out
+
+      scaleAnimation:
+      - time: 0.0
+        scale: -1, 1
+    0.1:
+    - !type:WeaponEffectSlot
+      slot: OnHit
+
+- type: entityEffectAnimation
+  id: Punch2
+  movementSpeed: 0.3
+  duration: 0.4
+  events:
+    0:
+    - !type:PlaySound
+      sound:
+        path: /Audio/_CE/Effects/Weapon/slash_wooden4.ogg
+    - !type:UsedEntityAnimation
+      dummyEntity: CEPunchEffect
+      offsetAnimation:
+      - time: 0.0
+        offset: 0.3, -0.1
+        easing: QuadIn
+      - time: 0.1
+        offset: 0.2, -0.7
+        easing: QuadOut
+      - time: 0.25
+        offset: -0.3, -0.3
+        easing: QuadOut
+
+      rotationAnimation:
+      - time: 0.0
+        rotation: -20
+      - time: 0.1
+        rotation: 0
+      - time: 0.25
+        rotation: 20
+
+      colorAnimation:
+      - time: 0.0
+        color: "#ffffff"
+        easing: Linear
+      - time: 0.2
+        color: "#ffffff"
+        easing: QuadOut
+      - time: 0.3
+        color: "#ffffff00"  # Fade out
+
+      scaleAnimation:
+      - time: 0.0
+        scale: 1, 1
+    0.1:
+    - !type:WeaponEffectSlot
+      slot: OnHit
+
+- type: entity
+  id: CEPunchEffect
+  categories: [ "HideSpawnMenu" ]
+  components:
+  - type: Sprite
+    sprite: Effects/arcs.rsi
+    state: fist
+  - type: TimedDespawn
+    lifetime: 0.4
