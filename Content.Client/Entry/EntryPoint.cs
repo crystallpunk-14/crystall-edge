@@ -1,4 +1,6 @@
+using Content.Client._CE.DiscordAuth;
 using Content.Client._CE.Input;
+using Content.Client._CE.Sponsor;
 using Content.Client.Administration.Managers;
 using Content.Client.Changelog;
 using Content.Client.Chat.Managers;
@@ -25,6 +27,7 @@ using Content.Client.Stylesheets;
 using Content.Client.UserInterface;
 using Content.Client.Viewport;
 using Content.Client.Voting;
+using Content.Shared._CE.Sponsor;
 using Content.Shared.Ame.Components;
 using Content.Shared.FeedbackSystem;
 using Content.Shared.Gravity;
@@ -68,6 +71,8 @@ namespace Content.Client.Entry
         [Dependency] private IVoteManager _voteManager = default!;
         [Dependency] private DocumentParsingManager _documentParsingManager = default!;
         [Dependency] private GhostKickManager _ghostKick = default!;
+        [Dependency] private CEDiscordAuthManager _ceDiscordAuth = default!; //CrystallEdge
+        [Dependency] private ICESponsorManager _ceSponsor = default!; //CrystallEdge
         [Dependency] private ExtendedDisconnectInformationManager _extendedDisconnectInformation = default!;
         [Dependency] private JobRequirementsManager _jobRequirements = default!;
         [Dependency] private ContentLocalizationManager _contentLoc = default!;
@@ -161,6 +166,8 @@ namespace Content.Client.Entry
             // Setup key contexts
             ContentContexts.SetupContexts(_inputManager.Contexts);
             CEContentContexts.SetupContexts(_inputManager.Contexts); //CrystallEdge
+            _ceDiscordAuth.Initialize(); //CrystallEdge
+            _ceSponsor.Initialize(); //CrystallEdge
 
             _parallaxManager.LoadDefaultParallax();
 

@@ -1,4 +1,6 @@
 using Content.Server._CE.Discord;
+using Content.Server._CE.DiscordAuth;
+using Content.Server._CE.Sponsor;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
@@ -30,6 +32,7 @@ using Content.Shared.Chat;
 using Content.Shared.FeedbackSystem;
 using Content.Shared.IoC;
 using Content.Shared.Kitchen;
+using Content.Shared._CE.Sponsor;
 using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.Players.RateLimiting;
 
@@ -82,6 +85,8 @@ internal static class ServerContentIoC
         deps.Register<DiscordLink>();
         deps.Register<DiscordChatLink>();
         deps.Register<CEDiscordBot>(); //CrystallEdge
+        deps.Register<CEDiscordAuthManager>(); //CrystallEdge
+        deps.Register<ICESponsorManager, CESponsorSystem>(); //CrystallEdge
         deps.Register<ServerFeedbackManager>();
         deps.Register<ISharedFeedbackManager, ServerFeedbackManager>();
     }

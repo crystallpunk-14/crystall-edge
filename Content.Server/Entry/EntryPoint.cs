@@ -1,5 +1,7 @@
 using System.Threading.Tasks;
 using Content.Server._CE.Discord;
+using Content.Server._CE.DiscordAuth;
+using Content.Server._CE.Sponsor;
 using Content.Server.Acz;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
@@ -25,6 +27,7 @@ using Content.Server.Preferences.Managers;
 using Content.Server.ServerInfo;
 using Content.Server.ServerUpdates;
 using Content.Server.Voting.Managers;
+using Content.Shared._CE.Sponsor;
 using Content.Shared.CCVar;
 using Content.Shared.FeedbackSystem;
 using Content.Shared.Kitchen;
@@ -51,6 +54,8 @@ namespace Content.Server.Entry
         [Dependency] private DiscordChatLink _discordChatLink = default!;
         [Dependency] private DiscordLink _discordLink = default!;
         [Dependency] private CEDiscordBot _CEDiscordBot = default!; //CrystallEdge
+        [Dependency] private CEDiscordAuthManager _ceDiscordAuth = default!; //CrystallEdge
+        [Dependency] private ICESponsorManager _ceSponsor = default!; //CrystallEdge
         [Dependency] private EuiManager _euiManager = default!;
         [Dependency] private GhostKickManager _ghostKick = default!;
         [Dependency] private IAdminManager _admin = default!;
@@ -125,6 +130,8 @@ namespace Content.Server.Entry
             _log.GetSawmill("db.ef").Level = LogLevel.Info;
 
             _adminLog.Initialize();
+            _ceDiscordAuth.Initialize(); //CrystallEdge
+            _ceSponsor.Initialize(); //CrystallEdge
             _connection.Initialize();
             _dbManager.Init();
             _preferences.Init();

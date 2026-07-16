@@ -8,6 +8,7 @@ using Content.Server.Connection.IPIntel;
 using Content.Server.Database;
 using Content.Server.GameTicking;
 using Content.Server.Preferences.Managers;
+using Content.Shared._CE.Sponsor;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
 using Content.Shared.Players.PlayTimeTracking;
@@ -43,6 +44,12 @@ namespace Content.Server.Connection
         void AddTemporaryConnectBypass(NetUserId user, TimeSpan duration);
 
         void Update();
+
+        /// <summary>
+        /// CrystallEdge: whether the given user is exempt from the soft player-cap (admins, already
+        /// in-game, or holders of the "PriorityJoin" sponsor feature).
+        /// </summary>
+        Task<bool> HavePrivilegedJoin(NetUserId userId);
     }
 
     /// <summary>
@@ -63,6 +70,7 @@ namespace Content.Server.Connection
         [Dependency] private IHttpClientHolder _http = default!;
         [Dependency] private IAdminManager _adminManager = default!;
         [Dependency] private IEntityManager _entityManager = default!;
+        [Dependency] private ICESponsorManager _sponsor = default!; //CrystallEdge
 
         private GameTicker? _ticker;
 
@@ -303,7 +311,9 @@ namespace Content.Server.Connection
                 softPlayerCount -= _adminManager.ActiveAdmins.Count();
             }
 
-            if ((softPlayerCount >= _cfg.GetCVar(CCVars.SoftMaxPlayers) && !adminBypass) && !wasInGame)
+            var havePriorityJoin = _sponsor.UserHasFeature(userId, "PriorityJoin", false); //CrystallEdge
+
+            if ((softPlayerCount >= _cfg.GetCVar(CCVars.SoftMaxPlayers) && !adminBypass && !havePriorityJoin) && !wasInGame)
             {
                 return (ConnectionDenyReason.Full, Loc.GetString("soft-player-cap-full"), null);
             }
@@ -348,6 +358,18 @@ namespace Content.Server.Connection
             }
 
             return null;
+        }
+
+        //CrystallEdge Priority Join
+        public async Task<bool> HavePrivilegedJoin(NetUserId userId)
+        {
+            var adminBypass = _cfg.GetCVar(CCVars.AdminBypassMaxPlayers) && await _db.GetAdminDataForAsync(userId) != null;
+            var havePriorityJoin = _sponsor.UserHasFeature(userId, "PriorityJoin", false);
+            _ticker ??= _entityManager.SystemOrNull<GameTicker>();
+            var wasInGame = _ticker != null &&
+                            _ticker.PlayerGameStatuses.TryGetValue(userId, out var status) &&
+                            status == PlayerGameStatus.JoinedGame;
+            return adminBypass || wasInGame || havePriorityJoin;
         }
 
         private bool HasTemporaryBypass(NetUserId user)
