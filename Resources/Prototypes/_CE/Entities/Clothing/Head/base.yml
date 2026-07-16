@@ -13,5 +13,5 @@
   - type: Sprite
     state: icon
   - type: Item
-    size: Small
+    size: Normal
     storedRotation: -90

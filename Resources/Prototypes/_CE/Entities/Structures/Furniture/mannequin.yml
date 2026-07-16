@@ -119,7 +119,7 @@
     - map: [ "mask" ]
     - map: [ "head" ]
   - type: Inventory
-    templateId: CEHuman
+    templateId: CEMannequinHuman
   - type: Damageable
     damageModifierSet: CEWood
   - type: Injurable
@@ -148,7 +148,7 @@
   name: carcat mannequin
   components:
   - type: Inventory
-    templateId: CECarcat
+    templateId: CEMannequinCarcat
   - type: Sprite
     layers:
     - map: [ "mannequin" ]

@@ -41,6 +41,10 @@
     {
       "name": "shirt",
       "directions": 4
+    },
+    {
+      "name": "hair",
+      "directions": 4
     }
   ]
 }

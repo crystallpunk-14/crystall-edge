@@ -1,6 +1,7 @@
 - type: marking
   id: CECarcatScarCheekLeft
   bodyPart: Head
+  forcedColoring: true
   groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_scars.rsi
@@ -9,6 +10,7 @@
 - type: marking
   id: CECarcatScarCheekRight
   bodyPart: Head
+  forcedColoring: true
   groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_scars.rsi
@@ -17,6 +19,7 @@
 - type: marking
   id: CECarcatScarChestLeft
   bodyPart: Chest
+  forcedColoring: true
   groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_scars.rsi
@@ -25,6 +28,7 @@
 - type: marking
   id: CECarcatScarChestRight
   bodyPart: Chest
+  forcedColoring: true
   groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_scars.rsi
@@ -33,6 +37,7 @@
 - type: marking
   id: CECarcatScarCutLeft
   bodyPart: Head
+  forcedColoring: true
   groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_scars.rsi
@@ -41,6 +46,7 @@
 - type: marking
   id: CECarcatScarCutRight
   bodyPart: Head
+  forcedColoring: true
   groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_scars.rsi
@@ -49,6 +55,7 @@
 - type: marking
   id: CECarcatScarEyeLeft
   bodyPart: Head
+  forcedColoring: true
   groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_scars.rsi
@@ -57,6 +64,7 @@
 - type: marking
   id: CECarcatScarEyeRight
   bodyPart: Head
+  forcedColoring: true
   groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_scars.rsi
@@ -65,6 +73,7 @@
 - type: marking
   id: CECarcatScarEyebrowLeft
   bodyPart: Head
+  forcedColoring: true
   groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_scars.rsi
@@ -73,6 +82,7 @@
 - type: marking
   id: CECarcatScarEyebrowRight
   bodyPart: Head
+  forcedColoring: true
   groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_scars.rsi
@@ -81,6 +91,7 @@
 - type: marking
   id: CECarcatScarHalfFaceLeft
   bodyPart: Head
+  forcedColoring: true
   groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_scars.rsi
@@ -89,6 +100,7 @@
 - type: marking
   id: CECarcatScarHalfFaceRight
   bodyPart: Head
+  forcedColoring: true
   groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_scars.rsi
@@ -97,6 +109,7 @@
 - type: marking
   id: CECarcatScarNearRibLeft
   bodyPart: Chest
+  forcedColoring: true
   groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_scars.rsi
@@ -105,6 +118,7 @@
 - type: marking
   id: CECarcatScarNearRibRight
   bodyPart: Chest
+  forcedColoring: true
   groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_scars.rsi
@@ -113,6 +127,7 @@
 - type: marking
   id: CECarcatScarNose
   bodyPart: Head
+  forcedColoring: true
   groupWhitelist: [ CECarcat ]
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_scars.rsi
