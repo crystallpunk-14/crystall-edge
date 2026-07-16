@@ -32,12 +32,10 @@ public sealed partial class CERoadmapWindow : DefaultWindow
     public void RepopulateRoadmapItems()
     {
         // Clear existing items
-        FirstVersion.RemoveAllChildren();
         SecondVersion.RemoveAllChildren();
         ThirdVersion.RemoveAllChildren();
 
         // Add headers
-        FirstVersion.AddChild(new CERoadmapVersionHeader { Text = Loc.GetString("ce-roadmap-header-done") });
         SecondVersion.AddChild(new CERoadmapVersionHeader { Text = Loc.GetString("ce-roadmap-header-in-progress") });
         ThirdVersion.AddChild(new CERoadmapVersionHeader { Text = Loc.GetString("ce-roadmap-header-backlogs") });
 
@@ -48,7 +46,6 @@ public sealed partial class CERoadmapWindow : DefaultWindow
 
         var containers = new Dictionary<RoadmapStatus, Control>
         {
-            { RoadmapStatus.Done, FirstVersion },
             { RoadmapStatus.InProgress, SecondVersion },
             { RoadmapStatus.Backlog, ThirdVersion }
         };

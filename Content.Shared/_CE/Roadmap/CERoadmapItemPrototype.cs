@@ -37,7 +37,6 @@ public sealed partial class CERoadmapItemCategory : IPrototype
 
 public enum RoadmapStatus
 {
-    Done,
     InProgress,
     Backlog
 }

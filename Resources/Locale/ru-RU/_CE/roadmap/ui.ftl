@@ -1,6 +1,5 @@
 ce-escape-roadmap = Дорожная карта
 
-ce-roadmap-header-done = Текущая версия
 ce-roadmap-header-in-progress = В процессе реализации
 ce-roadmap-header-backlogs = В будущих планах
 
