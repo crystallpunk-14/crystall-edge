@@ -184,7 +184,7 @@
   id: HumanCrit
   category: Health
   icons:
-  - sprite: /Textures/_CE/Interface/Alerts/critical.rsi
+  - sprite: /Textures/Interface/Alerts/human_critical.rsi
     state: critical
   name: alerts-crit-name
   description: alerts-crit-desc
@@ -193,7 +193,7 @@
   id: HumanDead
   category: Health
   icons:
-  - sprite: /Textures/_CE/Interface/Alerts/dead.rsi
+  - sprite: /Textures/Interface/Alerts/human_dead.rsi
     state: dead
   name: alerts-dead-name
   description: alerts-dead-desc
