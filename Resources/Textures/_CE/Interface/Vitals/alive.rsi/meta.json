@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "license": "CC-BY-SA-4.0",
+  "license": "All rights reserved",
   "copyright": "by vladimir.s for CrystallEdge",
   "size": {
     "x": 48,
@@ -8,7 +8,7 @@
   },
   "states": [
     {
-      "name": "mana0",
+      "name": "health0",
       "delays": [
         [
           0.12,
@@ -25,7 +25,7 @@
       ]
     },
     {
-      "name": "mana1",
+      "name": "health1",
       "delays": [
         [
           0.12,
@@ -42,7 +42,7 @@
       ]
     },
     {
-      "name": "mana2",
+      "name": "health2",
       "delays": [
         [
           0.12,
@@ -59,7 +59,7 @@
       ]
     },
     {
-      "name": "mana3",
+      "name": "health3",
       "delays": [
         [
           0.12,
@@ -76,7 +76,7 @@
       ]
     },
     {
-      "name": "mana4",
+      "name": "health4",
       "delays": [
         [
           0.12,
@@ -93,7 +93,7 @@
       ]
     },
     {
-      "name": "mana5",
+      "name": "health5",
       "delays": [
         [
           0.12,
@@ -110,7 +110,7 @@
       ]
     },
     {
-      "name": "mana6",
+      "name": "health6",
       "delays": [
         [
           0.12,
@@ -127,7 +127,7 @@
       ]
     },
     {
-      "name": "mana7",
+      "name": "health7",
       "delays": [
         [
           0.12,
@@ -144,7 +144,7 @@
       ]
     },
     {
-      "name": "mana8",
+      "name": "health8",
       "delays": [
         [
           0.12,
@@ -161,7 +161,7 @@
       ]
     },
     {
-      "name": "mana9",
+      "name": "health9",
       "delays": [
         [
           0.12,

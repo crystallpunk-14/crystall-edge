@@ -401,7 +401,9 @@ public sealed partial class MobThresholdSystem : EntitySystem
 
             if (ev.CancelUpdate)
             {
-                _alerts.ShowAlert(target, ev.CurrentAlert, ev.Severity);
+                //CrystallEdge - health now shown via CEHealthUI widget, alert hidden to avoid duplication
+                // _alerts.ShowAlert(target, ev.CurrentAlert, ev.Severity);
+                //CrystallEdge end
                 return;
             }
 
@@ -416,11 +418,16 @@ public sealed partial class MobThresholdSystem : EntitySystem
                         _alerts.GetMaxSeverity(currentAlert),
                         percentage.Value.Float()));
             }
-            _alerts.ShowAlert(target, currentAlert, severity);
+            //CrystallEdge - health now shown via CEHealthUI widget, alert hidden to avoid duplication
+            // _alerts.ShowAlert(target, currentAlert, severity);
+            _ = severity;
+            //CrystallEdge end
         }
         else
         {
-            _alerts.ShowAlert(target, currentAlert);
+            //CrystallEdge - health now shown via CEHealthUI widget, alert hidden to avoid duplication
+            // _alerts.ShowAlert(target, currentAlert);
+            //CrystallEdge end
         }
     }
 

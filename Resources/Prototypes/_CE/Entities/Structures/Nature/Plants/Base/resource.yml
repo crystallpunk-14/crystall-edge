@@ -10,10 +10,10 @@
       visible: false
   - type: CEPlantMetabolizer
     solution: plant
-  - type: SolutionContainerManager
-    solutions:
-      plant:
-        maxVol: 50
+  - type: Solution
+    id: plant
+    solution:
+      maxVol: 50
   #- type: CEWeatherRefillable
   #  solution: plant
   - type: RefillableSolution

@@ -22,10 +22,10 @@
     equipWhileMoving: true
     slots:
     - HEAD
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 50
+  - type: Solution
+    id: drink
+    solution:
+      maxVol: 50
   - type: SolutionTransfer
     transferAmount: 50
     maxTransferAmount: 50

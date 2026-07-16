@@ -21,38 +21,10 @@ public abstract partial class CESharedMagicEnergySystem : EntitySystem
 
     public override void Initialize()
     {
-        SubscribeLocalEvent<CEEnergyAlertComponent, ComponentStartup>(OnStartup);
-        SubscribeLocalEvent<CEEnergyAlertComponent, ChargeChangedEvent>(OnChargeUpdate);
         SubscribeLocalEvent<CEEnergyOverchargeDamageComponent, CEEnergyOverchargeEvent>(OnOvercharge);
         SubscribeLocalEvent<CEEnergyDeficitDamageComponent, CEEnergyDeficitEvent>(OnDeficit);
-        SubscribeLocalEvent<CEEnergyAlertComponent, ComponentShutdown>(OnShutdown);
 
         SubscribeLocalEvent<CEEnergyRadiationArmorComponent, ExaminedEvent>(OnExamined);
-    }
-
-    private void OnChargeUpdate(Entity<CEEnergyAlertComponent> ent, ref ChargeChangedEvent args)
-    {
-        UpdateMagicAlert(ent, null, ent.Comp);
-    }
-
-    private void OnStartup(Entity<CEEnergyAlertComponent> ent, ref ComponentStartup args)
-    {
-        UpdateMagicAlert(ent, null, ent.Comp);
-    }
-
-    private void UpdateMagicAlert(EntityUid ent, BatteryComponent? battery = null, CEEnergyAlertComponent? energyAlert = null)
-    {
-        if (!Resolve(ent, ref battery, false))
-            return;
-        if (!Resolve(ent, ref energyAlert, false))
-            return;
-
-        var level = ContentHelpers.RoundToLevels(
-            battery.LastCharge,
-            battery.MaxCharge,
-            _alert.GetMaxSeverity(energyAlert.AlertType));
-
-        _alert.ShowAlert(ent, energyAlert.AlertType, (short)level);
     }
 
     private void OnOvercharge(Entity<CEEnergyOverchargeDamageComponent> ent, ref CEEnergyOverchargeEvent args)
@@ -81,11 +53,6 @@ public abstract partial class CESharedMagicEnergySystem : EntitySystem
         var xform = Transform(ent);
         SpawnAtPosition(ent.Comp.VFX, xform.Coordinates);
         _audio.PlayPvs(ent.Comp.OverchargeSound, xform.Coordinates);
-    }
-
-    private void OnShutdown(Entity<CEEnergyAlertComponent> ent, ref ComponentShutdown args)
-    {
-        _alert.ClearAlert(ent.Owner, ent.Comp.AlertType);
     }
 
     private void OnExamined(Entity<CEEnergyRadiationArmorComponent> ent, ref ExaminedEvent args)
