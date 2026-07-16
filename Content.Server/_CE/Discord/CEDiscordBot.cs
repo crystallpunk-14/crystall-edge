@@ -1,8 +1,10 @@
 using Content.Server.Discord.DiscordLink;
+using Content.Shared.CCVar;
 using NetCord;
 using NetCord.Gateway;
 using NetCord.Rest;
 using Robust.Server.Player;
+using Robust.Shared.Configuration;
 using Robust.Shared.Player;
 
 namespace Content.Server._CE.Discord;
@@ -11,6 +13,7 @@ public sealed partial class CEDiscordBot : IPostInjectInit
 {
     [Dependency] private DiscordLink _discordLink = default!;
     [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
 
     public void Initialize()
     {
@@ -45,7 +48,7 @@ public sealed partial class CEDiscordBot : IPostInjectInit
     private void UpdatePlayerCountStatus()
     {
         var count = _playerManager.PlayerCount;
-        var max = _playerManager.MaxPlayers;
+        var max = _cfg.GetCVar(CCVars.SoftMaxPlayers);
         var text = $"\U0001F465[{count}/{max}]";
 
         var presence = new PresenceProperties(UserStatusType.Online)
