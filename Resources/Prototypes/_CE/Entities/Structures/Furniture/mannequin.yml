@@ -89,7 +89,7 @@
     templateId: mannequin
   - type: InventorySlots
   - type: Strippable
-    handStripDelay: 1
+    delay: 1
   - type: UserInterface
     interfaces:
       enum.StrippingUiKey.Key:
