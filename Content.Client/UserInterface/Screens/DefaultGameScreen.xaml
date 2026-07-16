@@ -9,6 +9,7 @@
     xmlns:hotbar="clr-namespace:Content.Client.UserInterface.Systems.Hotbar.Widgets"
     xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
     xmlns:inventory="clr-namespace:Content.Client.UserInterface.Systems.Inventory.Widgets"
+    xmlns:vitals="clr-namespace:Content.Client._CE.UserInterface.Systems.Vitals.Widgets"
     Name="DefaultHud"
     VerticalExpand="False"
     VerticalAlignment="Bottom"
@@ -23,11 +24,14 @@
             <Control/>
         </BoxContainer>
         <BoxContainer Name="VoteMenu" Access="Public" Margin="0 10 0 10" Orientation="Vertical"/>
-        <actions:ActionsBar Name="Actions" Access="Protected" />
     </BoxContainer>
     <widgets:GhostGui Name="Ghost" Access="Protected" />
     <inventory:InventoryGui Name="Inventory" Access="Protected" />
     <hotbar:HotbarGui Name="Hotbar" Access="Protected" />
     <chat:ResizableChatBox Name="Chat" Access="Protected" />
     <alerts:AlertsUI Name="Alerts" Access="Protected" />
+    <vitals:CEHealthUI Name="HealthBar" Access="Public" />
+    <vitals:CEManaUI Name="ManaBar" Access="Public" />
+    <vitals:CEStaminaUI Name="StaminaBar" Access="Public" />
+    <actions:ActionsBar Name="Actions" Access="Protected" />
 </screens:DefaultGameScreen>

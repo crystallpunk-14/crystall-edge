@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "license": "CC-BY-SA-4.0",
+  "license": "All rights reserved",
   "copyright": "by vladimir.s for CrystallEdge",
   "size": {
     "x": 48,
@@ -8,7 +8,10 @@
   },
   "states": [
     {
-      "name": "health0",
+      "name": "mana0"
+    },
+    {
+      "name": "mana1",
       "delays": [
         [
           0.12,
@@ -25,7 +28,7 @@
       ]
     },
     {
-      "name": "health1",
+      "name": "mana2",
       "delays": [
         [
           0.12,
@@ -42,7 +45,7 @@
       ]
     },
     {
-      "name": "health2",
+      "name": "mana3",
       "delays": [
         [
           0.12,
@@ -59,7 +62,7 @@
       ]
     },
     {
-      "name": "health3",
+      "name": "mana4",
       "delays": [
         [
           0.12,
@@ -76,7 +79,7 @@
       ]
     },
     {
-      "name": "health4",
+      "name": "mana5",
       "delays": [
         [
           0.12,
@@ -93,7 +96,7 @@
       ]
     },
     {
-      "name": "health5",
+      "name": "mana6",
       "delays": [
         [
           0.12,
@@ -110,7 +113,7 @@
       ]
     },
     {
-      "name": "health6",
+      "name": "mana7",
       "delays": [
         [
           0.12,
@@ -127,7 +130,7 @@
       ]
     },
     {
-      "name": "health7",
+      "name": "mana8",
       "delays": [
         [
           0.12,
@@ -144,7 +147,7 @@
       ]
     },
     {
-      "name": "health8",
+      "name": "mana9",
       "delays": [
         [
           0.12,
@@ -161,7 +164,7 @@
       ]
     },
     {
-      "name": "health9",
+      "name": "mana10",
       "delays": [
         [
           0.12,

@@ -240,8 +240,11 @@ public abstract partial class SharedStaminaSystem : EntitySystem
         if (!Resolve(uid, ref component, false) || component.Deleted)
             return;
 
+        //CrystallEdge - stamina now shown via CEStaminaUI widget, alert hidden to avoid duplication
         var severity = ContentHelpers.RoundToLevels(MathF.Max(0f, component.CritThreshold - component.StaminaDamage), component.CritThreshold, 7);
-        _alerts.ShowAlert(uid, component.StaminaAlert, (short) severity);
+        // _alerts.ShowAlert(uid, component.StaminaAlert, (short) severity);
+        _ = severity;
+        //CrystallEdge end
     }
 
     /// <summary>

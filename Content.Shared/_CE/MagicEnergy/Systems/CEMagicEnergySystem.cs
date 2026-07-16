@@ -47,12 +47,15 @@ public abstract partial class CESharedMagicEnergySystem : EntitySystem
         if (!Resolve(ent, ref energyAlert, false))
             return;
 
+        //CrystallEdge - mana now shown via CEManaUI widget, alert hidden to avoid duplication
         var level = ContentHelpers.RoundToLevels(
             battery.LastCharge,
             battery.MaxCharge,
             _alert.GetMaxSeverity(energyAlert.AlertType));
 
-        _alert.ShowAlert(ent, energyAlert.AlertType, (short)level);
+        // _alert.ShowAlert(ent, energyAlert.AlertType, (short)level);
+        _ = level;
+        //CrystallEdge end
     }
 
     private void OnOvercharge(Entity<CEEnergyOverchargeDamageComponent> ent, ref CEEnergyOverchargeEvent args)
