@@ -30,12 +30,31 @@
     transferAmount: 50
     maxTransferAmount: 50
     minTransferAmount: 10
-  - type: MeleeWeapon
-    soundNoDamage:
+  - type: CEWeapon
+    range: 0.4
+    hitSound:
       path: "/Audio/Effects/Fluids/splat.ogg"
-    damage:
-      types:
-        Blunt: 0
+    effectSlots:
+      OnHit:
+      - !type:Damage
+        damage:
+          types:
+            Blunt: 0
+      OnHeavyHit:
+      - !type:Damage
+        damage:
+          types:
+            Blunt: 0
+    animations:
+      Primary:
+      - anim: DaggerAttackLight1
+      - anim: DaggerAttackLight2
+      Secondary:
+      - anim: DaggerAttackHeavy
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 10
+      Secondary: 20
   - type: SpillWhenWorn
     solution: drink
   - type: SolutionContainerVisuals

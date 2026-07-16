@@ -19,13 +19,34 @@
       visible: false
       color: "#38312e"
       map: [ burn ]
-  - type: MeleeWeapon
-    wideAnimationRotation: 270
-    damage:
-      types:
-        Blunt: 6
-    soundHit:
+  - type: CEWeapon
+    range: 0.7
+    hitSound:
       path: "/Audio/Weapons/smash.ogg"
+    effectSlots:
+      OnHit:
+      - !type:Damage
+        damage:
+          types:
+            Blunt: 6
+      OnHeavyHit:
+      - !type:Damage
+        damage:
+          types:
+            Blunt: 6
+    animations:
+      Primary:
+      - anim: SwordAttackLight1
+      - anim: SwordAttackLight2
+      Secondary:
+      - anim: SwordAttackHeavy1
+      - anim: SwordAttackHeavy2
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 10
+      Secondary: 10
+  - type: CERotationForAnimation
+    rotation: 270
   - type: Storage
     storageOpenSound: /Audio/_CE/Effects/pan_open.ogg
     storageCloseSound: /Audio/_CE/Effects/pan_close.ogg

@@ -53,9 +53,7 @@
   id: CEBaseWeaponLight
   categories: [ ForkFiltered ]
   components:
-  - type: MeleeWeapon
-    resetOnHandSelected: false
-    autoAttack: true
+  - type: CEWeapon
 
 - type: entity
   abstract: true

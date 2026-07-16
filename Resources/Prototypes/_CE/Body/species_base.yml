@@ -49,7 +49,6 @@
   save: false
   parent:
   - BaseMob
-  - MobCombat
   - CEMobDamageable
   - CEMobMagical
   - CEMobTemperature
@@ -141,15 +140,26 @@
   - type: Buckle
   - type: CombatMode
     canDisarm: true
-  - type: MeleeWeapon
-    soundHit:
+  - type: CEWeapon
+    range: 0.4
+    hitSound:
       collection: Punch
-    angle: 30
-    animation: WeaponArcFist
-    attackRate: 1.3
-    damage:
-      types:
-        Blunt: 3
+    effectSlots:
+      OnHit:
+      - !type:WeaponArcAttack
+        arcWidth: 40
+        effects:
+        - !type:Damage
+          damage:
+            types:
+              Blunt: 3
+    animations:
+      Primary:
+      - anim: Punch1
+      - anim: Punch2
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 10
   - type: SleepEmitSound
   - type: SSDIndicator
   - type: StandingState

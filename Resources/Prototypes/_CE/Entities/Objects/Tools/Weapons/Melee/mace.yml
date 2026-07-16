@@ -9,17 +9,47 @@
     size: Ginormous
     shape:
     - 0, 0, 4, 2 # 3x5
-  - type: MeleeWeapon
-    attackRate: 0.6
-    range: 1.6
-    angle: 140
-    wideAnimationRotation: -90
-    damage:
-      types:
-        Blunt: 20
-    soundHit:
+  - type: CEWeapon
+    range: 0.84
+    hitSound:
       collection: MetalThud
-  - type: MultiHandedItem
+    effectSlots:
+      OnHit:
+      - !type:Damage
+        damage:
+          types:
+            Blunt: 20
+      OnHeavyHit:
+      - !type:Damage
+        damage:
+          types:
+            Blunt: 20
+    animations:
+      Primary:
+      - anim: WarAxeAttackLight
+        speed: 0.6
+      - anim: WarAxeAttackLight2
+        speed: 0.6
+      Secondary:
+      - anim: WarAxeAttackHeavy1
+        speed: 0.6
+      - anim: WarAxeAttackHeavy2
+        speed: 0.6
+  - type: CEWieldedWeapon
+    animations:
+      Primary:
+      - anim: WarAxeAttackLight
+      - anim: WarAxeAttackLight2
+      Secondary:
+      - anim: WarAxeAttackHeavy1
+      - anim: WarAxeAttackHeavy2
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 10
+      Secondary: 10
+  - type: CERotationForAnimation
+    rotation: -90
+  - type: Wieldable
   - type: Clothing
     slots:
     - neck

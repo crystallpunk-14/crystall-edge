@@ -14,19 +14,36 @@
       types:
         Blunt: 5
         Structural: 3
-  - type: MeleeWeapon
-    resetOnHandSelected: true
-    autoAttack: true
-    attackRate: 2
-    range: 1
-    angle: 60
-    wideAnimationRotation: -90
-    damage:
-      types:
-        Blunt: 5
-        Structural: 3
-    soundHit:
+  - type: CEWeapon
+    range: 0.7
+    hitSound:
       collection: MetalThud
+    effectSlots:
+      OnHit:
+      - !type:Damage
+        damage:
+          types:
+            Blunt: 5
+            Structural: 3
+      OnHeavyHit:
+      - !type:Damage
+        damage:
+          types:
+            Blunt: 5
+            Structural: 3
+    animations:
+      Primary:
+      - anim: SwordAttackLight1
+      - anim: SwordAttackLight2
+      Secondary:
+      - anim: SwordAttackHeavy1
+      - anim: SwordAttackHeavy2
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 5
+      Secondary: 5
+  - type: CERotationForAnimation
+    rotation: -90
   - type: Clothing
     slots:
     - belt

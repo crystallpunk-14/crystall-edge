@@ -231,14 +231,24 @@
   - type: MobMover
     stepSoundMoveDistanceRunning: 1
     stepSoundMoveDistanceWalking: 0.75
-  - type: MeleeWeapon
-    soundHit:
+  - type: CEWeapon
+    range: 0.4
+    hitSound:
       collection: AlienClaw
-    angle: 30
-    animation: WeaponArcClaw
-    damage:
-      types:
-        Slash: 5 # 5 slash
+    effectSlots:
+      OnHit:
+      - !type:Damage
+        damage:
+          types:
+            Slash: 5 # 5 slash
+    animations:
+      Primary:
+      - anim: ClawAttack1
+      - anim: ClawAttack2
+      - anim: ClawAttack3
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 5
   # Flying birb!
   - type: CESkinColoredLayers
     maps:

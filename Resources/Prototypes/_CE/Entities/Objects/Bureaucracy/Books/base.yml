@@ -23,12 +23,26 @@
   - type: Tag
     tags:
     - Book
-  - type: MeleeWeapon
-    soundHit:
+  - type: CEWeapon
+    range: 0.4
+    hitSound:
       collection: Punch
-    damage:
-      types:
-        Blunt: 1
+    effectSlots:
+      OnHit:
+      - !type:WeaponArcAttack
+        arcWidth: 40
+        effects:
+        - !type:Damage
+          damage:
+            types:
+              Blunt: 1
+    animations:
+      Primary:
+      - anim: Punch1
+      - anim: Punch2
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 10
   - type: DamageOtherOnHit
     damage:
       types:

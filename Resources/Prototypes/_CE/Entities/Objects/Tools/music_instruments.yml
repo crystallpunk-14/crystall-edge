@@ -74,13 +74,34 @@
     equipWhileMoving: true
     slots:
     - neck
-  - type: MeleeWeapon
-    wideAnimationRotation: 45
-    damage:
-      types:
-        Blunt: 5
-    soundHit:
+  - type: CEWeapon
+    range: 0.7
+    hitSound:
       collection: MetalThud
+    effectSlots:
+      OnHit:
+      - !type:Damage
+        damage:
+          types:
+            Blunt: 5
+      OnHeavyHit:
+      - !type:Damage
+        damage:
+          types:
+            Blunt: 5
+    animations:
+      Primary:
+      - anim: SwordAttackLight1
+      - anim: SwordAttackLight2
+      Secondary:
+      - anim: SwordAttackHeavy1
+      - anim: SwordAttackHeavy2
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 10
+      Secondary: 10
+  - type: CERotationForAnimation
+    rotation: 45
   - type: Tag
     tags:
     - StringInstrument
@@ -115,12 +136,34 @@
   - type: Tag
     tags:
     - StringInstrument
-  - type: MeleeWeapon
-    wideAnimationRotation: 45
-    damage:
-      types:
-        Blunt: 5
-        Slash: 5
-    soundHit:
+  - type: CEWeapon
+    range: 0.7
+    hitSound:
       collection: MetalThud
+    effectSlots:
+      OnHit:
+      - !type:Damage
+        damage:
+          types:
+            Blunt: 5
+            Slash: 5
+      OnHeavyHit:
+      - !type:Damage
+        damage:
+          types:
+            Blunt: 5
+            Slash: 5
+    animations:
+      Primary:
+      - anim: SwordAttackLight1
+      - anim: SwordAttackLight2
+      Secondary:
+      - anim: SwordAttackHeavy1
+      - anim: SwordAttackHeavy2
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 10
+      Secondary: 10
+  - type: CERotationForAnimation
+    rotation: 45
 

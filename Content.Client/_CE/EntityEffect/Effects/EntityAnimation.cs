@@ -1,5 +1,6 @@
 ﻿using System.Numerics;
 using Content.Client.Animations;
+using Content.Shared._CE.Animation.Core.Components;
 using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.EntityEffect.Effects;
 using Content.Shared.Hands.Components;
@@ -100,8 +101,8 @@ public sealed partial class CEEntityAnimationEffectSystem : CEEntityEffectSystem
 
         // Set initial rotation
         var initialRotation = angle;
-        //if (TryComp<CEWeaponComponent>(spriteSource, out var itemAnim))
-        //    initialRotation += Angle.FromDegrees(itemAnim.SpriteRotation);
+        if (TryComp<CERotationForAnimationComponent>(spriteSource, out var rotationForAnim))
+            initialRotation += Angle.FromDegrees(rotationForAnim.Rotation);
 
         _sprite.SetRotation((effectEntity, effectSprite), initialRotation);
 

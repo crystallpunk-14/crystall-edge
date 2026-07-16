@@ -8,7 +8,7 @@ namespace Content.Client._CE.Animation.Core;
 
 /// <summary>
 /// Debug overlay that draws ArcAttack hitboxes for 0.1 seconds when they fire.
-/// Toggled via the "showarcattack" console command.
+/// Toggled via the "showmeleespread" console command (see CEArcAttackDebugSystem).
 /// </summary>
 public sealed partial class CEMeleeArcOverlay : Overlay
 {
