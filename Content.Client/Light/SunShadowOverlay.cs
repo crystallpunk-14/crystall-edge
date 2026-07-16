@@ -1,6 +1,7 @@
 using System.Numerics;
 using Content.Client.Graphics;
 using Content.Shared.Light.Components;
+using Content.Shared.Light.EntitySystems;
 using Robust.Client.Graphics;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
@@ -14,6 +15,16 @@ public sealed partial class SunShadowOverlay : Overlay
 {
     private static readonly ProtoId<ShaderPrototype> MixShader = "Mix";
 
+    // CrystallEdge: shape used to cast rooved tiles' own shadow, mirrors SunShadowCastComponent's default Points
+    private static readonly Vector2[] TileCastPoints =
+    {
+        new(-0.5f, -0.5f),
+        new(0.5f, -0.5f),
+        new(0.5f, 0.5f),
+        new(-0.5f, 0.5f),
+    };
+    // CrystallEdge end
+
     public override OverlaySpace Space => OverlaySpace.BeforeLighting;
 
     [Dependency] private IClyde _clyde = default!;
@@ -22,8 +33,16 @@ public sealed partial class SunShadowOverlay : Overlay
     [Dependency] private IPrototypeManager _protoManager = default!;
     private readonly EntityLookupSystem _lookup;
     private readonly SharedTransformSystem _xformSys;
+    // CrystallEdge: rooved tiles have no sky above them so they shadow themselves too, see Draw()
+    private readonly SharedMapSystem _mapSys;
+    private readonly SharedRoofSystem _roof;
+    // CrystallEdge end
 
     private readonly HashSet<Entity<SunShadowCastComponent>> _shadows = new();
+    // CrystallEdge: tiles already shadowed by their own roof this frame, so entities standing on them
+    // don't also cast a (redundant) shadow, see Draw()
+    private readonly HashSet<Vector2i> _roofedTiles = new();
+    // CrystallEdge end
 
     private readonly OverlayResourceCache<CachedResources> _resources = new();
 
@@ -32,6 +51,10 @@ public sealed partial class SunShadowOverlay : Overlay
         IoCManager.InjectDependencies(this);
         _xformSys = _entManager.System<SharedTransformSystem>();
         _lookup = _entManager.System<EntityLookupSystem>();
+        // CrystallEdge: rooved tiles have no sky above them so they shadow themselves too, see Draw()
+        _mapSys = _entManager.System<SharedMapSystem>();
+        _roof = _entManager.System<SharedRoofSystem>();
+        // CrystallEdge end
         ZIndex = AfterLightTargetOverlay.ContentZIndex + 1;
     }
 
@@ -102,6 +125,47 @@ public sealed partial class SunShadowOverlay : Overlay
                         res.Target.GetWorldToLocalMatrix(eye, scale);
                     var indices = new Vector2[PhysicsConstants.MaxPolygonVertices * 2];
 
+                    // CrystallEdge: rooved tiles have no sky above them, so cast their own shadow the
+                    // same way a SunShadowCastComponent entity would. Tracked in _roofedTiles so the
+                    // entity loop below can skip casting a second, redundant shadow for the same tile.
+                    _roofedTiles.Clear();
+
+                    if (_entManager.TryGetComponent(grid.Owner, out RoofComponent? roofComp))
+                    {
+                        var roofEnt = (grid.Owner, grid.Comp, roofComp);
+                        var gridMatrix = _xformSys.GetWorldMatrix(grid.Owner);
+                        var tileSize = grid.Comp.TileSize;
+                        var tileEnumerator = _mapSys.GetTilesEnumerator(grid.Owner, grid.Comp, expandedBounds);
+
+                        while (tileEnumerator.MoveNext(out var tileRef))
+                        {
+                            if (!_roof.IsRooved(roofEnt, tileRef.GridIndices))
+                                continue;
+
+                            _roofedTiles.Add(tileRef.GridIndices);
+
+                            var localCenter = new Vector2(
+                                (tileRef.GridIndices.X + 0.5f) * tileSize,
+                                (tileRef.GridIndices.Y + 0.5f) * tileSize);
+                            var worldPos = Vector2.Transform(localCenter, gridMatrix);
+                            var renderMatrix = Matrix3x2.Multiply(Matrix3x2.CreateTranslation(worldPos), invMatrix);
+
+                            Array.Copy(TileCastPoints, indices, TileCastPoints.Length);
+
+                            for (var i = 0; i < TileCastPoints.Length; i++)
+                            {
+                                // Add the offset point by the sun shadow direction.
+                                indices[TileCastPoints.Length + i] = indices[i] + direction;
+                            }
+
+                            var points = PhysicsHull.ComputePoints(indices, TileCastPoints.Length * 2);
+                            worldHandle.SetTransform(renderMatrix);
+
+                            worldHandle.DrawPrimitives(DrawPrimitiveTopology.TriangleFan, points, Color.White);
+                        }
+                    }
+                    // CrystallEdge end
+
                     // Go through shadows in range.
 
                     // For each one we:
@@ -118,6 +182,17 @@ public sealed partial class SunShadowOverlay : Overlay
                     foreach (var ent in _shadows)
                     {
                         var xform = _entManager.GetComponent<TransformComponent>(ent.Owner);
+
+                        // CrystallEdge: this tile already got a shadow cast from its roof above, skip
+                        // so we don't cast the same tile's shadow twice.
+                        if (xform.GridUid == grid.Owner &&
+                            _mapSys.TryGetTileRef(grid.Owner, grid.Comp, xform.Coordinates, out var entTile) &&
+                            _roofedTiles.Contains(entTile.GridIndices))
+                        {
+                            continue;
+                        }
+                        // CrystallEdge end
+
                         var (worldPos, worldRot) = _xformSys.GetWorldPositionRotation(xform);
                         // Need no rotation on matrix as sun shadow direction doesn't care.
                         var worldMatrix = Matrix3x2.CreateTranslation(worldPos);

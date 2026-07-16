@@ -48,13 +48,13 @@
                   Nitrogen: 82.10312
             - type: Parallax
               parallax: CESky
-            - type: SunShadowCycle
-              offset: 100
-              duration: 300
-            - type: LightCycle
+            - type: LightCycle #BEFORE Sun shadow cycle!
               offset: 100
               duration: 300
               originalColor: "#75e3ff"
+            - type: SunShadowCycle
+              offset: 100
+              duration: 300
             - type: CEZLevelRoof
             - type: SunShadow
             - type: MapLight

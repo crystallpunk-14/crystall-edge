@@ -56,15 +56,15 @@ public abstract partial class CESharedZLevelsSystem
 
         for (var i = 1; i <= MaxZLevelsAboveRendering; i++)
         {
-            if (!_mapManager.TryFindGridAt(checkingMap, worldPos, out var gridUid, out var grid))
-                break;
-
-            if (!_map.TryGetTileRef(gridUid, grid, worldPos, out var tileRef))
-                break;
-
-            var tileDef = (ContentTileDefinition)TilDefMan[tileRef.Tile.TypeId];
-            if (!tileDef.Transparent)
-                break;
+            // No grid or no chunk at this position means there's simply nothing there (open space),
+            // not an opaque roof, so it shouldn't block sight upward. Mirrors HasOpaqueAbove below.
+            if (_mapManager.TryFindGridAt(checkingMap, worldPos, out var gridUid, out var grid) &&
+                _map.TryGetTileRef(gridUid, grid, worldPos, out var tileRef))
+            {
+                var tileDef = (ContentTileDefinition)TilDefMan[tileRef.Tile.TypeId];
+                if (!tileDef.Transparent)
+                    break;
+            }
 
             visibleLevels++;
 
