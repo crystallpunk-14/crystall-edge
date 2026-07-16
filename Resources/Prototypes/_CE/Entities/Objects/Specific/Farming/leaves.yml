@@ -7,12 +7,12 @@
   components:
   - type: Item
     size: Tiny
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nicotine
-          Quantity: 10
+  - type: Solution
+    id: food
+    solution:
+      reagents:
+      - ReagentId: Nicotine
+        Quantity: 10
   - type: Sprite
     sprite: _CE/Objects/Misc/reagent_fillings.rsi
     state: tobacco_small
@@ -29,14 +29,14 @@
   components:
   - type: Item
     size: Tiny
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: THC
-          Quantity: 8
-        - ReagentId: Happiness
-          Quantity: 2
+  - type: Solution
+    id: food
+    solution:
+      reagents:
+      - ReagentId: THC
+        Quantity: 8
+      - ReagentId: Happiness
+        Quantity: 2
   - type: Sprite
     sprite: _CE/Objects/Misc/reagent_fillings.rsi
     state: sage_powder
