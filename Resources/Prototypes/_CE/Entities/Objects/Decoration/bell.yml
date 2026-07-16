@@ -41,13 +41,26 @@
           volume: 3
   - type: UseDelay
     delay: 1.5
-  - type: MeleeWeapon
-    wideAnimationRotation: 180
-    soundHit:
+  - type: CEWeapon
+    range: 0.4
+    hitSound:
       path: /Audio/_CE/Effects/bell_short.ogg
       params:
           variation: 0.03
           volume: 3
-    damage:
-      types:
-        Blunt: 4
+    effectSlots:
+      OnHit:
+      - !type:WeaponArcAttack
+        arcWidth: 40
+        effects:
+        - !type:Damage
+          damage:
+            types:
+              Blunt: 4
+    animations:
+      Primary:
+      - anim: Punch1
+      - anim: Punch2
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 10

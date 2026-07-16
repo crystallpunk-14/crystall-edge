@@ -267,14 +267,24 @@
   - type: MessyDrinker
     spillChance: 0.3
   - type: Wagging
-  - type: MeleeWeapon
-    soundHit:
+  - type: CEWeapon
+    range: 0.4
+    hitSound:
       collection: AlienClaw
-    angle: 30
-    animation: WeaponArcClaw
-    damage:
-      types:
-        Slash: 5 # 5 slash
+    effectSlots:
+      OnHit:
+      - !type:Damage
+        damage:
+          types:
+            Slash: 5 # 5 slash
+    animations:
+      Primary:
+      - anim: ClawAttack1
+      - anim: ClawAttack2
+      - anim: ClawAttack3
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 5
   - type: CENightVision #Night vision
   - type: FootstepModifier
     footstepSoundCollection: null # Silent footstep

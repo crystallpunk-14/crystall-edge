@@ -2,11 +2,13 @@ using System.Diagnostics.CodeAnalysis;
 using Content.Shared._CE.Animation.Core;
 using Content.Shared._CE.Animation.Item.Components;
 using Content.Shared._CE.EntityEffect;
+using Content.Shared._CE.MeleeWeapon.Components;
 using Content.Shared.ActionBlocker;
 using Content.Shared.CombatMode;
 using Content.Shared.Damage.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
+using Content.Shared.Wieldable.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
@@ -32,9 +34,31 @@ public abstract partial class CESharedWeaponSystem : EntitySystem
     {
         base.Initialize();
 
+        InitializeCosts();
+
         SubscribeAllEvent<CEWeaponUseEvent>(OnClientAttackRequest);
         SubscribeAllEvent<CEStopWeaponUseEvent>(OnClientStopRequest);
         SubscribeAllEvent<CEWeaponArcHitEvent>(OnArcHitEvent);
+
+        SubscribeLocalEvent<CEWieldedWeaponComponent, CEGetWeaponAnimationsEvent>(OnGetWeaponAnimation);
+    }
+
+    private void OnGetWeaponAnimation(Entity<CEWieldedWeaponComponent> ent, ref CEGetWeaponAnimationsEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        if (!TryComp<WieldableComponent>(ent, out var wielded))
+            return;
+
+        if (!wielded.Wielded)
+            return;
+
+        if (!ent.Comp.Animations.TryGetValue(args.UseType, out var animations))
+            return;
+
+        args.Animations = animations;
+        args.Handled = true;
     }
 
     private void OnClientAttackRequest(CEWeaponUseEvent ev, EntitySessionEventArgs args)
@@ -82,11 +106,15 @@ public abstract partial class CESharedWeaponSystem : EntitySystem
         if (!TryComp<CEWeaponComponent>(weaponEntity, out var weaponComp))
             return;
 
-        // Validate the user holds this weapon in any hand (supports off-hand dual-wield attacks)
-        var userHoldsWeapon = false;
-        foreach (var held in _hands.EnumerateHeld(user))
+        // Validate the user holds this weapon in any hand (supports off-hand dual-wield attacks),
+        // or that the weapon is the user's own body (unarmed attacks, e.g. fists/claws).
+        var userHoldsWeapon = weaponEntity == user;
+        if (!userHoldsWeapon)
         {
-            if (held == weaponEntity) { userHoldsWeapon = true; break; }
+            foreach (var held in _hands.EnumerateHeld(user))
+            {
+                if (held == weaponEntity) { userHoldsWeapon = true; break; }
+            }
         }
         if (!userHoldsWeapon) return;
 

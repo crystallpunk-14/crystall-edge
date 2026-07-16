@@ -43,6 +43,10 @@
       - anim: DaggerAttackLight2
       Secondary:
       - anim: DaggerAttackHeavy
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 5
+      Secondary: 10
   - type: CERotationForAnimation
     rotation: -90
   - type: Clothing

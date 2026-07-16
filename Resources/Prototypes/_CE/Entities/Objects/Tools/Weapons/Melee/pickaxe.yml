@@ -7,22 +7,48 @@
   components:
   - type: Item
     size: Ginormous
-  - type: MeleeWeapon
-    attackRate: 1
-    range: 1.6
-    angle: 90
-    wideAnimationRotation: -90
-    damage:
-      types:
-        Piercing: 3
-        Structural: 4
-    soundHit:
+  - type: CEWeapon
+    range: 0.84
+    hitSound:
       collection: MetalThud
-  - type: IncreaseDamageOnWield
-    damage:
-      types:
-        Piercing: 6
-        Structural: 20
+    effectSlots:
+      OnHit:
+      - !type:Damage
+        damage:
+          types:
+            Piercing: 9
+            Structural: 24
+      OnHeavyHit:
+      - !type:Damage
+        damage:
+          types:
+            Piercing: 9
+            Structural: 24
+    animations:
+      Primary:
+      - anim: WarAxeAttackLight
+        speed: 0.6
+      - anim: WarAxeAttackLight2
+        speed: 0.6
+      Secondary:
+      - anim: WarAxeAttackHeavy1
+        speed: 0.6
+      - anim: WarAxeAttackHeavy2
+        speed: 0.6
+  - type: CEWieldedWeapon
+    animations:
+      Primary:
+      - anim: WarAxeAttackLight
+      - anim: WarAxeAttackLight2
+      Secondary:
+      - anim: WarAxeAttackHeavy1
+      - anim: WarAxeAttackHeavy2
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 10
+      Secondary: 10
+  - type: CERotationForAnimation
+    rotation: -90
   - type: Wieldable
   - type: Clothing
     equipWhileMoving: true

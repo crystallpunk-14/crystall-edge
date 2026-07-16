@@ -25,16 +25,26 @@
       collection: ToySqueak
   - type: UseDelay
     delay: 1.0
-  - type: MeleeWeapon
-    autoAttack: true
-    attackRate: 0.8
-    wideAnimationRotation: 180
-    soundHit:
+  - type: CEWeapon
+    range: 0.4
+    hitSound:
       collection: ToySqueak
-    damage:
-      types:
-        Blunt: 0
-    hidden: true
+    effectSlots:
+      OnHit:
+      - !type:WeaponArcAttack
+        arcWidth: 40
+        effects:
+        - !type:Damage
+          damage:
+            types:
+              Blunt: 0
+    animations:
+      Primary:
+      - anim: Punch1
+      - anim: Punch2
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 10
   - type: StaticPrice
     price: 5
   - type: PhysicalComposition

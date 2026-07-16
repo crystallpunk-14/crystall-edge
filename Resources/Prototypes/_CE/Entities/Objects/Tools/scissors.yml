@@ -24,14 +24,33 @@
     interfaces:
       enum.MagicMirrorUiKey.Key:
         type: MagicMirrorBoundUserInterface
-  - type: MeleeWeapon
-    wideAnimationRotation: -135
-    attackRate: 1
-    damage:
-      types:
-        Piercing: 4
-    soundHit:
+  - type: CEWeapon
+    range: 0.4
+    hitSound:
       path: /Audio/Weapons/bladeslice.ogg
+    effectSlots:
+      OnHit:
+      - !type:Damage
+        damage:
+          types:
+            Piercing: 4
+      OnHeavyHit:
+      - !type:Damage
+        damage:
+          types:
+            Piercing: 4
+    animations:
+      Primary:
+      - anim: DaggerAttackLight1
+      - anim: DaggerAttackLight2
+      Secondary:
+      - anim: DaggerAttackHeavy
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 10
+      Secondary: 20
+  - type: CERotationForAnimation
+    rotation: -135
   - type: Tag
     tags:
     - CEScissors
