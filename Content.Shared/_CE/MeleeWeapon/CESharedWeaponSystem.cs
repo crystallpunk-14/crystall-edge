@@ -8,6 +8,7 @@ using Content.Shared.CombatMode;
 using Content.Shared.Damage.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
+using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Wieldable.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
@@ -244,11 +245,18 @@ public abstract partial class CESharedWeaponSystem : EntitySystem
         }
 
         // Use in-hands entity if available.
-        if (_hands.TryGetActiveItem(entity, out var held) &&
-            TryComp<CEWeaponComponent>(held, out var heldWeapon))
+        if (_hands.TryGetActiveItem(entity, out var held))
         {
-            used = (held.Value, heldWeapon);
-            return true;
+            if (TryComp<CEWeaponComponent>(held, out var heldWeapon))
+            {
+                used = (held.Value, heldWeapon);
+                return true;
+            }
+
+            // Holding something that isn't a CE weapon (e.g. a gun) — don't fall back to
+            // an unarmed attack, mirroring vanilla melee's behavior for a full hand.
+            if (!HasComp<VirtualItemComponent>(held))
+                return false;
         }
 
         // Use own body.
