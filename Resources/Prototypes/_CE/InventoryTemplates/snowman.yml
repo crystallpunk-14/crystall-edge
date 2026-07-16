@@ -6,12 +6,14 @@
     - name: mask
       slotTexture: mask
       slotFlags: MASK
+      stripTime: 1
       uiWindowPos: 0,2
       strippingWindowPos: 2,0
       displayName: Mask
     - name: eyes
       slotTexture: eyes
       slotFlags: EYES
+      stripTime: 1
       uiWindowPos: 0,3
       strippingWindowPos: 0,0
       displayName: Eyes
@@ -19,6 +21,7 @@
     - name: head
       slotTexture: head
       slotFlags: HEAD
+      stripTime: 1
       uiWindowPos: 0,1
       strippingWindowPos: 1,0
       displayName: Head
@@ -29,6 +32,7 @@
     - name: cloak
       slotTexture: cloak
       slotFlags: CLOAK
+      stripTime: 1
       uiWindowPos: 2,3
       strippingWindowPos: 2,1
       displayName: Cloak
