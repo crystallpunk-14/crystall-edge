@@ -2,10 +2,10 @@
   id: CECarcat
   limits:
     enum.HumanoidVisualLayers.Hair:
-      limit: 0
+      limit: 1
       required: false
     enum.HumanoidVisualLayers.FacialHair:
-      limit: 0
+      limit: 1
       required: false
     enum.HumanoidVisualLayers.Head:
       limit: 1
@@ -329,6 +329,23 @@
     hideableLayers:
     - enum.HumanoidVisualLayers.Hair
     - enum.HumanoidVisualLayers.Snout
+    markingsDisplacement:
+      Hair:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Carcat/displacement.rsi
+            state: hair
+          48:
+            sprite: _CE/Mobs/Species/Carcat/displacement48.rsi
+            state: hair
+      FacialHair:
+        sizeMaps:
+          32:
+            sprite: _CE/Mobs/Species/Carcat/displacement.rsi
+            state: hair
+          48:
+            sprite: _CE/Mobs/Species/Carcat/displacement48.rsi
+            state: hair
 
 - type: entity
   parent: [ OrganBaseArmLeft, CEOrganCarcatExternal ]

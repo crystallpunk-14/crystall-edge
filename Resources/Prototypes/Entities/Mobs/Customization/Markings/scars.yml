@@ -1,6 +1,7 @@
 - type: marking
   id: ScarEyeRight
   bodyPart: Head
+  forcedColoring: true
   groupWhitelist: [Human]
   sprites:
   - sprite: Mobs/Customization/scars.rsi
@@ -9,6 +10,7 @@
 - type: marking
   id: ScarEyeLeft
   bodyPart: Head
+  forcedColoring: true
   groupWhitelist: [Human]
   sprites:
   - sprite: Mobs/Customization/scars.rsi
@@ -17,6 +19,7 @@
 - type: marking
   id: ScarTopSurgeryShort
   bodyPart: Chest
+  forcedColoring: true
   groupWhitelist: [Human, Reptilian, Moth, Arachnid, Diona]
   sexRestriction: [Male]
   sprites:
@@ -26,6 +29,7 @@
 - type: marking
   id: ScarTopSurgeryLong
   bodyPart: Chest
+  forcedColoring: true
   groupWhitelist: [Human, Reptilian, Moth, Arachnid, Diona]
   sexRestriction: [Male]
   sprites:
@@ -35,6 +39,7 @@
 - type: marking
   id: ScarChest
   bodyPart: Chest
+  forcedColoring: true
   groupWhitelist: [Human, Reptilian, Moth, Arachnid, Diona]
   sprites:
   - sprite: Mobs/Customization/scars.rsi
@@ -43,6 +48,7 @@
 - type: marking
   id: ScarNeck
   bodyPart: Head
+  forcedColoring: true
   groupWhitelist: [Human, Reptilian]
   sprites:
   - sprite: Mobs/Customization/scars.rsi
@@ -51,6 +57,7 @@
 - type: marking
   id: ScarChestBullets
   bodyPart: Chest
+  forcedColoring: true
   groupWhitelist: [Human, Reptilian, Moth, Arachnid]
   sprites:
   - sprite: Mobs/Customization/scars.rsi
@@ -59,6 +66,7 @@
 - type: marking
   id: ScarStomachBullets
   bodyPart: Chest
+  forcedColoring: true
   groupWhitelist: [Human, Reptilian, Moth, Arachnid]
   sprites:
   - sprite: Mobs/Customization/scars.rsi
@@ -67,6 +75,7 @@
 - type: marking
   id: ScarFace1
   bodyPart: Head
+  forcedColoring: true
   groupWhitelist: [Human, Reptilian, Moth]
   sprites:
   - sprite: Mobs/Customization/scars.rsi
@@ -75,6 +84,7 @@
 - type: marking
   id: ScarFace2
   bodyPart: Head
+  forcedColoring: true
   groupWhitelist: [Human, Reptilian, Moth]
   sprites:
   - sprite: Mobs/Customization/scars.rsi
@@ -83,6 +93,7 @@
 - type: marking
   id: ScarEyeRightSmall
   bodyPart: Head
+  forcedColoring: true
   groupWhitelist: [Human, Reptilian]
   sprites:
   - sprite: Mobs/Customization/scars.rsi
@@ -91,6 +102,7 @@
 - type: marking
   id: ScarEyeLeftSmall
   bodyPart: Head
+  forcedColoring: true
   groupWhitelist: [Human, Reptilian]
   sprites:
   - sprite: Mobs/Customization/scars.rsi
