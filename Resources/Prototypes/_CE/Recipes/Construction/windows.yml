@@ -25,3 +25,31 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+
+- type: construction
+  hide: false
+  id: CEThinWindowIron
+  graph: CEThinWindowIron
+  startNode: start
+  targetNode: CEThinWindowIron
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  hide: false
+  id: CEThinWindowDoorIron
+  graph: CEThinWindowDoorIron
+  startNode: start
+  targetNode: CEThinWindowDoorIron
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
