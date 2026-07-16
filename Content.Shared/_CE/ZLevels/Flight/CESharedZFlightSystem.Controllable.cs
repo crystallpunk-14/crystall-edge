@@ -89,6 +89,9 @@ public abstract partial class CESharedZFlightSystem
         if (args.Handled)
             return;
 
+        if (args.Action.Owner != ent.Comp.ZLevelToggleActionEntity)
+            return;
+
         if (!TryComp<CEZFlyerComponent>(ent, out var flyerComp))
             return;
 

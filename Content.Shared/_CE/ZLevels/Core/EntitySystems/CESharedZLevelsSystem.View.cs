@@ -26,6 +26,9 @@ public abstract partial class CESharedZLevelsSystem
         if (args.Handled)
             return;
 
+        if (args.Action.Owner != entity.Comp.ActionEntity)
+            return;
+
         args.Handled = true;
 
         entity.Comp.LookUp = !entity.Comp.LookUp;
