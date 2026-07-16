@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Content.Server._CE.Discord;
 using Content.Server.Acz;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
@@ -49,6 +50,7 @@ namespace Content.Server.Entry
         [Dependency] private ContentNetworkResourceManager _netResMan = default!;
         [Dependency] private DiscordChatLink _discordChatLink = default!;
         [Dependency] private DiscordLink _discordLink = default!;
+        [Dependency] private CEDiscordBot _CEDiscordBot = default!; //CrystallEdge
         [Dependency] private EuiManager _euiManager = default!;
         [Dependency] private GhostKickManager _ghostKick = default!;
         [Dependency] private IAdminManager _admin = default!;
@@ -165,6 +167,7 @@ namespace Content.Server.Entry
             _rules.Initialize();
             _discordLink.Initialize();
             _discordChatLink.Initialize();
+            _CEDiscordBot.Initialize(); //CrystallEdge
             _euiManager.Initialize();
             _gameMap.Initialize();
             _entSys.GetEntitySystem<GameTicker>().PostInitialize();
@@ -211,6 +214,7 @@ namespace Content.Server.Entry
             // We don't care when or how this finishes, just spin the task off into the void.
             _ = _discordLink.Shutdown();
             _discordChatLink.Shutdown();
+            _CEDiscordBot.Shutdown();  //CrystallEdge
         }
 
         private static void LoadConfigPresets(IConfigurationManager cfg, IResourceManager res, ISawmill sawmill)
