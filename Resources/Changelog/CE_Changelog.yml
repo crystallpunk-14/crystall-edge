@@ -391,3 +391,29 @@
   id: 1039
   time: '2026-01-11T09:50:55.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/253
+- author: TheShuEd
+  changes:
+  - message: Added idle & walking animations from CE3
+    type: Add
+  id: 1040
+  time: '2026-07-14T12:36:21.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/345
+- author: TheShuEd
+  changes:
+  - message: Added ability to construct thin windows.
+    type: Add
+  - message: Carcat hair & beards support from CE3.
+    type: Add
+  - message: Lower time required to equip or deequip clothingon mannequins.
+    type: Tweak
+  - message: Pipe breakage event no more can broke pipes under carpets or walls.
+    type: Tweak
+  - message: Wider viewport port from CE3.
+    type: Tweak
+  - message: Fixed bug with fast equippin hats in pickets instead heads.
+    type: Fix
+  - message: Fixed bug with melee attacking coupled with gun shots.
+    type: Fix
+  id: 1041
+  time: '2026-07-16T23:07:33.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/351
