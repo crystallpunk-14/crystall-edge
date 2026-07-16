@@ -84,6 +84,9 @@
   - type: RotationVisuals
     defaultRotation: 90
     horizontalRotation: 90
+  - type: ContentEye
+    maxZoom: 0.8, 0.8
+    targetZoom: 0.8, 0.8
   - type: SlowOnDamage
     speedModifierThresholds:
       60: 0.7
