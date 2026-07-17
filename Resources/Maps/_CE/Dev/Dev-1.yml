@@ -4,8 +4,8 @@ meta:
   engineVersion: 277.0.0
   forkId: ""
   forkVersion: ""
-  time: 07/17/2026 08:23:41
-  entityCount: 451
+  time: 07/17/2026 09:58:12
+  entityCount: 459
 maps:
 - 1
 grids:
@@ -1509,6 +1509,46 @@ entities:
     components:
     - type: Transform
       pos: 3.5,-10.5
+      parent: 1
+  - uid: 452
+    components:
+    - type: Transform
+      pos: 23.5,4.5
+      parent: 1
+  - uid: 453
+    components:
+    - type: Transform
+      pos: 25.5,4.5
+      parent: 1
+  - uid: 454
+    components:
+    - type: Transform
+      pos: 23.5,1.5
+      parent: 1
+  - uid: 455
+    components:
+    - type: Transform
+      pos: 25.5,1.5
+      parent: 1
+  - uid: 456
+    components:
+    - type: Transform
+      pos: 24.5,1.5
+      parent: 1
+  - uid: 457
+    components:
+    - type: Transform
+      pos: 24.5,2.5
+      parent: 1
+  - uid: 458
+    components:
+    - type: Transform
+      pos: 24.5,3.5
+      parent: 1
+  - uid: 459
+    components:
+    - type: Transform
+      pos: 24.5,4.5
       parent: 1
 - proto: CEWallIronCore
   entities:

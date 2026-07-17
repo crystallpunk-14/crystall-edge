@@ -6,9 +6,10 @@ using Robust.Shared.GameObjects;
 namespace Content.Server._CE.ZCollapse.Commands;
 
 /// <summary>
-/// Consistency-repair fallback: wipes and fully re-derives a grid's ZCollapse stability data from
-/// currently anchored Cores/Supports. The incremental algorithm should never actually need this in
-/// normal play — it exists to recover from a bug, not as a routine tool.
+/// Forces a grid's ZCollapse stability to recompute. There's no separate "reset broken bookkeeping"
+/// path to run anymore — this just marks the grid dirty, the exact same thing any anchor/tile change
+/// does, so if the result still looks wrong afterward that's a sign the Cores/Supports index is out
+/// of sync, not the flood-fill math.
 /// </summary>
 [AdminCommand(AdminFlags.Admin)]
 public sealed partial class CEForceRecalcStabilityCommand : LocalizedEntityCommands
@@ -43,6 +44,6 @@ public sealed partial class CEForceRecalcStabilityCommand : LocalizedEntityComma
         }
 
         _collapse.ForceRecalculateGrid(gridUid);
-        shell.WriteLine($"Recalculated ZCollapse stability for grid {gridUid}.");
+        shell.WriteLine($"Queued ZCollapse stability recompute for grid {gridUid}.");
     }
 }

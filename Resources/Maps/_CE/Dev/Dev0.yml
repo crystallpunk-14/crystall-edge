@@ -4,8 +4,8 @@ meta:
   engineVersion: 277.0.0
   forkId: ""
   forkVersion: ""
-  time: 07/17/2026 08:23:41
-  entityCount: 958
+  time: 07/17/2026 09:58:12
+  entityCount: 959
 maps:
 - 1
 grids:
@@ -2836,6 +2836,11 @@ entities:
     components:
     - type: Transform
       pos: 0.5,-3.5
+      parent: 1
+  - uid: 632
+    components:
+    - type: Transform
+      pos: 18.5,7.5
       parent: 1
 - proto: CEHeater
   entities:

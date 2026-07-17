@@ -25,4 +25,4 @@
         layer:
         - MachineLayer
   - type: CEGridStabilityCore
-    levitationForce: 20
+    levitationForce: 50

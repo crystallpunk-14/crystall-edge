@@ -13,6 +13,9 @@ public sealed partial class CEZCollapseSystem
 {
     private readonly HashSet<ICommonSession> _debugSessions = new();
 
+    /// <summary>Grids whose stability changed since the last debug-overlay push.</summary>
+    private readonly HashSet<EntityUid> _debugDirtyGrids = new();
+
     private void InitializeDebug()
     {
     }
@@ -83,8 +86,8 @@ public sealed partial class CEZCollapseSystem
     /// <summary>
     /// Debug-overlay payload for a grid: <see cref="CEGridStabilityComponent.Stability"/> as-is, plus
     /// an explicit 0 entry for every tile that physically exists but isn't in Stability — those are
-    /// tiles that should collapse (and will, once the map is initialized) so the overlay needs to
-    /// show them in red rather than silently omitting them like truly-empty space.
+    /// tiles that should collapse (and will, on the next recompute) so the overlay needs to show them
+    /// in red rather than silently omitting them like truly-empty space.
     /// </summary>
     private Dictionary<Vector2i, int> BuildOverlayTiles(EntityUid gridUid, MapGridComponent grid, CEGridStabilityComponent comp)
     {
