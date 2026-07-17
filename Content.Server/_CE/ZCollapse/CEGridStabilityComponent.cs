@@ -31,15 +31,4 @@ public sealed partial class CEGridStabilityComponent : Component
     /// <summary>Currently anchored <see cref="CEGridStabilitySupportComponent"/> entities on this grid.</summary>
     [ViewVariables]
     public readonly HashSet<EntityUid> Supports = new();
-
-    /// <summary>
-    /// Tiles on this grid won't be reaped for lacking stability before this time, set on MapInit/grid
-    /// split. Every grid starts with an empty <see cref="Stability"/>, so right after a fresh map load
-    /// a floor with no Core of its own would otherwise read a not-yet-computed neighbor's stability as
-    /// a genuine zero — indistinguishable from "that neighbor computed and really has nothing here" —
-    /// and collapse before a multi-hop bridge cascade has had time to settle. See
-    /// <see cref="CEZCollapseSystem"/>.
-    /// </summary>
-    [ViewVariables]
-    public TimeSpan ProtectedUntil;
 }

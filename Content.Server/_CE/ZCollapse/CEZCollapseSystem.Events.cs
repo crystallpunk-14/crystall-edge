@@ -62,10 +62,9 @@ public sealed partial class CEZCollapseSystem
         else
             comp.Supports.Remove(ent.Owner);
 
-        // A Support's mere presence/absence changes what the other side of the bridge receives —
-        // don't wait for a diff to discover that, dirty the neighbor immediately.
+        // Marking just this grid is enough — GetColumn() pulls in every Z-adjacent participating grid
+        // (including whichever one this Support bridges to) the moment a job actually starts for it.
         MarkDirty(gridUid);
-        MarkZNeighborsDirty(gridUid);
     }
 
     private void OnSupportReAnchor(Entity<CEGridStabilitySupportComponent> ent, ref ReAnchorEvent args)
@@ -74,14 +73,12 @@ public sealed partial class CEZCollapseSystem
         {
             oldComp.Supports.Remove(ent.Owner);
             MarkDirty(args.OldGrid);
-            MarkZNeighborsDirty(args.OldGrid);
         }
 
         if (_stabilityQuery.TryGetComponent(args.Grid, out var newComp))
         {
             newComp.Supports.Add(ent.Owner);
             MarkDirty(args.Grid);
-            MarkZNeighborsDirty(args.Grid);
         }
     }
 
@@ -96,7 +93,6 @@ public sealed partial class CEZCollapseSystem
     private void OnStabilityMapInit(Entity<CEGridStabilityComponent> ent, ref MapInitEvent args)
     {
         _pendingIndexScan.Add(ent.Owner);
-        ProtectGrid(ent.Owner, ent.Comp);
     }
 
     // Reparented entities during a grid split may not raise ReAnchorEvent either — deferring both the
@@ -108,9 +104,8 @@ public sealed partial class CEZCollapseSystem
 
         foreach (var newGrid in args.NewGrids)
         {
-            var newComp = EnsureComp<CEGridStabilityComponent>(newGrid);
+            EnsureComp<CEGridStabilityComponent>(newGrid);
             _pendingIndexScan.Add(newGrid);
-            ProtectGrid(newGrid, newComp);
         }
     }
 }

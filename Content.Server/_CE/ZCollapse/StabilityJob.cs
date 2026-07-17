@@ -1,40 +1,44 @@
 using System.Threading;
 using System.Threading.Tasks;
-using Robust.Shared.CPUJob.JobQueues;
 using Robust.Shared.Map;
+using Robust.Shared.CPUJob.JobQueues;
 
 namespace Content.Server._CE.ZCollapse;
 
 /// <summary>
-/// Pure-data multi-source flood fill for one grid's stability. Everything it needs is captured as a
-/// plain-data snapshot on the main thread before the job is queued (see
-/// <see cref="CEZCollapseSystem"/>) — <see cref="Process"/> never touches <c>IEntityManager</c> or
-/// any system, so it's safe to suspend and resume across many ticks even while the live world keeps
-/// changing underneath it. A grid re-dirtied mid-job is simply re-queued for another pass once this
-/// one's (slightly stale) result has been applied — see <see cref="CEZCollapseSystem"/> for that.
+/// Pure-data multi-source flood fill across one whole Z-column — every grid bridged to every other
+/// via a chain of <see cref="CEGridStabilitySupportComponent"/>s, computed together in a single pass
+/// rather than grid-by-grid. This matters for correctness, not just convenience: if each grid were
+/// computed separately and capped its Support seeds against a neighbor grid's *previously stored*
+/// result, two Supports facing each other across a boundary can reach a stable mutual fixed point
+/// (grid A reads B's old value, B reads A's new value, neither ever decreasing) and hold a whole
+/// section aloft with zero Cores anywhere — the exact "stability from nothing" bug the old
+/// incremental algorithm also had to specifically guard against. Doing the whole column as one
+/// unified BFS makes that structurally impossible instead: a node can only ever get a value by being
+/// reachable, within this one pass, from an actual Core seed — nothing to reach back to means nothing
+/// ever enters the queue for it, full stop.
+///
+/// Everything this needs is captured as a plain-data snapshot on the main thread before the job is
+/// queued (see <see cref="CEZCollapseSystem"/>) — <see cref="Process"/> never touches
+/// <c>IEntityManager</c> or any system, so it's safe to suspend and resume across many ticks even
+/// while the live world keeps changing underneath it.
 /// </summary>
-public sealed class StabilityJob : Job<Dictionary<Vector2i, int>>
+public sealed class StabilityJob : Job<Dictionary<(EntityUid Grid, Vector2i Tile), int>>
 {
-    /// <summary>Tiles that physically exist on this grid right now. Flood fill never crosses into a tile absent here.</summary>
-    private readonly HashSet<Vector2i> _liveTiles;
+    /// <summary>Every (grid, tile) that physically exists right now, across every grid in the column.</summary>
+    private readonly HashSet<(EntityUid Grid, Vector2i Tile)> _liveNodes;
 
-    /// <summary>Exposed so the completion handler can reap tiles that ended up with no stability without re-enumerating the grid.</summary>
-    public IReadOnlySet<Vector2i> LiveTiles => _liveTiles;
+    public IReadOnlySet<(EntityUid Grid, Vector2i Tile)> LiveNodes => _liveNodes;
 
-    /// <summary>(tile, LevitationForce) for every Core currently anchored on this grid.</summary>
-    private readonly List<(Vector2i Tile, int Value)> _coreSeeds;
+    /// <summary>(grid, tile, LevitationForce) for every Core anchored anywhere in the column.</summary>
+    private readonly List<(EntityUid Grid, Vector2i Tile, int Value)> _coreSeeds;
 
-    /// <summary>(tile, SupportStrength) for every Support anchored on this grid — bridges down from the level above.</summary>
-    private readonly List<(Vector2i Tile, int Strength)> _ownSupports;
-
-    /// <summary>(tile, SupportStrength) for every Support anchored on the grid directly below this one — bridges up into this grid.</summary>
-    private readonly List<(Vector2i Tile, int Strength)> _belowSupports;
-
-    /// <summary>Snapshot of the Z-level above's last computed stability, used to cap <see cref="_ownSupports"/>.</summary>
-    private readonly Dictionary<Vector2i, int> _aboveStability;
-
-    /// <summary>Snapshot of the Z-level below's last computed stability, used to cap <see cref="_belowSupports"/>.</summary>
-    private readonly Dictionary<Vector2i, int> _belowStability;
+    /// <summary>
+    /// Symmetric cross-grid edges from Supports: node -&gt; list of (partner node one Z-level away,
+    /// that Support's strength cap). Built once up front so the BFS below can treat a Support bridge
+    /// exactly like a same-grid neighbor edge, just capping instead of decrementing.
+    /// </summary>
+    private readonly Dictionary<(EntityUid, Vector2i), List<((EntityUid Grid, Vector2i Tile) Node, int Strength)>> _bridges;
 
     private static readonly Vector2i[] CardinalOffsets =
     {
@@ -43,70 +47,47 @@ public sealed class StabilityJob : Job<Dictionary<Vector2i, int>>
 
     public StabilityJob(
         double maxTime,
-        HashSet<Vector2i> liveTiles,
-        List<(Vector2i Tile, int Value)> coreSeeds,
-        List<(Vector2i Tile, int Strength)> ownSupports,
-        List<(Vector2i Tile, int Strength)> belowSupports,
-        Dictionary<Vector2i, int> aboveStability,
-        Dictionary<Vector2i, int> belowStability,
+        HashSet<(EntityUid Grid, Vector2i Tile)> liveNodes,
+        List<(EntityUid Grid, Vector2i Tile, int Value)> coreSeeds,
+        Dictionary<(EntityUid, Vector2i), List<((EntityUid Grid, Vector2i Tile) Node, int Strength)>> bridges,
         CancellationToken cancellation = default) : base(maxTime, cancellation)
     {
-        _liveTiles = liveTiles;
+        _liveNodes = liveNodes;
         _coreSeeds = coreSeeds;
-        _ownSupports = ownSupports;
-        _belowSupports = belowSupports;
-        _aboveStability = aboveStability;
-        _belowStability = belowStability;
+        _bridges = bridges;
     }
 
-    protected override async Task<Dictionary<Vector2i, int>?> Process()
+    protected override async Task<Dictionary<(EntityUid Grid, Vector2i Tile), int>?> Process()
     {
-        var stability = new Dictionary<Vector2i, int>();
-        var queue = new Queue<(Vector2i Tile, int Value)>();
+        var stability = new Dictionary<(EntityUid, Vector2i), int>();
+        var queue = new Queue<((EntityUid Grid, Vector2i Tile) Node, int Value)>();
 
-        foreach (var (tile, value) in _coreSeeds)
+        foreach (var (grid, tile, value) in _coreSeeds)
         {
-            Seed(stability, queue, tile, value);
-        }
-
-        foreach (var (tile, strength) in _ownSupports)
-        {
-            var donor = _aboveStability.GetValueOrDefault(tile, 0);
-            if (donor > 0)
-                Seed(stability, queue, tile, Math.Min(strength, donor));
-        }
-
-        foreach (var (tile, strength) in _belowSupports)
-        {
-            var donor = _belowStability.GetValueOrDefault(tile, 0);
-            if (donor > 0)
-                Seed(stability, queue, tile, Math.Min(strength, donor));
+            Seed(stability, queue, (grid, tile), value);
         }
 
         var visited = 0;
         while (queue.TryDequeue(out var entry))
         {
-            var (tile, value) = entry;
+            var (node, value) = entry;
 
             foreach (var offset in CardinalOffsets)
             {
-                var neighbor = tile + offset;
-                if (!_liveTiles.Contains(neighbor))
-                    continue;
+                var neighbor = (node.Grid, node.Tile + offset);
+                Seed(stability, queue, neighbor, value - 1);
+            }
 
-                var next = value - 1;
-                if (next <= 0)
-                    continue;
-
-                if (next > stability.GetValueOrDefault(neighbor, 0))
+            if (_bridges.TryGetValue(node, out var partners))
+            {
+                foreach (var (partner, strength) in partners)
                 {
-                    stability[neighbor] = next;
-                    queue.Enqueue((neighbor, next));
+                    Seed(stability, queue, partner, Math.Min(value, strength));
                 }
             }
 
             // Only check the clock every so often — StopWatch reads are cheap but not free, and this
-            // keeps the common case (a small/moderate grid) from paying for a check it'll never need.
+            // keeps the common case (a small/moderate column) from paying for a check it'll never need.
             if (++visited % 256 == 0)
                 await SuspendIfOutOfTime();
         }
@@ -114,15 +95,15 @@ public sealed class StabilityJob : Job<Dictionary<Vector2i, int>>
         return stability;
     }
 
-    private void Seed(Dictionary<Vector2i, int> stability, Queue<(Vector2i, int)> queue, Vector2i tile, int value)
+    private void Seed(Dictionary<(EntityUid, Vector2i), int> stability, Queue<((EntityUid, Vector2i), int)> queue, (EntityUid Grid, Vector2i Tile) node, int value)
     {
-        if (value <= 0 || !_liveTiles.Contains(tile))
+        if (value <= 0 || !_liveNodes.Contains(node))
             return;
 
-        if (value > stability.GetValueOrDefault(tile, 0))
+        if (value > stability.GetValueOrDefault(node, 0))
         {
-            stability[tile] = value;
-            queue.Enqueue((tile, value));
+            stability[node] = value;
+            queue.Enqueue((node, value));
         }
     }
 }

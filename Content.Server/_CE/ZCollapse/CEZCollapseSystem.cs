@@ -1,14 +1,17 @@
 using System.Threading;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
+using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Destructible;
+using Content.Shared.FixedPoint;
 using Content.Shared.GameTicking;
 using Content.Shared.Maps;
 using Robust.Shared.CPUJob.JobQueues;
 using Robust.Shared.CPUJob.JobQueues.Queues;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
-using Robust.Shared.Timing;
 
 namespace Content.Server._CE.ZCollapse;
 
@@ -18,13 +21,13 @@ namespace Content.Server._CE.ZCollapse;
 /// tile losing 1 per hop, and <see cref="CEGridStabilitySupportComponent"/> bridges that flood
 /// between a grid and the Z-level directly above it. Any tile whose stability reaches 0 is deleted.
 ///
-/// There is exactly one algorithm: a grid marked dirty gets a full, from-scratch multi-source flood
-/// fill (<see cref="StabilityJob"/>) derived directly from whichever Cores/Supports are currently
-/// anchored — never an incremental patch of cached seed values. This is deliberate: there is nothing
-/// to desync, so a Core disappearing can never leave a stale contribution behind. The flood fill
-/// itself runs as a time-sliced <see cref="Robust.Shared.CPUJob.JobQueues.Job{T}"/> (same pattern as
-/// dungeon generation) so a large flood or a busy tick never blocks the server — see
-/// <see cref="StabilityJob"/>.
+/// There is exactly one algorithm: whenever anything relevant changes on a grid, its whole Z-column
+/// (every grid chained to it via Supports, see <see cref="GetColumn"/>) gets a full, from-scratch
+/// multi-source flood fill in one atomic <see cref="StabilityJob"/> — never an incremental patch of
+/// cached seed values, and never a per-grid computation that treats a neighbor's stored result as
+/// ground truth (see <see cref="StabilityJob"/> for why the latter is actually unsound, not just
+/// inelegant). The flood fill runs time-sliced (same pattern as dungeon generation) so a large column
+/// or a busy tick never blocks the server.
 ///
 /// Only grids carrying <see cref="CEGridStabilityComponent"/> participate (opt-in, see that
 /// component's docs).
@@ -35,7 +38,7 @@ public sealed partial class CEZCollapseSystem : EntitySystem
     [Dependency] private CESharedZLevelsSystem _zLevel = default!;
     [Dependency] private ITileDefinitionManager _tileDefMan = default!;
     [Dependency] private SharedDestructibleSystem _destructible = default!;
-    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
 
     [Dependency] private EntityQuery<CEGridStabilityComponent> _stabilityQuery = default!;
     [Dependency] private EntityQuery<CEGridStabilityCoreComponent> _coreQuery = default!;
@@ -43,16 +46,30 @@ public sealed partial class CEZCollapseSystem : EntitySystem
     [Dependency] private EntityQuery<MapGridComponent> _gridQuery = default!;
     [Dependency] private EntityQuery<CEZMapComponent> _zMapQuery = default!;
     [Dependency] private EntityQuery<TransformComponent> _xformQuery = default!;
+    [Dependency] private EntityQuery<DamageableComponent> _damageableQuery = default!;
 
     private const double ZCollapseJobTime = 0.005;
 
-    /// <summary>How long a grid's tiles are protected from reaping after MapInit/grid split. See <see cref="CEGridStabilityComponent.ProtectedUntil"/>.</summary>
-    private static readonly TimeSpan StartupProtection = TimeSpan.FromSeconds(5);
+    /// <summary>
+    /// Overwhelming, resistance-ignoring damage used to force-destroy something structurally rather
+    /// than silently deleting it — this is what makes a collapsing wall actually run its own
+    /// Destructible thresholds (rubble, material refund, break sound) the same way an explosion or a
+    /// shuttle impact does, instead of just vanishing. See <see cref="DestroyAnchoredEntities"/>.
+    /// </summary>
+    private static readonly DamageSpecifier CollapseDamage = new()
+    {
+        DamageDict = { ["Blunt"] = FixedPoint2.New(1000), ["Structural"] = FixedPoint2.New(1000) },
+    };
 
     private readonly JobQueue _jobQueue = new(ZCollapseJobTime);
-    private readonly Dictionary<EntityUid, (StabilityJob Job, CancellationTokenSource Cts)> _inFlightJobs = new();
 
-    /// <summary>Grids whose Cores/Supports index and/or stability need recomputing next Update().</summary>
+    /// <summary>In-flight column jobs: the job itself, its cancellation source, and every grid it covers.</summary>
+    private readonly List<(StabilityJob Job, CancellationTokenSource Cts, List<EntityUid> Grids)> _inFlightJobs = new();
+
+    /// <summary>Every grid currently covered by some in-flight job — checked before starting a new one for the same column.</summary>
+    private readonly HashSet<EntityUid> _busyGrids = new();
+
+    /// <summary>Grids whose column needs recomputing next Update().</summary>
     private HashSet<EntityUid> _dirtyGrids = new();
 
     /// <summary>
@@ -61,17 +78,11 @@ public sealed partial class CEZCollapseSystem : EntitySystem
     /// grid split (reparented entities may not have raised one either). Deferred to next Update()
     /// rather than handled inline — for MapInit specifically, the grid's own MapInitEvent fires
     /// before its child entities get theirs (breadth-first init order), so scanning immediately would
-    /// see none of them; by next tick, init has fully finished.
+    /// see none of them; by next tick, init has fully finished. This runs before jobs are started each
+    /// Update(), so by the time a column is gathered every grid in it already has a correct index —
+    /// there's no multi-tick staleness window to wait out.
     /// </summary>
     private HashSet<EntityUid> _pendingIndexScan = new();
-
-    /// <summary>
-    /// Grids currently within their <see cref="CEGridStabilityComponent.ProtectedUntil"/> window.
-    /// Checked once a tick so each one gets exactly one forced final recompute — and therefore one
-    /// real reap pass with fully-settled data — right as its protection lapses, even if nothing else
-    /// happened to mark it dirty again by then. See <see cref="ProcessExpiredProtections"/>.
-    /// </summary>
-    private readonly HashSet<EntityUid> _protectedGrids = new();
 
     public override void Initialize()
     {
@@ -88,7 +99,6 @@ public sealed partial class CEZCollapseSystem : EntitySystem
         base.Update(frameTime);
 
         ProcessPendingIndexScans();
-        ProcessExpiredProtections();
         StartPendingJobs();
         _jobQueue.Process();
         CollectFinishedJobs();
@@ -97,55 +107,19 @@ public sealed partial class CEZCollapseSystem : EntitySystem
 
     private void OnRoundCleanup(RoundRestartCleanupEvent ev)
     {
-        foreach (var (_, cts) in _inFlightJobs.Values)
+        foreach (var (_, cts, _) in _inFlightJobs)
         {
             cts.Cancel();
             cts.Dispose();
         }
 
         _inFlightJobs.Clear();
+        _busyGrids.Clear();
         _dirtyGrids.Clear();
         _pendingIndexScan.Clear();
-        _protectedGrids.Clear();
     }
 
-    /// <summary>
-    /// Marks a grid protected from reaping until <see cref="StartupProtection"/> from now, and queues
-    /// it for the one guaranteed final recompute that lifts that protection — see
-    /// <see cref="_protectedGrids"/>.
-    /// </summary>
-    private void ProtectGrid(EntityUid gridUid, CEGridStabilityComponent comp)
-    {
-        comp.ProtectedUntil = _timing.CurTime + StartupProtection;
-        _protectedGrids.Add(gridUid);
-    }
-
-    private void ProcessExpiredProtections()
-    {
-        if (_protectedGrids.Count == 0)
-            return;
-
-        List<EntityUid>? expired = null;
-        foreach (var gridUid in _protectedGrids)
-        {
-            if (!_stabilityQuery.TryGetComponent(gridUid, out var comp) || comp.ProtectedUntil > _timing.CurTime)
-                continue;
-
-            expired ??= new List<EntityUid>();
-            expired.Add(gridUid);
-        }
-
-        if (expired == null)
-            return;
-
-        foreach (var gridUid in expired)
-        {
-            _protectedGrids.Remove(gridUid);
-            MarkDirty(gridUid);
-        }
-    }
-
-    /// <summary>Marks a grid for a full stability recompute next Update(). No-op for non-participating grids.</summary>
+    /// <summary>Marks a grid's column for a full stability recompute next Update(). No-op for non-participating grids.</summary>
     private void MarkDirty(EntityUid gridUid)
     {
         if (_stabilityQuery.HasComponent(gridUid))
@@ -153,26 +127,13 @@ public sealed partial class CEZCollapseSystem : EntitySystem
     }
 
     /// <summary>
-    /// Admin escape hatch (<c>znetwork-collapserecalc</c>): forces a grid's stability to recompute.
+    /// Admin escape hatch (<c>znetwork-collapserecalc</c>): forces a grid's column to recompute.
     /// Identical to what any normal anchor/tile-change event does — there's no separate algorithm
     /// left to "reset" a broken cache with, because there's no cache.
     /// </summary>
     public void ForceRecalculateGrid(EntityUid gridUid)
     {
         MarkDirty(gridUid);
-    }
-
-    /// <summary>Marks the Z-level grids directly above and below this one dirty, if they participate.</summary>
-    private void MarkZNeighborsDirty(EntityUid gridUid)
-    {
-        if (!_zMapQuery.TryGetComponent(gridUid, out var zMap))
-            return;
-
-        if (_zLevel.TryMapUp((gridUid, zMap), out var above))
-            MarkDirty(above.Owner);
-
-        if (_zLevel.TryMapDown((gridUid, zMap), out var below))
-            MarkDirty(below.Owner);
     }
 
     private void ProcessPendingIndexScans()
@@ -218,6 +179,40 @@ public sealed partial class CEZCollapseSystem : EntitySystem
         }
     }
 
+    /// <summary>
+    /// Walks up and down from a grid via Z-level links, collecting every Z-adjacent grid that also
+    /// carries <see cref="CEGridStabilityComponent"/> — the chain stops the moment a neighbor doesn't
+    /// exist or doesn't participate. Since each grid has at most one map above and below, this is
+    /// always a simple ordered chain, never a branching graph.
+    /// </summary>
+    private List<EntityUid> GetColumn(EntityUid startGrid)
+    {
+        var above = new List<EntityUid>();
+        var current = startGrid;
+        while (_zMapQuery.TryGetComponent(current, out var zMap) &&
+               _zLevel.TryMapUp((current, zMap), out var up) &&
+               _stabilityQuery.HasComponent(up.Owner))
+        {
+            above.Add(up.Owner);
+            current = up.Owner;
+        }
+
+        var below = new List<EntityUid>();
+        current = startGrid;
+        while (_zMapQuery.TryGetComponent(current, out var zMap) &&
+               _zLevel.TryMapDown((current, zMap), out var down) &&
+               _stabilityQuery.HasComponent(down.Owner))
+        {
+            below.Add(down.Owner);
+            current = down.Owner;
+        }
+
+        above.Reverse();
+        above.Add(startGrid);
+        above.AddRange(below);
+        return above;
+    }
+
     private void StartPendingJobs()
     {
         if (_dirtyGrids.Count == 0)
@@ -226,79 +221,105 @@ public sealed partial class CEZCollapseSystem : EntitySystem
         var toStart = new List<EntityUid>(_dirtyGrids);
         foreach (var gridUid in toStart)
         {
-            // Already recomputing — leave the dirty flag set, it'll be picked up once that job's
-            // result has been applied and this loop runs again next Update().
-            if (_inFlightJobs.ContainsKey(gridUid))
+            // Already consumed by an earlier column in this same pass, or busy in an in-flight job —
+            // leave it dirty and pick it up again once that job's result has been applied.
+            if (!_dirtyGrids.Contains(gridUid) || _busyGrids.Contains(gridUid))
                 continue;
 
-            _dirtyGrids.Remove(gridUid);
-            StartJob(gridUid);
+            var column = GetColumn(gridUid);
+
+            var columnBusy = false;
+            foreach (var g in column)
+            {
+                if (_busyGrids.Contains(g))
+                {
+                    columnBusy = true;
+                    break;
+                }
+            }
+
+            if (columnBusy)
+                continue;
+
+            foreach (var g in column)
+                _dirtyGrids.Remove(g);
+
+            StartJob(column);
         }
     }
 
     /// <summary>
-    /// Snapshots this grid's current ground truth (its own Cores/Supports, plus a read-only copy of
-    /// each Z-neighbor's last computed stability) into plain data and queues a <see cref="StabilityJob"/>.
-    /// The snapshot itself is O(entities on this one grid) via <see cref="CEGridStabilityComponent.Cores"/>/
-    /// <see cref="CEGridStabilityComponent.Supports"/> — never a world-wide scan.
+    /// Snapshots an entire column's ground truth (every participating grid's Cores/Supports and live
+    /// tiles) into plain data and queues one <see cref="StabilityJob"/> covering all of it. The
+    /// snapshot is O(entities in this column) via each grid's <see cref="CEGridStabilityComponent.Cores"/>/
+    /// <see cref="CEGridStabilityComponent.Supports"/> index — never a world-wide scan.
     /// </summary>
-    private void StartJob(EntityUid gridUid)
+    private void StartJob(List<EntityUid> column)
     {
-        if (!_stabilityQuery.TryGetComponent(gridUid, out var comp) || !_gridQuery.TryGetComponent(gridUid, out var grid))
-            return;
-
-        var liveTiles = new HashSet<Vector2i>();
-        var tileEnumerator = _map.GetAllTilesEnumerator(gridUid, grid);
-        while (tileEnumerator.MoveNext(out var tileRef))
-            liveTiles.Add(tileRef.Value.GridIndices);
-
-        var coreSeeds = new List<(Vector2i, int)>();
-        foreach (var coreUid in comp.Cores)
+        var aboveOf = new Dictionary<EntityUid, EntityUid>();
+        foreach (var gridUid in column)
         {
-            if (!_coreQuery.TryGetComponent(coreUid, out var core) || !_xformQuery.TryGetComponent(coreUid, out var xform))
-                continue;
-
-            coreSeeds.Add((_map.TileIndicesFor(gridUid, grid, xform.Coordinates), core.LevitationForce));
+            if (_zMapQuery.TryGetComponent(gridUid, out var zMap) && _zLevel.TryMapUp((gridUid, zMap), out var above))
+                aboveOf[gridUid] = above.Owner;
         }
 
-        var ownSupports = new List<(Vector2i, int)>();
-        foreach (var supportUid in comp.Supports)
+        var liveNodes = new HashSet<(EntityUid, Vector2i)>();
+        var coreSeeds = new List<(EntityUid, Vector2i, int)>();
+        var bridges = new Dictionary<(EntityUid, Vector2i), List<((EntityUid Grid, Vector2i Tile) Node, int Strength)>>();
+
+        foreach (var gridUid in column)
         {
-            if (!_supportQuery.TryGetComponent(supportUid, out var support) || !_xformQuery.TryGetComponent(supportUid, out var xform))
+            if (!_stabilityQuery.TryGetComponent(gridUid, out var comp) || !_gridQuery.TryGetComponent(gridUid, out var grid))
                 continue;
 
-            ownSupports.Add((_map.TileIndicesFor(gridUid, grid, xform.Coordinates), support.SupportStrength));
-        }
+            var tileEnumerator = _map.GetAllTilesEnumerator(gridUid, grid);
+            while (tileEnumerator.MoveNext(out var tileRef))
+                liveNodes.Add((gridUid, tileRef.Value.GridIndices));
 
-        var aboveStability = new Dictionary<Vector2i, int>();
-        var belowStability = new Dictionary<Vector2i, int>();
-        var belowSupports = new List<(Vector2i, int)>();
-
-        if (_zMapQuery.TryGetComponent(gridUid, out var zMap))
-        {
-            if (_zLevel.TryMapUp((gridUid, zMap), out var above) && _stabilityQuery.TryGetComponent(above.Owner, out var aboveComp))
-                aboveStability = new Dictionary<Vector2i, int>(aboveComp.Stability);
-
-            if (_zLevel.TryMapDown((gridUid, zMap), out var below) &&
-                _stabilityQuery.TryGetComponent(below.Owner, out var belowComp) &&
-                _gridQuery.TryGetComponent(below.Owner, out var belowGrid))
+            foreach (var coreUid in comp.Cores)
             {
-                belowStability = new Dictionary<Vector2i, int>(belowComp.Stability);
+                if (!_coreQuery.TryGetComponent(coreUid, out var core) || !_xformQuery.TryGetComponent(coreUid, out var xform))
+                    continue;
 
-                foreach (var supportUid in belowComp.Supports)
-                {
-                    if (!_supportQuery.TryGetComponent(supportUid, out var support) || !_xformQuery.TryGetComponent(supportUid, out var xform))
-                        continue;
+                coreSeeds.Add((gridUid, _map.TileIndicesFor(gridUid, grid, xform.Coordinates), core.LevitationForce));
+            }
 
-                    belowSupports.Add((_map.TileIndicesFor(below.Owner, belowGrid, xform.Coordinates), support.SupportStrength));
-                }
+            if (!aboveOf.TryGetValue(gridUid, out var aboveGrid))
+                continue; // no participating neighbor above within this column — nothing to bridge from here
+
+            foreach (var supportUid in comp.Supports)
+            {
+                if (!_supportQuery.TryGetComponent(supportUid, out var support) || !_xformQuery.TryGetComponent(supportUid, out var xform))
+                    continue;
+
+                var tile = _map.TileIndicesFor(gridUid, grid, xform.Coordinates);
+                AddBridge(bridges, (gridUid, tile), (aboveGrid, tile), support.SupportStrength);
             }
         }
 
         var cts = new CancellationTokenSource();
-        var job = new StabilityJob(ZCollapseJobTime, liveTiles, coreSeeds, ownSupports, belowSupports, aboveStability, belowStability, cts.Token);
-        _inFlightJobs[gridUid] = (job, cts);
+        var job = new StabilityJob(ZCollapseJobTime, liveNodes, coreSeeds, bridges, cts.Token);
+
+        foreach (var gridUid in column)
+            _busyGrids.Add(gridUid);
+
+        _inFlightJobs.Add((job, cts, column));
         _jobQueue.EnqueueJob(job);
+    }
+
+    private static void AddBridge(
+        Dictionary<(EntityUid, Vector2i), List<((EntityUid Grid, Vector2i Tile) Node, int Strength)>> bridges,
+        (EntityUid, Vector2i) a,
+        (EntityUid, Vector2i) b,
+        int strength)
+    {
+        if (!bridges.TryGetValue(a, out var listA))
+            bridges[a] = listA = new List<((EntityUid, Vector2i), int)>();
+        listA.Add((b, strength));
+
+        if (!bridges.TryGetValue(b, out var listB))
+            bridges[b] = listB = new List<((EntityUid, Vector2i), int)>();
+        listB.Add((a, strength));
     }
 
     private void CollectFinishedJobs()
@@ -306,95 +327,97 @@ public sealed partial class CEZCollapseSystem : EntitySystem
         if (_inFlightJobs.Count == 0)
             return;
 
-        List<EntityUid>? finished = null;
-        foreach (var (gridUid, entry) in _inFlightJobs)
+        List<int>? finishedIndices = null;
+        for (var i = 0; i < _inFlightJobs.Count; i++)
         {
-            if (entry.Job.Status != JobStatus.Finished)
+            if (_inFlightJobs[i].Job.Status != JobStatus.Finished)
                 continue;
 
-            finished ??= new List<EntityUid>();
-            finished.Add(gridUid);
+            finishedIndices ??= new List<int>();
+            finishedIndices.Add(i);
         }
 
-        if (finished == null)
+        if (finishedIndices == null)
             return;
 
-        foreach (var gridUid in finished)
+        // Walk backwards so removing by index doesn't shift the indices still to come.
+        for (var i = finishedIndices.Count - 1; i >= 0; i--)
         {
-            var (job, cts) = _inFlightJobs[gridUid];
-            _inFlightJobs.Remove(gridUid);
+            var idx = finishedIndices[i];
+            var (job, cts, grids) = _inFlightJobs[idx];
+            _inFlightJobs.RemoveAt(idx);
             cts.Dispose();
-            ApplyJobResult(gridUid, job);
+
+            foreach (var g in grids)
+                _busyGrids.Remove(g);
+
+            ApplyJobResult(grids, job);
         }
     }
 
     /// <summary>
-    /// Applies a finished job's result: reaps tiles that lost all stability, replaces the grid's
-    /// stored <see cref="CEGridStabilityComponent.Stability"/>, and — only if at least one tile's
-    /// value actually changed — marks the Z-neighbor grids dirty so a bridge cascade continues.
-    /// Gating the cascade on a real diff (rather than unconditionally re-dirtying neighbors) is what
-    /// keeps a converged Z-stack from re-triggering itself forever.
-    ///
-    /// Reaping itself (inside <see cref="ReapDeadTiles"/>) additionally no-ops while the grid is still
-    /// within <see cref="CEGridStabilityComponent.ProtectedUntil"/> — stability is still recorded and
-    /// still cascades normally either way, so a multi-hop bridge chain keeps settling regardless.
+    /// Applies a finished column job's result grid by grid: reaps whatever tile lost all stability
+    /// (destroying whatever's anchored to it first) and replaces each grid's stored
+    /// <see cref="CEGridStabilityComponent.Stability"/>. No cross-grid cascade step is needed here —
+    /// the job already resolved the whole column together, so this grid's neighbors don't need to be
+    /// separately re-dirtied the way a per-grid computation would have required.
     /// </summary>
-    private void ApplyJobResult(EntityUid gridUid, StabilityJob job)
+    private void ApplyJobResult(List<EntityUid> grids, StabilityJob job)
     {
         if (job.Exception != null)
         {
-            Log.Error($"ZCollapse: stability job for {ToPrettyString(gridUid)} faulted: {job.Exception}");
+            Log.Error($"ZCollapse: stability job faulted: {job.Exception}");
             return;
         }
 
-        // The job can take several ticks; the grid or its component may be gone by the time it's done
-        // (deleted, Z-network torn down). That's an expected race, not a bug — just drop the result.
-        if (!_stabilityQuery.TryGetComponent(gridUid, out var comp) || !_gridQuery.TryGetComponent(gridUid, out var grid))
-            return;
+        var result = job.Result ?? new Dictionary<(EntityUid, Vector2i), int>();
 
-        var newStability = job.Result ?? new Dictionary<Vector2i, int>();
-
-        ReapDeadTiles(gridUid, grid, comp, job.LiveTiles, newStability);
-
-        var changed = StabilityDiffers(comp.Stability, newStability);
-
-        comp.Stability.Clear();
-        foreach (var (tile, value) in newStability)
-            comp.Stability[tile] = value;
-
-        _debugDirtyGrids.Add(gridUid);
-
-        if (changed)
-            MarkZNeighborsDirty(gridUid);
-    }
-
-    private static bool StabilityDiffers(Dictionary<Vector2i, int> oldStability, Dictionary<Vector2i, int> newStability)
-    {
-        if (oldStability.Count != newStability.Count)
-            return true;
-
-        foreach (var (tile, value) in oldStability)
+        var stabilityByGrid = new Dictionary<EntityUid, Dictionary<Vector2i, int>>();
+        foreach (var ((nodeGrid, tile), value) in result)
         {
-            if (!newStability.TryGetValue(tile, out var newValue) || newValue != value)
-                return true;
+            if (!stabilityByGrid.TryGetValue(nodeGrid, out var dict))
+                stabilityByGrid[nodeGrid] = dict = new Dictionary<Vector2i, int>();
+
+            dict[tile] = value;
         }
 
-        return false;
+        var liveByGrid = new Dictionary<EntityUid, HashSet<Vector2i>>();
+        foreach (var (nodeGrid, tile) in job.LiveNodes)
+        {
+            if (!liveByGrid.TryGetValue(nodeGrid, out var set))
+                liveByGrid[nodeGrid] = set = new HashSet<Vector2i>();
+
+            set.Add(tile);
+        }
+
+        foreach (var gridUid in grids)
+        {
+            // The job can take several ticks; a grid may be gone by the time it's done (deleted,
+            // Z-network torn down). That's an expected race, not a bug — just skip it.
+            if (!_stabilityQuery.TryGetComponent(gridUid, out var comp) || !_gridQuery.TryGetComponent(gridUid, out var grid))
+                continue;
+
+            var newStability = stabilityByGrid.GetValueOrDefault(gridUid) ?? new Dictionary<Vector2i, int>();
+            var liveTiles = liveByGrid.GetValueOrDefault(gridUid) ?? new HashSet<Vector2i>();
+
+            ReapDeadTiles(gridUid, grid, liveTiles, newStability);
+
+            comp.Stability.Clear();
+            foreach (var (tile, value) in newStability)
+                comp.Stability[tile] = value;
+
+            _debugDirtyGrids.Add(gridUid);
+        }
     }
 
     /// <summary>
     /// Deletes every tile that was live when the job snapshot was taken but has no stability in the
     /// job's result, destroying whatever's anchored to it first. Skips tiles already gone (removed by
-    /// something else while the job was running), indestructible tiles, anything in mapping mode
-    /// (map editors previewing a broken layout shouldn't have tiles vanish under them), and anything
-    /// still within <see cref="CEGridStabilityComponent.ProtectedUntil"/> (fresh-loaded grid still
-    /// settling a cross-Z cascade — see <see cref="ProtectGrid"/>).
+    /// something else while the job was running), indestructible tiles, and anything in mapping mode
+    /// (map editors previewing a broken layout shouldn't have tiles vanish under them).
     /// </summary>
-    private void ReapDeadTiles(EntityUid gridUid, MapGridComponent grid, CEGridStabilityComponent comp, IReadOnlySet<Vector2i> liveTiles, Dictionary<Vector2i, int> newStability)
+    private void ReapDeadTiles(EntityUid gridUid, MapGridComponent grid, IReadOnlySet<Vector2i> liveTiles, Dictionary<Vector2i, int> newStability)
     {
-        if (comp.ProtectedUntil > _timing.CurTime)
-            return;
-
         if (!_map.IsInitialized(Transform(gridUid).MapUid))
             return;
 
@@ -420,7 +443,14 @@ public sealed partial class CEZCollapseSystem : EntitySystem
             _map.SetTiles(gridUid, grid, toDelete);
     }
 
-    /// <summary>Force-destroys everything anchored to a collapsing tile through the normal Destructible pipeline.</summary>
+    /// <summary>
+    /// Force-destroys everything anchored to a collapsing tile. Entities with a
+    /// <see cref="DamageableComponent"/> get dealt overwhelming Structural/Blunt damage instead of
+    /// being deleted outright, so their own Destructible thresholds run normally (rubble, material
+    /// refund, break sound — same pipeline explosions and shuttle impacts use); anything else falls
+    /// back to <see cref="SharedDestructibleSystem.DestroyEntity"/> for whatever cleanup it defines
+    /// off <c>DestructionEventArgs</c> (e.g. spilling a locker's contents).
+    /// </summary>
     private void DestroyAnchoredEntities(EntityUid gridUid, MapGridComponent grid, Vector2i tile)
     {
         var enumerator = _map.GetAnchoredEntitiesEnumerator(gridUid, grid, tile);
@@ -436,7 +466,10 @@ public sealed partial class CEZCollapseSystem : EntitySystem
 
         foreach (var uid in anchored)
         {
-            _destructible.DestroyEntity(uid);
+            if (_damageableQuery.TryGetComponent(uid, out var damageable))
+                _damageable.TryChangeDamage((uid, damageable), CollapseDamage, ignoreResistances: true, ignoreGlobalModifiers: true);
+            else
+                _destructible.DestroyEntity(uid);
         }
     }
 }
