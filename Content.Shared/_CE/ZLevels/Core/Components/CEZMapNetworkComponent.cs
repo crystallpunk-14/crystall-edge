@@ -13,7 +13,6 @@ namespace Content.Shared._CE.ZLevels.Core.Components;
 /// Tracker that tracks all maps added to the zLevel network. Usually, entity in Nullspace,
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(CESharedZLevelsSystem))]
 public sealed partial class CEZMapNetworkComponent : Component
 {
     [ViewVariables, AutoNetworkedField]

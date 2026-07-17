@@ -33,12 +33,14 @@ public sealed partial class CEZCollapseSystem : EntitySystem
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private SharedPhysicsSystem _physics = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private IComponentFactory _compFactory = default!;
 
     [Dependency] private EntityQuery<CEGridStabilityComponent> _stabilityQuery = default!;
     [Dependency] private EntityQuery<CEGridStabilityCoreComponent> _coreQuery = default!;
     [Dependency] private EntityQuery<CEGridStabilitySupportComponent> _supportQuery = default!;
     [Dependency] private EntityQuery<MapGridComponent> _gridQuery = default!;
     [Dependency] private EntityQuery<CEZMapComponent> _zMapQuery = default!;
+    [Dependency] private EntityQuery<CEZMapNetworkComponent> _zNetworkQuery = default!;
     [Dependency] private EntityQuery<TransformComponent> _xformQuery = default!;
     [Dependency] private EntityQuery<DamageableComponent> _damageableQuery = default!;
 
@@ -52,7 +54,11 @@ public sealed partial class CEZCollapseSystem : EntitySystem
     /// </summary>
     private static readonly DamageSpecifier CollapseDamage = new()
     {
-        DamageDict = { ["Blunt"] = FixedPoint2.New(1000), ["Structural"] = FixedPoint2.New(1000) },
+        DamageDict =
+        {
+            ["Blunt"] = FixedPoint2.New(1000),
+            ["Structural"] = FixedPoint2.New(1000)
+        },
     };
 
     private static readonly EntProtoId CollapseDustEffect = "CEDustTileEffect";
@@ -139,13 +145,23 @@ public sealed partial class CEZCollapseSystem : EntitySystem
     }
 
     /// <summary>
-    /// Admin escape hatch (<c>znetwork-collapserecalc</c>): forces a grid's column to recompute.
-    /// Identical to what any normal anchor/tile-change event does — there's no separate algorithm
-    /// left to "reset" a broken cache with, because there's no cache.
+    /// Whether a grid is meant to participate in ZCollapse — either it already does (has
+    /// <see cref="CEGridStabilityComponent"/>), or it hasn't been map-initialized yet but its
+    /// Z-network's <see cref="CEZMapNetworkComponent.Components"/> config says it will once it is
+    /// (e.g. a mapping session loaded via <c>znetwork-gamemap-mapping</c>, where no map ever gets
+    /// map-initialized so that component never gets added). Components can't be added to a
+    /// pre-init entity, so this reads the network's *configured* overrides instead of requiring the
+    /// component to actually exist yet — see <see cref="AddPreviewSnapshots"/>.
     /// </summary>
-    public void ForceRecalculateGrid(EntityUid gridUid)
+    private bool IsZCollapseEligible(EntityUid gridUid)
     {
-        MarkDirty(gridUid);
+        if (_stabilityQuery.HasComponent(gridUid))
+            return true;
+
+        if (!_zMapQuery.TryGetComponent(gridUid, out var zMap) || !_zNetworkQuery.TryGetComponent(zMap.NetworkUid, out var network))
+            return false;
+
+        return network.Components.TryGetComponent<CEGridStabilityComponent>(_compFactory, out _);
     }
 
     private void ProcessPendingIndexScans()
@@ -192,18 +208,21 @@ public sealed partial class CEZCollapseSystem : EntitySystem
     }
 
     /// <summary>
-    /// Walks up and down from a grid via Z-level links, collecting every Z-adjacent grid that also
-    /// carries <see cref="CEGridStabilityComponent"/> — the chain stops the moment a neighbor doesn't
-    /// exist or doesn't participate. Since each grid has at most one map above and below, this is
-    /// always a simple ordered chain, never a branching graph.
+    /// Walks up and down from a grid via Z-level links, collecting every Z-adjacent grid for which
+    /// <paramref name="participates"/> holds — the chain stops the moment a neighbor doesn't exist or
+    /// doesn't participate. Since each grid has at most one map above and below, this is always a
+    /// simple ordered chain, never a branching graph. The real recompute pipeline calls this with
+    /// "has <see cref="CEGridStabilityComponent"/>"; the mapping-preview path (<see cref="AddPreviewSnapshots"/>)
+    /// calls it with <see cref="IsZCollapseEligible"/> instead, since preview grids don't have that
+    /// component yet — same walk, different notion of "participates".
     /// </summary>
-    private List<EntityUid> GetColumn(EntityUid startGrid)
+    private List<EntityUid> GetColumn(EntityUid startGrid, Func<EntityUid, bool> participates)
     {
         var above = new List<EntityUid>();
         var current = startGrid;
         while (_zMapQuery.TryGetComponent(current, out var zMap) &&
                _zLevel.TryMapUp((current, zMap), out var up) &&
-               _stabilityQuery.HasComponent(up.Owner))
+               participates(up.Owner))
         {
             above.Add(up.Owner);
             current = up.Owner;
@@ -213,7 +232,7 @@ public sealed partial class CEZCollapseSystem : EntitySystem
         current = startGrid;
         while (_zMapQuery.TryGetComponent(current, out var zMap) &&
                _zLevel.TryMapDown((current, zMap), out var down) &&
-               _stabilityQuery.HasComponent(down.Owner))
+               participates(down.Owner))
         {
             below.Add(down.Owner);
             current = down.Owner;
@@ -238,7 +257,7 @@ public sealed partial class CEZCollapseSystem : EntitySystem
             if (!_dirtyGrids.Contains(gridUid) || _busyGrids.Contains(gridUid))
                 continue;
 
-            var column = GetColumn(gridUid);
+            var column = GetColumn(gridUid, _stabilityQuery.HasComponent);
 
             var columnBusy = false;
             foreach (var g in column)

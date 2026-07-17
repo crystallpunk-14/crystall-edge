@@ -1,8 +1,9 @@
 - type: entity
-  id: CEGridStabilityCoreEntity
-  name: levitation core
-  description: Anchor this to the ground and it will keep the surrounding structure aloft.
+  id: CEGridStabilityCore
+  name: flying island core
+  description: "The energy of this air crystal is capable of keeping a huge island suspended in the air. Cherish it as the apple of your eye: the lives of all its inhabitants depend on its integrity."
   categories: [ ForkFiltered ]
+  suffix: 50 range
   parent: BaseStructure
   components:
   - type: Clickable
@@ -10,9 +11,41 @@
   - type: Transform
     anchored: true
   - type: Sprite
-    sprite: Structures/Machines/gravity_generator_core.rsi
-    state: idle
     drawdepth: Mobs
+    noRot: true
+    offset: 0,0.8
+    sprite: _CE/Structures/levitation_island_core.rsi
+    layers:
+    - state: artificial
+      shader: unshaded
+    - state: frame
+  - type: SunShadowCast
+    points:
+    - "-0.3,-0.3"
+    - "0.3,-0.3"
+    - "0.3,0.3"
+    - "-0.3,0.3"
+  - type: PointLight
+    enabled: true
+    color: "#8ebab9"
+    energy: 1
+    radius: 5
+    netsync: false
+  - type: LightBehaviour
+    behaviours:
+      - !type:PulseBehaviour
+        interpolate: Cubic
+        maxDuration: 5
+        startValue: 0.1
+        endValue: 2.0
+        property: Energy
+        isLooped: true
+        enabled: true
+  - type: AmbientSound
+    volume: 5
+    range: 10
+    sound:
+      path: /Audio/_CE/Ambience/Loops/magic_pulse.ogg
   - type: Fixtures
     fixtures:
       fix1:
@@ -26,3 +59,19 @@
         - MachineLayer
   - type: CEGridStabilityCore
     levitationForce: 50
+
+- type: entity
+  parent: CEGridStabilityCore
+  id: CEGridStabilityCoreNatural
+  suffix: 25 range
+  name: natural levitation core
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    offset: 0,0.8
+    sprite: _CE/Structures/levitation_island_core.rsi
+    layers:
+    - state: natural
+      shader: unshaded
+  - type: CEGridStabilityCore
+    levitationForce: 25

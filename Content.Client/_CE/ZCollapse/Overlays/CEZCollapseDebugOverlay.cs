@@ -21,6 +21,14 @@ public sealed partial class CEZCollapseDebugOverlay : Overlay
     /// <summary>Stability value that renders fully white — fixed so colors stay comparable across grids/frames.</summary>
     private const int WhiteCap = 20;
 
+    /// <summary>
+    /// Where stability=1 sits on the red-to-white gradient. A tile at 0 is about to collapse; a tile
+    /// at 1 isn't, even though numerically adjacent — so 0 alone renders pure red, and 1 already jumps
+    /// most of the way to white, making that boundary the one that visually pops instead of a smooth
+    /// gradient that reads 0 and 1 as nearly the same color.
+    /// </summary>
+    private const float AliveFloorT = 0.6f;
+
     [Dependency] private IEntityManager _entityManager = default!;
     [Dependency] private IResourceCache _cache = default!;
 
@@ -73,7 +81,9 @@ public sealed partial class CEZCollapseDebugOverlay : Overlay
 
             foreach (var (tile, stability) in tiles)
             {
-                var t = Math.Clamp((stability - 1f) / (WhiteCap - 1f), 0f, 1f);
+                var t = stability <= 0
+                    ? 0f
+                    : AliveFloorT + (1f - AliveFloorT) * Math.Clamp((stability - 1f) / (WhiteCap - 1f), 0f, 1f);
                 var color = Color.InterpolateBetween(Color.Red, Color.White, t).WithAlpha(0.35f);
                 handle.DrawRect(Box2.FromDimensions(new Vector2(tile.X, tile.Y), new Vector2(1, 1)), color);
             }
