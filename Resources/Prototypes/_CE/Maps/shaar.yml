@@ -56,3 +56,4 @@
             - type: SunShadow
             - type: MapLight
               ambientLightColor: "#75e3ff"
+            - type: CEGridStability

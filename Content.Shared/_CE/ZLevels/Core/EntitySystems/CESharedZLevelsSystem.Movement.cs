@@ -60,6 +60,7 @@ public abstract partial class CESharedZLevelsSystem
                     continue;
 
                 RequestCacheMovement((uid, zComp));
+                WakeBody((uid, zComp));
             }
         }
     }

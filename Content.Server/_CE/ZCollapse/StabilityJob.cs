@@ -26,7 +26,7 @@ public sealed class StabilityJob(
     double maxTime,
     HashSet<(EntityUid Grid, Vector2i Tile)> liveNodes,
     List<(EntityUid Grid, Vector2i Tile, int Value)> coreSeeds,
-    Dictionary<(EntityUid, Vector2i), List<((EntityUid Grid, Vector2i Tile) Node, int Strength)>> bridges,
+    Dictionary<(EntityUid, Vector2i), List<((EntityUid Grid, Vector2i Tile) Node, int Strength, int Loss)>> bridges,
     CancellationToken cancellation = default)
     : Job<Dictionary<(EntityUid Grid, Vector2i Tile), int>>(maxTime, cancellation)
 {
@@ -40,10 +40,11 @@ public sealed class StabilityJob(
 
     /// <summary>
     /// Symmetric cross-grid edges from Supports: node -&gt; list of (partner node one Z-level away,
-    /// that Support's strength cap). Built once up front so the BFS below can treat a Support bridge
-    /// exactly like a same-grid neighbor edge, just capping instead of decrementing.
+    /// that Support's strength cap, that Support's transfer loss). Built once up front so the BFS
+    /// below can treat a Support bridge exactly like a same-grid neighbor edge, just capping-then-
+    /// subtracting instead of only decrementing.
     /// </summary>
-    private readonly Dictionary<(EntityUid, Vector2i), List<((EntityUid Grid, Vector2i Tile) Node, int Strength)>> _bridges = bridges;
+    private readonly Dictionary<(EntityUid, Vector2i), List<((EntityUid Grid, Vector2i Tile) Node, int Strength, int Loss)>> _bridges = bridges;
 
     private static readonly Vector2i[] CardinalOffsets =
     {
@@ -73,9 +74,13 @@ public sealed class StabilityJob(
 
             if (_bridges.TryGetValue(node, out var partners))
             {
-                foreach (var (partner, strength) in partners)
+                foreach (var (partner, strength, loss) in partners)
                 {
-                    Seed(stability, queue, partner, Math.Min(value, strength));
+                    // Loss comes off the donor's own value first, then the result is capped by the
+                    // Support's strength — so a Support standing on far more than its own strength
+                    // still conducts its full strength across, unreduced by the loss; the loss only
+                    // bites when it's the binding constraint (donor value close to or below strength).
+                    Seed(stability, queue, partner, Math.Min(value - loss, strength));
                 }
             }
 

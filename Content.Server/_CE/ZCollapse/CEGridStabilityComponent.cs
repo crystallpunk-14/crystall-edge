@@ -31,4 +31,13 @@ public sealed partial class CEGridStabilityComponent : Component
     /// <summary>Currently anchored <see cref="CEGridStabilitySupportComponent"/> entities on this grid.</summary>
     [ViewVariables]
     public readonly HashSet<EntityUid> Supports = new();
+
+    /// <summary>
+    /// Tiles on this grid found unsupported on some past recompute, waiting out their random collapse
+    /// delay before <see cref="CEZCollapseSystem.CollapseTile"/> steps them down a turf layer. A tile
+    /// that regains stability before its time is simply dropped from here — there's no other cached
+    /// state to unwind, so cancelling a collapse is exactly as simple as scheduling one.
+    /// </summary>
+    [ViewVariables]
+    public readonly Dictionary<Vector2i, TimeSpan> PendingCollapses = new();
 }

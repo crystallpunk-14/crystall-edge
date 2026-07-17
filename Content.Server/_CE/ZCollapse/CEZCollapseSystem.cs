@@ -8,10 +8,17 @@ using Content.Shared.Destructible;
 using Content.Shared.FixedPoint;
 using Content.Shared.GameTicking;
 using Content.Shared.Maps;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.CPUJob.JobQueues;
 using Robust.Shared.CPUJob.JobQueues.Queues;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Physics.Components;
+using Robust.Shared.Physics.Systems;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
+using Robust.Shared.Timing;
 
 namespace Content.Server._CE.ZCollapse;
 
@@ -22,6 +29,10 @@ public sealed partial class CEZCollapseSystem : EntitySystem
     [Dependency] private ITileDefinitionManager _tileDefMan = default!;
     [Dependency] private SharedDestructibleSystem _destructible = default!;
     [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
 
     [Dependency] private EntityQuery<CEGridStabilityComponent> _stabilityQuery = default!;
     [Dependency] private EntityQuery<CEGridStabilityCoreComponent> _coreQuery = default!;
@@ -43,6 +54,26 @@ public sealed partial class CEZCollapseSystem : EntitySystem
     {
         DamageDict = { ["Blunt"] = FixedPoint2.New(1000), ["Structural"] = FixedPoint2.New(1000) },
     };
+
+    private static readonly EntProtoId CollapseDustEffect = "CEDustTileEffect";
+
+    /// <summary>Played once when a tile starts crumbling and again when it actually collapses — see <see cref="ScheduleCollapsingTiles"/>/<see cref="CollapseTile"/>.</summary>
+    private static readonly SoundSpecifier CollapseRumble = new SoundPathSpecifier("/Audio/Magic/rumble.ogg");
+
+    private const float CollapseDelayMinSeconds = 3f;
+    private const float CollapseDelayMaxSeconds = 10f;
+
+    /// <summary>
+    /// <see cref="CEZPhysicsComponent.LocalPosition"/> given to debris dropped onto the level below —
+    /// near the ceiling (1 = next level up) rather than the floor (0), so it reads as having just
+    /// fallen through the new hole above and lets the existing Z-physics gravity/fall handling carry
+    /// it down from there instead of this system computing any visual offset itself.
+    /// </summary>
+    private const float DropFromCeilingHeight = 0.9f;
+
+    /// <summary>Small random scatter impulse given to debris dropped onto the level below — just enough to keep a pile of fallen tile items from stacking in a perfect grid.</summary>
+    private const float DropImpulseMin = 0.2f;
+    private const float DropImpulseMax = 0.5f;
 
     private readonly JobQueue _jobQueue = new(ZCollapseJobTime);
 
@@ -84,6 +115,7 @@ public sealed partial class CEZCollapseSystem : EntitySystem
         StartPendingJobs();
         _jobQueue.Process();
         CollectFinishedJobs();
+        ProcessPendingCollapses();
         PushDirtySnapshots();
     }
 
@@ -249,7 +281,7 @@ public sealed partial class CEZCollapseSystem : EntitySystem
 
         var liveNodes = new HashSet<(EntityUid, Vector2i)>();
         var coreSeeds = new List<(EntityUid, Vector2i, int)>();
-        var bridges = new Dictionary<(EntityUid, Vector2i), List<((EntityUid Grid, Vector2i Tile) Node, int Strength)>>();
+        var bridges = new Dictionary<(EntityUid, Vector2i), List<((EntityUid Grid, Vector2i Tile) Node, int Strength, int Loss)>>();
 
         foreach (var gridUid in column)
         {
@@ -279,7 +311,7 @@ public sealed partial class CEZCollapseSystem : EntitySystem
                     continue;
 
                 var tile = _map.TileIndicesFor(gridUid, grid, xform.Coordinates);
-                AddBridge(bridges, (gridUid, tile), (aboveGrid, tile), support.SupportStrength);
+                AddBridge(bridges, (gridUid, tile), (aboveGrid, tile), support.SupportStrength, support.TransferLoss);
             }
         }
 
@@ -296,18 +328,19 @@ public sealed partial class CEZCollapseSystem : EntitySystem
     }
 
     private static void AddBridge(
-        Dictionary<(EntityUid, Vector2i), List<((EntityUid Grid, Vector2i Tile) Node, int Strength)>> bridges,
+        Dictionary<(EntityUid, Vector2i), List<((EntityUid Grid, Vector2i Tile) Node, int Strength, int Loss)>> bridges,
         (EntityUid, Vector2i) a,
         (EntityUid, Vector2i) b,
-        int strength)
+        int strength,
+        int loss)
     {
         if (!bridges.TryGetValue(a, out var listA))
-            bridges[a] = listA = new List<((EntityUid, Vector2i), int)>();
-        listA.Add((b, strength));
+            bridges[a] = listA = new List<((EntityUid, Vector2i), int, int)>();
+        listA.Add((b, strength, loss));
 
         if (!bridges.TryGetValue(b, out var listB))
-            bridges[b] = listB = new List<((EntityUid, Vector2i), int)>();
-        listB.Add((a, strength));
+            bridges[b] = listB = new List<((EntityUid, Vector2i), int, int)>();
+        listB.Add((a, strength, loss));
     }
 
     private void CollectFinishedJobs()
@@ -390,7 +423,7 @@ public sealed partial class CEZCollapseSystem : EntitySystem
             var newStability = stabilityByGrid.GetValueOrDefault(gridUid) ?? new Dictionary<Vector2i, int>();
             var liveTiles = liveByGrid.GetValueOrDefault(gridUid) ?? new HashSet<Vector2i>();
 
-            ReapDeadTiles(gridUid, grid, liveTiles, newStability);
+            ScheduleCollapsingTiles(gridUid, grid, comp, liveTiles, newStability);
 
             comp.Stability.Clear();
             foreach (var (tile, value) in newStability)
@@ -403,21 +436,28 @@ public sealed partial class CEZCollapseSystem : EntitySystem
     }
 
     /// <summary>
-    /// Deletes every tile that was live when the job snapshot was taken but has no stability in the
-    /// job's result, destroying whatever's anchored to it first. Skips tiles already gone (removed by
-    /// something else while the job was running), indestructible tiles, and anything in mapping mode
-    /// (map editors previewing a broken layout shouldn't have tiles vanish under them).
+    /// For every tile that was live when the job snapshot was taken but has no stability in the job's
+    /// result, spawns the first collapse dust puff and starts its random 2-4s countdown (unless one's
+    /// already running for it); for every tile that regained stability since, cancels any countdown in
+    /// progress. Skips tiles already gone, indestructible tiles, and anything in mapping mode (map
+    /// editors previewing a broken layout shouldn't have tiles start crumbling). The tile itself only
+    /// actually changes once the countdown fires — see <see cref="CollapseTile"/>.
     /// </summary>
-    private void ReapDeadTiles(EntityUid gridUid, MapGridComponent grid, IReadOnlySet<Vector2i> liveTiles, Dictionary<Vector2i, int> newStability)
+    private void ScheduleCollapsingTiles(EntityUid gridUid, MapGridComponent grid, CEGridStabilityComponent comp, IReadOnlySet<Vector2i> liveTiles, Dictionary<Vector2i, int> newStability)
     {
         if (!_map.IsInitialized(Transform(gridUid).MapUid))
             return;
 
-        List<(Vector2i, Tile)>? toDelete = null;
         foreach (var tile in liveTiles)
         {
             if (newStability.ContainsKey(tile))
+            {
+                comp.PendingCollapses.Remove(tile); // shored back up before it fell — cancel
                 continue;
+            }
+
+            if (comp.PendingCollapses.ContainsKey(tile))
+                continue; // already crumbling — don't restart its clock or double the dust puff
 
             if (!_map.TryGetTile(grid, tile, out var currentTile) || currentTile.IsEmpty)
                 continue;
@@ -425,14 +465,100 @@ public sealed partial class CEZCollapseSystem : EntitySystem
             if (_tileDefMan[currentTile.TypeId] is ContentTileDefinition { Indestructible: true })
                 continue;
 
-            DestroyAnchoredEntities(gridUid, grid, tile);
+            var coords = _map.GridTileToLocal(gridUid, grid, tile);
+            SpawnAtPosition(CollapseDustEffect, coords);
+            _audio.PlayPvs(CollapseRumble, coords);
+            comp.PendingCollapses[tile] = _timing.CurTime + TimeSpan.FromSeconds(_random.NextFloat(CollapseDelayMinSeconds, CollapseDelayMaxSeconds));
+        }
+    }
 
-            toDelete ??= new List<(Vector2i, Tile)>();
-            toDelete.Add((tile, Tile.Empty));
+    /// <summary>Fires every grid's due collapse countdowns. A plain per-tick scan over participating grids — collapses in flight at once are rare and few, so this stays cheap without needing its own dirty-tracking.</summary>
+    private void ProcessPendingCollapses()
+    {
+        var query = AllEntityQuery<CEGridStabilityComponent, MapGridComponent>();
+        while (query.MoveNext(out var gridUid, out var comp, out var grid))
+        {
+            if (comp.PendingCollapses.Count == 0)
+                continue;
+
+            List<Vector2i>? due = null;
+            foreach (var (tile, collapseAt) in comp.PendingCollapses)
+            {
+                if (collapseAt > _timing.CurTime)
+                    continue;
+
+                due ??= new List<Vector2i>();
+                due.Add(tile);
+            }
+
+            if (due == null)
+                continue;
+
+            foreach (var tile in due)
+            {
+                comp.PendingCollapses.Remove(tile);
+                CollapseTile(gridUid, grid, tile);
+            }
+        }
+    }
+
+    /// <summary>
+    /// The delayed second half of a tile's collapse: a second dust puff, destroying whatever's
+    /// anchored to it, dropping the tile's normal deconstruction item onto the level below (see
+    /// <see cref="DropTileItemBelow"/>), and stepping the tile down to its BaseTurf layer instead of
+    /// straight to empty space — a tile with further layers below it (e.g. floor -&gt; plating -&gt;
+    /// lattice) just gets thinner, and only disappears once ZCollapse finds THAT layer unsupported too
+    /// on some later recompute (the tile change here fires <c>TileChangedEvent</c>, which already
+    /// marks the grid dirty either way). That's what makes the collapse read as gradual/recursive
+    /// rather than a single tile-sized hole appearing instantly.
+    /// </summary>
+    private void CollapseTile(EntityUid gridUid, MapGridComponent grid, Vector2i tile)
+    {
+        if (!_map.TryGetTile(grid, tile, out var currentTile) || currentTile.IsEmpty)
+            return; // something else (RCD, explosion) already took it — nothing left to collapse
+
+        var tileDef = (ContentTileDefinition)_tileDefMan[currentTile.TypeId];
+        if (tileDef.Indestructible)
+            return;
+
+        var collapseCoords = _map.GridTileToLocal(gridUid, grid, tile);
+        SpawnAtPosition(CollapseDustEffect, collapseCoords);
+        _audio.PlayPvs(CollapseRumble, collapseCoords);
+
+        DestroyAnchoredEntities(gridUid, grid, tile);
+        DropTileItemBelow(gridUid, tile, tileDef);
+
+        var nextTile = tileDef.BaseTurf is { } baseTurf ? new Tile(_tileDefMan[baseTurf].TileId) : Tile.Empty;
+        _map.SetTile(gridUid, grid, tile, nextTile);
+    }
+
+    /// <summary>
+    /// Spawns the tile's normal deconstruction item on the grid directly below, at the same tile
+    /// position, with <see cref="CEZPhysicsComponent.LocalPosition"/> set near the ceiling so it reads
+    /// as having just fallen through the hole this collapse opened rather than appearing mid-floor —
+    /// the existing Z-physics gravity/fall handling carries it down from there on its own. Z-adjacent
+    /// participating grids are tile-aligned by construction (the same assumption Support bridging
+    /// already relies on), so the tile index is reused directly with no world-position lookup needed.
+    /// </summary>
+    private void DropTileItemBelow(EntityUid gridUid, Vector2i tile, ContentTileDefinition tileDef)
+    {
+        var itemProto = tileDef.ItemDropPrototypeName;
+        if (itemProto == null)
+            return;
+
+        if (!_zMapQuery.TryGetComponent(gridUid, out var zMap) ||
+            !_zLevel.TryMapDown((gridUid, zMap), out var below) ||
+            !_gridQuery.TryGetComponent(below.Owner, out var belowGrid))
+        {
+            return; // nothing below to fall onto (e.g. bottom of the station) — the item is simply lost
         }
 
-        if (toDelete is { Count: > 0 })
-            _map.SetTiles(gridUid, grid, toDelete);
+        var item = Spawn(itemProto, _map.GridTileToLocal(below.Owner, belowGrid, tile));
+        EnsureComp<CEZPhysicsComponent>(item).LocalPosition = DropFromCeilingHeight;
+
+        Transform(item).LocalRotation = _random.NextAngle();
+        if (TryComp<PhysicsComponent>(item, out var physics))
+            _physics.ApplyLinearImpulse(item, _random.NextVector2(DropImpulseMin, DropImpulseMax), body: physics);
     }
 
     /// <summary>
