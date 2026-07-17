@@ -1,6 +1,5 @@
 using System.Threading;
 using System.Threading.Tasks;
-using Robust.Shared.Map;
 using Robust.Shared.CPUJob.JobQueues;
 
 namespace Content.Server._CE.ZCollapse;
@@ -23,39 +22,33 @@ namespace Content.Server._CE.ZCollapse;
 /// <c>IEntityManager</c> or any system, so it's safe to suspend and resume across many ticks even
 /// while the live world keeps changing underneath it.
 /// </summary>
-public sealed class StabilityJob : Job<Dictionary<(EntityUid Grid, Vector2i Tile), int>>
+public sealed class StabilityJob(
+    double maxTime,
+    HashSet<(EntityUid Grid, Vector2i Tile)> liveNodes,
+    List<(EntityUid Grid, Vector2i Tile, int Value)> coreSeeds,
+    Dictionary<(EntityUid, Vector2i), List<((EntityUid Grid, Vector2i Tile) Node, int Strength)>> bridges,
+    CancellationToken cancellation = default)
+    : Job<Dictionary<(EntityUid Grid, Vector2i Tile), int>>(maxTime, cancellation)
 {
     /// <summary>Every (grid, tile) that physically exists right now, across every grid in the column.</summary>
-    private readonly HashSet<(EntityUid Grid, Vector2i Tile)> _liveNodes;
+    private readonly HashSet<(EntityUid Grid, Vector2i Tile)> _liveNodes = liveNodes;
 
     public IReadOnlySet<(EntityUid Grid, Vector2i Tile)> LiveNodes => _liveNodes;
 
     /// <summary>(grid, tile, LevitationForce) for every Core anchored anywhere in the column.</summary>
-    private readonly List<(EntityUid Grid, Vector2i Tile, int Value)> _coreSeeds;
+    private readonly List<(EntityUid Grid, Vector2i Tile, int Value)> _coreSeeds = coreSeeds;
 
     /// <summary>
     /// Symmetric cross-grid edges from Supports: node -&gt; list of (partner node one Z-level away,
     /// that Support's strength cap). Built once up front so the BFS below can treat a Support bridge
     /// exactly like a same-grid neighbor edge, just capping instead of decrementing.
     /// </summary>
-    private readonly Dictionary<(EntityUid, Vector2i), List<((EntityUid Grid, Vector2i Tile) Node, int Strength)>> _bridges;
+    private readonly Dictionary<(EntityUid, Vector2i), List<((EntityUid Grid, Vector2i Tile) Node, int Strength)>> _bridges = bridges;
 
     private static readonly Vector2i[] CardinalOffsets =
     {
         new(1, 0), new(-1, 0), new(0, 1), new(0, -1),
     };
-
-    public StabilityJob(
-        double maxTime,
-        HashSet<(EntityUid Grid, Vector2i Tile)> liveNodes,
-        List<(EntityUid Grid, Vector2i Tile, int Value)> coreSeeds,
-        Dictionary<(EntityUid, Vector2i), List<((EntityUid Grid, Vector2i Tile) Node, int Strength)>> bridges,
-        CancellationToken cancellation = default) : base(maxTime, cancellation)
-    {
-        _liveNodes = liveNodes;
-        _coreSeeds = coreSeeds;
-        _bridges = bridges;
-    }
 
     protected override async Task<Dictionary<(EntityUid Grid, Vector2i Tile), int>?> Process()
     {

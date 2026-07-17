@@ -1,5 +1,3 @@
-using Robust.Server.Physics;
-
 namespace Content.Server._CE.ZCollapse;
 
 // Every handler here does exactly two things: keep CEGridStabilityComponent.Cores/Supports in sync

@@ -15,23 +15,6 @@ using Robust.Shared.Map.Components;
 
 namespace Content.Server._CE.ZCollapse;
 
-/// <summary>
-/// Computes and enforces per-tile structural stability for floating grids: a
-/// <see cref="CEGridStabilityCoreComponent"/> seeds its tile, stability flood-fills outward tile by
-/// tile losing 1 per hop, and <see cref="CEGridStabilitySupportComponent"/> bridges that flood
-/// between a grid and the Z-level directly above it. Any tile whose stability reaches 0 is deleted.
-///
-/// There is exactly one algorithm: whenever anything relevant changes on a grid, its whole Z-column
-/// (every grid chained to it via Supports, see <see cref="GetColumn"/>) gets a full, from-scratch
-/// multi-source flood fill in one atomic <see cref="StabilityJob"/> — never an incremental patch of
-/// cached seed values, and never a per-grid computation that treats a neighbor's stored result as
-/// ground truth (see <see cref="StabilityJob"/> for why the latter is actually unsound, not just
-/// inelegant). The flood fill runs time-sliced (same pattern as dungeon generation) so a large column
-/// or a busy tick never blocks the server.
-///
-/// Only grids carrying <see cref="CEGridStabilityComponent"/> participate (opt-in, see that
-/// component's docs).
-/// </summary>
 public sealed partial class CEZCollapseSystem : EntitySystem
 {
     [Dependency] private SharedMapSystem _map = default!;
@@ -89,7 +72,6 @@ public sealed partial class CEZCollapseSystem : EntitySystem
         base.Initialize();
 
         InitializeEvents();
-        InitializeDebug();
 
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundCleanup);
     }
@@ -242,7 +224,9 @@ public sealed partial class CEZCollapseSystem : EntitySystem
                 continue;
 
             foreach (var g in column)
+            {
                 _dirtyGrids.Remove(g);
+            }
 
             StartJob(column);
         }
@@ -274,7 +258,9 @@ public sealed partial class CEZCollapseSystem : EntitySystem
 
             var tileEnumerator = _map.GetAllTilesEnumerator(gridUid, grid);
             while (tileEnumerator.MoveNext(out var tileRef))
+            {
                 liveNodes.Add((gridUid, tileRef.Value.GridIndices));
+            }
 
             foreach (var coreUid in comp.Cores)
             {
@@ -301,7 +287,9 @@ public sealed partial class CEZCollapseSystem : EntitySystem
         var job = new StabilityJob(ZCollapseJobTime, liveNodes, coreSeeds, bridges, cts.Token);
 
         foreach (var gridUid in column)
+        {
             _busyGrids.Add(gridUid);
+        }
 
         _inFlightJobs.Add((job, cts, column));
         _jobQueue.EnqueueJob(job);
@@ -349,7 +337,9 @@ public sealed partial class CEZCollapseSystem : EntitySystem
             cts.Dispose();
 
             foreach (var g in grids)
+            {
                 _busyGrids.Remove(g);
+            }
 
             ApplyJobResult(grids, job);
         }
@@ -404,7 +394,9 @@ public sealed partial class CEZCollapseSystem : EntitySystem
 
             comp.Stability.Clear();
             foreach (var (tile, value) in newStability)
+            {
                 comp.Stability[tile] = value;
+            }
 
             _debugDirtyGrids.Add(gridUid);
         }
@@ -468,8 +460,7 @@ public sealed partial class CEZCollapseSystem : EntitySystem
         {
             if (_damageableQuery.TryGetComponent(uid, out var damageable))
                 _damageable.TryChangeDamage((uid, damageable), CollapseDamage, ignoreResistances: true, ignoreGlobalModifiers: true);
-            else
-                _destructible.DestroyEntity(uid);
+            _destructible.DestroyEntity(uid);
         }
     }
 }

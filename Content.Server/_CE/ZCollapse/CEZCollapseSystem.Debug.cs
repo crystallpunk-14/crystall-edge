@@ -16,10 +16,6 @@ public sealed partial class CEZCollapseSystem
     /// <summary>Grids whose stability changed since the last debug-overlay push.</summary>
     private readonly HashSet<EntityUid> _debugDirtyGrids = new();
 
-    private void InitializeDebug()
-    {
-    }
-
     /// <summary>
     /// Toggles the ZCollapse debug overlay for a player, called from <c>showstabilitydebug</c>.
     /// </summary>

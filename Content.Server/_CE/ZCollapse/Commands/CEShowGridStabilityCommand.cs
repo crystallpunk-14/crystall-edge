@@ -7,8 +7,8 @@ namespace Content.Server._CE.ZCollapse.Commands;
 /// <summary>
 /// Toggles the ZCollapse tile-stability debug overlay for the calling player.
 /// </summary>
-[AdminCommand(AdminFlags.Admin)]
-public sealed partial class CEShowStabilityDebugCommand : LocalizedEntityCommands
+[AdminCommand(AdminFlags.Debug)]
+public sealed partial class CEShowGridStabilityCommand : LocalizedEntityCommands
 {
     [Dependency] private CEZCollapseSystem _collapse = default!;
 
