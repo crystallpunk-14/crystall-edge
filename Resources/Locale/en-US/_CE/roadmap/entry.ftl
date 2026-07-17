@@ -1,9 +1,6 @@
 ce-roadmap-guard-hard-labor-name = Hard Labor
 ce-roadmap-guard-hard-labor-desc = Instead of prison cells and taking away the player's gameplay, offending citizens will be sent to work off their debts to society through various manual labor under guard supervision... And they will have the opportunity to escape from there.
 
-ce-roadmap-engineering-air-crystals-name = Aerocrystals
-ce-roadmap-engineering-air-crystals-desc = A type of crystal capable of manipulating airflow. The floating core of the island, enabling air elevators and letting you glide around generators of dense air.
-
 ce-roadmap-farming-silvas-name = Growing Silvas
 ce-roadmap-farming-silvas-desc = The ability to grow various plants and mushrooms on a Silva's head. Different plants grant unique effects, especially when we're talking about magical mutated specimens.
 
@@ -36,9 +33,6 @@ ce-roadmap-guard-magic-vision-desc = Various actions can leave traces in the inf
 
 ce-roadmap-adventures-expeditions-name = Expeditions and Mercenaries
 ce-roadmap-adventures-expeditions-desc = A separate guild building and a whole layer of roles related to resource extraction from the surrounding world. A flying single-seat cargo transport on which miners fly through the fragments of destroyed floating islands in search of valuable resources, encountering dangerous flora and fauna in the process.
-
-ce-roadmap-engineering-building-collapse-name = Building Collapse
-ce-roadmap-engineering-building-collapse-desc = Floating islands have a natural core that keeps them in the air. From these cores, a new resource can be extracted that is necessary for expanding the island, because bridges leading into the air, or mines without sufficient supports will collapse, which can lead to injuries.
 
 ce-roadmap-engineering-fire-spread-name = Fire Spread
 ce-roadmap-engineering-fire-spread-desc = Careless use of some mechanisms, or deliberate sabotage by antagonists can lead to fires. A fire system capable of consuming wooden structures, buildings and tiles. Combined with burning tiles, this can lead to massive building collapses.

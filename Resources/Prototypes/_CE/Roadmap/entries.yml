@@ -24,13 +24,6 @@
   status: Backlog
 
 - type: roadmapItem
-  id: AirCrystals
-  name: ce-roadmap-engineering-air-crystals-name
-  desc: ce-roadmap-engineering-air-crystals-desc
-  category: Engineering
-  status: Backlog
-
-- type: roadmapItem
   id: HardLabor
   name: ce-roadmap-guard-hard-labor-name
   desc: ce-roadmap-guard-hard-labor-desc
@@ -91,13 +84,6 @@
   name: ce-roadmap-adventures-expeditions-name
   desc: ce-roadmap-adventures-expeditions-desc
   category: Adventures
-  status: Backlog
-
-- type: roadmapItem
-  id: BuildingCollapse
-  name: ce-roadmap-engineering-building-collapse-name
-  desc: ce-roadmap-engineering-building-collapse-desc
-  category: Engineering
   status: Backlog
 
 - type: roadmapItem
