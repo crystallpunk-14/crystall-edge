@@ -4,9 +4,11 @@ using System.Runtime.InteropServices;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Administration.Systems;
+using Content.Server._CE.Sponsor;
 using Content.Server.Discord.DiscordLink;
 using Content.Server.Players.RateLimiting;
 using Content.Server.Preferences.Managers;
+using Content.Shared._CE.Sponsor;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
@@ -45,6 +47,7 @@ internal sealed partial class ChatManager : IChatManager
     [Dependency] private PlayerRateLimitManager _rateLimitManager = default!;
     [Dependency] private ISharedPlayerManager _player = default!;
     [Dependency] private DiscordChatLink _discordLink = default!;
+    [Dependency] private ICESponsorManager _sponsor = default!; //CrystallEdge
     [Dependency] private ILogManager _logManager = default!;
 
     private ISawmill _sawmill = default!;
@@ -290,7 +293,12 @@ internal sealed partial class ChatManager : IChatManager
             var prefs = _preferencesManager.GetPreferences(player.UserId);
             colorOverride = prefs.AdminOOCColor;
         }
-        if (  _netConfigManager.GetClientCVar(player.Channel, CCVars.ShowOocPatronColor) && player.Channel.UserData.PatronTier is { } patron && PatronOocColors.TryGetValue(patron, out var patronColor))
+        // CrystallEdge: Discord sponsor OOC color takes priority over Patreon patron color
+        if (_sponsor.TryGetSponsorOOCColor(player.UserId, out var sponsorColor))
+        {
+            wrappedMessage = Loc.GetString("chat-manager-send-ooc-patron-wrap-message", ("patronColor", sponsorColor), ("playerName", player.Name), ("message", FormattedMessage.EscapeText(message)));
+        }
+        else if (_netConfigManager.GetClientCVar(player.Channel, CCVars.ShowOocPatronColor) && player.Channel.UserData.PatronTier is { } patron && PatronOocColors.TryGetValue(patron, out var patronColor))
         {
             wrappedMessage = Loc.GetString("chat-manager-send-ooc-patron-wrap-message", ("patronColor", patronColor),("playerName", player.Name), ("message", FormattedMessage.EscapeText(message)));
         }

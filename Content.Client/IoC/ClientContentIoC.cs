@@ -1,3 +1,5 @@
+using Content.Client._CE.DiscordAuth;
+using Content.Client._CE.Sponsor;
 using Content.Client.Administration.Managers;
 using Content.Client.Changelog;
 using Content.Client.Chat.Managers;
@@ -22,6 +24,7 @@ using Content.Client.Voting;
 using Content.Shared.Administration.Logs;
 using Content.Client.Lobby;
 using Content.Client.Players.RateLimiting;
+using Content.Shared._CE.Sponsor;
 using Content.Shared.Administration.Managers;
 using Content.Shared.Chat;
 using Content.Shared.FeedbackSystem;
@@ -66,6 +69,8 @@ namespace Content.Client.IoC
             collection.Register<ClientsidePlaytimeTrackingManager>();
             collection.Register<ClientFeedbackManager>();
             collection.Register<ISharedFeedbackManager, ClientFeedbackManager>();
+            collection.Register<CEDiscordAuthManager>(); //CrystallEdge
+            collection.Register<ICESponsorManager, CEClientSponsorSystem>(); //CrystallEdge
         }
     }
 }

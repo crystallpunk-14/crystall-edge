@@ -257,7 +257,8 @@ public sealed partial class PlayTimeTrackingSystem : EntitySystem
             EntityManager,
             _prototypes,
             (HumanoidCharacterProfile?)
-            _preferencesManager.GetPreferences(player.UserId).SelectedCharacter);
+            _preferencesManager.GetPreferences(player.UserId).SelectedCharacter,
+            player.UserId);
     }
 
     /// <summary>
@@ -285,7 +286,8 @@ public sealed partial class PlayTimeTrackingSystem : EntitySystem
             EntityManager,
             _prototypes,
             (HumanoidCharacterProfile?)
-            _preferencesManager.GetPreferences(player.UserId).SelectedCharacter);
+            _preferencesManager.GetPreferences(player.UserId).SelectedCharacter,
+            player.UserId);
     }
 
     public HashSet<ProtoId<JobPrototype>> GetDisallowedJobs(ICommonSession player)
@@ -302,7 +304,7 @@ public sealed partial class PlayTimeTrackingSystem : EntitySystem
 
         foreach (var job in _prototypes.EnumeratePrototypes<JobPrototype>())
         {
-            if (JobRequirements.TryRequirementsMet(job, playTimes, out _, EntityManager, _prototypes, (HumanoidCharacterProfile?) _preferencesManager.GetPreferences(player.UserId).SelectedCharacter))
+            if (JobRequirements.TryRequirementsMet(job, playTimes, out _, EntityManager, _prototypes, (HumanoidCharacterProfile?) _preferencesManager.GetPreferences(player.UserId).SelectedCharacter, player.UserId))
                 roles.Add(job.ID);
         }
 
@@ -325,7 +327,7 @@ public sealed partial class PlayTimeTrackingSystem : EntitySystem
         for (var i = 0; i < jobs.Count; i++)
         {
             if (_prototypes.Resolve(jobs[i], out var job)
-                && JobRequirements.TryRequirementsMet(job, playTimes, out _, EntityManager, _prototypes, (HumanoidCharacterProfile?) _preferencesManager.GetPreferences(userId).SelectedCharacter))
+                && JobRequirements.TryRequirementsMet(job, playTimes, out _, EntityManager, _prototypes, (HumanoidCharacterProfile?) _preferencesManager.GetPreferences(userId).SelectedCharacter, userId))
             {
                 continue;
             }
