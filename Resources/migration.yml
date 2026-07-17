@@ -63,6 +63,8 @@ CEClothingHeadFedoraHunterBlue: CEClothingHeadFedoraBlue
 CEClothingHeadFedoraHunterGreen: CEClothingHeadFedoraGreen
 CEClothingHeadFedoraHunterRed: CEClothingHeadFedoraRed
 
+CEGridStabilityCoreEntity: CEGridStabilityCore
+
 # CrystallEdge migration zone end
 
 

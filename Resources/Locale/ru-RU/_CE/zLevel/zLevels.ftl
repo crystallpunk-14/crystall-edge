@@ -1,5 +1,3 @@
-ce-zlevel-falling-popup = {$name} падает сверху.
-
 ce-zlevel-voice-from-up = {$name} (сверху)
 ce-zlevel-voice-from-down = {$name} (снизу)
 

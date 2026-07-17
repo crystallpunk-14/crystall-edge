@@ -10,7 +10,7 @@
   - type: Item
     size: Tiny
   - type: Sprite
-    sprite: _CE/Objects/Materials/crystal_shard.rsi
+    sprite: _CE/Objects/Materials/shards_energy.rsi
     layers:
     - state: shard0
       shader: unshaded
@@ -44,7 +44,7 @@
   - type: CEIrradiateOnDestroy
     irradiateCoefficient: 0.5
   - type: StaticPrice
-    price: 1
+    price: 0
   - type: CEEnergyOverchargeDamage
     damage:
       types:

@@ -1,5 +1,3 @@
-ce-zlevel-falling-popup = {$name} falls from above.
-
 ce-zlevel-voice-from-up = {$name} (from above)
 ce-zlevel-voice-from-down = {$name} (from below)
 

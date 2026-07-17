@@ -4,8 +4,8 @@ meta:
   engineVersion: 277.0.0
   forkId: ""
   forkVersion: ""
-  time: 07/14/2026 06:21:06
-  entityCount: 205
+  time: 07/17/2026 19:31:42
+  entityCount: 202
 maps:
 - 1
 grids:
@@ -108,6 +108,7 @@ entities:
       fingerprints: []
     - type: RadiationGridResistance
     - type: ExplosionAirtightGrid
+    - type: CEZLevelsLaddersCache
 - proto: CEBiomeSpawnerGrassland
   entities:
   - uid: 66
@@ -135,25 +136,10 @@ entities:
     - type: Transform
       pos: 9.5,-24.5
       parent: 1
-  - uid: 73
-    components:
-    - type: Transform
-      pos: 10.5,-25.5
-      parent: 1
-  - uid: 74
-    components:
-    - type: Transform
-      pos: 10.5,-24.5
-      parent: 1
   - uid: 76
     components:
     - type: Transform
       pos: 10.5,-23.5
-      parent: 1
-  - uid: 77
-    components:
-    - type: Transform
-      pos: 11.5,-24.5
       parent: 1
   - uid: 78
     components:
@@ -391,6 +377,13 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 22.5,-6.5
+      parent: 1
+- proto: CEGridStabilityCoreNatural
+  entities:
+  - uid: 51
+    components:
+    - type: Transform
+      pos: 11.5,-25.5
       parent: 1
 - proto: CEHighBushRandom
   entities:
@@ -1105,92 +1098,61 @@ entities:
     - type: Transform
       pos: 13.5,-24.5
       parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
   - uid: 48
     components:
     - type: Transform
       pos: 10.5,-26.5
       parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
   - uid: 49
     components:
     - type: Transform
       pos: 12.5,-26.5
       parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
   - uid: 50
     components:
     - type: Transform
       pos: 11.5,-26.5
       parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
-  - uid: 51
-    components:
-    - type: Transform
-      pos: 11.5,-25.5
-      parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
   - uid: 52
     components:
     - type: Transform
       pos: 13.5,-25.5
       parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
   - uid: 53
     components:
     - type: Transform
       pos: -40.5,-1.5
       parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
   - uid: 54
     components:
     - type: Transform
       pos: 12.5,-24.5
       parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
   - uid: 55
     components:
     - type: Transform
       pos: 12.5,-25.5
       parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
   - uid: 56
     components:
     - type: Transform
       pos: 14.5,-25.5
       parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
   - uid: 57
     components:
     - type: Transform
       pos: 12.5,-23.5
       parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
   - uid: 58
     components:
     - type: Transform
       pos: 13.5,-23.5
       parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
   - uid: 71
     components:
     - type: Transform
       pos: 14.5,-24.5
       parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
 - proto: CEWallStoneBrickOld
   entities:
   - uid: 4
@@ -1198,15 +1160,11 @@ entities:
     - type: Transform
       pos: 18.5,-5.5
       parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
   - uid: 6
     components:
     - type: Transform
       pos: 17.5,-7.5
       parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
 - proto: CEZLevelLadderStone
   entities:
   - uid: 5
@@ -1214,14 +1172,10 @@ entities:
     - type: Transform
       pos: 17.5,-8.5
       parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
   - uid: 8
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 18.5,-4.5
       parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
 ...
