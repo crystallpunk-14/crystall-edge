@@ -417,3 +417,10 @@
   id: 1041
   time: '2026-07-16T23:07:33.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/351
+- author: TheShuEd
+  changes:
+  - message: Discord auth is back.
+    type: Add
+  id: 1042
+  time: '2026-07-17T05:44:56.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/352
