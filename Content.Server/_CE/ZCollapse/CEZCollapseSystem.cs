@@ -57,34 +57,32 @@ public sealed partial class CEZCollapseSystem : EntitySystem
 
     private static readonly EntProtoId CollapseDustEffect = "CEDustTileEffect";
 
-    /// <summary>Played once when a tile starts crumbling and again when it actually collapses — see <see cref="ScheduleCollapsingTiles"/>/<see cref="CollapseTile"/>.</summary>
-    private static readonly SoundSpecifier CollapseRumble = new SoundPathSpecifier("/Audio/Magic/rumble.ogg");
+    private static readonly SoundSpecifier CollapseSound = new SoundPathSpecifier("/Audio/Magic/rumble.ogg");
 
     private const float CollapseDelayMinSeconds = 3f;
     private const float CollapseDelayMaxSeconds = 10f;
 
-    /// <summary>
-    /// <see cref="CEZPhysicsComponent.LocalPosition"/> given to debris dropped onto the level below —
-    /// near the ceiling (1 = next level up) rather than the floor (0), so it reads as having just
-    /// fallen through the new hole above and lets the existing Z-physics gravity/fall handling carry
-    /// it down from there instead of this system computing any visual offset itself.
-    /// </summary>
-    private const float DropFromCeilingHeight = 0.9f;
-
-    /// <summary>Small random scatter impulse given to debris dropped onto the level below — just enough to keep a pile of fallen tile items from stacking in a perfect grid.</summary>
-    private const float DropImpulseMin = 0.2f;
-    private const float DropImpulseMax = 0.5f;
+    //Small random scatter impulse given to debris dropped onto the level below
+    //just enough to keep a pile of fallen tile items from stacking in a perfect grid.
+    private const float DropImpulseMin = 0f;
+    private const float DropImpulseMax = 1.5f;
 
     private readonly JobQueue _jobQueue = new(ZCollapseJobTime);
 
-    /// <summary>In-flight column jobs: the job itself, its cancellation source, and every grid it covers.</summary>
+    /// <summary>
+    /// In-flight column jobs: the job itself, its cancellation source, and every grid it covers.
+    /// </summary>
     private readonly List<(StabilityJob Job, CancellationTokenSource Cts, List<EntityUid> Grids)> _inFlightJobs = new();
 
-    /// <summary>Every grid currently covered by some in-flight job — checked before starting a new one for the same column.</summary>
+    /// <summary>
+    /// Every grid currently covered by some in-flight job — checked before starting a new one for the same znetwork.
+    /// </summary>
     private readonly HashSet<EntityUid> _busyGrids = new();
 
-    /// <summary>Grids whose column needs recomputing next Update().</summary>
-    private HashSet<EntityUid> _dirtyGrids = new();
+    /// <summary>
+    /// Grids whose column needs recomputing next Update().
+    /// </summary>
+    private readonly HashSet<EntityUid> _dirtyGrids = new();
 
     /// <summary>
     /// Grids awaiting a one-time rebuild of their Cores/Supports index: either just past MapInit
@@ -467,7 +465,7 @@ public sealed partial class CEZCollapseSystem : EntitySystem
 
             var coords = _map.GridTileToLocal(gridUid, grid, tile);
             SpawnAtPosition(CollapseDustEffect, coords);
-            _audio.PlayPvs(CollapseRumble, coords);
+            _audio.PlayPvs(CollapseSound, coords);
             comp.PendingCollapses[tile] = _timing.CurTime + TimeSpan.FromSeconds(_random.NextFloat(CollapseDelayMinSeconds, CollapseDelayMaxSeconds));
         }
     }
@@ -523,7 +521,7 @@ public sealed partial class CEZCollapseSystem : EntitySystem
 
         var collapseCoords = _map.GridTileToLocal(gridUid, grid, tile);
         SpawnAtPosition(CollapseDustEffect, collapseCoords);
-        _audio.PlayPvs(CollapseRumble, collapseCoords);
+        _audio.PlayPvs(CollapseSound, collapseCoords);
 
         DestroyAnchoredEntities(gridUid, grid, tile);
         DropTileItemBelow(gridUid, tile, tileDef);
@@ -554,7 +552,7 @@ public sealed partial class CEZCollapseSystem : EntitySystem
         }
 
         var item = Spawn(itemProto, _map.GridTileToLocal(below.Owner, belowGrid, tile));
-        EnsureComp<CEZPhysicsComponent>(item).LocalPosition = DropFromCeilingHeight;
+        _zLevel.SetZPosition(item, 0.9f);
 
         Transform(item).LocalRotation = _random.NextAngle();
         if (TryComp<PhysicsComponent>(item, out var physics))
