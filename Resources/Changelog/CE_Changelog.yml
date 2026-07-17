@@ -424,3 +424,16 @@
   id: 1042
   time: '2026-07-17T05:44:56.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/352
+- author: TheShuEd
+  changes:
+  - message: A system for the collapse of z-levels has been added. If your structure
+      or mine lacks enough supports, it will simply collapse, dropping a pile of junk
+      on your heads.
+    type: Add
+  - message: Air crystals have been added to serve as a support structure for the
+      entire flying island. If they were destroyed, it could wipe out the ENTIRE island.
+      So treat this as if it were a nuclear warhead explosion.
+    type: Add
+  id: 1043
+  time: '2026-07-17T20:19:10.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/353
