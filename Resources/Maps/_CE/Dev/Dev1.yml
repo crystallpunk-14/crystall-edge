@@ -1,10 +1,10 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 270.1.0
+  engineVersion: 277.0.0
   forkId: ""
   forkVersion: ""
-  time: 01/28/2026 15:28:56
+  time: 07/17/2026 08:23:41
   entityCount: 388
 maps:
 - 1
@@ -93,6 +93,7 @@ entities:
       fingerprints: []
     - type: RadiationGridResistance
     - type: ExplosionAirtightGrid
+    - type: CEZLevelsLaddersCache
 - proto: CEBiomeSpawnerSnowland
   entities:
   - uid: 254
@@ -1871,22 +1872,16 @@ entities:
     - type: Transform
       pos: -7.5,-12.5
       parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
   - uid: 190
     components:
     - type: Transform
       pos: -8.5,-12.5
       parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
   - uid: 195
     components:
     - type: Transform
       pos: -9.5,-8.5
       parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
   - uid: 196
     components:
     - type: Transform
@@ -1927,8 +1922,6 @@ entities:
     - type: Transform
       pos: -9.5,-12.5
       parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
 - proto: CEWallWooden
   entities:
   - uid: 2

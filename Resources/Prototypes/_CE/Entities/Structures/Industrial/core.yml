@@ -1,0 +1,28 @@
+- type: entity
+  id: CEGridStabilityCoreEntity
+  name: levitation core
+  description: Anchor this to the ground and it will keep the surrounding structure aloft.
+  categories: [ ForkFiltered ]
+  parent: BaseStructure
+  components:
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Transform
+    anchored: true
+  - type: Sprite
+    sprite: Structures/Machines/gravity_generator_core.rsi
+    state: idle
+    drawdepth: Mobs
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        density: 1000
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: CEGridStabilityCore
+    levitationForce: 20

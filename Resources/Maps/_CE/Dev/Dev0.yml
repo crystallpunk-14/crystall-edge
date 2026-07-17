@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 270.1.0
+  engineVersion: 277.0.0
   forkId: ""
   forkVersion: ""
-  time: 01/28/2026 15:28:56
-  entityCount: 957
+  time: 07/17/2026 08:23:41
+  entityCount: 958
 maps:
 - 1
 grids:
@@ -125,6 +125,7 @@ entities:
       fingerprints: []
     - type: RadiationGridResistance
     - type: ExplosionAirtightGrid
+    - type: CEZLevelsLaddersCache
 - proto: CEAccumulatorVessel
   entities:
   - uid: 613
@@ -2829,6 +2830,13 @@ entities:
     - type: Transform
       pos: -3.5921636,-3.4147902
       parent: 1
+- proto: CEGridStabilityCoreEntity
+  entities:
+  - uid: 631
+    components:
+    - type: Transform
+      pos: 0.5,-3.5
+      parent: 1
 - proto: CEHeater
   entities:
   - uid: 77
@@ -5050,8 +5058,6 @@ entities:
     - type: Transform
       pos: -5.5,-12.5
       parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
   - uid: 267
     components:
     - type: Transform
@@ -5182,8 +5188,6 @@ entities:
     - type: Transform
       pos: -9.5,-12.5
       parent: 1
-    - type: CEZPhysics
-      currentGroundHeight: 1.05
   - uid: 581
     components:
     - type: Transform

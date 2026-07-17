@@ -37,6 +37,7 @@
         density: 1000
   - type: CEZLevelHighGround
   - type: CEOccludePipes
+  - type: CEGridStabilitySupport
 
 - type: entity
   id: CEBaseWallFrame
