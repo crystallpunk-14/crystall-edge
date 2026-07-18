@@ -1,4 +1,5 @@
 - type: scienceArea
   id: ArcaneEngineering
-  color: "#ffa500"
+  color: "#c6905a"
   name: ce-science-area-arcane-engineering
+  parallax: CEBlood
