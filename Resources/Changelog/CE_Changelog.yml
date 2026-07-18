@@ -437,3 +437,21 @@
   id: 1043
   time: '2026-07-17T20:19:10.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/353
+- author: TheShuEd
+  changes:
+  - message: The number of iron, coal, and crystal veins has doubled.
+    type: Tweak
+  - message: Ore veins are no longer endless! They are depleted after about half an
+      hour of active drilling.
+    type: Tweak
+  - message: The brass insulation armor now provides 100% protection against magical
+      radiation, rather than 75%.
+    type: Tweak
+  - message: "Walls now provide support for a maximum of 5 tiles in each direction,\
+      \ rather than 10. This makes the chance of ceilings collapsing during excavations\
+      \ significantly higher. It also imposes restrictions on building design\u2014\
+      it\u2019s much more common to have to install supporting columns."
+    type: Tweak
+  id: 1044
+  time: '2026-07-18T08:31:51.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/354
