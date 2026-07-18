@@ -4,6 +4,7 @@
   parent: CEBaseWall
   components:
   - type: CEOreVein
+    maxAmount: 75
     damage:
       types:
         Structural: 60
@@ -63,6 +64,7 @@
   - type: TileEmission
     color: "#00ddff"
   - type: CEOreVein
+    maxAmount: 150
     table: !type:AllSelector
       children:
       - id: CEStrongRadiationSourceVFX

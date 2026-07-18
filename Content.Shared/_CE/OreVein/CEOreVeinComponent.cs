@@ -21,4 +21,16 @@ public sealed partial class CEOreVeinComponent : Component
 
     [DataField]
     public SoundSpecifier SpawnSound = new SoundPathSpecifier("/Audio/Effects/picaxe2.ogg");
+
+    /// <summary>
+    /// Total number of harvests this vein can yield before it's depleted and deleted.
+    /// </summary>
+    [DataField(required: true)]
+    public int MaxAmount;
+
+    /// <summary>
+    /// Remaining number of harvests. Initialized to <see cref="MaxAmount"/> on MapInit.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public int CurrentAmount;
 }

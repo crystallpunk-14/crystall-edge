@@ -11,6 +11,7 @@
   color: "#e17d44"
   trackedComponents:
   - type: CEOreVein
+    maxAmount: 1 #Stoobid compRegistry
     damage:
       types:
         Structural: 60
