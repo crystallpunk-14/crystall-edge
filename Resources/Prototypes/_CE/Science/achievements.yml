@@ -1,0 +1,5 @@
+- type: scienceAchievement
+  id: Hoverboards
+  area: ArcaneEngineering
+  name: ce-science-achievement-hoverboards
+  effects: []

@@ -1,0 +1,4 @@
+- type: scienceArea
+  id: ArcaneEngineering
+  color: "#ffa500"
+  name: ce-science-area-arcane-engineering
