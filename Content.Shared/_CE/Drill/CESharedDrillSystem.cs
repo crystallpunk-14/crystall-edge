@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Shared.Audio;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Effects;
@@ -73,10 +72,7 @@ public sealed partial class CESharedDrillSystem : EntitySystem
             var distance = melee.Range;
 
             var ray = new CollisionRay(pos, direction.ToWorldVec(), drill.CollisionMask);
-            var rayCastResults = _physics.IntersectRay(xform.MapID, ray, distance, uid, returnOnFirstHit: false).ToList();
-
-            if (!rayCastResults.Any())
-                continue;
+            var rayCastResults = _physics.IntersectRay(xform.MapID, ray, distance, uid, returnOnFirstHit: false);
 
             _cachedEntityList.Clear();
             foreach (var hit in rayCastResults)
@@ -86,6 +82,9 @@ public sealed partial class CESharedDrillSystem : EntitySystem
                 _meleeSound.PlayHitSound(hit.HitEntity, uid, SharedMeleeWeaponSystem.GetHighestDamageSound(melee.Damage, _proto), null, melee);
                 _cachedEntityList.Add(hit.HitEntity);
             }
+
+            if (_cachedEntityList.Count == 0)
+                continue;
 
             if (_net.IsClient)
                 _color.RaiseEffect(Color.Red, _cachedEntityList, Filter.Pvs(uid, entityManager: EntityManager));

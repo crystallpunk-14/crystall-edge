@@ -31,7 +31,7 @@
 
 - type: entity
   id: CEGameRuleWallsDamagedVariationPass
-  parent: BaseVariationPass
+  parent: CEBaseVariationPass
   components:
   - type: WallReplaceVariationPass
   - type: EntityReplaceVariationPass
@@ -45,7 +45,7 @@
   parent: CEBaseVariationPass
   components:
   - type: CEStaticEntityReplacementVariationPass
-    replacementCount: 7
+    replacementCount: 15
     replacementMap:
       CEWallStone: CEWallIronCore
 
@@ -54,7 +54,7 @@
   parent: CEBaseVariationPass
   components:
   - type: CEStaticEntityReplacementVariationPass
-    replacementCount: 7
+    replacementCount: 15
     replacementMap:
       CEWallStone: CEWallCoalCore
 

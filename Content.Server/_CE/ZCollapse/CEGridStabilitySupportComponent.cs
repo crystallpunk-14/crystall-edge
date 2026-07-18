@@ -13,7 +13,7 @@ namespace Content.Server._CE.ZCollapse;
 public sealed partial class CEGridStabilitySupportComponent : Component
 {
     [DataField]
-    public int SupportStrength = 10;
+    public int SupportStrength = 5;
 
     /// <summary>How much stability this Support consumes off whatever it conducts, each direction. A support standing on 4 stability passes at most (4 - TransferLoss) up, and vice versa.</summary>
     [DataField]
