@@ -78,3 +78,24 @@
     guides:
     - SS14
 
+- type: entity
+  id: CEBaseScienceBook
+  abstract: true
+  parent: CEBookBase
+  name: science book
+  components:
+  - type: Sprite
+    layers:
+    - state: paper
+    - state: cover_base
+      color: "#1c4c6b"
+      map: [ "cover" ]
+    - state: decor_line
+      color: "#123449"
+      map: [ "decor" ]
+    - state: icon_plate
+      map: [ "icon" ]
+    - state: bookmark_short
+      map: [ "overlay" ]
+  - type: CEScienceAchievementHolder
+

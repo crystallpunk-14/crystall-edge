@@ -28,6 +28,7 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
     [Dependency] private ContainerSystem _container = default!;
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private PhysicsSystem _physics = default!;
+    [Dependency] private CERecipeKnowledgeSystem _recipeKnowledge = default!;
 
     private EntityQuery<CEWorkbenchComponent> _workbenchQuery;
 
@@ -61,6 +62,7 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
 
     private void OnBeforeUIOpen(Entity<CEWorkbenchComponent> ent, ref BeforeActivatableUIOpenEvent args)
     {
+        ent.Comp.CurrentUser = args.User;
         UpdateUIRecipes((ent, ent.Comp));
     }
 
@@ -89,6 +91,14 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
             if (!_proto.Resolve(recipeId, out var indexedRecipe))
                 continue;
 
+            // Only show recipes the current user knows (if they have knowledge tracking),
+            // unless the recipe is marked as roundstart (available without learning).
+            if (entity.Comp.CurrentUser is null)
+                continue;
+
+            if (!indexedRecipe.RoundStart && !_recipeKnowledge.KnowsRecipe(entity.Comp.CurrentUser.Value, recipeId))
+                continue;
+
             var canCraft = true;
 
             foreach (var requirement in indexedRecipe.Requirements)
@@ -110,6 +120,10 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
 
     private bool CanCraftRecipe(CEWorkbenchRecipePrototype recipe, HashSet<EntityUid> entities, EntityUid? user = null)
     {
+        // Validate the user knows the recipe (server-side), unless it is roundstart.
+        if (!recipe.RoundStart && user is { } u && !_recipeKnowledge.KnowsRecipe(u, recipe.ID))
+            return false;
+
         foreach (var req in recipe.Requirements)
         {
             if (!req.CheckRequirement(EntityManager, _proto, entities))

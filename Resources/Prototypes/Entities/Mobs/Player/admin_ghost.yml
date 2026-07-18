@@ -112,6 +112,7 @@
     damageCoefficient: 0
   # CrystallEdge
   - type: CEShowVampireIcons
+  - type: CERecipeKnowledge
 
 - type: entity
   abstract: true

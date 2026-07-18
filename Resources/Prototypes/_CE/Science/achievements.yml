@@ -2,4 +2,7 @@
   id: Hoverboards
   area: ArcaneEngineering
   name: ce-science-achievement-hoverboards
-  effects: []
+  effects:
+  - !type:LearnRecipe
+    recipes:
+    - CEVehicleHoverboard
