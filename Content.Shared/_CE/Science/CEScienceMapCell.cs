@@ -10,13 +10,21 @@ namespace Content.Shared._CE.Science;
 /// Extend with new sealed subclasses to add new cell types with their own data.
 /// </summary>
 [Serializable, NetSerializable]
-public abstract class CEScienceMapCell;
+public abstract class CEScienceMapCell
+{
+    public abstract CEResearchCellKind Kind { get; }
+}
 
 [Serializable, NetSerializable]
-public sealed class CEScienceDeadZoneCell : CEScienceMapCell;
+public sealed class CEScienceDeadZoneCell : CEScienceMapCell
+{
+    public override CEResearchCellKind Kind => CEResearchCellKind.DeadZone;
+}
 
 [Serializable, NetSerializable]
 public sealed class CEScienceAchievementCell(ProtoId<CEScienceAchievementPrototype> achievement) : CEScienceMapCell
 {
     public readonly ProtoId<CEScienceAchievementPrototype> Achievement = achievement;
+
+    public override CEResearchCellKind Kind => CEResearchCellKind.Achievement;
 }

@@ -11,15 +11,20 @@ public enum CEResearchTableUiKey
 }
 
 /// <summary>
-/// Sent when the "Research" button is pressed, for whatever coordinate the client currently
-/// has selected locally (selection itself is never known to the server). The server marks the
-/// coordinate as researched for that area, then resends a full <see cref="CEResearchTableState"/>.
+/// Sent when an action button is pressed for whatever coordinate the client currently has
+/// selected locally (selection itself is never known to the server). The server re-validates the
+/// action against the cell and the player before running its effects, then resends a full
+/// <see cref="CEResearchTableState"/>.
 /// </summary>
 [Serializable, NetSerializable]
-public sealed class CEResearchTableResearchMessage(ProtoId<CEScienceAreaPrototype> area, Vector2i coordinate) : BoundUserInterfaceMessage
+public sealed class CEResearchTableActionMessage(
+    ProtoId<CEScienceAreaPrototype> area,
+    Vector2i coordinate,
+    ProtoId<CEResearchActionPrototype> action) : BoundUserInterfaceMessage
 {
     public readonly ProtoId<CEScienceAreaPrototype> Area = area;
     public readonly Vector2i Coordinate = coordinate;
+    public readonly ProtoId<CEResearchActionPrototype> Action = action;
 }
 
 /// <summary>

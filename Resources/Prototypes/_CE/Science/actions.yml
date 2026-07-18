@@ -1,0 +1,10 @@
+- type: researchAction
+  id: BasicScan
+  name: ce-research-action-basic-scan-name
+  tooltip: ce-research-action-basic-scan-tooltip
+  allowedCells:
+  - Empty
+  - Achievement
+  effects:
+  - !type:CEResearchRevealArea
+    radius: 1

@@ -126,10 +126,15 @@ public sealed partial class CEScienceMapControl : BoxContainer
             _dragging = true;
 
             var cursor = (UserInterfaceManager.MousePositionScaled.Position * UIScale) - GlobalPixelPosition;
-            _selected = ScreenToCell(cursor);
+            var cell = ScreenToCell(cursor);
 
-            OnCellSelected?.Invoke(_selected);
-            UserInterfaceManager.ClickSound();
+            // Only already-researched cells can be selected - clicking into the fog does nothing.
+            if (_researched.Contains(cell))
+            {
+                _selected = cell;
+                OnCellSelected?.Invoke(_selected);
+                UserInterfaceManager.ClickSound();
+            }
         }
 
         if (args.Function == EngineKeyFunctions.UIRightClick)

@@ -16,7 +16,7 @@ public sealed class CEResearchTableBoundUserInterface : BoundUserInterface
         base.Open();
 
         _window = this.CreateWindow<CEResearchTableWindow>();
-        _window.OnResearch += (area, coordinate) => SendMessage(new CEResearchTableResearchMessage(area, coordinate));
+        _window.OnResearch += (area, coordinate, action) => SendMessage(new CEResearchTableActionMessage(area, coordinate, action));
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)

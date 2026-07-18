@@ -1,4 +1,5 @@
 using Content.Server._CE.Science.Components;
+using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.Science;
 using Content.Shared._CE.Science.Prototypes;
 using Content.Shared.UserInterface;
@@ -18,7 +19,7 @@ public sealed class CEResearchTableSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<CEResearchTableComponent, BeforeActivatableUIOpenEvent>(OnBeforeUIOpen);
-        SubscribeLocalEvent<CEResearchTableComponent, CEResearchTableResearchMessage>(OnResearch);
+        SubscribeLocalEvent<CEResearchTableComponent, CEResearchTableActionMessage>(OnAction);
     }
 
     private void OnBeforeUIOpen(Entity<CEResearchTableComponent> ent, ref BeforeActivatableUIOpenEvent args)
@@ -26,17 +27,41 @@ public sealed class CEResearchTableSystem : EntitySystem
         SendState(ent, args.User);
     }
 
-    private void OnResearch(Entity<CEResearchTableComponent> ent, ref CEResearchTableResearchMessage args)
+    private void OnAction(Entity<CEResearchTableComponent> ent, ref CEResearchTableActionMessage args)
     {
+        if (!_proto.TryIndex(args.Action, out var action))
+            return;
+
         var data = EnsureComp<CEScienceResearchDataComponent>(args.Actor);
 
-        if (!data.Researched.TryGetValue(args.Area, out var researched))
+        // The coordinate must already be researched by this player - actions only ever operate on
+        // cells the player can already see, never on unrevealed ones.
+        if (!data.Researched.TryGetValue(args.Area, out var researched) || !researched.Contains(args.Coordinate))
+            return;
+
+        var kind = CEResearchCellKind.Empty;
+        if (_science.TryGetSingleton(out var science)
+            && science.Areas.TryGetValue(args.Area, out var areaCells)
+            && areaCells.TryGetValue(args.Coordinate, out var cell))
         {
-            researched = new HashSet<Vector2i>();
-            data.Researched[args.Area] = researched;
+            kind = cell.Kind;
         }
 
-        researched.Add(args.Coordinate);
+        if (!action.AllowedCells.HasFlag(kind))
+            return;
+
+        var conditionArgs = new CEEntityEffectArgs(EntityManager, args.Actor, null, default, 0f, args.Actor, null);
+        foreach (var condition in action.Conditions)
+        {
+            if (!condition.Passes(conditionArgs))
+                return;
+        }
+
+        var effectArgs = new CEResearchActionEffectArgs(EntityManager, args.Actor, args.Area, args.Coordinate);
+        foreach (var effect in action.Effects)
+        {
+            effect.Effect(effectArgs);
+        }
 
         SendState(ent, args.Actor);
     }

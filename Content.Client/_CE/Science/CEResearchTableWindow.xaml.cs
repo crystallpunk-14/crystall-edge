@@ -19,7 +19,7 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
     private ProtoId<CEScienceAreaPrototype>? _currentArea;
     private readonly Dictionary<ProtoId<CEScienceAreaPrototype>, Vector2i> _selectedPerArea = new();
 
-    public event Action<ProtoId<CEScienceAreaPrototype>, Vector2i>? OnResearch;
+    public event Action<ProtoId<CEScienceAreaPrototype>, Vector2i, ProtoId<CEResearchActionPrototype>>? OnResearch;
 
     public CEResearchTableWindow()
     {
@@ -28,7 +28,7 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
 
         MapControl.OnCellSelected += OnCellSelected;
         MapControl.OnViewChanged += OnMapViewChanged;
-        ResearchButton.OnPressed += _ => OnResearchPressed();
+        CellInfo.OnAction += OnActionPressed;
 
         foreach (var area in _prototype.EnumeratePrototypes<CEScienceAreaPrototype>())
         {
@@ -79,6 +79,26 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
             MapControl.UpdateState(data.Cells, data.Researched, indexedArea);
         else
             MapControl.UpdateState(new Dictionary<Vector2i, CEScienceMapCell>(), new HashSet<Vector2i>(), indexedArea);
+
+        UpdateInfoPanel();
+    }
+
+    /// <summary>
+    /// Refreshes the left-hand info panel for whichever cell is currently selected in the current area.
+    /// </summary>
+    private void UpdateInfoPanel()
+    {
+        if (_currentArea is not { } area)
+            return;
+
+        var coordinate = _selectedPerArea.GetValueOrDefault(area, default);
+        CoordinateLabel.Text = $"({coordinate.X}, {coordinate.Y})";
+
+        CEScienceMapCell? cell = null;
+        if (_state is not null && _state.Areas.TryGetValue(area, out var data))
+            data.Cells.TryGetValue(coordinate, out cell);
+
+        CellInfo.UpdateCell(cell);
     }
 
     /// <summary>
@@ -98,16 +118,19 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
 
     private void OnCellSelected(Vector2i coordinate)
     {
-        if (_currentArea is { } area)
-            _selectedPerArea[area] = coordinate;
+        if (_currentArea is not { } area)
+            return;
+
+        _selectedPerArea[area] = coordinate;
+        UpdateInfoPanel();
     }
 
-    private void OnResearchPressed()
+    private void OnActionPressed(ProtoId<CEResearchActionPrototype> action)
     {
         if (_currentArea is not { } area)
             return;
 
         var coordinate = _selectedPerArea.GetValueOrDefault(area, default);
-        OnResearch?.Invoke(area, coordinate);
+        OnResearch?.Invoke(area, coordinate, action);
     }
 }
