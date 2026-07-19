@@ -1,6 +1,7 @@
-# Materials
+#MARK: Materials
 
 - type: CERecipe
+  roundStart: true
   id: CEMachinePartCoalDiffuser
   tag: CERecipeEngineeringTable
   category: Materials
@@ -22,6 +23,7 @@
   resultCount: 1
 
 - type: CERecipe
+  roundStart: true
   id: CEMachinePartEnergyLine1
   tag: CERecipeEngineeringTable
   category: Materials
@@ -40,6 +42,7 @@
   resultCount: 1
 
 - type: CERecipe
+  roundStart: true
   id: CEEnergyCrystalCell
   tag: CERecipeEngineeringTable
   category: Materials
@@ -54,9 +57,10 @@
   result: CEEnergyCrystalCell
   resultCount: 1
 
-# Tools
+#MARK: Tools
 
 - type: CERecipe
+  roundStart: true
   id: CEMediumBrassPipe15
   tag: CERecipeEngineeringTable
   category: Tools
@@ -69,6 +73,7 @@
   resultCount: 15
 
 - type: CERecipe
+  roundStart: true
   id: CEBigBrassPipe15
   tag: CERecipeEngineeringTable
   category: Tools
@@ -81,6 +86,7 @@
   resultCount: 15
 
 - type: CERecipe
+  roundStart: true
   id: CEPipeValve10
   tag: CERecipeEngineeringTable
   category: Tools
@@ -93,6 +99,7 @@
   resultCount: 10
 
 - type: CERecipe
+  roundStart: true
   id: CEWrench
   tag: CERecipeEngineeringTable
   category: Tools
@@ -108,6 +115,7 @@
   resultCount: 1
 
 - type: CERecipe
+  roundStart: true
   id: CECrowbar
   tag: CERecipeEngineeringTable
   category: Tools
@@ -123,6 +131,7 @@
   resultCount: 1
 
 - type: CERecipe
+  roundStart: true
   id: CEScrewdriver
   tag: CERecipeEngineeringTable
   category: Tools
@@ -138,6 +147,7 @@
   resultCount: 1
 
 - type: CERecipe
+  roundStart: true
   id: CEWeaponPickaxeIron
   tag: CERecipeEngineeringTable
   category: Tools
@@ -156,6 +166,7 @@
   resultCount: 1
 
 - type: CERecipe
+  roundStart: true
   id: CEWeaponShovelIron
   tag: CERecipeEngineeringTable
   category: Tools
@@ -171,6 +182,7 @@
   resultCount: 1
 
 - type: CERecipe
+  roundStart: true
   id: CELantern
   tag: CERecipeEngineeringTable
   category: Tools
@@ -189,6 +201,7 @@
   resultCount: 1
 
 - type: CERecipe
+  roundStart: true
   id: CEManaTransferGlove
   tag: CERecipeEngineeringTable
   category: Tools
@@ -207,6 +220,7 @@
   resultCount: 1
 
 - type: CERecipe
+  roundStart: true
   id: CEClothingEyesMiningGlasses
   tag: CERecipeEngineeringTable
   category: Tools
@@ -224,9 +238,28 @@
   result: CEClothingEyesMiningGlasses
   resultCount: 1
 
-# Machine cores
+- type: CERecipe
+  id: CEVehicleHoverboard
+  tag: CERecipeEngineeringTable
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassBar
+    count: 4
+  - !type:ProtoIdResource
+    protoId: CECrystalShardAir
+    count: 1
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 2
+  result: CEVehicleHoverboard
+  resultCount: 1
+
+#MARK: Machine cores
 
 - type: CERecipe
+  roundStart: true
   id: CEMachineCoreMeltingFurnace
   tag: CERecipeEngineeringTable
   category: MachineCore
@@ -245,6 +278,7 @@
   resultCount: 1
 
 - type: CERecipe
+  roundStart: true
   id: CEMachineCoreGeneratorMagicCapacitor
   tag: CERecipeEngineeringTable
   category: MachineCore
@@ -266,6 +300,7 @@
   resultCount: 1
 
 - type: CERecipe
+  roundStart: true
   id: CEMachineCoreRecycler
   tag: CERecipeEngineeringTable
   category: MachineCore
@@ -284,6 +319,7 @@
   resultCount: 1
 
 - type: CERecipe
+  roundStart: true
   id: CEMachineCoreDrill
   tag: CERecipeEngineeringTable
   category: MachineCore
@@ -301,7 +337,30 @@
   result: CEMachineCoreDrill
   resultCount: 1
 
+# Unlocked by the "Advanced Drilling" science achievement - see achievements.yml.
 - type: CERecipe
+  id: CEMachineCoreDrillAdvanced
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 3.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 8
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 2
+  - !type:StackResource
+    stack: CEIronRod
+    count: 25
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 2
+  result: CEMachineCoreDrillAdvanced
+  resultCount: 1
+
+- type: CERecipe
+  roundStart: true
   id: CEMachineCoreCharger
   tag: CERecipeEngineeringTable
   category: MachineCore
@@ -317,6 +376,7 @@
   resultCount: 1
 
 - type: CERecipe
+  roundStart: true
   id: CEMachineCoreAccumulatorVessel
   tag: CERecipeEngineeringTable
   category: MachineCore
@@ -335,6 +395,7 @@
   resultCount: 1
 
 - type: CERecipe
+  roundStart: true
   id: CEMachineCoreDistributionUnit
   tag: CERecipeEngineeringTable
   category: MachineCore
@@ -353,6 +414,7 @@
   resultCount: 1
 
 - type: CERecipe
+  roundStart: true
   id: CEMachineCoreFunnel
   tag: CERecipeEngineeringTable
   category: MachineCore
@@ -365,6 +427,7 @@
   resultCount: 1
 
 - type: CERecipe
+  roundStart: true
   id: CEMachineCoreTradingPlatformHomeDecor
   tag: CERecipeEngineeringTable
   category: MachineCore
@@ -383,6 +446,7 @@
   resultCount: 1
 
 - type: CERecipe
+  roundStart: true
   id: CEMachineCoreTradingPlatformTailors
   tag: CERecipeEngineeringTable
   category: MachineCore
@@ -401,6 +465,7 @@
   resultCount: 1
 
 - type: CERecipe
+  roundStart: true
   id: CEMachineCoreTradingPlatformHorticulture
   tag: CERecipeEngineeringTable
   category: MachineCore
@@ -419,6 +484,7 @@
   resultCount: 1
 
 - type: CERecipe
+  roundStart: true
   id: CEMachineCoreTradingPlatformDwarfMiners
   tag: CERecipeEngineeringTable
   category: MachineCore
@@ -437,6 +503,7 @@
   resultCount: 1
 
 - type: CERecipe
+  roundStart: true
   id: CEMachineCoreTradingPlatformAlcohol
   tag: CERecipeEngineeringTable
   category: MachineCore
@@ -455,6 +522,7 @@
   resultCount: 1
 
 - type: CERecipe
+  roundStart: true
   id: CEMachineCoreTradingPlatformApothecariesGuild
   tag: CERecipeEngineeringTable
   category: MachineCore
@@ -471,4 +539,3 @@
     count: 5
   result: CEMachineCoreTradingPlatformApothecariesGuild
   resultCount: 1
-

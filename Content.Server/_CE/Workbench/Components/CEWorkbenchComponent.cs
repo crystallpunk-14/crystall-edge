@@ -44,4 +44,11 @@ public sealed partial class CEWorkbenchComponent : Component
     /// </summary>
     [DataField]
     public EntProtoId? Vfx;
+
+    /// <summary>
+    /// The player entity that most recently opened this workbench UI.
+    /// Used to filter shown recipes by player's recipe knowledge.
+    /// Not persisted.
+    /// </summary>
+    public EntityUid? CurrentUser;
 }

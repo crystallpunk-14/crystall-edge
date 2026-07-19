@@ -62,7 +62,15 @@ public sealed partial class CENodeTreeGraphControl : BoxContainer
         if (args.Handled)
             return;
 
+        var cursor = (UserInterfaceManager.MousePositionScaled.Position * UIScale) - GlobalPixelPosition;
+        var oldScale = Scale;
+
         _localUIScale = MathHelper.Clamp(_localUIScale + 0.1f * args.Delta.Y, LocalUIScaleMin, LocalUIScaleMax);
+
+        // Keep the point under the cursor fixed on screen instead of zooming from the corner.
+        var newScale = Scale;
+        _globalOffset = cursor - (cursor - _globalOffset) * (newScale / oldScale);
+        OnOffsetChanged?.Invoke(_globalOffset);
     }
 
     protected override void KeyBindDown(GUIBoundKeyEventArgs args)

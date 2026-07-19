@@ -1,0 +1,36 @@
+<DefaultWindow xmlns="https://spacestation14.io"
+               xmlns:science="clr-namespace:Content.Client._CE.Science"
+               xmlns:parallax="clr-namespace:Content.Client.Parallax"
+               xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls"
+               Title="{Loc 'ce-research-table-ui-title'}"
+               SetSize="800 550"
+               MinSize="700 450">
+    <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
+
+        <!-- Selected cell info + actions -->
+        <BoxContainer Margin="10 10 10 10" MaxWidth="240" SetWidth="240" Orientation="Vertical"
+                      HorizontalExpand="False" VerticalExpand="True">
+            <science:CEResearchCellInfoControl Name="CellInfo" />
+        </BoxContainer>
+
+        <customControls:VSeparator StyleClasses="LowDivider" />
+
+        <!-- Map -->
+        <PanelContainer Margin="10 10 10 10" HorizontalExpand="True" VerticalExpand="True" RectClipContent="True">
+            <parallax:ParallaxControl Name="ParallaxBackground" SpeedX="10" SpeedY="5" Access="Public" />
+            <science:CEScienceMapControl Name="MapControl" />
+
+            <!-- Research points -->
+            <BoxContainer Margin="0 0 0 8" VerticalAlignment="Bottom" HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextureRect Name="PointsIcon" VerticalAlignment="Center" />
+                <Label Name="PointsLabel" VerticalAlignment="Center" Margin="4 0 0 0" />
+            </BoxContainer>
+
+            <!-- Area tabs -->
+            <BoxContainer Margin="10 10 10 10" VerticalAlignment="Top" HorizontalAlignment="Right"
+                          Orientation="Vertical" VerticalExpand="True">
+                <BoxContainer Name="AreaTabsContainer" Orientation="Vertical" HorizontalExpand="True" />
+            </BoxContainer>
+        </PanelContainer>
+    </BoxContainer>
+</DefaultWindow>

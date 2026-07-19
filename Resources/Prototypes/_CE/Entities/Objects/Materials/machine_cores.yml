@@ -51,6 +51,16 @@
     price: 100
 
 - type: entity
+  id: CEMachineCoreDrillAdvanced
+  parent: CEBaseMachineCore
+  name: advanced drill machine core
+  components:
+  - type: MachineBoard
+    prototype: CEDrillAdvanced
+  - type: StaticPrice
+    price: 220
+
+- type: entity
   id: CEMachineCoreCharger
   parent: CEBaseMachineCore
   name: charger machine core

@@ -44,4 +44,11 @@ public sealed partial class CEWorkbenchRecipePrototype : IPrototype
 
     [DataField]
     public int Priority = 0;  // In descending order. More means it will be first.
+
+    /// <summary>
+    /// If true, this recipe is available in the workbench by default without requiring
+    /// the player to learn it from a knowledge book.
+    /// </summary>
+    [DataField]
+    public bool RoundStart = false;
 }

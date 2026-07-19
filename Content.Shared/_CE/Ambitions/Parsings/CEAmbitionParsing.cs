@@ -1,6 +1,7 @@
 using Content.Shared._CE.Cooking.Prototypes;
 using Content.Shared._CE.LockKey;
 using Content.Shared._CE.LockKey.Components;
+using Content.Shared._CE.Science.Prototypes;
 using Content.Shared.Dataset;
 using Content.Shared.Destructible.Thresholds;
 using Content.Shared.Humanoid.Prototypes;
@@ -212,6 +213,24 @@ public sealed partial class RandomLocation : CEAmbitionParsing
             return null;
 
         return Loc.GetString(prototype.Name!);
+    }
+}
+
+public sealed partial class RandomScienceAchievement : CEAmbitionParsing
+{
+    public override string? GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
+    {
+        List<CEScienceAchievementPrototype> all = new();
+
+        foreach (var achievement in protoManager.EnumeratePrototypes<CEScienceAchievementPrototype>())
+        {
+            all.Add(achievement);
+        }
+
+        if (all.Count == 0)
+            return null;
+
+        return Loc.GetString(random.Pick(all).Name);
     }
 }
 

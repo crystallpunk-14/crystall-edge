@@ -13,9 +13,12 @@
     heldPrefix: feather
     size: Tiny
   - type: Tag
-    tags:
-    - Write
-    - Pen
+    tags: []
+  - type: CEPen
+  - type: UserInterface
+    interfaces:
+      enum.CEPenActionsUiKey.Key:
+        type: CEPenActionsBoundUserInterface
   - type: StaticPrice
     price: 3
   - type: PhysicalComposition
