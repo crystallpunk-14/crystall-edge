@@ -82,32 +82,14 @@ public sealed partial class CEScienceSystem : CESharedScienceSystem
     private void OnRoundStarting(RoundStartingEvent ev)
     {
         var uid = Spawn(_scienceEntity, MapCoordinates.Nullspace);
-        GenerateHardcodedMap(uid);
-    }
 
-    /// <summary>
-    /// Temporary hardcoded map generation, standing in for real procedural generation.
-    /// </summary>
-    private void GenerateHardcodedMap(EntityUid uid)
-    {
         if (!TryComp<CEScienceComponent>(uid, out var science))
             return;
 
-        science.Areas["ArcaneEngineering"] = new Dictionary<Vector2i, CEScienceMapCell>
+        foreach (var area in _proto.EnumeratePrototypes<CEScienceAreaPrototype>())
         {
-            [new Vector2i(3, -4)] = new CEScienceAchievementCell("Hoverboards"),
-            [new Vector2i(2, -4)] = new CEScienceDeadZoneCell(),
-            [new Vector2i(1, -4)] = new CEScienceDeadZoneCell(),
-            [new Vector2i(0, -4)] = new CEScienceDeadZoneCell(),
-            [new Vector2i(0, -3)] = new CEScienceDeadZoneCell(),
-            [new Vector2i(0, -2)] = new CEScienceDeadZoneCell(),
-            [new Vector2i(0, -1)] = new CEScienceDeadZoneCell(),
-            [new Vector2i(0, 0)] = new CEScienceDeadZoneCell(),
-            [new Vector2i(4, -3)] = new CEScienceDeadZoneCell(),
-            [new Vector2i(1, -5)] = new CEScienceDeadZoneCell(),
-            [new Vector2i(5, -5)] = new CEScienceDeadZoneCell(),
-            [new Vector2i(3, -6)] = new CEScienceDeadZoneCell(),
-        };
+            science.Areas[area.ID] = GenerateArea(area);
+        }
     }
 
     private void OnMapInit(Entity<CEScienceComponent> ent, ref MapInitEvent args)

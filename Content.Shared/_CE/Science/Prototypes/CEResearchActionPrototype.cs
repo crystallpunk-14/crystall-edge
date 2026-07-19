@@ -5,11 +5,10 @@ namespace Content.Shared._CE.Science.Prototypes;
 
 /// <summary>
 /// An action the player can take on a selected research map cell, e.g. "scan the surrounding area".
-/// Shown as an expandable entry in the research table UI when <see cref="AllowedCells"/> matches
-/// the selected cell's kind and every one of <see cref="Conditions"/> passes for the player. The
-/// client only uses this to decide which entries to show and whether the "Execute" button is
-/// enabled - the server re-validates everything (including <see cref="Cost"/>) before running
-/// <see cref="Effects"/>.
+/// Shown as an entry in the research table UI when <see cref="AllowedCells"/> matches the selected
+/// cell's kind and every one of <see cref="Conditions"/> passes for the player. The client only
+/// uses this to decide which entries to show and whether the button is enabled - the server
+/// re-validates everything (including <see cref="Cost"/>) before running <see cref="Effects"/>.
 /// </summary>
 [Prototype("researchAction")]
 public sealed partial class CEResearchActionPrototype : IPrototype
@@ -20,7 +19,7 @@ public sealed partial class CEResearchActionPrototype : IPrototype
     public LocId Name;
 
     /// <summary>
-    /// Always shown once the action's entry is expanded.
+    /// Shown as the action button's tooltip.
     /// </summary>
     [DataField]
     public LocId? Desc;

@@ -1,3 +1,4 @@
+using Robust.Shared.Noise;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
@@ -43,4 +44,33 @@ public sealed partial class CEScienceAreaPrototype : IPrototype
     /// </summary>
     [DataField]
     public SpriteSpecifier MapUnknownIcon = new SpriteSpecifier.Rsi(new ResPath("/Textures/_CE/Interface/Science/unknown.rsi"), "unknown");
+
+    /// <summary>
+    /// Extra cells of radius generated beyond the area's farthest achievement difficulty, so
+    /// there's room for the "+1 ring" placement fallback and some dead-zone padding around the
+    /// outermost achievements.
+    /// </summary>
+    [DataField]
+    public int GenerationMargin = 2;
+
+    /// <summary>
+    /// Noise layers used to decide which cells become dead zones when this area's map is
+    /// procedurally generated at round start. A cell becomes a dead zone if any layer's noise
+    /// value at that coordinate exceeds its threshold.
+    /// </summary>
+    [DataField]
+    public List<CEScienceNoiseLayer> DeadZoneLayers = new();
+}
+
+[DataRecord]
+public partial record struct CEScienceNoiseLayer
+{
+    /// <summary>
+    /// If the noise value at a coordinate is above this, that coordinate becomes a dead zone.
+    /// </summary>
+    [DataField]
+    public float Threshold;
+
+    [DataField(required: true)]
+    public FastNoiseLite Noise;
 }

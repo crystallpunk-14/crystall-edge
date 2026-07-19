@@ -5,4 +5,6 @@ ce-research-cell-dead-zone-desc = Attempts at research here are fruitless and yi
 
 ce-research-action-basic-scan-name = Conduct Research
 ce-research-action-basic-scan-desc = Scans a 3x3 area around the selected cell
+ce-research-action-check-hypothesis-name = Check Hypothesis
+ce-research-action-check-hypothesis-desc = Measures the distance in cells from this point to the nearest undiscovered breakthrough
 ce-research-action-execute = Execute

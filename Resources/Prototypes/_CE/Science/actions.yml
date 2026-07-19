@@ -9,3 +9,15 @@
   effects:
   - !type:CEResearchRevealArea
     radius: 1
+
+- type: researchAction
+  id: CheckHypothesis
+  name: ce-research-action-check-hypothesis-name
+  desc: ce-research-action-check-hypothesis-desc
+  cost: 1
+  allowedCells:
+  - Empty
+  effects:
+  - !type:CEResearchCheckHypothesis
+    duration: 30
+    maxRadius: 10

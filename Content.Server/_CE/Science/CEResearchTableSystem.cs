@@ -63,7 +63,7 @@ public sealed class CEResearchTableSystem : EntitySystem
 
         _science.TrySpendPoints((args.Actor, data), action.Cost);
 
-        var effectArgs = new CEResearchActionEffectArgs(EntityManager, args.Actor, args.Area, args.Coordinate);
+        var effectArgs = new CEResearchActionEffectArgs(EntityManager, ent, args.Actor, args.Area, args.Coordinate);
         foreach (var effect in action.Effects)
         {
             effect.Effect(effectArgs);

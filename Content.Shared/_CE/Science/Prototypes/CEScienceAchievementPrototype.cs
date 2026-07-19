@@ -12,6 +12,13 @@ public sealed partial class CEScienceAchievementPrototype : IPrototype
     [DataField(required: true)]
     public ProtoId<CEScienceAreaPrototype> Area;
 
+    /// <summary>
+    /// How far (in cells, Chebyshev distance) from the map's center this achievement should be
+    /// procedurally placed. Higher difficulty means farther from the starting cell.
+    /// </summary>
+    [DataField(required: true)]
+    public int Difficulty;
+
     [DataField(required: true)]
     public List<CEEntityEffect> Effects = new();
 

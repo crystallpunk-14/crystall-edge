@@ -37,6 +37,7 @@ public abstract partial class CEResearchActionEffectBase<T> : CEResearchActionEf
 /// </summary>
 public record struct CEResearchActionEffectArgs(
     IEntityManager EntityManager,
+    EntityUid Table,
     EntityUid Actor,
     ProtoId<CEScienceAreaPrototype> Area,
     Vector2i Coordinate);

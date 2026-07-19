@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using Content.Shared._CE.Science;
@@ -8,9 +9,17 @@ using Robust.Client.UserInterface.CustomControls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Client.Utility;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
 namespace Content.Client._CE.Science;
+
+/// <summary>
+/// Client-local, unnetworked record of a "check hypothesis" result: pre-formatted text (either the
+/// distance or a sad face if nothing was found within range) and when it should finish fading out.
+/// Never sent over the network - see <see cref="CEResearchTableHypothesisResultMessage"/>.
+/// </summary>
+public readonly record struct CEScienceHypothesisDisplay(string Text, TimeSpan ExpiresAt, TimeSpan Duration);
 
 [GenerateTypedNameReferences]
 public sealed partial class CEResearchTableWindow : DefaultWindow
@@ -19,10 +28,12 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
         new SpriteSpecifier.Rsi(new ResPath("/Textures/_CE/Interface/Science/science_point.rsi"), "point");
 
     [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     private CEResearchTableState? _state;
     private ProtoId<CEScienceAreaPrototype>? _currentArea;
     private readonly Dictionary<ProtoId<CEScienceAreaPrototype>, Vector2i> _selectedPerArea = new();
+    private readonly Dictionary<ProtoId<CEScienceAreaPrototype>, Dictionary<Vector2i, CEScienceHypothesisDisplay>> _hypotheses = new();
 
     public event Action<ProtoId<CEScienceAreaPrototype>, Vector2i, ProtoId<CEResearchActionPrototype>>? OnResearch;
 
@@ -87,7 +98,35 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
         else
             MapControl.UpdateState(new Dictionary<Vector2i, CEScienceMapCell>(), new HashSet<Vector2i>(), indexedArea);
 
+        var areaHypotheses = _hypotheses.TryGetValue(area, out var existing)
+            ? existing
+            : new Dictionary<Vector2i, CEScienceHypothesisDisplay>();
+        MapControl.UpdateHypotheses(areaHypotheses);
+
         UpdateInfoPanel();
+    }
+
+    /// <summary>
+    /// Records a "check hypothesis" result locally so the map can fade it in over
+    /// <see cref="CEResearchTableHypothesisResultMessage.Duration"/> - this never touches
+    /// <see cref="_state"/>, it's purely a client-side visual.
+    /// </summary>
+    public void HandleHypothesisResult(CEResearchTableHypothesisResultMessage message)
+    {
+        if (!_hypotheses.TryGetValue(message.Area, out var areaHypotheses))
+        {
+            areaHypotheses = new Dictionary<Vector2i, CEScienceHypothesisDisplay>();
+            _hypotheses[message.Area] = areaHypotheses;
+        }
+
+        var text = message.Distance is { } distance
+            ? distance.ToString("F1", CultureInfo.InvariantCulture)
+            : ":(";
+
+        areaHypotheses[message.Coordinate] = new CEScienceHypothesisDisplay(text, _timing.CurTime + message.Duration, message.Duration);
+
+        if (_currentArea == message.Area)
+            MapControl.UpdateHypotheses(areaHypotheses);
     }
 
     /// <summary>
