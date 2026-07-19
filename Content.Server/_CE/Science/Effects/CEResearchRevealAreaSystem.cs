@@ -6,7 +6,7 @@ using Robust.Shared.Audio.Systems;
 
 namespace Content.Server._CE.Science.Effects;
 
-public sealed class CEResearchRevealAreaSystem : CEResearchActionEffectSystem<CEResearchRevealArea>
+public sealed partial class CEResearchRevealAreaSystem : CEResearchActionEffectSystem<CEResearchRevealArea>
 {
     [Dependency] private CEScienceSystem _science = default!;
     [Dependency] private SharedAudioSystem _audio = default!;

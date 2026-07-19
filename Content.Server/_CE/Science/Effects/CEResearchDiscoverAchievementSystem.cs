@@ -8,7 +8,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Server._CE.Science.Effects;
 
-public sealed class CEResearchDiscoverAchievementSystem : CEResearchActionEffectSystem<CEResearchDiscoverAchievement>
+public sealed partial class CEResearchDiscoverAchievementSystem : CEResearchActionEffectSystem<CEResearchDiscoverAchievement>
 {
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private CEScienceSystem _science = default!;

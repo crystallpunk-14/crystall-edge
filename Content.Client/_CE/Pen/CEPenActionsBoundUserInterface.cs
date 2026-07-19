@@ -12,8 +12,8 @@ namespace Content.Client._CE.Pen;
 [UsedImplicitly]
 public sealed partial class CEPenActionsBoundUserInterface : BoundUserInterface
 {
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly IPlayerManager _player = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private IPlayerManager _player = default!;
 
     private SimpleRadialMenu? _menu;
 

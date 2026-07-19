@@ -9,7 +9,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.Science;
 
-public sealed class CEResearchTableSystem : EntitySystem
+public sealed partial class CEResearchTableSystem : EntitySystem
 {
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private UserInterfaceSystem _userInterface = default!;

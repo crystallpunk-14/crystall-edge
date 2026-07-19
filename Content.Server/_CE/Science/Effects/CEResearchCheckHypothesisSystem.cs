@@ -8,7 +8,7 @@ using Robust.Shared.Audio.Systems;
 
 namespace Content.Server._CE.Science.Effects;
 
-public sealed class CEResearchCheckHypothesisSystem : CEResearchActionEffectSystem<CEResearchCheckHypothesis>
+public sealed partial class CEResearchCheckHypothesisSystem : CEResearchActionEffectSystem<CEResearchCheckHypothesis>
 {
     [Dependency] private CEScienceSystem _science = default!;
     [Dependency] private UserInterfaceSystem _userInterface = default!;
