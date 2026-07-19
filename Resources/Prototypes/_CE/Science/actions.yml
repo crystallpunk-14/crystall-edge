@@ -21,3 +21,12 @@
   - !type:CEResearchCheckHypothesis
     duration: 30
     maxRadius: 10
+
+- type: researchAction
+  id: DiscoverAchievement
+  name: ce-research-action-discover-achievement-name
+  desc: ce-research-action-discover-achievement-desc
+  allowedCells:
+  - Achievement
+  effects:
+  - !type:CEResearchDiscoverAchievement

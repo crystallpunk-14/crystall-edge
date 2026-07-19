@@ -79,6 +79,28 @@ public sealed partial class CEScienceSystem : CESharedScienceSystem
             Dirty(ent);
     }
 
+    /// <summary>
+    /// Marks an achievement as discovered for the given entity, networking the change. Returns
+    /// false (and does not mutate anything) if it was already discovered.
+    /// </summary>
+    public bool DiscoverAchievement(Entity<CEScienceResearchDataComponent> ent, ProtoId<CEScienceAchievementPrototype> achievement)
+    {
+        if (!ent.Comp.DiscoveredAchievements.Add(achievement))
+            return false;
+
+        Dirty(ent);
+        return true;
+    }
+
+    /// <summary>
+    /// Un-marks an achievement as discovered for the given entity, networking the change.
+    /// </summary>
+    public void UndiscoverAchievement(Entity<CEScienceResearchDataComponent> ent, ProtoId<CEScienceAchievementPrototype> achievement)
+    {
+        if (ent.Comp.DiscoveredAchievements.Remove(achievement))
+            Dirty(ent);
+    }
+
     private void OnRoundStarting(RoundStartingEvent ev)
     {
         var uid = Spawn(_scienceEntity, MapCoordinates.Nullspace);

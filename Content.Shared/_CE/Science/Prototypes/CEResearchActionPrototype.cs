@@ -26,9 +26,11 @@ public sealed partial class CEResearchActionPrototype : IPrototype
 
     /// <summary>
     /// How many research points this action costs. Spent from the player's research data when
-    /// the action is executed.
+    /// the action is executed. Actions whose effects derive their own cost elsewhere (e.g.
+    /// <see cref="Content.Shared._CE.Science.Effects.CEResearchDiscoverAchievement"/>, which uses
+    /// the target achievement's cost) leave this at 0.
     /// </summary>
-    [DataField(required: true)]
+    [DataField]
     public int Cost;
 
     [DataField(required: true)]
