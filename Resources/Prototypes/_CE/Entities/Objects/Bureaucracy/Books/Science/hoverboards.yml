@@ -1,7 +1,0 @@
-- type: entity
-  id: CEScienceBookHoverboards
-  parent: CEBaseScienceBook
-  suffix: Hoverboards
-  components:
-  - type: CEScienceAchievementHolder
-    achievement: Hoverboards

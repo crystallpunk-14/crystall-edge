@@ -2,6 +2,7 @@
   id: ArcaneEngineering
   color: "#c6905a"
   name: ce-science-area-arcane-engineering
+  book: CEBaseScienceBookArcaneEngineering
   parallax: CEBlood
   generationMargin: 2
   deadZoneLayers:

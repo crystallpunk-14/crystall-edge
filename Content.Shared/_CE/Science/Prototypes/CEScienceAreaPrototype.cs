@@ -19,6 +19,13 @@ public sealed partial class CEScienceAreaPrototype : IPrototype
     public Color Color = Color.White;
 
     /// <summary>
+    /// Blank book entity spawned when recording an achievement of this area onto a book with a
+    /// pen. Gives every achievement of the same area a shared "cover".
+    /// </summary>
+    [DataField(required: true)]
+    public EntProtoId Book;
+
+    /// <summary>
     /// Parallax prototype shown behind this area's research map. Empty means no parallax - a
     /// plain black background is drawn instead.
     /// </summary>

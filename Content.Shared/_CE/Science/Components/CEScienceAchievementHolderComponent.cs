@@ -9,9 +9,9 @@ namespace Content.Shared._CE.Science.Components;
 /// description are overridden from <see cref="CEScienceAchievementPrototype"/>.
 /// Using the item in-hand starts a do-after that applies the achievement's effects to the user.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class CEScienceAchievementHolderComponent : Component
 {
-    [DataField(required: true)]
+    [DataField(required: true), AutoNetworkedField]
     public ProtoId<CEScienceAchievementPrototype> Achievement;
 }
