@@ -1,7 +1,10 @@
 using Content.Shared._CE.Science;
 using Content.Shared._CE.Science.Components;
 using Content.Shared._CE.Science.Effects;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Server._CE.Science.Effects;
 
@@ -9,6 +12,10 @@ public sealed class CEResearchDiscoverAchievementSystem : CEResearchActionEffect
 {
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private CEScienceSystem _science = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+
+    private static readonly SoundSpecifier DiscoverySound =
+        new SoundPathSpecifier(new ResPath("/Audio/_CE/Effects/knowledge_learned.ogg"));
 
     protected override void Effect(ref CEResearchActionEffectEvent<CEResearchDiscoverAchievement> args)
     {
@@ -34,5 +41,7 @@ public sealed class CEResearchDiscoverAchievementSystem : CEResearchActionEffect
             return;
 
         _science.TryDiscoverAchievement((args.Args.Actor, data), achievementCell.Achievement);
+
+        _audio.PlayPvs(DiscoverySound, args.Args.Table);
     }
 }

@@ -278,8 +278,8 @@ public sealed partial class CEScienceMapControl : BoxContainer
                     var discovered = researchData?.DiscoveredAchievements.Contains(achievementCell.Achievement) ?? false;
 
                     if (!discovered)
-                        // Undiscovered achievements are drawn tinted pure black, whatever their icon.
-                        DrawCentered(handle, texture, CellToScreen(coordinate), Color.Black);
+                        // Undiscovered achievements are drawn tinted translucent white, whatever their icon.
+                        DrawCentered(handle, texture, CellToScreen(coordinate), Color.White.WithAlpha(0.5f));
                     else if (icon is not null)
                         DrawCentered(handle, texture, CellToScreen(coordinate));
                     else

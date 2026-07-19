@@ -121,7 +121,7 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
 
         var text = message.Distance is { } distance
             ? distance.ToString("F1", CultureInfo.InvariantCulture)
-            : ":(";
+            : "x";
 
         areaHypotheses[message.Coordinate] = new CEScienceHypothesisDisplay(text, _timing.CurTime + message.Duration, message.Duration);
 
@@ -138,7 +138,6 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
             return;
 
         var coordinate = _selectedPerArea.GetValueOrDefault(area, default);
-        CoordinateLabel.Text = $"({coordinate.X}, {coordinate.Y})";
 
         CEScienceMapCell? cell = null;
         if (_state is not null && _state.Areas.TryGetValue(area, out var data))

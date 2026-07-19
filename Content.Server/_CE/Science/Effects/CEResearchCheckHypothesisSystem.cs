@@ -3,6 +3,8 @@ using Content.Shared._CE.Science;
 using Content.Shared._CE.Science.Components;
 using Content.Shared._CE.Science.Effects;
 using Robust.Server.GameObjects;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 
 namespace Content.Server._CE.Science.Effects;
 
@@ -10,6 +12,9 @@ public sealed class CEResearchCheckHypothesisSystem : CEResearchActionEffectSyst
 {
     [Dependency] private CEScienceSystem _science = default!;
     [Dependency] private UserInterfaceSystem _userInterface = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+
+    private static readonly SoundSpecifier HypothesisSound = new SoundCollectionSpecifier("PaperScribbles");
 
     protected override void Effect(ref CEResearchActionEffectEvent<CEResearchCheckHypothesis> args)
     {
@@ -39,5 +44,7 @@ public sealed class CEResearchCheckHypothesisSystem : CEResearchActionEffectSyst
 
         var message = new CEResearchTableHypothesisResultMessage(args.Args.Area, coordinate, bestDistance, args.Effect.Duration);
         _userInterface.ServerSendUiMessage(args.Args.Table, CEResearchTableUiKey.Key, message, args.Args.Actor);
+
+        _audio.PlayPvs(HypothesisSound, args.Args.Table);
     }
 }
