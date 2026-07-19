@@ -128,3 +128,12 @@ ce-ambition-fashionista-desc = I want to be dressed in the latest fashion.
 
 ce-ambition-nesting-name = Nesting
 ce-ambition-nesting-desc = I want to build a nest in some high place. Preferably, not live there alone.
+
+ce-ambition-science-curiosity-name = Scientific Interest
+ce-ambition-science-curiosity-desc = I want to study the scientific theory about !DISCOVERY!
+
+ce-ambition-forbidden-knowledge-name = Forbidden Knowledge
+ce-ambition-forbidden-knowledge-desc = Because of !REASON!, I believe knowledge of !DISCOVERY! should not be known! I will destroy any books about it if I find them.
+
+ce-ambition-enlightener-name = Enlightener
+ce-ambition-enlightener-desc = I believe EVERYONE should learn about the secrets of !DISCOVERY!.
