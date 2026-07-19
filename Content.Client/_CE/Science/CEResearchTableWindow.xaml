@@ -24,6 +24,12 @@
             <Label Name="CoordinateLabel" Margin="8 0 0 8" VerticalAlignment="Bottom" HorizontalAlignment="Left"
                    FontColorOverride="#FFFFFF80" />
 
+            <!-- Research points -->
+            <BoxContainer Margin="0 0 0 8" VerticalAlignment="Bottom" HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextureRect Name="PointsIcon" VerticalAlignment="Center" />
+                <Label Name="PointsLabel" VerticalAlignment="Center" Margin="4 0 0 0" />
+            </BoxContainer>
+
             <!-- Area tabs -->
             <BoxContainer Margin="10 10 10 10" VerticalAlignment="Top" HorizontalAlignment="Right"
                           Orientation="Vertical" VerticalExpand="True">

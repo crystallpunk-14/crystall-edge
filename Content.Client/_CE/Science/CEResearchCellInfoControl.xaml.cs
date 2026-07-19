@@ -11,7 +11,7 @@ namespace Content.Client._CE.Science;
 
 /// <summary>
 /// Left-hand panel of the research table window: shows the selected cell's content (if any), and
-/// one button per <see cref="CEResearchActionPrototype"/> that currently applies to it. Purely
+/// one entry per <see cref="CEResearchActionPrototype"/> that currently applies to it. Purely
 /// advisory - the server re-validates everything before acting.
 /// </summary>
 [GenerateTypedNameReferences]
@@ -22,9 +22,11 @@ public sealed partial class CEResearchCellInfoControl : BoxContainer
     [Dependency] private IPlayerManager _player = default!;
 
     /// <summary>
-    /// Raised when the player presses one of the action buttons, with the pressed action's id.
+    /// Raised when the player presses an action's "Execute" button, with that action's id.
     /// </summary>
     public event Action<ProtoId<CEResearchActionPrototype>>? OnAction;
+
+    private CEResearchActionControl? _expanded;
 
     public CEResearchCellInfoControl()
     {
@@ -32,7 +34,7 @@ public sealed partial class CEResearchCellInfoControl : BoxContainer
         RobustXamlLoader.Load(this);
     }
 
-    public void UpdateCell(CEScienceMapCell? cell)
+    public void UpdateCell(CEScienceMapCell? cell, int points)
     {
         switch (cell)
         {
@@ -57,6 +59,7 @@ public sealed partial class CEResearchCellInfoControl : BoxContainer
         }
 
         ActionsContainer.RemoveAllChildren();
+        _expanded = null;
 
         if (_player.LocalEntity is not { } localEntity)
             return;
@@ -83,14 +86,38 @@ public sealed partial class CEResearchCellInfoControl : BoxContainer
                 continue;
 
             var actionId = new ProtoId<CEResearchActionPrototype>(action.ID);
-            var button = new Button { Text = Loc.GetString(action.Name), HorizontalExpand = true };
+            var entry = new CEResearchActionControl
+            {
+                HeaderText = Loc.GetString(action.Name),
+                Description = action.Desc is { } desc ? Loc.GetString(desc) : string.Empty,
+                Cost = action.Cost,
+                CanExecute = points >= action.Cost,
+            };
 
-            if (action.Tooltip is { } tooltip)
-                button.ToolTip = Loc.GetString(tooltip);
+            entry.OnHeaderPressed += () => ToggleExpanded(entry);
+            entry.OnExecute += () => OnAction?.Invoke(actionId);
 
-            button.OnPressed += _ => OnAction?.Invoke(actionId);
-
-            ActionsContainer.AddChild(button);
+            ActionsContainer.AddChild(entry);
         }
+    }
+
+    /// <summary>
+    /// Expands the given entry and collapses whichever one was previously expanded - only one
+    /// action entry is ever open at a time. Pressing the currently-open entry's header closes it.
+    /// </summary>
+    private void ToggleExpanded(CEResearchActionControl entry)
+    {
+        if (_expanded == entry)
+        {
+            entry.Expanded = false;
+            _expanded = null;
+            return;
+        }
+
+        if (_expanded is not null)
+            _expanded.Expanded = false;
+
+        entry.Expanded = true;
+        _expanded = entry;
     }
 }

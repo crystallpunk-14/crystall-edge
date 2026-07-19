@@ -1,7 +1,8 @@
 - type: researchAction
   id: BasicScan
   name: ce-research-action-basic-scan-name
-  tooltip: ce-research-action-basic-scan-tooltip
+  desc: ce-research-action-basic-scan-desc
+  cost: 1
   allowedCells:
   - Empty
   - Achievement

@@ -47,7 +47,10 @@ public sealed class CEResearchTableAreaData(
 /// further network round-trip.
 /// </summary>
 [Serializable, NetSerializable]
-public sealed class CEResearchTableState(Dictionary<ProtoId<CEScienceAreaPrototype>, CEResearchTableAreaData> areas) : BoundUserInterfaceState
+public sealed class CEResearchTableState(
+    Dictionary<ProtoId<CEScienceAreaPrototype>, CEResearchTableAreaData> areas,
+    int points) : BoundUserInterfaceState
 {
     public readonly Dictionary<ProtoId<CEScienceAreaPrototype>, CEResearchTableAreaData> Areas = areas;
+    public readonly int Points = points;
 }

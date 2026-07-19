@@ -1,4 +1,5 @@
 using Content.Server._CE.Science.Components;
+using Content.Shared._CE.Science.Components;
 using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.Science;
 using Content.Shared._CE.Science.Prototypes;
@@ -50,12 +51,17 @@ public sealed class CEResearchTableSystem : EntitySystem
         if (!action.AllowedCells.HasFlag(kind))
             return;
 
+        if (data.Points < action.Cost)
+            return;
+
         var conditionArgs = new CEEntityEffectArgs(EntityManager, args.Actor, null, default, 0f, args.Actor, null);
         foreach (var condition in action.Conditions)
         {
             if (!condition.Passes(conditionArgs))
                 return;
         }
+
+        _science.TrySpendPoints((args.Actor, data), action.Cost);
 
         var effectArgs = new CEResearchActionEffectArgs(EntityManager, args.Actor, args.Area, args.Coordinate);
         foreach (var effect in action.Effects)
@@ -91,6 +97,6 @@ public sealed class CEResearchTableSystem : EntitySystem
             areas[area.ID] = new CEResearchTableAreaData(cells, researched);
         }
 
-        _userInterface.SetUiState(uid, CEResearchTableUiKey.Key, new CEResearchTableState(areas));
+        _userInterface.SetUiState(uid, CEResearchTableUiKey.Key, new CEResearchTableState(areas, data.Points));
     }
 }

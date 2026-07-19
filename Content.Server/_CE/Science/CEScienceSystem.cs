@@ -1,4 +1,5 @@
 using Content.Server._CE.Science.Components;
+using Content.Shared._CE.Science.Components;
 using Content.Server.GameTicking.Events;
 using Content.Shared._CE.Science;
 using Content.Shared._CE.Science.Prototypes;
@@ -30,13 +31,52 @@ public sealed partial class CEScienceSystem : CESharedScienceSystem
     {
         foreach (var area in _proto.EnumeratePrototypes<CEScienceAreaPrototype>())
         {
-            var square = new HashSet<Vector2i>();
-            for (var x = -1; x <= 1; x++)
-            for (var y = -1; y <= 1; y++)
-                square.Add(new Vector2i(x, y));
-
-            ent.Comp.Researched[area.ID] = square;
+            RevealArea(ent, area.ID, default, 1);
         }
+    }
+
+    /// <summary>
+    /// Marks a single coordinate as researched for the given area, networking the change.
+    /// </summary>
+    public void RevealCoordinate(Entity<CEScienceResearchDataComponent> ent, ProtoId<CEScienceAreaPrototype> area, Vector2i coordinate)
+    {
+        if (!ent.Comp.Researched.TryGetValue(area, out var researched))
+        {
+            researched = new HashSet<Vector2i>();
+            ent.Comp.Researched[area] = researched;
+        }
+
+        if (researched.Add(coordinate))
+            Dirty(ent);
+    }
+
+    /// <summary>
+    /// Marks every coordinate within <paramref name="radius"/> (inclusive, square) of
+    /// <paramref name="center"/> as researched for the given area.
+    /// </summary>
+    public void RevealArea(Entity<CEScienceResearchDataComponent> ent, ProtoId<CEScienceAreaPrototype> area, Vector2i center, int radius)
+    {
+        for (var x = -radius; x <= radius; x++)
+        for (var y = -radius; y <= radius; y++)
+            RevealCoordinate(ent, area, center + new Vector2i(x, y));
+    }
+
+    /// <summary>
+    /// Un-marks a single coordinate as researched for the given area.
+    /// </summary>
+    public void ClearCoordinate(Entity<CEScienceResearchDataComponent> ent, ProtoId<CEScienceAreaPrototype> area, Vector2i coordinate)
+    {
+        if (ent.Comp.Researched.TryGetValue(area, out var researched) && researched.Remove(coordinate))
+            Dirty(ent);
+    }
+
+    /// <summary>
+    /// Un-marks an entire area as researched.
+    /// </summary>
+    public void ClearArea(Entity<CEScienceResearchDataComponent> ent, ProtoId<CEScienceAreaPrototype> area)
+    {
+        if (ent.Comp.Researched.Remove(area))
+            Dirty(ent);
     }
 
     private void OnRoundStarting(RoundStartingEvent ev)
@@ -57,6 +97,12 @@ public sealed partial class CEScienceSystem : CESharedScienceSystem
         {
             [new Vector2i(3, -4)] = new CEScienceAchievementCell("Hoverboards"),
             [new Vector2i(2, -4)] = new CEScienceDeadZoneCell(),
+            [new Vector2i(1, -4)] = new CEScienceDeadZoneCell(),
+            [new Vector2i(0, -4)] = new CEScienceDeadZoneCell(),
+            [new Vector2i(0, -3)] = new CEScienceDeadZoneCell(),
+            [new Vector2i(0, -2)] = new CEScienceDeadZoneCell(),
+            [new Vector2i(0, -1)] = new CEScienceDeadZoneCell(),
+            [new Vector2i(0, 0)] = new CEScienceDeadZoneCell(),
             [new Vector2i(4, -3)] = new CEScienceDeadZoneCell(),
             [new Vector2i(1, -5)] = new CEScienceDeadZoneCell(),
             [new Vector2i(5, -5)] = new CEScienceDeadZoneCell(),
