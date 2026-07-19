@@ -1,5 +1,5 @@
-using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.Science.Components;
+using Content.Shared._CE.Science.Prototypes;
 using Content.Shared.DoAfter;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction.Events;
@@ -79,24 +79,22 @@ public abstract partial class CESharedScienceSystem
         if (args.Cancelled || args.Handled || args.Target is not { } target)
             return;
 
-        if (!_proto.TryIndex(ent.Comp.Achievement, out var achievement))
-            return;
-
-        foreach (var effect in achievement.Effects)
-        {
-            var effectArgs = new CEEntityEffectArgs(
-                EntityManager,
-                Source: args.User,
-                Used: ent,
-                Angle: Angle.Zero,
-                Speed: 0f,
-                Target: target,
-                Position: null);
-
-            effect.Effect(effectArgs);
-        }
+        // Reading the book doesn't grant its effects directly - it just completes the same
+        // "discover achievement" flow the research table's action uses, which is what actually
+        // applies the achievement's effects (and reveals the map around it).
+        OnAchievementDiscovered(target, ent.Comp.Achievement);
 
         args.Handled = true;
+    }
+
+    /// <summary>
+    /// Called when a player discovers an achievement by reading a physical achievement-holder
+    /// item. The shared base does nothing here - discovery is server-authoritative (it mutates
+    /// networked research data and reveals map cells), so <c>CEScienceSystem</c> overrides this to
+    /// do the actual work.
+    /// </summary>
+    protected virtual void OnAchievementDiscovered(EntityUid user, ProtoId<CEScienceAchievementPrototype> achievement)
+    {
     }
 }
 

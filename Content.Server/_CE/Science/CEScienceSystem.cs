@@ -1,6 +1,7 @@
 using Content.Server._CE.Science.Components;
 using Content.Shared._CE.Science.Components;
 using Content.Server.GameTicking.Events;
+using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.Science;
 using Content.Shared._CE.Science.Prototypes;
 using Robust.Shared.Map;
@@ -99,6 +100,49 @@ public sealed partial class CEScienceSystem : CESharedScienceSystem
     {
         if (ent.Comp.DiscoveredAchievements.Remove(achievement))
             Dirty(ent);
+    }
+
+    /// <inheritdoc cref="CESharedScienceSystem.OnAchievementDiscovered"/>
+    protected override void OnAchievementDiscovered(EntityUid user, ProtoId<CEScienceAchievementPrototype> achievement)
+    {
+        var data = EnsureComp<CEScienceResearchDataComponent>(user);
+        TryDiscoverAchievement((user, data), achievement);
+    }
+
+    /// <summary>
+    /// Marks an achievement as discovered (if not already), reveals a 3x3 area around wherever its
+    /// cell is on the map, and applies its effects. This is the single path both the "discover
+    /// achievement" research action and reading a physical achievement-holder item funnel through -
+    /// callers are responsible for any cost of their own (e.g. the research action spending its
+    /// points) before calling this.
+    /// </summary>
+    public bool TryDiscoverAchievement(Entity<CEScienceResearchDataComponent> ent, ProtoId<CEScienceAchievementPrototype> achievementId)
+    {
+        if (!_proto.TryIndex(achievementId, out var achievement))
+            return false;
+
+        if (!DiscoverAchievement(ent, achievementId))
+            return false;
+
+        if (TryGetSingleton(out var science) && science.Areas.TryGetValue(achievement.Area, out var areaCells))
+        {
+            foreach (var (coordinate, cell) in areaCells)
+            {
+                if (cell is not CEScienceAchievementCell achievementCell || achievementCell.Achievement != achievementId)
+                    continue;
+
+                RevealArea(ent, achievement.Area, coordinate, 1);
+                break;
+            }
+        }
+
+        var effectArgs = new CEEntityEffectArgs(EntityManager, ent.Owner, null, default, 0f, ent.Owner, null);
+        foreach (var effect in achievement.Effects)
+        {
+            effect.Effect(effectArgs);
+        }
+
+        return true;
     }
 
     private void OnRoundStarting(RoundStartingEvent ev)

@@ -1,4 +1,3 @@
-using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.Science;
 using Content.Shared._CE.Science.Components;
 using Content.Shared._CE.Science.Effects;
@@ -34,13 +33,6 @@ public sealed class CEResearchDiscoverAchievementSystem : CEResearchActionEffect
         if (!_science.TrySpendPoints((args.Args.Actor, data), achievement.Cost))
             return;
 
-        if (!_science.DiscoverAchievement((args.Args.Actor, data), achievementCell.Achievement))
-            return;
-
-        var effectArgs = new CEEntityEffectArgs(EntityManager, args.Args.Actor, null, default, 0f, args.Args.Actor, null);
-        foreach (var effect in achievement.Effects)
-        {
-            effect.Effect(effectArgs);
-        }
+        _science.TryDiscoverAchievement((args.Args.Actor, data), achievementCell.Achievement);
     }
 }
