@@ -8,6 +8,7 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Client.Utility;
 using Robust.Shared.Input;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
@@ -42,6 +43,8 @@ public sealed partial class CEScienceMapControl : BoxContainer
 
     private static readonly SpriteSpecifier CursorIcon = new SpriteSpecifier.Rsi(new ResPath("/Textures/_CE/Interface/Science/cursor.rsi"), "cursor");
 
+    [Dependency] private IPrototypeManager _prototype = default!;
+
     private Dictionary<Vector2i, CEScienceMapCell> _cells = new();
     private HashSet<Vector2i> _researched = new();
     private Vector2i _selected;
@@ -70,6 +73,7 @@ public sealed partial class CEScienceMapControl : BoxContainer
 
     public CEScienceMapControl()
     {
+        IoCManager.InjectDependencies(this);
         RobustXamlLoader.Load(this);
     }
 
@@ -239,9 +243,12 @@ public sealed partial class CEScienceMapControl : BoxContainer
                 case CEScienceDeadZoneCell:
                     DrawCentered(handle, _area.MapDeadZoneIcon.Frame0(), CellToScreen(coordinate));
                     break;
-                case CEScienceAchievementCell:
-                    // Tinted with the area's colour - the sprite itself is a plain white "?".
-                    DrawCentered(handle, _area.MapUnknownIcon.Frame0(), CellToScreen(coordinate), areaColor);
+                case CEScienceAchievementCell achievementCell:
+                    if (_prototype.TryIndex(achievementCell.Achievement, out var achievement) && achievement.Icon is { } icon)
+                        DrawCentered(handle, icon.Frame0(), CellToScreen(coordinate));
+                    else
+                        // Tinted with the area's colour - the sprite itself is a plain white "?".
+                        DrawCentered(handle, _area.MapUnknownIcon.Frame0(), CellToScreen(coordinate), areaColor);
                     break;
             }
         }

@@ -2,6 +2,9 @@
   id: Hoverboards
   area: ArcaneEngineering
   name: ce-science-achievement-hoverboards
+  icon:
+    sprite: _CE/Interface/Science/AreaIcons/hoverboards.rsi
+    state: icon
   effects:
   - !type:LearnRecipe
     recipes:

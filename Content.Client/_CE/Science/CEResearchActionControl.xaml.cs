@@ -7,21 +7,15 @@ using Robust.Shared.Utility;
 namespace Content.Client._CE.Science;
 
 /// <summary>
-/// A single research action entry: a header button that expands to show the action's
-/// description, research point cost, and an "Execute" button. Design mirrors
-/// <see cref="Content.Client._CE.Roadmap.CERoadmapItem"/>'s expand/collapse header.
+/// A single research action entry: a button that executes the action directly. The action's
+/// description is shown as a tooltip and its research point cost is shown on the button's
+/// right edge.
 /// </summary>
 [GenerateTypedNameReferences]
 public sealed partial class CEResearchActionControl : BoxContainer
 {
     private static readonly SpriteSpecifier PointIcon =
         new SpriteSpecifier.Rsi(new ResPath("/Textures/_CE/Interface/Science/science_point.rsi"), "point");
-
-    /// <summary>
-    /// Raised when the header is pressed, regardless of the current expanded state.
-    /// The parent decides whether to expand this entry and collapse the others.
-    /// </summary>
-    public event Action? OnHeaderPressed;
 
     /// <summary>
     /// Raised when the "Execute" button is pressed.
@@ -34,24 +28,17 @@ public sealed partial class CEResearchActionControl : BoxContainer
 
         CostIcon.Texture = PointIcon.Frame0();
 
-        HeaderButton.OnPressed += _ => OnHeaderPressed?.Invoke();
         ExecuteButton.OnPressed += _ => OnExecute?.Invoke();
-    }
-
-    public bool Expanded
-    {
-        get => ContentsContainer.Visible;
-        set => ContentsContainer.Visible = value;
     }
 
     public string HeaderText
     {
-        set => HeaderButton.Text = value;
+        set => NameLabel.Text = value;
     }
 
     public string Description
     {
-        set => DescLabel.SetMessage(value);
+        set => ExecuteButton.ToolTip = value;
     }
 
     public int Cost

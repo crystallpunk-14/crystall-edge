@@ -4,13 +4,11 @@
     Orientation="Vertical"
     Margin="0 0 0 4"
     HorizontalExpand="True">
-    <Button Name="HeaderButton" Access="Public" StyleClasses="OpenBoth" HorizontalExpand="True" />
-    <BoxContainer Name="ContentsContainer" Access="Public" Orientation="Vertical" Visible="False" Margin="6 4 6 6">
-        <RichTextLabel Name="DescLabel" Access="Public" />
-        <BoxContainer Orientation="Horizontal" Margin="0 4 0 4">
+    <Button Name="ExecuteButton" Access="Public" HorizontalExpand="True">
+        <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+            <Label Name="NameLabel" Access="Public" HorizontalExpand="True" ClipText="True" />
             <TextureRect Name="CostIcon" Access="Public" VerticalAlignment="Center" />
             <Label Name="CostLabel" Access="Public" VerticalAlignment="Center" Margin="4 0 0 0" />
         </BoxContainer>
-        <Button Name="ExecuteButton" Access="Public" Text="{Loc 'ce-research-action-execute'}" HorizontalExpand="True" />
-    </BoxContainer>
+    </Button>
 </science:CEResearchActionControl>

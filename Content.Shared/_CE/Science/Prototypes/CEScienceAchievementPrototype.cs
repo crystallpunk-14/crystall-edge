@@ -1,5 +1,6 @@
 using Content.Shared._CE.EntityEffect;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Shared._CE.Science.Prototypes;
 
@@ -22,4 +23,11 @@ public sealed partial class CEScienceAchievementPrototype : IPrototype
 
     [DataField]
     public TimeSpan Time = TimeSpan.FromSeconds(3);
+
+    /// <summary>
+    /// Icon drawn on the map in place of the area's fallback "unknown" icon, once this
+    /// achievement's cell has been researched. If unset, the fallback icon is used instead.
+    /// </summary>
+    [DataField]
+    public SpriteSpecifier? Icon;
 }

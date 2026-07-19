@@ -26,8 +26,6 @@ public sealed partial class CEResearchCellInfoControl : BoxContainer
     /// </summary>
     public event Action<ProtoId<CEResearchActionPrototype>>? OnAction;
 
-    private CEResearchActionControl? _expanded;
-
     public CEResearchCellInfoControl()
     {
         IoCManager.InjectDependencies(this);
@@ -59,7 +57,6 @@ public sealed partial class CEResearchCellInfoControl : BoxContainer
         }
 
         ActionsContainer.RemoveAllChildren();
-        _expanded = null;
 
         if (_player.LocalEntity is not { } localEntity)
             return;
@@ -94,30 +91,9 @@ public sealed partial class CEResearchCellInfoControl : BoxContainer
                 CanExecute = points >= action.Cost,
             };
 
-            entry.OnHeaderPressed += () => ToggleExpanded(entry);
             entry.OnExecute += () => OnAction?.Invoke(actionId);
 
             ActionsContainer.AddChild(entry);
         }
-    }
-
-    /// <summary>
-    /// Expands the given entry and collapses whichever one was previously expanded - only one
-    /// action entry is ever open at a time. Pressing the currently-open entry's header closes it.
-    /// </summary>
-    private void ToggleExpanded(CEResearchActionControl entry)
-    {
-        if (_expanded == entry)
-        {
-            entry.Expanded = false;
-            _expanded = null;
-            return;
-        }
-
-        if (_expanded is not null)
-            _expanded.Expanded = false;
-
-        entry.Expanded = true;
-        _expanded = entry;
     }
 }
