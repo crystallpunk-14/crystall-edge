@@ -128,3 +128,12 @@ ce-ambition-fashionista-desc = Хочу быть одетым по послед�
 
 ce-ambition-nesting-name = Гнездование
 ce-ambition-nesting-desc = Хочу построить гнездо в каком-нибудь высоком месте. И желательно жить там не одному.
+
+ce-ambition-science-curiosity-name = Научный интерес
+ce-ambition-science-curiosity-desc = Я хочу изучить научную теорию о !DISCOVERY!
+
+ce-ambition-forbidden-knowledge-name = Запретные знания
+ce-ambition-forbidden-knowledge-desc = Из-за того, что !REASON!, я считаю что знания о !DISCOVERY! не должно быть известно! Я уничтожу все книги об этом, если узнаю о них.
+
+ce-ambition-enlightener-name = Просветитель
+ce-ambition-enlightener-desc = Я считаю что КАЖДЫЙ должен узнать о секретах изобретения !DISCOVERY!.

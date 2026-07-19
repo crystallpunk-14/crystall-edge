@@ -20,7 +20,7 @@ public sealed partial class ProtoIdResource : CEWorkbenchCraftRequirement
         return indexedIngredients.TryGetValue(ProtoId, out var availableQuantity) && availableQuantity >= Count;
     }
 
-    public override void PostCraft(IEntityManager entManager,IPrototypeManager protoManager, HashSet<EntityUid> placedEntities)
+    public override void PostCraft(IEntityManager entManager, IPrototypeManager protoManager, HashSet<EntityUid> placedEntities)
     {
         var requiredCount = Count;
 
