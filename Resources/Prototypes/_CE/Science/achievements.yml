@@ -1,8 +1,8 @@
 - type: scienceAchievement
   id: Hoverboards
   area: ArcaneEngineering
-  difficulty: 4
-  cost: 3
+  difficulty: 5
+  cost: 5
   name: ce-science-achievement-hoverboards
   icon:
     sprite: _CE/Interface/Science/AreaIcons/hoverboards.rsi
@@ -13,18 +13,18 @@
     - CEVehicleHoverboard
 
 - type: scienceAchievement
-  id: Hoverboards2
+  id: AdvancedDrilling
   area: ArcaneEngineering
-  difficulty: 6
+  difficulty: 5
   cost: 5
-  name: ce-science-achievement-hoverboards
+  name: ce-science-achievement-advanced-drilling
   icon:
-    sprite: _CE/Interface/Science/AreaIcons/hoverboards.rsi
+    sprite: _CE/Interface/Science/AreaIcons/drill.rsi
     state: icon
   effects:
   - !type:LearnRecipe
     recipes:
-    - CEVehicleHoverboard
+    - CEMachineCoreDrillAdvanced
 
 - type: scienceAchievement
   id: Hoverboards3

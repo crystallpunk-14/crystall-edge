@@ -337,6 +337,28 @@
   result: CEMachineCoreDrill
   resultCount: 1
 
+# Unlocked by the "Advanced Drilling" science achievement - see achievements.yml.
+- type: CERecipe
+  id: CEMachineCoreDrillAdvanced
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 3.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 8
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 2
+  - !type:StackResource
+    stack: CEIronRod
+    count: 25
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 2
+  result: CEMachineCoreDrillAdvanced
+  resultCount: 1
+
 - type: CERecipe
   roundStart: true
   id: CEMachineCoreCharger
