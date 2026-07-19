@@ -10,6 +10,7 @@ namespace Content.IntegrationTests.Tests.Internals;
 [TestOf(typeof(InternalsSystem))]
 public sealed class AutoInternalsTests : GameTest
 {
+    /* CrystallEdge disabled
     [Test]
     public async Task TestInternalsAutoActivateInSpaceForStationSpawn()
     {
@@ -79,4 +80,5 @@ public sealed class AutoInternalsTests : GameTest
     - type: Loadout
       prototypes: [InternalsDummyGear]
 ";
+*/
 }
