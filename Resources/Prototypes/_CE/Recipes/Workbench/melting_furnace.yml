@@ -1,6 +1,7 @@
 # Ingot
 
 - type: CERecipe
+  roundStart: true
   id: CEIronBar1
   tag: CERecipeMeltingFurnace
   category: Materials
@@ -16,6 +17,7 @@
   resultCount: 1
 
 - type: CERecipe
+  roundStart: true
   id: CEBrassBar1
   tag: CERecipeMeltingFurnace
   category: Materials
@@ -33,6 +35,7 @@
 # Sheet
 
 - type: CERecipe
+  roundStart: true
   id: CEBrassSheet1
   tag: CERecipeMeltingFurnace
   category: Materials
@@ -48,6 +51,7 @@
   resultCount: 2
 
 - type: CERecipe
+  roundStart: true
   id: CEIronSheet1
   tag: CERecipeMeltingFurnace
   category: Materials
@@ -65,6 +69,7 @@
 # Rod
 
 - type: CERecipe
+  roundStart: true
   id: CEIronRod1
   tag: CERecipeMeltingFurnace
   category: Materials
@@ -80,6 +85,7 @@
   resultCount: 5
 
 - type: CERecipe
+  roundStart: true
   id: CEBrassRod1
   tag: CERecipeMeltingFurnace
   category: Materials

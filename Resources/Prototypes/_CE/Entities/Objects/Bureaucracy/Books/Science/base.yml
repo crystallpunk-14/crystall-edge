@@ -1,0 +1,18 @@
+- type: entity
+  id: CEBaseScienceBookArcaneEngineering
+  parent: CEBookBase
+  name: arcane engineering science book
+  components:
+  - type: Sprite
+    layers:
+    - state: paper
+    - state: cover_base
+      color: "#e4a053"
+      map: [ "cover" ]
+    - state: decor_line
+      color: "#53c6e2"
+      map: [ "decor" ]
+    - state: icon_magic
+      map: [ "icon" ]
+    - state: bookmark_short
+      map: [ "overlay" ]

@@ -72,3 +72,28 @@
     guides:
     - CEMiningGuideEN
     - CEMiningGuideRU
+
+- type: entity
+  id: CEDrillAdvanced
+  parent: CEDrill
+  name: advanced stationary drill
+  description: An industrial drill rebuilt with reinforced components, hitting twice as hard as the standard model.
+  components:
+  - type: Machine
+    board: CEMachineCoreDrillAdvanced
+  - type: Sprite
+    drawdepth: Mobs
+    offset: 0, 0
+    sprite: _CE/Structures/Industrial/drill.rsi
+    layers:
+    - state: base_lvl2
+    - state: drill_idle
+      map: [ "drill" ]
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 24
+        Piercing: 24
+        Structural: 30
+    range: 1
+    attackRate: 1
