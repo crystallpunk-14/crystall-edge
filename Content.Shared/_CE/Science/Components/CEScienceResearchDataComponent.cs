@@ -7,17 +7,8 @@ namespace Content.Shared._CE.Science.Components;
 /// <summary>
 /// Tracks which map coordinates this entity has researched, independently for each science area,
 /// how many research points it currently has to spend on research actions, and which achievements
-/// it has actually discovered (as opposed to merely revealed on the map). All three fields are
-/// networked so the owning client always has this locally (no extra BUI round-trip needed to read
-/// it), and so <see cref="Content.Shared._CE.Workbench.Requirements.ResearchPointResource"/> can
-/// be checked client-side (e.g. for live workbench recipe filtering).
+/// it has actually discovered (as opposed to merely revealed on the map).
 /// </summary>
-/// <remarks>
-/// Whoever mutates <see cref="Researched"/>, <see cref="Points"/>, or
-/// <see cref="DiscoveredAchievements"/> must call <c>Dirty(uid, component)</c> afterwards -
-/// AutoNetworkedField only controls how the auto-generated state is (de)serialized, it does not
-/// detect field writes on its own.
-/// </remarks>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class CEScienceResearchDataComponent : Component
 {
