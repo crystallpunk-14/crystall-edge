@@ -13,7 +13,7 @@ namespace Content.Shared._CE.Pen;
 public sealed partial class CEPenSystem : EntitySystem
 {
     [Dependency] private SharedUserInterfaceSystem _ui = default!;
-    [Dependency] private CEPaperSystem _cePaper = default!;
+    [Dependency] private CEPaperSystem _paper = default!;
 
     public override void Initialize()
     {
@@ -39,7 +39,7 @@ public sealed partial class CEPenSystem : EntitySystem
         // knowledge" action, which still needs the achievement submenu) opens the radial menu.
         if (actions.Count == 1 && actions[0].Kind == CEPenActionKind.Write)
         {
-            _cePaper.TryWrite(target, args.User, ent.Owner);
+            _paper.TryWrite(target, args.User, ent.Owner);
             return;
         }
 
@@ -67,7 +67,7 @@ public sealed partial class CEPenSystem : EntitySystem
         switch (args.Kind)
         {
             case CEPenActionKind.Write:
-                _cePaper.TryWrite(target, args.Actor, ent.Owner);
+                _paper.TryWrite(target, args.Actor, ent.Owner);
                 break;
             case CEPenActionKind.RecordKnowledge:
                 if (args.Achievement is { } achievement)
