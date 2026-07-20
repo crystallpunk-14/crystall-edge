@@ -5,9 +5,9 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 07/17/2026 09:58:12
-  entityCount: 82
+  entityCount: 83
 maps:
-- 1
+- 83
 grids:
 - 1
 orphans: []
@@ -33,11 +33,17 @@ entities:
     - type: MetaData
       name: Mapping Dev [3]
     - type: Transform
-    - type: Map
-      mapPaused: True
-    - type: GridTree
+      parent: 83
     - type: Broadphase
     - type: OccluderTree
+    - type: Physics
+      bodyStatus: InAir
+      angularDamping: 0.05
+      linearDamping: 0.05
+      fixedRotation: False
+      bodyType: Dynamic
+    - type: Fixtures
+      fixtures: {}
     - type: MapGrid
       chunks:
         -1,-1:
@@ -104,6 +110,15 @@ entities:
     - type: RadiationGridResistance
     - type: ExplosionAirtightGrid
     - type: CEZLevelsLaddersCache
+  - uid: 83
+    components:
+    - type: MetaData
+    - type: Transform
+    - type: Map
+      mapPaused: True
+    - type: GridTree
+    - type: Broadphase
+    - type: OccluderTree
 - proto: CEPipeBrassMedium
   entities:
   - uid: 5
