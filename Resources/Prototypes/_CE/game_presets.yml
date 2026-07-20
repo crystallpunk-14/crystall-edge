@@ -28,6 +28,6 @@
   showInVote: true
   rules:
   - CEGameRule7Days
-  - CEGameRuleThieves
+  #- CEGameRuleThieves
   - CERampingStationEventScheduler
   - CEBasicRoundstartVariation
