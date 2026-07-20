@@ -205,8 +205,10 @@ public sealed partial class CEZCollapseSystem
             if (!aboveOf.TryGetValue(gridUid, out var aboveGrid) || !gridsByUid.TryGetValue(aboveGrid, out var aboveGridComp))
                 continue;
 
+            if (!TryGetTileOnGrid(aboveGrid, aboveGridComp, _transform.GetWorldPosition(xform), out var aboveTile))
+                continue;
+
             var tile = _map.TileIndicesFor(gridUid, grid, xform.Coordinates);
-            var aboveTile = TileOnGrid(aboveGrid, aboveGridComp, _transform.GetWorldPosition(xform));
             AddBridge(bridges, (gridUid, tile), (aboveGrid, aboveTile), support.SupportStrength, support.TransferLoss);
         }
 

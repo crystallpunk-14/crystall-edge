@@ -151,15 +151,6 @@ public sealed partial class CEZCollapseSystem : EntitySystem
             _dirtyGrids.Add(gridUid);
     }
 
-    /// <summary>
-    /// Whether a grid is meant to participate in ZCollapse — either it already does (has
-    /// <see cref="CEGridStabilityComponent"/>), or it hasn't been map-initialized yet but its
-    /// Z-network's <see cref="CEZMapNetworkComponent.Components"/> config says it will once it is
-    /// (e.g. a mapping session loaded via <c>znetwork-gamemap-mapping</c>, where no map ever gets
-    /// map-initialized so that component never gets added). Components can't be added to a
-    /// pre-init entity, so this reads the network's *configured* overrides instead of requiring the
-    /// component to actually exist yet — see <see cref="AddPreviewSnapshots"/>.
-    /// </summary>
     private bool IsZCollapseEligible(EntityUid gridUid)
     {
         if (_stabilityQuery.HasComponent(gridUid))
@@ -170,29 +161,20 @@ public sealed partial class CEZCollapseSystem : EntitySystem
             !_zNetworkQuery.TryGetComponent(zMap.NetworkUid, out var network))
             return false;
 
-        // CEGridStability is usually never declared directly — CEAutoGridGravity fans it onto
-        // real grids at runtime (see CEAutoGridGravitySystem.EnableGravity). A mapping session's
-        // maps never initialize, so that fan-out never runs; check the network's static config
-        // for either marker to still show an accurate preview.
         return network.Components.TryGetComponent<CEGridStabilityComponent>(_compFactory, out _) ||
                network.Components.TryGetComponent<CEAutoGridGravityComponent>(_compFactory, out _);
     }
 
-    /// <summary>
-    /// Grid -> the map entity it's parented to. Works identically for a planetary combined
-    /// entity (both Map and MapGrid on the same entity), which simply returns itself.
-    /// </summary>
     private bool TryGetOwningMap(EntityUid gridUid, out EntityUid mapUid)
     {
-        mapUid = Transform(gridUid).MapUid ?? EntityUid.Invalid;
+        mapUid = EntityUid.Invalid;
+        if (!_xformQuery.TryGetComponent(gridUid, out var xform))
+            return false;
+
+        mapUid = xform.MapUid ?? EntityUid.Invalid;
         return mapUid.IsValid();
     }
 
-    /// <summary>
-    /// Map entity -> the grid on it that's actually ZCollapse-participating (has
-    /// <see cref="CEGridStabilityComponent"/>). For a planetary map this returns the map entity
-    /// itself, since it's also the grid.
-    /// </summary>
     private bool TryGetParticipatingGrid(EntityUid mapUid, out EntityUid gridUid)
     {
         gridUid = default;
@@ -211,19 +193,14 @@ public sealed partial class CEZCollapseSystem : EntitySystem
         return false;
     }
 
-    /// <summary>
-    /// Converts a world-space (X,Y) position taken from one Z-level's map into the local tile it
-    /// lands on for <paramref name="grid"/>, which lives on a different map entirely. Z-levels are
-    /// separate MapIds, but this whole system's convention (see <see cref="CESharedZLevelsSystem"/>'s
-    /// <c>TryMove</c>, which literally carries an entity's raw world (X,Y) across Z-levels unchanged)
-    /// treats the same (X,Y) as the same column on every level. Support bridges have to resolve the
-    /// neighbor grid's tile through that shared (X,Y) rather than assuming both grids share the same
-    /// local tile-index origin — that assumption breaks the moment a mapper repositions a grid with
-    /// the grid-drag tool.
-    /// </summary>
-    private Vector2i TileOnGrid(EntityUid gridUid, MapGridComponent grid, Vector2 worldPos)
+    private bool TryGetTileOnGrid(EntityUid gridUid, MapGridComponent grid, Vector2 worldPos, out Vector2i tile)
     {
-        return _map.TileIndicesFor(gridUid, grid, new MapCoordinates(worldPos, Transform(gridUid).MapID));
+        tile = default;
+        if (!_xformQuery.TryGetComponent(gridUid, out var xform))
+            return false;
+
+        tile = _map.TileIndicesFor(gridUid, grid, new MapCoordinates(worldPos, xform.MapID));
+        return true;
     }
 
     private void ProcessPendingIndexScans()
@@ -426,8 +403,10 @@ public sealed partial class CEZCollapseSystem : EntitySystem
                 if (!_supportQuery.TryGetComponent(supportUid, out var support) || !_xformQuery.TryGetComponent(supportUid, out var xform))
                     continue;
 
+                if (!TryGetTileOnGrid(aboveGrid, aboveGridComp, _transform.GetWorldPosition(xform), out var aboveTile))
+                    continue;
+
                 var tile = _map.TileIndicesFor(gridUid, grid, xform.Coordinates);
-                var aboveTile = TileOnGrid(aboveGrid, aboveGridComp, _transform.GetWorldPosition(xform));
                 AddBridge(bridges, (gridUid, tile), (aboveGrid, aboveTile), support.SupportStrength, support.TransferLoss);
             }
         }
