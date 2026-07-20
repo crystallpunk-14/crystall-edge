@@ -5,9 +5,9 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 07/18/2026 08:07:19
-  entityCount: 1661
+  entityCount: 1662
 maps:
-- 1
+- 1749
 grids:
 - 1
 orphans: []
@@ -49,11 +49,17 @@ entities:
     - type: MetaData
       name: Mapping Shaar
     - type: Transform
-    - type: Map
-      mapPaused: True
-    - type: GridTree
+      parent: 1749
     - type: Broadphase
     - type: OccluderTree
+    - type: Physics
+      bodyStatus: InAir
+      angularDamping: 0.05
+      linearDamping: 0.05
+      fixedRotation: False
+      bodyType: Dynamic
+    - type: Fixtures
+      fixtures: {}
     - type: MapGrid
       chunks:
         -1,0:
@@ -132,15 +138,6 @@ entities:
         path: /Audio/Effects/alert.ogg
       inherent: True
       enabled: True
-    - type: MapAtmosphere
-      space: False
-      mixture:
-        volume: 2500
-        immutable: True
-        temperature: 293.15
-        moles:
-          Oxygen: 21.824879
-          Nitrogen: 82.10312
     - type: BecomesStation
       id: Shaar
     - type: DecalGrid
@@ -155,6 +152,24 @@ entities:
     - type: RadiationGridResistance
     - type: ExplosionAirtightGrid
     - type: CEZLevelsLaddersCache
+  - uid: 1749
+    components:
+    - type: MetaData
+    - type: Transform
+    - type: Map
+      mapPaused: True
+    - type: GridTree
+    - type: Broadphase
+    - type: OccluderTree
+    - type: MapAtmosphere
+      space: False
+      mixture:
+        volume: 2500
+        immutable: True
+        temperature: 293.15
+        moles:
+          Oxygen: 21.824879
+          Nitrogen: 82.10312
 - proto: ActionToggleLight
   entities:
   - uid: 1330

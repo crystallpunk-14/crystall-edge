@@ -1,4 +1,6 @@
+using System.Numerics;
 using System.Threading;
+using Content.Server._CE.ZLevels.Gravity;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Damage;
@@ -25,6 +27,7 @@ namespace Content.Server._CE.ZCollapse;
 public sealed partial class CEZCollapseSystem : EntitySystem
 {
     [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private CESharedZLevelsSystem _zLevel = default!;
     [Dependency] private ITileDefinitionManager _tileDefMan = default!;
     [Dependency] private SharedDestructibleSystem _destructible = default!;
@@ -34,6 +37,7 @@ public sealed partial class CEZCollapseSystem : EntitySystem
     [Dependency] private SharedPhysicsSystem _physics = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private IComponentFactory _compFactory = default!;
+    [Dependency] private IMapManager _mapManager = default!;
 
     [Dependency] private EntityQuery<CEGridStabilityComponent> _stabilityQuery = default!;
     [Dependency] private EntityQuery<CEGridStabilityCoreComponent> _coreQuery = default!;
@@ -43,6 +47,7 @@ public sealed partial class CEZCollapseSystem : EntitySystem
     [Dependency] private EntityQuery<CEZMapNetworkComponent> _zNetworkQuery = default!;
     [Dependency] private EntityQuery<TransformComponent> _xformQuery = default!;
     [Dependency] private EntityQuery<DamageableComponent> _damageableQuery = default!;
+    [Dependency] private EntityQuery<MapComponent> _mapCompQuery = default!;
 
     private const double ZCollapseJobTime = 0.005;
 
@@ -67,6 +72,8 @@ public sealed partial class CEZCollapseSystem : EntitySystem
 
     private const float CollapseDelayMinSeconds = 3f;
     private const float CollapseDelayMaxSeconds = 10f;
+
+    private const int MaxCollapsesPerTick = 8;
 
     //Small random scatter impulse given to debris dropped onto the level below
     //just enough to keep a pile of fallen tile items from stacking in a perfect grid.
@@ -158,10 +165,65 @@ public sealed partial class CEZCollapseSystem : EntitySystem
         if (_stabilityQuery.HasComponent(gridUid))
             return true;
 
-        if (!_zMapQuery.TryGetComponent(gridUid, out var zMap) || !_zNetworkQuery.TryGetComponent(zMap.NetworkUid, out var network))
+        if (!TryGetOwningMap(gridUid, out var mapUid) ||
+            !_zMapQuery.TryGetComponent(mapUid, out var zMap) ||
+            !_zNetworkQuery.TryGetComponent(zMap.NetworkUid, out var network))
             return false;
 
-        return network.Components.TryGetComponent<CEGridStabilityComponent>(_compFactory, out _);
+        // CEGridStability is usually never declared directly — CEAutoGridGravity fans it onto
+        // real grids at runtime (see CEAutoGridGravitySystem.EnableGravity). A mapping session's
+        // maps never initialize, so that fan-out never runs; check the network's static config
+        // for either marker to still show an accurate preview.
+        return network.Components.TryGetComponent<CEGridStabilityComponent>(_compFactory, out _) ||
+               network.Components.TryGetComponent<CEAutoGridGravityComponent>(_compFactory, out _);
+    }
+
+    /// <summary>
+    /// Grid -> the map entity it's parented to. Works identically for a planetary combined
+    /// entity (both Map and MapGrid on the same entity), which simply returns itself.
+    /// </summary>
+    private bool TryGetOwningMap(EntityUid gridUid, out EntityUid mapUid)
+    {
+        mapUid = Transform(gridUid).MapUid ?? EntityUid.Invalid;
+        return mapUid.IsValid();
+    }
+
+    /// <summary>
+    /// Map entity -> the grid on it that's actually ZCollapse-participating (has
+    /// <see cref="CEGridStabilityComponent"/>). For a planetary map this returns the map entity
+    /// itself, since it's also the grid.
+    /// </summary>
+    private bool TryGetParticipatingGrid(EntityUid mapUid, out EntityUid gridUid)
+    {
+        gridUid = default;
+        if (!_mapCompQuery.TryGetComponent(mapUid, out var mapComp))
+            return false;
+
+        foreach (var grid in _mapManager.GetAllGrids(mapComp.MapId))
+        {
+            if (_stabilityQuery.HasComponent(grid.Owner))
+            {
+                gridUid = grid.Owner;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// Converts a world-space (X,Y) position taken from one Z-level's map into the local tile it
+    /// lands on for <paramref name="grid"/>, which lives on a different map entirely. Z-levels are
+    /// separate MapIds, but this whole system's convention (see <see cref="CESharedZLevelsSystem"/>'s
+    /// <c>TryMove</c>, which literally carries an entity's raw world (X,Y) across Z-levels unchanged)
+    /// treats the same (X,Y) as the same column on every level. Support bridges have to resolve the
+    /// neighbor grid's tile through that shared (X,Y) rather than assuming both grids share the same
+    /// local tile-index origin — that assumption breaks the moment a mapper repositions a grid with
+    /// the grid-drag tool.
+    /// </summary>
+    private Vector2i TileOnGrid(EntityUid gridUid, MapGridComponent grid, Vector2 worldPos)
+    {
+        return _map.TileIndicesFor(gridUid, grid, new MapCoordinates(worldPos, Transform(gridUid).MapID));
     }
 
     private void ProcessPendingIndexScans()
@@ -218,24 +280,53 @@ public sealed partial class CEZCollapseSystem : EntitySystem
     /// </summary>
     private List<EntityUid> GetColumn(EntityUid startGrid, Func<EntityUid, bool> participates)
     {
-        var above = new List<EntityUid>();
-        var current = startGrid;
-        while (_zMapQuery.TryGetComponent(current, out var zMap) &&
-               _zLevel.TryMapUp((current, zMap), out var up) &&
-               participates(up.Owner))
+        // Resolves a neighbor map to the one grid on it satisfying `participates` — the real
+        // recompute pipeline passes _stabilityQuery.HasComponent (grid must already carry
+        // CEGridStabilityComponent), the mapping-preview path passes IsZCollapseEligible instead
+        // (a mapping session's maps never initialize, so the component never actually gets added
+        // there — see IsZCollapseEligible's doc comment). Reusing TryGetParticipatingGrid here
+        // would hardcode the real-pipeline check and make every neighbor level unreachable during
+        // mapping, collapsing every column down to a single grid.
+        bool TryGetNeighborGrid(EntityUid mapUid, out EntityUid gridUid)
         {
-            above.Add(up.Owner);
-            current = up.Owner;
+            gridUid = default;
+            if (!_mapCompQuery.TryGetComponent(mapUid, out var mapComp))
+                return false;
+
+            foreach (var candidate in _mapManager.GetAllGrids(mapComp.MapId))
+            {
+                if (!participates(candidate.Owner))
+                    continue;
+
+                gridUid = candidate.Owner;
+                return true;
+            }
+
+            return false;
+        }
+
+        var above = new List<EntityUid>();
+        if (TryGetOwningMap(startGrid, out var currentMap))
+        {
+            while (_zMapQuery.TryGetComponent(currentMap, out var zMap) &&
+                   _zLevel.TryMapUp((currentMap, zMap), out var upMap) &&
+                   TryGetNeighborGrid(upMap.Owner, out var upGrid))
+            {
+                above.Add(upGrid);
+                currentMap = upMap.Owner;
+            }
         }
 
         var below = new List<EntityUid>();
-        current = startGrid;
-        while (_zMapQuery.TryGetComponent(current, out var zMap) &&
-               _zLevel.TryMapDown((current, zMap), out var down) &&
-               participates(down.Owner))
+        if (TryGetOwningMap(startGrid, out currentMap))
         {
-            below.Add(down.Owner);
-            current = down.Owner;
+            while (_zMapQuery.TryGetComponent(currentMap, out var zMap) &&
+                   _zLevel.TryMapDown((currentMap, zMap), out var downMap) &&
+                   TryGetNeighborGrid(downMap.Owner, out var downGrid))
+            {
+                below.Add(downGrid);
+                currentMap = downMap.Owner;
+            }
         }
 
         above.Reverse();
@@ -292,8 +383,13 @@ public sealed partial class CEZCollapseSystem : EntitySystem
         var aboveOf = new Dictionary<EntityUid, EntityUid>();
         foreach (var gridUid in column)
         {
-            if (_zMapQuery.TryGetComponent(gridUid, out var zMap) && _zLevel.TryMapUp((gridUid, zMap), out var above))
-                aboveOf[gridUid] = above.Owner;
+            if (TryGetOwningMap(gridUid, out var mapUid) &&
+                _zMapQuery.TryGetComponent(mapUid, out var zMap) &&
+                _zLevel.TryMapUp((mapUid, zMap), out var aboveMap) &&
+                TryGetParticipatingGrid(aboveMap.Owner, out var aboveGrid))
+            {
+                aboveOf[gridUid] = aboveGrid;
+            }
         }
 
         var liveNodes = new HashSet<(EntityUid, Vector2i)>();
@@ -322,13 +418,17 @@ public sealed partial class CEZCollapseSystem : EntitySystem
             if (!aboveOf.TryGetValue(gridUid, out var aboveGrid))
                 continue; // no participating neighbor above within this column — nothing to bridge from here
 
+            if (!_gridQuery.TryGetComponent(aboveGrid, out var aboveGridComp))
+                continue;
+
             foreach (var supportUid in comp.Supports)
             {
                 if (!_supportQuery.TryGetComponent(supportUid, out var support) || !_xformQuery.TryGetComponent(supportUid, out var xform))
                     continue;
 
                 var tile = _map.TileIndicesFor(gridUid, grid, xform.Coordinates);
-                AddBridge(bridges, (gridUid, tile), (aboveGrid, tile), support.SupportStrength, support.TransferLoss);
+                var aboveTile = TileOnGrid(aboveGrid, aboveGridComp, _transform.GetWorldPosition(xform));
+                AddBridge(bridges, (gridUid, tile), (aboveGrid, aboveTile), support.SupportStrength, support.TransferLoss);
             }
         }
 
@@ -492,8 +592,10 @@ public sealed partial class CEZCollapseSystem : EntitySystem
     /// <summary>Fires every grid's due collapse countdowns. A plain per-tick scan over participating grids — collapses in flight at once are rare and few, so this stays cheap without needing its own dirty-tracking.</summary>
     private void ProcessPendingCollapses()
     {
+        var budget = MaxCollapsesPerTick;
+
         var query = AllEntityQuery<CEGridStabilityComponent, MapGridComponent>();
-        while (query.MoveNext(out var gridUid, out var comp, out var grid))
+        while (budget > 0 && query.MoveNext(out var gridUid, out var comp, out var grid))
         {
             if (comp.PendingCollapses.Count == 0)
                 continue;
@@ -506,6 +608,9 @@ public sealed partial class CEZCollapseSystem : EntitySystem
 
                 due ??= new List<Vector2i>();
                 due.Add(tile);
+
+                if (due.Count >= budget)
+                    break;
             }
 
             if (due == null)
@@ -516,6 +621,8 @@ public sealed partial class CEZCollapseSystem : EntitySystem
                 comp.PendingCollapses.Remove(tile);
                 CollapseTile(gridUid, grid, tile);
             }
+
+            budget -= due.Count;
         }
     }
 
@@ -563,14 +670,16 @@ public sealed partial class CEZCollapseSystem : EntitySystem
         if (itemProto == null)
             return;
 
-        if (!_zMapQuery.TryGetComponent(gridUid, out var zMap) ||
-            !_zLevel.TryMapDown((gridUid, zMap), out var below) ||
-            !_gridQuery.TryGetComponent(below.Owner, out var belowGrid))
+        if (!TryGetOwningMap(gridUid, out var mapUid) ||
+            !_zMapQuery.TryGetComponent(mapUid, out var zMap) ||
+            !_zLevel.TryMapDown((mapUid, zMap), out var belowMap) ||
+            !TryGetParticipatingGrid(belowMap.Owner, out var belowGridUid) ||
+            !_gridQuery.TryGetComponent(belowGridUid, out var belowGrid))
         {
             return; // nothing below to fall onto (e.g. bottom of the station) — the item is simply lost
         }
 
-        var item = Spawn(itemProto, _map.GridTileToLocal(below.Owner, belowGrid, tile));
+        var item = Spawn(itemProto, _map.GridTileToLocal(belowGridUid, belowGrid, tile));
         _zLevel.SetZPosition(item, 0.9f);
 
         Transform(item).LocalRotation = _random.NextAngle();
