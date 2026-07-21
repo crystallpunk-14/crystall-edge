@@ -17,11 +17,13 @@ We welcome any support from the community in the development of the game! Join o
 
 [More detailed instructions on building the project.](https://docs.spacestation14.com/en/general-development/setup.html)
 
-## License
+## Licensing/Attribution
 
-All code for the content repository is licensed under the [MIT license](https://github.com/crystallpunk-14/crystall-punk-14/blob/master/LICENSE.TXT).  
+These are just the most important points, Please read [Legal.md](https://github.com/crystallpunk-14/crystalledge/blob/master/Legal.md) for the specifics around licensing/attribution/copyright.
+- Unless specified otherwise, all Source Code, inside any _CE or CE folders, fall under the terms specified in LICENSE_CE.TXT (all right reserved) with Exhibit B enforced and the CrystallEdge CLA. All assets/content in those folders falls under CC-BY-SA 4.0 unless otherwise specified.
+- Any content from SpaceWizards/SpaceStation14 without specified licensing of any code is licensed under MIT (LICENSE.txt). Any Space Wizards content licensed under CC-BY-SA 3.0 to Space Wizards Federation & Contributors.
+- You may not use CrystallEdge code in other projects without specific permission from the CrystallEdge author (TheShuEd)
 
-Most assets are licensed under [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) unless stated otherwise. Assets have their license and copyright specified in the metadata file. For example, see the [metadata for a crowbar](https://github.com/crystallpunk-14/crystall-punk-14/blob/master/Resources/Textures/Objects/Tools/crowbar.rsi/meta.json).  
+## Forking CrystallEdge
 
-> [!NOTE]
-> Some assets are licensed under the non-commercial [CC-BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/) or similar non-commercial licenses and will need to be removed if you wish to use this project commercially.
+You cannot create forks of CrystallEdge to open your own public servers. You can copy a build for educational purposes, code research and contributing to the main build.
