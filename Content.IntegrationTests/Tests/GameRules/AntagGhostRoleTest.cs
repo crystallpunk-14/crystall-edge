@@ -1,5 +1,6 @@
 ﻿#nullable enable
 using System.Collections.Generic;
+using System.Linq;
 using Content.IntegrationTests.Fixtures.Attributes;
 using Content.IntegrationTests.Utility;
 using Content.Server.Antag;
@@ -30,7 +31,10 @@ public sealed partial class AntagGhostRoleTest : AntagTest
     [SidedDependency(Side.Server)] private IRobustRandom _random = default!;
     [SidedDependency(Side.Server)] private GhostRoleSystem _ghostRole = default!;
 
-    private static readonly string[] AntagGameRules = GameDataScrounger.EntitiesWithComponent("AntagSelection");
+    // Only test CrystallEdge antag rules (id prefixed "CE").
+    private static readonly string[] AntagGameRules = GameDataScrounger.EntitiesWithComponent("AntagSelection")
+        .Where(id => id.StartsWith("CE", StringComparison.Ordinal))
+        .ToArray();
 
     [Test]
     [TestOf(typeof(GameTicker)), TestOf(typeof(AntagSelectionSystem)), TestOf(typeof(AntagSelectionComponent)), TestOf(typeof(GhostRoleSystem))]
