@@ -65,6 +65,10 @@ CEClothingHeadFedoraHunterRed: CEClothingHeadFedoraRed
 
 CEGridStabilityCoreEntity: CEGridStabilityCore
 
+CESpawnPointTailorMerchant: null
+CESpawnPointPharmacistMerchant: null
+CESpawnPointHomeGoodsMerchant: null
+
 # CrystallEdge migration zone end
 
 

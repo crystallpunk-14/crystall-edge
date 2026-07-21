@@ -44,6 +44,3 @@
   roles:
   - CETownfolk
   - CEBard
-  - CETailorMerchant
-  - CEPharmacistMerchant
-  - CEHomeGoodsMerchant

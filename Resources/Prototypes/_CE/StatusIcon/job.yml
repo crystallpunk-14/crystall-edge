@@ -100,27 +100,3 @@
     sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
     state: Townfolk
   jobName: ce-job-name-townfolk
-
-- type: jobIcon
-  parent: CEJobIcon
-  id: CEJobIconTailorMerchant
-  icon:
-    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-    state: TailorMerchant
-  jobName: ce-job-name-tailor-merchant
-
-- type: jobIcon
-  parent: CEJobIcon
-  id: CEJobIconPharmacistMerchant
-  icon:
-    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-    state: PharmacistMerchant
-  jobName: ce-job-name-pharmacist-merchant
-
-- type: jobIcon
-  parent: CEJobIcon
-  id: CEJobIconHomeGoodsMerchant
-  icon:
-    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-    state: HomeGoodsMerchant
-  jobName: ce-job-name-homegoods-merchant
