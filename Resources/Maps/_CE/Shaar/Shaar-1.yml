@@ -5,9 +5,9 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 07/18/2026 08:07:20
-  entityCount: 1731
+  entityCount: 1730
 maps:
-- 1800
+- 1
 grids:
 - 1
 orphans: []
@@ -45,17 +45,11 @@ entities:
     - type: MetaData
       name: Mapping Shaar [-1]
     - type: Transform
-      parent: 1800
+    - type: Map
+      mapPaused: True
+    - type: GridTree
     - type: Broadphase
     - type: OccluderTree
-    - type: Physics
-      bodyStatus: InAir
-      angularDamping: 0.05
-      linearDamping: 0.05
-      fixedRotation: False
-      bodyType: Dynamic
-    - type: Fixtures
-      fixtures: {}
     - type: MapGrid
       chunks:
         -1,0:
@@ -142,6 +136,15 @@ entities:
         path: /Audio/Effects/alert.ogg
       inherent: True
       enabled: True
+    - type: MapAtmosphere
+      space: False
+      mixture:
+        volume: 2500
+        immutable: True
+        temperature: 293.15
+        moles:
+          Oxygen: 21.824879
+          Nitrogen: 82.10312
     - type: DecalGrid
       chunkCollection:
         version: 2
@@ -154,24 +157,6 @@ entities:
     - type: RadiationGridResistance
     - type: ExplosionAirtightGrid
     - type: CEZLevelsLaddersCache
-  - uid: 1800
-    components:
-    - type: MetaData
-    - type: Transform
-    - type: Map
-      mapPaused: True
-    - type: GridTree
-    - type: Broadphase
-    - type: OccluderTree
-    - type: MapAtmosphere
-      space: False
-      mixture:
-        volume: 2500
-        immutable: True
-        temperature: 293.15
-        moles:
-          Oxygen: 21.824879
-          Nitrogen: 82.10312
 - proto: CEArrivalsDockPointMarker
   entities:
   - uid: 300
