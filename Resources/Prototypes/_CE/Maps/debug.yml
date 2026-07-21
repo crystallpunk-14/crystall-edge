@@ -37,7 +37,7 @@
           - /Maps/_CE/Dev/Dev2.yml
           - /Maps/_CE/Dev/Dev3.yml
           zLevelsComponentOverrides:
-            - type: CEAutoGridGravity
+            - type: CEGridStability
             - type: MapAtmosphere
               space: False
               mixture:
