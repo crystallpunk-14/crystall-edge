@@ -110,27 +110,31 @@ public sealed partial class CEZCollapseSystem
     private void AddPreviewSnapshots(Dictionary<NetEntity, Dictionary<Vector2i, int>> dict)
     {
         var visited = new HashSet<EntityUid>();
-        var query = AllEntityQuery<CEZMapComponent, MapGridComponent>();
-        while (query.MoveNext(out var gridUid, out _, out _))
+        var query = AllEntityQuery<CEZMapComponent, MapComponent>();
+        while (query.MoveNext(out _, out _, out var mapComp))
         {
-            if (_stabilityQuery.HasComponent(gridUid) || visited.Contains(gridUid) || !IsZCollapseEligible(gridUid))
-                continue;
-
-            var column = GetColumn(gridUid, IsZCollapseEligible);
-            foreach (var g in column)
+            foreach (var grid in _mapManager.GetAllGrids(mapComp.MapId))
             {
-                visited.Add(g);
-            }
-
-            var stabilityByGrid = ComputePreviewColumn(column);
-
-            foreach (var g in column)
-            {
-                if (!_gridQuery.TryGetComponent(g, out var grid))
+                var gridUid = grid.Owner;
+                if (_stabilityQuery.HasComponent(gridUid) || visited.Contains(gridUid) || !IsZCollapseEligible(gridUid))
                     continue;
 
-                var stability = stabilityByGrid.GetValueOrDefault(g) ?? new Dictionary<Vector2i, int>();
-                dict[GetNetEntity(g)] = BuildOverlayTiles(g, grid, stability);
+                var column = GetColumn(gridUid, IsZCollapseEligible);
+                foreach (var g in column)
+                {
+                    visited.Add(g);
+                }
+
+                var stabilityByGrid = ComputePreviewColumn(column);
+
+                foreach (var g in column)
+                {
+                    if (!_gridQuery.TryGetComponent(g, out var gridComp))
+                        continue;
+
+                    var stability = stabilityByGrid.GetValueOrDefault(g) ?? new Dictionary<Vector2i, int>();
+                    dict[GetNetEntity(g)] = BuildOverlayTiles(g, gridComp, stability);
+                }
             }
         }
     }
@@ -151,8 +155,23 @@ public sealed partial class CEZCollapseSystem
 
         foreach (var gridUid in column)
         {
-            if (_zMapQuery.TryGetComponent(gridUid, out var zMap) && _zLevel.TryMapUp((gridUid, zMap), out var above) && columnSet.Contains(above.Owner))
-                aboveOf[gridUid] = above.Owner;
+            // Preview grids never have CEGridStabilityComponent (mapping sessions never
+            // map-initialize), so the neighbor-grid check has to be IsZCollapseEligible, not the
+            // stability-hardcoded TryGetParticipatingGrid used by the real pipeline.
+            if (TryGetOwningMap(gridUid, out var mapUid) &&
+                _zMapQuery.TryGetComponent(mapUid, out var zMap) &&
+                _zLevel.TryMapUp((mapUid, zMap), out var aboveMap) &&
+                _mapCompQuery.TryGetComponent(aboveMap.Owner, out var aboveMapComp))
+            {
+                foreach (var candidate in _mapManager.GetAllGrids(aboveMapComp.MapId))
+                {
+                    if (!columnSet.Contains(candidate.Owner) || !IsZCollapseEligible(candidate.Owner))
+                        continue;
+
+                    aboveOf[gridUid] = candidate.Owner;
+                    break;
+                }
+            }
 
             if (!_gridQuery.TryGetComponent(gridUid, out var grid))
                 continue;
@@ -183,11 +202,14 @@ public sealed partial class CEZCollapseSystem
             if (xform.GridUid is not { } gridUid || !xform.Anchored || !gridsByUid.TryGetValue(gridUid, out var grid))
                 continue;
 
-            if (!aboveOf.TryGetValue(gridUid, out var aboveGrid))
+            if (!aboveOf.TryGetValue(gridUid, out var aboveGrid) || !gridsByUid.TryGetValue(aboveGrid, out var aboveGridComp))
+                continue;
+
+            if (!TryGetTileOnGrid(aboveGrid, aboveGridComp, _transform.GetWorldPosition(xform), out var aboveTile))
                 continue;
 
             var tile = _map.TileIndicesFor(gridUid, grid, xform.Coordinates);
-            AddBridge(bridges, (gridUid, tile), (aboveGrid, tile), support.SupportStrength, support.TransferLoss);
+            AddBridge(bridges, (gridUid, tile), (aboveGrid, aboveTile), support.SupportStrength, support.TransferLoss);
         }
 
         var stability = new Dictionary<(EntityUid, Vector2i), int>();

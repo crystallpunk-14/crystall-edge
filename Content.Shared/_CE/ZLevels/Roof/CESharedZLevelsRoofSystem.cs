@@ -3,6 +3,8 @@
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
 
+using System.Linq;
+using System.Numerics;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Light.Components;
@@ -27,6 +29,7 @@ public abstract partial class CESharedZLevelsRoofSystem : EntitySystem
     [Dependency] protected EntityQuery<MapGridComponent> GridQuery = default!;
     [Dependency] protected EntityQuery<RoofComponent> RoofQuery = default!;
     [Dependency] protected EntityQuery<CEZMapComponent> ZMapQuery = default!;
+    [Dependency] protected EntityQuery<TransformComponent> XformQuery = default!;
 
     public override void Initialize()
     {
@@ -90,9 +93,6 @@ public abstract partial class CESharedZLevelsRoofSystem : EntitySystem
         }
     }
 
-    /// <summary>
-    /// Space grid path: propagate roof state to sibling grids in the z-grid network using world tile coords.
-    /// </summary>
     private void OnGridTileChanged(
         EntityUid gridUid,
         MapGridComponent currentMapGrid,
@@ -102,33 +102,64 @@ public abstract partial class CESharedZLevelsRoofSystem : EntitySystem
         if (!ZLevel.TryGetGridNetwork(gridUid, out var network))
             return;
 
-        Dictionary<Vector2i, bool> worldRoofMap = new();
+        if (ZLevel.TryGetGridZDepth(gridUid) is not { } ownDepth)
+            return;
+
+        // Topmost first, so `covered` below only ever re-latches to true by walking downward into
+        // a level with its own opaque tile — never by "seeing" a level further above.
+        var below = network.Comp.Grids
+            .Select(g => (Grid: g, Depth: ZLevel.TryGetGridZDepth(g)))
+            .Where(x => x.Depth is { } d && d < ownDepth)
+            .OrderByDescending(x => x.Depth!.Value)
+            .ToList();
+
+        if (below.Count == 0)
+            return;
+
         foreach (var change in args.Changes)
         {
             var worldTile = ZLevel.GridTileToWorldTile(gridUid, currentMapGrid, change.GridIndices);
             var tileDef = (ContentTileDefinition)TilDefMan[change.NewTile.TypeId];
             var roovedAbove = Roof.IsRooved((gridUid, currentMapGrid, currentRoof), change.GridIndices);
-            worldRoofMap[worldTile] = roovedAbove || !tileDef.Transparent;
-        }
+            var covered = roovedAbove || !tileDef.Transparent;
 
-        foreach (var otherGrid in network.Comp.Grids)
-        {
-            if (otherGrid == gridUid)
-                continue;
-
-            if (!GridQuery.TryComp(otherGrid, out var otherMapGrid))
-                continue;
-
-            var otherRoof = EnsureComp<RoofComponent>(otherGrid);
-            var enumerator = Map.GetAllTilesEnumerator(otherGrid, otherMapGrid);
-            while (enumerator.MoveNext(out var tileRef))
+            foreach (var (otherGrid, _) in below)
             {
-                var worldTile = ZLevel.GridTileToWorldTile(otherGrid, otherMapGrid, tileRef.Value.GridIndices);
-                if (!worldRoofMap.TryGetValue(worldTile, out var rooved))
+                if (!GridQuery.TryComp(otherGrid, out var otherMapGrid))
                     continue;
 
-                Roof.SetRoof((otherGrid, otherMapGrid, otherRoof), tileRef.Value.GridIndices, rooved);
+                if (!TryWorldTileToLocalTile(otherGrid, otherMapGrid, worldTile, out var localTile))
+                    continue;
+
+                if (!Map.TryGetTileRef(otherGrid, otherMapGrid, localTile, out var tileRef) || tileRef.Tile.IsEmpty)
+                    continue; // nothing here on this level — neither marked nor able to re-shield below
+
+                var otherRoof = EnsureComp<RoofComponent>(otherGrid);
+                Roof.SetRoof((otherGrid, otherMapGrid, otherRoof), localTile, covered);
+
+                var otherTileDef = (ContentTileDefinition)TilDefMan[tileRef.Tile.TypeId];
+                if (!otherTileDef.Transparent)
+                    covered = true; // this level's own solid tile re-shields everything further down
             }
         }
+    }
+
+    /// <summary>
+    /// Resolves a world tile (shared X,Y convention across Z-level maps — see
+    /// <see cref="CESharedZLevelsSystem"/>'s <c>TryMove</c>) into <paramref name="grid"/>'s own local
+    /// tile index. Z-levels are separate MapIds, so this deliberately tags the shared (X,Y) with
+    /// <paramref name="gridUid"/>'s own MapId rather than the caller's, exploiting that convention.
+    /// Non-throwing: <paramref name="gridUid"/> could have been deleted between being read out of the
+    /// z-grid network and this call (e.g. a ZCollapse that ate the whole grid).
+    /// </summary>
+    private bool TryWorldTileToLocalTile(EntityUid gridUid, MapGridComponent grid, Vector2i worldTile, out Vector2i localTile)
+    {
+        localTile = default;
+        if (!XformQuery.TryGetComponent(gridUid, out var xform))
+            return false;
+
+        var worldPos = new Vector2(worldTile.X + 0.5f, worldTile.Y + 0.5f);
+        localTile = Map.TileIndicesFor(gridUid, grid, new MapCoordinates(worldPos, xform.MapID));
+        return true;
     }
 }

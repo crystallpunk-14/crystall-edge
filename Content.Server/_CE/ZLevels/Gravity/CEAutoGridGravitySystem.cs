@@ -1,3 +1,4 @@
+using Content.Server._CE.ZCollapse;
 using Content.Shared.Gravity;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -8,6 +9,7 @@ public sealed partial class CEAutoGridGravitySystem : EntitySystem
 {
     [Dependency] private IMapManager _mapManager = default!;
     [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     public override void Initialize()
     {
@@ -45,9 +47,14 @@ public sealed partial class CEAutoGridGravitySystem : EntitySystem
 
     private void EnableGravity(EntityUid ent)
     {
+        EnsureComp<CEGridStabilityComponent>(ent);
         var gravity = EnsureComp<GravityComponent>(ent);
         gravity.Inherent = true;
         gravity.Enabled = true;
         Dirty(ent, gravity);
+
+        var xform = Transform(ent);
+        _transform.SetLocalRotation(ent, Angle.Zero, xform);
+        xform.NoLocalRotation = true;
     }
 }
