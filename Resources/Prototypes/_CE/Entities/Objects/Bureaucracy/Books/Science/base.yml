@@ -2,6 +2,7 @@
   id: CEBaseScienceBookArcaneEngineering
   parent: CEBookBase
   name: arcane engineering science book
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     layers:

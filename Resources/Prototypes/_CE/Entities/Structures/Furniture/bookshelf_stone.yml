@@ -81,13 +81,3 @@
           CEStoneBlock1:
             min: 2
             max: 4
-
-- type: entity
-  id: CEBookshelfStoneFilled
-  parent: CEBookshelfStone
-  suffix: Random filled
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:NestedSelector
-        tableId: CEBookshelfEntityTable
