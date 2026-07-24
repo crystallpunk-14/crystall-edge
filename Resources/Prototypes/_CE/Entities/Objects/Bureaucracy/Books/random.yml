@@ -1,14 +1,29 @@
 - type: entity
-  id: CEBookRandom
+  id: CEBookEmpty
   parent: CEBookWriteableBase
-  suffix: Random visual
-  description: Each book is unique! What is hidden in this one?
+  name: empty book
+  description: A plain book with a blank white cover, ready to be filled.
+  components:
+  - type: Sprite
+    layers:
+    - state: paper
+    - state: cover_base
+      color: white
+      map: [ "cover" ]
+
+- type: entity
+  id: CEBookAncient
+  parent: CEBookBase
+  name: ancient book
+  suffix: Random visual, scientific interest
+  description: A weathered old book. It looks like it might be worth studying.
   components:
   - type: RandomMetadata
     nameSegments:
     - BookHintAppearances
     - BookTypes
-    nameFormat: name-format-book
+    - CEAncientBookTopic
+    nameFormat: name-format-book-ancient
   - type: RandomSprite
     available:
       - cover:
@@ -26,3 +41,5 @@
           icon_magic: ""
         overlay:
           bookmark_short: ""
+  - type: CEScientificInterest
+    points: 5

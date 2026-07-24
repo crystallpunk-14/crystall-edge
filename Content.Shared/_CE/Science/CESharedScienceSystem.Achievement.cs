@@ -3,6 +3,7 @@ using Content.Shared._CE.Science.Prototypes;
 using Content.Shared.DoAfter;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction.Events;
+using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Verbs;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -20,7 +21,7 @@ public abstract partial class CESharedScienceSystem
     private void InitializeAchievement()
     {
         SubscribeLocalEvent<CEScienceAchievementHolderComponent, MapInitEvent>(OnAchievementMapInit);
-        SubscribeLocalEvent<CEScienceAchievementHolderComponent, UseInHandEvent>(OnAchievementUseInHand);
+        SubscribeLocalEvent<CEScienceAchievementHolderComponent, UseInHandEvent>(OnAchievementUseInHand, after: [typeof(IngestionSystem)]);
         SubscribeLocalEvent<CEScienceAchievementHolderComponent, GetVerbsEvent<AlternativeVerb>>(AddAchievementVerbs);
         SubscribeLocalEvent<CEScienceAchievementHolderComponent, CEScienceAchievementDoAfterEvent>(OnAchievementDoAfter);
     }
@@ -55,7 +56,7 @@ public abstract partial class CESharedScienceSystem
             Text = Loc.GetString("ce-science-achievement-verb-study"),
             Icon = new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/VerbIcons/examine.svg.192dpi.png")),
             Act = () => StartAchievementRead(ent, user),
-            Priority = 2,
+            Priority = 1,
         });
     }
 

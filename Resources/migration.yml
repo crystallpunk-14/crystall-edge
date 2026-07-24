@@ -69,6 +69,10 @@ CESpawnPointTailorMerchant: null
 CESpawnPointPharmacistMerchant: null
 CESpawnPointHomeGoodsMerchant: null
 
+CEBookRandom: CEBookEmpty
+CEBookshelfWoodenFilled: CEBookshelfWooden
+CEBookshelfStoneFilled: CEBookshelfStone
+
 # CrystallEdge migration zone end
 
 

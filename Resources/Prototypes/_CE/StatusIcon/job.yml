@@ -100,3 +100,29 @@
     sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
     state: Townfolk
   jobName: ce-job-name-townfolk
+
+# Academy
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconAcademyStudent
+  icon:
+    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    state: Student
+  jobName: ce-job-name-academy-student
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconAcademyProfessor
+  icon:
+    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    state: Professor
+  jobName: ce-job-name-academy-professor
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconAcademyDirector
+  icon:
+    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    state: Director
+  jobName: ce-job-name-academy-director

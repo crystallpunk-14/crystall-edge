@@ -24,15 +24,11 @@ public sealed partial class CEScienceSystem : CESharedScienceSystem
         SubscribeLocalEvent<CEScienceResearchDataComponent, ComponentInit>(OnResearchDataInit);
     }
 
-    /// <summary>
-    /// Grants the (-1,-1) to (1,1) square for every currently existing science area as soon as
-    /// an entity gets its research data component.
-    /// </summary>
     private void OnResearchDataInit(Entity<CEScienceResearchDataComponent> ent, ref ComponentInit args)
     {
         foreach (var area in _proto.EnumeratePrototypes<CEScienceAreaPrototype>())
         {
-            RevealArea(ent, area.ID, default, 1);
+            RevealArea(ent, area.ID, default, 0);
         }
     }
 

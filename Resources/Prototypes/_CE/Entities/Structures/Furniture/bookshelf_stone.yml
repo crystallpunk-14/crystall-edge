@@ -1,14 +1,14 @@
 - type: entity
-  id: CEBookshelfWooden
+  id: CEBookshelfStone
   categories: [ ForkFiltered ]
   parent:
   - BaseStructure
-  name: wooden bookshelf
+  name: stone bookshelf
   description: Mostly filled with books.
   components:
   - type: Sprite
     drawdepth: Mobs
-    sprite: _CE/Structures/Furniture/bookshelf.rsi
+    sprite: _CE/Structures/Furniture/bookshelf_stone.rsi
     layers:
       - state: base
       - state: book-0
@@ -36,7 +36,7 @@
   - type: Rotatable
   - type: Appearance
   - type: StorageFillVisualizer
-    maxFillLevels: 28
+    maxFillLevels: 21
     fillBaseName: book
   - type: Transform
     anchored: true
@@ -54,7 +54,7 @@
         layer:
         - MachineLayer
   - type: Damageable
-    damageModifierSet: CEWood
+    damageModifierSet: CERock
   - type: Injurable
     damageContainer: Inorganic
   - type: Destructible
@@ -73,12 +73,11 @@
         acts: ["Destruction"]
       - !type:PlaySoundBehavior
         sound:
-          collection: WoodDestroyHeavy
+          path: /Audio/Effects/break_stone.ogg
           params:
             volume: -6
       - !type:SpawnEntitiesBehavior
         spawn:
-          CEWoodenPlanks1:
+          CEStoneBlock1:
             min: 2
             max: 4
-
