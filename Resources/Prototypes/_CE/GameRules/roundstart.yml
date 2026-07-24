@@ -31,6 +31,13 @@
 
 - type: entity
   parent: CEBaseGameRule
+  id: CEGameRuleWildMagic
+  components:
+  - type: CEWildMagicRule
+    nodeCount: 5
+
+- type: entity
+  parent: CEBaseGameRule
   id: CEGameRuleVampires
   components:
   - type: AntagObjectives
