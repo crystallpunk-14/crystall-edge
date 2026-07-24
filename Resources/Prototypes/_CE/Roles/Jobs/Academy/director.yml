@@ -10,6 +10,9 @@
   joinNotifyCrew: true
   supervisors: ce-job-supervisors-empire
   weight: 3
+  special:
+    - !type:CEResearchDataSpecial
+      radius: 6
 
 - type: startingGear
   id: CEAcademyDirectorGear

@@ -7,6 +7,9 @@
   startingGear: CEAcademyStudentGear
   icon: CEJobIconAcademyStudent
   supervisors: ce-job-supervisors-academy-professor
+  special:
+    - !type:CEResearchDataSpecial
+      radius: 1
 
 - type: startingGear
   id: CEAcademyStudentGear
