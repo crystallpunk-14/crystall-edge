@@ -140,6 +140,50 @@
       - state: green
       - state: workman
 
+# Academy
+
+- type: entity
+  id: CESpawnPointAcademyStudent
+  parent: CESpawnPointJobBase
+  name: academy student
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEAcademyStudent
+  - type: Sprite
+    layers:
+      - state: green
+      - state: workman
+
+- type: entity
+  id: CESpawnPointAcademyProfessor
+  parent: CESpawnPointJobBase
+  name: academy professor
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEAcademyProfessor
+  - type: Sprite
+    layers:
+      - state: green
+      - state: workman
+
+- type: entity
+  id: CESpawnPointAcademyDirector
+  parent: CESpawnPointJobBase
+  name: academy director
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEAcademyDirector
+  - type: Sprite
+    layers:
+      - state: green
+      - state: workman
+
 # Engineering
 
 - type: entity

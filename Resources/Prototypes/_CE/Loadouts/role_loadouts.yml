@@ -121,3 +121,44 @@
   - CEBardShoes #
   - CEBardTool #
   - CEGeneralInstruments
+
+# Academy
+
+- type: roleLoadout
+  id: JobCEAcademyStudent
+  groups:
+  - CEGeneralBag
+  - CETownfolkHead
+  - CEGeneralEyes
+  - CEGeneralCloak
+  - CEGeneralGloves
+  - CEGeneralShirt
+  - CEGeneralPants
+  - CEGeneralShoes
+  - CEGeneralInstruments
+
+- type: roleLoadout
+  id: JobCEAcademyProfessor
+  groups:
+  - CEGeneralBag
+  - CETownfolkHead
+  - CEGeneralEyes
+  - CEGeneralCloak
+  - CEGeneralGloves
+  - CEGeneralShirt
+  - CEGeneralPants
+  - CEGeneralShoes
+  - CEGeneralInstruments
+
+- type: roleLoadout
+  id: JobCEAcademyDirector
+  groups:
+  - CEGeneralBag
+  - CETownfolkHead
+  - CEGeneralEyes
+  - CEGeneralCloak
+  - CEGeneralGloves
+  - CEGeneralShirt
+  - CEGeneralPants
+  - CEGeneralShoes
+  - CEGeneralInstruments

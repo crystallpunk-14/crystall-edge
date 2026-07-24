@@ -38,3 +38,14 @@ ce-job-desc-bard = Music, fun, and jokes are your job and bread. Make this city'
 
 ce-job-name-townfolk = Townfolk
 ce-job-desc-townfolk = A free citizen who has saved enough money to take a week off and do whatever their heart desires.
+
+# Academy
+
+ce-job-name-academy-student = Student
+ce-job-desc-academy-student = A pupil of the Thaumaturgic Academy, learning the fundamentals of science under the professors' guidance.
+
+ce-job-name-academy-professor = Professor
+ce-job-desc-academy-professor = A teacher of the Academy, instructing students in the secrets of nature and pursuing their own research.
+
+ce-job-name-academy-director = Academy Director
+ce-job-desc-academy-director = The head of the Thaumaturgic Academy, responsible for the safety of the educational process and overseeing the direction of research.

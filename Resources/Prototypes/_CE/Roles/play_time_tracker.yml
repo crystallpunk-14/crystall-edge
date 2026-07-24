@@ -38,3 +38,14 @@
 
 - type: playTimeTracker
   id: CEJobBard
+
+# Academy
+
+- type: playTimeTracker
+  id: CEJobAcademyStudent
+
+- type: playTimeTracker
+  id: CEJobAcademyProfessor
+
+- type: playTimeTracker
+  id: CEJobAcademyDirector

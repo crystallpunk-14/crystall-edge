@@ -1,0 +1,28 @@
+- type: job
+  id: CEAcademyProfessor
+  setPreference: true
+  name: ce-job-name-academy-professor
+  description: ce-job-desc-academy-professor
+  playTimeTracker: CEJobAcademyProfessor
+  startingGear: CEAcademyProfessorGear
+  icon: CEJobIconAcademyProfessor
+  supervisors: ce-job-supervisors-academy-director
+
+- type: startingGear
+  id: CEAcademyProfessorGear
+  equipment:
+    pocket1: CEWalletFilledAcademyProfessor
+
+- type: entity
+  id: CEWalletFilledAcademyProfessor
+  parent: CEWallet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents: #100cp total
+    - id: CECoinSilver5
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinCopper10
