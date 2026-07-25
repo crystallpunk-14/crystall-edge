@@ -1,0 +1,40 @@
+- type: entity
+  parent:
+  - CEConstructibleMachine
+  - CEBaseMachinePowered
+  - BaseMachine
+  id: CEPress
+  categories: [ ForkFiltered ]
+  name: industrial press
+  description: Once powered up, the heavy press will be ready to rise and crush any objects beneath it. Use specialized press platforms to achieve the desired result.
+  components:
+  - type: PlacementReplacement
+    key: walls
+  #- type: Machine
+  #  board: CEMachineCoreHeater # TODO
+  - type: Fixtures
+    fixtures:
+      fix1:
+        density: 3000
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.3,-0.0,0.3,0.35"
+        mask:
+        - TabletopMachineMask
+        layer:
+        - Impassable
+        - MidImpassable
+        - LowImpassable
+        hard: false
+  - type: Transform
+    anchored: true
+  - type: Sprite
+    drawdepth: Mobs
+    offset: 0, 0.45
+    noRot: true
+    sprite: _CE/Structures/Industrial/press.rsi
+    layers:
+    - state: pipe
+    - state: block
+  - type: Clickable
+  - type: Appearance

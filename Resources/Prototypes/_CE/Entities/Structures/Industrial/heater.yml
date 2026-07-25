@@ -43,7 +43,6 @@
     noRot: false
   - type: Sprite
     sprite: _CE/Structures/Industrial/furnace.rsi
-    state: base
     layers:
     - state: base
     - state: burning
