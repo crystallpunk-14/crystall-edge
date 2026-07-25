@@ -7,6 +7,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: terra
+  reagent: CEEssenceEarth
 
 - type: magicEssenceType
   id: Fire
@@ -15,6 +16,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: ignis
+  reagent: CEEssenceFire
 
 - type: magicEssenceType
   id: Water
@@ -23,6 +25,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: aqua
+  reagent: CEEssenceWater
 
 - type: magicEssenceType
   id: Air
@@ -31,6 +34,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: aer
+  reagent: CEEssenceAir
 
 - type: magicEssenceType
   id: Order
@@ -39,6 +43,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: ordo
+  reagent: CEEssenceOrder
 
 - type: magicEssenceType
   id: Chaos
@@ -47,6 +52,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: perditio
+  reagent: CEEssenceChaos
 
 # Complex tier 1
 
@@ -57,6 +63,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: gelium
+  reagent: CEEssenceFrost
 
 - type: magicEssenceType
   id: Light
@@ -65,6 +72,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: lux
+  reagent: CEEssenceLight
 
 - type: magicEssenceType
   id: Motion
@@ -73,6 +81,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: motus
+  reagent: CEEssenceMotion
 
 - type: magicEssenceType
   id: Cycle
@@ -81,6 +90,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: permutatio
+  reagent: CEEssenceCycle
 
 - type: magicEssenceType
   id: Energia
@@ -89,6 +99,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: potentia
+  reagent: CEEssenceEnergia
 
 - type: magicEssenceType
   id: Void
@@ -97,6 +108,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: vacuos
+  reagent: CEEssenceVoid
 
 - type: magicEssenceType
   id: Poison
@@ -105,6 +117,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: venenum
+  reagent: CEEssencePoison
 
 - type: magicEssenceType
   id: Life
@@ -113,6 +126,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: victus
+  reagent: CEEssenceLife
 
 - type: magicEssenceType
   id: Crystal
@@ -121,6 +135,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: vitreus
+  reagent: CEEssenceCrystal
 
 - type: magicEssenceType
   id: Weather
@@ -129,6 +144,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: tempestas
+  reagent: CEEssenceWeather
 
 # Complex tier 2
 
@@ -139,6 +155,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceMagic
 
 - type: magicEssenceType
   id: Beast
@@ -147,6 +164,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceBeast
 
 - type: magicEssenceType
   id: Hunger
@@ -155,6 +173,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceHunger
 
 - type: magicEssenceType
   id: Plant
@@ -163,6 +182,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssencePlant
 
 - type: magicEssenceType
   id: Travel
@@ -171,6 +191,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceTravel
 
 - type: magicEssenceType
   id: Slime
@@ -179,6 +200,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceSlime
 
 - type: magicEssenceType
   id: Metal
@@ -187,6 +209,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceMetal
 
 - type: magicEssenceType
   id: Death
@@ -195,6 +218,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceDeath
 
 - type: magicEssenceType
   id: Healing
@@ -203,6 +227,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceHealing
 
 - type: magicEssenceType
   id: Darkness
@@ -211,6 +236,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceDarkness
 
 - type: magicEssenceType
   id: Trap
@@ -219,6 +245,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceTrap
 
 - type: magicEssenceType
   id: Flight
@@ -227,6 +254,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceFlight
 
 # Complex tier 3
 
@@ -237,6 +265,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceEldritch
 
 - type: magicEssenceType
   id: Tree
@@ -245,6 +274,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceTree
 
 - type: magicEssenceType
   id: Aura
@@ -253,6 +283,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceAura
 
 - type: magicEssenceType
   id: Flesh
@@ -261,6 +292,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceFlesh
 
 - type: magicEssenceType
   id: Undead
@@ -269,6 +301,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceUndead
 
 - type: magicEssenceType
   id: Soul
@@ -277,6 +310,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceSoul
 
 - type: magicEssenceType
   id: Taint
@@ -285,6 +319,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceTaint
 
 # Complex tier 4
 
@@ -295,6 +330,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceMind
 
 - type: magicEssenceType
   id: Senses
@@ -303,6 +339,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceSenses
 
 # Complex tier 5
 
@@ -313,6 +350,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceHuman
 
 # Complex tier 6
 
@@ -323,6 +361,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceTool
 
 - type: magicEssenceType
   id: Crop
@@ -331,6 +370,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceCrop
 
 - type: magicEssenceType
   id: Greed
@@ -339,6 +379,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceGreed
 
 - type: magicEssenceType
   id: Mining
@@ -347,6 +388,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceMining
 
 # Complex tier 7
 
@@ -357,6 +399,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceCraft
 
 - type: magicEssenceType
   id: Machine
@@ -365,6 +408,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceMachine
 
 - type: magicEssenceType
   id: Cloth
@@ -373,6 +417,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceCloth
 
 - type: magicEssenceType
   id: Weapon
@@ -381,6 +426,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceWeapon
 
 - type: magicEssenceType
   id: Armor
@@ -389,6 +435,7 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceArmor
 
 - type: magicEssenceType
   id: Harvest
@@ -397,3 +444,4 @@
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
+  reagent: CEEssenceHarvest

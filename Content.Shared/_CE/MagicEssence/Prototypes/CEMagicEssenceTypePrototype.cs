@@ -1,3 +1,4 @@
+using Content.Shared.Chemistry.Reagent;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
@@ -24,4 +25,12 @@ public sealed partial class CEMagicEssenceTypePrototype : IPrototype
 
     [DataField(required: true)]
     public SpriteSpecifier Icon = default!;
+
+    /// <summary>
+    /// The liquid reagent that is the pure embodiment of this essence type. 1 unit of this reagent
+    /// is worth 1 unit of this essence, used by <see cref="Systems.CEMagicEssenceSystem"/> to price
+    /// solutions holding it.
+    /// </summary>
+    [DataField]
+    public ProtoId<ReagentPrototype>? Reagent;
 }
