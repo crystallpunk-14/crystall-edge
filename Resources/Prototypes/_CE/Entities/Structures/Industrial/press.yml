@@ -12,6 +12,7 @@
     key: walls
   #- type: Machine
   #  board: CEMachineCoreHeater # TODO
+  - type: CEPress
   - type: Fixtures
     fixtures:
       fix1:
@@ -36,5 +37,6 @@
     layers:
     - state: pipe
     - state: block
+      map: [ "block" ]
   - type: Clickable
   - type: Appearance

@@ -2,16 +2,18 @@ using Content.Shared._CE.Press.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Maps;
 using Content.Shared.Power;
+using Robust.Shared.Network;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.Press.Systems;
 
-public sealed partial class CEPressSystem : EntitySystem
+public abstract partial class CESharedPressSystem : EntitySystem
 {
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private TurfSystem _turf = default!;
     [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private INetManager _net = default!;
 
     public override void Initialize()
     {
@@ -113,6 +115,9 @@ public sealed partial class CEPressSystem : EntitySystem
                 _damageable.TryChangeDamage(scannedUid, press.CrushDamage);
             }
         }
+
+        if (_net.IsClient && press.CrushVFX is { } vfx)
+            SpawnAtPosition(vfx, Transform(uid).Coordinates);
 
         press.State = CEPressState.Recovering;
         press.StateEndTime = _timing.CurTime + press.RecoveringDuration;

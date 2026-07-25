@@ -1,13 +1,14 @@
 using Content.Shared._CE.Press.Systems;
 using Content.Shared.Damage;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Shared._CE.Press.Components;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState, AutoGenerateComponentPause]
-[Access(typeof(CEPressSystem))]
+[Access(typeof(CESharedPressSystem))]
 public sealed partial class CEPressComponent : Component
 {
     /// <summary>
@@ -46,6 +47,47 @@ public sealed partial class CEPressComponent : Component
             { "Blunt", 60 },
         },
     };
+
+    /// <summary>
+    /// Key of the sprite layer whose vertical offset is animated client-side to follow the
+    /// press's crushing cycle.
+    /// </summary>
+    [DataField]
+    public string BlockLayerKey = "block";
+
+    /// <summary>
+    /// Client-side vertical offset of the "block" sprite layer while Idle.
+    /// </summary>
+    [DataField]
+    public float DefaultOffset = -0.1f;
+
+    /// <summary>
+    /// Client-side vertical offset the "block" sprite layer rises to over the course of Preparing.
+    /// </summary>
+    [DataField]
+    public float PreparingOffset = 0.1f;
+
+    /// <summary>
+    /// Client-side vertical offset the "block" sprite layer snaps down to the instant crushing
+    /// occurs, then slowly rises back to <see cref="DefaultOffset"/> over Recovering.
+    /// </summary>
+    [DataField]
+    public float CrushOffset = -0.4f;
+
+    /// <summary>
+    /// Portion of Preparing (at the end) spent falling from <see cref="PreparingOffset"/> down to
+    /// <see cref="CrushOffset"/>, timed so the fall finishes exactly when Preparing ends and
+    /// crushing occurs. Must be less than <see cref="PreparingDuration"/>.
+    /// </summary>
+    [DataField]
+    public TimeSpan FallDuration = TimeSpan.FromSeconds(0.3);
+
+    /// <summary>
+    /// Entity spawned client-side (purely visual, not networked) at the press's position the
+    /// instant it crushes.
+    /// </summary>
+    [DataField]
+    public EntProtoId? CrushVFX;
 }
 
 [Serializable, NetSerializable]
