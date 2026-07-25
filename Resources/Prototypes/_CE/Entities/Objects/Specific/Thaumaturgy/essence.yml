@@ -19,6 +19,7 @@
       shader: unshaded
   - type: TimedDespawn
     lifetime: 60
+  - type: CETimedDespawnFadeout
   - type: RandomWalk
     minSpeed: 0.25
     maxSpeed: 0.75
