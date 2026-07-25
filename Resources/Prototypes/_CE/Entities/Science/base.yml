@@ -1,5 +1,0 @@
-- type: entity
-  id: CEScience
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: CEScience

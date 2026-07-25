@@ -128,7 +128,7 @@
   - type: CEMagicEssenceStructure
     essences:
       Plant:
-        min: 0
+        min: 1
         max: 2
       Life:
         min: 0

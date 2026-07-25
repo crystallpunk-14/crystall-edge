@@ -62,7 +62,11 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
         if (essences.Count == 0)
             return;
 
-        essences.Sort((a, b) => string.CompareOrdinal(a.Type.Id, b.Type.Id));
+        essences.Sort((a, b) =>
+        {
+            var byAmount = b.Amount.CompareTo(a.Amount);
+            return byAmount != 0 ? byAmount : string.CompareOrdinal(a.Type.Id, b.Type.Id);
+        });
 
         var sb = new StringBuilder();
         sb.Append(Loc.GetString("ce-magic-essence-examine-title"));

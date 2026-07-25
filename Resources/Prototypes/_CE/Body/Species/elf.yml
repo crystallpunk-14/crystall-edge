@@ -190,6 +190,14 @@
   - type: VisualOrganMarkings
     markingData:
       group: CEElf
+  - type: CEMagicEssenceStructure
+    essences:
+      Life:
+        min: 1
+        max: 3
+      Aura:
+        min: 0
+        max: 1
 
 - type: entity
   parent: [ CEOrganBaseTorsoSexed, OrganBaseTorso, CEOrganElfExternal ]

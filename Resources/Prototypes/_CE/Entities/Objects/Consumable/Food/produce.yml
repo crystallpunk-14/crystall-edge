@@ -168,6 +168,11 @@
     - CECabbage
     - CEVegetable
     - CESalad
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant:
+        min: 1
+        max: 2
 
 - type: entity
   id: CEFoodPumpkin
@@ -255,6 +260,11 @@
     tags:
     - CEVegetable
     - CEPumpkin
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant:
+        min: 1
+        max: 2
 
 - type: entity
   id: CEFoodPotato
@@ -395,6 +405,11 @@
     tags:
     - CEVegetable
     - CECucumber
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant:
+        min: 1
+        max: 2
 
 - type: entity
   id: CEFoodTomatoes
@@ -505,6 +520,11 @@
   - type: CEFoodTag
     tags:
     - CEVegetable
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant:
+        min: 1
+        max: 2
 
 - type: entity
   id: CEFoodApple
@@ -600,6 +620,11 @@
     tags:
     - CEFruits
     - CEApple
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant:
+        min: 1
+        max: 2
 
 - type: entity
   id: CEFoodPepper
@@ -691,6 +716,14 @@
     tags:
     - CEVegetable
     - CEGarlic
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant:
+        min: 1
+        max: 3
+      Poison:
+        min: 0
+        max: 1
 
 - type: entity
   id: CEFoodGarlicClove
@@ -809,6 +842,11 @@
     tags:
     - CEVegetable
     - CECorn
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant:
+        min: 1
+        max: 2
 
 - type: entity
   id: CEFoodCarrot
@@ -887,6 +925,11 @@
     tags:
     - CEVegetable
     - CECarrot
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant:
+        min: 1
+        max: 2
 
 - type: entity
   id: CEFoodPepperSlice
@@ -915,6 +958,11 @@
     tags:
     - CEVegetable
     - CEPepper
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant:
+        min: 1
+        max: 2
 
 - type: entity
   id: CEFoodOnion
@@ -994,6 +1042,11 @@
   - type: CEFoodTag
     tags:
     - CEVegetable
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant:
+        min: 1
+        max: 2
 
 - type: entity
   id: CEFoodChanterelle

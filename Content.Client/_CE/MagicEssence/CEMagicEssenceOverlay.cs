@@ -49,6 +49,9 @@ public sealed class CEMagicEssenceOverlay : Overlay
     // How long a full fade in/out takes, in seconds.
     private const float FadeDuration = 0.15f;
 
+    // Only the top N essences (by amount) get an icon in the overlay row; the rest collapse into an ellipsis.
+    private const int MaxIcons = 5;
+
     private static readonly Color OutlineColor = Color.Black.WithAlpha(0.85f);
     private static readonly Color TextColor = Color.White;
 
@@ -168,7 +171,10 @@ public sealed class CEMagicEssenceOverlay : Overlay
         screenPos.Y -= RowOffset * scale;
 
         var essences = entry.Essences;
-        var totalWidth = essences.Count * iconSize + (essences.Count - 1) * iconGap;
+        var shownCount = Math.Min(essences.Count, MaxIcons);
+        var hasOverflow = essences.Count > MaxIcons;
+        var slotCount = shownCount + (hasOverflow ? 1 : 0);
+        var totalWidth = slotCount * iconSize + (slotCount - 1) * iconGap;
 
         var x = screenPos.X - totalWidth / 2f;
         var alpha = entry.Alpha;
@@ -176,8 +182,9 @@ public sealed class CEMagicEssenceOverlay : Overlay
         var textColor = TextColor.WithAlpha(alpha);
         var outlineColor = OutlineColor.WithAlpha(alpha * OutlineColor.A);
 
-        foreach (var (type, amount) in essences)
+        for (var i = 0; i < shownCount; i++)
         {
+            var (type, amount) = essences[i];
             if (!_prototypeManager.TryIndex(type, out CEMagicEssenceTypePrototype? essenceProto))
             {
                 x += iconSize + iconGap;
@@ -201,6 +208,21 @@ public sealed class CEMagicEssenceOverlay : Overlay
             handle.DrawString(_font, textPos, text, textScale, textColor);
 
             x += iconSize + iconGap;
+        }
+
+        if (hasOverflow)
+        {
+            const string ellipsis = "...";
+            var ellipsisDims = handle.GetDimensions(_font, ellipsis, textScale);
+            var ellipsisPos = new Vector2(
+                x + (iconSize - ellipsisDims.X) / 2f,
+                screenPos.Y + iconSize - ascent);
+
+            handle.DrawString(_font, ellipsisPos + OLeft * textScale, ellipsis, textScale, outlineColor);
+            handle.DrawString(_font, ellipsisPos + ORight * textScale, ellipsis, textScale, outlineColor);
+            handle.DrawString(_font, ellipsisPos + OUp * textScale, ellipsis, textScale, outlineColor);
+            handle.DrawString(_font, ellipsisPos + ODown * textScale, ellipsis, textScale, outlineColor);
+            handle.DrawString(_font, ellipsisPos, ellipsis, textScale, textColor);
         }
     }
 
@@ -231,7 +253,11 @@ public sealed class CEMagicEssenceOverlay : Overlay
         if (essences.Count == 0)
             return null;
 
-        essences.Sort((a, b) => string.CompareOrdinal(a.Type.Id, b.Type.Id));
+        essences.Sort((a, b) =>
+        {
+            var byAmount = b.Amount.CompareTo(a.Amount);
+            return byAmount != 0 ? byAmount : string.CompareOrdinal(a.Type.Id, b.Type.Id);
+        });
 
         return (target, essences);
     }

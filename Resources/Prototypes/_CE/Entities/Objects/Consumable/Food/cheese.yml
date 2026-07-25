@@ -117,7 +117,7 @@
   - type: CEMagicEssenceStructure
     essences:
       Life:
-        min: 0
+        min: 1
         max: 2
 
 # Blue Cheese (50% more food)
