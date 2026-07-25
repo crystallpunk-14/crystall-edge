@@ -58,7 +58,7 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
         if (!scanEvent.CanScan)
             return;
 
-        var essences = GetEssence(args.Examined);
+        var essences = GetEssence(args.Examined, includeContents: false);
         if (essences.Count == 0)
             return;
 

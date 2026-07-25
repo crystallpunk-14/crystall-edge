@@ -244,7 +244,7 @@ public sealed partial class CEMagicEssenceOverlay : Overlay
         if (!_interaction.InRangeUnobstructed((player, null), (target, xform)))
             return null;
 
-        var essences = _essence.GetEssence(target);
+        var essences = _essence.GetEssence(target, includeContents: false);
         if (essences.Count == 0)
             return null;
 

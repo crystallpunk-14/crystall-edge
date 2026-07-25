@@ -361,6 +361,28 @@
 
 - type: CERecipe
   roundStart: true
+  id: CEMachineCoreEssenceAttractor
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 1
+  - !type:StackResource
+    stack: CEMachinePartCoalDiffuser
+    count: 2
+  - !type:StackResource
+    stack: CEGlass
+    count: 5
+  result: CEMachineCoreEssenceAttractor
+  resultCount: 1
+
+- type: CERecipe
+  roundStart: true
   id: CEMachineCoreCharger
   tag: CERecipeEngineeringTable
   category: MachineCore
