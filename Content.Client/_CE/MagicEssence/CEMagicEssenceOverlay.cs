@@ -17,12 +17,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Client._CE.MagicEssence;
 
-/// <summary>
-/// Draws a row of essence icons (with their amount in the bottom-right corner of each icon)
-/// above whatever entity is currently under the cursor. Each entity fades in/out independently
-/// as the cursor enters/leaves it, so a quick hover swap can show two entities cross-fading.
-/// </summary>
-public sealed class CEMagicEssenceOverlay : Overlay
+public sealed partial class CEMagicEssenceOverlay : Overlay
 {
     [Dependency] private IEntityManager _entityManager = default!;
     [Dependency] private IInputManager _inputManager = default!;
