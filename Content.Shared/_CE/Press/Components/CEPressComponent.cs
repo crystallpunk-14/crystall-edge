@@ -37,7 +37,9 @@ public sealed partial class CEPressComponent : Component
     public TimeSpan RecoveringDuration = TimeSpan.FromSeconds(3);
 
     /// <summary>
-    /// Damage applied directly to scanned entities when no CEPressTargetComponent is found on the tile.
+    /// Damage applied to crushed entities that end up with no target platform to handle them
+    /// (either because there's no CEPressTargetComponent on the tile, or the target left them
+    /// unhandled).
     /// </summary>
     [DataField]
     public DamageSpecifier CrushDamage = new()
@@ -47,6 +49,12 @@ public sealed partial class CEPressComponent : Component
             { "Blunt", 60 },
         },
     };
+
+    /// <summary>
+    /// Throw speed used to scatter crushed entities that took the CrushDamage fallback.
+    /// </summary>
+    [DataField]
+    public float CrushThrowSpeed = 3f;
 
     /// <summary>
     /// Key of the sprite layer whose vertical offset is animated client-side to follow the

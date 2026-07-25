@@ -10,8 +10,8 @@
   components:
   - type: PlacementReplacement
     key: walls
-  #- type: Machine
-  #  board: CEMachineCoreHeater # TODO
+  - type: Machine
+    board: CEMachineCorePress
   - type: CEPress
     crushVFX: CEPressShockWaveVFX
   - type: Fixtures
@@ -45,10 +45,14 @@
 - type: entity
   parent:
   - CEDustTileEffect
-  - CEShockWaveWeakVFX
   id: CEPressShockWaveVFX
   categories: [ HideSpawnMenu ]
-  #components:
+  components:
   #- type: EmitSoundOnSpawn
   #  sound:
   #    collection:
+  - type: CEShockWave
+    falloffPower: 40
+    sharpness: 10
+    width: 0.1
+    duration: 1

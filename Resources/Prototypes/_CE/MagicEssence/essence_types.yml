@@ -4,6 +4,7 @@
   id: Earth
   name: Terra
   color: "#1cea42"
+  essenceProto: CEEssenceEarth
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: terra
@@ -13,6 +14,7 @@
   id: Fire
   name: Ignis
   color: "#d9741c"
+  essenceProto: CEEssenceFire
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: ignis
@@ -22,6 +24,7 @@
   id: Water
   name: Aqua
   color: "#1c94d9"
+  essenceProto: CEEssenceWater
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: aqua
@@ -31,6 +34,7 @@
   id: Air
   name: Aer
   color: "#def9ff"
+  essenceProto: CEEssenceAir
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: aer
@@ -40,6 +44,7 @@
   id: Order
   name: Ordo
   color: "#d9d9d9"
+  essenceProto: CEEssenceOrder
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: ordo
@@ -49,6 +54,7 @@
   id: Chaos
   name: Perditio
   color: "#5c5c5c"
+  essenceProto: CEEssenceChaos
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: perditio
@@ -60,6 +66,7 @@
   id: Frost
   name: Gelum
   color: "#4f91bd"
+  essenceProto: CEEssenceFrost
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: gelium
@@ -69,6 +76,7 @@
   id: Light
   name: Lux
   color: "#ba97b8"
+  essenceProto: CEEssenceLight
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: lux
@@ -78,6 +86,7 @@
   id: Motion
   name: Motus
   color: "#575100"
+  essenceProto: CEEssenceMotion
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: motus
@@ -87,6 +96,7 @@
   id: Cycle
   name: Permutatio
   color: "#063b1f"
+  essenceProto: CEEssenceCycle
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: permutatio
@@ -96,6 +106,7 @@
   id: Energia
   name: Energia
   color: "#caed72"
+  essenceProto: CEEssenceEnergia
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: potentia
@@ -105,6 +116,7 @@
   id: Void
   name: Vacuos
   color: "#12021c"
+  essenceProto: CEEssenceVoid
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: vacuos
@@ -114,6 +126,7 @@
   id: Poison
   name: Venenum
   color: "#619e20"
+  essenceProto: CEEssencePoison
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: venenum
@@ -123,6 +136,7 @@
   id: Life
   name: Victus
   color: "#eb1a3d"
+  essenceProto: CEEssenceLife
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: victus
@@ -132,6 +146,7 @@
   id: Crystal
   name: Vitreus
   color: "#538cb8"
+  essenceProto: CEEssenceCrystal
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: vitreus
@@ -141,6 +156,7 @@
   id: Weather
   name: Tempestas
   color: "#FFFFFF"
+  essenceProto: CEEssenceWeather
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: tempestas
@@ -152,6 +168,7 @@
   id: Magic
   name: Praecantatio
   color: "#5497d6"
+  essenceProto: CEEssenceMagic
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -161,6 +178,7 @@
   id: Beast
   name: Bestia
   color: "#5c3c0f"
+  essenceProto: CEEssenceBeast
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -170,6 +188,7 @@
   id: Hunger
   name: Fames
   color: "#FFFFFF"
+  essenceProto: CEEssenceHunger
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -179,6 +198,7 @@
   id: Plant
   name: Herba
   color: "#FFFFFF"
+  essenceProto: CEEssencePlant
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -188,6 +208,7 @@
   id: Travel
   name: Iter
   color: "#FFFFFF"
+  essenceProto: CEEssenceTravel
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -197,6 +218,7 @@
   id: Slime
   name: Limus
   color: "#FFFFFF"
+  essenceProto: CEEssenceSlime
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -206,6 +228,7 @@
   id: Metal
   name: Metallum
   color: "#FFFFFF"
+  essenceProto: CEEssenceMetal
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -215,6 +238,7 @@
   id: Death
   name: Mortuus
   color: "#FFFFFF"
+  essenceProto: CEEssenceDeath
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -224,6 +248,7 @@
   id: Healing
   name: Sano
   color: "#FFFFFF"
+  essenceProto: CEEssenceHealing
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -233,6 +258,7 @@
   id: Darkness
   name: Tenebrae
   color: "#FFFFFF"
+  essenceProto: CEEssenceDarkness
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -242,6 +268,7 @@
   id: Trap
   name: Vinculum
   color: "#FFFFFF"
+  essenceProto: CEEssenceTrap
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -251,6 +278,7 @@
   id: Flight
   name: Volatus
   color: "#FFFFFF"
+  essenceProto: CEEssenceFlight
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -262,6 +290,7 @@
   id: Eldritch
   name: Alienis
   color: "#FFFFFF"
+  essenceProto: CEEssenceEldritch
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -271,6 +300,7 @@
   id: Tree
   name: Arbor
   color: "#FFFFFF"
+  essenceProto: CEEssenceTree
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -280,6 +310,7 @@
   id: Aura
   name: Auram
   color: "#FFFFFF"
+  essenceProto: CEEssenceAura
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -289,6 +320,7 @@
   id: Flesh
   name: Corpus
   color: "#FFFFFF"
+  essenceProto: CEEssenceFlesh
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -298,6 +330,7 @@
   id: Undead
   name: Exanimis
   color: "#FFFFFF"
+  essenceProto: CEEssenceUndead
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -307,6 +340,7 @@
   id: Soul
   name: Spiritus
   color: "#FFFFFF"
+  essenceProto: CEEssenceSoul
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -316,6 +350,7 @@
   id: Taint
   name: Vitium
   color: "#FFFFFF"
+  essenceProto: CEEssenceTaint
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -327,6 +362,7 @@
   id: Mind
   name: Cognitio
   color: "#FFFFFF"
+  essenceProto: CEEssenceMind
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -336,6 +372,7 @@
   id: Senses
   name: Sensus
   color: "#FFFFFF"
+  essenceProto: CEEssenceSenses
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -347,6 +384,7 @@
   id: Human
   name: Humanus
   color: "#FFFFFF"
+  essenceProto: CEEssenceHuman
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -358,6 +396,7 @@
   id: Tool
   name: Instrumentum
   color: "#FFFFFF"
+  essenceProto: CEEssenceTool
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -367,6 +406,7 @@
   id: Crop
   name: Messis
   color: "#FFFFFF"
+  essenceProto: CEEssenceCrop
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -376,6 +416,7 @@
   id: Greed
   name: Lucrum
   color: "#FFFFFF"
+  essenceProto: CEEssenceGreed
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -385,6 +426,7 @@
   id: Mining
   name: Perfodio
   color: "#FFFFFF"
+  essenceProto: CEEssenceMining
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -396,6 +438,7 @@
   id: Craft
   name: Fabrico
   color: "#FFFFFF"
+  essenceProto: CEEssenceCraft
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -405,6 +448,7 @@
   id: Machine
   name: Machina
   color: "#FFFFFF"
+  essenceProto: CEEssenceMachine
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -414,6 +458,7 @@
   id: Cloth
   name: Pannus
   color: "#FFFFFF"
+  essenceProto: CEEssenceCloth
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -423,6 +468,7 @@
   id: Weapon
   name: Telum
   color: "#FFFFFF"
+  essenceProto: CEEssenceWeapon
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -432,6 +478,7 @@
   id: Armor
   name: Tutamen
   color: "#FFFFFF"
+  essenceProto: CEEssenceArmor
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
@@ -441,6 +488,7 @@
   id: Harvest
   name: Meto
   color: "#FFFFFF"
+  essenceProto: CEEssenceHarvest
   icon:
     sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: todo
