@@ -1,0 +1,12 @@
+- type: entity
+  parent: CEClothingEyesGogglesFoldableBase
+  id: CEClothingEyesThaumaturgyGlasses
+  name: thaumaturgy glasses
+  description: TODO
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Eyes/thaumaturgy_glasses.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Eyes/thaumaturgy_glasses.rsi
+  - type: CEMagicEssenceScanner
+  - type: VisionCorrection
