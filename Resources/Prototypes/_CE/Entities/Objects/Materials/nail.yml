@@ -27,6 +27,11 @@
   - type: PhysicalComposition
     materialComposition:
       CEIron: 1
+  - type: CEMagicEssenceStructure
+    essences:
+      Metal:
+        min: 0
+        max: 2
   - type: Fixtures
     fixtures:
       slips:

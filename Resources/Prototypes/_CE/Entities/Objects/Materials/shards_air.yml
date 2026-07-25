@@ -41,3 +41,11 @@
     price: 8
   - type: CEZPhysics
     gravityMultiplier: 0.01
+  - type: CEMagicEssenceStructure
+    essences:
+      Air:
+        min: 2
+        max: 6
+      Crystal:
+        min: 0
+        max: 2

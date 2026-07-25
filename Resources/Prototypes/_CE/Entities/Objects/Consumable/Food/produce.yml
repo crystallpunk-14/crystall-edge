@@ -33,6 +33,14 @@
   - type: CEFoodTag
     tags:
     - CEWheat
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant:
+        min: 1
+        max: 3
+      Crop:
+        min: 0
+        max: 2
 
 - type: entity
   id: CECotton
@@ -67,6 +75,14 @@
     slice: CESeedCotton
   - type: StaticPrice
     price: 1
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant:
+        min: 1
+        max: 3
+      Cloth:
+        min: 0
+        max: 1
 
 - type: entity
   id: CEFoodCabbage
@@ -110,6 +126,11 @@
     - CECabbage
     - CEVegetable
     - CESalad
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant:
+        min: 1
+        max: 4
 
 - type: entity
   id: CEFoodCabbageSlice
@@ -190,6 +211,14 @@
     tags:
     - CEVegetable
     - CEPumpkin
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant:
+        min: 1
+        max: 4
+      Life:
+        min: 0
+        max: 2
 
 - type: entity
   id: CEFoodPumpkinSlice
@@ -273,6 +302,14 @@
     tags:
     - CEVegetable
     - CEPotato
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant:
+        min: 1
+        max: 3
+      Earth:
+        min: 0
+        max: 2
 
 - type: entity
   id: CEFoodCucumber
@@ -319,6 +356,14 @@
     tags:
     - CEVegetable
     - CECucumber
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant:
+        min: 1
+        max: 3
+      Water:
+        min: 0
+        max: 2
 
 - type: entity
   id: CEFoodCucumberSlice
@@ -420,6 +465,14 @@
   - type: CEFoodTag
     tags:
     - CEVegetable
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant:
+        min: 1
+        max: 3
+      Water:
+        min: 0
+        max: 2
 
 - type: entity
   id: CEFoodTomatoesSlice
@@ -497,6 +550,14 @@
     tags:
     - CEFruits
     - CEApple
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant:
+        min: 1
+        max: 3
+      Tree:
+        min: 0
+        max: 2
 
 - type: entity
   parent: CEFoodApple
@@ -581,6 +642,14 @@
     tags:
     - CEVegetable
     - CEPepper
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant:
+        min: 1
+        max: 3
+      Fire:
+        min: 0
+        max: 1
 
 - type: entity
   id: CEFoodGarlic
@@ -654,6 +723,14 @@
     tags:
     - CEVegetable
     - CEGarlic
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant:
+        min: 1
+        max: 3
+      Poison:
+        min: 0
+        max: 1
 
 - type: entity
   id: CEFoodCorn
@@ -696,6 +773,14 @@
     tags:
     - CEVegetable
     - CECorn
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant:
+        min: 1
+        max: 3
+      Crop:
+        min: 0
+        max: 2
 
 - type: entity
   id: CEFoodCornKernel
@@ -766,6 +851,14 @@
     tags:
     - CEVegetable
     - CECarrot
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant:
+        min: 1
+        max: 3
+      Earth:
+        min: 0
+        max: 1
 
 - type: entity
   id: CEFoodCarrotSlice
@@ -864,6 +957,14 @@
   - type: CEFoodTag
     tags:
     - CEVegetable
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant:
+        min: 1
+        max: 3
+      Poison:
+        min: 0
+        max: 1
 
 - type: entity
   id: CEFoodOnionSlice
@@ -930,6 +1031,14 @@
   - type: InternalTemperature
     thickness: 0.006
     area: 0.006
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant:
+        min: 1
+        max: 2
+      Life:
+        min: 0
+        max: 2
 
 - type: entity
   id: CEFoodSunflowerHead
@@ -968,3 +1077,11 @@
   - type: InternalTemperature
     thickness: 0.006
     area: 0.006
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant:
+        min: 1
+        max: 3
+      Light:
+        min: 0
+        max: 2

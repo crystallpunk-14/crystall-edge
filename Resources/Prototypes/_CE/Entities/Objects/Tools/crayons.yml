@@ -27,6 +27,14 @@
     maxCharges: 25
   - type: StaticPrice
     price: 5
+  - type: CEMagicEssenceStructure
+    essences:
+      Order:
+        min: 0
+        max: 2
+      Plant:
+        min: 0
+        max: 1
 
 - type: entity
   parent: CECrayon

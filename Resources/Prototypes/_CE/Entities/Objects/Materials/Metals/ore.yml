@@ -26,6 +26,14 @@
   - type: PhysicalComposition
     materialComposition:
       CEIron: 1
+  - type: CEMagicEssenceStructure
+    essences:
+      Metal:
+        min: 1
+        max: 3
+      Earth:
+        min: 1
+        max: 4
 
 - type: entity
   id: CEIronOre10
@@ -69,6 +77,14 @@
     - ore3
   - type: StackPrice
     price: 2
+  - type: CEMagicEssenceStructure
+    essences:
+      Fire:
+        min: 1
+        max: 3
+      Chaos:
+        min: 0
+        max: 2
 
 - type: entity
   id: CECoal10
