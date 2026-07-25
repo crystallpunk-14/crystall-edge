@@ -1,0 +1,604 @@
+# Combines two lower-tier essences into a higher-tier one by heating them together.
+# Full aspect-combination graph mirrored from the classic Thaumcraft 4 aspect wheel.
+
+# Complex tier 1
+
+- type: reaction
+  id: CEEssenceFrost
+  minTemp: 600
+  reactants:
+    CEEssenceFire:
+      amount: 1
+    CEEssenceChaos:
+      amount: 1
+  products:
+    CEEssenceFrost: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceLight
+  minTemp: 600
+  reactants:
+    CEEssenceAir:
+      amount: 1
+    CEEssenceFire:
+      amount: 1
+  products:
+    CEEssenceLight: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceMotion
+  minTemp: 600
+  reactants:
+    CEEssenceAir:
+      amount: 1
+    CEEssenceOrder:
+      amount: 1
+  products:
+    CEEssenceMotion: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceCycle
+  minTemp: 600
+  reactants:
+    CEEssenceOrder:
+      amount: 1
+    CEEssenceChaos:
+      amount: 1
+  products:
+    CEEssenceCycle: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceEnergia
+  minTemp: 600
+  reactants:
+    CEEssenceFire:
+      amount: 1
+    CEEssenceOrder:
+      amount: 1
+  products:
+    CEEssenceEnergia: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceVoid
+  minTemp: 600
+  reactants:
+    CEEssenceAir:
+      amount: 1
+    CEEssenceChaos:
+      amount: 1
+  products:
+    CEEssenceVoid: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssencePoison
+  minTemp: 600
+  reactants:
+    CEEssenceWater:
+      amount: 1
+    CEEssenceChaos:
+      amount: 1
+  products:
+    CEEssencePoison: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceLife
+  minTemp: 600
+  reactants:
+    CEEssenceWater:
+      amount: 1
+    CEEssenceEarth:
+      amount: 1
+  products:
+    CEEssenceLife: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceCrystal
+  minTemp: 600
+  reactants:
+    CEEssenceOrder:
+      amount: 1
+    CEEssenceEarth:
+      amount: 1
+  products:
+    CEEssenceCrystal: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceWeather
+  minTemp: 600
+  reactants:
+    CEEssenceAir:
+      amount: 1
+    CEEssenceWater:
+      amount: 1
+  products:
+    CEEssenceWeather: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+# Complex tier 2
+
+- type: reaction
+  id: CEEssenceMagic
+  minTemp: 600
+  reactants:
+    CEEssenceEnergia:
+      amount: 1
+    CEEssenceVoid:
+      amount: 1
+  products:
+    CEEssenceMagic: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceBeast
+  minTemp: 600
+  reactants:
+    CEEssenceMotion:
+      amount: 1
+    CEEssenceLife:
+      amount: 1
+  products:
+    CEEssenceBeast: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceHunger
+  minTemp: 600
+  reactants:
+    CEEssenceVoid:
+      amount: 1
+    CEEssenceLife:
+      amount: 1
+  products:
+    CEEssenceHunger: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssencePlant
+  minTemp: 600
+  reactants:
+    CEEssenceEarth:
+      amount: 1
+    CEEssenceLife:
+      amount: 1
+  products:
+    CEEssencePlant: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceTravel
+  minTemp: 600
+  reactants:
+    CEEssenceMotion:
+      amount: 1
+    CEEssenceEarth:
+      amount: 1
+  products:
+    CEEssenceTravel: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceSlime
+  minTemp: 600
+  reactants:
+    CEEssenceWater:
+      amount: 1
+    CEEssenceLife:
+      amount: 1
+  products:
+    CEEssenceSlime: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceMetal
+  minTemp: 600
+  reactants:
+    CEEssenceEarth:
+      amount: 1
+    CEEssenceCrystal:
+      amount: 1
+  products:
+    CEEssenceMetal: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceDeath
+  minTemp: 600
+  reactants:
+    CEEssenceChaos:
+      amount: 1
+    CEEssenceLife:
+      amount: 1
+  products:
+    CEEssenceDeath: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceHealing
+  minTemp: 600
+  reactants:
+    CEEssenceOrder:
+      amount: 1
+    CEEssenceLife:
+      amount: 1
+  products:
+    CEEssenceHealing: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceDarkness
+  minTemp: 600
+  reactants:
+    CEEssenceLight:
+      amount: 1
+    CEEssenceVoid:
+      amount: 1
+  products:
+    CEEssenceDarkness: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceTrap
+  minTemp: 600
+  reactants:
+    CEEssenceMotion:
+      amount: 1
+    CEEssenceChaos:
+      amount: 1
+  products:
+    CEEssenceTrap: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceFlight
+  minTemp: 600
+  reactants:
+    CEEssenceAir:
+      amount: 1
+    CEEssenceMotion:
+      amount: 1
+  products:
+    CEEssenceFlight: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+# Complex tier 3
+
+- type: reaction
+  id: CEEssenceEldritch
+  minTemp: 600
+  reactants:
+    CEEssenceDarkness:
+      amount: 1
+    CEEssenceVoid:
+      amount: 1
+  products:
+    CEEssenceEldritch: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceTree
+  minTemp: 600
+  reactants:
+    CEEssenceAir:
+      amount: 1
+    CEEssencePlant:
+      amount: 1
+  products:
+    CEEssenceTree: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceAura
+  minTemp: 600
+  reactants:
+    CEEssenceAir:
+      amount: 1
+    CEEssenceMagic:
+      amount: 1
+  products:
+    CEEssenceAura: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceFlesh
+  minTemp: 600
+  reactants:
+    CEEssenceBeast:
+      amount: 1
+    CEEssenceDeath:
+      amount: 1
+  products:
+    CEEssenceFlesh: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceUndead
+  minTemp: 600
+  reactants:
+    CEEssenceMotion:
+      amount: 1
+    CEEssenceDeath:
+      amount: 1
+  products:
+    CEEssenceUndead: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceSoul
+  minTemp: 600
+  reactants:
+    CEEssenceDeath:
+      amount: 1
+    CEEssenceLife:
+      amount: 1
+  products:
+    CEEssenceSoul: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceTaint
+  minTemp: 600
+  reactants:
+    CEEssenceChaos:
+      amount: 1
+    CEEssenceMagic:
+      amount: 1
+  products:
+    CEEssenceTaint: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+# Complex tier 4
+
+- type: reaction
+  id: CEEssenceMind
+  minTemp: 600
+  reactants:
+    CEEssenceFire:
+      amount: 1
+    CEEssenceSoul:
+      amount: 1
+  products:
+    CEEssenceMind: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceSenses
+  minTemp: 600
+  reactants:
+    CEEssenceAir:
+      amount: 1
+    CEEssenceSoul:
+      amount: 1
+  products:
+    CEEssenceSenses: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+# Complex tier 5
+
+- type: reaction
+  id: CEEssenceHuman
+  minTemp: 600
+  reactants:
+    CEEssenceBeast:
+      amount: 1
+    CEEssenceMind:
+      amount: 1
+  products:
+    CEEssenceHuman: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+# Complex tier 6
+
+- type: reaction
+  id: CEEssenceTool
+  minTemp: 600
+  reactants:
+    CEEssenceHuman:
+      amount: 1
+    CEEssenceOrder:
+      amount: 1
+  products:
+    CEEssenceTool: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceCrop
+  minTemp: 600
+  reactants:
+    CEEssencePlant:
+      amount: 1
+    CEEssenceHuman:
+      amount: 1
+  products:
+    CEEssenceCrop: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceGreed
+  minTemp: 600
+  reactants:
+    CEEssenceHunger:
+      amount: 1
+    CEEssenceHuman:
+      amount: 1
+  products:
+    CEEssenceGreed: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceMining
+  minTemp: 600
+  reactants:
+    CEEssenceHuman:
+      amount: 1
+    CEEssenceEarth:
+      amount: 1
+  products:
+    CEEssenceMining: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+# Complex tier 7
+
+- type: reaction
+  id: CEEssenceCraft
+  minTemp: 600
+  reactants:
+    CEEssenceHuman:
+      amount: 1
+    CEEssenceTool:
+      amount: 1
+  products:
+    CEEssenceCraft: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceMachine
+  minTemp: 600
+  reactants:
+    CEEssenceTool:
+      amount: 1
+    CEEssenceMotion:
+      amount: 1
+  products:
+    CEEssenceMachine: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceCloth
+  minTemp: 600
+  reactants:
+    CEEssenceBeast:
+      amount: 1
+    CEEssenceTool:
+      amount: 1
+  products:
+    CEEssenceCloth: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceWeapon
+  minTemp: 600
+  reactants:
+    CEEssenceFire:
+      amount: 1
+    CEEssenceTool:
+      amount: 1
+  products:
+    CEEssenceWeapon: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceArmor
+  minTemp: 600
+  reactants:
+    CEEssenceTool:
+      amount: 1
+    CEEssenceEarth:
+      amount: 1
+  products:
+    CEEssenceArmor: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150
+
+- type: reaction
+  id: CEEssenceHarvest
+  minTemp: 600
+  reactants:
+    CEEssenceTool:
+      amount: 1
+    CEEssenceCrop:
+      amount: 1
+  products:
+    CEEssenceHarvest: 2
+  effects:
+  - !type:AdjustSolutionTemperature
+    delta: -150

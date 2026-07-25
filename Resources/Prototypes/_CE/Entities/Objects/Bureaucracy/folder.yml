@@ -39,6 +39,11 @@
       storagebase: !type:Container
   - type: StaticPrice
     price: 1
+  - type: CEMagicEssenceStructure
+    essences:
+      Order:
+        min: 1
+        max: 4
 
 - type: entity
   id: CEPaperFolderBlue

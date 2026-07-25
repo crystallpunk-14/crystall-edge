@@ -1,6 +1,6 @@
 using Content.Server.Cargo.Systems;
 using Content.Shared._CE.Currency;
-using Content.Shared.Examine;
+using Content.Shared._CE.Examine;
 using Content.Shared.Inventory;
 using Content.Shared.Tag;
 using Content.Shared._CE.Trading.Components;
@@ -17,7 +17,7 @@ public sealed partial class CEPriceScannerSystem : EntitySystem
 
     public override void Initialize()
     {
-        SubscribeLocalEvent<MetaDataComponent, ExaminedEvent>(OnExamined);
+        SubscribeLocalEvent<CEExamineAugmentEvent>(OnExamineAugment);
     }
 
     private bool IsAbleExamine(EntityUid uid)
@@ -30,13 +30,13 @@ public sealed partial class CEPriceScannerSystem : EntitySystem
         return false;
     }
 
-    private void OnExamined(EntityUid uid, MetaDataComponent component, ExaminedEvent args)
+    private void OnExamineAugment(CEExamineAugmentEvent args)
     {
         if (!IsAbleExamine(args.Examiner))
             return;
         if (_tag.HasTag(args.Examined, CETradingPlatformSystem.CoinTag))
             return;
-        if (HasComp<MobStateComponent>(uid))
+        if (HasComp<MobStateComponent>(args.Examined))
             return;
 
         var price = Math.Round(_price.GetPrice(args.Examined));
@@ -48,6 +48,6 @@ public sealed partial class CEPriceScannerSystem : EntitySystem
 
         priceMsg += _currency.GetCurrencyPrettyString((int)price);
 
-        args.PushMarkup(priceMsg);
+        args.AddMarkup(priceMsg);
     }
 }

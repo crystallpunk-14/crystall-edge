@@ -35,6 +35,14 @@
   - type: PhysicalComposition
     materialComposition:
       CEDirt: 10
+  - type: CEMagicEssenceStructure
+    essences:
+      Earth:
+        min: 2
+        max: 6
+      Plant:
+        min: 0
+        max: 1
 
 - type: entity
   id: CEDirtBlock10
@@ -72,6 +80,11 @@
   - type: PhysicalComposition
     materialComposition:
       CEStone: 10
+  - type: CEMagicEssenceStructure
+    essences:
+      Earth:
+        min: 2
+        max: 8
   - type: FloorTile
     placeTileSound:
       collection: CEDigging #TODO
@@ -121,6 +134,11 @@
       - CESnow
       - CESnowDeep
       - CESnowDeepDeep
+  - type: CEMagicEssenceStructure
+    essences:
+      Frost:
+        min: 1
+        max: 4
 
 - type: entity
   id: CESnowBlock10

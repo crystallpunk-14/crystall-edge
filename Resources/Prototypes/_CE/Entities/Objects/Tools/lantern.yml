@@ -90,3 +90,11 @@
     materialComposition:
       CEIron: 10
       CEBrass: 6
+  - type: CEMagicEssenceStructure
+    essences:
+      Light:
+        min: 1
+        max: 4
+      Energia:
+        min: 0
+        max: 2

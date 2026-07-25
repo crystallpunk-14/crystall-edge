@@ -82,3 +82,14 @@
     materialComposition:
       CEIron: 20
       CEWood: 10
+  - type: CEMagicEssenceStructure
+    essences:
+      Metal:
+        min: 1
+        max: 4
+      Fire:
+        min: 0
+        max: 2
+      Tree:
+        min: 0
+        max: 1

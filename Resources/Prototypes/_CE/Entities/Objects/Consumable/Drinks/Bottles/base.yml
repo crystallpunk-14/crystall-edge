@@ -81,3 +81,8 @@
   - type: PhysicalComposition
     materialComposition:
       CEGlass: 10
+  - type: CEMagicEssenceStructure
+    essences:
+      Crystal:
+        min: 1
+        max: 4

@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "size": {
+    "x": 16,
+    "y": 16
+  },
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Created by TheShuEd (Github)",
+  "states": [
+    {
+      "name": "todo"
+    },
+    {
+      "name": "terra"
+    },
+    {
+      "name": "ignis"
+    },
+    {
+      "name": "aqua"
+    },
+    {
+      "name": "aer"
+    },
+    {
+      "name": "ordo"
+    },
+    {
+      "name": "perditio"
+    },
+    {
+      "name": "gelium"
+    },
+    {
+      "name": "lux"
+    },
+    {
+      "name": "motus"
+    },
+    {
+      "name": "permutatio"
+    },
+    {
+      "name": "potentia"
+    },
+    {
+      "name": "vacuos"
+    },
+    {
+      "name": "venenum"
+    },
+    {
+      "name": "victus"
+    },
+    {
+      "name": "vitreus"
+    },
+    {
+      "name": "tempestas"
+    }
+  ]
+}

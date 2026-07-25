@@ -1,0 +1,12 @@
+- type: entity
+  id: CEMagicEssenceSingleton
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: CEMagicEssenceSingleton
+  - type: CEPvsOverride
+
+- type: entity
+  id: CEScience
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: CEScience

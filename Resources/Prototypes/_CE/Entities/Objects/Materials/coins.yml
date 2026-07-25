@@ -36,6 +36,11 @@
   - type: EmitSoundOnPickup
     sound:
       collection: CECoins
+  - type: CEMagicEssenceStructure
+    essences:
+      Metal:
+        min: 1
+        max: 3
 
 # Copper
 
@@ -56,6 +61,14 @@
     count: 1
   - type: StackPrice
     price: 1
+  - type: CEMagicEssenceStructure
+    essences:
+      Metal:
+        min: 1
+        max: 3
+      Greed:
+        min: 0
+        max: 1
 
 - type: entity
   id: CECoinCopper5
@@ -96,6 +109,14 @@
     count: 1
   - type: StackPrice
     price: 10
+  - type: CEMagicEssenceStructure
+    essences:
+      Metal:
+        min: 1
+        max: 3
+      Greed:
+        min: 1
+        max: 2
 
 - type: entity
   id: CECoinSilver5
@@ -136,6 +157,14 @@
     count: 1
   - type: StackPrice
     price: 100
+  - type: CEMagicEssenceStructure
+    essences:
+      Metal:
+        min: 1
+        max: 3
+      Greed:
+        min: 2
+        max: 4
 
 - type: entity
   id: CECoinGold5
@@ -176,6 +205,14 @@
     count: 1
   - type: StackPrice
     price: 1000
+  - type: CEMagicEssenceStructure
+    essences:
+      Metal:
+        min: 1
+        max: 3
+      Greed:
+        min: 3
+        max: 6
 
 - type: entity
   id: CECoinPlatinum5

@@ -10,6 +10,14 @@
   - type: CablePlacer
   - type: Stack
   - type: Appearance
+  - type: CEMagicEssenceStructure
+    essences:
+      Metal:
+        min: 1
+        max: 3
+      Energia:
+        min: 0
+        max: 1
 
 - type: entity
   id: CEMediumBrassPipe1
@@ -135,6 +143,11 @@
   - type: PhysicalComposition
     materialComposition:
       CEIron: 2
+  - type: CEMagicEssenceStructure
+    essences:
+      Metal:
+        min: 1
+        max: 3
 
 - type: entity
   parent: CEPipeValve1

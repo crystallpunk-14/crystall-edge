@@ -166,6 +166,14 @@
   - type: VisualOrganMarkings
     markingData:
       group: CETiefling
+  - type: CEMagicEssenceStructure
+    essences:
+      Taint:
+        min: 1
+        max: 2
+      Life:
+        min: 0
+        max: 2
 
 - type: entity
   parent: [ CEOrganBaseTorsoSexed, OrganBaseTorso, CEOrganTieflingExternal ]

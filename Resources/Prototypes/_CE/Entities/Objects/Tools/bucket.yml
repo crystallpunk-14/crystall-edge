@@ -69,3 +69,8 @@
   - type: PhysicalComposition
     materialComposition:
       CEWood: 30
+  - type: CEMagicEssenceStructure
+    essences:
+      Tree:
+        min: 1
+        max: 4

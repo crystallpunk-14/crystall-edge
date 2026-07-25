@@ -40,6 +40,14 @@
     guides:
     - CEFarmingGuideRU
     - CEFarmingGuideEN
+  - type: CEMagicEssenceStructure
+    essences:
+      Order:
+        min: 2
+        max: 6
+      Plant:
+        min: 0
+        max: 2
 
 - type: entity
   id: CEGuidebookCookingRecipes
@@ -64,3 +72,11 @@
     guides:
     - CECookingRecipesRU
     - CECookingRecipesEN
+  - type: CEMagicEssenceStructure
+    essences:
+      Order:
+        min: 2
+        max: 6
+      Life:
+        min: 0
+        max: 1
