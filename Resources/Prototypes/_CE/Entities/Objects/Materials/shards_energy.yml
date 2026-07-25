@@ -59,8 +59,8 @@
         min: 2
         max: 6
       Crystal:
-        min: 0
-        max: 2
+        min: 1
+        max: 3
 
 - type: entity
   id: CEEnergyCrystalCell
@@ -107,6 +107,9 @@
       Energia:
         min: 1
         max: 4
+      Crystal:
+        min: 1
+        max: 2
       Metal:
         min: 0
         max: 2

@@ -1,9 +1,12 @@
+using System.Text;
+using Content.Shared._CE.Examine;
 using Content.Shared._CE.MagicEssence.Components;
 using Content.Shared._CE.MagicEssence.Events;
 using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
+using Content.Shared.Inventory;
 using Content.Shared.Stacks;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
@@ -31,6 +34,49 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
         SubscribeLocalEvent<MetaDataComponent, CEMagicEssenceCalculationEvent>(OnMetaDataEssenceCalculation);
         SubscribeLocalEvent<SolutionComponent, CEMagicEssenceCalculationEvent>(OnSolutionEssenceCalculation);
         SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypesReloaded);
+
+        SubscribeLocalEvent<CEExamineAugmentEvent>(OnExamineAugment);
+        SubscribeLocalEvent<CEMagicEssenceScannerComponent, CEMagicEssenceScanEvent>(OnScanAttempt);
+        SubscribeLocalEvent<CEMagicEssenceScannerComponent, InventoryRelayedEvent<CEMagicEssenceScanEvent>>(
+            (uid, comp, ev) => OnScanAttempt(uid, comp, ev.Args));
+    }
+
+    private void OnScanAttempt(EntityUid uid, CEMagicEssenceScannerComponent component, CEMagicEssenceScanEvent args)
+    {
+        args.CanScan = true;
+    }
+
+    /// <summary>
+    /// Shows essence composition on examine while wearing thaumaturgy glasses. Useful for
+    /// inspecting items inside storage UIs, where the cursor can't be hovered over them.
+    /// </summary>
+    private void OnExamineAugment(CEExamineAugmentEvent args)
+    {
+        var scanEvent = new CEMagicEssenceScanEvent();
+        RaiseLocalEvent(args.Examiner, scanEvent);
+
+        if (!scanEvent.CanScan)
+            return;
+
+        var essences = GetEssence(args.Examined);
+        if (essences.Count == 0)
+            return;
+
+        essences.Sort((a, b) => string.CompareOrdinal(a.Type.Id, b.Type.Id));
+
+        var sb = new StringBuilder();
+        sb.Append(Loc.GetString("ce-magic-essence-examine-title"));
+        sb.Append('\n');
+
+        foreach (var (type, amount) in essences)
+        {
+            if (!_prototypeManager.TryIndex(type, out CEMagicEssenceTypePrototype? essenceProto))
+                continue;
+
+            sb.Append($"[color={essenceProto.Color.ToHex()}]{essenceProto.Name}[/color]: x{amount}\n");
+        }
+
+        args.AddMarkup(sb.ToString().TrimEnd());
     }
 
     private void OnPrototypesReloaded(PrototypesReloadedEventArgs args)
@@ -117,7 +163,9 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
         var rolled = new Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int>();
         foreach (var (type, minMax) in structure.Essences)
         {
-            rolled[type] = minMax.Next(_random);
+            var amount = minMax.Next(_random);
+            if (amount != 0)
+                rolled[type] = amount;
         }
 
         singletonEnt.Comp.Cache[protoId] = rolled;
