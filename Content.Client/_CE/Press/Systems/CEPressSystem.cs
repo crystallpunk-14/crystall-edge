@@ -26,8 +26,8 @@ public sealed partial class CEPressSystem : CESharedPressSystem
             {
                 CEPressState.Preparing => GetPreparingOffset(press),
                 CEPressState.Crushing => press.CrushOffset,
-                CEPressState.Recovering => float.Lerp(press.CrushOffset, press.DefaultOffset, QuadOut(GetProgress(press, press.RecoveringDuration))),
-                _ => press.DefaultOffset,
+                CEPressState.Recovering => GetRecoveringOffset(press),
+                _ => GetIdleOffset(uid, press, sprite, frameTime),
             };
 
             _sprite.LayerSetOffset((uid, sprite), press.BlockLayerKey, new Vector2(0, offsetY));
@@ -35,9 +35,27 @@ public sealed partial class CEPressSystem : CESharedPressSystem
     }
 
     /// <summary>
-    /// Preparing rises (QuadOut) from DefaultOffset to PreparingOffset, then over the last
-    /// <see cref="CEPressComponent.FallDuration"/> of Preparing falls (QuadIn) to CrushOffset,
-    /// timed so the fall finishes exactly when Preparing ends and crushing occurs.
+    /// While Idle, eases the "block" layer's current offset toward DefaultOffset using
+    /// frame-rate-independent exponential decay, rather than snapping there instantly (e.g. right
+    /// after power is cut mid-cycle, wherever the block currently was).
+    /// </summary>
+    private float GetIdleOffset(EntityUid uid, CEPressComponent press, SpriteComponent sprite, float frameTime)
+    {
+        if (!_sprite.TryGetLayer((uid, sprite), press.BlockLayerKey, out var layer, false))
+            return press.DefaultOffset;
+
+        var current = layer.Offset.Y;
+        var halfLife = MathF.Max(press.IdleEaseHalfLife, 0.001f);
+        var t = 1f - MathF.Pow(0.5f, frameTime / halfLife);
+        return float.Lerp(current, press.DefaultOffset, t);
+    }
+
+    /// <summary>
+    /// Preparing rises (SmoothStep, zero velocity at both ends) from DefaultOffset to
+    /// PreparingOffset, then over the last <see cref="CEPressComponent.FallDuration"/> of
+    /// Preparing falls (QuadIn) to CrushOffset, timed so the fall finishes exactly when Preparing
+    /// ends and crushing occurs. SmoothStep is used for the rise (rather than QuadOut) so its
+    /// start velocity matches Recovering's rise ending at zero, avoiding a jerk at that seam.
     /// </summary>
     private float GetPreparingOffset(CEPressComponent press)
     {
@@ -52,7 +70,7 @@ public sealed partial class CEPressSystem : CESharedPressSystem
             var riseProgress = riseDuration <= TimeSpan.Zero
                 ? 1f
                 : float.Clamp((float) (elapsed / riseDuration.TotalSeconds), 0f, 1f);
-            return float.Lerp(press.DefaultOffset, press.PreparingOffset, QuadOut(riseProgress));
+            return float.Lerp(press.DefaultOffset, press.PreparingOffset, SmoothStep(riseProgress));
         }
 
         var fallProgress = fallDuration <= TimeSpan.Zero
@@ -61,17 +79,37 @@ public sealed partial class CEPressSystem : CESharedPressSystem
         return float.Lerp(press.PreparingOffset, press.CrushOffset, QuadIn(fallProgress));
     }
 
-    private float GetProgress(CEPressComponent press, TimeSpan duration)
+    /// <summary>
+    /// Recovering holds at CrushOffset for <see cref="CEPressComponent.HoldDuration"/>, then rises
+    /// (SmoothStep) to DefaultOffset for the remainder of Recovering. SmoothStep has zero velocity
+    /// at both ends: zero at the start (matching the Hold's stationary end, avoiding the jerk right
+    /// after impact) and zero at the end (matching Preparing's rise starting at zero, avoiding a
+    /// jerk at the Recovering-to-Preparing seam).
+    /// </summary>
+    private float GetRecoveringOffset(CEPressComponent press)
     {
-        if (duration <= TimeSpan.Zero)
-            return 1f;
+        var holdDuration = press.HoldDuration > press.RecoveringDuration ? press.RecoveringDuration : press.HoldDuration;
+        var riseDuration = press.RecoveringDuration - holdDuration;
 
         var remaining = (press.StateEndTime - _timing.CurTime).TotalSeconds;
-        var elapsed = duration.TotalSeconds - remaining;
-        return float.Clamp((float) (elapsed / duration.TotalSeconds), 0f, 1f);
+        var elapsed = press.RecoveringDuration.TotalSeconds - remaining;
+
+        if (elapsed < holdDuration.TotalSeconds)
+            return press.CrushOffset;
+
+        var riseProgress = riseDuration <= TimeSpan.Zero
+            ? 1f
+            : float.Clamp((float) ((elapsed - holdDuration.TotalSeconds) / riseDuration.TotalSeconds), 0f, 1f);
+        return float.Lerp(press.CrushOffset, press.DefaultOffset, SmoothStep(riseProgress));
     }
 
-    private static float QuadIn(float t) => t * t;
+    private static float QuadIn(float t)
+    {
+        return t * t;
+    }
 
-    private static float QuadOut(float t) => 1f - (1f - t) * (1f - t);
+    private static float SmoothStep(float t)
+    {
+        return t * t * (3f - 2f * t);
+    }
 }

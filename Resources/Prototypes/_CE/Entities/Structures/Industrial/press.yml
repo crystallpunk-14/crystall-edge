@@ -13,6 +13,7 @@
   #- type: Machine
   #  board: CEMachineCoreHeater # TODO
   - type: CEPress
+    crushVFX: CEPressShockWaveVFX
   - type: Fixtures
     fixtures:
       fix1:
@@ -40,3 +41,14 @@
       map: [ "block" ]
   - type: Clickable
   - type: Appearance
+
+- type: entity
+  parent:
+  - CEDustTileEffect
+  - CEShockWaveWeakVFX
+  id: CEPressShockWaveVFX
+  categories: [ HideSpawnMenu ]
+  #components:
+  #- type: EmitSoundOnSpawn
+  #  sound:
+  #    collection:

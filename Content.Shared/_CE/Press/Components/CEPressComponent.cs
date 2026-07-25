@@ -34,7 +34,7 @@ public sealed partial class CEPressComponent : Component
     /// How long the press stays in the Recovering stage after crushing.
     /// </summary>
     [DataField]
-    public TimeSpan RecoveringDuration = TimeSpan.FromSeconds(2);
+    public TimeSpan RecoveringDuration = TimeSpan.FromSeconds(3);
 
     /// <summary>
     /// Damage applied directly to scanned entities when no CEPressTargetComponent is found on the tile.
@@ -83,11 +83,26 @@ public sealed partial class CEPressComponent : Component
     public TimeSpan FallDuration = TimeSpan.FromSeconds(0.3);
 
     /// <summary>
+    /// Portion of Recovering (at the start) spent holding at <see cref="CrushOffset"/> before
+    /// rising back to <see cref="DefaultOffset"/>. Must be less than <see cref="RecoveringDuration"/>.
+    /// </summary>
+    [DataField]
+    public TimeSpan HoldDuration = TimeSpan.FromSeconds(0.5);
+
+    /// <summary>
     /// Entity spawned client-side (purely visual, not networked) at the press's position the
     /// instant it crushes.
     /// </summary>
     [DataField]
     public EntProtoId? CrushVFX;
+
+    /// <summary>
+    /// Half-life (in seconds) used to smoothly ease the "block" layer's offset back to
+    /// <see cref="DefaultOffset"/> whenever Idle (e.g. power was cut mid-cycle), instead of
+    /// snapping there instantly. Lower is snappier.
+    /// </summary>
+    [DataField]
+    public float IdleEaseHalfLife = 0.1f;
 }
 
 [Serializable, NetSerializable]

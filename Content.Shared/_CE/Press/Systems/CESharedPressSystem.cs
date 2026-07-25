@@ -100,23 +100,29 @@ public abstract partial class CESharedPressSystem : EntitySystem
             }
         }
 
+        var crushed = new HashSet<EntityUid>();
+        foreach (var scannedUid in scanned)
+        {
+            if (scannedUid == target || Transform(scannedUid).Anchored)
+                continue;
+
+            crushed.Add(scannedUid);
+        }
+
         if (target is { } targetUid)
         {
-            var others = new HashSet<EntityUid>(scanned);
-            others.Remove(targetUid);
-
-            var ev = new CEPressCrushingTargetEvent(uid, others);
+            var ev = new CEPressCrushingTargetEvent(uid, crushed);
             RaiseLocalEvent(targetUid, ev);
         }
         else
         {
-            foreach (var scannedUid in scanned)
+            foreach (var crushedUid in crushed)
             {
-                _damageable.TryChangeDamage(scannedUid, press.CrushDamage);
+                _damageable.TryChangeDamage(crushedUid, press.CrushDamage);
             }
         }
 
-        if (_net.IsClient && press.CrushVFX is { } vfx)
+        if (_net.IsClient && press.CrushVFX is { } vfx && _timing.IsFirstTimePredicted)
             SpawnAtPosition(vfx, Transform(uid).Coordinates);
 
         press.State = CEPressState.Recovering;
@@ -127,8 +133,8 @@ public abstract partial class CESharedPressSystem : EntitySystem
 
 /// <summary>
 /// Raised on a CEPressTargetComponent entity found on a press's tile when the press finishes
-/// crushing. Carries the press itself and every other entity found on the same tile (excluding
-/// the press and this target) so the target platform can decide what to do with them.
+/// crushing. Carries the press itself and every other non-anchored entity found on the same tile
+/// (excluding the press and this target) so the target platform can decide what to do with them.
 /// </summary>
 public sealed partial class CEPressCrushingTargetEvent(EntityUid press, HashSet<EntityUid> entities) : EntityEventArgs
 {
