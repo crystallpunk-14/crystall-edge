@@ -4,31 +4,49 @@
   id: Earth
   name: Terra
   color: "#1cea42"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: terra
 
 - type: magicEssenceType
   id: Fire
   name: Ignis
   color: "#d9741c"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: ignis
 
 - type: magicEssenceType
   id: Water
   name: Aqua
   color: "#1c94d9"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: aqua
 
 - type: magicEssenceType
   id: Air
   name: Aer
   color: "#def9ff"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: aer
 
 - type: magicEssenceType
   id: Order
   name: Ordo
   color: "#d9d9d9"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: ordo
 
 - type: magicEssenceType
   id: Chaos
   name: Perditio
   color: "#5c5c5c"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: perditio
 
 # Complex tier 1
 
@@ -36,51 +54,81 @@
   id: Frost
   name: Gelum
   color: "#4f91bd"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: gelium
 
 - type: magicEssenceType
   id: Light
   name: Lux
   color: "#ba97b8"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: lux
 
 - type: magicEssenceType
   id: Motion
   name: Motus
   color: "#575100"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: motus
 
 - type: magicEssenceType
   id: Cycle
   name: Permutatio
   color: "#063b1f"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: permutatio
 
 - type: magicEssenceType
   id: Energia
   name: Energia
   color: "#caed72"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: potentia
 
 - type: magicEssenceType
   id: Void
   name: Vacuos
   color: "#12021c"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: vacuos
 
 - type: magicEssenceType
   id: Poison
   name: Venenum
   color: "#619e20"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: venenum
 
 - type: magicEssenceType
   id: Life
   name: Victus
   color: "#eb1a3d"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: victus
 
 - type: magicEssenceType
   id: Crystal
   name: Vitreus
   color: "#538cb8"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: vitreus
 
 - type: magicEssenceType
   id: Weather
   name: Tempestas
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: tempestas
 
 # Complex tier 2
 
@@ -88,61 +136,97 @@
   id: Magic
   name: Praecantatio
   color: "#5497d6"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 - type: magicEssenceType
   id: Beast
   name: Bestia
   color: "#5c3c0f"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 - type: magicEssenceType
   id: Hunger
   name: Fames
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 - type: magicEssenceType
   id: Plant
   name: Herba
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 - type: magicEssenceType
   id: Travel
   name: Iter
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 - type: magicEssenceType
   id: Slime
   name: Limus
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 - type: magicEssenceType
   id: Metal
   name: Metallum
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 - type: magicEssenceType
   id: Death
   name: Mortuus
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 - type: magicEssenceType
   id: Healing
   name: Sano
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 - type: magicEssenceType
   id: Darkness
   name: Tenebrae
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 - type: magicEssenceType
   id: Trap
   name: Vinculum
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 - type: magicEssenceType
   id: Flight
   name: Volatus
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 # Complex tier 3
 
@@ -150,36 +234,57 @@
   id: Eldritch
   name: Alienis
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 - type: magicEssenceType
   id: Tree
   name: Arbor
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 - type: magicEssenceType
   id: Aura
   name: Auram
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 - type: magicEssenceType
   id: Flesh
   name: Corpus
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 - type: magicEssenceType
   id: Undead
   name: Exanimis
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 - type: magicEssenceType
   id: Soul
   name: Spiritus
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 - type: magicEssenceType
   id: Taint
   name: Vitium
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 # Complex tier 4
 
@@ -187,11 +292,17 @@
   id: Mind
   name: Cognitio
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 - type: magicEssenceType
   id: Senses
   name: Sensus
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 # Complex tier 5
 
@@ -199,6 +310,9 @@
   id: Human
   name: Humanus
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 # Complex tier 6
 
@@ -206,21 +320,33 @@
   id: Tool
   name: Instrumentum
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 - type: magicEssenceType
   id: Crop
   name: Messis
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 - type: magicEssenceType
   id: Greed
   name: Lucrum
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 - type: magicEssenceType
   id: Mining
   name: Perfodio
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 # Complex tier 7
 
@@ -228,28 +354,46 @@
   id: Craft
   name: Fabrico
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 - type: magicEssenceType
   id: Machine
   name: Machina
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 - type: magicEssenceType
   id: Cloth
   name: Pannus
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 - type: magicEssenceType
   id: Weapon
   name: Telum
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 - type: magicEssenceType
   id: Armor
   name: Tutamen
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo
 
 - type: magicEssenceType
   id: Harvest
   name: Meto
   color: "#000000"
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: todo

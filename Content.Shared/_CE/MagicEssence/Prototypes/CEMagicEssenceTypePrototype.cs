@@ -1,4 +1,5 @@
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Shared._CE.MagicEssence.Prototypes;
 
@@ -20,4 +21,7 @@ public sealed partial class CEMagicEssenceTypePrototype : IPrototype
 
     [DataField]
     public EntProtoId? EssenceProto;
+
+    [DataField(required: true)]
+    public SpriteSpecifier Icon = default!;
 }
