@@ -20,8 +20,8 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
 {
     [Dependency] private INetManager _net = default!;
     [Dependency] private IRobustRandom _random = default!;
-    [Dependency] private IPrototypeManager _prototypeManager = default!;
-    [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private SharedSolutionContainerSystem _solution = default!;
 
     private static readonly EntProtoId SingletonProtoId = "CEMagicEssenceSingleton";
 
@@ -74,7 +74,7 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
 
         foreach (var (type, amount) in essences)
         {
-            if (!_prototypeManager.TryIndex(type, out CEMagicEssenceTypePrototype? essenceProto))
+            if (!_proto.Resolve(type, out var essenceProto))
                 continue;
 
             sb.Append($"[color={essenceProto.Color.ToHex()}]{essenceProto.Name}[/color]: x{amount}\n");
@@ -92,10 +92,6 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
     /// Calculates the thaumaturgical essence composition of an entity, including its stack count
     /// and (recursively) the essences of anything held in its containers.
     /// </summary>
-    /// <remarks>
-    /// Calculating the essence of an entity that somehow contains itself will likely hang, same as
-    /// <see cref="Content.Server.Cargo.Systems.PricingSystem.GetPrice"/>.
-    /// </remarks>
     public List<(ProtoId<CEMagicEssenceTypePrototype> Type, int Amount)> GetEssence(EntityUid ent, bool includeContents = true)
     {
         var ev = new CEMagicEssenceCalculationEvent();
@@ -192,7 +188,7 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
 
         var map = GetReagentEssenceMap();
 
-        foreach (var (_, soln) in _solutionContainerSystem.EnumerateSolutions(ent.Owner))
+        foreach (var (_, soln) in _solution.EnumerateSolutions(ent.Owner))
         {
             foreach (var (reagent, quantity) in soln.Comp.Solution.Contents)
             {
@@ -210,7 +206,7 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
             return cached;
 
         var map = new Dictionary<ProtoId<ReagentPrototype>, ProtoId<CEMagicEssenceTypePrototype>>();
-        foreach (var essenceType in _prototypeManager.EnumeratePrototypes<CEMagicEssenceTypePrototype>())
+        foreach (var essenceType in _proto.EnumeratePrototypes<CEMagicEssenceTypePrototype>())
         {
             if (essenceType.Reagent is { } reagent)
                 map[reagent] = essenceType.ID;
