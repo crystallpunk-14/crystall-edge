@@ -86,7 +86,7 @@ public sealed class MarkingManagerTests : GameTest
         {
             var markingManager = server.ResolveDependency<MarkingManager>();
 
-            var markings = new List<Marking>() { new("HumanHairLongBedhead2", new List<Color>() { Color.Red }) };
+            var markings = new List<Marking>() { new("CEHumanHair_BedheadV2", new List<Color>() { Color.Red }) }; //CrystallEdge: changed hair proto because we dont use vanilla ones
 
             var converted = markingManager.ConvertMarkings(markings, "Human");
 
@@ -94,7 +94,7 @@ public sealed class MarkingManagerTests : GameTest
             Assert.That(converted["Head"], Does.ContainKey(HumanoidVisualLayers.Hair));
             var hairMarkings = converted["Head"][HumanoidVisualLayers.Hair];
             Assert.That(hairMarkings, Has.Count.EqualTo(1));
-            Assert.That(hairMarkings[0].MarkingId, Is.EqualTo("HumanHairLongBedhead2"));
+            Assert.That(hairMarkings[0].MarkingId, Is.EqualTo("CEHumanHair_BedheadV2")); //CrystallEdge: changed hair proto because we dont use vanilla ones
             Assert.That(hairMarkings[0].MarkingColors[0], Is.EqualTo(Color.Red));
         });
     }
