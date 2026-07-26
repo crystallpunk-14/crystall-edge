@@ -98,6 +98,14 @@
     containers:
       paper_label: !type:ContainerSlot
   - type: ItemSlots
+  - type: CEMagicEssenceStructure
+    essences:
+      Crystal:
+        min: 1
+        max: 4
+      Void:
+        min: 0
+        max: 2
 
 - type: entity
   parent: CEBaseVial
@@ -203,6 +211,17 @@
     materialComposition:
       Glass: 10
       Brass: 10
+  - type: CEMagicEssenceStructure
+    essences:
+      Crystal:
+        min: 1
+        max: 4
+      Metal:
+        min: 1
+        max: 2
+      Void:
+        min: 0
+        max: 2
 
 - type: entity
   id: CEVialSmall
@@ -266,6 +285,17 @@
     materialComposition:
       Glass: 20
       Brass: 10
+  - type: CEMagicEssenceStructure
+    essences:
+      Crystal:
+        min: 1
+        max: 4
+      Metal:
+        min: 1
+        max: 2
+      Void:
+        min: 0
+        max: 2
 
 - type: entity
   id: CEVialMedium
@@ -332,6 +362,17 @@
     materialComposition:
       Glass: 40
       Brass: 10
+  - type: CEMagicEssenceStructure
+    essences:
+      Crystal:
+        min: 1
+        max: 4
+      Metal:
+        min: 1
+        max: 2
+      Void:
+        min: 0
+        max: 2
 
 - type: entity
   id: CEVialStar
@@ -395,6 +436,17 @@
     materialComposition:
       Glass: 20
       Brass: 10
+  - type: CEMagicEssenceStructure
+    essences:
+      Crystal:
+        min: 1
+        max: 4
+      Metal:
+        min: 1
+        max: 2
+      Void:
+        min: 0
+        max: 2
 
 - type: entity
   id: CEVialSkull
@@ -458,3 +510,14 @@
     materialComposition:
       Glass: 25
       Brass: 10
+  - type: CEMagicEssenceStructure
+    essences:
+      Crystal:
+        min: 1
+        max: 4
+      Metal:
+        min: 1
+        max: 2
+      Void:
+        min: 0
+        max: 2

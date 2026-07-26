@@ -1,0 +1,155 @@
+# Stationery
+
+- type: tradingPosition
+  id: CEPenFeather
+  faction: ImperialChancellery
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CEPenFeather
+    count: 1
+
+- type: tradingPosition
+  id: CEPaper
+  faction: ImperialChancellery
+  category: Materials
+  service: !type:CEBuyItemsService
+    product: CEPaper
+    count: 5
+
+- type: tradingPosition
+  id: CEPaperFolderBlue
+  faction: ImperialChancellery
+  category: Materials
+  service: !type:CEBuyItemsService
+    product: CEPaperFolderBlue
+    count: 1
+
+- type: tradingPosition
+  id: CEPaperFolderRed
+  faction: ImperialChancellery
+  category: Materials
+  service: !type:CEBuyItemsService
+    product: CEPaperFolderRed
+    count: 1
+
+- type: tradingPosition
+  id: CEPaperFolderGreen
+  faction: ImperialChancellery
+  category: Materials
+  service: !type:CEBuyItemsService
+    product: CEPaperFolderGreen
+    count: 1
+
+- type: tradingPosition
+  id: CEPaperFolderPurple
+  faction: ImperialChancellery
+  category: Materials
+  service: !type:CEBuyItemsService
+    product: CEPaperFolderPurple
+    count: 1
+
+- type: tradingPosition
+  id: CEBookEmpty
+  faction: ImperialChancellery
+  category: Materials
+  service: !type:CEBuyItemsService
+    product: CEBookEmpty
+    count: 1
+
+# Alchemy
+
+- type: tradingPosition
+  id: CEDropper
+  faction: ImperialChancellery
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CEDropper
+    count: 1
+
+- type: tradingPosition
+  id: CESyringe
+  faction: ImperialChancellery
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CESyringe
+    count: 1
+
+- type: tradingPosition
+  id: CEVialTiny
+  faction: ImperialChancellery
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CEVialTiny
+    count: 1
+
+- type: tradingPosition
+  id: CEVialTinyReinforced
+  faction: ImperialChancellery
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CEVialTinyReinforced
+    count: 1
+
+- type: tradingPosition
+  id: CEVialSmall
+  faction: ImperialChancellery
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CEVialSmall
+    count: 1
+
+- type: tradingPosition
+  id: CEVialSmallReinforced
+  faction: ImperialChancellery
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CEVialSmallReinforced
+    count: 1
+
+- type: tradingPosition
+  id: CEVialMedium
+  faction: ImperialChancellery
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CEVialMedium
+    count: 1
+
+- type: tradingPosition
+  id: CEVialMediumReinforced
+  faction: ImperialChancellery
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CEVialMediumReinforced
+    count: 1
+
+- type: tradingPosition
+  id: CEVialStar
+  faction: ImperialChancellery
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CEVialStar
+    count: 1
+
+- type: tradingPosition
+  id: CEVialStarReinforced
+  faction: ImperialChancellery
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CEVialStarReinforced
+    count: 1
+
+- type: tradingPosition
+  id: CEVialSkull
+  faction: ImperialChancellery
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CEVialSkull
+    count: 1
+
+- type: tradingPosition
+  id: CEVialSkullReinforced
+  faction: ImperialChancellery
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CEVialSkullReinforced
+    count: 1
