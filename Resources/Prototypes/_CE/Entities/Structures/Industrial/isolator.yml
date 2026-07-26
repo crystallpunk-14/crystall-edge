@@ -6,7 +6,6 @@
   placement:
     mode: SnapgridCenter
   components:
-  - type: CEIsolator
   - type: Clickable
   - type: InteractionOutline
   - type: Transform

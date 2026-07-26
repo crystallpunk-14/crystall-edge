@@ -40,7 +40,7 @@ public sealed partial class CEConnectorEdgeNode : Node
                 nodeDirs.Add((dir, node));
             }
 
-            if (node is CEConnectorCenterNode center && center.Active)
+            if (node is CEConnectorCenterNode center && center.Active && (dir == Direction || dir == Direction.Invalid))
                 nodeDirs.Add((dir, node));
 
             if (node is CableTerminalNode)
