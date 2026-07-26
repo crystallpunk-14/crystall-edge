@@ -28,6 +28,9 @@ public sealed partial class CEConnectorEdgeNode : Node
         if (xform.Comp.MapUid is null)
             yield break;
 
+        // If a cable isolator is facing this direction (on our tile) or facing back at us
+        // (on the neighbor tile), the connection across that direction is severed.
+        var blocked = false;
         List<(Direction, Node)> nodeDirs = new();
 
         foreach (var (dir, node) in NodeHelpers.GetCardinalNeighborNodes(nodeQuery, gridEnt, gridIndex, mapSystem))
@@ -39,10 +42,23 @@ public sealed partial class CEConnectorEdgeNode : Node
 
             if (node is CEConnectorCenterNode center && center.Active)
                 nodeDirs.Add((dir, node));
+
+            if (node is CableTerminalNode)
+            {
+                var terminalDir = xformQuery.GetComponent(node.Owner).LocalRotation.GetCardinalDir();
+                if (dir == Direction.Invalid && terminalDir == Direction)
+                    blocked = true;
+                else if (dir == Direction && terminalDir.GetOpposite() == dir)
+                    blocked = true;
+            }
         }
 
         foreach (var (dir, node) in nodeDirs)
         {
+            // Own-tile center link (dir == Invalid) is never blocked, only the cross-tile ones.
+            if (blocked && dir == Direction && (node is CableNode || node is CEConnectorCenterNode))
+                continue;
+
             yield return node;
         }
     }
