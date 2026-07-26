@@ -6,7 +6,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Client._CE.WildMagic;
 
-public sealed class CEClientWildMagicSystem : CESharedWildMagicSystem
+public sealed partial class CEClientWildMagicSystem : CESharedWildMagicSystem
 {
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private SpriteSystem _sprite = default!;
