@@ -337,6 +337,44 @@
   result: CEMachineCoreDrill
   resultCount: 1
 
+- type: CERecipe
+  roundStart: true
+  id: CEMachineCorePress
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 1
+  - !type:StackResource
+    stack: CEIronBar
+    count: 15
+  result: CEMachineCorePress
+  resultCount: 1
+
+- type: CERecipe
+  roundStart: true
+  id: CEMachineCorePressTargetThaumaturgySplitter
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartDimensionalMatrix
+    count: 1
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 5
+  result: CEMachineCorePressTargetThaumaturgySplitter
+  resultCount: 1
+
 # Unlocked by the "Advanced Drilling" science achievement - see achievements.yml.
 - type: CERecipe
   id: CEMachineCoreDrillAdvanced
@@ -357,6 +395,28 @@
     stack: CEMachinePartEnergyLine
     count: 2
   result: CEMachineCoreDrillAdvanced
+  resultCount: 1
+
+- type: CERecipe
+  roundStart: true
+  id: CEMachineCoreEssenceAttractor
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 1
+  - !type:StackResource
+    stack: CEMachinePartCoalDiffuser
+    count: 2
+  - !type:StackResource
+    stack: CEGlass
+    count: 5
+  result: CEMachineCoreEssenceAttractor
   resultCount: 1
 
 - type: CERecipe

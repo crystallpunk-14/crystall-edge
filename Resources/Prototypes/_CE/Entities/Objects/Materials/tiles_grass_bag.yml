@@ -72,15 +72,15 @@
     stackType: CEFloorTileMycelium
   - type: CEMagicEssenceStructure
     essences:
+      Earth:
+        min: 1
+        max: 1
       Taint:
         min: 0
         max: 1
       Plant:
         min: 0
         max: 1
-      Earth:
-        min: 3
-        max: 6
 
 - type: entity
   parent: CEFloorTileMycelium

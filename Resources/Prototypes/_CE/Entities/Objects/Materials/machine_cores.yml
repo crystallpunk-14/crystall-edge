@@ -109,6 +109,36 @@
     prototype: CEHeater
 
 - type: entity
+  id: CEMachineCorePress
+  parent: CEBaseMachineCore
+  name: press machine core
+  components:
+  - type: MachineBoard
+    prototype: CEPress
+  - type: StaticPrice
+    price: 150
+
+- type: entity
+  id: CEMachineCorePressTargetThaumaturgySplitter
+  parent: CEBaseMachineCore
+  name: thaumaturgical splitter machine core
+  components:
+  - type: MachineBoard
+    prototype: CEPressTargetThaumaturgySplitter
+  - type: StaticPrice
+    price: 150
+
+- type: entity
+  id: CEMachineCoreEssenceAttractor
+  parent: CEBaseMachineCore
+  name: essence attractor machine core
+  components:
+  - type: MachineBoard
+    prototype: CEMagicEssenceAttractor
+  - type: StaticPrice
+    price: 150
+
+- type: entity
   id: CEMachineCoreDistributionUnit
   parent: CEBaseMachineCore
   name: distribution unit machine core
