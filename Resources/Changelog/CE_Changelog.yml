@@ -455,3 +455,18 @@
   id: 1044
   time: '2026-07-18T08:31:51.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/354
+- author: TheShuEd
+  changes:
+  - message: All merchant roles was deleted
+    type: Remove
+  id: 1045
+  time: '2026-07-21T17:18:22.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/357
+- author: TheShuEd
+  changes:
+  - message: 'Added insulator loop: small structure that can prevent unwated pipe
+      connections.'
+    type: Add
+  id: 1046
+  time: '2026-07-26T13:29:11.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/363
