@@ -64,6 +64,8 @@
     maxEntities: 0
   - type: CEEntityHeater
     power: 1000
+  - type: CESolutionHeater
+    power: 1000
   - type: Rotatable
   - type: Appearance
   - type: GenericVisualizer

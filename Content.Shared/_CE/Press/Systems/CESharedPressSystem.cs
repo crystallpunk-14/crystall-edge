@@ -95,14 +95,9 @@ public abstract partial class CESharedPressSystem : EntitySystem
         var tileRef = _turf.GetTileRef(Transform(uid).Coordinates);
         var scanned = tileRef is null
             ? new HashSet<EntityUid>()
-            : new HashSet<EntityUid>(_lookup.GetLocalEntitiesIntersecting(tileRef.Value, flags: LookupFlags.All));
+            : new HashSet<EntityUid>(_lookup.GetLocalEntitiesIntersecting(tileRef.Value, flags: LookupFlags.Uncontained));
 
         scanned.Remove(uid);
-
-        // Contained entities are otherwise fair game (e.g. money inside a wallet lying on the
-        // tile), but the press's own machine board/parts sit in its own containers and would
-        // spatially resolve to this same tile - exclude those specifically.
-        scanned.RemoveWhere(e => _container.ContainsEntity(uid, e));
 
         EntityUid? target = null;
         foreach (var scannedUid in scanned)
@@ -113,11 +108,6 @@ public abstract partial class CESharedPressSystem : EntitySystem
                 break;
             }
         }
-
-        // Same reasoning as above, but for whatever target platform we found - its own machine
-        // board/parts shouldn't be crushed either.
-        if (target is { } foundTarget)
-            scanned.RemoveWhere(e => _container.ContainsEntity(foundTarget, e));
 
         var crushed = new HashSet<EntityUid>();
         foreach (var scannedUid in scanned)

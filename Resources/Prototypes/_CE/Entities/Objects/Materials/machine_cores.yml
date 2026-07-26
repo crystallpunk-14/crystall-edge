@@ -258,3 +258,11 @@
   components:
   - type: MachineBoard
     prototype: CETradingPlatformApothecariesGuild
+
+- type: entity
+  id: CEMachineCoreTradingPlatformImperialChancellery
+  parent: CEMachineCoreTradingBase
+  name: trading platform machine core (Imperial Chancellery)
+  components:
+  - type: MachineBoard
+    prototype: CETradingPlatformImperialChancellery

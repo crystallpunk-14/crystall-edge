@@ -1,604 +1,775 @@
 # Combines two lower-tier essences into a higher-tier one by heating them together.
 # Full aspect-combination graph mirrored from the classic Thaumcraft 4 aspect wheel.
+# Each reaction spends exactly 1 drop of each source essence to spawn 2 entities of the resulting
+# flying essence, one reaction at a time (quantized + maxUnitReactions: 1) instead of scaling up
+# with however much essence liquid is available.
 
 # Complex tier 1
 
 - type: reaction
   id: CEEssenceFrost
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceFire:
       amount: 1
     CEEssenceChaos:
       amount: 1
-  products:
-    CEEssenceFrost: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceFrost
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceLight
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceAir:
       amount: 1
     CEEssenceFire:
       amount: 1
-  products:
-    CEEssenceLight: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceLight
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceMotion
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceAir:
       amount: 1
     CEEssenceOrder:
       amount: 1
-  products:
-    CEEssenceMotion: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceMotion
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceCycle
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceOrder:
       amount: 1
     CEEssenceChaos:
       amount: 1
-  products:
-    CEEssenceCycle: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceCycle
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceEnergia
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceFire:
       amount: 1
     CEEssenceOrder:
       amount: 1
-  products:
-    CEEssenceEnergia: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceEnergia
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceVoid
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceAir:
       amount: 1
     CEEssenceChaos:
       amount: 1
-  products:
-    CEEssenceVoid: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceVoid
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssencePoison
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceWater:
       amount: 1
     CEEssenceChaos:
       amount: 1
-  products:
-    CEEssencePoison: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssencePoison
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceLife
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceWater:
       amount: 1
     CEEssenceEarth:
       amount: 1
-  products:
-    CEEssenceLife: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceLife
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceCrystal
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceOrder:
       amount: 1
     CEEssenceEarth:
       amount: 1
-  products:
-    CEEssenceCrystal: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceCrystal
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceWeather
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceAir:
       amount: 1
     CEEssenceWater:
       amount: 1
-  products:
-    CEEssenceWeather: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceWeather
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 # Complex tier 2
 
 - type: reaction
   id: CEEssenceMagic
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceEnergia:
       amount: 1
     CEEssenceVoid:
       amount: 1
-  products:
-    CEEssenceMagic: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceMagic
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceBeast
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceMotion:
       amount: 1
     CEEssenceLife:
       amount: 1
-  products:
-    CEEssenceBeast: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceBeast
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceHunger
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceVoid:
       amount: 1
     CEEssenceLife:
       amount: 1
-  products:
-    CEEssenceHunger: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceHunger
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssencePlant
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceEarth:
       amount: 1
     CEEssenceLife:
       amount: 1
-  products:
-    CEEssencePlant: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssencePlant
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceTravel
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceMotion:
       amount: 1
     CEEssenceEarth:
       amount: 1
-  products:
-    CEEssenceTravel: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceTravel
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceSlime
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceWater:
       amount: 1
     CEEssenceLife:
       amount: 1
-  products:
-    CEEssenceSlime: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceSlime
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceMetal
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceEarth:
       amount: 1
     CEEssenceCrystal:
       amount: 1
-  products:
-    CEEssenceMetal: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceMetal
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceDeath
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceChaos:
       amount: 1
     CEEssenceLife:
       amount: 1
-  products:
-    CEEssenceDeath: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceDeath
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceHealing
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceOrder:
       amount: 1
     CEEssenceLife:
       amount: 1
-  products:
-    CEEssenceHealing: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceHealing
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceDarkness
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceLight:
       amount: 1
     CEEssenceVoid:
       amount: 1
-  products:
-    CEEssenceDarkness: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceDarkness
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceTrap
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceMotion:
       amount: 1
     CEEssenceChaos:
       amount: 1
-  products:
-    CEEssenceTrap: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceTrap
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceFlight
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceAir:
       amount: 1
     CEEssenceMotion:
       amount: 1
-  products:
-    CEEssenceFlight: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceFlight
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 # Complex tier 3
 
 - type: reaction
   id: CEEssenceEldritch
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceDarkness:
       amount: 1
     CEEssenceVoid:
       amount: 1
-  products:
-    CEEssenceEldritch: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceEldritch
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceTree
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceAir:
       amount: 1
     CEEssencePlant:
       amount: 1
-  products:
-    CEEssenceTree: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceTree
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceAura
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceAir:
       amount: 1
     CEEssenceMagic:
       amount: 1
-  products:
-    CEEssenceAura: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceAura
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceFlesh
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceBeast:
       amount: 1
     CEEssenceDeath:
       amount: 1
-  products:
-    CEEssenceFlesh: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceFlesh
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceUndead
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceMotion:
       amount: 1
     CEEssenceDeath:
       amount: 1
-  products:
-    CEEssenceUndead: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceUndead
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceSoul
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceDeath:
       amount: 1
     CEEssenceLife:
       amount: 1
-  products:
-    CEEssenceSoul: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceSoul
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceTaint
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceChaos:
       amount: 1
     CEEssenceMagic:
       amount: 1
-  products:
-    CEEssenceTaint: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceTaint
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 # Complex tier 4
 
 - type: reaction
   id: CEEssenceMind
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceFire:
       amount: 1
     CEEssenceSoul:
       amount: 1
-  products:
-    CEEssenceMind: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceMind
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceSenses
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceAir:
       amount: 1
     CEEssenceSoul:
       amount: 1
-  products:
-    CEEssenceSenses: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceSenses
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 # Complex tier 5
 
 - type: reaction
   id: CEEssenceHuman
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceBeast:
       amount: 1
     CEEssenceMind:
       amount: 1
-  products:
-    CEEssenceHuman: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceHuman
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 # Complex tier 6
 
 - type: reaction
   id: CEEssenceTool
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceHuman:
       amount: 1
     CEEssenceOrder:
       amount: 1
-  products:
-    CEEssenceTool: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceTool
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceCrop
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssencePlant:
       amount: 1
     CEEssenceHuman:
       amount: 1
-  products:
-    CEEssenceCrop: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceCrop
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceGreed
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceHunger:
       amount: 1
     CEEssenceHuman:
       amount: 1
-  products:
-    CEEssenceGreed: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceGreed
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceMining
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceHuman:
       amount: 1
     CEEssenceEarth:
       amount: 1
-  products:
-    CEEssenceMining: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceMining
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 # Complex tier 7
 
 - type: reaction
   id: CEEssenceCraft
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceHuman:
       amount: 1
     CEEssenceTool:
       amount: 1
-  products:
-    CEEssenceCraft: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceCraft
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceMachine
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceTool:
       amount: 1
     CEEssenceMotion:
       amount: 1
-  products:
-    CEEssenceMachine: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceMachine
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceCloth
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceBeast:
       amount: 1
     CEEssenceTool:
       amount: 1
-  products:
-    CEEssenceCloth: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceCloth
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceWeapon
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceFire:
       amount: 1
     CEEssenceTool:
       amount: 1
-  products:
-    CEEssenceWeapon: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceWeapon
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceArmor
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceTool:
       amount: 1
     CEEssenceEarth:
       amount: 1
-  products:
-    CEEssenceArmor: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceArmor
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
 
 - type: reaction
   id: CEEssenceHarvest
   minTemp: 600
+  quantized: true
+  maxUnitReactions: 1
   reactants:
     CEEssenceTool:
       amount: 1
     CEEssenceCrop:
       amount: 1
-  products:
-    CEEssenceHarvest: 2
   effects:
+  - !type:SpawnEntity
+    entity: CEEssenceHarvest
+    number: 2
+    predicted: false
   - !type:AdjustSolutionTemperature
-    delta: -150
+    delta: -400
