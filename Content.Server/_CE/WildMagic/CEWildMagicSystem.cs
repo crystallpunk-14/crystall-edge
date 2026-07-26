@@ -20,7 +20,7 @@ namespace Content.Server._CE.WildMagic;
 /// Generic wild magic node spawning utilities. Doesn't own any pool/lifetime management itself -
 /// see <see cref="CEWildMagicRuleSystem"/> for the round's maintained node pool.
 /// </summary>
-public sealed class CEWildMagicSystem : CESharedWildMagicSystem
+public sealed partial class CEWildMagicSystem : CESharedWildMagicSystem
 {
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IRobustRandom _random = default!;
@@ -34,9 +34,6 @@ public sealed class CEWildMagicSystem : CESharedWildMagicSystem
     private const float MinEffectPower = 0.5f;
     private const float MaxEffectPower = 3f;
 
-    /// <summary>
-    /// Default difficulty budget used when a node is generated without an explicit one.
-    /// </summary>
     private const float DefaultNodeDifficulty = 5f;
 
     /// <summary>
@@ -162,10 +159,8 @@ public sealed class CEWildMagicSystem : CESharedWildMagicSystem
             if (!TryComp<MapGridComponent>(grid, out var gridComp))
                 continue;
 
-            var gridBounds = gridComp.LocalAABB;
-            var randomX = _random.Next((int) gridBounds.Left, (int) gridBounds.Right);
-            var randomY = _random.Next((int) gridBounds.Bottom, (int) gridBounds.Top);
-            var tile = new Vector2i(randomX, randomY);
+            if (!TryPickRandomTile(grid, gridComp, out var tile))
+                continue;
 
             var valid = true;
             foreach (var ent in _mapSystem.GetAnchoredEntities(grid, gridComp, tile))
@@ -189,5 +184,24 @@ public sealed class CEWildMagicSystem : CESharedWildMagicSystem
         }
 
         return false;
+    }
+
+    private bool TryPickRandomTile(EntityUid grid, MapGridComponent gridComp, out Vector2i tile)
+    {
+        tile = default;
+        var found = false;
+        var seen = 0;
+
+        foreach (var tileRef in _mapSystem.GetAllTiles(grid, gridComp))
+        {
+            seen++;
+            if (_random.Next(seen) != 0)
+                continue;
+
+            tile = tileRef.GridIndices;
+            found = true;
+        }
+
+        return found;
     }
 }
