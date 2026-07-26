@@ -77,6 +77,10 @@ namespace Content.Shared.Chemistry.Reaction
         /// </summary>
         [DataField("quantized")] public bool Quantized = false;
 
+        // CrystallEdge: optional cap on how many unit reactions can fire per reaction application, so a reaction can be forced to progress "one drop at a time" instead of scaling with however much reagent is available
+        [DataField("maxUnitReactions")] public FixedPoint2? MaxUnitReactions;
+        // CrystallEdge end
+
         /// <summary>
         /// Determines the order in which reactions occur. This should used to ensure that (in general) descriptive /
         /// pop-up generating and explosive reactions occur before things like foam/area effects.
