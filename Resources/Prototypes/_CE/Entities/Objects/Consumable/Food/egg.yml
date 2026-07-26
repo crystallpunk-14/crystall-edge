@@ -68,6 +68,14 @@
   - type: CEFoodTag
     tags:
     - CEEgg
+  - type: CEMagicEssenceStructure
+    essences:
+      Life:
+        min: 1
+        max: 4
+      Beast:
+        min: 0
+        max: 2
 
 # Splat
 - type: entity
@@ -90,6 +98,11 @@
       reagents:
       - ReagentId: Egg
         Quantity: 1
+  - type: CEMagicEssenceStructure
+    essences:
+      Earth:
+        min: 1
+        max: 2
 
 - type: entity
   parent: CEFoodEggBase

@@ -11,6 +11,14 @@
   - type: Tag
     tags:
     - Dice
+  - type: CEMagicEssenceStructure
+    essences:
+      Chaos:
+        min: 1
+        max: 4
+      Order:
+        min: 0
+        max: 3
 
 - type: entity
   parent: CEBaseDice

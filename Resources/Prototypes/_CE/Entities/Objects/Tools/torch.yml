@@ -72,3 +72,11 @@
     materialComposition:
       CEWood: 10
       CECloth: 10
+  - type: CEMagicEssenceStructure
+    essences:
+      Fire:
+        min: 1
+        max: 4
+      Light:
+        min: 0
+        max: 2

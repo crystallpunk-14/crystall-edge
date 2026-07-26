@@ -1,0 +1,23 @@
+{
+    "version": 1,
+    "size": {
+        "x": 36,
+        "y": 64
+    },
+	"license": "CC-BY-SA-3.0",
+	"copyright": "Created by TheShuEd (github)",
+    "states": [
+        {
+            "name": "block"
+        },
+        {
+            "name": "pipe"
+        },
+        {
+            "name": "platform"
+        },
+        {
+            "name": "platform_thaumaturgy"
+        }
+    ]
+}

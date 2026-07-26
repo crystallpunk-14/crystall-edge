@@ -27,6 +27,14 @@
   - type: CEFoodTag
     tags:
     - CEMeat
+  - type: CEMagicEssenceStructure
+    essences:
+      Life:
+        min: 2
+        max: 6
+      Beast:
+        min: 1
+        max: 3
 
 - type: entity
   id: CEFoodMeatSliceBase
@@ -324,6 +332,14 @@
   - type: CEFoodTag
     tags:
     - CEMeat
+  - type: CEMagicEssenceStructure
+    essences:
+      Life:
+        min: 2
+        max: 6
+      Human:
+        min: 0
+        max: 1
 
 - type: entity
   id: CEFoodMeatHumanCooked
@@ -826,6 +842,14 @@
     tags:
     - CEMeat
     - CEMeatMonster
+  - type: CEMagicEssenceStructure
+    essences:
+      Life:
+        min: 2
+        max: 6
+      Chaos:
+        min: 0
+        max: 2
 
 - type: entity
   id: CEFoodMeatMonsterCooked
@@ -893,6 +917,14 @@
     - CEMeat
     - CEMeatLeg
     - CEMeatMonster
+  - type: CEMagicEssenceStructure
+    essences:
+      Life:
+        min: 2
+        max: 6
+      Chaos:
+        min: 0
+        max: 2
 
 - type: entity
   id: CEFoodMeatMonsterLegCooked
@@ -1012,6 +1044,14 @@
     tags:
     - CEMeat
     - CEMeatMonster
+  - type: CEMagicEssenceStructure
+    essences:
+      Life:
+        min: 2
+        max: 6
+      Chaos:
+        min: 0
+        max: 2
 
 - type: entity
   id: CEFoodMeatFlemHeadCooked
@@ -1073,6 +1113,14 @@
     tags:
     - CEMeat
     - CEMeatMonster
+  - type: CEMagicEssenceStructure
+    essences:
+      Life:
+        min: 2
+        max: 6
+      Chaos:
+        min: 0
+        max: 2
 
 - type: entity
   id: CEFoodMeatFlemTorsoCooked
@@ -1195,6 +1243,14 @@
     - CEMeat
     - CEMeatLeg
     - CEMeatMonster
+  - type: CEMagicEssenceStructure
+    essences:
+      Life:
+        min: 2
+        max: 6
+      Chaos:
+        min: 0
+        max: 2
 
 - type: entity
   id: CEFoodMeatFlemLegCooked

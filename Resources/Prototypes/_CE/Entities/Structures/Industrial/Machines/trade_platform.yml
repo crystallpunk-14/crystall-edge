@@ -187,6 +187,23 @@
   - type: CETradingPlatform
     faction: ApothecariesGuild
 
+- type: entity
+  parent:
+  - CETradingPlatformBase
+  id: CETradingPlatformImperialChancellery
+  name: imperial chancellery trading platform
+  description: A trading platform tied to the Imperial Magical Chancellery faction.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Machine
+    board: CEMachineCoreTradingPlatformImperialChancellery
+  - type: Sprite
+    layers:
+    - state: base
+    - state: buy
+  - type: CETradingPlatform
+    faction: ImperialChancellery
+
 #
 
 - type: entity

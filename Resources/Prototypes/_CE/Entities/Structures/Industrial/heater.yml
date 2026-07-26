@@ -43,7 +43,6 @@
     noRot: false
   - type: Sprite
     sprite: _CE/Structures/Industrial/furnace.rsi
-    state: base
     layers:
     - state: base
     - state: burning
@@ -64,6 +63,8 @@
   - type: ItemPlacer
     maxEntities: 0
   - type: CEEntityHeater
+    power: 1000
+  - type: CESolutionHeater
     power: 1000
   - type: Rotatable
   - type: Appearance

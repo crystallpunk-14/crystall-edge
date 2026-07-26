@@ -28,6 +28,11 @@
       behaviors:
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant:
+        min: 1
+        max: 3
 
 - type: entity
   parent: CEFloorTileGrassBagBase
@@ -65,6 +70,17 @@
       - CEMyceliumLight
   - type: Stack
     stackType: CEFloorTileMycelium
+  - type: CEMagicEssenceStructure
+    essences:
+      Earth:
+        min: 1
+        max: 1
+      Taint:
+        min: 0
+        max: 1
+      Plant:
+        min: 0
+        max: 1
 
 - type: entity
   parent: CEFloorTileMycelium

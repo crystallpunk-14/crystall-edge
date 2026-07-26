@@ -60,6 +60,14 @@
     damage:
       types:
         Blunt: 1
+  - type: CEMagicEssenceStructure
+    essences:
+      Order:
+        min: 2
+        max: 6
+      Mind:
+        min: 0
+        max: 2
 
 - type: entity
   id: CEBookWriteableBase
