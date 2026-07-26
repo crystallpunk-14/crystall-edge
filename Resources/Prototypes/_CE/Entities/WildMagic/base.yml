@@ -5,7 +5,6 @@
   description: TODO
   components:
   - type: CEWildMagicNode
-  - type: Sprite
   - type: InteractionOutline
   - type: TimedDespawn
     lifetime: 300  
