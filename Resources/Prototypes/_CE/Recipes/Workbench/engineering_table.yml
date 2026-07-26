@@ -352,7 +352,7 @@
     count: 1
   - !type:StackResource
     stack: CEIronBar
-    count: 15
+    count: 10
   result: CEMachineCorePress
   resultCount: 1
 
