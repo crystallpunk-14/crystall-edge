@@ -48,9 +48,11 @@
   id: CEPressShockWaveVFX
   categories: [ HideSpawnMenu ]
   components:
-  #- type: EmitSoundOnSpawn
-  #  sound:
-  #    collection:
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/_CE/Effects/hard_metal_hit.ogg
+      params:
+        variation: 0.1
   - type: CEShockWave
     falloffPower: 40
     sharpness: 10
