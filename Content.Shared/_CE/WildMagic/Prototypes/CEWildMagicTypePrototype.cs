@@ -10,9 +10,6 @@ public sealed partial class CEWildMagicTypePrototype : IPrototype
     public string ID { get; private set; } = string.Empty;
 
     [DataField(required: true)]
-    public LocId Name;
-
-    [DataField(required: true)]
     public List<PrototypeLayerData> Icon = new();
 
     [DataField]

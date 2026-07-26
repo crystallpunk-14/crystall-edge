@@ -2,7 +2,6 @@
 
 - type: CEWildMagicType
   id: CEWildMagicTestFlora
-  name: "Test Flora"
   difficulty: 1
   icon:
   - sprite: Structures/Specific/Anomalies/flora_anom.rsi
@@ -10,7 +9,6 @@
 
 - type: CEWildMagicType
   id: CEWildMagicTestIce
-  name: "Test Ice"
   difficulty: 1
   icon:
   - sprite: Structures/Specific/Anomalies/ice_anom.rsi
@@ -18,7 +16,6 @@
 
 - type: CEWildMagicType
   id: CEWildMagicTestLiquid
-  name: "Test Liquid"
   difficulty: 1
   icon:
   - sprite: Structures/Specific/Anomalies/liquid_anom.rsi
@@ -26,7 +23,6 @@
 
 - type: CEWildMagicType
   id: CEWildMagicTestPyro
-  name: "Test Pyro"
   difficulty: 1
   icon:
   - sprite: Structures/Specific/Anomalies/pyro_anom.rsi
@@ -34,7 +30,6 @@
 
 - type: CEWildMagicType
   id: CEWildMagicTestSanta
-  name: "Test Santa"
   difficulty: 1
   icon:
   - sprite: Structures/Specific/Anomalies/santa_anom.rsi
@@ -42,7 +37,6 @@
 
 - type: CEWildMagicType
   id: CEWildMagicTestShadow
-  name: "Test Shadow"
   difficulty: 1
   icon:
   - sprite: Structures/Specific/Anomalies/shadow_anom.rsi
@@ -50,7 +44,6 @@
 
 - type: CEWildMagicType
   id: CEWildMagicTestTech
-  name: "Test Tech"
   difficulty: 1
   icon:
   - sprite: Structures/Specific/Anomalies/tech_anom.rsi
