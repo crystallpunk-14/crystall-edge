@@ -45,6 +45,10 @@
         friction: 0
   - type: Solution
     id: essence
+  - type: GuideHelp
+    guides:
+    - CEThaumaturgyAspectsRU
+    - CEThaumaturgyAspectsEN
 
 # Basic 6
 

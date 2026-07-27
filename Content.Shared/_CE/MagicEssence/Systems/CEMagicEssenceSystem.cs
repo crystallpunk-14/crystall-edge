@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using Content.Shared._CE.Examine;
 using Content.Shared._CE.MagicEssence.Components;
@@ -86,6 +87,7 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
     private void OnPrototypesReloaded(PrototypesReloadedEventArgs args)
     {
         _reagentToEssence = null;
+        _essenceRecipes = null;
     }
 
     /// <summary>
