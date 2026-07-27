@@ -13,12 +13,6 @@ public sealed partial class CEMagicEssenceSystem
     /// Resolves the lower-tier essences that combine to produce the given essence type, for display in
     /// the thaumaturgy guidebook. Empty for tier 0 (primal) aspects, which aren't produced by any reaction.
     /// </summary>
-    /// <remarks>
-    /// The matching reaction is found by looking for a <see cref="SpawnEntity"/> effect that spawns this
-    /// essence's own <see cref="CEMagicEssenceTypePrototype.EssenceProto"/> entity - not by assuming the
-    /// reaction/essence/reagent IDs happen to be named the same. A content-side ID typo then just drops
-    /// that aspect's recipe from the guidebook (with a logged warning) instead of throwing.
-    /// </remarks>
     public IReadOnlyList<ProtoId<CEMagicEssenceTypePrototype>> GetRecipeComponents(ProtoId<CEMagicEssenceTypePrototype> essence)
     {
         var recipes = GetEssenceRecipeMap();
