@@ -13,9 +13,7 @@
       CEIron: 20
   - type: CEMagicEssenceStructure
     essences:
-      Metal:
-        min: 1
-        max: 3
+      Metal: { min: 1, max: 3 }
 
 - type: entity
   parent: CEClothingMaskIdentityBlockerBase
@@ -62,9 +60,7 @@
     sprite: _CE/Clothing/Masks/bone_mask.rsi
   - type: CEMagicEssenceStructure
     essences:
-      Death:
-        min: 1
-        max: 3
+      Death: { min: 1, max: 3 }
 
 - type: entity
   parent: CEClothingMaskIdentityBlockerBase
@@ -78,12 +74,8 @@
     sprite: _CE/Clothing/Masks/horned_bone_mask.rsi
   - type: CEMagicEssenceStructure
     essences:
-      Death:
-        min: 1
-        max: 3
-      Beast:
-        min: 0
-        max: 1
+      Death: { min: 1, max: 3 }
+      Beast: { min: 0, max: 1 }
 
 - type: entity
   parent: CEClothingMaskIdentityBlockerBase

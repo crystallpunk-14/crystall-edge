@@ -66,15 +66,9 @@
         volume: 2
   - type: CEMagicEssenceStructure
     essences:
-      Weapon:
-        min: 1
-        max: 3
-      Metal:
-        min: 1
-        max: 4
-      Mining:
-        min: 0
-        max: 2
+      Weapon: { min: 1, max: 3 }
+      Metal: { min: 1, max: 4 }
+      Mining: { min: 0, max: 2 }
 
 - type: entity
   parent: CEBaseWeaponShovel

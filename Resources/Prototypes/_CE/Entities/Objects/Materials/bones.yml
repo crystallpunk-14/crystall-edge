@@ -33,12 +33,8 @@
       collection: CEStepBones
   - type: CEMagicEssenceStructure
     essences:
-      Death:
-        min: 1
-        max: 4
-      Beast:
-        min: 0
-        max: 2
+      Death: { min: 1, max: 4 }
+      Beast: { min: 0, max: 2 }
 
 - type: entity
   id: CEBone5

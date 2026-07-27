@@ -43,9 +43,5 @@
     gravityMultiplier: 0.01
   - type: CEMagicEssenceStructure
     essences:
-      Air:
-        min: 2
-        max: 6
-      Crystal:
-        min: 1
-        max: 3
+      Air: { min: 2, max: 6 }
+      Crystal: { min: 1, max: 3 }

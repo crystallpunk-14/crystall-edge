@@ -35,12 +35,8 @@
     - CEDough
   - type: CEMagicEssenceStructure
     essences:
-      Plant:
-        min: 1
-        max: 3
-      Life:
-        min: 0
-        max: 2
+      Plant: { min: 1, max: 3 }
+      Life: { min: 0, max: 2 }
 
 - type: entity
   id: CEFoodBread
@@ -127,12 +123,8 @@
     - CEDough
   - type: CEMagicEssenceStructure
     essences:
-      Plant:
-        min: 1
-        max: 2
-      Life:
-        min: 0
-        max: 1
+      Plant: { min: 1, max: 2 }
+      Life: { min: 0, max: 1 }
 
 - type: entity
   id: CEFoodBreadBun

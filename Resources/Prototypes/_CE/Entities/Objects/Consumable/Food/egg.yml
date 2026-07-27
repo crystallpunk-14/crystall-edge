@@ -48,9 +48,7 @@
         solution: food
       - !type:SpawnEntitiesBehavior
         spawn:
-          CEEggshells:
-            min: 1
-            max: 1
+          CEEggshells: { min: 1, max: 1 }
           # Wow double-yolk you're so lucky!
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
@@ -70,12 +68,8 @@
     - CEEgg
   - type: CEMagicEssenceStructure
     essences:
-      Life:
-        min: 1
-        max: 4
-      Beast:
-        min: 0
-        max: 2
+      Life: { min: 1, max: 4 }
+      Beast: { min: 0, max: 2 }
 
 # Splat
 - type: entity
@@ -100,9 +94,7 @@
         Quantity: 1
   - type: CEMagicEssenceStructure
     essences:
-      Earth:
-        min: 1
-        max: 2
+      Earth: { min: 1, max: 2 }
 
 - type: entity
   parent: CEFoodEggBase

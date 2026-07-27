@@ -30,12 +30,8 @@
       CEBrass: 15
   - type: CEMagicEssenceStructure
     essences:
-      Machine:
-        min: 1
-        max: 3
-      Energia:
-        min: 1
-        max: 3
+      Machine: { min: 1, max: 3 }
+      Energia: { min: 1, max: 3 }
 
 - type: entity
   id: CEMachinePartEnergyLine5
@@ -78,12 +74,8 @@
       CEGlass: 10
   - type: CEMagicEssenceStructure
     essences:
-      Machine:
-        min: 1
-        max: 3
-      Fire:
-        min: 0
-        max: 2
+      Machine: { min: 1, max: 3 }
+      Fire: { min: 0, max: 2 }
 
 - type: entity
   id: CEMachinePartCoalDiffuser5
@@ -125,12 +117,8 @@
       CEBrass: 10
   - type: CEMagicEssenceStructure
     essences:
-      Machine:
-        min: 1
-        max: 3
-      Void:
-        min: 0
-        max: 2
+      Machine: { min: 1, max: 3 }
+      Void: { min: 0, max: 2 }
 
 - type: entity
   id: CEMachinePartDimensionalMatrix5

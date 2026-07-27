@@ -30,12 +30,8 @@
     price: 3
   - type: CEMagicEssenceStructure
     essences:
-      Metal:
-        min: 3
-        max: 8
-      Earth:
-        min: 0
-        max: 3
+      Metal: { min: 3, max: 8 }
+      Earth: { min: 0, max: 3 }
 
 - type: entity
   id: CEIronBar5
@@ -85,12 +81,8 @@
     price: 3
   - type: CEMagicEssenceStructure
     essences:
-      Metal:
-        min: 3
-        max: 8
-      Energia:
-        min: 0
-        max: 2
+      Metal: { min: 3, max: 8 }
+      Energia: { min: 0, max: 2 }
 
 - type: entity
   id: CEBrassBar5

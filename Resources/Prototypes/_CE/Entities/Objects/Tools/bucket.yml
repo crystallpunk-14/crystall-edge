@@ -71,9 +71,5 @@
       CEWood: 30
   - type: CEMagicEssenceStructure
     essences:
-      Tree:
-        min: 1
-        max: 4
-      Void:
-        min: 0
-        max: 2
+      Tree: { min: 1, max: 4 }
+      Void: { min: 0, max: 2 }

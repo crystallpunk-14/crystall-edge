@@ -35,12 +35,8 @@
     - CEWheat
   - type: CEMagicEssenceStructure
     essences:
-      Plant:
-        min: 1
-        max: 3
-      Crop:
-        min: 0
-        max: 2
+      Plant: { min: 1, max: 3 }
+      Crop: { min: 0, max: 2 }
 
 - type: entity
   id: CECotton
@@ -77,12 +73,8 @@
     price: 1
   - type: CEMagicEssenceStructure
     essences:
-      Plant:
-        min: 1
-        max: 3
-      Cloth:
-        min: 0
-        max: 1
+      Plant: { min: 1, max: 3 }
+      Cloth: { min: 0, max: 1 }
 
 - type: entity
   id: CEFoodCabbage
@@ -128,9 +120,7 @@
     - CESalad
   - type: CEMagicEssenceStructure
     essences:
-      Plant:
-        min: 1
-        max: 4
+      Plant: { min: 1, max: 4 }
 
 - type: entity
   id: CEFoodCabbageSlice
@@ -170,9 +160,7 @@
     - CESalad
   - type: CEMagicEssenceStructure
     essences:
-      Plant:
-        min: 1
-        max: 2
+      Plant: { min: 1, max: 2 }
 
 - type: entity
   id: CEFoodPumpkin
@@ -218,12 +206,8 @@
     - CEPumpkin
   - type: CEMagicEssenceStructure
     essences:
-      Plant:
-        min: 1
-        max: 4
-      Life:
-        min: 0
-        max: 2
+      Plant: { min: 1, max: 4 }
+      Life: { min: 0, max: 2 }
 
 - type: entity
   id: CEFoodPumpkinSlice
@@ -262,9 +246,7 @@
     - CEPumpkin
   - type: CEMagicEssenceStructure
     essences:
-      Plant:
-        min: 1
-        max: 2
+      Plant: { min: 1, max: 2 }
 
 - type: entity
   id: CEFoodPotato
@@ -314,12 +296,8 @@
     - CEPotato
   - type: CEMagicEssenceStructure
     essences:
-      Plant:
-        min: 1
-        max: 3
-      Earth:
-        min: 0
-        max: 2
+      Plant: { min: 1, max: 3 }
+      Earth: { min: 0, max: 2 }
 
 - type: entity
   id: CEFoodCucumber
@@ -368,12 +346,8 @@
     - CECucumber
   - type: CEMagicEssenceStructure
     essences:
-      Plant:
-        min: 1
-        max: 3
-      Water:
-        min: 0
-        max: 2
+      Plant: { min: 1, max: 3 }
+      Water: { min: 0, max: 2 }
 
 - type: entity
   id: CEFoodCucumberSlice
@@ -407,9 +381,7 @@
     - CECucumber
   - type: CEMagicEssenceStructure
     essences:
-      Plant:
-        min: 1
-        max: 2
+      Plant: { min: 1, max: 2 }
 
 - type: entity
   id: CEFoodTomatoes
@@ -482,12 +454,8 @@
     - CEVegetable
   - type: CEMagicEssenceStructure
     essences:
-      Plant:
-        min: 1
-        max: 3
-      Water:
-        min: 0
-        max: 2
+      Plant: { min: 1, max: 3 }
+      Water: { min: 0, max: 2 }
 
 - type: entity
   id: CEFoodTomatoesSlice
@@ -522,9 +490,7 @@
     - CEVegetable
   - type: CEMagicEssenceStructure
     essences:
-      Plant:
-        min: 1
-        max: 2
+      Plant: { min: 1, max: 2 }
 
 - type: entity
   id: CEFoodApple
@@ -572,12 +538,8 @@
     - CEApple
   - type: CEMagicEssenceStructure
     essences:
-      Plant:
-        min: 1
-        max: 3
-      Tree:
-        min: 0
-        max: 2
+      Plant: { min: 1, max: 3 }
+      Tree: { min: 0, max: 2 }
 
 - type: entity
   parent: CEFoodApple
@@ -622,9 +584,7 @@
     - CEApple
   - type: CEMagicEssenceStructure
     essences:
-      Plant:
-        min: 1
-        max: 2
+      Plant: { min: 1, max: 2 }
 
 - type: entity
   id: CEFoodPepper
@@ -669,12 +629,8 @@
     - CEPepper
   - type: CEMagicEssenceStructure
     essences:
-      Plant:
-        min: 1
-        max: 3
-      Fire:
-        min: 0
-        max: 1
+      Plant: { min: 1, max: 3 }
+      Fire: { min: 0, max: 1 }
 
 - type: entity
   id: CEFoodGarlic
@@ -718,12 +674,8 @@
     - CEGarlic
   - type: CEMagicEssenceStructure
     essences:
-      Plant:
-        min: 1
-        max: 3
-      Poison:
-        min: 0
-        max: 1
+      Plant: { min: 1, max: 3 }
+      Poison: { min: 0, max: 1 }
 
 - type: entity
   id: CEFoodGarlicClove
@@ -758,12 +710,8 @@
     - CEGarlic
   - type: CEMagicEssenceStructure
     essences:
-      Plant:
-        min: 1
-        max: 3
-      Poison:
-        min: 0
-        max: 1
+      Plant: { min: 1, max: 3 }
+      Poison: { min: 0, max: 1 }
 
 - type: entity
   id: CEFoodCorn
@@ -808,12 +756,8 @@
     - CECorn
   - type: CEMagicEssenceStructure
     essences:
-      Plant:
-        min: 1
-        max: 3
-      Crop:
-        min: 0
-        max: 2
+      Plant: { min: 1, max: 3 }
+      Crop: { min: 0, max: 2 }
 
 - type: entity
   id: CEFoodCornKernel
@@ -844,9 +788,7 @@
     - CECorn
   - type: CEMagicEssenceStructure
     essences:
-      Plant:
-        min: 1
-        max: 2
+      Plant: { min: 1, max: 2 }
 
 - type: entity
   id: CEFoodCarrot
@@ -891,12 +833,8 @@
     - CECarrot
   - type: CEMagicEssenceStructure
     essences:
-      Plant:
-        min: 1
-        max: 3
-      Earth:
-        min: 0
-        max: 1
+      Plant: { min: 1, max: 3 }
+      Earth: { min: 0, max: 1 }
 
 - type: entity
   id: CEFoodCarrotSlice
@@ -927,9 +865,7 @@
     - CECarrot
   - type: CEMagicEssenceStructure
     essences:
-      Plant:
-        min: 1
-        max: 2
+      Plant: { min: 1, max: 2 }
 
 - type: entity
   id: CEFoodPepperSlice
@@ -960,9 +896,7 @@
     - CEPepper
   - type: CEMagicEssenceStructure
     essences:
-      Plant:
-        min: 1
-        max: 2
+      Plant: { min: 1, max: 2 }
 
 - type: entity
   id: CEFoodOnion
@@ -1007,12 +941,8 @@
     - CEVegetable
   - type: CEMagicEssenceStructure
     essences:
-      Plant:
-        min: 1
-        max: 3
-      Poison:
-        min: 0
-        max: 1
+      Plant: { min: 1, max: 3 }
+      Poison: { min: 0, max: 1 }
 
 - type: entity
   id: CEFoodOnionSlice
@@ -1044,9 +974,7 @@
     - CEVegetable
   - type: CEMagicEssenceStructure
     essences:
-      Plant:
-        min: 1
-        max: 2
+      Plant: { min: 1, max: 2 }
 
 - type: entity
   id: CEFoodChanterelle
@@ -1086,12 +1014,8 @@
     area: 0.006
   - type: CEMagicEssenceStructure
     essences:
-      Plant:
-        min: 1
-        max: 2
-      Life:
-        min: 0
-        max: 2
+      Plant: { min: 1, max: 2 }
+      Life: { min: 0, max: 2 }
 
 - type: entity
   id: CEFoodSunflowerHead
@@ -1132,9 +1056,5 @@
     area: 0.006
   - type: CEMagicEssenceStructure
     essences:
-      Plant:
-        min: 1
-        max: 3
-      Light:
-        min: 0
-        max: 2
+      Plant: { min: 1, max: 3 }
+      Light: { min: 0, max: 2 }

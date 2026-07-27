@@ -29,12 +29,8 @@
     - CEMeat
   - type: CEMagicEssenceStructure
     essences:
-      Life:
-        min: 2
-        max: 6
-      Beast:
-        min: 1
-        max: 3
+      Life: { min: 2, max: 6 }
+      Beast: { min: 1, max: 3 }
 
 - type: entity
   id: CEFoodMeatSliceBase
@@ -334,12 +330,8 @@
     - CEMeat
   - type: CEMagicEssenceStructure
     essences:
-      Life:
-        min: 2
-        max: 6
-      Human:
-        min: 0
-        max: 1
+      Life: { min: 2, max: 6 }
+      Human: { min: 0, max: 1 }
 
 - type: entity
   id: CEFoodMeatHumanCooked
@@ -844,12 +836,8 @@
     - CEMeatMonster
   - type: CEMagicEssenceStructure
     essences:
-      Life:
-        min: 2
-        max: 6
-      Chaos:
-        min: 0
-        max: 2
+      Life: { min: 2, max: 6 }
+      Chaos: { min: 0, max: 2 }
 
 - type: entity
   id: CEFoodMeatMonsterCooked
@@ -919,12 +907,8 @@
     - CEMeatMonster
   - type: CEMagicEssenceStructure
     essences:
-      Life:
-        min: 2
-        max: 6
-      Chaos:
-        min: 0
-        max: 2
+      Life: { min: 2, max: 6 }
+      Chaos: { min: 0, max: 2 }
 
 - type: entity
   id: CEFoodMeatMonsterLegCooked
@@ -1046,12 +1030,8 @@
     - CEMeatMonster
   - type: CEMagicEssenceStructure
     essences:
-      Life:
-        min: 2
-        max: 6
-      Chaos:
-        min: 0
-        max: 2
+      Life: { min: 2, max: 6 }
+      Chaos: { min: 0, max: 2 }
 
 - type: entity
   id: CEFoodMeatFlemHeadCooked
@@ -1115,12 +1095,8 @@
     - CEMeatMonster
   - type: CEMagicEssenceStructure
     essences:
-      Life:
-        min: 2
-        max: 6
-      Chaos:
-        min: 0
-        max: 2
+      Life: { min: 2, max: 6 }
+      Chaos: { min: 0, max: 2 }
 
 - type: entity
   id: CEFoodMeatFlemTorsoCooked
@@ -1245,12 +1221,8 @@
     - CEMeatMonster
   - type: CEMagicEssenceStructure
     essences:
-      Life:
-        min: 2
-        max: 6
-      Chaos:
-        min: 0
-        max: 2
+      Life: { min: 2, max: 6 }
+      Chaos: { min: 0, max: 2 }
 
 - type: entity
   id: CEFoodMeatFlemLegCooked

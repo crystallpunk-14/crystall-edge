@@ -60,12 +60,8 @@
         volume: 2
   - type: CEMagicEssenceStructure
     essences:
-      Weapon:
-        min: 1
-        max: 3
-      Metal:
-        min: 1
-        max: 4
+      Weapon: { min: 1, max: 3 }
+      Metal: { min: 1, max: 4 }
 
 - type: entity
   parent: CEBaseWeaponHammer
