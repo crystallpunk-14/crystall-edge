@@ -1,6 +1,6 @@
 - type: entity
   id: CEFoodDoughLarge
-  parent: FoodInjectableBase
+  parent: [FoodInjectableBase, BaseSlicingRefinableFood]
   name: large piece of dough
   description: The perfect ingredient for any flour product. The only thing left to do is to shape it.
   categories: [ ForkFiltered ]
@@ -23,9 +23,10 @@
         Quantity: 20
       - ReagentId: UncookedAnimalProteins
         Quantity: 2
-  - type: SliceableFood
-    count: 4
-    slice: CEFoodDoughMedium
+  - type: ToolRefinable
+    refineResult:
+    - id: CEFoodDoughMedium
+      amount: 4
   - type: CETemperatureTransformation
     entries:
     - temperatureRange: 400, 500
@@ -54,9 +55,10 @@
       reagents:
       - ReagentId: CENutriment
         Quantity: 22
-  - type: SliceableFood
-    count: 4
-    slice: CEFoodBreadSlice
+  - type: ToolRefinable
+    refineResult:
+    - id: CEFoodBreadSlice
+      amount: 4
   - type: CETemperatureTransformation
     autoTransformOnCooked: false
     entries:

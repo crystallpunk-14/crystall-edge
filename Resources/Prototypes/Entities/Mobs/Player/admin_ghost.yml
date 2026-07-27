@@ -12,11 +12,14 @@
     - CanPilot
     - BypassInteractionRangeChecks
     - BypassDropChecks
+    - BypassOpenStorageLimit
     - NoConsoleSound
     - SilentStorageUser
     - PreventAccessLogging
     - AllowBiomeLoading
     - NotGhostnadoWarpable
+    - AllowPortalTraversal
+    - PreventPortalCollision
   - type: Input
     context: "aghost"
   - type: Ghost
@@ -113,6 +116,8 @@
   # CrystallEdge
   - type: CEShowVampireIcons
   - type: CERecipeKnowledge
+  - type: GluedImmune
+  - type: LubedImmune
 
 - type: entity
   abstract: true

@@ -1,6 +1,6 @@
 - type: entity
   id: CEWheat
-  parent: FoodInjectableBase
+  parent: [FoodInjectableBase, BaseSlicingRefinableFood]
   name: wheat bushel
   description: You have the choice of either planting the grains again or grinding them into flour.
   categories: [ ForkFiltered ]
@@ -24,10 +24,11 @@
       reagents:
       - ReagentId: Flour
         Quantity: 5
-  - type: SliceableFood
-    count: 2
-    sliceTime: 1.5
-    slice: CESeedWheat
+  - type: ToolRefinable
+    refineTime: 1.5
+    refineResult:
+    - id: CESeedWheat
+      amount: 2
   - type: StaticPrice
     price: 1
   - type: CEFoodTag
@@ -40,7 +41,7 @@
 
 - type: entity
   id: CECotton
-  parent: FoodInjectableBase
+  parent: [FoodInjectableBase, BaseSlicingRefinableFood]
   name: cotton
   description: A plant raw fiber used to make cotton fabric.
   categories: [ ForkFiltered ]
@@ -65,10 +66,11 @@
       reagents:
       - ReagentId: Fiber
         Quantity: 5
-  - type: SliceableFood
-    count: 3
-    sliceTime: 1.5
-    slice: CESeedCotton
+  - type: ToolRefinable
+    refineTime: 1.5
+    refineResult:
+    - id: CESeedCotton
+      amount: 3
   - type: StaticPrice
     price: 1
   - type: CEMagicEssenceStructure
@@ -78,7 +80,7 @@
 
 - type: entity
   id: CEFoodCabbage
-  parent: FoodInjectableBase
+  parent: [FoodInjectableBase, BaseSlicingRefinableFood]
   categories: [ ForkFiltered ]
   name: cabbage
   description: Green edible ball.
@@ -106,10 +108,11 @@
       reagents:
       - ReagentId: CENutriment
         Quantity: 3.5
-  - type: SliceableFood
-    count: 4
-    sliceTime: 1.5
-    slice: CEFoodCabbageSlice
+  - type: ToolRefinable
+    refineTime: 1.5
+    refineResult:
+    - id: CEFoodCabbageSlice
+      amount: 4
   - type: CEAdditionalSliceableDrop
     loot:
       CESeedCabbage: 1
@@ -164,7 +167,7 @@
 
 - type: entity
   id: CEFoodPumpkin
-  parent: FoodInjectableBase
+  parent: [FoodInjectableBase, BaseSlicingRefinableFood]
   categories: [ ForkFiltered ]
   name: pumpkin
   description: Big, cool pumpkin.
@@ -193,10 +196,11 @@
       reagents:
       - ReagentId: CENutriment
         Quantity: 12
-  - type: SliceableFood
-    count: 5
-    sliceTime: 2
-    slice: CEFoodPumpkinSlice
+  - type: ToolRefinable
+    refineTime: 2
+    refineResult:
+    - id: CEFoodPumpkinSlice
+      amount: 5
   - type: CEAdditionalSliceableDrop
     loot:
       CESeedPumpkin: 1
@@ -301,7 +305,7 @@
 
 - type: entity
   id: CEFoodCucumber
-  parent: FoodInjectableBase
+  parent: [FoodInjectableBase, BaseSlicingRefinableFood]
   categories: [ ForkFiltered ]
   name: cucumber
   description: An oblong green vegetable. Refreshing!
@@ -333,10 +337,11 @@
         Quantity: 2.47
       - ReagentId: Water
         Quantity: 3
-  - type: SliceableFood
-    count: 2
-    sliceTime: 1
-    slice: CEFoodCucumberSlice
+  - type: ToolRefinable
+    refineTime: 1
+    refineResult:
+    - id: CEFoodCucumberSlice
+      amount: 2
   - type: CEAdditionalSliceableDrop
     loot:
       CESeedCucumber: 1
@@ -385,7 +390,7 @@
 
 - type: entity
   id: CEFoodTomatoes
-  parent: [FoodInjectableBase, ItemHeftyBase]
+  parent: [FoodInjectableBase, ItemHeftyBase, BaseSlicingRefinableFood]
   categories: [ ForkFiltered ]
   name: tomatoes
   description: A red, juicy tomato. You just want to throw it in someone's face!
@@ -415,10 +420,11 @@
         Quantity: 2.71
       - ReagentId: JuiceTomato
         Quantity: 6
-  - type: SliceableFood
-    count: 3
-    sliceTime: 1
-    slice: CEFoodTomatoesSlice
+  - type: ToolRefinable
+    refineTime: 1
+    refineResult:
+    - id: CEFoodTomatoesSlice
+      amount: 3
   - type: CEAdditionalSliceableDrop
     loot:
       CESeedTomato: 1
@@ -494,7 +500,7 @@
 
 - type: entity
   id: CEFoodApple
-  parent: FoodInjectableBase
+  parent: [FoodInjectableBase, BaseSlicingRefinableFood]
   categories: [ ForkFiltered ]
   name: apple
   description: A fruit for lovers of a quick snack.
@@ -528,10 +534,11 @@
       reagents:
       - ReagentId: JuiceApple
         Quantity: 12
-  - type: SliceableFood
-    count: 4
-    sliceTime: 1.5
-    slice: CEFoodAppleSlice
+  - type: ToolRefinable
+    refineTime: 1.5
+    refineResult:
+    - id: CEFoodAppleSlice
+      amount: 4
   - type: CEFoodTag
     tags:
     - CEFruits
@@ -588,7 +595,7 @@
 
 - type: entity
   id: CEFoodPepper
-  parent: FoodInjectableBase
+  parent: [FoodInjectableBase, BaseSlicingRefinableFood]
   categories: [ ForkFiltered ]
   name: pepper
   description: Red and sweetish.
@@ -609,10 +616,11 @@
           base1: ""
           base2: ""
           base3: ""
-  - type: SliceableFood
-    count: 4
-    sliceTime: 2
-    slice: CEFoodPepperSlice
+  - type: ToolRefinable
+    refineTime: 2
+    refineResult:
+    - id: CEFoodPepperSlice
+      amount: 4
   - type: CEAdditionalSliceableDrop
     loot:
       CESeedPepper: 1
@@ -634,7 +642,7 @@
 
 - type: entity
   id: CEFoodGarlic
-  parent: FoodInjectableBase
+  parent: [FoodInjectableBase, BaseSlicingRefinableFood]
   categories: [ ForkFiltered ]
   name: garlic
   description: A bulb of garlic, full of flavor and pungency.
@@ -655,10 +663,11 @@
           base1: ""
           base2: ""
           base3: ""
-  - type: SliceableFood
-    count: 4
-    sliceTime: 1.5
-    slice: CEFoodGarlicClove
+  - type: ToolRefinable
+    refineTime: 1.5
+    refineResult:
+    - id: CEFoodGarlicClove
+      amount: 4
   - type: Solution
     id: food
     solution:
@@ -715,7 +724,7 @@
 
 - type: entity
   id: CEFoodCorn
-  parent: FoodInjectableBase
+  parent: [FoodInjectableBase, BaseSlicingRefinableFood]
   categories: [ ForkFiltered ]
   name: ear of corn
   description: Needs some butter! And some cooking...
@@ -725,10 +734,11 @@
   - type: FlavorProfile
     flavors:
       - corn
-  - type: SliceableFood
-    count: 3
-    sliceTime: 1.5
-    slice: CEFoodCornKernel
+  - type: ToolRefinable
+    refineTime: 1.5
+    refineResult:
+    - id: CEFoodCornKernel
+      amount: 3
   - type: CEAdditionalSliceableDrop
     loot:
       CESeedCorn: 1
@@ -792,7 +802,7 @@
 
 - type: entity
   id: CEFoodCarrot
-  parent: FoodInjectableBase
+  parent: [FoodInjectableBase, BaseSlicingRefinableFood]
   categories: [ ForkFiltered ]
   name: carrot
   description: A bright orange carrot, crunchy and sweet.
@@ -813,10 +823,11 @@
           base1: ""
           base2: ""
           base3: ""
-  - type: SliceableFood
-    count: 3
-    sliceTime: 1.5
-    slice: CEFoodCarrotSlice
+  - type: ToolRefinable
+    refineTime: 1.5
+    refineResult:
+    - id: CEFoodCarrotSlice
+      amount: 3
   - type: CEAdditionalSliceableDrop
     loot:
       CESeedCarrot: 1
@@ -900,7 +911,7 @@
 
 - type: entity
   id: CEFoodOnion
-  parent: FoodInjectableBase
+  parent: [FoodInjectableBase, BaseSlicingRefinableFood]
   categories: [ ForkFiltered ]
   name: onion
   description: If you eat too much, you can cry tears of joy.
@@ -930,10 +941,11 @@
         Quantity: 5.29
       - ReagentId: Allicin
         Quantity: 3
-  - type: SliceableFood
-    count: 4
-    sliceTime: 2
-    slice: CEFoodOnionSlice
+  - type: ToolRefinable
+    refineTime: 2
+    refineResult:
+    - id: CEFoodOnionSlice
+      amount: 4
   - type: CESeed
     plantProto: CEPlantOnion
   - type: CEFoodTag
@@ -1019,7 +1031,7 @@
 
 - type: entity
   id: CEFoodSunflowerHead
-  parent: FoodInjectableBase
+  parent: [FoodInjectableBase, BaseSlicingRefinableFood]
   categories: [ ForkFiltered ]
   name: sunflower head
   description: A cut flower from a cheerful, sun-loving plant. Inside are lots of delicious seeds.
@@ -1045,10 +1057,11 @@
       reagents:
       - ReagentId: CENutriment
         Quantity: 6
-  - type: SliceableFood
-    count: 3
-    sliceTime: 3
-    slice: CESeedSunflower
+  - type: ToolRefinable
+    refineTime: 3
+    refineResult:
+    - id: CESeedSunflower
+      amount: 3
   - type: Temperature
     currentTemperature: 290
   - type: InternalTemperature

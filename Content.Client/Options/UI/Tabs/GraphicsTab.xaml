@@ -17,6 +17,7 @@
                 <CheckBox Name="AmbientOcclusionCheckBox" Text="{Loc 'ui-options-ambient-occlusion'}" />
                 <CheckBox Name="WaveShaderEnabled" Text="{Loc 'ce-ui-options-main-graphics-wave-shader'}" ToolTip="{Loc 'ce-ui-options-main-graphics-wave-shader-tooltip'}" />
                 <CheckBox Name="PostProcessCheckBox" Text="{Loc 'ce-ui-options-postprocess'}" ToolTip="{Loc 'ce-ui-options-postprocess-tooltip'}" />
+                <ui:OptionSlider Name="SharpnessSlider" Title="{Loc 'ui-options-sharpness'}" />
 
                 <!-- Interface -->
                 <Label Text="{Loc 'ui-options-interface-label'}" StyleClasses="LabelKeyText"/>

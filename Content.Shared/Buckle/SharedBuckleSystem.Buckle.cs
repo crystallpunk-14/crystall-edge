@@ -177,16 +177,10 @@ public abstract partial class SharedBuckleSystem
 
     private void OnBuckleUpdateCanMove(EntityUid uid, BuckleComponent component, UpdateCanMoveEvent args)
     {
-        //CrystallEdge: vehicle port
-
         // If we're relaying then don't cancel.
-        // NOTE: I don't love this solution. It's by far the easiest but i hate having it be a consideration.
-        // We need to have a more logical way of distinguishing between a "physical" movement being blocked
-        // And simply being unable to move due to being unconscious, dead, etc. -EMO
         if (HasComp<RelayInputMoverComponent>(uid))
             return;
 
-        //CrystallEdge: vehicle port end
 
         if (component.Buckled)
             args.Cancel();
@@ -250,8 +244,8 @@ public abstract partial class SharedBuckleSystem
         if (_whitelistSystem.IsWhitelistFail(strapComp.Whitelist, buckleUid) ||
             _whitelistSystem.IsWhitelistPass(strapComp.Blacklist, buckleUid))
         {
-            if (popup)
-                _popup.PopupClient(Loc.GetString("buckle-component-cannot-fit-message"), user, PopupType.Medium);
+            if (popup && user != null)
+                _popup.PopupEntity(Loc.GetString("buckle-component-cannot-fit-message"), user.Value, user, PopupType.Medium);
 
             return false;
         }
@@ -271,21 +265,21 @@ public abstract partial class SharedBuckleSystem
         if (user != null && !HasComp<HandsComponent>(user))
         {
             if (popup)
-                _popup.PopupClient(Loc.GetString("buckle-component-no-hands-message"), user);
+                _popup.PopupEntity(Loc.GetString("buckle-component-no-hands-message"), user.Value, user);
 
             return false;
         }
 
         if (buckleComp.Buckled && !TryUnbuckle(buckleUid, user, buckleComp))
         {
-            if (popup)
+            if (popup && user != null)
             {
                 var message = Loc.GetString(buckleUid == user
                     ? "buckle-component-already-buckled-message"
                     : "buckle-component-other-already-buckled-message",
                 ("owner", Identity.Entity(buckleUid, EntityManager)));
 
-                _popup.PopupClient(message, user);
+                _popup.PopupEntity(message, user.Value, user);
             }
 
             return false;
@@ -308,7 +302,8 @@ public abstract partial class SharedBuckleSystem
                     : "buckle-component-other-cannot-buckle-message",
                 ("owner", Identity.Entity(buckleUid, EntityManager)));
 
-                _popup.PopupClient(message, user);
+                if (user != null)
+                    _popup.PopupEntity(message, user.Value, user);
             }
 
             return false;
@@ -323,7 +318,8 @@ public abstract partial class SharedBuckleSystem
                     : "buckle-component-other-cannot-buckle-message",
                 ("owner", Identity.Entity(buckleUid, EntityManager)));
 
-                _popup.PopupClient(message, user);
+                if (user != null)
+                    _popup.PopupEntity(message, user.Value, user);
             }
 
             return false;

@@ -26,7 +26,7 @@
 
 # The reason, why i don't make a child from CEFoodPumpkin is simple - CEFoodPumpkin has a randomsprite, which is copied to this base prototype
 - type: entity
-  parent: FoodInjectableBase
+  parent: [FoodInjectableBase, BaseSlicingRefinableFood]
   id: CEHalloweenPumpkinEmmisiveBase
   name: jack-o lantern
   description: Oooh! Scary!
@@ -51,10 +51,11 @@
       reagents:
       - ReagentId: CENutriment
         Quantity: 12
-  - type: SliceableFood
-    count: 5
-    sliceTime: 2
-    slice: CEFoodPumpkinSlice
+  - type: ToolRefinable
+    refineTime: 2
+    refineResult:
+    - id: CEFoodPumpkinSlice
+      amount: 5
   - type: CEFoodTag
     tags:
     - CEVegetable
