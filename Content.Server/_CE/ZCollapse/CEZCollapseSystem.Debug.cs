@@ -113,7 +113,7 @@ public sealed partial class CEZCollapseSystem
         var query = AllEntityQuery<CEZMapComponent, MapComponent>();
         while (query.MoveNext(out _, out _, out var mapComp))
         {
-            foreach (var grid in _mapManager.GetAllGrids(mapComp.MapId))
+            foreach (var grid in _map.GetAllGrids(mapComp.MapId))
             {
                 var gridUid = grid.Owner;
                 if (_stabilityQuery.HasComponent(gridUid) || visited.Contains(gridUid) || !IsZCollapseEligible(gridUid))
@@ -163,7 +163,7 @@ public sealed partial class CEZCollapseSystem
                 _zLevel.TryMapUp((mapUid, zMap), out var aboveMap) &&
                 _mapCompQuery.TryGetComponent(aboveMap.Owner, out var aboveMapComp))
             {
-                foreach (var candidate in _mapManager.GetAllGrids(aboveMapComp.MapId))
+                foreach (var candidate in _map.GetAllGrids(aboveMapComp.MapId))
                 {
                     if (!columnSet.Contains(candidate.Owner) || !IsZCollapseEligible(candidate.Owner))
                         continue;

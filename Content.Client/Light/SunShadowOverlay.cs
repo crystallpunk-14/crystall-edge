@@ -34,7 +34,6 @@ public sealed partial class SunShadowOverlay : Overlay
     private readonly SharedMapSystem _mapSys;
     private readonly SharedTransformSystem _xformSys;
     // CrystallEdge: rooved tiles have no sky above them so they shadow themselves too, see Draw()
-    private readonly SharedMapSystem _mapSys;
     private readonly SharedRoofSystem _roof;
     // CrystallEdge end
 
@@ -53,7 +52,6 @@ public sealed partial class SunShadowOverlay : Overlay
         _mapSys = _entManager.System<SharedMapSystem>();
         _lookup = _entManager.System<EntityLookupSystem>();
         // CrystallEdge: rooved tiles have no sky above them so they shadow themselves too, see Draw()
-        _mapSys = _entManager.System<SharedMapSystem>();
         _roof = _entManager.System<SharedRoofSystem>();
         // CrystallEdge end
         ZIndex = AfterLightTargetOverlay.ContentZIndex + 1;

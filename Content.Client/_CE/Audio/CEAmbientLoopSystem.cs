@@ -2,8 +2,8 @@ using Content.Client.Audio;
 using Content.Client.Gameplay;
 using Content.Shared._CE.Audio.Prototypes;
 using Content.Shared.CCVar;
+using Content.Shared.EntityConditions;
 using Content.Shared.GameTicking;
-using Content.Shared.Random.Rules;
 using Robust.Client.Player;
 using Robust.Client.State;
 using Robust.Shared.Audio;
@@ -24,7 +24,7 @@ public sealed partial class CEAmbientLoopSystem : EntitySystem
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private IStateManager _state = default!;
-    [Dependency] private RulesSystem _rules = default!;
+    [Dependency] private SharedEntityConditionsSystem _conditions = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private ContentAudioSystem _contentAudio = default!;
 
@@ -139,7 +139,7 @@ public sealed partial class CEAmbientLoopSystem : EntitySystem
 
        foreach (var loop in ambientLoops)
        {
-           if (_rules.IsTrue(player.Value, _proto.Index(loop.Rules)))
+           if (_conditions.TryConditions(player.Value, loop.Conditions))
            {
                list.Add(loop);
            }

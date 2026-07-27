@@ -349,7 +349,7 @@ namespace Content.Server.Construction
             {
                 if (!req.Check(EntityManager, user))
                 {
-                    _popup.PopupEntity(req.GetDescription(EntityManager, PrototypeManager), user, user);
+                    _popup.PopupEntity(req.GetDescription(EntityManager, ProtoMan), user, user);
                     return false;
                 }
             }
@@ -445,7 +445,7 @@ namespace Content.Server.Construction
             {
                 if (!req.Check(EntityManager, user))
                 {
-                    _popup.PopupEntity(req.GetDescription(EntityManager, PrototypeManager), user, user);
+                    _popup.PopupEntity(req.GetDescription(EntityManager, ProtoMan), user, user);
                     return;
                 }
             }

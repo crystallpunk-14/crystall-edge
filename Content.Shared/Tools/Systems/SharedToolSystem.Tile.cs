@@ -81,7 +81,7 @@ public abstract partial class SharedToolSystem
             var toolNames = new List<string>();
             foreach (var toolQuality in tileDef.DeconstructTools)
             {
-                if (_protoMan.TryIndex<ToolQualityPrototype>(toolQuality, out var protoToolQuality))
+                if (ProtoMan.TryIndex<ToolQualityPrototype>(toolQuality, out var protoToolQuality))
                     toolNames.Add(Loc.GetString(protoToolQuality.ToolName));
             }
 

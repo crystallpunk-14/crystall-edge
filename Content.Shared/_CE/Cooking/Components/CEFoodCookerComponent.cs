@@ -5,6 +5,7 @@
 
 using Content.Shared._CE.Cooking.Prototypes;
 using Content.Shared.DoAfter;
+using Content.Shared.Nutrition;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -64,7 +65,7 @@ public sealed partial class CEFoodData
         Desc = data.Desc;
         Visuals = new List<PrototypeLayerData>(data.Visuals);
         Trash = new List<EntProtoId>(data.Trash);
-        Flavors = new HashSet<LocId>(data.Flavors);
+        Flavors = new HashSet<ProtoId<FlavorPrototype>>(data.Flavors);
         StatusEffects = new Dictionary<EntProtoId, float>(data.StatusEffects);
     }
 
@@ -84,7 +85,7 @@ public sealed partial class CEFoodData
     public List<EntProtoId> Trash = new();
 
     [DataField]
-    public HashSet<LocId> Flavors = new();
+    public HashSet<ProtoId<FlavorPrototype>> Flavors = new();
 
     /// <summary>
     /// Status effects granted by consuming food with this FoodData. Effects stack, in seconds, and are multiplied by the number of units consumed.

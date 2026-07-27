@@ -2,6 +2,7 @@
 using Content.Server.Cargo.Components;
 using Content.Shared.Administration;
 using Content.Shared.Cargo;
+using Content.Shared.Cargo.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Materials;

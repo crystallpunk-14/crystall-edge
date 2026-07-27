@@ -35,7 +35,7 @@ public sealed partial class CEShootProjectileEffectSystem : CEEntityEffectSystem
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private SharedPhysicsSystem _physics = default!;
     [Dependency] private SharedGunSystem _gun = default!;
-    [Dependency] private IMapManager _mapManager = default!;
+    [Dependency] private SharedMapSystem _mapSystem = default!;
     [Dependency] private INetManager _net = default!;
     [Dependency] private IRobustRandom _random = default!;
 
@@ -52,9 +52,9 @@ public sealed partial class CEShootProjectileEffectSystem : CEEntityEffectSystem
         // If applicable, this ensures the projectile is parented to grid on spawn, instead of the map.
         var fromMap = _transform.ToMapCoordinates(fromCoords);
 
-        var spawnCoords = _mapManager.TryFindGridAt(fromMap, out var gridUid, out _)
+        var spawnCoords = _mapSystem.TryFindGridAt(fromMap, out var gridUid, out _)
             ? _transform.WithEntityId(fromCoords, gridUid)
-            : new(_mapManager.GetMapEntityId(fromMap.MapId), fromMap.Position);
+            : new(_mapSystem.GetMap(fromMap.MapId), fromMap.Position);
 
         // Resolve direction: prefer target coordinates, fall back to angle.
         var baseDirection = Vector2.Zero;

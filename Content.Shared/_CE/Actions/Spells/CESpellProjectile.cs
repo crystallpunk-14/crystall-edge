@@ -40,7 +40,7 @@ public sealed partial class CESpellProjectile : CESpellEffect
         var transform = entManager.System<SharedTransformSystem>();
         var physics = entManager.System<SharedPhysicsSystem>();
         var gunSystem = entManager.System<SharedGunSystem>();
-        var mapManager = IoCManager.Resolve<IMapManager>();
+        var mapSystem = entManager.System<SharedMapSystem>();
         var random = IoCManager.Resolve<IRobustRandom>();
 
         if (!entManager.TryGetComponent<TransformComponent>(args.User, out var xform))
@@ -52,9 +52,9 @@ public sealed partial class CESpellProjectile : CESpellEffect
         // If applicable, this ensures the projectile is parented to grid on spawn, instead of the map.
         var fromMap = transform.ToMapCoordinates(fromCoords);
 
-        var spawnCoords = mapManager.TryFindGridAt(fromMap, out var gridUid, out _)
+        var spawnCoords = mapSystem.TryFindGridAt(fromMap, out var gridUid, out _)
             ? transform.WithEntityId(fromCoords, gridUid)
-            : new(mapManager.GetMapEntityId(fromMap.MapId), fromMap.Position);
+            : new(mapSystem.GetMap(fromMap.MapId), fromMap.Position);
 
         for (var i = 0; i < ProjectileCount; i++)
         {
