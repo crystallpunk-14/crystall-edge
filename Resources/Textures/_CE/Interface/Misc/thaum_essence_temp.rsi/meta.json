@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "size": {
+    "x": 16,
+    "y": 16
+  },
+  "license": "CC-BY-SA-3.0",
+  "copyright": "TEMPORARY placeholder icons, not final art. Cropped/downscaled from the Thaumcraft 4 aspect tilesheet (mod by Azanor), sourced via ftb.fandom.com/wiki/Aspects_(Thaumcraft_4). Replace with original CE art before shipping/release.",
+  "states": [
+    {
+      "name": "praecantatio"
+    },
+    {
+      "name": "bestia"
+    },
+    {
+      "name": "fames"
+    },
+    {
+      "name": "herba"
+    },
+    {
+      "name": "iter"
+    },
+    {
+      "name": "limus"
+    },
+    {
+      "name": "metallum"
+    },
+    {
+      "name": "mortuus"
+    },
+    {
+      "name": "sano"
+    },
+    {
+      "name": "tenebrae"
+    },
+    {
+      "name": "vinculum"
+    },
+    {
+      "name": "volatus"
+    },
+    {
+      "name": "alienis"
+    },
+    {
+      "name": "arbor"
+    },
+    {
+      "name": "auram"
+    },
+    {
+      "name": "corpus"
+    },
+    {
+      "name": "exanimis"
+    },
+    {
+      "name": "spiritus"
+    },
+    {
+      "name": "vitium"
+    },
+    {
+      "name": "cognitio"
+    },
+    {
+      "name": "sensus"
+    },
+    {
+      "name": "humanus"
+    },
+    {
+      "name": "instrumentum"
+    },
+    {
+      "name": "messis"
+    },
+    {
+      "name": "lucrum"
+    },
+    {
+      "name": "perfodio"
+    },
+    {
+      "name": "fabrico"
+    },
+    {
+      "name": "machina"
+    },
+    {
+      "name": "pannus"
+    },
+    {
+      "name": "telum"
+    },
+    {
+      "name": "tutamen"
+    },
+    {
+      "name": "meto"
+    }
+  ]
+}

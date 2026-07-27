@@ -37,10 +37,6 @@
     contentImageModulate: "#998665"
   - type: CEMagicEssenceStructure
     essences:
-      Order:
-        min: 1
-        max: 4
-      Human:
-        min: 0
-        max: 1
+      Order: { min: 1, max: 4 }
+      Human: { min: 0, max: 1 }
 

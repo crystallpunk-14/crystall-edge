@@ -1,0 +1,33 @@
+- type: guideEntry
+  hidden: false
+  locFilter: "en-US"
+  id: CEThaumaturgyEN
+  name: Thaumaturgy
+  text: "/ServerInfo/_CE/Guidebook_EN/Thaumaturgy/Thaumaturgy.xml"
+  children:
+  - CEThaumaturgyAspectsEN
+
+- type: guideEntry
+  hidden: false
+  locFilter: "en-US"
+  id: CEThaumaturgyAspectsEN
+  name: Aspects
+  text: "/ServerInfo/_CE/Guidebook_EN/Thaumaturgy/Aspects.xml"
+  filterEnabled: True
+
+- type: guideEntry
+  hidden: false
+  locFilter: "ru-RU"
+  id: CEThaumaturgyRU
+  name: Тауматургия
+  text: "/ServerInfo/_CE/Guidebook_RU/Thaumaturgy/Thaumaturgy.xml"
+  children:
+  - CEThaumaturgyAspectsRU
+
+- type: guideEntry
+  hidden: false
+  locFilter: "ru-RU"
+  id: CEThaumaturgyAspectsRU
+  name: Аспекты
+  text: "/ServerInfo/_CE/Guidebook_RU/Thaumaturgy/Aspects.xml"
+  filterEnabled: True

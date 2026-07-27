@@ -34,3 +34,6 @@
   components:
   - type: ApcPowerReceiver
     powerLoad: 0
+  - type: PowerState
+    idlePowerDraw: 0
+    workingPowerDraw: 0

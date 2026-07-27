@@ -1,4 +1,5 @@
 using Content.Shared.Chemistry.Reagent;
+using Robust.Shared.Localization;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
@@ -17,8 +18,21 @@ public sealed partial class CEMagicEssenceTypePrototype : IPrototype
     [DataField(required: true)]
     public string Name = string.Empty;
 
+    /// <summary>
+    /// Guidebook flavour text for this aspect.
+    /// </summary>
+    [DataField]
+    public LocId? Desc;
+
     [DataField(required: true)]
     public Color Color = Color.White;
+
+    /// <summary>
+    /// Thaumaturgical tier of this aspect, for guidebook grouping and sorting. 0 = primal aspects
+    /// that aren't synthesized from anything else.
+    /// </summary>
+    [DataField]
+    public int Tier;
 
     [DataField]
     public EntProtoId? EssenceProto;

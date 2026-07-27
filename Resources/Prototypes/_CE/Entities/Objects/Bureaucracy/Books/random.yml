@@ -45,9 +45,5 @@
     points: 5
   - type: CEMagicEssenceStructure
     essences:
-      Order:
-        min: 2
-        max: 6
-      Mind:
-        min: 1
-        max: 3
+      Order: { min: 2, max: 6 }
+      Mind: { min: 1, max: 3 }

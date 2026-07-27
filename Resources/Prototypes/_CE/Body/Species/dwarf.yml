@@ -126,12 +126,8 @@
       group: CEDwarf
   - type: CEMagicEssenceStructure
     essences:
-      Earth:
-        min: 1
-        max: 3
-      Life:
-        min: 0
-        max: 2
+      Earth: { min: 1, max: 3 }
+      Life: { min: 0, max: 2 }
 
 - type: entity
   parent: [ CEOrganBaseTorsoSexed, OrganBaseTorso, CEOrganDwarfExternal ]

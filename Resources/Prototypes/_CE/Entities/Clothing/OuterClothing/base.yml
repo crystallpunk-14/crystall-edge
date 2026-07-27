@@ -16,9 +16,5 @@
     size: Huge
   - type: CEMagicEssenceStructure
     essences:
-      Armor:
-        min: 1
-        max: 3
-      Metal:
-        min: 0
-        max: 2
+      Armor: { min: 1, max: 3 }
+      Metal: { min: 0, max: 2 }

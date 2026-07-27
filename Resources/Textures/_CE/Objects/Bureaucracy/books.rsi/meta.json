@@ -19,6 +19,7 @@
     { "name": "icon_religion" },
     { "name": "icon_text" },
     { "name": "icon_uptext" },
+    { "name": "icon_thaum" },
     { "name": "paper" }
   ]
 }
