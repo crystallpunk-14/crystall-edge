@@ -9,23 +9,25 @@ using Robust.Shared.Utility;
 namespace Content.Client._CE.UserInterface.Systems.Chat.Widgets;
 
 /// <summary>
-/// Chat box for the Default screen: no background, anchored bottom-right, fixed size.
+/// Chat box for the Default screen: no background, anchored bottom-left, fixed size.
 /// Collapsed (unfocused) it only shows recent messages, each fading out a fixed time after
 /// it was received; the input row (channel selector, line edit, filter button) is hidden.
 /// Pressing the chat hotkey (T) expands it to the full history and the input row.
 /// </summary>
-public sealed class CEChatBox : ChatBox
+public sealed partial class CEChatBox : ChatBox
 {
-    private const float FadeHoldSeconds = 5f;
+    private const float FadeHoldSeconds = 10f;
     private const float FadeDurationSeconds = 1f;
 
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     private readonly ChatUIController _ceController;
     private readonly ScrollContainer _scrollContainer;
     private readonly BoxContainer _messagesBox;
     private readonly List<CEChatEntry> _entries = new();
 
+    private bool _focused;
+    private bool _hovered;
     private bool _expanded;
 
     public CEChatBox()
@@ -66,8 +68,8 @@ public sealed class CEChatBox : ChatBox
 
         root.AddChild(ChatInput);
 
-        ChatInput.Input.OnFocusEnter += _ => SetExpanded(true);
-        ChatInput.Input.OnFocusExit += _ => SetExpanded(false);
+        ChatInput.Input.OnFocusEnter += _ => { _focused = true; UpdateExpandedState(); };
+        ChatInput.Input.OnFocusExit += _ => { _focused = false; UpdateExpandedState(); };
         ChatInput.FilterButton.Popup.OnChannelFilter += (_, _) => RebuildFromHistory();
 
         _ceController.MessageAdded += OnCEMessageAdded;
@@ -124,6 +126,24 @@ public sealed class CEChatBox : ChatBox
             label.Modulate = Color.White;
     }
 
+    // Geometric check rather than MouseEntered/Exited: ChatInput has several interactive
+    // children of its own (line edit, buttons), each of which claims the hover once expanded,
+    // so tracking Enter/Exit per-control misses hovering directly over them.
+    private void UpdateHover()
+    {
+        var hovered = GlobalRect.Contains(UserInterfaceManager.MousePositionScaled.Position);
+        if (hovered == _hovered)
+            return;
+
+        _hovered = hovered;
+        UpdateExpandedState();
+    }
+
+    private void UpdateExpandedState()
+    {
+        SetExpanded(_focused || _hovered);
+    }
+
     private void SetExpanded(bool expanded)
     {
         _expanded = expanded;
@@ -150,6 +170,8 @@ public sealed class CEChatBox : ChatBox
     protected override void FrameUpdate(FrameEventArgs args)
     {
         base.FrameUpdate(args);
+
+        UpdateHover();
 
         if (!_expanded)
             UpdateFades();
