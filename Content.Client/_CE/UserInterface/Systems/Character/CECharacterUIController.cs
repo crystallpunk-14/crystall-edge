@@ -67,6 +67,8 @@ public sealed partial class CECharacterUIController : UIController, IOnStateEnte
     {
         if (_window != null)
         {
+            UIManager.GetUIController<InventoryUIController>().RemoveSlotGroup(_window.InventoryTab.InventorySlots.SlotGroup);
+
             _window.Close();
             _window = null;
         }
