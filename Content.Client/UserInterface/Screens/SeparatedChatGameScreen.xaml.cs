@@ -28,50 +28,16 @@ public sealed partial class SeparatedChatGameScreen : InGameScreen
         SetAnchorAndMarginPreset(Hotbar, LayoutPreset.BottomWide, margin: 5);
         SetAnchorAndMarginPreset(Alerts, LayoutPreset.CenterRight, margin: 10);
 
-        //CrystallEdge - health/mana spheres, stamina bar, centered+lowered action bar
-        var gap = 310f;
-        var manaOffset = ManaBar.MinSize.X / 2f + gap;
-        var healthOffset = -(HealthBar.MinSize.X + manaOffset);
-
-        SetAnchorAndMarginPreset(HealthBar, LayoutPreset.CenterBottom);
-        SetMarginLeft(HealthBar, healthOffset);
-
-        SetAnchorAndMarginPreset(ManaBar, LayoutPreset.CenterBottom);
-        SetMarginLeft(ManaBar, manaOffset);
-
-        SetAnchorAndMarginPreset(StaminaBar, LayoutPreset.CenterBottom, margin: 80);
-        SetMarginLeft(StaminaBar, -StaminaBar.MinSize.X / 2f);
-        SetMarginRight(StaminaBar, StaminaBar.MinSize.X / 2f);
-
-        SetAnchorPreset(Actions, LayoutPreset.BottomWide);
-        SetMarginLeft(Actions, 0);
-        SetMarginRight(Actions, 0);
-        //CrystallEdge end
-
         ScreenContainer.OnSplitResizeFinished += () =>
             OnChatResized?.Invoke(new Vector2(ScreenContainer.SplitFraction, 0));
 
         ViewportContainer.OnResized += ResizeActionContainer;
-        Hotbar.OnResized += ResizeActionContainer;
-
-        ResizeActionContainer();
     }
 
     private void ResizeActionContainer()
     {
-        //CrystallEdge - action bar stacks above whichever is taller: stamina bar or hotbar
         float indent = 20;
-        var maxWidth = ViewportContainer.Size.X - indent;
-        if (maxWidth > 0)
-            Actions.ActionsContainer.MaxGridWidth = maxWidth;
-
-        var staminaTop = 80f + StaminaBar.MinSize.Y;
-        var hotbarTop = 5f + Hotbar.Size.Y;
-        var actionHeight = MathF.Max(Actions.MinSize.Y, 64f);
-        var actionBottomOffset = MathF.Max(staminaTop, hotbarTop) + 8f - actionHeight / 2f;
-        SetMarginBottom(Actions, -actionBottomOffset);
-        SetMarginTop(Actions, -actionBottomOffset - actionHeight);
-        //CrystallEdge end
+        Actions.ActionsContainer.MaxGridWidth = ViewportContainer.Size.X - indent;
     }
 
     public override ChatBox ChatBox => GetWidget<ChatBox>()!;

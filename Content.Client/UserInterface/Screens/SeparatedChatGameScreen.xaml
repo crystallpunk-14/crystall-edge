@@ -10,7 +10,6 @@
     xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
     xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
     xmlns:inventory="clr-namespace:Content.Client.UserInterface.Systems.Inventory.Widgets"
-    xmlns:vitals="clr-namespace:Content.Client._CE.UserInterface.Systems.Vitals.Widgets"
     Name="SeparatedChatHud"
     VerticalExpand="False"
     VerticalAlignment="Bottom"
@@ -22,13 +21,10 @@
             <inventory:InventoryGui Name="Inventory" Access="Protected"/>
             <hotbar:HotbarGui Name="Hotbar" Access="Protected"/>
             <BoxContainer Name="TopLeftContainer" Orientation="Vertical">
+                <actions:ActionsBar Name="Actions" Access="Protected" />
                 <BoxContainer Name="VoteMenu" Access="Public" Orientation="Vertical"/>
             </BoxContainer>
             <alerts:AlertsUI Name="Alerts" Access="Protected" />
-            <vitals:CEHealthUI Name="HealthBar" Access="Public" />
-            <vitals:CEManaUI Name="ManaBar" Access="Public" />
-            <vitals:CEStaminaUI Name="StaminaBar" Access="Public" />
-            <actions:ActionsBar Name="Actions" Access="Protected" />
         </LayoutContainer>
         <PanelContainer Name="SeparatedChatPanel" MinWidth="300">
             <PanelContainer.PanelOverride>
