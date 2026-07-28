@@ -20,7 +20,7 @@ public sealed partial class DefaultGameScreen : InGameScreen
         SetAnchorAndMarginPreset(Ghost, LayoutPreset.BottomWide, margin: 80);
         SetAnchorAndMarginPreset(Inventory, LayoutPreset.BottomLeft, margin: 5);
         SetAnchorAndMarginPreset(Hotbar, LayoutPreset.BottomWide, margin: 5);
-        SetAnchorAndMarginPreset(Chat, LayoutPreset.TopRight, margin: 10);
+        SetAnchorAndMarginPreset(Chat, LayoutPreset.BottomRight, margin: 10); // CrystallEdge: chat redesign, moved to bottom-right
         SetAnchorAndMarginPreset(Alerts, LayoutPreset.TopRight, margin: 10);
 
         //CrystallEdge - health/mana spheres, stamina bar, centered+lowered action bar
@@ -44,8 +44,9 @@ public sealed partial class DefaultGameScreen : InGameScreen
         SetMarginRight(Actions, 0);
         //CrystallEdge end
 
-        Chat.OnResized += ChatOnResized;
-        Chat.OnChatResizeFinish += ChatOnResizeFinish;
+        // CrystallEdge: chat is fixed-size and no longer shares a corner with Alerts, no resize wiring needed
+        // Chat.OnResized += ChatOnResized;
+        // Chat.OnChatResizeFinish += ChatOnResizeFinish;
 
         MainViewport.OnResized += ResizeActionContainer;
         Inventory.OnResized += ResizeActionContainer;
@@ -71,26 +72,24 @@ public sealed partial class DefaultGameScreen : InGameScreen
         //CrystallEdge end
     }
 
-    private void ChatOnResizeFinish(Vector2 _)
-    {
-        var marginBottom = Chat.GetValue<float>(MarginBottomProperty);
-        var marginLeft = Chat.GetValue<float>(MarginLeftProperty);
-        OnChatResized?.Invoke(new Vector2(marginBottom, marginLeft));
-    }
-
-    private void ChatOnResized()
-    {
-        var marginBottom = Chat.GetValue<float>(MarginBottomProperty);
-        SetMarginTop(Alerts, marginBottom);
-    }
+    // CrystallEdge: chat is fixed-size now, resize wiring below is unused (kept for reference)
+    // private void ChatOnResizeFinish(Vector2 _)
+    // {
+    //     var marginBottom = Chat.GetValue<float>(MarginBottomProperty);
+    //     var marginLeft = Chat.GetValue<float>(MarginLeftProperty);
+    //     OnChatResized?.Invoke(new Vector2(marginBottom, marginLeft));
+    // }
+    //
+    // private void ChatOnResized()
+    // {
+    //     var marginBottom = Chat.GetValue<float>(MarginBottomProperty);
+    //     SetMarginTop(Alerts, marginBottom);
+    // }
 
     public override ChatBox ChatBox => Chat;
 
-    //TODO: There's probably a better way to do this... but this is also the easiest way.
+    // CrystallEdge: chat is fixed-size now, nothing to persist
     public override void SetChatSize(Vector2 size)
     {
-        SetMarginBottom(Chat, size.X);
-        SetMarginLeft(Chat, size.Y);
-        SetMarginTop(Alerts, size.X);
     }
 }
