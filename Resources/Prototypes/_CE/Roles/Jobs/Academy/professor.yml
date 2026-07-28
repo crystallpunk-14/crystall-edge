@@ -6,7 +6,7 @@
   playTimeTracker: CEJobAcademyProfessor
   startingGear: CEAcademyProfessorGear
   icon: CEJobIconAcademyProfessor
-  supervisors: ce-job-supervisors-academy-director
+  supervisors: ce-job-supervisors-academy-rector
   special:
     - !type:CEResearchDataSpecial
       radius: 6

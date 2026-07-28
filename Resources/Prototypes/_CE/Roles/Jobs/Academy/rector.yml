@@ -1,11 +1,11 @@
 - type: job
-  id: CEAcademyDirector
+  id: CEAcademyRector
   setPreference: true
-  name: ce-job-name-academy-director
-  description: ce-job-desc-academy-director
-  playTimeTracker: CEJobAcademyDirector
-  startingGear: CEAcademyDirectorGear
-  icon: CEJobIconAcademyDirector
+  name: ce-job-name-academy-rector
+  description: ce-job-desc-academy-rector
+  playTimeTracker: CEJobAcademyRector
+  startingGear: CEAcademyRectorGear
+  icon: CEJobIconAcademyRector
   requireAdminNotify: true
   joinNotifyCrew: true
   supervisors: ce-job-supervisors-empire
@@ -15,12 +15,12 @@
       radius: 6
 
 - type: startingGear
-  id: CEAcademyDirectorGear
+  id: CEAcademyRectorGear
   equipment:
-    pocket1: CEWalletFilledAcademyDirector
+    pocket1: CEWalletFilledAcademyRector
 
 - type: entity
-  id: CEWalletFilledAcademyDirector
+  id: CEWalletFilledAcademyRector
   parent: CEWallet
   categories: [ HideSpawnMenu ]
   components:
