@@ -128,11 +128,11 @@
   id: JobCEAcademyStudent
   groups:
   - CEGeneralBag
-  - CETownfolkHead
+  - CEAcademyStudentHead #
   - CEGeneralEyes
   - CEGeneralCloak
   - CEGeneralGloves
-  - CEGeneralShirt
+  - CEAcademyShirt #
   - CEGeneralPants
   - CEGeneralShoes
   - CEGeneralInstruments
@@ -141,24 +141,24 @@
   id: JobCEAcademyProfessor
   groups:
   - CEGeneralBag
-  - CETownfolkHead
+  - CEAcademyHead #
   - CEGeneralEyes
-  - CEGeneralCloak
+  - CEAcademyThaumaturgeCloak #
   - CEGeneralGloves
-  - CEGeneralShirt
+  - CEAcademyShirt #
   - CEGeneralPants
   - CEGeneralShoes
   - CEGeneralInstruments
 
 - type: roleLoadout
-  id: JobCEAcademyDirector
+  id: JobCEAcademyRector
   groups:
   - CEGeneralBag
-  - CETownfolkHead
+  - CEAcademyHead #
   - CEGeneralEyes
-  - CEGeneralCloak
+  - CEAcademyThaumaturgeCloak #
   - CEGeneralGloves
-  - CEGeneralShirt
+  - CEAcademyShirt #
   - CEGeneralPants
   - CEGeneralShoes
   - CEGeneralInstruments

@@ -1,0 +1,13 @@
+- type: entity
+  parent: CEClothingHeadBase
+  id: CEClothingHeadCowlThaumaturge
+  name: thaumaturge's hood
+  description: A ceremonial hood attached to the thaumaturge's mantle.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Head/Cowl/thaumaturge.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Head/Cowl/thaumaturge.rsi
+  - type: HideLayerClothing
+    slots:
+    - Hair

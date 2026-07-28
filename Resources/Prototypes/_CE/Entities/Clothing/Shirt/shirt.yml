@@ -239,3 +239,14 @@
     sprite: _CE/Clothing/Shirt/Shirt/Engineering/shirt.rsi
   - type: Clothing
     sprite: _CE/Clothing/Shirt/Shirt/Engineering/shirt.rsi
+
+- type: entity
+  parent: CEClothingShirtBase
+  id: CEClothingShirtAcademyRobe
+  name: academy robe
+  description: A formal robe worn by scholars of the Thaumaturgic Academy.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shirt/Shirt/Academy/robe.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shirt/Shirt/Academy/robe.rsi

@@ -22,3 +22,23 @@
   - type: Clothing
     sprite: _CE/Clothing/Cloak/Mantle/investigator.rsi
 
+- type: entity
+  parent:
+  - CEClothingCloakBase
+  id: CEClothingCloakMantleThaumaturge
+  name: thaumaturge's mantle
+  description: A formal mantle worn by thaumaturges of the Academy, with an attachable ceremonial hood.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Cloak/Mantle/thaumaturge.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Cloak/Mantle/thaumaturge.rsi
+  - type: ToggleableClothing
+    clothingPrototype: CEClothingHeadCowlThaumaturge
+    requiredSlot:
+    - cloak
+    slot: head
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
+
