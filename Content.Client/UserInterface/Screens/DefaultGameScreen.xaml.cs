@@ -23,6 +23,9 @@ public sealed partial class DefaultGameScreen : InGameScreen
         SetAnchorAndMarginPreset(Chat, LayoutPreset.BottomRight, margin: 10); // CrystallEdge: chat redesign, moved to bottom-right
         SetAnchorAndMarginPreset(Alerts, LayoutPreset.TopRight, margin: 10);
 
+        // CrystallEdge: top bar (escape/guidebook/emotes/etc buttons) is hidden until the escape menu opens
+        TopBar.Visible = false;
+
         //CrystallEdge - health/mana spheres, stamina bar, centered+lowered action bar
         var gap = 310f;
         var manaOffset = ManaBar.MinSize.X / 2f + gap;

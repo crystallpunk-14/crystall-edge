@@ -57,6 +57,14 @@ public sealed partial class EscapeUIController : UIController, IOnStateEntered<G
     private void ActivateButton() => EscapeButton!.SetClickPressed(true);
     private void DeactivateButton() => EscapeButton!.SetClickPressed(false);
 
+    // CrystallEdge: top bar is hidden by default, only shown while the escape menu is open
+    private void SetTopBarVisible(bool visible)
+    {
+        var topBar = UIManager.GetActiveUIWidgetOrNull<MenuBar.Widgets.GameTopMenuBar>();
+        if (topBar != null)
+            topBar.Visible = visible;
+    }
+
     public void OnStateEntered(GameplayState state)
     {
         DebugTools.Assert(_escapeWindow == null);
@@ -65,6 +73,10 @@ public sealed partial class EscapeUIController : UIController, IOnStateEntered<G
 
         _escapeWindow.OnClose += DeactivateButton;
         _escapeWindow.OnOpen += ActivateButton;
+
+        // CrystallEdge: top bar is hidden by default, only shown while the escape menu is open
+        _escapeWindow.OnOpen += () => SetTopBarVisible(true);
+        _escapeWindow.OnClose += () => SetTopBarVisible(false);
 
         _escapeWindow.FeedbackButton.OnPressed += _ =>
         {
