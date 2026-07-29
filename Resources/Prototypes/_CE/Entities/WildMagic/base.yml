@@ -1,0 +1,37 @@
+- type: entity
+  id: CEWildMagicNode
+  categories: [ HideSpawnMenu ]
+  name: wild magic rift
+  description: TODO
+  components:
+  - type: InteractionOutline
+  - type: TimedDespawn
+    lifetime: 300
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+    bodyStatus: InAir
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 50
+        mask:
+        - FlyingMobMask
+        layer:
+        - FlyingMobLayer
+  - type: Sprite
+    noRot: true
+    drawdepth: Effects
+    sprite: Structures/Specific/anomaly.rsi
+    state: anom1
+  - type: PointLight
+    color: "#FF00FF"
+  - type: Clickable
+  - type: Appearance
+  - type: AnimationPlayer
+  - type: Visibility
+    layer: 16 #magic vision only
