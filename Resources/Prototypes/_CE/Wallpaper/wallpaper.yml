@@ -1,0 +1,21 @@
+- type: ceWallpaper
+  id: Purple
+  rsiPath: /Textures/_CE/Structures/Wallpaper/purple.rsi
+  states:
+  - icon
+  - icon2
+
+- type: ceWallpaper
+  id: YellowVerticalLines
+  rsiPath: /Textures/_CE/Structures/Wallpaper/yellow_vertical_lines.rsi
+  states:
+  - icon
+  - icon2
+
+- type: ceWallpaper
+  id: Black
+  rsiPath: /Textures/_CE/Structures/Wallpaper/black.rsi
+  states:
+  - icon
+  - icon2
+  - icon3

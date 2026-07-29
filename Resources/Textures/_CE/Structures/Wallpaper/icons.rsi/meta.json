@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Created by TheShuEd (Github/discord)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "black"
+    },
+    {
+      "name": "green"
+    },
+    {
+      "name": "purple"
+    },
+    {
+      "name": "red"
+    },
+    {
+      "name": "white"
+    },
+    {
+      "name": "white2"
+    },
+    {
+      "name": "yellow_vertical_lines"
+    }
+  ]
+}
