@@ -229,3 +229,33 @@
   category: Wallpaper
   service: !type:CEBuyItemsService
     product: CEWallpaperItemBlack
+
+#MARK: Potted plants
+
+- type: tradingPosition
+  id: CEPottedPlant1
+  faction: HomeDecor
+  category: Materials
+  service: !type:CEBuyItemsService
+    product: CEPottedPlant1
+
+- type: tradingPosition
+  id: CEPottedPlant2
+  faction: HomeDecor
+  category: Materials
+  service: !type:CEBuyItemsService
+    product: CEPottedPlant2
+
+- type: tradingPosition
+  id: CEPottedPlant3
+  faction: HomeDecor
+  category: Materials
+  service: !type:CEBuyItemsService
+    product: CEPottedPlant3
+
+- type: tradingPosition
+  id: CEPottedPlant4
+  faction: HomeDecor
+  category: Materials
+  service: !type:CEBuyItemsService
+    product: CEPottedPlant4

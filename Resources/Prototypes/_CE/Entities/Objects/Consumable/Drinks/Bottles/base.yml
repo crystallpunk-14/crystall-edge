@@ -6,6 +6,9 @@
   - DrinkBaseOpenable
   categories: [ ForkFiltered ]
   components:
+  - type: Solution
+    solution:
+      maxVol: 40 # smaller than CEVialMedium (50u) - a drink bottle shouldn't out-hold an alchemy vial
   - type: Openable
     sound:
       collection: bottleOpenSounds

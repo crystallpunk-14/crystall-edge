@@ -10862,7 +10862,7 @@ entities:
     - type: Transform
       pos: 21.5,-15.5
       parent: 1
-- proto: DrinkMugBlack
+- proto: CEWoodenBeerMug
   entities:
   - uid: 1333
     components:

@@ -28,6 +28,17 @@
     nameFormat: ce-wine-name-format
 
 - type: entity
+  parent: CEBottleWine
+  id: CEBottleWineFull
+  suffix: Full
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Wine
+        Quantity: 40
+
+- type: entity
   parent: CEDrinkBottleBase
   id: CEBottleWhiskey
   name: whiskey bottle
@@ -49,6 +60,17 @@
     - CENamesWhiskeyState
     - CENamesWhiskeyBrand
     nameFormat: ce-whiskey-name-format
+
+- type: entity
+  parent: CEBottleWhiskey
+  id: CEBottleWhiskeyFull
+  suffix: Full
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Whiskey
+        Quantity: 40
 
 - type: entity
   parent: CEDrinkBottleBase
@@ -75,6 +97,17 @@
     maxFillLevels: 5
 
 - type: entity
+  parent: CEBottleVodka
+  id: CEBottleVodkaFull
+  suffix: Full
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Vodka
+        Quantity: 40
+
+- type: entity
   parent: CEDrinkBottleBase
   id: CEBottleRum
   name: rum bottle
@@ -98,6 +131,17 @@
   - type: SolutionContainerVisuals
     maxFillLevels: 6
 
+- type: entity
+  parent: CEBottleRum
+  id: CEBottleRumFull
+  suffix: Full
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Rum
+        Quantity: 40
+
 # Syrups
 
 - type: entity
@@ -120,6 +164,17 @@
     maxFillLevels: 5
 
 - type: entity
+  parent: CEBottleSyrupGrenadineine
+  id: CEBottleSyrupGrenadineineFull
+  suffix: Full
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Grenadine
+        Quantity: 40
+
+- type: entity
   parent: CEDrinkBottleBase
   id: CEBottleSyrupSugar
   name: sugar syrup bottle
@@ -137,3 +192,14 @@
       map: ["enum.OpenableVisuals.Layer"]
   - type: SolutionContainerVisuals
     maxFillLevels: 4
+
+- type: entity
+  parent: CEBottleSyrupSugar
+  id: CEBottleSyrupSugarFull
+  suffix: Full
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Sugar
+        Quantity: 40
