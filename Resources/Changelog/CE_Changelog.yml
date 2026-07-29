@@ -500,3 +500,12 @@
   id: 1049
   time: '2026-07-29T17:56:43.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/370
+- author: TheShuEd
+  changes:
+  - message: Removed arrivals shuttle & city.
+    type: Remove
+  - message: Removed elf magic during redesign
+    type: Remove
+  id: 1050
+  time: '2026-07-29T22:44:08.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/371
