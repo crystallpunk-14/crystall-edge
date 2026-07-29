@@ -9,3 +9,9 @@
   name: ce-stack-yellow-vertical-lines-wallpaper
   spawn: CEWallpaperItemYellowVerticalLines
   maxCount: 30
+
+- type: stack
+  id: CEWallpaperBlack
+  name: ce-stack-black-wallpaper
+  spawn: CEWallpaperItemBlack
+  maxCount: 30

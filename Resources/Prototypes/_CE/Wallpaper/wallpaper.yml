@@ -11,3 +11,11 @@
   states:
   - icon
   - icon2
+
+- type: ceWallpaper
+  id: Black
+  rsiPath: /Textures/_CE/Structures/Wallpaper/black.rsi
+  states:
+  - icon
+  - icon2
+  - icon3

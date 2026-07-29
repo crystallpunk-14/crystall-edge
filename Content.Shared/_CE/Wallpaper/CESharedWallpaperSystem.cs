@@ -26,18 +26,10 @@ public sealed partial class CESharedWallpaperSystem : EntitySystem
         SubscribeLocalEvent<CEWallpaperHolderComponent, InteractUsingEvent>(OnInteractUsing);
         SubscribeLocalEvent<CEWallpaperHolderComponent, CEWallpaperApplyDoAfterEvent>(OnApplyDoAfter);
         SubscribeLocalEvent<CEWallpaperHolderComponent, CEWallpaperRemoveDoAfterEvent>(OnRemoveDoAfter);
-        SubscribeLocalEvent<CEWallpaperHolderComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<CEWallpaperHolderComponent, ComponentStartup>(OnStartup);
     }
 
-    /// <summary>
-    /// Drops any layer whose design no longer exists as a CEWallpaperPrototype - e.g. a map was saved with
-    /// wallpaper that got removed/renamed in a later content update. Runs once per wall as it loads, so old
-    /// maps never need to be hand-edited: the side just quietly goes back to bare wall and can be re-papered
-    /// normally. The client-side renderer already tolerates unresolvable protos on its own (it just skips
-    /// that layer), so this isn't needed to avoid a crash - it's here so the data doesn't carry dead
-    /// references forever and the side is actually reported as free again.
-    /// </summary>
-    private void OnMapInit(Entity<CEWallpaperHolderComponent> holder, ref MapInitEvent args)
+    private void OnStartup(Entity<CEWallpaperHolderComponent> holder, ref ComponentStartup args)
     {
         List<Direction>? stale = null;
         foreach (var (side, protoId) in holder.Comp.Layers)
@@ -67,8 +59,8 @@ public sealed partial class CESharedWallpaperSystem : EntitySystem
 
             // Same design already glued to this side - re-gluing it would be a pure no-op, so don't even
             // start the DoAfter for it.
-            if (GetSide(holder, args.User) is not { } side
-                || (holder.Comp.Layers.TryGetValue(side, out var existing) && existing == wallpaper.Proto))
+            if (GetSide(holder, args.User) is not { } applySide
+                || (holder.Comp.Layers.TryGetValue(applySide, out var existing) && existing == wallpaper.Proto))
                 return;
 
             var doAfterArgs = new DoAfterArgs(EntityManager, args.User, wallpaper.Delay,

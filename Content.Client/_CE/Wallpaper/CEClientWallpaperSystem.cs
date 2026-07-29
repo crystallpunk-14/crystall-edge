@@ -24,15 +24,8 @@ public sealed partial class CEClientWallpaperSystem : EntitySystem
     {
         base.Initialize();
 
-        // IconSmoothing rebuilds its corner layers by re-appending them at the tail of the sprite's layer
-        // list. Ordering our own rebuild after it (for whichever event fires both) means our wallpaper stays
-        // on top instead of getting buried underneath freshly re-appended corners.
-        var after = new[] { typeof(IconSmoothSystem) };
-        SubscribeLocalEvent<CEWallpaperHolderComponent, ComponentStartup>(OnStartup, after: after);
-        SubscribeLocalEvent<CEWallpaperHolderComponent, AfterAutoHandleStateEvent>(OnHandleState, after: after);
+        SubscribeLocalEvent<CEWallpaperHolderComponent, AfterAutoHandleStateEvent>(OnHandleState, after: new[] { typeof(IconSmoothSystem) });
     }
-
-    private void OnStartup(Entity<CEWallpaperHolderComponent> ent, ref ComponentStartup args) => Rebuild(ent);
 
     private void OnHandleState(Entity<CEWallpaperHolderComponent> ent, ref AfterAutoHandleStateEvent args) => Rebuild(ent);
 

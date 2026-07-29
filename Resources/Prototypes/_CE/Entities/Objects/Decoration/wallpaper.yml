@@ -41,3 +41,15 @@
     stackType: CEWallpaperYellowVerticalLines
   - type: CEWallpaper
     proto: YellowVerticalLines
+
+- type: entity
+  parent: CEWallpaperItemBase
+  id: CEWallpaperItemBlack
+  suffix: Black
+  components:
+  - type: Sprite
+    state: black
+  - type: Stack
+    stackType: CEWallpaperBlack
+  - type: CEWallpaper
+    proto: Black

@@ -222,3 +222,10 @@
   category: Wallpaper
   service: !type:CEBuyItemsService
     product: CEWallpaperItemYellowVerticalLines
+
+- type: tradingPosition
+  id: CEWallpaperItemBlack
+  faction: HomeDecor
+  category: Wallpaper
+  service: !type:CEBuyItemsService
+    product: CEWallpaperItemBlack
