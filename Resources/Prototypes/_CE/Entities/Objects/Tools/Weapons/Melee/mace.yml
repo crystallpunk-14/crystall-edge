@@ -76,32 +76,9 @@
       visible: false
       map: [ "charge" ]
     state: icon
-  - type: Battery
-    startingCharge: 50
-    maxCharge: 50
-  - type: UseDelay
-    delay: 5
-  - type: CEMeleeEnergyEffect
-    effects:
-    - !type:CESpellThrowFromUser
-      distance: 3
-    - !type:CESpellSpawnEntityOnTarget
-      spawns:
-      - CEOverchargeVFX
-    - !type:CESpellStaminaDamage
-      damage: 40
   - type: Clothing
     quickEquip: false
   - type: Appearance
-  - type: ToggleableVisuals
-    spriteLayer: charge
-    inhandVisuals:
-      left:
-      - state: inhand-left-charge
-        shader: unshaded
-      right:
-      - state: inhand-right-charge
-        shader: unshaded
   - type: StaticPrice
     price: 100
 

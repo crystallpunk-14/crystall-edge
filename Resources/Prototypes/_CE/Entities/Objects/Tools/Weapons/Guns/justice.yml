@@ -67,9 +67,10 @@
     damage:
       types:
         Shock: 10
-  - type: CEHitscanSpellEffect
+  - type: CEHitscanEntityEffect
     effects:
-    - !type:CESpellSpawnEntityOnUser
+    - !type:SpawnEntity
+      effectTarget: Target
       spawns:
       - CEOverchargeVFX
   - type: HitscanBasicVisuals
