@@ -159,12 +159,6 @@
       reagents:
       - ReagentId: CEBloodElf
         Quantity: 300
-  - type: CESkillStorage #Innate magic tricks
-    availableSkillTrees:
-    - ElfMagic
-    skillPoints:
-      ElfMagic:
-        max: 2
   - type: CEEnergyOverchargeDamage
     damage:
       types:
