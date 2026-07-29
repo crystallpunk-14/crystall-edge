@@ -21,6 +21,8 @@ public sealed partial class CEMagicVisionOverlay : Overlay
 
     private readonly ShaderInstance _drowsinessShader;
 
+    private readonly ProtoId<ShaderPrototype> _drowsinessShaderProto = "Drowsiness";
+
     public float CurrentPower = 10.0f;
     public TimeSpan StartOverlay = TimeSpan.Zero; // when the overlay started
 
@@ -31,7 +33,7 @@ public sealed partial class CEMagicVisionOverlay : Overlay
     public CEMagicVisionOverlay()
     {
         IoCManager.InjectDependencies(this);
-        _drowsinessShader = _prototypeManager.Index<ShaderPrototype>("Drowsiness").InstanceUnique();
+        _drowsinessShader = _prototypeManager.Index(_drowsinessShaderProto).InstanceUnique();
 
         _config.OnValueChanged(CCVars.ReducedMotion, OnReducedMotionChanged, invokeImmediately: true);
     }

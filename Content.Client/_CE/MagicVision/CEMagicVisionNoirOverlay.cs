@@ -12,10 +12,12 @@ public sealed partial class CEMagicVisionNoirOverlay : Overlay
     public override bool RequestScreenTexture => true;
     private readonly ShaderInstance _noirShader;
 
+    private readonly ProtoId<ShaderPrototype> _noirShaderProto = "CEMagicVision";
+
     public CEMagicVisionNoirOverlay()
     {
         IoCManager.InjectDependencies(this);
-        _noirShader = _prototypeManager.Index<ShaderPrototype>("CEMagicVision").InstanceUnique();
+        _noirShader = _prototypeManager.Index(_noirShaderProto).InstanceUnique();
         ZIndex = 9; // draw this over the DamageOverlay, RainbowOverlay etc, but before the black and white shader
     }
 
