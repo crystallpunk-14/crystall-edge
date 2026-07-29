@@ -31,7 +31,6 @@ ce-stack-glass-sheet = стекло
 ce-stack-ash-pile = кучка пепла
 
 ce-stack-bones-pile = груда костей
-ce-stack-blood-essence = эссенции крови
 
 ce-stack-energy-line = энерголинии
 ce-stack-coal-diffusor = угольные рассеиватели

@@ -55,15 +55,16 @@
     damage:
       types:
         Shock: 35
-  - type: CEHitscanSpellEffect
+  - type: CEHitscanEntityEffect
     effects:
-    - !type:CESpellThrowFromUser
-      distance: 1
-    - !type:CESpellIrradiate
-      charge: 5
-    - !type:CESpellSpawnEntityOnUser
+    - !type:SpawnEntity
+      effectTarget: Target
       spawns:
       - CEOverchargeVFX
+    - !type:ThrowFrom
+      distance: 1
+    - !type:Irradiate
+      charge: 5
   - type: HitscanBasicVisuals
     muzzleFlash:
       sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi

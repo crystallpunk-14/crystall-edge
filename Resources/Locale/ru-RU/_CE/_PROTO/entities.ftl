@@ -32,29 +32,6 @@ ent-CEActionZLevelDown = Спуститься
 ent-CEActionToggleLookUp = Посмотреть вверх
     .desc = Вы поднимаете голову и смотрите на небо.
 
-ent-CEActionVampireBite = Укус вампира
-    .desc = Вы сосёте кровь и саму сущность жизни из своей жертвы. (Количество сущности в каждом игроке ограничено)
-
-ent-CEImpactEffectVampireBite = None
-
-ent-CEActionSpellBloodEssenceCreation = Сформировать сущность крови
-    .desc = Вы извлекаете сущность жизни, украденную у других существ из вашего тела, чтобы передать её другим вампирам или использовать в ритуалах.
-
-ent-CEActionSpellVampireCreate = Превратить в младшего вампира
-    .desc = Вы превращаете выбранную цель в младшего вампира, который должен вам подчиняться. Младшие вампиры не могут развивать свои способности без старшего вампира.
-
-ent-CEActionVampireScream = Оглушающий крик
-    .desc = Вы издаёте мощный крик, который оглушает всех рядом на несколько секунд.
-
-ent-CEImpactEffectVampireScreamTelegraphy = { ent-CEBaseMagicImpact }
-    .desc = { ent-CEBaseMagicImpact.desc }
-
-ent-CEImpactEffectVampireScream = { ent-CEBaseMagicImpact }
-    .desc = { ent-CEBaseMagicImpact.desc }
-
-ent-CEActionVampireToggleVisuals = Вампирическая природа
-    .desc = Вы раскрываете или скрываете свою вампирическую природу. Когда вы находитесь в раскрытой форме, вы можете использовать более мощные способности, но страдаете от солнечного света.
-
 ent-CEClothingCloakBase = None
 
 ent-CEClothingHeadBandanaAlchemist = платок алхимика
@@ -1638,21 +1615,6 @@ ent-CEPipeBrassMediumDelayer = замедлитель заряда малой т
     .desc = Маленький клапан, установленный на трубе, позволяет задержать поступающую энергию на короткий период времени. Полезно для контроля времени подачи энергии.
     .suffix = 0.5с
 
-ent-CEWorkbenchVampire = точка силы вампиров
-    .desc = Стол, пропитанный вампирской магией, позволяющий создавать предметы тёмных искусств.
-
-ent-CEVampireClanHeartBase = сердце вампирского клана
-    .desc = Источник силы для вампирского клана. Собирая жизненную силу своих жертв, клан становится сильнее.
-
-ent-CEVampireClanHeart = { ent-CEVampireClanHeartBase }
-    .desc = { ent-CEVampireClanHeartBase.desc }
-
-ent-CEVampireClanHeartFrame = рама сердца клана
-    .desc = Величественный артефакт вампирской культуры. Незавершён.
-
-ent-CEVampireStoneAltar = кровавый алтарь
-    .desc = Жуткий каменный алтарь, залитый кровью. Удваивает количество кровавой сущности, извлекаемой из жертв вампиров.
-
 ent-CEHighBushRandom = { ent-CEHighBush }
     .desc = { ent-CEHighBush.desc }
     .suffix = Случайный рост
@@ -1743,12 +1705,6 @@ ent-CEFloraTreeSpruceLarge = { ent-CEBaseTree }
 ent-CEBaseGameRule = None
 
 ent-CEGameRule3Days = None
-
-ent-CEGameRuleVampires = None
-
-ent-CEBaseVampireObjective = None
-
-ent-CEVampireObjectiveBloodPurity = None
 
 ent-CEBaseAmbitionObjective = None
 
@@ -1929,8 +1885,6 @@ ent-CEWalletFilledTavernmaster = { ent-CEWallet }
 ent-CEKeyRingTavernmaster = { ent-CEBaseKeyRing }
     .desc = { ent-CEBaseKeyRing.desc }
     .suffix = Пусто
-
-ent-CEMindRoleVampire = Роль вампира
 
 ent-CETradeContractApothecariesGuild = { ent-CETradeContractBase }
     .desc = Торговый контракт с магазином "Аптекари". Позволяет вам покупать некоторые медицинские принадлежности для лечения раненых.

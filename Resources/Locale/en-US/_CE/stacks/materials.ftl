@@ -31,7 +31,6 @@ ce-stack-glass-sheet = glass
 ce-stack-ash-pile = pile of ashes
 
 ce-stack-bones-pile = pile of bones
-ce-stack-blood-essence = blood essence
 
 ce-stack-energy-line = energylines
 ce-stack-coal-diffusor = coal diffusors

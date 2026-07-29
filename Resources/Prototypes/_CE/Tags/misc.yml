@@ -15,3 +15,6 @@
 
 - type: Tag
   id: CETorch
+
+- type: Tag
+  id: CEMedical

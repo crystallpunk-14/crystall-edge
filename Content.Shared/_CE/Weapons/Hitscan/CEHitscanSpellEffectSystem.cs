@@ -1,5 +1,4 @@
-
-using Content.Shared._CE.Actions.Spells;
+using Content.Shared._CE.EntityEffect;
 using Content.Shared.Weapons.Hitscan.Events;
 using Content.Shared.Whitelist;
 
@@ -13,10 +12,10 @@ public sealed partial class CEHitscanSpellEffectSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CEHitscanSpellEffectComponent, HitscanRaycastFiredEvent>(OnHitscanRaycastFired);
+        SubscribeLocalEvent<CEHitscanEntityEffectComponent, HitscanRaycastFiredEvent>(OnHitscanRaycastFired);
     }
 
-    private void OnHitscanRaycastFired(Entity<CEHitscanSpellEffectComponent> ent, ref HitscanRaycastFiredEvent args)
+    private void OnHitscanRaycastFired(Entity<CEHitscanEntityEffectComponent> ent, ref HitscanRaycastFiredEvent args)
     {
         if (args.Data.HitEntity == null)
             return;
@@ -24,9 +23,18 @@ public sealed partial class CEHitscanSpellEffectSystem : EntitySystem
         if (!_whitelist.CheckBoth(args.Data.HitEntity, ent.Comp.Whitelist, ent.Comp.Blacklist))
             return;
 
+        var effectArgs = new CEEntityEffectArgs(
+            EntityManager,
+            args.Data.Shooter ?? ent.Owner,
+            args.Data.Gun,
+            Angle.Zero,
+            1f,
+            args.Data.HitEntity,
+            Transform(ent).Coordinates);
+
         foreach (var effect in ent.Comp.Effects)
         {
-            effect.Effect(EntityManager, new CESpellEffectBaseArgs(args.Data.Shooter, args.Data.Gun, args.Data.HitEntity, null));
+            effect.Effect(effectArgs);
         }
     }
 }

@@ -1,0 +1,8 @@
+- type: construction
+  hide: false
+  id: CEGauze
+  graph: CEGauze
+  startNode: start
+  targetNode: cegauze
+  category: construction-category-tools
+  objectType: Item

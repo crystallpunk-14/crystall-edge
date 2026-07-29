@@ -6,18 +6,18 @@
   components:
   - type: StatusEffectAlert
     alert: CEFed
-  - type: CEStatusEffectApplySpell
+  - type: CEStatusEffectApplyEntityEffect
     effects:
-      - !type:CESpellApplyEntityEffect
-        effects:
-        - !type:HealthChange
-          ignoreResistances: true
-          damage:
-            types:
-              Blunt: -0.1
-              Slash: -0.1
-              Piercing: -0.1
-              Heat: -0.1
+    - !type:Damage
+      ignoreResistances: true
+      interruptDoAfters: false
+      colorFlash: false
+      damage:
+        types:
+          Blunt: -0.1
+          Slash: -0.1
+          Piercing: -0.1
+          Heat: -0.1
 
 - type: entity
   parent: StatusEffectBase
@@ -29,18 +29,18 @@
   - type: CESpeedModifyStatusEffect
     walk: 0.8
     sprint: 0.7
-  - type: CEStatusEffectApplySpell
+  - type: CEStatusEffectApplyEntityEffect
     effects:
-      - !type:CESpellApplyEntityEffect
-        effects:
-        - !type:HealthChange
-          ignoreResistances: true
-          damage:
-            types:
-              Blunt: -0.2
-              Slash: -0.2
-              Piercing: -0.2
-              Heat: -0.2
+    - !type:Damage
+      ignoreResistances: true
+      interruptDoAfters: false
+      colorFlash: false
+      damage:
+        types:
+          Blunt: -0.2
+          Slash: -0.2
+          Piercing: -0.2
+          Heat: -0.2
 
 - type: entity
   parent: StatusEffectBase
@@ -52,16 +52,16 @@
   - type: CESpeedModifyStatusEffect
     walk: 0.6
     sprint: 0.5
-  - type: CEStatusEffectApplySpell
+  - type: CEStatusEffectApplyEntityEffect
     effects:
-      - !type:CESpellApplyEntityEffect
-        effects:
-        - !type:HealthChange
-          ignoreResistances: true
-          damage:
-            types:
-              Heat: -0.1
-              Blunt: 0.5
+    - !type:Damage
+      ignoreResistances: true
+      interruptDoAfters: false
+      colorFlash: false
+      damage:
+        types:
+          Heat: -0.1
+          Blunt: 0.5
 
 - type: entity
   parent: StatusEffectBase
@@ -73,15 +73,15 @@
   - type: CESpeedModifyStatusEffect
     walk: 0.3
     sprint: 0.2
-  - type: CEStatusEffectApplySpell
+  - type: CEStatusEffectApplyEntityEffect
     effects:
-      - !type:CESpellApplyEntityEffect
-        effects:
-        - !type:HealthChange
-          ignoreResistances: true
-          damage:
-            types:
-              Blunt: 60
+    - !type:Damage
+      ignoreResistances: true
+      interruptDoAfters: false
+      colorFlash: false
+      damage:
+        types:
+          Blunt: 60
 
 # Thirst
 
@@ -120,15 +120,15 @@
     sprint: 0.5
   - type: StaminaModifierStatusEffect
     modifier: 1.4
-  - type: CEStatusEffectApplySpell
+  - type: CEStatusEffectApplyEntityEffect
     effects:
-      - !type:CESpellApplyEntityEffect
-        effects:
-        - !type:HealthChange
-          ignoreResistances: true
-          damage:
-            types:
-              Blunt: 0.5
+    - !type:Damage
+      ignoreResistances: true
+      interruptDoAfters: false
+      colorFlash: false
+      damage:
+        types:
+          Blunt: 0.5
 
 - type: entity
   parent: StatusEffectBase
@@ -140,12 +140,12 @@
   - type: CESpeedModifyStatusEffect
     walk: 0.3
     sprint: 0.2
-  - type: CEStatusEffectApplySpell
+  - type: CEStatusEffectApplyEntityEffect
     effects:
-      - !type:CESpellApplyEntityEffect
-        effects:
-        - !type:HealthChange
-          ignoreResistances: true
-          damage:
-            types:
-              Blunt: 60
+    - !type:Damage
+      ignoreResistances: true
+      interruptDoAfters: false
+      colorFlash: false
+      damage:
+        types:
+          Blunt: 60
