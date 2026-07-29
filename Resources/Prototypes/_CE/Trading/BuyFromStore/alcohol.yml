@@ -4,7 +4,7 @@
   faction: Alcohol
   category: Materials
   service: !type:CEBuyItemsService
-    product: CEBottleWine
+    product: CEBottleWineFull
     count: 1
 
 - type: tradingPosition
@@ -12,7 +12,7 @@
   faction: Alcohol
   category: Materials
   service: !type:CEBuyItemsService
-    product: CEBottleWhiskey
+    product: CEBottleWhiskeyFull
     count: 1
 
 - type: tradingPosition
@@ -20,7 +20,7 @@
   faction: Alcohol
   category: Materials
   service: !type:CEBuyItemsService
-    product: CEBottleVodka
+    product: CEBottleVodkaFull
     count: 1
 
 - type: tradingPosition
@@ -28,7 +28,7 @@
   faction: Alcohol
   category: Materials
   service: !type:CEBuyItemsService
-    product: CEBottleRum
+    product: CEBottleRumFull
     count: 1
 
 - type: tradingPosition
@@ -36,7 +36,7 @@
   faction: Alcohol
   category: Materials
   service: !type:CEBuyItemsService
-    product: CEBottleSyrupGrenadineine
+    product: CEBottleSyrupGrenadineineFull
     count: 1
 
 - type: tradingPosition
@@ -44,5 +44,5 @@
   faction: Alcohol
   category: Materials
   service: !type:CEBuyItemsService
-    product: CEBottleSyrupSugar
+    product: CEBottleSyrupSugarFull
     count: 1
