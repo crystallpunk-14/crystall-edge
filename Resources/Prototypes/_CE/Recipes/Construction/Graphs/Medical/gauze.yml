@@ -12,12 +12,3 @@
 
   - node: cegauze
     entity: CEGauze1
-
-- type: construction
-  hide: false
-  id: cegauze
-  graph: CEGauze
-  startNode: start
-  targetNode: cegauze
-  category: construction-category-tools
-  objectType: Item
