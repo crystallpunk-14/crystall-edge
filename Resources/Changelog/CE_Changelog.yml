@@ -477,3 +477,11 @@
   id: 1047
   time: '2026-07-29T11:59:54.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/368
+- author: TheShuEd
+  changes:
+  - message: Added 3 types of wallpapers, that you can attach to any wall. You can
+      buy it in home decor platform
+    type: Add
+  id: 1048
+  time: '2026-07-29T13:51:13.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/369
