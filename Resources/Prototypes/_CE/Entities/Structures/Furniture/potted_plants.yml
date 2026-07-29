@@ -6,7 +6,6 @@
   abstract: true
   categories: [ ForkFiltered ]
   components:
-  - type: SpriteFade
   - type: Transform
     noRot: true
   - type: InteractionOutline
