@@ -21,8 +21,8 @@
     entity: CEEssenceFrost
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceLight
@@ -39,8 +39,8 @@
     entity: CEEssenceLight
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceMotion
@@ -57,8 +57,8 @@
     entity: CEEssenceMotion
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceCycle
@@ -75,8 +75,8 @@
     entity: CEEssenceCycle
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceEnergia
@@ -93,8 +93,8 @@
     entity: CEEssenceEnergia
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceVoid
@@ -111,8 +111,8 @@
     entity: CEEssenceVoid
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssencePoison
@@ -129,8 +129,8 @@
     entity: CEEssencePoison
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceLife
@@ -147,8 +147,8 @@
     entity: CEEssenceLife
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceCrystal
@@ -165,8 +165,8 @@
     entity: CEEssenceCrystal
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceWeather
@@ -183,8 +183,8 @@
     entity: CEEssenceWeather
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 # Complex tier 2
 
@@ -203,8 +203,8 @@
     entity: CEEssenceMagic
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceBeast
@@ -221,8 +221,8 @@
     entity: CEEssenceBeast
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceHunger
@@ -239,8 +239,8 @@
     entity: CEEssenceHunger
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssencePlant
@@ -257,8 +257,8 @@
     entity: CEEssencePlant
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceTravel
@@ -275,8 +275,8 @@
     entity: CEEssenceTravel
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceSlime
@@ -293,8 +293,8 @@
     entity: CEEssenceSlime
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceMetal
@@ -311,8 +311,8 @@
     entity: CEEssenceMetal
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceDeath
@@ -329,8 +329,8 @@
     entity: CEEssenceDeath
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceHealing
@@ -347,8 +347,8 @@
     entity: CEEssenceHealing
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceDarkness
@@ -365,8 +365,8 @@
     entity: CEEssenceDarkness
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceTrap
@@ -383,8 +383,8 @@
     entity: CEEssenceTrap
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceFlight
@@ -401,8 +401,8 @@
     entity: CEEssenceFlight
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 # Complex tier 3
 
@@ -421,8 +421,8 @@
     entity: CEEssenceEldritch
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceTree
@@ -439,8 +439,8 @@
     entity: CEEssenceTree
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceAura
@@ -457,8 +457,8 @@
     entity: CEEssenceAura
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceFlesh
@@ -475,8 +475,8 @@
     entity: CEEssenceFlesh
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceUndead
@@ -493,8 +493,8 @@
     entity: CEEssenceUndead
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceSoul
@@ -511,8 +511,8 @@
     entity: CEEssenceSoul
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceTaint
@@ -529,8 +529,8 @@
     entity: CEEssenceTaint
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 # Complex tier 4
 
@@ -549,8 +549,8 @@
     entity: CEEssenceMind
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceSenses
@@ -567,8 +567,8 @@
     entity: CEEssenceSenses
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 # Complex tier 5
 
@@ -587,8 +587,8 @@
     entity: CEEssenceHuman
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 # Complex tier 6
 
@@ -607,8 +607,8 @@
     entity: CEEssenceTool
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceCrop
@@ -625,8 +625,8 @@
     entity: CEEssenceCrop
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceGreed
@@ -643,8 +643,8 @@
     entity: CEEssenceGreed
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceMining
@@ -661,8 +661,8 @@
     entity: CEEssenceMining
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 # Complex tier 7
 
@@ -681,8 +681,8 @@
     entity: CEEssenceCraft
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceMachine
@@ -699,8 +699,8 @@
     entity: CEEssenceMachine
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceCloth
@@ -717,8 +717,8 @@
     entity: CEEssenceCloth
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceWeapon
@@ -735,8 +735,8 @@
     entity: CEEssenceWeapon
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceArmor
@@ -753,8 +753,8 @@
     entity: CEEssenceArmor
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
 
 - type: reaction
   id: CEEssenceHarvest
@@ -771,5 +771,5 @@
     entity: CEEssenceHarvest
     number: 2
     predicted: false
-  - !type:AdjustSolutionTemperature
-    delta: -400
+  - !type:SetSolutionTemperature
+    temperature: 293.15
