@@ -73,6 +73,8 @@ CEBookRandom: CEBookEmpty
 CEBookshelfWoodenFilled: CEBookshelfWooden
 CEBookshelfStoneFilled: CEBookshelfStone
 
+CEArrivalsDockPointMarker: null
+
 # CrystallEdge migration zone end
 
 
