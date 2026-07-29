@@ -470,3 +470,10 @@
   id: 1046
   time: '2026-07-26T13:29:11.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/363
+- author: TheShuEd
+  changes:
+  - message: insulator helmet is not multihanded item anymore.
+    type: Tweak
+  id: 1047
+  time: '2026-07-29T11:59:54.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/368
