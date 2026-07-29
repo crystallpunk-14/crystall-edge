@@ -1,4 +1,3 @@
-using Content.Shared._CE.MagicVision;
 using Content.Shared._CE.MagicVision.Components;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
@@ -10,7 +9,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Client._CE.MagicVision;
 
-public sealed partial class CEClientMagicVisionSystem : CESharedMagicVisionSystem
+public sealed partial class CEClientMagicVisionSystem : EntitySystem
 {
     [Dependency] private IPlayerManager _player = default!;
     [Dependency] private IOverlayManager _overlayMan = default!;
