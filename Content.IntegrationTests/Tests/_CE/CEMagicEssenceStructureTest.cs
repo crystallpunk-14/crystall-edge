@@ -1,6 +1,7 @@
 #nullable enable
 using System.Collections.Generic;
 using Content.Shared._CE.MagicEssence.Components;
+using Content.Shared.Chemistry.Components;
 using Content.Shared.Item;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
@@ -45,6 +46,11 @@ public sealed class CEMagicEssenceStructureTest
                 if (!proto.TryGetComponent<ItemComponent>(out _, componentFactory))
                     continue;
 
+                // Draw/inject vessels (droppers, syringes, vials) are meant to show only the
+                // essence of whatever reagents were drawn into them, not their own material.
+                if (proto.TryGetComponent<InjectorComponent>(out _, componentFactory))
+                    continue;
+
                 if (!proto.TryGetComponent<CEMagicEssenceStructureComponent>(out _, componentFactory))
                     missing.Add(proto.ID);
             }
@@ -52,6 +58,39 @@ public sealed class CEMagicEssenceStructureTest
 
         Assert.That(missing, Is.Empty,
             $"{missing.Count} item EntityPrototype(s) have ItemComponent but no CEMagicEssenceStructureComponent:\n{string.Join('\n', missing)}");
+
+        await pair.CleanReturnAsync();
+    }
+
+    [Test]
+    public async Task CheckDrawInjectVesselsHaveNoOwnEssenceStructure()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var server = pair.Server;
+
+        var protoManager = server.ResolveDependency<IPrototypeManager>();
+        var componentFactory = server.ResolveDependency<IComponentFactory>();
+
+        var polluted = new List<string>();
+
+        await server.WaitAssertion(() =>
+        {
+            foreach (var proto in protoManager.EnumeratePrototypes<EntityPrototype>())
+            {
+                if (proto.Abstract)
+                    continue;
+
+                if (!proto.TryGetComponent<InjectorComponent>(out _, componentFactory))
+                    continue;
+
+                if (proto.TryGetComponent<CEMagicEssenceStructureComponent>(out _, componentFactory))
+                    polluted.Add(proto.ID);
+            }
+        });
+
+        Assert.That(polluted, Is.Empty,
+            $"{polluted.Count} EntityPrototype(s) have InjectorComponent (draw/inject vessels) but also CEMagicEssenceStructureComponent, " +
+            $"which pollutes the essence reading of whatever gets drawn into them with the vessel's own material essence:\n{string.Join('\n', polluted)}");
 
         await pair.CleanReturnAsync();
     }
