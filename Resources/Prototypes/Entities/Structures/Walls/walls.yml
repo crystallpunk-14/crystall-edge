@@ -63,6 +63,7 @@
   id: BaseWall
   components:
   - type: Occluder # Breaks on diagonal walls
+  - type: CEWallpaperHolder # CrystallEdge: let wallpaper be applied to every regular (non-diagonal) wall
 
 - type: entity
   abstract: true

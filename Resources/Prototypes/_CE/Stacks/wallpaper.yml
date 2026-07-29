@@ -1,0 +1,11 @@
+- type: stack
+  id: CEWallpaperPurple
+  name: ce-stack-purple-wallpaper
+  spawn: CEWallpaperItemPurple
+  maxCount: 30
+
+- type: stack
+  id: CEWallpaperYellowVerticalLines
+  name: ce-stack-yellow-vertical-lines-wallpaper
+  spawn: CEWallpaperItemYellowVerticalLines
+  maxCount: 30
