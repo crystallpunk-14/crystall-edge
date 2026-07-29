@@ -485,3 +485,18 @@
   id: 1048
   time: '2026-07-29T13:51:13.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/369
+- author: TheShuEd
+  changes:
+  - message: Added the ability to craft order boards.
+    type: Add
+  - message: Added potted plants that can be purchased from the home goods platform.
+    type: Add
+  - message: Alcohol bottles are no longer empty! Barrels, large alcohol barrels,
+      and small alcohol barrels have been added!
+    type: Add
+  - message: Mugs and goblets have been added and can be purchased from the horticulture
+      trade platform.
+    type: Add
+  id: 1049
+  time: '2026-07-29T17:56:43.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/370
