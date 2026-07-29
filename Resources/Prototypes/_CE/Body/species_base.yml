@@ -212,7 +212,6 @@
     weightlessModifier: 0.6
   - type: CEBlinker
   - type: CESkillStorage
-  - type: CEVampireEssenceHolder
   - type: CESatiations
     satiations:
       Hunger: 10

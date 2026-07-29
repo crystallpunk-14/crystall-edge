@@ -2,7 +2,6 @@ ce-trade-faction-victoria-gardens = Victoria Gardens
 ce-trade-faction-brad-potions = Brad's marvelous potions
 ce-trade-faction-butchers = Master Butchers Union
 ce-trade-faction-dairy = Golden Udder Dairy
-ce-trade-faction-vampire-market = Vampire's lair
 ce-trade-faction-helmir-child = Helmir's childs
 
 ce-trade-faction-horticulture = Horticulture Consortium

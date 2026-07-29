@@ -2,9 +2,6 @@
   id: CERecipeWorkbench
 
 - type: Tag
-  id: CERecipeVampire
-
-- type: Tag
   id: CERecipeMeltingFurnace
 
 - type: Tag
