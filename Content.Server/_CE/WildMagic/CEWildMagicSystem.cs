@@ -1,6 +1,8 @@
 using System.Linq;
 using Content.Server._CE.ZLevels.Core;
 using Content.Server.Station.Systems;
+using Content.Shared._CE.MagicEssence.Prototypes;
+using Content.Shared._CE.WildMagic.Components;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.Physics;
 using Content.Shared.Station.Components;
@@ -19,6 +21,7 @@ namespace Content.Server._CE.WildMagic;
 /// </summary>
 public sealed partial class CEWildMagicSystem : EntitySystem
 {
+    [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private SharedMapSystem _mapSystem = default!;
     [Dependency] private StationSystem _stations = default!;
@@ -26,6 +29,49 @@ public sealed partial class CEWildMagicSystem : EntitySystem
     [Dependency] private EntityQuery<PhysicsComponent> _physicsQuery = default!;
 
     private readonly EntProtoId _wildMagicNodeEntity = "CEWildMagicNode";
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeLocalEvent<CEWildMagicNodeComponent, MapInitEvent>(OnNodeMapInit);
+    }
+
+    /// <summary>
+    /// Rolls 3 random essence aspects for a freshly spawned node - low-tier aspects are more likely
+    /// to come up than high-tier ones (weight = 1 / (tier + 1)). Aspects may repeat.
+    /// </summary>
+    private void OnNodeMapInit(Entity<CEWildMagicNodeComponent> ent, ref MapInitEvent args)
+    {
+        var essences = _proto.EnumeratePrototypes<CEMagicEssenceTypePrototype>().ToList();
+        if (essences.Count == 0)
+            return;
+
+        ent.Comp.EssenceA = PickWeightedEssence(essences);
+        ent.Comp.EssenceB = PickWeightedEssence(essences);
+        ent.Comp.EssenceC = PickWeightedEssence(essences);
+
+        Dirty(ent);
+    }
+
+    private ProtoId<CEMagicEssenceTypePrototype> PickWeightedEssence(List<CEMagicEssenceTypePrototype> essences)
+    {
+        var totalWeight = 0f;
+        foreach (var essence in essences)
+            totalWeight += 1f / (essence.Tier + 1);
+
+        var roll = _random.NextFloat() * totalWeight;
+        foreach (var essence in essences)
+        {
+            var weight = 1f / (essence.Tier + 1);
+            if (roll < weight)
+                return essence.ID;
+
+            roll -= weight;
+        }
+
+        return essences[^1].ID;
+    }
 
     /// <summary>
     /// Finds a random valid spot in <paramref name="network"/> and spawns a wild magic node there.
