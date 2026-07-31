@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 96
+  },
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Created by TheShuEd (Discord/Github), modified by gogenych",
+  "states": [
+    {
+      "name": "icon",
+      "directions": 4
+    }
+  ]
+}

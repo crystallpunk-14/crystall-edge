@@ -1,10 +1,10 @@
 - type: entity
   parent: BaseStructure
-  id: CEBaseFenceWindow
+  id: CEBasePole
   abstract: true
   categories: [ ForkFiltered ]
-  name: fence window
-  description: You can slip an object in here, but you sure as hell can't fit through.
+  name: pole
+  description: A simple wooden pole. Perfect for reinforcing fence sections and creating corner joints.
   placement:
     mode: SnapgridCenter
     snap:
@@ -15,11 +15,11 @@
   - type: Physics
     bodyType: Static
   - type: Sprite
-    offset: 0, 0.4
     drawdepth: Mobs
-    state: fence
+    offset: -0.4,-0.4
+    state: icon
   - type: Icon
-    state: fence
+    state: icon
   - type: MeleeSound
     soundGroups:
       Brute:
@@ -30,43 +30,44 @@
       fix1:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.5,0.375,0.5,0.5"
+          bounds: "-0.5,-0.5,-0.375,-0.375"
         density: 1000
-        mask:
-        - Impassable
         layer:
+        - LowImpassable
         - MidImpassable
-        - HighImpassable
+  - type: Climbable
+    delay: 1.5
 
 - type: entity
-  parent: CEBaseFenceWindow
-  id: CEFenceWindowIron
-  suffix: Iron
+  parent:
+  - CEBasePole
+  id: CEPoleWooden
+  suffix: Wooden
   components:
   - type: Sprite
-    sprite: _CE/Structures/Architecture/Fences/iron_window.rsi
+    sprite: _CE/Structures/Architecture/Fences/poles.rsi
   - type: Icon
-    sprite: _CE/Structures/Architecture/Fences/iron_window.rsi
+    sprite: _CE/Structures/Architecture/Fences/poles.rsi
   - type: Damageable
-    damageModifierSet: Metallic
+    damageModifierSet: Wood
   - type: Injurable
-    damageContainer: StructuralInorganic
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 150
+        damage: 75
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          collection: MetalBreak
+          collection: WoodDestroy
       - !type:SpawnEntitiesBehavior
         spawn:
-          CEScrapIron1:
+          CEWoodenPlanks1:
             min: 1
             max: 1
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: Construction
-    graph: CEFenceWindowIron
-    node: CEFenceWindowIron
+    graph: CEPoleWooden
+    node: CEPoleWooden
