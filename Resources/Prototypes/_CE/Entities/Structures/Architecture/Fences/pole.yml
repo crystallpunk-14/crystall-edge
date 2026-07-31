@@ -4,7 +4,7 @@
   abstract: true
   categories: [ ForkFiltered ]
   name: pole
-  description: A simple wooden post. Perfect for reinforcing fence sections and creating corner joints.
+  description: A simple wooden pole. Perfect for reinforcing fence sections and creating corner joints.
   placement:
     mode: SnapgridCenter
     snap:
@@ -17,9 +17,9 @@
   - type: Sprite
     drawdepth: Mobs
     offset: -0.4,-0.4
-    state: pole
+    state: icon
   - type: Icon
-    state: pole
+    state: icon
   - type: MeleeSound
     soundGroups:
       Brute:
