@@ -1,16 +1,15 @@
 using System.Linq;
 using Content.Shared._CE.Cooking.Components;
 using Content.Shared._CE.Cooking.Prototypes;
-using Content.Shared._CE.Workbench;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Nutrition.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
-namespace Content.Shared._CE.Cooking;
+namespace Content.Shared._CE.ResourceManager.Requirements;
 
-public sealed partial class FoodResource : CEWorkbenchCraftRequirement
+public sealed partial class FoodResource : CEResourceRequirement
 {
     [DataField(required: true)]
     public ProtoId<CECookingRecipePrototype> Recipe;

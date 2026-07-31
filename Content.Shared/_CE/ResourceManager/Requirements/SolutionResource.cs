@@ -3,9 +3,9 @@ using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared._CE.Workbench.Requirements;
+namespace Content.Shared._CE.ResourceManager.Requirements;
 
-public sealed partial class SolutionResource : CEWorkbenchCraftRequirement
+public sealed partial class SolutionResource : CEResourceRequirement
 {
     [DataField(required: true)]
     public ProtoId<ReagentPrototype> Reagent = default!;

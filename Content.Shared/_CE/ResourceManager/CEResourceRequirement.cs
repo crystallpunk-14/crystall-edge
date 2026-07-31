@@ -2,11 +2,11 @@ using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
-namespace Content.Shared._CE.Workbench;
+namespace Content.Shared._CE.ResourceManager;
 
 [ImplicitDataDefinitionForInheritors]
 [MeansImplicitUse]
-public abstract partial class CEWorkbenchCraftRequirement
+public abstract partial class CEResourceRequirement
 {
     /// <summary>
     /// Here a check is made that the recipe as a whole can be fulfilled at the current moment. Do not add anything that affects gameplay here, and only perform checks here.

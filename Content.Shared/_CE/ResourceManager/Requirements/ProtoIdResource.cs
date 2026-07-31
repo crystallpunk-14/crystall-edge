@@ -1,9 +1,9 @@
 using Content.Shared._CE.Trading.Systems;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared._CE.Workbench.Requirements;
+namespace Content.Shared._CE.ResourceManager.Requirements;
 
-public sealed partial class ProtoIdResource : CEWorkbenchCraftRequirement
+public sealed partial class ProtoIdResource : CEResourceRequirement
 {
     [DataField(required: true)]
     public EntProtoId ProtoId;

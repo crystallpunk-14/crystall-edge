@@ -1,4 +1,4 @@
-using Content.Shared._CE.Workbench;
+using Content.Shared._CE.ResourceManager;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.Trading.Prototypes;
@@ -24,5 +24,5 @@ public sealed partial class CETradingRequestPrototype : IPrototype
     public int AdditionalReward = 10;
 
     [DataField(required: true)]
-    public List<CEWorkbenchCraftRequirement> Requirements = new();
+    public List<CEResourceRequirement> Requirements = new();
 }

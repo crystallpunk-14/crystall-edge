@@ -1,3 +1,4 @@
+using Content.Shared._CE.ResourceManager;
 using Content.Shared.Tag;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
@@ -23,7 +24,7 @@ public sealed partial class CEWorkbenchRecipePrototype : IPrototype
     /// Mandatory conditions, without which the craft button will not even be active
     /// </summary>
     [DataField(required: true)]
-    public List<CEWorkbenchCraftRequirement> Requirements = new();
+    public List<CEResourceRequirement> Requirements = new();
 
     /// <summary>
     /// Mandatory conditions for completion, but not blocking the craft button.

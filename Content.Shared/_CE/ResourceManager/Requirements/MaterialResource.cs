@@ -3,9 +3,9 @@ using Content.Shared.Stacks;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
-namespace Content.Shared._CE.Workbench.Requirements;
+namespace Content.Shared._CE.ResourceManager.Requirements;
 
-public sealed partial class MaterialResource : CEWorkbenchCraftRequirement
+public sealed partial class MaterialResource : CEResourceRequirement
 {
     [DataField(required: true)]
     public ProtoId<MaterialPrototype> Material;

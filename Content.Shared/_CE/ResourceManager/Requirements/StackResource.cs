@@ -3,9 +3,9 @@ using Content.Shared.Stacks;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
-namespace Content.Shared._CE.Workbench.Requirements;
+namespace Content.Shared._CE.ResourceManager.Requirements;
 
-public sealed partial class StackResource : CEWorkbenchCraftRequirement
+public sealed partial class StackResource : CEResourceRequirement
 {
     [DataField(required: true)]
     public ProtoId<StackPrototype> Stack;
