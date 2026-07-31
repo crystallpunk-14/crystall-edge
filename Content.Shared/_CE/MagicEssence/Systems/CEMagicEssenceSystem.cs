@@ -227,6 +227,8 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
     public ProtoId<CEMagicEssenceTypePrototype> GetRandomEssenceType()
     {
         var essences = _proto.EnumeratePrototypes<CEMagicEssenceTypePrototype>().ToList();
+        if (essences.Count == 0)
+            throw new InvalidOperationException("No CEMagicEssenceTypePrototype prototypes are registered.");
 
         var totalWeight = 0f;
         foreach (var essence in essences)
