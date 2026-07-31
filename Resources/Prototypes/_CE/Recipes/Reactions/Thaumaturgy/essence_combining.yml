@@ -19,7 +19,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceFrost
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -37,7 +37,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceLight
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -55,7 +55,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceMotion
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -73,7 +73,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceCycle
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -91,7 +91,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceEnergia
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -109,7 +109,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceVoid
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -127,7 +127,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssencePoison
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -145,7 +145,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceLife
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -163,7 +163,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceCrystal
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -181,7 +181,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceWeather
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -201,7 +201,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceMagic
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -219,7 +219,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceBeast
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -237,7 +237,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceHunger
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -255,7 +255,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssencePlant
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -273,7 +273,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceTravel
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -291,7 +291,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceSlime
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -309,7 +309,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceMetal
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -327,7 +327,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceDeath
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -345,7 +345,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceHealing
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -363,7 +363,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceDarkness
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -381,7 +381,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceTrap
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -399,7 +399,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceFlight
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -419,7 +419,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceEldritch
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -437,7 +437,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceTree
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -455,7 +455,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceAura
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -473,7 +473,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceFlesh
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -491,7 +491,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceUndead
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -509,7 +509,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceSoul
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -527,7 +527,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceTaint
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -547,7 +547,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceMind
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -565,7 +565,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceSenses
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -585,7 +585,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceHuman
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -605,7 +605,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceTool
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -623,7 +623,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceCrop
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -641,7 +641,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceGreed
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -659,7 +659,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceMining
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -679,7 +679,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceCraft
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -697,7 +697,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceMachine
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -715,7 +715,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceCloth
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -733,7 +733,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceWeapon
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -751,7 +751,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceArmor
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
@@ -769,7 +769,7 @@
   effects:
   - !type:SpawnEntity
     entity: CEEssenceHarvest
-    number: 2
+    number: 1
     predicted: false
   - !type:SetSolutionTemperature
     temperature: 293.15
