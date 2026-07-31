@@ -3,10 +3,24 @@
   catalyst: !type:ProtoIdResource
     protoId: CEEnergyCrystalShard
     count: 1
+  essenceAmount: { min: 6, max: 12 }
   essenceWeights:
     Air: 6
     Crystal: 2
     Energia: 1
-  essenceAmount: { min: 6, max: 12 }
+  pedestalCount: { min: 1, max: 2 }
+  pedestalRequirementPool:
+  - requirement: !type:ProtoIdResource
+      protoId: CEGlassShard
+      count: 1
+    weight: 3
+  - requirement: !type:ProtoIdResource
+      protoId: CEInstrumentFlute
+      count: 1
+    weight: 2
+  - requirement: !type:StackResource
+      stack: CEMachinePartEnergyLine
+      count: 1
+    weight: 1
   result: CECrystalShardAir
   resultCount: 1

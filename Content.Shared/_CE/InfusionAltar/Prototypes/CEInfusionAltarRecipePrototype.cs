@@ -32,9 +32,36 @@ public sealed partial class CEInfusionAltarRecipePrototype : IPrototype
     [DataField(required: true)]
     public MinMax EssenceAmount;
 
+    /// <summary>
+    /// Weighted pool of possible sub-pedestal requirements. Rolled (with replacement, so entries can
+    /// repeat) <see cref="PedestalCount"/> times once per round; see
+    /// <see cref="Content.Server._CE.InfusionAltar.CEInfusionAltarSystem"/>.
+    /// </summary>
+    [DataField(required: true)]
+    public List<CEWeightedResourceRequirement> PedestalRequirementPool = new();
+
+    /// <summary>
+    /// How many sub-pedestal requirements to roll from <see cref="PedestalRequirementPool"/> this round.
+    /// </summary>
+    [DataField(required: true)]
+    public MinMax PedestalCount;
+
     [DataField(required: true)]
     public EntProtoId Result;
 
     [DataField]
     public int ResultCount = 1;
+}
+
+/// <summary>
+/// A <see cref="CEResourceRequirement"/> paired with a relative weight, for weighted-random rolls.
+/// </summary>
+[DataDefinition]
+public sealed partial class CEWeightedResourceRequirement
+{
+    [DataField(required: true)]
+    public CEResourceRequirement Requirement = default!;
+
+    [DataField]
+    public int Weight = 1;
 }

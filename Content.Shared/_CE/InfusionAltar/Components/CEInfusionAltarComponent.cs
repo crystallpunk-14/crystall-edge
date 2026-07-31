@@ -42,5 +42,6 @@ public sealed partial class CEInfusionAltarComponent : Component
     /// <see cref="Content.Server._CE.InfusionAltar.CEInfusionAltarSystem"/> in response to anchor changes
     /// on this altar and on <see cref="CEInfusionAltarSubPedestalComponent"/> entities.
     /// </summary>
+    [DataField]
     public HashSet<EntityUid> ConnectedPedestals = new();
 }

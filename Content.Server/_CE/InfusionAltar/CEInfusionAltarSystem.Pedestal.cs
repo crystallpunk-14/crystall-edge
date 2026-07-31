@@ -5,6 +5,7 @@ using Content.Shared._CE.InfusionAltar.Components;
 using Content.Shared._CE.InfusionAltar.Prototypes;
 using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.MagicEssence.Systems;
+using Content.Shared._CE.ResourceManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Placeable;
 using Robust.Shared.Prototypes;
@@ -64,7 +65,10 @@ public sealed partial class CEInfusionAltarSystem
             if (!HasEnoughEssence(essenceLookup, cache))
                 continue;
 
-            Craft(ent, recipe, cache, placedEntities);
+            if (!TryMatchPedestalRequirements(ent, cache, out var pedestalMatches))
+                continue;
+
+            Craft(ent, recipe, cache, placedEntities, pedestalMatches);
             return;
         }
     }
@@ -80,12 +84,61 @@ public sealed partial class CEInfusionAltarSystem
         return true;
     }
 
+    private bool TryMatchPedestalRequirements(Entity<CEInfusionAltarComponent> altar,
+        CEInfusionAltarRecipeCache cache,
+        out List<(CEResourceRequirement Requirement, EntityUid Item)> matches)
+    {
+        matches = new List<(CEResourceRequirement, EntityUid)>();
+
+        if (cache.PedestalRequirements.Count == 0)
+            return true;
+
+        var available = new HashSet<EntityUid>(altar.Comp.ConnectedPedestals);
+
+        foreach (var requirement in cache.PedestalRequirements)
+        {
+            EntityUid? matchedPedestal = null;
+            var matchedItem = EntityUid.Invalid;
+
+            foreach (var pedestalUid in available)
+            {
+                if (!_itemPlacerQuery.TryComp(pedestalUid, out var pedestalPlacer) || pedestalPlacer.PlacedEntities.Count != 1)
+                    continue;
+
+                var item = pedestalPlacer.PlacedEntities.First();
+                var singleItemSet = new HashSet<EntityUid> { item };
+
+                if (!requirement.CheckRequirement(EntityManager, _proto, singleItemSet))
+                    continue;
+
+                matchedPedestal = pedestalUid;
+                matchedItem = item;
+                break;
+            }
+
+            if (matchedPedestal is not { } pedestal)
+                return false;
+
+            available.Remove(pedestal);
+            matches.Add((requirement, matchedItem));
+        }
+
+        return true;
+    }
+
     private void Craft(Entity<CEInfusionAltarComponent> ent,
         CEInfusionAltarRecipePrototype recipe,
         CEInfusionAltarRecipeCache cache,
-        HashSet<EntityUid> placedEntities)
+        HashSet<EntityUid> placedEntities,
+        List<(CEResourceRequirement Requirement, EntityUid Item)> pedestalMatches)
     {
         recipe.Catalyst.PostCraft(EntityManager, _proto, placedEntities);
+
+        foreach (var (requirement, item) in pedestalMatches)
+        {
+            var singleItemSet = new HashSet<EntityUid> { item };
+            requirement.PostCraft(EntityManager, _proto, singleItemSet);
+        }
 
         if (_solutionContainer.TryGetSolution((ent.Owner, null), ent.Comp.Solution, out var soln, out _))
         {

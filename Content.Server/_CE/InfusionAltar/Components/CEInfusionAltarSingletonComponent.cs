@@ -1,5 +1,6 @@
 using Content.Shared._CE.InfusionAltar.Prototypes;
 using Content.Shared._CE.MagicEssence.Prototypes;
+using Content.Shared._CE.ResourceManager;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.InfusionAltar.Components;
@@ -20,13 +21,20 @@ public sealed partial class CEInfusionAltarSingletonComponent : Component
 }
 
 /// <summary>
-/// Rolled, round-cached requirements for a single infusion altar recipe. Holds essence costs for now;
-/// future rolled requirements (surrounding ingredients, instability modifiers, etc.) belong here too,
-/// alongside their roll logic in <see cref="CEInfusionAltarSystem.GenerateRecipe"/>.
+/// Rolled, round-cached requirements for a single infusion altar recipe. Holds essence costs and
+/// sub-pedestal requirements for now; future rolled requirements (instability modifiers, etc.) belong
+/// here too, alongside their roll logic in <see cref="CEInfusionAltarSystem.GenerateRecipe"/>.
 /// </summary>
 [DataDefinition]
 public sealed partial class CEInfusionAltarRecipeCache
 {
     [DataField]
     public Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int> Essences = new();
+
+    /// <summary>
+    /// Requirements rolled from <see cref="CEInfusionAltarRecipePrototype.PedestalRequirementPool"/>, one
+    /// per connected sub-pedestal expected to satisfy. Can contain repeats.
+    /// </summary>
+    [DataField]
+    public List<CEResourceRequirement> PedestalRequirements = new();
 }

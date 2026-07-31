@@ -13,6 +13,8 @@ public sealed partial class CEInfusionAltarSystem
     {
         SubscribeLocalEvent<CEInfusionAltarComponent, AnchorStateChangedEvent>(OnAltarAnchorChanged);
         SubscribeLocalEvent<CEInfusionAltarSubPedestalComponent, AnchorStateChangedEvent>(OnSubPedestalAnchorChanged);
+        SubscribeLocalEvent<CEInfusionAltarSubPedestalComponent, EntityTerminatingEvent>(OnSubPedestalTerminating);
+        SubscribeLocalEvent<CEInfusionAltarSubPedestalComponent, ComponentRemove>(OnSubPedestalRemoved);
     }
 
     private void OnAltarAnchorChanged(Entity<CEInfusionAltarComponent> ent, ref AnchorStateChangedEvent args)
@@ -67,6 +69,25 @@ public sealed partial class CEInfusionAltarSystem
                 altarComp.ConnectedPedestals.Add(ent.Owner);
             else
                 altarComp.ConnectedPedestals.Remove(ent.Owner);
+        }
+    }
+
+    private void OnSubPedestalTerminating(Entity<CEInfusionAltarSubPedestalComponent> ent, ref EntityTerminatingEvent args)
+    {
+        PruneFromAllAltars(ent.Owner);
+    }
+
+    private void OnSubPedestalRemoved(Entity<CEInfusionAltarSubPedestalComponent> ent, ref ComponentRemove args)
+    {
+        PruneFromAllAltars(ent.Owner);
+    }
+
+    private void PruneFromAllAltars(EntityUid pedestal)
+    {
+        var query = EntityQueryEnumerator<CEInfusionAltarComponent>();
+        while (query.MoveNext(out _, out var altarComp))
+        {
+            altarComp.ConnectedPedestals.Remove(pedestal);
         }
     }
 

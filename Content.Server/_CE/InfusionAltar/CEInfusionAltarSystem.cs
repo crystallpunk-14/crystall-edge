@@ -31,9 +31,25 @@ public sealed partial class CEInfusionAltarSystem : EntitySystem
     {
         var uid = Spawn(_singletonEntity, MapCoordinates.Nullspace);
 
-        if (!TryComp<CEInfusionAltarSingletonComponent>(uid, out var singleton))
-            return;
+        if (TryComp<CEInfusionAltarSingletonComponent>(uid, out var singleton))
+            RollAllRecipes(singleton);
+    }
 
+    private Entity<CEInfusionAltarSingletonComponent> EnsureSingleton()
+    {
+        var query = EntityQueryEnumerator<CEInfusionAltarSingletonComponent>();
+        if (query.MoveNext(out var uid, out var comp))
+            return (uid, comp);
+
+        var newUid = Spawn(_singletonEntity, MapCoordinates.Nullspace);
+        var newComp = Comp<CEInfusionAltarSingletonComponent>(newUid);
+        RollAllRecipes(newComp);
+
+        return (newUid, newComp);
+    }
+
+    private void RollAllRecipes(CEInfusionAltarSingletonComponent singleton)
+    {
         foreach (var recipe in _proto.EnumeratePrototypes<CEInfusionAltarRecipePrototype>())
         {
             singleton.Recipes[recipe.ID] = GenerateRecipe(recipe);
@@ -63,6 +79,7 @@ public sealed partial class CEInfusionAltarSystem : EntitySystem
         var cache = new CEInfusionAltarRecipeCache();
 
         RollEssences(recipe, cache);
+        RollPedestalRequirements(recipe, cache);
 
         return cache;
     }
@@ -73,6 +90,10 @@ public sealed partial class CEInfusionAltarSystem : EntitySystem
     /// </summary>
     private void RollEssences(CEInfusionAltarRecipePrototype recipe, CEInfusionAltarRecipeCache cache)
     {
+        // Safe exit: no essence types declared, nothing to roll, avoid _random.Next(0).
+        if (recipe.EssenceWeights.Count == 0)
+            return;
+
         var totalWeight = 0;
         foreach (var weight in recipe.EssenceWeights.Values)
             totalWeight += weight;
@@ -98,18 +119,46 @@ public sealed partial class CEInfusionAltarSystem : EntitySystem
     }
 
     /// <summary>
-    /// Resolves the singleton infusion altar entity's data component, if it has been spawned this round.
+    /// Rolls <see cref="CEInfusionAltarRecipePrototype.PedestalCount"/> sub-pedestal requirements, each an
+    /// independent weighted-random draw over the full <see cref="CEInfusionAltarRecipePrototype.PedestalRequirementPool"/>
+    /// (with replacement, so entries can repeat).
+    /// </summary>
+    private void RollPedestalRequirements(CEInfusionAltarRecipePrototype recipe, CEInfusionAltarRecipeCache cache)
+    {
+        // Safe exit: no candidates declared, nothing to roll, avoid _random.Next(0).
+        if (recipe.PedestalRequirementPool.Count == 0)
+            return;
+
+        var totalWeight = 0;
+        foreach (var entry in recipe.PedestalRequirementPool)
+            totalWeight += entry.Weight;
+
+        if (totalWeight <= 0)
+            return;
+
+        var count = recipe.PedestalCount.Next(_random);
+        for (var i = 0; i < count; i++)
+        {
+            var roll = _random.Next(totalWeight);
+            foreach (var entry in recipe.PedestalRequirementPool)
+            {
+                if (roll < entry.Weight)
+                {
+                    cache.PedestalRequirements.Add(entry.Requirement);
+                    break;
+                }
+
+                roll -= entry.Weight;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Resolves the singleton infusion altar entity's data component via <see cref="EnsureSingleton"/>.
     /// </summary>
     public bool TryGetSingleton(out CEInfusionAltarSingletonComponent singleton)
     {
-        var query = EntityQueryEnumerator<CEInfusionAltarSingletonComponent>();
-        if (query.MoveNext(out _, out var comp))
-        {
-            singleton = comp;
-            return true;
-        }
-
-        singleton = default!;
-        return false;
+        singleton = EnsureSingleton().Comp;
+        return true;
     }
 }
