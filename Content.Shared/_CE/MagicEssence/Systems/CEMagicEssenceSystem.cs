@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text;
 using Content.Shared._CE.Examine;
 using Content.Shared._CE.MagicEssence.Components;
@@ -216,6 +217,32 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
 
         _reagentToEssence = map;
         return map;
+    }
+
+    /// <summary>
+    /// Picks a random essence type, weighted towards lower tiers (weight = 1 / (tier + 1)) so
+    /// primal aspects come up more often than complex ones. Ported from the wild magic node
+    /// aspect roll (<c>CEWildMagicSystem.PickWeightedEssence</c>).
+    /// </summary>
+    public ProtoId<CEMagicEssenceTypePrototype> GetRandomEssenceType()
+    {
+        var essences = _proto.EnumeratePrototypes<CEMagicEssenceTypePrototype>().ToList();
+
+        var totalWeight = 0f;
+        foreach (var essence in essences)
+            totalWeight += 1f / (essence.Tier + 1);
+
+        var roll = _random.NextFloat() * totalWeight;
+        foreach (var essence in essences)
+        {
+            var weight = 1f / (essence.Tier + 1);
+            if (roll < weight)
+                return essence.ID;
+
+            roll -= weight;
+        }
+
+        return essences[^1].ID;
     }
 
     private Entity<CEMagicEssenceSingletonComponent>? EnsureSingleton()

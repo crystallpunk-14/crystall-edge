@@ -1,4 +1,6 @@
+using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.Science.Components;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.Science;
 
@@ -14,31 +16,65 @@ public abstract partial class CESharedScienceSystem : EntitySystem
     }
 
     /// <summary>
-    /// Attempts to spend research points from the given entity's research data. Returns false
-    /// (and does not mutate anything) if it doesn't have enough.
+    /// Whether <paramref name="points"/> holds at least as much of every essence type in
+    /// <paramref name="cost"/> as it demands. Essence types missing from <paramref name="points"/>
+    /// are treated as 0. Pure comparison, usable client-side (e.g. for UI affordability checks) as
+    /// well as server-side.
     /// </summary>
-    public bool TrySpendPoints(Entity<CEScienceResearchDataComponent?> ent, int amount)
+    public static bool CanAfford(
+        IReadOnlyDictionary<ProtoId<CEMagicEssenceTypePrototype>, int> points,
+        IReadOnlyDictionary<ProtoId<CEMagicEssenceTypePrototype>, int> cost)
     {
-        if (!Resolve(ent, ref ent.Comp, false))
+        foreach (var (essence, amount) in cost)
+        {
+            if (!points.TryGetValue(essence, out var have) || have < amount)
+                return false;
+        }
+
+        return true;
+    }
+
+    /// <summary>
+    /// Whether the given entity's research data holds enough of every essence type in
+    /// <paramref name="cost"/>. Does not mutate anything.
+    /// </summary>
+    public bool HasEnoughPoints(Entity<CEScienceResearchDataComponent?> ent, IReadOnlyDictionary<ProtoId<CEMagicEssenceTypePrototype>, int> cost)
+    {
+        return Resolve(ent, ref ent.Comp, false) && CanAfford(ent.Comp.Points, cost);
+    }
+
+    /// <summary>
+    /// Attempts to spend research points (one or more essence types) from the given entity's
+    /// research data. Returns false (and does not mutate anything) if it doesn't have enough of
+    /// any of them.
+    /// </summary>
+    public bool TrySpendPoints(Entity<CEScienceResearchDataComponent?> ent, IReadOnlyDictionary<ProtoId<CEMagicEssenceTypePrototype>, int> cost)
+    {
+        if (!Resolve(ent, ref ent.Comp, false) || !CanAfford(ent.Comp.Points, cost))
             return false;
 
-        if (ent.Comp.Points < amount)
-            return false;
+        foreach (var (essence, amount) in cost)
+        {
+            ent.Comp.Points[essence] -= amount;
+        }
 
-        ent.Comp.Points -= amount;
         Dirty(ent.Owner, ent.Comp);
         return true;
     }
 
     /// <summary>
-    /// Grants research points to the given entity's research data.
+    /// Grants research points (one or more essence types) to the given entity's research data.
     /// </summary>
-    public void GrantPoints(Entity<CEScienceResearchDataComponent?> ent, int amount)
+    public void GrantPoints(Entity<CEScienceResearchDataComponent?> ent, IReadOnlyDictionary<ProtoId<CEMagicEssenceTypePrototype>, int> amounts)
     {
         if (!Resolve(ent, ref ent.Comp, false))
             return;
 
-        ent.Comp.Points += amount;
+        foreach (var (essence, amount) in amounts)
+        {
+            ent.Comp.Points[essence] = ent.Comp.Points.GetValueOrDefault(essence) + amount;
+        }
+
         Dirty(ent.Owner, ent.Comp);
     }
 }

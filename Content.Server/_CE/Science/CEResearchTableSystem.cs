@@ -51,7 +51,7 @@ public sealed partial class CEResearchTableSystem : EntitySystem
         if (!action.AllowedCells.HasFlag(kind))
             return;
 
-        if (data.Points < action.Cost)
+        if (!_science.HasEnoughPoints((args.Actor, data), action.Cost))
             return;
 
         var conditionArgs = new CEEntityEffectArgs(EntityManager, args.Actor, null, default, 0f, args.Actor, null);

@@ -2,7 +2,8 @@
   id: BasicScan
   name: ce-research-action-basic-scan-name
   desc: ce-research-action-basic-scan-desc
-  cost: 1
+  cost:
+    Order: 1
   allowedCells:
   - Empty
   - Achievement
@@ -14,7 +15,8 @@
   id: CheckHypothesis
   name: ce-research-action-check-hypothesis-name
   desc: ce-research-action-check-hypothesis-desc
-  cost: 1
+  cost:
+    Order: 1
   allowedCells:
   - Empty
   effects:

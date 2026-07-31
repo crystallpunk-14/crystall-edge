@@ -1,4 +1,5 @@
 using Content.Shared._CE.EntityEffect;
+using Content.Shared._CE.MagicEssence.Prototypes;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
@@ -20,11 +21,11 @@ public sealed partial class CEScienceAchievementPrototype : IPrototype
     public int Difficulty;
 
     /// <summary>
-    /// How many research points completing this achievement's discovery costs, via the
-    /// "discover achievement" research action.
+    /// How many research points of each essence type completing this achievement's discovery
+    /// costs, via the "discover achievement" research action.
     /// </summary>
     [DataField(required: true)]
-    public int Cost;
+    public Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int> Cost = new();
 
     [DataField(required: true)]
     public List<CEEntityEffect> Effects = new();

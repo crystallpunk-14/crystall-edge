@@ -1,3 +1,4 @@
+using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.Science.Prototypes;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -49,10 +50,10 @@ public sealed class CEResearchTableAreaData(
 [Serializable, NetSerializable]
 public sealed class CEResearchTableState(
     Dictionary<ProtoId<CEScienceAreaPrototype>, CEResearchTableAreaData> areas,
-    int points) : BoundUserInterfaceState
+    Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int> points) : BoundUserInterfaceState
 {
     public readonly Dictionary<ProtoId<CEScienceAreaPrototype>, CEResearchTableAreaData> Areas = areas;
-    public readonly int Points = points;
+    public readonly Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int> Points = points;
 }
 
 /// <summary>

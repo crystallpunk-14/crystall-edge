@@ -4,21 +4,8 @@
   description: A hardcover book.
   abstract: true
   categories: [ ForkFiltered ]
-  parent: [ SolutionFood, BaseItem ]
+  parent: BaseItem
   components:
-  - type: Edible
-    delay: 5
-    forceFeedDelay: 10
-  - type: FlavorProfile
-    flavors:
-    - paper
-  - type: BadFood
-  - type: Solution
-    solution:
-      maxVol: 5
-      reagents:
-      - ReagentId: Fiber
-        Quantity: 2.5
   - type: Sprite
     sprite: _CE/Objects/Bureaucracy/books.rsi
     layers:

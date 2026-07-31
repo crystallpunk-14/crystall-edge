@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Shared._CE.EntityEffect;
+using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.Science;
 using Content.Shared._CE.Science.Components;
 using Content.Shared._CE.Science.Effects;
@@ -35,7 +36,7 @@ public sealed partial class CEResearchCellInfoControl : BoxContainer
         RobustXamlLoader.Load(this);
     }
 
-    public void UpdateCell(CEScienceMapCell? cell, int points)
+    public void UpdateCell(CEScienceMapCell? cell, IReadOnlyDictionary<ProtoId<CEMagicEssenceTypePrototype>, int> points)
     {
         switch (cell)
         {
@@ -108,7 +109,7 @@ public sealed partial class CEResearchCellInfoControl : BoxContainer
                 HeaderText = Loc.GetString(action.Name),
                 Description = action.Desc is { } desc ? Loc.GetString(desc) : string.Empty,
                 Cost = cost,
-                CanExecute = points >= cost,
+                CanExecute = CESharedScienceSystem.CanAfford(points, cost),
             };
 
             entry.OnExecute += () => OnAction?.Invoke(actionId);
