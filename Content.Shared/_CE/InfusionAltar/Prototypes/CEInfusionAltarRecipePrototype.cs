@@ -51,6 +51,13 @@ public sealed partial class CEInfusionAltarRecipePrototype : IPrototype
 
     [DataField]
     public int ResultCount = 1;
+
+    /// <summary>
+    /// If true, this recipe is known to every character from round start, without needing to be taught
+    /// via <see cref="Content.Shared._CE.EntityEffect.Effects.LearnInfusionRecipe"/>.
+    /// </summary>
+    [DataField]
+    public bool RoundStart = false;
 }
 
 /// <summary>
