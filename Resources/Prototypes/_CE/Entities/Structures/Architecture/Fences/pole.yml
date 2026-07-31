@@ -4,7 +4,7 @@
   abstract: true
   categories: [ ForkFiltered ]
   name: pole
-  description: Jast a pole!
+  description: A simple wooden post. Perfect for reinforcing fence sections and creating corner joints.
   placement:
     mode: SnapgridCenter
     snap:
@@ -30,7 +30,7 @@
       fix1:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.5,0.25,0.5,0.5"
+          bounds: "-0.5,-0.5,-0.375,-0.375"
         density: 1000
         layer:
         - LowImpassable
