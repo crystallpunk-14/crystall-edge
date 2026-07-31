@@ -1,0 +1,12 @@
+- type: infusionAltarRecipe
+  id: Test
+  catalyst: !type:ProtoIdResource
+    protoId: CEEnergyCrystalShard
+    count: 1
+  essenceWeights:
+    Air: 6
+    Crystal: 2
+    Energia: 1
+  essenceAmount: { min: 6, max: 12 }
+  result: CECrystalShardAir
+  resultCount: 1

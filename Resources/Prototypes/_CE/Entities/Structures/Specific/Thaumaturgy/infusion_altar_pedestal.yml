@@ -1,0 +1,97 @@
+- type: entity
+  parent:
+  - CEConstructibleMachine
+  - CEBaseMachinePowered
+  - BaseMachine
+  id: CEInfusionAltarPedestal
+  categories: [ ForkFiltered ]
+  name: infusion altar pedestal
+  description: TODO
+  components:
+  - type: InteractionOutline
+  - type: Transform
+    anchored: true
+  - type: Sprite
+    drawdepth: Objects
+    noRot: true
+    sprite: Structures/Furniture/Altars/Gods/convertaltar.rsi #TODO
+    layers:
+    - state: convertaltar
+    - state: lightning
+      map: [ "power" ]
+      visible: false
+      shader: unshaded
+  - type: Icon
+    sprite: Structures/Furniture/Altars/Gods/convertaltar.rsi #TODO
+    state: convertaltar
+  - type: CEInfusionAltar
+  - type: PlaceableSurface
+  - type: ItemPlacer
+    maxEntities: 1
+  - type: Fixtures
+    fixtures: 
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45" 
+        density: 190
+        mask: # blocks players/mobs, same as tables
+        - TableMask
+        layer:
+        - TableLayer
+      fix2:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        mask:
+        - TabletopMachineMask
+        layer:
+        - Impassable
+        - MidImpassable
+        - LowImpassable
+        hard: false # items should rest on top, not bounce off
+      fix3:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        hard: false # essence should fly in, not bounce off
+        mask:
+        - Impassable
+        layer:
+        - Impassable
+  - type: Solution
+    id: essence
+    solution:
+      maxVol: 50
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        power:
+          True: { visible: true }
+          False: { visible: false }
+  - type: AmbientOnPowered
+  - type: AmbientSound
+    enabled: false
+    range: 6
+    volume: 3
+    sound:
+      path: /Audio/Ambience/Objects/gravity_gen_hum.ogg
+  - type: CEMagicEssenceAttractor
+    solution: essence
+  - type: LitOnPowered
+  - type: PointLight
+    enabled: false
+    color: "#ede323"
+    radius: 3
+  - type: LightBehaviour
+    behaviours:
+    - !type:RandomizeBehaviour
+      interpolate: Nearest
+      minDuration: 0.02
+      maxDuration: 0.06
+      startValue: 0.0
+      endValue: 3.0
+      property: Energy
+      isLooped: true
+      enabled: false
