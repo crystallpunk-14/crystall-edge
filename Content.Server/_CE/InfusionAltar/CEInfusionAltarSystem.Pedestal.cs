@@ -16,7 +16,7 @@ public sealed partial class CEInfusionAltarSystem
 {
     [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
     [Dependency] private CEMagicEssenceSystem _magicEssence = default!;
-    
+
     [Dependency] private EntityQuery<ItemPlacerComponent> _itemPlacerQuery = default!;
 
     public override void Update(float frameTime)
@@ -51,11 +51,12 @@ public sealed partial class CEInfusionAltarSystem
         var essences = _magicEssence.GetEssence(ent.Owner, includeContents: false);
         var essenceLookup = new Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int>();
         foreach (var (type, amount) in essences)
+        {
             essenceLookup[type] = amount;
+        }
 
         foreach (var recipe in _proto.EnumeratePrototypes<CEInfusionAltarRecipePrototype>())
         {
-            // Cheapest check first: does the placed item even match this recipe's catalyst?
             if (!recipe.Catalyst.CheckRequirement(EntityManager, _proto, placedEntities))
                 continue;
 

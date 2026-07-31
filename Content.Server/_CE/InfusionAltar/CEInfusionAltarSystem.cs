@@ -1,7 +1,6 @@
 using Content.Server._CE.InfusionAltar.Components;
 using Content.Server.GameTicking.Events;
 using Content.Shared._CE.InfusionAltar.Prototypes;
-using Content.Shared._CE.MagicEssence.Prototypes;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -52,7 +51,10 @@ public sealed partial class CEInfusionAltarSystem : EntitySystem
     {
         foreach (var recipe in _proto.EnumeratePrototypes<CEInfusionAltarRecipePrototype>())
         {
-            singleton.Recipes[recipe.ID] = GenerateRecipe(recipe);
+            var cache = new CEInfusionAltarRecipeCache();
+            RollEssences(recipe, cache);
+            RollPedestalRequirements(recipe, cache);
+            singleton.Recipes[recipe.ID] = cache;
         }
     }
 
@@ -70,21 +72,6 @@ public sealed partial class CEInfusionAltarSystem : EntitySystem
     }
 
     /// <summary>
-    /// Rolls every round-random part of a recipe's requirements into a <see cref="CEInfusionAltarRecipeCache"/>.
-    /// Currently just essence costs, but this is the single entry point future rolled requirements
-    /// (surrounding ingredients, instability modifiers, etc.) should be added to as their own step here.
-    /// </summary>
-    public CEInfusionAltarRecipeCache GenerateRecipe(CEInfusionAltarRecipePrototype recipe)
-    {
-        var cache = new CEInfusionAltarRecipeCache();
-
-        RollEssences(recipe, cache);
-        RollPedestalRequirements(recipe, cache);
-
-        return cache;
-    }
-
-    /// <summary>
     /// Rolls the recipe's total essence amount, then spends it point-by-point on a weighted random
     /// essence type from <see cref="CEInfusionAltarRecipePrototype.EssenceWeights"/>.
     /// </summary>
@@ -96,7 +83,9 @@ public sealed partial class CEInfusionAltarSystem : EntitySystem
 
         var totalWeight = 0;
         foreach (var weight in recipe.EssenceWeights.Values)
+        {
             totalWeight += weight;
+        }
 
         if (totalWeight <= 0)
             return;
@@ -131,7 +120,9 @@ public sealed partial class CEInfusionAltarSystem : EntitySystem
 
         var totalWeight = 0;
         foreach (var entry in recipe.PedestalRequirementPool)
+        {
             totalWeight += entry.Weight;
+        }
 
         if (totalWeight <= 0)
             return;

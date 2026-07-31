@@ -2,9 +2,9 @@
 # upstream until dedicated infusion altar art exists.
 - type: entity
   parent: BaseMachine
-  id: CEInfusionAltarSubPedestal
+  id: CEInfusionAltarPedestal
   categories: [ ForkFiltered ]
-  name: infusion altar sub-pedestal
+  name: infusion altar pedestal
   description: TODO
   components:
   - type: InteractionOutline
@@ -17,7 +17,7 @@
   - type: Icon
     sprite: Structures/Furniture/Altars/Gods/convertaltar.rsi #TODO
     state: convertaltar
-  - type: CEInfusionAltarSubPedestal
+  - type: CEInfusionAltarPedestal
   - type: PlaceableSurface
   - type: ItemPlacer
     maxEntities: 1

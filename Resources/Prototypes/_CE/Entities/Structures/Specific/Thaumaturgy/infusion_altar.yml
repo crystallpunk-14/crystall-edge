@@ -3,9 +3,9 @@
   - CEConstructibleMachine
   - CEBaseMachinePowered
   - BaseMachine
-  id: CEInfusionAltarPedestal
+  id: CEInfusionAltar
   categories: [ ForkFiltered ]
-  name: infusion altar pedestal
+  name: infusion altar
   description: TODO
   components:
   - type: InteractionOutline
@@ -50,11 +50,11 @@
   - type: ItemPlacer
     maxEntities: 1
   - type: Fixtures
-    fixtures: 
+    fixtures:
       fix1:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.45,-0.45,0.45,0.45" 
+          bounds: "-0.45,-0.45,0.45,0.45"
         density: 190
         mask: # blocks players/mobs, same as tables
         - TableMask

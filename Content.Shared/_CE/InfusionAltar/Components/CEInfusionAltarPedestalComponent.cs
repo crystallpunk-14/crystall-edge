@@ -6,4 +6,4 @@ namespace Content.Shared._CE.InfusionAltar.Components;
 /// <see cref="Content.Server._CE.InfusionAltar.CEInfusionAltarSystem"/>.
 /// </summary>
 [RegisterComponent]
-public sealed partial class CEInfusionAltarSubPedestalComponent : Component;
+public sealed partial class CEInfusionAltarPedestalComponent : Component;

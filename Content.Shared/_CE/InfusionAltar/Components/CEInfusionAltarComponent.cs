@@ -40,7 +40,7 @@ public sealed partial class CEInfusionAltarComponent : Component
     /// <summary>
     /// Sub-pedestals currently anchored at one of <see cref="PossiblePedestalsPositions"/>. Maintained by
     /// <see cref="Content.Server._CE.InfusionAltar.CEInfusionAltarSystem"/> in response to anchor changes
-    /// on this altar and on <see cref="CEInfusionAltarSubPedestalComponent"/> entities.
+    /// on this altar and on <see cref="CEInfusionAltarPedestalComponent"/> entities.
     /// </summary>
     [DataField]
     public HashSet<EntityUid> ConnectedPedestals = new();
