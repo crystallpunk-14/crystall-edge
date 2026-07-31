@@ -72,6 +72,14 @@ public sealed partial class CEResearchTableSystem : EntitySystem
         SendState(ent, args.Actor);
     }
 
+    /// <summary>
+    /// Pushes each area's cell content, filtered down to only what <paramref name="actor"/> has
+    /// personally researched - that Researched set is data the actor's own client already knows
+    /// (it lives on their own networked <see cref="CEScienceResearchDataComponent"/>), so filtering
+    /// by it here doesn't hand out anything new. The raw Researched set and the actor's points are
+    /// never put in this (shared, per-table) state - those are read by the client locally off its
+    /// own component instead.
+    /// </summary>
     private void SendState(EntityUid uid, EntityUid actor)
     {
         if (!_science.TryGetSingleton(out var science))
@@ -82,10 +90,10 @@ public sealed partial class CEResearchTableSystem : EntitySystem
         var areas = new Dictionary<ProtoId<CEScienceAreaPrototype>, CEResearchTableAreaData>();
         foreach (var area in _proto.EnumeratePrototypes<CEScienceAreaPrototype>())
         {
-            var researched = data.Researched.TryGetValue(area.ID, out var set) ? set : new HashSet<Vector2i>();
             var cells = new Dictionary<Vector2i, CEScienceMapCell>();
 
-            if (science.Areas.TryGetValue(area.ID, out var areaCells))
+            if (data.Researched.TryGetValue(area.ID, out var researched)
+                && science.Areas.TryGetValue(area.ID, out var areaCells))
             {
                 foreach (var coordinate in researched)
                 {
@@ -94,9 +102,9 @@ public sealed partial class CEResearchTableSystem : EntitySystem
                 }
             }
 
-            areas[area.ID] = new CEResearchTableAreaData(cells, researched);
+            areas[area.ID] = new CEResearchTableAreaData(cells);
         }
 
-        _userInterface.SetUiState(uid, CEResearchTableUiKey.Key, new CEResearchTableState(areas, data.Points));
+        _userInterface.SetUiState(uid, CEResearchTableUiKey.Key, new CEResearchTableState(areas));
     }
 }

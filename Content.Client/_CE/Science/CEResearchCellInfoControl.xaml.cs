@@ -36,7 +36,7 @@ public sealed partial class CEResearchCellInfoControl : BoxContainer
         RobustXamlLoader.Load(this);
     }
 
-    public void UpdateCell(CEScienceMapCell? cell, IReadOnlyDictionary<ProtoId<CEMagicEssenceTypePrototype>, int> points)
+    public void UpdateCell(CEScienceMapCell? cell)
     {
         switch (cell)
         {
@@ -69,6 +69,7 @@ public sealed partial class CEResearchCellInfoControl : BoxContainer
         var conditionArgs = new CEEntityEffectArgs(_entity, localEntity, null, default, 0f, localEntity, null);
 
         _entity.TryGetComponent<CEScienceResearchDataComponent>(localEntity, out var researchData);
+        var points = researchData?.Points ?? new Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int>();
 
         foreach (var action in _prototype.EnumeratePrototypes<CEResearchActionPrototype>())
         {

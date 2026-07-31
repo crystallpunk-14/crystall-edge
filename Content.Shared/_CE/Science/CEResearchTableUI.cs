@@ -1,4 +1,3 @@
-using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.Science.Prototypes;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -29,31 +28,31 @@ public sealed class CEResearchTableActionMessage(
 }
 
 /// <summary>
-/// The player's view of a single science area's map: the content of the cells they've already
-/// researched, and which coordinates those are. Unresearched cells are never sent, even if they
-/// exist on the real map.
+/// A single science area's map content, already filtered server-side down to only the coordinates
+/// the requesting player has personally researched (that Researched set is data the filter is
+/// built from - it never gets echoed back). Deliberately excludes the raw Researched set and the
+/// player's points: both live on that player's own networked
+/// <see cref="Content.Shared._CE.Science.Components.CEScienceResearchDataComponent"/> and are read
+/// locally by the client, rather than round-tripped through this shared, per-table UI state - which
+/// any player opening the same table could otherwise briefly observe a stale copy of.
 /// </summary>
 [Serializable, NetSerializable]
-public sealed class CEResearchTableAreaData(
-    Dictionary<Vector2i, CEScienceMapCell> cells,
-    HashSet<Vector2i> researched)
+public sealed class CEResearchTableAreaData(Dictionary<Vector2i, CEScienceMapCell> cells)
 {
     public readonly Dictionary<Vector2i, CEScienceMapCell> Cells = cells;
-    public readonly HashSet<Vector2i> Researched = researched;
 }
 
 /// <summary>
 /// Full state sent once when the research table UI is opened (and re-sent after every research
-/// action). Contains every science area's data so the client can switch tabs without any
-/// further network round-trip.
+/// action). Contains every science area's data, already scoped to the requesting player, so the
+/// client can switch tabs without any further network round-trip. Deliberately carries nothing
+/// about the acting player beyond that scoping - see <see cref="CEResearchTableAreaData"/>.
 /// </summary>
 [Serializable, NetSerializable]
 public sealed class CEResearchTableState(
-    Dictionary<ProtoId<CEScienceAreaPrototype>, CEResearchTableAreaData> areas,
-    Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int> points) : BoundUserInterfaceState
+    Dictionary<ProtoId<CEScienceAreaPrototype>, CEResearchTableAreaData> areas) : BoundUserInterfaceState
 {
     public readonly Dictionary<ProtoId<CEScienceAreaPrototype>, CEResearchTableAreaData> Areas = areas;
-    public readonly Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int> Points = points;
 }
 
 /// <summary>

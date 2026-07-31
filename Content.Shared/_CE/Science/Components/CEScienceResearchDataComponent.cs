@@ -10,7 +10,7 @@ namespace Content.Shared._CE.Science.Components;
 /// how many research points of each essence type it currently has to spend on research actions,
 /// and which achievements it has actually discovered (as opposed to merely revealed on the map).
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(raiseAfterAutoHandleState: true)]
 public sealed partial class CEScienceResearchDataComponent : Component
 {
     [DataField, AutoNetworkedField]
