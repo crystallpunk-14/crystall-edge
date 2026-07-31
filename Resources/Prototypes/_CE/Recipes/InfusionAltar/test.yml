@@ -4,12 +4,12 @@
   catalyst: !type:ProtoIdResource
     protoId: CEEnergyCrystalShard
     count: 1
-  essenceAmount: { min: 6, max: 12 }
+  essenceAmount: { min: 6, max: 32 }
   essenceWeights:
     Air: 6
     Crystal: 2
     Energia: 1
-  pedestalCount: { min: 1, max: 2 }
+  pedestalCount: { min: 3, max: 10 }
   pedestalRequirementPool:
   - requirement: !type:ProtoIdResource
       protoId: CEGlassShard
@@ -21,6 +21,42 @@
     weight: 2
   - requirement: !type:StackResource
       stack: CEMachinePartEnergyLine
+      count: 1
+    weight: 1
+  result: CECrystalShardAir
+  resultCount: 1
+
+- type: infusionAltarRecipe
+  id: Test2
+  roundStart: true
+  catalyst: !type:ProtoIdResource
+    protoId: CEBigBrassPipe30
+    count: 1
+  essenceAmount: { min: 6, max: 32 }
+  essenceWeights:
+    Fire: 6
+    Energia: 3
+    Earth: 1
+  pedestalCount: { min: 3, max: 10 }
+  pedestalRequirementPool:
+  - requirement: !type:ProtoIdResource
+      protoId: CEFryingPan
+      count: 1
+    weight: 3
+  - requirement: !type:ProtoIdResource
+      protoId: CEBowlIronTreasure
+      count: 1
+    weight: 2
+  - requirement: !type:StackResource
+      stack: CEGlass
+      count: 3
+    weight: 1
+  - requirement: !type:StackResource
+      stack: CEMachinePartEnergyLine
+      count: 1
+    weight: 1
+  - requirement: !type:StackResource
+      stack: CEMachinePartCoalDiffuser
       count: 1
     weight: 1
   result: CECrystalShardAir

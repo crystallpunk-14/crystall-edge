@@ -14,16 +14,17 @@
   - type: Sprite
     drawdepth: Objects
     noRot: true
-    sprite: Structures/Furniture/Altars/Gods/convertaltar.rsi #TODO
-    layers:
-    - state: convertaltar
-    - state: lightning
-      map: [ "power" ]
-      visible: false
-      shader: unshaded
+    sprite: _CE/Structures/Specific/Thaumaturgy/infusion_altar.rsi
+    state: altar
+    #layers:
+    #- state: convertaltar
+    #- state: lightning
+    #  map: [ "power" ]
+    #  visible: false
+    #  shader: unshaded
   - type: Icon
-    sprite: Structures/Furniture/Altars/Gods/convertaltar.rsi #TODO
-    state: convertaltar
+    sprite: _CE/Structures/Specific/Thaumaturgy/infusion_altar.rsi
+    state: altar
   - type: CEInfusionAltar
     possiblePedestalsPositions:
     - 3,0

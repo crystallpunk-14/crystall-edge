@@ -11,12 +11,12 @@
   - type: Sprite
     drawdepth: Objects
     noRot: true
-    sprite: Structures/Furniture/Altars/Gods/convertaltar.rsi #TODO
-    state: convertaltar
-    color: green
+    offset: 0, -0.1
+    sprite: _CE/Structures/Specific/Thaumaturgy/infusion_altar.rsi
+    state: pedestal
   - type: Icon
-    sprite: Structures/Furniture/Altars/Gods/convertaltar.rsi #TODO
-    state: convertaltar
+    sprite: _CE/Structures/Specific/Thaumaturgy/infusion_altar.rsi
+    state: pedestal
   - type: CEInfusionAltarPedestal
   - type: ItemSlots
     slots:
@@ -35,7 +35,7 @@
       fix1:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.45,-0.45,0.45,0.45"
+          bounds: "-0.25,-0.25,0.25,0.25"
         density: 190
         mask: # blocks players/mobs, same as tables
         - TableMask
@@ -44,7 +44,7 @@
       fix2:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.4,-0.4,0.4,0.4"
+          bounds: "-0.25,-0.25,0.25,0.25"
         mask:
         - TabletopMachineMask
         layer:

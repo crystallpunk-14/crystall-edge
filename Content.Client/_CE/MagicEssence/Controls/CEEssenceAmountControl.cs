@@ -17,7 +17,7 @@ namespace Content.Client._CE.MagicEssence.Controls;
 /// </summary>
 public sealed partial class CEEssenceAmountControl : Control
 {
-    private const float TextScaleMultiplier = 1f;
+    private const float TextScaleMultiplier = 2f;
     private const float OutlineOffset = 1f;
 
     private static readonly Color OutlineColor = Color.Black.WithAlpha(0.85f);
@@ -59,12 +59,12 @@ public sealed partial class CEEssenceAmountControl : Control
         if (_prototype.TryIndex(essence, out CEMagicEssenceTypePrototype? proto))
         {
             _texture = proto.Icon.Frame0();
-            ToolTip = proto.Name;
+            ToolTip = $"{proto.Name} x{amount}";
         }
         else
         {
             _texture = null;
-            ToolTip = essence.Id;
+            ToolTip = $"{essence.Id} x{amount}";
         }
     }
 

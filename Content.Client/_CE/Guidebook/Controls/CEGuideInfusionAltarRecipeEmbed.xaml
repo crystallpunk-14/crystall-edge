@@ -1,28 +1,28 @@
 <PanelContainer xmlns="https://spacestation14.io"
                 xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+                xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls;assembly=Content.Client"
                 Margin="5 5 5 5">
     <PanelContainer.PanelOverride>
-        <gfx:StyleBoxFlat BorderThickness="1" BorderColor="#777777"/>
+        <gfx:StyleBoxFlat BorderThickness="1" BorderColor="#777777" BackgroundColor="#202023" />
     </PanelContainer.PanelOverride>
 
-    <BoxContainer Orientation="Vertical" Margin="8 8 8 8">
-        <BoxContainer Orientation="Horizontal" HorizontalAlignment="Left" SeparationOverride="6">
-            <EntityPrototypeView Name="ResultView"
-                                  MinSize="48 48"
-                                  MaxSize="48 48"
-                                  Scale="2,2"
-                                  HorizontalAlignment="Left" />
-            <RichTextLabel Name="ResultName" VerticalAlignment="Center" />
+    <BoxContainer Orientation="Horizontal" Margin="10 10 10 10">
+        <BoxContainer Orientation="Vertical" MinWidth="160" MaxWidth="160">
+            <EntityPrototypeView Name="ResultIcon" HorizontalAlignment="Center" />
+            <Label Name="ResultName" StyleClasses="LabelHeadingBigger" HorizontalAlignment="Center" Margin="0 6 0 0" />
+            <RichTextLabel Name="ResultCount" HorizontalAlignment="Center" />
+            <RichTextLabel Name="ResultDescription" Margin="0 6 0 0" />
         </BoxContainer>
 
-        <BoxContainer Name="CatalystContainer" Orientation="Vertical" Margin="0 6 0 0" />
+        <cc:VSeparator StyleClasses="LowDivider" Margin="10 0 10 0" VerticalExpand="True" />
 
-        <Label Text="{Loc 'ce-guidebook-infusion-altar-essences'}" Margin="0 6 0 0" />
-        <BoxContainer Name="EssenceContainer" Orientation="Horizontal" SeparationOverride="12" />
+        <BoxContainer Orientation="Vertical" HorizontalExpand="True" HorizontalAlignment="Center">
+            <LayoutContainer Name="DiagramRoot" MinSize="330 350" HorizontalAlignment="Center" />
 
-        <BoxContainer Name="PedestalSection" Orientation="Vertical" Visible="False">
-            <Label Text="{Loc 'ce-guidebook-infusion-altar-pedestals'}" Margin="0 6 0 0" />
-            <BoxContainer Name="PedestalContainer" Orientation="Horizontal" SeparationOverride="6" />
+            <PanelContainer StyleClasses="LowDivider" Margin="0 6 0 6" />
+
+            <Label Text="{Loc 'ce-guidebook-infusion-altar-essences'}" Margin="0 0 0 4" HorizontalAlignment="Center" />
+            <BoxContainer Name="EssenceContainer" Orientation="Horizontal" HorizontalAlignment="Center" SeparationOverride="12" />
         </BoxContainer>
     </BoxContainer>
 </PanelContainer>
