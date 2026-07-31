@@ -2,7 +2,8 @@
   id: AdvancedDrilling
   area: ArcaneEngineering
   difficulty: 10
-  cost: 5
+  cost:
+    Order: 5
   name: ce-science-achievement-advanced-drilling
   icon:
     sprite: _CE/Interface/Science/AreaIcons/drill.rsi
@@ -16,7 +17,8 @@
   id: Hoverboards
   area: ArcaneEngineering
   difficulty: 15
-  cost: 5
+  cost:
+    Order: 5
   name: ce-science-achievement-hoverboards
   icon:
     sprite: _CE/Interface/Science/AreaIcons/hoverboards.rsi
@@ -30,7 +32,8 @@
   id: AdvancedDrilling2
   area: ArcaneEngineering
   difficulty: 10
-  cost: 5
+  cost:
+    Order: 5
   name: ce-science-achievement-advanced-drilling
   icon:
     sprite: _CE/Interface/Science/AreaIcons/drill.rsi
@@ -44,7 +47,8 @@
   id: Hoverboards2
   area: ArcaneEngineering
   difficulty: 15
-  cost: 5
+  cost:
+    Order: 5
   name: ce-science-achievement-hoverboards
   icon:
     sprite: _CE/Interface/Science/AreaIcons/hoverboards.rsi
@@ -58,7 +62,8 @@
   id: AdvancedDrilling3
   area: ArcaneEngineering
   difficulty: 15
-  cost: 5
+  cost:
+    Order: 5
   name: ce-science-achievement-advanced-drilling
   icon:
     sprite: _CE/Interface/Science/AreaIcons/drill.rsi
@@ -72,7 +77,8 @@
   id: Hoverboards3
   area: ArcaneEngineering
   difficulty: 20
-  cost: 5
+  cost:
+    Order: 5
   name: ce-science-achievement-hoverboards
   icon:
     sprite: _CE/Interface/Science/AreaIcons/hoverboards.rsi

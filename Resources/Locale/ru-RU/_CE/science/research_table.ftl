@@ -1,4 +1,5 @@
 ce-research-table-ui-title = Стол исследований
+ce-science-knowledge-title = Знания персонажа
 
 ce-research-cell-dead-zone-title = Мертвая зона
 ce-research-cell-dead-zone-desc = Попытки исследований здесь бесплодны и не дают никакого результата.
