@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Server._CE.InfusionAltar.Components;
 using Content.Server.Power.EntitySystems;
+using Content.Shared._CE.InfusionAltar.Components;
 using Content.Shared._CE.InfusionAltar.Prototypes;
 using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.MagicEssence.Systems;

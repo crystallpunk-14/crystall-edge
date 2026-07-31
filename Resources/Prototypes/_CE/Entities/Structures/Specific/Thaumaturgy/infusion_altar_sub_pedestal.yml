@@ -1,0 +1,45 @@
+# CrystallEdge: placeholder sprite (Structures/Furniture/Altars/Gods/convertaltar.rsi) borrowed from
+# upstream until dedicated infusion altar art exists.
+- type: entity
+  parent: BaseMachine
+  id: CEInfusionAltarSubPedestal
+  categories: [ ForkFiltered ]
+  name: infusion altar sub-pedestal
+  description: TODO
+  components:
+  - type: InteractionOutline
+  - type: Sprite
+    drawdepth: Objects
+    noRot: true
+    sprite: Structures/Furniture/Altars/Gods/convertaltar.rsi #TODO
+    state: convertaltar
+    color: green
+  - type: Icon
+    sprite: Structures/Furniture/Altars/Gods/convertaltar.rsi #TODO
+    state: convertaltar
+  - type: CEInfusionAltarSubPedestal
+  - type: PlaceableSurface
+  - type: ItemPlacer
+    maxEntities: 1
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 190
+        mask: # blocks players/mobs, same as tables
+        - TableMask
+        layer:
+        - TableLayer
+      fix2:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        mask:
+        - TabletopMachineMask
+        layer:
+        - Impassable
+        - MidImpassable
+        - LowImpassable
+        hard: false # items should rest on top, not bounce off

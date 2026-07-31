@@ -25,6 +25,27 @@
     sprite: Structures/Furniture/Altars/Gods/convertaltar.rsi #TODO
     state: convertaltar
   - type: CEInfusionAltar
+    possiblePedestalsPositions:
+    - 3,0
+    - -3,0
+    - 0,3
+    - 0,-3
+    - 2, 2
+    - -2, 2
+    - 2, -2
+    - -2, -2
+    - 4, 4
+    - -4, 4
+    - 4, -4
+    - -4, -4
+    - 1, 6
+    - -1, 6
+    - 1, -6
+    - -1, -6
+    - 6, 1
+    - -6, 1
+    - 6, -1
+    - -6, -1
   - type: PlaceableSurface
   - type: ItemPlacer
     maxEntities: 1
@@ -95,3 +116,21 @@
       property: Energy
       isLooped: true
       enabled: false
+
+# Client-side-only marker spawned by CEInfusionAltarPositionsSystem to show valid sub-pedestal tiles
+# on examine, mirroring MultipartMachineGhost (Resources/Prototypes/Entities/Structures/Machines/multipart.yml).
+- type: entity
+  id: CEInfusionAltarPositionIndicator
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Markers/cross.rsi
+    layers:
+    - state: green
+    color: "#FFFFFF80"
+  - type: TimedDespawn
+    lifetime: 5
+  - type: Clickable
+  - type: Tag
+    tags:
+    - HideContextMenu
