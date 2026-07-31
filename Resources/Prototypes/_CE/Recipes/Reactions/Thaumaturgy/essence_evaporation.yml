@@ -1,14 +1,110 @@
-# Complex tier 1
+# Basic 6 (T0)
 
 - type: reaction
-  id: CEEssenceFrost
-  minTemp: 600
+  id: CEEssenceEarthEvaporation
+  minTemp: 700
+  quantized: true
+  maxUnitReactions: 1
+  reactants:
+    CEEssenceEarth:
+      amount: 1
+  effects:
+  - !type:SpawnEntity
+    entity: CEEssenceEarth
+    number: 1
+    predicted: false
+  - !type:SetSolutionTemperature
+    temperature: 293.15
+
+- type: reaction
+  id: CEEssenceFireEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
     CEEssenceFire:
       amount: 1
+  effects:
+  - !type:SpawnEntity
+    entity: CEEssenceFire
+    number: 1
+    predicted: false
+  - !type:SetSolutionTemperature
+    temperature: 293.15
+
+- type: reaction
+  id: CEEssenceWaterEvaporation
+  minTemp: 700
+  quantized: true
+  maxUnitReactions: 1
+  reactants:
+    CEEssenceWater:
+      amount: 1
+  effects:
+  - !type:SpawnEntity
+    entity: CEEssenceWater
+    number: 1
+    predicted: false
+  - !type:SetSolutionTemperature
+    temperature: 293.15
+
+- type: reaction
+  id: CEEssenceAirEvaporation
+  minTemp: 700
+  quantized: true
+  maxUnitReactions: 1
+  reactants:
+    CEEssenceAir:
+      amount: 1
+  effects:
+  - !type:SpawnEntity
+    entity: CEEssenceAir
+    number: 1
+    predicted: false
+  - !type:SetSolutionTemperature
+    temperature: 293.15
+
+- type: reaction
+  id: CEEssenceOrderEvaporation
+  minTemp: 700
+  quantized: true
+  maxUnitReactions: 1
+  reactants:
+    CEEssenceOrder:
+      amount: 1
+  effects:
+  - !type:SpawnEntity
+    entity: CEEssenceOrder
+    number: 1
+    predicted: false
+  - !type:SetSolutionTemperature
+    temperature: 293.15
+
+- type: reaction
+  id: CEEssenceChaosEvaporation
+  minTemp: 700
+  quantized: true
+  maxUnitReactions: 1
+  reactants:
     CEEssenceChaos:
+      amount: 1
+  effects:
+  - !type:SpawnEntity
+    entity: CEEssenceChaos
+    number: 1
+    predicted: false
+  - !type:SetSolutionTemperature
+    temperature: 293.15
+
+# Complex tier 1
+
+- type: reaction
+  id: CEEssenceFrostEvaporation
+  minTemp: 700
+  quantized: true
+  maxUnitReactions: 1
+  reactants:
+    CEEssenceFrost:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -19,14 +115,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceLight
-  minTemp: 600
+  id: CEEssenceLightEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceAir:
-      amount: 1
-    CEEssenceFire:
+    CEEssenceLight:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -37,14 +131,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceMotion
-  minTemp: 600
+  id: CEEssenceMotionEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceAir:
-      amount: 1
-    CEEssenceOrder:
+    CEEssenceMotion:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -55,14 +147,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceCycle
-  minTemp: 600
+  id: CEEssenceCycleEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceOrder:
-      amount: 1
-    CEEssenceChaos:
+    CEEssenceCycle:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -73,14 +163,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceEnergia
-  minTemp: 600
+  id: CEEssenceEnergiaEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceFire:
-      amount: 1
-    CEEssenceOrder:
+    CEEssenceEnergia:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -91,14 +179,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceVoid
-  minTemp: 600
+  id: CEEssenceVoidEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceAir:
-      amount: 1
-    CEEssenceChaos:
+    CEEssenceVoid:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -109,14 +195,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssencePoison
-  minTemp: 600
+  id: CEEssencePoisonEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceWater:
-      amount: 1
-    CEEssenceChaos:
+    CEEssencePoison:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -127,14 +211,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceLife
-  minTemp: 600
+  id: CEEssenceLifeEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceWater:
-      amount: 1
-    CEEssenceEarth:
+    CEEssenceLife:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -145,14 +227,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceCrystal
-  minTemp: 600
+  id: CEEssenceCrystalEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceOrder:
-      amount: 1
-    CEEssenceEarth:
+    CEEssenceCrystal:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -163,14 +243,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceWeather
-  minTemp: 600
+  id: CEEssenceWeatherEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceAir:
-      amount: 1
-    CEEssenceWater:
+    CEEssenceWeather:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -183,14 +261,12 @@
 # Complex tier 2
 
 - type: reaction
-  id: CEEssenceMagic
-  minTemp: 600
+  id: CEEssenceMagicEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceEnergia:
-      amount: 1
-    CEEssenceVoid:
+    CEEssenceMagic:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -201,14 +277,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceBeast
-  minTemp: 600
+  id: CEEssenceBeastEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceMotion:
-      amount: 1
-    CEEssenceLife:
+    CEEssenceBeast:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -219,14 +293,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceHunger
-  minTemp: 600
+  id: CEEssenceHungerEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceVoid:
-      amount: 1
-    CEEssenceLife:
+    CEEssenceHunger:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -237,14 +309,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssencePlant
-  minTemp: 600
+  id: CEEssencePlantEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceEarth:
-      amount: 1
-    CEEssenceLife:
+    CEEssencePlant:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -255,14 +325,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceTravel
-  minTemp: 600
+  id: CEEssenceTravelEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceMotion:
-      amount: 1
-    CEEssenceEarth:
+    CEEssenceTravel:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -273,14 +341,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceSlime
-  minTemp: 600
+  id: CEEssenceSlimeEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceWater:
-      amount: 1
-    CEEssenceLife:
+    CEEssenceSlime:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -291,14 +357,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceMetal
-  minTemp: 600
+  id: CEEssenceMetalEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceEarth:
-      amount: 1
-    CEEssenceCrystal:
+    CEEssenceMetal:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -309,14 +373,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceDeath
-  minTemp: 600
+  id: CEEssenceDeathEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceChaos:
-      amount: 1
-    CEEssenceLife:
+    CEEssenceDeath:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -327,14 +389,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceHealing
-  minTemp: 600
+  id: CEEssenceHealingEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceOrder:
-      amount: 1
-    CEEssenceLife:
+    CEEssenceHealing:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -345,14 +405,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceDarkness
-  minTemp: 600
+  id: CEEssenceDarknessEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceLight:
-      amount: 1
-    CEEssenceVoid:
+    CEEssenceDarkness:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -363,14 +421,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceTrap
-  minTemp: 600
+  id: CEEssenceTrapEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceMotion:
-      amount: 1
-    CEEssenceChaos:
+    CEEssenceTrap:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -381,14 +437,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceFlight
-  minTemp: 600
+  id: CEEssenceFlightEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceAir:
-      amount: 1
-    CEEssenceMotion:
+    CEEssenceFlight:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -401,14 +455,12 @@
 # Complex tier 3
 
 - type: reaction
-  id: CEEssenceEldritch
-  minTemp: 600
+  id: CEEssenceEldritchEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceDarkness:
-      amount: 1
-    CEEssenceVoid:
+    CEEssenceEldritch:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -419,14 +471,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceTree
-  minTemp: 600
+  id: CEEssenceTreeEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceAir:
-      amount: 1
-    CEEssencePlant:
+    CEEssenceTree:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -437,14 +487,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceAura
-  minTemp: 600
+  id: CEEssenceAuraEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceAir:
-      amount: 1
-    CEEssenceMagic:
+    CEEssenceAura:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -455,14 +503,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceFlesh
-  minTemp: 600
+  id: CEEssenceFleshEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceBeast:
-      amount: 1
-    CEEssenceDeath:
+    CEEssenceFlesh:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -473,14 +519,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceUndead
-  minTemp: 600
+  id: CEEssenceUndeadEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceMotion:
-      amount: 1
-    CEEssenceDeath:
+    CEEssenceUndead:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -491,14 +535,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceSoul
-  minTemp: 600
+  id: CEEssenceSoulEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceDeath:
-      amount: 1
-    CEEssenceLife:
+    CEEssenceSoul:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -509,14 +551,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceTaint
-  minTemp: 600
+  id: CEEssenceTaintEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceChaos:
-      amount: 1
-    CEEssenceMagic:
+    CEEssenceTaint:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -529,14 +569,12 @@
 # Complex tier 4
 
 - type: reaction
-  id: CEEssenceMind
-  minTemp: 600
+  id: CEEssenceMindEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceFire:
-      amount: 1
-    CEEssenceSoul:
+    CEEssenceMind:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -547,14 +585,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceSenses
-  minTemp: 600
+  id: CEEssenceSensesEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceAir:
-      amount: 1
-    CEEssenceSoul:
+    CEEssenceSenses:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -567,14 +603,12 @@
 # Complex tier 5
 
 - type: reaction
-  id: CEEssenceHuman
-  minTemp: 600
+  id: CEEssenceHumanEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceBeast:
-      amount: 1
-    CEEssenceMind:
+    CEEssenceHuman:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -587,14 +621,12 @@
 # Complex tier 6
 
 - type: reaction
-  id: CEEssenceTool
-  minTemp: 600
+  id: CEEssenceToolEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceHuman:
-      amount: 1
-    CEEssenceOrder:
+    CEEssenceTool:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -605,14 +637,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceCrop
-  minTemp: 600
+  id: CEEssenceCropEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssencePlant:
-      amount: 1
-    CEEssenceHuman:
+    CEEssenceCrop:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -623,14 +653,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceGreed
-  minTemp: 600
+  id: CEEssenceGreedEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceHunger:
-      amount: 1
-    CEEssenceHuman:
+    CEEssenceGreed:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -641,14 +669,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceMining
-  minTemp: 600
+  id: CEEssenceMiningEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceHuman:
-      amount: 1
-    CEEssenceEarth:
+    CEEssenceMining:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -661,14 +687,12 @@
 # Complex tier 7
 
 - type: reaction
-  id: CEEssenceCraft
-  minTemp: 600
+  id: CEEssenceCraftEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceHuman:
-      amount: 1
-    CEEssenceTool:
+    CEEssenceCraft:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -679,14 +703,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceMachine
-  minTemp: 600
+  id: CEEssenceMachineEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceTool:
-      amount: 1
-    CEEssenceMotion:
+    CEEssenceMachine:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -697,14 +719,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceCloth
-  minTemp: 600
+  id: CEEssenceClothEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceBeast:
-      amount: 1
-    CEEssenceTool:
+    CEEssenceCloth:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -715,14 +735,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceWeapon
-  minTemp: 600
+  id: CEEssenceWeaponEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceFire:
-      amount: 1
-    CEEssenceTool:
+    CEEssenceWeapon:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -733,14 +751,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceArmor
-  minTemp: 600
+  id: CEEssenceArmorEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceTool:
-      amount: 1
-    CEEssenceEarth:
+    CEEssenceArmor:
       amount: 1
   effects:
   - !type:SpawnEntity
@@ -751,14 +767,12 @@
     temperature: 293.15
 
 - type: reaction
-  id: CEEssenceHarvest
-  minTemp: 600
+  id: CEEssenceHarvestEvaporation
+  minTemp: 700
   quantized: true
   maxUnitReactions: 1
   reactants:
-    CEEssenceTool:
-      amount: 1
-    CEEssenceCrop:
+    CEEssenceHarvest:
       amount: 1
   effects:
   - !type:SpawnEntity

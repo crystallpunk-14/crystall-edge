@@ -84,6 +84,7 @@
     id: essence
     solution:
       maxVol: 50
+  - type: CEUnpoweredSolutionLeak
   - type: Appearance
   - type: GenericVisualizer
     visuals:
