@@ -1,7 +1,6 @@
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
-using Content.Client._CE.MagicEssence.Controls;
 using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.Science;
 using Content.Shared._CE.Science.Prototypes;
@@ -24,8 +23,6 @@ public readonly record struct CEScienceHypothesisDisplay(string Text, TimeSpan E
 [GenerateTypedNameReferences]
 public sealed partial class CEResearchTableWindow : DefaultWindow
 {
-    private const int PointsIconSize = 24;
-
     [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private IGameTiming _timing = default!;
 
@@ -142,14 +139,7 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
 
         var points = _state?.Points ?? new Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int>();
 
-        PointsContainer.RemoveAllChildren();
-        foreach (var (essence, amount) in points)
-        {
-            var control = new CEEssenceAmountControl { SetSize = new Vector2(PointsIconSize, PointsIconSize) };
-            control.SetEssence(essence, amount);
-            PointsContainer.AddChild(control);
-        }
-
+        Knowledge.UpdateKnowledge(points);
         CellInfo.UpdateCell(cell, points);
     }
 

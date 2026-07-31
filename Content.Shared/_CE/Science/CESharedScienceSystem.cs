@@ -55,7 +55,14 @@ public abstract partial class CESharedScienceSystem : EntitySystem
 
         foreach (var (essence, amount) in cost)
         {
-            ent.Comp.Points[essence] -= amount;
+            var remaining = ent.Comp.Points[essence] - amount;
+
+            // Drop exhausted essence types entirely, rather than leaving a 0 entry around - the
+            // UI enumerates this dictionary directly to decide what to render.
+            if (remaining <= 0)
+                ent.Comp.Points.Remove(essence);
+            else
+                ent.Comp.Points[essence] = remaining;
         }
 
         Dirty(ent.Owner, ent.Comp);

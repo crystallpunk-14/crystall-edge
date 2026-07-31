@@ -17,8 +17,7 @@ namespace Content.Client._CE.MagicEssence.Controls;
 /// </summary>
 public sealed partial class CEEssenceAmountControl : Control
 {
-    // The amount text renders at half the icon's size, matching CEMagicEssenceOverlay.
-    private const float TextScaleMultiplier = 0.5f;
+    private const float TextScaleMultiplier = 1f;
     private const float OutlineOffset = 1f;
 
     private static readonly Color OutlineColor = Color.Black.WithAlpha(0.85f);
@@ -40,6 +39,11 @@ public sealed partial class CEEssenceAmountControl : Control
     public CEEssenceAmountControl()
     {
         IoCManager.InjectDependencies(this);
+
+        // Tooltips (the essence's name, set in SetEssence) only show up for controls that
+        // actually accept mouse input - the default MouseFilter.Ignore lets hover events pass
+        // straight through.
+        MouseFilter = MouseFilterMode.Stop;
 
         var fontResource = _resourceCache.GetResource<FontResource>("/Fonts/_CE/Volkorn/VollkornSC-Bold.ttf");
         _font = new VectorFont(fontResource, 12);

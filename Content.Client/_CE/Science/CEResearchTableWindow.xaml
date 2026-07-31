@@ -3,8 +3,8 @@
                xmlns:parallax="clr-namespace:Content.Client.Parallax"
                xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls"
                Title="{Loc 'ce-research-table-ui-title'}"
-               SetSize="800 550"
-               MinSize="700 450">
+               SetSize="1020 550"
+               MinSize="900 450">
     <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
 
         <!-- Selected cell info + actions -->
@@ -20,15 +20,19 @@
             <parallax:ParallaxControl Name="ParallaxBackground" SpeedX="10" SpeedY="5" Access="Public" />
             <science:CEScienceMapControl Name="MapControl" />
 
-            <!-- Research points, one icon+amount per essence type held -->
-            <BoxContainer Name="PointsContainer" Margin="0 0 0 8" VerticalAlignment="Bottom"
-                          HorizontalAlignment="Center" Orientation="Horizontal" SeparationOverride="4" />
-
             <!-- Area tabs -->
             <BoxContainer Margin="10 10 10 10" VerticalAlignment="Top" HorizontalAlignment="Right"
                           Orientation="Vertical" VerticalExpand="True">
                 <BoxContainer Name="AreaTabsContainer" Orientation="Vertical" HorizontalExpand="True" />
             </BoxContainer>
         </PanelContainer>
+
+        <customControls:VSeparator StyleClasses="LowDivider" />
+
+        <!-- Character knowledge -->
+        <BoxContainer Margin="10 10 10 10" MaxWidth="240" SetWidth="240" Orientation="Vertical"
+                      HorizontalExpand="False" VerticalExpand="True">
+            <science:CEScienceKnowledgeControl Name="Knowledge" />
+        </BoxContainer>
     </BoxContainer>
 </DefaultWindow>
