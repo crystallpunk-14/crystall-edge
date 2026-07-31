@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Server._CE.InfusionAltar.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Shared._CE.InfusionAltar.Components;
@@ -7,7 +6,7 @@ using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.MagicEssence.Systems;
 using Content.Shared._CE.ResourceManager;
 using Content.Shared.Chemistry.EntitySystems;
-using Content.Shared.Placeable;
+using Content.Shared.Containers.ItemSlots;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.InfusionAltar;
@@ -16,8 +15,10 @@ public sealed partial class CEInfusionAltarSystem
 {
     [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
     [Dependency] private CEMagicEssenceSystem _magicEssence = default!;
+    [Dependency] private ItemSlotsSystem _itemSlots = default!;
 
-    [Dependency] private EntityQuery<ItemPlacerComponent> _itemPlacerQuery = default!;
+    private const string CatalystSlot = "catalyst";
+    private const string PedestalSlot = "pedestal";
 
     public override void Update(float frameTime)
     {
@@ -39,10 +40,9 @@ public sealed partial class CEInfusionAltarSystem
 
     private void CheckPedestal(Entity<CEInfusionAltarComponent> ent)
     {
-        if (!_itemPlacerQuery.TryComp(ent.Owner, out var placer) || placer.PlacedEntities.Count != 1)
+        if (_itemSlots.GetItemOrNull(ent.Owner, CatalystSlot) is not { } catalystEntity)
             return;
 
-        var catalystEntity = placer.PlacedEntities.First();
         var placedEntities = new HashSet<EntityUid> { catalystEntity };
 
         if (!TryGetSingleton(out var singleton))
@@ -103,10 +103,9 @@ public sealed partial class CEInfusionAltarSystem
 
             foreach (var pedestalUid in available)
             {
-                if (!_itemPlacerQuery.TryComp(pedestalUid, out var pedestalPlacer) || pedestalPlacer.PlacedEntities.Count != 1)
+                if (_itemSlots.GetItemOrNull(pedestalUid, PedestalSlot) is not { } item)
                     continue;
 
-                var item = pedestalPlacer.PlacedEntities.First();
                 var singleItemSet = new HashSet<EntityUid> { item };
 
                 if (!requirement.CheckRequirement(EntityManager, _proto, singleItemSet))

@@ -1,5 +1,6 @@
 - type: infusionAltarRecipe
   id: Test
+  roundStart: true
   catalyst: !type:ProtoIdResource
     protoId: CEEnergyCrystalShard
     count: 1

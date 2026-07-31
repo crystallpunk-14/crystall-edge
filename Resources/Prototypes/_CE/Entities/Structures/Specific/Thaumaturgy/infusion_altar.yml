@@ -46,9 +46,18 @@
     - -6, 1
     - 6, -1
     - -6, -1
-  - type: PlaceableSurface
-  - type: ItemPlacer
-    maxEntities: 1
+  - type: ItemSlots
+    slots:
+      catalyst:
+        name: ce-infusion-altar-catalyst-slot-name
+        ejectOnInteract: true
+        ejectOnBreak: true
+  - type: ContainerContainer
+    containers:
+      catalyst: !type:ContainerSlot
+        showEnts: true
+  - type: PlacementReplacement
+    key: walls
   - type: Fixtures
     fixtures:
       fix1:

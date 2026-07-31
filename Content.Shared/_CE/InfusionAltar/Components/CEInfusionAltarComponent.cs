@@ -5,8 +5,8 @@ namespace Content.Shared._CE.InfusionAltar.Components;
 
 /// <summary>
 /// Marks the central pedestal ("altar") of an infusion altar setup. Server-side, while powered, it
-/// periodically checks whether the single item placed on it (via ItemPlacerComponent) plus the essence
-/// pooled in <see cref="Solution"/> satisfy any known recipe. Shared so the client can read
+/// periodically checks whether the single item inserted into its "catalyst" ItemSlots slot plus the
+/// essence pooled in <see cref="Solution"/> satisfy any known recipe. Shared so the client can read
 /// <see cref="PossiblePedestalsPositions"/> for the examine indicator overlay.
 /// </summary>
 [RegisterComponent, AutoGenerateComponentPause]

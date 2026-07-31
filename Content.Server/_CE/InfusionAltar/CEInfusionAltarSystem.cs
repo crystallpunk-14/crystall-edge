@@ -24,6 +24,7 @@ public sealed partial class CEInfusionAltarSystem : EntitySystem
         SubscribeLocalEvent<CEInfusionAltarSingletonComponent, MapInitEvent>(OnMapInit);
 
         InitConnections();
+        InitKnowledge();
     }
 
     private void OnRoundStarting(RoundStartingEvent ev)

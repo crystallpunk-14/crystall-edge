@@ -18,9 +18,18 @@
     sprite: Structures/Furniture/Altars/Gods/convertaltar.rsi #TODO
     state: convertaltar
   - type: CEInfusionAltarPedestal
-  - type: PlaceableSurface
-  - type: ItemPlacer
-    maxEntities: 1
+  - type: ItemSlots
+    slots:
+      pedestal:
+        name: ce-infusion-altar-pedestal-slot-name
+        ejectOnInteract: true
+        ejectOnBreak: true
+  - type: ContainerContainer
+    containers:
+      pedestal: !type:ContainerSlot
+        showEnts: true
+  - type: PlacementReplacement
+    key: walls
   - type: Fixtures
     fixtures:
       fix1:
