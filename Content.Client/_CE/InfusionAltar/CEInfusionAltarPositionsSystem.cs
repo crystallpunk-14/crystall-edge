@@ -1,5 +1,7 @@
 using Content.Client.Examine;
 using Content.Shared._CE.InfusionAltar.Components;
+using Content.Shared._CE.MagicVision.Components;
+using Content.Shared.Ghost;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 
@@ -9,6 +11,7 @@ namespace Content.Client._CE.InfusionAltar;
 /// Shows temporary indicators around an infusion altar (on examine) at every tile offset listed in
 /// <see cref="CEInfusionAltarComponent.PossiblePedestalsPositions"/>, so players know where sub-pedestals
 /// can be placed. Mirrors <see cref="Content.Client.Machines.EntitySystems.MultipartMachineSystem"/>.
+/// Only shown to ghosts or examiners currently perceiving with magic vision (e.g. thaumaturgy goggles).
 /// </summary>
 public sealed partial class CEInfusionAltarPositionsSystem : EntitySystem
 {
@@ -23,6 +26,9 @@ public sealed partial class CEInfusionAltarPositionsSystem : EntitySystem
 
     private void OnExamined(Entity<CEInfusionAltarComponent> ent, ref ClientExaminedEvent args)
     {
+        if (!HasComp<GhostComponent>(args.Examiner) && !HasComp<CEMagicVisionComponent>(args.Examiner))
+            return;
+
         foreach (var offset in ent.Comp.PossiblePedestalsPositions)
         {
             Spawn(_indicatorEntity, new EntityCoordinates(ent.Owner, offset));

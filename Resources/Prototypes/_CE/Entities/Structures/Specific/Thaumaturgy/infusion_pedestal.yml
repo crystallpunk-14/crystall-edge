@@ -10,6 +10,10 @@
   description: TODO
   components:
   - type: InteractionOutline
+  - type: GuideHelp
+    guides:
+    - CEThaumaturgyInfusionAltarRU
+    - CEThaumaturgyInfusionAltarEN
   - type: Sprite
     drawdepth: Objects
     noRot: true
@@ -42,6 +46,7 @@
     containers:
       pedestal: !type:ContainerSlot
         showEnts: true
+  - type: Climbable
   - type: PlacementReplacement
     key: walls
   - type: Fixtures
@@ -55,17 +60,6 @@
         - TableMask
         layer:
         - TableLayer
-      fix2:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.25,-0.25,0.25,0.25"
-        mask:
-        - TabletopMachineMask
-        layer:
-        - Impassable
-        - MidImpassable
-        - LowImpassable
-        hard: false # items should rest on top, not bounce off
   - type: LitOnPowered
   - type: PointLight
     enabled: false

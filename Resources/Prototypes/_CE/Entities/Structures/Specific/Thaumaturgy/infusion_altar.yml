@@ -9,6 +9,10 @@
   description: TODO
   components:
   - type: InteractionOutline
+  - type: GuideHelp
+    guides:
+    - CEThaumaturgyInfusionAltarRU
+    - CEThaumaturgyInfusionAltarEN
   - type: Transform
     anchored: true
   - type: Sprite
@@ -51,6 +55,7 @@
     - CEInfusionAltarMishapManaConsume
     - CEInfusionAltarMishapManaRestore
     - CEInfusionAltarMishapPulse
+  - type: Climbable
   - type: ItemSlots
     slots:
       catalyst:
@@ -68,7 +73,7 @@
       fix1:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.45,-0.45,0.45,0.45"
+          bounds: "-0.25,-0.25,0.25,0.25"
         density: 190
         mask: # blocks players/mobs, same as tables
         - TableMask
@@ -77,18 +82,7 @@
       fix2:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.4,-0.4,0.4,0.4"
-        mask:
-        - TabletopMachineMask
-        layer:
-        - Impassable
-        - MidImpassable
-        - LowImpassable
-        hard: false # items should rest on top, not bounce off
-      fix3:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.45,-0.45,0.45,0.45"
+          bounds: "-0.25,-0.25,0.25,0.25"
         hard: false # essence should fly in, not bounce off
         mask:
         - Impassable
@@ -138,12 +132,17 @@
 - type: entity
   id: CEInfusionAltarPositionIndicator
   categories: [ HideSpawnMenu ]
+  name: infusion pedestal possible position
   components:
   - type: Sprite
-    sprite: Markers/cross.rsi
+    drawdepth: Effects
+    noRot: true
+    offset: 0, -0.1
+    sprite: _CE/Structures/Specific/Thaumaturgy/infusion_altar.rsi
     layers:
-    - state: green
-    color: "#FFFFFF80"
+    - state: pedestal
+      shader: unshaded
+    color: "#4ab6cc50"
   - type: TimedDespawn
     lifetime: 5
   - type: CETimedDespawnFadeout

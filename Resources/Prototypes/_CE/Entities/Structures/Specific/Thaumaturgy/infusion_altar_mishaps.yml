@@ -114,6 +114,7 @@
           variation: 0.05
     - !type:ShockWaveVFX
     - !type:AreaEffect
+      minRange: 1
       range: 6
       effects:
       - !type:ThrowFrom
