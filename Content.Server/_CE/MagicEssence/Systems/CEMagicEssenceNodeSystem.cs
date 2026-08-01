@@ -90,8 +90,9 @@ public sealed partial class CEMagicEssenceNodeSystem : EntitySystem
     /// <summary>
     /// Generates 1u of essence reagent for one of the node's 3 rolled aspects (70% <see cref="CEMagicEssenceNodeComponent.EssenceA"/> /
     /// 20% <see cref="CEMagicEssenceNodeComponent.EssenceB"/> / 10% <see cref="CEMagicEssenceNodeComponent.EssenceC"/>), adding it to the
-    /// node's own solution. If the solution has no room left, the essence is spilled into the air as a
-    /// floating pickup entity instead - see <see cref="CEUnpoweredEssenceLeakSystem"/> for the same pattern.
+    /// node's own solution. If the solution has no room left (or the essence type has no liquid
+    /// reagent form to add), the essence is spilled into the air as a floating pickup entity instead -
+    /// see <see cref="CEUnpoweredEssenceLeakSystem"/> for the same pattern.
     /// </summary>
     private void GenerateEssence(Entity<CEMagicEssenceNodeComponent> ent)
     {
@@ -101,16 +102,14 @@ public sealed partial class CEMagicEssenceNodeSystem : EntitySystem
         if (!_solutionContainer.ResolveSolution(ent.Owner, ent.Comp.SolutionName, ref ent.Comp.Solution, out var solution))
             return;
 
-        if (solution.AvailableVolume < FixedPoint2.New(1))
+        if (essenceType.Reagent is { } reagent && solution.AvailableVolume >= FixedPoint2.New(1))
         {
-            if (essenceType.EssenceProto is { } essenceProto)
-                Spawn(essenceProto, Transform(ent).Coordinates);
-
+            _solutionContainer.TryAddReagent(ent.Comp.Solution.Value, reagent, FixedPoint2.New(1), out _);
             return;
         }
 
-        if (essenceType.Reagent is { } reagent)
-            _solutionContainer.TryAddReagent(ent.Comp.Solution.Value, reagent, FixedPoint2.New(1), out _);
+        if (essenceType.EssenceProto is { } essenceProto)
+            Spawn(essenceProto, Transform(ent).Coordinates);
     }
 
     private ProtoId<CEMagicEssenceTypePrototype>? PickWeightedSlot(CEMagicEssenceNodeComponent node)
