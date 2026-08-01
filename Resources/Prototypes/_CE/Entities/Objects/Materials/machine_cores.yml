@@ -142,7 +142,7 @@
   - type: MachineBoard
     prototype: CEInfusionAltar
   - type: StaticPrice
-    price: 250
+    price: 180
 
 - type: entity
   id: CEMachineCoreSolutionNormalizer
