@@ -421,6 +421,69 @@
 
 - type: CERecipe
   roundStart: true
+  id: CEMachineCoreInfusionAltar
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 8
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 2
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 2
+  - !type:StackResource
+    stack: CEGlass
+    count: 5
+  result: CEMachineCoreInfusionAltar
+  resultCount: 1
+
+- type: CERecipe
+  roundStart: true
+  id: CEInfusionAltarPedestal
+  tag: CERecipeEngineeringTable
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 3
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 1
+  - !type:StackResource
+    stack: CEGlass
+    count: 2
+  result: CEInfusionAltarPedestal
+  resultCount: 1
+
+- type: CERecipe
+  roundStart: true
+  id: CEMachineCoreSolutionNormalizer
+  tag: CERecipeEngineeringTable
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 1
+  - !type:StackResource
+    stack: CEMachinePartCoalDiffuser
+    count: 2
+  - !type:StackResource
+    stack: CEGlass
+    count: 5
+  result: CEMachineCoreSolutionNormalizer
+  resultCount: 1
+
+- type: CERecipe
+  roundStart: true
   id: CEMachineCoreCharger
   tag: CERecipeEngineeringTable
   category: MachineCore
