@@ -4,12 +4,14 @@
   catalyst: !type:ProtoIdResource
     protoId: CEEnergyCrystalShard
     count: 1
+  instability: 1
+  ritualDuration: 15
   essenceAmount: { min: 6, max: 32 }
   essenceWeights:
     Air: 6
     Crystal: 2
     Energia: 1
-  pedestalCount: { min: 3, max: 10 }
+  pedestalCount: { min: 2, max: 5 }
   pedestalRequirementPool:
   - requirement: !type:ProtoIdResource
       protoId: CEGlassShard
@@ -32,12 +34,14 @@
   catalyst: !type:ProtoIdResource
     protoId: CEBigBrassPipe30
     count: 1
+  instability: 2
+  ritualDuration: 20
   essenceAmount: { min: 6, max: 32 }
   essenceWeights:
     Fire: 6
     Energia: 3
     Earth: 1
-  pedestalCount: { min: 3, max: 10 }
+  pedestalCount: { min: 2, max: 5 }
   pedestalRequirementPool:
   - requirement: !type:ProtoIdResource
       protoId: CEFryingPan

@@ -53,6 +53,21 @@ public sealed partial class CEInfusionAltarRecipePrototype : IPrototype
     public int ResultCount = 1;
 
     /// <summary>
+    /// Base instability growth rate (per second) while this recipe's ritual is actively progressing
+    /// (catalyst identified, all conditions currently satisfied). Represents the recipe's inherent risk,
+    /// separate from the extra growth incurred while conditions are unmet.
+    /// </summary>
+    [DataField]
+    public float Instability;
+
+    /// <summary>
+    /// How long the recipe's conditions must hold continuously (once fully satisfied) before the craft
+    /// completes. Progress pauses (does not reset) whenever a condition is currently unmet.
+    /// </summary>
+    [DataField]
+    public TimeSpan RitualDuration = TimeSpan.Zero;
+
+    /// <summary>
     /// If true, this recipe is known to every character from round start, without needing to be taught
     /// via <see cref="Content.Shared._CE.EntityEffect.Effects.LearnInfusionRecipe"/>.
     /// </summary>

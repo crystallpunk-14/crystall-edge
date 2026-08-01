@@ -1,0 +1,53 @@
+- type: entity
+  id: CEInfusionAltarMishapSpark
+  categories: [ HideSpawnMenu ]
+  noSpawn: true
+  components:
+  - type: PointLight
+    color: "#ff6a00"
+    radius: 2
+    energy: 3
+  - type: TimedDespawn
+    lifetime: 1
+  - type: CEEntityEffectSpawner
+    firstDelay: 0.2
+    frequency: 999
+    effects:
+    - !type:PlaySound
+      sound:
+        path: /Audio/_CE/Effects/crystal_ding.ogg
+    - !type:AreaEffect
+      range: 6
+      checkLOS: false
+      effects:
+      - !type:Damage
+        damage:
+          types:
+            Heat: 15
+
+- type: entity
+  id: CEInfusionAltarMishapEject
+  categories: [ HideSpawnMenu ]
+  noSpawn: true
+  components:
+  - type: PointLight
+    color: "#9335b8"
+    radius: 1.5
+    energy: 2
+  - type: TimedDespawn
+    lifetime: 1
+  - type: CEEntityEffectSpawner
+    firstDelay: 0.2
+    frequency: 999
+    effects:
+    - !type:PlaySound
+      sound:
+        path: /Audio/_CE/Effects/crystal_ding.ogg
+    - !type:AreaEffect
+      range: 10.6
+      checkLOS: false
+      effects:
+      - !type:EjectSlotItem
+      - !type:ThrowFrom
+        origin: Used
+        effectTarget: Target
