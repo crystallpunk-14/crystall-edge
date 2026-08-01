@@ -38,9 +38,9 @@ public sealed partial class CEClientWildMagicSystem : EntitySystem
         SetLayerColor((ent, sprite), ent.Comp.EssenceCLayer, ent.Comp.EssenceC);
     }
 
-    private void SetLayerColor(Entity<SpriteComponent?> sprite, string layer, ProtoId<CEMagicEssenceTypePrototype> essenceId)
+    private void SetLayerColor(Entity<SpriteComponent?> sprite, string layer, ProtoId<CEMagicEssenceTypePrototype>? essenceId)
     {
-        if (essenceId.Id is null || !_proto.TryIndex(essenceId, out var essence))
+        if (essenceId is not { } id || !_proto.TryIndex(id, out var essence))
             return;
 
         _sprite.LayerSetColor(sprite, layer, essence.Color);

@@ -12,13 +12,13 @@ namespace Content.Shared._CE.WildMagic.Components;
 public sealed partial class CEWildMagicNodeComponent : Component
 {
     [DataField, AutoNetworkedField]
-    public ProtoId<CEMagicEssenceTypePrototype> EssenceA;
+    public ProtoId<CEMagicEssenceTypePrototype>? EssenceA;
 
     [DataField, AutoNetworkedField]
-    public ProtoId<CEMagicEssenceTypePrototype> EssenceB;
+    public ProtoId<CEMagicEssenceTypePrototype>? EssenceB;
 
     [DataField, AutoNetworkedField]
-    public ProtoId<CEMagicEssenceTypePrototype> EssenceC;
+    public ProtoId<CEMagicEssenceTypePrototype>? EssenceC;
 
     /// <summary>
     /// Sprite layer map key that <see cref="EssenceA"/> colors.
