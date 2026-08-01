@@ -1,13 +1,17 @@
 - type: entity
-  id: CEWildMagicNode
+  id: CEMagicEssenceNode
   categories: [ ForkFiltered ]
-  name: wild magic rift
+  name: magic essence node
   description: TODO
   components:
-  - type: CEWildMagicNode
+  - type: CEMagicEssenceNode
+  - type: Solution
+    id: essence
+    solution:
+      maxVol: 50
   - type: InteractionOutline
   - type: TimedDespawn
-    lifetime: 300
+    lifetime: 1200
   - type: Transform
     anchored: true
   - type: Physics

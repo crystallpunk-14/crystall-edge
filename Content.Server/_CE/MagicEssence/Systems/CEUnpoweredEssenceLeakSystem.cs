@@ -1,3 +1,4 @@
+using Content.Server._CE.MagicEssence.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Shared._CE.MagicEssence.Systems;
 using Content.Shared.Chemistry.EntitySystems;
@@ -7,7 +8,7 @@ using Content.Shared.Power;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
-namespace Content.Server._CE.MagicEssence;
+namespace Content.Server._CE.MagicEssence.Systems;
 
 public sealed partial class CEUnpoweredEssenceLeakSystem : EntitySystem
 {

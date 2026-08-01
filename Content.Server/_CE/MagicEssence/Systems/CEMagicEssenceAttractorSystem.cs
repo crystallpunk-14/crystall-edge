@@ -1,10 +1,11 @@
+using Content.Server._CE.MagicEssence.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Power;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics.Events;
 
-namespace Content.Server._CE.MagicEssence;
+namespace Content.Server._CE.MagicEssence.Systems;
 
 public sealed partial class CEMagicEssenceAttractorSystem : EntitySystem
 {

@@ -240,8 +240,7 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
 
     /// <summary>
     /// Picks a random essence type, weighted towards lower tiers (weight = 1 / (tier + 1)) so
-    /// primal aspects come up more often than complex ones. Ported from the wild magic node
-    /// aspect roll (<c>CEWildMagicSystem.PickWeightedEssence</c>).
+    /// primal aspects come up more often than complex ones.
     /// </summary>
     public ProtoId<CEMagicEssenceTypePrototype> GetRandomEssenceType()
     {

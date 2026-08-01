@@ -1,11 +1,11 @@
+using Content.Shared._CE.MagicEssence.Components;
 using Content.Shared._CE.MagicEssence.Prototypes;
-using Content.Shared._CE.WildMagic.Components;
 using Robust.Client.GameObjects;
 using Robust.Shared.Prototypes;
 
-namespace Content.Client._CE.WildMagic;
+namespace Content.Client._CE.MagicEssence;
 
-public sealed partial class CEClientWildMagicSystem : EntitySystem
+public sealed partial class CEClientMagicEssenceNodeSystem : EntitySystem
 {
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private SpriteSystem _sprite = default!;
@@ -14,21 +14,21 @@ public sealed partial class CEClientWildMagicSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CEWildMagicNodeComponent, AfterAutoHandleStateEvent>(OnAfterHandleState);
-        SubscribeLocalEvent<CEWildMagicNodeComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<CEMagicEssenceNodeComponent, AfterAutoHandleStateEvent>(OnAfterHandleState);
+        SubscribeLocalEvent<CEMagicEssenceNodeComponent, MapInitEvent>(OnMapInit);
     }
 
-    private void OnAfterHandleState(Entity<CEWildMagicNodeComponent> ent, ref AfterAutoHandleStateEvent args)
+    private void OnAfterHandleState(Entity<CEMagicEssenceNodeComponent> ent, ref AfterAutoHandleStateEvent args)
     {
         UpdateVisuals(ent);
     }
 
-    private void OnMapInit(Entity<CEWildMagicNodeComponent> ent, ref MapInitEvent args)
+    private void OnMapInit(Entity<CEMagicEssenceNodeComponent> ent, ref MapInitEvent args)
     {
         UpdateVisuals(ent);
     }
 
-    private void UpdateVisuals(Entity<CEWildMagicNodeComponent> ent)
+    private void UpdateVisuals(Entity<CEMagicEssenceNodeComponent> ent)
     {
         if (!TryComp<SpriteComponent>(ent, out var sprite))
             return;

@@ -1,9 +1,12 @@
 using System.Linq;
 using Content.Server._CE.ZLevels.Core;
 using Content.Server.Station.Systems;
+using Content.Shared._CE.MagicEssence.Components;
 using Content.Shared._CE.MagicEssence.Prototypes;
-using Content.Shared._CE.WildMagic.Components;
+using Content.Shared._CE.MagicEssence.Systems;
 using Content.Shared._CE.ZLevels.Core.Components;
+using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.FixedPoint;
 using Content.Shared.Physics;
 using Content.Shared.Station.Components;
 using Robust.Shared.Map;
@@ -12,69 +15,101 @@ using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 
-namespace Content.Server._CE.WildMagic;
+namespace Content.Server._CE.MagicEssence.Systems;
 
 /// <summary>
-/// Generic wild magic node spawning utilities. Doesn't own any pool/lifetime management itself -
-/// see <see cref="CEWildMagicRuleSystem"/> for the round's maintained node pool.
+/// Generic magic essence node spawning utilities. Doesn't own any pool/lifetime management itself -
+/// see <see cref="CEMagicEssenceNodeRuleSystem"/> for the round's maintained node pool.
 /// </summary>
-public sealed partial class CEWildMagicSystem : EntitySystem
+public sealed partial class CEMagicEssenceNodeSystem : EntitySystem
 {
+    [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private CEMagicEssenceSystem _essence = default!;
+    [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private SharedMapSystem _mapSystem = default!;
     [Dependency] private StationSystem _stations = default!;
     [Dependency] private CEZLevelsSystem _zLevels = default!;
     [Dependency] private EntityQuery<PhysicsComponent> _physicsQuery = default!;
 
-    private readonly EntProtoId _wildMagicNodeEntity = "CEWildMagicNode";
+    private readonly EntProtoId _magicEssenceNodeEntity = "CEMagicEssenceNode";
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CEWildMagicNodeComponent, MapInitEvent>(OnNodeMapInit);
+        SubscribeLocalEvent<CEMagicEssenceNodeComponent, MapInitEvent>(OnNodeMapInit);
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        var query = EntityQueryEnumerator<CEMagicEssenceNodeComponent>();
+        while (query.MoveNext(out var uid, out var node))
+        {
+            if (_timing.CurTime < node.NextGenerationTime)
+                continue;
+
+            node.NextGenerationTime = _timing.CurTime + node.GenerationInterval;
+            GenerateEssence((uid, node));
+        }
     }
 
     /// <summary>
-    /// Rolls 3 random essence aspects for a freshly spawned node - low-tier aspects are more likely
-    /// to come up than high-tier ones (weight = 1 / (tier + 1)). Aspects may repeat.
+    /// Rolls 3 random essence aspects for a freshly spawned node. Aspects may repeat.
     /// </summary>
-    private void OnNodeMapInit(Entity<CEWildMagicNodeComponent> ent, ref MapInitEvent args)
+    private void OnNodeMapInit(Entity<CEMagicEssenceNodeComponent> ent, ref MapInitEvent args)
     {
-        var essences = _proto.EnumeratePrototypes<CEMagicEssenceTypePrototype>().ToList();
-        if (essences.Count == 0)
-            return;
-
-        ent.Comp.EssenceA = PickWeightedEssence(essences);
-        ent.Comp.EssenceB = PickWeightedEssence(essences);
-        ent.Comp.EssenceC = PickWeightedEssence(essences);
+        ent.Comp.EssenceA = _essence.GetRandomEssenceType();
+        ent.Comp.EssenceB = _essence.GetRandomEssenceType();
+        ent.Comp.EssenceC = _essence.GetRandomEssenceType();
+        ent.Comp.NextGenerationTime = _timing.CurTime + ent.Comp.GenerationInterval;
 
         Dirty(ent);
     }
 
-    private ProtoId<CEMagicEssenceTypePrototype> PickWeightedEssence(List<CEMagicEssenceTypePrototype> essences)
+    /// <summary>
+    /// Generates 1u of essence reagent for one of the node's 3 rolled aspects (70% <see cref="CEMagicEssenceNodeComponent.EssenceA"/> /
+    /// 20% <see cref="CEMagicEssenceNodeComponent.EssenceB"/> / 10% <see cref="CEMagicEssenceNodeComponent.EssenceC"/>), adding it to the
+    /// node's own solution. If the solution has no room left, the essence is spilled into the air as a
+    /// floating pickup entity instead - see <see cref="CEUnpoweredEssenceLeakSystem"/> for the same pattern.
+    /// </summary>
+    private void GenerateEssence(Entity<CEMagicEssenceNodeComponent> ent)
     {
-        var totalWeight = 0f;
-        foreach (var essence in essences)
-            totalWeight += 1f / (essence.Tier + 1);
+        if (PickWeightedSlot(ent.Comp) is not { } essenceId || !_proto.TryIndex(essenceId, out var essenceType))
+            return;
 
-        var roll = _random.NextFloat() * totalWeight;
-        foreach (var essence in essences)
+        if (!_solutionContainer.ResolveSolution(ent.Owner, ent.Comp.SolutionName, ref ent.Comp.Solution, out var solution))
+            return;
+
+        if (solution.AvailableVolume < FixedPoint2.New(1))
         {
-            var weight = 1f / (essence.Tier + 1);
-            if (roll < weight)
-                return essence.ID;
+            if (essenceType.EssenceProto is { } essenceProto)
+                Spawn(essenceProto, Transform(ent).Coordinates);
 
-            roll -= weight;
+            return;
         }
 
-        return essences[^1].ID;
+        if (essenceType.Reagent is { } reagent)
+            _solutionContainer.TryAddReagent(ent.Comp.Solution.Value, reagent, FixedPoint2.New(1), out _);
+    }
+
+    private ProtoId<CEMagicEssenceTypePrototype>? PickWeightedSlot(CEMagicEssenceNodeComponent node)
+    {
+        var roll = _random.NextFloat();
+        if (roll < 0.7f)
+            return node.EssenceA;
+        if (roll < 0.9f)
+            return node.EssenceB;
+        return node.EssenceC;
     }
 
     /// <summary>
-    /// Finds a random valid spot in <paramref name="network"/> and spawns a wild magic node there.
+    /// Finds a random valid spot in <paramref name="network"/> and spawns a magic essence node there.
     /// Returns null if no valid spot could be found.
     /// </summary>
     public EntityUid? SpawnNodeInNetwork(Entity<CEZGridNetworkComponent> network)
@@ -82,7 +117,7 @@ public sealed partial class CEWildMagicSystem : EntitySystem
         if (!TryGetRandomNodeLocation(network, out var coordinates))
             return null;
 
-        return Spawn(_wildMagicNodeEntity, coordinates);
+        return Spawn(_magicEssenceNodeEntity, coordinates);
     }
 
     /// <inheritdoc cref="SpawnNodeInNetwork(Robust.Shared.GameObjects.Entity{Content.Shared._CE.ZLevels.Core.Components.CEZGridNetworkComponent})"/>
@@ -91,7 +126,7 @@ public sealed partial class CEWildMagicSystem : EntitySystem
         if (!TryGetRandomNodeLocation(network, out var coordinates))
             return null;
 
-        return Spawn(_wildMagicNodeEntity, coordinates);
+        return Spawn(_magicEssenceNodeEntity, coordinates);
     }
 
     /// <summary>
@@ -106,19 +141,19 @@ public sealed partial class CEWildMagicSystem : EntitySystem
         var stationQuery = EntityQueryEnumerator<StationDataComponent>();
         if (!stationQuery.MoveNext(out var stationUid, out var stationData))
         {
-            Log.Warning("CEWildMagicSystem: no StationDataComponent found in the world.");
+            Log.Warning("CEMagicEssenceNodeSystem: no StationDataComponent found in the world.");
             return false;
         }
 
         if (_stations.GetLargestGrid((stationUid, stationData)) is not { } grid)
         {
-            Log.Warning($"CEWildMagicSystem: station {ToPrettyString(stationUid)} has no grids.");
+            Log.Warning($"CEMagicEssenceNodeSystem: station {ToPrettyString(stationUid)} has no grids.");
             return false;
         }
 
         if (!_zLevels.TryGetMapNetwork(grid, out network))
         {
-            Log.Warning($"CEWildMagicSystem: grid {ToPrettyString(grid)} (station {ToPrettyString(stationUid)}) isn't part of a z-map network.");
+            Log.Warning($"CEMagicEssenceNodeSystem: grid {ToPrettyString(grid)} (station {ToPrettyString(stationUid)}) isn't part of a z-map network.");
             return false;
         }
 
@@ -126,7 +161,7 @@ public sealed partial class CEWildMagicSystem : EntitySystem
     }
 
     /// <summary>
-    /// Tries to find a random tile suitable for spawning a wild magic node, picking randomly among
+    /// Tries to find a random tile suitable for spawning a magic essence node, picking randomly among
     /// every grid (i.e. every z-level floor) belonging to the given z-grid network. Rejects tiles
     /// occupied by a static, hard, impassable anchored entity (walls, etc).
     /// </summary>
@@ -136,7 +171,7 @@ public sealed partial class CEWildMagicSystem : EntitySystem
     }
 
     /// <summary>
-    /// Tries to find a random tile suitable for spawning a wild magic node, scanning every map in
+    /// Tries to find a random tile suitable for spawning a magic essence node, scanning every map in
     /// the given z-map network but only considering planet maps - ones where the map entity is
     /// itself the grid entity, as opposed to regular multi-grid station maps.
     /// </summary>
