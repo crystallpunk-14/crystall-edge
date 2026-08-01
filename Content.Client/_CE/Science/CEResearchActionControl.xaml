@@ -7,8 +7,7 @@
     <Button Name="ExecuteButton" Access="Public" HorizontalExpand="True">
         <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
             <Label Name="NameLabel" Access="Public" HorizontalExpand="True" ClipText="True" />
-            <TextureRect Name="CostIcon" Access="Public" VerticalAlignment="Center" />
-            <Label Name="CostLabel" Access="Public" VerticalAlignment="Center" Margin="4 0 0 0" />
+            <BoxContainer Name="CostContainer" Orientation="Horizontal" VerticalAlignment="Center" SeparationOverride="4" />
         </BoxContainer>
     </Button>
 </science:CEResearchActionControl>

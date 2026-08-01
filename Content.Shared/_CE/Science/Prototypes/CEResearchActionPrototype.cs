@@ -1,4 +1,5 @@
 using Content.Shared._CE.EntityEffect;
+using Content.Shared._CE.MagicEssence.Prototypes;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.Science.Prototypes;
@@ -25,13 +26,13 @@ public sealed partial class CEResearchActionPrototype : IPrototype
     public LocId? Desc;
 
     /// <summary>
-    /// How many research points this action costs. Spent from the player's research data when
-    /// the action is executed. Actions whose effects derive their own cost elsewhere (e.g.
-    /// <see cref="Content.Shared._CE.Science.Effects.CEResearchDiscoverAchievement"/>, which uses
-    /// the target achievement's cost) leave this at 0.
+    /// How many research points of each essence type this action costs. Spent from the player's
+    /// research data when the action is executed. Actions whose effects derive their own cost
+    /// elsewhere (e.g. <see cref="Content.Shared._CE.Science.Effects.CEResearchDiscoverAchievement"/>,
+    /// which uses the target achievement's cost) leave this empty.
     /// </summary>
     [DataField]
-    public int Cost;
+    public Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int> Cost = new();
 
     [DataField(required: true)]
     public CEResearchCellKind AllowedCells;

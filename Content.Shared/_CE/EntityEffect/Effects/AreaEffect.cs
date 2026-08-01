@@ -23,6 +23,13 @@ public sealed partial class AreaEffect : CEEntityEffectBase<AreaEffect>
     [DataField(required: true)]
     public float Range = 1f;
 
+    /// <summary>
+    /// Entities closer than this to the area center are excluded - e.g. to skip an item sitting right on
+    /// a central pedestal while still hitting everything further out.
+    /// </summary>
+    [DataField]
+    public float MinRange;
+
     [DataField]
     public bool AffectCaster;
 
@@ -47,6 +54,7 @@ public sealed partial class CEAreaEffectEffectSystem : CEEntityEffectSystem<Area
 
         var mapCenter = _transformSys.ToMapCoordinates(targetPoint);
         var scaledRange = args.Effect.Range * args.Args.Power;
+        var scaledMinRange = args.Effect.MinRange * args.Args.Power;
         var entitiesAround = _lookup.GetEntitiesInRange(targetPoint, scaledRange, LookupFlags.Uncontained);
 
         var count = 0;
@@ -58,10 +66,14 @@ public sealed partial class CEAreaEffectEffectSystem : CEEntityEffectSystem<Area
             if (!_whitelist.CheckBoth(entity, args.Effect.Blacklist, args.Effect.Whitelist))
                 continue;
 
-            if (args.Effect.CheckLOS)
+            if (scaledMinRange > 0f || args.Effect.CheckLOS)
             {
                 var entityMapPos = _transformSys.GetMapCoordinates(entity);
-                if (!_examine.InRangeUnOccluded(mapCenter, entityMapPos, scaledRange, null))
+
+                if (scaledMinRange > 0f && (entityMapPos.Position - mapCenter.Position).Length() < scaledMinRange)
+                    continue;
+
+                if (args.Effect.CheckLOS && !_examine.InRangeUnOccluded(mapCenter, entityMapPos, scaledRange, null))
                     continue;
             }
 

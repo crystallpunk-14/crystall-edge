@@ -1,0 +1,79 @@
+# CrystallEdge: placeholder sprite (Structures/Furniture/Altars/Gods/convertaltar.rsi) borrowed from
+# upstream until dedicated infusion altar art exists.
+- type: entity
+  parent:
+  - CEBaseMachinePowered
+  - BaseMachine
+  id: CEInfusionAltarPedestal
+  categories: [ ForkFiltered ]
+  name: infusion altar pedestal
+  description: TODO
+  components:
+  - type: InteractionOutline
+  - type: GuideHelp
+    guides:
+    - CEThaumaturgyInfusionAltarRU
+    - CEThaumaturgyInfusionAltarEN
+  - type: Sprite
+    drawdepth: Objects
+    noRot: true
+    offset: 0, -0.1
+    sprite: _CE/Structures/Specific/Thaumaturgy/infusion_altar.rsi
+    layers:
+    - state: pedestal
+    - state: pedestal_powered
+      map: [ "power" ]
+      visible: false
+      shader: unshaded
+  - type: Icon
+    sprite: _CE/Structures/Specific/Thaumaturgy/infusion_altar.rsi
+    state: pedestal
+  - type: CEInfusionAltarPedestal
+  - type: ItemSlots
+    slots:
+      pedestal:
+        name: ce-infusion-altar-pedestal-slot-name
+        ejectOnInteract: true
+        ejectOnBreak: true
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        power:
+          True: { visible: true }
+          False: { visible: false }
+  - type: ContainerContainer
+    containers:
+      pedestal: !type:ContainerSlot
+        showEnts: true
+        occludes: false
+  - type: Climbable
+  - type: PlacementReplacement
+    key: walls
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        density: 190
+        mask: # blocks players/mobs, same as tables
+        - TableMask
+        layer:
+        - TableLayer
+  - type: LitOnPowered
+  - type: PointLight
+    enabled: false
+    color: "#9335b8"
+    radius: 2
+  - type: LightBehaviour
+    behaviours:
+    - !type:RandomizeBehaviour
+      interpolate: Nearest
+      minDuration: 0.02
+      maxDuration: 0.06
+      startValue: 0.0
+      endValue: 3.0
+      property: Energy
+      isLooped: true
+      enabled: false

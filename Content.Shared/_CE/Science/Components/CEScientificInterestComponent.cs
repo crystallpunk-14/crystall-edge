@@ -1,4 +1,6 @@
+using Content.Shared._CE.MagicEssence.Prototypes;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.Science.Components;
 
@@ -10,8 +12,12 @@ namespace Content.Shared._CE.Science.Components;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class CEScientificInterestComponent : Component
 {
-    [DataField(required: true), AutoNetworkedField]
-    public int Points;
+    /// <summary>
+    /// Research points granted per essence type upon a successful study. Either set directly in
+    /// yaml, or left empty and rolled at spawn by a sibling <see cref="Content.Shared._CE.Science.Components.CEScienceRandomPointsComponent"/>.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int> Points = new();
 
     [DataField, AutoNetworkedField]
     public TimeSpan Time = TimeSpan.FromSeconds(3);

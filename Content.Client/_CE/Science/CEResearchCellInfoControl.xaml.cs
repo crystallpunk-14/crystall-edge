@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Shared._CE.EntityEffect;
+using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.Science;
 using Content.Shared._CE.Science.Components;
 using Content.Shared._CE.Science.Effects;
@@ -35,7 +36,7 @@ public sealed partial class CEResearchCellInfoControl : BoxContainer
         RobustXamlLoader.Load(this);
     }
 
-    public void UpdateCell(CEScienceMapCell? cell, int points)
+    public void UpdateCell(CEScienceMapCell? cell)
     {
         switch (cell)
         {
@@ -68,6 +69,7 @@ public sealed partial class CEResearchCellInfoControl : BoxContainer
         var conditionArgs = new CEEntityEffectArgs(_entity, localEntity, null, default, 0f, localEntity, null);
 
         _entity.TryGetComponent<CEScienceResearchDataComponent>(localEntity, out var researchData);
+        var points = researchData?.Points ?? new Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int>();
 
         foreach (var action in _prototype.EnumeratePrototypes<CEResearchActionPrototype>())
         {
@@ -108,7 +110,7 @@ public sealed partial class CEResearchCellInfoControl : BoxContainer
                 HeaderText = Loc.GetString(action.Name),
                 Description = action.Desc is { } desc ? Loc.GetString(desc) : string.Empty,
                 Cost = cost,
-                CanExecute = points >= cost,
+                CanExecute = CESharedScienceSystem.CanAfford(points, cost),
             };
 
             entry.OnExecute += () => OnAction?.Invoke(actionId);

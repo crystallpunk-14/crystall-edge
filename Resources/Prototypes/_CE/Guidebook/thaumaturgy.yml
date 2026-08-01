@@ -6,6 +6,7 @@
   text: "/ServerInfo/_CE/Guidebook_EN/Thaumaturgy/Thaumaturgy.xml"
   children:
   - CEThaumaturgyAspectsEN
+  - CEThaumaturgyInfusionAltarEN
 
 - type: guideEntry
   hidden: false
@@ -17,12 +18,30 @@
 
 - type: guideEntry
   hidden: false
+  locFilter: "en-US"
+  id: CEThaumaturgyInfusionAltarEN
+  name: Infusion altar
+  text: "/ServerInfo/_CE/Guidebook_EN/Thaumaturgy/InfusionAltar/InfusionAltar.xml"
+  children:
+  - CEThaumaturgyInfusionAltarRecipesEN
+
+- type: guideEntry
+  hidden: false
+  locFilter: "en-US"
+  id: CEThaumaturgyInfusionAltarRecipesEN
+  name: Recipes
+  text: "/ServerInfo/_CE/Guidebook_EN/Thaumaturgy/InfusionAltar/Recipes.xml"
+  filterEnabled: True
+
+- type: guideEntry
+  hidden: false
   locFilter: "ru-RU"
   id: CEThaumaturgyRU
   name: Тауматургия
   text: "/ServerInfo/_CE/Guidebook_RU/Thaumaturgy/Thaumaturgy.xml"
   children:
   - CEThaumaturgyAspectsRU
+  - CEThaumaturgyInfusionAltarRU
 
 - type: guideEntry
   hidden: false
@@ -30,4 +49,21 @@
   id: CEThaumaturgyAspectsRU
   name: Аспекты
   text: "/ServerInfo/_CE/Guidebook_RU/Thaumaturgy/Aspects.xml"
+  filterEnabled: True
+
+- type: guideEntry
+  hidden: false
+  locFilter: "ru-RU"
+  id: CEThaumaturgyInfusionAltarRU
+  name: Алтарь инфузии
+  text: "/ServerInfo/_CE/Guidebook_RU/Thaumaturgy/InfusionAltar/InfusionAltar.xml"
+  children:
+  - CEThaumaturgyInfusionAltarRecipesRU
+
+- type: guideEntry
+  hidden: false
+  locFilter: "ru-RU"
+  id: CEThaumaturgyInfusionAltarRecipesRU
+  name: Рецепты
+  text: "/ServerInfo/_CE/Guidebook_RU/Thaumaturgy/InfusionAltar/Recipes.xml"
   filterEnabled: True

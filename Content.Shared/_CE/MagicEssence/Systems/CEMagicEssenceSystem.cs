@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text;
 using Content.Shared._CE.Examine;
 using Content.Shared._CE.MagicEssence.Components;
@@ -202,6 +203,25 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
         }
     }
 
+    /// <summary>
+    /// Resolves the floating essence entity that a reagent evaporates into, if that reagent is the
+    /// pure liquid embodiment of some <see cref="CEMagicEssenceTypePrototype"/> (i.e. has a
+    /// <see cref="CEMagicEssenceTypePrototype.EssenceProto"/>). False for any other reagent.
+    /// </summary>
+    public bool TryGetEssenceProtoForReagent(ProtoId<ReagentPrototype> reagent, out EntProtoId essenceProto)
+    {
+        essenceProto = default;
+
+        if (!GetReagentEssenceMap().TryGetValue(reagent, out var essenceTypeId))
+            return false;
+
+        if (!_proto.TryIndex(essenceTypeId, out var essenceType) || essenceType.EssenceProto is not { } proto)
+            return false;
+
+        essenceProto = proto;
+        return true;
+    }
+
     private Dictionary<ProtoId<ReagentPrototype>, ProtoId<CEMagicEssenceTypePrototype>> GetReagentEssenceMap()
     {
         if (_reagentToEssence is { } cached)
@@ -216,6 +236,34 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
 
         _reagentToEssence = map;
         return map;
+    }
+
+    /// <summary>
+    /// Picks a random essence type, weighted towards lower tiers (weight = 1 / (tier + 1)) so
+    /// primal aspects come up more often than complex ones. Ported from the wild magic node
+    /// aspect roll (<c>CEWildMagicSystem.PickWeightedEssence</c>).
+    /// </summary>
+    public ProtoId<CEMagicEssenceTypePrototype> GetRandomEssenceType()
+    {
+        var essences = _proto.EnumeratePrototypes<CEMagicEssenceTypePrototype>().ToList();
+        if (essences.Count == 0)
+            throw new InvalidOperationException("No CEMagicEssenceTypePrototype prototypes are registered.");
+
+        var totalWeight = 0f;
+        foreach (var essence in essences)
+            totalWeight += 1f / (essence.Tier + 1);
+
+        var roll = _random.NextFloat() * totalWeight;
+        foreach (var essence in essences)
+        {
+            var weight = 1f / (essence.Tier + 1);
+            if (roll < weight)
+                return essence.ID;
+
+            roll -= weight;
+        }
+
+        return essences[^1].ID;
     }
 
     private Entity<CEMagicEssenceSingletonComponent>? EnsureSingleton()

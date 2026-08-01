@@ -42,7 +42,7 @@
         overlay:
           bookmark_short: ""
   - type: CEScientificInterest
-    points: 5
+  - type: CEScienceRandomPoints
   - type: CEMagicEssenceStructure
     essences:
       Order: { min: 2, max: 6 }

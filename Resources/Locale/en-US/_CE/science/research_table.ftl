@@ -1,4 +1,5 @@
 ce-research-table-ui-title = Research Table
+ce-science-knowledge-title = Character Knowledge
 
 ce-research-cell-dead-zone-title = Dead Zone
 ce-research-cell-dead-zone-desc = Attempts at research here are fruitless and yield no result
