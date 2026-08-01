@@ -50,6 +50,7 @@
     mishaps:
     - CEInfusionAltarMishapManaConsume
     - CEInfusionAltarMishapManaRestore
+    - CEInfusionAltarMishapPulse
   - type: ItemSlots
     slots:
       catalyst:

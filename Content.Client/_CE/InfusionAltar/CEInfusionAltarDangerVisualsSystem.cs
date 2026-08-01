@@ -3,9 +3,9 @@ using Robust.Client.GameObjects;
 
 namespace Content.Client._CE.InfusionAltar;
 
-public sealed class CEInfusionAltarDangerVisualsSystem : VisualizerSystem<CEInfusionAltarDangerVisualsComponent>
+public sealed partial class CEInfusionAltarDangerVisualsSystem : VisualizerSystem<CEInfusionAltarDangerVisualsComponent>
 {
-    [Dependency] private readonly SharedPointLightSystem _light = default!;
+    [Dependency] private SharedPointLightSystem _light = default!;
 
     protected override void OnAppearanceChange(EntityUid uid, CEInfusionAltarDangerVisualsComponent component, ref AppearanceChangeEvent args)
     {

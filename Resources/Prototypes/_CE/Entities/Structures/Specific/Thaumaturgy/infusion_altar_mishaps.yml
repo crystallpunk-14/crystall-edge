@@ -93,3 +93,31 @@
       effects:
       - !type:ChangeMana
         amount: 20
+
+
+- type: entity
+  id: CEInfusionAltarMishapPulse
+  categories: [ ForkFiltered ]
+  save: false
+  name: infusion altar mana pulse mishap
+  description: TODO
+  noSpawn: true
+  components:
+  - type: TimedDespawn
+    lifetime: 5
+  - type: CEEntityEffectSpawner
+    firstDelay: 0.2
+    frequency: 999
+    effects:
+    - !type:PlaySound
+      sound:
+        path: /Audio/Effects/radpulse1.ogg
+        params:
+          pitch: 0.6
+          variation: 0.05
+    - !type:ShockWaveVFX
+    - !type:AreaEffect
+      range: 6
+      effects:
+      - !type:ThrowFrom
+      - !type:EjectSlotItem
