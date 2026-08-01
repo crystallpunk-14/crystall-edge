@@ -4,8 +4,8 @@ meta:
   engineVersion: 277.0.0
   forkId: ""
   forkVersion: ""
-  time: 07/17/2026 09:58:12
-  entityCount: 459
+  time: 08/01/2026 10:38:00
+  entityCount: 460
 maps:
 - 1
 grids:
@@ -564,6 +564,13 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -6.5,-20.5
+      parent: 1
+- proto: CEGridStabilityCore
+  entities:
+  - uid: 460
+    components:
+    - type: Transform
+      pos: -17.5,-24.5
       parent: 1
 - proto: CEIronOre30
   entities:

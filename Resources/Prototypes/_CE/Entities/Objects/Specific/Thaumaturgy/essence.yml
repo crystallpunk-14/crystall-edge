@@ -59,7 +59,7 @@
   suffix: T0
   components:
   - type: Sprite
-    color: "#6db537"
+    color: "#7dbf41"
   - type: Solution
     solution:
       maxVol: 1
@@ -74,7 +74,7 @@
   suffix: T0
   components:
   - type: Sprite
-    color: "#db7234"
+    color: "#e67130"
   - type: Solution
     solution:
       maxVol: 1
@@ -89,7 +89,7 @@
   suffix: T0
   components:
   - type: Sprite
-    color: "#62abd3"
+    color: "#6ab8e2"
   - type: Solution
     solution:
       maxVol: 1
@@ -104,7 +104,7 @@
   suffix: T0
   components:
   - type: Sprite
-    color: "#dccb6d"
+    color: "#ebda68"
   - type: Solution
     solution:
       maxVol: 1
@@ -119,7 +119,7 @@
   suffix: T0
   components:
   - type: Sprite
-    color: "#bfbfcd"
+    color: "#b7b7c6"
   - type: Solution
     solution:
       maxVol: 1
@@ -134,7 +134,7 @@
   suffix: T0
   components:
   - type: Sprite
-    color: "#393939"
+    color: "#383838"
   - type: Solution
     solution:
       maxVol: 1
@@ -151,7 +151,7 @@
   suffix: T1
   components:
   - type: Sprite
-    color: "#cde2e7"
+    color: "#c6d8e2"
   - type: Solution
     solution:
       maxVol: 1
@@ -166,7 +166,7 @@
   suffix: T1
   components:
   - type: Sprite
-    color: "#f3e48a"
+    color: "#faee88"
   - type: Solution
     solution:
       maxVol: 1
@@ -181,7 +181,7 @@
   suffix: T1
   components:
   - type: Sprite
-    color: "#9999b7"
+    color: "#9593b2"
   - type: Solution
     solution:
       maxVol: 1
@@ -196,7 +196,7 @@
   suffix: T1
   components:
   - type: Sprite
-    color: "#597653"
+    color: "#5c7956"
   - type: Solution
     solution:
       maxVol: 1
@@ -211,7 +211,7 @@
   suffix: T1
   components:
   - type: Sprite
-    color: "#e8d4b5"
+    color: "#eedcbc"
   - type: Solution
     solution:
       maxVol: 1
@@ -226,7 +226,7 @@
   suffix: T1
   components:
   - type: Sprite
-    color: "#5f5f5f"
+    color: "#606060"
   - type: Solution
     solution:
       maxVol: 1
@@ -241,7 +241,7 @@
   suffix: T1
   components:
   - type: Sprite
-    color: "#83b546"
+    color: "#94d14a"
   - type: Solution
     solution:
       maxVol: 1
@@ -256,7 +256,7 @@
   suffix: T1
   components:
   - type: Sprite
-    color: "#90221b"
+    color: "#a31e22"
   - type: Solution
     solution:
       maxVol: 1
@@ -271,7 +271,7 @@
   suffix: T1
   components:
   - type: Sprite
-    color: "#77ccc6"
+    color: "#74cfca"
   - type: Solution
     solution:
       maxVol: 1
@@ -286,7 +286,7 @@
   suffix: T1
   components:
   - type: Sprite
-    color: "#f1f1f2"
+    color: "#ececed"
   - type: Solution
     solution:
       maxVol: 1
@@ -303,7 +303,7 @@
   suffix: T2
   components:
   - type: Sprite
-    color: "#6c1384"
+    color: "#9102b4"
   - type: Solution
     solution:
       maxVol: 1
@@ -318,7 +318,7 @@
   suffix: T2
   components:
   - type: Sprite
-    color: "#835817"
+    color: "#ac6f11"
   - type: Solution
     solution:
       maxVol: 1
@@ -333,7 +333,7 @@
   suffix: T2
   components:
   - type: Sprite
-    color: "#691012"
+    color: "#860b11"
   - type: Solution
     solution:
       maxVol: 1
@@ -348,7 +348,7 @@
   suffix: T2
   components:
   - type: Sprite
-    color: "#0e7f0d"
+    color: "#6ec03a"
   - type: Solution
     solution:
       maxVol: 1
@@ -363,7 +363,7 @@
   suffix: T2
   components:
   - type: Sprite
-    color: "#af4e50"
+    color: "#cd5d68"
   - type: Solution
     solution:
       maxVol: 1
@@ -378,7 +378,7 @@
   suffix: T2
   components:
   - type: Sprite
-    color: "#299729"
+    color: "#20d734"
   - type: Solution
     solution:
       maxVol: 1
@@ -393,7 +393,7 @@
   suffix: T2
   components:
   - type: Sprite
-    color: "#9695a6"
+    color: "#a5a7bf"
   - type: Solution
     solution:
       maxVol: 1
@@ -408,7 +408,7 @@
   suffix: T2
   components:
   - type: Sprite
-    color: "#6b616b"
+    color: "#77697c"
   - type: Solution
     solution:
       maxVol: 1
@@ -423,7 +423,7 @@
   suffix: T2
   components:
   - type: Sprite
-    color: "#b62c2f"
+    color: "#ec2f3a"
   - type: Solution
     solution:
       maxVol: 1
@@ -438,7 +438,7 @@
   suffix: T2
   components:
   - type: Sprite
-    color: "#222222"
+    color: "#282828"
   - type: Solution
     solution:
       maxVol: 1
@@ -453,7 +453,7 @@
   suffix: T2
   components:
   - type: Sprite
-    color: "#635657"
+    color: "#807778"
   - type: Solution
     solution:
       maxVol: 1
@@ -468,7 +468,7 @@
   suffix: T2
   components:
   - type: Sprite
-    color: "#b4b4aa"
+    color: "#d3d6c8"
   - type: Solution
     solution:
       maxVol: 1
@@ -485,7 +485,7 @@
   suffix: T3
   components:
   - type: Sprite
-    color: "#503c50"
+    color: "#734a77"
   - type: Solution
     solution:
       maxVol: 1
@@ -500,7 +500,7 @@
   suffix: T3
   components:
   - type: Sprite
-    color: "#69522f"
+    color: "#7f5d39"
   - type: Solution
     solution:
       maxVol: 1
@@ -515,7 +515,7 @@
   suffix: T3
   components:
   - type: Sprite
-    color: "#b791b6"
+    color: "#bb8cc0"
   - type: Solution
     solution:
       maxVol: 1
@@ -530,7 +530,7 @@
   suffix: T3
   components:
   - type: Sprite
-    color: "#bb4273"
+    color: "#de5195"
   - type: Solution
     solution:
       maxVol: 1
@@ -545,7 +545,7 @@
   suffix: T3
   components:
   - type: Sprite
-    color: "#3a4000"
+    color: "#3a4a07"
   - type: Solution
     solution:
       maxVol: 1
@@ -560,7 +560,7 @@
   suffix: T3
   components:
   - type: Sprite
-    color: "#86868a"
+    color: "#4e585d"
   - type: Solution
     solution:
       maxVol: 1
@@ -575,7 +575,7 @@
   suffix: T3
   components:
   - type: Sprite
-    color: "#580d58"
+    color: "#780186"
   - type: Solution
     solution:
       maxVol: 1
@@ -592,7 +592,7 @@
   suffix: T4
   components:
   - type: Sprite
-    color: "#bd978d"
+    color: "#e8afa7"
   - type: Solution
     solution:
       maxVol: 1
@@ -607,7 +607,7 @@
   suffix: T4
   components:
   - type: Sprite
-    color: "#2b90a4"
+    color: "#28b6e4"
   - type: Solution
     solution:
       maxVol: 1
@@ -624,7 +624,7 @@
   suffix: T5
   components:
   - type: Sprite
-    color: "#b49e91"
+    color: "#ddc0aa"
   - type: Solution
     solution:
       maxVol: 1
@@ -641,7 +641,7 @@
   suffix: T6
   components:
   - type: Sprite
-    color: "#2d2c81"
+    color: "#4c56b2"
   - type: Solution
     solution:
       maxVol: 1
@@ -656,7 +656,7 @@
   suffix: T6
   components:
   - type: Sprite
-    color: "#8d7659"
+    color: "#d36c36"
   - type: Solution
     solution:
       maxVol: 1
@@ -671,7 +671,7 @@
   suffix: T6
   components:
   - type: Sprite
-    color: "#b39744"
+    color: "#d9aa4a"
   - type: Solution
     solution:
       maxVol: 1
@@ -686,7 +686,7 @@
   suffix: T6
   components:
   - type: Sprite
-    color: "#a8a2a5"
+    color: "#cbc3c8"
   - type: Solution
     solution:
       maxVol: 1
@@ -703,7 +703,7 @@
   suffix: T7
   components:
   - type: Sprite
-    color: "#607060"
+    color: "#79907d"
   - type: Solution
     solution:
       maxVol: 1
@@ -718,7 +718,7 @@
   suffix: T7
   components:
   - type: Sprite
-    color: "#6f6f88"
+    color: "#767891"
   - type: Solution
     solution:
       maxVol: 1
@@ -733,7 +733,7 @@
   suffix: T7
   components:
   - type: Sprite
-    color: "#c9c9ab"
+    color: "#d2d3b7"
   - type: Solution
     solution:
       maxVol: 1
@@ -748,7 +748,7 @@
   suffix: T7
   components:
   - type: Sprite
-    color: "#8a4546"
+    color: "#9d5e6c"
   - type: Solution
     solution:
       maxVol: 1
@@ -763,7 +763,7 @@
   suffix: T7
   components:
   - type: Sprite
-    color: "#148180"
+    color: "#62aad3"
   - type: Solution
     solution:
       maxVol: 1
@@ -778,7 +778,7 @@
   suffix: T7
   components:
   - type: Sprite
-    color: "#b3876c"
+    color: "#d9ac7a"
   - type: Solution
     solution:
       maxVol: 1

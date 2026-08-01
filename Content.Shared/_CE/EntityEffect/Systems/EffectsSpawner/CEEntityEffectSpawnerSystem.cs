@@ -1,6 +1,5 @@
 ﻿
 using Content.Shared._CE.EntityEffect;
-using Content.Shared.Projectiles;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.Animation.Effects;
@@ -25,8 +24,8 @@ public sealed partial class CEEntityEffectSpawnerSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        var query = EntityQueryEnumerator<CEEntityEffectSpawnerComponent, ProjectileComponent>();
-        while (query.MoveNext(out var uid, out var spawner, out var projectile))
+        var query = EntityQueryEnumerator<CEEntityEffectSpawnerComponent>();
+        while (query.MoveNext(out var uid, out var spawner))
         {
             if (_timing.CurTime < spawner.NextEffectTime)
                 continue;
@@ -34,7 +33,7 @@ public sealed partial class CEEntityEffectSpawnerSystem : EntitySystem
             spawner.NextEffectTime = _timing.CurTime + spawner.Frequency;
 
             var pos = Transform(uid).Coordinates;
-            var args = new CEEntityEffectArgs(EntityManager, projectile.Shooter ?? uid, null, Angle.Zero, 1f, uid, pos);
+            var args = new CEEntityEffectArgs(EntityManager, uid, null, Angle.Zero, 1f, uid, pos);
 
             foreach (var effect in spawner.Effects)
             {
