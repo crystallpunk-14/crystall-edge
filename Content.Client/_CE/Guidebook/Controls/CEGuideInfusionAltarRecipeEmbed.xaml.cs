@@ -38,7 +38,7 @@ public sealed partial class CEGuideInfusionAltarRecipeEmbed : PanelContainer, IS
     private const float DiagramCenterY = 175f;
     private const float PedestalOrbitRadius = 110f;
     private const float AltarIconSize = 96f;
-    private const float CatalystIconSize = 96f;
+    private const float CatalystIconSize = 72f;
     private const float PedestalIconSize = 96f;
     private const float PedestalItemIconSize = 72f;
     private const float EssenceIconSize = 32f;
