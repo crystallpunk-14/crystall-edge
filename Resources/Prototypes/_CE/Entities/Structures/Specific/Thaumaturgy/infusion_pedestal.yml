@@ -1,7 +1,9 @@
 # CrystallEdge: placeholder sprite (Structures/Furniture/Altars/Gods/convertaltar.rsi) borrowed from
 # upstream until dedicated infusion altar art exists.
 - type: entity
-  parent: BaseMachine
+  parent:
+  - CEBaseMachinePowered
+  - BaseMachine
   id: CEInfusionAltarPedestal
   categories: [ ForkFiltered ]
   name: infusion altar pedestal
@@ -13,7 +15,12 @@
     noRot: true
     offset: 0, -0.1
     sprite: _CE/Structures/Specific/Thaumaturgy/infusion_altar.rsi
-    state: pedestal
+    layers:
+    - state: pedestal
+    - state: pedestal_powered
+      map: [ "power" ]
+      visible: false
+      shader: unshaded
   - type: Icon
     sprite: _CE/Structures/Specific/Thaumaturgy/infusion_altar.rsi
     state: pedestal
@@ -24,6 +31,13 @@
         name: ce-infusion-altar-pedestal-slot-name
         ejectOnInteract: true
         ejectOnBreak: true
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        power:
+          True: { visible: true }
+          False: { visible: false }
   - type: ContainerContainer
     containers:
       pedestal: !type:ContainerSlot
@@ -52,3 +66,19 @@
         - MidImpassable
         - LowImpassable
         hard: false # items should rest on top, not bounce off
+  - type: LitOnPowered
+  - type: PointLight
+    enabled: false
+    color: "#9335b8"
+    radius: 2
+  - type: LightBehaviour
+    behaviours:
+    - !type:RandomizeBehaviour
+      interpolate: Nearest
+      minDuration: 0.02
+      maxDuration: 0.06
+      startValue: 0.0
+      endValue: 3.0
+      property: Energy
+      isLooped: true
+      enabled: false

@@ -114,8 +114,8 @@
   - type: LitOnPowered
   - type: PointLight
     enabled: false
-    color: "#ede323"
-    radius: 3
+    color: "#9335b8"
+    radius: 5
   - type: LightBehaviour
     behaviours:
     - !type:RandomizeBehaviour
@@ -141,6 +141,7 @@
     color: "#FFFFFF80"
   - type: TimedDespawn
     lifetime: 5
+  - type: CETimedDespawnFadeout
   - type: Clickable
   - type: Tag
     tags:

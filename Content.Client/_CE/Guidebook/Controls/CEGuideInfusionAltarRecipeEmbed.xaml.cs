@@ -178,7 +178,7 @@ public sealed partial class CEGuideInfusionAltarRecipeEmbed : PanelContainer, IS
             MouseFilter = MouseFilterMode.Stop,
             ToolTip = _prototype.TryIndex(proto, out var protoData) ? protoData.Name : proto.Id,
             // Faded so the item resting on top (drawn separately, full opacity) reads as the focus.
-            Modulate = Color.White.WithAlpha(0.55f),
+            Modulate = Color.White.WithAlpha(0.3f),
         };
         view.SetPrototype(proto);
         return view;

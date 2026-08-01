@@ -103,6 +103,9 @@ public sealed partial class CEInfusionAltarSystem
 
             foreach (var pedestalUid in available)
             {
+                if (!this.IsPowered(pedestalUid, EntityManager))
+                    continue;
+
                 if (_itemSlots.GetItemOrNull(pedestalUid, PedestalSlot) is not { } item)
                     continue;
 

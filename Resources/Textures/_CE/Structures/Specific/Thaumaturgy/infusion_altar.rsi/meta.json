@@ -11,6 +11,9 @@
       "name": "pedestal"
     },
     {
+      "name": "pedestal_powered"
+    },
+    {
       "name": "altar"
     }
   ]
