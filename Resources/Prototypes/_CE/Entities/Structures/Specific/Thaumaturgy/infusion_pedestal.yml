@@ -46,6 +46,7 @@
     containers:
       pedestal: !type:ContainerSlot
         showEnts: true
+        occludes: false
   - type: Climbable
   - type: PlacementReplacement
     key: walls

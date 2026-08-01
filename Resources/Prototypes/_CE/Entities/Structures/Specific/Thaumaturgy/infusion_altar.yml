@@ -66,6 +66,7 @@
     containers:
       catalyst: !type:ContainerSlot
         showEnts: true
+        occludes: false
   - type: PlacementReplacement
     key: walls
   - type: Fixtures

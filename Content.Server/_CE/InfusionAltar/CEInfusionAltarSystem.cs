@@ -25,6 +25,7 @@ public sealed partial class CEInfusionAltarSystem : EntitySystem
 
         InitConnections();
         InitKnowledge();
+        InitExamine();
     }
 
     private void OnRoundStarting(RoundStartingEvent ev)

@@ -1,5 +1,6 @@
 using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared.Chemistry.Reaction;
+using Content.Shared.Chemistry.Reagent;
 using Content.Shared.EntityEffects.Effects.EntitySpawning;
 using Robust.Shared.Prototypes;
 
