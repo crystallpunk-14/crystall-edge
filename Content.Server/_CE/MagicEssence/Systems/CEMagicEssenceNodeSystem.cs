@@ -15,6 +15,7 @@ using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Spawners;
 using Robust.Shared.Timing;
 
 namespace Content.Server._CE.MagicEssence.Systems;
@@ -60,7 +61,11 @@ public sealed partial class CEMagicEssenceNodeSystem : EntitySystem
     }
 
     /// <summary>
-    /// Rolls 3 random essence aspects for a freshly spawned node. Aspects may repeat.
+    /// Rolls 3 random essence aspects for a freshly spawned node, and rolls its total lifetime
+    /// between <see cref="CEMagicEssenceNodeComponent.MinLifetime"/> and
+    /// <see cref="CEMagicEssenceNodeComponent.MaxLifetime"/>, applying it to both the networked
+    /// <see cref="CEMagicEssenceNodeComponent.Lifetime"/> (for the client's fade curve) and the
+    /// entity's own <see cref="TimedDespawnComponent"/> (the actual despawn timer). Aspects may repeat.
     /// </summary>
     private void OnNodeMapInit(Entity<CEMagicEssenceNodeComponent> ent, ref MapInitEvent args)
     {
@@ -68,6 +73,16 @@ public sealed partial class CEMagicEssenceNodeSystem : EntitySystem
         ent.Comp.EssenceB = _essence.GetRandomEssenceType();
         ent.Comp.EssenceC = _essence.GetRandomEssenceType();
         ent.Comp.NextGenerationTime = _timing.CurTime + ent.Comp.GenerationInterval;
+
+        var minSeconds = (float)ent.Comp.MinLifetime.TotalSeconds;
+        var maxSeconds = (float)ent.Comp.MaxLifetime.TotalSeconds;
+        var lifetime = TimeSpan.FromSeconds(_random.NextFloat(minSeconds, maxSeconds));
+
+        ent.Comp.SpawnTime = _timing.CurTime;
+        ent.Comp.Lifetime = lifetime;
+
+        if (TryComp<TimedDespawnComponent>(ent, out var despawn))
+            despawn.Lifetime = (float)lifetime.TotalSeconds;
 
         Dirty(ent);
     }
@@ -194,15 +209,28 @@ public sealed partial class CEMagicEssenceNodeSystem : EntitySystem
         if (grids.Count == 0)
             return false;
 
-        for (var i = 0; i < 25; i++)
-        {
-            var grid = _random.Pick(grids);
+        _random.Shuffle(grids);
 
+        foreach (var grid in grids)
+        {
             if (!TryComp<MapGridComponent>(grid, out var gridComp))
                 continue;
 
+            if (TryGetRandomTileOnGrid(grid, gridComp, out coordinates))
+                return true;
+        }
+
+        return false;
+    }
+
+    private bool TryGetRandomTileOnGrid(EntityUid grid, MapGridComponent gridComp, out EntityCoordinates coordinates)
+    {
+        coordinates = default;
+
+        for (var i = 0; i < 25; i++)
+        {
             if (!TryPickRandomTile(grid, gridComp, out var tile))
-                continue;
+                return false; // grid has no tiles at all - no point retrying
 
             var valid = true;
             foreach (var ent in _mapSystem.GetAnchoredEntities(grid, gridComp, tile))

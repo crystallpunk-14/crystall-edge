@@ -11,7 +11,7 @@
       maxVol: 50
   - type: InteractionOutline
   - type: TimedDespawn
-    lifetime: 1200
+    lifetime: 600
   - type: Transform
     anchored: true
   - type: Physics
@@ -48,6 +48,7 @@
       shader: unshaded
       offset: -0.05, 0.06
   - type: PointLight
+    netsync: false
     color: "#97c579"
   - type: Clickable
   - type: Appearance

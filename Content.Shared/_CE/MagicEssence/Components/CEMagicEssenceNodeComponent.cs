@@ -62,4 +62,41 @@ public sealed partial class CEMagicEssenceNodeComponent : Component
     /// </summary>
     [DataField, AutoPausedField]
     public TimeSpan NextGenerationTime = TimeSpan.Zero;
+
+    /// <summary>
+    /// When the node was spawned, i.e. when <see cref="Lifetime"/> started counting down. Set once on
+    /// <see cref="Robust.Shared.GameObjects.MapInitEvent"/> alongside a matching
+    /// <see cref="Robust.Shared.Spawners.TimedDespawnComponent.Lifetime"/> - networked (unlike
+    /// TimedDespawnComponent's own countdown) so the client can derive the fade in/out progress
+    /// without guessing at server-only state.
+    /// </summary>
+    [DataField, AutoNetworkedField, AutoPausedField]
+    public TimeSpan SpawnTime = TimeSpan.Zero;
+
+    /// <summary>
+    /// Total lifetime rolled for this node on spawn - randomized between <see cref="MinLifetime"/> and
+    /// <see cref="MaxLifetime"/> server-side. Together with <see cref="SpawnTime"/>, drives the
+    /// client-side fade in/out curve.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public TimeSpan Lifetime = TimeSpan.Zero;
+
+    /// <summary>
+    /// Lower bound for the random <see cref="Lifetime"/> rolled on spawn.
+    /// </summary>
+    [DataField]
+    public TimeSpan MinLifetime = TimeSpan.FromMinutes(10);
+
+    /// <summary>
+    /// Upper bound for the random <see cref="Lifetime"/> rolled on spawn.
+    /// </summary>
+    [DataField]
+    public TimeSpan MaxLifetime = TimeSpan.FromMinutes(20);
+
+    /// <summary>
+    /// Client-only: cached 70/20/10 blend of <see cref="EssenceA"/>/<see cref="EssenceB"/>/<see cref="EssenceC"/>'s
+    /// colors, re-derived whenever the rolled aspects change instead of every render frame.
+    /// </summary>
+    [ViewVariables]
+    public Color? LightColor;
 }
