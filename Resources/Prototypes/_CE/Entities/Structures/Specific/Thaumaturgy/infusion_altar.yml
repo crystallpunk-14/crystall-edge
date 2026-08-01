@@ -55,6 +55,7 @@
     - CEInfusionAltarMishapManaConsume
     - CEInfusionAltarMishapManaRestore
     - CEInfusionAltarMishapPulse
+    - CEInfusionAltarMishapExplosion
   - type: Climbable
   - type: ItemSlots
     slots:
@@ -67,6 +68,12 @@
       catalyst: !type:ContainerSlot
         showEnts: true
         occludes: false
+      machine_board: !type:Container
+        showEnts: false
+        occludes: true
+      machine_parts: !type:Container
+        showEnts: false
+        occludes: true
   - type: PlacementReplacement
     key: walls
   - type: Fixtures

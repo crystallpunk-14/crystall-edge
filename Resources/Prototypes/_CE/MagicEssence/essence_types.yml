@@ -546,11 +546,11 @@
   id: Cloth
   name: Pannus
   desc: ce-reagent-desc-essence-cloth
-  color: "#c9c9ab"
+  color: "#d2d3b7"
   tier: 7
   essenceProto: CEEssenceCloth
   icon:
-    sprite: _CE/Interface/Misc/thaum_essence_temp.rsi
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: pannus
   reagent: CEEssenceCloth
 
@@ -558,11 +558,11 @@
   id: Weapon
   name: Telum
   desc: ce-reagent-desc-essence-weapon
-  color: "#8a4546"
+  color: "#9d5e6c"
   tier: 7
   essenceProto: CEEssenceWeapon
   icon:
-    sprite: _CE/Interface/Misc/thaum_essence_temp.rsi
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: telum
   reagent: CEEssenceWeapon
 
@@ -570,11 +570,11 @@
   id: Armor
   name: Tutamen
   desc: ce-reagent-desc-essence-armor
-  color: "#148180"
+  color: "#62aad3"
   tier: 7
   essenceProto: CEEssenceArmor
   icon:
-    sprite: _CE/Interface/Misc/thaum_essence_temp.rsi
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: tutamen
   reagent: CEEssenceArmor
 
@@ -582,10 +582,10 @@
   id: Harvest
   name: Meto
   desc: ce-reagent-desc-essence-harvest
-  color: "#b3876c"
+  color: "#d9ac7a"
   tier: 7
   essenceProto: CEEssenceHarvest
   icon:
-    sprite: _CE/Interface/Misc/thaum_essence_temp.rsi
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
     state: meto
   reagent: CEEssenceHarvest

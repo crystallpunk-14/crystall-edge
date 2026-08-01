@@ -518,7 +518,7 @@
   parent: CEEssenceBaseT7
   name: ce-reagent-name-essence-cloth
   desc: ce-reagent-desc-essence-cloth
-  color: "#c9c9ab"
+  color: "#d2d3b7"
   tileReactions:
   - !type:CreateEntityTileReaction
     entity: CEEssenceCloth
@@ -528,7 +528,7 @@
   parent: CEEssenceBaseT7
   name: ce-reagent-name-essence-weapon
   desc: ce-reagent-desc-essence-weapon
-  color: "#8a4546"
+  color: "#9d5e6c"
   tileReactions:
   - !type:CreateEntityTileReaction
     entity: CEEssenceWeapon
@@ -538,7 +538,7 @@
   parent: CEEssenceBaseT7
   name: ce-reagent-name-essence-armor
   desc: ce-reagent-desc-essence-armor
-  color: "#148180"
+  color: "#62aad3"
   tileReactions:
   - !type:CreateEntityTileReaction
     entity: CEEssenceArmor
@@ -548,7 +548,7 @@
   parent: CEEssenceBaseT7
   name: ce-reagent-name-essence-harvest
   desc: ce-reagent-desc-essence-harvest
-  color: "#b3876c"
+  color: "#d9ac7a"
   tileReactions:
   - !type:CreateEntityTileReaction
     entity: CEEssenceHarvest

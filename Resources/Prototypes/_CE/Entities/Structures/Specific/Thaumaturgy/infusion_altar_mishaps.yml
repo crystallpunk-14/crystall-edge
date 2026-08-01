@@ -92,7 +92,6 @@
       - !type:ChangeMana
         amount: 20
 
-
 - type: entity
   id: CEInfusionAltarMishapPulse
   categories: [ ForkFiltered ]
@@ -113,9 +112,56 @@
           pitch: 0.6
           variation: 0.05
     - !type:ShockWaveVFX
+      width: 2
     - !type:AreaEffect
       minRange: 1
       range: 6
       effects:
       - !type:ThrowFrom
       - !type:EjectSlotItem
+
+- type: entity
+  id: CEInfusionAltarMishapExplosion
+  categories: [ ForkFiltered ]
+  save: false
+  name: infusion altar mana explosion mishap
+  description: TODO
+  components:
+  - type: TimedDespawn
+    lifetime: 5
+  - type: PointLight
+    color: "#ffa509"
+    radius: 6
+    energy: 5
+  - type: LightBehaviour
+    behaviours:
+      - !type:PulseBehaviour
+        interpolate: Linear
+        maxDuration: 0.5
+        startValue: 0
+        endValue: 5.0
+        property: Energy
+        isLooped: false
+        enabled: true
+  - type: CEEntityEffectSpawner
+    firstDelay: 0.2
+    frequency: 999
+    effects:
+    - !type:PlaySound
+      sound:
+        path: /Audio/Effects/explosion_small3.ogg
+        params:
+          pitch: 0.8
+          variation: 0.05
+    - !type:ShockWaveVFX
+    - !type:AreaEffect
+      minRange: 1
+      range: 6
+      effects:
+      - !type:ThrowFrom
+        distance: 1
+      - !type:Damage
+        damage:
+          types:
+            Blunt: 10
+            Heat: 5
