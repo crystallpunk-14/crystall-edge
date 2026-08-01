@@ -45,6 +45,8 @@
         friction: 0
   - type: Solution
     id: essence
+    solution:
+      canReact: false
   - type: Visibility
     layer: 16 #magic vision only
   - type: GuideHelp

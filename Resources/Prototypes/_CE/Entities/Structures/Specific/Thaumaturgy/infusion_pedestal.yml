@@ -9,6 +9,8 @@
   name: infusion altar pedestal
   description: TODO
   components:
+  - type: StaticPrice
+    price: 36
   - type: InteractionOutline
   - type: GuideHelp
     guides:

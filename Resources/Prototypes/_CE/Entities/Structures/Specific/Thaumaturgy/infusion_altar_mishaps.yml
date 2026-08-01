@@ -115,7 +115,7 @@
       width: 2
     - !type:AreaEffect
       minRange: 1
-      range: 6
+      range: 4
       effects:
       - !type:ThrowFrom
       - !type:EjectSlotItem

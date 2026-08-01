@@ -8,6 +8,8 @@
   name: infusion altar
   description: TODO
   components:
+  - type: Machine
+    board: CEMachineCoreInfusionAltar
   - type: InteractionOutline
   - type: GuideHelp
     guides:

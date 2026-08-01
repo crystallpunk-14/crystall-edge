@@ -135,6 +135,26 @@
     price: 150
 
 - type: entity
+  id: CEMachineCoreInfusionAltar
+  parent: CEBaseMachineCore
+  name: infusion altar machine core
+  components:
+  - type: MachineBoard
+    prototype: CEInfusionAltar
+  - type: StaticPrice
+    price: 180
+
+- type: entity
+  id: CEMachineCoreSolutionNormalizer
+  parent: CEBaseMachineCore
+  name: solution normalizer machine core
+  components:
+  - type: MachineBoard
+    prototype: CESolutionNormalizer
+  - type: StaticPrice
+    price: 150
+
+- type: entity
   id: CEMachineCoreDistributionUnit
   parent: CEBaseMachineCore
   name: distribution unit machine core

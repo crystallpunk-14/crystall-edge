@@ -37,6 +37,13 @@ ce-lock-shape-engineering-tunnels = инженерные туннели
 ce-lock-shape-engineering-brigadier = кабинет бригадира
 ce-lock-shape-engineering-storage = инженерный склад
 
+# Academy
+
+ce-lock-shape-academy-hall = холл академии
+ce-lock-shape-academy-technical = технические помещения академии
+ce-lock-shape-academy-lab = лаборатория академии
+ce-lock-shape-academy-rector-room = кабинет ректора
+
 # Citizens
 
 ce-lock-shape-tailor-shop = магазин одежды

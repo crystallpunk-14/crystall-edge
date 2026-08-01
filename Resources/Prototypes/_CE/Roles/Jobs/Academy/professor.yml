@@ -14,6 +14,7 @@
 - type: startingGear
   id: CEAcademyProfessorGear
   equipment:
+    belt: CEKeyRingAcademyProfessor
     pocket1: CEWalletFilledAcademyProfessor
 
 - type: entity
@@ -29,3 +30,14 @@
     - id: CECoinSilver1
     - id: CECoinSilver1
     - id: CECoinCopper10
+
+- type: entity
+  id: CEKeyRingAcademyProfessor
+  parent: CEBaseKeyRing
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+    - id: CEKeyAcademyHall
+    - id: CEKeyAcademyTechnical
+    - id: CEKeyAcademyLab
