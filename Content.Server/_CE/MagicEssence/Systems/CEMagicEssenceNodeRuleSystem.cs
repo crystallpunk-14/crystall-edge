@@ -1,13 +1,13 @@
-using Content.Server._CE.WildMagic.Components;
+using Content.Server._CE.MagicEssence.Components;
 using Content.Server.GameTicking.Rules;
 using Content.Shared.GameTicking.Components;
 
-namespace Content.Server._CE.WildMagic;
+namespace Content.Server._CE.MagicEssence.Systems;
 
-/// <inheritdoc cref="CEWildMagicRuleComponent"/>
-public sealed partial class CEWildMagicRuleSystem : GameRuleSystem<CEWildMagicRuleComponent>
+/// <inheritdoc cref="CEMagicEssenceNodeRuleComponent"/>
+public sealed partial class CEMagicEssenceNodeRuleSystem : GameRuleSystem<CEMagicEssenceNodeRuleComponent>
 {
-    [Dependency] private CEWildMagicSystem _wildMagic = default!;
+    [Dependency] private CEMagicEssenceNodeSystem _essenceNode = default!;
 
     /// <summary>
     /// Set while <see cref="ReconcileNodeCount"/> is deliberately deleting excess mandatory nodes,
@@ -19,7 +19,7 @@ public sealed partial class CEWildMagicRuleSystem : GameRuleSystem<CEWildMagicRu
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CEWildMagicMandatoryNodeComponent, ComponentShutdown>(OnMandatoryNodeShutdown);
+        SubscribeLocalEvent<CEMagicEssenceMandatoryNodeComponent, ComponentShutdown>(OnMandatoryNodeShutdown);
     }
 
     /// <summary>
@@ -27,20 +27,20 @@ public sealed partial class CEWildMagicRuleSystem : GameRuleSystem<CEWildMagicRu
     /// its z-map network are already fully built - unlike StationPostInitEvent, which can fire
     /// before CEZLevelsSystem has finished setting the network up.
     /// </summary>
-    protected override void Started(EntityUid uid, CEWildMagicRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
+    protected override void Started(EntityUid uid, CEMagicEssenceNodeRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
         base.Started(uid, component, gameRule, args);
 
         ReconcileNodeCount(component.NodeCount);
     }
 
-    private void OnMandatoryNodeShutdown(Entity<CEWildMagicMandatoryNodeComponent> ent, ref ComponentShutdown args)
+    private void OnMandatoryNodeShutdown(Entity<CEMagicEssenceMandatoryNodeComponent> ent, ref ComponentShutdown args)
     {
         if (_trimmingNodes)
             return;
 
-        // Only keep replenishing the pool while a wild magic rule is still active - once it ends,
-        // removed nodes just stay gone.
+        // Only keep replenishing the pool while a magic essence node rule is still active - once it
+        // ends, removed nodes just stay gone.
         if (!QueryActiveRules().MoveNext(out _, out _, out _, out _))
             return;
 
@@ -54,7 +54,7 @@ public sealed partial class CEWildMagicRuleSystem : GameRuleSystem<CEWildMagicRu
     private void ReconcileNodeCount(int target)
     {
         var current = new List<EntityUid>();
-        var query = EntityQueryEnumerator<CEWildMagicMandatoryNodeComponent>();
+        var query = EntityQueryEnumerator<CEMagicEssenceMandatoryNodeComponent>();
         while (query.MoveNext(out var uid, out _))
             current.Add(uid);
 
@@ -76,24 +76,24 @@ public sealed partial class CEWildMagicRuleSystem : GameRuleSystem<CEWildMagicRu
     }
 
     /// <summary>
-    /// Spawns a wild magic node on the station, marked as mandatory - while this rule is active,
+    /// Spawns a magic essence node on the station, marked as mandatory - while this rule is active,
     /// removing it causes a replacement to be generated the same way.
     /// </summary>
     private EntityUid? SpawnMandatoryNode()
     {
-        if (!_wildMagic.TryGetStationNetwork(out var network))
+        if (!_essenceNode.TryGetStationNetwork(out var network))
         {
-            Log.Warning("CEWildMagicRuleSystem: couldn't resolve a station z-map network - no mandatory node spawned.");
+            Log.Warning("CEMagicEssenceNodeRuleSystem: couldn't resolve a station z-map network - no mandatory node spawned.");
             return null;
         }
 
-        if (_wildMagic.SpawnNodeInNetwork(network) is not { } uid)
+        if (_essenceNode.SpawnNodeInNetwork(network) is not { } uid)
         {
-            Log.Warning($"CEWildMagicRuleSystem: couldn't find a valid tile in z-map network {ToPrettyString(network.Owner)} - no mandatory node spawned.");
+            Log.Warning($"CEMagicEssenceNodeRuleSystem: couldn't find a valid tile in z-map network {ToPrettyString(network.Owner)} - no mandatory node spawned.");
             return null;
         }
 
-        EnsureComp<CEWildMagicMandatoryNodeComponent>(uid);
+        EnsureComp<CEMagicEssenceMandatoryNodeComponent>(uid);
         return uid;
     }
 }

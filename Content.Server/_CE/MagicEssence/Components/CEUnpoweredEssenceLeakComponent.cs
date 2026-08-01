@@ -1,7 +1,7 @@
 using Content.Shared.Chemistry.Components;
 using Content.Shared.FixedPoint;
 
-namespace Content.Server._CE.MagicEssence;
+namespace Content.Server._CE.MagicEssence.Components;
 
 /// <summary>
 /// While the owning entity is unpowered, slowly leaks the named solution. Each tick, one random

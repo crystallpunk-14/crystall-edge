@@ -1,4 +1,6 @@
-namespace Content.Server._CE.MagicEssence;
+using Content.Server._CE.MagicEssence.Systems;
+
+namespace Content.Server._CE.MagicEssence.Components;
 
 /// <summary>
 /// Marker added to a <see cref="CEMagicEssenceAttractorComponent"/> entity while it is powered.

@@ -1,6 +1,7 @@
+using Content.Server._CE.MagicEssence.Systems;
 using Robust.Shared.Audio;
 
-namespace Content.Server._CE.MagicEssence;
+namespace Content.Server._CE.MagicEssence.Components;
 
 /// <summary>
 /// A powered device that draws in nearby floating magic essence (see <see cref="CEMagicEssenceAttractingComponent"/>)

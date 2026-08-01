@@ -31,9 +31,9 @@
 
 - type: entity
   parent: CEBaseGameRule
-  id: CEGameRuleWildMagic
+  id: CEGameRuleMagicEssenceNodes
   components:
-  - type: CEWildMagicRule
+  - type: CEMagicEssenceNodeRule
     nodeCount: 5
 
 # variation passes

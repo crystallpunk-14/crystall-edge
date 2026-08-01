@@ -70,11 +70,12 @@ public sealed partial class CEClientMagicVisionSystem : EntitySystem
 
         _overlay.StartOverlay = _timing.CurTime;
 
-        if (_noirOverlay == null)
-        {
-            _noirOverlay = new CEMagicVisionNoirOverlay();
-            _overlayMan.AddOverlay(_noirOverlay);
-        }
+        // TEMP: noir/color-correction overlay disabled, re-enable this block to restore it
+        // if (_noirOverlay == null)
+        // {
+        //     _noirOverlay = new CEMagicVisionNoirOverlay();
+        //     _overlayMan.AddOverlay(_noirOverlay);
+        // }
 
         _audio.PlayGlobal(_startSound, ent.Owner);
     }

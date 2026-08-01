@@ -1,0 +1,75 @@
+- type: entity
+  id: CEMagicEssenceNode
+  categories: [ ForkFiltered ]
+  name: magic essence node
+  description: TODO
+  components:
+  - type: CEMagicEssenceNode
+  - type: Solution
+    id: essence
+    solution:
+      maxVol: 50
+  - type: InteractionOutline
+  - type: TimedDespawn
+    lifetime: 600
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+    bodyStatus: InAir
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 50
+        mask:
+        - FlyingMobMask
+        layer:
+        - FlyingMobLayer
+  - type: Sprite
+    noRot: true
+    drawdepth: Effects
+    layers:
+    - map: [ "essenceA" ]
+      sprite: _CE/Structures/Specific/Thaumaturgy/Node/big_node.rsi
+      state: base
+      shader: unshaded
+      offset: 0.05, 0.02
+    - map: [ "essenceB" ]
+      sprite: _CE/Structures/Specific/Thaumaturgy/Node/medium_node.rsi
+      state: base
+      shader: unshaded
+      offset: 0.05, 0.06
+    - map: [ "essenceC" ]
+      sprite: _CE/Structures/Specific/Thaumaturgy/Node/smol_node.rsi
+      state: base
+      shader: unshaded
+      offset: -0.05, 0.06
+  - type: PointLight
+    netsync: false
+    color: "#97c579"
+  - type: Clickable
+  - type: Appearance
+  - type: AnimationPlayer
+  - type: Visibility
+    layer: 16 #magic vision only
+
+- type: entity
+  parent: BaseStructure
+  id: CENodeSphereContainer
+  name: node container
+  categories: [ ForkFiltered ]
+  description: TODO
+  suffix: WIP
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _CE/Structures/Specific/Thaumaturgy/node_container.rsi
+    layers:
+    - state: base
+    - state: lines_back
+    - state: glass
+    - state: lines_front
