@@ -4,7 +4,6 @@
   save: false
   name: infusion altar mana consume mishap
   description: TODO
-  noSpawn: true
   components:
   - type: Sprite
     drawdepth: Effects
@@ -52,7 +51,6 @@
   save: false
   name: infusion altar mana restore mishap
   description: TODO
-  noSpawn: true
   components:
   - type: Sprite
     drawdepth: Effects
@@ -101,7 +99,6 @@
   save: false
   name: infusion altar mana pulse mishap
   description: TODO
-  noSpawn: true
   components:
   - type: TimedDespawn
     lifetime: 5
