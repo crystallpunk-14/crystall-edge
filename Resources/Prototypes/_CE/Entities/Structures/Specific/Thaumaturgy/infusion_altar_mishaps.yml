@@ -1,53 +1,95 @@
 - type: entity
-  id: CEInfusionAltarMishapSpark
-  categories: [ HideSpawnMenu ]
+  id: CEInfusionAltarMishapManaConsume
+  categories: [ ForkFiltered ]
+  save: false
+  name: infusion altar mana consume mishap
+  description: TODO
   noSpawn: true
   components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    sprite: _CE/Effects/AreaEffects/mana_consume.rsi
+    layers:
+    - state: effect
+      shader: unshaded
   - type: PointLight
-    color: "#ff6a00"
-    radius: 2
-    energy: 3
+    color: "#9e46c1"
+    radius: 6
+    energy: 5
+  - type: LightBehaviour
+    behaviours:
+      - !type:PulseBehaviour
+        interpolate: Linear
+        maxDuration: 2.5
+        startValue: 0
+        endValue: 5.0
+        property: Energy
+        isLooped: false
+        enabled: true
   - type: TimedDespawn
-    lifetime: 1
+    lifetime: 2.5
   - type: CEEntityEffectSpawner
     firstDelay: 0.2
     frequency: 999
     effects:
     - !type:PlaySound
       sound:
-        path: /Audio/_CE/Effects/crystal_ding.ogg
+        path: /Audio/Effects/teleport_departure.ogg
+        params:
+          pitch: 0.6
+          variation: 0.05
     - !type:AreaEffect
       range: 6
       checkLOS: false
       effects:
-      - !type:Damage
-        damage:
-          types:
-            Heat: 15
+      - !type:ChangeMana
+        amount: -20
 
 - type: entity
-  id: CEInfusionAltarMishapEject
-  categories: [ HideSpawnMenu ]
+  id: CEInfusionAltarMishapManaRestore
+  categories: [ ForkFiltered ]
+  save: false
+  name: infusion altar mana restore mishap
+  description: TODO
   noSpawn: true
   components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    sprite: _CE/Effects/AreaEffects/mana_restore.rsi
+    layers:
+    - state: effect
+      shader: unshaded
   - type: PointLight
-    color: "#9335b8"
-    radius: 1.5
-    energy: 2
+    color: "#2b9adf"
+    radius: 6
+    energy: 5
+  - type: LightBehaviour
+    behaviours:
+      - !type:PulseBehaviour
+        interpolate: Linear
+        maxDuration: 2.5
+        startValue: 0
+        endValue: 5.0
+        property: Energy
+        isLooped: false
+        enabled: true
   - type: TimedDespawn
-    lifetime: 1
+    lifetime: 2.5
   - type: CEEntityEffectSpawner
     firstDelay: 0.2
     frequency: 999
     effects:
     - !type:PlaySound
       sound:
-        path: /Audio/_CE/Effects/crystal_ding.ogg
+        path: /Audio/Effects/teleport_arrival.ogg
+        params:
+          pitch: 0.6
+          variation: 0.05
     - !type:AreaEffect
-      range: 10.6
+      range: 6
       checkLOS: false
       effects:
-      - !type:EjectSlotItem
-      - !type:ThrowFrom
-        origin: Used
-        effectTarget: Target
+      - !type:ChangeMana
+        amount: 20
