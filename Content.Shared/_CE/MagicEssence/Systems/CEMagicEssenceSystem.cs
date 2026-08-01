@@ -203,6 +203,25 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
         }
     }
 
+    /// <summary>
+    /// Resolves the floating essence entity that a reagent evaporates into, if that reagent is the
+    /// pure liquid embodiment of some <see cref="CEMagicEssenceTypePrototype"/> (i.e. has a
+    /// <see cref="CEMagicEssenceTypePrototype.EssenceProto"/>). False for any other reagent.
+    /// </summary>
+    public bool TryGetEssenceProtoForReagent(ProtoId<ReagentPrototype> reagent, out EntProtoId essenceProto)
+    {
+        essenceProto = default;
+
+        if (!GetReagentEssenceMap().TryGetValue(reagent, out var essenceTypeId))
+            return false;
+
+        if (!_proto.TryIndex(essenceTypeId, out var essenceType) || essenceType.EssenceProto is not { } proto)
+            return false;
+
+        essenceProto = proto;
+        return true;
+    }
+
     private Dictionary<ProtoId<ReagentPrototype>, ProtoId<CEMagicEssenceTypePrototype>> GetReagentEssenceMap()
     {
         if (_reagentToEssence is { } cached)
