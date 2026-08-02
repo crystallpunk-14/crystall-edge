@@ -421,9 +421,9 @@
 
 - type: CERecipe
   roundStart: true
-  id: CEMachineCoreInfusionAltar
+  id: CEInfusionAltar
   tag: CERecipeEngineeringTable
-  category: MachineCore
+  category: Tools
   craftTime: 2.0
   requirements:
   - !type:StackResource
@@ -438,7 +438,7 @@
   - !type:StackResource
     stack: CEGlass
     count: 5
-  result: CEMachineCoreInfusionAltar
+  result: CEInfusionAltar
   resultCount: 1
 
 - type: CERecipe

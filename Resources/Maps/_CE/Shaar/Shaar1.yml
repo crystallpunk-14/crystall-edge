@@ -2804,7 +2804,7 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -30.596663,-16.298721
       parent: 1
-- proto: CEMachineCoreInfusionAltar
+- proto: CEInfusionAltar
   entities:
   - uid: 45
     components:

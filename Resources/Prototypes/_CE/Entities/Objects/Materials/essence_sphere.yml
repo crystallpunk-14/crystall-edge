@@ -1,0 +1,107 @@
+- type: entity
+  id: CEBaseEssenceSphere
+  parent: BaseItem
+  name: essence sphere
+  description: TODO
+  abstract: true
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _CE/Objects/Materials/essence_sphere.rsi
+    layers:
+    - state: glass
+    - state: liq-1
+      shader: unshaded
+      map: [ "enum.SolutionContainerLayers.Fill" ]
+      visible: false
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 2
+    fillBaseName: liq-
+  - type: Item
+    size: Tiny
+  - type: Solution
+    id: essence
+    solution:
+      maxVol: 10
+      canReact: false
+
+- type: entity
+  id: CEEssenceSphereEarth
+  parent: CEBaseEssenceSphere
+  suffix: Terra
+  description: A sealed glass sphere holding pure liquid Terra essence.
+  components:
+  - type: Solution
+    id: essence
+    solution:
+      reagents:
+      - ReagentId: CEEssenceEarth
+        Quantity: 10
+
+- type: entity
+  id: CEEssenceSphereFire
+  parent: CEBaseEssenceSphere
+  suffix: Ignis
+  description: A sealed glass sphere holding pure liquid Ignis essence.
+  components:
+  - type: Solution
+    id: essence
+    solution:
+      reagents:
+      - ReagentId: CEEssenceFire
+        Quantity: 10
+
+- type: entity
+  id: CEEssenceSphereWater
+  parent: CEBaseEssenceSphere
+  suffix: Aqua
+  description: A sealed glass sphere holding pure liquid Aqua essence.
+  components:
+  - type: Solution
+    id: essence
+    solution:
+      reagents:
+      - ReagentId: CEEssenceWater
+        Quantity: 10
+
+- type: entity
+  id: CEEssenceSphereAir
+  parent: CEBaseEssenceSphere
+  suffix: Aer
+  description: A sealed glass sphere holding pure liquid Aer essence.
+  components:
+  - type: Solution
+    id: essence
+    solution:
+      reagents:
+      - ReagentId: CEEssenceAir
+        Quantity: 10
+
+- type: entity
+  id: CEEssenceSphereOrder
+  parent: CEBaseEssenceSphere
+  suffix: Ordo
+  description: A sealed glass sphere holding pure liquid Ordo essence.
+  components:
+  - type: Solution
+    id: essence
+    solution:
+      reagents:
+      - ReagentId: CEEssenceOrder
+        Quantity: 10
+
+- type: entity
+  id: CEEssenceSphereChaos
+  parent: CEBaseEssenceSphere
+  suffix: Perditio
+  description: A sealed glass sphere holding pure liquid Perditio essence.
+  components:
+  - type: Solution
+    id: essence
+    solution:
+      reagents:
+      - ReagentId: CEEssenceChaos
+        Quantity: 10

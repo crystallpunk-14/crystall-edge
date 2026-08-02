@@ -1,6 +1,5 @@
 - type: entity
   parent:
-  - CEConstructibleMachine
   - CEBaseMachinePowered
   - BaseMachine
   id: CEInfusionAltar
@@ -8,8 +7,8 @@
   name: infusion altar
   description: TODO
   components:
-  - type: Machine
-    board: CEMachineCoreInfusionAltar
+  - type: StaticPrice
+    price: 180
   - type: InteractionOutline
   - type: GuideHelp
     guides:
@@ -70,12 +69,6 @@
       catalyst: !type:ContainerSlot
         showEnts: true
         occludes: false
-      machine_board: !type:Container
-        showEnts: false
-        occludes: true
-      machine_parts: !type:Container
-        showEnts: false
-        occludes: true
   - type: PlacementReplacement
     key: walls
   - type: Fixtures
