@@ -516,3 +516,12 @@
   id: 1051
   time: '2026-07-30T09:38:35.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/372
+- author: TheShuEd
+  changes:
+  - message: Fixed thin windoors locking interaction area.
+    type: Fix
+  - message: Fixed medium & big pipe naming conventions!
+    type: Fix
+  id: 1052
+  time: '2026-08-02T15:19:53.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/378
