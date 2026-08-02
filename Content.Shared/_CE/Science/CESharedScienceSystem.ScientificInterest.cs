@@ -29,9 +29,12 @@ public abstract partial class CESharedScienceSystem
 
     /// <summary>
     /// Rolls a random set of research points into this entity's <see cref="CEScientificInterestComponent"/>
-    /// (added if missing), weighted towards low-tier essences - see <see cref="CEMagicEssenceSystem.GetRandomEssenceType"/>.
-    /// Only the server rolls; the result reaches the client via <see cref="CEScientificInterestComponent"/>'s
-    /// own networked state, same as every other server-authoritative roll in this game.
+    /// (added if missing): 3 essence types weighted towards low tiers (may repeat - see
+    /// <see cref="CEMagicEssenceSystem.GetRandomEssenceType"/>), then a random total point budget spent
+    /// across those 3 types 70%/20%/10% - the same weighting a magic essence node uses for its own 3
+    /// rolled aspects. Only the server rolls; the result reaches the client via
+    /// <see cref="CEScientificInterestComponent"/>'s own networked state, same as every other
+    /// server-authoritative roll in this game.
     /// </summary>
     private void OnRandomPointsMapInit(Entity<CEScienceRandomPointsComponent> ent, ref MapInitEvent args)
     {
@@ -41,11 +44,16 @@ public abstract partial class CESharedScienceSystem
         var interest = EnsureComp<CEScientificInterestComponent>(ent.Owner);
         interest.Points.Clear();
 
-        for (var i = 0; i < ent.Comp.RollCount; i++)
+        var essenceA = _essence.GetRandomEssenceType();
+        var essenceB = _essence.GetRandomEssenceType();
+        var essenceC = _essence.GetRandomEssenceType();
+
+        var total = _random.Next(ent.Comp.MinAmount, ent.Comp.MaxAmount + 1);
+        for (var i = 0; i < total; i++)
         {
-            var essence = _essence.GetRandomEssenceType();
-            var amount = _random.Next(ent.Comp.MinAmount, ent.Comp.MaxAmount + 1);
-            interest.Points[essence] = interest.Points.GetValueOrDefault(essence) + amount;
+            var roll = _random.NextFloat();
+            var essence = roll < 0.7f ? essenceA : roll < 0.9f ? essenceB : essenceC;
+            interest.Points[essence] = interest.Points.GetValueOrDefault(essence) + 1;
         }
 
         Dirty(ent.Owner, interest);
