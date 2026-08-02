@@ -1,6 +1,5 @@
 - type: entity
   parent:
-  - CEConstructibleMachine
   - CEBaseMachinePowered
   - BaseMachine
   id: CESolutionNormalizer
@@ -8,8 +7,8 @@
   name: solution normalizer
   description: An alchemical device that destroys the reagent that is least present in a solution poured into it, gradually normalizing mixtures down to their dominant reagents. Requires power to operate.
   components:
-  - type: Machine
-    board: CEMachineCoreSolutionNormalizer
+  - type: StaticPrice
+    price: 150
   - type: InteractionOutline
   - type: Transform
     anchored: true

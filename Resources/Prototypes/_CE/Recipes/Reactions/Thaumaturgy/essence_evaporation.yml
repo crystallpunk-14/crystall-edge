@@ -5,6 +5,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceEarth:
       amount: 1
@@ -21,6 +22,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceFire:
       amount: 1
@@ -37,6 +39,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceWater:
       amount: 1
@@ -53,6 +56,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceAir:
       amount: 1
@@ -69,6 +73,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceOrder:
       amount: 1
@@ -85,6 +90,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceChaos:
       amount: 1
@@ -103,6 +109,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceFrost:
       amount: 1
@@ -119,6 +126,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceLight:
       amount: 1
@@ -135,6 +143,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceMotion:
       amount: 1
@@ -151,6 +160,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceCycle:
       amount: 1
@@ -167,6 +177,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceEnergia:
       amount: 1
@@ -183,6 +194,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceVoid:
       amount: 1
@@ -199,6 +211,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssencePoison:
       amount: 1
@@ -215,6 +228,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceLife:
       amount: 1
@@ -231,6 +245,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceCrystal:
       amount: 1
@@ -247,6 +262,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceWeather:
       amount: 1
@@ -265,6 +281,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceMagic:
       amount: 1
@@ -281,6 +298,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceBeast:
       amount: 1
@@ -297,6 +315,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceHunger:
       amount: 1
@@ -313,6 +332,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssencePlant:
       amount: 1
@@ -329,6 +349,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceTravel:
       amount: 1
@@ -345,6 +366,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceSlime:
       amount: 1
@@ -361,6 +383,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceMetal:
       amount: 1
@@ -377,6 +400,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceDeath:
       amount: 1
@@ -393,6 +417,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceHealing:
       amount: 1
@@ -409,6 +434,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceDarkness:
       amount: 1
@@ -425,6 +451,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceTrap:
       amount: 1
@@ -441,6 +468,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceFlight:
       amount: 1
@@ -459,6 +487,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceEldritch:
       amount: 1
@@ -475,6 +504,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceTree:
       amount: 1
@@ -491,6 +521,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceAura:
       amount: 1
@@ -507,6 +538,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceFlesh:
       amount: 1
@@ -523,6 +555,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceUndead:
       amount: 1
@@ -539,6 +572,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceSoul:
       amount: 1
@@ -555,6 +589,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceTaint:
       amount: 1
@@ -573,6 +608,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceMind:
       amount: 1
@@ -589,6 +625,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceSenses:
       amount: 1
@@ -607,6 +644,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceHuman:
       amount: 1
@@ -625,6 +663,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceTool:
       amount: 1
@@ -641,6 +680,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceCrop:
       amount: 1
@@ -657,6 +697,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceGreed:
       amount: 1
@@ -673,6 +714,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceMining:
       amount: 1
@@ -691,6 +733,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceCraft:
       amount: 1
@@ -707,6 +750,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceMachine:
       amount: 1
@@ -723,6 +767,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceCloth:
       amount: 1
@@ -739,6 +784,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceWeapon:
       amount: 1
@@ -755,6 +801,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceArmor:
       amount: 1
@@ -771,6 +818,7 @@
   minTemp: 700
   quantized: true
   maxUnitReactions: 1
+  priority: -1
   reactants:
     CEEssenceHarvest:
       amount: 1

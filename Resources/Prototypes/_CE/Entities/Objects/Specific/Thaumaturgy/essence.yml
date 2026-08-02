@@ -9,6 +9,7 @@
   name: magic essence
   description: Particles of magical energy polarised into a particular type of magic. Will be gone soon, so try to collect them as soon as possible!
   components:
+  - type: CEFloatingEssence
   - type: Clickable
   - type: Sprite
     noRot: true

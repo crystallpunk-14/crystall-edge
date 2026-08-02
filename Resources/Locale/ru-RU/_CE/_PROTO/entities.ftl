@@ -1562,16 +1562,16 @@ ent-CEDistributionUnitEmpty = { ent-CEDistributionUnitBase }
     .desc = { ent-CEDistributionUnitBase.desc }
     .suffix = Пусто
 
-ent-CEPipeBrassBig = латунная труба
+ent-CEPipeBrassBig = большая латунная труба
     .desc = { ent-CEPipeBrassBigBase.desc }
 
-ent-CEPipeBrassBigVerticalUp = латунная труба вверх
+ent-CEPipeBrassBigVerticalUp = большая латунная труба вверх
     .desc = { ent-CEPipeBrassBig.desc }
 
-ent-CEPipeBrassBigVerticalDown = латунная труба вниз
+ent-CEPipeBrassBigVerticalDown = большая латунная труба вниз
     .desc = { ent-CEPipeBrassBig.desc }
 
-ent-CEPipeBrassBigValve = клапан трубы
+ent-CEPipeBrassBigValve = большой клапан
     .desc = Клапан, установленный на латунной трубе, позволяющий регулировать поток магической энергии через трубу.
     .suffix = Клапан, Выкл
 
@@ -1590,16 +1590,16 @@ ent-CEPipeBrassBigDelayer = замедлитель заряда трубы
 ent-CEPipeBrassMediumBase = None
     .desc = Изолированная латунная труба с железными опорами. Стандартизированный метод передачи магической энергии на большие расстояния. Однако любые отверстия или трещины могут привести к утечке энергии и нанести вред окружающим существам, восприимчивым к магии.
 
-ent-CEPipeBrassMedium = малая латунная труба
+ent-CEPipeBrassMedium = средняя латунная труба
     .desc = { ent-CEPipeBrassMediumBase.desc }
 
-ent-CEPipeBrassMediumVerticalUp = малая латунная труба вверх
+ent-CEPipeBrassMediumVerticalUp = средняя латунная труба вверх
     .desc = { ent-CEPipeBrassMedium.desc }
 
-ent-CEPipeBrassMediumVerticalDown = малая латунная труба вниз
+ent-CEPipeBrassMediumVerticalDown = средняя латунная труба вниз
     .desc = { ent-CEPipeBrassMedium.desc }
 
-ent-CEPipeBrassMediumValve = малый клапан
+ent-CEPipeBrassMediumValve = средний клапан
     .desc = Клапан, установленный на латунной трубе, позволяющий регулировать поток магической энергии через трубу.
     .suffix = Клапан, Выкл
 

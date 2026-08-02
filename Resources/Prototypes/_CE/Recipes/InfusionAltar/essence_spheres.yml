@@ -1,0 +1,127 @@
+- type: infusionAltarRecipe
+  id: EssenceSphereEarth
+  roundStart: true
+  catalyst: !type:StackResource
+    stack: CEGlass
+    count: 1
+  instability: 1
+  ritualDuration: 10
+  essenceAmount: { min: 10, max: 10 }
+  essenceWeights:
+    Earth: 1
+  pedestalCount: { min: 3, max: 3 }
+  pedestalRequirementPool:
+  - requirement: !type:StackResource
+      stack: CEDirt
+      count: 1
+    weight: 1
+  - requirement: !type:StackResource
+      stack: CEStone
+      count: 1
+    weight: 1
+  result: CEEssenceSphereEarth
+  resultCount: 1
+
+- type: infusionAltarRecipe
+  id: EssenceSphereFire
+  roundStart: true
+  catalyst: !type:StackResource
+    stack: CEGlass
+    count: 1
+  instability: 1
+  ritualDuration: 10
+  essenceAmount: { min: 10, max: 10 }
+  essenceWeights:
+    Fire: 1
+  pedestalCount: { min: 3, max: 3 }
+  pedestalRequirementPool:
+  - requirement: !type:StackResource
+      stack: CECoal
+      count: 1
+    weight: 1
+  - requirement: !type:StackResource
+      stack: CEAsh
+      count: 1
+    weight: 1
+  result: CEEssenceSphereFire
+  resultCount: 1
+
+- type: infusionAltarRecipe
+  id: EssenceSphereWater
+  roundStart: true
+  catalyst: !type:StackResource
+    stack: CEGlass
+    count: 1
+  instability: 1
+  ritualDuration: 10
+  essenceAmount: { min: 10, max: 10 }
+  essenceWeights:
+    Water: 1
+  pedestalCount: { min: 3, max: 3 }
+  pedestalRequirementPool:
+  - requirement: !type:StackResource
+      stack: CESnow
+      count: 1
+    weight: 1
+  result: CEEssenceSphereWater
+  resultCount: 1
+
+- type: infusionAltarRecipe
+  id: EssenceSphereAir
+  roundStart: true
+  catalyst: !type:StackResource
+    stack: CEGlass
+    count: 1
+  instability: 1
+  ritualDuration: 10
+  essenceAmount: { min: 10, max: 10 }
+  essenceWeights:
+    Air: 1
+  pedestalCount: { min: 3, max: 3 }
+  pedestalRequirementPool:
+  - requirement: !type:ProtoIdResource
+      protoId: CEPenFeather
+      count: 1
+    weight: 1
+  result: CEEssenceSphereAir
+  resultCount: 1
+
+- type: infusionAltarRecipe
+  id: EssenceSphereOrder
+  roundStart: true
+  catalyst: !type:StackResource
+    stack: CEGlass
+    count: 1
+  instability: 1
+  ritualDuration: 10
+  essenceAmount: { min: 10, max: 10 }
+  essenceWeights:
+    Order: 1
+  pedestalCount: { min: 3, max: 3 }
+  pedestalRequirementPool:
+  - requirement: !type:ProtoIdResource
+      protoId: CEPaper
+      count: 1
+    weight: 1
+  result: CEEssenceSphereOrder
+  resultCount: 1
+
+- type: infusionAltarRecipe
+  id: EssenceSphereChaos
+  roundStart: true
+  catalyst: !type:StackResource
+    stack: CEGlass
+    count: 1
+  instability: 1
+  ritualDuration: 10
+  essenceAmount: { min: 10, max: 10 }
+  essenceWeights:
+    Chaos: 1
+  pedestalCount: { min: 3, max: 3 }
+  pedestalRequirementPool:
+  - requirement: !type:StackResource
+      stack: CENail
+      count: 1
+    weight: 1
+  result: CEEssenceSphereChaos
+  resultCount: 1

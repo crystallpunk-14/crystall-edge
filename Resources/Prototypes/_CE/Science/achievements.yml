@@ -74,6 +74,21 @@
     - CEMachineCoreDrillAdvanced
 
 - type: scienceAchievement
+  id: PortableMagicEssenceAttractor
+  area: ArcaneEngineering
+  difficulty: 15
+  cost:
+    Order: 5
+  name: ce-science-achievement-portable-essence-attractor
+  icon:
+    sprite: _CE/Interface/Science/AreaIcons/portable_attractor.rsi
+    state: icon
+  effects:
+  - !type:LearnRecipe
+    recipes:
+    - CEPortableMagicEssenceAttractor
+
+- type: scienceAchievement
   id: Hoverboards3
   area: ArcaneEngineering
   difficulty: 20

@@ -17,7 +17,7 @@
     drawdepth: Mobs
     noRot: true
     offset: 0, 0.3
-    sprite: _CE/Structures/Specific/Thaumaturgy/essence_collector.rsi
+    sprite: _CE/Structures/Specific/Thaumaturgy/essence_attractor.rsi
     layers:
     - state: base
     - state: liq-1
@@ -29,7 +29,7 @@
       visible: false
       shader: unshaded
   - type: Icon
-    sprite: _CE/Structures/Specific/Thaumaturgy/essence_collector.rsi
+    sprite: _CE/Structures/Specific/Thaumaturgy/essence_attractor.rsi
     state: base
   - type: Fixtures
     fixtures:
@@ -54,7 +54,7 @@
   - type: Solution
     id: collector
     solution:
-      maxVol: 50
+      maxVol: 100
   - type: DrainableSolution
     solution: collector
   - type: ExaminableSolution

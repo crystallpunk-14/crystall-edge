@@ -6,6 +6,7 @@ using Content.Shared._CE.InfusionAltar.Prototypes;
 using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.MagicEssence.Systems;
 using Content.Shared._CE.ResourceManager;
+using Content.Shared._CE.Science.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Containers.ItemSlots;
 using Robust.Shared.Prototypes;
@@ -61,12 +62,11 @@ public sealed partial class CEInfusionAltarSystem
 
             // Losing power doesn't defuse whatever instability has already built up - it can still go
             // off while it drains back down, just without any chance of the ritual completing.
-            RollMishap(ent, new List<EntityUid>());
+            RollMishap(ent);
             UpdateDangerVisuals(ent);
             return;
         }
 
-        var workingPedestals = new List<EntityUid>();
         var catalystEntity = _itemSlots.GetItemOrNull(ent.Owner, CatalystSlot);
 
         if (catalystEntity is null || !TryGetSingleton(out var singleton))
@@ -88,11 +88,6 @@ public sealed partial class CEInfusionAltarSystem
                 out var pedestalsSatisfied);
 
             altar.AttemptingRecipe = recipe?.ID;
-
-            foreach (var match in pedestalMatches)
-            {
-                workingPedestals.Add(match.Pedestal);
-            }
 
             if (recipe is null)
             {
@@ -122,7 +117,7 @@ public sealed partial class CEInfusionAltarSystem
             }
         }
 
-        RollMishap(ent, workingPedestals);
+        RollMishap(ent);
         UpdateDangerVisuals(ent);
     }
 
@@ -184,10 +179,9 @@ public sealed partial class CEInfusionAltarSystem
 
     /// <summary>
     /// Rolls <c>Instability / InstabilityDivisor</c> chance for a mishap; on success spawns a random entry
-    /// from <see cref="CEInfusionAltarComponent.Mishaps"/> at a currently-working pedestal (if any) so its
-    /// own effects can disrupt that pedestal specifically, or at the altar otherwise.
+    /// from <see cref="CEInfusionAltarComponent.Mishaps"/> at the altar itself.
     /// </summary>
-    private void RollMishap(Entity<CEInfusionAltarComponent> ent, List<EntityUid> workingPedestals)
+    private void RollMishap(Entity<CEInfusionAltarComponent> ent)
     {
         var altar = ent.Comp;
         if (altar.Mishaps.Count == 0 || altar.Instability <= 0f)
@@ -199,11 +193,7 @@ public sealed partial class CEInfusionAltarSystem
 
         var mishap = altar.Mishaps[_random.Next(altar.Mishaps.Count)];
 
-        var spawnAt = workingPedestals.Count > 0
-            ? workingPedestals[_random.Next(workingPedestals.Count)]
-            : ent.Owner;
-
-        Spawn(mishap, Transform(spawnAt).Coordinates);
+        Spawn(mishap, Transform(ent).Coordinates);
     }
 
     private void UpdateDangerVisuals(Entity<CEInfusionAltarComponent> ent)
@@ -330,7 +320,28 @@ public sealed partial class CEInfusionAltarSystem
 
         for (var i = 0; i < recipe.ResultCount; i++)
         {
-            Spawn(recipe.Result, Transform(ent).Coordinates);
+            var result = Spawn(recipe.Result, Transform(ent).Coordinates);
+            GrantScientificInterest(result, cache);
         }
+    }
+
+    /// <summary>
+    /// Makes a freshly crafted result studyable for research points (see <see cref="CEScientificInterestComponent"/>,
+    /// same mechanic as ancient books), worth 10% of the essence spent crafting it - rounded up, per essence type.
+    /// </summary>
+    private void GrantScientificInterest(EntityUid result, CEInfusionAltarRecipeCache cache)
+    {
+        var interest = EnsureComp<CEScientificInterestComponent>(result);
+
+        foreach (var (type, amount) in cache.Essences)
+        {
+            var points = (int)MathF.Ceiling(amount * 0.1f);
+            if (points <= 0)
+                continue;
+
+            interest.Points[type] = interest.Points.GetValueOrDefault(type) + points;
+        }
+
+        Dirty(result, interest);
     }
 }

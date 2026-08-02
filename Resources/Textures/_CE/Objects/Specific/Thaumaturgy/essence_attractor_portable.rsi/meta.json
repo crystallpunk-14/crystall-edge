@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Created by TheShuEd for CrystallEdge",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "base"
+    },
+    {
+      "name": "base_unfolded"
+    },
+    {
+      "name": "glass"
+    },
+    {
+      "name": "active",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "liq-1"
+    },
+    {
+      "name": "liq-2"
+    },
+    {
+      "name": "liq-3"
+    },
+    {
+      "name": "liq-4"
+    },
+    {
+      "name": "liq-5"
+    },
+    {
+      "name": "liq-6"
+    },
+    {
+      "name": "liq-7"
+    },
+    {
+      "name": "equipped-NECK",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right",
+      "directions": 4
+    }
+  ]
+}

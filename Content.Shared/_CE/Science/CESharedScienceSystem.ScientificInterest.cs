@@ -2,13 +2,12 @@ using System.Linq;
 using Content.Shared._CE.MagicEssence.Systems;
 using Content.Shared._CE.Science.Components;
 using Content.Shared.DoAfter;
-using Content.Shared.Interaction.Events;
+using Content.Shared.Interaction;
 using Content.Shared.Popups;
-using Content.Shared.Verbs;
+using Robust.Shared.Audio;
 using Robust.Shared.Network;
 using Robust.Shared.Random;
 using Robust.Shared.Serialization;
-using Robust.Shared.Utility;
 
 namespace Content.Shared._CE.Science;
 
@@ -19,18 +18,23 @@ public abstract partial class CESharedScienceSystem
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private CEMagicEssenceSystem _essence = default!;
 
+    private static readonly SoundSpecifier KnowledgeLearnedSound = new SoundPathSpecifier("/Audio/_CE/Effects/knowledge_learned.ogg");
+
     private void InitializeScientificInterest()
     {
-        SubscribeLocalEvent<CEScientificInterestComponent, GetVerbsEvent<AlternativeVerb>>(AddScientificInterestVerbs);
+        SubscribeLocalEvent<CEThaumaturgicMagnifyingGlassComponent, AfterInteractEvent>(OnMagnifyingGlassInteract);
         SubscribeLocalEvent<CEScientificInterestComponent, CEScientificInterestDoAfterEvent>(OnScientificInterestDoAfter);
         SubscribeLocalEvent<CEScienceRandomPointsComponent, MapInitEvent>(OnRandomPointsMapInit);
     }
 
     /// <summary>
     /// Rolls a random set of research points into this entity's <see cref="CEScientificInterestComponent"/>
-    /// (added if missing), weighted towards low-tier essences - see <see cref="CEMagicEssenceSystem.GetRandomEssenceType"/>.
-    /// Only the server rolls; the result reaches the client via <see cref="CEScientificInterestComponent"/>'s
-    /// own networked state, same as every other server-authoritative roll in this game.
+    /// (added if missing): 3 essence types weighted towards low tiers (may repeat - see
+    /// <see cref="CEMagicEssenceSystem.GetRandomEssenceType"/>), then a random total point budget spent
+    /// across those 3 types 70%/20%/10% - the same weighting a magic essence node uses for its own 3
+    /// rolled aspects. Only the server rolls; the result reaches the client via
+    /// <see cref="CEScientificInterestComponent"/>'s own networked state, same as every other
+    /// server-authoritative roll in this game.
     /// </summary>
     private void OnRandomPointsMapInit(Entity<CEScienceRandomPointsComponent> ent, ref MapInitEvent args)
     {
@@ -40,42 +44,39 @@ public abstract partial class CESharedScienceSystem
         var interest = EnsureComp<CEScientificInterestComponent>(ent.Owner);
         interest.Points.Clear();
 
-        for (var i = 0; i < ent.Comp.RollCount; i++)
+        var essenceA = _essence.GetRandomEssenceType();
+        var essenceB = _essence.GetRandomEssenceType();
+        var essenceC = _essence.GetRandomEssenceType();
+
+        var total = _random.Next(ent.Comp.MinAmount, ent.Comp.MaxAmount + 1);
+        for (var i = 0; i < total; i++)
         {
-            var essence = _essence.GetRandomEssenceType();
-            var amount = _random.Next(ent.Comp.MinAmount, ent.Comp.MaxAmount + 1);
-            interest.Points[essence] = interest.Points.GetValueOrDefault(essence) + amount;
+            var roll = _random.NextFloat();
+            var essence = roll < 0.7f ? essenceA : roll < 0.9f ? essenceB : essenceC;
+            interest.Points[essence] = interest.Points.GetValueOrDefault(essence) + 1;
         }
 
         Dirty(ent.Owner, interest);
     }
 
-    private void AddScientificInterestVerbs(Entity<CEScientificInterestComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
+    private void OnMagnifyingGlassInteract(Entity<CEThaumaturgicMagnifyingGlassComponent> ent, ref AfterInteractEvent args)
     {
-        if (!args.CanInteract || !args.CanAccess)
+        if (args.Handled || !args.CanReach || args.Target is not { } target)
             return;
 
-        var user = args.User;
-        var alreadyStudied = ent.Comp.StudiedBy.Contains(user);
+        if (!TryComp<CEScientificInterestComponent>(target, out var interest) || interest.StudiedBy.Contains(args.User))
+            return;
 
-        args.Verbs.Add(new AlternativeVerb
-        {
-            Text = Loc.GetString("ce-scientific-interest-verb-study"),
-            Icon = new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/VerbIcons/examine.svg.192dpi.png")),
-            Act = () => StartInterestStudy(ent, user),
-            Disabled = alreadyStudied,
-            Message = alreadyStudied ? Loc.GetString("ce-scientific-interest-verb-already-studied") : null,
-            Priority = 1,
-        });
+        args.Handled = StartInterestStudy((target, interest), args.User, ent);
     }
 
-    private bool StartInterestStudy(Entity<CEScientificInterestComponent> ent, EntityUid user)
+    private bool StartInterestStudy(Entity<CEScientificInterestComponent> ent, EntityUid user, EntityUid used)
     {
-        var doAfterArgs = new DoAfterArgs(EntityManager, user, ent.Comp.Time, new CEScientificInterestDoAfterEvent(), ent, target: user, used: ent)
+        var doAfterArgs = new DoAfterArgs(EntityManager, user, ent.Comp.Time, new CEScientificInterestDoAfterEvent(), ent, target: user, used: used)
         {
             BreakOnMove = false,
             BreakOnDamage = true,
-            NeedHand = _hands.IsHolding(user, ent),
+            NeedHand = _hands.IsHolding(user, used),
         };
 
         return _doAfter.TryStartDoAfter(doAfterArgs);
@@ -95,6 +96,8 @@ public abstract partial class CESharedScienceSystem
 
         var data = EnsureComp<CEScienceResearchDataComponent>(target);
         GrantPoints((target, data), ent.Comp.Points);
+
+        _audio.PlayLocal(KnowledgeLearnedSound, target, target);
 
         var pointsText = string.Join(", ", ent.Comp.Points.Select(kv =>
         {
