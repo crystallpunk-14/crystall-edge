@@ -23,7 +23,7 @@
 - type: entity
   id: CEPipeBrassMedium
   parent: CEPipeBrassMediumBase
-  name: small brass pipe
+  name: medium brass pipe
   components:
   - type: Icon
     state: pipe_0
@@ -57,7 +57,7 @@
 - type: entity
   parent: CEPipeBrassMedium
   id: CEPipeBrassMediumVerticalUp
-  name: small brass pipe up
+  name: medium brass pipe up
   components:
   - type: Sprite
     sprite: _CE/Structures/Industrial/Power/Pipes/medium_up.rsi
@@ -79,7 +79,7 @@
 - type: entity
   parent: CEPipeBrassMedium
   id: CEPipeBrassMediumVerticalDown
-  name: small brass pipe down
+  name: medium brass pipe down
   components:
   - type: Sprite
     sprite: _CE/Structures/Industrial/Power/Pipes/medium_down.rsi
@@ -103,7 +103,7 @@
 - type: entity
   id: CEPipeBrassMediumValve
   parent: CEPipeBrassMedium
-  name: small valve
+  name: medium valve
   description: A valve installed on a brass pipe, allowing for the regulation of arcane energy flow through the pipe.
   suffix: Valve, Off
   components:
