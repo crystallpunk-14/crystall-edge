@@ -2804,14 +2804,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -30.596663,-16.298721
       parent: 1
-- proto: CEInfusionAltar
-  entities:
-  - uid: 45
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -31.699066,-15.429156
-      parent: 1
 - proto: CEMachineCorePressTargetThaumaturgySplitter
   entities:
   - uid: 43
@@ -2819,14 +2811,6 @@ entities:
     - type: Transform
       rot: -6.283185307179586 rad
       pos: -32.490818,-14.419504
-      parent: 1
-- proto: CESolutionNormalizer
-  entities:
-  - uid: 44
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -28.361855,-16.32121
       parent: 1
 - proto: CEMachineCoreTradingPlatformImperialChancellery
   entities:
