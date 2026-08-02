@@ -1,0 +1,123 @@
+- type: entity
+  parent: BaseItem
+  id: CEPortableMagicEssenceAttractor
+  categories: [ ForkFiltered ]
+  name: portable essence attractor
+  description: A folding thaumaturgical device that draws in floating magic essence from the air while deployed and charged with mana.
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _CE/Objects/Specific/Thaumaturgy/essence_attractor_portable.rsi
+    layers:
+    - state: base
+      map: [ "foldedLayer" ]
+    - state: base_unfolded
+      map: [ "unfoldedLayer" ]
+      visible: false
+    - state: liq-1
+      map: [ "enum.SolutionContainerLayers.Fill" ]
+      visible: false
+    - state: glass
+    - state: active
+      shader: unshaded
+      map: [ "activeLayer" ]
+      visible: false
+  - type: SolutionContainerVisuals
+    maxFillLevels: 7
+    fillBaseName: liq-
+  - type: Clothing
+    sprite: _CE/Objects/Specific/Thaumaturgy/essence_attractor_portable.rsi
+    quickEquip: false
+    equipDelay: 1.5
+    unequipDelay: 1.5
+    equipWhileMoving: true
+    slots:
+    - neck
+  - type: Appearance
+  - type: Icon
+    sprite: _CE/Objects/Specific/Thaumaturgy/essence_attractor_portable.rsi
+    state: base
+  - type: Item
+    sprite: _CE/Objects/Specific/Thaumaturgy/essence_attractor_portable.rsi
+    size: Ginormous
+  - type: Damageable
+    damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Clickable
+  - type: InteractionOutline
+  - type: CollisionWake
+    enabled: false
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        density: 20
+        mask:
+        - Impassable
+        restitution: 0.3
+        friction: 0.2
+      fix2:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.3
+        hard: false # essence should fly in, not bounce off
+        mask:
+        - Impassable
+        layer:
+        - Impassable
+  - type: StaticPrice
+    price: 220
+  - type: AmbientSound
+    enabled: false
+    volume: 2
+    range: 5
+    sound:
+      path: /Audio/_CE/Ambience/hoverboard.ogg
+  - type: Foldable
+    folded: true
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        activeLayer:
+          True: { visible: true }
+          False: { visible: false }
+      enum.FoldedVisuals.State:
+        foldedLayer:
+          True: { visible: true }
+          False: { visible: false }
+        unfoldedLayer:
+          True: { visible: false }
+          False: { visible: true }
+  - type: CETheftValue
+    difficulty: 2
+  - type: ClothingSpeedModifier
+    walkModifier: 0.8
+    sprintModifier: 0.8
+  - type: HeldSpeedModifier
+  - type: Solution
+    id: collector
+    solution:
+      maxVol: 50
+  - type: DrainableSolution
+    solution: collector
+  - type: ExaminableSolution
+    solution: collector
+  - type: MixableSolution
+    solution: collector
+  - type: RefillableSolution
+    solution: collector
+  - type: DrawableSolution
+    solution: collector
+  - type: DumpableSolution
+    solution: collector
+  - type: CEMagicEssenceAttractor
+  - type: CEPortableMagicEssenceAttractor
+    energyDraw: 1
+  - type: Battery
+    maxCharge: 200
+    startingCharge: 200
+  - type: ExaminableBattery

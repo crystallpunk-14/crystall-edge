@@ -43,6 +43,7 @@ public sealed partial class CEMagicEssenceNodeSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<CEMagicEssenceNodeComponent, MapInitEvent>(OnNodeMapInit);
+        SubscribeLocalEvent<CEMagicEssenceNodeComponent, TimedDespawnEvent>(OnNodeTimedDespawn);
     }
 
     public override void Update(float frameTime)
@@ -85,6 +86,34 @@ public sealed partial class CEMagicEssenceNodeSystem : EntitySystem
             despawn.Lifetime = (float)lifetime.TotalSeconds;
 
         Dirty(ent);
+    }
+
+    /// <summary>
+    /// When a node's lifetime runs out, releases whatever essence reagent is still pooled in its
+    /// solution back into the air as floating essence entities - one per remaining unit, same as
+    /// <see cref="GenerateEssence"/> spills essence with no room left in the solution.
+    /// </summary>
+    private void OnNodeTimedDespawn(Entity<CEMagicEssenceNodeComponent> ent, ref TimedDespawnEvent args)
+    {
+        if (!_solutionContainer.ResolveSolution(ent.Owner, ent.Comp.SolutionName, ref ent.Comp.Solution, out var solution))
+            return;
+
+        var coordinates = Transform(ent).Coordinates;
+
+        foreach (var (reagent, quantity) in solution.Contents.ToList())
+        {
+            if (!_essence.TryGetEssenceProtoForReagent(reagent.Prototype, out var essenceProto))
+                continue;
+
+            var units = quantity.Int();
+            if (units <= 0)
+                continue;
+
+            _solutionContainer.RemoveReagent(ent.Comp.Solution.Value, reagent, FixedPoint2.New(units));
+
+            for (var i = 0; i < units; i++)
+                Spawn(essenceProto, coordinates);
+        }
     }
 
     /// <summary>

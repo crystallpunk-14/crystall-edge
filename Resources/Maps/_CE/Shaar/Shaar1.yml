@@ -4,8 +4,8 @@ meta:
   engineVersion: 277.0.0
   forkId: ""
   forkVersion: ""
-  time: 08/01/2026 20:52:08
-  entityCount: 1492
+  time: 08/02/2026 11:58:37
+  entityCount: 1498
 maps:
 - 1
 grids:
@@ -269,6 +269,30 @@ entities:
       parent: 1
 - proto: CEBookshelfWooden
   entities:
+  - uid: 23
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -38.5,-15.5
+      parent: 1
+  - uid: 65
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -38.5,-14.5
+      parent: 1
+  - uid: 66
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -34.5,-14.5
+      parent: 1
+  - uid: 68
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -34.5,-15.5
+      parent: 1
   - uid: 1049
     components:
     - type: Transform
@@ -1686,10 +1710,22 @@ entities:
       parent: 1
 - proto: CEFenceIron
   entities:
+  - uid: 28
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -31.5,-10.5
+      parent: 1
   - uid: 29
     components:
     - type: Transform
       pos: -27.5,-10.5
+      parent: 1
+  - uid: 72
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -30.5,-10.5
       parent: 1
 - proto: CEFenceWooden
   entities:
@@ -2784,7 +2820,7 @@ entities:
       rot: -6.283185307179586 rad
       pos: -32.490818,-14.419504
       parent: 1
-- proto: CEMachineCoreSolutionNormalizer
+- proto: CESolutionNormalizer
   entities:
   - uid: 44
     components:
@@ -6503,700 +6539,627 @@ entities:
       parent: 1
 - proto: CEWallStoneBrickOld
   entities:
-  - uid: 23
+  - uid: 78
     components:
     - type: Transform
       pos: -30.5,-8.5
       parent: 1
-  - uid: 28
+  - uid: 79
     components:
     - type: Transform
       pos: -33.5,-11.5
       parent: 1
-    - type: CEWallpaperHolder
-      layers:
-        West: Purple
-  - uid: 65
+  - uid: 80
     components:
     - type: Transform
       pos: -33.5,-15.5
       parent: 1
-    - type: CEWallpaperHolder
-      layers:
-        West: Purple
-  - uid: 66
+  - uid: 81
     components:
     - type: Transform
       pos: -33.5,-14.5
       parent: 1
-    - type: CEWallpaperHolder
-      layers:
-        West: Purple
-  - uid: 68
+  - uid: 82
     components:
     - type: Transform
       pos: -30.5,-12.5
       parent: 1
-  - uid: 72
+  - uid: 84
     components:
     - type: Transform
       pos: -31.5,-12.5
       parent: 1
-  - uid: 78
+  - uid: 85
     components:
     - type: Transform
       pos: -33.5,-13.5
       parent: 1
-    - type: CEWallpaperHolder
-      layers:
-        West: Purple
-  - uid: 79
+  - uid: 86
     components:
     - type: Transform
       pos: -39.5,-16.5
       parent: 1
-    - type: CEWallpaperHolder
-      layers:
-        East: Purple
-  - uid: 80
+  - uid: 87
     components:
     - type: Transform
       pos: -39.5,-15.5
       parent: 1
-    - type: CEWallpaperHolder
-      layers:
-        East: Purple
-  - uid: 81
+  - uid: 88
     components:
     - type: Transform
       pos: -39.5,-14.5
       parent: 1
-    - type: CEWallpaperHolder
-      layers:
-        East: Purple
-  - uid: 82
+  - uid: 89
     components:
     - type: Transform
       pos: -39.5,-13.5
       parent: 1
-    - type: CEWallpaperHolder
-      layers:
-        East: Purple
-  - uid: 84
+  - uid: 90
     components:
     - type: Transform
       pos: -39.5,-12.5
       parent: 1
-    - type: CEWallpaperHolder
-      layers:
-        East: Purple
-  - uid: 85
+  - uid: 98
     components:
     - type: Transform
       pos: -39.5,-11.5
       parent: 1
-    - type: CEWallpaperHolder
-      layers:
-        East: Purple
-  - uid: 86
+  - uid: 102
     components:
     - type: Transform
       pos: -29.5,-6.5
       parent: 1
-  - uid: 87
+  - uid: 157
     components:
     - type: Transform
       pos: -39.5,-10.5
       parent: 1
-    - type: CEWallpaperHolder
-      layers:
-        East: Purple
-  - uid: 88
+  - uid: 253
     components:
     - type: Transform
       pos: -28.5,-6.5
       parent: 1
-  - uid: 89
+  - uid: 256
     components:
     - type: Transform
       pos: -32.5,-12.5
       parent: 1
-  - uid: 90
+  - uid: 258
     components:
     - type: Transform
       pos: -28.5,-7.5
       parent: 1
-  - uid: 98
+  - uid: 265
     components:
     - type: Transform
       pos: -29.5,-17.5
       parent: 1
-  - uid: 102
+  - uid: 267
     components:
     - type: Transform
       pos: -29.5,-7.5
       parent: 1
-  - uid: 157
+  - uid: 272
     components:
     - type: Transform
       pos: 6.5,-14.5
       parent: 1
-  - uid: 253
+  - uid: 277
     components:
     - type: Transform
       pos: -1.5,-19.5
       parent: 1
-  - uid: 256
+  - uid: 278
     components:
     - type: Transform
       pos: -3.5,-17.5
       parent: 1
-  - uid: 258
+  - uid: 284
     components:
     - type: Transform
       pos: -7.5,-16.5
       parent: 1
-  - uid: 265
+  - uid: 289
     components:
     - type: Transform
       pos: 3.5,-17.5
       parent: 1
-  - uid: 267
+  - uid: 298
     components:
     - type: Transform
       pos: -1.5,-11.5
       parent: 1
-  - uid: 272
+  - uid: 333
     components:
     - type: Transform
       pos: -7.5,-14.5
       parent: 1
-  - uid: 277
+  - uid: 338
     components:
     - type: Transform
       pos: -0.5,-9.5
       parent: 1
-  - uid: 278
+  - uid: 339
     components:
     - type: Transform
       pos: -17.5,21.5
       parent: 1
-  - uid: 284
+  - uid: 342
     components:
     - type: Transform
       pos: 10.5,-17.5
       parent: 1
-  - uid: 289
+  - uid: 347
     components:
     - type: Transform
       pos: -1.5,-18.5
       parent: 1
-  - uid: 298
+  - uid: 350
     components:
     - type: Transform
       pos: 1.5,-17.5
       parent: 1
-  - uid: 333
+  - uid: 351
     components:
     - type: Transform
       pos: 3.5,-9.5
       parent: 1
-  - uid: 338
+  - uid: 360
     components:
     - type: Transform
       pos: 2.5,-9.5
       parent: 1
-  - uid: 339
+  - uid: 361
     components:
     - type: Transform
       pos: -1.5,-10.5
       parent: 1
-  - uid: 342
+  - uid: 374
     components:
     - type: Transform
       pos: -1.5,-9.5
       parent: 1
-  - uid: 347
+  - uid: 377
     components:
     - type: Transform
       pos: 5.5,-10.5
       parent: 1
-  - uid: 350
+  - uid: 378
     components:
     - type: Transform
       pos: 10.5,-15.5
       parent: 1
-  - uid: 351
+  - uid: 385
     components:
     - type: Transform
       pos: 8.5,-17.5
       parent: 1
-  - uid: 360
+  - uid: 386
     components:
     - type: Transform
       pos: 3.5,-18.5
       parent: 1
-  - uid: 361
+  - uid: 387
     components:
     - type: Transform
       pos: 3.5,-20.5
       parent: 1
-  - uid: 374
+  - uid: 394
     components:
     - type: Transform
       pos: -17.5,17.5
       parent: 1
-  - uid: 377
+  - uid: 397
     components:
     - type: Transform
       pos: -13.5,17.5
       parent: 1
-  - uid: 378
+  - uid: 400
     components:
     - type: Transform
       pos: -13.5,21.5
       parent: 1
-  - uid: 385
+  - uid: 401
     components:
     - type: Transform
       pos: 3.5,-19.5
       parent: 1
-  - uid: 386
+  - uid: 404
     components:
     - type: Transform
       pos: -7.5,-10.5
       parent: 1
-  - uid: 387
+  - uid: 406
     components:
     - type: Transform
       pos: 3.5,-21.5
       parent: 1
-  - uid: 394
+  - uid: 408
     components:
     - type: Transform
       pos: -7.5,-17.5
       parent: 1
-    - type: CEZPhysics
-      localPosition: 1
-  - uid: 397
+  - uid: 410
     components:
     - type: Transform
       pos: -1.5,-21.5
       parent: 1
-  - uid: 400
+  - uid: 413
     components:
     - type: Transform
       pos: -6.5,-10.5
       parent: 1
-  - uid: 401
+  - uid: 614
     components:
     - type: Transform
       pos: -4.5,-10.5
       parent: 1
-  - uid: 404
+  - uid: 617
     components:
     - type: Transform
       pos: 10.5,-10.5
       parent: 1
-  - uid: 406
+  - uid: 626
     components:
     - type: Transform
       pos: 8.5,-10.5
       parent: 1
-  - uid: 408
+  - uid: 628
     components:
     - type: Transform
       pos: 9.5,-17.5
       parent: 1
-  - uid: 410
+  - uid: 633
     components:
     - type: Transform
       pos: 18.5,-4.5
       parent: 1
-  - uid: 413
+  - uid: 634
     components:
     - type: Transform
       pos: 17.5,-8.5
       parent: 1
-  - uid: 614
+  - uid: 637
     components:
     - type: Transform
       pos: 10.5,-12.5
       parent: 1
-  - uid: 617
+  - uid: 639
     components:
     - type: Transform
       pos: -6.5,-17.5
       parent: 1
-    - type: CEZPhysics
-      localPosition: 1
-  - uid: 626
+  - uid: 641
     components:
     - type: Transform
       pos: -1.5,-20.5
       parent: 1
-  - uid: 628
+  - uid: 642
     components:
     - type: Transform
       pos: -5.5,-10.5
       parent: 1
-  - uid: 633
+  - uid: 643
     components:
     - type: Transform
       pos: -7.5,-11.5
       parent: 1
-  - uid: 634
+  - uid: 644
     components:
     - type: Transform
       pos: 2.5,-17.5
       parent: 1
-  - uid: 637
+  - uid: 650
     components:
     - type: Transform
       pos: -0.5,-21.5
       parent: 1
-  - uid: 639
+  - uid: 651
     components:
     - type: Transform
       pos: -0.5,-17.5
       parent: 1
-  - uid: 641
+  - uid: 654
     components:
     - type: Transform
       pos: -1.5,-16.5
       parent: 1
-  - uid: 642
+  - uid: 656
     components:
     - type: Transform
       pos: -2.5,-17.5
       parent: 1
-  - uid: 643
+  - uid: 658
     components:
     - type: Transform
       pos: 4.5,-17.5
       parent: 1
-  - uid: 644
+  - uid: 682
     components:
     - type: Transform
       pos: 10.5,-11.5
       parent: 1
-  - uid: 650
+  - uid: 684
     components:
     - type: Transform
       pos: 5.5,-17.5
       parent: 1
-  - uid: 651
+  - uid: 925
     components:
     - type: Transform
       pos: 10.5,-16.5
       parent: 1
-  - uid: 654
+  - uid: 958
     components:
     - type: Transform
       pos: 2.5,-21.5
       parent: 1
-  - uid: 656
+  - uid: 965
     components:
     - type: Transform
       pos: -1.5,-17.5
       parent: 1
-  - uid: 658
+  - uid: 967
     components:
     - type: Transform
       pos: 3.5,-10.5
       parent: 1
-  - uid: 682
+  - uid: 970
     components:
     - type: Transform
       pos: 9.5,-10.5
       parent: 1
-  - uid: 684
+  - uid: 975
     components:
     - type: Transform
       pos: 4.5,-10.5
       parent: 1
-  - uid: 925
+  - uid: 978
     components:
     - type: Transform
       pos: 3.5,-11.5
       parent: 1
-  - uid: 958
+  - uid: 979
     components:
     - type: Transform
       pos: -4.5,-15.5
       parent: 1
-  - uid: 965
+  - uid: 981
     components:
     - type: Transform
       pos: -33.5,-18.5
       parent: 1
-  - uid: 967
+  - uid: 982
     components:
     - type: Transform
       pos: -35.5,-7.5
       parent: 1
-    - type: CEWallpaperHolder
-      layers:
-        South: Purple
-  - uid: 970
+  - uid: 985
     components:
     - type: Transform
       pos: -38.5,-7.5
       parent: 1
-    - type: CEWallpaperHolder
-      layers:
-        South: Purple
-  - uid: 975
+  - uid: 986
     components:
     - type: Transform
       pos: -33.5,-17.5
       parent: 1
-  - uid: 978
+  - uid: 991
     components:
     - type: Transform
       pos: -28.5,-17.5
       parent: 1
-  - uid: 979
+  - uid: 1017
     components:
     - type: Transform
       pos: -27.5,-12.5
       parent: 1
-  - uid: 981
+  - uid: 1025
     components:
     - type: Transform
       pos: -40.5,-18.5
       parent: 1
-  - uid: 982
+  - uid: 1028
     components:
     - type: Transform
       pos: -41.5,-17.5
       parent: 1
-  - uid: 985
+  - uid: 1030
     components:
     - type: Transform
       pos: -26.5,-17.5
       parent: 1
-  - uid: 986
+  - uid: 1031
     components:
     - type: Transform
       pos: -26.5,-18.5
       parent: 1
-  - uid: 991
+  - uid: 1032
     components:
     - type: Transform
       pos: -41.5,-7.5
       parent: 1
-  - uid: 1017
+  - uid: 1038
     components:
     - type: Transform
       pos: -29.5,-8.5
       parent: 1
-  - uid: 1025
+  - uid: 1039
     components:
     - type: Transform
       pos: -34.5,-17.5
       parent: 1
-    - type: CEWallpaperHolder
-      layers:
-        North: Purple
-  - uid: 1028
+  - uid: 1041
     components:
     - type: Transform
       pos: -30.5,-7.5
       parent: 1
-  - uid: 1030
+  - uid: 1042
     components:
     - type: Transform
       pos: -39.5,-17.5
       parent: 1
-  - uid: 1031
+  - uid: 1047
     components:
     - type: Transform
       pos: -41.5,-6.5
       parent: 1
-  - uid: 1032
+  - uid: 1048
     components:
     - type: Transform
       pos: -39.5,-7.5
       parent: 1
-  - uid: 1038
+  - uid: 1050
     components:
     - type: Transform
       pos: -33.5,-8.5
       parent: 1
-    - type: CEWallpaperHolder
-      layers:
-        West: Purple
-  - uid: 1039
+  - uid: 1051
     components:
     - type: Transform
       pos: -34.5,-7.5
       parent: 1
-    - type: CEWallpaperHolder
-      layers:
-        South: Purple
-  - uid: 1041
+  - uid: 1052
     components:
     - type: Transform
       pos: -31.5,-17.5
       parent: 1
-  - uid: 1042
+  - uid: 1053
     components:
     - type: Transform
       pos: -33.5,-7.5
       parent: 1
-  - uid: 1047
+  - uid: 1054
     components:
     - type: Transform
       pos: -35.5,-17.5
       parent: 1
-    - type: CEWallpaperHolder
-      layers:
-        North: Purple
-  - uid: 1048
+  - uid: 1056
     components:
     - type: Transform
       pos: -36.5,-17.5
       parent: 1
-    - type: CEWallpaperHolder
-      layers:
-        North: Purple
-  - uid: 1050
+  - uid: 1058
     components:
     - type: Transform
       pos: -41.5,-18.5
       parent: 1
-  - uid: 1051
+  - uid: 1059
     components:
     - type: Transform
       pos: -40.5,-7.5
       parent: 1
-  - uid: 1052
+  - uid: 1062
     components:
     - type: Transform
       pos: -27.5,-11.5
       parent: 1
-  - uid: 1053
+  - uid: 1063
     components:
     - type: Transform
       pos: -34.5,-18.5
       parent: 1
-  - uid: 1054
+  - uid: 1067
     components:
     - type: Transform
       pos: -26.5,-12.5
       parent: 1
-  - uid: 1056
+  - uid: 1068
     components:
     - type: Transform
       pos: -38.5,-17.5
       parent: 1
-    - type: CEWallpaperHolder
-      layers:
-        North: Purple
-  - uid: 1058
+  - uid: 1069
     components:
     - type: Transform
       pos: -32.5,-7.5
       parent: 1
-  - uid: 1059
+  - uid: 1070
     components:
     - type: Transform
       pos: -40.5,-6.5
       parent: 1
-  - uid: 1062
+  - uid: 1072
     components:
     - type: Transform
       pos: -31.5,-7.5
       parent: 1
-  - uid: 1063
+  - uid: 1081
     components:
     - type: Transform
       pos: -39.5,-8.5
       parent: 1
-    - type: CEWallpaperHolder
-      layers:
-        East: Purple
-  - uid: 1067
+  - uid: 1091
     components:
     - type: Transform
       pos: -29.5,-12.5
       parent: 1
-  - uid: 1068
+  - uid: 1121
     components:
     - type: Transform
       pos: -27.5,-17.5
       parent: 1
-  - uid: 1069
+  - uid: 1124
     components:
     - type: Transform
       pos: -26.5,-11.5
       parent: 1
-  - uid: 1070
+  - uid: 1129
     components:
     - type: Transform
       pos: -40.5,-17.5
       parent: 1
-  - uid: 1072
+  - uid: 1201
     components:
     - type: Transform
       pos: -39.5,-9.5
       parent: 1
-    - type: CEWallpaperHolder
-      layers:
-        East: Purple
-  - uid: 1081
+  - uid: 1208
     components:
     - type: Transform
       pos: -29.5,-11.5
       parent: 1
-  - uid: 1091
+  - uid: 1209
     components:
     - type: Transform
       pos: -33.5,-12.5
       parent: 1
-    - type: CEWallpaperHolder
-      layers:
-        West: Purple
-  - uid: 1121
+  - uid: 1210
     components:
     - type: Transform
       pos: -33.5,-16.5
       parent: 1
-    - type: CEWallpaperHolder
-      layers:
-        West: Purple
-  - uid: 1124
+  - uid: 1211
     components:
     - type: Transform
       pos: -32.5,-17.5
       parent: 1
-  - uid: 1129
+  - uid: 1493
     components:
     - type: Transform
       pos: -27.5,-18.5
       parent: 1
-  - uid: 1201
+  - uid: 1494
     components:
     - type: Transform
       pos: -1.5,-14.5
       parent: 1
-  - uid: 1208
+  - uid: 1495
     components:
     - type: Transform
       pos: 32.5,-14.5
       parent: 1
-  - uid: 1209
+  - uid: 1496
     components:
     - type: Transform
       pos: 29.5,-18.5
       parent: 1
-  - uid: 1210
+  - uid: 1497
     components:
     - type: Transform
       pos: 35.5,-6.5
       parent: 1
-  - uid: 1211
+  - uid: 1498
     components:
     - type: Transform
       pos: 22.5,-22.5

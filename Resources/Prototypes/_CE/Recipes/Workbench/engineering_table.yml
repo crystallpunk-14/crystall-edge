@@ -462,9 +462,9 @@
 
 - type: CERecipe
   roundStart: true
-  id: CEMachineCoreSolutionNormalizer
+  id: CESolutionNormalizer
   tag: CERecipeEngineeringTable
-  category: MachineCore
+  category: Tools
   craftTime: 2.0
   requirements:
   - !type:StackResource
@@ -479,7 +479,31 @@
   - !type:StackResource
     stack: CEGlass
     count: 5
-  result: CEMachineCoreSolutionNormalizer
+  result: CESolutionNormalizer
+  resultCount: 1
+
+- type: CERecipe
+  id: CEPortableMagicEssenceAttractor
+  tag: CERecipeEngineeringTable
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 8
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 2
+  - !type:StackResource
+    stack: CEMachinePartCoalDiffuser
+    count: 2
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 2
+  - !type:StackResource
+    stack: CEGlass
+    count: 5
+  result: CEPortableMagicEssenceAttractor
   resultCount: 1
 
 - type: CERecipe

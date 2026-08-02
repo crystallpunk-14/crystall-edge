@@ -145,16 +145,6 @@
     price: 180
 
 - type: entity
-  id: CEMachineCoreSolutionNormalizer
-  parent: CEBaseMachineCore
-  name: solution normalizer machine core
-  components:
-  - type: MachineBoard
-    prototype: CESolutionNormalizer
-  - type: StaticPrice
-    price: 150
-
-- type: entity
   id: CEMachineCoreDistributionUnit
   parent: CEBaseMachineCore
   name: distribution unit machine core

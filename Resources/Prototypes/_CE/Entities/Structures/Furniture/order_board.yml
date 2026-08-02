@@ -6,7 +6,7 @@
   categories: [ ForkFiltered ]
   components:
   - type: Sprite
-    snapCardinals: true
+    noRot: true
     drawdepth: Mobs
     sprite: _CE/Structures/Furniture/order_board.rsi
     layers:

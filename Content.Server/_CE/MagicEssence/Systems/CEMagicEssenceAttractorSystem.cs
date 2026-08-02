@@ -18,6 +18,15 @@ public sealed partial class CEMagicEssenceAttractorSystem : EntitySystem
 
         SubscribeLocalEvent<CEMagicEssenceAttractorComponent, PowerChangedEvent>(OnPowerChanged);
         SubscribeLocalEvent<CEMagicEssenceAttractorComponent, StartCollideEvent>(OnCollide);
+
+        InitializePortable();
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        UpdatePortable();
     }
 
     private void OnPowerChanged(Entity<CEMagicEssenceAttractorComponent> ent, ref PowerChangedEvent args)
@@ -34,6 +43,11 @@ public sealed partial class CEMagicEssenceAttractorSystem : EntitySystem
     private void OnCollide(Entity<CEMagicEssenceAttractorComponent> ent, ref StartCollideEvent args)
     {
         if (!HasComp<CEMagicEssenceAttractingComponent>(ent))
+            return;
+
+        // Only floating essence orbs get drained-and-deleted on contact - without this, anything else
+        // that happens to expose a solution named "essence" (e.g. a magic essence node) would too.
+        if (!HasComp<CEFloatingEssenceComponent>(args.OtherEntity))
             return;
 
         if (!_solutionContainer.TryGetSolution((args.OtherEntity, null), "essence", out _, out var essenceSolution))

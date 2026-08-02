@@ -125,6 +125,9 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
         var result = new List<(ProtoId<CEMagicEssenceTypePrototype>, int)>();
         foreach (var (type, amount) in totals)
         {
+            if (amount <= 0)
+                continue;
+
             result.Add((type, amount));
         }
 

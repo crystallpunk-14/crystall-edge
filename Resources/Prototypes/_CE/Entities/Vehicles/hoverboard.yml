@@ -73,8 +73,8 @@
   - type: CEZFlyerBattery
     energyDraw: 2
   - type: Battery
-    maxCharge: 100
-    startingCharge: 100
+    maxCharge: 150
+    startingCharge: 150
   - type: ExaminableBattery
   - type: Foldable
     folded: false
