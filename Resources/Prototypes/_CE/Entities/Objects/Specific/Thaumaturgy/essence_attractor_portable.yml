@@ -121,3 +121,4 @@
     maxCharge: 200
     startingCharge: 200
   - type: ExaminableBattery
+  - type: CEMagicEssenceStructureExempt

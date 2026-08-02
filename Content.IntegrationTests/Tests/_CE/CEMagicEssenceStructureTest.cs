@@ -51,6 +51,11 @@ public sealed class CEMagicEssenceStructureTest
                 if (proto.TryGetComponent<InjectorComponent>(out _, componentFactory))
                     continue;
 
+                // Explicitly opted out - e.g. a sealed vessel pre-filled with an essence reagent,
+                // whose essence reading already comes entirely from that solution.
+                if (proto.TryGetComponent<CEMagicEssenceStructureExemptComponent>(out _, componentFactory))
+                    continue;
+
                 if (!proto.TryGetComponent<CEMagicEssenceStructureComponent>(out _, componentFactory))
                     missing.Add(proto.ID);
             }
