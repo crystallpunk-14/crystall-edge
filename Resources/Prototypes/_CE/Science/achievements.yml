@@ -81,7 +81,7 @@
     Order: 5
   name: ce-science-achievement-portable-essence-attractor
   icon:
-    sprite: _CE/Interface/Science/AreaIcons/portable.attractor.rsi
+    sprite: _CE/Interface/Science/AreaIcons/portable_attractor.rsi
     state: icon
   effects:
   - !type:LearnRecipe
