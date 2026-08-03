@@ -1,5 +1,6 @@
 using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Destructible.Thresholds;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -92,6 +93,16 @@ public sealed partial class CEMagicEssenceNodeComponent : Component
     /// </summary>
     [DataField]
     public TimeSpan MaxLifetime = TimeSpan.FromMinutes(20);
+
+    /// <summary>
+    /// Random total scientific interest point budget rolled for this node on spawn, distributed
+    /// across its 3 rolled aspects 70/20/10 - see
+    /// <see cref="Content.Shared._CE.Science.Components.CEScientificInterestComponent"/> (added to
+    /// the node alongside <see cref="EssenceA"/>/<see cref="EssenceB"/>/<see cref="EssenceC"/> by the
+    /// server-side magic essence node system).
+    /// </summary>
+    [DataField]
+    public MinMax InterestPoints = new(10, 20);
 
     /// <summary>
     /// Client-only: cached 70/20/10 blend of <see cref="EssenceA"/>/<see cref="EssenceB"/>/<see cref="EssenceC"/>'s

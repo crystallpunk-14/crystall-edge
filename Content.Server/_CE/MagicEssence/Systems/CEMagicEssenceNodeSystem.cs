@@ -4,8 +4,11 @@ using Content.Server.Station.Systems;
 using Content.Shared._CE.MagicEssence.Components;
 using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.MagicEssence.Systems;
+using Content.Shared._CE.Science;
+using Content.Shared._CE.Science.Components;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Destructible.Thresholds;
 using Content.Shared.FixedPoint;
 using Content.Shared.Physics;
 using Content.Shared.Station.Components;
@@ -67,6 +70,9 @@ public sealed partial class CEMagicEssenceNodeSystem : EntitySystem
     /// <see cref="CEMagicEssenceNodeComponent.MaxLifetime"/>, applying it to both the networked
     /// <see cref="CEMagicEssenceNodeComponent.Lifetime"/> (for the client's fade curve) and the
     /// entity's own <see cref="TimedDespawnComponent"/> (the actual despawn timer). Aspects may repeat.
+    /// Also grants the node a <see cref="CEScientificInterestComponent"/> so it can be studied for
+    /// research points, rolling <see cref="CEMagicEssenceNodeComponent.InterestPoints"/> distributed
+    /// across its 3 rolled aspects 70/20/10.
     /// </summary>
     private void OnNodeMapInit(Entity<CEMagicEssenceNodeComponent> ent, ref MapInitEvent args)
     {
@@ -86,6 +92,12 @@ public sealed partial class CEMagicEssenceNodeSystem : EntitySystem
             despawn.Lifetime = (float)lifetime.TotalSeconds;
 
         Dirty(ent);
+
+        var interest = EnsureComp<CEScientificInterestComponent>(ent.Owner);
+        CESharedScienceSystem.DistributeInterestPoints(_random, interest.Points, ent.Comp.InterestPoints,
+            ent.Comp.EssenceA.Value, ent.Comp.EssenceB.Value, ent.Comp.EssenceC.Value);
+
+        Dirty(ent.Owner, interest);
     }
 
     /// <summary>

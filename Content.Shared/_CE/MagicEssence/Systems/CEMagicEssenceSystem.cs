@@ -238,8 +238,8 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
     }
 
     /// <summary>
-    /// Picks a random essence type, weighted towards lower tiers (weight = 1 / (tier + 1)) so
-    /// primal aspects come up more often than complex ones.
+    /// Picks a random essence type, weighted towards lower tiers (weight = 1 / (tier + 1)^2) so
+    /// primal aspects come up much more often than complex ones.
     /// </summary>
     public ProtoId<CEMagicEssenceTypePrototype> GetRandomEssenceType()
     {
@@ -250,13 +250,13 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
         var totalWeight = 0f;
         foreach (var essence in essences)
         {
-            totalWeight += 1f / (essence.Tier + 1);
+            totalWeight += 1f / MathF.Pow(essence.Tier + 1, 2);
         }
 
         var roll = _random.NextFloat() * totalWeight;
         foreach (var essence in essences)
         {
-            var weight = 1f / (essence.Tier + 1);
+            var weight = 1f / MathF.Pow(essence.Tier + 1, 2);
             if (roll < weight)
                 return essence.ID;
 

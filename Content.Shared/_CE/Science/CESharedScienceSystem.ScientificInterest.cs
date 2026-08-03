@@ -1,6 +1,8 @@
 using System.Linq;
+using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.MagicEssence.Systems;
 using Content.Shared._CE.Science.Components;
+using Content.Shared.Destructible.Thresholds;
 using Content.Shared.DoAfter;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
@@ -46,15 +48,32 @@ public abstract partial class CESharedScienceSystem
         var essenceB = _essence.GetRandomEssenceType();
         var essenceC = _essence.GetRandomEssenceType();
 
-        var total = _random.Next(ent.Comp.MinAmount, ent.Comp.MaxAmount + 1);
-        for (var i = 0; i < total; i++)
-        {
-            var roll = _random.NextFloat();
-            var essence = roll < 0.7f ? essenceA : roll < 0.9f ? essenceB : essenceC;
-            interest.Points[essence] = interest.Points.GetValueOrDefault(essence) + 1;
-        }
+        DistributeInterestPoints(_random, interest.Points, ent.Comp.Amount, essenceA, essenceB, essenceC);
 
         Dirty(ent.Owner, interest);
+    }
+
+    /// <summary>
+    /// Rolls a random total from <paramref name="amount"/> and distributes it across three essence
+    /// types 70%/20%/10%, adding the result into <paramref name="points"/>. Static so any domain
+    /// that needs this same weighting (e.g. magic essence nodes rolling their own scientific
+    /// interest) can reuse it without a system reference.
+    /// </summary>
+    public static void DistributeInterestPoints(
+        IRobustRandom random,
+        Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int> points,
+        MinMax amount,
+        ProtoId<CEMagicEssenceTypePrototype> essenceA,
+        ProtoId<CEMagicEssenceTypePrototype> essenceB,
+        ProtoId<CEMagicEssenceTypePrototype> essenceC)
+    {
+        var total = amount.Next(random);
+        for (var i = 0; i < total; i++)
+        {
+            var roll = random.NextFloat();
+            var essence = roll < 0.7f ? essenceA : roll < 0.9f ? essenceB : essenceC;
+            points[essence] = points.GetValueOrDefault(essence) + 1;
+        }
     }
 
     private void OnMagnifyingGlassInteract(Entity<CEThaumaturgicMagnifyingGlassComponent> ent, ref AfterInteractEvent args)
