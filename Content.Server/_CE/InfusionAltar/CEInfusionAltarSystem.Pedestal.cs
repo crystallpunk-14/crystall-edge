@@ -62,8 +62,9 @@ public sealed partial class CEInfusionAltarSystem
 
             // Losing power doesn't defuse whatever instability has already built up - it can still go
             // off while it drains back down, just without any chance of the ritual completing.
-            SpawnRandomMishup(ent);
-            UpdateDangerVisuals(ent);
+            var idleLevel = GetDangerLevel(altar);
+            SpawnRandomMishup(ent, idleLevel);
+            UpdateDangerVisuals(ent, idleLevel);
             return;
         }
 
@@ -91,8 +92,11 @@ public sealed partial class CEInfusionAltarSystem
 
             if (recipe is null)
             {
-                // Catalyst present but matches no known recipe - can never succeed.
-                altar.Instability = MathF.Min(altar.MaxInstability, altar.Instability + altar.InvalidCatalystInstabilityRate * dt);
+                // Catalyst present but matches no known recipe - can never succeed. Treated the same
+                // as broken conditions, except progress resets instead of pausing (there's no
+                // attempt to resume).
+                altar.Instability = MathF.Min(altar.MaxInstability,
+                    altar.Instability + altar.BrokenConditionInstabilityRate * altar.StabilizerFactor * dt);
                 altar.RitualProgress = TimeSpan.Zero;
             }
             else if (essenceSatisfied && pedestalsSatisfied)
@@ -117,8 +121,9 @@ public sealed partial class CEInfusionAltarSystem
             }
         }
 
-        SpawnRandomMishup(ent);
-        UpdateDangerVisuals(ent);
+        var level = GetDangerLevel(altar);
+        SpawnRandomMishup(ent, level);
+        UpdateDangerVisuals(ent, level);
     }
 
     /// <summary>
@@ -178,34 +183,59 @@ public sealed partial class CEInfusionAltarSystem
     }
 
     /// <summary>
-    /// Rolls <c>Instability / InstabilityDivisor</c> chance for a mishap; on success spawns a random entry
-    /// from <see cref="CEInfusionAltarComponent.Mishaps"/> at the altar itself.
+    /// Derives the altar's current danger level from its instability fraction. Calm never rolls
+    /// mishaps; Unstable and Critical each have their own fixed per-tick chance and mishap pool
+    /// (<see cref="SpawnRandomMishup"/>).
     /// </summary>
-    private void SpawnRandomMishup(Entity<CEInfusionAltarComponent> ent)
+    private static CEInfusionAltarDangerLevel GetDangerLevel(CEInfusionAltarComponent altar)
     {
-        var altar = ent.Comp;
-        if (altar.Mishaps.Count == 0 || altar.Instability <= 0f)
-            return;
-
-        var chance = MathF.Min(altar.Instability / altar.InstabilityDivisor, 1f);
-        if (!_random.Prob(chance))
-            return;
-
-        var mishap = altar.Mishaps[_random.Next(altar.Mishaps.Count)];
-
-        Spawn(mishap, Transform(ent).Coordinates);
-    }
-
-    private void UpdateDangerVisuals(Entity<CEInfusionAltarComponent> ent)
-    {
-        var fraction = ent.Comp.Instability / ent.Comp.MaxInstability;
-        var level = fraction switch
+        var fraction = altar.Instability / altar.MaxInstability;
+        return fraction switch
         {
             >= 0.66f => CEInfusionAltarDangerLevel.Critical,
             >= 0.33f => CEInfusionAltarDangerLevel.Unstable,
             _ => CEInfusionAltarDangerLevel.Calm,
         };
+    }
 
+    /// <summary>
+    /// Rolls a fixed per-tick chance for a mishap depending on <paramref name="level"/> - 0% at Calm,
+    /// <see cref="CEInfusionAltarComponent.UnstableMishapChance"/> at Unstable,
+    /// <see cref="CEInfusionAltarComponent.CriticalMishapChance"/> at Critical. On success spawns a
+    /// random entry from <see cref="CEInfusionAltarComponent.UnstableMishaps"/> (Unstable), or from
+    /// both <see cref="CEInfusionAltarComponent.UnstableMishaps"/> and
+    /// <see cref="CEInfusionAltarComponent.CriticalMishaps"/> combined (Critical).
+    /// </summary>
+    private void SpawnRandomMishup(Entity<CEInfusionAltarComponent> ent, CEInfusionAltarDangerLevel level)
+    {
+        var altar = ent.Comp;
+
+        var chance = level switch
+        {
+            CEInfusionAltarDangerLevel.Unstable => altar.UnstableMishapChance,
+            CEInfusionAltarDangerLevel.Critical => altar.CriticalMishapChance,
+            _ => 0f,
+        };
+
+        if (chance <= 0f || !_random.Prob(chance))
+            return;
+
+        var unstableCount = altar.UnstableMishaps.Count;
+        var total = level == CEInfusionAltarDangerLevel.Critical
+            ? unstableCount + altar.CriticalMishaps.Count
+            : unstableCount;
+
+        if (total == 0)
+            return;
+
+        var roll = _random.Next(total);
+        var mishap = roll < unstableCount ? altar.UnstableMishaps[roll] : altar.CriticalMishaps[roll - unstableCount];
+
+        Spawn(mishap, Transform(ent).Coordinates);
+    }
+
+    private void UpdateDangerVisuals(Entity<CEInfusionAltarComponent> ent, CEInfusionAltarDangerLevel level)
+    {
         _appearance.SetData(ent.Owner, CEInfusionAltarDangerVisuals.Level, level);
     }
 
