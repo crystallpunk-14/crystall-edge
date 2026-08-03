@@ -34,7 +34,7 @@
   - type: Clothing
     sprite: _CE/Clothing/Cloak/Mantle/thaumaturge.rsi
   - type: ToggleableClothing
-    clothingPrototype: CEClothingHeadCowlThaumaturge
+    clothingPrototype: CEClothingHeadHoodThaumaturge
     requiredSlot:
     - cloak
     slot: head
