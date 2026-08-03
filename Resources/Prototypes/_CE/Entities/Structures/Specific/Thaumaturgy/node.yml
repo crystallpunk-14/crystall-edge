@@ -60,7 +60,7 @@
   parent: CEBaseMachinePowered
   id: CENodeStabilizerSphere
   name: node stabilizer sphere
-  categories: [ ForkFiltered ]
+  categories: [ ForkFiltered, DoNotMap ]
   description: A large glass sphere ringed with brass. Anchored and powered on a magic essence node, it stops the node from aging, preserving it indefinitely while it keeps generating essence.
   components:
   - type: Sprite
