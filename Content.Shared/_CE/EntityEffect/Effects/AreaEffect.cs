@@ -1,5 +1,7 @@
-﻿using Content.Shared.Examine;
+﻿using System.Linq;
+using Content.Shared.Examine;
 using Content.Shared.Whitelist;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.EntityEffect.Effects;
 
@@ -38,6 +40,15 @@ public sealed partial class AreaEffect : CEEntityEffectBase<AreaEffect>
     /// </summary>
     [DataField]
     public bool CheckLOS = true;
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
+    {
+        if (Effects.Count == 0)
+            return base.EntityEffectGuidebookText(prototype, entSys);
+
+        var nested = string.Join("\n", Effects.Select(e => e.EntityEffectGuidebookText(prototype, entSys)));
+        return Loc.GetString("ce-entity-effect-guidebook-area-effect", ("range", Range), ("effects", nested));
+    }
 }
 
 public sealed partial class CEAreaEffectEffectSystem : CEEntityEffectSystem<AreaEffect>

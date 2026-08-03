@@ -1,5 +1,6 @@
 ﻿using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.Throwing;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.EntityEffect.Effects;
 
@@ -15,6 +16,9 @@ public sealed partial class Dash : CEEntityEffectBase<Dash>
 
     [DataField]
     public float Distance = 1f;
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
+        Loc.GetString("ce-entity-effect-guidebook-dash", ("distance", Distance));
 }
 
 public sealed partial class CEDashEffectSystem : CEEntityEffectSystem<Dash>

@@ -1,7 +1,9 @@
 using Content.Shared._CE.ZLevels.Core;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Effects;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.EntityEffect.Effects;
 
@@ -24,6 +26,24 @@ public sealed partial class Damage : CEEntityEffectBase<Damage>
     /// </summary>
     [DataField]
     public bool ColorFlash = true;
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
+    {
+        var parts = new List<string>();
+        foreach (var (type, amount) in DamageSpec.DamageDict)
+        {
+            if (amount == 0)
+                continue;
+
+            var typeName = prototype.TryIndex<DamageTypePrototype>(type, out var typeProto) ? typeProto.LocalizedName : type.Id;
+            parts.Add(Loc.GetString("ce-entity-effect-guidebook-damage-entry", ("amount", MathF.Abs(amount.Float())), ("type", typeName)));
+        }
+
+        if (parts.Count == 0)
+            return base.EntityEffectGuidebookText(prototype, entSys);
+
+        return Loc.GetString("ce-entity-effect-guidebook-damage", ("damages", string.Join(", ", parts)));
+    }
 }
 
 public sealed partial class CEDamageEffectSystem : CEEntityEffectSystem<Damage>

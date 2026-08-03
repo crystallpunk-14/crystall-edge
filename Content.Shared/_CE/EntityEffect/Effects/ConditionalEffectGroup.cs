@@ -1,3 +1,6 @@
+using System.Linq;
+using Robust.Shared.Prototypes;
+
 namespace Content.Shared._CE.EntityEffect.Effects;
 
 /// <summary>
@@ -20,6 +23,15 @@ public sealed partial class ConditionalEffectGroup : CEEntityEffectBase<Conditio
     /// </summary>
     [DataField]
     public bool RequireAll = true;
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
+    {
+        if (Effects.Count == 0)
+            return base.EntityEffectGuidebookText(prototype, entSys);
+
+        var nested = string.Join("\n", Effects.Select(e => e.EntityEffectGuidebookText(prototype, entSys)));
+        return Loc.GetString("ce-entity-effect-guidebook-conditional-effect-group", ("effects", nested));
+    }
 }
 
 public sealed partial class CEConditionalEffectGroupSystem : CEEntityEffectSystem<ConditionalEffectGroup>

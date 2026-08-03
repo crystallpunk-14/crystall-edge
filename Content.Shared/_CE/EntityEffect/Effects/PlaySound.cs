@@ -1,5 +1,6 @@
 ﻿using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.EntityEffect.Effects;
 
@@ -12,6 +13,9 @@ public sealed partial class PlaySound : CEEntityEffectBase<PlaySound>
 
     [DataField(required: true)]
     public SoundSpecifier Sound = default!;
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
+        Loc.GetString("ce-entity-effect-guidebook-play-sound");
 }
 
 public sealed partial class CEPlaySoundEffectSystem : CEEntityEffectSystem<PlaySound>
