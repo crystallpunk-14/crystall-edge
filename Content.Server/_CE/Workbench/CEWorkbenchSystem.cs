@@ -181,6 +181,11 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
         foreach (var resultEntity in resultEntities)
         {
             _transform.SetCoordinates(resultEntity, Transform(workbench).Coordinates.Offset(new Vector2(_random.NextFloat(-0.25f, 0.25f), _random.NextFloat(-0.25f, 0.25f))));
+
+            // Results with a static physics body (e.g. anchorable machines) can end up auto-anchored
+            // just from landing on the grid - make sure crafted items are always free to pick up.
+            _transform.Unanchor(resultEntity);
+
             _stack.TryMergeToContacts(resultEntity);
             _physics.WakeBody(resultEntity);
         }

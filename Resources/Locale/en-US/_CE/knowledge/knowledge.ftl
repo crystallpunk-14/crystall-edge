@@ -1,6 +1,7 @@
 ce-knowledge-learned = You have learned something new!
 ce-knowledge-already-known = You already know this.
 ce-knowledge-verb-study = Study
+ce-knowledge-book-author = [color=gray]Author: { $name }[/color]
 
 ce-knowledge-effect-workbench-header = Unlocks crafting at the "[color=yellow]{ $station }[/color]":
 ce-knowledge-effect-workbench-header-generic = Unlocks crafting:
