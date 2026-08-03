@@ -34,9 +34,6 @@ public sealed partial class CEScienceAchievementPrototype : IPrototype
     public LocId Name;
 
     [DataField]
-    public LocId? Desc;
-
-    [DataField]
     public TimeSpan Time = TimeSpan.FromSeconds(3);
 
     /// <summary>

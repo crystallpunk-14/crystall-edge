@@ -50,8 +50,9 @@ public sealed partial class CEResearchCellInfoControl : BoxContainer
             case CEScienceAchievementCell achievementCell when _prototype.TryIndex(achievementCell.Achievement, out var achievement):
                 TitleLabel.Visible = true;
                 TitleLabel.Text = Loc.GetString(achievement.Name);
-                DescLabel.Visible = achievement.Desc is not null;
-                DescLabel.SetMessage(achievement.Desc is { } desc ? Loc.GetString(desc) : string.Empty);
+                var desc = string.Join("\n", achievement.Effects.Select(e => e.EntityEffectGuidebookText(_prototype, _entity.EntitySysManager)));
+                DescLabel.Visible = !string.IsNullOrEmpty(desc);
+                DescLabel.Text = desc;
                 break;
 
             default:

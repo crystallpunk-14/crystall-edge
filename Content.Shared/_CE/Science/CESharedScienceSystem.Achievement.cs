@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Shared._CE.Science.Components;
 using Content.Shared._CE.Science.Prototypes;
 using Content.Shared.DoAfter;
@@ -33,8 +34,9 @@ public abstract partial class CESharedScienceSystem
 
         _metaData.SetEntityName(ent, Loc.GetString(achievement.Name));
 
-        if (achievement.Desc is { } desc)
-            _metaData.SetEntityDescription(ent, Loc.GetString(desc));
+        var desc = string.Join("\n", achievement.Effects.Select(e => e.EntityEffectGuidebookText(_proto, EntityManager.EntitySysManager)));
+        if (!string.IsNullOrEmpty(desc))
+            _metaData.SetEntityDescription(ent, desc);
     }
 
     private void OnAchievementUseInHand(Entity<CEScienceAchievementHolderComponent> ent, ref UseInHandEvent args)

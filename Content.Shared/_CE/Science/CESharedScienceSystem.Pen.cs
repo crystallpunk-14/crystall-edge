@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Shared._CE.Pen;
 using Content.Shared._CE.Science.Components;
 using Content.Shared._CE.Science.Prototypes;
@@ -91,8 +92,9 @@ public abstract partial class CESharedScienceSystem
         AddComp(spawned, new CEScienceAchievementHolderComponent { Achievement = args.Achievement });
 
         _metaData.SetEntityName(spawned, Loc.GetString(achievement.Name));
-        if (achievement.Desc is { } desc)
-            _metaData.SetEntityDescription(spawned, Loc.GetString(desc));
+        var desc = string.Join("\n", achievement.Effects.Select(e => e.EntityEffectGuidebookText(_proto, EntityManager.EntitySysManager)));
+        if (!string.IsNullOrEmpty(desc))
+            _metaData.SetEntityDescription(spawned, desc);
 
         _audio.PlayPvs(RecordKnowledgeSound, spawned);
     }
