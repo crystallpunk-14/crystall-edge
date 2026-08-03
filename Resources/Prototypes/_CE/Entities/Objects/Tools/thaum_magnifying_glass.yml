@@ -10,6 +10,7 @@
     state: icon
   - type: Item
     size: Small
+    storedRotation: -90
     sprite: _CE/Objects/Tools/thaum_magnifying_glass.rsi
   - type: CEThaumaturgicMagnifyingGlass
   - type: StaticPrice

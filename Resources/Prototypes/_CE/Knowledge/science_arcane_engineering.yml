@@ -21,3 +21,11 @@
     sprite: _CE/Interface/Science/AreaIcons/portable_attractor.rsi
     state: icon
   book: CEBaseScienceBookArcaneEngineering
+
+- type: CEKnowledge
+  id: KnowledgeNodeStabilizer
+  name: ce-knowledge-node-stabilizer
+  icon:
+    sprite: _CE/Interface/Science/AreaIcons/node_stabilizator.rsi
+    state: icon
+  book: CEBaseScienceBookArcaneEngineering

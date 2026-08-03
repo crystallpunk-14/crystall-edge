@@ -41,7 +41,7 @@ public sealed partial class CEUnpoweredEssenceLeakSystem : EntitySystem
 
             var picked = solution.Contents[_random.Next(solution.Contents.Count)];
 
-            if (_essence.TryGetEssenceProtoForReagent(picked.Reagent.Prototype, out var essenceProto))
+            if (_essence.TryGetEssenceFromReagent(picked.Reagent.Prototype, out var essenceProto))
             {
                 var evaporated = _solutionContainer.RemoveReagent(leak.Solution.Value, picked.Reagent, FixedPoint2.New(1));
                 if (evaporated > FixedPoint2.Zero)

@@ -48,8 +48,9 @@ public sealed partial class CEInfusionAltarComponent : Component
     public HashSet<EntityUid> ConnectedPedestals = new();
 
     /// <summary>
-    /// Current instability meter (0..<see cref="MaxInstability"/>). Drives mishap roll chance
-    /// (<c>Instability / InstabilityDivisor</c> per tick) and the danger visual band.
+    /// Current instability meter (0..<see cref="MaxInstability"/>). Its fraction of
+    /// <see cref="MaxInstability"/> determines the altar's danger level (Calm/Unstable/Critical),
+    /// which drives both the mishap roll chance and the danger visual band.
     /// </summary>
     [DataField]
     public float Instability;
@@ -73,10 +74,17 @@ public sealed partial class CEInfusionAltarComponent : Component
     public ProtoId<CEInfusionAltarRecipePrototype>? AttemptingRecipe;
 
     /// <summary>
-    /// Mishap roll chance per tick = <c>Instability / InstabilityDivisor</c>.
+    /// Mishap roll chance per tick while at <see cref="Content.Shared._CE.InfusionAltar.CEInfusionAltarDangerLevel.Unstable"/>.
+    /// Calm never rolls (0%); Critical uses <see cref="CriticalMishapChance"/> instead.
     /// </summary>
     [DataField]
-    public float InstabilityDivisor = 500f;
+    public float UnstableMishapChance = 0.05f;
+
+    /// <summary>
+    /// Mishap roll chance per tick while at <see cref="Content.Shared._CE.InfusionAltar.CEInfusionAltarDangerLevel.Critical"/>.
+    /// </summary>
+    [DataField]
+    public float CriticalMishapChance = 0.15f;
 
     /// <summary>
     /// Instability growth per second while powered, no catalyst inserted.
@@ -85,18 +93,13 @@ public sealed partial class CEInfusionAltarComponent : Component
     public float PoweredIdleInstabilityRate = 0.17f;
 
     /// <summary>
-    /// Instability growth per second while powered, catalyst inserted but no recipe's catalyst
-    /// requirement matches it - an attempt that can never succeed.
+    /// Instability growth per second (scaled by <see cref="StabilizerFactor"/>) whenever the ritual
+    /// isn't actively progressing while powered with a catalyst inserted: either no recipe's
+    /// catalyst requirement matches it (an attempt that can never succeed), or a recipe is
+    /// identified but its conditions are currently unmet (missing essence/pedestal items).
     /// </summary>
     [DataField]
-    public float InvalidCatalystInstabilityRate = 0.67f;
-
-    /// <summary>
-    /// Instability growth per second while a recipe is identified but its conditions are currently
-    /// unmet (missing essence/pedestal items).
-    /// </summary>
-    [DataField]
-    public float BrokenConditionInstabilityRate = 1.33f;
+    public float BrokenConditionInstabilityRate = 0.67f;
 
     /// <summary>
     /// Instability decay per second while unpowered.
@@ -105,12 +108,20 @@ public sealed partial class CEInfusionAltarComponent : Component
     public float UnpoweredDecayRate = 0.83f;
 
     /// <summary>
-    /// Pool of mishap entity prototypes. A random entry is spawned whenever the per-tick mishap roll
-    /// succeeds; each mishap entity carries its own effect components (damage, area effects, item
-    /// ejection, etc.) rather than the altar hardcoding effect logic.
+    /// Pool of mishap entity prototypes rolled while at <see cref="Content.Shared._CE.InfusionAltar.CEInfusionAltarDangerLevel.Unstable"/>.
+    /// Also rolled from at <see cref="Content.Shared._CE.InfusionAltar.CEInfusionAltarDangerLevel.Critical"/>, alongside
+    /// <see cref="CriticalMishaps"/>. Each mishap entity carries its own effect components (damage,
+    /// area effects, item ejection, etc.) rather than the altar hardcoding effect logic.
     /// </summary>
     [DataField]
-    public List<EntProtoId> Mishaps = new();
+    public List<EntProtoId> UnstableMishaps = new();
+
+    /// <summary>
+    /// Pool of mishap entity prototypes only rolled while at <see cref="Content.Shared._CE.InfusionAltar.CEInfusionAltarDangerLevel.Critical"/>,
+    /// on top of <see cref="UnstableMishaps"/> - reserved for the most severe effects.
+    /// </summary>
+    [DataField]
+    public List<EntProtoId> CriticalMishaps = new();
 
     /// <summary>
     /// Cached multiplier applied to instability growth, recomputed periodically by
@@ -122,7 +133,7 @@ public sealed partial class CEInfusionAltarComponent : Component
     public float StabilizerFactor = 1f;
 
     [DataField]
-    public float StabilizerScanRadius = 6f;
+    public float StabilizerScanRadius = 3f;
 
     [DataField]
     public TimeSpan StabilizerScanInterval = TimeSpan.FromSeconds(5);

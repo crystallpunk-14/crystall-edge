@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Shared._CE.EntityEffect;
+using Content.Shared._CE.Knowledge;
 using Content.Shared._CE.Knowledge.Components;
 using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.Science;
@@ -11,6 +12,7 @@ using Robust.Client.Player;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Client._CE.Science;
 
@@ -26,6 +28,8 @@ public sealed partial class CEResearchCellInfoControl : BoxContainer
     [Dependency] private IEntityManager _entity = default!;
     [Dependency] private IPlayerManager _player = default!;
 
+    private CEKnowledgeSystem _knowledge = default!;
+
     /// <summary>
     /// Raised when the player presses an action's "Execute" button, with that action's id.
     /// </summary>
@@ -35,6 +39,8 @@ public sealed partial class CEResearchCellInfoControl : BoxContainer
     {
         IoCManager.InjectDependencies(this);
         RobustXamlLoader.Load(this);
+
+        _knowledge = _entity.System<CEKnowledgeSystem>();
     }
 
     public void UpdateCell(CEScienceMapCell? cell)
@@ -53,9 +59,10 @@ public sealed partial class CEResearchCellInfoControl : BoxContainer
                      && _prototype.TryIndex(achievement.Knowledge, out var knowledge):
                 TitleLabel.Visible = true;
                 TitleLabel.Text = Loc.GetString(knowledge.Name);
-                var desc = knowledge.Description is { } d ? Loc.GetString(d) : string.Empty;
-                DescLabel.Visible = !string.IsNullOrEmpty(desc);
-                DescLabel.Text = desc;
+
+                var effects = _knowledge.GetKnowledgeEffectDescription(achievement.Knowledge);
+                DescLabel.Visible = effects.Length > 0;
+                DescLabel.SetMessage(FormattedMessage.FromMarkupPermissive(effects));
                 break;
 
             default:

@@ -1,7 +1,7 @@
 - type: entity
   parent: BaseItem
   id: CEPortableMagicEssenceAttractor
-  categories: [ ForkFiltered ]
+  categories: [ ForkFiltered, DoNotMap ]
   name: portable essence attractor
   description: A folding thaumaturgical device that draws in floating magic essence from the air while deployed and charged with mana.
   components:
@@ -70,7 +70,7 @@
         layer:
         - Impassable
   - type: StaticPrice
-    price: 220
+    price: 80
   - type: AmbientSound
     enabled: false
     volume: 2

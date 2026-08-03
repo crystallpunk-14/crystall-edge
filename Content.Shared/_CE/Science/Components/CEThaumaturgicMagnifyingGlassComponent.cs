@@ -17,4 +17,11 @@ public sealed partial class CEThaumaturgicMagnifyingGlassComponent : Component
     /// </summary>
     [DataField]
     public TimeSpan RevealInterval = TimeSpan.FromSeconds(3);
+
+    /// <summary>
+    /// Multiplies the target's own <see cref="CEScientificInterestComponent.Time"/> when the study
+    /// do-after is started by clicking this glass on it. 1 = unchanged, 0.5 = twice as fast.
+    /// </summary>
+    [DataField]
+    public float StudyTimeMultiplier = 1f;
 }

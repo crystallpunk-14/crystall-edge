@@ -40,22 +40,11 @@
     - -2, 2
     - 2, -2
     - -2, -2
-    #- 4, 4
-    #- -4, 4
-    #- 4, -4
-    #- -4, -4
-    #- 1, 6
-    #- -1, 6
-    #- 1, -6
-    #- -1, -6
-    #- 6, 1
-    #- -6, 1
-    #- 6, -1
-    #- -6, -1
-    mishaps:
+    unstableMishaps:
     - CEInfusionAltarMishapManaConsume
     - CEInfusionAltarMishapManaRestore
     - CEInfusionAltarMishapPulse
+    criticalMishaps:
     - CEInfusionAltarMishapExplosion
   - type: Climbable
   - type: ItemSlots

@@ -91,8 +91,16 @@ public sealed partial class CEKnowledgeSystem
 
         _metaData.SetEntityName(spawned, Loc.GetString(knowledge.Name));
 
-        if (knowledge.Description is { } desc)
-            _metaData.SetEntityDescription(spawned, Loc.GetString(desc));
+        var descLines = new List<string>();
+
+        var effects = GetKnowledgeEffectDescription(args.Knowledge);
+        if (effects.Length > 0)
+            descLines.Add(effects);
+
+        var authorName = MetaData(ent.Owner).EntityName;
+        descLines.Add(Loc.GetString("ce-knowledge-book-author", ("name", authorName)));
+
+        _metaData.SetEntityDescription(spawned, string.Join("\n", descLines));
 
         _audio.PlayPvs(RecordKnowledgeSound, spawned);
     }
