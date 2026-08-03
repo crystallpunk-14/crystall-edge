@@ -35,8 +35,9 @@ public sealed partial class CEKnowledgeSystem
 
         _metaData.SetEntityName(ent, Loc.GetString(knowledge.Name));
 
-        if (knowledge.Description is { } desc)
-            _metaData.SetEntityDescription(ent, Loc.GetString(desc));
+        var effects = GetKnowledgeEffectDescription(ent.Comp.Knowledge);
+        if (effects.Length > 0)
+            _metaData.SetEntityDescription(ent, effects);
     }
 
     private void OnHolderUseInHand(Entity<CEKnowledgeHolderComponent> ent, ref UseInHandEvent args)

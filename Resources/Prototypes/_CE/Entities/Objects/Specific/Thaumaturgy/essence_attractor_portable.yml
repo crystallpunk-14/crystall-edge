@@ -70,7 +70,7 @@
         layer:
         - Impassable
   - type: StaticPrice
-    price: 220
+    price: 80
   - type: AmbientSound
     enabled: false
     volume: 2

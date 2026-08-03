@@ -93,9 +93,6 @@ public sealed partial class CEKnowledgeSystem
 
         var descLines = new List<string>();
 
-        if (knowledge.Description is { } desc)
-            descLines.Add(Loc.GetString(desc));
-
         var effects = GetKnowledgeEffectDescription(args.Knowledge);
         if (effects.Length > 0)
             descLines.Add(effects);
