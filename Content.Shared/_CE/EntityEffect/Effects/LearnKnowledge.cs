@@ -22,13 +22,18 @@ public sealed partial class LearnKnowledge : CEEntityEffectBase<LearnKnowledge>
 
     public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
     {
+        var knowledgeSystem = entSys.GetEntitySystem<CEKnowledgeSystem>();
+
         var lines = new List<string>();
         foreach (var knowledgeId in Knowledge)
         {
             if (!prototype.TryIndex(knowledgeId, out var knowledge))
                 continue;
 
-            lines.Add(Loc.GetString("ce-entity-effect-guidebook-learn-knowledge", ("name", Loc.GetString(knowledge.Name))));
+            var header = Loc.GetString("ce-entity-effect-guidebook-learn-knowledge", ("name", Loc.GetString(knowledge.Name)));
+            var effects = knowledgeSystem.GetKnowledgeEffectDescription(knowledgeId);
+
+            lines.Add(effects.Length > 0 ? $"{header}\n{effects}" : header);
         }
 
         return lines.Count > 0 ? string.Join("\n", lines) : base.EntityEffectGuidebookText(prototype, entSys);

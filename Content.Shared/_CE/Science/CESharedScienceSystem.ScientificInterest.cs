@@ -65,12 +65,13 @@ public abstract partial class CESharedScienceSystem
         if (!TryComp<CEScientificInterestComponent>(target, out var interest) || interest.StudiedBy.Contains(args.User))
             return;
 
-        args.Handled = StartInterestStudy((target, interest), args.User, ent);
+        var duration = interest.Time * ent.Comp.StudyTimeMultiplier;
+        args.Handled = StartInterestStudy((target, interest), args.User, ent, duration);
     }
 
-    private bool StartInterestStudy(Entity<CEScientificInterestComponent> ent, EntityUid user, EntityUid used)
+    private bool StartInterestStudy(Entity<CEScientificInterestComponent> ent, EntityUid user, EntityUid used, TimeSpan duration)
     {
-        var doAfterArgs = new DoAfterArgs(EntityManager, user, ent.Comp.Time, new CEScientificInterestDoAfterEvent(), ent, target: user, used: used)
+        var doAfterArgs = new DoAfterArgs(EntityManager, user, duration, new CEScientificInterestDoAfterEvent(), ent, target: user, used: used)
         {
             BreakOnMove = false,
             BreakOnDamage = true,

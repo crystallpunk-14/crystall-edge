@@ -1,3 +1,4 @@
+using System.Text;
 using Content.Shared._CE.Knowledge.Components;
 using Content.Shared._CE.Knowledge.Prototypes;
 using Robust.Shared.GameObjects;
@@ -85,5 +86,28 @@ public sealed partial class CEKnowledgeSystem : EntitySystem
             return null;
 
         return component.Known;
+    }
+
+    /// <summary>
+    /// Builds a human-readable description of everything a piece of knowledge unlocks, by raising
+    /// <see cref="CEGetKnowledgeEffectEvent"/> and letting every knowledge-aware system (recipes,
+    /// achievements, ...) contribute its own line. Returns an empty string if nothing responded.
+    /// </summary>
+    public string GetKnowledgeEffectDescription(ProtoId<CEKnowledgePrototype> knowledge)
+    {
+        var effects = new List<string>();
+        var ev = new CEGetKnowledgeEffectEvent(knowledge, effects);
+        RaiseLocalEvent(ref ev);
+
+        var sb = new StringBuilder();
+        foreach (var effect in effects)
+        {
+            if (sb.Length > 0)
+                sb.Append('\n');
+
+            sb.Append(effect);
+        }
+
+        return sb.ToString();
     }
 }

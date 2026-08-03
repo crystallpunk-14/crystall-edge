@@ -18,3 +18,12 @@ public readonly record struct CEKnowledgeLearnedEvent(EntityUid Entity, ProtoId<
 /// </summary>
 [Serializable, NetSerializable]
 public sealed partial class CEKnowledgeReadDoAfterEvent : SimpleDoAfterEvent;
+
+/// <summary>
+/// Broadcast query raised by <see cref="CEKnowledgeSystem.GetKnowledgeEffectDescription"/> to collect
+/// what a piece of knowledge unlocks. Every system that gates something behind knowledge (recipes,
+/// achievements, etc.) should subscribe and append its own description to <see cref="Effects"/> when
+/// it recognizes <see cref="Knowledge"/>.
+/// </summary>
+[ByRefEvent]
+public readonly record struct CEGetKnowledgeEffectEvent(ProtoId<CEKnowledgePrototype> Knowledge, List<string> Effects);
