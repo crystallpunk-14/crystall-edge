@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Numerics;
 using Content.Client.Gameplay;
 using Content.Shared._CE.MagicEssence.Prototypes;
@@ -244,15 +245,15 @@ public sealed partial class CEMagicEssenceOverlay : Overlay
         if (!_interaction.InRangeUnobstructed((player, null), (target, xform)))
             return null;
 
-        var essences = _essence.GetEssence(target, includeContents: false);
-        if (essences.Count == 0)
+        var essenceDict = _essence.GetEssence(target, recursive: false);
+        if (essenceDict.Count == 0)
             return null;
 
-        essences.Sort((a, b) =>
-        {
-            var byAmount = b.Amount.CompareTo(a.Amount);
-            return byAmount != 0 ? byAmount : string.CompareOrdinal(a.Type.Id, b.Type.Id);
-        });
+        var essences = essenceDict
+            .OrderByDescending(kv => kv.Value)
+            .ThenBy(kv => kv.Key.Id)
+            .Select(kv => (Type: kv.Key, Amount: kv.Value))
+            .ToList();
 
         return (target, essences);
     }

@@ -62,7 +62,7 @@ public sealed partial class CEInfusionAltarSystem
 
             // Losing power doesn't defuse whatever instability has already built up - it can still go
             // off while it drains back down, just without any chance of the ritual completing.
-            RollMishap(ent);
+            SpawnRandomMishup(ent);
             UpdateDangerVisuals(ent);
             return;
         }
@@ -77,11 +77,11 @@ public sealed partial class CEInfusionAltarSystem
         }
         else
         {
-            var essenceLookup = BuildEssenceLookup(ent.Owner);
+            var essenceInAltar = _magicEssence.GetEssence(ent.Owner, false);
             var recipe = ResolveAttemptedRecipe(ent,
                 catalystEntity.Value,
                 singleton,
-                essenceLookup,
+                essenceInAltar,
                 out var cache,
                 out var pedestalMatches,
                 out var essenceSatisfied,
@@ -117,7 +117,7 @@ public sealed partial class CEInfusionAltarSystem
             }
         }
 
-        RollMishap(ent);
+        SpawnRandomMishup(ent);
         UpdateDangerVisuals(ent);
     }
 
@@ -181,7 +181,7 @@ public sealed partial class CEInfusionAltarSystem
     /// Rolls <c>Instability / InstabilityDivisor</c> chance for a mishap; on success spawns a random entry
     /// from <see cref="CEInfusionAltarComponent.Mishaps"/> at the altar itself.
     /// </summary>
-    private void RollMishap(Entity<CEInfusionAltarComponent> ent)
+    private void SpawnRandomMishup(Entity<CEInfusionAltarComponent> ent)
     {
         var altar = ent.Comp;
         if (altar.Mishaps.Count == 0 || altar.Instability <= 0f)
@@ -207,18 +207,6 @@ public sealed partial class CEInfusionAltarSystem
         };
 
         _appearance.SetData(ent.Owner, CEInfusionAltarDangerVisuals.Level, level);
-    }
-
-    private Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int> BuildEssenceLookup(EntityUid altar)
-    {
-        var essences = _magicEssence.GetEssence(altar, includeContents: false);
-        var essenceLookup = new Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int>();
-        foreach (var (type, amount) in essences)
-        {
-            essenceLookup[type] = amount;
-        }
-
-        return essenceLookup;
     }
 
     private static bool HasEnoughEssence(Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int> available, CEInfusionAltarRecipeCache cache)

@@ -102,7 +102,7 @@ public sealed partial class CEMagicEssenceNodeSystem : EntitySystem
 
         foreach (var (reagent, quantity) in solution.Contents.ToList())
         {
-            if (!_essence.TryGetEssenceProtoForReagent(reagent.Prototype, out var essenceProto))
+            if (!_essence.TryGetEssenceFromReagent(reagent.Prototype, out var essenceProto))
                 continue;
 
             var units = quantity.Int();
