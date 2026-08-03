@@ -407,91 +407,6 @@
   resultCount: 1
 
 - type: CERecipe
-  id: CEInfusionAltar
-  parent: CEBaseEngineeringTableRecipe
-  category: Tools
-  craftTime: 2.0
-  requirements:
-  - !type:StackResource
-    stack: CEBrassSheet
-    count: 8
-  - !type:ProtoIdResource
-    protoId: CEEnergyCrystalCell
-    count: 2
-  - !type:StackResource
-    stack: CEMachinePartEnergyLine
-    count: 2
-  - !type:StackResource
-    stack: CEGlass
-    count: 5
-  result: CEInfusionAltar
-  resultCount: 1
-
-- type: CERecipe
-  id: CEInfusionAltarPedestal
-  parent: CEBaseEngineeringTableRecipe
-  category: Tools
-  craftTime: 2.0
-  requirements:
-  - !type:StackResource
-    stack: CEBrassSheet
-    count: 3
-  - !type:ProtoIdResource
-    protoId: CEEnergyCrystalCell
-    count: 1
-  - !type:StackResource
-    stack: CEGlass
-    count: 2
-  result: CEInfusionAltarPedestal
-  resultCount: 1
-
-- type: CERecipe
-  id: CESolutionNormalizer
-  parent: CEBaseEngineeringTableRecipe
-  category: Tools
-  craftTime: 2.0
-  requirements:
-  - !type:StackResource
-    stack: CEBrassSheet
-    count: 5
-  - !type:ProtoIdResource
-    protoId: CEEnergyCrystalCell
-    count: 1
-  - !type:StackResource
-    stack: CEMachinePartCoalDiffuser
-    count: 2
-  - !type:StackResource
-    stack: CEGlass
-    count: 5
-  result: CESolutionNormalizer
-  resultCount: 1
-
-- type: CERecipe
-  id: CEPortableMagicEssenceAttractor
-  requiredKnowledge: KnowledgePortableEssenceAttractor
-  parent: CEBaseEngineeringTableRecipe
-  category: Tools
-  craftTime: 2.0
-  requirements:
-  - !type:StackResource
-    stack: CEBrassSheet
-    count: 8
-  - !type:ProtoIdResource
-    protoId: CEEnergyCrystalCell
-    count: 2
-  - !type:StackResource
-    stack: CEMachinePartCoalDiffuser
-    count: 2
-  - !type:StackResource
-    stack: CEMachinePartEnergyLine
-    count: 2
-  - !type:StackResource
-    stack: CEGlass
-    count: 5
-  result: CEPortableMagicEssenceAttractor
-  resultCount: 1
-
-- type: CERecipe
   id: CEMachineCoreCharger
   parent: CEBaseEngineeringTableRecipe
   category: MachineCore
@@ -678,4 +593,116 @@
     stack: CEIronSheet
     count: 5
   result: CEMachineCoreTradingPlatformImperialChancellery
+  resultCount: 1
+
+#MARK: Structures
+
+- type: CERecipe
+  id: CEInfusionAltar
+  parent: CEBaseEngineeringTableRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 8
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 2
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 2
+  - !type:StackResource
+    stack: CEGlass
+    count: 5
+  result: CEInfusionAltar
+  resultCount: 1
+
+- type: CERecipe
+  id: CEInfusionAltarPedestal
+  parent: CEBaseEngineeringTableRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 3
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 1
+  - !type:StackResource
+    stack: CEGlass
+    count: 2
+  result: CEInfusionAltarPedestal
+  resultCount: 1
+
+- type: CERecipe
+  id: CESolutionNormalizer
+  parent: CEBaseEngineeringTableRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:ProtoIdResource
+    protoId: CEEssenceSphereFire
+    count: 2
+  - !type:StackResource
+    stack: CEMachinePartCoalDiffuser
+    count: 1
+  - !type:StackResource
+    stack: CEGlass
+    count: 5
+  result: CESolutionNormalizer
+  resultCount: 1
+
+- type: CERecipe
+  id: CEPortableMagicEssenceAttractor
+  requiredKnowledge: KnowledgePortableEssenceAttractor
+  parent: CEBaseEngineeringTableRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronBar
+    count: 2
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 4
+  - !type:ProtoIdResource
+    protoId: CEEssenceSphereAir
+    count: 1
+  - !type:StackResource
+    stack: CEGlass
+    count: 5
+  result: CEPortableMagicEssenceAttractor
+  resultCount: 1
+
+- type: CERecipe
+  id: CENodeStabilizerSphere
+  requiredKnowledge: KnowledgeNodeStabilizer
+  parent: CEBaseEngineeringTableRecipe
+  category: Tools
+  craftTime: 3.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassRod
+    count: 12
+  - !type:StackResource
+    stack: CEBrassBar
+    count: 4
+  - !type:ProtoIdResource
+    protoId: CEEssenceSphereChaos
+    count: 1
+  - !type:ProtoIdResource
+    protoId: CEEssenceSphereOrder
+    count: 1
+  - !type:StackResource
+    stack: CEGlass
+    count: 10
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 1
+  result: CENodeStabilizerSphere
   resultCount: 1

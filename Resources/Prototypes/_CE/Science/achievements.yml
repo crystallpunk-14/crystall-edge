@@ -17,7 +17,15 @@
 - type: scienceAchievement
   id: PortableMagicEssenceAttractor
   area: ArcaneEngineering
-  difficulty: 15
+  difficulty: 10
   cost:
     Order: 5
   knowledge: KnowledgePortableEssenceAttractor
+
+- type: scienceAchievement
+  id: NodeStabilizer
+  area: ArcaneEngineering
+  difficulty: 15
+  cost:
+    Order: 5
+  knowledge: KnowledgeNodeStabilizer

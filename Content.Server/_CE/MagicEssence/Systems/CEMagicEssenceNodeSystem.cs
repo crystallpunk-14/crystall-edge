@@ -16,6 +16,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
+using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Spawners;
@@ -37,7 +38,15 @@ public sealed partial class CEMagicEssenceNodeSystem : EntitySystem
     [Dependency] private SharedMapSystem _mapSystem = default!;
     [Dependency] private StationSystem _stations = default!;
     [Dependency] private CEZLevelsSystem _zLevels = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
     [Dependency] private EntityQuery<PhysicsComponent> _physicsQuery = default!;
+
+    /// <summary>
+    /// Speed range randomly applied to essence spilled by <see cref="ReleaseEssence"/>, scattering it
+    /// outward instead of leaving it stacked in place.
+    /// </summary>
+    private const float ReleaseScatterMinSpeed = 1f;
+    private const float ReleaseScatterMaxSpeed = 3f;
 
     private readonly EntProtoId _magicEssenceNodeEntity = "CEMagicEssenceNode";
 
@@ -62,6 +71,42 @@ public sealed partial class CEMagicEssenceNodeSystem : EntitySystem
             node.NextGenerationTime = _timing.CurTime + node.GenerationInterval;
             GenerateEssence((uid, node));
         }
+    }
+
+    /// <summary>
+    /// Freezes a node's fade timing and despawn countdown - it keeps generating essence as normal,
+    /// but stops aging and can no longer expire. Called by a
+    /// <see cref="CEMagicEssenceNodeStabilizerComponent"/> when it becomes anchored+powered on the
+    /// node's tile. Idempotent.
+    /// </summary>
+    public void StopNodeTime(Entity<CEMagicEssenceNodeComponent?> ent)
+    {
+        if (!Resolve(ent, ref ent.Comp) || ent.Comp.StopTime is not null)
+            return;
+
+        ent.Comp.StopTime = _timing.CurTime;
+        RemComp<TimedDespawnComponent>(ent);
+
+        Dirty(ent);
+    }
+
+    /// <summary>
+    /// Resumes a node's fade timing and despawn countdown from exactly the moment
+    /// <see cref="StopNodeTime"/> froze them at. Idempotent.
+    /// </summary>
+    public void ResumeNodeTime(Entity<CEMagicEssenceNodeComponent?> ent)
+    {
+        if (!Resolve(ent, ref ent.Comp) || ent.Comp.StopTime is not { } stopTime)
+            return;
+
+        var elapsed = _timing.CurTime - stopTime;
+        ent.Comp.StopTime = null;
+        ent.Comp.SpawnTime += elapsed;
+
+        var despawn = EnsureComp<TimedDespawnComponent>(ent);
+        despawn.Lifetime = (float)(ent.Comp.SpawnTime + ent.Comp.Lifetime - _timing.CurTime).TotalSeconds;
+
+        Dirty(ent);
     }
 
     /// <summary>
@@ -102,10 +147,32 @@ public sealed partial class CEMagicEssenceNodeSystem : EntitySystem
 
     /// <summary>
     /// When a node's lifetime runs out, releases whatever essence reagent is still pooled in its
-    /// solution back into the air as floating essence entities - one per remaining unit, same as
-    /// <see cref="GenerateEssence"/> spills essence with no room left in the solution.
+    /// solution back into the air as floating essence entities - see <see cref="ReleaseEssence"/>.
     /// </summary>
     private void OnNodeTimedDespawn(Entity<CEMagicEssenceNodeComponent> ent, ref TimedDespawnEvent args)
+    {
+        ReleaseEssence(ent);
+    }
+
+    /// <summary>
+    /// Immediately destroys a node, releasing its pooled essence the same way it would if it had
+    /// died of old age - used e.g. when a stabilizer sphere holding it in stasis is shattered.
+    /// </summary>
+    public void DestroyNode(Entity<CEMagicEssenceNodeComponent?> ent)
+    {
+        if (!Resolve(ent, ref ent.Comp))
+            return;
+
+        ReleaseEssence((ent.Owner, ent.Comp));
+        QueueDel(ent.Owner);
+    }
+
+    /// <summary>
+    /// Releases whatever essence reagent is still pooled in the node's solution back into the air
+    /// as floating essence entities - one per remaining unit, same as <see cref="GenerateEssence"/>
+    /// spills essence with no room left in the solution.
+    /// </summary>
+    private void ReleaseEssence(Entity<CEMagicEssenceNodeComponent> ent)
     {
         if (!_solutionContainer.ResolveSolution(ent.Owner, ent.Comp.SolutionName, ref ent.Comp.Solution, out var solution))
             return;
@@ -124,7 +191,12 @@ public sealed partial class CEMagicEssenceNodeSystem : EntitySystem
             _solutionContainer.RemoveReagent(ent.Comp.Solution.Value, reagent, FixedPoint2.New(units));
 
             for (var i = 0; i < units; i++)
-                Spawn(essenceProto, coordinates);
+            {
+                var spawned = Spawn(essenceProto, coordinates);
+
+                if (_physicsQuery.TryGetComponent(spawned, out var physics))
+                    _physics.SetLinearVelocity(spawned, _random.NextVector2(ReleaseScatterMinSpeed, ReleaseScatterMaxSpeed), body: physics);
+            }
         }
     }
 

@@ -105,6 +105,19 @@ public sealed partial class CEMagicEssenceNodeComponent : Component
     public MinMax InterestPoints = new(10, 20);
 
     /// <summary>
+    /// When set, a <see cref="CEMagicEssenceNodeStabilizerComponent"/> anchored+powered on this
+    /// node's tile is freezing its fade timing and despawn countdown as of this moment - the node
+    /// keeps generating essence as normal, it just stops aging and can no longer expire. See the
+    /// server-side magic essence node system's <c>StopNodeTime</c>/<c>ResumeNodeTime</c>. Null means
+    /// the node ages normally. While set, its <see cref="Robust.Shared.Spawners.TimedDespawnComponent"/>
+    /// is removed entirely (that system doesn't respect entity pause) - <see cref="SpawnTime"/> plus
+    /// <see cref="Lifetime"/> minus the current time gives the remaining despawn countdown to
+    /// restore it with on resume.
+    /// </summary>
+    [DataField, AutoNetworkedField, AutoPausedField]
+    public TimeSpan? StopTime;
+
+    /// <summary>
     /// Client-only: cached 70/20/10 blend of <see cref="EssenceA"/>/<see cref="EssenceB"/>/<see cref="EssenceC"/>'s
     /// colors, re-derived whenever the rolled aspects change instead of every render frame.
     /// </summary>

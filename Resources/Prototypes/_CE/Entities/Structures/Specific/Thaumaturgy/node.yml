@@ -57,19 +57,59 @@
     layer: 16 #magic vision only
 
 - type: entity
-  parent: BaseStructure
-  id: CENodeSphereContainer
-  name: node container
+  parent: CEBaseMachinePowered
+  id: CENodeStabilizerSphere
+  name: node stabilizer sphere
   categories: [ ForkFiltered ]
-  description: TODO
-  suffix: WIP
+  description: A large glass sphere ringed with brass. Anchored and powered on a magic essence node, it stops the node from aging, preserving it indefinitely while it keeps generating essence.
   components:
   - type: Sprite
     noRot: true
     drawdepth: Mobs
-    sprite: _CE/Structures/Specific/Thaumaturgy/node_container.rsi
+    sprite: _CE/Structures/Specific/Thaumaturgy/node_stabilizator.rsi
     layers:
     - state: base
     - state: lines_back
     - state: glass
+    - state: active
+      map: [ "power" ]
+      visible: false
+      shader: unshaded
+      color: "#ffffff79"
     - state: lines_front
+  - type: Icon
+    sprite: _CE/Structures/Specific/Thaumaturgy/node_stabilizator.rsi
+    state: base
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        power:
+          True: { visible: true }
+          False: { visible: false }
+  - type: Damageable
+    damageModifierSet: Glass
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 25
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WindowShatter
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEGlassShard:
+            min: 2
+            max: 4
+          CEBrassRod1:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: CEMagicEssenceNodeStabilizer
+  - type: StaticPrice
+    price: 250

@@ -10,3 +10,4 @@ ce-knowledge-effect-list-item = - [color=yellow]{ $item }[/color]
 ce-knowledge-drill-advanced = Advanced Drilling
 ce-knowledge-hoverboard = Hoverboards
 ce-knowledge-portable-essence-attractor = Portable Essence Attractor
+ce-knowledge-node-stabilizer = Node Containment Sphere
