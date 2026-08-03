@@ -1,5 +1,6 @@
 ﻿using Content.Shared._CE.ShockWave;
 using Robust.Shared.Network;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Spawners;
 
 namespace Content.Shared._CE.EntityEffect.Effects;
@@ -14,6 +15,9 @@ public sealed partial class ShockWaveVFX : CEEntityEffectBase<ShockWaveVFX>
 
     [DataField]
     public float FalloffPower = 40f;
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
+        Loc.GetString("ce-entity-effect-guidebook-shockwave-vfx");
 }
 
 public sealed partial class CEShockWaveVFXEffectSystem : CEEntityEffectSystem<ShockWaveVFX>

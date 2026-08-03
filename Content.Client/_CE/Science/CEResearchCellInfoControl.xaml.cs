@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Shared._CE.EntityEffect;
+using Content.Shared._CE.Knowledge.Components;
 using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.Science;
 using Content.Shared._CE.Science.Components;
@@ -47,11 +48,14 @@ public sealed partial class CEResearchCellInfoControl : BoxContainer
                 DescLabel.SetMessage(Loc.GetString("ce-research-cell-dead-zone-desc"));
                 break;
 
-            case CEScienceAchievementCell achievementCell when _prototype.TryIndex(achievementCell.Achievement, out var achievement):
+            case CEScienceAchievementCell achievementCell
+                when _prototype.TryIndex(achievementCell.Achievement, out var achievement)
+                     && _prototype.TryIndex(achievement.Knowledge, out var knowledge):
                 TitleLabel.Visible = true;
-                TitleLabel.Text = Loc.GetString(achievement.Name);
-                DescLabel.Visible = achievement.Desc is not null;
-                DescLabel.SetMessage(achievement.Desc is { } desc ? Loc.GetString(desc) : string.Empty);
+                TitleLabel.Text = Loc.GetString(knowledge.Name);
+                var desc = knowledge.Description is { } d ? Loc.GetString(d) : string.Empty;
+                DescLabel.Visible = !string.IsNullOrEmpty(desc);
+                DescLabel.Text = desc;
                 break;
 
             default:
@@ -69,6 +73,7 @@ public sealed partial class CEResearchCellInfoControl : BoxContainer
         var conditionArgs = new CEEntityEffectArgs(_entity, localEntity, null, default, 0f, localEntity, null);
 
         _entity.TryGetComponent<CEScienceResearchDataComponent>(localEntity, out var researchData);
+        _entity.TryGetComponent<CEKnowledgeComponent>(localEntity, out var knowledgeComp);
         var points = researchData?.Points ?? new Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int>();
 
         foreach (var action in _prototype.EnumeratePrototypes<CEResearchActionPrototype>())
@@ -98,7 +103,7 @@ public sealed partial class CEResearchCellInfoControl : BoxContainer
                 if (!_prototype.TryIndex(achievementCell.Achievement, out var achievement))
                     continue;
 
-                if (researchData?.DiscoveredAchievements.Contains(achievementCell.Achievement) ?? false)
+                if (knowledgeComp?.Known.Contains(achievement.Knowledge) ?? false)
                     continue;
 
                 cost = achievement.Cost;
@@ -108,7 +113,7 @@ public sealed partial class CEResearchCellInfoControl : BoxContainer
             var entry = new CEResearchActionControl
             {
                 HeaderText = Loc.GetString(action.Name),
-                Description = action.Desc is { } desc ? Loc.GetString(desc) : string.Empty,
+                Description = action.Desc is { } descText ? Loc.GetString(descText) : string.Empty,
                 Cost = cost,
                 CanExecute = CESharedScienceSystem.CanAfford(points, cost),
             };

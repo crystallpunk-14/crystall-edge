@@ -4,14 +4,7 @@
   difficulty: 10
   cost:
     Order: 5
-  name: ce-science-achievement-advanced-drilling
-  icon:
-    sprite: _CE/Interface/Science/AreaIcons/drill.rsi
-    state: icon
-  effects:
-  - !type:LearnRecipe
-    recipes:
-    - CEMachineCoreDrillAdvanced
+  knowledge: KnowledgeDrillAdvanced
 
 - type: scienceAchievement
   id: Hoverboards
@@ -19,59 +12,7 @@
   difficulty: 15
   cost:
     Order: 5
-  name: ce-science-achievement-hoverboards
-  icon:
-    sprite: _CE/Interface/Science/AreaIcons/hoverboards.rsi
-    state: icon
-  effects:
-  - !type:LearnRecipe
-    recipes:
-    - CEVehicleHoverboard
-
-- type: scienceAchievement
-  id: AdvancedDrilling2
-  area: ArcaneEngineering
-  difficulty: 10
-  cost:
-    Order: 5
-  name: ce-science-achievement-advanced-drilling
-  icon:
-    sprite: _CE/Interface/Science/AreaIcons/drill.rsi
-    state: icon
-  effects:
-  - !type:LearnRecipe
-    recipes:
-    - CEMachineCoreDrillAdvanced
-
-- type: scienceAchievement
-  id: Hoverboards2
-  area: ArcaneEngineering
-  difficulty: 15
-  cost:
-    Order: 5
-  name: ce-science-achievement-hoverboards
-  icon:
-    sprite: _CE/Interface/Science/AreaIcons/hoverboards.rsi
-    state: icon
-  effects:
-  - !type:LearnRecipe
-    recipes:
-    - CEVehicleHoverboard
-
-- type: scienceAchievement
-  id: AdvancedDrilling3
-  area: ArcaneEngineering
-  difficulty: 15
-  cost:
-    Order: 5
-  name: ce-science-achievement-advanced-drilling
-  icon:
-    sprite: _CE/Interface/Science/AreaIcons/drill.rsi
-    state: icon
-  effects:
-  - !type:LearnRecipe
-    recipes:
-    - CEMachineCoreDrillAdvanced
+  knowledge: KnowledgeHoverboard
 
 - type: scienceAchievement
   id: PortableMagicEssenceAttractor
@@ -79,26 +20,4 @@
   difficulty: 15
   cost:
     Order: 5
-  name: ce-science-achievement-portable-essence-attractor
-  icon:
-    sprite: _CE/Interface/Science/AreaIcons/portable_attractor.rsi
-    state: icon
-  effects:
-  - !type:LearnRecipe
-    recipes:
-    - CEPortableMagicEssenceAttractor
-
-- type: scienceAchievement
-  id: Hoverboards3
-  area: ArcaneEngineering
-  difficulty: 20
-  cost:
-    Order: 5
-  name: ce-science-achievement-hoverboards
-  icon:
-    sprite: _CE/Interface/Science/AreaIcons/hoverboards.rsi
-    state: icon
-  effects:
-  - !type:LearnRecipe
-    recipes:
-    - CEVehicleHoverboard
+  knowledge: KnowledgePortableEssenceAttractor

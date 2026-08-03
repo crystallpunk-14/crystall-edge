@@ -321,27 +321,19 @@ public sealed partial class CEInfusionAltarSystem
         for (var i = 0; i < recipe.ResultCount; i++)
         {
             var result = Spawn(recipe.Result, Transform(ent).Coordinates);
-            GrantScientificInterest(result, cache);
+
+            //Give sci interest points for target created entity
+            var interest = EnsureComp<CEScientificInterestComponent>(result);
+            foreach (var (type, amount) in cache.Essences)
+            {
+                var points = (int)MathF.Ceiling(amount);
+                if (points <= 0)
+                    continue;
+
+                interest.Points[type] = interest.Points.GetValueOrDefault(type) + points;
+            }
+
+            Dirty(result, interest);
         }
-    }
-
-    /// <summary>
-    /// Makes a freshly crafted result studyable for research points (see <see cref="CEScientificInterestComponent"/>,
-    /// same mechanic as ancient books), worth 10% of the essence spent crafting it - rounded up, per essence type.
-    /// </summary>
-    private void GrantScientificInterest(EntityUid result, CEInfusionAltarRecipeCache cache)
-    {
-        var interest = EnsureComp<CEScientificInterestComponent>(result);
-
-        foreach (var (type, amount) in cache.Essences)
-        {
-            var points = (int)MathF.Ceiling(amount * 0.1f);
-            if (points <= 0)
-                continue;
-
-            interest.Points[type] = interest.Points.GetValueOrDefault(type) + points;
-        }
-
-        Dirty(result, interest);
     }
 }

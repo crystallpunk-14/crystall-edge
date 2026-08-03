@@ -1,6 +1,5 @@
 - type: infusionAltarRecipe
   id: EssenceSphereEarth
-  roundStart: true
   catalyst: !type:StackResource
     stack: CEGlass
     count: 1
@@ -24,7 +23,6 @@
 
 - type: infusionAltarRecipe
   id: EssenceSphereFire
-  roundStart: true
   catalyst: !type:StackResource
     stack: CEGlass
     count: 1
@@ -48,7 +46,6 @@
 
 - type: infusionAltarRecipe
   id: EssenceSphereWater
-  roundStart: true
   catalyst: !type:StackResource
     stack: CEGlass
     count: 1
@@ -68,7 +65,6 @@
 
 - type: infusionAltarRecipe
   id: EssenceSphereAir
-  roundStart: true
   catalyst: !type:StackResource
     stack: CEGlass
     count: 1
@@ -88,7 +84,6 @@
 
 - type: infusionAltarRecipe
   id: EssenceSphereOrder
-  roundStart: true
   catalyst: !type:StackResource
     stack: CEGlass
     count: 1
@@ -108,7 +103,6 @@
 
 - type: infusionAltarRecipe
   id: EssenceSphereChaos
-  roundStart: true
   catalyst: !type:StackResource
     stack: CEGlass
     count: 1

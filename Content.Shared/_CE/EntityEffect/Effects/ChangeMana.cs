@@ -1,5 +1,6 @@
 using Content.Shared.Power.Components;
 using Content.Shared.Power.EntitySystems;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.EntityEffect.Effects;
 
@@ -10,6 +11,11 @@ public sealed partial class ChangeMana : CEEntityEffectBase<ChangeMana>
 {
     [DataField]
     public int Amount = 1;
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
+        Amount >= 0
+            ? Loc.GetString("ce-entity-effect-guidebook-change-mana-restore", ("amount", Amount))
+            : Loc.GetString("ce-entity-effect-guidebook-change-mana-drain", ("amount", -Amount));
 }
 
 public sealed partial class CEChangeManaEffectSystem : CEEntityEffectSystem<ChangeMana>

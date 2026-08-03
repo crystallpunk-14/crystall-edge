@@ -1,5 +1,6 @@
 using System.Numerics;
 using Content.Client.Resources;
+using Content.Shared._CE.Knowledge.Components;
 using Content.Shared._CE.Science;
 using Content.Shared._CE.Science.Components;
 using Content.Shared._CE.Science.Prototypes;
@@ -258,7 +259,7 @@ public sealed partial class CEScienceMapControl : BoxContainer
         }
 
         // Pass 2: icons on top of every background.
-        _entity.TryGetComponent<CEScienceResearchDataComponent>(_player.LocalEntity, out var researchData);
+        _entity.TryGetComponent<CEKnowledgeComponent>(_player.LocalEntity, out var knowledgeComp);
 
         foreach (var coordinate in _researched)
         {
@@ -272,10 +273,13 @@ public sealed partial class CEScienceMapControl : BoxContainer
                     break;
                 case CEScienceAchievementCell achievementCell:
                 {
-                    _prototype.TryIndex(achievementCell.Achievement, out var achievement);
-                    var icon = achievement?.Icon;
+                    SpriteSpecifier? icon = null;
+                    if (_prototype.TryIndex(achievementCell.Achievement, out var achievement) &&
+                        _prototype.TryIndex(achievement.Knowledge, out var knowledge))
+                        icon = knowledge.Icon;
+
                     var texture = icon?.Frame0() ?? _area.MapUnknownIcon.Frame0();
-                    var discovered = researchData?.DiscoveredAchievements.Contains(achievementCell.Achievement) ?? false;
+                    var discovered = achievement is not null && (knowledgeComp?.Known.Contains(achievement.Knowledge) ?? false);
 
                     if (!discovered)
                         // Undiscovered achievements are drawn tinted translucent white, whatever their icon.

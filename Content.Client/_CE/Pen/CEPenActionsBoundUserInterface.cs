@@ -1,7 +1,7 @@
 using Content.Client.UserInterface.Controls;
+using Content.Shared._CE.Knowledge.Components;
+using Content.Shared._CE.Knowledge.Prototypes;
 using Content.Shared._CE.Pen;
-using Content.Shared._CE.Science.Components;
-using Content.Shared._CE.Science.Prototypes;
 using JetBrains.Annotations;
 using Robust.Client.Player;
 using Robust.Client.UserInterface;
@@ -47,10 +47,10 @@ public sealed partial class CEPenActionsBoundUserInterface : BoundUserInterface
 
     private List<RadialMenuOptionBase> BuildButtons(List<CEPenAction> actions, EntityUid user)
     {
-        // A lone "record knowledge" action skips its own top-level button - the achievement
+        // A lone "record knowledge" action skips its own top-level button - the knowledge
         // submenu is shown directly, matching what the server does when opening the UI.
         if (actions.Count == 1 && actions[0].Kind == CEPenActionKind.RecordKnowledge)
-            return BuildAchievementButtons(user);
+            return BuildKnowledgeButtons(user);
 
         var options = new List<RadialMenuOptionBase>();
 
@@ -67,7 +67,7 @@ public sealed partial class CEPenActionsBoundUserInterface : BoundUserInterface
                     break;
 
                 case CEPenActionKind.RecordKnowledge:
-                    var nested = BuildAchievementButtons(user);
+                    var nested = BuildKnowledgeButtons(user);
                     if (nested.Count == 0)
                         break;
 
@@ -83,22 +83,22 @@ public sealed partial class CEPenActionsBoundUserInterface : BoundUserInterface
         return options;
     }
 
-    private List<RadialMenuOptionBase> BuildAchievementButtons(EntityUid user)
+    private List<RadialMenuOptionBase> BuildKnowledgeButtons(EntityUid user)
     {
         var options = new List<RadialMenuOptionBase>();
 
-        if (!EntMan.TryGetComponent<CEScienceResearchDataComponent>(user, out var research))
+        if (!EntMan.TryGetComponent<CEKnowledgeComponent>(user, out var knowledgeComp))
             return options;
 
-        foreach (var achievementId in research.DiscoveredAchievements)
+        foreach (var knowledgeId in knowledgeComp.Known)
         {
-            if (!_prototype.TryIndex(achievementId, out var achievement))
+            if (!_prototype.TryIndex(knowledgeId, out var knowledge))
                 continue;
 
-            options.Add(new RadialMenuActionOption<ProtoId<CEScienceAchievementPrototype>>(HandleAchievementPicked, achievementId)
+            options.Add(new RadialMenuActionOption<ProtoId<CEKnowledgePrototype>>(HandleKnowledgePicked, knowledgeId)
             {
-                ToolTip = Loc.GetString(achievement.Name),
-                IconSpecifier = RadialMenuIconSpecifier.With(achievement.Icon),
+                ToolTip = Loc.GetString(knowledge.Name),
+                IconSpecifier = RadialMenuIconSpecifier.With(knowledge.Icon),
             });
         }
 
@@ -110,9 +110,9 @@ public sealed partial class CEPenActionsBoundUserInterface : BoundUserInterface
         SendMessage(new CEPenActionsMessage(kind));
     }
 
-    private void HandleAchievementPicked(ProtoId<CEScienceAchievementPrototype> achievement)
+    private void HandleKnowledgePicked(ProtoId<CEKnowledgePrototype> knowledge)
     {
-        SendMessage(new CEPenActionsMessage(CEPenActionKind.RecordKnowledge, achievement));
+        SendMessage(new CEPenActionsMessage(CEPenActionKind.RecordKnowledge, knowledge));
     }
 
     protected override void Dispose(bool disposing)

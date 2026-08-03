@@ -1,5 +1,6 @@
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Throwing;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Shared._CE.EntityEffect.Effects;
@@ -17,6 +18,9 @@ public sealed partial class EjectSlotItem : CEEntityEffectBase<EjectSlotItem>
 
     [DataField]
     public float ThrowDistance = 1.5f;
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
+        Loc.GetString("ce-entity-effect-guidebook-eject-slot-item");
 }
 
 public sealed partial class CEEjectSlotItemEffectSystem : CEEntityEffectSystem<EjectSlotItem>

@@ -230,7 +230,10 @@ public sealed partial class RandomScienceAchievement : CEAmbitionParsing
         if (all.Count == 0)
             return null;
 
-        return Loc.GetString(random.Pick(all).Name);
+        if (!protoManager.TryIndex(random.Pick(all).Knowledge, out var knowledge))
+            return null;
+
+        return Loc.GetString(knowledge.Name);
     }
 }
 

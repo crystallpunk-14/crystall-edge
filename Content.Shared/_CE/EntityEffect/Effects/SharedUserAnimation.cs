@@ -1,3 +1,4 @@
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._CE.EntityEffect.Effects;
@@ -53,4 +54,7 @@ public sealed partial class UserAnimation : CEEntityEffectBase<UserAnimation>
     /// </summary>
     [DataField]
     public List<CEScaleKeyFrame> ScaleAnimation = new();
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
+        Loc.GetString("ce-entity-effect-guidebook-cosmetic-animation");
 }

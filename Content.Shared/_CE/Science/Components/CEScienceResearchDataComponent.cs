@@ -7,8 +7,10 @@ namespace Content.Shared._CE.Science.Components;
 
 /// <summary>
 /// Tracks which map coordinates this entity has researched, independently for each science area,
-/// how many research points of each essence type it currently has to spend on research actions,
-/// and which achievements it has actually discovered (as opposed to merely revealed on the map).
+/// and how many research points of each essence type it currently has to spend on research
+/// actions. Whether a given achievement has been discovered is tracked by
+/// <see cref="Content.Shared._CE.Knowledge.Components.CEKnowledgeComponent"/> instead - an
+/// achievement cell only shows its icon in full colour once its linked knowledge is known.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(raiseAfterAutoHandleState: true)]
 public sealed partial class CEScienceResearchDataComponent : Component
@@ -22,12 +24,4 @@ public sealed partial class CEScienceResearchDataComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int> Points = new();
-
-    /// <summary>
-    /// Achievements this entity has completed the "discover achievement" research action for.
-    /// A revealed (researched) achievement cell only shows its icon in full colour once its
-    /// achievement is in this set - otherwise it's drawn tinted black.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public HashSet<ProtoId<CEScienceAchievementPrototype>> DiscoveredAchievements = new();
 }

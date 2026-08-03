@@ -1,7 +1,6 @@
-using Content.Shared._CE.EntityEffect;
+using Content.Shared._CE.Knowledge.Prototypes;
 using Content.Shared._CE.MagicEssence.Prototypes;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Utility;
 
 namespace Content.Shared._CE.Science.Prototypes;
 
@@ -27,23 +26,13 @@ public sealed partial class CEScienceAchievementPrototype : IPrototype
     [DataField(required: true)]
     public Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int> Cost = new();
 
+    /// <summary>
+    /// The knowledge this achievement teaches once discovered. Also supplies this achievement's
+    /// display name and map icon.
+    /// </summary>
     [DataField(required: true)]
-    public List<CEEntityEffect> Effects = new();
-
-    [DataField(required: true)]
-    public LocId Name;
-
-    [DataField]
-    public LocId? Desc;
+    public ProtoId<CEKnowledgePrototype> Knowledge;
 
     [DataField]
     public TimeSpan Time = TimeSpan.FromSeconds(3);
-
-    /// <summary>
-    /// Icon drawn on the map in place of the area's fallback "unknown" icon, once this
-    /// achievement's cell has been researched. Drawn tinted black until the achievement is
-    /// actually discovered. If unset, the fallback icon is used instead.
-    /// </summary>
-    [DataField]
-    public SpriteSpecifier? Icon;
 }

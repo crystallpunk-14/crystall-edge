@@ -1,4 +1,5 @@
 ﻿using Content.Shared._CE.TimedAppearance;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.EntityEffect.Effects;
 
@@ -39,6 +40,9 @@ public sealed partial class SetTimedAppearance : CEEntityEffectBase<SetTimedAppe
     /// </summary>
     [DataField(required: true)]
     public float Duration;
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
+        Loc.GetString("ce-entity-effect-guidebook-set-timed-appearance");
 }
 
 public sealed partial class CESetTimedAppearanceEffectSystem : CEEntityEffectSystem<SetTimedAppearance>

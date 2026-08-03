@@ -1,3 +1,5 @@
+using Robust.Shared.Prototypes;
+
 namespace Content.Shared._CE.EntityEffect.Effects;
 
 /// <summary>
@@ -14,4 +16,7 @@ public sealed partial class Vomit : CEEntityEffectBase<Vomit>
 
     [DataField]
     public float HungerAmount = -8f;
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
+        Loc.GetString("ce-entity-effect-guidebook-vomit", ("chance", Probability * 100));
 }
