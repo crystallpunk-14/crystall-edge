@@ -25,3 +25,17 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+
+- type: construction
+  hide: false
+  id: CECurtainsFrame
+  graph: CECurtainsFrame
+  startNode: start
+  targetNode: CECurtainsFrame
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
