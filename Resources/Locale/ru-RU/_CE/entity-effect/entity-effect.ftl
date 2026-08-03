@@ -1,9 +1,6 @@
 ce-entity-effect-guidebook-none = Описание этого эффекта отсутствует.
 
-ce-entity-effect-guidebook-learn-recipe = Открывает возможность создания [color=yellow]{ $item }[/color] на [color=yellow]{ $workbench }[/color]
-ce-entity-effect-guidebook-learn-recipe-unknown-workbench = неизвестном верстаке
-
-ce-entity-effect-guidebook-learn-infusion-recipe = Раскрывает секреты создания [color=yellow]{ $item }[/color] на алтаре слияния
+ce-entity-effect-guidebook-learn-knowledge = Обучает: [color=yellow]{ $name }[/color].
 
 ce-entity-effect-guidebook-add-z-velocity = Подбрасывает цель в воздух с силой [color=yellow]{ $speed }[/color]
 ce-entity-effect-guidebook-apply-status = Накладывает статус-эффект [color=yellow]{ $status }[/color] на [color=yellow]{ $duration }[/color] сек.

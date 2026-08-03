@@ -1,6 +1,7 @@
 using Content.Server._CE.InfusionAltar.Components;
 using Content.Server.GameTicking.Events;
 using Content.Shared._CE.InfusionAltar.Prototypes;
+using Content.Shared._CE.Knowledge;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -13,6 +14,7 @@ public sealed partial class CEInfusionAltarSystem : EntitySystem
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private CEKnowledgeSystem _knowledge = default!;
 
     private readonly EntProtoId _singletonEntity = "CEInfusionAltarSingleton";
 

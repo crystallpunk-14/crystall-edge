@@ -7,7 +7,6 @@
 #MARK: Materials
 
 - type: CERecipe
-  roundStart: true
   id: CEMachinePartCoalDiffuser
   parent: CEBaseEngineeringTableRecipe
   category: Materials
@@ -29,7 +28,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachinePartEnergyLine1
   parent: CEBaseEngineeringTableRecipe
   category: Materials
@@ -48,7 +46,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEEnergyCrystalCell
   parent: CEBaseEngineeringTableRecipe
   category: Materials
@@ -66,7 +63,6 @@
 #MARK: Tools
 
 - type: CERecipe
-  roundStart: true
   id: CEMediumBrassPipe15
   parent: CEBaseEngineeringTableRecipe
   category: Tools
@@ -79,7 +75,6 @@
   resultCount: 15
 
 - type: CERecipe
-  roundStart: true
   id: CEBigBrassPipe15
   parent: CEBaseEngineeringTableRecipe
   category: Tools
@@ -92,7 +87,6 @@
   resultCount: 15
 
 - type: CERecipe
-  roundStart: true
   id: CEPipeValve10
   parent: CEBaseEngineeringTableRecipe
   category: Tools
@@ -105,7 +99,6 @@
   resultCount: 10
 
 - type: CERecipe
-  roundStart: true
   id: CEWrench
   parent: CEBaseEngineeringTableRecipe
   category: Tools
@@ -121,7 +114,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CECrowbar
   parent: CEBaseEngineeringTableRecipe
   category: Tools
@@ -137,7 +129,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEScrewdriver
   parent: CEBaseEngineeringTableRecipe
   category: Tools
@@ -153,7 +144,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEWeaponPickaxeIron
   parent: CEBaseEngineeringTableRecipe
   category: Tools
@@ -172,7 +162,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEWeaponShovelIron
   parent: CEBaseEngineeringTableRecipe
   category: Tools
@@ -188,7 +177,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CELantern
   parent: CEBaseEngineeringTableRecipe
   category: Tools
@@ -207,7 +195,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEManaTransferGlove
   parent: CEBaseEngineeringTableRecipe
   category: Tools
@@ -226,7 +213,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEClothingEyesMiningGlasses
   parent: CEBaseEngineeringTableRecipe
   category: Tools
@@ -246,6 +232,7 @@
 
 - type: CERecipe
   id: CEVehicleHoverboard
+  requiredKnowledge: KnowledgeHoverboard
   parent: CEBaseEngineeringTableRecipe
   category: Tools
   craftTime: 2.0
@@ -265,7 +252,6 @@
 #MARK: Machine cores
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreMeltingFurnace
   parent: CEBaseEngineeringTableRecipe
   category: MachineCore
@@ -284,7 +270,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreGeneratorMagicCapacitor
   parent: CEBaseEngineeringTableRecipe
   category: MachineCore
@@ -306,7 +291,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreRecycler
   parent: CEBaseEngineeringTableRecipe
   category: MachineCore
@@ -325,7 +309,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreDrill
   parent: CEBaseEngineeringTableRecipe
   category: MachineCore
@@ -344,7 +327,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCorePress
   parent: CEBaseEngineeringTableRecipe
   category: MachineCore
@@ -363,7 +345,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCorePressTargetThaumaturgySplitter
   parent: CEBaseEngineeringTableRecipe
   category: MachineCore
@@ -384,6 +365,7 @@
 # Unlocked by the "Advanced Drilling" science achievement - see achievements.yml.
 - type: CERecipe
   id: CEMachineCoreDrillAdvanced
+  requiredKnowledge: KnowledgeDrillAdvanced
   parent: CEBaseEngineeringTableRecipe
   category: MachineCore
   craftTime: 3.0
@@ -404,7 +386,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreEssenceAttractor
   parent: CEBaseEngineeringTableRecipe
   category: MachineCore
@@ -426,7 +407,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEInfusionAltar
   parent: CEBaseEngineeringTableRecipe
   category: Tools
@@ -448,7 +428,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEInfusionAltarPedestal
   parent: CEBaseEngineeringTableRecipe
   category: Tools
@@ -467,7 +446,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CESolutionNormalizer
   parent: CEBaseEngineeringTableRecipe
   category: Tools
@@ -490,6 +468,7 @@
 
 - type: CERecipe
   id: CEPortableMagicEssenceAttractor
+  requiredKnowledge: KnowledgePortableEssenceAttractor
   parent: CEBaseEngineeringTableRecipe
   category: Tools
   craftTime: 2.0
@@ -513,7 +492,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreCharger
   parent: CEBaseEngineeringTableRecipe
   category: MachineCore
@@ -529,7 +507,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreAccumulatorVessel
   parent: CEBaseEngineeringTableRecipe
   category: MachineCore
@@ -548,7 +525,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreDistributionUnit
   parent: CEBaseEngineeringTableRecipe
   category: MachineCore
@@ -567,7 +543,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreFunnel
   parent: CEBaseEngineeringTableRecipe
   category: MachineCore
@@ -580,7 +555,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreTradingPlatformHomeDecor
   parent: CEBaseEngineeringTableRecipe
   category: MachineCore
@@ -599,7 +573,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreTradingPlatformTailors
   parent: CEBaseEngineeringTableRecipe
   category: MachineCore
@@ -618,7 +591,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreTradingPlatformHorticulture
   parent: CEBaseEngineeringTableRecipe
   category: MachineCore
@@ -637,7 +609,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreTradingPlatformDwarfMiners
   parent: CEBaseEngineeringTableRecipe
   category: MachineCore
@@ -656,7 +627,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreTradingPlatformAlcohol
   parent: CEBaseEngineeringTableRecipe
   category: MachineCore
@@ -675,7 +645,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreTradingPlatformApothecariesGuild
   parent: CEBaseEngineeringTableRecipe
   category: MachineCore
@@ -694,7 +663,6 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreTradingPlatformImperialChancellery
   parent: CEBaseEngineeringTableRecipe
   category: MachineCore

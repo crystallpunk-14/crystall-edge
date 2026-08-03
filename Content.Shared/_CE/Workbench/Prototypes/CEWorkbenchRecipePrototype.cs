@@ -1,3 +1,4 @@
+using Content.Shared._CE.Knowledge.Prototypes;
 using Content.Shared._CE.ResourceManager;
 using Content.Shared.Tag;
 using Robust.Shared.Audio;
@@ -56,17 +57,16 @@ public sealed partial class CEWorkbenchRecipePrototype : IPrototype, IInheriting
     public int Priority = 0;  // In descending order. More means it will be first.
 
     /// <summary>
-    /// If true, this recipe is available in the workbench by default without requiring
-    /// the player to learn it from a knowledge book.
+    /// Knowledge the character must know to craft this recipe. If unset, the recipe is always
+    /// craftable by everyone (no gate at all).
     /// </summary>
     [DataField]
-    public bool RoundStart = false;
+    public ProtoId<CEKnowledgePrototype>? RequiredKnowledge;
 
     /// <summary>
     /// Entity prototype of the workbench this recipe is crafted at, used only to build the
-    /// player-facing guidebook text (see <c>LearnRecipe.EntityEffectGuidebookText</c>). Not
-    /// used for actual crafting station matching - that's driven by <see cref="Tag"/> and
-    /// the workbench's own recipe tag list.
+    /// player-facing guidebook text. Not used for actual crafting station matching - that's
+    /// driven by <see cref="Tag"/> and the workbench's own recipe tag list.
     /// </summary>
     [DataField]
     public EntProtoId? Workbench;

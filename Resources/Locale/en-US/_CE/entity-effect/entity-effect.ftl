@@ -1,9 +1,6 @@
 ce-entity-effect-guidebook-none = This effect has no description.
 
-ce-entity-effect-guidebook-learn-recipe = Unlocks the ability to craft [color=yellow]{ $item }[/color] at [color=yellow]{ $workbench }[/color].
-ce-entity-effect-guidebook-learn-recipe-unknown-workbench = an unknown workbench
-
-ce-entity-effect-guidebook-learn-infusion-recipe = Reveals the secrets of crafting [color=yellow]{ $item }[/color] at the fusion altar
+ce-entity-effect-guidebook-learn-knowledge = Teaches [color=yellow]{ $name }[/color].
 
 ce-entity-effect-guidebook-add-z-velocity = Launches the target into the air with [color=yellow]{ $speed }[/color] force
 ce-entity-effect-guidebook-apply-status = Applies the [color=yellow]{ $status }[/color] status effect for [color=yellow]{ $duration }[/color] sec.

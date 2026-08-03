@@ -2,10 +2,13 @@ using System.Linq;
 using Content.Shared._CE.MagicEssence.Systems;
 using Content.Shared._CE.Science.Components;
 using Content.Shared.DoAfter;
+using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Serialization;
 
@@ -17,6 +20,10 @@ public abstract partial class CESharedScienceSystem
     [Dependency] private INetManager _net = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private CEMagicEssenceSystem _essence = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
 
     private static readonly SoundSpecifier KnowledgeLearnedSound = new SoundPathSpecifier("/Audio/_CE/Effects/knowledge_learned.ogg");
 

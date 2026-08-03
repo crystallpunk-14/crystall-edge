@@ -1,7 +1,5 @@
-using Content.Server._CE.InfusionAltar.Components;
 using Content.Shared._CE.InfusionAltar;
 using Content.Shared._CE.InfusionAltar.Prototypes;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.InfusionAltar;
 
@@ -25,9 +23,10 @@ public sealed partial class CEInfusionAltarSystem
                 if (!singleton.Recipes.TryGetValue(recipe.ID, out var cache))
                     continue;
 
-                // RoundStart recipes are known to everyone unconditionally, checked before anything
-                // player-specific (and even without an attached player entity at all).
-                if (!recipe.RoundStart && (player is not { } p || !KnowsRecipe(p, recipe.ID)))
+                // Recipes with no knowledge requirement are shown to everyone unconditionally,
+                // checked before anything player-specific (and even without an attached player
+                // entity at all).
+                if (recipe.RequiredKnowledge is { } required && (player is not { } p || !_knowledge.Knows(p, required)))
                     continue;
 
                 // Cache.PedestalRequirements holds the exact same CEResourceRequirement instances as the
@@ -46,47 +45,5 @@ public sealed partial class CEInfusionAltarSystem
         }
 
         RaiseNetworkEvent(new CEUpdateInfusionAltarKnownRecipesEvent(recipes), args.SenderSession);
-    }
-
-    /// <summary>
-    /// Adds a recipe to the entity's known infusion altar recipes.
-    /// </summary>
-    /// <returns>True if the recipe was newly added; false if already known or component missing.</returns>
-    public bool TryAddRecipe(EntityUid target,
-        ProtoId<CEInfusionAltarRecipePrototype> recipe,
-        CEInfusionAltarRecipeKnowledgeComponent? component = null)
-    {
-        component ??= EnsureComp<CEInfusionAltarRecipeKnowledgeComponent>(target);
-
-        return component.KnownRecipes.Add(recipe);
-    }
-
-    /// <summary>
-    /// Removes a recipe from the entity's known infusion altar recipes.
-    /// </summary>
-    /// <returns>True if the recipe was removed; false if not known or component missing.</returns>
-    public bool TryRemoveRecipe(EntityUid target,
-        ProtoId<CEInfusionAltarRecipePrototype> recipe,
-        CEInfusionAltarRecipeKnowledgeComponent? component = null)
-    {
-        if (!Resolve(target, ref component, false))
-            return false;
-
-        return component.KnownRecipes.Remove(recipe);
-    }
-
-    /// <summary>
-    /// Checks whether the entity has been taught a specific infusion altar recipe. Does not consider
-    /// <see cref="CEInfusionAltarRecipePrototype.RoundStart"/> - callers should check that separately.
-    /// Returns false if the entity has no <see cref="CEInfusionAltarRecipeKnowledgeComponent"/>.
-    /// </summary>
-    public bool KnowsRecipe(EntityUid target,
-        ProtoId<CEInfusionAltarRecipePrototype> recipe,
-        CEInfusionAltarRecipeKnowledgeComponent? component = null)
-    {
-        if (!Resolve(target, ref component, false))
-            return false; // No knowledge component = knows nothing
-
-        return component.KnownRecipes.Contains(recipe);
     }
 }
