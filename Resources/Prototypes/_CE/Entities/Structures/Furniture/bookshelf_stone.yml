@@ -81,3 +81,6 @@
           CEStoneBlock1:
             min: 2
             max: 4
+  - type: Construction
+    graph: CEBookshelfStone
+    node: CEBookshelfStone
