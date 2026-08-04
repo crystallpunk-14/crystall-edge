@@ -2,7 +2,6 @@ using Content.Server._CE.Science.Components;
 using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.MagicEssence.Systems;
 using Content.Shared._CE.Science.Components;
-using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.Science;
 using Content.Shared._CE.Science.Prototypes;
 using Content.Shared.UserInterface;
@@ -30,7 +29,6 @@ public sealed partial class CEResearchTableSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<CEResearchTableComponent, BeforeActivatableUIOpenEvent>(OnBeforeUIOpen);
-        SubscribeLocalEvent<CEResearchTableComponent, CEResearchTableActionMessage>(OnAction);
         SubscribeLocalEvent<CEResearchTableComponent, CEResearchTableChooseDiscoveryMessage>(OnChooseDiscovery);
         SubscribeLocalEvent<CEResearchTableComponent, CEResearchTableMergeEssenceMessage>(OnMergeEssence);
     }
@@ -40,55 +38,11 @@ public sealed partial class CEResearchTableSystem : EntitySystem
         SendState(ent, args.User);
     }
 
-    private void OnAction(Entity<CEResearchTableComponent> ent, ref CEResearchTableActionMessage args)
-    {
-        if (!_proto.TryIndex(args.Action, out var action))
-            return;
-
-        var data = EnsureComp<CEScienceResearchDataComponent>(args.Actor);
-
-        // The coordinate must already be researched by this player - actions only ever operate on
-        // cells the player can already see, never on unrevealed ones.
-        if (!data.Researched.TryGetValue(args.Area, out var researched) || !researched.Contains(args.Coordinate))
-            return;
-
-        var kind = CEResearchCellKind.Empty;
-        if (_science.TryGetSingleton(out var science)
-            && science.Areas.TryGetValue(args.Area, out var areaCells)
-            && areaCells.TryGetValue(args.Coordinate, out var cell))
-        {
-            kind = cell.Kind;
-        }
-
-        if (!action.AllowedCells.HasFlag(kind))
-            return;
-
-        if (!_science.HasEnoughPoints((args.Actor, data), action.Cost))
-            return;
-
-        var conditionArgs = new CEEntityEffectArgs(EntityManager, args.Actor, null, default, 0f, args.Actor, null);
-        foreach (var condition in action.Conditions)
-        {
-            if (!condition.Passes(conditionArgs))
-                return;
-        }
-
-        _science.TrySpendPoints((args.Actor, data), action.Cost);
-
-        var effectArgs = new CEResearchActionEffectArgs(EntityManager, ent, args.Actor, args.Area, args.Coordinate);
-        foreach (var effect in action.Effects)
-        {
-            effect.Effect(effectArgs);
-        }
-
-        BroadcastCellUpdate(args.Area, args.Coordinate);
-    }
-
     private void OnChooseDiscovery(Entity<CEResearchTableComponent> ent, ref CEResearchTableChooseDiscoveryMessage args)
     {
         var data = EnsureComp<CEScienceResearchDataComponent>(args.Actor);
 
-        // Same rule as OnAction - only ever operate on coordinates the player can already see.
+        // Only ever operate on coordinates the player can already see.
         if (!data.Researched.TryGetValue(args.Area, out var researched) || !researched.Contains(args.Coordinate))
             return;
 
@@ -97,7 +51,7 @@ public sealed partial class CEResearchTableSystem : EntitySystem
 
         _audio.PlayPvs(DiscoverySound, ent);
 
-        BroadcastCellUpdate(args.Area, args.Coordinate);
+        BroadcastTileUpdate(args.Area, args.Coordinate);
     }
 
     /// <summary>
@@ -131,10 +85,10 @@ public sealed partial class CEResearchTableSystem : EntitySystem
     /// <summary>
     /// Refreshes the research table state for every player, across every research table, who
     /// currently has <paramref name="coordinate"/> researched in <paramref name="area"/> - not just
-    /// the player whose action caused the change. Needed since the shared, round-wide map cell at
+    /// the player whose action caused the change. Needed since the shared, round-wide map tile at
     /// that coordinate may have just changed for everyone (e.g. a star got opened or resolved).
     /// </summary>
-    private void BroadcastCellUpdate(ProtoId<CEScienceAreaPrototype> area, Vector2i coordinate)
+    private void BroadcastTileUpdate(ProtoId<CEScienceAreaPrototype> area, Vector2i coordinate)
     {
         var query = EntityQueryEnumerator<CEResearchTableComponent>();
         while (query.MoveNext(out var uid, out _))
@@ -154,7 +108,7 @@ public sealed partial class CEResearchTableSystem : EntitySystem
     }
 
     /// <summary>
-    /// Pushes each area's cell content, filtered down to only what <paramref name="actor"/> has
+    /// Pushes each area's tile content, filtered down to only what <paramref name="actor"/> has
     /// personally researched - that Researched set is data the actor's own client already knows
     /// (it lives on their own networked <see cref="CEScienceResearchDataComponent"/>), so filtering
     /// by it here doesn't hand out anything new. The raw Researched set and the actor's points are
@@ -171,19 +125,19 @@ public sealed partial class CEResearchTableSystem : EntitySystem
         var areas = new Dictionary<ProtoId<CEScienceAreaPrototype>, CEResearchTableAreaData>();
         foreach (var area in _proto.EnumeratePrototypes<CEScienceAreaPrototype>())
         {
-            var cells = new Dictionary<Vector2i, CEScienceMapCell>();
+            var tiles = new Dictionary<Vector2i, CEScienceMapTile>();
 
             if (data.Researched.TryGetValue(area.ID, out var researched)
-                && science.Areas.TryGetValue(area.ID, out var areaCells))
+                && science.Areas.TryGetValue(area.ID, out var areaTiles))
             {
                 foreach (var coordinate in researched)
                 {
-                    if (areaCells.TryGetValue(coordinate, out var cell))
-                        cells[coordinate] = cell;
+                    if (areaTiles.TryGetValue(coordinate, out var tile))
+                        tiles[coordinate] = tile;
                 }
             }
 
-            areas[area.ID] = new CEResearchTableAreaData(cells);
+            areas[area.ID] = new CEResearchTableAreaData(tiles);
         }
 
         _userInterface.SetUiState(uid, CEResearchTableUiKey.Key, new CEResearchTableState(areas));

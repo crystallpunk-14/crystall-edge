@@ -1,4 +1,3 @@
-using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using Content.Shared._CE.MagicEssence.Prototypes;
@@ -11,31 +10,19 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Timing;
 
 namespace Content.Client._CE.Science;
-
-/// <summary>
-/// Client-local, unnetworked record of a "check hypothesis" result: pre-formatted text (either the
-/// distance or a sad face if nothing was found within range) and when it should finish fading out.
-/// Never sent over the network - see <see cref="CEResearchTableHypothesisResultMessage"/>.
-/// </summary>
-public readonly record struct CEScienceHypothesisDisplay(string Text, TimeSpan ExpiresAt, TimeSpan Duration);
 
 [GenerateTypedNameReferences]
 public sealed partial class CEResearchTableWindow : DefaultWindow
 {
     [Dependency] private IPrototypeManager _prototype = default!;
-    [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IEntityManager _entity = default!;
     [Dependency] private IPlayerManager _player = default!;
 
     private CEResearchTableState? _state;
     private ProtoId<CEScienceAreaPrototype>? _currentArea;
     private readonly Dictionary<ProtoId<CEScienceAreaPrototype>, Vector2i> _selectedPerArea = new();
-    private readonly Dictionary<ProtoId<CEScienceAreaPrototype>, Dictionary<Vector2i, CEScienceHypothesisDisplay>> _hypotheses = new();
-
-    public event Action<ProtoId<CEScienceAreaPrototype>, Vector2i, ProtoId<CEResearchActionPrototype>>? OnResearch;
 
     public event Action<ProtoId<CEScienceAreaPrototype>, Vector2i, ProtoId<CEScienceDiscoveryPrototype>>? OnChooseDiscovery;
 
@@ -46,10 +33,9 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
         IoCManager.InjectDependencies(this);
         RobustXamlLoader.Load(this);
 
-        MapControl.OnCellSelected += OnCellSelected;
+        MapControl.OnTileSelected += OnTileSelected;
         MapControl.OnViewChanged += OnMapViewChanged;
-        CellInfo.OnAction += OnActionPressed;
-        CellInfo.OnChooseDiscovery += OnChooseDiscoveryPressed;
+        TileInfo.OnChooseDiscovery += OnChooseDiscoveryPressed;
         Knowledge.OnMerge += (first, second) => OnMergeEssence?.Invoke(first, second);
 
         foreach (var area in _prototype.EnumeratePrototypes<CEScienceAreaPrototype>())
@@ -64,7 +50,7 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
 
     /// <summary>
     /// Re-applies the current server state (if any) using freshly-read local player data
-    /// (points, researched cells) - called whenever <see cref="CEClientScienceSystem.OnLocalResearchDataUpdated"/>
+    /// (points, researched tiles) - called whenever <see cref="CEClientScienceSystem.OnLocalResearchDataUpdated"/>
     /// fires, so the map/knowledge panels don't lag a tick behind that separately-networked
     /// component when it arrives after (or before) the table's own BUI state push.
     /// </summary>
@@ -89,8 +75,8 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
         if (_currentArea is { } area)
             SwitchArea(area);
 
-        // Only snap the view to the selected cell the very first time the window opens -
-        // subsequent refreshes (e.g. after researching a cell) must not move the view.
+        // Only snap the view to the selected tile the very first time the window opens -
+        // subsequent refreshes (e.g. after researching a tile) must not move the view.
         if (firstState)
             MapControl.CenterOnSelected();
     }
@@ -111,43 +97,15 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
 
         var researched = GetLocalResearched(area);
         if (_state is not null && _state.Areas.TryGetValue(area, out var data))
-            MapControl.UpdateState(data.Cells, researched, indexedArea);
+            MapControl.UpdateState(data.Tiles, researched, indexedArea);
         else
-            MapControl.UpdateState(new Dictionary<Vector2i, CEScienceMapCell>(), researched, indexedArea);
-
-        var areaHypotheses = _hypotheses.TryGetValue(area, out var existing)
-            ? existing
-            : new Dictionary<Vector2i, CEScienceHypothesisDisplay>();
-        MapControl.UpdateHypotheses(areaHypotheses);
+            MapControl.UpdateState(new Dictionary<Vector2i, CEScienceMapTile>(), researched, indexedArea);
 
         UpdateInfoPanel();
     }
 
     /// <summary>
-    /// Records a "check hypothesis" result locally so the map can fade it in over
-    /// <see cref="CEResearchTableHypothesisResultMessage.Duration"/> - this never touches
-    /// <see cref="_state"/>, it's purely a client-side visual.
-    /// </summary>
-    public void HandleHypothesisResult(CEResearchTableHypothesisResultMessage message)
-    {
-        if (!_hypotheses.TryGetValue(message.Area, out var areaHypotheses))
-        {
-            areaHypotheses = new Dictionary<Vector2i, CEScienceHypothesisDisplay>();
-            _hypotheses[message.Area] = areaHypotheses;
-        }
-
-        var text = message.Distance is { } distance
-            ? distance.ToString("F1", CultureInfo.InvariantCulture)
-            : "x";
-
-        areaHypotheses[message.Coordinate] = new CEScienceHypothesisDisplay(text, _timing.CurTime + message.Duration, message.Duration);
-
-        if (_currentArea == message.Area)
-            MapControl.UpdateHypotheses(areaHypotheses);
-    }
-
-    /// <summary>
-    /// Refreshes the left-hand info panel for whichever cell is currently selected in the current area.
+    /// Refreshes the left-hand info panel for whichever tile is currently selected in the current area.
     /// </summary>
     private void UpdateInfoPanel()
     {
@@ -156,12 +114,12 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
 
         var coordinate = _selectedPerArea.GetValueOrDefault(area, default);
 
-        CEScienceMapCell? cell = null;
+        CEScienceMapTile? tile = null;
         if (_state is not null && _state.Areas.TryGetValue(area, out var data))
-            data.Cells.TryGetValue(coordinate, out cell);
+            data.Tiles.TryGetValue(coordinate, out tile);
 
         Knowledge.UpdateKnowledge(GetLocalPoints());
-        CellInfo.UpdateCell(cell);
+        TileInfo.UpdateTile(tile);
     }
 
     /// <summary>
@@ -206,22 +164,13 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
         ParallaxBackground.ScaleY = parallaxScale;
     }
 
-    private void OnCellSelected(Vector2i coordinate)
+    private void OnTileSelected(Vector2i coordinate)
     {
         if (_currentArea is not { } area)
             return;
 
         _selectedPerArea[area] = coordinate;
         UpdateInfoPanel();
-    }
-
-    private void OnActionPressed(ProtoId<CEResearchActionPrototype> action)
-    {
-        if (_currentArea is not { } area)
-            return;
-
-        var coordinate = _selectedPerArea.GetValueOrDefault(area, default);
-        OnResearch?.Invoke(area, coordinate, action);
     }
 
     private void OnChooseDiscoveryPressed(ProtoId<CEScienceDiscoveryPrototype> discovery)

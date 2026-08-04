@@ -10,7 +10,7 @@ namespace Content.Shared._CE.Science.Components;
 /// and how many research points of each essence type it currently has to spend on research
 /// actions. Whether a given achievement has been discovered is tracked by
 /// <see cref="Content.Shared._CE.Knowledge.Components.CEKnowledgeComponent"/> instead - an
-/// achievement cell only shows its icon in full colour once its linked knowledge is known.
+/// achievement tile only shows its icon in full colour once its linked knowledge is known.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(raiseAfterAutoHandleState: true)]
 public sealed partial class CEScienceResearchDataComponent : Component

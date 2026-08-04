@@ -16,7 +16,6 @@ public sealed class CEResearchTableBoundUserInterface : BoundUserInterface
         base.Open();
 
         _window = this.CreateWindow<CEResearchTableWindow>();
-        _window.OnResearch += (area, coordinate, action) => SendMessage(new CEResearchTableActionMessage(area, coordinate, action));
         _window.OnChooseDiscovery += (area, coordinate, discovery) => SendMessage(new CEResearchTableChooseDiscoveryMessage(area, coordinate, discovery));
         _window.OnMergeEssence += (first, second) => SendMessage(new CEResearchTableMergeEssenceMessage(first, second));
 
@@ -42,13 +41,5 @@ public sealed class CEResearchTableBoundUserInterface : BoundUserInterface
 
         if (state is CEResearchTableState researchState)
             _window?.UpdateState(researchState);
-    }
-
-    protected override void ReceiveMessage(BoundUserInterfaceMessage message)
-    {
-        base.ReceiveMessage(message);
-
-        if (message is CEResearchTableHypothesisResultMessage hypothesisResult)
-            _window?.HandleHypothesisResult(hypothesisResult);
     }
 }

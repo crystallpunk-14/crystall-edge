@@ -12,27 +12,9 @@ public enum CEResearchTableUiKey
 }
 
 /// <summary>
-/// Sent when an action button is pressed for whatever coordinate the client currently has
-/// selected locally (selection itself is never known to the server). The server re-validates the
-/// action against the cell and the player before running its effects, then resends a full
-/// <see cref="CEResearchTableState"/>.
-/// </summary>
-[Serializable, NetSerializable]
-public sealed class CEResearchTableActionMessage(
-    ProtoId<CEScienceAreaPrototype> area,
-    Vector2i coordinate,
-    ProtoId<CEResearchActionPrototype> action) : BoundUserInterfaceMessage
-{
-    public readonly ProtoId<CEScienceAreaPrototype> Area = area;
-    public readonly Vector2i Coordinate = coordinate;
-    public readonly ProtoId<CEResearchActionPrototype> Action = action;
-}
-
-/// <summary>
-/// Sent when a player picks one of the candidates offered by an opened star. Not a
-/// <see cref="CEResearchTableActionMessage"/> because the cost is the chosen candidate's own,
-/// rather than fixed on an action prototype. The server re-validates the cell is still a
-/// <see cref="CEScienceOfferedStarCell"/> and that Discovery is among its candidates.
+/// Sent when a player picks one of the candidates offered by an opened star. The server
+/// re-validates the tile is still a <see cref="CEScienceOfferedStarTile"/> and that Discovery is
+/// among its candidates.
 /// </summary>
 [Serializable, NetSerializable]
 public sealed class CEResearchTableChooseDiscoveryMessage(
@@ -70,9 +52,9 @@ public sealed class CEResearchTableMergeEssenceMessage(
 /// any player opening the same table could otherwise briefly observe a stale copy of.
 /// </summary>
 [Serializable, NetSerializable]
-public sealed class CEResearchTableAreaData(Dictionary<Vector2i, CEScienceMapCell> cells)
+public sealed class CEResearchTableAreaData(Dictionary<Vector2i, CEScienceMapTile> tiles)
 {
-    public readonly Dictionary<Vector2i, CEScienceMapCell> Cells = cells;
+    public readonly Dictionary<Vector2i, CEScienceMapTile> Tiles = tiles;
 }
 
 /// <summary>
@@ -86,28 +68,4 @@ public sealed class CEResearchTableState(
     Dictionary<ProtoId<CEScienceAreaPrototype>, CEResearchTableAreaData> areas) : BoundUserInterfaceState
 {
     public readonly Dictionary<ProtoId<CEScienceAreaPrototype>, CEResearchTableAreaData> Areas = areas;
-}
-
-/// <summary>
-/// Sent by the server after a "check hypothesis" action resolves. Deliberately not part of
-/// <see cref="CEResearchTableState"/> - the result is short-lived and purely client-side
-/// (fades out over <see cref="Duration"/>), so there's nothing worth persisting or resending on
-/// every subsequent state refresh.
-/// </summary>
-[Serializable, NetSerializable]
-public sealed class CEResearchTableHypothesisResultMessage(
-    ProtoId<CEScienceAreaPrototype> area,
-    Vector2i coordinate,
-    float? distance,
-    TimeSpan duration) : BoundUserInterfaceMessage
-{
-    public readonly ProtoId<CEScienceAreaPrototype> Area = area;
-    public readonly Vector2i Coordinate = coordinate;
-
-    /// <summary>
-    /// Null if no unresolved star was found within the action's search radius.
-    /// </summary>
-    public readonly float? Distance = distance;
-
-    public readonly TimeSpan Duration = duration;
 }

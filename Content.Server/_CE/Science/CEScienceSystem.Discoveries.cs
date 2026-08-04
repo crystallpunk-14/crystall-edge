@@ -63,8 +63,8 @@ public sealed partial class CEScienceSystem
 
     /// <summary>
     /// Re-validates and applies a player's choice of one of an offered star's candidates: spends
-    /// that candidate's own cost, teaches its knowledge, replaces the star cell with a concrete
-    /// discovery cell, and permanently excludes it from future offers.
+    /// that candidate's own cost, teaches its knowledge, replaces the star tile with a concrete
+    /// discovery tile, and permanently excludes it from future offers.
     /// </summary>
     public bool ResolveChoice(
         ProtoId<CEScienceAreaPrototype> area,
@@ -73,9 +73,9 @@ public sealed partial class CEScienceSystem
         EntityUid actor)
     {
         if (!TryGetSingleton(out var science)
-            || !science.Areas.TryGetValue(area, out var areaCells)
-            || !areaCells.TryGetValue(coordinate, out var cell)
-            || cell is not CEScienceOfferedStarCell offered
+            || !science.Areas.TryGetValue(area, out var areaTiles)
+            || !areaTiles.TryGetValue(coordinate, out var tile)
+            || tile is not CEScienceOfferedStarTile offered
             || !offered.Candidates.Contains(discoveryId))
         {
             return false;
@@ -89,10 +89,10 @@ public sealed partial class CEScienceSystem
         if (!TrySpendPoints((actor, data), discovery.Cost))
             return false;
 
-        // Replace the cell before teaching the knowledge - OnKnowledgeLearned reveals a 3x3 area
-        // around whichever discovery cell matches the learned knowledge, and needs to find this
+        // Replace the tile before teaching the knowledge - OnKnowledgeLearned reveals a 3x3 area
+        // around whichever discovery tile matches the learned knowledge, and needs to find this
         // one already in place to do that.
-        areaCells[coordinate] = new CEScienceDiscoveryCell(discoveryId);
+        areaTiles[coordinate] = new CEScienceDiscoveryTile(discoveryId);
         science.ChosenDiscoveries.Add(discoveryId);
 
         TryLearnDiscovery(actor, discoveryId);
@@ -121,11 +121,11 @@ public sealed partial class CEScienceSystem
     private void Refill(CEScienceComponent science, ProtoId<CEScienceAreaPrototype> area, ProtoId<CEScienceDiscoveryDifficultyPrototype> rarity)
     {
         var inFlight = new HashSet<ProtoId<CEScienceDiscoveryPrototype>>();
-        if (science.Areas.TryGetValue(area, out var areaCells))
+        if (science.Areas.TryGetValue(area, out var areaTiles))
         {
-            foreach (var cell in areaCells.Values)
+            foreach (var tile in areaTiles.Values)
             {
-                if (cell is CEScienceOfferedStarCell offered && offered.Rarity == rarity)
+                if (tile is CEScienceOfferedStarTile offered && offered.Rarity == rarity)
                     inFlight.UnionWith(offered.Candidates);
             }
         }

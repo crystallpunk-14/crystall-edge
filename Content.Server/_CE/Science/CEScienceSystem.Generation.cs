@@ -18,14 +18,14 @@ public sealed partial class CEScienceSystem
 
     /// <summary>
     /// Procedurally generates a science area's research map: dead zones from the area's noise
-    /// layers, then one star cell per <see cref="CEScienceDiscoveryPrototype"/> belonging to this
+    /// layers, then one star tile per <see cref="CEScienceDiscoveryPrototype"/> belonging to this
     /// area, placed within its <see cref="CEScienceDiscoveryDifficultyPrototype.SpawnDistance"/>
     /// band. A star doesn't remember which discovery reserved its slot - only its rarity; which
     /// discovery ends up there is decided later, when a player opens it.
     /// Finally, guarantees every star is actually reachable from the start by carving a path
     /// through dead zones to any that aren't.
     /// </summary>
-    private Dictionary<Vector2i, CEScienceMapCell> GenerateArea(CEScienceAreaPrototype area)
+    private Dictionary<Vector2i, CEScienceMapTile> GenerateArea(CEScienceAreaPrototype area)
     {
         var discoveries = _proto.EnumeratePrototypes<CEScienceDiscoveryPrototype>()
             .Where(discovery => discovery.Area == area.ID)
@@ -39,21 +39,21 @@ public sealed partial class CEScienceSystem
         }
 
         radius += area.GenerationMargin;
-        var cells = new Dictionary<Vector2i, CEScienceMapCell>();
+        var tiles = new Dictionary<Vector2i, CEScienceMapTile>();
 
         for (var x = -radius; x <= radius; x++)
         for (var y = -radius; y <= radius; y++)
         {
             var coordinate = new Vector2i(x, y);
             if (IsDeadZone(area, coordinate))
-                cells[coordinate] = new CEScienceDeadZoneCell();
+                tiles[coordinate] = new CEScienceDeadZoneTile();
         }
 
         // The player always starts able to see this square (see CESharedScienceSystem's initial
-        // RevealArea call) - never let noise strand them in dead zones from the very first cell.
+        // RevealArea call) - never let noise strand them in dead zones from the very first tile.
         for (var x = -StartClearRadius; x <= StartClearRadius; x++)
         for (var y = -StartClearRadius; y <= StartClearRadius; y++)
-            cells.Remove(new Vector2i(x, y));
+            tiles.Remove(new Vector2i(x, y));
 
         var placedStars = new List<Vector2i>();
         foreach (var discovery in discoveries)
@@ -61,29 +61,29 @@ public sealed partial class CEScienceSystem
             if (!_proto.TryIndex(discovery.Rarity, out var rarity))
                 continue;
 
-            if (!TryPlaceStar(cells, rarity.SpawnDistance, out var coordinate))
+            if (!TryPlaceStar(tiles, rarity.SpawnDistance, out var coordinate))
             {
-                Log.Warning($"CEScienceSystem: couldn't place a star for discovery {discovery.ID} for area {area.ID} - no empty cell within its rarity's spawn band or the next ring out.");
+                Log.Warning($"CEScienceSystem: couldn't place a star for discovery {discovery.ID} for area {area.ID} - no empty tile within its rarity's spawn band or the next ring out.");
                 continue;
             }
 
-            cells[coordinate] = new CEScienceStarCell(discovery.Rarity);
+            tiles[coordinate] = new CEScienceStarTile(discovery.Rarity);
             placedStars.Add(coordinate);
         }
 
-        EnsureReachable(cells, radius, placedStars);
+        EnsureReachable(tiles, radius, placedStars);
 
-        return cells;
+        return tiles;
     }
 
     /// <summary>
-    /// Flood-fills from the origin over every non-dead-zone cell within <paramref name="radius"/>.
+    /// Flood-fills from the origin over every non-dead-zone tile within <paramref name="radius"/>.
     /// Any star not caught by that flood fill gets a path carved to it (dead zones cleared along a
-    /// straight 8-directional line) from whichever reachable cell is closest.
+    /// straight 8-directional line) from whichever reachable tile is closest.
     /// </summary>
-    private static void EnsureReachable(Dictionary<Vector2i, CEScienceMapCell> cells, int radius, List<Vector2i> stars)
+    private static void EnsureReachable(Dictionary<Vector2i, CEScienceMapTile> tiles, int radius, List<Vector2i> stars)
     {
-        var reachable = FloodFillReachable(cells, radius);
+        var reachable = FloodFillReachable(tiles, radius);
 
         foreach (var star in stars)
         {
@@ -91,11 +91,11 @@ public sealed partial class CEScienceSystem
                 continue;
 
             var nearest = FindNearestReachable(reachable, star);
-            CarvePath(cells, reachable, nearest, star);
+            CarvePath(tiles, reachable, nearest, star);
         }
     }
 
-    private static HashSet<Vector2i> FloodFillReachable(Dictionary<Vector2i, CEScienceMapCell> cells, int radius)
+    private static HashSet<Vector2i> FloodFillReachable(Dictionary<Vector2i, CEScienceMapTile> tiles, int radius)
     {
         var visited = new HashSet<Vector2i> { Vector2i.Zero };
         var queue = new Queue<Vector2i>();
@@ -117,7 +117,7 @@ public sealed partial class CEScienceSystem
                 if (visited.Contains(neighbor))
                     continue;
 
-                if (cells.TryGetValue(neighbor, out var cell) && cell is CEScienceDeadZoneCell)
+                if (tiles.TryGetValue(neighbor, out var tile) && tile is CEScienceDeadZoneTile)
                     continue;
 
                 visited.Add(neighbor);
@@ -151,9 +151,9 @@ public sealed partial class CEScienceSystem
     /// <summary>
     /// Walks a straight 8-directional line from <paramref name="from"/> (already reachable) to
     /// <paramref name="to"/>, clearing any dead zone along the way and marking every stepped-on
-    /// cell as reachable.
+    /// tile as reachable.
     /// </summary>
-    private static void CarvePath(Dictionary<Vector2i, CEScienceMapCell> cells, HashSet<Vector2i> reachable, Vector2i from, Vector2i to)
+    private static void CarvePath(Dictionary<Vector2i, CEScienceMapTile> tiles, HashSet<Vector2i> reachable, Vector2i from, Vector2i to)
     {
         var current = from;
 
@@ -163,15 +163,15 @@ public sealed partial class CEScienceSystem
             var step = new Vector2i(Math.Sign(delta.X), Math.Sign(delta.Y));
             current += step;
 
-            if (cells.TryGetValue(current, out var cell) && cell is CEScienceDeadZoneCell)
-                cells.Remove(current);
+            if (tiles.TryGetValue(current, out var tile) && tile is CEScienceDeadZoneTile)
+                tiles.Remove(current);
 
             reachable.Add(current);
         }
     }
 
     /// <summary>
-    /// A cell is a dead zone if any of the area's noise layers reads above that layer's threshold
+    /// A tile is a dead zone if any of the area's noise layers reads above that layer's threshold
     /// at that coordinate.
     /// </summary>
     private static bool IsDeadZone(CEScienceAreaPrototype area, Vector2i coordinate)
@@ -186,18 +186,18 @@ public sealed partial class CEScienceSystem
     }
 
     /// <summary>
-    /// Tries to find an empty coordinate within the square annulus <paramref name="band"/> cells
+    /// Tries to find an empty coordinate within the square annulus <paramref name="band"/> tiles
     /// (Chebyshev distance) from the origin. Falls back to the next ring out once if the whole band
     /// is completely full.
     /// </summary>
-    private bool TryPlaceStar(Dictionary<Vector2i, CEScienceMapCell> cells, MinMax band, out Vector2i coordinate)
+    private bool TryPlaceStar(Dictionary<Vector2i, CEScienceMapTile> tiles, MinMax band, out Vector2i coordinate)
     {
         var candidates = new List<Vector2i>();
         for (var ringRadius = band.Min; ringRadius <= band.Max; ringRadius++)
-            candidates.AddRange(GetRing(ringRadius).Where(candidate => !cells.ContainsKey(candidate)));
+            candidates.AddRange(GetRing(ringRadius).Where(candidate => !tiles.ContainsKey(candidate)));
 
         if (candidates.Count == 0)
-            candidates.AddRange(GetRing(band.Max + 1).Where(candidate => !cells.ContainsKey(candidate)));
+            candidates.AddRange(GetRing(band.Max + 1).Where(candidate => !tiles.ContainsKey(candidate)));
 
         if (candidates.Count == 0)
         {

@@ -12,10 +12,10 @@ namespace Content.Server._CE.Science.Components;
 public sealed partial class CEScienceComponent : Component
 {
     /// <summary>
-    /// Each science area's research map: only non-empty cells (dead zones, stars, discoveries,
+    /// Each science area's research map: only non-empty tiles (dead zones, stars, discoveries,
     /// etc.) are stored, keyed by their coordinate on that area's independent map.
     /// </summary>
-    public Dictionary<ProtoId<CEScienceAreaPrototype>, Dictionary<Vector2i, CEScienceMapCell>> Areas = new();
+    public Dictionary<ProtoId<CEScienceAreaPrototype>, Dictionary<Vector2i, CEScienceMapTile>> Areas = new();
 
     /// <summary>
     /// Discovery prototypes not currently offered on any star's unresolved offer, drawable when

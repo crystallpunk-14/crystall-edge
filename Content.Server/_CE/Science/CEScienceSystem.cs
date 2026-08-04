@@ -94,7 +94,7 @@ public sealed partial class CEScienceSystem : CESharedScienceSystem
 
     /// <summary>
     /// Whenever an entity learns a piece of knowledge (from any source), reveals a 3x3 area
-    /// around any discovery cell that teaches that same knowledge - this is what makes a
+    /// around any discovery tile that teaches that same knowledge - this is what makes a
     /// discovered discovery's map icon render in full colour.
     /// </summary>
     private void OnKnowledgeLearned(ref CEKnowledgeLearnedEvent ev)
@@ -109,12 +109,12 @@ public sealed partial class CEScienceSystem : CESharedScienceSystem
             if (discovery.Knowledge != ev.Knowledge)
                 continue;
 
-            if (!science.Areas.TryGetValue(discovery.Area, out var areaCells))
+            if (!science.Areas.TryGetValue(discovery.Area, out var areaTiles))
                 continue;
 
-            foreach (var (coordinate, cell) in areaCells)
+            foreach (var (coordinate, tile) in areaTiles)
             {
-                if (cell is not CEScienceDiscoveryCell discoveryCell || discoveryCell.Discovery != discovery.ID)
+                if (tile is not CEScienceDiscoveryTile discoveryTile || discoveryTile.Discovery != discovery.ID)
                     continue;
 
                 RevealArea((ev.Entity, data), discovery.Area, coordinate, 1);

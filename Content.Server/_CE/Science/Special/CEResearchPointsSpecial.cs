@@ -3,12 +3,10 @@ using Content.Shared._CE.Science.Components;
 using Content.Shared.Roles;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server._CE.Science;
+namespace Content.Server._CE.Science.Special;
 
 /// <summary>
-/// Grants a flat amount of research points per essence type, as configured in yaml. Used to give
-/// science-adjacent jobs (e.g. Academy students/professors) a head start on research without
-/// pre-revealing any part of the map.
+/// Grants research points to player on join
 /// </summary>
 public sealed partial class CEResearchPointsSpecial : JobSpecial
 {

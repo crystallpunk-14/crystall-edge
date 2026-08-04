@@ -27,7 +27,7 @@ public sealed partial class CEScienceAreaPrototype : IPrototype
 
     /// <summary>
     /// Research map theme: background checkerboard, and icons for dead zones and unresearched
-    /// (but selectable) cell content.
+    /// (but selectable) tile content.
     /// </summary>
     [DataField]
     public SpriteSpecifier MapBgLight = new SpriteSpecifier.Rsi(new ResPath("/Textures/_CE/Interface/Science/bg.rsi"), "light");
@@ -39,14 +39,14 @@ public sealed partial class CEScienceAreaPrototype : IPrototype
     public SpriteSpecifier MapDeadZoneIcon = new SpriteSpecifier.Rsi(new ResPath("/Textures/_CE/Interface/Science/dead.rsi"), "dead");
 
     /// <summary>
-    /// Drawn for researched cells with content whose specific icon we don't otherwise render
+    /// Drawn for researched tiles with content whose specific icon we don't otherwise render
     /// (achievements, for now). Tinted with <see cref="Color"/> when drawn.
     /// </summary>
     [DataField]
     public SpriteSpecifier MapUnknownIcon = new SpriteSpecifier.Rsi(new ResPath("/Textures/_CE/Interface/Science/unknown.rsi"), "unknown");
 
     /// <summary>
-    /// Extra cells of radius generated beyond the area's farthest achievement difficulty, so
+    /// Extra tiles of radius generated beyond the area's farthest achievement difficulty, so
     /// there's room for the "+1 ring" placement fallback and some dead-zone padding around the
     /// outermost achievements.
     /// </summary>
@@ -54,8 +54,8 @@ public sealed partial class CEScienceAreaPrototype : IPrototype
     public int GenerationMargin = 2;
 
     /// <summary>
-    /// Noise layers used to decide which cells become dead zones when this area's map is
-    /// procedurally generated at round start. A cell becomes a dead zone if any layer's noise
+    /// Noise layers used to decide which tiles become dead zones when this area's map is
+    /// procedurally generated at round start. A tile becomes a dead zone if any layer's noise
     /// value at that coordinate exceeds its threshold.
     /// </summary>
     [DataField]

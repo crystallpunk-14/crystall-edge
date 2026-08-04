@@ -7,11 +7,11 @@
                MinSize="900 450">
     <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
 
-        <!-- Selected cell info + actions -->
+        <!-- Selected tile info -->
         <BoxContainer Margin="10 10 10 10" MaxWidth="240" SetWidth="240" Orientation="Vertical"
                       HorizontalExpand="False" VerticalExpand="True">
             <ScrollContainer HorizontalExpand="True" VerticalExpand="True" HScrollEnabled="False">
-                <science:CEResearchCellInfoControl Name="CellInfo" HorizontalExpand="True" />
+                <science:CEResearchTileInfoControl Name="TileInfo" HorizontalExpand="True" />
             </ScrollContainer>
         </BoxContainer>
 

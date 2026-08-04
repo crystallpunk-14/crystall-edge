@@ -19,7 +19,7 @@ public sealed partial class CEScienceDiscoveryDifficultyPrototype : IPrototype
     public Color Color;
 
     /// <summary>
-    /// The band of Chebyshev distance from the map's center, in cells, that stars of this rarity
+    /// The band of Chebyshev distance from the map's center, in tiles, that stars of this rarity
     /// get procedurally placed within.
     /// </summary>
     [DataField(required: true)]
