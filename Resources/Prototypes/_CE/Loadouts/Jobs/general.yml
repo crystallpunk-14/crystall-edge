@@ -396,6 +396,7 @@
   - CEClothingShoesBlack
   - CEClothingShoesSandals
   - CEClothingShoesLongLeatherBoots
+  - CEClothingShoesHeels
 
 - type: loadout
   id: CEClothingShoesBlack
@@ -411,6 +412,11 @@
   id: CEClothingShoesLongLeatherBoots
   equipment:
     shoes: CEClothingShoesLongLeatherBoots
+
+- type: loadout
+  id: CEClothingShoesHeels
+  equipment:
+    shoes: CEClothingShoesHeels
 
 # Bags
 
