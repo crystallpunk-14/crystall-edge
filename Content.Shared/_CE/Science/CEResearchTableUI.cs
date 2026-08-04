@@ -1,3 +1,4 @@
+using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.Science.Prototypes;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -42,6 +43,21 @@ public sealed class CEResearchTableChooseDiscoveryMessage(
     public readonly ProtoId<CEScienceAreaPrototype> Area = area;
     public readonly Vector2i Coordinate = coordinate;
     public readonly ProtoId<CEScienceDiscoveryPrototype> Discovery = discovery;
+}
+
+/// <summary>
+/// Sent when the player presses the merge button in the knowledge panel with two aspects selected.
+/// The server re-validates that a recipe exists for this pair and that the actor can still afford
+/// it (1 of each) before spending anything - the client-side check is only for the button's enabled
+/// state.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class CEResearchTableMergeEssenceMessage(
+    ProtoId<CEMagicEssenceTypePrototype> first,
+    ProtoId<CEMagicEssenceTypePrototype> second) : BoundUserInterfaceMessage
+{
+    public readonly ProtoId<CEMagicEssenceTypePrototype> First = first;
+    public readonly ProtoId<CEMagicEssenceTypePrototype> Second = second;
 }
 
 /// <summary>

@@ -23,7 +23,7 @@ public sealed partial class CEResearchOpenStarSystem : CEResearchActionEffectSys
             return;
         }
 
-        var candidates = _science.RollOffer(science, args.Args.Area, star.Rarity);
+        var candidates = _science.GetNextDiscovery(science, args.Args.Area, star.Rarity);
         if (candidates.Count == 0)
         {
             Log.Warning($"CEResearchOpenStarSystem: no discoveries left to offer for area {args.Args.Area}, rarity {star.Rarity}.");

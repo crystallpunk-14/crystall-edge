@@ -39,6 +39,8 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
 
     public event Action<ProtoId<CEScienceAreaPrototype>, Vector2i, ProtoId<CEScienceDiscoveryPrototype>>? OnChooseDiscovery;
 
+    public event Action<ProtoId<CEMagicEssenceTypePrototype>, ProtoId<CEMagicEssenceTypePrototype>>? OnMergeEssence;
+
     public CEResearchTableWindow()
     {
         IoCManager.InjectDependencies(this);
@@ -48,6 +50,7 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
         MapControl.OnViewChanged += OnMapViewChanged;
         CellInfo.OnAction += OnActionPressed;
         CellInfo.OnChooseDiscovery += OnChooseDiscoveryPressed;
+        Knowledge.OnMerge += (first, second) => OnMergeEssence?.Invoke(first, second);
 
         foreach (var area in _prototype.EnumeratePrototypes<CEScienceAreaPrototype>())
         {

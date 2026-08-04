@@ -6,9 +6,6 @@
     Order: 1
   allowedCells:
   - Empty
-  - Discovery
-  - Star
-  - OfferedStar
   effects:
   - !type:CEResearchRevealArea
     radius: 1

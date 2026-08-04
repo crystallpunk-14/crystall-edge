@@ -19,9 +19,7 @@ public sealed partial class CEScienceComponent : Component
 
     /// <summary>
     /// Discovery prototypes not currently offered on any star's unresolved offer, drawable when
-    /// rolling a new offer (filtered down to the relevant area+rarity at draw time, see
-    /// <see cref="CEScienceSystem.RollOffer"/>). Drawing an offer removes its candidates from here
-    /// immediately, so the same discovery can never be offered on two stars at once.
+    /// rolling a new offer
     /// </summary>
     public HashSet<ProtoId<CEScienceDiscoveryPrototype>> AvailableDiscoveries = new();
 

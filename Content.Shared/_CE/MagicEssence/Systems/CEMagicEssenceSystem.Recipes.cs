@@ -9,6 +9,7 @@ namespace Content.Shared._CE.MagicEssence.Systems;
 public sealed partial class CEMagicEssenceSystem
 {
     private Dictionary<ProtoId<CEMagicEssenceTypePrototype>, List<ProtoId<CEMagicEssenceTypePrototype>>>? _essenceRecipes;
+    private Dictionary<(string, string), ProtoId<CEMagicEssenceTypePrototype>>? _essenceRecipesByComponents;
 
     /// <summary>
     /// Resolves the lower-tier essences that combine to produce the given essence type, for display in
@@ -18,6 +19,46 @@ public sealed partial class CEMagicEssenceSystem
     {
         var recipes = GetEssenceRecipeMap();
         return recipes.TryGetValue(essence, out var components) ? components : [];
+    }
+
+    /// <summary>
+    /// Reverse of <see cref="GetRecipeComponents"/>: given two component aspects (in either order),
+    /// resolves the higher-tier aspect they combine into. Used by the knowledge panel's merge feature.
+    /// False if no two-ingredient recipe matches this pair.
+    /// </summary>
+    public bool TryGetMergeResult(
+        ProtoId<CEMagicEssenceTypePrototype> a,
+        ProtoId<CEMagicEssenceTypePrototype> b,
+        out ProtoId<CEMagicEssenceTypePrototype> result)
+    {
+        var key = string.CompareOrdinal(a.Id, b.Id) <= 0 ? (a.Id, b.Id) : (b.Id, a.Id);
+        return GetEssenceRecipesByComponents().TryGetValue(key, out result);
+    }
+
+    /// <summary>
+    /// Inverts <see cref="GetEssenceRecipeMap"/>: for every recipe with exactly 2 components, maps
+    /// the unordered pair of their IDs back to the resulting essence.
+    /// </summary>
+    private Dictionary<(string, string), ProtoId<CEMagicEssenceTypePrototype>> GetEssenceRecipesByComponents()
+    {
+        if (_essenceRecipesByComponents is { } cached)
+            return cached;
+
+        var map = new Dictionary<(string, string), ProtoId<CEMagicEssenceTypePrototype>>();
+        foreach (var (essence, components) in GetEssenceRecipeMap())
+        {
+            if (components.Count != 2)
+                continue;
+
+            var key = string.CompareOrdinal(components[0].Id, components[1].Id) <= 0
+                ? (components[0].Id, components[1].Id)
+                : (components[1].Id, components[0].Id);
+
+            map[key] = essence;
+        }
+
+        _essenceRecipesByComponents = map;
+        return map;
     }
 
     private Dictionary<ProtoId<CEMagicEssenceTypePrototype>, List<ProtoId<CEMagicEssenceTypePrototype>>> GetEssenceRecipeMap()

@@ -26,7 +26,9 @@ public sealed partial class CEScienceSystem
         science.ChosenDiscoveries.Clear();
 
         foreach (var discovery in _proto.EnumeratePrototypes<CEScienceDiscoveryPrototype>())
+        {
             science.AvailableDiscoveries.Add(discovery.ID);
+        }
     }
 
     /// <summary>
@@ -36,7 +38,7 @@ public sealed partial class CEScienceSystem
     /// aren't enough candidates left. May return fewer than <see cref="OfferSize"/> (even zero) if
     /// the area+rarity is nearly or fully exhausted.
     /// </summary>
-    public List<ProtoId<CEScienceDiscoveryPrototype>> RollOffer(
+    public List<ProtoId<CEScienceDiscoveryPrototype>> GetNextDiscovery(
         CEScienceComponent science,
         ProtoId<CEScienceAreaPrototype> area,
         ProtoId<CEScienceDiscoveryDifficultyPrototype> rarity)

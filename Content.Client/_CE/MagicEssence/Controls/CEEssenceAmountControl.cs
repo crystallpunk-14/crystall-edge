@@ -5,6 +5,7 @@ using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.Utility;
+using Robust.Shared.Input;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client._CE.MagicEssence.Controls;
@@ -36,6 +37,12 @@ public sealed partial class CEEssenceAmountControl : Control
     private Texture? _texture;
     private int _amount;
 
+    /// <summary>
+    /// Raised on click. Nothing subscribes in most places this control is used (wallet readouts,
+    /// action costs) - only the knowledge panel's aspect picker cares.
+    /// </summary>
+    public event Action? OnPressed;
+
     public CEEssenceAmountControl()
     {
         IoCManager.InjectDependencies(this);
@@ -66,6 +73,17 @@ public sealed partial class CEEssenceAmountControl : Control
             _texture = null;
             ToolTip = $"{essence.Id} x{amount}";
         }
+    }
+
+    protected override void KeyBindDown(GUIBoundKeyEventArgs args)
+    {
+        base.KeyBindDown(args);
+
+        if (args.Function != EngineKeyFunctions.UIClick)
+            return;
+
+        args.Handle();
+        OnPressed?.Invoke();
     }
 
     protected override void Draw(DrawingHandleScreen handle)

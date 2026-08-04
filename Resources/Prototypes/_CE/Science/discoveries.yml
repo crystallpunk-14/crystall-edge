@@ -3,7 +3,8 @@
   area: ArcaneEngineering
   rarity: Common
   cost:
-    Order: 5
+    Mining: 10
+    Energia: 10
   knowledge: KnowledgeDrillAdvanced
 
 - type: scienceDiscovery
@@ -11,7 +12,9 @@
   area: ArcaneEngineering
   rarity: Common
   cost:
-    Order: 5
+    Flight: 20
+    Motion: 25
+    Energia: 10
   knowledge: KnowledgeHoverboard
 
 - type: scienceDiscovery
@@ -19,7 +22,9 @@
   area: ArcaneEngineering
   rarity: Common
   cost:
-    Order: 5
+    Void: 20
+    Magic: 25
+    Hunger: 10
   knowledge: KnowledgePortableEssenceAttractor
 
 - type: scienceDiscovery
@@ -27,5 +32,6 @@
   area: ArcaneEngineering
   rarity: Common
   cost:
-    Order: 5
+    Magic: 25
+    Trap: 25
   knowledge: KnowledgeNodeStabilizer

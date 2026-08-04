@@ -1,4 +1,6 @@
 using Content.Server._CE.Science.Components;
+using Content.Shared._CE.MagicEssence.Prototypes;
+using Content.Shared._CE.MagicEssence.Systems;
 using Content.Shared._CE.Science.Components;
 using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.Science;
@@ -17,6 +19,7 @@ public sealed partial class CEResearchTableSystem : EntitySystem
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private UserInterfaceSystem _userInterface = default!;
     [Dependency] private CEScienceSystem _science = default!;
+    [Dependency] private CEMagicEssenceSystem _essence = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
 
     private static readonly SoundSpecifier DiscoverySound =
@@ -29,6 +32,7 @@ public sealed partial class CEResearchTableSystem : EntitySystem
         SubscribeLocalEvent<CEResearchTableComponent, BeforeActivatableUIOpenEvent>(OnBeforeUIOpen);
         SubscribeLocalEvent<CEResearchTableComponent, CEResearchTableActionMessage>(OnAction);
         SubscribeLocalEvent<CEResearchTableComponent, CEResearchTableChooseDiscoveryMessage>(OnChooseDiscovery);
+        SubscribeLocalEvent<CEResearchTableComponent, CEResearchTableMergeEssenceMessage>(OnMergeEssence);
     }
 
     private void OnBeforeUIOpen(Entity<CEResearchTableComponent> ent, ref BeforeActivatableUIOpenEvent args)
@@ -94,6 +98,34 @@ public sealed partial class CEResearchTableSystem : EntitySystem
         _audio.PlayPvs(DiscoverySound, ent);
 
         BroadcastCellUpdate(args.Area, args.Coordinate);
+    }
+
+    /// <summary>
+    /// Merges 2 selected aspects into the higher-tier one they combine into, per
+    /// <see cref="CEMagicEssenceSystem.TryGetMergeResult"/>. Re-validates the recipe and the actor's
+    /// points here rather than trusting the client, which only used the same check to decide whether
+    /// to enable the merge button. Points are <see cref="Robust.Shared.GameStates.AutoNetworkedField"/>,
+    /// so the client picks up the change through ordinary component state sync - no state to resend.
+    /// </summary>
+    private void OnMergeEssence(Entity<CEResearchTableComponent> ent, ref CEResearchTableMergeEssenceMessage args)
+    {
+        if (!_essence.TryGetMergeResult(args.First, args.Second, out var result))
+            return;
+
+        var data = EnsureComp<CEScienceResearchDataComponent>(args.Actor);
+
+        // TryGetMergeResult never matches First == Second (no recipe combines an aspect with itself),
+        // so this is always exactly 1 of each.
+        var cost = new Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int>
+        {
+            [args.First] = 1,
+            [args.Second] = 1,
+        };
+
+        if (!_science.TrySpendPoints((args.Actor, data), cost))
+            return;
+
+        _science.GrantPoints((args.Actor, data), new Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int> { [result] = 1 });
     }
 
     /// <summary>

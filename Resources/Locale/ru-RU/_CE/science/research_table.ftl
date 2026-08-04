@@ -1,5 +1,6 @@
 ce-research-table-ui-title = Стол исследований
 ce-science-knowledge-title = Знания персонажа
+ce-science-knowledge-merge-button-tooltip = Соединить 2 знания в более комплексное
 
 ce-research-cell-dead-zone-title = Мертвая зона
 ce-research-cell-dead-zone-desc = Попытки исследований здесь бесплодны и не дают никакого результата.
