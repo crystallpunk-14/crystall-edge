@@ -63,7 +63,7 @@
   - type: Physics
     canCollide: true
 
-# White ------------------------------------------------------------------
+#MARK: White
 
 - type: entity
   id: CECurtainsWhiteBase
@@ -202,7 +202,7 @@
           Open: { state: goldenline2_open }
           Closed: { state: goldenline2_closed }
 
-# Blue ------------------------------------------------------------------
+#MARK: Blue
 
 - type: entity
   id: CECurtainsBlueBase
@@ -321,7 +321,7 @@
           Open: { state: goldenline2_open }
           Closed: { state: goldenline2_closed }
 
-# Red ------------------------------------------------------------------
+#MARK: Red
 
 - type: entity
   id: CECurtainsRedBase
@@ -440,7 +440,7 @@
           Open: { state: goldenline2_open }
           Closed: { state: goldenline2_closed }
 
-# Purple ------------------------------------------------------------------
+#MARK: Purple
 
 - type: entity
   id: CECurtainsPurpleBase
@@ -559,7 +559,7 @@
           Open: { state: goldenline2_open }
           Closed: { state: goldenline2_closed }
 
-# Green ------------------------------------------------------------------
+#MARK: Green
 
 - type: entity
   id: CECurtainsGreenBase
