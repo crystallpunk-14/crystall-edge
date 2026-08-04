@@ -77,10 +77,18 @@ public sealed partial class CEEssenceAmountControl : Control
 
         handle.DrawTextureRect(_texture, PixelSizeBox);
 
-        var textScale = UIScale * TextScaleMultiplier;
-        var ascent = _font.GetAscent(textScale);
-
         var text = _amount.ToString();
+        var baseTextScale = UIScale * TextScaleMultiplier;
+        var unscaledWidth = handle.GetDimensions(_font, text, baseTextScale).X;
+
+        // Shrink the font as more digits are added so the amount always fits within the
+        // control's width instead of overflowing it - one digit renders at full size, each
+        // additional digit shrinks the whole readout further.
+        var textScale = PixelWidth > 0f && unscaledWidth > PixelWidth
+            ? baseTextScale * (PixelWidth / unscaledWidth)
+            : baseTextScale;
+
+        var ascent = _font.GetAscent(textScale);
         var textDims = handle.GetDimensions(_font, text, textScale);
 
         // Anchor by baseline (icon bottom - ascent) rather than full line height, since digits
