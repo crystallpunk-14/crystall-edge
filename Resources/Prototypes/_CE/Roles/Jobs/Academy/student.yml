@@ -8,8 +8,14 @@
   icon: CEJobIconAcademyStudent
   supervisors: ce-job-supervisors-academy-professor
   special:
-    - !type:CEResearchDataSpecial
-      radius: 1
+    - !type:CEResearchPointsSpecial
+      points:
+        Earth: 10
+        Fire: 10
+        Water: 10
+        Air: 10
+        Order: 10
+        Chaos: 10
 
 - type: startingGear
   id: CEAcademyStudentGear

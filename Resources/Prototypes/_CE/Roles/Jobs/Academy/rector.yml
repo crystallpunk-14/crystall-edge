@@ -11,8 +11,14 @@
   supervisors: ce-job-supervisors-empire
   weight: 3
   special:
-    - !type:CEResearchDataSpecial
-      radius: 6
+    - !type:CEResearchPointsSpecial
+      points:
+        Earth: 30
+        Fire: 30
+        Water: 30
+        Air: 30
+        Order: 30
+        Chaos: 30
 
 - type: startingGear
   id: CEAcademyRectorGear
