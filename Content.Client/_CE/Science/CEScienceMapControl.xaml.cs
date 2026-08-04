@@ -22,7 +22,7 @@ namespace Content.Client._CE.Science;
 /// <summary>
 /// Draggable, zoomable grid view of a science area's research map. Draws a checkerboard square
 /// for every coordinate the player has researched, an icon on top for cells with content (dead
-/// zones, achievements, ...), an outline around the perimeter of the researched zone, and a
+/// zones, stars, discoveries, ...), an outline around the perimeter of the researched zone, and a
 /// cursor on the selected cell. All theme sprites (background, dead zone, unknown) and the tint
 /// colour come from the current <see cref="CEScienceAreaPrototype"/>. If the area has no
 /// parallax configured, a plain black background is drawn instead.
@@ -49,6 +49,8 @@ public sealed partial class CEScienceMapControl : BoxContainer
     private const int HypothesisFontSize = 24;
 
     private static readonly SpriteSpecifier CursorIcon = new SpriteSpecifier.Rsi(new ResPath("/Textures/_CE/Interface/Science/cursor.rsi"), "cursor");
+    private static readonly SpriteSpecifier StarIcon = new SpriteSpecifier.Rsi(new ResPath("/Textures/_CE/Interface/Science/science_point.rsi"), "star");
+    private static readonly SpriteSpecifier OfferedStarIcon = new SpriteSpecifier.Rsi(new ResPath("/Textures/_CE/Interface/Science/science_point.rsi"), "star_offered");
 
     [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private IResourceCache _resourceCache = default!;
@@ -271,18 +273,30 @@ public sealed partial class CEScienceMapControl : BoxContainer
                 case CEScienceDeadZoneCell:
                     DrawCentered(handle, _area.MapDeadZoneIcon.Frame0(), CellToScreen(coordinate));
                     break;
-                case CEScienceAchievementCell achievementCell:
+                case CEScienceStarCell starCell:
+                {
+                    var tint = _prototype.TryIndex(starCell.Rarity, out var rarity) ? rarity.Color : Color.White;
+                    DrawCentered(handle, StarIcon.Frame0(), CellToScreen(coordinate), tint);
+                    break;
+                }
+                case CEScienceOfferedStarCell offeredCell:
+                {
+                    var tint = _prototype.TryIndex(offeredCell.Rarity, out var rarity) ? rarity.Color : Color.White;
+                    DrawCentered(handle, OfferedStarIcon.Frame0(), CellToScreen(coordinate), tint);
+                    break;
+                }
+                case CEScienceDiscoveryCell discoveryCell:
                 {
                     SpriteSpecifier? icon = null;
-                    if (_prototype.TryIndex(achievementCell.Achievement, out var achievement) &&
-                        _prototype.TryIndex(achievement.Knowledge, out var knowledge))
+                    if (_prototype.TryIndex(discoveryCell.Discovery, out var discovery) &&
+                        _prototype.TryIndex(discovery.Knowledge, out var knowledge))
                         icon = knowledge.Icon;
 
                     var texture = icon?.Frame0() ?? _area.MapUnknownIcon.Frame0();
-                    var discovered = achievement is not null && (knowledgeComp?.Known.Contains(achievement.Knowledge) ?? false);
+                    var discovered = discovery is not null && (knowledgeComp?.Known.Contains(discovery.Knowledge) ?? false);
 
                     if (!discovered)
-                        // Undiscovered achievements are drawn tinted translucent white, whatever their icon.
+                        // Undiscovered discoveries are drawn tinted translucent white, whatever their icon.
                         DrawCentered(handle, texture, CellToScreen(coordinate), Color.White.WithAlpha(0.5f));
                     else if (icon is not null)
                         DrawCentered(handle, texture, CellToScreen(coordinate));

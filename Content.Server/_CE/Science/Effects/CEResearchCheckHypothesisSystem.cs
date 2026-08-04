@@ -28,7 +28,7 @@ public sealed partial class CEResearchCheckHypothesisSystem : CEResearchActionEf
 
             foreach (var (candidate, cell) in areaCells)
             {
-                if (cell is not CEScienceAchievementCell || researched.Contains(candidate))
+                if (cell is not (CEScienceStarCell or CEScienceOfferedStarCell) || researched.Contains(candidate))
                     continue;
 
                 var delta = candidate - coordinate;

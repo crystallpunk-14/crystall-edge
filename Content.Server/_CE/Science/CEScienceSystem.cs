@@ -79,23 +79,23 @@ public sealed partial class CEScienceSystem : CESharedScienceSystem
     }
 
     /// <summary>
-    /// Teaches the actor an achievement's linked knowledge - the single path both the "discover
-    /// achievement" research action and reading a physical knowledge-holder item funnel through.
-    /// Callers are responsible for any cost of their own (e.g. the research action spending its
-    /// points) before calling this. Returns false if the knowledge was already known.
+    /// Teaches the actor a discovery's linked knowledge - the single path both choosing a
+    /// discovery's card and reading a physical knowledge-holder item funnel through. Callers are
+    /// responsible for any cost of their own (e.g. spending the card's points) before calling this.
+    /// Returns false if the knowledge was already known.
     /// </summary>
-    public bool TryDiscoverAchievement(EntityUid actor, ProtoId<CEScienceAchievementPrototype> achievementId)
+    public bool TryLearnDiscovery(EntityUid actor, ProtoId<CEScienceDiscoveryPrototype> discoveryId)
     {
-        if (!_proto.TryIndex(achievementId, out var achievement))
+        if (!_proto.TryIndex(discoveryId, out var discovery))
             return false;
 
-        return _knowledge.TryLearn(actor, achievement.Knowledge);
+        return _knowledge.TryLearn(actor, discovery.Knowledge);
     }
 
     /// <summary>
     /// Whenever an entity learns a piece of knowledge (from any source), reveals a 3x3 area
-    /// around any achievement cell that teaches that same knowledge - this is what makes a
-    /// discovered achievement's map icon render in full colour.
+    /// around any discovery cell that teaches that same knowledge - this is what makes a
+    /// discovered discovery's map icon render in full colour.
     /// </summary>
     private void OnKnowledgeLearned(ref CEKnowledgeLearnedEvent ev)
     {
@@ -104,20 +104,20 @@ public sealed partial class CEScienceSystem : CESharedScienceSystem
 
         var data = EnsureComp<CEScienceResearchDataComponent>(ev.Entity);
 
-        foreach (var achievement in _proto.EnumeratePrototypes<CEScienceAchievementPrototype>())
+        foreach (var discovery in _proto.EnumeratePrototypes<CEScienceDiscoveryPrototype>())
         {
-            if (achievement.Knowledge != ev.Knowledge)
+            if (discovery.Knowledge != ev.Knowledge)
                 continue;
 
-            if (!science.Areas.TryGetValue(achievement.Area, out var areaCells))
+            if (!science.Areas.TryGetValue(discovery.Area, out var areaCells))
                 continue;
 
             foreach (var (coordinate, cell) in areaCells)
             {
-                if (cell is not CEScienceAchievementCell achievementCell || achievementCell.Achievement != achievement.ID)
+                if (cell is not CEScienceDiscoveryCell discoveryCell || discoveryCell.Discovery != discovery.ID)
                     continue;
 
-                RevealArea((ev.Entity, data), achievement.Area, coordinate, 1);
+                RevealArea((ev.Entity, data), discovery.Area, coordinate, 1);
                 break;
             }
         }
@@ -134,6 +134,8 @@ public sealed partial class CEScienceSystem : CESharedScienceSystem
         {
             science.Areas[area.ID] = GenerateArea(area);
         }
+
+        InitializePools(science);
     }
 
     private void OnMapInit(Entity<CEScienceComponent> ent, ref MapInitEvent args)

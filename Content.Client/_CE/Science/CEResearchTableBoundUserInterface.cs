@@ -17,6 +17,7 @@ public sealed class CEResearchTableBoundUserInterface : BoundUserInterface
 
         _window = this.CreateWindow<CEResearchTableWindow>();
         _window.OnResearch += (area, coordinate, action) => SendMessage(new CEResearchTableActionMessage(area, coordinate, action));
+        _window.OnChooseDiscovery += (area, coordinate, discovery) => SendMessage(new CEResearchTableChooseDiscoveryMessage(area, coordinate, discovery));
 
         EntMan.System<CEClientScienceSystem>().OnLocalResearchDataUpdated += OnLocalResearchDataUpdated;
     }

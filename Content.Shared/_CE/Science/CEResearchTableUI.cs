@@ -28,6 +28,23 @@ public sealed class CEResearchTableActionMessage(
 }
 
 /// <summary>
+/// Sent when a player picks one of the candidates offered by an opened star. Not a
+/// <see cref="CEResearchTableActionMessage"/> because the cost is the chosen candidate's own,
+/// rather than fixed on an action prototype. The server re-validates the cell is still a
+/// <see cref="CEScienceOfferedStarCell"/> and that Discovery is among its candidates.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class CEResearchTableChooseDiscoveryMessage(
+    ProtoId<CEScienceAreaPrototype> area,
+    Vector2i coordinate,
+    ProtoId<CEScienceDiscoveryPrototype> discovery) : BoundUserInterfaceMessage
+{
+    public readonly ProtoId<CEScienceAreaPrototype> Area = area;
+    public readonly Vector2i Coordinate = coordinate;
+    public readonly ProtoId<CEScienceDiscoveryPrototype> Discovery = discovery;
+}
+
+/// <summary>
 /// A single science area's map content, already filtered server-side down to only the coordinates
 /// the requesting player has personally researched (that Researched set is data the filter is
 /// built from - it never gets echoed back). Deliberately excludes the raw Researched set and the
@@ -72,7 +89,7 @@ public sealed class CEResearchTableHypothesisResultMessage(
     public readonly Vector2i Coordinate = coordinate;
 
     /// <summary>
-    /// Null if no undiscovered achievement was found within the action's search radius.
+    /// Null if no unresolved star was found within the action's search radius.
     /// </summary>
     public readonly float? Distance = distance;
 

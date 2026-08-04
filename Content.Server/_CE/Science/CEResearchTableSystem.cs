@@ -5,7 +5,10 @@ using Content.Shared._CE.Science;
 using Content.Shared._CE.Science.Prototypes;
 using Content.Shared.UserInterface;
 using Robust.Server.GameObjects;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Server._CE.Science;
 
@@ -14,6 +17,10 @@ public sealed partial class CEResearchTableSystem : EntitySystem
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private UserInterfaceSystem _userInterface = default!;
     [Dependency] private CEScienceSystem _science = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+
+    private static readonly SoundSpecifier DiscoverySound =
+        new SoundPathSpecifier(new ResPath("/Audio/_CE/Effects/knowledge_learned.ogg"));
 
     public override void Initialize()
     {
@@ -21,6 +28,7 @@ public sealed partial class CEResearchTableSystem : EntitySystem
 
         SubscribeLocalEvent<CEResearchTableComponent, BeforeActivatableUIOpenEvent>(OnBeforeUIOpen);
         SubscribeLocalEvent<CEResearchTableComponent, CEResearchTableActionMessage>(OnAction);
+        SubscribeLocalEvent<CEResearchTableComponent, CEResearchTableChooseDiscoveryMessage>(OnChooseDiscovery);
     }
 
     private void OnBeforeUIOpen(Entity<CEResearchTableComponent> ent, ref BeforeActivatableUIOpenEvent args)
@@ -69,7 +77,48 @@ public sealed partial class CEResearchTableSystem : EntitySystem
             effect.Effect(effectArgs);
         }
 
-        SendState(ent, args.Actor);
+        BroadcastCellUpdate(args.Area, args.Coordinate);
+    }
+
+    private void OnChooseDiscovery(Entity<CEResearchTableComponent> ent, ref CEResearchTableChooseDiscoveryMessage args)
+    {
+        var data = EnsureComp<CEScienceResearchDataComponent>(args.Actor);
+
+        // Same rule as OnAction - only ever operate on coordinates the player can already see.
+        if (!data.Researched.TryGetValue(args.Area, out var researched) || !researched.Contains(args.Coordinate))
+            return;
+
+        if (!_science.ResolveChoice(args.Area, args.Coordinate, args.Discovery, args.Actor))
+            return;
+
+        _audio.PlayPvs(DiscoverySound, ent);
+
+        BroadcastCellUpdate(args.Area, args.Coordinate);
+    }
+
+    /// <summary>
+    /// Refreshes the research table state for every player, across every research table, who
+    /// currently has <paramref name="coordinate"/> researched in <paramref name="area"/> - not just
+    /// the player whose action caused the change. Needed since the shared, round-wide map cell at
+    /// that coordinate may have just changed for everyone (e.g. a star got opened or resolved).
+    /// </summary>
+    private void BroadcastCellUpdate(ProtoId<CEScienceAreaPrototype> area, Vector2i coordinate)
+    {
+        var query = EntityQueryEnumerator<CEResearchTableComponent>();
+        while (query.MoveNext(out var uid, out _))
+        {
+            foreach (var actor in _userInterface.GetActors((uid, null), CEResearchTableUiKey.Key))
+            {
+                if (!TryComp<CEScienceResearchDataComponent>(actor, out var data))
+                    continue;
+
+                if (!data.Researched.TryGetValue(area, out var researched) || !researched.Contains(coordinate))
+                    continue;
+
+                SendState(uid, actor);
+                break;
+            }
+        }
     }
 
     /// <summary>

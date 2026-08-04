@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Shared._CE.Science;
 using Content.Shared._CE.Science.Prototypes;
+using Content.Shared.Destructible.Thresholds;
 using Robust.Shared.Random;
 
 namespace Content.Server._CE.Science;
@@ -17,22 +18,27 @@ public sealed partial class CEScienceSystem
 
     /// <summary>
     /// Procedurally generates a science area's research map: dead zones from the area's noise
-    /// layers, then one achievement cell per <see cref="CEScienceAchievementPrototype"/> belonging
-    /// to this area, placed on the square ring of its <see cref="CEScienceAchievementPrototype.Difficulty"/>.
-    /// Finally, guarantees every achievement is actually reachable from the start by carving a path
+    /// layers, then one star cell per <see cref="CEScienceDiscoveryPrototype"/> belonging to this
+    /// area, placed within its <see cref="CEScienceDiscoveryDifficultyPrototype.SpawnDistance"/>
+    /// band. A star doesn't remember which discovery reserved its slot - only its rarity; which
+    /// discovery ends up there is decided later, when a player opens it.
+    /// Finally, guarantees every star is actually reachable from the start by carving a path
     /// through dead zones to any that aren't.
     /// </summary>
     private Dictionary<Vector2i, CEScienceMapCell> GenerateArea(CEScienceAreaPrototype area)
     {
-        var achievements = _proto.EnumeratePrototypes<CEScienceAchievementPrototype>()
-            .Where(achievement => achievement.Area == area.ID)
+        var discoveries = _proto.EnumeratePrototypes<CEScienceDiscoveryPrototype>()
+            .Where(discovery => discovery.Area == area.ID)
             .ToList();
 
-        var maxDifficulty = 0;
-        foreach (var achievement in achievements)
-            maxDifficulty = Math.Max(maxDifficulty, achievement.Difficulty);
+        var radius = 0;
+        foreach (var discovery in discoveries)
+        {
+            if (_proto.TryIndex(discovery.Rarity, out var rarity))
+                radius = Math.Max(radius, rarity.SpawnDistance.Max);
+        }
 
-        var radius = maxDifficulty + area.GenerationMargin;
+        radius += area.GenerationMargin;
         var cells = new Dictionary<Vector2i, CEScienceMapCell>();
 
         for (var x = -radius; x <= radius; x++)
@@ -49,40 +55,43 @@ public sealed partial class CEScienceSystem
         for (var y = -StartClearRadius; y <= StartClearRadius; y++)
             cells.Remove(new Vector2i(x, y));
 
-        var placedAchievements = new List<Vector2i>();
-        foreach (var achievement in achievements)
+        var placedStars = new List<Vector2i>();
+        foreach (var discovery in discoveries)
         {
-            if (!TryPlaceAchievement(cells, achievement.Difficulty, out var coordinate))
+            if (!_proto.TryIndex(discovery.Rarity, out var rarity))
+                continue;
+
+            if (!TryPlaceStar(cells, rarity.SpawnDistance, out var coordinate))
             {
-                Log.Warning($"CEScienceSystem: couldn't place achievement {achievement.ID} for area {area.ID} - no empty cell within its difficulty ring or the next one out.");
+                Log.Warning($"CEScienceSystem: couldn't place a star for discovery {discovery.ID} for area {area.ID} - no empty cell within its rarity's spawn band or the next ring out.");
                 continue;
             }
 
-            cells[coordinate] = new CEScienceAchievementCell(achievement.ID);
-            placedAchievements.Add(coordinate);
+            cells[coordinate] = new CEScienceStarCell(discovery.Rarity);
+            placedStars.Add(coordinate);
         }
 
-        EnsureReachable(cells, radius, placedAchievements);
+        EnsureReachable(cells, radius, placedStars);
 
         return cells;
     }
 
     /// <summary>
     /// Flood-fills from the origin over every non-dead-zone cell within <paramref name="radius"/>.
-    /// Any achievement not caught by that flood fill gets a path carved to it (dead zones cleared
-    /// along a straight 8-directional line) from whichever reachable cell is closest.
+    /// Any star not caught by that flood fill gets a path carved to it (dead zones cleared along a
+    /// straight 8-directional line) from whichever reachable cell is closest.
     /// </summary>
-    private static void EnsureReachable(Dictionary<Vector2i, CEScienceMapCell> cells, int radius, List<Vector2i> achievements)
+    private static void EnsureReachable(Dictionary<Vector2i, CEScienceMapCell> cells, int radius, List<Vector2i> stars)
     {
         var reachable = FloodFillReachable(cells, radius);
 
-        foreach (var achievement in achievements)
+        foreach (var star in stars)
         {
-            if (reachable.Contains(achievement))
+            if (reachable.Contains(star))
                 continue;
 
-            var nearest = FindNearestReachable(reachable, achievement);
-            CarvePath(cells, reachable, nearest, achievement);
+            var nearest = FindNearestReachable(reachable, star);
+            CarvePath(cells, reachable, nearest, star);
         }
     }
 
@@ -177,25 +186,27 @@ public sealed partial class CEScienceSystem
     }
 
     /// <summary>
-    /// Tries to find an empty coordinate on the square ring at <paramref name="difficulty"/> cells
-    /// (Chebyshev distance) from the origin. Falls back to the next ring out once if the first is
-    /// completely full.
+    /// Tries to find an empty coordinate within the square annulus <paramref name="band"/> cells
+    /// (Chebyshev distance) from the origin. Falls back to the next ring out once if the whole band
+    /// is completely full.
     /// </summary>
-    private bool TryPlaceAchievement(Dictionary<Vector2i, CEScienceMapCell> cells, int difficulty, out Vector2i coordinate)
+    private bool TryPlaceStar(Dictionary<Vector2i, CEScienceMapCell> cells, MinMax band, out Vector2i coordinate)
     {
-        foreach (var ringRadius in new[] { difficulty, difficulty + 1 })
+        var candidates = new List<Vector2i>();
+        for (var ringRadius = band.Min; ringRadius <= band.Max; ringRadius++)
+            candidates.AddRange(GetRing(ringRadius).Where(candidate => !cells.ContainsKey(candidate)));
+
+        if (candidates.Count == 0)
+            candidates.AddRange(GetRing(band.Max + 1).Where(candidate => !cells.ContainsKey(candidate)));
+
+        if (candidates.Count == 0)
         {
-            var candidates = GetRing(ringRadius).Where(candidate => !cells.ContainsKey(candidate)).ToList();
-
-            if (candidates.Count == 0)
-                continue;
-
-            coordinate = _random.Pick(candidates);
-            return true;
+            coordinate = default;
+            return false;
         }
 
-        coordinate = default;
-        return false;
+        coordinate = _random.Pick(candidates);
+        return true;
     }
 
     /// <summary>

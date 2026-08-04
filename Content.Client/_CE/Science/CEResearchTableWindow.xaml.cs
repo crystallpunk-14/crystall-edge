@@ -37,6 +37,8 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
 
     public event Action<ProtoId<CEScienceAreaPrototype>, Vector2i, ProtoId<CEResearchActionPrototype>>? OnResearch;
 
+    public event Action<ProtoId<CEScienceAreaPrototype>, Vector2i, ProtoId<CEScienceDiscoveryPrototype>>? OnChooseDiscovery;
+
     public CEResearchTableWindow()
     {
         IoCManager.InjectDependencies(this);
@@ -45,6 +47,7 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
         MapControl.OnCellSelected += OnCellSelected;
         MapControl.OnViewChanged += OnMapViewChanged;
         CellInfo.OnAction += OnActionPressed;
+        CellInfo.OnChooseDiscovery += OnChooseDiscoveryPressed;
 
         foreach (var area in _prototype.EnumeratePrototypes<CEScienceAreaPrototype>())
         {
@@ -216,5 +219,14 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
 
         var coordinate = _selectedPerArea.GetValueOrDefault(area, default);
         OnResearch?.Invoke(area, coordinate, action);
+    }
+
+    private void OnChooseDiscoveryPressed(ProtoId<CEScienceDiscoveryPrototype> discovery)
+    {
+        if (_currentArea is not { } area)
+            return;
+
+        var coordinate = _selectedPerArea.GetValueOrDefault(area, default);
+        OnChooseDiscovery?.Invoke(area, coordinate, discovery);
     }
 }

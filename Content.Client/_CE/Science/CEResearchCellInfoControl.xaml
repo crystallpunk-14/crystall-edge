@@ -3,5 +3,6 @@
               HorizontalExpand="True">
     <Label Name="TitleLabel" StyleClasses="LabelHeading" />
     <RichTextLabel Name="DescLabel" Margin="0 4 0 0" />
+    <BoxContainer Name="CardsContainer" Orientation="Vertical" Margin="0 10 0 0" Visible="False" />
     <BoxContainer Name="ActionsContainer" Orientation="Vertical" Margin="0 10 0 0" />
 </BoxContainer>

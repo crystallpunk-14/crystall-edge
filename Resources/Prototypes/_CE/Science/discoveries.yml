@@ -1,31 +1,31 @@
-- type: scienceAchievement
+- type: scienceDiscovery
   id: AdvancedDrilling
   area: ArcaneEngineering
-  difficulty: 10
+  rarity: Common
   cost:
     Order: 5
   knowledge: KnowledgeDrillAdvanced
 
-- type: scienceAchievement
+- type: scienceDiscovery
   id: Hoverboards
   area: ArcaneEngineering
-  difficulty: 15
+  rarity: Common
   cost:
     Order: 5
   knowledge: KnowledgeHoverboard
 
-- type: scienceAchievement
+- type: scienceDiscovery
   id: PortableMagicEssenceAttractor
   area: ArcaneEngineering
-  difficulty: 10
+  rarity: Common
   cost:
     Order: 5
   knowledge: KnowledgePortableEssenceAttractor
 
-- type: scienceAchievement
+- type: scienceDiscovery
   id: NodeStabilizer
   area: ArcaneEngineering
-  difficulty: 15
+  rarity: Common
   cost:
     Order: 5
   knowledge: KnowledgeNodeStabilizer

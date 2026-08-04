@@ -1,0 +1,39 @@
+- type: scienceDiscoveryDifficulty
+  id: Common
+  name: ce-science-rarity-common
+  color: "#b0b0b0"
+  spawnDistance:
+    min: 1
+    max: 8
+
+- type: scienceDiscoveryDifficulty
+  id: Uncommon
+  name: ce-science-rarity-uncommon
+  color: "#4caf50"
+  spawnDistance:
+    min: 9
+    max: 12
+
+- type: scienceDiscoveryDifficulty
+  id: Rare
+  name: ce-science-rarity-rare
+  color: "#3d9dff"
+  spawnDistance:
+    min: 13
+    max: 16
+
+- type: scienceDiscoveryDifficulty
+  id: Epic
+  name: ce-science-rarity-epic
+  color: "#a335ee"
+  spawnDistance:
+    min: 17
+    max: 22
+
+- type: scienceDiscoveryDifficulty
+  id: Legendary
+  name: ce-science-rarity-legendary
+  color: "#ff8c00"
+  spawnDistance:
+    min: 23
+    max: 30

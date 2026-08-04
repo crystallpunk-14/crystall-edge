@@ -14,5 +14,7 @@ public enum CEResearchCellKind
     None = 0,
     Empty = 1 << 0,
     DeadZone = 1 << 1,
-    Achievement = 1 << 2,
+    Discovery = 1 << 2,
+    Star = 1 << 3,
+    OfferedStar = 1 << 4,
 }

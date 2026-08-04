@@ -17,9 +17,9 @@ using Robust.Shared.Utility;
 namespace Content.Client._CE.Science;
 
 /// <summary>
-/// Left-hand panel of the research table window: shows the selected cell's content (if any), and
-/// one entry per <see cref="CEResearchActionPrototype"/> that currently applies to it. Purely
-/// advisory - the server re-validates everything before acting.
+/// Left-hand panel of the research table window: shows the selected cell's content (if any), the
+/// candidate cards if it's an offered star, and one entry per <see cref="CEResearchActionPrototype"/>
+/// that currently applies to it. Purely advisory - the server re-validates everything before acting.
 /// </summary>
 [GenerateTypedNameReferences]
 public sealed partial class CEResearchCellInfoControl : BoxContainer
@@ -35,6 +35,12 @@ public sealed partial class CEResearchCellInfoControl : BoxContainer
     /// </summary>
     public event Action<ProtoId<CEResearchActionPrototype>>? OnAction;
 
+    /// <summary>
+    /// Raised when the player presses one of an offered star's candidate cards' "Choose" button,
+    /// with that candidate's id.
+    /// </summary>
+    public event Action<ProtoId<CEScienceDiscoveryPrototype>>? OnChooseDiscovery;
+
     public CEResearchCellInfoControl()
     {
         IoCManager.InjectDependencies(this);
@@ -45,6 +51,9 @@ public sealed partial class CEResearchCellInfoControl : BoxContainer
 
     public void UpdateCell(CEScienceMapCell? cell)
     {
+        CardsContainer.Visible = false;
+        CardsContainer.RemoveAllChildren();
+
         switch (cell)
         {
             case CEScienceDeadZoneCell:
@@ -54,13 +63,29 @@ public sealed partial class CEResearchCellInfoControl : BoxContainer
                 DescLabel.SetMessage(Loc.GetString("ce-research-cell-dead-zone-desc"));
                 break;
 
-            case CEScienceAchievementCell achievementCell
-                when _prototype.TryIndex(achievementCell.Achievement, out var achievement)
-                     && _prototype.TryIndex(achievement.Knowledge, out var knowledge):
+            case CEScienceStarCell starCell when _prototype.TryIndex(starCell.Rarity, out var rarity):
+                TitleLabel.Visible = true;
+                TitleLabel.Text = Loc.GetString(rarity.Name);
+                DescLabel.Visible = true;
+                DescLabel.SetMessage(Loc.GetString("ce-research-cell-star-desc"));
+                break;
+
+            case CEScienceOfferedStarCell offeredCell when _prototype.TryIndex(offeredCell.Rarity, out var rarity):
+                TitleLabel.Visible = true;
+                TitleLabel.Text = Loc.GetString("ce-research-cell-offered-star-title");
+                DescLabel.Visible = true;
+                DescLabel.SetMessage(Loc.GetString("ce-research-cell-offered-star-desc"));
+
+                BuildCards(offeredCell, rarity);
+                break;
+
+            case CEScienceDiscoveryCell discoveryCell
+                when _prototype.TryIndex(discoveryCell.Discovery, out var discovery)
+                     && _prototype.TryIndex(discovery.Knowledge, out var knowledge):
                 TitleLabel.Visible = true;
                 TitleLabel.Text = Loc.GetString(knowledge.Name);
 
-                var effects = _knowledge.GetKnowledgeEffectDescription(achievement.Knowledge);
+                var effects = _knowledge.GetKnowledgeEffectDescription(discovery.Knowledge);
                 DescLabel.Visible = effects.Length > 0;
                 DescLabel.SetMessage(FormattedMessage.FromMarkupPermissive(effects));
                 break;
@@ -103,17 +128,17 @@ public sealed partial class CEResearchCellInfoControl : BoxContainer
 
             var cost = action.Cost;
 
-            // "Discover achievement" actions cost the achievement's own price, not the action's
-            // generic one, and no longer apply once that achievement is already discovered.
-            if (cell is CEScienceAchievementCell achievementCell && action.Effects.Any(effect => effect is CEResearchDiscoverAchievement))
+            // "Learn discovery" actions cost the discovery's own price, not the action's generic
+            // one, and no longer apply once the local player already knows it.
+            if (cell is CEScienceDiscoveryCell discoveryCell && action.Effects.Any(effect => effect is CEResearchLearnDiscovery))
             {
-                if (!_prototype.TryIndex(achievementCell.Achievement, out var achievement))
+                if (!_prototype.TryIndex(discoveryCell.Discovery, out var discovery))
                     continue;
 
-                if (knowledgeComp?.Known.Contains(achievement.Knowledge) ?? false)
+                if (knowledgeComp?.Known.Contains(discovery.Knowledge) ?? false)
                     continue;
 
-                cost = achievement.Cost;
+                cost = discovery.Cost;
             }
 
             var actionId = new ProtoId<CEResearchActionPrototype>(action.ID);
@@ -129,5 +154,34 @@ public sealed partial class CEResearchCellInfoControl : BoxContainer
 
             ActionsContainer.AddChild(entry);
         }
+    }
+
+    /// <summary>
+    /// Builds one <see cref="CEScienceDiscoveryCardControl"/> per candidate offered by
+    /// <paramref name="offered"/>. Shown alongside (not instead of) the generic action list, so
+    /// e.g. BasicScan still works on an offered star.
+    /// </summary>
+    private void BuildCards(CEScienceOfferedStarCell offered, CEScienceDiscoveryDifficultyPrototype rarity)
+    {
+        if (_player.LocalEntity is not { } localEntity)
+            return;
+
+        _entity.TryGetComponent<CEScienceResearchDataComponent>(localEntity, out var researchData);
+        var points = researchData?.Points ?? new Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int>();
+
+        foreach (var discoveryId in offered.Candidates)
+        {
+            if (!_prototype.TryIndex(discoveryId, out var discovery))
+                continue;
+
+            if (!_prototype.TryIndex(discovery.Knowledge, out var knowledge))
+                continue;
+
+            var card = new CEScienceDiscoveryCardControl(discovery, knowledge, rarity, _knowledge, points);
+            card.OnPressed += () => OnChooseDiscovery?.Invoke(discoveryId);
+            CardsContainer.AddChild(card);
+        }
+
+        CardsContainer.Visible = true;
     }
 }

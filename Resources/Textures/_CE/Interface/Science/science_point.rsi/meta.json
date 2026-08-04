@@ -8,7 +8,10 @@
   "copyright": "Created by TheShuEd (Github)",
   "states": [
     {
-      "name": "point"
+      "name": "star"
+    },
+    {
+      "name": "star_offered"
     }
   ]
 }

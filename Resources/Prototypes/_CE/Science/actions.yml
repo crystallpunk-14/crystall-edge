@@ -6,7 +6,9 @@
     Order: 1
   allowedCells:
   - Empty
-  - Achievement
+  - Discovery
+  - Star
+  - OfferedStar
   effects:
   - !type:CEResearchRevealArea
     radius: 1
@@ -25,10 +27,19 @@
     maxRadius: 10
 
 - type: researchAction
-  id: DiscoverAchievement
-  name: ce-research-action-discover-achievement-name
-  desc: ce-research-action-discover-achievement-desc
+  id: OpenStar
+  name: ce-research-action-open-star-name
+  desc: ce-research-action-open-star-desc
   allowedCells:
-  - Achievement
+  - Star
   effects:
-  - !type:CEResearchDiscoverAchievement
+  - !type:CEResearchOpenStar
+
+- type: researchAction
+  id: LearnDiscovery
+  name: ce-research-action-learn-discovery-name
+  desc: ce-research-action-learn-discovery-desc
+  allowedCells:
+  - Discovery
+  effects:
+  - !type:CEResearchLearnDiscovery
