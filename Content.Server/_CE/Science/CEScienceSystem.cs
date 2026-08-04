@@ -30,7 +30,7 @@ public sealed partial class CEScienceSystem : CESharedScienceSystem
     {
         foreach (var area in _proto.EnumeratePrototypes<CEScienceAreaPrototype>())
         {
-            RevealArea(ent, area.ID, default, 0);
+            RevealArea(ent, area.ID, default, 1);
         }
     }
 
