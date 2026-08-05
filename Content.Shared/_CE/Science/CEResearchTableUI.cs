@@ -19,3 +19,9 @@ public sealed class CEResearchTableMergeAspectsMessage(
     public readonly ProtoId<CEMagicEssenceTypePrototype> First = first;
     public readonly ProtoId<CEMagicEssenceTypePrototype> Second = second;
 }
+
+[Serializable, NetSerializable]
+public sealed class CEResearchTableStartResearchMessage(ProtoId<CEScienceAreaPrototype> area) : BoundUserInterfaceMessage
+{
+    public readonly ProtoId<CEScienceAreaPrototype> Area = area;
+}

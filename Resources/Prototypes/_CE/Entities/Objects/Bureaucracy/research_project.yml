@@ -1,0 +1,13 @@
+- type: entity
+  id: CEUnselectedDiscoveryProject
+  parent: BaseItem
+  name: research project
+  description: TODO
+  categories: [ HideSpawnMenu, ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Bureaucracy/paper.rsi # TODO: replace
+    state: paper
+  - type: Item
+    size: Tiny
+  - type: CEUnselectedDiscoveryProject

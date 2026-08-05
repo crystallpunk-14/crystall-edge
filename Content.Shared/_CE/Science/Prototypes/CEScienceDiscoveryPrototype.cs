@@ -1,3 +1,4 @@
+using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.Knowledge.Prototypes;
 using Content.Shared._CE.MagicEssence.Prototypes;
 using Robust.Shared.Prototypes;
@@ -24,4 +25,11 @@ public sealed partial class CEScienceDiscoveryPrototype : IPrototype
     /// </summary>
     [DataField(required: true)]
     public ProtoId<CEKnowledgePrototype> Knowledge;
+
+    /// <summary>
+    /// Conditions an actor must pass for this discovery to be eligible to be drawn into an offer
+    /// (e.g. already knowing some prerequisite knowledge). Empty means no restriction.
+    /// </summary>
+    [DataField]
+    public List<CEEntityCondition> Requirements = new();
 }

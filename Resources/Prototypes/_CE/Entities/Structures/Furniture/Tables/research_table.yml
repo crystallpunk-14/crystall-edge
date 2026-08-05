@@ -47,6 +47,7 @@
         whitelist:
           components:
           - Paper
+          - CEUnselectedDiscoveryProject
         ejectOnInteract: false
   - type: ContainerContainer
     containers:

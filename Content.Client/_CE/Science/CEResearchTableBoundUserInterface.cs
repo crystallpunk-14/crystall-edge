@@ -1,5 +1,6 @@
 using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.Science;
+using Content.Shared._CE.Science.Prototypes;
 using Robust.Client.UserInterface;
 using Robust.Shared.Prototypes;
 
@@ -16,6 +17,7 @@ public sealed class CEResearchTableBoundUserInterface(EntityUid owner, Enum uiKe
         _window = this.CreateWindow<CEResearchTableWindow>();
         _window.SetEntity(Owner);
         _window.OnMergeAspects += OnMergeAspects;
+        _window.OnStartResearch += OnStartResearch;
 
         EntMan.System<CEClientScienceSystem>().OnLocalResearchDataUpdated += OnLocalResearchDataUpdated;
     }
@@ -23,6 +25,11 @@ public sealed class CEResearchTableBoundUserInterface(EntityUid owner, Enum uiKe
     private void OnMergeAspects(ProtoId<CEMagicEssenceTypePrototype> first, ProtoId<CEMagicEssenceTypePrototype> second)
     {
         SendMessage(new CEResearchTableMergeAspectsMessage(first, second));
+    }
+
+    private void OnStartResearch(ProtoId<CEScienceAreaPrototype> area)
+    {
+        SendMessage(new CEResearchTableStartResearchMessage(area));
     }
 
     public override void Update()
@@ -46,7 +53,10 @@ public sealed class CEResearchTableBoundUserInterface(EntityUid owner, Enum uiKe
             EntMan.System<CEClientScienceSystem>().OnLocalResearchDataUpdated -= OnLocalResearchDataUpdated;
 
             if (_window is { } window)
+            {
                 window.OnMergeAspects -= OnMergeAspects;
+                window.OnStartResearch -= OnStartResearch;
+            }
         }
     }
 

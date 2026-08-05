@@ -38,6 +38,8 @@ public sealed partial class CEScienceSystem : CESharedScienceSystem
             QueueDel(ent.Owner);
             return;
         }
+
+        InitializePools(ent.Comp);
     }
 
     /// <summary>

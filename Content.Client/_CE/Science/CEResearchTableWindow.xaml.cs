@@ -1,5 +1,6 @@
 using System.Numerics;
 using Content.Client._CE.MagicEssence.Controls;
+using Content.Shared._CE.Knowledge.Prototypes;
 using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.Science;
 using Content.Shared._CE.Science.Components;
@@ -26,11 +27,15 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
     private readonly ItemSlotsSystem _itemSlots = default!;
 
     private readonly Dictionary<ProtoId<CEScienceAreaPrototype>, CEScienceAreaCardControl> _areaCards = new();
+    private readonly Dictionary<ProtoId<CEScienceDiscoveryPrototype>, CEScienceDiscoveryCardControl> _discoveryCards = new();
 
     private EntityUid _owner;
     private ProtoId<CEScienceAreaPrototype>? _selectedArea;
+    private EntityUid? _currentProject;
+    private ProtoId<CEScienceDiscoveryPrototype>? _selectedDiscovery;
 
     public event Action<ProtoId<CEMagicEssenceTypePrototype>, ProtoId<CEMagicEssenceTypePrototype>>? OnMergeAspects;
+    public event Action<ProtoId<CEScienceAreaPrototype>>? OnStartResearch;
 
     public CEResearchTableWindow()
     {
@@ -39,6 +44,11 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
         _itemSlots = _entityManager.System<ItemSlotsSystem>();
 
         KnowledgeControl.OnMerge += (first, second) => OnMergeAspects?.Invoke(first, second);
+        StartResearchButton.OnPressed += _ =>
+        {
+            if (_selectedArea is { } areaId)
+                OnStartResearch?.Invoke(areaId);
+        };
 
         foreach (var area in _prototype.EnumeratePrototypes<CEScienceAreaPrototype>())
         {
@@ -74,6 +84,26 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
 
         KnowledgeControl.UpdateKnowledge(points);
 
+        if (!_entityManager.TryGetComponent<CEResearchTableComponent>(_owner, out var table))
+            return;
+
+        var item = _itemSlots.GetItemOrNull(_owner, table.PaperSlotId);
+
+        NoPaperLabel.Visible = item is null;
+        ActiveContainer.Visible = item is not null;
+
+        if (item is { } itemUid && _entityManager.TryGetComponent<CEUnselectedDiscoveryProjectComponent>(itemUid, out var project))
+        {
+            AreaPickerContainer.Visible = false;
+            DiscoveryPickerContainer.Visible = true;
+            UpdateDiscoveryPicker(itemUid, project);
+            return;
+        }
+
+        AreaPickerContainer.Visible = true;
+        DiscoveryPickerContainer.Visible = false;
+        _currentProject = null;
+
         CostContainer.RemoveAllChildren();
         if (_selectedArea is { } areaId && _prototype.TryIndex(areaId, out var area))
         {
@@ -90,13 +120,51 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
         {
             StartResearchButton.Disabled = true;
         }
+    }
 
-        if (!_entityManager.TryGetComponent<CEResearchTableComponent>(_owner, out var table))
-            return;
+    private void UpdateDiscoveryPicker(EntityUid itemUid, CEUnselectedDiscoveryProjectComponent project)
+    {
+        if (_currentProject != itemUid)
+        {
+            _currentProject = itemUid;
+            _selectedDiscovery = null;
+            _discoveryCards.Clear();
+            DiscoveryCardsContainer.RemoveAllChildren();
 
-        var hasPaper = _itemSlots.GetItemOrNull(_owner, table.PaperSlotId) is not null;
+            foreach (var discoveryId in project.Candidates)
+            {
+                if (!_prototype.TryIndex(discoveryId, out var discovery) ||
+                    !_prototype.TryIndex(discovery.Knowledge, out var knowledge) ||
+                    !_prototype.TryIndex(discovery.Area, out var area))
+                    continue;
 
-        NoPaperLabel.Visible = !hasPaper;
-        ActiveContainer.Visible = hasPaper;
+                var card = new CEScienceDiscoveryCardControl(discovery, knowledge, area.Color);
+                card.OnSelect += selected =>
+                {
+                    if (_selectedDiscovery is { } previous && _discoveryCards.TryGetValue(previous, out var previousCard))
+                        previousCard.SetSelected(false);
+
+                    _selectedDiscovery = selected;
+                    _discoveryCards[selected].SetSelected(true);
+
+                    UpdateUi();
+                };
+
+                _discoveryCards[discoveryId] = card;
+                DiscoveryCardsContainer.AddChild(card);
+            }
+        }
+
+        var isAuthor = project.Player == _player.LocalEntity;
+        if (isAuthor)
+        {
+            ChooseDiscoveryButton.Text = Loc.GetString("ce-research-table-choose-discovery-button");
+            ChooseDiscoveryButton.Disabled = _selectedDiscovery is null;
+        }
+        else
+        {
+            ChooseDiscoveryButton.Text = Loc.GetString("ce-research-table-not-author");
+            ChooseDiscoveryButton.Disabled = true;
+        }
     }
 }

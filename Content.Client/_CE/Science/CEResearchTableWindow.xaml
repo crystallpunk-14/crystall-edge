@@ -20,35 +20,64 @@
                    VerticalAlignment="Center"
                    HorizontalExpand="True"
                    VerticalExpand="True" />
-            <BoxContainer Name="ActiveContainer" 
+            <BoxContainer Name="ActiveContainer"
                           Orientation="Vertical"
-                          HorizontalExpand="True" 
+                          HorizontalExpand="True"
                           VerticalExpand="True"
                           Visible="False">
-                <PanelContainer HorizontalExpand="True" VerticalExpand="True">
-                    <PanelContainer.PanelOverride>
-                        <gfx:StyleBoxFlat BackgroundColor="#040404" />
-                    </PanelContainer.PanelOverride>
-                    <ScrollContainer VScrollEnabled="False" HorizontalExpand="True" VerticalExpand="True">
-                        <BoxContainer Name="AreaCardsContainer"
+                <BoxContainer Name="AreaPickerContainer"
+                              Orientation="Vertical"
+                              HorizontalExpand="True"
+                              VerticalExpand="True">
+                    <PanelContainer HorizontalExpand="True" VerticalExpand="True">
+                        <PanelContainer.PanelOverride>
+                            <gfx:StyleBoxFlat BackgroundColor="#040404" />
+                        </PanelContainer.PanelOverride>
+                        <ScrollContainer VScrollEnabled="False" HorizontalExpand="True" VerticalExpand="True">
+                            <BoxContainer Name="AreaCardsContainer"
+                                          Orientation="Horizontal"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          SeparationOverride="6" />
+                        </ScrollContainer>
+                    </PanelContainer>
+
+                    <BoxContainer Orientation="Vertical" HorizontalAlignment="Center" Margin="0 6 0 0">
+                        <BoxContainer Name="CostContainer"
                                       Orientation="Horizontal"
                                       HorizontalAlignment="Center"
-                                      VerticalAlignment="Center"
-                                      SeparationOverride="6" />
-                    </ScrollContainer>
-                </PanelContainer>
+                                      MinHeight="28"
+                                      SeparationOverride="4"
+                                      Margin="0 0 0 4" />
+                        <Button Name="StartResearchButton"
+                                Text="{Loc 'ce-research-table-start-button'}"
+                                Disabled="True"
+                                HorizontalAlignment="Center" />
+                    </BoxContainer>
+                </BoxContainer>
 
-                <BoxContainer Orientation="Vertical" HorizontalAlignment="Center" Margin="0 6 0 0">
-                    <BoxContainer Name="CostContainer"
-                                  Orientation="Horizontal"
-                                  HorizontalAlignment="Center"
-                                  MinHeight="28"
-                                  SeparationOverride="4"
-                                  Margin="0 0 0 4" />
-                    <Button Name="StartResearchButton"
-                            Text="{Loc 'ce-research-table-start-button'}"
+                <BoxContainer Name="DiscoveryPickerContainer"
+                              Orientation="Vertical"
+                              HorizontalExpand="True"
+                              VerticalExpand="True"
+                              Visible="False">
+                    <PanelContainer HorizontalExpand="True" VerticalExpand="True">
+                        <PanelContainer.PanelOverride>
+                            <gfx:StyleBoxFlat BackgroundColor="#040404" />
+                        </PanelContainer.PanelOverride>
+                        <ScrollContainer VScrollEnabled="False" HorizontalExpand="True" VerticalExpand="True">
+                            <BoxContainer Name="DiscoveryCardsContainer"
+                                          Orientation="Horizontal"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          SeparationOverride="6" />
+                        </ScrollContainer>
+                    </PanelContainer>
+
+                    <Button Name="ChooseDiscoveryButton"
                             Disabled="True"
-                            HorizontalAlignment="Center" />
+                            HorizontalAlignment="Center"
+                            Margin="0 6 0 0" />
                 </BoxContainer>
             </BoxContainer>
         </BoxContainer>
