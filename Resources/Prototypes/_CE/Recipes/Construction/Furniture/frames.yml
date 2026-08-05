@@ -28,10 +28,10 @@
 
 - type: construction
   hide: false
-  id: CECurtainsFrame
-  graph: CECurtainsFrame
+  id: CECurtainsWhite
+  graph: CECurtainsWhite
   startNode: start
-  targetNode: CECurtainsFrame
+  targetNode: CECurtainsWhite
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter

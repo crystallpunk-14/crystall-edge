@@ -33,17 +33,17 @@
       entity: CEChairFrame
 
 - type: constructionGraph
-  id: CECurtainsFrame
+  id: CECurtainsWhite
   start: start
   graph:
     - node: start
       actions:
         - !type:DestroyEntity {}
       edges:
-        - to: CECurtainsFrame
+        - to: CECurtainsWhite
           steps:
             - material: CECloth
               amount: 3
               doAfter: 2
-    - node: CECurtainsFrame
-      entity: CECurtainsFrame
+    - node: CECurtainsWhite
+      entity: CECurtainsWhite
