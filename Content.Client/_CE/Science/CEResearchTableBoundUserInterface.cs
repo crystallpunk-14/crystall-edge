@@ -3,28 +3,22 @@ using Robust.Client.UserInterface;
 
 namespace Content.Client._CE.Science;
 
-public sealed class CEResearchTableBoundUserInterface : BoundUserInterface
+public sealed class CEResearchTableBoundUserInterface(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey)
 {
-    private CEResearchTableWindow? _window;
-
-    public CEResearchTableBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
-    {
-    }
+    //private CEResearchTableWindow? _window;
 
     protected override void Open()
     {
         base.Open();
 
-        _window = this.CreateWindow<CEResearchTableWindow>();
-        _window.OnChooseDiscovery += (area, coordinate, discovery) => SendMessage(new CEResearchTableChooseDiscoveryMessage(area, coordinate, discovery));
-        _window.OnMergeEssence += (first, second) => SendMessage(new CEResearchTableMergeEssenceMessage(first, second));
+        //_window = this.CreateWindow<CEResearchTableWindow>();
 
         EntMan.System<CEClientScienceSystem>().OnLocalResearchDataUpdated += OnLocalResearchDataUpdated;
     }
 
     private void OnLocalResearchDataUpdated()
     {
-        _window?.RefreshLocalData();
+        //_window?.RefreshLocalData();
     }
 
     protected override void Dispose(bool disposing)
@@ -39,7 +33,7 @@ public sealed class CEResearchTableBoundUserInterface : BoundUserInterface
     {
         base.UpdateState(state);
 
-        if (state is CEResearchTableState researchState)
-            _window?.UpdateState(researchState);
+        //if (state is CEResearchTableState researchState)
+        //    _window?.UpdateState(researchState);
     }
 }
