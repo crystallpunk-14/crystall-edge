@@ -10,15 +10,26 @@
   - type: Sprite
     snapCardinals: true
     sprite: _CE/Structures/Furniture/Tables/workbench.rsi
-    state: research_table
+    layers:
+    - state: research_table
+    - sprite: _CE/Objects/Bureaucracy/paper.rsi
+      state: paper
+      map: [ "paperLayer" ]
+      visible: false
   - type: Icon
     sprite: _CE/Structures/Furniture/Tables/workbench.rsi
     state: research_table
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.CEResearchTableVisuals.HasPaper:
+        paperLayer:
+          True: { visible: true }
+          False: { visible: false }
   - type: ActivatableUI
     key: enum.CEResearchTableUiKey.Key
     requiresComplex: true
     singleUser: true
-  - type: Climbable
   - type: Clickable
   - type: Anchorable
     delay: 2
@@ -40,8 +51,6 @@
   - type: ContainerContainer
     containers:
       paper: !type:ContainerSlot
-        showEnts: true
-        occludes: false
   - type: Fixtures
     fixtures:
       fix1:

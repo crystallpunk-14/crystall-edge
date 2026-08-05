@@ -2,30 +2,26 @@
   id: KnowledgeDrillAdvanced
   name: ce-knowledge-drill-advanced
   icon:
-    sprite: _CE/Interface/Science/AreaIcons/drill.rsi
-    state: icon
+    entity: CEDrillAdvanced
   book: CEBaseScienceBookArcaneEngineering
 
 - type: CEKnowledge
   id: KnowledgeHoverboard
   name: ce-knowledge-hoverboard
   icon:
-    sprite: _CE/Interface/Science/AreaIcons/hoverboards.rsi
-    state: icon
+    entity: CEVehicleHoverboard
   book: CEBaseScienceBookArcaneEngineering
 
 - type: CEKnowledge
   id: KnowledgePortableEssenceAttractor
   name: ce-knowledge-portable-essence-attractor
   icon:
-    sprite: _CE/Interface/Science/AreaIcons/portable_attractor.rsi
-    state: icon
+    entity: CEPortableMagicEssenceAttractor
   book: CEBaseScienceBookArcaneEngineering
 
 - type: CEKnowledge
   id: KnowledgeNodeStabilizer
   name: ce-knowledge-node-stabilizer
   icon:
-    sprite: _CE/Interface/Science/AreaIcons/node_stabilizator.rsi
-    state: icon
+    entity: CENodeStabilizerSphere
   book: CEBaseScienceBookArcaneEngineering
