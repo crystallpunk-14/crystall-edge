@@ -19,6 +19,7 @@ public sealed class CEResearchTableBoundUserInterface(EntityUid owner, Enum uiKe
         _window.OnMergeAspects += OnMergeAspects;
         _window.OnStartResearch += OnStartResearch;
         _window.OnChooseDiscovery += OnChooseDiscovery;
+        _window.OnPlaceAspect += OnPlaceAspect;
 
         EntMan.System<CEClientScienceSystem>().OnLocalResearchDataUpdated += OnLocalResearchDataUpdated;
     }
@@ -36,6 +37,11 @@ public sealed class CEResearchTableBoundUserInterface(EntityUid owner, Enum uiKe
     private void OnChooseDiscovery(ProtoId<CEScienceDiscoveryPrototype> discovery)
     {
         SendMessage(new CEResearchTableChooseDiscoveryMessage(discovery));
+    }
+
+    private void OnPlaceAspect(Vector2i hex, ProtoId<CEMagicEssenceTypePrototype> essence)
+    {
+        SendMessage(new CEResearchTablePlaceAspectMessage(hex, essence));
     }
 
     public override void Update()
@@ -63,6 +69,7 @@ public sealed class CEResearchTableBoundUserInterface(EntityUid owner, Enum uiKe
                 window.OnMergeAspects -= OnMergeAspects;
                 window.OnStartResearch -= OnStartResearch;
                 window.OnChooseDiscovery -= OnChooseDiscovery;
+                window.OnPlaceAspect -= OnPlaceAspect;
             }
         }
     }

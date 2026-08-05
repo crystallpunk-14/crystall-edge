@@ -31,3 +31,12 @@ public sealed class CEResearchTableChooseDiscoveryMessage(ProtoId<CEScienceDisco
 {
     public readonly ProtoId<CEScienceDiscoveryPrototype> Discovery = discovery;
 }
+
+[Serializable, NetSerializable]
+public sealed class CEResearchTablePlaceAspectMessage(
+    Vector2i hex,
+    ProtoId<CEMagicEssenceTypePrototype> essence) : BoundUserInterfaceMessage
+{
+    public readonly Vector2i Hex = hex;
+    public readonly ProtoId<CEMagicEssenceTypePrototype> Essence = essence;
+}

@@ -1,3 +1,6 @@
+using Content.Shared._CE.Hex;
+using Content.Shared._CE.Knowledge;
+using Content.Shared._CE.Knowledge.Components;
 using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.MagicEssence.Systems;
 using Content.Shared._CE.Science;
@@ -15,15 +18,18 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
 {
     [Dependency] private CEMagicEssenceSystem _essence = default!;
     [Dependency] private CEScienceSystem _science = default!;
+    [Dependency] private CEKnowledgeSystem _knowledge = default!;
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private ItemSlotsSystem _itemSlots = default!;
     [Dependency] private SharedContainerSystem _container = default!;
     [Dependency] private MetaDataSystem _metaData = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedUserInterfaceSystem _ui = default!;
 
     private readonly EntProtoId _projectProto = "CEUnselectedDiscoveryProject";
 
     private static readonly SoundSpecifier ScribbleSound = new SoundCollectionSpecifier("PaperScribbles");
+    private static readonly SoundSpecifier KnowledgeLearnedSound = new SoundPathSpecifier("/Audio/_CE/Effects/knowledge_learned.ogg");
 
     public override void Initialize()
     {
@@ -32,6 +38,7 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
         SubscribeLocalEvent<CEResearchTableComponent, CEResearchTableMergeAspectsMessage>(OnMergeAspects);
         SubscribeLocalEvent<CEResearchTableComponent, CEResearchTableStartResearchMessage>(OnStartResearch);
         SubscribeLocalEvent<CEResearchTableComponent, CEResearchTableChooseDiscoveryMessage>(OnChooseDiscovery);
+        SubscribeLocalEvent<CEResearchTableComponent, CEResearchTablePlaceAspectMessage>(OnPlaceAspect);
     }
 
     private void OnMergeAspects(Entity<CEResearchTableComponent> ent, ref CEResearchTableMergeAspectsMessage args)
@@ -104,7 +111,7 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
             !_proto.TryIndex(discovery.Area, out var area))
             return;
 
-        if (!_science.TryGetSingleton(out var science))
+        if (!_science.TryGetSingleton(out _))
             return;
 
         if (!_container.TryGetContainer(ent.Owner, ent.Comp.PaperSlotId, out var container))
@@ -116,6 +123,7 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
         var project = Spawn(area.Project, Transform(ent.Owner).Coordinates);
         var projectComp = EnsureComp<CEDiscoveryProjectComponent>(project);
         projectComp.Discovery = args.Discovery;
+        projectComp.Tiles = _science.GenerateMap(discovery);
         Dirty(project, projectComp);
 
         var discoveryName = Loc.GetString(knowledge.Name);
@@ -129,8 +137,119 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
 
         _container.Insert(project, container);
 
-        _science.MarkChosen(science, args.Discovery);
-
         _audio.PlayPvs(ScribbleSound, ent.Owner);
+    }
+
+    private void OnPlaceAspect(Entity<CEResearchTableComponent> ent, ref CEResearchTablePlaceAspectMessage args)
+    {
+        if (_itemSlots.GetItemOrNull(ent.Owner, ent.Comp.PaperSlotId) is not { } item ||
+            !TryComp<CEDiscoveryProjectComponent>(item, out var project))
+            return;
+
+        if (!_proto.TryIndex(project.Discovery, out var discovery) ||
+            !_proto.TryIndex(discovery.Knowledge, out _))
+            return;
+
+        if (!_science.TryGetSingleton(out var science))
+            return;
+
+        if (!CanPlaceAspect(project, discovery.Generation.Radius, args.Hex, args.Essence))
+            return;
+
+        if (!_container.TryGetContainer(ent.Owner, ent.Comp.PaperSlotId, out var container))
+            return;
+
+        var data = EnsureComp<CEScienceResearchDataComponent>(args.Actor);
+        var cost = new Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int> { [args.Essence] = 1 };
+        if (!_science.TrySpendPoints((args.Actor, data), cost))
+            return;
+
+        project.Tiles[args.Hex] = new CEResearchMapTile { Aspect = args.Essence };
+        Dirty(item, project);
+
+        if (!IsProjectSolved(project))
+            return;
+
+        _knowledge.TryLearn(args.Actor, discovery.Knowledge);
+        _science.MarkChosen(science, project.Discovery);
+
+        _container.Remove(item, container);
+        RemComp<CEDiscoveryProjectComponent>(item);
+
+        // Knowledge must be set before the component is added, not after via EnsureComp - it's
+        // read by the component's own MapInit handler, which AddComp fires immediately since the
+        // entity is already map-initialized (that handler also takes care of the name/description).
+        AddComp(item, new CEKnowledgeHolderComponent { Knowledge = discovery.Knowledge });
+
+        _ui.CloseUi(ent.Owner, CEResearchTableUiKey.Key);
+
+        _audio.PlayPvs(KnowledgeLearnedSound, ent.Owner);
+    }
+
+    private bool CanPlaceAspect(
+        CEDiscoveryProjectComponent project,
+        int radius,
+        Vector2i hex,
+        ProtoId<CEMagicEssenceTypePrototype> essence)
+    {
+        if (CEHexMath.CubeDistance(hex, Vector2i.Zero) > radius)
+            return false;
+
+        if (project.Tiles.TryGetValue(hex, out var existing) && (existing.DeadZone || existing.Aspect is not null))
+            return false;
+
+        foreach (var neighbor in CEHexMath.Neighbors(hex))
+        {
+            if (project.Tiles.TryGetValue(neighbor, out var tile) &&
+                tile.Aspect is { } neighborAspect &&
+                _essence.AreDirectlyRelated(neighborAspect, essence))
+                return true;
+        }
+
+        return false;
+    }
+
+    // Flood-fills from one fixed target through only directly-related adjacent aspects, and checks
+    // every other fixed target ended up reached - the puzzle's win condition.
+    private bool IsProjectSolved(CEDiscoveryProjectComponent project)
+    {
+        var targets = new List<Vector2i>();
+        foreach (var (hex, tile) in project.Tiles)
+        {
+            if (tile.Fixed)
+                targets.Add(hex);
+        }
+
+        if (targets.Count == 0)
+            return false;
+
+        var start = targets[0];
+        var visited = new HashSet<Vector2i> { start };
+        var queue = new Queue<Vector2i>();
+        queue.Enqueue(start);
+
+        while (queue.TryDequeue(out var hex))
+        {
+            var hexAspect = project.Tiles[hex].Aspect!.Value;
+            foreach (var neighbor in CEHexMath.Neighbors(hex))
+            {
+                if (visited.Contains(neighbor) ||
+                    !project.Tiles.TryGetValue(neighbor, out var tile) ||
+                    tile.Aspect is not { } neighborAspect ||
+                    !_essence.AreDirectlyRelated(hexAspect, neighborAspect))
+                    continue;
+
+                visited.Add(neighbor);
+                queue.Enqueue(neighbor);
+            }
+        }
+
+        foreach (var target in targets)
+        {
+            if (!visited.Contains(target))
+                return false;
+        }
+
+        return true;
     }
 }

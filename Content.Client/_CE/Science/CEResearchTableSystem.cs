@@ -11,7 +11,8 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CEUnselectedDiscoveryProjectComponent, AfterAutoHandleStateEvent>(OnProjectStateChanged);
+        SubscribeLocalEvent<CEUnselectedDiscoveryProjectComponent, AfterAutoHandleStateEvent>(OnDraftStateChanged);
+        SubscribeLocalEvent<CEDiscoveryProjectComponent, AfterAutoHandleStateEvent>(OnActiveProjectStateChanged);
     }
 
     protected override void OnPaperStateChanged(Entity<CEResearchTableComponent> ent)
@@ -21,9 +22,21 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
         UpdateOpenUi(ent.Owner);
     }
 
-    private void OnProjectStateChanged(Entity<CEUnselectedDiscoveryProjectComponent> ent, ref AfterAutoHandleStateEvent args)
+    private void OnDraftStateChanged(Entity<CEUnselectedDiscoveryProjectComponent> ent, ref AfterAutoHandleStateEvent args)
     {
-        var parent = Transform(ent).ParentUid;
+        UpdateOpenUiForItem(ent.Owner);
+    }
+
+    // Also fires on every subsequent Tiles mutation, not just the initial spawn - this is what
+    // keeps the hex grid live-updating as points get placed, without needing to reopen the window.
+    private void OnActiveProjectStateChanged(Entity<CEDiscoveryProjectComponent> ent, ref AfterAutoHandleStateEvent args)
+    {
+        UpdateOpenUiForItem(ent.Owner);
+    }
+
+    private void UpdateOpenUiForItem(EntityUid item)
+    {
+        var parent = Transform(item).ParentUid;
         if (HasComp<CEResearchTableComponent>(parent))
             UpdateOpenUi(parent);
     }

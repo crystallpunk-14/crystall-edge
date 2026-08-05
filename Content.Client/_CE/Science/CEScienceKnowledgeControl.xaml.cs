@@ -39,10 +39,18 @@ public sealed partial class CEScienceKnowledgeControl : BoxContainer
     private ProtoId<CEMagicEssenceTypePrototype>? _slot1;
     private ProtoId<CEMagicEssenceTypePrototype>? _slot2;
 
+    private bool _placementMode;
+    private ProtoId<CEMagicEssenceTypePrototype>? _armed;
+
     /// <summary>
     /// Raised when the merge button is pressed with two compatible, affordable aspects selected.
     /// </summary>
     public event Action<ProtoId<CEMagicEssenceTypePrototype>, ProtoId<CEMagicEssenceTypePrototype>>? OnMerge;
+
+    /// <summary>
+    /// Raised whenever the armed aspect changes while in placement mode - null when disarmed.
+    /// </summary>
+    public event Action<ProtoId<CEMagicEssenceTypePrototype>?>? OnAspectArmedForPlacement;
 
     public CEScienceKnowledgeControl()
     {
@@ -59,7 +67,22 @@ public sealed partial class CEScienceKnowledgeControl : BoxContainer
 
         Slot1Panel.OnKeyBindDown += args =>
         {
-            if (args.Function != EngineKeyFunctions.UIClick || _slot1 is null)
+            if (args.Function != EngineKeyFunctions.UIClick)
+                return;
+
+            if (_placementMode)
+            {
+                if (_armed is null)
+                    return;
+
+                args.Handle();
+                _armed = null;
+                OnAspectArmedForPlacement?.Invoke(null);
+                UpdateMergeUi();
+                return;
+            }
+
+            if (_slot1 is null)
                 return;
 
             args.Handle();
@@ -135,12 +158,43 @@ public sealed partial class CEScienceKnowledgeControl : BoxContainer
     }
 
     /// <summary>
-    /// Clicking an already-selected aspect deselects it. Clicking an unselected aspect fills
-    /// whichever slot is free; if both are already taken, the click is ignored - a slot has to be
-    /// freed first by clicking its current aspect.
+    /// Switches between the merge picker (two slots, combine into a higher aspect) and placement
+    /// mode (a single armed aspect, for placing on the research hex grid). Always disarms/clears
+    /// selection on switch.
+    /// </summary>
+    public void SetPlacementMode(bool active)
+    {
+        _placementMode = active;
+        _slot1 = null;
+        _slot2 = null;
+        _armed = null;
+
+        MergeButton.Visible = !active;
+        Slot2Panel.Visible = !active;
+
+        UpdateMergeUi();
+    }
+
+    /// <summary>
+    /// In placement mode: clicking an already-armed aspect disarms it, clicking another arms it
+    /// instead. Otherwise: clicking an already-selected aspect deselects it. Clicking an unselected
+    /// aspect fills whichever merge slot is free; if both are already taken, the click is ignored -
+    /// a slot has to be freed first by clicking its current aspect.
     /// </summary>
     private void OnEssenceClicked(ProtoId<CEMagicEssenceTypePrototype> essence)
     {
+        if (_placementMode)
+        {
+            if (_armed == essence)
+                _armed = null;
+            else
+                _armed = essence;
+
+            OnAspectArmedForPlacement?.Invoke(_armed);
+            UpdateMergeUi();
+            return;
+        }
+
         if (_slot1 == essence)
             _slot1 = null;
         else if (_slot2 == essence)
@@ -157,6 +211,12 @@ public sealed partial class CEScienceKnowledgeControl : BoxContainer
 
     private void UpdateMergeUi()
     {
+        if (_placementMode)
+        {
+            Slot1Icon.Texture = GetIcon(_armed);
+            return;
+        }
+
         Slot1Icon.Texture = GetIcon(_slot1);
         Slot2Icon.Texture = GetIcon(_slot2);
 

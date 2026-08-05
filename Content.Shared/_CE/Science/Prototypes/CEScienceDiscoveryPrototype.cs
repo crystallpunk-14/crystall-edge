@@ -14,10 +14,17 @@ public sealed partial class CEScienceDiscoveryPrototype : IPrototype
     public ProtoId<CEScienceAreaPrototype> Area;
 
     /// <summary>
-    /// How many research points of each essence type choosing this discovery's card costs.
+    /// The fixed aspect nodes placed around the research puzzle's edge that must all end up linked
+    /// together through a chain of placed aspects for this discovery to be completed.
     /// </summary>
     [DataField(required: true)]
-    public Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int> Cost = new();
+    public List<ProtoId<CEMagicEssenceTypePrototype>> TargetAspects = new();
+
+    /// <summary>
+    /// Parameters controlling the random puzzle map generated for this discovery's project.
+    /// </summary>
+    [DataField]
+    public CEScienceMapGenerationParams Generation = new();
 
     /// <summary>
     /// The knowledge this discovery teaches once chosen. Also supplies this discovery's

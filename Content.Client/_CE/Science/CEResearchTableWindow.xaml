@@ -1,6 +1,7 @@
 <DefaultWindow xmlns="https://spacestation14.io"
                xmlns:science="clr-namespace:Content.Client._CE.Science"
                xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+               xmlns:parallax="clr-namespace:Content.Client.Parallax"
                Title="{Loc 'ce-research-table-ui-title'}"
                SetSize="700 500"
                MinSize="700 300">
@@ -91,6 +92,13 @@
                               HorizontalExpand="True"
                               VerticalExpand="True"
                               Visible="False">
+                    <Label Name="ProjectTitleLabel"
+                           HorizontalAlignment="Center"
+                           Margin="0 0 0 4" />
+                    <PanelContainer HorizontalExpand="True" VerticalExpand="True" RectClipContent="True">
+                        <parallax:ParallaxControl Name="ProjectParallax" SpeedX="10" SpeedY="5" Access="Public" />
+                        <science:CEResearchHexGridControl Name="HexGrid" HorizontalExpand="True" VerticalExpand="True" />
+                    </PanelContainer>
                 </BoxContainer>
             </BoxContainer>
         </BoxContainer>

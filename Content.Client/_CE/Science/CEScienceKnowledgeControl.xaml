@@ -10,7 +10,7 @@
         <BoxContainer Name="RowsContainer" Orientation="Vertical" HorizontalExpand="True" SeparationOverride="4" />
     </ScrollContainer>
 
-    <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 6 0 0" SeparationOverride="6">
+    <BoxContainer Name="MergeRow" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 6 0 0" SeparationOverride="6">
         <PanelContainer Name="Slot1Panel" MouseFilter="Stop" StyleClasses="AngleRect" ModulateSelfOverride="#4a4a52" SetSize="32 32">
             <TextureRect Name="Slot1Icon" SetSize="28 28" HorizontalAlignment="Center" VerticalAlignment="Center"
                          Stretch="KeepAspectCentered" />

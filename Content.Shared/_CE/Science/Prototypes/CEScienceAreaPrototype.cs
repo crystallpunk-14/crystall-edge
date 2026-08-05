@@ -33,4 +33,11 @@ public sealed partial class CEScienceAreaPrototype : IPrototype
     /// </summary>
     [DataField(required: true)]
     public EntProtoId Project = default!;
+
+    /// <summary>
+    /// Parallax prototype shown behind this area's research hex-grid puzzle. Empty means no
+    /// parallax - a plain black background is drawn instead.
+    /// </summary>
+    [DataField]
+    public string Parallax = string.Empty;
 }

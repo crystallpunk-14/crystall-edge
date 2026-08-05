@@ -2,36 +2,64 @@
   id: AdvancedDrilling
   area: ArcaneEngineering
   rarity: Common
-  cost:
-    Mining: 10
-    Energia: 10
+  targetAspects:
+  - Mining
+  - Energia
+  generation:
+    radius: 4
+    minTargetDistance: 4
+    deadZoneLayers:
+    - threshold: 0.1
+      noise:
+        frequency: 0.2
   knowledge: KnowledgeDrillAdvanced
 
 - type: scienceDiscovery
   id: Hoverboards
   area: ArcaneEngineering
   rarity: Common
-  cost:
-    Flight: 20
-    Motion: 25
-    Energia: 10
+  targetAspects:
+  - Flight
+  - Motion
+  - Energia
+  generation:
+    radius: 4
+    minTargetDistance: 4
+    deadZoneLayers:
+    - threshold: 0.1
+      noise:
+        frequency: 0.4
   knowledge: KnowledgeHoverboard
 
 - type: scienceDiscovery
   id: PortableMagicEssenceAttractor
   area: ArcaneEngineering
   rarity: Common
-  cost:
-    Void: 20
-    Magic: 25
-    Hunger: 10
+  targetAspects:
+  - Void
+  - Magic
+  - Hunger
+  generation:
+    radius: 4
+    minTargetDistance: 4
+    deadZoneLayers:
+    - threshold: 0.1
+      noise:
+        frequency: 0.4
   knowledge: KnowledgePortableEssenceAttractor
 
 - type: scienceDiscovery
   id: NodeStabilizer
   area: ArcaneEngineering
   rarity: Common
-  cost:
-    Magic: 25
-    Trap: 25
+  targetAspects:
+  - Magic
+  - Trap
+  generation:
+    radius: 4
+    minTargetDistance: 4
+    deadZoneLayers:
+    - threshold: 0.1
+      noise:
+        frequency: 0.4
   knowledge: KnowledgeNodeStabilizer

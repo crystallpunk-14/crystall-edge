@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared.Chemistry.Reaction;
 using Content.Shared.Chemistry.Reagent;
@@ -34,6 +35,15 @@ public sealed partial class CEMagicEssenceSystem
         var key = string.CompareOrdinal(a.Id, b.Id) <= 0 ? (a.Id, b.Id) : (b.Id, a.Id);
         return GetEssenceRecipesByComponents().TryGetValue(key, out result);
     }
+
+    /// <summary>
+    /// Whether `a` is a direct recipe component of `b`, or vice versa - the research puzzle's
+    /// hex-adjacency rule. Deliberately ignores Tier (not graph-consistent - e.g. Mining is tier 6
+    /// but a direct component of a much-lower-tier recipe elsewhere); component-of-ness via the
+    /// actual recipe graph is the only reliable relation.
+    /// </summary>
+    public bool AreDirectlyRelated(ProtoId<CEMagicEssenceTypePrototype> a, ProtoId<CEMagicEssenceTypePrototype> b)
+        => GetRecipeComponents(a).Contains(b) || GetRecipeComponents(b).Contains(a);
 
     /// <summary>
     /// Inverts <see cref="GetEssenceRecipeMap"/>: for every recipe with exactly 2 components, maps

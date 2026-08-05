@@ -37,6 +37,7 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
     public event Action<ProtoId<CEMagicEssenceTypePrototype>, ProtoId<CEMagicEssenceTypePrototype>>? OnMergeAspects;
     public event Action<ProtoId<CEScienceAreaPrototype>>? OnStartResearch;
     public event Action<ProtoId<CEScienceDiscoveryPrototype>>? OnChooseDiscovery;
+    public event Action<Vector2i, ProtoId<CEMagicEssenceTypePrototype>>? OnPlaceAspect;
 
     public CEResearchTableWindow()
     {
@@ -55,6 +56,10 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
             if (_selectedDiscovery is { } discoveryId)
                 OnChooseDiscovery?.Invoke(discoveryId);
         };
+
+        KnowledgeControl.OnAspectArmedForPlacement += essence => HexGrid.SetArmed(essence);
+        HexGrid.OnPlaceAspect += (hex, essence) => OnPlaceAspect?.Invoke(hex, essence);
+        HexGrid.OnViewChanged += OnHexGridViewChanged;
 
         foreach (var area in _prototype.EnumeratePrototypes<CEScienceAreaPrototype>())
         {
@@ -103,16 +108,18 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
             AreaPickerContainer.Visible = false;
             DiscoveryPickerContainer.Visible = true;
             ProjectContainer.Visible = false;
+            KnowledgeControl.SetPlacementMode(false);
             UpdateDiscoveryPicker(itemUid, project);
             return;
         }
 
-        if (item is { } projectUid && _entityManager.HasComponent<CEDiscoveryProjectComponent>(projectUid))
+        if (item is { } projectUid && _entityManager.TryGetComponent<CEDiscoveryProjectComponent>(projectUid, out var activeProject))
         {
             AreaPickerContainer.Visible = false;
             DiscoveryPickerContainer.Visible = false;
             ProjectContainer.Visible = true;
             _currentProject = null;
+            UpdateProjectContainer(activeProject);
             return;
         }
 
@@ -120,6 +127,7 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
         DiscoveryPickerContainer.Visible = false;
         ProjectContainer.Visible = false;
         _currentProject = null;
+        KnowledgeControl.SetPlacementMode(false);
 
         CostContainer.RemoveAllChildren();
         if (_selectedArea is { } areaId && _prototype.TryIndex(areaId, out var area))
@@ -186,5 +194,42 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
             ChooseDiscoveryButton.Text = Loc.GetString("ce-research-table-not-author");
             ChooseDiscoveryButton.Disabled = true;
         }
+    }
+
+    private void UpdateProjectContainer(CEDiscoveryProjectComponent project)
+    {
+        KnowledgeControl.SetPlacementMode(true);
+
+        // Discovery can still be its default (empty) value here if this update fired before the
+        // project's own networked state (spawned this tick) has arrived - bail out quietly and
+        // wait for the follow-up update once it does, rather than indexing a null/empty ProtoId.
+        if (string.IsNullOrEmpty(project.Discovery.Id) ||
+            !_prototype.TryIndex(project.Discovery, out var discovery) ||
+            !_prototype.TryIndex(discovery.Area, out var area) ||
+            !_prototype.TryIndex(discovery.Knowledge, out var knowledge))
+            return;
+
+        ProjectTitleLabel.Text = Loc.GetString("ce-research-table-project-title", ("discovery", Loc.GetString(knowledge.Name)));
+
+        var hasParallax = !string.IsNullOrEmpty(area.Parallax);
+        if (hasParallax)
+            ProjectParallax.ParallaxPrototype = area.Parallax;
+
+        HexGrid.UpdateState(project.Tiles, discovery.Generation.Radius, area.Color, hasParallax);
+    }
+
+    /// <summary>
+    /// Keeps the parallax background moving with the hex grid's pan and zoom, but at a fraction of
+    /// the rate, for a parallax depth effect.
+    /// </summary>
+    private void OnHexGridViewChanged(Vector2 offset, float scale)
+    {
+        const float lag = 0.25f;
+
+        ProjectParallax.Offset = -offset * lag + new Vector2(1000, 1000);
+
+        var parallaxScale = 1f + (scale - 1f) * lag;
+        ProjectParallax.ScaleX = parallaxScale;
+        ProjectParallax.ScaleY = parallaxScale;
     }
 }

@@ -29,7 +29,6 @@
   - type: ActivatableUI
     key: enum.CEResearchTableUiKey.Key
     requiresComplex: true
-    singleUser: true
   - type: Clickable
   - type: Anchorable
     delay: 2
