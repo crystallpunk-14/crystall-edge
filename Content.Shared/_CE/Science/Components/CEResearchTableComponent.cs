@@ -1,4 +1,4 @@
-namespace Content.Server._CE.Science.Components;
+namespace Content.Shared._CE.Science.Components;
 
 /// <summary>
 /// Marker component for research table UI
@@ -6,4 +6,6 @@ namespace Content.Server._CE.Science.Components;
 [RegisterComponent]
 public sealed partial class CEResearchTableComponent : Component
 {
+    [DataField]
+    public string PaperSlotId = "paper";
 }

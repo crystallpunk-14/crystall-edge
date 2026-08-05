@@ -5,20 +5,27 @@ namespace Content.Client._CE.Science;
 
 public sealed class CEResearchTableBoundUserInterface(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey)
 {
-    //private CEResearchTableWindow? _window;
+    private CEResearchTableWindow? _window;
 
     protected override void Open()
     {
         base.Open();
 
-        //_window = this.CreateWindow<CEResearchTableWindow>();
+        _window = this.CreateWindow<CEResearchTableWindow>();
+        _window.SetEntity(Owner);
 
         EntMan.System<CEClientScienceSystem>().OnLocalResearchDataUpdated += OnLocalResearchDataUpdated;
     }
 
+    public override void Update()
+    {
+        base.Update();
+
+        _window?.UpdateUi();
+    }
+
     private void OnLocalResearchDataUpdated()
     {
-        //_window?.RefreshLocalData();
     }
 
     protected override void Dispose(bool disposing)
@@ -29,11 +36,4 @@ public sealed class CEResearchTableBoundUserInterface(EntityUid owner, Enum uiKe
             EntMan.System<CEClientScienceSystem>().OnLocalResearchDataUpdated -= OnLocalResearchDataUpdated;
     }
 
-    protected override void UpdateState(BoundUserInterfaceState state)
-    {
-        base.UpdateState(state);
-
-        //if (state is CEResearchTableState researchState)
-        //    _window?.UpdateState(researchState);
-    }
 }

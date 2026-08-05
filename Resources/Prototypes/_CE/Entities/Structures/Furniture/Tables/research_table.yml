@@ -29,6 +29,19 @@
     interfaces:
       enum.CEResearchTableUiKey.Key:
         type: CEResearchTableBoundUserInterface
+  - type: ItemSlots
+    slots:
+      paper:
+        name: ce-research-table-paper-slot-name
+        whitelist:
+          components:
+          - Paper
+        ejectOnInteract: false
+  - type: ContainerContainer
+    containers:
+      paper: !type:ContainerSlot
+        showEnts: true
+        occludes: false
   - type: Fixtures
     fixtures:
       fix1:
