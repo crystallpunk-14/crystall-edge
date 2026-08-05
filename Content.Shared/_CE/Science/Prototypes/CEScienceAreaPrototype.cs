@@ -1,3 +1,4 @@
+using Content.Shared._CE.MagicEssence.Prototypes;
 using Robust.Shared.Noise;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
@@ -12,9 +13,18 @@ public sealed partial class CEScienceAreaPrototype : IPrototype
     [DataField(required: true)]
     public LocId Name;
 
-    [DataField]
+    [DataField(required: true)]
     public LocId? Desc;
 
     [DataField]
     public Color Color = Color.White;
+
+    [DataField(required: true)]
+    public SpriteSpecifier Icon = default!;
+
+    /// <summary>
+    /// Essence cost of starting a new research in this area.
+    /// </summary>
+    [DataField]
+    public Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int> Cost = new();
 }
