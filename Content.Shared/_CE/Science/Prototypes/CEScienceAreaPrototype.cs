@@ -27,4 +27,10 @@ public sealed partial class CEScienceAreaPrototype : IPrototype
     /// </summary>
     [DataField]
     public Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int> Cost = new();
+
+    /// <summary>
+    /// Cover entity used for an active research project in this area, once a discovery is chosen.
+    /// </summary>
+    [DataField(required: true)]
+    public EntProtoId Project = default!;
 }

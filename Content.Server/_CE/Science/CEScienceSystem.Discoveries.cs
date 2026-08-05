@@ -81,4 +81,11 @@ public sealed partial class CEScienceSystem
             science.AvailableDiscoveries.Add(discovery.ID);
         }
     }
+
+    // A chosen discovery is permanently done rotating - it drops out of the pool for good.
+    public void MarkChosen(CEScienceComponent science, ProtoId<CEScienceDiscoveryPrototype> discovery)
+    {
+        science.AvailableDiscoveries.Remove(discovery);
+        science.ChosenDiscoveries.Add(discovery);
+    }
 }

@@ -48,6 +48,7 @@
           components:
           - Paper
           - CEUnselectedDiscoveryProject
+          - CEDiscoveryProject
         ejectOnInteract: false
   - type: ContainerContainer
     containers:

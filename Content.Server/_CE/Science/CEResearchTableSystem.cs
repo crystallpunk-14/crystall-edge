@@ -23,7 +23,7 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
 
     private readonly EntProtoId _projectProto = "CEUnselectedDiscoveryProject";
 
-    private static readonly SoundSpecifier StartResearchSound = new SoundCollectionSpecifier("PaperScribbles");
+    private static readonly SoundSpecifier ScribbleSound = new SoundCollectionSpecifier("PaperScribbles");
 
     public override void Initialize()
     {
@@ -31,6 +31,7 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
 
         SubscribeLocalEvent<CEResearchTableComponent, CEResearchTableMergeAspectsMessage>(OnMergeAspects);
         SubscribeLocalEvent<CEResearchTableComponent, CEResearchTableStartResearchMessage>(OnStartResearch);
+        SubscribeLocalEvent<CEResearchTableComponent, CEResearchTableChooseDiscoveryMessage>(OnChooseDiscovery);
     }
 
     private void OnMergeAspects(Entity<CEResearchTableComponent> ent, ref CEResearchTableMergeAspectsMessage args)
@@ -69,7 +70,7 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
         var candidates = _science.DrawOffer(science, args.Area, args.Actor, 3);
 
         var project = Spawn(_projectProto, Transform(ent.Owner).Coordinates);
-        var projectComp = Comp<CEUnselectedDiscoveryProjectComponent>(project);
+        var projectComp = EnsureComp<CEUnselectedDiscoveryProjectComponent>(project);
         projectComp.Player = args.Actor;
         projectComp.Candidates = candidates;
         Dirty(project, projectComp);
@@ -86,6 +87,50 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
 
         _container.Insert(project, container);
 
-        _audio.PlayPvs(StartResearchSound, ent.Owner);
+        _audio.PlayPvs(ScribbleSound, ent.Owner);
+    }
+
+    private void OnChooseDiscovery(Entity<CEResearchTableComponent> ent, ref CEResearchTableChooseDiscoveryMessage args)
+    {
+        if (_itemSlots.GetItemOrNull(ent.Owner, ent.Comp.PaperSlotId) is not { } item ||
+            !TryComp<CEUnselectedDiscoveryProjectComponent>(item, out var draft))
+            return;
+
+        if (draft.Player != args.Actor || !draft.Candidates.Contains(args.Discovery))
+            return;
+
+        if (!_proto.TryIndex(args.Discovery, out var discovery) ||
+            !_proto.TryIndex(discovery.Knowledge, out var knowledge) ||
+            !_proto.TryIndex(discovery.Area, out var area))
+            return;
+
+        if (!_science.TryGetSingleton(out var science))
+            return;
+
+        if (!_container.TryGetContainer(ent.Owner, ent.Comp.PaperSlotId, out var container))
+            return;
+
+        _container.Remove(item, container);
+        Del(item);
+
+        var project = Spawn(area.Project, Transform(ent.Owner).Coordinates);
+        var projectComp = EnsureComp<CEDiscoveryProjectComponent>(project);
+        projectComp.Discovery = args.Discovery;
+        Dirty(project, projectComp);
+
+        var discoveryName = Loc.GetString(knowledge.Name);
+        _metaData.SetEntityName(project, Loc.GetString("ce-discovery-project-name", ("discovery", discoveryName)));
+
+        var description = Loc.GetString("ce-discovery-project-description",
+            ("area", Loc.GetString(area.Name)),
+            ("discovery", discoveryName));
+        var authorLine = Loc.GetString("ce-knowledge-book-author", ("name", MetaData(args.Actor).EntityName));
+        _metaData.SetEntityDescription(project, $"{description}\n{authorLine}");
+
+        _container.Insert(project, container);
+
+        _science.MarkChosen(science, args.Discovery);
+
+        _audio.PlayPvs(ScribbleSound, ent.Owner);
     }
 }

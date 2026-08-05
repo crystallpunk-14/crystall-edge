@@ -36,6 +36,7 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
 
     public event Action<ProtoId<CEMagicEssenceTypePrototype>, ProtoId<CEMagicEssenceTypePrototype>>? OnMergeAspects;
     public event Action<ProtoId<CEScienceAreaPrototype>>? OnStartResearch;
+    public event Action<ProtoId<CEScienceDiscoveryPrototype>>? OnChooseDiscovery;
 
     public CEResearchTableWindow()
     {
@@ -48,6 +49,11 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
         {
             if (_selectedArea is { } areaId)
                 OnStartResearch?.Invoke(areaId);
+        };
+        ChooseDiscoveryButton.OnPressed += _ =>
+        {
+            if (_selectedDiscovery is { } discoveryId)
+                OnChooseDiscovery?.Invoke(discoveryId);
         };
 
         foreach (var area in _prototype.EnumeratePrototypes<CEScienceAreaPrototype>())
@@ -96,12 +102,23 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
         {
             AreaPickerContainer.Visible = false;
             DiscoveryPickerContainer.Visible = true;
+            ProjectContainer.Visible = false;
             UpdateDiscoveryPicker(itemUid, project);
+            return;
+        }
+
+        if (item is { } projectUid && _entityManager.HasComponent<CEDiscoveryProjectComponent>(projectUid))
+        {
+            AreaPickerContainer.Visible = false;
+            DiscoveryPickerContainer.Visible = false;
+            ProjectContainer.Visible = true;
+            _currentProject = null;
             return;
         }
 
         AreaPickerContainer.Visible = true;
         DiscoveryPickerContainer.Visible = false;
+        ProjectContainer.Visible = false;
         _currentProject = null;
 
         CostContainer.RemoveAllChildren();

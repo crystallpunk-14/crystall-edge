@@ -8,3 +8,5 @@ ce-research-table-choose-discovery-button = Begin Research
 ce-research-table-not-author = You are not the author of this research
 ce-research-table-choose-area-title = Choose a field of science
 ce-research-table-choose-discovery-title = Choose a discovery
+ce-discovery-project-name = Research project on { $discovery }
+ce-discovery-project-description = A research project in progress, in the field of { $area }, on { $discovery }.

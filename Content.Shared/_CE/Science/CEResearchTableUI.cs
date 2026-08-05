@@ -25,3 +25,9 @@ public sealed class CEResearchTableStartResearchMessage(ProtoId<CEScienceAreaPro
 {
     public readonly ProtoId<CEScienceAreaPrototype> Area = area;
 }
+
+[Serializable, NetSerializable]
+public sealed class CEResearchTableChooseDiscoveryMessage(ProtoId<CEScienceDiscoveryPrototype> discovery) : BoundUserInterfaceMessage
+{
+    public readonly ProtoId<CEScienceDiscoveryPrototype> Discovery = discovery;
+}

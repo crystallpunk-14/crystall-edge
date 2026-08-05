@@ -85,6 +85,13 @@
                             HorizontalAlignment="Center"
                             Margin="0 6 0 0" />
                 </BoxContainer>
+
+                <BoxContainer Name="ProjectContainer"
+                              Orientation="Vertical"
+                              HorizontalExpand="True"
+                              VerticalExpand="True"
+                              Visible="False">
+                </BoxContainer>
             </BoxContainer>
         </BoxContainer>
     </BoxContainer>
