@@ -2,7 +2,8 @@
   id: KnowledgeDrillAdvanced
   name: ce-knowledge-drill-advanced
   icon:
-    entity: CEDrillAdvanced
+    sprite: _CE/Structures/Industrial/drill.rsi
+    state: icon_lvl2
   book: CEBaseScienceBookArcaneEngineering
 
 - type: CEKnowledge
@@ -16,12 +17,14 @@
   id: KnowledgePortableEssenceAttractor
   name: ce-knowledge-portable-essence-attractor
   icon:
-    entity: CEPortableMagicEssenceAttractor
+    sprite: _CE/Objects/Specific/Thaumaturgy/essence_attractor_portable.rsi
+    state: icon
   book: CEBaseScienceBookArcaneEngineering
 
 - type: CEKnowledge
   id: KnowledgeNodeStabilizer
   name: ce-knowledge-node-stabilizer
   icon:
-    entity: CENodeStabilizerSphere
+    sprite: _CE/Structures/Specific/Thaumaturgy/node_stabilizator.rsi
+    state: icon
   book: CEBaseScienceBookArcaneEngineering

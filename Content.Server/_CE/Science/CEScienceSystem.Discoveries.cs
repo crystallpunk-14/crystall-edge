@@ -1,7 +1,6 @@
 using System.Linq;
 using Content.Server._CE.Science.Components;
 using Content.Shared._CE.EntityEffect;
-using Content.Shared._CE.Science.Components;
 using Content.Shared._CE.Science.Prototypes;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -23,40 +22,45 @@ public sealed partial class CEScienceSystem
         }
     }
 
-    public bool TryGetNextDiscovery(
+    public List<ProtoId<CEScienceDiscoveryPrototype>> DrawOffer(
         CEScienceComponent science,
         ProtoId<CEScienceAreaPrototype> area,
         EntityUid actor,
-        out ProtoId<CEScienceDiscoveryPrototype> discovery)
+        int count)
     {
-        var candidates = GetAvailable(science, area, actor);
-        if (candidates.Count == 0)
+        var drawn = new List<ProtoId<CEScienceDiscoveryPrototype>>();
+
+        for (var i = 0; i < count; i++)
         {
-            Refill(science, area);
-            candidates = GetAvailable(science, area, actor);
+            var candidates = GetAvailable(science, area, actor, drawn);
+            if (candidates.Count == 0)
+            {
+                Refill(science, area);
+                candidates = GetAvailable(science, area, actor, drawn);
+            }
+
+            if (candidates.Count == 0)
+                break;
+
+            var discovery = _random.Pick(candidates);
+            science.AvailableDiscoveries.Remove(discovery);
+            drawn.Add(discovery);
         }
 
-        if (candidates.Count == 0)
-        {
-            discovery = default;
-            return false;
-        }
-
-        discovery = _random.Pick(candidates);
-        science.AvailableDiscoveries.Remove(discovery);
-        return true;
+        return drawn;
     }
 
     private List<ProtoId<CEScienceDiscoveryPrototype>> GetAvailable(
         CEScienceComponent science,
         ProtoId<CEScienceAreaPrototype> area,
-        EntityUid actor)
+        EntityUid actor,
+        IReadOnlyCollection<ProtoId<CEScienceDiscoveryPrototype>> alreadyDrawn)
     {
         var result = new List<ProtoId<CEScienceDiscoveryPrototype>>();
 
         foreach (var id in science.AvailableDiscoveries)
         {
-            if (!_proto.TryIndex(id, out var discovery) || discovery.Area != area)
+            if (alreadyDrawn.Contains(id) || !_proto.TryIndex(id, out var discovery) || discovery.Area != area)
                 continue;
 
             var args = new CEEntityEffectArgs(EntityManager, actor, null, Angle.Zero, 0f, actor, null);
@@ -67,23 +71,11 @@ public sealed partial class CEScienceSystem
         return result;
     }
 
-    // Excludes discoveries already chosen for good, or currently sitting unresolved in someone
-    // else's offer - both cases would otherwise let the same discovery get drawn twice at once.
     private void Refill(CEScienceComponent science, ProtoId<CEScienceAreaPrototype> area)
     {
-        var reserved = new HashSet<ProtoId<CEScienceDiscoveryPrototype>>();
-        var query = EntityQueryEnumerator<CEUnselectedDiscoveryProjectComponent>();
-        while (query.MoveNext(out _, out var offer))
-        {
-            reserved.UnionWith(offer.Candidates);
-        }
-
         foreach (var discovery in _proto.EnumeratePrototypes<CEScienceDiscoveryPrototype>())
         {
-            if (discovery.Area != area)
-                continue;
-
-            if (science.ChosenDiscoveries.Contains(discovery.ID) || reserved.Contains(discovery.ID))
+            if (discovery.Area != area || science.ChosenDiscoveries.Contains(discovery.ID))
                 continue;
 
             science.AvailableDiscoveries.Add(discovery.ID);

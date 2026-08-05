@@ -29,6 +29,9 @@
                               Orientation="Vertical"
                               HorizontalExpand="True"
                               VerticalExpand="True">
+                    <Label Text="{Loc 'ce-research-table-choose-area-title'}"
+                           HorizontalAlignment="Center"
+                           Margin="0 0 0 4" />
                     <PanelContainer HorizontalExpand="True" VerticalExpand="True">
                         <PanelContainer.PanelOverride>
                             <gfx:StyleBoxFlat BackgroundColor="#040404" />
@@ -61,6 +64,9 @@
                               HorizontalExpand="True"
                               VerticalExpand="True"
                               Visible="False">
+                    <Label Text="{Loc 'ce-research-table-choose-discovery-title'}"
+                           HorizontalAlignment="Center"
+                           Margin="0 0 0 4" />
                     <PanelContainer HorizontalExpand="True" VerticalExpand="True">
                         <PanelContainer.PanelOverride>
                             <gfx:StyleBoxFlat BackgroundColor="#040404" />

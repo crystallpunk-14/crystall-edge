@@ -6,3 +6,5 @@ ce-science-knowledge-merge-button-tooltip = Соединить 2 знания в
 ce-research-table-start-button = Начать новое исследование
 ce-research-table-choose-discovery-button = Начать исследование
 ce-research-table-not-author = Вы не автор этого исследования
+ce-research-table-choose-area-title = Выберите область науки
+ce-research-table-choose-discovery-title = Выберите исследование

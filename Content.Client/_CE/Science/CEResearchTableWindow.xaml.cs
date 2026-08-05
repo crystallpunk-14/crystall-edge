@@ -124,7 +124,10 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
 
     private void UpdateDiscoveryPicker(EntityUid itemUid, CEUnselectedDiscoveryProjectComponent project)
     {
-        if (_currentProject != itemUid)
+        // Candidates can still be empty here if this update fired before the project's own
+        // networked state (spawned this tick) has arrived - rebuild once it does.
+        var needsRebuild = _currentProject != itemUid || _discoveryCards.Count == 0 && project.Candidates.Count > 0;
+        if (needsRebuild)
         {
             _currentProject = itemUid;
             _selectedDiscovery = null;

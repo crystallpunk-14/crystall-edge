@@ -6,3 +6,5 @@ ce-science-knowledge-merge-button-tooltip = Combine 2 aspects into a more comple
 ce-research-table-start-button = Begin New Research
 ce-research-table-choose-discovery-button = Begin Research
 ce-research-table-not-author = You are not the author of this research
+ce-research-table-choose-area-title = Choose a field of science
+ce-research-table-choose-discovery-title = Choose a discovery
