@@ -93,7 +93,7 @@ public abstract partial class CESharedScienceSystem
             args.User,
             duration,
             new CEScientificInterestDoAfterEvent(),
-            ent,
+            target,
             target: args.User,
             used: args.Used)
         {

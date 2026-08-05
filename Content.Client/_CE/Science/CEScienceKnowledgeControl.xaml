@@ -11,7 +11,7 @@
     </ScrollContainer>
 
     <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 6 0 0" SeparationOverride="6">
-        <PanelContainer StyleClasses="AngleRect" ModulateSelfOverride="#4a4a52" SetSize="32 32">
+        <PanelContainer Name="Slot1Panel" MouseFilter="Stop" StyleClasses="AngleRect" ModulateSelfOverride="#4a4a52" SetSize="32 32">
             <TextureRect Name="Slot1Icon" SetSize="28 28" HorizontalAlignment="Center" VerticalAlignment="Center"
                          Stretch="KeepAspectCentered" />
         </PanelContainer>
@@ -20,7 +20,7 @@
             <TextureRect Name="MergePreviewIcon" SetSize="16 16" HorizontalAlignment="Center" VerticalAlignment="Center"
                          Stretch="KeepAspectCentered" Visible="False" />
         </Button>
-        <PanelContainer StyleClasses="AngleRect" ModulateSelfOverride="#4a4a52" SetSize="32 32">
+        <PanelContainer Name="Slot2Panel" MouseFilter="Stop" StyleClasses="AngleRect" ModulateSelfOverride="#4a4a52" SetSize="32 32">
             <TextureRect Name="Slot2Icon" SetSize="28 28" HorizontalAlignment="Center" VerticalAlignment="Center"
                          Stretch="KeepAspectCentered" />
         </PanelContainer>

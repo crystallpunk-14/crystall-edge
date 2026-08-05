@@ -11,6 +11,7 @@ using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Client.Utility;
+using Robust.Shared.Input;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client._CE.Science;
@@ -54,6 +55,26 @@ public sealed partial class CEScienceKnowledgeControl : BoxContainer
         {
             if (_slot1 is { } first && _slot2 is { } second)
                 OnMerge?.Invoke(first, second);
+        };
+
+        Slot1Panel.OnKeyBindDown += args =>
+        {
+            if (args.Function != EngineKeyFunctions.UIClick || _slot1 is null)
+                return;
+
+            args.Handle();
+            _slot1 = null;
+            UpdateMergeUi();
+        };
+
+        Slot2Panel.OnKeyBindDown += args =>
+        {
+            if (args.Function != EngineKeyFunctions.UIClick || _slot2 is null)
+                return;
+
+            args.Handle();
+            _slot2 = null;
+            UpdateMergeUi();
         };
     }
 

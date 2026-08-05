@@ -10,3 +10,12 @@ public enum CEResearchTableUiKey
 {
     Key,
 }
+
+[Serializable, NetSerializable]
+public sealed class CEResearchTableMergeAspectsMessage(
+    ProtoId<CEMagicEssenceTypePrototype> first,
+    ProtoId<CEMagicEssenceTypePrototype> second) : BoundUserInterfaceMessage
+{
+    public readonly ProtoId<CEMagicEssenceTypePrototype> First = first;
+    public readonly ProtoId<CEMagicEssenceTypePrototype> Second = second;
+}
