@@ -1,7 +1,7 @@
 - type: entity
   parent: CEBookBase
   id: CEDebugKnowledgeBook
-  name: debug knowledge book
+  name: endless thaumanomiconium
   description: An admin-only book brimming with impossible knowledge of every aspect at once.
   suffix: Debug, All Aspects, 100
   categories: [ DoNotMap, ForkFiltered ]
