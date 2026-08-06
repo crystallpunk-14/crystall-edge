@@ -20,7 +20,7 @@
 
 - type: scienceDiscovery
   id: NodeStabilizer
-  parent: EasyDifficult 
+  parent: EasyDifficult
   area: ArcaneEngineering
   targetAspects:
   - Magic

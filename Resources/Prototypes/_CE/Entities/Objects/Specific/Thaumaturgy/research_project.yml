@@ -36,7 +36,6 @@
   id: CEDiscoveryProjectEngineering
   categories: [ HideSpawnMenu, ForkFiltered ]
   name: engineering research project
-  description:
   components:
   - type: Sprite
     layers:
