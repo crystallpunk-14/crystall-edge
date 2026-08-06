@@ -6,7 +6,7 @@
   icon:
     entity: CEAccumulatorVessel
   cost:
-    Energia: 2
+    Energia: 5
     Machine: 1
   project: CEDiscoveryProjectEngineering
   parallax: KettleStation
