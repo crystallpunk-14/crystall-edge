@@ -21,8 +21,13 @@ public sealed partial class CEEssenceAmountControl : Control
     private const float TextScaleMultiplier = 2f;
     private const float OutlineOffset = 1f;
 
+    // The icon size TextScaleMultiplier was tuned against - actual text scale is adjusted
+    // proportionally to the control's real size relative to this.
+    private const float ReferenceIconSize = 28f;
+
     private static readonly Color OutlineColor = Color.Black.WithAlpha(0.85f);
     private static readonly Color TextColor = Color.White;
+    private static readonly Color HoverOverlay = Color.White.WithAlpha(0.2f);
 
     private static readonly Vector2 OLeft = new(-OutlineOffset, 0f);
     private static readonly Vector2 ORight = new(OutlineOffset, 0f);
@@ -36,6 +41,7 @@ public sealed partial class CEEssenceAmountControl : Control
 
     private Texture? _texture;
     private int _amount;
+    private bool _hovered;
 
     /// <summary>
     /// Raised on click. Nothing subscribes in most places this control is used (wallet readouts,
@@ -86,6 +92,20 @@ public sealed partial class CEEssenceAmountControl : Control
         OnPressed?.Invoke();
     }
 
+    protected internal override void MouseEntered()
+    {
+        base.MouseEntered();
+
+        _hovered = true;
+    }
+
+    protected internal override void MouseExited()
+    {
+        base.MouseExited();
+
+        _hovered = false;
+    }
+
     protected override void Draw(DrawingHandleScreen handle)
     {
         base.Draw(handle);
@@ -93,10 +113,13 @@ public sealed partial class CEEssenceAmountControl : Control
         if (_texture is null)
             return;
 
+        if (_hovered)
+            handle.DrawRect(PixelSizeBox, HoverOverlay);
+
         handle.DrawTextureRect(_texture, PixelSizeBox);
 
         var text = _amount.ToString();
-        var baseTextScale = UIScale * TextScaleMultiplier;
+        var baseTextScale = UIScale * TextScaleMultiplier * (Height / ReferenceIconSize);
         var unscaledWidth = handle.GetDimensions(_font, text, baseTextScale).X;
 
         // Shrink the font as more digits are added so the amount always fits within the

@@ -25,6 +25,7 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
     [Dependency] private IPlayerManager _player = default!;
     [Dependency] private IPrototypeManager _prototype = default!;
     private readonly ItemSlotsSystem _itemSlots = default!;
+    private readonly CEResearchTableSystem _researchTable = default!;
 
     private readonly Dictionary<ProtoId<CEScienceAreaPrototype>, CEScienceAreaCardControl> _areaCards = new();
     private readonly Dictionary<ProtoId<CEScienceDiscoveryPrototype>, CEScienceDiscoveryCardControl> _discoveryCards = new();
@@ -38,12 +39,14 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
     public event Action<ProtoId<CEScienceAreaPrototype>>? OnStartResearch;
     public event Action<ProtoId<CEScienceDiscoveryPrototype>>? OnChooseDiscovery;
     public event Action<Vector2i, ProtoId<CEMagicEssenceTypePrototype>>? OnPlaceAspect;
+    public event Action? OnFinishResearch;
 
     public CEResearchTableWindow()
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
         _itemSlots = _entityManager.System<ItemSlotsSystem>();
+        _researchTable = _entityManager.System<CEResearchTableSystem>();
 
         KnowledgeControl.OnMerge += (first, second) => OnMergeAspects?.Invoke(first, second);
         StartResearchButton.OnPressed += _ =>
@@ -56,6 +59,7 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
             if (_selectedDiscovery is { } discoveryId)
                 OnChooseDiscovery?.Invoke(discoveryId);
         };
+        FinishResearchButton.OnPressed += _ => OnFinishResearch?.Invoke();
 
         KnowledgeControl.OnAspectArmedForPlacement += essence => HexGrid.SetArmed(essence);
         HexGrid.OnPlaceAspect += (hex, essence) => OnPlaceAspect?.Invoke(hex, essence);
@@ -216,6 +220,8 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
             ProjectParallax.ParallaxPrototype = area.Parallax;
 
         HexGrid.UpdateState(project.Tiles, discovery.Generation.Radius, area.Color, hasParallax);
+
+        FinishResearchButton.Disabled = !_researchTable.IsProjectSolved(project.Tiles);
     }
 
     /// <summary>

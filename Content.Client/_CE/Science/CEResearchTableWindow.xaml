@@ -99,6 +99,13 @@
                         <parallax:ParallaxControl Name="ProjectParallax" SpeedX="10" SpeedY="5" Access="Public" />
                         <science:CEResearchHexGridControl Name="HexGrid" HorizontalExpand="True" VerticalExpand="True" />
                     </PanelContainer>
+                    <Button Name="FinishResearchButton"
+                            Text="{Loc 'ce-research-table-finish-button'}"
+                            ToolTip="{Loc 'ce-research-table-finish-button-tooltip'}"
+                            StyleClasses="ButtonColorGreen"
+                            Disabled="True"
+                            HorizontalAlignment="Center"
+                            Margin="0 6 0 0" />
                 </BoxContainer>
             </BoxContainer>
         </BoxContainer>

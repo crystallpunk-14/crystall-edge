@@ -2,13 +2,22 @@ using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.Knowledge.Prototypes;
 using Content.Shared._CE.MagicEssence.Prototypes;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Array;
 
 namespace Content.Shared._CE.Science.Prototypes;
 
 [Prototype("scienceDiscovery")]
-public sealed partial class CEScienceDiscoveryPrototype : IPrototype
+public sealed partial class CEScienceDiscoveryPrototype : IPrototype, IInheritingPrototype
 {
     [IdDataField] public string ID { get; private set; } = default!;
+
+    /// <inheritdoc/>
+    [ParentDataField(typeof(AbstractPrototypeIdArraySerializer<CEScienceDiscoveryPrototype>))]
+    public string[]? Parents { get; private set; }
+
+    /// <inheritdoc/>
+    [AbstractDataField, NeverPushInheritance]
+    public bool Abstract { get; private set; }
 
     [DataField(required: true)]
     public ProtoId<CEScienceAreaPrototype> Area;

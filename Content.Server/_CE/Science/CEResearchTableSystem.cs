@@ -39,6 +39,7 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
         SubscribeLocalEvent<CEResearchTableComponent, CEResearchTableStartResearchMessage>(OnStartResearch);
         SubscribeLocalEvent<CEResearchTableComponent, CEResearchTableChooseDiscoveryMessage>(OnChooseDiscovery);
         SubscribeLocalEvent<CEResearchTableComponent, CEResearchTablePlaceAspectMessage>(OnPlaceAspect);
+        SubscribeLocalEvent<CEResearchTableComponent, CEResearchTableFinishResearchMessage>(OnFinishResearch);
     }
 
     private void OnMergeAspects(Entity<CEResearchTableComponent> ent, ref CEResearchTableMergeAspectsMessage args)
@@ -150,13 +151,7 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
             !_proto.TryIndex(discovery.Knowledge, out _))
             return;
 
-        if (!_science.TryGetSingleton(out var science))
-            return;
-
         if (!CanPlaceAspect(project, discovery.Generation.Radius, args.Hex, args.Essence))
-            return;
-
-        if (!_container.TryGetContainer(ent.Owner, ent.Comp.PaperSlotId, out var container))
             return;
 
         var data = EnsureComp<CEScienceResearchDataComponent>(args.Actor);
@@ -167,19 +162,50 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
         project.Tiles[args.Hex] = new CEResearchMapTile { Aspect = args.Essence };
         Dirty(item, project);
 
-        if (!IsProjectSolved(project))
+        _audio.PlayPvs(ScribbleSound, ent.Owner);
+    }
+
+    private void OnFinishResearch(Entity<CEResearchTableComponent> ent, ref CEResearchTableFinishResearchMessage args)
+    {
+        if (_itemSlots.GetItemOrNull(ent.Owner, ent.Comp.PaperSlotId) is not { } item ||
+            !TryComp<CEDiscoveryProjectComponent>(item, out var project))
+            return;
+
+        if (!_proto.TryIndex(project.Discovery, out var discovery) ||
+            !_proto.TryIndex(discovery.Knowledge, out var knowledge))
+            return;
+
+        if (!IsProjectSolved(project.Tiles))
+            return;
+
+        if (!_science.TryGetSingleton(out var science))
+            return;
+
+        if (!_container.TryGetContainer(ent.Owner, ent.Comp.PaperSlotId, out var container))
             return;
 
         _knowledge.TryLearn(args.Actor, discovery.Knowledge);
         _science.MarkChosen(science, project.Discovery);
 
         _container.Remove(item, container);
-        RemComp<CEDiscoveryProjectComponent>(item);
+        Del(item);
+
+        var spawned = Spawn(knowledge.Book, Transform(ent.Owner).Coordinates);
 
         // Knowledge must be set before the component is added, not after via EnsureComp - it's
         // read by the component's own MapInit handler, which AddComp fires immediately since the
-        // entity is already map-initialized (that handler also takes care of the name/description).
-        AddComp(item, new CEKnowledgeHolderComponent { Knowledge = discovery.Knowledge });
+        // entity is already map-initialized (that handler also takes care of the base name/description).
+        AddComp(spawned, new CEKnowledgeHolderComponent { Knowledge = discovery.Knowledge });
+
+        var descLines = new List<string>();
+
+        var effects = _knowledge.GetKnowledgeEffectDescription(discovery.Knowledge);
+        if (effects.Length > 0)
+            descLines.Add(effects);
+
+        var authorName = MetaData(args.Actor).EntityName;
+        descLines.Add(Loc.GetString("ce-knowledge-book-author", ("name", authorName)));
+        _metaData.SetEntityDescription(spawned, string.Join("\n", descLines));
 
         _ui.CloseUi(ent.Owner, CEResearchTableUiKey.Key);
 
@@ -207,49 +233,5 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
         }
 
         return false;
-    }
-
-    // Flood-fills from one fixed target through only directly-related adjacent aspects, and checks
-    // every other fixed target ended up reached - the puzzle's win condition.
-    private bool IsProjectSolved(CEDiscoveryProjectComponent project)
-    {
-        var targets = new List<Vector2i>();
-        foreach (var (hex, tile) in project.Tiles)
-        {
-            if (tile.Fixed)
-                targets.Add(hex);
-        }
-
-        if (targets.Count == 0)
-            return false;
-
-        var start = targets[0];
-        var visited = new HashSet<Vector2i> { start };
-        var queue = new Queue<Vector2i>();
-        queue.Enqueue(start);
-
-        while (queue.TryDequeue(out var hex))
-        {
-            var hexAspect = project.Tiles[hex].Aspect!.Value;
-            foreach (var neighbor in CEHexMath.Neighbors(hex))
-            {
-                if (visited.Contains(neighbor) ||
-                    !project.Tiles.TryGetValue(neighbor, out var tile) ||
-                    tile.Aspect is not { } neighborAspect ||
-                    !_essence.AreDirectlyRelated(hexAspect, neighborAspect))
-                    continue;
-
-                visited.Add(neighbor);
-                queue.Enqueue(neighbor);
-            }
-        }
-
-        foreach (var target in targets)
-        {
-            if (!visited.Contains(target))
-                return false;
-        }
-
-        return true;
     }
 }

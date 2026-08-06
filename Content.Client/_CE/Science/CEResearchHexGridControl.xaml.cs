@@ -15,12 +15,6 @@ using Robust.Shared.Utility;
 
 namespace Content.Client._CE.Science;
 
-/// <summary>
-/// Draggable, zoomable view of a research project's hex-grid puzzle. Draws a checkerboard hex for
-/// every tile within the puzzle's radius, an icon on top for dead zones and target/placed aspects,
-/// and a cursor tracking the hovered tile, tinted green or red depending on whether the currently
-/// armed aspect could legally be placed there.
-/// </summary>
 [GenerateTypedNameReferences]
 public sealed partial class CEResearchHexGridControl : BoxContainer
 {

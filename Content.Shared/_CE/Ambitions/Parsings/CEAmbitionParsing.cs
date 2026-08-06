@@ -224,6 +224,9 @@ public sealed partial class RandomScienceDiscovery : CEAmbitionParsing
 
         foreach (var discovery in protoManager.EnumeratePrototypes<CEScienceDiscoveryPrototype>())
         {
+            if (discovery.Abstract)
+                continue;
+
             all.Add(discovery);
         }
 

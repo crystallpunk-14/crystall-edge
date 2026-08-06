@@ -18,5 +18,7 @@
                      HorizontalAlignment="Center"
                      Margin="0 4"
                      Stretch="KeepAspectCentered" />
+        <controls:HLine Color="#404040" Thickness="1" Margin="0 2" />
+        <RichTextLabel Name="DescLabel" Margin="4" />
     </BoxContainer>
 </PanelContainer>

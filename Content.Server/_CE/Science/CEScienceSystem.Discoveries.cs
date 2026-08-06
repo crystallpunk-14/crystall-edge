@@ -18,6 +18,9 @@ public sealed partial class CEScienceSystem
 
         foreach (var discovery in _proto.EnumeratePrototypes<CEScienceDiscoveryPrototype>())
         {
+            if (discovery.Abstract)
+                continue;
+
             science.AvailableDiscoveries.Add(discovery.ID);
         }
     }
@@ -75,7 +78,7 @@ public sealed partial class CEScienceSystem
     {
         foreach (var discovery in _proto.EnumeratePrototypes<CEScienceDiscoveryPrototype>())
         {
-            if (discovery.Area != area || science.ChosenDiscoveries.Contains(discovery.ID))
+            if (discovery.Abstract || discovery.Area != area || science.ChosenDiscoveries.Contains(discovery.ID))
                 continue;
 
             science.AvailableDiscoveries.Add(discovery.ID);

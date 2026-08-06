@@ -40,3 +40,6 @@ public sealed class CEResearchTablePlaceAspectMessage(
     public readonly Vector2i Hex = hex;
     public readonly ProtoId<CEMagicEssenceTypePrototype> Essence = essence;
 }
+
+[Serializable, NetSerializable]
+public sealed class CEResearchTableFinishResearchMessage : BoundUserInterfaceMessage;
