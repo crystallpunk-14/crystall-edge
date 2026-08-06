@@ -92,14 +92,14 @@ public sealed partial class CEEssenceAmountControl : Control
         OnPressed?.Invoke();
     }
 
-    protected internal override void MouseEntered()
+    protected override void MouseEntered()
     {
         base.MouseEntered();
 
         _hovered = true;
     }
 
-    protected internal override void MouseExited()
+    protected override void MouseExited()
     {
         base.MouseExited();
 

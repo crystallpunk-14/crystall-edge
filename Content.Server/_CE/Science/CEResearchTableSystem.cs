@@ -1,4 +1,3 @@
-using Content.Shared._CE.Hex;
 using Content.Shared._CE.Knowledge;
 using Content.Shared._CE.Knowledge.Components;
 using Content.Shared._CE.MagicEssence.Prototypes;
@@ -151,7 +150,7 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
             !_proto.TryIndex(discovery.Knowledge, out _))
             return;
 
-        if (!CanPlaceAspect(project, discovery.Generation.Radius, args.Hex, args.Essence))
+        if (!CanPlaceAspect(project.Tiles, discovery.Generation.Radius, args.Hex, args.Essence))
             return;
 
         var data = EnsureComp<CEScienceResearchDataComponent>(args.Actor);
@@ -210,28 +209,5 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
         _ui.CloseUi(ent.Owner, CEResearchTableUiKey.Key);
 
         _audio.PlayPvs(KnowledgeLearnedSound, ent.Owner);
-    }
-
-    private bool CanPlaceAspect(
-        CEDiscoveryProjectComponent project,
-        int radius,
-        Vector2i hex,
-        ProtoId<CEMagicEssenceTypePrototype> essence)
-    {
-        if (CEHexMath.CubeDistance(hex, Vector2i.Zero) > radius)
-            return false;
-
-        if (project.Tiles.TryGetValue(hex, out var existing) && (existing.DeadZone || existing.Aspect is not null))
-            return false;
-
-        foreach (var neighbor in CEHexMath.Neighbors(hex))
-        {
-            if (project.Tiles.TryGetValue(neighbor, out var tile) &&
-                tile.Aspect is { } neighborAspect &&
-                _essence.AreDirectlyRelated(neighborAspect, essence))
-                return true;
-        }
-
-        return false;
     }
 }

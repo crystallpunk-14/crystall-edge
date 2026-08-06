@@ -34,6 +34,7 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
     private ProtoId<CEScienceAreaPrototype>? _selectedArea;
     private EntityUid? _currentProject;
     private ProtoId<CEScienceDiscoveryPrototype>? _selectedDiscovery;
+    private Vector2i? _selectedHex;
 
     public event Action<ProtoId<CEMagicEssenceTypePrototype>, ProtoId<CEMagicEssenceTypePrototype>>? OnMergeAspects;
     public event Action<ProtoId<CEScienceAreaPrototype>>? OnStartResearch;
@@ -61,8 +62,24 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
         };
         FinishResearchButton.OnPressed += _ => OnFinishResearch?.Invoke();
 
-        KnowledgeControl.OnAspectArmedForPlacement += essence => HexGrid.SetArmed(essence);
-        HexGrid.OnPlaceAspect += (hex, essence) => OnPlaceAspect?.Invoke(hex, essence);
+        KnowledgeControl.OnMergeWindowSelected += () =>
+        {
+            _selectedHex = null;
+            HexGrid.SetSelected(null);
+            KnowledgeControl.SetMergeSelected(true);
+            UpdateUi();
+        };
+        KnowledgeControl.OnEssenceSelectedForPlacement += essence =>
+        {
+            if (_selectedHex is { } hex)
+                OnPlaceAspect?.Invoke(hex, essence);
+        };
+        HexGrid.OnSelect += hex =>
+        {
+            _selectedHex = hex;
+            KnowledgeControl.SetMergeSelected(false);
+            UpdateUi();
+        };
         HexGrid.OnViewChanged += OnHexGridViewChanged;
 
         foreach (var area in _prototype.EnumeratePrototypes<CEScienceAreaPrototype>())
@@ -112,7 +129,7 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
             AreaPickerContainer.Visible = false;
             DiscoveryPickerContainer.Visible = true;
             ProjectContainer.Visible = false;
-            KnowledgeControl.SetPlacementMode(false);
+            ResetPlacementTarget();
             UpdateDiscoveryPicker(itemUid, project);
             return;
         }
@@ -131,7 +148,7 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
         DiscoveryPickerContainer.Visible = false;
         ProjectContainer.Visible = false;
         _currentProject = null;
-        KnowledgeControl.SetPlacementMode(false);
+        ResetPlacementTarget();
 
         CostContainer.RemoveAllChildren();
         if (_selectedArea is { } areaId && _prototype.TryIndex(areaId, out var area))
@@ -202,8 +219,6 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
 
     private void UpdateProjectContainer(CEDiscoveryProjectComponent project)
     {
-        KnowledgeControl.SetPlacementMode(true);
-
         // Discovery can still be its default (empty) value here if this update fired before the
         // project's own networked state (spawned this tick) has arrived - bail out quietly and
         // wait for the follow-up update once it does, rather than indexing a null/empty ProtoId.
@@ -222,6 +237,24 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
         HexGrid.UpdateState(project.Tiles, discovery.Generation.Radius, area.Color, hasParallax);
 
         FinishResearchButton.Disabled = !_researchTable.IsProjectSolved(project.Tiles);
+
+        if (_selectedHex is { } hex)
+        {
+            var tiles = project.Tiles;
+            var radius = discovery.Generation.Radius;
+            KnowledgeControl.SetPlacementLegality(essence => _researchTable.CanPlaceAspect(tiles, radius, hex, essence));
+        }
+        else
+        {
+            KnowledgeControl.SetPlacementLegality(null);
+        }
+    }
+
+    private void ResetPlacementTarget()
+    {
+        _selectedHex = null;
+        HexGrid.SetSelected(null);
+        KnowledgeControl.SetMergeSelected(true);
     }
 
     /// <summary>

@@ -28,6 +28,8 @@ public sealed partial class CEScienceKnowledgeControl : BoxContainer
     private const int IconSize = 28;
     private const int MaxPerRow = 6;
 
+    private static readonly Color DimColor = Color.White.WithAlpha(0.12f);
+
     [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private IEntityManager _entity = default!;
 
@@ -36,21 +38,23 @@ public sealed partial class CEScienceKnowledgeControl : BoxContainer
     private IReadOnlyDictionary<ProtoId<CEMagicEssenceTypePrototype>, int> _points =
         new Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int>();
 
+    private readonly Dictionary<ProtoId<CEMagicEssenceTypePrototype>, CEEssenceAmountControl> _essenceControls = new();
+
     private ProtoId<CEMagicEssenceTypePrototype>? _slot1;
     private ProtoId<CEMagicEssenceTypePrototype>? _slot2;
 
-    private bool _placementMode;
-    private ProtoId<CEMagicEssenceTypePrototype>? _armed;
+    private bool _mergeSelected = true;
 
     /// <summary>
     /// Raised when the merge button is pressed with two compatible, affordable aspects selected.
     /// </summary>
     public event Action<ProtoId<CEMagicEssenceTypePrototype>, ProtoId<CEMagicEssenceTypePrototype>>? OnMerge;
 
-    /// <summary>
-    /// Raised whenever the armed aspect changes while in placement mode - null when disarmed.
-    /// </summary>
-    public event Action<ProtoId<CEMagicEssenceTypePrototype>?>? OnAspectArmedForPlacement;
+    /// <summary>Raised when "Combine Aspects" is pressed, asking to become the placement target again.</summary>
+    public event Action? OnMergeWindowSelected;
+
+    /// <summary>Raised when an essence is clicked while the merge window is not the selected target.</summary>
+    public event Action<ProtoId<CEMagicEssenceTypePrototype>>? OnEssenceSelectedForPlacement;
 
     public CEScienceKnowledgeControl()
     {
@@ -67,22 +71,7 @@ public sealed partial class CEScienceKnowledgeControl : BoxContainer
 
         Slot1Panel.OnKeyBindDown += args =>
         {
-            if (args.Function != EngineKeyFunctions.UIClick)
-                return;
-
-            if (_placementMode)
-            {
-                if (_armed is null)
-                    return;
-
-                args.Handle();
-                _armed = null;
-                OnAspectArmedForPlacement?.Invoke(null);
-                UpdateMergeUi();
-                return;
-            }
-
-            if (_slot1 is null)
+            if (args.Function != EngineKeyFunctions.UIClick || _slot1 is null)
                 return;
 
             args.Handle();
@@ -99,6 +88,8 @@ public sealed partial class CEScienceKnowledgeControl : BoxContainer
             _slot2 = null;
             UpdateMergeUi();
         };
+
+        CombineButton.OnPressed += _ => OnMergeWindowSelected?.Invoke();
     }
 
     public void UpdateKnowledge(IReadOnlyDictionary<ProtoId<CEMagicEssenceTypePrototype>, int> points)
@@ -106,6 +97,7 @@ public sealed partial class CEScienceKnowledgeControl : BoxContainer
         _points = points;
 
         RowsContainer.RemoveAllChildren();
+        _essenceControls.Clear();
 
         var byTier = new SortedDictionary<int, List<(ProtoId<CEMagicEssenceTypePrototype> Essence, int Amount)>>();
         foreach (var (essence, amount) in points)
@@ -147,6 +139,7 @@ public sealed partial class CEScienceKnowledgeControl : BoxContainer
                     var control = new CEEssenceAmountControl { SetSize = new Vector2(IconSize, IconSize) };
                     control.SetEssence(essence, amount);
                     control.OnPressed += () => OnEssenceClicked(essence);
+                    _essenceControls[essence] = control;
                     row.AddChild(control);
                 }
 
@@ -158,40 +151,42 @@ public sealed partial class CEScienceKnowledgeControl : BoxContainer
     }
 
     /// <summary>
-    /// Switches between the merge picker (two slots, combine into a higher aspect) and placement
-    /// mode (a single armed aspect, for placing on the research hex grid). Always disarms/clears
-    /// selection on switch.
+    /// Switches whether the merge window is the active placement target - see
+    /// <see cref="OnEssenceSelectedForPlacement"/>. Toggled externally whenever a hex grid tile
+    /// gets selected instead (or "Combine Aspects" is pressed to reclaim the target).
     /// </summary>
-    public void SetPlacementMode(bool active)
+    public void SetMergeSelected(bool selected)
     {
-        _placementMode = active;
-        _slot1 = null;
-        _slot2 = null;
-        _armed = null;
+        _mergeSelected = selected;
+        MergePanel.Visible = selected;
+        CombineButton.Visible = !selected;
 
-        MergeButton.Visible = !active;
-        Slot2Panel.Visible = !active;
-
-        UpdateMergeUi();
+        if (selected)
+            UpdateMergeUi();
     }
 
     /// <summary>
-    /// In placement mode: clicking an already-armed aspect disarms it, clicking another arms it
-    /// instead. Otherwise: clicking an already-selected aspect deselects it. Clicking an unselected
-    /// aspect fills whichever merge slot is free; if both are already taken, the click is ignored -
-    /// a slot has to be freed first by clicking its current aspect.
+    /// Dims every held aspect that <paramref name="isLegal"/> rejects - used while a hex grid tile
+    /// is the placement target, to preview which aspects could actually go there. Null clears all
+    /// dimming (full opacity for everyone).
+    /// </summary>
+    public void SetPlacementLegality(Func<ProtoId<CEMagicEssenceTypePrototype>, bool>? isLegal)
+    {
+        foreach (var (essence, control) in _essenceControls)
+            control.Modulate = isLegal is null || isLegal(essence) ? Color.White : DimColor;
+    }
+
+    /// <summary>
+    /// If the merge window is the current target: clicking an already-selected aspect deselects
+    /// it, clicking an unselected one fills whichever merge slot is free (ignored if both are
+    /// taken). Otherwise the click is forwarded as a placement request for whatever else is
+    /// currently targeted (e.g. a hex grid tile).
     /// </summary>
     private void OnEssenceClicked(ProtoId<CEMagicEssenceTypePrototype> essence)
     {
-        if (_placementMode)
+        if (!_mergeSelected)
         {
-            if (_armed == essence)
-                _armed = null;
-            else
-                _armed = essence;
-
-            OnAspectArmedForPlacement?.Invoke(_armed);
-            UpdateMergeUi();
+            OnEssenceSelectedForPlacement?.Invoke(essence);
             return;
         }
 
@@ -211,12 +206,6 @@ public sealed partial class CEScienceKnowledgeControl : BoxContainer
 
     private void UpdateMergeUi()
     {
-        if (_placementMode)
-        {
-            Slot1Icon.Texture = GetIcon(_armed);
-            return;
-        }
-
         Slot1Icon.Texture = GetIcon(_slot1);
         Slot2Icon.Texture = GetIcon(_slot2);
 
@@ -236,6 +225,20 @@ public sealed partial class CEScienceKnowledgeControl : BoxContainer
             MergePreviewIcon.Visible = false;
             MergeButton.Disabled = true;
         }
+
+        if (_mergeSelected)
+            UpdateMergeDimming();
+    }
+
+    // Dims every held aspect that couldn't merge with the lone filled slot - no dimming once both
+    // slots are filled (the pair is already decided) or neither is.
+    private void UpdateMergeDimming()
+    {
+        var lone = _slot1 is null ? _slot2 : (_slot2 is null ? _slot1 : null);
+        if (lone is { } selected)
+            SetPlacementLegality(essence => essence == selected || _essence.TryGetMergeResult(selected, essence, out _));
+        else
+            SetPlacementLegality(null);
     }
 
     private Texture? GetIcon(ProtoId<CEMagicEssenceTypePrototype>? essence)

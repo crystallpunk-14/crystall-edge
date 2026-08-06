@@ -10,19 +10,26 @@
         <BoxContainer Name="RowsContainer" Orientation="Vertical" HorizontalExpand="True" SeparationOverride="4" />
     </ScrollContainer>
 
-    <BoxContainer Name="MergeRow" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 6 0 0" SeparationOverride="6">
-        <PanelContainer Name="Slot1Panel" MouseFilter="Stop" StyleClasses="AngleRect" ModulateSelfOverride="#4a4a52" SetSize="32 32">
-            <TextureRect Name="Slot1Icon" SetSize="28 28" HorizontalAlignment="Center" VerticalAlignment="Center"
-                         Stretch="KeepAspectCentered" />
-        </PanelContainer>
-        <Button Name="MergeButton" Text="&gt;&lt;" Disabled="True"
-                ToolTip="{Loc 'ce-science-knowledge-merge-button-tooltip'}">
-            <TextureRect Name="MergePreviewIcon" SetSize="16 16" HorizontalAlignment="Center" VerticalAlignment="Center"
-                         Stretch="KeepAspectCentered" Visible="False" />
-        </Button>
-        <PanelContainer Name="Slot2Panel" MouseFilter="Stop" StyleClasses="AngleRect" ModulateSelfOverride="#4a4a52" SetSize="32 32">
-            <TextureRect Name="Slot2Icon" SetSize="28 28" HorizontalAlignment="Center" VerticalAlignment="Center"
-                         Stretch="KeepAspectCentered" />
-        </PanelContainer>
-    </BoxContainer>
+    <PanelContainer Name="MergePanel" HorizontalAlignment="Center" Margin="0 6 0 0">
+        <BoxContainer Name="MergeRow" Orientation="Horizontal" HorizontalAlignment="Center" SeparationOverride="6" Margin="4">
+            <PanelContainer Name="Slot1Panel" MouseFilter="Stop" StyleClasses="AngleRect" ModulateSelfOverride="#4a4a52" SetSize="32 32">
+                <TextureRect Name="Slot1Icon" SetSize="28 28" HorizontalAlignment="Center" VerticalAlignment="Center"
+                             Stretch="KeepAspectCentered" />
+            </PanelContainer>
+            <Button Name="MergeButton" Text="&gt;&lt;" Disabled="True"
+                    ToolTip="{Loc 'ce-science-knowledge-merge-button-tooltip'}">
+                <TextureRect Name="MergePreviewIcon" SetSize="16 16" HorizontalAlignment="Center" VerticalAlignment="Center"
+                             Stretch="KeepAspectCentered" Visible="False" />
+            </Button>
+            <PanelContainer Name="Slot2Panel" MouseFilter="Stop" StyleClasses="AngleRect" ModulateSelfOverride="#4a4a52" SetSize="32 32">
+                <TextureRect Name="Slot2Icon" SetSize="28 28" HorizontalAlignment="Center" VerticalAlignment="Center"
+                             Stretch="KeepAspectCentered" />
+            </PanelContainer>
+        </BoxContainer>
+    </PanelContainer>
+    <Button Name="CombineButton"
+            Text="{Loc 'ce-science-knowledge-combine-button'}"
+            HorizontalAlignment="Center"
+            Margin="0 6 0 0"
+            Visible="False" />
 </science:CEScienceKnowledgeControl>

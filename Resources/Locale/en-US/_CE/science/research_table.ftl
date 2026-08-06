@@ -3,6 +3,7 @@ ce-research-table-paper-slot-name = paper
 ce-research-table-ui-no-paper = Place a clean sheet of paper on the table to begin research.
 ce-science-knowledge-title = Character Knowledge
 ce-science-knowledge-merge-button-tooltip = Combine 2 aspects into a more complex one
+ce-science-knowledge-combine-button = Combine Aspects
 ce-research-table-start-button = Begin New Research
 ce-research-table-choose-discovery-button = Begin Research
 ce-research-table-finish-button = Finish Research
