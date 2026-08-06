@@ -135,6 +135,16 @@
   - type: StaticPrice
     price: 150
 
+- type: entity
+  id: CEMachineCoreEssenceBurner
+  parent: CEBaseMachineCore
+  name: essence burner machine core
+  components:
+  - type: MachineBoard
+    prototype: CEMagicEssenceBurner
+  - type: StaticPrice
+    price: 200
+
 
 - type: entity
   id: CEMachineCoreDistributionUnit

@@ -407,6 +407,28 @@
   resultCount: 1
 
 - type: CERecipe
+  id: CEMachineCoreEssenceBurner
+  requiredKnowledge: KnowledgeEssenceBurner
+  parent: CEBaseEngineeringTableRecipe
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassBar
+    count: 3
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 1
+  - !type:ProtoIdResource
+    protoId: CEEssenceSphereFire
+    count: 2
+  - !type:StackResource
+    stack: CEGlass
+    count: 5
+  result: CEMachineCoreEssenceBurner
+  resultCount: 1
+
+- type: CERecipe
   id: CEMachineCoreCharger
   parent: CEBaseEngineeringTableRecipe
   category: MachineCore

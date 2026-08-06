@@ -39,3 +39,14 @@
   - Energia
   - Energia
   knowledge: KnowledgeHoverboard
+
+- type: scienceDiscovery
+  id: EssenceBurner
+  parent: MediumDifficult
+  area: ArcaneEngineering
+  targetAspects:
+  - Energia
+  - Machine
+  - Void
+  - Magic
+  knowledge: KnowledgeEssenceBurner
