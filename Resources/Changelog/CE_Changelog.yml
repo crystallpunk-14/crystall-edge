@@ -532,3 +532,11 @@
   id: 1053
   time: '2026-08-04T16:56:43.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/386
+- author: TheShuEd
+  changes:
+  - message: hoverboards was removed from guards building. They now have different
+      obtaining methods.
+    type: Tweak
+  id: 1054
+  time: '2026-08-06T09:10:41.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/387
