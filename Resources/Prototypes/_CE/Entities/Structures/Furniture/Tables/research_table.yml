@@ -7,6 +7,9 @@
   categories: [ ForkFiltered ]
   components:
   - type: CEResearchTable
+  - type: Construction
+    graph: CEResearchTable
+    node: CEResearchTable
   - type: Sprite
     snapCardinals: true
     sprite: _CE/Structures/Furniture/Tables/workbench.rsi
@@ -49,6 +52,10 @@
           - CEUnselectedDiscoveryProject
           - CEDiscoveryProject
         ejectOnInteract: false
+        insertSound:
+          collection: storageRustle
+        ejectSound:
+          collection: storageRustle
   - type: ContainerContainer
     containers:
       paper: !type:ContainerSlot

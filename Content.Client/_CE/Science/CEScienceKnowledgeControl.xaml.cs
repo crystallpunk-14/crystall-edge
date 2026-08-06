@@ -115,12 +115,7 @@ public sealed partial class CEScienceKnowledgeControl : BoxContainer
         var firstTier = true;
         foreach (var entries in byTier.Values)
         {
-            // Most plentiful aspects first.
-            entries.Sort((a, b) =>
-            {
-                var byAmount = b.Amount.CompareTo(a.Amount);
-                return byAmount != 0 ? byAmount : string.CompareOrdinal(a.Essence.Id, b.Essence.Id);
-            });
+            entries.Sort((a, b) => string.CompareOrdinal(a.Essence.Id, b.Essence.Id));
 
             if (!firstTier)
                 RowsContainer.AddChild(new HSeparator { Margin = new Thickness(0, 4, 0, 4) });

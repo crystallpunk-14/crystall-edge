@@ -2,7 +2,7 @@
   id: EasyDifficult
   abstract: true
   generation:
-    radius: 3
+    radius: 2
     minTargetDistance: 4
     deadZoneLayers:
     - threshold: 0.3
