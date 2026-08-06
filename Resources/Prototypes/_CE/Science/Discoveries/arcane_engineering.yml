@@ -35,6 +35,7 @@
   area: ArcaneEngineering
   targetAspects:
   - Flight
-  - Motion
   - Machine
+  - Energia
+  - Energia
   knowledge: KnowledgeHoverboard

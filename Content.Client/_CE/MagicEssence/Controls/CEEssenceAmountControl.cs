@@ -18,7 +18,7 @@ namespace Content.Client._CE.MagicEssence.Controls;
 /// </summary>
 public sealed partial class CEEssenceAmountControl : Control
 {
-    private const float TextScaleMultiplier = 2f;
+    private const float TextScaleMultiplier = 1f;
     private const float OutlineOffset = 1f;
 
     // The icon size TextScaleMultiplier was tuned against - actual text scale is adjusted

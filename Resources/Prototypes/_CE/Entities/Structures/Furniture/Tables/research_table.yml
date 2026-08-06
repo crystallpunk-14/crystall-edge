@@ -49,6 +49,10 @@
           - CEUnselectedDiscoveryProject
           - CEDiscoveryProject
         ejectOnInteract: false
+        insertSound:
+          collection: storageRustle
+        ejectSound:
+          collection: storageRustle
   - type: ContainerContainer
     containers:
       paper: !type:ContainerSlot

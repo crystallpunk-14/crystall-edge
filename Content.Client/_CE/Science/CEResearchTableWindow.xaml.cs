@@ -257,18 +257,10 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
         KnowledgeControl.SetMergeSelected(true);
     }
 
-    /// <summary>
-    /// Keeps the parallax background moving with the hex grid's pan and zoom, but at a fraction of
-    /// the rate, for a parallax depth effect.
-    /// </summary>
     private void OnHexGridViewChanged(Vector2 offset, float scale)
     {
         const float lag = 0.25f;
 
         ProjectParallax.Offset = -offset * lag + new Vector2(1000, 1000);
-
-        var parallaxScale = 1f + (scale - 1f) * lag;
-        ProjectParallax.ScaleX = parallaxScale;
-        ProjectParallax.ScaleY = parallaxScale;
     }
 }
