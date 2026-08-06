@@ -7,6 +7,9 @@
   categories: [ ForkFiltered ]
   components:
   - type: CEResearchTable
+  - type: Construction
+    graph: CEResearchTable
+    node: CEResearchTable
   - type: Sprite
     snapCardinals: true
     sprite: _CE/Structures/Furniture/Tables/workbench.rsi
