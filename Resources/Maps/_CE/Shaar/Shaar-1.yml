@@ -6767,26 +6767,6 @@ entities:
     - type: Transform
       pos: -0.5,-20.5
       parent: 1
-- proto: CEVehicleHoverboard
-  entities:
-  - uid: 485
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 1.3029655,-19.200275
-      parent: 1
-  - uid: 1181
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 1.6066892,-15.9725685
-      parent: 1
-  - uid: 1182
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 1.2917173,-18.683035
-      parent: 1
 - proto: CEWallDirt
   entities:
   - uid: 14

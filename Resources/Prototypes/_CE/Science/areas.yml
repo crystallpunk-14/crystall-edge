@@ -2,10 +2,11 @@
   id: ArcaneEngineering
   color: "#c6905a"
   name: ce-science-area-arcane-engineering
-  parallax: CEBlood
-  generationMargin: 2
-  deadZoneLayers:
-  - threshold: 0.1
-    noise:
-      seed: 1337
-      frequency: 0.2
+  desc: ce-science-area-arcane-engineering-desc
+  icon:
+    entity: CEAccumulatorVessel
+  cost:
+    Energia: 2
+    Machine: 1
+  project: CEDiscoveryProjectEngineering
+  parallax: KettleStation

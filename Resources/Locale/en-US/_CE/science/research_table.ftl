@@ -1,13 +1,16 @@
 ce-research-table-ui-title = Research Table
+ce-research-table-paper-slot-name = paper
+ce-research-table-ui-no-paper = Place a clean sheet of paper on the table to begin research.
 ce-science-knowledge-title = Character Knowledge
-
-ce-research-cell-dead-zone-title = Dead Zone
-ce-research-cell-dead-zone-desc = Attempts at research here are fruitless and yield no result
-
-ce-research-action-basic-scan-name = Conduct Research
-ce-research-action-basic-scan-desc = Scans a 3x3 area around the selected cell
-ce-research-action-check-hypothesis-name = Check Hypothesis
-ce-research-action-check-hypothesis-desc = Measures the distance in cells from this point to the nearest undiscovered breakthrough
-ce-research-action-discover-achievement-name = Make Discovery
-ce-research-action-discover-achievement-desc = Completes research of the discovery on this cell and applies its effects
-ce-research-action-execute = Execute
+ce-science-knowledge-merge-button-tooltip = Combine 2 aspects into a more complex one
+ce-science-knowledge-combine-button = Combine Aspects
+ce-research-table-start-button = Begin New Research
+ce-research-table-choose-discovery-button = Begin Research
+ce-research-table-finish-button = Finish Research
+ce-research-table-finish-button-tooltip = Connect all the aspects to each other to finish the research
+ce-research-table-not-author = You are not the author of this research
+ce-research-table-choose-area-title = Choose a field of science
+ce-research-table-choose-discovery-title = Choose a discovery
+ce-research-table-project-title = Research: { $discovery }
+ce-discovery-project-name = Research project on { $discovery }
+ce-discovery-project-description = A research project in progress, in the field of { $area }, on { $discovery }.

@@ -20,13 +20,6 @@ public sealed partial class CEClientScienceSystem : CESharedScienceSystem
 
     private TimeSpan _nextInterestReveal = TimeSpan.Zero;
 
-    /// <summary>
-    /// Raised whenever the local player's own <see cref="CEScienceResearchDataComponent"/> state is
-    /// updated from the server. The research table's <see cref="CEResearchTableState"/> BUI push and
-    /// this component's own networked state are two independent sync channels that can arrive in
-    /// either order within the same tick - UI that reads this component locally (fog of war, points)
-    /// should refresh on both, not just the BUI push, or it can render one tick stale.
-    /// </summary>
     public event Action? OnLocalResearchDataUpdated;
 
     public override void Initialize()
@@ -67,7 +60,7 @@ public sealed partial class CEClientScienceSystem : CESharedScienceSystem
 
     private bool TryGetHeldMagnifyingGlass(EntityUid player, out TimeSpan interval)
     {
-        interval = default;
+        interval = TimeSpan.Zero;
 
         if (!_hands.TryGetActiveItem(player, out var held) ||
             !TryComp<CEThaumaturgicMagnifyingGlassComponent>(held, out var glass))

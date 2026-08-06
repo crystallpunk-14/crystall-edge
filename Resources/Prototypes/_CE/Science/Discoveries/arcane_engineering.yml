@@ -1,0 +1,40 @@
+#MARK: Easy
+
+- type: scienceDiscovery
+  id: AdvancedDrilling
+  parent: EasyDifficult
+  area: ArcaneEngineering
+  targetAspects:
+  - Mining
+  - Energia
+  knowledge: KnowledgeDrillAdvanced
+
+- type: scienceDiscovery
+  id: PortableMagicEssenceAttractor
+  parent: EasyDifficult
+  area: ArcaneEngineering
+  targetAspects:
+  - Magic
+  - Hunger
+  knowledge: KnowledgePortableEssenceAttractor
+
+- type: scienceDiscovery
+  id: NodeStabilizer
+  parent: EasyDifficult
+  area: ArcaneEngineering
+  targetAspects:
+  - Magic
+  - Trap
+  knowledge: KnowledgeNodeStabilizer
+
+#MARK: Medium
+
+- type: scienceDiscovery
+  id: Hoverboards
+  parent: MediumDifficult
+  area: ArcaneEngineering
+  targetAspects:
+  - Flight
+  - Motion
+  - Machine
+  knowledge: KnowledgeHoverboard

@@ -216,15 +216,18 @@ public sealed partial class RandomLocation : CEAmbitionParsing
     }
 }
 
-public sealed partial class RandomScienceAchievement : CEAmbitionParsing
+public sealed partial class RandomScienceDiscovery : CEAmbitionParsing
 {
     public override string? GetText(IEntityManager entManager, IPrototypeManager protoManager, IRobustRandom random, EntityUid? owner)
     {
-        List<CEScienceAchievementPrototype> all = new();
+        List<CEScienceDiscoveryPrototype> all = new();
 
-        foreach (var achievement in protoManager.EnumeratePrototypes<CEScienceAchievementPrototype>())
+        foreach (var discovery in protoManager.EnumeratePrototypes<CEScienceDiscoveryPrototype>())
         {
-            all.Add(achievement);
+            if (discovery.Abstract)
+                continue;
+
+            all.Add(discovery);
         }
 
         if (all.Count == 0)

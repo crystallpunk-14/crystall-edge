@@ -13,12 +13,12 @@
   special:
     - !type:CEResearchPointsSpecial
       points:
-        Earth: 30
-        Fire: 30
-        Water: 30
-        Air: 30
-        Order: 30
-        Chaos: 30
+        Earth: 20
+        Fire: 20
+        Water: 20
+        Air: 20
+        Order: 20
+        Chaos: 20
 
 - type: startingGear
   id: CEAcademyRectorGear

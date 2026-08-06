@@ -27,12 +27,14 @@ public abstract partial class CESharedScienceSystem
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private IPrototypeManager _proto = default!;
 
-    private static readonly SoundSpecifier KnowledgeLearnedSound = new SoundPathSpecifier("/Audio/_CE/Effects/knowledge_learned.ogg");
+    private static readonly SoundSpecifier KnowledgeLearnedSound =
+        new SoundPathSpecifier("/Audio/_CE/Effects/knowledge_learned.ogg");
 
     private void InitializeScientificInterest()
     {
         SubscribeLocalEvent<CEThaumaturgicMagnifyingGlassComponent, AfterInteractEvent>(OnMagnifyingGlassInteract);
-        SubscribeLocalEvent<CEScientificInterestComponent, CEScientificInterestDoAfterEvent>(OnScientificInterestDoAfter);
+        SubscribeLocalEvent<CEScientificInterestComponent, CEScientificInterestDoAfterEvent>(
+            OnScientificInterestDoAfter);
         SubscribeLocalEvent<CEScienceRandomPointsComponent, MapInitEvent>(OnRandomPointsMapInit);
     }
 
@@ -76,7 +78,8 @@ public abstract partial class CESharedScienceSystem
         }
     }
 
-    private void OnMagnifyingGlassInteract(Entity<CEThaumaturgicMagnifyingGlassComponent> ent, ref AfterInteractEvent args)
+    private void OnMagnifyingGlassInteract(Entity<CEThaumaturgicMagnifyingGlassComponent> ent,
+        ref AfterInteractEvent args)
     {
         if (args.Handled || !args.CanReach || args.Target is not { } target)
             return;
@@ -85,22 +88,25 @@ public abstract partial class CESharedScienceSystem
             return;
 
         var duration = interest.Time * ent.Comp.StudyTimeMultiplier;
-        args.Handled = StartInterestStudy((target, interest), args.User, ent, duration);
-    }
 
-    private bool StartInterestStudy(Entity<CEScientificInterestComponent> ent, EntityUid user, EntityUid used, TimeSpan duration)
-    {
-        var doAfterArgs = new DoAfterArgs(EntityManager, user, duration, new CEScientificInterestDoAfterEvent(), ent, target: user, used: used)
+        var doAfterArgs = new DoAfterArgs(EntityManager,
+            args.User,
+            duration,
+            new CEScientificInterestDoAfterEvent(),
+            target,
+            target: args.User,
+            used: args.Used)
         {
             BreakOnMove = false,
             BreakOnDamage = true,
-            NeedHand = _hands.IsHolding(user, used),
+            NeedHand = _hands.IsHolding(args.User, args.Used),
         };
 
-        return _doAfter.TryStartDoAfter(doAfterArgs);
+        args.Handled = _doAfter.TryStartDoAfter(doAfterArgs);
     }
 
-    private void OnScientificInterestDoAfter(Entity<CEScientificInterestComponent> ent, ref CEScientificInterestDoAfterEvent args)
+    private void OnScientificInterestDoAfter(Entity<CEScientificInterestComponent> ent,
+        ref CEScientificInterestDoAfterEvent args)
     {
         if (args.Cancelled || args.Handled || args.Target is not { } target)
             return;
@@ -117,11 +123,12 @@ public abstract partial class CESharedScienceSystem
 
         _audio.PlayLocal(KnowledgeLearnedSound, target, target);
 
-        var pointsText = string.Join(", ", ent.Comp.Points.Select(kv =>
-        {
-            var essenceName = _proto.TryIndex(kv.Key, out var essence) ? essence.Name : kv.Key.Id;
-            return $"{kv.Value} {essenceName}";
-        }));
+        var pointsText = string.Join(", ",
+            ent.Comp.Points.Select(kv =>
+            {
+                var essenceName = _proto.TryIndex(kv.Key, out var essence) ? essence.Name : kv.Key.Id;
+                return $"{kv.Value} {essenceName}";
+            }));
 
         _popup.PopupPredicted(
             Loc.GetString("ce-scientific-interest-popup-success", ("target", ent.Owner), ("points", pointsText)),
