@@ -10,12 +10,12 @@
   special:
     - !type:CEResearchPointsSpecial
       points:
-        Earth: 5
-        Fire: 5
-        Water: 5
-        Air: 5
-        Order: 5
-        Chaos: 5
+        Earth: 1
+        Fire: 1
+        Water: 1
+        Air: 1
+        Order: 1
+        Chaos: 1
 
 - type: startingGear
   id: CEAcademyStudentGear

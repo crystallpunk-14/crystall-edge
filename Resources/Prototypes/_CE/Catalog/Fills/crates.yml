@@ -72,18 +72,32 @@
         - id: CEMachinePartDimensionalMatrix1
         - id: CEMachinePartCoalDiffuser1
       - !type:GroupSelector
+        weight: 0.05
+        children:
+        - id: CEEssenceSphereEarth
+        - id: CEEssenceSphereFire
+        - id: CEEssenceSphereWater
+        - id: CEEssenceSphereAir
+        - id: CEEssenceSphereOrder
+        - id: CEEssenceSphereChaos
+      - !type:GroupSelector
         children:
         - id: CEStoneBlock10
         - id: CEDirtBlock10
         - id: CENail10
-      #- id: CETorch
-      #- id: CELighter
       - id: CEKeyFile
       - id: CEScissors
+      - id: CEBookAncient
+        weight: 0.3
       - id: CEBaseLockpick
         weight: 0.1
       - id: CELockIron
         weight: 0.3
+      - !type:GroupSelector
+        weight: 0.1
+        children:
+        - id: CERubberStampApproved
+        - id: CERubberStampDenied
       - !type:GroupSelector
         children:
         - id: CEInstrumentFlute
@@ -147,3 +161,6 @@
       - id: CEFloorCarpetItemPurple10
       - id: CEFloorCarpetItemBlue10
       - id: CEFloorCarpetItemBlack10
+      - id: CEWallpaperItemPurple
+      - id: CEWallpaperItemYellowVerticalLines
+      - id: CEWallpaperItemBlack

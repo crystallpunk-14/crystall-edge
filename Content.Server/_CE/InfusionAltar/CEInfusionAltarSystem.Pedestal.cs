@@ -348,7 +348,7 @@ public sealed partial class CEInfusionAltarSystem
                 if (points <= 0)
                     continue;
 
-                interest.Points[type] = interest.Points.GetValueOrDefault(type) + points;
+                interest.Points[type] = points;
             }
 
             Dirty(result, interest);
