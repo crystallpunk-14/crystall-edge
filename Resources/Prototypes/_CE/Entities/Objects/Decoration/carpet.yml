@@ -23,6 +23,11 @@
   - type: CEMagicEssenceStructure
     essences:
       Cloth: { min: 1, max: 1 }
+  - type: CEEntityGroupMember
+    groups:
+      Carpet: 1
+
+#MARK: Stack 1
 
 - type: entity
   name: blue carpet
@@ -80,7 +85,7 @@
   - type: SpawnAfterInteract
     prototype: CECarpetBlack
 
-#staks
+#MARK: Stack 10
 
 - type: entity
   id: CEFloorCarpetItemBlue10

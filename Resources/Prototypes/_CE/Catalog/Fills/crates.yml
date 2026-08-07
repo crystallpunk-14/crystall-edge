@@ -139,15 +139,8 @@
       - id: CEFoodCheesePart
     - id: CECloth10
     - id: CEClothingHeadWreath
-    - !type:GroupSelector
-      children:
-      - id: CECrayonWhite
-      - id: CECrayonBlue
-      - id: CECrayonGreen
-      - id: CECrayonBlack
-      - id: CECrayonPurple
-      - id: CECrayonRed
-      - id: CECrayonYellow
+    - !type:CEEntityGroupSelector
+      group: Crayon
     - !type:GroupSelector
       weight: 0.3
       children:
@@ -158,10 +151,7 @@
     - !type:GroupSelector
       weight: 0.5
       children:
-      - id: CEFloorCarpetItemRed10
-      - id: CEFloorCarpetItemPurple10
-      - id: CEFloorCarpetItemBlue10
-      - id: CEFloorCarpetItemBlack10
-      - id: CEWallpaperItemPurple
-      - id: CEWallpaperItemYellowVerticalLines
-      - id: CEWallpaperItemBlack
+      - !type:CEEntityGroupSelector
+        group: Carpet
+      - !type:CEEntityGroupSelector
+        group: Wallpaper
