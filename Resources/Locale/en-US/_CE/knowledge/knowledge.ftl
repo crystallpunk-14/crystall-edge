@@ -13,3 +13,4 @@ ce-knowledge-hoverboard = Hoverboards
 ce-knowledge-portable-essence-attractor = Portable Essence Attractor
 ce-knowledge-node-stabilizer = Node Containment Sphere
 ce-knowledge-essence-burner = Essence Burner
+ce-knowledge-mana-transfer-glove = Mana Transfer Glove

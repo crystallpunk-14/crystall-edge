@@ -52,7 +52,6 @@
         weight: 2
       - id: CECrowbar
         weight: 2
-      - id: CEManaTransferGlove
       - id: CEWeaponDaggerIron
       - id: CEPlastiseal
       - id: CEGauze

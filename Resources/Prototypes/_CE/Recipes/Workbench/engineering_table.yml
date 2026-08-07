@@ -196,6 +196,7 @@
 
 - type: CERecipe
   id: CEManaTransferGlove
+  requiredKnowledge: KnowledgeManaTransferGlove
   parent: CEBaseEngineeringTableRecipe
   category: Tools
   craftTime: 1.0

@@ -25,3 +25,35 @@
     - id: CECoinSilver1
     - id: CECoinCopper10
     - id: CECoinCopper10
+
+- type: entity
+  id: CEChestFilledBard
+  parent: CEWoodenChest
+  suffix: Filled, Bard
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: CEInstrumentFlute
+        - id: CEInstrumentLute
+
+- type: entity
+  id: CEBedsideTableFilledBard
+  parent: CEBedsideTableWooden
+  suffix: Filled, Bard
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 2, 3
+        children:
+        - id: CEClothingHeadJestersCap
+        - id: CEClothingHeadBeretMercenary
+        - id: CEClothingHeadFedoraRed
+        - id: CEClothingShirtJestersAttire
+        - id: CEClothingShirtMercenary
+        - id: CEClothingPantsJesters
+        - id: CEClothingPantsMercenary
+        - id: CEClothingShoesJestersRingers

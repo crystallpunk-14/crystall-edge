@@ -19,13 +19,14 @@
   knowledge: KnowledgePortableEssenceAttractor
 
 - type: scienceDiscovery
-  id: NodeStabilizer
+  id: ManaTransferGlove
   parent: EasyDifficult
   area: ArcaneEngineering
   targetAspects:
   - Magic
-  - Trap
-  knowledge: KnowledgeNodeStabilizer
+  - Energia
+  - Motion
+  knowledge: KnowledgeManaTransferGlove
 
 #MARK: Medium
 
@@ -50,3 +51,14 @@
   - Void
   - Magic
   knowledge: KnowledgeEssenceBurner
+
+- type: scienceDiscovery
+  id: NodeStabilizer
+  parent: MediumDifficult
+  area: ArcaneEngineering
+  targetAspects:
+  - Magic
+  - Trap
+  - Machine
+  knowledge: KnowledgeNodeStabilizer
+

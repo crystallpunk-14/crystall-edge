@@ -42,6 +42,47 @@
     - id: CECoinCopper10
 
 - type: entity
+  id: CEChestFilledAcademyRector
+  parent: CEGoldChest
+  suffix: Filled, Academy Rector
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: CESyringe
+        - id: CESyringe
+        - id: CEDropper
+        - id: CEVialMediumOrderEssence
+        - id: CEVialMediumChaosEssence
+        - id: CEVialMediumEarthEssence
+        - id: CEVialMediumWaterEssence
+        - id: CEVialMediumFireEssence
+        - id: CEVialMediumAirEssence
+        - id: CEVialMediumReinforced
+        - id: CEVialMediumReinforced
+        - id: CEClothingEyesThaumaturgyGlasses
+        - id: CEGuidebookThaumaturgy
+        - id: CERubberStampApproved
+        - id: CERubberStampDenied
+        - id: CERubberStampAcademy
+
+- type: entity
+  id: CEBedsideTableFilledAcademyRector
+  parent: CEBedsideTableWooden
+  suffix: Filled, Academy Rector
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 2, 3
+        children:
+        - id: CEClothingHeadTriangularLeatherGolden
+        - id: CEClothingCloakMantleThaumaturge
+        - id: CEClothingShirtAcademyRobe
+
+- type: entity
   id: CEKeyRingAcademyRector
   parent: CEBaseKeyRing
   categories: [ HideSpawnMenu ]

@@ -12,6 +12,7 @@
   components:
   - type: Occluder
     boundingBox: "-0.5,0.5,0.5,1.5"
+    enabled: false
   - type: AnimationPlayer
   - type: Fixtures
     fixtures:
@@ -25,6 +26,7 @@
         layer:
         - Opaque
   - type: Door
+    state: Open
     canCrush: false
     performCollisionCheck: false
     bumpOpen: false
@@ -61,101 +63,510 @@
     sprite: _CE/Structures/Furniture/curtains.rsi
   - type: InteractionOutline
   - type: Physics
-    canCollide: true
+    canCollide: false
+  - type: UserInterface
+    interfaces:
+      enum.CERadialConstructionUiKey.Key:
+        type: CERadialConstructionMenuBoundUserInterface
+
+#MARK: White
 
 - type: entity
-  id: CECurtainsWhite
+  id: CECurtainsWhiteBase
+  abstract: true
   parent: CEBaseCurtains
-  suffix: White
   components:
   - type: Door
     openSpriteState: white_open
     closedSpriteState: white_closed
   - type: Sprite
     layers:
-    - state: white_closed
+    - state: white_open
       map: ["enum.DoorVisualLayers.Base"]
-  #- type: Construction
-  #  graph: CECurtains
-  #  node: CECurtainsWhite
 
 - type: entity
-  id: CECurtainsWhiteOpened
-  parent: CECurtainsWhite
-  suffix: White, Open
+  id: CECurtainsWhite
+  parent: CECurtainsWhiteBase
+  name: white curtains
   components:
-  - type: Door
-    state: Open
-  - type: Occluder
-    enabled: false
+  - type: CERadialConstruction
+    availablePrototypes:
+    - CECurtainsWhiteFlower
+    - CECurtainsWhiteStar
+    - CECurtainsWhiteGoldenline
+    - CECurtainsWhiteGoldenline2
+    - CECurtainsBlue
+    - CECurtainsRed
+    - CECurtainsPurple
+    - CECurtainsGreen
+  - type: Construction
+    graph: CECurtainsWhite
+    node: CECurtainsWhite
+
+- type: entity
+  id: CECurtainsWhiteFlower
+  parent: CECurtainsWhiteBase
+  name: white curtains, flower
+  components:
   - type: Sprite
     layers:
     - state: white_open
       map: ["enum.DoorVisualLayers.Base"]
-  - type: Physics
-    canCollide: false
+    - state: flower_open
+      map: ["pattern"]
+  - type: GenericVisualizer
+    visuals:
+      enum.DoorVisuals.State:
+        pattern:
+          Open: { state: flower_open }
+          Closed: { state: flower_closed }
 
 - type: entity
-  id: CECurtainsBlue
+  id: CECurtainsWhiteStar
+  parent: CECurtainsWhiteBase
+  name: white curtains, star
+  components:
+  - type: Sprite
+    layers:
+    - state: white_open
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: star_open
+      map: ["pattern"]
+  - type: GenericVisualizer
+    visuals:
+      enum.DoorVisuals.State:
+        pattern:
+          Open: { state: star_open }
+          Closed: { state: star_closed }
+
+- type: entity
+  id: CECurtainsWhiteGoldenline
+  parent: CECurtainsWhiteBase
+  name: white curtains, golden line
+  components:
+  - type: Sprite
+    layers:
+    - state: white_open
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: goldenline_open
+      map: ["pattern"]
+  - type: GenericVisualizer
+    visuals:
+      enum.DoorVisuals.State:
+        pattern:
+          Open: { state: goldenline_open }
+          Closed: { state: goldenline_closed }
+
+- type: entity
+  id: CECurtainsWhiteGoldenline2
+  parent: CECurtainsWhiteBase
+  name: white curtains, two golden line
+  components:
+  - type: Sprite
+    layers:
+    - state: white_open
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: goldenline2_open
+      map: ["pattern"]
+  - type: GenericVisualizer
+    visuals:
+      enum.DoorVisuals.State:
+        pattern:
+          Open: { state: goldenline2_open }
+          Closed: { state: goldenline2_closed }
+
+#MARK: Blue
+
+- type: entity
+  id: CECurtainsBlueBase
+  abstract: true
   parent: CEBaseCurtains
-  suffix: Blue
   components:
   - type: Door
     openSpriteState: blue_open
     closedSpriteState: blue_closed
   - type: Sprite
     layers:
-    - state: blue_closed
+    - state: blue_open
       map: ["enum.DoorVisualLayers.Base"]
-  #- type: Construction
-  #  graph: CECurtains
-  #  node: CECurtainsBlue
 
 - type: entity
-  id: CECurtainsBlueOpened
-  parent: CECurtainsBlue
-  suffix: Blue, Open
+  id: CECurtainsBlue
+  parent: CECurtainsBlueBase
+  name: blue curtains
   components:
-  - type: Door
-    state: Open
-  - type: Occluder
-    enabled: false
+  - type: CERadialConstruction
+    availablePrototypes:
+    - CECurtainsBlueFlower
+    - CECurtainsBlueStar
+    - CECurtainsBlueGoldenline
+    - CECurtainsBlueGoldenline2
+
+- type: entity
+  id: CECurtainsBlueFlower
+  parent: CECurtainsBlueBase
+  name: blue curtains, flower
+  components:
   - type: Sprite
     layers:
     - state: blue_open
       map: ["enum.DoorVisualLayers.Base"]
-  - type: Physics
-    canCollide: false
+    - state: flower_open
+      map: ["pattern"]
+  - type: GenericVisualizer
+    visuals:
+      enum.DoorVisuals.State:
+        pattern:
+          Open: { state: flower_open }
+          Closed: { state: flower_closed }
 
 - type: entity
-  id: CECurtainsRed
+  id: CECurtainsBlueStar
+  parent: CECurtainsBlueBase
+  name: blue curtains, star
+  components:
+  - type: Sprite
+    layers:
+    - state: blue_open
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: star_open
+      map: ["pattern"]
+  - type: GenericVisualizer
+    visuals:
+      enum.DoorVisuals.State:
+        pattern:
+          Open: { state: star_open }
+          Closed: { state: star_closed }
+
+- type: entity
+  id: CECurtainsBlueGoldenline
+  parent: CECurtainsBlueBase
+  name: blue curtains, golden line
+  components:
+  - type: Sprite
+    layers:
+    - state: blue_open
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: goldenline_open
+      map: ["pattern"]
+  - type: GenericVisualizer
+    visuals:
+      enum.DoorVisuals.State:
+        pattern:
+          Open: { state: goldenline_open }
+          Closed: { state: goldenline_closed }
+
+- type: entity
+  id: CECurtainsBlueGoldenline2
+  parent: CECurtainsBlueBase
+  name: blue curtains, two golden line
+  components:
+  - type: Sprite
+    layers:
+    - state: blue_open
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: goldenline2_open
+      map: ["pattern"]
+  - type: GenericVisualizer
+    visuals:
+      enum.DoorVisuals.State:
+        pattern:
+          Open: { state: goldenline2_open }
+          Closed: { state: goldenline2_closed }
+
+#MARK: Red
+
+- type: entity
+  id: CECurtainsRedBase
+  abstract: true
   parent: CEBaseCurtains
-  suffix: Red
   components:
   - type: Door
     openSpriteState: red_open
     closedSpriteState: red_closed
   - type: Sprite
     layers:
-    - state: red_closed
+    - state: red_open
       map: ["enum.DoorVisualLayers.Base"]
-  #- type: Construction
-  #  graph: CECurtains
-  #  node: CECurtainsRed
 
 - type: entity
-  id: CECurtainsRedOpened
-  parent: CECurtainsRed
-  suffix: Red, Open
+  id: CECurtainsRed
+  parent: CECurtainsRedBase
+  name: red curtains
   components:
-  - type: Door
-    state: Open
-  - type: Occluder
-    enabled: false
+  - type: CERadialConstruction
+    availablePrototypes:
+    - CECurtainsRedFlower
+    - CECurtainsRedStar
+    - CECurtainsRedGoldenline
+    - CECurtainsRedGoldenline2
+
+- type: entity
+  id: CECurtainsRedFlower
+  parent: CECurtainsRedBase
+  name: red curtains, flower
+  components:
   - type: Sprite
     layers:
     - state: red_open
       map: ["enum.DoorVisualLayers.Base"]
-  - type: Physics
-    canCollide: false
+    - state: flower_open
+      map: ["pattern"]
+  - type: GenericVisualizer
+    visuals:
+      enum.DoorVisuals.State:
+        pattern:
+          Open: { state: flower_open }
+          Closed: { state: flower_closed }
 
+- type: entity
+  id: CECurtainsRedStar
+  parent: CECurtainsRedBase
+  name: red curtains, star
+  components:
+  - type: Sprite
+    layers:
+    - state: red_open
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: star_open
+      map: ["pattern"]
+  - type: GenericVisualizer
+    visuals:
+      enum.DoorVisuals.State:
+        pattern:
+          Open: { state: star_open }
+          Closed: { state: star_closed }
+
+- type: entity
+  id: CECurtainsRedGoldenline
+  parent: CECurtainsRedBase
+  name: red curtains, golden line
+  components:
+  - type: Sprite
+    layers:
+    - state: red_open
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: goldenline_open
+      map: ["pattern"]
+  - type: GenericVisualizer
+    visuals:
+      enum.DoorVisuals.State:
+        pattern:
+          Open: { state: goldenline_open }
+          Closed: { state: goldenline_closed }
+
+- type: entity
+  id: CECurtainsRedGoldenline2
+  parent: CECurtainsRedBase
+  name: red curtains, two golden line
+  components:
+  - type: Sprite
+    layers:
+    - state: red_open
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: goldenline2_open
+      map: ["pattern"]
+  - type: GenericVisualizer
+    visuals:
+      enum.DoorVisuals.State:
+        pattern:
+          Open: { state: goldenline2_open }
+          Closed: { state: goldenline2_closed }
+
+#MARK: Purple
+
+- type: entity
+  id: CECurtainsPurpleBase
+  abstract: true
+  parent: CEBaseCurtains
+  components:
+  - type: Door
+    openSpriteState: purple_open
+    closedSpriteState: purple_closed
+  - type: Sprite
+    layers:
+    - state: purple_open
+      map: ["enum.DoorVisualLayers.Base"]
+
+- type: entity
+  id: CECurtainsPurple
+  parent: CECurtainsPurpleBase
+  name: purple curtains
+  components:
+  - type: CERadialConstruction
+    availablePrototypes:
+    - CECurtainsPurpleFlower
+    - CECurtainsPurpleStar
+    - CECurtainsPurpleGoldenline
+    - CECurtainsPurpleGoldenline2
+
+- type: entity
+  id: CECurtainsPurpleFlower
+  parent: CECurtainsPurpleBase
+  name: purple curtains, flower
+  components:
+  - type: Sprite
+    layers:
+    - state: purple_open
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: flower_open
+      map: ["pattern"]
+  - type: GenericVisualizer
+    visuals:
+      enum.DoorVisuals.State:
+        pattern:
+          Open: { state: flower_open }
+          Closed: { state: flower_closed }
+
+- type: entity
+  id: CECurtainsPurpleStar
+  parent: CECurtainsPurpleBase
+  name: purple curtains, star
+  components:
+  - type: Sprite
+    layers:
+    - state: purple_open
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: star_open
+      map: ["pattern"]
+  - type: GenericVisualizer
+    visuals:
+      enum.DoorVisuals.State:
+        pattern:
+          Open: { state: star_open }
+          Closed: { state: star_closed }
+
+- type: entity
+  id: CECurtainsPurpleGoldenline
+  parent: CECurtainsPurpleBase
+  name: purple curtains, golden line
+  components:
+  - type: Sprite
+    layers:
+    - state: purple_open
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: goldenline_open
+      map: ["pattern"]
+  - type: GenericVisualizer
+    visuals:
+      enum.DoorVisuals.State:
+        pattern:
+          Open: { state: goldenline_open }
+          Closed: { state: goldenline_closed }
+
+- type: entity
+  id: CECurtainsPurpleGoldenline2
+  parent: CECurtainsPurpleBase
+  name: purple curtains, two golden line
+  components:
+  - type: Sprite
+    layers:
+    - state: purple_open
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: goldenline2_open
+      map: ["pattern"]
+  - type: GenericVisualizer
+    visuals:
+      enum.DoorVisuals.State:
+        pattern:
+          Open: { state: goldenline2_open }
+          Closed: { state: goldenline2_closed }
+
+#MARK: Green
+
+- type: entity
+  id: CECurtainsGreenBase
+  abstract: true
+  parent: CEBaseCurtains
+  components:
+  - type: Door
+    openSpriteState: green_open
+    closedSpriteState: green_closed
+  - type: Sprite
+    layers:
+    - state: green_open
+      map: ["enum.DoorVisualLayers.Base"]
+
+- type: entity
+  id: CECurtainsGreen
+  parent: CECurtainsGreenBase
+  name: green curtains
+  components:
+  - type: CERadialConstruction
+    availablePrototypes:
+    - CECurtainsGreenFlower
+    - CECurtainsGreenStar
+    - CECurtainsGreenGoldenline
+    - CECurtainsGreenGoldenline2
+
+- type: entity
+  id: CECurtainsGreenFlower
+  parent: CECurtainsGreenBase
+  name: green curtains, flower
+  components:
+  - type: Sprite
+    layers:
+    - state: green_open
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: flower_open
+      map: ["pattern"]
+  - type: GenericVisualizer
+    visuals:
+      enum.DoorVisuals.State:
+        pattern:
+          Open: { state: flower_open }
+          Closed: { state: flower_closed }
+
+- type: entity
+  id: CECurtainsGreenStar
+  parent: CECurtainsGreenBase
+  name: green curtains, star
+  components:
+  - type: Sprite
+    layers:
+    - state: green_open
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: star_open
+      map: ["pattern"]
+  - type: GenericVisualizer
+    visuals:
+      enum.DoorVisuals.State:
+        pattern:
+          Open: { state: star_open }
+          Closed: { state: star_closed }
+
+- type: entity
+  id: CECurtainsGreenGoldenline
+  parent: CECurtainsGreenBase
+  name: green curtains, golden line
+  components:
+  - type: Sprite
+    layers:
+    - state: green_open
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: goldenline_open
+      map: ["pattern"]
+  - type: GenericVisualizer
+    visuals:
+      enum.DoorVisuals.State:
+        pattern:
+          Open: { state: goldenline_open }
+          Closed: { state: goldenline_closed }
+
+- type: entity
+  id: CECurtainsGreenGoldenline2
+  parent: CECurtainsGreenBase
+  name: green curtains, two golden line
+  components:
+  - type: Sprite
+    layers:
+    - state: green_open
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: goldenline2_open
+      map: ["pattern"]
+  - type: GenericVisualizer
+    visuals:
+      enum.DoorVisuals.State:
+        pattern:
+          Open: { state: goldenline2_open }
+          Closed: { state: goldenline2_closed }
