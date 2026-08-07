@@ -628,18 +628,6 @@ entities:
     - type: Transform
       pos: -35.5,-8.5
       parent: 1
-    - type: EntityTableContainerFill
-      containers:
-        entity_storage: !type:EntSelector
-          requireAll: True
-          conditions: []
-          prob: 1
-          weight: 1
-          rolls: !type:ConstantNumberSelector
-            value: 1
-          amount: !type:ConstantNumberSelector
-            value: 1
-          id: CECoinCopper1
 - proto: CEChestFilledBrigadier
   entities:
   - uid: 968
@@ -647,18 +635,6 @@ entities:
     - type: Transform
       pos: -22.5,4.5
       parent: 1
-    - type: EntityTableContainerFill
-      containers:
-        entity_storage: !type:EntSelector
-          requireAll: True
-          conditions: []
-          prob: 1
-          weight: 1
-          rolls: !type:ConstantNumberSelector
-            value: 1
-          amount: !type:ConstantNumberSelector
-            value: 1
-          id: CECoinCopper1
 - proto: CEChestFilledTechnician
   entities:
   - uid: 716
@@ -666,52 +642,16 @@ entities:
     - type: Transform
       pos: -15.5,10.5
       parent: 1
-    - type: EntityTableContainerFill
-      containers:
-        entity_storage: !type:EntSelector
-          requireAll: True
-          conditions: []
-          prob: 1
-          weight: 1
-          rolls: !type:ConstantNumberSelector
-            value: 1
-          amount: !type:ConstantNumberSelector
-            value: 1
-          id: CECoinCopper1
   - uid: 890
     components:
     - type: Transform
       pos: -19.5,10.5
       parent: 1
-    - type: EntityTableContainerFill
-      containers:
-        entity_storage: !type:EntSelector
-          requireAll: True
-          conditions: []
-          prob: 1
-          weight: 1
-          rolls: !type:ConstantNumberSelector
-            value: 1
-          amount: !type:ConstantNumberSelector
-            value: 1
-          id: CECoinCopper1
   - uid: 954
     components:
     - type: Transform
       pos: -19.5,11.5
       parent: 1
-    - type: EntityTableContainerFill
-      containers:
-        entity_storage: !type:EntSelector
-          requireAll: True
-          conditions: []
-          prob: 1
-          weight: 1
-          rolls: !type:ConstantNumberSelector
-            value: 1
-          amount: !type:ConstantNumberSelector
-            value: 1
-          id: CECoinCopper1
 - proto: CEClothingEyesMiningGlasses
   entities:
   - uid: 1416

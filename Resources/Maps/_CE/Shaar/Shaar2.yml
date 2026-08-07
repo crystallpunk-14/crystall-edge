@@ -487,18 +487,6 @@ entities:
     - type: Transform
       pos: -37.5,-10.5
       parent: 1
-    - type: EntityTableContainerFill
-      containers:
-        entity_storage: !type:EntSelector
-          requireAll: True
-          conditions: []
-          prob: 1
-          weight: 1
-          rolls: !type:ConstantNumberSelector
-            value: 1
-          amount: !type:ConstantNumberSelector
-            value: 1
-          id: CECoinCopper1
 - proto: CEClothingCloakCommandant
   entities:
   - uid: 341

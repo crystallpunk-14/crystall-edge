@@ -1292,35 +1292,11 @@ entities:
     - type: Transform
       pos: -28.5,-14.5
       parent: 1
-    - type: EntityTableContainerFill
-      containers:
-        entity_storage: !type:EntSelector
-          requireAll: True
-          conditions: []
-          prob: 1
-          weight: 1
-          rolls: !type:ConstantNumberSelector
-            value: 1
-          amount: !type:ConstantNumberSelector
-            value: 1
-          id: CECoinCopper1
   - uid: 391
     components:
     - type: Transform
       pos: -28.5,-15.5
       parent: 1
-    - type: EntityTableContainerFill
-      containers:
-        entity_storage: !type:EntSelector
-          requireAll: True
-          conditions: []
-          prob: 1
-          weight: 1
-          rolls: !type:ConstantNumberSelector
-            value: 1
-          amount: !type:ConstantNumberSelector
-            value: 1
-          id: CECoinCopper1
 - proto: CEChestFilledBard
   entities:
   - uid: 1752
@@ -1328,18 +1304,6 @@ entities:
     - type: Transform
       pos: -23.5,12.5
       parent: 1
-    - type: EntityTableContainerFill
-      containers:
-        entity_storage: !type:EntSelector
-          requireAll: True
-          conditions: []
-          prob: 1
-          weight: 1
-          rolls: !type:ConstantNumberSelector
-            value: 1
-          amount: !type:ConstantNumberSelector
-            value: 1
-          id: CECoinCopper1
 - proto: CEChestFilledChef
   entities:
   - uid: 1755

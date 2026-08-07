@@ -955,18 +955,6 @@ entities:
     - type: Transform
       pos: -38.5,-10.5
       parent: 1
-    - type: EntityTableContainerFill
-      containers:
-        entity_storage: !type:EntSelector
-          requireAll: True
-          conditions: []
-          prob: 1
-          weight: 1
-          rolls: !type:ConstantNumberSelector
-            value: 1
-          amount: !type:ConstantNumberSelector
-            value: 1
-          id: CECoinCopper1
 - proto: CEChestFilledGuard
   entities:
   - uid: 705
@@ -974,35 +962,11 @@ entities:
     - type: Transform
       pos: 0.5,-10.5
       parent: 1
-    - type: EntityTableContainerFill
-      containers:
-        entity_storage: !type:EntSelector
-          requireAll: True
-          conditions: []
-          prob: 1
-          weight: 1
-          rolls: !type:ConstantNumberSelector
-            value: 1
-          amount: !type:ConstantNumberSelector
-            value: 1
-          id: CECoinCopper1
   - uid: 731
     components:
     - type: Transform
       pos: -0.5,-10.5
       parent: 1
-    - type: EntityTableContainerFill
-      containers:
-        entity_storage: !type:EntSelector
-          requireAll: True
-          conditions: []
-          prob: 1
-          weight: 1
-          rolls: !type:ConstantNumberSelector
-            value: 1
-          amount: !type:ConstantNumberSelector
-            value: 1
-          id: CECoinCopper1
 - proto: CEChestFilledGuardCommander
   entities:
   - uid: 910
@@ -1010,18 +974,6 @@ entities:
     - type: Transform
       pos: 2.5,-20.5
       parent: 1
-    - type: EntityTableContainerFill
-      containers:
-        entity_storage: !type:EntSelector
-          requireAll: True
-          conditions: []
-          prob: 1
-          weight: 1
-          rolls: !type:ConstantNumberSelector
-            value: 1
-          amount: !type:ConstantNumberSelector
-            value: 1
-          id: CECoinCopper1
 - proto: CEChestFilledTavernmaster
   entities:
   - uid: 272
