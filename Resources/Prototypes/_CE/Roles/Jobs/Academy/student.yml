@@ -37,6 +37,35 @@
     - id: CECoinCopper10
 
 - type: entity
+  id: CEChestFilledAcademyStudent
+  parent: CEWoodenChest
+  suffix: Filled, Academy Student
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: CESyringe
+        - id: CEDropper
+        - id: CEVialTiny
+        - id: CEVialTiny
+        - id: CEGuidebookThaumaturgy
+
+- type: entity
+  id: CEBedsideTableFilledAcademyStudent
+  parent: CEBedsideTableWooden
+  suffix: Filled, Academy Student
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 2, 3
+        children:
+        - id: CEClothingHeadTriangularLeather
+        - id: CEClothingShirtAcademyRobe
+
+- type: entity
   id: CEKeyRingAcademyStudent
   parent: CEBaseKeyRing
   categories: [ HideSpawnMenu ]

@@ -4,8 +4,8 @@ meta:
   engineVersion: 277.0.0
   forkId: ""
   forkVersion: ""
-  time: 08/02/2026 11:58:36
-  entityCount: 1750
+  time: 08/07/2026 11:30:14
+  entityCount: 1757
 maps:
 - 1
 grids:
@@ -223,6 +223,25 @@ entities:
     components:
     - type: Transform
       pos: -33.41355,-15.142294
+      parent: 1
+- proto: CEBedsideTableFilledAcademyStudent
+  entities:
+  - uid: 1751
+    components:
+    - type: Transform
+      pos: -32.5,-13.5
+      parent: 1
+  - uid: 1754
+    components:
+    - type: Transform
+      pos: -31.5,-13.5
+      parent: 1
+- proto: CEBedsideTableFilledBard
+  entities:
+  - uid: 1457
+    components:
+    - type: Transform
+      pos: 18.5,1.5
       parent: 1
 - proto: CEBell
   entities:
@@ -1265,6 +1284,54 @@ entities:
     components:
     - type: Transform
       pos: -0.5,2.5
+      parent: 1
+- proto: CEChestFilledAcademyStudent
+  entities:
+  - uid: 381
+    components:
+    - type: Transform
+      pos: -28.5,-14.5
+      parent: 1
+  - uid: 391
+    components:
+    - type: Transform
+      pos: -28.5,-15.5
+      parent: 1
+- proto: CEChestFilledBard
+  entities:
+  - uid: 1752
+    components:
+    - type: Transform
+      pos: -23.5,12.5
+      parent: 1
+- proto: CEChestFilledChef
+  entities:
+  - uid: 1755
+    components:
+    - type: Transform
+      pos: -3.5,4.5
+      parent: 1
+  - uid: 1756
+    components:
+    - type: Transform
+      pos: -2.5,4.5
+      parent: 1
+- proto: CEChestFilledFarmer
+  entities:
+  - uid: 462
+    components:
+    - type: Transform
+      pos: 1.5,15.5
+      parent: 1
+  - uid: 1753
+    components:
+    - type: Transform
+      pos: -2.5,15.5
+      parent: 1
+  - uid: 1757
+    components:
+    - type: Transform
+      pos: -2.5,12.5
       parent: 1
 - proto: CEClosedSign
   entities:
@@ -3293,7 +3360,7 @@ entities:
       pos: 6.5,16.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -49631.266
+      secondsUntilStateChange: -51387.805
       state: Opening
   - uid: 619
     components:
@@ -4395,22 +4462,22 @@ entities:
   - uid: 1161
     components:
     - type: Transform
-      pos: 1.2099569,15.72547
+      pos: 2.4381533,14.433669
       parent: 1
   - uid: 1415
     components:
     - type: Transform
-      pos: 1.5923879,15.579292
+      pos: 2.7268314,14.148029
       parent: 1
   - uid: 1417
     components:
     - type: Transform
-      pos: 1.4574125,15.691736
+      pos: 2.2416413,14.445223
       parent: 1
   - uid: 1429
     components:
     - type: Transform
-      pos: 1.3786771,15.489337
+      pos: 2.6693442,14.263513
       parent: 1
 - proto: CEFoodPumpkin
   entities:
@@ -7551,12 +7618,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 16.5,2.5
       parent: 1
-  - uid: 381
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -28.5,-14.5
-      parent: 1
   - uid: 384
     components:
     - type: Transform
@@ -7567,12 +7628,6 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -22.5,-1.5
-      parent: 1
-  - uid: 391
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -28.5,-15.5
       parent: 1
   - uid: 396
     components:
@@ -7786,11 +7841,6 @@ entities:
     - type: Transform
       pos: 2.5,13.5
       parent: 1
-  - uid: 462
-    components:
-    - type: Transform
-      pos: 1.5,15.5
-      parent: 1
   - uid: 471
     components:
     - type: Transform
@@ -7932,6 +7982,12 @@ entities:
     components:
     - type: Transform
       pos: 0.5,3.5
+      parent: 1
+  - uid: 1256
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 3.5,2.5
       parent: 1
   - uid: 1322
     components:
@@ -10828,11 +10884,6 @@ entities:
     - type: Transform
       pos: -8.5,4.5
       parent: 1
-  - uid: 1256
-    components:
-    - type: Transform
-      pos: 3.5,2.5
-      parent: 1
   - uid: 1257
     components:
     - type: Transform
@@ -11294,8 +11345,7 @@ entities:
   - uid: 1416
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 1.8510919,15.658003
+      pos: 2.2878792,14.96373
       parent: 1
   - uid: 1428
     components:
@@ -11306,8 +11356,7 @@ entities:
   - uid: 1729
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 1.9973168,15.6242695
+      pos: 2.2300818,15.229472
       parent: 1
 - proto: CEWindowStone
   entities:
@@ -11555,13 +11604,6 @@ entities:
     components:
     - type: Transform
       pos: 17.5,-3.5
-      parent: 1
-- proto: CEWoodenChest
-  entities:
-  - uid: 1457
-    components:
-    - type: Transform
-      pos: 18.5,1.5
       parent: 1
 - proto: CEWoodenDoorHomeGoodsHome
   entities:

@@ -14,6 +14,8 @@
     - state: base_scribbles
   - type: Item
     size: Tiny
+    shape: 
+    - 0, 0, 1, 0
   - type: CEUnselectedDiscoveryProject
   - type: Tag
     tags:
@@ -32,6 +34,8 @@
     sprite: _CE/Objects/Specific/Thaumaturgy/research_project.rsi
   - type: Item
     size: Tiny
+    shape: 
+    - 0, 0, 0, 2
   - type: CEDiscoveryProject
   - type: Tag
     tags:

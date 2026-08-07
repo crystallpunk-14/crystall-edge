@@ -30,6 +30,34 @@
     - id: CECoinCopper10
 
 - type: entity
+  id: CEChestFilledBartender
+  parent: CEWoodenChest
+  suffix: Filled, Bartender
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: CECoinCopper1
+
+- type: entity
+  id: CEBedsideTableFilledBartender
+  parent: CEBedsideTableWooden
+  suffix: Filled, Bartender
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 2, 3
+        children:
+        - id: CEClothingShirtWhiteCollar
+        - id: CEClothingShirtOpenRed
+        - id: CEClothingPantsBrown
+        - id: CEClothingCloakCapeFur
+        - id: CEClothingShoesSandals
+
+- type: entity
   id: CEKeyRingBartender
   parent: CEBaseKeyRing
   categories: [ HideSpawnMenu ]

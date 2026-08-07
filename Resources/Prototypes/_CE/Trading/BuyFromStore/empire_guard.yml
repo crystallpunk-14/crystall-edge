@@ -114,14 +114,6 @@
   category: Weapon
 
 - type: tradingPosition
-  id: CEManaTransferGlove
-  faction: EmpireGuard
-  service: !type:CEBuyItemsService
-    product: CEManaTransferGlove
-    count: 1
-  category: Tools
-
-- type: tradingPosition
   id: CEWeaponMaceTwoHandedGuardrail
   faction: EmpireGuard
   service: !type:CEBuyItemsService
