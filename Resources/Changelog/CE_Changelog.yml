@@ -540,3 +540,16 @@
   id: 1054
   time: '2026-08-06T09:10:41.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/387
+- author: TheShuEd
+  changes:
+  - message: Added approved, denied and head stamps
+    type: Add
+  - message: Added personal chests with inportant items and bedside tables with random
+      role clothing for mostly every job.
+    type: Add
+  - message: Mana transfer glove was removed from loadout, crates and etc. They are
+      now locked behind thaumaturgy academy unlocks.
+    type: Tweak
+  id: 1055
+  time: '2026-08-07T12:02:18.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/391
