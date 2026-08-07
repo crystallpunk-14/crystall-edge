@@ -34,6 +34,33 @@
     - id: CECoinCopper10
 
 - type: entity
+  id: CEChestFilledTavernmaster
+  parent: CEGoldChest
+  suffix: Filled, Tavernmaster
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: CERubberStampApproved
+        - id: CERubberStampDenied
+        - id: CERubberStampTavern
+
+- type: entity
+  id: CEBedsideTableFilledTavernmaster
+  parent: CEBedsideTableWooden
+  suffix: Filled, Tavernmaster
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 2, 3
+        children:
+        - id: CEClothingCloakTavernmaster
+        - id: CEClothingHeadFedoraTavernmaster
+
+- type: entity
   id: CEKeyRingTavernmaster
   parent: CEBaseKeyRing
   categories: [ HideSpawnMenu ]

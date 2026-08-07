@@ -30,6 +30,34 @@
     - id: CECoinCopper10
 
 - type: entity
+  id: CEChestFilledFarmer
+  parent: CEWoodenChest
+  suffix: Filled, Farmer
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: CECoinCopper1
+
+- type: entity
+  id: CEBedsideTableFilledFarmer
+  parent: CEBedsideTableWooden
+  suffix: Filled, Farmer
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 2, 3
+        children:
+        - id: CEClothingShirtGreenYellow
+        - id: CEClothingPantsHakama
+        - id: CEClothingCloakRaincoatGreen
+        - id: CEClothingShoesLongLeatherBoots
+        - id: CEClothingHeadStrawHat
+
+- type: entity
   id: CEKeyRingFarmer
   parent: CEBaseKeyRing
   categories: [ HideSpawnMenu ]

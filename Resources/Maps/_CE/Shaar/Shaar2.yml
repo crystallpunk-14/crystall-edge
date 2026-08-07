@@ -4,7 +4,7 @@ meta:
   engineVersion: 277.0.0
   forkId: ""
   forkVersion: ""
-  time: 08/02/2026 11:58:37
+  time: 08/07/2026 11:30:16
   entityCount: 646
 maps:
 - 1
@@ -241,9 +241,9 @@ entities:
             -34,-14: []
             -34,-15: []
             -34,-16: []
-- proto: CEBedsideTableWooden
+- proto: CEBedsideTableFilledAcademyRector
   entities:
-  - uid: 540
+  - uid: 102
     components:
     - type: Transform
       pos: -35.5,-8.5
@@ -480,6 +480,25 @@ entities:
     - type: Transform
       pos: -34.5,-8.5
       parent: 1
+- proto: CEChestFilledAcademyRector
+  entities:
+  - uid: 540
+    components:
+    - type: Transform
+      pos: -37.5,-10.5
+      parent: 1
+    - type: EntityTableContainerFill
+      containers:
+        entity_storage: !type:EntSelector
+          requireAll: True
+          conditions: []
+          prob: 1
+          weight: 1
+          rolls: !type:ConstantNumberSelector
+            value: 1
+          amount: !type:ConstantNumberSelector
+            value: 1
+          id: CECoinCopper1
 - proto: CEClothingCloakCommandant
   entities:
   - uid: 341
@@ -2863,10 +2882,20 @@ entities:
     - type: Transform
       pos: -2.5,15.5
       parent: 1
+  - uid: 160
+    components:
+    - type: Transform
+      pos: 3.5,6.5
+      parent: 1
   - uid: 163
     components:
     - type: Transform
       pos: -22.5,10.5
+      parent: 1
+  - uid: 166
+    components:
+    - type: Transform
+      pos: 6.5,3.5
       parent: 1
   - uid: 169
     components:
@@ -3031,7 +3060,7 @@ entities:
   - uid: 404
     components:
     - type: Transform
-      pos: 3.5,2.5
+      pos: 3.5,0.5
       parent: 1
   - uid: 405
     components:
@@ -3145,11 +3174,6 @@ entities:
       parent: 1
 - proto: CEWindowStone
   entities:
-  - uid: 102
-    components:
-    - type: Transform
-      pos: 3.5,6.5
-      parent: 1
   - uid: 104
     components:
     - type: Transform
@@ -3180,11 +3204,6 @@ entities:
     - type: Transform
       pos: 6.5,4.5
       parent: 1
-  - uid: 160
-    components:
-    - type: Transform
-      pos: 6.5,3.5
-      parent: 1
   - uid: 161
     components:
     - type: Transform
@@ -3204,11 +3223,6 @@ entities:
     components:
     - type: Transform
       pos: 4.5,0.5
-      parent: 1
-  - uid: 166
-    components:
-    - type: Transform
-      pos: 3.5,0.5
       parent: 1
   - uid: 167
     components:
