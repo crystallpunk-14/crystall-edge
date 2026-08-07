@@ -37,6 +37,13 @@ ce-lock-shape-engineering-tunnels = engineering tunnels
 ce-lock-shape-engineering-brigadier = brigadier's office
 ce-lock-shape-engineering-storage = engineering storage
 
+# Academy
+
+ce-lock-shape-academy-hall = academy hall
+ce-lock-shape-academy-technical = academy technical areas
+ce-lock-shape-academy-lab = academy laboratory
+ce-lock-shape-academy-rector-room = rector's office
+
 # Citizens
 
 ce-lock-shape-tailor-shop = clothing store

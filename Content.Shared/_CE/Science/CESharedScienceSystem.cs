@@ -10,8 +10,6 @@ public abstract partial class CESharedScienceSystem : EntitySystem
     {
         base.Initialize();
 
-        InitializeAchievement();
-        InitializePen();
         InitializeScientificInterest();
     }
 

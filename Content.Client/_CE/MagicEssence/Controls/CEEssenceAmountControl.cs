@@ -5,6 +5,7 @@ using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.Utility;
+using Robust.Shared.Input;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client._CE.MagicEssence.Controls;
@@ -20,8 +21,13 @@ public sealed partial class CEEssenceAmountControl : Control
     private const float TextScaleMultiplier = 1f;
     private const float OutlineOffset = 1f;
 
+    // The icon size TextScaleMultiplier was tuned against - actual text scale is adjusted
+    // proportionally to the control's real size relative to this.
+    private const float ReferenceIconSize = 28f;
+
     private static readonly Color OutlineColor = Color.Black.WithAlpha(0.85f);
     private static readonly Color TextColor = Color.White;
+    private static readonly Color HoverOverlay = Color.White.WithAlpha(0.2f);
 
     private static readonly Vector2 OLeft = new(-OutlineOffset, 0f);
     private static readonly Vector2 ORight = new(OutlineOffset, 0f);
@@ -35,6 +41,13 @@ public sealed partial class CEEssenceAmountControl : Control
 
     private Texture? _texture;
     private int _amount;
+    private bool _hovered;
+
+    /// <summary>
+    /// Raised on click. Nothing subscribes in most places this control is used (wallet readouts,
+    /// action costs) - only the knowledge panel's aspect picker cares.
+    /// </summary>
+    public event Action? OnPressed;
 
     public CEEssenceAmountControl()
     {
@@ -59,13 +72,38 @@ public sealed partial class CEEssenceAmountControl : Control
         if (_prototype.TryIndex(essence, out CEMagicEssenceTypePrototype? proto))
         {
             _texture = proto.Icon.Frame0();
-            ToolTip = proto.Name;
+            ToolTip = $"{proto.Name} x{amount}";
         }
         else
         {
             _texture = null;
-            ToolTip = essence.Id;
+            ToolTip = $"{essence.Id} x{amount}";
         }
+    }
+
+    protected override void KeyBindDown(GUIBoundKeyEventArgs args)
+    {
+        base.KeyBindDown(args);
+
+        if (args.Function != EngineKeyFunctions.UIClick)
+            return;
+
+        args.Handle();
+        OnPressed?.Invoke();
+    }
+
+    protected override void MouseEntered()
+    {
+        base.MouseEntered();
+
+        _hovered = true;
+    }
+
+    protected override void MouseExited()
+    {
+        base.MouseExited();
+
+        _hovered = false;
     }
 
     protected override void Draw(DrawingHandleScreen handle)
@@ -75,12 +113,23 @@ public sealed partial class CEEssenceAmountControl : Control
         if (_texture is null)
             return;
 
+        if (_hovered)
+            handle.DrawRect(PixelSizeBox, HoverOverlay);
+
         handle.DrawTextureRect(_texture, PixelSizeBox);
 
-        var textScale = UIScale * TextScaleMultiplier;
-        var ascent = _font.GetAscent(textScale);
-
         var text = _amount.ToString();
+        var baseTextScale = UIScale * TextScaleMultiplier * (Height / ReferenceIconSize);
+        var unscaledWidth = handle.GetDimensions(_font, text, baseTextScale).X;
+
+        // Shrink the font as more digits are added so the amount always fits within the
+        // control's width instead of overflowing it - one digit renders at full size, each
+        // additional digit shrinks the whole readout further.
+        var textScale = PixelWidth > 0f && unscaledWidth > PixelWidth
+            ? baseTextScale * (PixelWidth / unscaledWidth)
+            : baseTextScale;
+
+        var ascent = _font.GetAscent(textScale);
         var textDims = handle.GetDimensions(_font, text, textScale);
 
         // Anchor by baseline (icon bottom - ascent) rather than full line height, since digits

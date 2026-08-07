@@ -1,5 +1,6 @@
 using JetBrains.Annotations;
 using Robust.Shared.Map;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._CE.EntityEffect;
@@ -32,6 +33,13 @@ public abstract partial class CEEntityEffect
     /// Dispatches this effect by raising a typed broadcast event through the event bus.
     /// </summary>
     public abstract void Effect(CEEntityEffectArgs args);
+
+    /// <summary>
+    /// Optional player-facing description of this effect, e.g. for guidebook text.
+    /// Override to provide one; defaults to a placeholder when not implemented.
+    /// </summary>
+    public virtual string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
+        Loc.GetString("ce-entity-effect-guidebook-none");
 }
 
 /// <summary>

@@ -27,7 +27,7 @@ public sealed partial class CEMagicVisionOverlay : Overlay
     public TimeSpan StartOverlay = TimeSpan.Zero; // when the overlay started
 
     private const float PowerDivisor = 250.0f;
-    private float _intensity = 0.2f; // for adjusting the visual scale
+    private float _intensity = 0.6f; // for adjusting the visual scale
     private float _visualScale = 0; // between 0 and 1
 
     public CEMagicVisionOverlay()
@@ -65,7 +65,7 @@ public sealed partial class CEMagicVisionOverlay : Overlay
 
     private void OnReducedMotionChanged(bool reducedMotion)
     {
-        _intensity = reducedMotion ? 0f : 0.2f;
+        _intensity = reducedMotion ? 0f : 0.6f;
     }
 
     protected override void Draw(in OverlayDrawArgs args)

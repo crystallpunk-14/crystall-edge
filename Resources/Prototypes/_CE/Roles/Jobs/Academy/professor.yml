@@ -8,12 +8,19 @@
   icon: CEJobIconAcademyProfessor
   supervisors: ce-job-supervisors-academy-rector
   special:
-    - !type:CEResearchDataSpecial
-      radius: 6
+    - !type:CEResearchPointsSpecial
+      points:
+        Earth: 10
+        Fire: 10
+        Water: 10
+        Air: 10
+        Order: 10
+        Chaos: 10
 
 - type: startingGear
   id: CEAcademyProfessorGear
   equipment:
+    belt: CEKeyRingAcademyProfessor
     pocket1: CEWalletFilledAcademyProfessor
 
 - type: entity
@@ -29,3 +36,14 @@
     - id: CECoinSilver1
     - id: CECoinSilver1
     - id: CECoinCopper10
+
+- type: entity
+  id: CEKeyRingAcademyProfessor
+  parent: CEBaseKeyRing
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+    - id: CEKeyAcademyHall
+    - id: CEKeyAcademyTechnical
+    - id: CEKeyAcademyLab

@@ -111,6 +111,43 @@
           prototype: CEWoodenPlanks1
           amount: 3
 
+- type: constructionGraph
+  id: CEResearchTable
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: CEResearchTable
+          steps:
+            - material: CEWood
+              amount: 2
+              doAfter: 2
+            - material: CECloth
+              amount: 1
+              doAfter: 1
+            - tag: CEVial
+              name: construction-graph-tag-vial
+              icon:
+                sprite: _CE/Objects/Specific/Alchemy/vial_small.rsi
+                state: vial
+              doAfter: 1
+    - node: CEResearchTable
+      entity: CEResearchTable
+      edges:
+      - to: start
+        steps:
+        - tool: Prying
+          doAfter: 3
+        completed:
+        - !type:SpawnPrototype
+          prototype: CEWoodenPlanks1
+          amount: 2
+        - !type:SpawnPrototype
+          prototype: CECloth1
+          amount: 1
+
 #- type: constructionGraph
 #  id: CEWorkbenchCooking
 #  start: start

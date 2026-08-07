@@ -59,6 +59,9 @@ public abstract partial class EntityAnimation : CEEntityEffectBase<EntityAnimati
     /// </summary>
     [DataField]
     public List<CEScaleKeyFrame> ScaleAnimation = new();
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
+        Loc.GetString("ce-entity-effect-guidebook-cosmetic-animation");
 }
 
 /// <summary>

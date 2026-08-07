@@ -1,0 +1,58 @@
+- type: entity
+  parent: CEBookBase
+  id: CEDebugKnowledgeBook
+  name: endless thaumanomiconium
+  description: An admin-only book brimming with impossible knowledge of every aspect at once.
+  suffix: Debug, All Aspects, 100
+  categories: [ DoNotMap, ForkFiltered ]
+  components:
+  - type: CEScientificInterest
+    points:
+      Earth: 100
+      Fire: 100
+      Water: 100
+      Air: 100
+      Order: 100
+      Chaos: 100
+      Frost: 100
+      Light: 100
+      Motion: 100
+      Cycle: 100
+      Energia: 100
+      Void: 100
+      Poison: 100
+      Life: 100
+      Crystal: 100
+      Weather: 100
+      Magic: 100
+      Beast: 100
+      Hunger: 100
+      Plant: 100
+      Travel: 100
+      Slime: 100
+      Metal: 100
+      Death: 100
+      Healing: 100
+      Darkness: 100
+      Trap: 100
+      Flight: 100
+      Eldritch: 100
+      Tree: 100
+      Aura: 100
+      Flesh: 100
+      Undead: 100
+      Soul: 100
+      Taint: 100
+      Mind: 100
+      Senses: 100
+      Human: 100
+      Tool: 100
+      Crop: 100
+      Greed: 100
+      Mining: 100
+      Craft: 100
+      Machine: 100
+      Cloth: 100
+      Weapon: 100
+      Armor: 100
+      Harvest: 100

@@ -1,6 +1,7 @@
 using System.Numerics;
 using Content.Shared.Projectiles;
 using Content.Shared.Throwing;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.EntityEffect.Effects;
 
@@ -17,6 +18,9 @@ public sealed partial class ThrowFrom : CEEntityEffectBase<ThrowFrom>
 
     [DataField]
     public float Distance = 2.5f;
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
+        Loc.GetString("ce-entity-effect-guidebook-throw-from", ("power", ThrowPower));
 }
 
 public sealed partial class CEThrowFromEffectSystem : CEEntityEffectSystem<ThrowFrom>

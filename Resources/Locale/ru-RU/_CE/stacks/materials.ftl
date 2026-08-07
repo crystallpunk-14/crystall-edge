@@ -36,6 +36,6 @@ ce-stack-energy-line = энерголинии
 ce-stack-coal-diffusor = угольные рассеиватели
 ce-stack-dimensional-matrix = пространственные матрицы
 
-ce-stack-medium-brass-pipe = латунные трубы
+ce-stack-medium-brass-pipe = средние латунные трубы
 ce-stack-big-brass-pipe = большие латунные трубы
 ce-stack-pipe-valve = вентили для труб

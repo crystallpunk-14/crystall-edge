@@ -59,6 +59,22 @@
 # Alchemy
 
 - type: tradingPosition
+  id: CEClothingEyesThaumaturgyGlasses
+  faction: ImperialChancellery
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CEClothingEyesThaumaturgyGlasses
+    count: 1
+
+- type: tradingPosition
+  id: CEThaumaturgicMagnifyingGlass
+  faction: ImperialChancellery
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CEThaumaturgicMagnifyingGlass
+    count: 1
+
+- type: tradingPosition
   id: CEDropper
   faction: ImperialChancellery
   category: Tools

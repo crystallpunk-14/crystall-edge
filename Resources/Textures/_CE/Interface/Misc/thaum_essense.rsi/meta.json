@@ -5,55 +5,55 @@
     "y": 16
   },
   "license": "CC-BY-SA-4.0",
-  "copyright": "Created by TheShuEd (Github)",
+  "copyright": "Created by omsoyk (Discord). pannus, telum, tutamen, meto created by ezik2008 (Discord).",
   "states": [
-    {
-      "name": "terra"
-    },
-    {
-      "name": "ignis"
-    },
-    {
-      "name": "aqua"
-    },
-    {
-      "name": "aer"
-    },
-    {
-      "name": "ordo"
-    },
-    {
-      "name": "perditio"
-    },
-    {
-      "name": "gelium"
-    },
-    {
-      "name": "lux"
-    },
-    {
-      "name": "motus"
-    },
-    {
-      "name": "permutatio"
-    },
-    {
-      "name": "potentia"
-    },
-    {
-      "name": "vacuos"
-    },
-    {
-      "name": "venenum"
-    },
-    {
-      "name": "victus"
-    },
-    {
-      "name": "vitreus"
-    },
-    {
-      "name": "tempestas"
-    }
+    { "name": "aer" },
+    { "name": "alienis" },
+    { "name": "aqua" },
+    { "name": "arbor" },
+    { "name": "auram" },
+    { "name": "bestia" },
+    { "name": "cognitio" },
+    { "name": "corpus" },
+    { "name": "exanimis" },
+    { "name": "fabrico" },
+    { "name": "fames" },
+    { "name": "gelium" },
+    { "name": "herba" },
+    { "name": "humanus" },
+    { "name": "ignis" },
+    { "name": "instrumentum" },
+    { "name": "iter" },
+    { "name": "limus" },
+    { "name": "lucrum" },
+    { "name": "lux" },
+    { "name": "machina" },
+    { "name": "messis" },
+    { "name": "meto" },
+    { "name": "metallum" },
+    { "name": "mortuus" },
+    { "name": "motus" },
+    { "name": "ordo" },
+    { "name": "pannus" },
+    { "name": "perditio" },
+    { "name": "perfodio" },
+    { "name": "permutatio" },
+    { "name": "potentia" },
+    { "name": "praecantatio" },
+    { "name": "sano" },
+    { "name": "sensus" },
+    { "name": "spiritus" },
+    { "name": "tempestas" },
+    { "name": "tenebrae" },
+    { "name": "terra" },
+    { "name": "telum" },
+    { "name": "tutamen" },
+    { "name": "vacuos" },
+    { "name": "venenum" },
+    { "name": "victus" },
+    { "name": "vinculum" },
+    { "name": "vitium" },
+    { "name": "vitreus" },
+    { "name": "volatus" }
   ]
 }

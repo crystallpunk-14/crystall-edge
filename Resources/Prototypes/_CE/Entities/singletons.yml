@@ -10,3 +10,9 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: CEScience
+
+- type: entity
+  id: CEInfusionAltarSingleton
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: CEInfusionAltarSingleton

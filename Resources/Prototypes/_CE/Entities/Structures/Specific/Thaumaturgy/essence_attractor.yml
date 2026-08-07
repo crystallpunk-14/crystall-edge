@@ -1,0 +1,104 @@
+- type: entity
+  parent:
+  - CEConstructibleMachine
+  - CEBaseMachinePowered
+  - BaseMachine
+  id: CEMagicEssenceAttractor
+  categories: [ ForkFiltered ]
+  name: essence attractor
+  description: A thaumaturgical device that draws in floating magic essence from the air and condenses it into a collectible liquid, as long as it has power.
+  components:
+  - type: Machine
+    board: CEMachineCoreEssenceAttractor
+  - type: InteractionOutline
+  - type: Transform
+    anchored: true
+  - type: Sprite
+    drawdepth: Mobs
+    noRot: true
+    offset: 0, 0.3
+    sprite: _CE/Structures/Specific/Thaumaturgy/essence_attractor.rsi
+    layers:
+    - state: base
+    - state: liq-1
+      map: [ "enum.SolutionContainerLayers.Fill" ]
+      visible: false
+    - state: glass
+    - state: active
+      map: [ "power" ]
+      visible: false
+      shader: unshaded
+  - type: Icon
+    sprite: _CE/Structures/Specific/Thaumaturgy/essence_attractor.rsi
+    state: base
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        density: 190
+        mask: # blocks players/mobs, same as tables
+        - TableMask
+        layer:
+        - TableLayer
+      fix2:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        hard: false # essence should fly in, not bounce off
+        mask:
+        - Impassable
+        layer:
+        - Impassable
+  - type: Solution
+    id: collector
+    solution:
+      maxVol: 100
+  - type: DrainableSolution
+    solution: collector
+  - type: ExaminableSolution
+    solution: collector
+  - type: MixableSolution
+    solution: collector
+  - type: RefillableSolution
+    solution: collector
+  - type: DrawableSolution
+    solution: collector
+  - type: DumpableSolution
+    solution: collector
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 8
+    fillBaseName: liq-
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        power:
+          True: { visible: true }
+          False: { visible: false }
+  - type: AmbientOnPowered
+  - type: AmbientSound
+    enabled: false
+    range: 6
+    volume: 3
+    sound:
+      path: /Audio/Ambience/Objects/gravity_gen_hum.ogg
+  - type: CEMagicEssenceAttractor
+  - type: LitOnPowered
+  - type: PointLight
+    enabled: false
+    color: "#309fdf"
+    radius: 3
+    offset: 0, 0.3
+  - type: LightBehaviour
+    behaviours:
+    - !type:RandomizeBehaviour
+      interpolate: Nearest
+      minDuration: 0.02
+      maxDuration: 0.06
+      startValue: 0.0
+      endValue: 3.0
+      property: Energy
+      isLooped: true
+      enabled: false

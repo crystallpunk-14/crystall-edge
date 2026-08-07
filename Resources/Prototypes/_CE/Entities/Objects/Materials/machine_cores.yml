@@ -58,6 +58,7 @@
   id: CEMachineCoreDrillAdvanced
   parent: CEBaseMachineCore
   name: advanced drill machine core
+  categories: [ DoNotMap ]
   components:
   - type: MachineBoard
     prototype: CEDrillAdvanced
@@ -133,6 +134,7 @@
     prototype: CEMagicEssenceAttractor
   - type: StaticPrice
     price: 150
+
 
 - type: entity
   id: CEMachineCoreDistributionUnit

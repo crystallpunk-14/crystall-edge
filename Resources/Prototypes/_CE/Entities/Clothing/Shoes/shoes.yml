@@ -83,3 +83,24 @@
     sprite: _CE/Clothing/Shoes/pink_slippers.rsi
   - type: Clothing
     sprite: _CE/Clothing/Shoes/pink_slippers.rsi
+
+- type: entity
+  parent: CEClothingShoesBase
+  id: CEClothingShoesHeels
+  name: heels
+  description: Elegant high-heeled shoes.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Shoes/heels.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Shoes/heels.rsi
+  - type: HideLayerClothing
+    slots:
+    - RFoot
+    - LFoot
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: CEStepHeels
+      params:
+        variation: 0.07
+        volume: 8

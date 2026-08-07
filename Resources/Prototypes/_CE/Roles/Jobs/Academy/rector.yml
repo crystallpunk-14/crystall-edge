@@ -11,12 +11,19 @@
   supervisors: ce-job-supervisors-empire
   weight: 3
   special:
-    - !type:CEResearchDataSpecial
-      radius: 6
+    - !type:CEResearchPointsSpecial
+      points:
+        Earth: 20
+        Fire: 20
+        Water: 20
+        Air: 20
+        Order: 20
+        Chaos: 20
 
 - type: startingGear
   id: CEAcademyRectorGear
   equipment:
+    belt: CEKeyRingAcademyRector
     pocket1: CEWalletFilledAcademyRector
 
 - type: entity
@@ -33,3 +40,15 @@
     - id: CECoinSilver1
     - id: CECoinSilver1
     - id: CECoinCopper10
+
+- type: entity
+  id: CEKeyRingAcademyRector
+  parent: CEBaseKeyRing
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+    - id: CEKeyAcademyHall
+    - id: CEKeyAcademyTechnical
+    - id: CEKeyAcademyLab
+    - id: CEKeyAcademyRectorRoom
