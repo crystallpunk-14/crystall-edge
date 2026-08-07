@@ -170,7 +170,8 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
             !TryComp<CEDiscoveryProjectComponent>(item, out var project))
             return;
 
-        if (!_proto.TryIndex(project.Discovery, out var discovery) ||
+        if (project.Discovery is not { } discoveryId ||
+            !_proto.TryIndex(discoveryId, out var discovery) ||
             !_proto.TryIndex(discovery.Knowledge, out var knowledge))
             return;
 
@@ -184,7 +185,7 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
             return;
 
         _knowledge.TryLearn(args.Actor, discovery.Knowledge);
-        _science.MarkChosen(science, project.Discovery);
+        _science.MarkChosen(science, discoveryId);
 
         _container.Remove(item, container);
         Del(item);
