@@ -44,17 +44,18 @@
     children:
     - !type:GroupSelector
       children:
-      - id: CEScrewdriver
-        weight: 2
-      - id: CEWrench
-        weight: 2
-      - id: CELantern
-        weight: 2
-      - id: CECrowbar
-        weight: 2
       - id: CEWeaponDaggerIron
-      - id: CEPlastiseal
-      - id: CEGauze
+      - !type:GroupSelector
+        weight: 2
+        children:
+        - id: CEScrewdriver
+        - id: CEWrench
+        - id: CELantern
+        - id: CECrowbar
+      - !type:GroupSelector
+        children:
+        - id: CEPlastiseal
+        - id: CEGauze
       - !type:GroupSelector
         weight: 2
         children:
@@ -72,24 +73,38 @@
         - id: CEMachinePartDimensionalMatrix1
         - id: CEMachinePartCoalDiffuser1
       - !type:GroupSelector
+        weight: 0.05
+        children:
+        - id: CEEssenceSphereEarth
+        - id: CEEssenceSphereFire
+        - id: CEEssenceSphereWater
+        - id: CEEssenceSphereAir
+        - id: CEEssenceSphereOrder
+        - id: CEEssenceSphereChaos
+      - !type:GroupSelector
         children:
         - id: CEStoneBlock10
         - id: CEDirtBlock10
         - id: CENail10
-      #- id: CETorch
-      #- id: CELighter
       - id: CEKeyFile
       - id: CEScissors
+      - id: CEBookAncient
+        weight: 0.3
       - id: CEBaseLockpick
         weight: 0.1
       - id: CELockIron
         weight: 0.3
       - !type:GroupSelector
+        weight: 0.1
+        children:
+        - id: CERubberStampApproved
+        - id: CERubberStampDenied
+      - !type:GroupSelector
         children:
         - id: CEInstrumentFlute
         - id: CEInstrumentLyra
         - id: CEInstrumentLute
-        - id: CECandle
+      - id: CECandle
       - id: CERope
       - id: CEFork
       - id: CESpoon
@@ -124,15 +139,8 @@
       - id: CEFoodCheesePart
     - id: CECloth10
     - id: CEClothingHeadWreath
-    - !type:GroupSelector
-      children:
-      - id: CECrayonWhite
-      - id: CECrayonBlue
-      - id: CECrayonGreen
-      - id: CECrayonBlack
-      - id: CECrayonPurple
-      - id: CECrayonRed
-      - id: CECrayonYellow
+    - !type:CEEntityGroupSelector
+      group: Crayon
     - !type:GroupSelector
       weight: 0.3
       children:
@@ -143,7 +151,7 @@
     - !type:GroupSelector
       weight: 0.5
       children:
-      - id: CEFloorCarpetItemRed10
-      - id: CEFloorCarpetItemPurple10
-      - id: CEFloorCarpetItemBlue10
-      - id: CEFloorCarpetItemBlack10
+      - !type:CEEntityGroupSelector
+        group: Carpet
+      - !type:CEEntityGroupSelector
+        group: Wallpaper

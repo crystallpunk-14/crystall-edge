@@ -361,12 +361,6 @@ ent-CEBiomeSpawnerGrassland = { ent-CEBaseBiomeSpawner }
     .desc = { ent-CEBaseBiomeSpawner.desc }
     .suffix = Степь
 
-ent-CESpawnPointGroupedBase = None
-
-ent-CESpawnPointGroupedTest = Пробная точка спауна ключ
-
-ent-CESpawnPointGroupedTest2 = Пробная точка спауна монета
-
 ent-CESpawnPointJobBase = None
 
 ent-CESpawnPointGuardCommander = командир охраны
@@ -1916,8 +1910,6 @@ ent-CEBloodpack = пакет крови
 ent-CEBloodpack10 = { ent-CEBloodpack }
     .desc = { ent-CEBloodpack.desc }
     .suffix = Одиночный
-
-ent-CESpawnPointGroupedTestMedical = Тестовая точка спауна Медицина
 
 ent-CEClothingCapeBarbarian = плащ варвара
     .desc = Грубый плащ, излюбленный варварами, часто сделанный из грубых шкур.

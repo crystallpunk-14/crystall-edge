@@ -19,6 +19,9 @@
     sprite: _CE/Objects/Bureaucracy/stamp.rsi
   - type: Item
     size: Tiny
+  - type: CEMagicEssenceStructure
+    essences:
+      Order: { min: 3, max: 6 }
 
 - type: entity
   name: "\"APPROVED\" stamp"
