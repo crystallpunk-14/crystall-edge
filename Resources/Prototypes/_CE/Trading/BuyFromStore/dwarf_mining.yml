@@ -65,15 +65,6 @@
     count: 1
 
 - type: tradingPosition
-  id: CEManaTransferGloveMining
-  priceMarkup: 10
-  faction: DwarfMiners
-  category: Tools
-  service: !type:CEBuyItemsService
-    product: CEManaTransferGlove
-    count: 1
-
-- type: tradingPosition
   id: CEStoneBlock10
   priceMarkup: 10
   faction: DwarfMiners

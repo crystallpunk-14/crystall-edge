@@ -28,3 +28,11 @@
     sprite: _CE/Structures/Specific/Thaumaturgy/node_stabilizator.rsi
     state: icon
   book: CEBaseScienceBookArcaneEngineering
+
+- type: CEKnowledge
+  id: KnowledgeManaTransferGlove
+  name: ce-knowledge-mana-transfer-glove
+  icon:
+    sprite: _CE/Objects/Tools/mana_glove.rsi
+    state: icon
+  book: CEBaseScienceBookArcaneEngineering

@@ -3595,38 +3595,6 @@ entities:
     - type: Transform
       pos: -7.5,11.5
       parent: 1
-- proto: CEManaTransferGlove
-  entities:
-  - uid: 1012
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -2.6657364,-20.48978
-      parent: 1
-  - uid: 1013
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -2.474582,-20.478533
-      parent: 1
-  - uid: 1024
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -2.0472958,-20.48978
-      parent: 1
-  - uid: 1026
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -2.2721837,-20.48978
-      parent: 1
-  - uid: 1031
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -1.7999196,-20.48978
-      parent: 1
 - proto: CENail1
   entities:
   - uid: 1785

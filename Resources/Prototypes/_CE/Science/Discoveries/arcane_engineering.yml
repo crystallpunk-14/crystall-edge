@@ -27,6 +27,16 @@
   - Trap
   knowledge: KnowledgeNodeStabilizer
 
+- type: scienceDiscovery
+  id: ManaTransferGlove
+  parent: EasyDifficult
+  area: ArcaneEngineering
+  targetAspects:
+  - Magic
+  - Energia
+  - Motion
+  knowledge: KnowledgeManaTransferGlove
+
 #MARK: Medium
 
 - type: scienceDiscovery
