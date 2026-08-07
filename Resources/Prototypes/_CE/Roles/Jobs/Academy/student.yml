@@ -50,6 +50,7 @@
         - id: CEVialTiny
         - id: CEVialTiny
         - id: CEGuidebookThaumaturgy
+        - id: CEThaumaturgicMagnifyingGlass
 
 - type: entity
   id: CEBedsideTableFilledAcademyStudent

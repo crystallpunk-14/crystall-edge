@@ -83,7 +83,7 @@ public sealed partial class MaterialResource : CEResourceRequirement
                     if (newStackCount <= 0)
                         entManager.DeleteEntity(placedEntity);
                     else
-                        stackSystem.SetCount(placedEntity, newStackCount, stack);
+                        stackSystem.SetCount((placedEntity, stack), newStackCount);
 
                     requiredCount -= countToRemove;
                 }

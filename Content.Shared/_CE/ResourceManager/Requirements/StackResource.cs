@@ -55,7 +55,7 @@ public sealed partial class StackResource : CEResourceRequirement
             if (stack.Count - count <= 0)
                 entManager.DeleteEntity(placedEntity);
             else
-                stackSystem.SetCount(placedEntity, stack.Count - count, stack);
+                stackSystem.SetCount((placedEntity, stack), stack.Count - count);
 
             requiredCount -= count;
         }

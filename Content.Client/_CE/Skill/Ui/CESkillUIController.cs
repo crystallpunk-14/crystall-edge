@@ -10,6 +10,7 @@ using Content.Shared._CE.Skill.Prototypes;
 using Content.Shared._CE.Skill.Restrictions;
 using Content.Shared._CE.Input;
 using JetBrains.Annotations;
+using Robust.Client.GameObjects;
 using Robust.Client.Player;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
@@ -29,6 +30,7 @@ public sealed partial class CESkillUIController : UIController, IOnStateEntered<
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IEntityManager _entManager = default!;
     [UISystemDependency] private readonly CEClientSkillSystem _skill = default!;
+    [UISystemDependency] private readonly SpriteSystem _sprite = default!;
 
     private CESkillWindow? _window;
     private EntityUid? _targetPlayer;
@@ -76,7 +78,7 @@ public sealed partial class CESkillUIController : UIController, IOnStateEntered<
         {
             _window.GraphControl.OnNodeSelected -= SelectNode;
 
-            _window.Dispose();
+            _window.Close();
             _window = null;
         }
 
@@ -176,12 +178,12 @@ public sealed partial class CESkillUIController : UIController, IOnStateEntered<
         _window.SkillName.Text = _skill.GetSkillName(skill);
         _window.SkillDescription.SetMessage(GetSkillDescription(skill));
         _window.SkillFree.Visible = _skill.HaveFreeSkill(_targetPlayer.Value, skill);
-        _window.SkillView.Texture = skill.Icon.Frame0();
+        _window.SkillView.Texture = _sprite.Frame0(skill.Icon);
         _window.LearnButton.Disabled = !_skill.CanLearnSkill(_targetPlayer.Value, skill);
         _window.SkillPointText.Text =
             Loc.GetString("ce-skill-menu-learncost", ("type", Loc.GetString(indexedSkillType.Name)));
         _window.SkillCost.Text = skill.LearnCost.ToString();
-        _window.SkillPointIcon.Texture = indexedSkillType.Icon?.Frame0();
+        _window.SkillPointIcon.Texture = indexedSkillType.Icon is { } skillTypeIcon ? _sprite.Frame0(skillTypeIcon) : null;
 
         UpdateGraphControl();
     }
@@ -246,7 +248,7 @@ public sealed partial class CESkillUIController : UIController, IOnStateEntered<
             ? $"{Loc.GetString(indexedSkillType.Name)}: {skillContainer.Sum}/{skillContainer.Max}"
             : $"{Loc.GetString(indexedSkillType.Name)}: 0/0";
 
-        _window.LevelTexture.Texture = indexedSkillType.Icon?.Frame0();
+        _window.LevelTexture.Texture = indexedSkillType.Icon is { } levelIcon ? _sprite.Frame0(levelIcon) : null;
 
         HashSet<CENodeTreeElement> nodeTreeElements = new();
 
@@ -354,7 +356,7 @@ public sealed partial class CESkillUIController : UIController, IOnStateEntered<
             var treeButton = new CESkillTreeButtonControl(indexedTree.Color,
                 Loc.GetString(indexedTree.Name),
                 learnedPoints,
-                indexedSkillType.Icon?.Frame0());
+                indexedSkillType.Icon is { } treeIcon ? _sprite.Frame0(treeIcon) : null);
             treeButton.ToolTip = Loc.GetString(indexedTree.Desc ?? string.Empty);
             treeButton.OnPressed += () =>
             {

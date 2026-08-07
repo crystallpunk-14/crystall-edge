@@ -106,7 +106,7 @@ public sealed partial class CESharedWallpaperSystem : EntitySystem
         Dirty(holder);
 
         if (TryComp<StackComponent>(args.Used, out var stack) && stack.Count > 1)
-            _stack.SetCount(args.Used.Value, stack.Count - 1);
+            _stack.SetCount((args.Used.Value, stack), stack.Count - 1);
         else
             PredictedQueueDel(args.Used.Value);
     }

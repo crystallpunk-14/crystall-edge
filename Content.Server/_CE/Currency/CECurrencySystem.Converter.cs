@@ -243,7 +243,7 @@ public sealed partial class CECurrencySystem
 
             if (addedStack > 0)
             {
-                _stack.SetCount(ent, stack.Count + (int)addedStack);
+                _stack.SetCount((ent, stack), stack.Count + (int)addedStack);
                 remainder -= (int)(addedStack * singleStackCurrency);
             }
         }
