@@ -44,7 +44,7 @@
         children:
         - id: CERubberStampApproved
         - id: CERubberStampDenied
-        - id: CERubberStampTavern
+        - id: CERubberStampGuildmaster
 
 - type: entity
   id: CEBedsideTableFilledTavernmaster
