@@ -4,10 +4,6 @@
   generation:
     radius: 2
     minTargetDistance: 4
-    deadZoneLayers:
-    - threshold: 0.3
-      noise:
-        frequency: 0.1
 
 - type: scienceDiscovery
   id: MediumDifficult
