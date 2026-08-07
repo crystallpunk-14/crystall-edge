@@ -13,7 +13,7 @@ namespace Content.Shared._CE.Science.Components;
 public sealed partial class CEDiscoveryProjectComponent : Component
 {
     [DataField, AutoNetworkedField]
-    public ProtoId<CEScienceDiscoveryPrototype> Discovery;
+    public ProtoId<CEScienceDiscoveryPrototype>? Discovery;
 
     /// <summary>
     /// The generated puzzle map. Sparse: a coordinate absent from this dictionary is open ground,
