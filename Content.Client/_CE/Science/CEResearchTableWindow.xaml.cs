@@ -219,11 +219,8 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
 
     private void UpdateProjectContainer(CEDiscoveryProjectComponent project)
     {
-        // Discovery can still be its default (empty) value here if this update fired before the
-        // project's own networked state (spawned this tick) has arrived - bail out quietly and
-        // wait for the follow-up update once it does, rather than indexing a null/empty ProtoId.
-        if (string.IsNullOrEmpty(project.Discovery.Id) ||
-            !_prototype.TryIndex(project.Discovery, out var discovery) ||
+        if (project.Discovery is not { } discoveryId ||
+            !_prototype.TryIndex(discoveryId, out var discovery) ||
             !_prototype.TryIndex(discovery.Area, out var area) ||
             !_prototype.TryIndex(discovery.Knowledge, out var knowledge))
             return;
