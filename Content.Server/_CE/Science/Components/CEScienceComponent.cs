@@ -12,8 +12,14 @@ namespace Content.Server._CE.Science.Components;
 public sealed partial class CEScienceComponent : Component
 {
     /// <summary>
-    /// Each science area's research map: only non-empty cells (dead zones, achievements, etc.)
-    /// are stored, keyed by their coordinate on that area's independent map.
+    /// Discovery prototypes not currently offered on any star's unresolved offer, drawable when
+    /// rolling a new offer
     /// </summary>
-    public Dictionary<ProtoId<CEScienceAreaPrototype>, Dictionary<Vector2i, CEScienceMapCell>> Areas = new();
+    public HashSet<ProtoId<CEScienceDiscoveryPrototype>> AvailableDiscoveries = new();
+
+    /// <summary>
+    /// Discovery prototypes a player has permanently placed on the map by choosing their card.
+    /// Excluded forever from <see cref="AvailableDiscoveries"/> refills.
+    /// </summary>
+    public HashSet<ProtoId<CEScienceDiscoveryPrototype>> ChosenDiscoveries = new();
 }

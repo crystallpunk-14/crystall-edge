@@ -1,7 +1,0 @@
-<ui:CEScienceMapControl
-    xmlns="https://spacestation14.io"
-    xmlns:ui="clr-namespace:Content.Client._CE.Science"
-    HorizontalExpand="True"
-    VerticalExpand="True"
-    RectClipContent="True"
-    MouseFilter="Stop"/>
