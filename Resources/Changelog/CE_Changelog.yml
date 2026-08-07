@@ -553,3 +553,11 @@
   id: 1055
   time: '2026-08-07T12:02:18.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/391
+- author: gogenych
+  changes:
+  - message: Two new curtain colors (purple and green) and four new patterns have
+      been added. We now have a total of 20 curtain options.
+    type: Add
+  id: 1056
+  time: '2026-08-07T12:08:22.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/383
