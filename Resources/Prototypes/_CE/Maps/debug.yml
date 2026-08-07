@@ -61,30 +61,6 @@
             - type: SunShadow
             - type: MapLight
               ambientLightColor: "#75e3ff"
-        - type: CEStationSpawnerDistribution
-          spawns:
-            CECoin: !type:AllSelector
-              children:
-              - id: CECoinCopper1
-                amount: 5
-              - id: CECoinSilver1
-                amount: 1
-            CEKey: !type:AllSelector
-              children:
-              - id: CEKeyIronBlank
-                amount: 5
-              - id: CEBaseLockpick
-                amount: 1
-            CEMedical: !type:AllSelector #Tempmed remove later
-              children:
-              - id: CEGauze
-                amount: 6
-              - id: CEPlastiseal
-                amount: 4
-              - id: CEBloodpack
-                amount: 2
-              - id: CEMagicDefib
-                amount: 1
 
 - type: zMap
   id: Empty

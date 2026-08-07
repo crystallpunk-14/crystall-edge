@@ -44,17 +44,18 @@
     children:
     - !type:GroupSelector
       children:
-      - id: CEScrewdriver
-        weight: 2
-      - id: CEWrench
-        weight: 2
-      - id: CELantern
-        weight: 2
-      - id: CECrowbar
-        weight: 2
       - id: CEWeaponDaggerIron
-      - id: CEPlastiseal
-      - id: CEGauze
+      - !type:GroupSelector
+        weight: 2
+        children:
+        - id: CEScrewdriver
+        - id: CEWrench
+        - id: CELantern
+        - id: CECrowbar
+      - !type:GroupSelector
+        children:
+        - id: CEPlastiseal
+        - id: CEGauze
       - !type:GroupSelector
         weight: 2
         children:
@@ -103,7 +104,7 @@
         - id: CEInstrumentFlute
         - id: CEInstrumentLyra
         - id: CEInstrumentLute
-        - id: CECandle
+      - id: CECandle
       - id: CERope
       - id: CEFork
       - id: CESpoon
