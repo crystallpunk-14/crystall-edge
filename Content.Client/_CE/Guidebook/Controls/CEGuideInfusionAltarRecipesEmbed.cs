@@ -47,12 +47,11 @@ public sealed partial class CEGuideInfusionAltarRecipesEmbed : BoxContainer, IDo
         return true;
     }
 
-    protected override void Dispose(bool disposing)
+    protected override void ExitedTree()
     {
-        base.Dispose(disposing);
+        base.ExitedTree();
 
-        if (disposing)
-            _knowledge.OnRecipesUpdated -= OnRecipesUpdated;
+        _knowledge.OnRecipesUpdated -= OnRecipesUpdated;
     }
 
     private void OnRecipesUpdated(List<CEInfusionAltarKnownRecipeInfo> recipes)

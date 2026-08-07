@@ -66,7 +66,7 @@ public sealed partial class CERadialConstructionMenuBoundUserInterface : BoundUs
 
         if (disposing)
         {
-            _menu?.Dispose();
+            _menu?.Close();
             _menu = null;
         }
     }

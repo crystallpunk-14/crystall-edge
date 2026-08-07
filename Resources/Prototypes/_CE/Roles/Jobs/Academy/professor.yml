@@ -59,6 +59,7 @@
         - id: CEVialMedium
         - id: CEClothingEyesThaumaturgyGlasses
         - id: CEGuidebookThaumaturgy
+        - id: CEThaumaturgicMagnifyingGlass
 
 - type: entity
   id: CEBedsideTableFilledAcademyProfessor

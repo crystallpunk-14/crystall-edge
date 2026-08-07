@@ -31,6 +31,6 @@ public sealed partial class CEDiscordAuthState : State
     protected override void Shutdown()
     {
         _checkTimerCancel.Cancel();
-        _gui!.Dispose();
+        _gui!.Orphan();
     }
 }

@@ -83,7 +83,7 @@ public sealed partial class CEBiomeSpawnerSystem : EntitySystem
         }
 
         //Add decals
-        if (_biome.TryGetDecals(vec, biome.Layers, _globalSeed, map, out var decals))
+        if (_biome.TryGetDecals(vec, biome.Layers, _globalSeed, (gridUid, map), out var decals))
         {
             foreach (var decal in decals)
             {
@@ -100,7 +100,7 @@ public sealed partial class CEBiomeSpawnerSystem : EntitySystem
                 QueueDel(entToRemove);
         }
 
-        if (_biome.TryGetEntity(vec, biome.Layers, tile.Value, _globalSeed, map, out var entityProto))
+        if (_biome.TryGetEntity(vec, biome.Layers, tile.Value, _globalSeed, (gridUid, map), out var entityProto))
             Spawn(entityProto, new EntityCoordinates(gridUid, tileCenterVec));
     }
 }

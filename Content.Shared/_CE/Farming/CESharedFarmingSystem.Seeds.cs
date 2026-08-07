@@ -72,7 +72,7 @@ public abstract partial class CESharedFarmingSystem
         PredictedSpawnAtPosition(ent.Comp.PlantProto, position);
 
         if (TryComp<StackComponent>(ent, out var stack) && stack.Count > 1)
-            _stack.SetCount(ent, stack.Count - 1);
+            _stack.SetCount((ent.Owner, stack), stack.Count - 1);
         else
             PredictedQueueDel(ent);
     }

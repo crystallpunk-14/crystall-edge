@@ -45,7 +45,7 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
         SubscribeLocalEvent<CEZFlyerComponent, StunnedEvent>(OnStunned);
         SubscribeLocalEvent<CEZFlyerComponent, KnockedDownEvent>(OnKnockDowned);
         SubscribeLocalEvent<CEZFlyerComponent, MobStateChangedEvent>(OnMobStateChanged);
-        SubscribeLocalEvent<CEZFlyerComponent, DamageChangedEvent>(OnDamageChanged);
+        SubscribeLocalEvent<CEZFlyerComponent, DamageDealtEvent>(OnDamageDealt);
     }
 
     private void CheckWeightless(Entity<CEZFlyerComponent> ent, ref IsWeightlessEvent args)
@@ -57,12 +57,22 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
         args.Handled = true;
     }
 
-    private void OnDamageChanged(Entity<CEZFlyerComponent> ent, ref DamageChangedEvent args)
+    private void OnDamageDealt(Entity<CEZFlyerComponent> ent, ref DamageDealtEvent args)
     {
-        if (!args.DamageIncreased)
+        if (!args.InterruptsDoAfters)
             return;
 
-        if (!args.InterruptsDoAfters)
+        var damageIncreased = false;
+        foreach (var amount in args.Damage.DamageDict.Values)
+        {
+            if (amount <= 0)
+                continue;
+
+            damageIncreased = true;
+            break;
+        }
+
+        if (!damageIncreased)
             return;
 
         DeactivateFlight((ent, ent));

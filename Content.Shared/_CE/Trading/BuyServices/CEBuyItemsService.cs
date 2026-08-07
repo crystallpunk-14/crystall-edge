@@ -32,7 +32,8 @@ public sealed partial class CEBuyItemsService : CEStoreBuyService
             return ":3";
 
         var count = Count;
-        if (indexedProduct.TryGetComponent<StackComponent>(out var stack))
+        var factory = IoCManager.Resolve<IComponentFactory>();
+        if (indexedProduct.TryGetComponent<StackComponent>(out var stack, factory))
             count *= stack.Count;
 
         return Count > 0 ? $"{indexedProduct.Name} x{count}" : indexedProduct.Name;

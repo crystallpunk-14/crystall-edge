@@ -121,7 +121,7 @@ public sealed partial class CEPenActionsBoundUserInterface : BoundUserInterface
 
         if (disposing)
         {
-            _menu?.Dispose();
+            _menu?.Close();
             _menu = null;
         }
     }
