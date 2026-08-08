@@ -14,7 +14,7 @@
     - state: base_scribbles
   - type: Item
     size: Tiny
-    shape: 
+    shape:
     - 0, 0, 1, 0
   - type: CEUnselectedDiscoveryProject
   - type: Tag
@@ -34,7 +34,7 @@
     sprite: _CE/Objects/Specific/Thaumaturgy/research_project.rsi
   - type: Item
     size: Tiny
-    shape: 
+    shape:
     - 0, 0, 0, 2
   - type: CEDiscoveryProject
   - type: Tag
@@ -50,5 +50,15 @@
   - type: Sprite
     layers:
     - state: base
-    - state: base_scribbles
     - state: engineering
+
+- type: entity
+  parent: CEDiscoveryProjectBase
+  id: CEDiscoveryProjectArtifactoric
+  categories: [ HideSpawnMenu, ForkFiltered ]
+  name: artifactoric research project
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: artifactoric
