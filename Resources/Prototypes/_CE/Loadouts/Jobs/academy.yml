@@ -5,11 +5,17 @@
   name: ce-loadout-shirt
   loadouts:
   - CEClothingShirtAcademyRobe
+  - CEClothingShirtAcademyRobe2
 
 - type: loadout
   id: CEClothingShirtAcademyRobe
   equipment:
     shirt: CEClothingShirtAcademyRobe
+
+- type: loadout
+  id: CEClothingShirtAcademyRobe2
+  equipment:
+    shirt: CEClothingShirtAcademyRobe2
 
 # Cloak
 
