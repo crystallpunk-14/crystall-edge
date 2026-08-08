@@ -6,9 +6,9 @@
   description: A rugged cape favored by barbarians, often made from rough hides.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Cloak/Cape/barbarian.rsi
+    sprite: _CE/Clothing/Cloak/Generic/Cape/barbarian.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Cloak/Cape/barbarian.rsi
+    sprite: _CE/Clothing/Cloak/Generic/Cape/barbarian.rsi
 
 - type: entity
   parent:
@@ -18,9 +18,9 @@
   description: A warm fur cape ideal for cold climates.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Cloak/Cape/furcape.rsi
+    sprite: _CE/Clothing/Cloak/Generic/Cape/fur.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Cloak/Cape/furcape.rsi
+    sprite: _CE/Clothing/Cloak/Generic/Cape/fur.rsi
 
 - type: entity
   parent:
@@ -30,6 +30,6 @@
   description: A secondary fur cape style with a different fur pattern.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Cloak/Cape/furcape2.rsi
+    sprite: _CE/Clothing/Cloak/Generic/Cape/fur2.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Cloak/Cape/furcape2.rsi
+    sprite: _CE/Clothing/Cloak/Generic/Cape/fur2.rsi

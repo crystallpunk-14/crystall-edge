@@ -42,9 +42,9 @@
   description: A syurko styled for guard uniforms.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Shirt/Guard/syurko_guard.rsi
+    sprite: _CE/Clothing/Shirt/Guard/syurko.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Shirt/Guard/syurko_guard.rsi
+    sprite: _CE/Clothing/Shirt/Guard/syurko.rsi
 
 - type: entity
   parent:

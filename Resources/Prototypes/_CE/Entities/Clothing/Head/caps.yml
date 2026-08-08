@@ -5,6 +5,6 @@
   description: Standard issue cap worn by city guards.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Head/Caps/guard.rsi
+    sprite: _CE/Clothing/Head/Guard/cap.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Head/Caps/guard.rsi
+    sprite: _CE/Clothing/Head/Guard/cap.rsi

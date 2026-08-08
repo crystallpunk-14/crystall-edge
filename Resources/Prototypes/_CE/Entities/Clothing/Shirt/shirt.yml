@@ -203,9 +203,9 @@
   description: The shirt worn by the imperial guard. All identical, in a single, strict style.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Shirt/Guard/guard.rsi
+    sprite: _CE/Clothing/Shirt/Guard/shirt.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Shirt/Guard/guard.rsi
+    sprite: _CE/Clothing/Shirt/Guard/shirt.rsi
 
 - type: entity
   parent: CEClothingShirtBase
