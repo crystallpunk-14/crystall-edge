@@ -10,6 +10,10 @@
   requireAdminNotify: true
   joinNotifyCrew: true
   weight: 2
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: CETavern
+      time: 2.5h
 
 - type: startingGear
   id: CETavernmasterGear

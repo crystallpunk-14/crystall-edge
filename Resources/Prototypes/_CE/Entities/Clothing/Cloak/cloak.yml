@@ -6,9 +6,9 @@
   description: A simple blue cloak for everyday travel and protection.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Cloak/Cloak/blue.rsi
+    sprite: _CE/Clothing/Cloak/Generic/Cloak/blue.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Cloak/Cloak/blue.rsi
+    sprite: _CE/Clothing/Cloak/Generic/Cloak/blue.rsi
 
 - type: entity
   parent:
@@ -18,9 +18,9 @@
   description: A stately cloak worn by high-ranking officers and commandants.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Cloak/Cloak/commandant.rsi
+    sprite: _CE/Clothing/Cloak/Generic/Cloak/commandant.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Cloak/Cloak/commandant.rsi
+    sprite: _CE/Clothing/Cloak/Generic/Cloak/commandant.rsi
 
 - type: entity
   parent:
@@ -30,9 +30,9 @@
   description: A prestigious cloak worn by the guard commander, denoting authority.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Cloak/Cloak/guard_commander.rsi
+    sprite: _CE/Clothing/Cloak/Guard/commander.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Cloak/Cloak/guard_commander.rsi
+    sprite: _CE/Clothing/Cloak/Guard/commander.rsi
   - type: CETheftValue
     difficulty: 2
 
@@ -44,9 +44,9 @@
   description: A status item that only senior foremen responsible for the integrity of the island are allowed to wear. The fabric is stitched with thin brass threads, providing excellent insulation from magical radiation.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Cloak/Cloak/brigadier.rsi
+    sprite: _CE/Clothing/Cloak/Engineering/brigadier.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Cloak/Cloak/brigadier.rsi
+    sprite: _CE/Clothing/Cloak/Engineering/brigadier.rsi
   - type: CETheftValue
     difficulty: 1
   - type: CEEnergyRadiationArmor
@@ -64,9 +64,9 @@
   description: A ceremonial cloak worn by the tavernmaster, symbolizing leadership.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Cloak/Cloak/guildmaster.rsi
+    sprite: _CE/Clothing/Cloak/Tavern/guildmaster.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Cloak/Cloak/guildmaster.rsi
+    sprite: _CE/Clothing/Cloak/Tavern/guildmaster.rsi
   - type: CETheftValue
     difficulty: 1
 
@@ -78,9 +78,9 @@
   description: An insulated mantle designed to retain heat in cold conditions.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Cloak/Cloak/insulated_mantle.rsi
+    sprite: _CE/Clothing/Cloak/Generic/Cloak/insulated_mantle.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Cloak/Cloak/insulated_mantle.rsi
+    sprite: _CE/Clothing/Cloak/Generic/Cloak/insulated_mantle.rsi
 
 - type: entity
   parent:
@@ -90,9 +90,9 @@
   description: An elegant white cloak favored by vampire nobility.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Cloak/Cloak/vamipre_white.rsi
+    sprite: _CE/Clothing/Cloak/Generic/Cloak/vamipre_white.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Cloak/Cloak/vamipre_white.rsi
+    sprite: _CE/Clothing/Cloak/Generic/Cloak/vamipre_white.rsi
   - type: CEMagicEssenceStructure
     essences:
       Cloth: { min: 1, max: 3 }
@@ -106,9 +106,9 @@
   description: A dark blue cloak with vampiric styling.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Cloak/Cloak/vampire_blue.rsi
+    sprite: _CE/Clothing/Cloak/Generic/Cloak/vampire_blue.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Cloak/Cloak/vampire_blue.rsi
+    sprite: _CE/Clothing/Cloak/Generic/Cloak/vampire_blue.rsi
   - type: CEMagicEssenceStructure
     essences:
       Cloth: { min: 1, max: 3 }
@@ -122,9 +122,9 @@
   description: A crimson cloak favored by vampiric aristocracy.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Cloak/Cloak/vampire_red.rsi
+    sprite: _CE/Clothing/Cloak/Generic/Cloak/vampire_red.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Cloak/Cloak/vampire_red.rsi
+    sprite: _CE/Clothing/Cloak/Generic/Cloak/vampire_red.rsi
   - type: CEMagicEssenceStructure
     essences:
       Cloth: { min: 1, max: 3 }

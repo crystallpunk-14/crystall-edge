@@ -6,9 +6,9 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Head/Hood/thaumaturge.rsi
+    sprite: _CE/Clothing/Head/Academy/thaumaturge.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Head/Hood/thaumaturge.rsi
+    sprite: _CE/Clothing/Head/Academy/thaumaturge.rsi
   - type: HideLayerClothing
     slots:
     - Hair
