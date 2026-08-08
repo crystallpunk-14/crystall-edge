@@ -3,7 +3,7 @@
   parent: BaseItem
   name: Staff of Revival
   description: Works magically to make the target breath again.
-  categories: [ ForkFiltered ]
+  categories: [ ForkFiltered, DoNotMap ]
   components:
     - type: Sprite
       sprite: _CE/Objects/Tools/healing_staff.rsi

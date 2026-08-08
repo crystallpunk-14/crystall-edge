@@ -1,0 +1,11 @@
+#MARK: Medium
+
+- type: scienceDiscovery
+  id: MagicDefib
+  parent: MediumDifficult
+  area: Artifactoric
+  targetAspects:
+  - Life
+  - Magic
+  - Death
+  knowledge: KnowledgeMagicDefib
