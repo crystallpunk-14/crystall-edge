@@ -19,6 +19,9 @@ public sealed partial class CEScienceAreaCardControl : PanelContainer
         BorderColor = Color.FromHex("#53b58b"),
     };
 
+    private static readonly Color StudiedColor = Color.FromHex("#53b58b");
+    private static readonly Color ExhaustedModulate = new(1f, 1f, 1f, 0.4f);
+
     [Dependency] private IEntityManager _entity = default!;
 
     public readonly ProtoId<CEScienceAreaPrototype> AreaId;
@@ -26,6 +29,7 @@ public sealed partial class CEScienceAreaCardControl : PanelContainer
     public event Action<ProtoId<CEScienceAreaPrototype>>? OnSelect;
 
     private readonly StyleBox? _normalBox;
+    private bool _exhausted;
 
     public CEScienceAreaCardControl(CEScienceAreaPrototype area)
     {
@@ -43,7 +47,7 @@ public sealed partial class CEScienceAreaCardControl : PanelContainer
 
         OnKeyBindDown += args =>
         {
-            if (args.Function != EngineKeyFunctions.UIClick)
+            if (args.Function != EngineKeyFunctions.UIClick || _exhausted)
                 return;
 
             args.Handle();
@@ -54,5 +58,29 @@ public sealed partial class CEScienceAreaCardControl : PanelContainer
     public void SetSelected(bool selected)
     {
         PanelOverride = selected ? SelectedBox : _normalBox;
+    }
+
+    /// <summary>
+    /// Updates the study-progress readout from a viewer's known/unlockable discovery counts in this
+    /// area. Unlockable == 0 means nothing is left to research here - the card dims and stops
+    /// accepting clicks, and shows the studied label instead of a percentage.
+    /// </summary>
+    public void SetProgress(int known, int unlockable)
+    {
+        _exhausted = unlockable == 0;
+        Modulate = _exhausted ? ExhaustedModulate : Color.White;
+
+        if (_exhausted)
+        {
+            ProgressLabel.Text = Loc.GetString("ce-research-table-area-studied");
+            ProgressLabel.FontColorOverride = StudiedColor;
+        }
+        else
+        {
+            var total = known + unlockable;
+            var percent = total == 0 ? 100 : known * 100 / total;
+            ProgressLabel.Text = Loc.GetString("ce-research-table-area-progress", ("percent", percent));
+            ProgressLabel.FontColorOverride = null;
+        }
     }
 }

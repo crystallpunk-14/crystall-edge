@@ -16,8 +16,9 @@
         <TextureRect Name="IconTexture"
                      SetSize="96 96"
                      HorizontalAlignment="Center"
-                     Margin="0 4" 
+                     Margin="0 4"
                      Stretch="KeepAspectCentered" />
+        <Label Name="ProgressLabel" HorizontalAlignment="Center" Margin="0 2" />
         <controls:HLine Color="#404040" Thickness="1" Margin="0 2" />
         <RichTextLabel Name="DescLabel" Margin="4" />
     </BoxContainer>

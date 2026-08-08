@@ -26,6 +26,7 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
     [Dependency] private IPrototypeManager _prototype = default!;
     private readonly ItemSlotsSystem _itemSlots = default!;
     private readonly CEResearchTableSystem _researchTable = default!;
+    private readonly CEClientScienceSystem _science = default!;
 
     private readonly Dictionary<ProtoId<CEScienceAreaPrototype>, CEScienceAreaCardControl> _areaCards = new();
     private readonly Dictionary<ProtoId<CEScienceDiscoveryPrototype>, CEScienceDiscoveryCardControl> _discoveryCards = new();
@@ -48,6 +49,7 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
         IoCManager.InjectDependencies(this);
         _itemSlots = _entityManager.System<ItemSlotsSystem>();
         _researchTable = _entityManager.System<CEResearchTableSystem>();
+        _science = _entityManager.System<CEClientScienceSystem>();
 
         KnowledgeControl.OnMerge += (first, second) => OnMergeAspects?.Invoke(first, second);
         StartResearchButton.OnPressed += _ =>
@@ -116,6 +118,15 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
 
         KnowledgeControl.UpdateKnowledge(points);
 
+        if (_player.LocalEntity is { } localPlayer)
+        {
+            foreach (var (id, card) in _areaCards)
+            {
+                var (known, unlockable) = _science.GetAreaProgress(localPlayer, id);
+                card.SetProgress(known, unlockable);
+            }
+        }
+
         if (!_entityManager.TryGetComponent<CEResearchTableComponent>(_owner, out var table))
             return;
 
@@ -160,7 +171,10 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
                 CostContainer.AddChild(control);
             }
 
-            StartResearchButton.Disabled = !CESharedScienceSystem.CanAfford(points, area.Cost);
+            var exhausted = _player.LocalEntity is { } actor &&
+                             _science.GetAreaProgress(actor, areaId).Unlockable == 0;
+
+            StartResearchButton.Disabled = exhausted || !CESharedScienceSystem.CanAfford(points, area.Cost);
         }
         else
         {
