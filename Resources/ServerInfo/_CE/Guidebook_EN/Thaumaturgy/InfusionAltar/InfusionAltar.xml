@@ -50,4 +50,11 @@ An unpaired stabilizer, on the other hand, slightly raises chaos.
 <GuideEntityEmbed Entity="CECandle" Caption="Candle"/>
 <GuideEntityEmbed Entity="CECandelabra" Caption="Candelabra"/>
 </Box>
+
+## Gaining knowledge
+Whatever you create with the infusion altar counts as a scientific interest. You can study the result with a thaumaturgic magnifying glass to gain knowledge.
+
+<Box>
+<GuideEntityEmbed Entity="CEThaumaturgicMagnifyingGlass" Caption=""/>
+</Box>
 </Document>

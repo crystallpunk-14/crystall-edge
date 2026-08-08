@@ -6,6 +6,7 @@
   text: "/ServerInfo/_CE/Guidebook_EN/Thaumaturgy/Thaumaturgy.xml"
   children:
   - CEThaumaturgyAspectsEN
+  - CEThaumaturgyResearchEN
   - CEThaumaturgyInfusionAltarEN
 
 - type: guideEntry
@@ -14,6 +15,14 @@
   id: CEThaumaturgyAspectsEN
   name: Aspects
   text: "/ServerInfo/_CE/Guidebook_EN/Thaumaturgy/Aspects.xml"
+  filterEnabled: True
+
+- type: guideEntry
+  hidden: false
+  locFilter: "en-US"
+  id: CEThaumaturgyResearchEN
+  name: Research
+  text: "/ServerInfo/_CE/Guidebook_EN/Thaumaturgy/Research.xml"
   filterEnabled: True
 
 - type: guideEntry
@@ -41,6 +50,7 @@
   text: "/ServerInfo/_CE/Guidebook_RU/Thaumaturgy/Thaumaturgy.xml"
   children:
   - CEThaumaturgyAspectsRU
+  - CEThaumaturgyResearchRU
   - CEThaumaturgyInfusionAltarRU
 
 - type: guideEntry
@@ -49,6 +59,14 @@
   id: CEThaumaturgyAspectsRU
   name: Аспекты
   text: "/ServerInfo/_CE/Guidebook_RU/Thaumaturgy/Aspects.xml"
+  filterEnabled: True
+
+- type: guideEntry
+  hidden: false
+  locFilter: "ru-RU"
+  id: CEThaumaturgyResearchRU
+  name: Исследование
+  text: "/ServerInfo/_CE/Guidebook_RU/Thaumaturgy/Research.xml"
   filterEnabled: True
 
 - type: guideEntry
