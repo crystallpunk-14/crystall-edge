@@ -7,3 +7,90 @@
     sprite: _CE/Interface/guidebook.rsi
     layers:
     - state: farming
+
+- type: entity
+  id: CEGuidebookEssenceEarthDummy
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    layers:
+    - state: terra
+
+- type: entity
+  id: CEGuidebookEssenceFireDummy
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    layers:
+    - state: ignis
+
+- type: entity
+  id: CEGuidebookEssenceWaterDummy
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    layers:
+    - state: aqua
+
+- type: entity
+  id: CEGuidebookEssenceAirDummy
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    layers:
+    - state: aer
+
+- type: entity
+  id: CEGuidebookEssenceOrderDummy
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    layers:
+    - state: ordo
+
+- type: entity
+  id: CEGuidebookEssenceChaosDummy
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    layers:
+    - state: perditio
+
+- type: entity
+  id: CEGuidebookEssenceNodeDummy
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    noRot: true
+    layers:
+    - map: [ "essenceA" ]
+      sprite: _CE/Structures/Specific/Thaumaturgy/Node/big_node.rsi
+      state: base
+      shader: unshaded
+      offset: 0.05, 0.02
+      color: "#362c46"
+    - map: [ "essenceB" ]
+      sprite: _CE/Structures/Specific/Thaumaturgy/Node/medium_node.rsi
+      state: base
+      shader: unshaded
+      offset: 0.05, 0.06
+      color: "#6ab8e2"
+    - map: [ "essenceC" ]
+      sprite: _CE/Structures/Specific/Thaumaturgy/Node/smol_node.rsi
+      state: base
+      shader: unshaded
+      offset: -0.05, 0.06
+      color: "#7dbf41"

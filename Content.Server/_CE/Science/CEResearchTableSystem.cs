@@ -64,9 +64,6 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
             !HasComp<PaperComponent>(paper))
             return;
 
-        if (!_science.TryGetSingleton(out var science))
-            return;
-
         if (!_container.TryGetContainer(ent.Owner, ent.Comp.PaperSlotId, out var container))
             return;
 
@@ -74,7 +71,7 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
         if (!_science.TrySpendPoints((args.Actor, data), area.Cost))
             return;
 
-        var candidates = _science.DrawOffer(science, args.Area, args.Actor, 3);
+        var candidates = _science.DrawOffer(data, args.Area, args.Actor, 3);
 
         var project = Spawn(_projectProto, Transform(ent.Owner).Coordinates);
         var projectComp = EnsureComp<CEUnselectedDiscoveryProjectComponent>(project);
@@ -111,11 +108,11 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
             !_proto.TryIndex(discovery.Area, out var area))
             return;
 
-        if (!_science.TryGetSingleton(out _))
-            return;
-
         if (!_container.TryGetContainer(ent.Owner, ent.Comp.PaperSlotId, out var container))
             return;
+
+        var data = EnsureComp<CEScienceResearchDataComponent>(args.Actor);
+        _science.ReturnUnchosen(data, draft.Candidates, args.Discovery);
 
         _container.Remove(item, container);
         Del(item);
@@ -178,14 +175,10 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
         if (!IsProjectSolved(project.Tiles))
             return;
 
-        if (!_science.TryGetSingleton(out var science))
-            return;
-
         if (!_container.TryGetContainer(ent.Owner, ent.Comp.PaperSlotId, out var container))
             return;
 
         _knowledge.TryLearn(args.Actor, discovery.Knowledge);
-        _science.MarkChosen(science, discoveryId);
 
         _container.Remove(item, container);
         Del(item);

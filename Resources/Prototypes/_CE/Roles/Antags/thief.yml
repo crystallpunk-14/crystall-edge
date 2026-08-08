@@ -2,7 +2,7 @@
   id: CEThief
   name: ce-roles-antag-thief-name
   antagonist: true
-  setPreference: true
+  setPreference: false
   objective: ce-roles-antag-thief-objective
   requirements:
   - !type:OverallPlaytimeRequirement

@@ -2823,13 +2823,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -31.54908,-13.423103
       parent: 1
-- proto: CEMagicDefib
-  entities:
-  - uid: 1055
-    components:
-    - type: Transform
-      pos: 16.51072,-1.3438222
-      parent: 1
 - proto: CEMagicEssenceAttractor
   entities:
   - uid: 5

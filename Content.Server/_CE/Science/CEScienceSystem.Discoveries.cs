@@ -1,32 +1,19 @@
 using System.Linq;
-using Content.Server._CE.Science.Components;
-using Content.Shared._CE.EntityEffect;
+using Content.Shared._CE.Science;
+using Content.Shared._CE.Science.Components;
 using Content.Shared._CE.Science.Prototypes;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Server._CE.Science;
 
-public sealed partial class CEScienceSystem
+public sealed partial class CEScienceSystem : CESharedScienceSystem
 {
+    [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IRobustRandom _random = default!;
 
-    private void InitializePools(CEScienceComponent science)
-    {
-        science.AvailableDiscoveries.Clear();
-        science.ChosenDiscoveries.Clear();
-
-        foreach (var discovery in _proto.EnumeratePrototypes<CEScienceDiscoveryPrototype>())
-        {
-            if (discovery.Abstract)
-                continue;
-
-            science.AvailableDiscoveries.Add(discovery.ID);
-        }
-    }
-
     public List<ProtoId<CEScienceDiscoveryPrototype>> DrawOffer(
-        CEScienceComponent science,
+        CEScienceResearchDataComponent data,
         ProtoId<CEScienceAreaPrototype> area,
         EntityUid actor,
         int count)
@@ -35,60 +22,70 @@ public sealed partial class CEScienceSystem
 
         for (var i = 0; i < count; i++)
         {
-            var candidates = GetAvailable(science, area, actor, drawn);
+            var candidates = GetAvailable(data, area, actor, drawn);
             if (candidates.Count == 0)
             {
-                Refill(science, area);
-                candidates = GetAvailable(science, area, actor, drawn);
+                Refill(data, area, actor);
+                candidates = GetAvailable(data, area, actor, drawn);
             }
 
             if (candidates.Count == 0)
                 break;
 
             var discovery = _random.Pick(candidates);
-            science.AvailableDiscoveries.Remove(discovery);
+            data.AvailableDiscoveries.Remove(discovery);
             drawn.Add(discovery);
         }
 
         return drawn;
     }
 
+    /// <summary>
+    /// Returns discoveries that were offered but not picked back into the actor's own pool, so they
+    /// can come up again on a future offer instead of being lost forever.
+    /// </summary>
+    public void ReturnUnchosen(
+        CEScienceResearchDataComponent data,
+        IReadOnlyList<ProtoId<CEScienceDiscoveryPrototype>> candidates,
+        ProtoId<CEScienceDiscoveryPrototype> chosen)
+    {
+        foreach (var candidate in candidates)
+        {
+            if (candidate != chosen)
+                data.AvailableDiscoveries.Add(candidate);
+        }
+    }
+
     private List<ProtoId<CEScienceDiscoveryPrototype>> GetAvailable(
-        CEScienceComponent science,
+        CEScienceResearchDataComponent data,
         ProtoId<CEScienceAreaPrototype> area,
         EntityUid actor,
         IReadOnlyCollection<ProtoId<CEScienceDiscoveryPrototype>> alreadyDrawn)
     {
         var result = new List<ProtoId<CEScienceDiscoveryPrototype>>();
 
-        foreach (var id in science.AvailableDiscoveries)
+        foreach (var id in data.AvailableDiscoveries)
         {
             if (alreadyDrawn.Contains(id) || !_proto.TryIndex(id, out var discovery) || discovery.Area != area)
                 continue;
 
-            var args = new CEEntityEffectArgs(EntityManager, actor, null, Angle.Zero, 0f, actor, null);
-            if (discovery.Requirements.All(requirement => requirement.Passes(args)))
-                result.Add(id);
+            if (IsDiscoveryKnown(actor, discovery) || !DiscoveryRequirementsMet(actor, discovery))
+                continue;
+
+            result.Add(id);
         }
 
         return result;
     }
 
-    private void Refill(CEScienceComponent science, ProtoId<CEScienceAreaPrototype> area)
+    private void Refill(CEScienceResearchDataComponent data, ProtoId<CEScienceAreaPrototype> area, EntityUid actor)
     {
         foreach (var discovery in _proto.EnumeratePrototypes<CEScienceDiscoveryPrototype>())
         {
-            if (discovery.Abstract || discovery.Area != area || science.ChosenDiscoveries.Contains(discovery.ID))
+            if (discovery.Abstract || discovery.Area != area || IsDiscoveryKnown(actor, discovery))
                 continue;
 
-            science.AvailableDiscoveries.Add(discovery.ID);
+            data.AvailableDiscoveries.Add(discovery.ID);
         }
-    }
-
-    // A chosen discovery is permanently done rotating - it drops out of the pool for good.
-    public void MarkChosen(CEScienceComponent science, ProtoId<CEScienceDiscoveryPrototype> discovery)
-    {
-        science.AvailableDiscoveries.Remove(discovery);
-        science.ChosenDiscoveries.Add(discovery);
     }
 }

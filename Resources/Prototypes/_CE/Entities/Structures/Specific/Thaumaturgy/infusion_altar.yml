@@ -20,13 +20,13 @@
     drawdepth: Objects
     noRot: true
     sprite: _CE/Structures/Specific/Thaumaturgy/infusion_altar.rsi
-    state: altar
-    #layers:
-    #- state: convertaltar
-    #- state: lightning
-    #  map: [ "power" ]
-    #  visible: false
-    #  shader: unshaded
+    layers:
+    - state: altar
+    - sprite: _CE/Structures/Specific/Thaumaturgy/Effects/infusion_altar_chaos.rsi
+      state: calm
+      map: [ "chaosEffect" ]
+      shader: unshaded
+      visible: false
   - type: Icon
     sprite: _CE/Structures/Specific/Thaumaturgy/infusion_altar.rsi
     state: altar
@@ -90,6 +90,15 @@
     visuals:
       enum.PowerDeviceVisuals.Powered:
         power:
+          True: { visible: true }
+          False: { visible: false }
+      enum.CEInfusionAltarDangerVisuals.Level:
+        chaosEffect:
+          Calm: { state: calm }
+          Unstable: { state: unstable }
+          Critical: { state: critical }
+      enum.CEInfusionAltarDangerVisuals.Active:
+        chaosEffect:
           True: { visible: true }
           False: { visible: false }
   - type: AmbientOnPowered

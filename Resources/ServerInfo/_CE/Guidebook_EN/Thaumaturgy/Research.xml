@@ -1,0 +1,22 @@
+<Document>
+# Studying the world
+
+Some things in the world around you hold scientific interest.
+You can use a thaumaturgic magnifying glass to study them and gain knowledge.
+
+<Box>
+<GuideEntityEmbed Entity="CEThaumaturgicMagnifyingGlass"/>
+</Box>
+
+Some examples:
+
+- Ancient books. Can randomly appear in crates and bookshelves across the city.
+- Essence nodes. Periodically vanish and reappear around the world, only visible while wearing thaumaturgic goggles.
+- The results of infusion altar crafts.
+
+<Box>
+<GuideEntityEmbed Entity="CEBookAncient" Caption=""/>
+<GuideEntityEmbed Entity="CEGuidebookEssenceNodeDummy" Caption=""/>
+<GuideEntityEmbed Entity="CEEssenceSphereFire" Caption=""/>
+</Box>
+</Document>

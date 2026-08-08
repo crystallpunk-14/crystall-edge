@@ -50,4 +50,11 @@
 <GuideEntityEmbed Entity="CECandle" Caption="Свеча"/>
 <GuideEntityEmbed Entity="CECandelabra" Caption="Канделябр"/>
 </Box>
+
+## Получение знаний
+Что бы вы ни создали при помощи алтаря слияния - оно является научным интересом. Вы можете изучить результат при помощи тауматургической лупы, чтобы получить знания.
+
+<Box>
+<GuideEntityEmbed Entity="CEThaumaturgicMagnifyingGlass" Caption=""/>
+</Box>
 </Document>

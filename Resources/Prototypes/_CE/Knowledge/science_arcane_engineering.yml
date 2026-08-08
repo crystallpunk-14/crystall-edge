@@ -1,38 +1,38 @@
 - type: CEKnowledge
   id: KnowledgeDrillAdvanced
+  parent: ArcaneEngineeringKnowledgeBase
   name: ce-knowledge-drill-advanced
   icon:
     sprite: _CE/Structures/Industrial/drill.rsi
     state: icon_lvl2
-  book: CEBaseScienceBookArcaneEngineering
 
 - type: CEKnowledge
   id: KnowledgeHoverboard
+  parent: ArcaneEngineeringKnowledgeBase
   name: ce-knowledge-hoverboard
   icon:
     entity: CEVehicleHoverboard
-  book: CEBaseScienceBookArcaneEngineering
 
 - type: CEKnowledge
   id: KnowledgePortableEssenceAttractor
+  parent: ArcaneEngineeringKnowledgeBase
   name: ce-knowledge-portable-essence-attractor
   icon:
     sprite: _CE/Objects/Specific/Thaumaturgy/essence_attractor_portable.rsi
     state: icon
-  book: CEBaseScienceBookArcaneEngineering
 
 - type: CEKnowledge
   id: KnowledgeNodeStabilizer
+  parent: ArcaneEngineeringKnowledgeBase
   name: ce-knowledge-node-stabilizer
   icon:
     sprite: _CE/Structures/Specific/Thaumaturgy/node_stabilizator.rsi
     state: icon
-  book: CEBaseScienceBookArcaneEngineering
 
 - type: CEKnowledge
   id: KnowledgeManaTransferGlove
+  parent: ArcaneEngineeringKnowledgeBase
   name: ce-knowledge-mana-transfer-glove
   icon:
     sprite: _CE/Objects/Tools/mana_glove.rsi
     state: icon
-  book: CEBaseScienceBookArcaneEngineering

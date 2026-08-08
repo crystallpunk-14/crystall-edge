@@ -1,0 +1,22 @@
+<Document>
+# Изучение мира
+
+Некоторые вещи в окружающем мире представляют научный интерес.
+Вы можете использовать тауматургическую лупу для их изучения и получения знаний.
+
+<Box>
+<GuideEntityEmbed Entity="CEThaumaturgicMagnifyingGlass"/>
+</Box>
+
+Некоторые примеры:
+
+- Древние книги. Могут случайно появляться в ящиках и книжных шкафах по всему городу.
+- Ноды эссенций. Периодически пропадают и появляются в мире вокруг, можно увидеть только в тауматургических очках.
+- Результаты крафтов на алтаре слияния.
+
+<Box>
+<GuideEntityEmbed Entity="CEBookAncient" Caption=""/>
+<GuideEntityEmbed Entity="CEGuidebookEssenceNodeDummy" Caption=""/>
+<GuideEntityEmbed Entity="CEEssenceSphereFire" Caption=""/>
+</Box>
+</Document>
