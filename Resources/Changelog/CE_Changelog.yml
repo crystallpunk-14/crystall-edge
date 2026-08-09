@@ -599,3 +599,14 @@
   id: 1058
   time: '2026-08-08T10:46:33.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/395
+- author: TheShuEd
+  changes:
+  - message: Added blue roofs
+    type: Add
+  - message: Fixed invisibility of SSD indicators
+    type: Fix
+  - message: Fixed cucumber error sprite
+    type: Fix
+  id: 1059
+  time: '2026-08-09T21:34:41.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/397
