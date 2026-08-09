@@ -17,7 +17,6 @@ public sealed partial class CEClientMagicVisionSystem : EntitySystem
     [Dependency] private IGameTiming _timing = default!;
 
     private CEMagicVisionOverlay? _overlay;
-    private CEMagicVisionNoirOverlay? _noirOverlay;
 
     private readonly SoundSpecifier _startSound = new SoundPathSpecifier(new ResPath("/Audio/Effects/eye_open.ogg"));
     private readonly SoundSpecifier _endSound = new SoundPathSpecifier(new ResPath("/Audio/Effects/eye_close.ogg"));
@@ -28,6 +27,7 @@ public sealed partial class CEClientMagicVisionSystem : EntitySystem
 
         SubscribeLocalEvent<CEMagicVisionComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<CEMagicVisionComponent, ComponentShutdown>(OnShutdown);
+        SubscribeLocalEvent<CEMagicVisionComponent, AfterAutoHandleStateEvent>(OnHandleState);
 
         SubscribeLocalEvent<LocalPlayerAttachedEvent>(OnPlayerAttached);
         SubscribeLocalEvent<LocalPlayerDetachedEvent>(OnPlayerDetached);
@@ -38,7 +38,8 @@ public sealed partial class CEClientMagicVisionSystem : EntitySystem
         if (ent.Owner != _player.LocalEntity)
             return;
 
-        ApplyOverlay(ent);
+        SyncOverlay(ent);
+        _audio.PlayGlobal(_startSound, ent.Owner);
     }
 
     private void OnShutdown(Entity<CEMagicVisionComponent> ent, ref ComponentShutdown args)
@@ -46,22 +47,37 @@ public sealed partial class CEClientMagicVisionSystem : EntitySystem
         if (ent.Owner != _player.LocalEntity)
             return;
 
-        RemoveOverlay(ent);
+        RemoveOverlay();
+        _audio.PlayGlobal(_endSound, ent.Owner);
+    }
+
+    private void OnHandleState(Entity<CEMagicVisionComponent> ent, ref AfterAutoHandleStateEvent args)
+    {
+        if (ent.Owner != _player.LocalEntity)
+            return;
+
+        SyncOverlay(ent);
     }
 
     private void OnPlayerAttached(LocalPlayerAttachedEvent args)
     {
         if (TryComp<CEMagicVisionComponent>(args.Entity, out var comp))
-            ApplyOverlay((args.Entity, comp));
+            SyncOverlay((args.Entity, comp));
     }
 
     private void OnPlayerDetached(LocalPlayerDetachedEvent args)
     {
-        RemoveOverlay(null);
+        RemoveOverlay();
     }
 
-    private void ApplyOverlay(Entity<CEMagicVisionComponent> ent)
+    private void SyncOverlay(Entity<CEMagicVisionComponent> ent)
     {
+        if (!ent.Comp.ShowOverlay)
+        {
+            RemoveOverlay();
+            return;
+        }
+
         if (_overlay == null)
         {
             _overlay = new CEMagicVisionOverlay();
@@ -69,35 +85,14 @@ public sealed partial class CEClientMagicVisionSystem : EntitySystem
         }
 
         _overlay.StartOverlay = _timing.CurTime;
-
-        // TEMP: noir/color-correction overlay disabled, re-enable this block to restore it
-        // if (_noirOverlay == null)
-        // {
-        //     _noirOverlay = new CEMagicVisionNoirOverlay();
-        //     _overlayMan.AddOverlay(_noirOverlay);
-        // }
-
-        _audio.PlayGlobal(_startSound, ent.Owner);
     }
 
-    private void RemoveOverlay(Entity<CEMagicVisionComponent>? ent)
+    private void RemoveOverlay()
     {
-        if (_overlay == null && _noirOverlay == null)
+        if (_overlay == null)
             return;
 
-        if (_overlay != null)
-        {
-            _overlayMan.RemoveOverlay(_overlay);
-            _overlay = null;
-        }
-
-        if (_noirOverlay != null)
-        {
-            _overlayMan.RemoveOverlay(_noirOverlay);
-            _noirOverlay = null;
-        }
-
-        if (ent is { } target)
-            _audio.PlayGlobal(_endSound, target.Owner);
+        _overlayMan.RemoveOverlay(_overlay);
+        _overlay = null;
     }
 }

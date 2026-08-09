@@ -2,7 +2,7 @@
   id: CEMagicEssenceNode
   categories: [ ForkFiltered ]
   name: magic essence node
-  description: TODO
+  description: A cluster of magical essence that briefly took shape in physical reality.
   components:
   - type: CEMagicEssenceNode
   - type: Solution

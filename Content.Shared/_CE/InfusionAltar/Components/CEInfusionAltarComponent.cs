@@ -93,7 +93,7 @@ public sealed partial class CEInfusionAltarComponent : Component
     public float PoweredIdleInstabilityRate = 0.17f;
 
     /// <summary>
-    /// Instability growth per second (scaled by <see cref="StabilizerFactor"/>) whenever the ritual
+    /// Instability growth per second whenever the ritual
     /// isn't actively progressing while powered with a catalyst inserted: either no recipe's
     /// catalyst requirement matches it (an attempt that can never succeed), or a recipe is
     /// identified but its conditions are currently unmet (missing essence/pedestal items).
@@ -122,22 +122,4 @@ public sealed partial class CEInfusionAltarComponent : Component
     /// </summary>
     [DataField]
     public List<EntProtoId> CriticalMishaps = new();
-
-    /// <summary>
-    /// Cached multiplier applied to instability growth, recomputed periodically by
-    /// <see cref="Content.Server._CE.InfusionAltar.CEInfusionAltarSystem"/>'s stabilizer scan. Symmetric
-    /// pairs of nearby <see cref="CEInfusionAltarStabilizerComponent"/> items reduce it, unpaired ones
-    /// raise it.
-    /// </summary>
-    [DataField]
-    public float StabilizerFactor = 1f;
-
-    [DataField]
-    public float StabilizerScanRadius = 3f;
-
-    [DataField]
-    public TimeSpan StabilizerScanInterval = TimeSpan.FromSeconds(5);
-
-    [DataField, AutoPausedField]
-    public TimeSpan NextStabilizerScan = TimeSpan.Zero;
 }

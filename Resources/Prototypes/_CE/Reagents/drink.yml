@@ -12,6 +12,5 @@
   metabolisms:
     Digestion:
       effects:
-      - !type:CESatiate
-        satiationType: Thirst
-        amount: 0.5
+      - !type:SatiateThirst
+        factor: 4

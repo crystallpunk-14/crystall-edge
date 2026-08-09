@@ -28,8 +28,3 @@
   id: CEShockWave
   kind: source
   path: "/Textures/_CE/Shaders/shock_wave.swsl"
-
-- type: shader
-  id: CEMagicVision
-  kind: source
-  path: "/Textures/_CE/Shaders/magic_vision.swsl"

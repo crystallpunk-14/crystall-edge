@@ -74,4 +74,5 @@
   - type: StorageFill
     contents:
     - id: CEKeyAcademyHall
+    - id: CEKeyAcademyTechnical
     - id: CEKeyAcademyLab
