@@ -212,10 +212,8 @@
     weightlessModifier: 0.6
   - type: CEBlinker
   - type: CESkillStorage
-  - type: CESatiations
-    satiations:
-      Hunger: 10
-      Thirst: 10
+  - type: Hunger
+  - type: Thirst
   - type: CEAnimationController
   - type: CEIdleAnimation
     animation:
