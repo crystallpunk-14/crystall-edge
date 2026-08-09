@@ -417,3 +417,23 @@
   weather: true
   deconstructTools: [ Prying ]
   itemDrop: CEFloorTileRoofGreen
+
+- type: tile
+  editorHidden: false
+  id: CERoofBlue
+  name: ce-tiles-roof
+  sprite: /Textures/_CE/Tiles/roof_blue.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: CEPlanks
+  isSubfloor: false
+  footstepSounds:
+    collection: FootstepAsteroid
+  heatCapacity: 10000
+  weather: true
+  deconstructTools: [ Prying ]
+  itemDrop: CEFloorTileRoofBlue

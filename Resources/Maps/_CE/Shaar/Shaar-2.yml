@@ -4,8 +4,8 @@ meta:
   engineVersion: 277.0.0
   forkId: ""
   forkVersion: ""
-  time: 08/09/2026 08:03:12
-  entityCount: 1653
+  time: 08/09/2026 19:07:51
+  entityCount: 1657
 maps:
 - 1
 grids:
@@ -618,6 +618,14 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -22.5,6.5
+      parent: 1
+- proto: CECashConverter
+  entities:
+  - uid: 1092
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -18.5,9.5
       parent: 1
 - proto: CEChairStoolMetallic
   entities:
@@ -9587,6 +9595,26 @@ entities:
     components:
     - type: Transform
       pos: 21.5,-19.5
+      parent: 1
+- proto: CEWeaponHammerIron
+  entities:
+  - uid: 1093
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -17.325653,4.5151806
+      parent: 1
+  - uid: 1094
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -18.716278,3.8589306
+      parent: 1
+  - uid: 1219
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -18.466278,3.8589306
       parent: 1
 - proto: CEWeaponPickaxeIron
   entities:
