@@ -561,3 +561,41 @@
   id: 1056
   time: '2026-08-07T12:08:22.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/383
+- author: TheShuEd
+  changes:
+  - message: "The \u201CPipe Break\u201D event no longer breaks random pipes across\
+      \ the map; instead, it breaks multiple pipes at a single location."
+    type: Tweak
+  - message: Added ash recipe on melting furnace
+    type: Add
+  - message: "Students have received the missing key to the academy\u2019s inner corridors."
+    type: Fix
+  - message: Stamina regenerates much faster, but melee attacks can now stun the attacker
+      due to fatigue.
+    type: Tweak
+  - message: Ghosts now have magic vision by default.
+    type: Tweak
+  - message: Return to the standard upstream hunger and thirst system, with damage
+      and slow effects from hunger.
+    type: Tweak
+  - message: Fixed a bug where you could touch the bottom of the map while riding
+      a hoverboard and die.
+    type: Fix
+  - message: The system for stabilizing the Infusion Altar using candles has been
+      completely removed.
+    type: Remove
+  id: 1057
+  time: '2026-08-09T09:59:32.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/396
+- author: TheShuEd
+  changes:
+  - message: Removed thief antag pedning refactor
+    type: Remove
+  - message: safe falling amulet removed from engi workbench to sci infusion altar
+    type: Tweak
+  - message: Staff of revival removed from store & mapping, added into sci infusion
+      altar
+    type: Tweak
+  id: 1058
+  time: '2026-08-08T10:46:33.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/395
