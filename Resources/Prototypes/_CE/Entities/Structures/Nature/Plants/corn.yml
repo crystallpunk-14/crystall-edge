@@ -12,7 +12,7 @@
   description: There are rumors that lurkers can be found inside cornfields.
   components:
   - type: CEPlantVisuals
-    growthSteps: 5
+    growthSteps: 4
     readyVariations: 1
   - type: Sprite
     sprite: _CE/Structures/Nature/Farm/corn.rsi

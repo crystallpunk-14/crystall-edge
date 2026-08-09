@@ -167,6 +167,7 @@
   - type: SSDIndicator
   - type: StandingState
   - type: MindContainer
+  - type: MindExaminable
   - type: InteractionPopup
     successChance: 1
     interactSuccessString: hugging-success-generic
