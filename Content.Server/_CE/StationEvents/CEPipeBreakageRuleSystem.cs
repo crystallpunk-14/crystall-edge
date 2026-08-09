@@ -59,7 +59,7 @@ public sealed partial class CEPipeBreakageRuleSystem : StationEventSystem<CEPipe
                 continue;
             if (meta.EntityPrototype is null || !component.ReplacementMap.ContainsKey(meta.EntityPrototype))
                 continue;
-            if (!TryComp<TransformComponent>(uid, out var xform) || HasOtherAnchoredEntities(uid, xform))
+            if (HasOtherAnchoredEntities(uid, Transform(uid)))
                 continue;
 
             BreakPipe(component, uid, Transform(uid).Coordinates, alwaysBreak: false, spawnVfx: false);
