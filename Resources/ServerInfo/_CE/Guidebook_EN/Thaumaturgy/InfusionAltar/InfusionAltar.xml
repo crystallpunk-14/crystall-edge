@@ -25,7 +25,6 @@ You can examine the altar while wearing thaumaturgic goggles to see the availabl
 
 - Place a catalyst item on the central altar.
 - Place the required items on the surrounding pedestals.
-- Arrange candles and other stabilizers symmetrically around the altar to reduce chaos.
 - Spray the required essence around the altar.
 - Power the altar and all pedestals from the grid using pipes.
 
@@ -41,15 +40,6 @@ In the worst case, negative effects can disrupt the ritual by knocking items off
 If that happens, you need to quickly restore the ritual's conditions, or cancel it by cutting the power.
 
 An unpowered altar gradually loses chaos, but this takes some time, during which negative effects can still occur with a decreasing chance.
-
-## Stabilizers
-Candles and candelabras placed on the floor around the altar dampen chaos growth - but only if arranged symmetrically, in pairs on opposite sides of the altar.
-An unpaired stabilizer, on the other hand, slightly raises chaos.
-
-<Box>
-<GuideEntityEmbed Entity="CECandle" Caption="Candle"/>
-<GuideEntityEmbed Entity="CECandelabra" Caption="Candelabra"/>
-</Box>
 
 ## Gaining knowledge
 Whatever you create with the infusion altar counts as a scientific interest. You can study the result with a thaumaturgic magnifying glass to gain knowledge.

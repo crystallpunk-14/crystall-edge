@@ -31,12 +31,6 @@ public sealed partial class CEInfusionAltarSystem
         var query = EntityQueryEnumerator<CEInfusionAltarComponent>();
         while (query.MoveNext(out var uid, out var altar))
         {
-            if (_timing.CurTime >= altar.NextStabilizerScan)
-            {
-                altar.NextStabilizerScan = _timing.CurTime + altar.StabilizerScanInterval;
-                ScanStabilizers((uid, altar));
-            }
-
             if (_timing.CurTime < altar.NextCheckTime)
                 continue;
             altar.NextCheckTime = _timing.CurTime + altar.CheckInterval;
@@ -96,14 +90,14 @@ public sealed partial class CEInfusionAltarSystem
                 // as broken conditions, except progress resets instead of pausing (there's no
                 // attempt to resume).
                 altar.Instability = MathF.Min(altar.MaxInstability,
-                    altar.Instability + altar.BrokenConditionInstabilityRate * altar.StabilizerFactor * dt);
+                    altar.Instability + altar.BrokenConditionInstabilityRate * dt);
                 altar.RitualProgress = TimeSpan.Zero;
             }
             else if (essenceSatisfied && pedestalsSatisfied)
             {
                 altar.RitualProgress += TimeSpan.FromSeconds(dt);
                 altar.Instability = MathF.Min(altar.MaxInstability,
-                    altar.Instability + recipe.Instability * altar.StabilizerFactor * dt);
+                    altar.Instability + recipe.Instability * dt);
 
                 if (altar.RitualProgress >= recipe.RitualDuration)
                 {
@@ -117,7 +111,7 @@ public sealed partial class CEInfusionAltarSystem
             {
                 // Conditions currently broken - progress is paused (not reset) until fixed.
                 altar.Instability = MathF.Min(altar.MaxInstability,
-                    altar.Instability + altar.BrokenConditionInstabilityRate * altar.StabilizerFactor * dt);
+                    altar.Instability + altar.BrokenConditionInstabilityRate * dt);
             }
         }
 

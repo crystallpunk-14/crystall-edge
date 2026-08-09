@@ -26,9 +26,6 @@ public sealed partial class CEInfusionAltarSystem
         var instabilityPercent = (int)MathF.Round(altar.Instability / altar.MaxInstability * 100f);
         args.PushMarkup(Loc.GetString("ce-infusion-altar-examine-instability", ("percent", instabilityPercent)));
 
-        var stabilizationPercent = (int)MathF.Round((1f - altar.StabilizerFactor) * 100f);
-        args.PushMarkup(Loc.GetString("ce-infusion-altar-examine-stabilizers", ("percent", stabilizationPercent)));
-
         if (altar.AttemptingRecipe is { } recipeId
             && _proto.TryIndex(recipeId, out var recipe)
             && recipe.RitualDuration > TimeSpan.Zero)
