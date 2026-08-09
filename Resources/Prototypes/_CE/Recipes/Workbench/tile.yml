@@ -207,3 +207,15 @@
     count: 1
   result: CEFloorTileRoofGreen
   resultCount: 5
+
+- type: CERecipe
+  id: CEFloorTileRoofBlue
+  parent: CEBaseWorkbenchRecipe
+  category: FloorTile
+  craftTime: 1
+  requirements:
+  - !type:StackResource
+    stack: CEStone
+    count: 1
+  result: CEFloorTileRoofBlue
+  resultCount: 5

@@ -89,3 +89,34 @@
   - type: Sprite
     sprite: _CE/Structures/Architecture/Ladders/roof_green.rsi
 
+# Blue
+
+- type: entity
+  parent:
+  - CEZLevelLadderBase
+  - CEZLevelsLadderRoofBase
+  id: CEZLevelsLadderRoofBlue
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Ladders/roof_blue.rsi
+
+- type: entity
+  parent:
+  - CEZLevelLadderCornerBase
+  - CEZLevelsLadderRoofBase
+  id: CEZLevelsLadderRoofBlueCorner
+  suffix: Corner
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Ladders/roof_blue.rsi
+
+- type: entity
+  parent:
+  - CEZLevelLadderCornerInnerBase
+  - CEZLevelsLadderRoofBase
+  id: CEZLevelsLadderRoofBlueCornerInner
+  suffix: Inner Corner
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Ladders/roof_blue.rsi
+

@@ -4,8 +4,8 @@ meta:
   engineVersion: 277.0.0
   forkId: ""
   forkVersion: ""
-  time: 08/09/2026 08:03:12
-  entityCount: 1974
+  time: 08/09/2026 19:07:51
+  entityCount: 1957
 maps:
 - 1
 grids:
@@ -661,56 +661,8 @@ entities:
     - type: Transform
       pos: -35.5,-8.5
       parent: 1
-- proto: CEBottleRum
-  entities:
-  - uid: 1293
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 0.17096281,7.735856
-      parent: 1
-  - uid: 1320
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 0.31718636,7.657145
-      parent: 1
-- proto: CEBottleSyrupGrenadineine
-  entities:
-  - uid: 1307
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 0.37342644,7.2635922
-      parent: 1
-- proto: CEBottleSyrupSugar
-  entities:
-  - uid: 1290
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 0.6096339,7.769589
-      parent: 1
-  - uid: 1321
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 0.77835417,7.7021227
-      parent: 1
 - proto: CEBottleVodka
   entities:
-  - uid: 1296
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 0.84584236,7.2186146
-      parent: 1
-  - uid: 1306
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 0.64337873,7.3985243
-      parent: 1
   - uid: 1774
     components:
     - type: Transform
@@ -729,46 +681,8 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 19.729956,-19.168756
       parent: 1
-- proto: CEBottleWhiskey
-  entities:
-  - uid: 1291
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 0.20470619,7.2635922
-      parent: 1
-  - uid: 1327
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 0.64337873,7.02746
-      parent: 1
 - proto: CEBottleWine
   entities:
-  - uid: 1328
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 0.31718636,6.825062
-      parent: 1
-  - uid: 1329
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 0.45216322,6.8363056
-      parent: 1
-  - uid: 1331
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 0.4859066,6.701373
-      parent: 1
-  - uid: 1332
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 0.74461055,6.7351065
-      parent: 1
   - uid: 1777
     components:
     - type: Transform
@@ -904,6 +818,14 @@ entities:
     components:
     - type: Transform
       pos: -35.5,-9.5
+      parent: 1
+- proto: CECashConverter
+  entities:
+  - uid: 1181
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -2.5,-15.5
       parent: 1
 - proto: CEChairStoolWooden
   entities:
@@ -1147,6 +1069,38 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -7.5,0.5
+      parent: 1
+- proto: CECraneBarrelAle
+  entities:
+  - uid: 1290
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 0.5,7.5
+      parent: 1
+- proto: CECraneBarrelBeer
+  entities:
+  - uid: 458
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 0.5,6.5
+      parent: 1
+- proto: CECraneBarrelRum
+  entities:
+  - uid: 125
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 0.5,5.5
+      parent: 1
+- proto: CECraneBarrelWhiskey
+  entities:
+  - uid: 419
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 0.5,4.5
       parent: 1
 - proto: CECrowbar
   entities:
@@ -3234,50 +3188,10 @@ entities:
       parent: 1
 - proto: CEFoodPotato
   entities:
-  - uid: 419
-    components:
-    - type: Transform
-      pos: -0.546291,7.6457186
-      parent: 1
-  - uid: 458
-    components:
-    - type: Transform
-      pos: -0.36632288,7.488297
-      parent: 1
-  - uid: 460
-    components:
-    - type: Transform
-      pos: -0.70376253,7.413335
-      parent: 1
   - uid: 461
     components:
     - type: Transform
       pos: -0.65877116,7.488297
-      parent: 1
-  - uid: 1725
-    components:
-    - type: Transform
-      pos: -0.3888194,7.1209807
-      parent: 1
-  - uid: 1726
-    components:
-    - type: Transform
-      pos: -0.29883498,7.1509657
-      parent: 1
-  - uid: 1747
-    components:
-    - type: Transform
-      pos: -0.23884588,7.0610104
-      parent: 1
-  - uid: 1748
-    components:
-    - type: Transform
-      pos: -0.57628554,7.016033
-      parent: 1
-  - uid: 1749
-    components:
-    - type: Transform
-      pos: -0.64377344,7.008537
       parent: 1
 - proto: CEGlassShard
   entities:
@@ -3552,12 +3466,6 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -1.5,4.5
-      parent: 1
-  - uid: 1317
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 0.5,4.5
       parent: 1
   - uid: 1581
     components:
@@ -6246,12 +6154,6 @@ entities:
     - type: Transform
       pos: -28.5,4.5
       parent: 1
-  - uid: 1308
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 0.5,5.5
-      parent: 1
   - uid: 1311
     components:
     - type: Transform
@@ -6605,6 +6507,12 @@ entities:
     - type: Transform
       pos: 2.5,-16.5
       parent: 1
+  - uid: 460
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -2.5,-16.5
+      parent: 1
   - uid: 980
     components:
     - type: Transform
@@ -6650,14 +6558,20 @@ entities:
     - type: Transform
       pos: 1.5,-16.5
       parent: 1
-- proto: CETableWoodenMetallicCounter
-  entities:
-  - uid: 125
+  - uid: 1182
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 0.5,7.5
+      rot: 1.5707963267948966 rad
+      pos: -1.5,-16.5
       parent: 1
+  - uid: 1291
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -2.5,-15.5
+      parent: 1
+- proto: CETableWoodenMetallicCounter
+  entities:
   - uid: 350
     components:
     - type: Transform
@@ -6693,12 +6607,6 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -33.5,-14.5
-      parent: 1
-  - uid: 1318
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 0.5,6.5
       parent: 1
   - uid: 1772
     components:
