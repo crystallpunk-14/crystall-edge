@@ -10,7 +10,8 @@ namespace Content.Server._CE.MagicVision;
 /// <summary>
 /// Grants entities magic vision (the <see cref="CEMagicVisionComponent"/> marker, which drives the
 /// visibility mask and the client-side overlay) based on however many sources currently want them to
-/// have it - clothing (<see cref="CEMagicVisionClothingComponent"/>), and potentially skills or other
+/// have it - clothing (<see cref="CEMagicVisionClothingComponent"/>), innate sources
+/// (<see cref="CEPermanentMagicVisionComponent"/>, e.g. ghosts), and potentially skills or other
 /// sources in the future, all decided fresh each time via <see cref="CECheckMagicVisionEvent"/>. This
 /// is entirely server-authoritative: the component is networked and drives PVS filtering, so the
 /// client only ever mirrors it from replicated state and never predicts it.
@@ -28,6 +29,10 @@ public sealed partial class CEMagicVisionSystem : EntitySystem
         SubscribeLocalEvent<CEMagicVisionClothingComponent, InventoryRelayedEvent<CECheckMagicVisionEvent>>(OnClothingCheckVision);
         SubscribeLocalEvent<CEMagicVisionClothingComponent, GotEquippedEvent>(OnClothingEquipped);
         SubscribeLocalEvent<CEMagicVisionClothingComponent, GotUnequippedEvent>(OnClothingUnequipped);
+
+        SubscribeLocalEvent<CEPermanentMagicVisionComponent, CECheckMagicVisionEvent>(OnPermanentCheckVision);
+        SubscribeLocalEvent<CEPermanentMagicVisionComponent, ComponentInit>(OnPermanentInit);
+        SubscribeLocalEvent<CEPermanentMagicVisionComponent, ComponentShutdown>(OnPermanentShutdown);
     }
 
     private void OnGetVisMask(Entity<CEMagicVisionComponent> ent, ref GetVisMaskEvent args)
@@ -56,6 +61,22 @@ public sealed partial class CEMagicVisionSystem : EntitySystem
         RefreshMagicVision(args.EquipTarget);
     }
 
+    private void OnPermanentCheckVision(Entity<CEPermanentMagicVisionComponent> ent, ref CECheckMagicVisionEvent args)
+    {
+        // Innate vision isn't a worn artifact straining the wearer, so no overlay.
+        args.GrantVision(showOverlay: false);
+    }
+
+    private void OnPermanentInit(Entity<CEPermanentMagicVisionComponent> ent, ref ComponentInit args)
+    {
+        RefreshMagicVision(ent.Owner);
+    }
+
+    private void OnPermanentShutdown(Entity<CEPermanentMagicVisionComponent> ent, ref ComponentShutdown args)
+    {
+        RefreshMagicVision(ent.Owner);
+    }
+
     /// <summary>
     /// Recomputes whether <see cref="uid"/> currently has magic vision by asking every subscribed
     /// source via <see cref="CECheckMagicVisionEvent"/>, then adds or removes
@@ -74,14 +95,24 @@ public sealed partial class CEMagicVisionSystem : EntitySystem
         var ev = new CECheckMagicVisionEvent();
         RaiseLocalEvent(uid, ev);
 
-        if (ev.HasVision == HasComp<CEMagicVisionComponent>(uid))
+        if (!ev.HasVision)
+        {
+            if (RemComp<CEMagicVisionComponent>(uid))
+                _eye.RefreshVisibilityMask(uid);
+
             return;
+        }
 
-        if (ev.HasVision)
-            EnsureComp<CEMagicVisionComponent>(uid);
-        else
-            RemComp<CEMagicVisionComponent>(uid);
+        var isNew = !HasComp<CEMagicVisionComponent>(uid);
+        var comp = EnsureComp<CEMagicVisionComponent>(uid);
 
-        _eye.RefreshVisibilityMask(uid);
+        if (isNew)
+            _eye.RefreshVisibilityMask(uid);
+
+        if (comp.ShowOverlay != ev.ShowOverlay)
+        {
+            comp.ShowOverlay = ev.ShowOverlay;
+            Dirty(uid, comp);
+        }
     }
 }

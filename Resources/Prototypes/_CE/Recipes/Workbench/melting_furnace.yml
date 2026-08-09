@@ -99,3 +99,17 @@
     count: 1
   result: CEBrassRod1
   resultCount: 5
+
+#MARK: Ash
+
+- type: CERecipe
+  id: CEAsh1
+  parent: CEBaseMeltingFurnaceRecipe
+  category: Materials
+  craftTime: 1.5
+  requirements:
+  - !type:MaterialResource
+    material: CEWood
+    count: 2
+  result: CEAsh1
+  resultCount: 1
