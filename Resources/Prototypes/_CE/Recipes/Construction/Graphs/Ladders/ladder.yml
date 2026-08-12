@@ -45,7 +45,7 @@
         - to: CEZLevelLadderStone
           steps:
             - material: CEStone
-              amount: 1
+              amount: 2
               doAfter: 1.5
             - material: CENail
               amount: 1
@@ -107,7 +107,7 @@
         - to: CEZLevelLadderStoneCorner
           steps:
             - material: CEStone
-              amount: 1
+              amount: 2
               doAfter: 1.5
             - material: CENail
               amount: 1
@@ -165,7 +165,7 @@
         - to: CEZLevelLadderStoneCornerInner
           steps:
             - material: CEStone
-              amount: 1
+              amount: 2
               doAfter: 1.5
             - material: CENail
               amount: 1
@@ -265,7 +265,7 @@
           completed:
             - !type:SpawnPrototype
               prototype: CEStoneBlock1
-              amount: 1
+              amount: 2
             - !type:SpawnPrototype
               prototype: CENail1
               amount: 1
@@ -282,7 +282,7 @@
           completed:
             - !type:SpawnPrototype
               prototype: CEStoneBlock1
-              amount: 1
+              amount: 2
             - !type:SpawnPrototype
               prototype: CENail1
               amount: 1
@@ -299,7 +299,7 @@
           completed:
             - !type:SpawnPrototype
               prototype: CEStoneBlock1
-              amount: 1
+              amount: 2
             - !type:SpawnPrototype
               prototype: CENail1
               amount: 1

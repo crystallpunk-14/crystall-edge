@@ -30,9 +30,33 @@
 # Red
 
 - type: entity
+  id: CEZLevelsLadderRoofRedBase
+  parent: CEZLevelsLadderRoofBase
+  abstract: true
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 30
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEFloorTileRoofRed:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+- type: entity
   parent:
   - CEZLevelLadderBase
-  - CEZLevelsLadderRoofBase
+  - CEZLevelsLadderRoofRedBase
   id: CEZLevelsLadderRoofRed
   name: red roof
   components:
@@ -45,7 +69,7 @@
 - type: entity
   parent:
   - CEZLevelLadderCornerBase
-  - CEZLevelsLadderRoofBase
+  - CEZLevelsLadderRoofRedBase
   id: CEZLevelsLadderRoofRedCorner
   name: red roof
   suffix: Corner
@@ -59,7 +83,7 @@
 - type: entity
   parent:
   - CEZLevelLadderCornerInnerBase
-  - CEZLevelsLadderRoofBase
+  - CEZLevelsLadderRoofRedBase
   id: CEZLevelsLadderRoofRedCornerInner
   name: red roof
   suffix: Inner Corner
@@ -73,9 +97,33 @@
 # Green
 
 - type: entity
+  id: CEZLevelsLadderRoofGreenBase
+  parent: CEZLevelsLadderRoofBase
+  abstract: true
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 30
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEFloorTileRoofGreen:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+- type: entity
   parent:
   - CEZLevelLadderBase
-  - CEZLevelsLadderRoofBase
+  - CEZLevelsLadderRoofGreenBase
   id: CEZLevelsLadderRoofGreen
   name: green roof
   components:
@@ -88,7 +136,7 @@
 - type: entity
   parent:
   - CEZLevelLadderCornerBase
-  - CEZLevelsLadderRoofBase
+  - CEZLevelsLadderRoofGreenBase
   id: CEZLevelsLadderRoofGreenCorner
   name: green roof
   suffix: Corner
@@ -102,7 +150,7 @@
 - type: entity
   parent:
   - CEZLevelLadderCornerInnerBase
-  - CEZLevelsLadderRoofBase
+  - CEZLevelsLadderRoofGreenBase
   id: CEZLevelsLadderRoofGreenCornerInner
   name: green roof
   suffix: Inner Corner
@@ -116,9 +164,33 @@
 # Blue
 
 - type: entity
+  id: CEZLevelsLadderRoofBlueBase
+  parent: CEZLevelsLadderRoofBase
+  abstract: true
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 30
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEFloorTileRoofBlue:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+- type: entity
   parent:
   - CEZLevelLadderBase
-  - CEZLevelsLadderRoofBase
+  - CEZLevelsLadderRoofBlueBase
   id: CEZLevelsLadderRoofBlue
   name: blue roof
   components:
@@ -131,7 +203,7 @@
 - type: entity
   parent:
   - CEZLevelLadderCornerBase
-  - CEZLevelsLadderRoofBase
+  - CEZLevelsLadderRoofBlueBase
   id: CEZLevelsLadderRoofBlueCorner
   name: blue roof
   suffix: Corner
@@ -145,7 +217,7 @@
 - type: entity
   parent:
   - CEZLevelLadderCornerInnerBase
-  - CEZLevelsLadderRoofBase
+  - CEZLevelsLadderRoofBlueBase
   id: CEZLevelsLadderRoofBlueCornerInner
   name: blue roof
   suffix: Inner Corner
