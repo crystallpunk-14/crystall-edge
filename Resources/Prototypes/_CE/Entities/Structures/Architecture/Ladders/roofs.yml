@@ -61,6 +61,7 @@
   - CEZLevelLadderCornerInnerBase
   - CEZLevelsLadderRoofBase
   id: CEZLevelsLadderRoofRedCornerInner
+  name: red roof
   suffix: Inner Corner
   components:
   - type: Sprite
@@ -76,6 +77,7 @@
   - CEZLevelLadderBase
   - CEZLevelsLadderRoofBase
   id: CEZLevelsLadderRoofGreen
+  name: green roof
   components:
   - type: Sprite
     sprite: _CE/Structures/Architecture/Ladders/roof_green.rsi
@@ -88,6 +90,7 @@
   - CEZLevelLadderCornerBase
   - CEZLevelsLadderRoofBase
   id: CEZLevelsLadderRoofGreenCorner
+  name: green roof
   suffix: Corner
   components:
   - type: Sprite
@@ -101,6 +104,7 @@
   - CEZLevelLadderCornerInnerBase
   - CEZLevelsLadderRoofBase
   id: CEZLevelsLadderRoofGreenCornerInner
+  name: green roof
   suffix: Inner Corner
   components:
   - type: Sprite
@@ -116,6 +120,7 @@
   - CEZLevelLadderBase
   - CEZLevelsLadderRoofBase
   id: CEZLevelsLadderRoofBlue
+  name: blue roof
   components:
   - type: Sprite
     sprite: _CE/Structures/Architecture/Ladders/roof_blue.rsi
@@ -128,6 +133,7 @@
   - CEZLevelLadderCornerBase
   - CEZLevelsLadderRoofBase
   id: CEZLevelsLadderRoofBlueCorner
+  name: blue roof
   suffix: Corner
   components:
   - type: Sprite
@@ -141,6 +147,7 @@
   - CEZLevelLadderCornerInnerBase
   - CEZLevelsLadderRoofBase
   id: CEZLevelsLadderRoofBlueCornerInner
+  name: blue roof
   suffix: Inner Corner
   components:
   - type: Sprite
