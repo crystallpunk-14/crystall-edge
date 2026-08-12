@@ -34,19 +34,27 @@
   - CEZLevelLadderBase
   - CEZLevelsLadderRoofBase
   id: CEZLevelsLadderRoofRed
+  name: red roof
   components:
   - type: Sprite
     sprite: _CE/Structures/Architecture/Ladders/roof_red.rsi
+  - type: Construction
+    graph: CEZLevelLadder
+    node: CEZLevelsLadderRoofRed
 
 - type: entity
   parent:
   - CEZLevelLadderCornerBase
   - CEZLevelsLadderRoofBase
   id: CEZLevelsLadderRoofRedCorner
+  name: red roof
   suffix: Corner
   components:
   - type: Sprite
     sprite: _CE/Structures/Architecture/Ladders/roof_red.rsi
+  - type: Construction
+    graph: CEZLevelLadder
+    node: CEZLevelsLadderRoofRedCorner
 
 - type: entity
   parent:
@@ -57,6 +65,9 @@
   components:
   - type: Sprite
     sprite: _CE/Structures/Architecture/Ladders/roof_red.rsi
+  - type: Construction
+    graph: CEZLevelLadder
+    node: CEZLevelsLadderRoofRedCornerInner
 
 # Green
 
@@ -68,6 +79,9 @@
   components:
   - type: Sprite
     sprite: _CE/Structures/Architecture/Ladders/roof_green.rsi
+  - type: Construction
+    graph: CEZLevelLadder
+    node: CEZLevelsLadderRoofGreen
 
 - type: entity
   parent:
@@ -78,6 +92,9 @@
   components:
   - type: Sprite
     sprite: _CE/Structures/Architecture/Ladders/roof_green.rsi
+  - type: Construction
+    graph: CEZLevelLadder
+    node: CEZLevelsLadderRoofGreenCorner
 
 - type: entity
   parent:
@@ -88,6 +105,9 @@
   components:
   - type: Sprite
     sprite: _CE/Structures/Architecture/Ladders/roof_green.rsi
+  - type: Construction
+    graph: CEZLevelLadder
+    node: CEZLevelsLadderRoofGreenCornerInner
 
 # Blue
 
@@ -99,6 +119,9 @@
   components:
   - type: Sprite
     sprite: _CE/Structures/Architecture/Ladders/roof_blue.rsi
+  - type: Construction
+    graph: CEZLevelLadder
+    node: CEZLevelsLadderRoofBlue
 
 - type: entity
   parent:
@@ -109,6 +132,9 @@
   components:
   - type: Sprite
     sprite: _CE/Structures/Architecture/Ladders/roof_blue.rsi
+  - type: Construction
+    graph: CEZLevelLadder
+    node: CEZLevelsLadderRoofBlueCorner
 
 - type: entity
   parent:
@@ -119,4 +145,6 @@
   components:
   - type: Sprite
     sprite: _CE/Structures/Architecture/Ladders/roof_blue.rsi
-
+  - type: Construction
+    graph: CEZLevelLadder
+    node: CEZLevelsLadderRoofBlueCornerInner

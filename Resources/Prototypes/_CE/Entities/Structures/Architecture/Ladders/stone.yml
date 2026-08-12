@@ -33,9 +33,10 @@
   - CEZLevelLadderBase
   - CEZLevelsLadderStoneBase
   id: CEZLevelLadderStone
+  name: stone ladder
   components:
   - type: Construction
-    graph: CEZLevelLadderStone
+    graph: CEZLevelLadder
     node: CEZLevelLadderStone
 
 - type: entity
@@ -43,10 +44,11 @@
   - CEZLevelLadderCornerBase
   - CEZLevelsLadderStoneBase
   id: CEZLevelLadderStoneCorner
+  name: stone ladder
   suffix: Corner
   components:
   - type: Construction
-    graph: CEZLevelLadderStone
+    graph: CEZLevelLadder
     node: CEZLevelLadderStoneCorner
 
 - type: entity
@@ -54,8 +56,9 @@
   - CEZLevelLadderCornerInnerBase
   - CEZLevelsLadderStoneBase
   id: CEZLevelLadderStoneCornerInner
+  name: stone ladder
   suffix: Inner Corner
   components:
   - type: Construction
-    graph: CEZLevelLadderStone
+    graph: CEZLevelLadder
     node: CEZLevelLadderStoneCornerInner
