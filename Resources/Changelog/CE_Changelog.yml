@@ -610,3 +610,31 @@
   id: 1059
   time: '2026-08-09T21:34:41.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/397
+- author: TheShuEd
+  changes:
+  - message: Windows and unfinished wall frames now also carry over tile stability
+      between z-levels, but to a much lesser extent.
+    type: Add
+  - message: Added the ability to craft nails at the engineering table.
+    type: Add
+  - message: Various natural walls now transfer stability between levels to a lesser
+      extent.
+    type: Tweak
+  - message: Ore veins are now infinite again, but there are half as many of them.
+    type: Tweak
+  - message: "Damage taken from excess energy has been reduced by 75%, but the amount\
+      \ of energy emitted when breaking crystals has been doubled. The radiation radius\
+      \ from all sources has been reduced from approximately 10\u201315 tiles to 5\
+      \ tiles."
+    type: Tweak
+  - message: Pipe crafting recipes at the engineering workbench now produce 5 pipes
+      instead of 15, and consume proportionally fewer resources.
+    type: Tweak
+  - message: The price of brass and iron has been reduced.
+    type: Tweak
+  - message: Fixed an issue where it was impossible to build a conveyor staircase
+      leading upward.
+    type: Fix
+  id: 1060
+  time: '2026-08-12T14:08:07.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/401
