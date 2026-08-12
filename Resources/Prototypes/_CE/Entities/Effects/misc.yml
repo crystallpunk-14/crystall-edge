@@ -101,6 +101,7 @@
       enabled: true
   - type: RadiationSource
     intensity: 3
+    slope: 1.5
   - type: TimedDespawn
     lifetime: 5
 
@@ -114,7 +115,7 @@
   components:
   - type: RadiationSource
     intensity: 20
-    slope: 1.5
+    slope: 3
 
 - type: entity
   id: CEDirtEffect
