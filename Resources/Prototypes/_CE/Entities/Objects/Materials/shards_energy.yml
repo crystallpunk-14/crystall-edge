@@ -42,7 +42,6 @@
     startingCharge: 25
   - type: PowerCell
   - type: CEIrradiateOnDestroy
-    irradiateCoefficient: 0.5
   - type: StaticPrice
     price: 0
   - type: CEEnergyOverchargeDamage
@@ -97,7 +96,6 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: CEIrradiateOnDestroy
-    irradiateCoefficient: 0.5
   - type: CEMagicEssenceStructure
     essences:
       Energia: { min: 1, max: 4 }
