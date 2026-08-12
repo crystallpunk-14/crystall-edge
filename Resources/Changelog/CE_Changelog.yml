@@ -638,3 +638,13 @@
   id: 1060
   time: '2026-08-12T14:08:07.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/401
+- author: TheShuEd
+  changes:
+  - message: Added the ability to craft all types of roofs.
+    type: Add
+  - message: Crafting all types of ladders has been made more difficult and now requires
+      nails.
+    type: Tweak
+  id: 1061
+  time: '2026-08-12T20:44:47.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/402
