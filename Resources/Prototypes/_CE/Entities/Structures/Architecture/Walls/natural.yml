@@ -53,6 +53,8 @@
     sprite: _CE/Structures/Architecture/Walls/cave_stone_strong.rsi
   - type: IconSmooth
     base: wall
+  - type: CEGridStabilitySupport
+    supportStrength: 100
 
 - type: entity
   id: CEWallDirt
@@ -99,6 +101,8 @@
   - type: Construction
     graph: CEWallDirt
     node: CEWallDirt
+  - type: CEGridStabilitySupport
+    supportStrength: 4
 
 - type: entity
   id: CEWallLeaf
@@ -188,6 +192,8 @@
     heightCurve:
     - 0
     - 0
+  - type: CEGridStabilitySupport
+    supportStrength: 1
 
 - type: entity
   id: CEWallSnow
@@ -240,3 +246,5 @@
   - type: Construction
     graph: CEWallSnow
     node: CEWallSnow
+  - type: CEGridStabilitySupport
+    supportStrength: 4
