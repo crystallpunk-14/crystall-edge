@@ -60,31 +60,43 @@
   result: CEEnergyCrystalCell
   resultCount: 1
 
+- type: CERecipe
+  id: CENail
+  parent: CEBaseEngineeringTableRecipe
+  category: Materials
+  craftTime: 1.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronBar
+    count: 1
+  result: CENail1
+  resultCount: 10
+
 #MARK: Tools
 
 - type: CERecipe
   id: CEMediumBrassPipe15
   parent: CEBaseEngineeringTableRecipe
   category: Tools
-  craftTime: 2.0
+  craftTime: 0.5
   requirements:
   - !type:StackResource
     stack: CEBrassSheet
-    count: 6
+    count: 2
   result: CEMediumBrassPipe1
-  resultCount: 15
+  resultCount: 5
 
 - type: CERecipe
   id: CEBigBrassPipe15
   parent: CEBaseEngineeringTableRecipe
   category: Tools
-  craftTime: 2.0
+  craftTime: 0.5
   requirements:
   - !type:StackResource
     stack: CEBrassSheet
-    count: 12
+    count: 4
   result: CEBigBrassPipe1
-  resultCount: 15
+  resultCount: 5
 
 - type: CERecipe
   id: CEPipeValve10
@@ -94,9 +106,9 @@
   requirements:
   - !type:StackResource
     stack: CEIronBar
-    count: 2
+    count: 1
   result: CEPipeValve1
-  resultCount: 10
+  resultCount: 5
 
 - type: CERecipe
   id: CEWrench
