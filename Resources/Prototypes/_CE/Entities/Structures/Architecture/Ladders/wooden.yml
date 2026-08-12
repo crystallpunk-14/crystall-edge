@@ -31,9 +31,10 @@
   - CEZLevelLadderBase
   - CEZLevelsLadderWoodenBase
   id: CEZLevelLadderWooden
+  name: wooden ladder
   components:
   - type: Construction
-    graph: CEZLevelLadderWooden
+    graph: CEZLevelLadder
     node: CEZLevelLadderWooden
 
 - type: entity
@@ -41,8 +42,21 @@
   - CEZLevelLadderCornerBase
   - CEZLevelsLadderWoodenBase
   id: CEZLevelLadderWoodenCorner
+  name: wooden ladder
   suffix: Corner
   components:
   - type: Construction
-    graph: CEZLevelLadderWooden
+    graph: CEZLevelLadder
     node: CEZLevelLadderWoodenCorner
+
+- type: entity
+  parent:
+  - CEZLevelLadderCornerInnerBase
+  - CEZLevelsLadderWoodenBase
+  id: CEZLevelLadderWoodenCornerInner
+  name: wooden ladder
+  suffix: Inner Corner
+  components:
+  - type: Construction
+    graph: CEZLevelLadder
+    node: CEZLevelLadderWoodenCornerInner
