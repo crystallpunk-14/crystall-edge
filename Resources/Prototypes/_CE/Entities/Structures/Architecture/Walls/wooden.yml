@@ -35,6 +35,8 @@
     graph: CEWallWooden
     node: CEWallFrameWooden
     defaultTarget: CEWallFrameWoodenFinished
+  - type: CEGridStabilitySupport
+    supportStrength: 4
 
 - type: entity
   id: CEWallFrameWoodenFinished
@@ -75,6 +77,8 @@
     interfaces:
       enum.CERadialConstructionUiKey.Key:
         type: CERadialConstructionMenuBoundUserInterface
+  - type: CEGridStabilitySupport
+    supportStrength: 5
 
 - type: entity
   id: CEWallWoodenBase

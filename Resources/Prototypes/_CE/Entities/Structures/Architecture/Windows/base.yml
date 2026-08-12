@@ -44,6 +44,8 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: CEZLevelHighGround
+  - type: CEGridStabilitySupport
+    supportStrength: 4
 
 - type: entity
   id: CEBaseWindowFrame

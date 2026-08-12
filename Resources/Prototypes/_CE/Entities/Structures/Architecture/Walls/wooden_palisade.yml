@@ -44,3 +44,5 @@
   - type: Construction
     graph: CEWallWoodenPalisade
     node: CEWallWoodenPalisade
+  - type: CEGridStabilitySupport
+    supportStrength: 4
