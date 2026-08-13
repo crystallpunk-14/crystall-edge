@@ -68,11 +68,14 @@
     node: CEWallFrameWoodenFinished
     defaultTarget: null
   - type: CERadialConstruction
-    availablePrototypes:
-    - CEWallWooden
-    - CEWallWoodenDecorated
-    - CEWallWoodenDark
-    - CEWallWoodenLight
+    variants:
+    - trigger: !type:CERadialToolTrigger
+        quality: CEHammering
+      availablePrototypes:
+      - CEWallWooden
+      - CEWallWoodenDecorated
+      - CEWallWoodenDark
+      - CEWallWoodenLight
   - type: UserInterface
     interfaces:
       enum.CERadialConstructionUiKey.Key:

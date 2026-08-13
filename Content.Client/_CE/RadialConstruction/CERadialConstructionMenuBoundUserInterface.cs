@@ -22,15 +22,20 @@ public sealed partial class CERadialConstructionMenuBoundUserInterface : BoundUs
     {
         base.Open();
 
-        if (!EntMan.TryGetComponent<CERadialConstructionComponent>(Owner, out var component))
-            return;
-
         _menu = this.CreateWindow<SimpleRadialMenu>();
         _menu.Track(Owner);
-        var models = ConvertToButtons(component.AvailablePrototypes);
-        _menu.SetButtons(models);
-
         _menu.OpenOverMouseScreenPosition();
+    }
+
+    protected override void UpdateState(BoundUserInterfaceState state)
+    {
+        base.UpdateState(state);
+
+        if (state is not CERadialConstructionBuiState buiState || _menu is null)
+            return;
+
+        var models = ConvertToButtons(buiState.AvailablePrototypes);
+        _menu.SetButtons(models);
     }
 
     private IEnumerable<RadialMenuOptionBase> ConvertToButtons(List<EntProtoId> prototypes)
