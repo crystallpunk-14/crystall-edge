@@ -57,6 +57,8 @@
           collection: WindowShatter
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: CEGridStabilitySupport
+    supportStrength: 3
 
 - type: entity
   parent: BaseStructure

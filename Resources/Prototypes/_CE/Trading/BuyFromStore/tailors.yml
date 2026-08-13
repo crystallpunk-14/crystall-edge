@@ -690,6 +690,14 @@
     count: 1
 
 - type: tradingPosition
+  id: CEClothingShoesHeels
+  faction: Tailors
+  category: Clothing
+  service: !type:CEBuyItemsService
+    product: CEClothingShoesHeels
+    count: 1
+
+- type: tradingPosition
   id: CEClothingShirtDressMerchant
   priceMarkup: 50
   faction: Tailors

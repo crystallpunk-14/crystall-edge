@@ -423,3 +423,59 @@
   service: !type:CEBuyItemsService
     product: CEPlateIron
     count: 1
+
+- type: tradingPosition
+  id: CEWoodenBeerMug
+  faction: Horticulture
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CEWoodenBeerMug
+    count: 1
+
+- type: tradingPosition
+  id: CESteelBeerMug
+  faction: Horticulture
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CESteelBeerMug
+    count: 1
+
+- type: tradingPosition
+  id: CESteelWoodBeerMug
+  faction: Horticulture
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CESteelWoodBeerMug
+    count: 1
+
+- type: tradingPosition
+  id: CEMetalBeerMug
+  faction: Horticulture
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CEMetalBeerMug
+    count: 1
+
+- type: tradingPosition
+  id: CESteelGobletIron
+  faction: Horticulture
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CESteelGobletIron
+    count: 1
+
+- type: tradingPosition
+  id: CESteelGobletCopper
+  faction: Horticulture
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CESteelGobletCopper
+    count: 1
+
+- type: tradingPosition
+  id: CESteelGobletGold
+  faction: Horticulture
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CESteelGobletGold
+    count: 1

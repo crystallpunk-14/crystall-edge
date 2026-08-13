@@ -5,9 +5,9 @@
   description: Aristocratic, fancy.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Eyes/glasses.rsi
+    sprite: _CE/Clothing/Eyes/Generic/glasses.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Eyes/glasses.rsi
+    sprite: _CE/Clothing/Eyes/Generic/glasses.rsi
   - type: VisionCorrection
 
 - type: entity
@@ -17,9 +17,9 @@
   description: Special magic infused glasses that allow you to clearly see the composition of any mixtures.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Eyes/alchemy_glasses.rsi
+    sprite: _CE/Clothing/Eyes/Generic/alchemy_glasses.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Eyes/alchemy_glasses.rsi
+    sprite: _CE/Clothing/Eyes/Generic/alchemy_glasses.rsi
   - type: SolutionScanner
   - type: StaticPrice
     price: 30
@@ -38,9 +38,9 @@
   - type: Item
     size: Normal #Temporary fix, until waypointers stop working out of pockets
   - type: Sprite
-    sprite: _CE/Clothing/Eyes/mining_glasses.rsi
+    sprite: _CE/Clothing/Eyes/Engineering/mining_glasses.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Eyes/mining_glasses.rsi
+    sprite: _CE/Clothing/Eyes/Engineering/mining_glasses.rsi
   - type: VisionCorrection
   - type: ShowWaypointer
     waypointerProtoIds:

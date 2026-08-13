@@ -1,0 +1,31 @@
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyAcademyHall
+  suffix: Academy Hall
+  components:
+  - type: CEKey
+    autoGenerateShape: AcademyHall
+
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyAcademyTechnical
+  suffix: Academy Technical
+  components:
+  - type: CEKey
+    autoGenerateShape: AcademyTechnical
+
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyAcademyLab
+  suffix: Academy Lab
+  components:
+  - type: CEKey
+    autoGenerateShape: AcademyLab
+
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyAcademyRectorRoom
+  suffix: Academy Rector Room
+  components:
+  - type: CEKey
+    autoGenerateShape: AcademyRectorRoom

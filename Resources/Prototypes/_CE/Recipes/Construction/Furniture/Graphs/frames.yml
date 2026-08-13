@@ -31,3 +31,19 @@
               doAfter: 1
     - node: CEChairFrame
       entity: CEChairFrame
+
+- type: constructionGraph
+  id: CECurtainsWhite
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: CECurtainsWhite
+          steps:
+            - material: CECloth
+              amount: 3
+              doAfter: 2
+    - node: CECurtainsWhite
+      entity: CECurtainsWhite

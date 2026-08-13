@@ -6,14 +6,21 @@
   playTimeTracker: CEJobAcademyProfessor
   startingGear: CEAcademyProfessorGear
   icon: CEJobIconAcademyProfessor
-  supervisors: ce-job-supervisors-academy-director
+  supervisors: ce-job-supervisors-academy-rector
   special:
-    - !type:CEResearchDataSpecial
-      radius: 6
+    - !type:CEResearchPointsSpecial
+      points:
+        Earth: 5
+        Fire: 5
+        Water: 5
+        Air: 5
+        Order: 5
+        Chaos: 5
 
 - type: startingGear
   id: CEAcademyProfessorGear
   equipment:
+    belt: CEKeyRingAcademyProfessor
     pocket1: CEWalletFilledAcademyProfessor
 
 - type: entity
@@ -29,3 +36,53 @@
     - id: CECoinSilver1
     - id: CECoinSilver1
     - id: CECoinCopper10
+
+- type: entity
+  id: CEChestFilledAcademyProfessor
+  parent: CEWoodenChest
+  suffix: Filled, Academy Professor
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: CESyringe
+        - id: CESyringe
+        - id: CEDropper
+        - id: CEVialMediumOrderEssence
+        - id: CEVialMediumChaosEssence
+        - id: CEVialMediumEarthEssence
+        - id: CEVialMediumWaterEssence
+        - id: CEVialMediumFireEssence
+        - id: CEVialMediumAirEssence
+        - id: CEVialMedium
+        - id: CEVialMedium
+        - id: CEClothingEyesThaumaturgyGlasses
+        - id: CEGuidebookThaumaturgy
+        - id: CEThaumaturgicMagnifyingGlass
+
+- type: entity
+  id: CEBedsideTableFilledAcademyProfessor
+  parent: CEBedsideTableWooden
+  suffix: Filled, Academy Professor
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 2, 3
+        children:
+        - id: CEClothingHeadTriangularLeatherGolden
+        - id: CEClothingCloakMantleThaumaturge
+        - id: CEClothingShirtAcademyRobe
+
+- type: entity
+  id: CEKeyRingAcademyProfessor
+  parent: CEBaseKeyRing
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+    - id: CEKeyAcademyHall
+    - id: CEKeyAcademyTechnical
+    - id: CEKeyAcademyLab

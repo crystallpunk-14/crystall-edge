@@ -1,0 +1,49 @@
+- type: entity
+  id: CEBookEmpty
+  parent: CEBookWriteableBase
+  name: empty book
+  description: A plain book with a blank white cover, ready to be filled.
+  components:
+  - type: Sprite
+    layers:
+    - state: paper
+    - state: cover_base
+      color: white
+      map: [ "cover" ]
+
+- type: entity
+  id: CEBookAncient
+  parent: CEBookBase
+  name: ancient book
+  suffix: Random visual, scientific interest
+  description: A weathered old book. It looks like it might be worth studying.
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - BookHintAppearances
+    - BookTypes
+    - CEAncientBookTopic
+    nameFormat: name-format-book-ancient
+  - type: RandomSprite
+    available:
+      - cover:
+          cover_base: Sixteen
+        decor:
+          decor_line: Sixteen
+          decor_corner: Sixteen
+          decor_frame: Sixteen
+        icon:
+          icon_image: Sixteen
+          icon_moon: Sixteen
+          icon_text: Sixteen
+          icon_plate: Sixteen
+          icon_uptext: Sixteen
+          icon_magic: ""
+        overlay:
+          bookmark_short: ""
+  - type: CEScientificInterest
+  - type: CEScienceRandomPoints
+  - type: CEMagicEssenceStructure
+    essences:
+      Order: { min: 2, max: 6 }
+      Mind: { min: 1, max: 3 }

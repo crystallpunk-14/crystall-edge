@@ -32,6 +32,8 @@
     autoStep: false
     velocityGravity: false
   - type: CEZLevelGhostMover
+  - type: CEPermanentMagicVision
+
 
 # shared parent between aghosts, replay spectators and normal observers
 - type: entity

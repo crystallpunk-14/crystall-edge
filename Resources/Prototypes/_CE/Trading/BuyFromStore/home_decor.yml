@@ -1,37 +1,11 @@
+#MARK: Materials
+
 - type: tradingPosition
   id: CEWoodenPlanks10
   faction: HomeDecor
   category: Materials
   service: !type:CEBuyItemsService
     product: CEWoodenPlanks20
-
-- type: tradingPosition
-  id: CEFloorCarpetItemBlue10
-  faction: HomeDecor
-  category: Carpet
-  service: !type:CEBuyItemsService
-    product: CEFloorCarpetItemBlue10
-
-- type: tradingPosition
-  id: CEFloorCarpetItemRed10
-  faction: HomeDecor
-  category: Carpet
-  service: !type:CEBuyItemsService
-    product: CEFloorCarpetItemRed10
-
-- type: tradingPosition
-  id: CEFloorCarpetItemPurple10
-  faction: HomeDecor
-  category: Carpet
-  service: !type:CEBuyItemsService
-    product: CEFloorCarpetItemPurple10
-
-- type: tradingPosition
-  id: CEFloorCarpetItemBlack10
-  faction: HomeDecor
-  category: Carpet
-  service: !type:CEBuyItemsService
-    product: CEFloorCarpetItemBlack10
 
 - type: tradingPosition
   id: CECandle
@@ -202,3 +176,86 @@
   category: Materials
   service: !type:CEBuyItemsService
     product: CEd6Dice
+
+#MARK: Carpets
+
+- type: tradingPosition
+  id: CEFloorCarpetItemBlue10
+  faction: HomeDecor
+  category: Carpet
+  service: !type:CEBuyItemsService
+    product: CEFloorCarpetItemBlue10
+
+- type: tradingPosition
+  id: CEFloorCarpetItemRed10
+  faction: HomeDecor
+  category: Carpet
+  service: !type:CEBuyItemsService
+    product: CEFloorCarpetItemRed10
+
+- type: tradingPosition
+  id: CEFloorCarpetItemPurple10
+  faction: HomeDecor
+  category: Carpet
+  service: !type:CEBuyItemsService
+    product: CEFloorCarpetItemPurple10
+
+- type: tradingPosition
+  id: CEFloorCarpetItemBlack10
+  faction: HomeDecor
+  category: Carpet
+  service: !type:CEBuyItemsService
+    product: CEFloorCarpetItemBlack10
+
+#MARK: Wallpapers
+
+- type: tradingPosition
+  id: CEWallpaperItemPurple
+  faction: HomeDecor
+  category: Wallpaper
+  service: !type:CEBuyItemsService
+    product: CEWallpaperItemPurple
+
+- type: tradingPosition
+  id: CEWallpaperItemYellowVerticalLines
+  faction: HomeDecor
+  category: Wallpaper
+  service: !type:CEBuyItemsService
+    product: CEWallpaperItemYellowVerticalLines
+
+- type: tradingPosition
+  id: CEWallpaperItemBlack
+  faction: HomeDecor
+  category: Wallpaper
+  service: !type:CEBuyItemsService
+    product: CEWallpaperItemBlack
+
+#MARK: Potted plants
+
+- type: tradingPosition
+  id: CEPottedPlant1
+  faction: HomeDecor
+  category: Materials
+  service: !type:CEBuyItemsService
+    product: CEPottedPlant1
+
+- type: tradingPosition
+  id: CEPottedPlant2
+  faction: HomeDecor
+  category: Materials
+  service: !type:CEBuyItemsService
+    product: CEPottedPlant2
+
+- type: tradingPosition
+  id: CEPottedPlant3
+  faction: HomeDecor
+  category: Materials
+  service: !type:CEBuyItemsService
+    product: CEPottedPlant3
+
+- type: tradingPosition
+  id: CEPottedPlant4
+  faction: HomeDecor
+  category: Materials
+  service: !type:CEBuyItemsService
+    product: CEPottedPlant4

@@ -167,6 +167,7 @@
   - type: SSDIndicator
   - type: StandingState
   - type: MindContainer
+  - type: MindExaminable
   - type: InteractionPopup
     successChance: 1
     interactSuccessString: hugging-success-generic
@@ -212,11 +213,8 @@
     weightlessModifier: 0.6
   - type: CEBlinker
   - type: CESkillStorage
-  - type: CEVampireEssenceHolder
-  - type: CESatiations
-    satiations:
-      Hunger: 10
-      Thirst: 10
+  - type: Hunger
+  - type: Thirst
   - type: CEAnimationController
   - type: CEIdleAnimation
     animation:
@@ -250,7 +248,7 @@
         offset: 0, 0.02
       - time: 0.3
         offset: 0, 0
-  - type: CERecipeKnowledge
+  - type: CEKnowledge
 
 - type: entity
   parent:

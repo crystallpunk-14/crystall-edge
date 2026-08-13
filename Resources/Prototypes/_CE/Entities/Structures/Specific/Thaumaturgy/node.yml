@@ -1,0 +1,57 @@
+- type: entity
+  id: CEMagicEssenceNode
+  categories: [ ForkFiltered ]
+  name: magic essence node
+  description: A cluster of magical essence that briefly took shape in physical reality.
+  components:
+  - type: CEMagicEssenceNode
+  - type: Solution
+    id: essence
+    solution:
+      maxVol: 50
+  - type: InteractionOutline
+  - type: TimedDespawn
+    lifetime: 600
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+    bodyStatus: InAir
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 50
+        mask:
+        - FlyingMobMask
+        layer:
+        - FlyingMobLayer
+  - type: Sprite
+    noRot: true
+    drawdepth: Effects
+    layers:
+    - map: [ "essenceA" ]
+      sprite: _CE/Structures/Specific/Thaumaturgy/Node/big_node.rsi
+      state: base
+      shader: unshaded
+      offset: 0.05, 0.02
+    - map: [ "essenceB" ]
+      sprite: _CE/Structures/Specific/Thaumaturgy/Node/medium_node.rsi
+      state: base
+      shader: unshaded
+      offset: 0.05, 0.06
+    - map: [ "essenceC" ]
+      sprite: _CE/Structures/Specific/Thaumaturgy/Node/smol_node.rsi
+      state: base
+      shader: unshaded
+      offset: -0.05, 0.06
+  - type: PointLight
+    netsync: false
+    color: "#97c579"
+  - type: Clickable
+  - type: Appearance
+  - type: AnimationPlayer
+  - type: Visibility
+    layer: 16 #magic vision only

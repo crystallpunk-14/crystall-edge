@@ -1,4 +1,4 @@
-using Content.Shared._CE.Science.Prototypes;
+using Content.Shared._CE.Knowledge.Prototypes;
 using Content.Shared.DoAfter;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -44,43 +44,43 @@ public enum CEPenActionsUiKey : byte
 
 /// <summary>
 /// Sent by the client when the player picks a pen action from the radial menu (or its nested
-/// achievement submenu, for <see cref="CEPenActionKind.RecordKnowledge"/>).
+/// knowledge submenu, for <see cref="CEPenActionKind.RecordKnowledge"/>).
 /// </summary>
 [Serializable, NetSerializable]
 public sealed class CEPenActionsMessage(
     CEPenActionKind kind,
-    ProtoId<CEScienceAchievementPrototype>? achievement = null)
+    ProtoId<CEKnowledgePrototype>? knowledge = null)
     : BoundUserInterfaceMessage
 {
     public readonly CEPenActionKind Kind = kind;
-    public readonly ProtoId<CEScienceAchievementPrototype>? Achievement = achievement;
+    public readonly ProtoId<CEKnowledgePrototype>? Knowledge = knowledge;
 }
 
 /// <summary>
-/// Raised on the user (where <c>CEScienceResearchDataComponent</c> lives) to request starting
-/// the "record knowledge" do-after, once the player has picked which achievement to write down.
+/// Raised on the user (where <c>CEKnowledgeComponent</c> lives) to request starting the "record
+/// knowledge" do-after, once the player has picked which knowledge to write down.
 /// </summary>
 public sealed class CEPenRecordKnowledgeRequestEvent(
     EntityUid pen,
     EntityUid target,
-    ProtoId<CEScienceAchievementPrototype> achievement)
+    ProtoId<CEKnowledgePrototype> knowledge)
     : EntityEventArgs
 {
     public readonly EntityUid Pen = pen;
     public readonly EntityUid Target = target;
-    public readonly ProtoId<CEScienceAchievementPrototype> Achievement = achievement;
+    public readonly ProtoId<CEKnowledgePrototype> Knowledge = knowledge;
 }
 
 /// <summary>
-/// DoAfter fired when recording a scientific achievement into a book with a pen finishes.
+/// DoAfter fired when recording a piece of knowledge into a book with a pen finishes.
 /// </summary>
 [Serializable, NetSerializable]
 public sealed partial class CEPenRecordKnowledgeDoAfterEvent : SimpleDoAfterEvent
 {
-    public readonly ProtoId<CEScienceAchievementPrototype> Achievement;
+    public readonly ProtoId<CEKnowledgePrototype> Knowledge;
 
-    public CEPenRecordKnowledgeDoAfterEvent(ProtoId<CEScienceAchievementPrototype> achievement)
+    public CEPenRecordKnowledgeDoAfterEvent(ProtoId<CEKnowledgePrototype> knowledge)
     {
-        Achievement = achievement;
+        Knowledge = knowledge;
     }
 }

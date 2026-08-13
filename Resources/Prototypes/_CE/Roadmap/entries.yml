@@ -3,13 +3,6 @@
 # Backlog
 
 - type: roadmapItem
-  id: Automation
-  name: ce-roadmap-engineering-automation-name
-  desc: ce-roadmap-engineering-automation-desc
-  category: Engineering
-  status: Backlog
-
-- type: roadmapItem
   id: PersonalRealEstate
   name: ce-roadmap-general-personal-real-estate-name
   desc: ce-roadmap-general-personal-real-estate-desc
@@ -70,13 +63,6 @@
   name: ce-roadmap-medical-hospital-name
   desc: ce-roadmap-medical-hospital-desc
   category: Medical
-  status: Backlog
-
-- type: roadmapItem
-  id: MagicVision
-  name: ce-roadmap-guard-magic-vision-name
-  desc: ce-roadmap-guard-magic-vision-desc
-  category: Guard
   status: Backlog
 
 - type: roadmapItem

@@ -8,6 +8,7 @@ using Content.Shared.Physics;
 using Robust.Shared.Map;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.EntityEffect.Effects;
 
@@ -31,6 +32,9 @@ public sealed partial class WeaponArcAttack : CEEntityEffectBase<WeaponArcAttack
     /// </summary>
     [DataField]
     public bool UseOffHand = false;
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
+        Loc.GetString("ce-entity-effect-guidebook-weapon-arc-attack", ("arcWidth", ArcWidth));
 }
 
 /// <summary>

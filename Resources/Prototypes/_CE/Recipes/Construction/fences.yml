@@ -104,6 +104,32 @@
 
 - type: construction
   hide: false
+  id: CEPoleWooden
+  graph: CEPoleWooden
+  startNode: start
+  targetNode: CEPoleWooden
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  hide: false
+  id: CEFenceBigBrass
+  graph: CEFenceBigBrass
+  startNode: start
+  targetNode: CEFenceBigBrass
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  hide: false
   id: CEFenceBigIron
   graph: CEFenceBigIron
   startNode: start

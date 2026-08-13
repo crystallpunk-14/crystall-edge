@@ -28,6 +28,12 @@ public sealed partial class ShootProjectile : CEEntityEffectBase<ShootProjectile
 
     [DataField]
     public bool SaveVelocity;
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
+    {
+        var itemName = prototype.TryIndex(Prototype, out var itemProto) ? itemProto.Name : Prototype.Id;
+        return Loc.GetString("ce-entity-effect-guidebook-shoot-projectile", ("count", ProjectileCount), ("item", itemName));
+    }
 }
 
 public sealed partial class CEShootProjectileEffectSystem : CEEntityEffectSystem<ShootProjectile>

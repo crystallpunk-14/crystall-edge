@@ -8,7 +8,7 @@
   - type: Item
     size: Huge
   - type: Sprite
-    sprite: _CE/Clothing/Back/Backpacks/backpack.rsi
+    sprite: _CE/Clothing/Back/Generic/backpack.rsi
     state: icon
   - type: Clothing
     equipDelay: 0.4

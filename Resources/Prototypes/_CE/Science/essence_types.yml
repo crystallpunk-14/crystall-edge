@@ -1,0 +1,591 @@
+# Basic 6
+
+- type: magicEssenceType
+  id: Earth
+  name: Terra
+  desc: ce-reagent-desc-essence-earth
+  color: "#7dbf41"
+  tier: 0
+  essenceProto: CEEssenceEarth
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: terra
+  reagent: CEEssenceEarth
+
+- type: magicEssenceType
+  id: Fire
+  name: Ignis
+  desc: ce-reagent-desc-essence-fire
+  color: "#e67130"
+  tier: 0
+  essenceProto: CEEssenceFire
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: ignis
+  reagent: CEEssenceFire
+
+- type: magicEssenceType
+  id: Water
+  name: Aqua
+  desc: ce-reagent-desc-essence-water
+  color: "#6ab8e2"
+  tier: 0
+  essenceProto: CEEssenceWater
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: aqua
+  reagent: CEEssenceWater
+
+- type: magicEssenceType
+  id: Air
+  name: Aer
+  desc: ce-reagent-desc-essence-air
+  color: "#ebda68"
+  tier: 0
+  essenceProto: CEEssenceAir
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: aer
+  reagent: CEEssenceAir
+
+- type: magicEssenceType
+  id: Order
+  name: Ordo
+  desc: ce-reagent-desc-essence-order
+  color: "#b7b7c6"
+  tier: 0
+  essenceProto: CEEssenceOrder
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: ordo
+  reagent: CEEssenceOrder
+
+- type: magicEssenceType
+  id: Chaos
+  name: Perditio
+  desc: ce-reagent-desc-essence-chaos
+  color: "#383838"
+  tier: 0
+  essenceProto: CEEssenceChaos
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: perditio
+  reagent: CEEssenceChaos
+
+# Complex tier 1
+
+- type: magicEssenceType
+  id: Frost
+  name: Gelum
+  desc: ce-reagent-desc-essence-frost
+  color: "#c6d8e2"
+  tier: 1
+  essenceProto: CEEssenceFrost
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: gelium
+  reagent: CEEssenceFrost
+
+- type: magicEssenceType
+  id: Light
+  name: Lux
+  desc: ce-reagent-desc-essence-light
+  color: "#faee88"
+  tier: 1
+  essenceProto: CEEssenceLight
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: lux
+  reagent: CEEssenceLight
+
+- type: magicEssenceType
+  id: Motion
+  name: Motus
+  desc: ce-reagent-desc-essence-motion
+  color: "#9593b2"
+  tier: 1
+  essenceProto: CEEssenceMotion
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: motus
+  reagent: CEEssenceMotion
+
+- type: magicEssenceType
+  id: Cycle
+  name: Permutatio
+  desc: ce-reagent-desc-essence-cycle
+  color: "#5c7956"
+  tier: 1
+  essenceProto: CEEssenceCycle
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: permutatio
+  reagent: CEEssenceCycle
+
+- type: magicEssenceType
+  id: Energia
+  name: Energia
+  desc: ce-reagent-desc-essence-energia
+  color: "#eedcbc"
+  tier: 1
+  essenceProto: CEEssenceEnergia
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: potentia
+  reagent: CEEssenceEnergia
+
+- type: magicEssenceType
+  id: Void
+  name: Vacuos
+  desc: ce-reagent-desc-essence-void
+  color: "#606060"
+  tier: 1
+  essenceProto: CEEssenceVoid
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: vacuos
+  reagent: CEEssenceVoid
+
+- type: magicEssenceType
+  id: Poison
+  name: Venenum
+  desc: ce-reagent-desc-essence-poison
+  color: "#94d14a"
+  tier: 1
+  essenceProto: CEEssencePoison
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: venenum
+  reagent: CEEssencePoison
+
+- type: magicEssenceType
+  id: Life
+  name: Victus
+  desc: ce-reagent-desc-essence-life
+  color: "#a31e22"
+  tier: 1
+  essenceProto: CEEssenceLife
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: victus
+  reagent: CEEssenceLife
+
+- type: magicEssenceType
+  id: Crystal
+  name: Vitreus
+  desc: ce-reagent-desc-essence-crystal
+  color: "#74cfca"
+  tier: 1
+  essenceProto: CEEssenceCrystal
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: vitreus
+  reagent: CEEssenceCrystal
+
+- type: magicEssenceType
+  id: Weather
+  name: Tempestas
+  desc: ce-reagent-desc-essence-weather
+  color: "#ececed"
+  tier: 1
+  essenceProto: CEEssenceWeather
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: tempestas
+  reagent: CEEssenceWeather
+
+# Complex tier 2
+
+- type: magicEssenceType
+  id: Magic
+  name: Praecantatio
+  desc: ce-reagent-desc-essence-magic
+  color: "#9102b4"
+  tier: 2
+  essenceProto: CEEssenceMagic
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: praecantatio
+  reagent: CEEssenceMagic
+
+- type: magicEssenceType
+  id: Beast
+  name: Bestia
+  desc: ce-reagent-desc-essence-beast
+  color: "#ac6f11"
+  tier: 2
+  essenceProto: CEEssenceBeast
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: bestia
+  reagent: CEEssenceBeast
+
+- type: magicEssenceType
+  id: Hunger
+  name: Fames
+  desc: ce-reagent-desc-essence-hunger
+  color: "#860b11"
+  tier: 2
+  essenceProto: CEEssenceHunger
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: fames
+  reagent: CEEssenceHunger
+
+- type: magicEssenceType
+  id: Plant
+  name: Herba
+  desc: ce-reagent-desc-essence-plant
+  color: "#6ec03a"
+  tier: 2
+  essenceProto: CEEssencePlant
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: herba
+  reagent: CEEssencePlant
+
+- type: magicEssenceType
+  id: Travel
+  name: Iter
+  desc: ce-reagent-desc-essence-travel
+  color: "#cd5d68"
+  tier: 2
+  essenceProto: CEEssenceTravel
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: iter
+  reagent: CEEssenceTravel
+
+- type: magicEssenceType
+  id: Slime
+  name: Limus
+  desc: ce-reagent-desc-essence-slime
+  color: "#20d734"
+  tier: 2
+  essenceProto: CEEssenceSlime
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: limus
+  reagent: CEEssenceSlime
+
+- type: magicEssenceType
+  id: Metal
+  name: Metallum
+  desc: ce-reagent-desc-essence-metal
+  color: "#a5a7bf"
+  tier: 2
+  essenceProto: CEEssenceMetal
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: metallum
+  reagent: CEEssenceMetal
+
+- type: magicEssenceType
+  id: Death
+  name: Mortuus
+  desc: ce-reagent-desc-essence-death
+  color: "#77697c"
+  tier: 2
+  essenceProto: CEEssenceDeath
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: mortuus
+  reagent: CEEssenceDeath
+
+- type: magicEssenceType
+  id: Healing
+  name: Sano
+  desc: ce-reagent-desc-essence-healing
+  color: "#ec2f3a"
+  tier: 2
+  essenceProto: CEEssenceHealing
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: sano
+  reagent: CEEssenceHealing
+
+- type: magicEssenceType
+  id: Darkness
+  name: Tenebrae
+  desc: ce-reagent-desc-essence-darkness
+  color: "#282828"
+  tier: 2
+  essenceProto: CEEssenceDarkness
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: tenebrae
+  reagent: CEEssenceDarkness
+
+- type: magicEssenceType
+  id: Trap
+  name: Vinculum
+  desc: ce-reagent-desc-essence-trap
+  color: "#807778"
+  tier: 2
+  essenceProto: CEEssenceTrap
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: vinculum
+  reagent: CEEssenceTrap
+
+- type: magicEssenceType
+  id: Flight
+  name: Volatus
+  desc: ce-reagent-desc-essence-flight
+  color: "#d3d6c8"
+  tier: 2
+  essenceProto: CEEssenceFlight
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: volatus
+  reagent: CEEssenceFlight
+
+# Complex tier 3
+
+- type: magicEssenceType
+  id: Eldritch
+  name: Alienis
+  desc: ce-reagent-desc-essence-eldritch
+  color: "#734a77"
+  tier: 3
+  essenceProto: CEEssenceEldritch
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: alienis
+  reagent: CEEssenceEldritch
+
+- type: magicEssenceType
+  id: Tree
+  name: Arbor
+  desc: ce-reagent-desc-essence-tree
+  color: "#7f5d39"
+  tier: 3
+  essenceProto: CEEssenceTree
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: arbor
+  reagent: CEEssenceTree
+
+- type: magicEssenceType
+  id: Aura
+  name: Auram
+  desc: ce-reagent-desc-essence-aura
+  color: "#bb8cc0"
+  tier: 3
+  essenceProto: CEEssenceAura
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: auram
+  reagent: CEEssenceAura
+
+- type: magicEssenceType
+  id: Flesh
+  name: Corpus
+  desc: ce-reagent-desc-essence-flesh
+  color: "#de5195"
+  tier: 3
+  essenceProto: CEEssenceFlesh
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: corpus
+  reagent: CEEssenceFlesh
+
+- type: magicEssenceType
+  id: Undead
+  name: Exanimis
+  desc: ce-reagent-desc-essence-undead
+  color: "#3a4a07"
+  tier: 3
+  essenceProto: CEEssenceUndead
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: exanimis
+  reagent: CEEssenceUndead
+
+- type: magicEssenceType
+  id: Soul
+  name: Spiritus
+  desc: ce-reagent-desc-essence-soul
+  color: "#4e585d"
+  tier: 3
+  essenceProto: CEEssenceSoul
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: spiritus
+  reagent: CEEssenceSoul
+
+- type: magicEssenceType
+  id: Taint
+  name: Vitium
+  desc: ce-reagent-desc-essence-taint
+  color: "#780186"
+  tier: 3
+  essenceProto: CEEssenceTaint
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: vitium
+  reagent: CEEssenceTaint
+
+# Complex tier 4
+
+- type: magicEssenceType
+  id: Mind
+  name: Cognitio
+  desc: ce-reagent-desc-essence-mind
+  color: "#e8afa7"
+  tier: 4
+  essenceProto: CEEssenceMind
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: cognitio
+  reagent: CEEssenceMind
+
+- type: magicEssenceType
+  id: Senses
+  name: Sensus
+  desc: ce-reagent-desc-essence-senses
+  color: "#28b6e4"
+  tier: 4
+  essenceProto: CEEssenceSenses
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: sensus
+  reagent: CEEssenceSenses
+
+# Complex tier 5
+
+- type: magicEssenceType
+  id: Human
+  name: Humanus
+  desc: ce-reagent-desc-essence-human
+  color: "#ddc0aa"
+  tier: 5
+  essenceProto: CEEssenceHuman
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: humanus
+  reagent: CEEssenceHuman
+
+# Complex tier 6
+
+- type: magicEssenceType
+  id: Tool
+  name: Instrumentum
+  desc: ce-reagent-desc-essence-tool
+  color: "#4c56b2"
+  tier: 6
+  essenceProto: CEEssenceTool
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: instrumentum
+  reagent: CEEssenceTool
+
+- type: magicEssenceType
+  id: Crop
+  name: Messis
+  desc: ce-reagent-desc-essence-crop
+  color: "#d36c36"
+  tier: 6
+  essenceProto: CEEssenceCrop
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: messis
+  reagent: CEEssenceCrop
+
+- type: magicEssenceType
+  id: Greed
+  name: Lucrum
+  desc: ce-reagent-desc-essence-greed
+  color: "#d9aa4a"
+  tier: 6
+  essenceProto: CEEssenceGreed
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: lucrum
+  reagent: CEEssenceGreed
+
+- type: magicEssenceType
+  id: Mining
+  name: Perfodio
+  desc: ce-reagent-desc-essence-mining
+  color: "#cbc3c8"
+  tier: 6
+  essenceProto: CEEssenceMining
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: perfodio
+  reagent: CEEssenceMining
+
+# Complex tier 7
+
+- type: magicEssenceType
+  id: Craft
+  name: Fabrico
+  desc: ce-reagent-desc-essence-craft
+  color: "#79907d"
+  tier: 7
+  essenceProto: CEEssenceCraft
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: fabrico
+  reagent: CEEssenceCraft
+
+- type: magicEssenceType
+  id: Machine
+  name: Machina
+  desc: ce-reagent-desc-essence-machine
+  color: "#767891"
+  tier: 7
+  essenceProto: CEEssenceMachine
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: machina
+  reagent: CEEssenceMachine
+
+- type: magicEssenceType
+  id: Cloth
+  name: Pannus
+  desc: ce-reagent-desc-essence-cloth
+  color: "#d2d3b7"
+  tier: 7
+  essenceProto: CEEssenceCloth
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: pannus
+  reagent: CEEssenceCloth
+
+- type: magicEssenceType
+  id: Weapon
+  name: Telum
+  desc: ce-reagent-desc-essence-weapon
+  color: "#9d5e6c"
+  tier: 7
+  essenceProto: CEEssenceWeapon
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: telum
+  reagent: CEEssenceWeapon
+
+- type: magicEssenceType
+  id: Armor
+  name: Tutamen
+  desc: ce-reagent-desc-essence-armor
+  color: "#62aad3"
+  tier: 7
+  essenceProto: CEEssenceArmor
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: tutamen
+  reagent: CEEssenceArmor
+
+- type: magicEssenceType
+  id: Harvest
+  name: Meto
+  desc: ce-reagent-desc-essence-harvest
+  color: "#d9ac7a"
+  tier: 7
+  essenceProto: CEEssenceHarvest
+  icon:
+    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    state: meto
+  reagent: CEEssenceHarvest

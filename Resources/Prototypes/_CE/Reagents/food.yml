@@ -9,11 +9,5 @@
   metabolisms:
     Metabolites:
       effects:
-      - !type:CESatiate
-        satiationType: Hunger
-        amount: 0.5
-        conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ CEVampire ]
-          inverted: true
+      - !type:SatiateHunger
   pricePerUnit: 0.2

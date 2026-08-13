@@ -5,9 +5,9 @@
   description: Aristocratic pants, fit for a noble.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Pants/aristocratic.rsi
+    sprite: _CE/Clothing/Pants/Generic/aristocratic.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Pants/aristocratic.rsi
+    sprite: _CE/Clothing/Pants/Generic/aristocratic.rsi
 
 - type: entity
   parent: CEClothingPantsBase
@@ -16,9 +16,9 @@
   description: Sturdy brown pants designed for work and travel.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Pants/brown.rsi
+    sprite: _CE/Clothing/Pants/Generic/brown.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Pants/brown.rsi
+    sprite: _CE/Clothing/Pants/Generic/brown.rsi
 
 - type: entity
   parent: CEClothingPantsBase
@@ -27,9 +27,9 @@
   description: Comfortable green pants that blend well with natural surroundings.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Pants/green.rsi
+    sprite: _CE/Clothing/Pants/Generic/green.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Pants/green.rsi
+    sprite: _CE/Clothing/Pants/Generic/green.rsi
 
 - type: entity
   parent: CEClothingPantsBase
@@ -38,9 +38,9 @@
   description: Standard issue pants worn by city guards.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Pants/guard.rsi
+    sprite: _CE/Clothing/Pants/Guard/pants.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Pants/guard.rsi
+    sprite: _CE/Clothing/Pants/Guard/pants.rsi
 
 - type: entity
   parent: CEClothingPantsBase
@@ -49,9 +49,9 @@
   description: Traditional hakama trousers often worn with ceremonial outfits.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Pants/hakama.rsi
+    sprite: _CE/Clothing/Pants/Generic/hakama.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Pants/hakama.rsi
+    sprite: _CE/Clothing/Pants/Generic/hakama.rsi
 
 - type: entity
   parent: CEClothingPantsBase
@@ -60,9 +60,9 @@
   description: Rugged pants favored by hunters for durability and mobility.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Pants/hunter.rsi
+    sprite: _CE/Clothing/Pants/Generic/hunter.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Pants/hunter.rsi
+    sprite: _CE/Clothing/Pants/Generic/hunter.rsi
 
 - type: entity
   parent: CEClothingPantsBase
@@ -71,9 +71,9 @@
   description: Colorful and playful pants worn by jesters and performers.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Pants/jesters.rsi
+    sprite: _CE/Clothing/Pants/Bard/jesters.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Pants/jesters.rsi
+    sprite: _CE/Clothing/Pants/Bard/jesters.rsi
 
 - type: entity
   parent: CEClothingPantsBase
@@ -82,9 +82,9 @@
   description: Minimalist loincloth often used in traditional or tribal attire.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Pants/loincloth.rsi
+    sprite: _CE/Clothing/Pants/Generic/loincloth.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Pants/loincloth.rsi
+    sprite: _CE/Clothing/Pants/Generic/loincloth.rsi
 
 - type: entity
   parent: CEClothingPantsBase
@@ -93,9 +93,9 @@
   description: Tough pants built for combat and long campaigns.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Pants/mercenary.rsi
+    sprite: _CE/Clothing/Pants/Bard/mercenary.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Pants/mercenary.rsi
+    sprite: _CE/Clothing/Pants/Bard/mercenary.rsi
 
 - type: entity
   parent: CEClothingPantsBase
@@ -104,9 +104,9 @@
   description: Decorative pantaloons favored by merchants and traders.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Pants/merchants_pantaloons.rsi
+    sprite: _CE/Clothing/Pants/Generic/merchants_pantaloons.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Pants/merchants_pantaloons.rsi
+    sprite: _CE/Clothing/Pants/Generic/merchants_pantaloons.rsi
 
 - type: entity
   parent: CEClothingPantsBase

@@ -470,3 +470,190 @@
   id: 1046
   time: '2026-07-26T13:29:11.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/363
+- author: TheShuEd
+  changes:
+  - message: insulator helmet is not multihanded item anymore.
+    type: Tweak
+  id: 1047
+  time: '2026-07-29T11:59:54.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/368
+- author: TheShuEd
+  changes:
+  - message: Added 3 types of wallpapers, that you can attach to any wall. You can
+      buy it in home decor platform
+    type: Add
+  id: 1048
+  time: '2026-07-29T13:51:13.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/369
+- author: TheShuEd
+  changes:
+  - message: Added the ability to craft order boards.
+    type: Add
+  - message: Added potted plants that can be purchased from the home goods platform.
+    type: Add
+  - message: Alcohol bottles are no longer empty! Barrels, large alcohol barrels,
+      and small alcohol barrels have been added!
+    type: Add
+  - message: Mugs and goblets have been added and can be purchased from the horticulture
+      trade platform.
+    type: Add
+  id: 1049
+  time: '2026-07-29T17:56:43.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/370
+- author: TheShuEd
+  changes:
+  - message: Removed arrivals shuttle & city.
+    type: Remove
+  - message: Removed elf magic during redesign
+    type: Remove
+  id: 1050
+  time: '2026-07-29T22:44:08.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/371
+- author: gogenych
+  changes:
+  - message: Increase wall grid stability support strength from 5 to 7
+    type: Tweak
+  id: 1051
+  time: '2026-07-30T09:38:35.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/372
+- author: TheShuEd
+  changes:
+  - message: Fixed thin windoors locking interaction area.
+    type: Fix
+  - message: Fixed medium & big pipe naming conventions!
+    type: Fix
+  id: 1052
+  time: '2026-08-02T15:19:53.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/378
+- author: TheShuEd, Dinazzewr
+  changes:
+  - message: Added heels shoes!
+    type: Add
+  id: 1053
+  time: '2026-08-04T16:56:43.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/386
+- author: TheShuEd
+  changes:
+  - message: hoverboards was removed from guards building. They now have different
+      obtaining methods.
+    type: Tweak
+  id: 1054
+  time: '2026-08-06T09:10:41.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/387
+- author: TheShuEd
+  changes:
+  - message: Added approved, denied and head stamps
+    type: Add
+  - message: Added personal chests with inportant items and bedside tables with random
+      role clothing for mostly every job.
+    type: Add
+  - message: Mana transfer glove was removed from loadout, crates and etc. They are
+      now locked behind thaumaturgy academy unlocks.
+    type: Tweak
+  id: 1055
+  time: '2026-08-07T12:02:18.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/391
+- author: gogenych, Dinazzewr
+  changes:
+  - message: Two new curtain colors (purple and green) and four new patterns have
+      been added. We now have a total of 20 curtain options.
+    type: Add
+  id: 1056
+  time: '2026-08-07T12:08:22.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/383
+- author: TheShuEd
+  changes:
+  - message: "The \u201CPipe Break\u201D event no longer breaks random pipes across\
+      \ the map; instead, it breaks multiple pipes at a single location."
+    type: Tweak
+  - message: Added ash recipe on melting furnace
+    type: Add
+  - message: "Students have received the missing key to the academy\u2019s inner corridors."
+    type: Fix
+  - message: Stamina regenerates much faster, but melee attacks can now stun the attacker
+      due to fatigue.
+    type: Tweak
+  - message: Ghosts now have magic vision by default.
+    type: Tweak
+  - message: Return to the standard upstream hunger and thirst system, with damage
+      and slow effects from hunger.
+    type: Tweak
+  - message: Fixed a bug where you could touch the bottom of the map while riding
+      a hoverboard and die.
+    type: Fix
+  - message: The system for stabilizing the Infusion Altar using candles has been
+      completely removed.
+    type: Remove
+  id: 1057
+  time: '2026-08-09T09:59:32.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/396
+- author: TheShuEd
+  changes:
+  - message: Removed thief antag pedning refactor
+    type: Remove
+  - message: safe falling amulet removed from engi workbench to sci infusion altar
+    type: Tweak
+  - message: Staff of revival removed from store & mapping, added into sci infusion
+      altar
+    type: Tweak
+  id: 1058
+  time: '2026-08-08T10:46:33.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/395
+- author: TheShuEd
+  changes:
+  - message: Added blue roofs
+    type: Add
+  - message: Fixed invisibility of SSD indicators
+    type: Fix
+  - message: Fixed cucumber error sprite
+    type: Fix
+  id: 1059
+  time: '2026-08-09T21:34:41.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/397
+- author: TheShuEd
+  changes:
+  - message: Windows and unfinished wall frames now also carry over tile stability
+      between z-levels, but to a much lesser extent.
+    type: Add
+  - message: Added the ability to craft nails at the engineering table.
+    type: Add
+  - message: Various natural walls now transfer stability between levels to a lesser
+      extent.
+    type: Tweak
+  - message: Ore veins are now infinite again, but there are half as many of them.
+    type: Tweak
+  - message: "Damage taken from excess energy has been reduced by 75%, but the amount\
+      \ of energy emitted when breaking crystals has been doubled. The radiation radius\
+      \ from all sources has been reduced from approximately 10\u201315 tiles to 5\
+      \ tiles."
+    type: Tweak
+  - message: Pipe crafting recipes at the engineering workbench now produce 5 pipes
+      instead of 15, and consume proportionally fewer resources.
+    type: Tweak
+  - message: The price of brass and iron has been reduced.
+    type: Tweak
+  - message: Fixed an issue where it was impossible to build a conveyor staircase
+      leading upward.
+    type: Fix
+  id: 1060
+  time: '2026-08-12T14:08:07.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/401
+- author: TheShuEd
+  changes:
+  - message: Added the ability to craft all types of roofs.
+    type: Add
+  - message: Crafting all types of ladders has been made more difficult and now requires
+      nails.
+    type: Tweak
+  id: 1061
+  time: '2026-08-12T20:44:47.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/402
+- author: TheShuEd, D1nazewwr, ak2000381
+  changes:
+  - message: Added 29 variants of armchairs.
+    type: Add
+  - message: Big brass fence was added.
+    type: Add
+  id: 1062
+  time: '2026-08-13T10:26:47.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/403

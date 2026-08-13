@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text;
 using Content.Shared._CE.Examine;
 using Content.Shared._CE.MagicEssence.Components;
@@ -59,21 +60,17 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
         if (!scanEvent.CanScan)
             return;
 
-        var essences = GetEssence(args.Examined, includeContents: false);
-        if (essences.Count == 0)
+        var essenceDict = GetEssence(args.Examined, recursive: false);
+        if (essenceDict.Count == 0)
             return;
-
-        essences.Sort((a, b) =>
-        {
-            var byAmount = b.Amount.CompareTo(a.Amount);
-            return byAmount != 0 ? byAmount : string.CompareOrdinal(a.Type.Id, b.Type.Id);
-        });
 
         var sb = new StringBuilder();
         sb.Append(Loc.GetString("ce-magic-essence-examine-title"));
         sb.Append('\n');
 
-        foreach (var (type, amount) in essences)
+        foreach (var (type, amount) in essenceDict
+            .OrderByDescending(kv => kv.Value)
+            .ThenBy(kv => kv.Key.Id))
         {
             if (!_proto.Resolve(type, out var essenceProto))
                 continue;
@@ -94,7 +91,7 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
     /// Calculates the thaumaturgical essence composition of an entity, including its stack count
     /// and (recursively) the essences of anything held in its containers.
     /// </summary>
-    public List<(ProtoId<CEMagicEssenceTypePrototype> Type, int Amount)> GetEssence(EntityUid ent, bool includeContents = true)
+    public Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int> GetEssence(EntityUid ent, bool recursive = true)
     {
         var ev = new CEMagicEssenceCalculationEvent();
         RaiseLocalEvent(ent, ref ev);
@@ -107,7 +104,7 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
             totals[type] = totals.GetValueOrDefault(type) + amount * multiplier;
         }
 
-        if (includeContents && TryComp<ContainerManagerComponent>(ent, out var containers))
+        if (recursive && TryComp<ContainerManagerComponent>(ent, out var containers))
         {
             foreach (var container in containers.Containers.Values)
             {
@@ -121,10 +118,13 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
             }
         }
 
-        var result = new List<(ProtoId<CEMagicEssenceTypePrototype>, int)>();
+        var result = new Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int>();
         foreach (var (type, amount) in totals)
         {
-            result.Add((type, amount));
+            if (amount <= 0)
+                continue;
+
+            result[type] = amount;
         }
 
         return result;
@@ -202,6 +202,25 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
         }
     }
 
+    /// <summary>
+    /// Resolves the floating essence entity that a reagent evaporates into, if that reagent is the
+    /// pure liquid embodiment of some <see cref="CEMagicEssenceTypePrototype"/> (i.e. has a
+    /// <see cref="CEMagicEssenceTypePrototype.EssenceProto"/>). False for any other reagent.
+    /// </summary>
+    public bool TryGetEssenceFromReagent(ProtoId<ReagentPrototype> reagent, out EntProtoId essenceProto)
+    {
+        essenceProto = default;
+
+        if (!GetReagentEssenceMap().TryGetValue(reagent, out var essenceTypeId))
+            return false;
+
+        if (!_proto.TryIndex(essenceTypeId, out var essenceType) || essenceType.EssenceProto is not { } proto)
+            return false;
+
+        essenceProto = proto;
+        return true;
+    }
+
     private Dictionary<ProtoId<ReagentPrototype>, ProtoId<CEMagicEssenceTypePrototype>> GetReagentEssenceMap()
     {
         if (_reagentToEssence is { } cached)
@@ -216,6 +235,35 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
 
         _reagentToEssence = map;
         return map;
+    }
+
+    /// <summary>
+    /// Picks a random essence type, weighted towards lower tiers (weight = 1 / (tier + 1)^2) so
+    /// primal aspects come up much more often than complex ones.
+    /// </summary>
+    public ProtoId<CEMagicEssenceTypePrototype> GetRandomEssenceType()
+    {
+        var essences = _proto.EnumeratePrototypes<CEMagicEssenceTypePrototype>().ToList();
+        if (essences.Count == 0)
+            throw new InvalidOperationException("No CEMagicEssenceTypePrototype prototypes are registered.");
+
+        var totalWeight = 0f;
+        foreach (var essence in essences)
+        {
+            totalWeight += 1f / MathF.Pow(essence.Tier + 1, 2);
+        }
+
+        var roll = _random.NextFloat() * totalWeight;
+        foreach (var essence in essences)
+        {
+            var weight = 1f / MathF.Pow(essence.Tier + 1, 2);
+            if (roll < weight)
+                return essence.ID;
+
+            roll -= weight;
+        }
+
+        return essences[^1].ID;
     }
 
     private Entity<CEMagicEssenceSingletonComponent>? EnsureSingleton()

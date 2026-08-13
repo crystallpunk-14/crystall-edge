@@ -24,3 +24,30 @@
           steps:
             - tool: Prying
               doAfter: 5
+
+- type: constructionGraph
+  id: CEFenceBigBrass
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: CEFenceBigBrass
+          completed:
+            - !type:SnapToGrid
+          steps:
+            - material: CEBrassRod
+              amount: 8
+              doAfter: 5
+
+    - node: CEFenceBigBrass
+      entity: CEFenceBigBrass
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEBrassRod1
+              amount: 8
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 5

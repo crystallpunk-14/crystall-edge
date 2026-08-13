@@ -1,37 +1,84 @@
+using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.Science;
+using Content.Shared._CE.Science.Prototypes;
 using Robust.Client.UserInterface;
+using Robust.Shared.Prototypes;
 
 namespace Content.Client._CE.Science;
 
-public sealed class CEResearchTableBoundUserInterface : BoundUserInterface
+public sealed class CEResearchTableBoundUserInterface(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey)
 {
     private CEResearchTableWindow? _window;
-
-    public CEResearchTableBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
-    {
-    }
 
     protected override void Open()
     {
         base.Open();
 
         _window = this.CreateWindow<CEResearchTableWindow>();
-        _window.OnResearch += (area, coordinate, action) => SendMessage(new CEResearchTableActionMessage(area, coordinate, action));
+        _window.SetEntity(Owner);
+        _window.OnMergeAspects += OnMergeAspects;
+        _window.OnStartResearch += OnStartResearch;
+        _window.OnChooseDiscovery += OnChooseDiscovery;
+        _window.OnPlaceAspect += OnPlaceAspect;
+        _window.OnFinishResearch += OnFinishResearch;
+
+        EntMan.System<CEClientScienceSystem>().OnLocalResearchDataUpdated += OnLocalResearchDataUpdated;
     }
 
-    protected override void UpdateState(BoundUserInterfaceState state)
+    private void OnMergeAspects(ProtoId<CEMagicEssenceTypePrototype> first, ProtoId<CEMagicEssenceTypePrototype> second)
     {
-        base.UpdateState(state);
-
-        if (state is CEResearchTableState researchState)
-            _window?.UpdateState(researchState);
+        SendMessage(new CEResearchTableMergeAspectsMessage(first, second));
     }
 
-    protected override void ReceiveMessage(BoundUserInterfaceMessage message)
+    private void OnStartResearch(ProtoId<CEScienceAreaPrototype> area)
     {
-        base.ReceiveMessage(message);
-
-        if (message is CEResearchTableHypothesisResultMessage hypothesisResult)
-            _window?.HandleHypothesisResult(hypothesisResult);
+        SendMessage(new CEResearchTableStartResearchMessage(area));
     }
+
+    private void OnChooseDiscovery(ProtoId<CEScienceDiscoveryPrototype> discovery)
+    {
+        SendMessage(new CEResearchTableChooseDiscoveryMessage(discovery));
+    }
+
+    private void OnPlaceAspect(Vector2i hex, ProtoId<CEMagicEssenceTypePrototype> essence)
+    {
+        SendMessage(new CEResearchTablePlaceAspectMessage(hex, essence));
+    }
+
+    private void OnFinishResearch()
+    {
+        SendMessage(new CEResearchTableFinishResearchMessage());
+    }
+
+    public override void Update()
+    {
+        base.Update();
+
+        _window?.UpdateUi();
+    }
+
+    private void OnLocalResearchDataUpdated()
+    {
+        _window?.UpdateUi();
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        base.Dispose(disposing);
+
+        if (disposing)
+        {
+            EntMan.System<CEClientScienceSystem>().OnLocalResearchDataUpdated -= OnLocalResearchDataUpdated;
+
+            if (_window is { } window)
+            {
+                window.OnMergeAspects -= OnMergeAspects;
+                window.OnStartResearch -= OnStartResearch;
+                window.OnChooseDiscovery -= OnChooseDiscovery;
+                window.OnPlaceAspect -= OnPlaceAspect;
+                window.OnFinishResearch -= OnFinishResearch;
+            }
+        }
+    }
+
 }

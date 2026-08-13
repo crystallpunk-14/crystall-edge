@@ -231,6 +231,10 @@
     data:
       state: l_foot
   - type: VisualOrganMarkings
+    # CrystallEdge: allow clothing (e.g. heels) to hide the foot layer itself
+    hideableLayers:
+    - enum.HumanoidVisualLayers.LFoot
+    # CrystallEdge end
     markingData:
       layers:
       - LFoot
@@ -250,6 +254,10 @@
     data:
       state: r_foot
   - type: VisualOrganMarkings
+    # CrystallEdge: allow clothing (e.g. heels) to hide the foot layer itself
+    hideableLayers:
+    - enum.HumanoidVisualLayers.RFoot
+    # CrystallEdge end
     markingData:
       layers:
       - RFoot

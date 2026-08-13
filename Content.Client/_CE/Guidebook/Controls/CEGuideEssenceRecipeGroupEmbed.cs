@@ -60,29 +60,31 @@ public sealed partial class CEGuideEssenceRecipeGroupEmbed : BoxContainer, IDocu
         }
     }
 
-    /// <summary>
-    /// Wraps a tier's header and cards as a single searchable unit, so the tier header hides itself
-    /// whenever a search filters out every card underneath it, while still letting each card filter
-    /// individually. <see cref="ControlExtension.GetSearchableControls"/> stops descending once it hits
-    /// an <see cref="ISearchableControl"/>, so this section - not its individual cards - is what
-    /// <see cref="Content.Client.Guidebook.Controls.GuidebookWindow"/> calls into on search.
-    /// </summary>
     private sealed class TierSection : BoxContainer, ISearchableControl
     {
+        private const int Columns = 3;
+        private const float CardWidth = 200f;
+
         private readonly List<CEGuideEssenceRecipeEmbed> _cards = new();
         private readonly Control _header;
+        private readonly GridContainer _grid;
 
         public TierSection(Control header)
         {
             Orientation = LayoutOrientation.Vertical;
             _header = header;
             AddChild(header);
+
+            _grid = new GridContainer { Columns = Columns, HorizontalExpand = true };
+            AddChild(_grid);
         }
 
         public void AddCard(CEGuideEssenceRecipeEmbed card)
         {
+            card.HorizontalExpand = true;
+            card.SetWidth = CardWidth;
             _cards.Add(card);
-            AddChild(card);
+            _grid.AddChild(card);
         }
 
         public bool CheckMatchesSearch(string query)

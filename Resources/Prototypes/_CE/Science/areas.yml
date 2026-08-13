@@ -2,11 +2,25 @@
   id: ArcaneEngineering
   color: "#c6905a"
   name: ce-science-area-arcane-engineering
-  book: CEBaseScienceBookArcaneEngineering
-  parallax: CEBlood
-  generationMargin: 2
-  deadZoneLayers:
-  - threshold: 0.1
-    noise:
-      seed: 1337
-      frequency: 0.2
+  desc: ce-science-area-arcane-engineering-desc
+  icon:
+    entity: CEAccumulatorVessel
+  cost:
+    Energia: 5
+    Machine: 1
+  project: CEDiscoveryProjectEngineering
+  parallax: Default
+
+- type: scienceArea
+  id: Artifactoric
+  color: "#8a5ac6"
+  name: ce-science-area-artifactoric
+  desc: ce-science-area-artifactoric-desc
+  icon:
+    sprite: _CE/Objects/Materials/shards_dimensional.rsi
+    state: core1
+  cost:
+    Magic: 5
+    Darkness: 5
+  project: CEDiscoveryProjectArtifactoric
+  parallax: KettleStation

@@ -114,10 +114,7 @@
   - type: ExplosionResistance
     damageCoefficient: 0
   # CrystallEdge
-  - type: CEShowVampireIcons
-  - type: CERecipeKnowledge
-  - type: GluedImmune
-  - type: LubedImmune
+  - type: CEKnowledge
 
 - type: entity
   abstract: true

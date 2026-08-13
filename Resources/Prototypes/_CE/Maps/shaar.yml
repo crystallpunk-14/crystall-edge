@@ -17,10 +17,14 @@
             CEGuard: [ 4, 4 ]
             #Engineering (4)
             CEBrigadier: [ 1, 1 ]
-            CETechnician: [ 3, 3 ]
+            CETechnician: [ 3, 4 ]
             #Tavern (4)
             CETavernmaster: [ 1, 1 ]
             CEChef: [ 3, 3 ]
+            #Academy
+            CEAcademyRector: [ 1, 1 ]
+            CEAcademyProfessor: [ 2, 2 ]
+            CEAcademyStudent: [ 2, 3 ]
             #Citizens
             CEBard: [ 2, 2 ]
             CETownfolk: [ -1, -1 ]

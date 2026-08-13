@@ -1,0 +1,67 @@
+- type: entity
+  parent: CEIronDoorWindowed
+  id: CEIronDoorAcademyHall
+  suffix: Academy Hall
+  components:
+  - type: CELock
+    autoGenerateShape: AcademyHall
+  - type: Lock
+    locked: false
+
+- type: entity
+  parent:
+    - CEIronDoorAcademyHall
+    - CEIronDoorWindowedMirrored
+  id: CEIronDoorAcademyHallMirrored
+  suffix: Academy Hall, Mirrored
+
+- type: entity
+  parent: CEIronDoor
+  id: CEIronDoorAcademyTechnical
+  suffix: Academy Technical
+  components:
+  - type: CELock
+    autoGenerateShape: AcademyTechnical
+  - type: Lock
+    locked: true
+
+- type: entity
+  parent:
+    - CEIronDoorAcademyTechnical
+    - CEIronDoorMirrored
+  id: CEIronDoorAcademyTechnicalMirrored
+  suffix: Academy Technical, Mirrored
+
+- type: entity
+  parent: CEIronDoor
+  id: CEIronDoorAcademyLab
+  suffix: Academy Lab
+  components:
+  - type: CELock
+    autoGenerateShape: AcademyLab
+  - type: Lock
+    locked: true
+
+- type: entity
+  parent:
+    - CEIronDoorAcademyLab
+    - CEIronDoorMirrored
+  id: CEIronDoorAcademyLabMirrored
+  suffix: Academy Lab, Mirrored
+
+- type: entity
+  parent: CEIronDoor
+  id: CEIronDoorAcademyRectorRoom
+  suffix: Academy Rector Room
+  components:
+  - type: CELock
+    autoGenerateShape: AcademyRectorRoom
+  - type: Lock
+    locked: true
+
+- type: entity
+  parent:
+    - CEIronDoorAcademyRectorRoom
+    - CEIronDoorMirrored
+  id: CEIronDoorAcademyRectorRoomMirrored
+  suffix: Academy Rector Room, Mirrored

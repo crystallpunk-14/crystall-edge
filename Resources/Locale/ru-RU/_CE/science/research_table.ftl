@@ -1,12 +1,18 @@
 ce-research-table-ui-title = Стол исследований
-
-ce-research-cell-dead-zone-title = Мертвая зона
-ce-research-cell-dead-zone-desc = Попытки исследований здесь бесплодны и не дают никакого результата.
-
-ce-research-action-basic-scan-name = Провести исследование
-ce-research-action-basic-scan-desc = Открывает область 3x3 вокруг выбранной клетки
-ce-research-action-check-hypothesis-name = Проверить гипотезу
-ce-research-action-check-hypothesis-desc = Определяет расстояние в клетках от этой точки до ближайшего необнаруженного открытия
-ce-research-action-discover-achievement-name = Совершить открытие
-ce-research-action-discover-achievement-desc = Завершает исследование открытия на этой клетке и применяет его эффекты
-ce-research-action-execute = Выполнить
+ce-research-table-paper-slot-name = бумага
+ce-research-table-ui-no-paper = Положите чистый лист бумаги на стол, чтобы начать исследования.
+ce-science-knowledge-title = Знания персонажа
+ce-science-knowledge-merge-button-tooltip = Соединить 2 знания в более комплексное
+ce-science-knowledge-combine-button = Соединение аспектов
+ce-research-table-start-button = Начать новое исследование
+ce-research-table-choose-discovery-button = Начать исследование
+ce-research-table-finish-button = Завершить исследование
+ce-research-table-finish-button-tooltip = Соедините все аспекты между собой чтобы завершить исследование
+ce-research-table-not-author = Вы не автор этого исследования
+ce-research-table-choose-area-title = Выберите область науки
+ce-research-table-area-progress = Изучено: { $percent }%
+ce-research-table-area-studied = ИЗУЧЕНО
+ce-research-table-choose-discovery-title = Выберите исследование
+ce-research-table-project-title = Исследование: { $discovery }
+ce-discovery-project-name = Научный проект о { $discovery }
+ce-discovery-project-description = Научный проект в процессе работы, в сфере { $area }, о { $discovery }.

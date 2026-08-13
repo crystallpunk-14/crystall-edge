@@ -20,6 +20,7 @@
   rules:
   - Sandbox
   - CEBasicRoundstartVariation
+  - CEGameRuleMagicEssenceNodes
 
 - type: gamePreset
   id: CEGreenshift
@@ -31,3 +32,4 @@
   #- CEGameRuleThieves
   - CERampingStationEventScheduler
   - CEBasicRoundstartVariation
+  - CEGameRuleMagicEssenceNodes

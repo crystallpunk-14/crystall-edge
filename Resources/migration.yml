@@ -73,6 +73,14 @@ CEBookRandom: CEBookEmpty
 CEBookshelfWoodenFilled: CEBookshelfWooden
 CEBookshelfStoneFilled: CEBookshelfStone
 
+CEArrivalsDockPointMarker: null
+
+CECurtainsWhiteOpened: CECurtainsWhite
+CECurtainsBlueOpened: CECurtainsBlue
+CECurtainsRedOpened: CECurtainsRed
+CECurtainsPurpleOpened: CECurtainsPurple
+CECurtainsGreenOpened: CECurtainsGreen
+
 # CrystallEdge migration zone end
 
 

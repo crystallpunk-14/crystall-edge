@@ -63,7 +63,8 @@ public abstract partial class CESharedLockKeySystem
 
     /// <summary>
     /// Checks if the user can interact with a lock that has a directional latch.
-    /// Returns true if the lock doesn't have a directional latch, or if the user is on the correct side.
+    /// Returns true if the lock doesn't have a directional latch, or if the user is within the
+    /// 180-degree arc facing the latch's required side (the opposite 180-degree arc is blocked).
     /// </summary>
     public bool CanInteractWithDirectionalLatch(Entity<CEDirectionalLatchComponent> target, EntityUid user)
     {
@@ -76,11 +77,12 @@ public abstract partial class CESharedLockKeySystem
         var targetPos = _transform.GetWorldPosition(targetXform);
 
         var directionToUser = userPos - targetPos;
-        var userDirection = directionToUser.GetDir();
+        var userAngle = directionToUser.ToWorldAngle();
 
         var targetRotation = _transform.GetWorldRotation(target);
-        var requiredWorldDirection = (targetRotation + target.Comp.Direction.ToAngle()).GetCardinalDir();
+        var requiredWorldAngle = targetRotation + target.Comp.Direction.ToAngle();
 
-        return userDirection == requiredWorldDirection;
+        var delta = Angle.ShortestDistance(requiredWorldAngle, userAngle);
+        return Math.Abs(delta.Theta) <= Math.PI / 2;
     }
 }

@@ -63,7 +63,7 @@ public abstract partial class CESharedPowerSystem : EntitySystem
         if (battery.LastCharge <= 0f)
             return;
 
-        Irradiate(Transform(ent).Coordinates, battery.LastCharge, ent.Comp.Time);
+        Irradiate(Transform(ent).Coordinates, battery.LastCharge * ent.Comp.IrradiateCoefficient, ent.Comp.Time);
     }
 
     public void Irradiate(EntityCoordinates position, float charge, TimeSpan seconds)

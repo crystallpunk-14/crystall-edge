@@ -10,10 +10,10 @@
   joinNotifyCrew: true
   supervisors: ce-job-supervisors-empire
   weight: 3
-  #requirements:
-  #  - !type:DepartmentTimeRequirement
-  #    department: CEEngineering
-  #    time: 10980 # 3 hours
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: CEEngineering
+      time: 2.5h
 
 - type: startingGear
   id: CEBrigadierGear
@@ -35,6 +35,48 @@
     - id: CECoinSilver1
     - id: CECoinSilver1
     - id: CECoinCopper10
+
+- type: entity
+  id: CEChestFilledBrigadier
+  parent: CEGoldChest
+  suffix: Filled, Brigadier
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: CEClothingEyesMiningGlasses
+        - id: CECrowbar
+        - id: CEWrench
+        - id: CEScrewdriver
+        - id: CEBigBrassPipe30
+        - id: CEMediumBrassPipe30
+        - id: CEWeaponPickaxeIron
+        - id: CEBrassBar10
+        - id: CEIronBar10
+        - id: CERubberStampApproved
+        - id: CERubberStampDenied
+        - id: CERubberStampEngineering
+
+- type: entity
+  id: CEBedsideTableFilledBrigadier
+  parent: CEBedsideTableWooden
+  suffix: Filled, Brigadier
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 2, 3
+        children:
+        - id: CEClothingCloakBrigadier
+        - id: CEClothingHeadFedoraBrown
+        - id: CEClothingHeadFedoraBlack
+        - id: CEClothingHeadBowlerLeather
+        - id: CEClothingShirtEngineeringShirt
+        - id: CEClothingShirtEngineeringJacket
+        - id: CEClothingShirtEngineeringDress
+        - id: CEClothingPantsEngineering
 
 - type: entity
   id: CEKeyRingBrigadier
