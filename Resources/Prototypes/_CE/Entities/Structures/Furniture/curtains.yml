@@ -90,15 +90,17 @@
   name: white curtains
   components:
   - type: CERadialConstruction
-    availablePrototypes:
-    - CECurtainsWhiteFlower
-    - CECurtainsWhiteStar
-    - CECurtainsWhiteGoldenline
-    - CECurtainsWhiteGoldenline2
-    - CECurtainsBlue
-    - CECurtainsRed
-    - CECurtainsPurple
-    - CECurtainsGreen
+    variants:
+    - trigger: !type:CERadialToolTrigger { quality: CEHammering }
+      availablePrototypes:
+      - CECurtainsWhiteFlower
+      - CECurtainsWhiteStar
+      - CECurtainsWhiteGoldenline
+      - CECurtainsWhiteGoldenline2
+      - CECurtainsBlue
+      - CECurtainsRed
+      - CECurtainsPurple
+      - CECurtainsGreen
   - type: Construction
     graph: CECurtainsWhite
     node: CECurtainsWhite
@@ -196,11 +198,13 @@
   name: blue curtains
   components:
   - type: CERadialConstruction
-    availablePrototypes:
-    - CECurtainsBlueFlower
-    - CECurtainsBlueStar
-    - CECurtainsBlueGoldenline
-    - CECurtainsBlueGoldenline2
+    variants:
+    - trigger: !type:CERadialToolTrigger { quality: CEHammering }
+      availablePrototypes:
+      - CECurtainsBlueFlower
+      - CECurtainsBlueStar
+      - CECurtainsBlueGoldenline
+      - CECurtainsBlueGoldenline2
 
 - type: entity
   id: CECurtainsBlueFlower
@@ -295,11 +299,13 @@
   name: red curtains
   components:
   - type: CERadialConstruction
-    availablePrototypes:
-    - CECurtainsRedFlower
-    - CECurtainsRedStar
-    - CECurtainsRedGoldenline
-    - CECurtainsRedGoldenline2
+    variants:
+    - trigger: !type:CERadialToolTrigger { quality: CEHammering }
+      availablePrototypes:
+      - CECurtainsRedFlower
+      - CECurtainsRedStar
+      - CECurtainsRedGoldenline
+      - CECurtainsRedGoldenline2
 
 - type: entity
   id: CECurtainsRedFlower
@@ -394,11 +400,13 @@
   name: purple curtains
   components:
   - type: CERadialConstruction
-    availablePrototypes:
-    - CECurtainsPurpleFlower
-    - CECurtainsPurpleStar
-    - CECurtainsPurpleGoldenline
-    - CECurtainsPurpleGoldenline2
+    variants:
+    - trigger: !type:CERadialToolTrigger { quality: CEHammering }
+      availablePrototypes:
+      - CECurtainsPurpleFlower
+      - CECurtainsPurpleStar
+      - CECurtainsPurpleGoldenline
+      - CECurtainsPurpleGoldenline2
 
 - type: entity
   id: CECurtainsPurpleFlower
@@ -493,11 +501,13 @@
   name: green curtains
   components:
   - type: CERadialConstruction
-    availablePrototypes:
-    - CECurtainsGreenFlower
-    - CECurtainsGreenStar
-    - CECurtainsGreenGoldenline
-    - CECurtainsGreenGoldenline2
+    variants:
+    - trigger: !type:CERadialToolTrigger { quality: CEHammering }
+      availablePrototypes:
+      - CECurtainsGreenFlower
+      - CECurtainsGreenStar
+      - CECurtainsGreenGoldenline
+      - CECurtainsGreenGoldenline2
 
 - type: entity
   id: CECurtainsGreenFlower

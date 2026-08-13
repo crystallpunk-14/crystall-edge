@@ -55,10 +55,12 @@
   - type: Sprite
     state: frame
   - type: CERadialConstruction
-    availablePrototypes:
-    - CEBenchWoodLight
-    - CEBenchWoodDark
-    - CEBenchWood
+    variants:
+    - trigger: !type:CERadialToolTrigger { quality: CEHammering }
+      availablePrototypes:
+      - CEBenchWoodLight
+      - CEBenchWoodDark
+      - CEBenchWood
   - type: UserInterface
     interfaces:
       enum.CERadialConstructionUiKey.Key:

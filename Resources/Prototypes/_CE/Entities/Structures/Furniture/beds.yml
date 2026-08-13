@@ -49,9 +49,11 @@
     graph: CEBedFrameWooden
     node: CEBedFrameWooden
   - type: CERadialConstruction
-    availablePrototypes:
-    - CEWoodenBed
-    - CEWoodenBedLight
+    variants:
+    - trigger: !type:CERadialToolTrigger { quality: CEHammering }
+      availablePrototypes:
+      - CEWoodenBed
+      - CEWoodenBedLight
   - type: UserInterface
     interfaces:
       enum.CERadialConstructionUiKey.Key:
