@@ -1,0 +1,52 @@
+- type: entity
+  parent: BaseItem
+  id: CEThirdArm
+  categories: [ ForkFiltered ]
+  name: third arm
+  description: TODO
+  components:
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/crowbar_drop.ogg
+  #- type: Tool
+  #  qualities:
+  #    - Prying
+  #  useSound:
+  #    path: /Audio/Items/crowbar.ogg
+  #- type: ToolTileCompatible
+  - type: PhysicalComposition
+    materialComposition:
+      CEIron: 10
+      CEBrass: 20
+  - type: Sprite
+    sprite: _CE/Objects/Tools/ThirdArm/third_arm.rsi
+    state: icon
+  - type: Clothing
+    sprite: _CE/Objects/Tools/ThirdArm/third_arm.rsi
+    quickEquip: false
+    slots:
+    - Neck
+  - type: Item
+    sprite: _CE/Objects/Tools/ThirdArm/third_arm.rsi
+    size: Large
+  - type: CEMagicEssenceStructure
+    essences:
+      Tool: { min: 2, max: 8 }
+      Metal: { min: 2, max: 4 }
+      Energia: { min: 0, max: 4 }
+
+#MARK: Modules
+
+- type: entity
+  parent: BaseItem
+  id: CEThirdArmModuleLight
+  categories: [ ForkFiltered ]
+  name: third arm light module
+  description: TODO
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Tools/ThirdArm/module_light.rsi
+    state: icon
+  - type: Item
+    sprite: _CE/Objects/Tools/ThirdArm/module_light.rsi
+    size: Small
