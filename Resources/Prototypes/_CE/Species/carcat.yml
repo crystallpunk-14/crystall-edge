@@ -6,6 +6,8 @@
   dollPrototype: CEAppearanceCarcat
   skinColoration: CECarcatHues
   defaultSkinTone: "#4a382f"
+  defaultSoundsBySex: [CEUnisexCarcat, CEUnisexCarcat, CEUnisexCarcat]
+  voices: [CEUnisexCarcat]
   maleFirstNames: CE_Names_Carcat_First
   femaleFirstNames: CE_Names_Carcat_First
   naming: First

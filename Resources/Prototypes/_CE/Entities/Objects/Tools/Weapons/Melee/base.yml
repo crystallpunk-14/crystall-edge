@@ -70,6 +70,9 @@
   categories: [ HideSpawnMenu, ForkFiltered ]
   components:
   - type: CEWallpaperRemover
+  - type: Tag
+    tags:
+    - CESharp
   - type: UseDelay
   - type: Tool
     qualities:

@@ -314,8 +314,8 @@
     size: Tiny
   - type: FlavorProfile
     flavors:
-      - CEWater
-      - CEcucumber
+      - water
+      - CECucumber
   - type: Sprite
     sprite: _CE/Objects/Consumable/Food/cucumber.rsi
     layers:
@@ -365,8 +365,8 @@
     size: Tiny
   - type: FlavorProfile
     flavors:
-      - CEWater
-      - CEcucumber
+      - water
+      - CECucumber
   - type: Sprite
     sprite: _CE/Objects/Consumable/Food/cucumber.rsi
     layers:

@@ -254,10 +254,7 @@
     sprite: _CE/Mobs/Species/Carcat/parts.rsi
     state: full
   - type: Vocal
-    sounds:
-      Male: CEUnisexCarcat
-      Female: CEUnisexCarcat
-      Unsexed: CEUnisexCarcat
+    emoteSounds: CEUnisexCarcat
   - type: Speech
     speechSounds: CECarcat
   - type: MessyDrinker

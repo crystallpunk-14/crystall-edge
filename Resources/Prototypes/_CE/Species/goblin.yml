@@ -6,6 +6,8 @@
   dollPrototype: CEAppearanceGoblin
   skinColoration: VoxFeathers
   defaultSkinTone: "#74964d"
+  defaultSoundsBySex: [CEUnisexGoblin, CEUnisexGoblin, CEUnisexGoblin]
+  voices: [CEUnisexGoblin]
   maleFirstNames: CE_Names_Goblin_Male_First
   femaleFirstNames: CE_Names_Goblin_Female_First
   naming: First

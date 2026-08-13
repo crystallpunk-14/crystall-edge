@@ -125,7 +125,7 @@
   - type: FlavorProfile
     flavors:
       - cheesy
-      - pungent
+      - CEPungent
   - type: Solution
     id: food
     solution:
@@ -152,7 +152,7 @@
   - type: FlavorProfile
     flavors:
       - cheesy
-      - pungent
+      - CEPungent
   - type: Sprite
     layers:
       - state: blue_cheese_part
@@ -189,7 +189,7 @@
   - type: FlavorProfile
     flavors:
       - cheesy
-      - pungent
+      - CEPungent
   - type: Sprite
     layers:
       - state: blue_cheese_slice

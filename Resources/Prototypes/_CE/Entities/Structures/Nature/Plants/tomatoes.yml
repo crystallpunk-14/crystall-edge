@@ -36,5 +36,5 @@
     gatherKeys:
     - tomato
     toolWhitelist:
-      components:
-      - Sharp
+      tags:
+      - CESharp
