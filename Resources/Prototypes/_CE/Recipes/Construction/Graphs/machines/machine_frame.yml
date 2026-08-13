@@ -32,7 +32,7 @@
                 sprite: _CE/Objects/Materials/machine_parts.rsi
                 state: energy_line
           steps:
-            - tool: Screwing
+            - tool: CEMatterManipulation
               doAfter: 0.5
 
         - to: machineFrame

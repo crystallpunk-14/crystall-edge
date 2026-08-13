@@ -61,12 +61,18 @@ public sealed partial class HitscanBasicRaycastSystem : EntitySystem
                 + $" using {ToPrettyString(args.Gun):entity}.");
         }
 
+        // CrystallEdge: compute and expose the actual impact point (hit or max-distance) for consumers outside this framework
+        var hitMapPos = result?.HitPos ?? mapCords.Position + args.ShotDirection * distanceTried;
+        var hitCoordinates = _transform.ToCoordinates(new MapCoordinates(hitMapPos, mapCords.MapId));
+        // CrystallEdge end
+
         var data = new HitscanRaycastFiredData
         {
             ShotDirection = args.ShotDirection,
             Gun = args.Gun,
             Shooter = args.Shooter,
             HitEntity = result?.HitEntity,
+            HitCoordinates = hitCoordinates, // CrystallEdge: expose hit position
         };
 
         var attemptEvent = new AttemptHitscanRaycastFiredEvent { Data = data };

@@ -24,6 +24,8 @@
   - type: Clothing
     sprite: _CE/Objects/Tools/ThirdArm/third_arm.rsi
     quickEquip: false
+    equipDelay: 1.5
+    unequipDelay: 1.5
     slots:
     - Neck
   - type: Item
@@ -34,11 +36,34 @@
       Tool: { min: 2, max: 8 }
       Metal: { min: 2, max: 4 }
       Energia: { min: 0, max: 4 }
+  - type: Appearance
+  - type: Battery
+    maxCharge: 100
+    startingCharge: 100
+  - type: ExaminableBattery
+  - type: CEThirdArm
+    moduleSlot:
+      whitelist:
+        components:
+        - CEThirdArmModule
 
 #MARK: Modules
 
 - type: entity
   parent: BaseItem
+  id: CEThirdArmModuleBase
+  abstract: true
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Small
+    shape:
+    - 0, 0, 1, 0
+  - type: CEThirdArmModule
+
+
+- type: entity
+  parent: CEThirdArmModuleBase
   id: CEThirdArmModuleLight
   categories: [ ForkFiltered ]
   name: third arm light module
@@ -49,4 +74,141 @@
     state: icon
   - type: Item
     sprite: _CE/Objects/Tools/ThirdArm/module_light.rsi
-    size: Small
+  - type: PointLight
+    enabled: false
+    mask: /Textures/_CE/Effects/LightMasks/crystal_cone.png
+    autoRot: true
+    energy: 9
+    radius: 10
+    color: "#9cc8e3"
+    netsync: false
+  - type: CEThirdArmModuleLight
+  - type: CEThirdArmModule
+    passiveDrainRate: 0.15
+    iconLayers:
+    - sprite: _CE/Objects/Tools/ThirdArm/module_light.rsi
+      state: module-icon
+    equippedLayers:
+    - sprite: _CE/Objects/Tools/ThirdArm/module_light.rsi
+      state: equipped-NECK
+
+- type: entity
+  parent: CEThirdArmModuleBase
+  id: CEThirdArmModuleMining
+  categories: [ ForkFiltered ]
+  name: third arm mining module
+  description: TODO
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Tools/ThirdArm/module_mining.rsi
+    state: icon
+  - type: Item
+    sprite: _CE/Objects/Tools/ThirdArm/module_mining.rsi
+  - type: CEThirdArmModule
+    iconLayers:
+    - sprite: _CE/Objects/Tools/ThirdArm/module_mining.rsi
+      state: module-icon
+    equippedLayers:
+    - sprite: _CE/Objects/Tools/ThirdArm/module_mining.rsi
+      state: equipped-NECK
+  - type: CEThirdArmModuleActionsGrant
+    actions:
+    - ActionCEThirdArmMiningLaser
+
+- type: entity
+  parent: CEThirdArmModuleBase
+  id: CEThirdArmModuleManipulation
+  categories: [ ForkFiltered ]
+  name: third arm manipulation module
+  description: TODO
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
+    state: icon
+  - type: Item
+    sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
+  - type: CEThirdArmModule
+    iconLayers:
+    - sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
+      state: module-icon
+    equippedLayers:
+    - sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
+      state: equipped-NECK
+  - type: CEThirdArmModuleActionsGrant
+    actions:
+    - ActionCEThirdArmManipulation
+
+- type: entity
+  parent: BasicHitscan
+  id: CEThirdArmMiningHitscan
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Structural: 20
+        Shock: 2
+  - type: HitscanBasicVisuals
+    muzzleFlash:
+      sprite: _CE/Effects/Hitscans/mana_thin.rsi
+      state: muzzle_blue
+    travelFlash:
+      sprite: _CE/Effects/Hitscans/mana_thin.rsi
+      state: beam_blue
+    impactFlash:
+      sprite: _CE/Effects/Hitscans/mana_thin.rsi
+      state: impact_blue
+  - type: CEHitscanImpactVfx
+    vfx: CEOverchargeSmallVFX
+
+#MARK: Actions
+
+- type: entity
+  parent: BaseAction
+  id: ActionCEThirdArmMiningLaser
+  name: mining laser
+  description: TODO
+  components:
+  - type: CEVisualizeConeAction
+    width: 10
+    range: 15
+  - type: Action
+    icon:
+      sprite: _CE/Effects/Hitscans/mana.rsi
+      state: impact_blue
+    useDelay: 1
+    itemIconStyle: BigAction
+  - type: TargetAction
+    range: 10
+    checkCanAccess: false
+  - type: CEThirdArmActionManaCost
+    manaCost: 5
+  - type: WorldTargetAction
+    event: !type:CEThirdArmHitscanActionEvent
+      hitscan: CEThirdArmMiningHitscan
+      sound:
+        path: /Audio/Effects/sparks1.ogg
+        params:
+          variation: 0.1
+
+- type: entity
+  parent: BaseAction
+  id: ActionCEThirdArmManipulation
+  name: matter manipulation
+  description: TODO
+  components:
+  - type: CEVisualizeRadiusTargetAction
+  - type: Action
+    icon:
+      sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
+      state: icon
+    useDelay: 1
+  - type: TargetAction
+    range: 2
+  - type: Tool
+    qualities:
+    - CEMatterManipulation
+  - type: CEThirdArmActionManaCost
+    manaCost: 5
+  - type: EntityTargetAction
+    event: !type:CEThirdArmToolActionEvent
