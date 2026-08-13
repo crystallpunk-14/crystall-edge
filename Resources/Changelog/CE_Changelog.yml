@@ -648,3 +648,12 @@
   id: 1061
   time: '2026-08-12T20:44:47.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/402
+- author: TheShuEd, D1nazewwr, ak2000381
+  changes:
+  - message: Added 29 variants of armchairs.
+    type: Add
+  - message: Big brass fence was added.
+    type: Add
+  id: 1062
+  time: '2026-08-13T10:26:47.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/403
