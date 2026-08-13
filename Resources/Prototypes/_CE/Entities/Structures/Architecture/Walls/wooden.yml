@@ -69,7 +69,8 @@
     defaultTarget: null
   - type: CERadialConstruction
     variants:
-    - trigger: !type:CERadialToolTrigger { quality: CEHammering }
+    - trigger: !type:CERadialToolTrigger
+        quality: CEHammering
       availablePrototypes:
       - CEWallWooden
       - CEWallWoodenDecorated

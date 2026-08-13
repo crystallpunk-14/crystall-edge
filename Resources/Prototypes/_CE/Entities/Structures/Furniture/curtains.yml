@@ -91,7 +91,8 @@
   components:
   - type: CERadialConstruction
     variants:
-    - trigger: !type:CERadialToolTrigger { quality: CEHammering }
+    - trigger: !type:CERadialToolTrigger
+        quality: CEHammering
       availablePrototypes:
       - CECurtainsWhiteFlower
       - CECurtainsWhiteStar
@@ -199,7 +200,8 @@
   components:
   - type: CERadialConstruction
     variants:
-    - trigger: !type:CERadialToolTrigger { quality: CEHammering }
+    - trigger: !type:CERadialToolTrigger
+        quality: CEHammering
       availablePrototypes:
       - CECurtainsBlueFlower
       - CECurtainsBlueStar
@@ -300,7 +302,8 @@
   components:
   - type: CERadialConstruction
     variants:
-    - trigger: !type:CERadialToolTrigger { quality: CEHammering }
+    - trigger: !type:CERadialToolTrigger
+        quality: CEHammering
       availablePrototypes:
       - CECurtainsRedFlower
       - CECurtainsRedStar
@@ -401,7 +404,8 @@
   components:
   - type: CERadialConstruction
     variants:
-    - trigger: !type:CERadialToolTrigger { quality: CEHammering }
+    - trigger: !type:CERadialToolTrigger
+        quality: CEHammering
       availablePrototypes:
       - CECurtainsPurpleFlower
       - CECurtainsPurpleStar
@@ -502,7 +506,8 @@
   components:
   - type: CERadialConstruction
     variants:
-    - trigger: !type:CERadialToolTrigger { quality: CEHammering }
+    - trigger: !type:CERadialToolTrigger
+        quality: CEHammering
       availablePrototypes:
       - CECurtainsGreenFlower
       - CECurtainsGreenStar

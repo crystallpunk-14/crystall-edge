@@ -44,7 +44,8 @@
     state: frame
   - type: CERadialConstruction
     variants:
-    - trigger: !type:CERadialToolTrigger { quality: CEHammering }
+    - trigger: !type:CERadialToolTrigger
+        quality: CEHammering
       availablePrototypes:
       - CEChairWooden
       - CEChairStoolWooden
