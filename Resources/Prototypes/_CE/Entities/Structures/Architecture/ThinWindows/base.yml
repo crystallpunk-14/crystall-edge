@@ -112,8 +112,6 @@
       map: ["enum.DoorVisualLayers.Base"]
   - type: Icon
     state: door_closed
-  - type: IconSmooth
-    mode: NoSprite
   - type: InteractionOutline
   - type: Appearance
   - type: Door

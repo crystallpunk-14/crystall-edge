@@ -1,4 +1,3 @@
-using Content.Shared._CE.Vehicle;
 using Content.Shared._CE.ZLevels.Flight;
 using Content.Shared._CE.ZLevels.Flight.Components;
 using Content.Shared.Power;

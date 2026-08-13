@@ -9,7 +9,7 @@ namespace Content.Shared._CE.DayCycle;
 /// <summary>
 /// Checks whether there is a time of day on the current map, and whether the current time of day corresponds to the specified periods.
 /// </summary>
-public sealed class CEIsNightConditionSystem : EntityConditionSystem<TransformComponent, CEIsNightCondition>
+public sealed partial class CEIsNightConditionSystem : EntityConditionSystem<TransformComponent, CEIsNightCondition>
 {
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private CEDayCycleSystem _dayCycle = default!;
@@ -34,7 +34,7 @@ public sealed partial class CEIsNightCondition : EntityConditionBase<CEIsNightCo
     public override string EntityConditionGuidebookText(IPrototypeManager prototype) => string.Empty;
 }
 
-public sealed class CEWeatherAffectConditionSystem : EntityConditionSystem<TransformComponent, CEWeatherAffectCondition>
+public sealed partial class CEWeatherAffectConditionSystem : EntityConditionSystem<TransformComponent, CEWeatherAffectCondition>
 {
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private SharedWeatherSystem _weather = default!;

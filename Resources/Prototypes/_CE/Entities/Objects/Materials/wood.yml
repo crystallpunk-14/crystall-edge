@@ -1,6 +1,6 @@
 - type: entity
   id: CEWoodLog
-  parent: BaseItem
+  parent: [BaseItem, BaseSlicingRefinable]
   name: wooden log
   description: A piece of unprocessed wood. Good material for building, or starting a fire.
   categories: [ ForkFiltered ]
@@ -31,9 +31,11 @@
     damage:
       types:
         Heat: 1
-  - type: Log
-    spawnedPrototype: CEWoodenPlanks1
-    spawnCount: 3
+  - type: ToolRefinable
+    qualityNeeded: Sawing
+    refineResult:
+    - id: CEWoodenPlanks1
+      amount: 3
   - type: Appearance
   - type: Damageable
     damageModifierSet: Wood

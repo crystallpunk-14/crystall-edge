@@ -2,6 +2,7 @@ using Content.Shared._CE.EntityTable.Components;
 using Content.Shared.Prototypes;
 using Content.Shared.Random.Helpers;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 
 namespace Content.Shared._CE.EntityTable;
 
@@ -57,7 +58,7 @@ public sealed partial class CEEntityGroupIndexSystem : EntitySystem
     /// <summary>
     /// Picks a random entity prototype registered under <paramref name="group"/>, weighted by <see cref="CEEntityGroupMemberComponent.Groups"/>.
     /// </summary>
-    public bool TryPick(string group, System.Random rand, out EntProtoId result)
+    public bool TryPick(string group, IRobustRandom rand, out EntProtoId result)
     {
         if (!_index.TryGetValue(group, out var weights) || weights.Count == 0)
         {
