@@ -12,5 +12,6 @@ ce-knowledge-drill-advanced = Продвинутое бурение
 ce-knowledge-hoverboard = Ховерборды
 ce-knowledge-portable-essence-attractor = Портативный аттрактор эссенции
 ce-knowledge-node-stabilizer = Сфера содержания ноды
+ce-knowledge-essence-burner = Сжигатель эссенции
 ce-knowledge-mana-transfer-glove = Перчатка передачи маны
 ce-knowledge-magic-defib = Посох воскрешения

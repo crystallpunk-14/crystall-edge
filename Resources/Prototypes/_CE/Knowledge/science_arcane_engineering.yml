@@ -30,6 +30,13 @@
     state: icon
 
 - type: CEKnowledge
+  id: KnowledgeEssenceBurner
+  name: ce-knowledge-essence-burner
+  icon:
+    entity: CEMagicEssenceBurner
+  book: CEBaseScienceBookArcaneEngineering
+
+- type: CEKnowledge
   id: KnowledgeManaTransferGlove
   parent: ArcaneEngineeringKnowledgeBase
   name: ce-knowledge-mana-transfer-glove

@@ -42,6 +42,17 @@
   knowledge: KnowledgeHoverboard
 
 - type: scienceDiscovery
+  id: EssenceBurner
+  parent: MediumDifficult
+  area: ArcaneEngineering
+  targetAspects:
+  - Energia
+  - Machine
+  - Void
+  - Magic
+  knowledge: KnowledgeEssenceBurner
+
+- type: scienceDiscovery
   id: NodeStabilizer
   parent: MediumDifficult
   area: ArcaneEngineering
@@ -50,3 +61,4 @@
   - Trap
   - Machine
   knowledge: KnowledgeNodeStabilizer
+
