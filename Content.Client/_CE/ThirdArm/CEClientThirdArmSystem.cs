@@ -6,7 +6,7 @@ using Robust.Client.GameObjects;
 
 namespace Content.Client._CE.ThirdArm;
 
-public sealed partial class CEThirdArmSystem : CESharedThirdArmSystem
+public sealed partial class CEClientThirdArmSystem : Shared._CE.ThirdArm.LightModule.CESharedThirdArmSystem
 {
     [Dependency] private SpriteSystem _sprite = default!;
     [Dependency] private ItemSystem _itemSystem = default!;
@@ -32,7 +32,6 @@ public sealed partial class CEThirdArmSystem : CESharedThirdArmSystem
         ent.Comp.RevealedLayers.Clear();
 
         Appearance.TryGetData<List<PrototypeLayerData>>(ent, CEThirdArmVisuals.IconLayers, out var layers, args.Component);
-        layers ??= new List<PrototypeLayerData>();
 
         var counter = 0;
         foreach (var layer in layers)
@@ -44,8 +43,6 @@ public sealed partial class CEThirdArmSystem : CESharedThirdArmSystem
             counter++;
         }
 
-        // Equipped-slot layers are rebuilt via GetEquipmentVisualsEvent, but that only fires on
-        // (un)equip or when the wearer's own appearance changes - force a refresh here too.
         _itemSystem.VisualsChanged(ent);
     }
 

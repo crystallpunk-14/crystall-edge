@@ -20,8 +20,6 @@ public abstract partial class CESharedThirdArmSystem : EntitySystem
         SubscribeLocalEvent<CEThirdArmComponent, EntInsertedIntoContainerMessage>(OnModuleSlotChanged);
         SubscribeLocalEvent<CEThirdArmComponent, EntRemovedFromContainerMessage>(OnModuleSlotChanged);
 
-        InitLight();
-        InitActions();
         InitBatteryModule();
         InitHitscanModule();
         InitToolAction();

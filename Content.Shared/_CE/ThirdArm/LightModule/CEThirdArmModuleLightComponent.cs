@@ -5,6 +5,6 @@ namespace Content.Shared._CE.ThirdArm.Components;
 ///     (see CESharedThirdArmSystem.Light.cs / .Battery.cs).
 /// </summary>
 [RegisterComponent]
-public sealed partial class CEThirdArmModuleLightComponent : Component
+public sealed partial class CEThirdArmLightModuleComponent : Component
 {
 }

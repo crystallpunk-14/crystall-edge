@@ -1,3 +1,5 @@
+#MARK: Arm
+
 - type: entity
   parent: BaseItem
   id: CEThirdArm
@@ -47,8 +49,6 @@
         components:
         - CEThirdArmModule
 
-#MARK: Modules
-
 - type: entity
   parent: BaseItem
   id: CEThirdArmModuleBase
@@ -61,6 +61,7 @@
     - 0, 0, 1, 0
   - type: CEThirdArmModule
 
+#MARK: Light Module
 
 - type: entity
   parent: CEThirdArmModuleBase
@@ -82,7 +83,7 @@
     radius: 10
     color: "#9cc8e3"
     netsync: false
-  - type: CEThirdArmModuleLight
+  - type: CEThirdArmLightModule
   - type: CEThirdArmModule
     passiveDrainRate: 0.15
     iconLayers:
@@ -91,6 +92,8 @@
     equippedLayers:
     - sprite: _CE/Objects/Tools/ThirdArm/module_light.rsi
       state: equipped-NECK
+
+#MARK: Mining Module
 
 - type: entity
   parent: CEThirdArmModuleBase
@@ -111,57 +114,9 @@
     equippedLayers:
     - sprite: _CE/Objects/Tools/ThirdArm/module_mining.rsi
       state: equipped-NECK
-  - type: CEThirdArmModuleActionsGrant
+  - type: CEThirdArmActionModule
     actions:
     - ActionCEThirdArmMiningLaser
-
-- type: entity
-  parent: CEThirdArmModuleBase
-  id: CEThirdArmModuleManipulation
-  categories: [ ForkFiltered ]
-  name: third arm manipulation module
-  description: TODO
-  components:
-  - type: Sprite
-    sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
-    state: icon
-  - type: Item
-    sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
-  - type: CEThirdArmModule
-    iconLayers:
-    - sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
-      state: module-icon
-    equippedLayers:
-    - sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
-      state: equipped-NECK
-  - type: CEThirdArmModuleActionsGrant
-    actions:
-    - ActionCEThirdArmManipulation
-
-- type: entity
-  parent: BasicHitscan
-  id: CEThirdArmMiningHitscan
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: HitscanBasicDamage
-    damage:
-      types:
-        Structural: 20
-        Shock: 2
-  - type: HitscanBasicVisuals
-    muzzleFlash:
-      sprite: _CE/Effects/Hitscans/mana_thin.rsi
-      state: muzzle_blue
-    travelFlash:
-      sprite: _CE/Effects/Hitscans/mana_thin.rsi
-      state: beam_blue
-    impactFlash:
-      sprite: _CE/Effects/Hitscans/mana_thin.rsi
-      state: impact_blue
-  - type: CEHitscanImpactVfx
-    vfx: CEOverchargeSmallVFX
-
-#MARK: Actions
 
 - type: entity
   parent: BaseAction
@@ -191,6 +146,67 @@
         params:
           variation: 0.1
 
+- type: entityEffectAnimation
+  id: ThirdArmMiningModuleAttack
+  movementSpeed: 0.3
+  duration: 0.35
+  events:
+    0:
+    - !type:PlaySound
+      sound:
+        path: /Audio/_CE/Effects/Weapon/slash.ogg
+    0.08:
+    - !type:Hitscan
+      prototype: CEThirdArmMiningHitscan
+
+- type: entity
+  parent: BasicHitscan
+  id: CEThirdArmMiningHitscan
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Structural: 20
+        Shock: 2
+  - type: HitscanBasicVisuals
+    muzzleFlash:
+      sprite: _CE/Effects/Hitscans/mana_thin.rsi
+      state: muzzle_blue
+    travelFlash:
+      sprite: _CE/Effects/Hitscans/mana_thin.rsi
+      state: beam_blue
+    impactFlash:
+      sprite: _CE/Effects/Hitscans/mana_thin.rsi
+      state: impact_blue
+  - type: CEHitscanImpactVfx
+    vfx: CEOverchargeSmallVFX
+
+#MARK: Tool Module
+
+- type: entity
+  parent: CEThirdArmModuleBase
+  id: CEThirdArmModuleManipulation
+  categories: [ ForkFiltered ]
+  name: third arm manipulation module
+  description: TODO
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
+    state: icon
+  - type: Item
+    sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
+  - type: CEThirdArmModule
+    iconLayers:
+    - sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
+      state: module-icon
+    equippedLayers:
+    - sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
+      state: equipped-NECK
+  - type: CEThirdArmActionModule
+    actions:
+    - ActionCEThirdArmManipulation
+
 - type: entity
   parent: BaseAction
   id: ActionCEThirdArmManipulation
@@ -212,3 +228,4 @@
     manaCost: 5
   - type: EntityTargetAction
     event: !type:CEThirdArmToolActionEvent
+

@@ -11,7 +11,7 @@ public sealed partial class CEThirdArmComponent : Component
     public ItemSlot ModuleSlot = new();
 
     /// <summary>
-    ///     Client-only bookkeeping of sprite layer keys currently added by the inserted module's IconLayers.
+    /// Client-only bookkeeping of sprite layer keys currently added by the inserted module's IconLayers.
     /// </summary>
     public HashSet<string> RevealedLayers = new();
 }
