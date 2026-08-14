@@ -5,8 +5,8 @@
   - CEPlantBaseSolarEnergy
   - CEPlantBaseSingleHarvest
   - CEPlantBaseFloralDelicateType
-  - CEPlantBaseGrowing1Day
-  - CEPlantBaseMetabolizer1Day
+  - CEPlantBaseGrowingMedium
+  - CEPlantBaseMetabolizerMedium
   - CEPlantBaseMetabolizerWater
   name: corn
   description: There are rumors that lurkers can be found inside cornfields.
