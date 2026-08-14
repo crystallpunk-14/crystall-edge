@@ -248,13 +248,15 @@
       sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
       state: icon
     useDelay: 1
+    itemIconStyle: BigItem
     raiseOnUser: true
   - type: TargetAction
     range: 2
   - type: CEThirdArmActionManaCost
     manaCost: 5
   - type: EntityTargetAction
-    event: !type:CEEntityTargetActionAnimationEvent
+  - type: WorldTargetAction
+    event: !type:CEWorldTargetActionAnimationEvent
       animation: ThirdArmManipulationAttack
 
 - type: entityEffectAnimation
@@ -269,6 +271,23 @@
     - !type:SpawnEntity
       spawns:
       - CEOverchargeVFX
+    - !type:PlaySound
+      sound:
+        path: /Audio/Effects/sparks2.ogg
+        params:
+          pitch: 1.6
+    0.2:
+    - !type:PlaySound
+      sound:
+        path: /Audio/Effects/sparks2.ogg
+        params:
+          pitch: 1.3
+    0.4:
+    - !type:PlaySound
+      sound:
+        path: /Audio/Effects/sparks2.ogg
+        params:
+          pitch: 1.0
     1:
     - !type:SpawnEntity
       spawns:

@@ -60,7 +60,12 @@ public abstract partial class CESharedActionSystem : EntitySystem
         if (_animation.IsPlayingAnimation(ent))
             return;
 
-        _animation.TryPlayAnimationToCoordinates(ent, args.Animation, args.Target, args.Action.Comp.Container, args.Speed);
+        // Entity is only set when the action also has EntityTargetAction and the click landed on an entity.
+        if (args.Entity is { } entity)
+            _animation.TryPlayAnimationToEntity(ent, args.Animation, entity, args.Action.Comp.Container, args.Speed);
+        else
+            _animation.TryPlayAnimationToCoordinates(ent, args.Animation, args.Target, args.Action.Comp.Container, args.Speed);
+
         args.Handled = true;
     }
 
