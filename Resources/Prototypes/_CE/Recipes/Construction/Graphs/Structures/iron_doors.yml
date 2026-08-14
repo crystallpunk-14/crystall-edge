@@ -37,9 +37,7 @@
               amount: 2
             - !type:DeleteEntity {}
           steps:
-            - tool: CEHammering
-              doAfter: 1
-            - tool: Prying
+            - tool: CEMatterManipulation
               doAfter: 2
         - to: CEIronDoor
           conditions:
@@ -86,9 +84,7 @@
               amount: 2
             - !type:DeleteEntity {}
           steps:
-            - tool: CEHammering
-              doAfter: 1
-            - tool: Prying
+            - tool: CEMatterManipulation
               doAfter: 2
         - to: CEIronDoorMirrored
           conditions:
@@ -130,9 +126,7 @@
           - !type:Locked
             locked: false
           steps:
-            - tool: Prying
-              doAfter: 1
-            - tool: Prying
+            - tool: CEMatterManipulation
               doAfter: 2
           completed:
             - !type:SpawnPrototype
@@ -150,9 +144,7 @@
           - !type:Locked
             locked: false
           steps:
-            - tool: Prying
-              doAfter: 1
-            - tool: Prying
+            - tool: CEMatterManipulation
               doAfter: 2
           completed:
             - !type:SpawnPrototype
@@ -170,9 +162,7 @@
           - !type:Locked
             locked: false
           steps:
-            - tool: Prying
-              doAfter: 1
-            - tool: Prying
+            - tool: CEMatterManipulation
               doAfter: 2
           completed:
             - !type:SpawnPrototype
@@ -193,9 +183,7 @@
           - !type:Locked
             locked: false
           steps:
-            - tool: Prying
-              doAfter: 1
-            - tool: Prying
+            - tool: CEMatterManipulation
               doAfter: 2
           completed:
             - !type:SpawnPrototype

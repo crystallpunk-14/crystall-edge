@@ -33,7 +33,7 @@
                 state: energy_line
           steps:
             - tool: CEMatterManipulation
-              doAfter: 0.5
+              doAfter: 1
 
         - to: machineFrame
           conditions:
@@ -41,7 +41,7 @@
             - !type:ContainerNotEmpty
               container: machine_board
           steps:
-            - tool: Prying
+            - tool: CEMatterManipulation
               doAfter: 2
               completed:
                 - !type:EmptyAllContainers
@@ -49,7 +49,7 @@
 
         - to: start
           steps:
-            - tool: Prying
+            - tool: CEMatterManipulation
               doAfter: 2
               completed:
                 - !type:SpawnPrototype
@@ -68,9 +68,9 @@
           conditions:
             - !type:EntityAnchored
           steps:
-            - tool: Prying
+            - tool: CEMatterManipulation
               doAfter: 2
-    
+
     - node: destroyed
       entity: CEMachineFrameDestroyed
       actions:
@@ -79,7 +79,7 @@
       edges:
         - to: start
           steps:
-            - tool: Prying
+            - tool: CEMatterManipulation
               doAfter: 2
               completed:
                 - !type:SpawnPrototype

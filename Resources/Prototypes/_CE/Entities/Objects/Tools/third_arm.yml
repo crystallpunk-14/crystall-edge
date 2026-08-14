@@ -129,6 +129,7 @@
     itemIconStyle: BigAction
     raiseOnUser: true
   - type: TargetAction
+    repeat: true
     range: 10
     checkCanAccess: false
   - type: CEThirdArmActionManaCost
@@ -251,7 +252,9 @@
     itemIconStyle: BigItem
     raiseOnUser: true
   - type: TargetAction
+    repeat: true
     range: 2
+    checkCanAccess: false
   - type: CEThirdArmActionManaCost
     manaCost: 5
   - type: EntityTargetAction
