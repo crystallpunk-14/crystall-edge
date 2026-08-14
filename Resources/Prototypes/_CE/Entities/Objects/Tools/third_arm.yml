@@ -19,7 +19,7 @@
     state: icon
   - type: Clothing
     sprite: _CE/Objects/Tools/ThirdArm/third_arm.rsi
-    quickEquip: false
+    quickEquip: true
     equipDelay: 1.5
     unequipDelay: 1.5
     slots:
@@ -86,6 +86,10 @@
     equippedLayers:
     - sprite: _CE/Objects/Tools/ThirdArm/module_light.rsi
       state: equipped-NECK
+  - type: CEMagicEssenceStructure
+    essences:
+      Tool: { min: 1, max: 3 }
+      Light: { min: 1, max: 3 }
 
 #MARK: Mining Module
 
@@ -111,6 +115,10 @@
   - type: CEThirdArmActionModule
     actions:
     - ActionCEThirdArmMiningLaser
+  - type: CEMagicEssenceStructure
+    essences:
+      Tool: { min: 1, max: 3 }
+      Mining: { min: 1, max: 3 }
 
 - type: entity
   parent: BaseAction
@@ -236,6 +244,9 @@
   - type: CEThirdArmActionModule
     actions:
     - ActionCEThirdArmManipulation
+  - type: CEMagicEssenceStructure
+    essences:
+      Tool: { min: 4, max: 6 }
 
 - type: entity
   parent: BaseAction

@@ -262,6 +262,79 @@
   result: CEVehicleHoverboard
   resultCount: 1
 
+- type: CERecipe
+  id: CEThirdArm
+  parent: CEBaseEngineeringTableRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronRod
+    count: 1
+  - !type:StackResource
+    stack: CEBrassRod
+    count: 2
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 2
+  result: CEThirdArm
+  resultCount: 1
+
+- type: CERecipe
+  id: CEThirdArmModuleLight
+  parent: CEBaseEngineeringTableRecipe
+  category: Tools
+  craftTime: 1.5
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 2
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 1
+  - !type:StackResource
+    stack: CEGlass
+    count: 2
+  result: CEThirdArmModuleLight
+  resultCount: 1
+
+- type: CERecipe
+  id: CEThirdArmModuleMining
+  requiredKnowledge: KnowledgeThirdArmMiningModule
+  parent: CEBaseEngineeringTableRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 4
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 2
+  - !type:StackResource
+    stack: CEIronRod
+    count: 3
+  result: CEThirdArmModuleMining
+  resultCount: 1
+
+- type: CERecipe
+  id: CEThirdArmModuleManipulation
+  parent: CEBaseEngineeringTableRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronBar
+    count: 2
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 3
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 1
+  result: CEThirdArmModuleManipulation
+  resultCount: 1
+
 #MARK: Machine cores
 
 - type: CERecipe

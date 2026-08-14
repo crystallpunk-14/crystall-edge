@@ -36,3 +36,10 @@
   icon:
     sprite: _CE/Objects/Tools/mana_glove.rsi
     state: icon
+
+- type: CEKnowledge
+  id: KnowledgeThirdArmMiningModule
+  parent: ArcaneEngineeringKnowledgeBase
+  name: ce-knowledge-third-arm-mining-module
+  icon:
+    entity: CEThirdArmModuleMining

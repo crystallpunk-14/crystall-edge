@@ -14,3 +14,4 @@ ce-knowledge-portable-essence-attractor = Portable Essence Attractor
 ce-knowledge-node-stabilizer = Node Containment Sphere
 ce-knowledge-mana-transfer-glove = Mana Transfer Glove
 ce-knowledge-magic-defib = Staff of Revival
+ce-knowledge-third-arm-mining-module = Manipulator Mining Module
