@@ -23,9 +23,7 @@
               amount: 2
             - !type:DeleteEntity {}
           steps:
-            - tool: Prying
-              doAfter: 1
-            - tool: Prying
+            - tool: CEMatterManipulation
               doAfter: 2
         - to: CEThinWindowIron
           steps:
@@ -40,9 +38,7 @@
       edges:
         - to: CEThinWindowFrameIron
           steps:
-            - tool: Prying
-              doAfter: 1
-            - tool: Prying
+            - tool: CEMatterManipulation
               doAfter: 2
           completed:
             - !type:SpawnPrototype
@@ -74,9 +70,7 @@
               amount: 2
             - !type:DeleteEntity {}
           steps:
-            - tool: Prying
-              doAfter: 1
-            - tool: Prying
+            - tool: CEMatterManipulation
               doAfter: 2
         - to: CEThinWindowDoorIron
           steps:
@@ -91,9 +85,7 @@
       edges:
         - to: CEThinWindowDoorFrameIron
           steps:
-            - tool: Prying
-              doAfter: 1
-            - tool: Prying
+            - tool: CEMatterManipulation
               doAfter: 2
           completed:
             - !type:SpawnPrototype

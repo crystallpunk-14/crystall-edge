@@ -48,7 +48,7 @@ public abstract partial class CESharedActionSystem : EntitySystem
         if (_animation.IsPlayingAnimation(ent))
             return;
 
-        _animation.TryPlayAnimationToAngle(ent, args.Animation, null, null, args.Speed);
+        _animation.TryPlayAnimationToAngle(ent, args.Animation, null, args.Action.Comp.Container, args.Speed);
         args.Handled = true;
     }
 
@@ -60,7 +60,12 @@ public abstract partial class CESharedActionSystem : EntitySystem
         if (_animation.IsPlayingAnimation(ent))
             return;
 
-        _animation.TryPlayAnimationToCoordinates(ent, args.Animation, args.Target, null, args.Speed);
+        // Entity is only set when the action also has EntityTargetAction and the click landed on an entity.
+        if (args.Entity is { } entity)
+            _animation.TryPlayAnimationToEntity(ent, args.Animation, entity, args.Action.Comp.Container, args.Speed);
+        else
+            _animation.TryPlayAnimationToCoordinates(ent, args.Animation, args.Target, args.Action.Comp.Container, args.Speed);
+
         args.Handled = true;
     }
 
@@ -77,7 +82,7 @@ public abstract partial class CESharedActionSystem : EntitySystem
         var direction = targetPos - playerPos;
         var angle = Angle.FromWorldVec(direction);
 
-        _animation.TryPlayAnimationToAngle(ent, args.Animation, angle, null, args.Speed);
+        _animation.TryPlayAnimationToAngle(ent, args.Animation, angle, args.Action.Comp.Container, args.Speed);
         args.Handled = true;
     }
 
@@ -89,7 +94,7 @@ public abstract partial class CESharedActionSystem : EntitySystem
         if (_animation.IsPlayingAnimation(ent))
             return;
 
-        _animation.TryPlayAnimationToEntity(ent, args.Animation, args.Target, null, args.Speed);
+        _animation.TryPlayAnimationToEntity(ent, args.Animation, args.Target, args.Action.Comp.Container, args.Speed);
         args.Handled = true;
     }
 }

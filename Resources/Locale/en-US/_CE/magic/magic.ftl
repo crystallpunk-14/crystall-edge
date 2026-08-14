@@ -2,6 +2,7 @@ ce-energy-overcharge-popup = Too much energy!
 ce-energy-deficit-popup = Not enough mana!
 
 ce-magic-manacost = Mana cost
+ce-magic-cooldown = Cooldown
 
 ce-magic-spell-not-enough-mana = Not enough mana!
 ce-magic-spell-no-mana-component = You're not using magical energy.
@@ -23,6 +24,7 @@ ce-magic-spell-need-material-component = You need to hold the material component
 
 ce-magic-spell-stamina-not-enough = You don't have the energy to do it.
 ce-magic-staminacost = Stamina cost
+ce-magic-weapon-required = Requires a weapon in hand
 ce-magic-spell-pacified = It could hurt someone!
 ce-magic-spell-ssd = Do not touch disconnected players!
 
