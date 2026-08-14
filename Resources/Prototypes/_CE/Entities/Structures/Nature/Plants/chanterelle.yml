@@ -5,8 +5,8 @@
   - CEPlantBaseDarknessEnergy
   - CEPlantBaseSingleHarvest
   - CEPlantBaseFungalType
-  - CEPlantBaseGrowingHalfDay
-  - CEPlantBaseMetabolizerHalfDay
+  - CEPlantBaseGrowingFast
+  - CEPlantBaseMetabolizerFast
   - CEPlantBaseMetabolizerWater
   - CEPlantBaseSpreading
   name: chanterelle
