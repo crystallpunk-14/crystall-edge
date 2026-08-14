@@ -4,18 +4,12 @@
   parent: BaseItem
   id: CEThirdArm
   categories: [ ForkFiltered ]
-  name: third arm
-  description: TODO
+  name: manipulator arm
+  description: The most important tool for an engineering mana technician. A modular, battery-powered robotic arm capable of performing a variety of functions, depending on the module attached to it.
   components:
   - type: EmitSoundOnLand
     sound:
       path: /Audio/Items/crowbar_drop.ogg
-  #- type: Tool
-  #  qualities:
-  #    - Prying
-  #  useSound:
-  #    path: /Audio/Items/crowbar.ogg
-  #- type: ToolTileCompatible
   - type: PhysicalComposition
     materialComposition:
       CEIron: 10
@@ -67,8 +61,8 @@
   parent: CEThirdArmModuleBase
   id: CEThirdArmModuleLight
   categories: [ ForkFiltered ]
-  name: third arm light module
-  description: TODO
+  name: manipulator light module
+  description: Module for the manipulator arm. Provides a powerful light source.
   components:
   - type: Sprite
     sprite: _CE/Objects/Tools/ThirdArm/module_light.rsi
@@ -99,8 +93,8 @@
   parent: CEThirdArmModuleBase
   id: CEThirdArmModuleMining
   categories: [ ForkFiltered ]
-  name: third arm mining module
-  description: TODO
+  name: manipulator mining module
+  description: Module for the manipulator arm. Equips the arm with a mining laser.
   components:
   - type: Sprite
     sprite: _CE/Objects/Tools/ThirdArm/module_mining.rsi
@@ -122,7 +116,7 @@
   parent: BaseAction
   id: ActionCEThirdArmMiningLaser
   name: mining laser
-  description: TODO
+  description: Fire a series of precise laser beams capable of destroying structures.
   components:
   - type: CEVisualizeConeAction
     width: 10
@@ -141,10 +135,10 @@
     manaCost: 5
   - type: WorldTargetAction
     event: !type:CEWorldTargetActionAnimationEvent
-      animation: ThirdArmMiningModuleAttack
+      animation: ManipulatorMiningModuleAttack
 
 - type: entityEffectAnimation
-  id: ThirdArmMiningModuleAttack
+  id: ManipulatorMiningModuleAttack
   movementSpeed: 0.3
   duration: 0.6
   events:
@@ -223,8 +217,8 @@
   parent: CEThirdArmModuleBase
   id: CEThirdArmModuleManipulation
   categories: [ ForkFiltered ]
-  name: third arm manipulation module
-  description: TODO
+  name: manipulator tool module
+  description: Module for the manipulator arm. It allows you to build and take apart complex structures.
   components:
   - type: Sprite
     sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
@@ -246,7 +240,7 @@
   parent: BaseAction
   id: ActionCEThirdArmManipulation
   name: matter manipulation
-  description: TODO
+  description: Allows you to build and take apart complex structures.
   components:
   - type: CEVisualizeRadiusTargetAction
   - type: Action
@@ -257,12 +251,26 @@
     raiseOnUser: true
   - type: TargetAction
     range: 2
-  - type: Tool
-    qualities:
-    - CEMatterManipulation
   - type: CEThirdArmActionManaCost
     manaCost: 5
   - type: EntityTargetAction
     event: !type:CEEntityTargetActionAnimationEvent
-      animation: ThirdArmMiningModuleAttack
+      animation: ThirdArmManipulationAttack
+
+- type: entityEffectAnimation
+  id: ThirdArmManipulationAttack
+  movementSpeed: 0.3
+  duration: 1.2
+  events:
+    0:
+    - !type:ToolUse
+      qualities:
+      - CEMatterManipulation
+    - !type:SpawnEntity
+      spawns:
+      - CEOverchargeVFX
+    1:
+    - !type:SpawnEntity
+      spawns:
+      - CEOverchargeVFX
 

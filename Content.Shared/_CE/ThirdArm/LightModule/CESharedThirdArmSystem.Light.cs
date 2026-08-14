@@ -2,7 +2,7 @@ using Content.Shared._CE.ThirdArm.Components;
 
 namespace Content.Shared._CE.ThirdArm.LightModule;
 
-public abstract partial class CEThirdArmLightModuleSystem : EntitySystem
+public sealed partial class CEThirdArmLightModuleSystem : EntitySystem
 {
     [Dependency] protected SharedPointLightSystem PointLight = default!;
 
