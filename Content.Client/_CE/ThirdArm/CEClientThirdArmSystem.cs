@@ -6,7 +6,7 @@ using Robust.Client.GameObjects;
 
 namespace Content.Client._CE.ThirdArm;
 
-public sealed partial class CEClientThirdArmSystem : Shared._CE.ThirdArm.LightModule.CESharedThirdArmSystem
+public sealed partial class CEClientThirdArmSystem : CESharedThirdArmSystem
 {
     [Dependency] private SpriteSystem _sprite = default!;
     [Dependency] private ItemSystem _itemSystem = default!;
@@ -32,6 +32,7 @@ public sealed partial class CEClientThirdArmSystem : Shared._CE.ThirdArm.LightMo
         ent.Comp.RevealedLayers.Clear();
 
         Appearance.TryGetData<List<PrototypeLayerData>>(ent, CEThirdArmVisuals.IconLayers, out var layers, args.Component);
+        layers ??= new List<PrototypeLayerData>();
 
         var counter = 0;
         foreach (var layer in layers)

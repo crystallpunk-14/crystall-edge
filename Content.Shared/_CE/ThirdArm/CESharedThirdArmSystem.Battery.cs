@@ -13,7 +13,7 @@ public abstract partial class CESharedThirdArmSystem
     [Dependency] protected SharedBatterySystem Battery = default!;
     [Dependency] protected SharedPopupSystem Popup = default!;
 
-    private void InitBatteryModule()
+    private void InitBattery()
     {
         SubscribeLocalEvent<CEThirdArmComponent, RefreshChargeRateEvent>(OnRefreshChargeRate);
         SubscribeLocalEvent<CEThirdArmComponent, BatteryStateChangedEvent>(OnBatteryStateChanged);

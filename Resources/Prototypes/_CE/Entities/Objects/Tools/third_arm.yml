@@ -133,31 +133,66 @@
       state: impact_blue
     useDelay: 1
     itemIconStyle: BigAction
+    raiseOnUser: true
   - type: TargetAction
     range: 10
     checkCanAccess: false
   - type: CEThirdArmActionManaCost
     manaCost: 5
   - type: WorldTargetAction
-    event: !type:CEThirdArmHitscanActionEvent
-      hitscan: CEThirdArmMiningHitscan
-      sound:
-        path: /Audio/Effects/sparks1.ogg
-        params:
-          variation: 0.1
+    event: !type:CEWorldTargetActionAnimationEvent
+      animation: ThirdArmMiningModuleAttack
 
 - type: entityEffectAnimation
   id: ThirdArmMiningModuleAttack
   movementSpeed: 0.3
-  duration: 0.35
+  duration: 0.6
   events:
     0:
     - !type:PlaySound
       sound:
-        path: /Audio/_CE/Effects/Weapon/slash.ogg
-    0.08:
+        path: /Audio/Effects/sparks1.ogg
+        params:
+          variation: 0.1
     - !type:Hitscan
       prototype: CEThirdArmMiningHitscan
+      angle: -4
+    0.1:
+    - !type:PlaySound
+      sound:
+        path: /Audio/Effects/sparks1.ogg
+        params:
+          variation: 0.1
+    - !type:Hitscan
+      prototype: CEThirdArmMiningHitscan
+      angle: -2
+    0.2:
+    - !type:PlaySound
+      sound:
+        path: /Audio/Effects/sparks1.ogg
+        params:
+          variation: 0.1
+    - !type:Hitscan
+      prototype: CEThirdArmMiningHitscan
+      angle: 0
+    0.3:
+    - !type:PlaySound
+      sound:
+        path: /Audio/Effects/sparks1.ogg
+        params:
+          variation: 0.1
+    - !type:Hitscan
+      prototype: CEThirdArmMiningHitscan
+      angle: 2
+    0.5:
+    - !type:PlaySound
+      sound:
+        path: /Audio/Effects/sparks1.ogg
+        params:
+          variation: 0.1
+    - !type:Hitscan
+      prototype: CEThirdArmMiningHitscan
+      angle: 4
 
 - type: entity
   parent: BasicHitscan
@@ -219,6 +254,7 @@
       sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
       state: icon
     useDelay: 1
+    raiseOnUser: true
   - type: TargetAction
     range: 2
   - type: Tool
@@ -227,5 +263,6 @@
   - type: CEThirdArmActionManaCost
     manaCost: 5
   - type: EntityTargetAction
-    event: !type:CEThirdArmToolActionEvent
+    event: !type:CEEntityTargetActionAnimationEvent
+      animation: ThirdArmMiningModuleAttack
 

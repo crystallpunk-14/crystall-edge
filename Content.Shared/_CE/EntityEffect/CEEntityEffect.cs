@@ -1,3 +1,4 @@
+using System.Numerics;
 using JetBrains.Annotations;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
@@ -84,6 +85,8 @@ public record struct CEEntityEffectEvent<T>(T Effect, CEEntityEffectArgs Args) w
 /// </summary>
 public abstract partial class CEEntityEffectSystem<TEffect> : EntitySystem where TEffect : CEEntityEffectBase<TEffect>
 {
+    [Dependency] protected SharedTransformSystem TransformSystem = default!;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -154,5 +157,25 @@ public abstract partial class CEEntityEffectSystem<TEffect> : EntitySystem where
     protected bool TryResolveTargetCoordinates(CEEntityEffectArgs args, out EntityCoordinates targetPoint)
     {
         return TryResolveEffectCoordinates(args, CEEffectTarget.Target, out targetPoint);
+    }
+
+    /// <summary>
+    /// Resolves the base direction to fire/aim in: prefers the angle from the source to the effect's target
+    /// coordinates, falls back to the effect args' own angle. Add an effect-specific offset on top of the
+    /// result (e.g. <c>ResolveDirection(args) + Effect.Angle</c>) to fan out a volley of shots.
+    /// </summary>
+    protected Angle ResolveDirection(CEEntityEffectArgs args)
+    {
+        if (TryResolveTargetCoordinates(args, out var targetPoint))
+        {
+            var fromCoords = Transform(args.Source).Coordinates;
+            var direction = TransformSystem.ToMapCoordinates(targetPoint).Position -
+                            TransformSystem.ToMapCoordinates(fromCoords).Position;
+
+            if (direction != Vector2.Zero)
+                return direction.ToWorldAngle();
+        }
+
+        return args.Angle;
     }
 }
