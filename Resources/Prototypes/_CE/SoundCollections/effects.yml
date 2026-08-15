@@ -48,3 +48,15 @@
     - /Audio/_CE/Effects/skill_up2.ogg
     - /Audio/_CE/Effects/skill_up3.ogg
     - /Audio/_CE/Effects/skill_up4.ogg
+
+- type: soundCollection
+  id: CELightningStrikeClose
+  files:
+    - /Audio/_CE/Ambience/Lightning/lightning_close1.ogg
+
+- type: soundCollection
+  id: CELightningStrikeFar
+  files:
+    - /Audio/_CE/Ambience/Lightning/lightning_far1.ogg
+    - /Audio/_CE/Ambience/Lightning/lightning_far2.ogg
+    - /Audio/_CE/Ambience/Lightning/lightning_far3.ogg
