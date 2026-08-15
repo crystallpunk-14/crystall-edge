@@ -18,7 +18,6 @@ namespace Content.Server._CE.Weather;
 public sealed partial class CEWeatherTileEffectsSystem : EntitySystem
 {
     [Dependency] private IGameTiming _timing = default!;
-    [Dependency] private IMapManager _mapManager = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private SharedWeatherSystem _weather = default!;
     [Dependency] private SharedMapSystem _mapSystem = default!;
@@ -70,7 +69,7 @@ public sealed partial class CEWeatherTileEffectsSystem : EntitySystem
         var bestGrid = EntityUid.Invalid;
         var bestIndices = default(Vector2i);
 
-        foreach (var grid in _mapManager.GetAllGrids(mapId))
+        foreach (var grid in _mapSystem.GetAllGrids(mapId))
         {
             var gridUid = grid.Owner;
             var gridComp = grid.Comp;

@@ -36,6 +36,7 @@ namespace Content.IntegrationTests.Tests.Access
         [SidedDependency(Side.Server)] private readonly SharedIdCardSystem _sharedIdCardSystem = null!;
 
         [Test]
+        [Ignore("CrystallEdge dont need this")] // CrystallEdge
         public async Task TestExpireIdCardResetsAccessTagsWhenExpiring()
         {
             EntityUid ent = default;

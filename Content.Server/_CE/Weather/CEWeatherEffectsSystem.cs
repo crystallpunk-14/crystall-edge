@@ -21,7 +21,6 @@ public sealed partial class CEWeatherEffectsSystem : EntitySystem
 {
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IConfigurationManager _cfg = default!;
-    [Dependency] private IMapManager _mapManager = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private SharedWeatherSystem _weather = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
@@ -98,7 +97,7 @@ public sealed partial class CEWeatherEffectsSystem : EntitySystem
         state.CurrentGridIndex = 0;
         state.TileEnumeratorValid = false;
 
-        foreach (var grid in _mapManager.GetAllGrids(mapId))
+        foreach (var grid in _mapSystem.GetAllGrids(mapId))
         {
             state.Grids.Add(grid);
         }
