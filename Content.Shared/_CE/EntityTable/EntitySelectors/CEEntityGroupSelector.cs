@@ -2,6 +2,7 @@ using System.Linq;
 using Content.Shared.EntityTable;
 using Content.Shared.EntityTable.EntitySelectors;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 
 namespace Content.Shared._CE.EntityTable.EntitySelectors;
 
@@ -14,7 +15,7 @@ public sealed partial class CEEntityGroupSelector : EntityTableSelector
     [DataField(required: true)]
     public string Group = string.Empty;
 
-    protected override IEnumerable<EntProtoId> GetSpawnsImplementation(System.Random rand,
+    protected override IEnumerable<EntProtoId> GetSpawnsImplementation(IRobustRandom rand,
         IEntityManager entMan,
         IPrototypeManager proto,
         EntityTableContext ctx)

@@ -284,7 +284,7 @@ public abstract partial class CESharedAnimationActionSystem : EntitySystem
     private void StopAnimation(Entity<CEActiveAnimationActionComponent> entity)
     {
         RemComp<CEActiveAnimationActionComponent>(entity);
-        _movement.RefreshMovementSpeedModifiers(entity);
+        _movement.RefreshMovementSpeedModifiers(entity.Owner);
     }
 
     /// <summary>

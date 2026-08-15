@@ -1,13 +1,13 @@
-# upstream-sync: Upstream Sync с Wizden_Upstream/stable
+# upstream-sync: Upstream Sync с upstream/stable
 
-Используй эту команду для синхронизации CrystallEdge с `Wizden_Upstream/stable`.
+Используй эту команду для синхронизации CrystallEdge с `upstream/stable` (remote `upstream` = space-wizards/space-station-14).
 
 ## Шаг 1 — Fetch + создать ветку
 
 ```powershell
-git fetch Wizden_Upstream stable
+git fetch upstream stable
 git checkout -b ed-DD-MM-YYYY-upstream-sync master
-git merge Wizden_Upstream/stable --no-edit
+git merge upstream/stable --no-edit
 ```
 
 Имя ветки: `ed-{день}-{месяц}-{год}-upstream-sync`
@@ -42,7 +42,7 @@ git diff --name-only --diff-filter=U
 ### Modify/delete конфликт (апстрим удалил файл, CE изменил)
 Проверить чем апстрим заменил файл:
 ```powershell
-git log Wizden_Upstream/stable --oneline --diff-filter=D -- <path>
+git log upstream/stable --oneline --diff-filter=D -- <path>
 git show <commit> --stat
 ```
 Если заменён лучшей версией → принять удаление (`git rm <file>`).
@@ -106,6 +106,13 @@ SomeCall(); // CrystallEdge: <причина>
 // CrystallEdge: <фича> отключена, <причина>
 //[Dependency] private SomeSystem _system = default!;
 ```
+
+### Минимизация CE-комментариев при конвергенции с апстримом
+
+Если в ходе конфликта выясняется, что апстрим реализовал **то же самое**, что и CE-сторона (совпадающая логика, апстрим просто по-другому её сформулировал/причесал) — CE-маркер и обоснование в комментарии больше не нужны, потому что реального расхождения с апстримом не осталось. В таком случае:
+- Взять версию апстрима (или итоговый код без `// CrystallEdge` обёртки).
+- Не переносить старые CE-комментарии/NOTE только потому что они были в HEAD — если апстрим их убрал при переписывании, значит эта причина больше не актуальна.
+- Маркер `// CrystallEdge: <причина>` оставлять только там, где реальный код (поведение, значения, названия) всё ещё отличается от апстрима после мержа.
 
 ## Важно
 

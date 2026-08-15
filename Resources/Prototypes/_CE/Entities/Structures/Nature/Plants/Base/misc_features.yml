@@ -4,8 +4,8 @@
   components:
   - type: CEPlantAdditionalProduceOnInteract
     toolWhitelist:
-      components:
-      - Sharp
+      tags:
+      - CESharp
 
 - type: entity
   abstract: true

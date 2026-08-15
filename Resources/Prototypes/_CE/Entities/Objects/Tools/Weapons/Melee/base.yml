@@ -69,8 +69,10 @@
   id: CEBaseWeaponSharp
   categories: [ HideSpawnMenu, ForkFiltered ]
   components:
-  - type: Sharp
   - type: CEWallpaperRemover
+  - type: Tag
+    tags:
+    - CESharp
   - type: UseDelay
   - type: Tool
     qualities:

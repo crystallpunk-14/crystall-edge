@@ -27,7 +27,6 @@ public sealed partial class CEToolTileOverlay : Overlay
     [Dependency] private IEntityManager _entityManager = default!;
     [Dependency] private IInputManager _inputManager = default!;
     [Dependency] private IEyeManager _eyeManager = default!;
-    [Dependency] private IMapManager _mapManager = default!;
     [Dependency] private IPlayerManager _playerManager = default!;
     [Dependency] private ITileDefinitionManager _tileDefinitionManager = default!;
     [Dependency] private IStateManager _stateManager = default!;
@@ -88,7 +87,7 @@ public sealed partial class CEToolTileOverlay : Overlay
             return;
 
         // Try to find grid at mouse position
-        if (!_mapManager.TryFindGridAt(mouseMapPos, out var gridUid, out var grid))
+        if (!_mapSystem.TryFindGridAt(mouseMapPos, out var gridUid, out var grid))
             return;
 
         // Check if there is any entity under cursor using the same method as InteractionOutline

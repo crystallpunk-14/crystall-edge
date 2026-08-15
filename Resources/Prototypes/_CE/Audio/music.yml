@@ -6,7 +6,6 @@
     params:
       volume: -12
     collection: CEAmbienceMagic
-  rules: AlwaysTrue
   #priority: 4
 
 # 3 Priority - Departments
@@ -18,7 +17,16 @@
     params:
       volume: -6
     collection: CENightForest
-  rules: GrassNight
+  conditions:
+    - !type:CEIsNightCondition
+    - !type:NearbyTilesPercentCondition
+      ignoreAnchored: true
+      percent: 0.5
+      tiles:
+      - CEGrass
+      - CEGrassLight
+      - CEGrassTall
+      range: 5
   priority: 2
 
 ## Fallback if nothing else found
@@ -28,7 +36,6 @@
     params:
       volume: -12
     collection: CEAmbienceCave
-  rules: AlwaysTrue
 
 # Sound collections
 - type: soundCollection

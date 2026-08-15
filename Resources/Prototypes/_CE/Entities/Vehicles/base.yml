@@ -11,9 +11,9 @@
   - type: Pullable
   - type: Physics
     bodyType: KinematicController
-  - type: CEVehicle
+  - type: Vehicle
     transferDamage: false
-  - type: CEStrapVehicle
+  - type: StrapVehicle
   - type: Strap
   - type: MovementSpeedModifier
     weightlessModifier: 0

@@ -32,5 +32,5 @@
     gatherKeys:
     - cucumber
     toolWhitelist:
-      components:
-      - Sharp
+      tags:
+      - CESharp

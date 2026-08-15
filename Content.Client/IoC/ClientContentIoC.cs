@@ -1,6 +1,7 @@
 using Content.Client._CE.DiscordAuth;
 using Content.Client._CE.Sponsor;
 using Content.Client.Administration.Managers;
+using Content.Client.Audio.Midi;
 using Content.Client.Changelog;
 using Content.Client.Chat.Managers;
 using Content.Client.Clickable;
@@ -71,6 +72,7 @@ namespace Content.Client.IoC
             collection.Register<ISharedFeedbackManager, ClientFeedbackManager>();
             collection.Register<CEDiscordAuthManager>(); //CrystallEdge
             collection.Register<ICESponsorManager, CEClientSponsorSystem>(); //CrystallEdge
+            collection.Register<MidiFileCollectionManager>();
         }
     }
 }

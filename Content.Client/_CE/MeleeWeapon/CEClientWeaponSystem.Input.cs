@@ -54,7 +54,7 @@ public sealed partial class CEClientWeaponSystem
 
         EntityCoordinates coordinates;
 
-        if (MapManager.TryFindGridAt(mousePos, out var gridUid, out _))
+        if (_map.TryFindGridAt(mousePos, out var gridUid, out _))
             coordinates = TransformSystem.ToCoordinates(gridUid, mousePos);
         else
             coordinates = TransformSystem.ToCoordinates(_map.GetMap(mousePos.MapId), mousePos);

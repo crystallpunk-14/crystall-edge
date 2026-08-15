@@ -39,5 +39,5 @@
     gatherKeys:
     - apple
     toolWhitelist:
-      components:
-      - Sharp
+      tags:
+      - CESharp

@@ -40,7 +40,8 @@
         - FoodSequenceStartPoint
         - Injector
         - SolutionTransfer
-        - Sharp
+      tags:
+        - CESharp
   - type: CEFoodCooker
     containerId: storagebase
   - type: Temperature
