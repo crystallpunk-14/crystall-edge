@@ -44,6 +44,13 @@
       whitelist:
         components:
         - CEThirdArmModule
+  - type: ContainerContainer
+    containers:
+      module_slot: !type:ContainerSlot
+        showEnts: False
+        occludes: False
+        ent: null
+  - type: ItemSlots
 
 - type: entity
   parent: BaseItem
