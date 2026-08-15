@@ -45,9 +45,9 @@
       minRange: 15
       maxRange: 60
     - !type:ShockWaveVFX
-      sharpness: 10
-      width: 0.8
-      falloffPower: 40
+      sharpness: 8
+      width: 0.1
+      falloffPower: 60
     - !type:AreaEffect
       range: 1
       effects:
@@ -55,3 +55,6 @@
         damage:
           types:
             Shock: 30
+      - !type:Flash
+        flashDuration: 6
+        stunDuration: 6

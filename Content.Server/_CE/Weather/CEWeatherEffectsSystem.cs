@@ -56,7 +56,7 @@ public sealed partial class CEWeatherEffectsSystem : EntitySystem
 
     private void OnWeatherEffectsInit(Entity<CEWeatherEffectsComponent> ent, ref ComponentInit args)
     {
-        ent.Comp.NextEffectTime = _timing.CurTime + ent.Comp.MaxEffectFrequency;
+        ent.Comp.NextEffectTime = _timing.CurTime + _random.Next(ent.Comp.MinEffectFrequency, ent.Comp.MaxEffectFrequency);
     }
 
     private void OnWeatherEffectsShutdown(Entity<CEWeatherEffectsComponent> ent, ref ComponentShutdown args)

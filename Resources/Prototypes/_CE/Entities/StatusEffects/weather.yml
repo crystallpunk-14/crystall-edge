@@ -21,12 +21,12 @@
       sprite: /Textures/_CE/Effects/weather.rsi
       state: storm
     sound:
-      collection: Rain
+      path: /Audio/Effects/Weather/rain.ogg
       params:
         loop: true
         volume: -6
   - type: CEWeatherTileEffects
-    minEffectFrequency: 15s
+    minEffectFrequency: 35s
     maxEffectFrequency: 120s
   - type: CEWeatherTileEntityEffect
     effects:

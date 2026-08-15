@@ -34,7 +34,7 @@ public sealed partial class CEWeatherTileEffectsSystem : EntitySystem
 
     private void OnTileEffectsInit(Entity<CEWeatherTileEffectsComponent> ent, ref ComponentInit args)
     {
-        ent.Comp.NextEffectTime = _timing.CurTime + ent.Comp.MaxEffectFrequency;
+        ent.Comp.NextEffectTime = _timing.CurTime + _random.Next(ent.Comp.MinEffectFrequency, ent.Comp.MaxEffectFrequency);
     }
 
     public override void Update(float frameTime)

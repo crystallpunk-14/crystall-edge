@@ -9,6 +9,7 @@ ce-entity-effect-guidebook-dash = Совершает рывок вперёд н�
 ce-entity-effect-guidebook-delete = Уничтожает цель
 ce-entity-effect-guidebook-play-sound = Проигрывает звук
 ce-entity-effect-guidebook-play-far-sound = Проигрывает звук, слышимый на расстоянии
+ce-entity-effect-guidebook-flash = Ослепляет и оглушает цель
 ce-entity-effect-guidebook-set-timed-appearance = Временно изменяет внешний вид сущности
 ce-entity-effect-guidebook-cosmetic-animation = Проигрывает визуальную анимацию
 ce-entity-effect-guidebook-say-chat = Произносит: [color=yellow]"{ $sentence }"[/color]
