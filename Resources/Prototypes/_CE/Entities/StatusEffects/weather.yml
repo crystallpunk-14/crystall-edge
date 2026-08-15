@@ -25,6 +25,14 @@
       params:
         loop: true
         volume: -6
+  - type: CEWeatherTileEffects
+    minEffectFrequency: 15s
+    maxEffectFrequency: 120s
+  - type: CEWeatherTileEntityEffect
+    effects:
+    - !type:SpawnEntity
+      spawns:
+      - CESkyLightning
 
 - type: entity
   parent: WeatherBase

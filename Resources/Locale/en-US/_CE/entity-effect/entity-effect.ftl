@@ -8,6 +8,7 @@ ce-entity-effect-guidebook-remove-status = Removes the [color=yellow]{ $status }
 ce-entity-effect-guidebook-dash = Dashes forward [color=yellow]{ $distance }[/color] m.
 ce-entity-effect-guidebook-delete = Destroys the target
 ce-entity-effect-guidebook-play-sound = Plays a sound
+ce-entity-effect-guidebook-play-far-sound = Plays a sound audible from a distance
 ce-entity-effect-guidebook-set-timed-appearance = Temporarily changes the entity's appearance
 ce-entity-effect-guidebook-cosmetic-animation = Plays a visual animation
 ce-entity-effect-guidebook-say-chat = Says: [color=yellow]"{ $sentence }"[/color]
