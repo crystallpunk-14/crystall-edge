@@ -4,8 +4,8 @@
   - CEPlantBase
   - CEPlantBaseSolarEnergy
   - CEPlantBaseFloralDelicateType
-  - CEPlantBaseGrowing2Day
-  - CEPlantBaseMetabolizerHalfDay
+  - CEPlantBaseGrowingSlow
+  - CEPlantBaseMetabolizerFast
   - CEPlantBaseMetabolizerWater
   name: tomatoes
   description: On the one hand, it's a delicious fruit. But why eat it when it's much more fun to use tomatoes as a throwing projectile?
@@ -31,7 +31,7 @@
         result: CEFoodTomatoes
         maxProduce: 3
         visualStateCount: 2
-        growthPerUpdate: 0.0833 # After 2 days, we start spamming tomatoes 2 times a day
+        growthPerUpdate: 0.5 # CrystallEdge: new tomato batch every 2 minutes
   - type: CEPlantGatherOnInteract
     gatherKeys:
     - tomato

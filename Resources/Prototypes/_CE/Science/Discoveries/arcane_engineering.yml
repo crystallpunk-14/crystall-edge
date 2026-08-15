@@ -50,3 +50,14 @@
   - Trap
   - Machine
   knowledge: KnowledgeNodeStabilizer
+
+- type: scienceDiscovery
+  id: ThirdArmMiningModule
+  parent: MediumDifficult
+  area: ArcaneEngineering
+  targetAspects:
+  - Mining
+  - Tool
+  - Energia
+  - Weapon
+  knowledge: KnowledgeThirdArmMiningModule

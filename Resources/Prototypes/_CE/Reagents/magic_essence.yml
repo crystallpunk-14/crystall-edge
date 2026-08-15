@@ -13,49 +13,49 @@
       effects:
       - !type:Vomit
         probability: 0.25
-  pricePerUnit: 0.25
+  pricePerUnit: 0 # CrystallEdge: essences must not be sellable, they enabled a carpet->press->sell infinite money exploit
 
 - type: reagent
   id: CEEssenceBaseT1
   parent: CEEssenceBase
   abstract: true
-  pricePerUnit: 0.20
+  pricePerUnit: 0 # CrystallEdge: essences must not be sellable, they enabled a carpet->press->sell infinite money exploit
 
 - type: reagent
   id: CEEssenceBaseT2
   parent: CEEssenceBase
   abstract: true
-  pricePerUnit: 0.40
+  pricePerUnit: 0 # CrystallEdge: essences must not be sellable, they enabled a carpet->press->sell infinite money exploit
 
 - type: reagent
   id: CEEssenceBaseT3
   parent: CEEssenceBase
   abstract: true
-  pricePerUnit: 0.60
+  pricePerUnit: 0 # CrystallEdge: essences must not be sellable, they enabled a carpet->press->sell infinite money exploit
 
 - type: reagent
   id: CEEssenceBaseT4
   parent: CEEssenceBase
   abstract: true
-  pricePerUnit: 0.80
+  pricePerUnit: 0 # CrystallEdge: essences must not be sellable, they enabled a carpet->press->sell infinite money exploit
 
 - type: reagent
   id: CEEssenceBaseT5
   parent: CEEssenceBase
   abstract: true
-  pricePerUnit: 1.00
+  pricePerUnit: 0 # CrystallEdge: essences must not be sellable, they enabled a carpet->press->sell infinite money exploit
 
 - type: reagent
   id: CEEssenceBaseT6
   parent: CEEssenceBase
   abstract: true
-  pricePerUnit: 1.20
+  pricePerUnit: 0 # CrystallEdge: essences must not be sellable, they enabled a carpet->press->sell infinite money exploit
 
 - type: reagent
   id: CEEssenceBaseT7
   parent: CEEssenceBase
   abstract: true
-  pricePerUnit: 1.40
+  pricePerUnit: 0 # CrystallEdge: essences must not be sellable, they enabled a carpet->press->sell infinite money exploit
 
 # Basic 6 (T0)
 

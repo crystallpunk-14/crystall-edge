@@ -23,6 +23,7 @@
 - type: marking
   id: CECarcatTailAnimated
   bodyPart: Tail
+  groupWhitelist: [ CECarcat ]
   forcedColoring: false
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_tail.rsi
@@ -31,6 +32,7 @@
 - type: marking
   id: CECarcatTailFluffyAnimated
   bodyPart: Tail
+  groupWhitelist: [ CECarcat ]
   forcedColoring: false
   sprites:
     - sprite: _CE/Mobs/Customization/carcat_tail.rsi

@@ -57,6 +57,8 @@
         - id: CERubberStampApproved
         - id: CERubberStampDenied
         - id: CERubberStampEngineering
+        - id: CEThirdArm
+        - id: CEThirdArmModuleManipulation
 
 - type: entity
   id: CEBedsideTableFilledBrigadier

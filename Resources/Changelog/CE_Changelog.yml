@@ -657,3 +657,53 @@
   id: 1062
   time: '2026-08-13T10:26:47.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/403
+- author: TheShuEd
+  changes:
+  - message: Added manipulator arm to engineering department.
+    type: Add
+  - message: 'Added 2 roundstart module to manipulator arm: construction tool & light
+      module'
+    type: Add
+  - message: Added cool mining module to manipulator arm, that can be unlocked by
+      thaumaturges
+    type: Add
+  - message: roof tiles now have iron plating base turf, instead wooden planks
+    type: Tweak
+  - message: iron plating & iron rods tiles now requires manipulator tool to deconstruct
+    type: Tweak
+  - message: mostly all important structures now requires manipulator tool to deconstruct
+    type: Tweak
+  id: 1063
+  time: '2026-08-14T17:49:54.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/404
+- author: TheShuEd
+  changes:
+  - message: Fixed bug when tiefling & carcats tails was available to silvas and elves.
+    type: Fix
+  - message: "\"\u0451\" and ` now available for character names."
+    type: Fix
+  - message: All thaum essence solutions now cost 0.
+    type: Tweak
+  - message: staff of revival was removed from thaum academy researches, thy are back
+      to roundstart trading.
+    type: Tweak
+  - message: plants now growth way faster.
+    type: Tweak
+  id: 1064
+  time: '2026-08-14T20:58:59.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/405
+- author: TheShuEd
+  changes:
+  - message: "Sounds can now be heard through Z-levels. There\u2019s more occlusion\
+      \ if you\u2019re separated by tiles, and the sound gets quieter with each Z-level."
+    type: Add
+  id: 1065
+  time: '2026-08-15T09:56:28.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/406
+- author: TheShuEd
+  changes:
+  - message: Added lightning strikes for storm weather
+    type: Add
+  id: 1066
+  time: '2026-08-15T13:23:55.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/407

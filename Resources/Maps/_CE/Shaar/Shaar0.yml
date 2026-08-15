@@ -4,7 +4,7 @@ meta:
   engineVersion: 277.0.0
   forkId: ""
   forkVersion: ""
-  time: 08/09/2026 19:07:50
+  time: 08/14/2026 18:07:17
   entityCount: 1764
 maps:
 - 1
@@ -1613,6 +1613,23 @@ entities:
     components:
     - type: Transform
       pos: -11.5,4.5
+      parent: 1
+- proto: CEFenceBigBrass
+  entities:
+  - uid: 383
+    components:
+    - type: Transform
+      pos: -17.5,16.5
+      parent: 1
+  - uid: 386
+    components:
+    - type: Transform
+      pos: -15.5,16.5
+      parent: 1
+  - uid: 539
+    components:
+    - type: Transform
+      pos: -13.5,16.5
       parent: 1
 - proto: CEFenceBigIron
   entities:
@@ -3341,26 +3358,11 @@ entities:
       parent: 1
 - proto: CEFenceBrass
   entities:
-  - uid: 383
-    components:
-    - type: Transform
-      pos: -13.5,16.5
-      parent: 1
-  - uid: 386
-    components:
-    - type: Transform
-      pos: -15.5,16.5
-      parent: 1
   - uid: 398
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -12.5,17.5
-      parent: 1
-  - uid: 539
-    components:
-    - type: Transform
-      pos: -17.5,16.5
       parent: 1
   - uid: 674
     components:
@@ -3403,7 +3405,7 @@ entities:
       pos: 6.5,16.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -52678.56
+      secondsUntilStateChange: -53135.8
       state: Opening
   - uid: 619
     components:
@@ -10042,54 +10044,7 @@ entities:
     - type: Transform
       pos: -34.5,-0.5
       parent: 1
-- proto: CEWallStoneBrickBrown
-  entities:
-  - uid: 328
-    components:
-    - type: Transform
-      pos: -13.5,20.5
-      parent: 1
-  - uid: 365
-    components:
-    - type: Transform
-      pos: -16.5,21.5
-      parent: 1
-  - uid: 399
-    components:
-    - type: Transform
-      pos: -17.5,18.5
-      parent: 1
-  - uid: 401
-    components:
-    - type: Transform
-      pos: -17.5,20.5
-      parent: 1
-  - uid: 418
-    components:
-    - type: Transform
-      pos: -17.5,19.5
-      parent: 1
-  - uid: 458
-    components:
-    - type: Transform
-      pos: -16.5,20.5
-      parent: 1
-  - uid: 497
-    components:
-    - type: Transform
-      pos: -13.5,19.5
-      parent: 1
-  - uid: 1315
-    components:
-    - type: Transform
-      pos: -15.5,17.5
-      parent: 1
-  - uid: 1410
-    components:
-    - type: Transform
-      pos: -13.5,18.5
-      parent: 1
-- proto: CEWallStoneBrickOld
+- proto: CEWallStoneBrick
   entities:
   - uid: 13
     components:
@@ -10650,6 +10605,53 @@ entities:
     components:
     - type: Transform
       pos: -13.5,21.5
+      parent: 1
+- proto: CEWallStoneBrickBrown
+  entities:
+  - uid: 328
+    components:
+    - type: Transform
+      pos: -13.5,20.5
+      parent: 1
+  - uid: 365
+    components:
+    - type: Transform
+      pos: -16.5,21.5
+      parent: 1
+  - uid: 399
+    components:
+    - type: Transform
+      pos: -17.5,18.5
+      parent: 1
+  - uid: 401
+    components:
+    - type: Transform
+      pos: -17.5,20.5
+      parent: 1
+  - uid: 418
+    components:
+    - type: Transform
+      pos: -17.5,19.5
+      parent: 1
+  - uid: 458
+    components:
+    - type: Transform
+      pos: -16.5,20.5
+      parent: 1
+  - uid: 497
+    components:
+    - type: Transform
+      pos: -13.5,19.5
+      parent: 1
+  - uid: 1315
+    components:
+    - type: Transform
+      pos: -15.5,17.5
+      parent: 1
+  - uid: 1410
+    components:
+    - type: Transform
+      pos: -13.5,18.5
       parent: 1
 - proto: CEWallWooden
   entities:

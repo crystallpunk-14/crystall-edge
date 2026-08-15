@@ -213,14 +213,9 @@
             - !type:SpawnPrototype
               prototype: CEWoodenPlanks1
               amount: 1
-            - !type:SpawnPrototype
-              prototype: CENail1
-              amount: 1
           steps:
             - tool: Prying
-              doAfter: 1
-            - tool: Prying
-              doAfter: 2
+              doAfter: 3
 
     - node: CEZLevelLadderWoodenCorner
       entity: CEZLevelLadderWoodenCorner
@@ -230,14 +225,9 @@
             - !type:SpawnPrototype
               prototype: CEWoodenPlanks1
               amount: 1
-            - !type:SpawnPrototype
-              prototype: CENail1
-              amount: 1
           steps:
             - tool: Prying
-              doAfter: 1
-            - tool: Prying
-              doAfter: 2
+              doAfter: 3
 
     - node: CEZLevelLadderWoodenCornerInner
       entity: CEZLevelLadderWoodenCornerInner
@@ -247,14 +237,9 @@
             - !type:SpawnPrototype
               prototype: CEWoodenPlanks1
               amount: 1
-            - !type:SpawnPrototype
-              prototype: CENail1
-              amount: 1
           steps:
             - tool: Prying
-              doAfter: 1
-            - tool: Prying
-              doAfter: 2
+              doAfter: 3
 
     # Stone ladder
 
@@ -266,13 +251,8 @@
             - !type:SpawnPrototype
               prototype: CEStoneBlock1
               amount: 2
-            - !type:SpawnPrototype
-              prototype: CENail1
-              amount: 1
           steps:
-            - tool: Prying
-              doAfter: 1
-            - tool: Prying
+            - tool: CEMatterManipulation
               doAfter: 2
 
     - node: CEZLevelLadderStoneCorner
@@ -283,13 +263,8 @@
             - !type:SpawnPrototype
               prototype: CEStoneBlock1
               amount: 2
-            - !type:SpawnPrototype
-              prototype: CENail1
-              amount: 1
           steps:
-            - tool: Prying
-              doAfter: 1
-            - tool: Prying
+            - tool: CEMatterManipulation
               doAfter: 2
 
     - node: CEZLevelLadderStoneCornerInner
@@ -300,13 +275,8 @@
             - !type:SpawnPrototype
               prototype: CEStoneBlock1
               amount: 2
-            - !type:SpawnPrototype
-              prototype: CENail1
-              amount: 1
           steps:
-            - tool: Prying
-              doAfter: 1
-            - tool: Prying
+            - tool: CEMatterManipulation
               doAfter: 2
 
     # Red roof
@@ -319,13 +289,8 @@
             - !type:SpawnPrototype
               prototype: CEFloorTileRoofRed
               amount: 2
-            - !type:SpawnPrototype
-              prototype: CENail1
-              amount: 1
           steps:
-            - tool: Prying
-              doAfter: 1
-            - tool: Prying
+            - tool: CEMatterManipulation
               doAfter: 2
 
     - node: CEZLevelsLadderRoofRedCorner
@@ -336,13 +301,8 @@
             - !type:SpawnPrototype
               prototype: CEFloorTileRoofRed
               amount: 2
-            - !type:SpawnPrototype
-              prototype: CENail1
-              amount: 1
           steps:
-            - tool: Prying
-              doAfter: 1
-            - tool: Prying
+            - tool: CEMatterManipulation
               doAfter: 2
 
     - node: CEZLevelsLadderRoofRedCornerInner
@@ -353,13 +313,8 @@
             - !type:SpawnPrototype
               prototype: CEFloorTileRoofRed
               amount: 2
-            - !type:SpawnPrototype
-              prototype: CENail1
-              amount: 1
           steps:
-            - tool: Prying
-              doAfter: 1
-            - tool: Prying
+            - tool: CEMatterManipulation
               doAfter: 2
 
     # Green roof
@@ -372,13 +327,8 @@
             - !type:SpawnPrototype
               prototype: CEFloorTileRoofGreen
               amount: 2
-            - !type:SpawnPrototype
-              prototype: CENail1
-              amount: 1
           steps:
-            - tool: Prying
-              doAfter: 1
-            - tool: Prying
+            - tool: CEMatterManipulation
               doAfter: 2
 
     - node: CEZLevelsLadderRoofGreenCorner
@@ -389,13 +339,8 @@
             - !type:SpawnPrototype
               prototype: CEFloorTileRoofGreen
               amount: 2
-            - !type:SpawnPrototype
-              prototype: CENail1
-              amount: 1
           steps:
-            - tool: Prying
-              doAfter: 1
-            - tool: Prying
+            - tool: CEMatterManipulation
               doAfter: 2
 
     - node: CEZLevelsLadderRoofGreenCornerInner
@@ -406,13 +351,8 @@
             - !type:SpawnPrototype
               prototype: CEFloorTileRoofGreen
               amount: 2
-            - !type:SpawnPrototype
-              prototype: CENail1
-              amount: 1
           steps:
-            - tool: Prying
-              doAfter: 1
-            - tool: Prying
+            - tool: CEMatterManipulation
               doAfter: 2
 
     # Blue roof
@@ -425,13 +365,8 @@
             - !type:SpawnPrototype
               prototype: CEFloorTileRoofBlue
               amount: 2
-            - !type:SpawnPrototype
-              prototype: CENail1
-              amount: 1
           steps:
-            - tool: Prying
-              doAfter: 1
-            - tool: Prying
+            - tool: CEMatterManipulation
               doAfter: 2
 
     - node: CEZLevelsLadderRoofBlueCorner
@@ -442,13 +377,8 @@
             - !type:SpawnPrototype
               prototype: CEFloorTileRoofBlue
               amount: 2
-            - !type:SpawnPrototype
-              prototype: CENail1
-              amount: 1
           steps:
-            - tool: Prying
-              doAfter: 1
-            - tool: Prying
+            - tool: CEMatterManipulation
               doAfter: 2
 
     - node: CEZLevelsLadderRoofBlueCornerInner
@@ -459,11 +389,6 @@
             - !type:SpawnPrototype
               prototype: CEFloorTileRoofBlue
               amount: 2
-            - !type:SpawnPrototype
-              prototype: CENail1
-              amount: 1
           steps:
-            - tool: Prying
-              doAfter: 1
-            - tool: Prying
+            - tool: CEMatterManipulation
               doAfter: 2

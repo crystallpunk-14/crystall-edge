@@ -22,8 +22,8 @@
               amount: 5
             - !type:DeleteEntity {}
           steps:
-            - tool: Prying
-              doAfter: 5
+            - tool: CEMatterManipulation
+              doAfter: 3
 
 - type: constructionGraph
   id: CEFenceBigBrass
@@ -49,5 +49,5 @@
               amount: 8
             - !type:DeleteEntity {}
           steps:
-            - tool: Prying
-              doAfter: 5
+            - tool: CEMatterManipulation
+              doAfter: 3

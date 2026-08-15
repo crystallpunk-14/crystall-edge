@@ -84,8 +84,8 @@ public sealed partial class CEShockWaveOverlay : Overlay
 
         foreach (var wave in _activeWaves)
         {
-            if (wave.MapId != args.MapId)
-                continue;
+            //if (wave.MapId != args.MapId) //I wanna see shockwaves throught zlevels (Ed test)
+            //    continue;
 
             var tempCoords = args.Viewport.WorldToLocal(wave.WorldPosition);
 

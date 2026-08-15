@@ -1,20 +1,20 @@
 - type: entity
   abstract: true
-  id: CEPlantBaseGrowingHalfDay
+  id: CEPlantBaseGrowingFast
   components:
   - type: CEPlantGrowing
-    growthPerUpdate: 0.0833 # 12 minutes (0.5 day) to full grow
+    growthPerUpdate: 0.5 # CrystallEdge: 2 minutes to full grow
 
 - type: entity
   abstract: true
-  id: CEPlantBaseGrowing1Day
+  id: CEPlantBaseGrowingMedium
   components:
   - type: CEPlantGrowing
-    growthPerUpdate: 0.0416 # 24 minutes (1 day) to full grow
+    growthPerUpdate: 0.25 # CrystallEdge: 4 minutes to full grow
 
 - type: entity
   abstract: true
-  id: CEPlantBaseGrowing2Day
+  id: CEPlantBaseGrowingSlow
   components:
   - type: CEPlantGrowing
-    growthPerUpdate: 0.0208 # 48 minutes (2 days) to full grow
+    growthPerUpdate: 0.1667 # CrystallEdge: 6 minutes to full grow

@@ -11,16 +11,16 @@
   project: CEDiscoveryProjectEngineering
   parallax: Default
 
-- type: scienceArea
-  id: Artifactoric
-  color: "#8a5ac6"
-  name: ce-science-area-artifactoric
-  desc: ce-science-area-artifactoric-desc
-  icon:
-    sprite: _CE/Objects/Materials/shards_dimensional.rsi
-    state: core1
-  cost:
-    Magic: 5
-    Darkness: 5
-  project: CEDiscoveryProjectArtifactoric
-  parallax: KettleStation
+#- type: scienceArea
+#  id: Artifactoric
+#  color: "#8a5ac6"
+#  name: ce-science-area-artifactoric
+#  desc: ce-science-area-artifactoric-desc
+#  icon:
+#    sprite: _CE/Objects/Materials/shards_dimensional.rsi
+#    state: core1
+#  cost:
+#    Magic: 5
+#    Darkness: 5
+#  project: CEDiscoveryProjectArtifactoric
+#  parallax: KettleStation

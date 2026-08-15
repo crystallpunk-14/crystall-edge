@@ -36,7 +36,7 @@ namespace Content.Shared.Preferences
     {
         public static readonly ProtoId<SpeciesPrototype> DefaultSpecies = "CEHuman"; //CrystallEdge: CE uses its own human species
         public static readonly ProtoId<EmoteSoundsPrototype> DefaultVoice = "MaleHuman";
-        private static readonly Regex RestrictedNameRegex = new("[^А-Я,а-я,A-Z,a-z,0-9, ,\\-,']"); //CrystallEdge allow cyrillic letters
+        private static readonly Regex RestrictedNameRegex = new("[^А-Я,а-я,Ёё,A-Z,a-z,0-9, ,\\-,',’]"); //CrystallEdge: allow cyrillic letters (Ёё is outside the А-Я/а-я Unicode ranges) and the curly apostrophe (’) produced by some keyboard layouts/autocorrect
         private static readonly Regex ICNameCaseRegex = new(@"^(?<word>\w)|\b(?<word>\w)(?=\w*$)");
 
         /// <summary>

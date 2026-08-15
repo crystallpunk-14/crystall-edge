@@ -45,6 +45,8 @@
         - id: CEBigBrassPipe30
         - id: CEMediumBrassPipe30
         - id: CEWeaponPickaxeIron
+        - id: CEThirdArm
+        - id: CEThirdArmModuleManipulation
 
 - type: entity
   id: CEBedsideTableFilledTechnician

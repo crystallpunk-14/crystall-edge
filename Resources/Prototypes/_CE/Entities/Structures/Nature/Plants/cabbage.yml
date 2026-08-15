@@ -5,8 +5,8 @@
   - CEPlantBaseSolarEnergy
   - CEPlantBaseSingleHarvest
   - CEPlantBaseFloralDelicateType
-  - CEPlantBaseGrowing1Day
-  - CEPlantBaseMetabolizer1Day
+  - CEPlantBaseGrowingMedium
+  - CEPlantBaseMetabolizerMedium
   - CEPlantBaseMetabolizerWater
   name: cabbage
   description: You see a cabbage in front of you. Perhaps you were born in one.
