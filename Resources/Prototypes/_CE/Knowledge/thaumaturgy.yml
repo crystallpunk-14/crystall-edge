@@ -1,6 +1,0 @@
-- type: CEKnowledge
-  id: KnowledgeMagicDefib
-  parent: ArtifactoricKnowledgeBase
-  name: ce-knowledge-magic-defib
-  icon:
-    entity: CEMagicDefib
