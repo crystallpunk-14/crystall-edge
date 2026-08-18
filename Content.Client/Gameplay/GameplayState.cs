@@ -125,7 +125,7 @@ namespace Content.Client.Gameplay
                     _uiManager.LoadScreen<DefaultGameScreen>();
                     break;
                 case ScreenType.Separated:
-                    _uiManager.LoadScreen<DefaultGameScreen>(); //CrystallEdge: force default
+                    _uiManager.LoadScreen<SeparatedChatGameScreen>();
                     break;
             }
 

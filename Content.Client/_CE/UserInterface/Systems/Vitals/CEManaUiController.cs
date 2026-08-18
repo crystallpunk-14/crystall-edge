@@ -63,6 +63,9 @@ public sealed partial class CEManaUiController : UIController
         if (UIManager.ActiveScreen is DefaultGameScreen game)
             return game.ManaBar;
 
+        if (UIManager.ActiveScreen is SeparatedChatGameScreen separated)
+            return separated.ManaBar;
+
         return null;
     }
 
