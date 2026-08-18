@@ -49,6 +49,9 @@ public sealed partial class CEPowerSystem : CESharedPowerSystem
 
     private void OnActivateInWorld(Entity<CEToggleableConnectorComponent> ent, ref ActivateInWorldEvent args)
     {
+        if (args.Handled || !args.Complex)
+            return;
+
         if (UseDelay.IsDelayed(ent.Owner))
             return;
 
@@ -60,6 +63,7 @@ public sealed partial class CEPowerSystem : CESharedPowerSystem
         ToggleConnector((ent, nodeContainer), newState);
 
         UseDelay.TryResetDelay(ent);
+        args.Handled = true;
     }
 
     private void OnPowerChanged(Entity<CEEnergyLeakComponent> ent, ref PowerConsumerReceivedChanged args)
