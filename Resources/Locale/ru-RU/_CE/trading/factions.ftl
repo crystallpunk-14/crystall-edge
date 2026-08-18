@@ -1,7 +1,6 @@
 ce-trade-faction-brad-potions = Великолепные зелья Брада
 ce-trade-faction-butchers = Союз мастеровых мясников
 ce-trade-faction-dairy = Молочная ферма 'Златовымя'
-ce-trade-faction-vampire-market = Вампирское логово
 ce-trade-faction-helmir-child = Хельмировы потомки
 
 ce-trade-faction-horticulture = Консорциум садоводов

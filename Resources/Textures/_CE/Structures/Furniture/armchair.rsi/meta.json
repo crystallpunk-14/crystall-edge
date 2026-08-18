@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Created by Dinazewwr (Discord)",
+  "size": {
+    "x": 48,
+    "y": 48
+  },
+  "states": [
+    {
+      "name": "frame",
+      "directions": 4
+    },
+    {
+      "name": "wood",
+      "directions": 4
+    },
+    {
+      "name": "light",
+      "directions": 4
+    },
+    {
+      "name": "dark",
+      "directions": 4
+    },
+    {
+      "name": "metallic",
+      "directions": 4
+    },
+    {
+      "name": "pillow_blue",
+      "directions": 4
+    },
+    {
+      "name": "pillow_green",
+      "directions": 4
+    },
+    {
+      "name": "pillow_orange",
+      "directions": 4
+    },
+    {
+      "name": "pillow_purple",
+      "directions": 4
+    },
+    {
+      "name": "pillow_red",
+      "directions": 4
+    },
+    {
+      "name": "pillow_yellow",
+      "directions": 4
+    }
+  ]
+}

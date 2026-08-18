@@ -1,0 +1,50 @@
+<Document>
+# Infusion altar
+
+The infusion altar is a machine that fuses essence and items into new, more powerful ones. The central altar is surrounded by connectable pedestals onto which the required ingredients are placed.
+
+You can examine the altar while wearing thaumaturgic goggles to see the available pedestal placement spots.
+
+<Box>
+<GuideEntityEmbed Entity="CECandle" Caption=""/>
+<GuideEntityEmbed Entity="CEInfusionAltarPedestal" Caption=""/>
+<GuideEntityEmbed Entity="CECandle" Caption=""/>
+</Box>
+<Box>
+<GuideEntityEmbed Entity="CEInfusionAltarPedestal" Caption=""/>
+<GuideEntityEmbed Entity="CEInfusionAltar" Caption="Infusion altar"/>
+<GuideEntityEmbed Entity="CEInfusionAltarPedestal" Caption=""/>
+</Box>
+<Box>
+<GuideEntityEmbed Entity="CECandle" Caption=""/>
+<GuideEntityEmbed Entity="CEInfusionAltarPedestal" Caption=""/>
+<GuideEntityEmbed Entity="CECandle" Caption=""/>
+</Box>
+
+## Performing an infusion ritual
+
+- Place a catalyst item on the central altar.
+- Place the required items on the surrounding pedestals.
+- Spray the required essence around the altar.
+- Power the altar and all pedestals from the grid using pipes.
+
+The altar will start drawing in essence, and if all ritual conditions are met, the infusion process will begin.
+
+
+## Chaos
+While the ritual is running, the altar's chaos grows - even with everything set up perfectly, the fusion process is inherently risky by nature.
+If a ritual condition is broken (not enough essence, an item knocked off a pedestal), chaos grows faster.
+
+The higher the chaos, the greater the chance of a negative effect triggering each second.
+In the worst case, negative effects can disrupt the ritual by knocking items off pedestals or damaging the feed pipes.
+If that happens, you need to quickly restore the ritual's conditions, or cancel it by cutting the power.
+
+An unpowered altar gradually loses chaos, but this takes some time, during which negative effects can still occur with a decreasing chance.
+
+## Gaining knowledge
+Whatever you create with the infusion altar counts as a scientific interest. You can study the result with a thaumaturgic magnifying glass to gain knowledge.
+
+<Box>
+<GuideEntityEmbed Entity="CEThaumaturgicMagnifyingGlass" Caption=""/>
+</Box>
+</Document>

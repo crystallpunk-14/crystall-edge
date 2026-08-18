@@ -101,6 +101,7 @@
       enabled: true
   - type: RadiationSource
     intensity: 3
+    slope: 1.5
   - type: TimedDespawn
     lifetime: 5
 
@@ -114,7 +115,7 @@
   components:
   - type: RadiationSource
     intensity: 20
-    slope: 1.5
+    slope: 3
 
 - type: entity
   id: CEDirtEffect
@@ -218,6 +219,27 @@
     duration: 0.9
   - type: TimedDespawn
     lifetime: 0.9
+
+- type: entity
+  id: CEScientificInterestVFX
+  categories: [ ForkFiltered ]
+  save: false
+  suffix: VFX
+  name: scientific interest marker
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/question.rsi
+    drawdepth: Effects
+    layers:
+    - state: effect
+      shader: unshaded
+  - type: Physics
+    canCollide: false
+  - type: Tag
+    tags:
+      - HideContextMenu
+  - type: TimedDespawn
+    lifetime: 3.0
 
 - type: entity
   id: CEFireWhooshEffect

@@ -49,4 +49,22 @@ public sealed partial class CCVars
 
     public static readonly CVarDef<int>
         CEZLevelsRenderingMaxZLevelsBelowRendering = CVarDef.Create("ce.zlevels.rendering.max_zLevels_below_rendering", 1, CVar.SERVER | CVar.REPLICATED);
+
+    /**
+     * Audio
+     */
+
+    /// <summary>
+    /// How many decibels of volume are subtracted from a PVS-positioned sound for every Z-level
+    /// it is away from the listener.
+    /// </summary>
+    public static readonly CVarDef<float>
+        CEZLevelsAudioPerLevelAttenuation = CVarDef.Create("ce.zlevels.audio.per_level_attenuation_db", 9f, CVar.ARCHIVE | CVar.CLIENT);
+
+    /// <summary>
+    /// Occlusion added to a cross-Z-level sound when an opaque tile blocks the floor/ceiling between
+    /// the source and the listener, on top of the flat per-level attenuation.
+    /// </summary>
+    public static readonly CVarDef<float>
+        CEZLevelsAudioFloorOcclusion = CVarDef.Create("ce.zlevels.audio.floor_occlusion", 3f, CVar.ARCHIVE | CVar.CLIENT);
 }

@@ -78,6 +78,7 @@
   parent: CEDrill
   name: advanced stationary drill
   description: An industrial drill rebuilt with reinforced components, hitting twice as hard as the standard model.
+  categories: [ DoNotMap ]
   components:
   - type: Machine
     board: CEMachineCoreDrillAdvanced

@@ -1,5 +1,6 @@
 using Content.Shared.Projectiles;
 using Content.Shared.Throwing;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.EntityEffect.Effects;
 
@@ -13,6 +14,9 @@ public sealed partial class ThrowTo : CEEntityEffectBase<ThrowTo>
 
     [DataField]
     public float ThrowPower = 10f;
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
+        Loc.GetString("ce-entity-effect-guidebook-throw-to", ("power", ThrowPower));
 }
 
 public sealed partial class CEThrowToEffectSystem : CEEntityEffectSystem<ThrowTo>

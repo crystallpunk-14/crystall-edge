@@ -24,7 +24,7 @@
 - type: entity
   id: CEPipeBrassBig
   parent: CEPipeBrassBigBase
-  name: brass pipe
+  name: big brass pipe
   components:
   - type: Icon
     state: pipe_0
@@ -68,7 +68,7 @@
 - type: entity
   parent: CEPipeBrassBig
   id: CEPipeBrassBigVerticalUp
-  name: brass pipe up
+  name: big brass pipe up
   components:
   - type: Icon
     sprite: _CE/Structures/Industrial/Power/Pipes/big_up.rsi
@@ -91,7 +91,7 @@
 - type: entity
   parent: CEPipeBrassBig
   id: CEPipeBrassBigVerticalDown
-  name: brass pipe down
+  name: big brass pipe down
   components:
   - type: Icon
     sprite: _CE/Structures/Industrial/Power/Pipes/big_down.rsi
@@ -116,7 +116,7 @@
 - type: entity
   id: CEPipeBrassBigValve
   parent: CEPipeBrassBig
-  name: pipe valve
+  name: big valve
   description: A valve installed on a brass pipe, allowing for the regulation of arcane energy flow through the pipe.
   suffix: Valve, Off
   components:

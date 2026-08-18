@@ -1,9 +1,14 @@
+- type: CERecipe
+  id: CEBaseEngineeringTableRecipe
+  abstract: true
+  tag: CERecipeEngineeringTable
+  workbench: CEEngineeringTable
+
 #MARK: Materials
 
 - type: CERecipe
-  roundStart: true
   id: CEMachinePartCoalDiffuser
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: Materials
   craftTime: 2.0
   requirements:
@@ -23,9 +28,8 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachinePartEnergyLine1
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: Materials
   craftTime: 2.0
   requirements:
@@ -42,9 +46,8 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEEnergyCrystalCell
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: Materials
   craftTime: 1.0
   requirements:
@@ -57,51 +60,59 @@
   result: CEEnergyCrystalCell
   resultCount: 1
 
+- type: CERecipe
+  id: CENail
+  parent: CEBaseEngineeringTableRecipe
+  category: Materials
+  craftTime: 1.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronBar
+    count: 1
+  result: CENail1
+  resultCount: 10
+
 #MARK: Tools
 
 - type: CERecipe
-  roundStart: true
   id: CEMediumBrassPipe15
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: Tools
-  craftTime: 2.0
+  craftTime: 0.5
   requirements:
   - !type:StackResource
     stack: CEBrassSheet
-    count: 6
+    count: 2
   result: CEMediumBrassPipe1
-  resultCount: 15
+  resultCount: 5
 
 - type: CERecipe
-  roundStart: true
   id: CEBigBrassPipe15
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: Tools
-  craftTime: 2.0
+  craftTime: 0.5
   requirements:
   - !type:StackResource
     stack: CEBrassSheet
-    count: 12
+    count: 4
   result: CEBigBrassPipe1
-  resultCount: 15
+  resultCount: 5
 
 - type: CERecipe
-  roundStart: true
   id: CEPipeValve10
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: Tools
   craftTime: 1.0
   requirements:
   - !type:StackResource
     stack: CEIronBar
-    count: 2
+    count: 1
   result: CEPipeValve1
-  resultCount: 10
+  resultCount: 5
 
 - type: CERecipe
-  roundStart: true
   id: CEWrench
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: Tools
   craftTime: 1.0
   requirements:
@@ -115,9 +126,8 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CECrowbar
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: Tools
   craftTime: 1.0
   requirements:
@@ -131,9 +141,8 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEScrewdriver
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: Tools
   craftTime: 1.0
   requirements:
@@ -147,9 +156,8 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEWeaponPickaxeIron
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: Tools
   craftTime: 1.0
   requirements:
@@ -166,9 +174,8 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEWeaponShovelIron
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: Tools
   craftTime: 1.0
   requirements:
@@ -182,9 +189,8 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CELantern
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: Tools
   craftTime: 1.0
   requirements:
@@ -201,9 +207,9 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEManaTransferGlove
-  tag: CERecipeEngineeringTable
+  requiredKnowledge: KnowledgeManaTransferGlove
+  parent: CEBaseEngineeringTableRecipe
   category: Tools
   craftTime: 1.0
   requirements:
@@ -220,9 +226,8 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEClothingEyesMiningGlasses
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: Tools
   craftTime: 2.0
   requirements:
@@ -240,7 +245,8 @@
 
 - type: CERecipe
   id: CEVehicleHoverboard
-  tag: CERecipeEngineeringTable
+  requiredKnowledge: KnowledgeHoverboard
+  parent: CEBaseEngineeringTableRecipe
   category: Tools
   craftTime: 2.0
   requirements:
@@ -256,12 +262,84 @@
   result: CEVehicleHoverboard
   resultCount: 1
 
+- type: CERecipe
+  id: CEThirdArm
+  parent: CEBaseEngineeringTableRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronRod
+    count: 1
+  - !type:StackResource
+    stack: CEBrassRod
+    count: 2
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 2
+  result: CEThirdArm
+  resultCount: 1
+
+- type: CERecipe
+  id: CEThirdArmModuleLight
+  parent: CEBaseEngineeringTableRecipe
+  category: Tools
+  craftTime: 1.5
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 2
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 1
+  - !type:StackResource
+    stack: CEGlass
+    count: 2
+  result: CEThirdArmModuleLight
+  resultCount: 1
+
+- type: CERecipe
+  id: CEThirdArmModuleMining
+  requiredKnowledge: KnowledgeThirdArmMiningModule
+  parent: CEBaseEngineeringTableRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 4
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 2
+  - !type:StackResource
+    stack: CEIronRod
+    count: 3
+  result: CEThirdArmModuleMining
+  resultCount: 1
+
+- type: CERecipe
+  id: CEThirdArmModuleManipulation
+  parent: CEBaseEngineeringTableRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronBar
+    count: 2
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 3
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 1
+  result: CEThirdArmModuleManipulation
+  resultCount: 1
+
 #MARK: Machine cores
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreMeltingFurnace
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -278,9 +356,8 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreGeneratorMagicCapacitor
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -300,9 +377,8 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreRecycler
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -319,9 +395,8 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreDrill
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -338,9 +413,8 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCorePress
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -357,9 +431,8 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCorePressTargetThaumaturgySplitter
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -378,7 +451,8 @@
 # Unlocked by the "Advanced Drilling" science achievement - see achievements.yml.
 - type: CERecipe
   id: CEMachineCoreDrillAdvanced
-  tag: CERecipeEngineeringTable
+  requiredKnowledge: KnowledgeDrillAdvanced
+  parent: CEBaseEngineeringTableRecipe
   category: MachineCore
   craftTime: 3.0
   requirements:
@@ -398,9 +472,8 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreEssenceAttractor
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -420,9 +493,8 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreCharger
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -436,9 +508,8 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreAccumulatorVessel
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -455,9 +526,8 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreDistributionUnit
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -474,9 +544,8 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreFunnel
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -487,9 +556,8 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreTradingPlatformHomeDecor
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -506,9 +574,8 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreTradingPlatformTailors
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -525,9 +592,8 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreTradingPlatformHorticulture
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -544,9 +610,8 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreTradingPlatformDwarfMiners
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -563,9 +628,8 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreTradingPlatformAlcohol
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -582,9 +646,8 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreTradingPlatformApothecariesGuild
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -601,9 +664,8 @@
   resultCount: 1
 
 - type: CERecipe
-  roundStart: true
   id: CEMachineCoreTradingPlatformImperialChancellery
-  tag: CERecipeEngineeringTable
+  parent: CEBaseEngineeringTableRecipe
   category: MachineCore
   craftTime: 2.0
   requirements:
@@ -617,4 +679,116 @@
     stack: CEIronSheet
     count: 5
   result: CEMachineCoreTradingPlatformImperialChancellery
+  resultCount: 1
+
+#MARK: Structures
+
+- type: CERecipe
+  id: CEInfusionAltar
+  parent: CEBaseEngineeringTableRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 8
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 2
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 2
+  - !type:StackResource
+    stack: CEGlass
+    count: 5
+  result: CEInfusionAltar
+  resultCount: 1
+
+- type: CERecipe
+  id: CEInfusionAltarPedestal
+  parent: CEBaseEngineeringTableRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 3
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 1
+  - !type:StackResource
+    stack: CEGlass
+    count: 2
+  result: CEInfusionAltarPedestal
+  resultCount: 1
+
+- type: CERecipe
+  id: CESolutionNormalizer
+  parent: CEBaseEngineeringTableRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:ProtoIdResource
+    protoId: CEEssenceSphereFire
+    count: 2
+  - !type:StackResource
+    stack: CEMachinePartCoalDiffuser
+    count: 1
+  - !type:StackResource
+    stack: CEGlass
+    count: 5
+  result: CESolutionNormalizer
+  resultCount: 1
+
+- type: CERecipe
+  id: CEPortableMagicEssenceAttractor
+  requiredKnowledge: KnowledgePortableEssenceAttractor
+  parent: CEBaseEngineeringTableRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEIronBar
+    count: 2
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 4
+  - !type:ProtoIdResource
+    protoId: CEEssenceSphereAir
+    count: 1
+  - !type:StackResource
+    stack: CEGlass
+    count: 5
+  result: CEPortableMagicEssenceAttractor
+  resultCount: 1
+
+- type: CERecipe
+  id: CENodeStabilizerSphere
+  requiredKnowledge: KnowledgeNodeStabilizer
+  parent: CEBaseEngineeringTableRecipe
+  category: Tools
+  craftTime: 3.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassRod
+    count: 12
+  - !type:StackResource
+    stack: CEBrassBar
+    count: 4
+  - !type:ProtoIdResource
+    protoId: CEEssenceSphereChaos
+    count: 1
+  - !type:ProtoIdResource
+    protoId: CEEssenceSphereOrder
+    count: 1
+  - !type:StackResource
+    stack: CEGlass
+    count: 10
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 1
+  result: CENodeStabilizerSphere
   resultCount: 1

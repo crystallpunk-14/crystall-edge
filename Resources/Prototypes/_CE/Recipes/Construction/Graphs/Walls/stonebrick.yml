@@ -23,7 +23,7 @@
               amount: 2
             - !type:DeleteEntity {}
           steps:
-            - tool: Prying
+            - tool: CEMatterManipulation
               doAfter: 4
         - to: CEWallStoneBrick
           steps:
@@ -36,12 +36,8 @@
       edges:
         - to: CEWallFrameStoneBrick
           steps:
-            - tool: CEHammering
-              doAfter: 2
-            - tool: Prying
-              doAfter: 4
-            - tool: CEHammering
-              doAfter: 6
+            - tool: CEMatterManipulation
+              doAfter: 3
           completed:
             - !type:SpawnPrototype
               prototype: CEStoneBlock1

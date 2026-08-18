@@ -5,8 +5,8 @@
   - CEPlantBaseSolarEnergy
   - CEPlantBaseSingleHarvest
   - CEPlantBaseFloralDelicateType
-  - CEPlantBaseGrowingHalfDay
-  - CEPlantBaseMetabolizerHalfDay
+  - CEPlantBaseGrowingFast
+  - CEPlantBaseMetabolizerFast
   - CEPlantBaseMetabolizerWater
   name: wheat
   description: Most popular crop. Unpretentious, it opens the way to an abundance of flour products.

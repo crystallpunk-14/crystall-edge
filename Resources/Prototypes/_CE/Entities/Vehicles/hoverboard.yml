@@ -6,6 +6,7 @@
   - BaseItem
   name: hoverboard
   description: Floating personal transport device
+  categories: [ DoNotMap ]
   components:
   - type: Sprite
     drawdepth: Items
@@ -59,7 +60,7 @@
         layer:
         - TableLayer
   - type: StaticPrice
-    price: 170
+    price: 150
   - type: AmbientSound
     enabled: false
     volume: 2
@@ -73,8 +74,8 @@
   - type: CEZFlyerBattery
     energyDraw: 2
   - type: Battery
-    maxCharge: 100
-    startingCharge: 100
+    maxCharge: 150
+    startingCharge: 150
   - type: ExaminableBattery
   - type: Foldable
     folded: false

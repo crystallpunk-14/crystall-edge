@@ -1,0 +1,17 @@
+- type: scienceDiscovery
+  id: EasyDifficult
+  abstract: true
+  generation:
+    radius: 2
+    minTargetDistance: 4
+
+- type: scienceDiscovery
+  id: MediumDifficult
+  abstract: true
+  generation:
+    radius: 4
+    minTargetDistance: 4
+    deadZoneLayers:
+    - threshold: 0.1
+      noise:
+        frequency: 0.2

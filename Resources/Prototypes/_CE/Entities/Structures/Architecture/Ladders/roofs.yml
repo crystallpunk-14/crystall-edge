@@ -30,62 +30,200 @@
 # Red
 
 - type: entity
+  id: CEZLevelsLadderRoofRedBase
+  parent: CEZLevelsLadderRoofBase
+  abstract: true
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 30
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEFloorTileRoofRed:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+- type: entity
   parent:
   - CEZLevelLadderBase
-  - CEZLevelsLadderRoofBase
+  - CEZLevelsLadderRoofRedBase
   id: CEZLevelsLadderRoofRed
+  name: red roof
   components:
   - type: Sprite
     sprite: _CE/Structures/Architecture/Ladders/roof_red.rsi
+  - type: Construction
+    graph: CEZLevelLadder
+    node: CEZLevelsLadderRoofRed
 
 - type: entity
   parent:
   - CEZLevelLadderCornerBase
-  - CEZLevelsLadderRoofBase
+  - CEZLevelsLadderRoofRedBase
   id: CEZLevelsLadderRoofRedCorner
+  name: red roof
   suffix: Corner
   components:
   - type: Sprite
     sprite: _CE/Structures/Architecture/Ladders/roof_red.rsi
+  - type: Construction
+    graph: CEZLevelLadder
+    node: CEZLevelsLadderRoofRedCorner
 
 - type: entity
   parent:
   - CEZLevelLadderCornerInnerBase
-  - CEZLevelsLadderRoofBase
+  - CEZLevelsLadderRoofRedBase
   id: CEZLevelsLadderRoofRedCornerInner
+  name: red roof
   suffix: Inner Corner
   components:
   - type: Sprite
     sprite: _CE/Structures/Architecture/Ladders/roof_red.rsi
+  - type: Construction
+    graph: CEZLevelLadder
+    node: CEZLevelsLadderRoofRedCornerInner
 
 # Green
 
 - type: entity
+  id: CEZLevelsLadderRoofGreenBase
+  parent: CEZLevelsLadderRoofBase
+  abstract: true
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 30
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEFloorTileRoofGreen:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+- type: entity
   parent:
   - CEZLevelLadderBase
-  - CEZLevelsLadderRoofBase
+  - CEZLevelsLadderRoofGreenBase
   id: CEZLevelsLadderRoofGreen
+  name: green roof
   components:
   - type: Sprite
     sprite: _CE/Structures/Architecture/Ladders/roof_green.rsi
+  - type: Construction
+    graph: CEZLevelLadder
+    node: CEZLevelsLadderRoofGreen
 
 - type: entity
   parent:
   - CEZLevelLadderCornerBase
-  - CEZLevelsLadderRoofBase
+  - CEZLevelsLadderRoofGreenBase
   id: CEZLevelsLadderRoofGreenCorner
+  name: green roof
   suffix: Corner
   components:
   - type: Sprite
     sprite: _CE/Structures/Architecture/Ladders/roof_green.rsi
+  - type: Construction
+    graph: CEZLevelLadder
+    node: CEZLevelsLadderRoofGreenCorner
 
 - type: entity
   parent:
   - CEZLevelLadderCornerInnerBase
-  - CEZLevelsLadderRoofBase
+  - CEZLevelsLadderRoofGreenBase
   id: CEZLevelsLadderRoofGreenCornerInner
+  name: green roof
   suffix: Inner Corner
   components:
   - type: Sprite
     sprite: _CE/Structures/Architecture/Ladders/roof_green.rsi
+  - type: Construction
+    graph: CEZLevelLadder
+    node: CEZLevelsLadderRoofGreenCornerInner
 
+# Blue
+
+- type: entity
+  id: CEZLevelsLadderRoofBlueBase
+  parent: CEZLevelsLadderRoofBase
+  abstract: true
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 30
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEFloorTileRoofBlue:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+- type: entity
+  parent:
+  - CEZLevelLadderBase
+  - CEZLevelsLadderRoofBlueBase
+  id: CEZLevelsLadderRoofBlue
+  name: blue roof
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Ladders/roof_blue.rsi
+  - type: Construction
+    graph: CEZLevelLadder
+    node: CEZLevelsLadderRoofBlue
+
+- type: entity
+  parent:
+  - CEZLevelLadderCornerBase
+  - CEZLevelsLadderRoofBlueBase
+  id: CEZLevelsLadderRoofBlueCorner
+  name: blue roof
+  suffix: Corner
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Ladders/roof_blue.rsi
+  - type: Construction
+    graph: CEZLevelLadder
+    node: CEZLevelsLadderRoofBlueCorner
+
+- type: entity
+  parent:
+  - CEZLevelLadderCornerInnerBase
+  - CEZLevelsLadderRoofBlueBase
+  id: CEZLevelsLadderRoofBlueCornerInner
+  name: blue roof
+  suffix: Inner Corner
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Ladders/roof_blue.rsi
+  - type: Construction
+    graph: CEZLevelLadder
+    node: CEZLevelsLadderRoofBlueCornerInner

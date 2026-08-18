@@ -1,0 +1,23 @@
+- type: infusionAltarRecipe
+  id: SafeFallingAmulet
+  catalyst: !type:ProtoIdResource
+    protoId: CEEssenceSphereAir
+    count: 1
+  instability: 1
+  ritualDuration: 15
+  essenceAmount: { min: 8, max: 15 }
+  essenceWeights:
+    Flight: 3
+    Magic: 1
+  pedestalCount: { min: 3, max: 3 }
+  pedestalRequirementPool:
+  - requirement: !type:StackResource
+      stack: CEBrassBar
+      count: 1
+    weight: 2
+  - requirement: !type:ProtoIdResource
+      protoId: CEPenFeather
+      count: 1
+    weight: 1
+  result: CESafeFallingAmulet
+  resultCount: 1

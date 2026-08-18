@@ -1,0 +1,33 @@
+- type: constructionGraph
+  id: CEArmchairFrame
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: CEArmchairFrame
+          steps:
+            - material: CEWood
+              amount: 3
+            - material: CECloth
+              amount: 2
+              doAfter: 2
+    - node: CEArmchairFrame
+      entity: CEArmchairFrame
+
+- type: constructionGraph
+  id: CEArmchairMetallic
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: CEArmchairMetallic
+          steps:
+            - material: CEIronSheet
+              amount: 2
+              doAfter: 3
+    - node: CEArmchairMetallic
+      entity: CEArmchairMetallic

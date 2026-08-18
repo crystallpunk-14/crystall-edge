@@ -47,5 +47,5 @@ ce-job-desc-academy-student = A pupil of the Thaumaturgic Academy, learning the 
 ce-job-name-academy-professor = Professor
 ce-job-desc-academy-professor = A teacher of the Academy, instructing students in the secrets of nature and pursuing their own research.
 
-ce-job-name-academy-director = Academy Director
-ce-job-desc-academy-director = The head of the Thaumaturgic Academy, responsible for the safety of the educational process and overseeing the direction of research.
+ce-job-name-academy-rector = Academy Rector
+ce-job-desc-academy-rector = The head of the Thaumaturgic Academy, responsible for the safety of the educational process and overseeing the direction of research.

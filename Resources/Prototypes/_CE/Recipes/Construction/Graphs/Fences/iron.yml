@@ -22,8 +22,8 @@
               amount: 5
             - !type:DeleteEntity {}
           steps:
-            - tool: Prying
-              doAfter: 5
+            - tool: CEMatterManipulation
+              doAfter: 3
 
 - type: constructionGraph
   id: CEFenceIron
@@ -49,8 +49,8 @@
               amount: 5
             - !type:DeleteEntity {}
           steps:
-            - tool: Prying
-              doAfter: 5
+            - tool: CEMatterManipulation
+              doAfter: 3
 
 - type: constructionGraph
   id: CEFenceGateBigIron
@@ -76,8 +76,8 @@
               amount: 8
             - !type:DeleteEntity {}
           steps:
-            - tool: Prying
-              doAfter: 5
+            - tool: CEMatterManipulation
+              doAfter: 3
 
 - type: constructionGraph
   id: CEFenceBigIron
@@ -103,5 +103,5 @@
               amount: 8
             - !type:DeleteEntity {}
           steps:
-            - tool: Prying
-              doAfter: 5
+            - tool: CEMatterManipulation
+              doAfter: 3

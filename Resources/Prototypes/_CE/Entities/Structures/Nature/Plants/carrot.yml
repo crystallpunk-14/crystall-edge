@@ -5,14 +5,14 @@
   - CEPlantBaseSolarEnergy
   - CEPlantBaseSingleHarvest
   - CEPlantBaseFloralDelicateType
-  - CEPlantBaseGrowing1Day
-  - CEPlantBaseMetabolizer1Day
+  - CEPlantBaseGrowingMedium
+  - CEPlantBaseMetabolizerMedium
   - CEPlantBaseMetabolizerWater
   name: carrot
   description: In this world, they have not yet learned to use carrots as noses for snowmen.
   components:
   - type: CEPlantVisuals
-    growthSteps: 5
+    growthSteps: 4
     readyVariations: 1
   - type: Sprite
     sprite: _CE/Structures/Nature/Farm/carrot.rsi

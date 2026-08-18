@@ -26,27 +26,27 @@
 
 - type: entity
   parent: CEPlantBaseMetabolizer
-  id: CEPlantBaseMetabolizerHalfDay
+  id: CEPlantBaseMetabolizerFast
   abstract: true
   components:
   - type: CEPlantMetabolizer
-    solutionPerUpdate: 3.33 # Fully dry in 15 minutes (1 day is 24 minute, so Need to be watered twice at day)
+    solutionPerUpdate: 20 # CrystallEdge: matches CEPlantBaseGrowingFast pace - fully dry in ~2.5 minutes
 
 - type: entity
   parent: CEPlantBaseMetabolizer
-  id: CEPlantBaseMetabolizer1Day
+  id: CEPlantBaseMetabolizerMedium
   abstract: true
   components:
   - type: CEPlantMetabolizer
-    solutionPerUpdate: 2 # Fully dry in 25 minutes (1 day is 24 minute, so Need to be watered once at day)
+    solutionPerUpdate: 12 # CrystallEdge: matches CEPlantBaseGrowingMedium pace - fully dry in ~4.2 minutes
 
 - type: entity
   parent: CEPlantBaseMetabolizer
-  id: CEPlantBaseMetabolizer2Day
+  id: CEPlantBaseMetabolizerSlow
   abstract: true
   components:
   - type: CEPlantMetabolizer
-    solutionPerUpdate: 1 # Fully dry in 50 minutes (1 day is 24 minute, so Need to be watered once at 2 days)
+    solutionPerUpdate: 8 # CrystallEdge: matches CEPlantBaseGrowingSlow pace - fully dry in ~6.25 minutes
 
 - type: entity
   id: CEPlantBaseMetabolizerWater

@@ -31,3 +31,5 @@
       collection: CECrystalDings
       params:
         variation: 0.03
+  - type: CEGridStabilitySupport
+    supportStrength: 2

@@ -4,8 +4,8 @@
   - CEPlantTreeBase
   - CEPlantBaseSolarEnergy
   - CEPlantBaseFloralWildType
-  - CEPlantBaseGrowing2Day
-  - CEPlantBaseMetabolizer1Day
+  - CEPlantBaseGrowingSlow
+  - CEPlantBaseMetabolizerMedium
   - CEPlantBaseMetabolizerWater
   name: apple tree
   description: A sturdy tree that bears delicious apples.
@@ -34,10 +34,10 @@
         result: CEFoodAppleFalling
         maxProduce: 4
         visualStateCount: 2
-        growthPerUpdate: 0.0833 # After 4 days, we start spamming apples 2 times a day
+        growthPerUpdate: 0.5 # CrystallEdge: new apple batch every 2 minutes
   - type: CEPlantGatherOnInteract
     gatherKeys:
     - apple
     toolWhitelist:
-      components:
-      - Sharp
+      tags:
+      - CESharp

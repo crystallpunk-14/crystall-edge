@@ -6,9 +6,9 @@
   description: A traditional syurko cloak in black.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Shirt/Syurko/black.rsi
+    sprite: _CE/Clothing/Shirt/Generic/Syurko/black.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Shirt/Syurko/black.rsi
+    sprite: _CE/Clothing/Shirt/Generic/Syurko/black.rsi
 
 - type: entity
   parent:
@@ -18,9 +18,9 @@
   description: A blue syurko cloak with distinct cultural patterns.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Shirt/Syurko/blue.rsi
+    sprite: _CE/Clothing/Shirt/Generic/Syurko/blue.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Shirt/Syurko/blue.rsi
+    sprite: _CE/Clothing/Shirt/Generic/Syurko/blue.rsi
 
 - type: entity
   parent:
@@ -30,9 +30,9 @@
   description: A green syurko cloak often used in ceremonial settings.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Shirt/Syurko/green.rsi
+    sprite: _CE/Clothing/Shirt/Generic/Syurko/green.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Shirt/Syurko/green.rsi
+    sprite: _CE/Clothing/Shirt/Generic/Syurko/green.rsi
 
 - type: entity
   parent:
@@ -42,9 +42,9 @@
   description: A syurko styled for guard uniforms.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Shirt/Syurko/guard.rsi
+    sprite: _CE/Clothing/Shirt/Guard/syurko.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Shirt/Syurko/guard.rsi
+    sprite: _CE/Clothing/Shirt/Guard/syurko.rsi
 
 - type: entity
   parent:
@@ -54,9 +54,9 @@
   description: A bright red syurko favored by certain regions.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Shirt/Syurko/red.rsi
+    sprite: _CE/Clothing/Shirt/Generic/Syurko/red.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Shirt/Syurko/red.rsi
+    sprite: _CE/Clothing/Shirt/Generic/Syurko/red.rsi
 
 - type: entity
   parent:
@@ -66,9 +66,9 @@
   description: A pristine white syurko, often used for ceremonies.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Shirt/Syurko/white.rsi
+    sprite: _CE/Clothing/Shirt/Generic/Syurko/white.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Shirt/Syurko/white.rsi
+    sprite: _CE/Clothing/Shirt/Generic/Syurko/white.rsi
 
 - type: entity
   parent:
@@ -78,6 +78,6 @@
   description: A yellow syurko that stands out in parades and festivals.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Shirt/Syurko/yellow.rsi
+    sprite: _CE/Clothing/Shirt/Generic/Syurko/yellow.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Shirt/Syurko/yellow.rsi
+    sprite: _CE/Clothing/Shirt/Generic/Syurko/yellow.rsi

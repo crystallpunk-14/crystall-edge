@@ -9,3 +9,5 @@
   maleFirstNames: CE_Names_Carrin_Male_First
   femaleFirstNames: CE_Names_Carrin_Female_First
   lastNames: CE_Names_Carrin_Last
+  defaultSoundsBySex: [CEUnisexCarcat, CEUnisexCarcat, CEUnisexCarcat]
+  voices: [CEUnisexCarcat]

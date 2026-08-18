@@ -70,8 +70,8 @@ public sealed partial class CEPenSystem : EntitySystem
                 _paper.TryWrite(target, args.Actor, ent.Owner);
                 break;
             case CEPenActionKind.RecordKnowledge:
-                if (args.Achievement is { } achievement)
-                    RaiseLocalEvent(args.Actor, new CEPenRecordKnowledgeRequestEvent(ent.Owner, target, achievement));
+                if (args.Knowledge is { } knowledge)
+                    RaiseLocalEvent(args.Actor, new CEPenRecordKnowledgeRequestEvent(ent.Owner, target, knowledge));
                 break;
         }
     }

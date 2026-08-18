@@ -6,3 +6,6 @@ ce-tool-quality-pickaxe-tool-name = Pickaxe
 
 ce-tool-quality-hammering-name = Hammering
 ce-tool-quality-hammering-tool-name = Hammer
+
+ce-tool-quality-matter-manipulation-name = Matter Manipulation
+ce-tool-quality-matter-manipulation-tool-name = Matter Manipulator

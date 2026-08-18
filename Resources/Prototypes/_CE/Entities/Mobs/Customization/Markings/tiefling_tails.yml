@@ -24,6 +24,7 @@
 - type: marking
   id: CETieflingTailAnimated
   bodyPart: Tail
+  groupWhitelist: [ CETiefling ]
   forcedColoring: true
   sprites:
     - sprite: _CE/Mobs/Customization/tiefling_tails.rsi
@@ -32,6 +33,7 @@
 - type: marking
   id: CETieflingTailSpadesAnimated
   bodyPart: Tail
+  groupWhitelist: [ CETiefling ]
   forcedColoring: true
   sprites:
     - sprite: _CE/Mobs/Customization/tiefling_tails.rsi

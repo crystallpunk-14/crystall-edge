@@ -31,7 +31,7 @@
               amount: 1
         - to: CEConveyorLadderReverse
           steps:
-            - tool: Prying
+            - tool: Screwing
               doAfter: 1
 
     - node: CEConveyorLadderReverse
@@ -50,5 +50,5 @@
               amount: 1
         - to: CEConveyorLadder
           steps:
-            - tool: Prying
+            - tool: Screwing
               doAfter: 1

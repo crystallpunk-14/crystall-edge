@@ -6,7 +6,7 @@
   id: CEManaTransferGlove
   name: mana transfer glove
   description: A glove that allows transferring mana to and from mana-storing entities.
-  categories: [ ForkFiltered ]
+  categories: [ ForkFiltered, DoNotMap ]
   components:
   - type: Sprite
     sprite: _CE/Objects/Tools/mana_glove.rsi

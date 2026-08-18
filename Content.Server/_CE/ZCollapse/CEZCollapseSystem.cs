@@ -37,7 +37,6 @@ public sealed partial class CEZCollapseSystem : EntitySystem
     [Dependency] private SharedPhysicsSystem _physics = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private IComponentFactory _compFactory = default!;
-    [Dependency] private IMapManager _mapManager = default!;
 
     [Dependency] private EntityQuery<CEGridStabilityComponent> _stabilityQuery = default!;
     [Dependency] private EntityQuery<CEGridStabilityCoreComponent> _coreQuery = default!;
@@ -181,7 +180,7 @@ public sealed partial class CEZCollapseSystem : EntitySystem
         if (!_mapCompQuery.TryGetComponent(mapUid, out var mapComp))
             return false;
 
-        foreach (var grid in _mapManager.GetAllGrids(mapComp.MapId))
+        foreach (var grid in _map.GetAllGrids(mapComp.MapId))
         {
             if (_stabilityQuery.HasComponent(grid.Owner))
             {
@@ -270,7 +269,7 @@ public sealed partial class CEZCollapseSystem : EntitySystem
             if (!_mapCompQuery.TryGetComponent(mapUid, out var mapComp))
                 return false;
 
-            foreach (var candidate in _mapManager.GetAllGrids(mapComp.MapId))
+            foreach (var candidate in _map.GetAllGrids(mapComp.MapId))
             {
                 if (!participates(candidate.Owner))
                     continue;

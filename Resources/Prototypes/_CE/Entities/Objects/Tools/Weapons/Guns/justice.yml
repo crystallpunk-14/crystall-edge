@@ -67,18 +67,19 @@
     damage:
       types:
         Shock: 10
-  - type: CEHitscanSpellEffect
+  - type: CEHitscanEntityEffect
     effects:
-    - !type:CESpellSpawnEntityOnUser
+    - !type:SpawnEntity
+      effectTarget: Target
       spawns:
       - CEOverchargeVFX
   - type: HitscanBasicVisuals
     muzzleFlash:
-      sprite: _CE/Objects/Tools/Weapons/Guns/justice.rsi
+      sprite: _CE/Effects/Hitscans/mana.rsi
       state: muzzle_blue
     travelFlash:
-      sprite: _CE/Objects/Tools/Weapons/Guns/justice.rsi
+      sprite: _CE/Effects/Hitscans/mana.rsi
       state: beam_blue
     impactFlash:
-      sprite: _CE/Objects/Tools/Weapons/Guns/justice.rsi
+      sprite: _CE/Effects/Hitscans/mana.rsi
       state: impact_blue

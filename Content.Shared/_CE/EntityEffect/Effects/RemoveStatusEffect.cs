@@ -10,6 +10,12 @@ public sealed partial class RemoveStatusEffect : CEEntityEffectBase<RemoveStatus
 {
     [DataField(required: true)]
     public EntProtoId StatusEffect;
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
+    {
+        var statusName = prototype.TryIndex(StatusEffect, out var statusProto) ? statusProto.Name : StatusEffect.Id;
+        return Loc.GetString("ce-entity-effect-guidebook-remove-status", ("status", statusName));
+    }
 }
 
 public sealed partial class CERemoveStatusEffectSystem : CEEntityEffectSystem<RemoveStatusEffect>

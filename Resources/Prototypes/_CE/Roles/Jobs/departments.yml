@@ -10,7 +10,7 @@
   - CEGuardCommander
   - CETavernmaster
   - CEBrigadier
-  - CEAcademyDirector
+  - CEAcademyRector
 
 - type: department
   id: CEGuard
@@ -69,4 +69,4 @@
   roles:
   - CEAcademyStudent
   - CEAcademyProfessor
-  - CEAcademyDirector
+  - CEAcademyRector

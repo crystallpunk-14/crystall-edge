@@ -28,3 +28,8 @@
   id: CEShockWave
   kind: source
   path: "/Textures/_CE/Shaders/shock_wave.swsl"
+
+- type: shader
+  id: CECloudShadow
+  kind: source
+  path: "/Textures/_CE/Shaders/cloud_shadow.swsl"

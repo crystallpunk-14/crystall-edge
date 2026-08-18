@@ -121,8 +121,8 @@
 
 - type: jobIcon
   parent: CEJobIcon
-  id: CEJobIconAcademyDirector
+  id: CEJobIconAcademyRector
   icon:
     sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-    state: Director
-  jobName: ce-job-name-academy-director
+    state: Rector
+  jobName: ce-job-name-academy-rector

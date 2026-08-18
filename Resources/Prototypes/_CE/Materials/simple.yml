@@ -57,7 +57,7 @@
   unit: materials-unit-bar
   icon: { sprite: _CE/Objects/Materials/Metals/iron_scrap.rsi, state: scrap }
   color: "#9093a1"
-  price: 1.2
+  price: 1.0
 
 - type: material
   id: CEBrass
@@ -66,7 +66,7 @@
   unit: materials-unit-bar
   icon: { sprite: _CE/Objects/Materials/Metals/brass_scrap.rsi, state: scrap }
   color: "#bb7547"
-  price: 1.4
+  price: 1.15
 
 - type: material
   id: CEBone

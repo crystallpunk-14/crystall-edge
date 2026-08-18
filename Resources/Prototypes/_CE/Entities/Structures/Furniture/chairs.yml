@@ -43,12 +43,15 @@
   - type: Sprite
     state: frame
   - type: CERadialConstruction
-    availablePrototypes:
-    - CEChairWooden
-    - CEChairStoolWooden
-    - CEChairStoolMetallic
-    - CEChairStoolMetallicRed
-    - CEChairStoolWoodenRed
+    variants:
+    - trigger: !type:CERadialToolTrigger
+        quality: CEHammering
+      availablePrototypes:
+      - CEChairWooden
+      - CEChairStoolWooden
+      - CEChairStoolMetallic
+      - CEChairStoolMetallicRed
+      - CEChairStoolWoodenRed
   - type: Construction
     graph: CEChairFrame
     node: CEChairFrame

@@ -29,12 +29,11 @@ public sealed partial class SunShadowOverlay : Overlay
 
     [Dependency] private IClyde _clyde = default!;
     [Dependency] private IEntityManager _entManager = default!;
-    [Dependency] private IMapManager _mapManager = default!;
     [Dependency] private IPrototypeManager _protoManager = default!;
     private readonly EntityLookupSystem _lookup;
+    private readonly SharedMapSystem _mapSys;
     private readonly SharedTransformSystem _xformSys;
     // CrystallEdge: rooved tiles have no sky above them so they shadow themselves too, see Draw()
-    private readonly SharedMapSystem _mapSys;
     private readonly SharedRoofSystem _roof;
     // CrystallEdge end
 
@@ -50,9 +49,9 @@ public sealed partial class SunShadowOverlay : Overlay
     {
         IoCManager.InjectDependencies(this);
         _xformSys = _entManager.System<SharedTransformSystem>();
+        _mapSys = _entManager.System<SharedMapSystem>();
         _lookup = _entManager.System<EntityLookupSystem>();
         // CrystallEdge: rooved tiles have no sky above them so they shadow themselves too, see Draw()
-        _mapSys = _entManager.System<SharedMapSystem>();
         _roof = _entManager.System<SharedRoofSystem>();
         // CrystallEdge end
         ZIndex = AfterLightTargetOverlay.ContentZIndex + 1;
@@ -69,7 +68,7 @@ public sealed partial class SunShadowOverlay : Overlay
             return;
 
         _grids.Clear();
-        _mapManager.FindGridsIntersecting(args.MapId,
+        _mapSys.FindGridsIntersecting(args.MapId,
             args.WorldBounds.Enlarged(SunShadowComponent.MaxLength),
             ref _grids);
 

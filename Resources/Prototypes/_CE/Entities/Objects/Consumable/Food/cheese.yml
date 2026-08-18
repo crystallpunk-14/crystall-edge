@@ -1,7 +1,7 @@
 # Cheeses
 - type: entity
   id: CEFoodCheeseWheel
-  parent: FoodInjectableBase
+  parent: [FoodInjectableBase, BaseSlicingRefinableFood]
   name: cheese wheel
   description: A large wheel of soft, fragrant piece of cheese.
   categories: [ ForkFiltered ]
@@ -22,9 +22,10 @@
       reagents:
       - ReagentId: CENutriment
         Quantity: 36 # 5 parts * 3 slices
-  - type: SliceableFood
-    count: 5
-    slice: CEFoodCheesePart
+  - type: ToolRefinable
+    refineResult:
+    - id: CEFoodCheesePart
+      amount: 5
   - type: CEFoodTag
     tags:
     - CECheese
@@ -35,7 +36,7 @@
 
 - type: entity
   id: CEFoodCheesePart
-  parent: FoodInjectableBase
+  parent: [FoodInjectableBase, BaseSlicingRefinableFood]
   name: cheese
   description: A triangle of soft, fragrant cheese.
   categories: [ ForkFiltered ]
@@ -62,9 +63,10 @@
       reagents:
       - ReagentId: CENutriment
         Quantity: 7.2 # 3 slices
-  - type: SliceableFood
-    count: 3
-    slice: CEFoodCheeseSlice
+  - type: ToolRefinable
+    refineResult:
+    - id: CEFoodCheeseSlice
+      amount: 3
   - type: CEFoodTag
     tags:
     - CECheese
@@ -123,7 +125,7 @@
   - type: FlavorProfile
     flavors:
       - cheesy
-      - pungent
+      - CEPungent
   - type: Solution
     id: food
     solution:
@@ -131,9 +133,10 @@
       reagents:
       - ReagentId: CENutriment
         Quantity: 52.5 # 15 * 1.5 (50% more)
-  - type: SliceableFood
-    count: 5
-    slice: CEFoodBlueCheesePart
+  - type: ToolRefinable
+    refineResult:
+    - id: CEFoodBlueCheesePart
+      amount: 5
   - type: StaticPrice
     price: 20
   - type: CEFoodTag
@@ -149,7 +152,7 @@
   - type: FlavorProfile
     flavors:
       - cheesy
-      - pungent
+      - CEPungent
   - type: Sprite
     layers:
       - state: blue_cheese_part
@@ -167,9 +170,10 @@
       reagents:
       - ReagentId: CENutriment
         Quantity: 10.5 # 52.5/5
-  - type: SliceableFood
-    count: 3
-    slice: CEFoodBlueCheeseSlice
+  - type: ToolRefinable
+    refineResult:
+    - id: CEFoodBlueCheeseSlice
+      amount: 3
   - type: StaticPrice
     price: 4
   - type: CEFoodTag
@@ -185,7 +189,7 @@
   - type: FlavorProfile
     flavors:
       - cheesy
-      - pungent
+      - CEPungent
   - type: Sprite
     layers:
       - state: blue_cheese_slice
@@ -230,9 +234,10 @@
       reagents:
       - ReagentId: CENutriment
         Quantity: 75 # (100% more)
-  - type: SliceableFood
-    count: 5
-    slice: CEFoodAgedCheesePart
+  - type: ToolRefinable
+    refineResult:
+    - id: CEFoodAgedCheesePart
+      amount: 5
   - type: StaticPrice
     price: 35
   - type: CEFoodTag
@@ -266,9 +271,10 @@
       reagents:
       - ReagentId: CENutriment
         Quantity: 15 # 75/5
-  - type: SliceableFood
-    count: 3
-    slice: CEFoodAgedCheeseSlice
+  - type: ToolRefinable
+    refineResult:
+    - id: CEFoodAgedCheeseSlice
+      amount: 3
   - type: StaticPrice
     price: 7
   - type: CEFoodTag

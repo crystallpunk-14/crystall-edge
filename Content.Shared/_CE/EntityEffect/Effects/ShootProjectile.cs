@@ -1,7 +1,5 @@
-﻿using System;
 using System.Numerics;
 using Content.Shared.Weapons.Ranged.Systems;
-using Robust.Shared.Map;
 using Robust.Shared.Network;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
@@ -18,24 +16,29 @@ public sealed partial class ShootProjectile : CEEntityEffectBase<ShootProjectile
     public float ProjectileSpeed = 20f;
 
     [DataField]
-    public float? ProjectileMaxSpeed = null;
+    public float? ProjectileMaxSpeed;
 
+    /// <summary>
+    ///     Offset added to the resolved base direction (target coordinates, falling back to the effect args'
+    ///     angle). Fire several copies of this effect with different offsets to recreate a spread/volley.
+    /// </summary>
     [DataField]
-    public float Spread;
-
-    [DataField]
-    public int ProjectileCount = 1;
+    public Angle Angle;
 
     [DataField]
     public bool SaveVelocity;
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
+    {
+        var itemName = prototype.TryIndex(Prototype, out var itemProto) ? itemProto.Name : Prototype.Id;
+        return Loc.GetString("ce-entity-effect-guidebook-shoot-projectile", ("item", itemName));
+    }
 }
 
 public sealed partial class CEShootProjectileEffectSystem : CEEntityEffectSystem<ShootProjectile>
 {
-    [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private SharedPhysicsSystem _physics = default!;
     [Dependency] private SharedGunSystem _gun = default!;
-    [Dependency] private IMapManager _mapManager = default!;
     [Dependency] private INetManager _net = default!;
     [Dependency] private IRobustRandom _random = default!;
 
@@ -44,63 +47,20 @@ public sealed partial class CEShootProjectileEffectSystem : CEEntityEffectSystem
         if (!_net.IsServer)
             return;
 
-        var xform = Transform(args.Args.Source);
+        var fromCoords = Transform(args.Args.Source).Coordinates;
+        var direction = (ResolveDirection(args.Args) + args.Effect.Angle).ToWorldVec();
 
-        var fromCoords = xform.Coordinates;
-        var userVelocity = _physics.GetMapLinearVelocity(args.Args.Source);
-
-        // If applicable, this ensures the projectile is parented to grid on spawn, instead of the map.
-        var fromMap = _transform.ToMapCoordinates(fromCoords);
-
-        var spawnCoords = _mapManager.TryFindGridAt(fromMap, out var gridUid, out _)
-            ? _transform.WithEntityId(fromCoords, gridUid)
-            : new(_mapManager.GetMapEntityId(fromMap.MapId), fromMap.Position);
-
-        // Resolve direction: prefer target coordinates, fall back to angle.
-        var baseDirection = Vector2.Zero;
-        if (TryResolveTargetCoordinates(args.Args, out var targetPoint))
+        var speed = args.Effect.ProjectileSpeed;
+        if (args.Effect.ProjectileMaxSpeed is { } max)
         {
-            baseDirection = _transform.ToMapCoordinates(targetPoint).Position -
-                            _transform.ToMapCoordinates(spawnCoords).Position;
+            var min = MathF.Min(speed, max);
+            var maxSpeed = MathF.Max(speed, max);
+            speed = _random.NextFloat(min, maxSpeed);
         }
 
-        // Fall back to angle when no target or target is the user (zero direction).
-        if (baseDirection == default)
-        {
-            baseDirection = args.Args.Angle.ToWorldVec();
-        }
+        var userVelocity = args.Effect.SaveVelocity ? _physics.GetMapLinearVelocity(args.Args.Source) : new Vector2();
 
-        var projCount = Math.Max(1, args.Effect.ProjectileCount);
-        var baseAngle = MathF.Atan2(baseDirection.Y, baseDirection.X);
-
-        for (var i = 0; i < projCount; i++)
-        {
-            // Interpret Spread as the angle (in radians) between adjacent projectiles.
-            var center = (projCount - 1) / 2.0f;
-            var angleOffset = (i - center) * args.Effect.Spread;
-            var angle = baseAngle + angleOffset;
-
-            var direction = new Vector2(MathF.Cos(angle), MathF.Sin(angle));
-
-            if (direction == Vector2.Zero)
-                continue;
-
-            var ent = SpawnAtPosition(args.Effect.Prototype, spawnCoords);
-
-            var speed = args.Effect.ProjectileSpeed;
-            if (args.Effect.ProjectileMaxSpeed is { } max)
-            {
-                var min = MathF.Min(speed, max);
-                var maxv = MathF.Max(speed, max);
-                speed = _random.NextFloat(min, maxv);
-            }
-
-            _gun.ShootProjectile(ent,
-                direction,
-                args.Effect.SaveVelocity ? userVelocity : new Vector2(),
-                args.Args.Source,
-                args.Args.Source,
-                speed);
-        }
+        var ent = SpawnAtPosition(args.Effect.Prototype, fromCoords);
+        _gun.ShootProjectile(ent, direction, userVelocity, args.Args.Source, args.Args.Source, speed);
     }
 }

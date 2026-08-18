@@ -1,114 +1,186 @@
 using System.Linq;
+using Content.Shared._CE.Hex;
 using Content.Shared._CE.Science;
 using Content.Shared._CE.Science.Prototypes;
-using Robust.Shared.Random;
 
 namespace Content.Server._CE.Science;
 
 public sealed partial class CEScienceSystem
 {
-    [Dependency] private IRobustRandom _random = default!;
-
     /// <summary>
-    /// The starting 3x3 square (matching <see cref="CESharedScienceSystem"/>'s initial reveal
-    /// radius of 1) that's always forced clear of dead zones, so the player never starts boxed in.
+    /// Procedurally generates a discovery's research puzzle: dead zones from the discovery's noise
+    /// layers, one fixed target tile per aspect in <see cref="CEScienceDiscoveryPrototype.TargetAspects"/>
+    /// placed along the outer ring, then a geometric connectivity guarantee (dead zones carved
+    /// through) so no wall of dead zones can fully separate any two targets.
     /// </summary>
-    private const int StartClearRadius = 1;
-
-    /// <summary>
-    /// Procedurally generates a science area's research map: dead zones from the area's noise
-    /// layers, then one achievement cell per <see cref="CEScienceAchievementPrototype"/> belonging
-    /// to this area, placed on the square ring of its <see cref="CEScienceAchievementPrototype.Difficulty"/>.
-    /// Finally, guarantees every achievement is actually reachable from the start by carving a path
-    /// through dead zones to any that aren't.
-    /// </summary>
-    private Dictionary<Vector2i, CEScienceMapCell> GenerateArea(CEScienceAreaPrototype area)
+    public Dictionary<Vector2i, CEResearchMapTile> GenerateMap(CEScienceDiscoveryPrototype discovery)
     {
-        var achievements = _proto.EnumeratePrototypes<CEScienceAchievementPrototype>()
-            .Where(achievement => achievement.Area == area.ID)
-            .ToList();
+        var generation = discovery.Generation;
+        var radius = generation.Radius;
+        var tiles = new Dictionary<Vector2i, CEResearchMapTile>();
 
-        var maxDifficulty = 0;
-        foreach (var achievement in achievements)
-            maxDifficulty = Math.Max(maxDifficulty, achievement.Difficulty);
+        // Randomized per generation (rather than mutating the shared prototype's noise instances)
+        // so repeat projects for the same discovery don't always look identical.
+        var noiseOffset = new Vector2i(_random.Next(-10000, 10000), _random.Next(-10000, 10000));
 
-        var radius = maxDifficulty + area.GenerationMargin;
-        var cells = new Dictionary<Vector2i, CEScienceMapCell>();
-
-        for (var x = -radius; x <= radius; x++)
-        for (var y = -radius; y <= radius; y++)
+        foreach (var hex in CEHexMath.Spiral(Vector2i.Zero, radius))
         {
-            var coordinate = new Vector2i(x, y);
-            if (IsDeadZone(area, coordinate))
-                cells[coordinate] = new CEScienceDeadZoneCell();
+            if (IsDeadZone(generation, hex, noiseOffset))
+                tiles[hex] = new CEResearchMapTile { DeadZone = true };
         }
 
-        // The player always starts able to see this square (see CESharedScienceSystem's initial
-        // RevealArea call) - never let noise strand them in dead zones from the very first cell.
-        for (var x = -StartClearRadius; x <= StartClearRadius; x++)
-        for (var y = -StartClearRadius; y <= StartClearRadius; y++)
-            cells.Remove(new Vector2i(x, y));
+        var targets = PlaceTargets(discovery, tiles);
 
-        var placedAchievements = new List<Vector2i>();
-        foreach (var achievement in achievements)
+        EnsureConnected(tiles, targets, radius);
+
+        return tiles;
+    }
+
+    private static bool IsDeadZone(CEScienceMapGenerationParams generation, Vector2i hex, Vector2i noiseOffset)
+    {
+        foreach (var layer in generation.DeadZoneLayers)
         {
-            if (!TryPlaceAchievement(cells, achievement.Difficulty, out var coordinate))
+            var sample = layer.Noise.GetNoise(hex.X + noiseOffset.X, hex.Y + noiseOffset.Y);
+            if (sample > layer.Threshold)
+                return true;
+        }
+
+        return false;
+    }
+
+    private List<Vector2i> PlaceTargets(CEScienceDiscoveryPrototype discovery, Dictionary<Vector2i, CEResearchMapTile> tiles)
+    {
+        var radius = discovery.Generation.Radius;
+
+        var aspects = discovery.TargetAspects.ToList();
+        _random.Shuffle(aspects);
+
+        var placed = new List<Vector2i>();
+        foreach (var aspect in aspects)
+        {
+            var ring = CEHexMath.Ring(Vector2i.Zero, radius).ToList();
+            _random.Shuffle(ring);
+
+            var found = false;
+            for (var minDistance = discovery.Generation.MinTargetDistance; minDistance >= 0 && !found; minDistance--)
             {
-                Log.Warning($"CEScienceSystem: couldn't place achievement {achievement.ID} for area {area.ID} - no empty cell within its difficulty ring or the next one out.");
-                continue;
+                foreach (var candidate in ring)
+                {
+                    if (!placed.All(other => CEHexMath.CubeDistance(candidate, other) >= minDistance))
+                        continue;
+
+                    tiles[candidate] = new CEResearchMapTile { Aspect = aspect, Fixed = true };
+                    placed.Add(candidate);
+                    found = true;
+                    break;
+                }
             }
 
-            cells[coordinate] = new CEScienceAchievementCell(achievement.ID);
-            placedAchievements.Add(coordinate);
+            if (!found)
+                Log.Warning($"CEScienceSystem: couldn't place target aspect {aspect} for discovery {discovery.ID} - no open ring tile.");
         }
 
-        EnsureReachable(cells, radius, placedAchievements);
-
-        return cells;
+        return placed;
     }
 
-    /// <summary>
-    /// Flood-fills from the origin over every non-dead-zone cell within <paramref name="radius"/>.
-    /// Any achievement not caught by that flood fill gets a path carved to it (dead zones cleared
-    /// along a straight 8-directional line) from whichever reachable cell is closest.
-    /// </summary>
-    private static void EnsureReachable(Dictionary<Vector2i, CEScienceMapCell> cells, int radius, List<Vector2i> achievements)
+    // Guarantees every target is geometrically reachable from every other target through non-dead
+    // tiles. Any target the flood fill doesn't reach gets connected via the cheapest path found -
+    // one that touches as few dead-zone tiles as possible - rather than a blind straight line.
+    private static void EnsureConnected(Dictionary<Vector2i, CEResearchMapTile> tiles, List<Vector2i> targets, int radius)
     {
-        var reachable = FloodFillReachable(cells, radius);
+        if (targets.Count == 0)
+            return;
 
-        foreach (var achievement in achievements)
+        var reached = FloodFill(tiles, targets[0], radius);
+
+        foreach (var target in targets)
         {
-            if (reachable.Contains(achievement))
+            if (reached.Contains(target))
                 continue;
 
-            var nearest = FindNearestReachable(reachable, achievement);
-            CarvePath(cells, reachable, nearest, achievement);
+            foreach (var hex in FindCarvePath(tiles, reached, target, radius))
+            {
+                if (tiles.TryGetValue(hex, out var tile) && tile.DeadZone)
+                    tiles.Remove(hex);
+            }
+
+            reached = FloodFill(tiles, targets[0], radius);
         }
     }
 
-    private static HashSet<Vector2i> FloodFillReachable(Dictionary<Vector2i, CEScienceMapCell> cells, int radius)
+    // 0-1 BFS from every already-reached tile at once: stepping into an open tile costs 0,
+    // stepping into (and carving) a dead zone costs 1. Finds the path to the target that carves
+    // the fewest dead zones, instead of a straight line that might cut through many for nothing.
+    private static List<Vector2i> FindCarvePath(
+        Dictionary<Vector2i, CEResearchMapTile> tiles,
+        HashSet<Vector2i> reached,
+        Vector2i target,
+        int radius)
     {
-        var visited = new HashSet<Vector2i> { Vector2i.Zero };
-        var queue = new Queue<Vector2i>();
-        queue.Enqueue(Vector2i.Zero);
+        var cost = new Dictionary<Vector2i, int>();
+        var previous = new Dictionary<Vector2i, Vector2i>();
+        var deque = new LinkedList<Vector2i>();
 
-        while (queue.TryDequeue(out var current))
+        foreach (var start in reached)
         {
-            for (var dx = -1; dx <= 1; dx++)
-            for (var dy = -1; dy <= 1; dy++)
+            cost[start] = 0;
+            deque.AddLast(start);
+        }
+
+        while (deque.First is { } front)
+        {
+            var hex = front.Value;
+            deque.RemoveFirst();
+
+            if (hex == target)
+                break;
+
+            foreach (var neighbor in CEHexMath.Neighbors(hex))
             {
-                if (dx == 0 && dy == 0)
+                if (CEHexMath.CubeDistance(neighbor, Vector2i.Zero) > radius)
                     continue;
 
-                var neighbor = current + new Vector2i(dx, dy);
+                var stepCost = tiles.TryGetValue(neighbor, out var tile) && tile.DeadZone ? 1 : 0;
+                var newCost = cost[hex] + stepCost;
 
-                if (Math.Abs(neighbor.X) > radius || Math.Abs(neighbor.Y) > radius)
+                if (cost.TryGetValue(neighbor, out var existing) && existing <= newCost)
                     continue;
 
-                if (visited.Contains(neighbor))
+                cost[neighbor] = newCost;
+                previous[neighbor] = hex;
+
+                if (stepCost == 0)
+                    deque.AddFirst(neighbor);
+                else
+                    deque.AddLast(neighbor);
+            }
+        }
+
+        var path = new List<Vector2i>();
+        var current = target;
+        while (previous.TryGetValue(current, out var prior))
+        {
+            path.Add(current);
+            current = prior;
+        }
+
+        return path;
+    }
+
+    private static HashSet<Vector2i> FloodFill(Dictionary<Vector2i, CEResearchMapTile> tiles, Vector2i start, int radius)
+    {
+        var visited = new HashSet<Vector2i> { start };
+        var queue = new Queue<Vector2i>();
+        queue.Enqueue(start);
+
+        while (queue.TryDequeue(out var hex))
+        {
+            foreach (var neighbor in CEHexMath.Neighbors(hex))
+            {
+                if (visited.Contains(neighbor) || CEHexMath.CubeDistance(neighbor, Vector2i.Zero) > radius)
                     continue;
 
-                if (cells.TryGetValue(neighbor, out var cell) && cell is CEScienceDeadZoneCell)
+                if (tiles.TryGetValue(neighbor, out var tile) && tile.DeadZone)
                     continue;
 
                 visited.Add(neighbor);
@@ -117,109 +189,5 @@ public sealed partial class CEScienceSystem
         }
 
         return visited;
-    }
-
-    private static Vector2i FindNearestReachable(HashSet<Vector2i> reachable, Vector2i target)
-    {
-        var best = Vector2i.Zero;
-        var bestDistance = int.MaxValue;
-
-        foreach (var candidate in reachable)
-        {
-            var delta = candidate - target;
-            var distance = Math.Max(Math.Abs(delta.X), Math.Abs(delta.Y));
-
-            if (distance >= bestDistance)
-                continue;
-
-            bestDistance = distance;
-            best = candidate;
-        }
-
-        return best;
-    }
-
-    /// <summary>
-    /// Walks a straight 8-directional line from <paramref name="from"/> (already reachable) to
-    /// <paramref name="to"/>, clearing any dead zone along the way and marking every stepped-on
-    /// cell as reachable.
-    /// </summary>
-    private static void CarvePath(Dictionary<Vector2i, CEScienceMapCell> cells, HashSet<Vector2i> reachable, Vector2i from, Vector2i to)
-    {
-        var current = from;
-
-        while (current != to)
-        {
-            var delta = to - current;
-            var step = new Vector2i(Math.Sign(delta.X), Math.Sign(delta.Y));
-            current += step;
-
-            if (cells.TryGetValue(current, out var cell) && cell is CEScienceDeadZoneCell)
-                cells.Remove(current);
-
-            reachable.Add(current);
-        }
-    }
-
-    /// <summary>
-    /// A cell is a dead zone if any of the area's noise layers reads above that layer's threshold
-    /// at that coordinate.
-    /// </summary>
-    private static bool IsDeadZone(CEScienceAreaPrototype area, Vector2i coordinate)
-    {
-        foreach (var layer in area.DeadZoneLayers)
-        {
-            if (layer.Noise.GetNoise(coordinate.X, coordinate.Y) > layer.Threshold)
-                return true;
-        }
-
-        return false;
-    }
-
-    /// <summary>
-    /// Tries to find an empty coordinate on the square ring at <paramref name="difficulty"/> cells
-    /// (Chebyshev distance) from the origin. Falls back to the next ring out once if the first is
-    /// completely full.
-    /// </summary>
-    private bool TryPlaceAchievement(Dictionary<Vector2i, CEScienceMapCell> cells, int difficulty, out Vector2i coordinate)
-    {
-        foreach (var ringRadius in new[] { difficulty, difficulty + 1 })
-        {
-            var candidates = GetRing(ringRadius).Where(candidate => !cells.ContainsKey(candidate)).ToList();
-
-            if (candidates.Count == 0)
-                continue;
-
-            coordinate = _random.Pick(candidates);
-            return true;
-        }
-
-        coordinate = default;
-        return false;
-    }
-
-    /// <summary>
-    /// Every coordinate on the perimeter of the square with Chebyshev radius
-    /// <paramref name="radius"/> around the origin.
-    /// </summary>
-    private static IEnumerable<Vector2i> GetRing(int radius)
-    {
-        if (radius <= 0)
-        {
-            yield return Vector2i.Zero;
-            yield break;
-        }
-
-        for (var x = -radius; x <= radius; x++)
-        {
-            yield return new Vector2i(x, -radius);
-            yield return new Vector2i(x, radius);
-        }
-
-        for (var y = -radius + 1; y <= radius - 1; y++)
-        {
-            yield return new Vector2i(-radius, y);
-            yield return new Vector2i(radius, y);
-        }
     }
 }

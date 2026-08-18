@@ -263,6 +263,10 @@
         inverted: true
         species:
         - CECarrin
+      - !type:RequiredJob #guards have their hoverboards roundstart
+        inverted: true
+        jobs:
+        - CEGuard
     name: ce-ambition-hoverboard-name
     desc: ce-ambition-hoverboard-desc
     weight: 1
@@ -310,7 +314,7 @@
     name: ce-ambition-science-curiosity-name
     desc: ce-ambition-science-curiosity-desc
     parsings:
-      DISCOVERY: !type:RandomScienceAchievement
+      DISCOVERY: !type:RandomScienceDiscovery
 
 - type: entity
   parent: CEBaseAmbitionObjective
@@ -322,7 +326,7 @@
     parsings:
       REASON: !type:RandomDataset
         dataset: CEAmbitionReason
-      DISCOVERY: !type:RandomScienceAchievement
+      DISCOVERY: !type:RandomScienceDiscovery
 
 - type: entity
   parent: CEBaseAmbitionObjective
@@ -332,4 +336,4 @@
     name: ce-ambition-enlightener-name
     desc: ce-ambition-enlightener-desc
     parsings:
-      DISCOVERY: !type:RandomScienceAchievement
+      DISCOVERY: !type:RandomScienceDiscovery

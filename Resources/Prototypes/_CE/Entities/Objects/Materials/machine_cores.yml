@@ -42,7 +42,7 @@
   - type: MachineBoard
     prototype: CERecycler
   - type: StaticPrice
-    price: 100
+    price: 90
 
 - type: entity
   id: CEMachineCoreDrill
@@ -52,12 +52,13 @@
   - type: MachineBoard
     prototype: CEDrill
   - type: StaticPrice
-    price: 100
+    price: 90
 
 - type: entity
   id: CEMachineCoreDrillAdvanced
   parent: CEBaseMachineCore
   name: advanced drill machine core
+  categories: [ DoNotMap ]
   components:
   - type: MachineBoard
     prototype: CEDrillAdvanced
@@ -82,7 +83,7 @@
   - type: MachineBoard
     prototype: CEFunnel
   - type: StaticPrice
-    price: 40
+    price: 30
 
 - type: entity
   id: CEMachineCoreSalaryPlatform
@@ -132,7 +133,8 @@
   - type: MachineBoard
     prototype: CEMagicEssenceAttractor
   - type: StaticPrice
-    price: 150
+    price: 130
+
 
 - type: entity
   id: CEMachineCoreDistributionUnit

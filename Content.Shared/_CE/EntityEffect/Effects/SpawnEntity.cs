@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System.Linq;
+using System.Numerics;
 using Content.Shared.Directions;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
@@ -15,6 +16,15 @@ public sealed partial class SpawnEntity : CEEntityEffectBase<SpawnEntity>
 
     [DataField]
     public Vector2 Offset = new(0, 0);
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
+    {
+        if (Spawns.Count == 0)
+            return base.EntityEffectGuidebookText(prototype, entSys);
+
+        var names = Spawns.Select(s => prototype.TryIndex(s, out var proto) ? proto.Name : s.Id);
+        return Loc.GetString("ce-entity-effect-guidebook-spawn-entity", ("entities", string.Join(", ", names)));
+    }
 }
 
 public sealed partial class CESpawnEntityEffectSystem : CEEntityEffectSystem<SpawnEntity>

@@ -68,7 +68,7 @@ public abstract partial class SharedToolSystem
         var comp = ent.Comp1!;
         var tool = ent.Comp2!;
 
-        if (!_mapManager.TryFindGridAt(_transformSystem.ToMapCoordinates(clickLocation), out var gridUid, out var mapGrid))
+        if (!_maps.TryFindGridAt(_transformSystem.ToMapCoordinates(clickLocation), out var gridUid, out var mapGrid))
             return false;
 
         var tileRef = _maps.GetTileRef(gridUid, mapGrid, clickLocation);
@@ -81,7 +81,7 @@ public abstract partial class SharedToolSystem
             var toolNames = new List<string>();
             foreach (var toolQuality in tileDef.DeconstructTools)
             {
-                if (_protoMan.TryIndex<ToolQualityPrototype>(toolQuality, out var protoToolQuality))
+                if (ProtoMan.TryIndex<ToolQualityPrototype>(toolQuality, out var protoToolQuality))
                     toolNames.Add(Loc.GetString(protoToolQuality.ToolName));
             }
 

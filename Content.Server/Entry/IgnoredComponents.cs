@@ -8,6 +8,7 @@ namespace Content.Server.Entry
             "CEWaveShader",
             "CEPipeVisualizer",
             "CETimedDespawnFadeout",
+            "CEInfusionAltarDangerVisuals",
             //CrystallEdge end
             "ConstructionGhost",
             "IconSmooth",
@@ -26,7 +27,8 @@ namespace Content.Server.Entry
             "HolidayRsiSwap",
             "OptionsVisualizer",
             "AnomalyScannerScreen",
-            "MultipartMachineGhost"
+            "MultipartMachineGhost",
+            "DirectionalArrowIndicator"
         };
     }
 }

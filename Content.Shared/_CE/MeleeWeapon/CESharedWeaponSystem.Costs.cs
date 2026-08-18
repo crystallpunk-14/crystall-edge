@@ -25,7 +25,7 @@ public abstract partial class CESharedWeaponSystem
         if (!TryComp<StaminaComponent>(args.User, out var stamina))
             return;
 
-        if (stamina.Critical || stamina.StaminaDamage + cost >= stamina.CritThreshold)
+        if (stamina.Critical)
             args.Cancel();
     }
 

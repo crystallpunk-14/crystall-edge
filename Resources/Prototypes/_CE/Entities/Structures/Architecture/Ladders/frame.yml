@@ -1,0 +1,104 @@
+# Shared unfinished frame stage for the whole ladder/roof family - wooden, stone ladders and
+# red/green/blue tile roofs are all built from the same wooden scaffold, and only diverge based
+# on what covering material gets nailed onto it.
+
+- type: entity
+  id: CEZLevelLadderFrameBase
+  abstract: true
+  categories: [ ForkFiltered ]
+  parent: BaseStructure
+  name: ladder frame
+  description: An unfinished wooden support frame. It needs to be covered before it's safe to climb.
+  placement:
+      mode: SnapgridCenter
+      snap:
+      - Wall
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Ladders/frame.rsi
+    state: straight
+    drawdepth: Mobs
+  - type: PlacementReplacement
+    key: walls
+  - type: Transform
+    anchored: true
+  - type: Clickable
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      hard:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,0.6,0.5,0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        density: 1000
+        hard: true
+  - type: Damageable
+    damageModifierSet: CEWoodStructural
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 20
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEWoodenPlanks1:
+            min: 1
+            max: 2
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: CEZLevelLadderFrameBase
+  id: CEZLevelLadderFrame
+  name: ladder frame
+  components:
+  - type: Construction
+    graph: CEZLevelLadder
+    node: CEZLevelLadderFrame
+
+- type: entity
+  parent: CEZLevelLadderFrameBase
+  id: CEZLevelLadderFrameCorner
+  name: ladder frame
+  suffix: Corner
+  components:
+  - type: Sprite
+    state: corner
+  - type: Fixtures
+    fixtures:
+      hard:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "0.5,0.5,0.6,0.6"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        density: 1000
+        hard: true
+  - type: Construction
+    graph: CEZLevelLadder
+    node: CEZLevelLadderFrameCorner
+
+- type: entity
+  parent: CEZLevelLadderFrameCorner
+  id: CEZLevelLadderFrameCornerInner
+  name: ladder frame
+  suffix: Inner Corner
+  components:
+  - type: Sprite
+    state: internal_corner
+  - type: Construction
+    graph: CEZLevelLadder
+    node: CEZLevelLadderFrameCornerInner

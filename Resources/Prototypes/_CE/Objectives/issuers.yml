@@ -1,0 +1,7 @@
+- type: objectiveIssuer
+  id: ce-objective-issuer-thief
+  name: ce-objective-issuer-thief
+
+- type: objectiveIssuer
+  id: ce-objective-issuer-ambition
+  name: ce-objective-issuer-ambition

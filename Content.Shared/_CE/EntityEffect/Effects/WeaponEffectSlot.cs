@@ -1,5 +1,6 @@
 using Content.Shared._CE.Animation.Item.Components;
 using Content.Shared._CE.MeleeWeapon;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.EntityEffect.Effects;
 
@@ -18,6 +19,9 @@ public sealed partial class WeaponEffectSlot : CEEntityEffectBase<WeaponEffectSl
 
     [DataField]
     public float Power = 1f;
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
+        Loc.GetString("ce-entity-effect-guidebook-weapon-effect-slot");
 }
 
 public sealed partial class CEWeaponEffectSlotSystem : CEEntityEffectSystem<WeaponEffectSlot>

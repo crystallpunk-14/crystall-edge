@@ -14,7 +14,6 @@
   - CEClothingHeadFedoraRed
   - CEClothingHeadFedoraBrown
   - CEClothingHeadChristmasHat
-  - CEClothingHeadTriangularLeather
 
 - type: loadout
   id: CEClothingHeadKasaHat
@@ -60,11 +59,6 @@
   id: CEClothingHeadChristmasHat
   equipment:
     head: CEClothingHeadChristmasHat
-
-- type: loadout
-  id: CEClothingHeadTriangularLeather
-  equipment:
-    head: CEClothingHeadTriangularLeather
 
 # Goggles / Eyes
 

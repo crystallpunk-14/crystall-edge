@@ -217,10 +217,7 @@
     sprite: _CE/Mobs/Species/Carrin/parts.rsi
     state: full
   - type: Vocal
-    sounds:
-      Male: CEUnisexCarcat    #TODO: change to carrin sound
-      Female: CEUnisexCarcat
-      Unsexed: CEUnisexCarcat
+    emoteSounds: CEUnisexCarcat #TODO: change to carrin sound
   - type: Speech
     speechSounds: CECarcat #TODO: change to carrin sound
   - type: FootstepModifier

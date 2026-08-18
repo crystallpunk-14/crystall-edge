@@ -24,7 +24,7 @@ public sealed partial class StaminaComponent : Component
     /// How much stamina reduces per second.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField, AutoNetworkedField]
-    public float Decay = 3f;
+    public float Decay = 10f; //CrystallEdge 3 -> 10
 
     /// <summary>
     /// How much time after receiving damage until stamina starts decreasing.
@@ -76,7 +76,7 @@ public sealed partial class StaminaComponent : Component
     /// This float determines how fast stamina will regenerate after exiting the stamina crit.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public float AfterCritDecayMultiplier = 5f;
+    public float AfterCritDecayMultiplier = 1f; //CrystallEdge 3 -> 1
 
     /// <summary>
     /// This is how much stamina damage a mob takes when it forces itself to stand up before modifiers

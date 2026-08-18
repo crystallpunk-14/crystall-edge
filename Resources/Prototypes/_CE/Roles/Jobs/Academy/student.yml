@@ -8,12 +8,19 @@
   icon: CEJobIconAcademyStudent
   supervisors: ce-job-supervisors-academy-professor
   special:
-    - !type:CEResearchDataSpecial
-      radius: 1
+    - !type:CEResearchPointsSpecial
+      points:
+        Earth: 1
+        Fire: 1
+        Water: 1
+        Air: 1
+        Order: 1
+        Chaos: 1
 
 - type: startingGear
   id: CEAcademyStudentGear
   equipment:
+    belt: CEKeyRingAcademyStudent
     pocket1: CEWalletFilledAcademyStudent
 
 - type: entity
@@ -28,3 +35,44 @@
     - id: CECoinSilver1
     - id: CECoinCopper10
     - id: CECoinCopper10
+
+- type: entity
+  id: CEChestFilledAcademyStudent
+  parent: CEWoodenChest
+  suffix: Filled, Academy Student
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: CESyringe
+        - id: CEDropper
+        - id: CEVialTiny
+        - id: CEVialTiny
+        - id: CEGuidebookThaumaturgy
+        - id: CEThaumaturgicMagnifyingGlass
+
+- type: entity
+  id: CEBedsideTableFilledAcademyStudent
+  parent: CEBedsideTableWooden
+  suffix: Filled, Academy Student
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 2, 3
+        children:
+        - id: CEClothingHeadTriangularLeather
+        - id: CEClothingShirtAcademyRobe
+
+- type: entity
+  id: CEKeyRingAcademyStudent
+  parent: CEBaseKeyRing
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+    - id: CEKeyAcademyHall
+    - id: CEKeyAcademyTechnical
+    - id: CEKeyAcademyLab

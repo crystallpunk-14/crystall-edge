@@ -21,7 +21,6 @@ namespace Content.Shared._CE.MeleeWeapon;
 public abstract partial class CESharedWeaponSystem : EntitySystem
 {
     [Dependency] protected IGameTiming Timing = default!;
-    [Dependency] protected IMapManager MapManager = default!;
     [Dependency] protected ActionBlockerSystem Blocker = default!;
     [Dependency] private SharedHandsSystem _hands = default!;
     [Dependency] protected SharedCombatModeSystem CombatMode = default!;

@@ -1,8 +1,8 @@
-using Content.Shared._CE.Vehicle;
-using Content.Shared._CE.Vehicle.Components;
 using Content.Shared._CE.ZLevels.Flight;
 using Content.Shared._CE.ZLevels.Flight.Components;
 using Content.Shared.Actions;
+using Content.Shared.Vehicle;
+using Content.Shared.Vehicle.Components;
 
 namespace Content.Shared._CE.VehicleFlying;
 
@@ -10,14 +10,14 @@ public sealed partial class CEVehicleFlightSystem : EntitySystem
 {
     [Dependency] private CESharedZFlightSystem _flight = default!;
     [Dependency] private SharedActionsSystem _actions = default!;
-    [Dependency] private CEVehicleSystem _vehicle = default!;
+    [Dependency] private VehicleSystem _vehicle = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CEVehicleFlyerComponent, CEVehicleOperatorSetEvent>(OnOperatorSet);
-        SubscribeLocalEvent<CEVehicleFlyerComponent, CEVehicleCanRunEvent>(OnCheckCanRun);
+        SubscribeLocalEvent<CEVehicleFlyerComponent, VehicleOperatorSetEvent>(OnOperatorSet);
+        SubscribeLocalEvent<CEVehicleFlyerComponent, VehicleCanRunEvent>(OnCheckCanRun);
         SubscribeLocalEvent<CEVehicleFlyerComponent, CEFlightStartedEvent>(OnFlightStart);
         SubscribeLocalEvent<CEVehicleFlyerComponent, CEFlightStoppedEvent>(OnFlightStop);
     }
@@ -32,7 +32,7 @@ public sealed partial class CEVehicleFlightSystem : EntitySystem
         _vehicle.RefreshCanRun(ent.Owner);
     }
 
-    private void OnCheckCanRun(Entity<CEVehicleFlyerComponent> ent, ref CEVehicleCanRunEvent args)
+    private void OnCheckCanRun(Entity<CEVehicleFlyerComponent> ent, ref VehicleCanRunEvent args)
     {
         if (!args.CanRun)
             return;
@@ -41,10 +41,10 @@ public sealed partial class CEVehicleFlightSystem : EntitySystem
             return;
 
         if (!flyerComp.Active)
-            args.CanRun = false;
+            args = args with { CanRun = false };
     }
 
-    private void OnOperatorSet(Entity<CEVehicleFlyerComponent> ent, ref CEVehicleOperatorSetEvent args)
+    private void OnOperatorSet(Entity<CEVehicleFlyerComponent> ent, ref VehicleOperatorSetEvent args)
     {
         if (!TryComp<CEControllableFlightComponent>(ent.Owner, out var flyerComp))
             return;

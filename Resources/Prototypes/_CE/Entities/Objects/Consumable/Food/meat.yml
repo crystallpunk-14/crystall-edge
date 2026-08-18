@@ -57,16 +57,17 @@
 # Lamb Meat
 - type: entity
   id: CEFoodMeatLamb
-  parent: CEFoodMeatBase
+  parent: [CEFoodMeatBase, BaseSlicingRefinableFood]
   name: raw lamb
   description: Succulent lamb steak
   components:
   - type: Sprite
     sprite: _CE/Objects/Consumable/Food/meat.rsi
     state: sheepmeat
-  - type: SliceableFood
-    count: 4
-    slice: CEFoodMeatLambSlice
+  - type: ToolRefinable
+    refineResult:
+    - id: CEFoodMeatLambSlice
+      amount: 4
   - type: Solution
     id: food
     solution:
@@ -95,9 +96,10 @@
   components:
   - type: Sprite
     state: sheepmeat_cooked
-  - type: SliceableFood
-    count: 4
-    slice: CEFoodMeatLambCookedSlice
+  - type: ToolRefinable
+    refineResult:
+    - id: CEFoodMeatLambCookedSlice
+      amount: 4
   - type: Solution
     id: food
     solution:
@@ -536,7 +538,7 @@
 # Pig and Boar Meat
 - type: entity
   id: CEFoodMeatPig
-  parent: CEFoodMeatBase
+  parent: [CEFoodMeatBase, BaseSlicingRefinableFood]
   name: raw pig meat
   description: I've eaten pork, I eat pork, and it looks like I'll be eating pork forever and ever.
   components:
@@ -547,9 +549,10 @@
         map: [ "random" ]
   - type: Item
     size: Small
-  - type: SliceableFood
-    count: 4
-    slice: CEFoodMeatPigSlice
+  - type: ToolRefinable
+    refineResult:
+    - id: CEFoodMeatPigSlice
+      amount: 4
   - type: Solution
     id: food
     solution:
@@ -582,9 +585,10 @@
     layers:
       - state: pig_meat1_cooked
         map: [ "random" ]
-  - type: SliceableFood
-    count: 4
-    slice: CEFoodMeatPigCookedSlice
+  - type: ToolRefinable
+    refineResult:
+    - id: CEFoodMeatPigCookedSlice
+      amount: 4
   - type: Solution
     id: food
     solution:
@@ -664,7 +668,7 @@
 
 - type: entity
   id: CEFoodMeatBoar
-  parent: CEFoodMeatBase
+  parent: [CEFoodMeatBase, BaseSlicingRefinableFood]
   name: raw boar meat
   description: It's like pig meat, except more odorous.
   components:
@@ -675,9 +679,10 @@
         map: [ "random" ]
   - type: Item
     size: Small
-  - type: SliceableFood
-    count: 4
-    slice: CEFoodMeatPigSlice
+  - type: ToolRefinable
+    refineResult:
+    - id: CEFoodMeatPigSlice
+      amount: 4
   - type: Solution
     id: food
     solution:
@@ -711,9 +716,10 @@
     layers:
       - state: pig_meat2_cooked
         map: [ "random" ]
-  - type: SliceableFood
-    count: 4
-    slice: CEFoodMeatPigCookedSlice
+  - type: ToolRefinable
+    refineResult:
+    - id: CEFoodMeatPigCookedSlice
+      amount: 4
   - type: Solution
     id: food
     solution:
@@ -796,7 +802,7 @@
 # Monster Meat
 - type: entity
   id: CEFoodMeatMonster
-  parent: CEFoodMeatBase
+  parent: [CEFoodMeatBase, BaseSlicingRefinableFood]
   name: raw monster meat
   description: The colour is quite suspicious, not everyone would dare to try it out, perhaps give it to a goblin?
   components:
@@ -807,9 +813,10 @@
         map: [ "random" ]
   - type: Item
     size: Small
-  - type: SliceableFood
-    count: 4
-    slice: CEFoodMeatMonsterSlice
+  - type: ToolRefinable
+    refineResult:
+    - id: CEFoodMeatMonsterSlice
+      amount: 4
   - type: Solution
     id: food
     solution:
@@ -849,9 +856,10 @@
       - state: mole_meat1 # We need fried sprites
         map: [ "random" ]
         color: "#c98367"
-  - type: SliceableFood
-    count: 4
-    slice: CEFoodMeatMonsterCookedSlice
+  - type: ToolRefinable
+    refineResult:
+    - id: CEFoodMeatMonsterCookedSlice
+      amount: 4
   - type: Solution
     id: food
     solution:
@@ -1059,7 +1067,7 @@
 
 - type: entity
   id: CEFoodMeatFlemTorso
-  parent: CEFoodMeatBase
+  parent: [CEFoodMeatBase, BaseSlicingRefinableFood]
   name: raw flem torso
   description: Seems to be hollow.
   components:
@@ -1069,9 +1077,10 @@
   - type: Sprite
     sprite: _CE/Objects/Consumable/Food/meat.rsi
     state: flem_torso
-  - type: SliceableFood
-    count: 3
-    slice: CEFoodMeatFlemTorsoCut
+  - type: ToolRefinable
+    refineResult:
+    - id: CEFoodMeatFlemTorsoCut
+      amount: 3
   - type: Item
     size: Normal
     shape:
@@ -1105,9 +1114,10 @@
   components:
   - type: Sprite
     state: flem_torso_cooked
-  - type: SliceableFood
-    count: 3
-    slice: CEFoodMeatFlemTorsoCookedCut
+  - type: ToolRefinable
+    refineResult:
+    - id: CEFoodMeatFlemTorsoCookedCut
+      amount: 3
   - type: Solution
     id: food
     solution:

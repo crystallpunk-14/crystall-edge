@@ -171,14 +171,14 @@
       - state: workman
 
 - type: entity
-  id: CESpawnPointAcademyDirector
+  id: CESpawnPointAcademyRector
   parent: CESpawnPointJobBase
-  name: academy director
+  name: academy rector
   categories:
   - Spawner
   components:
   - type: SpawnPoint
-    job_id: CEAcademyDirector
+    job_id: CEAcademyRector
   - type: Sprite
     layers:
       - state: green

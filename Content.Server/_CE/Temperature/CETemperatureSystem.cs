@@ -78,6 +78,9 @@ public sealed partial class CETemperatureSystem : EntitySystem
             {
                 foreach (var (_, soln) in _solutionContainer.EnumerateSolutions(placed))
                 {
+                    if (!soln.Comp.Solution.CanReact)
+                        continue;
+
                     _solutionContainer.AddThermalEnergy(soln, heater.Power);
                 }
             }

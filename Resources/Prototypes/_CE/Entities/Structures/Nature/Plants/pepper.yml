@@ -5,8 +5,8 @@
   - CEPlantBaseSolarEnergy
   - CEPlantBaseSingleHarvest
   - CEPlantBaseFloralDelicateType
-  - CEPlantBaseGrowing1Day
-  - CEPlantBaseMetabolizer1Day
+  - CEPlantBaseGrowingMedium
+  - CEPlantBaseMetabolizerMedium
   - CEPlantBaseMetabolizerWater
   name: pepper
   description: Russian roulette. Are you hot, or are you sweet peppers?

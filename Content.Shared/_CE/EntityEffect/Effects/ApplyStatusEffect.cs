@@ -14,6 +14,12 @@ public sealed partial class ApplyStatusEffect : CEEntityEffectBase<ApplyStatusEf
 
     [DataField(required: true)]
     public TimeSpan Duration = TimeSpan.FromSeconds(1f);
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
+    {
+        var statusName = prototype.TryIndex(StatusEffect, out var statusProto) ? statusProto.Name : StatusEffect.Id;
+        return Loc.GetString("ce-entity-effect-guidebook-apply-status", ("status", statusName), ("duration", Duration.TotalSeconds));
+    }
 }
 
 public sealed partial class CEApplyStatusEffectEffectSystem : CEEntityEffectSystem<ApplyStatusEffect>

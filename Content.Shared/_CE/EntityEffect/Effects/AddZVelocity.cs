@@ -1,4 +1,5 @@
 ﻿using Content.Shared._CE.ZLevels.Core.EntitySystems;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.EntityEffect.Effects;
 
@@ -9,6 +10,9 @@ public sealed partial class AddZVelocity : CEEntityEffectBase<AddZVelocity>
 
     [DataField]
     public bool RequiresGround = false;
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
+        Loc.GetString("ce-entity-effect-guidebook-add-z-velocity", ("speed", Speed));
 }
 
 public sealed partial class CEAddZVelocitySystem : CEEntityEffectSystem<AddZVelocity>

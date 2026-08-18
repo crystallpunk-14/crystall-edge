@@ -5,9 +5,9 @@
   description: A stylish fedora worn by city guards.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Head/Fedoras/guard.rsi
+    sprite: _CE/Clothing/Head/Guard/fedora.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Head/Fedoras/guard.rsi
+    sprite: _CE/Clothing/Head/Guard/fedora.rsi
 
 - type: entity
   parent: CEClothingHeadBase
@@ -16,9 +16,9 @@
   description: A stylish fedora worn by the tavernmaster.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Head/Fedoras/guildmaster.rsi
+    sprite: _CE/Clothing/Head/Tavern/guildmaster.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Head/Fedoras/guildmaster.rsi
+    sprite: _CE/Clothing/Head/Tavern/guildmaster.rsi
 
 - type: entity
   parent: CEClothingHeadBase
@@ -27,9 +27,9 @@
   description: A sleek black fedora favored by skilled hunters.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Head/Fedoras/black.rsi
+    sprite: _CE/Clothing/Head/Townfolk/Fedoras/black.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Head/Fedoras/black.rsi
+    sprite: _CE/Clothing/Head/Townfolk/Fedoras/black.rsi
 
 - type: entity
   parent: CEClothingHeadBase
@@ -38,9 +38,9 @@
   description: A distinctive blue fedora worn by hunters.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Head/Fedoras/blue.rsi
+    sprite: _CE/Clothing/Head/Townfolk/Fedoras/blue.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Head/Fedoras/blue.rsi
+    sprite: _CE/Clothing/Head/Townfolk/Fedoras/blue.rsi
 
 - type: entity
   parent: CEClothingHeadBase
@@ -49,9 +49,9 @@
   description: A forest green fedora perfect for hunters.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Head/Fedoras/green.rsi
+    sprite: _CE/Clothing/Head/Townfolk/Fedoras/green.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Head/Fedoras/green.rsi
+    sprite: _CE/Clothing/Head/Townfolk/Fedoras/green.rsi
 
 - type: entity
   parent: CEClothingHeadBase
@@ -60,9 +60,9 @@
   description: A bold red fedora worn by veteran hunters.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Head/Fedoras/red.rsi
+    sprite: _CE/Clothing/Head/Townfolk/Fedoras/red.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Head/Fedoras/red.rsi
+    sprite: _CE/Clothing/Head/Townfolk/Fedoras/red.rsi
 
 - type: entity
   parent: CEClothingHeadBase
@@ -71,6 +71,6 @@
   description: A bold brown fedora worn by veteran hunters.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Head/Fedoras/brown.rsi
+    sprite: _CE/Clothing/Head/Townfolk/Fedoras/brown.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Head/Fedoras/brown.rsi
+    sprite: _CE/Clothing/Head/Townfolk/Fedoras/brown.rsi

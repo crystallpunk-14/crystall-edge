@@ -27,13 +27,13 @@
     weight: 5
     duration: 1
     minimumPlayers: 5
-  - type: CEEntityReplacementRule
+  - type: CEPipeBreakageRule
     replacementMap:
       CEPipeBrassMedium: CEPipeBrassMediumBroken
       CEPipeBrassBig: CEPipeBrassBigBroken
-    range:
-      min: 3
-      max: 10
-    replaceVfx: CEOverchargeBrightVFX
-    replaceSound:
+    centerPrototype: CEPipeBrassBig
+    radius: 5
+    breakChance: 0.8
+    centerVfx: CEShockWaveStrongVFX
+    breakSound:
       collection: MetalBreak

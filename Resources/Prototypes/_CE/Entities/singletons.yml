@@ -6,7 +6,7 @@
   - type: CEPvsOverride
 
 - type: entity
-  id: CEScience
+  id: CEInfusionAltarSingleton
   categories: [ HideSpawnMenu ]
   components:
-  - type: CEScience
+  - type: CEInfusionAltarSingleton

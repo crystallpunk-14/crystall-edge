@@ -44,9 +44,6 @@ github = "https://github.com/crystallpunk-14/crystall-edge"
 [procgen]
 preload = false
 
-[gateway]
-generator_enabled = false
-
 [shuttle]
 arrivals = false
 arrivals_planet = false

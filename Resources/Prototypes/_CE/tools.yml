@@ -18,3 +18,10 @@
   toolName: ce-tool-quality-hammering-tool-name
   spawn: CEBaseWeaponHammer
   icon: { sprite: _CE/Objects/Tools/Weapons/Melee/Hammer/iron.rsi, state: icon}
+
+- type: tool
+  id: CEMatterManipulation
+  name: ce-tool-quality-matter-manipulation-name
+  toolName: ce-tool-quality-matter-manipulation-tool-name
+  spawn: CEThirdArmModuleManipulation
+  icon: { sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi, state: icon}

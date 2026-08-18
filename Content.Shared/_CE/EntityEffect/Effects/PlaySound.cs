@@ -1,5 +1,6 @@
 ﻿using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.EntityEffect.Effects;
 
@@ -10,8 +11,14 @@ public sealed partial class PlaySound : CEEntityEffectBase<PlaySound>
         EffectTarget = CEEffectTarget.User;
     }
 
+    [DataField]
+    public bool Positional;
+
     [DataField(required: true)]
     public SoundSpecifier Sound = default!;
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
+        Loc.GetString("ce-entity-effect-guidebook-play-sound");
 }
 
 public sealed partial class CEPlaySoundEffectSystem : CEEntityEffectSystem<PlaySound>
@@ -23,7 +30,19 @@ public sealed partial class CEPlaySoundEffectSystem : CEEntityEffectSystem<PlayS
         if (ResolveEffectEntity(args.Args, args.Effect.EffectTarget) is not { } entity)
             return;
 
-        _audio.PlayPredicted(args.Effect.Sound, entity, args.Args.Source,
-            args.Effect.Sound.Params.WithVariation(0.15f));
+        if (args.Effect.Positional)
+        {
+            _audio.PlayPredicted(args.Effect.Sound,
+                Transform(entity).Coordinates,
+                args.Args.Source,
+                args.Effect.Sound.Params.WithVariation(0.15f));
+        }
+        else
+        {
+            _audio.PlayPredicted(args.Effect.Sound,
+                entity,
+                args.Args.Source,
+                args.Effect.Sound.Params.WithVariation(0.15f));
+        }
     }
 }

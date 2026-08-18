@@ -38,11 +38,10 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: Battery
-    maxCharge: 25
-    startingCharge: 25
+    maxCharge: 40
+    startingCharge: 40
   - type: PowerCell
   - type: CEIrradiateOnDestroy
-    irradiateCoefficient: 0.5
   - type: StaticPrice
     price: 0
   - type: CEEnergyOverchargeDamage
@@ -75,8 +74,8 @@
       shader: unshaded
       map: ["random"]
   - type: Battery
-    maxCharge: 30
-    startingCharge: 30
+    maxCharge: 50
+    startingCharge: 50
   - type: PowerCell
   - type: PhysicalComposition
     materialComposition:
@@ -97,7 +96,6 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: CEIrradiateOnDestroy
-    irradiateCoefficient: 0.5
   - type: CEMagicEssenceStructure
     essences:
       Energia: { min: 1, max: 4 }

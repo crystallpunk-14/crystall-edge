@@ -2,6 +2,7 @@ using Content.Shared._CE.Animation.Item.Components;
 using Content.Shared._CE.MeleeWeapon;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.EntityEffect.Effects;
 
@@ -16,6 +17,9 @@ public sealed partial class OffHandWeaponEffectSlot : CEEntityEffectBase<OffHand
 
     [DataField]
     public float Power = 1f;
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
+        Loc.GetString("ce-entity-effect-guidebook-weapon-effect-slot");
 }
 
 public sealed partial class CEOffHandWeaponEffectSlotSystem : CEEntityEffectSystem<OffHandWeaponEffectSlot>
