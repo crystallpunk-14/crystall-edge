@@ -5,6 +5,8 @@
   duration: 0.4
   events:
     0:
+    - !type:ModifyStealthVisibility
+      effectTarget: User
     - !type:Dash
       distance: 0.2
     - !type:PlaySound
@@ -59,6 +61,8 @@
   duration: 0.4
   events:
     0:
+    - !type:ModifyStealthVisibility
+      effectTarget: User
     - !type:Dash
       distance: 0.2
     - !type:PlaySound
@@ -113,6 +117,8 @@
   duration: 0.5
   events:
     0:
+    - !type:ModifyStealthVisibility
+      effectTarget: User
     - !type:PlaySound
       sound:
         path: /Audio/_CE/Effects/Weapon/slash_sword1.ogg
@@ -166,6 +172,8 @@
   duration: 0.5
   events:
     0:
+    - !type:ModifyStealthVisibility
+      effectTarget: User
     - !type:PlaySound
       sound:
         path: /Audio/_CE/Effects/Weapon/slash_sword1.ogg
@@ -219,6 +227,8 @@
   duration: 0.7
   events:
     0:
+    - !type:ModifyStealthVisibility
+      effectTarget: User
     - !type:PlaySound
       sound:
         path: /Audio/_CE/Effects/Weapon/slash_sword1.ogg
@@ -317,6 +327,8 @@
   duration: 0.7
   events:
     0:
+    - !type:ModifyStealthVisibility
+      effectTarget: User
     - !type:Dash
       distance: 0.2
     - !type:PlaySound
@@ -416,6 +428,8 @@
   duration: 0.7
   events:
     0:
+    - !type:ModifyStealthVisibility
+      effectTarget: User
     - !type:Dash
       distance: 0.2
     - !type:PlaySound
