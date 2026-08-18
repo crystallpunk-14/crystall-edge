@@ -246,7 +246,7 @@
     - !type:SpawnEntity
       effectTarget: User
       spawns:
-      - CEDustTileEffect
+      - CELurkerShadowStepEffect
     0.95:
     - !type:Teleport
       effectTarget: User
@@ -254,6 +254,22 @@
     - !type:ModifyStealthVisibility
       effectTarget: User
       amount: -5 #Give full invisibility so people dont see where he go
+
+- type: entity
+  id: CELurkerShadowStepEffect
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/lurker_shadow_step.rsi
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - state: effect
+  - type: TimedDespawn
+    lifetime: 2
+  - type: Tag
+    tags:
+      - HideContextMenu
 
 #MARK: Fear action
 
@@ -290,11 +306,22 @@
     - !type:ModifyStealthVisibility
       effectTarget: User
       amount: 5
-    - !type:SpawnEntity
-      effectTarget: User
-      spawns:
-      - CELurkerRoarSound
+    - !type:PlayFarSound
+      sound:
+        collection: CELurkerRoar
+        params:
+          variation: 0.2
+      minRange: 15
+      maxRange: 60
     0.3:
+    - !type:PlaySound
+      positional: true
+      sound:
+        path: /Audio/Effects/Screech/changeling_screech_weak.ogg
+        params:
+          variation: 0.2
+          maxDistance: 20
+          volume: 50
     - !type:Jitter
       effectTarget: Target
       duration: 15

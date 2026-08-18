@@ -5,6 +5,7 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Flash;
 using Content.Shared.Gravity;
+using Content.Shared.Interaction.Events;
 using Content.Shared.Mobs.Events;
 using Content.Shared.Mobs;
 using Content.Shared.Movement.Events;
@@ -13,6 +14,8 @@ using Content.Shared.Rejuvenate;
 using Content.Shared.Speech;
 using Content.Shared.StatusEffectNew.Components;
 using Content.Shared.Stunnable;
+using Content.Shared.Throwing;
+using Content.Shared.Weapons.Ranged.Events;
 using Robust.Shared.Player;
 
 namespace Content.Shared.StatusEffectNew;
@@ -25,6 +28,9 @@ public sealed partial class StatusEffectsSystem
         SubscribeLocalEvent<StatusEffectContainerComponent, CECheckGravityEvent>(RelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, CEGetZVelocityEvent>(RefRelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, IsWeightlessEvent>(RefRelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, AttackAttemptEvent>(RelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, ShotAttemptedEvent>(RefRelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, BeforeThrowEvent>(RefRelayStatusEffectEvent);
         //CrystallEdge zone end
 
         SubscribeLocalEvent<StatusEffectContainerComponent, LocalPlayerAttachedEvent>(RelayStatusEffectEvent);

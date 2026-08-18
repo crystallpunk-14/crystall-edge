@@ -15,6 +15,9 @@
     },
     {
       "name": "step"
+    },
+    {
+      "name": "jump"
     }
   ]
 }
