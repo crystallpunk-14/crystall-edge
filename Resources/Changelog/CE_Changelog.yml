@@ -707,3 +707,24 @@
   id: 1066
   time: '2026-08-15T13:23:55.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/407
+- author: TheShuEd
+  changes:
+  - message: "The \u201CStatic Inventory Position\u201D option has been removed\u2014\
+      the inventory will no longer overlap the action bar"
+    type: Remove
+  - message: Fixed a bug where the action bar overlapped the stamina bar
+    type: Fix
+  id: 1067
+  time: '2026-08-18T16:46:40.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/417
+- author: TheShuEd
+  changes:
+  - message: Night vision now provides a higher minimum illumination level, allowing
+      you to see in the dark without having to attach a light source that is invisible
+      to others.
+    type: Tweak
+  - message: Added Lurker midround ghostrole (only adminabuse rn)
+    type: Add
+  id: 1068
+  time: '2026-08-18T12:24:45.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/418
