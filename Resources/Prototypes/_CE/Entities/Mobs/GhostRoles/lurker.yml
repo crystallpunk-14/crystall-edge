@@ -289,6 +289,8 @@
       state: fear
   - type: TargetAction
     range: 5
+    checkCanAccess: false
+  - type: CEActionRequireLineOfSight
   - type: EntityTargetAction
     canTargetSelf: false
     whitelist:
@@ -299,10 +301,14 @@
 
 - type: entityEffectAnimation
   id: AnimationLurkerFear
-  movementSpeed: 1
-  duration: 0.6
+  movementSpeed: 0.25
+  duration: 1
   events:
     0:
+    - !type:SpawnEntity
+      effectTarget: User
+      spawns:
+      - CELurkerFearScreamEffect
     - !type:ModifyStealthVisibility
       effectTarget: User
       amount: 5
@@ -313,7 +319,6 @@
           variation: 0.2
       minRange: 15
       maxRange: 60
-    0.3:
     - !type:PlaySound
       positional: true
       sound:
@@ -343,3 +348,27 @@
     sprintSpeedModifier: 0.2
   - type: CEPacifismStatusEffect
 
+- type: entity
+  id: CELurkerFearScreamEffect
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/lurker_fear_scream.rsi
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - state: effect
+      unshaded: true
+  - type: TimedDespawn
+    lifetime: 2
+  - type: Tag
+    tags:
+      - HideContextMenu
+  - type: PointLight
+    color: "#697695"
+    enabled: true
+    radius: 8
+    energy: 8
+    netsync: false
+  - type: LightFade
+    duration: 1.5
