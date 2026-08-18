@@ -1,6 +1,7 @@
 using Content.Shared._CE.Animation.Core.Prototypes;
 using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.MeleeWeapon;
+using Content.Shared.Stealth;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -65,6 +66,13 @@ public sealed partial class CEWeaponComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public float Range = 1f;
+
+    /// <summary>
+    /// Visibility revealed (see <see cref="SharedStealthSystem.ModifyVisibility"/>) on the attacker
+    /// whenever a swing with this weapon starts. No-op for entities without a StealthComponent.
+    /// </summary>
+    [DataField]
+    public float StealthRevealOnAttack = 0.5f;
 }
 
 [DataDefinition, Serializable]

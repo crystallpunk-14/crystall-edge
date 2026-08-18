@@ -278,7 +278,12 @@
   - type: CEWeaponStaminaCost
     costs:
       Primary: 5
-  - type: CENightVision #Night vision
+  - type: NightVision #Night vision
+    enabled: false
+    prioritized: false
+    relayOverlay: false
+    action: ActionToggleNightVision
+    lightingColor: '#FFFFFF15'
   - type: FootstepModifier
     footstepSoundCollection: null # Silent footstep
   - type: CESoftPaws #Soft paws. Awwww
