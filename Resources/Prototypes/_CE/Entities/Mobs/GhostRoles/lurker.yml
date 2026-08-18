@@ -30,10 +30,6 @@
   - type: Grammar
     attributes:
       gender: epicene
-  - type: Tag
-    tags:
-      - FootstepSound
-      - HideContextMenu
   - type: AmbientSound
     range: 5
     sound:
@@ -54,15 +50,15 @@
     thresholds:
       0: Alive
       100: Dead
-  - type: PassiveDamage
-    allowedStates:
-    - Alive
-    damage:
-      types:
-        Blunt: -0.05
-        Piercing: -0.05
-        Slash: -0.05
-        Heat: -0.05
+  #- type: PassiveDamage #Temporary disabled
+  #  allowedStates:
+  #  - Alive
+  #  damage:
+  #    types:
+  #      Blunt: -0.05
+  #      Piercing: -0.05
+  #      Slash: -0.05
+  #      Heat: -0.05
   - type: SlowOnDamage
     speedModifierThresholds:
       50: 0.6
@@ -103,8 +99,8 @@
     enabledOnDeath: false
     maxVisibility: 1.2
   - type: StealthOnMove
-    passiveVisibilityRate: -0.55
-    movementVisibilityRate: 0.55
+    passiveVisibilityRate: -0.15
+    movementVisibilityRate: 0.15
   - type: ConditionalSpawner
     prototypes:
     - CELurkerRoarSound
@@ -114,6 +110,7 @@
     actions:
     - CEActionLurkerJump
     - CEActionLurkerShadowStep
+    - CEActionLurkerFear
 
 #MARK: Spawners
 - type: entity
@@ -181,8 +178,8 @@
   - type: Action
     useDelay: 3
     icon:
-      sprite: _CE/Actions/jump.rsi
-      state: icon
+      sprite: _CE/Actions/lurker.rsi
+      state: jump
   - type: InstantAction
     event: !type:CEInstantActionAnimationEvent
       animation: AnimationJump
@@ -206,7 +203,7 @@
     0.3:
     - !type:ModifyStealthVisibility
       effectTarget: User
-      amount: 5
+      amount: 2
     - !type:AddZVelocity
       effectTarget: User
       speed: 5.5
@@ -216,7 +213,7 @@
       spawns:
       - CEDustTileEffect
 
-#MARK: Teleport
+#MARK: Step action
 
 - type: entity
   id: CEActionLurkerShadowStep
@@ -224,13 +221,16 @@
   name: Shadow Step
   description: A step through a tear in reality to a nearby spot you can see.
   components:
+  - type: CEVisualizeRadiusTargetAction
+  - type: CEVisualizeWideLineAction
+    width: 0.5
   - type: Action
     useDelay: 30
     icon:
       sprite: _CE/Actions/lurker.rsi
       state: step
   - type: TargetAction
-    range: 10
+    range: 3
     checkCanAccess: false
   - type: CEActionRequireLineOfSight
   - type: WorldTargetAction
@@ -253,4 +253,66 @@
       teleportTarget: Target
     - !type:ModifyStealthVisibility
       effectTarget: User
-      amount: -1 #Give full invisibility so people dont see where he go
+      amount: -5 #Give full invisibility so people dont see where he go
+
+#MARK: Fear action
+
+- type: entity
+  id: CEActionLurkerFear
+  parent: CEActionSpellBase
+  name: Primal Terror
+  description: You plunge the target into primal terror, crippling their ability to fight back.
+  components:
+  - type: CEVisualizeRadiusTargetAction
+  - type: CEVisualizeAoEZoneAction
+    radius: 0.5
+  - type: Action
+    useDelay: 30
+    icon:
+      sprite: _CE/Actions/lurker.rsi
+      state: fear
+  - type: TargetAction
+    range: 5
+  - type: EntityTargetAction
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:CEEntityTargetActionAnimationEvent
+      animation: AnimationLurkerFear
+
+- type: entityEffectAnimation
+  id: AnimationLurkerFear
+  movementSpeed: 1
+  duration: 0.6
+  events:
+    0:
+    - !type:ModifyStealthVisibility
+      effectTarget: User
+      amount: 5
+    - !type:SpawnEntity
+      effectTarget: User
+      spawns:
+      - CELurkerRoarSound
+    0.3:
+    - !type:Jitter
+      effectTarget: Target
+      duration: 15
+      amplitude: 10
+      frequency: 6
+    - !type:ApplyStatusEffect
+      effectTarget: Target
+      statusEffect: CEStatusEffectLurkerFear
+      duration: 15
+
+- type: entity
+  id: CEStatusEffectLurkerFear
+  parent: StatusEffectSlowdown
+  name: primal terror
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: MovementModStatusEffect
+    walkSpeedModifier: 0.2
+    sprintSpeedModifier: 0.2
+  - type: CEPacifismStatusEffect
+

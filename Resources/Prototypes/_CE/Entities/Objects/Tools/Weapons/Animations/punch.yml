@@ -4,8 +4,6 @@
   duration: 0.4
   events:
     0:
-    - !type:ModifyStealthVisibility
-      effectTarget: User
     - !type:PlaySound
       sound:
         path: /Audio/_CE/Effects/Weapon/slash_wooden2.ogg
@@ -53,8 +51,6 @@
   duration: 0.4
   events:
     0:
-    - !type:ModifyStealthVisibility
-      effectTarget: User
     - !type:PlaySound
       sound:
         path: /Audio/_CE/Effects/Weapon/slash_wooden4.ogg

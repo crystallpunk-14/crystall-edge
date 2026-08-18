@@ -5,8 +5,6 @@
   duration: 0.35
   events:
     0:
-    - !type:ModifyStealthVisibility
-      effectTarget: User
     - !type:PlaySound
       sound:
         path: /Audio/_CE/Effects/Weapon/slash.ogg
@@ -49,8 +47,6 @@
   duration: 0.3
   events:
     0:
-    - !type:ModifyStealthVisibility
-      effectTarget: User
     - !type:PlaySound
       sound:
         path: /Audio/_CE/Effects/Weapon/slash.ogg
@@ -93,8 +89,6 @@
   duration: 0.3
   events:
     0:
-    - !type:ModifyStealthVisibility
-      effectTarget: User
     - !type:PlaySound
       sound:
         path: /Audio/_CE/Effects/Weapon/slash.ogg
@@ -164,8 +158,6 @@
   duration: 0.45
   events:
     0:
-    - !type:ModifyStealthVisibility
-      effectTarget: User
     - !type:PlaySound
       sound:
         path: /Audio/_CE/Effects/Weapon/slash.ogg
@@ -212,8 +204,6 @@
   duration: 0.45
   events:
     0:
-    - !type:ModifyStealthVisibility
-      effectTarget: User
     - !type:PlaySound
       sound:
         path: /Audio/_CE/Effects/Weapon/slash.ogg
@@ -259,8 +249,6 @@
   duration: 0.5
   events:
     0:
-    - !type:ModifyStealthVisibility
-      effectTarget: User
     - !type:PlaySound
       sound:
         path: /Audio/_CE/Effects/Weapon/slash.ogg

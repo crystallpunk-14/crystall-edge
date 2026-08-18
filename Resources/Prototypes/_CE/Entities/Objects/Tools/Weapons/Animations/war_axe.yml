@@ -5,8 +5,6 @@
   duration: 0.9
   events:
     0:
-    - !type:ModifyStealthVisibility
-      effectTarget: User
     - !type:UsedEntityAnimation
       offsetAnimation:
       - time: 0.0
@@ -70,8 +68,6 @@
   duration: 0.9
   events:
     0:
-    - !type:ModifyStealthVisibility
-      effectTarget: User
     - !type:PlaySound
       sound:
         path: /Audio/_CE/Effects/Weapon/slash.ogg
@@ -138,8 +134,6 @@
   duration: 1
   events:
     0:
-    - !type:ModifyStealthVisibility
-      effectTarget: User
     - !type:UsedEntityAnimation
       offsetAnimation:
       - time: 0.0
@@ -194,8 +188,6 @@
   duration: 1
   events:
     0:
-    - !type:ModifyStealthVisibility
-      effectTarget: User
     - !type:UsedEntityAnimation
       offsetAnimation:
       - time: 0.0

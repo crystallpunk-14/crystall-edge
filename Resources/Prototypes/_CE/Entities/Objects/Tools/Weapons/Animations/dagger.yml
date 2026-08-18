@@ -5,8 +5,6 @@
   duration: 0.4
   events:
     0:
-    - !type:ModifyStealthVisibility
-      effectTarget: User
     - !type:PlaySound
       sound:
         path: /Audio/_CE/Effects/Weapon/slash.ogg
@@ -59,8 +57,6 @@
   duration: 0.4
   events:
     0:
-    - !type:ModifyStealthVisibility
-      effectTarget: User
     - !type:PlaySound
       sound:
         path: /Audio/_CE/Effects/Weapon/slash.ogg
@@ -113,8 +109,6 @@
   duration: 0.6
   events:
     0:
-    - !type:ModifyStealthVisibility
-      effectTarget: User
     - !type:Dash
       distance: 1
     - !type:UsedEntityAnimation

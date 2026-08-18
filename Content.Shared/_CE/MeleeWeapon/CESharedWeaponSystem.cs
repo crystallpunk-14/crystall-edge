@@ -9,6 +9,8 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory.VirtualItem;
+using Content.Shared.Stealth;
+using Content.Shared.Stealth.Components;
 using Content.Shared.Wieldable.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
@@ -29,6 +31,9 @@ public abstract partial class CESharedWeaponSystem : EntitySystem
     [Dependency] private CESharedAnimationActionSystem _animationAction = default!;
     [Dependency] protected IPrototypeManager _proto = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedStealthSystem _stealth = default!;
+
+    [Dependency] private EntityQuery<StealthComponent> _stealthQuery = default!;
 
     public override void Initialize()
     {
@@ -215,6 +220,9 @@ public abstract partial class CESharedWeaponSystem : EntitySystem
         var animationSpeed = GetAnimationSpeed(user, used) * entry.Speed;
         if (!_animationAction.TryPlayAnimationToAngle(user, animationProtoId, angle, used.Owner, animationSpeed))
             return false;
+
+        if (_stealthQuery.TryComp(user, out var userStealth))
+            _stealth.ModifyVisibility(user, used.Comp.StealthRevealOnAttack, userStealth);
 
         // Consume resources after animation starts
         var usedEv = new CEWeaponUsedEvent(user, useType);
