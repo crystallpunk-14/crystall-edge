@@ -24,10 +24,9 @@
     accent: xeno
   - type: Appearance
   - type: Body
-    prototype: Animal
   - type: CombatMode
   - type: Stamina
-    critThreshold: 200
+    baseCritThreshold: 200
   - type: Grammar
     attributes:
       gender: epicene
@@ -39,6 +38,7 @@
     range: 5
     sound:
       path: /Audio/_CE/Effects/Lurker/ambient.ogg
+  - type: SoundWhileAlive
   - type: Fixtures
     fixtures:
       fix1:
@@ -57,11 +57,12 @@
   - type: PassiveDamage
     allowedStates:
     - Alive
-    damageCap: 100
     damage:
-      groups:
-        Brute: -0.05
-        Burn: -0.05
+      types:
+        Blunt: -0.05
+        Piercing: -0.05
+        Slash: -0.05
+        Heat: -0.05
   - type: SlowOnDamage
     speedModifierThresholds:
       50: 0.6
@@ -93,11 +94,9 @@
     proto: alien
   - type: NoSlip
   - type: Speech
-    speechSounds: CP14Carcat
+    speechSounds: CECarcat
   - type: NightVision
     prioritized: false
-    relayOverlay: false # In case default value ever changes
-    lightingColor: '#FFFFFF15' # Basically makes it impossible for things to be "Pitch black" but can still be dark.
   - type: FootstepModifier
     footstepSoundCollection: null # Silent footstep
   - type: Stealth
