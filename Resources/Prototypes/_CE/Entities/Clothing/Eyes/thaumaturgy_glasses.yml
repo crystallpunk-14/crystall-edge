@@ -10,7 +10,7 @@
   - type: CEMagicVisionClothing
   - type: VisionCorrection
   - type: StaticPrice
-    price: 20
+    price: 50
   - type: CEMagicEssenceStructure
     essences:
       Crystal: { min: 1, max: 3 }
@@ -25,7 +25,7 @@
   categories: [ DoNotMap ]
   components:
   - type: StaticPrice
-    price: 40
+    price: 100
   - type: Sprite
     sprite: _CE/Clothing/Eyes/Academy/thaumaturgy_glasses_advanced.rsi
   - type: CEWaypointerClothing

@@ -21,6 +21,12 @@ public sealed partial class CEWaypointerOverlay : Overlay
 {
     private static readonly ProtoId<ShaderPrototype> UnshadedShader = "unshaded";
 
+    /// <summary>
+    /// Targets closer than this are skipped, since the direction towards them (e.g. an item in the
+    /// player's own inventory) would be degenerate/meaningless to draw.
+    /// </summary>
+    private const float MinDistance = 0.5f;
+
     [Dependency] private IEntityManager _entity = default!;
     [Dependency] private IPlayerManager  _player = default!;
     [Dependency] private IPrototypeManager _prototype = default!;
@@ -93,6 +99,10 @@ public sealed partial class CEWaypointerOverlay : Overlay
                     continue;
 
                 _physics.TryGetDistance(player, target, out var distance, playerXform, targetXform);
+
+                // Too close to point in any meaningful direction (e.g. the target is in the player's own inventory).
+                if (distance < MinDistance)
+                    continue;
 
                 if (distance > prototype.MaxRange)
                     continue;

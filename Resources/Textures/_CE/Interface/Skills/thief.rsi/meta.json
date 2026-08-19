@@ -18,6 +18,9 @@
     },
     {
       "name": "treasure_show"
+    },
+    {
+      "name": "treasure_show_on"
     }
   ]
 }

@@ -63,16 +63,6 @@ public sealed partial class CEWaypointerSystem : CESharedWaypointerSystem
             _overlay.RemoveOverlay(_waypointerOverlay);
     }
 
-    protected override void OnActionToggle(Entity<CEWaypointerComponent> mob, ref CEActionToggleWaypointersEvent args)
-    {
-        base.OnActionToggle(mob, ref args);
-
-        if (args.Action.Comp.Toggled)
-            _overlay.AddOverlay(_waypointerOverlay);
-        else
-            _overlay.RemoveOverlay(_waypointerOverlay);
-    }
-
     private void OnPlayerAttached(Entity<CEWaypointerComponent> mob, ref LocalPlayerAttachedEvent args)
     {
         if (args.Entity != _player.LocalEntity)
