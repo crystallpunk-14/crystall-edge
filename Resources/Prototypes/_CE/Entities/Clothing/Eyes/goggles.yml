@@ -22,7 +22,7 @@
     sprite: _CE/Clothing/Eyes/Generic/alchemy_glasses.rsi
   - type: SolutionScanner
   - type: StaticPrice
-    price: 30
+    price: 50
   - type: VisionCorrection
   - type: CEMagicEssenceStructure
     essences:
@@ -49,7 +49,7 @@
     - CEMiningGuideEN
     - CEMiningGuideRU
   - type: StaticPrice
-    price: 60
+    price: 100
   - type: CEMagicEssenceStructure
     essences:
       Crystal: { min: 1, max: 3 }
