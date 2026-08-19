@@ -1,4 +1,3 @@
-using Content.Client.Actions;
 using Content.Shared.CombatMode;
 using Content.Shared._CE.Waypointer;
 using Robust.Client.Graphics;
@@ -16,7 +15,6 @@ public sealed partial class CEWaypointerSystem : CESharedWaypointerSystem
     [Dependency] private IPlayerManager  _player = default!;
     [Dependency] private IClientGameTiming _timing = default!;
     [Dependency] private IOverlayManager _overlay = default!;
-    [Dependency] private ActionsSystem _actions = default!;
 
     private CEWaypointerOverlay _waypointerOverlay = default!;
 
@@ -26,26 +24,27 @@ public sealed partial class CEWaypointerSystem : CESharedWaypointerSystem
 
         _waypointerOverlay = new CEWaypointerOverlay();
 
-        SubscribeLocalEvent<CEWaypointerComponent, ComponentInit>(OnAddition);
-        SubscribeLocalEvent<CEWaypointerComponent, ComponentRemove>(OnRemoval);
-
         SubscribeLocalEvent<CEWaypointerComponent, ToggleCombatActionEvent>(OnCombatToggle);
 
         SubscribeLocalEvent<CEWaypointerComponent, LocalPlayerAttachedEvent>(OnPlayerAttached);
         SubscribeLocalEvent<CEWaypointerComponent, LocalPlayerDetachedEvent>(OnPlayerDetached);
     }
 
-    private void OnAddition(Entity<CEWaypointerComponent> mob, ref ComponentInit args)
+    protected override void OnAddition(Entity<CEWaypointerComponent> player, ref ComponentInit args)
     {
-        if (_player.LocalEntity == null || mob.Owner != _player.LocalEntity.Value)
+        base.OnAddition(player, ref args);
+
+        if (_player.LocalEntity == null || player.Owner != _player.LocalEntity.Value)
             return;
 
         _overlay.AddOverlay(_waypointerOverlay);
     }
 
-    private void OnRemoval(Entity<CEWaypointerComponent> mob, ref ComponentRemove args)
+    protected override void OnRemoval(Entity<CEWaypointerComponent> player, ref ComponentRemove args)
     {
-        if (_player.LocalEntity == null || mob.Owner != _player.LocalEntity.Value)
+        base.OnRemoval(player, ref args);
+
+        if (_player.LocalEntity == null || player.Owner != _player.LocalEntity.Value)
             return;
 
         _overlay.RemoveOverlay(_waypointerOverlay);

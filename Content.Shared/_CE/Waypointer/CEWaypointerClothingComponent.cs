@@ -20,5 +20,5 @@ public sealed partial class CEWaypointerClothingComponent : Component
     /// The slots that, when equipped into, will grant the waypointer effect.
     /// </summary>
     [DataField]
-    public SlotFlags SlotFlags = SlotFlags.All;
+    public SlotFlags SlotFlags = SlotFlags.WITHOUT_POCKET;
 }

@@ -4,13 +4,19 @@ using Content.Shared.Inventory.Events;
 namespace Content.Shared._CE.Waypointer;
 
 /// <summary>
-/// This solely handles giving the Waypoint component to equipees. This cannot be done on client, or else it would.
+/// Handles granting the Waypointer component and its toggle action to equipees.
+/// Waypointers are only drawn for entities already within the player's normal PVS range;
+/// there is no server-side PVS override involved.
 /// </summary>
-public abstract class CESharedWaypointerSystem : EntitySystem
+public abstract partial class CESharedWaypointerSystem : EntitySystem
 {
+    [Dependency] private SharedActionsSystem _actions = default!;
+
     public override void Initialize()
     {
         SubscribeLocalEvent<CEWaypointerComponent, CEActionToggleWaypointersEvent>(OnActionToggle);
+        SubscribeLocalEvent<CEWaypointerComponent, ComponentInit>(OnAddition);
+        SubscribeLocalEvent<CEWaypointerComponent, ComponentRemove>(OnRemoval);
 
         SubscribeLocalEvent<CEWaypointerClothingComponent, GotEquippedEvent>(OnEquip);
         SubscribeLocalEvent<CEWaypointerClothingComponent, GotUnequippedEvent>(OnUnequip);
@@ -24,6 +30,16 @@ public abstract class CESharedWaypointerSystem : EntitySystem
         // Without this in Shared, the action doesn't toggle.
         args.Toggle = true;
         args.Handled = true;
+    }
+
+    protected virtual void OnAddition(Entity<CEWaypointerComponent> player, ref ComponentInit args)
+    {
+        _actions.AddAction(player, ref player.Comp.ActionEntity, player.Comp.ActionProtoId);
+    }
+
+    protected virtual void OnRemoval(Entity<CEWaypointerComponent> player, ref ComponentRemove args)
+    {
+        _actions.RemoveAction(player.Owner, player.Comp.ActionEntity);
     }
 
     private void OnEquip(Entity<CEWaypointerClothingComponent> clothing, ref GotEquippedEvent args)

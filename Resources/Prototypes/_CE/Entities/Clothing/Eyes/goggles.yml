@@ -28,6 +28,7 @@
     essences:
       Crystal: { min: 1, max: 3 }
       Magic: { min: 1, max: 2 }
+      Senses: { min: 1, max: 3 }
 
 - type: entity
   parent: CEClothingEyesGogglesFoldableBase
@@ -35,8 +36,6 @@
   name: mining glasses
   description: Miner's glasses tuned to search for nearby ore veins.
   components:
-  - type: Item
-    size: Normal #Temporary fix, until waypointers stop working out of pockets
   - type: Sprite
     sprite: _CE/Clothing/Eyes/Engineering/mining_glasses.rsi
   - type: Clothing
@@ -55,3 +54,4 @@
     essences:
       Crystal: { min: 1, max: 3 }
       Mining: { min: 1, max: 2 }
+      Senses: { min: 1, max: 3 }

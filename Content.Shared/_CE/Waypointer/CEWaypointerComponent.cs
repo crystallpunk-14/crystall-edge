@@ -26,5 +26,5 @@ public sealed partial class CEWaypointerComponent : Component
     /// The prototype of the waypointer visible for the owner of this component.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public List<ProtoId<CEWaypointerPrototype>> WaypointerProtoIds;
+    public List<ProtoId<CEWaypointerPrototype>> WaypointerProtoIds = new();
 }

@@ -7,7 +7,6 @@
     damage:
       types:
         Structural: 60
-  - type: CEWaypointerTrackable
   - type: GuideHelp
     guides:
     - CEMiningGuideEN
