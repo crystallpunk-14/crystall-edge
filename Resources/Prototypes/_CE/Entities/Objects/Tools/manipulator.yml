@@ -102,12 +102,101 @@
       Tool: { min: 1, max: 3 }
       Light: { min: 1, max: 3 }
 
+#MARK: Tool Module
+
+- type: entity
+  parent: CEThirdArmModuleBase
+  id: CEThirdArmModuleManipulation
+  categories: [ ForkFiltered ]
+  name: manipulator tool module
+  description: Module for the manipulator arm. It allows you to build and take apart complex structures.
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
+    state: icon
+  - type: Item
+    sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
+  - type: CEThirdArmModule
+    iconLayers:
+    - sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
+      state: module-icon
+    equippedLayers:
+    - sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
+      state: equipped-NECK
+  - type: CEThirdArmActionModule
+    actions:
+    - ActionCEThirdArmManipulation
+  - type: StaticPrice
+    price: 50
+  - type: CEMagicEssenceStructure
+    essences:
+      Tool: { min: 4, max: 6 }
+
+- type: entity
+  parent: BaseAction
+  id: ActionCEThirdArmManipulation
+  name: matter manipulation
+  description: Allows you to build and take apart complex structures.
+  components:
+  - type: CEVisualizeRadiusTargetAction
+  - type: Action
+    icon:
+      sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
+      state: icon
+    useDelay: 1
+    itemIconStyle: BigItem
+    raiseOnUser: true
+  - type: TargetAction
+    repeat: true
+    range: 2
+    checkCanAccess: false
+  - type: CEThirdArmActionManaCost
+    manaCost: 5
+  - type: EntityTargetAction
+  - type: WorldTargetAction
+    event: !type:CEWorldTargetActionAnimationEvent
+      animation: ThirdArmManipulationAttack
+
+- type: entityEffectAnimation
+  id: ThirdArmManipulationAttack
+  movementSpeed: 0.3
+  duration: 1.2
+  events:
+    0:
+    - !type:ToolUse
+      qualities:
+      - CEMatterManipulation
+    - !type:SpawnEntity
+      spawns:
+      - CEOverchargeVFX
+    - !type:PlaySound
+      sound:
+        path: /Audio/Effects/sparks2.ogg
+        params:
+          pitch: 1.6
+    0.2:
+    - !type:PlaySound
+      sound:
+        path: /Audio/Effects/sparks2.ogg
+        params:
+          pitch: 1.3
+    0.4:
+    - !type:PlaySound
+      sound:
+        path: /Audio/Effects/sparks2.ogg
+        params:
+          pitch: 1.0
+    1:
+    - !type:SpawnEntity
+      spawns:
+      - CEOverchargeVFX
+
 #MARK: Mining Module
 
 - type: entity
   parent: CEThirdArmModuleBase
   id: CEThirdArmModuleMining
-  categories: [ ForkFiltered ]
+  categories: [ ForkFiltered, DoNotMap ]
   name: manipulator mining module
   description: Module for the manipulator arm. Equips the arm with a mining laser.
   components:
@@ -232,93 +321,3 @@
       state: impact_blue
   - type: CEHitscanImpactVfx
     vfx: CEOverchargeSmallVFX
-
-#MARK: Tool Module
-
-- type: entity
-  parent: CEThirdArmModuleBase
-  id: CEThirdArmModuleManipulation
-  categories: [ ForkFiltered ]
-  name: manipulator tool module
-  description: Module for the manipulator arm. It allows you to build and take apart complex structures.
-  components:
-  - type: Sprite
-    sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
-    state: icon
-  - type: Item
-    sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
-  - type: CEThirdArmModule
-    iconLayers:
-    - sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
-      state: module-icon
-    equippedLayers:
-    - sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
-      state: equipped-NECK
-  - type: CEThirdArmActionModule
-    actions:
-    - ActionCEThirdArmManipulation
-  - type: StaticPrice
-    price: 50
-  - type: CEMagicEssenceStructure
-    essences:
-      Tool: { min: 4, max: 6 }
-
-- type: entity
-  parent: BaseAction
-  id: ActionCEThirdArmManipulation
-  name: matter manipulation
-  description: Allows you to build and take apart complex structures.
-  components:
-  - type: CEVisualizeRadiusTargetAction
-  - type: Action
-    icon:
-      sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
-      state: icon
-    useDelay: 1
-    itemIconStyle: BigItem
-    raiseOnUser: true
-  - type: TargetAction
-    repeat: true
-    range: 2
-    checkCanAccess: false
-  - type: CEThirdArmActionManaCost
-    manaCost: 5
-  - type: EntityTargetAction
-  - type: WorldTargetAction
-    event: !type:CEWorldTargetActionAnimationEvent
-      animation: ThirdArmManipulationAttack
-
-- type: entityEffectAnimation
-  id: ThirdArmManipulationAttack
-  movementSpeed: 0.3
-  duration: 1.2
-  events:
-    0:
-    - !type:ToolUse
-      qualities:
-      - CEMatterManipulation
-    - !type:SpawnEntity
-      spawns:
-      - CEOverchargeVFX
-    - !type:PlaySound
-      sound:
-        path: /Audio/Effects/sparks2.ogg
-        params:
-          pitch: 1.6
-    0.2:
-    - !type:PlaySound
-      sound:
-        path: /Audio/Effects/sparks2.ogg
-        params:
-          pitch: 1.3
-    0.4:
-    - !type:PlaySound
-      sound:
-        path: /Audio/Effects/sparks2.ogg
-        params:
-          pitch: 1.0
-    1:
-    - !type:SpawnEntity
-      spawns:
-      - CEOverchargeVFX
-
