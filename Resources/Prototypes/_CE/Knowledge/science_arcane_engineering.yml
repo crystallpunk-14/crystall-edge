@@ -1,59 +1,34 @@
 - type: CEKnowledge
   id: DrillAdvanced
   parent: ArcaneEngineeringKnowledgeBase
-  name: ce-knowledge-drill-advanced
-  icon:
-    sprite: _CE/Structures/Industrial/drill.rsi
-    state: icon_lvl2
+  previewEntity: CEDrillAdvanced
 
 - type: CEKnowledge
   id: Hoverboard
   parent: ArcaneEngineeringKnowledgeBase
-  name: ce-knowledge-hoverboard
-  icon:
-    entity: CEVehicleHoverboard
+  previewEntity: CEVehicleHoverboard
 
 - type: CEKnowledge
   id: PortableEssenceAttractor
   parent: ArcaneEngineeringKnowledgeBase
-  name: ce-knowledge-portable-essence-attractor
-  icon:
-    sprite: _CE/Objects/Specific/Thaumaturgy/essence_attractor_portable.rsi
-    state: icon
+  previewEntity: CEPortableMagicEssenceAttractor
 
 - type: CEKnowledge
   id: NodeStabilizer
   parent: ArcaneEngineeringKnowledgeBase
-  name: ce-knowledge-node-stabilizer
-  icon:
-    sprite: _CE/Structures/Specific/Thaumaturgy/node_stabilizator.rsi
-    state: icon
+  previewEntity: CENodeStabilizerSphere
 
 - type: CEKnowledge
   id: ManaTransferGlove
   parent: ArcaneEngineeringKnowledgeBase
-  name: ce-knowledge-mana-transfer-glove
-  icon:
-    sprite: _CE/Objects/Tools/mana_glove.rsi
-    state: icon
+  previewEntity: CEManaTransferGlove
 
 - type: CEKnowledge
   id: ThirdArmMiningModule
   parent: ArcaneEngineeringKnowledgeBase
-  name: ce-knowledge-third-arm-mining-module
-  icon:
-    entity: CEThirdArmModuleMining
-
-- type: CEKnowledge
-  id: ThirdArmMiningModule
-  parent: ArcaneEngineeringKnowledgeBase
-  name: ce-knowledge-third-arm-mining-module
-  icon:
-    entity: CEThirdArmModuleMining
+  previewEntity: CEThirdArmModuleMining
 
 - type: CEKnowledge
   id: ThaumaturgyGlassesAdvanced
   parent: ArcaneEngineeringKnowledgeBase
-  name: ce-knowledge-thaumaturgy-glasses-advanced
-  icon:
-    entity: CEClothingEyesThaumaturgyGlassesAdvanced
+  previewEntity: CEClothingEyesThaumaturgyGlassesAdvanced

@@ -24,6 +24,8 @@
   description: It allows one to see the hidden world of magic, the very essence of objects, and the fundamental aspects from which all existence is composed. An essence node locator is attached to these glasses.
   categories: [ DoNotMap ]
   components:
+  - type: StaticPrice
+    price: 40
   - type: Sprite
     sprite: _CE/Clothing/Eyes/Academy/thaumaturgy_glasses_advanced.rsi
   - type: CEWaypointerClothing

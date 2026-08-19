@@ -89,7 +89,7 @@ public sealed partial class CEKnowledgeSystem
         // set before the component is added, not after via EnsureComp.
         AddComp(spawned, new CEKnowledgeHolderComponent { Knowledge = args.Knowledge });
 
-        _metaData.SetEntityName(spawned, Loc.GetString(knowledge.Name));
+        _metaData.SetEntityName(spawned, knowledge.GetTitle(_proto));
 
         var descLines = new List<string>();
 

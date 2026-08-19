@@ -208,7 +208,7 @@
 
 - type: CERecipe
   id: CEManaTransferGlove
-  requiredKnowledge: KnowledgeManaTransferGlove
+  requiredKnowledge: ManaTransferGlove
   parent: CEBaseEngineeringTableRecipe
   category: Tools
   craftTime: 1.0
@@ -245,7 +245,7 @@
 
 - type: CERecipe
   id: CEVehicleHoverboard
-  requiredKnowledge: KnowledgeHoverboard
+  requiredKnowledge: Hoverboard
   parent: CEBaseEngineeringTableRecipe
   category: Tools
   craftTime: 2.0
@@ -300,7 +300,7 @@
 
 - type: CERecipe
   id: CEThirdArmModuleMining
-  requiredKnowledge: KnowledgeThirdArmMiningModule
+  requiredKnowledge: ThirdArmMiningModule
   parent: CEBaseEngineeringTableRecipe
   category: Tools
   craftTime: 2.0
@@ -333,6 +333,28 @@
     protoId: CEEnergyCrystalCell
     count: 1
   result: CEThirdArmModuleManipulation
+  resultCount: 1
+
+- type: CERecipe
+  id: CEClothingEyesThaumaturgyGlassesAdvanced
+  requiredKnowledge: ThaumaturgyGlassesAdvanced
+  parent: CEBaseEngineeringTableRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:ProtoIdResource
+    protoId: CEClothingEyesThaumaturgyGlasses
+    count: 1
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 2
+  - !type:StackResource
+    stack: CEGlass
+    count: 1
+  - !type:StackResource
+    stack: CEMachinePartDimensionalMatrix
+    count: 1
+  result: CEClothingEyesThaumaturgyGlassesAdvanced
   resultCount: 1
 
 #MARK: Machine cores
@@ -451,7 +473,7 @@
 # Unlocked by the "Advanced Drilling" science achievement - see achievements.yml.
 - type: CERecipe
   id: CEMachineCoreDrillAdvanced
-  requiredKnowledge: KnowledgeDrillAdvanced
+  requiredKnowledge: DrillAdvanced
   parent: CEBaseEngineeringTableRecipe
   category: MachineCore
   craftTime: 3.0
@@ -745,7 +767,7 @@
 
 - type: CERecipe
   id: CEPortableMagicEssenceAttractor
-  requiredKnowledge: KnowledgePortableEssenceAttractor
+  requiredKnowledge: PortableEssenceAttractor
   parent: CEBaseEngineeringTableRecipe
   category: Tools
   craftTime: 2.0
@@ -767,7 +789,7 @@
 
 - type: CERecipe
   id: CENodeStabilizerSphere
-  requiredKnowledge: KnowledgeNodeStabilizer
+  requiredKnowledge: NodeStabilizer
   parent: CEBaseEngineeringTableRecipe
   category: Tools
   craftTime: 3.0

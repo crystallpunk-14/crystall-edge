@@ -236,7 +236,7 @@ public sealed partial class RandomScienceDiscovery : CEAmbitionParsing
         if (!protoManager.TryIndex(random.Pick(all).Knowledge, out var knowledge))
             return null;
 
-        return Loc.GetString(knowledge.Name);
+        return knowledge.GetTitle(protoManager);
     }
 }
 
