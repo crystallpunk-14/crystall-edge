@@ -728,3 +728,15 @@
   id: 1068
   time: '2026-08-18T12:24:45.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/418
+- author: TheShuEd
+  changes:
+  - message: Added advanced thaumaturgical glasses that can help you to find essence
+      nodes. Researchable.
+    type: Add
+  - message: Fixed bug when equipping mining goggles explodes server.
+    type: Fix
+  - message: Pipe breakage event radius lowered from 5 to 3 tiles.
+    type: Tweak
+  id: 1069
+  time: '2026-08-19T14:21:24.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/421
