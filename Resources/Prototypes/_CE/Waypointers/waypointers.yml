@@ -19,3 +19,12 @@
       - id: CEIronOre1
   maxRange: 10
   workOnGrid: true
+
+- type: waypointer
+  parent: CEBaseWaypointer
+  id: CEMagicEssenceNodeWaypointer
+  color: "#b358c7"
+  trackedComponents:
+  - type: CEMagicEssenceNode
+  maxRange: 20
+  workOnGrid: true

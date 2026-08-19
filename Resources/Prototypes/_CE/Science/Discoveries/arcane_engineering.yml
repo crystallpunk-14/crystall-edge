@@ -7,7 +7,7 @@
   targetAspects:
   - Mining
   - Energia
-  knowledge: KnowledgeDrillAdvanced
+  knowledge: DrillAdvanced
 
 - type: scienceDiscovery
   id: PortableMagicEssenceAttractor
@@ -16,7 +16,7 @@
   targetAspects:
   - Magic
   - Hunger
-  knowledge: KnowledgePortableEssenceAttractor
+  knowledge: PortableEssenceAttractor
 
 - type: scienceDiscovery
   id: ManaTransferGlove
@@ -26,7 +26,17 @@
   - Magic
   - Energia
   - Motion
-  knowledge: KnowledgeManaTransferGlove
+  knowledge: ManaTransferGlove
+
+- type: scienceDiscovery
+  id: ThaumaturgyGlassesAdvanced
+  parent: EasyDifficult
+  area: ArcaneEngineering
+  targetAspects:
+  - Magic
+  - Crystal
+  - Senses
+  knowledge: ThaumaturgyGlassesAdvanced
 
 #MARK: Medium
 
@@ -39,7 +49,7 @@
   - Machine
   - Energia
   - Energia
-  knowledge: KnowledgeHoverboard
+  knowledge: Hoverboard
 
 - type: scienceDiscovery
   id: NodeStabilizer
@@ -49,7 +59,7 @@
   - Magic
   - Trap
   - Machine
-  knowledge: KnowledgeNodeStabilizer
+  knowledge: NodeStabilizer
 
 - type: scienceDiscovery
   id: ThirdArmMiningModule
@@ -60,4 +70,4 @@
   - Tool
   - Energia
   - Weapon
-  knowledge: KnowledgeThirdArmMiningModule
+  knowledge: ThirdArmMiningModule

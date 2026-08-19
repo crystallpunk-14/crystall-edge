@@ -1,5 +1,5 @@
 - type: CEKnowledge
-  id: KnowledgeDrillAdvanced
+  id: DrillAdvanced
   parent: ArcaneEngineeringKnowledgeBase
   name: ce-knowledge-drill-advanced
   icon:
@@ -7,14 +7,14 @@
     state: icon_lvl2
 
 - type: CEKnowledge
-  id: KnowledgeHoverboard
+  id: Hoverboard
   parent: ArcaneEngineeringKnowledgeBase
   name: ce-knowledge-hoverboard
   icon:
     entity: CEVehicleHoverboard
 
 - type: CEKnowledge
-  id: KnowledgePortableEssenceAttractor
+  id: PortableEssenceAttractor
   parent: ArcaneEngineeringKnowledgeBase
   name: ce-knowledge-portable-essence-attractor
   icon:
@@ -22,7 +22,7 @@
     state: icon
 
 - type: CEKnowledge
-  id: KnowledgeNodeStabilizer
+  id: NodeStabilizer
   parent: ArcaneEngineeringKnowledgeBase
   name: ce-knowledge-node-stabilizer
   icon:
@@ -30,7 +30,7 @@
     state: icon
 
 - type: CEKnowledge
-  id: KnowledgeManaTransferGlove
+  id: ManaTransferGlove
   parent: ArcaneEngineeringKnowledgeBase
   name: ce-knowledge-mana-transfer-glove
   icon:
@@ -38,8 +38,22 @@
     state: icon
 
 - type: CEKnowledge
-  id: KnowledgeThirdArmMiningModule
+  id: ThirdArmMiningModule
   parent: ArcaneEngineeringKnowledgeBase
   name: ce-knowledge-third-arm-mining-module
   icon:
     entity: CEThirdArmModuleMining
+
+- type: CEKnowledge
+  id: ThirdArmMiningModule
+  parent: ArcaneEngineeringKnowledgeBase
+  name: ce-knowledge-third-arm-mining-module
+  icon:
+    entity: CEThirdArmModuleMining
+
+- type: CEKnowledge
+  id: ThaumaturgyGlassesAdvanced
+  parent: ArcaneEngineeringKnowledgeBase
+  name: ce-knowledge-thaumaturgy-glasses-advanced
+  icon:
+    entity: CEClothingEyesThaumaturgyGlassesAdvanced
