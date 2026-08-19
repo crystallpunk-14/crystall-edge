@@ -1,41 +1,41 @@
 using Content.Client.Actions;
 using Content.Shared.CombatMode;
-using Content.Shared.Waypointer;
+using Content.Shared._CE.Waypointer;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Client.Timing;
 using Robust.Shared.Player;
 
-namespace Content.Client.Waypointer;
+namespace Content.Client._CE.Waypointer;
 
 /// <summary>
 /// The client-side system handles initializing the overlay, as well as removing and adding it depending on game actions.
 /// </summary>
-public sealed partial class WaypointerSystem : SharedWaypointerSystem
+public sealed partial class CEWaypointerSystem : CESharedWaypointerSystem
 {
     [Dependency] private IPlayerManager  _player = default!;
     [Dependency] private IClientGameTiming _timing = default!;
     [Dependency] private IOverlayManager _overlay = default!;
     [Dependency] private ActionsSystem _actions = default!;
 
-    private WaypointerOverlay _waypointerOverlay = default!;
+    private CEWaypointerOverlay _waypointerOverlay = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        _waypointerOverlay = new WaypointerOverlay();
+        _waypointerOverlay = new CEWaypointerOverlay();
 
-        SubscribeLocalEvent<WaypointerComponent, ComponentInit>(OnAddition);
-        SubscribeLocalEvent<WaypointerComponent, ComponentRemove>(OnRemoval);
+        SubscribeLocalEvent<CEWaypointerComponent, ComponentInit>(OnAddition);
+        SubscribeLocalEvent<CEWaypointerComponent, ComponentRemove>(OnRemoval);
 
-        SubscribeLocalEvent<WaypointerComponent, ToggleCombatActionEvent>(OnCombatToggle);
+        SubscribeLocalEvent<CEWaypointerComponent, ToggleCombatActionEvent>(OnCombatToggle);
 
-        SubscribeLocalEvent<WaypointerComponent, LocalPlayerAttachedEvent>(OnPlayerAttached);
-        SubscribeLocalEvent<WaypointerComponent, LocalPlayerDetachedEvent>(OnPlayerDetached);
+        SubscribeLocalEvent<CEWaypointerComponent, LocalPlayerAttachedEvent>(OnPlayerAttached);
+        SubscribeLocalEvent<CEWaypointerComponent, LocalPlayerDetachedEvent>(OnPlayerDetached);
     }
 
-    private void OnAddition(Entity<WaypointerComponent> mob, ref ComponentInit args)
+    private void OnAddition(Entity<CEWaypointerComponent> mob, ref ComponentInit args)
     {
         if (_player.LocalEntity == null || mob.Owner != _player.LocalEntity.Value)
             return;
@@ -43,7 +43,7 @@ public sealed partial class WaypointerSystem : SharedWaypointerSystem
         _overlay.AddOverlay(_waypointerOverlay);
     }
 
-    private void OnRemoval(Entity<WaypointerComponent> mob, ref ComponentRemove args)
+    private void OnRemoval(Entity<CEWaypointerComponent> mob, ref ComponentRemove args)
     {
         if (_player.LocalEntity == null || mob.Owner != _player.LocalEntity.Value)
             return;
@@ -51,7 +51,7 @@ public sealed partial class WaypointerSystem : SharedWaypointerSystem
         _overlay.RemoveOverlay(_waypointerOverlay);
     }
 
-    private void OnCombatToggle(Entity<WaypointerComponent> combatant, ref ToggleCombatActionEvent args)
+    private void OnCombatToggle(Entity<CEWaypointerComponent> combatant, ref ToggleCombatActionEvent args)
     {
         if (_timing.ApplyingState)
             return;
@@ -64,7 +64,7 @@ public sealed partial class WaypointerSystem : SharedWaypointerSystem
             _overlay.RemoveOverlay(_waypointerOverlay);
     }
 
-    protected override void OnActionToggle(Entity<WaypointerComponent> mob, ref ActionToggleWaypointersEvent args)
+    protected override void OnActionToggle(Entity<CEWaypointerComponent> mob, ref CEActionToggleWaypointersEvent args)
     {
         base.OnActionToggle(mob, ref args);
 
@@ -74,7 +74,7 @@ public sealed partial class WaypointerSystem : SharedWaypointerSystem
             _overlay.RemoveOverlay(_waypointerOverlay);
     }
 
-    private void OnPlayerAttached(Entity<WaypointerComponent> mob, ref LocalPlayerAttachedEvent args)
+    private void OnPlayerAttached(Entity<CEWaypointerComponent> mob, ref LocalPlayerAttachedEvent args)
     {
         if (args.Entity != _player.LocalEntity)
             return;
@@ -82,7 +82,7 @@ public sealed partial class WaypointerSystem : SharedWaypointerSystem
         _overlay.AddOverlay(_waypointerOverlay);
     }
 
-    private void OnPlayerDetached(Entity<WaypointerComponent> mob, ref LocalPlayerDetachedEvent args)
+    private void OnPlayerDetached(Entity<CEWaypointerComponent> mob, ref LocalPlayerDetachedEvent args)
     {
         if (args.Entity != _player.LocalEntity)
             return;

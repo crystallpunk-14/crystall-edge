@@ -2,17 +2,17 @@ using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Array;
 
-namespace Content.Shared.Waypointer;
+namespace Content.Shared._CE.Waypointer;
 
-[Prototype]
-public sealed partial class WaypointerPrototype : IPrototype, IInheritingPrototype
+[Prototype("waypointer")]
+public sealed partial class CEWaypointerPrototype : IPrototype, IInheritingPrototype
 {
     /// <inheritdoc/>
     [IdDataField]
     public string ID { get; private set; } = default!;
 
     /// <inheritdoc/>
-    [ParentDataField(typeof(AbstractPrototypeIdArraySerializer<WaypointerPrototype>))]
+    [ParentDataField(typeof(AbstractPrototypeIdArraySerializer<CEWaypointerPrototype>))]
     public string[]? Parents { get; private set; }
 
     /// <inheritdoc/>

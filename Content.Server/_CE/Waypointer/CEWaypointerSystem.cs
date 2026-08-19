@@ -1,5 +1,5 @@
 using Content.Server.Actions;
-using Content.Shared.Waypointer;
+using Content.Shared._CE.Waypointer;
 using Content.Shared.Whitelist;
 using JetBrains.Annotations;
 using Robust.Server.GameStates;
@@ -8,12 +8,12 @@ using Robust.Shared.Map.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server.Waypointer;
+namespace Content.Server._CE.Waypointer;
 
 /// <summary>
 /// This handles the PVSOverrides for the Waypointer System.
 /// </summary>
-public sealed partial class WaypointerSystem : SharedWaypointerSystem
+public sealed partial class CEWaypointerSystem : CESharedWaypointerSystem
 {
     [Dependency] private IEntityManager _entity = default!;
     [Dependency] private IPlayerManager _player = default!;
@@ -26,32 +26,32 @@ public sealed partial class WaypointerSystem : SharedWaypointerSystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<WaypointerComponent, ComponentInit>(OnAddition);
-        SubscribeLocalEvent<WaypointerComponent, ComponentRemove>(OnRemoval);
+        SubscribeLocalEvent<CEWaypointerComponent, ComponentInit>(OnAddition);
+        SubscribeLocalEvent<CEWaypointerComponent, ComponentRemove>(OnRemoval);
 
-        SubscribeLocalEvent<WaypointerTrackableComponent, ComponentInit>(OnTrackableInit);
+        SubscribeLocalEvent<CEWaypointerTrackableComponent, ComponentInit>(OnTrackableInit);
 
-        SubscribeLocalEvent<WaypointerComponent, PlayerAttachedEvent>(OnPlayerAttached);
-        SubscribeLocalEvent<WaypointerComponent, PlayerDetachedEvent>(OnPlayerDetached);
+        SubscribeLocalEvent<CEWaypointerComponent, PlayerAttachedEvent>(OnPlayerAttached);
+        SubscribeLocalEvent<CEWaypointerComponent, PlayerDetachedEvent>(OnPlayerDetached);
 
-        SubscribeLocalEvent<WaypointerComponent, MapUidChangedEvent>(OnMapChanged);
+        SubscribeLocalEvent<CEWaypointerComponent, MapUidChangedEvent>(OnMapChanged);
     }
 
-    private void OnAddition(Entity<WaypointerComponent> player, ref ComponentInit args)
+    private void OnAddition(Entity<CEWaypointerComponent> player, ref ComponentInit args)
     {
         _actions.AddAction(player, ref player.Comp.ActionEntity, player.Comp.ActionProtoId);
         AddOverrides(player);
     }
 
-    private void OnRemoval(Entity<WaypointerComponent> player, ref ComponentRemove args)
+    private void OnRemoval(Entity<CEWaypointerComponent> player, ref ComponentRemove args)
     {
         _actions.RemoveAction(player.Owner, player.Comp.ActionEntity);
         RemoveOverrides(player);
     }
 
-    private void OnTrackableInit(Entity<WaypointerTrackableComponent> trackable, ref ComponentInit args)
+    private void OnTrackableInit(Entity<CEWaypointerTrackableComponent> trackable, ref ComponentInit args)
     {
-        var waypointerQuery = EntityQueryEnumerator<WaypointerComponent>();
+        var waypointerQuery = EntityQueryEnumerator<CEWaypointerComponent>();
 
         while (waypointerQuery.MoveNext(out var uid, out var comp))
         {
@@ -59,17 +59,17 @@ public sealed partial class WaypointerSystem : SharedWaypointerSystem
         }
     }
 
-    private void OnPlayerAttached(Entity<WaypointerComponent> player, ref PlayerAttachedEvent args)
+    private void OnPlayerAttached(Entity<CEWaypointerComponent> player, ref PlayerAttachedEvent args)
     {
         AddOverrides(player);
     }
 
-    private void OnPlayerDetached(Entity<WaypointerComponent> player, ref PlayerDetachedEvent args)
+    private void OnPlayerDetached(Entity<CEWaypointerComponent> player, ref PlayerDetachedEvent args)
     {
         RemoveOverrides(player);
     }
 
-    private void OnMapChanged(Entity<WaypointerComponent> player, ref MapUidChangedEvent args)
+    private void OnMapChanged(Entity<CEWaypointerComponent> player, ref MapUidChangedEvent args)
     {
         // Since we only override PVS on entities on the same map, if the person switches maps, they'll need new overrides.
         RefreshOverrides(player);
@@ -80,13 +80,13 @@ public sealed partial class WaypointerSystem : SharedWaypointerSystem
     /// </summary>
     /// <param name="player">The entity to have their overrides refreshed.</param>
     [PublicAPI]
-    public void RefreshOverrides(Entity<WaypointerComponent> player)
+    public void RefreshOverrides(Entity<CEWaypointerComponent> player)
     {
         RemoveOverrides(player);
         AddOverrides(player);
     }
 
-    private void RemoveOverrides(Entity<WaypointerComponent> player)
+    private void RemoveOverrides(Entity<CEWaypointerComponent> player)
     {
         if (!_player.TryGetSessionByEntity(player, out var session))
             return;
@@ -108,7 +108,7 @@ public sealed partial class WaypointerSystem : SharedWaypointerSystem
         }
     }
 
-    private void AddOverrides(Entity<WaypointerComponent> player)
+    private void AddOverrides(Entity<CEWaypointerComponent> player)
     {
         if (!_player.TryGetSessionByEntity(player, out var session))
             return;

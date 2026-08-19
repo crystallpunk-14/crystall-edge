@@ -42,7 +42,7 @@
   - type: Clothing
     sprite: _CE/Clothing/Eyes/Engineering/mining_glasses.rsi
   - type: VisionCorrection
-  - type: ShowWaypointer
+  - type: CEWaypointerClothing
     waypointerProtoIds:
     - CEOreCoreWaypointer
   - type: GuideHelp
