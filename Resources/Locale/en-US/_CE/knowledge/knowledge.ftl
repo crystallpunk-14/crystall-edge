@@ -7,11 +7,3 @@ ce-knowledge-effect-workbench-header = Unlocks crafting at the "[color=yellow]{ 
 ce-knowledge-effect-workbench-header-generic = Unlocks crafting:
 ce-knowledge-effect-infusion-altar-header = Reveals the secrets of crafting at the [color=pink]altar of fusion[/color]:
 ce-knowledge-effect-list-item = - [color=yellow]{ $item }[/color]
-
-ce-knowledge-drill-advanced = Advanced Drilling
-ce-knowledge-hoverboard = Hoverboards
-ce-knowledge-portable-essence-attractor = Portable Essence Attractor
-ce-knowledge-node-stabilizer = Node Containment Sphere
-ce-knowledge-mana-transfer-glove = Mana Transfer Glove
-ce-knowledge-magic-defib = Staff of Revival
-ce-knowledge-third-arm-mining-module = Manipulator Mining Module

@@ -22,6 +22,7 @@ public sealed partial class CEScienceDiscoveryCardControl : PanelContainer
     };
 
     [Dependency] private IEntityManager _entity = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
 
     public readonly ProtoId<CEScienceDiscoveryPrototype> DiscoveryId;
 
@@ -39,8 +40,21 @@ public sealed partial class CEScienceDiscoveryCardControl : PanelContainer
         DiscoveryId = discovery.ID;
 
         HeaderPanel.PanelOverride = new StyleBoxFlat { BackgroundColor = headerColor };
-        NameLabel.Text = Loc.GetString(knowledge.Name);
-        IconTexture.Texture = _entity.System<SpriteSystem>().Frame0(knowledge.Icon);
+        NameLabel.Text = knowledge.GetTitle(_prototype);
+        ToolTip = knowledge.GetDescription(_prototype);
+
+        var texture = knowledge.GetIconTexture();
+        if (texture is not null)
+        {
+            IconTexture.Visible = true;
+            IconTexture.Texture = _entity.System<SpriteSystem>().Frame0(texture);
+        }
+        else if (knowledge.GetPreviewEntity(_prototype) is { } previewEntity)
+        {
+            EntityView.Visible = true;
+            EntityView.SetPrototype(previewEntity);
+        }
+
         DescLabel.Text = _entity.System<CEKnowledgeSystem>().GetKnowledgeEffectDescription(discovery.Knowledge);
 
         OnKeyBindDown += args =>

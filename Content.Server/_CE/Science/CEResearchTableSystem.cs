@@ -123,7 +123,7 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
         projectComp.Tiles = _science.GenerateMap(discovery);
         Dirty(project, projectComp);
 
-        var discoveryName = Loc.GetString(knowledge.Name);
+        var discoveryName = knowledge.GetTitle(_proto);
         _metaData.SetEntityName(project, Loc.GetString("ce-discovery-project-name", ("discovery", discoveryName)));
 
         var description = Loc.GetString("ce-discovery-project-description",

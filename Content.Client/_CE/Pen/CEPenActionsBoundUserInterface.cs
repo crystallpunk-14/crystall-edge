@@ -95,10 +95,14 @@ public sealed partial class CEPenActionsBoundUserInterface : BoundUserInterface
             if (!_prototype.TryIndex(knowledgeId, out var knowledge))
                 continue;
 
+            var texture = knowledge.GetIconTexture();
+
             options.Add(new RadialMenuActionOption<ProtoId<CEKnowledgePrototype>>(HandleKnowledgePicked, knowledgeId)
             {
-                ToolTip = Loc.GetString(knowledge.Name),
-                IconSpecifier = RadialMenuIconSpecifier.With(knowledge.Icon),
+                ToolTip = knowledge.GetTitle(_prototype),
+                IconSpecifier = texture is not null
+                    ? RadialMenuIconSpecifier.With(texture)
+                    : RadialMenuIconSpecifier.With(knowledge.PreviewEntity),
             });
         }
 

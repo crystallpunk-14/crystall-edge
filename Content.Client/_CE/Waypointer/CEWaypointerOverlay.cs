@@ -3,23 +3,21 @@ using Robust.Client.Graphics;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 using System.Numerics;
-using Content.Client.Shuttles.Systems;
 using Content.Client.Station;
-using Content.Shared.Shuttles.Components;
 using Content.Shared.Station.Components;
-using Content.Shared.Waypointer;
+using Content.Shared._CE.Waypointer;
 using Content.Shared.Whitelist;
 using Robust.Client.Player;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Utility;
 
-namespace Content.Client.Waypointer;
+namespace Content.Client._CE.Waypointer;
 
 /// <summary>
 /// This Overlay draws the waypointers on the screen.
 /// </summary>
-public sealed partial class WaypointerOverlay : Overlay
+public sealed partial class CEWaypointerOverlay : Overlay
 {
     private static readonly ProtoId<ShaderPrototype> UnshadedShader = "unshaded";
 
@@ -32,12 +30,11 @@ public sealed partial class WaypointerOverlay : Overlay
     private readonly StationSystem _station;
     private readonly TransformSystem _transform;
     private readonly ShaderInstance _unshadedShader;
-    private readonly ShuttleSystem _shuttle;
     private readonly EntityWhitelistSystem _whitelist;
 
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
 
-    internal WaypointerOverlay()
+    internal CEWaypointerOverlay()
     {
         IoCManager.InjectDependencies(this);
 
@@ -46,7 +43,6 @@ public sealed partial class WaypointerOverlay : Overlay
         _station = _entity.System<StationSystem>();
         _transform = _entity.System<TransformSystem>();
         _unshadedShader = _prototype.Index(UnshadedShader).Instance();
-        _shuttle = _entity.System<ShuttleSystem>();
         _whitelist = _entity.System<EntityWhitelistSystem>();
     }
 
@@ -59,7 +55,7 @@ public sealed partial class WaypointerOverlay : Overlay
         handle.UseShader(_unshadedShader); // Waypointers are unshaded.
 
         if (_player.LocalEntity == null
-            || !_entity.TryGetComponent<WaypointerComponent>(_player.LocalEntity, out var waypointer)
+            || !_entity.TryGetComponent<CEWaypointerComponent>(_player.LocalEntity, out var waypointer)
             || !_entity.TryGetComponent<TransformComponent>(_player.LocalEntity, out var playerXform)
             || playerXform.MapID != args.MapId)
             return;

@@ -7,11 +7,3 @@ ce-knowledge-effect-workbench-header = Открывает возможность
 ce-knowledge-effect-workbench-header-generic = Открывает возможность крафта:
 ce-knowledge-effect-infusion-altar-header = Раскрывает секреты создания на [color=pink]алтаре слияния[/color]:
 ce-knowledge-effect-list-item = - [color=yellow]{ $item }[/color]
-
-ce-knowledge-drill-advanced = Продвинутое бурение
-ce-knowledge-hoverboard = Ховерборды
-ce-knowledge-portable-essence-attractor = Портативный аттрактор эссенции
-ce-knowledge-node-stabilizer = Сфера содержания ноды
-ce-knowledge-mana-transfer-glove = Перчатка передачи маны
-ce-knowledge-magic-defib = Посох воскрешения
-ce-knowledge-third-arm-mining-module = Шахтёрский модуль манипулятора

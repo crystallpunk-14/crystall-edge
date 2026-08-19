@@ -30,7 +30,7 @@ public sealed partial class LearnKnowledge : CEEntityEffectBase<LearnKnowledge>
             if (!prototype.TryIndex(knowledgeId, out var knowledge))
                 continue;
 
-            var header = Loc.GetString("ce-entity-effect-guidebook-learn-knowledge", ("name", Loc.GetString(knowledge.Name)));
+            var header = Loc.GetString("ce-entity-effect-guidebook-learn-knowledge", ("name", knowledge.GetTitle(prototype)));
             var effects = knowledgeSystem.GetKnowledgeEffectDescription(knowledgeId);
 
             lines.Add(effects.Length > 0 ? $"{header}\n{effects}" : header);

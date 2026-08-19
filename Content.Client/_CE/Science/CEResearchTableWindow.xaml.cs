@@ -239,7 +239,7 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
             !_prototype.TryIndex(discovery.Knowledge, out var knowledge))
             return;
 
-        ProjectTitleLabel.Text = Loc.GetString("ce-research-table-project-title", ("discovery", Loc.GetString(knowledge.Name)));
+        ProjectTitleLabel.Text = Loc.GetString("ce-research-table-project-title", ("discovery", knowledge.GetTitle(_prototype)));
 
         var hasParallax = !string.IsNullOrEmpty(area.Parallax);
         if (hasParallax)

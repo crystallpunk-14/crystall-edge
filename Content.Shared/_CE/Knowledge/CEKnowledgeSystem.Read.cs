@@ -33,7 +33,7 @@ public sealed partial class CEKnowledgeSystem
         if (!_proto.TryIndex(ent.Comp.Knowledge, out var knowledge))
             return;
 
-        _metaData.SetEntityName(ent, Loc.GetString(knowledge.Name));
+        _metaData.SetEntityName(ent, knowledge.GetTitle(_proto));
 
         var effects = GetKnowledgeEffectDescription(ent.Comp.Knowledge);
         if (effects.Length > 0)
