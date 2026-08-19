@@ -12,9 +12,10 @@ public sealed partial class CEWaypointerClothingComponent : Component
 {
     /// <summary>
     /// The prototype of the waypointer that this clothing will grant to the wearer.
+    /// Contributed to CEWaypointerComponent's resolved set while equipped in a matching slot.
     /// </summary>
     [DataField(required: true)]
-    public List<ProtoId<CEWaypointerPrototype>> WaypointerProtoIds;
+    public HashSet<ProtoId<CEWaypointerPrototype>> WaypointerProtoIds = new();
 
     /// <summary>
     /// The slots that, when equipped into, will grant the waypointer effect.

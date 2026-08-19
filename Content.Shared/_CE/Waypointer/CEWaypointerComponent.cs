@@ -11,20 +11,11 @@ namespace Content.Shared._CE.Waypointer;
 public sealed partial class CEWaypointerComponent : Component
 {
     /// <summary>
-    /// The actual UID for the action entity. It'll be saved here when the component is initialized.
+    /// The resolved set of waypointer prototypes currently visible for the owner of this component.
+    /// Recomputed by CESharedWaypointerSystem.RefreshWaypointers from every active source (clothing, statuses, etc).
     /// </summary>
     [DataField, AutoNetworkedField]
-    public EntityUid? ActionEntity;
+    public HashSet<ProtoId<CEWaypointerPrototype>> WaypointerProtoIds = new();
 
-    /// <summary>
-    /// The prototype ID for the action.
-    /// </summary>
-    [DataField]
-    public EntProtoId ActionProtoId = "CEActionToggleWaypointers";
-
-    /// <summary>
-    /// The prototype of the waypointer visible for the owner of this component.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public List<ProtoId<CEWaypointerPrototype>> WaypointerProtoIds = new();
+    public override bool SendOnlyToOwner => true;
 }

@@ -2,14 +2,16 @@
   id: CEActionThiefShowTreasures
   name: Treasure hunt
   parent: BaseMentalAction
-  description: You listen to your intuition, searching for treasures near you. If they are nearby, you can notice them and even hear them from a distance. Don't worry, it's just your subconscious playing tricks on you, and no one around you will notice.
+  description: You listen to your intuition, sensing the direction of treasures near you. Don't worry, it's just your subconscious playing tricks on you, and no one around you will notice.
   components:
   - type: Action
-    clientExclusive: true
     icon:
       sprite: _CE/Interface/Skills/thief.rsi
       state: treasure_show
+    iconOn:
+      sprite: _CE/Interface/Skills/thief.rsi
+      state: treasure_show_on
     itemIconStyle: BigAction
     priority: -8
   - type: InstantAction
-    event: !type:CEThiefShowTreasuresEvent
+    event: !type:CEThiefToggleTreasureSenseEvent
