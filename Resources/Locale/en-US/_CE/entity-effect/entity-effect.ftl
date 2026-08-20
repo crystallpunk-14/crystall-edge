@@ -18,6 +18,8 @@ ce-entity-effect-guidebook-weapon-effect-slot = Triggers the weapon's linked eff
 ce-entity-effect-guidebook-weapon-arc-attack = Strikes in a [color=yellow]{ $arcWidth }°[/color] arc, hitting all targets caught within it
 ce-entity-effect-guidebook-damage = Deals { $damages } damage
 ce-entity-effect-guidebook-damage-entry = [color=yellow]{ $amount }[/color] { $type }
+ce-entity-effect-guidebook-heal = Heals { $heals }
+ce-entity-effect-guidebook-heal-entry = [color=yellow]{ $amount }[/color] { $group }
 ce-entity-effect-guidebook-shoot-projectile = Fires [color=yellow]{ $count }[/color]x [color=yellow]{ $item }[/color]
 ce-entity-effect-guidebook-vomit = Has a [color=yellow]{ $chance }%[/color] chance of making the target vomit
 ce-entity-effect-guidebook-irradiate = Irradiates the area with [color=yellow]{ $charge }[/color] magical energy for [color=yellow]{ $duration }[/color] sec.

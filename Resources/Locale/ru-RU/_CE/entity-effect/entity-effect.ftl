@@ -18,6 +18,8 @@ ce-entity-effect-guidebook-weapon-effect-slot = Запускает связан�
 ce-entity-effect-guidebook-weapon-arc-attack = Наносит удар по дуге в [color=yellow]{ $arcWidth }°[/color], поражая всех попавших в неё целей
 ce-entity-effect-guidebook-damage = Наносит { $damages } урона
 ce-entity-effect-guidebook-damage-entry = [color=yellow]{ $amount }[/color] { $type }
+ce-entity-effect-guidebook-heal = Лечит { $heals }
+ce-entity-effect-guidebook-heal-entry = [color=yellow]{ $amount }[/color] { $group }
 ce-entity-effect-guidebook-shoot-projectile = Выпускает [color=yellow]{ $count }[/color]x [color=yellow]{ $item }[/color]
 ce-entity-effect-guidebook-vomit = С вероятностью [color=yellow]{ $chance }%[/color] вызывает у цели рвоту
 ce-entity-effect-guidebook-irradiate = Облучает область [color=yellow]{ $charge }[/color] магической энергией в течение [color=yellow]{ $duration }[/color] сек.
