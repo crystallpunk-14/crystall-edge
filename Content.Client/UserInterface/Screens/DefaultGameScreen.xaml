@@ -3,12 +3,11 @@
     xmlns:screens="clr-namespace:Content.Client.UserInterface.Screens"
     xmlns:menuBar="clr-namespace:Content.Client.UserInterface.Systems.MenuBar.Widgets"
     xmlns:actions="clr-namespace:Content.Client.UserInterface.Systems.Actions.Widgets"
-    xmlns:chat="clr-namespace:Content.Client.UserInterface.Systems.Chat.Widgets"
     xmlns:alerts="clr-namespace:Content.Client.UserInterface.Systems.Alerts.Widgets"
+    xmlns:ceChat="clr-namespace:Content.Client._CE.UserInterface.Systems.Chat.Widgets"
     xmlns:widgets="clr-namespace:Content.Client.UserInterface.Systems.Ghost.Widgets"
     xmlns:hotbar="clr-namespace:Content.Client.UserInterface.Systems.Hotbar.Widgets"
     xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
-    xmlns:inventory="clr-namespace:Content.Client.UserInterface.Systems.Inventory.Widgets"
     xmlns:vitals="clr-namespace:Content.Client._CE.UserInterface.Systems.Vitals.Widgets"
     Name="DefaultHud"
     VerticalExpand="False"
@@ -26,9 +25,11 @@
         <BoxContainer Name="VoteMenu" Access="Public" Margin="0 10 0 10" Orientation="Vertical"/>
     </BoxContainer>
     <widgets:GhostGui Name="Ghost" Access="Protected" />
-    <inventory:InventoryGui Name="Inventory" Access="Protected" />
+    <!-- CrystallEdge: inventory UI removed from the main screen -->
+    <!-- <inventory:InventoryGui Name="Inventory" Access="Protected" /> -->
     <hotbar:HotbarGui Name="Hotbar" Access="Protected" />
-    <chat:ResizableChatBox Name="Chat" Access="Protected" />
+    <!-- CrystallEdge: bottom-left, no-background, fading chat -->
+    <ceChat:CEChatBox Name="Chat" Access="Protected" />
     <alerts:AlertsUI Name="Alerts" Access="Protected" />
     <vitals:CEHealthUI Name="HealthBar" Access="Public" />
     <vitals:CEManaUI Name="ManaBar" Access="Public" />

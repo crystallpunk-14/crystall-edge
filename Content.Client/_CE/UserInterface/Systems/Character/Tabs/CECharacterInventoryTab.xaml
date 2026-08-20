@@ -1,0 +1,28 @@
+<tabs:CECharacterInventoryTab
+    xmlns="https://spacestation14.io"
+    xmlns:tabs="clr-namespace:Content.Client._CE.UserInterface.Systems.Character.Tabs"
+    xmlns:inventory="clr-namespace:Content.Client.UserInterface.Systems.Inventory.Controls"
+    xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls"
+    Orientation="Horizontal"
+    HorizontalExpand="True"
+    VerticalExpand="True">
+    <BoxContainer Orientation="Vertical" HorizontalAlignment="Center" Margin="10">
+        <Label Name="NameLabel" Access="Public" StyleClasses="LabelHeading" HorizontalAlignment="Center" />
+        <SpriteView Name="SpriteView" Access="Public" OverrideDirection="South" Scale="6 6" SetSize="128 128" Margin="4" />
+        <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 5">
+            <Button Name="RotateLeft" Text="◀" StyleClasses="OpenRight" />
+            <cc:VSeparator Margin="2 0 3 0" />
+            <Button Name="RotateRight" Text="▶" StyleClasses="OpenLeft" />
+        </BoxContainer>
+    </BoxContainer>
+    <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True" Margin="10">
+        <inventory:ItemSlotButtonContainer
+            Name="InventorySlots"
+            Access="Public"
+            MaxColumns="3"
+            SlotGroup="Default"
+            VerticalExpand="True"
+            HorizontalAlignment="Center"
+        />
+    </BoxContainer>
+</tabs:CECharacterInventoryTab>

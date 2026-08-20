@@ -67,9 +67,6 @@ public sealed partial class CEHealthUiController : UIController
         if (UIManager.ActiveScreen is DefaultGameScreen game)
             return game.HealthBar;
 
-        if (UIManager.ActiveScreen is SeparatedChatGameScreen separated)
-            return separated.HealthBar;
-
         return null;
     }
 

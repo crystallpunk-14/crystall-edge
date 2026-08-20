@@ -81,7 +81,8 @@ public partial class ChatBox : UIWidget
         _controller.UpdateSelectedChannel(this);
     }
 
-    public void Repopulate()
+    // CrystallEdge: allow subclasses to rebuild their own message list (e.g. after admin erase)
+    public virtual void Repopulate()
     {
         Contents.Clear();
 
