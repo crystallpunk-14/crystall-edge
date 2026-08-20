@@ -10,6 +10,7 @@ public abstract partial class CESharedActionSystem
     {
         SubscribeLocalEvent<CEActionManaCostComponent, ActionPerformedEvent>(OnManaCostActionPerformed);
         SubscribeLocalEvent<CEActionStaminaCostComponent, ActionPerformedEvent>(OnStaminaCostActionPerformed);
+        SubscribeLocalEvent<CEActionEssenceCostComponent, ActionPerformedEvent>(OnEssenceCostActionPerformed);
     }
 
     private void OnManaCostActionPerformed(Entity<CEActionManaCostComponent> ent, ref ActionPerformedEvent args)
@@ -43,5 +44,10 @@ public abstract partial class CESharedActionSystem
     private void OnStaminaCostActionPerformed(Entity<CEActionStaminaCostComponent> ent, ref ActionPerformedEvent args)
     {
         _stamina.TakeStaminaDamage(args.Performer, ent.Comp.Cost);
+    }
+
+    private void OnEssenceCostActionPerformed(Entity<CEActionEssenceCostComponent> ent, ref ActionPerformedEvent args)
+    {
+        _magicFocus.TrySpendEssence(args.Performer, ent.Comp.EssenceCost);
     }
 }

@@ -1,3 +1,4 @@
+using System.Text;
 using Content.Shared._CE.Actions.Components;
 using Content.Shared.Actions.Components;
 using Content.Shared.Examine;
@@ -11,6 +12,7 @@ public abstract partial class CESharedActionSystem
         SubscribeLocalEvent<ActionComponent, ExaminedEvent>(OnActionExamined);
         SubscribeLocalEvent<CEActionManaCostComponent, ExaminedEvent>(OnManacostExamined);
         SubscribeLocalEvent<CEActionStaminaCostComponent, ExaminedEvent>(OnStaminaCostExamined);
+        SubscribeLocalEvent<CEActionEssenceCostComponent, ExaminedEvent>(OnEssenceCostExamined);
 
         SubscribeLocalEvent<CEActionWeaponRequiredComponent, ExaminedEvent>(OnWeaponRequiredExamined);
     }
@@ -30,6 +32,27 @@ public abstract partial class CESharedActionSystem
     private void OnManacostExamined(Entity<CEActionManaCostComponent> ent, ref ExaminedEvent args)
     {
         args.PushMarkup($"{Loc.GetString("ce-magic-manacost")}: [color=#5da9e8]{ent.Comp.ManaCost}[/color]", priority: 9);
+    }
+
+    private void OnEssenceCostExamined(Entity<CEActionEssenceCostComponent> ent, ref ExaminedEvent args)
+    {
+        if (ent.Comp.EssenceCost.Count == 0)
+            return;
+
+        var sb = new StringBuilder();
+        sb.Append(Loc.GetString("ce-magic-essencecost"));
+        sb.Append(": \n");
+
+        foreach (var (type, amount) in ent.Comp.EssenceCost)
+        {
+            if (!_proto.Resolve(type, out var essenceProto))
+                continue;
+
+            sb.Append($"- [color={essenceProto.Color.ToHex()}]{essenceProto.Name}[/color]: {amount}\n");
+        }
+        sb.Append("\n");
+
+        args.PushMarkup(sb.ToString(), priority: 9);
     }
 
     private void OnWeaponRequiredExamined(Entity<CEActionWeaponRequiredComponent> ent, ref ExaminedEvent args)

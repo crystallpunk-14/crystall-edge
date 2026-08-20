@@ -17,6 +17,10 @@
     radius: 0.5
   - type: CEActionManaCost
     manaCost: 15
+  - type: CEActionEssenceCost
+    essenceCost:
+      Life: 2
+      Healing: 1
   - type: CEActionStaminaCost
     cost: 20
   - type: Action

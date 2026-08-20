@@ -1,0 +1,30 @@
+- type: entity
+  id: CECastingStaffAdmin
+  parent: BaseItem
+  name: spellcasting admin staff
+  description: TODO
+  categories: [ ForkFiltered, DoNotMap ]
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Tools/healing_staff.rsi
+    layers:
+      - state: icon
+        color: red
+  - type: Clothing
+    equipDelay: 1
+    unequipDelay: 1
+    sprite: _CE/Objects/Tools/healing_staff.rsi
+    quickEquip: false
+    equipWhileMoving: true
+    slots:
+    - neck
+  - type: Item
+    size: Ginormous
+  - type: CEMagicFocusInhand
+  - type: CEMagicFocus
+    baseMinimum: 10
+    maxEssence:
+      Life: 20
+    currentEssence:
+      Life: 20
+      Healing: 10

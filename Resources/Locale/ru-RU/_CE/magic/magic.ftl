@@ -37,3 +37,6 @@ ce-magic-spell-target-mob-state-critical = умирающих
 
 ce-magic-skillpointcost = Стоимость ресурса "{$name}": [color=#eba834]{$count}[/color]
 ce-magic-spell-skillpoint-not-enough = Не хватает {$count} ресурса(ов) "{$name}"!
+
+ce-magic-essencecost = Затраты эссенции
+ce-magic-spell-not-enough-essence = Недостаточно магической эссенции!
