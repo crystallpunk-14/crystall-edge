@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Shared._CE.ZLevels.Core;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Damage.Components;
 using Content.Shared.Database;
@@ -145,10 +146,12 @@ public sealed partial class HitscanBasicRaycastSystem : EntitySystem
 
         if (sprites.Count > 0)
         {
+            // CrystallEdge: use ZPvs so players watching from adjacent Z-levels also receive hitscan visuals
             RaiseNetworkEvent(new SharedGunSystem.HitscanEvent
             {
                 Sprites = sprites,
-            }, Filter.Pvs(fromCoordinates, entityMan: EntityManager));
+            }, CEFilter.ZPvs(hitscanUid, EntityManager));
+            // CrystallEdge end
         }
     }
 }

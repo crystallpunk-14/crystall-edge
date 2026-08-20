@@ -740,3 +740,20 @@
   id: 1069
   time: '2026-08-19T14:21:24.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/421
+- author: TheShuEd
+  changes:
+  - message: Fixed a bug that caused some walls and fences to appear to be floating
+      in the air
+    type: Fix
+  - message: Fixed a bug that caused hitscans to be invisible from other levels.
+    type: Fix
+  id: 1070
+  time: '2026-08-20T12:26:06.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/425
+- author: TheShuEd
+  changes:
+  - message: Fixed armchairs! They are now pullable, anchorable and deconstructable.
+    type: Fix
+  id: 1071
+  time: '2026-08-20T16:00:01.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/426
