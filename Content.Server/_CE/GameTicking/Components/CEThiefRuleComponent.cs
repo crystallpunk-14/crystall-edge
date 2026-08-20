@@ -1,6 +1,3 @@
-using Content.Shared._CE.Skill.Prototypes;
-using Robust.Shared.Prototypes;
-
 namespace Content.Server._CE.GameTicking.Components;
 
 /// <summary>
@@ -9,9 +6,4 @@ namespace Content.Server._CE.GameTicking.Components;
 [RegisterComponent, Access(typeof(CEThiefRuleSystem))]
 public sealed partial class CEThiefRuleComponent : Component
 {
-    [DataField]
-    public ProtoId<CESkillTreePrototype> ThiefSkillTree = "Thief";
-
-    [DataField]
-    public ProtoId<CESkillPointPrototype> SkillPointType = "Memory"; //TODO: fix duplicating with CEThiefRoleComponent
 }

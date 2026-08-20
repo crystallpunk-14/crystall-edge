@@ -79,4 +79,9 @@ public sealed partial class ReplaceAction : CESkillEffect
         entManager.DeleteEntity(dummyAction);
         return ev.GetTotalMessage().ToMarkup();
     }
+
+    public override SpriteSpecifier? GetIcon(IEntityManager entManager, IPrototypeManager protoManager)
+    {
+        return null;
+    }
 }

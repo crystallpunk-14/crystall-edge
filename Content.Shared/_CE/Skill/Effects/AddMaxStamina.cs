@@ -36,4 +36,9 @@ public sealed partial class AddMaxStamina : CESkillEffect
     {
         return Loc.GetString("ce-skill-desc-add-stamina", ("stamina", AdditionalStamina.ToString()));
     }
+
+    public override Robust.Shared.Utility.SpriteSpecifier? GetIcon(IEntityManager entManager, IPrototypeManager protoManager)
+    {
+        return null;
+    }
 }

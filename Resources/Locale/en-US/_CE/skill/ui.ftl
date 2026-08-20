@@ -2,11 +2,6 @@ ce-verb-categories-admin-skill-add = Add skill
 ce-verb-categories-admin-skill-remove = Remove skill
 
 ce-skill-info-title = Skills
-ce-game-hud-open-skill-menu-button-tooltip = Skill tree
-
-ce-skill-menu-learn-button = Learn skill
-ce-skill-menu-learncost = [color=yellow]{$type} required:[/color]
-ce-skill-menu-free = [color=green]This skill is innate to your character, and does not cost skill points![/color]
 
 ce-skill-desc-add-mana = Increases your character's mana amount by {$mana}.
 ce-skill-desc-add-stamina = Increases your character's stamina amount by {$stamina}.

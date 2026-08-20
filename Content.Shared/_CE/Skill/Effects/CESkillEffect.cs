@@ -1,6 +1,7 @@
 using Content.Shared._CE.Skill.Prototypes;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Shared._CE.Skill.Effects;
 
@@ -15,4 +16,6 @@ public abstract partial class CESkillEffect
     public abstract string? GetName(IEntityManager entManager, IPrototypeManager protoManager);
 
     public abstract string? GetDescription(IEntityManager entManager, IPrototypeManager protoManager, ProtoId<CESkillPrototype> skill);
+
+    public abstract SpriteSpecifier? GetIcon(IEntityManager entManager, IPrototypeManager protoManager);
 }

@@ -1,3 +1,12 @@
+
+- type: skill
+  id: CureWounds
+  icon:
+    sprite: _CE/Actions/Spells/cure_wounds.rsi
+    state: icon
+  effect: !type:AddAction
+    action: CEActionSpellCureWounds
+
 - type: entity
   id: CEActionSpellCureWounds
   name: Cure wounds
@@ -7,7 +16,7 @@
   - type: CEVisualizeAoEZoneAction
     radius: 0.5
   - type: CEActionManaCost
-    manaCost: 35
+    manaCost: 15
   - type: CEActionStaminaCost
     cost: 20
   - type: Action

@@ -1,65 +1,80 @@
-using System.Numerics;
 using Content.Shared._CE.Skill.Effects;
 using Content.Shared._CE.Skill.Restrictions;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Array;
 using Robust.Shared.Utility;
 
 namespace Content.Shared._CE.Skill.Prototypes;
 
 /// <summary>
-/// A skill that can be learned by the player. Skills are grouped into trees, and each skill has a cost to learn, prerequisites, and an effect.
+/// A skill that can be learned by the player. Skills have prerequisites and an effect.
 /// </summary>
 [Prototype("skill")]
-public sealed partial class CESkillPrototype : IPrototype
+public sealed partial class CESkillPrototype : IPrototype, IInheritingPrototype
 {
-    [IdDataField] public string ID { get; private set; } = default!;
+    [IdDataField]
+    public string ID { get; private set; } = default!;
+
+    [ParentDataField(typeof(AbstractPrototypeIdArraySerializer<CESkillPrototype>))]
+    public string[]? Parents { get; private set; }
+
+    [AbstractDataField]
+    [NeverPushInheritance]
+    public bool Abstract { get; private set; }
 
     /// <summary>
     /// Skill Title. If you leave null, the name will try to generate from Effect.GetName()
     /// </summary>
-    [DataField]
-    public LocId? Name = null;
+    [DataField("name")]
+    public LocId? NameOverride = null;
 
     /// <summary>
     /// Skill Description. If you leave null, the description will try to generate from Effect.GetDescription()
     /// </summary>
-    [DataField]
-    public LocId? Desc = null;
+    [DataField("desc")]
+    public LocId? DescOverride = null;
 
     /// <summary>
-    /// The tree this skill belongs to. This is used to group skills together in the UI.
+    /// Icon for the skill. If you leave null, the icon will try to generate from Effect.GetIcon()
+    /// </summary>
+    [DataField("icon")]
+    public SpriteSpecifier? IconOverride;
+
+    /// <summary>
+    /// Skill effect. This is used to determine what happens when the player learns the skill.
     /// </summary>
     [DataField(required: true)]
-    public ProtoId<CESkillTreePrototype> Tree = default!;
+    public CESkillEffect Effect = default!;
 
     /// <summary>
-    ///  The cost to learn this skill. This is used to determine how many skill points are needed to learn the skill.
+    /// Skill restriction. Any reason why a player cannot learn this skill.
     /// </summary>
-    [DataField]
-    public float LearnCost = 1f;
-
-    /// <summary>
-    ///  Skill UI position. This is used to determine where the skill will be displayed in the skill tree UI.
-    /// </summary>
-    [DataField(required: true)]
-    public Vector2 SkillUiPosition = default!;
-
-    /// <summary>
-    ///  Icon for the skill. This is used to display the skill in the skill tree UI.
-    /// </summary>
-    [DataField(required: true)]
-    public SpriteSpecifier Icon = default!;
-
-    /// <summary>
-    ///  Skill effect. This is used to determine what happens when the player learns the skill. If you leave null, the skill will not have any effect.
-    ///  But the presence of the skill itself can affect some systems that check for the presence of certain skills.
-    /// </summary>
-    [DataField]
-    public List<CESkillEffect> Effects = new();
-
-    /// <summary>
-    /// Skill restriction. Limiters on learning. Any reason why a player cannot learn this skill.
-    /// </summary>
-    [DataField]
+    [DataField(serverOnly: true)]
+    [AlwaysPushInheritance]
     public List<CESkillRestriction> Restrictions = new();
+
+    /// <summary>
+    /// The visual effect visible around the skill while it is in the world as a pickable enhancement.
+    /// </summary>
+    [DataField]
+    public SpriteSpecifier? Vfx;
+
+    /// <summary>
+    /// Light color for the skill while it is in the world as a pickable enhancement.
+    /// </summary>
+    [DataField]
+    public Color Color = Color.White;
+
+    /// <summary>
+    /// Whether this skill can only be learned once.
+    /// </summary>
+    [DataField]
+    public bool Unique = true;
+
+    /// <summary>
+    /// Relative weight of this skill when it is randomly selected for a player.
+    /// </summary>
+    [DataField]
+    [AlwaysPushInheritance]
+    public float Weight = 1f;
 }

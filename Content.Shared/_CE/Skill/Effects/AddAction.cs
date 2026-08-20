@@ -67,4 +67,9 @@ public sealed partial class AddAction : CESkillEffect
         entManager.DeleteEntity(dummyAction);
         return ev.GetTotalMessage().ToMarkup();
     }
+
+    public override SpriteSpecifier? GetIcon(IEntityManager entManager, IPrototypeManager protoManager)
+    {
+        return null;
+    }
 }

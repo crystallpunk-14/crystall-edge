@@ -11,7 +11,6 @@ public abstract partial class CESharedSkillSystem
 {
 
     private IEnumerable<CESkillPrototype>? _allSkills;
-    private IEnumerable<CESkillTreePrototype>? _allTrees;
     private void InitializeAdmin()
     {
         SubscribeLocalEvent<CESkillStorageComponent, GetVerbsEvent<Verb>>(OnGetAdminVerbs);
@@ -32,7 +31,6 @@ public abstract partial class CESharedSkillSystem
     private void UpdateCachedSkill()
     {
         _allSkills = _proto.EnumeratePrototypes<CESkillPrototype>();
-        _allTrees = _proto.EnumeratePrototypes<CESkillTreePrototype>();
     }
 
 
@@ -41,7 +39,7 @@ public abstract partial class CESharedSkillSystem
         if (!_admin.HasAdminFlag(args.User, AdminFlags.Admin))
             return;
 
-        if (_allSkills is null || _allTrees is null)
+        if (_allSkills is null)
             return;
 
         var target = args.Target;

@@ -98,4 +98,9 @@ public sealed partial class UnlockConstructions : CESkillEffect
 
         return sb.ToString();
     }
+
+    public override Robust.Shared.Utility.SpriteSpecifier? GetIcon(IEntityManager entManager, IPrototypeManager protoManager)
+    {
+        return null;
+    }
 }
