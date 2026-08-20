@@ -4,12 +4,12 @@
   id: CECaw
   name: ce-chat-emote-name-caw
   category: Vocal
-  icon: _CE/Interface/Emotes/jojocrow.png
+  icon: _CE/Interface/Emotes/caw.png
   whitelist:
     requireAll: true
     components:
     - Vocal
-  chatMessages: ["ce-chat-emote-name-caw"]
+  chatMessages: ["ce-chat-emote-msg-caw"]
   chatTriggers:
   # English translation/английский перевод
   - caw
