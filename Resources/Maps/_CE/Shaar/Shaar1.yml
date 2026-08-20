@@ -1799,8 +1799,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -0.5,1.5
       parent: 1
-    - type: CEZPhysics
-      localPosition: 1
   - uid: 123
     components:
     - type: Transform
@@ -1841,8 +1839,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -0.5,5.5
       parent: 1
-    - type: CEZPhysics
-      localPosition: 1
   - uid: 216
     components:
     - type: Transform
@@ -7811,15 +7807,11 @@ entities:
     - type: Transform
       pos: 4.5,8.5
       parent: 1
-    - type: CEZPhysics
-      localPosition: 1
   - uid: 224
     components:
     - type: Transform
       pos: 2.5,8.5
       parent: 1
-    - type: CEZPhysics
-      localPosition: 1
   - uid: 225
     components:
     - type: Transform
@@ -9255,23 +9247,17 @@ entities:
       rot: 3.141592653589793 rad
       pos: -18.5,1.5
       parent: 1
-    - type: CEZPhysics
-      localPosition: 0.775
   - uid: 988
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -18.5,-5.5
       parent: 1
-    - type: CEZPhysics
-      localPosition: 0.775
   - uid: 1014
     components:
     - type: Transform
       pos: -24.5,-5.5
       parent: 1
-    - type: CEZPhysics
-      localPosition: 0.775
   - uid: 1040
     components:
     - type: Transform

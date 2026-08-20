@@ -25,7 +25,7 @@ public sealed partial class CEZPhysicsComponent : Component
     /// The current height of the entity within the current Z-level.
     /// Takes values from 0 to 1. If the value rises above 1, the entity moves up to the next level and the value is normalized.
     /// </summary>
-    [DataField, AutoNetworkedField]
+    [ViewVariables, AutoNetworkedField]
     public float LocalPosition;
 
     /// Optimization Caches
