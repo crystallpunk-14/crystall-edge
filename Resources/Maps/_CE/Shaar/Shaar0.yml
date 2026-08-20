@@ -1901,8 +1901,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 3.5,-13.5
       parent: 1
-    - type: CEZPhysics
-      localPosition: 1
     - type: Destructible
       thresholds:
       - behaviors:
@@ -2286,8 +2284,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 3.5,-14.5
       parent: 1
-    - type: CEZPhysics
-      localPosition: 1
     - type: Destructible
       thresholds:
       - behaviors:
@@ -11426,15 +11422,11 @@ entities:
     - type: Transform
       pos: 3.5,-13.5
       parent: 1
-    - type: CEZPhysics
-      localPosition: 1
   - uid: 278
     components:
     - type: Transform
       pos: 3.5,-14.5
       parent: 1
-    - type: CEZPhysics
-      localPosition: 1
   - uid: 321
     components:
     - type: Transform
