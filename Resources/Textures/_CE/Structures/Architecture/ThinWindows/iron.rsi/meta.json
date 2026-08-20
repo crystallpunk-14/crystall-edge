@@ -16,7 +16,19 @@
       "directions": 4
     },
     {
-      "name": "fence",
+      "name": "window",
+      "directions": 4
+    },
+    {
+      "name": "frame_closed",
+      "directions": 4
+    },
+    {
+      "name": "frame_opened",
+      "directions": 4
+    },
+    {
+      "name": "frame_window",
       "directions": 4
     }
   ]

@@ -12,7 +12,9 @@ namespace Content.Shared._CE.ZLevels.Core.Components;
 /// <summary>
 /// Allows entity to see through Z-levels
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true), UnsavedComponent, Access(typeof(CESharedZLevelsSystem))]
+[UnsavedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true)]
+[Access(typeof(CESharedZLevelsSystem))]
 public sealed partial class CEZLevelViewerComponent : Component
 {
     public HashSet<EntityUid> Eyes = new();
@@ -23,9 +25,13 @@ public sealed partial class CEZLevelViewerComponent : Component
     [DataField, AutoNetworkedField]
     public bool LookUp;
 
+    #region Actions
+
     [DataField]
-    public EntProtoId ActionProto = "CEActionToggleLookUp";
+    public EntProtoId ActionId = "CEActionToggleLookUp";
 
     [DataField, AutoNetworkedField]
-    public EntityUid? ZLevelActionEntity;
+    public EntityUid? ActionEntity;
+
+    #endregion
 }

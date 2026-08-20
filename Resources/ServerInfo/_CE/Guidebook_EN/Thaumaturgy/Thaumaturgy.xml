@@ -1,0 +1,47 @@
+<Document>
+# Thaumaturgy
+
+Thaumaturgy is the science of understanding the world around us and its secrets, through analysis of the interactions between its basic elements - magical essences.
+
+<Box>
+<GuideEntityEmbed Entity="CEGuidebookEssenceEarthDummy" Caption=""/>
+<GuideEntityEmbed Entity="CEGuidebookEssenceFireDummy" Caption=""/>
+<GuideEntityEmbed Entity="CEGuidebookEssenceWaterDummy" Caption=""/>
+<GuideEntityEmbed Entity="CEGuidebookEssenceAirDummy" Caption=""/>
+<GuideEntityEmbed Entity="CEGuidebookEssenceOrderDummy" Caption=""/>
+<GuideEntityEmbed Entity="CEGuidebookEssenceChaosDummy" Caption=""/>
+</Box>
+
+The work of thaumaturgists is divided into practical and theoretical parts.
+
+## Theoretical thaumaturgy
+
+As you study the world around you, various knowledge about how it works settles in your mind. This knowledge can be spent to uncover new secrets.
+
+<Box>
+<GuideEntityEmbed Entity="CEPenFeather" Caption=""/>
+<GuideEntityEmbed Entity="CEResearchTable" Caption=""/>
+<GuideEntityEmbed Entity="CEPaper" Caption=""/>
+</Box>
+
+The world is full of [bold]Secrets[/bold]. Each secret unlocks new possibilities for players.
+
+Using a research table, you can spend accumulated knowledge to make new discoveries. As a result of your research, you will write a book that holds the secrets you have uncovered. You can let anyone read this book to share the secret you discovered.
+
+<Box>
+<GuideEntityEmbed Entity="CEEssenceMagic" Caption=""/>
+<GuideEntityEmbed Entity="CEGuidebookThaumaturgy" Caption="Thaumamicon"/>
+<GuideEntityEmbed Entity="CEEssenceMind" Caption=""/>
+</Box>
+
+Uncovering secrets and building up a library is the main goal of scholars.
+
+## Practical thaumaturgy
+
+Making discoveries requires knowledge of the world around you. It is practical and investigative work that lets you accumulate that knowledge.
+
+Explore the following ways to accumulate knowledge:
+- [textlink="Research" link="CEThaumaturgyResearchEN"]
+- [textlink="Infusion altar" link="CEThaumaturgyInfusionAltarEN"]
+- Even more will appear in the future.
+</Document>

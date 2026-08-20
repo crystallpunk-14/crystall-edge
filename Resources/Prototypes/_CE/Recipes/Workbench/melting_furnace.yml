@@ -1,8 +1,14 @@
-# Ingot
+- type: CERecipe
+  id: CEBaseMeltingFurnaceRecipe
+  abstract: true
+  tag: CERecipeMeltingFurnace
+  workbench: CEMeltingFurnace
+
+#MARK: Ingot
 
 - type: CERecipe
   id: CEIronBar1
-  tag: CERecipeMeltingFurnace
+  parent: CEBaseMeltingFurnaceRecipe
   category: Materials
   craftTime: 2.5
   requirements:
@@ -17,7 +23,7 @@
 
 - type: CERecipe
   id: CEBrassBar1
-  tag: CERecipeMeltingFurnace
+  parent: CEBaseMeltingFurnaceRecipe
   category: Materials
   craftTime: 2.5
   requirements:
@@ -30,11 +36,11 @@
   result: CEBrassBar1
   resultCount: 1
 
-# Sheet
+#MARK: Sheet
 
 - type: CERecipe
   id: CEBrassSheet1
-  tag: CERecipeMeltingFurnace
+  parent: CEBaseMeltingFurnaceRecipe
   category: Materials
   craftTime: 2.5
   requirements:
@@ -49,7 +55,7 @@
 
 - type: CERecipe
   id: CEIronSheet1
-  tag: CERecipeMeltingFurnace
+  parent: CEBaseMeltingFurnaceRecipe
   category: Materials
   craftTime: 2.5
   requirements:
@@ -62,11 +68,11 @@
   result: CEIronSheet1
   resultCount: 2
 
-# Rod
+#MARK: Rod
 
 - type: CERecipe
   id: CEIronRod1
-  tag: CERecipeMeltingFurnace
+  parent: CEBaseMeltingFurnaceRecipe
   category: Materials
   craftTime: 2.5
   requirements:
@@ -81,7 +87,7 @@
 
 - type: CERecipe
   id: CEBrassRod1
-  tag: CERecipeMeltingFurnace
+  parent: CEBaseMeltingFurnaceRecipe
   category: Materials
   craftTime: 2.5
   requirements:
@@ -93,3 +99,17 @@
     count: 1
   result: CEBrassRod1
   resultCount: 5
+
+#MARK: Ash
+
+- type: CERecipe
+  id: CEAsh1
+  parent: CEBaseMeltingFurnaceRecipe
+  category: Materials
+  craftTime: 1.5
+  requirements:
+  - !type:MaterialResource
+    material: CEWood
+    count: 2
+  result: CEAsh1
+  resultCount: 1

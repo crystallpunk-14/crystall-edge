@@ -8,11 +8,11 @@ using Robust.Shared.Configuration;
 
 namespace Content.Client._CE.Roadmap;
 
-public sealed class CERoadmapUIController : UIController, IOnStateEntered<LobbyState>
+public sealed partial class CERoadmapUIController : UIController, IOnStateEntered<LobbyState>
 {
-    [Dependency] private readonly IConfigurationManager _config = default!;
-    [Dependency] private readonly InfoUIController _infoUIController = default!;
-    [Dependency] private readonly IUriOpener _uriOpener = default!;
+    [Dependency] private IConfigurationManager _config = default!;
+    [Dependency] private InfoUIController _infoUIController = default!;
+    [Dependency] private IUriOpener _uriOpener = default!;
 
     private CERoadmapWindow? _window;
     private bool _shown;

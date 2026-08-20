@@ -5,12 +5,15 @@
   description: Armored combat girdles.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Gloves/girdles.rsi
+    sprite: _CE/Clothing/Gloves/Generic/girdles.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Gloves/girdles.rsi
+    sprite: _CE/Clothing/Gloves/Generic/girdles.rsi
   - type: PhysicalComposition
     materialComposition:
       CEIron: 10
+  - type: CEMagicEssenceStructure
+    essences:
+      Metal: { min: 1, max: 3 }
 
 - type: entity
   parent: CEClothingGlovesBase
@@ -19,9 +22,9 @@
   description: Leather gloves, a deep favourite of the local jagermeister's.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Gloves/jagermeister_gloves.rsi
+    sprite: _CE/Clothing/Gloves/Generic/jagermeister_gloves.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Gloves/jagermeister_gloves.rsi
+    sprite: _CE/Clothing/Gloves/Generic/jagermeister_gloves.rsi
 
 - type: entity
   parent: CEClothingGlovesBase
@@ -30,6 +33,6 @@
   description: They say you can handle a newly poured ingot with them, but it's still not worth checking.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Gloves/blacksmith_gloves.rsi
+    sprite: _CE/Clothing/Gloves/Generic/blacksmith_gloves.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Gloves/blacksmith_gloves.rsi
+    sprite: _CE/Clothing/Gloves/Generic/blacksmith_gloves.rsi

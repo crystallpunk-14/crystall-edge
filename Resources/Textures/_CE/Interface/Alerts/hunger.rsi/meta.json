@@ -8,24 +8,6 @@
   },
   "states": [
     {
-      "name": "fed"
-    },
-    {
-      "name": "wellfed"
-    },
-    {
-      "name": "overfed",
-      "delays": [
-        [
-          0.2,
-          0.2
-        ]
-      ]
-    },
-    {
-      "name": "deadfed"
-    },
-    {
       "name": "love"
     }
   ]

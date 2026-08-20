@@ -101,26 +101,28 @@
     state: Townfolk
   jobName: ce-job-name-townfolk
 
-- type: jobIcon
-  parent: CEJobIcon
-  id: CEJobIconTailorMerchant
-  icon:
-    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-    state: TailorMerchant
-  jobName: ce-job-name-tailor-merchant
+# Academy
 
 - type: jobIcon
   parent: CEJobIcon
-  id: CEJobIconPharmacistMerchant
+  id: CEJobIconAcademyStudent
   icon:
     sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-    state: PharmacistMerchant
-  jobName: ce-job-name-pharmacist-merchant
+    state: Student
+  jobName: ce-job-name-academy-student
 
 - type: jobIcon
   parent: CEJobIcon
-  id: CEJobIconHomeGoodsMerchant
+  id: CEJobIconAcademyProfessor
   icon:
     sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-    state: HomeGoodsMerchant
-  jobName: ce-job-name-homegoods-merchant
+    state: Professor
+  jobName: ce-job-name-academy-professor
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconAcademyRector
+  icon:
+    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    state: Rector
+  jobName: ce-job-name-academy-rector

@@ -7,18 +7,22 @@
   components:
   - type: Item
     size: Tiny
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nicotine
-          Quantity: 10
+  - type: Solution
+    id: food
+    solution:
+      reagents:
+      - ReagentId: Nicotine
+        Quantity: 10
   - type: Sprite
     sprite: _CE/Objects/Misc/reagent_fillings.rsi
     state: tobacco_small
   - type: Tag
     tags:
       - Smokable
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant: { min: 1, max: 3 }
+      Poison: { min: 0, max: 2 }
 
 - type: entity
   name: ground sage
@@ -29,17 +33,21 @@
   components:
   - type: Item
     size: Tiny
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: THC
-          Quantity: 8
-        - ReagentId: Happiness
-          Quantity: 2
+  - type: Solution
+    id: food
+    solution:
+      reagents:
+      - ReagentId: THC
+        Quantity: 8
+      - ReagentId: Happiness
+        Quantity: 2
   - type: Sprite
     sprite: _CE/Objects/Misc/reagent_fillings.rsi
     state: sage_powder
   - type: Tag
     tags:
       - Smokable
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant: { min: 1, max: 3 }
+      Life: { min: 0, max: 1 }

@@ -7,11 +7,11 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.FlyerStamina;
 
-public sealed class CEZFlyerStaminaSystem : EntitySystem
+public sealed partial class CEZFlyerStaminaSystem : EntitySystem
 {
-    [Dependency] private readonly CESharedZFlightSystem _flight = default!;
-    [Dependency] private readonly SharedStaminaSystem _stamina = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private CESharedZFlightSystem _flight = default!;
+    [Dependency] private SharedStaminaSystem _stamina = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     public override void Initialize()
     {

@@ -61,6 +61,14 @@ public record struct HitscanRaycastFiredData
     /// Player who shot the gun, if null the gun was fired by itself.
     /// </summary>
     public EntityUid? Shooter;
+
+    // CrystallEdge: expose where the ray actually ended (hit entity or max distance) so consumers outside this
+    // framework (e.g. impact VFX) don't need to redo the raycast themselves.
+    /// <summary>
+    /// Coordinates where the raycast ended, whether it hit something or reached max distance.
+    /// </summary>
+    public EntityCoordinates HitCoordinates;
+    // CrystallEdge end
 }
 
 /// <summary>

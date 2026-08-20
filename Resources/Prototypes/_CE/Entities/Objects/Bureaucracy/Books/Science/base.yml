@@ -1,0 +1,49 @@
+- type: entity
+  id: CEBaseScienceBookArcaneEngineering
+  parent: CEBookBase
+  name: arcane engineering science book
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - state: paper
+    - state: cover_base
+      color: "#e4a053"
+      map: [ "cover" ]
+    - state: decor_line
+      color: "#53c6e2"
+      map: [ "decor" ]
+    - state: icon_magic
+      map: [ "icon" ]
+    - state: bookmark_short
+      map: [ "overlay" ]
+  - type: CEMagicEssenceStructure
+    essences:
+      Order: { min: 2, max: 6 }
+      Mind: { min: 1, max: 3 }
+      Magic: { min: 0, max: 2 }
+
+- type: entity
+  id: CEBaseScienceBookArtifactoric
+  parent: CEBookBase
+  name: artifactoric science book
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - state: paper
+    - state: cover_base
+      color: "#3d2352"
+      map: [ "cover" ]
+    - state: decor_line
+      color: "#8a5ac6"
+      map: [ "decor" ]
+    - state: icon_religion
+      color: "#c9a4f5"
+      map: [ "icon" ]
+    - state: bookmark_short
+      map: [ "overlay" ]
+  - type: CEMagicEssenceStructure
+    essences:
+      Magic: { min: 2, max: 6 }
+      Darkness: { min: 0, max: 2 }

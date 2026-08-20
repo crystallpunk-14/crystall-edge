@@ -5,8 +5,8 @@
   - CEPlantBaseSolarEnergy
   - CEPlantBaseSingleHarvest
   - CEPlantBaseFloralDelicateType
-  - CEPlantBaseGrowing2Day
-  - CEPlantBaseMetabolizer1Day
+  - CEPlantBaseGrowingSlow
+  - CEPlantBaseMetabolizerMedium
   - CEPlantBaseMetabolizerWater
   name: pumpkin
   description: Legends say there is a pumpkin king who stares into your soul through the crowns of trees.

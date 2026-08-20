@@ -1,98 +1,19 @@
-# Ready
-
-- type: roadmapItem
-  id: BasicFarming
-  name: ce-roadmap-farming-basic-farming-name
-  desc: ce-roadmap-farming-basic-farming-desc
-  category: Farming
-  status: Done
-
-- type: roadmapItem
-  id: MachineConstruction
-  name: ce-roadmap-engineering-machine-construction-name
-  desc: ce-roadmap-engineering-machine-construction-desc
-  category: Engineering
-  status: Done
-
-- type: roadmapItem
-  id: PowerNet
-  name: ce-roadmap-engineering-powernet-name
-  desc: ce-roadmap-engineering-powernet-desc
-  category: Engineering
-  status: Done
-
-- type: roadmapItem
-  id: Flights
-  name: ce-roadmap-general-fligths-name
-  desc: ce-roadmap-general-fligths-desc
-  category: General
-  status: Done
-
-- type: roadmapItem
-  id: Thief
-  name: ce-roadmap-antagonists-thief-name
-  desc: ce-roadmap-antagonists-thief-desc
-  category: Antagonist
-  status: Done
-
-- type: roadmapItem
-  id: ZLevels
-  name: ce-roadmap-general-zlevels-name
-  desc: ce-roadmap-general-zlevels-desc
-  category: General
-  status: Done
-
-- type: roadmapItem
-  id: Ambitions
-  name: ce-roadmap-general-ambitions-name
-  desc: ce-roadmap-general-ambitions-desc
-  category: General
-  status: Done
-
-- type: roadmapItem
-  id: TradeWithEmpire
-  name: ce-roadmap-general-trade-with-empire-name
-  desc: ce-roadmap-general-trade-with-empire-desc
-  category: General
-  status: Done
-
-- type: roadmapItem
-  id: GuardDepartment
-  name: ce-roadmap-guard-guard-department-name
-  desc: ce-roadmap-guard-guard-department-desc
-  category: Guard
-  status: Done
-
 # In Progress
 
-- type: roadmapItem
-  id: Automation
-  name: ce-roadmap-engineering-automation-name
-  desc: ce-roadmap-engineering-automation-desc
-  category: Engineering
-  status: InProgress
+# Backlog
 
 - type: roadmapItem
   id: PersonalRealEstate
   name: ce-roadmap-general-personal-real-estate-name
   desc: ce-roadmap-general-personal-real-estate-desc
   category: General
-  status: InProgress
+  status: Backlog
 
 - type: roadmapItem
   id: RandomGameEvents
   name: ce-roadmap-general-random-game-events-name
   desc: ce-roadmap-general-random-game-events-desc
   category: General
-  status: InProgress
-
-# Backlog
-
-- type: roadmapItem
-  id: AirCrystals
-  name: ce-roadmap-engineering-air-crystals-name
-  desc: ce-roadmap-engineering-air-crystals-desc
-  category: Engineering
   status: Backlog
 
 - type: roadmapItem
@@ -145,24 +66,10 @@
   status: Backlog
 
 - type: roadmapItem
-  id: MagicVision
-  name: ce-roadmap-guard-magic-vision-name
-  desc: ce-roadmap-guard-magic-vision-desc
-  category: Guard
-  status: Backlog
-
-- type: roadmapItem
   id: Expeditions
   name: ce-roadmap-adventures-expeditions-name
   desc: ce-roadmap-adventures-expeditions-desc
   category: Adventures
-  status: Backlog
-
-- type: roadmapItem
-  id: BuildingCollapse
-  name: ce-roadmap-engineering-building-collapse-name
-  desc: ce-roadmap-engineering-building-collapse-desc
-  category: Engineering
   status: Backlog
 
 - type: roadmapItem

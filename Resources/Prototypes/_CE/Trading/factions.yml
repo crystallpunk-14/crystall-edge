@@ -37,6 +37,11 @@
   color: "#749a94"
   name: ce-trade-faction-apothecaries-guild
 
+- type: tradingFaction
+  id: ImperialChancellery
+  color: "#5b4b8a"
+  name: ce-trade-faction-imperial-chancellery
+
 # Antags
 
 - type: tradingFaction

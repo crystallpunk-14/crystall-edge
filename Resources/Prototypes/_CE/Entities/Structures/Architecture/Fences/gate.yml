@@ -12,8 +12,6 @@
       map: ["enum.DoorVisualLayers.Base"]
   - type: Icon
     state: door_closed
-  - type: IconSmooth
-    mode: NoSprite
   - type: InteractionOutline
   - type: Appearance
   - type: Door
@@ -58,8 +56,9 @@
   - type: Icon
     sprite: _CE/Structures/Architecture/Fences/wooden.rsi
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Wood
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:

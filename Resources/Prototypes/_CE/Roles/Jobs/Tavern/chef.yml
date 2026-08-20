@@ -7,7 +7,6 @@
   startingGear: CEChefGear
   icon: CEJobIconChef
   supervisors: ce-job-supervisors-empire
-  canBeAntag: true
 
 - type: startingGear
   id: CEChefGear
@@ -29,6 +28,30 @@
     - id: CECoinSilver1
     - id: CECoinSilver1
     - id: CECoinCopper10
+
+- type: entity
+  id: CEChestFilledChef
+  parent: CEWoodenChest
+  suffix: Filled, Chef
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: CECoinCopper1
+
+- type: entity
+  id: CEBedsideTableFilledChef
+  parent: CEBedsideTableWooden
+  suffix: Filled, Chef
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 2, 3
+        children:
+        - id: CEClothingHeadBeretGuildGreen
 
 - type: entity
   id: CEKeyRingChef

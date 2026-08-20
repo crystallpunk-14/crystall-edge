@@ -12,11 +12,14 @@
     - CanPilot
     - BypassInteractionRangeChecks
     - BypassDropChecks
+    - BypassOpenStorageLimit
     - NoConsoleSound
     - SilentStorageUser
     - PreventAccessLogging
     - AllowBiomeLoading
     - NotGhostnadoWarpable
+    - AllowPortalTraversal
+    - PreventPortalCollision
   - type: Input
     context: "aghost"
   - type: Ghost
@@ -111,7 +114,7 @@
   - type: ExplosionResistance
     damageCoefficient: 0
   # CrystallEdge
-  - type: CEShowVampireIcons
+  - type: CEKnowledge
 
 - type: entity
   abstract: true

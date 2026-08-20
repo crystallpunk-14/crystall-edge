@@ -1,5 +1,5 @@
 using Content.Server.Stack;
-using Content.Shared.Nutrition;
+using Content.Shared.Tools.Systems;
 using Robust.Server.GameObjects;
 using Robust.Shared.Random;
 
@@ -7,18 +7,18 @@ namespace Content.Server._CE.Sliceable;
 
 public sealed partial class CEAdditionalSliceableDropSystem : EntitySystem
 {
-    [Dependency] private readonly TransformSystem _transform = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly StackSystem _stack = default!;
+    [Dependency] private TransformSystem _transform = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private StackSystem _stack = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CEAdditionalSliceableDropComponent, SliceFoodDoAfterEvent>(OnDoAfter);
+        SubscribeLocalEvent<CEAdditionalSliceableDropComponent, BeforeToolRefinedEvent>(OnBeforeRefined);
     }
 
-    private void OnDoAfter(Entity<CEAdditionalSliceableDropComponent> ent, ref SliceFoodDoAfterEvent args)
+    private void OnBeforeRefined(Entity<CEAdditionalSliceableDropComponent> ent, ref BeforeToolRefinedEvent args)
     {
         if (args.Cancelled)
             return;

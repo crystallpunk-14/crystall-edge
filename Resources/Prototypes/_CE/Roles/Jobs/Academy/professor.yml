@@ -1,0 +1,88 @@
+- type: job
+  id: CEAcademyProfessor
+  setPreference: true
+  name: ce-job-name-academy-professor
+  description: ce-job-desc-academy-professor
+  playTimeTracker: CEJobAcademyProfessor
+  startingGear: CEAcademyProfessorGear
+  icon: CEJobIconAcademyProfessor
+  supervisors: ce-job-supervisors-academy-rector
+  special:
+    - !type:CEResearchPointsSpecial
+      points:
+        Earth: 5
+        Fire: 5
+        Water: 5
+        Air: 5
+        Order: 5
+        Chaos: 5
+
+- type: startingGear
+  id: CEAcademyProfessorGear
+  equipment:
+    belt: CEKeyRingAcademyProfessor
+    pocket1: CEWalletFilledAcademyProfessor
+
+- type: entity
+  id: CEWalletFilledAcademyProfessor
+  parent: CEWallet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents: #100cp total
+    - id: CECoinSilver5
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinCopper10
+
+- type: entity
+  id: CEChestFilledAcademyProfessor
+  parent: CEWoodenChest
+  suffix: Filled, Academy Professor
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: CESyringe
+        - id: CESyringe
+        - id: CEDropper
+        - id: CEVialMediumOrderEssence
+        - id: CEVialMediumChaosEssence
+        - id: CEVialMediumEarthEssence
+        - id: CEVialMediumWaterEssence
+        - id: CEVialMediumFireEssence
+        - id: CEVialMediumAirEssence
+        - id: CEVialMedium
+        - id: CEVialMedium
+        - id: CEClothingEyesThaumaturgyGlasses
+        - id: CEGuidebookThaumaturgy
+        - id: CEThaumaturgicMagnifyingGlass
+
+- type: entity
+  id: CEBedsideTableFilledAcademyProfessor
+  parent: CEBedsideTableWooden
+  suffix: Filled, Academy Professor
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 2, 3
+        children:
+        - id: CEClothingHeadTriangularLeatherGolden
+        - id: CEClothingCloakMantleThaumaturge
+        - id: CEClothingShirtAcademyRobe
+
+- type: entity
+  id: CEKeyRingAcademyProfessor
+  parent: CEBaseKeyRing
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+    - id: CEKeyAcademyHall
+    - id: CEKeyAcademyTechnical
+    - id: CEKeyAcademyLab

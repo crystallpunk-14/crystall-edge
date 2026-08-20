@@ -23,7 +23,7 @@ public sealed partial class CCVars
         CVarDef.Create("viewport.minimum_width", 15, CVar.REPLICATED | CVar.SERVER);
 
     public static readonly CVarDef<int> ViewportMaximumWidth =
-        CVarDef.Create("viewport.maximum_width", 21, CVar.REPLICATED | CVar.SERVER);
+        CVarDef.Create("viewport.maximum_width", 29, CVar.REPLICATED | CVar.SERVER);
 
     public static readonly CVarDef<int> ViewportWidth =
         CVarDef.Create("viewport.width", 21, CVar.CLIENTONLY | CVar.ARCHIVE);
@@ -33,4 +33,7 @@ public sealed partial class CCVars
 
     public static readonly CVarDef<string> ViewportScalingFilterMode =
         CVarDef.Create("viewport.scaling_filter", "nearest", CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    public static readonly CVarDef<int> ViewportSharpnessStrength =
+        CVarDef.Create("viewport.sharpness_strength", 0, CVar.CLIENTONLY | CVar.ARCHIVE);
 }

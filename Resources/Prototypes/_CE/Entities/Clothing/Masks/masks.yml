@@ -5,12 +5,15 @@
   description: A steel mask that protects the face from the external effects of iron.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Masks/steel_mask.rsi
+    sprite: _CE/Clothing/Masks/Generic/steel_mask.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Masks/steel_mask.rsi
+    sprite: _CE/Clothing/Masks/Generic/steel_mask.rsi
   - type: PhysicalComposition
     materialComposition:
       CEIron: 20
+  - type: CEMagicEssenceStructure
+    essences:
+      Metal: { min: 1, max: 3 }
 
 - type: entity
   parent: CEClothingMaskIdentityBlockerBase
@@ -19,9 +22,9 @@
   description: It hides your face to the best of its ability.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Masks/neckerchief.rsi
+    sprite: _CE/Clothing/Masks/Generic/Neckerchief/plain.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Masks/neckerchief.rsi
+    sprite: _CE/Clothing/Masks/Generic/Neckerchief/plain.rsi
 
 - type: entity
   parent: CEClothingMaskIdentityBlockerBase
@@ -30,9 +33,9 @@
   description: It hides your face to the best of its ability.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Masks/red_neckerchief.rsi
+    sprite: _CE/Clothing/Masks/Generic/Neckerchief/red.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Masks/red_neckerchief.rsi
+    sprite: _CE/Clothing/Masks/Generic/Neckerchief/red.rsi
 
 - type: entity
   parent: CEClothingMaskIdentityBlockerBase
@@ -41,9 +44,9 @@
   description: It hides your face to the best of its ability.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Masks/green_neckerchief.rsi
+    sprite: _CE/Clothing/Masks/Generic/Neckerchief/green.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Masks/green_neckerchief.rsi
+    sprite: _CE/Clothing/Masks/Generic/Neckerchief/green.rsi
 
 - type: entity
   parent: CEClothingMaskIdentityBlockerBase
@@ -52,9 +55,12 @@
   description: A bone mask of human.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Masks/bone_mask.rsi
+    sprite: _CE/Clothing/Masks/Generic/bone_mask.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Masks/bone_mask.rsi
+    sprite: _CE/Clothing/Masks/Generic/bone_mask.rsi
+  - type: CEMagicEssenceStructure
+    essences:
+      Death: { min: 1, max: 3 }
 
 - type: entity
   parent: CEClothingMaskIdentityBlockerBase
@@ -63,9 +69,13 @@
   description: A bone mask of some kind of animal.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Masks/horned_bone_mask.rsi
+    sprite: _CE/Clothing/Masks/Generic/horned_bone_mask.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Masks/horned_bone_mask.rsi
+    sprite: _CE/Clothing/Masks/Generic/horned_bone_mask.rsi
+  - type: CEMagicEssenceStructure
+    essences:
+      Death: { min: 1, max: 3 }
+      Beast: { min: 0, max: 1 }
 
 - type: entity
   parent: CEClothingMaskIdentityBlockerBase
@@ -74,7 +84,7 @@
   description: ...
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Masks/mime_mask.rsi
+    sprite: _CE/Clothing/Masks/Generic/mime_mask.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Masks/mime_mask.rsi
+    sprite: _CE/Clothing/Masks/Generic/mime_mask.rsi
 

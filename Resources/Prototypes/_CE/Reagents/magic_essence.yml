@@ -1,0 +1,554 @@
+# Thaumaturgical essence reagents.
+# Each reagent mirrors one entry of Content.Shared/_CE/MagicEssence/Prototypes/CEMagicEssenceTypePrototype
+# defined in Resources/Prototypes/_CE/MagicEssence/essence_types.yml.
+
+- type: reagent
+  id: CEEssenceBase
+  abstract: true
+  physicalDesc: reagent-physical-desc-enigmatic
+  flavor: strange
+  group: Thaumaturgy
+  metabolisms:
+    Digestion:
+      effects:
+      - !type:Vomit
+        probability: 0.25
+  pricePerUnit: 0 # CrystallEdge: essences must not be sellable, they enabled a carpet->press->sell infinite money exploit
+
+- type: reagent
+  id: CEEssenceBaseT1
+  parent: CEEssenceBase
+  abstract: true
+  pricePerUnit: 0 # CrystallEdge: essences must not be sellable, they enabled a carpet->press->sell infinite money exploit
+
+- type: reagent
+  id: CEEssenceBaseT2
+  parent: CEEssenceBase
+  abstract: true
+  pricePerUnit: 0 # CrystallEdge: essences must not be sellable, they enabled a carpet->press->sell infinite money exploit
+
+- type: reagent
+  id: CEEssenceBaseT3
+  parent: CEEssenceBase
+  abstract: true
+  pricePerUnit: 0 # CrystallEdge: essences must not be sellable, they enabled a carpet->press->sell infinite money exploit
+
+- type: reagent
+  id: CEEssenceBaseT4
+  parent: CEEssenceBase
+  abstract: true
+  pricePerUnit: 0 # CrystallEdge: essences must not be sellable, they enabled a carpet->press->sell infinite money exploit
+
+- type: reagent
+  id: CEEssenceBaseT5
+  parent: CEEssenceBase
+  abstract: true
+  pricePerUnit: 0 # CrystallEdge: essences must not be sellable, they enabled a carpet->press->sell infinite money exploit
+
+- type: reagent
+  id: CEEssenceBaseT6
+  parent: CEEssenceBase
+  abstract: true
+  pricePerUnit: 0 # CrystallEdge: essences must not be sellable, they enabled a carpet->press->sell infinite money exploit
+
+- type: reagent
+  id: CEEssenceBaseT7
+  parent: CEEssenceBase
+  abstract: true
+  pricePerUnit: 0 # CrystallEdge: essences must not be sellable, they enabled a carpet->press->sell infinite money exploit
+
+# Basic 6 (T0)
+
+- type: reagent
+  id: CEEssenceEarth
+  parent: CEEssenceBase
+  name: ce-reagent-name-essence-earth
+  desc: ce-reagent-desc-essence-earth
+  color: "#7dbf41"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceEarth
+
+- type: reagent
+  id: CEEssenceFire
+  parent: CEEssenceBase
+  name: ce-reagent-name-essence-fire
+  desc: ce-reagent-desc-essence-fire
+  color: "#e67130"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceFire
+
+- type: reagent
+  id: CEEssenceWater
+  parent: CEEssenceBase
+  name: ce-reagent-name-essence-water
+  desc: ce-reagent-desc-essence-water
+  color: "#6ab8e2"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceWater
+
+- type: reagent
+  id: CEEssenceAir
+  parent: CEEssenceBase
+  name: ce-reagent-name-essence-air
+  desc: ce-reagent-desc-essence-air
+  color: "#ebda68"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceAir
+
+- type: reagent
+  id: CEEssenceOrder
+  parent: CEEssenceBase
+  name: ce-reagent-name-essence-order
+  desc: ce-reagent-desc-essence-order
+  color: "#b7b7c6"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceOrder
+
+- type: reagent
+  id: CEEssenceChaos
+  parent: CEEssenceBase
+  name: ce-reagent-name-essence-chaos
+  desc: ce-reagent-desc-essence-chaos
+  color: "#383838"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceChaos
+
+# Complex tier 1
+
+- type: reagent
+  id: CEEssenceFrost
+  parent: CEEssenceBaseT1
+  name: ce-reagent-name-essence-frost
+  desc: ce-reagent-desc-essence-frost
+  color: "#c6d8e2"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceFrost
+
+- type: reagent
+  id: CEEssenceLight
+  parent: CEEssenceBaseT1
+  name: ce-reagent-name-essence-light
+  desc: ce-reagent-desc-essence-light
+  color: "#faee88"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceLight
+
+- type: reagent
+  id: CEEssenceMotion
+  parent: CEEssenceBaseT1
+  name: ce-reagent-name-essence-motion
+  desc: ce-reagent-desc-essence-motion
+  color: "#9593b2"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceMotion
+
+- type: reagent
+  id: CEEssenceCycle
+  parent: CEEssenceBaseT1
+  name: ce-reagent-name-essence-cycle
+  desc: ce-reagent-desc-essence-cycle
+  color: "#5c7956"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceCycle
+
+- type: reagent
+  id: CEEssenceEnergia
+  parent: CEEssenceBaseT1
+  name: ce-reagent-name-essence-energia
+  desc: ce-reagent-desc-essence-energia
+  color: "#eedcbc"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceEnergia
+
+- type: reagent
+  id: CEEssenceVoid
+  parent: CEEssenceBaseT1
+  name: ce-reagent-name-essence-void
+  desc: ce-reagent-desc-essence-void
+  color: "#606060"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceVoid
+
+- type: reagent
+  id: CEEssencePoison
+  parent: CEEssenceBaseT1
+  name: ce-reagent-name-essence-poison
+  desc: ce-reagent-desc-essence-poison
+  color: "#94d14a"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssencePoison
+
+- type: reagent
+  id: CEEssenceLife
+  parent: CEEssenceBaseT1
+  name: ce-reagent-name-essence-life
+  desc: ce-reagent-desc-essence-life
+  color: "#a31e22"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceLife
+
+- type: reagent
+  id: CEEssenceCrystal
+  parent: CEEssenceBaseT1
+  name: ce-reagent-name-essence-crystal
+  desc: ce-reagent-desc-essence-crystal
+  color: "#74cfca"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceCrystal
+
+- type: reagent
+  id: CEEssenceWeather
+  parent: CEEssenceBaseT1
+  name: ce-reagent-name-essence-weather
+  desc: ce-reagent-desc-essence-weather
+  color: "#ececed"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceWeather
+
+# Complex tier 2
+
+- type: reagent
+  id: CEEssenceMagic
+  parent: CEEssenceBaseT2
+  name: ce-reagent-name-essence-magic
+  desc: ce-reagent-desc-essence-magic
+  color: "#9102b4"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceMagic
+
+- type: reagent
+  id: CEEssenceBeast
+  parent: CEEssenceBaseT2
+  name: ce-reagent-name-essence-beast
+  desc: ce-reagent-desc-essence-beast
+  color: "#ac6f11"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceBeast
+
+- type: reagent
+  id: CEEssenceHunger
+  parent: CEEssenceBaseT2
+  name: ce-reagent-name-essence-hunger
+  desc: ce-reagent-desc-essence-hunger
+  color: "#860b11"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceHunger
+
+- type: reagent
+  id: CEEssencePlant
+  parent: CEEssenceBaseT2
+  name: ce-reagent-name-essence-plant
+  desc: ce-reagent-desc-essence-plant
+  color: "#6ec03a"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssencePlant
+
+- type: reagent
+  id: CEEssenceTravel
+  parent: CEEssenceBaseT2
+  name: ce-reagent-name-essence-travel
+  desc: ce-reagent-desc-essence-travel
+  color: "#cd5d68"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceTravel
+
+- type: reagent
+  id: CEEssenceSlime
+  parent: CEEssenceBaseT2
+  name: ce-reagent-name-essence-slime
+  desc: ce-reagent-desc-essence-slime
+  color: "#20d734"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceSlime
+
+- type: reagent
+  id: CEEssenceMetal
+  parent: CEEssenceBaseT2
+  name: ce-reagent-name-essence-metal
+  desc: ce-reagent-desc-essence-metal
+  color: "#a5a7bf"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceMetal
+
+- type: reagent
+  id: CEEssenceDeath
+  parent: CEEssenceBaseT2
+  name: ce-reagent-name-essence-death
+  desc: ce-reagent-desc-essence-death
+  color: "#77697c"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceDeath
+
+- type: reagent
+  id: CEEssenceHealing
+  parent: CEEssenceBaseT2
+  name: ce-reagent-name-essence-healing
+  desc: ce-reagent-desc-essence-healing
+  color: "#ec2f3a"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceHealing
+
+- type: reagent
+  id: CEEssenceDarkness
+  parent: CEEssenceBaseT2
+  name: ce-reagent-name-essence-darkness
+  desc: ce-reagent-desc-essence-darkness
+  color: "#282828"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceDarkness
+
+- type: reagent
+  id: CEEssenceTrap
+  parent: CEEssenceBaseT2
+  name: ce-reagent-name-essence-trap
+  desc: ce-reagent-desc-essence-trap
+  color: "#807778"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceTrap
+
+- type: reagent
+  id: CEEssenceFlight
+  parent: CEEssenceBaseT2
+  name: ce-reagent-name-essence-flight
+  desc: ce-reagent-desc-essence-flight
+  color: "#d3d6c8"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceFlight
+
+# Complex tier 3
+
+- type: reagent
+  id: CEEssenceEldritch
+  parent: CEEssenceBaseT3
+  name: ce-reagent-name-essence-eldritch
+  desc: ce-reagent-desc-essence-eldritch
+  color: "#734a77"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceEldritch
+
+- type: reagent
+  id: CEEssenceTree
+  parent: CEEssenceBaseT3
+  name: ce-reagent-name-essence-tree
+  desc: ce-reagent-desc-essence-tree
+  color: "#7f5d39"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceTree
+
+- type: reagent
+  id: CEEssenceAura
+  parent: CEEssenceBaseT3
+  name: ce-reagent-name-essence-aura
+  desc: ce-reagent-desc-essence-aura
+  color: "#bb8cc0"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceAura
+
+- type: reagent
+  id: CEEssenceFlesh
+  parent: CEEssenceBaseT3
+  name: ce-reagent-name-essence-flesh
+  desc: ce-reagent-desc-essence-flesh
+  color: "#de5195"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceFlesh
+
+- type: reagent
+  id: CEEssenceUndead
+  parent: CEEssenceBaseT3
+  name: ce-reagent-name-essence-undead
+  desc: ce-reagent-desc-essence-undead
+  color: "#3a4a07"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceUndead
+
+- type: reagent
+  id: CEEssenceSoul
+  parent: CEEssenceBaseT3
+  name: ce-reagent-name-essence-soul
+  desc: ce-reagent-desc-essence-soul
+  color: "#4e585d"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceSoul
+
+- type: reagent
+  id: CEEssenceTaint
+  parent: CEEssenceBaseT3
+  name: ce-reagent-name-essence-taint
+  desc: ce-reagent-desc-essence-taint
+  color: "#780186"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceTaint
+
+# Complex tier 4
+
+- type: reagent
+  id: CEEssenceMind
+  parent: CEEssenceBaseT4
+  name: ce-reagent-name-essence-mind
+  desc: ce-reagent-desc-essence-mind
+  color: "#e8afa7"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceMind
+
+- type: reagent
+  id: CEEssenceSenses
+  parent: CEEssenceBaseT4
+  name: ce-reagent-name-essence-senses
+  desc: ce-reagent-desc-essence-senses
+  color: "#28b6e4"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceSenses
+
+# Complex tier 5
+
+- type: reagent
+  id: CEEssenceHuman
+  parent: CEEssenceBaseT5
+  name: ce-reagent-name-essence-human
+  desc: ce-reagent-desc-essence-human
+  color: "#ddc0aa"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceHuman
+
+# Complex tier 6
+
+- type: reagent
+  id: CEEssenceTool
+  parent: CEEssenceBaseT6
+  name: ce-reagent-name-essence-tool
+  desc: ce-reagent-desc-essence-tool
+  color: "#4c56b2"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceTool
+
+- type: reagent
+  id: CEEssenceCrop
+  parent: CEEssenceBaseT6
+  name: ce-reagent-name-essence-crop
+  desc: ce-reagent-desc-essence-crop
+  color: "#d36c36"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceCrop
+
+- type: reagent
+  id: CEEssenceGreed
+  parent: CEEssenceBaseT6
+  name: ce-reagent-name-essence-greed
+  desc: ce-reagent-desc-essence-greed
+  color: "#d9aa4a"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceGreed
+
+- type: reagent
+  id: CEEssenceMining
+  parent: CEEssenceBaseT6
+  name: ce-reagent-name-essence-mining
+  desc: ce-reagent-desc-essence-mining
+  color: "#cbc3c8"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceMining
+
+# Complex tier 7
+
+- type: reagent
+  id: CEEssenceCraft
+  parent: CEEssenceBaseT7
+  name: ce-reagent-name-essence-craft
+  desc: ce-reagent-desc-essence-craft
+  color: "#79907d"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceCraft
+
+- type: reagent
+  id: CEEssenceMachine
+  parent: CEEssenceBaseT7
+  name: ce-reagent-name-essence-machine
+  desc: ce-reagent-desc-essence-machine
+  color: "#767891"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceMachine
+
+- type: reagent
+  id: CEEssenceCloth
+  parent: CEEssenceBaseT7
+  name: ce-reagent-name-essence-cloth
+  desc: ce-reagent-desc-essence-cloth
+  color: "#d2d3b7"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceCloth
+
+- type: reagent
+  id: CEEssenceWeapon
+  parent: CEEssenceBaseT7
+  name: ce-reagent-name-essence-weapon
+  desc: ce-reagent-desc-essence-weapon
+  color: "#9d5e6c"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceWeapon
+
+- type: reagent
+  id: CEEssenceArmor
+  parent: CEEssenceBaseT7
+  name: ce-reagent-name-essence-armor
+  desc: ce-reagent-desc-essence-armor
+  color: "#62aad3"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceArmor
+
+- type: reagent
+  id: CEEssenceHarvest
+  parent: CEEssenceBaseT7
+  name: ce-reagent-name-essence-harvest
+  desc: ce-reagent-desc-essence-harvest
+  color: "#d9ac7a"
+  tileReactions:
+  - !type:CreateEntityTileReaction
+    entity: CEEssenceHarvest

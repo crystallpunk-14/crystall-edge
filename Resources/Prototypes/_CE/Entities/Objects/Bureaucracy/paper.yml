@@ -29,6 +29,7 @@
     normalState: fire
   - type: Damageable
     damageModifierSet: Wood
+  - type: Injurable
   - type: Destructible
     thresholds:
     - trigger:
@@ -37,9 +38,7 @@
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
-            CEAsh1:
-              min: 1
-              max: 1
+            CEAsh1: { min: 1, max: 1 }
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: Edible
@@ -49,18 +48,22 @@
     flavors:
     - paper
   - type: BadFood
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 1
-        reagents:
-        - ReagentId: Fiber
-          Quantity: 1
+  - type: Solution
+    id: food
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: Fiber
+        Quantity: 1
   - type: Tag
     tags:
     - Document
   - type: StaticPrice
     price: 2
+  - type: CEMagicEssenceStructure
+    essences:
+      Order: { min: 1, max: 3 }
+      Plant: { min: 0, max: 2 }
 
 - type: entity
   parent: CEBasePaper

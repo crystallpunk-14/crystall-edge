@@ -1,0 +1,100 @@
+- type: job
+  id: CEAcademyRector
+  setPreference: true
+  name: ce-job-name-academy-rector
+  description: ce-job-desc-academy-rector
+  playTimeTracker: CEJobAcademyRector
+  startingGear: CEAcademyRectorGear
+  icon: CEJobIconAcademyRector
+  requireAdminNotify: true
+  joinNotifyCrew: true
+  supervisors: ce-job-supervisors-empire
+  weight: 3
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: CEAcademy
+      time: 2.5h
+  special:
+    - !type:CEResearchPointsSpecial
+      points:
+        Earth: 5
+        Fire: 5
+        Water: 5
+        Air: 5
+        Order: 5
+        Chaos: 5
+
+- type: startingGear
+  id: CEAcademyRectorGear
+  equipment:
+    belt: CEKeyRingAcademyRector
+    pocket1: CEWalletFilledAcademyRector
+
+- type: entity
+  id: CEWalletFilledAcademyRector
+  parent: CEWallet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents: #200cp total
+    - id: CECoinGold1
+    - id: CECoinSilver5
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinCopper10
+
+- type: entity
+  id: CEChestFilledAcademyRector
+  parent: CEGoldChest
+  suffix: Filled, Academy Rector
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: CESyringe
+        - id: CESyringe
+        - id: CEDropper
+        - id: CEVialMediumOrderEssence
+        - id: CEVialMediumChaosEssence
+        - id: CEVialMediumEarthEssence
+        - id: CEVialMediumWaterEssence
+        - id: CEVialMediumFireEssence
+        - id: CEVialMediumAirEssence
+        - id: CEVialMediumReinforced
+        - id: CEVialMediumReinforced
+        - id: CEClothingEyesThaumaturgyGlasses
+        - id: CEGuidebookThaumaturgy
+        - id: CERubberStampApproved
+        - id: CERubberStampDenied
+        - id: CERubberStampAcademy
+        - id: CEThaumaturgicMagnifyingGlass
+
+- type: entity
+  id: CEBedsideTableFilledAcademyRector
+  parent: CEBedsideTableWooden
+  suffix: Filled, Academy Rector
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 2, 3
+        children:
+        - id: CEClothingHeadTriangularLeatherGolden
+        - id: CEClothingCloakMantleThaumaturge
+        - id: CEClothingShirtAcademyRobe
+
+- type: entity
+  id: CEKeyRingAcademyRector
+  parent: CEBaseKeyRing
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+    - id: CEKeyAcademyHall
+    - id: CEKeyAcademyTechnical
+    - id: CEKeyAcademyLab
+    - id: CEKeyAcademyRectorRoom

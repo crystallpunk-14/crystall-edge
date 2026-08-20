@@ -1,7 +1,7 @@
 - type: entity
   parent: HandheldHealthAnalyzer
   id: BaselineHealthAnalyzer
-  categories: [ ForkFiltered ]
+  categories: [ ForkFiltered, DoNotMap ]
 
 - type: entity
   parent: FloorWaterEntity
@@ -10,15 +10,14 @@
   components:
   - type: PlacementReplacement
     key: walls
-  - type: SolutionContainerManager
-    solutions:
-      pool:
-        maxVol: 9999999 #.inf seems to break the whole yaml file, but would definitely be preferable.
-        reagents:
-        - ReagentId: CEWater
-          Quantity: 9999999
+  - type: Solution
+    id: pool
+    solution:
+      maxVol: 9999999 #.inf seems to break the whole yaml file, but would definitely be preferable.
+      reagents:
+      - ReagentId: CEWater
+        Quantity: 9999999
   - type: SolutionRegeneration
-    solution: pool
     generated:
       reagents:
       - ReagentId: CEWater
@@ -30,8 +29,11 @@
 - type: entity
   parent: ComputerPowerMonitoring
   id: CEComputerPowerMonitoring
-  categories: [ ForkFiltered ]
+  categories: [ ForkFiltered, DoNotMap ]
   suffix: Debug, 0W
   components:
   - type: ApcPowerReceiver
     powerLoad: 0
+  - type: PowerState
+    idlePowerDraw: 0
+    workingPowerDraw: 0

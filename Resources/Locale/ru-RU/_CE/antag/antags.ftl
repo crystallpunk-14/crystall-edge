@@ -3,3 +3,6 @@ ce-roles-antag-vampire-objective = Этот город - ваша террито
 
 ce-roles-antag-thief-name = Вор
 ce-roles-antag-thief-objective = Станьте величайшим вором в истории!
+
+ce-ghost-role-information-lurker-name = Луркер
+ce-ghost-role-information-lurker-description = Дух ночи и голода, охотящийся на одиночек, отбившихся от своих спутников.

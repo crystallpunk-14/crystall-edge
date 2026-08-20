@@ -78,15 +78,6 @@
     equipWhileMoving: true
     slots:
     - belt
-  - type: MeleeWeapon
-    attackRate: 1.6
-    range: 0.8
-    animationOffset: 0.5
-    damage:
-      types:
-        Blunt: 7
-    soundHit:
-      collection: MetalThud
   - type: EmitSoundOnLand
     sound:
       path: /Audio/Items/toolbox_drop.ogg
@@ -99,3 +90,7 @@
     materialComposition:
       CEIron: 10
       CEBrass: 6
+  - type: CEMagicEssenceStructure
+    essences:
+      Light: { min: 1, max: 4 }
+      Energia: { min: 0, max: 2 }

@@ -24,26 +24,19 @@ namespace Content.Shared._CE.Skill;
 
 public abstract partial class CESharedSkillSystem : EntitySystem
 {
-    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
-    [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly ExamineSystemShared _examine = default!;
-    [Dependency] private readonly ThrowingSystem _throwing = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly ISharedAdminManager _admin = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-
-    private EntityQuery<CESkillStorageComponent> _skillStorageQuery;
+    [Dependency] private EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private ExamineSystemShared _examine = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private ISharedAdminManager _admin = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
 
     public override void Initialize()
     {
         base.Initialize();
-
-        _skillStorageQuery = GetEntityQuery<CESkillStorageComponent>();
 
         SubscribeLocalEvent<CESkillStorageComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<CESkillPointConsumableComponent, UseInHandEvent>(OnInteracted);

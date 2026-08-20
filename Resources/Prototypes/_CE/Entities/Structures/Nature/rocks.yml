@@ -12,9 +12,9 @@
     drawdepth: Mobs
     snapCardinals: true
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Rock
-
+  - type: Injurable
+    damageContainer: StructuralInorganic
 - type: entity
   id: CERockSmall
   parent: CEBaseRock

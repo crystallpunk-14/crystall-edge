@@ -1,0 +1,64 @@
+# MARK: Draft
+
+- type: entity
+  id: CEUnselectedDiscoveryProject
+  parent: BaseItem
+  name: draft research proposal
+  description: A scientist's rambling notes about some great discoveries in the making. So far, only the author himself can make sense of them.
+  categories: [ HideSpawnMenu, ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Specific/Thaumaturgy/research_project.rsi
+    layers:
+    - state: base
+    - state: base_scribbles
+  - type: Item
+    size: Tiny
+    shape:
+    - 0, 0, 1, 0
+  - type: CEUnselectedDiscoveryProject
+  - type: Tag
+    tags:
+    - Document
+
+#MARK: Project
+
+- type: entity
+  parent: BaseItem
+  id: CEDiscoveryProjectBase
+  abstract: true
+  categories: [ HideSpawnMenu, ForkFiltered ]
+  name: research project
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Specific/Thaumaturgy/research_project.rsi
+  - type: Item
+    size: Tiny
+    shape:
+    - 0, 0, 1, 0
+  - type: CEDiscoveryProject
+  - type: Tag
+    tags:
+    - Document
+
+- type: entity
+  parent: CEDiscoveryProjectBase
+  id: CEDiscoveryProjectEngineering
+  categories: [ HideSpawnMenu, ForkFiltered ]
+  name: engineering research project
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: engineering
+
+- type: entity
+  parent: CEDiscoveryProjectBase
+  id: CEDiscoveryProjectArtifactoric
+  categories: [ HideSpawnMenu, ForkFiltered ]
+  name: artifactoric research project
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: artifactoric

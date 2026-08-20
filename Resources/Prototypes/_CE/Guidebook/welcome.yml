@@ -10,6 +10,7 @@
   - CEFarmingGuideEN
   - CEMiningGuideEN
   - CEImperialLawsEN
+  - CEThaumaturgyEN
 
 - type: guideEntry
   hidden: false
@@ -23,3 +24,4 @@
   - CEFarmingGuideRU
   - CEMiningGuideRU
   - CEImperialLawsRU
+  - CEThaumaturgyRU

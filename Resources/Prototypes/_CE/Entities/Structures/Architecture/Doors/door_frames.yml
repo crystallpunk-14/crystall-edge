@@ -31,8 +31,9 @@
     drawdepth: Mobs
     state: closed
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: CEWoodStructural
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -72,8 +73,9 @@
     drawdepth: Mobs
     state: closed
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: CEMetallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:

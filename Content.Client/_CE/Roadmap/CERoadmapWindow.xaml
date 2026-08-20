@@ -26,7 +26,6 @@
                 </BoxContainer>
             </BoxContainer>
             <BoxContainer Name="Columns" Access="Public" Orientation="Horizontal">
-                <BoxContainer Name="FirstVersion" Access="Public" Orientation="Vertical" HorizontalExpand="True" Margin="0 0 20 0" />
                 <BoxContainer Name="SecondVersion" Access="Public" Orientation="Vertical"  HorizontalExpand="True" Margin="0 0 20 0" />
                 <BoxContainer Name="ThirdVersion" Access="Public" Orientation="Vertical"  HorizontalExpand="True" Margin="0 0 20 0" />
             </BoxContainer>

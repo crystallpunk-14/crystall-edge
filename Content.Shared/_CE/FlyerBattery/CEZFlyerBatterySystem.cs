@@ -1,4 +1,3 @@
-using Content.Shared._CE.Vehicle;
 using Content.Shared._CE.ZLevels.Flight;
 using Content.Shared._CE.ZLevels.Flight.Components;
 using Content.Shared.Power;
@@ -8,11 +7,11 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.FlyerBattery;
 
-public sealed class CEZFlyerBatterySystem : EntitySystem
+public sealed partial class CEZFlyerBatterySystem : EntitySystem
 {
-    [Dependency] private readonly CESharedZFlightSystem _flight = default!;
-    [Dependency] private readonly SharedBatterySystem _battery = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private CESharedZFlightSystem _flight = default!;
+    [Dependency] private SharedBatterySystem _battery = default!;
+    [Dependency] private IGameTiming _timing = default!;
     public override void Initialize()
     {
         base.Initialize();

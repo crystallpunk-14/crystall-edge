@@ -1,0 +1,86 @@
+- type: entity
+  parent: WeatherBase
+  id: CEWeatherRain
+  components:
+  - type: WeatherStatusEffect
+    sprite:
+      sprite: /Textures/_CE/Effects/weather.rsi
+      state: rain
+    sound:
+      collection: Rain
+      params:
+        loop: true
+        volume: -6
+
+- type: entity
+  parent: WeatherBase
+  id: CEWeatherStorm
+  components:
+  - type: WeatherStatusEffect
+    sprite:
+      sprite: /Textures/_CE/Effects/weather.rsi
+      state: storm
+    sound:
+      path: /Audio/Effects/Weather/rain.ogg
+      params:
+        loop: true
+        volume: -6
+  - type: CEWeatherTileEffects
+    minEffectFrequency: 35s
+    maxEffectFrequency: 120s
+  - type: CEWeatherTileEntityEffect
+    effects:
+    - !type:SpawnEntity
+      spawns:
+      - CESkyLightning
+
+- type: entity
+  parent: WeatherBase
+  id: CEWeatherSnowLight
+  components:
+  - type: WeatherStatusEffect
+    sprite:
+      sprite: /Textures/_CE/Effects/weather.rsi
+      state: snowfall_light
+
+- type: entity
+  parent: WeatherBase
+  id: CEWeatherSnowMedium
+  components:
+  - type: WeatherStatusEffect
+    sprite:
+      sprite: /Textures/_CE/Effects/weather.rsi
+      state: snowfall_med
+    sound:
+      path: /Audio/Effects/Weather/snowstorm.ogg
+      params:
+        loop: true
+        volume: -10
+
+- type: entity
+  parent: WeatherBase
+  id: CEWeatherSnowHeavy
+  components:
+  - type: WeatherStatusEffect
+    sprite:
+      sprite: /Textures/_CE/Effects/weather.rsi
+      state: snowfall_heavy
+    sound:
+      path: /Audio/Effects/Weather/snowstorm.ogg
+      params:
+        loop: true
+        volume: -6
+
+- type: entity
+  parent: WeatherBase
+  id: CEWeatherSnowSolid
+  components:
+  - type: WeatherStatusEffect
+    sprite:
+      sprite: /Textures/_CE/Effects/weather.rsi
+      state: snowfall_solid
+    sound:
+      path: /Audio/Effects/Weather/snowstorm.ogg
+      params:
+        loop: true
+        volume: -6

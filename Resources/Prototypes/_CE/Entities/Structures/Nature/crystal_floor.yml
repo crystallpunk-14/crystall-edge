@@ -24,29 +24,28 @@
   - type: Transform
     anchored: True
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Glass
+  - type: Injurable
+    damageContainer: Inorganic
   - type: MeleeSound
     soundGroups:
       Brute:
         collection: GlassSmash
   - type: Physics
     bodyType: Static
-    canCollide: false
+    canCollide: true
   - type: TileEmission
     color: "#00ddff"
   - type: Fixtures
     fixtures:
       fix1:
-        hard: false
+        hard: true
         shape:
           !type:PhysShapeAabb
           bounds: "-0.45,-0.45,0.45,0.45"
         density: 60
-        mask:
-        - TableMask
         layer:
-        - TableLayer
+        - Opaque
   - type: Appearance
   - type: Destructible
     thresholds:

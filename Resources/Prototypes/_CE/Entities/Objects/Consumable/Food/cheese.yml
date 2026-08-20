@@ -1,7 +1,7 @@
 # Cheeses
 - type: entity
   id: CEFoodCheeseWheel
-  parent: FoodInjectableBase
+  parent: [FoodInjectableBase, BaseSlicingRefinableFood]
   name: cheese wheel
   description: A large wheel of soft, fragrant piece of cheese.
   categories: [ ForkFiltered ]
@@ -15,23 +15,28 @@
     sprite: _CE/Objects/Consumable/Food/cheese.rsi
     layers:
       - state: cheese_wheel
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 30
-        reagents:
-        - ReagentId: CENutriment
-          Quantity: 36 # 5 parts * 3 slices
-  - type: SliceableFood
-    count: 5
-    slice: CEFoodCheesePart
+  - type: Solution
+    id: food
+    solution:
+      maxVol: 30
+      reagents:
+      - ReagentId: CENutriment
+        Quantity: 36 # 5 parts * 3 slices
+  - type: ToolRefinable
+    refineResult:
+    - id: CEFoodCheesePart
+      amount: 5
   - type: CEFoodTag
     tags:
     - CECheese
+  - type: CEMagicEssenceStructure
+    essences:
+      Life: { min: 2, max: 6 }
+      Water: { min: 0, max: 3 }
 
 - type: entity
   id: CEFoodCheesePart
-  parent: FoodInjectableBase
+  parent: [FoodInjectableBase, BaseSlicingRefinableFood]
   name: cheese
   description: A triangle of soft, fragrant cheese.
   categories: [ ForkFiltered ]
@@ -52,18 +57,23 @@
           cheese_part: ""
           cheese_part2: ""
           cheese_part3: ""
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: CENutriment
-          Quantity: 7.2 # 3 slices
-  - type: SliceableFood
-    count: 3
-    slice: CEFoodCheeseSlice
+  - type: Solution
+    id: food
+    solution:
+      reagents:
+      - ReagentId: CENutriment
+        Quantity: 7.2 # 3 slices
+  - type: ToolRefinable
+    refineResult:
+    - id: CEFoodCheeseSlice
+      amount: 3
   - type: CEFoodTag
     tags:
     - CECheese
+  - type: CEMagicEssenceStructure
+    essences:
+      Life: { min: 1, max: 4 }
+      Water: { min: 0, max: 2 }
 
 - type: entity
   id: CEFoodCheeseSlice
@@ -88,16 +98,19 @@
           cheese_slice: ""
           cheese_slice2: ""
           cheese_slice3: ""
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 2 # 1/3 cheese part
-        reagents:
-        - ReagentId: CENutriment
-          Quantity: 2.4
+  - type: Solution
+    id: food
+    solution:
+      maxVol: 2 # 1/3 cheese part
+      reagents:
+      - ReagentId: CENutriment
+        Quantity: 2.4
   - type: CEFoodTag
     tags:
     - CECheese
+  - type: CEMagicEssenceStructure
+    essences:
+      Life: { min: 1, max: 2 }
 
 # Blue Cheese (50% more food)
 - type: entity
@@ -112,17 +125,18 @@
   - type: FlavorProfile
     flavors:
       - cheesy
-      - pungent
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 30
-        reagents:
-        - ReagentId: CENutriment
-          Quantity: 52.5 # 15 * 1.5 (50% more)
-  - type: SliceableFood
-    count: 5
-    slice: CEFoodBlueCheesePart
+      - CEPungent
+  - type: Solution
+    id: food
+    solution:
+      maxVol: 30
+      reagents:
+      - ReagentId: CENutriment
+        Quantity: 52.5 # 15 * 1.5 (50% more)
+  - type: ToolRefinable
+    refineResult:
+    - id: CEFoodBlueCheesePart
+      amount: 5
   - type: StaticPrice
     price: 20
   - type: CEFoodTag
@@ -138,7 +152,7 @@
   - type: FlavorProfile
     flavors:
       - cheesy
-      - pungent
+      - CEPungent
   - type: Sprite
     layers:
       - state: blue_cheese_part
@@ -149,16 +163,17 @@
           blue_cheese_part: ""
           blue_cheese_part2: ""
           blue_cheese_part3: ""
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 6 # 1/5 of wheel
-        reagents:
-        - ReagentId: CENutriment
-          Quantity: 10.5 # 52.5/5
-  - type: SliceableFood
-    count: 3
-    slice: CEFoodBlueCheeseSlice
+  - type: Solution
+    id: food
+    solution:
+      maxVol: 6 # 1/5 of wheel
+      reagents:
+      - ReagentId: CENutriment
+        Quantity: 10.5 # 52.5/5
+  - type: ToolRefinable
+    refineResult:
+    - id: CEFoodBlueCheeseSlice
+      amount: 3
   - type: StaticPrice
     price: 4
   - type: CEFoodTag
@@ -174,7 +189,7 @@
   - type: FlavorProfile
     flavors:
       - cheesy
-      - pungent
+      - CEPungent
   - type: Sprite
     layers:
       - state: blue_cheese_slice
@@ -185,13 +200,13 @@
           blue_cheese_slice: ""
           blue_cheese_slice2: ""
           blue_cheese_slice3: ""
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 2 # 1/3 of part
-        reagents:
-        - ReagentId: CENutriment
-          Quantity: 3.5 # 10.5/3
+  - type: Solution
+    id: food
+    solution:
+      maxVol: 2 # 1/3 of part
+      reagents:
+      - ReagentId: CENutriment
+        Quantity: 3.5 # 10.5/3
   - type: StaticPrice
     price: 1
   - type: CEFoodTag
@@ -212,16 +227,17 @@
     flavors:
       - cheesy
       - savory
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 30
-        reagents:
-        - ReagentId: CENutriment
-          Quantity: 75 # (100% more)
-  - type: SliceableFood
-    count: 5
-    slice: CEFoodAgedCheesePart
+  - type: Solution
+    id: food
+    solution:
+      maxVol: 30
+      reagents:
+      - ReagentId: CENutriment
+        Quantity: 75 # (100% more)
+  - type: ToolRefinable
+    refineResult:
+    - id: CEFoodAgedCheesePart
+      amount: 5
   - type: StaticPrice
     price: 35
   - type: CEFoodTag
@@ -248,16 +264,17 @@
           aged_cheese_part: ""
           aged_cheese_part2: ""
           aged_cheese_part3: ""
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 6 # 1/5 of wheel
-        reagents:
-        - ReagentId: CENutriment
-          Quantity: 15 # 75/5
-  - type: SliceableFood
-    count: 3
-    slice: CEFoodAgedCheeseSlice
+  - type: Solution
+    id: food
+    solution:
+      maxVol: 6 # 1/5 of wheel
+      reagents:
+      - ReagentId: CENutriment
+        Quantity: 15 # 75/5
+  - type: ToolRefinable
+    refineResult:
+    - id: CEFoodAgedCheeseSlice
+      amount: 3
   - type: StaticPrice
     price: 7
   - type: CEFoodTag
@@ -284,13 +301,13 @@
           aged_cheese_slice: ""
           aged_cheese_slice2: ""
           aged_cheese_slice3: ""
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 2 # 1/3 of part
-        reagents:
-        - ReagentId: CENutriment
-          Quantity: 5 # 15/3
+  - type: Solution
+    id: food
+    solution:
+      maxVol: 2 # 1/3 of part
+      reagents:
+      - ReagentId: CENutriment
+        Quantity: 5 # 15/3
   - type: StaticPrice
     price: 2
   - type: CEFoodTag

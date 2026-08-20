@@ -1,0 +1,45 @@
+using Content.Shared._CE.MagicEssence.Prototypes;
+using Content.Shared._CE.Science.Prototypes;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
+
+namespace Content.Shared._CE.Science;
+
+[Serializable, NetSerializable]
+public enum CEResearchTableUiKey
+{
+    Key,
+}
+
+[Serializable, NetSerializable]
+public sealed class CEResearchTableMergeAspectsMessage(
+    ProtoId<CEMagicEssenceTypePrototype> first,
+    ProtoId<CEMagicEssenceTypePrototype> second) : BoundUserInterfaceMessage
+{
+    public readonly ProtoId<CEMagicEssenceTypePrototype> First = first;
+    public readonly ProtoId<CEMagicEssenceTypePrototype> Second = second;
+}
+
+[Serializable, NetSerializable]
+public sealed class CEResearchTableStartResearchMessage(ProtoId<CEScienceAreaPrototype> area) : BoundUserInterfaceMessage
+{
+    public readonly ProtoId<CEScienceAreaPrototype> Area = area;
+}
+
+[Serializable, NetSerializable]
+public sealed class CEResearchTableChooseDiscoveryMessage(ProtoId<CEScienceDiscoveryPrototype> discovery) : BoundUserInterfaceMessage
+{
+    public readonly ProtoId<CEScienceDiscoveryPrototype> Discovery = discovery;
+}
+
+[Serializable, NetSerializable]
+public sealed class CEResearchTablePlaceAspectMessage(
+    Vector2i hex,
+    ProtoId<CEMagicEssenceTypePrototype> essence) : BoundUserInterfaceMessage
+{
+    public readonly Vector2i Hex = hex;
+    public readonly ProtoId<CEMagicEssenceTypePrototype> Essence = essence;
+}
+
+[Serializable, NetSerializable]
+public sealed class CEResearchTableFinishResearchMessage : BoundUserInterfaceMessage;

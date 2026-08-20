@@ -40,6 +40,10 @@
     guides:
     - CEFarmingGuideRU
     - CEFarmingGuideEN
+  - type: CEMagicEssenceStructure
+    essences:
+      Order: { min: 2, max: 6 }
+      Plant: { min: 0, max: 2 }
 
 - type: entity
   id: CEGuidebookCookingRecipes
@@ -64,3 +68,33 @@
     guides:
     - CECookingRecipesRU
     - CECookingRecipesEN
+  - type: CEMagicEssenceStructure
+    essences:
+      Order: { min: 2, max: 6 }
+      Life: { min: 0, max: 1 }
+
+- type: entity
+  id: CEGuidebookThaumaturgy
+  parent: CEGuidebookBase
+  name: thaumamicon
+  description: A tome bound in essence-stained leather, cataloguing the aspects of thaumaturgy and how to derive them.
+  components:
+  - type: Sprite
+    layers:
+    - state: paper
+    - state: cover_base
+      color: "#3d1a52"
+    - state: decor_frame
+      color: "#a970ff"
+    - state: icon_plate
+      color: "#6c1384"
+    - state: bookmark_short
+    - state: icon_thaum
+  - type: GuideHelp
+    guides:
+    - CEThaumaturgyRU
+    - CEThaumaturgyEN
+  - type: CEMagicEssenceStructure
+    essences:
+      Order: { min: 2, max: 6 }
+      Magic: { min: 0, max: 2 }

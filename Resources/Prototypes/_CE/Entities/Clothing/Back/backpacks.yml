@@ -38,7 +38,7 @@
     equipDelay: 1.5
     unequipDelay: 2
   - type: Sprite
-    sprite: _CE/Clothing/Back/Backpacks/backpack.rsi
+    sprite: _CE/Clothing/Back/Generic/backpack.rsi
   - type: Storage
     grid: # 24
     - 0,0,5,3 # 6*4=24
@@ -60,7 +60,7 @@
     equipDelay: 1.5
     unequipDelay: 2
   - type: Sprite
-    sprite: _CE/Clothing/Back/Satchel/satchel.rsi
+    sprite: _CE/Clothing/Back/Generic/satchel.rsi
   - type: Storage
     grid: # 32
     - 0,0,0,3 # 1x4=4

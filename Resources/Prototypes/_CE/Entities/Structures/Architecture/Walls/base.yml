@@ -37,6 +37,9 @@
         density: 1000
   - type: CEZLevelHighGround
   - type: CEOccludePipes
+  - type: CEGridStabilitySupport
+    supportStrength: 7
+  - type: CEZGridConnector
 
 - type: entity
   id: CEBaseWallFrame
@@ -70,3 +73,5 @@
         - WallLayer
         density: 1000
   - type: CEZLevelHighGround
+  - type: CEGridStabilitySupport
+    supportStrength: 4

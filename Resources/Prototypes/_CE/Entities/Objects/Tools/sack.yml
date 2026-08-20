@@ -41,3 +41,6 @@
   - type: PhysicalComposition
     materialComposition:
       CECloth: 30
+  - type: CEMagicEssenceStructure
+    essences:
+      Cloth: { min: 1, max: 4 }

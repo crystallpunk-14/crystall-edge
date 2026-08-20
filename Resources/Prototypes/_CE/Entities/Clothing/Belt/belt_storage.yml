@@ -11,7 +11,7 @@
     equipDelay: 0.5
     unequipDelay: 1
   - type: Sprite
-    sprite: _CE/Clothing/Belt/pouch.rsi
+    sprite: _CE/Clothing/Belt/Generic/pouch.rsi
   - type: Storage
     maxItemSize: Normal
     grid: # 10

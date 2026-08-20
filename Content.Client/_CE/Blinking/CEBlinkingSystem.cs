@@ -14,10 +14,10 @@ using Robust.Client.Graphics;
 namespace Content.Client._CE.Blinking;
 
 /// <inheritdoc/>
-public sealed class CEBlinkingSystem : CESharedBlinkingSystem
+public sealed partial class CEBlinkingSystem : CESharedBlinkingSystem
 {
-    [Dependency] private readonly AnimationPlayerSystem _animationPlayer = default!;
-    [Dependency] private readonly SpriteSystem _sprite = default!;
+    [Dependency] private AnimationPlayerSystem _animationPlayer = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     private const string AnimationKey = "anim-blink";
 
@@ -49,7 +49,7 @@ public sealed class CEBlinkingSystem : CESharedBlinkingSystem
         if (!_sprite.TryGetLayer(ent.Owner, HumanoidVisualLayers.Eyes, out var layer, false))
             return;
 
-        var animation = new Animation
+        var animation = new Robust.Client.Animations.Animation
         {
             Length = TimeSpan.FromSeconds(0.5f),
             AnimationTracks =

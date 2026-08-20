@@ -39,11 +39,13 @@ ce-job-desc-bard = Music, fun, and jokes are your job and bread. Make this city'
 ce-job-name-townfolk = Townfolk
 ce-job-desc-townfolk = A free citizen who has saved enough money to take a week off and do whatever their heart desires.
 
-ce-job-name-tailor-merchant = Tailor merchant
-ce-job-desc-tailor-merchant = A free citizen who has acquired ownership of a small clothing shop.
+# Academy
 
-ce-job-name-pharmacist-merchant = Pharmacist merchant
-ce-job-desc-pharmacist-merchant = A free citizen who owns a small pharmacy, selling medicines and herbs.
+ce-job-name-academy-student = Student
+ce-job-desc-academy-student = A pupil of the Thaumaturgic Academy, learning the fundamentals of science under the professors' guidance.
 
-ce-job-name-homegoods-merchant = Homegoods merchant
-ce-job-desc-homegoods-merchant = A free citizen who owns a small shop selling home decorations and household items.
+ce-job-name-academy-professor = Professor
+ce-job-desc-academy-professor = A teacher of the Academy, instructing students in the secrets of nature and pursuing their own research.
+
+ce-job-name-academy-rector = Academy Rector
+ce-job-desc-academy-rector = The head of the Thaumaturgic Academy, responsible for the safety of the educational process and overseeing the direction of research.

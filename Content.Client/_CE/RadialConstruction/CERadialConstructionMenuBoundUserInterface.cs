@@ -7,9 +7,9 @@ using Robust.Shared.Prototypes;
 namespace Content.Client._CE.RadialConstruction;
 
 [UsedImplicitly]
-public sealed class CERadialConstructionMenuBoundUserInterface : BoundUserInterface
+public sealed partial class CERadialConstructionMenuBoundUserInterface : BoundUserInterface
 {
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
 
     private SimpleRadialMenu? _menu;
 
@@ -22,15 +22,20 @@ public sealed class CERadialConstructionMenuBoundUserInterface : BoundUserInterf
     {
         base.Open();
 
-        if (!EntMan.TryGetComponent<CERadialConstructionComponent>(Owner, out var component))
-            return;
-
         _menu = this.CreateWindow<SimpleRadialMenu>();
         _menu.Track(Owner);
-        var models = ConvertToButtons(component.AvailablePrototypes);
-        _menu.SetButtons(models);
-
         _menu.OpenOverMouseScreenPosition();
+    }
+
+    protected override void UpdateState(BoundUserInterfaceState state)
+    {
+        base.UpdateState(state);
+
+        if (state is not CERadialConstructionBuiState buiState || _menu is null)
+            return;
+
+        var models = ConvertToButtons(buiState.AvailablePrototypes);
+        _menu.SetButtons(models);
     }
 
     private IEnumerable<RadialMenuOptionBase> ConvertToButtons(List<EntProtoId> prototypes)
@@ -66,7 +71,7 @@ public sealed class CERadialConstructionMenuBoundUserInterface : BoundUserInterf
 
         if (disposing)
         {
-            _menu?.Dispose();
+            _menu?.Close();
             _menu = null;
         }
     }

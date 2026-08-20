@@ -1,0 +1,116 @@
+- type: entity
+  parent:
+  - BaseStructure
+  id: CEResearchTable
+  name: research table
+  description: A table for conducting scientific research.
+  categories: [ ForkFiltered ]
+  components:
+  - type: CEResearchTable
+  - type: Construction
+    graph: CEResearchTable
+    node: CEResearchTable
+  - type: Sprite
+    snapCardinals: true
+    sprite: _CE/Structures/Furniture/Tables/workbench.rsi
+    layers:
+    - state: research_table
+    - sprite: _CE/Objects/Bureaucracy/paper.rsi
+      state: paper
+      map: [ "paperLayer" ]
+      visible: false
+  - type: Icon
+    sprite: _CE/Structures/Furniture/Tables/workbench.rsi
+    state: research_table
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.CEResearchTableVisuals.HasPaper:
+        paperLayer:
+          True: { visible: true }
+          False: { visible: false }
+  - type: ActivatableUI
+    key: enum.CEResearchTableUiKey.Key
+    requiresComplex: true
+  - type: Clickable
+  - type: Anchorable
+    delay: 2
+  - type: Physics
+    bodyType: Static
+  - type: InteractionOutline
+  - type: UserInterface
+    interfaces:
+      enum.CEResearchTableUiKey.Key:
+        type: CEResearchTableBoundUserInterface
+  - type: ItemSlots
+    slots:
+      paper:
+        name: ce-research-table-paper-slot-name
+        whitelist:
+          components:
+          - Paper
+          - CEUnselectedDiscoveryProject
+          - CEDiscoveryProject
+        ejectOnInteract: false
+        insertSound:
+          collection: storageRustle
+        ejectSound:
+          collection: storageRustle
+  - type: ContainerContainer
+    containers:
+      paper: !type:ContainerSlot
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 55
+        mask: # tables should collide with other tables
+        - TableMask
+        layer:
+        - TableLayer
+      fix2:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        mask:
+        - TabletopMachineMask
+        layer:
+        - Impassable
+        - MidImpassable
+        - LowImpassable
+        hard: false
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepWood
+  - type: Damageable
+    damageModifierSet: CEWood
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Heat
+        damage: 40
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+    - trigger:
+        !type:DamageTrigger
+        damage: 60
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEWoodenPlanks1:
+            min: 1
+            max: 2

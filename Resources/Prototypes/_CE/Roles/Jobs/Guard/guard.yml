@@ -7,7 +7,6 @@
   startingGear: CEGuardGear
   icon: CEJobIconGuard
   supervisors: ce-job-supervisors-guard-commander
-  canBeAntag: false
   special:
     - !type:AddComponentSpecial
       components:
@@ -38,6 +37,40 @@
     - id: CECoinSilver1
     - id: CECoinSilver1
     - id: CECoinCopper10
+
+- type: entity
+  id: CEChestFilledGuard
+  parent: CEWoodenChest
+  suffix: Filled, Guard
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: CEGunJustice
+        - id: CERope
+        - id: CERope
+        - id: CERope
+
+- type: entity
+  id: CEBedsideTableFilledGuard
+  parent: CEBedsideTableWooden
+  suffix: Filled, Guard
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 2, 3
+        children:
+        - id: CEClothingCloakRaincoatGuard
+        - id: CEClothingHeadHelmetGuard
+        - id: CEClothingHeadHelmetGuardCorinthian
+        - id: CEClothingHeadCapGuard
+        - id: CEClothingHeadFedoraGuard
+        - id: CEClothingShirtGuard
+        - id: CEClothingShirtSyurkoGuard
+        - id: CEClothingPantsGuard
 
 - type: entity
   id: CEKeyRingGuard

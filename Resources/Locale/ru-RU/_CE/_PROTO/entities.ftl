@@ -32,29 +32,6 @@ ent-CEActionZLevelDown = Спуститься
 ent-CEActionToggleLookUp = Посмотреть вверх
     .desc = Вы поднимаете голову и смотрите на небо.
 
-ent-CEActionVampireBite = Укус вампира
-    .desc = Вы сосёте кровь и саму сущность жизни из своей жертвы. (Количество сущности в каждом игроке ограничено)
-
-ent-CEImpactEffectVampireBite = None
-
-ent-CEActionSpellBloodEssenceCreation = Сформировать сущность крови
-    .desc = Вы извлекаете сущность жизни, украденную у других существ из вашего тела, чтобы передать её другим вампирам или использовать в ритуалах.
-
-ent-CEActionSpellVampireCreate = Превратить в младшего вампира
-    .desc = Вы превращаете выбранную цель в младшего вампира, который должен вам подчиняться. Младшие вампиры не могут развивать свои способности без старшего вампира.
-
-ent-CEActionVampireScream = Оглушающий крик
-    .desc = Вы издаёте мощный крик, который оглушает всех рядом на несколько секунд.
-
-ent-CEImpactEffectVampireScreamTelegraphy = { ent-CEBaseMagicImpact }
-    .desc = { ent-CEBaseMagicImpact.desc }
-
-ent-CEImpactEffectVampireScream = { ent-CEBaseMagicImpact }
-    .desc = { ent-CEBaseMagicImpact.desc }
-
-ent-CEActionVampireToggleVisuals = Вампирическая природа
-    .desc = Вы раскрываете или скрываете свою вампирическую природу. Когда вы находитесь в раскрытой форме, вы можете использовать более мощные способности, но страдаете от солнечного света.
-
 ent-CEClothingCloakBase = None
 
 ent-CEClothingHeadBandanaAlchemist = платок алхимика
@@ -384,12 +361,6 @@ ent-CEBiomeSpawnerGrassland = { ent-CEBaseBiomeSpawner }
     .desc = { ent-CEBaseBiomeSpawner.desc }
     .suffix = Степь
 
-ent-CESpawnPointGroupedBase = None
-
-ent-CESpawnPointGroupedTest = Пробная точка спауна ключ
-
-ent-CESpawnPointGroupedTest2 = Пробная точка спауна монета
-
 ent-CESpawnPointJobBase = None
 
 ent-CESpawnPointGuardCommander = командир охраны
@@ -536,10 +507,6 @@ ent-CEFoodTomatoesSlice = ломтик помидора
 
 ent-CEFoodApple = яблоко
     .desc = Фрукт для любителей быстрого перекуса.
-
-ent-CEFoodAppleFalling = { ent-CEFoodApple }
-    .desc = { ent-CEFoodApple.desc }
-    .suffix = Падающее
 
 ent-CEFoodAppleSlice = ломтик яблока
     .desc = Маленькие ломтики для одноразового употребления.
@@ -1585,16 +1552,16 @@ ent-CEDistributionUnitEmpty = { ent-CEDistributionUnitBase }
     .desc = { ent-CEDistributionUnitBase.desc }
     .suffix = Пусто
 
-ent-CEPipeBrassBig = латунная труба
+ent-CEPipeBrassBig = большая латунная труба
     .desc = { ent-CEPipeBrassBigBase.desc }
 
-ent-CEPipeBrassBigVerticalUp = латунная труба вверх
+ent-CEPipeBrassBigVerticalUp = большая латунная труба вверх
     .desc = { ent-CEPipeBrassBig.desc }
 
-ent-CEPipeBrassBigVerticalDown = латунная труба вниз
+ent-CEPipeBrassBigVerticalDown = большая латунная труба вниз
     .desc = { ent-CEPipeBrassBig.desc }
 
-ent-CEPipeBrassBigValve = клапан трубы
+ent-CEPipeBrassBigValve = большой клапан
     .desc = Клапан, установленный на латунной трубе, позволяющий регулировать поток магической энергии через трубу.
     .suffix = Клапан, Выкл
 
@@ -1613,16 +1580,16 @@ ent-CEPipeBrassBigDelayer = замедлитель заряда трубы
 ent-CEPipeBrassMediumBase = None
     .desc = Изолированная латунная труба с железными опорами. Стандартизированный метод передачи магической энергии на большие расстояния. Однако любые отверстия или трещины могут привести к утечке энергии и нанести вред окружающим существам, восприимчивым к магии.
 
-ent-CEPipeBrassMedium = малая латунная труба
+ent-CEPipeBrassMedium = средняя латунная труба
     .desc = { ent-CEPipeBrassMediumBase.desc }
 
-ent-CEPipeBrassMediumVerticalUp = малая латунная труба вверх
+ent-CEPipeBrassMediumVerticalUp = средняя латунная труба вверх
     .desc = { ent-CEPipeBrassMedium.desc }
 
-ent-CEPipeBrassMediumVerticalDown = малая латунная труба вниз
+ent-CEPipeBrassMediumVerticalDown = средняя латунная труба вниз
     .desc = { ent-CEPipeBrassMedium.desc }
 
-ent-CEPipeBrassMediumValve = малый клапан
+ent-CEPipeBrassMediumValve = средний клапан
     .desc = Клапан, установленный на латунной трубе, позволяющий регулировать поток магической энергии через трубу.
     .suffix = Клапан, Выкл
 
@@ -1637,21 +1604,6 @@ ent-CEPipeBrassMediumBroken = { ent-CEPipeBrassMedium }
 ent-CEPipeBrassMediumDelayer = замедлитель заряда малой трубы
     .desc = Маленький клапан, установленный на трубе, позволяет задержать поступающую энергию на короткий период времени. Полезно для контроля времени подачи энергии.
     .suffix = 0.5с
-
-ent-CEWorkbenchVampire = точка силы вампиров
-    .desc = Стол, пропитанный вампирской магией, позволяющий создавать предметы тёмных искусств.
-
-ent-CEVampireClanHeartBase = сердце вампирского клана
-    .desc = Источник силы для вампирского клана. Собирая жизненную силу своих жертв, клан становится сильнее.
-
-ent-CEVampireClanHeart = { ent-CEVampireClanHeartBase }
-    .desc = { ent-CEVampireClanHeartBase.desc }
-
-ent-CEVampireClanHeartFrame = рама сердца клана
-    .desc = Величественный артефакт вампирской культуры. Незавершён.
-
-ent-CEVampireStoneAltar = кровавый алтарь
-    .desc = Жуткий каменный алтарь, залитый кровью. Удваивает количество кровавой сущности, извлекаемой из жертв вампиров.
 
 ent-CEHighBushRandom = { ent-CEHighBush }
     .desc = { ent-CEHighBush.desc }
@@ -1743,12 +1695,6 @@ ent-CEFloraTreeSpruceLarge = { ent-CEBaseTree }
 ent-CEBaseGameRule = None
 
 ent-CEGameRule3Days = None
-
-ent-CEGameRuleVampires = None
-
-ent-CEBaseVampireObjective = None
-
-ent-CEVampireObjectiveBloodPurity = None
 
 ent-CEBaseAmbitionObjective = None
 
@@ -1930,8 +1876,6 @@ ent-CEKeyRingTavernmaster = { ent-CEBaseKeyRing }
     .desc = { ent-CEBaseKeyRing.desc }
     .suffix = Пусто
 
-ent-CEMindRoleVampire = Роль вампира
-
 ent-CETradeContractApothecariesGuild = { ent-CETradeContractBase }
     .desc = Торговый контракт с магазином "Аптекари". Позволяет вам покупать некоторые медицинские принадлежности для лечения раненых.
     .suffix = Гильдия аптекарей
@@ -1962,8 +1906,6 @@ ent-CEBloodpack = пакет крови
 ent-CEBloodpack10 = { ent-CEBloodpack }
     .desc = { ent-CEBloodpack.desc }
     .suffix = Одиночный
-
-ent-CESpawnPointGroupedTestMedical = Тестовая точка спауна Медицина
 
 ent-CEClothingCapeBarbarian = плащ варвара
     .desc = Грубый плащ, излюбленный варварами, часто сделанный из грубых шкур.
@@ -2238,6 +2180,12 @@ ent-CETargetEffigy = чучело-мишень
 
 ent-CEWoodenChest = деревянный сундук
     .desc = Простой деревянный сундук для лёгкого хранения хлама.
+
+ent-CEOldWoodenChest = старый деревянный сундук
+    .desc = Потрёпанный, изношенный деревянный сундук.
+
+ent-CEGoldChest = золотой сундук
+    .desc = Богато украшенный позолоченный сундук.
 
 ent-CELargeWoodenCrate = большой деревянный ящик
     .desc = Прочный деревянный ящик.

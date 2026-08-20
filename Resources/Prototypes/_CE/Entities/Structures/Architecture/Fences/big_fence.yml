@@ -30,7 +30,7 @@
       fix1:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.5,0.25,0.5,0.5"
+          bounds: "-0.5,0.375,0.5,0.5"
         density: 1000
         mask:
         - Impassable
@@ -48,8 +48,9 @@
   - type: Icon
     sprite: _CE/Structures/Architecture/Fences/wooden_big.rsi
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Wood
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -72,6 +73,39 @@
 
 - type: entity
   parent: CEBaseFenceBig
+  id: CEFenceBigBrass
+  suffix: Brass
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Fences/brass_big.rsi
+  - type: Icon
+    sprite: _CE/Structures/Architecture/Fences/brass_big.rsi
+  - type: Damageable
+    damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEScrapBrass1:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Construction
+    graph: CEFenceBigBrass
+    node: CEFenceBigBrass
+
+- type: entity
+  parent: CEBaseFenceBig
   id: CEFenceBigIron
   suffix: Iron
   components:
@@ -80,8 +114,9 @@
   - type: Icon
     sprite: _CE/Structures/Architecture/Fences/iron_big.rsi
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:

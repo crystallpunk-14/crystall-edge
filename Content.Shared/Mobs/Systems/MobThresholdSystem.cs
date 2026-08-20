@@ -11,10 +11,11 @@ using Robust.Shared.GameStates;
 
 namespace Content.Shared.Mobs.Systems;
 
-public sealed class MobThresholdSystem : EntitySystem
+public sealed partial class MobThresholdSystem : EntitySystem
 {
-    [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
-    [Dependency] private readonly AlertsSystem _alerts = default!;
+    [Dependency] private MobStateSystem _mobStateSystem = default!;
+    [Dependency] private AlertsSystem _alerts = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
 
     public override void Initialize()
     {
@@ -270,7 +271,7 @@ public sealed class MobThresholdSystem : EntitySystem
         if (!TryGetThresholdForState(target2, MobState.Dead, out var ent2DeadThreshold, threshold2))
             ent2DeadThreshold = 0;
 
-        damage = (oldDamage.Damage / ent1DeadThreshold.Value) * ent2DeadThreshold.Value;
+        damage = (_damageable.GetAllDamage((target1, oldDamage)) / ent1DeadThreshold.Value) * ent2DeadThreshold.Value;
         return true;
     }
 
@@ -339,7 +340,7 @@ public sealed class MobThresholdSystem : EntitySystem
     {
         foreach (var (threshold, mobState) in thresholdsComponent.Thresholds.Reverse())
         {
-            if (damageableComponent.TotalDamage < threshold)
+            if (_damageable.GetTotalDamage((target, damageableComponent)) < threshold)
                 continue;
 
             TriggerThreshold(target, mobState, mobStateComponent, thresholdsComponent, origin);
@@ -400,12 +401,14 @@ public sealed class MobThresholdSystem : EntitySystem
 
             if (ev.CancelUpdate)
             {
-                _alerts.ShowAlert(target, ev.CurrentAlert, ev.Severity);
+                //CrystallEdge - health now shown via CEHealthUI widget, alert hidden to avoid duplication
+                // _alerts.ShowAlert(target, ev.CurrentAlert, ev.Severity);
+                //CrystallEdge end
                 return;
             }
 
             if (TryGetNextState(target, currentMobState, out var nextState, threshold) &&
-                TryGetPercentageForState(target, nextState.Value, damageable.TotalDamage, out var percentage))
+                TryGetPercentageForState(target, nextState.Value, _damageable.GetTotalDamage((target, damageable)), out var percentage))
             {
                 percentage = FixedPoint2.Clamp(percentage.Value, 0, 1);
 
@@ -415,11 +418,16 @@ public sealed class MobThresholdSystem : EntitySystem
                         _alerts.GetMaxSeverity(currentAlert),
                         percentage.Value.Float()));
             }
-            _alerts.ShowAlert(target, currentAlert, severity);
+            //CrystallEdge - health now shown via CEHealthUI widget, alert hidden to avoid duplication
+            // _alerts.ShowAlert(target, currentAlert, severity);
+            _ = severity;
+            //CrystallEdge end
         }
         else
         {
-            _alerts.ShowAlert(target, currentAlert);
+            //CrystallEdge - health now shown via CEHealthUI widget, alert hidden to avoid duplication
+            // _alerts.ShowAlert(target, currentAlert);
+            //CrystallEdge end
         }
     }
 

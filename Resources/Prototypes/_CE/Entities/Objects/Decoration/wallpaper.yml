@@ -1,0 +1,58 @@
+- type: entity
+  parent: BaseItem
+  id: CEWallpaperItemBase
+  name: wallpaper roll
+  description: A roll of wallpaper. Glue it to a wall from whichever side you're standing on.
+  categories: [ ForkFiltered ]
+  abstract: true
+  components:
+  - type: Item
+    size: Small
+  - type: Stack
+    count: 10
+  - type: Sprite
+    sprite: _CE/Structures/Wallpaper/icons.rsi
+  - type: StackPrice
+    price: 0.5
+  - type: CEMagicEssenceStructure
+    essences:
+      Cloth: { min: 1, max: 1 }
+  - type: CEEntityGroupMember
+    groups:
+      Wallpaper: 1
+
+- type: entity
+  parent: CEWallpaperItemBase
+  id: CEWallpaperItemPurple
+  suffix: Purple
+  components:
+  - type: Sprite
+    state: purple
+  - type: Stack
+    stackType: CEWallpaperPurple
+  - type: CEWallpaper
+    proto: Purple
+
+- type: entity
+  parent: CEWallpaperItemBase
+  id: CEWallpaperItemYellowVerticalLines
+  suffix: Yellow Vertical Lines
+  components:
+  - type: Sprite
+    state: yellow_vertical_lines
+  - type: Stack
+    stackType: CEWallpaperYellowVerticalLines
+  - type: CEWallpaper
+    proto: YellowVerticalLines
+
+- type: entity
+  parent: CEWallpaperItemBase
+  id: CEWallpaperItemBlack
+  suffix: Black
+  components:
+  - type: Sprite
+    state: black
+  - type: Stack
+    stackType: CEWallpaperBlack
+  - type: CEWallpaper
+    proto: Black

@@ -1,9 +1,7 @@
 - type: marking
   id: CETieflingHorns
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ CETiefling ]
-  followSkinColor: true
+  groupWhitelist: [ CETiefling ]
   sprites:
   - sprite: _CE/Mobs/Customization/tiefling_horns.rsi
     state: horn1
@@ -11,9 +9,7 @@
 - type: marking
   id: CETieflingHorns2
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ CETiefling ]
-  followSkinColor: true
+  groupWhitelist: [ CETiefling ]
   sprites:
   - sprite: _CE/Mobs/Customization/tiefling_horns.rsi
     state: horn2
@@ -21,9 +17,7 @@
 - type: marking
   id: CETieflingHorns3
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ CETiefling ]
-  followSkinColor: true
+  groupWhitelist: [ CETiefling ]
   sprites:
   - sprite: _CE/Mobs/Customization/tiefling_horns.rsi
     state: horn3
@@ -31,9 +25,7 @@
 - type: marking
   id: CETieflingHorns3Broken
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ CETiefling ]
-  followSkinColor: true
+  groupWhitelist: [ CETiefling ]
   sprites:
   - sprite: _CE/Mobs/Customization/tiefling_horns.rsi
     state: horn3_broken
@@ -41,9 +33,7 @@
 - type: marking
   id: CETieflingHorns4
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ CETiefling ]
-  followSkinColor: true
+  groupWhitelist: [ CETiefling ]
   sprites:
   - sprite: _CE/Mobs/Customization/tiefling_horns.rsi
     state: horn4
@@ -51,9 +41,7 @@
 - type: marking
   id: CETieflingHorns5
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ CETiefling ]
-  followSkinColor: true
+  groupWhitelist: [ CETiefling ]
   sprites:
   - sprite: _CE/Mobs/Customization/tiefling_horns.rsi
     state: horn5
@@ -61,9 +49,7 @@
 - type: marking
   id: CETieflingHorns5Broken
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ CETiefling ]
-  followSkinColor: true
+  groupWhitelist: [ CETiefling ]
   sprites:
   - sprite: _CE/Mobs/Customization/tiefling_horns.rsi
     state: horn5_broken
@@ -71,9 +57,7 @@
 - type: marking
   id: CETieflingHorns6
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ CETiefling ]
-  followSkinColor: true
+  groupWhitelist: [ CETiefling ]
   sprites:
   - sprite: _CE/Mobs/Customization/tiefling_horns.rsi
     state: horn6
@@ -81,9 +65,7 @@
 - type: marking
   id: CETieflingHorns7
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ CETiefling ]
-  followSkinColor: true
+  groupWhitelist: [ CETiefling ]
   sprites:
   - sprite: _CE/Mobs/Customization/tiefling_horns.rsi
     state: horn7
@@ -91,9 +73,7 @@
 - type: marking
   id: CETieflingHorns8
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ CETiefling ]
-  followSkinColor: true
+  groupWhitelist: [ CETiefling ]
   sprites:
   - sprite: _CE/Mobs/Customization/tiefling_horns.rsi
     state: horn8
@@ -101,9 +81,7 @@
 - type: marking
   id: CETieflingHorns9
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ CETiefling ]
-  followSkinColor: true
+  groupWhitelist: [ CETiefling ]
   sprites:
   - sprite: _CE/Mobs/Customization/tiefling_horns.rsi
     state: horn9

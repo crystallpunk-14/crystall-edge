@@ -4,90 +4,126 @@
  */
 
 using Content.Shared._CE.ZLevels.Core.Components;
+using JetBrains.Annotations;
 using Robust.Shared.Physics;
-using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
 
 namespace Content.Shared._CE.ZLevels.Core.EntitySystems;
 
 public abstract partial class CESharedZLevelsSystem
 {
+    private readonly List<EntityUid> _activeBodies = new();
+
+    public IReadOnlyList<EntityUid> ActiveBodies => _activeBodies;
+
     private void InitializeActivation()
     {
         SubscribeLocalEvent<CEZPhysicsComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<CEZPhysicsComponent, AnchorStateChangedEvent>(OnAnchorStateChange);
-        SubscribeLocalEvent<CEZPhysicsComponent, PhysicsBodyTypeChangedEvent>(OnPhysicsBodyTypeChange);
+        SubscribeLocalEvent<CEZPhysicsComponent, ComponentShutdown>(OnShutdown);
+
+        SubscribeLocalEvent<CEZPhysicsComponent, AnchorStateChangedEvent>(OnAnchorStateChanged);
+        SubscribeLocalEvent<CEZPhysicsComponent, PhysicsBodyTypeChangedEvent>(OnPhysicsBodyTypeChanged);
+
         SubscribeLocalEvent<CEZPhysicsComponent, EntParentChangedMessage>(OnParentChanged);
     }
 
-    private void OnAnchorStateChange(Entity<CEZPhysicsComponent> ent, ref AnchorStateChangedEvent args)
+    private void OnMapInit(Entity<CEZPhysicsComponent> entity, ref MapInitEvent args)
     {
-        CheckActivation(ent);
-    }
+        RefreshBody(entity);
 
-    private void OnMapInit(Entity<CEZPhysicsComponent> ent, ref MapInitEvent args)
-    {
-        CheckActivation(ent);
+        var mapUid = Transform(entity).MapUid;
 
-        if (!TryComp<CEZLevelMapComponent>(Transform(ent).MapUid, out var zLevelMap))
+        if (!_zMapQuery.TryComp(mapUid, out var zLevel))
             return;
 
-        ent.Comp.CurrentZLevel = zLevelMap.Depth;
-        DirtyField(ent, ent.Comp, nameof(CEZPhysicsComponent.CurrentZLevel));
-    }
-
-    private void OnPhysicsBodyTypeChange(Entity<CEZPhysicsComponent> ent, ref PhysicsBodyTypeChangedEvent args)
-    {
-        CheckActivation(ent);
-    }
-
-    private void OnParentChanged(Entity<CEZPhysicsComponent> ent, ref EntParentChangedMessage args)
-    {
-        CheckActivation(ent);
-
-        if (ZPhyzQuery.TryComp(args.OldParent, out var oldParentZPhys))
-            SetZPosition((ent, ent), oldParentZPhys.LocalPosition);
-    }
-
-    private void CheckActivation(Entity<CEZPhysicsComponent> ent)
-    {
-        if (TerminatingOrDeleted(ent))
+        if (entity.Comp.CurrentZLevel == zLevel.Depth)
             return;
 
-        var xform = Transform(ent);
+        entity.Comp.CurrentZLevel = zLevel.Depth;
+        DirtyField(entity, entity.Comp, nameof(CEZPhysicsComponent.CurrentZLevel));
+    }
 
-        if (xform.ParentUid != xform.MapUid)
+    private void OnShutdown(Entity<CEZPhysicsComponent> entity, ref ComponentShutdown args)
+    {
+        SleepBody((entity, entity));
+    }
+
+    private void OnAnchorStateChanged(Entity<CEZPhysicsComponent> entity, ref AnchorStateChangedEvent args)
+    {
+        RefreshBody(entity);
+    }
+
+    private void OnPhysicsBodyTypeChanged(Entity<CEZPhysicsComponent> entity, ref PhysicsBodyTypeChangedEvent args)
+    {
+        RefreshBody(entity);
+    }
+
+    private void OnParentChanged(Entity<CEZPhysicsComponent> entity, ref EntParentChangedMessage args)
+    {
+        RefreshBody(entity);
+
+        if (ZPhysicsQuery.TryComp(args.OldParent, out var oldParentPhysics))
         {
-            SetActiveStatus(ent, false);
+            SetZPosition((entity, entity), oldParentPhysics.LocalPosition);
             return;
         }
 
-        if (xform.Anchored)
+        if (ZPhysicsQuery.HasComp(Transform(entity).ParentUid))
         {
-            SetActiveStatus(ent, false);
-            return;
+            SetZPosition((entity, entity), 0);
         }
-
-        if (TryComp<PhysicsComponent>(ent, out var physics))
-        {
-            if (physics.BodyType == BodyType.Static)
-            {
-                SetActiveStatus(ent, false);
-                return;
-            }
-        }
-
-        SetActiveStatus(ent, true);
     }
 
-    private void SetActiveStatus(EntityUid ent, bool active)
+    [PublicAPI]
+    public void WakeBody(Entity<CEZPhysicsComponent?> entity)
     {
-        if (!_timing.IsFirstTimePredicted)
+        if (!Resolve(entity, ref entity.Comp, false))
             return;
 
-        if (active)
-            EnsureComp<CEActiveZPhysicsComponent>(ent);
-        else
-            RemComp<CEActiveZPhysicsComponent>(ent);
+        if (_activeBodies.Contains(entity))
+            return;
+
+        entity.Comp.Sleeping = false;
+        entity.Comp.SleepTimer = 0f;
+
+        _activeBodies.Add(entity);
+    }
+
+    [PublicAPI]
+    public void SleepBody(Entity<CEZPhysicsComponent?> entity)
+    {
+        if (!Resolve(entity, ref entity.Comp, false))
+            return;
+
+        entity.Comp.Sleeping = true;
+        entity.Comp.SleepTimer = 0f;
+
+        _activeBodies.Remove(entity);
+    }
+
+    [PublicAPI]
+    public void RefreshBody(Entity<CEZPhysicsComponent> entity)
+    {
+        if (TerminatingOrDeleted(entity))
+        {
+            SleepBody((entity, entity));
+            return;
+        }
+
+        var transform = Transform(entity);
+        var parent = transform.ParentUid;
+
+        var onMap = parent == transform.GridUid || parent == transform.MapUid;
+
+        if (!onMap
+            || transform.Anchored
+            || _physicsQuery.TryComp(entity, out var physics)
+            && physics.BodyType == BodyType.Static)
+        {
+            SleepBody((entity, entity));
+            return;
+        }
+
+        WakeBody((entity, entity));
     }
 }

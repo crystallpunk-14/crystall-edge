@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "license": "All rights reserved",
-  "copyright": "By Jaraten",
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Blue, Red and White by Jaraten. Purple, Green, Flower, Star, Goldenline by Dinazewwr  ",
   "size": {
     "x": 32,
     "y": 96
@@ -29,6 +29,54 @@
     },
     {
       "name": "red_closed",
+      "directions": 4
+    },
+    {
+      "name": "purple_open",
+      "directions": 4
+    },
+    {
+      "name": "purple_closed",
+      "directions": 4
+    },
+    {
+      "name": "green_open",
+      "directions": 4
+    },
+    {
+      "name": "green_closed",
+      "directions": 4
+    },
+    {
+      "name": "flower_open",
+      "directions": 4
+    },
+    {
+      "name": "flower_closed",
+      "directions": 4
+    },
+    {
+      "name": "star_open",
+      "directions": 4
+    },
+    {
+      "name": "star_closed",
+      "directions": 4
+    },
+    {
+      "name": "goldenline_open",
+      "directions": 4
+    },
+    {
+      "name": "goldenline_closed",
+      "directions": 4
+    },
+    {
+      "name": "goldenline2_open",
+      "directions": 4
+    },
+    {
+      "name": "goldenline2_closed",
       "directions": 4
     }
   ]

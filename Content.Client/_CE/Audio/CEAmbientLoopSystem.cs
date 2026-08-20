@@ -2,8 +2,8 @@ using Content.Client.Audio;
 using Content.Client.Gameplay;
 using Content.Shared._CE.Audio.Prototypes;
 using Content.Shared.CCVar;
+using Content.Shared.EntityConditions;
 using Content.Shared.GameTicking;
-using Content.Shared.Random.Rules;
 using Robust.Client.Player;
 using Robust.Client.State;
 using Robust.Shared.Audio;
@@ -18,15 +18,15 @@ namespace Content.Client._CE.Audio;
 
 public sealed partial class CEAmbientLoopSystem : EntitySystem
 {
-    [Dependency] private readonly IConfigurationManager _configManager = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IPlayerManager _player = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IStateManager _state = default!;
-    [Dependency] private readonly RulesSystem _rules = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly ContentAudioSystem _contentAudio = default!;
+    [Dependency] private IConfigurationManager _configManager = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private IPlayerManager _player = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private IStateManager _state = default!;
+    [Dependency] private SharedEntityConditionsSystem _conditions = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private ContentAudioSystem _contentAudio = default!;
 
     private const float AmbientLoopFadeInTime = 1f;
     private const float AmbientLoopFadeOutTime = 4f;
@@ -139,7 +139,7 @@ public sealed partial class CEAmbientLoopSystem : EntitySystem
 
        foreach (var loop in ambientLoops)
        {
-           if (_rules.IsTrue(player.Value, _proto.Index(loop.Rules)))
+           if (_conditions.TryConditions(player.Value, loop.Conditions))
            {
                list.Add(loop);
            }

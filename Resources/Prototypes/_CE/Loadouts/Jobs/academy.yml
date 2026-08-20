@@ -1,0 +1,56 @@
+# Shirt
+
+- type: loadoutGroup
+  id: CEAcademyShirt
+  name: ce-loadout-shirt
+  loadouts:
+  - CEClothingShirtAcademyRobe
+  - CEClothingShirtAcademyRobe2
+
+- type: loadout
+  id: CEClothingShirtAcademyRobe
+  equipment:
+    shirt: CEClothingShirtAcademyRobe
+
+- type: loadout
+  id: CEClothingShirtAcademyRobe2
+  equipment:
+    shirt: CEClothingShirtAcademyRobe2
+
+# Cloak
+
+- type: loadoutGroup
+  id: CEAcademyThaumaturgeCloak
+  name: ce-loadout-cloak
+  minLimit: 0
+  loadouts:
+  - CEClothingCloakMantleThaumaturge
+
+- type: loadout
+  id: CEClothingCloakMantleThaumaturge
+  equipment:
+    cloak: CEClothingCloakMantleThaumaturge
+
+# Head
+
+- type: loadoutGroup
+  id: CEAcademyStudentHead
+  name: ce-loadout-head
+  loadouts:
+  - CEClothingHeadTriangularLeather
+
+- type: loadout
+  id: CEClothingHeadTriangularLeather
+  equipment:
+    head: CEClothingHeadTriangularLeather
+
+- type: loadoutGroup
+  id: CEAcademyHead
+  name: ce-loadout-head
+  loadouts:
+  - CEClothingHeadTriangularLeatherGolden
+
+- type: loadout
+  id: CEClothingHeadTriangularLeatherGolden
+  equipment:
+    head: CEClothingHeadTriangularLeatherGolden

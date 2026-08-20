@@ -19,6 +19,10 @@
       map: [ "overlay" ]
   - type: Paper
     content: ce-book-text-tiefling-gambit
+  - type: CEMagicEssenceStructure
+    essences:
+      Order: { min: 2, max: 6 }
+      Chaos: { min: 1, max: 3 }
 
 - type: entity
   id: CEBookPantheonGodsSileita
@@ -41,6 +45,10 @@
       map: [ "overlay" ]
   - type: Paper
     content: ce-book-text-pantheon-gods-sileita
+  - type: CEMagicEssenceStructure
+    essences:
+      Order: { min: 2, max: 6 }
+      Soul: { min: 0, max: 2 }
 
 - type: entity
   id: CEBookPantheonGodsSileitaImitators
@@ -64,3 +72,7 @@
       map: [ "overlay" ]
   - type: Paper
     content: ce-book-text-pantheon-gods-sileita-imitators
+  - type: CEMagicEssenceStructure
+    essences:
+      Order: { min: 2, max: 6 }
+      Soul: { min: 0, max: 2 }

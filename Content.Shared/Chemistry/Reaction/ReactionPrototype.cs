@@ -4,7 +4,6 @@ using Content.Shared.EntityEffects;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Dictionary;
 
 namespace Content.Shared.Chemistry.Reaction
 {
@@ -24,8 +23,8 @@ namespace Content.Shared.Chemistry.Reaction
         /// <summary>
         /// Reactants required for the reaction to occur.
         /// </summary>
-        [DataField("reactants", customTypeSerializer:typeof(PrototypeIdDictionarySerializer<ReactantPrototype, ReagentPrototype>))]
-        public Dictionary<string, ReactantPrototype> Reactants = new();
+        [DataField]
+        public Dictionary<ProtoId<ReagentPrototype>, ReactantInfo> Reactants = new();
 
         /// <summary>
         ///     The minimum temperature the reaction can occur at.
@@ -36,7 +35,7 @@ namespace Content.Shared.Chemistry.Reaction
         /// <summary>
         ///     If true, this reaction will attempt to conserve thermal energy.
         /// </summary>
-        [DataField("conserveEnergy")]
+        [DataField]
         public bool ConserveEnergy = true;
 
         /// <summary>
@@ -54,8 +53,8 @@ namespace Content.Shared.Chemistry.Reaction
         /// <summary>
         /// Reagents created when the reaction occurs.
         /// </summary>
-        [DataField("products", customTypeSerializer:typeof(PrototypeIdDictionarySerializer<FixedPoint2, ReagentPrototype>))]
-        public Dictionary<string, FixedPoint2> Products = new();
+        [DataField]
+        public Dictionary<ProtoId<ReagentPrototype>, FixedPoint2> Products = new();
 
         /// <summary>
         /// Effects to be triggered when the reaction occurs.
@@ -66,16 +65,20 @@ namespace Content.Shared.Chemistry.Reaction
         /// How dangerous is this effect? Stuff like bicaridine should be low, while things like methamphetamine
         /// or potas/water should be high.
         /// </summary>
-        [DataField("impact", serverOnly: true)] public LogImpact Impact = LogImpact.Low;
+        [DataField(serverOnly: true)] public LogImpact Impact = LogImpact.Low;
 
         // TODO SERV3: Empty on the client, (de)serialize on the server with module manager is server module
-        [DataField("sound", serverOnly: true)] public SoundSpecifier Sound { get; private set; } = new SoundPathSpecifier("/Audio/Effects/Chemistry/bubbles.ogg");
+        [DataField(serverOnly: true)] public SoundSpecifier Sound { get; private set; } = new SoundPathSpecifier("/Audio/Effects/Chemistry/bubbles.ogg");
 
         /// <summary>
         /// If true, this reaction will only consume only integer multiples of the reactant amounts. If there are not
         /// enough reactants, the reaction does not occur. Useful for spawn-entity reactions (e.g. creating cheese).
         /// </summary>
         [DataField("quantized")] public bool Quantized = false;
+
+        // CrystallEdge: optional cap on how many unit reactions can fire per reaction application, so a reaction can be forced to progress "one drop at a time" instead of scaling with however much reagent is available
+        [DataField("maxUnitReactions")] public FixedPoint2? MaxUnitReactions;
+        // CrystallEdge end
 
         /// <summary>
         /// Determines the order in which reactions occur. This should used to ensure that (in general) descriptive /
@@ -117,23 +120,13 @@ namespace Content.Shared.Chemistry.Reaction
     }
 
     /// <summary>
-    /// Prototype for chemical reaction reactants.
+    /// Details about a reactant in a <see cref="ReactionPrototype.Reactants">reaction</see>.
     /// </summary>
-    [DataDefinition]
-    public sealed partial class ReactantPrototype
-    {
-        [DataField("amount")]
-        private FixedPoint2 _amount = FixedPoint2.New(1);
-        [DataField("catalyst")]
-        private bool _catalyst;
-
-        /// <summary>
-        /// Minimum amount of the reactant needed for the reaction to occur.
-        /// </summary>
-        public FixedPoint2 Amount => _amount;
-        /// <summary>
-        /// Whether or not the reactant is a catalyst. Catalysts aren't removed when a reaction occurs.
-        /// </summary>
-        public bool Catalyst => _catalyst;
-    }
+    /// <param name="Amount">Minimum amount of the reactant needed for the reaction to occur.</param>
+    /// <param name="Catalyst">Whether or not the reactant is a catalyst. Catalysts aren't removed when a reaction occurs.</param>
+    [DataRecord]
+    public partial record struct ReactantInfo(
+        FixedPoint2 Amount,
+        bool Catalyst
+    );
 }

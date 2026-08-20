@@ -1,4 +1,6 @@
-﻿roles-antag-generic-solo-antagonist-name = Solo Antagonist
+﻿never-shown = { "" }
+
+roles-antag-generic-solo-antagonist-name = Solo Antagonist
 
 roles-antag-generic-free-agent-name = Free Agent
 

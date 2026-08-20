@@ -1,0 +1,78 @@
+- type: job
+  id: CEAcademyStudent
+  setPreference: true
+  name: ce-job-name-academy-student
+  description: ce-job-desc-academy-student
+  playTimeTracker: CEJobAcademyStudent
+  startingGear: CEAcademyStudentGear
+  icon: CEJobIconAcademyStudent
+  supervisors: ce-job-supervisors-academy-professor
+  special:
+    - !type:CEResearchPointsSpecial
+      points:
+        Earth: 1
+        Fire: 1
+        Water: 1
+        Air: 1
+        Order: 1
+        Chaos: 1
+
+- type: startingGear
+  id: CEAcademyStudentGear
+  equipment:
+    belt: CEKeyRingAcademyStudent
+    pocket1: CEWalletFilledAcademyStudent
+
+- type: entity
+  id: CEWalletFilledAcademyStudent
+  parent: CEWallet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents: #50cp total
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinCopper10
+    - id: CECoinCopper10
+
+- type: entity
+  id: CEChestFilledAcademyStudent
+  parent: CEWoodenChest
+  suffix: Filled, Academy Student
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: CESyringe
+        - id: CEDropper
+        - id: CEVialTiny
+        - id: CEVialTiny
+        - id: CEGuidebookThaumaturgy
+        - id: CEThaumaturgicMagnifyingGlass
+
+- type: entity
+  id: CEBedsideTableFilledAcademyStudent
+  parent: CEBedsideTableWooden
+  suffix: Filled, Academy Student
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 2, 3
+        children:
+        - id: CEClothingHeadTriangularLeather
+        - id: CEClothingShirtAcademyRobe
+
+- type: entity
+  id: CEKeyRingAcademyStudent
+  parent: CEBaseKeyRing
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+    - id: CEKeyAcademyHall
+    - id: CEKeyAcademyTechnical
+    - id: CEKeyAcademyLab

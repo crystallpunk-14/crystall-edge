@@ -1,7 +1,9 @@
+#MARK: Base
+
 - type: entity
   abstract: true
   parent: BaseItem
-  id: CECrayon
+  id: CECrayonBase
   name: crayon
   description: A colourful crayon.
   categories: [ ForkFiltered ]
@@ -27,37 +29,26 @@
     maxCharges: 25
   - type: StaticPrice
     price: 5
+  - type: CEMagicEssenceStructure
+    essences:
+      Order: { min: 1, max: 1 }
 
 - type: entity
-  parent: CECrayon
-  id: CECrayonWhite
-  suffix: White
+  abstract: true
+  parent: CECrayonBase
+  id: CECrayon
   components:
-  - type: Sprite
-    layers:
-    - state: handle
-    - state: crayon
-      color: white
-  - type: Item
-    inhandVisuals:
-      left:
-      - state: handle-inhand-left
-      - state: crayon-inhand-left
-        color: white
-      right:
-      - state: handle-inhand-right
-      - state: crayon-inhand-right
-        color: white
-  - type: Crayon
-    color: white
-  - type: StaticPrice
-    price: 4
+  - type: CEEntityGroupMember
+    groups:
+      Crayon: 1
+
+#MARK: Rainbow
 
 - type: entity
-  parent: CECrayon
+  parent: CECrayonBase
   id: CECrayonRainbow
   categories: [ DoNotMap ]
-  suffix: Artifact, Rainbow
+  suffix: Rainbow
   components:
   - type: Sprite
     layers:
@@ -90,6 +81,33 @@
     layers: [ 1 ]
   - type: StaticPrice
     price: 200
+
+#MARK: Colored
+
+- type: entity
+  parent: CECrayon
+  id: CECrayonWhite
+  suffix: White
+  components:
+  - type: Sprite
+    layers:
+    - state: handle
+    - state: crayon
+      color: white
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: handle-inhand-left
+      - state: crayon-inhand-left
+        color: white
+      right:
+      - state: handle-inhand-right
+      - state: crayon-inhand-right
+        color: white
+  - type: Crayon
+    color: white
+  - type: StaticPrice
+    price: 4
 
 - type: entity
   parent: CECrayon

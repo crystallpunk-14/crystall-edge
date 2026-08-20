@@ -5,8 +5,8 @@
   - CEPlantBaseSolarEnergy
   - CEPlantBaseSingleHarvest
   - CEPlantBaseFloralDelicateType
-  - CEPlantBaseGrowing2Day
-  - CEPlantBaseMetabolizer1Day
+  - CEPlantBaseGrowingSlow
+  - CEPlantBaseMetabolizerMedium
   - CEPlantBaseMetabolizerWater
   name: potato
   description: Some like to associate themselves with potatoes. People like that are not bad people.

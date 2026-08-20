@@ -1,4 +1,18 @@
 - type: department
+  id: CECommand
+  name: department-CECommand
+  description: department-CECommand-desc
+  weight: 100
+  color: "#334E6D"
+  editorHidden: false
+  primary: false
+  roles:
+  - CEGuardCommander
+  - CETavernmaster
+  - CEBrigadier
+  - CEAcademyRector
+
+- type: department
   id: CEGuard
   name: department-CEGuard
   description: department-CEGuard-desc
@@ -44,6 +58,15 @@
   roles:
   - CETownfolk
   - CEBard
-  - CETailorMerchant
-  - CEPharmacistMerchant
-  - CEHomeGoodsMerchant
+
+- type: department
+  id: CEAcademy
+  name: department-CEAcademy
+  description: department-CEAcademy-desc
+  weight: 5
+  color: "#8759c9"
+  editorHidden: false
+  roles:
+  - CEAcademyStudent
+  - CEAcademyProfessor
+  - CEAcademyRector

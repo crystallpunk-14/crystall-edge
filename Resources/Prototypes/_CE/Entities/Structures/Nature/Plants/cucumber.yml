@@ -4,14 +4,14 @@
   - CEPlantBase
   - CEPlantBaseSolarEnergy
   - CEPlantBaseFloralDelicateType
-  - CEPlantBaseGrowing1Day
-  - CEPlantBaseMetabolizer1Day
+  - CEPlantBaseGrowingMedium
+  - CEPlantBaseMetabolizerMedium
   - CEPlantBaseMetabolizerWater
   name: cucumber
   description: Don't trust people who know how to turn into pickles.
   components:
   - type: CEPlantVisuals
-    growthSteps: 6
+    growthSteps: 5
     readyVariations: 2
   - type: Sprite
     sprite: _CE/Structures/Nature/Farm/cucumber.rsi
@@ -27,10 +27,10 @@
       cucumber:
         result: CEFoodCucumber
         maxProduce: 2
-        growthPerUpdate: 0.0416 # After 1 days, we start spamming cucumbers 1 times a day
+        growthPerUpdate: 0.25 # CrystallEdge: new cucumber batch every 4 minutes
   - type: CEPlantGatherOnInteract
     gatherKeys:
     - cucumber
     toolWhitelist:
-      components:
-      - Sharp
+      tags:
+      - CESharp

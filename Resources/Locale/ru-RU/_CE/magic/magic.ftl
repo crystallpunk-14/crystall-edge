@@ -2,6 +2,7 @@ ce-energy-overcharge-popup = Слишком много энергии!
 ce-energy-deficit-popup = Недостаточно маны!
 
 ce-magic-manacost = Затраты маны
+ce-magic-cooldown = Перезарядка
 
 ce-magic-spell-not-enough-mana = Недостаточно маны!
 ce-magic-spell-no-mana-component = Вы не используете магическую энергию.
@@ -23,6 +24,7 @@ ce-magic-spell-need-material-component = Нужно держать матери�
 
 ce-magic-spell-stamina-not-enough = У вас недостаточно сил для этого.
 ce-magic-staminacost = Затраты выносливости
+ce-magic-weapon-required = Необходимо держать в руках оружие
 ce-magic-spell-pacified = Это может причинить кому-то вред!
 ce-magic-spell-ssd = Не трогайте отключившихся игроков!
 

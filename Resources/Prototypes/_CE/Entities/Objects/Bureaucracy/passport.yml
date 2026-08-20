@@ -35,4 +35,8 @@
     backgroundScale: 2, 2
     contentImagePath: "/Textures/Interface/Paper/paper_content_lined.svg.96dpi.png"
     contentImageModulate: "#998665"
+  - type: CEMagicEssenceStructure
+    essences:
+      Order: { min: 1, max: 4 }
+      Human: { min: 0, max: 1 }
 

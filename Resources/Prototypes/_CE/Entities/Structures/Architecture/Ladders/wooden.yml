@@ -6,8 +6,9 @@
   - type: Sprite
     sprite: _CE/Structures/Architecture/Ladders/wooden.rsi
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: CEWoodStructural
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -30,9 +31,10 @@
   - CEZLevelLadderBase
   - CEZLevelsLadderWoodenBase
   id: CEZLevelLadderWooden
+  name: wooden ladder
   components:
   - type: Construction
-    graph: CEZLevelLadderWooden
+    graph: CEZLevelLadder
     node: CEZLevelLadderWooden
 
 - type: entity
@@ -40,8 +42,21 @@
   - CEZLevelLadderCornerBase
   - CEZLevelsLadderWoodenBase
   id: CEZLevelLadderWoodenCorner
+  name: wooden ladder
   suffix: Corner
   components:
   - type: Construction
-    graph: CEZLevelLadderWooden
+    graph: CEZLevelLadder
     node: CEZLevelLadderWoodenCorner
+
+- type: entity
+  parent:
+  - CEZLevelLadderCornerInnerBase
+  - CEZLevelsLadderWoodenBase
+  id: CEZLevelLadderWoodenCornerInner
+  name: wooden ladder
+  suffix: Inner Corner
+  components:
+  - type: Construction
+    graph: CEZLevelLadder
+    node: CEZLevelLadderWoodenCornerInner

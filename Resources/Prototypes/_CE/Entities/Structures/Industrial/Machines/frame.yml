@@ -9,7 +9,7 @@
   - type: Sprite
     drawdepth: Mobs
     sprite: _CE/Structures/Industrial/machine_frame.rsi
-    snapCardinals: true
+    noRot: true
   - type: Transform
     anchored: false
     noRot: true
@@ -32,8 +32,9 @@
   - type: Rotatable
   - type: Pullable
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: CEZPhysics
 
 - type: entity

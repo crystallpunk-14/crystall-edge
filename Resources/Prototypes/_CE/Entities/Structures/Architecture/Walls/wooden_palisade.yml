@@ -22,8 +22,9 @@
   - type: Airtight
     airBlocked: false
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: CEWoodStructural
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -43,3 +44,5 @@
   - type: Construction
     graph: CEWallWoodenPalisade
     node: CEWallWoodenPalisade
+  - type: CEGridStabilitySupport
+    supportStrength: 4

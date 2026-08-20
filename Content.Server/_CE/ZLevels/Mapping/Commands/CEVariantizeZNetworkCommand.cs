@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is sublicensed under MIT License
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
@@ -15,12 +15,12 @@ using Robust.Shared.Map.Components;
 namespace Content.Server._CE.ZLevels.Mapping.Commands;
 
 [AdminCommand(AdminFlags.Server | AdminFlags.Mapping)]
-public sealed class CEVariantizeZNetworkCommand : LocalizedEntityCommands
+public sealed partial class CEVariantizeZNetworkCommand : LocalizedEntityCommands
 {
-    [Dependency] private readonly IEntityManager _entities = default!;
-    [Dependency] private readonly MapSystem _map = default!;
-    [Dependency] private readonly TileSystem _tile = default!;
-    [Dependency] private readonly TurfSystem _turf = default!;
+    [Dependency] private IEntityManager _entities = default!;
+    [Dependency] private MapSystem _map = default!;
+    [Dependency] private TileSystem _tile = default!;
+    [Dependency] private TurfSystem _turf = default!;
 
     public override string Command => "znetwork-variantize";
     public override string Description => "Random tile variations over all zNetwork maps";
@@ -28,7 +28,7 @@ public sealed class CEVariantizeZNetworkCommand : LocalizedEntityCommands
     public override CompletionResult GetCompletion(IConsoleShell shell, string[] args)
     {
         var options = new List<CompletionOption>();
-        var query = _entities.EntityQueryEnumerator<CEZLevelsNetworkComponent, MetaDataComponent>();
+        var query = _entities.EntityQueryEnumerator<CEZMapNetworkComponent, MetaDataComponent>();
         while (query.MoveNext(out var uid, out _, out var meta))
         {
             options.Add(new CompletionOption(_entities.GetNetEntity(uid).ToString(), meta.EntityName));
@@ -55,7 +55,7 @@ public sealed class CEVariantizeZNetworkCommand : LocalizedEntityCommands
             return;
         }
 
-        if (!_entities.TryGetComponent<CEZLevelsNetworkComponent>(target, out var levelComp))
+        if (!_entities.TryGetComponent<CEZMapNetworkComponent>(target, out var levelComp))
         {
             shell.WriteError($"Target entity doesnt have CEZLevelsNetworkComponent {args[1]}");
             return;

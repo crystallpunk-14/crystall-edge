@@ -9,7 +9,7 @@ namespace Content.Client._CE.Trading;
 [GenerateTypedNameReferences]
 public sealed partial class CEBuyPositionControl : Control
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
 
     public event Action<CETradingPositionPrototype>? OnSelect;
 

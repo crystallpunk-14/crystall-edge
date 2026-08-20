@@ -14,8 +14,9 @@
   - type: CEAutoTilePlacement
     tile: CEStonebricks
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: CERockStructural
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -52,8 +53,9 @@
   - type: IconSmooth
     base: stonebricks
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: CERockStructural
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -77,41 +79,6 @@
     node: CEWallStoneBrick
 
 - type: entity
-  id: CEWallStoneBrickOld
-  name: old stone brick wall
-  parent: CEBaseWall
-  components:
-  - type: Sprite
-    sprite: _CE/Structures/Architecture/Walls/brick_stone_old.rsi
-  - type: Icon
-    sprite: _CE/Structures/Architecture/Walls/brick_stone_old.rsi
-  - type: CEAutoTilePlacement
-    tile: CEStonebricks
-  - type: IconSmooth
-    base: stonebricks
-  - type: Damageable
-    damageContainer: StructuralInorganic
-    damageModifierSet: CERockStructural
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 200
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          path: /Audio/Effects/break_stone.ogg
-          params:
-            volume: -6
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          CEStoneBlock1:
-            min: 4
-            max: 5
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
-
-- type: entity
   id: CEWallStoneBrickBrown
   name: brown stone brick wall
   parent: CEBaseWall
@@ -125,8 +92,9 @@
   - type: IconSmooth
     base: bricksA
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: CERockStructural
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:

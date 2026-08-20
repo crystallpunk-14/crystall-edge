@@ -25,8 +25,9 @@
       Brute:
         collection: GlassSmack
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Glass
+  - type: Injurable
+    damageContainer: Inorganic
   - type: InteractionPopup
     interactSuccessString: comp-window-knock
     messagePerceivedByOthers: comp-window-knock
@@ -56,6 +57,8 @@
           collection: WindowShatter
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: CEGridStabilitySupport
+    supportStrength: 3
 
 - type: entity
   parent: BaseStructure
@@ -63,7 +66,7 @@
   abstract: true
   categories: [ ForkFiltered ]
   name: thin window door
-  description: Thin window doors. What's your next move?
+  description: Thin window doors. It has a latch; it can be unlocked and locked from only one side.
   components:
   - type: Transform
     anchored: true
@@ -74,8 +77,9 @@
       Brute:
         collection: GlassSmack
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Glass
+  - type: Injurable
+    damageContainer: Inorganic
   - type: ExaminableDamage
     messages: WindowMessages
   - type: Fixtures
@@ -108,8 +112,6 @@
       map: ["enum.DoorVisualLayers.Base"]
   - type: Icon
     state: door_closed
-  - type: IconSmooth
-    mode: NoSprite
   - type: InteractionOutline
   - type: Appearance
   - type: Door
@@ -142,3 +144,52 @@
   - type: Lock
     locked: true
   - type: CEDirectionalLatch
+
+# Frame stages — bare, unglazed structures awaiting glass panels. Material-specific files
+# (e.g. iron.yml) provide the sprite, Damageable/Destructible drops, and Construction wiring.
+
+- type: entity
+  parent: BaseStructure
+  id: CEBaseThinWindowFrame
+  abstract: true
+  categories: [ ForkFiltered ]
+  name: thin window frame
+  description: An unfinished window frame, waiting for glass panels.
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wall
+  components:
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: InteractionOutline
+  - type: Sprite
+    offset: 0, 0.2
+    drawdepth: Mobs
+  - type: Icon
+  - type: Climbable
+    delay: 1
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,0.1,0.5,0.3"
+        density: 1000
+        mask:
+        - FullTileMask
+        layer:
+        - HalfWallLayer
+
+- type: entity
+  parent: CEBaseThinWindowDoor
+  id: CEBaseThinWindowDoorFrame
+  abstract: true
+  categories: [ ForkFiltered ]
+  name: thin window hopper frame
+  description: An unfinished hopper window frame, waiting for glass panels.
+  components:
+  - type: Lock
+    locked: false

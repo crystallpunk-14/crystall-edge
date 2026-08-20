@@ -1,3 +1,4 @@
+using Content.Server._CE.DiscordAuth;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
@@ -18,11 +19,19 @@ namespace Content.Server.GameTicking
     [UsedImplicitly]
     public sealed partial class GameTicker
     {
-        [Dependency] private readonly IPlayerManager _playerManager = default!;
+        [Dependency] private IPlayerManager _playerManager = default!;
+        [Dependency] private CEDiscordAuthManager _ceDiscordAuth = default!; //CrystallEdge
 
         private void InitializePlayer()
         {
             _playerManager.PlayerStatusChanged += PlayerStatusChanged;
+            _ceDiscordAuth.PlayerVerified += OnCEPlayerVerified; //CrystallEdge
+        }
+
+        //CrystallEdge: player only actually joins the game once Discord verification (if enabled) succeeds.
+        private void OnCEPlayerVerified(object? sender, ICommonSession session)
+        {
+            Timer.Spawn(0, () => _playerManager.JoinGame(session));
         }
 
         private async void PlayerStatusChanged(object? sender, SessionStatusEventArgs args)
@@ -55,7 +64,8 @@ namespace Content.Server.GameTicking
 
                     // Make the player actually join the game.
                     // timer time must be > tick length
-                    Timer.Spawn(0, () => _playerManager.JoinGame(args.Session));
+                    // CrystallEdge: gated behind CEDiscordAuthManager.PlayerVerified instead (see OnCEPlayerVerified above).
+                    // Timer.Spawn(0, () => _playerManager.JoinGame(args.Session));
 
                     var record = await _db.GetPlayerRecordByUserId(args.Session.UserId);
                     var firstConnection = record != null &&

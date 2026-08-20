@@ -9,6 +9,8 @@
   parent: CEBaseGameRule
   id: CEGameRuleThieves
   components:
+  - type: GameRule
+    minPlayers: 3
   - type: CEThiefRule
   - type: CEBlueTextRule
   - type: AntagObjectives
@@ -16,59 +18,23 @@
     - CEThiefObjectiveBeCool
     - CEThiefObjectiveBeSafe
   - type: AntagSelection
-    selectionTime: IntraPlayerSpawn
+    selectionTime: JobsAssigned
     agentName: ce-roles-antag-thief-name
-    definitions:
-    - prefRoles: [ CEThief ]
-      min: 1
-      max: 5
+    lateJoinAdditional: true
+    antags:
+    - !type:LinearAntagCount
+      proto: CEThief
       playerRatio: 3
-      startingGear: CEThiefGear
-      lateJoinAdditional: true
-      mindRoles:
-      - CEMindRoleThief
-      briefing:
-        text: ce-roles-antag-thief-briefing
-        color: "#527c5e"
-        sound: "/Audio/_CE/Ambience/Antag/vampire.ogg"
+      range:
+        min: 1
+        max: 5
 
 - type: entity
   parent: CEBaseGameRule
-  id: CEGameRuleVampires
+  id: CEGameRuleMagicEssenceNodes
   components:
-  - type: AntagObjectives
-    objectives:
-    - CEVampireObjectiveBloodPurity
-  - type: AntagSelection
-    selectionTime: IntraPlayerSpawn
-    definitions:
-    - prefRoles: [ CEVampire ]
-      min: 1
-      max: 3
-      playerRatio: 2
-      lateJoinAdditional: true
-      mindRoles:
-      - CEMindRoleVampire
-      components:
-      - type: CEVampire
-      - type: CEShowVampireIcons
-      - type: Hunger
-        hungerThresholdAlerts:
-          Peckish: CEVampirePeckish
-          Starving: CEVampireStarving
-          Dead: CEVampireStarving
-      - type: PassiveDamage
-        allowedStates:
-        - Alive
-        - Critical
-        damage:
-          groups:
-            Brute: -3
-      briefing:
-        text: ce-roles-antag-vampire-briefing
-        color: "#630f24"
-        sound: "/Audio/_CE/Ambience/Antag/vampire.ogg"
-
+  - type: CEMagicEssenceNodeRule
+    nodeCount: 5
 
 # variation passes
 - type: entity

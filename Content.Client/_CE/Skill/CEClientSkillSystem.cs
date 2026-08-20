@@ -10,9 +10,9 @@ namespace Content.Client._CE.Skill;
 
 public sealed partial class CEClientSkillSystem : CESharedSkillSystem
 {
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
 
     public event Action<EntityUid>? OnSkillUpdate;
 

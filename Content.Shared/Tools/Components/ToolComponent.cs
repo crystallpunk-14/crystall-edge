@@ -6,7 +6,7 @@ using Robust.Shared.Utility;
 namespace Content.Shared.Tools.Components;
 
 [RegisterComponent, NetworkedComponent]
-[Access(typeof(SharedToolSystem))]
+//[Access(typeof(SharedToolSystem))] //CrystallEdge access block removal for CEEntityEffect ToolUse
 public sealed partial class ToolComponent : Component
 {
     [DataField]

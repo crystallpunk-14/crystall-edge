@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Shared._CE.ZLevels.Core;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Damage.Components;
 using Content.Shared.Database;
@@ -14,20 +15,18 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared.Weapons.Hitscan.Systems;
 
-public sealed class HitscanBasicRaycastSystem : EntitySystem
+public sealed partial class HitscanBasicRaycastSystem : EntitySystem
 {
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly ISharedAdminLogManager _log = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private ISharedAdminLogManager _log = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
-    private EntityQuery<HitscanBasicVisualsComponent> _visualsQuery;
+    [Dependency] private EntityQuery<HitscanBasicVisualsComponent> _visualsQuery = default!;
 
     public override void Initialize()
     {
         base.Initialize();
-
-        _visualsQuery = GetEntityQuery<HitscanBasicVisualsComponent>();
 
         SubscribeLocalEvent<HitscanBasicRaycastComponent, HitscanTraceEvent>(OnHitscanFired);
     }
@@ -63,12 +62,18 @@ public sealed class HitscanBasicRaycastSystem : EntitySystem
                 + $" using {ToPrettyString(args.Gun):entity}.");
         }
 
+        // CrystallEdge: compute and expose the actual impact point (hit or max-distance) for consumers outside this framework
+        var hitMapPos = result?.HitPos ?? mapCords.Position + args.ShotDirection * distanceTried;
+        var hitCoordinates = _transform.ToCoordinates(new MapCoordinates(hitMapPos, mapCords.MapId));
+        // CrystallEdge end
+
         var data = new HitscanRaycastFiredData
         {
             ShotDirection = args.ShotDirection,
             Gun = args.Gun,
             Shooter = args.Shooter,
             HitEntity = result?.HitEntity,
+            HitCoordinates = hitCoordinates, // CrystallEdge: expose hit position
         };
 
         var attemptEvent = new AttemptHitscanRaycastFiredEvent { Data = data };
@@ -141,10 +146,12 @@ public sealed class HitscanBasicRaycastSystem : EntitySystem
 
         if (sprites.Count > 0)
         {
+            // CrystallEdge: use ZPvs so players watching from adjacent Z-levels also receive hitscan visuals
             RaiseNetworkEvent(new SharedGunSystem.HitscanEvent
             {
                 Sprites = sprites,
-            }, Filter.Pvs(fromCoordinates, entityMan: EntityManager));
+            }, CEFilter.ZPvs(hitscanUid, EntityManager));
+            // CrystallEdge end
         }
     }
 }

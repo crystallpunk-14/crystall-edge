@@ -40,10 +40,10 @@ public sealed class CommandReceivedEventArgs
 /// <summary>
 /// Handles the connection to Discord and provides methods to interact with it.
 /// </summary>
-public sealed class DiscordLink : IPostInjectInit
+public sealed partial class DiscordLink : IPostInjectInit
 {
-    [Dependency] private readonly ILogManager _logManager = default!;
-    [Dependency] private readonly IConfigurationManager _configuration = default!;
+    [Dependency] private ILogManager _logManager = default!;
+    [Dependency] private IConfigurationManager _configuration = default!;
 
     /// <summary>
     ///    The Discord client. This is null if the bot is not connected.
@@ -74,6 +74,13 @@ public sealed class DiscordLink : IPostInjectInit
     ///     Event that is raised when a message is received from Discord. This is raised for every message, including commands.
     /// </summary>
     public event Action<Message>? OnMessageReceived;
+
+    // CrystallEdge: raised when the Discord gateway client is ready (after connect).
+    /// <summary>
+    ///     Event that is raised when the Discord gateway client is connected and ready.
+    /// </summary>
+    public event Action? OnReady;
+    // CrystallEdge end
 
     // TODO: consider implementing this in a way where we can unregister it in a similar way
     public void RegisterCommandCallback(Action<CommandReceivedEventArgs> callback, string command)
@@ -127,6 +134,7 @@ public sealed class DiscordLink : IPostInjectInit
         _client.Ready += _ =>
         {
             _sawmill.Info("Discord client ready.");
+            OnReady?.Invoke(); // CrystallEdge
             return default;
         };
 
@@ -248,6 +256,45 @@ public sealed class DiscordLink : IPostInjectInit
             Content = message,
         });
     }
+
+    // CrystallEdge
+
+    /// <summary>
+    /// Adds an emoji reaction to a Discord message.
+    /// </summary>
+    public async Task AddReactionAsync(ulong channelId, ulong messageId, ReactionEmojiProperties emoji)
+    {
+        if (_client == null)
+            return;
+
+        try
+        {
+            await _client.Rest.AddMessageReactionAsync(channelId, messageId, emoji);
+        }
+        catch (Exception e)
+        {
+            _sawmill.Error($"Failed to add reaction to Discord message {messageId}: {e}");
+        }
+    }
+
+    /// <summary>
+    /// Updates the bot's Discord presence (status and activities).
+    /// </summary>
+    public async Task UpdatePresenceAsync(PresenceProperties presence)
+    {
+        if (_client == null)
+            return;
+
+        try
+        {
+            await _client.UpdatePresenceAsync(presence);
+        }
+        catch (Exception e)
+        {
+            _sawmill.Error($"Failed to update Discord presence: {e}");
+        }
+    }
+    // CrystallEdge end
 
     #endregion
 }

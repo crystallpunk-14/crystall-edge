@@ -1,0 +1,67 @@
+# Raw materials
+
+- type: entity
+  id: CEVialMediumEarthEssence
+  parent: CEVialMedium
+  suffix: Terra
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: CEEssenceEarth
+        Quantity: 50
+
+- type: entity
+  id: CEVialMediumFireEssence
+  parent: CEVialMedium
+  suffix: Ignis
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: CEEssenceFire
+        Quantity: 50
+
+- type: entity
+  id: CEVialMediumWaterEssence
+  parent: CEVialMedium
+  suffix: Aqua
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: CEEssenceWater
+        Quantity: 50
+
+- type: entity
+  id: CEVialMediumAirEssence
+  parent: CEVialMedium
+  suffix: Aer
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: CEEssenceAir
+        Quantity: 50
+
+- type: entity
+  id: CEVialMediumOrderEssence
+  parent: CEVialMedium
+  suffix: Ordo
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: CEEssenceOrder
+        Quantity: 50
+
+- type: entity
+  id: CEVialMediumChaosEssence
+  parent: CEVialMedium
+  suffix: Perditio
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: CEEssenceChaos
+        Quantity: 50

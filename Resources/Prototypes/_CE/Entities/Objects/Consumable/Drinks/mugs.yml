@@ -1,0 +1,99 @@
+- type: entity
+  parent: DrinkBase
+  id: CEDrinkBaseMug
+  abstract: true
+  categories: [ ForkFiltered ]
+  components:
+  - type: Solution
+    solution:
+      maxVol: 10
+  - type: Appearance
+  - type: Sprite
+    sprite: Objects/Consumable/Drinks/mug.rsi
+    layers:
+      - state: icon-0
+      - map: ["enum.SolutionContainerLayers.Fill"]
+        state: icon-3
+        visible: false
+  - type: SolutionContainerVisuals
+    maxFillLevels: 3
+    fillBaseName: icon-
+
+- type: entity
+  parent: CEDrinkBaseMug
+  id: CEMetalBeerMug
+  name: metal mug
+  categories: [ ForkFiltered ]
+  description: The most common metal mug.
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Drinks/beer_mug_4.rsi
+  - type: DamageOnLand
+    damage:
+      types:
+        Blunt: 2
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 2
+  - type: PhysicalComposition
+    materialComposition:
+      CEIron: 10
+  - type: CEMagicEssenceStructure
+    essences:
+      Metal: { min: 1, max: 3 }
+      Void: { min: 0, max: 2 }
+
+- type: entity
+  parent: CEDrinkBaseMug
+  id: CEWoodenBeerMug
+  name: wooden mug
+  categories: [ ForkFiltered ]
+  description: Wooden mug for beer.
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Drinks/beer_mug_1.rsi
+  - type: PhysicalComposition
+    materialComposition:
+      CEWood: 10
+  - type: CEMagicEssenceStructure
+    essences:
+      Tree: { min: 1, max: 3 }
+      Void: { min: 0, max: 2 }
+
+- type: entity
+  parent: CEDrinkBaseMug
+  id: CESteelBeerMug
+  name: beer mug
+  categories: [ ForkFiltered ]
+  description: Metal mug with iron inclusions.
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Drinks/beer_mug_2.rsi
+  - type: PhysicalComposition
+    materialComposition:
+      CEIron: 10
+  - type: CEMagicEssenceStructure
+    essences:
+      Metal: { min: 1, max: 2 }
+      Tree: { min: 0, max: 2 }
+      Void: { min: 0, max: 1 }
+
+- type: entity
+  parent: CEDrinkBaseMug
+  id: CESteelWoodBeerMug
+  name: beer mug
+  categories: [ ForkFiltered ]
+  description: Wooden mug with iron inclusions.
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Drinks/beer_mug_3.rsi
+  - type: PhysicalComposition
+    materialComposition:
+      CEWood: 5
+      CEIron: 5
+  - type: CEMagicEssenceStructure
+    essences:
+      Metal: { min: 1, max: 2 }
+      Tree: { min: 0, max: 2 }
+      Void: { min: 0, max: 1 }

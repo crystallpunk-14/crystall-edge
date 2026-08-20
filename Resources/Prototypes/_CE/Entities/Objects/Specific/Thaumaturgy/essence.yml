@@ -1,0 +1,792 @@
+# Physical essence orb entities.
+# Each mirrors one reagent of Resources/Prototypes/_CE/Reagents/magic_essence.yml
+# and one type of Resources/Prototypes/_CE/MagicEssence/essence_types.yml (matching IDs).
+
+- type: entity
+  abstract: true
+  id: CEBaseEssence
+  categories: [ ForkFiltered ]
+  name: magic essence
+  description: Particles of magical energy polarised into a particular type of magic. Will be gone soon, so try to collect them as soon as possible!
+  components:
+  - type: CEFloatingEssence
+  - type: Clickable
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _CE/Objects/Specific/Thaumaturgy/essence.rsi
+    layers:
+    - state: small
+      shader: unshaded
+  - type: TimedDespawn
+    lifetime: 60
+  - type: CETimedDespawnFadeout
+  - type: RandomWalk
+    minSpeed: 0.25
+    maxSpeed: 0.75
+  - type: ChasingWalk
+    maxChaseRadius: 5
+    minSpeed: 0.5
+    maxSpeed: 1
+    chasingComponent:
+    - type: CEMagicEssenceAttracting
+  - type: Physics
+    bodyType: Dynamic
+    bodyStatus: InAir
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        density: 20
+        mask:
+        - Impassable
+        restitution: 1.0
+        friction: 0
+  - type: Solution
+    id: essence
+    solution:
+      canReact: false
+  - type: Visibility
+    layer: 16 #magic vision only
+  - type: GuideHelp
+    guides:
+    - CEThaumaturgyAspectsRU
+    - CEThaumaturgyAspectsEN
+
+# Basic 6
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceEarth
+  name: terra
+  suffix: T0
+  components:
+  - type: Sprite
+    color: "#7dbf41"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceEarth
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceFire
+  name: ignis
+  suffix: T0
+  components:
+  - type: Sprite
+    color: "#e67130"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceFire
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceWater
+  name: aqua
+  suffix: T0
+  components:
+  - type: Sprite
+    color: "#6ab8e2"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceWater
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceAir
+  name: aer
+  suffix: T0
+  components:
+  - type: Sprite
+    color: "#ebda68"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceAir
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceOrder
+  name: ordo
+  suffix: T0
+  components:
+  - type: Sprite
+    color: "#b7b7c6"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceOrder
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceChaos
+  name: perditio
+  suffix: T0
+  components:
+  - type: Sprite
+    color: "#383838"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceChaos
+        Quantity: 1
+
+# Complex tier 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceFrost
+  name: gelum
+  suffix: T1
+  components:
+  - type: Sprite
+    color: "#c6d8e2"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceFrost
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceLight
+  name: lux
+  suffix: T1
+  components:
+  - type: Sprite
+    color: "#faee88"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceLight
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceMotion
+  name: motus
+  suffix: T1
+  components:
+  - type: Sprite
+    color: "#9593b2"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceMotion
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceCycle
+  name: permutatio
+  suffix: T1
+  components:
+  - type: Sprite
+    color: "#5c7956"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceCycle
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceEnergia
+  name: energia
+  suffix: T1
+  components:
+  - type: Sprite
+    color: "#eedcbc"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceEnergia
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceVoid
+  name: vacuos
+  suffix: T1
+  components:
+  - type: Sprite
+    color: "#606060"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceVoid
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssencePoison
+  name: venenum
+  suffix: T1
+  components:
+  - type: Sprite
+    color: "#94d14a"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssencePoison
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceLife
+  name: victus
+  suffix: T1
+  components:
+  - type: Sprite
+    color: "#a31e22"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceLife
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceCrystal
+  name: vitreus
+  suffix: T1
+  components:
+  - type: Sprite
+    color: "#74cfca"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceCrystal
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceWeather
+  name: tempestas
+  suffix: T1
+  components:
+  - type: Sprite
+    color: "#ececed"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceWeather
+        Quantity: 1
+
+# Complex tier 2
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceMagic
+  name: praecantatio
+  suffix: T2
+  components:
+  - type: Sprite
+    color: "#9102b4"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceMagic
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceBeast
+  name: bestia
+  suffix: T2
+  components:
+  - type: Sprite
+    color: "#ac6f11"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceBeast
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceHunger
+  name: fames
+  suffix: T2
+  components:
+  - type: Sprite
+    color: "#860b11"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceHunger
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssencePlant
+  name: herba
+  suffix: T2
+  components:
+  - type: Sprite
+    color: "#6ec03a"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssencePlant
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceTravel
+  name: iter
+  suffix: T2
+  components:
+  - type: Sprite
+    color: "#cd5d68"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceTravel
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceSlime
+  name: limus
+  suffix: T2
+  components:
+  - type: Sprite
+    color: "#20d734"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceSlime
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceMetal
+  name: metallum
+  suffix: T2
+  components:
+  - type: Sprite
+    color: "#a5a7bf"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceMetal
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceDeath
+  name: mortuus
+  suffix: T2
+  components:
+  - type: Sprite
+    color: "#77697c"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceDeath
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceHealing
+  name: sano
+  suffix: T2
+  components:
+  - type: Sprite
+    color: "#ec2f3a"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceHealing
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceDarkness
+  name: tenebrae
+  suffix: T2
+  components:
+  - type: Sprite
+    color: "#282828"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceDarkness
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceTrap
+  name: vinculum
+  suffix: T2
+  components:
+  - type: Sprite
+    color: "#807778"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceTrap
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceFlight
+  name: volatus
+  suffix: T2
+  components:
+  - type: Sprite
+    color: "#d3d6c8"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceFlight
+        Quantity: 1
+
+# Complex tier 3
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceEldritch
+  name: alienis
+  suffix: T3
+  components:
+  - type: Sprite
+    color: "#734a77"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceEldritch
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceTree
+  name: arbor
+  suffix: T3
+  components:
+  - type: Sprite
+    color: "#7f5d39"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceTree
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceAura
+  name: auram
+  suffix: T3
+  components:
+  - type: Sprite
+    color: "#bb8cc0"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceAura
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceFlesh
+  name: corpus
+  suffix: T3
+  components:
+  - type: Sprite
+    color: "#de5195"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceFlesh
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceUndead
+  name: exanimis
+  suffix: T3
+  components:
+  - type: Sprite
+    color: "#3a4a07"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceUndead
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceSoul
+  name: spiritus
+  suffix: T3
+  components:
+  - type: Sprite
+    color: "#4e585d"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceSoul
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceTaint
+  name: vitium
+  suffix: T3
+  components:
+  - type: Sprite
+    color: "#780186"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceTaint
+        Quantity: 1
+
+# Complex tier 4
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceMind
+  name: cognitio
+  suffix: T4
+  components:
+  - type: Sprite
+    color: "#e8afa7"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceMind
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceSenses
+  name: sensus
+  suffix: T4
+  components:
+  - type: Sprite
+    color: "#28b6e4"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceSenses
+        Quantity: 1
+
+# Complex tier 5
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceHuman
+  name: humanus
+  suffix: T5
+  components:
+  - type: Sprite
+    color: "#ddc0aa"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceHuman
+        Quantity: 1
+
+# Complex tier 6
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceTool
+  name: instrumentum
+  suffix: T6
+  components:
+  - type: Sprite
+    color: "#4c56b2"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceTool
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceCrop
+  name: messis
+  suffix: T6
+  components:
+  - type: Sprite
+    color: "#d36c36"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceCrop
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceGreed
+  name: lucrum
+  suffix: T6
+  components:
+  - type: Sprite
+    color: "#d9aa4a"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceGreed
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceMining
+  name: perfodio
+  suffix: T6
+  components:
+  - type: Sprite
+    color: "#cbc3c8"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceMining
+        Quantity: 1
+
+# Complex tier 7
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceCraft
+  name: fabrico
+  suffix: T7
+  components:
+  - type: Sprite
+    color: "#79907d"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceCraft
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceMachine
+  name: machina
+  suffix: T7
+  components:
+  - type: Sprite
+    color: "#767891"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceMachine
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceCloth
+  name: pannus
+  suffix: T7
+  components:
+  - type: Sprite
+    color: "#d2d3b7"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceCloth
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceWeapon
+  name: telum
+  suffix: T7
+  components:
+  - type: Sprite
+    color: "#9d5e6c"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceWeapon
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceArmor
+  name: tutamen
+  suffix: T7
+  components:
+  - type: Sprite
+    color: "#62aad3"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceArmor
+        Quantity: 1
+
+- type: entity
+  parent: CEBaseEssence
+  id: CEEssenceHarvest
+  name: meto
+  suffix: T7
+  components:
+  - type: Sprite
+    color: "#d9ac7a"
+  - type: Solution
+    solution:
+      maxVol: 1
+      reagents:
+      - ReagentId: CEEssenceHarvest
+        Quantity: 1

@@ -15,15 +15,15 @@
     state: brown
   - type: Item
     size: Tiny
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 6
-        reagents:
-        - ReagentId: Egg
-          Quantity: 6
-        - ReagentId: CENutriment
-          Quantity: 2
+  - type: Solution
+    id: food
+    solution:
+      maxVol: 6
+      reagents:
+      - ReagentId: Egg
+        Quantity: 6
+      - ReagentId: CENutriment
+        Quantity: 2
   - type: DrawableSolution
     solution: food
   # egg fragile
@@ -33,6 +33,7 @@
       types:
         Blunt: 1
   - type: Damageable
+  - type: Injurable
     damageContainer: Biological
   - type: Destructible
     thresholds:
@@ -47,9 +48,7 @@
         solution: food
       - !type:SpawnEntitiesBehavior
         spawn:
-          CEEggshells:
-            min: 1
-            max: 1
+          CEEggshells: { min: 1, max: 1 }
           # Wow double-yolk you're so lucky!
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
@@ -67,6 +66,10 @@
   - type: CEFoodTag
     tags:
     - CEEgg
+  - type: CEMagicEssenceStructure
+    essences:
+      Life: { min: 1, max: 4 }
+      Beast: { min: 0, max: 2 }
 
 # Splat
 - type: entity
@@ -82,13 +85,16 @@
     state: brown_shell
   - type: Item
     size: Tiny
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 2
-        reagents:
-        - ReagentId: Egg
-          Quantity: 1
+  - type: Solution
+    id: food
+    solution:
+      maxVol: 2
+      reagents:
+      - ReagentId: Egg
+        Quantity: 1
+  - type: CEMagicEssenceStructure
+    essences:
+      Earth: { min: 1, max: 2 }
 
 - type: entity
   parent: CEFoodEggBase
@@ -116,12 +122,12 @@
   components:
   - type: Edible
     trash: []
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 6
-        reagents:
-        - ReagentId: EggCooked
-          Quantity: 6
-        - ReagentId: CENutriment
-          Quantity: 2
+  - type: Solution
+    id: food
+    solution:
+      maxVol: 6
+      reagents:
+      - ReagentId: EggCooked
+        Quantity: 6
+      - ReagentId: CENutriment
+        Quantity: 2

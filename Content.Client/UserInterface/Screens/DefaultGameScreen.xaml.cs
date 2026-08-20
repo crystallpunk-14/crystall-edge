@@ -23,17 +23,52 @@ public sealed partial class DefaultGameScreen : InGameScreen
         SetAnchorAndMarginPreset(Chat, LayoutPreset.TopRight, margin: 10);
         SetAnchorAndMarginPreset(Alerts, LayoutPreset.TopRight, margin: 10);
 
+        //CrystallEdge - health/mana spheres, stamina bar, centered+lowered action bar
+        var gap = 310f;
+        var manaOffset = ManaBar.MinSize.X / 2f + gap;
+        // Mirror health to the left so that HealthBar.Right == -ManaBar.Left.
+        var healthOffset = -(HealthBar.MinSize.X + manaOffset);
+
+        SetAnchorAndMarginPreset(HealthBar, LayoutPreset.CenterBottom);
+        SetMarginLeft(HealthBar, healthOffset);
+
+        SetAnchorAndMarginPreset(ManaBar, LayoutPreset.CenterBottom);
+        SetMarginLeft(ManaBar, manaOffset);
+
+        SetAnchorAndMarginPreset(StaminaBar, LayoutPreset.CenterBottom, margin: 80);
+        SetMarginLeft(StaminaBar, -StaminaBar.MinSize.X / 2f);
+        SetMarginRight(StaminaBar, StaminaBar.MinSize.X / 2f);
+
+        SetAnchorPreset(Actions, LayoutPreset.BottomWide);
+        SetMarginLeft(Actions, 0);
+        SetMarginRight(Actions, 0);
+        //CrystallEdge end
+
         Chat.OnResized += ChatOnResized;
         Chat.OnChatResizeFinish += ChatOnResizeFinish;
 
         MainViewport.OnResized += ResizeActionContainer;
         Inventory.OnResized += ResizeActionContainer;
+        Hotbar.OnResized += ResizeActionContainer;
+
+        ResizeActionContainer();
     }
 
     private void ResizeActionContainer()
     {
-        float indent = Inventory.Size.Y + TopBar.Size.Y + 40;
-        Actions.ActionsContainer.MaxGridHeight = MainViewport.Size.Y - indent;
+        //CrystallEdge - action bar stacks above whichever is taller: stamina bar or hotbar
+        float indent = 20;
+        var maxWidth = MainViewport.Size.X - indent;
+        if (maxWidth > 0)
+            Actions.ActionsContainer.MaxGridWidth = maxWidth;
+
+        var staminaTop = 80f + StaminaBar.MinSize.Y;
+        var hotbarTop = 5f + Hotbar.Size.Y;
+        var actionHeight = MathF.Max(Actions.MinSize.Y, 64f);
+        var actionBottomOffset = MathF.Max(staminaTop, hotbarTop) + 8f - actionHeight / 2f;
+        SetMarginBottom(Actions, -actionBottomOffset);
+        SetMarginTop(Actions, -actionBottomOffset - actionHeight);
+        //CrystallEdge end
     }
 
     private void ChatOnResizeFinish(Vector2 _)

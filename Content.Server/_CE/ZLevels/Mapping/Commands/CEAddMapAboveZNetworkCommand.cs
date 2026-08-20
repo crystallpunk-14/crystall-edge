@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is sublicensed under MIT License
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
@@ -18,13 +18,13 @@ using Robust.Shared.Utility;
 namespace Content.Server._CE.ZLevels.Mapping.Commands;
 
 [AdminCommand(AdminFlags.Server | AdminFlags.Mapping)]
-public sealed class CEAddMapAboveZNetworkCommand : LocalizedEntityCommands
+public sealed partial class CEAddMapAboveZNetworkCommand : LocalizedEntityCommands
 {
-    [Dependency] private readonly IEntityManager _entities = default!;
-    [Dependency] private readonly IResourceManager _resourceMgr = default!;
-    [Dependency] private readonly MapLoaderSystem _mapLoader = default!;
-    [Dependency] private readonly CEZLevelsSystem _zLevel = default!;
-    [Dependency] private readonly MetaDataSystem _meta = default!;
+    [Dependency] private IEntityManager _entities = default!;
+    [Dependency] private IResourceManager _resourceMgr = default!;
+    [Dependency] private MapLoaderSystem _mapLoader = default!;
+    [Dependency] private CEZLevelsSystem _zLevel = default!;
+    [Dependency] private MetaDataSystem _meta = default!;
 
     public override string Command => "znetwork-add-above";
     public override string Description => "Add a map above an existing z-network.";
@@ -35,7 +35,7 @@ public sealed class CEAddMapAboveZNetworkCommand : LocalizedEntityCommands
         {
             case 1:
                 var options = new List<CompletionOption>();
-                var query = _entities.EntityQueryEnumerator<CEZLevelsNetworkComponent, MetaDataComponent>();
+                var query = _entities.EntityQueryEnumerator<CEZMapNetworkComponent, MetaDataComponent>();
                 while (query.MoveNext(out var uid, out var zLevelComp, out var meta))
                 {
                     options.Add(new CompletionOption(_entities.GetNetEntity(uid).ToString(), meta.EntityName));
@@ -73,7 +73,7 @@ public sealed class CEAddMapAboveZNetworkCommand : LocalizedEntityCommands
             return;
         }
 
-        if (!_entities.TryGetComponent<CEZLevelsNetworkComponent>(target, out var levelComp))
+        if (!_entities.TryGetComponent<CEZMapNetworkComponent>(target, out var levelComp))
         {
             shell.WriteError($"Target entity doesn't have CEZLevelsNetworkComponent {args[0]}");
             return;
@@ -105,7 +105,7 @@ public sealed class CEAddMapAboveZNetworkCommand : LocalizedEntityCommands
         // Add the map to the network
         var dict = new Dictionary<EntityUid, int> { { mapEnt.Value, newDepth } };
 
-        if (!_zLevel.TryAddMapsIntoZNetwork((target.Value, levelComp), dict))
+        if (!_zLevel.TryAddMapsIntoNetwork((target.Value, levelComp), dict))
         {
             shell.WriteError($"Failed to add map to z-network at depth {newDepth}.");
             _entities.QueueDeleteEntity(mapEnt.Value);

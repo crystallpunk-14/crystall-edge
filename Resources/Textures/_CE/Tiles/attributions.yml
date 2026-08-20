@@ -21,7 +21,7 @@
   copyright: "Created by Jaraten"
   source: "https://github.com/crystallpunk-14/crystall-punk-14/"
 
-- files: ["roof_red.png"]
+- files: ["roof_red.png", "roof_green.png", "roof_blue.png"]
   license: "CC-BY-SA-3.0"
   copyright: "Created by Omsoyk"
   source: "https://github.com/crystallpunk-14/crystall-edge/"

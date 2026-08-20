@@ -1,0 +1,113 @@
+<DefaultWindow xmlns="https://spacestation14.io"
+               xmlns:science="clr-namespace:Content.Client._CE.Science"
+               xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+               xmlns:parallax="clr-namespace:Content.Client.Parallax"
+               Title="{Loc 'ce-research-table-ui-title'}"
+               SetSize="700 500"
+               MinSize="700 300">
+    <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
+        <science:CEScienceKnowledgeControl Name="KnowledgeControl"
+                                            HorizontalExpand="True"
+                                            SizeFlagsStretchRatio="0.33"
+                                            VerticalExpand="True" />
+        <PanelContainer StyleClasses="LowDivider" Margin="6 0" />
+        <BoxContainer Orientation="Vertical"
+                      HorizontalExpand="True"
+                      SizeFlagsStretchRatio="0.66"
+                      VerticalExpand="True">
+            <Label Name="NoPaperLabel"
+                   Text="{Loc 'ce-research-table-ui-no-paper'}"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   HorizontalExpand="True"
+                   VerticalExpand="True" />
+            <BoxContainer Name="ActiveContainer"
+                          Orientation="Vertical"
+                          HorizontalExpand="True"
+                          VerticalExpand="True"
+                          Visible="False">
+                <BoxContainer Name="AreaPickerContainer"
+                              Orientation="Vertical"
+                              HorizontalExpand="True"
+                              VerticalExpand="True">
+                    <Label Text="{Loc 'ce-research-table-choose-area-title'}"
+                           HorizontalAlignment="Center"
+                           Margin="0 0 0 4" />
+                    <PanelContainer HorizontalExpand="True" VerticalExpand="True">
+                        <PanelContainer.PanelOverride>
+                            <gfx:StyleBoxFlat BackgroundColor="#040404" />
+                        </PanelContainer.PanelOverride>
+                        <ScrollContainer VScrollEnabled="False" HorizontalExpand="True" VerticalExpand="True">
+                            <BoxContainer Name="AreaCardsContainer"
+                                          Orientation="Horizontal"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          SeparationOverride="6" />
+                        </ScrollContainer>
+                    </PanelContainer>
+
+                    <BoxContainer Orientation="Vertical" HorizontalAlignment="Center" Margin="0 6 0 0">
+                        <BoxContainer Name="CostContainer"
+                                      Orientation="Horizontal"
+                                      HorizontalAlignment="Center"
+                                      MinHeight="28"
+                                      SeparationOverride="4"
+                                      Margin="0 0 0 4" />
+                        <Button Name="StartResearchButton"
+                                Text="{Loc 'ce-research-table-start-button'}"
+                                Disabled="True"
+                                HorizontalAlignment="Center" />
+                    </BoxContainer>
+                </BoxContainer>
+
+                <BoxContainer Name="DiscoveryPickerContainer"
+                              Orientation="Vertical"
+                              HorizontalExpand="True"
+                              VerticalExpand="True"
+                              Visible="False">
+                    <Label Text="{Loc 'ce-research-table-choose-discovery-title'}"
+                           HorizontalAlignment="Center"
+                           Margin="0 0 0 4" />
+                    <PanelContainer HorizontalExpand="True" VerticalExpand="True">
+                        <PanelContainer.PanelOverride>
+                            <gfx:StyleBoxFlat BackgroundColor="#040404" />
+                        </PanelContainer.PanelOverride>
+                        <ScrollContainer VScrollEnabled="False" HorizontalExpand="True" VerticalExpand="True">
+                            <BoxContainer Name="DiscoveryCardsContainer"
+                                          Orientation="Horizontal"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          SeparationOverride="6" />
+                        </ScrollContainer>
+                    </PanelContainer>
+
+                    <Button Name="ChooseDiscoveryButton"
+                            Disabled="True"
+                            HorizontalAlignment="Center"
+                            Margin="0 6 0 0" />
+                </BoxContainer>
+
+                <BoxContainer Name="ProjectContainer"
+                              Orientation="Vertical"
+                              HorizontalExpand="True"
+                              VerticalExpand="True"
+                              Visible="False">
+                    <Label Name="ProjectTitleLabel"
+                           HorizontalAlignment="Center"
+                           Margin="0 0 0 4" />
+                    <PanelContainer HorizontalExpand="True" VerticalExpand="True" RectClipContent="True">
+                        <parallax:ParallaxControl Name="ProjectParallax" SpeedX="10" SpeedY="5" Access="Public" />
+                        <science:CEResearchHexGridControl Name="HexGrid" HorizontalExpand="True" VerticalExpand="True" />
+                    </PanelContainer>
+                    <Button Name="FinishResearchButton"
+                            Text="{Loc 'ce-research-table-finish-button'}"
+                            ToolTip="{Loc 'ce-research-table-finish-button-tooltip'}"
+                            StyleClasses="ButtonColorGreen"
+                            Disabled="True"
+                            HorizontalAlignment="Center"
+                            Margin="0 6 0 0" />
+                </BoxContainer>
+            </BoxContainer>
+        </BoxContainer>
+    </BoxContainer>
+</DefaultWindow>

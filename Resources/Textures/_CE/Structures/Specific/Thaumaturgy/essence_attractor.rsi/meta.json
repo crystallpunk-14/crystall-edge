@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Created by TheShuEd for CrystallEdge",
+  "size": {
+    "x": 32,
+    "y": 48
+  },
+  "states": [
+    {
+      "name": "base"
+    },
+    {
+      "name": "glass"
+    },
+    {
+      "name": "active",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "liq-1"
+    },
+    {
+      "name": "liq-2"
+    },
+    {
+      "name": "liq-3"
+    },
+    {
+      "name": "liq-4"
+    },
+    {
+      "name": "liq-5"
+    },
+    {
+      "name": "liq-6"
+    },
+    {
+      "name": "liq-7"
+    },
+    {
+      "name": "liq-8"
+    }
+  ]
+}

@@ -14,15 +14,37 @@
   - type: Utensil
     types:
     - Fork
-  - type: MeleeWeapon
-    wideAnimationRotation: 180
-    attackRate: 1.5
-    damage:
-      types:
-        Piercing: 2
+  - type: CEWeapon
+    range: 0.4
+    effectSlots:
+      OnHit:
+      - !type:Damage
+        damage:
+          types:
+            Piercing: 2
+      OnHeavyHit:
+      - !type:Damage
+        damage:
+          types:
+            Piercing: 2
+    animations:
+      Primary:
+      - anim: DaggerAttackLight1
+      - anim: DaggerAttackLight2
+      Secondary:
+      - anim: DaggerAttackHeavy
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 10
+      Secondary: 20
+  - type: CERotationForAnimation
+    rotation: 180
   - type: PhysicalComposition
     materialComposition:
       CEIron: 5
+  - type: CEMagicEssenceStructure
+    essences:
+      Metal: { min: 1, max: 3 }
 
 - type: entity
   parent: BaseItem
@@ -40,12 +62,31 @@
   - type: Utensil
     types:
     - Spoon
-  - type: MeleeWeapon
-    wideAnimationRotation: 180
-    attackRate: 1.5
-    damage:
-      types:
-        Blunt: 1
+  - type: CEWeapon
+    range: 0.4
+    effectSlots:
+      OnHit:
+      - !type:Damage
+        damage:
+          types:
+            Blunt: 1
+      OnHeavyHit:
+      - !type:Damage
+        damage:
+          types:
+            Blunt: 1
+    animations:
+      Primary:
+      - anim: DaggerAttackLight1
+      - anim: DaggerAttackLight2
+      Secondary:
+      - anim: DaggerAttackHeavy
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 10
+      Secondary: 20
+  - type: CERotationForAnimation
+    rotation: 180
   - type: ReactionMixer
     mixMessage: "spoon-mixing-success"
     timeToMix: 0.5
@@ -54,3 +95,6 @@
   - type: PhysicalComposition
     materialComposition:
       CEIron: 5
+  - type: CEMagicEssenceStructure
+    essences:
+      Metal: { min: 1, max: 3 }

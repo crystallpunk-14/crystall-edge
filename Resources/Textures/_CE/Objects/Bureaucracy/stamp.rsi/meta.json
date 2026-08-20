@@ -21,6 +21,12 @@
     },
     {
       "name": "guildmaster"
+    },
+    {
+      "name": "academy"
+    },
+    {
+      "name": "engineering"
     }
   ]
 }

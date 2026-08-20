@@ -1,0 +1,374 @@
+ #MARK: Lurker
+
+- type: entity
+  id: CEMobLurker
+  parent:
+  - CEMobSimple
+  name: lurker
+  description: The spirit of hunger and night. The Hunter of Lost Solitaries
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      sprite: _CE/Mobs/lurker.rsi
+      state: live
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: live
+      Dead:
+        Base: dead
+  - type: ReplacementAccent
+    accent: xeno
+  - type: Appearance
+  - type: Body
+  - type: CombatMode
+  - type: Stamina
+    baseCritThreshold: 200
+  - type: Grammar
+    attributes:
+      gender: epicene
+  - type: AmbientSound
+    range: 5
+    sound:
+      path: /Audio/_CE/Effects/Lurker/ambient.ogg
+  - type: SoundWhileAlive
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 500
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      100: Dead
+  #- type: PassiveDamage #Temporary disabled
+  #  allowedStates:
+  #  - Alive
+  #  damage:
+  #    types:
+  #      Blunt: -0.05
+  #      Piercing: -0.05
+  #      Slash: -0.05
+  #      Heat: -0.05
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      50: 0.6
+  - type: CEWeapon
+    range: 0.7
+    hitSound:
+      collection: AlienClaw
+    effectSlots:
+      OnHit:
+      - !type:Damage
+        damage:
+          types:
+            Slash: 4
+            Piercing: 2
+            Structural: 5
+    animations:
+      Primary:
+      - anim: ClawBigAttack1
+      - anim: ClawBigAttack2
+      - anim: ClawBigAttack3
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 6
+    acceleration: 16.0
+  - type: Climbing
+  - type: FloorOcclusion
+  - type: GhostTakeoverAvailable
+  - type: TypingIndicator
+    proto: alien
+  - type: NoSlip
+  - type: Speech
+    speechSounds: CECarcat
+  - type: NightVision
+    prioritized: false
+  - type: FootstepModifier
+    footstepSoundCollection: null # Silent footstep
+  - type: Stealth
+    enabledOnDeath: false
+    maxVisibility: 1.2
+  - type: StealthOnMove
+    passiveVisibilityRate: -0.15
+    movementVisibilityRate: 0.15
+  - type: ConditionalSpawner
+    prototypes:
+    - CELurkerRoarSound
+  - type: CESoftPaws
+    maxSpeedLimit: 7 # 2 floors safe fall
+  - type: ActionGrant
+    actions:
+    - CEActionLurkerJump
+    - CEActionLurkerShadowStep
+    - CEActionLurkerFear
+
+#MARK: Spawners
+- type: entity
+  id: CELurkerRoarSound
+  name: lurker roar
+  categories: [ ForkFiltered ]
+  components:
+  - type: CEPvsOverride
+  - type: CEEntityEffectSpawner
+    firstDelay: 0.2
+    frequency: 999
+    effects:
+    - !type:PlaySound
+      positional: true
+      sound:
+        collection: CELurkerRoar
+        params:
+          variation: 0.2
+          maxDistance: 20
+          volume: 50
+    - !type:PlayFarSound
+      sound:
+        collection: CELurkerRoar
+        params:
+          variation: 0.2
+      minRange: 15
+      maxRange: 60
+  - type: TimedDespawn
+    lifetime: 2
+
+- type: entity
+  id: CESpawnPointGhostMobLurker
+  name: spawn point lurker
+  description: Spawn point for the lurker ghost role
+  categories: [ ForkFiltered ]
+  parent: MarkerBase
+  components:
+  - type: GhostRole
+    name: ce-ghost-role-information-lurker-name
+    description: ce-ghost-role-information-lurker-description
+    rules: ghost-role-information-antagonist-rules
+    mindRoles:
+    - MindRoleGhostRoleSoloAntagonist
+    raffle:
+      settings: default
+  - type: GhostRoleMobSpawner
+    prototype: CEMobLurker
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+      - state: green
+      - sprite: _CE/Mobs/lurker.rsi
+        state: live
+
+#MARK: Jump Action
+
+- type: entity
+  id: CEActionLurkerJump
+  parent: CEActionSpellBase
+  name: Jump
+  description: You perform a powerful leap that can raise you by one level.
+  components:
+  - type: CEActionStaminaCost
+    cost: 33
+  - type: Action
+    useDelay: 3
+    icon:
+      sprite: _CE/Actions/lurker.rsi
+      state: jump
+  - type: InstantAction
+    event: !type:CEInstantActionAnimationEvent
+      animation: AnimationJump
+
+- type: entityEffectAnimation
+  id: AnimationJump
+  movementSpeed: 1
+  duration: 0.4
+  events:
+    0:
+    - !type:UserAnimation
+      scaleAnimation:
+      - time: 0
+        scale: 1, 1
+      - time: 0.2
+        scale: 1.2, 0.8
+      - time: 0.3
+        scale: 1.2, 0.8
+      - time: 0.4
+        scale: 1, 1
+    0.3:
+    - !type:ModifyStealthVisibility
+      effectTarget: User
+      amount: 2
+    - !type:AddZVelocity
+      effectTarget: User
+      speed: 5.5
+      requiresGround: true
+    - !type:SpawnEntity
+      effectTarget: User
+      spawns:
+      - CEDustTileEffect
+
+#MARK: Step action
+
+- type: entity
+  id: CEActionLurkerShadowStep
+  parent: CEActionSpellBase
+  name: Shadow Step
+  description: A step through a tear in reality to a nearby spot you can see.
+  components:
+  - type: CEVisualizeRadiusTargetAction
+  - type: CEVisualizeWideLineAction
+    width: 0.5
+  - type: Action
+    useDelay: 30
+    icon:
+      sprite: _CE/Actions/lurker.rsi
+      state: step
+  - type: TargetAction
+    range: 3
+    checkCanAccess: false
+  - type: CEActionRequireLineOfSight
+  - type: WorldTargetAction
+    event: !type:CEWorldTargetActionAnimationEvent
+      animation: AnimationLurkerShadowStep
+
+- type: entityEffectAnimation
+  id: AnimationLurkerShadowStep
+  movementSpeed: 0.1
+  duration: 1
+  events:
+    0:
+    - !type:SpawnEntity
+      effectTarget: User
+      spawns:
+      - CELurkerShadowStepEffect
+    0.95:
+    - !type:Teleport
+      effectTarget: User
+      teleportTarget: Target
+    - !type:ModifyStealthVisibility
+      effectTarget: User
+      amount: -5 #Give full invisibility so people dont see where he go
+
+- type: entity
+  id: CELurkerShadowStepEffect
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/lurker_shadow_step.rsi
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - state: effect
+  - type: TimedDespawn
+    lifetime: 2
+  - type: Tag
+    tags:
+      - HideContextMenu
+
+#MARK: Fear action
+
+- type: entity
+  id: CEActionLurkerFear
+  parent: CEActionSpellBase
+  name: Primal Terror
+  description: You plunge the target into primal terror, crippling their ability to fight back.
+  components:
+  - type: CEVisualizeRadiusTargetAction
+  - type: CEVisualizeAoEZoneAction
+    radius: 0.5
+  - type: Action
+    useDelay: 30
+    icon:
+      sprite: _CE/Actions/lurker.rsi
+      state: fear
+  - type: TargetAction
+    range: 5
+    checkCanAccess: false
+  - type: CEActionRequireLineOfSight
+  - type: EntityTargetAction
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
+    event: !type:CEEntityTargetActionAnimationEvent
+      animation: AnimationLurkerFear
+
+- type: entityEffectAnimation
+  id: AnimationLurkerFear
+  movementSpeed: 0.25
+  duration: 1
+  events:
+    0:
+    - !type:SpawnEntity
+      effectTarget: User
+      spawns:
+      - CELurkerFearScreamEffect
+    - !type:ModifyStealthVisibility
+      effectTarget: User
+      amount: 5
+    - !type:PlayFarSound
+      sound:
+        collection: CELurkerRoar
+        params:
+          variation: 0.2
+      minRange: 15
+      maxRange: 60
+    - !type:PlaySound
+      positional: true
+      sound:
+        path: /Audio/Effects/Screech/changeling_screech_weak.ogg
+        params:
+          variation: 0.2
+          maxDistance: 20
+          volume: 50
+    - !type:Jitter
+      effectTarget: Target
+      duration: 15
+      amplitude: 10
+      frequency: 6
+    - !type:ApplyStatusEffect
+      effectTarget: Target
+      statusEffect: CEStatusEffectLurkerFear
+      duration: 15
+
+- type: entity
+  id: CEStatusEffectLurkerFear
+  parent: StatusEffectSlowdown
+  name: primal terror
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: MovementModStatusEffect
+    walkSpeedModifier: 0.2
+    sprintSpeedModifier: 0.2
+  - type: CEPacifismStatusEffect
+
+- type: entity
+  id: CELurkerFearScreamEffect
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/lurker_fear_scream.rsi
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - state: effect
+      unshaded: true
+  - type: TimedDespawn
+    lifetime: 2
+  - type: Tag
+    tags:
+      - HideContextMenu
+  - type: PointLight
+    color: "#697695"
+    enabled: true
+    radius: 8
+    energy: 8
+    netsync: false
+  - type: LightFade
+    duration: 1.5

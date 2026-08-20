@@ -5,4 +5,11 @@
 # e.g., you can specify both directories and specific files by adding lines like:
 #
 # - /Prototypes/Guidebook
-# - /Prototypes/Catalog/uplink_catalog.yml
+# - /Prototypes/Catalog/UplinkCatalog
+
+- /Prototypes/AmbientMusic
+- /Prototypes/Maps
+- /Prototypes/Traits
+- /Prototypes/Shuttles
+- /Prototypes/secret_weights.yml
+- /Prototypes/game_presets.yml

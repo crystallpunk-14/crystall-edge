@@ -1,0 +1,47 @@
+<Document>
+# Тауматургия
+
+Тауматургия — наука познания окружающего мира и его секретов через анализ взаимодействия его базовых элементов - магических эссенций.
+
+<Box>
+<GuideEntityEmbed Entity="CEGuidebookEssenceEarthDummy" Caption=""/>
+<GuideEntityEmbed Entity="CEGuidebookEssenceFireDummy" Caption=""/>
+<GuideEntityEmbed Entity="CEGuidebookEssenceWaterDummy" Caption=""/>
+<GuideEntityEmbed Entity="CEGuidebookEssenceAirDummy" Caption=""/>
+<GuideEntityEmbed Entity="CEGuidebookEssenceOrderDummy" Caption=""/>
+<GuideEntityEmbed Entity="CEGuidebookEssenceChaosDummy" Caption=""/>
+</Box>
+
+Основная работа тауматургов делится на практическую и теоретическую части.
+
+## Теоретическая тауматургия
+
+Изучая мир вокруг, у каждого в голове откладываются различные знания о его мироустройстве. Эти знания можно тратить на то, чтобы открывать новые секреты.
+
+<Box>
+<GuideEntityEmbed Entity="CEPenFeather" Caption=""/>
+<GuideEntityEmbed Entity="CEResearchTable" Caption=""/>
+<GuideEntityEmbed Entity="CEPaper" Caption=""/>
+</Box>
+
+В мире полно [bold]Тайн[/bold]. Каждая тайна открывает игрокам новые возможности.
+
+Используя стол исследований, вы можете тратить накопленные знания, чтобы совершать новые открытия. В результате ваших исследований вы напишете книгу, хранящую раскрытые вами секреты. Вы можете дать прочитать эту книгу кому угодно, чтобы поделиться открытой тайной.
+
+<Box>
+<GuideEntityEmbed Entity="CEEssenceMagic" Caption=""/>
+<GuideEntityEmbed Entity="CEGuidebookThaumaturgy" Caption="Таумамикон"/>
+<GuideEntityEmbed Entity="CEEssenceMind" Caption=""/>
+</Box>
+
+Открытие тайн и собрание библиотеки - главная цель учёных.
+
+## Практическая тауматургия
+
+Чтобы совершать открытия - нужны знания об окружающем мире. И именно практическая и исследовательская работа позволит вам эти знания накапливать.
+
+Изучите следующие способы накопления знаний:
+- [textlink="Исследование" link="CEThaumaturgyResearchRU"]
+- [textlink="Алтарь слияния" link="CEThaumaturgyInfusionAltarRU"]
+- Ещё больше появится в будущем.
+</Document>

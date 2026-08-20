@@ -18,14 +18,33 @@
   - type: Item
     sprite: _CE/Objects/Tools/wrench.rsi
     storedRotation: -90
-  - type: MeleeWeapon
-    wideAnimationRotation: 90
-    attackRate: 1.5
-    damage:
-      types:
-        Blunt: 2
-    soundHit:
+  - type: CEWeapon
+    range: 0.4
+    hitSound:
       collection: MetalThud
+    effectSlots:
+      OnHit:
+      - !type:Damage
+        damage:
+          types:
+            Blunt: 2
+      OnHeavyHit:
+      - !type:Damage
+        damage:
+          types:
+            Blunt: 2
+    animations:
+      Primary:
+      - anim: DaggerAttackLight1
+      - anim: DaggerAttackLight2
+      Secondary:
+      - anim: DaggerAttackHeavy
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 10
+      Secondary: 20
+  - type: CERotationForAnimation
+    rotation: 90
   - type: Tool
     qualities:
       - Anchoring
@@ -34,3 +53,7 @@
   - type: PhysicalComposition
     materialComposition:
       CEIron: 7
+  - type: CEMagicEssenceStructure
+    essences:
+      Metal: { min: 1, max: 3 }
+      Tool: { min: 0, max: 2 }

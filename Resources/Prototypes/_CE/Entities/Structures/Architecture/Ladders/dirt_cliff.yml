@@ -7,8 +7,9 @@
   - type: Sprite
     sprite: _CE/Structures/Architecture/Ladders/dirt_cliff.rsi
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Rock
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:

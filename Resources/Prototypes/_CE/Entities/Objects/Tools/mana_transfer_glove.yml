@@ -6,7 +6,7 @@
   id: CEManaTransferGlove
   name: mana transfer glove
   description: A glove that allows transferring mana to and from mana-storing entities.
-  categories: [ ForkFiltered ]
+  categories: [ ForkFiltered, DoNotMap ]
   components:
   - type: Sprite
     sprite: _CE/Objects/Tools/mana_glove.rsi
@@ -19,17 +19,31 @@
     damage:
       types:
         Blunt: 5
-  - type: MeleeWeapon
-    attackRate: 1
-    range: 0.75
-    angle: 30
-    animationOffset: 0.5
-    wideAnimationRotation: -90
-    animation: WeaponArcThrust
-    wideAnimation: WeaponArcThrust
-    damage:
-      types:
-        Blunt: 7
+  - type: CEWeapon
+    range: 0.4
+    effectSlots:
+      OnHit:
+      - !type:Damage
+        damage:
+          types:
+            Blunt: 7
+      OnHeavyHit:
+      - !type:Damage
+        damage:
+          types:
+            Blunt: 7
+    animations:
+      Primary:
+      - anim: DaggerAttackLight1
+      - anim: DaggerAttackLight2
+      Secondary:
+      - anim: DaggerAttackHeavy
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 10
+      Secondary: 20
+  - type: CERotationForAnimation
+    rotation: -90
   - type: CEEnergyTransferGlove
   - type: UseDelay
     delay: 0.5
@@ -43,3 +57,7 @@
   #    CEIron: 10
   - type: StaticPrice
     price: 75
+  - type: CEMagicEssenceStructure
+    essences:
+      Energia: { min: 1, max: 3 }
+      Magic: { min: 0, max: 2 }

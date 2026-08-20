@@ -23,7 +23,7 @@ desc = "History of the Floating Island city of Sword and Magic. A social sandbox
 lobbyenabled = true
 soft_max_players = 30
 maxplayers = 40
-lobbyduration = 300
+lobbyduration = 18000
 role_timers = true
 closed_beta_test = true
 
@@ -43,9 +43,6 @@ github = "https://github.com/crystallpunk-14/crystall-edge"
 
 [procgen]
 preload = false
-
-[gateway]
-generator_enabled = false
 
 [shuttle]
 arrivals = false

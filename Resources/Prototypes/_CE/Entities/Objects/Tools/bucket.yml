@@ -22,20 +22,39 @@
     equipWhileMoving: true
     slots:
     - HEAD
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 50
+  - type: Solution
+    id: drink
+    solution:
+      maxVol: 50
   - type: SolutionTransfer
     transferAmount: 50
     maxTransferAmount: 50
     minTransferAmount: 10
-  - type: MeleeWeapon
-    soundNoDamage:
+  - type: CEWeapon
+    range: 0.4
+    hitSound:
       path: "/Audio/Effects/Fluids/splat.ogg"
-    damage:
-      types:
-        Blunt: 0
+    effectSlots:
+      OnHit:
+      - !type:Damage
+        damage:
+          types:
+            Blunt: 0
+      OnHeavyHit:
+      - !type:Damage
+        damage:
+          types:
+            Blunt: 0
+    animations:
+      Primary:
+      - anim: DaggerAttackLight1
+      - anim: DaggerAttackLight2
+      Secondary:
+      - anim: DaggerAttackHeavy
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 10
+      Secondary: 20
   - type: SpillWhenWorn
     solution: drink
   - type: SolutionContainerVisuals
@@ -50,3 +69,7 @@
   - type: PhysicalComposition
     materialComposition:
       CEWood: 30
+  - type: CEMagicEssenceStructure
+    essences:
+      Tree: { min: 1, max: 4 }
+      Void: { min: 0, max: 2 }

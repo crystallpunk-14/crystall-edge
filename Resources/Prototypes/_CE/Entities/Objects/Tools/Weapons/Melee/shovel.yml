@@ -7,20 +7,46 @@
   components:
   - type: Item
     size: Ginormous
-  - type: MeleeWeapon
-    attackRate: 1
-    range: 1.6
-    angle: 170
-    wideAnimationRotation: -90
-    damage:
-      types:
-        Slash: 3
-    soundHit:
+  - type: CEWeapon
+    range: 0.84
+    hitSound:
       collection: MetalThud
-  - type: IncreaseDamageOnWield
-    damage:
-      types:
-        Slash: 5
+    effectSlots:
+      OnHit:
+      - !type:Damage
+        damage:
+          types:
+            Slash: 8
+      OnHeavyHit:
+      - !type:Damage
+        damage:
+          types:
+            Slash: 8
+    animations:
+      Primary:
+      - anim: WarAxeAttackLight
+        speed: 0.6
+      - anim: WarAxeAttackLight2
+        speed: 0.6
+      Secondary:
+      - anim: WarAxeAttackHeavy1
+        speed: 0.6
+      - anim: WarAxeAttackHeavy2
+        speed: 0.6
+  - type: CEWieldedWeapon
+    animations:
+      Primary:
+      - anim: WarAxeAttackLight
+      - anim: WarAxeAttackLight2
+      Secondary:
+      - anim: WarAxeAttackHeavy1
+      - anim: WarAxeAttackHeavy2
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 10
+      Secondary: 10
+  - type: CERotationForAnimation
+    rotation: -90
   - type: Wieldable
   - type: Clothing
     equipWhileMoving: true
@@ -38,6 +64,11 @@
       params:
         variation: 0.03
         volume: 2
+  - type: CEMagicEssenceStructure
+    essences:
+      Weapon: { min: 1, max: 3 }
+      Metal: { min: 1, max: 4 }
+      Mining: { min: 0, max: 2 }
 
 - type: entity
   parent: CEBaseWeaponShovel

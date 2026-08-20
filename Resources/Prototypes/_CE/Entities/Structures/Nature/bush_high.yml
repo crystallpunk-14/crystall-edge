@@ -6,7 +6,7 @@
   - CEPlantBaseSolarEnergy
   - CEPlantBaseSingleHarvest
   - CEPlantBaseFloralWildType
-  - CEPlantBaseGrowingHalfDay
+  - CEPlantBaseGrowingFast
   - CEPlantBaseSpreading
   categories: [ ForkFiltered ]
   description: Thick fast-growing weed

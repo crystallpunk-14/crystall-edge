@@ -1,0 +1,73 @@
+#MARK: Easy
+
+- type: scienceDiscovery
+  id: AdvancedDrilling
+  parent: EasyDifficult
+  area: ArcaneEngineering
+  targetAspects:
+  - Mining
+  - Energia
+  knowledge: DrillAdvanced
+
+- type: scienceDiscovery
+  id: PortableMagicEssenceAttractor
+  parent: EasyDifficult
+  area: ArcaneEngineering
+  targetAspects:
+  - Magic
+  - Hunger
+  knowledge: PortableEssenceAttractor
+
+- type: scienceDiscovery
+  id: ManaTransferGlove
+  parent: EasyDifficult
+  area: ArcaneEngineering
+  targetAspects:
+  - Magic
+  - Energia
+  - Motion
+  knowledge: ManaTransferGlove
+
+- type: scienceDiscovery
+  id: ThaumaturgyGlassesAdvanced
+  parent: EasyDifficult
+  area: ArcaneEngineering
+  targetAspects:
+  - Magic
+  - Crystal
+  - Senses
+  knowledge: ThaumaturgyGlassesAdvanced
+
+#MARK: Medium
+
+- type: scienceDiscovery
+  id: Hoverboards
+  parent: MediumDifficult
+  area: ArcaneEngineering
+  targetAspects:
+  - Flight
+  - Machine
+  - Energia
+  - Energia
+  knowledge: Hoverboard
+
+- type: scienceDiscovery
+  id: NodeStabilizer
+  parent: MediumDifficult
+  area: ArcaneEngineering
+  targetAspects:
+  - Magic
+  - Trap
+  - Machine
+  knowledge: NodeStabilizer
+
+- type: scienceDiscovery
+  id: ThirdArmMiningModule
+  parent: MediumDifficult
+  area: ArcaneEngineering
+  targetAspects:
+  - Mining
+  - Tool
+  - Energia
+  - Weapon
+  knowledge: ThirdArmMiningModule

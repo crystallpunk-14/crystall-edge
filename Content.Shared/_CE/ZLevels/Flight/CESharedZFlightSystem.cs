@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is sublicensed under MIT License
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
@@ -20,12 +20,12 @@ namespace Content.Shared._CE.ZLevels.Flight;
 
 public abstract partial class CESharedZFlightSystem : EntitySystem
 {
-    [Dependency] private readonly CESharedZLevelsSystem _zLevel = default!;
-    [Dependency] private readonly SharedAmbientSoundSystem _ambient = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly SharedGravitySystem _gravity = default!;
+    [Dependency] private CESharedZLevelsSystem _zLevel = default!;
+    [Dependency] private SharedAmbientSoundSystem _ambient = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private SharedActionsSystem _actions = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private SharedGravitySystem _gravity = default!;
 
     protected EntityQuery<CEZPhysicsComponent> ZPhyzQuery;
 
@@ -45,7 +45,24 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
         SubscribeLocalEvent<CEZFlyerComponent, StunnedEvent>(OnStunned);
         SubscribeLocalEvent<CEZFlyerComponent, KnockedDownEvent>(OnKnockDowned);
         SubscribeLocalEvent<CEZFlyerComponent, MobStateChangedEvent>(OnMobStateChanged);
-        SubscribeLocalEvent<CEZFlyerComponent, DamageChangedEvent>(OnDamageChanged);
+        SubscribeLocalEvent<CEZFlyerComponent, DamageDealtEvent>(OnDamageDealt);
+        SubscribeLocalEvent<CEZFlyerComponent, CEZLevelChasmAttempt>(OnFlightChasmAttempt);
+    }
+
+    private void OnFlightChasmAttempt(Entity<CEZFlyerComponent> ent, ref CEZLevelChasmAttempt args)
+    {
+        if (!ent.Comp.Active || args.Cancelled)
+            return;
+
+        args.Cancel();
+
+        if (!ZPhyzQuery.TryComp(ent.Owner, out var zPhys))
+            return;
+
+        _zLevel.SetZPosition((ent.Owner, zPhys), 0f);
+
+        if (zPhys.Velocity < 0)
+            _zLevel.SetZVelocity((ent.Owner, zPhys), 0f);
     }
 
     private void CheckWeightless(Entity<CEZFlyerComponent> ent, ref IsWeightlessEvent args)
@@ -57,12 +74,22 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
         args.Handled = true;
     }
 
-    private void OnDamageChanged(Entity<CEZFlyerComponent> ent, ref DamageChangedEvent args)
+    private void OnDamageDealt(Entity<CEZFlyerComponent> ent, ref DamageDealtEvent args)
     {
-        if (!args.DamageIncreased)
+        if (!args.InterruptsDoAfters)
             return;
 
-        if (!args.InterruptsDoAfters)
+        var damageIncreased = false;
+        foreach (var amount in args.Damage.DamageDict.Values)
+        {
+            if (amount <= 0)
+                continue;
+
+            damageIncreased = true;
+            break;
+        }
+
+        if (!damageIncreased)
             return;
 
         DeactivateFlight((ent, ent));
@@ -156,7 +183,10 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
         ent.Comp.Active = true;
         DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.Active));
 
+        zPhys.VelocityRaiseEvent = true;
+
         _zLevel.UpdateGravityState((ent, zPhys));
+        _zLevel.WakeBody((ent, zPhys));
         _gravity.RefreshWeightless(ent.Owner);
 
         RaiseLocalEvent(ent, new CEFlightStartedEvent());
@@ -177,6 +207,8 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
 
         ent.Comp.Active = false;
         DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.Active));
+
+        zPhys.VelocityRaiseEvent = false;
 
         _zLevel.UpdateGravityState((ent, zPhys));
         _gravity.RefreshWeightless(ent.Owner);
@@ -216,17 +248,17 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
 /// <summary>
 /// Called on an entity when it attempts to start flight mode. Subscribe and cancel this event if you want to cancel your flight for any reason.
 /// </summary>
-public sealed class CEStartFlightAttemptEvent : CancellableEntityEventArgs;
+public sealed partial class CEStartFlightAttemptEvent : CancellableEntityEventArgs;
 
 /// <summary>
 /// Called on an entity when it enters flight mode
 /// </summary>
-public sealed class CEFlightStartedEvent : EntityEventArgs;
+public sealed partial class CEFlightStartedEvent : EntityEventArgs;
 
 /// <summary>
 /// Called on an entity when it exits flight mode
 /// </summary>
-public sealed class CEFlightStoppedEvent : EntityEventArgs;
+public sealed partial class CEFlightStoppedEvent : EntityEventArgs;
 
 
 /// <summary>

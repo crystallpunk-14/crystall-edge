@@ -1,0 +1,128 @@
+- type: entity
+  id: CEBaseEssenceSphere
+  parent: BaseItem
+  description: A perfectly round crystal sphere containing an essence trapped inside, preserved in a plasma-like form. A valuable resource for many thaumaturgical recipes and rituals.
+  abstract: true
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _CE/Objects/Materials/essence_sphere.rsi
+    layers:
+    - state: glass
+    - state: liq-1
+      shader: unshaded
+      map: [ "enum.SolutionContainerLayers.Fill" ]
+      visible: false
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 2
+    fillBaseName: liq-
+  - type: StaticPrice
+    price: 30
+  - type: Item
+    size: Tiny
+  - type: CEMagicEssenceStructureExempt
+  - type: Solution
+    id: essence
+    solution:
+      maxVol: 10
+      canReact: false
+
+- type: entity
+  id: CEEssenceSphereEarth
+  parent: CEBaseEssenceSphere
+  name: essence sphere of Terra
+  description: A sealed glass sphere holding pure liquid Terra essence.
+  components:
+  - type: Solution
+    id: essence
+    solution:
+      reagents:
+      - ReagentId: CEEssenceEarth
+        Quantity: 10
+  - type: CEScientificInterest
+    points:
+      Earth: 10
+
+
+- type: entity
+  id: CEEssenceSphereFire
+  parent: CEBaseEssenceSphere
+  name: essence sphere of Ignis
+  description: A sealed glass sphere holding pure liquid Ignis essence.
+  components:
+  - type: Solution
+    id: essence
+    solution:
+      reagents:
+      - ReagentId: CEEssenceFire
+        Quantity: 10
+  - type: CEScientificInterest
+    points:
+      Fire: 10
+
+- type: entity
+  id: CEEssenceSphereWater
+  parent: CEBaseEssenceSphere
+  name: essence sphere of Aqua
+  description: A sealed glass sphere holding pure liquid Aqua essence.
+  components:
+  - type: Solution
+    id: essence
+    solution:
+      reagents:
+      - ReagentId: CEEssenceWater
+        Quantity: 10
+  - type: CEScientificInterest
+    points:
+      Water: 10
+
+- type: entity
+  id: CEEssenceSphereAir
+  parent: CEBaseEssenceSphere
+  name: essence sphere of Aer
+  description: A sealed glass sphere holding pure liquid Aer essence.
+  components:
+  - type: Solution
+    id: essence
+    solution:
+      reagents:
+      - ReagentId: CEEssenceAir
+        Quantity: 10
+  - type: CEScientificInterest
+    points:
+      Air: 10
+
+- type: entity
+  id: CEEssenceSphereOrder
+  parent: CEBaseEssenceSphere
+  name: essence sphere of Ordo
+  description: A sealed glass sphere holding pure liquid Ordo essence.
+  components:
+  - type: Solution
+    id: essence
+    solution:
+      reagents:
+      - ReagentId: CEEssenceOrder
+        Quantity: 10
+  - type: CEScientificInterest
+    points:
+      Order: 10
+
+- type: entity
+  id: CEEssenceSphereChaos
+  parent: CEBaseEssenceSphere
+  name: essence sphere of Perditio
+  description: A sealed glass sphere holding pure liquid Perditio essence.
+  components:
+  - type: Solution
+    id: essence
+    solution:
+      reagents:
+      - ReagentId: CEEssenceChaos
+        Quantity: 10
+  - type: CEScientificInterest
+    points:
+      Chaos: 10

@@ -1,6 +1,6 @@
 using Content.Server.Cargo.Systems;
 using Content.Shared._CE.Currency;
-using Content.Shared.Examine;
+using Content.Shared._CE.Examine;
 using Content.Shared.Inventory;
 using Content.Shared.Tag;
 using Content.Shared._CE.Trading.Components;
@@ -8,16 +8,16 @@ using Content.Shared.Mobs.Components;
 
 namespace Content.Server._CE.Trading;
 
-public sealed class CEPriceScannerSystem : EntitySystem
+public sealed partial class CEPriceScannerSystem : EntitySystem
 {
-    [Dependency] private readonly PricingSystem _price = default!;
-    [Dependency] private readonly TagSystem _tag = default!;
-    [Dependency] private readonly InventorySystem _invSystem = default!;
-    [Dependency] private readonly CESharedCurrencySystem _currency = default!;
+    [Dependency] private PricingSystem _price = default!;
+    [Dependency] private TagSystem _tag = default!;
+    [Dependency] private InventorySystem _invSystem = default!;
+    [Dependency] private CESharedCurrencySystem _currency = default!;
 
     public override void Initialize()
     {
-        SubscribeLocalEvent<MetaDataComponent, ExaminedEvent>(OnExamined);
+        SubscribeLocalEvent<CEExamineAugmentEvent>(OnExamineAugment);
     }
 
     private bool IsAbleExamine(EntityUid uid)
@@ -30,13 +30,13 @@ public sealed class CEPriceScannerSystem : EntitySystem
         return false;
     }
 
-    private void OnExamined(EntityUid uid, MetaDataComponent component, ExaminedEvent args)
+    private void OnExamineAugment(CEExamineAugmentEvent args)
     {
         if (!IsAbleExamine(args.Examiner))
             return;
-        if (_tag.HasTag(args.Examined, "CECoin"))
+        if (_tag.HasTag(args.Examined, CETradingPlatformSystem.CoinTag))
             return;
-        if (HasComp<MobStateComponent>(uid))
+        if (HasComp<MobStateComponent>(args.Examined))
             return;
 
         var price = Math.Round(_price.GetPrice(args.Examined));
@@ -48,6 +48,6 @@ public sealed class CEPriceScannerSystem : EntitySystem
 
         priceMsg += _currency.GetCurrencyPrettyString((int)price);
 
-        args.PushMarkup(priceMsg);
+        args.AddMarkup(priceMsg);
     }
 }

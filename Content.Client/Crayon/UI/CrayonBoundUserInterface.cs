@@ -7,9 +7,9 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Client.Crayon.UI
 {
-    public sealed class CrayonBoundUserInterface : BoundUserInterface
+    public sealed partial class CrayonBoundUserInterface : BoundUserInterface
     {
-        [Dependency] private readonly IPrototypeManager _protoManager = default!;
+        [Dependency] private IPrototypeManager _protoManager = default!;
 
         [ViewVariables]
         private CrayonWindow? _menu;
@@ -29,7 +29,7 @@ namespace Content.Client.Crayon.UI
 
         private void PopulateCrayons()
         {
-            var crayonDecals = _protoManager.EnumeratePrototypes<DecalPrototype>().Where(x => x.Tags.Contains("crayon"));
+            var crayonDecals = _protoManager.EnumeratePrototypes<DecalPrototype>().Where(x => x.Tags.Contains("CEcrayon")); //CrystallEdge
             _menu?.Populate(crayonDecals.ToList());
         }
 

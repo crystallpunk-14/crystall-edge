@@ -21,13 +21,13 @@ namespace Content.Server._CE.Trading;
 
 public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSystem
 {
-    [Dependency] private readonly TagSystem _tag = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly PricingSystem _price = default!;
-    [Dependency] private readonly CECurrencySystem _currency = default!;
-    [Dependency] private readonly CEEconomySystem _economy = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly UserInterfaceSystem _userInterface = default!;
+    [Dependency] private TagSystem _tag = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private PricingSystem _price = default!;
+    [Dependency] private CECurrencySystem _currency = default!;
+    [Dependency] private CEEconomySystem _economy = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private UserInterfaceSystem _userInterface = default!;
 
     public static readonly ProtoId<TagPrototype> CoinTag = "CECoin";
 

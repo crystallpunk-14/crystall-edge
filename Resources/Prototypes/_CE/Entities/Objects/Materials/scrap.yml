@@ -26,6 +26,10 @@
   - type: PhysicalComposition
     materialComposition:
       CEIron: 10
+  - type: CEMagicEssenceStructure
+    essences:
+      Metal: { min: 1, max: 4 }
+      Chaos: { min: 0, max: 2 }
 
 - type: entity
   id: CEScrapIron5
@@ -71,6 +75,10 @@
   - type: PhysicalComposition
     materialComposition:
       CEBrass: 10
+  - type: CEMagicEssenceStructure
+    essences:
+      Metal: { min: 1, max: 4 }
+      Energia: { min: 0, max: 2 }
 
 - type: entity
   id: CEScrapBrass5

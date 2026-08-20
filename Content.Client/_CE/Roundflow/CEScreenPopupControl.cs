@@ -10,13 +10,13 @@ using Robust.Shared.Utility;
 
 namespace Content.Client._CE.RoundFlow;
 
-public sealed class CEScreenPopupControl : Control
+public sealed partial class CEScreenPopupControl : Control
 {
     private const float FadeDuration = 4f;
     private const float DelayTime = 3f;
 
-    [Dependency] private readonly IResourceCache _resourceCache = default!;
-    [Dependency] private readonly FontTagHijackHolder _fontHijack = default!;
+    [Dependency] private IResourceCache _resourceCache = default!;
+    [Dependency] private FontTagHijackHolder _fontHijack = default!;
 
     public event Action? OnAnimationEnd;
 

@@ -1,11 +1,11 @@
-using Content.Shared.Random.Rules;
+using Content.Shared.EntityConditions;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.Audio.Prototypes;
 
 /// <summary>
-/// Attaches a rules prototype to sound files to play ambience.
+/// Attaches entity conditions to sound files to play ambience.
 /// </summary>
 [Prototype("ambientLoop")]
 public sealed partial class CEAmbientLoopPrototype : IPrototype
@@ -15,6 +15,6 @@ public sealed partial class CEAmbientLoopPrototype : IPrototype
     [DataField(required: true)]
     public SoundSpecifier Sound = default!;
 
-    [DataField(required: true)]
-    public ProtoId<RulesPrototype> Rules = string.Empty;
+    [DataField]
+    public EntityCondition[]? Conditions;
 }

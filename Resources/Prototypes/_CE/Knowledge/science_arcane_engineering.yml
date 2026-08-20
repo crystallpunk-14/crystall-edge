@@ -1,0 +1,34 @@
+- type: CEKnowledge
+  id: DrillAdvanced
+  parent: ArcaneEngineeringKnowledgeBase
+  previewEntity: CEDrillAdvanced
+
+- type: CEKnowledge
+  id: Hoverboard
+  parent: ArcaneEngineeringKnowledgeBase
+  previewEntity: CEVehicleHoverboard
+
+- type: CEKnowledge
+  id: PortableEssenceAttractor
+  parent: ArcaneEngineeringKnowledgeBase
+  previewEntity: CEPortableMagicEssenceAttractor
+
+- type: CEKnowledge
+  id: NodeStabilizer
+  parent: ArcaneEngineeringKnowledgeBase
+  previewEntity: CENodeStabilizerSphere
+
+- type: CEKnowledge
+  id: ManaTransferGlove
+  parent: ArcaneEngineeringKnowledgeBase
+  previewEntity: CEManaTransferGlove
+
+- type: CEKnowledge
+  id: ThirdArmMiningModule
+  parent: ArcaneEngineeringKnowledgeBase
+  previewEntity: CEThirdArmModuleMining
+
+- type: CEKnowledge
+  id: ThaumaturgyGlassesAdvanced
+  parent: ArcaneEngineeringKnowledgeBase
+  previewEntity: CEClothingEyesThaumaturgyGlassesAdvanced

@@ -19,9 +19,9 @@ namespace Content.Client._CE.Guidebook.Controls;
 [UsedImplicitly, GenerateTypedNameReferences]
 public sealed partial class CEGuideCookingRecipeEmbed : PanelContainer, IDocumentTag, ISearchableControl
 {
-    [Dependency] private readonly IEntityManager _entity = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly ILogManager _logManager = default!;
+    [Dependency] private IEntityManager _entity = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private ILogManager _logManager = default!;
 
     private readonly SpriteSystem _sprite = default!;
     private readonly ISawmill _sawmill = default!;

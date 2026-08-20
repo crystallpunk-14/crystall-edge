@@ -2,7 +2,9 @@ using System.Linq;
 using Content.Server.GameTicking.Rules;
 using Content.Server.StationEvents.Events;
 using Content.Shared.GameTicking.Components;
+using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Map.Components;
 using Robust.Shared.Random;
 
 namespace Content.Server._CE.StationEvents;
@@ -10,10 +12,13 @@ namespace Content.Server._CE.StationEvents;
 /// <summary>
 /// Station event system that randomly replaces selected entities with mapped prototypes,
 /// optionally playing visual and audio effects at the replacement location.
-public sealed class CEEntityReplacementRuleSystem : StationEventSystem<CEEntityReplacementRuleComponent>
+public sealed partial class CEEntityReplacementRuleSystem : StationEventSystem<CEEntityReplacementRuleComponent>
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private MapSystem _map = default!;
+
+    private readonly List<EntityUid> _anchoredEntities = new();
 
     protected override void Started(EntityUid ruleUid,
         CEEntityReplacementRuleComponent component,
@@ -32,6 +37,8 @@ public sealed class CEEntityReplacementRuleSystem : StationEventSystem<CEEntityR
             if (meta.EntityPrototype is null)
                 continue;
             if (!component.ReplacementMap.Keys.Contains(meta.EntityPrototype))
+                continue;
+            if (HasOtherAnchoredEntities(uid, xform))
                 continue;
 
             allEntities.Add(uid);
@@ -63,5 +70,27 @@ public sealed class CEEntityReplacementRuleSystem : StationEventSystem<CEEntityR
             _audio.PlayPvs(component.ReplaceSound, coordinates);
             QueueDel(target);
         }
+    }
+
+    /// <summary>
+    /// Checks whether any anchored entity other than <paramref name="uid"/> itself occupies the same tile.
+    /// Used to avoid replacing pipes sharing a tile with walls, carpets, etc.
+    /// </summary>
+    private bool HasOtherAnchoredEntities(EntityUid uid, TransformComponent xform)
+    {
+        if (xform.GridUid is not { } grid || !TryComp<MapGridComponent>(grid, out var gridComp))
+            return false;
+
+        var tile = _map.TileIndicesFor(grid, gridComp, xform.Coordinates);
+        _anchoredEntities.Clear();
+        _map.GetAnchoredEntities((grid, gridComp), tile, _anchoredEntities);
+
+        foreach (var other in _anchoredEntities)
+        {
+            if (other != uid)
+                return true;
+        }
+
+        return false;
     }
 }

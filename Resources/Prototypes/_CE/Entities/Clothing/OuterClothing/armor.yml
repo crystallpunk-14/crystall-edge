@@ -5,12 +5,11 @@
   description: A simple but effective magical energy insulator for the chest. Not the most robust protection, but it works great for shielding against excess magical energy.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/OuterClothing/brass_insulator.rsi
+    sprite: _CE/Clothing/OuterClothing/Generic/brass_insulator.rsi
   - type: Clothing
-    sprite: _CE/Clothing/OuterClothing/brass_insulator.rsi
-  - type: MultiHandedItem
+    sprite: _CE/Clothing/OuterClothing/Generic/brass_insulator.rsi
   - type: CEEnergyRadiationArmor
-    armor: 0.5
+    armor: 0.75
   - type: Armor
     modifiers:
       coefficients:
@@ -24,3 +23,7 @@
   - type: HeldSpeedModifier
   - type: StaticPrice
     price: 300
+  - type: CEMagicEssenceStructure
+    essences:
+      Armor: { min: 3, max: 6 }
+      Energia: { min: 3, max: 6 }

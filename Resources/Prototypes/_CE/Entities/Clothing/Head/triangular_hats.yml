@@ -5,9 +5,9 @@
   description: A distinctive triangular hat worn by guards. Its unique shape makes it easy to identify guard personnel from a distance.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Head/TriangularHat/guard.rsi
+    sprite: _CE/Clothing/Head/Generic/triangular_guard.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Head/TriangularHat/guard.rsi
+    sprite: _CE/Clothing/Head/Generic/triangular_guard.rsi
 
 - type: entity
   parent: CEClothingHeadBase
@@ -16,9 +16,9 @@
   description: A practical triangular hat made from quality leather. Durable and weather-resistant.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Head/TriangularHat/leather.rsi
+    sprite: _CE/Clothing/Head/Academy/leather.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Head/TriangularHat/leather.rsi
+    sprite: _CE/Clothing/Head/Academy/leather.rsi
 
 - type: entity
   parent: CEClothingHeadBase
@@ -27,6 +27,10 @@
   description: An luxurious triangular hat made from fine leather with golden accents. A mark of high status and wealth.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Head/TriangularHat/leather_golden.rsi
+    sprite: _CE/Clothing/Head/Academy/leather_golden.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Head/TriangularHat/leather_golden.rsi
+    sprite: _CE/Clothing/Head/Academy/leather_golden.rsi
+  - type: CEMagicEssenceStructure
+    essences:
+      Cloth: { min: 1, max: 3 }
+      Greed: { min: 1, max: 2 }

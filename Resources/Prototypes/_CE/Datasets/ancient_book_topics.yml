@@ -1,0 +1,5 @@
+- type: localizedDataset
+  id: CEAncientBookTopic
+  values:
+    prefix: ce-book-ancient-topic-
+    count: 30

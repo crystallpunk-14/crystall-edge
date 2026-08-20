@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is sublicensed under MIT License
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
@@ -9,19 +9,19 @@ using Robust.Shared.Map.Components;
 
 namespace Content.Server._CE.ZLevels.Mapping;
 
-public sealed class CEZLevelMappingSystem : EntitySystem
+public sealed partial class CEZLevelMappingSystem : EntitySystem
 {
-    [Dependency] private readonly CEZLevelsSystem _zLevels = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
+    [Dependency] private CEZLevelsSystem _zLevels = default!;
+    [Dependency] private SharedMapSystem _map = default!;
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CEZLevelMapComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<CEZLevelMapComponent, CEMapAddedIntoZNetworkEvent>(OnAddedIntoZNetwork);
+        SubscribeLocalEvent<CEZMapComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<CEZMapComponent, CEMapAddedIntoZNetworkEvent>(OnAddedIntoZNetwork);
     }
 
-    private void OnAddedIntoZNetwork(Entity<CEZLevelMapComponent> ent, ref CEMapAddedIntoZNetworkEvent args)
+    private void OnAddedIntoZNetwork(Entity<CEZMapComponent> ent, ref CEMapAddedIntoZNetworkEvent args)
     {
         if (_map.IsInitialized(ent))
             EntityManager.AddComponents(ent, args.Network.Comp.Components);
@@ -42,11 +42,11 @@ public sealed class CEZLevelMappingSystem : EntitySystem
         }
     }
 
-    private void OnMapInit(Entity<CEZLevelMapComponent> ent, ref MapInitEvent args)
+    private void OnMapInit(Entity<CEZMapComponent> ent, ref MapInitEvent args)
     {
-        if (!_zLevels.TryZNetwork((ent, ent.Comp), out var network))
+        if (!_zLevels.TryGetMapNetwork(ent, out var network))
             return;
 
-        EntityManager.AddComponents(ent, network.Value.Comp.Components);
+        EntityManager.AddComponents(ent, network.Comp.Components);
     }
 }

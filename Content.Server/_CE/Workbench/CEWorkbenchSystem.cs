@@ -2,6 +2,7 @@ using System.Numerics;
 using Content.Server.DoAfter;
 using Content.Server.Popups;
 using Content.Server.Stack;
+using Content.Shared._CE.Knowledge;
 using Content.Shared._CE.Workbench;
 using Content.Shared._CE.Workbench.Prototypes;
 using Content.Shared.UserInterface;
@@ -17,17 +18,18 @@ namespace Content.Server._CE.Workbench;
 
 public sealed partial class CEWorkbenchSystem : EntitySystem
 {
-    [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly DoAfterSystem _doAfter = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
-    [Dependency] private readonly UserInterfaceSystem _userInterface = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly StackSystem _stack = default!;
-    [Dependency] private readonly ContainerSystem _container = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly PhysicsSystem _physics = default!;
+    [Dependency] private AudioSystem _audio = default!;
+    [Dependency] private DoAfterSystem _doAfter = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private PopupSystem _popup = default!;
+    [Dependency] private UserInterfaceSystem _userInterface = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private StackSystem _stack = default!;
+    [Dependency] private ContainerSystem _container = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private PhysicsSystem _physics = default!;
+    [Dependency] private CEKnowledgeSystem _knowledge = default!;
 
     private EntityQuery<CEWorkbenchComponent> _workbenchQuery;
 
@@ -61,6 +63,7 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
 
     private void OnBeforeUIOpen(Entity<CEWorkbenchComponent> ent, ref BeforeActivatableUIOpenEvent args)
     {
+        ent.Comp.CurrentUser = args.User;
         UpdateUIRecipes((ent, ent.Comp));
     }
 
@@ -89,6 +92,14 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
             if (!_proto.Resolve(recipeId, out var indexedRecipe))
                 continue;
 
+            // Only show recipes the current user knows, unless the recipe has no knowledge
+            // requirement at all (available to everyone).
+            if (entity.Comp.CurrentUser is null)
+                continue;
+
+            if (indexedRecipe.RequiredKnowledge is { } required && !_knowledge.Knows(entity.Comp.CurrentUser.Value, required))
+                continue;
+
             var canCraft = true;
 
             foreach (var requirement in indexedRecipe.Requirements)
@@ -110,6 +121,10 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
 
     private bool CanCraftRecipe(CEWorkbenchRecipePrototype recipe, HashSet<EntityUid> entities, EntityUid? user = null)
     {
+        // Validate the user knows the recipe (server-side), unless it has no knowledge requirement.
+        if (recipe.RequiredKnowledge is { } required && user is { } u && !_knowledge.Knows(u, required))
+            return false;
+
         foreach (var req in recipe.Requirements)
         {
             if (!req.CheckRequirement(EntityManager, _proto, entities))
@@ -166,6 +181,11 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
         foreach (var resultEntity in resultEntities)
         {
             _transform.SetCoordinates(resultEntity, Transform(workbench).Coordinates.Offset(new Vector2(_random.NextFloat(-0.25f, 0.25f), _random.NextFloat(-0.25f, 0.25f))));
+
+            // Results with a static physics body (e.g. anchorable machines) can end up auto-anchored
+            // just from landing on the grid - make sure crafted items are always free to pick up.
+            _transform.Unanchor(resultEntity);
+
             _stack.TryMergeToContacts(resultEntity);
             _physics.WakeBody(resultEntity);
         }

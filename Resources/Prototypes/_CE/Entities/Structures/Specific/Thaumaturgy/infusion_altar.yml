@@ -1,0 +1,153 @@
+- type: entity
+  parent:
+  - CEBaseMachinePowered
+  - BaseMachine
+  id: CEInfusionAltar
+  categories: [ ForkFiltered ]
+  name: infusion altar
+  description: TODO
+  components:
+  - type: StaticPrice
+    price: 180
+  - type: InteractionOutline
+  - type: GuideHelp
+    guides:
+    - CEThaumaturgyInfusionAltarRU
+    - CEThaumaturgyInfusionAltarEN
+  - type: Transform
+    anchored: true
+  - type: Sprite
+    drawdepth: Objects
+    noRot: true
+    sprite: _CE/Structures/Specific/Thaumaturgy/infusion_altar.rsi
+    layers:
+    - state: altar
+    - sprite: _CE/Structures/Specific/Thaumaturgy/Effects/infusion_altar_chaos.rsi
+      state: calm
+      map: [ "chaosEffect" ]
+      shader: unshaded
+      visible: false
+  - type: Icon
+    sprite: _CE/Structures/Specific/Thaumaturgy/infusion_altar.rsi
+    state: altar
+  - type: CEInfusionAltar
+    possiblePedestalsPositions:
+    - 3,0
+    - -3,0
+    - 0,3
+    - 0,-3
+    - 2, 2
+    - -2, 2
+    - 2, -2
+    - -2, -2
+    unstableMishaps:
+    - CEInfusionAltarMishapManaConsume
+    - CEInfusionAltarMishapManaRestore
+    - CEInfusionAltarMishapPulse
+    criticalMishaps:
+    - CEInfusionAltarMishapExplosion
+  - type: Climbable
+  - type: ItemSlots
+    slots:
+      catalyst:
+        name: ce-infusion-altar-catalyst-slot-name
+        ejectOnInteract: true
+        ejectOnBreak: true
+  - type: ContainerContainer
+    containers:
+      catalyst: !type:ContainerSlot
+        showEnts: true
+        occludes: false
+  - type: PlacementReplacement
+    key: walls
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        density: 190
+        mask: # blocks players/mobs, same as tables
+        - TableMask
+        layer:
+        - TableLayer
+      fix2:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        hard: false # essence should fly in, not bounce off
+        mask:
+        - Impassable
+        layer:
+        - Impassable
+  - type: Solution
+    id: essence
+    solution:
+      maxVol: 50
+  - type: CEUnpoweredEssenceLeak
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        power:
+          True: { visible: true }
+          False: { visible: false }
+      enum.CEInfusionAltarDangerVisuals.Level:
+        chaosEffect:
+          Calm: { state: calm }
+          Unstable: { state: unstable }
+          Critical: { state: critical }
+      enum.CEInfusionAltarDangerVisuals.Active:
+        chaosEffect:
+          True: { visible: true }
+          False: { visible: false }
+  - type: AmbientOnPowered
+  - type: AmbientSound
+    enabled: false
+    range: 6
+    volume: 3
+    sound:
+      path: /Audio/Ambience/Objects/gravity_gen_hum.ogg
+  - type: CEMagicEssenceAttractor
+    solution: essence
+  - type: LitOnPowered
+  - type: CEInfusionAltarDangerVisuals
+  - type: PointLight
+    enabled: false
+    color: "#9335b8"
+    radius: 5
+  - type: LightBehaviour
+    behaviours:
+    - !type:RandomizeBehaviour
+      interpolate: Nearest
+      minDuration: 0.02
+      maxDuration: 0.06
+      startValue: 0.0
+      endValue: 3.0
+      property: Energy
+      isLooped: true
+      enabled: false
+
+# Client-side-only marker spawned by CEInfusionAltarPositionsSystem to show valid sub-pedestal tiles
+# on examine, mirroring MultipartMachineGhost (Resources/Prototypes/Entities/Structures/Machines/multipart.yml).
+- type: entity
+  id: CEInfusionAltarPositionIndicator
+  categories: [ HideSpawnMenu ]
+  name: infusion pedestal possible position
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    offset: 0, -0.1
+    sprite: _CE/Structures/Specific/Thaumaturgy/infusion_altar.rsi
+    layers:
+    - state: pedestal
+      shader: unshaded
+    color: "#4ab6cc50"
+  - type: TimedDespawn
+    lifetime: 5
+  - type: CETimedDespawnFadeout
+  - type: Clickable
+  - type: Tag
+    tags:
+    - HideContextMenu

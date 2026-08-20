@@ -9,12 +9,14 @@ namespace Content.Client._CE.PostProcess;
 
 // This overlay serves as the foundational post processing overlay.
 // Ideally, for performance reasons, post processing designed to be present at all times, such as additive light blending or tonemapping, should be done as part of a single shader pass.
-public sealed class CEPostProcessOverlay : Overlay
+public sealed partial class CEPostProcessOverlay : Overlay
 {
-    [Dependency] private readonly IEntityManager _entMan = default!;
-    [Dependency] private readonly ILightManager _lightManager = default!;
-    [Dependency] private readonly IPlayerManager _player = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private IEntityManager _entMan = default!;
+    [Dependency] private ILightManager _lightManager = default!;
+    [Dependency] private IPlayerManager _player = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+
+    private static readonly ProtoId<ShaderPrototype> PostProcessShader = "CEPostProcess";
 
     public override bool RequestScreenTexture => true;
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
@@ -23,7 +25,7 @@ public sealed class CEPostProcessOverlay : Overlay
     public CEPostProcessOverlay()
     {
         IoCManager.InjectDependencies(this);
-        _basePostProcessShader = _proto.Index<ShaderPrototype>("CEPostProcess").InstanceUnique();
+        _basePostProcessShader = _proto.Index(PostProcessShader).InstanceUnique();
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
@@ -67,10 +69,10 @@ public sealed class CEPostProcessOverlay : Overlay
     }
 }
 
-public sealed class CEPostProcessSystem : EntitySystem
+public sealed partial class CEPostProcessSystem : EntitySystem
 {
-    [Dependency] private readonly IOverlayManager _overlay = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private IOverlayManager _overlay = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
 
     public override void Initialize()
     {

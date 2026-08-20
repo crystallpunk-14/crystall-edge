@@ -7,6 +7,7 @@ using Content.Shared.Power.Components;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.PowerCell;
 using Content.Shared.Radiation.Components;
+using Content.Shared.Radiation.Systems;
 using Content.Shared.Timing;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
@@ -18,14 +19,15 @@ namespace Content.Shared._CE.Power;
 
 public abstract partial class CESharedPowerSystem : EntitySystem
 {
-    [Dependency] protected readonly SharedPointLightSystem PointLight = default!;
-    [Dependency] protected readonly UseDelaySystem UseDelay = default!;
-    [Dependency] protected readonly SharedAmbientSoundSystem Ambient = default!;
-    [Dependency] protected readonly IGameTiming Timing = default!;
-    [Dependency] protected readonly PowerCellSystem PowerCell = default!;
-    [Dependency] protected readonly SharedBatterySystem Battery = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] protected SharedPointLightSystem PointLight = default!;
+    [Dependency] protected UseDelaySystem UseDelay = default!;
+    [Dependency] protected SharedAmbientSoundSystem Ambient = default!;
+    [Dependency] protected IGameTiming Timing = default!;
+    [Dependency] protected PowerCellSystem PowerCell = default!;
+    [Dependency] protected SharedBatterySystem Battery = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedRadiationSystem _radiation = default!;
 
     private readonly EntProtoId _irradiationProto = "CERadiationSourceVFX";
 
@@ -61,7 +63,7 @@ public abstract partial class CESharedPowerSystem : EntitySystem
         if (battery.LastCharge <= 0f)
             return;
 
-        Irradiate(Transform(ent).Coordinates, battery.LastCharge, ent.Comp.Time);
+        Irradiate(Transform(ent).Coordinates, battery.LastCharge * ent.Comp.IrradiateCoefficient, ent.Comp.Time);
     }
 
     public void Irradiate(EntityCoordinates position, float charge, TimeSpan seconds)
@@ -69,9 +71,8 @@ public abstract partial class CESharedPowerSystem : EntitySystem
         var vfx = SpawnAtPosition(_irradiationProto, position);
 
         var totalSec = (float)seconds.TotalSeconds;
-        var radiation = EnsureComp<RadiationSourceComponent>(vfx);
-        radiation.Enabled = true;
-        radiation.Intensity = charge / totalSec;
+        EnsureComp<RadiationSourceComponent>(vfx);
+        _radiation.SetIntensity(vfx, charge / totalSec);
 
         var timeDespawn = EnsureComp<TimedDespawnComponent>(vfx);
         timeDespawn.Lifetime = totalSec;

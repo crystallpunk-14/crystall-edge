@@ -12,9 +12,9 @@ using Content.Shared.Temperature;
 
 namespace Content.Server._CE.Cooking;
 
-public sealed class CECookingSystem : CESharedCookingSystem
+public sealed partial class CECookingSystem : CESharedCookingSystem
 {
-    [Dependency] private readonly TemperatureSystem _temperature = default!;
+    [Dependency] private TemperatureSystem _temperature = default!;
 
     public override void Initialize()
     {

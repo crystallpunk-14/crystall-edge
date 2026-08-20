@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is sublicensed under MIT License
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
@@ -16,11 +16,11 @@ using Robust.Shared.Utility;
 namespace Content.Server._CE.ZLevels.Mapping.Commands;
 
 [AdminCommand(AdminFlags.Server | AdminFlags.Mapping)]
-public sealed class CESaveZNetworkCommand : LocalizedEntityCommands
+public sealed partial class CESaveZNetworkCommand : LocalizedEntityCommands
 {
-    [Dependency] private readonly IEntityManager _entities = default!;
-    [Dependency] private readonly MapSystem _map = default!;
-    [Dependency] private readonly MapLoaderSystem _mapLoader = default!;
+    [Dependency] private IEntityManager _entities = default!;
+    [Dependency] private MapSystem _map = default!;
+    [Dependency] private MapLoaderSystem _mapLoader = default!;
 
     public override string Command => "znetwork-save";
     public override string Description => "Save all zNetwork maps to default server folder";
@@ -30,7 +30,7 @@ public sealed class CESaveZNetworkCommand : LocalizedEntityCommands
         if (args.Length == 1)
         {
             var options = new List<CompletionOption>();
-            var query = _entities.EntityQueryEnumerator<CEZLevelsNetworkComponent, MetaDataComponent>();
+            var query = _entities.EntityQueryEnumerator<CEZMapNetworkComponent, MetaDataComponent>();
             while (query.MoveNext(out var uid, out _, out var meta))
             {
                 options.Add(new CompletionOption(_entities.GetNetEntity(uid).ToString(), meta.EntityName));
@@ -62,7 +62,7 @@ public sealed class CESaveZNetworkCommand : LocalizedEntityCommands
             return;
         }
 
-        if (!_entities.TryGetComponent<CEZLevelsNetworkComponent>(target, out var levelComp))
+        if (!_entities.TryGetComponent<CEZMapNetworkComponent>(target, out var levelComp))
         {
             shell.WriteError($"Target entity doesnt have CEZLevelsNetworkComponent {args[1]}");
             return;

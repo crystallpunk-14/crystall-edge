@@ -1,0 +1,10 @@
+# Shared jobBlacklist for CE antags - mirrors upstream's RestrictedAntag pattern (Roles/Antags/base.yml)
+- type: antagSpecifier
+  abstract: true
+  id: CERestrictedAntag
+  jobBlacklist:
+  - CEGuard
+  - CEGuardCommander
+  - CEInvestigator
+  - CETechnician
+  - CEBrigadier

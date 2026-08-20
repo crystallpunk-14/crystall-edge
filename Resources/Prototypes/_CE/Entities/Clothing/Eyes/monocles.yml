@@ -5,9 +5,9 @@
   description: Aristocratic, fancy.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Eyes/monocle.rsi
+    sprite: _CE/Clothing/Eyes/Generic/monocle.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Eyes/monocle.rsi
+    sprite: _CE/Clothing/Eyes/Generic/monocle.rsi
   - type: VisionCorrection
 
 - type: entity
@@ -17,13 +17,17 @@
   description: Special magic infused monocle that allows you to clearly see the composition of any mixtures.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Eyes/alchemy_monocle.rsi
+    sprite: _CE/Clothing/Eyes/Generic/alchemy_monocle.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Eyes/alchemy_monocle.rsi
+    sprite: _CE/Clothing/Eyes/Generic/alchemy_monocle.rsi
   - type: SolutionScanner
   - type: StaticPrice
     price: 30
   - type: VisionCorrection
+  - type: CEMagicEssenceStructure
+    essences:
+      Crystal: { min: 1, max: 3 }
+      Magic: { min: 1, max: 2 }
 
 - type: entity
   parent: CEClothingEyesBase
@@ -33,14 +37,18 @@
   description: High-quality magnifying monocle infused with magic to help you determine the exact price of any item.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Eyes/merchant_monocle.rsi
+    sprite: _CE/Clothing/Eyes/Townfolk/merchant_monocle.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Eyes/merchant_monocle.rsi
+    sprite: _CE/Clothing/Eyes/Townfolk/merchant_monocle.rsi
   - type: CEPriceScanner
   - type: StaticPrice
     price: 30
   - type: VisionCorrection
   - type: CETheftValue
+  - type: CEMagicEssenceStructure
+    essences:
+      Crystal: { min: 1, max: 3 }
+      Greed: { min: 1, max: 3 }
 
 - type: entity
   parent: CEClothingEyesBase
@@ -56,6 +64,9 @@
     foldedEquippedPrefix: flipped
     foldedHeldPrefix: flipped
   - type: Sprite
-    sprite: _CE/Clothing/Eyes/eye_patch.rsi
+    sprite: _CE/Clothing/Eyes/Generic/eye_patch.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Eyes/eye_patch.rsi
+    sprite: _CE/Clothing/Eyes/Generic/eye_patch.rsi
+  - type: CEMagicEssenceStructure
+    essences:
+      Cloth: { min: 1, max: 2 }

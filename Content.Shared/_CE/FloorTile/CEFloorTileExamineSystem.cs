@@ -5,9 +5,9 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.FloorTile;
 
-public sealed class CEFloorTileExamineSystem : EntitySystem
+public sealed partial class CEFloorTileExamineSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
 
     public override void Initialize()
     {
@@ -28,8 +28,8 @@ public sealed class CEFloorTileExamineSystem : EntitySystem
 
             var tileName = Loc.GetString(indexedTile.Name);
 
-            var baseName = indexedTile.BaseTurf;
-            if (!string.IsNullOrEmpty(baseName) && _proto.TryIndex<ContentTileDefinition>(baseName, out var baseProto))
+            var baseName = indexedTile.BaseTurf ?? "unknown";
+            if (!string.IsNullOrEmpty(baseName) && _proto.TryIndex(baseName, out var baseProto))
             {
                 baseName = Loc.GetString(baseProto.Name);
             }

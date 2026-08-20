@@ -13,10 +13,10 @@ namespace Content.Client._CE.Guidebook.Controls;
 /// Control for listing CE cooking recipes by food type in a guidebook.
 /// </summary>
 [UsedImplicitly]
-public sealed class CEGuideCookingRecipeGroupEmbed : BoxContainer, IDocumentTag
+public sealed partial class CEGuideCookingRecipeGroupEmbed : BoxContainer, IDocumentTag
 {
-    [Dependency] private readonly ILogManager _logManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private ILogManager _logManager = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
 
     private readonly ISawmill _sawmill;
 

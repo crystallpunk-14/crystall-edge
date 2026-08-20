@@ -4,7 +4,8 @@
     params:
       volume: -6
     collection: CELoopWinds
-  rules: UnderOpenSky
+  conditions:
+    - !type:CEWeatherAffectCondition
 
 - type: ambientLoop
   id: Water
@@ -12,7 +13,13 @@
     params:
       volume: 18
     collection: CELoopWater
-  rules: NearWater
+  conditions:
+    - !type:NearbyEntitiesCondition
+      count: 5
+      whitelist:
+        tags:
+          - CEAmbientWater
+      range: 4
 
 - type: ambientLoop
   id: Cave
@@ -20,7 +27,13 @@
     params:
       volume: 2
     collection: CELoopCave
-  rules: CaveFloor
+  conditions:
+    - !type:NearbyTilesPercentCondition
+      ignoreAnchored: true
+      percent: 0.5
+      tiles:
+      - CEStone
+      range: 5
 
 - type: ambientLoop
   id: NightGrass
@@ -28,7 +41,16 @@
     params:
       volume: 2
     collection: CELoopNightGrass
-  rules: GrassNight
+  conditions:
+    - !type:CEIsNightCondition
+    - !type:NearbyTilesPercentCondition
+      ignoreAnchored: true
+      percent: 0.5
+      tiles:
+      - CEGrass
+      - CEGrassLight
+      - CEGrassTall
+      range: 5
 
 - type: ambientLoop
   id: ForestDay
@@ -36,7 +58,14 @@
     params:
       volume: 2
     collection: CELoopForestDay
-  rules: DayForest
+  conditions:
+    - !type:CEIsNightCondition
+      inverted: true
+    - !type:NearbyEntitiesCondition
+      count: 3
+      whitelist:
+        tags:
+          - CEAmbientForest
 
 # Sound collections
 - type: soundCollection

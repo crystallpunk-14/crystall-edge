@@ -39,11 +39,13 @@
 - type: playTimeTracker
   id: CEJobBard
 
-- type: playTimeTracker
-  id: CEJobTailorMerchant
+# Academy
 
 - type: playTimeTracker
-  id: CEJobPharmacistMerchant
+  id: CEJobAcademyStudent
 
 - type: playTimeTracker
-  id: CEJobHomeGoodsMerchant
+  id: CEJobAcademyProfessor
+
+- type: playTimeTracker
+  id: CEJobAcademyRector

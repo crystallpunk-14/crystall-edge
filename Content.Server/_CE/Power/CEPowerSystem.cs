@@ -14,9 +14,9 @@ namespace Content.Server._CE.Power;
 
 public sealed partial class CEPowerSystem : CESharedPowerSystem
 {
-    [Dependency] private readonly RadiationSystem _radiation = default!;
-    [Dependency] private readonly AppearanceSystem _appearance = default!;
-    [Dependency] private readonly NodeGroupSystem _nodeGroup = default!;
+    [Dependency] private RadiationSystem _radiation = default!;
+    [Dependency] private AppearanceSystem _appearance = default!;
+    [Dependency] private NodeGroupSystem _nodeGroup = default!;
 
     public override void Initialize()
     {
@@ -49,6 +49,9 @@ public sealed partial class CEPowerSystem : CESharedPowerSystem
 
     private void OnActivateInWorld(Entity<CEToggleableConnectorComponent> ent, ref ActivateInWorldEvent args)
     {
+        if (args.Handled || !args.Complex)
+            return;
+
         if (UseDelay.IsDelayed(ent.Owner))
             return;
 
@@ -60,6 +63,7 @@ public sealed partial class CEPowerSystem : CESharedPowerSystem
         ToggleConnector((ent, nodeContainer), newState);
 
         UseDelay.TryResetDelay(ent);
+        args.Handled = true;
     }
 
     private void OnPowerChanged(Entity<CEEnergyLeakComponent> ent, ref PowerConsumerReceivedChanged args)
@@ -71,7 +75,7 @@ public sealed partial class CEPowerSystem : CESharedPowerSystem
         if (TryComp<RadiationSourceComponent>(ent, out var radComp))
         {
             _radiation.SetSourceEnabled((ent.Owner, radComp), enabled);
-            radComp.Intensity = args.ReceivedPower * ent.Comp.LeakPercentage;
+            _radiation.SetIntensity((ent.Owner, radComp), args.ReceivedPower * ent.Comp.LeakPercentage);
         }
 
         ent.Comp.CurrentLeak = args.ReceivedPower * ent.Comp.LeakPercentage;

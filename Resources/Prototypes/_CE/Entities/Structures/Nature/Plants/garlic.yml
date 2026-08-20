@@ -5,14 +5,14 @@
   - CEPlantBaseSolarEnergy
   - CEPlantBaseSingleHarvest
   - CEPlantBaseFloralDelicateType
-  - CEPlantBaseGrowing1Day
-  - CEPlantBaseMetabolizer1Day
+  - CEPlantBaseGrowingMedium
+  - CEPlantBaseMetabolizerMedium
   - CEPlantBaseMetabolizerWater
   name: garlic
   description: Only humans figured out how to take a sharp, unpalatable root vegetable and use it as a seasoning wherever possible.
   components:
   - type: CEPlantVisuals
-    growthSteps: 5
+    growthSteps: 4
     readyVariations: 1
   - type: Sprite
     sprite: _CE/Structures/Nature/Farm/garlic.rsi

@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Shared.Audio;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Effects;
@@ -18,19 +17,19 @@ namespace Content.Shared._CE.Drill;
 /// <summary>
 /// Handles the automatic drilling behavior for stationary drills, including damage application and effects.
 /// </summary>
-public sealed class CESharedDrillSystem : EntitySystem
+public sealed partial class CESharedDrillSystem : EntitySystem
 {
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly SharedColorFlashEffectSystem _color = default!;
-    [Dependency] private readonly SharedJitteringSystem _jitter = default!;
-    [Dependency] private readonly MeleeSoundSystem _meleeSound = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly SharedAmbientSoundSystem _ambient = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private SharedColorFlashEffectSystem _color = default!;
+    [Dependency] private SharedJitteringSystem _jitter = default!;
+    [Dependency] private MeleeSoundSystem _meleeSound = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] private SharedAmbientSoundSystem _ambient = default!;
+    [Dependency] private IRobustRandom _random = default!;
 
     private readonly List<EntityUid> _cachedEntityList = new();
 
@@ -73,10 +72,7 @@ public sealed class CESharedDrillSystem : EntitySystem
             var distance = melee.Range;
 
             var ray = new CollisionRay(pos, direction.ToWorldVec(), drill.CollisionMask);
-            var rayCastResults = _physics.IntersectRay(xform.MapID, ray, distance, uid, returnOnFirstHit: false).ToList();
-
-            if (!rayCastResults.Any())
-                continue;
+            var rayCastResults = _physics.IntersectRay(xform.MapID, ray, distance, uid, returnOnFirstHit: false);
 
             _cachedEntityList.Clear();
             foreach (var hit in rayCastResults)
@@ -86,6 +82,9 @@ public sealed class CESharedDrillSystem : EntitySystem
                 _meleeSound.PlayHitSound(hit.HitEntity, uid, SharedMeleeWeaponSystem.GetHighestDamageSound(melee.Damage, _proto), null, melee);
                 _cachedEntityList.Add(hit.HitEntity);
             }
+
+            if (_cachedEntityList.Count == 0)
+                continue;
 
             if (_net.IsClient)
                 _color.RaiseEffect(Color.Red, _cachedEntityList, Filter.Pvs(uid, entityManager: EntityManager));

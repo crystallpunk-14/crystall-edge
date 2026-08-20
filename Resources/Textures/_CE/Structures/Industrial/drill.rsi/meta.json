@@ -12,6 +12,16 @@
             "directions": 4
         },
         {
+            "name": "icon"
+        },
+        {
+            "name": "icon_lvl2"
+        },
+        {
+            "name": "base_lvl2",
+            "directions": 4
+        },
+        {
             "name": "drill_idle",
             "directions": 4
         },

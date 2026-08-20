@@ -86,8 +86,9 @@
     color: "#309fdf"
     castShadows: false
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrong
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: StaticPrice
     price: 100
 

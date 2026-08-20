@@ -3,10 +3,10 @@
   id: CEBaseWeaponChemical
   categories: [ ForkFiltered ]
   components:
-  - type: SolutionContainerManager
-    solutions:
-      melee:
-        maxVol: 4
+  - type: Solution
+    id: melee
+    solution:
+      maxVol: 4
   - type: MeleeChemicalInjector
     solution: melee
   - type: RefillableSolution
@@ -53,9 +53,7 @@
   id: CEBaseWeaponLight
   categories: [ ForkFiltered ]
   components:
-  - type: MeleeWeapon
-    resetOnHandSelected: false
-    autoAttack: true
+  - type: CEWeapon
 
 - type: entity
   abstract: true
@@ -71,7 +69,10 @@
   id: CEBaseWeaponSharp
   categories: [ HideSpawnMenu, ForkFiltered ]
   components:
-  - type: Sharp
+  - type: CEWallpaperRemover
+  - type: Tag
+    tags:
+    - CESharp
   - type: UseDelay
   - type: Tool
     qualities:

@@ -30,7 +30,7 @@
       fix1:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.5,0.25,0.5,0.5"
+          bounds: "-0.5,0.375,0.5,0.5"
         density: 1000
         layer:
         - LowImpassable
@@ -49,8 +49,9 @@
   - type: Icon
     sprite: _CE/Structures/Architecture/Fences/wooden.rsi
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Wood
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -82,8 +83,9 @@
   - type: Icon
     sprite: _CE/Structures/Architecture/Fences/brass.rsi
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -110,8 +112,9 @@
   - type: Icon
     sprite: _CE/Structures/Architecture/Fences/iron.rsi
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:

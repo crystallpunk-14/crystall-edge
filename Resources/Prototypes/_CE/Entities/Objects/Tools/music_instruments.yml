@@ -19,6 +19,10 @@
   - type: PhysicalComposition
     materialComposition:
       CEWood: 10
+  - type: CEMagicEssenceStructure
+    essences:
+      Air: { min: 1, max: 3 }
+      Order: { min: 0, max: 1 }
 
 - type: entity
   parent: BaseHandheldInstrument
@@ -50,6 +54,10 @@
     materialComposition:
       CEWood: 30
       CECloth: 10
+  - type: CEMagicEssenceStructure
+    essences:
+      Order: { min: 1, max: 3 }
+      Tree: { min: 0, max: 1 }
 
 - type: entity
   parent: BaseHandheldInstrument
@@ -74,13 +82,34 @@
     equipWhileMoving: true
     slots:
     - neck
-  - type: MeleeWeapon
-    wideAnimationRotation: 45
-    damage:
-      types:
-        Blunt: 5
-    soundHit:
+  - type: CEWeapon
+    range: 0.7
+    hitSound:
       collection: MetalThud
+    effectSlots:
+      OnHit:
+      - !type:Damage
+        damage:
+          types:
+            Blunt: 5
+      OnHeavyHit:
+      - !type:Damage
+        damage:
+          types:
+            Blunt: 5
+    animations:
+      Primary:
+      - anim: SwordAttackLight1
+      - anim: SwordAttackLight2
+      Secondary:
+      - anim: SwordAttackHeavy1
+      - anim: SwordAttackHeavy2
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 10
+      Secondary: 10
+  - type: CERotationForAnimation
+    rotation: 45
   - type: Tag
     tags:
     - StringInstrument
@@ -88,6 +117,10 @@
     materialComposition:
       CEWood: 40
       CECloth: 5
+  - type: CEMagicEssenceStructure
+    essences:
+      Order: { min: 1, max: 3 }
+      Tree: { min: 0, max: 1 }
 
 - type: entity
   parent: BaseHandheldInstrument
@@ -115,12 +148,38 @@
   - type: Tag
     tags:
     - StringInstrument
-  - type: MeleeWeapon
-    wideAnimationRotation: 45
-    damage:
-      types:
-        Blunt: 5
-        Slash: 5
-    soundHit:
+  - type: CEWeapon
+    range: 0.7
+    hitSound:
       collection: MetalThud
+    effectSlots:
+      OnHit:
+      - !type:Damage
+        damage:
+          types:
+            Blunt: 5
+            Slash: 5
+      OnHeavyHit:
+      - !type:Damage
+        damage:
+          types:
+            Blunt: 5
+            Slash: 5
+    animations:
+      Primary:
+      - anim: SwordAttackLight1
+      - anim: SwordAttackLight2
+      Secondary:
+      - anim: SwordAttackHeavy1
+      - anim: SwordAttackHeavy2
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 10
+      Secondary: 10
+  - type: CERotationForAnimation
+    rotation: 45
+  - type: CEMagicEssenceStructure
+    essences:
+      Order: { min: 0, max: 2 }
+      Undead: { min: 1, max: 2 }
 

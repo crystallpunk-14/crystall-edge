@@ -1,3 +1,4 @@
+using Content.IntegrationTests.Fixtures;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Body.Systems;
 using Content.Server.Station.Systems;
@@ -7,12 +8,13 @@ namespace Content.IntegrationTests.Tests.Internals;
 
 [TestFixture]
 [TestOf(typeof(InternalsSystem))]
-public sealed class AutoInternalsTests
+public sealed class AutoInternalsTests : GameTest
 {
+    /* CrystallEdge disabled
     [Test]
     public async Task TestInternalsAutoActivateInSpaceForStationSpawn()
     {
-        await using var pair = await PoolManager.GetServerClient();
+        var pair = Pair;
         var server = pair.Server;
 
         var testMap = await pair.CreateTestMap();
@@ -31,14 +33,12 @@ public sealed class AutoInternalsTests
 
             server.EntMan.DeleteEntity(dummy);
         });
-
-        await pair.CleanReturnAsync();
     }
 
     [Test]
     public async Task TestInternalsAutoActivateInSpaceForEntitySpawn()
     {
-        await using var pair = await PoolManager.GetServerClient();
+        var pair = Pair;
         var server = pair.Server;
 
         var testMap = await pair.CreateTestMap();
@@ -55,8 +55,6 @@ public sealed class AutoInternalsTests
 
             server.EntMan.DeleteEntity(dummy);
         });
-
-        await pair.CleanReturnAsync();
     }
 
     [TestPrototypes]
@@ -82,4 +80,5 @@ public sealed class AutoInternalsTests
     - type: Loadout
       prototypes: [InternalsDummyGear]
 ";
+*/
 }

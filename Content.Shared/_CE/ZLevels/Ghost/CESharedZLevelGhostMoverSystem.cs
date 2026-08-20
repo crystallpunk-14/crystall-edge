@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is sublicensed under MIT License
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
@@ -8,9 +8,10 @@ using Content.Shared._CE.ZLevels.Core.EntitySystems;
 
 namespace Content.Shared._CE.ZLevels.Ghost;
 
-public abstract class CESharedZLevelGhostMoverSystem : EntitySystem
+public abstract partial class CESharedZLevelGhostMoverSystem : EntitySystem
 {
-    [Dependency] private readonly CESharedZLevelsSystem _zLevel = default!;
+    [Dependency] private CESharedZLevelsSystem _zLevel = null!;
+
     public override void Initialize()
     {
         base.Initialize();

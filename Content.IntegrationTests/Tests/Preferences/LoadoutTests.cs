@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Content.IntegrationTests.Fixtures;
 using Content.Server.Station.Systems;
 using Content.Shared.Inventory;
 using Content.Shared.Preferences;
@@ -9,7 +10,7 @@ using Robust.Shared.Prototypes;
 namespace Content.IntegrationTests.Tests.Preferences;
 
 [TestFixture]
-public sealed class LoadoutTests
+public sealed class LoadoutTests : GameTest
 {
     [TestPrototypes]
     private const string Prototypes = @"
@@ -18,8 +19,9 @@ public sealed class LoadoutTests
 
 - type: loadout
   id: TestJumpsuit
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitColorGrey
+  equipment: # CrystallEdge: CEHuman has no jumpsuit slot, uses pants+shirt instead
+    pants: CEClothingPantsGuard
+    shirt: CEClothingShirtGuard
 
 - type: loadoutGroup
   id: LoadoutTesterJumpsuit
@@ -39,7 +41,13 @@ public sealed class LoadoutTests
 
     private readonly Dictionary<string, EntProtoId> _expectedEquipment = new()
     {
-        ["jumpsuit"] = "ClothingUniformJumpsuitColorGrey"
+        ["pants"] = "CEClothingPantsGuard", //CrystallEdge: CEHuman has no jumpsuit slot, uses pants+shirt instead
+        ["shirt"] = "CEClothingShirtGuard", //CrystallEdge: CEHuman has no jumpsuit slot, uses pants+shirt instead
+    };
+
+    public override PoolSettings PoolSettings => new()
+    {
+        Dirty = true,
     };
 
     /// <summary>
@@ -48,10 +56,7 @@ public sealed class LoadoutTests
     [Test]
     public async Task TestEmptyLoadout()
     {
-        var pair = await PoolManager.GetServerClient(new PoolSettings()
-        {
-            Dirty = true,
-        });
+        var pair = Pair;
         var server = pair.Server;
 
         var entManager = server.ResolveDependency<IEntityManager>();
@@ -87,7 +92,5 @@ public sealed class LoadoutTests
 
             entManager.DeleteEntity(tester);
         });
-
-        await pair.CleanReturnAsync();
     }
 }

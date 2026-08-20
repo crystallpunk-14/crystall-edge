@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is sublicensed under MIT License
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
@@ -19,13 +19,13 @@ using Robust.Shared.Utility;
 namespace Content.Server._CE.ZLevels.Mapping.Commands;
 
 [AdminCommand(AdminFlags.Server | AdminFlags.Mapping)]
-public sealed class CEMappingZNetworkCommand : LocalizedEntityCommands
+public sealed partial class CEMappingZNetworkCommand : LocalizedEntityCommands
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly MapLoaderSystem _mapLoader = default!;
-    [Dependency] private readonly CEZLevelsSystem _zLevel = default!;
-    [Dependency] private readonly MetaDataSystem _meta = default!;
-    [Dependency] private readonly MapSystem _map = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private MapLoaderSystem _mapLoader = default!;
+    [Dependency] private CEZLevelsSystem _zLevel = default!;
+    [Dependency] private MetaDataSystem _meta = default!;
+    [Dependency] private MapSystem _map = default!;
 
     public override string Command => "znetwork-mapping";
     public override string Description => "Load CEZLevelMapPrototype as ZNetwork for mapping";
@@ -64,7 +64,7 @@ public sealed class CEMappingZNetworkCommand : LocalizedEntityCommands
 
         //Ok all parsing is done, we start creating maps
 
-        var network = _zLevel.CreateZNetwork(indexedZMap.Components);
+        var network = _zLevel.CreateMapNetwork(indexedZMap.Components);
         _meta.SetEntityName(network, $"Mapping zNetwork: {indexedZMap.ID}");
         Dictionary<EntityUid, int> dict = new();
 
@@ -99,7 +99,7 @@ public sealed class CEMappingZNetworkCommand : LocalizedEntityCommands
             }
         }
 
-        if (!_zLevel.TryAddMapsIntoZNetwork(network, dict))
+        if (!_zLevel.TryAddMapsIntoNetwork(network, dict))
         {
             shell.WriteError($"Failed to create zNetwork from loaded maps!");
             return;

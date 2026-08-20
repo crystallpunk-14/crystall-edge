@@ -25,15 +25,15 @@ namespace Content.Shared.Lock;
 /// Handles (un)locking and examining of Lock components
 /// </summary>
 [UsedImplicitly]
-public sealed class LockSystem : EntitySystem
+public sealed partial class LockSystem : EntitySystem
 {
-    [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
-    [Dependency] private readonly EmagSystem _emag = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedPopupSystem _sharedPopupSystem = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
+    [Dependency] private ActionBlockerSystem _actionBlocker = default!;
+    [Dependency] private EmagSystem _emag = default!;
+    [Dependency] private SharedAppearanceSystem _appearanceSystem = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedPopupSystem _sharedPopupSystem = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private SharedUserInterfaceSystem _ui = default!;
 
     private readonly LocId _defaultDenyReason = "lock-comp-has-user-access-fail";
 
@@ -124,7 +124,7 @@ public sealed class LockSystem : EntitySystem
             return;
 
         if (!args.Silent)
-            _sharedPopupSystem.PopupClient(Loc.GetString("entity-storage-component-locked-message"), uid, args.User);
+            _sharedPopupSystem.PopupEntity(Loc.GetString("entity-storage-component-locked-message"), uid, args.User);
 
         args.Cancelled = true;
     }
@@ -191,7 +191,7 @@ public sealed class LockSystem : EntitySystem
 
         if (user is { Valid: true })
         {
-            _sharedPopupSystem.PopupClient(Loc.GetString("lock-comp-do-lock-success",
+            _sharedPopupSystem.PopupEntity(Loc.GetString("lock-comp-do-lock-success",
                 ("entityName", Identity.Name(uid, EntityManager))), uid, user);
         }
 
@@ -224,7 +224,7 @@ public sealed class LockSystem : EntitySystem
 
         if (user is { Valid: true })
         {
-            _sharedPopupSystem.PopupClient(Loc.GetString("lock-comp-do-unlock-success",
+            _sharedPopupSystem.PopupEntity(Loc.GetString("lock-comp-do-unlock-success",
                 ("entityName", Identity.Name(uid, EntityManager))), uid, user.Value);
         }
 
@@ -367,7 +367,7 @@ public sealed class LockSystem : EntitySystem
         if (!quiet)
         {
             var denyReason = accessEv.DenyReason ?? Loc.GetString(_defaultDenyReason);
-            _sharedPopupSystem.PopupClient(denyReason, ent, user);
+            _sharedPopupSystem.PopupEntity(denyReason, ent, user);
         }
 
         return false;
@@ -449,7 +449,7 @@ public sealed class LockSystem : EntitySystem
 
         if (!args.Silent)
         {
-            _sharedPopupSystem.PopupClient(Loc.GetString("construction-step-condition-wire-panel-close"),
+            _sharedPopupSystem.PopupEntity(Loc.GetString("construction-step-condition-wire-panel-close"),
                 ent,
                 args.User);
         }
@@ -465,7 +465,7 @@ public sealed class LockSystem : EntitySystem
         if (!TryComp<LockComponent>(ent, out var lockComp) || !lockComp.Locked)
             return;
 
-        _sharedPopupSystem.PopupClient(Loc.GetString("lock-comp-generic-fail",
+        _sharedPopupSystem.PopupEntity(Loc.GetString("lock-comp-generic-fail",
             ("target", Identity.Entity(ent, EntityManager))),
             ent,
             args.User);
@@ -480,7 +480,7 @@ public sealed class LockSystem : EntitySystem
         if (!TryComp<LockComponent>(ent, out var lockComp) || !lockComp.Locked)
             return;
 
-        _sharedPopupSystem.PopupClient(Loc.GetString("lock-comp-generic-fail",
+        _sharedPopupSystem.PopupEntity(Loc.GetString("lock-comp-generic-fail",
                 ("target", Identity.Entity(ent, EntityManager))),
             ent,
             args.User);
@@ -502,7 +502,7 @@ public sealed class LockSystem : EntitySystem
 
         if (lockComp.Locked && component.Popup != null)
         {
-            _sharedPopupSystem.PopupClient(Loc.GetString(component.Popup), uid, args.User);
+            _sharedPopupSystem.PopupEntity(Loc.GetString(component.Popup), uid, args.User);
         }
 
         _audio.PlayPredicted(component.AccessDeniedSound, uid, args.User);
@@ -537,7 +537,7 @@ public sealed class LockSystem : EntitySystem
 
         if (lockComp.Locked && component.LockedPopup != null)
         {
-            _sharedPopupSystem.PopupClient(Loc.GetString(component.LockedPopup,
+            _sharedPopupSystem.PopupEntity(Loc.GetString(component.LockedPopup,
                     ("target", Identity.Entity(uid, EntityManager))),
                 uid,
                 args.User);

@@ -19,7 +19,7 @@ public sealed partial class CEEnergyOverchargeDamageComponent : Component
     {
         DamageDict = new()
         {
-            { "Shock", 1f },
+            { "Shock", 0.25f },
         }
     };
 

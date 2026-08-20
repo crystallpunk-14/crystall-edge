@@ -81,6 +81,10 @@
   - type: PhysicalComposition
     materialComposition:
       CECloth: 10
+  - type: CEMagicEssenceStructure
+    essences:
+      Cloth: { min: 1, max: 4 }
+      Beast: { min: 0, max: 2 }
 
 - type: entity
   id: CECloth5

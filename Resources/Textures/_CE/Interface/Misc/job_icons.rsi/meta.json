@@ -41,13 +41,13 @@
       "name": "Townfolk"
     },
     {
-      "name": "TailorMerchant"
+      "name": "Student"
     },
     {
-      "name": "PharmacistMerchant"
+      "name": "Professor"
     },
     {
-      "name": "HomeGoodsMerchant"
+      "name": "Rector"
     }
   ]
 }

@@ -1,0 +1,394 @@
+# One shared graph for the whole ladder/roof family. Every shape (straight/corner/inner corner)
+# starts as the same wooden CEZLevelLadderFrame*, and branches into wood, stone, or a
+# red/green/blue tile roof depending on what covering material gets nailed onto it.
+
+- type: constructionGraph
+  id: CEZLevelLadder
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: CEZLevelLadderFrame
+          completed:
+            - !type:SnapToGrid
+          steps:
+            - material: CEWood
+              amount: 2
+              doAfter: 2
+
+    - node: CEZLevelLadderFrame
+      entity: CEZLevelLadderFrame
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEWoodenPlanks1
+              amount: 2
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 2
+        - to: CEZLevelLadderFrameCorner
+          steps:
+            - tool: Screwing
+              doAfter: 1
+        - to: CEZLevelLadderWooden
+          steps:
+            - material: CEWood
+              amount: 1
+              doAfter: 1.5
+            - material: CENail
+              amount: 1
+              doAfter: 0.5
+            - tool: CEHammering
+              doAfter: 1
+        - to: CEZLevelLadderStone
+          steps:
+            - material: CEStone
+              amount: 2
+              doAfter: 1.5
+            - material: CENail
+              amount: 1
+              doAfter: 0.5
+            - tool: CEHammering
+              doAfter: 1
+        - to: CEZLevelsLadderRoofRed
+          steps:
+            - material: CEFloorTileRoofRed
+              amount: 2
+              doAfter: 1.5
+            - material: CENail
+              amount: 1
+              doAfter: 0.5
+            - tool: CEHammering
+              doAfter: 1
+        - to: CEZLevelsLadderRoofGreen
+          steps:
+            - material: CEFloorTileRoofGreen
+              amount: 2
+              doAfter: 1.5
+            - material: CENail
+              amount: 1
+              doAfter: 0.5
+            - tool: CEHammering
+              doAfter: 1
+        - to: CEZLevelsLadderRoofBlue
+          steps:
+            - material: CEFloorTileRoofBlue
+              amount: 2
+              doAfter: 1.5
+            - material: CENail
+              amount: 1
+              doAfter: 0.5
+            - tool: CEHammering
+              doAfter: 1
+
+    - node: CEZLevelLadderFrameCorner
+      entity: CEZLevelLadderFrameCorner
+      edges:
+        - to: CEZLevelLadderFrame
+          steps:
+            - tool: Screwing
+              doAfter: 1
+        - to: CEZLevelLadderFrameCornerInner
+          steps:
+            - tool: Screwing
+              doAfter: 1
+        - to: CEZLevelLadderWoodenCorner
+          steps:
+            - material: CEWood
+              amount: 1
+              doAfter: 1.5
+            - material: CENail
+              amount: 1
+              doAfter: 0.5
+            - tool: CEHammering
+              doAfter: 1
+        - to: CEZLevelLadderStoneCorner
+          steps:
+            - material: CEStone
+              amount: 2
+              doAfter: 1.5
+            - material: CENail
+              amount: 1
+              doAfter: 0.5
+            - tool: CEHammering
+              doAfter: 1
+        - to: CEZLevelsLadderRoofRedCorner
+          steps:
+            - material: CEFloorTileRoofRed
+              amount: 2
+              doAfter: 1.5
+            - material: CENail
+              amount: 1
+              doAfter: 0.5
+            - tool: CEHammering
+              doAfter: 1
+        - to: CEZLevelsLadderRoofGreenCorner
+          steps:
+            - material: CEFloorTileRoofGreen
+              amount: 2
+              doAfter: 1.5
+            - material: CENail
+              amount: 1
+              doAfter: 0.5
+            - tool: CEHammering
+              doAfter: 1
+        - to: CEZLevelsLadderRoofBlueCorner
+          steps:
+            - material: CEFloorTileRoofBlue
+              amount: 2
+              doAfter: 1.5
+            - material: CENail
+              amount: 1
+              doAfter: 0.5
+            - tool: CEHammering
+              doAfter: 1
+
+    - node: CEZLevelLadderFrameCornerInner
+      entity: CEZLevelLadderFrameCornerInner
+      edges:
+        - to: CEZLevelLadderFrameCorner
+          steps:
+            - tool: Screwing
+              doAfter: 1
+        - to: CEZLevelLadderWoodenCornerInner
+          steps:
+            - material: CEWood
+              amount: 1
+              doAfter: 1.5
+            - material: CENail
+              amount: 1
+              doAfter: 0.5
+            - tool: CEHammering
+              doAfter: 1
+        - to: CEZLevelLadderStoneCornerInner
+          steps:
+            - material: CEStone
+              amount: 2
+              doAfter: 1.5
+            - material: CENail
+              amount: 1
+              doAfter: 0.5
+            - tool: CEHammering
+              doAfter: 1
+        - to: CEZLevelsLadderRoofRedCornerInner
+          steps:
+            - material: CEFloorTileRoofRed
+              amount: 2
+              doAfter: 1.5
+            - material: CENail
+              amount: 1
+              doAfter: 0.5
+            - tool: CEHammering
+              doAfter: 1
+        - to: CEZLevelsLadderRoofGreenCornerInner
+          steps:
+            - material: CEFloorTileRoofGreen
+              amount: 2
+              doAfter: 1.5
+            - material: CENail
+              amount: 1
+              doAfter: 0.5
+            - tool: CEHammering
+              doAfter: 1
+        - to: CEZLevelsLadderRoofBlueCornerInner
+          steps:
+            - material: CEFloorTileRoofBlue
+              amount: 2
+              doAfter: 1.5
+            - material: CENail
+              amount: 1
+              doAfter: 0.5
+            - tool: CEHammering
+              doAfter: 1
+
+    # Wooden ladder
+
+    - node: CEZLevelLadderWooden
+      entity: CEZLevelLadderWooden
+      edges:
+        - to: CEZLevelLadderFrame
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEWoodenPlanks1
+              amount: 1
+          steps:
+            - tool: Prying
+              doAfter: 3
+
+    - node: CEZLevelLadderWoodenCorner
+      entity: CEZLevelLadderWoodenCorner
+      edges:
+        - to: CEZLevelLadderFrameCorner
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEWoodenPlanks1
+              amount: 1
+          steps:
+            - tool: Prying
+              doAfter: 3
+
+    - node: CEZLevelLadderWoodenCornerInner
+      entity: CEZLevelLadderWoodenCornerInner
+      edges:
+        - to: CEZLevelLadderFrameCornerInner
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEWoodenPlanks1
+              amount: 1
+          steps:
+            - tool: Prying
+              doAfter: 3
+
+    # Stone ladder
+
+    - node: CEZLevelLadderStone
+      entity: CEZLevelLadderStone
+      edges:
+        - to: CEZLevelLadderFrame
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEStoneBlock1
+              amount: 2
+          steps:
+            - tool: CEMatterManipulation
+              doAfter: 2
+
+    - node: CEZLevelLadderStoneCorner
+      entity: CEZLevelLadderStoneCorner
+      edges:
+        - to: CEZLevelLadderFrameCorner
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEStoneBlock1
+              amount: 2
+          steps:
+            - tool: CEMatterManipulation
+              doAfter: 2
+
+    - node: CEZLevelLadderStoneCornerInner
+      entity: CEZLevelLadderStoneCornerInner
+      edges:
+        - to: CEZLevelLadderFrameCornerInner
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEStoneBlock1
+              amount: 2
+          steps:
+            - tool: CEMatterManipulation
+              doAfter: 2
+
+    # Red roof
+
+    - node: CEZLevelsLadderRoofRed
+      entity: CEZLevelsLadderRoofRed
+      edges:
+        - to: CEZLevelLadderFrame
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEFloorTileRoofRed
+              amount: 2
+          steps:
+            - tool: CEMatterManipulation
+              doAfter: 2
+
+    - node: CEZLevelsLadderRoofRedCorner
+      entity: CEZLevelsLadderRoofRedCorner
+      edges:
+        - to: CEZLevelLadderFrameCorner
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEFloorTileRoofRed
+              amount: 2
+          steps:
+            - tool: CEMatterManipulation
+              doAfter: 2
+
+    - node: CEZLevelsLadderRoofRedCornerInner
+      entity: CEZLevelsLadderRoofRedCornerInner
+      edges:
+        - to: CEZLevelLadderFrameCornerInner
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEFloorTileRoofRed
+              amount: 2
+          steps:
+            - tool: CEMatterManipulation
+              doAfter: 2
+
+    # Green roof
+
+    - node: CEZLevelsLadderRoofGreen
+      entity: CEZLevelsLadderRoofGreen
+      edges:
+        - to: CEZLevelLadderFrame
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEFloorTileRoofGreen
+              amount: 2
+          steps:
+            - tool: CEMatterManipulation
+              doAfter: 2
+
+    - node: CEZLevelsLadderRoofGreenCorner
+      entity: CEZLevelsLadderRoofGreenCorner
+      edges:
+        - to: CEZLevelLadderFrameCorner
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEFloorTileRoofGreen
+              amount: 2
+          steps:
+            - tool: CEMatterManipulation
+              doAfter: 2
+
+    - node: CEZLevelsLadderRoofGreenCornerInner
+      entity: CEZLevelsLadderRoofGreenCornerInner
+      edges:
+        - to: CEZLevelLadderFrameCornerInner
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEFloorTileRoofGreen
+              amount: 2
+          steps:
+            - tool: CEMatterManipulation
+              doAfter: 2
+
+    # Blue roof
+
+    - node: CEZLevelsLadderRoofBlue
+      entity: CEZLevelsLadderRoofBlue
+      edges:
+        - to: CEZLevelLadderFrame
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEFloorTileRoofBlue
+              amount: 2
+          steps:
+            - tool: CEMatterManipulation
+              doAfter: 2
+
+    - node: CEZLevelsLadderRoofBlueCorner
+      entity: CEZLevelsLadderRoofBlueCorner
+      edges:
+        - to: CEZLevelLadderFrameCorner
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEFloorTileRoofBlue
+              amount: 2
+          steps:
+            - tool: CEMatterManipulation
+              doAfter: 2
+
+    - node: CEZLevelsLadderRoofBlueCornerInner
+      entity: CEZLevelsLadderRoofBlueCornerInner
+      edges:
+        - to: CEZLevelLadderFrameCornerInner
+          completed:
+            - !type:SpawnPrototype
+              prototype: CEFloorTileRoofBlue
+              amount: 2
+          steps:
+            - tool: CEMatterManipulation
+              doAfter: 2

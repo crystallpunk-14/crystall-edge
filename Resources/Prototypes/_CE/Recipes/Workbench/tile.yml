@@ -1,6 +1,12 @@
 - type: CERecipe
-  id: CEFloorTileStonebricks
+  id: CEBaseWorkbenchRecipe
+  abstract: true
   tag: CERecipeWorkbench
+  workbench: CEWorkbench
+
+- type: CERecipe
+  id: CEFloorTileStonebricks
+  parent: CEBaseWorkbenchRecipe
   category: FloorTile
   craftTime: 1
   requirements:
@@ -12,7 +18,7 @@
 
 - type: CERecipe
   id: CEFloorTileStonebricksSmallCarved
-  tag: CERecipeWorkbench
+  parent: CEBaseWorkbenchRecipe
   category: FloorTile
   craftTime: 1
   requirements:
@@ -24,7 +30,7 @@
 
 - type: CERecipe
   id: CEFloorTileStonebricksSmallCarved2
-  tag: CERecipeWorkbench
+  parent: CEBaseWorkbenchRecipe
   category: FloorTile
   craftTime: 1
   requirements:
@@ -36,7 +42,7 @@
 
 - type: CERecipe
   id: CEFloorTileStoneLongBricks
-  tag: CERecipeWorkbench
+  parent: CEBaseWorkbenchRecipe
   category: FloorTile
   craftTime: 1
   requirements:
@@ -48,7 +54,7 @@
 
 - type: CERecipe
   id: CEFloorTileStoneMediumBricks
-  tag: CERecipeWorkbench
+  parent: CEBaseWorkbenchRecipe
   category: FloorTile
   craftTime: 1
   requirements:
@@ -60,7 +66,7 @@
 
 - type: CERecipe
   id: CEFloorTileStoneDiamond
-  tag: CERecipeWorkbench
+  parent: CEBaseWorkbenchRecipe
   category: FloorTile
   craftTime: 1
   requirements:
@@ -72,7 +78,7 @@
 
 - type: CERecipe
   id: CEFloorTileStoneSquarePattern
-  tag: CERecipeWorkbench
+  parent: CEBaseWorkbenchRecipe
   category: FloorTile
   craftTime: 1
   requirements:
@@ -84,7 +90,7 @@
 
 - type: CERecipe
   id: CEFloorTileStoneMediumCircles
-  tag: CERecipeWorkbench
+  parent: CEBaseWorkbenchRecipe
   category: FloorTile
   craftTime: 1
   requirements:
@@ -96,7 +102,7 @@
 
 - type: CERecipe
   id: CEFloorTileStoneSmallCircles
-  tag: CERecipeWorkbench
+  parent: CEBaseWorkbenchRecipe
   category: FloorTile
   craftTime: 1
   requirements:
@@ -108,7 +114,7 @@
 
 - type: CERecipe
   id: CEFloorTileStonebricksSquareCarved
-  tag: CERecipeWorkbench
+  parent: CEBaseWorkbenchRecipe
   category: FloorTile
   craftTime: 1
   requirements:
@@ -120,7 +126,7 @@
 
 - type: CERecipe
   id: CEFloorTileOakWoodplanks
-  tag: CERecipeWorkbench
+  parent: CEBaseWorkbenchRecipe
   category: FloorTile
   craftTime: 1
   requirements:
@@ -132,7 +138,7 @@
 
 - type: CERecipe
   id: CEFloorTileOakWoodplanksBig
-  tag: CERecipeWorkbench
+  parent: CEBaseWorkbenchRecipe
   category: FloorTile
   craftTime: 1
   requirements:
@@ -144,7 +150,7 @@
 
 - type: CERecipe
   id: CEFloorTileOakWoodplanksCruciform
-  tag: CERecipeWorkbench
+  parent: CEBaseWorkbenchRecipe
   category: FloorTile
   craftTime: 1
   requirements:
@@ -156,7 +162,7 @@
 
 - type: CERecipe
   id: CEFloorTileOakWoodplanksStairs
-  tag: CERecipeWorkbench
+  parent: CEBaseWorkbenchRecipe
   category: FloorTile
   craftTime: 1
   requirements:
@@ -168,7 +174,7 @@
 
 - type: CERecipe
   id: CEFloorTileGlass
-  tag: CERecipeWorkbench
+  parent: CEBaseWorkbenchRecipe
   category: FloorTile
   craftTime: 1
   requirements:
@@ -180,7 +186,7 @@
 
 - type: CERecipe
   id: CEFloorTileRoofRed
-  tag: CERecipeWorkbench
+  parent: CEBaseWorkbenchRecipe
   category: FloorTile
   craftTime: 1
   requirements:
@@ -192,7 +198,7 @@
 
 - type: CERecipe
   id: CEFloorTileRoofGreen
-  tag: CERecipeWorkbench
+  parent: CEBaseWorkbenchRecipe
   category: FloorTile
   craftTime: 1
   requirements:
@@ -200,4 +206,16 @@
     stack: CEStone
     count: 1
   result: CEFloorTileRoofGreen
+  resultCount: 5
+
+- type: CERecipe
+  id: CEFloorTileRoofBlue
+  parent: CEBaseWorkbenchRecipe
+  category: FloorTile
+  craftTime: 1
+  requirements:
+  - !type:StackResource
+    stack: CEStone
+    count: 1
+  result: CEFloorTileRoofBlue
   resultCount: 5

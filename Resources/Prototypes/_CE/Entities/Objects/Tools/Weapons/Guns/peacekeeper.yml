@@ -40,6 +40,11 @@
         variation: 0.2
   - type: StaticPrice
     price: 350
+  - type: CEMagicEssenceStructure
+    essences:
+      Weapon: { min: 1, max: 3 }
+      Metal: { min: 1, max: 4 }
+      Energia: { min: 0, max: 2 }
 
 - type: entity
   parent: BasicHitscan
@@ -50,15 +55,16 @@
     damage:
       types:
         Shock: 35
-  - type: CEHitscanSpellEffect
+  - type: CEHitscanEntityEffect
     effects:
-    - !type:CESpellThrowFromUser
-      distance: 1
-    - !type:CESpellIrradiate
-      charge: 5
-    - !type:CESpellSpawnEntityOnUser
+    - !type:SpawnEntity
+      effectTarget: Target
       spawns:
       - CEOverchargeVFX
+    - !type:ThrowFrom
+      distance: 1
+    - !type:Irradiate
+      charge: 5
   - type: HitscanBasicVisuals
     muzzleFlash:
       sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
@@ -86,4 +92,10 @@
     startingCharge: 80
   - type: StaticPrice
     price: 550
+  - type: CEMagicEssenceStructure
+    essences:
+      Weapon: { min: 1, max: 3 }
+      Metal: { min: 1, max: 4 }
+      Energia: { min: 0, max: 2 }
+      Greed: { min: 1, max: 3 }
 

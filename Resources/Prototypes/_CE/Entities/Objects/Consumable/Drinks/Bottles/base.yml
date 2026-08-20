@@ -6,6 +6,9 @@
   - DrinkBaseOpenable
   categories: [ ForkFiltered ]
   components:
+  - type: Solution
+    solution:
+      maxVol: 40 # smaller than CEVialMedium (50u) - a drink bottle shouldn't out-hold an alchemy vial
   - type: Openable
     sound:
       collection: bottleOpenSounds
@@ -39,8 +42,9 @@
     #inHandsMaxFillLevels: 3 #TODO: draw inhands
     #inHandsFillBaseName: -fill-
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: FlimsyGlass
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger: # Overkill threshold
@@ -59,9 +63,7 @@
       - !type:SpillBehavior { }
       - !type:SpawnEntitiesBehavior
         spawn:
-          CEGlassShard:
-            min: 1
-            max: 1
+          CEGlassShard: { min: 1, max: 1 }
         transferForensics: true
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
@@ -80,3 +82,7 @@
   - type: PhysicalComposition
     materialComposition:
       CEGlass: 10
+  - type: CEMagicEssenceStructure
+    essences:
+      Crystal: { min: 1, max: 4 }
+      Void: { min: 0, max: 2 }

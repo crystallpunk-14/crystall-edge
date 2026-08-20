@@ -54,8 +54,9 @@
         layer:
         - MachineLayer
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: CEWood
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -80,36 +81,4 @@
           CEWoodenPlanks1:
             min: 2
             max: 4
-
-- type: entityTable
-  id: CEBookshelfEntityTable
-  table: !type:AllSelector
-    children:
-    #Guidebooks
-    #- !type:GroupSelector
-    #  children:
-    #  - id: CEGuidebookImperialLaws
-    #  - id: CEGuidebookAlchemy
-    #Lore books
-    - !type:GroupSelector
-      children:
-      - id: CEBookPantheonGodsSileita
-      - id: CEBookPantheonGodsSileitaImitators
-      - id: CEGuidebookImperialLaws
-      - id: CEGuidebookFarmingGuide
-      - id: CEGuidebookCookingRecipes
-    #Empty random
-    - id: CEBookRandom
-      amount: !type:RangeNumberSelector
-        range: 0, 10
-
-- type: entity
-  id: CEBookshelfWoodenFilled
-  parent: CEBookshelfWooden
-  suffix: Random filled
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:NestedSelector
-        tableId: CEBookshelfEntityTable
 

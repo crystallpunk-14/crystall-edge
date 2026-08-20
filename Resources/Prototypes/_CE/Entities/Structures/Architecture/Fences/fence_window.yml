@@ -30,7 +30,7 @@
       fix1:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.5,0.25,0.5,0.5"
+          bounds: "-0.5,0.375,0.5,0.5"
         density: 1000
         mask:
         - Impassable
@@ -48,8 +48,9 @@
   - type: Icon
     sprite: _CE/Structures/Architecture/Fences/iron_window.rsi
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:

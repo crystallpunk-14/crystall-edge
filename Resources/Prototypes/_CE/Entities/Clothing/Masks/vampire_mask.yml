@@ -14,6 +14,10 @@
   - type: PhysicalComposition
     materialComposition:
       CELeather: 10
+  - type: CEMagicEssenceStructure
+    essences:
+      Soul: { min: 1, max: 2 }
+      Beast: { min: 0, max: 1 }
 
 - type: entity
   parent: CEClothingMaskVampireVoiceBase
@@ -21,7 +25,7 @@
   name: bloody bone mask
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Masks/vampire_devourers.rsi
+    sprite: _CE/Clothing/Masks/Generic/Vampire/devourers.rsi
 
 - type: entity
   parent: CEClothingMaskVampireVoiceBase
@@ -29,7 +33,7 @@
   name: mysterious black mask
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Masks/vampire_night_childrens.rsi
+    sprite: _CE/Clothing/Masks/Generic/Vampire/night_childrens.rsi
 
 - type: entity
   parent: CEClothingMaskVampireVoiceBase
@@ -37,4 +41,4 @@
   name: frightening white mask
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Masks/vampire_unnameable.rsi
+    sprite: _CE/Clothing/Masks/Generic/Vampire/unnameable.rsi
