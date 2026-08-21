@@ -13,7 +13,7 @@ public sealed partial class CEMagicFocusComponent : Component
     /// <summary>
     /// Max essence per type. Types not listed here use <see cref="MinimumVolume"/>.
     /// </summary>
-    [DataField(required: true)]
+    [DataField]
     public Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int> Volume = new();
 
     /// <summary>

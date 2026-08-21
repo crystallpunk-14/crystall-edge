@@ -1,0 +1,76 @@
+- type: skill
+  id: ConjureLight
+  parent: SpellcastingSkillBase
+  icon:
+    sprite: _CE/Actions/Spells/conjure_light.rsi
+    state: icon
+  effect: !type:AddAction
+    action: CEActionSpellConjureLight
+
+- type: entity
+  id: CEActionSpellConjureLight
+  name: Conjure Light
+  description: You create a floating light source above your palm.
+  components:
+  - type: CEActionManaCost
+    manaCost: 10
+  - type: CEActionEssenceCost
+    essenceCost:
+      Light: 1
+  - type: Action
+    useDelay: 30
+    itemIconStyle: BigAction
+    sound: !type:SoundPathSpecifier
+      path: /Audio/Magic/rumble.ogg
+    icon:
+      sprite: _CE/Actions/Spells/conjure_light.rsi
+      state: icon
+  - type: InstantAction
+    event: !type:CEInstantActionAnimationEvent
+      animation: AnimationConjureLight
+
+- type: entityEffectAnimation
+  id: AnimationConjureLight
+  movementSpeed: 0.5
+  duration: 0.5
+  events:
+    0:
+    - !type:SpawnInHandEntity
+      spawns:
+      - CEConjuredLight
+    - !type:SayChat
+      sentence: "Sit lux!"
+
+- type: entity
+  id: CEConjuredLight
+  parent: BaseItem
+  categories: [ ForkFiltered ]
+  name: conjured light
+  description: A floating orb of light, conjured by a spell.
+  components:
+  - type: Item
+    size: Tiny
+    inhandVisuals:
+      left:
+      - state: inhand-left-unshaded
+        shader: unshaded
+      right:
+      - state: inhand-right-unshaded
+        shader: unshaded
+  - type: Sprite
+    drawdepth: Effects
+    sprite: _CE/Effects/sphere_of_light.rsi
+    noRot: true
+    layers:
+    - state: icon
+      shader: unshaded
+  - type: Visuals
+  - type: TimedDespawn
+    lifetime: 120
+  - type: PointLight
+    radius: 5.0
+    energy: 1
+    color: "#efedff"
+  - type: CEMagicEssenceStructure
+    essences:
+      Light: { min: 1, max: 1 }

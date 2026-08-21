@@ -9,3 +9,13 @@
   - Magic
   - Healing
   skill: CureWounds
+
+- type: scienceDiscovery
+  id: ConjureLight
+  parent: MediumDifficult
+  area: Spellcasting
+  targetAspects:
+  - Light
+  - Magic
+  - Light
+  skill: ConjureLight
