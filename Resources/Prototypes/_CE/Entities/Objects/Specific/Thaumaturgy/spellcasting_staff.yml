@@ -22,9 +22,9 @@
     size: Ginormous
   - type: CEMagicFocusInhand
   - type: CEMagicFocus
-    baseMinimum: 10
-    maxEssence:
+    minimumVolume: 10
+    volume:
       Life: 20
-    currentEssence:
+    currentCharge:
       Life: 20
       Healing: 10
