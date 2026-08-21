@@ -22,6 +22,9 @@ public sealed partial class CEMagicFocusSystem : EntitySystem
     {
         base.Initialize();
 
+        InitCharging();
+        InitExamine();
+
         SubscribeLocalEvent<CEMagicFocusClothingComponent, InventoryRelayedEvent<CEGetMagicFocusEssenceEvent>>(OnClothingGetEssence);
         SubscribeLocalEvent<CEMagicFocusInhandComponent, CEGetMagicFocusEssenceEvent>(OnInhandGetEssence);
         SubscribeLocalEvent<CEMagicFocusComponent, CEMagicEssenceCalculationEvent>(OnFocusEssenceCalculation);
@@ -92,12 +95,13 @@ public sealed partial class CEMagicFocusSystem : EntitySystem
                 if (remaining <= 0)
                     break;
 
-                var current = GetCurrent(source, type);
+                var current = source.Comp.CurrentCharge.GetValueOrDefault(type, 0);
                 if (current <= 0)
                     continue;
 
                 var take = Math.Min(current, remaining);
-                SetCurrent(source, type, current - take);
+                source.Comp.CurrentCharge[type] = current - take;
+                Dirty(source);
                 remaining -= take;
             }
         }
@@ -130,21 +134,10 @@ public sealed partial class CEMagicFocusSystem : EntitySystem
         var total = 0;
         foreach (var source in sources)
         {
-            total += GetCurrent(source, type);
+            total += source.Comp.CurrentCharge.GetValueOrDefault(type, 0);
         }
 
         return total;
-    }
-
-    private static int GetCurrent(Entity<CEMagicFocusComponent> focus, ProtoId<CEMagicEssenceTypePrototype> type)
-    {
-        return focus.Comp.CurrentCharge.GetValueOrDefault(type, 0);
-    }
-
-    private void SetCurrent(Entity<CEMagicFocusComponent> focus, ProtoId<CEMagicEssenceTypePrototype> type, int value)
-    {
-        focus.Comp.CurrentCharge[type] = value;
-        Dirty(focus);
     }
 }
 

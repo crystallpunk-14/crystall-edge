@@ -22,6 +22,7 @@
     size: Ginormous
   - type: CEMagicFocusInhand
   - type: CEMagicFocus
+    maxEssenceTypes: 50
     minimumVolume: 100
     volume:
       Life: 20
@@ -74,3 +75,29 @@
       Weapon: 100
       Armor: 100
       Harvest: 100
+
+- type: entity
+  id: CECastingStaffBasic
+  parent: BaseItem
+  name: spellcasting staff
+  description: TODO
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Tools/healing_staff.rsi
+    layers:
+      - state: icon
+        color: green
+  - type: Clothing
+    equipDelay: 1
+    unequipDelay: 1
+    sprite: _CE/Objects/Tools/healing_staff.rsi
+    quickEquip: false
+    equipWhileMoving: true
+    slots:
+    - neck
+  - type: Item
+    size: Ginormous
+  - type: CEMagicFocusInhand
+  - type: CEMagicFocus
+    minimumVolume: 10

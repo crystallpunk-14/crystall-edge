@@ -64,7 +64,6 @@
     layers:
     - state: icon
       shader: unshaded
-  - type: Visuals
   - type: TimedDespawn
     lifetime: 120
   - type: PointLight

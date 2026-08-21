@@ -27,4 +27,18 @@ public sealed partial class CEMagicFocusComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int> CurrentCharge = new();
+
+    /// <summary>
+    /// How long it takes to charge this focus from a clicked liquid container.
+    /// </summary>
+    [DataField]
+    public TimeSpan ChargeDelay = TimeSpan.FromSeconds(1);
+
+    /// <summary>
+    /// Max number of distinct essence types (with a <see cref="CurrentCharge"/> above 0) this focus
+    /// can hold at once. Charging can still top up a type that's already present past this limit,
+    /// but can never introduce a new type once it's reached.
+    /// </summary>
+    [DataField]
+    public int MaxEssenceTypes = 5;
 }
