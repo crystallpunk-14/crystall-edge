@@ -47,7 +47,7 @@ public sealed partial class CEMagicFocusSystem : EntitySystem
         if (args.Handled)
             return;
 
-        foreach (var (type, amount) in ent.Comp.CurrentEssence)
+        foreach (var (type, amount) in ent.Comp.CurrentCharge)
         {
             args.Essences[type] = args.Essences.GetValueOrDefault(type) + amount;
         }
@@ -139,12 +139,12 @@ public sealed partial class CEMagicFocusSystem : EntitySystem
 
     private static int GetCurrent(Entity<CEMagicFocusComponent> focus, ProtoId<CEMagicEssenceTypePrototype> type)
     {
-        return focus.Comp.CurrentEssence.GetValueOrDefault(type, 0);
+        return focus.Comp.CurrentCharge.GetValueOrDefault(type, 0);
     }
 
     private void SetCurrent(Entity<CEMagicFocusComponent> focus, ProtoId<CEMagicEssenceTypePrototype> type, int value)
     {
-        focus.Comp.CurrentEssence[type] = value;
+        focus.Comp.CurrentCharge[type] = value;
         Dirty(focus);
     }
 }

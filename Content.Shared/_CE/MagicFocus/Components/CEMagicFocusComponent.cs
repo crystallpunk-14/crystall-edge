@@ -11,20 +11,20 @@ namespace Content.Shared._CE.MagicFocus.Components;
 public sealed partial class CEMagicFocusComponent : Component
 {
     /// <summary>
-    /// Max essence per type. Types not listed here use <see cref="BaseMinimum"/>.
+    /// Max essence per type. Types not listed here use <see cref="MinimumVolume"/>.
     /// </summary>
     [DataField(required: true)]
-    public Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int> MaxEssence = new();
+    public Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int> Volume = new();
 
     /// <summary>
-    /// Default max for types not listed in <see cref="MaxEssence"/>.
+    /// Default max for types not listed in <see cref="Volume"/>.
     /// </summary>
     [DataField]
-    public int BaseMinimum;
+    public int MinimumVolume;
 
     /// <summary>
     /// Essence currently stored, per type. Missing type = 0.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int> CurrentEssence = new();
+    public Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int> CurrentCharge = new();
 }
