@@ -25,7 +25,7 @@ public sealed partial class CESpeciesRequiredConditionSystem : CEEntityCondition
 {
     protected override void Condition(ref CEEntityConditionEvent<SpeciesRequired> args)
     {
-        args.Result = EntityManager.TryGetComponent<HumanoidProfileComponent>(args.Entity, out var appearance)
+        args.Result = TryComp<HumanoidProfileComponent>(args.Entity, out var appearance)
             && appearance.Species == args.Condition.Species;
     }
 }
