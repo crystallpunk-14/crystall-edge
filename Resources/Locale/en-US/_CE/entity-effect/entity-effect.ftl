@@ -1,6 +1,6 @@
 ce-entity-effect-guidebook-none = This effect has no description.
 
-ce-entity-effect-guidebook-learn-knowledge = Teaches [color=yellow]{ $name }[/color].
+ce-entity-effect-guidebook-learn-skill = Teaches [color=yellow]{ $name }[/color].
 
 ce-entity-effect-guidebook-add-z-velocity = Launches the target into the air with [color=yellow]{ $speed }[/color] force
 ce-entity-effect-guidebook-apply-status = Applies the [color=yellow]{ $status }[/color] status effect for [color=yellow]{ $duration }[/color] sec.

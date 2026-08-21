@@ -1,9 +1,9 @@
-- type: CEKnowledge
-  id: ArcaneEngineeringKnowledgeBase
+- type: skill
+  id: ArcaneEngineeringSkillBase
   abstract: true
   book: CEBaseScienceBookArcaneEngineering
 
-- type: CEKnowledge
-  id: ArtifactoricKnowledgeBase
+- type: skill
+  id: ArtifactoricSkillBase
   abstract: true
   book: CEBaseScienceBookArtifactoric

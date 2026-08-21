@@ -5,7 +5,7 @@ namespace Content.Server._CE.InfusionAltar;
 
 public sealed partial class CEInfusionAltarSystem
 {
-    private void InitKnowledge()
+    private void InitSkills()
     {
         SubscribeNetworkEvent<CERequestInfusionAltarKnownRecipesEvent>(OnRequestKnownRecipes);
     }
@@ -23,10 +23,10 @@ public sealed partial class CEInfusionAltarSystem
                 if (!singleton.Recipes.TryGetValue(recipe.ID, out var cache))
                     continue;
 
-                // Recipes with no knowledge requirement are shown to everyone unconditionally,
+                // Recipes with no skill requirement are shown to everyone unconditionally,
                 // checked before anything player-specific (and even without an attached player
                 // entity at all).
-                if (recipe.RequiredKnowledge is { } required && (player is not { } p || !_knowledge.Knows(p, required)))
+                if (recipe.RequiredSkill is { } required && (player is not { } p || !_skill.HaveSkill(p, required)))
                     continue;
 
                 // Cache.PedestalRequirements holds the exact same CEResourceRequirement instances as the

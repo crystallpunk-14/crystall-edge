@@ -1,5 +1,5 @@
+using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.Skill.Effects;
-using Content.Shared._CE.Skill.Restrictions;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Array;
 using Robust.Shared.Utility;
@@ -7,7 +7,10 @@ using Robust.Shared.Utility;
 namespace Content.Shared._CE.Skill.Prototypes;
 
 /// <summary>
-/// A skill that can be learned by the player. Skills have prerequisites and an effect.
+/// Something a character can learn - the shared unit behind active perks, recipes, achievements
+/// and other unlockable content. Learning one is a simple, idempotent set-membership operation
+/// (<see cref="CESharedSkillSystem.TryAddSkill"/>); an optional <see cref="Effect"/> additionally
+/// mutates the learner (grants an action, adds components, etc).
 /// </summary>
 [Prototype("skill")]
 public sealed partial class CESkillPrototype : IPrototype, IInheritingPrototype
@@ -23,13 +26,22 @@ public sealed partial class CESkillPrototype : IPrototype, IInheritingPrototype
     public bool Abstract { get; private set; }
 
     /// <summary>
-    /// Skill Title. If you leave null, the name will try to generate from Effect.GetName()
+    /// Entity prototype this skill is themed after. By default its name, description and
+    /// (multi-layer) sprite are used as-is instead of duplicating them into separate localization
+    /// strings - see <see cref="NameOverride"/>/<see cref="DescOverride"/>/<see cref="IconOverride"/>
+    /// to replace any of those individually.
+    /// </summary>
+    [DataField]
+    public EntProtoId? PreviewEntity;
+
+    /// <summary>
+    /// Skill Title. If you leave null, the name will try to generate from PreviewEntity or Effect.GetName()
     /// </summary>
     [DataField("name")]
     public LocId? NameOverride = null;
 
     /// <summary>
-    /// Skill Description. If you leave null, the description will try to generate from Effect.GetDescription()
+    /// Skill Description. If you leave null, the description will try to generate from PreviewEntity or Effect.GetDescription()
     /// </summary>
     [DataField("desc")]
     public LocId? DescOverride = null;
@@ -41,40 +53,31 @@ public sealed partial class CESkillPrototype : IPrototype, IInheritingPrototype
     public SpriteSpecifier? IconOverride;
 
     /// <summary>
-    /// Skill effect. This is used to determine what happens when the player learns the skill.
-    /// </summary>
-    [DataField(required: true)]
-    public CESkillEffect Effect = default!;
-
-    /// <summary>
-    /// Skill restriction. Any reason why a player cannot learn this skill.
-    /// </summary>
-    [DataField(serverOnly: true)]
-    [AlwaysPushInheritance]
-    public List<CESkillRestriction> Restrictions = new();
-
-    /// <summary>
-    /// The visual effect visible around the skill while it is in the world as a pickable enhancement.
+    /// Blank book cover entity spawned when this skill is written down with a pen. Usually set
+    /// once per domain's abstract base prototype rather than repeated on every entry.
     /// </summary>
     [DataField]
-    public SpriteSpecifier? Vfx;
+    public EntProtoId Book = "CEBookEmpty";
 
     /// <summary>
-    /// Light color for the skill while it is in the world as a pickable enhancement.
+    /// Skill effect. Used to determine what happens when the player learns the skill. Optional -
+    /// a skill with no effect is a pure "known/not known" flag, gating whatever external systems
+    /// (recipes, achievements, ...) choose to check it.
+    /// </summary>
+    [DataField]
+    public CESkillEffect? Effect;
+
+    /// <summary>
+    /// Conditions an actor must pass to be allowed to learn this skill (e.g. already knowing a
+    /// prerequisite skill). Checked by <see cref="CESharedSkillSystem.SkillConditionsMet"/> at
+    /// every player-facing "try to learn" entry point. Empty means no restriction.
+    /// </summary>
+    [DataField, AlwaysPushInheritance]
+    public List<CEEntityCondition> Conditions = new();
+
+    /// <summary>
+    /// Color used to highlight this skill's name in the learned-skills examine text.
     /// </summary>
     [DataField]
     public Color Color = Color.White;
-
-    /// <summary>
-    /// Whether this skill can only be learned once.
-    /// </summary>
-    [DataField]
-    public bool Unique = true;
-
-    /// <summary>
-    /// Relative weight of this skill when it is randomly selected for a player.
-    /// </summary>
-    [DataField]
-    [AlwaysPushInheritance]
-    public float Weight = 1f;
 }

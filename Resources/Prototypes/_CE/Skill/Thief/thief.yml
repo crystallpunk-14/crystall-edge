@@ -23,9 +23,9 @@
     - type: Thieving
       stripTimeReduction: 2 # We just override the previous value to add more speed
       stealthy: true
-  restrictions:
-  - !type:NeedPrerequisite
-    prerequisite: Pickpocketing
+  conditions:
+  - !type:SkillRequired
+    skill: Pickpocketing
 
 - type: skill
   id: PickpocketingMovingUpgrade
@@ -37,9 +37,9 @@
   effect: !type:AddComponents
     components:
     - type: CEThievingStripOnMoving
-  restrictions:
-  - !type:NeedPrerequisite
-    prerequisite: Pickpocketing
+  conditions:
+  - !type:SkillRequired
+    skill: Pickpocketing
 
 - type: skill
   id: TreasureHunt

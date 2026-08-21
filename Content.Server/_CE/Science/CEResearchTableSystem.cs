@@ -1,9 +1,9 @@
-using Content.Shared._CE.Knowledge;
-using Content.Shared._CE.Knowledge.Components;
 using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.MagicEssence.Systems;
 using Content.Shared._CE.Science;
 using Content.Shared._CE.Science.Components;
+using Content.Shared._CE.Skill;
+using Content.Shared._CE.Skill.Components;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Paper;
 using Robust.Shared.Audio;
@@ -17,7 +17,7 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
 {
     [Dependency] private CEMagicEssenceSystem _essence = default!;
     [Dependency] private CEScienceSystem _science = default!;
-    [Dependency] private CEKnowledgeSystem _knowledge = default!;
+    [Dependency] private CESharedSkillSystem _skill = default!;
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private ItemSlotsSystem _itemSlots = default!;
     [Dependency] private SharedContainerSystem _container = default!;
@@ -28,7 +28,7 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
     private readonly EntProtoId _projectProto = "CEUnselectedDiscoveryProject";
 
     private static readonly SoundSpecifier ScribbleSound = new SoundCollectionSpecifier("PaperScribbles");
-    private static readonly SoundSpecifier KnowledgeLearnedSound = new SoundPathSpecifier("/Audio/_CE/Effects/knowledge_learned.ogg");
+    private static readonly SoundSpecifier SkillLearnedSound = new SoundPathSpecifier("/Audio/_CE/Effects/knowledge_learned.ogg");
 
     public override void Initialize()
     {
@@ -83,7 +83,7 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
         Del(paper);
 
         var authorName = MetaData(args.Actor).EntityName;
-        var authorLine = Loc.GetString("ce-knowledge-book-author", ("name", authorName));
+        var authorLine = Loc.GetString("ce-skill-book-author", ("name", authorName));
         var baseDescription = MetaData(project).EntityDescription;
         _metaData.SetEntityDescription(project, string.IsNullOrEmpty(baseDescription)
             ? authorLine
@@ -104,7 +104,7 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
             return;
 
         if (!_proto.TryIndex(args.Discovery, out var discovery) ||
-            !_proto.TryIndex(discovery.Knowledge, out var knowledge) ||
+            !_proto.HasIndex(discovery.Skill) ||
             !_proto.TryIndex(discovery.Area, out var area))
             return;
 
@@ -123,13 +123,13 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
         projectComp.Tiles = _science.GenerateMap(discovery);
         Dirty(project, projectComp);
 
-        var discoveryName = knowledge.GetTitle(_proto);
+        var discoveryName = _skill.GetSkillName(discovery.Skill);
         _metaData.SetEntityName(project, Loc.GetString("ce-discovery-project-name", ("discovery", discoveryName)));
 
         var description = Loc.GetString("ce-discovery-project-description",
             ("area", Loc.GetString(area.Name)),
             ("discovery", discoveryName));
-        var authorLine = Loc.GetString("ce-knowledge-book-author", ("name", MetaData(args.Actor).EntityName));
+        var authorLine = Loc.GetString("ce-skill-book-author", ("name", MetaData(args.Actor).EntityName));
         _metaData.SetEntityDescription(project, $"{description}\n{authorLine}");
 
         _container.Insert(project, container);
@@ -144,7 +144,7 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
             return;
 
         if (!_proto.TryIndex(project.Discovery, out var discovery) ||
-            !_proto.TryIndex(discovery.Knowledge, out _))
+            !_proto.HasIndex(discovery.Skill))
             return;
 
         if (!CanPlaceAspect(project.Tiles, discovery.Generation.Radius, args.Hex, args.Essence))
@@ -169,7 +169,7 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
 
         if (project.Discovery is not { } discoveryId ||
             !_proto.TryIndex(discoveryId, out var discovery) ||
-            !_proto.TryIndex(discovery.Knowledge, out var knowledge))
+            !_proto.TryIndex(discovery.Skill, out var skill))
             return;
 
         if (!IsProjectSolved(project.Tiles))
@@ -178,30 +178,33 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
         if (!_container.TryGetContainer(ent.Owner, ent.Comp.PaperSlotId, out var container))
             return;
 
-        _knowledge.TryLearn(args.Actor, discovery.Knowledge);
+        // Eligibility was already checked when this discovery was drawn into the offer
+        // (DiscoveryRequirementsMet); no need to re-gate a puzzle the player already solved.
+        _skill.TryAddSkill(args.Actor, discovery.Skill);
 
         _container.Remove(item, container);
         Del(item);
 
-        var spawned = Spawn(knowledge.Book, Transform(ent.Owner).Coordinates);
+        var spawned = Spawn(skill.Book, Transform(ent.Owner).Coordinates);
 
-        // Knowledge must be set before the component is added, not after via EnsureComp - it's
-        // read by the component's own MapInit handler, which AddComp fires immediately since the
-        // entity is already map-initialized (that handler also takes care of the base name/description).
-        AddComp(spawned, new CEKnowledgeHolderComponent { Knowledge = discovery.Knowledge });
+        // Skill is a required field read during the component's own MapInit handler (which
+        // AddComp fires immediately, since the entity is already map-initialized) - it must be
+        // set before the component is added, not after via EnsureComp (that handler also takes
+        // care of the base name/description).
+        AddComp(spawned, new CESkillBookComponent { Skill = discovery.Skill });
 
         var descLines = new List<string>();
 
-        var effects = _knowledge.GetKnowledgeEffectDescription(discovery.Knowledge);
+        var effects = _skill.GetSkillEffectDescription(discovery.Skill);
         if (effects.Length > 0)
             descLines.Add(effects);
 
         var authorName = MetaData(args.Actor).EntityName;
-        descLines.Add(Loc.GetString("ce-knowledge-book-author", ("name", authorName)));
+        descLines.Add(Loc.GetString("ce-skill-book-author", ("name", authorName)));
         _metaData.SetEntityDescription(spawned, string.Join("\n", descLines));
 
         _ui.CloseUi(ent.Owner, CEResearchTableUiKey.Key);
 
-        _audio.PlayPvs(KnowledgeLearnedSound, ent.Owner);
+        _audio.PlayPvs(SkillLearnedSound, ent.Owner);
     }
 }

@@ -7,7 +7,7 @@ namespace Content.Client._CE.InfusionAltar;
 /// Holds no state of its own between requests - callers (e.g. the recipe guidebook page) should call
 /// <see cref="RequestKnownRecipes"/> and listen to <see cref="OnRecipesUpdated"/> for the answer.
 /// </summary>
-public sealed partial class CEInfusionAltarKnowledgeSystem : EntitySystem
+public sealed partial class CEInfusionAltarKnownRecipesSystem : EntitySystem
 {
     public event Action<List<CEInfusionAltarKnownRecipeInfo>>? OnRecipesUpdated;
 

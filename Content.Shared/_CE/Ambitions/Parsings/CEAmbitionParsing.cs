@@ -2,6 +2,7 @@ using Content.Shared._CE.Cooking.Prototypes;
 using Content.Shared._CE.LockKey;
 using Content.Shared._CE.LockKey.Components;
 using Content.Shared._CE.Science.Prototypes;
+using Content.Shared._CE.Skill;
 using Content.Shared.Dataset;
 using Content.Shared.Destructible.Thresholds;
 using Content.Shared.Humanoid.Prototypes;
@@ -233,10 +234,11 @@ public sealed partial class RandomScienceDiscovery : CEAmbitionParsing
         if (all.Count == 0)
             return null;
 
-        if (!protoManager.TryIndex(random.Pick(all).Knowledge, out var knowledge))
+        var picked = random.Pick(all);
+        if (!protoManager.HasIndex(picked.Skill))
             return null;
 
-        return knowledge.GetTitle(protoManager);
+        return entManager.System<CESharedSkillSystem>().GetSkillName(picked.Skill);
     }
 }
 

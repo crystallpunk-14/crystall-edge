@@ -1,15 +1,15 @@
 using System.Text;
-using Content.Shared._CE.Knowledge;
+using Content.Shared._CE.Skill;
 using Content.Shared._CE.Workbench.Prototypes;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.Workbench;
 
 /// <summary>
-/// Contributes to <see cref="CEGetKnowledgeEffectEvent"/>: describes which workbench recipes a
-/// piece of knowledge unlocks, grouped by the workbench they're crafted at.
+/// Contributes to <see cref="CEGetSkillEffectEvent"/>: describes which workbench recipes a
+/// skill unlocks, grouped by the workbench they're crafted at.
 /// </summary>
-public sealed partial class CEWorkbenchKnowledgeSystem : EntitySystem
+public sealed partial class CEWorkbenchSkillEffectSystem : EntitySystem
 {
     [Dependency] private IPrototypeManager _proto = default!;
 
@@ -17,10 +17,10 @@ public sealed partial class CEWorkbenchKnowledgeSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CEGetKnowledgeEffectEvent>(OnGetKnowledgeEffect);
+        SubscribeLocalEvent<CEGetSkillEffectEvent>(OnGetSkillEffect);
     }
 
-    private void OnGetKnowledgeEffect(ref CEGetKnowledgeEffectEvent args)
+    private void OnGetSkillEffect(ref CEGetSkillEffectEvent args)
     {
         var byStation = new Dictionary<string, List<string>>();
 
@@ -29,7 +29,7 @@ public sealed partial class CEWorkbenchKnowledgeSystem : EntitySystem
             if (recipe.Abstract)
                 continue;
 
-            if (recipe.RequiredKnowledge is not { } required || required != args.Knowledge)
+            if (recipe.RequiredSkill is not { } required || required != args.Skill)
                 continue;
 
             if (!_proto.TryIndex(recipe.Result, out var result))
@@ -48,15 +48,15 @@ public sealed partial class CEWorkbenchKnowledgeSystem : EntitySystem
         foreach (var (station, items) in byStation)
         {
             var header = station.Length > 0
-                ? Loc.GetString("ce-knowledge-effect-workbench-header", ("station", station))
-                : Loc.GetString("ce-knowledge-effect-workbench-header-generic");
+                ? Loc.GetString("ce-skill-effect-workbench-header", ("station", station))
+                : Loc.GetString("ce-skill-effect-workbench-header-generic");
 
             var sb = new StringBuilder();
             sb.Append(header);
             foreach (var item in items)
             {
                 sb.Append('\n');
-                sb.Append(Loc.GetString("ce-knowledge-effect-list-item", ("item", item)));
+                sb.Append(Loc.GetString("ce-skill-effect-list-item", ("item", item)));
             }
 
             args.Effects.Add(sb.ToString());

@@ -1,15 +1,15 @@
 using System.Text;
-using Content.Shared._CE.Knowledge;
 using Content.Shared._CE.InfusionAltar.Prototypes;
+using Content.Shared._CE.Skill;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.InfusionAltar;
 
 /// <summary>
-/// Contributes to <see cref="CEGetKnowledgeEffectEvent"/>: describes which infusion altar recipes
-/// a piece of knowledge unlocks.
+/// Contributes to <see cref="CEGetSkillEffectEvent"/>: describes which infusion altar recipes
+/// a skill unlocks.
 /// </summary>
-public sealed partial class CEInfusionAltarRecipeKnowledgeSystem : EntitySystem
+public sealed partial class CEInfusionAltarSkillEffectSystem : EntitySystem
 {
     [Dependency] private IPrototypeManager _proto = default!;
 
@@ -17,16 +17,16 @@ public sealed partial class CEInfusionAltarRecipeKnowledgeSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CEGetKnowledgeEffectEvent>(OnGetKnowledgeEffect);
+        SubscribeLocalEvent<CEGetSkillEffectEvent>(OnGetSkillEffect);
     }
 
-    private void OnGetKnowledgeEffect(ref CEGetKnowledgeEffectEvent args)
+    private void OnGetSkillEffect(ref CEGetSkillEffectEvent args)
     {
         var items = new List<string>();
 
         foreach (var recipe in _proto.EnumeratePrototypes<CEInfusionAltarRecipePrototype>())
         {
-            if (recipe.RequiredKnowledge is not { } required || required != args.Knowledge)
+            if (recipe.RequiredSkill is not { } required || required != args.Skill)
                 continue;
 
             if (!_proto.TryIndex(recipe.Result, out var result))
@@ -39,11 +39,11 @@ public sealed partial class CEInfusionAltarRecipeKnowledgeSystem : EntitySystem
             return;
 
         var sb = new StringBuilder();
-        sb.Append(Loc.GetString("ce-knowledge-effect-infusion-altar-header"));
+        sb.Append(Loc.GetString("ce-skill-effect-infusion-altar-header"));
         foreach (var item in items)
         {
             sb.Append('\n');
-            sb.Append(Loc.GetString("ce-knowledge-effect-list-item", ("item", item)));
+            sb.Append(Loc.GetString("ce-skill-effect-list-item", ("item", item)));
         }
 
         args.Effects.Add(sb.ToString());

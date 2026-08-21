@@ -3,6 +3,7 @@ using System.Numerics;
 using Content.Client.Lobby;
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Systems.MenuBar.Widgets;
+using Content.Shared._CE.EntityEffect;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Whitelist;
 using Robust.Client.GameObjects;
@@ -12,6 +13,7 @@ using Robust.Client.Player;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Enums;
+using Robust.Shared.Maths;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client.Construction.UI
@@ -194,9 +196,10 @@ namespace Content.Client.Construction.UI
 
                 //CrystallEdge requirements
                 var requirementsMet = true;
+                var conditionArgs = new CEEntityEffectArgs(_entManager, _playerManager.LocalEntity.Value, null, Angle.Zero, 0f, _playerManager.LocalEntity.Value, null);
                 foreach (var req in recipe.CERestrictions)
                 {
-                    if (!req.Check(_entManager, _playerManager.LocalEntity.Value))
+                    if (!req.Passes(conditionArgs))
                     {
                         requirementsMet = false;
                         break;

@@ -1,34 +1,34 @@
-- type: CEKnowledge
+- type: skill
   id: DrillAdvanced
-  parent: ArcaneEngineeringKnowledgeBase
+  parent: ArcaneEngineeringSkillBase
   previewEntity: CEDrillAdvanced
 
-- type: CEKnowledge
+- type: skill
   id: Hoverboard
-  parent: ArcaneEngineeringKnowledgeBase
+  parent: ArcaneEngineeringSkillBase
   previewEntity: CEVehicleHoverboard
 
-- type: CEKnowledge
+- type: skill
   id: PortableEssenceAttractor
-  parent: ArcaneEngineeringKnowledgeBase
+  parent: ArcaneEngineeringSkillBase
   previewEntity: CEPortableMagicEssenceAttractor
 
-- type: CEKnowledge
+- type: skill
   id: NodeStabilizer
-  parent: ArcaneEngineeringKnowledgeBase
+  parent: ArcaneEngineeringSkillBase
   previewEntity: CENodeStabilizerSphere
 
-- type: CEKnowledge
+- type: skill
   id: ManaTransferGlove
-  parent: ArcaneEngineeringKnowledgeBase
+  parent: ArcaneEngineeringSkillBase
   previewEntity: CEManaTransferGlove
 
-- type: CEKnowledge
+- type: skill
   id: ThirdArmMiningModule
-  parent: ArcaneEngineeringKnowledgeBase
+  parent: ArcaneEngineeringSkillBase
   previewEntity: CEThirdArmModuleMining
 
-- type: CEKnowledge
+- type: skill
   id: ThaumaturgyGlassesAdvanced
-  parent: ArcaneEngineeringKnowledgeBase
+  parent: ArcaneEngineeringSkillBase
   previewEntity: CEClothingEyesThaumaturgyGlassesAdvanced

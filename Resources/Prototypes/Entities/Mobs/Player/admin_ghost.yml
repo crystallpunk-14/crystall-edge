@@ -113,8 +113,6 @@
   - type: BypassInteractionChecks
   - type: ExplosionResistance
     damageCoefficient: 0
-  # CrystallEdge
-  - type: CEKnowledge
 
 - type: entity
   abstract: true

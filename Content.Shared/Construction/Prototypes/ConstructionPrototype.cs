@@ -1,4 +1,4 @@
-using Content.Shared._CE.Skill.Restrictions;
+using Content.Shared._CE.EntityEffect;
 using Content.Shared.Construction.Conditions;
 using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;
@@ -77,7 +77,7 @@ public sealed partial class ConstructionPrototype : IPrototype, IInheritingProto
     /// CrystallEdge - Some recipes are not available until certain conditions are met.
     /// </summary>
     [DataField]
-    public List<CESkillRestriction> CERestrictions = new();
+    public List<CEEntityCondition> CERestrictions = new();
 
     [DataField] public string Category { get; private set; } = string.Empty;
 

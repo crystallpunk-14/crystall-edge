@@ -2,6 +2,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Content.Server.Construction.Components;
+using Content.Shared._CE.EntityEffect;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Construction;
 using Content.Shared.Construction.Prototypes;
@@ -17,6 +18,7 @@ using Content.Shared.Storage;
 using Content.Shared.Whitelist;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
+using Robust.Shared.Maths;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
 
@@ -345,9 +347,10 @@ namespace Content.Server.Construction
             }
 
             //CrystallEdge requirements
+            var conditionArgs = new CEEntityEffectArgs(EntityManager, user, null, Angle.Zero, 0f, user, null);
             foreach (var req in constructionPrototype.CERestrictions)
             {
-                if (!req.Check(EntityManager, user))
+                if (!req.Passes(conditionArgs))
                 {
                     _popup.PopupEntity(req.GetDescription(EntityManager, ProtoMan), user, user);
                     return false;
@@ -441,9 +444,10 @@ namespace Content.Server.Construction
             }
 
             //CrystallEdge requirements
+            var conditionArgs = new CEEntityEffectArgs(EntityManager, user, null, Angle.Zero, 0f, user, null);
             foreach (var req in constructionPrototype.CERestrictions)
             {
-                if (!req.Check(EntityManager, user))
+                if (!req.Passes(conditionArgs))
                 {
                     _popup.PopupEntity(req.GetDescription(EntityManager, ProtoMan), user, user);
                     return;

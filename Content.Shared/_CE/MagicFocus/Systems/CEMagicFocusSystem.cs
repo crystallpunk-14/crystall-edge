@@ -1,7 +1,6 @@
 using Content.Shared._CE.MagicEssence.Events;
 using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.MagicFocus.Components;
-using Content.Shared._CE.MagicFocus.Events;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Inventory;
 using Robust.Shared.Prototypes;
