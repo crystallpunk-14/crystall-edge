@@ -57,7 +57,7 @@ public sealed partial class CESkillPrototype : IPrototype, IInheritingPrototype
     /// once per domain's abstract base prototype rather than repeated on every entry.
     /// </summary>
     [DataField]
-    public EntProtoId Book = "CEBookEmpty";
+    public EntProtoId Book = "CEBaseScienceBookUndefined";
 
     /// <summary>
     /// Skill effect. Used to determine what happens when the player learns the skill. Optional -

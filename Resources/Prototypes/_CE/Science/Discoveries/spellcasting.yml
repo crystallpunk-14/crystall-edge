@@ -1,0 +1,11 @@
+#MARK: Medium
+
+- type: scienceDiscovery
+  id: CureWounds
+  parent: MediumDifficult
+  area: Spellcasting
+  targetAspects:
+  - Life
+  - Magic
+  - Healing
+  skill: CureWounds

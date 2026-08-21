@@ -1,6 +1,7 @@
 
 - type: skill
   id: CureWounds
+  parent: SpellcastingSkillBase
   icon:
     sprite: _CE/Actions/Spells/cure_wounds.rsi
     state: icon

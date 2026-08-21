@@ -4,6 +4,6 @@
   book: CEBaseScienceBookArcaneEngineering
 
 - type: skill
-  id: ArtifactoricSkillBase
+  id: SpellcastingSkillBase
   abstract: true
-  book: CEBaseScienceBookArtifactoric
+  book: CEBaseScienceBookSpellcasting
