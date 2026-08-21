@@ -1,7 +1,7 @@
 using Content.Shared._CE.MagicEnergy.Components;
 using Content.Shared._CE.MagicEssence.Components;
 using Content.Shared._CE.MagicEssence.Events;
-using Content.Shared._CE.MagicFocus.Events;
+using Content.Shared._CE.MagicFocus.Systems;
 using Content.Shared._CE.MagicVision.Events;
 using Content.Shared._CE.Waypointer;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
