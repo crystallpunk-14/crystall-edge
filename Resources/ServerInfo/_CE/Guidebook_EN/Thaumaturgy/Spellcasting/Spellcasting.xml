@@ -1,5 +1,42 @@
 <Document>
-# Spellcasting
+# Learning spells
 
-TODO
+You can use a modified infusion altar to teach living creatures how to use spells.
+
+
+<Box>
+<GuideEntityEmbed Entity="CECandle" Caption=""/>
+<GuideEntityEmbed Entity="CEInfusionAltarPedestal" Caption=""/>
+<GuideEntityEmbed Entity="CECandle" Caption=""/>
+</Box>
+<Box>
+<GuideEntityEmbed Entity="CEInfusionAltarPedestal" Caption=""/>
+<GuideEntityEmbed Entity="CESpellMasteryAltar" Caption="Spell mastery altar"/>
+<GuideEntityEmbed Entity="CEInfusionAltarPedestal" Caption=""/>
+</Box>
+<Box>
+<GuideEntityEmbed Entity="CECandle" Caption=""/>
+<GuideEntityEmbed Entity="CEInfusionAltarPedestal" Caption=""/>
+<GuideEntityEmbed Entity="CECandle" Caption=""/>
+</Box>
+
+The ritual logic for spell mastery training works exactly the same as the infusion altar.
+But instead of a catalyst, a living creature is placed on the central altar.
+
+Successfully completing the ritual grants the creature the ability to use the spell, and they also become a subject of scientific interest - allowing you to gain research points by studying them.
+
+# Magical focus
+
+Using spells requires a focus item charged with essence:
+
+<Box>
+<GuideEntityEmbed Entity="CECastingStaffBasic" Caption=""/>
+</Box>
+
+You can click the focus against any essence storage (vials, nodes) to absorb essence and charge the focus.
+
+<Box>
+<GuideEntityEmbed Entity="CEGuidebookEssenceNodeDummy" Caption=""/>
+</Box>
+
 </Document>

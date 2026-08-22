@@ -1,5 +1,42 @@
 <Document>
-# Заклинания
+# Изучение заклинаний
 
-TODO
+Вы можете использовать модифицированный алтарь слияния, чтобы обучать живые существа использованию заклинаний.
+
+
+<Box>
+<GuideEntityEmbed Entity="CECandle" Caption=""/>
+<GuideEntityEmbed Entity="CEInfusionAltarPedestal" Caption=""/>
+<GuideEntityEmbed Entity="CECandle" Caption=""/>
+</Box>
+<Box>
+<GuideEntityEmbed Entity="CEInfusionAltarPedestal" Caption=""/>
+<GuideEntityEmbed Entity="CESpellMasteryAltar" Caption="Алтарь слияния"/>
+<GuideEntityEmbed Entity="CEInfusionAltarPedestal" Caption=""/>
+</Box>
+<Box>
+<GuideEntityEmbed Entity="CECandle" Caption=""/>
+<GuideEntityEmbed Entity="CEInfusionAltarPedestal" Caption=""/>
+<GuideEntityEmbed Entity="CECandle" Caption=""/>
+</Box>
+
+Логика проведения ритуалов для обучения заклинаниям точно такая же, как и у алтаря слияния.
+Но всесто катализатора в центральном алтаре, на него кладется живое существо.
+
+Успешное проведение ритуала открывает для существа возможность использовать заклинания, и он так же становится объектом научного интереса - что позволяет вам получать из него очки знаний.
+
+# Магическая фокусировка
+
+Использование заклинаний требует предмет-фокусировку, заряженную эссенцией:
+
+<Box>
+<GuideEntityEmbed Entity="CECastingStaffBasic" Caption=""/>
+</Box>
+
+Вы можете кликнуть фокусировкой по любому хранилищу эссенции (склянки, ноды) чтобы впитать и зарядить фокусировку.
+
+<Box>
+<GuideEntityEmbed Entity="CEGuidebookEssenceNodeDummy" Caption=""/>
+</Box>
+
 </Document>
