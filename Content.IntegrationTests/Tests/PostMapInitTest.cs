@@ -44,8 +44,7 @@ namespace Content.IntegrationTests.Tests
         private static readonly string[] NoSpawnMaps =
         {
             "CentComm",
-            "Dart",
-            "Dev" //CrystallEdge
+            "Dart"
         };
 
         private static readonly string[] Grids =
@@ -82,7 +81,8 @@ namespace Content.IntegrationTests.Tests
         private static readonly string[] DoNotMapWhitelist =
         {
             "/Maps/centcomm.yml",
-            "/Maps/Shuttles/AdminSpawn/**" // admin gaming
+            "/Maps/Shuttles/AdminSpawn/**", // admin gaming
+            "/Maps/_CE/Dev/**", // CrystallEdge dev maps
         };
 
         /// <summary>
