@@ -1,6 +1,5 @@
-using Content.Shared._CE.EntityEffect;
-using Content.Shared._CE.Knowledge.Prototypes;
 using Content.Shared._CE.MagicEssence.Prototypes;
+using Content.Shared._CE.Skill.Prototypes;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Array;
 
@@ -36,16 +35,9 @@ public sealed partial class CEScienceDiscoveryPrototype : IPrototype, IInheritin
     public CEScienceMapGenerationParams Generation = new();
 
     /// <summary>
-    /// The knowledge this discovery teaches once chosen. Also supplies this discovery's
-    /// display name and map icon.
+    /// The skill this discovery teaches once chosen. Also supplies this discovery's display name,
+    /// map icon and eligibility (<see cref="CESkillPrototype.Conditions"/>).
     /// </summary>
     [DataField(required: true)]
-    public ProtoId<CEKnowledgePrototype> Knowledge;
-
-    /// <summary>
-    /// Conditions an actor must pass for this discovery to be eligible to be drawn into an offer
-    /// (e.g. already knowing some prerequisite knowledge). Empty means no restriction.
-    /// </summary>
-    [DataField]
-    public List<CEEntityCondition> Requirements = new();
+    public ProtoId<CESkillPrototype> Skill;
 }

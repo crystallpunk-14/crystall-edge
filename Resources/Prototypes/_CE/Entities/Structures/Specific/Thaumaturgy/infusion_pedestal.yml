@@ -16,6 +16,8 @@
     guides:
     - CEThaumaturgyInfusionAltarRU
     - CEThaumaturgyInfusionAltarEN
+    - CEThaumaturgySpellcastingRU
+    - CEThaumaturgySpellcastingEN
   - type: Sprite
     drawdepth: Objects
     noRot: true

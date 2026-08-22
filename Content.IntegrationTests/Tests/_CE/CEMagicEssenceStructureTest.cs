@@ -1,6 +1,7 @@
 #nullable enable
 using System.Collections.Generic;
 using Content.Shared._CE.MagicEssence.Components;
+using Content.Shared._CE.MagicFocus.Components;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Item;
 using Robust.Shared.GameObjects;
@@ -43,20 +44,24 @@ public sealed class CEMagicEssenceStructureTest
                 if (IgnoredProto.Contains(proto.ID))
                     continue;
 
-                if (!proto.TryGetComponent<ItemComponent>(out _, componentFactory))
+                if (!proto.TryComp<ItemComponent>(out _, componentFactory))
                     continue;
 
                 // Draw/inject vessels (droppers, syringes, vials) are meant to show only the
                 // essence of whatever reagents were drawn into them, not their own material.
-                if (proto.TryGetComponent<InjectorComponent>(out _, componentFactory))
+                if (proto.TryComp<InjectorComponent>(out _, componentFactory))
                     continue;
 
                 // Explicitly opted out - e.g. a sealed vessel pre-filled with an essence reagent,
                 // whose essence reading already comes entirely from that solution.
-                if (proto.TryGetComponent<CEMagicEssenceStructureExemptComponent>(out _, componentFactory))
+                if (proto.TryComp<CEMagicEssenceStructureExemptComponent>(out _, componentFactory))
                     continue;
 
-                if (!proto.TryGetComponent<CEMagicEssenceStructureComponent>(out _, componentFactory))
+                // Magic foci show their own stored essence, not a rolled material essence.
+                if (proto.TryComp<CEMagicFocusComponent>(out _, componentFactory))
+                    continue;
+
+                if (!proto.TryComp<CEMagicEssenceStructureComponent>(out _, componentFactory))
                     missing.Add(proto.ID);
             }
         });
@@ -85,10 +90,10 @@ public sealed class CEMagicEssenceStructureTest
                 if (proto.Abstract)
                     continue;
 
-                if (!proto.TryGetComponent<InjectorComponent>(out _, componentFactory))
+                if (!proto.TryComp<InjectorComponent>(out _, componentFactory))
                     continue;
 
-                if (proto.TryGetComponent<CEMagicEssenceStructureComponent>(out _, componentFactory))
+                if (proto.TryComp<CEMagicEssenceStructureComponent>(out _, componentFactory))
                     polluted.Add(proto.ID);
             }
         });
@@ -96,6 +101,39 @@ public sealed class CEMagicEssenceStructureTest
         Assert.That(polluted, Is.Empty,
             $"{polluted.Count} EntityPrototype(s) have InjectorComponent (draw/inject vessels) but also CEMagicEssenceStructureComponent, " +
             $"which pollutes the essence reading of whatever gets drawn into them with the vessel's own material essence:\n{string.Join('\n', polluted)}");
+
+        await pair.CleanReturnAsync();
+    }
+
+    [Test]
+    public async Task CheckMagicFociHaveNoOwnEssenceStructure()
+    {
+        await using var pair = await PoolManager.GetServerClient();
+        var server = pair.Server;
+
+        var protoManager = server.ResolveDependency<IPrototypeManager>();
+        var componentFactory = server.ResolveDependency<IComponentFactory>();
+
+        var polluted = new List<string>();
+
+        await server.WaitAssertion(() =>
+        {
+            foreach (var proto in protoManager.EnumeratePrototypes<EntityPrototype>())
+            {
+                if (proto.Abstract)
+                    continue;
+
+                if (!proto.TryComp<CEMagicFocusComponent>(out _, componentFactory))
+                    continue;
+
+                if (proto.TryComp<CEMagicEssenceStructureComponent>(out _, componentFactory))
+                    polluted.Add(proto.ID);
+            }
+        });
+
+        Assert.That(polluted, Is.Empty,
+            $"{polluted.Count} EntityPrototype(s) have CEMagicFocusComponent but also CEMagicEssenceStructureComponent, " +
+            $"which pollutes the essence reading with a rolled material essence on top of the focus's own stored essence:\n{string.Join('\n', polluted)}");
 
         await pair.CleanReturnAsync();
     }
@@ -118,7 +156,7 @@ public sealed class CEMagicEssenceStructureTest
                 if (proto.Abstract)
                     continue;
 
-                if (!proto.TryGetComponent<CEMagicEssenceStructureComponent>(out var structure, componentFactory))
+                if (!proto.TryComp<CEMagicEssenceStructureComponent>(out var structure, componentFactory))
                     continue;
 
                 var hasGuaranteedEssence = false;

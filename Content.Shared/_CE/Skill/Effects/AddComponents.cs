@@ -27,4 +27,9 @@ public sealed partial class AddComponents : CESkillEffect
     {
         return null;
     }
+
+    public override Robust.Shared.Utility.SpriteSpecifier? GetIcon(IEntityManager entManager, IPrototypeManager protoManager)
+    {
+        return null;
+    }
 }

@@ -221,6 +221,27 @@
     lifetime: 0.9
 
 - type: entity
+  id: CEEssenceConsumeVFX
+  categories: [ ForkFiltered ]
+  save: false
+  suffix: VFX
+  name: essence consume effect
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/essence_consume.rsi
+    drawdepth: Effects
+    layers:
+    - state: effect
+      shader: unshaded
+  - type: Physics
+    canCollide: false
+  - type: Tag
+    tags:
+      - HideContextMenu
+  - type: TimedDespawn
+    lifetime: 2
+
+- type: entity
   id: CEScientificInterestVFX
   categories: [ ForkFiltered ]
   save: false

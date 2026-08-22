@@ -19,6 +19,7 @@ public abstract partial class CESharedActionSystem
 
         SubscribeLocalEvent<CEActionManaCostComponent, ActionAttemptEvent>(OnManacostActionAttempt);
         SubscribeLocalEvent<CEActionStaminaCostComponent, ActionAttemptEvent>(OnStaminaCostActionAttempt);
+        SubscribeLocalEvent<CEActionEssenceCostComponent, ActionAttemptEvent>(OnEssenceCostActionAttempt);
         SubscribeLocalEvent<CEActionWeaponRequiredComponent, ActionAttemptEvent>(OnWeaponRequiredActionAttempt);
 
         SubscribeLocalEvent<CEActionSSDBlockComponent, ActionValidateEvent>(OnActionSSDAttempt);
@@ -62,6 +63,18 @@ public abstract partial class CESharedActionSystem
         if (playerMana.LastCharge < requiredMana)
         {
             Popup.PopupClient(Loc.GetString("ce-magic-spell-not-enough-mana"), args.User, args.User);
+            args.Cancelled = true;
+        }
+    }
+
+    private void OnEssenceCostActionAttempt(Entity<CEActionEssenceCostComponent> ent, ref ActionAttemptEvent args)
+    {
+        if (args.Cancelled)
+            return;
+
+        if (!_magicFocus.HasEnoughEssence(args.User, ent.Comp.EssenceCost))
+        {
+            Popup.PopupClient(Loc.GetString("ce-magic-spell-not-enough-essence"), args.User, args.User);
             args.Cancelled = true;
         }
     }

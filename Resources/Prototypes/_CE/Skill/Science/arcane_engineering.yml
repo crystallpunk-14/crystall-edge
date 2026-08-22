@@ -1,0 +1,34 @@
+- type: skill
+  id: DrillAdvanced
+  parent: ArcaneEngineeringSkillBase
+  previewEntity: CEDrillAdvanced
+
+- type: skill
+  id: Hoverboard
+  parent: ArcaneEngineeringSkillBase
+  previewEntity: CEVehicleHoverboard
+
+- type: skill
+  id: PortableEssenceAttractor
+  parent: ArcaneEngineeringSkillBase
+  previewEntity: CEPortableMagicEssenceAttractor
+
+- type: skill
+  id: NodeStabilizer
+  parent: ArcaneEngineeringSkillBase
+  previewEntity: CENodeStabilizerSphere
+
+- type: skill
+  id: ManaTransferGlove
+  parent: ArcaneEngineeringSkillBase
+  previewEntity: CEManaTransferGlove
+
+- type: skill
+  id: ThirdArmMiningModule
+  parent: ArcaneEngineeringSkillBase
+  previewEntity: CEThirdArmModuleMining
+
+- type: skill
+  id: ThaumaturgyGlassesAdvanced
+  parent: ArcaneEngineeringSkillBase
+  previewEntity: CEClothingEyesThaumaturgyGlassesAdvanced

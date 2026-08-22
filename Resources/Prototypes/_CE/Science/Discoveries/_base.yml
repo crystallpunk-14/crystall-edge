@@ -9,7 +9,7 @@
   id: MediumDifficult
   abstract: true
   generation:
-    radius: 4
+    radius: 3
     minTargetDistance: 4
     deadZoneLayers:
     - threshold: 0.1

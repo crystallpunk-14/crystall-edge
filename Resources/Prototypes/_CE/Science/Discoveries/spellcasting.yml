@@ -1,0 +1,51 @@
+#MARK: Medium
+
+- type: scienceDiscovery
+  id: CureWounds
+  parent: MediumDifficult
+  area: Spellcasting
+  targetAspects:
+  - Life
+  - Magic
+  - Healing
+  skill: CureWoundsTheory
+
+- type: scienceDiscovery
+  id: ConjureLight
+  parent: MediumDifficult
+  area: Spellcasting
+  targetAspects:
+  - Light
+  - Magic
+  - Light
+  skill: ConjureLightTheory
+
+- type: scienceDiscovery
+  id: ManaGift
+  parent: MediumDifficult
+  area: Spellcasting
+  targetAspects:
+  - Magic
+  - Life
+  - Healing
+  skill: ManaGiftTheory
+
+- type: scienceDiscovery
+  id: ManaSteal
+  parent: MediumDifficult
+  area: Spellcasting
+  targetAspects:
+  - Magic
+  - Mind
+  - Darkness
+  skill: ManaStealTheory
+
+- type: scienceDiscovery
+  id: FrostBlade
+  parent: MediumDifficult
+  area: Spellcasting
+  targetAspects:
+  - Weapon
+  - Frost
+  - Magic
+  skill: FrostBladeTheory

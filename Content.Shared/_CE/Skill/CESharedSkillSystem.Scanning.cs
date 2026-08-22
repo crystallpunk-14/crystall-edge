@@ -47,11 +47,8 @@ public abstract partial class CESharedSkillSystem
             if (!_proto.Resolve(skill, out var indexedSkill))
                 continue;
 
-            if(!_proto.Resolve(indexedSkill.Tree, out var indexedTree))
-                continue;
-
             var skillName = GetSkillName(skill);
-            sb.Append($"• [color={indexedTree.Color.ToHex()}]{skillName}[/color]\n");
+            sb.Append($"• [color={indexedSkill.Color.ToHex()}]{skillName}[/color]\n");
         }
 
         //sb.Append($"\n{Loc.GetString("ce-skill-menu-level")} {ent.Comp.SkillsSumExperience}/{ent.Comp.ExperienceMaxCap}\n");

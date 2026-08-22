@@ -169,13 +169,15 @@
 
 - type: entity
   id: CEActionLurkerJump
-  parent: CEActionSpellBase
   name: Jump
   description: You perform a powerful leap that can raise you by one level.
   components:
   - type: CEActionStaminaCost
     cost: 33
   - type: Action
+    itemIconStyle: BigAction
+    sound: !type:SoundPathSpecifier
+      path: /Audio/Magic/rumble.ogg
     useDelay: 3
     icon:
       sprite: _CE/Actions/lurker.rsi
@@ -217,7 +219,6 @@
 
 - type: entity
   id: CEActionLurkerShadowStep
-  parent: CEActionSpellBase
   name: Shadow Step
   description: A step through a tear in reality to a nearby spot you can see.
   components:
@@ -225,6 +226,9 @@
   - type: CEVisualizeWideLineAction
     width: 0.5
   - type: Action
+    itemIconStyle: BigAction
+    sound: !type:SoundPathSpecifier
+      path: /Audio/Magic/rumble.ogg
     useDelay: 30
     icon:
       sprite: _CE/Actions/lurker.rsi
@@ -275,7 +279,6 @@
 
 - type: entity
   id: CEActionLurkerFear
-  parent: CEActionSpellBase
   name: Primal Terror
   description: You plunge the target into primal terror, crippling their ability to fight back.
   components:
@@ -283,6 +286,9 @@
   - type: CEVisualizeAoEZoneAction
     radius: 0.5
   - type: Action
+    itemIconStyle: BigAction
+    sound: !type:SoundPathSpecifier
+      path: /Audio/Magic/rumble.ogg
     useDelay: 30
     icon:
       sprite: _CE/Actions/lurker.rsi

@@ -1,0 +1,82 @@
+
+- type: skill
+  id: CureWoundsTheory
+  parent: SpellcastingSkillBase
+  previewEntity: CEActionSpellCureWounds
+  icon:
+    sprite: _CE/Actions/Spells/cure_wounds.rsi
+    state: icon
+  effect: !type:DescribeAction
+    action: CEActionSpellCureWounds
+
+- type: skill
+  id: CureWoundsMastery
+  parent: SpellcastingMasterySkillBase
+  icon:
+    sprite: _CE/Actions/Spells/cure_wounds.rsi
+    state: icon
+  effect: !type:AddAction
+    action: CEActionSpellCureWounds
+
+- type: entity
+  id: CEActionSpellCureWounds
+  name: Cure wounds
+  description: You restore health to the creature you touch.
+  components:
+  - type: CEVisualizeRadiusTargetAction
+  - type: CEVisualizeAoEZoneAction
+    radius: 0.5
+  - type: CEActionManaCost
+    manaCost: 15
+  - type: CEActionEssenceCost
+    essenceCost:
+      Life: 2
+      Healing: 1
+  - type: CEActionStaminaCost
+    cost: 20
+  - type: Action
+    useDelay: 5
+    itemIconStyle: BigAction
+    sound: !type:SoundPathSpecifier
+      path: /Audio/Magic/rumble.ogg
+    icon:
+      sprite: _CE/Actions/Spells/cure_wounds.rsi
+      state: icon
+  - type: TargetAction
+    range: 1.5
+    interactOnMiss: false
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - MobState
+    event: !type:CEEntityTargetActionAnimationEvent
+      animation: AnimationCureWounds
+
+- type: entityEffectAnimation
+  id: AnimationCureWounds
+  movementSpeed: 0.5
+  duration: 2
+  events:
+    0:
+    - !type:SpawnEntity
+      spawns:
+      - CEEffectHealingGeneric
+    - !type:SayChat
+      sentence: "Et curabuntur"
+    0.5:
+    - !type:SpawnEntity
+      spawns:
+      - CEEffectHealingGeneric
+    1.0:
+    - !type:SpawnEntity
+      spawns:
+      - CEEffectHealingGeneric
+    1.5:
+    - !type:SpawnEntity
+      spawns:
+      - CEEffectHealingGeneric
+    - !type:HealEvenly
+      groups:
+        Brute: 15
+    - !type:SayChat
+      sentence: "vulnera tua"

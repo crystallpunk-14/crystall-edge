@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.EntityEffect;
 
@@ -37,6 +38,12 @@ public abstract partial class CEEntityCondition
     }
 
     protected abstract bool Check(EntityUid entity, CEEntityEffectArgs args);
+
+    /// <summary>
+    /// Human-readable explanation of what this condition requires, for UI that needs to tell the
+    /// player why something is unavailable (e.g. a failed-condition popup). Empty by default.
+    /// </summary>
+    public virtual string GetDescription(IEntityManager entityManager, IPrototypeManager prototype) => string.Empty;
 }
 
 /// <summary>

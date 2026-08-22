@@ -1,7 +1,8 @@
+using Content.Client._CE.Skill;
 using Content.Client.UserInterface.Controls;
-using Content.Shared._CE.Knowledge.Components;
-using Content.Shared._CE.Knowledge.Prototypes;
 using Content.Shared._CE.Pen;
+using Content.Shared._CE.Skill.Components;
+using Content.Shared._CE.Skill.Prototypes;
 using JetBrains.Annotations;
 using Robust.Client.Player;
 using Robust.Client.UserInterface;
@@ -47,10 +48,10 @@ public sealed partial class CEPenActionsBoundUserInterface : BoundUserInterface
 
     private List<RadialMenuOptionBase> BuildButtons(List<CEPenAction> actions, EntityUid user)
     {
-        // A lone "record knowledge" action skips its own top-level button - the knowledge
+        // A lone "record skill" action skips its own top-level button - the skill
         // submenu is shown directly, matching what the server does when opening the UI.
-        if (actions.Count == 1 && actions[0].Kind == CEPenActionKind.RecordKnowledge)
-            return BuildKnowledgeButtons(user);
+        if (actions.Count == 1 && actions[0].Kind == CEPenActionKind.RecordSkill)
+            return BuildSkillButtons(user);
 
         var options = new List<RadialMenuOptionBase>();
 
@@ -66,8 +67,8 @@ public sealed partial class CEPenActionsBoundUserInterface : BoundUserInterface
                     });
                     break;
 
-                case CEPenActionKind.RecordKnowledge:
-                    var nested = BuildKnowledgeButtons(user);
+                case CEPenActionKind.RecordSkill:
+                    var nested = BuildSkillButtons(user);
                     if (nested.Count == 0)
                         break;
 
@@ -83,26 +84,28 @@ public sealed partial class CEPenActionsBoundUserInterface : BoundUserInterface
         return options;
     }
 
-    private List<RadialMenuOptionBase> BuildKnowledgeButtons(EntityUid user)
+    private List<RadialMenuOptionBase> BuildSkillButtons(EntityUid user)
     {
         var options = new List<RadialMenuOptionBase>();
 
-        if (!EntMan.TryGetComponent<CEKnowledgeComponent>(user, out var knowledgeComp))
+        if (!EntMan.TryGetComponent<CESkillStorageComponent>(user, out var storage))
             return options;
 
-        foreach (var knowledgeId in knowledgeComp.Known)
+        var skillSystem = EntMan.System<CEClientSkillSystem>();
+
+        foreach (var skillId in storage.LearnedSkills)
         {
-            if (!_prototype.TryIndex(knowledgeId, out var knowledge))
+            if (!_prototype.TryIndex(skillId, out var skill))
                 continue;
 
-            var texture = knowledge.GetIconTexture();
+            var texture = skillSystem.GetSkillIcon(skillId);
 
-            options.Add(new RadialMenuActionOption<ProtoId<CEKnowledgePrototype>>(HandleKnowledgePicked, knowledgeId)
+            options.Add(new RadialMenuActionOption<ProtoId<CESkillPrototype>>(HandleSkillPicked, skillId)
             {
-                ToolTip = knowledge.GetTitle(_prototype),
+                ToolTip = skillSystem.GetSkillName(skillId),
                 IconSpecifier = texture is not null
                     ? RadialMenuIconSpecifier.With(texture)
-                    : RadialMenuIconSpecifier.With(knowledge.PreviewEntity),
+                    : RadialMenuIconSpecifier.With(skill.PreviewEntity),
             });
         }
 
@@ -114,9 +117,9 @@ public sealed partial class CEPenActionsBoundUserInterface : BoundUserInterface
         SendMessage(new CEPenActionsMessage(kind));
     }
 
-    private void HandleKnowledgePicked(ProtoId<CEKnowledgePrototype> knowledge)
+    private void HandleSkillPicked(ProtoId<CESkillPrototype> skill)
     {
-        SendMessage(new CEPenActionsMessage(CEPenActionKind.RecordKnowledge, knowledge));
+        SendMessage(new CEPenActionsMessage(CEPenActionKind.RecordSkill, skill));
     }
 
     protected override void Dispose(bool disposing)

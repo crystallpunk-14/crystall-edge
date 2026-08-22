@@ -1,36 +1,21 @@
 using System.Linq;
 using System.Text;
+using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.Skill.Components;
 using Content.Shared._CE.Skill.Prototypes;
-using Content.Shared._CE.Skill.Restrictions;
 using Content.Shared.Administration.Managers;
-using Content.Shared.Damage.Systems;
+using Content.Shared.DoAfter;
 using Content.Shared.Examine;
-using Content.Shared.FixedPoint;
-using Content.Shared.Hands.EntitySystems;
-using Content.Shared.Interaction;
-using Content.Shared.Interaction.Events;
-using Content.Shared.Popups;
-using Content.Shared.Stacks;
-using Content.Shared.Throwing;
-using Content.Shared.Whitelist;
-using Robust.Shared.Audio.Systems;
-using Robust.Shared.Network;
+using Robust.Shared.Maths;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Random;
-using Robust.Shared.Timing;
+using Robust.Shared.Serialization;
+using Robust.Shared.Utility;
 
 namespace Content.Shared._CE.Skill;
 
 public abstract partial class CESharedSkillSystem : EntitySystem
 {
-    [Dependency] private EntityWhitelistSystem _whitelist = default!;
-    [Dependency] private INetManager _net = default!;
-    [Dependency] private SharedAudioSystem _audio = default!;
-    [Dependency] private IGameTiming _timing = default!;
     [Dependency] private ExamineSystemShared _examine = default!;
-    [Dependency] private IRobustRandom _random = default!;
-    [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private ISharedAdminManager _admin = default!;
     [Dependency] private IPrototypeManager _proto = default!;
 
@@ -39,95 +24,36 @@ public abstract partial class CESharedSkillSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<CESkillStorageComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<CESkillPointConsumableComponent, UseInHandEvent>(OnInteracted);
 
         InitializeAdmin();
-        InitializeChecks();
         InitializeScanning();
-    }
-
-    private void OnInteracted(Entity<CESkillPointConsumableComponent> ent, ref UseInHandEvent args)
-    {
-        if (!_timing.IsFirstTimePredicted)
-            return;
-
-        if (ent.Comp.Whitelist is null || !_whitelist.IsValid(ent.Comp.Whitelist, args.User))
-            return;
-
-        if (_net.IsServer)
-        {
-            var collect = ent.Comp.Volume;
-
-            if (TryComp<StackComponent>(ent, out var stack))
-                collect *= stack.Count;
-
-            TryAddSkillPoints(args.User, ent.Comp.PointType, collect);
-        }
-
-        var position = Transform(ent).Coordinates;
-
-        //Client VFX
-        if (_net.IsClient)
-            SpawnAtPosition(ent.Comp.ConsumeEffect, position);
-
-        _audio.PlayPredicted(ent.Comp.ConsumeSound, position, args.User);
-
-        PredictedQueueDel(ent.Owner);
+        InitializeRead();
+        InitializePen();
     }
 
     private void OnMapInit(Entity<CESkillStorageComponent> ent, ref MapInitEvent args)
     {
-        //If at initialization we have any skill records, we automatically give them to this entity
+        //If at initialization we have any skill records, we automatically apply their effects to this entity
 
-        var free = ent.Comp.FreeLearnedSkills.ToList();
         var learned = ent.Comp.LearnedSkills.ToList();
-
-        ent.Comp.FreeLearnedSkills.Clear();
         ent.Comp.LearnedSkills.Clear();
-
-        foreach (var skill in free)
-        {
-            TryAddSkill(ent.Owner, skill, ent.Comp, true);
-        }
 
         foreach (var skill in learned)
         {
-            TryAddSkill(ent.Owner, skill, ent.Comp);
+            TryAddSkill(ent.Owner, skill, ent.Comp, force: true);
         }
     }
 
     /// <summary>
-    ///  Adds a skill tree to the player, allowing them to learn skills from it.
-    /// </summary>
-    public void AddSkillTree(EntityUid target,
-        ProtoId<CESkillTreePrototype> tree,
-        CESkillStorageComponent? component = null)
-    {
-        if (!Resolve(target, ref component, false))
-            return;
-
-        component.AvailableSkillTrees.Add(tree);
-        DirtyField(target, component, nameof(CESkillStorageComponent.AvailableSkillTrees));
-    }
-
-    public void RemoveSkillTree(EntityUid target,
-        ProtoId<CESkillTreePrototype> tree,
-        CESkillStorageComponent? component = null)
-    {
-        if (!Resolve(target, ref component, false))
-            return;
-
-        component.AvailableSkillTrees.Remove(tree);
-        DirtyField(target, component, nameof(CESkillStorageComponent.AvailableSkillTrees));
-    }
-
-    /// <summary>
-    /// Directly adds the skill to the player, bypassing any checks.
+    /// Directly adds the skill to the player. Checks <see cref="CESkillPrototype.Conditions"/> via
+    /// <see cref="SkillConditionsMet"/> unless <paramref name="force"/> is true - this is the single
+    /// authoritative checkpoint for whether a skill can be granted, callers no longer need to
+    /// pre-check conditions themselves.
     /// </summary>
     public bool TryAddSkill(EntityUid target,
         ProtoId<CESkillPrototype> skill,
         CESkillStorageComponent? component = null,
-        bool free = false)
+        bool force = false)
     {
         if (!Resolve(target, ref component, false))
             return false;
@@ -138,23 +64,10 @@ public abstract partial class CESharedSkillSystem : EntitySystem
         if (!_proto.Resolve(skill, out var indexedSkill))
             return false;
 
-        if (!_proto.Resolve(indexedSkill.Tree, out var indexedTree))
+        if (!force && !SkillConditionsMet(target, skill))
             return false;
 
-        foreach (var effect in indexedSkill.Effects)
-        {
-            effect.AddSkill(EntityManager, target);
-        }
-
-        if (free)
-            component.FreeLearnedSkills.Add(skill);
-        else
-        {
-            if (component.SkillPoints.TryGetValue(indexedTree.SkillType, out var skillContainer))
-            {
-                skillContainer.Sum += indexedSkill.LearnCost;
-            }
-        }
+        indexedSkill.Effect?.AddSkill(EntityManager, target);
 
         component.LearnedSkills.Add(skill);
         Dirty(target, component);
@@ -181,19 +94,7 @@ public abstract partial class CESharedSkillSystem : EntitySystem
         if (!_proto.Resolve(skill, out var indexedSkill))
             return false;
 
-        if (!_proto.Resolve(indexedSkill.Tree, out var indexedTree))
-            return false;
-
-        foreach (var effect in indexedSkill.Effects)
-        {
-            effect.RemoveSkill(EntityManager, target);
-        }
-
-        if (!component.FreeLearnedSkills.Remove(skill) &&
-            component.SkillPoints.TryGetValue(indexedTree.SkillType, out var skillContainer))
-        {
-            skillContainer.Sum -= indexedSkill.LearnCost;
-        }
+        indexedSkill.Effect?.RemoveSkill(EntityManager, target);
 
         Dirty(target, component);
         return true;
@@ -212,192 +113,117 @@ public abstract partial class CESharedSkillSystem : EntitySystem
         return component.LearnedSkills.Contains(skill);
     }
 
-    public bool HaveFreeSkill(EntityUid target,
-        ProtoId<CESkillPrototype> skill,
-        CESkillStorageComponent? component = null)
-    {
-        if (!Resolve(target, ref component, false))
-            return false;
-
-        return component.FreeLearnedSkills.Contains(skill);
-    }
-
-    /// <summary>
-    ///  Checks if the player can learn the specified skill.
-    /// </summary>
-    public bool CanLearnSkill(EntityUid target,
-        ProtoId<CESkillPrototype> skill,
-        CESkillStorageComponent? component = null)
-    {
-        if (!_proto.Resolve(skill, out var indexedSkill))
-            return false;
-
-        return CanLearnSkill(target, indexedSkill, component);
-    }
-
-    /// <summary>
-    ///  Checks if the player can learn the specified skill.
-    /// </summary>
-    public bool CanLearnSkill(EntityUid target,
-        CESkillPrototype skill,
-        CESkillStorageComponent? component = null,
-        bool checkSkillPoints = true,
-        bool checkRestrictions = true)
-    {
-        if (!Resolve(target, ref component, false))
-            return false;
-
-        if (!_proto.Resolve(skill.Tree, out var indexedTree))
-            return false;
-
-        //Already learned
-        if (HaveSkill(target, skill, component))
-            return false;
-
-        //Check if the skill is in the available skill trees
-        if (!component.AvailableSkillTrees.Contains(skill.Tree))
-            return false;
-
-        //Check skill points
-        if (checkSkillPoints)
-        {
-            if (!component.SkillPoints.TryGetValue(indexedTree.SkillType, out var skillContainer))
-                return false;
-
-            if (skillContainer.Sum + skill.LearnCost > skillContainer.Max)
-                return false;
-        }
-
-        if (checkRestrictions)
-        {
-            //Restrictions check
-            foreach (var req in skill.Restrictions)
-            {
-                if (!req.Check(EntityManager, target))
-                    return false;
-            }
-        }
-
-        return true;
-    }
-
-    /// <summary>
-    ///  Tries to learn the specified skill for the player.
-    /// </summary>
-    public bool TryLearnSkill(EntityUid target,
-        ProtoId<CESkillPrototype> skill,
-        CESkillStorageComponent? component = null)
-    {
-        if (!Resolve(target, ref component, false))
-            return false;
-
-        if (!CanLearnSkill(target, skill, component))
-            return false;
-
-        if (!TryAddSkill(target, skill, component))
-            return false;
-
-        return true;
-    }
-
     /// <summary>
     ///  Helper function to get the skill name for a given skill prototype.
     /// </summary>
     public string GetSkillName(ProtoId<CESkillPrototype> skill)
     {
         if (!_proto.Resolve(skill, out var indexedSkill))
-            return string.Empty;
+            return skill.Id;
 
-        if (indexedSkill.Name is not null)
-            return Loc.GetString(indexedSkill.Name);
+        if (indexedSkill.NameOverride is not null)
+            return Loc.GetString(indexedSkill.NameOverride);
 
-        foreach (var effect in indexedSkill.Effects)
-        {
-            var name = effect.GetName(EntityManager, _proto);
-            if (name != null)
-                return name;
-        }
+        if (GetSkillPreviewEntityProto(indexedSkill) is { } preview)
+            return preview.Name;
 
-        return string.Empty;
+        var name = indexedSkill.Effect?.GetName(EntityManager, _proto);
+        if (name != null)
+            return name;
+
+        return skill.Id;
     }
 
     /// <summary>
-    ///  Helper function to get the skill description for a given skill prototype.
+    ///  Helper function to get the skill's flavor description for a given skill prototype.
     /// </summary>
     public string GetSkillDescription(ProtoId<CESkillPrototype> skill)
     {
         if (!_proto.Resolve(skill, out var indexedSkill))
             return string.Empty;
 
+        if (indexedSkill.DescOverride is not null)
+            return Loc.GetString(indexedSkill.DescOverride);
+
+        if (GetSkillPreviewEntityProto(indexedSkill) is { } preview)
+            return preview.Description;
+
+        return string.Empty;
+    }
+
+    public SpriteSpecifier? GetSkillIcon(ProtoId<CESkillPrototype> skill)
+    {
+        if (!_proto.Resolve(skill, out var indexedSkill))
+            return null;
+
+        if (indexedSkill.IconOverride is not null)
+            return indexedSkill.IconOverride;
+
+        return indexedSkill.Effect?.GetIcon(EntityManager, _proto);
+    }
+
+    /// <summary>
+    /// Entity prototype to render a preview of, or null if <see cref="GetSkillIcon"/> should be
+    /// used instead (a flat icon takes priority over a multi-layer entity preview).
+    /// </summary>
+    public EntityPrototype? GetSkillPreviewEntity(ProtoId<CESkillPrototype> skill)
+    {
+        if (!_proto.Resolve(skill, out var indexedSkill))
+            return null;
+
+        return indexedSkill.IconOverride is null ? GetSkillPreviewEntityProto(indexedSkill) : null;
+    }
+
+    private EntityPrototype? GetSkillPreviewEntityProto(CESkillPrototype skill)
+    {
+        return skill.PreviewEntity is { } previewId && _proto.TryIndex(previewId, out var indexedProto)
+            ? indexedProto
+            : null;
+    }
+
+    /// <summary>
+    /// Builds a human-readable description of everything learning a skill does: its own
+    /// <see cref="CESkillEffect.GetDescription"/> (if any), plus a line from every other
+    /// skill-aware system (recipes, achievements, ...) that gates something behind it, collected by
+    /// raising <see cref="CEGetSkillEffectEvent"/>. Returns an empty string if nothing responded.
+    /// </summary>
+    public string GetSkillEffectDescription(ProtoId<CESkillPrototype> skill)
+    {
         var sb = new StringBuilder();
 
-        if (indexedSkill.Desc is not null)
-            sb.Append(Loc.GetString(indexedSkill.Desc));
+        if (_proto.Resolve(skill, out var indexedSkill) && indexedSkill.Effect is not null)
+            sb.Append(indexedSkill.Effect.GetDescription(EntityManager, _proto, skill));
 
-        foreach (var effect in indexedSkill.Effects)
+        var effects = new List<string>();
+        var ev = new CEGetSkillEffectEvent(skill, effects);
+        RaiseLocalEvent(ref ev);
+
+        foreach (var effect in effects)
         {
-            sb.Append(effect.GetDescription(EntityManager, _proto, skill) + "\n");
+            if (sb.Length > 0)
+                sb.Append('\n');
+
+            sb.Append(effect);
         }
 
         return sb.ToString();
     }
 
     /// <summary>
-    /// Obtaining all learned skills that are not prerequisites for other skills of this creature
+    /// Whether <paramref name="actor"/> currently satisfies <paramref name="skill"/>'s
+    /// <see cref="CESkillPrototype.Conditions"/>. Does not check whether it is already known.
     /// </summary>
-    public HashSet<ProtoId<CESkillPrototype>> GetFrontierSkills(Entity<CESkillStorageComponent?> ent)
+    public bool SkillConditionsMet(EntityUid actor, ProtoId<CESkillPrototype> skill)
     {
-        var skills = new HashSet<ProtoId<CESkillPrototype>>();
-        if (!Resolve(ent, ref ent.Comp, false))
-            return skills;
+        if (!_proto.Resolve(skill, out var indexedSkill))
+            return false;
 
-        var frontier = ent.Comp.LearnedSkills.ToHashSet();
-        foreach (var skill in ent.Comp.LearnedSkills)
-        {
-            if (!_proto.Resolve(skill, out var indexedSkill))
-                continue;
-
-            if (HaveFreeSkill(ent, skill))
-                continue;
-
-            foreach (var req in indexedSkill.Restrictions)
-            {
-                if (req is NeedPrerequisite prerequisite && frontier.Contains(prerequisite.Prerequisite))
-                    frontier.Remove(prerequisite.Prerequisite);
-            }
-        }
-
-        return frontier;
+        var args = new CEEntityEffectArgs(EntityManager, actor, null, Angle.Zero, 0f, actor, null);
+        return indexedSkill.Conditions.All(condition => condition.Passes(args));
     }
 
     /// <summary>
-    /// Returns a list of all skills the entity can currently learn.
-    /// </summary>
-    public HashSet<ProtoId<CESkillPrototype>> GetLearnableSkills(Entity<CESkillStorageComponent?> ent,
-        bool checkSkillPoints = true,
-        bool checkRestrictions = true)
-    {
-        var skills = new HashSet<ProtoId<CESkillPrototype>>();
-
-        if (!Resolve(ent, ref ent.Comp, false))
-            return skills;
-
-        foreach (var skill in _proto.EnumeratePrototypes<CESkillPrototype>())
-        {
-            if (ent.Comp.LearnedSkills.Contains(skill))
-                continue;
-
-            if (!CanLearnSkill(ent.Owner, skill, ent.Comp, checkSkillPoints, checkRestrictions))
-                continue;
-
-            skills.Add(skill);
-        }
-
-        return skills;
-    }
-
-    /// <summary>
-    ///  Helper function to reset skills to only learned skills
+    ///  Helper function to reset all learned skills.
     /// </summary>
     public bool TryResetSkills(Entity<CESkillStorageComponent?> ent)
     {
@@ -406,88 +232,7 @@ public abstract partial class CESharedSkillSystem : EntitySystem
 
         for (var i = ent.Comp.LearnedSkills.Count - 1; i >= 0; i--)
         {
-            if (HaveFreeSkill(ent, ent.Comp.LearnedSkills[i], ent.Comp))
-            {
-                continue;
-            }
-
             TryRemoveSkill(ent, ent.Comp.LearnedSkills[i], ent.Comp);
-        }
-
-        return true;
-    }
-
-    /// <summary>
-    /// Increases the number of skill points for a character, limited to a certain amount.
-    /// </summary>
-    public bool TryAddSkillPoints(Entity<CESkillStorageComponent?> ent,
-        ProtoId<CESkillPointPrototype> type,
-        FixedPoint2 points,
-        FixedPoint2? limit = null,
-        bool silent = false)
-    {
-        if (!Resolve(ent, ref ent.Comp, false))
-            return false;
-
-        if (!_proto.Resolve(type, out var indexedType))
-            return false;
-
-        if (!ent.Comp.SkillPoints.TryGetValue(type, out var skillContainer))
-        {
-            skillContainer = new CESkillPointContainerEntry();
-            ent.Comp.SkillPoints[type] = skillContainer;
-        }
-
-        skillContainer.Max = limit is not null
-            ? FixedPoint2.Min(skillContainer.Max + points, limit.Value)
-            : skillContainer.Max + points;
-
-        DirtyField(ent, ent.Comp, nameof(CESkillStorageComponent.SkillPoints));
-
-        if (points <= 0)
-            return true;
-
-        if (indexedType.GetPointPopup is not null && !silent && _timing.IsFirstTimePredicted)
-            _popup.PopupClient(Loc.GetString(indexedType.GetPointPopup, ("count", points)), ent, ent);
-
-        return true;
-    }
-
-    /// <summary>
-    /// Removes skill points. If a character has accumulated skills exceeding the new memory limit, random skills will be removed.
-    /// </summary>
-    public bool TryRemoveSkillPoints(Entity<CESkillStorageComponent?> ent,
-        ProtoId<CESkillPointPrototype> type,
-        FixedPoint2 points,
-        bool silent = false)
-    {
-        if (points <= 0)
-            return true;
-
-        if (!Resolve(ent, ref ent.Comp, false))
-            return false;
-
-        if (!_proto.Resolve(type, out var indexedType))
-            return false;
-
-        if (!ent.Comp.SkillPoints.TryGetValue(type, out var skillContainer))
-            return false;
-
-        skillContainer.Max = FixedPoint2.Max(skillContainer.Max - points, 0);
-        Dirty(ent);
-
-        if (indexedType.LosePointPopup is not null && !silent && _timing.IsFirstTimePredicted)
-            _popup.PopupClient(Loc.GetString(indexedType.LosePointPopup, ("count", points)), ent, ent);
-
-        while (skillContainer.Sum > skillContainer.Max)
-        {
-            var frontier = GetFrontierSkills((ent, ent.Comp));
-            if (frontier.Count == 0)
-                break;
-
-            //Randomly remove one of the frontier skills
-            var skill = _random.Pick(frontier);
-            TryRemoveSkill(ent, skill, ent.Comp);
         }
 
         return true;
@@ -496,3 +241,18 @@ public abstract partial class CESharedSkillSystem : EntitySystem
 
 [ByRefEvent]
 public record struct CESkillLearnedEvent(ProtoId<CESkillPrototype> Skill, EntityUid User);
+
+/// <summary>
+/// Broadcast query raised by <see cref="CESharedSkillSystem.GetSkillEffectDescription"/> to collect
+/// what a skill unlocks. Every system that gates something behind a skill (recipes, achievements,
+/// etc.) should subscribe and append its own description to <see cref="Effects"/> when it
+/// recognizes <see cref="Skill"/>.
+/// </summary>
+[ByRefEvent]
+public readonly record struct CEGetSkillEffectEvent(ProtoId<CESkillPrototype> Skill, List<string> Effects);
+
+/// <summary>
+/// DoAfter fired when reading a <see cref="Components.CESkillBookComponent"/> item finishes.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed partial class CESkillReadDoAfterEvent : SimpleDoAfterEvent;

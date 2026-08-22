@@ -36,7 +36,7 @@ public sealed partial class CEPenSystem : EntitySystem
         ent.Comp.PendingTarget = target;
 
         // A lone "write" action needs no menu - anything else (including a lone "record
-        // knowledge" action, which still needs the achievement submenu) opens the radial menu.
+        // skill" action, which still needs the skill submenu) opens the radial menu.
         if (actions.Count == 1 && actions[0].Kind == CEPenActionKind.Write)
         {
             _paper.TryWrite(target, args.User, ent.Owner);
@@ -69,9 +69,9 @@ public sealed partial class CEPenSystem : EntitySystem
             case CEPenActionKind.Write:
                 _paper.TryWrite(target, args.Actor, ent.Owner);
                 break;
-            case CEPenActionKind.RecordKnowledge:
-                if (args.Knowledge is { } knowledge)
-                    RaiseLocalEvent(args.Actor, new CEPenRecordKnowledgeRequestEvent(ent.Owner, target, knowledge));
+            case CEPenActionKind.RecordSkill:
+                if (args.Skill is { } skill)
+                    RaiseLocalEvent(args.Actor, new CEPenRecordSkillRequestEvent(ent.Owner, target, skill));
                 break;
         }
     }

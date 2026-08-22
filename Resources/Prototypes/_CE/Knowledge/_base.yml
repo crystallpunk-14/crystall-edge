@@ -1,9 +1,0 @@
-- type: CEKnowledge
-  id: ArcaneEngineeringKnowledgeBase
-  abstract: true
-  book: CEBaseScienceBookArcaneEngineering
-
-- type: CEKnowledge
-  id: ArtifactoricKnowledgeBase
-  abstract: true
-  book: CEBaseScienceBookArtifactoric

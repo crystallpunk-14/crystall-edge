@@ -1,6 +1,6 @@
 using System.Numerics;
 using Content.Client._CE.MagicEssence.Controls;
-using Content.Shared._CE.Knowledge.Prototypes;
+using Content.Client._CE.Skill;
 using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.Science;
 using Content.Shared._CE.Science.Components;
@@ -27,6 +27,7 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
     private readonly ItemSlotsSystem _itemSlots = default!;
     private readonly CEResearchTableSystem _researchTable = default!;
     private readonly CEClientScienceSystem _science = default!;
+    private readonly CEClientSkillSystem _skill = default!;
 
     private readonly Dictionary<ProtoId<CEScienceAreaPrototype>, CEScienceAreaCardControl> _areaCards = new();
     private readonly Dictionary<ProtoId<CEScienceDiscoveryPrototype>, CEScienceDiscoveryCardControl> _discoveryCards = new();
@@ -50,6 +51,7 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
         _itemSlots = _entityManager.System<ItemSlotsSystem>();
         _researchTable = _entityManager.System<CEResearchTableSystem>();
         _science = _entityManager.System<CEClientScienceSystem>();
+        _skill = _entityManager.System<CEClientSkillSystem>();
 
         KnowledgeControl.OnMerge += (first, second) => OnMergeAspects?.Invoke(first, second);
         StartResearchButton.OnPressed += _ =>
@@ -197,11 +199,11 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
             foreach (var discoveryId in project.Candidates)
             {
                 if (!_prototype.TryIndex(discoveryId, out var discovery) ||
-                    !_prototype.TryIndex(discovery.Knowledge, out var knowledge) ||
+                    !_prototype.HasIndex(discovery.Skill) ||
                     !_prototype.TryIndex(discovery.Area, out var area))
                     continue;
 
-                var card = new CEScienceDiscoveryCardControl(discovery, knowledge, area.Color);
+                var card = new CEScienceDiscoveryCardControl(discovery, area.Color);
                 card.OnSelect += selected =>
                 {
                     if (_selectedDiscovery is { } previous && _discoveryCards.TryGetValue(previous, out var previousCard))
@@ -236,10 +238,10 @@ public sealed partial class CEResearchTableWindow : DefaultWindow
         if (project.Discovery is not { } discoveryId ||
             !_prototype.TryIndex(discoveryId, out var discovery) ||
             !_prototype.TryIndex(discovery.Area, out var area) ||
-            !_prototype.TryIndex(discovery.Knowledge, out var knowledge))
+            !_prototype.HasIndex(discovery.Skill))
             return;
 
-        ProjectTitleLabel.Text = Loc.GetString("ce-research-table-project-title", ("discovery", knowledge.GetTitle(_prototype)));
+        ProjectTitleLabel.Text = Loc.GetString("ce-research-table-project-title", ("discovery", _skill.GetSkillName(discovery.Skill)));
 
         var hasParallax = !string.IsNullOrEmpty(area.Parallax);
         if (hasParallax)
