@@ -13,7 +13,7 @@
   description: You create a powerful temporary weapon made of ice that deals high damage.
   components:
   - type: CEActionManaCost
-    manaCost: 17
+    manaCost: 25
   - type: CEActionEssenceCost
     essenceCost:
       Weapon: 1

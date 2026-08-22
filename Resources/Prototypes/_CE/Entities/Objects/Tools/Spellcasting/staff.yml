@@ -123,3 +123,5 @@
       - state: icon
   - type: CEMagicFocus
     minimumVolume: 10
+  - type: StaticPrice
+    price: 80
