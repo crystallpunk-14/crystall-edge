@@ -1,9 +1,12 @@
 - type: skill
   id: FrostBladeTheory
   parent: SpellcastingSkillBase
+  previewEntity: CEActionFrostBlade
   icon:
     sprite: _CE/Objects/Weapons/Sword/ice_temporary.rsi
     state: icon
+  effect: !type:DescribeAction
+    action: CEActionFrostBlade
 
 - type: skill
   id: FrostBladeMastery

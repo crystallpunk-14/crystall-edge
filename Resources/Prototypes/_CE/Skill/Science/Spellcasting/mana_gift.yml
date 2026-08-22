@@ -1,9 +1,12 @@
 - type: skill
   id: ManaGiftTheory
   parent: SpellcastingSkillBase
+  previewEntity: CEActionSpellManaGift
   icon:
     sprite: _CE/Actions/Spells/mana_gift.rsi
     state: icon
+  effect: !type:DescribeAction
+    action: CEActionSpellManaGift
 
 - type: skill
   id: ManaGiftMastery

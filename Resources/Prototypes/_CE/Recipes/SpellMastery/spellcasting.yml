@@ -1,0 +1,104 @@
+# CrystallEdge: rough copy of the Recipes/InfusionAltar/ shape, adapted to spellMasteryRitualRecipe.
+# Pedestal ingredients are rough placeholders (picked from materials that already exist elsewhere in
+# the repo) - not yet cleaned up/unified or balanced.
+
+- type: spellMasteryRitualRecipe
+  id: ConjureLightMasteryRitual
+  requiredSkill: ConjureLightTheory
+  result: ConjureLightMastery
+  instability: 1
+  ritualDuration: 20
+  essenceAmount: { min: 10, max: 10 }
+  essenceWeights:
+    Magic: 1
+    Light: 1
+  pedestalCount: { min: 3, max: 3 }
+  pedestalRequirementPool:
+  - requirement: !type:ProtoIdResource
+      protoId: CECandle
+      count: 1
+    weight: 2
+  - requirement: !type:ProtoIdResource
+      protoId: CELantern
+      count: 1
+    weight: 1
+
+- type: spellMasteryRitualRecipe
+  id: CureWoundsMasteryRitual
+  requiredSkill: CureWoundsTheory
+  result: CureWoundsMastery
+  instability: 1
+  ritualDuration: 20
+  essenceAmount: { min: 10, max: 15 }
+  essenceWeights:
+    Magic: 1
+    Life: 2
+    Healing: 1
+  pedestalCount: { min: 3, max: 5 }
+  pedestalRequirementPool:
+  - requirement: !type:StackResource
+      stack: CEPlastiseal
+      count: 1
+    weight: 1
+  - requirement: !type:StackResource
+      stack: CEGauze
+      count: 1
+    weight: 1
+
+- type: spellMasteryRitualRecipe
+  id: FrostBladeMasteryRitual
+  requiredSkill: FrostBladeTheory
+  result: FrostBladeMastery
+  instability: 1.5
+  ritualDuration: 25
+  essenceAmount: { min: 9, max: 9 }
+  essenceWeights:
+    Magic: 1
+    Weapon: 1
+    Frost: 2
+  pedestalCount: { min: 5, max: 5 }
+  pedestalRequirementPool:
+  - requirement: !type:StackResource
+      stack: CESnow
+      count: 1
+    weight: 1
+  - requirement: !type:ProtoIdResource
+      protoId: CEWeaponDaggerIron
+      count: 1
+    weight: 1
+
+- type: spellMasteryRitualRecipe
+  id: ManaGiftMasteryRitual
+  requiredSkill: ManaGiftTheory
+  result: ManaGiftMastery
+  instability: 1
+  ritualDuration: 20
+  essenceAmount: { min: 10, max: 15 }
+  essenceWeights:
+    Magic: 2
+    Life: 1
+    Healing: 1
+  pedestalCount: { min: 3, max: 3 }
+  pedestalRequirementPool:
+  - requirement: !type:ProtoIdResource
+      protoId: CEEnergyCrystalShard
+      count: 1
+    weight: 1
+
+- type: spellMasteryRitualRecipe
+  id: ManaStealMasteryRitual
+  requiredSkill: ManaStealTheory
+  result: ManaStealMastery
+  instability: 1.5
+  ritualDuration: 25
+  essenceAmount: { min: 10, max: 15 }
+  essenceWeights:
+    Magic: 2
+    Mind: 1
+    Darkness: 1
+  pedestalCount: { min: 3, max: 3 }
+  pedestalRequirementPool:
+  - requirement: !type:ProtoIdResource
+      protoId: CEEnergyCrystalShard
+      count: 1
+    weight: 1

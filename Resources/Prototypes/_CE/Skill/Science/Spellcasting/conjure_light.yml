@@ -1,9 +1,12 @@
 - type: skill
   id: ConjureLightTheory
   parent: SpellcastingSkillBase
+  previewEntity: CEActionSpellConjureLight
   icon:
     sprite: _CE/Actions/Spells/conjure_light.rsi
     state: icon
+  effect: !type:DescribeAction
+    action: CEActionSpellConjureLight
 
 - type: skill
   id: ConjureLightMastery

@@ -1,9 +1,12 @@
 - type: skill
   id: ManaStealTheory
   parent: SpellcastingSkillBase
+  previewEntity: CEActionSpellManaSteal
   icon:
     sprite: _CE/Actions/Spells/mana_steal.rsi
     state: icon
+  effect: !type:DescribeAction
+    action: CEActionSpellManaSteal
 
 - type: skill
   id: ManaStealMastery
