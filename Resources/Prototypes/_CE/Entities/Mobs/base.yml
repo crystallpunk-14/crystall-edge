@@ -133,6 +133,9 @@
   - type: Battery
     maxCharge: 100
     startingCharge: 100
+  - type: BatterySelfRecharger
+    autoRechargeRate: 1
+    autoRechargePauseTime: 1
   - type: RadiationReceiver
   - type: CEEnergyRadiationRegeneration
   - type: CEEnergyOverchargeDamage
