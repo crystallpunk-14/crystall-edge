@@ -1,4 +1,5 @@
 using Content.Shared._CE.MagicEssence.Prototypes;
+using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -41,4 +42,17 @@ public sealed partial class CEMagicFocusComponent : Component
     /// </summary>
     [DataField]
     public int MaxEssenceTypes = 5;
+
+    /// <summary>
+    /// VFX entity spawned client-side (one per essence type absorbed, tinted to that type's color
+    /// with a random rotation) when charging completes.
+    /// </summary>
+    [DataField]
+    public EntProtoId ChargeEffect = "CEEssenceConsumeVFX";
+
+    /// <summary>
+    /// Sound played when charging completes.
+    /// </summary>
+    [DataField]
+    public SoundSpecifier? ChargeSound = new SoundPathSpecifier("/Audio/_CE/Effects/essence_consume.ogg");
 }

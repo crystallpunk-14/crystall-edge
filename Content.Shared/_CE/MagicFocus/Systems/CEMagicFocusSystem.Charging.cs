@@ -6,8 +6,10 @@ using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
+using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.MagicFocus.Systems;
 
@@ -17,6 +19,8 @@ public sealed partial class CEMagicFocusSystem
     [Dependency] private SharedSolutionContainerSystem _solution = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IPrototypeManager _proto = default!;
 
     private void InitCharging()
@@ -56,6 +60,7 @@ public sealed partial class CEMagicFocusSystem
         }
 
         var totalCharged = 0;
+        var chargedTypes = new List<ProtoId<CEMagicEssenceTypePrototype>>();
         foreach (var (type, available) in GetLiquidEssence(target))
         {
             if (!_proto.TryIndex(type, out var essenceType) || essenceType.Reagent is not { } reagentId)
@@ -90,6 +95,7 @@ public sealed partial class CEMagicFocusSystem
 
             ent.Comp.CurrentCharge[type] = current + removed.Int();
             totalCharged += removed.Int();
+            chargedTypes.Add(type);
         }
 
         if (totalCharged <= 0)
@@ -100,6 +106,12 @@ public sealed partial class CEMagicFocusSystem
 
         Dirty(ent);
         _popup.PopupEntity(Loc.GetString("ce-magic-focus-charge-success", ("amount", totalCharged)), ent.Owner, args.Args.User);
+
+        if (_timing.IsFirstTimePredicted)
+        {
+            _audio.PlayPredicted(ent.Comp.ChargeSound, target, args.User);
+            RaiseLocalEvent(ent.Owner, new CEMagicFocusChargedEvent(target, chargedTypes));
+        }
     }
 
     /// <summary>
@@ -130,3 +142,13 @@ public sealed partial class CEMagicFocusSystem
 /// </summary>
 [Serializable, NetSerializable]
 public sealed partial class CEMagicFocusChargeDoAfterEvent : SimpleDoAfterEvent;
+
+
+/// <summary>
+/// Raised right after magic focus was successfully charged.
+/// </summary>
+public sealed class CEMagicFocusChargedEvent(EntityUid target, List<ProtoId<CEMagicEssenceTypePrototype>> types) : EntityEventArgs
+{
+    public readonly EntityUid Target = target;
+    public readonly List<ProtoId<CEMagicEssenceTypePrototype>> Types = types;
+}
