@@ -1,6 +1,13 @@
 - type: skill
-  id: ManaSteal
+  id: ManaStealTheory
   parent: SpellcastingSkillBase
+  icon:
+    sprite: _CE/Actions/Spells/mana_steal.rsi
+    state: icon
+
+- type: skill
+  id: ManaStealMastery
+  parent: SpellcastingMasterySkillBase
   icon:
     sprite: _CE/Actions/Spells/mana_steal.rsi
     state: icon

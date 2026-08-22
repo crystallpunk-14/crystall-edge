@@ -1,7 +1,14 @@
 
 - type: skill
-  id: CureWounds
+  id: CureWoundsTheory
   parent: SpellcastingSkillBase
+  icon:
+    sprite: _CE/Actions/Spells/cure_wounds.rsi
+    state: icon
+
+- type: skill
+  id: CureWoundsMastery
+  parent: SpellcastingMasterySkillBase
   icon:
     sprite: _CE/Actions/Spells/cure_wounds.rsi
     state: icon

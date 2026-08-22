@@ -1,6 +1,13 @@
 - type: skill
-  id: FrostBlade
+  id: FrostBladeTheory
   parent: SpellcastingSkillBase
+  icon:
+    sprite: _CE/Objects/Weapons/Sword/ice_temporary.rsi
+    state: icon
+
+- type: skill
+  id: FrostBladeMastery
+  parent: SpellcastingMasterySkillBase
   icon:
     sprite: _CE/Objects/Weapons/Sword/ice_temporary.rsi
     state: icon

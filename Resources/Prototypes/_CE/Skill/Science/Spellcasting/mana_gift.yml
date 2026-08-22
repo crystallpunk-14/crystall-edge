@@ -1,6 +1,13 @@
 - type: skill
-  id: ManaGift
+  id: ManaGiftTheory
   parent: SpellcastingSkillBase
+  icon:
+    sprite: _CE/Actions/Spells/mana_gift.rsi
+    state: icon
+
+- type: skill
+  id: ManaGiftMastery
+  parent: SpellcastingMasterySkillBase
   icon:
     sprite: _CE/Actions/Spells/mana_gift.rsi
     state: icon

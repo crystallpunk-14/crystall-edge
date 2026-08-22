@@ -1,6 +1,13 @@
 - type: skill
-  id: ConjureLight
+  id: ConjureLightTheory
   parent: SpellcastingSkillBase
+  icon:
+    sprite: _CE/Actions/Spells/conjure_light.rsi
+    state: icon
+
+- type: skill
+  id: ConjureLightMastery
+  parent: SpellcastingMasterySkillBase
   icon:
     sprite: _CE/Actions/Spells/conjure_light.rsi
     state: icon
