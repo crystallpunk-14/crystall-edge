@@ -4,7 +4,7 @@ meta:
   engineVersion: 283.1.0
   forkId: ""
   forkVersion: ""
-  time: 08/22/2026 12:21:11
+  time: 08/22/2026 13:09:58
   entityCount: 1764
 maps:
 - 1
@@ -3402,7 +3402,7 @@ entities:
       pos: 6.5,16.5
     - type: Door
       state: Opening
-      secondsUntilStateChange: -53155.6
+      secondsUntilStateChange: -53188.14
   - uid: 619
     components:
     - type: Transform
