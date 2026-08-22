@@ -16,40 +16,14 @@
   - type: CEMagicFocusInhand
   - type: CEMagicFocus
   - type: Wieldable
-  - type: CEWeapon
-    range: 0.75
-    hitSound:
-      collection: MetalThud
-    effectSlots:
-      OnHit:
-      - !type:Damage
-        damage:
-          types:
-            Blunt: 4
-      OnHeavyHit:
-      - !type:Damage
-        damage:
-          types:
-            Blunt: 4
-    animations:
-      Primary:
-      - anim: StaffAttackLight1
-      - anim: StaffAttackLight2
-      Secondary:
-      - anim: StaffAttackHeavy
-  - type: CEWeaponStaminaCost
-    costs:
-      Primary: 5
-      Secondary: 8
-  - type: CERotationForAnimation
-    rotation: 135
+
 
 - type: entity
   id: CECastingStaffAdmin
   parent: CESpellcastingStaffBase
   name: spellcasting admin staff
   description: TODO
-  categories: [ DoNotMap ]
+  categories: [ ForkFiltered, DoNotMap ]
   components:
   - type: Sprite
     sprite: _CE/Objects/Tools/spellcasting_staff.rsi
