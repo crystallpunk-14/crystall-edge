@@ -178,8 +178,6 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
         if (!_container.TryGetContainer(ent.Owner, ent.Comp.PaperSlotId, out var container))
             return;
 
-        // Eligibility was already checked when this discovery was drawn into the offer
-        // (DiscoveryRequirementsMet); no need to re-gate a puzzle the player already solved.
         _skill.TryAddSkill(args.Actor, discovery.Skill);
 
         _container.Remove(item, container);

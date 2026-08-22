@@ -60,6 +60,13 @@ public sealed partial class CESkillPrototype : IPrototype, IInheritingPrototype
     public EntProtoId Book = "CEBaseScienceBookUndefined";
 
     /// <summary>
+    /// Whether this skill can be recorded into a book via the pen-writing system
+    /// (<see cref="CESharedSkillSystem.InitializePen"/>).
+    /// </summary>
+    [DataField]
+    public bool WritableToBook = true;
+
+    /// <summary>
     /// Skill effect. Used to determine what happens when the player learns the skill. Optional -
     /// a skill with no effect is a pure "known/not known" flag, gating whatever external systems
     /// (recipes, achievements, ...) choose to check it.

@@ -40,18 +40,20 @@ public abstract partial class CESharedSkillSystem : EntitySystem
 
         foreach (var skill in learned)
         {
-            TryAddSkill(ent.Owner, skill, ent.Comp);
+            TryAddSkill(ent.Owner, skill, ent.Comp, force: true);
         }
     }
 
     /// <summary>
-    /// Directly adds the skill to the player. Does not check <see cref="CESkillPrototype.Conditions"/> -
-    /// callers that need to gate learning on a player-facing action should check
-    /// <see cref="SkillConditionsMet"/> themselves first (e.g. reading a book).
+    /// Directly adds the skill to the player. Checks <see cref="CESkillPrototype.Conditions"/> via
+    /// <see cref="SkillConditionsMet"/> unless <paramref name="force"/> is true - this is the single
+    /// authoritative checkpoint for whether a skill can be granted, callers no longer need to
+    /// pre-check conditions themselves.
     /// </summary>
     public bool TryAddSkill(EntityUid target,
         ProtoId<CESkillPrototype> skill,
-        CESkillStorageComponent? component = null)
+        CESkillStorageComponent? component = null,
+        bool force = false)
     {
         if (!Resolve(target, ref component, false))
             return false;
@@ -60,6 +62,9 @@ public abstract partial class CESharedSkillSystem : EntitySystem
             return false;
 
         if (!_proto.Resolve(skill, out var indexedSkill))
+            return false;
+
+        if (!force && !SkillConditionsMet(target, skill))
             return false;
 
         indexedSkill.Effect?.AddSkill(EntityManager, target);

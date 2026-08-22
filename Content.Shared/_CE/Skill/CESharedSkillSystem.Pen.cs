@@ -61,7 +61,7 @@ public abstract partial class CESharedSkillSystem
         if (!CanRecordSkill(args.Target))
             return;
 
-        if (!_proto.HasIndex(args.Skill))
+        if (!_proto.TryIndex(args.Skill, out var skillProto) || !skillProto.WritableToBook)
             return;
 
         var doAfterArgs = new DoAfterArgs(EntityManager, ent.Owner, ReadTime, new CEPenRecordSkillDoAfterEvent(args.Skill), ent, target: args.Target, used: args.Pen)
@@ -87,7 +87,7 @@ public abstract partial class CESharedSkillSystem
         if (!HaveSkill(ent.Owner, KnowledgeCopyingSkill, ent.Comp))
             return;
 
-        if (!_proto.TryIndex(args.Skill, out var skill))
+        if (!_proto.TryIndex(args.Skill, out var skill) || !skill.WritableToBook)
             return;
 
         var coordinates = Transform(target).Coordinates;
