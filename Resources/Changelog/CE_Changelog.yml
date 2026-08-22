@@ -757,3 +757,19 @@
   id: 1071
   time: '2026-08-20T16:00:01.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/426
+- author: TheShuEd
+  changes:
+  - message: Passive mana regeneration has been added
+    type: Add
+  - message: "The \u201CKnowledge Copying\u201D skill has been added\u2014without\
+      \ it, it is now impossible to create knowledge books. Scientists learn this\
+      \ skill at the start of the round; it can be recorded and passed on to other\
+      \ players."
+    type: Add
+  - message: "Added a new research branch for scientists, \u201CSpellcasting,\u201D\
+      \ which allows them to teach spells to players. Magic focus items (staffs) for\
+      \ casting spells, and much more."
+    type: Add
+  id: 1072
+  time: '2026-08-22T13:16:18.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/427
