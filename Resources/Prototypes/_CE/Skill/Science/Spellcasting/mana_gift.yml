@@ -1,0 +1,57 @@
+- type: skill
+  id: ManaGift
+  parent: SpellcastingSkillBase
+  icon:
+    sprite: _CE/Actions/Spells/mana_gift.rsi
+    state: icon
+  effect: !type:AddAction
+    action: CEActionSpellManaGift
+
+- type: entity
+  id: CEActionSpellManaGift
+  name: Mana gift
+  description: You restore mana to the selected target.
+  components:
+  - type: CEVisualizeRadiusTargetAction
+  - type: CEVisualizeAoEZoneAction
+    radius: 0.5
+  - type: CEActionManaCost
+    canModifyManacost: false
+    manaCost: 25
+  - type: Action
+    useDelay: 2
+    itemIconStyle: BigAction
+    sound: !type:SoundPathSpecifier
+      path: /Audio/Magic/rumble.ogg
+    icon:
+      sprite: _CE/Actions/Spells/mana_gift.rsi
+      state: icon
+  - type: TargetAction
+    range: 1.5
+    interactOnMiss: false
+  - type: EntityTargetAction
+    canTargetSelf: false
+    whitelist:
+      requireAll: true
+      components:
+      - Battery
+    event: !type:CEEntityTargetActionAnimationEvent
+      animation: AnimationManaGift
+
+- type: entityEffectAnimation
+  id: AnimationManaGift
+  movementSpeed: 0.5
+  duration: 0.5
+  events:
+    0:
+    - !type:SpawnEntity
+      spawns:
+      - CEEffectManaRestoreGeneric
+    - !type:SayChat
+      sentence: "Dare magis"
+    0.45:
+    - !type:SpawnEntity
+      spawns:
+      - CEEffectManaRestoreGeneric
+    - !type:ChangeMana
+      amount: 25

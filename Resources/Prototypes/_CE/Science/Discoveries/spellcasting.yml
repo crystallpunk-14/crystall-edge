@@ -19,3 +19,33 @@
   - Magic
   - Light
   skill: ConjureLight
+
+- type: scienceDiscovery
+  id: ManaGift
+  parent: MediumDifficult
+  area: Spellcasting
+  targetAspects:
+  - Magic
+  - Life
+  - Healing
+  skill: ManaGift
+
+- type: scienceDiscovery
+  id: ManaSteal
+  parent: MediumDifficult
+  area: Spellcasting
+  targetAspects:
+  - Magic
+  - Mind
+  - Darkness
+  skill: ManaSteal
+
+- type: scienceDiscovery
+  id: FrostBlade
+  parent: MediumDifficult
+  area: Spellcasting
+  targetAspects:
+  - Weapon
+  - Frost
+  - Magic
+  skill: FrostBlade

@@ -1,0 +1,56 @@
+- type: skill
+  id: ManaSteal
+  parent: SpellcastingSkillBase
+  icon:
+    sprite: _CE/Actions/Spells/mana_steal.rsi
+    state: icon
+  effect: !type:AddAction
+    action: CEActionSpellManaSteal
+
+- type: entity
+  id: CEActionSpellManaSteal
+  name: Mana steal
+  description: You steal mana from the target and add it to your own reserves.
+  components:
+  - type: CEVisualizeRadiusTargetAction
+  - type: CEVisualizeAoEZoneAction
+    radius: 0.5
+  - type: Action
+    useDelay: 8
+    itemIconStyle: BigAction
+    sound: !type:SoundPathSpecifier
+      path: /Audio/Magic/rumble.ogg
+    icon:
+      sprite: _CE/Actions/Spells/mana_steal.rsi
+      state: icon
+  - type: TargetAction
+    range: 1.5
+    interactOnMiss: false
+  - type: EntityTargetAction
+    canTargetSelf: false
+    whitelist:
+      requireAll: true
+      components:
+      - Battery
+    event: !type:CEEntityTargetActionAnimationEvent
+      animation: AnimationManaSteal
+
+- type: entityEffectAnimation
+  id: AnimationManaSteal
+  movementSpeed: 0.6
+  duration: 0.5
+  events:
+    0:
+    - !type:SpawnEntity
+      spawns:
+      - CEEffectManaDrain
+    - !type:ChangeMana
+      amount: -20
+    0.45:
+    - !type:SpawnEntity
+      effectTarget: User
+      spawns:
+      - CEEffectManaRestoreGeneric
+    - !type:ChangeMana
+      effectTarget: User
+      amount: 20
