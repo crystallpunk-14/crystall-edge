@@ -23,6 +23,9 @@
         Air: 5
         Order: 5
         Chaos: 5
+    - !type:CELearnSkillsSpecial
+      skills:
+      - KnowledgeCopyingTechniques
 
 - type: startingGear
   id: CEAcademyRectorGear

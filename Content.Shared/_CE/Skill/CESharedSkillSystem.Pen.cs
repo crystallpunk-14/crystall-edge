@@ -1,4 +1,5 @@
 using Content.Shared._CE.Skill.Components;
+using Content.Shared._CE.Skill.Prototypes;
 using Content.Shared._CE.Pen;
 using Content.Shared.DoAfter;
 using Content.Shared.Tag;
@@ -15,6 +16,8 @@ public abstract partial class CESharedSkillSystem
     [Dependency] private SharedAudioSystem _audio = default!;
 
     private static readonly ProtoId<TagPrototype> BookTag = "Book";
+
+    private static readonly ProtoId<CESkillPrototype> KnowledgeCopyingSkill = "KnowledgeCopyingTechniques";
 
     private static readonly SpriteSpecifier RecordSkillIcon =
         new SpriteSpecifier.Rsi(new ResPath("/Textures/_CE/Interface/Paper/pen_interact_icons.rsi"), "reseaerch_write");
@@ -38,6 +41,9 @@ public abstract partial class CESharedSkillSystem
         if (ent.Owner != args.User || ent.Comp.LearnedSkills.Count == 0)
             return;
 
+        if (!HaveSkill(ent.Owner, KnowledgeCopyingSkill, ent.Comp))
+            return;
+
         if (!CanRecordSkill(args.Target))
             return;
 
@@ -47,6 +53,9 @@ public abstract partial class CESharedSkillSystem
     private void OnRecordSkillRequest(Entity<CESkillStorageComponent> ent, ref CEPenRecordSkillRequestEvent args)
     {
         if (!ent.Comp.LearnedSkills.Contains(args.Skill))
+            return;
+
+        if (!HaveSkill(ent.Owner, KnowledgeCopyingSkill, ent.Comp))
             return;
 
         if (!CanRecordSkill(args.Target))
@@ -73,6 +82,9 @@ public abstract partial class CESharedSkillSystem
         args.Handled = true;
 
         if (!ent.Comp.LearnedSkills.Contains(args.Skill) || !CanRecordSkill(target))
+            return;
+
+        if (!HaveSkill(ent.Owner, KnowledgeCopyingSkill, ent.Comp))
             return;
 
         if (!_proto.TryIndex(args.Skill, out var skill))

@@ -1,0 +1,7 @@
+- type: skill
+  id: KnowledgeCopyingTechniques
+  name: ce-skill-knowledge-copying-name
+  desc: ce-skill-knowledge-copying-desc
+  icon:
+    sprite: _CE/Interface/Paper/pen_interact_icons.rsi
+    state: reseaerch_write
