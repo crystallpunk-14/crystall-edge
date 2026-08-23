@@ -136,7 +136,6 @@
     maxZoom: 0.8, 0.8
     targetZoom: 0.8, 0.8
   - type: CEWeapon
-    spriteRotation: 0
     range: 0.4
     effectSlots:
       OnHit:

@@ -8,6 +8,10 @@
   description: A small, unpleasant rodent.
   categories: [ ForkFiltered ]
   components:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      25: Dead
   - type: CEGOAP
     goals:
     # Single stupid goal - kill enemies
@@ -41,16 +45,25 @@
       exploreRadius: 8
   - type: NpcFactionMember
     factions:
-    - SimpleHostile
+    - CEHostileEveryone
   - type: Sprite
     drawdepth: Mobs
     sprite: _CE/Mobs/rat.rsi
     layers:
-    - state: rat
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: rat
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: rat
+      Dead:
+        Base: dead
   - type: MovementSpeedModifier
     baseSprintSpeed: 2.5
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 20
   - type: CEWeapon
-    spriteRotation: -90
     range: 0.5
     effectSlots:
       OnHit:
@@ -60,7 +73,7 @@
         - !type:Damage
           damage:
             types:
-              Piercing: 5
+              Piercing: 3
     animations:
       Primary:
       - anim: RatBite

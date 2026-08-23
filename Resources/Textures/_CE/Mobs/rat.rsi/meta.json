@@ -12,6 +12,9 @@
     {
       "name": "rat",
       "directions": 4
+    },
+    {
+      "name": "dead"
     }
   ]
 }
