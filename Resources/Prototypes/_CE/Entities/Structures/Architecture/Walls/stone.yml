@@ -113,3 +113,37 @@
             max: 5
       - !type:DoActsBehavior
         acts: ["Destruction"]
+
+- type: entity
+  id: CEWallStoneBrickDiagonal
+  name: diagonal stone brick wall
+  parent: CEBaseWallDiagonal
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Walls/bricks_stone_diagonal.rsi
+    state: state0
+  - type: Icon
+    sprite: Structures/Walls/plastitanium_diagonal.rsi
+    state: state0
+  - type: CEAutoTilePlacement
+    tile: CEStonebricks
+  - type: Damageable
+    damageModifierSet: CERockStructural
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEStoneBlock1:
+            min: 1
+            max: 2
