@@ -126,6 +126,36 @@
         Asphyxiation: -1.0
 
 - type: entity
+  id: CEMobCombat
+  abstract: true
+  categories: [ ForkFiltered ]
+  components:
+  - type: CombatMode
+  - type: StatusIcon
+  - type: ContentEye
+    maxZoom: 0.8, 0.8
+    targetZoom: 0.8, 0.8
+  - type: CEWeapon
+    spriteRotation: 0
+    range: 0.4
+    effectSlots:
+      OnHit:
+      - !type:WeaponArcAttack
+        arcWidth: 40
+        effects:
+        - !type:Damage
+          damage:
+            types:
+              Blunt: 5
+    animations:
+      Primary:
+      - anim: Punch1
+      - anim: Punch2
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 1
+
+- type: entity
   id: CEMobMagical
   abstract: true
   categories: [ ForkFiltered ]
