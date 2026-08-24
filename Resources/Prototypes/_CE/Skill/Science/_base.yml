@@ -7,9 +7,3 @@
   id: SpellcastingSkillBase
   abstract: true
   book: CEBaseScienceBookSpellcasting
-
-- type: skill
-  id: SpellcastingMasterySkillBase
-  abstract: true
-  parent: SpellcastingSkillBase
-  writableToBook: false
