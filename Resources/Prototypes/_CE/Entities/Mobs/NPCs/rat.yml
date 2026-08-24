@@ -60,9 +60,6 @@
         Base: dead
   - type: MovementSpeedModifier
     baseSprintSpeed: 2.5
-  - type: CEWeaponStaminaCost
-    costs:
-      Primary: 20
   - type: CEWeapon
     range: 0.5
     effectSlots:

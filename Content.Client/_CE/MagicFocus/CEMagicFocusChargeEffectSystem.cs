@@ -1,3 +1,4 @@
+using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.MagicFocus.Components;
 using Content.Shared._CE.MagicFocus.Systems;
 using Robust.Client.GameObjects;
@@ -17,17 +18,34 @@ public sealed partial class CEMagicFocusChargeEffectSystem : EntitySystem
     {
         base.Initialize();
 
+        // Predicted local spawn for the client performing the charge.
         SubscribeLocalEvent<CEMagicFocusComponent, CEMagicFocusChargedEvent>(OnCharged);
+        // Networked broadcast so everyone else nearby sees the same effect.
+        SubscribeNetworkEvent<CEMagicFocusChargeEffectEvent>(OnChargedNetwork);
     }
 
     private void OnCharged(Entity<CEMagicFocusComponent> ent, ref CEMagicFocusChargedEvent args)
     {
-        foreach (var type in args.Types)
+        SpawnEffects(ent.Owner, ent.Comp, args.Types);
+    }
+
+    private void OnChargedNetwork(CEMagicFocusChargeEffectEvent args)
+    {
+        var focus = GetEntity(args.Focus);
+        if (!TryComp<CEMagicFocusComponent>(focus, out var comp))
+            return;
+
+        SpawnEffects(focus, comp, args.Types);
+    }
+
+    private void SpawnEffects(EntityUid focus, CEMagicFocusComponent comp, List<ProtoId<CEMagicEssenceTypePrototype>> types)
+    {
+        foreach (var type in types)
         {
             if (!_proto.TryIndex(type, out var essenceType))
                 continue;
 
-            var vfx = SpawnAtPosition(ent.Comp.ChargeEffect, Transform(ent).Coordinates);
+            var vfx = SpawnAtPosition(comp.ChargeEffect, Transform(focus).Coordinates);
             _transform.SetLocalRotation(vfx, _random.NextAngle());
             _sprite.SetColor(vfx, essenceType.Color);
         }

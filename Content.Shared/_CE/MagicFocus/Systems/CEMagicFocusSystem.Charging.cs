@@ -4,9 +4,11 @@ using Content.Shared._CE.MagicFocus.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
+using Content.Shared._CE.ZLevels.Core;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
@@ -22,6 +24,7 @@ public sealed partial class CEMagicFocusSystem
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private INetManager _net = default!;
 
     private void InitCharging()
     {
@@ -112,6 +115,14 @@ public sealed partial class CEMagicFocusSystem
             _audio.PlayPredicted(ent.Comp.ChargeSound, target, args.User);
             RaiseLocalEvent(ent.Owner, new CEMagicFocusChargedEvent(target, chargedTypes));
         }
+
+        // The above only plays the suction VFX locally for whoever is predicting this DoAfter
+        // (the user). Broadcast it to everyone else nearby so they see it too.
+        if (_net.IsServer)
+        {
+            var filter = CEFilter.ZPvsExcept(args.Args.User, entManager: EntityManager);
+            RaiseNetworkEvent(new CEMagicFocusChargeEffectEvent(GetNetEntity(ent.Owner), chargedTypes), filter);
+        }
     }
 
     /// <summary>
@@ -150,5 +161,17 @@ public sealed partial class CEMagicFocusChargeDoAfterEvent : SimpleDoAfterEvent;
 public sealed class CEMagicFocusChargedEvent(EntityUid target, List<ProtoId<CEMagicEssenceTypePrototype>> types) : EntityEventArgs
 {
     public readonly EntityUid Target = target;
+    public readonly List<ProtoId<CEMagicEssenceTypePrototype>> Types = types;
+}
+
+/// <summary>
+/// Sent from the server to every nearby client except the performer (who already gets the
+/// predicted local VFX from <see cref="CEMagicFocusChargedEvent"/>) so the essence-suction
+/// effect is visible to everyone, not just the one charging the focus.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class CEMagicFocusChargeEffectEvent(NetEntity focus, List<ProtoId<CEMagicEssenceTypePrototype>> types) : EntityEventArgs
+{
+    public readonly NetEntity Focus = focus;
     public readonly List<ProtoId<CEMagicEssenceTypePrototype>> Types = types;
 }

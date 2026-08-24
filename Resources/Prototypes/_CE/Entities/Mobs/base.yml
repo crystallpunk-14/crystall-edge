@@ -131,10 +131,6 @@
   categories: [ ForkFiltered ]
   components:
   - type: CombatMode
-  - type: StatusIcon
-  - type: ContentEye
-    maxZoom: 0.8, 0.8
-    targetZoom: 0.8, 0.8
   - type: CEWeapon
     range: 0.4
     effectSlots:
@@ -150,9 +146,12 @@
       Primary:
       - anim: Punch1
       - anim: Punch2
+      Secondary:
+      - anim: Kick
   - type: CEWeaponStaminaCost
     costs:
-      Primary: 1
+      Primary: 10
+      Secondary: 20
 
 - type: entity
   id: CEMobMagical

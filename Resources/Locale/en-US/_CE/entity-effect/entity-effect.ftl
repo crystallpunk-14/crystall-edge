@@ -30,6 +30,8 @@ ce-entity-effect-guidebook-spawn-in-hand = Spawns [color=yellow]{ $entities }[/c
 ce-entity-effect-guidebook-eject-slot-item = Ejects an item from the slot
 ce-entity-effect-guidebook-throw-from = Throws the target away with [color=yellow]{ $power }[/color] force
 ce-entity-effect-guidebook-throw-to = Throws the target with [color=yellow]{ $power }[/color] force
+ce-entity-effect-guidebook-stamina-damage = Deals [color=yellow]{ $amount }[/color] stamina damage
+ce-entity-effect-guidebook-stamina-restore = Restores [color=yellow]{ $amount }[/color] stamina
 
 ce-entity-effect-guidebook-area-effect =
     Applies the following effects to everything within a [color=yellow]{ $range }[/color] radius:
