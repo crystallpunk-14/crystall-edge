@@ -10,9 +10,3 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: CEInfusionAltarSingleton
-
-- type: entity
-  id: CESpellMasterySingleton
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: CESpellMasterySingleton

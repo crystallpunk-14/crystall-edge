@@ -3,6 +3,3 @@ ce-guidebook-thaum-tier-header = Тир {$tier}
 
 ce-guidebook-infusion-altar-none-known = Вы пока не знаете рецептов алтаря инфузии.
 ce-guidebook-infusion-altar-essences = Эссенция:
-
-ce-guidebook-spell-mastery-none-known = Вы пока не знаете рецептов обучения заклинаниям.
-ce-guidebook-spell-mastery-essences = Эссенция:

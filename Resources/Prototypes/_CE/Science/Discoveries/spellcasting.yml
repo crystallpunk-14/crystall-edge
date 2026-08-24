@@ -8,7 +8,7 @@
   - Life
   - Magic
   - Healing
-  skill: CureWoundsTheory
+  skill: CureWounds
 
 - type: scienceDiscovery
   id: ConjureLight
@@ -18,7 +18,7 @@
   - Light
   - Magic
   - Light
-  skill: ConjureLightTheory
+  skill: ConjureLight
 
 - type: scienceDiscovery
   id: ManaGift
@@ -28,7 +28,7 @@
   - Magic
   - Life
   - Healing
-  skill: ManaGiftTheory
+  skill: ManaGift
 
 - type: scienceDiscovery
   id: ManaSteal
@@ -38,7 +38,7 @@
   - Magic
   - Mind
   - Darkness
-  skill: ManaStealTheory
+  skill: ManaSteal
 
 - type: scienceDiscovery
   id: FrostBlade
@@ -48,4 +48,4 @@
   - Weapon
   - Frost
   - Magic
-  skill: FrostBladeTheory
+  skill: FrostBlade

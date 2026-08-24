@@ -744,28 +744,6 @@
   result: CEInfusionAltarPedestal
   resultCount: 1
 
-# CrystallEdge: rough copy of the CEInfusionAltar recipe above, not yet cleaned up/unified.
-- type: CERecipe
-  id: CESpellMasteryAltar
-  parent: CEBaseEngineeringTableRecipe
-  category: Tools
-  craftTime: 2.0
-  requirements:
-  - !type:StackResource
-    stack: CEBrassSheet
-    count: 8
-  - !type:ProtoIdResource
-    protoId: CEEnergyCrystalCell
-    count: 2
-  - !type:StackResource
-    stack: CEMachinePartEnergyLine
-    count: 2
-  - !type:StackResource
-    stack: CEGlass
-    count: 5
-  result: CESpellMasteryAltar
-  resultCount: 1
-
 - type: CERecipe
   id: CESolutionNormalizer
   parent: CEBaseEngineeringTableRecipe
