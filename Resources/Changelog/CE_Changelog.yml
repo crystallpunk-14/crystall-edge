@@ -800,3 +800,26 @@
   id: 1074
   time: '2026-08-24T13:55:18.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/433
+- author: TheShuEd
+  changes:
+  - message: We've added the ability to kick people! They fall to the ground in a
+      very funny way while taking stamina damage. Added by default to all races as
+      an alternative right-click attack
+    type: Add
+  - message: A huge number of food orders, as well as orders for growing vegetables
+      in large batches, have been added to the horticulture trading platform.
+    type: Add
+  - message: Vegetables have been removed from the horticulture trading platform.
+      Seeds remain. Enjoy your garden.
+    type: Remove
+  - message: Lightning strikes are now much less frequent during storms.
+    type: Tweak
+  - message: The Lurker's melee attacks now consume stamina as intended.
+    type: Fix
+  - message: Fixed a bug that prevented players from making mashed potatoes
+    type: Fix
+  - message: Fixed a bug that allowed infinite crafting of ash from planks.
+    type: Fix
+  id: 1075
+  time: '2026-08-24T21:15:31.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/436
