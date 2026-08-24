@@ -67,3 +67,4 @@ ce-floor-tile-examine = Можно установить как [color=#FFFF00]{$
 ce-floor-tile-wrong-turf = Нельзя установить здесь.
 ce-floor-tile-wrong-tool = Здесь нужно: {$toolNames}
 ce-floor-tile-tool-separator = или
+ce-ceiling-tile-obstructed = Что-то над потолком мешает разборке.

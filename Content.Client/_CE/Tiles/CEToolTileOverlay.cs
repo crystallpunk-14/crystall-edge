@@ -43,7 +43,10 @@ public sealed partial class CEToolTileOverlay : Overlay
 
     private readonly Texture _texture;
 
-    public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowEntities;
+    // Normally drawn below entities, like a floor decal. While targeting the ceiling (level above)
+    // it needs to draw above entities instead, so it reads as being overhead rather than underfoot -
+    // WorldSpaceBelowFOV still keeps it subject to lighting/FOV like a normal world sprite.
+    public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowEntities | OverlaySpace.WorldSpaceBelowFOV;
 
     public CEToolTileOverlay()
     {
@@ -106,14 +109,20 @@ public sealed partial class CEToolTileOverlay : Overlay
         }
 
         // Looking up with a ceiling-capable tool: target the tile on the level above instead of the
-        // one underfoot, and visually raise the drawn sprite by CESharedZLevelsSystem.ZLevelOffset so
-        // it reads as the ceiling. The raise vector is counter-rotated against the eye the same way
-        // ScalingViewport.CEZLevels.cs offsets the actual z-level-above render pass, so it stays
-        // screen-up no matter how the camera is rotated.
+        // one underfoot, draw above entities instead of below, and visually raise the sprite by
+        // CESharedZLevelsSystem.ZLevelOffset so it reads as the ceiling. The raise vector is
+        // counter-rotated against the eye the same way ScalingViewport.CEZLevels.cs offsets the
+        // actual z-level-above render pass, so it stays screen-up no matter how the camera is rotated.
+        var ceilingMode = _entityManager.TryGetComponent<CEZLevelViewerComponent>(player, out var viewer) &&
+                           viewer.LookUp &&
+                           _entityManager.HasComponent<CEZLevelToolTileComponent>(activeItem.Value);
+
+        var wantedSpace = ceilingMode ? OverlaySpace.WorldSpaceBelowFOV : OverlaySpace.WorldSpaceBelowEntities;
+        if (args.Space != wantedSpace)
+            return;
+
         var raiseOffset = Vector2.Zero;
-        if (_entityManager.TryGetComponent<CEZLevelViewerComponent>(player, out var viewer) &&
-            viewer.LookUp &&
-            _entityManager.HasComponent<CEZLevelToolTileComponent>(activeItem.Value))
+        if (ceilingMode)
         {
             if (!_entityManager.TryGetComponent<TransformComponent>(player, out var playerXform) ||
                 playerXform.MapUid is not { } mapUid ||

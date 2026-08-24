@@ -111,7 +111,10 @@ public sealed partial class CEZLevelToolTileSystem : EntitySystem
             return;
 
         if (tileComp.RequiresUnobstructed && _turfs.IsTileBlocked(gridUid, tileIndices, CollisionGroup.MobMask))
+        {
+            _popup.PopupCoordinates(Loc.GetString("ce-ceiling-tile-obstructed"), clickLocation, user);
             return;
+        }
 
         if (!_interaction.InRangeUnobstructed(user, clickLocation, popup: false))
             return;
