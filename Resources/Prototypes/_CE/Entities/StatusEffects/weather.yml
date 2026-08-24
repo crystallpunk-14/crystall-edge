@@ -26,8 +26,8 @@
         loop: true
         volume: -6
   - type: CEWeatherTileEffects
-    minEffectFrequency: 35s
-    maxEffectFrequency: 120s
+    minEffectFrequency: 60s
+    maxEffectFrequency: 180s
   - type: CEWeatherTileEntityEffect
     effects:
     - !type:SpawnEntity
