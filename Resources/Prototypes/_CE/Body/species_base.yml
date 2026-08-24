@@ -51,6 +51,7 @@
   - BaseMob
   - CEMobDamageable
   - CEMobMagical
+  - CEMobCombat
   - CEMobTemperature
   - MobPolymorphable
   - CEBaseSpeciesAppearance
@@ -141,28 +142,6 @@
     state: icon
   - type: AnimationPlayer
   - type: Buckle
-  - type: CombatMode
-    canDisarm: true
-  - type: CEWeapon
-    range: 0.4
-    hitSound:
-      collection: Punch
-    effectSlots:
-      OnHit:
-      - !type:WeaponArcAttack
-        arcWidth: 40
-        effects:
-        - !type:Damage
-          damage:
-            types:
-              Blunt: 3
-    animations:
-      Primary:
-      - anim: Punch1
-      - anim: Punch2
-  - type: CEWeaponStaminaCost
-    costs:
-      Primary: 10
   - type: SleepEmitSound
   - type: SSDIndicator
   - type: StandingState

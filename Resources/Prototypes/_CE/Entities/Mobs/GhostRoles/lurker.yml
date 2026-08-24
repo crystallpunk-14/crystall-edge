@@ -4,6 +4,7 @@
   id: CEMobLurker
   parent:
   - CEMobSimple
+  - CEMobCombat
   name: lurker
   description: The spirit of hunger and night. The Hunter of Lost Solitaries
   categories: [ HideSpawnMenu ]
@@ -24,7 +25,6 @@
     accent: xeno
   - type: Appearance
   - type: Body
-  - type: CombatMode
   - type: Stamina
     baseCritThreshold: 200
   - type: Grammar
@@ -50,15 +50,6 @@
     thresholds:
       0: Alive
       100: Dead
-  #- type: PassiveDamage #Temporary disabled
-  #  allowedStates:
-  #  - Alive
-  #  damage:
-  #    types:
-  #      Blunt: -0.05
-  #      Piercing: -0.05
-  #      Slash: -0.05
-  #      Heat: -0.05
   - type: SlowOnDamage
     speedModifierThresholds:
       50: 0.6
