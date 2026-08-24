@@ -60,10 +60,12 @@ public abstract partial class CESharedPowerSystem : EntitySystem
         if (!TryComp<BatteryComponent>(ent, out var battery))
             return;
 
-        if (battery.LastCharge <= 0f)
+        var charge = Battery.GetCharge((ent.Owner, battery));
+
+        if (charge <= 0f)
             return;
 
-        Irradiate(Transform(ent).Coordinates, battery.LastCharge * ent.Comp.IrradiateCoefficient, ent.Comp.Time);
+        Irradiate(Transform(ent).Coordinates, charge * ent.Comp.IrradiateCoefficient, ent.Comp.Time);
     }
 
     public void Irradiate(EntityCoordinates position, float charge, TimeSpan seconds)

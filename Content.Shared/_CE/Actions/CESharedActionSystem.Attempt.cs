@@ -60,7 +60,7 @@ public abstract partial class CESharedActionSystem
             return;
         }
 
-        if (playerMana.LastCharge < requiredMana)
+        if (_battery.GetCharge((args.User, playerMana)) < requiredMana)
         {
             Popup.PopupClient(Loc.GetString("ce-magic-spell-not-enough-mana"), args.User, args.User);
             args.Cancelled = true;
