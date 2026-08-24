@@ -61,7 +61,7 @@
   - type: Item
     size: Small
     shape:
-    - 0, 0, 1, 0
+    - 0, 0, 0, 0
   - type: CEThirdArmModule
 
 #MARK: Light Module
