@@ -48,6 +48,8 @@
     id: essence
     solution:
       canReact: false
+  - type: CEDeleteOnEmptySolution
+    solutionId: essence
   - type: Visibility
     layer: 16 #magic vision only
   - type: GuideHelp
