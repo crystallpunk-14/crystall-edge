@@ -785,3 +785,18 @@
   id: 1073
   time: '2026-08-24T10:36:32.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/432
+- author: TheShuEd
+  changes:
+  - message: Lampposts can now be unanchored and pulled away.
+    type: Add
+  - message: The cooldown on the Lurker's jump has been increased from 3 to 7 seconds.
+    type: Tweak
+  - message: Flying magical essences now disappear after being absorbed by a magical
+      focus.
+    type: Fix
+  - message: Fixed a bug that caused passive mana regeneration to work only visually
+      and prevented players from casting spells.
+    type: Fix
+  id: 1074
+  time: '2026-08-24T13:55:18.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/433
