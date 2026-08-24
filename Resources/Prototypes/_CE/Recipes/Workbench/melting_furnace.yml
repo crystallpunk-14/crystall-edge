@@ -108,8 +108,8 @@
   category: Materials
   craftTime: 1.5
   requirements:
-  - !type:MaterialResource
-    material: CEWood
+  - !type:StackResource
+    stack: CEWood
     count: 2
   result: CEAsh1
   resultCount: 1
