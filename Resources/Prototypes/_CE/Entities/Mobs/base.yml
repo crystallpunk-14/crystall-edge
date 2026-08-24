@@ -146,9 +146,12 @@
       Primary:
       - anim: Punch1
       - anim: Punch2
+      Secondary:
+      - anim: Kick
   - type: CEWeaponStaminaCost
     costs:
       Primary: 10
+      Secondary: 20
 
 - type: entity
   id: CEMobMagical

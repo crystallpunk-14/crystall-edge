@@ -308,3 +308,118 @@
       effects:
       - !type:WeaponEffectSlot
         slot: OnHit
+
+#MARK: Claw Kick
+
+- type: entityEffectAnimation
+  id: ClawCarrinKick
+  movementSpeed: 0.3
+  duration: 0.7
+  lockRotation: true
+  events:
+    0:
+    - !type:UsedEntityAnimation
+      dummyEntity: CEClawCarrinKickEffect
+      offsetAnimation:
+      - time: 0.0
+        offset: 0, -0.5
+        easing: QuadIn
+      - time: 0.5
+        offset: 0, -0.2
+        easing: QuadOut
+      - time: 0.65
+        offset: 0, -0.8
+        easing: QuadOut
+
+      colorAnimation:
+      - time: 0.0
+        color: "#ffffff"
+        easing: Linear
+      - time: 0.6
+        color: "#ffffff"
+        easing: QuadOut
+      - time: 0.69
+        color: "#ffffff00"  # Fade out
+
+      scaleAnimation:
+      - time: 0.0
+        scale: -1, 1
+    0.5:
+    - !type:WeaponArcAttack
+      arcWidth: 40
+      effects:
+      - !type:Knockdown
+        duration: 0.5
+        dropItems: false
+      - !type:ThrowFrom
+        distance: 1
+        throwPower: 8
+      - !type:StaminaDamage
+        amount: 30
+
+- type: entity
+  id: CEClawCarrinKickEffect
+  categories: [ "HideSpawnMenu" ]
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/arcs.rsi
+    state: carrin_foot
+  - type: TimedDespawn
+    lifetime: 0.4
+
+
+- type: entityEffectAnimation
+  id: ClawCarcatKick
+  movementSpeed: 0.3
+  duration: 0.7
+  lockRotation: true
+  events:
+    0:
+    - !type:UsedEntityAnimation
+      dummyEntity: CEClawCarcatKickEffect
+      offsetAnimation:
+      - time: 0.0
+        offset: 0, -0.5
+        easing: QuadIn
+      - time: 0.5
+        offset: 0, -0.2
+        easing: QuadOut
+      - time: 0.65
+        offset: 0, -0.8
+        easing: QuadOut
+
+      colorAnimation:
+      - time: 0.0
+        color: "#ffffff"
+        easing: Linear
+      - time: 0.6
+        color: "#ffffff"
+        easing: QuadOut
+      - time: 0.69
+        color: "#ffffff00"  # Fade out
+
+      scaleAnimation:
+      - time: 0.0
+        scale: -1, 1
+    0.5:
+    - !type:WeaponArcAttack
+      arcWidth: 40
+      effects:
+      - !type:Knockdown
+        duration: 0.5
+        dropItems: false
+      - !type:ThrowFrom
+        distance: 1
+        throwPower: 8
+      - !type:StaminaDamage
+        amount: 30
+
+- type: entity
+  id: CEClawCarcatKickEffect
+  categories: [ "HideSpawnMenu" ]
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/arcs.rsi
+    state: carcat_foot
+  - type: TimedDespawn
+    lifetime: 0.4

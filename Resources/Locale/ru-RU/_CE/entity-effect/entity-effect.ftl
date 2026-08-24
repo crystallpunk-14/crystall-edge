@@ -30,6 +30,8 @@ ce-entity-effect-guidebook-spawn-in-hand = Создаёт [color=yellow]{ $entit
 ce-entity-effect-guidebook-eject-slot-item = Выбрасывает предмет из слота
 ce-entity-effect-guidebook-throw-from = Отбрасывает цель с силой [color=yellow]{ $power }[/color]
 ce-entity-effect-guidebook-throw-to = Отбрасывает цель с силой [color=yellow]{ $power }[/color]
+ce-entity-effect-guidebook-stamina-damage = Наносит [color=yellow]{ $amount }[/color] урона по выносливости
+ce-entity-effect-guidebook-stamina-restore = Восстанавливает [color=yellow]{ $amount }[/color] выносливости
 
 ce-entity-effect-guidebook-area-effect =
     Применяет следующие эффекты ко всем целям в радиусе [color=yellow]{ $range }[/color]:
