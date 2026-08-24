@@ -49,16 +49,6 @@
   id: CEThaumaturgySpellcastingEN
   name: Spellcasting
   text: "/ServerInfo/_CE/Guidebook_EN/Thaumaturgy/Spellcasting/Spellcasting.xml"
-  children:
-  - CEThaumaturgySpellcastingRecipesEN
-
-- type: guideEntry
-  hidden: false
-  locFilter: "en-US"
-  id: CEThaumaturgySpellcastingRecipesEN
-  name: Recipes
-  text: "/ServerInfo/_CE/Guidebook_EN/Thaumaturgy/Spellcasting/Recipes.xml"
-  filterEnabled: True
 
 - type: guideEntry
   hidden: false
@@ -111,13 +101,3 @@
   id: CEThaumaturgySpellcastingRU
   name: Заклинания
   text: "/ServerInfo/_CE/Guidebook_RU/Thaumaturgy/Spellcasting/Spellcasting.xml"
-  children:
-  - CEThaumaturgySpellcastingRecipesRU
-
-- type: guideEntry
-  hidden: false
-  locFilter: "ru-RU"
-  id: CEThaumaturgySpellcastingRecipesRU
-  name: Рецепты
-  text: "/ServerInfo/_CE/Guidebook_RU/Thaumaturgy/Spellcasting/Recipes.xml"
-  filterEnabled: True
