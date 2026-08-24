@@ -1,8 +1,12 @@
 using System.Numerics;
+using Content.Client._CE.ZLevels.Core;
 using Content.Client.Gameplay;
 using Content.Client.Hands.Systems;
 using Content.Client.Resources;
 using Content.Client.Viewport;
+using Content.Shared._CE.ZLevels.Core.Components;
+using Content.Shared._CE.ZLevels.Core.EntitySystems;
+using Content.Shared._CE.ZLevels.Tiles;
 using Content.Shared.Interaction;
 using Content.Shared.Maps;
 using Content.Shared.Tools.Components;
@@ -35,6 +39,7 @@ public sealed partial class CEToolTileOverlay : Overlay
     private readonly SharedMapSystem _mapSystem;
     private readonly HandsSystem _handsSystem;
     private readonly SharedInteractionSystem _interactionSystem;
+    private readonly CEClientZLevelsSystem _zLevel;
 
     private readonly Texture _texture;
 
@@ -48,6 +53,7 @@ public sealed partial class CEToolTileOverlay : Overlay
         _handsSystem = _entityManager.System<HandsSystem>();
         _interactionSystem = _entityManager.System<SharedInteractionSystem>();
         _sprite = _entityManager.System<SpriteSystem>();
+        _zLevel = _entityManager.System<CEClientZLevelsSystem>();
 
         _texture = _sprite.Frame0(
             new SpriteSpecifier.Rsi(new ResPath("/Textures/_CE/Markers/biome.rsi"), "frame"));
@@ -99,8 +105,29 @@ public sealed partial class CEToolTileOverlay : Overlay
                 return;
         }
 
+        // Looking up with a ceiling-capable tool: target the tile on the level above instead of the
+        // one underfoot, and visually raise the drawn sprite by CESharedZLevelsSystem.ZLevelOffset so
+        // it reads as the ceiling. The raise vector is counter-rotated against the eye the same way
+        // ScalingViewport.CEZLevels.cs offsets the actual z-level-above render pass, so it stays
+        // screen-up no matter how the camera is rotated.
+        var raiseOffset = Vector2.Zero;
+        if (_entityManager.TryGetComponent<CEZLevelViewerComponent>(player, out var viewer) &&
+            viewer.LookUp &&
+            _entityManager.HasComponent<CEZLevelToolTileComponent>(activeItem.Value))
+        {
+            if (!_entityManager.TryGetComponent<TransformComponent>(player, out var playerXform) ||
+                playerXform.MapUid is not { } mapUid ||
+                !_zLevel.TryMapUp((mapUid, null), out var aboveMap) ||
+                !_mapSystem.TryFindGridAt(aboveMap.Owner, mouseMapPos.Position, out gridUid, out grid))
+                return;
+
+            Angle rotation = (args.Viewport.Eye?.Rotation ?? Angle.Zero) * -1;
+            var offset = rotation.ToWorldVec() * CESharedZLevelsSystem.ZLevelOffset;
+            raiseOffset = -offset;
+        }
+
         // Get tile indices at mouse position
-        var tileIndices = _mapSystem.TileIndicesFor(gridUid, grid, mouseMapPos);
+        var tileIndices = _mapSystem.WorldToTile(gridUid, grid, mouseMapPos.Position);
 
         // Get tile center position in world coordinates
         var tileCenter = _mapSystem.GridTileToWorld(gridUid, grid, tileIndices);
@@ -114,8 +141,9 @@ public sealed partial class CEToolTileOverlay : Overlay
         var qualities = toolComp.Qualities;
         var canDeconstruct = qualities.ContainsAny(currentTileDef.DeconstructTools);
 
-        // Offset to center of the tile (GridTileToWorld returns bottom-left corner)
-        var tileCenterOffset = tileCenter.Position - new Vector2(grid.TileSize / 2f, grid.TileSize / 2f);
+        // Offset to center of the tile (GridTileToWorld returns bottom-left corner), plus the
+        // ceiling raise offset (zero when not targeting the level above)
+        var tileCenterOffset = tileCenter.Position - new Vector2(grid.TileSize / 2f, grid.TileSize / 2f) + raiseOffset;
 
         // Draw sprite centered on the tile
         // White if can deconstruct, red if can't
