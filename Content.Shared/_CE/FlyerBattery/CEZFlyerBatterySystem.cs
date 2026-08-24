@@ -33,7 +33,7 @@ public sealed partial class CEZFlyerBatterySystem : EntitySystem
         if (!TryComp<BatteryComponent>(ent, out var battery))
             return;
 
-        if (battery.LastCharge <= 0f)
+        if (_battery.GetCharge((ent.Owner, battery)) <= 0f)
             args.Cancel();
     }
 
