@@ -122,6 +122,6 @@
     layers:
       - state: icon
   - type: CEMagicFocus
-    minimumVolume: 10
+    minimumVolume: 20
   - type: StaticPrice
-    price: 80
+    price: 50

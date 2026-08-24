@@ -4,7 +4,8 @@
 Using spells requires a focus item charged with essence:
 
 <Box>
-<GuideEntityEmbed Entity="CECastingStaffBasic" Caption=""/>
+<GuideEntityEmbed Entity="CECastingStaffBasic"/>
+<GuideEntityEmbed Entity="CESpellcastingAmulet"/>
 </Box>
 
 You can click the focus against any essence storage (vials, nodes) to absorb essence and charge the focus.
