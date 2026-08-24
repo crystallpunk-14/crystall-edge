@@ -178,7 +178,7 @@
     itemIconStyle: BigAction
     sound: !type:SoundPathSpecifier
       path: /Audio/Magic/rumble.ogg
-    useDelay: 3
+    useDelay: 8
     icon:
       sprite: _CE/Actions/lurker.rsi
       state: jump
