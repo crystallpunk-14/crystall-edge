@@ -823,3 +823,11 @@
   id: 1075
   time: '2026-08-24T21:15:31.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/436
+- author: TheShuEd
+  changes:
+  - message: Rain and storm weather are now filling barrels, plants, and bottles with
+      water.
+    type: Add
+  id: 1076
+  time: '2026-08-25T12:50:22.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/439
