@@ -37,6 +37,8 @@
     closeable: true
     closeSound:
       collection: bottleCloseSounds
+  - type: CEWeatherRefillable
+    solution: barrel
   - type: GenericVisualizer
     visuals:
       enum.OpenableVisuals.Opened:

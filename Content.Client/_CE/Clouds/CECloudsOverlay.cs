@@ -1,12 +1,12 @@
 using System.Numerics;
-using Content.Shared._CE.Weather.Clouds;
+using Content.Shared._CE.Clouds;
 using Robust.Client.Graphics;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
-namespace Content.Client._CE.Weather.Clouds;
+namespace Content.Client._CE.Clouds;
 
 /// <summary>
 /// Draws drifting, morphing cloud shadows over maps with a <see cref="CECloudsOverlayComponent"/>.

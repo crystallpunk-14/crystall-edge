@@ -1,11 +1,11 @@
 using System.Numerics;
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._CE.Weather.Clouds;
+namespace Content.Shared._CE.Clouds;
 
 /// <summary>
 /// Added to a map entity (typically via a station's zLevelsComponentOverrides) to make
-/// <see cref="Content.Client._CE.Weather.Clouds.CECloudsOverlay"/> draw drifting, evolving
+/// <see cref="Content.Client._CE.Clouds.CECloudsOverlay"/> draw drifting, evolving
 /// cloud shadows over that map. Only darkens the map's ambient light baseline
 /// (<see cref="Robust.Shared.Map.Components.MapLightComponent"/>) - point lights are unaffected.
 /// </summary>
