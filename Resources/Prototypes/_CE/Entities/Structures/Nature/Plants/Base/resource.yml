@@ -14,8 +14,8 @@
     id: plant
     solution:
       maxVol: 50
-  #- type: CEWeatherRefillable
-  #  solution: plant
+  - type: CEWeatherRefillable
+    solution: plant
   - type: RefillableSolution
     solution: plant
     maxRefill: 50

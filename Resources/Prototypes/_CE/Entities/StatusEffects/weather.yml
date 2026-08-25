@@ -11,6 +11,11 @@
       params:
         loop: true
         volume: -6
+  - type: CEWeatherSolutionFill
+    frequency: 10s
+    reagents:
+    - ReagentId: Water
+      Quantity: 5
 
 - type: entity
   parent: WeatherBase
@@ -25,6 +30,11 @@
       params:
         loop: true
         volume: -6
+  - type: CEWeatherSolutionFill
+    frequency: 10s
+    reagents:
+    - ReagentId: Water
+      Quantity: 5
   - type: CEWeatherTileEffects
     minEffectFrequency: 60s
     maxEffectFrequency: 180s
