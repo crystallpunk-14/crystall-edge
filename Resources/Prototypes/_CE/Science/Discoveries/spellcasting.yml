@@ -49,3 +49,13 @@
   - Frost
   - Magic
   skill: FrostBlade
+
+- type: scienceDiscovery
+  id: FeatherFall
+  parent: MediumDifficult
+  area: Spellcasting
+  targetAspects:
+  - Air
+  - Flight
+  - Magic
+  skill: FeatherFall

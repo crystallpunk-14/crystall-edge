@@ -13,7 +13,7 @@ public sealed partial class CESetTimeCommand : LocalizedCommands
 
     public override string Command => "znetwork-time-set";
     public override string Description => "Sets the current time of day for all maps in zNetwork";
-    public override string Help => "znetwork-settime <net entity> <seconds/hh:mm:ss>";
+    public override string Help => "znetwork-time-set <net entity> <seconds/hh:mm:ss>";
 
     public override void Execute(IConsoleShell shell, string argStr, string[] args)
     {

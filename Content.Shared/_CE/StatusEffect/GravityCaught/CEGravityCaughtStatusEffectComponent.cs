@@ -1,6 +1,6 @@
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._CE.FlightStatusEffect;
+namespace Content.Shared._CE.StatusEffect.GravityCaught;
 
 /// <summary>
 /// The entity is caught in a gravitational trap, and its movement between z-levels is restricted. Use only on StatusEffectComponent entities

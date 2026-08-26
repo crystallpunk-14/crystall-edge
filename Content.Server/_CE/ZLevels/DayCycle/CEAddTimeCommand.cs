@@ -13,7 +13,7 @@ public sealed partial class CEAddTimeCommand : LocalizedCommands
 
     public override string Command => "znetwork-time-add";
     public override string Description => "Adds (or, if negative, subtracts) time to the current time of day for all maps in zNetwork";
-    public override string Help => "znetwork-addtime <net entity> <seconds/hh:mm:ss>";
+    public override string Help => "znetwork-time-add <net entity> <seconds/hh:mm:ss>";
 
     public override void Execute(IConsoleShell shell, string argStr, string[] args)
     {

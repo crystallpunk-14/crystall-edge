@@ -3,7 +3,7 @@ using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Gravity;
 using Content.Shared.StatusEffectNew;
 
-namespace Content.Shared._CE.FlightStatusEffect;
+namespace Content.Shared._CE.StatusEffect.GravityCaught;
 
 public sealed partial class CEGravityCaughtStatusEffectSystem : EntitySystem
 {
