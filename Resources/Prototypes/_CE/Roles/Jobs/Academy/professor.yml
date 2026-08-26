@@ -7,6 +7,10 @@
   startingGear: CEAcademyProfessorGear
   icon: CEJobIconAcademyProfessor
   supervisors: ce-job-supervisors-academy-rector
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: CEAcademy
+      time: 2h
   special:
     - !type:CEResearchPointsSpecial
       points:
