@@ -32,6 +32,9 @@ ce-entity-effect-guidebook-throw-from = Throws the target away with [color=yello
 ce-entity-effect-guidebook-throw-to = Throws the target with [color=yellow]{ $power }[/color] force
 ce-entity-effect-guidebook-stamina-damage = Deals [color=yellow]{ $amount }[/color] stamina damage
 ce-entity-effect-guidebook-stamina-restore = Restores [color=yellow]{ $amount }[/color] stamina
+ce-entity-effect-guidebook-affect-plant-energy = Gives a plant [color=yellow]{ $amount }[/color] energy
+ce-entity-effect-guidebook-affect-plant-resource = Gives a plant [color=yellow]{ $amount }[/color] resource
+ce-entity-effect-guidebook-affect-plant-growth = Gives a plant [color=yellow]{ $amount }[/color] growth
 
 ce-entity-effect-guidebook-area-effect =
     Applies the following effects to everything within a [color=yellow]{ $range }[/color] radius:

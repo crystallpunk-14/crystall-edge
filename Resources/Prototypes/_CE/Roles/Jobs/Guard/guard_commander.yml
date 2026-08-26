@@ -13,7 +13,7 @@
   requirements:
     - !type:DepartmentTimeRequirement
       department: CEGuard
-      time: 2.5h
+      time: 4h
   special:
     - !type:AddComponentSpecial
       components:

@@ -13,7 +13,7 @@
   requirements:
     - !type:DepartmentTimeRequirement
       department: CEEngineering
-      time: 2.5h
+      time: 4h
 
 - type: startingGear
   id: CEBrigadierGear

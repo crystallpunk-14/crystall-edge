@@ -32,6 +32,9 @@ ce-entity-effect-guidebook-throw-from = Отбрасывает цель с си�
 ce-entity-effect-guidebook-throw-to = Отбрасывает цель с силой [color=yellow]{ $power }[/color]
 ce-entity-effect-guidebook-stamina-damage = Наносит [color=yellow]{ $amount }[/color] урона по выносливости
 ce-entity-effect-guidebook-stamina-restore = Восстанавливает [color=yellow]{ $amount }[/color] выносливости
+ce-entity-effect-guidebook-affect-plant-energy = Дает растению [color=yellow]{ $amount }[/color] энергии
+ce-entity-effect-guidebook-affect-plant-resource = Дает растению [color=yellow]{ $amount }[/color] ресурса
+ce-entity-effect-guidebook-affect-plant-growth = Дает растению [color=yellow]{ $amount }[/color] роста
 
 ce-entity-effect-guidebook-area-effect =
     Применяет следующие эффекты ко всем целям в радиусе [color=yellow]{ $range }[/color]:

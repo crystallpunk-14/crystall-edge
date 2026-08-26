@@ -80,6 +80,9 @@ public sealed partial class CEWeatherSolutionFillSystem : EntitySystem
             if (xform.GridUid is not { } gridUid || !_gridQuery.TryGetComponent(gridUid, out var gridComp))
                 continue;
 
+            if (xform.GridUid != xform.ParentUid) //Dont fill things inside containers
+                continue;
+
             var tileRef = _mapSystem.GetTileRef((gridUid, gridComp), xform.Coordinates);
             _roofQuery.TryGetComponent(gridUid, out var roofComp);
 
