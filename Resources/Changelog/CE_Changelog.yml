@@ -831,3 +831,15 @@
   id: 1076
   time: '2026-08-25T12:50:22.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/439
+- author: TheShuEd
+  changes:
+  - message: "The Academy can learn two new spells: \u201CFeather fall\u201D and \u201C\
+      Plant Growth\u201D."
+    type: Add
+  - message: The time required to assume command roles has been increased.
+    type: Tweak
+  - message: Shaar Map was updated.
+    type: Tweak
+  id: 1077
+  time: '2026-08-26T10:14:34.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/441
