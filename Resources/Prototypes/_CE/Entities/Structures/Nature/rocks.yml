@@ -10,9 +10,9 @@
   components:
   - type: Sprite
     drawdepth: Mobs
-    snapCardinals: true
+    noRot: true
   - type: Damageable
-    damageModifierSet: Rock
+    damageModifierSet: CERock
   - type: Injurable
     damageContainer: StructuralInorganic
 - type: entity
