@@ -59,3 +59,13 @@
   - Flight
   - Magic
   skill: FeatherFall
+
+- type: scienceDiscovery
+  id: PlantGrowth
+  parent: MediumDifficult
+  area: Spellcasting
+  targetAspects:
+  - Plant
+  - Life
+  - Magic
+  skill: PlantGrowth
