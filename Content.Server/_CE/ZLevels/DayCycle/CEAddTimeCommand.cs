@@ -11,7 +11,7 @@ public sealed partial class CEAddTimeCommand : LocalizedCommands
 {
     [Dependency] private IEntityManager _entities = default!;
 
-    public override string Command => "znetwork-addtime";
+    public override string Command => "znetwork-time-add";
     public override string Description => "Adds (or, if negative, subtracts) time to the current time of day for all maps in zNetwork";
     public override string Help => "znetwork-addtime <net entity> <seconds/hh:mm:ss>";
 

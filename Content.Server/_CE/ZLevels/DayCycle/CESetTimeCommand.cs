@@ -11,7 +11,7 @@ public sealed partial class CESetTimeCommand : LocalizedCommands
 {
     [Dependency] private IEntityManager _entities = default!;
 
-    public override string Command => "znetwork-settime";
+    public override string Command => "znetwork-time-set";
     public override string Description => "Sets the current time of day for all maps in zNetwork";
     public override string Help => "znetwork-settime <net entity> <seconds/hh:mm:ss>";
 
