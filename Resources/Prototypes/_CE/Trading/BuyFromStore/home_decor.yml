@@ -162,6 +162,13 @@
     product: CEBell
 
 - type: tradingPosition
+  id: CEMop
+  faction: HomeDecor
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CEMop
+
+- type: tradingPosition
   id: CEd20Dice
   priceMarkup: 5
   faction: HomeDecor
