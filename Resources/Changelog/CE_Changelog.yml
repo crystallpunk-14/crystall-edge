@@ -843,3 +843,10 @@
   id: 1077
   time: '2026-08-26T10:14:34.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/441
+- author: TheShuEd
+  changes:
+  - message: Farming plants now can DIE without water. Just like in CE1.
+    type: Add
+  id: 1078
+  time: '2026-08-27T15:38:47.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/442
