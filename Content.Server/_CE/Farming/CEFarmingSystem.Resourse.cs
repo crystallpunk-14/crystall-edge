@@ -11,7 +11,7 @@ public sealed partial class CEFarmingSystem
     {
         SubscribeLocalEvent<CEPlantEnergyFromLightComponent, CEPlantUpdateEvent>(OnTakeEnergyFromLight);
         SubscribeLocalEvent<CEPlantMetabolizerComponent, CEPlantUpdateEvent>(OnPlantMetabolizing);
-        SubscribeLocalEvent<CEPlantProducingComponent, CEPlantUpdateEvent>(OnPlantProducing);
+        SubscribeLocalEvent<CEPlantProducingComponent, CEAfterPlantUpdateEvent>(OnPlantProducing);
         SubscribeLocalEvent<CEPlantComponent, CEPlantUpdateEvent>(OnGroundUpdate);
 
         SubscribeLocalEvent<CEPlantGrowingComponent, CEAfterPlantUpdateEvent>(OnPlantGrowing);
@@ -88,7 +88,7 @@ public sealed partial class CEFarmingSystem
         }
     }
 
-    private void OnPlantProducing(Entity<CEPlantProducingComponent> ent, ref CEPlantUpdateEvent args)
+    private void OnPlantProducing(Entity<CEPlantProducingComponent> ent, ref CEAfterPlantUpdateEvent args)
     {
         var plant = args.Plant.Comp;
 

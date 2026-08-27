@@ -7,11 +7,19 @@
   categories: [ ForkFiltered ]
   components:
   - type: CEPlant
-    resource: 0
+    resource: 5
     energy: 0
     energyMax: 5
     resourceMax: 5
     growthLevel: 0
+  - type: CEPlantFading
+    damage:
+      types:
+        Cellular: 0.5
+  - type: CEPlantHealing
+    heal:
+      types:
+        Cellular: 1
   - type: Sprite
     snapCardinals: true
     drawdepth: FloorTiles
@@ -61,6 +69,13 @@
           #    CEFloraMaterial1:
           #      min: 2
           #      max: 3
+      - trigger: # dies of withering after a long spell with no resource
+          !type:DamageTypeTrigger
+          damageType: Cellular
+          damage: 10
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
   - type: Fixtures
     fixtures:
       fix1:
@@ -122,7 +137,7 @@
   - type: Damageable
     damageModifierSet: Wood
   - type: Injurable
-    damageContainer: Inorganic
+    damageContainer: Biological
   - type: MeleeSound
     soundGroups:
       Brute:
@@ -154,5 +169,12 @@
           params:
             volume: 5
             variation: 0.05
+      - !type:DoActsBehavior
+        acts: [ "Destruction", "Breakage" ]
+    - trigger: # withers away after a long spell with no resource
+        !type:DamageTypeTrigger
+        damageType: Cellular
+        damage: 60
+      behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction", "Breakage" ]
