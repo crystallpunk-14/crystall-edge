@@ -1,3 +1,4 @@
+using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.Farming.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Robust.Shared.Map.Components;
@@ -10,7 +11,7 @@ public sealed partial class CEFarmingSystem
     {
         SubscribeLocalEvent<CEPlantEnergyFromLightComponent, CEPlantUpdateEvent>(OnTakeEnergyFromLight);
         SubscribeLocalEvent<CEPlantMetabolizerComponent, CEPlantUpdateEvent>(OnPlantMetabolizing);
-        SubscribeLocalEvent<CEPlantProducingComponent, CEPlantUpdateEvent>(OnPlantProducing);
+        SubscribeLocalEvent<CEPlantProducingComponent, CEAfterPlantUpdateEvent>(OnPlantProducing);
         SubscribeLocalEvent<CEPlantComponent, CEPlantUpdateEvent>(OnGroundUpdate);
 
         SubscribeLocalEvent<CEPlantGrowingComponent, CEAfterPlantUpdateEvent>(OnPlantGrowing);
@@ -69,15 +70,25 @@ public sealed partial class CEFarmingSystem
             if (!ent.Comp.Metabolization.TryGetValue(reagent.Reagent.ToString(), out var effects))
                 continue;
 
-            var reagentPercentage = reagent.Quantity / ent.Comp.SolutionPerUpdate;
+            var reagentPercentage = (float)(reagent.Quantity / ent.Comp.SolutionPerUpdate);
+            var effectArgs = new CEEntityEffectArgs(
+                EntityManager,
+                Source: args.Plant.Owner,
+                Used: null,
+                Angle: default,
+                Speed: 0f,
+                Target: args.Plant.Owner,
+                Position: null,
+                Power: reagentPercentage);
+
             foreach (var effect in effects)
             {
-                effect.Effect((ent, args.Plant.Comp), reagentPercentage, EntityManager);
+                effect.Effect(effectArgs);
             }
         }
     }
 
-    private void OnPlantProducing(Entity<CEPlantProducingComponent> ent, ref CEPlantUpdateEvent args)
+    private void OnPlantProducing(Entity<CEPlantProducingComponent> ent, ref CEAfterPlantUpdateEvent args)
     {
         var plant = args.Plant.Comp;
 

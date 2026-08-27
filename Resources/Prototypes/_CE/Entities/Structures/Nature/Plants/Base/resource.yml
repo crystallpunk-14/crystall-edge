@@ -55,5 +55,5 @@
   - type: CEPlantMetabolizer
     metabolization:
       Water:
-        - !type:AffectPlantValues
-          resource: 1
+        - !type:AffectPlantResource
+          amount: 1

@@ -28,3 +28,16 @@
   - type: CEPlantAdditionalProduceOnInteract
     produce:
       CECotton: 4
+  - type: CEPlantDying
+    deadEntity: CEPlantCottonDead
+
+- type: entity
+  parent: CEPlantDeadBase
+  id: CEPlantCottonDead
+  suffix: SPRITE TODO
+  name: dead cotton
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Nature/Farm/cabbage.rsi
+    state: death
+    color: red
