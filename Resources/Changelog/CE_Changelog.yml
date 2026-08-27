@@ -850,3 +850,11 @@
   id: 1078
   time: '2026-08-27T15:38:47.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/442
+- author: TheShuEd
+  changes:
+  - message: Using a crowbar or other tools capable of breaking tiles while your character
+      is looking up now allows you to break the ceiling.
+    type: Add
+  id: 1079
+  time: '2026-08-27T15:42:28.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/434
