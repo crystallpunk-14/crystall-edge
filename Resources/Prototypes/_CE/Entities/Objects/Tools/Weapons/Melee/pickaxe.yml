@@ -66,6 +66,7 @@
         volume: 2
   - type: ToolTileCompatible
     delay: 5
+  - type: CEZLevelToolTile
   - type: EmitSoundOnLand
     sound:
       path: /Audio/Items/crowbar_drop.ogg
