@@ -26,3 +26,14 @@
   - type: CEPlantAdditionalProduceOnInteract
     produce:
       CEFoodPotato: 10
+  - type: CEPlantDying
+    deadEntity: CEPlantPotatoDead
+
+- type: entity
+  parent: CEPlantDeadBase
+  id: CEPlantPotatoDead
+  name: dead potato
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Nature/Farm/potato.rsi
+    state: death

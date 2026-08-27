@@ -33,4 +33,17 @@
   - type: CEWaveShader
     speed: 3
     dis: 4
+  - type: CEPlantDying
+    deadEntity: CEPlantSunflowerDead
+
+- type: entity
+  parent: CEPlantDeadBase
+  id: CEPlantSunflowerDead
+  suffix: SPRITE TODO
+  name: dead sunflower
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Nature/Farm/cabbage.rsi
+    state: death
+    color: red
 

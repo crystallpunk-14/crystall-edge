@@ -29,3 +29,16 @@
       CEFoodChanterelle: 2
   - type: CEPlantKudzu
     proto: CEPlantChanterelle
+  - type: CEPlantDying
+    deadEntity: CEPlantChanterelleDead
+
+- type: entity
+  parent: CEPlantDeadBase
+  id: CEPlantChanterelleDead
+  suffix: SPRITE TODO
+  name: dead chanterelle
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Nature/Farm/cabbage.rsi
+    state: death
+    color: red

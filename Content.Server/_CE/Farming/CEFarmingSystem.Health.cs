@@ -12,6 +12,22 @@ public sealed partial class CEFarmingSystem
     {
         SubscribeLocalEvent<CEPlantHealingComponent, CEPlantUpdateEvent>(OnPlantHealing);
         SubscribeLocalEvent<CEPlantFadingComponent, CEAfterPlantUpdateEvent>(OnPlantFading);
+        SubscribeLocalEvent<CEPlantDyingComponent, DamageChangedEvent>(OnPlantDamageChanged);
+    }
+
+    private void OnPlantDamageChanged(Entity<CEPlantDyingComponent> ent, ref DamageChangedEvent args)
+    {
+        if (!args.DamageIncreased)
+            return;
+
+        var withering = _damageable.GetPositiveDamage((ent.Owner, args.Damageable), ent.Comp.DamageGroup);
+        if (withering.GetTotal() < ent.Comp.DeathThreshold)
+            return;
+
+        if (ent.Comp.DeadEntity is { } dead)
+            SpawnAtPosition(dead, Transform(ent).Coordinates);
+
+        QueueDel(ent.Owner);
     }
 
     private void OnPlantHealing(Entity<CEPlantHealingComponent> ent, ref CEPlantUpdateEvent args)
