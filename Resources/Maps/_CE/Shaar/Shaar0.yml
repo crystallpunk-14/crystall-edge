@@ -4,8 +4,8 @@ meta:
   engineVersion: 283.1.0
   forkId: ""
   forkVersion: ""
-  time: 08/26/2026 08:46:50
-  entityCount: 1808
+  time: 08/27/2026 17:40:50
+  entityCount: 1812
 maps:
 - 1
 grids:
@@ -294,6 +294,21 @@ entities:
     - type: Transform
       parent: 1
       pos: -33.41355,-15.142294
+  - uid: 1810
+    components:
+    - type: Transform
+      parent: 1
+      pos: 4.403355,12.610402
+  - uid: 1811
+    components:
+    - type: Transform
+      parent: 1
+      pos: 3.593425,13.228844
+  - uid: 1812
+    components:
+    - type: Transform
+      parent: 1
+      pos: 2.8172421,12.509203
 - proto: CEBedsideTableFilledAcademyStudent
   entities:
   - uid: 478
@@ -3609,7 +3624,7 @@ entities:
       pos: 6.5,16.5
     - type: Door
       state: Opening
-      secondsUntilStateChange: -55589.52
+      secondsUntilStateChange: -55676.09
   - uid: 619
     components:
     - type: Transform
@@ -5885,6 +5900,13 @@ entities:
           ent: null
           showEnts: False
           occludes: False
+- proto: CEMop
+  entities:
+  - uid: 1809
+    components:
+    - type: Transform
+      parent: 1
+      pos: -9.147936,6.7149696
 - proto: CEPaper
   entities:
   - uid: 864
