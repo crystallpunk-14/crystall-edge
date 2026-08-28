@@ -25,6 +25,7 @@ public sealed partial class CEPowerMonitoringConsoleNavMapControl : CEZLevelsNav
 
     private readonly Dictionary<NetEntity, List<CEPowerMonitoringConsoleLine>> _allLines = new();
     private readonly Dictionary<NetEntity, List<CEPowerMonitoringConsoleLine>> _focusLines = new();
+    private readonly Dictionary<NetEntity, List<CEVerticalPipe>> _verticalPipes = new();
 
     private readonly Dictionary<Color, Color> _sRgbLookup = new();
 
@@ -50,6 +51,7 @@ public sealed partial class CEPowerMonitoringConsoleNavMapControl : CEZLevelsNav
 
         _allLines.Clear();
         _focusLines.Clear();
+        _verticalPipes.Clear();
 
         if (Owner is not { } owner ||
             !_entManager.TryGetComponent<CEPowerMonitoringCableNetworksComponent>(owner, out var cableNetworks))
@@ -60,6 +62,7 @@ public sealed partial class CEPowerMonitoringConsoleNavMapControl : CEZLevelsNav
         var allByGrid = cableNetworks.AllChunks;
         var focusByGrid = cableNetworks.FocusChunks;
         var cutsByGrid = cableNetworks.Cuts;
+        var verticalByGrid = cableNetworks.VerticalPipes;
 
         foreach (var render in Levels.Values)
         {
@@ -72,6 +75,9 @@ public sealed partial class CEPowerMonitoringConsoleNavMapControl : CEZLevelsNav
 
             if (focusByGrid.TryGetValue(gridNetEntity, out var focusChunks))
                 _focusLines[gridNetEntity] = DecodeChunks(focusChunks, render.Grid.TileSize, cuts);
+
+            if (verticalByGrid.TryGetValue(gridNetEntity, out var vertical))
+                _verticalPipes[gridNetEntity] = vertical;
         }
     }
 
@@ -81,11 +87,88 @@ public sealed partial class CEPowerMonitoringConsoleNavMapControl : CEZLevelsNav
 
         var hasFocus = _focusLines.TryGetValue(gridNetEntity, out var focus) && focus.Count > 0;
 
+        // Down arrows sit under the network...
+        DrawVerticalMarkers(handle, render.Depth, render.Grid.TileSize, gridNetEntity, up: false);
+
         if (_allLines.TryGetValue(gridNetEntity, out var all) && all.Count > 0)
             DrawLines(handle, render.Depth, all, hasFocus ? Color.DimGray : Color.White);
 
         if (hasFocus)
             DrawLines(handle, render.Depth, focus!, Color.White);
+
+        // ...up arrows over it.
+        DrawVerticalMarkers(handle, render.Depth, render.Grid.TileSize, gridNetEntity, up: true);
+    }
+
+    /// <summary>
+    /// Draws a filled triangle on every pipe that connects to the level <paramref name="up"/> or down.
+    /// Its base sits on the cable line's end point (tile centre + that voltage's line offset) and it
+    /// extends half a z-level gap screen-up / -down (independent of map rotation). Up arrows are
+    /// lighter, down arrows darker.
+    /// </summary>
+    private void DrawVerticalMarkers(DrawingHandleScreen handle, int depth, int tileSize, NetEntity gridNetEntity, bool up)
+    {
+        if (!_verticalPipes.TryGetValue(gridNetEntity, out var pipes) || pipes.Count == 0)
+            return;
+
+        // Triangle height = half the on-screen gap between adjacent z-levels, kept strictly screen-vertical.
+        var height = LevelHeightOffset * MinimapScale * 0.5f;
+        var apexOffset = new Vector2(0f, up ? -height : height);
+        var width = Math.Clamp(height * 0.7f, 4f, MathF.Max(4f, MinimapScale));
+
+        foreach (var pipe in pipes)
+        {
+            if (pipe.Voltage >= CableColors.Length)
+                continue;
+
+            if (up ? !pipe.Up : !pipe.Down)
+                continue;
+
+            var group = (CEPowerMonitoringConsoleLineGroup) pipe.Voltage;
+            if (HiddenLineGroups.Contains(group))
+                continue;
+
+            var tint = up
+                ? Color.InterpolateBetween(CableColors[pipe.Voltage], Color.White, 0.4f)
+                : Color.InterpolateBetween(CableColors[pipe.Voltage], Color.Black, 0.4f);
+
+            // Anchor on this voltage's cable line, which is drawn offset from the tile centre so the
+            // HV / MV / APC runs don't overlap (see CableOffsets in DrawLines).
+            var co = CableOffsets[pipe.Voltage];
+            var anchor = LevelToScreen(depth, new Vector2(
+                (pipe.Tile.X + 0.5f) * tileSize + co.X,
+                (pipe.Tile.Y + 0.5f) * tileSize - co.Y));
+
+            DrawFilledTriangle(handle, anchor, anchor + apexOffset, width, CachedSrgb(tint));
+        }
+    }
+
+    private static void DrawFilledTriangle(DrawingHandleScreen handle, Vector2 baseCenter, Vector2 apex, float width, Color color)
+    {
+        var dir = apex - baseCenter;
+        if (dir.LengthSquared() < 0.0001f)
+            return;
+
+        dir = Vector2.Normalize(dir);
+        var perp = new Vector2(-dir.Y, dir.X) * (width * 0.5f);
+
+        var verts = new Vector2[3];
+        verts[0] = apex;
+        verts[1] = baseCenter + perp;
+        verts[2] = baseCenter - perp;
+
+        handle.DrawPrimitives(DrawPrimitiveTopology.TriangleList, verts, color);
+    }
+
+    private Color CachedSrgb(Color color)
+    {
+        if (!_sRgbLookup.TryGetValue(color, out var srgb))
+        {
+            srgb = Color.ToSrgb(color);
+            _sRgbLookup[color] = srgb;
+        }
+
+        return srgb;
     }
 
     private void DrawLines(DrawingHandleScreen handle, int depth, List<CEPowerMonitoringConsoleLine> lines, Color modulate)

@@ -31,6 +31,24 @@ public sealed partial class CEPowerMonitoringCableNetworksComponent : Component
     /// </summary>
     [ViewVariables, AutoNetworkedField]
     public Dictionary<NetEntity, HashSet<CECableCut>> Cuts = new();
+
+    /// <summary>
+    /// Pipes that carry mana between z-levels (<c>CECableVerticalNode</c>), keyed by grid. The client
+    /// draws an up / down arrow on these tiles so inter-level connections are readable on the map.
+    /// </summary>
+    [ViewVariables, AutoNetworkedField]
+    public Dictionary<NetEntity, List<CEVerticalPipe>> VerticalPipes = new();
+}
+
+/// <summary>A tile carrying a z-level-connecting pipe.</summary>
+[Serializable, NetSerializable]
+public struct CEVerticalPipe
+{
+    public Vector2i Tile;
+    /// <summary>CableType index (0 = HighVoltage / big pipe, 2 = Apc / medium pipe).</summary>
+    public byte Voltage;
+    public bool Up;
+    public bool Down;
 }
 
 /// <summary>An undirected cable edge between two adjacent grid tiles, in canonical order.</summary>

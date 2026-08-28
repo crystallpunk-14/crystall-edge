@@ -198,16 +198,96 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
     private void OnCableMapInit(EntityUid uid, CECableComponent component, MapInitEvent args)
     {
         SetCableBit(uid, Transform(uid).Anchored);
+        RefreshVerticalIfNeeded(uid);
     }
 
     private void OnCableAnchorChanged(EntityUid uid, CECableComponent component, AnchorStateChangedEvent args)
     {
         SetCableBit(uid, args.Anchored);
+        RefreshVerticalIfNeeded(uid);
     }
 
     private void OnCableShutdown(EntityUid uid, CECableComponent component, ComponentShutdown args)
     {
         SetCableBit(uid, false);
+        RefreshVerticalIfNeeded(uid, ignore: uid);
+    }
+
+    /// <summary>Rebuilds a grid's vertical-pipe list, but only when the changed cable actually connects z-levels.</summary>
+    private void RefreshVerticalIfNeeded(EntityUid uid, EntityUid? ignore = null)
+    {
+        if (!TryGetVerticalPipe(uid, out _))
+            return;
+
+        if (Transform(uid).GridUid is { } gridUid)
+            RebuildGridVerticalPipes(gridUid, ignore);
+    }
+
+    private bool TryGetVerticalPipe(EntityUid uid, out (bool Up, bool Down) dirs)
+    {
+        dirs = default;
+
+        if (!TryComp<NodeContainerComponent>(uid, out var nodeContainer))
+            return false;
+
+        var up = false;
+        var down = false;
+
+        foreach (var node in nodeContainer.Nodes.Values)
+        {
+            if (node is CECableVerticalNode vertical)
+            {
+                up |= vertical.Up;
+                down |= vertical.Down;
+            }
+        }
+
+        dirs = (up, down);
+        return up || down;
+    }
+
+    private List<CEVerticalPipe> BuildGridVerticalPipeList(EntityUid gridUid, EntityUid? ignore = null)
+    {
+        var result = new List<CEVerticalPipe>();
+
+        if (!TryComp<MapGridComponent>(gridUid, out var grid))
+            return result;
+
+        var query = AllEntityQuery<CableComponent, TransformComponent>();
+        while (query.MoveNext(out var ent, out var cable, out var xform))
+        {
+            if (ent == ignore || xform.GridUid != gridUid || !xform.Anchored)
+                continue;
+
+            if (!TryGetVerticalPipe(ent, out var dirs))
+                continue;
+
+            result.Add(new CEVerticalPipe
+            {
+                Tile = _sharedMapSystem.LocalToTile(gridUid, grid, xform.Coordinates),
+                Voltage = (byte) cable.CableType,
+                Up = dirs.Up,
+                Down = dirs.Down,
+            });
+        }
+
+        return result;
+    }
+
+    private void RebuildGridVerticalPipes(EntityUid gridUid, EntityUid? ignore = null)
+    {
+        var pipes = BuildGridVerticalPipeList(gridUid, ignore);
+        var gridNetEntity = GetNetEntity(gridUid);
+
+        var query = AllEntityQuery<CEPowerMonitoringCableNetworksComponent>();
+        while (query.MoveNext(out var ent, out var entCableNetworks))
+        {
+            if (!IsGridInConsoleNetwork(ent, gridUid))
+                continue;
+
+            entCableNetworks.VerticalPipes[gridNetEntity] = pipes;
+            Dirty(ent, entCableNetworks);
+        }
     }
 
     /// <summary>Sets or clears the cable bit for <paramref name="uid"/> in its grid's cached chunk and dirties affected consoles.</summary>
@@ -1123,6 +1203,7 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
         component.AllChunks.Clear();
         component.FocusChunks.Clear();
         component.Cuts.Clear();
+        component.VerticalPipes.Clear();
 
         foreach (var grid in GetNetworkGrids(uid))
         {
@@ -1135,6 +1216,7 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
             var gridNet = GetNetEntity(grid);
             component.AllChunks[gridNet] = allChunks;
             component.Cuts[gridNet] = BuildGridCutSet(grid);
+            component.VerticalPipes[gridNet] = BuildGridVerticalPipeList(grid);
         }
 
         Dirty(uid, component);
