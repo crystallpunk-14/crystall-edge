@@ -110,6 +110,6 @@
   requirements:
   - !type:StackResource
     stack: CEWood
-    count: 2
+    count: 1
   result: CEAsh1
   resultCount: 1

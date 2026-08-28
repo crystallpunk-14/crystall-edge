@@ -4,8 +4,8 @@ meta:
   engineVersion: 283.1.0
   forkId: ""
   forkVersion: ""
-  time: 08/27/2026 17:40:51
-  entityCount: 1964
+  time: 08/28/2026 20:27:01
+  entityCount: 1961
 maps:
 - 1
 grids:
@@ -967,12 +967,6 @@ entities:
       parent: 1
       rot: 1.5707963267948966 rad
       pos: 2.5,-12.5
-  - uid: 544
-    components:
-    - type: Transform
-      parent: 1
-      rot: 1.5707963267948966 rad
-      pos: 0.5,-12.5
 - proto: CEClothingHeadTriangularGuard
   entities:
   - uid: 1626
@@ -3656,6 +3650,18 @@ entities:
     - type: Transform
       parent: 1
       pos: -7.5,11.5
+- proto: CEMapProjector
+  entities:
+  - uid: 881
+    components:
+    - type: Transform
+      parent: 1
+      pos: -2.5,-12.5
+  - uid: 1475
+    components:
+    - type: Transform
+      parent: 1
+      pos: -30.5,-13.5
 - proto: CENail1
   entities:
   - uid: 1785
@@ -4482,6 +4488,13 @@ entities:
       pos: -28.5,-8.5
 - proto: CEPipeBrassMedium
   entities:
+  - uid: 4
+    components:
+    - type: Transform
+      parent: 1
+      pos: 0.5,-12.5
+    - type: Fixtures
+      fixtures: {}
   - uid: 10
     components:
     - type: Transform
@@ -4748,6 +4761,13 @@ entities:
       pos: -5.5,-18.5
     - type: Fixtures
       fixtures: {}
+  - uid: 544
+    components:
+    - type: Transform
+      parent: 1
+      pos: -0.5,-12.5
+    - type: Fixtures
+      fixtures: {}
   - uid: 671
     components:
     - type: Transform
@@ -4774,13 +4794,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -17.5,-4.5
-    - type: Fixtures
-      fixtures: {}
-  - uid: 881
-    components:
-    - type: Transform
-      parent: 1
-      pos: 0.5,-12.5
     - type: Fixtures
       fixtures: {}
   - uid: 886
@@ -5110,34 +5123,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 2.5,-12.5
-    - type: Fixtures
-      fixtures: {}
-  - uid: 1475
-    components:
-    - type: Transform
-      parent: 1
-      pos: 2.5,-14.5
-    - type: Fixtures
-      fixtures: {}
-  - uid: 1476
-    components:
-    - type: Transform
-      parent: 1
-      pos: 1.5,-14.5
-    - type: Fixtures
-      fixtures: {}
-  - uid: 1477
-    components:
-    - type: Transform
-      parent: 1
-      pos: 0.5,-14.5
-    - type: Fixtures
-      fixtures: {}
-  - uid: 1492
-    components:
-    - type: Transform
-      parent: 1
-      pos: -0.5,-14.5
     - type: Fixtures
       fixtures: {}
   - uid: 1493
@@ -5870,18 +5855,11 @@ entities:
       fixtures: {}
 - proto: CEPipeBrassMediumValve
   entities:
-  - uid: 4
-    components:
-    - type: Transform
-      parent: 1
-      pos: 2.5,-13.5
-    - type: Fixtures
-      fixtures: {}
   - uid: 5
     components:
     - type: Transform
       parent: 1
-      pos: 0.5,-13.5
+      pos: 1.5,-12.5
     - type: Fixtures
       fixtures: {}
 - proto: CEPipeBrassMediumVerticalDown

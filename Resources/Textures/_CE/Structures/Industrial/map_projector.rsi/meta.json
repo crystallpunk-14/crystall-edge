@@ -1,0 +1,34 @@
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 46
+    },
+	"license": "CC-BY-SA-3.0",
+	"copyright": "Created by TheShuEd (github)",
+    "states": [
+        {
+            "name": "base"
+        },
+        {
+            "name": "holo",
+            "delays": [
+                [
+                    0.15,
+                    0.15,
+                    0.15,
+                    0.15
+                ]
+            ]
+        },
+        {
+            "name": "island",
+            "delays": [
+                [
+                    0.45,
+                    0.75
+                ]
+            ]
+        }
+    ]
+}

@@ -4,7 +4,7 @@ meta:
   engineVersion: 283.1.0
   forkId: ""
   forkVersion: ""
-  time: 08/27/2026 17:40:51
+  time: 08/28/2026 20:27:02
   entityCount: 1463
 maps:
 - 1
@@ -3145,6 +3145,13 @@ entities:
       pos: -31.5,-12.5
     - type: Fixtures
       fixtures: {}
+  - uid: 239
+    components:
+    - type: Transform
+      parent: 1
+      pos: -2.5,-15.5
+    - type: Fixtures
+      fixtures: {}
   - uid: 249
     components:
     - type: Transform
@@ -3978,6 +3985,13 @@ entities:
       pos: -21.5,11.5
     - type: Fixtures
       fixtures: {}
+  - uid: 1262
+    components:
+    - type: Transform
+      parent: 1
+      pos: -2.5,-14.5
+    - type: Fixtures
+      fixtures: {}
   - uid: 1391
     components:
     - type: Transform
@@ -4206,13 +4220,6 @@ entities:
       fixtures: {}
 - proto: CEPipeBrassMediumVerticalDown
   entities:
-  - uid: 239
-    components:
-    - type: Transform
-      parent: 1
-      pos: -2.5,-15.5
-    - type: Fixtures
-      fixtures: {}
   - uid: 363
     components:
     - type: Transform
@@ -4253,13 +4260,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -30.5,-10.5
-    - type: Fixtures
-      fixtures: {}
-  - uid: 1473
-    components:
-    - type: Transform
-      parent: 1
-      pos: -2.5,-14.5
     - type: Fixtures
       fixtures: {}
 - proto: CEPipeBrassMediumVerticalUp
