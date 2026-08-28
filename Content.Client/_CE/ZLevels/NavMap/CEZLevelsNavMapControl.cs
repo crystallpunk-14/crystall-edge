@@ -80,8 +80,8 @@ public partial class CEZLevelsNavMapControl : MapGridControl
 
     // --- Theming / tunables (no magic numbers inline) ---
 
-    public Color WallColor = new(102, 178, 235);
-    public Color TileColor = new(42, 78, 110);
+    public Color WallColor = new(120, 178, 224);
+    public Color TileColor = new(58, 100, 128);
     public Color FloorEdgeColor = new(72, 126, 166);
 
     protected Color BackgroundColor = Color.Black;

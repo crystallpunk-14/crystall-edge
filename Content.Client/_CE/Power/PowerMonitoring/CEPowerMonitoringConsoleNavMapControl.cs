@@ -52,8 +52,9 @@ public sealed partial class CEPowerMonitoringConsoleNavMapControl : CEZLevelsNav
     {
         IoCManager.InjectDependencies(this);
 
-        TileColor = new Color(58, 100, 128);
-        WallColor = new Color(120, 178, 224);
+        TileColor = new Color(94, 68, 46);
+        WallColor = new Color(235, 165, 90);
+        FloorEdgeColor = new Color(166, 118, 72);
 
         PostLevelDrawingAction += DrawCablesForLevel;
     }

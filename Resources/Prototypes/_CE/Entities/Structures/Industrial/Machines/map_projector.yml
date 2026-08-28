@@ -1,5 +1,3 @@
-# CrystallEdge: debug device that renders the stacked z-level minimap (CEZLevelsNavMapControl).
-# Prototyped after CETradingPlatformBase.
 - type: entity
   id: CEMapProjector
   parent:
@@ -7,39 +5,32 @@
   - CEBaseMachinePowered
   - BaseMachine
   name: map projector
-  suffix: Debug
-  description: Projects a stacked minimap of every z-level.
+  description: Projects a three-dimensional rotating model of the island
   categories: [ ForkFiltered ]
   components:
   - type: PlacementReplacement
     key: walls
   - type: Sprite
-    drawdepth: FloorTiles
-    snapCardinals: true
-    sprite: _CE/Structures/Industrial/buy_platform.rsi
+    drawdepth: Mobs
+    noRot: true
+    offset: 0, 0.3
+    sprite: _CE/Structures/Industrial/map_projector.rsi
     layers:
     - state: base
+    - state: holo
+      shader: unshaded
+      map: ["holo"]
+    - state: island
+      shader: unshaded
+      map: ["island"]
   - type: Icon
-    sprite: _CE/Structures/Industrial/buy_platform.rsi
+    sprite: _CE/Structures/Industrial/map_projector.rsi
     state: base
   - type: ActivatableUI
     key: enum.CEMapUiKey.Key
   - type: ActivatableUIRequiresPower
   - type: Clickable
   - type: InteractionOutline
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.4,-0.4,0.4,0.4"
-        mask:
-        - TabletopMachineMask
-        layer:
-        - Impassable
-        - MidImpassable
-        - LowImpassable
-        hard: false
   - type: ApcPowerReceiver
     powerLoad: 0.1
   - type: UserInterface
@@ -48,3 +39,20 @@
         type: CEMapBoundUserInterface
   - type: ExtensionCableReceiver
     receptionRange: 0
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        holo:
+          True: {visible: true}
+          False: {visible: false}
+        island:
+          True: {visible: true}
+          False: {visible: false}
+  - type: AmbientOnPowered
+  - type: LitOnPowered
+  - type: PointLight
+    radius: 2
+    energy: 4
+    color: "#1cd0dd"
+    enabled: false

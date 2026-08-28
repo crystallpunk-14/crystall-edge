@@ -5,19 +5,26 @@
   - CEBaseMachinePowered
   - BaseMachine
   name: island power grid projector
-  description: Projects the power grid and cable networks across every z-level of the island.
+  description: Projects a three-dimensional rotating model of the island with a detailed layout of all energy devices.
   categories: [ ForkFiltered ]
   components:
   - type: PlacementReplacement
     key: walls
   - type: Sprite
-    drawdepth: FloorTiles
-    snapCardinals: true
-    sprite: _CE/Structures/Industrial/buy_platform.rsi
+    drawdepth: Mobs
+    noRot: true
+    offset: 0, 0.3
+    sprite: _CE/Structures/Industrial/map_projector_powernet.rsi
     layers:
     - state: base
+    - state: holo
+      shader: unshaded
+      map: ["holo"]
+    - state: island
+      shader: unshaded
+      map: ["island"]
   - type: Icon
-    sprite: _CE/Structures/Industrial/buy_platform.rsi
+    sprite: _CE/Structures/Industrial/map_projector_powernet.rsi
     state: base
   - type: CEPowerMonitoringConsole
   - type: CEPowerMonitoringCableNetworks
@@ -53,3 +60,20 @@
         type: CEPowerMonitoringConsoleBoundUserInterface
   - type: ExtensionCableReceiver
     receptionRange: 0
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        holo:
+          True: {visible: true}
+          False: {visible: false}
+        island:
+          True: {visible: true}
+          False: {visible: false}
+  - type: AmbientOnPowered
+  - type: LitOnPowered
+  - type: PointLight
+    radius: 2
+    energy: 4
+    color: "#e7bd61"
+    enabled: false

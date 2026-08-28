@@ -14,6 +14,6 @@ public sealed class CEMapBoundUserInterface(EntityUid owner, Enum uiKey) : Bound
         _window.Title = EntMan.GetComponent<MetaDataComponent>(Owner).EntityName;
 
         var mapUid = EntMan.TryGetComponent<TransformComponent>(Owner, out var xform) ? xform.MapUid : null;
-        _window.SetMap(mapUid);
+        _window.SetMap(Owner, mapUid);
     }
 }
