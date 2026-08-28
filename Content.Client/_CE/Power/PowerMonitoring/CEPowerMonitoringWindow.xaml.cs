@@ -88,7 +88,8 @@ public sealed partial class CEPowerMonitoringWindow : FancyWindow
                 islandName = stationMetaData.EntityName;
 
             var msg = new FormattedMessage();
-            msg.AddMarkupOrThrow(Loc.GetString("ce-power-monitoring-window-island-name", ("islandName", islandName)));
+            msg.AddMarkupOrThrow(Loc.GetString("ce-power-monitoring-window-island-name",
+                ("islandName", FormattedMessage.EscapeText(islandName))));
             StationName.SetMessage(msg);
         }
         else
