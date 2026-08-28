@@ -1,16 +1,11 @@
 using System.Linq;
-using Content.Server.NodeContainer;
 using Content.Server.NodeContainer.EntitySystems;
-using Content.Server.NodeContainer.NodeGroups;
-using Content.Server.NodeContainer.Nodes;
 using Content.Server.Power.Components;
-using Content.Server.Power.EntitySystems;
 using Content.Server.Power.Nodes;
 using Content.Server.Power.NodeGroups;
 using Content.Server.StationEvents.Components;
 using Content.Shared._CE.Power.Components;
 using Content.Shared._CE.Power.PowerMonitoring;
-using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.NodeContainer;
@@ -35,10 +30,10 @@ namespace Content.Server._CE.Power.PowerMonitoring;
 [UsedImplicitly]
 public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonitoringConsoleSystem
 {
-    [Dependency] private readonly UserInterfaceSystem _userInterfaceSystem = default!;
-    [Dependency] private readonly SharedMapSystem _sharedMapSystem = default!;
-    [Dependency] private readonly SharedBatterySystem _battery = default!;
-    [Dependency] private readonly CESharedZLevelsSystem _zLevels = default!;
+    [Dependency] private UserInterfaceSystem _userInterfaceSystem = default!;
+    [Dependency] private SharedMapSystem _sharedMapSystem = default!;
+    [Dependency] private SharedBatterySystem _battery = default!;
+    [Dependency] private CESharedZLevelsSystem _zLevels = default!;
 
     // Note: this data does not need to be saved
     private readonly Dictionary<EntityUid, Dictionary<Vector2i, PowerCableChunk>> _gridPowerCableChunks = new();
@@ -107,7 +102,9 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
     }
 
     private bool IsGridInConsoleNetwork(EntityUid consoleUid, EntityUid gridUid)
-        => GetNetworkGrids(consoleUid).Contains(gridUid);
+    {
+        return GetNetworkGrids(consoleUid).Contains(gridUid);
+    }
 
     #endregion
 
@@ -265,7 +262,7 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
             result.Add(new CEVerticalPipe
             {
                 Tile = _sharedMapSystem.LocalToTile(gridUid, grid, xform.Coordinates),
-                Voltage = (byte) cable.CableType,
+                Voltage = (byte)cable.CableType,
                 Up = dirs.Up,
                 Down = dirs.Down,
             });
@@ -319,9 +316,9 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
         var flag = GetFlag(SharedMapSystem.GetChunkRelative(tile, ChunkSize));
 
         if (set)
-            chunk.PowerCableData[(int) cable.CableType] |= flag;
+            chunk.PowerCableData[(int)cable.CableType] |= flag;
         else
-            chunk.PowerCableData[(int) cable.CableType] &= ~flag;
+            chunk.PowerCableData[(int)cable.CableType] &= ~flag;
 
         var gridNetEntity = GetNetEntity(gridUid);
 
@@ -444,7 +441,11 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
                 continue;
 
             entConsole.PowerMonitoringDeviceMetaData[netEntity] =
-                new PowerMonitoringDeviceMetaData(name, coords, component.Group, component.SpritePath, component.SpriteState);
+                new PowerMonitoringDeviceMetaData(name,
+                    coords,
+                    component.Group,
+                    component.SpritePath,
+                    component.SpriteState);
 
             Dirty(ent, entConsole);
         }
@@ -540,7 +541,9 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
 
         // Every grid must have a NavMapComponent so the client can draw its schematic
         foreach (var grid in networkGrids)
+        {
             EnsureComp<NavMapComponent>(grid);
+        }
 
         var totalSources = 0d;
         var totalBatteryUsage = 0d;
@@ -585,7 +588,8 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
         }
 
         var leaksChanged = previousLeaks.Count != component.EnergyLeaks.Count ||
-                           previousLeaks.Any(kv => !component.EnergyLeaks.TryGetValue(kv.Key, out var c) || !c.Equals(kv.Value));
+                           previousLeaks.Any(kv =>
+                               !component.EnergyLeaks.TryGetValue(kv.Key, out var c) || !c.Equals(kv.Value));
 
         if (component.Flags != flags || leaksChanged)
             Dirty(uid, component);
@@ -606,7 +610,11 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
             if (!component.PowerMonitoringDeviceMetaData.ContainsKey(netEnt))
             {
                 component.PowerMonitoringDeviceMetaData[netEnt] = new PowerMonitoringDeviceMetaData(
-                    MetaData(ent).EntityName, GetNetCoordinates(xform.Coordinates), device.Group, device.SpritePath, device.SpriteState);
+                    MetaData(ent).EntityName,
+                    GetNetCoordinates(xform.Coordinates),
+                    device.Group,
+                    device.SpritePath,
+                    device.SpriteState);
                 Dirty(uid, component);
             }
 
@@ -619,7 +627,10 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
             if (device.Group != component.FocusGroup)
                 continue;
 
-            allEntries.Add(new PowerMonitoringConsoleEntry(netEnt, device.Group, powerStats.PowerValue, powerStats.BatteryLevel));
+            allEntries.Add(new PowerMonitoringConsoleEntry(netEnt,
+                device.Group,
+                powerStats.PowerValue,
+                powerStats.BatteryLevel));
         }
 
         if (component.Focus != null)
@@ -634,7 +645,8 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
 
                 if (device.LoadNodes != null)
                 {
-                    var foundNode = nodeContainer.Nodes.FirstOrNull(x => x.Value is CableDeviceNode && (x.Value as CableDeviceNode)?.Enabled == true);
+                    var foundNode = nodeContainer.Nodes.FirstOrNull(x =>
+                        x.Value is CableDeviceNode && (x.Value as CableDeviceNode)?.Enabled == true);
 
                     if (foundNode != null)
                         loadNodeName = foundNode.Value.Key;
@@ -651,13 +663,17 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
                     if (sourceNode?.NodeGroup != null)
                     {
                         foreach (var node in sourceNode.NodeGroup.Nodes)
+                        {
                             reachableEntities.Add(node.Owner);
+                        }
                     }
 
                     if (loadNode?.NodeGroup != null)
                     {
                         foreach (var node in loadNode.NodeGroup.Nodes)
+                        {
                             reachableEntities.Add(node.Owner);
+                        }
                     }
 
                     UpdateFocusNetwork(uid, cableNetworks, networkGrids, reachableEntities);
@@ -780,7 +796,11 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
                     continue;
                 }
 
-                indexedSources.Add(ent, new PowerMonitoringConsoleEntry(GetNetEntity(ent), entDevice.Group, powerSupplier.CurrentSupply, GetBatteryLevel(ent)));
+                indexedSources.Add(ent,
+                    new PowerMonitoringConsoleEntry(GetNetEntity(ent),
+                        entDevice.Group,
+                        powerSupplier.CurrentSupply,
+                        GetBatteryLevel(ent)));
             }
         }
 
@@ -809,14 +829,20 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
                     continue;
                 }
 
-                indexedSources.Add(ent, new PowerMonitoringConsoleEntry(GetNetEntity(ent), entDevice.Group, entBattery.CurrentSupply, GetBatteryLevel(ent)));
+                indexedSources.Add(ent,
+                    new PowerMonitoringConsoleEntry(GetNetEntity(ent),
+                        entDevice.Group,
+                        entBattery.CurrentSupply,
+                        GetBatteryLevel(ent)));
             }
         }
 
         sources = indexedSources.Values.ToList();
 
         foreach (var powerConsumer in netQ.Consumers)
+        {
             currentDemand += powerConsumer.ReceivedPower;
+        }
 
         foreach (var batteryCharger in netQ.Chargers)
         {
@@ -850,7 +876,10 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
         for (var i = 0; i < sources.Count; i++)
         {
             var entry = sources[i];
-            sources[i] = new PowerMonitoringConsoleEntry(entry.NetEntity, entry.Group, entry.PowerValue * powerFraction, entry.BatteryLevel);
+            sources[i] = new PowerMonitoringConsoleEntry(entry.NetEntity,
+                entry.Group,
+                entry.PowerValue * powerFraction,
+                entry.BatteryLevel);
         }
     }
 
@@ -886,7 +915,11 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
                     continue;
                 }
 
-                indexedLoads.Add(ent, new PowerMonitoringConsoleEntry(GetNetEntity(ent), entDevice.Group, powerConsumer.ReceivedPower, GetBatteryLevel(ent)));
+                indexedLoads.Add(ent,
+                    new PowerMonitoringConsoleEntry(GetNetEntity(ent),
+                        entDevice.Group,
+                        powerConsumer.ReceivedPower,
+                        GetBatteryLevel(ent)));
             }
         }
 
@@ -915,7 +948,11 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
                     continue;
                 }
 
-                indexedLoads.Add(ent, new PowerMonitoringConsoleEntry(GetNetEntity(ent), entDevice.Group, battery.CurrentReceiving, GetBatteryLevel(ent)));
+                indexedLoads.Add(ent,
+                    new PowerMonitoringConsoleEntry(GetNetEntity(ent),
+                        entDevice.Group,
+                        battery.CurrentReceiving,
+                        GetBatteryLevel(ent)));
             }
         }
 
@@ -947,7 +984,10 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
         for (var i = 0; i < loads.Count; i++)
         {
             var entry = loads[i];
-            loads[i] = new PowerMonitoringConsoleEntry(entry.NetEntity, entry.Group, entry.PowerValue * powerFraction, entry.BatteryLevel);
+            loads[i] = new PowerMonitoringConsoleEntry(entry.NetEntity,
+                entry.Group,
+                entry.PowerValue * powerFraction,
+                entry.BatteryLevel);
         }
     }
 
@@ -1077,7 +1117,9 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
             if (childCount > 0)
             {
                 var name = MetaData(master).EntityPrototype?.Name ?? MetaData(master).EntityName;
-                metaData.EntityName = Loc.GetString("ce-power-monitoring-window-object-array", ("name", name), ("count", childCount + 1));
+                metaData.EntityName = Loc.GetString("ce-power-monitoring-window-object-array",
+                    ("name", name),
+                    ("count", childCount + 1));
             }
             else
             {
@@ -1111,13 +1153,16 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
             }
 
             var relative = SharedMapSystem.GetChunkRelative(tile.GridIndices, ChunkSize);
-            chunk.PowerCableData[(int) cable.CableType] |= GetFlag(relative);
+            chunk.PowerCableData[(int)cable.CableType] |= GetFlag(relative);
         }
 
         return allChunks;
     }
 
-    private void UpdateFocusNetwork(EntityUid uid, CEPowerMonitoringCableNetworksComponent component, List<EntityUid> networkGrids, List<EntityUid> nodeList)
+    private void UpdateFocusNetwork(EntityUid uid,
+        CEPowerMonitoringCableNetworksComponent component,
+        List<EntityUid> networkGrids,
+        List<EntityUid> nodeList)
     {
         component.FocusChunks.Clear();
 
@@ -1149,7 +1194,7 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
             var relative = SharedMapSystem.GetChunkRelative(tile.GridIndices, ChunkSize);
 
             if (TryComp<CableComponent>(ent, out var cable))
-                chunk.PowerCableData[(int) cable.CableType] |= GetFlag(relative);
+                chunk.PowerCableData[(int)cable.CableType] |= GetFlag(relative);
         }
 
         Dirty(uid, component);
@@ -1177,7 +1222,11 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
             var name = MetaData(ent).EntityName;
             var netCoords = GetNetCoordinates(entXform.Coordinates);
 
-            var metaData = new PowerMonitoringDeviceMetaData(name, netCoords, entDevice.Group, entDevice.SpritePath, entDevice.SpriteState);
+            var metaData = new PowerMonitoringDeviceMetaData(name,
+                netCoords,
+                entDevice.Group,
+                entDevice.SpritePath,
+                entDevice.SpriteState);
 
             if (entDevice.IsCollectionMasterOrChild)
             {
@@ -1188,7 +1237,9 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
                 else if (entDevice.ChildDevices.Count > 0)
                 {
                     name = MetaData(ent).EntityPrototype?.Name ?? MetaData(ent).EntityName;
-                    metaData.EntityName = Loc.GetString("ce-power-monitoring-window-object-array", ("name", name), ("count", entDevice.ChildDevices.Count + 1));
+                    metaData.EntityName = Loc.GetString("ce-power-monitoring-window-object-array",
+                        ("name", name),
+                        ("count", entDevice.ChildDevices.Count + 1));
                 }
             }
 

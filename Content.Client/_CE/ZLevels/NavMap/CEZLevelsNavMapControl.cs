@@ -7,7 +7,6 @@ using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Pinpointer;
 using JetBrains.Annotations;
-using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
@@ -31,7 +30,7 @@ namespace Content.Client._CE.ZLevels.NavMap;
 [UsedImplicitly, Virtual]
 public partial class CEZLevelsNavMapControl : MapGridControl
 {
-    [Dependency] private readonly IResourceCache _cache = default!;
+    [Dependency] private IResourceCache _cache = default!;
 
     private readonly SharedTransformSystem _transform;
     private readonly CESharedZLevelsSystem _zLevels;
@@ -188,7 +187,7 @@ public partial class CEZLevelsNavMapControl : MapGridControl
         };
 
         AddChild(panel);
-        LayoutContainer.SetAnchorAndMarginPreset(panel, LayoutContainer.LayoutPreset.TopRight, margin: 8);
+        SetAnchorAndMarginPreset(panel, LayoutPreset.TopRight, margin: 8);
 
         _levelUp.OnPressed += _ => SetActiveDepth(ActiveDepth + 1);
         _levelDown.OnPressed += _ => SetActiveDepth(ActiveDepth - 1);
@@ -265,7 +264,9 @@ public partial class CEZLevelsNavMapControl : MapGridControl
 
     /// <summary>Whether a given depth should be built and drawn. Override to e.g. also show levels above.</summary>
     protected virtual bool ShouldDrawLevel(int depth)
-        => depth >= ActiveDepth - MaxLevelsBelow && depth <= ActiveDepth + MaxLevelsAbove;
+    {
+        return depth >= ActiveDepth - MaxLevelsBelow && depth <= ActiveDepth + MaxLevelsAbove;
+    }
 
     /// <summary>Colour multiplier for a level. Active level is full-bright; lower levels fade (but never below <see cref="MinLevelBrightness"/>).</summary>
     protected virtual Color GetLevelModulate(int depth)
@@ -322,7 +323,10 @@ public partial class CEZLevelsNavMapControl : MapGridControl
     /// </summary>
     public Vector2 LevelToScreen(int depth, Vector2 mapPos)
     {
-        var off = GetPanOffset();
+        var off = Offset;
+        if (_activeGridPhysics != null)
+            off += _activeGridPhysics.LocalCenter;
+
         var local = new Vector2(mapPos.X - off.X, -(mapPos.Y - off.Y));
 
         if (_rotation != Angle.Zero)
@@ -331,15 +335,9 @@ public partial class CEZLevelsNavMapControl : MapGridControl
         return ScalePosition(local) + LevelOffsetDir * (LevelHeightOffset * MinimapScale * (ActiveDepth - depth));
     }
 
-    private Vector2 GetPanOffset()
-    {
-        var o = Offset;
-        if (_activeGridPhysics != null)
-            o += _activeGridPhysics.LocalCenter;
-        return o;
-    }
-
-    /// <summary>Switches the active level to whatever z-level <paramref name="coordinates"/> sits on and pans it to view centre.</summary>
+    /// <summary>
+    /// Switches the active level to whatever z-level <paramref name="coordinates"/> sits on and pans it to view centre.
+    /// </summary>
     public void CenterToCoordinates(EntityCoordinates coordinates)
     {
         var mapUid = _transform.GetMap(coordinates);
@@ -380,7 +378,8 @@ public partial class CEZLevelsNavMapControl : MapGridControl
         if (_rotatingLeft != _rotatingRight)
         {
             _recenterRotation = false;
-            _rotation = (_rotation + new Angle((_rotatingRight ? 1f : -1f) * RotateSpeed * args.DeltaSeconds)).Reduced();
+            _rotation = (_rotation + new Angle((_rotatingRight ? 1f : -1f) * RotateSpeed * args.DeltaSeconds))
+                .Reduced();
         }
         else if (_recenterRotation)
         {
@@ -476,10 +475,14 @@ public partial class CEZLevelsNavMapControl : MapGridControl
                     var c = LevelToScreen(depth, new Vector2(rb.X, -rb.Y));
                     var d = LevelToScreen(depth, new Vector2(lt.X, -rb.Y));
 
-                    rects.Add(a); rects.Add(b);
-                    rects.Add(b); rects.Add(c);
-                    rects.Add(c); rects.Add(d);
-                    rects.Add(d); rects.Add(a);
+                    rects.Add(a);
+                    rects.Add(b);
+                    rects.Add(b);
+                    rects.Add(c);
+                    rects.Add(c);
+                    rects.Add(d);
+                    rects.Add(d);
+                    rects.Add(a);
                 }
 
                 handle.DrawPrimitives(DrawPrimitiveTopology.LineList, rects.Span, wallColor);
@@ -524,7 +527,8 @@ public partial class CEZLevelsNavMapControl : MapGridControl
             if (!TryProjectCoordinates(blip.Coordinates, out var position, out var blipDepth) || blipDepth != depth)
                 continue;
 
-            var size = new Vector2(blip.Texture.Width, blip.Texture.Height) * blip.Scale * 0.075f * MathF.Sqrt(MinimapScale);
+            var size = new Vector2(blip.Texture.Width, blip.Texture.Height) * blip.Scale * 0.075f *
+                       MathF.Sqrt(MinimapScale);
             handle.DrawTextureRect(blip.Texture, new UIBox2(position - size, position + size), blip.Color);
         }
     }
@@ -624,7 +628,9 @@ public partial class CEZLevelsNavMapControl : MapGridControl
     }
 }
 
-/// <summary>Per-level bundle held by <see cref="CEZLevelsNavMapControl"/>.</summary>
+/// <summary>
+/// Per-level bundle held by <see cref="CEZLevelsNavMapControl"/>.
+/// </summary>
 public sealed class CEZLevelRender
 {
     public int Depth;

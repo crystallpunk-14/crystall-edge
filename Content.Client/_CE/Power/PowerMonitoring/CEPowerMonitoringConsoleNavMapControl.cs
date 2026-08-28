@@ -8,19 +8,32 @@ using Robust.Shared.Collections;
 namespace Content.Client._CE.Power.PowerMonitoring;
 
 /// <summary>
-/// CE fork of <c>Content.Client.Power.PowerMonitoringConsoleNavMapControl</c>. Draws the HV / MV / APC
+/// CrystallEdge fork of <c>Content.Client.Power.PowerMonitoringConsoleNavMapControl</c>. Draws the HV / MV / APC
 /// cable networks on top of every drawn z-level of the stacked <see cref="CEZLevelsNavMapControl"/>,
 /// reading per-grid chunk data from <see cref="CEPowerMonitoringCableNetworksComponent"/>.
 /// </summary>
 public sealed partial class CEPowerMonitoringConsoleNavMapControl : CEZLevelsNavMapControl
 {
-    [Dependency] private readonly IEntityManager _entManager = default!;
+    [Dependency] private IEntityManager _entManager = default!;
 
     // Cable indexing matches CableType: 0 = HighVoltage, 1 = MediumVoltage, 2 = Apc
-    private static readonly Color[] CableColors = { Color.OrangeRed, Color.Yellow, Color.LimeGreen };
-    private static readonly Vector2[] CableOffsets = { new(-0.2f, -0.2f), Vector2.Zero, new(0.2f, 0.2f) };
+    private static readonly Color[] CableColors =
+    {
+        Color.OrangeRed,
+        Color.Yellow,
+        Color.LimeGreen,
+    };
 
-    /// <summary>Line groups the UI has toggled off.</summary>
+    private static readonly Vector2[] CableOffsets =
+    {
+        new(-0.2f, -0.2f),
+        Vector2.Zero,
+        new(0.2f, 0.2f),
+    };
+
+    /// <summary>
+    /// Line groups the UI has toggled off.
+    /// </summary>
     public readonly List<CEPowerMonitoringConsoleLineGroup> HiddenLineGroups = new();
 
     private readonly Dictionary<NetEntity, List<CEPowerMonitoringConsoleLine>> _allLines = new();
@@ -106,7 +119,11 @@ public sealed partial class CEPowerMonitoringConsoleNavMapControl : CEZLevelsNav
     /// extends half a z-level gap screen-up / -down (independent of map rotation). Up arrows are
     /// lighter, down arrows darker.
     /// </summary>
-    private void DrawVerticalMarkers(DrawingHandleScreen handle, int depth, int tileSize, NetEntity gridNetEntity, bool up)
+    private void DrawVerticalMarkers(DrawingHandleScreen handle,
+        int depth,
+        int tileSize,
+        NetEntity gridNetEntity,
+        bool up)
     {
         if (!_verticalPipes.TryGetValue(gridNetEntity, out var pipes) || pipes.Count == 0)
             return;
@@ -124,7 +141,7 @@ public sealed partial class CEPowerMonitoringConsoleNavMapControl : CEZLevelsNav
             if (up ? !pipe.Up : !pipe.Down)
                 continue;
 
-            var group = (CEPowerMonitoringConsoleLineGroup) pipe.Voltage;
+            var group = (CEPowerMonitoringConsoleLineGroup)pipe.Voltage;
             if (HiddenLineGroups.Contains(group))
                 continue;
 
@@ -135,15 +152,20 @@ public sealed partial class CEPowerMonitoringConsoleNavMapControl : CEZLevelsNav
             // Anchor on this voltage's cable line, which is drawn offset from the tile centre so the
             // HV / MV / APC runs don't overlap (see CableOffsets in DrawLines).
             var co = CableOffsets[pipe.Voltage];
-            var anchor = LevelToScreen(depth, new Vector2(
-                (pipe.Tile.X + 0.5f) * tileSize + co.X,
-                (pipe.Tile.Y + 0.5f) * tileSize - co.Y));
+            var anchor = LevelToScreen(depth,
+                new Vector2(
+                    (pipe.Tile.X + 0.5f) * tileSize + co.X,
+                    (pipe.Tile.Y + 0.5f) * tileSize - co.Y));
 
             DrawFilledTriangle(handle, anchor, anchor + apexOffset, width, CachedSrgb(tint));
         }
     }
 
-    private static void DrawFilledTriangle(DrawingHandleScreen handle, Vector2 baseCenter, Vector2 apex, float width, Color color)
+    private static void DrawFilledTriangle(DrawingHandleScreen handle,
+        Vector2 baseCenter,
+        Vector2 apex,
+        float width,
+        Color color)
     {
         var dir = apex - baseCenter;
         if (dir.LengthSquared() < 0.0001f)
@@ -171,16 +193,19 @@ public sealed partial class CEPowerMonitoringConsoleNavMapControl : CEZLevelsNav
         return srgb;
     }
 
-    private void DrawLines(DrawingHandleScreen handle, int depth, List<CEPowerMonitoringConsoleLine> lines, Color modulate)
+    private void DrawLines(DrawingHandleScreen handle,
+        int depth,
+        List<CEPowerMonitoringConsoleLine> lines,
+        Color modulate)
     {
-        var buckets = new ValueList<Vector2>[3];
+        var buckets = new ValueList<Vector2>[CableColors.Length];
 
         foreach (var line in lines)
         {
             if (HiddenLineGroups.Contains(line.Group))
                 continue;
 
-            var idx = (int) line.Group;
+            var idx = (int)line.Group;
             var cableOffset = CableOffsets[idx];
 
             var origin = line.Origin + cableOffset;
@@ -211,7 +236,9 @@ public sealed partial class CEPowerMonitoringConsoleNavMapControl : CEZLevelsNav
     /// Ported from <c>PowerMonitoringConsoleNavMapControl.GetDecodedPowerCableChunks</c>. Produces
     /// grid-local, Y-negated line segments (same convention as the base wall geometry).
     /// </summary>
-    private List<CEPowerMonitoringConsoleLine> DecodeChunks(Dictionary<Vector2i, PowerCableChunk> chunks, int tileSize, HashSet<CECableCut>? cuts)
+    private List<CEPowerMonitoringConsoleLine> DecodeChunks(Dictionary<Vector2i, PowerCableChunk> chunks,
+        int tileSize,
+        HashSet<CECableCut>? cuts)
     {
         var output = new List<CEPowerMonitoringConsoleLine>();
 
@@ -249,29 +276,47 @@ public sealed partial class CEPowerMonitoringConsoleNavMapControl : CEZLevelsNav
                     if (relativeTile.X == chunkSize - 1)
                     {
                         neighbor = chunks.TryGetValue(chunkOrigin + new Vector2i(1, 0), out var neighborChunk) &&
-                                   (neighborChunk.PowerCableData[cableIdx] & CESharedPowerMonitoringConsoleSystem.GetFlag(new Vector2i(0, relativeTile.Y))) != 0x0;
+                                   (neighborChunk.PowerCableData[cableIdx] &
+                                    CESharedPowerMonitoringConsoleSystem.GetFlag(new Vector2i(0, relativeTile.Y))) !=
+                                   0x0;
                     }
                     else
                     {
-                        neighbor = (chunkMask & CESharedPowerMonitoringConsoleSystem.GetFlag(relativeTile + new Vector2i(1, 0))) != 0x0;
+                        neighbor = (chunkMask &
+                                    CESharedPowerMonitoringConsoleSystem.GetFlag(relativeTile + new Vector2i(1, 0))) !=
+                                   0x0;
                     }
 
                     if (neighbor && !IsCut(cuts, gridTile, gridTile + new Vector2i(1, 0)))
-                        CENavMapGeometry.AddOrUpdateNavMapLine(tile, tile + new Vector2i(tileSize, 0), horizLines, horizLinesReversed);
+                    {
+                        CENavMapGeometry.AddOrUpdateNavMapLine(tile,
+                            tile + new Vector2i(tileSize, 0),
+                            horizLines,
+                            horizLinesReversed);
+                    }
 
                     // North neighbour
                     if (relativeTile.Y == chunkSize - 1)
                     {
                         neighbor = chunks.TryGetValue(chunkOrigin + new Vector2i(0, 1), out var neighborChunk) &&
-                                   (neighborChunk.PowerCableData[cableIdx] & CESharedPowerMonitoringConsoleSystem.GetFlag(new Vector2i(relativeTile.X, 0))) != 0x0;
+                                   (neighborChunk.PowerCableData[cableIdx] &
+                                    CESharedPowerMonitoringConsoleSystem.GetFlag(new Vector2i(relativeTile.X, 0))) !=
+                                   0x0;
                     }
                     else
                     {
-                        neighbor = (chunkMask & CESharedPowerMonitoringConsoleSystem.GetFlag(relativeTile + new Vector2i(0, 1))) != 0x0;
+                        neighbor = (chunkMask &
+                                    CESharedPowerMonitoringConsoleSystem.GetFlag(relativeTile + new Vector2i(0, 1))) !=
+                                   0x0;
                     }
 
                     if (neighbor && !IsCut(cuts, gridTile, gridTile + new Vector2i(0, 1)))
-                        CENavMapGeometry.AddOrUpdateNavMapLine(tile + new Vector2i(0, -tileSize), tile, vertLines, vertLinesReversed);
+                    {
+                        CENavMapGeometry.AddOrUpdateNavMapLine(tile + new Vector2i(0, -tileSize),
+                            tile,
+                            vertLines,
+                            vertLinesReversed);
+                    }
                 }
             }
         }
@@ -281,13 +326,21 @@ public sealed partial class CEPowerMonitoringConsoleNavMapControl : CEZLevelsNav
         for (var index = 0; index < _horizLines.Length; index++)
         {
             foreach (var (origin, terminal) in _horizLines[index])
-                output.Add(new CEPowerMonitoringConsoleLine(origin + gridOffset, terminal + gridOffset, (CEPowerMonitoringConsoleLineGroup) index));
+            {
+                output.Add(new CEPowerMonitoringConsoleLine(origin + gridOffset,
+                    terminal + gridOffset,
+                    (CEPowerMonitoringConsoleLineGroup)index));
+            }
         }
 
         for (var index = 0; index < _vertLines.Length; index++)
         {
             foreach (var (origin, terminal) in _vertLines[index])
-                output.Add(new CEPowerMonitoringConsoleLine(origin + gridOffset, terminal + gridOffset, (CEPowerMonitoringConsoleLineGroup) index));
+            {
+                output.Add(new CEPowerMonitoringConsoleLine(origin + gridOffset,
+                    terminal + gridOffset,
+                    (CEPowerMonitoringConsoleLineGroup)index));
+            }
         }
 
         return output;
@@ -299,18 +352,14 @@ public sealed partial class CEPowerMonitoringConsoleNavMapControl : CEZLevelsNav
     }
 }
 
-public readonly struct CEPowerMonitoringConsoleLine
+public readonly struct CEPowerMonitoringConsoleLine(
+    Vector2 origin,
+    Vector2 terminus,
+    CEPowerMonitoringConsoleLineGroup group)
 {
-    public readonly Vector2 Origin;
-    public readonly Vector2 Terminus;
-    public readonly CEPowerMonitoringConsoleLineGroup Group;
-
-    public CEPowerMonitoringConsoleLine(Vector2 origin, Vector2 terminus, CEPowerMonitoringConsoleLineGroup group)
-    {
-        Origin = origin;
-        Terminus = terminus;
-        Group = group;
-    }
+    public readonly Vector2 Origin = origin;
+    public readonly Vector2 Terminus = terminus;
+    public readonly CEPowerMonitoringConsoleLineGroup Group = group;
 }
 
 public enum CEPowerMonitoringConsoleLineGroup : byte

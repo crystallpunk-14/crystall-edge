@@ -11,20 +11,28 @@ namespace Content.Server._CE.Power.PowerMonitoring;
 [RegisterComponent, Access(typeof(CEPowerMonitoringConsoleSystem))]
 public sealed partial class CEPowerMonitoringDeviceComponent : Component
 {
-    /// <summary>Name of the node this device draws power from (see <see cref="Content.Server.NodeContainer.NodeContainerComponent"/>).</summary>
-    [DataField("sourceNode")]
+    /// <summary>
+    /// Name of the node this device draws power from (see <see cref="Content.Server.NodeContainer.NodeContainerComponent"/>).
+    /// </summary>
+    [DataField]
     public string SourceNode = string.Empty;
 
-    /// <summary>Name of the node this device distributes power to.</summary>
-    [DataField("loadNode")]
+    /// <summary>
+    /// Name of the node this device distributes power to.
+    /// </summary>
+    [DataField]
     public string LoadNode = string.Empty;
 
-    /// <summary>Names of the nodes this device can potentially distribute power to.</summary>
-    [DataField("loadNodes")]
+    /// <summary>
+    /// Names of the nodes this device can potentially distribute power to.
+    /// </summary>
+    [DataField]
     public List<string>? LoadNodes;
 
-    /// <summary>This entity is grouped with entities that share this collection name.</summary>
-    [DataField("collectionName")]
+    /// <summary>
+    /// This entity is grouped with entities that share this collection name.
+    /// </summary>
+    [DataField]
     public string CollectionName = string.Empty;
 
     [ViewVariables]
@@ -32,25 +40,35 @@ public sealed partial class CEPowerMonitoringDeviceComponent : Component
 
     public bool IsCollectionMasterOrChild => CollectionName != string.Empty;
 
-    /// <summary>The uid of the master that represents this entity when grouping multiple entities.</summary>
+    /// <summary>
+    /// The uid of the master that represents this entity when grouping multiple entities.
+    /// </summary>
     [ViewVariables]
     public EntityUid CollectionMaster;
 
     public bool IsCollectionMaster => Owner == CollectionMaster;
 
-    /// <summary>Entities represented by this entity when grouped.</summary>
+    /// <summary>
+    /// Entities represented by this entity when grouped.
+    /// </summary>
     [ViewVariables]
     public Dictionary<EntityUid, CEPowerMonitoringDeviceComponent> ChildDevices = new();
 
-    /// <summary>Path to the .rsi folder for the list icon.</summary>
+    /// <summary>
+    /// Path to the .rsi folder for the list icon.
+    /// </summary>
     [DataField("sprite")]
     public string SpritePath = string.Empty;
 
-    /// <summary>The .rsi state for the list icon.</summary>
+    /// <summary>
+    /// The .rsi state for the list icon.
+    /// </summary>
     [DataField("state")]
     public string SpriteState = string.Empty;
 
-    /// <summary>Which power monitoring group / tab this entity belongs to.</summary>
-    [DataField("group", required: true)]
+    /// <summary>
+    /// Which power monitoring group / tab this entity belongs to.
+    /// </summary>
+    [DataField(required: true)]
     public PowerMonitoringConsoleGroup Group;
 }

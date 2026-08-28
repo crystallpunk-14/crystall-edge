@@ -11,7 +11,6 @@ ce-power-monitoring-window-total-loads = Общее потребление:
 
 ce-power-monitoring-window-tab-generators = Генераторы
 ce-power-monitoring-window-tab-accumulators = Аккумуляторы
-ce-power-monitoring-window-tab-regulators = Регуляторы
 ce-power-monitoring-window-tab-distributors = Распределители
 
 ce-power-monitoring-window-show-conduits = Показать трубы

@@ -13,8 +13,11 @@ namespace Content.Client._CE.Power.PowerMonitoring;
 
 public sealed partial class CEPowerMonitoringWindow
 {
-    private readonly SpriteSpecifier.Texture _sourceIcon = new(new ResPath("/Textures/Interface/PowerMonitoring/source_arrow.png"));
-    private readonly SpriteSpecifier.Texture _loadIconPath = new(new ResPath("/Textures/Interface/PowerMonitoring/load_arrow.png"));
+    private readonly SpriteSpecifier.Texture _sourceIcon =
+        new(new ResPath("/Textures/Interface/PowerMonitoring/source_arrow.png"));
+
+    private readonly SpriteSpecifier.Texture _loadIconPath =
+        new(new ResPath("/Textures/Interface/PowerMonitoring/load_arrow.png"));
 
     private bool _autoScrollActive;
     private bool _autoScrollAwaitsUpdate;
@@ -68,7 +71,9 @@ public sealed partial class CEPowerMonitoringWindow
         UpdateWindowEntryButton(entry.NetEntity, windowEntry.Button, entry);
     }
 
-    public void UpdateWindowEntryButton(NetEntity netEntity, CEPowerMonitoringButton button, PowerMonitoringConsoleEntry entry)
+    public void UpdateWindowEntryButton(NetEntity netEntity,
+        CEPowerMonitoringButton button,
+        PowerMonitoringConsoleEntry entry)
     {
         if (!netEntity.IsValid() || entry.MetaData == null)
             return;
@@ -79,13 +84,18 @@ public sealed partial class CEPowerMonitoringWindow
             button.RemoveStyleClass(StyleClass.Positive);
 
         if (entry.MetaData.Value.SpritePath != string.Empty && entry.MetaData.Value.SpriteState != string.Empty)
-            button.TextureRect.Texture = _spriteSystem.Frame0(new SpriteSpecifier.Rsi(new ResPath(entry.MetaData.Value.SpritePath), entry.MetaData.Value.SpriteState));
+        {
+            button.TextureRect.Texture =
+                _spriteSystem.Frame0(new SpriteSpecifier.Rsi(new ResPath(entry.MetaData.Value.SpritePath),
+                    entry.MetaData.Value.SpriteState));
+        }
 
         var name = entry.MetaData.Value.EntityName;
         button.NameLocalized.Text = name;
         button.ToolTip = name;
 
-        button.PowerValue.Text = Loc.GetString("ce-power-monitoring-window-button-value", ("value", Math.Round(entry.PowerValue).ToString("N0")));
+        button.PowerValue.Text = Loc.GetString("ce-power-monitoring-window-button-value",
+            ("value", Math.Round(entry.PowerValue).ToString("N0")));
 
         if (entry.BatteryLevel != null)
         {
@@ -105,7 +115,10 @@ public sealed partial class CEPowerMonitoringWindow
         }
     }
 
-    private void UpdateEntrySourcesOrLoads(BoxContainer masterContainer, BoxContainer? currentContainer, PowerMonitoringConsoleEntry[]? entries, SpriteSpecifier.Texture icon)
+    private void UpdateEntrySourcesOrLoads(BoxContainer masterContainer,
+        BoxContainer? currentContainer,
+        PowerMonitoringConsoleEntry[]? entries,
+        SpriteSpecifier.Texture icon)
     {
         if (currentContainer == null)
             return;
@@ -117,7 +130,9 @@ public sealed partial class CEPowerMonitoringWindow
         }
 
         while (currentContainer.ChildCount > entries.Length)
+        {
             currentContainer.RemoveChild(currentContainer.GetChild(currentContainer.ChildCount - 1));
+        }
 
         while (currentContainer.ChildCount < entries.Length)
         {
@@ -281,15 +296,19 @@ public sealed partial class CEPowerMonitoringWindow
         {
             PowerMonitoringConsoleGroup.Generator => 0,
             PowerMonitoringConsoleGroup.SMES => 1,
-            PowerMonitoringConsoleGroup.Substation => 2,
-            PowerMonitoringConsoleGroup.APC => 3,
+            PowerMonitoringConsoleGroup.APC => 2,
             _ => MasterTabContainer.CurrentTab,
         };
     }
 
     private PowerMonitoringConsoleGroup GetCurrentPowerMonitoringConsoleGroup()
     {
-        return (PowerMonitoringConsoleGroup) MasterTabContainer.CurrentTab;
+        return MasterTabContainer.CurrentTab switch
+        {
+            1 => PowerMonitoringConsoleGroup.SMES,
+            2 => PowerMonitoringConsoleGroup.APC,
+            _ => PowerMonitoringConsoleGroup.Generator,
+        };
     }
 }
 
@@ -349,17 +368,11 @@ public sealed class CEPowerMonitoringWindowSubEntry : CEPowerMonitoringWindowBas
     }
 }
 
-public abstract class CEPowerMonitoringWindowBaseEntry : BoxContainer
+public abstract class CEPowerMonitoringWindowBaseEntry(PowerMonitoringConsoleEntry entry) : BoxContainer
 {
     public NetEntity NetEntity;
-    public PowerMonitoringConsoleEntry Entry;
-    public readonly CEPowerMonitoringButton Button;
-
-    protected CEPowerMonitoringWindowBaseEntry(PowerMonitoringConsoleEntry entry)
-    {
-        Entry = entry;
-        Button = new CEPowerMonitoringButton();
-    }
+    public PowerMonitoringConsoleEntry Entry = entry;
+    public readonly CEPowerMonitoringButton Button = new();
 }
 
 public sealed class CEPowerMonitoringButton : Button

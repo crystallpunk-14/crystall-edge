@@ -11,7 +11,6 @@ ce-power-monitoring-window-total-loads = Total draw:
 
 ce-power-monitoring-window-tab-generators = Generators
 ce-power-monitoring-window-tab-accumulators = Accumulators
-ce-power-monitoring-window-tab-regulators = Regulators
 ce-power-monitoring-window-tab-distributors = Distributors
 
 ce-power-monitoring-window-show-conduits = Show pipes

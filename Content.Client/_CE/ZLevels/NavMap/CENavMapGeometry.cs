@@ -1,7 +1,6 @@
 using System.Numerics;
 using Content.Shared.Atmos;
 using Content.Shared.Pinpointer;
-using Robust.Shared.GameObjects;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Utility;
 
@@ -13,16 +12,23 @@ namespace Content.Client._CE.ZLevels.NavMap;
 /// </summary>
 public sealed class CENavMapGeometryData
 {
-    /// <summary>Combined wall line segments (Y already negated, matching the upstream NavMapControl convention).</summary>
+    /// <summary>
+    /// Combined wall line segments (Y already negated, matching the upstream NavMapControl convention).
+    /// </summary>
     public readonly List<(Vector2 Start, Vector2 End)> WallLines = new();
 
-    /// <summary>Thin-wall / airlock rectangles, as (leftTop, rightBottom) pairs (Y already negated).</summary>
+    /// <summary>Thin-wall / airlock rectangles, as (leftTop, rightBottom) pairs (Y already negated).
+    /// </summary>
     public readonly List<(Vector2 LeftTop, Vector2 RightBottom)> WallRects = new();
 
-    /// <summary>Floor fill rectangles, as (leftBottom, rightTop) pairs in raw grid coordinates (Y not negated).</summary>
+    /// <summary>
+    /// Floor fill rectangles, as (leftBottom, rightTop) pairs in raw grid coordinates (Y not negated).
+    /// </summary>
     public readonly List<(Vector2 Min, Vector2 Max)> FloorRects = new();
 
-    /// <summary>Outline segments along the outer edge of the floored area, in raw grid coordinates (Y not negated).</summary>
+    /// <summary>
+    /// Outline segments along the outer edge of the floored area, in raw grid coordinates (Y not negated).
+    /// </summary>
     public readonly List<(Vector2 Start, Vector2 End)> FloorPerimeter = new();
 
     public void Clear()
@@ -46,10 +52,10 @@ public static class CENavMapGeometry
     private const float ThinWallThickness = 0.165f;
     private const float ThinDoorThickness = 0.30f;
 
-    private const int SouthMask = (int) AtmosDirection.South << (int) NavMapChunkType.Wall;
-    private const int EastMask = (int) AtmosDirection.East << (int) NavMapChunkType.Wall;
-    private const int WestMask = (int) AtmosDirection.West << (int) NavMapChunkType.Wall;
-    private const int NorthMask = (int) AtmosDirection.North << (int) NavMapChunkType.Wall;
+    private const int SouthMask = (int)AtmosDirection.South << (int)NavMapChunkType.Wall;
+    private const int EastMask = (int)AtmosDirection.East << (int)NavMapChunkType.Wall;
+    private const int WestMask = (int)AtmosDirection.West << (int)NavMapChunkType.Wall;
+    private const int NorthMask = (int)AtmosDirection.North << (int)NavMapChunkType.Wall;
 
     public static void Build(NavMapComponent nav, MapGridComponent grid, CENavMapGeometryData into)
     {
@@ -71,7 +77,9 @@ public static class CENavMapGeometry
         return (chunk.TileData[SharedNavMapSystem.GetTileIndex(rel)] & SharedNavMapSystem.FloorMask) != 0;
     }
 
-    /// <summary>Emits an outline segment for every floored-tile edge that borders a non-floored tile.</summary>
+    /// <summary>
+    /// Emits an outline segment for every floored-tile edge that borders a non-floored tile.
+    /// </summary>
     private static void BuildFloorPerimeter(NavMapComponent nav, MapGridComponent grid, CENavMapGeometryData data)
     {
         var size = grid.TileSize;
@@ -127,7 +135,8 @@ public static class CENavMapGeometry
                 for (var x = 0; x <= SharedNavMapSystem.ChunkSize; x++)
                 {
                     var floored = x < SharedNavMapSystem.ChunkSize &&
-                                  (chunk.TileData[SharedNavMapSystem.GetTileIndex(new Vector2i(x, y))] & SharedNavMapSystem.FloorMask) != 0;
+                                  (chunk.TileData[SharedNavMapSystem.GetTileIndex(new Vector2i(x, y))] &
+                                   SharedNavMapSystem.FloorMask) != 0;
 
                     if (floored)
                     {
@@ -168,7 +177,7 @@ public static class CENavMapGeometry
                 if (tileData == 0)
                     continue;
 
-                tileData >>= (int) NavMapChunkType.Wall;
+                tileData >>= (int)NavMapChunkType.Wall;
 
                 var relativeTile = SharedNavMapSystem.GetTileFromIndex(i);
                 var tile = (chunk.Origin * SharedNavMapSystem.ChunkSize + relativeTile) * grid.TileSize;
@@ -192,7 +201,9 @@ public static class CENavMapGeometry
                 if ((neighborData & SouthMask) == 0)
                 {
                     AddOrUpdateNavMapLine(tile + new Vector2i(0, -grid.TileSize),
-                        tile + new Vector2i(grid.TileSize, -grid.TileSize), horizLines, horizLinesReversed);
+                        tile + new Vector2i(grid.TileSize, -grid.TileSize),
+                        horizLines,
+                        horizLinesReversed);
                 }
 
                 // East edge
@@ -200,12 +211,17 @@ public static class CENavMapGeometry
                 if (relativeTile.X != SharedNavMapSystem.ChunkSize - 1)
                     neighborData = chunk.TileData[i + SharedNavMapSystem.ChunkSize];
                 else if (nav.Chunks.TryGetValue(chunkOrigin + Vector2i.Right, out neighborChunk))
-                    neighborData = neighborChunk.TileData[i + SharedNavMapSystem.ChunkSize - SharedNavMapSystem.ArraySize];
+                {
+                    neighborData =
+                        neighborChunk.TileData[i + SharedNavMapSystem.ChunkSize - SharedNavMapSystem.ArraySize];
+                }
 
                 if ((neighborData & WestMask) == 0)
                 {
                     AddOrUpdateNavMapLine(tile + new Vector2i(grid.TileSize, -grid.TileSize),
-                        tile + new Vector2i(grid.TileSize, 0), vertLines, vertLinesReversed);
+                        tile + new Vector2i(grid.TileSize, 0),
+                        vertLines,
+                        vertLinesReversed);
                 }
 
                 // South edge
@@ -225,7 +241,10 @@ public static class CENavMapGeometry
                 if (relativeTile.X != 0)
                     neighborData = chunk.TileData[i - SharedNavMapSystem.ChunkSize];
                 else if (nav.Chunks.TryGetValue(chunkOrigin + Vector2i.Left, out neighborChunk))
-                    neighborData = neighborChunk.TileData[i - SharedNavMapSystem.ChunkSize + SharedNavMapSystem.ArraySize];
+                {
+                    neighborData =
+                        neighborChunk.TileData[i - SharedNavMapSystem.ChunkSize + SharedNavMapSystem.ArraySize];
+                }
 
                 if ((neighborData & EastMask) == 0)
                 {
@@ -238,10 +257,14 @@ public static class CENavMapGeometry
         }
 
         foreach (var (origin, terminal) in horizLines)
+        {
             data.WallLines.Add((origin, terminal));
+        }
 
         foreach (var (origin, terminal) in vertLines)
+        {
             data.WallLines.Add((origin, terminal));
+        }
     }
 
     private static void BuildAirlocks(NavMapComponent nav, MapGridComponent grid, CENavMapGeometryData data)
@@ -254,7 +277,7 @@ public static class CENavMapGeometry
                 if (tileData == 0)
                     continue;
 
-                tileData >>= (int) NavMapChunkType.Airlock;
+                tileData >>= (int)NavMapChunkType.Airlock;
 
                 var relative = SharedNavMapSystem.GetTileFromIndex(i);
                 var tile = (chunk.Origin * SharedNavMapSystem.ChunkSize + relative) * grid.TileSize;
@@ -286,7 +309,7 @@ public static class CENavMapGeometry
                 continue;
 
             var tilePosition = new Vector2(tile.X + 0.5f, -tile.Y - 0.5f);
-            var angle = -((AtmosDirection) dirMask).ToAngle();
+            var angle = -((AtmosDirection)dirMask).ToAngle();
             data.WallRects.Add((angle.RotateVec(leftTop) + tilePosition, angle.RotateVec(rightBottom) + tilePosition));
         }
     }
@@ -305,9 +328,10 @@ public static class CENavMapGeometry
                 continue;
 
             var tilePosition = new Vector2(tile.X + 0.5f, -tile.Y - 0.5f);
-            var angle = -((AtmosDirection) dirMask).ToAngle();
+            var angle = -((AtmosDirection)dirMask).ToAngle();
             data.WallRects.Add((angle.RotateVec(leftTop) + tilePosition, angle.RotateVec(rightBottom) + tilePosition));
-            data.WallLines.Add((angle.RotateVec(centreTop) + tilePosition, angle.RotateVec(centreBottom) + tilePosition));
+            data.WallLines.Add(
+                (angle.RotateVec(centreTop) + tilePosition, angle.RotateVec(centreBottom) + tilePosition));
         }
     }
 
@@ -347,6 +371,7 @@ public static class CENavMapGeometry
                 lookup[origin] = foundTermius;
                 lookupReversed[foundTermius] = origin;
             }
+
             return;
         }
 

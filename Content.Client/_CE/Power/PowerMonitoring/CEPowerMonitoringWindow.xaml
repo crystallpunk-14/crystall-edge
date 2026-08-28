@@ -74,9 +74,6 @@
                         <BoxContainer Name="SMESList" Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True" Margin="0 0 10 0"/>
                     </ScrollContainer>
                     <ScrollContainer HorizontalExpand="True" Margin="8, 8, 8, 8">
-                        <BoxContainer Name="SubstationList" Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True" Margin="0 0 10 0"/>
-                    </ScrollContainer>
-                    <ScrollContainer HorizontalExpand="True" Margin="8, 8, 8, 8">
                         <BoxContainer Name="ApcList" Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True" Margin="0 0 10 0"/>
                     </ScrollContainer>
                 </TabContainer>

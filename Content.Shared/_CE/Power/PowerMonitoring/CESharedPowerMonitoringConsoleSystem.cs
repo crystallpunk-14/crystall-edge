@@ -3,11 +3,6 @@ using JetBrains.Annotations;
 
 namespace Content.Shared._CE.Power.PowerMonitoring;
 
-/// <summary>
-/// CE fork of <c>Content.Shared.Power.SharedPowerMonitoringConsoleSystem</c>, adapted for the
-/// multi z-level <c>CEZLevelsNavMapControl</c>. Cable chunks are tracked per grid (one grid per
-/// z-level) instead of for a single grid.
-/// </summary>
 [UsedImplicitly]
 public abstract class CESharedPowerMonitoringConsoleSystem : EntitySystem
 {
