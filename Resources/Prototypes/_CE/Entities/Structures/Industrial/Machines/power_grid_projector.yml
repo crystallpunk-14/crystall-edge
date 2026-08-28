@@ -8,6 +8,8 @@
   description: Projects a three-dimensional rotating model of the island with a detailed layout of all energy devices.
   categories: [ ForkFiltered ]
   components:
+  - type: Machine
+    board: CEPowerGridProjector
   - type: PlacementReplacement
     key: walls
   - type: Sprite

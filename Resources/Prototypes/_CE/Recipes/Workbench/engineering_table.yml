@@ -578,6 +578,51 @@
   resultCount: 1
 
 - type: CERecipe
+  id: CEMachineCoreMapProjector
+  parent: CEBaseEngineeringTableRecipe
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartDimensionalMatrix
+    count: 1
+  - !type:StackResource
+    stack: CEGlass
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 1
+  result: CEMachineCoreMapProjector
+  resultCount: 1
+
+- type: CERecipe
+  id: CEMachineCoreGridProjector
+  parent: CEBaseEngineeringTableRecipe
+  category: MachineCore
+  craftTime: 2.5
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartDimensionalMatrix
+    count: 1
+  - !type:StackResource
+    stack: CEGlass
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 3
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 3
+  result: CEMachineCoreGridProjector
+  resultCount: 1
+
+- type: CERecipe
   id: CEMachineCoreTradingPlatformHomeDecor
   parent: CEBaseEngineeringTableRecipe
   category: MachineCore

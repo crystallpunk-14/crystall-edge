@@ -180,6 +180,30 @@
   - type: StaticPrice
     price: 200
 
+- type: entity
+  id: CEMachineCoreMapProjector
+  parent: CEBaseMachineCore
+  name: map projector machine core
+  components:
+  - type: Sprite
+    state: power
+  - type: MachineBoard
+    prototype: CEMapProjector
+  - type: StaticPrice
+    price: 180
+
+- type: entity
+  id: CEMachineCoreGridProjector
+  parent: CEBaseMachineCore
+  name: island power grid projector machine core
+  components:
+  - type: Sprite
+    state: power
+  - type: MachineBoard
+    prototype: CEPowerGridProjector
+  - type: StaticPrice
+    price: 250
+
 # Trading
 
 - type: entity
