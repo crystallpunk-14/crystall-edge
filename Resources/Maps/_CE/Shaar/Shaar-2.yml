@@ -4,8 +4,8 @@ meta:
   engineVersion: 283.1.0
   forkId: ""
   forkVersion: ""
-  time: 08/27/2026 17:40:50
-  entityCount: 1793
+  time: 08/28/2026 20:27:01
+  entityCount: 1811
 maps:
 - 1
 grids:
@@ -2826,6 +2826,150 @@ entities:
       pos: -39.5,-13.5
     - type: Fixtures
       fixtures: {}
+  - uid: 1794
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: -11.5,4.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1795
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: -11.5,3.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1796
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: -11.5,2.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1797
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: -11.5,1.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1798
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: -11.5,0.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1799
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: -11.5,-0.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1800
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: -10.5,-0.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1801
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: -10.5,0.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1802
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: -10.5,2.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1803
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: -10.5,1.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1804
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: -10.5,3.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1805
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: -10.5,4.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1806
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: -9.5,4.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1807
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: -9.5,2.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1808
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: -9.5,1.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1809
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: -9.5,0.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1810
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: -9.5,-0.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1811
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: -9.5,3.5
+    - type: Fixtures
+      fixtures: {}
 - proto: CEKeyEngineeringBrigadier
   entities:
   - uid: 638
@@ -5445,6 +5589,13 @@ entities:
     - type: Transform
       parent: 1
       pos: -34.5,-8.5
+- proto: CEPowerGridProjector
+  entities:
+  - uid: 1480
+    components:
+    - type: Transform
+      parent: 1
+      pos: -14.5,2.5
 - proto: CEPress
   entities:
   - uid: 1513
@@ -9997,11 +10148,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 7.5,-4.5
-  - uid: 1480
-    components:
-    - type: Transform
-      parent: 1
-      pos: -14.5,2.5
   - uid: 1481
     components:
     - type: Transform

@@ -4,8 +4,8 @@ meta:
   engineVersion: 283.1.0
   forkId: ""
   forkVersion: ""
-  time: 08/27/2026 17:40:50
-  entityCount: 1812
+  time: 08/28/2026 20:27:00
+  entityCount: 1813
 maps:
 - 1
 grids:
@@ -3624,7 +3624,7 @@ entities:
       pos: 6.5,16.5
     - type: Door
       state: Opening
-      secondsUntilStateChange: -55676.09
+      secondsUntilStateChange: -55899.137
   - uid: 619
     components:
     - type: Transform
@@ -5356,6 +5356,14 @@ entities:
       parent: 1
       rot: 1.5707963267948966 rad
       pos: -19.5,11.5
+- proto: CEMachineCoreGridProjector
+  entities:
+  - uid: 1732
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 27.500624,-17.539917
 - proto: CEMannequinCarcat
   entities:
   - uid: 466
@@ -5900,6 +5908,13 @@ entities:
           ent: null
           showEnts: False
           occludes: False
+- proto: CEMapProjector
+  entities:
+  - uid: 1813
+    components:
+    - type: Transform
+      parent: 1
+      pos: -0.5,2.5
 - proto: CEMop
   entities:
   - uid: 1809
@@ -7854,12 +7869,6 @@ entities:
       parent: 1
       rot: 3.141592653589793 rad
       pos: 27.5,-16.5
-  - uid: 1732
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: 27.5,-17.5
 - proto: CESpawnPointAcademyProfessor
   entities:
   - uid: 152
