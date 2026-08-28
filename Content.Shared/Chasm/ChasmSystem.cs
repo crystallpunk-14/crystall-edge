@@ -45,17 +45,24 @@ public sealed partial class ChasmSystem : EntitySystem
             if (_timing.CurTime < chasm.NextDeletionTime)
                 continue;
 
-            var chasmEvent = new EntityCompletedFallingIntoChasmEvent((uid, chasm));
-            RaiseLocalEvent(chasm.FallingInto, ref chasmEvent);
-            if (_chasmQuery.TryComp(chasm.FallingInto, out var chasmComp))
+            // CrystallEdge: FallingInto is null for CE's void-fall (fell off the bottom of a
+            // z-level stack, see CESharedZLevelsSystem.TryMoveDownOrChasm) - there's no real
+            // chasm entity to raise these events on, so skip straight to deletion below.
+            if (chasm.FallingInto is { } fallingInto)
             {
-                var tripperEvent = new CompletedFallingIntoChasmEvent((chasm.FallingInto, chasmComp));
-                RaiseLocalEvent(uid, ref tripperEvent);
+                var chasmEvent = new EntityCompletedFallingIntoChasmEvent((uid, chasm));
+                RaiseLocalEvent(fallingInto, ref chasmEvent);
+                if (_chasmQuery.TryComp(fallingInto, out var chasmComp))
+                {
+                    var tripperEvent = new CompletedFallingIntoChasmEvent((fallingInto, chasmComp));
+                    RaiseLocalEvent(uid, ref tripperEvent);
+                }
+                else
+                {
+                    DebugTools.Assert($"{ToPrettyString(fallingInto)} is missing {nameof(ChasmComponent)}");
+                }
             }
-            else
-            {
-                DebugTools.Assert($"{ToPrettyString(chasm.FallingInto)} is missing {nameof(ChasmComponent)}");
-            }
+            // CrystallEdge end
 
             PredictedQueueDel(uid);
         }
