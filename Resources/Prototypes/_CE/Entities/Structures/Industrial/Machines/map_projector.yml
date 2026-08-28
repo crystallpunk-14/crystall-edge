@@ -1,0 +1,50 @@
+# CrystallEdge: debug device that renders the stacked z-level minimap (CEZLevelsNavMapControl).
+# Prototyped after CETradingPlatformBase.
+- type: entity
+  id: CEMapProjector
+  parent:
+  - CEConstructibleMachine
+  - CEBaseMachinePowered
+  - BaseMachine
+  name: map projector
+  suffix: Debug
+  description: Projects a stacked minimap of every z-level.
+  categories: [ ForkFiltered ]
+  components:
+  - type: PlacementReplacement
+    key: walls
+  - type: Sprite
+    drawdepth: FloorTiles
+    snapCardinals: true
+    sprite: _CE/Structures/Industrial/buy_platform.rsi
+    layers:
+    - state: base
+  - type: Icon
+    sprite: _CE/Structures/Industrial/buy_platform.rsi
+    state: base
+  - type: ActivatableUI
+    key: enum.CEMapUiKey.Key
+  - type: ActivatableUIRequiresPower
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        mask:
+        - TabletopMachineMask
+        layer:
+        - Impassable
+        - MidImpassable
+        - LowImpassable
+        hard: false
+  - type: ApcPowerReceiver
+    powerLoad: 0.1
+  - type: UserInterface
+    interfaces:
+      enum.CEMapUiKey.Key:
+        type: CEMapBoundUserInterface
+  - type: ExtensionCableReceiver
+    receptionRange: 0
