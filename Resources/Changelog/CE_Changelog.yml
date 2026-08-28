@@ -865,3 +865,12 @@
   id: 1080
   time: '2026-08-27T18:34:44.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/443
+- author: TheShuEd
+  changes:
+  - message: 'Two types of island map projectors have been added: a public map projector
+      and a projector that displays the entire network of wires. Supports z-levels
+      visualization.'
+    type: Add
+  id: 1081
+  time: '2026-08-28T21:52:17.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/444
