@@ -9,7 +9,7 @@
   categories: [ ForkFiltered ]
   components:
   - type: Machine
-    board: CEPowerGridProjector
+    board: CEMachineCoreGridProjector
   - type: PlacementReplacement
     key: walls
   - type: Sprite
