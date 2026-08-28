@@ -1,6 +1,7 @@
 using System.Numerics;
 using Content.Shared.Atmos;
 using Content.Shared.Pinpointer;
+using Robust.Shared.GameObjects;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Utility;
 
@@ -21,11 +22,15 @@ public sealed class CENavMapGeometryData
     /// <summary>Floor fill rectangles, as (leftBottom, rightTop) pairs in raw grid coordinates (Y not negated).</summary>
     public readonly List<(Vector2 Min, Vector2 Max)> FloorRects = new();
 
+    /// <summary>Outline segments along the outer edge of the floored area, in raw grid coordinates (Y not negated).</summary>
+    public readonly List<(Vector2 Start, Vector2 End)> FloorPerimeter = new();
+
     public void Clear()
     {
         WallLines.Clear();
         WallRects.Clear();
         FloorRects.Clear();
+        FloorPerimeter.Clear();
     }
 }
 
@@ -51,8 +56,55 @@ public static class CENavMapGeometry
         into.Clear();
 
         BuildFloorTiles(nav, grid, into);
+        BuildFloorPerimeter(nav, grid, into);
         BuildWallLines(nav, grid, into);
         BuildAirlocks(nav, grid, into);
+    }
+
+    private static bool IsFloored(NavMapComponent nav, Vector2i gridTile)
+    {
+        var chunkOrigin = SharedMapSystem.GetChunkIndices(gridTile, SharedNavMapSystem.ChunkSize);
+        if (!nav.Chunks.TryGetValue(chunkOrigin, out var chunk))
+            return false;
+
+        var rel = SharedMapSystem.GetChunkRelative(gridTile, SharedNavMapSystem.ChunkSize);
+        return (chunk.TileData[SharedNavMapSystem.GetTileIndex(rel)] & SharedNavMapSystem.FloorMask) != 0;
+    }
+
+    /// <summary>Emits an outline segment for every floored-tile edge that borders a non-floored tile.</summary>
+    private static void BuildFloorPerimeter(NavMapComponent nav, MapGridComponent grid, CENavMapGeometryData data)
+    {
+        var size = grid.TileSize;
+
+        foreach (var chunk in nav.Chunks.Values)
+        {
+            var baseTile = chunk.Origin * SharedNavMapSystem.ChunkSize;
+
+            for (var i = 0; i < SharedNavMapSystem.ArraySize; i++)
+            {
+                if ((chunk.TileData[i] & SharedNavMapSystem.FloorMask) == 0)
+                    continue;
+
+                var t = baseTile + SharedNavMapSystem.GetTileFromIndex(i);
+
+                var x0 = t.X * size;
+                var x1 = x0 + size;
+                var y0 = t.Y * size;
+                var y1 = y0 + size;
+
+                if (!IsFloored(nav, t + new Vector2i(-1, 0)))
+                    data.FloorPerimeter.Add((new Vector2(x0, y0), new Vector2(x0, y1)));
+
+                if (!IsFloored(nav, t + new Vector2i(1, 0)))
+                    data.FloorPerimeter.Add((new Vector2(x1, y0), new Vector2(x1, y1)));
+
+                if (!IsFloored(nav, t + new Vector2i(0, -1)))
+                    data.FloorPerimeter.Add((new Vector2(x0, y0), new Vector2(x1, y0)));
+
+                if (!IsFloored(nav, t + new Vector2i(0, 1)))
+                    data.FloorPerimeter.Add((new Vector2(x0, y1), new Vector2(x1, y1)));
+            }
+        }
     }
 
     /// <summary>
@@ -259,7 +311,12 @@ public static class CENavMapGeometry
         }
     }
 
-    private static void AddOrUpdateNavMapLine(
+    /// <summary>
+    /// Greedily merges collinear axis-aligned segments while inserting a new one. Mirrors the
+    /// <c>protected</c> method of the same name on the upstream <c>NavMapControl</c>; exposed here so
+    /// other CE map overlays (e.g. power cable networks) can reuse the same line-combining pass.
+    /// </summary>
+    public static void AddOrUpdateNavMapLine(
         Vector2i origin,
         Vector2i terminus,
         Dictionary<Vector2i, Vector2i> lookup,

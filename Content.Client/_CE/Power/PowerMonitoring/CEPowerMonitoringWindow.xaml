@@ -1,0 +1,94 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:navmap="clr-namespace:Content.Client._CE.Power.PowerMonitoring"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      Title="{Loc 'ce-power-monitoring-window-title'}"
+                      Resizable="False"
+                      SetSize="1120 720"
+                      MinSize="1120 720">
+    <BoxContainer Orientation="Vertical">
+        <BoxContainer Orientation="Horizontal" VerticalExpand="True" HorizontalExpand="True">
+            <!-- Map -->
+            <BoxContainer Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True">
+                <navmap:CEPowerMonitoringConsoleNavMapControl Name="NavMap" Margin="5 5" VerticalExpand="True" HorizontalExpand="True">
+                    <PanelContainer Name="SystemWarningPanel"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Top"
+                                    HorizontalExpand="True"
+                                    Margin="0 48 0 0"
+                                    Visible="False">
+                        <RichTextLabel Name="SystemWarningLabel" Margin="12 8 12 8"/>
+                    </PanelContainer>
+                </navmap:CEPowerMonitoringConsoleNavMapControl>
+
+                <!-- Legend -->
+                <BoxContainer Orientation="Horizontal" Margin="0 10 0 10">
+                    <TextureRect Stretch="KeepAspectCentered"
+                                 TexturePath="/Textures/Interface/NavMap/beveled_circle.png"
+                                 Modulate="#800080"
+                                 SetSize="16 16"
+                                 Margin="20 0 5 0"/>
+                    <Label Text="{Loc 'ce-power-monitoring-window-tab-generators'}"/>
+                    <TextureRect Stretch="KeepAspectCentered"
+                                 TexturePath="/Textures/Interface/NavMap/beveled_hexagon.png"
+                                 SetSize="16 16"
+                                 Modulate="#ff4500"
+                                 Margin="20 0 5 0"/>
+                    <Label Text="{Loc 'ce-power-monitoring-window-tab-accumulators'}"/>
+                    <TextureRect Stretch="KeepAspectCentered"
+                                 TexturePath="/Textures/Interface/NavMap/beveled_triangle.png"
+                                 SetSize="16 16"
+                                 Modulate="#32cd32"
+                                 Margin="20 0 5 0"/>
+                    <Label Text="{Loc 'ce-power-monitoring-window-tab-distributors'}"/>
+                    <TextureRect Stretch="KeepAspectCentered"
+                                 TexturePath="/Textures/Interface/NavMap/beveled_triangle.png"
+                                 SetSize="16 16"
+                                 Modulate="#ff3030"
+                                 Margin="20 0 5 0"/>
+                    <Label Text="{Loc 'ce-power-monitoring-window-label-leak'}"/>
+                </BoxContainer>
+            </BoxContainer>
+
+            <!-- Status -->
+            <BoxContainer Orientation="Vertical" VerticalExpand="True" SetWidth="440" Margin="0 0 10 10">
+                <controls:StripeBack>
+                    <PanelContainer>
+                        <RichTextLabel Name="StationName" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 3"/>
+                    </PanelContainer>
+                </controls:StripeBack>
+
+                <GridContainer Columns="2">
+                    <Label StyleClasses="highlight" Text="{Loc 'ce-power-monitoring-window-total-sources'}"/>
+                    <Label Name="TotalSources" Text="?" Margin="10 0 0 0"/>
+                    <Label StyleClasses="highlight" Text="{Loc 'ce-power-monitoring-window-total-battery-usage'}"/>
+                    <Label Name="TotalBatteryUsage" Text="?" Margin="10 0 0 0"/>
+                    <Label StyleClasses="highlight" Text="{Loc 'ce-power-monitoring-window-total-loads'}"/>
+                    <Label Name="TotalLoads" Text="?" Margin="10 0 0 0"/>
+                </GridContainer>
+
+                <TabContainer Name="MasterTabContainer" VerticalExpand="True" HorizontalExpand="True" Margin="0 10 0 0">
+                    <ScrollContainer HorizontalExpand="True" Margin="8, 8, 8, 8">
+                        <BoxContainer Name="SourcesList" Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True" Margin="0 0 10 0"/>
+                    </ScrollContainer>
+                    <ScrollContainer HorizontalExpand="True" Margin="8, 8, 8, 8">
+                        <BoxContainer Name="SMESList" Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True" Margin="0 0 10 0"/>
+                    </ScrollContainer>
+                    <ScrollContainer HorizontalExpand="True" Margin="8, 8, 8, 8">
+                        <BoxContainer Name="SubstationList" Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True" Margin="0 0 10 0"/>
+                    </ScrollContainer>
+                    <ScrollContainer HorizontalExpand="True" Margin="8, 8, 8, 8">
+                        <BoxContainer Name="ApcList" Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True" Margin="0 0 10 0"/>
+                    </ScrollContainer>
+                </TabContainer>
+
+                <BoxContainer Orientation="Vertical" Margin="0 10 0 0">
+                    <Label Text="{Loc 'ce-power-monitoring-window-show-conduits'}" Margin="0 0 0 5"/>
+                    <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+                        <CheckBox Name="ShowHVCable" Text="{Loc 'ce-power-monitoring-window-show-big-pipes'}" Pressed="True" Margin="0 0 0 0"/>
+                        <CheckBox Name="ShowLVCable" Text="{Loc 'ce-power-monitoring-window-show-medium-pipes'}" Pressed="True" Margin="10 0 0 0"/>
+                    </BoxContainer>
+                </BoxContainer>
+            </BoxContainer>
+        </BoxContainer>
+    </BoxContainer>
+</controls:FancyWindow>

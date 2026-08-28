@@ -1,0 +1,55 @@
+- type: entity
+  id: CEPowerGridProjector
+  parent:
+  - CEConstructibleMachine
+  - CEBaseMachinePowered
+  - BaseMachine
+  name: island power grid projector
+  description: Projects the power grid and cable networks across every z-level of the island.
+  categories: [ ForkFiltered ]
+  components:
+  - type: PlacementReplacement
+    key: walls
+  - type: Sprite
+    drawdepth: FloorTiles
+    snapCardinals: true
+    sprite: _CE/Structures/Industrial/buy_platform.rsi
+    layers:
+    - state: base
+  - type: Icon
+    sprite: _CE/Structures/Industrial/buy_platform.rsi
+    state: base
+  - type: CEPowerMonitoringConsole
+  - type: CEPowerMonitoringCableNetworks
+  - type: NodeContainer
+    examinable: true
+    nodes:
+      hv:
+        !type:CableDeviceNode
+        nodeGroupID: HVPower
+  - type: ActivatableUI
+    key: enum.CEPowerMonitoringConsoleUiKey.Key
+  - type: ActivatableUIRequiresPower
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        mask:
+        - TabletopMachineMask
+        layer:
+        - Impassable
+        - MidImpassable
+        - LowImpassable
+        hard: false
+  - type: ApcPowerReceiver
+    powerLoad: 0.1
+  - type: UserInterface
+    interfaces:
+      enum.CEPowerMonitoringConsoleUiKey.Key:
+        type: CEPowerMonitoringConsoleBoundUserInterface
+  - type: ExtensionCableReceiver
+    receptionRange: 0

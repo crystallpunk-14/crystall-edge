@@ -68,13 +68,13 @@
   - type: BatteryCharger
     voltage: High
     node: input
-  - type: PowerMonitoringDevice
+  - type: CEPowerMonitoringDevice
     group: SMES
     sourceNode: input
     loadNode: output
     collectionName: smes
-    sprite: Structures/Power/smes.rsi
-    state: static
+    sprite: _CE/Structures/Industrial/Power/accumulator.rsi
+    state: base
   - type: PowerNetworkBattery
     maxSupply: 10
     maxChargeRate: 10

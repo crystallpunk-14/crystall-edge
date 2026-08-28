@@ -16,3 +16,4 @@
   - type: Injurable
     damageContainer: Inorganic
   - type: CEPipeVis
+  - type: CECable

@@ -38,6 +38,9 @@ public partial class CEZLevelsNavMapControl : MapGridControl
 
     // --- Public / overridable surface (mirrors NavMapControl) ---
 
+    /// <summary>The console/device that owns this control. Subclasses read extra components off it.</summary>
+    public EntityUid? Owner;
+
     private EntityUid? _mapUid;
 
     /// <summary>Any map entity that belongs to the target z-network (usually the console's own map).</summary>
@@ -80,8 +83,9 @@ public partial class CEZLevelsNavMapControl : MapGridControl
 
     public Color WallColor = new(102, 178, 235);
     public Color TileColor = new(42, 78, 110);
+    public Color FloorEdgeColor = new(72, 126, 166);
 
-    protected Color BackgroundColor = new(0.13f, 0.17f, 0.22f);
+    protected Color BackgroundColor = Color.Black;
 
     protected float LevelHeightOffset = 1.0f;
     protected Vector2 LevelOffsetDir = new(0f, 1f);
@@ -335,6 +339,29 @@ public partial class CEZLevelsNavMapControl : MapGridControl
         return o;
     }
 
+    /// <summary>Switches the active level to whatever z-level <paramref name="coordinates"/> sits on and pans it to view centre.</summary>
+    public void CenterToCoordinates(EntityCoordinates coordinates)
+    {
+        var mapUid = _transform.GetMap(coordinates);
+        if (mapUid == null || !EntManager.TryGetComponent<CEZMapComponent>(mapUid, out var zMap))
+            return;
+
+        SetActiveDepth(zMap.Depth);
+
+        if (!_levels.TryGetValue(zMap.Depth, out var render))
+            return;
+
+        var mapPos = _transform.ToMapCoordinates(coordinates);
+        if (mapPos.MapId == MapId.Nullspace)
+            return;
+
+        var gridXform = EntManager.GetComponent<TransformComponent>(render.MapUid);
+        var local = Vector2.Transform(mapPos.Position, _transform.GetInvWorldMatrix(gridXform));
+
+        Offset = local - (_activeGridPhysics?.LocalCenter ?? Vector2.Zero);
+        Recentering = false;
+    }
+
     private Color CachedSrgb(Color color)
     {
         if (!_sRgbLookup.TryGetValue(color, out var srgb))
@@ -401,7 +428,8 @@ public partial class CEZLevelsNavMapControl : MapGridControl
             var render = _levels[depth];
             var mod = GetLevelModulate(depth);
             var wallColor = CachedSrgb(WallColor * mod);
-            var tileColor = TileColor * mod;
+            var tileColor = TileColor;
+            var edgeColor = CachedSrgb(FloorEdgeColor * mod);
 
             foreach (var (min, max) in render.Geometry.FloorRects)
             {
@@ -411,6 +439,18 @@ public partial class CEZLevelsNavMapControl : MapGridControl
                 quad[3] = LevelToScreen(depth, new Vector2(min.X, max.Y));
 
                 handle.DrawPrimitives(DrawPrimitiveTopology.TriangleFan, quad, tileColor);
+            }
+
+            if (render.Geometry.FloorPerimeter.Count > 0)
+            {
+                var edges = new ValueList<Vector2>(render.Geometry.FloorPerimeter.Count * 2);
+                foreach (var (a, b) in render.Geometry.FloorPerimeter)
+                {
+                    edges.Add(LevelToScreen(depth, a));
+                    edges.Add(LevelToScreen(depth, b));
+                }
+
+                handle.DrawPrimitives(DrawPrimitiveTopology.LineList, edges.Span, edgeColor);
             }
 
             if (render.Geometry.WallLines.Count > 0)
@@ -445,14 +485,16 @@ public partial class CEZLevelsNavMapControl : MapGridControl
                 handle.DrawPrimitives(DrawPrimitiveTopology.LineList, rects.Span, wallColor);
             }
 
+            // Draw this level's blips within its own pass, so higher levels can occlude them.
+            DrawTrackedOverlaysForLevel(handle, depth);
+
             PostLevelDrawingAction?.Invoke(handle, render);
         }
 
-        DrawTrackedOverlays(handle);
         PostDrawingAction?.Invoke(handle);
     }
 
-    private void DrawTrackedOverlays(DrawingHandleScreen handle)
+    private void DrawTrackedOverlaysForLevel(DrawingHandleScreen handle, int depth)
     {
         if (TrackedCoordinates.Count == 0 && TrackedEntities.Count == 0)
             return;
@@ -465,7 +507,7 @@ public partial class CEZLevelsNavMapControl : MapGridControl
             if (!value.Visible || !lit)
                 continue;
 
-            if (!TryProjectCoordinates(coord, out var position, out _))
+            if (!TryProjectCoordinates(coord, out var position, out var coordDepth) || coordDepth != depth)
                 continue;
 
             handle.DrawCircle(position, MathF.Sqrt(MinimapScale) * 2f, value.Color);
@@ -479,7 +521,7 @@ public partial class CEZLevelsNavMapControl : MapGridControl
             if (blip.Texture == null)
                 continue;
 
-            if (!TryProjectCoordinates(blip.Coordinates, out var position, out _))
+            if (!TryProjectCoordinates(blip.Coordinates, out var position, out var blipDepth) || blipDepth != depth)
                 continue;
 
             var size = new Vector2(blip.Texture.Width, blip.Texture.Height) * blip.Scale * 0.075f * MathF.Sqrt(MinimapScale);
