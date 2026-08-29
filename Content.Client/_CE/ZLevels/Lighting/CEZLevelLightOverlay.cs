@@ -31,6 +31,8 @@ public sealed partial class CEZLevelLightOverlay : Overlay
     private readonly EntityQuery<MapComponent> _mapQuery;
     private readonly EntityQuery<OccluderComponent> _occluderQuery;
 
+    private static readonly ProtoId<ShaderPrototype> AdditiveShader = "CEZLightAdditive";
+
     private readonly ShaderInstance _additive;
 
     /// <summary>
@@ -66,7 +68,7 @@ public sealed partial class CEZLevelLightOverlay : Overlay
         _mapQuery = entity.GetEntityQuery<MapComponent>();
         _occluderQuery = entity.GetEntityQuery<OccluderComponent>();
 
-        _additive = _proto.Index<ShaderPrototype>("CEZLightAdditive").Instance();
+        _additive = _proto.Index(AdditiveShader).Instance();
 
         ZIndex = TileEmissionOverlay.ContentZIndex; // Runs alongside TileEmissionOverlay before LightBlurOverlay
     }
