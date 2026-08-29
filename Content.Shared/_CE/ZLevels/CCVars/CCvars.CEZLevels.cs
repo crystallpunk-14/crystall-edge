@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is sublicensed under MIT License
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
@@ -49,6 +49,30 @@ public sealed partial class CCVars
 
     public static readonly CVarDef<int>
         CEZLevelsRenderingMaxZLevelsBelowRendering = CVarDef.Create("ce.zlevels.rendering.max_zLevels_below_rendering", 1, CVar.SERVER | CVar.REPLICATED);
+
+    /**
+     * Lighting
+     */
+
+    /// <summary>Whether lights from upper z-levels bleed down through open tiles.</summary>
+    public static readonly CVarDef<bool>
+        CEZLevelsLightEnabled = CVarDef.Create("ce.zlevels.light.enabled", true, CVar.ARCHIVE | CVar.CLIENT);
+
+    /// <summary>Maximum number of upper z-levels scanned for lights.</summary> 
+    public static readonly CVarDef<int>
+        CEZLevelsLightMaxLevels = CVarDef.Create("ce.zlevels.light.max_levels", 2, CVar.ARCHIVE | CVar.CLIENT);
+
+    /// <summary>Light transmission per z-level.</summary>
+    public static readonly CVarDef<float>
+        CEZLevelsLightTransmission = CVarDef.Create("ce.zlevels.light.transmission", 0.55f, CVar.ARCHIVE | CVar.CLIENT);
+
+    /// <summary>Whether walls block light from reaching openings.</summary>
+    public static readonly CVarDef<bool>
+        CEZLevelsLightOcclusion = CVarDef.Create("ce.zlevels.light.occlusion", true, CVar.ARCHIVE | CVar.CLIENT);
+
+    /// <summary>Maximum number of lights processed per upper z-level.</summary>
+    public static readonly CVarDef<int>
+        CEZLevelsLightMaxLights = CVarDef.Create("ce.zlevels.light.max_lights", 64, CVar.ARCHIVE | CVar.CLIENT);
 
     /**
      * Audio
