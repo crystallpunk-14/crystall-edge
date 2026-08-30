@@ -4,7 +4,7 @@ meta:
   engineVersion: 283.1.0
   forkId: ""
   forkVersion: ""
-  time: 08/28/2026 20:27:01
+  time: 08/30/2026 11:26:04
   entityCount: 1811
 maps:
 - 1
@@ -6063,7 +6063,7 @@ entities:
     components:
     - type: Transform
       parent: 1
-      pos: -19.5,8.5
+      pos: -15.5,8.5
 - proto: CEVialSkull
   entities:
   - uid: 1621
