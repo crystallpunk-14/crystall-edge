@@ -1,7 +1,7 @@
 using Content.Client.Examine;
 using Content.Shared._CE.InfusionAltar.Components;
 using Content.Shared._CE.MagicVision.Components;
-using Content.Shared.Ghost;
+using Content.Shared.Ghost.Components;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 

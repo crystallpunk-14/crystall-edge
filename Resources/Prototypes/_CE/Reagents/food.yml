@@ -9,5 +9,6 @@
   metabolisms:
     Metabolites:
       effects:
-      - !type:SatiateHunger
+      - !type:Satiate
+        satiationType: Hunger
   pricePerUnit: 0.2

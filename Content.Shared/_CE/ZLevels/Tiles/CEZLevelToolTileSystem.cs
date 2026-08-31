@@ -84,7 +84,7 @@ public sealed partial class CEZLevelToolTileSystem : EntitySystem
         var tileRef = _map.GetTileRef(gridUid, grid, tileIndices);
         var tileDef = (ContentTileDefinition)_tileDefManager[tileRef.Tile.TypeId];
 
-        if (!tool.Qualities.ContainsAny(tileDef.DeconstructTools))
+        if (!tool.Qualities.Overlaps(tileDef.DeconstructTools))
         {
             // Telegraph which tool is required, same as ToolTileCompatibleComponent's floor variant.
             var toolNames = new List<string>();
@@ -144,7 +144,7 @@ public sealed partial class CEZLevelToolTileSystem : EntitySystem
             return;
 
         var tileDef = (ContentTileDefinition)_tileDefManager[tileRef.Tile.TypeId];
-        if (!tool.Qualities.ContainsAny(tileDef.DeconstructTools))
+        if (!tool.Qualities.Overlaps(tileDef.DeconstructTools))
             return;
 
         // don't do this on the client or else the tile entity spawn mispredicts and looks horrible
