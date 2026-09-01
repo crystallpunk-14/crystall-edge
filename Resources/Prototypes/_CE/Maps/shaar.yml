@@ -46,26 +46,5 @@
                 moles:
                   Oxygen: 21.824879
                   Nitrogen: 82.10312
-            - type: Parallax
-              parallax: CESky
-            - type: LightCycle #BEFORE Sun shadow cycle!
-              offset: 490
-            - type: SunShadowCycle
-              offset: 490
-              originalColor: "#75e3ff"
             - type: CEZLevelRoof
-            - type: SunShadow
-            - type: MapLight
-              ambientLightColor: "#75e3ff"
-            - type: CECloudsOverlay
-              seed: 490
-              frequency: 0.2
-              octaves: 4
-              lacunarity: 2.0
-              gain: 0.5
-              windVelocity: -1, 0.3
-              evolutionSpeed: 0.1
-              coverage: 0.6
-              shadowStrength: 0.6
-              shadowColor: "#000000"
             - type: CEGridStability
