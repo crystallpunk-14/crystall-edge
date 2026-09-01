@@ -35,7 +35,7 @@ public sealed partial class CEZLevelsSystem
     public bool TryAddMapsIntoNetwork(Entity<CEZMapNetworkComponent> network, Dictionary<EntityUid, int> maps)
     {
         var success = true;
-        var added = new List<(EntityUid Map, int Depth)>(maps.Count);
+        var addedAny = false;
 
         foreach (var (mapUid, depth) in maps)
         {
@@ -63,26 +63,13 @@ public sealed partial class CEZLevelsSystem
             network.Comp.ZLevels[depth] = mapUid;
             network.Comp.ZLevelByEntity[mapUid] = depth;
 
-            var levelMapComponent = EnsureComp<CEZMapComponent>(mapUid);
-            levelMapComponent.Depth = depth;
-            levelMapComponent.NetworkUid = network;
+            var mapComponent = EnsureComp<CEZMapComponent>(mapUid);
+            mapComponent.Depth = depth;
+            mapComponent.NetworkUid = network;
 
-            added.Add((mapUid, depth));
-        }
-
-        if (added.Count == 0)
-            return success;
-
-        // Link only once every slot is filled, so adding a contiguous block of maps in a single call
-        // doesn't depend on the order the dictionary happened to enumerate in.
-        foreach (var (mapUid, depth) in added)
-        {
-            if (!TryComp<CEZMapComponent>(mapUid, out var mapComponent))
-                continue;
-
-            mapComponent.MapAbove = null;
-            mapComponent.MapBelow = null;
-
+            // A neighbour processed earlier in this same call already has its CEZMapComponent, so its
+            // reverse pointer is set here; a neighbour processed later will set it the other way round
+            // when its own turn comes — either order ends up with both pointers correct.
             if (network.Comp.ZLevels.TryGetValue(depth + 1, out var aboveMapUid) && aboveMapUid is { } aboveUid)
             {
                 mapComponent.MapAbove = aboveUid;
@@ -106,16 +93,16 @@ public sealed partial class CEZLevelsSystem
             }
 
             Dirty(mapUid, mapComponent);
-        }
+            addedAny = true;
 
-        RebuildSortedCache(network);
-
-        // Raised only after the cache is rebuilt, so handlers may use the traversal API.
-        foreach (var (mapUid, depth) in added)
-        {
             var ev = new CEMapAddedIntoZNetworkEvent(network, depth);
             RaiseLocalEvent(mapUid, ref ev);
         }
+
+        if (!addedAny)
+            return success;
+
+        RebuildSortedCache(network);
 
         RaiseLocalEvent(network.Owner, new CEZLevelMapNetworkUpdatedEvent(network.Owner), broadcast: true);
 
