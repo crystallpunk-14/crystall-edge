@@ -138,6 +138,10 @@ namespace Content.Client.Entry
             _prototypeManager.RegisterIgnore("codewordGenerator");
             _prototypeManager.RegisterIgnore("codewordFaction");
 
+            // CrystallEdge
+            _prototypeManager.RegisterIgnore("demiplaneLocation");
+            // CrystallEdge end
+
             _componentFactory.GenerateNetIds();
             _adminManager.Initialize();
             _screenshotHook.Initialize();
