@@ -117,7 +117,7 @@ public sealed partial class CEZLevelsSystem
             RaiseLocalEvent(mapUid, ref ev);
         }
 
-        RaiseLocalEvent(network, new CEZLevelMapNetworkUpdatedEvent());
+        RaiseLocalEvent(network.Owner, new CEZLevelMapNetworkUpdatedEvent(network.Owner), broadcast: true);
 
         return success;
     }
@@ -185,7 +185,7 @@ public sealed partial class CEZLevelsSystem
             RaiseLocalEvent(mapUid, ref ev);
         }
 
-        RaiseLocalEvent(network, new CEZLevelMapNetworkUpdatedEvent());
+        RaiseLocalEvent(network.Owner, new CEZLevelMapNetworkUpdatedEvent(network.Owner), broadcast: true);
 
         return success;
     }
@@ -279,9 +279,12 @@ public sealed partial class CEZLevelsSystem
 }
 
 /// <summary>
-/// Called on ZLevel Network Entity, when maps added or removed from network
+/// Called on ZLevel Network Entity, when maps added or removed from network.
 /// </summary>
-public sealed class CEZLevelMapNetworkUpdatedEvent : EntityEventArgs;
+public sealed class CEZLevelMapNetworkUpdatedEvent(EntityUid network) : EntityEventArgs
+{
+    public readonly EntityUid Network = network;
+}
 
 /// <summary>
 /// Called on map, when it added to ZNetwork
