@@ -76,9 +76,9 @@ public sealed partial class CEDemiplaneSystem : EntitySystem
         if (_activeJobs.Remove(station, out var pending))
             pending.Cancel.Cancel();
 
-        RemComp<CEStationDemiplaneTeleportationComponent>(station);
-
         ClearStage(station, (networkUid, network));
+
+        RemComp<CEStationDemiplaneTeleportationComponent>(station);
 
         var teleport = EnsureComp<CEStationDemiplaneTeleportationComponent>(station);
         teleport.EndTime = _timing.CurTime + teleportTime;
@@ -111,12 +111,19 @@ public sealed partial class CEDemiplaneSystem : EntitySystem
         return true;
     }
 
-    /// <summary>
-    /// Removes everything from the station's z-network that isn't one of the station's own grids
-    /// (i.e. the previous demiplane stage, if any) and deletes those maps.
-    /// </summary>
     private void ClearStage(EntityUid station, Entity<CEZMapNetworkComponent> network)
     {
+        if (TryComp<CEStationDemiplaneTeleportationComponent>(station, out var oldTeleport) &&
+            oldTeleport.Location is { } oldLocation &&
+            _proto.Resolve(oldLocation, out var oldProto))
+        {
+            foreach (var mapUid in network.Comp.ZLevels.Values)
+            {
+                if (mapUid is { } uid)
+                    EntityManager.RemoveComponents(uid, oldProto.Components);
+            }
+        }
+
         var toRemove = new List<EntityUid>();
         foreach (var mapUid in network.Comp.ZLevels.Values)
         {
@@ -176,7 +183,7 @@ public sealed partial class CEDemiplaneSystem : EntitySystem
                 continue;
 
             SpliceIn(station, teleport);
-            RemComp<CEStationDemiplaneTeleportationComponent>(station);
+            teleport.ReadyMaps = null;
         }
     }
 
@@ -205,6 +212,15 @@ public sealed partial class CEDemiplaneSystem : EntitySystem
         }
 
         _zLevels.TryAddMapsIntoNetwork((networkUid, network), dict);
+
+        if (teleport.Location is { } location && _proto.Resolve(location, out var locationProto))
+        {
+            foreach (var mapUid in network.ZLevels.Values)
+            {
+                if (mapUid is { } uid)
+                    EntityManager.AddComponents(uid, locationProto.Components);
+            }
+        }
 
         _sawmill.Info($"Station {station}: spliced in {maps.Count} level(s) at depth {startDepth}..{startDepth - maps.Count + 1}.");
     }
