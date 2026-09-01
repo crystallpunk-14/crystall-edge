@@ -27,4 +27,13 @@ public sealed partial class CEDemiplaneLocationPrototype : IPrototype
 
     [DataField(required: true)]
     public ICEDemiplaneLocationGenerator Generator = default!;
+
+    /// <summary>
+    /// Ambient components (parallax, lighting, day-cycle, etc.) this location gives the whole
+    /// z-network while the city is here — applied to every map in the network when the location
+    /// is entered, and removed from every map in the network when it's left. See
+    /// <see cref="CEDemiplaneSystem"/>.
+    /// </summary>
+    [DataField]
+    public ComponentRegistry Components = new();
 }

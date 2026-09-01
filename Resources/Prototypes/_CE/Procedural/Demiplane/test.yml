@@ -1,0 +1,72 @@
+- type: demiplaneLocation
+  id: CEDebugFlatCaves
+  name: ce-demiplane-location-debug-flat-caves
+  levels:
+    min: 0
+    max: 10
+  generator: !type:CEDebugFlatWorldGenerator
+    size: 60
+    layers:
+    - CEGrassFill
+    - CESnowFill
+    - CESnowFill
+  components:
+  - type: Parallax
+    parallax: CESky
+  - type: LightCycle #BEFORE Sun shadow cycle!
+    offset: 100
+    duration: 300
+    originalColor: "#75e3ff"
+  - type: SunShadowCycle
+    offset: 100
+    duration: 300
+  - type: SunShadow
+  - type: MapLight
+    ambientLightColor: "#75e3ff"
+  - type: CECloudsOverlay
+    seed: 490
+    frequency: 0.2
+    octaves: 4
+    lacunarity: 2.0
+    gain: 0.5
+    windVelocity: -1, 0.3
+    evolutionSpeed: 0.1
+    coverage: 0.6
+    shadowStrength: 0.6
+    shadowColor: "#000000"
+
+- type: demiplaneLocation
+  id: CEDebugFlat2
+  name: ce-demiplane-location-debug-flat-caves
+  levels:
+    min: 0
+    max: 10
+  generator: !type:CEDebugFlatWorldGenerator
+    size: 60
+    layers:
+    - CEGrassFill
+    - CESnowFill
+  components:
+  - type: Parallax
+    parallax: CESky-Volcanic
+  - type: LightCycle #BEFORE Sun shadow cycle!
+    offset: 100
+    duration: 300
+    originalColor: "#ff5151"
+  - type: SunShadowCycle
+    offset: 100
+    duration: 300
+  - type: SunShadow
+  - type: MapLight
+    ambientLightColor: "#ff5151"
+  - type: CECloudsOverlay
+    seed: 490
+    frequency: 0.2
+    octaves: 4
+    lacunarity: 2.0
+    gain: 0.5
+    windVelocity: -1, 0.3
+    evolutionSpeed: 0.1
+    coverage: 0.6
+    shadowStrength: 0.6
+    shadowColor: "#000000"
