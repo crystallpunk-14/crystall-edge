@@ -1,0 +1,24 @@
+# Standard goal for production that must be delivered to a selector-resolved target.
+- type: entity
+  id: CETargetedProductionGOAPBase
+  abstract: true
+  components:
+  - type: CEGOAP
+    goals:
+    - desiredState: { CEProductionReady: false }
+      preconditions:
+        CEProductionReady: true
+        CEProductionTargetAvailable: true
+      priority: 90
+
+# Child actions provide their action kind, interaction policy, product prototype,
+# sound and visuals.
+# LimitedCharges is the canonical owner of the one pending discrete output.
+- type: entity
+  id: CEChargedProductionActionBase
+  abstract: true
+  parent: BaseAction
+  components:
+  - type: LimitedCharges
+    lastCharges: -1
+    maxCharges: 1

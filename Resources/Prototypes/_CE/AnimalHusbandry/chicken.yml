@@ -1,0 +1,97 @@
+- type: entity
+  id: CEActionChickenLayEgg
+  parent: CEChargedProductionActionBase
+  name: lay chicken egg
+  description: Lay a produced chicken egg in an available nesting perch.
+  components:
+  - type: Action
+    icon: { sprite: Objects/Consumable/Food/egg.rsi, state: icon }
+    sound: { collection: CEChickenClucks }
+  - type: TargetAction
+    range: 0.4
+  - type: EntityTargetAction
+    canTargetSelf: false
+    whitelist:
+      requireAll: true
+      components:
+      - CEFixedEntitySlotsAvailable
+      - CEAnimalIncubationHost
+    event: !type:CECreateEntityInFixedSlotActionEvent
+      prototype: CEFoodEggChicken
+
+- type: entity
+  id: CEChickenHenGOAP
+  abstract: true
+  parent:
+  - CEAnimalAdultGOAPBase
+  - CETargetedProductionGOAPBase
+  components:
+  - type: CEGOAPRangeToTargetSensor
+    updateInterval: 0.2
+    entries:
+    - conditionKey: CEProductionTargetAvailable
+      range: 20
+      selector: !type:CEGOAPSelectorNearestEntity
+        range: 20
+        whitelist:
+          requireAll: true
+          components:
+          - CEFixedEntitySlotsAvailable
+          - CEAnimalIncubationHost
+    - conditionKey: CEProductionTargetInRange
+      range: 0.4
+      selector: !type:CEGOAPSelectorNearestEntity
+        range: 20
+        whitelist:
+          requireAll: true
+          components:
+          - CEFixedEntitySlotsAvailable
+          - CEAnimalIncubationHost
+  - type: CEGOAP
+    actions:
+    - !type:CEGOAPMoveToTargetAction
+      selector: !type:CEGOAPSelectorNearestEntity
+        range: 20
+        whitelist:
+          requireAll: true
+          components:
+          - CEFixedEntitySlotsAvailable
+          - CEAnimalIncubationHost
+      range: 0.4
+      preconditions:
+        CEProductionReady: true
+        CEProductionTargetAvailable: true
+        CEProductionTargetInRange: false
+      effects: { CEProductionTargetInRange: true }
+    - !type:CEGOAPUseAction
+      actionPrototype: CEActionChickenLayEgg
+      selector: !type:CEGOAPSelectorNearestEntity
+        range: 20
+        whitelist:
+          requireAll: true
+          components:
+          - CEFixedEntitySlotsAvailable
+          - CEAnimalIncubationHost
+      preconditions:
+        CEProductionReady: true
+        CEProductionTargetAvailable: true
+        CEProductionTargetInRange: true
+      effects: { CEProductionReady: false }
+
+- type: entity
+  id: CEChickenChickGOAP
+  abstract: true
+  parent: CEAnimalNeedsGOAPBase
+  components:
+  - type: CEGOAP
+    goals:
+    - desiredState: { CEAnimalIdle: true }
+      priority: 1
+    actions:
+    - !type:CEGOAPExploreAction
+      exploreRadius: 5
+      sampleDirections: 10
+      minIdleTime: 0.75
+      maxIdleTime: 3
+      preconditions: { CEAnimalIdle: false }
+      effects: { CEAnimalIdle: true }

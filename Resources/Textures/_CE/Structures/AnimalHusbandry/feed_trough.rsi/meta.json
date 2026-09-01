@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-4.0",
+  "copyright": "Original pixel art by OpenAI Codex for Crystall Edge (2026)",
+  "size": {
+    "x": 48,
+    "y": 48
+  },
+  "states": [
+    {
+      "name": "feed_empty"
+    },
+    {
+      "name": "feed_front"
+    }
+  ]
+}

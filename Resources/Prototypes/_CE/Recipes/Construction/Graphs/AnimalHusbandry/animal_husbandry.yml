@@ -1,0 +1,68 @@
+- type: constructionGraph
+  id: CEAnimalFeedTrough
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity {}
+    edges:
+    - to: complete
+      steps:
+      - material: CEWood
+        amount: 3
+        doAfter: 1.5
+      - material: CENail
+        amount: 1
+        doAfter: 0.5
+      - tool: CEHammering
+        doAfter: 1
+  - node: complete
+    entity: CEAnimalFeedTrough
+
+- type: constructionGraph
+  id: CEAnimalWaterTrough
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity {}
+    edges:
+    - to: complete
+      steps:
+      - material: CEWood
+        amount: 3
+        doAfter: 1.5
+      - material: CEIronBar
+        amount: 1
+        doAfter: 1
+      - material: CENail
+        amount: 1
+        doAfter: 0.5
+      - tool: CEHammering
+        doAfter: 1
+  - node: complete
+    entity: CEAnimalWaterTrough
+
+- type: constructionGraph
+  id: CEChickenNestingPerch
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity {}
+    edges:
+    - to: complete
+      steps:
+      - material: CEWood
+        amount: 2
+        doAfter: 1
+      - material: CECloth
+        amount: 1
+        doAfter: 1
+      - material: CENail
+        amount: 1
+        doAfter: 0.5
+      - tool: CEHammering
+        doAfter: 1
+  - node: complete
+    entity: CEChickenNestingPerch

@@ -1,0 +1,34 @@
+- type: soundCollection
+  id: CEChickenClucks
+  files:
+  - /Audio/_CE/Animals/chicken1.ogg
+  - /Audio/_CE/Animals/chicken2.ogg
+  - /Audio/_CE/Animals/chicken3.ogg
+  - /Audio/_CE/Animals/chicken4.ogg
+  - /Audio/_CE/Animals/chicken5.ogg
+
+- type: soundCollection
+  id: CEChickenChirps
+  files:
+  - /Audio/_CE/Animals/chick1.ogg
+  - /Audio/_CE/Animals/chick2.ogg
+  - /Audio/_CE/Animals/chick3.ogg
+  - /Audio/_CE/Animals/chick4.ogg
+
+- type: speechSounds
+  id: CEChickenCluck
+  saySound: { collection: CEChickenClucks }
+  askSound: { collection: CEChickenClucks }
+  exclaimSound: { collection: CEChickenClucks }
+
+- type: speechSounds
+  id: CEChickenChirp
+  saySound: { collection: CEChickenChirps }
+  askSound: { collection: CEChickenChirps }
+  exclaimSound: { collection: CEChickenChirps }
+
+- type: speechSounds
+  id: CERoosterCall
+  saySound: { path: /Audio/_CE/Animals/rooster.ogg }
+  askSound: { path: /Audio/_CE/Animals/rooster.ogg }
+  exclaimSound: { path: /Audio/_CE/Animals/rooster.ogg }

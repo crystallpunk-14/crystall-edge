@@ -1,0 +1,14 @@
+- files: ["rooster.ogg"]
+  license: "CC-BY-4.0"
+  copyright: "By klankbeeld on freesound.org. Mixed from stereo to mono."
+  source: "https://freesound.org/people/klankbeeld/sounds/379597/"
+
+- files: ["chicken1.ogg", "chicken2.ogg", "chicken3.ogg", "chicken4.ogg", "chicken5.ogg"]
+  license: "CC0-1.0"
+  copyright: "By nickmaysoundmusic on freesound.org. Cropped and mixed from stereo to mono."
+  source: "https://freesound.org/people/nickmaysoundmusic/sounds/724215/"
+
+- files: ["chick1.ogg", "chick2.ogg", "chick3.ogg", "chick4.ogg"]
+  license: "CC0-1.0"
+  copyright: "By YostPeter on freesound.org. Cropped and mixed from stereo to mono."
+  source: "https://freesound.org/people/YostPeter/sounds/468451/"
