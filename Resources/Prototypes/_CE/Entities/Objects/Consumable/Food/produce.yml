@@ -287,6 +287,7 @@
     plantProto: CEPlantPotato #TODO sliceable potato
   - type: Temperature
     temperature: 290
+    heatCapacity: 15000
   - type: InternalTemperature
   #- type: CETemperatureTransformation
   #  entries:
@@ -1011,6 +1012,7 @@
     plantProto: CEPlantChanterelle
   - type: Temperature
     temperature: 290
+    heatCapacity: 15000
   - type: InternalTemperature
   - type: CEMagicEssenceStructure
     essences:
@@ -1052,6 +1054,7 @@
       amount: 3
   - type: Temperature
     temperature: 290
+    heatCapacity: 15000
   - type: InternalTemperature
   - type: CEMagicEssenceStructure
     essences:

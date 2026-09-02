@@ -21,6 +21,7 @@
         Quantity: 1
   - type: Temperature
     temperature: 290
+    heatCapacity: 15000
   - type: InternalTemperature
   - type: CEFoodTag
     tags:
