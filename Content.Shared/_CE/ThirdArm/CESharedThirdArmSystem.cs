@@ -28,12 +28,12 @@ public abstract partial class CESharedThirdArmSystem : EntitySystem
         var container = Container.EnsureContainer<ContainerSlot>(ent, CEThirdArmComponent.ModuleSlotId);
         container.OccludesLight = false;
 
-        ItemSlots.AddItemSlot(ent, CEThirdArmComponent.ModuleSlotId, ent.Comp.ModuleSlot);
+        ItemSlots.AddItemSlot(ent.Owner, CEThirdArmComponent.ModuleSlotId, ent.Comp.ModuleSlot);
     }
 
     private void OnThirdArmShutdown(Entity<CEThirdArmComponent> ent, ref ComponentShutdown args)
     {
-        ItemSlots.RemoveItemSlot(ent, ent.Comp.ModuleSlot);
+        ItemSlots.RemoveItemSlot(ent.Owner, ent.Comp.ModuleSlot);
     }
 
     private void OnModuleSlotChanged(Entity<CEThirdArmComponent> ent, ref EntInsertedIntoContainerMessage args)

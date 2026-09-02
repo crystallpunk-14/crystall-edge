@@ -423,6 +423,8 @@ namespace Content.Server.Power.EntitySystems
                 //CrystallEdge end
 
                 RaiseLocalEvent(uid, ref msg);
+
+                _appearance.SetData(uid, PowerConsumerVisuals.Consuming, newRecv > 0);
             }
         }
 

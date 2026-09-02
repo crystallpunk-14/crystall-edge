@@ -22,9 +22,11 @@
     itemIconStyle: BigAction
     sound: !type:SoundPathSpecifier
       path: /Audio/Magic/rumble.ogg
-    icon:
-      sprite: _CE/Actions/Spells/conjure_light.rsi
-      state: icon
+  - type: Sprite
+    sprite: _CE/Actions/Spells/conjure_light.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:CEInstantActionAnimationEvent
       animation: AnimationConjureLight

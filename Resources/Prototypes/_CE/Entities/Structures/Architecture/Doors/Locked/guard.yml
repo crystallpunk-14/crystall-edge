@@ -9,11 +9,14 @@
     locked: false
 
 - type: entity
-  parent:
-    - CEIronDoorGuardHall
-    - CEIronDoorWindowedMirrored
+  parent: CEIronDoorWindowedMirrored
   id: CEIronDoorGuardHallMirrored
   suffix: Guard Hall, Mirrored
+  components:
+  - type: CELock
+    autoGenerateShape: GuardHall
+  - type: Lock
+    locked: false
 
 - type: entity
   parent: CEIronDoor
@@ -36,11 +39,14 @@
     locked: true
 
 - type: entity
-  parent:
-    - CEIronDoorGuardArmory
-    - CEIronDoorMirrored
+  parent: CEIronDoorMirrored
   id: CEIronDoorGuardArmoryMirrored
   suffix: Guard Armory, Mirrored
+  components:
+  - type: CELock
+    autoGenerateShape: GuardArmory
+  - type: Lock
+    locked: true
 
 - type: entity
   parent: CEIronDoor
