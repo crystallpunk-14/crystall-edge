@@ -5,6 +5,7 @@ using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Utility;
 
 namespace Content.Server._CE.Procedural;
 
@@ -33,6 +34,13 @@ public sealed partial class CEDungeonSystem : EntitySystem
     private readonly List<(Vector2i, Tile)> _tiles = new();
 
     public static readonly ProtoId<ContentTileDefinition> FallbackTileId = "CEStone";
+
+    /// <summary>
+    /// Starting point for every map this system generates onto, loaded fresh per map instead of a
+    /// blank <c>CreateMap</c> — gives every generated level the same baseline components
+    /// (atmosphere, gravity, etc.) a hand-authored empty map would have.
+    /// </summary>
+    public static readonly ResPath DefaultMap = new("/Maps/_CE/Empty.yml");
 
     public override void Initialize()
     {

@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Server._CE.Demiplane.Generation;
+using Content.Server._CE.Procedural;
 using Content.Server._CE.Procedural.Generation;
 using Content.Server.Decals;
 using Content.Server.Parallax;
@@ -11,12 +12,6 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.Demiplane;
 
-/// <summary>
-/// Runs one <see cref="ICEDemiplaneLocationGenerator"/> off the main thread's time budget via
-/// <see cref="Job{T}"/>, same pattern as upstream salvage expeditions. Owns no generation logic
-/// itself — that lives entirely in the generator (see <see cref="ICEDemiplaneLocationGenerator"/>),
-/// this just wires up the context and awaits it.
-/// </summary>
 public sealed class CEDemiplaneGenerationJob : Job<List<EntityUid>>
 {
     private readonly CEProceduralGenerationContext _context;
@@ -41,6 +36,12 @@ public sealed class CEDemiplaneGenerationJob : Job<List<EntityUid>>
 
     protected override async Task<List<EntityUid>?> Process()
     {
-        return await _generator.Generate(_context);
+        var maps = await _generator.Generate(_context);
+
+        // Empty gap level between the island and the generated stage, so they don't sit flush.
+        var dungeon = _context.EntityManager.System<CEDungeonSystem>();
+        maps.Insert(0, dungeon.LoadMap());
+
+        return maps;
     }
 }

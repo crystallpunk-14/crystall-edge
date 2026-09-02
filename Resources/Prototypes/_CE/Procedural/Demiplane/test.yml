@@ -43,11 +43,11 @@
     max: 2
   generator: !type:CELayeredWorldGenerator
     layersByHeight:
-      2: #hills
-      - !type:CETileNoiseDistanceLayer
+      2: # hills - forest in the center, meadow around the rim
+      - !type:CETileNoiseDistanceLayer # whole island footprint
         size: 136, 136
         distanceConfig: !type:CEEuclideanSquaredDistance
-          blendWeight: 0.6
+          blendWeight: 0.5
         fill:
         - tile: CEGrassTall
           threshold: 0.6
@@ -58,10 +58,23 @@
             octaves: 5
             lacunarity: 2
             gain: 0.5
-      - !type:CEFillBiomeLayer
-        biome: CEGrasslandForest
+      - !type:CETileNoiseDistanceLayer # tighter center, overwrites the rim marker
+        size: 135, 135
+        distanceConfig: !type:CEEuclideanSquaredDistance
+          blendWeight: 0.5
+        fill:
+        - tile: CEStone
+          threshold: 0.8
+          noise: *islandNoise
+      - !type:CEFillBiomeLayer # rim = meadow. Must run before the forest: it never outputs CEStone, so the forest mask stays clean.
+        biome: CEGrassland
         tiles:
         - CEGrassTall
+      - !type:CEFillBiomeLayer # center = forest
+        biome: CEGrasslandForest
+        seed: 2
+        tiles:
+        - CEStone
       1: # surface: grassy rim, cave mouth in the center
       - !type:CETileNoiseDistanceLayer
         size: 136, 136
@@ -81,10 +94,12 @@
           noise: *islandNoise
       - !type:CEFillBiomeLayer
         biome: CEGrasslandForest
+        seed: 1
         tiles:
         - CEGrassTall
       - !type:CEFillBiomeLayer
         biome: CECavesGeneric
+        seed: 1
         tiles:
         - CEStone
       0: # caves, narrower — same noise, higher threshold tapers it
@@ -98,6 +113,7 @@
           noise: *islandNoise
       - !type:CEFillBiomeLayer
         biome: CECavesGeneric
+        seed: 2
         tiles:
         - CEStone
       -1: # caves, narrower — same noise, higher threshold tapers it
@@ -111,6 +127,7 @@
           noise: *islandNoise
       - !type:CEFillBiomeLayer
         biome: CECavesGeneric
+        seed: 3
         tiles:
         - CEStone
       -2: # caves, narrower — same noise, higher threshold tapers it
@@ -124,6 +141,7 @@
           noise: *islandNoise
       - !type:CEFillBiomeLayer
         biome: CECavesGeneric
+        seed: 4
         tiles:
         - CEStone
   components:

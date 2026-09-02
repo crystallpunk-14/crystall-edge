@@ -1,11 +1,22 @@
 using System.Threading.Tasks;
 using Content.Server._CE.Procedural.Generation;
-using Robust.Shared.Map.Components;
 
 namespace Content.Server._CE.Procedural;
 
 public sealed partial class CEDungeonSystem
 {
+    /// <summary>
+    /// Loads a fresh, standalone instance of <see cref="DefaultMap"/> — the shared entry point
+    /// every generation path uses to obtain a starting map instead of a blank <c>CreateMap</c>.
+    /// </summary>
+    public EntityUid LoadMap()
+    {
+        if (!_loader.TryLoadMap(DefaultMap, out var mapEnt, out _))
+            throw new Exception($"Failed to load default map '{DefaultMap}' for procedural generation.");
+
+        return mapEnt.Value.Owner;
+    }
+
     public async Task<List<EntityUid>> GenerateLayers(
         CEProceduralGenerationContext context,
         Dictionary<int, List<ICEProceduralLayer>> layersByHeight)
@@ -13,9 +24,7 @@ public sealed partial class CEDungeonSystem
         var byHeight = new Dictionary<int, EntityUid>();
         foreach (var height in layersByHeight.Keys)
         {
-            var mapUid = context.Map.CreateMap(out _, runMapInit: false);
-            context.EntityManager.EnsureComponent<MapGridComponent>(mapUid);
-            byHeight[height] = mapUid;
+            byHeight[height] = LoadMap();
         }
 
         var heights = new List<int>(layersByHeight.Keys);
