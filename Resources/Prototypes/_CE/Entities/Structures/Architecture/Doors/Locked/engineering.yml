@@ -9,11 +9,14 @@
     locked: false
 
 - type: entity
-  parent:
-    - CEIronDoorEngineeringHall
-    - CEIronDoorWindowedMirrored
+  parent: CEIronDoorWindowedMirrored
   id: CEIronDoorEngineeringHallMirrored
   suffix: Engineering Hall, Mirrored
+  components:
+  - type: CELock
+    autoGenerateShape: EngineeringHall
+  - type: Lock
+    locked: false
 
 - type: entity
   parent: CEIronDoor
@@ -26,11 +29,14 @@
     locked: true
 
 - type: entity
-  parent:
-    - CEIronDoorEngineeringStaff
-    - CEIronDoorMirrored
+  parent: CEIronDoorMirrored
   id: CEIronDoorEngineeringStaffMirrored
   suffix: Engineering Staff, Mirrored
+  components:
+  - type: CELock
+    autoGenerateShape: EngineeringStaff
+  - type: Lock
+    locked: true
 
 - type: entity
   parent: CEIronDoor
@@ -43,11 +49,14 @@
     locked: true
 
 - type: entity
-  parent:
-    - CEIronDoorEngineeringGenerator
-    - CEIronDoorMirrored
+  parent: CEIronDoorMirrored
   id: CEIronDoorEngineeringGeneratorMirrored
   suffix: Engineering Generator, Mirrored
+  components:
+  - type: CELock
+    autoGenerateShape: EngineeringGenerator
+  - type: Lock
+    locked: true
 
 - type: entity
   parent: CEIronDoor
@@ -60,11 +69,14 @@
     locked: true
 
 - type: entity
-  parent:
-    - CEIronDoorEngineeringTunnels
-    - CEIronDoorMirrored
+  parent: CEIronDoorMirrored
   id: CEIronDoorEngineeringTunnelsMirrored
   suffix: Engineering Tunnels, Mirrored
+  components:
+  - type: CELock
+    autoGenerateShape: EngineeringTunnels
+  - type: Lock
+    locked: true
 
 - type: entity
   parent: CEIronDoor
@@ -77,11 +89,14 @@
     locked: true
 
 - type: entity
-  parent:
-    - CEIronDoorEngineeringBrigadier
-    - CEIronDoorMirrored
+  parent: CEIronDoorMirrored
   id: CEIronDoorEngineeringBrigadierMirrored
   suffix: Engineering Brigadier, Mirrored
+  components:
+  - type: CELock
+    autoGenerateShape: EngineeringBrigadier
+  - type: Lock
+    locked: true
 
 - type: entity
   parent: CEIronDoor
@@ -94,11 +109,14 @@
     locked: true
 
 - type: entity
-  parent:
-    - CEIronDoorEngineeringStorage
-    - CEIronDoorMirrored
+  parent: CEIronDoorMirrored
   id: CEIronDoorEngineeringStorageMirrored
   suffix: Engineering Storage, Mirrored
+  components:
+  - type: CELock
+    autoGenerateShape: EngineeringStorage
+  - type: Lock
+    locked: true
 
 - type: entity
   parent: CEFenceGateBigIron
