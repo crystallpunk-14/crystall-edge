@@ -48,7 +48,7 @@
                   Oxygen: 21.824879
                   Nitrogen: 82.10312
             - type: CEZLevelRoof
-            - type: CEGridStability
+            #- type: CEGridStability
 
 - type: zMap
   id: Empty
