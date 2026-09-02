@@ -1,9 +1,9 @@
 - type: construction
   hide: false
-  id: CEBedsideTableWooden
-  graph: CEBedsideTableWooden
+  id: CEBookshelfWooden
+  graph: CEBookshelfWooden
   startNode: start
-  targetNode: CEBedsideTableWooden
+  targetNode: CEBookshelfWooden
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -14,10 +14,10 @@
 
 - type: construction
   hide: false
-  id: CEBedsideTableStone
-  graph: CEBedsideTableStone
+  id: CEBookshelfStone
+  graph: CEBookshelfStone
   startNode: start
-  targetNode: CEBedsideTableStone
+  targetNode: CEBookshelfStone
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
