@@ -234,12 +234,14 @@
     width: 10
     range: 15
   - type: Action
-    icon:
-      sprite: _CE/Effects/Hitscans/mana.rsi
-      state: impact_blue
     useDelay: 1
     itemIconStyle: BigAction
     raiseOnUser: true
+  - type: Sprite
+    sprite: _CE/Effects/Hitscans/mana.rsi
+    layers:
+    - state: impact_blue
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     repeat: true
     range: 10
