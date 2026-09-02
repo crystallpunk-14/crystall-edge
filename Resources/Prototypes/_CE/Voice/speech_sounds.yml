@@ -15,3 +15,12 @@
     path: /Audio/_CE/Voice/Goblin/goblin_talk2.ogg
   exclaimSound:
     path: /Audio/_CE/Voice/Goblin/goblin_talk1.ogg
+
+- type: speechSounds
+  id: CECarrin
+  saySound:
+    path: /Audio/_CE/Voice/Carrin/carrin-say-chirping.ogg
+  askSound:
+    path: /Audio/_CE/Voice/Carrin/carrin-ask.ogg
+  exclaimSound:
+    path: /Audio/_CE/Voice/Carrin/carrin-exclaim-caw.ogg

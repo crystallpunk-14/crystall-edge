@@ -217,9 +217,10 @@
     sprite: _CE/Mobs/Species/Carrin/parts.rsi
     state: full
   - type: Vocal
-    emoteSounds: CEUnisexCarcat #TODO: change to carrin sound
+    emoteSounds: CEUnisexCarrin
   - type: Speech
-    speechSounds: CECarcat #TODO: change to carrin sound
+    speechSounds: CECarrin
+    allowedEmotes: ['CECaw']
   - type: FootstepModifier
     footstepSoundCollection:
       collection: CEStepCarrin
