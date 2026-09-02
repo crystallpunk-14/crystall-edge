@@ -20,6 +20,7 @@
     baseLayer: base
     layerStates:
     - leather
+    - leather
   - type: Material
   - type: PhysicalComposition
     materialComposition:
