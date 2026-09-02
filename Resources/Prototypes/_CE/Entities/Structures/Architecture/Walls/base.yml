@@ -88,12 +88,16 @@
     drawdepth: Mobs
   - type: Tag
     tags:
-    - Wall
     - Diagonal
   - type: IconSmooth
     mode: Diagonal
     key: CEwall
     base: state
+  - type: Occluder
+    polygon:
+    - "-0.5,-0.5"
+    - "0.5,0.5"
+    - "0.5,-0.5"
   - type: Airtight
     noAirWhenFullyAirBlocked: false
     airBlockedDirection:
