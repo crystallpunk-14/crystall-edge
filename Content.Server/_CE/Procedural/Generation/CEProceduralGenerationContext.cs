@@ -1,20 +1,26 @@
 using System.Threading;
 using System.Threading.Tasks;
+using Content.Server.Decals;
 using Content.Server.Parallax;
 using Robust.Server.GameObjects;
+using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server._CE.Demiplane.Generation;
+namespace Content.Server._CE.Procedural.Generation;
 
 /// <summary>
-/// Everything an <see cref="ICEDemiplaneLocationGenerator"/> needs to run, bundled so the interface
-/// method takes one parameter regardless of what a given generator actually uses.
+/// Everything an <see cref="ICEProceduralLayer"/> needs to run, bundled so the interface method
+/// takes one parameter regardless of what a given layer actually uses. Also the context passed to
+/// demiplane location generators — they share this one type rather than each subsystem defining its
+/// own field-identical copy.
 /// </summary>
-public sealed class CEDemiplaneGenerationContext(
+public sealed class CEProceduralGenerationContext(
     IEntityManager entityManager,
     MapSystem map,
     BiomeSystem biome,
     IPrototypeManager prototype,
+    ITileDefinitionManager tileDefManager,
+    DecalSystem decals,
     int seed,
     Func<ValueTask> suspend,
     CancellationToken cancellation)
@@ -23,6 +29,8 @@ public sealed class CEDemiplaneGenerationContext(
     public readonly MapSystem Map = map;
     public readonly BiomeSystem Biome = biome;
     public readonly IPrototypeManager Prototype = prototype;
+    public readonly ITileDefinitionManager TileDefManager = tileDefManager;
+    public readonly DecalSystem Decals = decals;
 
     public readonly int Seed = seed;
 

@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Content.Server._CE.Procedural.Generation;
 using Content.Shared.Parallax.Biomes;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -26,7 +27,7 @@ public sealed partial class CEDebugFlatWorldGenerator : ICEDemiplaneLocationGene
     [DataField]
     public int Size = 50;
 
-    public async Task<List<EntityUid>> Generate(CEDemiplaneGenerationContext context)
+    public async Task<List<EntityUid>> Generate(CEProceduralGenerationContext context)
     {
         var maps = new List<EntityUid>();
 

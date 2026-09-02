@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Content.Server._CE.Procedural.Generation;
 
 namespace Content.Server._CE.Demiplane.Generation;
 
@@ -18,5 +19,5 @@ public partial interface ICEDemiplaneLocationGenerator
     /// None of them are attached to any z-network yet — that is the caller's job, once this
     /// returns and whatever else it is waiting on (a teleport timer, say) is also done.
     /// </summary>
-    Task<List<EntityUid>> Generate(CEDemiplaneGenerationContext context);
+    Task<List<EntityUid>> Generate(CEProceduralGenerationContext context);
 }

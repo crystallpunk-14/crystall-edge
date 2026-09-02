@@ -4,12 +4,14 @@ using Content.Server._CE.Demiplane.Components;
 using Content.Server._CE.Demiplane.Prototypes;
 using Content.Server._CE.ZLevels.Core;
 using Content.Server._CE.ZLevels.Core.Components;
+using Content.Server.Decals;
 using Content.Server.Parallax;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.Station;
 using Robust.Server.GameObjects;
 using Robust.Shared.CPUJob.JobQueues;
 using Robust.Shared.CPUJob.JobQueues.Queues;
+using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -33,6 +35,8 @@ public sealed partial class CEDemiplaneSystem : EntitySystem
     [Dependency] private SharedStationSystem _station = default!;
     [Dependency] private MapSystem _map = default!;
     [Dependency] private BiomeSystem _biome = default!;
+    [Dependency] private ITileDefinitionManager _tileDefManager = default!;
+    [Dependency] private DecalSystem _decals = default!;
 
     private ISawmill _sawmill = default!;
 
@@ -100,6 +104,8 @@ public sealed partial class CEDemiplaneSystem : EntitySystem
             _map,
             _biome,
             _proto,
+            _tileDefManager,
+            _decals,
             locationProto.Generator,
             _random.Next(),
             cancel.Token);

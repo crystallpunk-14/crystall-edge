@@ -1,9 +1,12 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Server._CE.Demiplane.Generation;
+using Content.Server._CE.Procedural.Generation;
+using Content.Server.Decals;
 using Content.Server.Parallax;
 using Robust.Server.GameObjects;
 using Robust.Shared.CPUJob.JobQueues;
+using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.Demiplane;
@@ -16,7 +19,7 @@ namespace Content.Server._CE.Demiplane;
 /// </summary>
 public sealed class CEDemiplaneGenerationJob : Job<List<EntityUid>>
 {
-    private readonly CEDemiplaneGenerationContext _context;
+    private readonly CEProceduralGenerationContext _context;
     private readonly ICEDemiplaneLocationGenerator _generator;
 
     public CEDemiplaneGenerationJob(
@@ -25,13 +28,15 @@ public sealed class CEDemiplaneGenerationJob : Job<List<EntityUid>>
         MapSystem map,
         BiomeSystem biome,
         IPrototypeManager proto,
+        ITileDefinitionManager tileDefManager,
+        DecalSystem decals,
         ICEDemiplaneLocationGenerator generator,
         int seed,
         CancellationToken cancellation = default)
         : base(maxTime, cancellation)
     {
         _generator = generator;
-        _context = new CEDemiplaneGenerationContext(entManager, map, biome, proto, seed, SuspendIfOutOfTime, cancellation);
+        _context = new CEProceduralGenerationContext(entManager, map, biome, proto, tileDefManager, decals, seed, SuspendIfOutOfTime, cancellation);
     }
 
     protected override async Task<List<EntityUid>?> Process()

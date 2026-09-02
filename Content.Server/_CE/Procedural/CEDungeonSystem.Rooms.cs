@@ -172,11 +172,11 @@ public sealed partial class CEDungeonSystem
             }
 
             // Load decals
-            if (TryComp<DecalGridComponent>(templateMapUid, out var loadedDecals))
+            if (HasComp<DecalGridComponent>(templateMapUid))
             {
                 EnsureComp<DecalGridComponent>(targetMapUid);
 
-                foreach (var (_, decal) in _decals.GetDecalsIntersecting(templateMapUid, bounds, loadedDecals))
+                foreach (var (_, decal) in _decals.GetDecalsIntersecting(templateMapUid, bounds))
                 {
                     var position = Vector2.Transform(decal.Coordinates + targetGrid.TileSizeHalfVector - roomCenter, roomTransform);
                     position -= targetGrid.TileSizeHalfVector;

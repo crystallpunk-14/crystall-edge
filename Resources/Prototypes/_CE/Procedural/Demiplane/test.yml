@@ -36,37 +36,98 @@
     shadowColor: "#000000"
 
 - type: demiplaneLocation
-  id: CEDebugFlat2
-  name: ce-demiplane-location-debug-flat-caves
+  id: CEGreenIsland
+  name: ce-demiplane-location-green-island
   levels:
     min: 0
-    max: 10
-  generator: !type:CEDebugFlatWorldGenerator
-    size: 60
-    layers:
-    - CEGrassFill
-    - CESnowFill
+    max: 2
+  generator: !type:CELayeredWorldGenerator
+    layersByHeight:
+      2: #hills
+      - !type:CETileNoiseDistanceLayer
+        size: 136, 136
+        distanceConfig: !type:CEEuclideanSquaredDistance
+          blendWeight: 0.6
+        fill:
+        - tile: CEGrassTall
+          threshold: 0.6
+          noise: &islandNoise
+            frequency: 0.030
+            noiseType: OpenSimplex2
+            fractalType: FBm
+            octaves: 5
+            lacunarity: 2
+            gain: 0.5
+      - !type:CEFillBiomeLayer
+        biome: CEGrasslandForest
+        tiles:
+        - CEGrassTall
+      1: # surface: grassy rim, cave mouth in the center
+      - !type:CETileNoiseDistanceLayer
+        size: 136, 136
+        distanceConfig: !type:CEEuclideanSquaredDistance
+          blendWeight: 0.6
+        fill:
+        - tile: CEGrassTall
+          threshold: 0.58
+          noise: *islandNoise
+      - !type:CETileNoiseDistanceLayer
+        size: 135, 135
+        distanceConfig: !type:CEEuclideanSquaredDistance
+          blendWeight: 0.6
+        fill:
+        - tile: CEStone
+          threshold: 0.6
+          noise: *islandNoise
+      - !type:CEFillBiomeLayer
+        biome: CEGrasslandForest
+        tiles:
+        - CEGrassTall
+      - !type:CEFillBiomeLayer
+        biome: CECavesGeneric
+        tiles:
+        - CEStone
+      0: # caves, narrower — same noise, higher threshold tapers it
+      - !type:CETileNoiseDistanceLayer
+        size: 130, 130
+        distanceConfig: !type:CEEuclideanSquaredDistance
+          blendWeight: 0.6
+        fill:
+        - tile: CEStone
+          threshold: 0.62
+          noise: *islandNoise
+      - !type:CEFillBiomeLayer
+        biome: CECavesGeneric
+        tiles:
+        - CEStone
+      -1: # caves, narrower — same noise, higher threshold tapers it
+      - !type:CETileNoiseDistanceLayer
+        size: 130, 130
+        distanceConfig: !type:CEEuclideanSquaredDistance
+          blendWeight: 0.6
+        fill:
+        - tile: CEStone
+          threshold: 0.63
+          noise: *islandNoise
+      - !type:CEFillBiomeLayer
+        biome: CECavesGeneric
+        tiles:
+        - CEStone
+      -2: # caves, narrower — same noise, higher threshold tapers it
+      - !type:CETileNoiseDistanceLayer
+        size: 130, 130
+        distanceConfig: !type:CEEuclideanSquaredDistance
+          blendWeight: 0.6
+        fill:
+        - tile: CEStone
+          threshold: 0.65
+          noise: *islandNoise
+      - !type:CEFillBiomeLayer
+        biome: CECavesGeneric
+        tiles:
+        - CEStone
   components:
   - type: Parallax
-    parallax: CESky-Volcanic
-  - type: LightCycle #BEFORE Sun shadow cycle!
-    offset: 100
-    duration: 300
-    originalColor: "#ff5151"
-  - type: SunShadowCycle
-    offset: 100
-    duration: 300
-  - type: SunShadow
+    parallax: CESky
   - type: MapLight
-    ambientLightColor: "#ff5151"
-  - type: CECloudsOverlay
-    seed: 490
-    frequency: 0.2
-    octaves: 4
-    lacunarity: 2.0
-    gain: 0.5
-    windVelocity: -1, 0.3
-    evolutionSpeed: 0.1
-    coverage: 0.6
-    shadowStrength: 0.6
-    shadowColor: "#000000"
+    ambientLightColor: "#75e3ff"
