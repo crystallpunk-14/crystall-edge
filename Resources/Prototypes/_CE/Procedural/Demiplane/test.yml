@@ -68,13 +68,17 @@
           noise: *islandNoise
       - !type:CEFillBiomeLayer # rim = meadow. Must run before the forest: it never outputs CEStone, so the forest mask stays clean.
         biome: CEGrassland
-        tiles:
-        - CEGrassTall
+        mask:
+        - !type:CETileMask
+          tiles:
+          - CEGrassTall
       - !type:CEFillBiomeLayer # center = forest
         biome: CEGrasslandForest
         seed: 2
-        tiles:
-        - CEStone
+        mask:
+        - !type:CETileMask
+          tiles:
+          - CEStone
       1: # surface: grassy rim, cave mouth in the center
       - !type:CETileNoiseDistanceLayer
         size: 136, 136
@@ -95,13 +99,17 @@
       - !type:CEFillBiomeLayer
         biome: CEGrasslandForest
         seed: 1
-        tiles:
-        - CEGrassTall
+        mask:
+        - !type:CETileMask
+          tiles:
+          - CEGrassTall
       - !type:CEFillBiomeLayer
         biome: CECavesGeneric
         seed: 1
-        tiles:
-        - CEStone
+        mask:
+        - !type:CETileMask
+          tiles:
+          - CEStone
       0: # caves, narrower — same noise, higher threshold tapers it
       - !type:CETileNoiseDistanceLayer
         size: 130, 130
@@ -114,8 +122,10 @@
       - !type:CEFillBiomeLayer
         biome: CECavesGeneric
         seed: 2
-        tiles:
-        - CEStone
+        mask:
+        - !type:CETileMask
+          tiles:
+          - CEStone
       -1: # caves, narrower — same noise, higher threshold tapers it
       - !type:CETileNoiseDistanceLayer
         size: 130, 130
@@ -128,8 +138,10 @@
       - !type:CEFillBiomeLayer
         biome: CECavesGeneric
         seed: 3
-        tiles:
-        - CEStone
+        mask:
+        - !type:CETileMask
+          tiles:
+          - CEStone
       -2: # caves, narrower — same noise, higher threshold tapers it
       - !type:CETileNoiseDistanceLayer
         size: 130, 130
@@ -142,8 +154,10 @@
       - !type:CEFillBiomeLayer
         biome: CECavesGeneric
         seed: 4
-        tiles:
-        - CEStone
+        mask:
+        - !type:CETileMask
+          tiles:
+          - CEStone
   components:
   - type: Parallax
     parallax: CESky

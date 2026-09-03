@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using Content.Shared.Maps;
+using Content.Server._CE.Procedural.Generation.Masks;
 using Content.Shared.Parallax.Biomes;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -8,9 +8,10 @@ using Robust.Shared.Prototypes;
 namespace Content.Server._CE.Procedural.Generation.Layers;
 
 /// <summary>
-/// Overlays a biome (tile variants, decals, entities) onto every tile of the map whose current type
-/// is in <see cref="Tiles"/>. The preceding tile layer's output doubles as the region mask — a
-/// deliberate, simple approach: which tiles are present defines where the biome lands.
+/// Overlays a biome (tile variants, decals, entities) onto every tile of the map that passes
+/// <see cref="Mask"/>. The preceding tile layer's output typically doubles as the region mask via a
+/// <see cref="CETileMask"/> — a deliberate, simple approach: which tiles are present defines where
+/// the biome lands.
 /// </summary>
 public sealed partial class CEFillBiomeLayer : ICEProceduralLayer
 {
@@ -18,11 +19,11 @@ public sealed partial class CEFillBiomeLayer : ICEProceduralLayer
     public ProtoId<BiomeTemplatePrototype> Biome;
 
     /// <summary>
-    /// Only tiles of these types receive the biome — the tile-as-mask handed down from an earlier
-    /// <see cref="CETileNoiseDistanceLayer"/>.
+    /// Only tiles where every mask matches (each respecting its own <see cref="ICETileMask.Inverted"/>)
+    /// receive the biome.
     /// </summary>
     [DataField(required: true)]
-    public List<ProtoId<ContentTileDefinition>> Tiles = new();
+    public List<ICETileMask> Mask = new();
 
     /// <summary>
     /// Added to the generation seed for this layer's biome sampling. Leave at 0 to share the run's
@@ -37,20 +38,26 @@ public sealed partial class CEFillBiomeLayer : ICEProceduralLayer
         var grid = context.EntityManager.GetComponent<MapGridComponent>(map);
         var biome = context.Prototype.Index(Biome);
 
-        var mask = new HashSet<int>();
-        foreach (var tile in Tiles)
-        {
-            mask.Add(context.TileDefManager[tile.Id].TileId);
-        }
-
         // Snapshot the masked tiles up front — we mutate tiles below, which would disturb a live
         // enumerator.
         var targets = new List<Vector2i>();
         var enumerator = context.Map.GetAllTilesEnumerator(map, grid);
         while (enumerator.MoveNext(out var tileRef))
         {
-            if (mask.Contains(tileRef.Value.Tile.TypeId))
-                targets.Add(tileRef.Value.GridIndices);
+            var indices = tileRef.Value.GridIndices;
+
+            var passes = true;
+            foreach (var tileMask in Mask)
+            {
+                if (tileMask.Matches(context, map, grid, indices, tileRef.Value.Tile) == tileMask.Inverted)
+                {
+                    passes = false;
+                    break;
+                }
+            }
+
+            if (passes)
+                targets.Add(indices);
         }
 
         var seed = context.Seed + Seed;

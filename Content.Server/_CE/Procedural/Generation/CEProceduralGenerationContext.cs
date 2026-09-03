@@ -2,18 +2,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Decals;
 using Content.Server.Parallax;
+using Content.Shared.Light.EntitySystems;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.Procedural.Generation;
 
-/// <summary>
-/// Everything an <see cref="ICEProceduralLayer"/> needs to run, bundled so the interface method
-/// takes one parameter regardless of what a given layer actually uses. Also the context passed to
-/// demiplane location generators — they share this one type rather than each subsystem defining its
-/// own field-identical copy.
-/// </summary>
 public sealed class CEProceduralGenerationContext(
     IEntityManager entityManager,
     MapSystem map,
@@ -21,6 +16,7 @@ public sealed class CEProceduralGenerationContext(
     IPrototypeManager prototype,
     ITileDefinitionManager tileDefManager,
     DecalSystem decals,
+    SharedRoofSystem roof,
     int seed,
     Func<ValueTask> suspend,
     CancellationToken cancellation)
@@ -31,6 +27,7 @@ public sealed class CEProceduralGenerationContext(
     public readonly IPrototypeManager Prototype = prototype;
     public readonly ITileDefinitionManager TileDefManager = tileDefManager;
     public readonly DecalSystem Decals = decals;
+    public readonly SharedRoofSystem Roof = roof;
 
     public readonly int Seed = seed;
 

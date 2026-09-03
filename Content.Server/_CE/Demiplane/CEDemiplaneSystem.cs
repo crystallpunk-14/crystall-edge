@@ -7,6 +7,7 @@ using Content.Server._CE.ZLevels.Core.Components;
 using Content.Server.Decals;
 using Content.Server.Parallax;
 using Content.Shared._CE.ZLevels.Core.Components;
+using Content.Shared.Light.EntitySystems;
 using Content.Shared.Station;
 using Robust.Server.GameObjects;
 using Robust.Shared.CPUJob.JobQueues;
@@ -37,6 +38,7 @@ public sealed partial class CEDemiplaneSystem : EntitySystem
     [Dependency] private BiomeSystem _biome = default!;
     [Dependency] private ITileDefinitionManager _tileDefManager = default!;
     [Dependency] private DecalSystem _decals = default!;
+    [Dependency] private SharedRoofSystem _roof = default!;
 
     private ISawmill _sawmill = default!;
 
@@ -106,6 +108,7 @@ public sealed partial class CEDemiplaneSystem : EntitySystem
             _proto,
             _tileDefManager,
             _decals,
+            _roof,
             locationProto.Generator,
             _random.Next(),
             cancel.Token);
