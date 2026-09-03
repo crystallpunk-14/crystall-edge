@@ -1,7 +1,7 @@
 - type: demiplaneLocation
   id: CEDebugFlatCaves
   name: ce-demiplane-location-debug-flat-caves
-  levels:
+  difficulty:
     min: 0
     max: 10
   generator: !type:CEDebugFlatWorldGenerator
@@ -38,7 +38,7 @@
 - type: demiplaneLocation
   id: CEGreenIsland
   name: ce-demiplane-location-green-island
-  levels:
+  difficulty:
     min: 0
     max: 2
   generator: !type:CELayeredWorldGenerator

@@ -23,7 +23,7 @@ public sealed partial class CEDemiplaneLocationPrototype : IPrototype
     /// Difficulty range this location can be picked for.
     /// </summary>
     [DataField(required: true)]
-    public MinMax Levels = new(0, 10);
+    public MinMax Difficulty = new(0, 10);
 
     [DataField(required: true)]
     public ICEDemiplaneLocationGenerator Generator = default!;

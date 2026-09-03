@@ -22,7 +22,7 @@ namespace Content.Server._CE.Demiplane;
 /// <summary>
 /// Orchestrates a station's demiplane teleport: clears the old stage out of the z-network
 /// immediately, then — once both a dramatic-pause timer and (if a location was given) background
-/// generation are done — splices the new stage in below the island. See
+/// generation are done — merges the new stage in below the island. See
 /// <see cref="CEStationDemiplaneTeleportationComponent"/> for the state this hangs off of and
 /// <see cref="ICEDemiplaneLocationGenerator"/> for how a location actually gets generated.
 /// </summary>
@@ -60,12 +60,12 @@ public sealed partial class CEDemiplaneSystem : EntitySystem
 
         _jobQueue.Process();
         CollectFinishedJobs();
-        SpliceReadyStations();
+        MergeReadyStations();
     }
 
     /// <summary>
     /// Clears every non-station map out of the station's z-network, then - after
-    /// <paramref name="teleportTime"/> - splices in a freshly generated <paramref name="location"/>,
+    /// <paramref name="teleportTime"/> - merges in a freshly generated <paramref name="location"/>,
     /// or nothing at all if <paramref name="location"/> is null, leaving the island over the void.
     /// Overwrites (and cancels) any teleport already in progress for this station.
     /// </summary>
@@ -173,7 +173,7 @@ public sealed partial class CEDemiplaneSystem : EntitySystem
         }
     }
 
-    private void SpliceReadyStations()
+    private void MergeReadyStations()
     {
         var ready = new List<EntityUid>();
 
@@ -191,12 +191,12 @@ public sealed partial class CEDemiplaneSystem : EntitySystem
             if (!TryComp<CEStationDemiplaneTeleportationComponent>(station, out var teleport))
                 continue;
 
-            SpliceIn(station, teleport);
+            MergeIn(station, teleport);
             teleport.ReadyMaps = null;
         }
     }
 
-    private void SpliceIn(EntityUid station, CEStationDemiplaneTeleportationComponent teleport)
+    private void MergeIn(EntityUid station, CEStationDemiplaneTeleportationComponent teleport)
     {
         var maps = teleport.ReadyMaps;
         if (maps is null || maps.Count == 0)
@@ -209,7 +209,7 @@ public sealed partial class CEDemiplaneSystem : EntitySystem
             stationZLevels.ZNetworkEntity is not { } networkUid ||
             !TryComp<CEZMapNetworkComponent>(networkUid, out var network))
         {
-            _sawmill.Error($"Station {station}: z-network vanished before the generated stage could be spliced in.");
+            _sawmill.Error($"Station {station}: z-network vanished before the generated stage could be merged in.");
             return;
         }
 
@@ -231,6 +231,6 @@ public sealed partial class CEDemiplaneSystem : EntitySystem
             }
         }
 
-        _sawmill.Info($"Station {station}: spliced in {maps.Count} level(s) at depth {startDepth}..{startDepth - maps.Count + 1}.");
+        _sawmill.Info($"Station {station}: merged in {maps.Count} level(s) at depth {startDepth}..{startDepth - maps.Count + 1}.");
     }
 }
