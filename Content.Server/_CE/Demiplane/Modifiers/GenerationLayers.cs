@@ -14,13 +14,15 @@ public sealed partial class GenerationLayers : ICEDemiplaneModifierEffect
 
     public async Task Apply(CEProceduralGenerationContext context, Dictionary<int, EntityUid> mapsByHeight, ComponentRegistry components)
     {
-        foreach (var map in mapsByHeight.Values)
+        foreach (var (height, map) in mapsByHeight)
         {
+            var levelContext = context with { Seed = context.Seed + height };
+
             foreach (var layer in Layers)
             {
-                await layer.Apply(context, map);
-                await context.Suspend();
-                context.Cancellation.ThrowIfCancellationRequested();
+                await layer.Apply(levelContext, map);
+                await levelContext.Suspend();
+                levelContext.Cancellation.ThrowIfCancellationRequested();
             }
         }
     }

@@ -9,41 +9,22 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.Procedural.Generation;
 
-public sealed class CEProceduralGenerationContext(
-    IEntityManager entityManager,
-    MapSystem map,
-    BiomeSystem biome,
-    IPrototypeManager prototype,
-    ITileDefinitionManager tileDefManager,
-    DecalSystem decals,
-    SharedRoofSystem roof,
-    int seed,
-    int difficulty,
-    Func<ValueTask> suspend,
-    CancellationToken cancellation)
-{
-    public readonly IEntityManager EntityManager = entityManager;
-    public readonly MapSystem Map = map;
-    public readonly BiomeSystem Biome = biome;
-    public readonly IPrototypeManager Prototype = prototype;
-    public readonly ITileDefinitionManager TileDefManager = tileDefManager;
-    public readonly DecalSystem Decals = decals;
-    public readonly SharedRoofSystem Roof = roof;
-
-    public readonly int Seed = seed;
-
-    /// <summary>
-    /// Difficulty this run was generated at — the same value used to pick the location in the first
-    /// place. Modifier selection filters against this.
-    /// </summary>
-    public readonly int Difficulty = difficulty;
-
-    /// <summary>
-    /// Cooperatively yields back to the job queue once this tick's time budget is spent — wraps the
-    /// owning <c>Job&lt;T&gt;</c>'s own suspend mechanism. Call this periodically in any loop that
-    /// might run long, same as upstream dungeon generation does.
-    /// </summary>
-    public readonly Func<ValueTask> Suspend = suspend;
-
-    public readonly CancellationToken Cancellation = cancellation;
-}
+/// <summary>
+/// Everything an <see cref="ICEProceduralLayer"/> needs to run, bundled so the interface method
+/// takes one parameter regardless of what a given layer actually uses. Also the context passed to
+/// demiplane location generators — they share this one type rather than each subsystem defining its
+/// own field-identical copy. A record so a modifier or a per-level pass can decorrelate itself with
+/// e.g. <c>context with { Seed = context.Seed + offset }</c> instead of a whole new context.
+/// </summary>
+public sealed record CEProceduralGenerationContext(
+    IEntityManager EntityManager,
+    MapSystem Map,
+    BiomeSystem Biome,
+    IPrototypeManager Prototype,
+    ITileDefinitionManager TileDefManager,
+    DecalSystem Decals,
+    SharedRoofSystem Roof,
+    int Seed,
+    int Difficulty,
+    Func<ValueTask> Suspend,
+    CancellationToken Cancellation);

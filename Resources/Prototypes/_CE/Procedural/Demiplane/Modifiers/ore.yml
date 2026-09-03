@@ -116,3 +116,15 @@
         - CEWallStone
         - CEWallDirt
         - CEWallSnow
+    - !type:FillEntityLayer
+      entity: CEFloorCrystal
+      mask:
+      - !type:NoiseMask
+        threshold: 0.6
+        noise:
+          seed: 563
+          noiseType: OpenSimplex2
+          fractalType: FBm
+          frequency: 0.05
+          octaves: 3
+      - !type:NoEntityMask

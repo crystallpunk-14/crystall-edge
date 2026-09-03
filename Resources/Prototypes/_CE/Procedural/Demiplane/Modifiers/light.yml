@@ -6,7 +6,7 @@
   difficulty:
     min: 0
     max: 10
-  generationWeight: 5
+  generationWeight: 1
   categories:
     Light: 1
   effects:
@@ -14,11 +14,9 @@
     components:
     - type: LightCycle #BEFORE Sun shadow cycle!
       offset: 0
-      duration: 300
       originalColor: "#75e3ff"
     - type: SunShadowCycle
       offset: 0
-      duration: 300
     - type: SunShadow
     - type: MapLight
       ambientLightColor: "#75e3ff"
@@ -39,7 +37,7 @@
   difficulty:
     min: 0
     max: 10
-  generationWeight: 1
+  generationWeight: 0.1
   categories:
     Light: 1
   effects:
@@ -47,39 +45,6 @@
     components:
     - type: MapLight
       ambientLightColor: "#0a1230"
-    - type: CECloudsOverlay
-      seed: 490
-      frequency: 0.2
-      octaves: 4
-      lacunarity: 2.0
-      gain: 0.5
-      windVelocity: -1, 0.3
-      evolutionSpeed: 0.1
-      coverage: 0.6
-      shadowStrength: 0.6
-      shadowColor: "#000000"
-
-- type: demiplaneModifier
-  id: LightRedSun
-  difficulty:
-    min: 0
-    max: 10
-  generationWeight: 10
-  categories:
-    Light: 1
-  effects:
-  - !type:AddZNetworkComponents
-    components:
-    - type: LightCycle #BEFORE Sun shadow cycle!
-      offset: 0
-      duration: 300
-      originalColor: "#ff2b1e"
-    - type: SunShadowCycle
-      offset: 0
-      duration: 300
-    - type: SunShadow
-    - type: MapLight
-      ambientLightColor: "#ff2b1e"
     - type: CECloudsOverlay
       seed: 490
       frequency: 0.2
