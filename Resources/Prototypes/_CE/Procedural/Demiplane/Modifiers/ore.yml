@@ -2,7 +2,7 @@
   id: Ore
 
 - type: demiplaneModifier
-  id: CEOreCoal
+  id: OreCoal
   difficulty:
     min: 0
     max: 10
@@ -10,12 +10,12 @@
   categories:
     Ore: 1
   effects:
-  - !type:CEGenerationLayers
+  - !type:GenerationLayers
     layers:
-    - !type:CEFillEntityLayer
+    - !type:FillEntityLayer
       entity: CEWallCoalCore
       mask:
-      - !type:CENoiseMask
+      - !type:NoiseMask
         threshold: 0.55
         noise:
           seed: 501
@@ -23,14 +23,14 @@
           fractalType: FBm
           frequency: 0.08
           octaves: 3
-      - !type:CEEntityMask
+      - !type:EntityMask
         entities:
         - CEWallStone
         - CEWallDirt
         - CEWallSnow
 
 - type: demiplaneModifier
-  id: CEOreIron
+  id: OreIron
   difficulty:
     min: 0
     max: 10
@@ -38,12 +38,12 @@
   categories:
     Ore: 1
   effects:
-  - !type:CEGenerationLayers
+  - !type:GenerationLayers
     layers:
-    - !type:CEFillEntityLayer
+    - !type:FillEntityLayer
       entity: CEWallIronCore
       mask:
-      - !type:CENoiseMask
+      - !type:NoiseMask
         threshold: 0.55
         noise:
           seed: 502
@@ -51,14 +51,14 @@
           fractalType: FBm
           frequency: 0.08
           octaves: 3
-      - !type:CEEntityMask
+      - !type:EntityMask
         entities:
         - CEWallStone
         - CEWallDirt
         - CEWallSnow
 
 - type: demiplaneModifier
-  id: CEOreCrystals
+  id: OreCrystals
   difficulty:
     min: 0
     max: 10
@@ -66,12 +66,12 @@
   categories:
     Ore: 1
   effects:
-  - !type:CEGenerationLayers
+  - !type:GenerationLayers
     layers:
-    - !type:CEFillEntityLayer
+    - !type:FillEntityLayer
       entity: CEWallCrystalCore
       mask:
-      - !type:CENoiseMask
+      - !type:NoiseMask
         threshold: 0.65
         noise:
           seed: 503
@@ -79,7 +79,7 @@
           fractalType: FBm
           frequency: 0.08
           octaves: 3
-      - !type:CEEntityMask
+      - !type:EntityMask
         entities:
         - CEWallStone
         - CEWallDirt

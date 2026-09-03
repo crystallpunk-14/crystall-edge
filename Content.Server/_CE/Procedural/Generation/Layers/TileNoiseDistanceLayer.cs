@@ -15,7 +15,7 @@ namespace Content.Server._CE.Procedural.Generation.Layers;
 /// same noise across several layers (via a YAML anchor) with a rising threshold at lower stack levels
 /// is what tapers the shape into a point going down.
 /// </summary>
-public sealed partial class CETileNoiseDistanceLayer : ICEProceduralLayer
+public sealed partial class TileNoiseDistanceLayer : ICEProceduralLayer
 {
     /// <summary>
     /// Area to sample, centered on (0, 0).
@@ -30,7 +30,7 @@ public sealed partial class CETileNoiseDistanceLayer : ICEProceduralLayer
     public ICEDistanceConfig? DistanceConfig;
 
     [DataField(required: true)]
-    public List<CETileNoiseFill> Fill = new();
+    public List<TileNoiseFill> Fill = new();
 
     public async Task Apply(CEProceduralGenerationContext context, EntityUid map)
     {
@@ -83,7 +83,7 @@ public sealed partial class CETileNoiseDistanceLayer : ICEProceduralLayer
 }
 
 [DataRecord]
-public partial record struct CETileNoiseFill
+public partial record struct TileNoiseFill
 {
     /// <summary>
     /// Tile is placed where the blended noise value is at or above this.

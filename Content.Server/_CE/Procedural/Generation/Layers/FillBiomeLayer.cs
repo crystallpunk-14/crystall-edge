@@ -10,10 +10,10 @@ namespace Content.Server._CE.Procedural.Generation.Layers;
 /// <summary>
 /// Overlays a biome (tile variants, decals, entities) onto every tile of the map that passes
 /// <see cref="Mask"/>. The preceding tile layer's output typically doubles as the region mask via a
-/// <see cref="CETileMask"/> — a deliberate, simple approach: which tiles are present defines where
+/// <see cref="TileMask"/> — a deliberate, simple approach: which tiles are present defines where
 /// the biome lands.
 /// </summary>
-public sealed partial class CEFillBiomeLayer : ICEProceduralLayer
+public sealed partial class FillBiomeLayer : ICEProceduralLayer
 {
     [DataField(required: true)]
     public ProtoId<BiomeTemplatePrototype> Biome;

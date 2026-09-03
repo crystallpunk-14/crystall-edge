@@ -2,7 +2,7 @@
   id: Light
 
 - type: demiplaneModifier
-  id: CELightDefault
+  id: LightDefault
   difficulty:
     min: 0
     max: 10
@@ -10,7 +10,7 @@
   categories:
     Light: 1
   effects:
-  - !type:CEAddZNetworkComponents
+  - !type:AddZNetworkComponents
     components:
     - type: LightCycle #BEFORE Sun shadow cycle!
       offset: 0
@@ -35,7 +35,7 @@
       shadowColor: "#000000"
 
 - type: demiplaneModifier
-  id: CELightEternalNight
+  id: LightEternalNight
   difficulty:
     min: 0
     max: 10
@@ -43,7 +43,7 @@
   categories:
     Light: 1
   effects:
-  - !type:CEAddZNetworkComponents
+  - !type:AddZNetworkComponents
     components:
     - type: MapLight
       ambientLightColor: "#0a1230"
@@ -60,7 +60,7 @@
       shadowColor: "#000000"
 
 - type: demiplaneModifier
-  id: CELightRedSun
+  id: LightRedSun
   difficulty:
     min: 0
     max: 10
@@ -68,7 +68,7 @@
   categories:
     Light: 1
   effects:
-  - !type:CEAddZNetworkComponents
+  - !type:AddZNetworkComponents
     components:
     - type: LightCycle #BEFORE Sun shadow cycle!
       offset: 0

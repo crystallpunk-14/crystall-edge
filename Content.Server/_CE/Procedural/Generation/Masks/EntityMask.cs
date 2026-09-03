@@ -8,7 +8,7 @@ namespace Content.Server._CE.Procedural.Generation.Masks;
 /// Matches tiles with an anchored entity whose prototype is one of <see cref="Entities"/> — e.g.
 /// "only tiles that already have a stone wall", to turn generic biome walls into ore.
 /// </summary>
-public sealed partial class CEEntityMask : ICETileMask
+public sealed partial class EntityMask : ICETileMask
 {
     [DataField(required: true)]
     public List<EntProtoId> Entities = new();

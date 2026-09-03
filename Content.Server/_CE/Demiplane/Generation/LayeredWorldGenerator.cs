@@ -10,7 +10,7 @@ namespace Content.Server._CE.Demiplane.Generation;
 /// procedural layer runner (<see cref="CEDungeonSystem.GenerateLayers"/>); this is just the
 /// demiplane-side adapter onto it.
 /// </summary>
-public sealed partial class CELayeredWorldGenerator : ICEDemiplaneLocationGenerator
+public sealed partial class LayeredWorldGenerator : ICEDemiplaneLocationGenerator
 {
     /// <summary>
     /// Layers grouped by stack height. The key is an ordering label — higher = higher up the stack

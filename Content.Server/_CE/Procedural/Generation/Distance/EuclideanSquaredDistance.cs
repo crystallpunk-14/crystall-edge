@@ -3,7 +3,7 @@ namespace Content.Server._CE.Procedural.Generation.Distance;
 /// <summary>
 /// Produces a rounder shape, useful for more natural areas.
 /// </summary>
-public sealed partial class CEEuclideanSquaredDistance : ICEDistanceConfig
+public sealed partial class EuclideanSquaredDistance : ICEDistanceConfig
 {
     [DataField]
     public float BlendWeight { get; set; } = 0.5f;

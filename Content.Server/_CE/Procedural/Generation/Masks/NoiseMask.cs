@@ -7,10 +7,10 @@ namespace Content.Server._CE.Procedural.Generation.Masks;
 /// <summary>
 /// Matches wherever seeded noise clears <see cref="Threshold"/> — the "veins in random places"
 /// mask. <see cref="Seed"/> is added to the run's seed, same convention as
-/// <see cref="Layers.CETileNoiseDistanceLayer"/>: leave at 0 to share the run's seed with other
+/// <see cref="Layers.TileNoiseDistanceLayer"/>: leave at 0 to share the run's seed with other
 /// masks/layers, set a different value to decorrelate veins that would otherwise line up.
 /// </summary>
-public sealed partial class CENoiseMask : ICETileMask
+public sealed partial class NoiseMask : ICETileMask
 {
     [DataField(required: true)]
     public FastNoiseLite Noise = new();

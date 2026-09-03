@@ -1,10 +1,10 @@
 - type: demiplaneLocation
-  id: CEDebugFlatCaves
+  id: DebugFlatCaves
   name: ce-demiplane-location-debug-flat-caves
   difficulty:
     min: 0
     max: 10
-  generator: !type:CEDebugFlatWorldGenerator
+  generator: !type:DebugFlatWorldGenerator
     size: 60
     layers:
     - CEGrassFill
@@ -36,17 +36,17 @@
     shadowColor: "#000000"
 
 - type: demiplaneLocation
-  id: CEGreenIsland
+  id: GreenIsland
   name: ce-demiplane-location-green-island
   difficulty:
     min: 0
     max: 2
-  generator: !type:CELayeredWorldGenerator
+  generator: !type:LayeredWorldGenerator
     layersByHeight:
       2: # hills - forest in the center, meadow around the rim
-      - !type:CETileNoiseDistanceLayer # whole island footprint
+      - !type:TileNoiseDistanceLayer # whole island footprint
         size: 136, 136
-        distanceConfig: !type:CEEuclideanSquaredDistance
+        distanceConfig: !type:EuclideanSquaredDistance
           blendWeight: 0.5
         fill:
         - tile: CEGrassTall
@@ -58,104 +58,104 @@
             octaves: 5
             lacunarity: 2
             gain: 0.5
-      - !type:CETileNoiseDistanceLayer # tighter center, overwrites the rim marker
+      - !type:TileNoiseDistanceLayer # tighter center, overwrites the rim marker
         size: 135, 135
-        distanceConfig: !type:CEEuclideanSquaredDistance
+        distanceConfig: !type:EuclideanSquaredDistance
           blendWeight: 0.5
         fill:
         - tile: CEStone
           threshold: 0.8
           noise: *islandNoise
-      - !type:CEFillBiomeLayer # rim = meadow. Must run before the forest: it never outputs CEStone, so the forest mask stays clean.
+      - !type:FillBiomeLayer # rim = meadow. Must run before the forest: it never outputs CEStone, so the forest mask stays clean.
         biome: CEGrassland
         mask:
-        - !type:CETileMask
+        - !type:TileMask
           tiles:
           - CEGrassTall
-      - !type:CEFillBiomeLayer # center = forest
+      - !type:FillBiomeLayer # center = forest
         biome: CEGrasslandForest
         seed: 2
         mask:
-        - !type:CETileMask
+        - !type:TileMask
           tiles:
           - CEStone
       1: # surface: grassy rim, cave mouth in the center
-      - !type:CETileNoiseDistanceLayer
+      - !type:TileNoiseDistanceLayer
         size: 136, 136
-        distanceConfig: !type:CEEuclideanSquaredDistance
+        distanceConfig: !type:EuclideanSquaredDistance
           blendWeight: 0.6
         fill:
         - tile: CEGrassTall
           threshold: 0.58
           noise: *islandNoise
-      - !type:CETileNoiseDistanceLayer
+      - !type:TileNoiseDistanceLayer
         size: 135, 135
-        distanceConfig: !type:CEEuclideanSquaredDistance
+        distanceConfig: !type:EuclideanSquaredDistance
           blendWeight: 0.6
         fill:
         - tile: CEStone
           threshold: 0.6
           noise: *islandNoise
-      - !type:CEFillBiomeLayer
+      - !type:FillBiomeLayer
         biome: CEGrasslandForest
         seed: 1
         mask:
-        - !type:CETileMask
+        - !type:TileMask
           tiles:
           - CEGrassTall
-      - !type:CEFillBiomeLayer
+      - !type:FillBiomeLayer
         biome: CECavesGeneric
         seed: 1
         mask:
-        - !type:CETileMask
+        - !type:TileMask
           tiles:
           - CEStone
       0: # caves, narrower — same noise, higher threshold tapers it
-      - !type:CETileNoiseDistanceLayer
+      - !type:TileNoiseDistanceLayer
         size: 130, 130
-        distanceConfig: !type:CEEuclideanSquaredDistance
+        distanceConfig: !type:EuclideanSquaredDistance
           blendWeight: 0.6
         fill:
         - tile: CEStone
           threshold: 0.62
           noise: *islandNoise
-      - !type:CEFillBiomeLayer
+      - !type:FillBiomeLayer
         biome: CECavesGeneric
         seed: 2
         mask:
-        - !type:CETileMask
+        - !type:TileMask
           tiles:
           - CEStone
       -1: # caves, narrower — same noise, higher threshold tapers it
-      - !type:CETileNoiseDistanceLayer
+      - !type:TileNoiseDistanceLayer
         size: 130, 130
-        distanceConfig: !type:CEEuclideanSquaredDistance
+        distanceConfig: !type:EuclideanSquaredDistance
           blendWeight: 0.6
         fill:
         - tile: CEStone
           threshold: 0.63
           noise: *islandNoise
-      - !type:CEFillBiomeLayer
+      - !type:FillBiomeLayer
         biome: CECavesGeneric
         seed: 3
         mask:
-        - !type:CETileMask
+        - !type:TileMask
           tiles:
           - CEStone
       -2: # caves, narrower — same noise, higher threshold tapers it
-      - !type:CETileNoiseDistanceLayer
+      - !type:TileNoiseDistanceLayer
         size: 130, 130
-        distanceConfig: !type:CEEuclideanSquaredDistance
+        distanceConfig: !type:EuclideanSquaredDistance
           blendWeight: 0.6
         fill:
         - tile: CEStone
           threshold: 0.65
           noise: *islandNoise
-      - !type:CEFillBiomeLayer
+      - !type:FillBiomeLayer
         biome: CECavesGeneric
         seed: 4
         mask:
-        - !type:CETileMask
+        - !type:TileMask
           tiles:
           - CEStone
   components:

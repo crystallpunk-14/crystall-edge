@@ -7,7 +7,7 @@ namespace Content.Server._CE.Demiplane.Modifiers;
 /// same network-wide mechanism <see cref="Prototypes.CEDemiplaneLocationPrototype.Components"/> uses,
 /// just picked per-modifier instead of fixed per-location. Not wired up to anything yet.
 /// </summary>
-public sealed partial class CEAddZNetworkComponents : ICEDemiplaneModifierEffect
+public sealed partial class AddZNetworkComponents : ICEDemiplaneModifierEffect
 {
     [DataField(required: true)]
     public ComponentRegistry Components = new();

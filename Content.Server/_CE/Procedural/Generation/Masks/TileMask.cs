@@ -7,9 +7,9 @@ namespace Content.Server._CE.Procedural.Generation.Masks;
 
 /// <summary>
 /// Matches tiles whose current type is one of <see cref="Tiles"/> — the tile-as-mask handed down
-/// from an earlier layer (e.g. a footprint painted by <see cref="Layers.CETileNoiseDistanceLayer"/>).
+/// from an earlier layer (e.g. a footprint painted by <see cref="Layers.TileNoiseDistanceLayer"/>).
 /// </summary>
-public sealed partial class CETileMask : ICETileMask
+public sealed partial class TileMask : ICETileMask
 {
     [DataField(required: true)]
     public List<ProtoId<ContentTileDefinition>> Tiles = new();

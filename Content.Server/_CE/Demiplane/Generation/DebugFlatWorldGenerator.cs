@@ -12,7 +12,7 @@ namespace Content.Server._CE.Demiplane.Generation;
 /// demiplane entry point in list order (index 0 = nearest the entry point). No dungeon layering, no
 /// vertical connectivity between levels — just enough to have a walkable multi-level stage for testing.
 /// </summary>
-public sealed partial class CEDebugFlatWorldGenerator : ICEDemiplaneLocationGenerator
+public sealed partial class DebugFlatWorldGenerator : ICEDemiplaneLocationGenerator
 {
     /// <summary>
     /// One entry per generated z-level. E.g. [Forest, Caves, Caves] generates a forest level

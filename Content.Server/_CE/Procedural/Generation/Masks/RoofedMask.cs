@@ -11,7 +11,7 @@ namespace Content.Server._CE.Procedural.Generation.Masks;
 /// A map that hasn't had a roof computed for it yet (nothing above it, or generated standalone
 /// before ever joining a z-network) just reads as "not roofed" everywhere.
 /// </summary>
-public sealed partial class CERoofedMask : ICETileMask
+public sealed partial class RoofedMask : ICETileMask
 {
     public override bool Matches(CEProceduralGenerationContext context, EntityUid map, MapGridComponent grid, Vector2i tile, Tile currentTile)
     {
