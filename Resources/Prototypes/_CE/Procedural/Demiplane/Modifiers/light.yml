@@ -64,7 +64,7 @@
   difficulty:
     min: 0
     max: 10
-  generationWeight: 1
+  generationWeight: 10
   categories:
     Light: 1
   effects:

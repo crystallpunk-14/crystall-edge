@@ -18,6 +18,7 @@ public sealed class CEProceduralGenerationContext(
     DecalSystem decals,
     SharedRoofSystem roof,
     int seed,
+    int difficulty,
     Func<ValueTask> suspend,
     CancellationToken cancellation)
 {
@@ -30,6 +31,12 @@ public sealed class CEProceduralGenerationContext(
     public readonly SharedRoofSystem Roof = roof;
 
     public readonly int Seed = seed;
+
+    /// <summary>
+    /// Difficulty this run was generated at — the same value used to pick the location in the first
+    /// place. Modifier selection filters against this.
+    /// </summary>
+    public readonly int Difficulty = difficulty;
 
     /// <summary>
     /// Cooperatively yields back to the job queue once this tick's time budget is spent — wraps the

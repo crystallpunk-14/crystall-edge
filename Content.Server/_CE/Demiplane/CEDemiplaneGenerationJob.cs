@@ -13,7 +13,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.Demiplane;
 
-public sealed class CEDemiplaneGenerationJob : Job<List<EntityUid>>
+public sealed class CEDemiplaneGenerationJob : Job<CEDemiplaneGenerationResult>
 {
     private readonly CEProceduralGenerationContext _context;
     private readonly ICEDemiplaneLocationGenerator _generator;
@@ -29,21 +29,22 @@ public sealed class CEDemiplaneGenerationJob : Job<List<EntityUid>>
         SharedRoofSystem roof,
         ICEDemiplaneLocationGenerator generator,
         int seed,
+        int difficulty,
         CancellationToken cancellation = default)
         : base(maxTime, cancellation)
     {
         _generator = generator;
-        _context = new CEProceduralGenerationContext(entManager, map, biome, proto, tileDefManager, decals, roof, seed, SuspendIfOutOfTime, cancellation);
+        _context = new CEProceduralGenerationContext(entManager, map, biome, proto, tileDefManager, decals, roof, seed, difficulty, SuspendIfOutOfTime, cancellation);
     }
 
-    protected override async Task<List<EntityUid>?> Process()
+    protected override async Task<CEDemiplaneGenerationResult?> Process()
     {
-        var maps = await _generator.Generate(_context);
+        var result = await _generator.Generate(_context);
 
         // Empty gap level between the island and the generated stage, so they don't sit flush.
         var dungeon = _context.EntityManager.System<CEDungeonSystem>();
-        maps.Insert(0, dungeon.LoadMap());
+        result.Maps.Insert(0, dungeon.LoadMap());
 
-        return maps;
+        return result;
     }
 }

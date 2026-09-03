@@ -67,9 +67,10 @@ public sealed partial class CEDemiplaneSystem : EntitySystem
     /// Clears every non-station map out of the station's z-network, then - after
     /// <paramref name="teleportTime"/> - merges in a freshly generated <paramref name="location"/>,
     /// or nothing at all if <paramref name="location"/> is null, leaving the island over the void.
+    /// <paramref name="difficulty"/> is what the generator filters modifier selection against.
     /// Overwrites (and cancels) any teleport already in progress for this station.
     /// </summary>
-    public bool StartTeleport(EntityUid station, ProtoId<CEDemiplaneLocationPrototype>? location, TimeSpan teleportTime)
+    public bool StartTeleport(EntityUid station, ProtoId<CEDemiplaneLocationPrototype>? location, TimeSpan teleportTime, int difficulty = 0)
     {
         if (!TryComp<CEStationZLevelsComponent>(station, out var stationZLevels) ||
             stationZLevels.ZNetworkEntity is not { } networkUid ||
@@ -111,6 +112,7 @@ public sealed partial class CEDemiplaneSystem : EntitySystem
             _roof,
             locationProto.Generator,
             _random.Next(),
+            difficulty,
             cancel.Token);
 
         _activeJobs[station] = (job, cancel);
@@ -123,13 +125,12 @@ public sealed partial class CEDemiplaneSystem : EntitySystem
     private void ClearStage(EntityUid station, Entity<CEZMapNetworkComponent> network)
     {
         if (TryComp<CEStationDemiplaneTeleportationComponent>(station, out var oldTeleport) &&
-            oldTeleport.Location is { } oldLocation &&
-            _proto.Resolve(oldLocation, out var oldProto))
+            oldTeleport.Components is { } oldComponents)
         {
             foreach (var mapUid in network.Comp.ZLevels.Values)
             {
                 if (mapUid is { } uid)
-                    EntityManager.RemoveComponents(uid, oldProto.Components);
+                    EntityManager.RemoveComponents(uid, oldComponents);
             }
         }
 
@@ -166,7 +167,25 @@ public sealed partial class CEDemiplaneSystem : EntitySystem
             _activeJobs.Remove(station);
 
             if (TryComp<CEStationDemiplaneTeleportationComponent>(station, out var teleport))
-                teleport.ReadyMaps = job.Result ?? new List<EntityUid>();
+            {
+                teleport.ReadyMaps = job.Result?.Maps ?? new List<EntityUid>();
+
+                if (job.Result is { } result &&
+                    teleport.Location is { } location &&
+                    _proto.Resolve(location, out var locationProto))
+                {
+                    var components = new ComponentRegistry();
+                    foreach (var (name, entry) in locationProto.Components)
+                    {
+                        components[name] = entry;
+                    }
+                    foreach (var (name, entry) in result.Components)
+                    {
+                        components[name] = entry;
+                    }
+                    teleport.Components = components;
+                }
+            }
 
             if (job.Exception is { } ex)
                 _sawmill.Error($"Station {station}: demiplane generation failed: {ex}");
@@ -222,12 +241,12 @@ public sealed partial class CEDemiplaneSystem : EntitySystem
 
         _zLevels.TryAddMapsIntoNetwork((networkUid, network), dict);
 
-        if (teleport.Location is { } location && _proto.Resolve(location, out var locationProto))
+        if (teleport.Components is { } components)
         {
             foreach (var mapUid in network.ZLevels.Values)
             {
                 if (mapUid is { } uid)
-                    EntityManager.AddComponents(uid, locationProto.Components);
+                    EntityManager.AddComponents(uid, components);
             }
         }
 

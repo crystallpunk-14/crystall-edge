@@ -42,6 +42,12 @@ public sealed partial class CEDemiplaneModifierPrototype : IPrototype
     public Dictionary<ProtoId<CEDemiplaneModifierCategoryPrototype>, float> Categories = new();
 
     /// <summary>
+    /// Can this modifier be picked more than once for the same location?
+    /// </summary>
+    [DataField]
+    public bool Unique = true;
+
+    /// <summary>
     /// The location must carry all of these tags for this modifier to be eligible.
     /// </summary>
     [DataField]

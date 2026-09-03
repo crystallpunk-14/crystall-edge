@@ -16,6 +16,7 @@ public sealed partial class CEDemiplaneSetLocationCommand : LocalizedEntityComma
 
     private const string NullLocation = "null";
     private const float DefaultTeleportTime = 60f;
+    private const int DefaultDifficulty = 0;
 
     public override string Command => "demiplane-set-location";
     public override string Description => "Clears a station's current demiplane stage and, after a delay, teleports it to a freshly generated one (or to the void, if the location is `null`).";
@@ -41,13 +42,15 @@ public sealed partial class CEDemiplaneSetLocationCommand : LocalizedEntityComma
                 return CompletionResult.FromHintOptions(locations, "demiplaneLocation prototype, or `null`");
             case 3:
                 return CompletionResult.FromHint($"teleport time in seconds (default {DefaultTeleportTime:0})");
+            case 4:
+                return CompletionResult.FromHint($"difficulty (default {DefaultDifficulty})");
         }
         return CompletionResult.Empty;
     }
 
     public override void Execute(IConsoleShell shell, string argStr, string[] args)
     {
-        if (args.Length is < 2 or > 3)
+        if (args.Length is < 2 or > 4)
         {
             shell.WriteError(Loc.GetString("shell-wrong-arguments-number"));
             return;
@@ -71,7 +74,7 @@ public sealed partial class CEDemiplaneSetLocationCommand : LocalizedEntityComma
         }
 
         var teleportTime = TimeSpan.FromSeconds(DefaultTeleportTime);
-        if (args.Length == 3)
+        if (args.Length >= 3)
         {
             if (!float.TryParse(args[2], out var seconds) || seconds < 0)
             {
@@ -81,7 +84,17 @@ public sealed partial class CEDemiplaneSetLocationCommand : LocalizedEntityComma
             teleportTime = TimeSpan.FromSeconds(seconds);
         }
 
-        if (!_demiplane.StartTeleport(station.Value, location, teleportTime))
+        var difficulty = DefaultDifficulty;
+        if (args.Length == 4)
+        {
+            if (!int.TryParse(args[3], out difficulty))
+            {
+                shell.WriteError($"Invalid difficulty: {args[3]}");
+                return;
+            }
+        }
+
+        if (!_demiplane.StartTeleport(station.Value, location, teleportTime, difficulty))
         {
             shell.WriteError("Failed to start the teleport - see server log.");
             return;

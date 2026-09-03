@@ -8,9 +8,9 @@ namespace Content.Server._CE.Demiplane.Components;
 /// Marks a station mid-teleport to a new demiplane stage: the old stage is already cleared out, a
 /// new one may be generating in the background, and nothing gets merged into the z-network until
 /// both <see cref="ReadyMaps"/> is set and <see cref="EndTime"/> has passed. Stays on the station
-/// after the merge completes (only <see cref="ReadyMaps"/> is cleared) — <see cref="Location"/> is
-/// what the next teleport's <c>ClearStage</c> reads to know which ambient components to strip back
-/// off. Added and consumed by <see cref="CEDemiplaneSystem"/>.
+/// after the merge completes (only <see cref="ReadyMaps"/> is cleared) — <see cref="Components"/> is
+/// what the next teleport's <c>ClearStage</c> reads to know exactly what to strip back off. Added
+/// and consumed by <see cref="CEDemiplaneSystem"/>.
 /// </summary>
 [RegisterComponent, AutoGenerateComponentPause, Access(typeof(CEDemiplaneSystem))]
 public sealed partial class CEStationDemiplaneTeleportationComponent : Component
@@ -35,4 +35,7 @@ public sealed partial class CEStationDemiplaneTeleportationComponent : Component
     /// </summary>
     [ViewVariables]
     public List<EntityUid>? ReadyMaps;
+
+    [ViewVariables]
+    public ComponentRegistry? Components;
 }

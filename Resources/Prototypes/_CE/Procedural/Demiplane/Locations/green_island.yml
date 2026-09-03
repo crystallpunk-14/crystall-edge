@@ -1,41 +1,4 @@
 - type: demiplaneLocation
-  id: DebugFlatCaves
-  name: ce-demiplane-location-debug-flat-caves
-  difficulty:
-    min: 0
-    max: 10
-  generator: !type:DebugFlatWorldGenerator
-    size: 60
-    layers:
-    - CEGrassFill
-    - CESnowFill
-    - CESnowFill
-  components:
-  - type: Parallax
-    parallax: CESky
-  - type: LightCycle #BEFORE Sun shadow cycle!
-    offset: 100
-    duration: 300
-    originalColor: "#75e3ff"
-  - type: SunShadowCycle
-    offset: 100
-    duration: 300
-  - type: SunShadow
-  - type: MapLight
-    ambientLightColor: "#75e3ff"
-  - type: CECloudsOverlay
-    seed: 490
-    frequency: 0.2
-    octaves: 4
-    lacunarity: 2.0
-    gain: 0.5
-    windVelocity: -1, 0.3
-    evolutionSpeed: 0.1
-    coverage: 0.6
-    shadowStrength: 0.6
-    shadowColor: "#000000"
-
-- type: demiplaneLocation
   id: GreenIsland
   name: ce-demiplane-location-green-island
   difficulty:
@@ -47,7 +10,7 @@
       - !type:TileNoiseDistanceLayer # whole island footprint
         size: 136, 136
         distanceConfig: !type:EuclideanSquaredDistance
-          blendWeight: 0.5
+          blendWeight: 0.6
         fill:
         - tile: CEGrassTall
           threshold: 0.6
@@ -83,10 +46,10 @@
       - !type:TileNoiseDistanceLayer
         size: 136, 136
         distanceConfig: !type:EuclideanSquaredDistance
-          blendWeight: 0.6
+          blendWeight: 0.8
         fill:
         - tile: CEGrassTall
-          threshold: 0.58
+          threshold: 0.7
           noise: *islandNoise
       - !type:TileNoiseDistanceLayer
         size: 135, 135
@@ -114,7 +77,7 @@
       - !type:TileNoiseDistanceLayer
         size: 130, 130
         distanceConfig: !type:EuclideanSquaredDistance
-          blendWeight: 0.6
+          blendWeight: 0.7
         fill:
         - tile: CEStone
           threshold: 0.62
@@ -146,7 +109,7 @@
       - !type:TileNoiseDistanceLayer
         size: 130, 130
         distanceConfig: !type:EuclideanSquaredDistance
-          blendWeight: 0.6
+          blendWeight: 0.7
         fill:
         - tile: CEStone
           threshold: 0.65
@@ -158,6 +121,9 @@
         - !type:TileMask
           tiles:
           - CEStone
+    modifierBudget:
+      Light: 1
+      Ore: 1
   components:
   - type: Parallax
     parallax: CESky

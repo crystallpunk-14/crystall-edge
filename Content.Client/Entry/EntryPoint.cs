@@ -139,6 +139,8 @@ namespace Content.Client.Entry
 
             // CrystallEdge
             _prototypeManager.RegisterIgnore("demiplaneLocation");
+            _prototypeManager.RegisterIgnore("demiplaneModifier");
+            _prototypeManager.RegisterIgnore("demiplaneModifierCategory");
             // CrystallEdge end
 
             _componentFactory.GenerateNetIds();

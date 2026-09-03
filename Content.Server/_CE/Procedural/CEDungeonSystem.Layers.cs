@@ -17,7 +17,12 @@ public sealed partial class CEDungeonSystem
         return mapEnt.Value.Owner;
     }
 
-    public async Task<List<EntityUid>> GenerateLayers(
+    /// <summary>
+    /// Loads one map per key in <paramref name="layersByHeight"/> and runs that key's layers over it.
+    /// Returns the map per height rather than a flat list, so a caller can still target a specific
+    /// level afterward (e.g. a modifier applying itself post-generation).
+    /// </summary>
+    public async Task<Dictionary<int, EntityUid>> GenerateLayers(
         CEProceduralGenerationContext context,
         Dictionary<int, List<ICEProceduralLayer>> layersByHeight)
     {
@@ -31,7 +36,6 @@ public sealed partial class CEDungeonSystem
         heights.Sort();
         heights.Reverse();
 
-        var result = new List<EntityUid>(heights.Count);
         foreach (var height in heights)
         {
             var map = byHeight[height];
@@ -42,10 +46,8 @@ public sealed partial class CEDungeonSystem
                 await context.Suspend();
                 context.Cancellation.ThrowIfCancellationRequested();
             }
-
-            result.Add(map);
         }
 
-        return result;
+        return byHeight;
     }
 }

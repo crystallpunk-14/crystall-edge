@@ -1,14 +1,24 @@
+using System.Threading.Tasks;
+using Content.Server._CE.Procedural.Generation;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.Demiplane.Modifiers;
 
 /// <summary>
-/// Adds <see cref="Components"/> to every map in the z-network while this modifier is active — the
-/// same network-wide mechanism <see cref="Prototypes.CEDemiplaneLocationPrototype.Components"/> uses,
-/// just picked per-modifier instead of fixed per-location. Not wired up to anything yet.
+/// Merges <see cref="Components"/> into the shared network components dict.
 /// </summary>
 public sealed partial class AddZNetworkComponents : ICEDemiplaneModifierEffect
 {
     [DataField(required: true)]
     public ComponentRegistry Components = new();
+
+    public Task Apply(CEProceduralGenerationContext context, Dictionary<int, EntityUid> mapsByHeight, ComponentRegistry components)
+    {
+        foreach (var (name, entry) in Components)
+        {
+            components[name] = entry;
+        }
+
+        return Task.CompletedTask;
+    }
 }
