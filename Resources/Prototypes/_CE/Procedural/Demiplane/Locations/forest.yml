@@ -76,11 +76,17 @@
       - !type:TileNoiseDistanceLayer
         size: *size
         distanceConfig: !type:EuclideanSquaredDistance
-          blendWeight: 1
+          blendWeight: 0.95
         fill:
         - tile: CEGrassTall
           threshold: 0.5
-          noise: *islandNoise
+          noise: &shapeNoise
+            seed: 1
+            noiseType: OpenSimplex2
+            frequency: 0.05
+            lacunarity: 1.50
+            fractalType: Ridged
+            octaves: 1
       - !type:TileNoiseDistanceLayer
         size: *size
         distanceConfig: !type:EuclideanSquaredDistance
@@ -122,11 +128,11 @@
       - !type:TileNoiseDistanceLayer
         size: *size
         distanceConfig: !type:EuclideanSquaredDistance
-          blendWeight: 1
+          blendWeight: 0.95
         fill:
         - tile: CEStone
-          threshold: 0.5
-          noise: *islandNoise
+          threshold: 0.45
+          noise: *shapeNoise
       - !type:TileNoiseDistanceLayer
         size: *size
         distanceConfig: !type:EuclideanSquaredDistance
@@ -169,11 +175,11 @@
       - !type:TileNoiseDistanceLayer
         size: *size
         distanceConfig: !type:EuclideanSquaredDistance
-          blendWeight: 1
+          blendWeight: 0.95
         fill:
         - tile: CEStone
-          threshold: 0.5
-          noise: *islandNoise
+          threshold: 0.4
+          noise: *shapeNoise
       - !type:TileNoiseDistanceLayer
         size: *size
         distanceConfig: !type:EuclideanSquaredDistance
