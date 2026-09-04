@@ -80,7 +80,7 @@
     sprite: _CE/Objects/Tools/ThirdArm/module_light.rsi
   - type: PointLight
     enabled: false
-    mask: /Textures/_CE/Effects/LightMasks/crystal_cone.png
+    lightMask: CECrystalCone
     autoRot: true
     energy: 9
     radius: 10
