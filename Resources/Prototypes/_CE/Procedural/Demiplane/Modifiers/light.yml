@@ -1,0 +1,83 @@
+- type: demiplaneModifierCategory
+  id: Light
+
+- type: demiplaneModifier
+  id: LightEternalDay
+  difficulty:
+    min: 0
+    max: 10
+  generationWeight: 10
+  categories:
+    Light: 1
+  effects:
+  - !type:AddZNetworkComponents
+    components:
+    - type: MapLight
+      ambientLightColor: "#75e3ff"
+    - type: CECloudsOverlay
+      seed: 490
+      frequency: 0.2
+      octaves: 4
+      lacunarity: 2.0
+      gain: 0.5
+      windVelocity: -1, 0.3
+      evolutionSpeed: 0.1
+      coverage: 0.6
+      shadowStrength: 0.6
+      shadowColor: "#000000"
+
+- type: demiplaneModifier
+  id: LightDefault
+  difficulty:
+    min: 0
+    max: 10
+  generationWeight: 1
+  categories:
+    Light: 1
+  effects:
+  - !type:AddZNetworkComponents
+    components:
+    - type: LightCycle #BEFORE Sun shadow cycle!
+      offset: 0
+      originalColor: "#75e3ff"
+    - type: SunShadowCycle
+      offset: 0
+    - type: SunShadow
+    - type: MapLight
+      ambientLightColor: "#75e3ff"
+    - type: CECloudsOverlay
+      seed: 490
+      frequency: 0.2
+      octaves: 4
+      lacunarity: 2.0
+      gain: 0.5
+      windVelocity: -1, 0.3
+      evolutionSpeed: 0.1
+      coverage: 0.6
+      shadowStrength: 0.6
+      shadowColor: "#000000"
+
+- type: demiplaneModifier
+  id: LightEternalNight
+  difficulty:
+    min: 0
+    max: 10
+  generationWeight: 0.1
+  categories:
+    Light: 1
+  effects:
+  - !type:AddZNetworkComponents
+    components:
+    - type: MapLight
+      ambientLightColor: "#0a1230"
+    - type: CECloudsOverlay
+      seed: 490
+      frequency: 0.2
+      octaves: 4
+      lacunarity: 2.0
+      gain: 0.5
+      windVelocity: -1, 0.3
+      evolutionSpeed: 0.1
+      coverage: 0.6
+      shadowStrength: 0.6
+      shadowColor: "#000000"
