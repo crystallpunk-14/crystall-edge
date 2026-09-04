@@ -4,9 +4,18 @@
   difficulty:
     min: 0
     max: 2
+  components:
+  - type: Parallax
+    parallax: CESky
+  - type: MapLight
+    ambientLightColor: "#75e3ff"
   generator: !type:LayeredWorldGenerator
+    modifierBudget:
+      Light: 1
+      Ore: 1
     layersByHeight:
-      2: # hills - forest in the center, meadow around the rim
+    #MARK: 2 Hills top
+      2:
       - !type:TileNoiseDistanceLayer # whole island footprint
         size: 136, 136
         distanceConfig: !type:EuclideanSquaredDistance
@@ -42,7 +51,8 @@
         - !type:TileMask
           tiles:
           - CEStone
-      1: # surface: snowy rim, cave mouth in the center
+    #MARK: 1 Surface
+      1:
       - !type:TileNoiseDistanceLayer
         size: 136, 136
         distanceConfig: !type:EuclideanSquaredDistance
@@ -73,7 +83,8 @@
         - !type:TileMask
           tiles:
           - CEStone
-      0: # caves, narrower — same noise, higher threshold tapers it
+    #MARK: 0 Caves
+      0:
       - !type:TileNoiseDistanceLayer
         size: 130, 130
         distanceConfig: !type:EuclideanSquaredDistance
@@ -89,7 +100,8 @@
         - !type:TileMask
           tiles:
           - CEStone
-      -1: # caves, narrower — same noise, higher threshold tapers it
+    #MARK: -1 Caves
+      -1:
       - !type:TileNoiseDistanceLayer
         size: 130, 130
         distanceConfig: !type:EuclideanSquaredDistance
@@ -105,7 +117,8 @@
         - !type:TileMask
           tiles:
           - CEStone
-      -2: # caves, narrower — same noise, higher threshold tapers it
+    #MARK: -2 Caves
+      -2:
       - !type:TileNoiseDistanceLayer
         size: 130, 130
         distanceConfig: !type:EuclideanSquaredDistance
@@ -121,11 +134,3 @@
         - !type:TileMask
           tiles:
           - CEStone
-    modifierBudget:
-      Light: 1
-      Ore: 1
-  components:
-  - type: Parallax
-    parallax: CESky
-  - type: MapLight
-    ambientLightColor: "#75e3ff"
