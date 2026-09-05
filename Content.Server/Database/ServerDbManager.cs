@@ -5,6 +5,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
+using Content.Shared._CE.Achievements.Prototypes;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
 using Content.Shared.Construction.Prototypes;
@@ -298,6 +299,20 @@ namespace Content.Server.Database
         Task<bool> IsJobWhitelisted(Guid player, ProtoId<JobPrototype> job);
 
         Task<bool> RemoveJobWhitelist(Guid player, ProtoId<JobPrototype> job);
+
+        #endregion
+
+        #region CrystlallEdge Achievements
+
+        Task AddPlayerAchievement(Guid player, ProtoId<CEAchievementPrototype> achievement);
+
+        Task<bool> HasPlayerAchievement(Guid player, ProtoId<CEAchievementPrototype> achievement);
+
+        Task<bool> RemovePlayerAchievement(Guid player, ProtoId<CEAchievementPrototype> achievement);
+
+        Task<List<string>> GetPlayerAchievements(Guid player);
+
+        Task<Dictionary<string, float>> GetAchievementPercentages();
 
         #endregion
 
@@ -1002,6 +1017,38 @@ namespace Content.Server.Database
             DbWriteOpsMetric.Inc();
             return RunDbCommand(() => _db.RemoveJobWhitelist(player, job));
         }
+
+        //CrystallEdge achievements
+        public Task AddPlayerAchievement(Guid player, ProtoId<CEAchievementPrototype> achievement)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.AddPlayerAchievement(player, achievement));
+        }
+
+        public Task<bool> HasPlayerAchievement(Guid player, ProtoId<CEAchievementPrototype> achievement)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.HasPlayerAchievement(player, achievement));
+        }
+
+        public Task<bool> RemovePlayerAchievement(Guid player, ProtoId<CEAchievementPrototype> achievement)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.RemovePlayerAchievement(player, achievement));
+        }
+
+        public Task<List<string>> GetPlayerAchievements(Guid player)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetPlayerAchievements(player));
+        }
+
+        public Task<Dictionary<string, float>> GetAchievementPercentages()
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetAchievementPercentages());
+        }
+        //CrystallEdge achievements end
 
         public Task<bool> UpsertIPIntelCache(DateTime time, IPAddress ip, float score)
         {

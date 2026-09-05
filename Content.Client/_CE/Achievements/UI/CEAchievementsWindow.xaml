@@ -1,0 +1,12 @@
+<ce:CEAchievementsWindow
+    xmlns="https://spacestation14.io"
+    xmlns:ce="clr-namespace:Content.Client._CE.Achievements.UI"
+    Title="{Loc 'ce-achievements-window-title'}"
+    MinSize="500 600"
+    MaxSize="500 600">
+    <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+        <ScrollContainer VerticalExpand="True" HScrollEnabled="False" Margin="4">
+            <BoxContainer Orientation="Vertical" Name="AchievementsList" SeparationOverride="4" />
+        </ScrollContainer>
+    </BoxContainer>
+</ce:CEAchievementsWindow>

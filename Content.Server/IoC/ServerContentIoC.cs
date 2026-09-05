@@ -1,6 +1,8 @@
+using Content.Server._CE.Achievements;
 using Content.Server._CE.Discord;
 using Content.Server._CE.DiscordAuth;
 using Content.Server._CE.Sponsor;
+using Content.Shared._CE.Achievements;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
@@ -84,11 +86,15 @@ internal static class ServerContentIoC
         deps.Register<CVarControlManager>();
         deps.Register<DiscordLink>();
         deps.Register<DiscordChatLink>();
-        deps.Register<CEDiscordBot>(); //CrystallEdge
-        deps.Register<CEDiscordAuthManager>(); //CrystallEdge
-        deps.Register<ICESponsorManager, CESponsorSystem>(); //CrystallEdge
         deps.Register<ServerFeedbackManager>();
         deps.Register<ISharedFeedbackManager, ServerFeedbackManager>();
         deps.Register<WhitelistManager>();
+        
+        //CrystallEdge zone
+        deps.Register<CEDiscordBot>();
+        deps.Register<CEDiscordAuthManager>();
+        deps.Register<ICESponsorManager, CESponsorSystem>();
+        deps.Register<ICEAchievementsRequirementManager, CEAchievementsRequirementManager>();
+        //CrystallEdge zone end
     }
 }
