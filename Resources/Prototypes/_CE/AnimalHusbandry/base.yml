@@ -1,0 +1,175 @@
+# Reusable entity-level diet policy. Canonical ingestion remains authoritative;
+# this component only narrows which otherwise digestible CE foods are selected.
+- type: entity
+  id: CEAnimalFodderDietBase
+  abstract: true
+  components:
+  - type: CEAnimalDiet
+    allowedFoodTags:
+    - CEWheat
+    - CECorn
+    - CEVegetable
+    forbiddenFoodTags:
+    - CEMeat
+
+# Shared biological and AI-capability base for prototype-authored livestock species.
+- type: entity
+  id: CEMobAnimalHusbandryBase
+  abstract: true
+  parent:
+  - BaseSimpleMob
+  - MobRespirator
+  - MobAtmosStandard
+  - MobBloodstream
+  - MobFlammable
+  - BaseMobAnimal
+  categories: [ ForkFiltered ]
+  components:
+  - type: CEStatusConditionedSteeringDeviation
+    requiredStatusEffect: StatusEffectDrunk
+  - type: CEIntoxicationConsequences
+    examineMessage: ce-animal-husbandry-examine-intoxicated
+  - type: CEGOAPTargetBackoff
+    duration: 5
+    maxEntries: 32
+  - type: Hunger
+  - type: Thirst
+  - type: NpcFactionMember
+    factions: [Passive]
+  - type: SentienceTarget
+    flavorKind: station-event-random-sentience-flavor-organic
+
+# Reusable hunger plan. The source strategy owns diet/provider eligibility;
+# existing GOAP systems own range sensing and movement.
+- type: entity
+  id: CEAnimalHungerGOAPBase
+  abstract: true
+  components:
+  - type: CEGOAPSelectorProfiles
+    profiles:
+      animalFood: !type:CEGOAPSelectorConsumableProvider
+        source: !type:CECompositeConsumableSource
+          sources:
+          - !type:CEFeedTroughConsumableSource
+          - !type:CEWorldFoodConsumableSource
+        range: 20
+  - type: CEGOAPRangeToTargetSensor
+    updateInterval: 0.2
+    entries:
+    - conditionKey: CEAnimalFoodSourceInRange
+      range: 1
+      selector: !type:CEGOAPSelectorProfile
+        profile: animalFood
+  - type: CEGOAP
+    goals:
+    - desiredState: { CEAnimalHungry: false }
+      priority: 100
+    actions:
+    - !type:CEGOAPMoveToTargetAction
+      selector: !type:CEGOAPSelectorProfile
+        profile: animalFood
+      range: 1
+      reregisterThreshold: 1
+      preconditions:
+        CEAnimalHungry: true
+        CEAnimalFoodSourceInRange: false
+      effects: { CEAnimalFoodSourceInRange: true }
+    - !type:CEGOAPConsumeAction
+      retryDelay: 2
+      selector: !type:CEGOAPSelectorProfile
+        profile: animalFood
+      preconditions:
+        CEAnimalHungry: true
+        CEAnimalFoodSourceInRange: true
+      effects: { CEAnimalHungry: false }
+
+# Reusable thirst plan, independently composable for species with different needs.
+- type: entity
+  id: CEAnimalThirstGOAPBase
+  abstract: true
+  components:
+  - type: CEGOAPSelectorProfiles
+    profiles:
+      animalWater: !type:CEGOAPSelectorConsumableProvider
+        source: !type:CECompositeConsumableSource
+          sources:
+          - !type:CEWorldDrinkConsumableSource
+            conditions:
+            - !type:CEReagentFractionCondition
+              reagent: Water
+              minFraction: 0.5
+          - !type:CEDrainableSolutionConsumableSource
+            transferAmount: 5
+            providerBlacklist:
+              components:
+              - ItemSlots
+              - Storage
+            conditions:
+            - !type:CEReagentFractionCondition
+              reagent: Water
+              minFraction: 0.5
+        range: 20
+  - type: CEGOAPRangeToTargetSensor
+    updateInterval: 0.2
+    entries:
+    - conditionKey: CEAnimalWaterSourceInRange
+      range: 1
+      selector: !type:CEGOAPSelectorProfile
+        profile: animalWater
+  - type: CEGOAP
+    goals:
+    - desiredState: { CEAnimalThirsty: false }
+      priority: 110
+    actions:
+    - !type:CEGOAPMoveToTargetAction
+      selector: !type:CEGOAPSelectorProfile
+        profile: animalWater
+      range: 1
+      reregisterThreshold: 1
+      preconditions:
+        CEAnimalThirsty: true
+        CEAnimalWaterSourceInRange: false
+      effects: { CEAnimalWaterSourceInRange: true }
+    - !type:CEGOAPConsumeAction
+      retryDelay: 2
+      selector: !type:CEGOAPSelectorProfile
+        profile: animalWater
+      preconditions:
+        CEAnimalThirsty: true
+        CEAnimalWaterSourceInRange: true
+      effects: { CEAnimalThirsty: false }
+
+# Default composition for livestock that needs both food and water.
+- type: entity
+  id: CEAnimalNeedsGOAPBase
+  abstract: true
+  parent:
+  - CEAnimalHungerGOAPBase
+  - CEAnimalThirstGOAPBase
+
+# Default adult idle behavior. Species may inherit only CEAnimalNeedsGOAPBase
+# when they need a different exploration profile.
+- type: entity
+  id: CEAnimalAdultGOAPBase
+  abstract: true
+  parent: CEAnimalNeedsGOAPBase
+  components:
+  - type: CEGOAP
+    goals:
+    - desiredState: { CEAnimalIdle: true }
+      priority: 1
+    actions:
+    - !type:CEGOAPExploreAction
+      exploreRadius: 7
+      sampleDirections: 12
+      minIdleTime: 1
+      maxIdleTime: 4
+      preconditions: { CEAnimalIdle: false }
+      effects: { CEAnimalIdle: true }
+
+# Child products compose standard trigger effects when incubation should run.
+- type: entity
+  id: CEAnimalIncubationProductBase
+  abstract: true
+  components:
+  - type: CEAnimalIncubation

@@ -1,0 +1,259 @@
+- type: Tag
+  id: CEChickenPopulation
+
+- type: Tag
+  id: CEChickenRooster
+
+- type: entity
+  id: CEMobChickenBase
+  abstract: true
+  parent:
+  - CEMobAnimalHusbandryBase
+  - CEAnimalFodderDietBase
+  - BaseSlicingRefinable
+  components:
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - StunImmune
+    - CEChickenPopulation
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 3
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape: !type:PhysShapeCircle
+          radius: 0.3
+        density: 8
+        mask: [MobMask]
+        layer: [MobLayer]
+  - type: Hunger
+    baseDecayRate: 0.00925925925926
+  - type: Thirst
+    baseDecayRate: 0.04
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      25: Critical
+      50: Dead
+  - type: Appearance
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: live
+  - type: DamageStateVisuals
+    states:
+      Alive: { Base: live }
+      Critical: { Base: dead }
+      Dead: { Base: dead }
+  - type: Speech
+    speechVerb: SmallMob
+    speechSounds: CEChickenCluck
+  - type: CEGOAPEntityConditionSensor
+    updateInterval: 2
+    entries:
+    - conditionKey: CEAnimalHungry
+      condition: !type:HungerCondition
+        min: 100
+        inverted: true
+    - conditionKey: CEAnimalThirsty
+      condition: !type:CEThirstCondition
+        min: 300
+        inverted: true
+  - type: InteractionPopup
+    successChance: 0.8
+    interactSuccessString: petting-success-bird
+    interactFailureString: petting-failure-generic
+    interactSuccessSpawn: EffectHearts
+    interactSuccessSound: { collection: CEChickenClucks }
+  - type: ReplacementAccent
+    accent: chicken
+
+- type: entity
+  id: CEMobChickenHenBase
+  abstract: true
+  parent:
+  - CEMobChickenBase
+  - CEChickenHenGOAP
+  components:
+  - type: CEGOAPEntityConditionSensor
+    entries:
+    - conditionKey: CEProductionReady
+      condition: !type:CEActionChargesCondition
+        action: CEActionChickenLayEgg
+  - type: CEProductionAccumulator
+    outputAction: CEActionChickenLayEgg
+    firstMinimum: 60
+    firstMaximum: 90
+    repeatMinimum: 90
+    repeatMaximum: 120
+    conditions:
+    - !type:MobStateCondition
+      mobstate: Dead
+      inverted: true
+    - !type:HungerCondition
+      min: 100
+    - !type:CEThirstCondition
+      min: 300
+    inputCost: !type:SatiateHunger
+      factor: -60
+  - type: CEAnimalFertilizableProduct
+    unfertilizedPrototype: CEFoodEggChicken
+    fertilizedPrototype: CEFoodEggChickenFertilized
+    fertilizationRange: 3
+    mateWhitelist:
+      tags:
+      - CEChickenRooster
+    mateConditions:
+    - !type:MobStateCondition
+      mobstate: Alive
+    populationWhitelist:
+      tags:
+      - CEChickenPopulation
+    populationLimit: 100
+  - type: ToolRefinable
+    refineResult:
+    - id: FoodMeatChicken
+      amount: 1
+
+- type: entity
+  id: CEMobChickenHenWhite
+  parent: CEMobChickenHenBase
+  name: white hen
+  description: A domesticated white laying hen.
+  components:
+  - type: Sprite
+    sprite: _CE/Mobs/Animals/chicken_white.rsi
+
+- type: entity
+  id: CEMobChickenHenBrown
+  parent: CEMobChickenHenBase
+  name: brown hen
+  description: A domesticated brown laying hen.
+  components:
+  - type: Sprite
+    sprite: _CE/Mobs/Animals/chicken_brown.rsi
+
+- type: entity
+  id: CEMobChickenRooster
+  parent:
+  - CEMobChickenBase
+  - CEAnimalAdultGOAPBase
+  name: rooster
+  description: An adult rooster that can fertilize eggs laid nearby.
+  components:
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - StunImmune
+    - CEChickenPopulation
+    - CEChickenRooster
+  - type: Sprite
+    sprite: _CE/Mobs/Animals/rooster.rsi
+  - type: Speech
+    speechVerb: SmallMob
+    speechSounds: CERoosterCall
+  - type: ToolRefinable
+    refineResult:
+    - id: FoodMeatChicken
+      amount: 2
+
+- type: entity
+  id: CEMobChickenChick
+  parent:
+  - CEMobChickenBase
+  - CEChickenChickGOAP
+  name: chick
+  description: A young chicken that matures after two healthy nights.
+  components:
+  - type: Sprite
+    drawdepth: SmallMobs
+    sprite: _CE/Mobs/Animals/chick.rsi
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape: !type:PhysShapeCircle
+          radius: 0.2
+        density: 5
+        mask: [SmallMobMask]
+        layer: [SmallMobLayer]
+  - type: Speech
+    speechVerb: SmallMob
+    speechSounds: CEChickenChirp
+  - type: CEConditionalNightGrowth
+    requiredSuccessfulNights: 2
+    resultPrototype: CEMobChickenHenWhite
+    conditions:
+    - !type:MobStateCondition
+      mobstate: Alive
+    - !type:HungerCondition
+      min: 100
+    - !type:CEThirstCondition
+      min: 300
+  - type: ToolRefinable
+    refineResult:
+    - id: FoodMeatChicken
+      amount: 1
+
+- type: entity
+  id: CEMobChickenChickMale
+  parent: CEMobChickenChick
+  suffix: Male, CE
+  components:
+  - type: CEConditionalNightGrowth
+    resultPrototype: CEMobChickenRooster
+
+- type: entity
+  id: CEFoodEggChicken
+  parent:
+  - FoodEgg
+  - CEAnimalIncubationProductBase
+  name: chicken egg
+  description: An ordinary chicken egg.
+  categories: [ ForkFiltered ]
+  components:
+  - type: CEFoodTag
+    tags: [CEEgg]
+  - type: CEMagicEssenceStructure
+    essences:
+      Life: { min: 1, max: 2 }
+      Beast: { min: 0, max: 1 }
+
+- type: entity
+  id: CEFoodEggChickenFertilized
+  parent: CEFoodEggChicken
+  name: fertilized chicken egg
+  description: A fertilized egg that incubates while it remains in a nesting perch.
+  suffix: Fertilized, CE
+  components:
+  - type: CEAnimalIncubation
+    fertilized: true
+  - type: Tag
+    tags:
+    - Egg
+    - Meat
+    - CEChickenPopulation
+  - type: TimerTrigger
+    delay: 360
+    keyOut: ce-incubation-complete
+    examinable: false
+    popup: null
+  - type: CEFixedSlotTriggerGate
+    hostWhitelist:
+      components:
+      - CEAnimalIncubationHost
+  - type: SpawnEntityTableOnTrigger
+    keysIn:
+    - ce-incubation-complete
+    useMapCoords: true
+    table: !type:GroupSelector
+      children:
+      - id: CEMobChickenChick
+        weight: 4
+      - id: CEMobChickenChickMale
+        weight: 1
+  - type: DeleteOnTrigger
+    keysIn:
+    - ce-incubation-complete

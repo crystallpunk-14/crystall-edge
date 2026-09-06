@@ -1,0 +1,36 @@
+# Keep MobPig first so its canonical body, need thresholds, inventory, and
+# reproduction configuration win over later capability parents.
+# TODO CE: Replace the temporarily inherited upstream pig RSI with a CE-owned livestock sprite.
+- type: entity
+  id: CEMobPig
+  parent:
+  - MobPig
+  - CEMobAnimalHusbandryBase
+  - CEAnimalAdultGOAPBase
+  name: pig
+  description: A domesticated pig that needs regular food and water.
+  suffix: CE
+  categories: [ ForkFiltered ]
+  components:
+  - type: HTN
+    enabled: false
+  - type: CEGOAPEntityConditionSensor
+    updateInterval: 2
+    entries:
+    - conditionKey: CEAnimalHungry
+      condition: !type:HungerCondition
+        min: 50
+        inverted: true
+    - conditionKey: CEAnimalThirsty
+      condition: !type:CEThirstCondition
+        min: 150
+        inverted: true
+  - type: Reproductive
+    partnerWhitelist:
+      requireAll: true
+      tags:
+      - Pig
+      components:
+      - CEGOAP
+    offspring:
+    - id: CEMobPig

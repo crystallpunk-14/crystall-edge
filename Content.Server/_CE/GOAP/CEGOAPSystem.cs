@@ -51,7 +51,7 @@ public sealed partial class CEGOAPSystem : EntitySystem
     /// to avoid collection-modified exceptions when WakeMob adds CEActiveGOAPComponent
     /// to new entities during action execution.
     /// </summary>
-    private readonly List<(EntityUid Uid, CEGOAPComponent Goap)> _activeSnapshot = new();
+    private readonly List<(EntityUid Uid, CEGOAPComponent Goap, CEActiveGOAPComponent Active)> _activeSnapshot = new();
 
     public override void Initialize()
     {
@@ -140,18 +140,20 @@ public sealed partial class CEGOAPSystem : EntitySystem
         // to a new entity during action execution.
         _activeSnapshot.Clear();
         var query = EntityQueryEnumerator<CEActiveGOAPComponent, CEGOAPComponent>();
-        while (query.MoveNext(out var uid, out _, out var goap))
+        while (query.MoveNext(out var uid, out var active, out var goap))
         {
-            _activeSnapshot.Add((uid, goap));
+            _activeSnapshot.Add((uid, goap, active));
         }
 
         var count = 0;
-        foreach (var (uid, goap) in _activeSnapshot)
+        foreach (var (uid, goap, active) in _activeSnapshot)
         {
             if (count >= _maxUpdates)
                 break;
 
-            if (!HasComp<CEActiveGOAPComponent>(uid))
+            // An earlier action may stop another snapshotted agent. Deferred
+            // component removal leaves HasComp true after its shutdown.
+            if (goap.LifeStage != ComponentLifeStage.Running || active.LifeStage != ComponentLifeStage.Running)
                 continue;
 
             PurgeExpiredKnowledge((uid, goap));
@@ -211,8 +213,13 @@ public sealed partial class CEGOAPSystem : EntitySystem
             // A different (or better) plan was found — interrupt the current action and switch.
             // Shutdown old action BEFORE clearing: plan list reuse means the old
             // action reference is lost once the list is cleared.
+            var hadPlan = ent.Comp.CurrentPlan.Count != 0;
             ShutdownCurrentAction(ent);
-            ent.Comp.CurrentActionStarted = false;
+            // Shutdown may synchronously invalidate the plan (for example by
+            // changing maps). Do not adopt a plan computed before that callback.
+            if (hadPlan && ent.Comp.CurrentPlan.Count == 0)
+                return;
+
             ent.Comp.CurrentPlan.Clear();
             ent.Comp.CurrentPlan.AddRange(_newPlanBuffer);
             ent.Comp.ActiveGoalIndex = goalIndex;
@@ -272,15 +279,20 @@ public sealed partial class CEGOAPSystem : EntitySystem
 
     private void ExecuteCurrentAction(Entity<CEGOAPComponent> ent, float frameTime)
     {
-        var action = ent.Comp.CurrentPlan![ent.Comp.CurrentActionIndex];
+        var action = ent.Comp.CurrentPlan[ent.Comp.CurrentActionIndex];
 
         if (!ent.Comp.CurrentActionStarted)
         {
-            action.RaiseStartup(ent, EntityManager);
             ent.Comp.CurrentActionStarted = true;
+            action.RaiseStartup(ent, EntityManager);
+            if (!ent.Comp.CurrentActionStarted)
+                return;
         }
 
         var status = action.RaiseUpdate(ent, frameTime, EntityManager);
+        // Events may clear the plan and shut down this action before returning.
+        if (!ent.Comp.CurrentActionStarted)
+            return;
 
         switch (status)
         {
@@ -288,9 +300,11 @@ public sealed partial class CEGOAPSystem : EntitySystem
                 break;
 
             case CEGOAPActionStatus.Finished:
-                action.RaiseShutdown(ent, EntityManager);
+                ShutdownCurrentAction(ent);
+                if (ent.Comp.CurrentPlan.Count == 0)
+                    return;
+
                 ent.Comp.CurrentActionIndex++;
-                ent.Comp.CurrentActionStarted = false;
 
                 // Plan completed
                 if (ent.Comp.CurrentActionIndex >= ent.Comp.CurrentPlan.Count)
@@ -298,7 +312,6 @@ public sealed partial class CEGOAPSystem : EntitySystem
                 break;
 
             case CEGOAPActionStatus.Failed:
-                action.RaiseShutdown(ent, EntityManager);
                 ClearPlan(ent);
                 ent.Comp.NextPlanTime = TimeSpan.Zero; // Re-plan immediately
                 break;
@@ -310,6 +323,9 @@ public sealed partial class CEGOAPSystem : EntitySystem
         if (!ent.Comp.CurrentActionStarted)
             return;
 
+        // Mark it stopped before callbacks so a reentrant ClearPlan cannot
+        // deliver the same shutdown again.
+        ent.Comp.CurrentActionStarted = false;
         if (ent.Comp.CurrentActionIndex >= ent.Comp.CurrentPlan.Count)
             return;
 
@@ -321,7 +337,6 @@ public sealed partial class CEGOAPSystem : EntitySystem
         ShutdownCurrentAction(ent);
         ent.Comp.CurrentPlan.Clear();
         ent.Comp.CurrentActionIndex = 0;
-        ent.Comp.CurrentActionStarted = false;
         ent.Comp.ActiveGoalIndex = -1;
     }
 }

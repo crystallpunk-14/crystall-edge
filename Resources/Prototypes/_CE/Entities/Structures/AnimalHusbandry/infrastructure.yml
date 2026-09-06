@@ -1,0 +1,163 @@
+- type: entity
+  id: CEAnimalFeedTrough
+  parent: BaseStructure
+  name: animal feed trough
+  description: A sturdy wooden feeder for animal fodder.
+  categories: [ ForkFiltered ]
+  components:
+  - type: InteractionOutline
+  - type: Sprite
+    noRot: false
+    sprite: _CE/Structures/AnimalHusbandry/feed_trough.rsi
+  - type: Icon
+    sprite: _CE/Structures/AnimalHusbandry/feed_trough.rsi
+    state: feed_empty
+  - type: IconSmooth
+    key: ceAnimalFeedTrough
+    base: state_
+    index: 0
+  - type: CEFixedEntitySlots
+    slots:
+    - offset: "-0.28125,0.09375"
+      rotation: 350
+    - offset: "-0.09375,0.09375"
+      rotation: 5
+    - offset: "0.09375,0.09375"
+      rotation: 355
+    - offset: "0.28125,0.09375"
+      rotation: 10
+    - offset: "-0.28125,-0.09375"
+      rotation: 8
+    - offset: "-0.09375,-0.09375"
+      rotation: 352
+    - offset: "0.09375,-0.09375"
+      rotation: 6
+    - offset: "0.28125,-0.09375"
+      rotation: 354
+  - type: CEFixedEntitySlotAccess
+  - type: CEConnectedEntitySlots
+    group: ceAnimalFeedTrough
+    node: storage
+  - type: NodeContainer
+    nodes:
+      storage:
+        !type:AdjacentNode
+        nodeGroupID: Default
+  - type: CEFeedTrough
+    examineMessage: ce-animal-husbandry-examine-feed
+    nutritionPrecision: 1
+  - type: Construction
+    graph: CEAnimalFeedTrough
+    node: complete
+
+- type: entity
+  id: CEAnimalWaterTrough
+  parent: BaseStructure
+  name: animal water trough
+  description: A refillable iron-bound trough for drinking water.
+  categories: [ ForkFiltered ]
+  components:
+  - type: InteractionOutline
+  - type: Appearance
+  - type: Sprite
+    noRot: false
+    sprite: _CE/Structures/AnimalHusbandry/water_trough.rsi
+  - type: Icon
+    sprite: _CE/Structures/AnimalHusbandry/water_trough.rsi
+    state: water_icon
+  - type: IconSmooth
+    key: ceAnimalWaterTrough
+    base: state_
+    index: 0
+  - type: CESolutionIconSmoothVisuals
+    stateBases: [state_, water_1_state_, water_2_state_, water_3_state_, water_4_state_]
+  - type: SolutionContainerVisuals
+    solutionName: drink
+    maxFillLevels: 4
+    changeColor: false
+  - type: Solution
+    id: drink
+    solution:
+      maxVol: 100
+  - type: MixableSolution
+    solution: drink
+  - type: RefillableSolution
+    solution: drink
+  - type: DrainableSolution
+    solution: drink
+  - type: ExaminableSolution
+    solution: drink
+    exactVolume: true
+  - type: Edible
+    edible: Drink
+    solution: drink
+    transferAmount: 5
+    destroyOnEmpty: false
+    utensil: None
+  - type: Construction
+    graph: CEAnimalWaterTrough
+    node: complete
+
+- type: entity
+  id: CEChickenNestingPerch
+  parent: BaseStructure
+  name: chicken nesting perch
+  description: A shared low perch with twelve stable places for chicken eggs.
+  categories: [ ForkFiltered ]
+  components:
+  - type: InteractionOutline
+  - type: Sprite
+    noRot: false
+    sprite: _CE/Structures/AnimalHusbandry/nesting_perch.rsi
+    state: nesting_perch
+  - type: Physics
+    canCollide: false
+  - type: CEFixedEntitySlots
+    slots:
+    - offset: "0.125,0.125"
+      rotation: 135
+    - offset: "-0.125,-0.125"
+      rotation: 315
+    - offset: "-0.125,0.125"
+      rotation: 225
+    - offset: "0.125,-0.125"
+      rotation: 45
+    - offset: "0.34375,0"
+      rotation: 90
+    - offset: "-0.34375,0"
+      rotation: 270
+    - offset: "0,0.34375"
+      rotation: 180
+    - offset: "0,-0.34375"
+      rotation: 0
+    - offset: "0.25,0.25"
+      rotation: 135
+    - offset: "-0.25,-0.25"
+      rotation: 315
+    - offset: "-0.25,0.25"
+      rotation: 225
+    - offset: "0.25,-0.25"
+      rotation: 45
+  - type: CEFixedEntitySlotAccess
+  - type: CEAnimalIncubationHost
+    examineMessage: ce-animal-husbandry-examine-nest
+  - type: Construction
+    graph: CEChickenNestingPerch
+    node: complete
+
+- type: entity
+  id: CEChickenStarterCrate
+  parent: CrateLivestock
+  name: chicken starter crate
+  description: Contains a white hen, a brown hen, and a rooster.
+  categories: [ ForkFiltered ]
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: CEMobChickenHenWhite
+        - id: CEMobChickenHenBrown
+        - id: CEMobChickenRooster
+  - type: StaticPrice
+    price: 2500

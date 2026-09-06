@@ -1,0 +1,9 @@
+- type: tradingPosition
+  id: CEChickenStarterCrate
+  faction: Horticulture
+  category: Materials
+  priceMarkup: 250
+  priceFluctuation: 0.15
+  service: !type:CEBuyItemsService
+    product: CEChickenStarterCrate
+    count: 1

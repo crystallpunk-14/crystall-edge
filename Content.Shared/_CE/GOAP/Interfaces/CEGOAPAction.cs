@@ -153,6 +153,13 @@ public record struct CEGOAPActionStartupEvent<T>(T Action) where T : CEGOAPActio
 public record struct CEGOAPActionUpdateEvent<T>(T Action, float FrameTime) where T : CEGOAPActionBase<T>
 {
     public CEGOAPActionStatus Status = CEGOAPActionStatus.Running;
+
+    /// <summary>
+    /// Optional target resolved by this action for the current update. Result
+    /// policies can use the exact attempted target without resolving it again.
+    /// Actions without an entity target leave this null.
+    /// </summary>
+    public EntityUid? Target;
 }
 
 /// <summary>

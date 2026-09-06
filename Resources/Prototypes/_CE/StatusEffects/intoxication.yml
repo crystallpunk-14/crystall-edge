@@ -1,0 +1,6 @@
+# CE-owned companion lets opted-in NPC behavior reuse vanilla drowsiness and forced sleep
+# without removing drowsiness applied by unrelated sources.
+- type: entity
+  parent: StatusEffectDrowsiness
+  id: CEStatusEffectIntoxicationDrowsiness
+  name: intoxication drowsiness
