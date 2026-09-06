@@ -8,10 +8,10 @@
   - type: InteractionOutline
   - type: Sprite
     noRot: false
-    sprite: Structures/Furniture/Tables/wood.rsi
-    layers:
-    - sprite: _CE/Structures/AnimalHusbandry/feed_trough.rsi
-      state: feed_empty
+    sprite: _CE/Structures/AnimalHusbandry/feed_trough.rsi
+  - type: Icon
+    sprite: _CE/Structures/AnimalHusbandry/feed_trough.rsi
+    state: feed_empty
   - type: IconSmooth
     key: ceAnimalFeedTrough
     base: state_
@@ -43,33 +43,12 @@
       storage:
         !type:AdjacentNode
         nodeGroupID: Default
-  - type: ContainerContainer
-    containers:
-      front_overlay: !type:ContainerSlot
-        showEnts: true
-        occludes: false
-  - type: ContainerFill
-    ignoreConstructionSpawn: false
-    containers:
-      front_overlay:
-      - CEAnimalFeedTroughFrontOverlay
   - type: CEFeedTrough
     examineMessage: ce-animal-husbandry-examine-feed
     nutritionPrecision: 1
   - type: Construction
     graph: CEAnimalFeedTrough
     node: complete
-
-- type: entity
-  id: CEAnimalFeedTroughFrontOverlay
-  categories: [ HideSpawnMenu ]
-  save: false
-  components:
-  - type: Sprite
-    noRot: false
-    sprite: _CE/Structures/AnimalHusbandry/feed_trough.rsi
-    state: feed_front
-    drawdepth: BelowMobs
 
 - type: entity
   id: CEAnimalWaterTrough
@@ -83,14 +62,18 @@
   - type: Sprite
     noRot: false
     sprite: _CE/Structures/AnimalHusbandry/water_trough.rsi
-    layers:
-    - state: water_empty
-      map: ["enum.SolutionContainerLayers.Fill"]
+  - type: Icon
+    sprite: _CE/Structures/AnimalHusbandry/water_trough.rsi
+    state: water_icon
+  - type: IconSmooth
+    key: ceAnimalWaterTrough
+    base: state_
+    index: 0
+  - type: CESolutionIconSmoothVisuals
+    stateBases: [state_, water_1_state_, water_2_state_, water_3_state_, water_4_state_]
   - type: SolutionContainerVisuals
     solutionName: drink
     maxFillLevels: 4
-    fillBaseName: water_fill_
-    emptySpriteName: water_empty
     changeColor: false
   - type: Solution
     id: drink

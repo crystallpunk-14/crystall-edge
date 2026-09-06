@@ -24,7 +24,7 @@ public sealed partial class CECompositeConsumableSourceSystem
             return false;
 
         var originPosition = _transform.GetWorldPosition(origin);
-        CEConsumableCandidate? best = null;
+        var bestDistance = float.MaxValue;
 
         for (var priority = 0; priority < source.Sources.Count; priority++)
         {
@@ -45,21 +45,15 @@ public sealed partial class CECompositeConsumableSourceSystem
             var distance = Vector2.DistanceSquared(
                 originPosition,
                 _transform.GetWorldPosition(candidateTransform));
-            if (!float.IsFinite(distance))
+            // Earlier authored sources win equal distances; each leaf resolves its own ties.
+            if (!float.IsFinite(distance) || provider.IsValid() && distance >= bestDistance)
                 continue;
 
-            var current = new CEConsumableCandidate(candidate, distance, priority);
-            if (best is { } previous && !IsBetter(current, previous))
-                continue;
-
-            best = current;
+            provider = candidate;
+            bestDistance = distance;
         }
 
-        if (best is not { } selected)
-            return false;
-
-        provider = selected.Provider;
-        return true;
+        return provider.IsValid();
     }
 
     protected override bool CanHandleProvider(
@@ -118,14 +112,6 @@ public sealed partial class CECompositeConsumableSourceSystem
         }
     }
 
-    private static bool IsBetter(CEConsumableCandidate candidate, CEConsumableCandidate current)
-    {
-        return candidate.DistanceSquared < current.DistanceSquared ||
-            candidate.DistanceSquared.Equals(current.DistanceSquared) &&
-            (candidate.Priority < current.Priority ||
-             candidate.Priority == current.Priority && candidate.Provider.Id < current.Provider.Id);
-    }
-
     private bool IsOwnedBy(CECompositeConsumableSource source, int priority, EntityUid provider)
     {
         for (var index = 0; index <= priority; index++)
@@ -139,9 +125,4 @@ public sealed partial class CECompositeConsumableSourceSystem
 
         return false;
     }
-
-    private readonly record struct CEConsumableCandidate(
-        EntityUid Provider,
-        float DistanceSquared,
-        int Priority);
 }

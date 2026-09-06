@@ -24,13 +24,19 @@ public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
 {
     [Dependency] private IOverlayManager _overlay = default!;
     [Dependency] private IEyeManager _eye = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     public override void Initialize()
     {
         base.Initialize();
         _overlay.AddOverlay(new CEZLevelBlurOverlay());
+        UpdatesBefore.Add(typeof(CEClientZLevelsPreAnimSystem));
 
-        SubscribeLocalEvent<CEZPhysicsComponent, ComponentStartup>(OnStartup);
+        SubscribeLocalEvent<CEZPhysicsComponent, ComponentStartup>(OnZPhysicsStartup);
+        SubscribeLocalEvent<CEZVisualBaselineStateComponent, CEZVisualBaselineReleasingEvent>(
+            OnZVisualBaselineReleasing);
+        SubscribeLocalEvent<CEZVisualBaselineStateComponent, CESpriteVisualReleasingEvent>(
+            OnSpriteVisualReleasing);
         SubscribeLocalEvent<CEZPhysicsComponent, GetEyeOffsetEvent>(OnEyeOffset);
     }
 
@@ -54,16 +60,77 @@ public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
         return zPhys.LocalPosition;
     }
 
-    private void OnStartup(Entity<CEZPhysicsComponent> ent, ref ComponentStartup args)
+    private void OnZPhysicsStartup(Entity<CEZPhysicsComponent> ent, ref ComponentStartup args)
     {
-        if (!TryComp<SpriteComponent>(ent, out var sprite))
+        if (TryComp<SpriteComponent>(ent.Owner, out var sprite) && sprite.Running)
+            EnsureVisualBaseline(ent.Owner, ent.Comp, sprite);
+    }
+
+    private void OnZVisualBaselineReleasing(
+        Entity<CEZVisualBaselineStateComponent> ent,
+        ref CEZVisualBaselineReleasingEvent args)
+    {
+        if (!ReferenceEquals(ent.Comp.ZPhysics, args.Component))
             return;
+
+        RestoreVisualBaseline(ent.Owner, ent.Comp);
+        RemCompDeferred(ent.Owner, ent.Comp);
+    }
+
+    private void OnSpriteVisualReleasing(
+        Entity<CEZVisualBaselineStateComponent> ent,
+        ref CESpriteVisualReleasingEvent args)
+    {
+        if (!ReferenceEquals(ent.Comp.Sprite, args.Component))
+            return;
+
+        RestoreVisualBaseline(ent.Owner, ent.Comp);
+        RemCompDeferred(ent.Owner, ent.Comp);
+    }
+
+    internal void EnsureVisualBaseline(
+        EntityUid uid,
+        CEZPhysicsComponent zPhysics,
+        SpriteComponent sprite)
+    {
+        var state = EnsureComp<CEZVisualBaselineStateComponent>(uid);
+        if (ReferenceEquals(state.ZPhysics, zPhysics) && ReferenceEquals(state.Sprite, sprite))
+            return;
+
+        RestoreVisualBaseline(uid, state);
+
+        var baseline = new CEZVisualBaselineQueryEvent(zPhysics, sprite.Offset);
+        RaiseLocalEvent(uid, ref baseline);
+
+        state.ZPhysics = zPhysics;
+        state.Sprite = sprite;
+        state.SpriteOffsetBaseline = baseline.SpriteOffsetBaseline;
+        state.DrawDepthBaseline = sprite.DrawDepth;
 
         if (sprite.SnapCardinals)
             return;
 
-        ent.Comp.DrawDepthDefault = sprite.DrawDepth;
-        ent.Comp.SpriteOffsetDefault = sprite.Offset;
+        zPhysics.DrawDepthDefault = state.DrawDepthBaseline;
+        zPhysics.SpriteOffsetDefault = state.SpriteOffsetBaseline;
+    }
+
+    private void RestoreVisualBaseline(EntityUid uid, CEZVisualBaselineStateComponent state)
+    {
+        if (state.ZPhysics is { } originalZPhysics &&
+            TryComp<CEZPhysicsComponent>(uid, out var zPhysics) &&
+            ReferenceEquals(originalZPhysics, zPhysics))
+        {
+            zPhysics.SpriteOffsetDefault = state.SpriteOffsetBaseline;
+            zPhysics.DrawDepthDefault = state.DrawDepthBaseline;
+        }
+
+        if (state.Sprite is not { } originalSprite ||
+            !TryComp<SpriteComponent>(uid, out var sprite) ||
+            !ReferenceEquals(originalSprite, sprite))
+            return;
+
+        _sprite.SetOffset((uid, sprite), state.SpriteOffsetBaseline);
+        _sprite.SetDrawDepth((uid, sprite), state.DrawDepthBaseline);
     }
 
     public override void Shutdown()
@@ -82,6 +149,7 @@ public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
 /// </summary>
 internal sealed partial class CEClientZLevelsPreAnimSystem : EntitySystem
 {
+    [Dependency] private CEClientZLevelsSystem _zLevels = default!;
     [Dependency] private SpriteSystem _sprite = default!;
     [Dependency] private EntityQuery<MapGridComponent> _mapGridQuery = default!;
     [Dependency] private EntityQuery<CEZPhysicsComponent> _zPhysQuery = default!;
@@ -99,6 +167,13 @@ internal sealed partial class CEClientZLevelsPreAnimSystem : EntitySystem
         var query = EntityQueryEnumerator<CEZPhysicsComponent, SpriteComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out var zPhys, out var sprite, out var xform))
         {
+            // Deferred removal leaves stopped components in queries until the next cull.
+            // Their shutdown handlers already released the baseline; do not capture it again.
+            if (!zPhys.Running || !sprite.Running)
+                continue;
+
+            _zLevels.EnsureVisualBaseline(uid, zPhys, sprite);
+
             var localPosition = CEClientZLevelsSystem.GetVisualLocalPosition(uid, zPhys, xform, _zPhysQuery);
             _sprite.SetOffset((uid, sprite), zPhys.SpriteOffsetDefault);
             _sprite.SetDrawDepth((uid, sprite), localPosition > 0 ? (int)Shared.DrawDepth.DrawDepth.OverMobs : zPhys.DrawDepthDefault);
@@ -147,6 +222,9 @@ internal sealed partial class CEClientZLevelsPostAnimSystem : EntitySystem
         var query = EntityQueryEnumerator<CEZPhysicsComponent, SpriteComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out var zPhys, out var sprite, out var xform))
         {
+            if (!zPhys.Running || !sprite.Running)
+                continue;
+
             var localPosition = CEClientZLevelsSystem.GetVisualLocalPosition(uid, zPhys, xform, _zPhysQuery);
             var rawZ = new Vector2(0, localPosition * CESharedZLevelsSystem.ZLevelOffset);
             Vector2 zOffset;

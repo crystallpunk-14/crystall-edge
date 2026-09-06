@@ -3,15 +3,44 @@
   "license": "CC-BY-SA-4.0",
   "copyright": "Original pixel art by OpenAI Codex for Crystall Edge (2026)",
   "size": {
-    "x": 48,
-    "y": 48
+    "x": 32,
+    "y": 32
   },
   "states": [
     {
       "name": "feed_empty"
     },
     {
-      "name": "feed_front"
+      "name": "state_0",
+      "directions": 4
+    },
+    {
+      "name": "state_1",
+      "directions": 4
+    },
+    {
+      "name": "state_2",
+      "directions": 4
+    },
+    {
+      "name": "state_3",
+      "directions": 4
+    },
+    {
+      "name": "state_4",
+      "directions": 4
+    },
+    {
+      "name": "state_5",
+      "directions": 4
+    },
+    {
+      "name": "state_6",
+      "directions": 4
+    },
+    {
+      "name": "state_7",
+      "directions": 4
     }
   ]
 }

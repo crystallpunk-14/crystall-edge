@@ -45,29 +45,29 @@
   id: CEAnimalHungerGOAPBase
   abstract: true
   components:
+  - type: CEGOAPSelectorProfiles
+    profiles:
+      animalFood: !type:CEGOAPSelectorConsumableProvider
+        source: !type:CECompositeConsumableSource
+          sources:
+          - !type:CEFeedTroughConsumableSource
+          - !type:CEWorldFoodConsumableSource
+        range: 20
   - type: CEGOAPRangeToTargetSensor
     updateInterval: 0.2
     entries:
     - conditionKey: CEAnimalFoodSourceInRange
       range: 1
-      selector: !type:CEGOAPSelectorConsumableProvider
-        source: !type:CECompositeConsumableSource
-          sources:
-            - !type:CEFeedTroughConsumableSource
-            - !type:CEWorldFoodConsumableSource
-        range: 20
+      selector: !type:CEGOAPSelectorProfile
+        profile: animalFood
   - type: CEGOAP
     goals:
     - desiredState: { CEAnimalHungry: false }
       priority: 100
     actions:
     - !type:CEGOAPMoveToTargetAction
-      selector: !type:CEGOAPSelectorConsumableProvider
-        source: !type:CECompositeConsumableSource
-          sources:
-            - !type:CEFeedTroughConsumableSource
-            - !type:CEWorldFoodConsumableSource
-        range: 20
+      selector: !type:CEGOAPSelectorProfile
+        profile: animalFood
       range: 1
       reregisterThreshold: 1
       preconditions:
@@ -76,12 +76,8 @@
       effects: { CEAnimalFoodSourceInRange: true }
     - !type:CEGOAPConsumeAction
       retryDelay: 2
-      selector: !type:CEGOAPSelectorConsumableProvider
-        source: !type:CECompositeConsumableSource
-          sources:
-            - !type:CEFeedTroughConsumableSource
-            - !type:CEWorldFoodConsumableSource
-        range: 20
+      selector: !type:CEGOAPSelectorProfile
+        profile: animalFood
       preconditions:
         CEAnimalHungry: true
         CEAnimalFoodSourceInRange: true
@@ -92,55 +88,42 @@
   id: CEAnimalThirstGOAPBase
   abstract: true
   components:
+  - type: CEGOAPSelectorProfiles
+    profiles:
+      animalWater: !type:CEGOAPSelectorConsumableProvider
+        source: !type:CECompositeConsumableSource
+          sources:
+          - !type:CEWorldDrinkConsumableSource
+            conditions:
+            - !type:CEReagentFractionCondition
+              reagent: Water
+              minFraction: 0.5
+          - !type:CEDrainableSolutionConsumableSource
+            transferAmount: 5
+            providerBlacklist:
+              components:
+              - ItemSlots
+              - Storage
+            conditions:
+            - !type:CEReagentFractionCondition
+              reagent: Water
+              minFraction: 0.5
+        range: 20
   - type: CEGOAPRangeToTargetSensor
     updateInterval: 0.2
     entries:
     - conditionKey: CEAnimalWaterSourceInRange
       range: 1
-      selector: !type:CEGOAPSelectorConsumableProvider
-        source: !type:CECompositeConsumableSource
-          sources:
-            - !type:CEWorldDrinkConsumableSource
-              conditions:
-                - !type:ReagentFractionCondition
-                  reagent: Water
-                  minFraction: 0.5
-            - !type:CEDrainableSolutionConsumableSource
-              transferAmount: 5
-              providerBlacklist:
-                components:
-                  - ItemSlots
-                  - Storage
-              conditions:
-                - !type:ReagentFractionCondition
-                  reagent: Water
-                  minFraction: 0.5
-        range: 20
+      selector: !type:CEGOAPSelectorProfile
+        profile: animalWater
   - type: CEGOAP
     goals:
     - desiredState: { CEAnimalThirsty: false }
       priority: 110
     actions:
     - !type:CEGOAPMoveToTargetAction
-      selector: !type:CEGOAPSelectorConsumableProvider
-        source: !type:CECompositeConsumableSource
-          sources:
-            - !type:CEWorldDrinkConsumableSource
-              conditions:
-                - !type:ReagentFractionCondition
-                  reagent: Water
-                  minFraction: 0.5
-            - !type:CEDrainableSolutionConsumableSource
-              transferAmount: 5
-              providerBlacklist:
-                components:
-                  - ItemSlots
-                  - Storage
-              conditions:
-                - !type:ReagentFractionCondition
-                  reagent: Water
-                  minFraction: 0.5
-        range: 20
+      selector: !type:CEGOAPSelectorProfile
+        profile: animalWater
       range: 1
       reregisterThreshold: 1
       preconditions:
@@ -149,25 +132,8 @@
       effects: { CEAnimalWaterSourceInRange: true }
     - !type:CEGOAPConsumeAction
       retryDelay: 2
-      selector: !type:CEGOAPSelectorConsumableProvider
-        source: !type:CECompositeConsumableSource
-          sources:
-            - !type:CEWorldDrinkConsumableSource
-              conditions:
-                - !type:ReagentFractionCondition
-                  reagent: Water
-                  minFraction: 0.5
-            - !type:CEDrainableSolutionConsumableSource
-              transferAmount: 5
-              providerBlacklist:
-                components:
-                  - ItemSlots
-                  - Storage
-              conditions:
-                - !type:ReagentFractionCondition
-                  reagent: Water
-                  minFraction: 0.5
-        range: 20
+      selector: !type:CEGOAPSelectorProfile
+        profile: animalWater
       preconditions:
         CEAnimalThirsty: true
         CEAnimalWaterSourceInRange: true

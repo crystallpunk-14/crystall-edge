@@ -52,15 +52,15 @@ public sealed partial class CEFixedEntitySlotAccessSystem : EntitySystem
         if (!TryComp<CEFixedEntitySlotsComponent>(host, out var slots))
             return;
 
-        foreach (var occupant in _slots.GetOccupants((host, slots)))
+        for (var slot = 0; slot < slots.Slots.Count; slot++)
         {
-            if (occupant is not { } uid)
+            if (!_slots.TryGetOccupant((host, slots), slot, out var occupant))
                 continue;
 
             if (add)
-                EnsureComp<CEFixedEntitySlotAccessibleOccupantComponent>(uid);
+                EnsureComp<CEFixedEntitySlotAccessibleOccupantComponent>(occupant);
             else
-                RemComp<CEFixedEntitySlotAccessibleOccupantComponent>(uid);
+                RemComp<CEFixedEntitySlotAccessibleOccupantComponent>(occupant);
         }
     }
 }

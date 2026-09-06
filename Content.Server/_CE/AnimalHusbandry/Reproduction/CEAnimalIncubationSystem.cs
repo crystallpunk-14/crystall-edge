@@ -55,7 +55,7 @@ public sealed partial class CEAnimalIncubationSystem : EntitySystem
         CEAnimalFertilizableProductComponent policy)
     {
         var map = Transform(host).MapUid;
-        if (map == null || CountPopulation(map.Value, policy.PopulationWhitelist) >= policy.PopulationLimit)
+        if (map == null || IsPopulationAtLimit(map.Value, policy))
             return false;
 
         if (policy.MateWhitelist == null)
@@ -77,22 +77,23 @@ public sealed partial class CEAnimalIncubationSystem : EntitySystem
         return false;
     }
 
-    private int CountPopulation(EntityUid map, EntityWhitelist populationWhitelist)
+    private bool IsPopulationAtLimit(EntityUid map, CEAnimalFertilizableProductComponent policy)
     {
         var count = 0;
         var query = EntityQueryEnumerator<TransformComponent>();
         while (query.MoveNext(out var uid, out var transform))
         {
-            if (transform.MapUid != map || !_whitelist.IsValid(populationWhitelist, uid))
+            if (transform.MapUid != map || !_whitelist.IsValid(policy.PopulationWhitelist, uid))
                 continue;
 
             if (TryComp<MobStateComponent>(uid, out var mobState) && _mobState.IsDead(uid, mobState))
                 continue;
 
-            count++;
+            if (++count >= policy.PopulationLimit)
+                return true;
         }
 
-        return count;
+        return false;
     }
 
     private void OnHostInteractUsing(
@@ -116,9 +117,10 @@ public sealed partial class CEAnimalIncubationSystem : EntitySystem
 
         var ordinary = 0;
         var fertilized = 0;
-        foreach (var product in _fixedSlots.GetOccupants((args.Examined, slots)))
+        for (var slot = 0; slot < slots.Slots.Count; slot++)
         {
-            if (product is not { } uid || !TryComp<CEAnimalIncubationComponent>(uid, out var incubation))
+            if (!_fixedSlots.TryGetOccupant((args.Examined, slots), slot, out var product) ||
+                !TryComp<CEAnimalIncubationComponent>(product, out var incubation))
                 continue;
 
             if (incubation.Fertilized)
@@ -131,7 +133,7 @@ public sealed partial class CEAnimalIncubationSystem : EntitySystem
             host.ExamineMessage,
             ("ordinary", ordinary),
             ("fertilized", fertilized),
-            ("capacity", _fixedSlots.Capacity((args.Examined, slots)))));
+            ("capacity", slots.Slots.Count)));
     }
 
     private static bool IsConfigurationValid(CEAnimalFertilizableProductComponent policy)

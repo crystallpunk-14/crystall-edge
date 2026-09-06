@@ -40,4 +40,10 @@ public sealed partial class CEStatusConditionedSteeringDeviationComponent : Comp
 
     [DataField]
     public Vector2 DeviationDirection;
+
+    /// <summary>
+    /// Invalid authored configuration is disabled explicitly at map init.
+    /// </summary>
+    [ViewVariables]
+    public bool Disabled;
 }

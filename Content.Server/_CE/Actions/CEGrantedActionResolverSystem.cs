@@ -11,30 +11,9 @@ public sealed partial class CEGrantedActionResolverSystem : EntitySystem
 {
     [Dependency] private SharedActionsSystem _actions = default!;
 
-    /// <summary>
-    /// Resolves the same first matching action selected by the existing CE GOAP
-    /// use-action system.
-    /// </summary>
-    public bool TryResolveFirst(
-        EntityUid holder,
-        EntProtoId prototype,
-        out Entity<ActionComponent> resolved)
-    {
-        return TryResolve(holder, prototype, requireUnique: false, out resolved);
-    }
-
     public bool TryResolveUnique(
         EntityUid holder,
         EntProtoId prototype,
-        out Entity<ActionComponent> resolved)
-    {
-        return TryResolve(holder, prototype, requireUnique: true, out resolved);
-    }
-
-    private bool TryResolve(
-        EntityUid holder,
-        EntProtoId prototype,
-        bool requireUnique,
         out Entity<ActionComponent> resolved)
     {
         resolved = default;
@@ -45,7 +24,7 @@ public sealed partial class CEGrantedActionResolverSystem : EntitySystem
             if (MetaData(action).EntityPrototype?.ID != (string) prototype)
                 continue;
 
-            if (found && requireUnique)
+            if (found)
             {
                 resolved = default;
                 return false;
@@ -53,9 +32,6 @@ public sealed partial class CEGrantedActionResolverSystem : EntitySystem
 
             resolved = action;
             found = true;
-
-            if (!requireUnique)
-                return true;
         }
 
         return found;

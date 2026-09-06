@@ -26,37 +26,31 @@
   - CEAnimalAdultGOAPBase
   - CETargetedProductionGOAPBase
   components:
+  - type: CEGOAPSelectorProfiles
+    profiles:
+      chickenNest: !type:CEGOAPSelectorNearestEntity
+        range: 20
+        whitelist:
+          requireAll: true
+          components:
+          - CEFixedEntitySlotsAvailable
+          - CEAnimalIncubationHost
   - type: CEGOAPRangeToTargetSensor
     updateInterval: 0.2
     entries:
     - conditionKey: CEProductionTargetAvailable
       range: 20
-      selector: !type:CEGOAPSelectorNearestEntity
-        range: 20
-        whitelist:
-          requireAll: true
-          components:
-          - CEFixedEntitySlotsAvailable
-          - CEAnimalIncubationHost
+      selector: !type:CEGOAPSelectorProfile
+        profile: chickenNest
     - conditionKey: CEProductionTargetInRange
       range: 0.4
-      selector: !type:CEGOAPSelectorNearestEntity
-        range: 20
-        whitelist:
-          requireAll: true
-          components:
-          - CEFixedEntitySlotsAvailable
-          - CEAnimalIncubationHost
+      selector: !type:CEGOAPSelectorProfile
+        profile: chickenNest
   - type: CEGOAP
     actions:
     - !type:CEGOAPMoveToTargetAction
-      selector: !type:CEGOAPSelectorNearestEntity
-        range: 20
-        whitelist:
-          requireAll: true
-          components:
-          - CEFixedEntitySlotsAvailable
-          - CEAnimalIncubationHost
+      selector: !type:CEGOAPSelectorProfile
+        profile: chickenNest
       range: 0.4
       preconditions:
         CEProductionReady: true
@@ -65,13 +59,8 @@
       effects: { CEProductionTargetInRange: true }
     - !type:CEGOAPUseAction
       actionPrototype: CEActionChickenLayEgg
-      selector: !type:CEGOAPSelectorNearestEntity
-        range: 20
-        whitelist:
-          requireAll: true
-          components:
-          - CEFixedEntitySlotsAvailable
-          - CEAnimalIncubationHost
+      selector: !type:CEGOAPSelectorProfile
+        profile: chickenNest
       preconditions:
         CEProductionReady: true
         CEProductionTargetAvailable: true

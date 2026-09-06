@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Client._CE.ZLevels.Core;
 using Content.Shared._CE.EntitySlots;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.Rotation;
@@ -14,20 +15,8 @@ namespace Content.Client._CE.EntitySlots;
 /// </summary>
 public sealed partial class CEFixedSlotVisualSystem : EntitySystem
 {
-    private const byte MaxPendingFrames = 8;
-    private const float ActiveAuditInterval = 0.25f;
-
     [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private SpriteSystem _sprite = default!;
-
-    private readonly Dictionary<EntityUid, SpriteTransform> _originalTransforms = new();
-    private readonly HashSet<EntityUid> _active = new();
-    private readonly HashSet<EntityUid> _pending = new();
-    private readonly Dictionary<EntityUid, byte> _remainingAttempts = new();
-    private readonly List<EntityUid> _pendingSnapshot = new();
-    private readonly List<EntityUid> _completed = new();
-    private readonly List<EntityUid> _stale = new();
-    private float _activeAuditAccumulator;
 
     public override void Initialize()
     {
@@ -35,238 +24,248 @@ public sealed partial class CEFixedSlotVisualSystem : EntitySystem
         UpdatesAfter.Add(typeof(AnimationPlayerSystem));
         SubscribeLocalEvent<AppearanceComponent, AppearanceChangeEvent>(OnAppearanceChange);
         SubscribeLocalEvent<AppearanceComponent, ComponentShutdown>(OnAppearanceShutdown);
+        SubscribeLocalEvent<CEFixedSlotVisualStateComponent, ComponentShutdown>(OnStateShutdown);
+        SubscribeLocalEvent<CEFixedSlotVisualStateComponent, CESpriteVisualReleasingEvent>(
+            OnSpriteVisualReleasing,
+            after: [typeof(CEClientZLevelsSystem)]);
+        SubscribeLocalEvent<CEFixedSlotVisualStateComponent, CEZVisualBaselineQueryEvent>(
+            OnZVisualBaselineQuery);
+        SubscribeLocalEvent<CEFixedSlotVisualStateComponent, CEZVisualBaselineReleasingEvent>(
+            OnZVisualBaselineReleasing,
+            after: [typeof(CEClientZLevelsSystem)]);
     }
 
     private void OnAppearanceChange(Entity<AppearanceComponent> ent, ref AppearanceChangeEvent args)
     {
-        QueueApply(ent.Owner);
+        if (TryComp<CEFixedSlotVisualStateComponent>(ent.Owner, out var state) && state.Running)
+        {
+            state.Pending = true;
+            return;
+        }
+
+        if (!TerminatingOrDeleted(ent.Owner) &&
+            _appearance.TryGetData<bool>(ent.Owner, CEFixedSlotVisuals.Active, out var active, ent.Comp) && active)
+            EnsureComp<CEFixedSlotVisualStateComponent>(ent.Owner).Pending = true;
     }
 
     private void OnAppearanceShutdown(Entity<AppearanceComponent> ent, ref ComponentShutdown args)
     {
-        if (TryComp<SpriteComponent>(ent.Owner, out var sprite))
-            Restore(ent.Owner, sprite);
+        if (!TryComp<CEFixedSlotVisualStateComponent>(ent.Owner, out var state))
+            return;
 
-        ClearTracking(ent.Owner);
+        RemCompDeferred(ent.Owner, state);
+    }
+
+    private void OnSpriteVisualReleasing(
+        Entity<CEFixedSlotVisualStateComponent> ent,
+        ref CESpriteVisualReleasingEvent args)
+    {
+        if (!ReferenceEquals(ent.Comp.OriginalSprite, args.Component))
+            return;
+
+        ClearOriginal(ent.Comp);
+        ent.Comp.Pending = !TerminatingOrDeleted(ent.Owner);
+    }
+
+    private void OnStateShutdown(Entity<CEFixedSlotVisualStateComponent> ent, ref ComponentShutdown args)
+    {
+        Restore(ent.Owner, ent.Comp);
+        ent.Comp.Pending = false;
+    }
+
+    private void OnZVisualBaselineQuery(
+        Entity<CEFixedSlotVisualStateComponent> ent,
+        ref CEZVisualBaselineQueryEvent args)
+    {
+        if (ent.Comp.OriginalSprite is not { } originalSprite ||
+            !TryComp<SpriteComponent>(ent.Owner, out var sprite) ||
+            !ReferenceEquals(originalSprite, sprite))
+        {
+            ent.Comp.Pending = true;
+            return;
+        }
+
+        args.SpriteOffsetBaseline = ent.Comp.CleanOffset;
+        RestoreOwnedSpriteBaseline(ent.Owner, sprite, ent.Comp, ent.Comp.CleanOffset);
+        ent.Comp.Pending = true;
+    }
+
+    private void OnZVisualBaselineReleasing(
+        Entity<CEFixedSlotVisualStateComponent> ent,
+        ref CEZVisualBaselineReleasingEvent args)
+    {
+        if (!ReferenceEquals(ent.Comp.OriginalZPhysics, args.Component))
+            return;
+
+        if (TerminatingOrDeleted(ent.Owner))
+        {
+            ClearOriginal(ent.Comp);
+            ent.Comp.Pending = false;
+            return;
+        }
+
+        args.Component.SpriteOffsetDefault = ent.Comp.CleanOffset;
+        if (ent.Comp.OriginalSprite is { } originalSprite &&
+            TryComp<SpriteComponent>(ent.Owner, out var sprite) &&
+            ReferenceEquals(originalSprite, sprite))
+        {
+            RestoreOwnedSpriteBaseline(
+                ent.Owner,
+                sprite,
+                ent.Comp,
+                ent.Comp.CleanOffset);
+        }
+        else
+        {
+            ClearOriginal(ent.Comp);
+        }
+
+        ent.Comp.Pending = true;
     }
 
     public override void FrameUpdate(float frameTime)
     {
         base.FrameUpdate(frameTime);
 
-        _pendingSnapshot.AddRange(_pending);
-        foreach (var uid in _pendingSnapshot)
+        var query = EntityQueryEnumerator<CEFixedSlotVisualStateComponent>();
+        while (query.MoveNext(out var uid, out var state))
         {
-            if (Apply(uid) ||
-                !_remainingAttempts.TryGetValue(uid, out var remaining) ||
-                remaining <= 1)
-            {
-                _completed.Add(uid);
-            }
-            else
-            {
-                _remainingAttempts[uid] = (byte) (remaining - 1);
-            }
+            if (!state.Running || TerminatingOrDeleted(uid))
+                continue;
+
+            Refresh(uid, state);
         }
-
-        _pendingSnapshot.Clear();
-
-        foreach (var uid in _completed)
-        {
-            _pending.Remove(uid);
-            _remainingAttempts.Remove(uid);
-        }
-
-        _completed.Clear();
-        AuditActive(frameTime);
-        ApplyActiveRotations();
     }
 
     /// <summary>
-    /// Returns false only while an active visual is waiting for its sprite component.
     /// Appearance initial state can arrive before the sprite initial state on a client.
+    /// Keep the active visual's state until its sprite is ready, without a separate retry queue.
     /// </summary>
-    private bool Apply(EntityUid uid)
+    private void Refresh(EntityUid uid, CEFixedSlotVisualStateComponent state)
     {
-        if (TerminatingOrDeleted(uid))
-        {
-            ClearTracking(uid);
-            return true;
-        }
-
-        if (!TryComp<AppearanceComponent>(uid, out var appearance))
-        {
-            if (TryComp<SpriteComponent>(uid, out var orphanedSprite))
-                Restore(uid, orphanedSprite);
-
-            ClearTracking(uid);
-            return true;
-        }
-
-        if (!_appearance.TryGetData<bool>(uid, CEFixedSlotVisuals.Active, out var active, appearance) ||
+        if (!TryComp<AppearanceComponent>(uid, out var appearance) ||
+            !_appearance.TryGetData<bool>(uid, CEFixedSlotVisuals.Active, out var active, appearance) ||
             !active)
         {
-            if (TryComp<SpriteComponent>(uid, out var inactiveSprite))
-                Restore(uid, inactiveSprite);
+            RemCompDeferred(uid, state);
+            return;
+        }
+
+        if (!TryComp<SpriteComponent>(uid, out var sprite) || !sprite.Running)
+        {
+            Restore(uid, state);
+            return;
+        }
+
+        CEZPhysicsComponent? zPhysics = null;
+        if (TryComp<CEZPhysicsComponent>(uid, out var candidateZPhysics) && candidateZPhysics.Running)
+            zPhysics = candidateZPhysics;
+        // The CEZ owner events preserve the canonical baseline during normal add/remove lifecycle.
+        // This identity check also recovers safely if another system replaces either component.
+        if (!ReferenceEquals(state.OriginalSprite, sprite) ||
+            !ReferenceEquals(state.OriginalZPhysics, zPhysics))
+        {
+            Restore(uid, state);
+            state.OriginalSprite = sprite;
+            state.OriginalZPhysics = zPhysics;
+            state.CleanOffset = zPhysics?.SpriteOffsetDefault ?? sprite.Offset;
+            state.OriginalRotation = HasComp<RotationVisualsComponent>(uid) ? null : sprite.Rotation;
+            state.Pending = true;
+        }
+
+        // Only rewrite the offset when slot data or its visual owner changes.
+        // Stable visuals must preserve offsets written by the animation player this frame.
+        if (state.Pending)
+        {
+            _appearance.TryGetData<Vector2>(uid, CEFixedSlotVisuals.Offset, out var offset, appearance);
+            if (zPhysics != null)
+            {
+                // CE Z-level rendering owns the whole-sprite offset each frame. Compose with its
+                // canonical baseline instead of racing the pre/post-animation pipeline.
+                var targetDefault = state.CleanOffset + offset;
+                var delta = targetDefault - zPhysics.SpriteOffsetDefault;
+                zPhysics.SpriteOffsetDefault = targetDefault;
+                _sprite.SetOffset((uid, sprite), sprite.Offset + delta);
+            }
             else
-                _originalTransforms.Remove(uid);
+            {
+                _sprite.SetOffset((uid, sprite), state.CleanOffset + offset);
+            }
 
-            _active.Remove(uid);
-            return true;
+            state.Pending = false;
         }
 
-        _active.Add(uid);
-        if (!TryComp<SpriteComponent>(uid, out var sprite))
-        {
-            _originalTransforms.Remove(uid);
-            return false;
-        }
+        if (state.OriginalRotation is not { } originalRotation || HasComp<RotationVisualsComponent>(uid))
+            return;
 
-        TryComp<CEZPhysicsComponent>(uid, out var zPhysics);
-        // CEZPhysics ownership is a stable prototype contract while this visual is active.
-        // A runtime owner swap cannot reconstruct a clean offset baseline if another animation also owns Offset.
-        if (!_originalTransforms.TryGetValue(uid, out var original) ||
-            !ReferenceEquals(original.Sprite, sprite) ||
-            !ReferenceEquals(original.ZPhysics, zPhysics))
-        {
-            original = new SpriteTransform(
-                sprite,
-                zPhysics,
-                sprite.Offset,
-                HasComp<RotationVisualsComponent>(uid) ? null : sprite.Rotation,
-                zPhysics?.SpriteOffsetDefault ?? Vector2.Zero);
-            _originalTransforms[uid] = original;
-        }
-
-        _appearance.TryGetData<Vector2>(uid, CEFixedSlotVisuals.Offset, out var offset, appearance);
         _appearance.TryGetData<Angle>(uid, CEFixedSlotVisuals.Rotation, out var rotation, appearance);
-        if (zPhysics != null)
-        {
-            // CE Z-level rendering owns the whole-sprite offset each frame. Compose with its
-            // canonical baseline instead of racing the pre/post-animation pipeline.
-            var targetDefault = original.ZOffsetDefault + offset;
-            var delta = targetDefault - zPhysics.SpriteOffsetDefault;
-            zPhysics.SpriteOffsetDefault = targetDefault;
-            _sprite.SetOffset((uid, sprite), sprite.Offset + delta);
-        }
-        else
-        {
-            _sprite.SetOffset((uid, sprite), original.Offset + offset);
-        }
-
-        if (original.Rotation is { } originalRotation && !HasComp<RotationVisualsComponent>(uid))
-            _sprite.SetRotation((uid, sprite), originalRotation + rotation);
-        return true;
+        var target = originalRotation + rotation;
+        if (sprite.Rotation != target)
+            _sprite.SetRotation((uid, sprite), target);
     }
 
-    private void AuditActive(float frameTime)
+    private void Restore(EntityUid uid, CEFixedSlotVisualStateComponent state)
     {
-        _activeAuditAccumulator += frameTime;
-        if (_activeAuditAccumulator < ActiveAuditInterval)
+        if (state.OriginalSprite is { } originalSprite &&
+            TryComp<SpriteComponent>(uid, out var sprite) &&
+            ReferenceEquals(originalSprite, sprite))
+        {
+            Restore(uid, sprite, state);
             return;
-
-        _activeAuditAccumulator = 0f;
-        foreach (var uid in _active)
-        {
-            if (TerminatingOrDeleted(uid))
-            {
-                _stale.Add(uid);
-                continue;
-            }
-
-            if (!TryComp<AppearanceComponent>(uid, out var appearance) ||
-                !_appearance.TryGetData<bool>(uid, CEFixedSlotVisuals.Active, out var active, appearance) ||
-                !active)
-            {
-                QueueApply(uid);
-                continue;
-            }
-
-            if (!TryComp<SpriteComponent>(uid, out var sprite))
-            {
-                _originalTransforms.Remove(uid);
-                continue;
-            }
-
-            TryComp<CEZPhysicsComponent>(uid, out var zPhysics);
-            if (!_originalTransforms.TryGetValue(uid, out var original) ||
-                !ReferenceEquals(original.Sprite, sprite) ||
-                !ReferenceEquals(original.ZPhysics, zPhysics))
-            {
-                QueueApply(uid);
-            }
         }
 
-        foreach (var uid in _stale)
-            ClearTracking(uid);
-
-        _stale.Clear();
-    }
-
-    private void QueueApply(EntityUid uid)
-    {
-        _pending.Add(uid);
-        _remainingAttempts[uid] = MaxPendingFrames;
-    }
-
-    private void ClearTracking(EntityUid uid)
-    {
-        _active.Remove(uid);
-        _pending.Remove(uid);
-        _remainingAttempts.Remove(uid);
-        _originalTransforms.Remove(uid);
-    }
-
-    private void ApplyActiveRotations()
-    {
-        foreach (var uid in _active)
-        {
-            if (!_originalTransforms.TryGetValue(uid, out var original) ||
-                original.Rotation is not { } originalRotation ||
-                !TryComp<SpriteComponent>(uid, out var sprite) ||
-                !ReferenceEquals(original.Sprite, sprite) ||
-                HasComp<RotationVisualsComponent>(uid) ||
-                !TryComp<AppearanceComponent>(uid, out var appearance) ||
-                !_appearance.TryGetData<bool>(uid, CEFixedSlotVisuals.Active, out var active, appearance) ||
-                !active)
-                continue;
-
-            _appearance.TryGetData<Angle>(uid, CEFixedSlotVisuals.Rotation, out var rotation, appearance);
-            var target = originalRotation + rotation;
-            if (sprite.Rotation != target)
-                _sprite.SetRotation((uid, sprite), target);
-        }
-    }
-
-    private void Restore(EntityUid uid, SpriteComponent sprite)
-    {
-        if (!_originalTransforms.Remove(uid, out var original))
-            return;
-
-        if (!ReferenceEquals(original.Sprite, sprite))
-            return;
-
-        if (original.ZPhysics != null &&
+        if (state.OriginalZPhysics is { } originalZPhysics &&
             TryComp<CEZPhysicsComponent>(uid, out var zPhysics) &&
-            ReferenceEquals(original.ZPhysics, zPhysics))
+            ReferenceEquals(originalZPhysics, zPhysics))
         {
-            var delta = original.ZOffsetDefault - zPhysics.SpriteOffsetDefault;
-            zPhysics.SpriteOffsetDefault = original.ZOffsetDefault;
+            zPhysics.SpriteOffsetDefault = state.CleanOffset;
+        }
+
+        ClearOriginal(state);
+    }
+
+    private void Restore(EntityUid uid, SpriteComponent sprite, CEFixedSlotVisualStateComponent state)
+    {
+        if (!ReferenceEquals(state.OriginalSprite, sprite))
+            return;
+
+        if (state.OriginalZPhysics != null &&
+            TryComp<CEZPhysicsComponent>(uid, out var zPhysics) &&
+            ReferenceEquals(state.OriginalZPhysics, zPhysics))
+        {
+            var delta = state.CleanOffset - zPhysics.SpriteOffsetDefault;
+            zPhysics.SpriteOffsetDefault = state.CleanOffset;
             _sprite.SetOffset((uid, sprite), sprite.Offset + delta);
         }
         else
         {
-            _sprite.SetOffset((uid, sprite), original.Offset);
+            _sprite.SetOffset((uid, sprite), state.CleanOffset);
         }
 
-        if (original.Rotation is { } originalRotation && !HasComp<RotationVisualsComponent>(uid))
+        if (state.OriginalRotation is { } originalRotation && !HasComp<RotationVisualsComponent>(uid))
             _sprite.SetRotation((uid, sprite), originalRotation);
+
+        ClearOriginal(state);
     }
 
-    private readonly record struct SpriteTransform(
-        SpriteComponent Sprite,
-        CEZPhysicsComponent? ZPhysics,
-        Vector2 Offset,
-        Angle? Rotation,
-        Vector2 ZOffsetDefault);
+    private void RestoreOwnedSpriteBaseline(
+        EntityUid uid,
+        SpriteComponent sprite,
+        CEFixedSlotVisualStateComponent state,
+        Vector2 cleanOffset)
+    {
+        _sprite.SetOffset((uid, sprite), cleanOffset);
+        if (state.OriginalRotation is { } originalRotation && !HasComp<RotationVisualsComponent>(uid))
+            _sprite.SetRotation((uid, sprite), originalRotation);
+
+        ClearOriginal(state);
+    }
+
+    private static void ClearOriginal(CEFixedSlotVisualStateComponent state)
+    {
+        state.OriginalSprite = null;
+        state.OriginalZPhysics = null;
+        state.CleanOffset = default;
+        state.OriginalRotation = null;
+    }
 }

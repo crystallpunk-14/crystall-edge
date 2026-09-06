@@ -1,4 +1,5 @@
 using System.Numerics;
+using Robust.Shared.Containers;
 
 namespace Content.Server._CE.EntitySlots;
 
@@ -15,6 +16,10 @@ public sealed partial class CEFixedEntitySlotsComponent : Component
     [DataField(required: true)]
     public List<CEFixedEntitySlotDefinition> Slots = new();
 
+    /// <summary>
+    /// Runtime cache of the standard containers backing <see cref="Slots"/>.
+    /// </summary>
+    public readonly List<ContainerSlot?> Containers = new();
 }
 
 /// <summary>

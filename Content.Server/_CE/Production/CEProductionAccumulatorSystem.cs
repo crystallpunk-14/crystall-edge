@@ -1,5 +1,4 @@
 using Content.Server._CE.Actions;
-using Content.Server._CE.GOAP;
 using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;
 using Content.Shared.EntityConditions;
@@ -76,7 +75,7 @@ public sealed partial class CEProductionAccumulatorSystem : EntitySystem
 
                 accumulator.WaitingForOutputSpend = false;
                 TrySchedule((uid, accumulator), accumulator.RepeatMinimum, accumulator.RepeatMaximum);
-                RefreshSensors(uid);
+                RaiseStateChanged(uid);
                 continue;
             }
 
@@ -85,7 +84,7 @@ public sealed partial class CEProductionAccumulatorSystem : EntitySystem
             {
                 accumulator.WaitingForOutputSpend = true;
                 accumulator.NextProductionAt = TimeSpan.Zero;
-                RefreshSensors(uid);
+                RaiseStateChanged(uid);
                 continue;
             }
 
@@ -163,7 +162,7 @@ public sealed partial class CEProductionAccumulatorSystem : EntitySystem
 
         ent.Comp.WaitingForOutputSpend = true;
         ent.Comp.NextProductionAt = TimeSpan.Zero;
-        RefreshSensors(ent);
+        RaiseStateChanged(ent);
     }
 
     private bool TrySchedule(
@@ -200,9 +199,9 @@ public sealed partial class CEProductionAccumulatorSystem : EntitySystem
             accumulator.PollInterval > TimeSpan.Zero;
     }
 
-    private void RefreshSensors(EntityUid producer)
+    private void RaiseStateChanged(EntityUid producer)
     {
-        var ev = new CEGOAPSensorRefreshEvent();
+        var ev = new CEProductionStateChangedEvent();
         RaiseLocalEvent(producer, ref ev);
     }
 }

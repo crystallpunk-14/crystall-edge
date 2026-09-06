@@ -1,0 +1,37 @@
+# Keep MobCow first so its canonical ruminant body, need thresholds,
+# reproduction, and udder configuration win over later capability parents.
+# TODO CE: Replace the temporarily inherited upstream cow RSI with a CE-owned livestock sprite.
+- type: entity
+  id: CEMobCow
+  parent:
+  - MobCow
+  - CEMobAnimalHusbandryBase
+  - CEAnimalFodderDietBase
+  - CEAnimalAdultGOAPBase
+  name: cow
+  description: A domesticated cow that needs regular food and water.
+  suffix: CE
+  categories: [ ForkFiltered ]
+  components:
+  - type: HTN
+    enabled: false
+  - type: CEGOAPEntityConditionSensor
+    updateInterval: 2
+    entries:
+    - conditionKey: CEAnimalHungry
+      condition: !type:HungerCondition
+        min: 50
+        inverted: true
+    - conditionKey: CEAnimalThirsty
+      condition: !type:CEThirstCondition
+        min: 150
+        inverted: true
+  - type: Reproductive
+    partnerWhitelist:
+      requireAll: true
+      tags:
+      - Cow
+      components:
+      - CEGOAP
+    offspring:
+    - id: CEMobCow

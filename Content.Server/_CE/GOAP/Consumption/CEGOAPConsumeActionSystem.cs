@@ -20,6 +20,7 @@ namespace Content.Server._CE.GOAP.Consumption;
 public sealed partial class CEGOAPConsumeActionSystem : CEGOAPActionSystem<CEGOAPConsumeAction>
 {
     [Dependency] private CEGOAPTargetBackoffSystem _backoff = default!;
+    [Dependency] private CEGOAPSelectorProfileSystem _selectorProfiles = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
     [Dependency] private IngestionSystem _ingestion = default!;
     [Dependency] private SharedInteractionSystem _interaction = default!;
@@ -39,7 +40,7 @@ public sealed partial class CEGOAPConsumeActionSystem : CEGOAPActionSystem<CEGOA
         Entity<CEGOAPComponent> ent,
         ref CEGOAPActionCanExecuteEvent<CEGOAPConsumeAction> args)
     {
-        if (!TryGetConfiguration(args.Action, out var selector, out var source))
+        if (!TryGetConfiguration(ent.Owner, args.Action, out var selector, out var source))
         {
             args.CanExecute = false;
             return;
@@ -65,7 +66,7 @@ public sealed partial class CEGOAPConsumeActionSystem : CEGOAPActionSystem<CEGOA
         Entity<CEGOAPComponent> ent,
         ref CEGOAPActionStartupEvent<CEGOAPConsumeAction> args)
     {
-        if (!TryGetConfiguration(args.Action, out _, out var source))
+        if (!TryGetConfiguration(ent.Owner, args.Action, out _, out var source))
             return;
 
         var state = EnsureComp<CEGOAPConsumeComponent>(ent);
@@ -79,7 +80,7 @@ public sealed partial class CEGOAPConsumeActionSystem : CEGOAPActionSystem<CEGOA
         Entity<CEGOAPComponent> ent,
         ref CEGOAPActionUpdateEvent<CEGOAPConsumeAction> args)
     {
-        if (!TryGetConfiguration(args.Action, out var selector, out var source) ||
+        if (!TryGetConfiguration(ent.Owner, args.Action, out var selector, out var source) ||
             !TryComp<CEGOAPConsumeComponent>(ent, out var state) ||
             !ReferenceEquals(state.SourceDefinition, source))
         {
@@ -246,14 +247,16 @@ public sealed partial class CEGOAPConsumeActionSystem : CEGOAPActionSystem<CEGOA
         return true;
     }
 
-    private static bool TryGetConfiguration(
+    private bool TryGetConfiguration(
+        EntityUid consumer,
         CEGOAPConsumeAction action,
         out CEGOAPSelectorConsumableProvider selector,
         out CEConsumableSource source)
     {
         selector = null!;
         source = null!;
-        if (action.Selector is not CEGOAPSelectorConsumableProvider resolvedSelector ||
+        if (!_selectorProfiles.TryResolveSelector(consumer, action.Selector, out var resolved) ||
+            resolved is not CEGOAPSelectorConsumableProvider resolvedSelector ||
             resolvedSelector.Source == null ||
             !float.IsFinite(resolvedSelector.Range) || resolvedSelector.Range < 0f ||
             action.RetryDelay < TimeSpan.Zero)

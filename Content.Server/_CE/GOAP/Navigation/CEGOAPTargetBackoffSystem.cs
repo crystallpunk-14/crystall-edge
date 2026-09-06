@@ -19,13 +19,6 @@ public sealed partial class CEGOAPTargetBackoffComponent : Component
     public int MaxEntries = 32;
 
     public readonly Dictionary<EntityUid, TimeSpan> UntilByTarget = new();
-
-    /// <summary>
-    /// Target identity resolved when the currently running move action started.
-    /// The move adapter uses this to avoid applying stale terminal status to a
-    /// newly resolved target.
-    /// </summary>
-    public EntityUid? ActiveMoveTarget;
 }
 
 /// <summary>

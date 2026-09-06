@@ -24,77 +24,30 @@ public sealed partial class CEGOAPTargetMoveFailureAdapterSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<CEGOAPTargetBackoffComponent, CEGOAPActionStartupEvent<CEGOAPMoveToTargetAction>>(
-            OnMoveStartup,
-            after: [typeof(CEGOAPMoveToTargetActionSystem)]);
         SubscribeLocalEvent<CEGOAPTargetBackoffComponent, CEGOAPActionUpdateEvent<CEGOAPMoveToTargetAction>>(
             OnMoveUpdate,
             after: [typeof(CEGOAPMoveToTargetActionSystem)]);
-        SubscribeLocalEvent<CEGOAPTargetBackoffComponent, CEGOAPActionShutdownEvent<CEGOAPMoveToTargetAction>>(
-            OnMoveShutdown,
-            after: [typeof(CEGOAPMoveToTargetActionSystem)]);
-    }
-
-    private void OnMoveStartup(
-        Entity<CEGOAPTargetBackoffComponent> ent,
-        ref CEGOAPActionStartupEvent<CEGOAPMoveToTargetAction> args)
-    {
-        ent.Comp.ActiveMoveTarget = ResolveTarget(ent.Owner, args.Action);
     }
 
     private void OnMoveUpdate(
         Entity<CEGOAPTargetBackoffComponent> ent,
         ref CEGOAPActionUpdateEvent<CEGOAPMoveToTargetAction> args)
     {
-        if (args.Action.Selector is not ICEGOAPTargetBackoffSelector)
+        if (args.Action.Selector is not ICEGOAPTargetBackoffSelector || args.Target is not { } target)
             return;
-
-        var resolved = ResolveTarget(ent.Owner, args.Action);
-        if (resolved is not { } target)
-        {
-            // The generic move action otherwise remains Running when its selector
-            // stops resolving a target.
-            args.Status = CEGOAPActionStatus.Failed;
-            return;
-        }
-
-        if (ent.Comp.ActiveMoveTarget is not { } activeTarget || activeTarget != target)
-        {
-            // The base move action can still expose the previous steering status
-            // during a selector retarget. Re-plan cleanly without rejecting the
-            // newly resolved target for the old target's result.
-            ent.Comp.ActiveMoveTarget = target;
-            args.Status = CEGOAPActionStatus.Failed;
-            return;
-        }
 
         if (args.Status == CEGOAPActionStatus.Failed)
         {
-            _backoff.Reject(ent.Owner, activeTarget);
+            _backoff.Reject(ent.Owner, target);
             return;
         }
 
         if (args.Status != CEGOAPActionStatus.Finished ||
-            _interaction.InRangeAndAccessible(ent.Owner, activeTarget))
+            _interaction.InRangeAndAccessible(ent.Owner, target))
             return;
 
         // Geometric arrival is insufficient for a target behind an obstacle.
-        _backoff.Reject(ent.Owner, activeTarget);
+        _backoff.Reject(ent.Owner, target);
         args.Status = CEGOAPActionStatus.Failed;
-    }
-
-    private void OnMoveShutdown(
-        Entity<CEGOAPTargetBackoffComponent> ent,
-        ref CEGOAPActionShutdownEvent<CEGOAPMoveToTargetAction> args)
-    {
-        ent.Comp.ActiveMoveTarget = null;
-    }
-
-    private EntityUid? ResolveTarget(EntityUid agent, CEGOAPMoveToTargetAction action)
-    {
-        if (action.Selector is not ICEGOAPTargetBackoffSelector)
-            return null;
-
-        return action.Selector.Resolve(agent, EntityManager).Entity;
     }
 }

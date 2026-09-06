@@ -27,42 +27,23 @@ public sealed partial class CEFixedEntitySlotSystem : EntitySystem
         SubscribeLocalEvent<CEFixedEntitySlotsComponent, EntRemovedFromContainerMessage>(OnContainerRemoved);
     }
 
-    public int Capacity(EntityUid host)
-    {
-        return TryComp<CEFixedEntitySlotsComponent>(host, out var slots)
-            ? Capacity((host, slots))
-            : 0;
-    }
-
-    public int Capacity(Entity<CEFixedEntitySlotsComponent> host)
-    {
-        return host.Comp.Slots.Count;
-    }
-
     public bool HasFreeSlot(EntityUid host)
     {
-        return TryComp<CEFixedEntitySlotsComponent>(host, out var slots) && HasFreeSlot((host, slots));
+        return TryComp<CEFixedEntitySlotsComponent>(host, out var slots) && FindFreeSlot((host, slots)) >= 0;
     }
 
-    public bool HasFreeSlot(Entity<CEFixedEntitySlotsComponent> host)
+    public bool TryGetOccupant(
+        Entity<CEFixedEntitySlotsComponent> host,
+        int slot,
+        out EntityUid occupant)
     {
-        return FindFreeSlot(host) >= 0;
-    }
+        occupant = default;
+        if (slot < 0 || slot >= host.Comp.Slots.Count ||
+            EnsureSlotContainer(host, slot).ContainedEntity is not { } contained)
+            return false;
 
-    public IReadOnlyList<EntityUid?> GetOccupants(Entity<CEFixedEntitySlotsComponent> host)
-    {
-        var occupants = new EntityUid?[host.Comp.Slots.Count];
-        for (var slot = 0; slot < occupants.Length; slot++)
-            occupants[slot] = EnsureSlotContainer(host.Owner, slot).ContainedEntity;
-
-        return occupants;
-    }
-
-    public IReadOnlyList<EntityUid?> GetOccupants(EntityUid host)
-    {
-        return TryComp<CEFixedEntitySlotsComponent>(host, out var slots)
-            ? GetOccupants((host, slots))
-            : Array.Empty<EntityUid?>();
+        occupant = contained;
+        return true;
     }
 
     public bool TryInsert(EntityUid occupant, EntityUid host, out int slot)
@@ -133,6 +114,13 @@ public sealed partial class CEFixedEntitySlotSystem : EntitySystem
             !_containers.Remove(occupant, container, destination: hostTransform.Coordinates))
             return false;
 
+        // Removal callbacks may revoke or replace the authored slot owner.
+        // Leave the original occupant outside instead of inserting through stale state.
+        if (slots.LifeStage >= ComponentLifeStage.Stopping ||
+            !TryComp<CEFixedEntitySlotsComponent>(hostUid, out var currentSlots) ||
+            !ReferenceEquals(slots, currentSlots))
+            return false;
+
         var host = new Entity<CEFixedEntitySlotsComponent>(hostUid, slots);
         if (TryInsertAtSlot(replacement, host, slot))
             return true;
@@ -168,7 +156,7 @@ public sealed partial class CEFixedEntitySlotSystem : EntitySystem
             !HasComp<TransformComponent>(occupant))
             return false;
 
-        container = EnsureSlotContainer(host.Owner, slot);
+        container = EnsureSlotContainer(host, slot);
         if (container.ContainedEntity != null)
             return false;
 
@@ -186,12 +174,6 @@ public sealed partial class CEFixedEntitySlotSystem : EntitySystem
     public bool TryGetSlot(EntityUid occupant, out EntityUid host, out int slot)
     {
         return TryGetSlot(occupant, out host, out slot, out _);
-    }
-
-    public bool IsInSlot(EntityUid occupant, EntityUid host, int slot)
-    {
-        return TryGetSlot(occupant, out var actualHost, out var actualSlot) &&
-            actualHost == host && actualSlot == slot;
     }
 
     private bool TryGetSlot(
@@ -218,7 +200,7 @@ public sealed partial class CEFixedEntitySlotSystem : EntitySystem
     {
         for (var slot = 0; slot < ent.Comp.Slots.Count; slot++)
         {
-            var container = EnsureSlotContainer(ent.Owner, slot);
+            var container = EnsureSlotContainer(ent, slot);
             if (container.ContainedEntity is not { } occupant)
                 continue;
 
@@ -273,18 +255,28 @@ public sealed partial class CEFixedEntitySlotSystem : EntitySystem
     {
         for (var slot = 0; slot < host.Comp.Slots.Count; slot++)
         {
-            if (EnsureSlotContainer(host.Owner, slot).ContainedEntity == null)
+            if (EnsureSlotContainer(host, slot).ContainedEntity == null)
                 return slot;
         }
 
         return -1;
     }
 
-    private ContainerSlot EnsureSlotContainer(EntityUid host, int slot)
+    private ContainerSlot EnsureSlotContainer(Entity<CEFixedEntitySlotsComponent> host, int slot)
     {
-        var container = _containers.EnsureContainer<ContainerSlot>(host, GetContainerId(slot));
+        while (host.Comp.Containers.Count <= slot)
+            host.Comp.Containers.Add(null);
+
+        // A different system may replace the canonical container without replacing our component.
+        if (host.Comp.Containers[slot] is { } cached &&
+            _containers.TryGetContainer(host.Owner, cached.ID, out var current) &&
+            ReferenceEquals(cached, current))
+            return cached;
+
+        var container = _containers.EnsureContainer<ContainerSlot>(host.Owner, GetContainerId(slot));
         container.ShowContents = true;
         container.OccludesLight = false;
+        host.Comp.Containers[slot] = container;
         return container;
     }
 
@@ -306,7 +298,7 @@ public sealed partial class CEFixedEntitySlotSystem : EntitySystem
     {
         for (var slot = 0; slot < host.Comp.Slots.Count; slot++)
         {
-            var container = EnsureSlotContainer(host.Owner, slot);
+            var container = EnsureSlotContainer(host, slot);
             if (container.ContainedEntity is { } occupant)
             {
                 // Component/host teardown must not leave occupants in orphaned
@@ -343,14 +335,18 @@ public sealed partial class CEFixedEntitySlotSystem : EntitySystem
         BaseContainer container,
         out int slot)
     {
-        for (slot = 0; slot < slots.Slots.Count; slot++)
+        var containerId = container.ID;
+        if (!containerId.StartsWith(ContainerPrefix, StringComparison.Ordinal) ||
+            !int.TryParse(containerId.AsSpan(ContainerPrefix.Length), out slot) ||
+            slot < 0 ||
+            slot >= slots.Slots.Count ||
+            !string.Equals(containerId, GetContainerId(slot), StringComparison.Ordinal))
         {
-            if (string.Equals(container.ID, GetContainerId(slot), StringComparison.Ordinal))
-                return true;
+            slot = -1;
+            return false;
         }
 
-        slot = -1;
-        return false;
+        return true;
     }
 
     private void RaiseInserted(EntityUid occupant, EntityUid host, int slot)

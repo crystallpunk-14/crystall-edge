@@ -30,13 +30,12 @@ public sealed partial class CEAnimalDietSystem : EntitySystem
 
     public bool CanSelectFood(EntityUid consumer, Entity<EdibleComponent?> food)
     {
-        if (!TryComp(food.Owner, out EdibleComponent? edible))
+        if (!Resolve(food.Owner, ref food.Comp, false))
             return false;
 
-        Entity<EdibleComponent?> resolved = (food.Owner, edible);
-        if (_ingestion.GetEdibleType(resolved) != IngestionSystem.Food ||
-            _ingestion.TotalNutrition(resolved) <= 0f ||
-            !CanSelectEdible(consumer, resolved) ||
+        if (_ingestion.GetEdibleType(food) != IngestionSystem.Food ||
+            _ingestion.TotalNutrition(food) <= 0f ||
+            !CanSelectEdible(consumer, food) ||
             !HasComp<IgnoreBadFoodComponent>(consumer) && HasComp<BadFoodComponent>(food.Owner))
             return false;
 
@@ -60,13 +59,12 @@ public sealed partial class CEAnimalDietSystem : EntitySystem
 
     public bool CanSelectDrink(EntityUid consumer, Entity<EdibleComponent?> drink)
     {
-        if (!TryComp(drink.Owner, out EdibleComponent? edible))
+        if (!Resolve(drink.Owner, ref drink.Comp, false))
             return false;
 
-        Entity<EdibleComponent?> resolved = (drink.Owner, edible);
-        return _ingestion.GetEdibleType(resolved) == IngestionSystem.Drink &&
-            _ingestion.TotalHydration(resolved) > 0f &&
-            CanSelectEdible(consumer, resolved);
+        return _ingestion.GetEdibleType(drink) == IngestionSystem.Drink &&
+            _ingestion.TotalHydration(drink) > 0f &&
+            CanSelectEdible(consumer, drink);
     }
 
     private bool CanSelectEdible(EntityUid consumer, Entity<EdibleComponent?> edible)

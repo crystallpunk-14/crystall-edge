@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Server._CE.AnimalHusbandry.Resources.Consumption;
 using Content.Server._CE.EntitySlots;
 using Content.Server.Stack;
@@ -6,6 +5,7 @@ using Content.Shared._CE.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
+using Robust.Shared.Containers;
 
 namespace Content.Server._CE.AnimalHusbandry.Infrastructure.Feeding;
 
@@ -24,6 +24,7 @@ public sealed partial class CEAnimalFoodSystem : EntitySystem
     {
         base.Initialize();
         SubscribeLocalEvent<CEFeedTroughComponent, AfterInteractUsingEvent>(OnInteractUsing);
+        SubscribeLocalEvent<CEFeedTroughComponent, EntRemovedFromContainerMessage>(OnContainerRemoved);
         SubscribeLocalEvent<CEExamineAugmentEvent>(OnExamine);
     }
 
@@ -64,44 +65,54 @@ public sealed partial class CEAnimalFoodSystem : EntitySystem
         out EntityUid food)
     {
         food = default;
-        var occupants = _fixedSlots.GetOccupants(slots);
-        foreach (var stale in trough.Comp.ReservedFood
-                     .Where(reservation =>
-                         !Exists(reservation.Key) ||
-                         !occupants.Contains(reservation.Key) ||
-                         !Exists(reservation.Value))
-                     .Select(reservation => reservation.Key)
-                     .ToArray())
+        List<EntityUid>? staleReservations = null;
+        foreach (var (reservedFood, owner) in trough.Comp.ReservedFood)
         {
-            trough.Comp.ReservedFood.Remove(stale);
-        }
-
-        // A consumer must see its own claim through every source-strategy instance.
-        // GOAP sensors, selectors and actions are deserialized independently.
-        foreach (var occupant in occupants)
-        {
-            if (occupant is not { } candidate ||
-                !trough.Comp.ReservedFood.TryGetValue(candidate, out var owner) ||
-                owner != consumer ||
-                !_diet.CanSelectFood(consumer, (candidate, null)))
+            if (Exists(reservedFood) && Exists(owner))
                 continue;
 
-            food = candidate;
-            return true;
+            (staleReservations ??= new()).Add(reservedFood);
         }
 
-        foreach (var occupant in occupants)
+        if (staleReservations != null)
         {
-            if (occupant is not { } candidate ||
-                trough.Comp.ReservedFood.ContainsKey(candidate) ||
-                !_diet.CanSelectFood(consumer, (candidate, null)))
+            foreach (var stale in staleReservations)
+                trough.Comp.ReservedFood.Remove(stale);
+        }
+
+        EntityUid? available = null;
+        for (var slot = 0; slot < slots.Comp.Slots.Count; slot++)
+        {
+            if (!_fixedSlots.TryGetOccupant(slots, slot, out var candidate))
                 continue;
 
-            food = candidate;
-            return true;
+            if (trough.Comp.ReservedFood.TryGetValue(candidate, out var owner))
+            {
+                if (owner != consumer || !_diet.CanSelectFood(consumer, (candidate, null)))
+                    continue;
+
+                // A consumer must see its own claim through every independently
+                // deserialized source-strategy instance.
+                food = candidate;
+                return true;
+            }
+
+            if (available != null || !_diet.CanSelectFood(consumer, (candidate, null)))
+                continue;
+
+            available = candidate;
         }
 
-        return false;
+        if (available is not { } unreserved)
+            return false;
+
+        food = unreserved;
+        return true;
+    }
+
+    private void OnContainerRemoved(Entity<CEFeedTroughComponent> ent, ref EntRemovedFromContainerMessage args)
+    {
+        ent.Comp.ReservedFood.Remove(args.Entity);
     }
 
     private void OnInteractUsing(Entity<CEFeedTroughComponent> ent, ref AfterInteractUsingEvent args)
@@ -130,9 +141,10 @@ public sealed partial class CEAnimalFoodSystem : EntitySystem
             if (!TryComp<CEFixedEntitySlotsComponent>(member, out var slots))
                 continue;
 
-            foreach (var occupant in _fixedSlots.GetOccupants((member, slots)))
+            for (var slot = 0; slot < slots.Slots.Count; slot++)
             {
-                if (occupant is not { } food || !TryComp<EdibleComponent>(food, out var edible))
+                if (!_fixedSlots.TryGetOccupant((member, slots), slot, out var food) ||
+                    !TryComp<EdibleComponent>(food, out var edible))
                     continue;
 
                 var count = _stacks.GetCount((food, null));

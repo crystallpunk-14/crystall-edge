@@ -3,7 +3,6 @@ using Content.Server.NPC.Components;
 using Content.Server.NPC.Systems;
 using Content.Shared._CE.GOAP;
 using Content.Shared._CE.GOAP.Components;
-using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -31,6 +30,23 @@ public sealed partial class CEGOAPMoveToTargetAction : CEGOAPActionBase<CEGOAPMo
     public float ReregisterThreshold = 1f;
 }
 
+[RegisterComponent]
+public sealed partial class CEGOAPMoveToTargetComponent : Component
+{
+    /// <summary>
+    /// Target identity of the current steering request. A selector retarget must
+    /// not apply the previous target's terminal steering status to the new one.
+    /// </summary>
+    public EntityUid? Target;
+
+    /// <summary>
+    /// The selected slope and adjacent map, captured when steering starts.
+    /// Arrival must still use this anchored slope, not a deleted or replaced
+    /// cache entry. Consume the snapshot before a map change stops the action.
+    /// </summary>
+    public (EntityUid Slope, EntityUid DestinationMap, Vector2i Tile, Direction Direction)? PendingTransition;
+}
+
 public sealed partial class CEGOAPMoveToTargetActionSystem : CEGOAPActionSystem<CEGOAPMoveToTargetAction>
 {
     [Dependency] private NPCSteeringSystem _steering = default!;
@@ -42,33 +58,25 @@ public sealed partial class CEGOAPMoveToTargetActionSystem : CEGOAPActionSystem<
     [Dependency] private EntityQuery<TransformComponent> _xformQuery = default!;
     [Dependency] private EntityQuery<NPCSteeringComponent> _steeringQuery = default!;
     [Dependency] private EntityQuery<MapGridComponent> _gridQuery = default!;
-    [Dependency] private EntityQuery<MapComponent> _mapQuery = default!;
-    [Dependency] private EntityQuery<CEZMapComponent> _zMapQuery = default!;
-
-
-    private readonly Dictionary<EntityUid, Direction> _pendingAscent = new();
-
-    /// <summary>
-    /// Tracks NPCs navigating to a descent point.
-    /// Stores the slope direction and the map-below entity UID, captured at registration time,
-    /// so the teleport doesn't need to re-resolve MapBelow at update time.
-    /// </summary>
-    private readonly Dictionary<EntityUid, (Direction SlopeDir, EntityUid BelowMapUid)> _pendingDescent = new();
 
     protected override void OnActionStartup(
         Entity<CEGOAPComponent> ent,
         ref CEGOAPActionStartupEvent<CEGOAPMoveToTargetAction> args)
     {
-        RegisterSteering(ent, args.Action);
+        var state = EnsureComp<CEGOAPMoveToTargetComponent>(ent);
+        if (TryResolveCoords(ent, args.Action.Selector, out var coords, out state.Target))
+            RegisterSteering(ent, args.Action, coords, state);
     }
 
     protected override void OnActionUpdate(
         Entity<CEGOAPComponent> ent,
         ref CEGOAPActionUpdateEvent<CEGOAPMoveToTargetAction> args)
     {
-        if (!TryResolveCoords(ent, args.Action.Selector, out var coords))
+        if (!TryResolveCoords(ent, args.Action.Selector, out var coords, out args.Target))
+        {
+            args.Status = CEGOAPActionStatus.Failed;
             return;
-
+        }
 
         if (!_xformQuery.TryGetComponent(ent, out var npcXform))
         {
@@ -79,15 +87,24 @@ public sealed partial class CEGOAPMoveToTargetActionSystem : CEGOAPActionSystem<
         // If on different maps, we are doing cross-Z navigation — never report Finished directly.
         var sameMaps = npcXform.MapUid == _transform.GetMap(coords);
 
+        var state = EnsureComp<CEGOAPMoveToTargetComponent>(ent);
+        var retargeted = state.Target != args.Target;
+        state.Target = args.Target;
+
         // Re-register steering if target has moved significantly
         if (_steeringQuery.TryComp(ent, out var steering))
         {
             // Re-register if target moved significantly (only for same-map direct nav)
-            if (sameMaps && steering.Coordinates.TryDistance(EntityManager, coords, out var delta)
-                         && delta > args.Action.ReregisterThreshold)
+            if (retargeted || sameMaps &&
+                steering.Coordinates.TryDistance(EntityManager, coords, out var delta) &&
+                delta > args.Action.ReregisterThreshold)
             {
-                var comp = _steering.Register(ent, coords);
-                comp.Range = args.Action.Range;
+                // Register alone retains terminal status on an existing steering
+                // component. Start a fresh request and let it run before reading
+                // InRange/NoPath, regardless of whether target backoff is enabled.
+                _steering.Unregister(ent);
+                RegisterSteering(ent, args.Action, coords, state);
+                return;
             }
 
             switch (steering.Status)
@@ -99,39 +116,29 @@ public sealed partial class CEGOAPMoveToTargetActionSystem : CEGOAPActionSystem<
                         return;
                     }
 
-                    // Reached slope destination — teleport between Z-levels
-                    if (_pendingAscent.Remove(ent.Owner, out var ascentDir))
+                    if (state.PendingTransition == null)
                     {
-                        _zLevels.TryMoveUp(ent);
-                        // ascentDir = downhill; shift UPHILL (opposite) to land on upper map floor
-                        var pos = _transform.GetWorldPosition(ent);
-                        _transform.SetWorldPosition(ent, pos + ascentDir.GetOpposite().ToVec() * 0.25f);
-                        // ParentChanged triggers re-plan
-                    }
-                    else if (_pendingDescent.Remove(ent.Owner, out var descentData))
-                    {
-                        // Force move to the map below at the shifted position.
-                        // BelowMapUid was captured at registration time — no nullable lookup needed.
-                        if (_mapQuery.TryComp(descentData.BelowMapUid, out var belowMapComp))
-                        {
-                            var pos = _transform.GetWorldPosition(ent);
-                            var newPos = pos + descentData.SlopeDir.ToVec() * 0.75f;
-                            _transform.SetMapCoordinates(ent, new MapCoordinates(newPos, belowMapComp.MapId));
-                        }
-                        // ParentChanged triggers re-plan
-                    }
-                    else
-                    {
-                        // Neither entry found — state de-synced (e.g. TryMoveUp failed silently).
-                        // Re-register steering so the NPC tries again next tick.
-                        RegisterSteering(ent, args.Action);
+                        // A same-map target may have moved to another map while
+                        // we approached it. Start a fresh cross-Z request.
+                        _steering.Unregister(ent);
+                        RegisterSteering(ent, args.Action, coords, state);
+                        return;
                     }
 
-                    break;
+                    // ParentChanged stops the action synchronously on success.
+                    args.Status = TryTransition(ent, npcXform.MapUid, state)
+                        ? CEGOAPActionStatus.Running
+                        : CEGOAPActionStatus.Failed;
+                    return;
                 case SteeringStatus.NoPath:
                     args.Status = CEGOAPActionStatus.Failed;
                     return;
             }
+        }
+        else
+        {
+            args.Status = CEGOAPActionStatus.Failed;
+            return;
         }
 
         args.Status = CEGOAPActionStatus.Running;
@@ -141,16 +148,17 @@ public sealed partial class CEGOAPMoveToTargetActionSystem : CEGOAPActionSystem<
         Entity<CEGOAPComponent> ent,
         ref CEGOAPActionShutdownEvent<CEGOAPMoveToTargetAction> args)
     {
-        _pendingAscent.Remove(ent.Owner);
-        _pendingDescent.Remove(ent.Owner);
         _steering.Unregister(ent);
+        RemComp<CEGOAPMoveToTargetComponent>(ent);
     }
 
-    private void RegisterSteering(Entity<CEGOAPComponent> ent, CEGOAPMoveToTargetAction action)
+    private void RegisterSteering(
+        Entity<CEGOAPComponent> ent,
+        CEGOAPMoveToTargetAction action,
+        EntityCoordinates coords,
+        CEGOAPMoveToTargetComponent state)
     {
-        if (!TryResolveCoords(ent, action.Selector, out var coords))
-            return;
-
+        state.PendingTransition = null;
         if (!_xformQuery.TryGetComponent(ent, out var npcXform))
             return;
 
@@ -159,12 +167,9 @@ public sealed partial class CEGOAPMoveToTargetActionSystem : CEGOAPActionSystem<
         if (npcMapUid == null || targetMapUid == null)
             return;
 
-
         // Same map — direct steering to target
         if (npcMapUid == targetMapUid)
         {
-            _pendingAscent.Remove(ent.Owner, out _);
-            _pendingDescent.Remove(ent.Owner, out _);
             var comp = _steering.Register(ent, coords);
             comp.Range = action.Range;
             return;
@@ -172,47 +177,32 @@ public sealed partial class CEGOAPMoveToTargetActionSystem : CEGOAPActionSystem<
 
         // Different maps — compute Z-direction
         var zOffset = GetZOffset(npcMapUid.Value, targetMapUid.Value);
-        if (zOffset == 0)
+        if (zOffset == 0 ||
+            !_zLevels.TryMapOffset(npcMapUid.Value, Math.Sign(zOffset), out var destinationMap) ||
+            !_gridQuery.TryGetComponent(npcMapUid, out var grid))
             return;
 
         var npcWorldPos = _transform.GetWorldPosition(npcXform);
+        var slopeMap = zOffset > 0 ? npcMapUid.Value : destinationMap.Owner;
+        // World coordinates are shared across Z-levels. Ascend on the current
+        // map's slope; descend via the slope on the adjacent map below.
+        if (!_ladderCache.GetNearestLadder(slopeMap, npcWorldPos, 5, out var slopeTilePos, out var cachedSlope))
+            return;
 
+        var uphillDir = cachedSlope.Direction.GetOpposite();
+        EntityCoordinates targetCoords;
 
         if (zOffset > 0) //Finds the nearest slope on the current map and steers to its uphill edge.
         {
-            if (!_gridQuery.TryGetComponent(npcMapUid, out var grid))
-                return;
-
-            if (!_ladderCache.GetNearestLadder(npcMapUid.Value, npcWorldPos, 5, out var slopeTilePos, out var cachedSlope))
-                return;
-
             // cachedSlope.Direction = downhill. Uphill = GetOpposite().
             // Steer to the uphill edge of the slope tile (the border where height reaches 1.0).
-            var uphillDir = cachedSlope.Direction.GetOpposite();
             var slopeTileCenter = _mapSystem.GridTileToLocal(npcMapUid.Value, grid, slopeTilePos);
             var edgeOffset = uphillDir.ToVec() * 0.45f;
-            var targetCoords = new EntityCoordinates(slopeTileCenter.EntityId,
+            targetCoords = new EntityCoordinates(slopeTileCenter.EntityId,
                 slopeTileCenter.Position + edgeOffset);
-
-            var comp = _steering.Register(ent, targetCoords);
-            comp.Range = 0.3f;
-
-            _pendingAscent[ent.Owner] = cachedSlope.Direction;
-            _pendingDescent.Remove(ent.Owner);
         }
         else //Finds the nearest slope on the map below and locates a walkable tile on the current map
         {
-            if (!_gridQuery.TryGetComponent(npcMapUid, out var grid))
-                return;
-
-            if (!_zLevels.TryMapDown(npcMapUid.Value, out var belowMap))
-                return;
-
-            // Find the nearest slope on the map below — world coords are shared across Z-levels.
-            if (!_ladderCache.GetNearestLadder(belowMap, npcWorldPos, 5, out var slopeTilePos, out var cachedSlope))
-                return;
-
-            var uphillDir = cachedSlope.Direction.GetOpposite();
             var approachTile = slopeTilePos + uphillDir.ToIntVec();
 
             if (!_mapSystem.TryGetTileRef(npcMapUid.Value, grid, approachTile, out var tileRef) || tileRef.Tile.IsEmpty)
@@ -221,15 +211,57 @@ public sealed partial class CEGOAPMoveToTargetActionSystem : CEGOAPActionSystem<
             // Steer to the edge of the target tile closest to the slope (= downhill edge).
             var tileCenter = _mapSystem.GridTileToLocal(npcMapUid.Value, grid, approachTile);
             var edgeOffset = cachedSlope.Direction.ToVec() * 0.4f;
-            var targetCoords = new EntityCoordinates(tileCenter.EntityId,
+            targetCoords = new EntityCoordinates(tileCenter.EntityId,
                 tileCenter.Position + edgeOffset);
-
-            var comp = _steering.Register(ent, targetCoords);
-            comp.Range = 0.3f;
-
-            _pendingDescent[ent.Owner] = (cachedSlope.Direction, belowMap.Owner);
-            _pendingAscent.Remove(ent.Owner);
         }
+
+        var steering = _steering.Register(ent, targetCoords);
+        steering.Range = 0.3f;
+        state.PendingTransition = (cachedSlope.Entity, destinationMap.Owner, slopeTilePos, cachedSlope.Direction);
+    }
+
+    private bool TryTransition(EntityUid user, EntityUid? currentMap, CEGOAPMoveToTargetComponent state)
+    {
+        if (currentMap == null || state.PendingTransition is not { } pending)
+            return false;
+
+        // Map changes raise ParentChanged synchronously and remove this runtime
+        // component. Keep only the local snapshot while executing the transition.
+        state.PendingTransition = null;
+        var offset = GetZOffset(currentMap.Value, pending.DestinationMap);
+        if (offset is not (1 or -1) ||
+            !_zLevels.TryMapOffset(currentMap.Value, offset, out var destination, out var destinationMap) ||
+            destination.Owner != pending.DestinationMap)
+            return false;
+
+        var slopeMap = offset > 0 ? currentMap.Value : destination.Owner;
+        if (TerminatingOrDeleted(pending.Slope) ||
+            !_xformQuery.TryGetComponent(pending.Slope, out var slopeXform) ||
+            !slopeXform.Anchored || slopeXform.GridUid != slopeMap ||
+            !TryComp<CEZLevelsLaddersCacheComponent>(slopeMap, out var cache) ||
+            !cache.Slopes.TryGetValue(pending.Tile, out var slope) ||
+            slope.Entity != pending.Slope || slope.Direction != pending.Direction)
+            return false;
+
+        if (offset > 0)
+        {
+            if (!_zLevels.TryMoveUp(user))
+                return false;
+
+            // Direction is downhill; shift UPHILL to land on upper map floor,
+            // but only after a successful ascent.
+            var pos = _transform.GetWorldPosition(user);
+            _transform.SetWorldPosition(user, pos + pending.Direction.GetOpposite().ToVec() * 0.25f);
+        }
+        else
+        {
+            // Force move to the validated map below at the shifted position.
+            var pos = _transform.GetWorldPosition(user);
+            var newPos = pos + pending.Direction.ToVec() * 0.75f;
+            _transform.SetMapCoordinates(user, new MapCoordinates(newPos, destinationMap.MapId));
+        }
+
+        return true;
     }
 
     /// <summary>
@@ -238,18 +270,12 @@ public sealed partial class CEGOAPMoveToTargetActionSystem : CEGOAPActionSystem<
     /// </summary>
     private int GetZOffset(EntityUid npcMapUid, EntityUid targetMapUid)
     {
-        if (!_zMapQuery.TryGetComponent(npcMapUid, out var npcZMap))
+        // Offset checks shared network identity, but not its lifetime. Reject
+        // stale networks even when cached adjacent-map references still exist.
+        if (!_zLevels.TryGetZLevelOffset(npcMapUid, targetMapUid, out var offset) ||
+            !_zLevels.TryGetMapNetwork(npcMapUid, out _))
             return 0;
 
-        if (!_zMapQuery.TryGetComponent(targetMapUid, out var targetZMap))
-            return 0;
-
-        // Reject cross-network routing: maps must be in the same Z-network.
-        if (!_zLevels.TryGetMapNetwork(npcMapUid, out var npcNetwork) ||
-            !_zLevels.TryGetMapNetwork(targetMapUid, out var targetNetwork) ||
-            npcNetwork.Owner != targetNetwork.Owner)
-            return 0;
-
-        return targetZMap.Depth - npcZMap.Depth;
+        return offset;
     }
 }

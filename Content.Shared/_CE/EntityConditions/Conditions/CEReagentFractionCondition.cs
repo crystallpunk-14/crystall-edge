@@ -40,7 +40,7 @@ public sealed partial class CEReagentFractionEntityConditionSystem
 /// A reusable solution-composition condition. Fractions are inclusive and use the current
 /// solution volume rather than the container capacity.
 /// </summary>
-[SerializedType("ReagentFractionCondition")]
+[SerializedType("CEReagentFractionCondition")]
 public sealed partial class CEReagentFractionCondition : EntityConditionBase<CEReagentFractionCondition>
 {
     [DataField(required: true)]

@@ -50,7 +50,7 @@ public sealed partial class CEGOAPComponent : Component
     public Dictionary<string, bool> WorldState = new();
 
     /// <summary>
-    /// Current plan being executed. Null if no plan.
+    /// Current plan being executed. Empty if no plan.
     /// </summary>
     [ViewVariables]
     public List<CEGOAPAction> CurrentPlan = new();
@@ -62,7 +62,7 @@ public sealed partial class CEGOAPComponent : Component
     public int CurrentActionIndex;
 
     /// <summary>
-    /// Whether the current action has had its startup event raised.
+    /// Whether the current action has entered startup and has not begun shutdown.
     /// </summary>
     [ViewVariables]
     public bool CurrentActionStarted;

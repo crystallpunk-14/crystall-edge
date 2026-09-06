@@ -1,5 +1,6 @@
 using Content.Shared.EntityConditions;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 using SharedEntityEffect = Content.Shared.EntityEffects.EntityEffect;
 
 namespace Content.Server._CE.Production;
@@ -49,10 +50,10 @@ public sealed partial class CEProductionAccumulatorComponent : Component
     [DataField(required: true)]
     public TimeSpan RepeatMaximum;
 
-    [DataField, AutoPausedField]
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
     public TimeSpan NextProductionAt;
 
-    [DataField, AutoPausedField]
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
     public TimeSpan NextPollAt;
 
     /// <summary>

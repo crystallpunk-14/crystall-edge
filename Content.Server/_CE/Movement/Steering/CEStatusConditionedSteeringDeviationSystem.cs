@@ -3,6 +3,7 @@ using Content.Server.NPC.Events;
 using Content.Server.NPC.Systems;
 using Content.Shared.NPC;
 using Content.Shared.StatusEffectNew;
+using Content.Shared.StatusEffectNew.Components;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -24,9 +25,22 @@ public sealed partial class CEStatusConditionedSteeringDeviationSystem : EntityS
     {
         base.Initialize();
 
+        SubscribeLocalEvent<CEStatusConditionedSteeringDeviationComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<CEStatusConditionedSteeringDeviationComponent, NPCSteeringEvent>(
             OnSteering,
             after: new[] { typeof(NPCJukeSystem) });
+    }
+
+    private void OnMapInit(
+        Entity<CEStatusConditionedSteeringDeviationComponent> ent,
+        ref MapInitEvent args)
+    {
+        if (IsConfigurationValid(ent.Comp))
+            return;
+
+        ent.Comp.Disabled = true;
+        ResetDeviation(ent.Comp);
+        Log.Error($"Invalid status-conditioned steering deviation configuration on {ToPrettyString(ent)}.");
     }
 
     private void OnSteering(
@@ -34,6 +48,9 @@ public sealed partial class CEStatusConditionedSteeringDeviationSystem : EntityS
         ref NPCSteeringEvent args)
     {
         var behavior = entity.Comp;
+        if (behavior.Disabled)
+            return;
+
         if (!IsRequiredStatusActive(entity.Owner, behavior))
         {
             ResetDeviation(behavior);
@@ -56,17 +73,16 @@ public sealed partial class CEStatusConditionedSteeringDeviationSystem : EntityS
                 return;
 
             behavior.DeviationDirection = PickDifferentDirection(args.Steering.LastSteerDirection);
-            behavior.DeviationEnd = now + RandomPeriod(
+            behavior.DeviationEnd = now + _random.Next(
                 behavior.MinDeviationDuration,
                 behavior.MaxDeviationDuration);
-            behavior.NextDeviation = behavior.DeviationEnd + RandomPeriod(
+            behavior.NextDeviation = behavior.DeviationEnd + _random.Next(
                 behavior.MinDeviationInterval,
                 behavior.MaxDeviationInterval);
         }
 
-        var retainedInterest = Math.Clamp(behavior.RetainedInterest, 0f, 1f);
         for (var i = 0; i < SharedNPCSteeringSystem.InterestDirections; i++)
-            args.Steering.Interest[i] *= retainedInterest;
+            args.Steering.Interest[i] *= behavior.RetainedInterest;
 
         var deviationIndex = ClosestDirectionIndex(behavior.DeviationDirection);
         args.Steering.Interest[deviationIndex] = MathF.Max(args.Steering.Interest[deviationIndex], 1f);
@@ -77,8 +93,8 @@ public sealed partial class CEStatusConditionedSteeringDeviationSystem : EntityS
         EntityUid uid,
         CEStatusConditionedSteeringDeviationComponent behavior)
     {
-        if (!_statusEffects.HasStatusEffect(uid, behavior.RequiredStatusEffect) ||
-            !_statusEffects.TryGetTime(uid, behavior.RequiredStatusEffect, out var time))
+        if (!TryComp<StatusEffectContainerComponent>(uid, out var container) ||
+            !_statusEffects.TryGetTime(uid, behavior.RequiredStatusEffect, out var time, container))
         {
             return false;
         }
@@ -117,19 +133,20 @@ public sealed partial class CEStatusConditionedSteeringDeviationSystem : EntityS
     {
         behavior.DeviationEnd = TimeSpan.Zero;
         behavior.DeviationDirection = Vector2.Zero;
-        behavior.NextDeviation = _timing.CurTime + RandomPeriod(
+        behavior.NextDeviation = _timing.CurTime + _random.Next(
             behavior.MinDeviationInterval,
             behavior.MaxDeviationInterval);
     }
 
-    private TimeSpan RandomPeriod(TimeSpan minimum, TimeSpan maximum)
+    private static bool IsConfigurationValid(CEStatusConditionedSteeringDeviationComponent behavior)
     {
-        var minSeconds = Math.Max(MinimumPeriodSeconds, minimum.TotalSeconds);
-        var maxSeconds = Math.Max(minSeconds, maximum.TotalSeconds);
-        if (Math.Abs(maxSeconds - minSeconds) < double.Epsilon)
-            return TimeSpan.FromSeconds(minSeconds);
-
-        return TimeSpan.FromSeconds(_random.NextDouble(minSeconds, maxSeconds));
+        var minimumPeriod = TimeSpan.FromSeconds(MinimumPeriodSeconds);
+        return behavior.MinDeviationInterval >= minimumPeriod &&
+            behavior.MaxDeviationInterval >= behavior.MinDeviationInterval &&
+            behavior.MinDeviationDuration >= minimumPeriod &&
+            behavior.MaxDeviationDuration >= behavior.MinDeviationDuration &&
+            float.IsFinite(behavior.RetainedInterest) &&
+            behavior.RetainedInterest is >= 0f and <= 1f;
     }
 
     private static void ResetDeviation(CEStatusConditionedSteeringDeviationComponent behavior)
