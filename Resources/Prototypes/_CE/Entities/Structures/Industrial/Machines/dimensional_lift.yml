@@ -4,7 +4,7 @@
   - CEConstructibleMachine
   - CEBaseMachinePowered
   - BaseMachine
-  name: dimensional lift
+  name: dimensional elevator
   description: Anchors a rift between the tile it stands on and the ground far below it. Handy on a floating island, or for dropping into a roofed room from the level above.
   categories: [ ForkFiltered ]
   components:
