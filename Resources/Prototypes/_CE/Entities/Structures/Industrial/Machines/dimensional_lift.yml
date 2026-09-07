@@ -1,0 +1,62 @@
+- type: entity
+  id: CEDimensionalLift
+  parent:
+  - CEConstructibleMachine
+  - CEBaseMachinePowered
+  - BaseMachine
+  name: dimensional lift
+  description: Anchors a rift between the tile it stands on and the ground far below it. Handy on a floating island, or for dropping into a roofed room from the level above.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Machine
+    board: CEMachineCoreDimensionalLift
+  - type: PlacementReplacement
+    key: walls
+  - type: Sprite
+    drawdepth: FloorTiles
+    snapCardinals: true
+    sprite: _CE/Structures/Industrial/map_projector.rsi
+    layers:
+    - state: base
+  - type: Icon
+    sprite: _CE/Structures/Industrial/map_projector.rsi
+    state: base
+  - type: CEDimensionalLift
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        mask:
+        - TabletopMachineMask
+        layer:
+        - Impassable
+        - MidImpassable
+        - LowImpassable
+        hard: false
+  - type: ApcPowerReceiver
+    powerLoad: 0.1
+  - type: AmbientOnPowered
+  - type: LitOnPowered
+  - type: PointLight
+    radius: 2
+    energy: 4
+    color: "#1cd0dd"
+    enabled: false
+
+- type: entity
+  parent: BasePortal
+  id: CEPortalDimensionalLift
+  suffix: Dimensional Lift
+  name: dimensional rift
+  description: A stable rift punched straight down through the world.
+  components:
+  - type: Sprite
+    layers:
+    - state: portal-blue
+  - type: PointLight
+    color: SkyBlue
+  - type: Portal
+    randomTeleport: false
+    canTeleportToOtherMaps: true
