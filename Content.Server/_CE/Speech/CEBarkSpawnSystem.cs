@@ -6,10 +6,6 @@ namespace Content.Server._CE.Speech;
 
 public sealed partial class CEBarkSpawnSystem : EntitySystem
 {
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
 
     [SubscribeLocalEvent]
     private void OnPlayerSpawnComplete(PlayerSpawnCompleteEvent args)

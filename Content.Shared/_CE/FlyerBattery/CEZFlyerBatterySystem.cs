@@ -13,10 +13,6 @@ public sealed partial class CEZFlyerBatterySystem : EntitySystem
     [Dependency] private CESharedZFlightSystem _flight = default!;
     [Dependency] private SharedBatterySystem _battery = default!;
     [Dependency] private IGameTiming _timing = default!;
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
 
     [SubscribeLocalEvent]
     private void OnBatteryChanged(Entity<CEZFlyerBatteryComponent> ent, ref BatteryStateChangedEvent args)

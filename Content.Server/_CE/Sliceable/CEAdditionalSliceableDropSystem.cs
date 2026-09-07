@@ -12,11 +12,6 @@ public sealed partial class CEAdditionalSliceableDropSystem : EntitySystem
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private StackSystem _stack = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnBeforeRefined(Entity<CEAdditionalSliceableDropComponent> ent, ref BeforeToolRefinedEvent args)
     {

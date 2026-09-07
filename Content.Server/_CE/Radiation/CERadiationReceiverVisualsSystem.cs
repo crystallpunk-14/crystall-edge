@@ -9,11 +9,6 @@ public sealed partial class CERadiationReceiverVisualsSystem : EntitySystem
 {
     [Dependency] private SharedAppearanceSystem _appearance = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnUpdate(RadiationSystemUpdatedEvent ev)
     {

@@ -33,7 +33,6 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        InitializeControllable();
 
         ZPhyzQuery = GetEntityQuery<CEZPhysicsComponent>();
     }

@@ -36,13 +36,6 @@ public abstract partial class CESharedWeaponSystem : EntitySystem
 
     [Dependency] private EntityQuery<StealthComponent> _stealthQuery = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        InitializeCosts();
-    }
-
     [SubscribeLocalEvent]
     private void OnGetWeaponAnimation(Entity<CEWieldedWeaponComponent> ent, ref CEGetWeaponAnimationsEvent args)
     {

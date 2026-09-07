@@ -17,10 +17,6 @@ public abstract partial class CESharedZLevelsSystem
 {
     [Dependency] protected ITileDefinitionManager TilDefMan = null!;
 
-    private void InitializeView()
-    {
-    }
-
     [SubscribeLocalEvent]
     private void OnToggleLookUp(Entity<CEZLevelViewerComponent> entity, ref ToggleActionEvent args)
     {

@@ -46,11 +46,6 @@ public sealed partial class CEGOAPRangeToTargetSensorSystem : EntitySystem
 
     [Dependency] private EntityQuery<TransformComponent> _xformQuery = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     public override void Update(float frameTime)
     {
         var curTime = _timing.CurTime;

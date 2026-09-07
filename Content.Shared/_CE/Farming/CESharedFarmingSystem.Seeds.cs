@@ -14,9 +14,6 @@ namespace Content.Shared._CE.Farming;
 
 public abstract partial class CESharedFarmingSystem
 {
-    private void InitializeSeeds()
-    {
-    }
 
     [SubscribeLocalEvent]
     private void OnSeedExamine(Entity<CESeedComponent> ent, ref ExaminedEvent args)

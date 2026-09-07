@@ -11,10 +11,6 @@ namespace Content.Shared._CE.ZLevels.Damage.FallingDamage;
 public sealed partial class CEFallingDamageSystem : EntitySystem
 {
     [Dependency] private DamageableSystem _damageable = default!;
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
 
     [SubscribeLocalEvent]
     private void OnFallOnMe(Entity<CEFallingDamageComponent> ent, ref CEZFellOnMeEvent args)

@@ -9,10 +9,6 @@ public sealed partial class CEFarmingSystem
 {
     [Dependency] private DamageableSystem _damageable = default!;
 
-    private void InitializeHealth()
-    {
-    }
-
     [SubscribeLocalEvent]
     private void OnPlantDamageChanged(Entity<CEPlantDyingComponent> ent, ref DamageChangedEvent args)
     {

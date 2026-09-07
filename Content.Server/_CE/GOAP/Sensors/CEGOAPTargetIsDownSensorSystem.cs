@@ -38,11 +38,6 @@ public sealed partial class CEGOAPTargetIsDownSensorSystem : EntitySystem
 
     [Dependency] private EntityQuery<MobStateComponent> _mobStateQuery = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnRefresh(Entity<CEGOAPTargetIsDownSensorComponent> ent, ref CEGOAPSensorRefreshEvent args)
     {

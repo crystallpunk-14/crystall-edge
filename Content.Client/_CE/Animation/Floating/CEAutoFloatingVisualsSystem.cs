@@ -18,11 +18,6 @@ public sealed partial class CEAutoFloatingVisualsSystem : EntitySystem
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private SpriteSystem _sprite = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnStartup(Entity<CEAutoFloatingVisualsComponent> ent, ref ComponentStartup args)
     {

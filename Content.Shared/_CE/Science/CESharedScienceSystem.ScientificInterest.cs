@@ -31,10 +31,6 @@ public abstract partial class CESharedScienceSystem
     private static readonly SoundSpecifier KnowledgeLearnedSound =
         new SoundPathSpecifier("/Audio/_CE/Effects/knowledge_learned.ogg");
 
-    private void InitializeScientificInterest()
-    {
-    }
-
     [SubscribeLocalEvent]
     private void OnRandomPointsMapInit(Entity<CEScienceRandomPointsComponent> ent, ref MapInitEvent args)
     {

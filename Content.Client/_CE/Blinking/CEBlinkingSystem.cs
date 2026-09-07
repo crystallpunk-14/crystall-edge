@@ -22,11 +22,6 @@ public sealed partial class CEBlinkingSystem : CESharedBlinkingSystem
 
     private const string AnimationKey = "anim-blink";
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnAppearanceChange(Entity<CEBlinkerComponent> ent, ref AppearanceChangeEvent args)
     {

@@ -14,11 +14,6 @@ public sealed partial class CEZFlyerStaminaSystem : EntitySystem
     [Dependency] private SharedStaminaSystem _stamina = default!;
     [Dependency] private IGameTiming _timing = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnStaminaCrit(Entity<CEZFlyerStaminaComponent> ent, ref CEEnterStaminaCritEvent args)
     {

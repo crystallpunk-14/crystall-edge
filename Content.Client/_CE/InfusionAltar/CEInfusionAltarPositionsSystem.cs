@@ -18,11 +18,6 @@ public sealed partial class CEInfusionAltarPositionsSystem : EntitySystem
 {
     private readonly EntProtoId _indicatorEntity = "CEInfusionAltarPositionIndicator";
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnExamined(Entity<CEInfusionAltarComponent> ent, ref ClientExaminedEvent args)
     {

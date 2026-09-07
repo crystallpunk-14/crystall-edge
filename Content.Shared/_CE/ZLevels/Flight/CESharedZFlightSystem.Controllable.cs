@@ -12,9 +12,6 @@ namespace Content.Shared._CE.ZLevels.Flight;
 
 public abstract partial class CESharedZFlightSystem
 {
-    private void InitializeControllable()
-    {
-    }
 
     [SubscribeLocalEvent]
     private void OnControllableFlightStopped(Entity<CEControllableFlightComponent> ent, ref CEFlightStoppedEvent args)

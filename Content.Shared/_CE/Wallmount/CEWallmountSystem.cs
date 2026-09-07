@@ -19,11 +19,6 @@ public sealed partial class CEWallmountSystem : EntitySystem
     // CrystallEdge: upstream removed the "Wall" tag in favor of WallComponent; windows still use a tag
     public static readonly ProtoId<TagPrototype> WindowTag = "Window";
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnWallmountAnchorChanged(Entity<CEWallmountedComponent> ent, ref AnchorStateChangedEvent args)
     {

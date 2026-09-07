@@ -16,11 +16,6 @@ public sealed partial class CEArcAttackDebugSystem : EntitySystem
 
     private CEMeleeArcOverlay? _activeOverlay;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnArcAttackFired(CEDebugArcAttackEvent ev)
     {

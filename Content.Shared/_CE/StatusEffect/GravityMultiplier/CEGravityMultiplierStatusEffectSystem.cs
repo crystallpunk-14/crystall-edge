@@ -8,11 +8,6 @@ public sealed partial class CEGravityMultiplierStatusEffectSystem : EntitySystem
 {
     [Dependency] private CESharedZLevelsSystem _zLevels = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnApplied(Entity<CEGravityMultiplierStatusEffectComponent> ent, ref StatusEffectAppliedEvent args)
     {

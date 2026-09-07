@@ -27,11 +27,6 @@ public sealed partial class CELimitedDaysRuleSystem : GameRuleSystem<CELimitedDa
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private SharedJobSystem _jobs = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnSpawnComplete(PlayerSpawnCompleteEvent ev)
     {

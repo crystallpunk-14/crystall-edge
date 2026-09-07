@@ -34,11 +34,6 @@ public sealed partial class CESharedDrillSystem : EntitySystem
 
     private readonly List<EntityUid> _cachedEntityList = new();
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnPowerChange(Entity<CEDrillComponent> ent, ref PowerChangedEvent args)
     {

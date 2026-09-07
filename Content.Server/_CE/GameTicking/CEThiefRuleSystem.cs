@@ -17,11 +17,6 @@ public sealed partial class CEThiefRuleSystem : GameRuleSystem<CEThiefRuleCompon
     [Dependency] private RoleSystem _role = default!;
     [Dependency] private SharedMindSystem _mind = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     /// <summary>
     /// When spawning, we look for the nearest thief player and try to attach ourselves to them.
     /// </summary>

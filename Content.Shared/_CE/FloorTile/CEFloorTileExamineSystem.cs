@@ -10,11 +10,6 @@ public sealed partial class CEFloorTileExamineSystem : EntitySystem
 {
     [Dependency] private IPrototypeManager _proto = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnExamined(Entity<FloorTileComponent> ent, ref ExaminedEvent args)
     {

@@ -35,7 +35,6 @@ public abstract partial class CESharedPowerSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        InitializeGlove();
 
         BatteryQuery = GetEntityQuery<BatteryComponent>();
     }

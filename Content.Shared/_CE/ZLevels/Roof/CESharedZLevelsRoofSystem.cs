@@ -32,11 +32,6 @@ public abstract partial class CESharedZLevelsRoofSystem : EntitySystem
     [Dependency] protected EntityQuery<CEZMapComponent> ZMapQuery = default!;
     [Dependency] protected EntityQuery<TransformComponent> XformQuery = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnTileChanged(Entity<CEZLevelRoofComponent> ent, ref TileChangedEvent args)
     {

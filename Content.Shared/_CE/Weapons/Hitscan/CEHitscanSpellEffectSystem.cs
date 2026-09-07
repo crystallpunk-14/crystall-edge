@@ -9,11 +9,6 @@ public sealed partial class CEHitscanSpellEffectSystem : EntitySystem
 {
     [Dependency] private EntityWhitelistSystem _whitelist = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnHitscanRaycastFired(Entity<CEHitscanEntityEffectComponent> ent, ref HitscanRaycastFiredEvent args)
     {

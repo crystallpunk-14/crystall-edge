@@ -11,11 +11,6 @@ public sealed partial class CEClientSkillSystem : CESharedSkillSystem
 
     public event Action<EntityUid>? OnSkillUpdate;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnAfterAutoHandleState(Entity<CESkillStorageComponent> ent, ref AfterAutoHandleStateEvent args)
     {

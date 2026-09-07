@@ -10,10 +10,6 @@ public sealed partial class CEAutoTilePlacementSystem : EntitySystem
     [Dependency] private TileSystem _tile = default!;
     [Dependency] private ITileDefinitionManager _tiledef = default!;
     [Dependency] private SharedMapSystem _maps = default!;
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
 
     [SubscribeLocalEvent]
     private void OnInit(Entity<CEAutoTilePlacementComponent> ent, ref ComponentInit args)

@@ -8,11 +8,6 @@ public sealed partial class CETimedDespawnFadeoutSystem : EntitySystem
 {
     [Dependency] private SpriteSystem _sprite = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnStartup(Entity<CETimedDespawnFadeoutComponent> entity, ref ComponentStartup args)
     {

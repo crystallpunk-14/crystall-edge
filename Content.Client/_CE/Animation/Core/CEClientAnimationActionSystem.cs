@@ -13,11 +13,6 @@ public sealed partial class CEClientAnimationActionSystem : CESharedAnimationAct
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IPlayerManager _player = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeNetworkEvent]
     private void OnEntityAnimation(CEEntityAnimationEvent ev)
     {

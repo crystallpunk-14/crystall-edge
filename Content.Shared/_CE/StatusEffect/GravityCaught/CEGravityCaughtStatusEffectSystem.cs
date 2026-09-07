@@ -10,10 +10,6 @@ public sealed partial class CEGravityCaughtStatusEffectSystem : EntitySystem
 {
     [Dependency] private CESharedZLevelsSystem _zLevels = default!;
     [Dependency] private SharedGravitySystem _gravity = default!;
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
 
     [SubscribeLocalEvent]
     private void CheckWeightless(Entity<CEGravityCaughtStatusEffectComponent> ent, ref StatusEffectRelayedEvent<IsWeightlessEvent> args)

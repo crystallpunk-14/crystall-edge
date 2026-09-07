@@ -11,11 +11,6 @@ public sealed partial class CEAutoGridGravitySystem : EntitySystem
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     // Fires when the component is added to the map entity.
     // If the map is already initialized (zLevelsComponentOverrides flow), iterate existing grids.
     // If not yet initialized, GridInitializeEvent handles each grid as it comes up.

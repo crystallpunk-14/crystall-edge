@@ -13,11 +13,6 @@ public sealed partial class CESafeFallClothingSystem : EntitySystem
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedStunSystem _stun = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnZLevelRelayedFall(Entity<CESafeFallClothingComponent> ent, ref InventoryRelayedEvent<CEZLevelChasmAttempt> args)
     {

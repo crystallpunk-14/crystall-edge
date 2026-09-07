@@ -17,10 +17,6 @@ public abstract partial class CESharedZLevelsSystem
 
     public IReadOnlyList<EntityUid> ActiveBodies => _activeBodies;
 
-    private void InitializeActivation()
-    {
-    }
-
     [SubscribeLocalEvent]
     private void OnMapInit(Entity<CEZPhysicsComponent> entity, ref MapInitEvent args)
     {

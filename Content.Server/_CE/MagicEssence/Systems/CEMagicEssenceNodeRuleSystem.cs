@@ -16,11 +16,6 @@ public sealed partial class CEMagicEssenceNodeRuleSystem : GameRuleSystem<CEMagi
     /// </summary>
     private bool _trimmingNodes;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     /// <summary>
     /// By the time a game rule Starts (as opposed to just being Added), the round-start station and
     /// its z-map network are already fully built - unlike StationPostInitEvent, which can fire

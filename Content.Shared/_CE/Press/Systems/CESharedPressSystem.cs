@@ -22,11 +22,6 @@ public abstract partial class CESharedPressSystem : EntitySystem
     [Dependency] private SharedContainerSystem _container = default!;
     [Dependency] private INetManager _net = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnPowerChanged(Entity<CEPressComponent> ent, ref PowerChangedEvent args)
     {

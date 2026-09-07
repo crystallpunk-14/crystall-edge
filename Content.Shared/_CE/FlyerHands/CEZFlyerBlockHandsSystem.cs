@@ -11,11 +11,6 @@ public sealed partial class CEZFlyerBlockHandsSystem : EntitySystem
 {
     [Dependency] private SharedHandsSystem _hands = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnPickupAttempt(Entity<CEZFlyerBlockHandsComponent> ent, ref PickupAttemptEvent args)
     {

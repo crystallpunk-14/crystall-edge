@@ -8,10 +8,6 @@ namespace Content.Shared._CE.StatusEffect.Pacifism;
 
 public sealed partial class CEPacifismSystem : EntitySystem
 {
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
 
     [SubscribeLocalEvent]
     private void OnAttackAttempt(Entity<CEPacifismStatusEffectComponent> ent, ref StatusEffectRelayedEvent<AttackAttemptEvent> args)

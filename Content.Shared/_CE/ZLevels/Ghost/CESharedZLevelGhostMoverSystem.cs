@@ -13,11 +13,6 @@ public abstract partial class CESharedZLevelGhostMoverSystem : EntitySystem
 {
     [Dependency] private CESharedZLevelsSystem _zLevel = null!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnZLevelDown(Entity<CEZLevelGhostMoverComponent> ent, ref CEZLevelActionDown args)
     {

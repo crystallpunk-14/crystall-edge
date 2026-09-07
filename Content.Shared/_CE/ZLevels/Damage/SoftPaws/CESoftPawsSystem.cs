@@ -14,11 +14,6 @@ public sealed partial class CESoftPawsSystem : EntitySystem
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private StandingStateSystem _standingState = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnFallingDamageCalculate(Entity<CESoftPawsComponent> ent, ref CEZFallingDamageCalculateEvent args)
     {

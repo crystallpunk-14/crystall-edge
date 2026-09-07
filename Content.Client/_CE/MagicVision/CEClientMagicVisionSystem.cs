@@ -22,11 +22,6 @@ public sealed partial class CEClientMagicVisionSystem : EntitySystem
     private readonly SoundSpecifier _startSound = new SoundPathSpecifier(new ResPath("/Audio/Effects/eye_open.ogg"));
     private readonly SoundSpecifier _endSound = new SoundPathSpecifier(new ResPath("/Audio/Effects/eye_close.ogg"));
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnStartup(Entity<CEMagicVisionComponent> ent, ref ComponentStartup args)
     {

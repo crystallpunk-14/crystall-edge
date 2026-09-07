@@ -109,13 +109,6 @@ public sealed partial class CEZCollapseSystem : EntitySystem
     /// </summary>
     private HashSet<EntityUid> _pendingIndexScan = new();
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        InitializeEvents();
-    }
-
     public override void Update(float frameTime)
     {
         base.Update(frameTime);

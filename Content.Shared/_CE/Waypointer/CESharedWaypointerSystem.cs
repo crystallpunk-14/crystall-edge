@@ -14,9 +14,6 @@ namespace Content.Shared._CE.Waypointer;
 /// </summary>
 public abstract partial class CESharedWaypointerSystem : EntitySystem
 {
-    public override void Initialize()
-    {
-    }
 
     [SubscribeLocalEvent]
     protected virtual void OnAddition(Entity<CEWaypointerComponent> player, ref ComponentInit args)

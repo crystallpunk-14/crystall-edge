@@ -58,11 +58,6 @@ public sealed partial class CEZGridConnectorSystem : EntitySystem
         _dirty = true;
     }
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnConnectorMapInit(Entity<CEZGridConnectorComponent> ent, ref MapInitEvent args)
     {

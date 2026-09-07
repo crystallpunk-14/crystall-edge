@@ -25,10 +25,6 @@ public abstract partial class CESharedSkillSystem
 
     private static readonly SoundSpecifier RecordSkillSound = new SoundCollectionSpecifier("PaperScribbles");
 
-    private void InitializePen()
-    {
-    }
-
     private bool CanRecordSkill(EntityUid target)
     {
         return _tag.HasTag(target, BookTag) && !HasComp<CESkillBookComponent>(target);

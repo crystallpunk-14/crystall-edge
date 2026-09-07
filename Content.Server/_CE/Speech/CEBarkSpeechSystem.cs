@@ -19,11 +19,6 @@ public sealed partial class CEBarkSpeechSystem : CESharedBarkSpeechSystem
 
     private readonly Dictionary<EntityUid, BarkSequence> _activeBarks = new();
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     /// <summary>
     /// Volume reduction in dB applied to bark sounds when whispering.
     /// </summary>

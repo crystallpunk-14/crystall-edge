@@ -43,11 +43,6 @@ public sealed partial class CEGOAPCheckHealthLevelSensorSystem : EntitySystem
     [Dependency] private MobThresholdSystem _mobThreshold = default!;
     [Dependency] private DamageableSystem _damageable = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnRefresh(Entity<CEGOAPCheckHealthLevelSensorComponent> ent, ref CEGOAPSensorRefreshEvent args)
     {

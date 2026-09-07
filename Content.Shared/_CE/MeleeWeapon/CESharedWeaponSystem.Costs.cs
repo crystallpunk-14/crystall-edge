@@ -9,10 +9,6 @@ public abstract partial class CESharedWeaponSystem
 {
     [Dependency] private SharedStaminaSystem _stamina = default!;
 
-    private void InitializeCosts()
-    {
-    }
-
     [SubscribeLocalEvent]
     private void OnStaminaCostAttempt(Entity<CEWeaponStaminaCostComponent> ent, ref CEWeaponUseAttemptEvent args)
     {

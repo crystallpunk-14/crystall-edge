@@ -16,10 +16,6 @@ public sealed partial class CEPriceScannerSystem : EntitySystem
     [Dependency] private InventorySystem _invSystem = default!;
     [Dependency] private CESharedCurrencySystem _currency = default!;
 
-    public override void Initialize()
-    {
-    }
-
     private bool IsAbleExamine(EntityUid uid)
     {
         if (HasComp<CEPriceScannerComponent>(uid))

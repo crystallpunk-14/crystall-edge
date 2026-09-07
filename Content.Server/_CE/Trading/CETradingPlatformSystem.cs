@@ -32,11 +32,6 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
 
     public static readonly ProtoId<TagPrototype> CoinTag = "CECoin";
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnItemPlaced(Entity<CETradingPlatformComponent> ent, ref ItemPlacedEvent args)
     {

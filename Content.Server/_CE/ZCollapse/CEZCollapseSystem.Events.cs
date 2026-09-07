@@ -6,9 +6,6 @@ namespace Content.Server._CE.ZCollapse;
 // happens here — see CEZCollapseSystem.cs for the actual recompute pipeline.
 public sealed partial class CEZCollapseSystem
 {
-    private void InitializeEvents()
-    {
-    }
 
     // Entities anchored from map/prototype data never raise AnchorStateChangedEvent (they start
     // already-anchored) — that's what the deferred MapInit index scan is for, not this handler.

@@ -7,9 +7,6 @@ namespace Content.Shared._CE.Actions;
 
 public abstract partial class CESharedActionSystem
 {
-    private void InitializePerformed()
-    {
-    }
 
     [SubscribeLocalEvent]
     private void OnManaCostActionPerformed(Entity<CEActionManaCostComponent> ent, ref ActionPerformedEvent args)

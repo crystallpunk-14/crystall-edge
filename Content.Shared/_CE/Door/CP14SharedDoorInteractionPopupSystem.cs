@@ -13,11 +13,6 @@ public sealed partial class CEDoorInteractionPopupSystem : EntitySystem
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnActivatedInWorld(Entity<CEDoorInteractionPopupComponent> door, ref ActivateInWorldEvent args)
     {

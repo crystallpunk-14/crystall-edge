@@ -25,11 +25,6 @@ public sealed partial class CEFunnelSystem : EntitySystem
     [Dependency] private INetManager _net = default!;
     [Dependency] private StorageSystem _storage = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     public override void Update(float frameTime)
     {
         base.Update(frameTime);

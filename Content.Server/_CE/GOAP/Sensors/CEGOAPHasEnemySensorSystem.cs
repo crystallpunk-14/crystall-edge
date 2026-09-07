@@ -22,10 +22,6 @@ public sealed partial class CEGOAPHasEnemySensorComponent : Component
 
 public sealed partial class CEGOAPHasEnemySensorSystem : EntitySystem
 {
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
 
     [SubscribeLocalEvent]
     private void OnCacheRebuilt(Entity<CEGOAPHasEnemySensorComponent> ent, ref CEGOAPKnowledgeCacheRebuiltEvent args)

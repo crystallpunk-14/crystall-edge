@@ -44,11 +44,6 @@ public sealed partial class CEZLevelToolTileSystem : EntitySystem
     [Dependency] private TileSystem _tiles = default!;
     [Dependency] private TurfSystem _turfs = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent(before: new[] { typeof(SharedToolSystem) })]
     private void OnAfterInteract(Entity<CEZLevelToolTileComponent> ent, ref AfterInteractEvent args)
     {

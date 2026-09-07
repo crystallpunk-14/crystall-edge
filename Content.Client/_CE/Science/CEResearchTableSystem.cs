@@ -8,11 +8,6 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
 {
     [Dependency] private SharedUserInterfaceSystem _userInterface = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     protected override void OnPaperStateChanged(Entity<CEResearchTableComponent> ent)
     {
         base.OnPaperStateChanged(ent);

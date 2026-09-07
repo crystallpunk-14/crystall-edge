@@ -6,10 +6,6 @@ namespace Content.Server._CE.Chemistry;
 
 public sealed partial class CEDeleteOnEmptySolutionSystem : EntitySystem
 {
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
 
     [SubscribeLocalEvent]
     private void OnSolutionChanged(Entity<CEDeleteOnEmptySolutionComponent> ent, ref SolutionChangedEvent args)

@@ -8,9 +8,6 @@ namespace Content.Shared._CE.Actions;
 
 public abstract partial class CESharedActionSystem
 {
-    private void InitializeExamine()
-    {
-    }
 
     [SubscribeLocalEvent]
     private void OnStaminaCostExamined(Entity<CEActionStaminaCostComponent> ent, ref ExaminedEvent args)

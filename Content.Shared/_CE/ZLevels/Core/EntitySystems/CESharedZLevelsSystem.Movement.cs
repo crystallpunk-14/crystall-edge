@@ -20,10 +20,6 @@ public abstract partial class CESharedZLevelsSystem
     private TimeSpan _accumulatedTime = TimeSpan.Zero;
     private readonly List<EntityUid> _dirtyMovementBodies = new();
 
-    private void InitializeMovement()
-    {
-    }
-
     /// <summary>
     /// Returns the last cached distance to the floor.
     /// </summary>

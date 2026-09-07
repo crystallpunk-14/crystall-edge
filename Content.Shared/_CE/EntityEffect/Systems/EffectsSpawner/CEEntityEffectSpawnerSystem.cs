@@ -9,11 +9,6 @@ public sealed partial class CEEntityEffectSpawnerSystem : EntitySystem
 {
     [Dependency] private IGameTiming _timing = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnMapInit(Entity<CEEntityEffectSpawnerComponent> ent, ref MapInitEvent args)
     {

@@ -21,11 +21,6 @@ public sealed partial class CEClientWallpaperSystem : EntitySystem
 
     private static readonly Direction[] Sides = { Direction.South, Direction.North, Direction.East, Direction.West };
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent(after: new[] { typeof(IconSmoothSystem) })]
     private void OnHandleState(Entity<CEWallpaperHolderComponent> ent, ref AfterAutoHandleStateEvent args) => Rebuild(ent);
 

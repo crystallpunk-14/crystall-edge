@@ -14,11 +14,6 @@ public sealed partial class CEZFlightSystem : CESharedZFlightSystem
 {
     [Dependency] private ActionsSystem _actions = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnRemove(Entity<CEControllableFlightComponent> ent, ref ComponentRemove args)
     {

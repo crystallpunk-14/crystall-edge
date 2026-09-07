@@ -15,9 +15,6 @@ namespace Content.Server._CE.Currency;
 public sealed partial class CECurrencySystem
 {
     [Dependency] private TagSystem _tag = default!;
-    private void InitializeConverter()
-    {
-    }
 
     [SubscribeLocalEvent]
     private void OnGetVerb(Entity<CECurrencyConverterComponent> ent, ref GetVerbsEvent<Verb> args)

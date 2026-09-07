@@ -13,10 +13,6 @@ namespace Content.Shared._CE.Examine;
 /// </summary>
 public sealed partial class CEExamineAugmentSystem : EntitySystem
 {
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
 
     [SubscribeLocalEvent]
     private void OnExamined(Entity<MetaDataComponent> ent, ref ExaminedEvent args)

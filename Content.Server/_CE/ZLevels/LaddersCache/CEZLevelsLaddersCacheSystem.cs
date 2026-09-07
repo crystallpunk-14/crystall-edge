@@ -15,11 +15,6 @@ public sealed partial class CEZLevelsLaddersCacheSystem : EntitySystem
     [Dependency] private EntityQuery<MapGridComponent> _gridQuery = default!;
     [Dependency] private EntityQuery<CEZLevelsLaddersCacheComponent> _cacheQuery = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnLadderInit(Entity<CEZLevelHighGroundComponent> ent, ref MapInitEvent args)
     {

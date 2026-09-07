@@ -10,9 +10,6 @@ namespace Content.Shared._CE.Power;
 
 public abstract partial class CESharedPowerSystem
 {
-    private void InitializeGlove()
-    {
-    }
 
     [SubscribeLocalEvent]
     private void OnAfterInteract(Entity<CEEnergyTransferGloveComponent> ent, ref AfterInteractEvent args)

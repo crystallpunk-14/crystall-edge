@@ -20,10 +20,6 @@ public abstract partial class CESharedMagicEnergySystem : EntitySystem
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private AlertsSystem _alert = default!;
 
-    public override void Initialize()
-    {
-    }
-
     [SubscribeLocalEvent]
     private void OnOvercharge(Entity<CEEnergyOverchargeDamageComponent> ent, ref CEEnergyOverchargeEvent args)
     {

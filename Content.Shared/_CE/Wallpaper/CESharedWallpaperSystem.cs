@@ -20,11 +20,6 @@ public sealed partial class CESharedWallpaperSystem : EntitySystem
     [Dependency] private SharedStackSystem _stack = default!;
     [Dependency] private IPrototypeManager _proto = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnStartup(Entity<CEWallpaperHolderComponent> holder, ref ComponentStartup args)
     {

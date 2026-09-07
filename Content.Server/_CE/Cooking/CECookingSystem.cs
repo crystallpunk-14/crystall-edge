@@ -18,11 +18,6 @@ public sealed partial class CECookingSystem : CESharedCookingSystem
 {
     [Dependency] private TemperatureSystem _temperature = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     public override void Update(float frameTime)
     {
         base.Update(frameTime);

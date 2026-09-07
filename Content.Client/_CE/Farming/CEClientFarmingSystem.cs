@@ -12,11 +12,6 @@ public sealed partial class CEClientFarmingSystem : CESharedFarmingSystem
     [Dependency] private SpriteSystem _sprite = default!;
     [Dependency] private IRobustRandom _random = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnProduceAutoHandleState(Entity<CEPlantProducingComponent> producing, ref AfterAutoHandleStateEvent args)
     {

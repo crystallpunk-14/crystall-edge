@@ -19,11 +19,6 @@ public sealed partial class CETemperatureSystem : EntitySystem
     [Dependency] private PointLightSystem _pointLight = default!;
     [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnPowerChanged(Entity<CEEntityHeaterComponent> ent, ref PowerChangedEvent args)
     {

@@ -14,10 +14,6 @@ public sealed partial class CEZLevelMappingSystem : EntitySystem
 {
     [Dependency] private CEZLevelsSystem _zLevels = default!;
     [Dependency] private SharedMapSystem _map = default!;
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
 
     [SubscribeLocalEvent]
     private void OnAddedIntoZNetwork(Entity<CEZMapComponent> ent, ref CEMapAddedIntoZNetworkEvent args)

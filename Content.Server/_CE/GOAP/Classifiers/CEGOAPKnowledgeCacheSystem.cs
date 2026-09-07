@@ -20,11 +20,6 @@ public sealed partial class CEGOAPKnowledgeCacheSystem : EntitySystem
 
     private readonly HashSet<EntityUid> _previousEnemies = new();
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnKnowledgeUpdated(Entity<CEGOAPKnowledgeCacheComponent> ent, ref CEGOAPKnowledgeUpdatedEvent args)
     {

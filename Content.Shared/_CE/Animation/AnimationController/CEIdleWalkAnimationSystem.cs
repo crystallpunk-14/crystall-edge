@@ -21,11 +21,6 @@ public sealed partial class CEIdleWalkAnimationSystem : EntitySystem
 
     private const float MovingThresholdSq = 0.04f; // 0.2 m/s
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnMapInit(Entity<CEAnimationControllerComponent> ent, ref MapInitEvent args)
     {

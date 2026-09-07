@@ -10,10 +10,6 @@ namespace Content.Server._CE.Weather;
 /// </summary>
 public sealed partial class CEWeatherEntityEffectSystem : EntitySystem
 {
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
 
     [SubscribeLocalEvent]
     private void OnEntityAffected(Entity<CEWeatherEntityEffectComponent> ent, ref CEWeatherEntityAffectedEvent args)

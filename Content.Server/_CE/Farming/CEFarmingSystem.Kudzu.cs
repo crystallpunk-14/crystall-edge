@@ -9,9 +9,6 @@ namespace Content.Server._CE.Farming;
 
 public sealed partial class CEFarmingSystem
 {
-    private void InitializeKudzu()
-    {
-    }
 
     [SubscribeLocalEvent]
     private void OnKudzuUpdate(Entity<CEPlantKudzuComponent> ent, ref CEAfterPlantUpdateEvent args)

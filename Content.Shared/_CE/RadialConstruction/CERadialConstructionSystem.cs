@@ -12,11 +12,6 @@ public sealed partial class CERadialConstructionSystem : EntitySystem
     [Dependency] private SharedHandsSystem _hands = default!;
     [Dependency] private SharedUserInterfaceSystem _ui = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnInteract(Entity<CERadialConstructionComponent> ent, ref InteractUsingEvent args)
     {

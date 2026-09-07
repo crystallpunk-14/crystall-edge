@@ -20,10 +20,6 @@ public abstract partial class CESharedSkillSystem
 
     private static readonly TimeSpan ReadTime = TimeSpan.FromSeconds(3);
 
-    private void InitializeRead()
-    {
-    }
-
     [SubscribeLocalEvent]
     private void OnBookMapInit(Entity<CESkillBookComponent> ent, ref MapInitEvent args)
     {

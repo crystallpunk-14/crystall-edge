@@ -44,11 +44,6 @@ public sealed partial class CEUserAnimationEffectSystem : CEEntityEffectSystem<U
     [Dependency] private AnimationPlayerSystem _animPlayer = default!;
     [Dependency] private SpriteSystem _sprite = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     protected override void Effect(ref CEEntityEffectEvent<UserAnimation> args)
     {
         if (!_timing.IsFirstTimePredicted)

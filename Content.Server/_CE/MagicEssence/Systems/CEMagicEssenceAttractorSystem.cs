@@ -13,13 +13,6 @@ public sealed partial class CEMagicEssenceAttractorSystem : EntitySystem
     [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        InitializePortable();
-    }
-
     public override void Update(float frameTime)
     {
         base.Update(frameTime);

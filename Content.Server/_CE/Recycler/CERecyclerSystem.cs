@@ -28,11 +28,6 @@ public sealed partial class CERecyclerSystem : CESharedRecyclerSystem
     [Dependency] private DestructibleSystem _destructible = default!;
     [Dependency] private DamageableSystem _damageable = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnPowerChanged(Entity<CERecyclerComponent> ent, ref PowerChangedEvent args)
     {

@@ -15,10 +15,6 @@ public abstract partial class CESharedActionSystem
 {
     [Dependency] private ExamineSystemShared _examine = default!;
 
-    private void InitializeAttempts()
-    {
-    }
-
     /// <summary>
     /// Before using a spell, a mana check is made for the amount of mana to show warnings.
     /// </summary>

@@ -11,11 +11,6 @@ public sealed partial class CEThiefSystem : EntitySystem
 {
     [Dependency] private CESharedWaypointerSystem _waypointer = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnToggleTreasureSense(Entity<ActorComponent> ent, ref CEThiefToggleTreasureSenseEvent args)
     {

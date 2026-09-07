@@ -17,10 +17,6 @@ public sealed partial class CEMagicEssenceAttractorSystem
     [Dependency] private FoldableSystem _foldable = default!;
     [Dependency] private IGameTiming _timing = default!;
 
-    private void InitializePortable()
-    {
-    }
-
     [SubscribeLocalEvent]
     private void OnPortableFolded(Entity<CEPortableMagicEssenceAttractorComponent> ent, ref FoldedEvent args)
     {

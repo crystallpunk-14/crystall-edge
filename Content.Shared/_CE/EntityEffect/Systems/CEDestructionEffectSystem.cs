@@ -6,10 +6,6 @@ namespace Content.Shared._CE.EntityEffect.Systems;
 
 public sealed partial class CEDestructionEffectSystem : EntitySystem
 {
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
 
     [SubscribeLocalEvent]
     private void OnDespawn(Entity<CEDestructionEffectComponent> ent, ref TimedDespawnEvent args)

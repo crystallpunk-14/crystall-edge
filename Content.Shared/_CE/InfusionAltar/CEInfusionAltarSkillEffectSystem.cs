@@ -14,11 +14,6 @@ public sealed partial class CEInfusionAltarSkillEffectSystem : EntitySystem
 {
     [Dependency] private IPrototypeManager _proto = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnGetSkillEffect(ref CEGetSkillEffectEvent args)
     {

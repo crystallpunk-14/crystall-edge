@@ -23,11 +23,6 @@ public sealed partial class CEClientScienceSystem : CESharedScienceSystem
 
     public event Action? OnLocalResearchDataUpdated;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnResearchDataState(Entity<CEScienceResearchDataComponent> ent, ref AfterAutoHandleStateEvent args)
     {

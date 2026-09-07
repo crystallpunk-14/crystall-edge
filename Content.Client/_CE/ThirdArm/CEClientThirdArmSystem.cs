@@ -12,11 +12,6 @@ public sealed partial class CEClientThirdArmSystem : CESharedThirdArmSystem
     [Dependency] private SpriteSystem _sprite = default!;
     [Dependency] private ItemSystem _itemSystem = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnAppearanceChange(Entity<CEThirdArmComponent> ent, ref AppearanceChangeEvent args)
     {

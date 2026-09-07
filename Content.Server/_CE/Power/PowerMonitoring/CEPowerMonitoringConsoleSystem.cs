@@ -46,11 +46,6 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
     // Any leak above this (watts) trips the EnergyLeak warning and blips the source on the map.
     private const float EnergyLeakWarningThreshold = 0f;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     #region Network helpers
 
     /// <summary>Every z-level grid that belongs to the console's z-network (falls back to the console's own grid).</summary>

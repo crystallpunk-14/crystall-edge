@@ -18,11 +18,6 @@ public sealed partial class CELockKeySystem : CESharedLockKeySystem
     //TODO: it won't survive saving and loading. This data must be stored in some component.
     private Dictionary<ProtoId<CELockTypePrototype>, List<int>> _roundKeyData = new();
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     #region Init
     [SubscribeLocalEvent]
     private void OnRoundEnd(RoundRestartCleanupEvent ev)

@@ -16,11 +16,6 @@ public sealed partial class CESalarySystem : EntitySystem
     [Dependency] private CECurrencySystem _currency = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnMapInit(Entity<CESalaryCounterComponent> ent, ref MapInitEvent args)
     {

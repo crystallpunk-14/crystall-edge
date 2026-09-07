@@ -19,11 +19,6 @@ public sealed partial class CEPowerSystem : CESharedPowerSystem
     [Dependency] private AppearanceSystem _appearance = default!;
     [Dependency] private NodeGroupSystem _nodeGroup = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     public override void Update(float frameTime)
     {
         base.Update(frameTime);

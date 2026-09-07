@@ -39,11 +39,6 @@ public sealed partial class CEGOAPHasStatusEffectSensorSystem : EntitySystem
 {
     [Dependency] private StatusEffectsSystem _statusEffect = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnRefresh(Entity<CEGOAPHasStatusEffectSensorComponent> ent, ref CEGOAPSensorRefreshEvent args)
     {

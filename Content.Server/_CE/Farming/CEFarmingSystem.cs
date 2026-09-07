@@ -16,15 +16,6 @@ public sealed partial class CEFarmingSystem : CESharedFarmingSystem
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        InitializeResources();
-        InitializeKudzu();
-        InitializeHealth();
-    }
-
     [SubscribeLocalEvent]
     private void OnMapInit(Entity<CEPlantComponent> plant, ref MapInitEvent args)
     {

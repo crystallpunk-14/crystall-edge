@@ -12,10 +12,6 @@ namespace Content.Shared._CE.ZLevels.Throwing;
 /// </summary>
 public sealed partial class CEZLevelThrowingSystem : EntitySystem
 {
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
 
     [SubscribeLocalEvent]
     private void OnThrown(Entity<CEZPhysicsComponent> ent, ref ThrownEvent args)

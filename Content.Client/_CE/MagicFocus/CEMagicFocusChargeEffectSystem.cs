@@ -15,11 +15,6 @@ public sealed partial class CEMagicFocusChargeEffectSystem : EntitySystem
     [Dependency] private SpriteSystem _sprite = default!;
     [Dependency] private TransformSystem _transform = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     // Predicted local spawn for the client performing the charge.
     [SubscribeLocalEvent]
     private void OnCharged(Entity<CEMagicFocusComponent> ent, ref CEMagicFocusChargedEvent args)

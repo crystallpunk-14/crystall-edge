@@ -10,11 +10,6 @@ public sealed partial class CELocalizationVisualsSystem : EntitySystem
     [Dependency] private IConfigurationManager _cfg = default!;
     [Dependency] private SpriteSystem _sprite = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnCompInit(Entity<CELocalizationVisualsComponent> visuals, ref ComponentInit args)
     {

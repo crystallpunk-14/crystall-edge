@@ -23,11 +23,6 @@ public sealed partial class CEThaumaturgySplitterSystem : EntitySystem
     [Dependency] private INetManager _net = default!;
     [Dependency] private MobStateSystem _mobState = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnCrushingTarget(Entity<CEThaumaturgySplitterComponent> ent, ref CEPressCrushingTargetEvent args)
     {

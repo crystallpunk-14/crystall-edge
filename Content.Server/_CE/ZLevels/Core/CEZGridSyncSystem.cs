@@ -45,11 +45,6 @@ public sealed partial class CEZGridSyncSystem : VirtualController
     private bool _inPhysicsTick;
     private bool _syncing;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnGridLinked(Entity<CEZGridComponent> zGridEnt, ref CEGridAddedIntoZNetworkEvent ev)
     {

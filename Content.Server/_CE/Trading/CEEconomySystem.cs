@@ -21,11 +21,6 @@ public sealed partial class CEEconomySystem : CESharedEconomySystem
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private GameTicker _gameTicker = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnPrototypesReloaded(PrototypesReloadedEventArgs ev)
     {

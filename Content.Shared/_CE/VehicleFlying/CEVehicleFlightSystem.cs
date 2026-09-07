@@ -14,11 +14,6 @@ public sealed partial class CEVehicleFlightSystem : EntitySystem
     [Dependency] private SharedActionsSystem _actions = default!;
     [Dependency] private VehicleSystem _vehicle = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnFlightStop(Entity<CEVehicleFlyerComponent> ent, ref CEFlightStoppedEvent args)
     {

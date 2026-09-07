@@ -8,9 +8,6 @@ namespace Content.Server._CE.Farming;
 
 public sealed partial class CEFarmingSystem
 {
-    private void InitializeResources()
-    {
-    }
 
     [SubscribeLocalEvent]
     private void OnGroundUpdate(Entity<CEPlantComponent> ent, ref CEPlantUpdateEvent args)

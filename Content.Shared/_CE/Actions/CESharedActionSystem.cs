@@ -30,15 +30,6 @@ public abstract partial class CESharedActionSystem : EntitySystem
 
     [Dependency] private EntityQuery<ActionComponent> _actionQuery = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        InitializeAttempts();
-        InitializeExamine();
-        InitializePerformed();
-    }
-
     [SubscribeLocalEvent]
     private void OnInstantAction(Entity<TransformComponent> ent, ref CEInstantActionAnimationEvent args)
     {

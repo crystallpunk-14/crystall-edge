@@ -10,11 +10,6 @@ public sealed partial class CEThirdArmActionModuleSystem : EntitySystem
 {
     [Dependency] private SharedActionsSystem _actions = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnEquipped(Entity<CEThirdArmComponent> ent, ref GotEquippedEvent args)
     {

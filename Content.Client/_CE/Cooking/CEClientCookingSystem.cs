@@ -18,11 +18,6 @@ public sealed partial class CEClientCookingSystem : CESharedCookingSystem
     [Dependency] private SpriteSystem _sprite = default!;
     [Dependency] private DisplacementMapSystem _displacement = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnAppearanceChange(Entity<CEFoodHolderComponent> ent, ref AppearanceChangeEvent args)
     {

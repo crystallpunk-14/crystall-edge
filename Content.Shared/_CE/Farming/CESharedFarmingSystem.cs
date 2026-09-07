@@ -42,10 +42,6 @@ public abstract partial class CESharedFarmingSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        InitializeSeeds();
-        InitializeGather();
-        InitializeGatherAdditional();
-        InitializeExamine();
 
         PlantQuery = GetEntityQuery<CEPlantComponent>();
         PlantProducingQuery = GetEntityQuery<CEPlantProducingComponent>();

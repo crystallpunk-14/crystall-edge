@@ -25,11 +25,6 @@ public sealed partial class CEWeatherTileEffectsSystem : EntitySystem
 
     [Dependency] private EntityQuery<RoofComponent> _roofQuery = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnTileEffectsInit(Entity<CEWeatherTileEffectsComponent> ent, ref ComponentInit args)
     {

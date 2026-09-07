@@ -21,11 +21,6 @@ public sealed partial class CEMagicVisionSystem : EntitySystem
 {
     [Dependency] private SharedEyeSystem _eye = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnGetVisMask(Entity<CEMagicVisionComponent> ent, ref GetVisMaskEvent args)
     {

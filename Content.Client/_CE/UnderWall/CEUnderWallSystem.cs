@@ -11,11 +11,6 @@ public sealed partial class CEUnderWallSystem : EntitySystem
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private SpriteSystem _sprite = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnOccluderChanged(Entity<CEOccludePipesComponent> ent, ref ComponentInit args)
     {

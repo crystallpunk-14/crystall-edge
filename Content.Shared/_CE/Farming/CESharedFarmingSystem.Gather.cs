@@ -12,9 +12,6 @@ namespace Content.Shared._CE.Farming;
 
 public abstract partial class CESharedFarmingSystem
 {
-    private void InitializeGather()
-    {
-    }
 
     [SubscribeLocalEvent]
     private void OnGatherableInteract(Entity<CEPlantGatherOnInteractComponent> ent, ref InteractUsingEvent args)

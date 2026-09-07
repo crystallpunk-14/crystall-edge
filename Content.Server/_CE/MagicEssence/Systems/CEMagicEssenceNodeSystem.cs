@@ -51,11 +51,6 @@ public sealed partial class CEMagicEssenceNodeSystem : EntitySystem
 
     private readonly EntProtoId _magicEssenceNodeEntity = "CEMagicEssenceNode";
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     public override void Update(float frameTime)
     {
         base.Update(frameTime);

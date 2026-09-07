@@ -22,11 +22,6 @@ public sealed partial class CEClientAnimationControllerSystem : EntitySystem
 
     [Dependency] private AnimationPlayerSystem _animPlayer = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     private void RestartLoop(Entity<CEAnimationControllerComponent> ent, CELoopAnimationStateComponent? state = null, bool ignoreOneShot = false)
     {
         if (TerminatingOrDeleted(ent))

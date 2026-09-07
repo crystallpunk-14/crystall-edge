@@ -26,8 +26,6 @@ public abstract partial class CESharedSkillSystem : EntitySystem
 
         InitializeAdmin();
         InitializeScanning();
-        InitializeRead();
-        InitializePen();
     }
 
     [SubscribeLocalEvent]

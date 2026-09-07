@@ -15,11 +15,6 @@ public sealed partial class CEOreVeinSystem : EntitySystem
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private EntityTableSystem _table = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnDamageChanged(Entity<CEOreVeinComponent> ent, ref DamageChangedEvent args)
     {

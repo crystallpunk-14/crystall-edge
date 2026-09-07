@@ -23,11 +23,6 @@ public sealed partial class CEMagicEssenceNodeStabilizerSystem : EntitySystem
 
     private readonly EntProtoId _shatterShockwave = "CEShockWaveWeakVFX";
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnAnchorChanged(Entity<CEMagicEssenceNodeStabilizerComponent> ent, ref AnchorStateChangedEvent args)
     {

@@ -19,11 +19,6 @@ public abstract partial class CESharedBlinkingSystem : EntitySystem
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] protected SharedAppearanceSystem Appearance = default!;
 
-    /// <inheritdoc/>
-    public override void Initialize()
-    {
-    }
-
     [SubscribeLocalEvent]
     private void OnMapInit(Entity<CEBlinkerComponent> ent, ref MapInitEvent args)
     {

@@ -16,11 +16,6 @@ public sealed partial class CEPenSystem : EntitySystem
     [Dependency] private SharedUserInterfaceSystem _ui = default!;
     [Dependency] private CEPaperSystem _paper = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnAfterInteract(Entity<CEPenComponent> ent, ref AfterInteractEvent args)
     {

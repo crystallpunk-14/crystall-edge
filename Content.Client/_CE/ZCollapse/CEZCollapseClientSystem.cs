@@ -12,11 +12,6 @@ public sealed partial class CEZCollapseClientSystem : EntitySystem
 
     public Dictionary<NetEntity, Dictionary<Vector2i, int>>? Grids;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     public override void Shutdown()
     {
         base.Shutdown();

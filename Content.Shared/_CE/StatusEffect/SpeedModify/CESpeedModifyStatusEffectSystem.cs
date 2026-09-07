@@ -7,10 +7,6 @@ namespace Content.Shared._CE.StatusEffect.SpeedModify;
 public sealed partial class CESpeedModifyStatusEffectSystem : EntitySystem
 {
     [Dependency] private MovementSpeedModifierSystem _speedModifier = default!;
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
 
     [SubscribeLocalEvent]
     private void OnApplied(Entity<CESpeedModifyStatusEffectComponent> ent, ref StatusEffectAppliedEvent args)

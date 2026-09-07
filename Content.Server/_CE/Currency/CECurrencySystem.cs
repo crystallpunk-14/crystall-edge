@@ -19,13 +19,6 @@ public sealed partial class CECurrencySystem : CESharedCurrencySystem
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private PricingSystem _price = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        InitializeConverter();
-    }
-
     [SubscribeLocalEvent]
     private void OnExamine(Entity<CECurrencyExaminableComponent> currency, ref ExaminedEvent args)
     {

@@ -10,11 +10,6 @@ public sealed partial class CEAnimationControllerSystem : EntitySystem
     [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private IGameTiming _timing = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     // When a timed appearance expires, restore the controller's fallback key.
     [SubscribeLocalEvent]
     private void OnTimedAppearanceShutdown(Entity<CETimedAppearanceComponent> ent, ref ComponentShutdown args)

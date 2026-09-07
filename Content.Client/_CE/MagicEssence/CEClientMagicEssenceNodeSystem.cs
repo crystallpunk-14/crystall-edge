@@ -24,11 +24,6 @@ public sealed partial class CEClientMagicEssenceNodeSystem : EntitySystem
     [Dependency] private SharedPointLightSystem _pointLight = default!;
     [Dependency] private SpriteSystem _sprite = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnAfterHandleState(Entity<CEMagicEssenceNodeComponent> ent, ref AfterAutoHandleStateEvent args)
     {

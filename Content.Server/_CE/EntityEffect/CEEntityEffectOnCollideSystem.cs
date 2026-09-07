@@ -7,10 +7,6 @@ namespace Content.Server._CE.EntityEffect;
 
 public sealed partial class CEEntityEffectOnCollideSystem : EntitySystem
 {
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
 
     [SubscribeLocalEvent]
     private void OnCollide(Entity<CEEntityEffectOnCollideComponent> ent, ref StartCollideEvent args)

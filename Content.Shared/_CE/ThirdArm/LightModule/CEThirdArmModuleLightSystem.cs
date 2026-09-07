@@ -7,11 +7,6 @@ public sealed partial class CEThirdArmModuleLightSystem : EntitySystem
 {
     [Dependency] private SharedPointLightSystem _light = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnModuleLightPowered(Entity<CEThirdArmLightModuleComponent> ent, ref CEThirdArmModulePoweredEvent args)
     {

@@ -97,12 +97,7 @@ never add //CrystallEdge comments for using blocks
   {
       [Dependency] private IGameTiming _timing = default!;
 
-      public override void Initialize()
-      {
-          base.Initialize();
-          SubscribeLocalEvent<CEExampleComponent, SomeEvent>(OnSomeEvent);
-      }
-
+      [SubscribeLocalEvent]
       private void OnSomeEvent(Entity<CEExampleComponent> ent, ref SomeEvent args)
       {
           // logic
@@ -114,6 +109,8 @@ never add //CrystallEdge comments for using blocks
 - Use `[Dependency] EntityQuery<T>` for performance-critical component lookups
 - All classes that use [Dependency] should be partial.
 
+**Event subscriptions:** put `[SubscribeLocalEvent]` / `[SubscribeNetworkEvent]` / `[EventSubscription]` (= SubscribeAllEvent) on the handler method itself — comp/event are inferred from the signature. Don't call `SubscribeLocalEvent<...>()` in `Initialize()`. Use `[SubscribeLocalEvent(before: [typeof(X)], after: [typeof(Y)])]` for ordering. Fall back to a manual `Subscribe*Event()` call only where the attribute can't work: generic systems, `UIController`s, lambda handlers, conditional subscriptions.
+
 **Critical ECS rules:**
 - Never store mutable state inside systems — it is not saved/loaded with the game save. All persistent data belongs in components.
-- Before adding `SubscribeLocalEvent<Comp, Event>()`, verify that exact Comp+Event pair is not already subscribed — the engine throws on duplicate subscriptions.
+- Before subscribing a `Comp+Event` pair (attribute or manual call), verify it is not already subscribed — the engine throws on duplicate subscriptions.

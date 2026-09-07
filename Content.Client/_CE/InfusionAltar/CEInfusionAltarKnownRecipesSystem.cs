@@ -12,11 +12,6 @@ public sealed partial class CEInfusionAltarKnownRecipesSystem : EntitySystem
 {
     public event Action<List<CEInfusionAltarKnownRecipeInfo>>? OnRecipesUpdated;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     public void RequestKnownRecipes()
     {
         RaiseNetworkEvent(new CERequestInfusionAltarKnownRecipesEvent());

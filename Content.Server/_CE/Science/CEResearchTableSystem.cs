@@ -31,11 +31,6 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
     private static readonly SoundSpecifier ScribbleSound = new SoundCollectionSpecifier("PaperScribbles");
     private static readonly SoundSpecifier SkillLearnedSound = new SoundPathSpecifier("/Audio/_CE/Effects/knowledge_learned.ogg");
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnMergeAspects(Entity<CEResearchTableComponent> ent, ref CEResearchTableMergeAspectsMessage args)
     {

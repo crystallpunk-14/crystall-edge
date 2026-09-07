@@ -24,11 +24,6 @@ public sealed partial class CEPaperSystem : EntitySystem
     private static readonly SpriteSpecifier WriteIcon =
         new SpriteSpecifier.Rsi(new ResPath("/Textures/_CE/Interface/Paper/pen_interact_icons.rsi"), "write");
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnGetPenActions(Entity<PaperComponent> entity, ref CEGetPenActionsEvent args)
     {

@@ -29,11 +29,6 @@ public sealed partial class CEGOAPSleepingSystem : EntitySystem
 
     private readonly HashSet<Entity<CEGOAPSleepingComponent>> _nearbyBuffer = new();
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     public override void Update(float frameTime)
     {
         base.Update(frameTime);

@@ -19,11 +19,6 @@ public sealed partial class CEFloorTileSelectionSystem : EntitySystem
     private CEFloorTileSelectionOverlay? _overlay;
     private CEToolTileOverlay? _toolOverlay;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnHandSelected(Entity<FloorTileComponent> ent, ref HandSelectedEvent args)
     {

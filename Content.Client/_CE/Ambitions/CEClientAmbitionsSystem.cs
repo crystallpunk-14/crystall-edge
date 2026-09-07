@@ -8,10 +8,6 @@ namespace Content.Client._CE.Ambitions;
 
 public sealed partial class CEClientAmbitionsSystem : EntitySystem
 {
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
 
     [SubscribeLocalEvent]
     private void OnGetCharacterInfoControls(Entity<CEAmbitionsSetupComponent> ent, ref CharacterInfoSystem.GetCharacterInfoControlsEvent args)

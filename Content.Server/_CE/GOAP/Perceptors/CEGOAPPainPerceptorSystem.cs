@@ -17,11 +17,6 @@ public sealed partial class CEGOAPPainPerceptorSystem : EntitySystem
 {
     [Dependency] private CEGOAPSystem _goap = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     [SubscribeLocalEvent]
     private void OnDamaged(Entity<CEGOAPPainPerceptorComponent> ent, ref DamageDealtEvent args)
     {
