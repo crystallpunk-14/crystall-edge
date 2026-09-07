@@ -1,9 +1,9 @@
 using System.Linq;
+using Content.Server._CE.GOAP.Perceptors;
+using Robust.Shared.Timing;
 using Content.Shared._CE.GOAP.Components;
 using Content.Shared.NPC.Components;
 using Content.Shared.NPC.Systems;
-using Content.Server._CE.GOAP.Perceptors;
-using Robust.Shared.Timing;
 
 namespace Content.Server._CE.GOAP.Classifiers;
 

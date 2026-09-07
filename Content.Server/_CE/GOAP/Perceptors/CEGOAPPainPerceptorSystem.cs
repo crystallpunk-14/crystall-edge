@@ -1,7 +1,7 @@
-using Content.Shared._CE.GOAP.Components;
-using Content.Shared.Damage.Systems;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 using Robust.Shared.Timing;
+using Content.Shared._CE.GOAP.Components;
+using Content.Shared.Damage.Systems;
 
 namespace Content.Server._CE.GOAP.Perceptors;
 
