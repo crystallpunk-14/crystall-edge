@@ -1,7 +1,6 @@
 using Content.Server._CE.EntitySlots;
 using Content.Shared._CE.EntitySlots;
 using Content.Shared._CE.Examine;
-using Content.Shared.EntityConditions;
 using Content.Shared.Interaction;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
@@ -10,15 +9,13 @@ using Content.Shared.Whitelist;
 namespace Content.Server._CE.AnimalHusbandry.Reproduction;
 
 /// <summary>
-/// Owns only prototype selection for fertilization and the incubation-host
+/// Owns fertility accounting, product selection and the incubation-host
 /// interaction. Standard fixed slots and trigger effects own placement, time,
 /// offspring spawning and product deletion.
 /// </summary>
 public sealed partial class CEAnimalIncubationSystem : EntitySystem
 {
     [Dependency] private CEFixedEntitySlotSystem _fixedSlots = default!;
-    [Dependency] private SharedEntityConditionsSystem _conditions = default!;
-    [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private EntityWhitelistSystem _whitelist = default!;
     [Dependency] private MobStateSystem _mobState = default!;
 
@@ -26,6 +23,7 @@ public sealed partial class CEAnimalIncubationSystem : EntitySystem
     {
         base.Initialize();
         SubscribeLocalEvent<CEAnimalFertilizableProductComponent, CEFixedSlotEntityCreatingEvent>(OnProductCreating);
+        SubscribeLocalEvent<CEAnimalFertilityComponent, CEFixedSlotEntityProducedEvent>(OnProduced);
         SubscribeLocalEvent<CEAnimalIncubationHostComponent, AfterInteractUsingEvent>(OnHostInteractUsing);
         SubscribeLocalEvent<CEExamineAugmentEvent>(OnExamine);
     }
@@ -37,7 +35,7 @@ public sealed partial class CEAnimalIncubationSystem : EntitySystem
         if (args.Cancelled || args.Prototype != producer.Comp.UnfertilizedPrototype)
             return;
 
-        if (!IsConfigurationValid(producer.Comp) ||
+        if (producer.Comp.PopulationWhitelist == null || producer.Comp.PopulationLimit <= 0 ||
             producer.Comp.UnfertilizedPrototype == producer.Comp.FertilizedPrototype ||
             !HasComp<CEAnimalIncubationHostComponent>(args.Target))
         {
@@ -54,27 +52,18 @@ public sealed partial class CEAnimalIncubationSystem : EntitySystem
         EntityUid producer,
         CEAnimalFertilizableProductComponent policy)
     {
-        var map = Transform(host).MapUid;
-        if (map == null || IsPopulationAtLimit(map.Value, policy))
+        if (!TryComp<CEAnimalFertilityComponent>(producer, out var fertility) || fertility.ProductsRemaining <= 0)
             return false;
 
-        if (policy.MateWhitelist == null)
-            return true;
+        var map = Transform(host).MapUid;
+        return map != null && !IsPopulationAtLimit(map.Value, policy);
+    }
 
-        foreach (var candidate in _lookup.GetEntitiesInRange(
-                     Transform(host).Coordinates,
-                     policy.FertilizationRange,
-                     LookupFlags.Uncontained))
-        {
-            if (candidate == producer ||
-                !_whitelist.IsValid(policy.MateWhitelist, candidate) ||
-                !_conditions.TryConditions(candidate, policy.MateConditions, producer))
-                continue;
-
-            return true;
-        }
-
-        return false;
+    private void OnProduced(Entity<CEAnimalFertilityComponent> ent, ref CEFixedSlotEntityProducedEvent args)
+    {
+        // Creating only chooses the prototype; spend fertility after the slot transaction has committed.
+        if (TryComp<CEAnimalIncubationComponent>(args.Product, out var incubation) && incubation.Fertilized)
+            ent.Comp.ProductsRemaining = Math.Max(0, ent.Comp.ProductsRemaining - 1);
     }
 
     private bool IsPopulationAtLimit(EntityUid map, CEAnimalFertilizableProductComponent policy)
@@ -136,9 +125,4 @@ public sealed partial class CEAnimalIncubationSystem : EntitySystem
             ("capacity", slots.Slots.Count)));
     }
 
-    private static bool IsConfigurationValid(CEAnimalFertilizableProductComponent policy)
-    {
-        return float.IsFinite(policy.FertilizationRange) && policy.FertilizationRange >= 0f &&
-            policy.PopulationWhitelist != null && policy.PopulationLimit > 0;
-    }
 }

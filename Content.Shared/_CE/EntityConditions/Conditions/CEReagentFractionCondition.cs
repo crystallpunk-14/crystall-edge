@@ -30,6 +30,11 @@ public sealed partial class CEReagentFractionEntityConditionSystem
         }
 
         var reagentVolume = solution.GetTotalPrototypeQuantity(condition.Reagent);
+        foreach (var reagent in condition.AdditionalReagents)
+        {
+            if (reagent != condition.Reagent)
+                reagentVolume += solution.GetTotalPrototypeQuantity(reagent);
+        }
         var fraction = reagentVolume.Float() / solution.Volume.Float();
         args.Result = fraction >= condition.MinFraction && fraction <= condition.MaxFraction;
     }
@@ -43,6 +48,10 @@ public sealed partial class CEReagentFractionCondition : EntityConditionBase<CER
 {
     [DataField(required: true)]
     public ProtoId<ReagentPrototype> Reagent;
+
+    /// <summary>Other explicitly permitted reagents contributing to the same fraction.</summary>
+    [DataField]
+    public HashSet<ProtoId<ReagentPrototype>> AdditionalReagents = new();
 
     [DataField(required: true)]
     public float MinFraction;

@@ -39,3 +39,7 @@ public record struct CEFixedSlotEntityCreatedEvent(EntityUid Target, EntityUid P
 {
     public bool Cancelled;
 }
+
+/// <summary>Raised on the producer after insertion and all cancellable production checks succeeded.</summary>
+[ByRefEvent]
+public readonly record struct CEFixedSlotEntityProducedEvent(EntityUid Target, EntityUid Product, EntProtoId Prototype);

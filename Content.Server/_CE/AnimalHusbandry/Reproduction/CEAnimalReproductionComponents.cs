@@ -1,4 +1,3 @@
-using Content.Shared.EntityConditions;
 using Content.Shared.Whitelist;
 using Robust.Shared.Localization;
 using Robust.Shared.Prototypes;
@@ -27,8 +26,16 @@ public sealed partial class CEAnimalIncubationHostComponent : Component
 }
 
 /// <summary>
-/// Optionally replaces a produced prototype when prototype-authored population,
-/// mate whitelist and mate conditions permit fertilization.
+/// Mating grants a limited number of fertilized products. A failed placement must not spend them.
+/// </summary>
+[RegisterComponent]
+public sealed partial class CEAnimalFertilityComponent : Component
+{
+    [DataField] public int ProductsRemaining;
+}
+
+/// <summary>
+/// Selects a fertilized product when the producer has fertility and the authored population limit permits it.
 /// </summary>
 [RegisterComponent]
 public sealed partial class CEAnimalFertilizableProductComponent : Component
@@ -38,18 +45,6 @@ public sealed partial class CEAnimalFertilizableProductComponent : Component
 
     [DataField(required: true)]
     public EntProtoId FertilizedPrototype;
-
-    [DataField(required: true)]
-    public float FertilizationRange;
-
-    /// <summary>
-    /// Null means that no nearby mate is required.
-    /// </summary>
-    [DataField]
-    public EntityWhitelist? MateWhitelist;
-
-    [DataField, AlwaysPushInheritance]
-    public EntityCondition[] MateConditions = Array.Empty<EntityCondition>();
 
     [DataField(required: true)]
     public EntityWhitelist PopulationWhitelist = default!;

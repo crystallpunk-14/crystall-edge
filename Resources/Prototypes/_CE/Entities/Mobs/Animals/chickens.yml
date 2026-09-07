@@ -4,6 +4,9 @@
 - type: Tag
   id: CEChickenRooster
 
+- type: Tag
+  id: CEChickenHen
+
 - type: entity
   id: CEMobChickenBase
   abstract: true
@@ -82,6 +85,9 @@
   - CEMobChickenBase
   - CEChickenHenGOAP
   components:
+  - type: Tag
+    tags: [DoorBumpOpener, StunImmune, CEChickenPopulation, CEChickenHen]
+  - type: CEAnimalFertility
   - type: CEGOAPEntityConditionSensor
     entries:
     - conditionKey: CEProductionReady
@@ -111,13 +117,6 @@
   - type: CEAnimalFertilizableProduct
     unfertilizedPrototype: CEFoodEggChicken
     fertilizedPrototype: CEFoodEggChickenFertilized
-    fertilizationRange: 3
-    mateWhitelist:
-      tags:
-      - CEChickenRooster
-    mateConditions:
-    - !type:MobStateCondition
-      mobstate: Alive
     populationWhitelist:
       tags:
       - CEChickenPopulation
@@ -151,8 +150,71 @@
   - CEMobChickenBase
   - CEAnimalAdultGOAPBase
   name: rooster
-  description: An adult rooster that can fertilize eggs laid nearby.
+  description: An adult rooster that mates with hens and defends the flock.
   components:
+  - type: CEAnimalMate
+    mateWhitelist:
+      tags: [CEChickenHen]
+    dayFraction: 0.5
+    fertilizedProducts: 2
+    effect: EffectHearts
+    mateConditions:
+    - !type:MobStateCondition
+      mobstate: Alive
+    - !type:SatiationCondition
+      satiationType: Hunger
+      min: 20
+      minInclusive: true
+    - !type:SatiationCondition
+      satiationType: Thirst
+      min: 100
+      minInclusive: true
+    conditions:
+    - !type:MobStateCondition
+      mobstate: Alive
+    - !type:SatiationCondition
+      satiationType: Hunger
+      min: 100
+      minInclusive: true
+    - !type:SatiationCondition
+      satiationType: Thirst
+      min: 300
+      minInclusive: true
+  - type: CEGOAPAllyThreatPerceptor
+    range: 6
+  - type: CEGOAP
+    goals:
+    - desiredState: { CEAnimalThreatened: false }
+      priority: 1000
+    - desiredState: { CEAnimalMated: true }
+      priority: 50
+    actions:
+    - !type:CEGOAPCircleMeleeAction
+      selector: !type:CEGOAPSelectorNearestEnemy
+      orbitRadius: 0.8
+      attackRange: 1
+      pursuitRange: 10
+      preconditions: { CEAnimalThreatened: true }
+      effects: { CEAnimalThreatened: false }
+    - !type:CEGOAPMateAction
+      preconditions: { CEAnimalThreatened: false }
+      effects: { CEAnimalMated: true }
+  - type: CombatMode
+  - type: CEGOAPThreatOnlyMelee
+  - type: CEWeapon
+    range: 0.5
+    effectSlots:
+      OnHit:
+      - !type:WeaponArcAttack
+        arcWidth: 40
+        effects:
+        - !type:Damage
+          damage:
+            types:
+              Piercing: 2
+    animations:
+      Primary:
+      - anim: CEChickenPeck
   - type: Tag
     tags:
     - DoorBumpOpener
@@ -281,3 +343,15 @@
   id: CEChickenThirst
   parent: NormalSatiationThirst
   baseChangeRate: -0.04
+
+- type: entityEffectAnimation
+  id: CEChickenPeck
+  movementSpeed: 1
+  duration: 0.8
+  events:
+    0.1:
+    - !type:WeaponEffectSlot
+      slot: OnHit
+    - !type:PlaySound
+      sound:
+        collection: CEChickenClucks

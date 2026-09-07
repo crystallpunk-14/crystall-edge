@@ -1,6 +1,9 @@
+using System.Linq;
 using Content.Shared._CE.GOAP.Components;
 using Content.Shared.NPC.Components;
 using Content.Shared.NPC.Systems;
+using Content.Server._CE.GOAP.Perceptors;
+using Robust.Shared.Timing;
 
 namespace Content.Server._CE.GOAP.Classifiers;
 
@@ -14,6 +17,7 @@ namespace Content.Server._CE.GOAP.Classifiers;
 public sealed partial class CEGOAPKnowledgeCacheSystem : EntitySystem
 {
     [Dependency] private NpcFactionSystem _faction = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     [Dependency] private EntityQuery<NpcFactionMemberComponent> _factionQuery = default!;
 
@@ -67,11 +71,29 @@ public sealed partial class CEGOAPKnowledgeCacheSystem : EntitySystem
         }
 
         _factionQuery.TryGetComponent(uid, out var selfFaction);
+        TryComp<CEGOAPPainPerceptorComponent>(uid, out var pain);
+        var explicitHostiles = _faction.GetHostiles(uid);
 
         foreach (var (target, _) in goap.Knowledge)
         {
             if (target == uid)
                 continue;
+
+            // Actual recent damage overrides a normally friendly faction relationship.
+            if (pain?.Attacker == target && _timing.CurTime < pain.RetaliationUntil)
+            {
+                cache.Enemies.Add(target);
+                continue;
+            }
+
+            if (_faction.IsIgnored(uid, target))
+                continue;
+
+            if (explicitHostiles.Contains(target))
+            {
+                cache.Enemies.Add(target);
+                continue;
+            }
 
             if (!_factionQuery.TryGetComponent(target, out var targetFaction))
                 continue;

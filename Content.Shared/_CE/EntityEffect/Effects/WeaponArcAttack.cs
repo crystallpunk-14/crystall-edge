@@ -170,6 +170,8 @@ public sealed partial class CEWeaponArcAttackEffectSystem : CEEntityEffectSystem
             !_interaction.InRangeUnobstructed(_args.Source, t, effectiveRange + 0.1f, overlapCheck: false));
 
         var targets = new List<EntityUid>(hitEntities);
+        var targetsEvent = new CEWeaponArcTargetsEvent(targets);
+        RaiseLocalEvent(args.Args.Source, ref targetsEvent);
 
         // Inline effects (kick, ability with no weapon slot): apply directly to each hit target.
         // Runs on both peers via the shared animation system.

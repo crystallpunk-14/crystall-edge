@@ -58,5 +58,7 @@ public sealed partial class CEFixedEntitySlotActionSystem : EntitySystem
         }
 
         args.Handled = true;
+        var produced = new CEFixedSlotEntityProducedEvent(args.Target, product, creating.Prototype);
+        RaiseLocalEvent(performer.Owner, ref produced);
     }
 }

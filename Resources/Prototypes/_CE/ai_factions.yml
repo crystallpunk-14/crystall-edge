@@ -7,4 +7,13 @@
   id: CEHostileEveryone
   hostile:
   - CEImperial
+  - CEFarmAnimal
+
+- type: npcFaction
+  id: CEFarmAnimal
+  friendly:
+  - Passive
+  - CEImperial
+  hostile:
+  - CEHostileEveryone
 

@@ -28,12 +28,25 @@
   - type: CEGOAPTargetBackoff
     duration: 5
     maxEntries: 32
+  - type: CENPCMovement
   - type: Satiation
     satiations:
       Hunger: { prototype: NormalSatiationHunger }
       Thirst: { prototype: NormalSatiationThirst }
   - type: NpcFactionMember
-    factions: [Passive]
+    factions: [CEFarmAnimal]
+  - type: CEGOAPEyesPerceptor
+    visionRadius: 6
+    updateInterval: 0.3
+    crossZLevelVision: false
+  - type: CEGOAPPainPerceptor
+    retaliationDuration: 8
+  - type: CEGOAPKnowledgeCache
+  - type: CEGOAPHasEnemySensor
+    entries:
+    - conditionKey: CEAnimalThreatened
+  - type: CEGOAP
+    memoryDuration: 4
   - type: SentienceTarget
     flavorKind: station-event-random-sentience-flavor-organic
 
@@ -95,6 +108,7 @@
             conditions:
             - !type:CEReagentFractionCondition
               reagent: Water
+              additionalReagents: [CEWater]
               minFraction: 0.5
           - !type:CEDrainableSolutionConsumableSource
             transferAmount: 5
@@ -105,6 +119,7 @@
             conditions:
             - !type:CEReagentFractionCondition
               reagent: Water
+              additionalReagents: [CEWater]
               minFraction: 0.5
         range: 20
   - type: CEGOAPRangeToTargetSensor
@@ -164,6 +179,22 @@
       maxIdleTime: 4
       preconditions: { CEAnimalIdle: false }
       effects: { CEAnimalIdle: true }
+
+# Composable fear response; defensive species author a different threat goal.
+- type: entity
+  id: CEAnimalFearGOAPBase
+  abstract: true
+  components:
+  - type: CEGOAP
+    goals:
+    - desiredState: { CEAnimalThreatened: false }
+      priority: 1000
+    actions:
+    - !type:CEGOAPFleeAction
+      selector: !type:CEGOAPSelectorNearestEnemy
+      recalculateInterval: 1
+      preconditions: { CEAnimalThreatened: true }
+      effects: { CEAnimalThreatened: false }
 
 # Child products compose standard trigger effects when incubation should run.
 - type: entity

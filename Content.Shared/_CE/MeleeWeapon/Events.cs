@@ -3,6 +3,10 @@ using Robust.Shared.Serialization;
 
 namespace Content.Shared._CE.MeleeWeapon;
 
+/// <summary>Raised on the attacker to narrow physically hit arc targets before effects are applied.</summary>
+[ByRefEvent]
+public readonly record struct CEWeaponArcTargetsEvent(List<EntityUid> Targets);
+
 /// <summary>
 /// Is called on the object being used to determine what animations it provides
 /// </summary>

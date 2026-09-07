@@ -141,6 +141,8 @@
   - type: CEFixedEntitySlotAccess
   - type: CEAnimalIncubationHost
     examineMessage: ce-animal-husbandry-examine-nest
+  - type: CEProductionRestHost
+    capacity: 2
   - type: Construction
     graph: CEChickenNestingPerch
     node: complete

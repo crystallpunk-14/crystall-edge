@@ -12,12 +12,14 @@ public sealed partial class CEGOAPSystem
 {
     /// <summary>
     /// Adds or refreshes a knowledge entry. Raises <see cref="CEGOAPKnowledgeUpdatedEvent"/>
-    /// when a new entity is added or its position changes.
+    /// when a new entity is added or its position changes. Batch perceptors may suppress
+    /// notification and call <see cref="RaiseKnowledgeUpdated"/> once after their scan.
     /// </summary>
     public void Remember(
         Entity<CEGOAPComponent?> ent,
         EntityUid target,
-        EntityCoordinates coords)
+        EntityCoordinates coords,
+        bool notify = true)
     {
         if (!Resolve(ent, ref ent.Comp))
             return;
@@ -33,7 +35,7 @@ public sealed partial class CEGOAPSystem
             ExpiresAt = expires,
         };
 
-        if (changed)
+        if (changed && notify)
             RaiseKnowledgeUpdated(ent);
     }
 
@@ -87,7 +89,8 @@ public sealed partial class CEGOAPSystem
         RaiseKnowledgeUpdated(ent);
     }
 
-    private void RaiseKnowledgeUpdated(EntityUid ent)
+    /// <summary>Publishes a completed perception batch, including changed relationships at unchanged positions.</summary>
+    public void RaiseKnowledgeUpdated(EntityUid ent)
     {
         var ev = new CEGOAPKnowledgeUpdatedEvent();
         RaiseLocalEvent(ent, ref ev);

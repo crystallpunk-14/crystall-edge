@@ -5,6 +5,7 @@ using Content.Server.NPC.Systems;
 using Content.Shared._CE.GOAP;
 using Content.Shared._CE.GOAP.Components;
 using Content.Shared.NPC;
+using Content.Server._CE.NPC;
 using Robust.Shared.Timing;
 
 namespace Content.Server._CE.GOAP.Actions;
@@ -42,6 +43,9 @@ public sealed partial class CEGOAPFleeActionSystem : CEGOAPActionSystem<CEGOAPFl
         Entity<CEGOAPComponent> ent,
         ref CEGOAPActionStartupEvent<CEGOAPFleeAction> args)
     {
+        if (TryComp<CENPCMovementComponent>(ent, out var movement))
+            movement.Walking = false;
+
         if (args.Action.Selector == null)
             return;
 
@@ -104,6 +108,8 @@ public sealed partial class CEGOAPFleeActionSystem : CEGOAPActionSystem<CEGOAPFl
     {
         _nextRecalc.Remove(ent);
         _steering.Unregister(ent);
+        if (TryComp<CENPCMovementComponent>(ent, out var movement))
+            movement.Walking = true;
     }
 
     /// <summary>
