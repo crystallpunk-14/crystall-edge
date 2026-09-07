@@ -20,9 +20,11 @@
     itemIconStyle: BigAction
     sound: !type:SoundPathSpecifier
       path: /Audio/Magic/rumble.ogg
-    icon:
-      sprite: _CE/Actions/Spells/mana_steal.rsi
-      state: icon
+  - type: Sprite
+    sprite: _CE/Actions/Spells/mana_steal.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 1.5
     interactOnMiss: false

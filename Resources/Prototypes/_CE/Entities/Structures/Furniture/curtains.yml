@@ -11,7 +11,11 @@
     mode: SnapgridCenter
   components:
   - type: Occluder
-    boundingBox: "-0.5,0.5,0.5,1.5"
+    polygon:
+    - "-0.5,0.45"
+    - "0.5,0.45"
+    - "0.5,0.5"
+    - "-0.5,0.5"
     enabled: false
   - type: AnimationPlayer
   - type: Fixtures
@@ -61,6 +65,7 @@
             max: 2
   - type: Sprite
     sprite: _CE/Structures/Furniture/curtains.rsi
+    drawdepth: Mobs
   - type: InteractionOutline
   - type: Physics
     canCollide: false

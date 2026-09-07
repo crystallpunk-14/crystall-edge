@@ -4,8 +4,12 @@
   name: lay chicken egg
   description: Lay a produced chicken egg in an available nesting perch.
   components:
+  - type: Sprite
+    sprite: Objects/Consumable/Food/egg.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
   - type: Action
-    icon: { sprite: Objects/Consumable/Food/egg.rsi, state: icon }
     sound: { collection: CEChickenClucks }
   - type: TargetAction
     range: 0.4

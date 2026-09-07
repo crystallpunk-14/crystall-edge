@@ -28,9 +28,11 @@
     itemIconStyle: BigAction
     sound: !type:SoundPathSpecifier
       path: /Audio/Magic/rumble.ogg
-    icon:
-      sprite: _CE/Actions/Spells/feather_fall.rsi
-      state: icon
+  - type: Sprite
+    sprite: _CE/Actions/Spells/feather_fall.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 5
   - type: WorldTargetAction

@@ -1,6 +1,14 @@
+using Content.Server._CE.GOAP.Actions;
+using Content.Shared._CE.GOAP;
+using Content.Shared.Interaction;
 using Robust.Shared.Timing;
 
 namespace Content.Server._CE.GOAP.Navigation;
+
+/// <summary>Selectors whose resolved targets can be excluded after a failed attempt.</summary>
+public interface ICEGOAPTargetBackoffSelector
+{
+}
 
 /// <summary>
 /// Opt-in policy and runtime state for temporarily excluding failed GOAP targets.
@@ -27,7 +35,38 @@ public sealed partial class CEGOAPTargetBackoffComponent : Component
 /// </summary>
 public sealed partial class CEGOAPTargetBackoffSystem : EntitySystem
 {
+    [Dependency] private SharedInteractionSystem _interaction = default!;
     [Dependency] private IGameTiming _timing = default!;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+        SubscribeLocalEvent<CEGOAPTargetBackoffComponent, CEGOAPUseActionTargetFailedEvent>(OnTargetFailed);
+        SubscribeLocalEvent<CEGOAPTargetBackoffComponent, CEGOAPActionUpdateEvent<CEGOAPMoveToTargetAction>>(
+            OnMoveUpdate, after: [typeof(CEGOAPMoveToTargetActionSystem)]);
+    }
+
+    private void OnTargetFailed(
+        Entity<CEGOAPTargetBackoffComponent> ent,
+        ref CEGOAPUseActionTargetFailedEvent args)
+    {
+        if (args.Selector is ICEGOAPTargetBackoffSelector)
+            Reject(ent.Owner, args.Target);
+    }
+
+    private void OnMoveUpdate(
+        Entity<CEGOAPTargetBackoffComponent> ent,
+        ref CEGOAPActionUpdateEvent<CEGOAPMoveToTargetAction> args)
+    {
+        if (args.Action.Selector is not ICEGOAPTargetBackoffSelector || args.Target is not { } target)
+            return;
+
+        if (args.Status == CEGOAPActionStatus.Finished && !_interaction.InRangeAndAccessible(ent.Owner, target))
+            args.Status = CEGOAPActionStatus.Failed;
+
+        if (args.Status == CEGOAPActionStatus.Failed)
+            Reject(ent.Owner, target);
+    }
 
     public void Prune(EntityUid agent)
     {

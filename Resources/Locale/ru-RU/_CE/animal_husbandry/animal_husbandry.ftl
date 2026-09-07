@@ -21,4 +21,3 @@ ent-CEChickenStarterCrate = стартовый ящик с курами
 
 ce-animal-husbandry-examine-feed = Внутри [bold]{$portions}[/bold] порций с общей питательностью [bold]{$nutrition}[/bold].
 ce-animal-husbandry-examine-nest = Яйца: обычных — [bold]{$ordinary}[/bold], оплодотворённых — [bold]{$fertilized}[/bold]; вместимость — [bold]{$capacity}[/bold].
-ce-animal-husbandry-examine-intoxicated = [color=lightblue]Это животное выглядит пьяным.[/color]

@@ -45,8 +45,6 @@ public abstract partial class CESharedZLevelsSystem
 
     private void OnShutdown(Entity<CEZPhysicsComponent> entity, ref ComponentShutdown args)
     {
-        var releasing = new CEZVisualBaselineReleasingEvent(entity.Comp);
-        RaiseLocalEvent(entity.Owner, ref releasing);
         SleepBody((entity, entity));
     }
 

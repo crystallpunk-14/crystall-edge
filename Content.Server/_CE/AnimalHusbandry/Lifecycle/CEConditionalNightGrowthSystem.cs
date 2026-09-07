@@ -21,10 +21,9 @@ public sealed partial class CEConditionalNightGrowthSystem : EntitySystem
     [Dependency] private CEFixedEntitySlotSystem _fixedSlots = default!;
     [Dependency] private SharedEntityConditionsSystem _conditions = default!;
     [Dependency] private DamageableSystem _damageable = default!;
-    [Dependency] private HungerSystem _hunger = default!;
+    [Dependency] private SatiationSystem _satiation = default!;
     [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private MobThresholdSystem _mobThreshold = default!;
-    [Dependency] private ThirstSystem _thirst = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
 
     public override void Initialize()
@@ -32,8 +31,7 @@ public sealed partial class CEConditionalNightGrowthSystem : EntitySystem
         base.Initialize();
         SubscribeLocalEvent<CEStartNightEvent>(OnStartNight);
         SubscribeLocalEvent<DamageableComponent, CEEntityReplacementStateTransferEvent>(OnTransferDamage);
-        SubscribeLocalEvent<HungerComponent, CEEntityReplacementStateTransferEvent>(OnTransferHunger);
-        SubscribeLocalEvent<ThirstComponent, CEEntityReplacementStateTransferEvent>(OnTransferThirst);
+        SubscribeLocalEvent<SatiationComponent, CEEntityReplacementStateTransferEvent>(OnTransferSatiation);
     }
 
     private void OnStartNight(CEStartNightEvent args)
@@ -166,54 +164,30 @@ public sealed partial class CEConditionalNightGrowthSystem : EntitySystem
         _damageable.SetDamage((args.Replacement, replacement), damage);
     }
 
-    private void OnTransferHunger(
-        Entity<HungerComponent> source,
+    private void OnTransferSatiation(
+        Entity<SatiationComponent> source,
         ref CEEntityReplacementStateTransferEvent args)
     {
         if (args.Cancelled)
             return;
 
-        if (!TryComp<HungerComponent>(args.Replacement, out var replacement))
+        if (!TryComp<SatiationComponent>(args.Replacement, out var replacement))
         {
             args.Cancelled = true;
             return;
         }
 
-        var sourceValue = _hunger.GetHunger(source.Comp);
-        var replacementValue = _hunger.GetHunger(replacement);
-        var delta = sourceValue - replacementValue;
-        if (!float.IsFinite(sourceValue) || !float.IsFinite(replacementValue) || !float.IsFinite(delta))
+        foreach (var type in source.Comp.Satiations.Keys)
         {
-            args.Cancelled = true;
-            return;
+            if (!replacement.Has(type) || _satiation.GetValueOrNull(source, type) is not { } value ||
+                !float.IsFinite(value))
+            {
+                args.Cancelled = true;
+                return;
+            }
+
+            _satiation.SetValue((args.Replacement, replacement), type, value);
         }
-
-        _hunger.ModifyHunger(args.Replacement, delta, replacement);
-    }
-
-    private void OnTransferThirst(
-        Entity<ThirstComponent> source,
-        ref CEEntityReplacementStateTransferEvent args)
-    {
-        if (args.Cancelled)
-            return;
-
-        if (!TryComp<ThirstComponent>(args.Replacement, out var replacement))
-        {
-            args.Cancelled = true;
-            return;
-        }
-
-        var sourceValue = source.Comp.CurrentThirst;
-        var replacementValue = replacement.CurrentThirst;
-        var delta = sourceValue - replacementValue;
-        if (!float.IsFinite(sourceValue) || !float.IsFinite(replacementValue) || !float.IsFinite(delta))
-        {
-            args.Cancelled = true;
-            return;
-        }
-
-        _thirst.ModifyThirst(args.Replacement, replacement, delta);
     }
 
     private readonly record struct CEConditionalTransform(

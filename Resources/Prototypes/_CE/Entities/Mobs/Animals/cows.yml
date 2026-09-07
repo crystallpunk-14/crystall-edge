@@ -19,11 +19,15 @@
     updateInterval: 2
     entries:
     - conditionKey: CEAnimalHungry
-      condition: !type:HungerCondition
+      condition: !type:SatiationCondition
+        satiationType: Hunger
+        minInclusive: true
         min: 50
         inverted: true
     - conditionKey: CEAnimalThirsty
-      condition: !type:CEThirstCondition
+      condition: !type:SatiationCondition
+        satiationType: Thirst
+        minInclusive: true
         min: 150
         inverted: true
   - type: Reproductive

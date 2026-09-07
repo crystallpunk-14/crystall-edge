@@ -74,7 +74,7 @@ public sealed partial class CEProductionAccumulatorSystem : EntitySystem
                     continue;
 
                 accumulator.WaitingForOutputSpend = false;
-                TrySchedule((uid, accumulator), accumulator.RepeatMinimum, accumulator.RepeatMaximum);
+                Schedule((uid, accumulator), accumulator.RepeatMinimum, accumulator.RepeatMaximum);
                 RaiseStateChanged(uid);
                 continue;
             }
@@ -88,7 +88,21 @@ public sealed partial class CEProductionAccumulatorSystem : EntitySystem
                 continue;
             }
 
-            TryAccumulate((uid, accumulator), action, chargeEntity);
+            if (action.Comp.MaxCharges <= 0 || !_conditions.TryConditions(uid, accumulator.Conditions) ||
+                accumulator.InputCost is { } inputCost && !_effects.TryApplyEffect(uid, inputCost, user: uid) ||
+                !Exists(uid) || !Exists(action))
+                continue;
+
+            _charges.AddCharges(chargeEntity, 1);
+            if (_charges.GetCurrentCharges(chargeEntity) <= currentCharges)
+            {
+                Disable((uid, accumulator), $"Failed to add production charge to {ToPrettyString(action)}");
+                continue;
+            }
+
+            accumulator.WaitingForOutputSpend = true;
+            accumulator.NextProductionAt = TimeSpan.Zero;
+            RaiseStateChanged(uid);
         }
     }
 
@@ -104,7 +118,7 @@ public sealed partial class CEProductionAccumulatorSystem : EntitySystem
         }
 
         if (ent.Comp.NextProductionAt == TimeSpan.Zero && !ent.Comp.WaitingForOutputSpend)
-            TrySchedule(ent, ent.Comp.FirstMinimum, ent.Comp.FirstMaximum);
+            Schedule(ent, ent.Comp.FirstMinimum, ent.Comp.FirstMaximum);
         else if (ent.Comp.NextPollAt == TimeSpan.Zero)
             ent.Comp.NextPollAt = ent.Comp.WaitingForOutputSpend
                 ? _timing.CurTime + ent.Comp.PollInterval
@@ -126,46 +140,7 @@ public sealed partial class CEProductionAccumulatorSystem : EntitySystem
         return true;
     }
 
-    private void TryAccumulate(
-        Entity<CEProductionAccumulatorComponent> ent,
-        Entity<LimitedChargesComponent> action,
-        Entity<LimitedChargesComponent?, AutoRechargeComponent?> chargeEntity)
-    {
-        if (!IsConfigurationValid(ent.Comp))
-        {
-            Disable(ent, "Invalid production accumulator configuration");
-            return;
-        }
-
-        if (action.Comp.MaxCharges <= 0 ||
-            !_conditions.TryConditions(ent.Owner, ent.Comp.Conditions))
-            return;
-
-        var previousCharges = _charges.GetCurrentCharges(chargeEntity);
-        if (previousCharges < 0 || previousCharges >= action.Comp.MaxCharges)
-            return;
-
-        if (ent.Comp.InputCost is { } inputCost &&
-            !_effects.TryApplyEffect(ent.Owner, inputCost, user: ent.Owner))
-            return;
-
-        if (!Exists(ent) || !Exists(action))
-            return;
-
-        _charges.AddCharges(chargeEntity, 1);
-        if (_charges.GetCurrentCharges(chargeEntity) <= previousCharges)
-        {
-            Disable(ent,
-                $"Failed to add production charge to {ToPrettyString(action)}");
-            return;
-        }
-
-        ent.Comp.WaitingForOutputSpend = true;
-        ent.Comp.NextProductionAt = TimeSpan.Zero;
-        RaiseStateChanged(ent);
-    }
-
-    private bool TrySchedule(
+    private void Schedule(
         Entity<CEProductionAccumulatorComponent> ent,
         TimeSpan minimum,
         TimeSpan maximum)
@@ -173,12 +148,11 @@ public sealed partial class CEProductionAccumulatorSystem : EntitySystem
         if (minimum < TimeSpan.Zero || maximum < minimum)
         {
             Disable(ent, $"Invalid production interval [{minimum}, {maximum}]");
-            return false;
+            return;
         }
 
         ent.Comp.NextProductionAt = _timing.CurTime + _random.Next(minimum, maximum);
         ent.Comp.NextPollAt = ent.Comp.NextProductionAt;
-        return true;
     }
 
     private void Disable(Entity<CEProductionAccumulatorComponent> ent, string reason)

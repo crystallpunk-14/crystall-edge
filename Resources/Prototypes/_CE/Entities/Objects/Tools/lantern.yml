@@ -41,7 +41,7 @@
     delay: 1
   - type: PointLight
     enabled: false
-    mask: /Textures/_CE/Effects/LightMasks/crystal_cone.png
+    lightMask: CECrystalCone
     autoRot: true
     energy: 6
     radius: 6

@@ -3,7 +3,6 @@ using Content.Client._CE.ZLevels.Core;
 using Content.Shared._CE.EntitySlots;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.Rotation;
-using Robust.Client.Animations;
 using Robust.Client.GameObjects;
 
 namespace Content.Client._CE.EntitySlots;
@@ -21,18 +20,10 @@ public sealed partial class CEFixedSlotVisualSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        UpdatesAfter.Add(typeof(AnimationPlayerSystem));
+        UpdatesBefore.Add(typeof(CEClientZLevelsPreAnimSystem));
         SubscribeLocalEvent<AppearanceComponent, AppearanceChangeEvent>(OnAppearanceChange);
         SubscribeLocalEvent<AppearanceComponent, ComponentShutdown>(OnAppearanceShutdown);
         SubscribeLocalEvent<CEFixedSlotVisualStateComponent, ComponentShutdown>(OnStateShutdown);
-        SubscribeLocalEvent<CEFixedSlotVisualStateComponent, CESpriteVisualReleasingEvent>(
-            OnSpriteVisualReleasing,
-            after: [typeof(CEClientZLevelsSystem)]);
-        SubscribeLocalEvent<CEFixedSlotVisualStateComponent, CEZVisualBaselineQueryEvent>(
-            OnZVisualBaselineQuery);
-        SubscribeLocalEvent<CEFixedSlotVisualStateComponent, CEZVisualBaselineReleasingEvent>(
-            OnZVisualBaselineReleasing,
-            after: [typeof(CEClientZLevelsSystem)]);
     }
 
     private void OnAppearanceChange(Entity<AppearanceComponent> ent, ref AppearanceChangeEvent args)
@@ -56,71 +47,10 @@ public sealed partial class CEFixedSlotVisualSystem : EntitySystem
         RemCompDeferred(ent.Owner, state);
     }
 
-    private void OnSpriteVisualReleasing(
-        Entity<CEFixedSlotVisualStateComponent> ent,
-        ref CESpriteVisualReleasingEvent args)
-    {
-        if (!ReferenceEquals(ent.Comp.OriginalSprite, args.Component))
-            return;
-
-        ClearOriginal(ent.Comp);
-        ent.Comp.Pending = !TerminatingOrDeleted(ent.Owner);
-    }
-
     private void OnStateShutdown(Entity<CEFixedSlotVisualStateComponent> ent, ref ComponentShutdown args)
     {
         Restore(ent.Owner, ent.Comp);
         ent.Comp.Pending = false;
-    }
-
-    private void OnZVisualBaselineQuery(
-        Entity<CEFixedSlotVisualStateComponent> ent,
-        ref CEZVisualBaselineQueryEvent args)
-    {
-        if (ent.Comp.OriginalSprite is not { } originalSprite ||
-            !TryComp<SpriteComponent>(ent.Owner, out var sprite) ||
-            !ReferenceEquals(originalSprite, sprite))
-        {
-            ent.Comp.Pending = true;
-            return;
-        }
-
-        args.SpriteOffsetBaseline = ent.Comp.CleanOffset;
-        RestoreOwnedSpriteBaseline(ent.Owner, sprite, ent.Comp, ent.Comp.CleanOffset);
-        ent.Comp.Pending = true;
-    }
-
-    private void OnZVisualBaselineReleasing(
-        Entity<CEFixedSlotVisualStateComponent> ent,
-        ref CEZVisualBaselineReleasingEvent args)
-    {
-        if (!ReferenceEquals(ent.Comp.OriginalZPhysics, args.Component))
-            return;
-
-        if (TerminatingOrDeleted(ent.Owner))
-        {
-            ClearOriginal(ent.Comp);
-            ent.Comp.Pending = false;
-            return;
-        }
-
-        args.Component.SpriteOffsetDefault = ent.Comp.CleanOffset;
-        if (ent.Comp.OriginalSprite is { } originalSprite &&
-            TryComp<SpriteComponent>(ent.Owner, out var sprite) &&
-            ReferenceEquals(originalSprite, sprite))
-        {
-            RestoreOwnedSpriteBaseline(
-                ent.Owner,
-                sprite,
-                ent.Comp,
-                ent.Comp.CleanOffset);
-        }
-        else
-        {
-            ClearOriginal(ent.Comp);
-        }
-
-        ent.Comp.Pending = true;
     }
 
     public override void FrameUpdate(float frameTime)
@@ -160,15 +90,17 @@ public sealed partial class CEFixedSlotVisualSystem : EntitySystem
         CEZPhysicsComponent? zPhysics = null;
         if (TryComp<CEZPhysicsComponent>(uid, out var candidateZPhysics) && candidateZPhysics.Running)
             zPhysics = candidateZPhysics;
-        // The CEZ owner events preserve the canonical baseline during normal add/remove lifecycle.
-        // This identity check also recovers safely if another system replaces either component.
+        // Keep slot state local; the existing Z-level renderer owns its baseline.
         if (!ReferenceEquals(state.OriginalSprite, sprite) ||
             !ReferenceEquals(state.OriginalZPhysics, zPhysics))
         {
+            var cleanOffset = ReferenceEquals(state.OriginalSprite, sprite)
+                ? state.CleanOffset
+                : sprite.Offset;
             Restore(uid, state);
             state.OriginalSprite = sprite;
             state.OriginalZPhysics = zPhysics;
-            state.CleanOffset = zPhysics?.SpriteOffsetDefault ?? sprite.Offset;
+            state.CleanOffset = cleanOffset;
             state.OriginalRotation = HasComp<RotationVisualsComponent>(uid) ? null : sprite.Rotation;
             state.Pending = true;
         }
@@ -242,19 +174,6 @@ public sealed partial class CEFixedSlotVisualSystem : EntitySystem
             _sprite.SetOffset((uid, sprite), state.CleanOffset);
         }
 
-        if (state.OriginalRotation is { } originalRotation && !HasComp<RotationVisualsComponent>(uid))
-            _sprite.SetRotation((uid, sprite), originalRotation);
-
-        ClearOriginal(state);
-    }
-
-    private void RestoreOwnedSpriteBaseline(
-        EntityUid uid,
-        SpriteComponent sprite,
-        CEFixedSlotVisualStateComponent state,
-        Vector2 cleanOffset)
-    {
-        _sprite.SetOffset((uid, sprite), cleanOffset);
         if (state.OriginalRotation is { } originalRotation && !HasComp<RotationVisualsComponent>(uid))
             _sprite.SetRotation((uid, sprite), originalRotation);
 

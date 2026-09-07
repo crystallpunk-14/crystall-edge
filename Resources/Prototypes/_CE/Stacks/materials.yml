@@ -130,3 +130,10 @@
   icon: { sprite: _CE/Objects/Materials/bones.rsi, state: bone_1 }
   spawn: CEBone1
   maxCount: 10
+
+- type: stack
+  id: CELeather
+  name: ce-stack-leather
+  spawn: CELeather1
+  icon: { sprite: _CE/Objects/Materials/leather.rsi, state: leather }
+  maxCount: 10

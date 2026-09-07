@@ -28,10 +28,10 @@
         density: 8
         mask: [MobMask]
         layer: [MobLayer]
-  - type: Hunger
-    baseDecayRate: 0.00925925925926
-  - type: Thirst
-    baseDecayRate: 0.04
+  - type: Satiation
+    satiations:
+      Hunger: { prototype: CEChickenHunger }
+      Thirst: { prototype: CEChickenThirst }
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -55,11 +55,15 @@
     updateInterval: 2
     entries:
     - conditionKey: CEAnimalHungry
-      condition: !type:HungerCondition
+      condition: !type:SatiationCondition
+        satiationType: Hunger
+        minInclusive: true
         min: 100
         inverted: true
     - conditionKey: CEAnimalThirsty
-      condition: !type:CEThirstCondition
+      condition: !type:SatiationCondition
+        satiationType: Thirst
+        minInclusive: true
         min: 300
         inverted: true
   - type: InteractionPopup
@@ -93,11 +97,16 @@
     - !type:MobStateCondition
       mobstate: Dead
       inverted: true
-    - !type:HungerCondition
+    - !type:SatiationCondition
+      satiationType: Hunger
+      minInclusive: true
       min: 100
-    - !type:CEThirstCondition
+    - !type:SatiationCondition
+      satiationType: Thirst
+      minInclusive: true
       min: 300
-    inputCost: !type:SatiateHunger
+    inputCost: !type:Satiate
+      satiationType: Hunger
       factor: -60
   - type: CEAnimalFertilizableProduct
     unfertilizedPrototype: CEFoodEggChicken
@@ -188,9 +197,13 @@
     conditions:
     - !type:MobStateCondition
       mobstate: Alive
-    - !type:HungerCondition
+    - !type:SatiationCondition
+      satiationType: Hunger
+      minInclusive: true
       min: 100
-    - !type:CEThirstCondition
+    - !type:SatiationCondition
+      satiationType: Thirst
+      minInclusive: true
       min: 300
   - type: ToolRefinable
     refineResult:
@@ -257,3 +270,14 @@
   - type: DeleteOnTrigger
     keysIn:
     - ce-incubation-complete
+
+# Keep the chicken thresholds and decay rates from before the Satiation migration.
+- type: satiation
+  id: CEChickenHunger
+  parent: NormalSatiationHunger
+  baseChangeRate: -0.00925925925926
+
+- type: satiation
+  id: CEChickenThirst
+  parent: NormalSatiationThirst
+  baseChangeRate: -0.04

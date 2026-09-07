@@ -3,6 +3,7 @@ using Content.Shared._CE.ZLevels.Flight.Components;
 using Content.Shared.Actions;
 using Content.Shared.Vehicle;
 using Content.Shared.Vehicle.Components;
+using Content.Shared.Vehicle.Systems;
 
 namespace Content.Shared._CE.VehicleFlying;
 

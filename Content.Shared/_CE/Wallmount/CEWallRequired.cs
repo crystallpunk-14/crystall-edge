@@ -1,6 +1,7 @@
 using Content.Shared.Construction;
 using Content.Shared.Construction.Conditions;
 using Content.Shared.Tag;
+using Content.Shared.Wall;
 using JetBrains.Annotations;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -36,7 +37,8 @@ public sealed partial class CEWallRequired : IConstructionCondition
 
         foreach (var entityUid in anchored)
         {
-            if (!tagSystem.HasAnyTag(entityUid, CEWallmountSystem.WallTags))
+            if (!entityManager.HasComponent<WallComponent>(entityUid) &&
+                !tagSystem.HasTag(entityUid, CEWallmountSystem.WindowTag))
                 continue;
 
             return true;

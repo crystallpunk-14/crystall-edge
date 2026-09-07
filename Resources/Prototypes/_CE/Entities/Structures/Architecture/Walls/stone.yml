@@ -123,7 +123,7 @@
     sprite: _CE/Structures/Architecture/Walls/bricks_stone_diagonal.rsi
     state: state0
   - type: Icon
-    sprite: Structures/Walls/plastitanium_diagonal.rsi
+    sprite: _CE/Structures/Architecture/Walls/bricks_stone_diagonal.rsi
     state: state0
   - type: CEAutoTilePlacement
     tile: CEStonebricks

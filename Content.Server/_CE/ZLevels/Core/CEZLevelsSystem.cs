@@ -32,6 +32,19 @@ public sealed partial class CEZLevelsSystem : CESharedZLevelsSystem
         InitView();
 
         SubscribeLocalEvent<CEStationZLevelsComponent, StationPostInitEvent>(OnStationPostInit);
+        SubscribeLocalEvent<CEZMapComponent, EntityTerminatingEvent>(OnZMapTerminating);
+    }
+
+    private void OnZMapTerminating(Entity<CEZMapComponent> ent, ref EntityTerminatingEvent args)
+    {
+        var networkUid = ent.Comp.NetworkUid;
+
+        // Round end and DeleteMapNetwork tear the whole network down at once, so there is nothing
+        // left to keep consistent. Only a map dying on its own has to be detached.
+        if (TerminatingOrDeleted(networkUid) || !TryComp<CEZMapNetworkComponent>(networkUid, out var network))
+            return;
+
+        TryRemoveMapsFromNetwork((networkUid, network), new[] { ent.Owner });
     }
 
     private void OnStationPostInit(Entity<CEStationZLevelsComponent> ent, ref StationPostInitEvent args)

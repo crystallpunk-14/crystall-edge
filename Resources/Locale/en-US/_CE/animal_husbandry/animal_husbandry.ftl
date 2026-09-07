@@ -21,4 +21,3 @@ ent-CEChickenStarterCrate = chicken starter crate
 
 ce-animal-husbandry-examine-feed = It contains [bold]{$portions}[/bold] portions with [bold]{$nutrition}[/bold] total nutrition.
 ce-animal-husbandry-examine-nest = Eggs: [bold]{$ordinary}[/bold] ordinary and [bold]{$fertilized}[/bold] fertilized; capacity [bold]{$capacity}[/bold].
-ce-animal-husbandry-examine-intoxicated = [color=lightblue]This animal appears intoxicated.[/color]

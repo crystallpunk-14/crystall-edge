@@ -4,14 +4,13 @@ using Content.Shared.Tools.Components;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Spawners;
-using Robust.Shared.Utility;
 
 namespace Content.Shared._CE.EntityEffect.Effects;
 
 public sealed partial class ToolUse : CEEntityEffectBase<ToolUse>
 {
     [DataField(required: true)]
-    public PrototypeFlags<ToolQualityPrototype> Qualities = new();
+    public HashSet<ProtoId<ToolQualityPrototype>> Qualities = new();
 
     [DataField]
     public float SpeedModifier = 1f;

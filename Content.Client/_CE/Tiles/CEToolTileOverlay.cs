@@ -148,7 +148,7 @@ public sealed partial class CEToolTileOverlay : Overlay
         // Check if the tool can deconstruct this tile
         // Tool can work if it has any of the required deconstruct tools AND tile has baseTurf
         var qualities = toolComp.Qualities;
-        var canDeconstruct = qualities.ContainsAny(currentTileDef.DeconstructTools);
+        var canDeconstruct = qualities.Overlaps(currentTileDef.DeconstructTools);
 
         // Offset to center of the tile (GridTileToWorld returns bottom-left corner), plus the
         // ceiling raise offset (zero when not targeting the level above)

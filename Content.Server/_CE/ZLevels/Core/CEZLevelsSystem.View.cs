@@ -37,6 +37,26 @@ public sealed partial class CEZLevelsSystem
         SubscribeLocalEvent<CEZLevelViewerComponent, ComponentRemove>(OnCompRemove);
 
         SubscribeLocalEvent<CEZLevelViewerComponent, MapUidChangedEvent>(OnViewerMapUidChanged);
+
+        SubscribeLocalEvent<CEZMapNetworkComponent, CEZLevelMapNetworkUpdatedEvent>(OnMapNetworkUpdated);
+    }
+
+    /// <summary>
+    /// A viewer's eye stack is built from the maps surrounding it, so it goes stale the moment
+    /// the network gains or loses a level. Rebuild it for everyone inside that network.
+    /// </summary>
+    private void OnMapNetworkUpdated(Entity<CEZMapNetworkComponent> ent, ref CEZLevelMapNetworkUpdatedEvent args)
+    {
+        var query = EntityQueryEnumerator<CEZLevelViewerComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var viewer, out var xform))
+        {
+            if (xform.MapUid is not { } mapUid ||
+                !TryComp<CEZMapComponent>(mapUid, out var zMap) ||
+                zMap.NetworkUid != ent.Owner)
+                continue;
+
+            UpdateViewer((uid, viewer));
+        }
     }
 
     private void UpdateView(float frameTime)
@@ -48,9 +68,14 @@ public sealed partial class CEZLevelsSystem
         var query = EntityQueryEnumerator<CEZLevelViewerComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out var viewer, out var xform))
         {
+            var worldPosition = _transform.GetWorldPosition(xform);
+
             foreach (var eye in viewer.Eyes)
             {
-                _transform.SetWorldPosition(eye, _transform.GetWorldPosition(xform));
+                if (TerminatingOrDeleted(eye))
+                    continue;
+
+                _transform.SetWorldPosition(eye, worldPosition);
             }
         }
     }
@@ -93,7 +118,8 @@ public sealed partial class CEZLevelsSystem
         var eyes = ent.Comp.Eyes;
         foreach (var eye in ent.Comp.Eyes)
         {
-            QueueDel(eye);
+            if (!TerminatingOrDeleted(eye))
+                QueueDel(eye);
         }
         eyes.Clear();
 

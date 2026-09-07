@@ -170,9 +170,11 @@
     sound: !type:SoundPathSpecifier
       path: /Audio/Magic/rumble.ogg
     useDelay: 8
-    icon:
-      sprite: _CE/Actions/lurker.rsi
-      state: jump
+  - type: Sprite
+    sprite: _CE/Actions/lurker.rsi
+    layers:
+    - state: jump
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:CEInstantActionAnimationEvent
       animation: AnimationJump
@@ -221,9 +223,11 @@
     sound: !type:SoundPathSpecifier
       path: /Audio/Magic/rumble.ogg
     useDelay: 30
-    icon:
-      sprite: _CE/Actions/lurker.rsi
-      state: step
+  - type: Sprite
+    sprite: _CE/Actions/lurker.rsi
+    layers:
+    - state: step
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 3
     checkCanAccess: false
@@ -281,9 +285,11 @@
     sound: !type:SoundPathSpecifier
       path: /Audio/Magic/rumble.ogg
     useDelay: 30
-    icon:
-      sprite: _CE/Actions/lurker.rsi
-      state: fear
+  - type: Sprite
+    sprite: _CE/Actions/lurker.rsi
+    layers:
+    - state: fear
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 5
     checkCanAccess: false

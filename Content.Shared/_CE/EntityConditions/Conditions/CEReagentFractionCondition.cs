@@ -2,7 +2,6 @@ using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.EntityConditions;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization;
 
 namespace Content.Shared._CE.EntityConditions.Conditions;
 
@@ -40,7 +39,6 @@ public sealed partial class CEReagentFractionEntityConditionSystem
 /// A reusable solution-composition condition. Fractions are inclusive and use the current
 /// solution volume rather than the container capacity.
 /// </summary>
-[SerializedType("CEReagentFractionCondition")]
 public sealed partial class CEReagentFractionCondition : EntityConditionBase<CEReagentFractionCondition>
 {
     [DataField(required: true)]
