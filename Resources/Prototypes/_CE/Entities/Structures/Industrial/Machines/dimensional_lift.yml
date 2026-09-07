@@ -1,0 +1,121 @@
+- type: entity
+  id: CEDimensionalLift
+  parent:
+  - CEConstructibleMachine
+  - CEBaseMachinePowered
+  - BaseMachine
+  name: dimensional elevator
+  description: Anchors a rift between the tile it stands on and the ground far below it. Handy on a floating island, or for dropping into a roofed room from the level above.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Machine
+    board: CEMachineCoreDimensionalLift
+  - type: Sprite
+    drawdepth: FloorTiles
+    snapCardinals: true
+    sprite: _CE/Structures/Industrial/DimensionalLift/machine.rsi
+    layers:
+    - state: base
+      map: ["base"]
+    - state: powered
+      visible: false
+      map: ["powered"]
+  - type: Icon
+    sprite: _CE/Structures/Industrial/DimensionalLift/machine.rsi
+    state: base
+  - type: CEDimensionalLift
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        powered:
+          True: { visible: true }
+          False: { visible: false }
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        mask:
+        - TabletopMachineMask
+        layer:
+        - Impassable
+        - MidImpassable
+        - LowImpassable
+        hard: false
+  - type: ApcPowerReceiver
+    powerLoad: 0.1
+  - type: AmbientOnPowered
+  - type: LitOnPowered
+  - type: PointLight
+    radius: 2
+    energy: 4
+    color: "#1cd0dd"
+    enabled: false
+
+- type: entity
+  parent: BasePortal
+  id: CEPortalDimensionalLift
+  suffix: Dimensional Lift
+  name: dimensional rift
+  categories: [ HideSpawnMenu ]
+  description: A stable rift punched straight down through the world.
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _CE/Structures/Industrial/DimensionalLift/demiplan_rift.rsi
+    layers:
+    - state: anom
+  - type: PointLight
+    color: MediumPurple
+  - type: Portal
+    randomTeleport: false
+    canTeleportToOtherMaps: true
+
+- type: entity
+  id: CEDimensionalLiftTraversalEffect
+  name: dimensional rift beam
+  suffix: VFX
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Effects
+    sprite: _CE/Structures/Industrial/DimensionalLift/traversal_line.rsi
+    layers:
+    - state: effect
+      shader: unshaded
+  - type: Tag
+    tags:
+    - HideContextMenu
+
+- type: entity
+  id: CEDimensionalLiftTraversalImpact
+  name: dimensional rift flash
+  suffix: VFX
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Effects
+    sprite: _CE/Structures/Industrial/DimensionalLift/traversal_impact.rsi
+    layers:
+    - state: effect
+      shader: unshaded
+  - type: TimedDespawn
+    lifetime: 3
+  - type: Tag
+    tags:
+    - HideContextMenu
+  - type: PointLight
+    color: MediumPurple
+    enabled: true
+    radius: 4
+    energy: 5
+    netsync: false
+  - type: LightFade
+    duration: 1

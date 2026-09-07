@@ -599,6 +599,27 @@
   resultCount: 1
 
 - type: CERecipe
+  id: CEMachineCoreDimensionalLift
+  parent: CEBaseEngineeringTableRecipe
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartDimensionalMatrix
+    count: 2
+  - !type:StackResource
+    stack: CEGlass
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 2
+  result: CEMachineCoreDimensionalLift
+  resultCount: 1
+
+- type: CERecipe
   id: CEMachineCoreGridProjector
   parent: CEBaseEngineeringTableRecipe
   category: MachineCore
