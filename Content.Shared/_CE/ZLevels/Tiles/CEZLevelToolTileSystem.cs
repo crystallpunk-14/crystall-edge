@@ -11,6 +11,7 @@ using Content.Shared.Popups;
 using Content.Shared.Tools;
 using Content.Shared.Tools.Components;
 using Content.Shared.Tools.Systems;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Network;
@@ -43,16 +44,7 @@ public sealed partial class CEZLevelToolTileSystem : EntitySystem
     [Dependency] private TileSystem _tiles = default!;
     [Dependency] private TurfSystem _turfs = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEZLevelToolTileComponent, AfterInteractEvent>(
-            OnAfterInteract,
-            before: new[] { typeof(SharedToolSystem) });
-        SubscribeLocalEvent<CEZLevelToolTileComponent, CEZLevelTileToolDoAfterEvent>(OnToolTileComplete);
-    }
-
+    [SubscribeLocalEvent(before: new[] { typeof(SharedToolSystem) })]
     private void OnAfterInteract(Entity<CEZLevelToolTileComponent> ent, ref AfterInteractEvent args)
     {
         if (args.Handled || args.Target != null && !HasComp<PuddleComponent>(args.Target))
@@ -123,6 +115,7 @@ public sealed partial class CEZLevelToolTileSystem : EntitySystem
         _tool.UseTool(ent, user, ent, tileComp.Delay, tool.Qualities, doAfterArgs, out _, toolComponent: tool);
     }
 
+    [SubscribeLocalEvent]
     private void OnToolTileComplete(Entity<CEZLevelToolTileComponent> ent, ref CEZLevelTileToolDoAfterEvent args)
     {
         if (args.Handled || args.Cancelled)

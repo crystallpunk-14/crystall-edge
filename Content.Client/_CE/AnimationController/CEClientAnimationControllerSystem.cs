@@ -1,6 +1,7 @@
-﻿using Content.Client._CE.EntityEffect.Effects;
+using Content.Client._CE.EntityEffect.Effects;
 using Content.Shared._CE.AnimationController;
 using Robust.Client.GameObjects;
+using Robust.Shared.Analyzers;
 
 namespace Content.Client._CE.AnimationController;
 
@@ -20,18 +21,6 @@ public sealed partial class CEClientAnimationControllerSystem : EntitySystem
     private const string LoopKey = "ce-controller-loop";
 
     [Dependency] private AnimationPlayerSystem _animPlayer = default!;
-
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEAnimationControllerComponent, AfterAutoHandleStateEvent>(OnHandleState);
-        SubscribeLocalEvent<CEAnimationControllerComponent, AnimationCompletedEvent>(OnLoopCompleted);
-
-        SubscribeLocalEvent<CEUserSpriteAnimationComponent, ComponentStartup>(OnOneShotStarted);
-
-        SubscribeLocalEvent<CEUserSpriteAnimationComponent, ComponentShutdown>(OnOneShotShutdown);
-    }
 
     private void RestartLoop(Entity<CEAnimationControllerComponent> ent, CELoopAnimationStateComponent? state = null, bool ignoreOneShot = false)
     {
@@ -53,6 +42,7 @@ public sealed partial class CEClientAnimationControllerSystem : EntitySystem
         _animPlayer.Play(ent, CEAnimationTrackBuilders.BuildLoopAnimation(anim), LoopKey);
     }
 
+    [SubscribeLocalEvent]
     private void OnHandleState(Entity<CEAnimationControllerComponent> ent, ref AfterAutoHandleStateEvent args)
     {
         if (TerminatingOrDeleted(ent))
@@ -67,6 +57,7 @@ public sealed partial class CEClientAnimationControllerSystem : EntitySystem
         RestartLoop(ent, state);
     }
 
+    [SubscribeLocalEvent]
     private void OnLoopCompleted(Entity<CEAnimationControllerComponent> ent, ref AnimationCompletedEvent args)
     {
         if (TerminatingOrDeleted(ent))
@@ -81,6 +72,7 @@ public sealed partial class CEClientAnimationControllerSystem : EntitySystem
         RestartLoop(ent, state);
     }
 
+    [SubscribeLocalEvent]
     private void OnOneShotStarted(Entity<CEUserSpriteAnimationComponent> ent, ref ComponentStartup args)
     {
         if (!TryComp<CEAnimationControllerComponent>(ent, out _))
@@ -91,6 +83,7 @@ public sealed partial class CEClientAnimationControllerSystem : EntitySystem
         _animPlayer.Stop(ent.Owner, LoopKey);
     }
 
+    [SubscribeLocalEvent]
     private void OnOneShotShutdown(Entity<CEUserSpriteAnimationComponent> ent, ref ComponentShutdown args)
     {
         if (TerminatingOrDeleted(ent))

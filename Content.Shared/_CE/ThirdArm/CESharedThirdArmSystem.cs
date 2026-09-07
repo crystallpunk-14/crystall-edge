@@ -1,5 +1,6 @@
 using Content.Shared._CE.ThirdArm.Components;
 using Content.Shared.Containers.ItemSlots;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Containers;
 using Robust.Shared.Serialization;
 
@@ -15,14 +16,10 @@ public abstract partial class CESharedThirdArmSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CEThirdArmComponent, ComponentInit>(OnThirdArmInit);
-        SubscribeLocalEvent<CEThirdArmComponent, ComponentShutdown>(OnThirdArmShutdown);
-        SubscribeLocalEvent<CEThirdArmComponent, EntInsertedIntoContainerMessage>(OnModuleSlotChanged);
-        SubscribeLocalEvent<CEThirdArmComponent, EntRemovedFromContainerMessage>(OnModuleSlotChanged);
-
         InitBattery();
     }
 
+    [SubscribeLocalEvent]
     private void OnThirdArmInit(Entity<CEThirdArmComponent> ent, ref ComponentInit args)
     {
         var container = Container.EnsureContainer<ContainerSlot>(ent, CEThirdArmComponent.ModuleSlotId);
@@ -31,11 +28,13 @@ public abstract partial class CESharedThirdArmSystem : EntitySystem
         ItemSlots.AddItemSlot(ent.Owner, CEThirdArmComponent.ModuleSlotId, ent.Comp.ModuleSlot);
     }
 
+    [SubscribeLocalEvent]
     private void OnThirdArmShutdown(Entity<CEThirdArmComponent> ent, ref ComponentShutdown args)
     {
         ItemSlots.RemoveItemSlot(ent.Owner, ent.Comp.ModuleSlot);
     }
 
+    [SubscribeLocalEvent]
     private void OnModuleSlotChanged(Entity<CEThirdArmComponent> ent, ref EntInsertedIntoContainerMessage args)
     {
         if (args.Container.ID != CEThirdArmComponent.ModuleSlotId)
@@ -49,6 +48,7 @@ public abstract partial class CESharedThirdArmSystem : EntitySystem
         UpdateModulePower(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnModuleSlotChanged(Entity<CEThirdArmComponent> ent, ref EntRemovedFromContainerMessage args)
     {
         if (args.Container.ID != CEThirdArmComponent.ModuleSlotId)

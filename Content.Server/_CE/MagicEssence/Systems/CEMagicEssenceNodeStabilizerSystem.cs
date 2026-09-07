@@ -2,6 +2,7 @@ using Content.Server.Power.EntitySystems;
 using Content.Shared._CE.MagicEssence.Components;
 using Content.Shared.Destructible;
 using Content.Shared.Power;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
@@ -22,20 +23,13 @@ public sealed partial class CEMagicEssenceNodeStabilizerSystem : EntitySystem
 
     private readonly EntProtoId _shatterShockwave = "CEShockWaveWeakVFX";
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEMagicEssenceNodeStabilizerComponent, AnchorStateChangedEvent>(OnAnchorChanged);
-        SubscribeLocalEvent<CEMagicEssenceNodeStabilizerComponent, PowerChangedEvent>(OnPowerChanged);
-        SubscribeLocalEvent<CEMagicEssenceNodeStabilizerComponent, DestructionEventArgs>(OnDestroyed);
-    }
-
+    [SubscribeLocalEvent]
     private void OnAnchorChanged(Entity<CEMagicEssenceNodeStabilizerComponent> ent, ref AnchorStateChangedEvent args)
     {
         UpdateStabilizer(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnPowerChanged(Entity<CEMagicEssenceNodeStabilizerComponent> ent, ref PowerChangedEvent args)
     {
         UpdateStabilizer(ent);
@@ -45,6 +39,7 @@ public sealed partial class CEMagicEssenceNodeStabilizerSystem : EntitySystem
     /// If the sphere shatters while it was anchored+powered on a node, that node loses its
     /// protection entirely - destroy it, spawning a shockwave where it stood.
     /// </summary>
+    [SubscribeLocalEvent]
     private void OnDestroyed(Entity<CEMagicEssenceNodeStabilizerComponent> ent, ref DestructionEventArgs args)
     {
         if (!this.IsPowered(ent.Owner, EntityManager))

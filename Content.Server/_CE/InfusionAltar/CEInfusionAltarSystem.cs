@@ -2,6 +2,7 @@ using Content.Server._CE.InfusionAltar.Components;
 using Content.Server.GameTicking.Events;
 using Content.Shared._CE.InfusionAltar.Prototypes;
 using Content.Shared._CE.Skill;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -22,14 +23,12 @@ public sealed partial class CEInfusionAltarSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<RoundStartingEvent>(OnRoundStarting);
-        SubscribeLocalEvent<CEInfusionAltarSingletonComponent, MapInitEvent>(OnMapInit);
-
         InitConnections();
         InitSkills();
         InitExamine();
     }
 
+    [SubscribeLocalEvent]
     private void OnRoundStarting(RoundStartingEvent ev)
     {
         var uid = Spawn(_singletonEntity, MapCoordinates.Nullspace);
@@ -62,6 +61,7 @@ public sealed partial class CEInfusionAltarSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnMapInit(Entity<CEInfusionAltarSingletonComponent> ent, ref MapInitEvent args)
     {
         var query = EntityQueryEnumerator<CEInfusionAltarSingletonComponent>();

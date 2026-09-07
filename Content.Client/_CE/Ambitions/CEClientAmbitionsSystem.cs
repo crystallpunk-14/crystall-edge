@@ -2,18 +2,14 @@ using Content.Client.CharacterInfo;
 using Content.Shared._CE.Ambitions;
 using Content.Shared._CE.Ambitions.Components;
 using Robust.Client.UserInterface.Controls;
+using Robust.Shared.Analyzers;
 
 namespace Content.Client._CE.Ambitions;
 
-public sealed class CEClientAmbitionsSystem : EntitySystem
+public sealed partial class CEClientAmbitionsSystem : EntitySystem
 {
-    public override void Initialize()
-    {
-        base.Initialize();
 
-        SubscribeLocalEvent<CEAmbitionsSetupComponent, CharacterInfoSystem.GetCharacterInfoControlsEvent>(OnGetCharacterInfoControls);
-    }
-
+    [SubscribeLocalEvent]
     private void OnGetCharacterInfoControls(Entity<CEAmbitionsSetupComponent> ent, ref CharacterInfoSystem.GetCharacterInfoControlsEvent args)
     {
         var btn = new Button

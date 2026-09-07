@@ -5,6 +5,7 @@ using Content.Shared._CE.Currency;
 using Content.Shared.Examine;
 using Content.Shared.Whitelist;
 using Robust.Server.Audio;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.Currency;
@@ -18,15 +19,7 @@ public sealed partial class CECurrencySystem : CESharedCurrencySystem
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private PricingSystem _price = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        InitializeConverter();
-
-        SubscribeLocalEvent<CECurrencyExaminableComponent, ExaminedEvent>(OnExamine);
-    }
-
+    [SubscribeLocalEvent]
     private void OnExamine(Entity<CECurrencyExaminableComponent> currency, ref ExaminedEvent args)
     {
         var price = _price.GetPrice(currency);

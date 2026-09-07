@@ -1,6 +1,7 @@
 using Content.Shared._CE.Door;
 using Content.Shared._CE.LockKey.Components;
 using Content.Shared.Verbs;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Map;
 using Robust.Shared.Maths;
 using Robust.Shared.Utility;
@@ -16,10 +17,9 @@ public abstract partial class CESharedLockKeySystem
     {
         _directionalLatchQuery = GetEntityQuery<CEDirectionalLatchComponent>();
         _transformQuery = GetEntityQuery<TransformComponent>();
-
-        SubscribeLocalEvent<CEDirectionalLatchComponent, GetVerbsEvent<AlternativeVerb>>(AddToggleVerb);
     }
 
+    [SubscribeLocalEvent]
     private void AddToggleVerb(Entity<CEDirectionalLatchComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
     {
         if (!args.CanAccess || !args.CanInteract || args.Hands == null)

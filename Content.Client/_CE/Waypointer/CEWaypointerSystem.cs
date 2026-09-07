@@ -3,6 +3,7 @@ using Content.Shared._CE.Waypointer;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Client.Timing;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Player;
 
 namespace Content.Client._CE.Waypointer;
@@ -23,11 +24,6 @@ public sealed partial class CEWaypointerSystem : CESharedWaypointerSystem
         base.Initialize();
 
         _waypointerOverlay = new CEWaypointerOverlay();
-
-        SubscribeLocalEvent<CEWaypointerComponent, ToggleCombatActionEvent>(OnCombatToggle);
-
-        SubscribeLocalEvent<CEWaypointerComponent, LocalPlayerAttachedEvent>(OnPlayerAttached);
-        SubscribeLocalEvent<CEWaypointerComponent, LocalPlayerDetachedEvent>(OnPlayerDetached);
     }
 
     protected override void OnAddition(Entity<CEWaypointerComponent> player, ref ComponentInit args)
@@ -50,6 +46,7 @@ public sealed partial class CEWaypointerSystem : CESharedWaypointerSystem
         _overlay.RemoveOverlay(_waypointerOverlay);
     }
 
+    [SubscribeLocalEvent]
     private void OnCombatToggle(Entity<CEWaypointerComponent> combatant, ref ToggleCombatActionEvent args)
     {
         if (_timing.ApplyingState)
@@ -63,6 +60,7 @@ public sealed partial class CEWaypointerSystem : CESharedWaypointerSystem
             _overlay.RemoveOverlay(_waypointerOverlay);
     }
 
+    [SubscribeLocalEvent]
     private void OnPlayerAttached(Entity<CEWaypointerComponent> mob, ref LocalPlayerAttachedEvent args)
     {
         if (args.Entity != _player.LocalEntity)
@@ -71,6 +69,7 @@ public sealed partial class CEWaypointerSystem : CESharedWaypointerSystem
         _overlay.AddOverlay(_waypointerOverlay);
     }
 
+    [SubscribeLocalEvent]
     private void OnPlayerDetached(Entity<CEWaypointerComponent> mob, ref LocalPlayerDetachedEvent args)
     {
         if (args.Entity != _player.LocalEntity)

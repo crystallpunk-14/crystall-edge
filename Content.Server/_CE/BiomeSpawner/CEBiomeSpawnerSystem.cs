@@ -4,6 +4,7 @@
  */
 
 using System.Linq;
+using Robust.Shared.Analyzers;
 using Content.Server.Decals;
 using Content.Server.Parallax;
 using Content.Shared.GameTicking;
@@ -31,17 +32,17 @@ public sealed partial class CEBiomeSpawnerSystem : EntitySystem
 
     public override void Initialize()
     {
-        SubscribeLocalEvent<CEBiomeSpawnerComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<RoundEndMessageEvent>(OnRoundEnd);
 
         UpdateSeed();
     }
 
+    [SubscribeLocalEvent]
     private void OnRoundEnd(RoundEndMessageEvent ev)
     {
         UpdateSeed();
     }
 
+    [SubscribeLocalEvent]
     private void OnMapInit(Entity<CEBiomeSpawnerComponent> ent, ref MapInitEvent args)
     {
         SpawnBiome(ent);

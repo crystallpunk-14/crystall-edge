@@ -3,6 +3,7 @@ using Content.Shared.CCVar;
 using Content.Shared.Light.Components;
 using Content.Shared.StatusEffectNew.Components;
 using Content.Shared.Weather;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -46,18 +47,17 @@ public sealed partial class CEWeatherEffectsSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CEWeatherEffectsComponent, ComponentInit>(OnWeatherEffectsInit);
-        SubscribeLocalEvent<CEWeatherEffectsComponent, ComponentShutdown>(OnWeatherEffectsShutdown);
-
         Subs.CVar(_cfg, CCVars.CEWeatherMaxAffectedPerTick, val => _maxAffectedPerTick = val, true);
         Subs.CVar(_cfg, CCVars.CEWeatherMaxTilesScannedPerTick, val => _maxTilesScannedPerTick = val, true);
     }
 
+    [SubscribeLocalEvent]
     private void OnWeatherEffectsInit(Entity<CEWeatherEffectsComponent> ent, ref ComponentInit args)
     {
         ent.Comp.NextEffectTime = _timing.CurTime + _random.Next(ent.Comp.MinEffectFrequency, ent.Comp.MaxEffectFrequency);
     }
 
+    [SubscribeLocalEvent]
     private void OnWeatherEffectsShutdown(Entity<CEWeatherEffectsComponent> ent, ref ComponentShutdown args)
     {
         _processingStates.Remove(ent.Owner);

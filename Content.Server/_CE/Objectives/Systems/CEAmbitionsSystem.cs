@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using Robust.Shared.Analyzers;
 using System.Linq;
 using Content.Server.Mind;
 using Content.Shared._CE.Ambitions;
@@ -26,21 +27,9 @@ public sealed partial class CEAmbitionsSystem : CESharedAmbitionsSystem
     {
         base.Initialize();
         CacheAmbitions();
-
-        SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypesReloaded);
-
-        SubscribeNetworkEvent<CEToggleAmbitionsScreenEvent>(OnToggleAmbitions);
-
-        SubscribeLocalEvent<CEAmbitionsSetupComponent, BoundUIOpenedEvent>(OnBoundUIOpened);
-
-        SubscribeLocalEvent<CEAmbitionsSetupComponent, CEAmbitionCreateMessage>(OnAmbitionCreateRequest);
-        SubscribeLocalEvent<CEAmbitionsSetupComponent, CEAmbitionDeleteMessage>(OnAmbitionDeleteRequest);
-        SubscribeLocalEvent<CEAmbitionsSetupComponent, CEAmbitionLockMessage>(OnAmbitionLockRequest);
-
-        SubscribeLocalEvent<CEAmbitionObjectiveComponent, ObjectiveAfterAssignEvent>(OnObjectiveAssigned);
-        SubscribeLocalEvent<CEAmbitionObjectiveComponent, ObjectiveGetProgressEvent>(OnGetProgress);
     }
 
+    [SubscribeLocalEvent]
     private void OnAmbitionCreateRequest(Entity<CEAmbitionsSetupComponent> ent, ref CEAmbitionCreateMessage args)
     {
         if (ent.Comp.RerollAmount <= 0)
@@ -81,6 +70,7 @@ public sealed partial class CEAmbitionsSystem : CESharedAmbitionsSystem
         UpdateUiState(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnAmbitionDeleteRequest(Entity<CEAmbitionsSetupComponent> ent, ref CEAmbitionDeleteMessage args)
     {
         if (!_mind.TryGetMind(ent.Owner, out var mind, out var mindId))
@@ -99,16 +89,19 @@ public sealed partial class CEAmbitionsSystem : CESharedAmbitionsSystem
         UpdateUiState(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnAmbitionLockRequest(Entity<CEAmbitionsSetupComponent> ent, ref CEAmbitionLockMessage args)
     {
         RemCompDeferred<CEAmbitionsSetupComponent>(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnGetProgress(Entity<CEAmbitionObjectiveComponent> ent, ref ObjectiveGetProgressEvent args)
     {
         args.Progress = 0f;
     }
 
+    [SubscribeLocalEvent]
     private void OnObjectiveAssigned(Entity<CEAmbitionObjectiveComponent> ent, ref ObjectiveAfterAssignEvent args)
     {
         var title = Loc.GetString(ent.Comp.Name);
@@ -127,6 +120,7 @@ public sealed partial class CEAmbitionsSystem : CESharedAmbitionsSystem
         _meta.SetEntityName(ent, title);
     }
 
+    [SubscribeLocalEvent]
     private void OnPrototypesReloaded(PrototypesReloadedEventArgs ev)
     {
         if (!ev.WasModified<EntityPrototype>())
@@ -149,6 +143,7 @@ public sealed partial class CEAmbitionsSystem : CESharedAmbitionsSystem
         }
     }
 
+    [SubscribeNetworkEvent]
     private void OnToggleAmbitions(CEToggleAmbitionsScreenEvent msg, EntitySessionEventArgs args)
     {
         if (args.SenderSession.AttachedEntity is not {Valid: true} ent)
@@ -163,6 +158,7 @@ public sealed partial class CEAmbitionsSystem : CESharedAmbitionsSystem
         _userInterface.TryToggleUi(ent, CEAmbitionsUIKey.Key, actor.PlayerSession);
     }
 
+    [SubscribeLocalEvent]
     private void OnBoundUIOpened(Entity<CEAmbitionsSetupComponent> ent, ref BoundUIOpenedEvent args)
     {
         UpdateUiState(ent);

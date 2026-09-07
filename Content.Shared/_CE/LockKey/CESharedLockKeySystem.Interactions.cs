@@ -1,4 +1,5 @@
 using System.Linq;
+using Robust.Shared.Analyzers;
 using Content.Shared._CE.LockKey.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.IdentityManagement;
@@ -11,11 +12,9 @@ public abstract partial class CESharedLockKeySystem
 {
     private void VerbsInteractions()
     {
-        SubscribeLocalEvent<CEKeyComponent, AfterInteractEvent>(OnKeyInteract);
-        SubscribeLocalEvent<CEKeyRingComponent, AfterInteractEvent>(OnKeyRingInteract);
-        SubscribeLocalEvent<CELockComponent, AfterInteractEvent>(OnLockInteract);
     }
 
+    [SubscribeLocalEvent]
     private void OnKeyInteract(Entity<CEKeyComponent> key, ref AfterInteractEvent args)
     {
         if (args.Handled)
@@ -37,6 +36,7 @@ public abstract partial class CESharedLockKeySystem
         UseKeyOnLock(args.User, new Entity<CELockComponent>(args.Target.Value, ceLockComponent), key);
     }
 
+    [SubscribeLocalEvent]
     private void OnKeyRingInteract(Entity<CEKeyRingComponent> keyring, ref AfterInteractEvent args)
     {
         if (args.Handled)
@@ -78,6 +78,7 @@ public abstract partial class CESharedLockKeySystem
             _popup.PopupPredicted(Loc.GetString("ce-lock-key-no-fit"), args.Target.Value, args.User);
     }
 
+    [SubscribeLocalEvent]
     private void OnLockInteract(Entity<CELockComponent> ent, ref AfterInteractEvent args)
     {
         if (args.Handled)

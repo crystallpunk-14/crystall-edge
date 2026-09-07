@@ -2,6 +2,7 @@ using Content.Shared._CE.ThirdArm.Components;
 using Content.Shared.Actions;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Inventory.Events;
+using Robust.Shared.Analyzers;
 
 namespace Content.Shared._CE.ThirdArm.ActionModule;
 
@@ -9,17 +10,7 @@ public sealed partial class CEThirdArmActionModuleSystem : EntitySystem
 {
     [Dependency] private SharedActionsSystem _actions = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEThirdArmComponent, GotEquippedEvent>(OnEquipped);
-        SubscribeLocalEvent<CEThirdArmComponent, GotUnequippedEvent>(OnUnequipped);
-
-        SubscribeLocalEvent<CEThirdArmActionModuleComponent, CEThirdArmModuleActivatedEvent>(OnModuleActivated);
-        SubscribeLocalEvent<CEThirdArmActionModuleComponent, CEThirdArmModuleDeactivatedEvent>(OnModuleDeactivated);
-    }
-
+    [SubscribeLocalEvent]
     private void OnEquipped(Entity<CEThirdArmComponent> ent, ref GotEquippedEvent args)
     {
         var module = ent.Comp.ModuleSlot.Item;
@@ -33,6 +24,7 @@ public sealed partial class CEThirdArmActionModuleSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnUnequipped(Entity<CEThirdArmComponent> ent, ref GotUnequippedEvent args)
     {
         var module = ent.Comp.ModuleSlot.Item;
@@ -40,6 +32,7 @@ public sealed partial class CEThirdArmActionModuleSystem : EntitySystem
             _actions.RemoveProvidedActions(args.EquipTarget, module.Value);
     }
 
+    [SubscribeLocalEvent]
     private void OnModuleActivated(Entity<CEThirdArmActionModuleComponent> module, ref CEThirdArmModuleActivatedEvent args)
     {
         if (TryGetWearer(args.Arm, out var wearer))
@@ -52,6 +45,7 @@ public sealed partial class CEThirdArmActionModuleSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnModuleDeactivated(Entity<CEThirdArmActionModuleComponent> module, ref CEThirdArmModuleDeactivatedEvent args)
     {
         if (TryGetWearer(args.Arm, out var wearer))

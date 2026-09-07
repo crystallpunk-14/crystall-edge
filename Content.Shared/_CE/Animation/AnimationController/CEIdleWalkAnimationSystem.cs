@@ -1,5 +1,6 @@
-﻿using Content.Shared.Movement.Components;
+using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Physics.Components;
 
 namespace Content.Shared._CE.AnimationController;
@@ -20,21 +21,7 @@ public sealed partial class CEIdleWalkAnimationSystem : EntitySystem
 
     private const float MovingThresholdSq = 0.04f; // 0.2 m/s
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEAnimationControllerComponent, MapInitEvent>(OnMapInit);
-
-        SubscribeLocalEvent<CEAnimationControllerComponent, SpriteMoveEvent>(OnSpriteMoveEvent);
-
-        SubscribeLocalEvent<CEIdleAnimationComponent, CECalculateCurrentAppearanceEvent>(OnIdleAppearance);
-        SubscribeLocalEvent<CEIdleAnimationComponent, CECalculateCurrentAnimationEvent>(OnIdleAnimation);
-
-        SubscribeLocalEvent<CEWalkingAnimationComponent, CECalculateCurrentAppearanceEvent>(OnWalkAppearance);
-        SubscribeLocalEvent<CEWalkingAnimationComponent, CECalculateCurrentAnimationEvent>(OnWalkAnimation);
-    }
-
+    [SubscribeLocalEvent]
     private void OnMapInit(Entity<CEAnimationControllerComponent> ent, ref MapInitEvent args)
     {
         _controller.RefreshVisuals((ent, ent.Comp));
@@ -64,6 +51,7 @@ public sealed partial class CEIdleWalkAnimationSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnSpriteMoveEvent(Entity<CEAnimationControllerComponent> ent, ref SpriteMoveEvent args)
     {
         if (TerminatingOrDeleted(ent))
@@ -77,18 +65,21 @@ public sealed partial class CEIdleWalkAnimationSystem : EntitySystem
         _controller.RefreshVisuals((ent, ent.Comp));
     }
 
+    [SubscribeLocalEvent]
     private void OnIdleAppearance(Entity<CEIdleAnimationComponent> ent, ref CECalculateCurrentAppearanceEvent args)
     {
         if (ent.Comp.AppearanceKey is { } key)
             args.Set(key, 0);
     }
 
+    [SubscribeLocalEvent]
     private void OnIdleAnimation(Entity<CEIdleAnimationComponent> ent, ref CECalculateCurrentAnimationEvent args)
     {
         if (ent.Comp.Animation is { } anim)
             args.Set(anim, 0);
     }
 
+    [SubscribeLocalEvent]
     private void OnWalkAppearance(Entity<CEWalkingAnimationComponent> ent, ref CECalculateCurrentAppearanceEvent args)
     {
         if (!TryComp<CEMovementStateComponent>(ent, out var movementComp) || !movementComp.IsMoving)
@@ -98,6 +89,7 @@ public sealed partial class CEIdleWalkAnimationSystem : EntitySystem
             args.Set(key, 1);
     }
 
+    [SubscribeLocalEvent]
     private void OnWalkAnimation(Entity<CEWalkingAnimationComponent> ent, ref CECalculateCurrentAnimationEvent args)
     {
         if (!TryComp<CEMovementStateComponent>(ent, out var movementComp) || !movementComp.IsMoving)

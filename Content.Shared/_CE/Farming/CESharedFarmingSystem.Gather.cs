@@ -3,6 +3,7 @@ using Content.Shared.Destructible;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
 using Content.Shared.Rounding;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
@@ -11,12 +12,8 @@ namespace Content.Shared._CE.Farming;
 
 public abstract partial class CESharedFarmingSystem
 {
-    private void InitializeGather()
-    {
-        SubscribeLocalEvent<CEPlantGatherOnInteractComponent, InteractUsingEvent>(OnGatherableInteract);
-        SubscribeLocalEvent<CEPlantGatherOnInteractComponent, CEPlantGatherDoAfterEvent>(OnGatherDoAfter);
-    }
 
+    [SubscribeLocalEvent]
     private void OnGatherableInteract(Entity<CEPlantGatherOnInteractComponent> ent, ref InteractUsingEvent args)
     {
         if (args.Handled)
@@ -52,6 +49,7 @@ public abstract partial class CESharedFarmingSystem
         args.Handled = _doAfter.TryStartDoAfter(doAfterArgs);
     }
 
+    [SubscribeLocalEvent]
     private void OnGatherDoAfter(Entity<CEPlantGatherOnInteractComponent> ent, ref CEPlantGatherDoAfterEvent args)
     {
         if (args.Cancelled || args.Handled)

@@ -2,6 +2,7 @@ using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Gravity;
 using Content.Shared.StatusEffectNew;
+using Robust.Shared.Analyzers;
 
 namespace Content.Shared._CE.StatusEffect.GravityCaught;
 
@@ -9,18 +10,8 @@ public sealed partial class CEGravityCaughtStatusEffectSystem : EntitySystem
 {
     [Dependency] private CESharedZLevelsSystem _zLevels = default!;
     [Dependency] private SharedGravitySystem _gravity = default!;
-    public override void Initialize()
-    {
-        base.Initialize();
 
-        SubscribeLocalEvent<CEGravityCaughtStatusEffectComponent, StatusEffectAppliedEvent>(OnApplied);
-        SubscribeLocalEvent<CEGravityCaughtStatusEffectComponent, StatusEffectRemovedEvent>(OnRemoved);
-
-        SubscribeLocalEvent<CEGravityCaughtStatusEffectComponent, StatusEffectRelayedEvent<IsWeightlessEvent>>(CheckWeightless);
-        SubscribeLocalEvent<CEGravityCaughtStatusEffectComponent, StatusEffectRelayedEvent<CECheckGravityEvent>>(OnCheckGravityState);
-        SubscribeLocalEvent<CEGravityCaughtStatusEffectComponent, StatusEffectRelayedEvent<CEGetZVelocityEvent>>(OnGetZVelocity);
-    }
-
+    [SubscribeLocalEvent]
     private void CheckWeightless(Entity<CEGravityCaughtStatusEffectComponent> ent, ref StatusEffectRelayedEvent<IsWeightlessEvent> args)
     {
         if (args.Args.Handled)
@@ -31,6 +22,7 @@ public sealed partial class CEGravityCaughtStatusEffectSystem : EntitySystem
         a.Handled = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnApplied(Entity<CEGravityCaughtStatusEffectComponent> ent, ref StatusEffectAppliedEvent args)
     {
         if (!TryComp<CEZPhysicsComponent>(args.Target, out var zPhyComp))
@@ -42,17 +34,20 @@ public sealed partial class CEGravityCaughtStatusEffectSystem : EntitySystem
         _zLevels.SetZVelocity(args.Target, 0); //Reset velocity on apply
     }
 
+    [SubscribeLocalEvent]
     private void OnRemoved(Entity<CEGravityCaughtStatusEffectComponent> ent, ref StatusEffectRemovedEvent args)
     {
         _zLevels.UpdateGravityState(args.Target);
         _gravity.RefreshWeightless(args.Target);
     }
 
+    [SubscribeLocalEvent]
     private void OnCheckGravityState(Entity<CEGravityCaughtStatusEffectComponent> ent, ref StatusEffectRelayedEvent<CECheckGravityEvent> args)
     {
         args.Args.Gravity *= 0;
     }
 
+    [SubscribeLocalEvent]
     private void OnGetZVelocity(Entity<CEGravityCaughtStatusEffectComponent> ent, ref StatusEffectRelayedEvent<CEGetZVelocityEvent> args)
     {
         var currentPosition = args.Args.Target.Comp.LocalPosition;
