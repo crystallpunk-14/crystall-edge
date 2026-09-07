@@ -22,7 +22,7 @@ public abstract partial class CESharedSkillSystem
     private void InitializeRead()
     {
         SubscribeLocalEvent<CESkillBookComponent, MapInitEvent>(OnBookMapInit);
-        SubscribeLocalEvent<CESkillBookComponent, UseInHandEvent>(OnBookUseInHand, after: [typeof(IngestionSystem)]);
+        SubscribeLocalEvent<CESkillBookComponent, UseInHandEvent>(OnBookUseInHand);
         SubscribeLocalEvent<CESkillBookComponent, GetVerbsEvent<AlternativeVerb>>(AddBookVerbs);
         SubscribeLocalEvent<CESkillBookComponent, CESkillReadDoAfterEvent>(OnBookDoAfter);
     }
