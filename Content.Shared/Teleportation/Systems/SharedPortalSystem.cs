@@ -243,6 +243,11 @@ public abstract partial class SharedPortalSystem : EntitySystem
 
         _transform.SetCoordinates(subject, target);
 
+        // CrystallEdge: let CE systems (e.g. the dimensional lift) react to a successful teleport
+        var teleportedEv = new CEPortalTeleportedEvent(subject, target);
+        RaiseLocalEvent(ent, ref teleportedEv);
+        // CrystallEdge end
+
         if (!playSound)
             return;
 
@@ -281,3 +286,12 @@ public abstract partial class SharedPortalSystem : EntitySystem
     {
     }
 }
+
+// CrystallEdge: raised on the entry portal after a successful teleport, so CE systems can react
+[ByRefEvent]
+public readonly struct CEPortalTeleportedEvent(EntityUid subject, EntityCoordinates target)
+{
+    public readonly EntityUid Subject = subject;
+    public readonly EntityCoordinates Target = target;
+}
+// CrystallEdge end

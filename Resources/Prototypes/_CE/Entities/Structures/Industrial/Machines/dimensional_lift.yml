@@ -10,18 +10,27 @@
   components:
   - type: Machine
     board: CEMachineCoreDimensionalLift
-  - type: PlacementReplacement
-    key: walls
   - type: Sprite
     drawdepth: FloorTiles
     snapCardinals: true
-    sprite: _CE/Structures/Industrial/map_projector.rsi
+    sprite: _CE/Structures/Industrial/DimensionalLift/machine.rsi
     layers:
     - state: base
+      map: ["base"]
+    - state: powered
+      visible: false
+      map: ["powered"]
   - type: Icon
-    sprite: _CE/Structures/Industrial/map_projector.rsi
+    sprite: _CE/Structures/Industrial/DimensionalLift/machine.rsi
     state: base
   - type: CEDimensionalLift
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        powered:
+          True: { visible: true }
+          False: { visible: false }
   - type: Fixtures
     fixtures:
       fix1:
@@ -54,10 +63,59 @@
   description: A stable rift punched straight down through the world.
   components:
   - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _CE/Structures/Industrial/DimensionalLift/demiplan_rift.rsi
     layers:
-    - state: portal-blue
+    - state: anom
   - type: PointLight
-    color: SkyBlue
+    color: MediumPurple
   - type: Portal
     randomTeleport: false
     canTeleportToOtherMaps: true
+
+- type: entity
+  id: CEDimensionalLiftTraversalEffect
+  name: dimensional rift beam
+  suffix: VFX
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Effects
+    sprite: _CE/Structures/Industrial/DimensionalLift/traversal_line.rsi
+    layers:
+    - state: effect
+      shader: unshaded
+  - type: Tag
+    tags:
+    - HideContextMenu
+
+- type: entity
+  id: CEDimensionalLiftTraversalImpact
+  name: dimensional rift flash
+  suffix: VFX
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Effects
+    sprite: _CE/Structures/Industrial/DimensionalLift/traversal_impact.rsi
+    layers:
+    - state: effect
+      shader: unshaded
+  - type: TimedDespawn
+    lifetime: 3
+  - type: Tag
+    tags:
+    - HideContextMenu
+  - type: PointLight
+    color: MediumPurple
+    enabled: true
+    radius: 4
+    energy: 5
+    netsync: false
+  - type: LightFade
+    duration: 1

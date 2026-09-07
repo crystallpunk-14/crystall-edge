@@ -41,9 +41,28 @@ public sealed partial class CEDimensionalLiftComponent : Component
     [DataField]
     public int MaxSearchDepth = 16;
 
+    /// <summary>
+    /// Purely cosmetic "beam" spawned on every z-level the rift crosses, including the levels the portals
+    /// stand on. Respawned alongside the portals and cleared when they close.
+    /// </summary>
+    [DataField]
+    public EntProtoId TraversalEffectPrototype = "CEDimensionalLiftTraversalEffect";
+
+    /// <summary>
+    /// Currently spawned traversal effect entities, one per level crossed.
+    /// </summary>
+    [DataField]
+    public List<EntityUid> TraversalEffects = new();
+
+    /// <summary>
+    /// Brief purple flash spawned alongside the beam at each crossed level. Self-despawns, so it isn't tracked.
+    /// </summary>
+    [DataField]
+    public EntProtoId TraversalImpactPrototype = "CEDimensionalLiftTraversalImpact";
+
     [DataField]
     public SoundSpecifier OpenSound =
-        new SoundPathSpecifier("/Audio/Machines/high_tech_confirm.ogg")
+        new SoundPathSpecifier("/Audio/Magic/Eldritch/voidblink.ogg")
         {
             Params = AudioParams.Default.AddVolume(-2f),
         };

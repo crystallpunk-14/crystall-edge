@@ -53,6 +53,29 @@ public sealed partial class CEDimensionalLiftSystem : EntitySystem
     }
 
     [SubscribeLocalEvent]
+    private void OnShutdown(Entity<CEDimensionalLiftComponent> ent, ref ComponentShutdown args)
+    {
+        // The lift is going away (deleted, destroyed, ...) — its portals must not outlive it.
+        Close(ent, playSound: false);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnPortalTeleported(Entity<CEDimensionalLiftPortalComponent> ent, ref CEPortalTeleportedEvent args)
+    {
+        if (!TryComp<CEDimensionalLiftComponent>(ent.Comp.Lift, out var liftComp))
+            return;
+
+        // Ripple a brief flash along the whole beam to sell that something just shot through it.
+        foreach (var effect in liftComp.TraversalEffects)
+        {
+            if (Deleted(effect))
+                continue;
+
+            Spawn(liftComp.TraversalImpactPrototype, Transform(effect).Coordinates);
+        }
+    }
+
+    [SubscribeLocalEvent]
     private void OnZNetworkUpdated(CEZLevelMapNetworkUpdatedEvent args)
     {
         var query = EntityQueryEnumerator<CEDimensionalLiftComponent>();
@@ -103,7 +126,7 @@ public sealed partial class CEDimensionalLiftSystem : EntitySystem
 
         var worldPos = _xform.GetWorldPosition(ent);
 
-        if (!TryFindLanding((mapUid, zMap), worldPos, ent.Comp.MaxSearchDepth, out var landing))
+        if (!TryFindLanding((mapUid, zMap), worldPos, ent.Comp.MaxSearchDepth, out var landing, out var crossedMaps))
             return false;
 
         var firstCoords = xform.Coordinates;
@@ -112,22 +135,41 @@ public sealed partial class CEDimensionalLiftSystem : EntitySystem
 
         _link.TryLink(first, second, deleteOnEmptyLinks: true);
 
+        EnsureComp<CEDimensionalLiftPortalComponent>(first).Lift = ent.Owner;
+        EnsureComp<CEDimensionalLiftPortalComponent>(second).Lift = ent.Owner;
+
         ent.Comp.FirstPortal = first;
         ent.Comp.SecondPortal = second;
+
+        // A beam on every level the rift passes through, including both portal levels.
+        crossedMaps.Insert(0, mapUid);
+        foreach (var levelMap in crossedMaps)
+        {
+            if (!TryComp<MapComponent>(levelMap, out var levelMapComp))
+                continue;
+
+            var levelCoords = new MapCoordinates(worldPos, levelMapComp.MapId);
+            var effect = Spawn(ent.Comp.TraversalEffectPrototype, levelCoords);
+            ent.Comp.TraversalEffects.Add(effect);
+
+            Spawn(ent.Comp.TraversalImpactPrototype, levelCoords);
+        }
+
         Dirty(ent);
 
         // Play at coordinates (not the portals) so a later despawn cannot cut the sound short.
         _audio.PlayPvs(ent.Comp.OpenSound, firstCoords);
         _audio.PlayPvs(ent.Comp.OpenSound, landing);
 
-        _adminLogger.Add(LogType.EntitySpawn, LogImpact.Medium,
+        _adminLogger.Add(LogType.EntitySpawn,
+            LogImpact.Medium,
             $"{ToPrettyString(ent):lift} opened a dimensional lift portal pair {ToPrettyString(first)} <-> {ToPrettyString(second)} at {Transform(second).Coordinates}");
         return true;
     }
 
     private void Close(Entity<CEDimensionalLiftComponent> ent, bool playSound = true)
     {
-        if (ent.Comp.FirstPortal == null && ent.Comp.SecondPortal == null)
+        if (ent.Comp.FirstPortal == null && ent.Comp.SecondPortal == null && ent.Comp.TraversalEffects.Count == 0)
             return;
 
         ClosePortal(ent.Comp.FirstPortal, ent.Comp.CloseSound, playSound);
@@ -135,6 +177,15 @@ public sealed partial class CEDimensionalLiftSystem : EntitySystem
 
         ent.Comp.FirstPortal = null;
         ent.Comp.SecondPortal = null;
+
+        foreach (var effect in ent.Comp.TraversalEffects)
+        {
+            if (!Deleted(effect))
+                QueueDel(effect);
+        }
+
+        ent.Comp.TraversalEffects.Clear();
+
         Dirty(ent);
     }
 
@@ -152,19 +203,29 @@ public sealed partial class CEDimensionalLiftSystem : EntitySystem
     /// <summary>
     /// Walks the z-stack downward from <paramref name="startMap"/>, returning the coordinates of the first tile
     /// directly under <paramref name="worldPos"/> that exists and is not blocked. Empty space or a blocked tile
-    /// on a given level is skipped and the search continues further down.
+    /// on a given level is skipped and the search continues further down. <paramref name="crossedMaps"/> lists
+    /// every level visited along the way (in descending order), including the landing level.
     /// </summary>
-    private bool TryFindLanding(Entity<CEZMapComponent> startMap, Vector2 worldPos, int maxDepth, out EntityCoordinates landing)
+    private bool TryFindLanding(Entity<CEZMapComponent> startMap,
+        Vector2 worldPos,
+        int maxDepth,
+        out EntityCoordinates landing,
+        out List<EntityUid> crossedMaps)
     {
         landing = default;
+        crossedMaps = new List<EntityUid>();
 
         var current = startMap;
         for (var i = 0; i < maxDepth; i++)
         {
             if (!_zLevels.TryMapDown((current.Owner, current.Comp), out var below))
+            {
+                crossedMaps.Clear();
                 return false; // bottom of the stack
+            }
 
             current = below;
+            crossedMaps.Add(current.Owner);
 
             if (!_map.TryFindGridAt(current.Owner, worldPos, out var gridUid, out var grid))
                 continue; // nothing to stand on here
@@ -180,6 +241,7 @@ public sealed partial class CEDimensionalLiftSystem : EntitySystem
             return true;
         }
 
+        crossedMaps.Clear();
         return false;
     }
 }
