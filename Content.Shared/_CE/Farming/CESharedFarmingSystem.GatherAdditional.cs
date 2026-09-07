@@ -3,6 +3,7 @@ using Content.Shared.Destructible;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
 using Content.Shared.Rounding;
+using Robust.Shared.Analyzers;
 
 namespace Content.Shared._CE.Farming;
 
@@ -36,15 +37,12 @@ public abstract partial class CESharedFarmingSystem
     //    `.__.-.__.'  apples
     private void InitializeGatherAdditional()
     {
-        SubscribeLocalEvent<CEPlantAdditionalProduceOnDestructComponent, BreakageEventArgs>(OnPlantDestruction);
-
-        SubscribeLocalEvent<CEPlantAdditionalProduceOnInteractComponent, InteractUsingEvent>(OnAdditionalPlantInteract);
-        SubscribeLocalEvent<CEPlantAdditionalProduceOnInteractComponent, CEPlantGatherDoAfterEvent>(OnAdditionalProduceDoAfter);
     }
 
     /// <summary>
     /// We gather inner plant resources
     /// </summary>
+    [SubscribeLocalEvent]
     private void OnPlantDestruction(Entity<CEPlantAdditionalProduceOnDestructComponent> ent, ref BreakageEventArgs args)
     {
         if (!PlantQuery.TryComp(ent, out var plant))
@@ -71,6 +69,7 @@ public abstract partial class CESharedFarmingSystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnAdditionalPlantInteract(Entity<CEPlantAdditionalProduceOnInteractComponent> ent, ref InteractUsingEvent args)
     {
         if (args.Handled)
@@ -107,6 +106,7 @@ public abstract partial class CESharedFarmingSystem
         args.Handled = _doAfter.TryStartDoAfter(doAfterArgs);
     }
 
+    [SubscribeLocalEvent]
     private void OnAdditionalProduceDoAfter(Entity<CEPlantAdditionalProduceOnInteractComponent> ent, ref CEPlantGatherDoAfterEvent args)
     {
         if (args.Cancelled || args.Handled)

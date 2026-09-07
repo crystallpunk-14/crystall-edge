@@ -1,4 +1,5 @@
 using System.Numerics;
+using Robust.Shared.Analyzers;
 using Content.Server.DoAfter;
 using Content.Server.Popups;
 using Content.Server.Stack;
@@ -41,12 +42,9 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
         InitUserCrafter();
 
         _workbenchQuery = GetEntityQuery<CEWorkbenchComponent>();
-
-        SubscribeLocalEvent<CEWorkbenchComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<CEWorkbenchComponent, BeforeActivatableUIOpenEvent>(OnBeforeUIOpen);
-        SubscribeLocalEvent<CEWorkbenchComponent, CEWorkbenchUiClickRecipeMessage>(OnSetRecipe);
     }
 
+    [SubscribeLocalEvent]
     private void OnMapInit(Entity<CEWorkbenchComponent> ent, ref MapInitEvent args)
     {
         foreach (var recipe in _proto.EnumeratePrototypes<CEWorkbenchRecipePrototype>())
@@ -61,12 +59,14 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnBeforeUIOpen(Entity<CEWorkbenchComponent> ent, ref BeforeActivatableUIOpenEvent args)
     {
         ent.Comp.CurrentUser = args.User;
         UpdateUIRecipes((ent, ent.Comp));
     }
 
+    [SubscribeLocalEvent]
     private void OnSetRecipe(Entity<CEWorkbenchComponent> ent, ref CEWorkbenchUiClickRecipeMessage args)
     {
         if (!ent.Comp.Recipes.Contains(args.Recipe))

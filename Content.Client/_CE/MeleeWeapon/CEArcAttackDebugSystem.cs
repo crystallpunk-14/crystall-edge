@@ -1,6 +1,7 @@
 using Content.Client._CE.Animation.Core;
 using Content.Shared._CE.EntityEffect.Effects;
 using Robust.Client.Graphics;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Console;
 
 namespace Content.Client._CE.MeleeWeapon;
@@ -18,9 +19,9 @@ public sealed partial class CEArcAttackDebugSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<CEDebugArcAttackEvent>(OnArcAttackFired);
     }
 
+    [SubscribeLocalEvent]
     private void OnArcAttackFired(CEDebugArcAttackEvent ev)
     {
         _activeOverlay?.AddArc(ev.Position, ev.Direction, ev.Range, ev.ArcWidth);

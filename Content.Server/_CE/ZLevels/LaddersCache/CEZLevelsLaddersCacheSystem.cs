@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+using System.Numerics;
+using Robust.Shared.Analyzers;
 using Content.Shared._CE.ZLevels.Core.Components;
 using JetBrains.Annotations;
 using Robust.Shared.Map.Components;
@@ -17,22 +18,21 @@ public sealed partial class CEZLevelsLaddersCacheSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEZLevelHighGroundComponent, MapInitEvent>(OnLadderInit);
-        SubscribeLocalEvent<CEZLevelHighGroundComponent, ComponentShutdown>(OnLadderShutdown);
-        SubscribeLocalEvent<CEZLevelHighGroundComponent, AnchorStateChangedEvent>(OnLadderAnchorChanged);
     }
 
+    [SubscribeLocalEvent]
     private void OnLadderInit(Entity<CEZLevelHighGroundComponent> ent, ref MapInitEvent args)
     {
         TryCacheLadder(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnLadderShutdown(Entity<CEZLevelHighGroundComponent> ent, ref ComponentShutdown args)
     {
         TryRemoveCache(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnLadderAnchorChanged(Entity<CEZLevelHighGroundComponent> ent, ref AnchorStateChangedEvent args)
     {
         if (args.Anchored)

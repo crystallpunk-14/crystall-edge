@@ -1,5 +1,6 @@
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.Waypointer;
@@ -15,18 +16,14 @@ public abstract partial class CESharedWaypointerSystem : EntitySystem
 {
     public override void Initialize()
     {
-        SubscribeLocalEvent<CEWaypointerComponent, ComponentInit>(OnAddition);
-        SubscribeLocalEvent<CEWaypointerComponent, ComponentRemove>(OnRemoval);
-
-        SubscribeLocalEvent<CEWaypointerClothingComponent, GotEquippedEvent>(OnEquip);
-        SubscribeLocalEvent<CEWaypointerClothingComponent, GotUnequippedEvent>(OnUnequip);
-        SubscribeLocalEvent<CEWaypointerClothingComponent, InventoryRelayedEvent<CERefreshWaypointersEvent>>(OnClothingRefresh);
     }
 
+    [SubscribeLocalEvent]
     protected virtual void OnAddition(Entity<CEWaypointerComponent> player, ref ComponentInit args)
     {
     }
 
+    [SubscribeLocalEvent]
     protected virtual void OnRemoval(Entity<CEWaypointerComponent> player, ref ComponentRemove args)
     {
     }
@@ -54,6 +51,7 @@ public abstract partial class CESharedWaypointerSystem : EntitySystem
         Dirty(mob, comp);
     }
 
+    [SubscribeLocalEvent]
     private void OnEquip(Entity<CEWaypointerClothingComponent> clothing, ref GotEquippedEvent args)
     {
         if ((clothing.Comp.SlotFlags & args.SlotFlags) == 0)
@@ -62,6 +60,7 @@ public abstract partial class CESharedWaypointerSystem : EntitySystem
         RefreshWaypointers(args.EquipTarget);
     }
 
+    [SubscribeLocalEvent]
     private void OnUnequip(Entity<CEWaypointerClothingComponent> clothing, ref GotUnequippedEvent args)
     {
         if ((clothing.Comp.SlotFlags & args.SlotFlags) == 0)
@@ -70,6 +69,7 @@ public abstract partial class CESharedWaypointerSystem : EntitySystem
         RefreshWaypointers(args.EquipTarget);
     }
 
+    [SubscribeLocalEvent]
     private void OnClothingRefresh(Entity<CEWaypointerClothingComponent> clothing, ref InventoryRelayedEvent<CERefreshWaypointersEvent> args)
     {
         args.Args.WaypointerProtoIds.UnionWith(clothing.Comp.WaypointerProtoIds);

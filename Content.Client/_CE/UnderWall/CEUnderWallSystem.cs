@@ -1,6 +1,7 @@
 using Content.Shared._CE.Pipes;
 using Content.Shared._CE.UnderWall;
 using Robust.Client.GameObjects;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Map.Components;
 
 namespace Content.Client._CE.UnderWall;
@@ -13,27 +14,21 @@ public sealed partial class CEUnderWallSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEUnderWallComponent, ComponentInit>(OnComponentInit);
-        SubscribeLocalEvent<CEUnderWallComponent, ComponentShutdown>(OnComponentShutdown);
-        SubscribeLocalEvent<CEUnderWallComponent, AnchorStateChangedEvent>(OnAnchorStateChanged);
-
-        // Subscribe to wall anchor changes, initialization and shutdown
-        SubscribeLocalEvent<CEOccludePipesComponent, ComponentInit>(OnOccluderChanged);
-        SubscribeLocalEvent<CEOccludePipesComponent, ComponentShutdown>(OnOccluderChanged);
-        SubscribeLocalEvent<CEOccludePipesComponent, AnchorStateChangedEvent>(OnOccluderChanged);
     }
 
+    [SubscribeLocalEvent]
     private void OnOccluderChanged(Entity<CEOccludePipesComponent> ent, ref ComponentInit args)
     {
         UpdateOccluderTile(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnOccluderChanged(Entity<CEOccludePipesComponent> ent, ref ComponentShutdown args)
     {
         UpdateOccluderTile(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnOccluderChanged(Entity<CEOccludePipesComponent> ent, ref AnchorStateChangedEvent args)
     {
         UpdateOccluderTile(ent);
@@ -51,6 +46,7 @@ public sealed partial class CEUnderWallSystem : EntitySystem
         UpdateEntitiesOnTile(xform.GridUid.Value, grid, tile);
     }
 
+    [SubscribeLocalEvent]
     private void OnComponentInit(Entity<CEUnderWallComponent> ent, ref ComponentInit args)
     {
         // Store the original drawDepth when component is added
@@ -62,6 +58,7 @@ public sealed partial class CEUnderWallSystem : EntitySystem
         CheckAndUpdateWallStatus(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnComponentShutdown(Entity<CEUnderWallComponent> ent, ref ComponentShutdown args)
     {
         // Restore original drawDepth when component is removed
@@ -71,6 +68,7 @@ public sealed partial class CEUnderWallSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnAnchorStateChanged(Entity<CEUnderWallComponent> ent, ref AnchorStateChangedEvent args)
     {
         CheckAndUpdateWallStatus(ent);

@@ -1,6 +1,7 @@
 using Content.Client.IconSmoothing;
 using Content.Shared._CE.Wallpaper;
 using Robust.Client.GameObjects;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Maths;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
@@ -23,10 +24,9 @@ public sealed partial class CEClientWallpaperSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEWallpaperHolderComponent, AfterAutoHandleStateEvent>(OnHandleState, after: new[] { typeof(IconSmoothSystem) });
     }
 
+    [SubscribeLocalEvent(after: new[] { typeof(IconSmoothSystem) })]
     private void OnHandleState(Entity<CEWallpaperHolderComponent> ent, ref AfterAutoHandleStateEvent args) => Rebuild(ent);
 
     private void Rebuild(Entity<CEWallpaperHolderComponent> holder)

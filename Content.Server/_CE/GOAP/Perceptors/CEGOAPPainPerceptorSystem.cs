@@ -1,5 +1,6 @@
 using Content.Shared._CE.GOAP.Components;
 using Content.Shared.Damage.Systems;
+using Robust.Shared.Analyzers;
 
 namespace Content.Server._CE.GOAP.Perceptors;
 
@@ -19,9 +20,9 @@ public sealed partial class CEGOAPPainPerceptorSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<CEGOAPPainPerceptorComponent, DamageDealtEvent>(OnDamaged);
     }
 
+    [SubscribeLocalEvent]
     private void OnDamaged(Entity<CEGOAPPainPerceptorComponent> ent, ref DamageDealtEvent args)
     {
         if (args.Origin is not { } source || source == ent.Owner)

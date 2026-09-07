@@ -1,4 +1,5 @@
 using Content.Shared.Maps;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 
@@ -12,10 +13,9 @@ public sealed partial class CEAutoTilePlacementSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEAutoTilePlacementComponent, ComponentInit>(OnInit);
     }
 
+    [SubscribeLocalEvent]
     private void OnInit(Entity<CEAutoTilePlacementComponent> ent, ref ComponentInit args)
     {
         var xform = Transform(ent);

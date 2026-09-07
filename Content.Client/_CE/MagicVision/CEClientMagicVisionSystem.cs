@@ -1,6 +1,7 @@
 using Content.Shared._CE.MagicVision.Components;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
@@ -24,15 +25,9 @@ public sealed partial class CEClientMagicVisionSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEMagicVisionComponent, ComponentStartup>(OnStartup);
-        SubscribeLocalEvent<CEMagicVisionComponent, ComponentShutdown>(OnShutdown);
-        SubscribeLocalEvent<CEMagicVisionComponent, AfterAutoHandleStateEvent>(OnHandleState);
-
-        SubscribeLocalEvent<LocalPlayerAttachedEvent>(OnPlayerAttached);
-        SubscribeLocalEvent<LocalPlayerDetachedEvent>(OnPlayerDetached);
     }
 
+    [SubscribeLocalEvent]
     private void OnStartup(Entity<CEMagicVisionComponent> ent, ref ComponentStartup args)
     {
         if (ent.Owner != _player.LocalEntity)
@@ -42,6 +37,7 @@ public sealed partial class CEClientMagicVisionSystem : EntitySystem
         _audio.PlayGlobal(_startSound, ent.Owner);
     }
 
+    [SubscribeLocalEvent]
     private void OnShutdown(Entity<CEMagicVisionComponent> ent, ref ComponentShutdown args)
     {
         if (ent.Owner != _player.LocalEntity)
@@ -51,6 +47,7 @@ public sealed partial class CEClientMagicVisionSystem : EntitySystem
         _audio.PlayGlobal(_endSound, ent.Owner);
     }
 
+    [SubscribeLocalEvent]
     private void OnHandleState(Entity<CEMagicVisionComponent> ent, ref AfterAutoHandleStateEvent args)
     {
         if (ent.Owner != _player.LocalEntity)
@@ -59,12 +56,14 @@ public sealed partial class CEClientMagicVisionSystem : EntitySystem
         SyncOverlay(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnPlayerAttached(LocalPlayerAttachedEvent args)
     {
         if (TryComp<CEMagicVisionComponent>(args.Entity, out var comp))
             SyncOverlay((args.Entity, comp));
     }
 
+    [SubscribeLocalEvent]
     private void OnPlayerDetached(LocalPlayerDetachedEvent args)
     {
         RemoveOverlay();

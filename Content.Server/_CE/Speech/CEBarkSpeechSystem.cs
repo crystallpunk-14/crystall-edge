@@ -1,5 +1,6 @@
 using Content.Shared._CE.Speech;
 using Content.Shared.Chat;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
@@ -21,7 +22,6 @@ public sealed partial class CEBarkSpeechSystem : CESharedBarkSpeechSystem
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<CEBarkSpeechComponent, EntitySpokeEvent>(OnEntitySpoke);
     }
 
     /// <summary>
@@ -34,6 +34,7 @@ public sealed partial class CEBarkSpeechSystem : CESharedBarkSpeechSystem
     /// </summary>
     private const float WhisperPitchReduction = -0.3f;
 
+    [SubscribeLocalEvent]
     private void OnEntitySpoke(EntityUid uid, CEBarkSpeechComponent comp, EntitySpokeEvent args)
     {
         var message = StripMarkup(args.Message);

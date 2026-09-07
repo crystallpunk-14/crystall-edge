@@ -4,6 +4,7 @@ using Content.Shared.Tiles;
 using Content.Shared.Tools.Components;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
+using Robust.Shared.Analyzers;
 
 namespace Content.Client._CE.Tiles;
 
@@ -21,20 +22,9 @@ public sealed partial class CEFloorTileSelectionSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        // Subscribe to events for floor tile component
-        SubscribeLocalEvent<FloorTileComponent, HandSelectedEvent>(OnHandSelected);
-        SubscribeLocalEvent<FloorTileComponent, HandDeselectedEvent>(OnHandDeselected);
-        SubscribeLocalEvent<FloorTileComponent, GotEquippedHandEvent>(OnEquipped);
-        SubscribeLocalEvent<FloorTileComponent, GotUnequippedHandEvent>(OnUnequipped);
-
-        // Subscribe to events for tool tile compatible component
-        SubscribeLocalEvent<ToolTileCompatibleComponent, HandSelectedEvent>(OnToolHandSelected);
-        SubscribeLocalEvent<ToolTileCompatibleComponent, HandDeselectedEvent>(OnToolHandDeselected);
-        SubscribeLocalEvent<ToolTileCompatibleComponent, GotEquippedHandEvent>(OnToolEquipped);
-        SubscribeLocalEvent<ToolTileCompatibleComponent, GotUnequippedHandEvent>(OnToolUnequipped);
     }
 
+    [SubscribeLocalEvent]
     private void OnHandSelected(Entity<FloorTileComponent> ent, ref HandSelectedEvent args)
     {
         if (!IsLocalPlayer(args.User))
@@ -43,6 +33,7 @@ public sealed partial class CEFloorTileSelectionSystem : EntitySystem
         UpdateOverlay(args.User);
     }
 
+    [SubscribeLocalEvent]
     private void OnHandDeselected(Entity<FloorTileComponent> ent, ref HandDeselectedEvent args)
     {
         if (!IsLocalPlayer(args.User))
@@ -51,6 +42,7 @@ public sealed partial class CEFloorTileSelectionSystem : EntitySystem
         UpdateOverlay(args.User);
     }
 
+    [SubscribeLocalEvent]
     private void OnUnequipped(Entity<FloorTileComponent> ent, ref GotUnequippedHandEvent args)
     {
         if (!IsLocalPlayer(args.User))
@@ -59,6 +51,7 @@ public sealed partial class CEFloorTileSelectionSystem : EntitySystem
         UpdateOverlay(args.User);
     }
 
+    [SubscribeLocalEvent]
     private void OnEquipped(Entity<FloorTileComponent> ent, ref GotEquippedHandEvent args)
     {
         if (!IsLocalPlayer(args.User))
@@ -68,6 +61,7 @@ public sealed partial class CEFloorTileSelectionSystem : EntitySystem
     }
 
     // Tool tile compatible event handlers
+    [SubscribeLocalEvent]
     private void OnToolHandSelected(Entity<ToolTileCompatibleComponent> ent, ref HandSelectedEvent args)
     {
         if (!IsLocalPlayer(args.User))
@@ -76,6 +70,7 @@ public sealed partial class CEFloorTileSelectionSystem : EntitySystem
         UpdateToolOverlay(args.User);
     }
 
+    [SubscribeLocalEvent]
     private void OnToolHandDeselected(Entity<ToolTileCompatibleComponent> ent, ref HandDeselectedEvent args)
     {
         if (!IsLocalPlayer(args.User))
@@ -84,6 +79,7 @@ public sealed partial class CEFloorTileSelectionSystem : EntitySystem
         UpdateToolOverlay(args.User);
     }
 
+    [SubscribeLocalEvent]
     private void OnToolUnequipped(Entity<ToolTileCompatibleComponent> ent, ref GotUnequippedHandEvent args)
     {
         if (!IsLocalPlayer(args.User))
@@ -92,6 +88,7 @@ public sealed partial class CEFloorTileSelectionSystem : EntitySystem
         UpdateToolOverlay(args.User);
     }
 
+    [SubscribeLocalEvent]
     private void OnToolEquipped(Entity<ToolTileCompatibleComponent> ent, ref GotEquippedHandEvent args)
     {
         if (!IsLocalPlayer(args.User))

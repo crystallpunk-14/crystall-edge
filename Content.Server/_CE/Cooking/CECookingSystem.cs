@@ -4,6 +4,7 @@
  */
 
 using System.Linq;
+using Robust.Shared.Analyzers;
 using Content.Server.Temperature.Systems;
 using Content.Shared._CE.Cooking;
 using Content.Shared._CE.Cooking.Components;
@@ -20,9 +21,6 @@ public sealed partial class CECookingSystem : CESharedCookingSystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEFoodCookerComponent, TemperatureChangedEvent>(OnCookerTemperatureChange);
-        SubscribeLocalEvent<CETemperatureTransformationComponent, TemperatureChangedEvent>(OnTemperatureChanged);
     }
 
     public override void Update(float frameTime)
@@ -38,6 +36,7 @@ public sealed partial class CECookingSystem : CESharedCookingSystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnCookerTemperatureChange(Entity<CEFoodCookerComponent> ent, ref TemperatureChangedEvent args)
     {
         if (args.TemperatureDelta <= 0)
@@ -68,6 +67,7 @@ public sealed partial class CECookingSystem : CESharedCookingSystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnTemperatureChanged(Entity<CETemperatureTransformationComponent> start,
         ref TemperatureChangedEvent args)
     {

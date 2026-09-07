@@ -1,6 +1,7 @@
 using Content.Client._CE.ZCollapse.Overlays;
 using Content.Shared._CE.ZCollapse.Events;
 using Robust.Client.Graphics;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Map;
 
 namespace Content.Client._CE.ZCollapse;
@@ -14,9 +15,6 @@ public sealed partial class CEZCollapseClientSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeNetworkEvent<CEZCollapseOverlayToggledEvent>(OnOverlayToggled);
-        SubscribeNetworkEvent<CEZCollapseOverlaySnapshotEvent>(OnSnapshotUpdate);
     }
 
     public override void Shutdown()
@@ -25,6 +23,7 @@ public sealed partial class CEZCollapseClientSystem : EntitySystem
         _overlayMan.RemoveOverlay<CEZCollapseDebugOverlay>();
     }
 
+    [SubscribeNetworkEvent]
     private void OnOverlayToggled(CEZCollapseOverlayToggledEvent ev)
     {
         if (ev.IsEnabled)
@@ -36,6 +35,7 @@ public sealed partial class CEZCollapseClientSystem : EntitySystem
         }
     }
 
+    [SubscribeNetworkEvent]
     private void OnSnapshotUpdate(CEZCollapseOverlaySnapshotEvent ev)
     {
         Grids ??= new Dictionary<NetEntity, Dictionary<Vector2i, int>>();

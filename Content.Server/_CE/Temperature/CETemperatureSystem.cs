@@ -6,6 +6,7 @@ using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Placeable;
 using Content.Shared.Power;
 using Robust.Server.GameObjects;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Timing;
 
 namespace Content.Server._CE.Temperature;
@@ -21,16 +22,15 @@ public sealed partial class CETemperatureSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEEntityHeaterComponent, PowerChangedEvent>(OnPowerChanged);
-        SubscribeLocalEvent<CESolutionHeaterComponent, PowerChangedEvent>(OnPowerChanged);
     }
 
+    [SubscribeLocalEvent]
     private void OnPowerChanged(Entity<CEEntityHeaterComponent> ent, ref PowerChangedEvent args)
     {
         SetPowerVisuals(ent, args.Powered);
     }
 
+    [SubscribeLocalEvent]
     private void OnPowerChanged(Entity<CESolutionHeaterComponent> ent, ref PowerChangedEvent args)
     {
         SetPowerVisuals(ent, args.Powered);

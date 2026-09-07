@@ -2,6 +2,7 @@ using Content.Shared._CE.DayCycle;
 using Content.Shared._CE.Farming;
 using Content.Shared._CE.Farming.Components;
 using Content.Shared.Chemistry.EntitySystems;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -22,10 +23,9 @@ public sealed partial class CEFarmingSystem : CESharedFarmingSystem
         InitializeResources();
         InitializeKudzu();
         InitializeHealth();
-
-        SubscribeLocalEvent<CEPlantComponent, MapInitEvent>(OnMapInit);
     }
 
+    [SubscribeLocalEvent]
     private void OnMapInit(Entity<CEPlantComponent> plant, ref MapInitEvent args)
     {
         var proto = MetaData(plant).EntityPrototype;

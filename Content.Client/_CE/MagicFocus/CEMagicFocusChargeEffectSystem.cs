@@ -2,6 +2,7 @@ using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.MagicFocus.Components;
 using Content.Shared._CE.MagicFocus.Systems;
 using Robust.Client.GameObjects;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
@@ -17,18 +18,17 @@ public sealed partial class CEMagicFocusChargeEffectSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        // Predicted local spawn for the client performing the charge.
-        SubscribeLocalEvent<CEMagicFocusComponent, CEMagicFocusChargedEvent>(OnCharged);
-        // Networked broadcast so everyone else nearby sees the same effect.
-        SubscribeNetworkEvent<CEMagicFocusChargeEffectEvent>(OnChargedNetwork);
     }
 
+    // Predicted local spawn for the client performing the charge.
+    [SubscribeLocalEvent]
     private void OnCharged(Entity<CEMagicFocusComponent> ent, ref CEMagicFocusChargedEvent args)
     {
         SpawnEffects(ent.Owner, ent.Comp, args.Types);
     }
 
+    // Networked broadcast so everyone else nearby sees the same effect.
+    [SubscribeNetworkEvent]
     private void OnChargedNetwork(CEMagicFocusChargeEffectEvent args)
     {
         var focus = GetEntity(args.Focus);

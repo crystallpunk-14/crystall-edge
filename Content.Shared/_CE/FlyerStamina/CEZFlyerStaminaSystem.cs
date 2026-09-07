@@ -3,6 +3,7 @@ using Content.Shared._CE.ZLevels.Flight.Components;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Events;
 using Content.Shared.Damage.Systems;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.FlyerStamina;
@@ -16,16 +17,15 @@ public sealed partial class CEZFlyerStaminaSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEZFlyerStaminaComponent, CEStartFlightAttemptEvent>(OnFlightAttempt);
-        SubscribeLocalEvent<CEZFlyerStaminaComponent, CEEnterStaminaCritEvent>(OnStaminaCrit);
     }
 
+    [SubscribeLocalEvent]
     private void OnStaminaCrit(Entity<CEZFlyerStaminaComponent> ent, ref CEEnterStaminaCritEvent args)
     {
         _flight.DeactivateFlight(ent.Owner);
     }
 
+    [SubscribeLocalEvent]
     private void OnFlightAttempt(Entity<CEZFlyerStaminaComponent> ent, ref CEStartFlightAttemptEvent args)
     {
         if (!TryComp<StaminaComponent>(ent, out var stamina))

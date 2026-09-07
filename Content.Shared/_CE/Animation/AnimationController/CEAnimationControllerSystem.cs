@@ -1,5 +1,6 @@
-﻿using Content.Shared._CE.TimedAppearance;
+using Content.Shared._CE.TimedAppearance;
 using JetBrains.Annotations;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.AnimationController;
@@ -12,11 +13,10 @@ public sealed partial class CEAnimationControllerSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        // When a timed appearance expires, restore the controller's fallback key.
-        SubscribeLocalEvent<CETimedAppearanceComponent, ComponentShutdown>(OnTimedAppearanceShutdown);
     }
 
+    // When a timed appearance expires, restore the controller's fallback key.
+    [SubscribeLocalEvent]
     private void OnTimedAppearanceShutdown(Entity<CETimedAppearanceComponent> ent, ref ComponentShutdown args)
     {
         if (!TryComp<CEAnimationControllerComponent>(ent, out var controller))

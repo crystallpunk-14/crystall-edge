@@ -2,6 +2,7 @@ using Content.Shared._CE.Roundflow;
 using Robust.Client.Audio;
 using Robust.Client.Player;
 using Robust.Client.UserInterface;
+using Robust.Shared.Analyzers;
 
 namespace Content.Client._CE.RoundFlow;
 
@@ -19,7 +20,6 @@ public sealed partial class CEClientRoundflowSystem : EntitySystem
 
     public override void Initialize()
     {
-        SubscribeNetworkEvent<CEScreenPopupShowEvent>(OnScreenPopup);
 
         _ui = new CEScreenPopupControl();
         _ui.OnAnimationEnd += OnAnimationEnd;
@@ -36,6 +36,7 @@ public sealed partial class CEClientRoundflowSystem : EntitySystem
         _remove = false;
     }
 
+    [SubscribeNetworkEvent]
     private void OnScreenPopup(CEScreenPopupShowEvent ev)
     {
         if (_player.LocalEntity is null)

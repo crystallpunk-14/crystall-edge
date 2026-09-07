@@ -1,4 +1,5 @@
 using System.Linq;
+using Robust.Shared.Analyzers;
 using Content.Shared._CE.LockKey;
 using Content.Shared._CE.LockKey.Components;
 using Content.Shared.GameTicking;
@@ -20,21 +21,16 @@ public sealed partial class CELockKeySystem : CESharedLockKeySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundEnd);
-
-        SubscribeLocalEvent<CELockComponent, MapInitEvent>(OnLockInit);
-        SubscribeLocalEvent<CELockRandomShapeComponent, MapInitEvent>(OnLockRandomInit);
-
-        SubscribeLocalEvent<CEKeyComponent, MapInitEvent>(OnKeyInit);
     }
 
     #region Init
+    [SubscribeLocalEvent]
     private void OnRoundEnd(RoundRestartCleanupEvent ev)
     {
         _roundKeyData = new();
     }
 
+    [SubscribeLocalEvent]
     private void OnKeyInit(Entity<CEKeyComponent> keyEnt, ref MapInitEvent args)
     {
         if (keyEnt.Comp.AutoGenerateShape is null)
@@ -43,6 +39,7 @@ public sealed partial class CELockKeySystem : CESharedLockKeySystem
         TrySetShapeFromProto(keyEnt, keyEnt.Comp.AutoGenerateShape.Value);
     }
 
+    [SubscribeLocalEvent]
     private void OnLockInit(Entity<CELockComponent> lockEnt, ref MapInitEvent args)
     {
         if (lockEnt.Comp.AutoGenerateShape is null)
@@ -51,6 +48,7 @@ public sealed partial class CELockKeySystem : CESharedLockKeySystem
         TrySetShapeFromProto(lockEnt, lockEnt.Comp.AutoGenerateShape.Value);
     }
 
+    [SubscribeLocalEvent]
     private void OnLockRandomInit(Entity<CELockRandomShapeComponent> ent, ref MapInitEvent args)
     {
         if (!TryComp<CELockComponent>(ent, out var lockComp))

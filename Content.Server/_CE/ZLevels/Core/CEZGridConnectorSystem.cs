@@ -4,6 +4,7 @@
  */
 
 using System.Linq;
+using Robust.Shared.Analyzers;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Robust.Shared.Map;
@@ -60,48 +61,45 @@ public sealed partial class CEZGridConnectorSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEZGridConnectorComponent, MapInitEvent>(OnConnectorMapInit);
-        SubscribeLocalEvent<CEZGridConnectorComponent, AnchorStateChangedEvent>(OnConnectorAnchorChanged);
-        SubscribeLocalEvent<CEZGridConnectorComponent, EntityTerminatingEvent>(OnConnectorTerminating);
-
-        SubscribeLocalEvent<CEZGridComponent, EntityTerminatingEvent>(OnGridTerminating);
-        SubscribeLocalEvent<TileChangedEvent>(OnTileChanged);
-        SubscribeLocalEvent<GridSplitEvent>(OnGridSplit);
-
-        SubscribeLocalEvent<CEZGridNetworkComponent, ComponentShutdown>(OnGridNetworkShutdown);
     }
 
+    [SubscribeLocalEvent]
     private void OnConnectorMapInit(Entity<CEZGridConnectorComponent> ent, ref MapInitEvent args)
     {
         _dirty = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnConnectorAnchorChanged(Entity<CEZGridConnectorComponent> ent, ref AnchorStateChangedEvent args)
     {
         _dirty = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnConnectorTerminating(Entity<CEZGridConnectorComponent> ent, ref EntityTerminatingEvent args)
     {
         _dirty = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnGridTerminating(Entity<CEZGridComponent> ent, ref EntityTerminatingEvent args)
     {
         _dirty = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnTileChanged(ref TileChangedEvent ev)
     {
         _dirty = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnGridSplit(ref GridSplitEvent ev)
     {
         _dirty = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnGridNetworkShutdown(Entity<CEZGridNetworkComponent> ent, ref ComponentShutdown args)
     {
         foreach (var grid in ent.Comp.Grids.ToList())

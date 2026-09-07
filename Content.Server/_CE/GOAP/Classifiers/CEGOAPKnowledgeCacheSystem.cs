@@ -1,6 +1,7 @@
 using Content.Shared._CE.GOAP.Components;
 using Content.Shared.NPC.Components;
 using Content.Shared.NPC.Systems;
+using Robust.Shared.Analyzers;
 
 namespace Content.Server._CE.GOAP.Classifiers;
 
@@ -22,16 +23,15 @@ public sealed partial class CEGOAPKnowledgeCacheSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEGOAPKnowledgeCacheComponent, CEGOAPKnowledgeUpdatedEvent>(OnKnowledgeUpdated);
-        SubscribeLocalEvent<CEGOAPKnowledgeCacheComponent, ComponentShutdown>(OnShutdown);
     }
 
+    [SubscribeLocalEvent]
     private void OnKnowledgeUpdated(Entity<CEGOAPKnowledgeCacheComponent> ent, ref CEGOAPKnowledgeUpdatedEvent args)
     {
         Rebuild(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnShutdown(Entity<CEGOAPKnowledgeCacheComponent> ent, ref ComponentShutdown args)
     {
         foreach (var enemy in ent.Comp.Enemies)

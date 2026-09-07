@@ -7,6 +7,7 @@ using Content.Shared.Popups;
 using Content.Shared.Power;
 using Content.Shared.Power.Components;
 using Content.Shared.Rounding;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Audio.Systems;
 
 namespace Content.Shared._CE.MagicEnergy.Systems;
@@ -21,12 +22,9 @@ public abstract partial class CESharedMagicEnergySystem : EntitySystem
 
     public override void Initialize()
     {
-        SubscribeLocalEvent<CEEnergyOverchargeDamageComponent, CEEnergyOverchargeEvent>(OnOvercharge);
-        SubscribeLocalEvent<CEEnergyDeficitDamageComponent, CEEnergyDeficitEvent>(OnDeficit);
-
-        SubscribeLocalEvent<CEEnergyRadiationArmorComponent, ExaminedEvent>(OnExamined);
     }
 
+    [SubscribeLocalEvent]
     private void OnOvercharge(Entity<CEEnergyOverchargeDamageComponent> ent, ref CEEnergyOverchargeEvent args)
     {
         if (ent.Comp.Damage.GetTotal() <= 0)
@@ -41,6 +39,7 @@ public abstract partial class CESharedMagicEnergySystem : EntitySystem
         _audio.PlayPvs(ent.Comp.OverchargeSound, xform.Coordinates);
     }
 
+    [SubscribeLocalEvent]
     private void OnDeficit(Entity<CEEnergyDeficitDamageComponent> ent, ref CEEnergyDeficitEvent args)
     {
         if (ent.Comp.Damage.GetTotal() <= 0)
@@ -55,6 +54,7 @@ public abstract partial class CESharedMagicEnergySystem : EntitySystem
         _audio.PlayPvs(ent.Comp.OverchargeSound, xform.Coordinates);
     }
 
+    [SubscribeLocalEvent]
     private void OnExamined(Entity<CEEnergyRadiationArmorComponent> ent, ref ExaminedEvent args)
     {
         if (ent.Comp.Armor <= 0)

@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using Robust.Shared.Analyzers;
 using Content.Shared._CE.Animation.Core;
 using Content.Shared._CE.Animation.Item.Components;
 using Content.Shared._CE.EntityEffect;
@@ -40,14 +41,9 @@ public abstract partial class CESharedWeaponSystem : EntitySystem
         base.Initialize();
 
         InitializeCosts();
-
-        SubscribeAllEvent<CEWeaponUseEvent>(OnClientAttackRequest);
-        SubscribeAllEvent<CEStopWeaponUseEvent>(OnClientStopRequest);
-        SubscribeAllEvent<CEWeaponArcHitEvent>(OnArcHitEvent);
-
-        SubscribeLocalEvent<CEWieldedWeaponComponent, CEGetWeaponAnimationsEvent>(OnGetWeaponAnimation);
     }
 
+    [SubscribeLocalEvent]
     private void OnGetWeaponAnimation(Entity<CEWieldedWeaponComponent> ent, ref CEGetWeaponAnimationsEvent args)
     {
         if (args.Handled)
@@ -66,6 +62,7 @@ public abstract partial class CESharedWeaponSystem : EntitySystem
         args.Handled = true;
     }
 
+    [EventSubscription]
     private void OnClientAttackRequest(CEWeaponUseEvent ev, EntitySessionEventArgs args)
     {
         if (Timing.ApplyingState)
@@ -81,6 +78,7 @@ public abstract partial class CESharedWeaponSystem : EntitySystem
         TryUse(user, weapon.Value, ev.UseType, ev.Angle);
     }
 
+    [EventSubscription]
     private void OnClientStopRequest(CEStopWeaponUseEvent ev, EntitySessionEventArgs args)
     {
         var user = args.SenderSession.AttachedEntity;
@@ -99,6 +97,7 @@ public abstract partial class CESharedWeaponSystem : EntitySystem
         DirtyField(weapon.Value.Owner, weapon.Value.Comp, nameof(CEWeaponComponent.Using));
     }
 
+    [EventSubscription]
     private void OnArcHitEvent(CEWeaponArcHitEvent ev, EntitySessionEventArgs args)
     {
         if (Timing.ApplyingState)

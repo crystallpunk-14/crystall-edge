@@ -3,6 +3,7 @@ using Content.Shared._CE.MagicVision.Events;
 using Content.Shared.Eye;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
+using Robust.Shared.Analyzers;
 using Robust.Shared.GameObjects;
 
 namespace Content.Server._CE.MagicVision;
@@ -23,28 +24,21 @@ public sealed partial class CEMagicVisionSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEMagicVisionComponent, GetVisMaskEvent>(OnGetVisMask);
-
-        SubscribeLocalEvent<CEMagicVisionClothingComponent, InventoryRelayedEvent<CECheckMagicVisionEvent>>(OnClothingCheckVision);
-        SubscribeLocalEvent<CEMagicVisionClothingComponent, GotEquippedEvent>(OnClothingEquipped);
-        SubscribeLocalEvent<CEMagicVisionClothingComponent, GotUnequippedEvent>(OnClothingUnequipped);
-
-        SubscribeLocalEvent<CEPermanentMagicVisionComponent, CECheckMagicVisionEvent>(OnPermanentCheckVision);
-        SubscribeLocalEvent<CEPermanentMagicVisionComponent, ComponentInit>(OnPermanentInit);
-        SubscribeLocalEvent<CEPermanentMagicVisionComponent, ComponentShutdown>(OnPermanentShutdown);
     }
 
+    [SubscribeLocalEvent]
     private void OnGetVisMask(Entity<CEMagicVisionComponent> ent, ref GetVisMaskEvent args)
     {
         args.VisibilityMask |= (int)VisibilityFlags.CEMagicVision;
     }
 
+    [SubscribeLocalEvent]
     private void OnClothingCheckVision(Entity<CEMagicVisionClothingComponent> ent, ref InventoryRelayedEvent<CECheckMagicVisionEvent> args)
     {
         args.Args.GrantVision();
     }
 
+    [SubscribeLocalEvent]
     private void OnClothingEquipped(Entity<CEMagicVisionClothingComponent> ent, ref GotEquippedEvent args)
     {
         if ((args.SlotFlags & SlotFlags.EYES) == 0)
@@ -53,6 +47,7 @@ public sealed partial class CEMagicVisionSystem : EntitySystem
         RefreshMagicVision(args.EquipTarget);
     }
 
+    [SubscribeLocalEvent]
     private void OnClothingUnequipped(Entity<CEMagicVisionClothingComponent> ent, ref GotUnequippedEvent args)
     {
         if ((args.SlotFlags & SlotFlags.EYES) == 0)
@@ -61,17 +56,20 @@ public sealed partial class CEMagicVisionSystem : EntitySystem
         RefreshMagicVision(args.EquipTarget);
     }
 
+    [SubscribeLocalEvent]
     private void OnPermanentCheckVision(Entity<CEPermanentMagicVisionComponent> ent, ref CECheckMagicVisionEvent args)
     {
         // Innate vision isn't a worn artifact straining the wearer, so no overlay.
         args.GrantVision(showOverlay: false);
     }
 
+    [SubscribeLocalEvent]
     private void OnPermanentInit(Entity<CEPermanentMagicVisionComponent> ent, ref ComponentInit args)
     {
         RefreshMagicVision(ent.Owner);
     }
 
+    [SubscribeLocalEvent]
     private void OnPermanentShutdown(Entity<CEPermanentMagicVisionComponent> ent, ref ComponentShutdown args)
     {
         RefreshMagicVision(ent.Owner);

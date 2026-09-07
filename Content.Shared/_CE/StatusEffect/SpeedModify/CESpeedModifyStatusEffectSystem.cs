@@ -1,5 +1,6 @@
 using Content.Shared.Movement.Systems;
 using Content.Shared.StatusEffectNew;
+using Robust.Shared.Analyzers;
 
 namespace Content.Shared._CE.StatusEffect.SpeedModify;
 
@@ -9,22 +10,21 @@ public sealed partial class CESpeedModifyStatusEffectSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CESpeedModifyStatusEffectComponent, StatusEffectAppliedEvent>(OnApplied);
-        SubscribeLocalEvent<CESpeedModifyStatusEffectComponent, StatusEffectRemovedEvent>(OnRemoved);
-        SubscribeLocalEvent<CESpeedModifyStatusEffectComponent, StatusEffectRelayedEvent<RefreshMovementSpeedModifiersEvent>>(OnUpdateSpeed);
     }
 
+    [SubscribeLocalEvent]
     private void OnApplied(Entity<CESpeedModifyStatusEffectComponent> ent, ref StatusEffectAppliedEvent args)
     {
         _speedModifier.RefreshMovementSpeedModifiers(args.Target);
     }
 
+    [SubscribeLocalEvent]
     private void OnRemoved(Entity<CESpeedModifyStatusEffectComponent> ent, ref StatusEffectRemovedEvent args)
     {
         _speedModifier.RefreshMovementSpeedModifiers(args.Target);
     }
 
+    [SubscribeLocalEvent]
     private void OnUpdateSpeed(Entity<CESpeedModifyStatusEffectComponent> ent, ref StatusEffectRelayedEvent<RefreshMovementSpeedModifiersEvent> args)
     {
         args.Args.ModifySpeed(ent.Comp.Walk, ent.Comp.Sprint);

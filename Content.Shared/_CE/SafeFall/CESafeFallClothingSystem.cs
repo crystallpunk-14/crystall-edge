@@ -3,6 +3,7 @@ using Content.Shared.Inventory;
 using Content.Shared.Popups;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.Stunnable;
+using Robust.Shared.Analyzers;
 
 namespace Content.Shared._CE.SafeFall;
 
@@ -15,16 +16,15 @@ public sealed partial class CESafeFallClothingSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CESafeFallClothingComponent, CEZLevelChasmAttempt>(OnZLevelFall);
-        SubscribeLocalEvent<CESafeFallClothingComponent, InventoryRelayedEvent<CEZLevelChasmAttempt>>(OnZLevelRelayedFall);
     }
 
+    [SubscribeLocalEvent]
     private void OnZLevelRelayedFall(Entity<CESafeFallClothingComponent> ent, ref InventoryRelayedEvent<CEZLevelChasmAttempt> args)
     {
         OnZLevelFall(ent, ref args.Args);
     }
 
+    [SubscribeLocalEvent]
     private void OnZLevelFall(Entity<CESafeFallClothingComponent> ent, ref CEZLevelChasmAttempt args)
     {
         if (args.Cancelled)

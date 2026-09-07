@@ -1,6 +1,7 @@
 using Content.Shared._CE.Farming.Components;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
+using Robust.Shared.Analyzers;
 
 namespace Content.Server._CE.Farming;
 
@@ -10,11 +11,9 @@ public sealed partial class CEFarmingSystem
 
     private void InitializeHealth()
     {
-        SubscribeLocalEvent<CEPlantHealingComponent, CEPlantUpdateEvent>(OnPlantHealing);
-        SubscribeLocalEvent<CEPlantFadingComponent, CEAfterPlantUpdateEvent>(OnPlantFading);
-        SubscribeLocalEvent<CEPlantDyingComponent, DamageChangedEvent>(OnPlantDamageChanged);
     }
 
+    [SubscribeLocalEvent]
     private void OnPlantDamageChanged(Entity<CEPlantDyingComponent> ent, ref DamageChangedEvent args)
     {
         if (!args.DamageIncreased)
@@ -30,6 +29,7 @@ public sealed partial class CEFarmingSystem
         QueueDel(ent.Owner);
     }
 
+    [SubscribeLocalEvent]
     private void OnPlantHealing(Entity<CEPlantHealingComponent> ent, ref CEPlantUpdateEvent args)
     {
         var plant = args.Plant.Comp;
@@ -61,6 +61,7 @@ public sealed partial class CEFarmingSystem
         _damageable.TryChangeDamage((ent.Owner, damageable), -ent.Comp.Heal, ignoreResistances: true, interruptsDoAfters: false);
     }
 
+    [SubscribeLocalEvent]
     private void OnPlantFading(Entity<CEPlantFadingComponent> ent, ref CEAfterPlantUpdateEvent args)
     {
         if (args.Plant.Comp.Resource > 0)

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * This file is sublicensed under MIT License
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
@@ -6,6 +6,7 @@
 using Content.Server.Actions;
 using Content.Shared._CE.ZLevels.Flight;
 using Content.Shared._CE.ZLevels.Flight.Components;
+using Robust.Shared.Analyzers;
 
 namespace Content.Server._CE.ZLevels.Flight;
 
@@ -16,11 +17,9 @@ public sealed partial class CEZFlightSystem : CESharedZFlightSystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEControllableFlightComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<CEControllableFlightComponent, ComponentRemove>(OnRemove);
     }
 
+    [SubscribeLocalEvent]
     private void OnRemove(Entity<CEControllableFlightComponent> ent, ref ComponentRemove args)
     {
         _actions.RemoveAction(ent.Comp.ZLevelUpActionEntity);
@@ -28,6 +27,7 @@ public sealed partial class CEZFlightSystem : CESharedZFlightSystem
         _actions.RemoveAction(ent.Comp.ZLevelToggleActionEntity);
     }
 
+    [SubscribeLocalEvent]
     private void OnMapInit(Entity<CEControllableFlightComponent> ent, ref MapInitEvent args)
     {
         if (!ZPhyzQuery.TryComp(ent, out var zPhys))

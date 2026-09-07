@@ -1,6 +1,7 @@
 using Content.Server.Stack;
 using Content.Shared.Tools.Systems;
 using Robust.Server.GameObjects;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Random;
 
 namespace Content.Server._CE.Sliceable;
@@ -14,10 +15,9 @@ public sealed partial class CEAdditionalSliceableDropSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEAdditionalSliceableDropComponent, BeforeToolRefinedEvent>(OnBeforeRefined);
     }
 
+    [SubscribeLocalEvent]
     private void OnBeforeRefined(Entity<CEAdditionalSliceableDropComponent> ent, ref BeforeToolRefinedEvent args)
     {
         if (args.Cancelled)

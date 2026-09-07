@@ -1,4 +1,5 @@
 using System.Numerics;
+using Robust.Shared.Analyzers;
 using System.Threading;
 using Content.Server._CE.ZLevels.Gravity;
 using Content.Shared._CE.ZLevels.Core.Components;
@@ -113,8 +114,6 @@ public sealed partial class CEZCollapseSystem : EntitySystem
         base.Initialize();
 
         InitializeEvents();
-
-        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundCleanup);
     }
 
     public override void Update(float frameTime)
@@ -129,6 +128,7 @@ public sealed partial class CEZCollapseSystem : EntitySystem
         PushDirtySnapshots();
     }
 
+    [SubscribeLocalEvent]
     private void OnRoundCleanup(RoundRestartCleanupEvent ev)
     {
         foreach (var (_, cts, _) in _inFlightJobs)

@@ -1,6 +1,7 @@
 using Content.Server._CE.GOAP.Classifiers;
 using Content.Shared._CE.GOAP;
 using Content.Shared._CE.GOAP.Components;
+using Robust.Shared.Analyzers;
 
 namespace Content.Server._CE.GOAP.Sensors;
 
@@ -19,21 +20,20 @@ public sealed partial class CEGOAPHasEnemySensorComponent : Component
     public List<CEGOAPHasEnemySensorEntry> Entries = [];
 }
 
-public sealed class CEGOAPHasEnemySensorSystem : EntitySystem
+public sealed partial class CEGOAPHasEnemySensorSystem : EntitySystem
 {
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEGOAPHasEnemySensorComponent, CEGOAPKnowledgeCacheRebuiltEvent>(OnCacheRebuilt);
-        SubscribeLocalEvent<CEGOAPHasEnemySensorComponent, CEGOAPSensorRefreshEvent>(OnRefresh);
     }
 
+    [SubscribeLocalEvent]
     private void OnCacheRebuilt(Entity<CEGOAPHasEnemySensorComponent> ent, ref CEGOAPKnowledgeCacheRebuiltEvent args)
     {
         EvaluateAll(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnRefresh(Entity<CEGOAPHasEnemySensorComponent> ent, ref CEGOAPSensorRefreshEvent args)
     {
         EvaluateAll(ent);

@@ -6,6 +6,7 @@
 using Content.Shared._CE.ZLevels.Flight.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Toggleable;
+using Robust.Shared.Analyzers;
 
 namespace Content.Shared._CE.ZLevels.Flight;
 
@@ -13,15 +14,9 @@ public abstract partial class CESharedZFlightSystem
 {
     private void InitializeControllable()
     {
-        SubscribeLocalEvent<CEControllableFlightComponent, CEZFlightActionUp>(OnZLevelUp);
-        SubscribeLocalEvent<CEControllableFlightComponent, CEZFlightActionDown>(OnZLevelDown);
-        SubscribeLocalEvent<CEControllableFlightComponent, ToggleActionEvent>(OnZLevelToggle);
-
-        SubscribeLocalEvent<CEControllableFlightComponent, CEStartFlightDoAfterEvent>(OnStartFlightDoAfter);
-        SubscribeLocalEvent<CEControllableFlightComponent, CEFlightStartedEvent>(OnControllableFlightStarted);
-        SubscribeLocalEvent<CEControllableFlightComponent, CEFlightStoppedEvent>(OnControllableFlightStopped);
     }
 
+    [SubscribeLocalEvent]
     private void OnControllableFlightStopped(Entity<CEControllableFlightComponent> ent, ref CEFlightStoppedEvent args)
     {
         _actions.SetEnabled(ent.Comp.ZLevelDownActionEntity, false);
@@ -32,6 +27,7 @@ public abstract partial class CESharedZFlightSystem
             _actions.SetToggled(ent.Comp.ZLevelToggleActionEntity, false);
     }
 
+    [SubscribeLocalEvent]
     private void OnControllableFlightStarted(Entity<CEControllableFlightComponent> ent, ref CEFlightStartedEvent args)
     {
         _actions.SetEnabled(ent.Comp.ZLevelDownActionEntity, true);
@@ -42,6 +38,7 @@ public abstract partial class CESharedZFlightSystem
             _actions.SetToggled(ent.Comp.ZLevelToggleActionEntity, true);
     }
 
+    [SubscribeLocalEvent]
     private void OnZLevelUp(Entity<CEControllableFlightComponent> ent, ref CEZFlightActionUp args)
     {
         if (args.Handled)
@@ -63,6 +60,7 @@ public abstract partial class CESharedZFlightSystem
         args.Handled = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnZLevelDown(Entity<CEControllableFlightComponent> ent, ref CEZFlightActionDown args)
     {
         if (args.Handled)
@@ -84,6 +82,7 @@ public abstract partial class CESharedZFlightSystem
         args.Handled = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnZLevelToggle(Entity<CEControllableFlightComponent> ent, ref ToggleActionEvent args)
     {
         if (args.Handled)
@@ -127,6 +126,7 @@ public abstract partial class CESharedZFlightSystem
         args.Handled = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnStartFlightDoAfter(Entity<CEControllableFlightComponent> ent, ref CEStartFlightDoAfterEvent args)
     {
         if (args.Cancelled || args.Handled)

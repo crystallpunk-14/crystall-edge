@@ -1,9 +1,10 @@
-﻿/*
+/*
  * This file is sublicensed under MIT License
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
 
 using Content.Shared.Damage.Systems;
+using Robust.Shared.Analyzers;
 
 namespace Content.Shared._CE.ZLevels.Damage.FallingDamage;
 
@@ -13,10 +14,9 @@ public sealed partial class CEFallingDamageSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEFallingDamageComponent, CEZFellOnMeEvent>(OnFallOnMe);
     }
 
+    [SubscribeLocalEvent]
     private void OnFallOnMe(Entity<CEFallingDamageComponent> ent, ref CEZFellOnMeEvent args)
     {
         _damageable.TryChangeDamage(args.Fallen, ent.Comp.Damage * args.Speed);

@@ -3,6 +3,7 @@ using Content.Shared._CE.Science.Components;
 using Content.Shared.Hands.EntitySystems;
 using Robust.Client.GameObjects;
 using Robust.Client.Player;
+using Robust.Shared.Analyzers;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
@@ -25,10 +26,9 @@ public sealed partial class CEClientScienceSystem : CESharedScienceSystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEScienceResearchDataComponent, AfterAutoHandleStateEvent>(OnResearchDataState);
     }
 
+    [SubscribeLocalEvent]
     private void OnResearchDataState(Entity<CEScienceResearchDataComponent> ent, ref AfterAutoHandleStateEvent args)
     {
         if (ent.Owner == _player.LocalEntity)

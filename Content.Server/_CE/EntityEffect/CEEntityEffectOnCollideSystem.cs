@@ -1,17 +1,18 @@
 using Content.Shared._CE.EntityEffect;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
 
 namespace Content.Server._CE.EntityEffect;
 
-public sealed class CEEntityEffectOnCollideSystem : EntitySystem
+public sealed partial class CEEntityEffectOnCollideSystem : EntitySystem
 {
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<CEEntityEffectOnCollideComponent, StartCollideEvent>(OnCollide);
     }
 
+    [SubscribeLocalEvent]
     private void OnCollide(Entity<CEEntityEffectOnCollideComponent> ent, ref StartCollideEvent args)
     {
         if (args.OurFixtureId != ent.Comp.TriggerFixtureId)

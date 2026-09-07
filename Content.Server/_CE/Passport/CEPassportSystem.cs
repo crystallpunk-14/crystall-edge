@@ -1,4 +1,5 @@
 using System.Text;
+using Robust.Shared.Analyzers;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
 using Content.Shared.Inventory;
@@ -27,12 +28,11 @@ public sealed partial class CEPassportSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawning);
         _cfg.OnValueChanged(CCVars.CECurrentYear,
             value => { _current_year = value; },
             true);
     }
+    [SubscribeLocalEvent]
     private void OnPlayerSpawning(PlayerSpawnCompleteEvent ev)
     {
         if (!TryComp<InventoryComponent>(ev.Mob, out var inventory))

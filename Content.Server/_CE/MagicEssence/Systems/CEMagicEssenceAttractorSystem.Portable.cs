@@ -4,6 +4,7 @@ using Content.Shared.Foldable;
 using Content.Shared.Power;
 using Content.Shared.Power.Components;
 using Content.Shared.Power.EntitySystems;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Timing;
 
 namespace Content.Server._CE.MagicEssence.Systems;
@@ -18,15 +19,15 @@ public sealed partial class CEMagicEssenceAttractorSystem
 
     private void InitializePortable()
     {
-        SubscribeLocalEvent<CEPortableMagicEssenceAttractorComponent, FoldedEvent>(OnPortableFolded);
-        SubscribeLocalEvent<CEPortableMagicEssenceAttractorComponent, BatteryStateChangedEvent>(OnPortableBatteryChanged);
     }
 
+    [SubscribeLocalEvent]
     private void OnPortableFolded(Entity<CEPortableMagicEssenceAttractorComponent> ent, ref FoldedEvent args)
     {
         RefreshPortableAttracting(ent, args.IsFolded);
     }
 
+    [SubscribeLocalEvent]
     private void OnPortableBatteryChanged(Entity<CEPortableMagicEssenceAttractorComponent> ent, ref BatteryStateChangedEvent args)
     {
         if (args.NewState != BatteryState.Empty)

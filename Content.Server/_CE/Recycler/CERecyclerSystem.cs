@@ -11,6 +11,7 @@ using Content.Shared.Materials;
 using Content.Shared.Power;
 using Content.Shared.Stacks;
 using Content.Shared.Whitelist;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics.Events;
 
@@ -30,16 +31,15 @@ public sealed partial class CERecyclerSystem : CESharedRecyclerSystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CERecyclerComponent, StartCollideEvent>(OnCollide);
-        SubscribeLocalEvent<CERecyclerComponent, PowerChangedEvent>(OnPowerChanged);
     }
 
+    [SubscribeLocalEvent]
     private void OnPowerChanged(Entity<CERecyclerComponent> ent, ref PowerChangedEvent args)
     {
         _ambient.SetAmbience(ent,  args.Powered);
     }
 
+    [SubscribeLocalEvent]
     private void OnCollide(Entity<CERecyclerComponent> ent, ref StartCollideEvent args)
     {
         if (!this.IsPowered(ent.Owner, EntityManager))

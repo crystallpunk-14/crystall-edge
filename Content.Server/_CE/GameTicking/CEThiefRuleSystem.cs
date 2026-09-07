@@ -6,6 +6,7 @@ using Content.Shared._CE.Thief;
 using Content.Shared.Foldable;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Containers;
 
 namespace Content.Server._CE.GameTicking;
@@ -19,13 +20,12 @@ public sealed partial class CEThiefRuleSystem : GameRuleSystem<CEThiefRuleCompon
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEThiefHideoutComponent, FoldedEvent>(OnFolded);
     }
 
     /// <summary>
     /// When spawning, we look for the nearest thief player and try to attach ourselves to them.
     /// </summary>
+    [SubscribeLocalEvent]
     private void OnFolded(Entity<CEThiefHideoutComponent> ent, ref FoldedEvent args)
     {
         if (args.IsFolded || ent.Comp.ThiefMind is not null)

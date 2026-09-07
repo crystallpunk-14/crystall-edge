@@ -1,6 +1,7 @@
 using Content.Shared._CE.Paper;
 using Content.Shared.Interaction;
 using Content.Shared.UserInterface;
+using Robust.Shared.Analyzers;
 
 namespace Content.Shared._CE.Pen;
 
@@ -18,11 +19,9 @@ public sealed partial class CEPenSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEPenComponent, AfterInteractEvent>(OnAfterInteract);
-        SubscribeLocalEvent<CEPenComponent, CEPenActionsMessage>(OnPenActionsMessage);
     }
 
+    [SubscribeLocalEvent]
     private void OnAfterInteract(Entity<CEPenComponent> ent, ref AfterInteractEvent args)
     {
         if (args.Handled || !args.CanReach || args.Target is not { } target)
@@ -59,6 +58,7 @@ public sealed partial class CEPenSystem : EntitySystem
         return ev.Actions;
     }
 
+    [SubscribeLocalEvent]
     private void OnPenActionsMessage(Entity<CEPenComponent> ent, ref CEPenActionsMessage args)
     {
         if (ent.Comp.PendingTarget is not { } target)

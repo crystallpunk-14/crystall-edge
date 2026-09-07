@@ -1,3 +1,4 @@
+using Robust.Shared.Analyzers;
 namespace Content.Server._CE.ZCollapse;
 
 // Every handler here does exactly two things: keep CEGridStabilityComponent.Cores/Supports in sync
@@ -7,21 +8,13 @@ public sealed partial class CEZCollapseSystem
 {
     private void InitializeEvents()
     {
-        SubscribeLocalEvent<CEGridStabilityCoreComponent, AnchorStateChangedEvent>(OnCoreAnchorChanged);
-        SubscribeLocalEvent<CEGridStabilityCoreComponent, ReAnchorEvent>(OnCoreReAnchor);
-
-        SubscribeLocalEvent<CEGridStabilitySupportComponent, AnchorStateChangedEvent>(OnSupportAnchorChanged);
-        SubscribeLocalEvent<CEGridStabilitySupportComponent, ReAnchorEvent>(OnSupportReAnchor);
-
-        SubscribeLocalEvent<CEGridStabilityComponent, TileChangedEvent>(OnTileChanged);
-        SubscribeLocalEvent<CEGridStabilityComponent, MapInitEvent>(OnStabilityMapInit);
-        SubscribeLocalEvent<CEGridStabilityComponent, GridSplitEvent>(OnGridSplit);
     }
 
     // Entities anchored from map/prototype data never raise AnchorStateChangedEvent (they start
     // already-anchored) — that's what the deferred MapInit index scan is for, not this handler.
     // Deleting an anchored entity does go through here: entity termination detaches it first, which
     // raises AnchorStateChangedEvent(Anchored: false) before the entity is actually gone.
+    [SubscribeLocalEvent]
     private void OnCoreAnchorChanged(Entity<CEGridStabilityCoreComponent> ent, ref AnchorStateChangedEvent args)
     {
         if (args.Transform.GridUid is not { } gridUid || !_stabilityQuery.TryGetComponent(gridUid, out var comp))
@@ -35,6 +28,7 @@ public sealed partial class CEZCollapseSystem
         MarkDirty(gridUid);
     }
 
+    [SubscribeLocalEvent]
     private void OnCoreReAnchor(Entity<CEGridStabilityCoreComponent> ent, ref ReAnchorEvent args)
     {
         if (_stabilityQuery.TryGetComponent(args.OldGrid, out var oldComp))
@@ -50,6 +44,7 @@ public sealed partial class CEZCollapseSystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnSupportAnchorChanged(Entity<CEGridStabilitySupportComponent> ent, ref AnchorStateChangedEvent args)
     {
         if (args.Transform.GridUid is not { } gridUid || !_stabilityQuery.TryGetComponent(gridUid, out var comp))
@@ -65,6 +60,7 @@ public sealed partial class CEZCollapseSystem
         MarkDirty(gridUid);
     }
 
+    [SubscribeLocalEvent]
     private void OnSupportReAnchor(Entity<CEGridStabilitySupportComponent> ent, ref ReAnchorEvent args)
     {
         if (_stabilityQuery.TryGetComponent(args.OldGrid, out var oldComp))
@@ -83,11 +79,13 @@ public sealed partial class CEZCollapseSystem
     // Externally-caused tile add/remove (RCD, explosions, etc). No special-cased math for "inherit
     // from neighbor" or "reap immediately if unsupported" — the next full recompute derives both
     // correctly from ground truth on its own.
+    [SubscribeLocalEvent]
     private void OnTileChanged(Entity<CEGridStabilityComponent> ent, ref TileChangedEvent args)
     {
         MarkDirty(ent.Owner);
     }
 
+    [SubscribeLocalEvent]
     private void OnStabilityMapInit(Entity<CEGridStabilityComponent> ent, ref MapInitEvent args)
     {
         _pendingIndexScan.Add(ent.Owner);
@@ -96,6 +94,7 @@ public sealed partial class CEZCollapseSystem
     // Reparented entities during a grid split may not raise ReAnchorEvent either — deferring both the
     // old and new grid(s) into the same index-scan pass as MapInit self-corrects regardless of what
     // events did or didn't fire during the split.
+    [SubscribeLocalEvent]
     private void OnGridSplit(Entity<CEGridStabilityComponent> ent, ref GridSplitEvent args)
     {
         _pendingIndexScan.Add(ent.Owner);

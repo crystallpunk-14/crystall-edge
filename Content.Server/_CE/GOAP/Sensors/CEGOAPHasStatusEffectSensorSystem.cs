@@ -2,6 +2,7 @@ using Content.Shared._CE.GOAP;
 using Content.Shared._CE.GOAP.Components;
 using Content.Shared._CE.GOAP.Selectors;
 using Content.Shared.StatusEffectNew;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.GOAP.Sensors;
@@ -41,28 +42,26 @@ public sealed partial class CEGOAPHasStatusEffectSensorSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEGOAPHasStatusEffectSensorComponent, CEGOAPSensorRefreshEvent>(OnRefresh);
-
-        // CrystallEdge: Rogue's CE status effect system raised these directly on the affected
-        // entity. Vanilla's StatusEffectNew system raises them on the effect entity itself
-        // (see StatusEffectAppliedEvent/StatusEffectRemovedEvent docs), carrying the affected
-        // entity in the Target field — so we subscribe broadcast and re-evaluate the target.
-        SubscribeLocalEvent<StatusEffectAppliedEvent>(OnEffectApplied);
-        SubscribeLocalEvent<StatusEffectRemovedEvent>(OnEffectRemoved);
     }
 
+    [SubscribeLocalEvent]
     private void OnRefresh(Entity<CEGOAPHasStatusEffectSensorComponent> ent, ref CEGOAPSensorRefreshEvent args)
     {
         EvaluateAll(ent);
     }
 
+    // CrystallEdge: Rogue's CE status effect system raised these directly on the affected
+    // entity. Vanilla's StatusEffectNew system raises them on the effect entity itself
+    // (see StatusEffectAppliedEvent/StatusEffectRemovedEvent docs), carrying the affected
+    // entity in the Target field — so we subscribe broadcast and re-evaluate the target.
+    [SubscribeLocalEvent]
     private void OnEffectApplied(ref StatusEffectAppliedEvent args)
     {
         if (TryComp<CEGOAPHasStatusEffectSensorComponent>(args.Target, out var sensor))
             EvaluateAll((args.Target, sensor));
     }
 
+    [SubscribeLocalEvent]
     private void OnEffectRemoved(ref StatusEffectRemovedEvent args)
     {
         if (TryComp<CEGOAPHasStatusEffectSensorComponent>(args.Target, out var sensor))

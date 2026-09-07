@@ -4,6 +4,7 @@
  */
 
 using System.Numerics;
+using Robust.Shared.Analyzers;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.Chasm;
 using Content.Shared.Inventory;
@@ -21,9 +22,6 @@ public abstract partial class CESharedZLevelsSystem
 
     private void InitializeMovement()
     {
-        SubscribeLocalEvent<CEZPhysicsComponent, CEZLevelMapMoveEvent>(OnZLevelMapMove);
-        SubscribeLocalEvent<CEZPhysicsComponent, MoveEvent>(OnMoveEvent);
-        SubscribeLocalEvent<CEZMapComponent, TileChangedEvent>(OnTileChanged);
     }
 
     /// <summary>
@@ -40,6 +38,7 @@ public abstract partial class CESharedZLevelsSystem
         return target.Comp.LocalPosition - target.Comp.CachedGroundHeight;
     }
 
+    [SubscribeLocalEvent]
     private void OnTileChanged(Entity<CEZMapComponent> ent, ref TileChangedEvent args)
     {
         if (!TryComp<MapGridComponent>(args.Entity, out var grid))
@@ -77,6 +76,7 @@ public abstract partial class CESharedZLevelsSystem
         entity.Comp.CachedStickyGround = sticky;
     }
 
+    [SubscribeLocalEvent]
     private void OnMoveEvent(Entity<CEZPhysicsComponent> entity, ref MoveEvent args)
     {
         if (_dirtyMovementBodies.Contains(entity))
@@ -85,6 +85,7 @@ public abstract partial class CESharedZLevelsSystem
         _dirtyMovementBodies.Add(entity);
     }
 
+    [SubscribeLocalEvent]
     private void OnZLevelMapMove(Entity<CEZPhysicsComponent> ent, ref CEZLevelMapMoveEvent args)
     {
         ent.Comp.CurrentZLevel = args.CurrentZLevel;

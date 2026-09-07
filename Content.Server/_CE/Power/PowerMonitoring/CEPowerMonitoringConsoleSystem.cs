@@ -1,4 +1,5 @@
 using System.Linq;
+using Robust.Shared.Analyzers;
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.Power.Components;
 using Content.Server.Power.Nodes;
@@ -48,32 +49,6 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEPowerMonitoringConsoleComponent, ComponentInit>(OnConsoleInit);
-        SubscribeLocalEvent<CEPowerMonitoringConsoleComponent, EntParentChangedMessage>(OnConsoleParentChanged);
-        SubscribeLocalEvent<CEPowerMonitoringCableNetworksComponent, ComponentInit>(OnCableNetworksInit);
-        SubscribeLocalEvent<CEPowerMonitoringCableNetworksComponent, EntParentChangedMessage>(OnCableNetworksParentChanged);
-
-        SubscribeLocalEvent<CEPowerMonitoringConsoleComponent, CEPowerMonitoringConsoleMessage>(OnPowerMonitoringConsoleMessage);
-        SubscribeLocalEvent<CEPowerMonitoringConsoleComponent, BoundUIOpenedEvent>(OnBoundUIOpened);
-
-        SubscribeLocalEvent<GridSplitEvent>(OnGridSplit);
-
-        SubscribeLocalEvent<CECableComponent, MapInitEvent>(OnCableMapInit);
-        SubscribeLocalEvent<CECableComponent, AnchorStateChangedEvent>(OnCableAnchorChanged);
-        SubscribeLocalEvent<CECableComponent, ComponentShutdown>(OnCableShutdown);
-
-        SubscribeLocalEvent<CECableCutComponent, MapInitEvent>(OnCableCutChanged);
-        SubscribeLocalEvent<CECableCutComponent, AnchorStateChangedEvent>(OnCableCutChanged);
-        SubscribeLocalEvent<CECableCutComponent, ComponentShutdown>(OnCableCutRemoved);
-
-        SubscribeLocalEvent<CEPowerMonitoringDeviceComponent, MapInitEvent>(OnDeviceMapInit);
-        SubscribeLocalEvent<CEPowerMonitoringDeviceComponent, AnchorStateChangedEvent>(OnDeviceAnchorChanged);
-        SubscribeLocalEvent<CEPowerMonitoringDeviceComponent, ComponentShutdown>(OnDeviceShutdown);
-        SubscribeLocalEvent<CEPowerMonitoringDeviceComponent, NodeGroupsRebuilt>(OnNodeGroupRebuilt);
-
-        SubscribeLocalEvent<GameRuleStartedEvent>(OnPowerGridCheckStarted);
-        SubscribeLocalEvent<GameRuleEndedEvent>(OnPowerGridCheckEnded);
     }
 
     #region Network helpers
@@ -110,26 +85,31 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
 
     #region Event handling
 
+    [SubscribeLocalEvent]
     private void OnConsoleInit(EntityUid uid, CEPowerMonitoringConsoleComponent component, ComponentInit args)
     {
         RefreshPowerMonitoringConsole(uid, component);
     }
 
+    [SubscribeLocalEvent]
     private void OnConsoleParentChanged(EntityUid uid, CEPowerMonitoringConsoleComponent component, EntParentChangedMessage args)
     {
         RefreshPowerMonitoringConsole(uid, component);
     }
 
+    [SubscribeLocalEvent]
     private void OnCableNetworksInit(EntityUid uid, CEPowerMonitoringCableNetworksComponent component, ComponentInit args)
     {
         RefreshPowerMonitoringCableNetworks(uid, component);
     }
 
+    [SubscribeLocalEvent]
     private void OnCableNetworksParentChanged(EntityUid uid, CEPowerMonitoringCableNetworksComponent component, EntParentChangedMessage args)
     {
         RefreshPowerMonitoringCableNetworks(uid, component);
     }
 
+    [SubscribeLocalEvent]
     private void OnPowerMonitoringConsoleMessage(EntityUid uid, CEPowerMonitoringConsoleComponent component, CEPowerMonitoringConsoleMessage args)
     {
         var focus = GetEntity(args.FocusDevice);
@@ -154,6 +134,7 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnBoundUIOpened(EntityUid uid, CEPowerMonitoringConsoleComponent component, BoundUIOpenedEvent args)
     {
         component.Focus = null;
@@ -166,6 +147,7 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnGridSplit(ref GridSplitEvent args)
     {
         var allGrids = args.NewGrids.ToList();
@@ -192,18 +174,21 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnCableMapInit(EntityUid uid, CECableComponent component, MapInitEvent args)
     {
         SetCableBit(uid, Transform(uid).Anchored);
         RefreshVerticalIfNeeded(uid);
     }
 
+    [SubscribeLocalEvent]
     private void OnCableAnchorChanged(EntityUid uid, CECableComponent component, AnchorStateChangedEvent args)
     {
         SetCableBit(uid, args.Anchored);
         RefreshVerticalIfNeeded(uid);
     }
 
+    [SubscribeLocalEvent]
     private void OnCableShutdown(EntityUid uid, CECableComponent component, ComponentShutdown args)
     {
         SetCableBit(uid, false);
@@ -333,16 +318,19 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnCableCutChanged(EntityUid uid, CECableCutComponent component, MapInitEvent args)
     {
         RebuildCutsForEntity(uid);
     }
 
+    [SubscribeLocalEvent]
     private void OnCableCutChanged(EntityUid uid, CECableCutComponent component, AnchorStateChangedEvent args)
     {
         RebuildCutsForEntity(uid);
     }
 
+    [SubscribeLocalEvent]
     private void OnCableCutRemoved(EntityUid uid, CECableCutComponent component, ComponentShutdown args)
     {
         RebuildCutsForEntity(uid, ignore: uid);
@@ -393,6 +381,7 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnDeviceMapInit(EntityUid uid, CEPowerMonitoringDeviceComponent component, MapInitEvent args)
     {
         if (!Transform(uid).Anchored)
@@ -404,6 +393,7 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
             AssignEntityAsCollectionMaster(uid, component);
     }
 
+    [SubscribeLocalEvent]
     private void OnDeviceAnchorChanged(EntityUid uid, CEPowerMonitoringDeviceComponent component, AnchorStateChangedEvent args)
     {
         if (!args.Anchored)
@@ -418,6 +408,7 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
             AssignEntityAsCollectionMaster(uid, component);
     }
 
+    [SubscribeLocalEvent]
     private void OnDeviceShutdown(EntityUid uid, CEPowerMonitoringDeviceComponent component, ComponentShutdown args)
     {
         UnregisterDevice(uid);
@@ -463,6 +454,7 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnNodeGroupRebuilt(EntityUid uid, CEPowerMonitoringDeviceComponent component, NodeGroupsRebuilt args)
     {
         if (component.IsCollectionMasterOrChild)
@@ -476,6 +468,7 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnPowerGridCheckStarted(ref GameRuleStartedEvent ev)
     {
         if (!TryComp<PowerGridCheckRuleComponent>(ev.RuleEntity, out var rule))
@@ -492,6 +485,7 @@ public sealed partial class CEPowerMonitoringConsoleSystem : CESharedPowerMonito
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnPowerGridCheckEnded(ref GameRuleEndedEvent ev)
     {
         if (!TryComp<PowerGridCheckRuleComponent>(ev.RuleEntity, out var rule))

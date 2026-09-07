@@ -1,6 +1,7 @@
 using Content.Shared._CE.Humanoid;
 using Content.Shared.Body;
 using Robust.Client.GameObjects;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client._CE.Humanoid;
@@ -15,14 +16,13 @@ public sealed partial class CESimpleSkinColorationSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        //CrystallEdge: hook the organ's own startup, not the body's - Robust applies an entity's networked state
-        //(Profile.SkinColor, OrganComponent.Body) before running its ComponentStartup, even for entities received
-        //over the network, so the data is already valid here. The body's own lifecycle events fire too early instead,
-        //before its organs exist.
-        SubscribeLocalEvent<VisualOrganComponent, ComponentStartup>(OnOrganStartup);
     }
 
+    //CrystallEdge: hook the organ's own startup, not the body's - Robust applies an entity's networked state
+    //(Profile.SkinColor, OrganComponent.Body) before running its ComponentStartup, even for entities received
+    //over the network, so the data is already valid here. The body's own lifecycle events fire too early instead,
+    //before its organs exist.
+    [SubscribeLocalEvent]
     private void OnOrganStartup(Entity<VisualOrganComponent> ent, ref ComponentStartup args)
     {
         var organ = Comp<OrganComponent>(ent);

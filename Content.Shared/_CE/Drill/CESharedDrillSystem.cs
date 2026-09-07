@@ -4,6 +4,7 @@ using Content.Shared.Effects;
 using Content.Shared.Jittering;
 using Content.Shared.Power;
 using Content.Shared.Weapons.Melee;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Network;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
@@ -36,10 +37,9 @@ public sealed partial class CESharedDrillSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEDrillComponent, PowerChangedEvent>(OnPowerChange);
     }
 
+    [SubscribeLocalEvent]
     private void OnPowerChange(Entity<CEDrillComponent> ent, ref PowerChangedEvent args)
     {
         var enabled = args.Powered;

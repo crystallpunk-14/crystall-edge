@@ -9,6 +9,7 @@ using Content.Shared._CE.Cooking.Components;
 using Content.Shared.DisplacementMap;
 using Content.Shared.Rounding;
 using Robust.Client.GameObjects;
+using Robust.Shared.Analyzers;
 
 namespace Content.Client._CE.Cooking;
 
@@ -20,16 +21,15 @@ public sealed partial class CEClientCookingSystem : CESharedCookingSystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEFoodHolderComponent, AfterAutoHandleStateEvent>(OnAfterHandleState);
-        SubscribeLocalEvent<CEFoodHolderComponent, AppearanceChangeEvent>(OnAppearanceChange);
     }
 
+    [SubscribeLocalEvent]
     private void OnAppearanceChange(Entity<CEFoodHolderComponent> ent, ref AppearanceChangeEvent args)
     {
         UpdateVisuals(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnAfterHandleState(Entity<CEFoodHolderComponent> ent, ref AfterAutoHandleStateEvent args)
     {
         UpdateVisuals(ent);

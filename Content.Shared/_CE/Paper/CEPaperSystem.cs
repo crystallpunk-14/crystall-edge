@@ -3,6 +3,7 @@ using Content.Shared.Paper;
 using Content.Shared.Popups;
 using Content.Shared.Tag;
 using Content.Shared.UserInterface;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
@@ -26,10 +27,9 @@ public sealed partial class CEPaperSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<PaperComponent, CEGetPenActionsEvent>(OnGetPenActions);
     }
 
+    [SubscribeLocalEvent]
     private void OnGetPenActions(Entity<PaperComponent> entity, ref CEGetPenActionsEvent args)
     {
         if (!CanWrite(entity, args.Pen))

@@ -1,5 +1,6 @@
 using Content.Server._CE.ZCollapse;
 using Content.Shared.Gravity;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 
@@ -13,13 +14,12 @@ public sealed partial class CEAutoGridGravitySystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<CEAutoGridGravityComponent, MapInitEvent>(OnComponentInit);
-        SubscribeLocalEvent<GridInitializeEvent>(OnGridInit);
     }
 
     // Fires when the component is added to the map entity.
     // If the map is already initialized (zLevelsComponentOverrides flow), iterate existing grids.
     // If not yet initialized, GridInitializeEvent handles each grid as it comes up.
+    [SubscribeLocalEvent]
     private void OnComponentInit(Entity<CEAutoGridGravityComponent> ent, ref MapInitEvent args)
     {
         if (!TryComp<MapComponent>(ent, out var mapComp) || !_map.IsInitialized(ent.Owner))
@@ -35,6 +35,7 @@ public sealed partial class CEAutoGridGravitySystem : EntitySystem
 
     // Fires for every grid that initializes. Handles both map-load time (component already on map)
     // and runtime grid spawning (e.g. shuttles arriving).
+    [SubscribeLocalEvent]
     private void OnGridInit(GridInitializeEvent ev)
     {
         var mapUid = Transform(ev.EntityUid).MapUid;

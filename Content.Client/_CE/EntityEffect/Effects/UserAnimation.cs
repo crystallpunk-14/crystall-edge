@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+using System.Numerics;
+using Robust.Shared.Analyzers;
 using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.EntityEffect.Effects;
 using Content.Shared._CE.ZLevels.Core.Components;
@@ -46,7 +47,6 @@ public sealed partial class CEUserAnimationEffectSystem : CEEntityEffectSystem<U
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<CEUserSpriteAnimationComponent, AnimationCompletedEvent>(OnAnimCompleted);
     }
 
     protected override void Effect(ref CEEntityEffectEvent<UserAnimation> args)
@@ -101,6 +101,7 @@ public sealed partial class CEUserAnimationEffectSystem : CEEntityEffectSystem<U
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnAnimCompleted(Entity<CEUserSpriteAnimationComponent> ent, ref AnimationCompletedEvent args)
     {
         // Manually stopped (new animation about to start): keep original values, do not restore yet.

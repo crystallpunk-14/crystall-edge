@@ -1,4 +1,5 @@
 using System.Text;
+using Robust.Shared.Analyzers;
 using Content.Shared._CE.Skill.Components;
 using Content.Shared.Inventory;
 using Content.Shared.Verbs;
@@ -10,12 +11,10 @@ public abstract partial class CESharedSkillSystem
 {
     private void InitializeScanning()
     {
-        SubscribeLocalEvent<CESkillScannerComponent, CESkillScanEvent>(OnSkillScan);
         SubscribeLocalEvent<CESkillScannerComponent, InventoryRelayedEvent<CESkillScanEvent>>((e, c, ev) => OnSkillScan(e, c, ev.Args));
-
-        SubscribeLocalEvent<CESkillStorageComponent, GetVerbsEvent<ExamineVerb>>(OnExamined);
     }
 
+    [SubscribeLocalEvent]
     private void OnExamined(Entity<CESkillStorageComponent> ent, ref GetVerbsEvent<ExamineVerb> args)
     {
         var scanEvent = new CESkillScanEvent();
@@ -56,6 +55,7 @@ public abstract partial class CESharedSkillSystem
         return msg;
     }
 
+    [SubscribeLocalEvent]
     private void OnSkillScan(EntityUid uid, CESkillScannerComponent component, CESkillScanEvent args)
     {
         args.CanScan = true;

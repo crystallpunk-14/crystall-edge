@@ -2,6 +2,7 @@ using Content.Client.Examine;
 using Content.Shared._CE.InfusionAltar.Components;
 using Content.Shared._CE.MagicVision.Components;
 using Content.Shared.Ghost.Components;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 
@@ -20,10 +21,9 @@ public sealed partial class CEInfusionAltarPositionsSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEInfusionAltarComponent, ClientExaminedEvent>(OnExamined);
     }
 
+    [SubscribeLocalEvent]
     private void OnExamined(Entity<CEInfusionAltarComponent> ent, ref ClientExaminedEvent args)
     {
         if (!HasComp<GhostComponent>(args.Examiner) && !HasComp<CEMagicVisionComponent>(args.Examiner))

@@ -3,6 +3,7 @@ using Content.Shared._CE.GOAP.Components;
 using Content.Shared._CE.GOAP.Selectors;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Mobs.Systems;
+using Robust.Shared.Analyzers;
 
 namespace Content.Server._CE.GOAP.Sensors;
 
@@ -45,19 +46,17 @@ public sealed partial class CEGOAPCheckHealthLevelSensorSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEGOAPCheckHealthLevelSensorComponent, CEGOAPSensorRefreshEvent>(OnRefresh);
-        // Runs after DamageableSystem applies the DamageDealtEvent to DamageableComponent.TotalDamage,
-        // so the percentage read below reflects the post-hit value.
-        SubscribeLocalEvent<CEGOAPCheckHealthLevelSensorComponent, DamageDealtEvent>(OnDamageDealt,
-            after: new[] { typeof(DamageableSystem) });
     }
 
+    [SubscribeLocalEvent]
     private void OnRefresh(Entity<CEGOAPCheckHealthLevelSensorComponent> ent, ref CEGOAPSensorRefreshEvent args)
     {
         EvaluateAll(ent);
     }
 
+    // Runs after DamageableSystem applies the DamageDealtEvent to DamageableComponent.TotalDamage,
+    // so the percentage read below reflects the post-hit value.
+    [SubscribeLocalEvent(after: new[] { typeof(DamageableSystem) })]
     private void OnDamageDealt(Entity<CEGOAPCheckHealthLevelSensorComponent> ent, ref DamageDealtEvent args)
     {
         EvaluateAll(ent);

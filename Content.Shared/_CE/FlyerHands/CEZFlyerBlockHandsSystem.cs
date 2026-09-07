@@ -3,6 +3,7 @@ using Content.Shared._CE.ZLevels.Flight.Components;
 using Content.Shared.Hands;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Item;
+using Robust.Shared.Analyzers;
 
 namespace Content.Shared._CE.FlyerHands;
 
@@ -13,12 +14,9 @@ public sealed partial class CEZFlyerBlockHandsSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEZFlyerBlockHandsComponent, CEFlightStartedEvent>(OnStartFlight);
-        SubscribeLocalEvent<CEZFlyerBlockHandsComponent, DidEquipHandEvent>(EquipEvent);
-        SubscribeLocalEvent<CEZFlyerBlockHandsComponent, PickupAttemptEvent>(OnPickupAttempt);
     }
 
+    [SubscribeLocalEvent]
     private void OnPickupAttempt(Entity<CEZFlyerBlockHandsComponent> ent, ref PickupAttemptEvent args)
     {
         if (!TryComp<CEZFlyerComponent>(ent, out var flyer))
@@ -28,6 +26,7 @@ public sealed partial class CEZFlyerBlockHandsSystem : EntitySystem
             args.Cancel();
     }
 
+    [SubscribeLocalEvent]
     private void EquipEvent(Entity<CEZFlyerBlockHandsComponent> ent, ref DidEquipHandEvent args)
     {
         if (!TryComp<CEZFlyerComponent>(ent, out var flyer))
@@ -39,6 +38,7 @@ public sealed partial class CEZFlyerBlockHandsSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnStartFlight(Entity<CEZFlyerBlockHandsComponent> ent, ref CEFlightStartedEvent args)
     {
         DropAll(ent.Owner);

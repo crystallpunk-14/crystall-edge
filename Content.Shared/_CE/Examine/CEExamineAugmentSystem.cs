@@ -1,4 +1,5 @@
 using Content.Shared.Examine;
+using Robust.Shared.Analyzers;
 
 namespace Content.Shared._CE.Examine;
 
@@ -15,10 +16,9 @@ public sealed partial class CEExamineAugmentSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<MetaDataComponent, ExaminedEvent>(OnExamined);
     }
 
+    [SubscribeLocalEvent]
     private void OnExamined(Entity<MetaDataComponent> ent, ref ExaminedEvent args)
     {
         var ev = new CEExamineAugmentEvent(args.Examined, args.Examiner);

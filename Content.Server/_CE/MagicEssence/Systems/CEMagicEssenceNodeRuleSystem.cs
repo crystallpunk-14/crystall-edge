@@ -1,6 +1,7 @@
 using Content.Server._CE.MagicEssence.Components;
 using Content.Server.GameTicking.Rules;
 using Content.Shared.GameTicking.Components;
+using Robust.Shared.Analyzers;
 
 namespace Content.Server._CE.MagicEssence.Systems;
 
@@ -18,8 +19,6 @@ public sealed partial class CEMagicEssenceNodeRuleSystem : GameRuleSystem<CEMagi
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEMagicEssenceMandatoryNodeComponent, ComponentShutdown>(OnMandatoryNodeShutdown);
     }
 
     /// <summary>
@@ -34,6 +33,7 @@ public sealed partial class CEMagicEssenceNodeRuleSystem : GameRuleSystem<CEMagi
         ReconcileNodeCount(component.NodeCount);
     }
 
+    [SubscribeLocalEvent]
     private void OnMandatoryNodeShutdown(Entity<CEMagicEssenceMandatoryNodeComponent> ent, ref ComponentShutdown args)
     {
         if (_trimmingNodes)

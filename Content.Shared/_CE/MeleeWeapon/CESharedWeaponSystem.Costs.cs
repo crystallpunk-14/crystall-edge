@@ -1,6 +1,7 @@
 using Content.Shared._CE.MeleeWeapon.Components;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
+using Robust.Shared.Analyzers;
 
 namespace Content.Shared._CE.MeleeWeapon;
 
@@ -10,10 +11,9 @@ public abstract partial class CESharedWeaponSystem
 
     private void InitializeCosts()
     {
-        SubscribeLocalEvent<CEWeaponStaminaCostComponent, CEWeaponUseAttemptEvent>(OnStaminaCostAttempt);
-        SubscribeLocalEvent<CEWeaponStaminaCostComponent, CEWeaponUsedEvent>(OnStaminaCostUsed);
     }
 
+    [SubscribeLocalEvent]
     private void OnStaminaCostAttempt(Entity<CEWeaponStaminaCostComponent> ent, ref CEWeaponUseAttemptEvent args)
     {
         if (args.Cancelled)
@@ -29,6 +29,7 @@ public abstract partial class CESharedWeaponSystem
             args.Cancel();
     }
 
+    [SubscribeLocalEvent]
     private void OnStaminaCostUsed(Entity<CEWeaponStaminaCostComponent> ent, ref CEWeaponUsedEvent args)
     {
         if (!ent.Comp.Costs.TryGetValue(args.UseType, out var cost) || cost <= 0f)

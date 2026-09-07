@@ -4,6 +4,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Stacks;
 using Content.Shared.Tag;
 using Content.Shared.Verbs;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Audio;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
@@ -16,11 +17,9 @@ public sealed partial class CECurrencySystem
     [Dependency] private TagSystem _tag = default!;
     private void InitializeConverter()
     {
-        SubscribeLocalEvent<CECurrencyConverterComponent, GetVerbsEvent<Verb>>(OnGetVerb);
-        SubscribeLocalEvent<CECurrencyConverterComponent, ExaminedEvent>(OnConverterExamine);
-        SubscribeLocalEvent<CECurrencyConverterComponent, InteractUsingEvent>(OnInteractUsing);
     }
 
+    [SubscribeLocalEvent]
     private void OnGetVerb(Entity<CECurrencyConverterComponent> ent, ref GetVerbsEvent<Verb> args)
     {
         if (!args.CanAccess || !args.CanInteract)
@@ -108,6 +107,7 @@ public sealed partial class CECurrencySystem
     }
 
 
+    [SubscribeLocalEvent]
     private void OnConverterExamine(Entity<CECurrencyConverterComponent> ent, ref ExaminedEvent args)
     {
         var push =
@@ -115,6 +115,7 @@ public sealed partial class CECurrencySystem
         args.PushMarkup(push);
     }
 
+    [SubscribeLocalEvent]
     private void OnInteractUsing(Entity<CECurrencyConverterComponent> ent, ref InteractUsingEvent args)
     {
         if (!_tag.HasTag(args.Used, ent.Comp.CoinTag))

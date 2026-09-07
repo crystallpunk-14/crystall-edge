@@ -12,6 +12,7 @@ using Content.Shared.Mind;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Roles.Jobs;
 using Content.Shared.Station.Components;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Audio;
 
 namespace Content.Server._CE.GameTicking;
@@ -29,11 +30,9 @@ public sealed partial class CELimitedDaysRuleSystem : GameRuleSystem<CELimitedDa
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnSpawnComplete);
-        SubscribeLocalEvent<CEStartDayEvent>(OnStartDay);
     }
 
+    [SubscribeLocalEvent]
     private void OnSpawnComplete(PlayerSpawnCompleteEvent ev)
     {
         //When a player spawn in, we immediately tell them what day it is today.
@@ -65,6 +64,7 @@ public sealed partial class CELimitedDaysRuleSystem : GameRuleSystem<CELimitedDa
         args.AddLine($"Alive Players Percentage: {alivePercentage * 100f:0.0}%");
     }
 
+    [SubscribeLocalEvent]
     private void OnStartDay(CEStartDayEvent ev)
     {
         if (TryComp<CEZMapComponent>(ev.MapUid, out var zlevelMap) && zlevelMap.Depth != 0)

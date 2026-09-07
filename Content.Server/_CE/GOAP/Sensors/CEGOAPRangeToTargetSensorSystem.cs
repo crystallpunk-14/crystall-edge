@@ -1,6 +1,7 @@
 using Content.Shared._CE.GOAP;
 using Content.Shared._CE.GOAP.Components;
 using Content.Shared._CE.GOAP.Selectors;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Map;
 using Robust.Shared.Timing;
 
@@ -48,8 +49,6 @@ public sealed partial class CEGOAPRangeToTargetSensorSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEGOAPRangeToTargetSensorComponent, CEGOAPSensorRefreshEvent>(OnRefresh);
     }
 
     public override void Update(float frameTime)
@@ -67,6 +66,7 @@ public sealed partial class CEGOAPRangeToTargetSensorSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnRefresh(Entity<CEGOAPRangeToTargetSensorComponent> ent, ref CEGOAPSensorRefreshEvent args)
     {
         if (!TryComp<CEGOAPComponent>(ent, out var goap))

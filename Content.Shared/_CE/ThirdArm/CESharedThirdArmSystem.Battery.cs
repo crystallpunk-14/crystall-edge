@@ -5,6 +5,7 @@ using Content.Shared.Popups;
 using Content.Shared.Power;
 using Content.Shared.Power.Components;
 using Content.Shared.Power.EntitySystems;
+using Robust.Shared.Analyzers;
 
 namespace Content.Shared._CE.ThirdArm;
 
@@ -15,9 +16,6 @@ public abstract partial class CESharedThirdArmSystem
 
     private void InitBattery()
     {
-        SubscribeLocalEvent<CEThirdArmComponent, RefreshChargeRateEvent>(OnRefreshChargeRate);
-        SubscribeLocalEvent<CEThirdArmComponent, BatteryStateChangedEvent>(OnBatteryStateChanged);
-        SubscribeLocalEvent<CEThirdArmActionManaCostComponent, ActionAttemptEvent>(OnActionManaCostAttempt);
     }
 
     /// <summary>
@@ -26,6 +24,7 @@ public abstract partial class CESharedThirdArmSystem
     ///     before the action's own event fires - so any module's action just needs this component, no
     ///     per-action mana-check code.
     /// </summary>
+    [SubscribeLocalEvent]
     private void OnActionManaCostAttempt(Entity<CEThirdArmActionManaCostComponent> ent, ref ActionAttemptEvent args)
     {
         if (args.Cancelled)
@@ -49,6 +48,7 @@ public abstract partial class CESharedThirdArmSystem
         Battery.TryUseCharge(arm, ent.Comp.ManaCost);
     }
 
+    [SubscribeLocalEvent]
     private void OnRefreshChargeRate(Entity<CEThirdArmComponent> ent, ref RefreshChargeRateEvent args)
     {
         var module = ent.Comp.ModuleSlot.Item;
@@ -58,6 +58,7 @@ public abstract partial class CESharedThirdArmSystem
         args.NewChargeRate -= moduleComp.PassiveDrainRate;
     }
 
+    [SubscribeLocalEvent]
     private void OnBatteryStateChanged(Entity<CEThirdArmComponent> ent, ref BatteryStateChangedEvent args)
     {
         var module = ent.Comp.ModuleSlot.Item;

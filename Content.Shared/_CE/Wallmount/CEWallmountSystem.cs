@@ -1,5 +1,6 @@
 using Content.Shared.Tag;
 using Content.Shared.Wall;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Network;
@@ -21,17 +22,16 @@ public sealed partial class CEWallmountSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEWallmountedComponent, ComponentShutdown>(OnWallmountShutdown);
-        SubscribeLocalEvent<CEWallmountedComponent, AnchorStateChangedEvent>(OnWallmountAnchorChanged);
     }
 
+    [SubscribeLocalEvent]
     private void OnWallmountAnchorChanged(Entity<CEWallmountedComponent> ent, ref AnchorStateChangedEvent args)
     {
         if (!args.Anchored)
             ClearWallmounts(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnWallmountShutdown(Entity<CEWallmountedComponent> ent, ref ComponentShutdown args)
     {
         ClearWallmounts(ent);

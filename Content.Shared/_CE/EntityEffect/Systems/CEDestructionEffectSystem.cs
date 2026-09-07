@@ -1,18 +1,17 @@
 using Content.Shared.Destructible;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Spawners;
 
 namespace Content.Shared._CE.EntityEffect.Systems;
 
-public sealed class CEDestructionEffectSystem : EntitySystem
+public sealed partial class CEDestructionEffectSystem : EntitySystem
 {
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEDestructionEffectComponent, DestructionEventArgs>(OnDestructed);
-        SubscribeLocalEvent<CEDestructionEffectComponent, TimedDespawnEvent>(OnDespawn);
     }
 
+    [SubscribeLocalEvent]
     private void OnDespawn(Entity<CEDestructionEffectComponent> ent, ref TimedDespawnEvent args)
     {
         var effectArgs = new CEEntityEffectArgs(
@@ -30,6 +29,7 @@ public sealed class CEDestructionEffectSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnDestructed(Entity<CEDestructionEffectComponent> ent, ref DestructionEventArgs args)
     {
         var effectArgs = new CEEntityEffectArgs(

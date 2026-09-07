@@ -1,5 +1,6 @@
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.FixedPoint;
+using Robust.Shared.Analyzers;
 
 namespace Content.Server._CE.Chemistry;
 
@@ -8,10 +9,9 @@ public sealed partial class CEDeleteOnEmptySolutionSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEDeleteOnEmptySolutionComponent, SolutionChangedEvent>(OnSolutionChanged);
     }
 
+    [SubscribeLocalEvent]
     private void OnSolutionChanged(Entity<CEDeleteOnEmptySolutionComponent> ent, ref SolutionChangedEvent args)
     {
         if (args.Solution.Comp.Id != ent.Comp.SolutionId)

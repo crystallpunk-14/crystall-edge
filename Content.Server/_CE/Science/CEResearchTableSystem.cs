@@ -6,6 +6,7 @@ using Content.Shared._CE.Skill;
 using Content.Shared._CE.Skill.Components;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Paper;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
@@ -33,14 +34,9 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEResearchTableComponent, CEResearchTableMergeAspectsMessage>(OnMergeAspects);
-        SubscribeLocalEvent<CEResearchTableComponent, CEResearchTableStartResearchMessage>(OnStartResearch);
-        SubscribeLocalEvent<CEResearchTableComponent, CEResearchTableChooseDiscoveryMessage>(OnChooseDiscovery);
-        SubscribeLocalEvent<CEResearchTableComponent, CEResearchTablePlaceAspectMessage>(OnPlaceAspect);
-        SubscribeLocalEvent<CEResearchTableComponent, CEResearchTableFinishResearchMessage>(OnFinishResearch);
     }
 
+    [SubscribeLocalEvent]
     private void OnMergeAspects(Entity<CEResearchTableComponent> ent, ref CEResearchTableMergeAspectsMessage args)
     {
         if (!_essence.TryGetMergeResult(args.First, args.Second, out var result))
@@ -55,6 +51,7 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
         _science.GrantPoints((args.Actor, data), new Dictionary<ProtoId<CEMagicEssenceTypePrototype>, int> { [result] = 1 });
     }
 
+    [SubscribeLocalEvent]
     private void OnStartResearch(Entity<CEResearchTableComponent> ent, ref CEResearchTableStartResearchMessage args)
     {
         if (!_proto.TryIndex(args.Area, out var area))
@@ -94,6 +91,7 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
         _audio.PlayPvs(ScribbleSound, ent.Owner);
     }
 
+    [SubscribeLocalEvent]
     private void OnChooseDiscovery(Entity<CEResearchTableComponent> ent, ref CEResearchTableChooseDiscoveryMessage args)
     {
         if (_itemSlots.GetItemOrNull(ent.Owner, ent.Comp.PaperSlotId) is not { } item ||
@@ -137,6 +135,7 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
         _audio.PlayPvs(ScribbleSound, ent.Owner);
     }
 
+    [SubscribeLocalEvent]
     private void OnPlaceAspect(Entity<CEResearchTableComponent> ent, ref CEResearchTablePlaceAspectMessage args)
     {
         if (_itemSlots.GetItemOrNull(ent.Owner, ent.Comp.PaperSlotId) is not { } item ||
@@ -161,6 +160,7 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
         _audio.PlayPvs(ScribbleSound, ent.Owner);
     }
 
+    [SubscribeLocalEvent]
     private void OnFinishResearch(Entity<CEResearchTableComponent> ent, ref CEResearchTableFinishResearchMessage args)
     {
         if (_itemSlots.GetItemOrNull(ent.Owner, ent.Comp.PaperSlotId) is not { } item ||

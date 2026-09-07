@@ -1,4 +1,4 @@
-﻿using Content.Shared._CE.Animation.Core;
+using Content.Shared._CE.Animation.Core;
 using Content.Shared._CE.Animation.Core.Prototypes;
 using Content.Shared._CE.MagicEnergy.Systems;
 using Content.Shared._CE.MagicFocus.Systems;
@@ -10,6 +10,7 @@ using Content.Shared.Inventory;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Power.EntitySystems;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.Actions;
@@ -36,13 +37,9 @@ public abstract partial class CESharedActionSystem : EntitySystem
         InitializeAttempts();
         InitializeExamine();
         InitializePerformed();
-
-        SubscribeLocalEvent<TransformComponent, CEInstantActionAnimationEvent>(OnInstantAction);
-        SubscribeLocalEvent<TransformComponent, CEWorldTargetActionAnimationEvent>(OnWorldTargetAction);
-        SubscribeLocalEvent<TransformComponent, CEAngleActionAnimationEvent>(OnAngleTargetAction);
-        SubscribeLocalEvent<TransformComponent, CEEntityTargetActionAnimationEvent>(OnEntityTargetAction);
     }
 
+    [SubscribeLocalEvent]
     private void OnInstantAction(Entity<TransformComponent> ent, ref CEInstantActionAnimationEvent args)
     {
         if (args.Handled)
@@ -55,6 +52,7 @@ public abstract partial class CESharedActionSystem : EntitySystem
         args.Handled = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnWorldTargetAction(Entity<TransformComponent> ent, ref CEWorldTargetActionAnimationEvent args)
     {
         if (args.Handled)
@@ -72,6 +70,7 @@ public abstract partial class CESharedActionSystem : EntitySystem
         args.Handled = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnAngleTargetAction(Entity<TransformComponent> ent, ref CEAngleActionAnimationEvent args)
     {
         if (args.Handled)
@@ -89,6 +88,7 @@ public abstract partial class CESharedActionSystem : EntitySystem
         args.Handled = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnEntityTargetAction(Entity<TransformComponent> ent, ref CEEntityTargetActionAnimationEvent args)
     {
         if (args.Handled)

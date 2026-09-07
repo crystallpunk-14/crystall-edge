@@ -1,6 +1,7 @@
 using Content.Shared.Examine;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.RadialConstruction;
@@ -14,13 +15,9 @@ public sealed partial class CERadialConstructionSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CERadialConstructionComponent, InteractUsingEvent>(OnInteract);
-        SubscribeLocalEvent<CERadialConstructionComponent, CERadialConstructionMessage>(OnRadialConstructionMessage);
-        SubscribeLocalEvent<CERadialConstructionComponent, CERadialConstructionFinishedEvent>(OnFinished);
-        SubscribeLocalEvent<CERadialConstructionComponent, ExaminedEvent>(OnExamined);
     }
 
+    [SubscribeLocalEvent]
     private void OnInteract(Entity<CERadialConstructionComponent> ent, ref InteractUsingEvent args)
     {
         if (GetVariant(ent, args.Used) is not { } variant)
@@ -32,6 +29,7 @@ public sealed partial class CERadialConstructionSystem : EntitySystem
         _ui.OpenUi(ent.Owner, CERadialConstructionUiKey.Key, args.User);
     }
 
+    [SubscribeLocalEvent]
     private void OnRadialConstructionMessage(Entity<CERadialConstructionComponent> ent, ref CERadialConstructionMessage args)
     {
         // Find a held item whose trigger matches and whose variant actually offers the chosen prototype.
@@ -54,6 +52,7 @@ public sealed partial class CERadialConstructionSystem : EntitySystem
         variant.Trigger.StartUse(EntityManager, itemUid.Value, args.Actor, ent.Owner, ent.Comp.Delay, new CERadialConstructionFinishedEvent(args.ProtoId));
     }
 
+    [SubscribeLocalEvent]
     private void OnFinished(Entity<CERadialConstructionComponent> ent, ref CERadialConstructionFinishedEvent args)
     {
         if (args.Cancelled || args.Handled)
@@ -82,6 +81,7 @@ public sealed partial class CERadialConstructionSystem : EntitySystem
         spawnedXform.LocalRotation = rotation;
     }
 
+    [SubscribeLocalEvent]
     private void OnExamined(Entity<CERadialConstructionComponent> ent, ref ExaminedEvent args)
     {
         foreach (var variant in ent.Comp.Variants)

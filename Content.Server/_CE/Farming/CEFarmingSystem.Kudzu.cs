@@ -1,4 +1,5 @@
 using System.Linq;
+using Robust.Shared.Analyzers;
 using Content.Server.Spreader;
 using Content.Shared._CE.Farming.Components;
 using Robust.Shared.Map;
@@ -10,10 +11,9 @@ public sealed partial class CEFarmingSystem
 {
     private void InitializeKudzu()
     {
-        SubscribeLocalEvent<CEPlantKudzuComponent, SpreadNeighborsEvent>(OnKudzuSpread);
-        SubscribeLocalEvent<CEPlantKudzuComponent, CEAfterPlantUpdateEvent>(OnKudzuUpdate);
     }
 
+    [SubscribeLocalEvent]
     private void OnKudzuUpdate(Entity<CEPlantKudzuComponent> ent, ref CEAfterPlantUpdateEvent args)
     {
         if (!PlantQuery.TryComp(ent, out var plant))
@@ -28,6 +28,7 @@ public sealed partial class CEFarmingSystem
             EnsureComp<ActiveEdgeSpreaderComponent>(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnKudzuSpread(Entity<CEPlantKudzuComponent> ent, ref SpreadNeighborsEvent args)
     {
         if (!PlantQuery.TryComp(ent, out var plant))

@@ -3,6 +3,7 @@ using Content.Server.Power.EntitySystems;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Timing;
 
@@ -18,12 +19,9 @@ public sealed partial class CESalarySystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CESalaryPayrollComponent, ExaminedEvent>(OnExamined);
-        SubscribeLocalEvent<CESalaryPayrollComponent, InteractHandEvent>(OnInteract);
-        SubscribeLocalEvent<CESalaryCounterComponent, MapInitEvent>(OnMapInit);
     }
 
+    [SubscribeLocalEvent]
     private void OnMapInit(Entity<CESalaryCounterComponent> ent, ref MapInitEvent args)
     {
         // Initialize the first salary time
@@ -62,6 +60,7 @@ public sealed partial class CESalarySystem : EntitySystem
         counter.Comp.NextSalaryTime += counter.Comp.Frequency * periodsElapsed;
     }
 
+    [SubscribeLocalEvent]
     private void OnExamined(Entity<CESalaryPayrollComponent> ent, ref ExaminedEvent args)
     {
         if (!TryComp<CESalaryCounterComponent>(args.Examiner, out var counter))
@@ -87,6 +86,7 @@ public sealed partial class CESalarySystem : EntitySystem
         args.PushMarkup(Loc.GetString("ce-salary-payroll-examine-timer", ("time", $"{minutes:D2}:{seconds:D2}")));
     }
 
+    [SubscribeLocalEvent]
     private void OnInteract(Entity<CESalaryPayrollComponent> ent, ref InteractHandEvent args)
     {
         if (!this.IsPowered(ent.Owner, EntityManager))

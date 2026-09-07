@@ -2,6 +2,7 @@ using Content.Shared._CE.Hex;
 using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.MagicEssence.Systems;
 using Content.Shared._CE.Science.Components;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 
@@ -15,11 +16,9 @@ public abstract partial class CESharedResearchTableSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEResearchTableComponent, EntInsertedIntoContainerMessage>(OnContainerChanged);
-        SubscribeLocalEvent<CEResearchTableComponent, EntRemovedFromContainerMessage>(OnContainerChanged);
     }
 
+    [SubscribeLocalEvent]
     private void OnContainerChanged(Entity<CEResearchTableComponent> ent, ref EntInsertedIntoContainerMessage args)
     {
         if (args.Container.ID != ent.Comp.PaperSlotId)
@@ -29,6 +28,7 @@ public abstract partial class CESharedResearchTableSystem : EntitySystem
         OnPaperStateChanged(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnContainerChanged(Entity<CEResearchTableComponent> ent, ref EntRemovedFromContainerMessage args)
     {
         if (args.Container.ID != ent.Comp.PaperSlotId)

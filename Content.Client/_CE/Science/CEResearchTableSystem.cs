@@ -1,5 +1,6 @@
 using Content.Shared._CE.Science;
 using Content.Shared._CE.Science.Components;
+using Robust.Shared.Analyzers;
 
 namespace Content.Client._CE.Science;
 
@@ -10,9 +11,6 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEUnselectedDiscoveryProjectComponent, AfterAutoHandleStateEvent>(OnDraftStateChanged);
-        SubscribeLocalEvent<CEDiscoveryProjectComponent, AfterAutoHandleStateEvent>(OnActiveProjectStateChanged);
     }
 
     protected override void OnPaperStateChanged(Entity<CEResearchTableComponent> ent)
@@ -22,6 +20,7 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
         UpdateOpenUi(ent.Owner);
     }
 
+    [SubscribeLocalEvent]
     private void OnDraftStateChanged(Entity<CEUnselectedDiscoveryProjectComponent> ent, ref AfterAutoHandleStateEvent args)
     {
         UpdateOpenUiForItem(ent.Owner);
@@ -29,6 +28,7 @@ public sealed partial class CEResearchTableSystem : CESharedResearchTableSystem
 
     // Also fires on every subsequent Tiles mutation, not just the initial spawn - this is what
     // keeps the hex grid live-updating as points get placed, without needing to reopen the window.
+    [SubscribeLocalEvent]
     private void OnActiveProjectStateChanged(Entity<CEDiscoveryProjectComponent> ent, ref AfterAutoHandleStateEvent args)
     {
         UpdateOpenUiForItem(ent.Owner);
