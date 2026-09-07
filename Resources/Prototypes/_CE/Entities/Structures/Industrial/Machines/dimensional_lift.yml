@@ -50,6 +50,7 @@
   id: CEPortalDimensionalLift
   suffix: Dimensional Lift
   name: dimensional rift
+  categories: [ HideSpawnMenu ]
   description: A stable rift punched straight down through the world.
   components:
   - type: Sprite
