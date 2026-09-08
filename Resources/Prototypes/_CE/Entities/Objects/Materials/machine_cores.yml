@@ -170,7 +170,7 @@
   - type: MachineBoard
     prototype: CEEnergyExtractor
   - type: StaticPrice
-    price: 200
+    price: 150
 
 - type: entity
   id: CEMachineCoreAccumulatorVessel
