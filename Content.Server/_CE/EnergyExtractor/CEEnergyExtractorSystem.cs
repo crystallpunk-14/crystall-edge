@@ -2,6 +2,7 @@ using Content.Server.Destructible;
 using Content.Server.Power.EntitySystems;
 using Content.Shared._CE.EnergyExtractor;
 using Content.Shared.Power.Components;
+using Content.Shared.Stacks;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
@@ -72,7 +73,9 @@ public sealed partial class CEEnergyExtractorSystem : EntitySystem
                 continue;
 
             item = contained;
-            energy = extractable.Energy;
+            // A whole stack is destroyed at once, so pay out per item in it.
+            var count = TryComp<StackComponent>(contained, out var stack) ? stack.Count : 1;
+            energy = extractable.Energy * count;
             return true;
         }
 

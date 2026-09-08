@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.0
   forkId: ""
   forkVersion: ""
-  time: 09/08/2026 09:32:53
-  entityCount: 1812
+  time: 09/08/2026 10:13:02
+  entityCount: 1798
 maps:
 - 1
 grids:
@@ -959,34 +959,16 @@ entities:
       pos: -9.875697,-29.320074
 - proto: CEConveyorBelt
   entities:
-  - uid: 8
-    components:
-    - type: Transform
-      parent: 1
-      rot: -1.5707963267948966 rad
-      pos: 7.5,10.5
   - uid: 140
     components:
     - type: Transform
       parent: 1
       pos: 4.5,13.5
-  - uid: 163
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: 4.5,10.5
   - uid: 167
     components:
     - type: Transform
       parent: 1
       pos: 6.5,14.5
-  - uid: 168
-    components:
-    - type: Transform
-      parent: 1
-      rot: -1.5707963267948966 rad
-      pos: 8.5,10.5
   - uid: 171
     components:
     - type: Transform
@@ -1010,29 +992,11 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: 7.5,12.5
-  - uid: 273
-    components:
-    - type: Transform
-      parent: 1
-      rot: -1.5707963267948966 rad
-      pos: 7.5,11.5
-  - uid: 274
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: 4.5,11.5
   - uid: 275
     components:
     - type: Transform
       parent: 1
       pos: 6.5,13.5
-  - uid: 276
-    components:
-    - type: Transform
-      parent: 1
-      rot: -1.5707963267948966 rad
-      pos: 8.5,11.5
   - uid: 279
     components:
     - type: Transform
@@ -1502,35 +1466,12 @@ entities:
     - type: Transform
       parent: 1
       pos: 3.5,8.5
-  - uid: 375
-    components:
-    - type: Transform
-      parent: 1
-      rot: 1.5707963267948966 rad
-      pos: 8.5,10.5
-  - uid: 376
-    components:
-    - type: Transform
-      parent: 1
-      pos: 2.5,8.5
-  - uid: 1246
-    components:
-    - type: Transform
-      parent: 1
-      rot: 1.5707963267948966 rad
-      pos: 4.5,10.5
   - uid: 1249
     components:
     - type: Transform
       parent: 1
       rot: 1.5707963267948966 rad
       pos: 7.5,6.5
-  - uid: 1289
-    components:
-    - type: Transform
-      parent: 1
-      rot: 1.5707963267948966 rad
-      pos: 8.5,11.5
   - uid: 1290
     components:
     - type: Transform
@@ -1549,18 +1490,6 @@ entities:
       parent: 1
       rot: 3.141592653589793 rad
       pos: 4.5,15.5
-  - uid: 1295
-    components:
-    - type: Transform
-      parent: 1
-      rot: 1.5707963267948966 rad
-      pos: 8.5,8.5
-  - uid: 1299
-    components:
-    - type: Transform
-      parent: 1
-      rot: -1.5707963267948966 rad
-      pos: 4.5,7.5
 - proto: CEEnergyExtractor
   entities:
   - uid: 443
@@ -3465,11 +3394,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 3.5,11.5
-  - uid: 854
-    components:
-    - type: Transform
-      parent: 1
-      pos: 0.5,11.5
   - uid: 885
     components:
     - type: Transform
@@ -3632,6 +3556,11 @@ entities:
       pos: -29.5,-13.5
 - proto: CEPipeBrassBigValveOn
   entities:
+  - uid: 8
+    components:
+    - type: Transform
+      parent: 1
+      pos: 0.5,11.5
   - uid: 1443
     components:
     - type: Transform
@@ -4883,13 +4812,6 @@ entities:
       pos: 5.5,12.5
     - type: Fixtures
       fixtures: {}
-  - uid: 1298
-    components:
-    - type: Transform
-      parent: 1
-      pos: 0.5,12.5
-    - type: Fixtures
-      fixtures: {}
   - uid: 1301
     components:
     - type: Transform
@@ -5538,6 +5460,13 @@ entities:
       fixtures: {}
 - proto: CEPipeBrassMediumValveOn
   entities:
+  - uid: 163
+    components:
+    - type: Transform
+      parent: 1
+      pos: 0.5,12.5
+    - type: Fixtures
+      fixtures: {}
   - uid: 1235
     components:
     - type: Transform
@@ -6231,11 +6160,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 6.5,17.5
-  - uid: 393
-    components:
-    - type: Transform
-      parent: 1
-      pos: 5.5,9.5
   - uid: 408
     components:
     - type: Transform
@@ -6301,11 +6225,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 9.5,6.5
-  - uid: 1296
-    components:
-    - type: Transform
-      parent: 1
-      pos: 5.5,10.5
   - uid: 1314
     components:
     - type: Transform

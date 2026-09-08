@@ -42,7 +42,7 @@
     startingCharge: 40
   - type: PowerCell
   - type: CEEnergyExtractable
-    energy: 100
+    energy: 50
   - type: CEIrradiateOnDestroy
   - type: StaticPrice
     price: 0
@@ -79,7 +79,7 @@
     maxCharge: 50
     startingCharge: 50
   - type: CEEnergyExtractable
-    energy: 150
+    energy: 75
   - type: PowerCell
   - type: PhysicalComposition
     materialComposition:

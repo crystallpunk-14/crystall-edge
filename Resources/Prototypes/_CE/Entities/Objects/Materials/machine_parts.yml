@@ -25,7 +25,7 @@
   - type: StackPrice
     price: 20
   - type: CEEnergyExtractable
-    energy: 350
+    energy: 150
   - type: PhysicalComposition
     materialComposition:
       CEIron: 4
