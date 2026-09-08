@@ -51,7 +51,7 @@
   - type: PointLight
     radius: 2
     energy: 4
-    color: "#1cd0dd"
+    color: MediumPurple
     enabled: false
 
 - type: entity
