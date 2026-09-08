@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 283.1.0
+  engineVersion: 289.0.0
   forkId: ""
   forkVersion: ""
-  time: 08/30/2026 11:26:04
-  entityCount: 1811
+  time: 09/08/2026 09:32:53
+  entityCount: 1812
 maps:
 - 1
 grids:
@@ -144,15 +144,11 @@ entities:
           Oxygen: 21.824879
           Nitrogen: 82.10312
         immutable: True
-    - type: DecalGrid
-      chunkCollection:
-        version: 2
-        nodes: []
     - type: Forensics
       residues: []
       fingerprints: []
       fibers: []
-      dnas: []
+      dNAs: []
     - type: RadiationGridResistance
     - type: ExplosionAirtightGrid
     - type: CEZLevelsLaddersCache
@@ -287,6 +283,8 @@ entities:
             -18,-33: []
             -19,-33: []
             -20,-33: []
+    - type: ChunkContainer
+      chunkEntities: []
 - proto: CEAccumulatorVessel
   entities:
   - uid: 1270
@@ -1563,6 +1561,14 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: 4.5,7.5
+- proto: CEEnergyExtractor
+  entities:
+  - uid: 443
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 1.5,12.5
 - proto: CEEngineeringTable
   entities:
   - uid: 1217
@@ -2402,6 +2408,12 @@ entities:
     - type: Transform
       parent: 1
       pos: -11.5,-0.5
+  - uid: 1812
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: 2.5,12.5
 - proto: CEGeneratorMagicCapacitor
   entities:
   - uid: 174
@@ -5610,14 +5622,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -36.5,-8.5
-- proto: CERecycler
-  entities:
-  - uid: 443
-    components:
-    - type: Transform
-      parent: 1
-      rot: 1.5707963267948966 rad
-      pos: 2.5,12.5
 - proto: CEResearchTable
   entities:
   - uid: 1510

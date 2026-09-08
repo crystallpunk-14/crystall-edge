@@ -1,17 +1,18 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 283.1.0
+  engineVersion: 289.0.0
   forkId: ""
   forkVersion: ""
-  time: 08/30/2026 11:26:03
-  entityCount: 1809
+  time: 09/08/2026 09:32:52
+  entityCount: 1810
 maps:
 - 1
 grids:
 - 1
 orphans: []
-nullspace: []
+nullspace:
+- 1807
 tilemap:
   5: Space
   24: CEBrassRods
@@ -151,35 +152,11 @@ entities:
         immutable: True
     - type: BecomesStation
       id: Shaar
-    - type: DecalGrid
-      chunkCollection:
-        version: 2
-        nodes:
-        - node:
-            id: e
-            color: '#000000FF'
-          decals:
-            4: 13.210698,-15.043311
-        - node:
-            id: h
-            color: '#000000FF'
-          decals:
-            1: 11.782071,-14.998334
-        - node:
-            id: l
-            color: '#000000FF'
-          decals:
-            3: 12.749487,-14.998334
-        - node:
-            id: o
-            color: '#000000FF'
-          decals:
-            2: 12.243281,-15.009578
     - type: Forensics
       residues: []
       fingerprints: []
       fibers: []
-      dnas: []
+      dNAs: []
     - type: RadiationGridResistance
     - type: ExplosionAirtightGrid
     - type: CEZLevelsLaddersCache
@@ -235,6 +212,9 @@ entities:
           history:
             -16,-24: []
             -15,-24: []
+    - type: ChunkContainer
+      chunkEntities:
+      - 1807
 - proto: CEArmchairLightPillowPurple
   entities:
   - uid: 203
@@ -3543,7 +3523,7 @@ entities:
       pos: 6.5,16.5
     - type: Door
       state: Opening
-      secondsUntilStateChange: -58586.668
+      secondsUntilStateChange: -58620.81
   - uid: 619
     components:
     - type: Transform
@@ -12537,6 +12517,38 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: -41.5,-15.5
+- proto: ChunkEntity
+  entities:
+  - uid: 1807
+    components:
+    - type: ChunkEntity
+      root: 1
+      chunk: 0,-1
+    - type: DecalChunk
+      maxDecalId: 4
+      decals:
+        version: 1
+        nodes:
+        - node:
+            id: e
+            color: '#000000FF'
+          decals:
+            4: 13.210698,-15.043311
+        - node:
+            id: h
+            color: '#000000FF'
+          decals:
+            1: 11.782071,-14.998334
+        - node:
+            id: l
+            color: '#000000FF'
+          decals:
+            3: 12.749487,-14.998334
+        - node:
+            id: o
+            color: '#000000FF'
+          decals:
+            2: 12.243281,-15.009578
 - proto: SpawnPointLatejoin
   entities:
   - uid: 94

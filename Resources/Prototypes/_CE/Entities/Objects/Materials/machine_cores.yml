@@ -161,6 +161,18 @@
     price: 150
 
 - type: entity
+  id: CEMachineCoreEnergyExtractor
+  parent: CEBaseMachineCore
+  name: energy extractor machine core
+  components:
+  - type: Sprite
+    state: power
+  - type: MachineBoard
+    prototype: CEEnergyExtractor
+  - type: StaticPrice
+    price: 200
+
+- type: entity
   id: CEMachineCoreAccumulatorVessel
   parent: CEBaseMachineCore
   name: accumulator vessel machine core

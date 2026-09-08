@@ -399,6 +399,24 @@
   resultCount: 1
 
 - type: CERecipe
+  id: CEMachineCoreEnergyExtractor
+  parent: CEBaseEngineeringTableRecipe
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 2
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 2
+  result: CEMachineCoreEnergyExtractor
+  resultCount: 1
+
+- type: CERecipe
   id: CEMachineCoreRecycler
   parent: CEBaseEngineeringTableRecipe
   category: MachineCore
