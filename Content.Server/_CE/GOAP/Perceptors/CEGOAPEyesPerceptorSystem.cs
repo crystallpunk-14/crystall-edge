@@ -80,6 +80,8 @@ public sealed partial class CEGOAPEyesPerceptorSystem : EntitySystem
 
             eyes.NextUpdateTime = curTime + eyes.UpdateInterval;
             Scan((uid, eyes, goap));
+            // Classify once per scan, including stationary targets whose faction relationship changed.
+            _goap.RaiseKnowledgeUpdated(uid);
         }
     }
 
@@ -120,7 +122,7 @@ public sealed partial class CEGOAPEyesPerceptorSystem : EntitySystem
             if (!_examine.InRangeUnOccluded(uid, targetUid, eyes.VisionRadius + 0.5f))
                 continue;
 
-            _goap.Remember((uid, goap), targetUid, targetXform.Coordinates);
+            _goap.Remember((uid, goap), targetUid, targetXform.Coordinates, notify: false);
         }
 
         if (!eyes.CrossZLevelVision || currentMapUid == null)
@@ -172,7 +174,7 @@ public sealed partial class CEGOAPEyesPerceptorSystem : EntitySystem
                 if (!IsTileTransparentAt(currentMapUid.Value, targetWorldPos))
                     continue;
 
-                _goap.Remember((uid, goap), targetUid, targetXform.Coordinates);
+                _goap.Remember((uid, goap), targetUid, targetXform.Coordinates, notify: false);
             }
         }
 
@@ -213,7 +215,7 @@ public sealed partial class CEGOAPEyesPerceptorSystem : EntitySystem
                 if (!_examine.InRangeUnOccluded(selfOnAboveMap, targetOnAboveMap, eyes.VisionRadius + 0.5f, null))
                     continue;
 
-                _goap.Remember((uid, goap), targetUid, targetXform.Coordinates);
+                _goap.Remember((uid, goap), targetUid, targetXform.Coordinates, notify: false);
             }
         }
     }

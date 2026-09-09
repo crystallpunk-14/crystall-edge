@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Server._CE.NPC;
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Administration.Managers;
@@ -120,6 +121,7 @@ public sealed partial class NPCSteeringSystem : SharedNPCSteeringSystem
             foreach (var (comp, mover) in EntityQuery<NPCSteeringComponent, InputMoverComponent>())
             {
                 mover.CurTickSprintMovement = Vector2.Zero;
+                mover.CurTickWalkMovement = Vector2.Zero; // CrystallEdge: clear both NPC gaits.
                 comp.PathfindToken?.Cancel();
                 comp.PathfindToken = null;
             }
@@ -210,6 +212,7 @@ public sealed partial class NPCSteeringSystem : SharedNPCSteeringSystem
         if (TryComp(uid, out InputMoverComponent? controller))
         {
             controller.CurTickSprintMovement = Vector2.Zero;
+            controller.CurTickWalkMovement = Vector2.Zero; // CrystallEdge: clear both NPC gaits.
 
             var ev = new SpriteMoveEvent(false);
             RaiseLocalEvent(uid, ref ev);
@@ -288,7 +291,11 @@ public sealed partial class NPCSteeringSystem : SharedNPCSteeringSystem
             Array.Clear(steering.Danger);
         }
 
-        component.CurTickSprintMovement = value;
+        // CrystallEdge: authored NPC gait must match the movement speed used by steering.
+        var walking = TryComp<CENPCMovementComponent>(uid, out var movement) && movement.Walking;
+        component.CurTickWalkMovement = walking ? value : Vector2.Zero;
+        component.CurTickSprintMovement = walking ? Vector2.Zero : value;
+        // CrystallEdge end
         component.LastInputTick = _timing.CurTick;
         component.LastInputSubTick = ushort.MaxValue;
 
@@ -339,6 +346,10 @@ public sealed partial class NPCSteeringSystem : SharedNPCSteeringSystem
         var offsetRot = -_mover.GetParentGridAngle(mover);
         _modifierQuery.TryGetComponent(uid, out var modifier);
         var moveSpeed = GetSprintSpeed(uid, modifier);
+        // CrystallEdge: ordinary livestock travel uses native walk speed.
+        if (TryComp<CENPCMovementComponent>(uid, out var movement) && movement.Walking)
+            moveSpeed = modifier?.CurrentWalkSpeed ?? MovementSpeedModifierComponent.DefaultBaseWalkSpeed;
+        // CrystallEdge end
         var body = _physicsQuery.GetComponent(uid);
         var dangerPoints = steering.DangerPoints;
         dangerPoints.Clear();
