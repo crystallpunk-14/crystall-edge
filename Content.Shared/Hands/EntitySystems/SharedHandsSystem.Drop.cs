@@ -176,8 +176,23 @@ public abstract partial class SharedHandsSystem
             return false;
 
         DoDrop(ent, hand, false);
-        ContainerSystem.Insert(entity, targetContainer);
-        return true;
+        // CrystallEdge: drop callbacks may change or reject the destination. Report the actual transfer.
+        if (TerminatingOrDeleted(entity) || IsHolding(ent, entity))
+            return false;
+
+        if (!TerminatingOrDeleted(targetContainer.Owner) &&
+            ContainerSystem.TryGetContainer(targetContainer.Owner, targetContainer.ID, out var current) &&
+            ReferenceEquals(current, targetContainer) &&
+            ContainerSystem.Insert(entity, targetContainer) && targetContainer.Contains(entity))
+            return true;
+
+        // Restore only a free item through normal pickup checks; do not undo other callbacks' ownership.
+        if (!TerminatingOrDeleted(ent) && !TerminatingOrDeleted(entity) &&
+            !ContainerSystem.IsEntityInContainer(entity))
+            TryPickup(ent, entity, hand, checkActionBlocker, animate: false);
+
+        return false;
+        // CrystallEdge end
     }
 
     /// <summary>

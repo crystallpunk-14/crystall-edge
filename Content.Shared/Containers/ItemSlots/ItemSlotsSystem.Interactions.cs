@@ -59,7 +59,7 @@ public sealed partial class ItemSlotsSystem
         if (args.Handled)
             return;
 
-        if (!TryComp(args.User, out HandsComponent? hands))
+        if (!TryComp(args.User, out HandsComponent? hands) || !_handsSystem.IsHolding(args.User, args.Used)) // CrystallEdge
             return;
 
         if (ent.Comp.Slots.Count == 0)
@@ -98,15 +98,17 @@ public sealed partial class ItemSlotsSystem
             return;
         }
 
-        if (!_handsSystem.TryDrop(args.User, args.Used))
-            return;
-
         slots.Sort(SortEmpty);
 
         foreach (var slot in slots)
         {
             if (slot.Item != null)
+            {
+                // CrystallEdge: only a swap needs a free hand before the displaced item is picked up.
+                if (!_handsSystem.TryDrop(args.User, args.Used))
+                    return;
                 _handsSystem.TryPickupAnyHand(args.User, slot.Item.Value, handsComp: hands);
+            }
 
             if (!Insert(ent, slot, args.Used, args.User, excludeUserAudio: true))
                 return;

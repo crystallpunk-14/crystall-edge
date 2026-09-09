@@ -16,8 +16,16 @@ public sealed partial class ItemSlotsSystem
         EntityUid? user,
         bool excludeUserAudio = false)
     {
-        if (slot.ContainerSlot == null || !_containers.Insert(item, slot.ContainerSlot))
+        // CrystallEdge: held items use the checked hands transfer without a floor-drop interaction.
+        if (slot.ContainerSlot == null)
             return false;
+
+        var inserted = user is { } actor && _handsSystem.IsHolding(actor, item)
+            ? _handsSystem.TryDropIntoContainer(actor, item, slot.ContainerSlot)
+            : _containers.Insert(item, slot.ContainerSlot);
+        if (!inserted || !slot.ContainerSlot.Contains(item))
+            return false;
+        // CrystallEdge end
 
         if (user != null)
         {
@@ -112,7 +120,7 @@ public sealed partial class ItemSlotsSystem
     /// Tries to insert the item in a user's active hand into a specific slot.
     /// </summary>
     /// <remarks>
-    /// If insertion fails after the item is dropped, the item remains dropped.
+    /// Failed transfers try to restore the original hand through normal pickup checks. // CrystallEdge
     /// </remarks>
     /// <returns>True only if the held item was dropped and inserted.</returns>
     public bool TryInsertFromHand(EntityUid uid,
@@ -129,9 +137,7 @@ public sealed partial class ItemSlotsSystem
         if (!CanInsert(uid, slot, held.Value, user))
             return false;
 
-        if (!_handsSystem.TryDrop(user, user.Comp.ActiveHandId!))
-            return false;
-
+        // CrystallEdge: Insert owns the single checked hand transfer.
         return Insert(uid, slot, held.Value, user, excludeUserAudio: excludeUserAudio);
     }
 
@@ -154,6 +160,10 @@ public sealed partial class ItemSlotsSystem
         if (!Resolve(ent, ref ent.Comp, false))
             return false;
 
+        // CrystallEdge: a player request cannot move an item that is no longer held.
+        if (user is { } actor && !_handsSystem.IsHolding(actor, item))
+            return false;
+
         if (!TryGetAvailableSlot(ent,
                 item,
                 user,
@@ -161,9 +171,7 @@ public sealed partial class ItemSlotsSystem
                 emptyOnly: true))
             return false;
 
-        if (user != null && !_handsSystem.TryDrop(user.Value, item))
-            return false;
-
+        // CrystallEdge: Insert owns the single checked hand transfer.
         return Insert(ent, itemSlot, item, user, excludeUserAudio: excludeUserAudio);
     }
 

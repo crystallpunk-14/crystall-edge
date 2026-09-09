@@ -52,7 +52,13 @@ public sealed partial class ItemSlotsSystem
         if (!Resolve(ent, ref ent.Comp))
             return;
 
+        // CrystallEdge: availability consumers only need actual lock transitions.
+        if (slot.Locked == locked)
+            return;
+
         slot.Locked = locked;
         Dirty(ent);
+        NotifySlotsChanged(ent);
+        // CrystallEdge end
     }
 }
