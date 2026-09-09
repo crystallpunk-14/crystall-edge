@@ -31,6 +31,12 @@ public sealed partial class CEGOAPMoveToTargetAction : CEGOAPActionBase<CEGOAPMo
     public float ReregisterThreshold = 1f;
 }
 
+[RegisterComponent]
+public sealed partial class CEGOAPMoveToTargetComponent : Component
+{
+    public EntityUid? Target;
+}
+
 public sealed partial class CEGOAPMoveToTargetActionSystem : CEGOAPActionSystem<CEGOAPMoveToTargetAction>
 {
     [Dependency] private NPCSteeringSystem _steering = default!;
@@ -59,6 +65,7 @@ public sealed partial class CEGOAPMoveToTargetActionSystem : CEGOAPActionSystem<
         Entity<CEGOAPComponent> ent,
         ref CEGOAPActionStartupEvent<CEGOAPMoveToTargetAction> args)
     {
+        _steering.Unregister(ent);
         RegisterSteering(ent, args.Action);
     }
 
@@ -66,8 +73,11 @@ public sealed partial class CEGOAPMoveToTargetActionSystem : CEGOAPActionSystem<
         Entity<CEGOAPComponent> ent,
         ref CEGOAPActionUpdateEvent<CEGOAPMoveToTargetAction> args)
     {
-        if (!TryResolveCoords(ent, args.Action.Selector, out var coords))
+        if (!TryResolveCoords(ent, args.Action.Selector, out var coords, out args.Target))
+        {
+            args.Status = CEGOAPActionStatus.Failed;
             return;
+        }
 
 
         if (!_xformQuery.TryGetComponent(ent, out var npcXform))
@@ -79,15 +89,21 @@ public sealed partial class CEGOAPMoveToTargetActionSystem : CEGOAPActionSystem<
         // If on different maps, we are doing cross-Z navigation — never report Finished directly.
         var sameMaps = npcXform.MapUid == _transform.GetMap(coords);
 
+        var state = EnsureComp<CEGOAPMoveToTargetComponent>(ent);
+        var retargeted = state.Target != args.Target;
+
         // Re-register steering if target has moved significantly
         if (_steeringQuery.TryComp(ent, out var steering))
         {
             // Re-register if target moved significantly (only for same-map direct nav)
-            if (sameMaps && steering.Coordinates.TryDistance(EntityManager, coords, out var delta)
-                         && delta > args.Action.ReregisterThreshold)
+            if (retargeted || sameMaps &&
+                steering.Coordinates.TryDistance(EntityManager, coords, out var delta) &&
+                delta > args.Action.ReregisterThreshold)
             {
-                var comp = _steering.Register(ent, coords);
-                comp.Range = args.Action.Range;
+                // A new target needs a new request, not the previous target's terminal status.
+                _steering.Unregister(ent);
+                RegisterSteering(ent, args.Action);
+                return;
             }
 
             switch (steering.Status)
@@ -134,7 +150,9 @@ public sealed partial class CEGOAPMoveToTargetActionSystem : CEGOAPActionSystem<
             }
         }
 
-        args.Status = CEGOAPActionStatus.Running;
+        args.Status = _steeringQuery.HasComp(ent)
+            ? CEGOAPActionStatus.Running
+            : CEGOAPActionStatus.Failed;
     }
 
     protected override void OnActionShutdown(
@@ -144,12 +162,15 @@ public sealed partial class CEGOAPMoveToTargetActionSystem : CEGOAPActionSystem<
         _pendingAscent.Remove(ent.Owner);
         _pendingDescent.Remove(ent.Owner);
         _steering.Unregister(ent);
+        RemComp<CEGOAPMoveToTargetComponent>(ent);
     }
 
     private void RegisterSteering(Entity<CEGOAPComponent> ent, CEGOAPMoveToTargetAction action)
     {
-        if (!TryResolveCoords(ent, action.Selector, out var coords))
+        if (!TryResolveCoords(ent, action.Selector, out var coords, out var target))
             return;
+
+        EnsureComp<CEGOAPMoveToTargetComponent>(ent).Target = target;
 
         if (!_xformQuery.TryGetComponent(ent, out var npcXform))
             return;

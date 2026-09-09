@@ -29,4 +29,7 @@ public struct ActionValidateEvent
     /// For functioning input that happens to not be allowed this should not be set, for example a range check.
     /// </summary>
     public bool Invalid;
+
+    // CrystallEdge: a valid request may have an unusable target. NPCs must not confuse this with actor readiness.
+    public bool TargetInvalid;
 }

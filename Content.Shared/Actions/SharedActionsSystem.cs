@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Content.Shared._CE.Actions;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions.Components;
 using Content.Shared.Actions.Events;
@@ -274,15 +275,41 @@ public abstract partial class SharedActionsSystem : EntitySystem
     /// <param name="ev">The Request Perform Action Event</param>
     /// <param name="user">The user/performer of the action</param>
     /// <param name="skipDoActionRequest">Should this skip the initial doaction request?</param>
-    private bool TryPerformAction(RequestPerformActionEvent ev, EntityUid user, bool skipDoActionRequest = false, bool showPopups = true)
+    // CrystallEdge: only the internal DoAfter callback may bypass starting another delay.
+    private bool TryPerformAction(RequestPerformActionEvent ev, EntityUid user, bool skipDoActionRequest = false, bool showPopups = true, bool predicted = true)
+    {
+        var result = TryPerformActionCore(ev, user, true, predicted, skipDoActionRequest, showPopups);
+        return result is CEActionExecutionResult.Started or CEActionExecutionResult.Performed or CEActionExecutionResult.Unhandled;
+    }
+
+    /// <summary>
+    /// Validates ownership, readiness and the requested target before dispatching the action.
+    /// Synchronous callers can reject DoAfter actions instead of treating a started timer as completion.
+    /// </summary>
+    public CEActionExecutionResult TryPerformActionChecked(
+        RequestPerformActionEvent ev,
+        EntityUid user,
+        bool allowDoAfter = true,
+        bool predicted = true,
+        bool showPopups = true)
+    {
+        return TryPerformActionCore(ev, user, allowDoAfter, predicted, false, showPopups);
+    }
+
+    private CEActionExecutionResult TryPerformActionCore(
+        RequestPerformActionEvent ev,
+        EntityUid user,
+        bool allowDoAfter,
+        bool predicted,
+        bool skipDoActionRequest,
+        bool showPopups)
     {
         if (!_actionsQuery.TryComp(user, out var component))
-            return false;
+            return CEActionExecutionResult.Unavailable;
 
-        var actionEnt = GetEntity(ev.Action);
-
-        if (!TryComp(actionEnt, out MetaDataComponent? metaData))
-            return false;
+        if (!TryGetEntity(ev.Action, out var resolvedAction) || resolvedAction is not { } actionEnt ||
+            !TryComp(actionEnt, out MetaDataComponent? metaData))
+            return CEActionExecutionResult.Unavailable;
 
         var name = Name(actionEnt, metaData);
 
@@ -291,19 +318,19 @@ public abstract partial class SharedActionsSystem : EntitySystem
         {
             _adminLogger.Add(LogType.Action,
                 $"{ToPrettyString(user):user} attempted to perform an action that they do not have: {name}.");
-            return false;
+            return CEActionExecutionResult.Unavailable;
         }
 
         if (GetAction(actionEnt) is not {} action)
-            return false;
+            return CEActionExecutionResult.Unavailable;
 
-        DebugTools.Assert(action.Comp.AttachedEntity == user);
-        if (!action.Comp.Enabled)
-            return false;
+        if (action.Comp.AttachedEntity != user || !action.Comp.Enabled ||
+            !allowDoAfter && HasComp<DoAfterArgsComponent>(action))
+            return CEActionExecutionResult.Unavailable;
 
         var curTime = GameTiming.CurTime;
         if (IsCooldownActive(action, curTime))
-            return false;
+            return CEActionExecutionResult.Unavailable;
 
         // check for action use prevention
         var attemptEv = new ActionAttemptEvent(user);
@@ -313,8 +340,11 @@ public abstract partial class SharedActionsSystem : EntitySystem
             if (attemptEv.Reason != null && showPopups)
                 _popup.PopupEntity(attemptEv.Reason, user, user, attemptEv.Type);
 
-            return false;
+            return CEActionExecutionResult.Unavailable;
         }
+
+        if (TerminatingOrDeleted(action) || !action.Comp.Running)
+            return CEActionExecutionResult.Unavailable;
 
         // Validate request by checking action blockers and the like
         var provider = action.Comp.Container ?? user;
@@ -325,17 +355,28 @@ public abstract partial class SharedActionsSystem : EntitySystem
             Provider = provider
         };
         RaiseLocalEvent(action, ref validateEv);
-        if (validateEv.Invalid)
-            return false;
+        // Actor-level rejection takes precedence even if another handler also rejected the target.
+        if (validateEv.Invalid || TerminatingOrDeleted(action) || !action.Comp.Running)
+            return CEActionExecutionResult.Unavailable;
+        if (validateEv.TargetInvalid)
+            return CEActionExecutionResult.InvalidTarget;
 
         if (TryComp<DoAfterArgsComponent>(action, out var actionDoAfterComp) && TryComp<DoAfterComponent>(user, out var performerDoAfterComp) && !skipDoActionRequest)
         {
-            return TryStartActionDoAfter((action, actionDoAfterComp), (user, performerDoAfterComp), action.Comp.UseDelay, ev);
+            return TryStartActionDoAfter((action, actionDoAfterComp), (user, performerDoAfterComp), action.Comp.UseDelay, ev, predicted, showPopups)
+                ? CEActionExecutionResult.Started
+                : CEActionExecutionResult.Unavailable;
         }
 
         // All checks passed. Perform the action!
-        PerformAction((user, component), action);
-        return true;
+        if (GetEvent(action) is not { } actionEvent)
+            return CEActionExecutionResult.Unavailable;
+
+        // Event instances are reused. An early return in PerformAction must not retain the previous success.
+        actionEvent.Handled = false;
+        PerformAction((user, component), action, actionEvent, predicted);
+        return actionEvent.Handled ? CEActionExecutionResult.Performed : CEActionExecutionResult.Unhandled;
+        // CrystallEdge end
     }
 
     private void OnValidate(Entity<ActionComponent> ent, ref ActionValidateEvent args)
@@ -368,15 +409,24 @@ public abstract partial class SharedActionsSystem : EntitySystem
 
         var user = args.User;
 
-        var target = GetEntity(netTarget);
-
-        var targetWorldPos = _transform.GetWorldPosition(target);
+        // CrystallEdge: reject stale targets before reading their transform or reusing the previous event target.
+        if (!TryGetEntity(netTarget, out var resolvedTarget) ||
+            resolvedTarget is not { } target || !TryComp(target, out TransformComponent? targetTransform))
+        {
+            args.TargetInvalid = true;
+            return;
+        }
+        var targetWorldPos = _transform.GetWorldPosition(targetTransform);
+        // CrystallEdge end
 
         if (ent.Comp.RotateOnUse)
             _rotateToFace.TryFaceCoordinates(user, targetWorldPos);
 
         if (!ValidateEntityTarget(user, target, ent))
+        {
+            args.TargetInvalid = true; // CrystallEdge: a failed target must prevent dispatch.
             return;
+        }
 
         _adminLogger.Add(LogType.Action,
             $"{ToPrettyString(user):user} is performing the {Name(ent):action} action (provided by {ToPrettyString(args.Provider):provider}) targeted at {ToPrettyString(target):target}.");
@@ -392,22 +442,49 @@ public abstract partial class SharedActionsSystem : EntitySystem
             return;
         }
 
+        // CrystallEdge: reject stale coordinate parents before rotating or transforming the target.
+        if (!float.IsFinite(netTarget.X) || !float.IsFinite(netTarget.Y) ||
+            !TryGetEntity(netTarget.NetEntity, out var resolvedParent) ||
+            resolvedParent is not { } parent || TerminatingOrDeleted(parent) ||
+            !HasComp<TransformComponent>(parent))
+        {
+            args.TargetInvalid = true;
+            return;
+        }
+
+        EntityUid? targetEntity = null;
+        if (args.Input.EntityTarget is { } netEntityTarget)
+        {
+            if (!TryGetEntity(netEntityTarget, out var resolvedEntity) ||
+                resolvedEntity is not { } entity || TerminatingOrDeleted(entity) ||
+                !HasComp<TransformComponent>(entity))
+            {
+                args.TargetInvalid = true;
+                return;
+            }
+
+            targetEntity = entity;
+        }
+
         var user = args.User;
-        var target = GetCoordinates(netTarget);
+        var target = new EntityCoordinates(parent, netTarget.Position);
+        // CrystallEdge end
 
         if (ent.Comp.RotateOnUse)
             _rotateToFace.TryFaceCoordinates(user, _transform.ToMapCoordinates(target).Position);
 
         if (!ValidateWorldTarget(user, target, ent))
+        {
+            args.TargetInvalid = true; // CrystallEdge: a failed target must prevent dispatch.
             return;
+        }
 
         // if the client specified an entity it needs to be valid
-        var targetEntity = GetEntity(args.Input.EntityTarget);
         if (targetEntity != null && (
             !TryComp<EntityTargetActionComponent>(ent, out var entTarget) ||
             !ValidateEntityTarget(user, targetEntity.Value, (ent, entTarget))))
         {
-            args.Invalid = true;
+            args.TargetInvalid = true; // CrystallEdge: valid request, rejected optional entity target.
             return;
         }
 

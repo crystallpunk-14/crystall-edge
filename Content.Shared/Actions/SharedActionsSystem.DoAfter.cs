@@ -10,7 +10,9 @@ public abstract partial class SharedActionsSystem
         SubscribeLocalEvent<DoAfterArgsComponent, ActionDoAfterEvent>(OnActionDoAfter);
     }
 
-    private bool TryStartActionDoAfter(Entity<DoAfterArgsComponent> ent, Entity<DoAfterComponent?> performer, TimeSpan? originalUseDelay, RequestPerformActionEvent input)
+    // CrystallEdge: preserve request presentation options through delayed and repeated execution.
+    private bool TryStartActionDoAfter(Entity<DoAfterArgsComponent> ent, Entity<DoAfterComponent?> performer, TimeSpan? originalUseDelay, RequestPerformActionEvent input, bool predicted, bool showPopups)
+    // CrystallEdge end
     {
         // relay to user
         if (!Resolve(performer, ref performer.Comp))
@@ -20,7 +22,7 @@ public abstract partial class SharedActionsSystem
 
         var netEnt = GetNetEntity(performer);
 
-        var actionDoAfterEvent = new ActionDoAfterEvent(netEnt, originalUseDelay, input);
+        var actionDoAfterEvent = new ActionDoAfterEvent(netEnt, originalUseDelay, input, predicted, showPopups); // CrystallEdge: carry options in serialized event state.
 
         var doAfterArgs = new DoAfterArgs(EntityManager, performer, delay, actionDoAfterEvent, ent.Owner, performer)
         {
@@ -76,7 +78,7 @@ public abstract partial class SharedActionsSystem
             args.Args.Delay = ent.Comp.DelayReduction.Value;
 
         // Validate again for charges, blockers, etc
-        if (TryPerformAction(args.Input, performer, skipDoActionRequest: true))
+        if (TryPerformAction(args.Input, performer, skipDoActionRequest: true, showPopups: args.ShowPopups, predicted: args.Predicted)) // CrystallEdge: retain original request options.
             return;
 
         // Cancel this doafter if we can't validate the action

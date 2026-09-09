@@ -66,13 +66,19 @@ public abstract partial class CEGOAPActionSystem<T> : EntitySystem where T : CEG
     /// Resolves a <see cref="CEGOAPTargetSelector"/> to world coordinates.
     /// Prefers the resolved entity's transform, falling back to a raw position.
     /// </summary>
-    protected bool TryResolveCoords(EntityUid agent, CEGOAPTargetSelector? selector, out EntityCoordinates coords)
+    protected bool TryResolveCoords(
+        EntityUid agent,
+        CEGOAPTargetSelector? selector,
+        out EntityCoordinates coords,
+        out EntityUid? target)
     {
         coords = default;
+        target = null;
         if (selector == null)
             return false;
 
         var result = selector.Resolve(agent, EntityManager);
+        target = result.Entity;
         if (result.Entity is { } e && _coordsXformQuery.TryGetComponent(e, out var xform))
         {
             coords = xform.Coordinates;

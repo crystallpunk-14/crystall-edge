@@ -1,16 +1,20 @@
 using Content.Shared._CE.GOAP;
 using Content.Shared._CE.GOAP.Components;
+using Content.Shared._CE.GOAP.Selectors;
+using Content.Shared._CE.Actions;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.Actions.Events;
+using Content.Shared.DoAfter;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Server._CE.GOAP.Actions;
 
 /// <summary>
-/// Triggers action (Instant, EntityTarget, or WorldTarget).
-/// The action type is auto-detected from the components on the action entity.
+/// Triggers a synchronous action (Instant, EntityTarget, or WorldTarget).
+/// The action type is auto-detected from the components on the action entity;
+/// DoAfter-backed actions are rejected because their execution is not synchronous.
 /// </summary>
 public sealed partial class CEGOAPUseAction : CEGOAPActionBase<CEGOAPUseAction>
 {
@@ -20,6 +24,17 @@ public sealed partial class CEGOAPUseAction : CEGOAPActionBase<CEGOAPUseAction>
     [DataField(required: true)]
     public EntProtoId ActionPrototype;
 }
+
+/// <summary>
+/// Raised when a target fails validation or its synchronous action event is not handled.
+/// Actor-level readiness failures do not reject an otherwise usable target.
+/// Carries the target resolved for that exact attempt so optional policies do not have to
+/// resolve either the selector or granted action again.
+/// </summary>
+[ByRefEvent]
+public readonly record struct CEGOAPUseActionTargetFailedEvent(
+    CEGOAPTargetSelector Selector,
+    EntityUid Target);
 
 public sealed partial class CEGOAPUseActionSystem : CEGOAPActionSystem<CEGOAPUseAction>
 {
@@ -45,19 +60,10 @@ public sealed partial class CEGOAPUseActionSystem : CEGOAPActionSystem<CEGOAPUse
     {
         var actionEntity = FindActionEntity(ent, args.Action.ActionPrototype);
 
-        if (actionEntity == null)
-            return;
-
-        if (!TryComp<ActionComponent>(actionEntity.Value, out var actionComp))
-        {
-            args.CanExecute = false;
-            return;
-        }
-
-        //TODO: this should be really inside vanilla Action system, something like CanPerform method
-        var attemptEv = new ActionAttemptEvent(ent);
-        RaiseLocalEvent(actionEntity.Value, ref attemptEv);
-        if (attemptEv.Cancelled)
+        if (actionEntity == null ||
+            !TryComp<ActionComponent>(actionEntity.Value, out var actionComp) ||
+            !actionComp.Enabled ||
+            HasComp<DoAfterArgsComponent>(actionEntity.Value))
         {
             args.CanExecute = false;
             return;
@@ -82,47 +88,80 @@ public sealed partial class CEGOAPUseActionSystem : CEGOAPActionSystem<CEGOAPUse
             return;
         }
 
-        if (!TryComp<ActionComponent>(actionEntity.Value, out var actionComp))
-        {
-            args.Status = CEGOAPActionStatus.Failed;
-            return;
-        }
-
-        // Still on cooldown — fail immediately so the planner can pick alternatives
-        if (_actions.IsCooldownActive(actionComp))
-        {
-            args.Status = CEGOAPActionStatus.Failed;
-            return;
-        }
-
-        // Determine the target entity for EntityTarget / WorldTarget actions
-        EntityUid? target = null;
+        CEGOAPSelectorResult target = default;
         if (args.Action.Selector != null)
+            target = args.Action.Selector.Resolve(ent, EntityManager);
+
+        args.Target = target.Entity;
+        if (!TryCreateRequest(actionEntity.Value, target, out var request))
         {
-            var result = args.Action.Selector.Resolve(ent, EntityManager);
-            target = result.Entity;
+            args.Status = CEGOAPActionStatus.Failed;
+            return;
         }
 
-        // Set target on the action event based on auto-detected type
-        if (_entityTargetQuery.HasComponent(actionEntity.Value) ||
-            _worldTargetQuery.HasComponent(actionEntity.Value))
-        {
-            if (target == null)
-            {
-                args.Status = CEGOAPActionStatus.Failed;
-                return;
-            }
+        var result = _actions.TryPerformActionChecked(request, ent.Owner, allowDoAfter: false, predicted: false, showPopups: false);
+        args.Status = result == CEActionExecutionResult.Performed ? CEGOAPActionStatus.Finished : CEGOAPActionStatus.Failed;
+        // A cooldown, action blocker or exhausted charge must not blacklist a usable destination.
+        if (result is CEActionExecutionResult.InvalidTarget or CEActionExecutionResult.Unhandled)
+            RaiseTargetFailed(ent.Owner, args.Action.Selector, target.Entity);
+    }
 
-            _actions.SetEventTarget(actionEntity.Value, target.Value);
+    private void RaiseTargetFailed(EntityUid user, CEGOAPTargetSelector? selector, EntityUid? target)
+    {
+        if (selector != null && target is { } failedTarget)
+        {
+            var failed = new CEGOAPUseActionTargetFailedEvent(selector, failedTarget);
+            RaiseLocalEvent(user, ref failed);
+        }
+    }
+
+    private bool TryCreateRequest(
+        EntityUid action,
+        CEGOAPSelectorResult target,
+        out RequestPerformActionEvent request)
+    {
+        request = default!;
+        var hasEntityTarget = _entityTargetQuery.HasComp(action);
+        var hasWorldTarget = _worldTargetQuery.HasComp(action);
+        var targetEntity = target.Entity;
+        var targetPosition = target.Position;
+
+        if (hasWorldTarget && targetPosition == null && targetEntity is { } positioned &&
+            TryComp(positioned, out TransformComponent? transform))
+        {
+            targetPosition = transform.Coordinates;
         }
 
-        _actions.PerformAction(ent.Owner, (actionEntity.Value, actionComp), predicted: false);
-        args.Status = CEGOAPActionStatus.Finished;
+        if ((hasEntityTarget && !hasWorldTarget && targetEntity == null) ||
+            (hasWorldTarget && targetPosition == null))
+            return false;
+
+        var netAction = GetNetEntity(action);
+        if (hasWorldTarget)
+        {
+            var netCoordinates = GetNetCoordinates(targetPosition!.Value);
+            request = hasEntityTarget
+                ? new RequestPerformActionEvent(
+                    netAction,
+                    targetEntity is { } entity ? GetNetEntity(entity) : null,
+                    netCoordinates)
+                : new RequestPerformActionEvent(netAction, netCoordinates);
+        }
+        else if (hasEntityTarget)
+        {
+            request = new RequestPerformActionEvent(netAction, GetNetEntity(targetEntity!.Value));
+        }
+        else
+        {
+            request = new RequestPerformActionEvent(netAction);
+        }
+
+        return true;
     }
 
     /// <summary>
     /// Finds an already-granted action entity matching the prototype ID.
-    /// Does NOT grant a new action — used during planning feasibility checks.
+    /// Does NOT grant a new action; used during planning feasibility checks.
     /// </summary>
     private EntityUid? FindActionEntity(Entity<CEGOAPComponent> ent, EntProtoId actionProto)
     {
