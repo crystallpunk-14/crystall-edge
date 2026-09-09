@@ -1,0 +1,113 @@
+- type: entity
+  id: CEActionChickenLayEgg
+  parent: BaseAction
+  name: lay chicken egg
+  description: Lay a produced chicken egg in an available nesting perch.
+  components:
+  - type: LimitedCharges
+    lastCharges: -1
+    maxCharges: 1
+  - type: Sprite
+    sprite: Objects/Consumable/Food/egg.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
+  - type: Action
+    sound: { collection: CEChickenClucks }
+  - type: TargetAction
+    range: 0.4
+  - type: EntityTargetAction
+    canTargetSelf: false
+    whitelist:
+      requireAll: true
+      components:
+      - CEAnimalNestAvailable
+    event: !type:CEAnimalLayProductActionEvent
+
+- type: entity
+  id: CEChickenHenGOAP
+  abstract: true
+  parent:
+  - CEAnimalAdultGOAPBase
+  - CEAnimalFearGOAPBase
+  components:
+  - type: CEGOAPSelectorProfiles
+    profiles:
+      chickenNest: !type:CEGOAPSelectorNearestEntity
+        range: 20
+        whitelist:
+          requireAll: true
+          components:
+          - CEAnimalNestAvailable
+  - type: CEAnimalRoost
+    minimumDuration: 12
+    maximumDuration: 20
+    conditions:
+    - !type:SatiationCondition
+      satiationType: Hunger
+      min: 20
+      minInclusive: true
+    - !type:SatiationCondition
+      satiationType: Thirst
+      min: 100
+      minInclusive: true
+  - type: CEGOAPRangeToTargetSensor
+    updateInterval: 0.2
+    entries:
+    - conditionKey: CEProductionTargetAvailable
+      range: 20
+      selector: !type:CEGOAPSelectorProfile
+        profile: chickenNest
+    - conditionKey: CEProductionTargetInRange
+      range: 0.4
+      selector: !type:CEGOAPSelectorProfile
+        profile: chickenNest
+  - type: CEGOAP
+    goals:
+    - desiredState: { CEProductionReady: false }
+      preconditions:
+        CEProductionReady: true
+        CEProductionTargetAvailable: true
+      priority: 90
+    - desiredState: { CEAnimalRoosting: false }
+      priority: 200
+    actions:
+    - !type:CEGOAPRoostAction
+      preconditions: { CEAnimalRoosting: true, CEAnimalThreatened: false }
+      effects: { CEAnimalRoosting: false }
+    - !type:CEGOAPMoveToTargetAction
+      selector: !type:CEGOAPSelectorProfile
+        profile: chickenNest
+      range: 0.4
+      preconditions:
+        CEProductionReady: true
+        CEProductionTargetAvailable: true
+        CEProductionTargetInRange: false
+      effects: { CEProductionTargetInRange: true }
+    - !type:CEGOAPUseAction
+      actionPrototype: CEActionChickenLayEgg
+      selector: !type:CEGOAPSelectorProfile
+        profile: chickenNest
+      preconditions:
+        CEProductionReady: true
+        CEProductionTargetAvailable: true
+        CEProductionTargetInRange: true
+      effects: { CEProductionReady: false }
+
+- type: entity
+  id: CEChickenChickGOAP
+  abstract: true
+  parent: [CEAnimalNeedsGOAPBase, CEAnimalFearGOAPBase]
+  components:
+  - type: CEGOAP
+    goals:
+    - desiredState: { CEAnimalIdle: true }
+      priority: 1
+    actions:
+    - !type:CEGOAPExploreAction
+      exploreRadius: 5
+      sampleDirections: 10
+      minIdleTime: 0.75
+      maxIdleTime: 3
+      preconditions: { CEAnimalIdle: false }
+      effects: { CEAnimalIdle: true }

@@ -1,0 +1,38 @@
+- type: construction
+  id: CEAnimalFeedTrough
+  graph: CEAnimalFeedTrough
+  startNode: start
+  targetNode: complete
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: CEAnimalWaterTrough
+  graph: CEAnimalWaterTrough
+  startNode: start
+  targetNode: complete
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: CEChickenNestingPerch
+  graph: CEChickenNestingPerch
+  startNode: start
+  targetNode: complete
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked

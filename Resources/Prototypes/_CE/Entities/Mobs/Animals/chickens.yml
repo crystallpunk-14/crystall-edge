@@ -1,0 +1,355 @@
+- type: Tag
+  id: CEChickenPopulation
+
+- type: Tag
+  id: CEEgg
+
+- type: Tag
+  id: CEChickenRooster
+
+- type: Tag
+  id: CEChickenHen
+
+- type: entity
+  id: CEMobChickenBase
+  abstract: true
+  parent:
+  - CEMobAnimalHusbandryBase
+  - BaseSlicingRefinable
+  components:
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - StunImmune
+    - CEChickenPopulation
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 3
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape: !type:PhysShapeCircle
+          radius: 0.3
+        density: 8
+        mask: [MobMask]
+        layer: [MobLayer]
+  - type: Satiation
+    satiations:
+      Hunger: { prototype: CEChickenHunger }
+      Thirst: { prototype: CEChickenThirst }
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      25: Critical
+      50: Dead
+  - type: Appearance
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: live
+  - type: DamageStateVisuals
+    states:
+      Alive: { Base: live }
+      Critical: { Base: dead }
+      Dead: { Base: dead }
+  - type: Speech
+    speechVerb: SmallMob
+    speechSounds: CEChickenCluck
+  - type: CEGOAPEntityConditionSensor
+    updateInterval: 2
+    entries:
+    - conditionKey: CEAnimalHungry
+      condition: !type:SatiationCondition
+        satiationType: Hunger
+        minInclusive: true
+        min: 100
+        inverted: true
+    - conditionKey: CEAnimalThirsty
+      condition: !type:SatiationCondition
+        satiationType: Thirst
+        minInclusive: true
+        min: 300
+        inverted: true
+  - type: InteractionPopup
+    successChance: 0.8
+    interactSuccessString: petting-success-bird
+    interactFailureString: petting-failure-generic
+    interactSuccessSpawn: EffectHearts
+    interactSuccessSound: { collection: CEChickenClucks }
+  - type: ReplacementAccent
+    accent: chicken
+
+- type: entity
+  id: CEMobChickenHenBase
+  abstract: true
+  parent:
+  - CEMobChickenBase
+  - CEChickenHenGOAP
+  components:
+  - type: Tag
+    tags: [DoorBumpOpener, StunImmune, CEChickenPopulation, CEChickenHen]
+  - type: CEAnimalFertility
+  - type: CEGOAPEntityConditionSensor
+    entries:
+    - conditionKey: CEProductionReady
+      condition: !type:CEActionChargesCondition
+        action: CEActionChickenLayEgg
+  - type: CEAnimalProduction
+    outputAction: CEActionChickenLayEgg
+    firstMinimum: 60
+    firstMaximum: 90
+    repeatMinimum: 90
+    repeatMaximum: 120
+    conditions:
+    - !type:MobStateCondition
+      mobstate: Dead
+      inverted: true
+    - !type:SatiationCondition
+      satiationType: Hunger
+      minInclusive: true
+      min: 100
+    - !type:SatiationCondition
+      satiationType: Thirst
+      minInclusive: true
+      min: 300
+    hungerCost: 60
+    productPrototype: CEFoodEggChicken
+    fertilizedPrototype: CEFoodEggChickenFertilized
+    populationWhitelist:
+      tags:
+      - CEChickenPopulation
+    populationLimit: 100
+  - type: ToolRefinable
+    refineResult:
+    - id: FoodMeatChicken
+      amount: 1
+
+- type: entity
+  id: CEMobChickenHenWhite
+  parent: CEMobChickenHenBase
+  name: white hen
+  description: A domesticated white laying hen.
+  components:
+  - type: Sprite
+    sprite: _CE/Mobs/Animals/chicken_white.rsi
+
+- type: entity
+  id: CEMobChickenHenBrown
+  parent: CEMobChickenHenBase
+  name: brown hen
+  description: A domesticated brown laying hen.
+  components:
+  - type: Sprite
+    sprite: _CE/Mobs/Animals/chicken_brown.rsi
+
+- type: entity
+  id: CEMobChickenRooster
+  parent:
+  - CEMobChickenBase
+  - CEAnimalAdultGOAPBase
+  name: rooster
+  description: An adult rooster that mates with hens and defends the flock.
+  components:
+  - type: CEAnimalMate
+    mateWhitelist:
+      tags: [CEChickenHen]
+    cooldown: 720
+    fertilizedProducts: 2
+    effect: EffectHearts
+    mateConditions:
+    - !type:MobStateCondition
+      mobstate: Alive
+    - !type:SatiationCondition
+      satiationType: Hunger
+      min: 20
+      minInclusive: true
+    - !type:SatiationCondition
+      satiationType: Thirst
+      min: 100
+      minInclusive: true
+    conditions:
+    - !type:MobStateCondition
+      mobstate: Alive
+    - !type:SatiationCondition
+      satiationType: Hunger
+      min: 100
+      minInclusive: true
+    - !type:SatiationCondition
+      satiationType: Thirst
+      min: 300
+      minInclusive: true
+  - type: CEGOAPAllyThreatPerceptor
+    range: 6
+  - type: CEGOAP
+    goals:
+    - desiredState: { CEAnimalThreatened: false }
+      priority: 1000
+    - desiredState: { CEAnimalMated: true }
+      priority: 50
+    actions:
+    - !type:CEGOAPCircleMeleeAction
+      selector: !type:CEGOAPSelectorNearestEnemy
+      orbitRadius: 0.8
+      attackRange: 1
+      pursuitRange: 10
+      preconditions: { CEAnimalThreatened: true }
+      effects: { CEAnimalThreatened: false }
+    - !type:CEGOAPMateAction
+      preconditions: { CEAnimalThreatened: false }
+      effects: { CEAnimalMated: true }
+  - type: CombatMode
+  - type: CEGOAPDefensiveCombat
+  - type: CEWeapon
+    range: 0.5
+    effectSlots:
+      OnHit:
+      - !type:WeaponArcAttack
+        arcWidth: 40
+        effects:
+        - !type:Damage
+          damage:
+            types:
+              Piercing: 2
+    animations:
+      Primary:
+      - anim: CEChickenPeck
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - StunImmune
+    - CEChickenPopulation
+    - CEChickenRooster
+  - type: Sprite
+    sprite: _CE/Mobs/Animals/rooster.rsi
+  - type: Speech
+    speechVerb: SmallMob
+    speechSounds: CERoosterCall
+  - type: ToolRefinable
+    refineResult:
+    - id: FoodMeatChicken
+      amount: 2
+
+- type: entity
+  id: CEMobChickenChick
+  parent:
+  - CEMobChickenBase
+  - CEChickenChickGOAP
+  name: chick
+  description: A young chicken that matures after thirty-six minutes of healthy activity.
+  components:
+  - type: Sprite
+    drawdepth: SmallMobs
+    sprite: _CE/Mobs/Animals/chick.rsi
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape: !type:PhysShapeCircle
+          radius: 0.2
+        density: 5
+        mask: [SmallMobMask]
+        layer: [SmallMobLayer]
+  - type: Speech
+    speechVerb: SmallMob
+    speechSounds: CEChickenChirp
+  - type: CEAnimalGrowth
+    remaining: 2160
+    resultPrototype: CEMobChickenHenWhite
+    conditions:
+    - !type:MobStateCondition
+      mobstate: Alive
+    - !type:SatiationCondition
+      satiationType: Hunger
+      minInclusive: true
+      min: 100
+    - !type:SatiationCondition
+      satiationType: Thirst
+      minInclusive: true
+      min: 300
+  - type: ToolRefinable
+    refineResult:
+    - id: FoodMeatChicken
+      amount: 1
+
+- type: entity
+  id: CEMobChickenChickMale
+  parent: CEMobChickenChick
+  suffix: Male, CE
+  components:
+  - type: CEAnimalGrowth
+    resultPrototype: CEMobChickenRooster
+
+- type: entity
+  id: CEFoodEggChicken
+  parent:
+  - FoodEgg
+  - CEAnimalIncubationProductBase
+  name: chicken egg
+  description: An ordinary chicken egg.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Tag
+    tags: [Egg, Meat, CEEgg]
+  - type: CEFoodTag
+    tags: [CEEgg]
+  - type: CEMagicEssenceStructure
+    essences:
+      Life: { min: 1, max: 2 }
+      Beast: { min: 0, max: 1 }
+
+- type: entity
+  id: CEFoodEggChickenFertilized
+  parent: CEFoodEggChicken
+  name: fertilized chicken egg
+  description: A fertilized egg that incubates while it remains in a nesting perch.
+  suffix: Fertilized, CE
+  components:
+  - type: CEAnimalIncubation
+    fertilized: true
+  - type: Tag
+    tags:
+    - Egg
+    - Meat
+    - CEEgg
+    - CEChickenPopulation
+  - type: TimerTrigger
+    delay: 360
+    keyOut: ce-incubation-complete
+    examinable: false
+    popup: null
+  - type: SpawnEntityTableOnTrigger
+    keysIn:
+    - ce-incubation-complete
+    useMapCoords: true
+    table: !type:GroupSelector
+      children:
+      - id: CEMobChickenChick
+        weight: 4
+      - id: CEMobChickenChickMale
+        weight: 1
+  - type: DeleteOnTrigger
+    keysIn:
+    - ce-incubation-complete
+
+# Keep the chicken thresholds and decay rates from before the Satiation migration.
+- type: satiation
+  id: CEChickenHunger
+  parent: NormalSatiationHunger
+  baseChangeRate: -0.00925925925926
+
+- type: satiation
+  id: CEChickenThirst
+  parent: NormalSatiationThirst
+  baseChangeRate: -0.04
+
+- type: entityEffectAnimation
+  id: CEChickenPeck
+  movementSpeed: 1
+  duration: 0.8
+  events:
+    0.1:
+    - !type:WeaponEffectSlot
+      slot: OnHit
+    - !type:PlaySound
+      sound:
+        collection: CEChickenClucks

@@ -24,6 +24,8 @@
       reagents:
       - ReagentId: Flour
         Quantity: 5
+      - ReagentId: CENutriment
+        Quantity: 3
   - type: ToolRefinable
     refineTime: 1.5
     refineResult:
