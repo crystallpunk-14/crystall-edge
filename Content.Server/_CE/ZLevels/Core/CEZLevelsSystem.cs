@@ -1,4 +1,4 @@
-﻿/*
+/*
  * This file is sublicensed under MIT License
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
@@ -10,6 +10,7 @@ using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
+using Robust.Shared.Analyzers;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Map.Components;
 
@@ -30,11 +31,9 @@ public sealed partial class CEZLevelsSystem : CESharedZLevelsSystem
         base.Initialize();
 
         InitView();
-
-        SubscribeLocalEvent<CEStationZLevelsComponent, StationPostInitEvent>(OnStationPostInit);
-        SubscribeLocalEvent<CEZMapComponent, EntityTerminatingEvent>(OnZMapTerminating);
     }
 
+    [SubscribeLocalEvent]
     private void OnZMapTerminating(Entity<CEZMapComponent> ent, ref EntityTerminatingEvent args)
     {
         var networkUid = ent.Comp.NetworkUid;
@@ -47,6 +46,7 @@ public sealed partial class CEZLevelsSystem : CESharedZLevelsSystem
         TryRemoveMapsFromNetwork((networkUid, network), new[] { ent.Owner });
     }
 
+    [SubscribeLocalEvent]
     private void OnStationPostInit(Entity<CEStationZLevelsComponent> ent, ref StationPostInitEvent args)
     {
         if (ent.Comp.MapsAbove.Count == 0 && ent.Comp.MapsBelow.Count == 0)

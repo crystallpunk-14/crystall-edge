@@ -8,6 +8,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
+using Content.Shared._CE.Achievements.Prototypes;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Database;
@@ -1566,6 +1567,88 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
             return true;
         }
 
+        #endregion
+
+        #region CrystlallEdge Achievements
+        //CrystallEdge achievements
+
+        public async Task AddPlayerAchievement(Guid player, ProtoId<CEAchievementPrototype> achievement)
+        {
+            await using var db = await GetDb();
+
+            var exists = await db.DbContext.PlayerAchievement
+                .Where(w => w.PlayerUserId == player)
+                .Where(w => w.ProtoId == achievement.Id)
+                .AnyAsync();
+
+            if (exists)
+                return;
+
+            db.DbContext.PlayerAchievement.Add(new PlayerAchievement
+            {
+                PlayerUserId = player,
+                ProtoId = achievement.Id,
+            });
+
+            await db.DbContext.SaveChangesAsync();
+        }
+
+        public async Task<bool> HasPlayerAchievement(Guid player, ProtoId<CEAchievementPrototype> achievement)
+        {
+            await using var db = await GetDb();
+
+            return await db.DbContext.PlayerAchievement
+                .Where(w => w.PlayerUserId == player)
+                .Where(w => w.ProtoId == achievement.Id)
+                .AnyAsync();
+        }
+
+        public async Task<bool> RemovePlayerAchievement(Guid player, ProtoId<CEAchievementPrototype> achievement)
+        {
+            await using var db = await GetDb();
+
+            var ent = await db.DbContext.PlayerAchievement
+                .Where(w => w.PlayerUserId == player)
+                .Where(w => w.ProtoId == achievement.Id)
+                .SingleOrDefaultAsync();
+
+            if (ent == null)
+                return false;
+
+            db.DbContext.PlayerAchievement.Remove(ent);
+            await db.DbContext.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<List<string>> GetPlayerAchievements(Guid player)
+        {
+            await using var db = await GetDb();
+
+            return await db.DbContext.PlayerAchievement
+                .Where(w => w.PlayerUserId == player)
+                .Select(w => w.ProtoId)
+                .ToListAsync();
+        }
+
+        public async Task<Dictionary<string, float>> GetAchievementPercentages()
+        {
+            await using var db = await GetDb();
+
+            var totalPlayers = await db.DbContext.Player.CountAsync();
+            if (totalPlayers == 0)
+                return new Dictionary<string, float>();
+
+            var counts = await db.DbContext.PlayerAchievement
+                .GroupBy(a => a.ProtoId)
+                .Select(g => new { g.Key, Count = g.Count() })
+                .ToListAsync();
+
+            return counts.ToDictionary(
+                x => x.Key,
+                x => (float) x.Count / totalPlayers * 100f);
+        }
+
+        //CrystallEdge achievements end
         #endregion
 
         # region IPIntel

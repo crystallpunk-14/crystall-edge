@@ -6,7 +6,6 @@ using Content.Shared._CE.GOAP;
 using Content.Shared._CE.GOAP.Components;
 using Content.Shared.EntityConditions;
 using Content.Shared.Interaction;
-using Content.Shared.Light.Components;
 using Content.Shared.Whitelist;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 using Robust.Shared.Timing;
@@ -21,8 +20,7 @@ public sealed partial class CEAnimalMateComponent : Component
     [DataField] public EntityCondition[] Conditions = [];
     [DataField] public EntityCondition[] MateConditions = [];
     [DataField] public float SearchRange = 12;
-    [DataField] public float DayFraction = 0.5f;
-    [DataField] public TimeSpan FallbackDayDuration = TimeSpan.FromMinutes(24);
+    [DataField] public TimeSpan Cooldown = TimeSpan.FromSeconds(720);
     [DataField] public int FertilizedProducts = 2;
     [DataField] public TimeSpan InteractionDuration = TimeSpan.FromSeconds(1);
     [DataField] public EntProtoId? Effect;
@@ -30,7 +28,7 @@ public sealed partial class CEAnimalMateComponent : Component
     public TimeSpan NextMating;
     [DataField] public EntityUid? Target;
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
-    public TimeSpan InteractionEnd;
+    public TimeSpan? InteractionEnd;
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
     public TimeSpan AttemptEnd;
 }
@@ -89,7 +87,7 @@ public sealed partial class CEAnimalMatingSystem : CEGOAPActionSystem<CEGOAPMate
         if (!TryComp<CEAnimalMateComponent>(ent, out var mate))
             return;
         mate.Target = FindMate(ent, mate);
-        mate.InteractionEnd = TimeSpan.Zero;
+        mate.InteractionEnd = null;
         mate.AttemptEnd = _timing.CurTime + TimeSpan.FromSeconds(20);
     }
 
@@ -114,7 +112,7 @@ public sealed partial class CEAnimalMatingSystem : CEGOAPActionSystem<CEGOAPMate
         // Close coordinates alone do not permit contact across a wall or a closed container.
         if (distance > 0.7f || !_interaction.InRangeAndAccessible(ent.Owner, target))
         {
-            mate.InteractionEnd = TimeSpan.Zero;
+            mate.InteractionEnd = null;
             if (!TryComp<NPCSteeringComponent>(ent, out var steering) ||
                 !steering.Coordinates.TryDistance(EntityManager, coordinates, out var delta) || delta > 0.3f)
             {
@@ -125,8 +123,7 @@ public sealed partial class CEAnimalMatingSystem : CEGOAPActionSystem<CEGOAPMate
         }
 
         _steering.Unregister(ent);
-        if (mate.InteractionEnd == TimeSpan.Zero)
-            mate.InteractionEnd = _timing.CurTime + mate.InteractionDuration;
+        mate.InteractionEnd ??= _timing.CurTime + mate.InteractionDuration;
         if (_timing.CurTime < mate.InteractionEnd)
             return;
 
@@ -135,9 +132,7 @@ public sealed partial class CEAnimalMatingSystem : CEGOAPActionSystem<CEGOAPMate
         fertility.ProductsRemaining = mate.FertilizedProducts;
         if (mate.Effect is { } effect)
             Spawn(effect, coordinates);
-        var day = Transform(ent).MapUid is { } map && TryComp<LightCycleComponent>(map, out var cycle)
-            ? cycle.Duration : mate.FallbackDayDuration;
-        mate.NextMating = _timing.CurTime + day * mate.DayFraction;
+        mate.NextMating = _timing.CurTime + mate.Cooldown;
         args.Status = CEGOAPActionStatus.Finished;
     }
 
@@ -147,7 +142,7 @@ public sealed partial class CEAnimalMatingSystem : CEGOAPActionSystem<CEGOAPMate
         if (TryComp<CEAnimalMateComponent>(ent, out var mate))
         {
             mate.Target = null;
-            mate.InteractionEnd = TimeSpan.Zero;
+            mate.InteractionEnd = null;
         }
     }
 }

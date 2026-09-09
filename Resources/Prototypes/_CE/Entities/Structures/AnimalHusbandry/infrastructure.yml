@@ -16,26 +16,85 @@
     key: ceAnimalFeedTrough
     base: state_
     index: 0
-  - type: CEFixedEntitySlots
+  - type: ItemSlots
     slots:
-    - offset: "-0.28125,0.09375"
-      rotation: 350
-    - offset: "-0.09375,0.09375"
-      rotation: 5
-    - offset: "0.09375,0.09375"
-      rotation: 355
-    - offset: "0.28125,0.09375"
-      rotation: 10
-    - offset: "-0.28125,-0.09375"
-      rotation: 8
-    - offset: "-0.09375,-0.09375"
-      rotation: 352
-    - offset: "0.09375,-0.09375"
-      rotation: 6
-    - offset: "0.28125,-0.09375"
-      rotation: 354
-  - type: CEFixedEntitySlotAccess
-  - type: CEConnectedEntitySlots
+      feed_0:
+        whitelist: { components: [Edible] }
+        swap: false
+        priority: 0
+        insertSound: null
+        ejectSound: null
+        ejectOnBreak: true
+        ejectOnRemove: true
+      feed_1:
+        whitelist: { components: [Edible] }
+        swap: false
+        priority: 1
+        insertSound: null
+        ejectSound: null
+        ejectOnBreak: true
+        ejectOnRemove: true
+      feed_2:
+        whitelist: { components: [Edible] }
+        swap: false
+        priority: 2
+        insertSound: null
+        ejectSound: null
+        ejectOnBreak: true
+        ejectOnRemove: true
+      feed_3:
+        whitelist: { components: [Edible] }
+        swap: false
+        priority: 3
+        insertSound: null
+        ejectSound: null
+        ejectOnBreak: true
+        ejectOnRemove: true
+      feed_4:
+        whitelist: { components: [Edible] }
+        swap: false
+        priority: 4
+        insertSound: null
+        ejectSound: null
+        ejectOnBreak: true
+        ejectOnRemove: true
+      feed_5:
+        whitelist: { components: [Edible] }
+        swap: false
+        priority: 5
+        insertSound: null
+        ejectSound: null
+        ejectOnBreak: true
+        ejectOnRemove: true
+      feed_6:
+        whitelist: { components: [Edible] }
+        swap: false
+        priority: 6
+        insertSound: null
+        ejectSound: null
+        ejectOnBreak: true
+        ejectOnRemove: true
+      feed_7:
+        whitelist: { components: [Edible] }
+        swap: false
+        priority: 7
+        insertSound: null
+        ejectSound: null
+        ejectOnBreak: true
+        ejectOnRemove: true
+  - type: CEOpenContainer
+    containers: [feed_0, feed_1, feed_2, feed_3, feed_4, feed_5, feed_6, feed_7]
+  - type: CEContainerSlotVisuals
+    slots:
+      feed_0: { offset: "-0.28125,0.09375", rotation: 350 }
+      feed_1: { offset: "-0.09375,0.09375", rotation: 5 }
+      feed_2: { offset: "0.09375,0.09375", rotation: 355 }
+      feed_3: { offset: "0.28125,0.09375", rotation: 10 }
+      feed_4: { offset: "-0.28125,-0.09375", rotation: 8 }
+      feed_5: { offset: "-0.09375,-0.09375", rotation: 352 }
+      feed_6: { offset: "0.09375,-0.09375", rotation: 6 }
+      feed_7: { offset: "0.28125,-0.09375", rotation: 354 }
+  - type: CEConnectedItemSlots
     group: ceAnimalFeedTrough
     node: storage
   - type: NodeContainer
@@ -43,9 +102,6 @@
       storage:
         !type:AdjacentNode
         nodeGroupID: Default
-  - type: CEFeedTrough
-    examineMessage: ce-animal-husbandry-examine-feed
-    nutritionPrecision: 1
   - type: Construction
     graph: CEAnimalFeedTrough
     node: complete
@@ -112,37 +168,123 @@
     state: nesting_perch
   - type: Physics
     canCollide: false
-  - type: CEFixedEntitySlots
+  - type: ItemSlots
     slots:
-    - offset: "0.125,0.125"
-      rotation: 135
-    - offset: "-0.125,-0.125"
-      rotation: 315
-    - offset: "-0.125,0.125"
-      rotation: 225
-    - offset: "0.125,-0.125"
-      rotation: 45
-    - offset: "0.34375,0"
-      rotation: 90
-    - offset: "-0.34375,0"
-      rotation: 270
-    - offset: "0,0.34375"
-      rotation: 180
-    - offset: "0,-0.34375"
-      rotation: 0
-    - offset: "0.25,0.25"
-      rotation: 135
-    - offset: "-0.25,-0.25"
-      rotation: 315
-    - offset: "-0.25,0.25"
-      rotation: 225
-    - offset: "0.25,-0.25"
-      rotation: 45
-  - type: CEFixedEntitySlotAccess
-  - type: CEAnimalIncubationHost
+      egg_0:
+        whitelist: { tags: [CEEgg] }
+        swap: false
+        priority: 0
+        insertSound: null
+        ejectSound: null
+        ejectOnBreak: true
+        ejectOnRemove: true
+      egg_1:
+        whitelist: { tags: [CEEgg] }
+        swap: false
+        priority: 1
+        insertSound: null
+        ejectSound: null
+        ejectOnBreak: true
+        ejectOnRemove: true
+      egg_2:
+        whitelist: { tags: [CEEgg] }
+        swap: false
+        priority: 2
+        insertSound: null
+        ejectSound: null
+        ejectOnBreak: true
+        ejectOnRemove: true
+      egg_3:
+        whitelist: { tags: [CEEgg] }
+        swap: false
+        priority: 3
+        insertSound: null
+        ejectSound: null
+        ejectOnBreak: true
+        ejectOnRemove: true
+      egg_4:
+        whitelist: { tags: [CEEgg] }
+        swap: false
+        priority: 4
+        insertSound: null
+        ejectSound: null
+        ejectOnBreak: true
+        ejectOnRemove: true
+      egg_5:
+        whitelist: { tags: [CEEgg] }
+        swap: false
+        priority: 5
+        insertSound: null
+        ejectSound: null
+        ejectOnBreak: true
+        ejectOnRemove: true
+      egg_6:
+        whitelist: { tags: [CEEgg] }
+        swap: false
+        priority: 6
+        insertSound: null
+        ejectSound: null
+        ejectOnBreak: true
+        ejectOnRemove: true
+      egg_7:
+        whitelist: { tags: [CEEgg] }
+        swap: false
+        priority: 7
+        insertSound: null
+        ejectSound: null
+        ejectOnBreak: true
+        ejectOnRemove: true
+      egg_8:
+        whitelist: { tags: [CEEgg] }
+        swap: false
+        priority: 8
+        insertSound: null
+        ejectSound: null
+        ejectOnBreak: true
+        ejectOnRemove: true
+      egg_9:
+        whitelist: { tags: [CEEgg] }
+        swap: false
+        priority: 9
+        insertSound: null
+        ejectSound: null
+        ejectOnBreak: true
+        ejectOnRemove: true
+      egg_10:
+        whitelist: { tags: [CEEgg] }
+        swap: false
+        priority: 10
+        insertSound: null
+        ejectSound: null
+        ejectOnBreak: true
+        ejectOnRemove: true
+      egg_11:
+        whitelist: { tags: [CEEgg] }
+        swap: false
+        priority: 11
+        insertSound: null
+        ejectSound: null
+        ejectOnBreak: true
+        ejectOnRemove: true
+  - type: CEOpenContainer
+    containers: [egg_0, egg_1, egg_2, egg_3, egg_4, egg_5, egg_6, egg_7, egg_8, egg_9, egg_10, egg_11]
+  - type: CEContainerSlotVisuals
+    slots:
+      egg_0: { offset: "0.125,0.125", rotation: 135 }
+      egg_1: { offset: "-0.125,-0.125", rotation: 315 }
+      egg_2: { offset: "-0.125,0.125", rotation: 225 }
+      egg_3: { offset: "0.125,-0.125", rotation: 45 }
+      egg_4: { offset: "0.34375,0", rotation: 90 }
+      egg_5: { offset: "-0.34375,0", rotation: 270 }
+      egg_6: { offset: "0,0.34375", rotation: 180 }
+      egg_7: { offset: "0,-0.34375", rotation: 0 }
+      egg_8: { offset: "0.25,0.25", rotation: 135 }
+      egg_9: { offset: "-0.25,-0.25", rotation: 315 }
+      egg_10: { offset: "-0.25,0.25", rotation: 225 }
+      egg_11: { offset: "0.25,-0.25", rotation: 45 }
+  - type: CEAnimalNest
     examineMessage: ce-animal-husbandry-examine-nest
-  - type: CEProductionRestHost
-    capacity: 2
+    residentCapacity: 2
   - type: Construction
     graph: CEChickenNestingPerch
     node: complete

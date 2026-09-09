@@ -6,6 +6,7 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Examine;
 using Content.Shared.Power.Components;
 using Content.Shared.SSDIndicator;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Map;
 
 namespace Content.Shared._CE.Actions;
@@ -14,21 +15,10 @@ public abstract partial class CESharedActionSystem
 {
     [Dependency] private ExamineSystemShared _examine = default!;
 
-    private void InitializeAttempts()
-    {
-
-        SubscribeLocalEvent<CEActionManaCostComponent, ActionAttemptEvent>(OnManacostActionAttempt);
-        SubscribeLocalEvent<CEActionStaminaCostComponent, ActionAttemptEvent>(OnStaminaCostActionAttempt);
-        SubscribeLocalEvent<CEActionEssenceCostComponent, ActionAttemptEvent>(OnEssenceCostActionAttempt);
-        SubscribeLocalEvent<CEActionWeaponRequiredComponent, ActionAttemptEvent>(OnWeaponRequiredActionAttempt);
-
-        SubscribeLocalEvent<CEActionSSDBlockComponent, ActionValidateEvent>(OnActionSSDAttempt);
-        SubscribeLocalEvent<CEActionRequireLineOfSightComponent, ActionValidateEvent>(OnLineOfSightValidate);
-    }
-
     /// <summary>
     /// Before using a spell, a mana check is made for the amount of mana to show warnings.
     /// </summary>
+    [SubscribeLocalEvent]
     private void OnManacostActionAttempt(Entity<CEActionManaCostComponent> ent, ref ActionAttemptEvent args)
     {
         if (args.Cancelled)
@@ -67,6 +57,7 @@ public abstract partial class CESharedActionSystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnEssenceCostActionAttempt(Entity<CEActionEssenceCostComponent> ent, ref ActionAttemptEvent args)
     {
         if (args.Cancelled)
@@ -79,6 +70,7 @@ public abstract partial class CESharedActionSystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnWeaponRequiredActionAttempt(Entity<CEActionWeaponRequiredComponent> ent, ref ActionAttemptEvent args)
     {
         if (args.Cancelled)
@@ -92,31 +84,61 @@ public abstract partial class CESharedActionSystem
         args.Cancelled = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnActionSSDAttempt(Entity<CEActionSSDBlockComponent> ent, ref ActionValidateEvent args)
     {
-        if (args.Invalid)
+        if (args.Invalid || args.TargetInvalid || args.Input.EntityTarget is not { } netTarget)
             return;
 
-        if (!TryComp<SSDIndicatorComponent>(GetEntity(args.Input.EntityTarget), out var ssdIndication))
+        if (!TryGetEntity(netTarget, out var resolvedTarget) ||
+            resolvedTarget is not { } target || TerminatingOrDeleted(target))
+        {
+            args.TargetInvalid = true;
+            return;
+        }
+
+        if (!TryComp<SSDIndicatorComponent>(target, out var ssdIndication))
             return;
 
         if (ssdIndication.IsSSD)
         {
             Popup.PopupClient(Loc.GetString("ce-magic-spell-ssd"), args.User, args.User);
-            args.Invalid = true;
+            args.TargetInvalid = true;
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnLineOfSightValidate(Entity<CEActionRequireLineOfSightComponent> ent, ref ActionValidateEvent args)
     {
-        if (args.Invalid)
+        if (args.Invalid || args.TargetInvalid)
             return;
 
         EntityCoordinates? target = null;
         if (args.Input.EntityCoordinatesTarget is { } netCoords)
-            target = GetCoordinates(netCoords);
-        else if (GetEntity(args.Input.EntityTarget) is { Valid: true } targetEntity)
-            target = Transform(targetEntity).Coordinates;
+        {
+            if (!float.IsFinite(netCoords.X) || !float.IsFinite(netCoords.Y) ||
+                !TryGetEntity(netCoords.NetEntity, out var resolvedParent) ||
+                resolvedParent is not { } parent || TerminatingOrDeleted(parent) ||
+                !HasComp<TransformComponent>(parent))
+            {
+                args.TargetInvalid = true;
+                return;
+            }
+
+            target = new EntityCoordinates(parent, netCoords.Position);
+        }
+        else if (args.Input.EntityTarget is { } netEntity)
+        {
+            if (!TryGetEntity(netEntity, out var resolvedTarget) ||
+                resolvedTarget is not { } entity || TerminatingOrDeleted(entity) ||
+                !TryComp(entity, out TransformComponent? transform))
+            {
+                args.TargetInvalid = true;
+                return;
+            }
+
+            target = transform.Coordinates;
+        }
 
         if (target is not { } coords)
             return;
@@ -129,9 +151,10 @@ public abstract partial class CESharedActionSystem
             return;
 
         Popup.PopupClient(Loc.GetString("dash-ability-cant-see"), args.User, args.User);
-        args.Invalid = true;
+        args.TargetInvalid = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnStaminaCostActionAttempt(Entity<CEActionStaminaCostComponent> ent, ref ActionAttemptEvent args)
     {
         if (args.Cancelled)

@@ -1,4 +1,5 @@
 using System.Text;
+using Robust.Shared.Analyzers;
 using Content.Shared._CE.InfusionAltar.Prototypes;
 using Content.Shared._CE.Skill;
 using Robust.Shared.Prototypes;
@@ -13,13 +14,7 @@ public sealed partial class CEInfusionAltarSkillEffectSystem : EntitySystem
 {
     [Dependency] private IPrototypeManager _proto = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEGetSkillEffectEvent>(OnGetSkillEffect);
-    }
-
+    [SubscribeLocalEvent]
     private void OnGetSkillEffect(ref CEGetSkillEffectEvent args)
     {
         var items = new List<string>();

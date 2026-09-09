@@ -1,4 +1,4 @@
-﻿/*
+/*
  * This file is sublicensed under MIT License
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
@@ -9,6 +9,7 @@ using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Stunnable;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using Robust.Shared.Physics.Components;
@@ -39,14 +40,13 @@ public sealed partial class CEZLevelDamageSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<PhysicsComponent, CEZLevelHitEvent>(OnFallDamage);
-
         _config.OnValueChanged(CCVars.CEBaseFallingDamage, i => BaseFallingDamage = i, true);
         _config.OnValueChanged(CCVars.CEBaseFallingOtherDamage, i => BaseFallingOtherDamage = i, true);
         _config.OnValueChanged(CCVars.CEBaseFallingStunTime, i => BaseFallingStunTime = i, true);
         _config.OnValueChanged(CCVars.CEBaseFallingOtherStunTime, i => BaseFallingOtherStunTime = i, true);
     }
 
+    [SubscribeLocalEvent]
     private void OnFallDamage(Entity<PhysicsComponent> ent, ref CEZLevelHitEvent args)
     {
         if (!_proto.Resolve(PhysicalDamageType, out var damageType))

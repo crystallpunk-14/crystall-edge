@@ -15,19 +15,13 @@ public sealed partial class CESolutionIconSmoothVisualsSystem : EntitySystem
     [Dependency] private AppearanceSystem _appearance = default!;
     [Dependency] private IconSmoothSystem _iconSmooth = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CESolutionIconSmoothVisualsComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<CESolutionIconSmoothVisualsComponent, AppearanceChangeEvent>(OnAppearanceChange);
-    }
-
+    [SubscribeLocalEvent]
     private void OnMapInit(Entity<CESolutionIconSmoothVisualsComponent> ent, ref MapInitEvent args)
     {
         UpdateStateBase(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnAppearanceChange(
         Entity<CESolutionIconSmoothVisualsComponent> ent,
         ref AppearanceChangeEvent args)

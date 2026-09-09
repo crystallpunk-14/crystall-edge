@@ -1,128 +1,106 @@
-using Content.Server._CE.EntitySlots;
-using Content.Shared._CE.EntitySlots;
+using Content.Shared._CE.AnimalHusbandry.Reproduction;
 using Content.Shared._CE.Examine;
-using Content.Shared.Interaction;
-using Content.Shared.Mobs.Components;
-using Content.Shared.Mobs.Systems;
-using Content.Shared.Whitelist;
+using Content.Shared.Containers.ItemSlots;
+using Content.Shared.Trigger;
+using Content.Shared.Trigger.Components;
+using Content.Shared.Trigger.Systems;
+using Robust.Shared.Containers;
 
 namespace Content.Server._CE.AnimalHusbandry.Reproduction;
 
-/// <summary>
-/// Owns fertility accounting, product selection and the incubation-host
-/// interaction. Standard fixed slots and trigger effects own placement, time,
-/// offspring spawning and product deletion.
-/// </summary>
+/// <summary>Runs the standard incubation timer only inside a live nest's native ItemSlot.</summary>
 public sealed partial class CEAnimalIncubationSystem : EntitySystem
 {
-    [Dependency] private CEFixedEntitySlotSystem _fixedSlots = default!;
-    [Dependency] private EntityWhitelistSystem _whitelist = default!;
-    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private SharedContainerSystem _containers = default!;
+    [Dependency] private ItemSlotsSystem _slots = default!;
+    [Dependency] private TriggerSystem _trigger = default!;
+    [Dependency] private MetaDataSystem _metadata = default!;
 
-    public override void Initialize()
+    [SubscribeLocalEvent]
+    private void OnStartup(Entity<CEAnimalIncubationComponent> ent, ref ComponentStartup args) => Synchronize(ent);
+
+    [SubscribeLocalEvent]
+    private void OnInserted(Entity<CEAnimalIncubationComponent> ent, ref EntGotInsertedIntoContainerMessage args) => Synchronize(ent);
+
+    [SubscribeLocalEvent]
+    private void OnRemoved(Entity<CEAnimalIncubationComponent> ent, ref EntGotRemovedFromContainerMessage args) => Pause(ent);
+
+    [SubscribeLocalEvent]
+    private void OnShutdown(Entity<CEAnimalIncubationComponent> ent, ref ComponentShutdown args)
     {
-        base.Initialize();
-        SubscribeLocalEvent<CEAnimalFertilizableProductComponent, CEFixedSlotEntityCreatingEvent>(OnProductCreating);
-        SubscribeLocalEvent<CEAnimalFertilityComponent, CEFixedSlotEntityProducedEvent>(OnProduced);
-        SubscribeLocalEvent<CEAnimalIncubationHostComponent, AfterInteractUsingEvent>(OnHostInteractUsing);
-        SubscribeLocalEvent<CEExamineAugmentEvent>(OnExamine);
+        if (!TerminatingOrDeleted(ent))
+            Pause(ent);
     }
 
-    private void OnProductCreating(
-        Entity<CEAnimalFertilizableProductComponent> producer,
-        ref CEFixedSlotEntityCreatingEvent args)
+    [SubscribeLocalEvent]
+    private void OnAttemptTrigger(Entity<CEAnimalIncubationComponent> ent, ref AttemptTriggerEvent args)
     {
-        if (args.Cancelled || args.Prototype != producer.Comp.UnfertilizedPrototype)
+        if (!TryComp<TimerTriggerComponent>(ent, out var timer) || HasNest(ent))
             return;
+        if (args.Key != null && args.Key != timer.KeyOut && !timer.KeysIn.Contains(args.Key))
+            return;
+        Pause(ent);
+        args.Cancelled = true;
+    }
 
-        if (producer.Comp.PopulationWhitelist == null || producer.Comp.PopulationLimit <= 0 ||
-            producer.Comp.UnfertilizedPrototype == producer.Comp.FertilizedPrototype ||
-            !HasComp<CEAnimalIncubationHostComponent>(args.Target))
+    public void Synchronize(EntityUid egg)
+    {
+        if (!TryComp<CEAnimalIncubationComponent>(egg, out var incubation) || !incubation.Fertilized ||
+            !TryComp<TimerTriggerComponent>(egg, out var timer))
+            return;
+        if (!HasNest(egg))
         {
-            args.Cancelled = true;
+            Pause(egg);
             return;
         }
-
-        if (CanFertilize(args.Target, producer.Owner, producer.Comp))
-            args.Prototype = producer.Comp.FertilizedPrototype;
-    }
-
-    private bool CanFertilize(
-        EntityUid host,
-        EntityUid producer,
-        CEAnimalFertilizableProductComponent policy)
-    {
-        if (!TryComp<CEAnimalFertilityComponent>(producer, out var fertility) || fertility.ProductsRemaining <= 0)
-            return false;
-
-        var map = Transform(host).MapUid;
-        return map != null && !IsPopulationAtLimit(map.Value, policy);
-    }
-
-    private void OnProduced(Entity<CEAnimalFertilityComponent> ent, ref CEFixedSlotEntityProducedEvent args)
-    {
-        // Creating only chooses the prototype; spend fertility after the slot transaction has committed.
-        if (TryComp<CEAnimalIncubationComponent>(args.Product, out var incubation) && incubation.Fertilized)
-            ent.Comp.ProductsRemaining = Math.Max(0, ent.Comp.ProductsRemaining - 1);
-    }
-
-    private bool IsPopulationAtLimit(EntityUid map, CEAnimalFertilizableProductComponent policy)
-    {
-        var count = 0;
-        var query = EntityQueryEnumerator<TransformComponent>();
-        while (query.MoveNext(out var uid, out var transform))
+        if (_trigger.ActivateTimerTrigger((egg, timer)))
         {
-            if (transform.MapUid != map || !_whitelist.IsValid(policy.PopulationWhitelist, uid))
-                continue;
-
-            if (TryComp<MobStateComponent>(uid, out var mobState) && _mobState.IsDead(uid, mobState))
-                continue;
-
-            if (++count >= policy.PopulationLimit)
-                return true;
+            // Native unpausing shifts the deadline by the whole pause. A timer started during
+            // that pause must exclude the portion which elapsed before insertion.
+            _trigger.TryDelay((egg, timer), -_metadata.GetPauseTime(egg));
         }
-
-        return false;
     }
 
-    private void OnHostInteractUsing(
-        Entity<CEAnimalIncubationHostComponent> ent,
-        ref AfterInteractUsingEvent args)
+    public void Pause(EntityUid egg)
     {
-        if (args.Handled || !args.CanReach ||
-            !HasComp<CEAnimalIncubationComponent>(args.Used) ||
-            !TryComp<CEFixedEntitySlotsComponent>(ent.Owner, out var slots) ||
-            !_fixedSlots.TryInsertFromHand(args.User, args.Used, (ent.Owner, slots), out _))
+        if (!TryComp<TimerTriggerComponent>(egg, out var timer) || !HasComp<ActiveTimerTriggerComponent>(egg))
             return;
-
-        args.Handled = true;
+        if (_trigger.GetRemainingTime((egg, timer)) is { } remaining)
+        {
+            remaining += _metadata.GetPauseTime(egg);
+            _trigger.SetDelay((egg, timer), remaining > TimeSpan.Zero ? remaining : TimeSpan.Zero);
+        }
+        _trigger.StopTimerTrigger((egg, timer));
     }
 
-    private void OnExamine(CEExamineAugmentEvent args)
+    private bool HasNest(EntityUid egg)
     {
-        if (!TryComp<CEAnimalIncubationHostComponent>(args.Examined, out var host) ||
-            !TryComp<CEFixedEntitySlotsComponent>(args.Examined, out var slots))
-            return;
+        return _containers.TryGetContainingContainer(egg, out var container) &&
+               !TerminatingOrDeleted(container.Owner) && TryComp<CEAnimalNestComponent>(container.Owner, out var nest) &&
+               nest.LifeStage < ComponentLifeStage.Stopping &&
+               TryComp<ItemSlotsComponent>(container.Owner, out var slots) && slots.LifeStage < ComponentLifeStage.Stopping &&
+               _slots.TryGetSlot((container.Owner, slots), container.ID, out var slot) &&
+               slot.ContainerSlot == container && slot.Item == egg &&
+               _containers.TryGetContainer(container.Owner, container.ID, out var live) && live == container;
+    }
 
+    [SubscribeLocalEvent]
+    private void OnExamine(Entity<CEAnimalNestComponent> ent, ref CEExamineAugmentEvent args)
+    {
+        if (!TryComp<ItemSlotsComponent>(ent, out var slots))
+            return;
         var ordinary = 0;
         var fertilized = 0;
-        for (var slot = 0; slot < slots.Slots.Count; slot++)
+        foreach (var slot in slots.Slots.Values)
         {
-            if (!_fixedSlots.TryGetOccupant((args.Examined, slots), slot, out var product) ||
-                !TryComp<CEAnimalIncubationComponent>(product, out var incubation))
+            if (slot.Item is not { } egg || !TryComp<CEAnimalIncubationComponent>(egg, out var incubation))
                 continue;
-
             if (incubation.Fertilized)
                 fertilized++;
             else
                 ordinary++;
         }
-
-        args.AddMarkup(Loc.GetString(
-            host.ExamineMessage,
-            ("ordinary", ordinary),
-            ("fertilized", fertilized),
-            ("capacity", slots.Slots.Count)));
+        args.AddMarkup(Loc.GetString(ent.Comp.ExamineMessage,
+            ("ordinary", ordinary), ("fertilized", fertilized), ("capacity", slots.Slots.Count)));
     }
-
 }

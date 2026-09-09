@@ -35,12 +35,6 @@ public sealed partial class CEGOAPEntityConditionSensorSystem : EntitySystem
     [Dependency] private SharedEntityConditionsSystem _conditions = default!;
     [Dependency] private IGameTiming _timing = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-        SubscribeLocalEvent<CEGOAPEntityConditionSensorComponent, CEGOAPSensorRefreshEvent>(OnRefresh);
-    }
-
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
@@ -63,6 +57,7 @@ public sealed partial class CEGOAPEntityConditionSensorSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnRefresh(
         Entity<CEGOAPEntityConditionSensorComponent> ent,
         ref CEGOAPSensorRefreshEvent args)

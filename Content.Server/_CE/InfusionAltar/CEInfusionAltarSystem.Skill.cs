@@ -1,5 +1,6 @@
 using Content.Shared._CE.InfusionAltar;
 using Content.Shared._CE.InfusionAltar.Prototypes;
+using Robust.Shared.Analyzers;
 
 namespace Content.Server._CE.InfusionAltar;
 
@@ -7,9 +8,9 @@ public sealed partial class CEInfusionAltarSystem
 {
     private void InitSkills()
     {
-        SubscribeNetworkEvent<CERequestInfusionAltarKnownRecipesEvent>(OnRequestKnownRecipes);
     }
 
+    [SubscribeNetworkEvent]
     private void OnRequestKnownRecipes(CERequestInfusionAltarKnownRecipesEvent ev, EntitySessionEventArgs args)
     {
         var recipes = new List<CEInfusionAltarKnownRecipeInfo>();

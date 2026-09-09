@@ -1,0 +1,4 @@
+- type: achievement
+  id: BetaTester
+  name: ce-achievement-betatester-name
+  desc: ce-achievement-betatester-desc

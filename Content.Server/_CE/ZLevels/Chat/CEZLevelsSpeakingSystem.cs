@@ -1,9 +1,10 @@
-﻿/*
+/*
  * This file is sublicensed under MIT License
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
 
 using System.Numerics;
+using Robust.Shared.Analyzers;
 using Content.Server.Chat.Systems;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
@@ -32,10 +33,9 @@ public sealed partial class CEZLevelsSpeakingSystem : EntitySystem
         base.Initialize();
 
         _mapQuery = GetEntityQuery<MapComponent>();
-
-        SubscribeLocalEvent<CEZLevelViewerComponent, EntitySpokeEvent>(OnSpoke);
     }
 
+    [SubscribeLocalEvent]
     private void OnSpoke(Entity<CEZLevelViewerComponent> ent, ref EntitySpokeEvent args)
     {
         var xform = Transform(ent);

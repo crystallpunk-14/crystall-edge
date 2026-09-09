@@ -1,4 +1,4 @@
-using Content.Shared._CE.Consumption;
+using Content.Shared._CE.GOAP.Consumption;
 
 namespace Content.Server._CE.GOAP.Consumption;
 
@@ -6,16 +6,13 @@ namespace Content.Server._CE.GOAP.Consumption;
 public sealed partial class CEGOAPConsumeComponent : Component
 {
     public CEGOAPConsumePhase Phase;
-    public CEConsumableSource SourceDefinition = default!;
-    public EntityUid? Provider;
-    public EntityUid? Consumable;
+    public EntityUid? Target;
 }
 
 [RegisterComponent]
 public sealed partial class CEGOAPConsumeRetryComponent : Component
 {
-    public readonly Dictionary<CEConsumableSource, TimeSpan> UntilBySource =
-        new(ReferenceEqualityComparer.Instance);
+    public readonly Dictionary<CEGOAPConsumeAction, TimeSpan> UntilByAction = new();
 }
 
 public enum CEGOAPConsumePhase : byte

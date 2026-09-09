@@ -1,4 +1,3 @@
-using System.Numerics;
 using Content.Server._CE.MeleeWeapon;
 using Content.Shared._CE.Animation.Item.Components;
 using Content.Shared._CE.GOAP;
@@ -6,7 +5,6 @@ using Content.Shared._CE.GOAP.Components;
 using Content.Shared.CombatMode;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
-using Robust.Shared.Random;
 
 namespace Content.Server._CE.GOAP.Actions;
 
@@ -28,12 +26,8 @@ public sealed partial class CEGOAPMeleeAttackAction : CEGOAPActionBase<CEGOAPMel
 public sealed partial class CEGOAPMeleeAttackActionSystem : CEGOAPActionSystem<CEGOAPMeleeAttackAction>
 {
     [Dependency] private CEWeaponSystem _weapon = default!;
-    [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private SharedCombatModeSystem _combatMode = default!;
-    [Dependency] private IRobustRandom _random = default!;
     [Dependency] private MobStateSystem _mobState = default!;
-
-    [Dependency] private EntityQuery<TransformComponent> _xformQuery = default!;
 
     protected override void OnActionStartup(
         Entity<CEGOAPComponent> ent,
@@ -66,36 +60,7 @@ public sealed partial class CEGOAPMeleeAttackActionSystem : CEGOAPActionSystem<C
             return;
         }
 
-        if (!_weapon.TryGetWeapon(ent, out var weapon))
-        {
-            args.Status = CEGOAPActionStatus.Failed;
-            return;
-        }
-
-        if (!_xformQuery.TryGetComponent(ent, out var xform) ||
-            !_xformQuery.TryGetComponent(target, out var targetXform))
-        {
-            args.Status = CEGOAPActionStatus.Failed;
-            return;
-        }
-
-        if (!xform.Coordinates.TryDistance(EntityManager, targetXform.Coordinates, out var distance))
-        {
-            args.Status = CEGOAPActionStatus.Failed;
-            return;
-        }
-
-        // In range: attack
-        var ownerPos = _transform.GetWorldPosition(xform);
-        var targetPos = _transform.GetWorldPosition(targetXform);
-        var direction = targetPos - ownerPos;
-        var angle = direction == Vector2.Zero
-            ? Angle.Zero
-            : Angle.FromWorldVec(direction);
-        angle += Angle.FromDegrees(
-            _random.NextFloat(-args.Action.AngleVariation, args.Action.AngleVariation));
-
-        if (!_weapon.TryUse(ent, weapon.Value, args.Action.UseType, angle))
+        if (!_weapon.TryUseAtTarget(ent, target, args.Action.UseType, args.Action.AngleVariation))
         {
             args.Status = CEGOAPActionStatus.Failed;
             return;

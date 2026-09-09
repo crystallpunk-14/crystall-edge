@@ -2,6 +2,7 @@ using Content.Shared._CE.MagicEssence.Components;
 using Content.Shared._CE.Press.Systems;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Throwing;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -22,13 +23,7 @@ public sealed partial class CEThaumaturgySplitterSystem : EntitySystem
     [Dependency] private INetManager _net = default!;
     [Dependency] private MobStateSystem _mobState = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEThaumaturgySplitterComponent, CEPressCrushingTargetEvent>(OnCrushingTarget);
-    }
-
+    [SubscribeLocalEvent]
     private void OnCrushingTarget(Entity<CEThaumaturgySplitterComponent> ent, ref CEPressCrushingTargetEvent args)
     {
         var coords = Transform(ent).Coordinates;

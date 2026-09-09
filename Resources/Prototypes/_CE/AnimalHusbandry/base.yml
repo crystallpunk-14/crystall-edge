@@ -1,17 +1,3 @@
-# Reusable entity-level diet policy. Canonical ingestion remains authoritative;
-# this component only narrows which otherwise digestible CE foods are selected.
-- type: entity
-  id: CEAnimalFodderDietBase
-  abstract: true
-  components:
-  - type: CEAnimalDiet
-    allowedFoodTags:
-    - CEWheat
-    - CECorn
-    - CEVegetable
-    forbiddenFoodTags:
-    - CEMeat
-
 # Shared biological and AI-capability base for prototype-authored livestock species.
 - type: entity
   id: CEMobAnimalHusbandryBase
@@ -50,20 +36,18 @@
   - type: SentienceTarget
     flavorKind: station-event-random-sentience-flavor-organic
 
-# Reusable hunger plan. The source strategy owns diet/provider eligibility;
-# existing GOAP systems own range sensing and movement.
+# Hunger plan using ordinary food and prototype-authored fodder preferences.
 - type: entity
   id: CEAnimalHungerGOAPBase
   abstract: true
   components:
   - type: CEGOAPSelectorProfiles
     profiles:
-      animalFood: !type:CEGOAPSelectorConsumableProvider
-        source: !type:CECompositeConsumableSource
-          sources:
-          - !type:CEFeedTroughConsumableSource
-          - !type:CEWorldFoodConsumableSource
+      animalFood: !type:CEGOAPSelectorEdible
+        edible: Food
         range: 20
+        allowedFoodTags: [CEWheat, CECorn, CEVegetable]
+        forbiddenFoodTags: [CEMeat]
   - type: CEGOAPRangeToTargetSensor
     updateInterval: 0.2
     entries:
@@ -101,26 +85,13 @@
   components:
   - type: CEGOAPSelectorProfiles
     profiles:
-      animalWater: !type:CEGOAPSelectorConsumableProvider
-        source: !type:CECompositeConsumableSource
-          sources:
-          - !type:CEWorldDrinkConsumableSource
-            conditions:
-            - !type:CEReagentFractionCondition
-              reagent: Water
-              additionalReagents: [CEWater]
-              minFraction: 0.5
-          - !type:CEDrainableSolutionConsumableSource
-            transferAmount: 5
-            providerBlacklist:
-              components:
-              - ItemSlots
-              - Storage
-            conditions:
-            - !type:CEReagentFractionCondition
-              reagent: Water
-              additionalReagents: [CEWater]
-              minFraction: 0.5
+      animalWater: !type:CEGOAPSelectorEdible
+        edible: Drink
+        solutionConditions:
+        - !type:CEReagentFractionCondition
+          reagent: Water
+          additionalReagents: [CEWater]
+          minFraction: 0.5
         range: 20
   - type: CEGOAPRangeToTargetSensor
     updateInterval: 0.2

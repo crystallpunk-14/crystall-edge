@@ -1,4 +1,5 @@
 using System.Linq;
+using Robust.Shared.Analyzers;
 using Content.Shared.Damage.Systems;
 using Content.Shared.EntityTable;
 using Robust.Shared.Audio.Systems;
@@ -14,13 +15,7 @@ public sealed partial class CEOreVeinSystem : EntitySystem
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private EntityTableSystem _table = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEOreVeinComponent, DamageChangedEvent>(OnDamageChanged);
-    }
-
+    [SubscribeLocalEvent]
     private void OnDamageChanged(Entity<CEOreVeinComponent> ent, ref DamageChangedEvent args)
     {
         if (!args.DamageIncreased)

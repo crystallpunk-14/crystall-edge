@@ -1,5 +1,6 @@
 using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.Weather;
+using Robust.Shared.Analyzers;
 
 namespace Content.Server._CE.Weather;
 
@@ -10,12 +11,8 @@ namespace Content.Server._CE.Weather;
 /// </summary>
 public sealed partial class CEWeatherTileEntityEffectSystem : EntitySystem
 {
-    public override void Initialize()
-    {
-        base.Initialize();
-        SubscribeLocalEvent<CEWeatherTileEntityEffectComponent, CEWeatherTileAffectedEvent>(OnTileAffected);
-    }
 
+    [SubscribeLocalEvent]
     private void OnTileAffected(Entity<CEWeatherTileEntityEffectComponent> ent, ref CEWeatherTileAffectedEvent args)
     {
         var effectArgs = new CEEntityEffectArgs(EntityManager, ent.Owner, null, Angle.Zero, 1f, null,

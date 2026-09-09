@@ -38,14 +38,7 @@ public sealed partial class CEGOAPTargetBackoffSystem : EntitySystem
     [Dependency] private SharedInteractionSystem _interaction = default!;
     [Dependency] private IGameTiming _timing = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-        SubscribeLocalEvent<CEGOAPTargetBackoffComponent, CEGOAPUseActionTargetFailedEvent>(OnTargetFailed);
-        SubscribeLocalEvent<CEGOAPTargetBackoffComponent, CEGOAPActionUpdateEvent<CEGOAPMoveToTargetAction>>(
-            OnMoveUpdate, after: [typeof(CEGOAPMoveToTargetActionSystem)]);
-    }
-
+    [SubscribeLocalEvent]
     private void OnTargetFailed(
         Entity<CEGOAPTargetBackoffComponent> ent,
         ref CEGOAPUseActionTargetFailedEvent args)
@@ -54,6 +47,7 @@ public sealed partial class CEGOAPTargetBackoffSystem : EntitySystem
             Reject(ent.Owner, args.Target);
     }
 
+    [SubscribeLocalEvent(after: [typeof(CEGOAPMoveToTargetActionSystem)])]
     private void OnMoveUpdate(
         Entity<CEGOAPTargetBackoffComponent> ent,
         ref CEGOAPActionUpdateEvent<CEGOAPMoveToTargetAction> args)

@@ -39,21 +39,12 @@ public sealed partial class CEGOAPSelectorProfileSystem
         ev.Position = result.Position;
     }
 
-    public bool TryResolveSelector(
+    private bool TryResolveSelector(
         EntityUid agent,
-        CEGOAPTargetSelector? selector,
+        CEGOAPSelectorProfile profile,
         out CEGOAPTargetSelector resolved)
     {
         resolved = null!;
-        if (selector is not CEGOAPSelectorProfile profile)
-        {
-            if (selector == null)
-                return false;
-
-            resolved = selector;
-            return true;
-        }
-
         if (string.IsNullOrWhiteSpace(profile.Profile) ||
             !TryComp<CEGOAPSelectorProfilesComponent>(agent, out var profiles) ||
             !profiles.Profiles.TryGetValue(profile.Profile, out var concrete) ||

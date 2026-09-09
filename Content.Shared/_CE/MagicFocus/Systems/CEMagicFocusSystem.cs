@@ -3,6 +3,7 @@ using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.MagicFocus.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Inventory;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.MagicFocus.Systems;
@@ -24,12 +25,9 @@ public sealed partial class CEMagicFocusSystem : EntitySystem
 
         InitCharging();
         InitExamine();
-
-        SubscribeLocalEvent<CEMagicFocusClothingComponent, InventoryRelayedEvent<CEGetMagicFocusEssenceEvent>>(OnClothingGetEssence);
-        SubscribeLocalEvent<CEMagicFocusInhandComponent, CEGetMagicFocusEssenceEvent>(OnInhandGetEssence);
-        SubscribeLocalEvent<CEMagicFocusComponent, CEMagicEssenceCalculationEvent>(OnFocusEssenceCalculation);
     }
 
+    [SubscribeLocalEvent]
     private void OnClothingGetEssence(Entity<CEMagicFocusClothingComponent> ent, ref InventoryRelayedEvent<CEGetMagicFocusEssenceEvent> args)
     {
         if (!_inventory.InSlotWithAnyFlags(ent.Owner, ent.Comp.Slots))
@@ -38,12 +36,14 @@ public sealed partial class CEMagicFocusSystem : EntitySystem
         args.Args.Sources.Add(ent.Owner);
     }
 
+    [SubscribeLocalEvent]
     private void OnInhandGetEssence(Entity<CEMagicFocusInhandComponent> ent, ref CEGetMagicFocusEssenceEvent args)
     {
         args.Sources.Add(ent.Owner);
     }
 
     // Lets essence scanners (and anything else reading essence composition) see what's stored in the focus.
+    [SubscribeLocalEvent]
     private void OnFocusEssenceCalculation(Entity<CEMagicFocusComponent> ent, ref CEMagicEssenceCalculationEvent args)
     {
         if (args.Handled)

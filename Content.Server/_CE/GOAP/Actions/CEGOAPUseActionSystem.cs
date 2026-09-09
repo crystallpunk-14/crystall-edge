@@ -1,7 +1,7 @@
 using Content.Shared._CE.GOAP;
 using Content.Shared._CE.GOAP.Components;
 using Content.Shared._CE.GOAP.Selectors;
-using Content.Shared.ActionBlocker;
+using Content.Shared._CE.Actions;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.Actions.Events;
@@ -39,7 +39,6 @@ public readonly record struct CEGOAPUseActionTargetFailedEvent(
 public sealed partial class CEGOAPUseActionSystem : CEGOAPActionSystem<CEGOAPUseAction>
 {
     [Dependency] private SharedActionsSystem _actions = default!;
-    [Dependency] private ActionBlockerSystem _actionBlocker = default!;
     [Dependency] private IGameTiming _timing = default!;
 
     [Dependency] private EntityQuery<EntityTargetActionComponent> _entityTargetQuery = default!;
@@ -89,51 +88,22 @@ public sealed partial class CEGOAPUseActionSystem : CEGOAPActionSystem<CEGOAPUse
             return;
         }
 
-        if (!TryComp<ActionComponent>(actionEntity.Value, out var actionComp) ||
-            HasComp<DoAfterArgsComponent>(actionEntity.Value))
-        {
-            args.Status = CEGOAPActionStatus.Failed;
-            return;
-        }
-
         CEGOAPSelectorResult target = default;
         if (args.Action.Selector != null)
             target = args.Action.Selector.Resolve(ent, EntityManager);
 
-        var action = new Entity<ActionComponent>(actionEntity.Value, actionComp);
-        if (!TryValidateAction(ent.Owner, action, target, out var targetFailed))
-        {
-            args.Status = CEGOAPActionStatus.Failed;
-            if (targetFailed)
-                RaiseTargetFailed(ent.Owner, args.Action.Selector, target.Entity);
-            return;
-        }
-
-        // PerformAction raises this instance synchronously and records whether any
-        // owning action handler accepted the attempt. Clear it first as PerformAction
-        // can return before its own reset when the granted action has stale ownership.
-        var actionEvent = _actions.GetEvent(actionEntity.Value);
-        if (actionEvent == null)
+        args.Target = target.Entity;
+        if (!TryCreateRequest(actionEntity.Value, target, out var request))
         {
             args.Status = CEGOAPActionStatus.Failed;
             return;
         }
 
-        actionEvent.Handled = false;
-        _actions.PerformAction(
-            ent.Owner,
-            action,
-            actionEvent,
-            predicted: false);
-
-        if (actionEvent.Handled)
-        {
-            args.Status = CEGOAPActionStatus.Finished;
-            return;
-        }
-
-        args.Status = CEGOAPActionStatus.Failed;
-        RaiseTargetFailed(ent.Owner, args.Action.Selector, target.Entity);
+        var result = _actions.TryPerformActionChecked(request, ent.Owner, allowDoAfter: false, predicted: false, showPopups: false);
+        args.Status = result == CEActionExecutionResult.Performed ? CEGOAPActionStatus.Finished : CEGOAPActionStatus.Failed;
+        // A cooldown, action blocker or exhausted charge must not blacklist a usable destination.
+        if (result is CEActionExecutionResult.InvalidTarget or CEActionExecutionResult.Unhandled)
+            RaiseTargetFailed(ent.Owner, args.Action.Selector, target.Entity);
     }
 
     private void RaiseTargetFailed(EntityUid user, CEGOAPTargetSelector? selector, EntityUid? target)
@@ -145,20 +115,14 @@ public sealed partial class CEGOAPUseActionSystem : CEGOAPActionSystem<CEGOAPUse
         }
     }
 
-    private bool TryValidateAction(
-        EntityUid user,
-        Entity<ActionComponent> action,
+    private bool TryCreateRequest(
+        EntityUid action,
         CEGOAPSelectorResult target,
-        out bool targetFailed)
+        out RequestPerformActionEvent request)
     {
-        targetFailed = false;
-        if (!action.Comp.Enabled ||
-            action.Comp.AttachedEntity is { } attached && attached != user ||
-            _actions.IsCooldownActive(action.Comp))
-            return false;
-
-        var hasEntityTarget = _entityTargetQuery.TryComp(action, out var entityTarget);
-        var hasWorldTarget = _worldTargetQuery.TryComp(action, out var worldTarget);
+        request = default!;
+        var hasEntityTarget = _entityTargetQuery.HasComp(action);
+        var hasWorldTarget = _worldTargetQuery.HasComp(action);
         var targetEntity = target.Entity;
         var targetPosition = target.Position;
 
@@ -172,8 +136,7 @@ public sealed partial class CEGOAPUseActionSystem : CEGOAPActionSystem<CEGOAPUse
             (hasWorldTarget && targetPosition == null))
             return false;
 
-        RequestPerformActionEvent request;
-        var netAction = GetNetEntity(action.Owner);
+        var netAction = GetNetEntity(action);
         if (hasWorldTarget)
         {
             var netCoordinates = GetNetCoordinates(targetPosition!.Value);
@@ -193,35 +156,7 @@ public sealed partial class CEGOAPUseActionSystem : CEGOAPActionSystem<CEGOAPUse
             request = new RequestPerformActionEvent(netAction);
         }
 
-        var attempt = new ActionAttemptEvent(user);
-        RaiseLocalEvent(action.Owner, ref attempt);
-        if (attempt.Cancelled || TerminatingOrDeleted(action))
-            return false;
-
-        // ValidateEntityTarget also checks the performer. Separate that reason
-        // before interpreting its rejection as a failure of the target itself.
-        if (action.Comp.CheckConsciousness && !_actionBlocker.CanConsciouslyPerformAction(user) ||
-            action.Comp.CheckCanInteract && !_actionBlocker.CanInteract(user, null))
-            return false;
-
-        if ((hasWorldTarget &&
-             !_actions.ValidateWorldTarget(user, targetPosition!.Value, (action.Owner, worldTarget!))) ||
-            (targetEntity is { } entityTargetUid &&
-             hasEntityTarget &&
-             !_actions.ValidateEntityTarget(user, entityTargetUid, (action.Owner, entityTarget!))))
-        {
-            targetFailed = true;
-            return false;
-        }
-
-        var validate = new ActionValidateEvent
-        {
-            Input = request,
-            User = user,
-            Provider = action.Comp.Container ?? user,
-        };
-        RaiseLocalEvent(action.Owner, ref validate);
-        return !validate.Invalid && !TerminatingOrDeleted(action) && action.Comp.Running;
+        return true;
     }
 
     /// <summary>

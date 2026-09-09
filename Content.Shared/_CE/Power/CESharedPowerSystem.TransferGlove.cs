@@ -1,4 +1,5 @@
 using System.Numerics;
+using Robust.Shared.Analyzers;
 using Content.Shared._CE.Power.Components;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
@@ -9,13 +10,8 @@ namespace Content.Shared._CE.Power;
 
 public abstract partial class CESharedPowerSystem
 {
-    private void InitializeGlove()
-    {
-        SubscribeLocalEvent<CEEnergyTransferGloveComponent, AfterInteractEvent>(OnAfterInteract);
-        SubscribeLocalEvent<CEEnergyTransferGloveComponent, UseInHandEvent>(OnUseInHand);
-        SubscribeLocalEvent<CEEnergyTransferGloveComponent, ExaminedEvent>(OnGloveExamined);
-    }
 
+    [SubscribeLocalEvent]
     private void OnAfterInteract(Entity<CEEnergyTransferGloveComponent> ent, ref AfterInteractEvent args)
     {
         if (args.Target == null || !args.CanReach || UseDelay.IsDelayed(ent.Owner))
@@ -73,6 +69,7 @@ public abstract partial class CESharedPowerSystem
         args.Handled = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnGloveExamined(Entity<CEEnergyTransferGloveComponent> ent, ref ExaminedEvent args)
     {
         args.PushMarkup(Loc.GetString("ce-energy-transfer-glove-examine",
@@ -82,6 +79,7 @@ public abstract partial class CESharedPowerSystem
                     : "ce-energy-transfer-glove-mode-transfer"))));
     }
 
+    [SubscribeLocalEvent]
     private void OnUseInHand(Entity<CEEnergyTransferGloveComponent> ent, ref UseInHandEvent args)
     {
         if (args.Handled || UseDelay.IsDelayed(ent.Owner))

@@ -2,6 +2,7 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 using Robust.Shared.Timing;
 using Content.Shared._CE.GOAP.Components;
 using Content.Shared.Damage.Systems;
+using Robust.Shared.Analyzers;
 
 namespace Content.Server._CE.GOAP.Perceptors;
 
@@ -28,12 +29,7 @@ public sealed partial class CEGOAPPainPerceptorSystem : EntitySystem
     [Dependency] private CEGOAPSystem _goap = default!;
     [Dependency] private IGameTiming _timing = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-        SubscribeLocalEvent<CEGOAPPainPerceptorComponent, DamageDealtEvent>(OnDamaged);
-    }
-
+    [SubscribeLocalEvent]
     private void OnDamaged(Entity<CEGOAPPainPerceptorComponent> ent, ref DamageDealtEvent args)
     {
         if (args.Damage.GetTotal() <= 0 || args.Origin is not { } source || source == ent.Owner || !Exists(source))

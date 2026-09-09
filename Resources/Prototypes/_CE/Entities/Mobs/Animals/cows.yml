@@ -6,7 +6,6 @@
   parent:
   - MobCow
   - CEMobAnimalHusbandryBase
-  - CEAnimalFodderDietBase
   - CEAnimalAdultGOAPBase
   name: cow
   description: A domesticated cow that needs regular food and water.

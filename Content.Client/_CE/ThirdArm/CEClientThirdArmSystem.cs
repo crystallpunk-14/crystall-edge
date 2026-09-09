@@ -3,6 +3,7 @@ using Content.Shared._CE.ThirdArm;
 using Content.Shared._CE.ThirdArm.Components;
 using Content.Shared.Clothing;
 using Robust.Client.GameObjects;
+using Robust.Shared.Analyzers;
 
 namespace Content.Client._CE.ThirdArm;
 
@@ -11,14 +12,7 @@ public sealed partial class CEClientThirdArmSystem : CESharedThirdArmSystem
     [Dependency] private SpriteSystem _sprite = default!;
     [Dependency] private ItemSystem _itemSystem = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEThirdArmComponent, AppearanceChangeEvent>(OnAppearanceChange);
-        SubscribeLocalEvent<CEThirdArmComponent, GetEquipmentVisualsEvent>(OnGetEquipmentVisuals);
-    }
-
+    [SubscribeLocalEvent]
     private void OnAppearanceChange(Entity<CEThirdArmComponent> ent, ref AppearanceChangeEvent args)
     {
         if (args.Sprite == null)
@@ -47,6 +41,7 @@ public sealed partial class CEClientThirdArmSystem : CESharedThirdArmSystem
         _itemSystem.VisualsChanged(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnGetEquipmentVisuals(Entity<CEThirdArmComponent> ent, ref GetEquipmentVisualsEvent args)
     {
         if (!TryComp<AppearanceComponent>(ent, out var appearance))

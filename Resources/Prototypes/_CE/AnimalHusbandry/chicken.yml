@@ -1,9 +1,12 @@
 - type: entity
   id: CEActionChickenLayEgg
-  parent: CEChargedProductionActionBase
+  parent: BaseAction
   name: lay chicken egg
   description: Lay a produced chicken egg in an available nesting perch.
   components:
+  - type: LimitedCharges
+    lastCharges: -1
+    maxCharges: 1
   - type: Sprite
     sprite: Objects/Consumable/Food/egg.rsi
     layers:
@@ -18,11 +21,8 @@
     whitelist:
       requireAll: true
       components:
-      - CEFixedEntitySlotsAvailable
-      - CEAnimalIncubationHost
-      - CEProductionRestHostAvailable
-    event: !type:CECreateEntityInFixedSlotActionEvent
-      prototype: CEFoodEggChicken
+      - CEAnimalNestAvailable
+    event: !type:CEAnimalLayProductActionEvent
 
 - type: entity
   id: CEChickenHenGOAP
@@ -30,7 +30,6 @@
   parent:
   - CEAnimalAdultGOAPBase
   - CEAnimalFearGOAPBase
-  - CETargetedProductionGOAPBase
   components:
   - type: CEGOAPSelectorProfiles
     profiles:
@@ -39,13 +38,10 @@
         whitelist:
           requireAll: true
           components:
-          - CEFixedEntitySlotsAvailable
-          - CEAnimalIncubationHost
-          - CEProductionRestHostAvailable
-  - type: CEProductionRest
+          - CEAnimalNestAvailable
+  - type: CEAnimalRoost
     minimumDuration: 12
     maximumDuration: 20
-    stateKey: CEProductionResting
     conditions:
     - !type:SatiationCondition
       satiationType: Hunger
@@ -68,12 +64,17 @@
         profile: chickenNest
   - type: CEGOAP
     goals:
-    - desiredState: { CEProductionResting: false }
+    - desiredState: { CEProductionReady: false }
+      preconditions:
+        CEProductionReady: true
+        CEProductionTargetAvailable: true
+      priority: 90
+    - desiredState: { CEAnimalRoosting: false }
       priority: 200
     actions:
-    - !type:CEGOAPRestAtProductionHostAction
-      preconditions: { CEProductionResting: true, CEAnimalThreatened: false }
-      effects: { CEProductionResting: false }
+    - !type:CEGOAPRoostAction
+      preconditions: { CEAnimalRoosting: true, CEAnimalThreatened: false }
+      effects: { CEAnimalRoosting: false }
     - !type:CEGOAPMoveToTargetAction
       selector: !type:CEGOAPSelectorProfile
         profile: chickenNest

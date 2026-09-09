@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using Content.Shared._CE.Containers; // CrystallEdge: native slot availability notification.
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Destructible;
@@ -8,6 +9,7 @@ using Content.Shared.Whitelist;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
+using Robust.Shared.Network;
 using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Utility;
 
@@ -26,6 +28,7 @@ public sealed partial class ItemSlotsSystem : EntitySystem
     [Dependency] private SharedAudioSystem _audioSystem = default!;
     [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
     [Dependency] private ISerializationManager _serializationManager = default!;
+    [Dependency] private INetManager _net = default!; // CrystallEdge: authoritative opt-in removal ejection.
 
     /// <summary>
     /// Spawn in starting items for any item slots that should have one.
@@ -69,6 +72,46 @@ public sealed partial class ItemSlotsSystem : EntitySystem
         EjectOnBreak(ent);
     }
 
+    // CrystallEdge: opt-in release belongs to the native slot owner, not the visual layout.
+    [SubscribeLocalEvent]
+    private void OnSlotOwnerTerminating(Entity<ItemSlotsComponent> ent, ref EntityTerminatingEvent args) => EjectOnRemove(ent);
+
+    [SubscribeLocalEvent]
+    private void OnSlotsShutdown(Entity<ItemSlotsComponent> ent, ref ComponentShutdown args)
+    {
+        EjectOnRemove(ent);
+        NotifySlotsChanged(ent);
+    }
+
+    // CrystallEdge: the backing containers are initialized before component startup.
+    [SubscribeLocalEvent]
+    private void OnSlotsStartup(Entity<ItemSlotsComponent> ent, ref ComponentStartup args) => NotifySlotsChanged(ent);
+
+    private void NotifySlotsChanged(EntityUid uid)
+    {
+        var ev = new CEItemSlotsChangedEvent();
+        RaiseLocalEvent(uid, ref ev);
+    }
+
+    private void EjectOnRemove(Entity<ItemSlotsComponent> ent)
+    {
+        if (!_net.IsServer || !TryComp(ent, out TransformComponent? transform) ||
+            transform.MapUid is not { } map || TerminatingOrDeleted(map) ||
+            transform.GridUid is { } grid && TerminatingOrDeleted(grid))
+            return;
+
+        // Removal callbacks can change slot registrations; only touch the same live canonical container.
+        foreach (var slot in new List<ItemSlot>(ent.Comp.Slots.Values))
+        {
+            if (!slot.EjectOnRemove || slot.ContainerSlot is not { ContainedEntity: { } occupant } container ||
+                !_containers.TryGetContainer(ent, container.ID, out var current) || !ReferenceEquals(current, container))
+                continue;
+
+            _containers.Remove(occupant, container, force: true);
+        }
+    }
+    // CrystallEdge end
+
     /// <summary>
     /// Eject items from slots configured to do so when the entity is broken or destroyed.
     /// </summary>
@@ -85,12 +128,14 @@ public sealed partial class ItemSlotsSystem : EntitySystem
         var startingItem = target.StartingItem;
         var ejectOnDeconstruct = target.EjectOnDeconstruct;
         var ejectOnBreak = target.EjectOnBreak;
+        var ejectOnRemove = target.EjectOnRemove; // CrystallEdge
 
         _serializationManager.CopyTo(source, ref target, notNullableOverride: true);
 
         target.StartingItem = startingItem;
         target.EjectOnDeconstruct = ejectOnDeconstruct;
         target.EjectOnBreak = ejectOnBreak;
+        target.EjectOnRemove = ejectOnRemove; // CrystallEdge
     }
 
     /// <summary>

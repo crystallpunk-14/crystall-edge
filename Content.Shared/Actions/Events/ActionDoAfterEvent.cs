@@ -24,12 +24,19 @@ public sealed partial class ActionDoAfterEvent : DoAfterEvent
     /// </summary>
     public readonly RequestPerformActionEvent Input;
 
-    public ActionDoAfterEvent(NetEntity performer, TimeSpan? originalUseDelay, RequestPerformActionEvent input)
+    // CrystallEdge: keep presentation choices with the request during delayed/repeated execution.
+    public readonly bool Predicted;
+    public readonly bool ShowPopups;
+
+    public ActionDoAfterEvent(NetEntity performer, TimeSpan? originalUseDelay, RequestPerformActionEvent input, bool predicted = true, bool showPopups = true)
     {
         Performer = performer;
         OriginalUseDelay = originalUseDelay;
         Input = input;
+        Predicted = predicted;
+        ShowPopups = showPopups;
     }
+    // CrystallEdge end
 
     public override DoAfterEvent Clone() => this;
 }

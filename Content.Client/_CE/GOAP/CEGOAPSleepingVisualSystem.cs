@@ -1,6 +1,7 @@
 using Content.Shared._CE.GOAP.Components;
 using Content.Shared.StatusIcon;
 using Content.Shared.StatusIcon.Components;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Utility;
 
 namespace Content.Client._CE.GOAP;
@@ -10,7 +11,7 @@ namespace Content.Client._CE.GOAP;
 /// <see cref="CEGOAPSleepingComponent"/>. Uses the StatusIcon overlay system,
 /// same mechanism as the SSD indicator.
 /// </summary>
-public sealed class CEGOAPSleepingVisualSystem : EntitySystem
+public sealed partial class CEGOAPSleepingVisualSystem : EntitySystem
 {
     private StatusIconData _sleepIcon = default!;
 
@@ -23,10 +24,9 @@ public sealed class CEGOAPSleepingVisualSystem : EntitySystem
             Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/Effects/ssd.rsi"), "default0"),
             LocationPreference = StatusIconLocationPreference.Left,
         };
-
-        SubscribeLocalEvent<CEGOAPSleepingComponent, GetStatusIconsEvent>(OnGetStatusIcon);
     }
 
+    [SubscribeLocalEvent]
     private void OnGetStatusIcon(EntityUid uid, CEGOAPSleepingComponent component, ref GetStatusIconsEvent args)
     {
         args.StatusIcons.Add(_sleepIcon);

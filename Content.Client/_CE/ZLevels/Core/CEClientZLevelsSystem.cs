@@ -1,9 +1,10 @@
-﻿/*
+/*
  * This file is sublicensed under MIT License
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
 
 using System.Numerics;
+using Robust.Shared.Analyzers;
 using Content.Client._CE.ZLevels.Core.Overlays;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
@@ -29,11 +30,9 @@ public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
     {
         base.Initialize();
         _overlay.AddOverlay(new CEZLevelBlurOverlay());
-
-        SubscribeLocalEvent<CEZPhysicsComponent, ComponentStartup>(OnStartup);
-        SubscribeLocalEvent<CEZPhysicsComponent, GetEyeOffsetEvent>(OnEyeOffset);
     }
 
+    [SubscribeLocalEvent]
     private void OnEyeOffset(Entity<CEZPhysicsComponent> ent, ref GetEyeOffsetEvent args)
     {
         Angle rotation = _eye.CurrentEye.Rotation * -1;
@@ -54,6 +53,7 @@ public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
         return zPhys.LocalPosition;
     }
 
+    [SubscribeLocalEvent]
     private void OnStartup(Entity<CEZPhysicsComponent> ent, ref ComponentStartup args)
     {
         if (!TryComp<SpriteComponent>(ent, out var sprite))

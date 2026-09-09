@@ -3,6 +3,7 @@ using Content.Server.Antag;
 using Content.Server.Mind;
 using Content.Shared._CE.BlueText;
 using Content.Shared.Database;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Network;
 
 namespace Content.Server._CE.BlueText;
@@ -16,8 +17,6 @@ public sealed partial class CEBlueTextSystem : CESharedBlueTextSystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<CEBlueTextRuleComponent, AfterAntagEntitySelectedEvent>(OnAntagAttached);
 
         _net.RegisterNetMessage<CEBlueTextSaveMessage>(OnSaveBlueText);
     }
@@ -35,6 +34,7 @@ public sealed partial class CEBlueTextSystem : CESharedBlueTextSystem
         _adminLog.Add(LogType.Mind, $"{ToPrettyString(mind.Value.Comp.OwnedEntity)} has updated their blue text to: \"{blueText.BlueText}\"");
     }
 
+    [SubscribeLocalEvent]
     private void OnAntagAttached(Entity<CEBlueTextRuleComponent> ent, ref AfterAntagEntitySelectedEvent args)
     {
         if (!_mind.TryGetMind(args.Session, out var mind, out var mindComp))

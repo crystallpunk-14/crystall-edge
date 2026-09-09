@@ -4,6 +4,7 @@
  */
 
 using System.Numerics;
+using Robust.Shared.Analyzers;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Robust.Shared.Map.Components;
@@ -44,17 +45,7 @@ public sealed partial class CEZGridSyncSystem : VirtualController
     private bool _inPhysicsTick;
     private bool _syncing;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEZGridComponent, CEGridAddedIntoZNetworkEvent>(OnGridLinked);
-        SubscribeLocalEvent<CEZGridComponent, CEGridRemovedFromZNetworkEvent>(OnGridUnlinked);
-
-        SubscribeLocalEvent<CEZGridComponent, MoveEvent>(OnGridMoved);
-        SubscribeLocalEvent<CEZGridComponent, MassDataChangedEvent>(OnMassChanged);
-    }
-
+    [SubscribeLocalEvent]
     private void OnGridLinked(Entity<CEZGridComponent> zGridEnt, ref CEGridAddedIntoZNetworkEvent ev)
     {
         zGridEnt.Comp.CachedMass = _physicsQuery.TryComp(zGridEnt.Owner, out var body)
@@ -83,6 +74,7 @@ public sealed partial class CEZGridSyncSystem : VirtualController
         RecalculateNetworkCache(ev.Network);
     }
 
+    [SubscribeLocalEvent]
     private void OnGridUnlinked(Entity<CEZGridComponent> ent, ref CEGridRemovedFromZNetworkEvent ev)
     {
         ent.Comp.NetworkOffset = Vector2.Zero;
@@ -101,6 +93,7 @@ public sealed partial class CEZGridSyncSystem : VirtualController
         RecalculateNetworkCache(ev.Network);
     }
 
+    [SubscribeLocalEvent]
     private void OnGridMoved(Entity<CEZGridComponent> ent, ref MoveEvent ev)
     {
         if (_syncing || _inPhysicsTick)
@@ -140,6 +133,7 @@ public sealed partial class CEZGridSyncSystem : VirtualController
         _syncing = false;
     }
 
+    [SubscribeLocalEvent]
     private void OnMassChanged(Entity<CEZGridComponent> ent, ref MassDataChangedEvent args)
     {
         ent.Comp.CachedMass = _physicsQuery.TryComp(ent.Owner, out var body)

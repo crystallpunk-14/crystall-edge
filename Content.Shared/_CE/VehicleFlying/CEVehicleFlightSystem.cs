@@ -4,6 +4,7 @@ using Content.Shared.Actions;
 using Content.Shared.Vehicle;
 using Content.Shared.Vehicle.Components;
 using Content.Shared.Vehicle.Systems;
+using Robust.Shared.Analyzers;
 
 namespace Content.Shared._CE.VehicleFlying;
 
@@ -13,26 +14,19 @@ public sealed partial class CEVehicleFlightSystem : EntitySystem
     [Dependency] private SharedActionsSystem _actions = default!;
     [Dependency] private VehicleSystem _vehicle = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEVehicleFlyerComponent, VehicleOperatorSetEvent>(OnOperatorSet);
-        SubscribeLocalEvent<CEVehicleFlyerComponent, VehicleCanRunEvent>(OnCheckCanRun);
-        SubscribeLocalEvent<CEVehicleFlyerComponent, CEFlightStartedEvent>(OnFlightStart);
-        SubscribeLocalEvent<CEVehicleFlyerComponent, CEFlightStoppedEvent>(OnFlightStop);
-    }
-
+    [SubscribeLocalEvent]
     private void OnFlightStop(Entity<CEVehicleFlyerComponent> ent, ref CEFlightStoppedEvent args)
     {
         _vehicle.RefreshCanRun(ent.Owner);
     }
 
+    [SubscribeLocalEvent]
     private void OnFlightStart(Entity<CEVehicleFlyerComponent> ent, ref CEFlightStartedEvent args)
     {
         _vehicle.RefreshCanRun(ent.Owner);
     }
 
+    [SubscribeLocalEvent]
     private void OnCheckCanRun(Entity<CEVehicleFlyerComponent> ent, ref VehicleCanRunEvent args)
     {
         if (!args.CanRun)
@@ -45,6 +39,7 @@ public sealed partial class CEVehicleFlightSystem : EntitySystem
             args = args with { CanRun = false };
     }
 
+    [SubscribeLocalEvent]
     private void OnOperatorSet(Entity<CEVehicleFlyerComponent> ent, ref VehicleOperatorSetEvent args)
     {
         if (!TryComp<CEControllableFlightComponent>(ent.Owner, out var flyerComp))

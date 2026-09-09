@@ -2,6 +2,7 @@ using Content.Server.Power.EntitySystems;
 using Content.Shared._CE.Workbench;
 using Content.Shared.DoAfter;
 using Content.Shared.Power;
+using Robust.Shared.Analyzers;
 
 namespace Content.Server._CE.Workbench;
 
@@ -9,11 +10,9 @@ public sealed partial class CEWorkbenchSystem
 {
     private void InitAutoCrafter()
     {
-        SubscribeLocalEvent<CEWorkbenchAutoCrafterComponent, PowerChangedEvent>(OnPowerChanged);
-        SubscribeLocalEvent<CEWorkbenchAutoCrafterComponent, CECraftDoAfterEvent>(OnFinishAutoCraft);
-        SubscribeLocalEvent<CEWorkbenchAutoCrafterComponent, CEWorkbenchUiClickRecipeMessage>(OnClickMessage);
     }
 
+    [SubscribeLocalEvent]
     private void OnFinishAutoCraft(Entity<CEWorkbenchAutoCrafterComponent> ent, ref CECraftDoAfterEvent args)
     {
         ent.Comp.ActiveDoAfter = null;
@@ -103,11 +102,13 @@ public sealed partial class CEWorkbenchSystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnPowerChanged(Entity<CEWorkbenchAutoCrafterComponent> ent, ref PowerChangedEvent args)
     {
         BreakCrafting(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnClickMessage(Entity<CEWorkbenchAutoCrafterComponent> ent, ref CEWorkbenchUiClickRecipeMessage args)
     {
         BreakCrafting(ent);

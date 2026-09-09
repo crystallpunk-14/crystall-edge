@@ -96,6 +96,18 @@
     prototype: CESalaryPlatform
 
 - type: entity
+  id: CEMachineCoreDimensionalLift
+  parent: CEBaseMachineCore
+  name: dimensional lift machine core
+  components:
+  - type: Sprite
+    state: dimensional
+  - type: MachineBoard
+    prototype: CEDimensionalLift
+  - type: StaticPrice
+    price: 200
+
+- type: entity
   id: CEMachineCoreHeater
   parent: CEBaseMachineCore
   name: heater machine core

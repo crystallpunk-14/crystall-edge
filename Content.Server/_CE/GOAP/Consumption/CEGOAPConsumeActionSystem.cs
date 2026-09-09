@@ -1,46 +1,35 @@
-using Content.Server._CE.Consumption;
 using Content.Server._CE.GOAP.Navigation;
-using Content.Server._CE.GOAP.Selectors;
-using Content.Shared._CE.Consumption;
 using Content.Shared._CE.GOAP;
 using Content.Shared._CE.GOAP.Components;
 using Content.Shared._CE.GOAP.Consumption;
 using Content.Shared.DoAfter;
+using Content.Shared.FixedPoint;
 using Content.Shared.Interaction;
 using Content.Shared.Nutrition;
+using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Timing;
 
 namespace Content.Server._CE.GOAP.Consumption;
 
 /// <summary>
-/// Resolves a selected provider and performs one canonical ingestion operation
-/// without owning provider-specific policy or movement.
+/// Performs one native ingestion operation on the selected edible. IngestionSystem
+/// owns the DoAfter, solution transfer and needs; this system owns only GOAP lifecycle.
 /// </summary>
 public sealed partial class CEGOAPConsumeActionSystem : CEGOAPActionSystem<CEGOAPConsumeAction>
 {
     [Dependency] private CEGOAPTargetBackoffSystem _backoff = default!;
-    [Dependency] private CEGOAPSelectorProfileSystem _selectorProfiles = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
     [Dependency] private IngestionSystem _ingestion = default!;
     [Dependency] private SharedInteractionSystem _interaction = default!;
     [Dependency] private IGameTiming _timing = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-        SubscribeLocalEvent<CEGOAPConsumeComponent, IngestingEvent>(OnIngesting);
-        SubscribeLocalEvent<CEGOAPConsumeComponent, EatingDoAfterEvent>(
-            OnEatingDoAfter,
-            after: [typeof(IngestionSystem)]);
-        SubscribeLocalEvent<CEGOAPConsumeComponent, ComponentShutdown>(OnConsumptionShutdown);
-    }
-
     protected override void OnCanExecute(
         Entity<CEGOAPComponent> ent,
         ref CEGOAPActionCanExecuteEvent<CEGOAPConsumeAction> args)
     {
-        if (!TryGetConfiguration(ent.Owner, args.Action, out var selector, out var source))
+        if (args.Action.RetryDelay < TimeSpan.Zero)
         {
             args.CanExecute = false;
             return;
@@ -48,17 +37,16 @@ public sealed partial class CEGOAPConsumeActionSystem : CEGOAPActionSystem<CEGOA
 
         if (TryComp<CEGOAPConsumeRetryComponent>(ent, out var retry))
         {
-            if (retry.UntilBySource.TryGetValue(source, out var retryUntil) &&
-                _timing.CurTime < retryUntil)
+            if (retry.UntilByAction.TryGetValue(args.Action, out var until) && _timing.CurTime < until)
             {
                 args.CanExecute = false;
                 return;
             }
 
-            retry.UntilBySource.Remove(source);
+            retry.UntilByAction.Remove(args.Action);
         }
 
-        if (!TryResolveProvider(ent.Owner, selector, out _))
+        if (!TryResolveEdible(ent.Owner, args.Action, out _))
             args.CanExecute = false;
     }
 
@@ -66,72 +54,56 @@ public sealed partial class CEGOAPConsumeActionSystem : CEGOAPActionSystem<CEGOA
         Entity<CEGOAPComponent> ent,
         ref CEGOAPActionStartupEvent<CEGOAPConsumeAction> args)
     {
-        if (!TryGetConfiguration(ent.Owner, args.Action, out _, out var source))
+        var state = EnsureComp<CEGOAPConsumeComponent>(ent);
+        state.Phase = CEGOAPConsumePhase.Failed;
+        state.Target = null;
+        if (!TryResolveEdible(ent.Owner, args.Action, out var target))
             return;
 
-        var state = EnsureComp<CEGOAPConsumeComponent>(ent);
+        // A newly appearing closer food must not redirect an in-progress bite.
+        state.Target = target;
         state.Phase = CEGOAPConsumePhase.Acquiring;
-        state.SourceDefinition = source;
-        state.Provider = null;
-        state.Consumable = null;
     }
 
     protected override void OnActionUpdate(
         Entity<CEGOAPComponent> ent,
         ref CEGOAPActionUpdateEvent<CEGOAPConsumeAction> args)
     {
-        if (!TryGetConfiguration(ent.Owner, args.Action, out var selector, out var source) ||
-            !TryComp<CEGOAPConsumeComponent>(ent, out var state) ||
-            !ReferenceEquals(state.SourceDefinition, source))
+        if (!TryComp<CEGOAPConsumeComponent>(ent, out var state))
         {
             args.Status = CEGOAPActionStatus.Failed;
             return;
         }
 
+        args.Target = state.Target;
         switch (state.Phase)
         {
             case CEGOAPConsumePhase.Acquiring:
-                if (!TryResolveProvider(ent.Owner, selector, out var provider))
+                if (state.Target is not { } target || !Exists(target) ||
+                    !_interaction.InRangeAndAccessible(ent.Owner, target))
                 {
-                    Fail(state);
+                    if (state.Target is { } rejected)
+                        _backoff.Reject(ent.Owner, rejected);
+                    state.Phase = CEGOAPConsumePhase.Failed;
                     args.Status = CEGOAPActionStatus.Failed;
                     return;
                 }
 
-                state.Provider = provider;
-                if (!_interaction.InRangeAndAccessible(ent.Owner, provider))
-                {
-                    _backoff.Reject(ent.Owner, provider);
-                    Fail(state);
-                    args.Status = CEGOAPActionStatus.Failed;
-                    return;
-                }
-
-                if (!state.SourceDefinition.TryResolveConsumable(
-                        ent.Owner,
-                        provider,
-                        EntityManager,
-                        out var consumable))
-                {
-                    Fail(state);
-                    args.Status = CEGOAPActionStatus.Failed;
-                    return;
-                }
-
-                state.Consumable = consumable;
+                // Set this before TryIngest, which can finish a zero-delay bite immediately.
                 state.Phase = CEGOAPConsumePhase.Consuming;
-                if (!_ingestion.TryIngest(ent.Owner, consumable))
+                if (!_ingestion.TryIngest(ent.Owner, target))
                 {
-                    Fail(state);
+                    _backoff.Reject(ent.Owner, target);
+                    state.Phase = CEGOAPConsumePhase.Failed;
                     args.Status = CEGOAPActionStatus.Failed;
                 }
                 return;
 
             case CEGOAPConsumePhase.Consuming:
-                if (state.Consumable is not { } activeConsumable || Exists(activeConsumable))
+                if (state.Target is { } active && Exists(active))
                     return;
 
-                Fail(state);
+                state.Phase = CEGOAPConsumePhase.Failed;
                 args.Status = CEGOAPActionStatus.Failed;
                 return;
 
@@ -141,7 +113,7 @@ public sealed partial class CEGOAPConsumeActionSystem : CEGOAPActionSystem<CEGOA
                 args.Status = CEGOAPActionStatus.Finished;
                 return;
 
-            case CEGOAPConsumePhase.Failed:
+            default:
                 args.Status = CEGOAPActionStatus.Failed;
                 return;
         }
@@ -154,73 +126,52 @@ public sealed partial class CEGOAPConsumeActionSystem : CEGOAPActionSystem<CEGOA
         if (!TryComp<CEGOAPConsumeComponent>(ent, out var state))
             return;
 
-        if (state.Phase == CEGOAPConsumePhase.Consuming && state.Consumable is { } consumable)
-            CancelEatingDoAfter(ent.Owner, consumable);
-
-        ReleaseConsumable(ent.Owner, state);
-
+        CancelEating(ent.Owner, state);
         if (state.Phase != CEGOAPConsumePhase.Finished && args.Action.RetryDelay > TimeSpan.Zero)
         {
             var retry = EnsureComp<CEGOAPConsumeRetryComponent>(ent);
-            retry.UntilBySource[state.SourceDefinition] = _timing.CurTime + args.Action.RetryDelay;
+            retry.UntilByAction[args.Action] = _timing.CurTime + args.Action.RetryDelay;
         }
 
         RemComp<CEGOAPConsumeComponent>(ent);
     }
 
-    private void ReleaseConsumable(EntityUid consumer, CEGOAPConsumeComponent state)
-    {
-        if (state.Provider is not { } provider || state.Consumable is not { } consumable)
-            return;
-
-        state.SourceDefinition.ReleaseConsumable(
-            consumer,
-            provider,
-            consumable,
-            state.Phase == CEGOAPConsumePhase.Finished,
-            EntityManager);
-        state.Provider = null;
-        state.Consumable = null;
-    }
-
+    [SubscribeLocalEvent]
     private void OnIngesting(Entity<CEGOAPConsumeComponent> ent, ref IngestingEvent args)
     {
-        if (ent.Comp.Phase != CEGOAPConsumePhase.Consuming || ent.Comp.Consumable != args.Food)
-            return;
-
-        ent.Comp.Phase = CEGOAPConsumePhase.Finished;
+        if (ent.Comp.Phase == CEGOAPConsumePhase.Consuming && ent.Comp.Target == args.Food)
+            ent.Comp.Phase = args.Split.Volume > FixedPoint2.Zero
+                ? CEGOAPConsumePhase.Finished
+                : CEGOAPConsumePhase.Failed;
     }
 
+    [SubscribeLocalEvent(after: [typeof(IngestionSystem)])]
     private void OnEatingDoAfter(Entity<CEGOAPConsumeComponent> ent, ref EatingDoAfterEvent args)
     {
-        if (args.Target is not { } source || ent.Comp.Consumable != source)
+        if (ent.Comp.Target != args.Target)
             return;
 
-        if (ent.Comp.Phase == CEGOAPConsumePhase.Finished)
-        {
-            args.Repeat = false;
-            return;
-        }
-
-        if (ent.Comp.Phase != CEGOAPConsumePhase.Consuming)
-            return;
-
-        Fail(ent.Comp);
+        // One bite per action; the refreshed needs sensor decides whether another is needed.
+        args.Repeat = false;
+        if (ent.Comp.Phase == CEGOAPConsumePhase.Consuming)
+            ent.Comp.Phase = CEGOAPConsumePhase.Failed;
     }
 
+    [SubscribeLocalEvent]
     private void OnConsumptionShutdown(Entity<CEGOAPConsumeComponent> ent, ref ComponentShutdown args)
     {
-        ReleaseConsumable(ent.Owner, ent.Comp);
+        CancelEating(ent.Owner, ent.Comp);
     }
 
-    private void CancelEatingDoAfter(EntityUid consumer, EntityUid source)
+    private void CancelEating(EntityUid consumer, CEGOAPConsumeComponent state)
     {
-        if (!TryComp<DoAfterComponent>(consumer, out var doAfters))
+        if (state.Phase != CEGOAPConsumePhase.Consuming || state.Target is not { } target ||
+            !TryComp<DoAfterComponent>(consumer, out var doAfters))
             return;
 
         foreach (var doAfter in doAfters.DoAfters.Values)
         {
-            if (doAfter.Cancelled || doAfter.Completed || doAfter.Args.Target != source ||
+            if (doAfter.Cancelled || doAfter.Completed || doAfter.Args.Target != target ||
                 doAfter.Args.Event is not EatingDoAfterEvent)
                 continue;
 
@@ -229,41 +180,15 @@ public sealed partial class CEGOAPConsumeActionSystem : CEGOAPActionSystem<CEGOA
         }
     }
 
-    private static void Fail(CEGOAPConsumeComponent state)
+    private bool TryResolveEdible(EntityUid consumer, CEGOAPConsumeAction action, out EntityUid target)
     {
-        state.Phase = CEGOAPConsumePhase.Failed;
-    }
-
-    private bool TryResolveProvider(
-        EntityUid consumer,
-        CEGOAPSelectorConsumableProvider selector,
-        out EntityUid provider)
-    {
-        provider = default;
-        if (selector.Resolve(consumer, EntityManager).Entity is not { } resolved)
+        target = default;
+        if (action.Selector?.Resolve(consumer, EntityManager).Entity is not { } selected ||
+            !HasComp<EdibleComponent>(selected) || !_interaction.IsAccessible(consumer, selected) ||
+            !_ingestion.CanIngest(consumer, selected) || !_ingestion.CanConsume(consumer, selected))
             return false;
 
-        provider = resolved;
-        return true;
-    }
-
-    private bool TryGetConfiguration(
-        EntityUid consumer,
-        CEGOAPConsumeAction action,
-        out CEGOAPSelectorConsumableProvider selector,
-        out CEConsumableSource source)
-    {
-        selector = null!;
-        source = null!;
-        if (!_selectorProfiles.TryResolveSelector(consumer, action.Selector, out var resolved) ||
-            resolved is not CEGOAPSelectorConsumableProvider resolvedSelector ||
-            resolvedSelector.Source == null ||
-            !float.IsFinite(resolvedSelector.Range) || resolvedSelector.Range < 0f ||
-            action.RetryDelay < TimeSpan.Zero)
-            return false;
-
-        selector = resolvedSelector;
-        source = resolvedSelector.Source;
+        target = selected;
         return true;
     }
 }

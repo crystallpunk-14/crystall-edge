@@ -1,4 +1,5 @@
 using Content.Shared._CE.InfusionAltar.Components;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 
@@ -11,12 +12,9 @@ public sealed partial class CEInfusionAltarSystem
 
     private void InitConnections()
     {
-        SubscribeLocalEvent<CEInfusionAltarComponent, AnchorStateChangedEvent>(OnAltarAnchorChanged);
-        SubscribeLocalEvent<CEInfusionAltarPedestalComponent, AnchorStateChangedEvent>(OnPedestalAnchorChanged);
-        SubscribeLocalEvent<CEInfusionAltarPedestalComponent, EntityTerminatingEvent>(OnSubPedestalTerminating);
-        SubscribeLocalEvent<CEInfusionAltarPedestalComponent, ComponentRemove>(OnSubPedestalRemoved);
     }
 
+    [SubscribeLocalEvent]
     private void OnAltarAnchorChanged(Entity<CEInfusionAltarComponent> ent, ref AnchorStateChangedEvent args)
     {
         ent.Comp.ConnectedPedestals.Clear();
@@ -39,6 +37,7 @@ public sealed partial class CEInfusionAltarSystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnPedestalAnchorChanged(Entity<CEInfusionAltarPedestalComponent> ent, ref AnchorStateChangedEvent args)
     {
         if (!TryGetTile(ent.Owner, out var pedestalGrid, out var pedestalTile))
@@ -60,6 +59,7 @@ public sealed partial class CEInfusionAltarSystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnSubPedestalTerminating(Entity<CEInfusionAltarPedestalComponent> ent, ref EntityTerminatingEvent args)
     {
         var query = EntityQueryEnumerator<CEInfusionAltarComponent>();
@@ -69,6 +69,7 @@ public sealed partial class CEInfusionAltarSystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnSubPedestalRemoved(Entity<CEInfusionAltarPedestalComponent> ent, ref ComponentRemove args)
     {
         var query = EntityQueryEnumerator<CEInfusionAltarComponent>();

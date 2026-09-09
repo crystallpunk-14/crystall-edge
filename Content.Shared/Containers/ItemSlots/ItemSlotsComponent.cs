@@ -195,6 +195,11 @@ public sealed partial class ItemSlot
     [NonSerialized]
     public bool EjectOnBreak;
 
+    // CrystallEdge: exposed shelves release their items when their owner or slot component is removed.
+    [DataField, NonSerialized]
+    public bool EjectOnRemove;
+    // CrystallEdge end
+
     /// <summary>
     /// The popup shown when a standard insertion interaction uses an item rejected by this slot's filters.
     /// </summary>

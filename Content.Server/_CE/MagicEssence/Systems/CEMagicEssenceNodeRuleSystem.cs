@@ -1,6 +1,7 @@
 using Content.Server._CE.MagicEssence.Components;
 using Content.Server.GameTicking.Rules;
 using Content.Shared.GameTicking.Components;
+using Robust.Shared.Analyzers;
 
 namespace Content.Server._CE.MagicEssence.Systems;
 
@@ -15,13 +16,6 @@ public sealed partial class CEMagicEssenceNodeRuleSystem : GameRuleSystem<CEMagi
     /// </summary>
     private bool _trimmingNodes;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEMagicEssenceMandatoryNodeComponent, ComponentShutdown>(OnMandatoryNodeShutdown);
-    }
-
     /// <summary>
     /// By the time a game rule Starts (as opposed to just being Added), the round-start station and
     /// its z-map network are already fully built - unlike StationPostInitEvent, which can fire
@@ -34,6 +28,7 @@ public sealed partial class CEMagicEssenceNodeRuleSystem : GameRuleSystem<CEMagi
         ReconcileNodeCount(component.NodeCount);
     }
 
+    [SubscribeLocalEvent]
     private void OnMandatoryNodeShutdown(Entity<CEMagicEssenceMandatoryNodeComponent> ent, ref ComponentShutdown args)
     {
         if (_trimmingNodes)

@@ -3,6 +3,7 @@ using Content.Shared.DoAfter;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Stacks;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
@@ -13,14 +14,8 @@ namespace Content.Shared._CE.Farming;
 
 public abstract partial class CESharedFarmingSystem
 {
-    private void InitializeSeeds()
-    {
-        SubscribeLocalEvent<CESeedComponent, AfterInteractEvent>(OnSeedInteract);
 
-        SubscribeLocalEvent<CESeedComponent, CEPlantSeedDoAfterEvent>(OnSeedPlantedDoAfter);
-        SubscribeLocalEvent<CESeedComponent, ExaminedEvent>(OnSeedExamine);
-    }
-
+    [SubscribeLocalEvent]
     private void OnSeedExamine(Entity<CESeedComponent> ent, ref ExaminedEvent args)
     {
         if (!_proto.Resolve(ent.Comp.PlantProto, out var plantProto))
@@ -29,6 +24,7 @@ public abstract partial class CESharedFarmingSystem
         args.PushMarkup(Loc.GetString("ce-farming-seed-examine", ("name", plantProto.Name)));
     }
 
+    [SubscribeLocalEvent]
     private void OnSeedInteract(Entity<CESeedComponent> seed, ref AfterInteractEvent args)
     {
         if (args.Handled || !args.CanReach)
@@ -58,6 +54,7 @@ public abstract partial class CESharedFarmingSystem
         args.Handled = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnSeedPlantedDoAfter(Entity<CESeedComponent> ent, ref CEPlantSeedDoAfterEvent args)
     {
         if (args.Handled || args.Cancelled)

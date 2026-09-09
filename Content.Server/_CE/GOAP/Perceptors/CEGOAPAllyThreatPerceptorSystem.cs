@@ -1,10 +1,9 @@
-using Content.Server._CE.GOAP.Actions;
+using Content.Server._CE.GOAP.Combat;
 using Content.Server._CE.GOAP.Classifiers;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Examine;
 using Content.Shared.NPC.Systems;
-using Robust.Shared.Player;
 
 namespace Content.Server._CE.GOAP.Perceptors;
 
@@ -20,21 +19,15 @@ public sealed partial class CEGOAPAllyThreatPerceptorSystem : EntitySystem
     [Dependency] private CEGOAPPainPerceptorSystem _pain = default!;
     [Dependency] private NpcFactionSystem _faction = default!;
     [Dependency] private ExamineSystemShared _examine = default!;
+    [Dependency] private CEGOAPDefensiveCombatSystem _defense = default!;
 
-    public override void Initialize()
-    {
-        SubscribeLocalEvent<DamageableComponent, DamageDealtEvent>(OnAllyDamaged);
-    }
-
+    [SubscribeLocalEvent]
     private void OnAllyDamaged(Entity<DamageableComponent> victim, ref DamageDealtEvent args)
     {
         if (args.Damage.GetTotal() <= 0 || args.Origin is not { } attacker || !Exists(attacker) || attacker == victim.Owner)
             return;
 
-        var defendingAlly = !HasComp<ActorComponent>(attacker) &&
-                            HasComp<CEGOAPThreatOnlyMeleeComponent>(attacker) &&
-                            TryComp<CEGOAPKnowledgeCacheComponent>(attacker, out var attackerKnowledge) &&
-                            attackerKnowledge.Enemies.Contains(victim.Owner);
+        var defendingAlly = _defense.IsDefendingAgainst(attacker, victim.Owner);
         var query = EntityQueryEnumerator<CEGOAPAllyThreatPerceptorComponent, CEGOAPPainPerceptorComponent, CEGOAPKnowledgeCacheComponent>();
         while (query.MoveNext(out var uid, out var witness, out var pain, out var knowledge))
         {

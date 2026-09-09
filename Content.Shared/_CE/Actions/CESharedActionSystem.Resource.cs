@@ -1,18 +1,14 @@
 using Content.Shared._CE.Actions.Components;
 using Content.Shared.Actions.Events;
 using Content.Shared.Power.Components;
+using Robust.Shared.Analyzers;
 
 namespace Content.Shared._CE.Actions;
 
 public abstract partial class CESharedActionSystem
 {
-    private void InitializePerformed()
-    {
-        SubscribeLocalEvent<CEActionManaCostComponent, ActionPerformedEvent>(OnManaCostActionPerformed);
-        SubscribeLocalEvent<CEActionStaminaCostComponent, ActionPerformedEvent>(OnStaminaCostActionPerformed);
-        SubscribeLocalEvent<CEActionEssenceCostComponent, ActionPerformedEvent>(OnEssenceCostActionPerformed);
-    }
 
+    [SubscribeLocalEvent]
     private void OnManaCostActionPerformed(Entity<CEActionManaCostComponent> ent, ref ActionPerformedEvent args)
     {
         if (!_actionQuery.TryComp(ent, out var action))
@@ -41,11 +37,13 @@ public abstract partial class CESharedActionSystem
             _battery.UseCharge((args.Performer, playerMana), manaCost);
     }
 
+    [SubscribeLocalEvent]
     private void OnStaminaCostActionPerformed(Entity<CEActionStaminaCostComponent> ent, ref ActionPerformedEvent args)
     {
         _stamina.TakeStaminaDamage(args.Performer, ent.Comp.Cost);
     }
 
+    [SubscribeLocalEvent]
     private void OnEssenceCostActionPerformed(Entity<CEActionEssenceCostComponent> ent, ref ActionPerformedEvent args)
     {
         _magicFocus.TrySpendEssence(args.Performer, ent.Comp.EssenceCost);

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * This file is sublicensed under MIT License
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
@@ -56,10 +56,5 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
 
         _config.OnValueChanged(CCVars.ZLevelsPhysicsClientSimulation, i => _clientSimulation = i, true);
         _config.OnValueChanged(CCVars.ZLevelsPhysicsTickRate, i => _fixedTimestep = TimeSpan.FromSeconds(1d / i), true);
-
-        InitializeActivation();
-        InitializeCacheHooks();
-        InitializeMovement();
-        InitializeView();
     }
 }

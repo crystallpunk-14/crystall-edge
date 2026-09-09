@@ -1,28 +1,19 @@
 using System.Numerics;
 using Content.Server._CE.MeleeWeapon;
-using Content.Server._CE.GOAP.Classifiers;
 using Content.Server._CE.NPC;
 using Content.Server.NPC.Systems;
 using Content.Shared._CE.Animation.Item.Components;
 using Content.Shared._CE.GOAP;
 using Content.Shared._CE.GOAP.Components;
-using Content.Shared._CE.MeleeWeapon;
 using Content.Shared.CombatMode;
 using Content.Shared.Movement.Components;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Robust.Shared.Map;
-using Robust.Shared.Player;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 using Robust.Shared.Timing;
 
 namespace Content.Server._CE.GOAP.Actions;
-
-/// <summary>Restricts autonomous melee hits to known threats, including animations finishing after an action.</summary>
-[RegisterComponent]
-public sealed partial class CEGOAPThreatOnlyMeleeComponent : Component
-{
-}
 
 /// <summary>Approaches and attacks a threat while moving around it at melee distance.</summary>
 public sealed partial class CEGOAPCircleMeleeAction : CEGOAPActionBase<CEGOAPCircleMeleeAction>
@@ -50,26 +41,6 @@ public sealed partial class CEGOAPCircleMeleeActionSystem : CEGOAPActionSystem<C
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private IGameTiming _timing = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-        SubscribeLocalEvent<CEGOAPThreatOnlyMeleeComponent, CEWeaponArcTargetsEvent>(OnArcTargets);
-    }
-
-    private void OnArcTargets(Entity<CEGOAPThreatOnlyMeleeComponent> ent, ref CEWeaponArcTargetsEvent args)
-    {
-        if (HasComp<ActorComponent>(ent))
-            return;
-
-        // A defensive swing must not turn nearby allies into retaliating attackers.
-        if (!TryComp<CEGOAPKnowledgeCacheComponent>(ent, out var knowledge))
-        {
-            args.Targets.Clear();
-            return;
-        }
-        args.Targets.RemoveAll(target => !knowledge.Enemies.Contains(target));
-    }
-
     protected override void OnActionStartup(Entity<CEGOAPComponent> ent, ref CEGOAPActionStartupEvent<CEGOAPCircleMeleeAction> args)
     {
         var state = EnsureComp<CEGOAPCircleMeleeComponent>(ent);
@@ -94,7 +65,7 @@ public sealed partial class CEGOAPCircleMeleeActionSystem : CEGOAPActionSystem<C
             return;
         }
 
-        if (!_weapon.TryGetWeapon(ent, out var weapon))
+        if (!_weapon.TryGetWeapon(ent, out _))
         {
             args.Status = CEGOAPActionStatus.Failed;
             return;
@@ -103,9 +74,8 @@ public sealed partial class CEGOAPCircleMeleeActionSystem : CEGOAPActionSystem<C
         var origin = _transform.GetWorldPosition(ent);
         var targetXform = Transform(target);
         var targetPosition = _transform.GetWorldPosition(targetXform);
-        var towards = targetPosition - origin;
         if (distance <= args.Action.AttackRange)
-            _weapon.TryUse(ent, weapon.Value, CEUseType.Primary, Angle.FromWorldVec(towards));
+            _weapon.TryUseAtTarget(ent, target, CEUseType.Primary);
 
         var state = Comp<CEGOAPCircleMeleeComponent>(ent);
         if (_timing.CurTime < state.NextRepath)

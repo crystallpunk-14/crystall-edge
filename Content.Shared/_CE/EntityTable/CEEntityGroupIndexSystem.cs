@@ -1,6 +1,7 @@
 using Content.Shared._CE.EntityTable.Components;
 using Content.Shared.Prototypes;
 using Content.Shared.Random.Helpers;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
@@ -21,11 +22,10 @@ public sealed partial class CEEntityGroupIndexSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypesReloaded);
         RebuildIndex();
     }
 
+    [SubscribeLocalEvent]
     private void OnPrototypesReloaded(PrototypesReloadedEventArgs args)
     {
         // Most reloads touch prototype kinds we don't care about (tags, recipes, etc) - skip those entirely.

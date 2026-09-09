@@ -1,15 +1,18 @@
+using System.Numerics;
 using Content.Server.Movement.Systems;
 using Content.Shared._CE.Animation.Item.Components;
 using Content.Shared._CE.EntityEffect.Effects;
 using Content.Shared._CE.MeleeWeapon;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
+using Robust.Shared.Random;
 
 namespace Content.Server._CE.MeleeWeapon;
 
 public sealed partial class CEWeaponSystem : CESharedWeaponSystem
 {
     [Dependency] private LagCompensationSystem _lag = default!;
+    [Dependency] private IRobustRandom _random = default!;
     private const int MaxTargets = 10;
 
     /// <summary>
@@ -22,6 +25,23 @@ public sealed partial class CEWeaponSystem : CESharedWeaponSystem
     /// Fallback validation range when no WeaponArcAttack effect is found on the weapon.
     /// </summary>
     private const float FallbackRange = 1f;
+
+    /// <summary>Uses the actor's current weapon toward an entity on the same coordinate space.</summary>
+    public bool TryUseAtTarget(EntityUid user, EntityUid target, CEUseType useType, float angleVariation = 0f)
+    {
+        if (!TryComp(user, out TransformComponent? userTransform) ||
+            !TryComp(target, out TransformComponent? targetTransform) ||
+            !userTransform.Coordinates.TryDistance(EntityManager, targetTransform.Coordinates, out _) ||
+            !TryGetWeapon(user, out var weapon))
+            return false;
+
+        var direction = TransformSystem.GetWorldPosition(targetTransform) - TransformSystem.GetWorldPosition(userTransform);
+        var angle = direction == Vector2.Zero ? Angle.Zero : Angle.FromWorldVec(direction);
+        if (angleVariation > 0f)
+            angle += Angle.FromDegrees(_random.NextFloat(-angleVariation, angleVariation));
+
+        return TryUse(user, weapon.Value, useType, angle);
+    }
 
     /// <summary>
     /// For player attacks, skip damage from the animation keyframe.

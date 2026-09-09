@@ -2,6 +2,9 @@
   id: CEChickenPopulation
 
 - type: Tag
+  id: CEEgg
+
+- type: Tag
   id: CEChickenRooster
 
 - type: Tag
@@ -12,7 +15,6 @@
   abstract: true
   parent:
   - CEMobAnimalHusbandryBase
-  - CEAnimalFodderDietBase
   - BaseSlicingRefinable
   components:
   - type: Tag
@@ -93,7 +95,7 @@
     - conditionKey: CEProductionReady
       condition: !type:CEActionChargesCondition
         action: CEActionChickenLayEgg
-  - type: CEProductionAccumulator
+  - type: CEAnimalProduction
     outputAction: CEActionChickenLayEgg
     firstMinimum: 60
     firstMaximum: 90
@@ -111,11 +113,8 @@
       satiationType: Thirst
       minInclusive: true
       min: 300
-    inputCost: !type:Satiate
-      satiationType: Hunger
-      factor: -60
-  - type: CEAnimalFertilizableProduct
-    unfertilizedPrototype: CEFoodEggChicken
+    hungerCost: 60
+    productPrototype: CEFoodEggChicken
     fertilizedPrototype: CEFoodEggChickenFertilized
     populationWhitelist:
       tags:
@@ -155,7 +154,7 @@
   - type: CEAnimalMate
     mateWhitelist:
       tags: [CEChickenHen]
-    dayFraction: 0.5
+    cooldown: 720
     fertilizedProducts: 2
     effect: EffectHearts
     mateConditions:
@@ -200,7 +199,7 @@
       preconditions: { CEAnimalThreatened: false }
       effects: { CEAnimalMated: true }
   - type: CombatMode
-  - type: CEGOAPThreatOnlyMelee
+  - type: CEGOAPDefensiveCombat
   - type: CEWeapon
     range: 0.5
     effectSlots:
@@ -237,7 +236,7 @@
   - CEMobChickenBase
   - CEChickenChickGOAP
   name: chick
-  description: A young chicken that matures after two healthy nights.
+  description: A young chicken that matures after thirty-six minutes of healthy activity.
   components:
   - type: Sprite
     drawdepth: SmallMobs
@@ -253,8 +252,8 @@
   - type: Speech
     speechVerb: SmallMob
     speechSounds: CEChickenChirp
-  - type: CEConditionalNightGrowth
-    requiredSuccessfulNights: 2
+  - type: CEAnimalGrowth
+    remaining: 2160
     resultPrototype: CEMobChickenHenWhite
     conditions:
     - !type:MobStateCondition
@@ -277,7 +276,7 @@
   parent: CEMobChickenChick
   suffix: Male, CE
   components:
-  - type: CEConditionalNightGrowth
+  - type: CEAnimalGrowth
     resultPrototype: CEMobChickenRooster
 
 - type: entity
@@ -289,6 +288,8 @@
   description: An ordinary chicken egg.
   categories: [ ForkFiltered ]
   components:
+  - type: Tag
+    tags: [Egg, Meat, CEEgg]
   - type: CEFoodTag
     tags: [CEEgg]
   - type: CEMagicEssenceStructure
@@ -309,16 +310,13 @@
     tags:
     - Egg
     - Meat
+    - CEEgg
     - CEChickenPopulation
   - type: TimerTrigger
     delay: 360
     keyOut: ce-incubation-complete
     examinable: false
     popup: null
-  - type: CEFixedSlotTriggerGate
-    hostWhitelist:
-      components:
-      - CEAnimalIncubationHost
   - type: SpawnEntityTableOnTrigger
     keysIn:
     - ce-incubation-complete
