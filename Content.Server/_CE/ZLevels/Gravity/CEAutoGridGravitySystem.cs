@@ -1,3 +1,8 @@
+/*
+ * This file is sublicensed under MIT License
+ * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
+ */
+
 using Content.Server._CE.ZCollapse;
 using Content.Shared.Gravity;
 using Robust.Shared.Analyzers;
