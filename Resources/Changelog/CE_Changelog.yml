@@ -874,3 +874,22 @@
   id: 1081
   time: '2026-08-28T21:52:17.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/444
+- author: TheShuEd
+  changes:
+  - message: "A new device, the \u201Cdimensional elevator\u201D has been added\u2014\
+      it allows you to create a vertical pair of portals between z-levels, down to\
+      \ the nearest available level below"
+    type: Add
+  id: 1082
+  time: '2026-09-07T19:25:43.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/452
+- author: TheShuEd
+  changes:
+  - message: "The \u201CEnergy Extractor\u201D has been added \u2014 a new, simple\
+      \ generator that accepts energy crystals and efficiently produces energy. This\
+      \ solves the problem of low energy production for the city and makes it possible\
+      \ to start up the power grid even if all the batteries are drained."
+    type: Add
+  id: 1083
+  time: '2026-09-10T13:31:43.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/453
