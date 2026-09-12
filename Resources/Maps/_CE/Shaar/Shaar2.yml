@@ -1,10 +1,10 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 283.1.0
+  engineVersion: 289.0.0
   forkId: ""
   forkVersion: ""
-  time: 08/30/2026 11:26:05
+  time: 09/08/2026 10:13:03
   entityCount: 614
 maps:
 - 1
@@ -141,15 +141,11 @@ entities:
           Oxygen: 21.824879
           Nitrogen: 82.10312
         immutable: True
-    - type: DecalGrid
-      chunkCollection:
-        version: 2
-        nodes: []
     - type: Forensics
       residues: []
       fingerprints: []
       fibers: []
-      dnas: []
+      dNAs: []
     - type: RadiationGridResistance
     - type: ExplosionAirtightGrid
     - type: CEZLevelsLaddersCache
@@ -239,6 +235,8 @@ entities:
             -34,-14: []
             -34,-15: []
             -34,-16: []
+    - type: ChunkContainer
+      chunkEntities: []
 - proto: CEArmchairMetallicPillowPurple
   entities:
   - uid: 647
