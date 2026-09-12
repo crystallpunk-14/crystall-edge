@@ -1,3 +1,4 @@
+using Content.Client._CE.UserInterface.Screens;
 using Content.Client._CE.UserInterface.Systems.Vitals.Widgets;
 using Content.Client.Gameplay;
 using Content.Client.UserInterface.Screens;
@@ -66,6 +67,12 @@ public sealed partial class CEStaminaUiController : UIController, IOnStateEntere
     {
         if (UIManager.ActiveScreen is DefaultGameScreen game)
             return game.StaminaBar;
+
+        if (UIManager.ActiveScreen is SeparatedChatGameScreen separated)
+            return separated.StaminaBar;
+
+        if (UIManager.ActiveScreen is CEMinimalismGameScreen minimalism)
+            return minimalism.StaminaBar;
 
         return null;
     }

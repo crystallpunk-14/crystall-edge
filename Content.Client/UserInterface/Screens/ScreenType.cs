@@ -9,5 +9,9 @@ public enum ScreenType
     /// <summary>
     ///     The classic SS13 user interface.
     /// </summary>
-    Separated
+    Separated,
+    /// <summary>
+    ///     CrystallEdge: minimalist HUD - auto-hiding top bar, fading corner chat, no inline inventory panel.
+    /// </summary>
+    CEMinimalism
 }
