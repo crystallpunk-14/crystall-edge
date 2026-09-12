@@ -1,5 +1,4 @@
 ﻿using Content.Client._CE.Achievements;
-using Content.Client._CE.Roadmap;
 using Content.Client._CE.UserInterface.Screens;
 using Content.Client.FeedbackPopup;
 using Content.Client.Gameplay;
@@ -117,14 +116,6 @@ public sealed partial class EscapeUIController : UIController, IOnStateEntered<G
             CloseEscapeWindow();
             _changelog.ToggleWindow();
         };
-
-        //CrystallEdge roadmap
-        _escapeWindow.CERoadmapButton.OnPressed += _ =>
-        {
-            CloseEscapeWindow();
-            UIManager.GetUIController<CERoadmapUIController>().ToggleRoadmap();
-        };
-        //CrystallEdge roadmap end
 
         //CrystallEdge achievements button
         _escapeWindow.AchievementsButton.OnPressed += _ =>
