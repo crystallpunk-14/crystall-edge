@@ -9,6 +9,7 @@ namespace Content.Client._CE.UserInterface.Systems.Character.Windows;
 public sealed partial class CECharacterWindow : DefaultWindow
 {
     public readonly CECharacterInventoryTab InventoryTab;
+    public readonly CECharacterObjectivesTab ObjectivesTab;
 
     public CECharacterWindow()
     {
@@ -17,5 +18,9 @@ public sealed partial class CECharacterWindow : DefaultWindow
         InventoryTab = new CECharacterInventoryTab();
         Tabs.AddChild(InventoryTab);
         Tabs.SetTabTitle(0, Loc.GetString("ce-character-window-inventory-tab"));
+
+        ObjectivesTab = new CECharacterObjectivesTab();
+        Tabs.AddChild(ObjectivesTab);
+        Tabs.SetTabTitle(1, Loc.GetString("ce-character-window-objectives-tab"));
     }
 }
