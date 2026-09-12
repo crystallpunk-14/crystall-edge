@@ -893,3 +893,12 @@
   id: 1083
   time: '2026-09-10T13:31:43.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/453
+- author: TheShuEd, D1nazzewr
+  changes:
+  - message: Added pack of new markings for Carrins
+    type: Add
+  - message: Elves ears now uncolorable
+    type: Fix
+  id: 1084
+  time: '2026-09-12T14:45:27.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/461
