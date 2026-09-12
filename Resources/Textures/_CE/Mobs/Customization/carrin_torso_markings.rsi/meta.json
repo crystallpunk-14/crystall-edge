@@ -1,46 +1,42 @@
 {
   "version": 1,
   "license": "CC-BY-SA-4.0",
-  "copyright": "Created by TheShuEd (Github)",
+  "copyright": "Created by Dinazewwr (Github)",
   "size": {
     "x": 48,
     "y": 48
   },
   "states": [
     {
-      "name": "1",
+      "name": "main",
       "directions": 4
     },
     {
-      "name": "2",
+      "name": "points",
       "directions": 4
     },
     {
-      "name": "3",
+      "name": "arrow",
       "directions": 4
     },
     {
-      "name": "4",
+      "name": "1_standart",
       "directions": 4
     },
     {
-      "name": "5",
+      "name": "1_titmouse",
       "directions": 4
     },
     {
-      "name": "6",
-      "directions": 4
-    },
-        {
-      "name": "7",
-      "directions": 4
-    },
-        {
-      "name": "8",
+      "name": "2_standart",
       "directions": 4
     },
     {
-      "name": "9",
+      "name": "2_titmouse",
+      "directions": 4
+    },
+    {
+      "name": "3_standart",
       "directions": 4
     }
   ]
