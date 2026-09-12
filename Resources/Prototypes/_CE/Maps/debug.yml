@@ -50,7 +50,7 @@
             - type: Parallax
               parallax: CESky
             - type: MapLight #BEFORE Light Cycle
-              ambientLightColor: "#75e3ff"
+              ambientLightColor: "#adcfd8"
             - type: LightCycle #BEFORE Sun shadow cycle!
               offset: 100
               duration: 300
