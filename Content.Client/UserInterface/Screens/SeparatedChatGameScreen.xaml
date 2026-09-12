@@ -9,7 +9,6 @@
     xmlns:widgets="clr-namespace:Content.Client.UserInterface.Systems.Ghost.Widgets"
     xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
     xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
-    xmlns:inventory="clr-namespace:Content.Client.UserInterface.Systems.Inventory.Widgets"
     xmlns:vitals="clr-namespace:Content.Client._CE.UserInterface.Systems.Vitals.Widgets"
     Name="SeparatedChatHud"
     VerticalExpand="False"
@@ -19,7 +18,9 @@
         <LayoutContainer Name="ViewportContainer" HorizontalExpand="True" VerticalExpand="True">
             <controls:MainViewport Name="MainViewport"/>
             <widgets:GhostGui Name="Ghost" Access="Protected" />
-            <inventory:InventoryGui Name="Inventory" Access="Protected"/>
+            <!-- CrystallEdge: inventory UI removed from the main screen, lives in the character menu instead -
+                 this button opens that menu, in the same spot and texture as the old inventory toggle -->
+            <controls:SlotButton Name="CharacterMenuButton" Access="Public" ButtonTexturePath="Slots/toggle" />
             <hotbar:HotbarGui Name="Hotbar" Access="Protected"/>
             <BoxContainer Name="TopLeftContainer" Orientation="Vertical">
                 <BoxContainer Name="VoteMenu" Access="Public" Orientation="Vertical"/>

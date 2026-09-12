@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
+using Content.Client._CE.UserInterface.Screens;
 using Content.Client.Administration.Managers;
 using Content.Client.Chat;
 using Content.Client.Chat.Managers;
@@ -311,6 +312,12 @@ public sealed partial class ChatUIController : UIController
                 chatBox = separatedScreen.ChatBox;
                 chatSizeRaw = _config.GetCVar(CCVars.SeparatedScreenChatSize);
                 SetChatSizing(chatSizeRaw, separatedScreen, setting);
+                break;
+            //CrystallEdge: minimalist HUD's chat is a CEChatBox (fixed size, not resizable) - fetch
+            //it through the typed property like the other screens instead of the widget-type lookup
+            //below, since that lookup is keyed by exact runtime type and would miss a subclass.
+            case CEMinimalismGameScreen minimalismScreen:
+                chatBox = minimalismScreen.ChatBox;
                 break;
             default:
                 // this could be better?

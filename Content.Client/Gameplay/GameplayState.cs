@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Client._CE.UserInterface.Screens;
 using Content.Client.Changelog;
 using Content.Client.Hands;
 using Content.Client.UserInterface.Controls;
@@ -126,6 +127,9 @@ namespace Content.Client.Gameplay
                     break;
                 case ScreenType.Separated:
                     _uiManager.LoadScreen<SeparatedChatGameScreen>();
+                    break;
+                case ScreenType.CEMinimalism: //CrystallEdge: minimalist HUD option
+                    _uiManager.LoadScreen<CEMinimalismGameScreen>();
                     break;
             }
 

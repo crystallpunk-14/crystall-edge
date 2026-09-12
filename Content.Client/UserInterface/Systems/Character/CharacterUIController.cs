@@ -54,10 +54,11 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
         _window.OnClose += DeactivateButton;
         _window.OnOpen += ActivateButton;
 
-        CommandBinds.Builder
-            .Bind(ContentKeyFunctions.OpenCharacterMenu,
-                InputCmdHandler.FromDelegate(_ => ToggleWindow()))
-            .Register<CharacterUIController>();
+        // CrystallEdge: standard character menu replaced by CECharacterUIController
+        // CommandBinds.Builder
+        //     .Bind(ContentKeyFunctions.OpenCharacterMenu,
+        //         InputCmdHandler.FromDelegate(_ => ToggleWindow()))
+        //     .Register<CharacterUIController>();
     }
 
     public void OnStateExited(GameplayState state)
