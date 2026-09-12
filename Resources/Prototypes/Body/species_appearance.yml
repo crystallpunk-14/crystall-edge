@@ -6,6 +6,7 @@
     layers:
     # Torso
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
+    - map: [ "enum.HumanoidVisualLayers.Special" ] # CrystallEdge: used by CECarrin wings marking, mapped here so generic/test dummies (e.g. MobHuman) don't fail on random-species markings
 
     # Head
     - map: [ "enum.HumanoidVisualLayers.Head" ]

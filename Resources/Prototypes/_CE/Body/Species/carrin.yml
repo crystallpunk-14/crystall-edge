@@ -6,6 +6,9 @@
       limit: 1
       required: false
     enum.HumanoidVisualLayers.FacialHair:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.Head:
       limit: 1
       required: false
     enum.HumanoidVisualLayers.Snout:
@@ -17,6 +20,9 @@
       required: true
       default: [ CECarrinTail1 ]
     enum.HumanoidVisualLayers.Chest:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Special:
       limit: 1
       required: true
       default: [ CECarrinWings1 ]
@@ -47,9 +53,6 @@
     enum.HumanoidVisualLayers.HeadTop:
       limit: 0
       required: false
-    enum.HumanoidVisualLayers.Special:
-      limit: 0
-      required: false
 
 - type: entity
   parent: CEBaseSpeciesAppearance
@@ -63,6 +66,7 @@
       state: wings
       visible: false
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
+    - map: [ "enum.HumanoidVisualLayers.Special" ]
     - map: [ "enum.HumanoidVisualLayers.Head" ]
     - map: [ "enum.HumanoidVisualLayers.Eyes" ]
     - map: [ "enum.HumanoidVisualLayers.RArm" ]
