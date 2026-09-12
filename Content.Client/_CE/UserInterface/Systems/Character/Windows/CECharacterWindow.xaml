@@ -2,7 +2,7 @@
     xmlns="https://spacestation14.io"
     xmlns:windows="clr-namespace:Content.Client._CE.UserInterface.Systems.Character.Windows"
     Title="{Loc 'character-info-title'}"
-    MinWidth="650"
+    MinWidth="480"
     MinHeight="450">
     <TabContainer Name="Tabs" Access="Public" />
 </windows:CECharacterWindow>

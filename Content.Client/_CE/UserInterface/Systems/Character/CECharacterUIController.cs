@@ -3,6 +3,7 @@ using Content.Client.CharacterInfo;
 using Content.Client.Gameplay;
 using Content.Client.UserInterface.Systems.Inventory;
 using Content.Client.UserInterface.Systems.MenuBar.Widgets;
+using Content.Shared.Humanoid;
 using Content.Shared.Input;
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;
@@ -45,6 +46,10 @@ public sealed partial class CECharacterUIController : UIController, IOnStateEnte
 
         _window.InventoryTab.NameLabel.Text = data.EntityName;
         _window.InventoryTab.SpriteView.SetEntity(data.Entity);
+
+        _window.InventoryTab.DetailsLabel.Text = EntityManager.TryGetComponent<HumanoidProfileComponent>(data.Entity, out var profile)
+            ? $"{EntityManager.System<HumanoidProfileSystem>().GetSpeciesRepresentation(profile.Species)}, {profile.Age}, {profile.Gender}"
+            : string.Empty;
     }
 
     public void OnStateEntered(GameplayState state)
@@ -52,7 +57,6 @@ public sealed partial class CECharacterUIController : UIController, IOnStateEnte
         DebugTools.Assert(_window == null);
 
         _window = UIManager.CreateWindow<CECharacterWindow>();
-        LayoutContainer.SetAnchorPreset(_window, LayoutContainer.LayoutPreset.CenterTop);
 
         _window.OnClose += DeactivateButton;
         _window.OnOpen += ActivateButton;
@@ -128,7 +132,7 @@ public sealed partial class CECharacterUIController : UIController, IOnStateEnte
         {
             _characterInfo.RequestCharacterInfo();
             UIManager.GetUIController<InventoryUIController>().ReloadSlots();
-            _window.Open();
+            _window.OpenToLeft();
         }
     }
 }
