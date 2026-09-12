@@ -1,0 +1,60 @@
+using Content.Shared._CE.ZLevels.Core.Components;
+using Content.Shared._CE.ZLevels.Core.EntitySystems;
+using Content.Shared.Gravity;
+using Content.Shared.StatusEffectNew;
+using Robust.Shared.Analyzers;
+
+namespace Content.Shared._CE.StatusEffect.GravityCaught;
+
+public sealed partial class CEGravityCaughtStatusEffectSystem : EntitySystem
+{
+    [Dependency] private CESharedZLevelsSystem _zLevels = default!;
+    [Dependency] private SharedGravitySystem _gravity = default!;
+
+    [SubscribeLocalEvent]
+    private void CheckWeightless(Entity<CEGravityCaughtStatusEffectComponent> ent, ref StatusEffectRelayedEvent<IsWeightlessEvent> args)
+    {
+        if (args.Args.Handled)
+            return;
+
+        var a = args.Args;
+        a.IsWeightless = true;
+        a.Handled = true;
+    }
+
+    [SubscribeLocalEvent]
+    private void OnApplied(Entity<CEGravityCaughtStatusEffectComponent> ent, ref StatusEffectAppliedEvent args)
+    {
+        if (!TryComp<CEZPhysicsComponent>(args.Target, out var zPhyComp))
+            return;
+
+        _zLevels.UpdateGravityState(args.Target);
+        _gravity.RefreshWeightless(args.Target);
+        _zLevels.SetZPosition(args.Target, 0.5f);
+        _zLevels.SetZVelocity(args.Target, 0); //Reset velocity on apply
+    }
+
+    [SubscribeLocalEvent]
+    private void OnRemoved(Entity<CEGravityCaughtStatusEffectComponent> ent, ref StatusEffectRemovedEvent args)
+    {
+        _zLevels.UpdateGravityState(args.Target);
+        _gravity.RefreshWeightless(args.Target);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnCheckGravityState(Entity<CEGravityCaughtStatusEffectComponent> ent, ref StatusEffectRelayedEvent<CECheckGravityEvent> args)
+    {
+        args.Args.Gravity *= 0;
+    }
+
+    [SubscribeLocalEvent]
+    private void OnGetZVelocity(Entity<CEGravityCaughtStatusEffectComponent> ent, ref StatusEffectRelayedEvent<CEGetZVelocityEvent> args)
+    {
+        var currentPosition = args.Args.Target.Comp.LocalPosition;
+        var targetPosition = 0.5f;
+
+        var velocity = (targetPosition - currentPosition) * 0.1f;
+
+        _zLevels.SetZVelocity((args.Args.Target.Owner, args.Args.Target.Comp), velocity);
+    }
+}

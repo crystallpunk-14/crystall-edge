@@ -14,7 +14,7 @@ public sealed partial class ChasmFallingComponent : Component
     /// The entity with <see cref="ChasmComponent"/> this entity is falling into.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public EntityUid FallingInto;
+    public EntityUid? FallingInto; // CrystallEdge: nullable - CE's void-fall (CESharedZLevelsSystem.TryMoveDownOrChasm) has no real chasm entity to point to
 
     /// <summary>
     /// Time it should take for the falling animation (scaling down) to complete.

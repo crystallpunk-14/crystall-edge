@@ -205,7 +205,6 @@
   - !type:TagRequired
     tags:
     - CESalad
-    - CEVegetable
 
 - type: CECookingRecipe
   id: CheeseBread

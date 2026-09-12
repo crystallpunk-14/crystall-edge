@@ -6,12 +6,6 @@ namespace Content.Shared._CE.Science;
 
 public abstract partial class CESharedScienceSystem : EntitySystem
 {
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        InitializeScientificInterest();
-    }
 
     /// <summary>
     /// Whether <paramref name="points"/> holds at least as much of every essence type in

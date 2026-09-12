@@ -8,6 +8,7 @@ using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Nutrition;
 using Content.Shared.StatusEffectNew;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Containers;
 
 namespace Content.Shared._CE.Cooking;
@@ -18,14 +19,9 @@ public abstract partial class CESharedCookingSystem
 
     private void InitTransfer()
     {
-        SubscribeLocalEvent<CEFoodHolderComponent, AfterInteractEvent>(OnAfterInteract);
-        SubscribeLocalEvent<CEFoodHolderComponent, InteractUsingEvent>(OnInteractUsing);
-        SubscribeLocalEvent<CEFoodHolderComponent, SolutionChangedEvent>(OnHolderSolutionChanged);
-        SubscribeLocalEvent<CEFoodHolderComponent, IngestedEvent>(OnEat);
-
-        SubscribeLocalEvent<CEFoodCookerComponent, ContainerIsInsertingAttemptEvent>(OnInsertAttempt);
     }
 
+    [SubscribeLocalEvent]
     private void OnEat(Entity<CEFoodHolderComponent> ent, ref IngestedEvent args)
     {
         if (ent.Comp.FoodData is null)
@@ -40,6 +36,7 @@ public abstract partial class CESharedCookingSystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnInteractUsing(Entity<CEFoodHolderComponent> target, ref InteractUsingEvent args)
     {
         if (!TryComp<CEFoodHolderComponent>(args.Used, out var used))
@@ -48,6 +45,7 @@ public abstract partial class CESharedCookingSystem
         TryTransferFood(target, (args.Used, used));
     }
 
+    [SubscribeLocalEvent]
     private void OnAfterInteract(Entity<CEFoodHolderComponent> ent, ref AfterInteractEvent args)
     {
         if (!TryComp<CEFoodHolderComponent>(args.Target, out var target))
@@ -56,6 +54,7 @@ public abstract partial class CESharedCookingSystem
         TryTransferFood(ent, (args.Target.Value, target));
     }
 
+    [SubscribeLocalEvent]
     private void OnHolderSolutionChanged(Entity<CEFoodHolderComponent> ent, ref SolutionChangedEvent args)
     {
         // Check if this is the solution we care about
@@ -71,6 +70,7 @@ public abstract partial class CESharedCookingSystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnInsertAttempt(Entity<CEFoodCookerComponent> ent, ref ContainerIsInsertingAttemptEvent args)
     {
         if (!Timing.IsFirstTimePredicted)

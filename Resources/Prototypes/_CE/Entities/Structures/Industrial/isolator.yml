@@ -22,6 +22,7 @@
     canCollide: false
   - type: Anchorable
     canAnchorOnOccupied: true
+  - type: CECableCut
   - type: NodeContainer
     nodes:
       isolatorApc:

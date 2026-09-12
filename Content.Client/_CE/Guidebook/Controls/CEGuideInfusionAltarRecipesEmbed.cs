@@ -14,7 +14,7 @@ namespace Content.Client._CE.Guidebook.Controls;
 /// Lists the infusion altar recipes currently known to the local player (round-start recipes plus
 /// anything they've been taught), each as a <see cref="CEGuideInfusionAltarRecipeEmbed"/> card. Recipe
 /// knowledge is per-player hidden server state, so this asks the server fresh via
-/// <see cref="CEInfusionAltarKnowledgeSystem"/> every time the page is opened instead of reading any
+/// <see cref="CEInfusionAltarKnownRecipesSystem"/> every time the page is opened instead of reading any
 /// locally cached data.
 /// </summary>
 [UsedImplicitly]
@@ -23,7 +23,7 @@ public sealed partial class CEGuideInfusionAltarRecipesEmbed : BoxContainer, IDo
     [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private IEntityManager _entity = default!;
 
-    private readonly CEInfusionAltarKnowledgeSystem _knowledge;
+    private readonly CEInfusionAltarKnownRecipesSystem _knownRecipes;
     private readonly Label _emptyLabel;
 
     public CEGuideInfusionAltarRecipesEmbed()
@@ -32,14 +32,14 @@ public sealed partial class CEGuideInfusionAltarRecipesEmbed : BoxContainer, IDo
         IoCManager.InjectDependencies(this);
         MouseFilter = MouseFilterMode.Stop;
 
-        _knowledge = _entity.System<CEInfusionAltarKnowledgeSystem>();
+        _knownRecipes = _entity.System<CEInfusionAltarKnownRecipesSystem>();
         _emptyLabel = new Label { Text = Loc.GetString("ce-guidebook-infusion-altar-none-known") };
     }
 
     public bool TryParseTag(Dictionary<string, string> args, [NotNullWhen(true)] out Control? control)
     {
-        _knowledge.OnRecipesUpdated += OnRecipesUpdated;
-        _knowledge.RequestKnownRecipes();
+        _knownRecipes.OnRecipesUpdated += OnRecipesUpdated;
+        _knownRecipes.RequestKnownRecipes();
 
         AddChild(_emptyLabel);
 
@@ -51,7 +51,7 @@ public sealed partial class CEGuideInfusionAltarRecipesEmbed : BoxContainer, IDo
     {
         base.ExitedTree();
 
-        _knowledge.OnRecipesUpdated -= OnRecipesUpdated;
+        _knownRecipes.OnRecipesUpdated -= OnRecipesUpdated;
     }
 
     private void OnRecipesUpdated(List<CEInfusionAltarKnownRecipeInfo> recipes)

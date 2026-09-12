@@ -1063,6 +1063,33 @@ namespace Content.Server.Database.Migrations.Postgres
                         });
                 });
 
+            modelBuilder.Entity("Content.Server.Database.PlayerAchievement", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("player_achievement_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<Guid>("PlayerUserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("player_user_id");
+
+                    b.Property<string>("ProtoId")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("proto_id");
+
+                    b.HasKey("Id")
+                        .HasName("PK_player_achievement");
+
+                    b.HasIndex("PlayerUserId", "ProtoId")
+                        .IsUnique();
+
+                    b.ToTable("player_achievement", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.Preference", b =>
                 {
                     b.Property<int>("Id")
@@ -1986,6 +2013,19 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("LastSeenHWId");
                 });
 
+            modelBuilder.Entity("Content.Server.Database.PlayerAchievement", b =>
+                {
+                    b.HasOne("Content.Server.Database.Player", "Player")
+                        .WithMany("PlayerAchievements")
+                        .HasForeignKey("PlayerUserId")
+                        .HasPrincipalKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_player_achievement_player_player_user_id");
+
+                    b.Navigation("Player");
+                });
+
             modelBuilder.Entity("Content.Server.Database.Profile", b =>
                 {
                     b.HasOne("Content.Server.Database.Preference", "Preference")
@@ -2198,6 +2238,8 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("AdminWatchlistsReceived");
 
                     b.Navigation("JobWhitelists");
+
+                    b.Navigation("PlayerAchievements");
                 });
 
             modelBuilder.Entity("Content.Server.Database.Preference", b =>

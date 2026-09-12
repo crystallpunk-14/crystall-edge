@@ -28,6 +28,7 @@ using Content.Client.Stylesheets;
 using Content.Client.UserInterface;
 using Content.Client.Viewport;
 using Content.Client.Voting;
+using Content.Shared._CE.Achievements;
 using Content.Shared._CE.Sponsor;
 using Content.Shared.Ame.Components;
 using Content.Shared.FeedbackSystem;
@@ -72,8 +73,6 @@ namespace Content.Client.Entry
         [Dependency] private IVoteManager _voteManager = default!;
         [Dependency] private DocumentParsingManager _documentParsingManager = default!;
         [Dependency] private GhostKickManager _ghostKick = default!;
-        [Dependency] private CEDiscordAuthManager _ceDiscordAuth = default!; //CrystallEdge
-        [Dependency] private ICESponsorManager _ceSponsor = default!; //CrystallEdge
         [Dependency] private ExtendedDisconnectInformationManager _extendedDisconnectInformation = default!;
         [Dependency] private JobRequirementsManager _jobRequirements = default!;
         [Dependency] private ContentLocalizationManager _contentLoc = default!;
@@ -86,6 +85,11 @@ namespace Content.Client.Entry
         [Dependency] private IEntitySystemManager _entitySystemManager = default!;
         [Dependency] private ClientsidePlaytimeTrackingManager _clientsidePlaytimeManager = default!;
         [Dependency] private ClientFeedbackManager _feedbackManager = null!;
+        //CrystallEdge zone
+        [Dependency] private CEDiscordAuthManager _ceDiscordAuth = default!;
+        [Dependency] private ICESponsorManager _ceSponsor = default!;
+        [Dependency] private ICEAchievementsRequirementManager _achievements = null!;
+        //CrystallEdge zone end
 
         public override void PreInit()
         {
@@ -113,7 +117,6 @@ namespace Content.Client.Entry
 
             _prototypeManager.RegisterIgnore("utilityQuery");
             _prototypeManager.RegisterIgnore("utilityCurvePreset");
-            _prototypeManager.RegisterIgnore("accent");
             _prototypeManager.RegisterIgnore("gasReaction");
             _prototypeManager.RegisterIgnore("seed"); // Seeds prototypes are server-only.
             _prototypeManager.RegisterIgnore("objective");
@@ -138,6 +141,12 @@ namespace Content.Client.Entry
             _prototypeManager.RegisterIgnore("codewordGenerator");
             _prototypeManager.RegisterIgnore("codewordFaction");
 
+            // CrystallEdge
+            _prototypeManager.RegisterIgnore("demiplaneLocation");
+            _prototypeManager.RegisterIgnore("demiplaneModifier");
+            _prototypeManager.RegisterIgnore("demiplaneModifierCategory");
+            // CrystallEdge end
+
             _componentFactory.GenerateNetIds();
             _adminManager.Initialize();
             _screenshotHook.Initialize();
@@ -147,6 +156,7 @@ namespace Content.Client.Entry
             _ghostKick.Initialize();
             _extendedDisconnectInformation.Initialize();
             _jobRequirements.Initialize();
+            _achievements.Initialize(); //CrystallEdge
             _playbackMan.Initialize();
             _clientsidePlaytimeManager.Initialize();
 

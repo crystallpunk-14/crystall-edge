@@ -1,0 +1,146 @@
+using Robust.Client.GameObjects;
+using Robust.Client.Graphics;
+using Robust.Shared.Enums;
+using Robust.Shared.Prototypes;
+using System.Numerics;
+using Content.Client.Station;
+using Content.Shared.Station.Components;
+using Content.Shared._CE.Waypointer;
+using Content.Shared.Whitelist;
+using Robust.Client.Player;
+using Robust.Shared.Map.Components;
+using Robust.Shared.Physics.Systems;
+using Robust.Shared.Utility;
+
+namespace Content.Client._CE.Waypointer;
+
+/// <summary>
+/// This Overlay draws the waypointers on the screen.
+/// </summary>
+public sealed partial class CEWaypointerOverlay : Overlay
+{
+    private static readonly ProtoId<ShaderPrototype> UnshadedShader = "unshaded";
+
+    /// <summary>
+    /// Targets closer than this are skipped, since the direction towards them (e.g. an item in the
+    /// player's own inventory) would be degenerate/meaningless to draw.
+    /// </summary>
+    private const float MinDistance = 0.5f;
+
+    [Dependency] private IEntityManager _entity = default!;
+    [Dependency] private IPlayerManager  _player = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+
+    private readonly SharedPhysicsSystem _physics;
+    private readonly SpriteSystem _sprite;
+    private readonly StationSystem _station;
+    private readonly TransformSystem _transform;
+    private readonly ShaderInstance _unshadedShader;
+    private readonly EntityWhitelistSystem _whitelist;
+
+    public override OverlaySpace Space => OverlaySpace.WorldSpace;
+
+    internal CEWaypointerOverlay()
+    {
+        IoCManager.InjectDependencies(this);
+
+        _physics = _entity.System<SharedPhysicsSystem>();
+        _sprite = _entity.System<SpriteSystem>();
+        _station = _entity.System<StationSystem>();
+        _transform = _entity.System<TransformSystem>();
+        _unshadedShader = _prototype.Index(UnshadedShader).Instance();
+        _whitelist = _entity.System<EntityWhitelistSystem>();
+    }
+
+    /// <summary>
+    /// This will draw the waypointers on top of the player.
+    /// </summary>
+    protected override void Draw(in OverlayDrawArgs args)
+    {
+        var handle = args.WorldHandle;
+        handle.UseShader(_unshadedShader); // Waypointers are unshaded.
+
+        if (_player.LocalEntity == null
+            || !_entity.TryGetComponent<CEWaypointerComponent>(_player.LocalEntity, out var waypointer)
+            || !_entity.TryGetComponent<TransformComponent>(_player.LocalEntity, out var playerXform)
+            || playerXform.MapID != args.MapId)
+            return;
+
+        var player = _player.LocalEntity.Value;
+
+        foreach (var waypointerProtoId in waypointer.WaypointerProtoIds)
+        {
+            if (!_prototype.Resolve(waypointerProtoId, out var prototype)
+                // Check if the waypointer works on grid.
+                || !prototype.WorkOnGrid && playerXform.GridUid != null)
+                continue;
+
+            var waypointQuery = _entity.CompRegistryQueryEnumerator(prototype.TrackedComponents);
+            while (waypointQuery.MoveNext(out var target))
+            {
+                // Check if the target fails/passes the whitelist/blacklist.
+                if (_whitelist.IsWhitelistFail(prototype.Whitelist, target)
+                    || _whitelist.IsWhitelistPass(prototype.Blacklist, target))
+                    continue;
+
+                // We need to check for StationData specifically, because the station entity is in the nullsphere.
+                if (_entity.TryGetComponent<StationDataComponent>(target, out var station))
+                {
+                    // Then we get the largest grid, which is in the actual map.
+                    var mainGrid = _station.GetLargestGrid((target, station));
+                    if (mainGrid is not null)
+                        target = mainGrid.Value;
+                }
+
+                // Check if it has the Transform Component
+                if (!_entity.TryGetComponent<TransformComponent>(target, out var targetXform)
+                    // Check if the target is even on the same map.
+                    || targetXform.MapID != args.MapId)
+                    continue;
+
+                _physics.TryGetDistance(player, target, out var distance, playerXform, targetXform);
+
+                // Too close to point in any meaningful direction (e.g. the target is in the player's own inventory).
+                if (distance < MinDistance)
+                    continue;
+
+                if (distance > prototype.MaxRange)
+                    continue;
+
+                // The NTStationWaypointer has 5 stages and 20 range. With calculations, it'll check if it's either in:
+                // 0-39, 40-89, 80-119, 120-159, 160-200 range and use the respective waypointer sprite for it.
+                var increments = prototype.MaxRange / prototype.WaypointerStates;
+                var waypointerState = Math.Truncate(distance / increments) + 1;
+                var stateName = "marker" + waypointerState;
+
+                var rsi = new SpriteSpecifier.Rsi(new ResPath(prototype.RsiPath), stateName);
+                var texture = _sprite.Frame0(rsi);
+
+                var positionA = _transform.GetWorldPosition(playerXform);
+                Vector2 positionB;
+
+                // Check if it's a grid.
+                if (_entity.TryGetComponent<MapGridComponent>(target, out var map))
+                {
+                    var gridData = _transform.GetWorldPositionRotation(targetXform);
+                    // Adding the centerVector will get the position of the center from the grid.
+                    positionB = gridData.WorldPosition + gridData.WorldRotation.RotateVec(map.LocalAABB.Center);
+                }
+                else
+                {
+                    // Else use the current world position.
+                    positionB = _transform.GetWorldPosition(targetXform);
+                }
+
+                var dir = positionA - positionB;
+                var angle = dir.ToWorldAngle();
+
+                // This is to draw the Waypointer sprites directly ontop of the entity sprite.
+                var offset = new Vector2(texture.Height / 2, texture.Width / 2) / EyeManager.PixelsPerMeter;
+
+                handle.DrawTexture(texture, positionA - offset, angle, prototype.Color);
+            }
+            handle.SetTransform(Matrix3x2.Identity);
+        }
+    }
+}

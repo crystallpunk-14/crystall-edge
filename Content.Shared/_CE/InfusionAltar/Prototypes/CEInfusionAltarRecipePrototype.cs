@@ -1,6 +1,6 @@
-using Content.Shared._CE.Knowledge.Prototypes;
 using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.ResourceManager;
+using Content.Shared._CE.Skill.Prototypes;
 using Content.Shared.Destructible.Thresholds;
 using Robust.Shared.Prototypes;
 
@@ -69,12 +69,12 @@ public sealed partial class CEInfusionAltarRecipePrototype : IPrototype
     public TimeSpan RitualDuration = TimeSpan.Zero;
 
     /// <summary>
-    /// Knowledge the character must know for this recipe to appear in the guidebook. If unset,
+    /// Skill the character must know for this recipe to appear in the guidebook. If unset,
     /// the recipe is always shown. Purely informational - this never gates actually crafting at
     /// the altar, which is discovered through experimentation with catalysts, not taught.
     /// </summary>
     [DataField]
-    public ProtoId<CEKnowledgePrototype>? RequiredKnowledge;
+    public ProtoId<CESkillPrototype>? RequiredSkill;
 }
 
 /// <summary>

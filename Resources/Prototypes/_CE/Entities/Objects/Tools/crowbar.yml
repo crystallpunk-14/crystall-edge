@@ -41,6 +41,7 @@
     useSound:
       path: /Audio/Items/crowbar.ogg
   - type: ToolTileCompatible
+  - type: CEZLevelToolTile
   - type: PhysicalComposition
     materialComposition:
       CEIron: 7

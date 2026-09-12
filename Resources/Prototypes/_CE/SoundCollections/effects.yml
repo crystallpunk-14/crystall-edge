@@ -60,3 +60,11 @@
     - /Audio/_CE/Ambience/Lightning/lightning_far1.ogg
     - /Audio/_CE/Ambience/Lightning/lightning_far2.ogg
     - /Audio/_CE/Ambience/Lightning/lightning_far3.ogg
+
+
+- type: soundCollection
+  id: CELurkerRoar
+  files:
+    - /Audio/_CE/Effects/Lurker/roar1.ogg
+    - /Audio/_CE/Effects/Lurker/roar2.ogg
+    - /Audio/_CE/Effects/Lurker/roar3.ogg

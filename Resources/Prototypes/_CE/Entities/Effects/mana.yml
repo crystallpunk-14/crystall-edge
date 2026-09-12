@@ -1,0 +1,29 @@
+- type: entity
+  id: CEEffectManaRestoreGeneric
+  parent: CEEffectAreaHealingTelegraphy
+  name: mana restore impact
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    sprite: _CE/Effects/AreaEffects/mana_restore.rsi
+    layers:
+    - state: effect
+      shader: unshaded
+  - type: PointLight
+    color: "#2b9adf"
+    radius: 1.5
+
+- type: entity
+  id: CEEffectManaDrain
+  parent: CEEffectAreaHealingTelegraphy
+  name: mana drain impact
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    sprite: _CE/Effects/mana_drain.rsi
+    layers:
+    - state: effect
+      shader: unshaded
+  - type: PointLight
+    color: "#6b19af"
+    radius: 1.5

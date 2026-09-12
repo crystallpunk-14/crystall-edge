@@ -208,7 +208,7 @@
 
 - type: CERecipe
   id: CEManaTransferGlove
-  requiredKnowledge: KnowledgeManaTransferGlove
+  requiredSkill: ManaTransferGlove
   parent: CEBaseEngineeringTableRecipe
   category: Tools
   craftTime: 1.0
@@ -245,7 +245,7 @@
 
 - type: CERecipe
   id: CEVehicleHoverboard
-  requiredKnowledge: KnowledgeHoverboard
+  requiredSkill: Hoverboard
   parent: CEBaseEngineeringTableRecipe
   category: Tools
   craftTime: 2.0
@@ -300,7 +300,7 @@
 
 - type: CERecipe
   id: CEThirdArmModuleMining
-  requiredKnowledge: KnowledgeThirdArmMiningModule
+  requiredSkill: ThirdArmMiningModule
   parent: CEBaseEngineeringTableRecipe
   category: Tools
   craftTime: 2.0
@@ -333,6 +333,28 @@
     protoId: CEEnergyCrystalCell
     count: 1
   result: CEThirdArmModuleManipulation
+  resultCount: 1
+
+- type: CERecipe
+  id: CEClothingEyesThaumaturgyGlassesAdvanced
+  requiredSkill: ThaumaturgyGlassesAdvanced
+  parent: CEBaseEngineeringTableRecipe
+  category: Tools
+  craftTime: 2.0
+  requirements:
+  - !type:ProtoIdResource
+    protoId: CEClothingEyesThaumaturgyGlasses
+    count: 1
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 2
+  - !type:StackResource
+    stack: CEGlass
+    count: 1
+  - !type:StackResource
+    stack: CEMachinePartDimensionalMatrix
+    count: 1
+  result: CEClothingEyesThaumaturgyGlassesAdvanced
   resultCount: 1
 
 #MARK: Machine cores
@@ -451,7 +473,7 @@
 # Unlocked by the "Advanced Drilling" science achievement - see achievements.yml.
 - type: CERecipe
   id: CEMachineCoreDrillAdvanced
-  requiredKnowledge: KnowledgeDrillAdvanced
+  requiredSkill: DrillAdvanced
   parent: CEBaseEngineeringTableRecipe
   category: MachineCore
   craftTime: 3.0
@@ -553,6 +575,72 @@
     stack: CEBrassSheet
     count: 5
   result: CEMachineCoreFunnel
+  resultCount: 1
+
+- type: CERecipe
+  id: CEMachineCoreMapProjector
+  parent: CEBaseEngineeringTableRecipe
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartDimensionalMatrix
+    count: 1
+  - !type:StackResource
+    stack: CEGlass
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 1
+  result: CEMachineCoreMapProjector
+  resultCount: 1
+
+- type: CERecipe
+  id: CEMachineCoreDimensionalLift
+  parent: CEBaseEngineeringTableRecipe
+  category: MachineCore
+  craftTime: 2.0
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartDimensionalMatrix
+    count: 2
+  - !type:StackResource
+    stack: CEGlass
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 2
+  result: CEMachineCoreDimensionalLift
+  resultCount: 1
+
+- type: CERecipe
+  id: CEMachineCoreGridProjector
+  parent: CEBaseEngineeringTableRecipe
+  category: MachineCore
+  craftTime: 2.5
+  requirements:
+  - !type:StackResource
+    stack: CEBrassSheet
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartDimensionalMatrix
+    count: 1
+  - !type:StackResource
+    stack: CEGlass
+    count: 5
+  - !type:StackResource
+    stack: CEMachinePartEnergyLine
+    count: 3
+  - !type:StackResource
+    stack: CEIronSheet
+    count: 3
+  result: CEMachineCoreGridProjector
   resultCount: 1
 
 - type: CERecipe
@@ -745,7 +833,7 @@
 
 - type: CERecipe
   id: CEPortableMagicEssenceAttractor
-  requiredKnowledge: KnowledgePortableEssenceAttractor
+  requiredSkill: PortableEssenceAttractor
   parent: CEBaseEngineeringTableRecipe
   category: Tools
   craftTime: 2.0
@@ -767,7 +855,7 @@
 
 - type: CERecipe
   id: CENodeStabilizerSphere
-  requiredKnowledge: KnowledgeNodeStabilizer
+  requiredSkill: NodeStabilizer
   parent: CEBaseEngineeringTableRecipe
   category: Tools
   craftTime: 3.0

@@ -36,6 +36,8 @@
     id: vial
     solution:
       maxVol: 1
+  - type: CEWeatherRefillable
+    solution: vial
   - type: MixableSolution
     solution: vial
   - type: FitsInDispenser

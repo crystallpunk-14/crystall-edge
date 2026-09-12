@@ -1,7 +1,9 @@
 using Content.Shared._CE.MagicEnergy.Components;
 using Content.Shared._CE.MagicEssence.Components;
 using Content.Shared._CE.MagicEssence.Events;
+using Content.Shared._CE.MagicFocus.Systems;
 using Content.Shared._CE.MagicVision.Events;
+using Content.Shared._CE.Waypointer;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Armor;
 using Content.Shared.Atmos;
@@ -21,6 +23,7 @@ using Content.Shared.Gravity;
 using Content.Shared.IdentityManagement.Components;
 using Content.Shared.Implants;
 using Content.Shared.Inventory.Events;
+using Content.Shared.Mindshield;
 using Content.Shared.Lube;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
@@ -54,6 +57,8 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<CEMagicEssenceScannerComponent>>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, CEMagicEssenceScanEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, CECheckMagicVisionEvent>(RelayInventoryEvent);
+        SubscribeLocalEvent<InventoryComponent, CERefreshWaypointersEvent>(RefRelayInventoryEvent);
+        SubscribeLocalEvent<InventoryComponent, CEGetMagicFocusEssenceEvent>(RelayInventoryEvent);
         //CrystallEdge end
 
         SubscribeLocalEvent<InventoryComponent, DamageModifyEvent>(RelayInventoryEvent);
@@ -62,7 +67,6 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, RefreshMovementSpeedModifiersEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, BeforeStripEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, SeeIdentityAttemptEvent>(RelayInventoryEvent);
-        SubscribeLocalEvent<InventoryComponent, ModifyChangedTemperatureEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, GetDefaultRadioChannelEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, RefreshNameModifiersEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, TransformSpeakerNameEvent>(RelayInventoryEvent);
@@ -78,6 +82,7 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, ChameleonControllerOutfitSelectedEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, VoiceMaskNameUpdatedEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, VoiceMaskToggledEvent>(RelayInventoryEvent);
+        SubscribeLocalEvent<InventoryComponent, FakeMindShieldToggleEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, BeforeEmoteEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, StoodEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, DownedEvent>(RelayInventoryEvent);
@@ -99,6 +104,8 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, WieldAttemptEvent>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, UnwieldAttemptEvent>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, IngestionAttemptEvent>(RefRelayInventoryEvent);
+        SubscribeLocalEvent<InventoryComponent, GetMindShieldStatusEvent>(RefRelayInventoryEvent, after: [typeof(SharedSubdermalImplantSystem)]); // ordering so that things like mindshield-flipping hats can be done
+        SubscribeLocalEvent<InventoryComponent, BeforeHeatExchangeEvent>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, ScreechEffectAttemptEvent>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, RefreshNightVisionEvent>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, GluedEffectAttemptEvent>(RefRelayInventoryEvent);
@@ -114,8 +121,7 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<ShowJobIconsComponent>>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<ShowHealthBarsComponent>>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<ShowHealthIconsComponent>>(RefRelayInventoryEvent);
-        SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<ShowHungerIconsComponent>>(RefRelayInventoryEvent);
-        SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<ShowThirstIconsComponent>>(RefRelayInventoryEvent);
+        SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<ShowSatiationIconsComponent>>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<ShowMindShieldIconsComponent>>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<ShowSyndicateIconsComponent>>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<ShowCriminalRecordIconsComponent>>(RefRelayInventoryEvent);

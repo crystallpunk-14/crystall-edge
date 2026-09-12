@@ -1,4 +1,3 @@
-using Content.Server._CE.GameTicking.Components;
 using Content.Server.Antag;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules.Components;
@@ -35,8 +34,6 @@ public sealed partial class AdminVerbSystem
     private static readonly EntProtoId DefaultNinjaRule = "NinjaSpawn";
     private static readonly ProtoId<StartingGearPrototype> PirateGearId = "PirateGear";
 
-    private static readonly EntProtoId CEDefaultThievesRule = "CEGameRuleThieves";
-
     // All antag verbs have names so invokeverb works.
     private void AddAntagVerbs(GetVerbsEvent<Verb> args)
     {
@@ -52,20 +49,6 @@ public sealed partial class AdminVerbSystem
             return;
 
         var targetPlayer = targetActor.PlayerSession;
-
-        var thiefName = Loc.GetString("ce-roles-antag-thief-name");
-        Verb thief = new()
-        {
-            Text = thiefName,
-            Category = VerbCategory.Antag,
-            Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/_CE/Objects/Tools/keys.rsi"), "lockpick_iron"),
-            Act = () =>
-            {
-                _antag.ForceMakeAntag<CEThiefRuleComponent>(targetPlayer, CEDefaultThievesRule);
-            },
-            Impact = LogImpact.High,
-        };
-        args.Verbs.Add(thief);
 
         /* Disable vanilla antags
         var traitorName = Loc.GetString("admin-verb-text-make-traitor");

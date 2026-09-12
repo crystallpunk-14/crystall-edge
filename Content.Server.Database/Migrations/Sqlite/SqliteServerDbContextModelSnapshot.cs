@@ -1002,6 +1002,31 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.ToTable("player", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.PlayerAchievement", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("player_achievement_id");
+
+                    b.Property<Guid>("PlayerUserId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("player_user_id");
+
+                    b.Property<string>("ProtoId")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("proto_id");
+
+                    b.HasKey("Id")
+                        .HasName("PK_player_achievement");
+
+                    b.HasIndex("PlayerUserId", "ProtoId")
+                        .IsUnique();
+
+                    b.ToTable("player_achievement", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.Preference", b =>
                 {
                     b.Property<int>("Id")
@@ -1903,6 +1928,19 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("LastSeenHWId");
                 });
 
+            modelBuilder.Entity("Content.Server.Database.PlayerAchievement", b =>
+                {
+                    b.HasOne("Content.Server.Database.Player", "Player")
+                        .WithMany("PlayerAchievements")
+                        .HasForeignKey("PlayerUserId")
+                        .HasPrincipalKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_player_achievement_player_player_user_id");
+
+                    b.Navigation("Player");
+                });
+
             modelBuilder.Entity("Content.Server.Database.Profile", b =>
                 {
                     b.HasOne("Content.Server.Database.Preference", "Preference")
@@ -2115,6 +2153,8 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("AdminWatchlistsReceived");
 
                     b.Navigation("JobWhitelists");
+
+                    b.Navigation("PlayerAchievements");
                 });
 
             modelBuilder.Entity("Content.Server.Database.Preference", b =>

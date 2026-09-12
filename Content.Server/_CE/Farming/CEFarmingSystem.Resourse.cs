@@ -1,21 +1,15 @@
+using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.Farming.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Map.Components;
 
 namespace Content.Server._CE.Farming;
 
 public sealed partial class CEFarmingSystem
 {
-    private void InitializeResources()
-    {
-        SubscribeLocalEvent<CEPlantEnergyFromLightComponent, CEPlantUpdateEvent>(OnTakeEnergyFromLight);
-        SubscribeLocalEvent<CEPlantMetabolizerComponent, CEPlantUpdateEvent>(OnPlantMetabolizing);
-        SubscribeLocalEvent<CEPlantProducingComponent, CEPlantUpdateEvent>(OnPlantProducing);
-        SubscribeLocalEvent<CEPlantComponent, CEPlantUpdateEvent>(OnGroundUpdate);
 
-        SubscribeLocalEvent<CEPlantGrowingComponent, CEAfterPlantUpdateEvent>(OnPlantGrowing);
-    }
-
+    [SubscribeLocalEvent]
     private void OnGroundUpdate(Entity<CEPlantComponent> ent, ref CEPlantUpdateEvent args)
     {
         var xform = Transform(ent);
@@ -39,6 +33,7 @@ public sealed partial class CEFarmingSystem
         AffectResource(ent, ent.Comp.CachedResource.Value);
     }
 
+    [SubscribeLocalEvent]
     private void OnTakeEnergyFromLight(Entity<CEPlantEnergyFromLightComponent> regeneration, ref CEPlantUpdateEvent args)
     {
         var gainEnergy = false;
@@ -54,6 +49,7 @@ public sealed partial class CEFarmingSystem
             AffectEnergy(args.Plant, regeneration.Comp.Energy);
     }
 
+    [SubscribeLocalEvent]
     private void OnPlantMetabolizing(Entity<CEPlantMetabolizerComponent> ent, ref CEPlantUpdateEvent args)
     {
         if (!SolutionQuery.TryComp(args.Plant, out var solmanager))
@@ -69,15 +65,26 @@ public sealed partial class CEFarmingSystem
             if (!ent.Comp.Metabolization.TryGetValue(reagent.Reagent.ToString(), out var effects))
                 continue;
 
-            var reagentPercentage = reagent.Quantity / ent.Comp.SolutionPerUpdate;
+            var reagentPercentage = (float)(reagent.Quantity / ent.Comp.SolutionPerUpdate);
+            var effectArgs = new CEEntityEffectArgs(
+                EntityManager,
+                Source: args.Plant.Owner,
+                Used: null,
+                Angle: default,
+                Speed: 0f,
+                Target: args.Plant.Owner,
+                Position: null,
+                Power: reagentPercentage);
+
             foreach (var effect in effects)
             {
-                effect.Effect((ent, args.Plant.Comp), reagentPercentage, EntityManager);
+                effect.Effect(effectArgs);
             }
         }
     }
 
-    private void OnPlantProducing(Entity<CEPlantProducingComponent> ent, ref CEPlantUpdateEvent args)
+    [SubscribeLocalEvent]
+    private void OnPlantProducing(Entity<CEPlantProducingComponent> ent, ref CEAfterPlantUpdateEvent args)
     {
         var plant = args.Plant.Comp;
 
@@ -105,6 +112,7 @@ public sealed partial class CEFarmingSystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnPlantGrowing(Entity<CEPlantGrowingComponent> growing, ref CEAfterPlantUpdateEvent args)
     {
         if (args.Plant.Comp.Energy < growing.Comp.EnergyCost)

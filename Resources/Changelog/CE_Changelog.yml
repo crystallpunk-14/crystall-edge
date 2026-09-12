@@ -707,3 +707,170 @@
   id: 1066
   time: '2026-08-15T13:23:55.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/407
+- author: TheShuEd
+  changes:
+  - message: "The \u201CStatic Inventory Position\u201D option has been removed\u2014\
+      the inventory will no longer overlap the action bar"
+    type: Remove
+  - message: Fixed a bug where the action bar overlapped the stamina bar
+    type: Fix
+  id: 1067
+  time: '2026-08-18T16:46:40.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/417
+- author: TheShuEd
+  changes:
+  - message: Night vision now provides a higher minimum illumination level, allowing
+      you to see in the dark without having to attach a light source that is invisible
+      to others.
+    type: Tweak
+  - message: Added Lurker midround ghostrole (only adminabuse rn)
+    type: Add
+  id: 1068
+  time: '2026-08-18T12:24:45.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/418
+- author: TheShuEd
+  changes:
+  - message: Added advanced thaumaturgical glasses that can help you to find essence
+      nodes. Researchable.
+    type: Add
+  - message: Fixed bug when equipping mining goggles explodes server.
+    type: Fix
+  - message: Pipe breakage event radius lowered from 5 to 3 tiles.
+    type: Tweak
+  id: 1069
+  time: '2026-08-19T14:21:24.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/421
+- author: TheShuEd
+  changes:
+  - message: Fixed a bug that caused some walls and fences to appear to be floating
+      in the air
+    type: Fix
+  - message: Fixed a bug that caused hitscans to be invisible from other levels.
+    type: Fix
+  id: 1070
+  time: '2026-08-20T12:26:06.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/425
+- author: TheShuEd
+  changes:
+  - message: Fixed armchairs! They are now pullable, anchorable and deconstructable.
+    type: Fix
+  id: 1071
+  time: '2026-08-20T16:00:01.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/426
+- author: TheShuEd
+  changes:
+  - message: Passive mana regeneration has been added
+    type: Add
+  - message: "The \u201CKnowledge Copying\u201D skill has been added\u2014without\
+      \ it, it is now impossible to create knowledge books. Scientists learn this\
+      \ skill at the start of the round; it can be recorded and passed on to other\
+      \ players."
+    type: Add
+  - message: "Added a new research branch for scientists, \u201CSpellcasting,\u201D\
+      \ which allows them to teach spells to players. Magic focus items (staffs) for\
+      \ casting spells, and much more."
+    type: Add
+  id: 1072
+  time: '2026-08-22T13:16:18.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/427
+- author: TheShuEd
+  changes:
+  - message: The Magic Focus Amulet has been added. It allows you to cast spells while
+      it is equipped in the belt slot.
+    type: Add
+  - message: Infusion rituals have been removed as an intermediate step requiring
+      spell training. Now all you have to do is conduct some research or read a book
+      to gain access to the spell.
+    type: Tweak
+  id: 1073
+  time: '2026-08-24T10:36:32.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/432
+- author: TheShuEd
+  changes:
+  - message: Lampposts can now be unanchored and pulled away.
+    type: Add
+  - message: The cooldown on the Lurker's jump has been increased from 3 to 7 seconds.
+    type: Tweak
+  - message: Flying magical essences now disappear after being absorbed by a magical
+      focus.
+    type: Fix
+  - message: Fixed a bug that caused passive mana regeneration to work only visually
+      and prevented players from casting spells.
+    type: Fix
+  id: 1074
+  time: '2026-08-24T13:55:18.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/433
+- author: TheShuEd
+  changes:
+  - message: We've added the ability to kick people! They fall to the ground in a
+      very funny way while taking stamina damage. Added by default to all races as
+      an alternative right-click attack
+    type: Add
+  - message: A huge number of food orders, as well as orders for growing vegetables
+      in large batches, have been added to the horticulture trading platform.
+    type: Add
+  - message: Vegetables have been removed from the horticulture trading platform.
+      Seeds remain. Enjoy your garden.
+    type: Remove
+  - message: Lightning strikes are now much less frequent during storms.
+    type: Tweak
+  - message: The Lurker's melee attacks now consume stamina as intended.
+    type: Fix
+  - message: Fixed a bug that prevented players from making mashed potatoes
+    type: Fix
+  - message: Fixed a bug that allowed infinite crafting of ash from planks.
+    type: Fix
+  id: 1075
+  time: '2026-08-24T21:15:31.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/436
+- author: TheShuEd
+  changes:
+  - message: Rain and storm weather are now filling barrels, plants, and bottles with
+      water.
+    type: Add
+  id: 1076
+  time: '2026-08-25T12:50:22.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/439
+- author: TheShuEd
+  changes:
+  - message: "The Academy can learn two new spells: \u201CFeather fall\u201D and \u201C\
+      Plant Growth\u201D."
+    type: Add
+  - message: The time required to assume command roles has been increased.
+    type: Tweak
+  - message: Shaar Map was updated.
+    type: Tweak
+  id: 1077
+  time: '2026-08-26T10:14:34.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/441
+- author: TheShuEd
+  changes:
+  - message: Farming plants now can DIE without water. Just like in CE1.
+    type: Add
+  id: 1078
+  time: '2026-08-27T15:38:47.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/442
+- author: TheShuEd
+  changes:
+  - message: Using a crowbar or other tools capable of breaking tiles while your character
+      is looking up now allows you to break the ceiling.
+    type: Add
+  id: 1079
+  time: '2026-08-27T15:42:28.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/434
+- author: TheShuEd
+  changes:
+  - message: Added mop.
+    type: Add
+  id: 1080
+  time: '2026-08-27T18:34:44.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/443
+- author: TheShuEd
+  changes:
+  - message: 'Two types of island map projectors have been added: a public map projector
+      and a projector that displays the entire network of wires. Supports z-levels
+      visualization.'
+    type: Add
+  id: 1081
+  time: '2026-08-28T21:52:17.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/444

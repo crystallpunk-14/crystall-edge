@@ -1,4 +1,5 @@
 using System.Linq;
+using Robust.Shared.Analyzers;
 using Content.Server._CE.ZLevels.Core;
 using Content.Server.Station.Systems;
 using Content.Shared._CE.MagicEssence.Components;
@@ -49,14 +50,6 @@ public sealed partial class CEMagicEssenceNodeSystem : EntitySystem
     private const float ReleaseScatterMaxSpeed = 3f;
 
     private readonly EntProtoId _magicEssenceNodeEntity = "CEMagicEssenceNode";
-
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEMagicEssenceNodeComponent, MapInitEvent>(OnNodeMapInit);
-        SubscribeLocalEvent<CEMagicEssenceNodeComponent, TimedDespawnEvent>(OnNodeTimedDespawn);
-    }
 
     public override void Update(float frameTime)
     {
@@ -119,6 +112,7 @@ public sealed partial class CEMagicEssenceNodeSystem : EntitySystem
     /// research points, rolling <see cref="CEMagicEssenceNodeComponent.InterestPoints"/> distributed
     /// across its 3 rolled aspects 70/20/10.
     /// </summary>
+    [SubscribeLocalEvent]
     private void OnNodeMapInit(Entity<CEMagicEssenceNodeComponent> ent, ref MapInitEvent args)
     {
         ent.Comp.EssenceA = _essence.GetRandomEssenceType();
@@ -149,6 +143,7 @@ public sealed partial class CEMagicEssenceNodeSystem : EntitySystem
     /// When a node's lifetime runs out, releases whatever essence reagent is still pooled in its
     /// solution back into the air as floating essence entities - see <see cref="ReleaseEssence"/>.
     /// </summary>
+    [SubscribeLocalEvent]
     private void OnNodeTimedDespawn(Entity<CEMagicEssenceNodeComponent> ent, ref TimedDespawnEvent args)
     {
         ReleaseEssence(ent);

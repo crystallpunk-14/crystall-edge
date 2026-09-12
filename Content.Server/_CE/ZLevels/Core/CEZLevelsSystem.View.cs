@@ -1,4 +1,4 @@
-﻿/*
+/*
  * This file is sublicensed under MIT License
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
@@ -9,6 +9,7 @@ using Content.Shared.Actions;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Popups;
 using Robust.Server.GameObjects;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -30,13 +31,25 @@ public sealed partial class CEZLevelsSystem
 
     private void InitView()
     {
-        SubscribeLocalEvent<PlayerAttachedEvent>(OnPlayerAttached);
-        SubscribeLocalEvent<PlayerDetachedEvent>(OnPlayerDetached);
+    }
 
-        SubscribeLocalEvent<CEZLevelViewerComponent, MapInitEvent>(OnViewerInit);
-        SubscribeLocalEvent<CEZLevelViewerComponent, ComponentRemove>(OnCompRemove);
+    /// <summary>
+    /// A viewer's eye stack is built from the maps surrounding it, so it goes stale the moment
+    /// the network gains or loses a level. Rebuild it for everyone inside that network.
+    /// </summary>
+    [SubscribeLocalEvent]
+    private void OnMapNetworkUpdated(Entity<CEZMapNetworkComponent> ent, ref CEZLevelMapNetworkUpdatedEvent args)
+    {
+        var query = EntityQueryEnumerator<CEZLevelViewerComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var viewer, out var xform))
+        {
+            if (xform.MapUid is not { } mapUid ||
+                !TryComp<CEZMapComponent>(mapUid, out var zMap) ||
+                zMap.NetworkUid != ent.Owner)
+                continue;
 
-        SubscribeLocalEvent<CEZLevelViewerComponent, MapUidChangedEvent>(OnViewerMapUidChanged);
+            UpdateViewer((uid, viewer));
+        }
     }
 
     private void UpdateView(float frameTime)
@@ -48,19 +61,26 @@ public sealed partial class CEZLevelsSystem
         var query = EntityQueryEnumerator<CEZLevelViewerComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out var viewer, out var xform))
         {
+            var worldPosition = _transform.GetWorldPosition(xform);
+
             foreach (var eye in viewer.Eyes)
             {
-                _transform.SetWorldPosition(eye, _transform.GetWorldPosition(xform));
+                if (TerminatingOrDeleted(eye))
+                    continue;
+
+                _transform.SetWorldPosition(eye, worldPosition);
             }
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnViewerInit(Entity<CEZLevelViewerComponent> ent, ref MapInitEvent args)
     {
         _actions.AddAction(ent, ref ent.Comp.ActionEntity, ent.Comp.ActionId);
         _meta.AddFlag(ent, MetaDataFlags.ExtraTransformEvents);
     }
 
+    [SubscribeLocalEvent]
     private void OnCompRemove(Entity<CEZLevelViewerComponent> ent, ref ComponentRemove args)
     {
         _actions.RemoveAction(ent.Comp.ActionEntity);
@@ -72,17 +92,20 @@ public sealed partial class CEZLevelsSystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnPlayerAttached(PlayerAttachedEvent ev)
     {
         var viewer = EnsureComp<CEZLevelViewerComponent>(ev.Entity);
         UpdateViewer((ev.Entity, viewer));
     }
 
+    [SubscribeLocalEvent]
     private void OnPlayerDetached(PlayerDetachedEvent ev)
     {
         RemComp<CEZLevelViewerComponent>(ev.Entity);
     }
 
+    [SubscribeLocalEvent]
     private void OnViewerMapUidChanged(Entity<CEZLevelViewerComponent> ent, ref MapUidChangedEvent args)
     {
         UpdateViewer(ent);
@@ -93,7 +116,8 @@ public sealed partial class CEZLevelsSystem
         var eyes = ent.Comp.Eyes;
         foreach (var eye in ent.Comp.Eyes)
         {
-            QueueDel(eye);
+            if (!TerminatingOrDeleted(eye))
+                QueueDel(eye);
         }
         eyes.Clear();
 

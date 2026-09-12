@@ -1,0 +1,30 @@
+- type: entity
+  id: CESpellcastingAmulet
+  parent: BaseItem
+  name: magic focus amulet
+  description: An ergonomic focusing option for casting spells. The most basic option for general use.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Normal
+  - type: Sprite
+    sprite: _CE/Objects/Tools/amulets.rsi
+    layers:
+    - state: focus
+    - state: unshaded
+      shader: unshaded
+      color: purple
+  - type: Clothing
+    equipDelay: 0.25
+    unequipDelay: 0.25
+    quickEquip: false
+    equipWhileMoving: true
+    slots:
+    - BELT
+  - type: StaticPrice
+    price: 30
+  - type: CEMagicFocus
+    minimumVolume: 10
+  - type: CEMagicFocusClothing
+    slots: 
+    - BELT

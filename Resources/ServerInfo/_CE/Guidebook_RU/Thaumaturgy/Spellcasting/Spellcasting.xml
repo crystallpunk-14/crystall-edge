@@ -1,0 +1,17 @@
+<Document>
+# Магическая фокусировка
+
+Использование заклинаний требует предмет-фокусировку, заряженную эссенцией:
+
+<Box>
+<GuideEntityEmbed Entity="CECastingStaffBasic"/>
+<GuideEntityEmbed Entity="CESpellcastingAmulet"/>
+</Box>
+
+Вы можете кликнуть фокусировкой по любому хранилищу эссенции (склянки, ноды) чтобы впитать и зарядить фокусировку.
+
+<Box>
+<GuideEntityEmbed Entity="CEGuidebookEssenceNodeDummy" Caption=""/>
+</Box>
+
+</Document>

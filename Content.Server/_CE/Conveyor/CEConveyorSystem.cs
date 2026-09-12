@@ -3,6 +3,7 @@ using Content.Server.Physics.Controllers;
 using Content.Server.Power.EntitySystems;
 using Content.Shared.Conveyor;
 using Content.Shared.Power;
+using Robust.Shared.Analyzers;
 
 namespace Content.Server.Physics.Controllers;
 
@@ -11,9 +12,9 @@ public sealed partial class ConveyorController
 {
     private void InitCrystallEdge()
     {
-        SubscribeLocalEvent<CEConveyorComponent, PowerChangedEvent>(OnPowerChange);
     }
 
+    [SubscribeLocalEvent]
     private void OnPowerChange(Entity<CEConveyorComponent> ent, ref PowerChangedEvent args)
     {
         if (!TryComp<ConveyorComponent>(ent, out var conv))

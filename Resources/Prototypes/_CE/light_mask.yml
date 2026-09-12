@@ -1,0 +1,7 @@
+- type: lightMask
+  id: CECrystalCone
+  maskPath: /Textures/_CE/Effects/LightMasks/crystal_cone.png
+  lightCones:
+  - direction: 0
+    innerWidth: 30
+    outerWidth: 60

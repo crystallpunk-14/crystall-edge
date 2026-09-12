@@ -169,3 +169,19 @@
   service: !type:CEBuyItemsService
     product: CEVialSkullReinforced
     count: 1
+
+- type: tradingPosition
+  id: CECastingStaffBasic
+  faction: ImperialChancellery
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CECastingStaffBasic
+    count: 1
+
+- type: tradingPosition
+  id: CESpellcastingAmulet
+  faction: ImperialChancellery
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CESpellcastingAmulet
+    count: 1

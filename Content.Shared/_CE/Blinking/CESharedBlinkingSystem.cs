@@ -7,6 +7,7 @@
 
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Mobs;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -18,24 +19,19 @@ public abstract partial class CESharedBlinkingSystem : EntitySystem
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] protected SharedAppearanceSystem Appearance = default!;
 
-    /// <inheritdoc/>
-    public override void Initialize()
-    {
-        SubscribeLocalEvent<CEBlinkerComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<CEBlinkerComponent, MobStateChangedEvent>(OnMobStateChanged);
-        SubscribeLocalEvent<CEBlinkerComponent, SleepStateChangedEvent>(OnSleepStateChanged);
-    }
-
+    [SubscribeLocalEvent]
     private void OnMapInit(Entity<CEBlinkerComponent> ent, ref MapInitEvent args)
     {
         ResetBlink(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnMobStateChanged(Entity<CEBlinkerComponent> ent, ref MobStateChangedEvent args)
     {
         SetEnabled(ent.AsNullable(), args.NewMobState != MobState.Dead);
     }
 
+    [SubscribeLocalEvent]
     private void OnSleepStateChanged(Entity<CEBlinkerComponent> ent, ref SleepStateChangedEvent args)
     {
         Appearance.SetData(ent.Owner, CEBlinkVisuals.EyesClosed, args.FellAsleep);

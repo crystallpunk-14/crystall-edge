@@ -508,10 +508,6 @@ ent-CEFoodTomatoesSlice = ломтик помидора
 ent-CEFoodApple = яблоко
     .desc = Фрукт для любителей быстрого перекуса.
 
-ent-CEFoodAppleFalling = { ent-CEFoodApple }
-    .desc = { ent-CEFoodApple.desc }
-    .suffix = Падающее
-
 ent-CEFoodAppleSlice = ломтик яблока
     .desc = Маленькие ломтики для одноразового употребления.
 

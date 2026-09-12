@@ -1,22 +1,20 @@
-using System.Linq;
-using Content.Shared._CE.EntityEffect;
-using Content.Shared._CE.Knowledge;
 using Content.Shared._CE.Science.Prototypes;
+using Content.Shared._CE.Skill;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.Science;
 
 public abstract partial class CESharedScienceSystem
 {
-    [Dependency] private CEKnowledgeSystem _knowledge = default!;
+    [Dependency] private CESharedSkillSystem _skill = default!;
 
     /// <summary>
-    /// Whether <paramref name="actor"/> has already personally learned the knowledge this discovery
+    /// Whether <paramref name="actor"/> has already personally learned the skill this discovery
     /// grants.
     /// </summary>
     public bool IsDiscoveryKnown(EntityUid actor, CEScienceDiscoveryPrototype discovery)
     {
-        return _knowledge.Knows(actor, discovery.Knowledge);
+        return _skill.HaveSkill(actor, discovery.Skill);
     }
 
     /// <summary>
@@ -25,8 +23,7 @@ public abstract partial class CESharedScienceSystem
     /// </summary>
     public bool DiscoveryRequirementsMet(EntityUid actor, CEScienceDiscoveryPrototype discovery)
     {
-        var args = new CEEntityEffectArgs(EntityManager, actor, null, Angle.Zero, 0f, actor, null);
-        return discovery.Requirements.All(requirement => requirement.Passes(args));
+        return _skill.SkillConditionsMet(actor, discovery.Skill);
     }
 
     /// <summary>

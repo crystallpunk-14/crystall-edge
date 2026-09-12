@@ -243,9 +243,8 @@
       - anim: ClawAttack1
       - anim: ClawAttack2
       - anim: ClawAttack3
-  - type: CEWeaponStaminaCost
-    costs:
-      Primary: 5
+      Secondary:
+      - anim: ClawCarrinKick
   # Flying birb!
   - type: CESkinColoredLayers
     maps:

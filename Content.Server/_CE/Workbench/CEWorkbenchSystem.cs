@@ -1,8 +1,9 @@
 using System.Numerics;
+using Robust.Shared.Analyzers;
 using Content.Server.DoAfter;
 using Content.Server.Popups;
 using Content.Server.Stack;
-using Content.Shared._CE.Knowledge;
+using Content.Shared._CE.Skill;
 using Content.Shared._CE.Workbench;
 using Content.Shared._CE.Workbench.Prototypes;
 using Content.Shared.UserInterface;
@@ -29,7 +30,7 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
     [Dependency] private ContainerSystem _container = default!;
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private PhysicsSystem _physics = default!;
-    [Dependency] private CEKnowledgeSystem _knowledge = default!;
+    [Dependency] private CESharedSkillSystem _skill = default!;
 
     private EntityQuery<CEWorkbenchComponent> _workbenchQuery;
 
@@ -41,12 +42,9 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
         InitUserCrafter();
 
         _workbenchQuery = GetEntityQuery<CEWorkbenchComponent>();
-
-        SubscribeLocalEvent<CEWorkbenchComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<CEWorkbenchComponent, BeforeActivatableUIOpenEvent>(OnBeforeUIOpen);
-        SubscribeLocalEvent<CEWorkbenchComponent, CEWorkbenchUiClickRecipeMessage>(OnSetRecipe);
     }
 
+    [SubscribeLocalEvent]
     private void OnMapInit(Entity<CEWorkbenchComponent> ent, ref MapInitEvent args)
     {
         foreach (var recipe in _proto.EnumeratePrototypes<CEWorkbenchRecipePrototype>())
@@ -61,12 +59,14 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnBeforeUIOpen(Entity<CEWorkbenchComponent> ent, ref BeforeActivatableUIOpenEvent args)
     {
         ent.Comp.CurrentUser = args.User;
         UpdateUIRecipes((ent, ent.Comp));
     }
 
+    [SubscribeLocalEvent]
     private void OnSetRecipe(Entity<CEWorkbenchComponent> ent, ref CEWorkbenchUiClickRecipeMessage args)
     {
         if (!ent.Comp.Recipes.Contains(args.Recipe))
@@ -92,12 +92,12 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
             if (!_proto.Resolve(recipeId, out var indexedRecipe))
                 continue;
 
-            // Only show recipes the current user knows, unless the recipe has no knowledge
+            // Only show recipes the current user knows, unless the recipe has no skill
             // requirement at all (available to everyone).
             if (entity.Comp.CurrentUser is null)
                 continue;
 
-            if (indexedRecipe.RequiredKnowledge is { } required && !_knowledge.Knows(entity.Comp.CurrentUser.Value, required))
+            if (indexedRecipe.RequiredSkill is { } required && !_skill.HaveSkill(entity.Comp.CurrentUser.Value, required))
                 continue;
 
             var canCraft = true;
@@ -121,8 +121,8 @@ public sealed partial class CEWorkbenchSystem : EntitySystem
 
     private bool CanCraftRecipe(CEWorkbenchRecipePrototype recipe, HashSet<EntityUid> entities, EntityUid? user = null)
     {
-        // Validate the user knows the recipe (server-side), unless it has no knowledge requirement.
-        if (recipe.RequiredKnowledge is { } required && user is { } u && !_knowledge.Knows(u, required))
+        // Validate the user knows the recipe (server-side), unless it has no skill requirement.
+        if (recipe.RequiredSkill is { } required && user is { } u && !_skill.HaveSkill(u, required))
             return false;
 
         foreach (var req in recipe.Requirements)

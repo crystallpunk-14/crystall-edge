@@ -1,0 +1,9 @@
+- type: skill
+  id: ArcaneEngineeringSkillBase
+  abstract: true
+  book: CEBaseScienceBookArcaneEngineering
+
+- type: skill
+  id: SpellcastingSkillBase
+  abstract: true
+  book: CEBaseScienceBookSpellcasting

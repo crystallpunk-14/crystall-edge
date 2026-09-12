@@ -29,3 +29,16 @@
   - type: CEPlantAdditionalProduceOnInteract
     produce:
       CEFoodCorn: 4
+  - type: CEPlantDying
+    deadEntity: CEPlantCornDead
+
+- type: entity
+  parent: CEPlantDeadBase
+  id: CEPlantCornDead
+  suffix: SPRITE TODO
+  name: dead corn
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Nature/Farm/cabbage.rsi
+    state: death
+    color: red

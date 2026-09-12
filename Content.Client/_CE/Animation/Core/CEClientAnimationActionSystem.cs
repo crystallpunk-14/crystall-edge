@@ -1,7 +1,8 @@
-﻿using Content.Shared._CE.Animation.Core;
+using Content.Shared._CE.Animation.Core;
 using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.EntityEffect.Effects;
 using Robust.Client.Player;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 
@@ -12,12 +13,7 @@ public sealed partial class CEClientAnimationActionSystem : CESharedAnimationAct
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IPlayerManager _player = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-        SubscribeNetworkEvent<CEEntityAnimationEvent>(OnEntityAnimation);
-    }
-
+    [SubscribeNetworkEvent]
     private void OnEntityAnimation(CEEntityAnimationEvent ev)
     {
         var entity = GetEntity(ev.Entity);

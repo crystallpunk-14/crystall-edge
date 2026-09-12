@@ -2,11 +2,6 @@ ce-verb-categories-admin-skill-add = Выдать навык
 ce-verb-categories-admin-skill-remove = Удалить навык
 
 ce-skill-info-title = Навыки
-ce-game-hud-open-skill-menu-button-tooltip = Деревья навыков
-
-ce-skill-menu-learn-button = Изучить навык
-ce-skill-menu-learncost = [color=yellow]Требуется {$type}:[/color]
-ce-skill-menu-free = [color=green]Этот навык врождённый для вашего персонажа, и не тратит очков навыков![/color]
 
 ce-skill-desc-add-mana = Увеличивает объем маны вашего персонажа на {$mana}.
 ce-skill-desc-add-stamina = Увеличивает выносливость вашего персонажа на {$stamina}.

@@ -26,4 +26,15 @@
   - type: CEPlantAdditionalProduceOnInteract
     produce:
       CEFoodOnion: 4
+  - type: CEPlantDying
+    deadEntity: CEPlantOnionDead
+
+- type: entity
+  parent: CEPlantDeadBase
+  id: CEPlantOnionDead
+  name: dead onion
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Nature/Farm/onion.rsi
+    state: death
 

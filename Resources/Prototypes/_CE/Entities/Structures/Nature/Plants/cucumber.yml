@@ -34,3 +34,14 @@
     toolWhitelist:
       tags:
       - CESharp
+  - type: CEPlantDying
+    deadEntity: CEPlantCucumberDead
+
+- type: entity
+  parent: CEPlantDeadBase
+  id: CEPlantCucumberDead
+  name: dead cucumber
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Nature/Farm/cucumber.rsi
+    state: death

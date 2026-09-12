@@ -1,4 +1,4 @@
-using Content.Shared._CE.Knowledge.Prototypes;
+using Content.Shared._CE.Skill.Prototypes;
 using Content.Shared.DoAfter;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -13,7 +13,7 @@ namespace Content.Shared._CE.Pen;
 public enum CEPenActionKind : byte
 {
     Write,
-    RecordKnowledge,
+    RecordSkill,
 }
 
 /// <summary>
@@ -44,43 +44,43 @@ public enum CEPenActionsUiKey : byte
 
 /// <summary>
 /// Sent by the client when the player picks a pen action from the radial menu (or its nested
-/// knowledge submenu, for <see cref="CEPenActionKind.RecordKnowledge"/>).
+/// skill submenu, for <see cref="CEPenActionKind.RecordSkill"/>).
 /// </summary>
 [Serializable, NetSerializable]
 public sealed class CEPenActionsMessage(
     CEPenActionKind kind,
-    ProtoId<CEKnowledgePrototype>? knowledge = null)
+    ProtoId<CESkillPrototype>? skill = null)
     : BoundUserInterfaceMessage
 {
     public readonly CEPenActionKind Kind = kind;
-    public readonly ProtoId<CEKnowledgePrototype>? Knowledge = knowledge;
+    public readonly ProtoId<CESkillPrototype>? Skill = skill;
 }
 
 /// <summary>
-/// Raised on the user (where <c>CEKnowledgeComponent</c> lives) to request starting the "record
-/// knowledge" do-after, once the player has picked which knowledge to write down.
+/// Raised on the user (where <c>CESkillStorageComponent</c> lives) to request starting the "record
+/// skill" do-after, once the player has picked which skill to write down.
 /// </summary>
-public sealed class CEPenRecordKnowledgeRequestEvent(
+public sealed class CEPenRecordSkillRequestEvent(
     EntityUid pen,
     EntityUid target,
-    ProtoId<CEKnowledgePrototype> knowledge)
+    ProtoId<CESkillPrototype> skill)
     : EntityEventArgs
 {
     public readonly EntityUid Pen = pen;
     public readonly EntityUid Target = target;
-    public readonly ProtoId<CEKnowledgePrototype> Knowledge = knowledge;
+    public readonly ProtoId<CESkillPrototype> Skill = skill;
 }
 
 /// <summary>
-/// DoAfter fired when recording a piece of knowledge into a book with a pen finishes.
+/// DoAfter fired when recording a skill into a book with a pen finishes.
 /// </summary>
 [Serializable, NetSerializable]
-public sealed partial class CEPenRecordKnowledgeDoAfterEvent : SimpleDoAfterEvent
+public sealed partial class CEPenRecordSkillDoAfterEvent : SimpleDoAfterEvent
 {
-    public readonly ProtoId<CEKnowledgePrototype> Knowledge;
+    public readonly ProtoId<CESkillPrototype> Skill;
 
-    public CEPenRecordKnowledgeDoAfterEvent(ProtoId<CEKnowledgePrototype> knowledge)
+    public CEPenRecordSkillDoAfterEvent(ProtoId<CESkillPrototype> skill)
     {
-        Knowledge = knowledge;
+        Skill = skill;
     }
 }

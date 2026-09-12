@@ -1,6 +1,7 @@
 using Content.Shared._CE.Paper;
 using Content.Shared.Interaction;
 using Content.Shared.UserInterface;
+using Robust.Shared.Analyzers;
 
 namespace Content.Shared._CE.Pen;
 
@@ -15,14 +16,7 @@ public sealed partial class CEPenSystem : EntitySystem
     [Dependency] private SharedUserInterfaceSystem _ui = default!;
     [Dependency] private CEPaperSystem _paper = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEPenComponent, AfterInteractEvent>(OnAfterInteract);
-        SubscribeLocalEvent<CEPenComponent, CEPenActionsMessage>(OnPenActionsMessage);
-    }
-
+    [SubscribeLocalEvent]
     private void OnAfterInteract(Entity<CEPenComponent> ent, ref AfterInteractEvent args)
     {
         if (args.Handled || !args.CanReach || args.Target is not { } target)
@@ -36,7 +30,7 @@ public sealed partial class CEPenSystem : EntitySystem
         ent.Comp.PendingTarget = target;
 
         // A lone "write" action needs no menu - anything else (including a lone "record
-        // knowledge" action, which still needs the achievement submenu) opens the radial menu.
+        // skill" action, which still needs the skill submenu) opens the radial menu.
         if (actions.Count == 1 && actions[0].Kind == CEPenActionKind.Write)
         {
             _paper.TryWrite(target, args.User, ent.Owner);
@@ -59,6 +53,7 @@ public sealed partial class CEPenSystem : EntitySystem
         return ev.Actions;
     }
 
+    [SubscribeLocalEvent]
     private void OnPenActionsMessage(Entity<CEPenComponent> ent, ref CEPenActionsMessage args)
     {
         if (ent.Comp.PendingTarget is not { } target)
@@ -69,9 +64,9 @@ public sealed partial class CEPenSystem : EntitySystem
             case CEPenActionKind.Write:
                 _paper.TryWrite(target, args.Actor, ent.Owner);
                 break;
-            case CEPenActionKind.RecordKnowledge:
-                if (args.Knowledge is { } knowledge)
-                    RaiseLocalEvent(args.Actor, new CEPenRecordKnowledgeRequestEvent(ent.Owner, target, knowledge));
+            case CEPenActionKind.RecordSkill:
+                if (args.Skill is { } skill)
+                    RaiseLocalEvent(args.Actor, new CEPenRecordSkillRequestEvent(ent.Owner, target, skill));
                 break;
         }
     }

@@ -26,4 +26,15 @@
   - type: CEPlantAdditionalProduceOnInteract
     produce:
       CEFoodPepper: 4
+  - type: CEPlantDying
+    deadEntity: CEPlantPepperDead
+
+- type: entity
+  parent: CEPlantDeadBase
+  id: CEPlantPepperDead
+  name: dead pepper
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Nature/Farm/pepper.rsi
+    state: death
 

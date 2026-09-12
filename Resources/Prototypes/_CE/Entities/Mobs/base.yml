@@ -1,3 +1,52 @@
+#MARK: Basic mobs
+
+- type: entity
+  parent:
+  - BaseMob
+  - CEMobDamageable
+  - CEMobTemperature
+  id: CEMobSimple
+  save: false
+  abstract: true
+  components:
+  - type: CanMoveInAir
+  - type: CEAnimationController
+  - type: CEIdleAnimation
+    animation:
+      scaleAnimation:
+      - time: 0
+        scale: 1.01, 0.99
+      - time: 2
+        scale: 0.99, 1.01
+      - time: 4
+        scale: 1.01, 0.99
+      offsetAnimation:
+      - time: 0
+        offset: 0, 0
+      - time: 2
+        offset: 0, 0.01
+      - time: 4
+        offset: 0, 0
+  - type: CEWalkingAnimation
+    animation:
+      scaleAnimation:
+      - time: 0
+        scale: 1.02, 0.98
+      - time: 0.2
+        scale: 0.98, 1.02
+      - time: 0.3
+        scale: 1.02, 0.98
+      offsetAnimation:
+      - time: 0
+        offset: 0, 0
+      - time: 0.2
+        offset: 0, 0.02
+      - time: 0.3
+        offset: 0, 0
+
+
+#MARK: basic parts
+
 - type: entity
   save: false
   id: CEMobDamageable
@@ -23,7 +72,7 @@
       - !type:SpawnEntitiesBehavior
         spawnInContainer: true
         spawn:
-          Ash: #TODO - CE Ash
+          CEAsh1:
             min: 2
             max: 3
       - !type:BurnBodyBehavior { }
@@ -77,6 +126,34 @@
         Asphyxiation: -1.0
 
 - type: entity
+  id: CEMobCombat
+  abstract: true
+  categories: [ ForkFiltered ]
+  components:
+  - type: CombatMode
+  - type: CEWeapon
+    range: 0.4
+    effectSlots:
+      OnHit:
+      - !type:WeaponArcAttack
+        arcWidth: 40
+        effects:
+        - !type:Damage
+          damage:
+            types:
+              Blunt: 5
+    animations:
+      Primary:
+      - anim: Punch1
+      - anim: Punch2
+      Secondary:
+      - anim: Kick
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 10
+      Secondary: 20
+
+- type: entity
   id: CEMobMagical
   abstract: true
   categories: [ ForkFiltered ]
@@ -84,6 +161,9 @@
   - type: Battery
     maxCharge: 100
     startingCharge: 100
+  - type: BatterySelfRecharger
+    autoRechargeRate: 1
+    autoRechargePauseTime: 1
   - type: RadiationReceiver
   - type: CEEnergyRadiationRegeneration
   - type: CEEnergyOverchargeDamage
@@ -103,7 +183,7 @@
     normalBodyTemperature: 310.15
     thermalRegulationTemperatureThreshold: 2
   - type: Temperature
-    currentTemperature: 310.15
+    temperature: 310.15
     specificHeat: 42
   - type: TemperatureDamage
     heatDamageThreshold: 325

@@ -29,4 +29,15 @@
   - type: CEWaveShader
     speed: 2.8
     dis: 4
+  - type: CEPlantDying
+    deadEntity: CEPlantWheatDead
+
+- type: entity
+  parent: CEPlantDeadBase
+  id: CEPlantWheatDead
+  name: dead wheat
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Nature/Farm/wheat.rsi
+    state: death
 

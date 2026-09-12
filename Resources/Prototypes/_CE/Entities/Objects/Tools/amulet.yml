@@ -11,8 +11,9 @@
     sprite: _CE/Objects/Tools/amulets.rsi
     layers:
     - state: safe_faling
-    - state: safe_faling_unshaded
+    - state: unshaded
       shader: unshaded
+      color: "#f9f28d"
   - type: CESafeFallClothing
   - type: Clothing
     equipDelay: 0.25

@@ -5,6 +5,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
+using Content.Shared._CE.Achievements.Prototypes;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
 using Content.Shared.Construction.Prototypes;
@@ -301,6 +302,20 @@ namespace Content.Server.Database
 
         #endregion
 
+        #region CrystlallEdge Achievements
+
+        Task AddPlayerAchievement(Guid player, ProtoId<CEAchievementPrototype> achievement);
+
+        Task<bool> HasPlayerAchievement(Guid player, ProtoId<CEAchievementPrototype> achievement);
+
+        Task<bool> RemovePlayerAchievement(Guid player, ProtoId<CEAchievementPrototype> achievement);
+
+        Task<List<string>> GetPlayerAchievements(Guid player);
+
+        Task<Dictionary<string, float>> GetAchievementPercentages();
+
+        #endregion
+
         #region IPintel
 
         Task<bool> UpsertIPIntelCache(DateTime time, IPAddress ip, float score);
@@ -421,6 +436,7 @@ namespace Content.Server.Database
         private ISawmill _sawmill = default!;
 
         private bool _synchronous;
+        private bool _snapshot;
         // When running in integration tests, we'll use a single in-memory SQLite database connection.
         // This is that connection, close it when we shut down.
         private SqliteConnection? _sqliteInMemoryConnection;
@@ -437,6 +453,7 @@ namespace Content.Server.Database
             _sawmill = _logMgr.GetSawmill("db.manager");
 
             _synchronous = _cfg.GetCVar(CCVars.DatabaseSynchronous);
+            _snapshot = _cfg.GetCVar(CCVars.DatabaseSnapshot);
 
             var engine = _cfg.GetCVar(CCVars.DatabaseEngine).ToLower();
             var opsLog = _logMgr.GetSawmill("db.op");
@@ -445,7 +462,7 @@ namespace Content.Server.Database
             {
                 case "sqlite":
                     SetupSqlite(out var contextFunc, out var inMemory);
-                    _db = new ServerDbSqlite(contextFunc, inMemory, _cfg, _synchronous, opsLog, _serialization);
+                    _db = new ServerDbSqlite(contextFunc, inMemory, _cfg, _synchronous, opsLog, _serialization, _snapshot);
                     break;
                 case "postgres":
                     var (pgOptions, conString) = CreatePostgresOptions();
@@ -1000,6 +1017,38 @@ namespace Content.Server.Database
             DbWriteOpsMetric.Inc();
             return RunDbCommand(() => _db.RemoveJobWhitelist(player, job));
         }
+
+        //CrystallEdge achievements
+        public Task AddPlayerAchievement(Guid player, ProtoId<CEAchievementPrototype> achievement)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.AddPlayerAchievement(player, achievement));
+        }
+
+        public Task<bool> HasPlayerAchievement(Guid player, ProtoId<CEAchievementPrototype> achievement)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.HasPlayerAchievement(player, achievement));
+        }
+
+        public Task<bool> RemovePlayerAchievement(Guid player, ProtoId<CEAchievementPrototype> achievement)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.RemovePlayerAchievement(player, achievement));
+        }
+
+        public Task<List<string>> GetPlayerAchievements(Guid player)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetPlayerAchievements(player));
+        }
+
+        public Task<Dictionary<string, float>> GetAchievementPercentages()
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetAchievementPercentages());
+        }
+        //CrystallEdge achievements end
 
         public Task<bool> UpsertIPIntelCache(DateTime time, IPAddress ip, float score)
         {

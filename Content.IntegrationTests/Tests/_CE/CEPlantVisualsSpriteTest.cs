@@ -36,7 +36,7 @@ public sealed class CEPlantVisualsSpriteTest : GameTest
             var protos = protoMan.EnumeratePrototypes<EntityPrototype>()
                 .Where(p => !p.Abstract)
                 .Where(p => !pair.IsTestPrototype(p))
-                .Where(p => p.TryGetComponent<CEPlantVisualsComponent>(out _, componentFactory))
+                .Where(p => p.TryComp<CEPlantVisualsComponent>(out _, componentFactory))
                 .OrderBy(p => p.ID)
                 .ToList();
 
@@ -46,7 +46,7 @@ public sealed class CEPlantVisualsSpriteTest : GameTest
             {
                 foreach (var proto in protos)
                 {
-                    Assert.That(proto.TryGetComponent<CEPlantVisualsComponent>(out var visuals, componentFactory));
+                    Assert.That(proto.TryComp<CEPlantVisualsComponent>(out var visuals, componentFactory));
 
                     var uid = entMan.Spawn(proto.ID);
 

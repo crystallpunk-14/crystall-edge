@@ -1,8 +1,7 @@
+ce-skill-req-not-met = У вас не получается изучить это
 ce-skill-req-prerequisite = Навык "{$name}" должен быть изучен
+ce-skill-req-not-prerequisite = Навык "{$name}" не должен быть изучен
 ce-skill-req-species = Вы должны быть расы "{$name}"
 ce-skill-req-notspecies = Вы не должны быть расы "{$name}"
 ce-skill-req-researched = Необходимо провести исследование на исследовательском столе
-ce-skill-req-impossible = Невозможно изучить во время раунда на текущий момент
 ce-skill-req-god-follower-percentage = Количество ваших последователей должно быть больше {$count}%
-ce-skill-req-timegate = Доступно для изучения через {$minute} минут после начала раунда. Осталось минут: {$left}
-ce-skill-req-timegate-disabled = Доступно для изучения через {$minute} минут после начала раунда, но ограничения по времени отключены.

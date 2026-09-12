@@ -2,6 +2,7 @@ using Content.Shared._CE.Farming;
 using Content.Shared._CE.Farming.Components;
 using Content.Shared.Rounding;
 using Robust.Client.GameObjects;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Random;
 
 namespace Content.Client._CE.Farming;
@@ -11,15 +12,7 @@ public sealed partial class CEClientFarmingSystem : CESharedFarmingSystem
     [Dependency] private SpriteSystem _sprite = default!;
     [Dependency] private IRobustRandom _random = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEPlantVisualsComponent, ComponentInit>(OnPlantVisualInit);
-        SubscribeLocalEvent<CEPlantComponent, AfterAutoHandleStateEvent>(OnAutoHandleState);
-        SubscribeLocalEvent<CEPlantProducingComponent, AfterAutoHandleStateEvent>(OnProduceAutoHandleState);
-    }
-
+    [SubscribeLocalEvent]
     private void OnProduceAutoHandleState(Entity<CEPlantProducingComponent> producing, ref AfterAutoHandleStateEvent args)
     {
         if (!TryComp<CEPlantVisualsComponent>(producing, out var visuals))
@@ -31,6 +24,7 @@ public sealed partial class CEClientFarmingSystem : CESharedFarmingSystem
         UpdateVisuals(new Entity<CEPlantVisualsComponent>(producing, visuals), plant);
     }
 
+    [SubscribeLocalEvent]
     private void OnAutoHandleState(Entity<CEPlantComponent> plant, ref AfterAutoHandleStateEvent args)
     {
         if (!TryComp<CEPlantVisualsComponent>(plant, out var visuals))
@@ -39,6 +33,7 @@ public sealed partial class CEClientFarmingSystem : CESharedFarmingSystem
         UpdateVisuals(new Entity<CEPlantVisualsComponent>(plant, visuals), plant);
     }
 
+    [SubscribeLocalEvent]
     private void OnPlantVisualInit(Entity<CEPlantVisualsComponent> visuals, ref ComponentInit args)
     {
         UpdateVisuals(visuals);

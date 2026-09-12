@@ -8,6 +8,7 @@ using Content.Shared.Maps;
 using Content.Shared.Popups;
 using Content.Shared.Stacks;
 using Content.Shared.Whitelist;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
@@ -41,17 +42,12 @@ public abstract partial class CESharedFarmingSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        InitializeSeeds();
-        InitializeGather();
-        InitializeGatherAdditional();
-        InitializeExamine();
 
         PlantQuery = GetEntityQuery<CEPlantComponent>();
         PlantProducingQuery = GetEntityQuery<CEPlantProducingComponent>();
         SolutionQuery = GetEntityQuery<SolutionManagerComponent>();
-
-        SubscribeLocalEvent<CEPlantComponent, AnchorStateChangedEvent>(OnAnchorStateChanged);
     }
+    [SubscribeLocalEvent]
     private void OnAnchorStateChanged(Entity<CEPlantComponent> ent, ref AnchorStateChangedEvent args)
     {
         if (!args.Anchored)

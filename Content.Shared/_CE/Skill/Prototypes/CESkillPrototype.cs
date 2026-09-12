@@ -1,65 +1,90 @@
-using System.Numerics;
+using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.Skill.Effects;
-using Content.Shared._CE.Skill.Restrictions;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Array;
 using Robust.Shared.Utility;
 
 namespace Content.Shared._CE.Skill.Prototypes;
 
 /// <summary>
-/// A skill that can be learned by the player. Skills are grouped into trees, and each skill has a cost to learn, prerequisites, and an effect.
+/// Something a character can learn - the shared unit behind active perks, recipes, achievements
+/// and other unlockable content. Learning one is a simple, idempotent set-membership operation
+/// (<see cref="CESharedSkillSystem.TryAddSkill"/>); an optional <see cref="Effect"/> additionally
+/// mutates the learner (grants an action, adds components, etc).
 /// </summary>
 [Prototype("skill")]
-public sealed partial class CESkillPrototype : IPrototype
+public sealed partial class CESkillPrototype : IPrototype, IInheritingPrototype
 {
-    [IdDataField] public string ID { get; private set; } = default!;
+    [IdDataField]
+    public string ID { get; private set; } = default!;
+
+    [ParentDataField(typeof(AbstractPrototypeIdArraySerializer<CESkillPrototype>))]
+    public string[]? Parents { get; private set; }
+
+    [AbstractDataField]
+    [NeverPushInheritance]
+    public bool Abstract { get; private set; }
 
     /// <summary>
-    /// Skill Title. If you leave null, the name will try to generate from Effect.GetName()
+    /// Entity prototype this skill is themed after. By default its name, description and
+    /// (multi-layer) sprite are used as-is instead of duplicating them into separate localization
+    /// strings - see <see cref="NameOverride"/>/<see cref="DescOverride"/>/<see cref="IconOverride"/>
+    /// to replace any of those individually.
     /// </summary>
     [DataField]
-    public LocId? Name = null;
+    public EntProtoId? PreviewEntity;
 
     /// <summary>
-    /// Skill Description. If you leave null, the description will try to generate from Effect.GetDescription()
+    /// Skill Title. If you leave null, the name will try to generate from PreviewEntity or Effect.GetName()
+    /// </summary>
+    [DataField("name")]
+    public LocId? NameOverride = null;
+
+    /// <summary>
+    /// Skill Description. If you leave null, the description will try to generate from PreviewEntity or Effect.GetDescription()
+    /// </summary>
+    [DataField("desc")]
+    public LocId? DescOverride = null;
+
+    /// <summary>
+    /// Icon for the skill. If you leave null, the icon will try to generate from Effect.GetIcon()
+    /// </summary>
+    [DataField("icon")]
+    public SpriteSpecifier? IconOverride;
+
+    /// <summary>
+    /// Blank book cover entity spawned when this skill is written down with a pen. Usually set
+    /// once per domain's abstract base prototype rather than repeated on every entry.
     /// </summary>
     [DataField]
-    public LocId? Desc = null;
+    public EntProtoId Book = "CEBaseScienceBookUndefined";
 
     /// <summary>
-    /// The tree this skill belongs to. This is used to group skills together in the UI.
-    /// </summary>
-    [DataField(required: true)]
-    public ProtoId<CESkillTreePrototype> Tree = default!;
-
-    /// <summary>
-    ///  The cost to learn this skill. This is used to determine how many skill points are needed to learn the skill.
+    /// Whether this skill can be recorded into a book via the pen-writing system
+    /// (<see cref="CESharedSkillSystem.InitializePen"/>).
     /// </summary>
     [DataField]
-    public float LearnCost = 1f;
+    public bool WritableToBook = true;
 
     /// <summary>
-    ///  Skill UI position. This is used to determine where the skill will be displayed in the skill tree UI.
-    /// </summary>
-    [DataField(required: true)]
-    public Vector2 SkillUiPosition = default!;
-
-    /// <summary>
-    ///  Icon for the skill. This is used to display the skill in the skill tree UI.
-    /// </summary>
-    [DataField(required: true)]
-    public SpriteSpecifier Icon = default!;
-
-    /// <summary>
-    ///  Skill effect. This is used to determine what happens when the player learns the skill. If you leave null, the skill will not have any effect.
-    ///  But the presence of the skill itself can affect some systems that check for the presence of certain skills.
+    /// Skill effect. Used to determine what happens when the player learns the skill. Optional -
+    /// a skill with no effect is a pure "known/not known" flag, gating whatever external systems
+    /// (recipes, achievements, ...) choose to check it.
     /// </summary>
     [DataField]
-    public List<CESkillEffect> Effects = new();
+    public CESkillEffect? Effect;
 
     /// <summary>
-    /// Skill restriction. Limiters on learning. Any reason why a player cannot learn this skill.
+    /// Conditions an actor must pass to be allowed to learn this skill (e.g. already knowing a
+    /// prerequisite skill). Checked by <see cref="CESharedSkillSystem.SkillConditionsMet"/> at
+    /// every player-facing "try to learn" entry point. Empty means no restriction.
+    /// </summary>
+    [DataField, AlwaysPushInheritance]
+    public List<CEEntityCondition> Conditions = new();
+
+    /// <summary>
+    /// Color used to highlight this skill's name in the learned-skills examine text.
     /// </summary>
     [DataField]
-    public List<CESkillRestriction> Restrictions = new();
+    public Color Color = Color.White;
 }

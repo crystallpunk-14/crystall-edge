@@ -55,7 +55,7 @@
     maxCharge: 100
   - type: ExaminableBattery #TODO Change to mana specific
   - type: BatteryDischarger
-  - type: PowerMonitoringDevice
+  - type: CEPowerMonitoringDevice
     group: Generator
     loadNode: input
     sprite: _CE/Structures/Industrial/Power/Generator/capacitor.rsi

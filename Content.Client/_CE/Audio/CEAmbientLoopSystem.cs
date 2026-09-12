@@ -6,6 +6,7 @@ using Content.Shared.EntityConditions;
 using Content.Shared.GameTicking;
 using Robust.Client.Player;
 using Robust.Client.State;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
@@ -43,7 +44,6 @@ public sealed partial class CEAmbientLoopSystem : EntitySystem
         base.Initialize();
 
         Subs.CVar(_configManager, CCVars.AmbientMusicVolume, AmbienceCVarChangedAmbientMusic, true);
-        SubscribeNetworkEvent<RoundEndMessageEvent>(OnRoundEndMessage);
     }
 
     private void AmbienceCVarChangedAmbientMusic(float obj)
@@ -56,6 +56,7 @@ public sealed partial class CEAmbientLoopSystem : EntitySystem
         }
     }
 
+    [SubscribeNetworkEvent]
     private void OnRoundEndMessage(RoundEndMessageEvent ev)
     {
         foreach (var loop in _loopStreams)

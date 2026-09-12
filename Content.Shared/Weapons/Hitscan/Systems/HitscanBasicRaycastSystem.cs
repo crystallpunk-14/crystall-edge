@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Shared._CE.ZLevels.Core;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Damage.Components;
 using Content.Shared.Database;
@@ -70,6 +71,7 @@ public sealed partial class HitscanBasicRaycastSystem : EntitySystem
         {
             ShotDirection = args.ShotDirection,
             Gun = args.Gun,
+            Hitscan = ent.Owner,
             Shooter = args.Shooter,
             HitEntity = result?.HitEntity,
             HitCoordinates = hitCoordinates, // CrystallEdge: expose hit position
@@ -83,6 +85,12 @@ public sealed partial class HitscanBasicRaycastSystem : EntitySystem
 
         var hitEvent = new HitscanRaycastFiredEvent { Data = data };
         RaiseLocalEvent(ent, ref hitEvent);
+
+        if (data.HitEntity != null)
+        {
+            var strikeEvent = new HitscanRaycastStrikeEvent { Data = data };
+            RaiseLocalEvent(data.HitEntity.Value, ref strikeEvent);
+        }
     }
 
     /// <summary>
@@ -145,10 +153,12 @@ public sealed partial class HitscanBasicRaycastSystem : EntitySystem
 
         if (sprites.Count > 0)
         {
+            // CrystallEdge: use ZPvs so players watching from adjacent Z-levels also receive hitscan visuals
             RaiseNetworkEvent(new SharedGunSystem.HitscanEvent
             {
                 Sprites = sprites,
-            }, Filter.Pvs(fromCoordinates, entityMan: EntityManager));
+            }, CEFilter.ZPvs(hitscanUid, EntityManager));
+            // CrystallEdge end
         }
     }
 }

@@ -13,38 +13,10 @@
     count: 5
 
 - type: tradingPosition
-  id: CEFoodCabbage
-  faction: Horticulture
-  service: !type:CEBuyItemsService
-    product: CEFoodCabbage
-    count: 5
-
-- type: tradingPosition
-  id: CEFoodPumpkin
-  faction: Horticulture
-  service: !type:CEBuyItemsService
-    product: CEFoodPumpkin
-    count: 5
-
-- type: tradingPosition
   id: CEFoodPotato
   faction: Horticulture
   service: !type:CEBuyItemsService
     product: CEFoodPotato
-    count: 5
-
-- type: tradingPosition
-  id: CEFoodCucumber
-  faction: Horticulture
-  service: !type:CEBuyItemsService
-    product: CEFoodCucumber
-    count: 5
-
-- type: tradingPosition
-  id: CEFoodTomatoes
-  faction: Horticulture
-  service: !type:CEBuyItemsService
-    product: CEFoodTomatoes
     count: 5
 
 - type: tradingPosition
@@ -55,31 +27,10 @@
     count: 5
 
 - type: tradingPosition
-  id: CEFoodPepper
-  faction: Horticulture
-  service: !type:CEBuyItemsService
-    product: CEFoodPepper
-    count: 5
-
-- type: tradingPosition
   id: CEFoodGarlic
   faction: Horticulture
   service: !type:CEBuyItemsService
     product: CEFoodGarlic
-    count: 5
-
-- type: tradingPosition
-  id: CEFoodCorn
-  faction: Horticulture
-  service: !type:CEBuyItemsService
-    product: CEFoodCorn
-    count: 5
-
-- type: tradingPosition
-  id: CEFoodCarrot
-  faction: Horticulture
-  service: !type:CEBuyItemsService
-    product: CEFoodCarrot
     count: 5
 
 - type: tradingPosition

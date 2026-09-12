@@ -31,7 +31,7 @@
     gatherOffset: 2
     gatherKeys:
       apple:
-        result: CEFoodAppleFalling
+        result: CEFoodApple
         maxProduce: 4
         visualStateCount: 2
         growthPerUpdate: 0.5 # CrystallEdge: new apple batch every 2 minutes

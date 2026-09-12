@@ -1,6 +1,7 @@
 using Content.Shared._CE.EntityEffect;
 using Content.Shared.Weapons.Hitscan.Events;
 using Content.Shared.Whitelist;
+using Robust.Shared.Analyzers;
 
 namespace Content.Shared._CE.Weapons.Hitscan;
 
@@ -8,13 +9,7 @@ public sealed partial class CEHitscanSpellEffectSystem : EntitySystem
 {
     [Dependency] private EntityWhitelistSystem _whitelist = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEHitscanEntityEffectComponent, HitscanRaycastFiredEvent>(OnHitscanRaycastFired);
-    }
-
+    [SubscribeLocalEvent]
     private void OnHitscanRaycastFired(Entity<CEHitscanEntityEffectComponent> ent, ref HitscanRaycastFiredEvent args)
     {
         if (args.Data.HitEntity == null)

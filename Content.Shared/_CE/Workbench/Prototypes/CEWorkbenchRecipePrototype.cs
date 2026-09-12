@@ -1,5 +1,5 @@
-using Content.Shared._CE.Knowledge.Prototypes;
 using Content.Shared._CE.ResourceManager;
+using Content.Shared._CE.Skill.Prototypes;
 using Content.Shared.Tag;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
@@ -57,11 +57,11 @@ public sealed partial class CEWorkbenchRecipePrototype : IPrototype, IInheriting
     public int Priority = 0;  // In descending order. More means it will be first.
 
     /// <summary>
-    /// Knowledge the character must know to craft this recipe. If unset, the recipe is always
+    /// Skill the character must know to craft this recipe. If unset, the recipe is always
     /// craftable by everyone (no gate at all).
     /// </summary>
     [DataField]
-    public ProtoId<CEKnowledgePrototype>? RequiredKnowledge;
+    public ProtoId<CESkillPrototype>? RequiredSkill;
 
     /// <summary>
     /// Entity prototype of the workbench this recipe is crafted at, used only to build the

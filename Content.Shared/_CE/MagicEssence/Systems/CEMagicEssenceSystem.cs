@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using Robust.Shared.Analyzers;
 using System.Linq;
 using System.Text;
 using Content.Shared._CE.Examine;
@@ -32,17 +33,11 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<MetaDataComponent, CEMagicEssenceCalculationEvent>(OnMetaDataEssenceCalculation);
-        SubscribeLocalEvent<SolutionComponent, CEMagicEssenceCalculationEvent>(OnSolutionEssenceCalculation);
-        SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypesReloaded);
-
-        SubscribeLocalEvent<CEExamineAugmentEvent>(OnExamineAugment);
-        SubscribeLocalEvent<CEMagicEssenceScannerComponent, CEMagicEssenceScanEvent>(OnScanAttempt);
         SubscribeLocalEvent<CEMagicEssenceScannerComponent, InventoryRelayedEvent<CEMagicEssenceScanEvent>>(
             (uid, comp, ev) => OnScanAttempt(uid, comp, ev.Args));
     }
 
+    [SubscribeLocalEvent]
     private void OnScanAttempt(EntityUid uid, CEMagicEssenceScannerComponent component, CEMagicEssenceScanEvent args)
     {
         args.CanScan = true;
@@ -52,6 +47,7 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
     /// Shows essence composition on examine while wearing thaumaturgy glasses. Useful for
     /// inspecting items inside storage UIs, where the cursor can't be hovered over them.
     /// </summary>
+    [SubscribeLocalEvent]
     private void OnExamineAugment(CEExamineAugmentEvent args)
     {
         var scanEvent = new CEMagicEssenceScanEvent();
@@ -81,6 +77,7 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
         args.AddMarkup(sb.ToString().TrimEnd());
     }
 
+    [SubscribeLocalEvent]
     private void OnPrototypesReloaded(PrototypesReloadedEventArgs args)
     {
         _reagentToEssence = null;
@@ -134,6 +131,7 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
     /// Rolls (and caches, round-wide) the essence composition of an <see cref="CEMagicEssenceStructureComponent"/>-bearing
     /// entity, keyed by its <see cref="EntProtoId"/> so every instance of the same prototype shares one roll.
     /// </summary>
+    [SubscribeLocalEvent]
     private void OnMetaDataEssenceCalculation(Entity<MetaDataComponent> ent, ref CEMagicEssenceCalculationEvent args)
     {
         if (args.Handled)
@@ -183,6 +181,7 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
     /// Adds essence content from any solution reagent that is the pure liquid embodiment of an essence
     /// type (<see cref="CEMagicEssenceTypePrototype.Reagent"/>). 1 unit of such a reagent = 1 essence.
     /// </summary>
+    [SubscribeLocalEvent]
     private void OnSolutionEssenceCalculation(Entity<SolutionComponent> ent, ref CEMagicEssenceCalculationEvent args)
     {
         if (args.Handled)

@@ -22,6 +22,17 @@
   - type: Icon
     sprite: _CE/Structures/Specific/Thaumaturgy/node_stabilizator.rsi
     state: base
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.45
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
   - type: Appearance
   - type: GenericVisualizer
     visuals:

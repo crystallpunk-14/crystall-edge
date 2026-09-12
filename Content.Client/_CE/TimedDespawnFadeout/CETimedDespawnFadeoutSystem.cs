@@ -1,4 +1,5 @@
 using Robust.Client.GameObjects;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Spawners;
 
 namespace Content.Client._CE.TimedDespawnFadeout;
@@ -7,14 +8,7 @@ public sealed partial class CETimedDespawnFadeoutSystem : EntitySystem
 {
     [Dependency] private SpriteSystem _sprite = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CETimedDespawnFadeoutComponent, ComponentStartup>(OnStartup);
-        SubscribeLocalEvent<CETimedDespawnFadeoutComponent, ComponentShutdown>(OnShutdown);
-    }
-
+    [SubscribeLocalEvent]
     private void OnStartup(Entity<CETimedDespawnFadeoutComponent> entity, ref ComponentStartup args)
     {
         if (!TryComp<TimedDespawnComponent>(entity, out var despawn))
@@ -26,6 +20,7 @@ public sealed partial class CETimedDespawnFadeoutSystem : EntitySystem
         entity.Comp.OriginalLifetime = despawn.Lifetime;
     }
 
+    [SubscribeLocalEvent]
     private void OnShutdown(Entity<CETimedDespawnFadeoutComponent> entity, ref ComponentShutdown args)
     {
         if (MetaData(entity).EntityLifeStage >= EntityLifeStage.Terminating || !TryComp<SpriteComponent>(entity, out var sprite))

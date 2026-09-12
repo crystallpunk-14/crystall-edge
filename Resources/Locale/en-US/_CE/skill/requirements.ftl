@@ -1,8 +1,7 @@
+ce-skill-req-not-met = You fail to learn this
 ce-skill-req-prerequisite = Skill "{$name}" must be learned
+ce-skill-req-not-prerequisite = Skill "{$name}" must not be learned
 ce-skill-req-species = You must be the race of “{$name}”
 ce-skill-req-notspecies = You must not be the race of “{$name}”
 ce-skill-req-researched = Research needs to be done on the research table
-ce-skill-req-impossible = Unable to learn during a round at the current moment
 ce-skill-req-god-follower-percentage = The number of your followers should be more than {$count}%
-ce-skill-req-timegate = Available for study {$minute} minutes after the start of the round. Minutes remaining: {$left}
-ce-skill-req-timegate-disabled = Available for study {$minute} minutes after the start of the round, but time restrictions are disabled.

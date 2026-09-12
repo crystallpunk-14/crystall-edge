@@ -45,19 +45,38 @@ You can find out how effective the soil type being used is by examining the grow
 
 # Watering
 
-To make a plant grow faster, it must be [color=yellow]watered[/color]. In the future, different plants may require different reagents, but for now it's only water...
-The only water source in the game right now is unfinished - these are unattractive water tiles that exist on every map.
+To make a plant grow, it must be [color=yellow]watered[/color]. In the future different plants may require different reagents, but for now it is only water.
 
-If you don't water the plant, it won't die, but it will grow significantly slower.
+Where to get water:
+- [color=yellow]Rain[/color] fills any open container left under the open sky - wooden barrels, bottles, mugs, vials.
+- A planted bed drinks rain straight from the sky too, as long as it is not covered.
+- The old, unfinished water tiles still exist on every map.
 
-Different plants require watering at different frequencies - some need to be watered twice a day, while others only need it once every 2 days.
-
-Examine the plant to see if it has drunk all the water or not.
+Scoop water with a [color=yellow]bucket[/color] and use it on a plant. Examine the plant to see whether it has drunk all its water yet.
 
 <Box>
+  <GuideEntityEmbed Entity="CEBaseBarrel"/>
   <GuideEntityEmbed Entity="CEBucket"/>
   <GuideEntityEmbed Entity="CEWaterFloorEntity"/>
-  <GuideEntityEmbed Entity="CEBucket"/>
+</Box>
+
+# Plant health
+
+A neglected plant will [color=yellow]wither and die[/color]. What kills it is running completely out of [color=yellow]water[/color] - a plant with no water left slowly takes damage, and once it is spent it dies and leaves a [color=yellow]dead husk[/color]. The husk blocks the tile until you clear it away - a couple of hits will do.
+
+Watering a plant in time [color=yellow]heals[/color] it. A recovering plant spends its water and energy on mending itself before growing, so it grows slowly until it is patched up.
+
+- A crop on bare ground with no water dies in roughly [color=yellow]25 minutes[/color].
+- On a proper soil bed, or with any watering at all, it recovers and keeps growing.
+- Trees are far tougher and practically never wither.
+- Running out of [color=yellow]light[/color] does not kill a plant - it only pauses growth until light returns.
+
+Examine a plant to check its condition.
+
+<Box>
+  <GuideEntityEmbed Entity="CEPlantCabbageDead"/>
+  <GuideEntityEmbed Entity="CEPlantWheatDead"/>
+  <GuideEntityEmbed Entity="CEPlantTomatoesDead"/>
 </Box>
 
 # Lighting

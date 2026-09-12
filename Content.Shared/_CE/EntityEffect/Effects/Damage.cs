@@ -35,7 +35,7 @@ public sealed partial class Damage : CEEntityEffectBase<Damage>
             if (amount == 0)
                 continue;
 
-            var typeName = prototype.TryIndex<DamageTypePrototype>(type, out var typeProto) ? typeProto.LocalizedName : type.Id;
+            var typeName = prototype.TryIndex(type, out var typeProto) ? typeProto.LocalizedName : type.Id;
             parts.Add(Loc.GetString("ce-entity-effect-guidebook-damage-entry", ("amount", MathF.Abs(amount.Float())), ("type", typeName)));
         }
 

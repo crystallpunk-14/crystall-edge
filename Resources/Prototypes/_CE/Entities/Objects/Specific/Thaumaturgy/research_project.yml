@@ -54,11 +54,11 @@
 
 - type: entity
   parent: CEDiscoveryProjectBase
-  id: CEDiscoveryProjectArtifactoric
+  id: CEDiscoveryProjectSpellcasting
   categories: [ HideSpawnMenu, ForkFiltered ]
-  name: artifactoric research project
+  name: spellcasting research project
   components:
   - type: Sprite
     layers:
     - state: base
-    - state: artifactoric
+    - state: artifactoric #Todo rename

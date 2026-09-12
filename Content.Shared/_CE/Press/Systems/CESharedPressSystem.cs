@@ -3,6 +3,7 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.Maps;
 using Content.Shared.Power;
 using Content.Shared.Throwing;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Containers;
 using Robust.Shared.Network;
 using Robust.Shared.Random;
@@ -21,13 +22,7 @@ public abstract partial class CESharedPressSystem : EntitySystem
     [Dependency] private SharedContainerSystem _container = default!;
     [Dependency] private INetManager _net = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEPressComponent, PowerChangedEvent>(OnPowerChanged);
-    }
-
+    [SubscribeLocalEvent]
     private void OnPowerChanged(Entity<CEPressComponent> ent, ref PowerChangedEvent args)
     {
         if (args.Powered)

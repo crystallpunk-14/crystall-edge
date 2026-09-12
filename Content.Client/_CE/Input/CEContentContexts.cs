@@ -10,7 +10,6 @@ namespace Content.Client._CE.Input
             var human = contexts.GetContext("human");
             human.AddFunction(CEContentKeyFunctions.OpenBelt2);
             human.AddFunction(CEContentKeyFunctions.SmartEquipBelt2);
-            human.AddFunction(CEContentKeyFunctions.OpenSkillMenu);
         }
     }
 }

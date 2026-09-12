@@ -96,6 +96,18 @@
     prototype: CESalaryPlatform
 
 - type: entity
+  id: CEMachineCoreDimensionalLift
+  parent: CEBaseMachineCore
+  name: dimensional lift machine core
+  components:
+  - type: Sprite
+    state: dimensional
+  - type: MachineBoard
+    prototype: CEDimensionalLift
+  - type: StaticPrice
+    price: 200
+
+- type: entity
   id: CEMachineCoreHeater
   parent: CEBaseMachineCore
   name: heater machine core
@@ -179,6 +191,30 @@
     prototype: CEGeneratorMagicCapacitor
   - type: StaticPrice
     price: 200
+
+- type: entity
+  id: CEMachineCoreMapProjector
+  parent: CEBaseMachineCore
+  name: map projector machine core
+  components:
+  - type: Sprite
+    state: power
+  - type: MachineBoard
+    prototype: CEMapProjector
+  - type: StaticPrice
+    price: 180
+
+- type: entity
+  id: CEMachineCoreGridProjector
+  parent: CEBaseMachineCore
+  name: island power grid projector machine core
+  components:
+  - type: Sprite
+    state: power
+  - type: MachineBoard
+    prototype: CEPowerGridProjector
+  - type: StaticPrice
+    price: 250
 
 # Trading
 

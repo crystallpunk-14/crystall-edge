@@ -1,4 +1,5 @@
 using System.Text;
+using Robust.Shared.Analyzers;
 using Content.Shared._CE.Skill.Components;
 using Content.Shared.Inventory;
 using Content.Shared.Verbs;
@@ -10,12 +11,10 @@ public abstract partial class CESharedSkillSystem
 {
     private void InitializeScanning()
     {
-        SubscribeLocalEvent<CESkillScannerComponent, CESkillScanEvent>(OnSkillScan);
         SubscribeLocalEvent<CESkillScannerComponent, InventoryRelayedEvent<CESkillScanEvent>>((e, c, ev) => OnSkillScan(e, c, ev.Args));
-
-        SubscribeLocalEvent<CESkillStorageComponent, GetVerbsEvent<ExamineVerb>>(OnExamined);
     }
 
+    [SubscribeLocalEvent]
     private void OnExamined(Entity<CESkillStorageComponent> ent, ref GetVerbsEvent<ExamineVerb> args)
     {
         var scanEvent = new CESkillScanEvent();
@@ -47,11 +46,8 @@ public abstract partial class CESharedSkillSystem
             if (!_proto.Resolve(skill, out var indexedSkill))
                 continue;
 
-            if(!_proto.Resolve(indexedSkill.Tree, out var indexedTree))
-                continue;
-
             var skillName = GetSkillName(skill);
-            sb.Append($"• [color={indexedTree.Color.ToHex()}]{skillName}[/color]\n");
+            sb.Append($"• [color={indexedSkill.Color.ToHex()}]{skillName}[/color]\n");
         }
 
         //sb.Append($"\n{Loc.GetString("ce-skill-menu-level")} {ent.Comp.SkillsSumExperience}/{ent.Comp.ExperienceMaxCap}\n");
@@ -59,6 +55,7 @@ public abstract partial class CESharedSkillSystem
         return msg;
     }
 
+    [SubscribeLocalEvent]
     private void OnSkillScan(EntityUid uid, CESkillScannerComponent component, CESkillScanEvent args)
     {
         args.CanScan = true;

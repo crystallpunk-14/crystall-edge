@@ -9,6 +9,7 @@ using Content.Shared.Interaction;
 using Content.Shared.NodeContainer;
 using Content.Shared.Radiation.Components;
 using Robust.Server.GameObjects;
+using Robust.Shared.Analyzers;
 
 namespace Content.Server._CE.Power;
 
@@ -17,14 +18,6 @@ public sealed partial class CEPowerSystem : CESharedPowerSystem
     [Dependency] private RadiationSystem _radiation = default!;
     [Dependency] private AppearanceSystem _appearance = default!;
     [Dependency] private NodeGroupSystem _nodeGroup = default!;
-
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEEnergyLeakComponent, PowerConsumerReceivedChanged>(OnPowerChanged);
-        SubscribeLocalEvent<CEToggleableConnectorComponent, ActivateInWorldEvent>(OnActivateInWorld);
-    }
 
     public override void Update(float frameTime)
     {
@@ -47,8 +40,12 @@ public sealed partial class CEPowerSystem : CESharedPowerSystem
         _appearance.SetData(connector, CEToggleableCableVisuals.Enabled, status);
     }
 
+    [SubscribeLocalEvent]
     private void OnActivateInWorld(Entity<CEToggleableConnectorComponent> ent, ref ActivateInWorldEvent args)
     {
+        if (args.Handled || !args.Complex)
+            return;
+
         if (UseDelay.IsDelayed(ent.Owner))
             return;
 
@@ -60,8 +57,10 @@ public sealed partial class CEPowerSystem : CESharedPowerSystem
         ToggleConnector((ent, nodeContainer), newState);
 
         UseDelay.TryResetDelay(ent);
+        args.Handled = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnPowerChanged(Entity<CEEnergyLeakComponent> ent, ref PowerConsumerReceivedChanged args)
     {
         var enabled = args.ReceivedPower >= 0;

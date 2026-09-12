@@ -32,7 +32,7 @@
       CEPipeBrassMedium: CEPipeBrassMediumBroken
       CEPipeBrassBig: CEPipeBrassBigBroken
     centerPrototype: CEPipeBrassBig
-    radius: 5
+    radius: 3
     breakChance: 0.8
     centerVfx: CEShockWaveStrongVFX
     breakSound:

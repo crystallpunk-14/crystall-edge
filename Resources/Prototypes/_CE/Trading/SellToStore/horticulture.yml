@@ -42,3 +42,324 @@
   - !type:FoodResource
     recipe: MashedPotatoSalad
     count: 20
+
+# Meals
+
+- type: tradingRequest
+  id: BakedApples
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: BakedApples
+    count: 20
+
+- type: tradingRequest
+  id: ScrambledEggs
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: ScrambledEggs
+    count: 20
+
+- type: tradingRequest
+  id: MeatPlate
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: MeatPlate
+    count: 20
+
+- type: tradingRequest
+  id: BreadPlate
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: BreadPlate
+    count: 20
+
+- type: tradingRequest
+  id: GreenOmelette
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: GreenOmelette
+    count: 20
+
+- type: tradingRequest
+  id: GarlicBread
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: GarlicBread
+    count: 20
+
+- type: tradingRequest
+  id: GreenSaladMeat
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: GreenSaladMeat
+    count: 20
+
+- type: tradingRequest
+  id: MonsterEgg
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: MonsterEgg
+    count: 20
+
+- type: tradingRequest
+  id: MashedPotatoMeat
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: MashedPotatoMeat
+    count: 20
+
+- type: tradingRequest
+  id: CheeseBread
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: CheeseBread
+    count: 20
+
+- type: tradingRequest
+  id: StirFry
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: StirFry
+    count: 20
+
+- type: tradingRequest
+  id: ZellasianBreakfast
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: ZellasianBreakfast
+    count: 20
+
+- type: tradingRequest
+  id: CornPepperMeat
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: CornPepperMeat
+    count: 20
+
+- type: tradingRequest
+  id: StuffedPotato
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: StuffedPotato
+    count: 20
+
+- type: tradingRequest
+  id: PorkRoulade
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: PorkRoulade
+    count: 20
+
+- type: tradingRequest
+  id: StuffedBellPepper
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: StuffedBellPepper
+    count: 20
+
+- type: tradingRequest
+  id: HamInCheese
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: HamInCheese
+    count: 20
+
+# Soups
+
+- type: tradingRequest
+  id: MeatSoup
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: MeatSoup
+    count: 20
+
+- type: tradingRequest
+  id: CheeseSoup
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: CheeseSoup
+    count: 20
+
+- type: tradingRequest
+  id: PorridgePlain
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: PorridgePlain
+    count: 20
+
+- type: tradingRequest
+  id: MeatCheeseSoup
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: MeatCheeseSoup
+    count: 20
+
+- type: tradingRequest
+  id: MeatSaladSoup
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: MeatSaladSoup
+    count: 20
+
+- type: tradingRequest
+  id: MonsterBrew
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: MonsterBrew
+    count: 20
+
+- type: tradingRequest
+  id: PorridgeApple
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: PorridgeApple
+    count: 20
+
+- type: tradingRequest
+  id: PorridgeMeat
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: PorridgeMeat
+    count: 20
+
+- type: tradingRequest
+  id: PorridgePumpkin
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: PorridgePumpkin
+    count: 20
+
+- type: tradingRequest
+  id: VegCarrotSoup
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: VegCarrotSoup
+    count: 20
+
+- type: tradingRequest
+  id: CornPorridge
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:FoodResource
+    recipe: CornPorridge
+    count: 20
+
+# Bulk raw vegetables (grown from seeds only, no longer purchasable directly)
+
+- type: tradingRequest
+  id: CabbageBulk
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:ProtoIdResource
+    protoId: CEFoodCabbage
+    count: 15
+
+- type: tradingRequest
+  id: PumpkinBulk
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:ProtoIdResource
+    protoId: CEFoodPumpkin
+    count: 10
+
+- type: tradingRequest
+  id: CucumberBulk
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:ProtoIdResource
+    protoId: CEFoodCucumber
+    count: 20
+
+- type: tradingRequest
+  id: TomatoesBulk
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:ProtoIdResource
+    protoId: CEFoodTomatoes
+    count: 20
+
+- type: tradingRequest
+  id: PepperBulk
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:ProtoIdResource
+    protoId: CEFoodPepper
+    count: 15
+
+- type: tradingRequest
+  id: CornBulk
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:ProtoIdResource
+    protoId: CEFoodCorn
+    count: 15
+
+- type: tradingRequest
+  id: CarrotBulk
+  possibleFactions:
+  - Horticulture
+  requirements:
+  - !type:ProtoIdResource
+    protoId: CEFoodCarrot
+    count: 20

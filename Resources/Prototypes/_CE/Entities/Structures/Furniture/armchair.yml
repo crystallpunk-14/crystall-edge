@@ -10,14 +10,13 @@
     mode: SnapgridCenter
   components:
   - type: Transform
-    anchored: true
+    anchored: false
   - type: Rotatable
   - type: Sprite
     noRot: false
     sprite: _CE/Structures/Furniture/armchair.rsi
     state: frame
-  - type: Physics
-    bodyType: Static
+  - type: Anchorable
 
 - type: entity
   id: CEArmchairWoodBase
@@ -43,6 +42,26 @@
           CEWoodenPlanks1:
             min: 2
             max: 3
+
+# Shared by CEArmchairWood/Light/Dark: same deconstruct node regardless of stain color.
+- type: entity
+  id: CEArmchairColoredBase
+  abstract: true
+  parent: CEArmchairWoodBase
+  components:
+  - type: Construction
+    graph: CEArmchairFrame
+    node: CEArmchairColored
+
+# Shared by all 18 Wood/Light/Dark pillow color variants: same deconstruct node regardless of pillow color.
+- type: entity
+  id: CEArmchairColoredPillowBase
+  abstract: true
+  parent: CEArmchairWoodBase
+  components:
+  - type: Construction
+    graph: CEArmchairFrame
+    node: CEArmchairColoredPillow
 
 #MARK: Frame
 
@@ -73,7 +92,7 @@
 - type: entity
   id: CEArmchairWood
   name: wooden armchair
-  parent: CEArmchairWoodBase
+  parent: CEArmchairColoredBase
   components:
   - type: Sprite
     layers:
@@ -98,7 +117,7 @@
 
 - type: entity
   id: CEArmchairWoodPillowBlue
-  parent: CEArmchairWood
+  parent: CEArmchairColoredPillowBase
   suffix: Blue Pillow
   components:
   - type: Sprite
@@ -108,7 +127,7 @@
 
 - type: entity
   id: CEArmchairWoodPillowGreen
-  parent: CEArmchairWood
+  parent: CEArmchairColoredPillowBase
   suffix: Green Pillow
   components:
   - type: Sprite
@@ -118,7 +137,7 @@
 
 - type: entity
   id: CEArmchairWoodPillowOrange
-  parent: CEArmchairWood
+  parent: CEArmchairColoredPillowBase
   suffix: Orange Pillow
   components:
   - type: Sprite
@@ -128,7 +147,7 @@
 
 - type: entity
   id: CEArmchairWoodPillowPurple
-  parent: CEArmchairWood
+  parent: CEArmchairColoredPillowBase
   suffix: Purple Pillow
   components:
   - type: Sprite
@@ -138,7 +157,7 @@
 
 - type: entity
   id: CEArmchairWoodPillowRed
-  parent: CEArmchairWood
+  parent: CEArmchairColoredPillowBase
   suffix: Red Pillow
   components:
   - type: Sprite
@@ -148,7 +167,7 @@
 
 - type: entity
   id: CEArmchairWoodPillowYellow
-  parent: CEArmchairWood
+  parent: CEArmchairColoredPillowBase
   suffix: Yellow Pillow
   components:
   - type: Sprite
@@ -161,7 +180,7 @@
 - type: entity
   id: CEArmchairLight
   name: light armchair
-  parent: CEArmchairWoodBase
+  parent: CEArmchairColoredBase
   components:
   - type: Sprite
     layers:
@@ -186,7 +205,7 @@
 
 - type: entity
   id: CEArmchairLightPillowBlue
-  parent: CEArmchairLight
+  parent: CEArmchairColoredPillowBase
   suffix: Blue Pillow
   components:
   - type: Sprite
@@ -196,7 +215,7 @@
 
 - type: entity
   id: CEArmchairLightPillowGreen
-  parent: CEArmchairLight
+  parent: CEArmchairColoredPillowBase
   suffix: Green Pillow
   components:
   - type: Sprite
@@ -206,7 +225,7 @@
 
 - type: entity
   id: CEArmchairLightPillowOrange
-  parent: CEArmchairLight
+  parent: CEArmchairColoredPillowBase
   suffix: Orange Pillow
   components:
   - type: Sprite
@@ -216,7 +235,7 @@
 
 - type: entity
   id: CEArmchairLightPillowPurple
-  parent: CEArmchairLight
+  parent: CEArmchairColoredPillowBase
   suffix: Purple Pillow
   components:
   - type: Sprite
@@ -226,7 +245,7 @@
 
 - type: entity
   id: CEArmchairLightPillowRed
-  parent: CEArmchairLight
+  parent: CEArmchairColoredPillowBase
   suffix: Red Pillow
   components:
   - type: Sprite
@@ -236,7 +255,7 @@
 
 - type: entity
   id: CEArmchairLightPillowYellow
-  parent: CEArmchairLight
+  parent: CEArmchairColoredPillowBase
   suffix: Yellow Pillow
   components:
   - type: Sprite
@@ -249,7 +268,7 @@
 - type: entity
   id: CEArmchairDark
   name: dark armchair
-  parent: CEArmchairWoodBase
+  parent: CEArmchairColoredBase
   components:
   - type: Sprite
     layers:
@@ -274,7 +293,7 @@
 
 - type: entity
   id: CEArmchairDarkPillowBlue
-  parent: CEArmchairDark
+  parent: CEArmchairColoredPillowBase
   suffix: Blue Pillow
   components:
   - type: Sprite
@@ -284,7 +303,7 @@
 
 - type: entity
   id: CEArmchairDarkPillowGreen
-  parent: CEArmchairDark
+  parent: CEArmchairColoredPillowBase
   suffix: Green Pillow
   components:
   - type: Sprite
@@ -294,7 +313,7 @@
 
 - type: entity
   id: CEArmchairDarkPillowOrange
-  parent: CEArmchairDark
+  parent: CEArmchairColoredPillowBase
   suffix: Orange Pillow
   components:
   - type: Sprite
@@ -304,7 +323,7 @@
 
 - type: entity
   id: CEArmchairDarkPillowPurple
-  parent: CEArmchairDark
+  parent: CEArmchairColoredPillowBase
   suffix: Purple Pillow
   components:
   - type: Sprite
@@ -314,7 +333,7 @@
 
 - type: entity
   id: CEArmchairDarkPillowRed
-  parent: CEArmchairDark
+  parent: CEArmchairColoredPillowBase
   suffix: Red Pillow
   components:
   - type: Sprite
@@ -324,7 +343,7 @@
 
 - type: entity
   id: CEArmchairDarkPillowYellow
-  parent: CEArmchairDark
+  parent: CEArmchairColoredPillowBase
   suffix: Yellow Pillow
   components:
   - type: Sprite
@@ -335,10 +354,11 @@
 #MARK: Metallic
 
 - type: entity
-  id: CEArmchairMetallic
+  id: CEArmchairMetallicBase
+  abstract: true
+  parent: CEArmchairBase
   name: metal armchair
   description: A metal-framed armchair. Somebody thought comfort and cold iron could coexist.
-  parent: CEArmchairBase
   components:
   - type: Sprite
     layers:
@@ -362,6 +382,21 @@
           CEScrapIron1:
             min: 1
             max: 1
+
+# Shared by all 6 Metallic pillow color variants: same deconstruct node regardless of pillow color.
+- type: entity
+  id: CEArmchairMetallicPillowBase
+  abstract: true
+  parent: CEArmchairMetallicBase
+  components:
+  - type: Construction
+    graph: CEArmchairMetallic
+    node: CEArmchairMetallicPillow
+
+- type: entity
+  id: CEArmchairMetallic
+  parent: CEArmchairMetallicBase
+  components:
   - type: Construction
     graph: CEArmchairMetallic
     node: CEArmchairMetallic
@@ -385,7 +420,7 @@
 
 - type: entity
   id: CEArmchairMetallicPillowBlue
-  parent: CEArmchairMetallic
+  parent: CEArmchairMetallicPillowBase
   suffix: Blue Pillow
   components:
   - type: Sprite
@@ -395,7 +430,7 @@
 
 - type: entity
   id: CEArmchairMetallicPillowGreen
-  parent: CEArmchairMetallic
+  parent: CEArmchairMetallicPillowBase
   suffix: Green Pillow
   components:
   - type: Sprite
@@ -405,7 +440,7 @@
 
 - type: entity
   id: CEArmchairMetallicPillowOrange
-  parent: CEArmchairMetallic
+  parent: CEArmchairMetallicPillowBase
   suffix: Orange Pillow
   components:
   - type: Sprite
@@ -415,7 +450,7 @@
 
 - type: entity
   id: CEArmchairMetallicPillowPurple
-  parent: CEArmchairMetallic
+  parent: CEArmchairMetallicPillowBase
   suffix: Purple Pillow
   components:
   - type: Sprite
@@ -425,7 +460,7 @@
 
 - type: entity
   id: CEArmchairMetallicPillowRed
-  parent: CEArmchairMetallic
+  parent: CEArmchairMetallicPillowBase
   suffix: Red Pillow
   components:
   - type: Sprite
@@ -435,7 +470,7 @@
 
 - type: entity
   id: CEArmchairMetallicPillowYellow
-  parent: CEArmchairMetallic
+  parent: CEArmchairMetallicPillowBase
   suffix: Yellow Pillow
   components:
   - type: Sprite

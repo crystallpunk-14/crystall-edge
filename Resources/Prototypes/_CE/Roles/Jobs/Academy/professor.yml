@@ -7,6 +7,10 @@
   startingGear: CEAcademyProfessorGear
   icon: CEJobIconAcademyProfessor
   supervisors: ce-job-supervisors-academy-rector
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: CEAcademy
+      time: 2h
   special:
     - !type:CEResearchPointsSpecial
       points:
@@ -16,6 +20,9 @@
         Air: 5
         Order: 5
         Chaos: 5
+    - !type:CELearnSkillsSpecial
+      skills:
+      - KnowledgeCopyingTechniques
 
 - type: startingGear
   id: CEAcademyProfessorGear

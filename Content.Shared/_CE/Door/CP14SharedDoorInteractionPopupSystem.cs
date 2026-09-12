@@ -1,6 +1,7 @@
 using Content.Shared.Interaction;
 using Content.Shared.Lock;
 using Content.Shared.Popups;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Timing;
 
@@ -12,12 +13,7 @@ public sealed partial class CEDoorInteractionPopupSystem : EntitySystem
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-        SubscribeLocalEvent<CEDoorInteractionPopupComponent, ActivateInWorldEvent>(OnActivatedInWorld);
-    }
-
+    [SubscribeLocalEvent]
     private void OnActivatedInWorld(Entity<CEDoorInteractionPopupComponent> door, ref ActivateInWorldEvent args)
     {
         if (TryComp<LockComponent>(args.Target, out var lockComponent) && !lockComponent.Locked)

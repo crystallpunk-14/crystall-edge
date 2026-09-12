@@ -2,6 +2,7 @@ using Content.Shared._CE.Skill.Components;
 using Content.Shared._CE.Skill.Prototypes;
 using Content.Shared.Administration;
 using Content.Shared.Verbs;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
@@ -11,16 +12,13 @@ public abstract partial class CESharedSkillSystem
 {
 
     private IEnumerable<CESkillPrototype>? _allSkills;
-    private IEnumerable<CESkillTreePrototype>? _allTrees;
     private void InitializeAdmin()
     {
-        SubscribeLocalEvent<CESkillStorageComponent, GetVerbsEvent<Verb>>(OnGetAdminVerbs);
-
-        SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypeReloaded);
 
         UpdateCachedSkill();
     }
 
+    [SubscribeLocalEvent]
     private void OnPrototypeReloaded(PrototypesReloadedEventArgs ev)
     {
         if (!ev.WasModified<CESkillPrototype>())
@@ -32,16 +30,16 @@ public abstract partial class CESharedSkillSystem
     private void UpdateCachedSkill()
     {
         _allSkills = _proto.EnumeratePrototypes<CESkillPrototype>();
-        _allTrees = _proto.EnumeratePrototypes<CESkillTreePrototype>();
     }
 
 
+    [SubscribeLocalEvent]
     private void OnGetAdminVerbs(Entity<CESkillStorageComponent> ent, ref GetVerbsEvent<Verb> args)
     {
         if (!_admin.HasAdminFlag(args.User, AdminFlags.Admin))
             return;
 
-        if (_allSkills is null || _allTrees is null)
+        if (_allSkills is null)
             return;
 
         var target = args.Target;

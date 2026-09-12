@@ -38,3 +38,14 @@
     toolWhitelist:
       tags:
       - CESharp
+  - type: CEPlantDying
+    deadEntity: CEPlantTomatoesDead
+
+- type: entity
+  parent: CEPlantDeadBase
+  id: CEPlantTomatoesDead
+  name: dead tomatoes
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Nature/Farm/tomatoes.rsi
+    state: death

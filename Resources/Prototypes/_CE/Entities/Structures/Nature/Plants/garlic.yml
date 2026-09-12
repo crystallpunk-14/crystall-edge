@@ -26,3 +26,16 @@
   - type: CEPlantAdditionalProduceOnInteract
     produce:
       CEFoodGarlic: 4
+  - type: CEPlantDying
+    deadEntity: CEPlantGarlicDead
+
+- type: entity
+  parent: CEPlantDeadBase
+  id: CEPlantGarlicDead
+  suffix: SPRITE TODO
+  name: dead garlic
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Nature/Farm/cabbage.rsi
+    state: death
+    color: red

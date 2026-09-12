@@ -4,6 +4,7 @@ using Content.Shared.Foldable;
 using Content.Shared.Power;
 using Content.Shared.Power.Components;
 using Content.Shared.Power.EntitySystems;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Timing;
 
 namespace Content.Server._CE.MagicEssence.Systems;
@@ -16,17 +17,13 @@ public sealed partial class CEMagicEssenceAttractorSystem
     [Dependency] private FoldableSystem _foldable = default!;
     [Dependency] private IGameTiming _timing = default!;
 
-    private void InitializePortable()
-    {
-        SubscribeLocalEvent<CEPortableMagicEssenceAttractorComponent, FoldedEvent>(OnPortableFolded);
-        SubscribeLocalEvent<CEPortableMagicEssenceAttractorComponent, BatteryStateChangedEvent>(OnPortableBatteryChanged);
-    }
-
+    [SubscribeLocalEvent]
     private void OnPortableFolded(Entity<CEPortableMagicEssenceAttractorComponent> ent, ref FoldedEvent args)
     {
         RefreshPortableAttracting(ent, args.IsFolded);
     }
 
+    [SubscribeLocalEvent]
     private void OnPortableBatteryChanged(Entity<CEPortableMagicEssenceAttractorComponent> ent, ref BatteryStateChangedEvent args)
     {
         if (args.NewState != BatteryState.Empty)
@@ -37,7 +34,7 @@ public sealed partial class CEMagicEssenceAttractorSystem
 
     private void RefreshPortableAttracting(Entity<CEPortableMagicEssenceAttractorComponent> ent, bool folded)
     {
-        var hasCharge = TryComp<BatteryComponent>(ent, out var battery) && battery.LastCharge > 0f;
+        var hasCharge = TryComp<BatteryComponent>(ent, out var battery) && _battery.GetCharge((ent.Owner, battery)) > 0f;
         SetPortableAttracting(ent, !folded && hasCharge);
     }
 
@@ -62,7 +59,7 @@ public sealed partial class CEMagicEssenceAttractorSystem
 
             portable.NextConsumeTime = _timing.CurTime + portable.EnergyConsumeFrequency;
 
-            if (_foldable.IsFolded(uid, foldable) || battery.LastCharge <= 0f)
+            if (_foldable.IsFolded(uid, foldable) || _battery.GetCharge((uid, battery)) <= 0f)
             {
                 SetPortableAttracting(uid, false);
                 continue;

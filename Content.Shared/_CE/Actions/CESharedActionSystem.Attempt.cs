@@ -3,26 +3,22 @@ using Content.Shared._CE.Animation.Item.Components;
 using Content.Shared.Actions.Components;
 using Content.Shared.Actions.Events;
 using Content.Shared.Damage.Components;
+using Content.Shared.Examine;
 using Content.Shared.Power.Components;
 using Content.Shared.SSDIndicator;
+using Robust.Shared.Analyzers;
+using Robust.Shared.Map;
 
 namespace Content.Shared._CE.Actions;
 
 public abstract partial class CESharedActionSystem
 {
-    private void InitializeAttempts()
-    {
-
-        SubscribeLocalEvent<CEActionManaCostComponent, ActionAttemptEvent>(OnManacostActionAttempt);
-        SubscribeLocalEvent<CEActionStaminaCostComponent, ActionAttemptEvent>(OnStaminaCostActionAttempt);
-        SubscribeLocalEvent<CEActionWeaponRequiredComponent, ActionAttemptEvent>(OnWeaponRequiredActionAttempt);
-
-        SubscribeLocalEvent<CEActionSSDBlockComponent, ActionValidateEvent>(OnActionSSDAttempt);
-    }
+    [Dependency] private ExamineSystemShared _examine = default!;
 
     /// <summary>
     /// Before using a spell, a mana check is made for the amount of mana to show warnings.
     /// </summary>
+    [SubscribeLocalEvent]
     private void OnManacostActionAttempt(Entity<CEActionManaCostComponent> ent, ref ActionAttemptEvent args)
     {
         if (args.Cancelled)
@@ -54,13 +50,27 @@ public abstract partial class CESharedActionSystem
             return;
         }
 
-        if (playerMana.LastCharge < requiredMana)
+        if (_battery.GetCharge((args.User, playerMana)) < requiredMana)
         {
             Popup.PopupClient(Loc.GetString("ce-magic-spell-not-enough-mana"), args.User, args.User);
             args.Cancelled = true;
         }
     }
 
+    [SubscribeLocalEvent]
+    private void OnEssenceCostActionAttempt(Entity<CEActionEssenceCostComponent> ent, ref ActionAttemptEvent args)
+    {
+        if (args.Cancelled)
+            return;
+
+        if (!_magicFocus.HasEnoughEssence(args.User, ent.Comp.EssenceCost))
+        {
+            Popup.PopupClient(Loc.GetString("ce-magic-spell-not-enough-essence"), args.User, args.User);
+            args.Cancelled = true;
+        }
+    }
+
+    [SubscribeLocalEvent]
     private void OnWeaponRequiredActionAttempt(Entity<CEActionWeaponRequiredComponent> ent, ref ActionAttemptEvent args)
     {
         if (args.Cancelled)
@@ -74,6 +84,7 @@ public abstract partial class CESharedActionSystem
         args.Cancelled = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnActionSSDAttempt(Entity<CEActionSSDBlockComponent> ent, ref ActionValidateEvent args)
     {
         if (args.Invalid)
@@ -89,6 +100,33 @@ public abstract partial class CESharedActionSystem
         }
     }
 
+    [SubscribeLocalEvent]
+    private void OnLineOfSightValidate(Entity<CEActionRequireLineOfSightComponent> ent, ref ActionValidateEvent args)
+    {
+        if (args.Invalid)
+            return;
+
+        EntityCoordinates? target = null;
+        if (args.Input.EntityCoordinatesTarget is { } netCoords)
+            target = GetCoordinates(netCoords);
+        else if (GetEntity(args.Input.EntityTarget) is { Valid: true } targetEntity)
+            target = Transform(targetEntity).Coordinates;
+
+        if (target is not { } coords)
+            return;
+
+        var range = TryComp<TargetActionComponent>(ent, out var targetAction) ? targetAction.Range : 0f;
+
+        // Raycasts the occluder tree (the same OccluderComponent data that drives client FOV/lighting),
+        // not physics fixtures — so opaque walls block the action while transparent windows do not.
+        if (_examine.InRangeUnOccluded(args.User, coords, range))
+            return;
+
+        Popup.PopupClient(Loc.GetString("dash-ability-cant-see"), args.User, args.User);
+        args.Invalid = true;
+    }
+
+    [SubscribeLocalEvent]
     private void OnStaminaCostActionAttempt(Entity<CEActionStaminaCostComponent> ent, ref ActionAttemptEvent args)
     {
         if (args.Cancelled)

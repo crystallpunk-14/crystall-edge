@@ -66,3 +66,4 @@ ce-floor-tile-examine = Can be placed as [color=#FFFF00]{$tileName}[/color] over
 ce-floor-tile-wrong-turf = Cannot be placed here.
 ce-floor-tile-wrong-tool = Need here: {$toolNames}
 ce-floor-tile-tool-separator = or
+ce-ceiling-tile-obstructed = Something above the ceiling is blocking the deconstruction.

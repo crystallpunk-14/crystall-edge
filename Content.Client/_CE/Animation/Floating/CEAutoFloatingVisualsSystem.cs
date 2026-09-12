@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+using System.Numerics;
+using Robust.Shared.Analyzers;
 using Content.Shared._CE.Animation.Floating;
 using Robust.Client.GameObjects;
 using Robust.Shared.Random;
@@ -17,13 +18,7 @@ public sealed partial class CEAutoFloatingVisualsSystem : EntitySystem
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private SpriteSystem _sprite = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEAutoFloatingVisualsComponent, ComponentStartup>(OnStartup);
-    }
-
+    [SubscribeLocalEvent]
     private void OnStartup(Entity<CEAutoFloatingVisualsComponent> ent, ref ComponentStartup args)
     {
         // Pick a random phase within the full cycle so co-spawned entities desynchronize.

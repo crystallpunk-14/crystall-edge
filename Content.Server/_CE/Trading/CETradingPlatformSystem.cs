@@ -14,6 +14,7 @@ using Content.Shared.Storage.Components;
 using Content.Shared.Tag;
 using Content.Shared.UserInterface;
 using Robust.Server.GameObjects;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 
@@ -31,30 +32,19 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
 
     public static readonly ProtoId<TagPrototype> CoinTag = "CECoin";
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CETradingPlatformComponent, BeforeActivatableUIOpenEvent>(OnBeforeActivatableUIOpen);
-
-        SubscribeLocalEvent<CETradingPlatformComponent, ItemPlacedEvent>(OnItemPlaced);
-        SubscribeLocalEvent<CETradingPlatformComponent, ItemRemovedEvent>(OnItemRemoved);
-
-        SubscribeLocalEvent<CETradingPlatformComponent, CETradingBuyAttempt>(OnBuyAttempt);
-        SubscribeLocalEvent<CETradingPlatformComponent, CETradingSellAttempt>(OnSellAttempt);
-        SubscribeLocalEvent<CETradingPlatformComponent, CETradingRequestSellAttempt>(OnSellRequestAttempt);
-    }
-
+    [SubscribeLocalEvent]
     private void OnItemPlaced(Entity<CETradingPlatformComponent> ent, ref ItemPlacedEvent args)
     {
         UpdatePlatformUIState(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnItemRemoved(Entity<CETradingPlatformComponent> ent, ref ItemRemovedEvent args)
     {
         UpdatePlatformUIState(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnBeforeActivatableUIOpen(Entity<CETradingPlatformComponent> ent, ref BeforeActivatableUIOpenEvent args)
     {
         UpdatePlatformUIState(ent);
@@ -109,6 +99,7 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
         return true;
     }
 
+    [SubscribeLocalEvent]
     private void OnBuyAttempt(Entity<CETradingPlatformComponent> ent, ref CETradingBuyAttempt args)
     {
         if (Timing.CurTime < ent.Comp.NextBuyTime)
@@ -163,6 +154,7 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
         UpdatePlatformUIState(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnSellAttempt(Entity<CETradingPlatformComponent> ent, ref CETradingSellAttempt args)
     {
         if (!TryComp<ItemPlacerComponent>(ent, out var itemPlacer))
@@ -193,6 +185,7 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
         UpdatePlatformUIState(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnSellRequestAttempt(Entity<CETradingPlatformComponent> ent, ref CETradingRequestSellAttempt args)
     {
         if (!TryComp<ItemPlacerComponent>(ent, out var itemPlacer))

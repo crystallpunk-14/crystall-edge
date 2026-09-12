@@ -7,6 +7,9 @@ ce-alerts-confused-aura-desc = Ваша магическая аура измен
 ce-alerts-aircaught-name = В воздушной ловушке
 ce-alerts-aircaught-desc = Вы подхвачены воздушным потоком, который не дает вам упасть ниже или подняться выше.
 
+ce-alerts-featherfall-name = Падение перышком
+ce-alerts-featherfall-desc = Гравитация почти не действует на вас, позволяя падать медленно и безопасно.
+
 ce-alerts-good-food-aftertaste-name = Приятное послевкусие
 ce-alerts-good-food-aftertaste-desc = Качественно приготовленная еда дает вам дополнительный бонус к регенерации здоровья.
 

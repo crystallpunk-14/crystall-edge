@@ -1,0 +1,2 @@
+ce-skill-knowledge-copying-name = Knowledge Copying Techniques
+ce-skill-knowledge-copying-desc = You know how to properly transcribe your knowledge into a book, letting you record any skill you've learned with a pen.

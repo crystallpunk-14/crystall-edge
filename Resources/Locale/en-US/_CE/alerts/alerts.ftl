@@ -7,6 +7,9 @@ ce-alerts-confused-aura-desc = Your magical aura is altered, and you leave false
 ce-alerts-aircaught-name = Caught in the air
 ce-alerts-aircaught-desc = You are caught by an air current that prevents you from falling lower or rising higher.
 
+ce-alerts-featherfall-name = Feather fall
+ce-alerts-featherfall-desc = Gravity barely affects you, letting you fall slowly and safely.
+
 ce-alerts-good-food-aftertaste-name = Pleasant aftertaste
 ce-alerts-good-food-aftertaste-desc = High-quality prepared food provides you with an additional bonus to health regeneration.
 

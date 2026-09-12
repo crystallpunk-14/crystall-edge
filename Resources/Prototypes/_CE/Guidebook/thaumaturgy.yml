@@ -8,6 +8,7 @@
   - CEThaumaturgyAspectsEN
   - CEThaumaturgyResearchEN
   - CEThaumaturgyInfusionAltarEN
+  - CEThaumaturgySpellcastingEN
 
 - type: guideEntry
   hidden: false
@@ -44,6 +45,13 @@
 
 - type: guideEntry
   hidden: false
+  locFilter: "en-US"
+  id: CEThaumaturgySpellcastingEN
+  name: Spellcasting
+  text: "/ServerInfo/_CE/Guidebook_EN/Thaumaturgy/Spellcasting/Spellcasting.xml"
+
+- type: guideEntry
+  hidden: false
   locFilter: "ru-RU"
   id: CEThaumaturgyRU
   name: Тауматургия
@@ -52,6 +60,7 @@
   - CEThaumaturgyAspectsRU
   - CEThaumaturgyResearchRU
   - CEThaumaturgyInfusionAltarRU
+  - CEThaumaturgySpellcastingRU
 
 - type: guideEntry
   hidden: false
@@ -85,3 +94,10 @@
   name: Рецепты
   text: "/ServerInfo/_CE/Guidebook_RU/Thaumaturgy/InfusionAltar/Recipes.xml"
   filterEnabled: True
+
+- type: guideEntry
+  hidden: false
+  locFilter: "ru-RU"
+  id: CEThaumaturgySpellcastingRU
+  name: Заклинания
+  text: "/ServerInfo/_CE/Guidebook_RU/Thaumaturgy/Spellcasting/Spellcasting.xml"
