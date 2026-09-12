@@ -1,6 +1,7 @@
 using Content.Client.UserInterface.Systems.Chat;
 using Content.Client.UserInterface.Systems.Chat.Widgets;
 using Content.Shared.Chat;
+using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Timing;
@@ -19,6 +20,10 @@ public sealed partial class CEChatBox : ChatBox
     private const float FadeHoldSeconds = 10f;
     private const float FadeDurationSeconds = 1f;
 
+    // Slop distance (px) still counted as "at the bottom" - avoids losing the stick due to
+    // sub-pixel layout rounding.
+    private const float StickToBottomSlack = 4f;
+
     [Dependency] private IGameTiming _timing = default!;
 
     private readonly ChatUIController _ceController;
@@ -29,6 +34,10 @@ public sealed partial class CEChatBox : ChatBox
     private bool _focused;
     private bool _hovered;
     private bool _expanded;
+
+    // Whether new messages should pull the view down to follow them. Cleared as soon as the
+    // player scrolls away from the bottom to read backlog, restored once they scroll back down.
+    private bool _stickToBottom = true;
 
     public CEChatBox()
     {
@@ -64,6 +73,7 @@ public sealed partial class CEChatBox : ChatBox
             HScrollEnabled = false,
         };
         _scrollContainer.AddChild(_messagesBox);
+        _scrollContainer.OnScrolled += UpdateStickToBottom;
         root.AddChild(_scrollContainer);
 
         root.AddChild(ChatInput);
@@ -89,7 +99,9 @@ public sealed partial class CEChatBox : ChatBox
             return;
 
         AddEntry(msg);
-        _scrollContainer.VScrollTarget = float.MaxValue;
+
+        if (_stickToBottom)
+            ScrollToBottom();
     }
 
     private void RebuildFromHistory()
@@ -104,7 +116,25 @@ public sealed partial class CEChatBox : ChatBox
                 AddEntry(msg);
         }
 
-        _scrollContainer.VScrollTarget = float.MaxValue;
+        // A rebuild (filter change, initial load) always jumps to the newest message.
+        _stickToBottom = true;
+        ScrollToBottom();
+    }
+
+    // ScrollContainer only recalculates its scrollable range during the next queued layout
+    // pass, which runs after this frame's control code finishes. Setting VScrollTarget right
+    // after adding a message clamps against the *previous* (too small) range and stops short
+    // of the true bottom - deferring the jump lets the layout settle first.
+    private void ScrollToBottom()
+    {
+        UserInterfaceManager.DeferAction(() => _scrollContainer.VScrollTarget = float.MaxValue);
+    }
+
+    private void UpdateStickToBottom()
+    {
+        var overflow = _messagesBox.Height - _scrollContainer.Height;
+        var distanceFromBottom = overflow - _scrollContainer.VScrollTarget;
+        _stickToBottom = distanceFromBottom <= StickToBottomSlack;
     }
 
     private void AddEntry(ChatMessage msg)
@@ -116,7 +146,11 @@ public sealed partial class CEChatBox : ChatBox
         formatted.AddMarkupOrThrow(msg.WrappedMessage);
         formatted.Pop();
 
-        var label = new RichTextLabel { HorizontalExpand = true };
+        var label = new RichTextLabel
+        {
+            HorizontalExpand = true,
+            OutlineColorOverride = TextOutline.Default.Color,
+        };
         label.SetMessage(formatted, tagsAllowed: null);
 
         _messagesBox.AddChild(label);
@@ -162,7 +196,9 @@ public sealed partial class CEChatBox : ChatBox
         }
         else
         {
-            _scrollContainer.VScrollTarget = float.MaxValue;
+            // Collapsing always snaps back to showing the newest message.
+            _stickToBottom = true;
+            ScrollToBottom();
             UpdateFades();
         }
     }
