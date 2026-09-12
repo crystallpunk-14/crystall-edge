@@ -25,6 +25,7 @@ public sealed partial class SeparatedChatGameScreen : InGameScreen
         // CrystallEdge: inventory UI removed from the main screen, lives in the character menu instead
         SetAnchorAndMarginPreset(TopLeftContainer, LayoutPreset.TopLeft, margin: 10);
         SetAnchorAndMarginPreset(Ghost, LayoutPreset.BottomWide, margin: 80);
+        SetAnchorAndMarginPreset(CharacterMenuButton, LayoutPreset.BottomLeft, margin: 5);
         SetAnchorAndMarginPreset(Hotbar, LayoutPreset.BottomWide, margin: 5);
         SetAnchorAndMarginPreset(Alerts, LayoutPreset.CenterRight, margin: 10);
 

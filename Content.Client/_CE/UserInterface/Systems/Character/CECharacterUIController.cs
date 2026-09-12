@@ -1,8 +1,11 @@
 using System.Linq;
+using Content.Client._CE.UserInterface.Screens;
 using Content.Client._CE.UserInterface.Systems.Character.Windows;
 using Content.Client.CharacterInfo;
 using Content.Client.Gameplay;
 using Content.Client.Stylesheets;
+using Content.Client.UserInterface.Controls;
+using Content.Client.UserInterface.Screens;
 using Content.Client.UserInterface.Systems.Character.Controls;
 using Content.Client.UserInterface.Systems.Inventory;
 using Content.Client.UserInterface.Systems.MenuBar.Widgets;
@@ -14,6 +17,7 @@ using Robust.Client.GameObjects;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
 using Robust.Client.UserInterface.Controls;
+using Robust.Shared.Input;
 using Robust.Shared.Input.Binding;
 using Robust.Shared.Utility;
 using MenuButton = Content.Client.UserInterface.Controls.MenuButton;
@@ -30,6 +34,14 @@ public sealed partial class CECharacterUIController : UIController, IOnStateEnte
 
     private CECharacterWindow? _window;
     private MenuButton? CharacterButton => UIManager.GetActiveUIWidgetOrNull<GameTopMenuBar>()?.CharacterButton;
+
+    private SlotButton? InlineCharacterMenuButton => UIManager.ActiveScreen switch
+    {
+        DefaultGameScreen game => game.CharacterMenuButton,
+        SeparatedChatGameScreen separated => separated.CharacterMenuButton,
+        CEMinimalismGameScreen minimalism => minimalism.CharacterMenuButton,
+        _ => null
+    };
 
     public void OnSystemLoaded(CharacterInfoSystem system)
     {
@@ -144,18 +156,20 @@ public sealed partial class CECharacterUIController : UIController, IOnStateEnte
 
     public void UnloadButton()
     {
-        if (CharacterButton == null)
-            return;
+        if (CharacterButton != null)
+            CharacterButton.OnPressed -= CharacterButtonPressed;
 
-        CharacterButton.OnPressed -= CharacterButtonPressed;
+        if (InlineCharacterMenuButton != null)
+            InlineCharacterMenuButton.Pressed -= InlineCharacterMenuButtonPressed;
     }
 
     public void LoadButton()
     {
-        if (CharacterButton == null)
-            return;
+        if (CharacterButton != null)
+            CharacterButton.OnPressed += CharacterButtonPressed;
 
-        CharacterButton.OnPressed += CharacterButtonPressed;
+        if (InlineCharacterMenuButton != null)
+            InlineCharacterMenuButton.Pressed += InlineCharacterMenuButtonPressed;
     }
 
     private void DeactivateButton()
@@ -176,6 +190,14 @@ public sealed partial class CECharacterUIController : UIController, IOnStateEnte
 
     private void CharacterButtonPressed(ButtonEventArgs args)
     {
+        ToggleWindow();
+    }
+
+    private void InlineCharacterMenuButtonPressed(GUIBoundKeyEventArgs args, SlotControl control)
+    {
+        if (args.Function != EngineKeyFunctions.UIClick)
+            return;
+
         ToggleWindow();
     }
 

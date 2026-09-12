@@ -20,16 +20,17 @@ public sealed partial class CEMinimalismGameScreen : InGameScreen
         SetAnchorPreset(ViewportContainer, LayoutPreset.Wide);
         SetAnchorAndMarginPreset(TopLeft, LayoutPreset.TopLeft, margin: 10);
         SetAnchorAndMarginPreset(Ghost, LayoutPreset.BottomWide, margin: 80);
+        SetAnchorAndMarginPreset(CharacterMenuButton, LayoutPreset.BottomLeft, margin: 5);
         SetAnchorAndMarginPreset(Hotbar, LayoutPreset.BottomWide, margin: 5);
         SetAnchorAndMarginPreset(Chat, LayoutPreset.BottomLeft, margin: 10);
+        var chatClearance = 5 + CharacterMenuButton.MinSize.Y + 5;
+        SetMarginTop(Chat, Chat.GetValue<float>(MarginTopProperty) - chatClearance);
+        SetMarginBottom(Chat, Chat.GetValue<float>(MarginBottomProperty) - chatClearance);
         SetAnchorAndMarginPreset(Alerts, LayoutPreset.TopRight, margin: 10);
 
-        // Top bar (escape/guidebook/emotes/etc buttons) starts hidden; EscapeUIController is
-        // responsible for showing/hiding it (including restoring visibility if this screen gets
-        // (re)created while the escape menu is already open, e.g. after a live HUD-layout switch).
         TopBar.Visible = false;
 
-        //CrystallEdge - health/mana spheres, stamina bar, centered+lowered action bar
+        // Health/mana spheres, stamina bar, centered+lowered action bar
         var gap = 310f;
         var manaOffset = ManaBar.MinSize.X / 2f + gap;
         // Mirror health to the left so that HealthBar.Right == -ManaBar.Left.
@@ -48,7 +49,6 @@ public sealed partial class CEMinimalismGameScreen : InGameScreen
         SetAnchorPreset(Actions, LayoutPreset.BottomWide);
         SetMarginLeft(Actions, 0);
         SetMarginRight(Actions, 0);
-        //CrystallEdge end
 
         MainViewport.OnResized += ResizeActionContainer;
         Hotbar.OnResized += ResizeActionContainer;
@@ -59,7 +59,7 @@ public sealed partial class CEMinimalismGameScreen : InGameScreen
 
     private void ResizeActionContainer()
     {
-        //CrystallEdge - action bar stacks above whichever is taller: stamina bar or hotbar
+        // Action bar stacks above whichever is taller: stamina bar or hotbar
         float indent = 20;
         var maxWidth = MainViewport.Size.X - indent;
         if (maxWidth > 0)
@@ -71,7 +71,6 @@ public sealed partial class CEMinimalismGameScreen : InGameScreen
         var actionBottomOffset = MathF.Max(staminaTop, hotbarTop) + 8f - actionHeight / 2f;
         SetMarginBottom(Actions, -actionBottomOffset);
         SetMarginTop(Actions, -actionBottomOffset - actionHeight);
-        //CrystallEdge end
     }
 
     public override ChatBox ChatBox => Chat;

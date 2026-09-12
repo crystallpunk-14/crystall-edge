@@ -19,6 +19,7 @@ public sealed partial class DefaultGameScreen : InGameScreen
         SetAnchorAndMarginPreset(TopLeft, LayoutPreset.TopLeft, margin: 10);
         SetAnchorAndMarginPreset(Ghost, LayoutPreset.BottomWide, margin: 80);
         // CrystallEdge: inventory UI removed from the main screen, lives in the character menu instead
+        SetAnchorAndMarginPreset(CharacterMenuButton, LayoutPreset.BottomLeft, margin: 5);
         SetAnchorAndMarginPreset(Hotbar, LayoutPreset.BottomWide, margin: 5);
         SetAnchorAndMarginPreset(Chat, LayoutPreset.TopRight, margin: 10);
         SetAnchorAndMarginPreset(Alerts, LayoutPreset.TopRight, margin: 10);
