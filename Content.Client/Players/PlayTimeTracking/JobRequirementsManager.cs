@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using Content.Shared._CE.Roles;
 using Content.Shared.CCVar;
 using Content.Shared.Players;
 using Content.Shared.Players.JobWhitelist;
@@ -181,6 +182,19 @@ public sealed partial class JobRequirementsManager : ISharedPlaytimeManager
 
         return true;
     }
+
+    // CrystallEdge: secret role requirements (no bans/whitelist model for these yet, just playtime requirements)
+    /// <summary>
+    /// Check the secret role prototype against the current player, for requirements.
+    /// </summary>
+    public bool IsAllowed(
+        CESecretRolePrototype role,
+        HumanoidCharacterProfile? profile,
+        [NotNullWhen(false)] out FormattedMessage? reason)
+    {
+        return CheckRoleRequirements(role.Requirements, profile, out reason);
+    }
+    // CrystallEdge end
 
     // This must be private so code paths can't accidentally skip requirement overrides. Call this through IsAllowed()
     private bool CheckRoleRequirements(HashSet<JobRequirement>? requirements, HumanoidCharacterProfile? profile, [NotNullWhen(false)] out FormattedMessage? reason)

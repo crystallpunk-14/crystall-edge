@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Afk;
 using Content.Server.Database;
+using Content.Shared._CE.Roles;
 using Content.Shared.Body;
 using Content.Shared.CCVar;
 using Content.Shared.Construction.Prototypes;
@@ -94,6 +95,9 @@ namespace Content.Server.Preferences.Managers
         {
 
             var jobs = profile.Jobs.ToDictionary(j => new ProtoId<JobPrototype>(j.JobName), j => (JobPriority) j.Priority);
+            // CrystallEdge: secret role priorities
+            var secretRoles = profile.SecretRoles.ToDictionary(r => new ProtoId<CESecretRolePrototype>(r.SecretRoleName), r => (JobPriority) r.Priority);
+            // CrystallEdge end
             var antags = profile.Antags.Select(a => new ProtoId<AntagPrototype>(a.AntagName));
             var traits = profile.Traits.Select(t => new ProtoId<TraitPrototype>(t.TraitName));
 
@@ -201,7 +205,8 @@ namespace Content.Server.Preferences.Managers
                 // CrystallEdge: bark speech settings
                 BarkVoice = profile.BarkVoice,
                 BarkPitch = profile.BarkPitch,
-            };
+                // CrystallEdge end
+            }.WithSecretRolePriorities(secretRoles); // CrystallEdge: secret role priorities
         }
 
         private async void HandleSelectCharacterMessage(MsgSelectCharacter message)

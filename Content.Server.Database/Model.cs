@@ -52,6 +52,7 @@ namespace Content.Server.Database
         public DbSet<CustomVoteLog> CustomVoteLog { get; set; } = null!;
         public DbSet<CustomVoteLogOption> CustomVoteLogOption { get; set; } = null!;
         public DbSet<PlayerAchievement> PlayerAchievement { get; set; } = default!; //CrystallEdge achievements
+        public DbSet<SecretRole> SecretRole { get; set; } = default!; //CrystallEdge secret role priorities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -100,6 +101,20 @@ namespace Content.Server.Database
             modelBuilder.Entity<Job>()
                 .HasIndex(j => new { j.ProfileId, j.JobName })
                 .IsUnique();
+
+            // CrystallEdge: secret role priorities
+            modelBuilder.Entity<SecretRole>()
+                .HasIndex(j => j.ProfileId);
+
+            modelBuilder.Entity<SecretRole>()
+                .HasIndex(j => j.ProfileId, "IX_secret_role_one_high_priority")
+                .IsUnique()
+                .HasFilter("priority = 3");
+
+            modelBuilder.Entity<SecretRole>()
+                .HasIndex(j => new { j.ProfileId, j.SecretRoleName })
+                .IsUnique();
+            // CrystallEdge end
 
             modelBuilder.Entity<AssignedUserId>()
                 .HasIndex(p => p.UserName)
@@ -365,6 +380,11 @@ namespace Content.Server.Database
         // CrystallEdge end
 
         public List<Job> Jobs { get; } = new();
+
+        // CrystallEdge: secret role priorities
+        public List<SecretRole> SecretRoles { get; } = new();
+        // CrystallEdge end
+
         public List<Antag> Antags { get; } = new();
         public List<Trait> Traits { get; } = new();
 
@@ -394,6 +414,19 @@ namespace Content.Server.Database
         Medium = 2,
         High = 3
     }
+
+    // CrystallEdge: secret role priorities (mirrors Job, kept as its own table so it doesn't
+    // share the "one High priority" constraint with real jobs)
+    public class SecretRole
+    {
+        public int Id { get; set; }
+        public Profile Profile { get; set; } = null!;
+        public int ProfileId { get; set; }
+
+        public string SecretRoleName { get; set; } = null!;
+        public DbJobPriority Priority { get; set; }
+    }
+    // CrystallEdge end
 
     public class Antag
     {

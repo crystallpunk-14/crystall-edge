@@ -1,7 +1,7 @@
 using System.Linq;
 using System.Numerics;
+using Content.Client._CE.Lobby.UI.Roles;
 using Content.Client.Lobby.UI.Loadouts;
-using Content.Client.Lobby.UI.Roles;
 using Content.Shared.Clothing;
 using Content.Shared.Preferences;
 using Content.Shared.Preferences.Loadouts;
@@ -24,7 +24,7 @@ public sealed partial class CEHumanoidProfileEditor
     // One at a time.
     private LoadoutWindow? _loadoutWindow;
 
-    private List<(string, RequirementsSelector)> _jobPriorities = new();
+    private List<(string, CERequirementsSelector)> _jobPriorities = new();
 
     private readonly Dictionary<string, BoxContainer> _jobCategories;
 
@@ -170,9 +170,9 @@ public sealed partial class CEHumanoidProfileEditor
                         {
                             new Label
                             {
-                                Text = Loc.GetString("humanoid-profile-editor-department-jobs-label",
-                                    ("departmentName", departmentName)),
-                                Margin = new Thickness(5f, 0, 0, 0)
+                                Text = departmentName,
+                                HorizontalAlignment = HAlignment.Center,
+                                HorizontalExpand = true,
                             }
                         }
                 });
@@ -193,11 +193,13 @@ public sealed partial class CEHumanoidProfileEditor
                 var jobContainer = new BoxContainer()
                 {
                     Orientation = LayoutOrientation.Horizontal,
+                    HorizontalExpand = true,
                 };
 
-                var selector = new RequirementsSelector()
+                var selector = new CERequirementsSelector()
                 {
                     Margin = new Thickness(3f, 3f, 3f, 0f),
+                    HorizontalExpand = true,
                 };
                 selector.OnOpenGuidebook += OnOpenGuidebook;
 
@@ -208,7 +210,7 @@ public sealed partial class CEHumanoidProfileEditor
                 };
                 var jobIcon = _prototypeManager.Index(job.Icon);
                 icon.Texture = _sprite.Frame0(jobIcon.Icon);
-                selector.Setup(items, job.LocalizedName, 200, job.LocalizedDescription, icon, job.Guides);
+                selector.Setup(items, job.LocalizedName, 90, job.LocalizedDescription, icon, job.Guides);
 
                 if (!_requirements.IsAllowed(job, (HumanoidCharacterProfile?)_preferencesManager.Preferences?.SelectedCharacter, out var reason))
                 {
@@ -250,11 +252,19 @@ public sealed partial class CEHumanoidProfileEditor
 
                 var loadoutWindowBtn = new Button()
                 {
-                    Text = Loc.GetString("loadout-window"),
+                    ToolTip = Loc.GetString("loadout-window"),
                     HorizontalAlignment = HAlignment.Right,
                     VerticalAlignment = VAlignment.Center,
                     Margin = new Thickness(3f, 3f, 0f, 0f),
                 };
+                loadoutWindowBtn.AddChild(new TextureRect
+                {
+                    TexturePath = "/Textures/Interface/VerbIcons/outfit.svg.192dpi.png",
+                    HorizontalAlignment = HAlignment.Center,
+                    VerticalAlignment = VAlignment.Center,
+                    Stretch = TextureRect.StretchMode.Scale,
+                    SetSize = new Vector2(20, 20),
+                });
 
                 var collection = IoCManager.Instance!;
                 var protoManager = collection.Resolve<IPrototypeManager>();

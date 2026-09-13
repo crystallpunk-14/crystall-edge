@@ -1,4 +1,5 @@
 using Content.Shared.Roles;
+using Content.Shared.StatusIcon;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.Roles;
@@ -36,4 +37,10 @@ public sealed partial class CESecretRolePrototype : IPrototype
 
     [DataField]
     public ProtoId<JobIconPrototype> Icon = "JobIconUnknown";
+
+    /// <summary>
+    /// Requirements to select this role in the character editor.
+    /// </summary>
+    [DataField]
+    public HashSet<JobRequirement>? Requirements;
 }

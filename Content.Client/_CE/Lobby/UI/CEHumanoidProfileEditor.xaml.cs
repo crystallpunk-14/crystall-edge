@@ -263,15 +263,15 @@ namespace Content.Client._CE.Lobby.UI
 
             #region Jobs
 
-            TabContainer.SetTabTitle(1, Loc.GetString("humanoid-profile-editor-jobs-tab"));
+            TabContainer.SetTabTitle(1, Loc.GetString("ce-humanoid-profile-editor-roles-tab"));
 
             PreferenceUnavailableButton.AddItem(
-                Loc.GetString("humanoid-profile-editor-preference-unavailable-stay-in-lobby-button"),
-                (int)PreferenceUnavailableMode.StayInLobby);
-            PreferenceUnavailableButton.AddItem(
-                Loc.GetString("humanoid-profile-editor-preference-unavailable-spawn-as-overflow-button",
+                Loc.GetString("ce-humanoid-profile-editor-preference-unavailable-spawn-as-overflow-button",
                               ("overflowJob", Loc.GetString(SharedGameTicker.FallbackOverflowJobName))),
                 (int)PreferenceUnavailableMode.SpawnAsOverflow);
+            PreferenceUnavailableButton.AddItem(
+                Loc.GetString("ce-humanoid-profile-editor-preference-unavailable-stay-in-lobby-button"),
+                (int)PreferenceUnavailableMode.StayInLobby);
 
             PreferenceUnavailableButton.OnItemSelected += args =>
             {
@@ -283,6 +283,7 @@ namespace Content.Client._CE.Lobby.UI
             _jobCategories = new Dictionary<string, BoxContainer>();
 
             RefreshJobs();
+            RefreshSecretRoles();
 
             #endregion Jobs
 
@@ -387,6 +388,7 @@ namespace Content.Client._CE.Lobby.UI
             UpdateMarkings();
 
             RefreshJobs();
+            RefreshSecretRoles();
             RefreshLoadouts();
             RefreshSpecies();
             RefreshBarkVoices();

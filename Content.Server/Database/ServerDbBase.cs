@@ -46,6 +46,7 @@ namespace Content.Server.Database
             return await db.DbContext
                 .Preference
                 .Include(p => p.Profiles).ThenInclude(h => h.Jobs)
+                .Include(p => p.Profiles).ThenInclude(h => h.SecretRoles) // CrystallEdge
                 .Include(p => p.Profiles).ThenInclude(h => h.Antags)
                 .Include(p => p.Profiles).ThenInclude(h => h.Traits)
                 .Include(p => p.Profiles)
@@ -104,6 +105,7 @@ namespace Content.Server.Database
                 .Include(p => p.Preference)
                 .Where(p => p.Preference.UserId == userId.UserId)
                 .Include(p => p.Jobs)
+                .Include(p => p.SecretRoles) // CrystallEdge
                 .Include(p => p.Antags)
                 .Include(p => p.Traits)
                 .Include(p => p.Loadouts)
@@ -250,6 +252,15 @@ namespace Content.Server.Database
                     .Where(j => j.Value != JobPriority.Never)
                     .Select(j => new Job {JobName = j.Key, Priority = (DbJobPriority) j.Value})
             );
+
+            // CrystallEdge: secret role priorities
+            profile.SecretRoles.Clear();
+            profile.SecretRoles.AddRange(
+                humanoid.SecretRolePriorities
+                    .Where(r => r.Value != JobPriority.Never)
+                    .Select(r => new SecretRole {SecretRoleName = r.Key, Priority = (DbJobPriority) r.Value})
+            );
+            // CrystallEdge end
 
             profile.Antags.Clear();
             profile.Antags.AddRange(

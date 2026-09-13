@@ -2,6 +2,7 @@ using Content.Client._CE.Lobby.UI;
 using Content.Client.Guidebook;
 using Content.Client.Lobby.UI;
 using Content.Client.Players.PlayTimeTracking;
+using Content.Shared._CE.Roles;
 using Content.Shared.CCVar;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
@@ -102,6 +103,14 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
             {
                 _profileEditor.RefreshJobs();
             }
+
+            // CrystallEdge: secret role priorities
+            if (obj.WasModified<CESecretRolePrototype>() ||
+                obj.WasModified<CESecretDepartmentPrototype>())
+            {
+                _profileEditor.RefreshSecretRoles();
+            }
+            // CrystallEdge end
 
             if (obj.WasModified<LoadoutPrototype>() ||
                 obj.WasModified<LoadoutGroupPrototype>() ||
