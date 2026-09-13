@@ -226,21 +226,6 @@ namespace Content.Client._CE.Lobby.UI
 
             #endregion
 
-            #region SpawnPriority
-
-            foreach (var value in Enum.GetValues<SpawnPriorityPreference>())
-            {
-                SpawnPriorityButton.AddItem(Loc.GetString($"humanoid-profile-editor-preference-spawn-priority-{value.ToString().ToLower()}"), (int)value);
-            }
-
-            SpawnPriorityButton.OnItemSelected += args =>
-            {
-                SpawnPriorityButton.SelectId(args.Id);
-                SetSpawnPriority((SpawnPriorityPreference)args.Id);
-            };
-
-            #endregion SpawnPriority
-
             #region Bark Voice
 
             RefreshBarkVoices();
@@ -304,8 +289,6 @@ namespace Content.Client._CE.Lobby.UI
             RefreshTraits();
 
             #region Markings
-
-            TabContainer.SetTabTitle(3, Loc.GetString("humanoid-profile-editor-markings-tab"));
 
             _markingsModel.MarkingsChanged += (_, _) => OnMarkingChange();
             _markingsModel.MarkingsReset += OnMarkingChange;
@@ -398,7 +381,6 @@ namespace Content.Client._CE.Lobby.UI
             UpdateVoiceControls();
             UpdateGenderControls();
             UpdateSkinColor();
-            UpdateSpawnPriorityControls();
             UpdateAgeEdit();
             UpdateEyePickers();
             UpdateSaveButton();

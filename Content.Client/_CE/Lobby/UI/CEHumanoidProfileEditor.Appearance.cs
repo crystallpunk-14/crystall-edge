@@ -165,16 +165,6 @@ public sealed partial class CEHumanoidProfileEditor
         }
     }
 
-    private void UpdateSpawnPriorityControls()
-    {
-        if (Profile == null)
-        {
-            return;
-        }
-
-        SpawnPriorityButton.SelectId((int)Profile.SpawnPriority);
-    }
-
     /// <summary>
     /// Refreshes the species selector.
     /// </summary>
@@ -267,12 +257,6 @@ public sealed partial class CEHumanoidProfileEditor
     {
         Profile = Profile?.WithGender(newGender);
         ReloadPreview();
-    }
-
-    private void SetSpawnPriority(SpawnPriorityPreference newSpawnPriority)
-    {
-        Profile = Profile?.WithSpawnPriorityPreference(newSpawnPriority);
-        SetDirty();
     }
 
     private void OnSpeciesInfoButtonPressed(BaseButton.ButtonEventArgs args)
