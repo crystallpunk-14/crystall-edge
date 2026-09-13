@@ -9,3 +9,14 @@
     roleType: SoloAntagonist
     exclusiveAntag: true
   - type: CEThiefRole
+
+# One generic mind role shared by every secret role - the actual role is stored on CESecretRoleComponent.
+- type: entity
+  parent: BaseMindRole
+  id: CEMindRoleSecret
+  categories: [ ForkFiltered ]
+  name: Secret role
+  components:
+  - type: MindRole
+    roleType: SoloAntagonist
+  - type: CESecretRole

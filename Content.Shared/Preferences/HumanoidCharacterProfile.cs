@@ -1,6 +1,7 @@
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Content.Shared._CE.Roles;
 using Content.Shared._CE.Speech;
 using Content.Shared.CCVar;
 using Content.Shared.Chat.Prototypes;
@@ -49,6 +50,14 @@ namespace Content.Shared.Preferences
                 SharedGameTicker.FallbackOverflowJob, JobPriority.High
             }
         };
+
+        // CrystallEdge: secret role priorities (kept separate from _jobPriorities so they don't compete for the single High slot)
+        /// <summary>
+        /// Secret role preferences for initial spawn.
+        /// </summary>
+        [DataField]
+        private Dictionary<ProtoId<CESecretRolePrototype>, JobPriority> _secretRolePriorities = new();
+        // CrystallEdge end
 
         /// <summary>
         /// Antags we have opted in to.
@@ -121,6 +130,13 @@ namespace Content.Shared.Preferences
         /// <see cref="_jobPriorities"/>
         /// </summary>
         public IReadOnlyDictionary<ProtoId<JobPrototype>, JobPriority> JobPriorities => _jobPriorities;
+
+        // CrystallEdge: secret role priorities
+        /// <summary>
+        /// <see cref="_secretRolePriorities"/>
+        /// </summary>
+        public IReadOnlyDictionary<ProtoId<CESecretRolePrototype>, JobPriority> SecretRolePriorities => _secretRolePriorities;
+        // CrystallEdge end
 
         /// <summary>
         /// <see cref="_antagPreferences"/>
@@ -205,6 +221,10 @@ namespace Content.Shared.Preferences
             //CrystallEdge barks
             BarkVoice = other.BarkVoice;
             BarkPitch = other.BarkPitch;
+
+            // CrystallEdge: secret role priorities
+            _secretRolePriorities = new Dictionary<ProtoId<CESecretRolePrototype>, JobPriority>(other.SecretRolePriorities);
+            // CrystallEdge end
         }
 
         /// <summary>
@@ -536,6 +556,61 @@ namespace Content.Shared.Preferences
             };
         }
 
+        // CrystallEdge: secret role priorities
+        public HumanoidCharacterProfile WithSecretRolePriorities(IEnumerable<KeyValuePair<ProtoId<CESecretRolePrototype>, JobPriority>> secretRolePriorities)
+        {
+            var dictionary = new Dictionary<ProtoId<CESecretRolePrototype>, JobPriority>(secretRolePriorities);
+            var hasHighPrio = false;
+
+            foreach (var (key, value) in dictionary)
+            {
+                if (value == JobPriority.Never)
+                    dictionary.Remove(key);
+                else if (value != JobPriority.High)
+                    continue;
+
+                if (hasHighPrio)
+                    dictionary[key] = JobPriority.Medium;
+
+                hasHighPrio = true;
+            }
+
+            return new(this)
+            {
+                _secretRolePriorities = dictionary
+            };
+        }
+
+        public HumanoidCharacterProfile WithSecretRolePriority(ProtoId<CESecretRolePrototype> roleId, JobPriority priority)
+        {
+            var dictionary = new Dictionary<ProtoId<CESecretRolePrototype>, JobPriority>(_secretRolePriorities);
+            if (priority == JobPriority.Never)
+            {
+                dictionary.Remove(roleId);
+            }
+            else if (priority == JobPriority.High)
+            {
+                // There can only ever be one high priority secret role, independent of jobs.
+                foreach (var (role, value) in dictionary)
+                {
+                    if (value == JobPriority.High)
+                        dictionary[role] = JobPriority.Medium;
+                }
+
+                dictionary[roleId] = priority;
+            }
+            else
+            {
+                dictionary[roleId] = priority;
+            }
+
+            return new(this)
+            {
+                _secretRolePriorities = dictionary,
+            };
+        }
+        // CrystallEdge end
+
         public HumanoidCharacterProfile WithPreferenceUnavailable(PreferenceUnavailableMode mode)
         {
             return new(this) { PreferenceUnavailable = mode };
@@ -645,6 +720,9 @@ namespace Content.Shared.Preferences
             if (PreferenceUnavailable != other.PreferenceUnavailable) return false;
             if (SpawnPriority != other.SpawnPriority) return false;
             if (!_jobPriorities.SequenceEqual(other._jobPriorities)) return false;
+            // CrystallEdge: secret role priorities comparison
+            if (!_secretRolePriorities.SequenceEqual(other._secretRolePriorities)) return false;
+            // CrystallEdge end
             if (!_antagPreferences.SequenceEqual(other._antagPreferences)) return false;
             if (!_traitPreferences.SequenceEqual(other._traitPreferences)) return false;
             if (!Loadouts.SequenceEqual(other.Loadouts)) return false;
@@ -776,6 +854,29 @@ namespace Content.Shared.Preferences
                 hasHighPrio = true;
             }
 
+            // CrystallEdge: validate secret role priorities, independent "one High" enforcement
+            var secretRolePriorities = new Dictionary<ProtoId<CESecretRolePrototype>, JobPriority>(SecretRolePriorities
+                .Where(p => prototypeManager.HasIndex<CESecretRolePrototype>(p.Key) && p.Value switch
+                {
+                    JobPriority.Never => false, // Drop never since that's assumed default.
+                    JobPriority.Low => true,
+                    JobPriority.Medium => true,
+                    JobPriority.High => true,
+                    _ => false
+                }));
+
+            var hasHighSecretRolePrio = false;
+            foreach (var (key, value) in secretRolePriorities)
+            {
+                if (value != JobPriority.High)
+                    continue;
+
+                if (hasHighSecretRolePrio)
+                    secretRolePriorities[key] = JobPriority.Medium;
+                hasHighSecretRolePrio = true;
+            }
+            // CrystallEdge end
+
             var antags = AntagPreferences
                 .Where(id => prototypeManager.TryIndex(id, out var antag) && antag.SetPreference)
                 .ToList();
@@ -809,6 +910,15 @@ namespace Content.Shared.Preferences
             {
                 _jobPriorities.Add(job, priority);
             }
+
+            // CrystallEdge: secret role priorities
+            _secretRolePriorities.Clear();
+
+            foreach (var (role, priority) in secretRolePriorities)
+            {
+                _secretRolePriorities.Add(role, priority);
+            }
+            // CrystallEdge end
 
             PreferenceUnavailable = prefsUnavailableMode;
 
@@ -911,6 +1021,9 @@ namespace Content.Shared.Preferences
         {
             var hashCode = new HashCode();
             hashCode.Add(_jobPriorities);
+            // CrystallEdge: secret role priorities hash
+            hashCode.Add(_secretRolePriorities);
+            // CrystallEdge end
             hashCode.Add(_antagPreferences);
             hashCode.Add(_traitPreferences);
             hashCode.Add(_loadouts);

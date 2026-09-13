@@ -8,46 +8,46 @@
   "copyright": "Created by TheShuEd (Github)",
   "states": [
     {
-      "name": "Bard"
+      "name": "bard"
     },
     {
-      "name": "Bartender"
+      "name": "bartender"
     },
     {
-      "name": "Brigadier"
+      "name": "brigadier"
     },
     {
-      "name": "Chef"
+      "name": "chef"
     },
     {
-      "name": "Farmer"
+      "name": "farmer"
     },
     {
-      "name": "Guard"
+      "name": "guard"
     },
     {
-      "name": "GuardCommander"
+      "name": "guard_commander"
     },
     {
-      "name": "Investigator"
+      "name": "investigator"
     },
     {
-      "name": "Tavernmaster"
+      "name": "tavernmaster"
     },
     {
-      "name": "Technician"
+      "name": "technician"
     },
     {
-      "name": "Townfolk"
+      "name": "jobless"
     },
     {
-      "name": "Student"
+      "name": "student"
     },
     {
-      "name": "Professor"
+      "name": "professor"
     },
     {
-      "name": "Rector"
+      "name": "rector"
     }
   ]
 }

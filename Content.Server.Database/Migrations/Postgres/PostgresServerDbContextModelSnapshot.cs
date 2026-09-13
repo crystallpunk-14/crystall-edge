@@ -1370,6 +1370,44 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.ToTable("round", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.SecretRole", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("secret_role_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Priority")
+                        .HasColumnType("integer")
+                        .HasColumnName("priority");
+
+                    b.Property<int>("ProfileId")
+                        .HasColumnType("integer")
+                        .HasColumnName("profile_id");
+
+                    b.Property<string>("SecretRoleName")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("secret_role_name");
+
+                    b.HasKey("Id")
+                        .HasName("PK_secret_role");
+
+                    b.HasIndex("ProfileId")
+                        .HasDatabaseName("IX_secret_role_profile_id");
+
+                    b.HasIndex("ProfileId", "SecretRoleName")
+                        .IsUnique();
+
+                    b.HasIndex(new[] { "ProfileId" }, "IX_secret_role_one_high_priority")
+                        .IsUnique()
+                        .HasFilter("priority = 3");
+
+                    b.ToTable("secret_role", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.Server", b =>
                 {
                     b.Property<int>("Id")
@@ -2099,6 +2137,18 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("Server");
                 });
 
+            modelBuilder.Entity("Content.Server.Database.SecretRole", b =>
+                {
+                    b.HasOne("Content.Server.Database.Profile", "Profile")
+                        .WithMany("SecretRoles")
+                        .HasForeignKey("ProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_secret_role_profile_profile_id");
+
+                    b.Navigation("Profile");
+                });
+
             modelBuilder.Entity("Content.Server.Database.ServerBanHit", b =>
                 {
                     b.HasOne("Content.Server.Database.Ban", "Ban")
@@ -2254,6 +2304,8 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("Jobs");
 
                     b.Navigation("Loadouts");
+
+                    b.Navigation("SecretRoles");
 
                     b.Navigation("Traits");
                 });

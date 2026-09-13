@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Client._CE.Roles;
 using Content.Client._CE.UserInterface.Screens;
 using Content.Client._CE.UserInterface.Systems.Character.Windows;
 using Content.Client.CharacterInfo;
@@ -10,8 +11,10 @@ using Content.Client.UserInterface.Systems.Character.Controls;
 using Content.Client.UserInterface.Systems.Inventory;
 using Content.Client.UserInterface.Systems.MenuBar.Widgets;
 using Content.Client.UserInterface.Systems.Objectives.Controls;
+using Content.Shared._CE.Roles;
 using Content.Shared.Humanoid;
 using Content.Shared.Input;
+using Content.Shared.Roles;
 using JetBrains.Annotations;
 using Robust.Client.GameObjects;
 using Robust.Client.UserInterface;
@@ -19,6 +22,7 @@ using Robust.Client.UserInterface.Controllers;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Input;
 using Robust.Shared.Input.Binding;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using MenuButton = Content.Client.UserInterface.Controls.MenuButton;
 using static Robust.Client.UserInterface.Controls.BaseButton;
@@ -27,10 +31,12 @@ using static Content.Client.CharacterInfo.CharacterInfoSystem;
 namespace Content.Client._CE.UserInterface.Systems.Character;
 
 [UsedImplicitly]
-public sealed partial class CECharacterUIController : UIController, IOnStateEntered<GameplayState>, IOnStateExited<GameplayState>, IOnSystemChanged<CharacterInfoSystem>
+public sealed partial class CECharacterUIController : UIController, IOnStateEntered<GameplayState>, IOnStateExited<GameplayState>, IOnSystemChanged<CharacterInfoSystem>, IOnSystemChanged<CESecretRoleInfoSystem>
 {
     [UISystemDependency] private readonly CharacterInfoSystem _characterInfo = default!;
+    [UISystemDependency] private readonly CESecretRoleInfoSystem _secretRoleInfo = default!;
     [UISystemDependency] private readonly SpriteSystem _sprite = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
 
     private CECharacterWindow? _window;
     private MenuButton? CharacterButton => UIManager.GetActiveUIWidgetOrNull<GameTopMenuBar>()?.CharacterButton;
@@ -53,6 +59,37 @@ public sealed partial class CECharacterUIController : UIController, IOnStateEnte
         system.OnCharacterUpdate -= CharacterUpdated;
     }
 
+    public void OnSystemLoaded(CESecretRoleInfoSystem system)
+    {
+        system.OnSecretRoleUpdate += SecretRoleUpdated;
+    }
+
+    public void OnSystemUnloaded(CESecretRoleInfoSystem system)
+    {
+        system.OnSecretRoleUpdate -= SecretRoleUpdated;
+    }
+
+    private void SecretRoleUpdated(EntityUid entity, ProtoId<CESecretRolePrototype>? secretRoleId)
+    {
+        if (_window == null)
+            return;
+
+        _window.InventoryTab.SecretRoleLabel.Text = string.Empty;
+        _window.InventoryTab.SecretRoleLabel.FontColorOverride = null;
+        if (secretRoleId is not { } roleId || !_prototypeManager.TryIndex(roleId, out var secretRoleProto))
+            return;
+
+        _window.InventoryTab.SecretRoleLabel.Text = secretRoleProto.LocalizedName;
+        foreach (var secretDepartment in _prototypeManager.EnumeratePrototypes<CESecretDepartmentPrototype>())
+        {
+            if (!secretDepartment.Roles.Contains(roleId))
+                continue;
+
+            _window.InventoryTab.SecretRoleLabel.FontColorOverride = secretDepartment.Color;
+            break;
+        }
+    }
+
     private void CharacterUpdated(CharacterData data)
     {
         if (_window == null)
@@ -64,6 +101,28 @@ public sealed partial class CECharacterUIController : UIController, IOnStateEnte
         _window.InventoryTab.DetailsLabel.Text = EntityManager.TryGetComponent<HumanoidProfileComponent>(data.Entity, out var profile)
             ? $"{EntityManager.System<HumanoidProfileSystem>().GetSpeciesRepresentation(profile.Species)}, {profile.Age}, {profile.Gender}"
             : string.Empty;
+
+        _window.InventoryTab.JobLabel.Text = string.Empty;
+        _window.InventoryTab.JobLabel.FontColorOverride = null;
+        if (data.JobId is { } jobId && _prototypeManager.TryIndex(jobId, out var jobProto))
+        {
+            _window.InventoryTab.JobLabel.Text = jobProto.LocalizedName;
+
+            // A job can be listed under multiple departments - prefer its primary one for the display color.
+            DepartmentPrototype? matchedDepartment = null;
+            foreach (var department in _prototypeManager.EnumeratePrototypes<DepartmentPrototype>())
+            {
+                if (!department.Roles.Contains(jobId))
+                    continue;
+
+                matchedDepartment = department;
+                if (department.Primary)
+                    break;
+            }
+
+            if (matchedDepartment != null)
+                _window.InventoryTab.JobLabel.FontColorOverride = matchedDepartment.Color;
+        }
 
         var objectivesTab = _window.ObjectivesTab;
         objectivesTab.Objectives.RemoveAllChildren();
@@ -215,6 +274,7 @@ public sealed partial class CECharacterUIController : UIController, IOnStateEnte
         else
         {
             _characterInfo.RequestCharacterInfo();
+            _secretRoleInfo.RequestSecretRoleInfo();
             UIManager.GetUIController<InventoryUIController>().ReloadSlots();
             _window.OpenToLeft();
         }

@@ -1,0 +1,18 @@
+- type: secretDepartment
+  id: CECoralCult
+  name: ce-secret-department-coral-cult-name
+  description: ce-secret-department-coral-cult-description
+  color: "#2F8F6F"
+  weight: 0
+  roles:
+  - CECultLeader
+  - CECultist
+
+- type: secretDepartment
+  id: CECity
+  name: ce-secret-department-city-name
+  description: ce-secret-department-city-description
+  color: "#6F8FBF"
+  weight: 0
+  roles:
+  - CECivilian
