@@ -6,30 +6,15 @@
     minPlayers: 1
   - type: CESecretRoleSelection
     roles:
+    # Cult
     - role: CECultLeader
-      count: 1
+      range: { min: 1, max: 1 }
       weight: 10
     - role: CECultist
       playerRatio: 10
-      range:
-        min: 1
-        max: 4
+      range: { min: 1, max: 4 }
       weight: 10
-    - role: CEDetective
-      count: 1
-      weight: 20
-    - role: CEDrugDealer
-      playerRatio: 20
-      range:
-        min: 0
-        max: 2
-      weight: 15
-    - role: CEDrunkard
-      playerRatio: 15
-      range:
-        min: 0
-        max: 3
-      weight: 15
+    # City
     - role: CECivilian
-      playerRatio: 1
+      fillRemaining: true
       weight: -100

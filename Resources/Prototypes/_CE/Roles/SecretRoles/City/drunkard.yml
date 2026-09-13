@@ -1,6 +1,0 @@
-- type: secretRole
-  id: CEDrunkard
-  name: ce-secret-role-name-drunkard
-  description: ce-secret-role-description-drunkard
-  icon: CEJobIconDrunkard
-  briefing: ce-secret-role-briefing-drunkard

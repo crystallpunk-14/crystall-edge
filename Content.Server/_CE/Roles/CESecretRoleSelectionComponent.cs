@@ -33,22 +33,25 @@ public sealed partial class CESecretRoleSelectorEntry
     public ProtoId<CESecretRolePrototype> Role;
 
     /// <summary>
-    /// Fixed number of this role to grant, regardless of player count. Takes priority over <see cref="PlayerRatio"/>/<see cref="Range"/>.
-    /// </summary>
-    [DataField]
-    public int? Count;
-
-    /// <summary>
     /// How many players are needed to "earn" one instance of this role, if scaled by population.
+    /// A fixed count is just a degenerate range, e.g. <c>range: {min: 1, max: 1}</c>.
     /// </summary>
     [DataField]
     public int PlayerRatio = 10;
 
     /// <summary>
-    /// Clamp for the population-scaled count. Ignored if <see cref="Count"/> is set.
+    /// Clamp for the population-scaled count. Ignored if <see cref="FillRemaining"/> is set.
     /// </summary>
     [DataField]
     public MinMax Range = new(0, int.MaxValue);
+
+    /// <summary>
+    /// If true, this role ignores <see cref="PlayerRatio"/>/<see cref="Range"/> entirely and
+    /// absorbs every player left over after higher-weight roles have taken their share -
+    /// a guaranteed fallback (e.g. Civilian), rather than a population-scaled slot count.
+    /// </summary>
+    [DataField]
+    public bool FillRemaining;
 
     /// <summary>
     /// Roles with a higher weight have their candidate pool fully resolved (all priority tiers)
@@ -59,8 +62,8 @@ public sealed partial class CESecretRoleSelectorEntry
 
     public int GetTargetCount(int playerCount)
     {
-        if (Count is { } count)
-            return count;
+        if (FillRemaining)
+            return int.MaxValue;
 
         return Math.Clamp(playerCount / PlayerRatio, (int) Range.Min, (int) Range.Max);
     }

@@ -8,10 +8,13 @@
   },
   "states": [
     {
-      "name": "Cultist"
+      "name": "cultist"
     },
     {
-      "name": "Cultist_Head"
+      "name": "cultist_head"
+    },
+    {
+      "name": "civilian"
     }
   ]
 }
