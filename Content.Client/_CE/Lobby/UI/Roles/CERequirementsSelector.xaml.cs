@@ -24,7 +24,7 @@ public sealed partial class CERequirementsSelector : BoxContainer
     public event Action<int>? OnSelected;
     public event Action<List<ProtoId<GuideEntryPrototype>>>? OnOpenGuidebook;
 
-    public int Selected => _options.SelectedId;
+    public int Selected => _options.SelectedValue;
 
     public CERequirementsSelector()
     {
@@ -42,7 +42,7 @@ public sealed partial class CERequirementsSelector : BoxContainer
         _options.OnItemSelected += args =>
         {
             _options.Select(args.Id);
-            OnSelected?.Invoke(args.Id);
+            OnSelected?.Invoke(_options.SelectedValue);
         };
 
         var requirementsLabel = new Label()
@@ -131,8 +131,8 @@ public sealed partial class CERequirementsSelector : BoxContainer
         };
     }
 
-    public void Select(int id)
+    public void Select(int value)
     {
-        _options.Select(id);
+        _options.SelectByValue(value);
     }
 }

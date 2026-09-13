@@ -1,0 +1,6 @@
+- type: secretRole
+  id: CECivilian
+  name: ce-secret-role-name-civilian
+  description: ce-secret-role-description-civilian
+  icon: CEJobIconCivilian
+  briefing: ce-secret-role-briefing-civilian

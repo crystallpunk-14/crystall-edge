@@ -43,4 +43,10 @@ public sealed partial class CESecretRolePrototype : IPrototype
     /// </summary>
     [DataField]
     public HashSet<JobRequirement>? Requirements;
+
+    /// <summary>
+    /// Flavor text shown to the player when they are granted this role.
+    /// </summary>
+    [DataField]
+    public LocId? Briefing;
 }

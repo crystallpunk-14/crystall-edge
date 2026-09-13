@@ -1,0 +1,35 @@
+- type: entity
+  parent: CEBaseGameRule
+  id: CEGameRuleCoralAwakening
+  components:
+  - type: GameRule
+    minPlayers: 1
+  - type: CESecretRoleSelection
+    roles:
+    - role: CECultLeader
+      count: 1
+      weight: 10
+    - role: CECultist
+      playerRatio: 10
+      range:
+        min: 1
+        max: 4
+      weight: 10
+    - role: CEDetective
+      count: 1
+      weight: 20
+    - role: CEDrugDealer
+      playerRatio: 20
+      range:
+        min: 0
+        max: 2
+      weight: 15
+    - role: CEDrunkard
+      playerRatio: 15
+      range:
+        min: 0
+        max: 3
+      weight: 15
+    - role: CECivilian
+      playerRatio: 1
+      weight: -100

@@ -19,6 +19,8 @@
         </PanelContainer>
         <Label Name="NameLabel" Access="Public" StyleClasses="LabelHeading" HorizontalAlignment="Center" Margin="0 8 0 0" />
         <Label Name="DetailsLabel" Access="Public" StyleClasses="LabelSubText" HorizontalAlignment="Center" />
+        <Label Name="JobLabel" Access="Public" StyleClasses="LabelHeading" HorizontalAlignment="Center" Margin="0 4 0 0" />
+        <Label Name="SecretRoleLabel" Access="Public" StyleClasses="LabelHeading" HorizontalAlignment="Center" />
     </BoxContainer>
     <BoxContainer Orientation="Vertical" HorizontalAlignment="Center" Margin="10">
         <inventory:ItemSlotButtonContainer
