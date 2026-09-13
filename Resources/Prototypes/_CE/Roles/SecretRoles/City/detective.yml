@@ -1,0 +1,5 @@
+- type: secretRole
+  id: CEDetective
+  name: ce-secret-role-name-detective
+  description: ce-secret-role-description-detective
+  icon: CEJobIconDetective

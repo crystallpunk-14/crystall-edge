@@ -1,0 +1,5 @@
+- type: secretRole
+  id: CECultist
+  name: ce-secret-role-name-cultist
+  description: ce-secret-role-description-cultist
+  icon: CEJobIconCultist

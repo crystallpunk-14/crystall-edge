@@ -1,0 +1,5 @@
+- type: secretRole
+  id: CEDrugDealer
+  name: ce-secret-role-name-drug-dealer
+  description: ce-secret-role-description-drug-dealer
+  icon: CEJobIconDrugDealer
