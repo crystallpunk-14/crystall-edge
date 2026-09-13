@@ -3,9 +3,9 @@ using Content.Client._CE.Speech;
 using Content.Shared._CE.Speech;
 using Robust.Shared.Prototypes;
 
-namespace Content.Client.Lobby.UI;
+namespace Content.Client._CE.Lobby.UI;
 
-public sealed partial class HumanoidProfileEditor
+public sealed partial class CEHumanoidProfileEditor
 {
     private List<CEBarkSpeechPrototype> _barkVoices = new();
     private CEBarkSpeechSystem? _barkSystem;
@@ -41,11 +41,10 @@ public sealed partial class HumanoidProfileEditor
             }
         }
 
-        // CrystallEdge: map stored pitch [MinPitchScale, MaxPitchScale] -> slider [0, 100]
+        // map stored pitch [MinPitchScale, MaxPitchScale] -> slider [0, 100]
         var normalized = (Profile.BarkPitch - CESharedBarkSpeechSystem.MinPitchScale)
             / (CESharedBarkSpeechSystem.MaxPitchScale - CESharedBarkSpeechSystem.MinPitchScale);
         BarkPitchSlider.Value = Math.Clamp(normalized * 100f, 0f, 100f);
-        // CrystallEdge end
     }
 
     private void SetBarkVoice(string id)
@@ -56,11 +55,10 @@ public sealed partial class HumanoidProfileEditor
 
     private void SetBarkPitch(float normalizedValue)
     {
-        // CrystallEdge: normalizedValue is [0, 1]; map to stored pitch [MinPitchScale, MaxPitchScale]
+        // normalizedValue is [0, 1]; map to stored pitch [MinPitchScale, MaxPitchScale]
         var actualPitch = CESharedBarkSpeechSystem.MinPitchScale
             + normalizedValue * (CESharedBarkSpeechSystem.MaxPitchScale - CESharedBarkSpeechSystem.MinPitchScale);
         Profile = Profile?.WithBarkPitch(actualPitch);
-        // CrystallEdge end
         SetDirty();
     }
 

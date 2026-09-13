@@ -112,6 +112,19 @@
                                     <Control HorizontalExpand="True"/>
                                     <OptionButton Name="SpawnPriorityButton" HorizontalAlignment="Right" />
                                 </BoxContainer>
+                                <!-- Bark Voice -->
+                                <BoxContainer HorizontalExpand="True">
+                                    <Label Text="{Loc 'humanoid-profile-editor-bark-voice-label'}" />
+                                    <Control HorizontalExpand="True"/>
+                                    <OptionButton Name="BarkVoiceButton" HorizontalAlignment="Right" />
+                                </BoxContainer>
+                                <!-- Bark Pitch -->
+                                <BoxContainer HorizontalExpand="True">
+                                    <Label Text="{Loc 'humanoid-profile-editor-bark-pitch-label'}" />
+                                    <Control HorizontalExpand="True"/>
+                                    <Slider Name="BarkPitchSlider" HorizontalExpand="True" MinValue="0" MaxValue="100" Value="50" MinSize="100 0" />
+                                    <Button Name="BarkPreviewButton" Text="▶" MinSize="32 0" />
+                                </BoxContainer>
                             </BoxContainer>
                             <!-- Skin -->
                             <BoxContainer Margin="10" HorizontalExpand="True" Orientation="Vertical">
@@ -132,12 +145,6 @@
                     <OptionButton Name="PreferenceUnavailableButton" />
                     <ScrollContainer VerticalExpand="True">
                         <BoxContainer Name="JobList" Orientation="Vertical" />
-                    </ScrollContainer>
-                </BoxContainer>
-                <BoxContainer Orientation="Vertical" Margin="10">
-                    <!-- Antags -->
-                    <ScrollContainer VerticalExpand="True">
-                        <BoxContainer Name="AntagList" Orientation="Vertical" />
                     </ScrollContainer>
                 </BoxContainer>
                 <BoxContainer Orientation="Vertical" Margin="10">

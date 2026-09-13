@@ -1,4 +1,5 @@
 using Content.Client.Humanoid;
+using Content.Client.Lobby;
 using Content.Client.Message;
 using Content.Client.Players.PlayTimeTracking;
 using Content.Client.Sprite;
@@ -20,10 +21,10 @@ using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 using Direction = Robust.Shared.Maths.Direction;
 
-namespace Content.Client.Lobby.UI
+namespace Content.Client._CE.Lobby.UI
 {
     [GenerateTypedNameReferences]
-    public sealed partial class HumanoidProfileEditor : BoxContainer
+    public sealed partial class CEHumanoidProfileEditor : BoxContainer
     {
         private readonly IClientPreferencesManager _preferencesManager;
         private readonly IConfigurationManager _cfgManager;
@@ -77,7 +78,7 @@ namespace Content.Client.Lobby.UI
 
         private MarkingsViewModel _markingsModel = new();
 
-        public HumanoidProfileEditor(
+        public CEHumanoidProfileEditor(
             IClientPreferencesManager preferencesManager,
             IConfigurationManager configurationManager,
             IEntityManager entManager,
@@ -240,6 +241,25 @@ namespace Content.Client.Lobby.UI
 
             #endregion SpawnPriority
 
+            #region Bark Voice
+
+            RefreshBarkVoices();
+
+            BarkVoiceButton.OnItemSelected += args =>
+            {
+                BarkVoiceButton.SelectId(args.Id);
+                SetBarkVoice(_barkVoices[args.Id].ID);
+            };
+
+            BarkPitchSlider.OnValueChanged += _ =>
+            {
+                SetBarkPitch(BarkPitchSlider.Value / 100f);
+            };
+
+            BarkPreviewButton.OnPressed += _ => OnBarkPreviewPressed();
+
+            #endregion Bark Voice
+
             #region Eyes
 
             EyeColorPicker.OnEyeColorPicked += newColor =>
@@ -277,18 +297,15 @@ namespace Content.Client.Lobby.UI
 
             _jobCategories = new Dictionary<string, BoxContainer>();
 
-            RefreshAntags();
             RefreshJobs();
 
             #endregion Jobs
-
-            TabContainer.SetTabTitle(2, Loc.GetString("humanoid-profile-editor-antags-tab"));
 
             RefreshTraits();
 
             #region Markings
 
-            TabContainer.SetTabTitle(4, Loc.GetString("humanoid-profile-editor-markings-tab"));
+            TabContainer.SetTabTitle(3, Loc.GetString("humanoid-profile-editor-markings-tab"));
 
             _markingsModel.MarkingsChanged += (_, _) => OnMarkingChange();
             _markingsModel.MarkingsReset += OnMarkingChange;
@@ -387,12 +404,13 @@ namespace Content.Client.Lobby.UI
             UpdateSaveButton();
             UpdateMarkings();
 
-            RefreshAntags();
             RefreshJobs();
             RefreshLoadouts();
             RefreshSpecies();
+            RefreshBarkVoices();
             RefreshTraits();
             RefreshFlavorText();
+            UpdateBarkControls();
             ReloadPreview();
 
             if (Profile != null)

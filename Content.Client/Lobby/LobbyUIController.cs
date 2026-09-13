@@ -1,3 +1,4 @@
+using Content.Client._CE.Lobby.UI;
 using Content.Client.Guidebook;
 using Content.Client.Lobby.UI;
 using Content.Client.Players.PlayTimeTracking;
@@ -32,8 +33,10 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
     [Dependency] private MarkingManager _markings = default!;
     [UISystemDependency] private readonly GuidebookSystem _guide = default!;
 
-    private CharacterSetupGui? _characterSetup;
-    private HumanoidProfileEditor? _profileEditor;
+    // CrystallEdge: cloned character creation menu (CECharacterSetupGui/CEHumanoidProfileEditor) to avoid upstream merge conflicts
+    private CECharacterSetupGui? _characterSetup;
+    private CEHumanoidProfileEditor? _profileEditor;
+    // CrystallEdge end
     private CharacterSetupGuiSavePanel? _savePanel;
 
     /// <summary>
@@ -243,7 +246,8 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
         _savePanel.OpenCentered();
     }
 
-    private (CharacterSetupGui, HumanoidProfileEditor) EnsureGui()
+    // CrystallEdge: use CE character creation menu clone instead of upstream
+    private (CECharacterSetupGui, CEHumanoidProfileEditor) EnsureGui()
     {
         if (_characterSetup != null && _profileEditor != null)
         {
@@ -252,7 +256,7 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
             return (_characterSetup, _profileEditor);
         }
 
-        _profileEditor = new HumanoidProfileEditor(
+        _profileEditor = new CEHumanoidProfileEditor(
             _preferencesManager,
             _configurationManager,
             EntityManager,
@@ -266,7 +270,8 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
 
         _profileEditor.OnOpenGuidebook += _guide.OpenHelp;
 
-        _characterSetup = new CharacterSetupGui(_profileEditor);
+        _characterSetup = new CECharacterSetupGui(_profileEditor);
+        // CrystallEdge end
 
         _characterSetup.CloseButton.OnPressed += _ =>
         {
