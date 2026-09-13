@@ -51,9 +51,7 @@
             - type: MapLight #BEFORE Light Cycle
               ambientLightColor: "#adcfd8"
             - type: LightCycle #BEFORE Sun shadow cycle!
-              offset: 490
             - type: SunShadowCycle
-              offset: 490
             - type: CEZLevelRoof
             - type: SunShadow
             - type: CECloudsOverlay
