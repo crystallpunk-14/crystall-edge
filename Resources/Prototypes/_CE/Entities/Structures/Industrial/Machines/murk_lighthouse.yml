@@ -33,8 +33,6 @@
   - type: CEPvsOverride
   - type: PlacementReplacement
     key: walls
-  - type: Occluder
-    boundingBox: -0.5, -0.5, 0.5, 1
   - type: Fixtures
     fixtures:
       fix1:
