@@ -53,8 +53,7 @@ public abstract partial class CESharedSkillSystem : EntitySystem
         CESkillStorageComponent? component = null,
         bool force = false)
     {
-        if (!Resolve(target, ref component, false))
-            return false;
+        component ??= EnsureComp<CESkillStorageComponent>(target);
 
         if (component.LearnedSkills.Contains(skill))
             return false;
