@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Content.Client._CE.Roles;
 using Content.Client._CE.UserInterface.Screens;
@@ -15,6 +16,7 @@ using Content.Shared._CE.Roles;
 using Content.Shared.Humanoid;
 using Content.Shared.Input;
 using Content.Shared.Roles;
+using Content.Shared.StatusIcon;
 using JetBrains.Annotations;
 using Robust.Client.GameObjects;
 using Robust.Client.UserInterface;
@@ -74,18 +76,32 @@ public sealed partial class CECharacterUIController : UIController, IOnStateEnte
         if (_window == null)
             return;
 
-        _window.InventoryTab.SecretRoleLabel.Text = string.Empty;
-        _window.InventoryTab.SecretRoleLabel.FontColorOverride = null;
         if (secretRoleId is not { } roleId || !_prototypeManager.TryIndex(roleId, out var secretRoleProto))
+        {
+            _window.SecretRoleContainer.Visible = false;
             return;
+        }
 
-        _window.InventoryTab.SecretRoleLabel.Text = secretRoleProto.LocalizedName;
+        _window.SecretRoleContainer.Visible = true;
+        _window.SecretRoleLabel.Text = secretRoleProto.LocalizedName;
+        _window.SecretRoleLabel.FontColorOverride = null;
+        _window.SecretRoleIcon.Texture = _prototypeManager.TryIndex(secretRoleProto.Icon, out JobIconPrototype? secretRoleIcon)
+            ? _sprite.Frame0(secretRoleIcon.Icon)
+            : null;
+
+        _window.FactionLabel.Clear();
         foreach (var secretDepartment in _prototypeManager.EnumeratePrototypes<CESecretDepartmentPrototype>())
         {
             if (!secretDepartment.Roles.Contains(roleId))
                 continue;
 
-            _window.InventoryTab.SecretRoleLabel.FontColorOverride = secretDepartment.Color;
+            _window.SecretRoleLabel.FontColorOverride = secretDepartment.Color;
+
+            var factionText = new FormattedMessage();
+            factionText.PushColor(secretDepartment.Color);
+            factionText.AddText(Loc.GetString(secretDepartment.Name));
+            factionText.Pop();
+            _window.FactionLabel.SetMessage(factionText);
             break;
         }
     }
@@ -95,18 +111,35 @@ public sealed partial class CECharacterUIController : UIController, IOnStateEnte
         if (_window == null)
             return;
 
-        _window.InventoryTab.NameLabel.Text = data.EntityName;
-        _window.InventoryTab.SpriteView.SetEntity(data.Entity);
+        var nameText = new FormattedMessage();
+        nameText.PushTag(new MarkupNode("bold", null, null));
+        nameText.PushTag(new MarkupNode("font", new MarkupParameter("Default"),
+            new Dictionary<string, MarkupParameter> { { "size", new MarkupParameter(14L) } }));
+        nameText.PushColor(StyleNano.NanoGold);
+        nameText.AddText(data.EntityName);
+        nameText.Pop();
+        nameText.Pop();
+        nameText.Pop();
+        _window.NameLabel.SetMessage(nameText, tagsAllowed: null);
+        _window.SpriteView.SetEntity(data.Entity);
 
-        _window.InventoryTab.DetailsLabel.Text = EntityManager.TryGetComponent<HumanoidProfileComponent>(data.Entity, out var profile)
-            ? $"{EntityManager.System<HumanoidProfileSystem>().GetSpeciesRepresentation(profile.Species)}, {profile.Age}, {profile.Gender}"
-            : string.Empty;
+        var detailsText = new FormattedMessage();
+        if (EntityManager.TryGetComponent<HumanoidProfileComponent>(data.Entity, out var profile))
+        {
+            var species = EntityManager.System<HumanoidProfileSystem>().GetSpeciesRepresentation(profile.Species);
+            detailsText.AddText($"{profile.Gender} • {profile.Age} • {species}");
+        }
+        _window.DetailsLabel.SetMessage(detailsText);
 
-        _window.InventoryTab.JobLabel.Text = string.Empty;
-        _window.InventoryTab.JobLabel.FontColorOverride = null;
+        _window.JobLabel.Text = string.Empty;
+        _window.JobLabel.FontColorOverride = null;
+        _window.JobIcon.Texture = null;
         if (data.JobId is { } jobId && _prototypeManager.TryIndex(jobId, out var jobProto))
         {
-            _window.InventoryTab.JobLabel.Text = jobProto.LocalizedName;
+            _window.JobLabel.Text = jobProto.LocalizedName;
+            _window.JobIcon.Texture = _prototypeManager.TryIndex(jobProto.Icon, out JobIconPrototype? jobIcon)
+                ? _sprite.Frame0(jobIcon.Icon)
+                : null;
 
             // A job can be listed under multiple departments - prefer its primary one for the display color.
             DepartmentPrototype? matchedDepartment = null;
@@ -120,8 +153,8 @@ public sealed partial class CECharacterUIController : UIController, IOnStateEnte
                     break;
             }
 
-            if (matchedDepartment != null)
-                _window.InventoryTab.JobLabel.FontColorOverride = matchedDepartment.Color;
+            // Dimmed - the job line reads as secondary to the name/secret role above it.
+            _window.JobLabel.FontColorOverride = (matchedDepartment?.Color ?? StyleNano.NanoGold).WithAlpha(0.7f);
         }
 
         var objectivesTab = _window.ObjectivesTab;
