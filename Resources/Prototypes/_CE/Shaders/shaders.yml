@@ -25,6 +25,11 @@
   path: "/Textures/_CE/Shaders/zblur.swsl"
 
 - type: shader
+  id: CEZFog
+  kind: source
+  path: "/Textures/_CE/Shaders/zfog.swsl"
+
+- type: shader
   id: CEShockWave
   kind: source
   path: "/Textures/_CE/Shaders/shock_wave.swsl"
