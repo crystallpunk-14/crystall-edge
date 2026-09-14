@@ -60,7 +60,7 @@ public sealed partial class CESetMurkCommand : LocalizedCommands
 
         if (args.Length == 2)
         {
-            return CompletionResult.FromHint("Murk intensity (negative clears murk, positive adds it)");
+            return CompletionResult.FromHint("Base murk intensity: 0 is no murk, 1 is full strength");
         }
 
         return CompletionResult.Empty;

@@ -4,7 +4,8 @@ using Robust.Shared.GameStates;
 namespace Content.Shared._CE.Murk.Components;
 
 /// <summary>
-/// Controls <see cref="CEMurkSourceComponent"/>, changing its intensity depending on the presence or absence of energy
+/// Drives <see cref="CEMurkSourceComponent"/> from mains power: the sphere grows towards its limit
+/// while powered and collapses back once the supply is cut, at the same steady rate either way.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true), Access(typeof(CESharedMurkSystem))]
 public sealed partial class CEMurkGeneratorComponent : Component
@@ -16,8 +17,9 @@ public sealed partial class CEMurkGeneratorComponent : Component
     public float EnabledIntensity = -5f;
 
     /// <summary>
-    /// constantly drains battery power, depending on the murk level in the world around.
+    /// How much intensity is gained or lost per second while moving towards the current target.
+    /// Since intensity doubles as the radius, the sphere visibly grows and shrinks from its edges.
     /// </summary>
     [DataField]
-    public float NetLoadPerMapIntensity = 10f;
+    public float ChangeRate = 0.5f;
 }
