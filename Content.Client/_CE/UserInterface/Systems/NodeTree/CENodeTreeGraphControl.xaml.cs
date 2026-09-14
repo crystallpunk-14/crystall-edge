@@ -35,7 +35,10 @@ public sealed partial class CENodeTreeGraphControl : BoxContainer
     private float Scale => UIScale * _localUIScale;
 
     public event Action<CENodeTreeElement?>? OnNodeSelected;
+    public event Action<CENodeTreeElement?>? OnNodeHovered;
     public event Action<Vector2>? OnOffsetChanged;
+
+    private CENodeTreeElement? _lastHoveredNode;
 
     public CENodeTreeGraphControl()
     {
@@ -120,6 +123,16 @@ public sealed partial class CENodeTreeGraphControl : BoxContainer
         base.ExitedTree();
 
         OnNodeSelected?.Invoke(null);
+        SetHoveredNode(null);
+    }
+
+    private void SetHoveredNode(CENodeTreeElement? node)
+    {
+        if (node == _lastHoveredNode)
+            return;
+
+        _lastHoveredNode = node;
+        OnNodeHovered?.Invoke(node);
     }
 
     protected override void Draw(DrawingHandleScreen handle)
@@ -207,5 +220,7 @@ public sealed partial class CENodeTreeGraphControl : BoxContainer
                 handle.DrawTextureRect(baseTexture, baseQuad, tint);
             }
         }
+
+        SetHoveredNode(_hoveredNode);
     }
 }

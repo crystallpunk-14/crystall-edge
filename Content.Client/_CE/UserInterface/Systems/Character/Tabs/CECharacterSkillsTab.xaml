@@ -1,0 +1,32 @@
+<tabs:CECharacterSkillsTab
+    xmlns="https://spacestation14.io"
+    xmlns:tabs="clr-namespace:Content.Client._CE.UserInterface.Systems.Character.Tabs"
+    xmlns:parallax="clr-namespace:Content.Client.Parallax"
+    xmlns:nodeTree="clr-namespace:Content.Client._CE.UserInterface.Systems.NodeTree"
+    Orientation="Vertical"
+    HorizontalExpand="True"
+    VerticalExpand="True">
+    <BoxContainer HorizontalExpand="True">
+        <Label Name="TreeName" Access="Public" StyleClasses="LabelHeadingBigger" VAlign="Center"
+               HorizontalExpand="True" HorizontalAlignment="Center" />
+    </BoxContainer>
+    <PanelContainer Margin="10 10 10 10" HorizontalExpand="True" VerticalExpand="True" RectClipContent="True">
+        <parallax:ParallaxControl Name="ParallaxBackground" ScaleX="4" ScaleY="4" Access="Public" SpeedX="10" SpeedY="5"/>
+        <BoxContainer Margin="10 10 10 10" Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
+            <nodeTree:CENodeTreeGraphControl Name="GraphControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Access="Public"/>
+        </BoxContainer>
+        <!-- Tree switch buttons -->
+        <BoxContainer Margin="10 10 10 10" VerticalAlignment="Top" HorizontalAlignment="Right" Orientation="Vertical" VerticalExpand="True">
+            <BoxContainer Name="TreeTabsContainer" Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True" Access="Public"/>
+        </BoxContainer>
+        <!-- Points balance for the selected tree -->
+        <BoxContainer Margin="10 10 10 10" VerticalAlignment="Bottom" HorizontalAlignment="Center" Orientation="Horizontal" VerticalExpand="True">
+            <RichTextLabel Name="PointsLabel" VerticalAlignment="Center" HorizontalAlignment="Left" Text="0" StyleClasses="LabelKeyText" Access="Public"/>
+            <TextureRect Name="PointsIcon" VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2, 2" Access="Public"/>
+        </BoxContainer>
+        <!-- Learn button for the selected node, mirrors the tree-switch buttons into the opposite corner -->
+        <BoxContainer Margin="10 10 10 10" VerticalAlignment="Bottom" HorizontalAlignment="Left" Orientation="Vertical" VerticalExpand="True">
+            <BoxContainer Name="LearnButtonContainer" Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True" Visible="False" Access="Public"/>
+        </BoxContainer>
+    </PanelContainer>
+</tabs:CECharacterSkillsTab>

@@ -1,0 +1,15 @@
+<tooltip:CESkillNodeTooltip
+    xmlns="https://spacestation14.io"
+    xmlns:tooltip="clr-namespace:Content.Client._CE.SkillTree.Ui"
+    MinWidth="220"
+    MaxWidth="320">
+    <BoxContainer Orientation="Vertical" Margin="8 6 8 6">
+        <RichTextLabel Name="NameLabel" Access="Public" StyleClasses="LabelHeading" HorizontalExpand="True" HorizontalAlignment="Center" />
+        <RichTextLabel Name="DescriptionLabel" Access="Public" Margin="0 4 0 0" />
+        <BoxContainer Name="RequirementsContainer" Orientation="Vertical" Access="Public" Margin="0 6 0 0" />
+        <BoxContainer Name="CostContainer" Orientation="Horizontal" HorizontalExpand="True" HorizontalAlignment="Center" Margin="0 6 0 0" Access="Public">
+            <RichTextLabel Name="CostLabel" Access="Public" VerticalAlignment="Center" />
+            <TextureRect Name="CostIcon" Access="Public" VerticalAlignment="Center" TextureScale="2, 2" Margin="4 0 0 0" />
+        </BoxContainer>
+    </BoxContainer>
+</tooltip:CESkillNodeTooltip>

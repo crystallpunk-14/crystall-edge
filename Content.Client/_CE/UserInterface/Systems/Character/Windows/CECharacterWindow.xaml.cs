@@ -13,6 +13,7 @@ public sealed partial class CECharacterWindow : DefaultWindow
 {
     public readonly CECharacterInventoryTab InventoryTab;
     public readonly CECharacterObjectivesTab ObjectivesTab;
+    public readonly CECharacterSkillsTab SkillsTab;
 
     private Direction _rotation = Direction.South;
 
@@ -39,6 +40,11 @@ public sealed partial class CECharacterWindow : DefaultWindow
         ObjectivesTab = new CECharacterObjectivesTab();
         Tabs.AddChild(ObjectivesTab);
         Tabs.SetTabTitle(1, Loc.GetString("ce-character-window-objectives-tab"));
+
+        SkillsTab = new CECharacterSkillsTab();
+        Tabs.AddChild(SkillsTab);
+        Tabs.SetTabTitle(2, Loc.GetString("ce-character-window-skills-tab"));
+        Tabs.SetTabVisible(2, false);
     }
 
     private void Rotate(Direction direction)
