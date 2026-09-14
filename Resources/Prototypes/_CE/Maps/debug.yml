@@ -48,7 +48,7 @@
                   Oxygen: 21.824879
                   Nitrogen: 82.10312
             - type: Parallax
-              parallax: CESky
+              parallax: CEBedrock
             - type: MapLight #BEFORE Light Cycle
               ambientLightColor: "#adcfd8"
             - type: LightCycle #BEFORE Sun shadow cycle!
@@ -67,7 +67,7 @@
               shadowStrength: 0.6
               shadowColor: "#000000"
             - type: CEGridStability
-            - type: CEZLevelChasm
+              supportLowestLevel: True
 
 - type: zMap
   id: Empty

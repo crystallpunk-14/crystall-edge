@@ -95,3 +95,13 @@
     slowness: 0.8
     scrolling: "0.3, -0.3"
     shader: ""
+
+- type: parallax
+  id: CEBedrock
+  layers:
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_CE/Parallaxes/bedrock.png"
+      slowness: 0
+      scale: "1, 1"
+      shader: ""

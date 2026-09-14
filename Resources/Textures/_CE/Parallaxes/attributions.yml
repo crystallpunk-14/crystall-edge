@@ -7,3 +7,8 @@
   license: "All rights reserved"
   copyright: "By AftrLite for CrystallEdge. Exclusive usage and modification rights granted to Copyright Holder of CrystallEdge."
   source: "https://github.com/crystallpunk-14/crystall-edge"
+
+- files: ["bedrock.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Space Station 14, recolored by TheShuEd"
+  source: "https://github.com/crystallpunk-14/crystall-punk-14/"
