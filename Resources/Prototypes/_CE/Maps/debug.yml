@@ -52,6 +52,15 @@
             - type: MapLight #BEFORE Light Cycle
               ambientLightColor: "#adcfd8"
             - type: LightCycle #BEFORE Sun shadow cycle!
+            - type: CELightCycle
+              colors:
+                0: "#1c1c27"
+                0.125: "#2e2f42"
+                0.25: "#465269"
+                0.375: "#d8ffff"
+                0.625: "#d8ffff"
+                0.75: "#334347"
+                0.875: "#323347"
             - type: SunShadowCycle
             - type: CEZLevelRoof
             - type: SunShadow
