@@ -129,7 +129,7 @@
 - type: entity
   id: CESpawnPointTownfolk
   parent: CESpawnPointJobBase
-  name: townfolk
+  name: jobless
   categories:
   - Spawner
   components:

@@ -30,6 +30,7 @@ public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
     {
         base.Initialize();
         _overlay.AddOverlay(new CEZLevelBlurOverlay());
+        _overlay.AddOverlay(new CEZLevelFogOverlay());
     }
 
     [SubscribeLocalEvent]
@@ -70,6 +71,7 @@ public sealed partial class CEClientZLevelsSystem : CESharedZLevelsSystem
     {
         base.Shutdown();
         _overlay.RemoveOverlay<CEZLevelBlurOverlay>();
+        _overlay.RemoveOverlay<CEZLevelFogOverlay>();
     }
 }
 

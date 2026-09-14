@@ -6,10 +6,8 @@
 using System.Numerics;
 using Robust.Shared.Analyzers;
 using Content.Shared._CE.ZLevels.Core.Components;
-using Content.Shared.Chasm;
 using Content.Shared.Inventory;
 using JetBrains.Annotations;
-using Robust.Shared.Audio;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 
@@ -115,7 +113,7 @@ public abstract partial class CESharedZLevelsSystem
             if (floor != 0) //Select map below
             {
                 if (!TryMapOffset((checkingMap.Owner, checkingMap.Comp), -floor, out var tempCheckingMap))
-                    continue;
+                    return -(floor - 1);
 
                 checkingMap = tempCheckingMap;
             }
@@ -354,21 +352,11 @@ public abstract partial class CESharedZLevelsSystem
         if (TryMoveDown(ent))
             return true;
 
-        //welp, that default Chasm behavior. Not really good, but ok for now.
-        if (HasComp<ChasmFallingComponent>(ent))
-            return false; //Already falling
-
-        var attempt = new CEZLevelChasmAttempt(ent);
-        RaiseLocalEvent(ent, attempt);
-
-        if (attempt.Cancelled)
-            return false;
-
-        var audio = new SoundPathSpecifier("/Audio/Effects/falling.ogg");
-        _audio.PlayPredicted(audio, Transform(ent).Coordinates, ent);
-        var falling = AddComp<ChasmFallingComponent>(ent);
-        falling.NextDeletionTime = _timing.CurTime + falling.DeletionTime;
-        _blocker.UpdateCanMove(ent);
+        if (Transform(ent).MapUid is { } map)
+        {
+            var ev = new CEZLevelFallOutOfBoundsEvent(ent);
+            RaiseLocalEvent(map, ref ev);
+        }
 
         return false;
     }
@@ -434,6 +422,17 @@ public sealed class CEZLevelChasmAttempt(EntityUid falled) : CancellableEntityEv
 {
     public EntityUid Falled = falled;
     public SlotFlags TargetSlots => SlotFlags.All;
+}
+
+/// <summary>
+/// Raised on a map entity when an entity standing on it fails to move one Z-level down (there's
+/// nothing lower in the stack). Purely a notification — the core Z-level system has no opinion on
+/// whether this is lethal. See <see cref="Content.Shared._CE.ZLevels.Chasm.CEZLevelChasmComponent"/>.
+/// </summary>
+[ByRefEvent]
+public struct CEZLevelFallOutOfBoundsEvent(EntityUid player)
+{
+    public EntityUid Player = player;
 }
 
 /// <summary>

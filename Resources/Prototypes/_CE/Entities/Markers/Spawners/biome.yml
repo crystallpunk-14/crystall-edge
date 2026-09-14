@@ -22,6 +22,8 @@
       - MindContainer
   - type: PlacementReplacement
     key: CEBiomeSpawner
+  - type: CEAutoTilePlacement
+    tile: CEStone
 
 - type: entity
   id: CEBiomeSpawnerGrassland
@@ -46,3 +48,75 @@
       - state: frame
   - type: CEBiomeSpawner
     biome: CESnowland
+
+- type: entity
+  id: CEBiomeSpawnerGrasslandForest
+  parent: CEBaseBiomeSpawner
+  suffix: Grassland Forest
+  components:
+  - type: Sprite
+    layers:
+      - state: forest
+      - state: frame
+  - type: CEBiomeSpawner
+    biome: CEGrasslandForest
+
+- type: entity
+  id: CEBiomeSpawnerGrasslandHills
+  parent: CEBaseBiomeSpawner
+  suffix: Grassland Hills
+  components:
+  - type: Sprite
+    layers:
+      - state: grass
+      - state: frame
+  - type: CEBiomeSpawner
+    biome: CEGrasslandHills
+
+- type: entity
+  id: CEBiomeSpawnerSnowlandForest
+  parent: CEBaseBiomeSpawner
+  suffix: Snowland Forest
+  components:
+  - type: Sprite
+    layers:
+      - state: forest
+      - state: frame
+  - type: CEBiomeSpawner
+    biome: CESnowlandForest
+
+- type: entity
+  id: CEBiomeSpawnerSnowlandHills
+  parent: CEBaseBiomeSpawner
+  suffix: Snowland Hills
+  components:
+  - type: Sprite
+    layers:
+      - state: snow
+      - state: frame
+  - type: CEBiomeSpawner
+    biome: CESnowlandHills
+
+- type: entity
+  id: CEBiomeSpawnerSnowlandSwamp
+  parent: CEBaseBiomeSpawner
+  suffix: Snowland Swamp
+  components:
+  - type: Sprite
+    layers:
+      - state: dirt
+      - state: frame
+  - type: CEBiomeSpawner
+    biome: CESnowlandSwamp
+
+- type: entity
+  id: CEBiomeSpawnerCaves
+  parent: CEBaseBiomeSpawner
+  suffix: Caves
+  components:
+  - type: Sprite
+    layers:
+      - state: cave
+      - state: frame
+  - type: CEBiomeSpawner
+    biome: CECavesGeneric
