@@ -67,6 +67,7 @@
               shadowStrength: 0.6
               shadowColor: "#000000"
             - type: CEGridStability
+            - type: CEZLevelChasm
 
 - type: zMap
   id: Empty
