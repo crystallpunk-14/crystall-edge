@@ -44,6 +44,13 @@
   kind: source
   path: "/Textures/_CE/Shaders/cloud_shadow.swsl"
 
+# additive shader used by z-level light overlay to blend light from upper z-levels
+- type: shader
+  id: CEZLightAdditive
+  kind: canvas
+  light_mode: unshaded
+  blend_mode: Add
+
 - type: shader
   id: CEMurkDissolving
   kind: source
