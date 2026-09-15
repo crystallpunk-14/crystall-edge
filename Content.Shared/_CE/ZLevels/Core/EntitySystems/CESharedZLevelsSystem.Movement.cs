@@ -113,7 +113,7 @@ public abstract partial class CESharedZLevelsSystem
             if (floor != 0) //Select map below
             {
                 if (!TryMapOffset((checkingMap.Owner, checkingMap.Comp), -floor, out var tempCheckingMap))
-                    return -(floor - 1);
+                    return -(floor - 1) - 0.1f; //So we still chasming down, but visually walking on same level
 
                 checkingMap = tempCheckingMap;
             }
