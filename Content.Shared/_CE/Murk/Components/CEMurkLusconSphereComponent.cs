@@ -21,7 +21,7 @@ public sealed partial class CEMurkLusconSphereComponent : Component
     /// How fast the sphere's remaining intensity drains (units/sec) once it starts collapsing.
     /// </summary>
     [DataField]
-    public float CollapseRate = 20f;
+    public float CollapseRate = 2f;
 }
 
 public enum CEMurkSphereState : byte
