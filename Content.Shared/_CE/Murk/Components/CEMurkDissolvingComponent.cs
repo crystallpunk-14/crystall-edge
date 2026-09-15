@@ -1,4 +1,6 @@
+using Content.Shared.Alert;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Shared._CE.Murk.Components;
@@ -54,4 +56,10 @@ public sealed partial class CEMurkDissolvingComponent : Component
     /// </summary>
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoNetworkedField, AutoPausedField]
     public TimeSpan NextUpdate = TimeSpan.Zero;
+
+    /// <summary>
+    /// Alert shown while <see cref="Dissolved"/> is above zero, with severity scaled to it.
+    /// </summary>
+    [DataField]
+    public ProtoId<AlertPrototype> Alert = "CEMurkDissolving";
 }

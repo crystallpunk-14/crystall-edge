@@ -1,4 +1,5 @@
 using Content.Shared._CE.Murk.Components;
+using Content.Shared.Alert;
 using Content.Shared.Movement.Systems;
 using Robust.Shared.Timing;
 
@@ -6,8 +7,9 @@ namespace Content.Shared._CE.Murk.Systems;
 
 public abstract partial class CESharedMurkSystem
 {
-    [Dependency] private IGameTiming _timingDissolving = default!;
-    [Dependency] private MovementSpeedModifierSystem _movementSpeedDissolving = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private MovementSpeedModifierSystem _movement = default!;
+    [Dependency] private AlertsSystem _alerts = default!;
 
     [SubscribeLocalEvent]
     private void OnDissolvingRefreshMovementSpeed(Entity<CEMurkDissolvingComponent> ent, ref RefreshMovementSpeedModifiersEvent args)
@@ -28,7 +30,7 @@ public abstract partial class CESharedMurkSystem
 
     private void UpdateDissolving()
     {
-        var now = _timingDissolving.CurTime;
+        var now = _timing.CurTime;
 
         var query = EntityQueryEnumerator<CEMurkDissolvingComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out var dissolving, out var xform))
@@ -50,7 +52,26 @@ public abstract partial class CESharedMurkSystem
 
             dissolving.Dissolved = newDissolved;
             DirtyField(uid, dissolving, nameof(CEMurkDissolvingComponent.Dissolved));
-            _movementSpeedDissolving.RefreshMovementSpeedModifiers(uid);
+            _movement.RefreshMovementSpeedModifiers(uid);
+            UpdateDissolvingAlert(uid, dissolving);
         }
+    }
+
+    private void UpdateDissolvingAlert(EntityUid uid, CEMurkDissolvingComponent dissolving)
+    {
+        if (dissolving.Dissolved <= 0f)
+        {
+            _alerts.ClearAlert(uid, dissolving.Alert);
+            return;
+        }
+
+        short severity = dissolving.Dissolved switch
+        {
+            <= 1f / 3f => 1,
+            <= 2f / 3f => 2,
+            _ => 3,
+        };
+
+        _alerts.ShowAlert(uid, dissolving.Alert, severity);
     }
 }

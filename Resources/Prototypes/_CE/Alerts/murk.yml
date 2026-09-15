@@ -1,0 +1,12 @@
+- type: alert
+  id: CEMurkDissolving
+  icons:
+  - sprite: /Textures/_CE/Interface/Alerts/vanilla/temperature.rsi
+    state: cold1
+  - sprite: /Textures/_CE/Interface/Alerts/vanilla/temperature.rsi
+    state: cold2
+  - sprite: /Textures/_CE/Interface/Alerts/vanilla/temperature.rsi
+    state: cold3
+  maxSeverity: 3
+  name: ce-alerts-murk-dissolving-name
+  description: ce-alerts-murk-dissolving-desc
