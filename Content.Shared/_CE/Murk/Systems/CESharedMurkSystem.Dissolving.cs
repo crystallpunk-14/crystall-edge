@@ -42,7 +42,7 @@ public abstract partial class CESharedMurkSystem
         var query = EntityQueryEnumerator<CEMurkDissolvingComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out var dissolving, out var xform))
         {
-            if (!dissolving.Enabled)
+            if (!dissolving.Enabled || dissolving.Converted)
                 continue;
 
             if (now < dissolving.NextUpdate)
@@ -60,6 +60,10 @@ public abstract partial class CESharedMurkSystem
 
     private void SetDissolved(EntityUid uid, CEMurkDissolvingComponent dissolving, float value)
     {
+        // A soul stays dissolved. Nothing, rejuvenate included, walks this back.
+        if (dissolving.Converted)
+            return;
+
         if (value == dissolving.Dissolved)
             return;
 
@@ -67,6 +71,12 @@ public abstract partial class CESharedMurkSystem
         DirtyField(uid, dissolving, nameof(CEMurkDissolvingComponent.Dissolved));
         _movement.RefreshMovementSpeedModifiers(uid);
         UpdateDissolvingAlert(uid, dissolving);
+
+        if (value >= 1f)
+        {
+            var ev = new CEMurkDissolvedEvent();
+            RaiseLocalEvent(uid, ref ev);
+        }
     }
 
     private void UpdateDissolvingAlert(EntityUid uid, CEMurkDissolvingComponent dissolving)
@@ -87,3 +97,10 @@ public abstract partial class CESharedMurkSystem
         _alerts.ShowAlert(uid, dissolving.Alert, severity);
     }
 }
+
+/// <summary>
+/// Raised on an entity the moment the murk finishes dissolving it. The server turns it into a
+/// murked soul from here.
+/// </summary>
+[ByRefEvent]
+public record struct CEMurkDissolvedEvent;

@@ -53,6 +53,7 @@
   - CEMobMagical
   - CEMobCombat
   - CEMobTemperature
+  - CEMobMurkDissolving
   - MobPolymorphable
   - CEBaseSpeciesAppearance
   id: CEBaseSpeciesMob

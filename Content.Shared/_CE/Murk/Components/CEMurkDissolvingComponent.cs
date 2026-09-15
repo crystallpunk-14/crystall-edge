@@ -8,7 +8,7 @@ namespace Content.Shared._CE.Murk.Components;
 /// <summary>
 /// Marks an entity as dissolving while standing in the murk. Tracks a dissolution level that
 /// grows while the entity is inside the murk and shrinks back to zero while it is not.
-/// Purely tracking for now - nothing gameplay-facing consumes <see cref="Dissolved"/> yet.
+/// Once it hits 1 the entity is converted into a murked soul, which is a one way trip.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentPause, AutoGenerateComponentState(raiseAfterAutoHandleState: true, fieldDeltas: true)]
 public sealed partial class CEMurkDissolvingComponent : Component
@@ -24,6 +24,28 @@ public sealed partial class CEMurkDissolvingComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public bool AffectSpeech = true;
+
+    /// <summary>
+    /// Set once the entity has fully dissolved into a murked soul. Freezes <see cref="Dissolved"/>
+    /// for good and stops the speech garbling - the soul speaks through its own system instead.
+    /// The slowdown stays: a soul still drags itself around.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool Converted;
+
+    /// <summary>
+    /// Components added to the entity when it turns into a murked soul. This is where the AI,
+    /// the soul's speech and anything else the husk should wake up with lives.
+    /// </summary>
+    [DataField]
+    public ComponentRegistry ConversionComponents = new();
+
+    /// <summary>
+    /// Components stripped from the entity when it turns into a murked soul, e.g. its ability to
+    /// take damage.
+    /// </summary>
+    [DataField]
+    public ComponentRegistry ConversionRemoveComponents = new();
 
     /// <summary>
     /// Current dissolution level, 0 (not dissolved) to 1 (fully dissolved).

@@ -5,6 +5,7 @@
   - BaseMob
   - CEMobDamageable
   - CEMobTemperature
+  - CEMobMurkDissolving
   id: CEMobSimple
   save: false
   abstract: true
@@ -110,7 +111,37 @@
     soundHit:
       path: /Audio/Effects/hit_kick.ogg
   - type: Pullable
+
+- type: entity
+  save: false
+  id: CEMobMurkDissolving
+  categories: [ ForkFiltered ]
+  abstract: true
+  components:
   - type: CEMurkDissolving
+    conversionRemoveComponents:
+    - type: Damageable
+    conversionComponents:
+    - type: CEGOAP
+      goals:
+      - desiredState:
+          Wandered: true
+        priority: 1
+      actions:
+      - !type:CEGOAPExploreAction
+        preconditions:
+          SoulIsSpeaking: false
+        effects:
+          Wandered: true
+        cost: 1
+        exploreRadius: 8
+    - type: CEGOAPKnowledgeCache
+    - type: CEGOAPEyesPerceptor
+      visionRadius: 8
+    - type: ActiveListener
+      range: 12
+    - type: CEMurkedSoulSpeech
+    - type: CEMurkedSoulSpeechAccent
 
 # Used for mobs that need to breathe
 - type: entity

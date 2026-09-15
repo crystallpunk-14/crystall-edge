@@ -11,7 +11,11 @@ public abstract partial class CESharedMurkSystem
     /// </summary>
     private const float FullGibberishAt = 0.8f;
 
-    private static readonly char[] GibberishAlphabet =
+    /// <summary>
+    /// What words sound like once the murk has eaten them. Shared with the murked souls, who
+    /// speak nothing but this.
+    /// </summary>
+    public static readonly char[] GibberishAlphabet =
     [
         'ä', 'ã', 'ç', 'ø', 'ђ', 'œ', 'Ї', 'Ћ', 'ў', 'ž', 'ö', 'є', 'þ',
         'ï', 'ñ', 'ë', 'â', 'ô', 'û', 'î', 'ê', 'ù', 'ü',
@@ -20,7 +24,9 @@ public abstract partial class CESharedMurkSystem
     [SubscribeLocalEvent]
     private void OnDissolvingAccent(Entity<CEMurkDissolvingComponent> ent, ref AccentGetEvent args)
     {
-        if (!ent.Comp.Enabled || !ent.Comp.AffectSpeech)
+        // A converted soul speaks through its own system, garbling that on top would eat the
+        // words it picked up.
+        if (!ent.Comp.Enabled || !ent.Comp.AffectSpeech || ent.Comp.Converted)
             return;
 
         args.Message = Garble(args.Message, ent.Comp.Dissolved);
