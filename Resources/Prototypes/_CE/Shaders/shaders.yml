@@ -43,3 +43,13 @@
   id: CECloudShadow
   kind: source
   path: "/Textures/_CE/Shaders/cloud_shadow.swsl"
+
+- type: shader
+  id: CEMurkDissolving
+  kind: source
+  path: "/Textures/_CE/Shaders/murk_dissolving.swsl"
+
+- type: shader
+  id: CEMurkDesaturate
+  kind: source
+  path: "/Textures/_CE/Shaders/murk_desaturate.swsl"
