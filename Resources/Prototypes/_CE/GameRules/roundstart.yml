@@ -1,9 +1,10 @@
 - type: entity
   parent: CEBaseGameRule
-  id: CEGameRule7Days
+  id: CEGameRuleMurkConsuming
   components:
-  - type: CELimitedDaysRule
+  - type: CEMurkConsumingRule
     max: 7
+    crackDelay: 30s
 
 - type: entity
   parent: CEBaseGameRule

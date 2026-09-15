@@ -117,6 +117,15 @@ public abstract partial class CESharedMurkSystem : EntitySystem
     }
 
     /// <summary>
+    /// Sets a source's intensity (see <see cref="CEMurkSourceComponent.Intensity"/>) and dirties it.
+    /// </summary>
+    public void SetSourceIntensity(Entity<CEMurkSourceComponent> source, float intensity)
+    {
+        source.Comp.Intensity = intensity;
+        Dirty(source);
+    }
+
+    /// <summary>
     /// Ensures a <see cref="CEMurkedMapComponent"/> on every map of the given zNetwork and sets its intensity.
     /// </summary>
     public void SetNetworkIntensity(Entity<CEZMapNetworkComponent?> network, float intensity)

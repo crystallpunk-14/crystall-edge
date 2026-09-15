@@ -1,16 +1,20 @@
 using System.Linq;
+using Content.Server._CE.GameTicking;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server.Mind;
 using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Roles;
+using Content.Shared._CE.Murk.Components;
 using Content.Shared._CE.Roles;
+using Content.Shared._CE.Roundflow;
 using Content.Shared.GameTicking;
 using Content.Shared.Ghost.Components;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Components;
 using Robust.Server.Player;
+using Robust.Shared.Audio;
 using Robust.Shared.Enums;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
@@ -39,14 +43,19 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
     [Dependency] private RoleSystem _role = default!;
     [Dependency] private PlayTimeTrackingManager _playTimeTracking = default!;
 
-    public override void Initialize()
+    /// <summary>
+    /// The Lucson Sphere just cracked - reveal every player's already-assigned secret role and its goal.
+    /// </summary>
+    [SubscribeLocalEvent]
+    private void OnRoundStart(CERoundStartEvent ev)
     {
-        base.Initialize();
-
-        SubscribeLocalEvent<RulePlayerJobsAssignedEvent>(OnJobsAssigned);
-        SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawnComplete);
+        foreach (var session in _playerManager.Sessions)
+        {
+            SendRolePopup(session);
+        }
     }
 
+    [SubscribeLocalEvent]
     private void OnJobsAssigned(RulePlayerJobsAssignedEvent args)
     {
         var query = QueryActiveRules();
@@ -56,6 +65,7 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
         }
     }
 
+    [SubscribeLocalEvent(after: [typeof(CEMurkConsumingRuleSystem)])]
     private void OnPlayerSpawnComplete(PlayerSpawnCompleteEvent args)
     {
         if (!args.LateJoin)
@@ -70,9 +80,43 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
         var query = QueryActiveRules();
         while (query.MoveNext(out var uid, out _, out var comp, out _))
         {
-            if (TryAssignLateJoinSecretRole((uid, comp), args.Player, args.Profile, playerCount))
-                return;
+            if (!TryAssignLateJoinSecretRole((uid, comp), args.Player, args.Profile, playerCount))
+                continue;
+
+            // Sphere already cracked before this player joined - OnRoundStart already fired and
+            // won't run again, so tell them now (second message, after the murk rule's own
+            // "days left" popup). If it hasn't cracked yet, OnRoundStart will cover them later.
+            if (IsSphereCracked())
+                SendRolePopup(args.Player);
+
+            return;
         }
+    }
+
+    private bool IsSphereCracked()
+    {
+        var query = EntityQueryEnumerator<CEMurkLusconSphereComponent>();
+        while (query.MoveNext(out _, out var sphere))
+            return sphere.State != CEMurkSphereState.Stable;
+
+        return false;
+    }
+
+    private void SendRolePopup(ICommonSession session)
+    {
+        if (!_mind.TryGetMind(session, out var mindId, out var mind)
+            || !_role.MindHasRole<CESecretRoleComponent>((mindId, mind), out var roleEnt))
+            return;
+
+        if (roleEnt.Value.Comp2.Role is not { } roleId || !_proto.TryIndex(roleId, out var role))
+            return;
+
+        var goalText = TryComp<RoleBriefingComponent>(roleEnt.Value.Owner, out var briefing)
+            ? Loc.GetString(briefing.Briefing)
+            : string.Empty;
+
+        RaiseNetworkEvent(new CEScreenPopupShowEvent(role.LocalizedName, goalText,
+            new SoundPathSpecifier("/Audio/_CE/Announce/darkness_boom.ogg")), session);
     }
 
     private void AssignSecretRoles(
