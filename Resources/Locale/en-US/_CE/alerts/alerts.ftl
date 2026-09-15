@@ -15,3 +15,6 @@ ce-alerts-good-food-aftertaste-desc = High-quality prepared food provides you wi
 
 ce-alerts-bad-food-aftertaste-name = Disgusting aftertaste
 ce-alerts-bad-food-aftertaste-desc = Poorly prepared food causes you to feel nauseous.
+
+ce-alerts-murk-dissolving-name = Dissolving in the murk
+ce-alerts-murk-dissolving-desc = Your flesh is starting to smoke and evaporate. Leave the murk immediately if you want to stay alive!

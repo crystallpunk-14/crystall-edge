@@ -111,9 +111,12 @@ public abstract partial class CESharedMurkSystem : EntitySystem
         return GetMurkIntensity(coords) > Threshold;
     }
 
-    public bool InMurk(EntityUid ent)
+    public bool InMurk(EntityUid ent, TransformComponent? xform = null)
     {
-        return InMurk(Transform(ent).Coordinates);
+        if (!Resolve(ent, ref xform))
+            return false;
+
+        return InMurk(xform.Coordinates);
     }
 
     /// <summary>
