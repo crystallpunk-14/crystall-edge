@@ -1,0 +1,81 @@
+- type: entity
+  id: CEMurkLucsonSphere
+  name: Lucson Sphere
+  description: Your last hope for survival. A barrier against the murk, a ray of light in the realm of darkness.
+  abstract: true
+  categories: [ ForkFiltered ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: PlacementReplacement
+    key: walls
+  - type: Sprite
+    drawdepth: Mobs
+    noRot: true
+    sprite: Structures/Specific/Anomalies/pyro_anom.rsi
+    layers: 
+    - state: pulse
+      scale: 2, 2
+      shader: unshaded
+      color: "#4fd9ff"
+  #- type: AmbientSound
+  #  enabled: false
+  #  sound:
+  #    path: /Audio/Machines/scan_loop.ogg
+  #  range: 5
+  #  volume: -8
+  - type: PointLight
+    radius: 10
+    energy: 4
+    color: "#eef2f5"
+  - type: CEPvsOverride
+  - type: CEMurkLusconSphere
+  - type: Clickable
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 60
+        mask:
+        - MachineMask
+        layer:
+        - MidImpassable
+        - LowImpassable
+
+# Different intensity for different map sizes
+
+- type: entity
+  parent: CEMurkLucsonSphere
+  id: CEMurkLucsonSphere25
+  suffix: One per Map, 25 radius
+  components:
+  - type: CEMurkSource
+    intensity: -25
+
+- type: entity
+  parent: CEMurkLucsonSphere
+  id: CEMurkLucsonSphere50
+  suffix: One per Map, 50 radius
+  components:
+  - type: CEMurkSource
+    intensity: -50
+
+- type: entity
+  parent: CEMurkLucsonSphere
+  id: CEMurkLucsonSphere75
+  suffix: One per Map, 75 radius
+  components:
+  - type: CEMurkSource
+    intensity: -75
+
+- type: entity
+  parent: CEMurkLucsonSphere
+  id: CEMurkLucsonSphere100
+  suffix: One per Map, 100 radius
+  components:
+  - type: CEMurkSource
+    intensity: -100

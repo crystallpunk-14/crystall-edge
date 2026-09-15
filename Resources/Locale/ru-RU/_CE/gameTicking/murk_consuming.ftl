@@ -1,0 +1,13 @@
+ce-murk-sphere-cracked-title = Сфера Люксона треснута
+ce-murk-sphere-cracked-desc =
+    Через { $days } { $days ->
+        [one] день
+        [few] дня
+       *[other] дней
+    } мрак поглотит этот город
+ce-murk-days-left-title =
+    Осталось { $days ->
+        [one] { $days } день
+        [few] { $days } дня
+       *[other] { $days } дней
+    }

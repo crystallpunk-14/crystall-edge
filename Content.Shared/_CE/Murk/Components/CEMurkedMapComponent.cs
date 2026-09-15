@@ -14,7 +14,7 @@ public sealed partial class CEMurkedMapComponent : Component
     /// Expected to change at runtime (round events, admin commands) - do not cache it.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public float Intensity;
+    public float Intensity = 1;
 
     /// <summary>
     /// Brightest tint the murk drifts to. The darkest point is always pure black.

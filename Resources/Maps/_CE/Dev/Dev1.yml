@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.0
   forkId: ""
   forkVersion: ""
-  time: 09/14/2026 19:44:07
-  entityCount: 1
+  time: 09/15/2026 10:55:20
+  entityCount: 2
 maps:
 - 1
 grids:
@@ -59,4 +59,11 @@ entities:
     - type: CEZLevelsLaddersCache
     - type: ChunkContainer
       chunkEntities: []
+- proto: CEMurkLucsonSphere25
+  entities:
+  - uid: 2
+    components:
+    - type: Transform
+      parent: 1
+      pos: -1.5,6.5
 ...

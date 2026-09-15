@@ -76,3 +76,4 @@
               shadowColor: "#000000"
             - type: CEGridStability
             - type: CEZLevelChasm
+            - type: CEMurkedMap
