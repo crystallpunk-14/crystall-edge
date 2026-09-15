@@ -2,6 +2,8 @@ using Content.Client.Graphics;
 using Content.Shared._CE.Murk.Components;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
+using Robust.Client.Player;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client._CE.Murk;
@@ -9,6 +11,8 @@ namespace Content.Client._CE.Murk;
 public sealed partial class CEMurkDissolvingSystem : EntitySystem
 {
     [Dependency] private SpriteSystem _sprite = default!;
+    [Dependency] private IPlayerManager _player = default!;
+    [Dependency] private IOverlayManager _overlayMan = default!;
 
     private static readonly ProtoId<ShaderPrototype> Shader = "CEMurkDissolving";
 
@@ -17,6 +21,7 @@ public sealed partial class CEMurkDissolvingSystem : EntitySystem
     private const float EffectEnd = 0.8f;
 
     private ShaderInstance _shader = default!;
+    private CEMurkDissolvingOverlay? _overlay;
 
     public override void Initialize()
     {
@@ -29,6 +34,9 @@ public sealed partial class CEMurkDissolvingSystem : EntitySystem
     private void OnStartup(Entity<CEMurkDissolvingComponent> ent, ref ComponentStartup args)
     {
         UpdateShader(ent);
+
+        if (ent.Owner == _player.LocalEntity)
+            AddOverlay();
     }
 
     [SubscribeLocalEvent]
@@ -36,6 +44,40 @@ public sealed partial class CEMurkDissolvingSystem : EntitySystem
     {
         if (!Terminating(ent))
             SetShader(ent.Owner, false);
+
+        if (ent.Owner == _player.LocalEntity)
+            RemoveOverlay();
+    }
+
+    [SubscribeLocalEvent]
+    private void OnPlayerAttached(LocalPlayerAttachedEvent args)
+    {
+        if (HasComp<CEMurkDissolvingComponent>(args.Entity))
+            AddOverlay();
+    }
+
+    [SubscribeLocalEvent]
+    private void OnPlayerDetached(LocalPlayerDetachedEvent args)
+    {
+        RemoveOverlay();
+    }
+
+    private void AddOverlay()
+    {
+        if (_overlay != null)
+            return;
+
+        _overlay = new CEMurkDissolvingOverlay();
+        _overlayMan.AddOverlay(_overlay);
+    }
+
+    private void RemoveOverlay()
+    {
+        if (_overlay == null)
+            return;
+
+        _overlayMan.RemoveOverlay(_overlay);
+        _overlay = null;
     }
 
     [SubscribeLocalEvent]
