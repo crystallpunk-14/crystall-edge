@@ -121,6 +121,7 @@
   - type: CEMurkDissolving
     conversionRemoveComponents:
     - type: Damageable
+    - type: MobCollision
     conversionComponents:
     - type: CEGOAP
       goals:
