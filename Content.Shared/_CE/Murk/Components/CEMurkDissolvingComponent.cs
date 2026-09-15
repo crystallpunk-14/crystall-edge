@@ -10,7 +10,7 @@ namespace Content.Shared._CE.Murk.Components;
 /// grows while the entity is inside the murk and shrinks back to zero while it is not.
 /// Purely tracking for now - nothing gameplay-facing consumes <see cref="Dissolved"/> yet.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentPause, AutoGenerateComponentState(fieldDeltas: true)]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentPause, AutoGenerateComponentState(raiseAfterAutoHandleState: true, fieldDeltas: true)]
 public sealed partial class CEMurkDissolvingComponent : Component
 {
     /// <summary>
