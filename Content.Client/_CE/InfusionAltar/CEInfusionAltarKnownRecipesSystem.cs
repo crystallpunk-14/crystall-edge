@@ -1,4 +1,5 @@
 using Content.Shared._CE.InfusionAltar;
+using Robust.Shared.Analyzers;
 
 namespace Content.Client._CE.InfusionAltar;
 
@@ -11,18 +12,12 @@ public sealed partial class CEInfusionAltarKnownRecipesSystem : EntitySystem
 {
     public event Action<List<CEInfusionAltarKnownRecipeInfo>>? OnRecipesUpdated;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeNetworkEvent<CEUpdateInfusionAltarKnownRecipesEvent>(OnUpdate);
-    }
-
     public void RequestKnownRecipes()
     {
         RaiseNetworkEvent(new CERequestInfusionAltarKnownRecipesEvent());
     }
 
+    [SubscribeNetworkEvent]
     private void OnUpdate(CEUpdateInfusionAltarKnownRecipesEvent ev)
     {
         OnRecipesUpdated?.Invoke(ev.Recipes);

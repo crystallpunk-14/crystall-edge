@@ -15,3 +15,6 @@ ce-alerts-good-food-aftertaste-desc = Качественно приготовл�
 
 ce-alerts-bad-food-aftertaste-name = Отвратительное послевкусие
 ce-alerts-bad-food-aftertaste-desc = Ужасно приготовленная еда вызывает у вас рвотные позывы.
+
+ce-alerts-murk-dissolving-name = Растворение во мраке
+ce-alerts-murk-dissolving-desc = Ваша плоть начинает дымиться и испаряться. Срочно покиньте мрак, если хотите остаться в живых!

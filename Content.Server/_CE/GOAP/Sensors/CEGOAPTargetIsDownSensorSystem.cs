@@ -4,6 +4,7 @@ using Content.Shared._CE.GOAP.Selectors;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
+using Robust.Shared.Analyzers;
 
 namespace Content.Server._CE.GOAP.Sensors;
 
@@ -37,14 +38,7 @@ public sealed partial class CEGOAPTargetIsDownSensorSystem : EntitySystem
 
     [Dependency] private EntityQuery<MobStateComponent> _mobStateQuery = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEGOAPTargetIsDownSensorComponent, CEGOAPSensorRefreshEvent>(OnRefresh);
-        SubscribeLocalEvent<CEGOAPTargetComponent, MobStateChangedEvent>(OnTargetMobStateChanged);
-    }
-
+    [SubscribeLocalEvent]
     private void OnRefresh(Entity<CEGOAPTargetIsDownSensorComponent> ent, ref CEGOAPSensorRefreshEvent args)
     {
         if (!TryComp<CEGOAPComponent>(ent, out var goap))
@@ -54,6 +48,7 @@ public sealed partial class CEGOAPTargetIsDownSensorSystem : EntitySystem
             EvaluateEntry((ent.Owner, goap), entry);
     }
 
+    [SubscribeLocalEvent]
     private void OnTargetMobStateChanged(Entity<CEGOAPTargetComponent> ent, ref MobStateChangedEvent args)
     {
         foreach (var goapUid in ent.Comp.Trackers)

@@ -5,6 +5,7 @@
 
 using Content.Shared._CE.ZLevels.Core.Components;
 using JetBrains.Annotations;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Events;
 
@@ -16,17 +17,7 @@ public abstract partial class CESharedZLevelsSystem
 
     public IReadOnlyList<EntityUid> ActiveBodies => _activeBodies;
 
-    private void InitializeActivation()
-    {
-        SubscribeLocalEvent<CEZPhysicsComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<CEZPhysicsComponent, ComponentShutdown>(OnShutdown);
-
-        SubscribeLocalEvent<CEZPhysicsComponent, AnchorStateChangedEvent>(OnAnchorStateChanged);
-        SubscribeLocalEvent<CEZPhysicsComponent, PhysicsBodyTypeChangedEvent>(OnPhysicsBodyTypeChanged);
-
-        SubscribeLocalEvent<CEZPhysicsComponent, EntParentChangedMessage>(OnParentChanged);
-    }
-
+    [SubscribeLocalEvent]
     private void OnMapInit(Entity<CEZPhysicsComponent> entity, ref MapInitEvent args)
     {
         RefreshBody(entity);
@@ -43,21 +34,25 @@ public abstract partial class CESharedZLevelsSystem
         DirtyField(entity, entity.Comp, nameof(CEZPhysicsComponent.CurrentZLevel));
     }
 
+    [SubscribeLocalEvent]
     private void OnShutdown(Entity<CEZPhysicsComponent> entity, ref ComponentShutdown args)
     {
         SleepBody((entity, entity));
     }
 
+    [SubscribeLocalEvent]
     private void OnAnchorStateChanged(Entity<CEZPhysicsComponent> entity, ref AnchorStateChangedEvent args)
     {
         RefreshBody(entity);
     }
 
+    [SubscribeLocalEvent]
     private void OnPhysicsBodyTypeChanged(Entity<CEZPhysicsComponent> entity, ref PhysicsBodyTypeChangedEvent args)
     {
         RefreshBody(entity);
     }
 
+    [SubscribeLocalEvent]
     private void OnParentChanged(Entity<CEZPhysicsComponent> entity, ref EntParentChangedMessage args)
     {
         RefreshBody(entity);

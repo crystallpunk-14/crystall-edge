@@ -1,4 +1,10 @@
-﻿using System.Numerics;
+/*
+ * This file is sublicensed under MIT License
+ * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
+ */
+
+using System.Numerics;
+using Robust.Shared.Analyzers;
 using Content.Shared._CE.ZLevels.Core.Components;
 using JetBrains.Annotations;
 using Robust.Shared.Map.Components;
@@ -14,25 +20,19 @@ public sealed partial class CEZLevelsLaddersCacheSystem : EntitySystem
     [Dependency] private EntityQuery<MapGridComponent> _gridQuery = default!;
     [Dependency] private EntityQuery<CEZLevelsLaddersCacheComponent> _cacheQuery = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEZLevelHighGroundComponent, MapInitEvent>(OnLadderInit);
-        SubscribeLocalEvent<CEZLevelHighGroundComponent, ComponentShutdown>(OnLadderShutdown);
-        SubscribeLocalEvent<CEZLevelHighGroundComponent, AnchorStateChangedEvent>(OnLadderAnchorChanged);
-    }
-
+    [SubscribeLocalEvent]
     private void OnLadderInit(Entity<CEZLevelHighGroundComponent> ent, ref MapInitEvent args)
     {
         TryCacheLadder(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnLadderShutdown(Entity<CEZLevelHighGroundComponent> ent, ref ComponentShutdown args)
     {
         TryRemoveCache(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnLadderAnchorChanged(Entity<CEZLevelHighGroundComponent> ent, ref AnchorStateChangedEvent args)
     {
         if (args.Anchored)

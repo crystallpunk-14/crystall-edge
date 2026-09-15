@@ -10,6 +10,7 @@ using Content.Shared.Humanoid;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
+using Robust.Shared.Analyzers;
 
 namespace Content.Client._CE.Blinking;
 
@@ -21,13 +22,7 @@ public sealed partial class CEBlinkingSystem : CESharedBlinkingSystem
 
     private const string AnimationKey = "anim-blink";
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEBlinkerComponent, AppearanceChangeEvent>(OnAppearanceChange);
-    }
-
+    [SubscribeLocalEvent]
     private void OnAppearanceChange(Entity<CEBlinkerComponent> ent, ref AppearanceChangeEvent args)
     {
         if (!Appearance.TryGetData<bool>(ent.Owner, CEBlinkVisuals.EyesClosed, out var closed))

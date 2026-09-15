@@ -1,6 +1,7 @@
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
 using Content.Shared.Stacks;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Maths;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -19,16 +20,7 @@ public sealed partial class CESharedWallpaperSystem : EntitySystem
     [Dependency] private SharedStackSystem _stack = default!;
     [Dependency] private IPrototypeManager _proto = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEWallpaperHolderComponent, InteractUsingEvent>(OnInteractUsing);
-        SubscribeLocalEvent<CEWallpaperHolderComponent, CEWallpaperApplyDoAfterEvent>(OnApplyDoAfter);
-        SubscribeLocalEvent<CEWallpaperHolderComponent, CEWallpaperRemoveDoAfterEvent>(OnRemoveDoAfter);
-        SubscribeLocalEvent<CEWallpaperHolderComponent, ComponentStartup>(OnStartup);
-    }
-
+    [SubscribeLocalEvent]
     private void OnStartup(Entity<CEWallpaperHolderComponent> holder, ref ComponentStartup args)
     {
         List<Direction>? stale = null;
@@ -48,6 +40,7 @@ public sealed partial class CESharedWallpaperSystem : EntitySystem
         Dirty(holder);
     }
 
+    [SubscribeLocalEvent]
     private void OnInteractUsing(Entity<CEWallpaperHolderComponent> holder, ref InteractUsingEvent args)
     {
         if (args.Handled)
@@ -90,6 +83,7 @@ public sealed partial class CESharedWallpaperSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnApplyDoAfter(Entity<CEWallpaperHolderComponent> holder, ref CEWallpaperApplyDoAfterEvent args)
     {
         if (args.Cancelled || args.Handled || args.Target == null || args.Used == null)
@@ -111,6 +105,7 @@ public sealed partial class CESharedWallpaperSystem : EntitySystem
             PredictedQueueDel(args.Used.Value);
     }
 
+    [SubscribeLocalEvent]
     private void OnRemoveDoAfter(Entity<CEWallpaperHolderComponent> holder, ref CEWallpaperRemoveDoAfterEvent args)
     {
         if (args.Cancelled || args.Handled || args.Target == null)

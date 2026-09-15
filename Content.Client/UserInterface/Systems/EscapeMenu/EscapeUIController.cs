@@ -1,7 +1,9 @@
-﻿using Content.Client._CE.Roadmap;
+﻿using Content.Client._CE.Achievements;
+using Content.Client._CE.UserInterface.Screens;
 using Content.Client.FeedbackPopup;
 using Content.Client.Gameplay;
 using Content.Client.UserInterface.Controls;
+using Content.Client.UserInterface.Systems.Gameplay;
 using Content.Client.UserInterface.Systems.Guidebook;
 using Content.Client.UserInterface.Systems.Info;
 using Content.Shared.CCVar;
@@ -28,10 +30,23 @@ public sealed partial class EscapeUIController : UIController, IOnStateEntered<G
     [Dependency] private OptionsUIController _options = default!;
     [Dependency] private GuidebookUIController _guidebook = default!;
     [Dependency] private FeedbackPopupUIController _feedback = null!;
+    [Dependency] private ILocalizationManager _loc = default!;
 
     private Options.UI.EscapeMenu? _escapeWindow;
 
     private MenuButton? EscapeButton => UIManager.GetActiveUIWidgetOrNull<MenuBar.Widgets.GameTopMenuBar>()?.EscapeButton;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        // CrystallEdge: the minimalist HUD's top bar starts hidden every time its screen is
+        // (re)constructed - including a live HUD-layout switch while the escape menu is already
+        // open (ui.layout can change without a reconnect, see GameplayState.ReloadMainScreen).
+        // Re-sync it to the escape window's actual open state whenever a screen (re)loads, so it
+        // doesn't get stuck hidden behind an open escape menu.
+        UIManager.GetUIController<GameplayStateLoadController>().OnScreenLoad += SyncTopBarVisible;
+    }
 
     public void UnloadButton()
     {
@@ -57,6 +72,26 @@ public sealed partial class EscapeUIController : UIController, IOnStateEntered<G
     private void ActivateButton() => EscapeButton!.SetClickPressed(true);
     private void DeactivateButton() => EscapeButton!.SetClickPressed(false);
 
+    // CrystallEdge: on the minimalist HUD the top bar is hidden by default and only shown
+    // while the escape menu is open; Default/Separated always show it, so this is a no-op there.
+    private void SetTopBarVisible(bool visible)
+    {
+        if (UIManager.ActiveScreen is not CEMinimalismGameScreen)
+            return;
+
+        var topBar = UIManager.GetActiveUIWidgetOrNull<MenuBar.Widgets.GameTopMenuBar>();
+        if (topBar != null)
+            topBar.Visible = visible;
+    }
+
+    // CrystallEdge: called whenever the main screen (re)loads; restores the top bar to whatever
+    // the escape window's current open state implies, instead of trusting the freshly constructed
+    // screen's hardcoded default.
+    private void SyncTopBarVisible()
+    {
+        SetTopBarVisible(_escapeWindow?.IsOpen ?? false);
+    }
+
     public void OnStateEntered(GameplayState state)
     {
         DebugTools.Assert(_escapeWindow == null);
@@ -65,6 +100,10 @@ public sealed partial class EscapeUIController : UIController, IOnStateEntered<G
 
         _escapeWindow.OnClose += DeactivateButton;
         _escapeWindow.OnOpen += ActivateButton;
+
+        // CrystallEdge: top bar is hidden by default, only shown while the escape menu is open
+        _escapeWindow.OnOpen += () => SetTopBarVisible(true);
+        _escapeWindow.OnClose += () => SetTopBarVisible(false);
 
         _escapeWindow.FeedbackButton.OnPressed += _ =>
         {
@@ -78,13 +117,13 @@ public sealed partial class EscapeUIController : UIController, IOnStateEntered<G
             _changelog.ToggleWindow();
         };
 
-        //CrystallEdge roadmap
-        _escapeWindow.CERoadmapButton.OnPressed += _ =>
+        //CrystallEdge achievements button
+        _escapeWindow.AchievementsButton.OnPressed += _ =>
         {
             CloseEscapeWindow();
-            UIManager.GetUIController<CERoadmapUIController>().ToggleRoadmap();
+            UIManager.GetUIController<CEAchievementsUIController>().ToggleWindow();
         };
-        //CrystallEdge roadmap end
+        //CrystallEdge achievements button end
 
         _escapeWindow.RulesButton.OnPressed += _ =>
         {
@@ -110,6 +149,12 @@ public sealed partial class EscapeUIController : UIController, IOnStateEntered<G
             _console.ExecuteCommand("quit");
         };
 
+        _escapeWindow.AdminRemarksButton.OnPressed += _ =>
+        {
+            CloseEscapeWindow();
+            _console.ExecuteCommand("adminremarks");
+        };
+
         _escapeWindow.WikiButton.OnPressed += _ =>
         {
             _uri.OpenUri(_cfg.GetCVar(CCVars.InfoLinksWiki));
@@ -123,6 +168,8 @@ public sealed partial class EscapeUIController : UIController, IOnStateEntered<G
         // Hide wiki button if we don't have a link for it.
         _escapeWindow.WikiButton.Visible = _cfg.GetCVar(CCVars.InfoLinksWiki) != "";
 
+        _cfg.OnValueChanged(CCVars.SeeOwnNotes, OnSeeOwnNotesChanged, true);
+
         CommandBinds.Builder
             .Bind(EngineKeyFunctions.EscapeMenu,
                 InputCmdHandler.FromDelegate(_ => ToggleWindow()))
@@ -131,6 +178,8 @@ public sealed partial class EscapeUIController : UIController, IOnStateEntered<G
 
     public void OnStateExited(GameplayState state)
     {
+        _cfg.UnsubValueChanged(CCVars.SeeOwnNotes, OnSeeOwnNotesChanged);
+
         if (_escapeWindow != null)
         {
             _escapeWindow.Dispose();
@@ -138,6 +187,17 @@ public sealed partial class EscapeUIController : UIController, IOnStateEntered<G
         }
 
         CommandBinds.Unregister<EscapeUIController>();
+    }
+
+    private void OnSeeOwnNotesChanged(bool seeOwnNotes)
+    {
+        if (_escapeWindow == null)
+            return;
+
+        _escapeWindow.AdminRemarksButton.Disabled = !seeOwnNotes;
+        _escapeWindow.AdminRemarksButton.ToolTip = !seeOwnNotes
+            ? _loc.GetString("ui-escape-remarks-button-disabled")
+            : null;
     }
 
     private void EscapeButtonOnOnPressed(ButtonEventArgs obj)

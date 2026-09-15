@@ -3,6 +3,7 @@ using Content.Shared._CE.ZLevels.Flight.Components;
 using Content.Shared.Power;
 using Content.Shared.Power.Components;
 using Content.Shared.Power.EntitySystems;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.FlyerBattery;
@@ -12,14 +13,8 @@ public sealed partial class CEZFlyerBatterySystem : EntitySystem
     [Dependency] private CESharedZFlightSystem _flight = default!;
     [Dependency] private SharedBatterySystem _battery = default!;
     [Dependency] private IGameTiming _timing = default!;
-    public override void Initialize()
-    {
-        base.Initialize();
 
-        SubscribeLocalEvent<CEZFlyerBatteryComponent, CEStartFlightAttemptEvent>(OnFlightAttempt);
-        SubscribeLocalEvent<CEZFlyerBatteryComponent, BatteryStateChangedEvent>(OnBatteryChanged);
-    }
-
+    [SubscribeLocalEvent]
     private void OnBatteryChanged(Entity<CEZFlyerBatteryComponent> ent, ref BatteryStateChangedEvent args)
     {
         if (args.NewState != BatteryState.Empty)
@@ -28,6 +23,7 @@ public sealed partial class CEZFlyerBatterySystem : EntitySystem
         _flight.DeactivateFlight(ent.Owner);
     }
 
+    [SubscribeLocalEvent]
     private void OnFlightAttempt(Entity<CEZFlyerBatteryComponent> ent, ref CEStartFlightAttemptEvent args)
     {
         if (!TryComp<BatteryComponent>(ent, out var battery))

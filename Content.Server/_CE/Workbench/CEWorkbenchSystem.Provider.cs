@@ -1,4 +1,5 @@
 using Content.Shared.Placeable;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Containers;
 
 namespace Content.Server._CE.Workbench;
@@ -7,15 +8,9 @@ public sealed partial class CEWorkbenchSystem
 {
     private void InitProviders()
     {
-        SubscribeLocalEvent<CEWorkbenchPlaceableProviderComponent, CEWorkbenchGetResourcesEvent>(OnGetPlaceableResource);
-        SubscribeLocalEvent<CEWorkbenchPlaceableProviderComponent, ItemPlacedEvent>(OnItemPlaced);
-        SubscribeLocalEvent<CEWorkbenchPlaceableProviderComponent, ItemRemovedEvent>(OnItemRemoved);
-
-        SubscribeLocalEvent<CEWorkbenchContainerProviderComponent, CEWorkbenchGetResourcesEvent>(OnGetContainerResource);
-        SubscribeLocalEvent<CEWorkbenchContainerProviderComponent, EntInsertedIntoContainerMessage>(OnInsertedToContainer);
-        SubscribeLocalEvent<CEWorkbenchContainerProviderComponent, EntRemovedFromContainerMessage>(OnRemovedFromContainer);
     }
 
+    [SubscribeLocalEvent]
     private void OnGetPlaceableResource(Entity<CEWorkbenchPlaceableProviderComponent> ent, ref CEWorkbenchGetResourcesEvent args)
     {
         if (!TryComp<ItemPlacerComponent>(ent, out var placer))
@@ -24,17 +19,20 @@ public sealed partial class CEWorkbenchSystem
         args.AddResources(placer.PlacedEntities);
     }
 
+    [SubscribeLocalEvent]
     private void OnItemRemoved(Entity<CEWorkbenchPlaceableProviderComponent> ent, ref ItemRemovedEvent args)
     {
         UpdateUIRecipes(ent.Owner);
     }
 
+    [SubscribeLocalEvent]
     private void OnItemPlaced(Entity<CEWorkbenchPlaceableProviderComponent> ent, ref ItemPlacedEvent args)
     {
         UpdateUIRecipes(ent.Owner);
     }
 
 
+    [SubscribeLocalEvent]
     private void OnGetContainerResource(Entity<CEWorkbenchContainerProviderComponent> ent, ref CEWorkbenchGetResourcesEvent args)
     {
         if (!_container.TryGetContainer(ent, ent.Comp.ContainerName, out var container))
@@ -43,11 +41,13 @@ public sealed partial class CEWorkbenchSystem
         args.AddResources(container.ContainedEntities);
     }
 
+    [SubscribeLocalEvent]
     private void OnInsertedToContainer(Entity<CEWorkbenchContainerProviderComponent> ent, ref EntInsertedIntoContainerMessage args)
     {
         UpdateUIRecipes(ent.Owner);
     }
 
+    [SubscribeLocalEvent]
     private void OnRemovedFromContainer(Entity<CEWorkbenchContainerProviderComponent> ent, ref EntRemovedFromContainerMessage args)
     {
         UpdateUIRecipes(ent.Owner);

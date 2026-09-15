@@ -4,6 +4,7 @@
  */
 
 using System.Linq;
+using Robust.Shared.Analyzers;
 using System.Numerics;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
@@ -31,13 +32,7 @@ public abstract partial class CESharedZLevelsRoofSystem : EntitySystem
     [Dependency] protected EntityQuery<CEZMapComponent> ZMapQuery = default!;
     [Dependency] protected EntityQuery<TransformComponent> XformQuery = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEZLevelRoofComponent, TileChangedEvent>(OnTileChanged);
-    }
-
+    [SubscribeLocalEvent]
     private void OnTileChanged(Entity<CEZLevelRoofComponent> ent, ref TileChangedEvent args)
     {
         if (!GridQuery.TryComp(ent, out var currentMapGrid))

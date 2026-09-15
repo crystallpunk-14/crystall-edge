@@ -1,0 +1,17 @@
+<tabs:CECharacterInventoryTab
+    xmlns="https://spacestation14.io"
+    xmlns:tabs="clr-namespace:Content.Client._CE.UserInterface.Systems.Character.Tabs"
+    xmlns:inventory="clr-namespace:Content.Client.UserInterface.Systems.Inventory.Controls"
+    Orientation="Vertical"
+    HorizontalExpand="True"
+    VerticalExpand="True">
+    <BoxContainer Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10">
+        <inventory:ItemSlotButtonContainer
+            Name="InventorySlots"
+            Access="Public"
+            MaxColumns="3"
+            SlotGroup="Default"
+            HorizontalAlignment="Left"
+        />
+    </BoxContainer>
+</tabs:CECharacterInventoryTab>

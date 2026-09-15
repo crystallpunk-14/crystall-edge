@@ -2,6 +2,7 @@ using Content.Server._CE.MagicEssence.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Power;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics.Events;
 
@@ -12,16 +13,6 @@ public sealed partial class CEMagicEssenceAttractorSystem : EntitySystem
     [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEMagicEssenceAttractorComponent, PowerChangedEvent>(OnPowerChanged);
-        SubscribeLocalEvent<CEMagicEssenceAttractorComponent, StartCollideEvent>(OnCollide);
-
-        InitializePortable();
-    }
-
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
@@ -29,6 +20,7 @@ public sealed partial class CEMagicEssenceAttractorSystem : EntitySystem
         UpdatePortable();
     }
 
+    [SubscribeLocalEvent]
     private void OnPowerChanged(Entity<CEMagicEssenceAttractorComponent> ent, ref PowerChangedEvent args)
     {
         if (args.Powered)
@@ -40,6 +32,7 @@ public sealed partial class CEMagicEssenceAttractorSystem : EntitySystem
         RemCompDeferred<CEMagicEssenceAttractingComponent>(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnCollide(Entity<CEMagicEssenceAttractorComponent> ent, ref StartCollideEvent args)
     {
         if (!HasComp<CEMagicEssenceAttractingComponent>(ent))

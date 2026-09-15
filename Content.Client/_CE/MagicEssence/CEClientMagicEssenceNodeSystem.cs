@@ -1,6 +1,7 @@
 using Content.Shared._CE.MagicEssence.Components;
 using Content.Shared._CE.MagicEssence.Prototypes;
 using Robust.Client.GameObjects;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
@@ -23,19 +24,13 @@ public sealed partial class CEClientMagicEssenceNodeSystem : EntitySystem
     [Dependency] private SharedPointLightSystem _pointLight = default!;
     [Dependency] private SpriteSystem _sprite = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEMagicEssenceNodeComponent, AfterAutoHandleStateEvent>(OnAfterHandleState);
-        SubscribeLocalEvent<CEMagicEssenceNodeComponent, MapInitEvent>(OnMapInit);
-    }
-
+    [SubscribeLocalEvent]
     private void OnAfterHandleState(Entity<CEMagicEssenceNodeComponent> ent, ref AfterAutoHandleStateEvent args)
     {
         UpdateVisuals(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnMapInit(Entity<CEMagicEssenceNodeComponent> ent, ref MapInitEvent args)
     {
         UpdateVisuals(ent);

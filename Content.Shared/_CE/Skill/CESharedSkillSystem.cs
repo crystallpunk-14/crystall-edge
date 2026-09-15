@@ -1,4 +1,5 @@
 using System.Linq;
+using Robust.Shared.Analyzers;
 using System.Text;
 using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.Skill.Components;
@@ -23,14 +24,11 @@ public abstract partial class CESharedSkillSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CESkillStorageComponent, MapInitEvent>(OnMapInit);
-
         InitializeAdmin();
         InitializeScanning();
-        InitializeRead();
-        InitializePen();
     }
 
+    [SubscribeLocalEvent]
     private void OnMapInit(Entity<CESkillStorageComponent> ent, ref MapInitEvent args)
     {
         //If at initialization we have any skill records, we automatically apply their effects to this entity
@@ -55,8 +53,7 @@ public abstract partial class CESharedSkillSystem : EntitySystem
         CESkillStorageComponent? component = null,
         bool force = false)
     {
-        if (!Resolve(target, ref component, false))
-            return false;
+        component ??= EnsureComp<CESkillStorageComponent>(target);
 
         if (component.LearnedSkills.Contains(skill))
             return false;

@@ -1,3 +1,8 @@
+/*
+ * This file is sublicensed under MIT License
+ * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
+ */
+
 using Robust.Shared.Map;
 
 namespace Content.Server._CE.ZCollapse;
@@ -40,4 +45,14 @@ public sealed partial class CEGridStabilityComponent : Component
     /// </summary>
     [ViewVariables]
     public readonly Dictionary<Vector2i, TimeSpan> PendingCollapses = new();
+
+    /// <summary>
+    /// If true and this grid turns out to be the lowest Z-level in its network (see
+    /// <see cref="Content.Shared._CE.ZLevels.Core.Components.CEZMapNetworkComponent.SortedMin"/>),
+    /// every one of its live tiles is auto-seeded with <see cref="CEZCollapseSystem.LowestLevelSupportValue"/>
+    /// stability, as if it stood on permanently solid ground — regardless of whether any real
+    /// <see cref="CEGridStabilityCoreComponent"/> is anchored there. No-op for any other grid.
+    /// </summary>
+    [DataField]
+    public bool SupportLowestLevel;
 }

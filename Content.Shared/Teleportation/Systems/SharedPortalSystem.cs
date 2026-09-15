@@ -124,11 +124,8 @@ public abstract partial class SharedPortalSystem : EntitySystem
             return;
         }
 
-        if (TryComp<LinkedEntityComponent>(ent, out var link))
+        if (TryComp<LinkedEntityComponent>(ent, out var link) && link.LinkedEntities.Count != 0)
         {
-            if (link.LinkedEntities.Count == 0)
-                return;
-
             // check prediction
             if (_netMan.IsClient && !CanPredictTeleport((ent, link)))
                 return;
@@ -242,17 +239,14 @@ public abstract partial class SharedPortalSystem : EntitySystem
         var arrivalSound = CompOrNull<PortalComponent>(targetEntity)?.ArrivalSound ?? ent.Comp.ArrivalSound;
         var departureSound = ent.Comp.DepartureSound;
 
-        // Some special cased stuff: projectiles should stop ignoring shooter when they enter a portal, to avoid
-        // stacking 500 bullets in between 2 portals and instakilling people--you'll just hit yourself instead
-        // (as expected)
-        if (TryComp<ProjectileComponent>(subject, out var projectile))
-        {
-            projectile.IgnoreShooter = false;
-        }
-
         LogTeleport(ent, subject, Transform(subject).Coordinates, target);
 
         _transform.SetCoordinates(subject, target);
+
+        // CrystallEdge: let CE systems (e.g. the dimensional lift) react to a successful teleport
+        var teleportedEv = new CEPortalTeleportedEvent(subject, target);
+        RaiseLocalEvent(ent, ref teleportedEv);
+        // CrystallEdge end
 
         if (!playSound)
             return;
@@ -292,3 +286,12 @@ public abstract partial class SharedPortalSystem : EntitySystem
     {
     }
 }
+
+// CrystallEdge: raised on the entry portal after a successful teleport, so CE systems can react
+[ByRefEvent]
+public readonly struct CEPortalTeleportedEvent(EntityUid subject, EntityCoordinates target)
+{
+    public readonly EntityUid Subject = subject;
+    public readonly EntityCoordinates Target = target;
+}
+// CrystallEdge end

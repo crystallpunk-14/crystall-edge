@@ -9,7 +9,6 @@
   requireAdminNotify: true
   joinNotifyCrew: true
   supervisors: ce-job-supervisors-empire
-  weight: 3
   requirements:
     - !type:DepartmentTimeRequirement
       department: CEAcademy

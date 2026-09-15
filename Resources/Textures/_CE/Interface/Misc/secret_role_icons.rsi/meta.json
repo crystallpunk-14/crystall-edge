@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "license": "All rights reserved",
+  "copyright": "Created by TheShuEd",
+  "size": {
+    "x": 9,
+    "y": 9
+  },
+  "states": [
+    {
+      "name": "cultist"
+    },
+    {
+      "name": "cultist_head"
+    },
+    {
+      "name": "civilian"
+    },
+    {
+      "name": "lover"
+    }
+  ]
+}

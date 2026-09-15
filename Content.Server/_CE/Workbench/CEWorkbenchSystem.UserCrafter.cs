@@ -1,4 +1,5 @@
 using System.Numerics;
+using Robust.Shared.Analyzers;
 using Content.Shared._CE.Workbench;
 using Content.Shared._CE.Workbench.Prototypes;
 using Content.Shared.DoAfter;
@@ -9,10 +10,9 @@ public sealed partial class CEWorkbenchSystem
 {
     private void InitUserCrafter()
     {
-        SubscribeLocalEvent<CEWorkbenchUserCrafterComponent, CEWorkbenchUiClickRecipeMessage>(OnCraft);
-        SubscribeLocalEvent<CEWorkbenchUserCrafterComponent, CECraftDoAfterEvent>(OnUserCraftFinished);
     }
 
+    [SubscribeLocalEvent]
     private void OnCraft(Entity<CEWorkbenchUserCrafterComponent> ent, ref CEWorkbenchUiClickRecipeMessage args)
     {
         if (!_workbenchQuery.TryComp(ent, out var workbench))
@@ -53,6 +53,7 @@ public sealed partial class CEWorkbenchSystem
         _audio.PlayPvs(recipe.OverrideCraftSound ?? workbench.CraftSound, ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnUserCraftFinished(Entity<CEWorkbenchUserCrafterComponent> ent, ref CECraftDoAfterEvent args)
     {
         if (args.Cancelled || args.Handled)

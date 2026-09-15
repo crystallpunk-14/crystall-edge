@@ -1,6 +1,7 @@
 using Content.Shared.CCVar;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -25,10 +26,6 @@ public sealed partial class CEWaveShaderSystem : EntitySystem
         _shader = _protoMan.Index(WaveShader).InstanceUnique();
         _enabled = _cfg.GetCVar(CCVars.CEWaveShaderEnabled);
 
-        SubscribeLocalEvent<CEWaveShaderComponent, ComponentStartup>(OnStartup);
-        SubscribeLocalEvent<CEWaveShaderComponent, ComponentShutdown>(OnShutdown);
-        SubscribeLocalEvent<CEWaveShaderComponent, BeforePostShaderRenderEvent>(OnBeforeShaderPost);
-
         Subs.CVar(_cfg, CCVars.CEWaveShaderEnabled, GlobalChangeWaveShader, true);
     }
 
@@ -49,12 +46,14 @@ public sealed partial class CEWaveShaderSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnStartup(Entity<CEWaveShaderComponent> entity, ref ComponentStartup args)
     {
         entity.Comp.Offset = _random.NextFloat(0, 1000);
         SetShader(entity.Owner, _shader);
     }
 
+    [SubscribeLocalEvent]
     private void OnShutdown(Entity<CEWaveShaderComponent> entity, ref ComponentShutdown args)
     {
         SetShader(entity.Owner, null);
@@ -70,6 +69,7 @@ public sealed partial class CEWaveShaderSystem : EntitySystem
         entity.Comp.RaiseShaderEvent = instance is not null;
     }
 
+    [SubscribeLocalEvent]
     private void OnBeforeShaderPost(Entity<CEWaveShaderComponent> entity, ref BeforePostShaderRenderEvent args)
     {
         if (!_enabled)

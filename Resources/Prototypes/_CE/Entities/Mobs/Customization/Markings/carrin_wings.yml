@@ -1,6 +1,6 @@
 - type: marking
   id: CECarrinWings1
-  bodyPart: Chest
+  bodyPart: Special
   groupWhitelist: [ CECarrin]
   sprites:
   - sprite: _CE/Mobs/Customization/carrin_wings.rsi
@@ -10,7 +10,7 @@
 
 - type: marking
   id: CECarrinWings2
-  bodyPart: Chest
+  bodyPart: Special
   groupWhitelist: [ CECarrin]
   sprites:
   - sprite: _CE/Mobs/Customization/carrin_wings.rsi
@@ -20,7 +20,7 @@
 
 - type: marking
   id: CECarrinWings3
-  bodyPart: Chest
+  bodyPart: Special
   groupWhitelist: [ CECarrin]
   sprites:
   - sprite: _CE/Mobs/Customization/carrin_wings.rsi
@@ -30,7 +30,7 @@
 
 - type: marking
   id: CECarrinWings4
-  bodyPart: Chest
+  bodyPart: Special
   groupWhitelist: [ CECarrin]
   sprites:
   - sprite: _CE/Mobs/Customization/carrin_wings.rsi
@@ -40,7 +40,7 @@
 
 - type: marking
   id: CECarrinWings5
-  bodyPart: Chest
+  bodyPart: Special
   groupWhitelist: [ CECarrin]
   sprites:
   - sprite: _CE/Mobs/Customization/carrin_wings.rsi
@@ -50,7 +50,7 @@
 
 - type: marking
   id: CECarrinWings6
-  bodyPart: Chest
+  bodyPart: Special
   groupWhitelist: [ CECarrin]
   sprites:
   - sprite: _CE/Mobs/Customization/carrin_wings.rsi
@@ -60,7 +60,7 @@
 
 - type: marking
   id: CECarrinWings7
-  bodyPart: Chest
+  bodyPart: Special
   groupWhitelist: [ CECarrin]
   sprites:
   - sprite: _CE/Mobs/Customization/carrin_wings.rsi

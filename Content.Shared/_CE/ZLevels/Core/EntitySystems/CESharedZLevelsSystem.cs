@@ -1,16 +1,14 @@
-﻿/*
+/*
  * This file is sublicensed under MIT License
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
 
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared._CE.ZLevels.Core.Components;
-using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
 using Content.Shared.CCVar;
 using Content.Shared.Popups;
 using JetBrains.Annotations;
-using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -29,8 +27,6 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
 
     [Dependency] private SharedPhysicsSystem _physicsSystem = null!;
     [Dependency] private SharedTransformSystem _transform = null!;
-    [Dependency] private SharedAudioSystem _audio = null!;
-    [Dependency] private ActionBlockerSystem _blocker = null!;
     [Dependency] private SharedActionsSystem _actions = null!;
     [Dependency] private EntityLookupSystem _lookup = null!;
     [Dependency] private SharedMapSystem _map = null!;
@@ -56,10 +52,5 @@ public abstract partial class CESharedZLevelsSystem : EntitySystem
 
         _config.OnValueChanged(CCVars.ZLevelsPhysicsClientSimulation, i => _clientSimulation = i, true);
         _config.OnValueChanged(CCVars.ZLevelsPhysicsTickRate, i => _fixedTimestep = TimeSpan.FromSeconds(1d / i), true);
-
-        InitializeActivation();
-        InitializeCacheHooks();
-        InitializeMovement();
-        InitializeView();
     }
 }

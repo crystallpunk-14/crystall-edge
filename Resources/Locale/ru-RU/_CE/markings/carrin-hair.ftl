@@ -6,3 +6,4 @@ marking-CECarrinHair5 = Хохолок 4
 marking-CECarrinHair6 = Хохолок 5
 marking-CECarrinHair7 = Сова 1
 marking-CECarrinHair8 = Сова 2
+marking-CECarrinHair9 = Гребень

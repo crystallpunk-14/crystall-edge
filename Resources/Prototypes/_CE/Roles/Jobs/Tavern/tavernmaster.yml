@@ -9,7 +9,6 @@
   supervisors: ce-job-supervisors-empire
   requireAdminNotify: true
   joinNotifyCrew: true
-  weight: 2
   requirements:
     - !type:DepartmentTimeRequirement
       department: CETavern

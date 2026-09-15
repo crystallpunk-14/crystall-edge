@@ -61,3 +61,11 @@
   sprites:
   - sprite: _CE/Mobs/Customization/carrin_hair.rsi
     state: 8
+
+- type: marking
+  id: CECarrinHair9
+  bodyPart: Hair
+  groupWhitelist: [ CECarrin ]
+  sprites:
+  - sprite: _CE/Mobs/Customization/carrin_hair.rsi
+    state: 9

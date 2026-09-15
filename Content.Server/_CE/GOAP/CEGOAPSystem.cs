@@ -2,6 +2,7 @@ using Content.Shared._CE.GOAP;
 using Content.Shared._CE.GOAP.Components;
 using Content.Shared.CCVar;
 using Content.Shared.NPC;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Configuration;
 using Robust.Shared.Timing;
 
@@ -61,12 +62,9 @@ public sealed partial class CEGOAPSystem : EntitySystem
         Subs.CVar(_cfg, CCVars.CEGOAPMaxUpdates, v => _maxUpdates = v, true);
 
         InitWake();
-
-        SubscribeLocalEvent<CEGOAPComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<CEGOAPComponent, ComponentShutdown>(OnShutdown);
-        SubscribeLocalEvent<CEGOAPComponent, EntParentChangedMessage>(OnParentChanged);
     }
 
+    [SubscribeLocalEvent]
     private void OnMapInit(Entity<CEGOAPComponent> ent, ref MapInitEvent args)
     {
         foreach (var action in ent.Comp.Actions)
@@ -107,6 +105,7 @@ public sealed partial class CEGOAPSystem : EntitySystem
         UpdateAwakeStatus((ent, ent.Comp));
     }
 
+    [SubscribeLocalEvent]
     private void OnShutdown(Entity<CEGOAPComponent> ent, ref ComponentShutdown args)
     {
         ClearPlan(ent);
@@ -118,6 +117,7 @@ public sealed partial class CEGOAPSystem : EntitySystem
     /// When the entity's parent changes (e.g. Z-level transition to a different map),
     /// force an immediate re-plan so the NPC adapts to the new map.
     /// </summary>
+    [SubscribeLocalEvent]
     private void OnParentChanged(Entity<CEGOAPComponent> ent, ref EntParentChangedMessage args)
     {
         // Only trigger re-plan if the map actually changed (Z-level transition)

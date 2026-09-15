@@ -6,3 +6,4 @@ marking-CECarrinHair5 = Crest 4
 marking-CECarrinHair6 = Crest 5
 marking-CECarrinHair7 = Owl-like crest 1
 marking-CECarrinHair8 = Owl-like crest 2
+marking-CECarrinHair9 = Comb

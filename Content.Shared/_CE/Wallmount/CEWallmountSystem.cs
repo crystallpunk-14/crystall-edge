@@ -1,4 +1,6 @@
 using Content.Shared.Tag;
+using Content.Shared.Wall;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Network;
@@ -14,22 +16,17 @@ public sealed partial class CEWallmountSystem : EntitySystem
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private INetManager _net = default!;
 
-    public static readonly ProtoId<TagPrototype>[] WallTags = ["Wall", "Window"];
+    // CrystallEdge: upstream removed the "Wall" tag in favor of WallComponent; windows still use a tag
+    public static readonly ProtoId<TagPrototype> WindowTag = "Window";
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEWallmountedComponent, ComponentShutdown>(OnWallmountShutdown);
-        SubscribeLocalEvent<CEWallmountedComponent, AnchorStateChangedEvent>(OnWallmountAnchorChanged);
-    }
-
+    [SubscribeLocalEvent]
     private void OnWallmountAnchorChanged(Entity<CEWallmountedComponent> ent, ref AnchorStateChangedEvent args)
     {
         if (!args.Anchored)
             ClearWallmounts(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnWallmountShutdown(Entity<CEWallmountedComponent> ent, ref ComponentShutdown args)
     {
         ClearWallmounts(ent);
@@ -91,7 +88,7 @@ public sealed partial class CEWallmountSystem : EntitySystem
         var hasParent = false;
         foreach (var entityUid in anchored)
         {
-            if (!_tag.HasAnyTag(entityUid, WallTags))
+            if (!HasComp<WallComponent>(entityUid) && !_tag.HasTag(entityUid, WindowTag))
                 continue;
 
             EnsureComp<CEWallmountedComponent>(entityUid, out var wallmounted);

@@ -1,4 +1,4 @@
-﻿using Content.Client._CE.Roadmap;
+﻿using Content.Client._CE.Achievements;
 using Content.Client.Changelog;
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Systems.EscapeMenu;
@@ -51,14 +51,11 @@ namespace Content.Client.Info
             buttons.AddChild(changelogButton);
 
 
-            // CrystallEdge Roadmap
-            var roadmapButton = new Button
-            {
-                Text = Loc.GetString("ce-escape-roadmap"),
-            };
-            roadmapButton.OnPressed += _ => UserInterfaceManager.GetUIController<CERoadmapUIController>().ToggleRoadmap();
-            buttons.AddChild(roadmapButton);
-            // CrystallEdge Roadmap end
+            // CrystallEdge - Achievements button
+            var achievementsButton = new Button { Text = Loc.GetString("ce-achievements-button") };
+            achievementsButton.OnPressed += _ => UserInterfaceManager.GetUIController<CEAchievementsUIController>().ToggleWindow();
+            buttons.AddChild(achievementsButton);
+            // CrystallEdge - Achievements button end
 
             void AddInfoButton(string loc, CVarDef<string> cVar)
             {

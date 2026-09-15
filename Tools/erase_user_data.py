@@ -12,7 +12,7 @@ import os
 import psycopg2
 from uuid import UUID
 
-LATEST_DB_MIGRATION = "20260714122706_BarkSpeechProfile"
+LATEST_DB_MIGRATION = "20260913140834_SecretRolePriorities"
 
 def main():
     parser = argparse.ArgumentParser()

@@ -4,6 +4,7 @@
  */
 
 using System.Numerics;
+using Robust.Shared.Analyzers;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.ActionBlocker;
@@ -29,9 +30,6 @@ public sealed partial class CEZLevelPullingSystem : EntitySystem
 
         _transitionQuery = GetEntityQuery<CEZLevelPullingTransitionComponent>();
         _zPhysicsQuery = GetEntityQuery<CEZPhysicsComponent>();
-
-        SubscribeLocalEvent<ActivePullerComponent, CEZLevelBeforeMapMoveEvent>(OnPullerMove);
-        SubscribeLocalEvent<CEZLevelPullingTransitionComponent, CEZLevelMapMoveEvent>(OnPulledEntityMove);
     }
 
     public override void Update(float frameTime)
@@ -73,6 +71,7 @@ public sealed partial class CEZLevelPullingSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnPullerMove(Entity<ActivePullerComponent> ent, ref CEZLevelBeforeMapMoveEvent args)
     {
         if (!_timing.IsFirstTimePredicted)
@@ -100,6 +99,7 @@ public sealed partial class CEZLevelPullingSystem : EntitySystem
         Dirty(pulledEntity, transComp);
     }
 
+    [SubscribeLocalEvent]
     private void OnPulledEntityMove(Entity<CEZLevelPullingTransitionComponent> ent, ref CEZLevelMapMoveEvent args)
     {
         if (!_timing.IsFirstTimePredicted)

@@ -1,4 +1,10 @@
+/*
+ * This file is sublicensed under MIT License
+ * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
+ */
+
 using System.Numerics;
+using Robust.Shared.Analyzers;
 using System.Threading;
 using Content.Server._CE.ZLevels.Gravity;
 using Content.Shared._CE.ZLevels.Core.Components;
@@ -74,6 +80,9 @@ public sealed partial class CEZCollapseSystem : EntitySystem
 
     private const int MaxCollapsesPerTick = 8;
 
+    /// <summary>Stability auto-seeded onto every live tile of a <see cref="CEGridStabilityComponent.SupportLowestLevel"/> grid that is the lowest level of its network.</summary>
+    public const int LowestLevelSupportValue = 100;
+
     //Small random scatter impulse given to debris dropped onto the level below
     //just enough to keep a pile of fallen tile items from stacking in a perfect grid.
     private const float DropImpulseMin = 0f;
@@ -108,15 +117,6 @@ public sealed partial class CEZCollapseSystem : EntitySystem
     /// </summary>
     private HashSet<EntityUid> _pendingIndexScan = new();
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        InitializeEvents();
-
-        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundCleanup);
-    }
-
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
@@ -129,6 +129,7 @@ public sealed partial class CEZCollapseSystem : EntitySystem
         PushDirtySnapshots();
     }
 
+    [SubscribeLocalEvent]
     private void OnRoundCleanup(RoundRestartCleanupEvent ev)
     {
         foreach (var (_, cts, _) in _inFlightJobs)
@@ -162,6 +163,17 @@ public sealed partial class CEZCollapseSystem : EntitySystem
 
         return network.Components.TryGetComponent<CEGridStabilityComponent>(_compFactory, out _) ||
                network.Components.TryGetComponent<CEAutoGridGravityComponent>(_compFactory, out _);
+    }
+
+    /// <summary>Whether this grid's map sits at the lowest depth of its Z-level network — i.e. there is nothing below it.</summary>
+    private bool IsLowestZLevel(EntityUid gridUid)
+    {
+        if (!TryGetOwningMap(gridUid, out var mapUid) ||
+            !_zMapQuery.TryGetComponent(mapUid, out var zMap) ||
+            !_zNetworkQuery.TryGetComponent(zMap.NetworkUid, out var network))
+            return false;
+
+        return zMap.Depth == network.SortedMin;
     }
 
     private bool TryGetOwningMap(EntityUid gridUid, out EntityUid mapUid)
@@ -377,10 +389,16 @@ public sealed partial class CEZCollapseSystem : EntitySystem
             if (!_stabilityQuery.TryGetComponent(gridUid, out var comp) || !_gridQuery.TryGetComponent(gridUid, out var grid))
                 continue;
 
+            var supportLowestLevel = comp.SupportLowestLevel && IsLowestZLevel(gridUid);
+
             var tileEnumerator = _map.GetAllTilesEnumerator(gridUid, grid);
             while (tileEnumerator.MoveNext(out var tileRef))
             {
-                liveNodes.Add((gridUid, tileRef.Value.GridIndices));
+                var tile = tileRef.Value.GridIndices;
+                liveNodes.Add((gridUid, tile));
+
+                if (supportLowestLevel)
+                    coreSeeds.Add((gridUid, tile, LowestLevelSupportValue));
             }
 
             foreach (var coreUid in comp.Cores)

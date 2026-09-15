@@ -6,6 +6,7 @@
 using Content.Shared._CE.Cooking.Components;
 using Content.Shared._CE.Cooking.Prototypes;
 using Content.Shared.DoAfter;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
@@ -15,12 +16,9 @@ public abstract partial class CESharedCookingSystem
 {
     private void InitDoAfter()
     {
-        SubscribeLocalEvent<CEFoodCookerComponent, EntParentChangedMessage>(OnParentChanged);
-
-        SubscribeLocalEvent<CEFoodCookerComponent, CECookingDoAfter>(OnCookFinished);
-        SubscribeLocalEvent<CEFoodCookerComponent, CEBurningDoAfter>(OnCookBurned);
     }
 
+    [SubscribeLocalEvent]
     private void OnParentChanged(Entity<CEFoodCookerComponent> ent, ref EntParentChangedMessage args)
     {
         StopCooking(ent);
@@ -85,6 +83,7 @@ public abstract partial class CESharedCookingSystem
         Dirty(ent);
     }
 
+    [SubscribeLocalEvent]
     protected virtual void OnCookBurned(Entity<CEFoodCookerComponent> ent, ref CEBurningDoAfter args)
     {
         StopCooking(ent);
@@ -97,6 +96,7 @@ public abstract partial class CESharedCookingSystem
         args.Handled = true;
     }
 
+    [SubscribeLocalEvent]
     protected virtual void OnCookFinished(Entity<CEFoodCookerComponent> ent, ref CECookingDoAfter args)
     {
         StopCooking(ent);

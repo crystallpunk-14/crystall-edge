@@ -1,6 +1,7 @@
 using Content.Server.Radiation.Components;
 using Content.Server.Radiation.Events;
 using Content.Shared._CE.Radiation;
+using Robust.Shared.Analyzers;
 
 namespace Content.Server._CE.Radiation;
 
@@ -8,13 +9,7 @@ public sealed partial class CERadiationReceiverVisualsSystem : EntitySystem
 {
     [Dependency] private SharedAppearanceSystem _appearance = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<RadiationSystemUpdatedEvent>(OnUpdate);
-    }
-
+    [SubscribeLocalEvent]
     private void OnUpdate(RadiationSystemUpdatedEvent ev)
     {
         var query = EntityQueryEnumerator<CERadiationReceiverVisualsComponent, RadiationReceiverComponent>();

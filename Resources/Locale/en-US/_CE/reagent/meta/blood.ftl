@@ -1,9 +1,6 @@
 ce-reagent-name-blood-animal = Animal Blood
 ce-reagent-desc-blood-animal = The life essence of a living non-sapient creature.
 
-ce-reagent-name-blood-vampire = Vampire Blood
-ce-reagent-desc-blood-vampire = The life essence of a powerful blood-drinker.
-
 ce-reagent-name-blood = Blood
 ce-reagent-desc-blood = The life essence of a living warm-blooded creature.
 

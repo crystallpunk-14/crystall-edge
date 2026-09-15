@@ -1,9 +1,6 @@
 ce-reagent-name-blood-animal = Кровь животного
 ce-reagent-desc-blood-animal = Жизненная энергия живого неразумного существа.
 
-ce-reagent-name-blood-vampire = Кровь вампира
-ce-reagent-desc-blood-vampire = Жизненная энергия могущественного кровопийцы.
-
 ce-reagent-name-blood = Кровь
 ce-reagent-desc-blood = Жизненная энергия живого теплокровного существа.
 

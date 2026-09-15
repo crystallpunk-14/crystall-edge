@@ -1,0 +1,40 @@
+<windows:CECharacterWindow
+    xmlns="https://spacestation14.io"
+    xmlns:windows="clr-namespace:Content.Client._CE.UserInterface.Systems.Character.Windows"
+    xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls"
+    Title="{Loc 'character-info-title'}"
+    MinWidth="560"
+    MinHeight="450">
+    <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
+        <BoxContainer Orientation="Vertical" HorizontalAlignment="Center" HorizontalExpand="False" MaxWidth="200" Margin="10">
+            <!-- Secret role + faction, only visible for players with an assigned secret role -->
+            <BoxContainer Name="SecretRoleContainer" Orientation="Vertical" HorizontalExpand="True" Visible="False" Access="Public">
+                <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextureRect Name="SecretRoleIcon" Access="Public" Stretch="KeepAspectCentered" SetSize="24 24" Margin="0 0 6 0" />
+                    <Label Name="SecretRoleLabel" Access="Public" StyleClasses="LabelHeading" />
+                </BoxContainer>
+                <cc:HSeparator StyleClasses="LowDivider" Margin="0 4" />
+                <RichTextLabel Name="FactionLabel" Access="Public" StyleClasses="LabelSubText" HorizontalAlignment="Center" HorizontalExpand="True" Margin="0 0 0 6" />
+            </BoxContainer>
+            <PanelContainer Name="PortraitPanel">
+                <BoxContainer Orientation="Vertical" HorizontalAlignment="Center" Margin="10">
+                    <SpriteView Name="SpriteView" Access="Public" OverrideDirection="South" Scale="6 6" SetSize="128 128" Margin="4" />
+                    <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 5">
+                        <Button Name="RotateLeft" Text="◀" StyleClasses="OpenRight" />
+                        <cc:VSeparator Margin="2 0 3 0" />
+                        <Button Name="RotateRight" Text="▶" StyleClasses="OpenLeft" />
+                    </BoxContainer>
+                </BoxContainer>
+            </PanelContainer>
+            <RichTextLabel Name="NameLabel" Access="Public" HorizontalAlignment="Center" HorizontalExpand="True" Margin="0 8 0 0" />
+            <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 4 0 0">
+                <TextureRect Name="JobIcon" Access="Public" Stretch="KeepAspectCentered" SetSize="20 20" Margin="0 0 6 0" />
+                <Label Name="JobLabel" Access="Public" StyleClasses="LabelHeading" />
+            </BoxContainer>
+            <RichTextLabel Name="DetailsLabel" Access="Public" StyleClasses="LabelSubText" HorizontalAlignment="Center" HorizontalExpand="True" Margin="0 10 0 0" />
+            <BoxContainer Name="AdditionalInfoContainer" Orientation="Vertical" Access="Public" HorizontalExpand="True" Margin="0 4 0 0" />
+        </BoxContainer>
+        <cc:VSeparator Margin="0 10" />
+        <TabContainer Name="Tabs" Access="Public" HorizontalExpand="True" VerticalExpand="True" />
+    </BoxContainer>
+</windows:CECharacterWindow>

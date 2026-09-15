@@ -1002,6 +1002,31 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.ToTable("player", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.PlayerAchievement", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("player_achievement_id");
+
+                    b.Property<Guid>("PlayerUserId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("player_user_id");
+
+                    b.Property<string>("ProtoId")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("proto_id");
+
+                    b.HasKey("Id")
+                        .HasName("PK_player_achievement");
+
+                    b.HasIndex("PlayerUserId", "ProtoId")
+                        .IsUnique();
+
+                    b.ToTable("player_achievement", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.Preference", b =>
                 {
                     b.Property<int>("Id")
@@ -1268,6 +1293,42 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.HasIndex("StartDate");
 
                     b.ToTable("round", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.SecretRole", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("secret_role_id");
+
+                    b.Property<int>("Priority")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("priority");
+
+                    b.Property<int>("ProfileId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("profile_id");
+
+                    b.Property<string>("SecretRoleName")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("secret_role_name");
+
+                    b.HasKey("Id")
+                        .HasName("PK_secret_role");
+
+                    b.HasIndex("ProfileId")
+                        .HasDatabaseName("IX_secret_role_profile_id");
+
+                    b.HasIndex("ProfileId", "SecretRoleName")
+                        .IsUnique();
+
+                    b.HasIndex(new[] { "ProfileId" }, "IX_secret_role_one_high_priority")
+                        .IsUnique()
+                        .HasFilter("priority = 3");
+
+                    b.ToTable("secret_role", (string)null);
                 });
 
             modelBuilder.Entity("Content.Server.Database.Server", b =>
@@ -1903,6 +1964,19 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("LastSeenHWId");
                 });
 
+            modelBuilder.Entity("Content.Server.Database.PlayerAchievement", b =>
+                {
+                    b.HasOne("Content.Server.Database.Player", "Player")
+                        .WithMany("PlayerAchievements")
+                        .HasForeignKey("PlayerUserId")
+                        .HasPrincipalKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_player_achievement_player_player_user_id");
+
+                    b.Navigation("Player");
+                });
+
             modelBuilder.Entity("Content.Server.Database.Profile", b =>
                 {
                     b.HasOne("Content.Server.Database.Preference", "Preference")
@@ -1974,6 +2048,18 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasConstraintName("FK_round_server_server_id");
 
                     b.Navigation("Server");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.SecretRole", b =>
+                {
+                    b.HasOne("Content.Server.Database.Profile", "Profile")
+                        .WithMany("SecretRoles")
+                        .HasForeignKey("ProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_secret_role_profile_profile_id");
+
+                    b.Navigation("Profile");
                 });
 
             modelBuilder.Entity("Content.Server.Database.ServerBanHit", b =>
@@ -2115,6 +2201,8 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("AdminWatchlistsReceived");
 
                     b.Navigation("JobWhitelists");
+
+                    b.Navigation("PlayerAchievements");
                 });
 
             modelBuilder.Entity("Content.Server.Database.Preference", b =>
@@ -2129,6 +2217,8 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("Jobs");
 
                     b.Navigation("Loadouts");
+
+                    b.Navigation("SecretRoles");
 
                     b.Navigation("Traits");
                 });

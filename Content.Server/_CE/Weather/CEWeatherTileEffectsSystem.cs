@@ -2,6 +2,7 @@ using Content.Server._CE.Weather.Components;
 using Content.Shared.Light.Components;
 using Content.Shared.StatusEffectNew.Components;
 using Content.Shared.Weather;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Random;
@@ -24,13 +25,7 @@ public sealed partial class CEWeatherTileEffectsSystem : EntitySystem
 
     [Dependency] private EntityQuery<RoofComponent> _roofQuery = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEWeatherTileEffectsComponent, ComponentInit>(OnTileEffectsInit);
-    }
-
+    [SubscribeLocalEvent]
     private void OnTileEffectsInit(Entity<CEWeatherTileEffectsComponent> ent, ref ComponentInit args)
     {
         ent.Comp.NextEffectTime = _timing.CurTime + _random.Next(ent.Comp.MinEffectFrequency, ent.Comp.MaxEffectFrequency);

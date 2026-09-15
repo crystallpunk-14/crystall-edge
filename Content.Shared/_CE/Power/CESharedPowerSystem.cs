@@ -8,6 +8,7 @@ using Content.Shared.PowerCell;
 using Content.Shared.Radiation.Components;
 using Content.Shared.Radiation.Systems;
 using Content.Shared.Timing;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
@@ -34,13 +35,11 @@ public abstract partial class CESharedPowerSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        InitializeGlove();
 
         BatteryQuery = GetEntityQuery<BatteryComponent>();
-
-        SubscribeLocalEvent<CEIrradiateOnDestroyComponent, DestructionEventArgs>(OnBatteryDestroyed);
     }
 
+    [SubscribeLocalEvent]
     private void OnBatteryDestroyed(Entity<CEIrradiateOnDestroyComponent> ent, ref DestructionEventArgs args)
     {
         if (!TryComp<BatteryComponent>(ent, out var battery))

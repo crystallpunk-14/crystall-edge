@@ -1,4 +1,5 @@
 using System.Linq;
+using Robust.Shared.Analyzers;
 using System.Text;
 using Content.Shared._CE.LockKey.Components;
 using Content.Shared.DoAfter;
@@ -46,14 +47,9 @@ public abstract partial class CESharedLockKeySystem : EntitySystem
         _ceLockQuery = GetEntityQuery<CELockComponent>();
         _keyQuery = GetEntityQuery<CEKeyComponent>();
         _doorQuery = GetEntityQuery<DoorComponent>();
-
-        SubscribeLocalEvent<CELockComponent, LockPickHackDoAfterEvent>(OnLockHacked);
-        SubscribeLocalEvent<CELockComponent, LockInsertDoAfterEvent>(OnLockInserted);
-
-        SubscribeLocalEvent<CEKeyComponent, ExaminedEvent>(OnKeyExamine);
-        SubscribeLocalEvent<CELockComponent, ExaminedEvent>(OnLockExamine);
     }
 
+    [SubscribeLocalEvent]
     private void OnLockInserted(Entity<CELockComponent> ent, ref LockInsertDoAfterEvent args)
     {
         if (args.Cancelled || args.Handled)
@@ -101,6 +97,7 @@ public abstract partial class CESharedLockKeySystem : EntitySystem
         return true;
     }
 
+    [SubscribeLocalEvent]
     private void OnLockHacked(Entity<CELockComponent> ent, ref LockPickHackDoAfterEvent args)
     {
         if (args.Cancelled || args.Handled)
@@ -212,6 +209,7 @@ public abstract partial class CESharedLockKeySystem : EntitySystem
             _popup.PopupClient(Loc.GetString("ce-lock-key-no-fit"), target, user);
     }
 
+    [SubscribeLocalEvent]
     private void OnKeyExamine(Entity<CEKeyComponent> ent, ref ExaminedEvent args)
     {
         var parent = Transform(ent).ParentUid;
@@ -229,6 +227,7 @@ public abstract partial class CESharedLockKeySystem : EntitySystem
         args.PushMarkup(sb.ToString());
     }
 
+    [SubscribeLocalEvent]
     private void OnLockExamine(Entity<CELockComponent> ent, ref ExaminedEvent args)
     {
         if (!ent.Comp.CanEmbedded)

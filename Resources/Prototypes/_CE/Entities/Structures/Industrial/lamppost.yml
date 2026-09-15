@@ -62,11 +62,11 @@
           collection: GlassBreak
   #- type: Construction
   - type: PointLight
-    enabled: false
+    enabled: true
     radius: 10
     energy: 1.5
     softness: 0.9
-    color: "#f8ab58"
+    color: "#e0c1a0"
   - type: Appearance
   - type: GenericVisualizer
     visuals:

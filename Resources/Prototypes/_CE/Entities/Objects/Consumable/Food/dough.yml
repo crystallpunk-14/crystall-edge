@@ -8,6 +8,7 @@
   - type: Item
     size: Normal
   - type: Temperature
+    heatCapacity: 15000
   - type: FlavorProfile
     flavors:
       - bread #TODO smth disguisting. raw dough
@@ -101,6 +102,7 @@
   - type: Item
     size: Tiny
   - type: Temperature
+    heatCapacity: 15000
   - type: FlavorProfile
     flavors:
       - bread #TODO smth disguisting. raw dough

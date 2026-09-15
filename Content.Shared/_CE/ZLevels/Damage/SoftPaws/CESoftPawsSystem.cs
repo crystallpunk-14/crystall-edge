@@ -1,10 +1,11 @@
-﻿/*
+/*
  * This file is sublicensed under MIT License
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
 
 using Content.Shared.Popups;
 using Content.Shared.Standing;
+using Robust.Shared.Analyzers;
 
 namespace Content.Shared._CE.ZLevels.Damage.SoftPaws;
 
@@ -13,13 +14,7 @@ public sealed partial class CESoftPawsSystem : EntitySystem
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private StandingStateSystem _standingState = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CESoftPawsComponent, CEZFallingDamageCalculateEvent>(OnFallingDamageCalculate);
-    }
-
+    [SubscribeLocalEvent]
     private void OnFallingDamageCalculate(Entity<CESoftPawsComponent> ent, ref CEZFallingDamageCalculateEvent args)
     {
         if (_standingState.IsDown(ent.Owner))

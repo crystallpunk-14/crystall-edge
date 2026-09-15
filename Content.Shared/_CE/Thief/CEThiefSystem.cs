@@ -1,4 +1,5 @@
 using Content.Shared._CE.Waypointer;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Player;
 
 namespace Content.Shared._CE.Thief;
@@ -10,14 +11,7 @@ public sealed partial class CEThiefSystem : EntitySystem
 {
     [Dependency] private CESharedWaypointerSystem _waypointer = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<ActorComponent, CEThiefToggleTreasureSenseEvent>(OnToggleTreasureSense);
-        SubscribeLocalEvent<CETreasureSenseComponent, CERefreshWaypointersEvent>(OnRefreshWaypointers);
-    }
-
+    [SubscribeLocalEvent]
     private void OnToggleTreasureSense(Entity<ActorComponent> ent, ref CEThiefToggleTreasureSenseEvent args)
     {
         if (args.Handled)
@@ -38,6 +32,7 @@ public sealed partial class CEThiefSystem : EntitySystem
         args.Handled = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnRefreshWaypointers(Entity<CETreasureSenseComponent> ent, ref CERefreshWaypointersEvent args)
     {
         args.WaypointerProtoIds.UnionWith(ent.Comp.WaypointerProtoIds);

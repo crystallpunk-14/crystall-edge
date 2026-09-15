@@ -9,7 +9,6 @@
   "states": [
     {
       "name": "peckish",
-      "directions": 1,
       "delays": [
         [
           1
@@ -18,7 +17,6 @@
     },
     {
       "name": "starving",
-      "directions": 1,
       "delays": [
         [
           0.5,

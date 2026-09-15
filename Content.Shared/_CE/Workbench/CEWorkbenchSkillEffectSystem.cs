@@ -1,4 +1,5 @@
 using System.Text;
+using Robust.Shared.Analyzers;
 using Content.Shared._CE.Skill;
 using Content.Shared._CE.Workbench.Prototypes;
 using Robust.Shared.Prototypes;
@@ -13,13 +14,7 @@ public sealed partial class CEWorkbenchSkillEffectSystem : EntitySystem
 {
     [Dependency] private IPrototypeManager _proto = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEGetSkillEffectEvent>(OnGetSkillEffect);
-    }
-
+    [SubscribeLocalEvent]
     private void OnGetSkillEffect(ref CEGetSkillEffectEvent args)
     {
         var byStation = new Dictionary<string, List<string>>();

@@ -5,6 +5,7 @@ using Content.Server.Power.Nodes;
 using Content.Shared.NodeContainer;
 using Content.Shared.Wires;
 using JetBrains.Annotations;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Map.Components;
 
 namespace Content.Server._CE.Power;
@@ -24,10 +25,9 @@ public sealed partial class CEPipeVisSystem : EntitySystem
 
         _transformQuery = GetEntityQuery<TransformComponent>();
         _nodeQuery = GetEntityQuery<NodeContainerComponent>();
-
-        SubscribeLocalEvent<CEPipeVisComponent, NodeGroupsRebuilt>(UpdateAppearance);
     }
 
+    [SubscribeLocalEvent]
     private void UpdateAppearance(EntityUid uid, CEPipeVisComponent cableVis, ref NodeGroupsRebuilt args)
     {
         if (!TryComp<NodeContainerComponent>(uid, out var nodeContainer))

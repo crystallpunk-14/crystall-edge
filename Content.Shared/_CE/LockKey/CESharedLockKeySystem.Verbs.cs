@@ -2,6 +2,7 @@ using Content.Shared._CE.LockKey.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Timing;
 using Content.Shared.Verbs;
+using Robust.Shared.Analyzers;
 
 namespace Content.Shared._CE.LockKey;
 
@@ -9,12 +10,9 @@ public abstract partial class CESharedLockKeySystem
 {
     private void VerbsInit()
     {
-        SubscribeLocalEvent<CEKeyComponent, GetVerbsEvent<UtilityVerb>>(GetKeysVerbs);
-        SubscribeLocalEvent<CEKeyFileComponent, GetVerbsEvent<UtilityVerb>>(GetKeyFileVerbs);
-        SubscribeLocalEvent<CELockpickComponent, GetVerbsEvent<UtilityVerb>>(GetLockpickVerbs);
-        SubscribeLocalEvent<CELockEditorComponent, GetVerbsEvent<UtilityVerb>>(GetLockEditorVerbs);
     }
 
+    [SubscribeLocalEvent]
     private void GetKeysVerbs(Entity<CEKeyComponent> key, ref GetVerbsEvent<UtilityVerb> args)
     {
         if (!args.CanInteract || !args.CanAccess)
@@ -45,6 +43,7 @@ public abstract partial class CESharedLockKeySystem
         args.Verbs.Add(verb);
     }
 
+    [SubscribeLocalEvent]
     private void GetKeyFileVerbs(Entity<CEKeyFileComponent> ent, ref GetVerbsEvent<UtilityVerb> args)
     {
         if (!args.CanInteract || !args.CanAccess)
@@ -96,6 +95,7 @@ public abstract partial class CESharedLockKeySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void GetLockpickVerbs(Entity<CELockpickComponent> lockPick, ref GetVerbsEvent<UtilityVerb> args)
     {
         if (!args.CanInteract || !args.CanAccess)
@@ -142,6 +142,7 @@ public abstract partial class CESharedLockKeySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void GetLockEditorVerbs(Entity<CELockEditorComponent> ent, ref GetVerbsEvent<UtilityVerb> args)
     {
         if (!args.CanInteract || !args.CanAccess)

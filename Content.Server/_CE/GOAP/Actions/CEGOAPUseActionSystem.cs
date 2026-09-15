@@ -29,11 +29,6 @@ public sealed partial class CEGOAPUseActionSystem : CEGOAPActionSystem<CEGOAPUse
     [Dependency] private EntityQuery<EntityTargetActionComponent> _entityTargetQuery = default!;
     [Dependency] private EntityQuery<WorldTargetActionComponent> _worldTargetQuery = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
-
     protected override void OnActionInit(
         Entity<CEGOAPComponent> ent,
         ref CEGOAPActionInitEvent<CEGOAPUseAction> args)

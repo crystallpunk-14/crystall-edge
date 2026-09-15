@@ -6,6 +6,7 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Examine;
 using Content.Shared.Power.Components;
 using Content.Shared.SSDIndicator;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Map;
 
 namespace Content.Shared._CE.Actions;
@@ -14,21 +15,10 @@ public abstract partial class CESharedActionSystem
 {
     [Dependency] private ExamineSystemShared _examine = default!;
 
-    private void InitializeAttempts()
-    {
-
-        SubscribeLocalEvent<CEActionManaCostComponent, ActionAttemptEvent>(OnManacostActionAttempt);
-        SubscribeLocalEvent<CEActionStaminaCostComponent, ActionAttemptEvent>(OnStaminaCostActionAttempt);
-        SubscribeLocalEvent<CEActionEssenceCostComponent, ActionAttemptEvent>(OnEssenceCostActionAttempt);
-        SubscribeLocalEvent<CEActionWeaponRequiredComponent, ActionAttemptEvent>(OnWeaponRequiredActionAttempt);
-
-        SubscribeLocalEvent<CEActionSSDBlockComponent, ActionValidateEvent>(OnActionSSDAttempt);
-        SubscribeLocalEvent<CEActionRequireLineOfSightComponent, ActionValidateEvent>(OnLineOfSightValidate);
-    }
-
     /// <summary>
     /// Before using a spell, a mana check is made for the amount of mana to show warnings.
     /// </summary>
+    [SubscribeLocalEvent]
     private void OnManacostActionAttempt(Entity<CEActionManaCostComponent> ent, ref ActionAttemptEvent args)
     {
         if (args.Cancelled)
@@ -67,6 +57,7 @@ public abstract partial class CESharedActionSystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnEssenceCostActionAttempt(Entity<CEActionEssenceCostComponent> ent, ref ActionAttemptEvent args)
     {
         if (args.Cancelled)
@@ -79,6 +70,7 @@ public abstract partial class CESharedActionSystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnWeaponRequiredActionAttempt(Entity<CEActionWeaponRequiredComponent> ent, ref ActionAttemptEvent args)
     {
         if (args.Cancelled)
@@ -92,6 +84,7 @@ public abstract partial class CESharedActionSystem
         args.Cancelled = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnActionSSDAttempt(Entity<CEActionSSDBlockComponent> ent, ref ActionValidateEvent args)
     {
         if (args.Invalid)
@@ -107,6 +100,7 @@ public abstract partial class CESharedActionSystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnLineOfSightValidate(Entity<CEActionRequireLineOfSightComponent> ent, ref ActionValidateEvent args)
     {
         if (args.Invalid)
@@ -132,6 +126,7 @@ public abstract partial class CESharedActionSystem
         args.Invalid = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnStaminaCostActionAttempt(Entity<CEActionStaminaCostComponent> ent, ref ActionAttemptEvent args)
     {
         if (args.Cancelled)

@@ -75,6 +75,7 @@ ui-options-hud-theme-minimalist = Минимализм
 ui-options-hud-theme-ashen = Пепел
 ui-options-hud-layout-default = Стандартный
 ui-options-hud-layout-separated = Разделённый
+ui-options-hud-layout-ceminimalism = Минималистичный
 ui-options-vp-stretch = Растянуть изображение для соответствия окну игры
 ui-options-vp-scale = Фиксированный масштаб окна игры:
 ui-options-vp-scale-value = x{ $scale }

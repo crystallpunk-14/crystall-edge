@@ -23,9 +23,11 @@
     itemIconStyle: BigAction
     sound: !type:SoundPathSpecifier
       path: /Audio/Magic/rumble.ogg
-    icon:
-      sprite: _CE/Objects/Weapons/Sword/ice_temporary.rsi
-      state: icon
+  - type: Sprite
+    sprite: _CE/Objects/Weapons/Sword/ice_temporary.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:CEInstantActionAnimationEvent
       animation: AnimationFrostBlade

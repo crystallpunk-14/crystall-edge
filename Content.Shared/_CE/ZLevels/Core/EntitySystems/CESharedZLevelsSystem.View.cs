@@ -4,6 +4,7 @@
  */
 
 using System.Numerics;
+using Robust.Shared.Analyzers;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.Maps;
 using Content.Shared.Toggleable;
@@ -16,11 +17,7 @@ public abstract partial class CESharedZLevelsSystem
 {
     [Dependency] protected ITileDefinitionManager TilDefMan = null!;
 
-    private void InitializeView()
-    {
-        SubscribeLocalEvent<CEZLevelViewerComponent, ToggleActionEvent>(OnToggleLookUp);
-    }
-
+    [SubscribeLocalEvent]
     private void OnToggleLookUp(Entity<CEZLevelViewerComponent> entity, ref ToggleActionEvent args)
     {
         if (args.Handled)

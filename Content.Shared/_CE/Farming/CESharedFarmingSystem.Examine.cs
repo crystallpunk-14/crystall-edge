@@ -1,19 +1,14 @@
 using Content.Shared._CE.Farming.Components;
 using Content.Shared.Examine;
 using Content.Shared.Rounding;
+using Robust.Shared.Analyzers;
 
 namespace Content.Shared._CE.Farming;
 
 public abstract partial class CESharedFarmingSystem
 {
-    private void InitializeExamine()
-    {
-        SubscribeLocalEvent<CEPlantComponent, ExaminedEvent>(OnPlantExamine);
-        SubscribeLocalEvent<CEPlantAdditionalProduceOnInteractComponent, ExaminedEvent>(OnInteractGatherExamine);
-        SubscribeLocalEvent<CEPlantProducingComponent, ExaminedEvent>(OnProducingExamine);
-        SubscribeLocalEvent<CEPlantEnergyFromLightComponent, ExaminedEvent>(OnLightExamine);
-    }
 
+    [SubscribeLocalEvent]
     private void OnPlantExamine(Entity<CEPlantComponent> ent, ref ExaminedEvent args)
     {
         if (ent.Comp.CachedResource == null)
@@ -23,6 +18,7 @@ public abstract partial class CESharedFarmingSystem
             args.PushMarkup(Loc.GetString("ce-farming-producing-examine-unefficient-soil"));
     }
 
+    [SubscribeLocalEvent]
     private void OnInteractGatherExamine(Entity<CEPlantAdditionalProduceOnInteractComponent> ent,
         ref ExaminedEvent args)
     {
@@ -45,6 +41,7 @@ public abstract partial class CESharedFarmingSystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnProducingExamine(Entity<CEPlantProducingComponent> ent, ref ExaminedEvent args)
     {
         if (!PlantQuery.TryComp(ent, out var plant))
@@ -72,6 +69,7 @@ public abstract partial class CESharedFarmingSystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnLightExamine(Entity<CEPlantEnergyFromLightComponent> ent, ref ExaminedEvent args)
     {
         if (ent.Comp.Daytime && ent.Comp.Nighttime)

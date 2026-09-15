@@ -1,3 +1,4 @@
+using Content.Client._CE.UserInterface.Screens;
 using Content.Client._CE.UserInterface.Systems.Vitals.Widgets;
 using Content.Client.UserInterface.Screens;
 using Content.Client.UserInterface.Systems.Gameplay;
@@ -69,6 +70,9 @@ public sealed partial class CEHealthUiController : UIController
 
         if (UIManager.ActiveScreen is SeparatedChatGameScreen separated)
             return separated.HealthBar;
+
+        if (UIManager.ActiveScreen is CEMinimalismGameScreen minimalism)
+            return minimalism.HealthBar;
 
         return null;
     }

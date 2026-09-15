@@ -33,7 +33,6 @@ public sealed partial class InventoryUIController : UIController, IOnStateEntere
 
     [UISystemDependency] private readonly ClientInventorySystem _inventorySystem = default!;
     [UISystemDependency] private readonly HandsSystem _handsSystem = default!;
-    [UISystemDependency] private readonly ContainerSystem _container = default!;
     [UISystemDependency] private readonly SpriteSystem _sprite = default!;
 
     private EntityUid? _playerUid;
@@ -344,8 +343,7 @@ public sealed partial class InventoryUIController : UIController, IOnStateEntere
         // Set green / red overlay at 50% transparency
         var hoverEntity = _entities.SpawnEntity("hoverentity", MapCoordinates.Nullspace);
         var hoverSprite = _entities.GetComponent<SpriteComponent>(hoverEntity);
-        var fits = _inventorySystem.CanEquip(player.Value, held.Value, control.SlotName, out _, slotDef) &&
-                   _container.CanInsert(held.Value, container);
+        var fits = _inventorySystem.CanEquip(player.Value, held.Value, control.SlotName, out _, slotDef, containerSlot: container);
 
         if (!fits && _entities.TryGetComponent<StorageComponent>(container.ContainedEntity, out var storage))
         {
@@ -359,7 +357,7 @@ public sealed partial class InventoryUIController : UIController, IOnStateEntere
                 if (!slot.InsertOnInteract)
                     continue;
 
-                if (!itemSlotsSys.CanInsert(container.ContainedEntity.Value, held.Value, null, slot))
+                if (!itemSlotsSys.CanInsert(container.ContainedEntity.Value, slot, held.Value, null))
                     continue;
                 fits = true;
                 break;
@@ -453,10 +451,11 @@ public sealed partial class InventoryUIController : UIController, IOnStateEntere
 
     public bool RegisterSlotGroupContainer(ItemSlotButtonContainer slotContainer)
     {
-        if (_slotGroups.TryAdd(slotContainer.SlotGroup, slotContainer))
-            return true;
-
-        return false;
+        // CrystallEdge: overwrite instead of TryAdd - a stale container from a torn-down window
+        // (e.g. CECharacterInventoryTab across a reconnect) must not permanently block the live
+        // one from ever registering under the same group name.
+        _slotGroups[slotContainer.SlotGroup] = slotContainer;
+        return true;
     }
 
     public void RemoveSlotGroup(string slotGroupName)

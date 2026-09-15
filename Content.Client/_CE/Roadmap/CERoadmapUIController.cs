@@ -1,6 +1,4 @@
 using Content.Client.Credits;
-using Content.Client.Lobby;
-using Content.Client.UserInterface.Systems.Info;
 using Content.Shared.CCVar;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
@@ -8,34 +6,12 @@ using Robust.Shared.Configuration;
 
 namespace Content.Client._CE.Roadmap;
 
-public sealed partial class CERoadmapUIController : UIController, IOnStateEntered<LobbyState>
+public sealed partial class CERoadmapUIController : UIController
 {
     [Dependency] private IConfigurationManager _config = default!;
-    [Dependency] private InfoUIController _infoUIController = default!;
     [Dependency] private IUriOpener _uriOpener = default!;
 
     private CERoadmapWindow? _window;
-    private bool _shown;
-
-    public override void Initialize()
-    {
-        base.Initialize();
-        _infoUIController.Accepted += OnAccepted;
-    }
-
-    public void OnStateEntered(LobbyState state)
-    {
-        if (_shown || _window != null)
-            return;
-
-        ToggleRoadmap();
-    }
-
-    private void OnAccepted()
-    {
-        if (!_shown)
-            ToggleRoadmap();
-    }
 
     public void ToggleRoadmap()
     {
@@ -46,7 +22,6 @@ public sealed partial class CERoadmapUIController : UIController, IOnStateEntere
             return;
         }
 
-        _shown = true;
         _window = new CERoadmapWindow();
         _window.OnClose += () => _window = null;
 

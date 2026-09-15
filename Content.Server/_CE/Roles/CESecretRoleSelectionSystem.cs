@@ -1,0 +1,236 @@
+using System.Linq;
+using Content.Server.GameTicking;
+using Content.Server.GameTicking.Rules;
+using Content.Server.Mind;
+using Content.Server.Players.PlayTimeTracking;
+using Content.Server.Roles;
+using Content.Shared._CE.Roles;
+using Content.Shared.GameTicking;
+using Content.Shared.Ghost.Components;
+using Content.Shared.Preferences;
+using Content.Shared.Roles;
+using Content.Shared.Roles.Components;
+using Robust.Server.Player;
+using Robust.Shared.Enums;
+using Robust.Shared.Network;
+using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
+
+namespace Content.Server._CE.Roles;
+
+/// <summary>
+/// Grants secret roles to players based on their <see cref="HumanoidCharacterProfile.SecretRolePriorities"/>.
+/// Mirrors the round-start job assignment algorithm (tiered High/Medium/Low pass) rather than the
+/// vanilla antag pipeline, since secret roles are not selected through <c>AntagSelectionSystem</c>.
+/// Every player is expected to end up with a secret role (the lowest-weight entry, e.g. Civilian,
+/// is meant to have enough headroom to catch everyone else) - late joiners are topped up
+/// individually via <see cref="PlayerSpawnCompleteEvent"/>, mirroring how AntagSelectionSystem
+/// handles late joins, minus its random chance gate (secret roles are not optional/rare here).
+/// </summary>
+public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecretRoleSelectionComponent>
+{
+    private static readonly EntProtoId MindRoleSecret = "CEMindRoleSecret";
+
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private MindSystem _mind = default!;
+    [Dependency] private RoleSystem _role = default!;
+    [Dependency] private PlayTimeTrackingManager _playTimeTracking = default!;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeLocalEvent<RulePlayerJobsAssignedEvent>(OnJobsAssigned);
+        SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawnComplete);
+    }
+
+    private void OnJobsAssigned(RulePlayerJobsAssignedEvent args)
+    {
+        var query = QueryActiveRules();
+        while (query.MoveNext(out var uid, out _, out var comp, out _))
+        {
+            AssignSecretRoles((uid, comp), args.Players, args.Profiles);
+        }
+    }
+
+    private void OnPlayerSpawnComplete(PlayerSpawnCompleteEvent args)
+    {
+        if (!args.LateJoin)
+            return;
+
+        // Already has a secret role from earlier this round (e.g. this is a respawn) - don't re-roll.
+        if (HasSecretRole(args.Player))
+            return;
+
+        var playerCount = GetActivePlayerCount();
+
+        var query = QueryActiveRules();
+        while (query.MoveNext(out var uid, out _, out var comp, out _))
+        {
+            if (TryAssignLateJoinSecretRole((uid, comp), args.Player, args.Profile, playerCount))
+                return;
+        }
+    }
+
+    private void AssignSecretRoles(
+        Entity<CESecretRoleSelectionComponent> rule,
+        ICommonSession[] players,
+        IReadOnlyDictionary<NetUserId, HumanoidCharacterProfile> profiles)
+    {
+        // Players still eligible to receive a secret role this round - at most one each,
+        // and never someone who already has a secret role from another active rule.
+        var available = players
+            .Where(session => profiles.ContainsKey(session.UserId) && !HasSecretRole(session))
+            .ToHashSet();
+
+        var entries = rule.Comp.Roles.OrderByDescending(entry => entry.Weight);
+
+        foreach (var entry in entries)
+        {
+            if (!_proto.TryIndex(entry.Role, out var role))
+                continue;
+
+            var target = entry.GetTargetCount(players.Length);
+            while (GetAssignedCount(rule, entry.Role) < target)
+            {
+                if (!TryPickCandidate(role, available, profiles, out var picked))
+                    break;
+
+                available.Remove(picked);
+                GrantSecretRole(rule, picked, role);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Tries to slot a single late-joining player into whatever secret role still has room,
+    /// in weight order. Unlike the round-start draw there's no competition to resolve, so this
+    /// just checks eligibility (Requirements) rather than tiering by priority.
+    /// </summary>
+    private bool TryAssignLateJoinSecretRole(
+        Entity<CESecretRoleSelectionComponent> rule,
+        ICommonSession session,
+        HumanoidCharacterProfile profile,
+        int playerCount)
+    {
+        foreach (var entry in rule.Comp.Roles.OrderByDescending(e => e.Weight))
+        {
+            if (!_proto.TryIndex(entry.Role, out var role))
+                continue;
+
+            if (GetAssignedCount(rule, entry.Role) >= entry.GetTargetCount(playerCount))
+                continue;
+
+            if (!IsEligible(session, profile, role))
+                continue;
+
+            GrantSecretRole(rule, session, role);
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool TryPickCandidate(
+        CESecretRolePrototype role,
+        HashSet<ICommonSession> available,
+        IReadOnlyDictionary<NetUserId, HumanoidCharacterProfile> profiles,
+        out ICommonSession picked)
+    {
+        for (var tier = JobPriority.High; tier >= JobPriority.Low; tier--)
+        {
+            var candidates = new List<ICommonSession>();
+
+            foreach (var session in available)
+            {
+                var profile = profiles[session.UserId];
+
+                // "Never" no longer exists in the UI, but old data or an untouched role should
+                // still be treated as the Low floor rather than excluded.
+                var priority = profile.SecretRolePriorities.GetValueOrDefault(role.ID, JobPriority.Low);
+                if (priority < JobPriority.Low)
+                    priority = JobPriority.Low;
+
+                if (priority != tier)
+                    continue;
+
+                if (!IsEligible(session, profile, role))
+                    continue;
+
+                candidates.Add(session);
+            }
+
+            if (candidates.Count == 0)
+                continue;
+
+            picked = _random.Pick(candidates);
+            return true;
+        }
+
+        picked = default!;
+        return false;
+    }
+
+    private bool IsEligible(ICommonSession session, HumanoidCharacterProfile profile, CESecretRolePrototype role)
+    {
+        _playTimeTracking.TryGetTrackerTimes(session, out var playTimes);
+        return JobRequirements.TryRequirementsMet(
+            role.Requirements,
+            playTimes ?? new Dictionary<string, TimeSpan>(),
+            out _,
+            EntityManager,
+            _proto,
+            profile,
+            session.UserId);
+    }
+
+    private bool HasSecretRole(ICommonSession session)
+    {
+        return _mind.TryGetMind(session, out var mindId, out _) && _role.MindHasRole<CESecretRoleComponent>(mindId);
+    }
+
+    private int GetAssignedCount(Entity<CESecretRoleSelectionComponent> rule, ProtoId<CESecretRolePrototype> role)
+    {
+        return rule.Comp.AssignedCounts.GetValueOrDefault(role);
+    }
+
+    private void GrantSecretRole(Entity<CESecretRoleSelectionComponent> rule, ICommonSession session, CESecretRolePrototype role)
+    {
+        if (!_mind.TryGetMind(session, out var mindId, out var mind))
+            return;
+
+        _role.MindAddRole(mindId, MindRoleSecret, mind, silent: true);
+
+        if (!_role.MindHasRole<CESecretRoleComponent>((mindId, mind), out var roleEnt))
+            return;
+
+        roleEnt.Value.Comp2.Role = role.ID;
+        rule.Comp.AssignedCounts[role.ID] = GetAssignedCount(rule, role.ID) + 1;
+
+        if (role.Briefing is { } briefing)
+            EnsureComp<RoleBriefingComponent>(roleEnt.Value.Owner).Briefing = briefing;
+    }
+
+    /// <summary>
+    /// Mirrors AntagSelectionSystem.GetActivePlayerCount: connected sessions with a live, non-ghost body.
+    /// </summary>
+    private int GetActivePlayerCount()
+    {
+        var count = 0;
+        foreach (var session in _playerManager.Sessions)
+        {
+            if (session.Status is SessionStatus.Disconnected or SessionStatus.Zombie)
+                continue;
+
+            if (session.AttachedEntity is not { } uid || HasComp<GhostComponent>(uid))
+                continue;
+
+            count++;
+        }
+
+        return count;
+    }
+}

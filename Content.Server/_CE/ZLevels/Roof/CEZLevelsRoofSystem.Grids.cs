@@ -4,6 +4,7 @@
  */
 
 using System.Linq;
+using Robust.Shared.Analyzers;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared._CE.ZLevels.Roof;
@@ -19,16 +20,15 @@ public sealed partial class CEZLevelsRoofSystem
 
     private void InitGrids()
     {
-        SubscribeLocalEvent<CEZGridComponent, MapInitEvent>(OnZGridMapInit);
-
-        SubscribeLocalEvent<CEZGridNetworkComponent, CEZLevelGridNetworkUpdatedEvent>(OnZGridNetworkUpdate);
     }
 
+    [SubscribeLocalEvent]
     private void OnZGridNetworkUpdate(Entity<CEZGridNetworkComponent> ent, ref CEZLevelGridNetworkUpdatedEvent args)
     {
         RecalculateGridRoofs(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnZGridMapInit(Entity<CEZGridComponent> ent, ref MapInitEvent args)
     {
         EnsureComp<CEZLevelRoofComponent>(ent.Owner);

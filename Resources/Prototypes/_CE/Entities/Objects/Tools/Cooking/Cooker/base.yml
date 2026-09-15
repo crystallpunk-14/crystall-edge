@@ -45,6 +45,7 @@
   - type: CEFoodCooker
     containerId: storagebase
   - type: Temperature
+    heatCapacity: 15000
   - type: DoAfter
   - type: AmbientSound
     enabled: false

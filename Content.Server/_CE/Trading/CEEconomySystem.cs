@@ -1,4 +1,5 @@
 using System.Linq;
+using Robust.Shared.Analyzers;
 using Content.Server.Cargo.Systems;
 using Content.Server.GameTicking;
 using Content.Server.Station.Events;
@@ -20,14 +21,7 @@ public sealed partial class CEEconomySystem : CESharedEconomySystem
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private GameTicker _gameTicker = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEStationEconomyComponent, StationPostInitEvent>(OnStationPostInit);
-        SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypesReloaded);
-    }
-
+    [SubscribeLocalEvent]
     private void OnPrototypesReloaded(PrototypesReloadedEventArgs ev)
     {
         if (!ev.WasModified<CETradingPositionPrototype>() && !ev.WasModified<CETradingRequestPrototype>())
@@ -41,6 +35,7 @@ public sealed partial class CEEconomySystem : CESharedEconomySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnStationPostInit(Entity<CEStationEconomyComponent> ent, ref StationPostInitEvent args)
     {
         UpdatePricing(ent);

@@ -1,6 +1,7 @@
 using Content.Shared.Examine;
 using Content.Shared.Tiles;
 using Content.Shared.Maps;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.FloorTile;
@@ -9,13 +10,7 @@ public sealed partial class CEFloorTileExamineSystem : EntitySystem
 {
     [Dependency] private IPrototypeManager _proto = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<FloorTileComponent, ExaminedEvent>(OnExamined);
-    }
-
+    [SubscribeLocalEvent]
     private void OnExamined(Entity<FloorTileComponent> ent, ref ExaminedEvent args)
     {
         if (ent.Comp.Outputs is null)

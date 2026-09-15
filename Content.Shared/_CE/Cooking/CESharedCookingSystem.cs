@@ -4,6 +4,7 @@
  */
 
 using System.Linq;
+using Robust.Shared.Analyzers;
 using Content.Shared._CE.Cooking.Components;
 using Content.Shared._CE.Cooking.Prototypes;
 using Content.Shared.Audio;
@@ -59,9 +60,6 @@ public abstract partial class CESharedCookingSystem : EntitySystem
         InitDoAfter();
 
         CacheAndOrderRecipes();
-
-        SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypesReloaded);
-        SubscribeLocalEvent<CEFoodHolderComponent, ExaminedEvent>(OnExaminedEvent);
     }
 
     private void CacheAndOrderRecipes()
@@ -72,6 +70,7 @@ public abstract partial class CESharedCookingSystem : EntitySystem
             .ToList();
     }
 
+    [SubscribeLocalEvent]
     private void OnPrototypesReloaded(PrototypesReloadedEventArgs ev)
     {
         if (!ev.WasModified<CECookingRecipePrototype>())
@@ -80,6 +79,7 @@ public abstract partial class CESharedCookingSystem : EntitySystem
         CacheAndOrderRecipes();
     }
 
+    [SubscribeLocalEvent]
     private void OnExaminedEvent(Entity<CEFoodHolderComponent> ent, ref ExaminedEvent args)
     {
         if (ent.Comp.FoodData?.Name is null)

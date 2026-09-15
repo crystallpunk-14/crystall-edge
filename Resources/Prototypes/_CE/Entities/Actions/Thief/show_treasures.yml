@@ -5,13 +5,15 @@
   description: You listen to your intuition, sensing the direction of treasures near you. Don't worry, it's just your subconscious playing tricks on you, and no one around you will notice.
   components:
   - type: Action
-    icon:
-      sprite: _CE/Interface/Skills/thief.rsi
-      state: treasure_show
-    iconOn:
-      sprite: _CE/Interface/Skills/thief.rsi
-      state: treasure_show_on
     itemIconStyle: BigAction
     priority: -8
+  - type: Sprite
+    sprite: _CE/Interface/Skills/thief.rsi
+    layers:
+    - state: treasure_show
+      map: ["enum.ActionVisuals.Icon"]
+    - state: treasure_show_on
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
   - type: InstantAction
     event: !type:CEThiefToggleTreasureSenseEvent

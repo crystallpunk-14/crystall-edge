@@ -1,4 +1,5 @@
 using System.Linq;
+using Robust.Shared.Analyzers;
 using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.MagicEssence.Systems;
 using Content.Shared._CE.Science.Components;
@@ -30,14 +31,7 @@ public abstract partial class CESharedScienceSystem
     private static readonly SoundSpecifier KnowledgeLearnedSound =
         new SoundPathSpecifier("/Audio/_CE/Effects/knowledge_learned.ogg");
 
-    private void InitializeScientificInterest()
-    {
-        SubscribeLocalEvent<CEThaumaturgicMagnifyingGlassComponent, AfterInteractEvent>(OnMagnifyingGlassInteract);
-        SubscribeLocalEvent<CEScientificInterestComponent, CEScientificInterestDoAfterEvent>(
-            OnScientificInterestDoAfter);
-        SubscribeLocalEvent<CEScienceRandomPointsComponent, MapInitEvent>(OnRandomPointsMapInit);
-    }
-
+    [SubscribeLocalEvent]
     private void OnRandomPointsMapInit(Entity<CEScienceRandomPointsComponent> ent, ref MapInitEvent args)
     {
         if (!_net.IsServer)
@@ -78,6 +72,7 @@ public abstract partial class CESharedScienceSystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnMagnifyingGlassInteract(Entity<CEThaumaturgicMagnifyingGlassComponent> ent,
         ref AfterInteractEvent args)
     {
@@ -105,6 +100,7 @@ public abstract partial class CESharedScienceSystem
         args.Handled = _doAfter.TryStartDoAfter(doAfterArgs);
     }
 
+    [SubscribeLocalEvent]
     private void OnScientificInterestDoAfter(Entity<CEScientificInterestComponent> ent,
         ref CEScientificInterestDoAfterEvent args)
     {

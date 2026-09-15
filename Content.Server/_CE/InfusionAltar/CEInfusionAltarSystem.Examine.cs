@@ -1,6 +1,7 @@
 using Content.Shared._CE.InfusionAltar.Components;
 using Content.Shared._CE.MagicVision.Components;
 using Content.Shared.Examine;
+using Robust.Shared.Analyzers;
 
 namespace Content.Server._CE.InfusionAltar;
 
@@ -8,7 +9,6 @@ public sealed partial class CEInfusionAltarSystem
 {
     private void InitExamine()
     {
-        SubscribeLocalEvent<CEInfusionAltarComponent, ExaminedEvent>(OnAltarExamined);
     }
 
     /// <summary>
@@ -16,6 +16,7 @@ public sealed partial class CEInfusionAltarSystem
     /// examiners currently perceiving with magic vision (e.g. thaumaturgy goggles) - this state isn't
     /// otherwise visible without it.
     /// </summary>
+    [SubscribeLocalEvent]
     private void OnAltarExamined(Entity<CEInfusionAltarComponent> ent, ref ExaminedEvent args)
     {
         if (!args.IsInDetailsRange || !HasComp<CEMagicVisionComponent>(args.Examiner))

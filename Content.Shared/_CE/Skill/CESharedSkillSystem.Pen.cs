@@ -3,6 +3,7 @@ using Content.Shared._CE.Skill.Prototypes;
 using Content.Shared._CE.Pen;
 using Content.Shared.DoAfter;
 using Content.Shared.Tag;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
@@ -24,18 +25,12 @@ public abstract partial class CESharedSkillSystem
 
     private static readonly SoundSpecifier RecordSkillSound = new SoundCollectionSpecifier("PaperScribbles");
 
-    private void InitializePen()
-    {
-        SubscribeLocalEvent<CESkillStorageComponent, CEGetPenActionsEvent>(OnGetPenActions);
-        SubscribeLocalEvent<CESkillStorageComponent, CEPenRecordSkillRequestEvent>(OnRecordSkillRequest);
-        SubscribeLocalEvent<CESkillStorageComponent, CEPenRecordSkillDoAfterEvent>(OnRecordSkillDoAfter);
-    }
-
     private bool CanRecordSkill(EntityUid target)
     {
         return _tag.HasTag(target, BookTag) && !HasComp<CESkillBookComponent>(target);
     }
 
+    [SubscribeLocalEvent]
     private void OnGetPenActions(Entity<CESkillStorageComponent> ent, ref CEGetPenActionsEvent args)
     {
         if (ent.Owner != args.User || ent.Comp.LearnedSkills.Count == 0)
@@ -50,6 +45,7 @@ public abstract partial class CESharedSkillSystem
         args.Actions.Add(new CEPenAction(CEPenActionKind.RecordSkill, "ce-pen-action-record-skill", RecordSkillIcon));
     }
 
+    [SubscribeLocalEvent]
     private void OnRecordSkillRequest(Entity<CESkillStorageComponent> ent, ref CEPenRecordSkillRequestEvent args)
     {
         if (!ent.Comp.LearnedSkills.Contains(args.Skill))
@@ -74,6 +70,7 @@ public abstract partial class CESharedSkillSystem
         _doAfter.TryStartDoAfter(doAfterArgs);
     }
 
+    [SubscribeLocalEvent]
     private void OnRecordSkillDoAfter(Entity<CESkillStorageComponent> ent, ref CEPenRecordSkillDoAfterEvent args)
     {
         if (args.Cancelled || args.Handled || args.Target is not { } target)

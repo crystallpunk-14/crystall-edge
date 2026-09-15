@@ -1,0 +1,13 @@
+<tabs:CECharacterObjectivesTab
+    xmlns="https://spacestation14.io"
+    xmlns:tabs="clr-namespace:Content.Client._CE.UserInterface.Systems.Character.Tabs"
+    xmlns:cc="clr-namespace:Content.Client.UserInterface.Controls"
+    HorizontalExpand="True"
+    VerticalExpand="True"
+    HScrollEnabled="False">
+    <BoxContainer Orientation="Vertical" Margin="10">
+        <Label Name="ObjectivesLabel" Access="Public" Text="{Loc 'character-info-objectives-label'}" HorizontalAlignment="Center"/>
+        <BoxContainer Orientation="Vertical" Name="Objectives" Access="Public"/>
+        <cc:Placeholder Name="RolePlaceholder" Access="Public" PlaceholderText="{Loc 'character-info-roles-antagonist-text'}"/>
+    </BoxContainer>
+</tabs:CECharacterObjectivesTab>

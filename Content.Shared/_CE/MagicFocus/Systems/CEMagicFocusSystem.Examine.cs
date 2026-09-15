@@ -1,6 +1,7 @@
 using Content.Shared._CE.MagicFocus.Components;
 using Content.Shared.Examine;
 using Content.Shared.Verbs;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
@@ -12,9 +13,9 @@ public sealed partial class CEMagicFocusSystem
 
     private void InitExamine()
     {
-        SubscribeLocalEvent<CEMagicFocusComponent, GetVerbsEvent<ExamineVerb>>(OnFocusVerbExamine);
     }
 
+    [SubscribeLocalEvent]
     private void OnFocusVerbExamine(Entity<CEMagicFocusComponent> ent, ref GetVerbsEvent<ExamineVerb> args)
     {
         if (!args.CanInteract || !args.CanAccess)

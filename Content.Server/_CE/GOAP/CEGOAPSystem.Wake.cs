@@ -3,6 +3,7 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.NPC;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Player;
 
 namespace Content.Server._CE.GOAP;
@@ -15,28 +16,27 @@ public sealed partial class CEGOAPSystem
 
     private void InitWake()
     {
-        SubscribeLocalEvent<CEGOAPComponent, CECheckGOAPAwakeEvent>(OnCheckAwake);
-
-        SubscribeLocalEvent<CEGOAPComponent, MobStateChangedEvent>(OnMobStateChanged);
-        SubscribeLocalEvent<CEGOAPComponent, PlayerAttachedEvent>(OnPlayerAttached);
-        SubscribeLocalEvent<CEGOAPComponent, PlayerDetachedEvent>(OnPlayerDetached);
     }
 
+    [SubscribeLocalEvent]
     private void OnPlayerDetached(Entity<CEGOAPComponent> ent, ref PlayerDetachedEvent args)
     {
         UpdateAwakeStatus(ent.Owner);
     }
 
+    [SubscribeLocalEvent]
     private void OnPlayerAttached(Entity<CEGOAPComponent> ent, ref PlayerAttachedEvent args)
     {
         UpdateAwakeStatus(ent.Owner);
     }
 
+    [SubscribeLocalEvent]
     private void OnMobStateChanged(Entity<CEGOAPComponent> ent, ref MobStateChangedEvent args)
     {
         UpdateAwakeStatus(ent.Owner);
     }
 
+    [SubscribeLocalEvent]
     private void OnCheckAwake(Entity<CEGOAPComponent> ent, ref CECheckGOAPAwakeEvent args)
     {
         if (args.Handled)

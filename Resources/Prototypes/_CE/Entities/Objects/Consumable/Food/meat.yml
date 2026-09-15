@@ -20,10 +20,9 @@
       - ReagentId: UncookedAnimalProteins
         Quantity: 1
   - type: Temperature
-    currentTemperature: 290
+    temperature: 290
+    heatCapacity: 15000
   - type: InternalTemperature
-    thickness: 0.02
-    area: 0.02 # arbitrary number that sounds right for a slab of meat
   - type: CEFoodTag
     tags:
     - CEMeat
@@ -48,8 +47,6 @@
       - ReagentId: UncookedAnimalProteins
         Quantity: 0.33
   - type: InternalTemperature
-    thickness: 0.006
-    area: 0.006 # 1\3 of meat value
   - type: CEFoodTag
     tags:
     - CEMeatSlice

@@ -4,6 +4,7 @@
  */
 
 using System.Linq;
+using Robust.Shared.Analyzers;
 using Content.Server._CE.ZLevels.Core;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.Light.Components;
@@ -15,12 +16,15 @@ public sealed partial class CEZLevelsRoofSystem
 {
     private void InitMaps()
     {
-        SubscribeLocalEvent<CEZMapNetworkComponent, CEZLevelMapNetworkUpdatedEvent>(OnMapNetworkUpdated);
     }
 
-    private void OnMapNetworkUpdated(Entity<CEZMapNetworkComponent> ent, ref CEZLevelMapNetworkUpdatedEvent args)
+    [SubscribeLocalEvent]
+    private void OnMapNetworkUpdated(CEZLevelMapNetworkUpdatedEvent args)
     {
-        RecalculateMapRoofs(ent);
+        if (!TryComp<CEZMapNetworkComponent>(args.Network, out var network))
+            return;
+
+        RecalculateMapRoofs((args.Network, network));
     }
 
     private void RecalculateMapRoofs(Entity<CEZMapNetworkComponent> network)

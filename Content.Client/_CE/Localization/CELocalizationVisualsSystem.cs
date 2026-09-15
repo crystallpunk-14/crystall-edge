@@ -1,5 +1,6 @@
 using Content.Shared.CCVar;
 using Robust.Client.GameObjects;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Configuration;
 
 namespace Content.Client._CE.Localization;
@@ -9,13 +10,7 @@ public sealed partial class CELocalizationVisualsSystem : EntitySystem
     [Dependency] private IConfigurationManager _cfg = default!;
     [Dependency] private SpriteSystem _sprite = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CELocalizationVisualsComponent, ComponentInit>(OnCompInit);
-    }
-
+    [SubscribeLocalEvent]
     private void OnCompInit(Entity<CELocalizationVisualsComponent> visuals, ref ComponentInit args)
     {
         if (!TryComp<SpriteComponent>(visuals, out var sprite))

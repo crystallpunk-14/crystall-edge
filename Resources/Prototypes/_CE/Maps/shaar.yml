@@ -48,15 +48,21 @@
                   Nitrogen: 82.10312
             - type: Parallax
               parallax: CESky
+            - type: MapLight #BEFORE Light Cycle
+              ambientLightColor: "#adcfd8"
             - type: LightCycle #BEFORE Sun shadow cycle!
-              offset: 490
+            - type: CELightCycle
+              colors:
+                0: "#1c1c27"
+                0.125: "#2e2f42"
+                0.25: "#465269"
+                0.375: "#d8ffff"
+                0.625: "#d8ffff"
+                0.75: "#334347"
+                0.875: "#323347"
             - type: SunShadowCycle
-              offset: 490
-              originalColor: "#75e3ff"
             - type: CEZLevelRoof
             - type: SunShadow
-            - type: MapLight
-              ambientLightColor: "#75e3ff"
             - type: CECloudsOverlay
               seed: 490
               frequency: 0.2
@@ -69,3 +75,4 @@
               shadowStrength: 0.6
               shadowColor: "#000000"
             - type: CEGridStability
+            - type: CEZLevelChasm

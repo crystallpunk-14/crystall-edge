@@ -16,10 +16,10 @@ public sealed partial class LightCycleComponent : Component
     /// How long an entire cycle lasts
     /// </summary>
     [DataField, AutoNetworkedField]
-    public TimeSpan Duration = TimeSpan.FromMinutes(24); //CrystallEdge 30 -> 24 minutes
+    public TimeSpan Duration = TimeSpan.FromMinutes(12); //CrystallEdge 30 -> 12 minutes
 
     [DataField, AutoNetworkedField]
-    public TimeSpan Offset = TimeSpan.FromMinutes(10); //CrystallEdge
+    public TimeSpan Offset = TimeSpan.FromMinutes(5); //CrystallEdge
 
     [DataField, AutoNetworkedField]
     public bool Enabled = true;
@@ -28,7 +28,7 @@ public sealed partial class LightCycleComponent : Component
     /// Should the offset be randomised upon MapInit.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public bool InitialOffset = false; //CrystallEdge false default
+    public bool InitialOffset = false; //CrystallEdge false default, for znetwork syncing
 
     /// <summary>
     /// Trench of the oscillation.

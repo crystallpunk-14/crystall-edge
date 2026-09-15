@@ -1,4 +1,5 @@
 using System.Numerics;
+using Robust.Shared.Analyzers;
 using Content.Shared._CE.GOAP.Components;
 using Content.Shared.Damage.Systems;
 using Robust.Shared.Player;
@@ -27,14 +28,6 @@ public sealed partial class CEGOAPSleepingSystem : EntitySystem
     private TimeSpan _nextProximityCheck;
 
     private readonly HashSet<Entity<CEGOAPSleepingComponent>> _nearbyBuffer = new();
-
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        // Wake on damage
-        SubscribeLocalEvent<CEGOAPSleepingComponent, DamageDealtEvent>(OnDamageDealt);
-    }
 
     public override void Update(float frameTime)
     {
@@ -68,6 +61,7 @@ public sealed partial class CEGOAPSleepingSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnDamageDealt(Entity<CEGOAPSleepingComponent> ent, ref DamageDealtEvent args)
     {
         WakeMob(ent);

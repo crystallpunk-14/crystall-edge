@@ -1,7 +1,3 @@
 - type: metabolizerType
   id: CEDwarf
   name: metabolizer-type-dwarf
-
-- type: metabolizerType
-  id: CEVampire
-  name: ce-metabolizer-type-vampire

@@ -6,6 +6,7 @@ using Content.Shared.Power.Components;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
 using Content.Shared.Whitelist;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Map.Components;
@@ -23,14 +24,6 @@ public sealed partial class CEFunnelSystem : EntitySystem
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private INetManager _net = default!;
     [Dependency] private StorageSystem _storage = default!;
-
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEFunnelComponent, StartCollideEvent>(OnStartCollide);
-        SubscribeLocalEvent<CEFunnelActivatorComponent, PowerChangedEvent>(OnPowerChanged);
-    }
 
     public override void Update(float frameTime)
     {
@@ -57,6 +50,7 @@ public sealed partial class CEFunnelSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnPowerChanged(Entity<CEFunnelActivatorComponent> ent, ref PowerChangedEvent args)
     {
         var xform = Transform(ent);
@@ -90,6 +84,7 @@ public sealed partial class CEFunnelSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnStartCollide(Entity<CEFunnelComponent> ent, ref StartCollideEvent args)
     {
         if (args.OurFixtureId != ent.Comp.FixtureId)

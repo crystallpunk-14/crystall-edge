@@ -1,5 +1,6 @@
-﻿using Content.Shared._CE.ShockWave;
+using Content.Shared._CE.ShockWave;
 using Robust.Client.Graphics;
+using Robust.Shared.Analyzers;
 using Robust.Shared.GameObjects;
 
 namespace Content.Client._CE.ShockWave;
@@ -21,16 +22,6 @@ public sealed partial class CEShockWaveSystem : EntitySystem
 
         _shockWaveOverlay = new CEShockWaveOverlay();
         _overlay.AddOverlay(_shockWaveOverlay);
-
-        // ComponentStartup always fires for a newly-created component, regardless of whether the
-        // engine actually sent a network state for it (it won't, if the values match what the
-        // client would already derive from the entity's prototype). By this point the component's
-        // fields already hold their correct values either way, so this is the reliable place to
-        // register the wave.
-        SubscribeLocalEvent<CEShockWaveComponent, ComponentStartup>(OnShockWaveStartup);
-        // Fallback in case the fields are changed on an already-existing entity after creation.
-        SubscribeLocalEvent<CEShockWaveComponent, AfterAutoHandleStateEvent>(OnShockWaveStateHandled);
-        SubscribeLocalEvent<CEShockWaveComponent, ComponentRemove>(OnShockWaveRemoved);
     }
 
     public override void Shutdown()
@@ -41,11 +32,19 @@ public sealed partial class CEShockWaveSystem : EntitySystem
         _registered.Clear();
     }
 
+    // ComponentStartup always fires for a newly-created component, regardless of whether the
+    // engine actually sent a network state for it (it won't, if the values match what the
+    // client would already derive from the entity's prototype). By this point the component's
+    // fields already hold their correct values either way, so this is the reliable place to
+    // register the wave.
+    [SubscribeLocalEvent]
     private void OnShockWaveStartup(Entity<CEShockWaveComponent> ent, ref ComponentStartup args)
     {
         RegisterWave(ent);
     }
 
+    // Fallback in case the fields are changed on an already-existing entity after creation.
+    [SubscribeLocalEvent]
     private void OnShockWaveStateHandled(Entity<CEShockWaveComponent> ent, ref AfterAutoHandleStateEvent args)
     {
         RegisterWave(ent);
@@ -71,6 +70,7 @@ public sealed partial class CEShockWaveSystem : EntitySystem
         );
     }
 
+    [SubscribeLocalEvent]
     private void OnShockWaveRemoved(Entity<CEShockWaveComponent> ent, ref ComponentRemove args)
     {
         _registered.Remove(ent.Owner);

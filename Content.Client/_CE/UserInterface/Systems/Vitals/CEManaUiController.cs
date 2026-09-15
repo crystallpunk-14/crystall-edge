@@ -1,3 +1,4 @@
+using Content.Client._CE.UserInterface.Screens;
 using Content.Client._CE.UserInterface.Systems.Vitals.Widgets;
 using Content.Client.UserInterface.Screens;
 using Content.Client.UserInterface.Systems.Gameplay;
@@ -67,6 +68,9 @@ public sealed partial class CEManaUiController : UIController
 
         if (UIManager.ActiveScreen is SeparatedChatGameScreen separated)
             return separated.ManaBar;
+
+        if (UIManager.ActiveScreen is CEMinimalismGameScreen minimalism)
+            return minimalism.ManaBar;
 
         return null;
     }

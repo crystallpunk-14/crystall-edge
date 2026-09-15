@@ -1,17 +1,13 @@
 using Content.Shared._CE.Weapons.Hitscan.Components;
 using Content.Shared.Weapons.Hitscan.Events;
+using Robust.Shared.Analyzers;
 
 namespace Content.Shared._CE.Weapons.Hitscan;
 
 public sealed partial class CESharedHitscanImpactVfxSystem : EntitySystem
 {
-    public override void Initialize()
-    {
-        base.Initialize();
 
-        SubscribeLocalEvent<CEHitscanImpactVfxComponent, HitscanRaycastFiredEvent>(OnHitscanFired);
-    }
-
+    [SubscribeLocalEvent]
     private void OnHitscanFired(Entity<CEHitscanImpactVfxComponent> ent, ref HitscanRaycastFiredEvent args)
     {
         SpawnAtPosition(ent.Comp.Vfx, args.Data.HitCoordinates);

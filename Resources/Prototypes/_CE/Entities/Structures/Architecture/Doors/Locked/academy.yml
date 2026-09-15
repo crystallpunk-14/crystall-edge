@@ -9,11 +9,14 @@
     locked: false
 
 - type: entity
-  parent:
-    - CEIronDoorAcademyHall
-    - CEIronDoorWindowedMirrored
+  parent: CEIronDoorWindowedMirrored
   id: CEIronDoorAcademyHallMirrored
   suffix: Academy Hall, Mirrored
+  components:
+  - type: CELock
+    autoGenerateShape: AcademyHall
+  - type: Lock
+    locked: false
 
 - type: entity
   parent: CEIronDoor
@@ -26,11 +29,14 @@
     locked: true
 
 - type: entity
-  parent:
-    - CEIronDoorAcademyTechnical
-    - CEIronDoorMirrored
+  parent: CEIronDoorMirrored
   id: CEIronDoorAcademyTechnicalMirrored
   suffix: Academy Technical, Mirrored
+  components:
+  - type: CELock
+    autoGenerateShape: AcademyTechnical
+  - type: Lock
+    locked: true
 
 - type: entity
   parent: CEIronDoor
@@ -43,11 +49,14 @@
     locked: true
 
 - type: entity
-  parent:
-    - CEIronDoorAcademyLab
-    - CEIronDoorMirrored
+  parent: CEIronDoorMirrored
   id: CEIronDoorAcademyLabMirrored
   suffix: Academy Lab, Mirrored
+  components:
+  - type: CELock
+    autoGenerateShape: AcademyLab
+  - type: Lock
+    locked: true
 
 - type: entity
   parent: CEIronDoor
@@ -60,8 +69,11 @@
     locked: true
 
 - type: entity
-  parent:
-    - CEIronDoorAcademyRectorRoom
-    - CEIronDoorMirrored
+  parent: CEIronDoorMirrored
   id: CEIronDoorAcademyRectorRoomMirrored
   suffix: Academy Rector Room, Mirrored
+  components:
+  - type: CELock
+    autoGenerateShape: AcademyRectorRoom
+  - type: Lock
+    locked: true

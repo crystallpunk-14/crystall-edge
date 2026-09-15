@@ -13,33 +13,9 @@
   metabolisms:
     Metabolites:
       effects:
-      - !type:SatiateHunger
-        conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ CEVampire ]
-      - !type:SatiateThirst
-        conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ CEVampire ]
       - !type:AdjustReagent
-        conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ CEVampire ]
-          inverted: true
         reagent: UncookedAnimalProteins
         amount: 0.1
-    Bloodstream:
-      effects:
-      - !type:HealthChange
-        conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ CEVampire ]
-        damage:
-          types:
-            Blunt: -5
-            Slash: -5
-            Piercing: -5
-            Heat: -2
   pricePerUnit: 0.2
 
 - type: reagent
@@ -48,18 +24,6 @@
   name: ce-reagent-name-blood-animal
   desc: ce-reagent-desc-blood-animal
   color: "#802020"
-
-- type: reagent
-  id: CEBloodVampire
-  parent: CEBlood
-  name: ce-reagent-name-blood
-  desc: ce-reagent-desc-blood
-  metabolisms:
-    Metabolites:
-      effects:
-      - !type:AdjustReagent
-        reagent: UncookedAnimalProteins
-        amount: 0.1
 
 - type: reagent
   id: CEBloodTiefling

@@ -5,6 +5,7 @@ using Content.Shared.Interaction.Events;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Popups;
 using Content.Shared.Verbs;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
@@ -19,14 +20,7 @@ public abstract partial class CESharedSkillSystem
 
     private static readonly TimeSpan ReadTime = TimeSpan.FromSeconds(3);
 
-    private void InitializeRead()
-    {
-        SubscribeLocalEvent<CESkillBookComponent, MapInitEvent>(OnBookMapInit);
-        SubscribeLocalEvent<CESkillBookComponent, UseInHandEvent>(OnBookUseInHand, after: [typeof(IngestionSystem)]);
-        SubscribeLocalEvent<CESkillBookComponent, GetVerbsEvent<AlternativeVerb>>(AddBookVerbs);
-        SubscribeLocalEvent<CESkillBookComponent, CESkillReadDoAfterEvent>(OnBookDoAfter);
-    }
-
+    [SubscribeLocalEvent]
     private void OnBookMapInit(Entity<CESkillBookComponent> ent, ref MapInitEvent args)
     {
         if (!_proto.HasIndex(ent.Comp.Skill))
@@ -39,6 +33,7 @@ public abstract partial class CESharedSkillSystem
             _metaData.SetEntityDescription(ent, effects);
     }
 
+    [SubscribeLocalEvent]
     private void OnBookUseInHand(Entity<CESkillBookComponent> ent, ref UseInHandEvent args)
     {
         if (args.Handled)
@@ -47,6 +42,7 @@ public abstract partial class CESharedSkillSystem
         args.Handled = StartRead(ent, args.User);
     }
 
+    [SubscribeLocalEvent]
     private void AddBookVerbs(Entity<CESkillBookComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
     {
         if (!args.CanInteract || !args.CanAccess)
@@ -74,6 +70,7 @@ public abstract partial class CESharedSkillSystem
         return _doAfter.TryStartDoAfter(doAfterArgs);
     }
 
+    [SubscribeLocalEvent]
     private void OnBookDoAfter(Entity<CESkillBookComponent> ent, ref CESkillReadDoAfterEvent args)
     {
         if (args.Cancelled || args.Handled || args.Target is not { } target)

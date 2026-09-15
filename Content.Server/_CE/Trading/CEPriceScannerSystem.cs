@@ -5,6 +5,7 @@ using Content.Shared.Inventory;
 using Content.Shared.Tag;
 using Content.Shared._CE.Trading.Components;
 using Content.Shared.Mobs.Components;
+using Robust.Shared.Analyzers;
 
 namespace Content.Server._CE.Trading;
 
@@ -14,11 +15,6 @@ public sealed partial class CEPriceScannerSystem : EntitySystem
     [Dependency] private TagSystem _tag = default!;
     [Dependency] private InventorySystem _invSystem = default!;
     [Dependency] private CESharedCurrencySystem _currency = default!;
-
-    public override void Initialize()
-    {
-        SubscribeLocalEvent<CEExamineAugmentEvent>(OnExamineAugment);
-    }
 
     private bool IsAbleExamine(EntityUid uid)
     {
@@ -30,6 +26,7 @@ public sealed partial class CEPriceScannerSystem : EntitySystem
         return false;
     }
 
+    [SubscribeLocalEvent]
     private void OnExamineAugment(CEExamineAugmentEvent args)
     {
         if (!IsAbleExamine(args.Examiner))

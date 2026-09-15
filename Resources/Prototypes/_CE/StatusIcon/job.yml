@@ -12,7 +12,7 @@
   id: CEJobIconGuardCommander
   icon:
     sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-    state: GuardCommander
+    state: guard_commander
   jobName: ce-job-name-guard-commander
 
 - type: jobIcon
@@ -20,7 +20,7 @@
   id: CEJobIconGuard
   icon:
     sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-    state: Guard
+    state: guard
   jobName: ce-job-name-guard
 
 - type: jobIcon
@@ -28,7 +28,7 @@
   id: CEJobIconInvestigator
   icon:
     sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-    state: Investigator
+    state: investigator
   jobName: ce-job-name-investigator
 
 # Tavern
@@ -38,7 +38,7 @@
   id: CEJobIconTavernmaster
   icon:
     sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-    state: Tavernmaster
+    state: tavernmaster
   jobName: ce-job-name-tavernmaster
 
 - type: jobIcon
@@ -46,7 +46,7 @@
   id: CEJobIconBartender
   icon:
     sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-    state: Bartender
+    state: bartender
   jobName: ce-job-name-bartender
 
 - type: jobIcon
@@ -54,7 +54,7 @@
   id: CEJobIconChef
   icon:
     sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-    state: Chef
+    state: chef
   jobName: ce-job-name-chef
 
 - type: jobIcon
@@ -62,7 +62,7 @@
   id: CEJobIconFarmer
   icon:
     sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-    state: Farmer
+    state: farmer
   jobName: ce-job-name-farmer
 
 # Engineering
@@ -72,7 +72,7 @@
   id: CEJobIconBrigadier
   icon:
     sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-    state: Brigadier
+    state: brigadier
   jobName: ce-job-name-brigadier
 
 - type: jobIcon
@@ -80,7 +80,7 @@
   id: CEJobIconTechnician
   icon:
     sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-    state: Technician
+    state: technician
   jobName: ce-job-name-technician
 
 # Citizens
@@ -90,7 +90,7 @@
   id: CEJobIconBard
   icon:
     sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-    state: Bard
+    state: bard
   jobName: ce-job-name-bard
 
 - type: jobIcon
@@ -98,7 +98,7 @@
   id: CEJobIconTownfolk
   icon:
     sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-    state: Townfolk
+    state: jobless
   jobName: ce-job-name-townfolk
 
 # Academy
@@ -108,7 +108,7 @@
   id: CEJobIconAcademyStudent
   icon:
     sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-    state: Student
+    state: student
   jobName: ce-job-name-academy-student
 
 - type: jobIcon
@@ -116,7 +116,7 @@
   id: CEJobIconAcademyProfessor
   icon:
     sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-    state: Professor
+    state: professor
   jobName: ce-job-name-academy-professor
 
 - type: jobIcon
@@ -124,5 +124,5 @@
   id: CEJobIconAcademyRector
   icon:
     sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
-    state: Rector
+    state: rector
   jobName: ce-job-name-academy-rector

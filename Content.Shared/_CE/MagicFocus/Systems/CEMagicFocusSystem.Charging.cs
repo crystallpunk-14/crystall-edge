@@ -7,6 +7,7 @@ using Content.Shared.FixedPoint;
 using Content.Shared._CE.ZLevels.Core;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
@@ -28,10 +29,9 @@ public sealed partial class CEMagicFocusSystem
 
     private void InitCharging()
     {
-        SubscribeLocalEvent<CEMagicFocusComponent, AfterInteractEvent>(OnAfterInteract);
-        SubscribeLocalEvent<CEMagicFocusComponent, CEMagicFocusChargeDoAfterEvent>(OnDoAfter);
     }
 
+    [SubscribeLocalEvent]
     private void OnAfterInteract(Entity<CEMagicFocusComponent> ent, ref AfterInteractEvent args)
     {
         if (args.Handled || !args.CanReach || args.Target is not { Valid: true } target)
@@ -48,6 +48,7 @@ public sealed partial class CEMagicFocusSystem
         });
     }
 
+    [SubscribeLocalEvent]
     private void OnDoAfter(Entity<CEMagicFocusComponent> ent, ref CEMagicFocusChargeDoAfterEvent args)
     {
         if (args.Cancelled || args.Handled || args.Args.Target is not { } target)

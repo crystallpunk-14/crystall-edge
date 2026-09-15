@@ -1,3 +1,4 @@
+using Content.Client._CE.UserInterface.Screens;
 using Content.Client.UserInterface.Screens;
 using Content.Client.UserInterface.Systems.Gameplay;
 using Content.Client.Voting;
@@ -28,6 +29,9 @@ public sealed partial class VoteUIController : UIController
                 break;
             case SeparatedChatGameScreen separated:
                 _votes.SetPopupContainer(separated.VoteMenu);
+                break;
+            case CEMinimalismGameScreen minimalism: //CrystallEdge: minimalist HUD also has a VoteMenu container
+                _votes.SetPopupContainer(minimalism.VoteMenu);
                 break;
         }
     }

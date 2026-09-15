@@ -6,6 +6,7 @@
     layers:
     # Torso
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
+    - map: [ "enum.HumanoidVisualLayers.Special" ] # CrystallEdge: used by CECarrin wings marking, mapped here so generic/test dummies (e.g. MobHuman) don't fail on random-species markings
 
     # Head
     - map: [ "enum.HumanoidVisualLayers.Head" ]
@@ -87,3 +88,11 @@
         type: HumanoidMarkingModifierBoundUserInterface
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
+  - type: InitialBody
+    relationships:
+      Torso: [Head, ArmLeft, ArmRight, LegLeft, LegRight, Appendix, Lungs, Heart, Stomach, Liver, Kidneys]
+      Head: [Brain, Eyes, Tongue, Ears]
+      ArmLeft: [HandLeft]
+      ArmRight: [HandRight]
+      LegLeft: [FootLeft]
+      LegRight: [FootRight]

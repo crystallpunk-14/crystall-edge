@@ -1,3 +1,8 @@
+/*
+ * This file is sublicensed under MIT License
+ * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
+ */
+
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Administration.Logs;
@@ -11,6 +16,7 @@ using Content.Shared.Popups;
 using Content.Shared.Tools;
 using Content.Shared.Tools.Components;
 using Content.Shared.Tools.Systems;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Network;
@@ -43,16 +49,7 @@ public sealed partial class CEZLevelToolTileSystem : EntitySystem
     [Dependency] private TileSystem _tiles = default!;
     [Dependency] private TurfSystem _turfs = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CEZLevelToolTileComponent, AfterInteractEvent>(
-            OnAfterInteract,
-            before: new[] { typeof(SharedToolSystem) });
-        SubscribeLocalEvent<CEZLevelToolTileComponent, CEZLevelTileToolDoAfterEvent>(OnToolTileComplete);
-    }
-
+    [SubscribeLocalEvent(before: new[] { typeof(SharedToolSystem) })]
     private void OnAfterInteract(Entity<CEZLevelToolTileComponent> ent, ref AfterInteractEvent args)
     {
         if (args.Handled || args.Target != null && !HasComp<PuddleComponent>(args.Target))
@@ -84,7 +81,7 @@ public sealed partial class CEZLevelToolTileSystem : EntitySystem
         var tileRef = _map.GetTileRef(gridUid, grid, tileIndices);
         var tileDef = (ContentTileDefinition)_tileDefManager[tileRef.Tile.TypeId];
 
-        if (!tool.Qualities.ContainsAny(tileDef.DeconstructTools))
+        if (!tool.Qualities.Overlaps(tileDef.DeconstructTools))
         {
             // Telegraph which tool is required, same as ToolTileCompatibleComponent's floor variant.
             var toolNames = new List<string>();
@@ -123,6 +120,7 @@ public sealed partial class CEZLevelToolTileSystem : EntitySystem
         _tool.UseTool(ent, user, ent, tileComp.Delay, tool.Qualities, doAfterArgs, out _, toolComponent: tool);
     }
 
+    [SubscribeLocalEvent]
     private void OnToolTileComplete(Entity<CEZLevelToolTileComponent> ent, ref CEZLevelTileToolDoAfterEvent args)
     {
         if (args.Handled || args.Cancelled)
@@ -144,7 +142,7 @@ public sealed partial class CEZLevelToolTileSystem : EntitySystem
             return;
 
         var tileDef = (ContentTileDefinition)_tileDefManager[tileRef.Tile.TypeId];
-        if (!tool.Qualities.ContainsAny(tileDef.DeconstructTools))
+        if (!tool.Qualities.Overlaps(tileDef.DeconstructTools))
             return;
 
         // don't do this on the client or else the tile entity spawn mispredicts and looks horrible

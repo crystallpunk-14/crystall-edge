@@ -1,6 +1,7 @@
 using Content.Shared._CE.Skill;
 using Content.Shared._CE.Skill.Components;
 using Robust.Client.Player;
+using Robust.Shared.Analyzers;
 
 namespace Content.Client._CE.Skill;
 
@@ -10,13 +11,7 @@ public sealed partial class CEClientSkillSystem : CESharedSkillSystem
 
     public event Action<EntityUid>? OnSkillUpdate;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CESkillStorageComponent, AfterAutoHandleStateEvent>(OnAfterAutoHandleState);
-    }
-
+    [SubscribeLocalEvent]
     private void OnAfterAutoHandleState(Entity<CESkillStorageComponent> ent, ref AfterAutoHandleStateEvent args)
     {
         if (ent != _playerManager.LocalEntity)

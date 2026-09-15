@@ -3,6 +3,7 @@ using Content.Shared.GameTicking;
 using Content.Shared.Light.Components;
 using Content.Shared.Light.EntitySystems;
 using Content.Shared.Storage.Components;
+using Robust.Shared.Analyzers;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Timing;
 
@@ -28,17 +29,16 @@ public sealed partial class CEDayCycleSystem : EntitySystem
 
         _mapGridQuery = GetEntityQuery<MapGridComponent>();
         _storageQuery = GetEntityQuery<InsideEntityStorageComponent>();
-
-        SubscribeLocalEvent<CEZMapComponent, CEStartDayEvent>(OnStartDay);
-        SubscribeLocalEvent<CEZMapComponent, CEStartNightEvent>(OnStartNight);
     }
 
+    [SubscribeLocalEvent]
     private void OnStartDay(Entity<CEZMapComponent> ent, ref CEStartDayEvent args)
     {
         if (ent.Comp.Depth == 0)
             RaiseLocalEvent(new CEGlobalStartDayEvent());
     }
 
+    [SubscribeLocalEvent]
     private void OnStartNight(Entity<CEZMapComponent> ent, ref CEStartNightEvent args)
     {
         if (ent.Comp.Depth == 0)
