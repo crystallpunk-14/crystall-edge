@@ -110,6 +110,7 @@
     soundHit:
       path: /Audio/Effects/hit_kick.ogg
   - type: Pullable
+  - type: CEMurkDissolving
 
 # Used for mobs that need to breathe
 - type: entity
