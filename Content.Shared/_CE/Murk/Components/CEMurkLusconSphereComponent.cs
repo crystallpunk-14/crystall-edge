@@ -31,4 +31,5 @@ public enum CEMurkSphereState : byte
     Stable,
     Cracked,
     Collapsing,
+    Fixed,
 }
