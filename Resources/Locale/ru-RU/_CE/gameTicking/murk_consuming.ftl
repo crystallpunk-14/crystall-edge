@@ -17,3 +17,6 @@ ce-murk-sphere-fixed-desc = Столп Света запечатал трещи�
 
 ce-murk-sphere-fixer-block-unpowered-title = Нет питания
 ce-murk-sphere-fixer-block-unpowered-desc = Столп Света не запитан энергией.
+
+ce-murk-sphere-fixer-block-missing-title = Что блять?
+ce-murk-sphere-fixer-block-missing-desc = Отсутствует столп света. Заряжать нечего.

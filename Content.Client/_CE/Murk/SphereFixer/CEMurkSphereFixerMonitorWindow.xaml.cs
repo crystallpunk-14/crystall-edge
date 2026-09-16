@@ -72,28 +72,34 @@ public sealed partial class CEMurkSphereFixerMonitorWindow : FancyWindow
         for (var i = 0; i < state.Blockers.Count; i++)
         {
             var blocker = state.Blockers[i];
-            var coords = _entManager.GetCoordinates(blocker.Coordinates);
+            var hasLocation = blocker.Coordinates is not null;
+
+            var entry = new CEMurkSphereFixerBlockerEntry(blocker.Title, blocker.Description, hasLocation);
+            BlockersContainer.AddChild(entry);
+
+            if (blocker.Coordinates is not { } netCoords)
+                continue;
+
+            var coords = _entManager.GetCoordinates(netCoords);
             var blipKey = new NetEntity(int.MinValue + 1 + i);
 
             NavMap.TrackedEntities[blipKey] =
                 new NavMapBlip(coords, spriteSystem.Frame0(BlockerBlip), Color.Red, true, false);
 
-            var entry = new CEMurkSphereFixerBlockerEntry(blocker.Title, blocker.Description);
-            entry.CenterButton.OnPressed += _ => NavMap.CenterToCoordinates(coords);
-            BlockersContainer.AddChild(entry);
+            entry.CenterButton!.OnPressed += _ => NavMap.CenterToCoordinates(coords);
         }
     }
 }
 
 /// <summary>
-/// One blocker row in the monitor's side list: title, description, and a button to center the
-/// navmap on the problem's location.
+/// One blocker row in the monitor's side list: title, description, and (if the blocker has a
+/// location to point at) a button to center the navmap on it.
 /// </summary>
 public sealed class CEMurkSphereFixerBlockerEntry : PanelContainer
 {
-    public readonly Button CenterButton;
+    public readonly Button? CenterButton;
 
-    public CEMurkSphereFixerBlockerEntry(string title, string description)
+    public CEMurkSphereFixerBlockerEntry(string title, string description, bool hasLocation)
     {
         HorizontalExpand = true;
         Margin = new Thickness(0, 0, 0, 4);
@@ -112,14 +118,17 @@ public sealed class CEMurkSphereFixerBlockerEntry : PanelContainer
         descriptionLabel.SetMessage(description);
         column.AddChild(descriptionLabel);
 
-        CenterButton = new Button
+        if (hasLocation)
         {
-            Text = Loc.GetString("ce-murk-sphere-fixer-monitor-window-center"),
-            HorizontalExpand = true,
-            Margin = new Thickness(0, 4, 0, 0),
-        };
+            CenterButton = new Button
+            {
+                Text = Loc.GetString("ce-murk-sphere-fixer-monitor-window-center"),
+                HorizontalExpand = true,
+                Margin = new Thickness(0, 4, 0, 0),
+            };
 
-        column.AddChild(CenterButton);
+            column.AddChild(CenterButton);
+        }
 
         AddChild(column);
     }

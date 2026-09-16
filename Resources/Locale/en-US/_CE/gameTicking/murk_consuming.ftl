@@ -13,3 +13,6 @@ ce-murk-sphere-fixed-desc = The Pillar of Light has sealed the crack. The city i
 
 ce-murk-sphere-fixer-block-unpowered-title = No power
 ce-murk-sphere-fixer-block-unpowered-desc = The Pillar of Light has no power.
+
+ce-murk-sphere-fixer-block-missing-title = What the hell?
+ce-murk-sphere-fixer-block-missing-desc = There's no Pillar of Light. Nothing to charge.

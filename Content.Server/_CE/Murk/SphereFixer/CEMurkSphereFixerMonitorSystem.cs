@@ -72,6 +72,13 @@ public sealed partial class CEMurkSphereFixerMonitorSystem : EntitySystem
             foreach (var blocker in fixer.Blockers)
                 blockers.Add(new CEMurkSphereFixerBlockerInfo(blocker.Title, blocker.Description, GetNetCoordinates(blocker.Coordinates)));
         }
+        else
+        {
+            blockers.Add(new CEMurkSphereFixerBlockerInfo(
+                Loc.GetString("ce-murk-sphere-fixer-block-missing-title"),
+                Loc.GetString("ce-murk-sphere-fixer-block-missing-desc"),
+                null));
+        }
 
         _ui.SetUiState(uid,
             CEMurkSphereFixerMonitorUiKey.Key,
