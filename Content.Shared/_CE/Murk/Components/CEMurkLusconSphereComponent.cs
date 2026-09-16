@@ -1,4 +1,5 @@
 using Robust.Shared.GameStates;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._CE.Murk.Components;
 
@@ -24,6 +25,7 @@ public sealed partial class CEMurkLusconSphereComponent : Component
     public float CollapseRate = 2f;
 }
 
+[Serializable, NetSerializable]
 public enum CEMurkSphereState : byte
 {
     Stable,

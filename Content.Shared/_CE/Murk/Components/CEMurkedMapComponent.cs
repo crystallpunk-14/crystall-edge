@@ -23,13 +23,11 @@ public sealed partial class CEMurkedMapComponent : Component
     public Color MurkColor = new(0.025f, 0.032f, 0.054f);
 
     /// <summary>
-    /// Client-side render value chasing <see cref="Intensity"/>.
+    /// Client-side render value chasing <see cref="Intensity"/>. Always starts at zero, so murk
+    /// rolls in smoothly even when the component is added to an already running map.
     /// </summary>
     [NonSerialized]
     public float LerpedIntensity;
-
-    [NonSerialized]
-    public bool LerpInitialized;
 
     /// <summary>
     ///     Maximum number of murk sources that can be shown on screen at a time.

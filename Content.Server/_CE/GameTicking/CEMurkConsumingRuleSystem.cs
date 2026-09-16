@@ -13,6 +13,8 @@ using Content.Shared.GameTicking.Components;
 using Content.Shared.Station.Components;
 using Robust.Shared.Analyzers;
 using Robust.Shared.Audio;
+using Robust.Shared.GameObjects;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.GameTicking;
 
@@ -20,6 +22,9 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
 {
     [Dependency] private RoundEndSystem _roundEndSystem = default!;
     [Dependency] private CESharedMurkSystem _murk = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+
+    private readonly EntProtoId _sphereShockwave = "CEShockWaveHugeVFX";
 
     protected override void ActiveTick(EntityUid uid, CEMurkConsumingRuleComponent component, GameRuleComponent gameRule, float frameTime)
     {
@@ -45,6 +50,8 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
     {
         sphere.Comp.State = CEMurkSphereState.Cracked;
         Dirty(sphere);
+        _appearance.SetData(sphere.Owner, CEMurkSphereState.Stable, sphere.Comp.State);
+        Spawn(_sphereShockwave, Transform(sphere.Owner).Coordinates);
 
         RaiseNetworkEvent(new CEScreenPopupShowEvent(
             Loc.GetString("ce-murk-sphere-cracked-title"),
@@ -98,6 +105,8 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
                 {
                     collapseSphere.State = CEMurkSphereState.Collapsing;
                     Dirty(collapseUid, collapseSphere);
+                    _appearance.SetData(collapseUid, CEMurkSphereState.Stable, collapseSphere.State);
+                    Spawn(_sphereShockwave, Transform(collapseUid).Coordinates);
                 }
 
                 _roundEndSystem.EndRound();
