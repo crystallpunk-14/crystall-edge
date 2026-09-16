@@ -11,4 +11,5 @@ ce-murk-days-left-title = { $days } { $days ->
 ce-murk-sphere-fixed-title = The Lucson Sphere has been mended
 ce-murk-sphere-fixed-desc = The Pillar of Light has sealed the crack. The city is safe.
 
-ce-murk-sphere-fixer-block-unpowered = The Pillar of Light has no power
+ce-murk-sphere-fixer-block-unpowered-title = No power
+ce-murk-sphere-fixer-block-unpowered-desc = The Pillar of Light has no power.

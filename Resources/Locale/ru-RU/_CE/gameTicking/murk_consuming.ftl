@@ -15,4 +15,5 @@ ce-murk-days-left-title =
 ce-murk-sphere-fixed-title = Сфера Люксона восстановлена
 ce-murk-sphere-fixed-desc = Столп Света запечатал трещину. Город в безопасности.
 
-ce-murk-sphere-fixer-block-unpowered = Столп Света не запитан энергией.
+ce-murk-sphere-fixer-block-unpowered-title = Нет питания
+ce-murk-sphere-fixer-block-unpowered-desc = Столп Света не запитан энергией.

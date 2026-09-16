@@ -5,6 +5,7 @@ using Content.Shared._CE.Roundflow;
 using Content.Shared.Power;
 using Robust.Shared.Audio;
 using Robust.Shared.GameObjects;
+using Robust.Shared.Map;
 
 namespace Content.Server._CE.Murk.SphereFixer;
 
@@ -37,7 +38,11 @@ public sealed partial class CEMurkSphereFixerSystem : EntitySystem
     private void OnPowerBlockCheck(Entity<CEMurkSphereFixerComponent> ent, ref CEMurkSphereFixerBlockRefreshEvent args)
     {
         if (TryComp<ApcPowerReceiverComponent>(ent, out var power) && !power.Powered)
-            args.Block(Loc.GetString("ce-murk-sphere-fixer-block-unpowered"));
+        {
+            args.Block(Loc.GetString("ce-murk-sphere-fixer-block-unpowered-title"),
+                Loc.GetString("ce-murk-sphere-fixer-block-unpowered-desc"),
+                Transform(ent).Coordinates);
+        }
     }
 
     /// <summary>
@@ -56,8 +61,8 @@ public sealed partial class CEMurkSphereFixerSystem : EntitySystem
         RaiseLocalEvent(uid, ev, broadcast: true);
 
         fixer.Blocked = ev.IsBlocked;
-        fixer.BlockReasons.Clear();
-        fixer.BlockReasons.AddRange(ev.Reasons);
+        fixer.Blockers.Clear();
+        fixer.Blockers.AddRange(ev.Blockers);
     }
 
     public override void Update(float frameTime)
@@ -108,19 +113,22 @@ public sealed partial class CEMurkSphereFixerSystem : EntitySystem
 /// <summary>
 /// Raised on a <c>CEMurkSphereFixerComponent</c> entity whenever its block state needs
 /// recomputing (see <see cref="CEMurkSphereFixerSystem.RefreshBlockConditions"/>), not every tick.
-/// Subscribers should call <see cref="Block"/> with a reason if their condition isn't met - the
-/// extensible point for adding new charge requirements.
+/// Subscribers should call <see cref="Block"/> if their condition isn't met - the extensible
+/// point for adding new charge requirements. The title/description/coordinates feed the monitor
+/// console's blocker list, so the location should point at whatever the crew needs to go fix.
 /// </summary>
 public sealed class CEMurkSphereFixerBlockRefreshEvent : EntityEventArgs
 {
-    private readonly List<string> _reasons = new();
+    private readonly List<CEMurkSphereFixerBlocker> _blockers = new();
 
-    public IReadOnlyList<string> Reasons => _reasons;
+    public IReadOnlyList<CEMurkSphereFixerBlocker> Blockers => _blockers;
 
-    public bool IsBlocked => _reasons.Count > 0;
+    public bool IsBlocked => _blockers.Count > 0;
 
-    public void Block(string reason)
+    public void Block(string title, string description, EntityCoordinates coordinates)
     {
-        _reasons.Add(reason);
+        _blockers.Add(new CEMurkSphereFixerBlocker(title, description, coordinates));
     }
 }
+
+public readonly record struct CEMurkSphereFixerBlocker(string Title, string Description, EntityCoordinates Coordinates);

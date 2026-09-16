@@ -1,6 +1,12 @@
 namespace Content.Server._CE.Murk.SphereFixer;
 
-[RegisterComponent, Access(typeof(CEMurkSphereFixerSystem))]
+/// <summary>
+/// The Pillar of Light: charges up over time and, once full, mends every cracked
+/// <c>CEMurkLusconSphereComponent</c> and ends the round. Charging only progresses while
+/// <see cref="CEMurkSphereFixerBlockRefreshEvent"/> comes back with no blockers - see
+/// <see cref="CEMurkSphereFixerSystem.RefreshBlockConditions"/>.
+/// </summary>
+[RegisterComponent, Access(typeof(CEMurkSphereFixerSystem), typeof(CEMurkSphereFixerMonitorSystem))]
 public sealed partial class CEMurkSphereFixerComponent : Component
 {
     /// <summary>
@@ -23,7 +29,8 @@ public sealed partial class CEMurkSphereFixerComponent : Component
     public bool Blocked = true;
 
     /// <summary>
-    /// Human-readable reasons for the current block, from the last refresh. For future UI use.
+    /// Current blockers (title, description, and problem location) from the last refresh. Read
+    /// by <see cref="CEMurkSphereFixerMonitorSystem"/> to feed the monitor console.
     /// </summary>
-    public readonly List<string> BlockReasons = new();
+    public readonly List<CEMurkSphereFixerBlocker> Blockers = new();
 }
