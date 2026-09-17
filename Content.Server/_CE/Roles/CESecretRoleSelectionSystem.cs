@@ -235,6 +235,8 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
 
         if (role.Briefing is { } briefing)
             EnsureComp<RoleBriefingComponent>(roleEnt.Value.Owner).Briefing = briefing;
+
+        GrantSecretRoleObjectives(rule, mindId, mind, role);
     }
 
     /// <summary>

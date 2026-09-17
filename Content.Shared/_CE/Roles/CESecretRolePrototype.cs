@@ -49,4 +49,12 @@ public sealed partial class CESecretRolePrototype : IPrototype
     /// </summary>
     [DataField]
     public LocId? Briefing;
+
+    /// <summary>
+    /// Default pool of personal objectives granted to a player holding this role, unless a
+    /// GameRule's <see cref="Content.Server._CE.Roles.CESecretRoleObjectivesOverrideComponent"/>
+    /// overrides it for that round.
+    /// </summary>
+    [DataField]
+    public CEObjectivePool? ObjectivePool;
 }

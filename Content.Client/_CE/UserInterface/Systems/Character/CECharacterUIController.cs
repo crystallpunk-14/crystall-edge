@@ -1,7 +1,10 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using Content.Client._CE.Objectives;
+using Content.Client._CE.Objectives.Ui;
 using Content.Client._CE.Roles;
+using Content.Shared._CE.Objectives.Components;
 using Content.Client._CE.Skill;
 using Content.Client._CE.SkillTree.Ui;
 using Content.Client._CE.UserInterface.Screens;
@@ -9,13 +12,12 @@ using Content.Client._CE.UserInterface.Systems.Character.Windows;
 using Content.Client._CE.UserInterface.Systems.NodeTree;
 using Content.Client.CharacterInfo;
 using Content.Client.Gameplay;
+using Content.Client.Mind;
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Controls;
 using Content.Client.UserInterface.Screens;
-using Content.Client.UserInterface.Systems.Character.Controls;
 using Content.Client.UserInterface.Systems.Inventory;
 using Content.Client.UserInterface.Systems.MenuBar.Widgets;
-using Content.Client.UserInterface.Systems.Objectives.Controls;
 using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.Roles;
 using Content.Shared._CE.Skill.Prototypes;
@@ -42,8 +44,9 @@ using static Content.Client.CharacterInfo.CharacterInfoSystem;
 namespace Content.Client._CE.UserInterface.Systems.Character;
 
 [UsedImplicitly]
-public sealed partial class CECharacterUIController : UIController, IOnStateEntered<GameplayState>, IOnStateExited<GameplayState>, IOnSystemChanged<CharacterInfoSystem>, IOnSystemChanged<CESecretRoleInfoSystem>, IOnSystemChanged<CESkillTreeSystem>
+public sealed partial class CECharacterUIController : UIController, IOnStateEntered<GameplayState>, IOnStateExited<GameplayState>, IOnSystemChanged<CharacterInfoSystem>, IOnSystemChanged<CESecretRoleInfoSystem>, IOnSystemChanged<CESkillTreeSystem>, IOnSystemChanged<CEObjectiveSystem>
 {
+    private const int ObjectivesTabIndex = 1;
     private const int SkillsTabIndex = 2;
 
     /// <summary>
@@ -55,6 +58,8 @@ public sealed partial class CECharacterUIController : UIController, IOnStateEnte
     [UISystemDependency] private readonly CESecretRoleInfoSystem _secretRoleInfo = default!;
     [UISystemDependency] private readonly CESkillTreeSystem _skillTreeSystem = default!;
     [UISystemDependency] private readonly CEClientSkillSystem _clientSkill = default!;
+    [UISystemDependency] private readonly CEObjectiveSystem _ceObjectives = default!;
+    [UISystemDependency] private readonly MindSystem _mind = default!;
     [UISystemDependency] private readonly SpriteSystem _sprite = default!;
     [Dependency] private IPrototypeManager _prototypeManager = default!;
 
@@ -101,6 +106,45 @@ public sealed partial class CECharacterUIController : UIController, IOnStateEnte
     public void OnSystemUnloaded(CESkillTreeSystem system)
     {
         system.OnSkillTreeUpdate -= SkillTreeUpdated;
+    }
+
+    public void OnSystemLoaded(CEObjectiveSystem system)
+    {
+        system.OnObjectivesChanged += CEObjectivesChanged;
+    }
+
+    public void OnSystemUnloaded(CEObjectiveSystem system)
+    {
+        system.OnObjectivesChanged -= CEObjectivesChanged;
+    }
+
+    private void CEObjectivesChanged(EntityUid holder)
+    {
+        UpdateCEObjectives();
+    }
+
+    // CE objectives are our own networked entities (see CEObjectiveSystem), not part of upstream's
+    // CharacterInfoEvent snapshot, so they're populated separately from CharacterUpdated.
+    private void UpdateCEObjectives()
+    {
+        if (_window == null || _target is not { } target)
+            return;
+
+        var objectivesTab = _window.ObjectivesTab;
+        objectivesTab.CEObjectives.RemoveAllChildren();
+
+        var objectives = _mind.TryGetMind(target, out var mindId, out _)
+            ? _ceObjectives.GetObjectives(mindId)
+            : new List<Entity<CEObjectiveComponent>>();
+
+        foreach (var objective in objectives)
+        {
+            var control = new CEObjectiveControl();
+            control.SetObjective(objective);
+            objectivesTab.CEObjectives.AddChild(control);
+        }
+
+        _window.Tabs.SetTabVisible(ObjectivesTabIndex, objectives.Count > 0);
     }
 
     private void SkillTreeUpdated(EntityUid entity)
@@ -422,65 +466,7 @@ public sealed partial class CECharacterUIController : UIController, IOnStateEnte
             _window.JobLabel.FontColorOverride = (matchedDepartment?.Color ?? StyleNano.NanoGold).WithAlpha(0.7f);
         }
 
-        var objectivesTab = _window.ObjectivesTab;
-        objectivesTab.Objectives.RemoveAllChildren();
-        objectivesTab.ObjectivesLabel.Visible = data.Objectives.Any();
-
-        foreach (var (groupId, conditions) in data.Objectives)
-        {
-            var objectiveControl = new CharacterObjectiveControl
-            {
-                Orientation = BoxContainer.LayoutOrientation.Vertical,
-                Modulate = Color.Gray
-            };
-
-            var objectiveText = new FormattedMessage();
-            objectiveText.TryAddMarkup(groupId, out _);
-
-            var objectiveLabel = new RichTextLabel
-            {
-                StyleClasses = { StyleClass.TooltipTitle }
-            };
-            objectiveLabel.SetMessage(objectiveText);
-
-            objectiveControl.AddChild(objectiveLabel);
-
-            foreach (var condition in conditions)
-            {
-                var conditionControl = new ObjectiveConditionsControl();
-                conditionControl.ProgressTexture.Texture = _sprite.Frame0(condition.Icon);
-                conditionControl.ProgressTexture.Progress = condition.Progress;
-                var titleMessage = new FormattedMessage();
-                var descriptionMessage = new FormattedMessage();
-                titleMessage.AddText(condition.Title);
-                descriptionMessage.AddText(condition.Description);
-
-                conditionControl.Title.SetMessage(titleMessage);
-                conditionControl.Description.SetMessage(descriptionMessage);
-
-                objectiveControl.AddChild(conditionControl);
-            }
-
-            objectivesTab.Objectives.AddChild(objectiveControl);
-        }
-
-        if (data.Briefing != null)
-        {
-            var briefingControl = new ObjectiveBriefingControl();
-            var text = new FormattedMessage();
-            text.PushColor(Color.Yellow);
-            text.AddText(data.Briefing);
-            briefingControl.Label.SetMessage(text);
-            objectivesTab.Objectives.AddChild(briefingControl);
-        }
-
-        var controls = _characterInfo.GetCharacterInfoControls(data.Entity);
-        foreach (var control in controls)
-        {
-            objectivesTab.Objectives.AddChild(control);
-        }
-
-        objectivesTab.RolePlaceholder.Visible = data.Briefing == null && !controls.Any() && !data.Objectives.Any();
+        UpdateCEObjectives();
 
         UpdateSkillsTab();
     }

@@ -12,7 +12,11 @@
   id: CECity
   name: ce-secret-department-city-name
   description: ce-secret-department-city-description
-  color: "#6F8FBF"
+  color: "#87b7ff"
   weight: 0
   roles:
   - CECivilian
+  objectivePool:
+    maxDifficulty: 1
+    weighted:
+      CEObjectiveCityRestoreLucsonSphere: 1
