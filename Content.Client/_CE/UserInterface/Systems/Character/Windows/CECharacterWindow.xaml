@@ -3,7 +3,7 @@
     xmlns:windows="clr-namespace:Content.Client._CE.UserInterface.Systems.Character.Windows"
     xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls"
     Title="{Loc 'character-info-title'}"
-    MinWidth="560"
+    MinWidth="660"
     MinHeight="450">
     <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
         <BoxContainer Orientation="Vertical" HorizontalAlignment="Center" HorizontalExpand="False" MaxWidth="200" Margin="10">
