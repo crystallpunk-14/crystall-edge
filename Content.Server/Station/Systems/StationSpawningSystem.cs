@@ -175,7 +175,9 @@ public sealed partial class StationSpawningSystem : SharedStationSpawningSystem
 
         foreach (var jobSpecial in prototype.Special)
         {
-            jobSpecial.AfterEquip(entity);
+            // CrystallEdge: pass the job along so specials can badge whatever they grant with its source
+            jobSpecial.AfterEquip(entity, job);
+            // CrystallEdge end
         }
     }
 

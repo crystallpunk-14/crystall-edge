@@ -1,3 +1,4 @@
+using Content.Shared._CE.Skill.Prototypes;
 using Content.Shared.Roles;
 using Content.Shared.StatusIcon;
 using Robust.Shared.Prototypes;
@@ -57,4 +58,10 @@ public sealed partial class CESecretRolePrototype : IPrototype
     /// </summary>
     [DataField]
     public CEObjectivePool? ObjectivePool;
+
+    /// <summary>
+    /// Skills granted directly to a player holding this role.
+    /// </summary>
+    [DataField]
+    public List<ProtoId<CESkillPrototype>> Skills = new();
 }

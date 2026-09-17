@@ -51,7 +51,8 @@ public abstract partial class CESharedSkillSystem : EntitySystem
     public bool TryAddSkill(EntityUid target,
         ProtoId<CESkillPrototype> skill,
         CESkillStorageComponent? component = null,
-        bool force = false)
+        bool force = false,
+        CESkillDescriptor? descriptor = null)
     {
         component ??= EnsureComp<CESkillStorageComponent>(target);
 
@@ -67,6 +68,10 @@ public abstract partial class CESharedSkillSystem : EntitySystem
         indexedSkill.Effect?.AddSkill(EntityManager, target);
 
         component.LearnedSkills.Add(skill);
+
+        if (descriptor is { } descriptorValue)
+            component.Descriptors[skill] = descriptorValue;
+
         Dirty(target, component);
 
         var learnEv = new CESkillLearnedEvent(skill, target);
@@ -88,6 +93,8 @@ public abstract partial class CESharedSkillSystem : EntitySystem
         if (!component.LearnedSkills.Remove(skill))
             return false;
 
+        component.Descriptors.Remove(skill);
+
         if (!_proto.Resolve(skill, out var indexedSkill))
             return false;
 
@@ -95,6 +102,28 @@ public abstract partial class CESharedSkillSystem : EntitySystem
 
         Dirty(target, component);
         return true;
+    }
+
+    /// <summary>
+    /// Every skill the entity has learned.
+    /// </summary>
+    public IReadOnlyList<ProtoId<CESkillPrototype>> GetLearnedSkills(EntityUid target,
+        CESkillStorageComponent? component = null)
+    {
+        return Resolve(target, ref component, false) ? component.LearnedSkills : [];
+    }
+
+    /// <summary>
+    /// The source badge for a learned skill, if any - shown on its card in the character menu.
+    /// </summary>
+    public CESkillDescriptor? GetDescriptor(EntityUid target,
+        ProtoId<CESkillPrototype> skill,
+        CESkillStorageComponent? component = null)
+    {
+        if (!Resolve(target, ref component, false))
+            return null;
+
+        return component.Descriptors.GetValueOrDefault(skill);
     }
 
     /// <summary>
