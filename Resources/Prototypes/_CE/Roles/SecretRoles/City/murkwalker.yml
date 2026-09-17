@@ -1,0 +1,8 @@
+- type: secretRole
+  id: CEMurkwalker
+  name: ce-secret-role-name-murkwalker
+  description: ce-secret-role-description-murkwalker
+  icon: CEJobIconMurkwalker
+  briefing: ce-secret-role-briefing-murkwalker
+  skills:
+  - Murkwalker
