@@ -3,8 +3,7 @@
   id: CEGameRuleMurkConsuming
   components:
   - type: CEMurkConsumingRule
-    max: 7
-    crackDelay: 30s
+    crackDelay: 60s
 
 - type: entity
   parent: CEBaseGameRule

@@ -33,17 +33,17 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
             switch (sphere.State)
             {
                 case CEMurkSphereState.Stable:
-                    if (Timing.CurTime >= GameTicker.RoundStartTimeSpan + sphere.CrackDelay)
-                        StartRound((sphereUid, sphere));
+                    if (Timing.CurTime >= GameTicker.RoundStartTimeSpan + component.CrackDelay)
+                        StartRound(component, (sphereUid, sphere));
                     break;
                 case CEMurkSphereState.Collapsing:
-                    DrainIntensity(sphereUid, source, sphere.CollapseRate * frameTime);
+                    DrainIntensity(sphereUid, source, component.CollapseRate * frameTime);
                     break;
             }
         }
     }
 
-    private void StartRound(Entity<CEMurkLusconSphereComponent> sphere)
+    private void StartRound(CEMurkConsumingRuleComponent component, Entity<CEMurkLusconSphereComponent> sphere)
     {
         sphere.Comp.State = CEMurkSphereState.Cracked;
         Dirty(sphere);
@@ -52,7 +52,7 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
 
         RaiseNetworkEvent(new CEScreenPopupShowEvent(
             Loc.GetString("ce-murk-sphere-cracked-title"),
-            Loc.GetString("ce-murk-sphere-cracked-desc", ("days", sphere.Comp.DaysToCollapse)),
+            Loc.GetString("ce-murk-sphere-cracked-desc", ("days", component.DaysToCollapse)),
             new SoundPathSpecifier("/Audio/_CE/Announce/darkness_boom.ogg")));
 
         RaiseLocalEvent(new CERoundStartEvent());
@@ -78,33 +78,43 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
             return;
 
         var query = QueryActiveRules();
-        if (!query.MoveNext(out _, out _, out _, out _))
-            return; //No active rule, sphere shouldn't be counting down
-
-        //Days only count down after the sphere has cracked, and stop once it's collapsing
-        var sphereQuery = EntityQueryEnumerator<CEMurkLusconSphereComponent, CEMurkSourceComponent>();
-        while (sphereQuery.MoveNext(out var sphereUid, out var sphere, out var source))
+        while (query.MoveNext(out _, out _, out var consuming, out _))
         {
-            if (sphere.State != CEMurkSphereState.Cracked)
-                continue;
+            //Days only count down after the sphere has cracked, and stop once it's collapsing
+            if (!IsSphereCracked())
+                break;
 
-            DrainIntensity(sphereUid, source, sphere.IntensityPerDay);
-
-            sphere.DaysSinceCrack++;
-            Dirty(sphereUid, sphere);
-
-            if (sphere.DaysSinceCrack >= sphere.DaysToCollapse)
+            var sphereQuery = EntityQueryEnumerator<CEMurkLusconSphereComponent, CEMurkSourceComponent>();
+            while (sphereQuery.MoveNext(out var sphereUid, out var sphere, out var source))
             {
-                sphere.State = CEMurkSphereState.Collapsing;
-                _appearance.SetData(sphereUid, CEMurkSphereState.Stable, sphere.State);
-                Spawn(_sphereShockwave, Transform(sphereUid).Coordinates);
+                if (sphere.State != CEMurkSphereState.Cracked)
+                    continue;
+
+                DrainIntensity(sphereUid, source, consuming.IntensityPerDay);
+            }
+
+            consuming.DaysSinceCrack++;
+
+            if (consuming.DaysSinceCrack >= consuming.DaysToCollapse)
+            {
+                var collapseQuery = EntityQueryEnumerator<CEMurkLusconSphereComponent>();
+                while (collapseQuery.MoveNext(out var collapseUid, out var collapseSphere))
+                {
+                    collapseSphere.State = CEMurkSphereState.Collapsing;
+                    Dirty(collapseUid, collapseSphere);
+                    _appearance.SetData(collapseUid, CEMurkSphereState.Stable, collapseSphere.State);
+                    Spawn(_sphereShockwave, Transform(collapseUid).Coordinates);
+                }
+
                 _roundEndSystem.EndRound();
             }
 
             RaiseNetworkEvent(new CEScreenPopupShowEvent(
-                Loc.GetString("ce-murk-days-left-title", ("days", sphere.DaysToCollapse - sphere.DaysSinceCrack)),
+                Loc.GetString("ce-murk-days-left-title", ("days", consuming.DaysToCollapse - consuming.DaysSinceCrack)),
                 "",
                 new SoundPathSpecifier("/Audio/_CE/Announce/event_boom.ogg")));
+
+            break; //Yeea we dont have multiple rules support rn.
         }
     }
 
@@ -114,19 +124,30 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
         if (!ev.LateJoin)
             return;
 
-        var sphereQuery = EntityQueryEnumerator<CEMurkLusconSphereComponent>();
-        while (sphereQuery.MoveNext(out _, out var sphere))
-        {
-            if (sphere.State == CEMurkSphereState.Stable)
-                return; //Sphere hasn't cracked yet, nothing to tell this player yet
+        if (!IsSphereCracked())
+            return; //Sphere hasn't cracked yet, nothing to tell this player yet
 
+        var query = QueryActiveRules();
+        while (query.MoveNext(out _, out _, out var consuming, out _))
+        {
             RaiseNetworkEvent(new CEScreenPopupShowEvent(
                 Loc.GetString("ce-murk-sphere-cracked-title"),
-                Loc.GetString("ce-murk-sphere-cracked-desc", ("days", sphere.DaysToCollapse - sphere.DaysSinceCrack)),
+                Loc.GetString("ce-murk-sphere-cracked-desc", ("days", consuming.DaysToCollapse - consuming.DaysSinceCrack)),
                 new SoundPathSpecifier("/Audio/_CE/Announce/darkness_boom.ogg")), ev.Player);
 
             break;
         }
+    }
+
+    private bool IsSphereCracked()
+    {
+        var sphereQuery = EntityQueryEnumerator<CEMurkLusconSphereComponent>();
+        while (sphereQuery.MoveNext(out _, out var sphere))
+        {
+            return sphere.State != CEMurkSphereState.Stable;
+        }
+
+        return false;
     }
 
     private void DrainIntensity(EntityUid uid, CEMurkSourceComponent source, float amount)
