@@ -20,9 +20,6 @@ ent-CERightFootHuman = None
 
 ent-BaselineHealthAnalyzer = None
 
-ent-CEActionAmbitionsView = Отредактировать амбиции
-    .desc = На протяжении первых 5 минут после появления в игре вы можете установить личные амбиции вашего персонажа.
-
 ent-CEActionZLevelUp = Подняться
     .desc = Подняться на один уровень вверх
 
@@ -1695,122 +1692,6 @@ ent-CEFloraTreeSpruceLarge = { ent-CEBaseTree }
 ent-CEBaseGameRule = None
 
 ent-CEGameRule3Days = None
-
-ent-CEBaseAmbitionObjective = None
-
-ent-CEAmbitionAlcoholic = None
-
-ent-CEAmbitionFoodCritic = None
-
-ent-CEAmbitionWordOfHonor = None
-
-ent-CEAmbitionLiar = None
-
-ent-CEAmbitionStrongDiet = None
-
-ent-CEAmbitionItemMania = None
-
-ent-CEAmbitionAbstractMania = None
-
-ent-CEAmbitionSpeciesMania = None
-
-ent-CEAmbitionEarning = None
-
-ent-CEAmbitionBefriend = None
-
-ent-CEAmbitionEnemy = None
-
-ent-CEAmbitionDate = None
-
-ent-CEAmbitionProfessionChange = None
-
-ent-CEAmbitionManipulatorQuarrel = None
-
-ent-CEAmbitionManipulatorFriend = None
-
-ent-CEAmbitionSupport = None
-
-ent-CEAmbitionStoryCollector = None
-
-ent-CEAmbitionSecretBenefactor = None
-
-ent-CEAmbitionUnusualCollector = None
-
-ent-CEAmbitionInteriorDesigner = None
-
-ent-CEAmbitionPeacemaker = None
-
-ent-CEBaseTownfolkAmbition = None
-
-ent-CEAmbitionHomeDream = None
-
-ent-CEAmbitionJobGift = None
-
-ent-CEAmbitionBardSoul = None
-
-ent-CEAmbitionDramaMaster = None
-
-ent-CEBaseCarcatAmbition = None
-
-ent-CEAmbitionTerritorialMarks = None
-
-ent-CEAmbitionNineLives = None
-
-ent-CEAmbitionCatCouncil = None
-
-ent-CEBaseDwarfAmbition = None
-
-ent-CEAmbitionUndergroundLonging = None
-
-ent-CEAmbitionAncestorDebt = None
-
-ent-CEBaseElfAmbition = None
-
-ent-CEAmbitionNatureHarmony = None
-
-ent-CEAmbitionElvenArt = None
-
-ent-CEAmbitionDisdainForHaste = None
-
-ent-CEAmbitionRacialSuperiority = None
-
-ent-CEAmbitionMoonSong = None
-
-ent-CEBaseGoblinAmbition = None
-
-ent-CEAmbitionHoarder = None
-
-ent-CEAmbitionBigBoom = None
-
-ent-CEAmbitionTrickster = None
-
-ent-CEAmbitionGoblinTrade = None
-
-ent-CEAmbitionBigBoss = None
-
-ent-CEAmbitionShinyCollector = None
-
-ent-CEAmbitionMushroomFarm = None
-
-ent-CEAmbitionUndergroundCozy = None
-
-ent-CEBaseSilvaAmbition = None
-
-ent-CEAmbitionRootsMemory = None
-
-ent-CEAmbitionWaterOfLife = None
-
-ent-CEAmbitionForestCathedral = None
-
-ent-CEBaseTieflingAmbition = None
-
-ent-CEAmbitionFierySoul = None
-
-ent-CEAmbitionDevilsAdvocate = None
-
-ent-CEAmbitionInfernalCharisma = None
-
-ent-CEAmbitionRedemption = None
 
 ent-CEWalletFilledBard = { ent-CEWallet }
     .desc = { ent-CEWallet.desc }

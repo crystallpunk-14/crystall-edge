@@ -4,34 +4,11 @@ CrystallEdge (CE) is a fork of Space Station 14 built on RobustToolbox. It uses 
 
 ## Building
 
-The project takes ~5 minutes for a cold build. Always build as a background process.
+The project takes ~5 minutes for a full build.
 
-```powershell
-Start-Process -FilePath "dotnet" `
-  -ArgumentList "build","Content.Server/Content.Server.csproj","-v","q" `
-  -Wait -NoNewWindow `
-  -RedirectStandardOutput "build_out.txt" `
-  -RedirectStandardError "build_err.txt"
 ```
-
-Check results:
-```powershell
-$errs = Get-Content build_err.txt | Select-String "error CS"
-Write-Host "ERRORS=$($errs.Count)"
-$errs | ForEach-Object { $_.Line }
-Get-Content build_out.txt | Select-Object -Last 5
-Remove-Item build_out.txt, build_err.txt -ErrorAction SilentlyContinue
+dotnet build -c Tools
 ```
-
-Build output is in Russian: `Ошибок: 0` = success, `Предупреждений: N` = N warnings (100+ upstream warnings from RobustToolbox are expected and not errors).
-
-| Target | Command |
-|--------|---------|
-| Server | `dotnet build Content.Server/Content.Server.csproj` |
-| Client | `dotnet build Content.Client/Content.Client.csproj` |
-| Full | `dotnet build` |
-
-Incremental builds (CE files only changed) take ~15-30s. Never run `dotnet build` as a foreground command with short timeouts — it will be cancelled.
 
 ## Testing
 
