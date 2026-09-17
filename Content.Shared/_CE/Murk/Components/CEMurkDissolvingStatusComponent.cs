@@ -10,7 +10,7 @@ namespace Content.Shared._CE.Murk.Components;
 /// murk shadow mob prototyped with <see cref="Dissolved"/> at 1) without running the murk-tracking
 /// process that grows and shrinks it.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true)]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(raiseAfterAutoHandleState: true, fieldDeltas: true)]
 public sealed partial class CEMurkDissolvingStatusComponent : Component
 {
     /// <summary>
