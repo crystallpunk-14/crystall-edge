@@ -4,7 +4,7 @@
   id: CEBaseThiefObjective
   components:
   - type: Objective
-    issuer: ce-objective-issuer-thief
+    issuer: CEAntagThief
     difficulty: 1
 
 - type: entity

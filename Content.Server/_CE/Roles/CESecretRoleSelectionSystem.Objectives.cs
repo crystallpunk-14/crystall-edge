@@ -2,7 +2,9 @@ using Content.Server.Objectives;
 using Content.Shared._CE.Roles;
 using Content.Shared.Mind;
 using Content.Shared.Objectives.Components;
+using Content.Shared.Random.Helpers;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Server._CE.Roles;
 
@@ -40,21 +42,22 @@ public sealed partial class CESecretRoleSelectionSystem
 
     private void GrantObjectivesFromPool(EntityUid mindId, MindComponent mind, CEObjectivePool pool)
     {
+        var candidates = pool.Weighted.ShallowClone();
         var difficulty = 0f;
-        foreach (var set in pool.Sets)
+
+        while (difficulty < pool.MaxDifficulty && _random.TryPickAndTake(candidates, out var objectiveProto))
         {
-            if (!_random.Prob(set.Prob))
+            if (!_proto.Index(objectiveProto).TryComp<ObjectiveComponent>(out var objectiveComp, EntityManager.ComponentFactory))
                 continue;
 
-            for (var pick = 0; pick < set.MaxPicks && pool.MaxDifficulty > difficulty; pick++)
-            {
-                var remainingDifficulty = pool.MaxDifficulty - difficulty;
-                if (_objectives.GetRandomObjective(mindId, mind, set.Groups, remainingDifficulty) is not { } objective)
-                    continue;
+            if (objectiveComp.Difficulty > pool.MaxDifficulty - difficulty)
+                continue;
 
-                _mind.AddObjective(mindId, mind, objective);
-                difficulty += Comp<ObjectiveComponent>(objective).Difficulty;
-            }
+            if (!_objectives.TryCreateObjective((mindId, mind), objectiveProto, out var objective))
+                continue;
+
+            _mind.AddObjective(mindId, mind, objective.Value);
+            difficulty += objectiveComp.Difficulty;
         }
     }
 

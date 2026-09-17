@@ -72,6 +72,7 @@ public sealed partial class CEMurkSphereFixerSystem : EntitySystem
             if (fixer.Charge < 1f)
                 continue;
 
+            var anyFixed = false;
             var sphereQuery = EntityQueryEnumerator<CEMurkLusconSphereComponent>();
             while (sphereQuery.MoveNext(out var sphereUid, out var sphere))
             {
@@ -80,7 +81,13 @@ public sealed partial class CEMurkSphereFixerSystem : EntitySystem
 
                 sphere.State = CEMurkSphereState.Fixed;
                 Dirty(sphereUid, sphere);
+                anyFixed = true;
             }
+
+            // Charge stays at/above 1 until the round actually restarts, so without this guard
+            // the popup and EndRound below would keep firing every tick in the meantime.
+            if (!anyFixed)
+                continue;
 
             RaiseNetworkEvent(new CEScreenPopupShowEvent(
                 Loc.GetString("ce-murk-sphere-fixed-title"),
