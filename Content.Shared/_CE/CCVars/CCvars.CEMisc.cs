@@ -14,13 +14,6 @@ public sealed partial class CCVars
         CVarDef.Create("game.closed_beta_test", false, CVar.SERVERONLY);
 
     /// <summary>
-    ///     Controls if round-end window shows custom objective summary for antags
-    /// </summary>
-    [CVarControl(AdminFlags.Admin)]
-    public static readonly CVarDef<bool>
-        CEGameShowBlueText = CVarDef.Create("game.showbluetext", true, CVar.ARCHIVE | CVar.REPLICATED);
-
-    /// <summary>
     ///     URL of the Discord webhook which will relay round end summary messages.
     /// </summary>
     [CVarControl(AdminFlags.Admin)]

@@ -12,7 +12,6 @@
   - type: GameRule
     minPlayers: 3
   - type: CEThiefRule
-  - type: CEBlueTextRule
   - type: AntagObjectives
     objectives:
     - CEThiefObjectiveBeCool
