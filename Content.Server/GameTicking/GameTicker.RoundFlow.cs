@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Numerics;
+using Content.Server._CE.Roles;
 using Content.Server.Announcements;
 using Content.Server.Discord;
 using Content.Server.GameTicking.Events;
@@ -32,6 +33,7 @@ namespace Content.Server.GameTicking
         [Dependency] private DiscordWebhook _discord = default!;
         [Dependency] private RoleSystem _role = default!;
         [Dependency] private ITaskManager _taskManager = default!;
+        [Dependency] private CESecretRoleSelectionSystem _secretRoles = default!; // CrystallEdge: reveal secret role in round-end manifest
 
         private static readonly Counter RoundNumberMetric = Metrics.CreateCounter(
             "ss14_round_number",
@@ -582,6 +584,14 @@ namespace Content.Server.GameTicking
                     Observer = observer,
                     Connected = connected
                 };
+
+                // CrystallEdge: reveal secret role + faction color in the round-end manifest
+                if (_secretRoles.TryGetSecretRoleDisplay(mindId, out var secretRole, out var secretRoleColor))
+                {
+                    playerEndRoundInfo.SecretRole = secretRole;
+                    playerEndRoundInfo.SecretRoleColor = secretRoleColor;
+                }
+
                 listOfPlayerInfo.Add(playerEndRoundInfo);
             }
 

@@ -27,11 +27,11 @@ public sealed partial class RoundEndSummaryWindow : DefaultWindow
     {
         ICName,
         Role,
-        PlayerType,
+        SecretRole, //CrystallEdge: replaced PlayerType (Antag/Crew/Observer) with the player's secret role
         OOCName
     }
 
-    private SortField _currentSortField = SortField.PlayerType;
+    private SortField _currentSortField = SortField.SecretRole; //CrystallEdge: was SortField.PlayerType
     private bool _sortDescending;
 
     public RoundEndSummaryWindow(string gm, string roundEnd, TimeSpan roundTimeSpan, int roundId, RoundEndPlayerInfo[] info)
@@ -154,10 +154,10 @@ public sealed partial class RoundEndSummaryWindow : DefaultWindow
 
         var icNameButton = CreateSortButton("round-end-summary-window-player-manifest-tab-sort-character", SortField.ICName);
         var roleButton = CreateSortButton("round-end-summary-window-player-manifest-tab-sort-role", SortField.Role);
-        var playerTypeButton = CreateSortButton("round-end-summary-window-player-manifest-tab-sort-player-type", SortField.PlayerType);
+        var secretRoleButton = CreateSortButton("ce-humanoid-profile-editor-secret-roles-header-title", SortField.SecretRole); //CrystallEdge: replaced player-type sort button with secret role
         var oocNameButton = CreateSortButton("round-end-summary-window-player-manifest-tab-sort-player", SortField.OOCName);
 
-        playerTypeButton.SetSortIndicator(true);
+        secretRoleButton.SetSortIndicator(true); //CrystallEdge: was playerTypeButton
         headerContainer.AddChild(icNameButton);
 
         // Add small spacer between buttons
@@ -176,7 +176,7 @@ public sealed partial class RoundEndSummaryWindow : DefaultWindow
             HorizontalExpand = false
         });
 
-        headerContainer.AddChild(playerTypeButton);
+        headerContainer.AddChild(secretRoleButton); //CrystallEdge: was playerTypeButton
 
         // Add small spacer between buttons
         headerContainer.AddChild(new Control
@@ -309,26 +309,21 @@ public sealed partial class RoundEndSummaryWindow : DefaultWindow
         };
         _playerGrid.AddChild(roleLabel);
 
-        // Player Type column
-        var playerTypeLabel = new Label
+        // Secret Role column //CrystallEdge: replaced Player Type (Antag/Crew/Observer) with the player's secret role
+        var secretRoleLabel = new Label
         {
-            Text = GetPlayerTypeText(playerInfo),
+            Text = playerInfo.SecretRole is { } secretRole ? Loc.GetString(secretRole) : "-",
             VerticalAlignment = VAlignment.Center,
             HorizontalExpand = true,
             ClipText = true
         };
 
-        // Apply color coding based on player type
-        if (playerInfo.Antag)
+        if (playerInfo.SecretRole != null)
         {
-            playerTypeLabel.FontColorOverride = Color.Red;
-        }
-        else if (playerInfo.Observer)
-        {
-            playerTypeLabel.FontColorOverride = Color.Gray;
+            secretRoleLabel.FontColorOverride = playerInfo.SecretRoleColor;
         }
 
-        _playerGrid.AddChild(playerTypeLabel);
+        _playerGrid.AddChild(secretRoleLabel);
 
         // OOC Name column
         var oocNameLabel = new Label
@@ -371,15 +366,16 @@ public sealed partial class RoundEndSummaryWindow : DefaultWindow
         static string GetRoleKey(RoundEndPlayerInfo p) =>
             (p.Observer ? "zzz_observer" : p.Role).ToLowerInvariant();
 
-        static int GetPlayerTypeSortKey(RoundEndPlayerInfo p) =>
-            p.Antag ? 1 : p.Observer ? 3 : 2;
+        //CrystallEdge: was GetPlayerTypeSortKey (Antag -> Crew -> Observer), now sorts by secret role name, empty last
+        static string GetSecretRoleKey(RoundEndPlayerInfo p) =>
+            (p.SecretRole is { } secretRole ? Loc.GetString(secretRole) : "zzz_none").ToLowerInvariant();
 
         return _currentSortField switch
         {
             SortField.ICName => ApplySort(filteredPlayers, GetIcKey, _sortDescending),
             SortField.OOCName => ApplySort(filteredPlayers, GetOocKey, _sortDescending),
             SortField.Role => ApplySort(filteredPlayers, GetRoleKey, _sortDescending),
-            SortField.PlayerType => ApplySort(filteredPlayers, GetPlayerTypeSortKey, _sortDescending),
+            SortField.SecretRole => ApplySort(filteredPlayers, GetSecretRoleKey, _sortDescending),
             _ => filteredPlayers
         };
     }
@@ -427,13 +423,9 @@ public sealed partial class RoundEndSummaryWindow : DefaultWindow
                 return true;
         }
 
-        // Search in player type
-        var playerType = GetPlayerTypeText(playerInfo);
-        if (playerType.Contains(_searchText, StringComparison.OrdinalIgnoreCase))
-            return true;
-
-        // Search for "Observer" when they are observers
-        if (playerInfo.Observer && "observer".Contains(_searchText, StringComparison.OrdinalIgnoreCase))
+        // Search in secret role //CrystallEdge: was player type (Antag/Crew/Observer) search
+        if (playerInfo.SecretRole is { } secretRole &&
+            Loc.GetString(secretRole).Contains(_searchText, StringComparison.OrdinalIgnoreCase))
             return true;
 
         return false;

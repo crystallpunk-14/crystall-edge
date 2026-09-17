@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.GameTicking;
 using Content.Shared._CE.Objectives.Components;
@@ -9,6 +10,27 @@ namespace Content.Server._CE.Roles;
 
 public sealed partial class CESecretRoleSelectionSystem
 {
+    /// <summary>
+    /// Looks up the display name and faction color for a mind's secret role, for the round-end
+    /// player manifest (see <c>GameTicker.RoundFlow.cs</c>'s <c>ShowRoundEndScoreboard</c>). False
+    /// if the mind never held a secret role.
+    /// </summary>
+    public bool TryGetSecretRoleDisplay(EntityUid mindId, [NotNullWhen(true)] out string? roleName, out Color color)
+    {
+        roleName = null;
+        color = Color.White;
+
+        if (!_role.MindHasRole<CESecretRoleComponent>(mindId, out var roleEnt) ||
+            roleEnt.Value.Comp2.Role is not { } roleId ||
+            !_proto.TryIndex(roleId, out var role) ||
+            !TryGetDepartment(roleId, out var department))
+            return false;
+
+        roleName = role.Name;
+        color = department.Color;
+        return true;
+    }
+
     // GameRuleSystem<T> already subscribes to RoundEndTextAppendEvent and dispatches to this
     // virtual method - a second raw SubscribeLocalEvent here would throw on duplicate
     // subscription, unlike ES's ESSecretIdentitySystem which isn't a GameRuleSystem<T> itself.
