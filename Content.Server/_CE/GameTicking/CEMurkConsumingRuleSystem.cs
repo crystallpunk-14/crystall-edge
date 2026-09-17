@@ -58,16 +58,6 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
         RaiseLocalEvent(new CERoundStartEvent());
     }
 
-    protected override void AppendRoundEndText(EntityUid uid,
-        CEMurkConsumingRuleComponent component,
-        GameRuleComponent gameRule,
-        ref RoundEndTextAppendEvent args)
-    {
-        base.AppendRoundEndText(uid, component, gameRule, ref args);
-
-        args.AddLine("TODO");
-    }
-
     [SubscribeLocalEvent]
     private void OnStartDay(CEStartDayEvent ev)
     {
