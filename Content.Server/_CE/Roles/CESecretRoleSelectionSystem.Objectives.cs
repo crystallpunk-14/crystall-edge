@@ -1,7 +1,7 @@
-using Content.Server.Objectives;
+using Content.Server._CE.Objectives;
+using Content.Shared._CE.Objectives.Components;
 using Content.Shared._CE.Roles;
 using Content.Shared.Mind;
-using Content.Shared.Objectives.Components;
 using Content.Shared.Random.Helpers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
@@ -10,9 +10,11 @@ namespace Content.Server._CE.Roles;
 
 // Objective distribution for secret roles: granted right alongside the role itself in
 // GrantSecretRole, so round-start assignment and late-join both flow through one place.
+// Uses our own CEObjectiveSystem (see Content.Shared._CE.Objectives), not upstream's Objectives
+// system - see CEObjectiveComponent for why.
 public sealed partial class CESecretRoleSelectionSystem
 {
-    [Dependency] private ObjectivesSystem _objectives = default!;
+    [Dependency] private CEObjectiveSystem _ceObjectives = default!;
 
     private void GrantSecretRoleObjectives(
         Entity<CESecretRoleSelectionComponent> rule,
@@ -27,7 +29,7 @@ public sealed partial class CESecretRoleSelectionSystem
             : role.ObjectivePool;
 
         if (rolePool is not null)
-            CreateObjectivesFromPool(mindId, mind, rolePool);
+            CreateObjectivesFromPool(mindId, rolePool);
 
         if (!TryGetDepartment(role.ID, out var department))
             return;
@@ -37,7 +39,7 @@ public sealed partial class CESecretRoleSelectionSystem
             : department.ObjectivePool;
 
         if (departmentPool is not null)
-            GrantSharedDepartmentObjectives(rule, mindId, mind, department.ID, departmentPool);
+            GrantSharedDepartmentObjectives(rule, mindId, department, departmentPool);
     }
 
     // Department objectives are shared across the whole faction: the pool is only drawn once
@@ -46,21 +48,25 @@ public sealed partial class CESecretRoleSelectionSystem
     private void GrantSharedDepartmentObjectives(
         Entity<CESecretRoleSelectionComponent> rule,
         EntityUid mindId,
-        MindComponent mind,
-        ProtoId<CESecretDepartmentPrototype> department,
+        CESecretDepartmentPrototype department,
         CEObjectivePool pool)
     {
-        if (rule.Comp.DepartmentObjectives.TryGetValue(department, out var objectives))
+        if (rule.Comp.DepartmentObjectives.TryGetValue(department.ID, out var objectives))
         {
+            var holderComp = EnsureComp<CEObjectiveHolderComponent>(mindId);
             foreach (var objective in objectives)
-                _mind.AddObjective(mindId, mind, objective);
+                _ceObjectives.AddObjective(mindId, holderComp, objective);
             return;
         }
 
-        rule.Comp.DepartmentObjectives[department] = CreateObjectivesFromPool(mindId, mind, pool);
+        rule.Comp.DepartmentObjectives[department.ID] = CreateObjectivesFromPool(mindId, pool, department.Name, department.Color);
     }
 
-    private List<EntityUid> CreateObjectivesFromPool(EntityUid mindId, MindComponent mind, CEObjectivePool pool)
+    private List<EntityUid> CreateObjectivesFromPool(
+        EntityUid mindId,
+        CEObjectivePool pool,
+        LocId? descriptorName = null,
+        Color? color = null)
     {
         var created = new List<EntityUid>();
         var candidates = pool.Weighted.ShallowClone();
@@ -68,18 +74,20 @@ public sealed partial class CESecretRoleSelectionSystem
 
         while (difficulty < pool.MaxDifficulty && _random.TryPickAndTake(candidates, out var objectiveProto))
         {
-            if (!_proto.Index(objectiveProto).TryComp<ObjectiveComponent>(out var objectiveComp, EntityManager.ComponentFactory))
+            if (!_proto.Index(objectiveProto).TryComp<CEObjectiveComponent>(out var objectiveComp, EntityManager.ComponentFactory))
                 continue;
 
             if (objectiveComp.Difficulty > pool.MaxDifficulty - difficulty)
                 continue;
 
-            if (!_objectives.TryCreateObjective((mindId, mind), objectiveProto, out var objective))
+            if (!_ceObjectives.TryCreateObjective(mindId, objectiveProto, out var objective))
                 continue;
 
-            _mind.AddObjective(mindId, mind, objective.Value);
+            if (descriptorName is { } name)
+                _ceObjectives.SetDescriptor(objective.Value.Owner, name, color ?? Color.White);
+
             difficulty += objectiveComp.Difficulty;
-            created.Add(objective.Value);
+            created.Add(objective.Value.Owner);
         }
 
         return created;

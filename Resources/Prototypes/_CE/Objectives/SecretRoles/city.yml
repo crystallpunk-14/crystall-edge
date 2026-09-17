@@ -1,14 +1,11 @@
 - type: entity
-  parent: BaseObjective
   id: CEObjectiveCityRestoreLucsonSphere
   name: Restore the Dome of Light
   description: The lucson sphere has cracked. Keep the pillar of light charging by resolving every problem that comes up.
   components:
-  - type: Objective
-    issuer: CESecretDepartmentCity
+  - type: Sprite
+    sprite: _CE/Structures/LucsonSphere/core.rsi
+    state: full
+  - type: CEObjective
     difficulty: 1
-    unique: false
-    icon:
-      sprite: _CE/Structures/LucsonSphere/core.rsi
-      state: full
   - type: CEObjectiveLucsonSphereRestoreCondition
