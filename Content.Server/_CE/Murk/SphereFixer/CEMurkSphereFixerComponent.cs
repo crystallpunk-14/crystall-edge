@@ -13,7 +13,7 @@ public sealed partial class CEMurkSphereFixerComponent : Component
     /// How long it takes to charge from empty to full, assuming no blockers the whole time.
     /// </summary>
     [DataField]
-    public TimeSpan ChargeDuration = TimeSpan.FromMinutes(10);
+    public TimeSpan ChargeDuration = TimeSpan.FromMinutes(20);
 
     /// <summary>
     /// Charge fraction accumulated so far, from 0 (empty) to 1 (full).

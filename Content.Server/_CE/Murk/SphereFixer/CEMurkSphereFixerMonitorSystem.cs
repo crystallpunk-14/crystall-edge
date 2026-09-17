@@ -1,18 +1,10 @@
 using Content.Shared._CE.Murk.Components;
 using Content.Shared._CE.Murk.SphereFixer;
 using Robust.Server.GameObjects;
-using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
 
 namespace Content.Server._CE.Murk.SphereFixer;
 
-/// <summary>
-/// Pushes the Pillar of Light's charge and current blockers to any open monitor console, and
-/// keeps its sprite showing whether the Pillar has blockers (layer visibility itself is handled
-/// by the engine's own PowerDeviceVisuals.Powered). The console pushes state rather than the
-/// client reading the Pillar's component directly, since a monitor can be placed far from the
-/// (server-only) Pillar entity.
-/// </summary>
 public sealed partial class CEMurkSphereFixerMonitorSystem : EntitySystem
 {
     [Dependency] private UserInterfaceSystem _ui = default!;
@@ -47,10 +39,15 @@ public sealed partial class CEMurkSphereFixerMonitorSystem : EntitySystem
 
     private void UpdateVisuals(EntityUid uid)
     {
+        var blocked = false;
         var fixerQuery = EntityQueryEnumerator<CEMurkSphereFixerComponent>();
-        fixerQuery.MoveNext(out var fixer);
+        while (fixerQuery.MoveNext(out var fixer))
+        {
+            if (fixer.Blocked)
+                blocked = true;
+        }
 
-        _appearance.SetData(uid, CEMurkSphereFixerMonitorVisuals.Blocked, fixer?.Blocked ?? true);
+        _appearance.SetData(uid, CEMurkSphereFixerMonitorVisuals.Blocked, blocked);
     }
 
     private void PushState(EntityUid uid)
@@ -58,21 +55,27 @@ public sealed partial class CEMurkSphereFixerMonitorSystem : EntitySystem
         if (!_ui.IsUiOpen(uid, CEMurkSphereFixerMonitorUiKey.Key))
             return;
 
+        var charge = 0f;
+        var fixerExists = false;
+        var blockers = new List<CEMurkSphereFixerBlockerInfo>();
         var fixerQuery = EntityQueryEnumerator<CEMurkSphereFixerComponent>();
-        fixerQuery.MoveNext(out var fixer);
+        while (fixerQuery.MoveNext(out var fixer))
+        {
+            charge = MathF.Max(fixer.Charge, charge);
+            fixerExists = true;
+
+            foreach (var blocker in fixer.Blockers)
+            {
+                blockers.Add(new CEMurkSphereFixerBlockerInfo(blocker.Title, blocker.Description, GetNetCoordinates(blocker.Coordinates)));
+            }
+        }
 
         NetCoordinates? sphereCoordinates = null;
         var sphereQuery = EntityQueryEnumerator<CEMurkLusconSphereComponent, TransformComponent>();
         if (sphereQuery.MoveNext(out _, out var sphereXform))
             sphereCoordinates = GetNetCoordinates(sphereXform.Coordinates);
 
-        var blockers = new List<CEMurkSphereFixerBlockerInfo>();
-        if (fixer != null)
-        {
-            foreach (var blocker in fixer.Blockers)
-                blockers.Add(new CEMurkSphereFixerBlockerInfo(blocker.Title, blocker.Description, GetNetCoordinates(blocker.Coordinates)));
-        }
-        else
+        if (!fixerExists)
         {
             blockers.Add(new CEMurkSphereFixerBlockerInfo(
                 Loc.GetString("ce-murk-sphere-fixer-block-missing-title"),
@@ -82,6 +85,6 @@ public sealed partial class CEMurkSphereFixerMonitorSystem : EntitySystem
 
         _ui.SetUiState(uid,
             CEMurkSphereFixerMonitorUiKey.Key,
-            new CEMurkSphereFixerMonitorBoundUserInterfaceState(fixer?.Charge ?? 0f, sphereCoordinates, blockers));
+            new CEMurkSphereFixerMonitorBoundUserInterfaceState(charge, sphereCoordinates, blockers));
     }
 }

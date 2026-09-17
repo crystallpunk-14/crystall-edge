@@ -23,15 +23,6 @@ using Robust.Shared.Random;
 
 namespace Content.Server._CE.Roles;
 
-/// <summary>
-/// Grants secret roles to players based on their <see cref="HumanoidCharacterProfile.SecretRolePriorities"/>.
-/// Mirrors the round-start job assignment algorithm (tiered High/Medium/Low pass) rather than the
-/// vanilla antag pipeline, since secret roles are not selected through <c>AntagSelectionSystem</c>.
-/// Every player is expected to end up with a secret role (the lowest-weight entry, e.g. Civilian,
-/// is meant to have enough headroom to catch everyone else) - late joiners are topped up
-/// individually via <see cref="PlayerSpawnCompleteEvent"/>, mirroring how AntagSelectionSystem
-/// handles late joins, minus its random chance gate (secret roles are not optional/rare here).
-/// </summary>
 public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecretRoleSelectionComponent>
 {
     private static readonly EntProtoId MindRoleSecret = "CEMindRoleSecret";
@@ -71,35 +62,28 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
         if (!args.LateJoin)
             return;
 
-        // Already has a secret role from earlier this round (e.g. this is a respawn) - don't re-roll.
         if (HasSecretRole(args.Player))
             return;
 
         var playerCount = GetActivePlayerCount();
 
-        var query = QueryActiveRules();
-        while (query.MoveNext(out var uid, out _, out var comp, out _))
+        var activeRules = QueryActiveRules();
+        while (activeRules.MoveNext(out var uid, out _, out var roleSelection, out _))
         {
-            if (!TryAssignLateJoinSecretRole((uid, comp), args.Player, args.Profile, playerCount))
+            if (!TryAssignLateJoinSecretRole((uid, roleSelection), args.Player, args.Profile, playerCount))
                 continue;
 
-            // Sphere already cracked before this player joined - OnRoundStart already fired and
-            // won't run again, so tell them now (second message, after the murk rule's own
-            // "days left" popup). If it hasn't cracked yet, OnRoundStart will cover them later.
-            if (IsSphereCracked())
-                SendRolePopup(args.Player);
-
+            var sphereQuery = EntityQueryEnumerator<CEMurkLusconSphereComponent>();
+            while (sphereQuery.MoveNext(out _, out var sphere))
+            {
+                if (sphere.State == CEMurkSphereState.Cracked)
+                {
+                    SendRolePopup(args.Player);
+                    break;
+                }
+            }
             return;
         }
-    }
-
-    private bool IsSphereCracked()
-    {
-        var query = EntityQueryEnumerator<CEMurkLusconSphereComponent>();
-        while (query.MoveNext(out _, out var sphere))
-            return sphere.State != CEMurkSphereState.Stable;
-
-        return false;
     }
 
     private void SendRolePopup(ICommonSession session)
@@ -149,11 +133,6 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
         }
     }
 
-    /// <summary>
-    /// Tries to slot a single late-joining player into whatever secret role still has room,
-    /// in weight order. Unlike the round-start draw there's no competition to resolve, so this
-    /// just checks eligibility (Requirements) rather than tiering by priority.
-    /// </summary>
     private bool TryAssignLateJoinSecretRole(
         Entity<CESecretRoleSelectionComponent> rule,
         ICommonSession session,

@@ -1,4 +1,3 @@
-using Content.Client._CE.ZLevels.NavMap;
 using Content.Client.Pinpointer.UI;
 using Content.Client.UserInterface.Controls;
 using Content.Shared._CE.Murk.SphereFixer;
@@ -7,7 +6,6 @@ using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
-using Robust.Shared.GameObjects;
 using Robust.Shared.Utility;
 
 namespace Content.Client._CE.Murk.SphereFixer;
@@ -40,7 +38,8 @@ public sealed partial class CEMurkSphereFixerMonitorWindow : FancyWindow
     public void UpdateState(CEMurkSphereFixerMonitorBoundUserInterfaceState state)
     {
         ChargeBar.Value = state.Charge;
-        ChargeLabel.Text = $"{Loc.GetString("ce-murk-sphere-fixer-monitor-window-charge")}: {(int) (state.Charge * 100)}%";
+        var charge = (int)(state.Charge * 100);
+        ChargeLabel.Text = $"{Loc.GetString("ce-murk-sphere-fixer-monitor-window-charge")}: {charge}%";
 
         var spriteSystem = _entManager.System<SpriteSystem>();
 
