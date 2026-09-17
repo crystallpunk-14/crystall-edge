@@ -1,14 +1,14 @@
-ce-secret-department-coral-cult-name = Coral Cult
-ce-secret-department-coral-cult-description = TODO
-ce-secret-role-name-cult-leader = Cult Leader
-ce-secret-role-description-cult-leader = TODO
-ce-secret-role-briefing-cult-leader = TODO
+ce-secret-department-vampires-name = Vampires
+ce-secret-department-vampires-description = TODO
+ce-secret-role-name-archvampire = Archvampire
+ce-secret-role-description-archvampire = TODO
+ce-secret-role-briefing-archvampire = TODO
 
-ce-secret-role-name-cultist = Cultist
-ce-secret-role-description-cultist = TODO
-ce-secret-role-briefing-cultist = TODO
+ce-secret-role-name-vampire = Vampire
+ce-secret-role-description-vampire = TODO
+ce-secret-role-briefing-vampire = TODO
 
-ce-secret-department-city-name = City
+ce-secret-department-city-name = Zellasian Empire
 ce-secret-department-city-description = OTODO
 
 ce-secret-role-name-civilian = Peaceful Citizen

@@ -34,13 +34,13 @@
   - CEGameRuleMagicEssenceNodes
 
 - type: gamePreset
-  id: CECoralAwakening
-  name: ce-game-preset-coral-awakening-title
-  description: ce-game-preset-coral-awakening-description
+  id: CEVampireAwakening
+  name: ce-game-preset-vampire-awakening-title
+  description: ce-game-preset-vampire-awakening-description
   showInVote: true
   rules:
   - CEGameRuleMurkConsuming
-  - CEGameRuleCoralAwakening
+  - CEGameRuleVampireAwakening
   - CERampingStationEventScheduler
   - CEBasicRoundstartVariation
   - CEGameRuleMagicEssenceNodes

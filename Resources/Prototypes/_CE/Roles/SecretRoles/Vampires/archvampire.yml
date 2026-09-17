@@ -1,0 +1,6 @@
+- type: secretRole
+  id: CEArchvampire
+  name: ce-secret-role-name-archvampire
+  description: ce-secret-role-description-archvampire
+  icon: CEJobIconArchvampire
+  briefing: ce-secret-role-briefing-archvampire

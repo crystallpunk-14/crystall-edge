@@ -174,6 +174,10 @@ public abstract partial class CESharedSkillSystem : EntitySystem
         if (GetSkillPreviewEntityProto(indexedSkill) is { } preview)
             return preview.Description;
 
+        var description = indexedSkill.Effect?.GetDescription(EntityManager, _proto, skill);
+        if (description != null)
+            return description;
+
         return string.Empty;
     }
 

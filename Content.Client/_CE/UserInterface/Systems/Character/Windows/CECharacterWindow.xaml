@@ -34,7 +34,6 @@
             <RichTextLabel Name="DetailsLabel" Access="Public" StyleClasses="LabelSubText" HorizontalAlignment="Center" HorizontalExpand="True" Margin="0 10 0 0" />
             <BoxContainer Name="AdditionalInfoContainer" Orientation="Vertical" Access="Public" HorizontalExpand="True" Margin="0 4 0 0" />
         </BoxContainer>
-        <cc:VSeparator Margin="0 10" />
         <TabContainer Name="Tabs" Access="Public" HorizontalExpand="True" VerticalExpand="True" />
     </BoxContainer>
 </windows:CECharacterWindow>

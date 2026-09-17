@@ -1,15 +1,15 @@
-ce-secret-department-coral-cult-name = Культ коралла
-ce-secret-department-coral-cult-description = TODO
+ce-secret-department-vampires-name = Вампиры
+ce-secret-department-vampires-description = TODO
 
-ce-secret-role-name-cult-leader = Лидер культа
-ce-secret-role-description-cult-leader = TODO
-ce-secret-role-briefing-cult-leader = TODO
+ce-secret-role-name-archvampire = Архивампир
+ce-secret-role-description-archvampire = TODO
+ce-secret-role-briefing-archvampire = TODO
 
-ce-secret-role-name-cultist = Культист
-ce-secret-role-description-cultist = TODO
-ce-secret-role-briefing-cultist = TODO
+ce-secret-role-name-vampire = Вампир
+ce-secret-role-description-vampire = TODO
+ce-secret-role-briefing-vampire = TODO
 
-ce-secret-department-city-name = Город
+ce-secret-department-city-name = Империя Зелласиан
 ce-secret-department-city-description = TODO
 
 ce-secret-role-name-civilian = Мирный гражданин

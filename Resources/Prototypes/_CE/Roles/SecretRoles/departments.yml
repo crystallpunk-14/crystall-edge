@@ -1,12 +1,12 @@
 - type: secretDepartment
-  id: CECoralCult
-  name: ce-secret-department-coral-cult-name
-  description: ce-secret-department-coral-cult-description
-  color: "#2F8F6F"
+  id: CEVampires
+  name: ce-secret-department-vampires-name
+  description: ce-secret-department-vampires-description
+  color: "#8B1A1A"
   weight: 0
   roles:
-  - CECultLeader
-  - CECultist
+  - CEArchvampire
+  - CEVampire
 
 - type: secretDepartment
   id: CECity
