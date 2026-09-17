@@ -96,7 +96,10 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
     /// Reused by admin tooling (<c>secretroleset</c>); round-start/late-join assignment calls
     /// <see cref="GrantSecretRole"/> directly since there's nothing to clear yet.
     /// </summary>
-    public bool TrySetSecretRole(ICommonSession session, ProtoId<CESecretRolePrototype> roleId, [NotNullWhen(false)] out string? error)
+    public bool TrySetSecretRole(ICommonSession session,
+        ProtoId<CESecretRolePrototype> roleId,
+        [NotNullWhen(false)] out string? error,
+        bool removeSkills = false)
     {
         error = null;
 
@@ -123,7 +126,7 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
             return false;
         }
 
-        ClearSecretRole(mindId, mind);
+        ClearSecretRole(mindId, mind, removeSkills);
         GrantSecretRole(targetRule.Value, session, role);
 
         var sphereQuery = EntityQueryEnumerator<CEMurkLusconSphereComponent>();
@@ -142,8 +145,10 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
     /// <summary>
     /// Removes a mind's current secret role and every objective it was holding, and rolls back
     /// the granting rule's assigned-count bookkeeping so future assignment stays consistent.
+    /// Skills granted by the role/department are only stripped if <paramref name="removeSkills"/>
+    /// is set - by default a role swap leaves previously-learned skills in place.
     /// </summary>
-    private void ClearSecretRole(EntityUid mindId, MindComponent mind)
+    private void ClearSecretRole(EntityUid mindId, MindComponent mind, bool removeSkills = false)
     {
         if (!_role.MindHasRole<CESecretRoleComponent>((mindId, mind), out var roleEnt))
             return;
@@ -156,6 +161,9 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
                 if (comp.AssignedCounts.TryGetValue(oldRoleId, out var count) && count > 0)
                     comp.AssignedCounts[oldRoleId] = count - 1;
             }
+
+            if (removeSkills && mind.OwnedEntity is { } target)
+                RemoveSecretRoleSkills(target, oldRoleId);
         }
 
         if (TryComp<CEObjectiveHolderComponent>(mindId, out var holderComp))
@@ -318,6 +326,9 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
             EnsureComp<RoleBriefingComponent>(roleEnt.Value.Owner).Briefing = briefing;
 
         GrantSecretRoleObjectives(rule, mindId, mind, role);
+
+        if (session.AttachedEntity is { } target)
+            GrantSecretRoleSkills(target, role);
     }
 
     /// <summary>

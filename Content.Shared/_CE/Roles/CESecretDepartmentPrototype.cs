@@ -1,3 +1,4 @@
+using Content.Shared._CE.Skill.Prototypes;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.Roles;
@@ -48,4 +49,10 @@ public sealed partial class CESecretDepartmentPrototype : IPrototype
     /// </summary>
     [DataField]
     public CEObjectivePool? ObjectivePool;
+
+    /// <summary>
+    /// Skills shared by the whole faction, granted directly to every player holding a role in it.
+    /// </summary>
+    [DataField]
+    public List<ProtoId<CESkillPrototype>> Skills = new();
 }
