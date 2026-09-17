@@ -92,7 +92,7 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
     /// <summary>
     /// Clears a player's current secret role (if any) - including its objectives - and grants
     /// them a new one via whichever active rule is running (used as the bookkeeping container for
-    /// AssignedCounts/DepartmentObjectives even if it doesn't list this role in its own Roles).
+    /// AssignedCounts/DepartmentObjectiveHolders even if it doesn't list this role in its own Roles).
     /// Reused by admin tooling (<c>secretroleset</c>); round-start/late-join assignment calls
     /// <see cref="GrantSecretRole"/> directly since there's nothing to clear yet.
     /// </summary>
@@ -166,13 +166,20 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
                 RemoveSecretRoleSkills(target, oldRoleId);
         }
 
+        // Only ever removes objectives this mind actually owns (its personal role-pool draw) -
+        // the department's shared ones belong to the department's own holder entity and just drop
+        // off this mind's list on the RegenerateObjectiveList call below.
         if (TryComp<CEObjectiveHolderComponent>(mindId, out var holderComp))
         {
-            foreach (var objective in holderComp.Objectives.ToList())
-                _ceObjectives.TryRemoveObjective(mindId, objective);
+            foreach (var objective in holderComp.OwnedObjectives.ToList())
+                _objectives.TryRemoveObjective(mindId, objective);
         }
 
         _role.MindRemoveRole<CESecretRoleComponent>((mindId, mind));
+
+        // Membership just changed - re-query CEGetAdditionalObjectivesEvent so a department's
+        // shared objectives (if any) disappear from this mind's list and PVS overrides.
+        _objectives.RegenerateObjectiveList(mindId);
     }
 
     private void SendRolePopup(ICommonSession session)

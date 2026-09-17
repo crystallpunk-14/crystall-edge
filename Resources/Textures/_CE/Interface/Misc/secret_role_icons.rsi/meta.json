@@ -8,16 +8,19 @@
   },
   "states": [
     {
-      "name": "cultist"
+      "name": "vampire"
     },
     {
-      "name": "cultist_head"
+      "name": "archvampire"
     },
     {
       "name": "civilian"
     },
     {
       "name": "lover"
+    },
+    {
+      "name": "murkwalker"
     }
   ]
 }

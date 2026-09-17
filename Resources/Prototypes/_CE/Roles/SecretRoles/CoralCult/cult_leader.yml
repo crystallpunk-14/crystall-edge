@@ -1,6 +1,0 @@
-- type: secretRole
-  id: CECultLeader
-  name: ce-secret-role-name-cult-leader
-  description: ce-secret-role-description-cult-leader
-  icon: CEJobIconCultLeader
-  briefing: ce-secret-role-briefing-cult-leader

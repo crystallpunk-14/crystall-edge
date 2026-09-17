@@ -22,13 +22,14 @@ public sealed partial class CESecretRoleSelectionComponent : Component
     public Dictionary<ProtoId<CESecretRolePrototype>, int> AssignedCounts = new();
 
     /// <summary>
-    /// Objectives already drawn from each secret department's pool this round. A department's
-    /// objectives are shared: drawn once for the first member granted them, then the same
-    /// objective entities are handed to every later member of that department (including
-    /// late-joiners), rather than each player getting their own personal copy.
+    /// Objective holder entity for each secret department that has drawn its pool this round. The
+    /// holder owns the department's shared objectives directly; members don't own a copy - they
+    /// pick them up dynamically (see <see cref="CESecretRoleSelectionSystem.OnGetAdditionalObjectives"/>)
+    /// for as long as they hold a role in that department, the same way
+    /// <c>ESSharedSecretIdentitySystem</c> does it for organizations upstream.
     /// </summary>
     [DataField]
-    public Dictionary<ProtoId<CESecretDepartmentPrototype>, List<EntityUid>> DepartmentObjectives = new();
+    public Dictionary<ProtoId<CESecretDepartmentPrototype>, EntityUid> DepartmentObjectiveHolders = new();
 }
 
 /// <summary>

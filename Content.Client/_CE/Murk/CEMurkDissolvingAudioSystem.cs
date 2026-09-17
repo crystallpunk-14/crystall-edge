@@ -88,10 +88,10 @@ public sealed partial class CEMurkDissolvingAudioSystem : EntitySystem
 
     private float GetLocalDissolved()
     {
-        if (!TryComp<CEMurkDissolvingComponent>(_player.LocalEntity, out var dissolving) || !dissolving.Enabled)
+        if (!TryComp<CEMurkDissolvingStatusComponent>(_player.LocalEntity, out var status) || !status.SoundEnabled)
             return 0f;
 
-        return dissolving.Dissolved;
+        return status.Dissolved;
     }
 
     private void Stop(EntityUid? stream)

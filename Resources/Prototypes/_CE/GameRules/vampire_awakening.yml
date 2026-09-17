@@ -1,16 +1,16 @@
 - type: entity
   parent: CEBaseGameRule
-  id: CEGameRuleCoralAwakening
+  id: CEGameRuleVampireAwakening
   components:
   - type: GameRule
     minPlayers: 1
   - type: CESecretRoleSelection
     roles:
-    # Cult
-    - role: CECultLeader
+    # Vampires
+    - role: CEArchvampire
       range: { min: 1, max: 1 }
       weight: 10
-    - role: CECultist
+    - role: CEVampire
       playerRatio: 10
       range: { min: 1, max: 4 }
       weight: 10

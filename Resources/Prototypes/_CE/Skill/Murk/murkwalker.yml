@@ -1,0 +1,17 @@
+- type: skill
+  id: Murkwalker
+  name: ce-skill-murkwalker-name
+  desc: ce-skill-murkwalker-desc
+  icon:
+    sprite: _CE/Interface/Skills/murkwalker.rsi
+    state: icon
+  effect: !type:AddStatusEffect
+    effect: CEStatusEffectMurkwalker
+
+- type: entity
+  parent: StatusEffectBase
+  id: CEStatusEffectMurkwalker
+  name: murk immunity
+  components:
+  - type: CEMurkDissolvingModifier
+    dissolvingModifier: 0

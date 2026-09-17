@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Content.Shared._CE.Objectives.Components;
 using Content.Shared.Mind;
 using Robust.Shared.GameStates;
@@ -33,8 +34,8 @@ public abstract partial class CESharedObjectiveSystem : EntitySystem
     }
 
     /// <summary>
-    /// Spawns an objective from a prototype and adds it to a holder, PVS-overriding it to the
-    /// holder's owning client (if any) so it shows up in their character menu.
+    /// Spawns an objective from a prototype and adds it to a holder's
+    /// <see cref="CEObjectiveHolderComponent.OwnedObjectives"/>.
     /// </summary>
     public bool TryCreateObjective(
         EntityUid holderUid,
@@ -57,47 +58,72 @@ public abstract partial class CESharedObjectiveSystem : EntitySystem
         var ev = new CEInitializeObjectiveEvent((holderUid, holderComp));
         RaiseLocalEvent(uid, ref ev);
 
-        AddObjective(holderUid, holderComp, uid);
+        holderComp.OwnedObjectives.Add(uid);
+        RegenerateObjectiveList((holderUid, holderComp));
         RefreshObjectiveProgress(objective.Value.AsNullable());
 
         return true;
     }
 
     /// <summary>
-    /// Adds an already-created objective to a holder without spawning a new one - used to hand a
-    /// shared (department) objective to another member who wasn't there when it was first drawn.
+    /// Removes an objective from a holder and deletes the entity. Only works for an objective the
+    /// holder actually owns (see <see cref="CEObjectiveHolderComponent.OwnedObjectives"/>) - a
+    /// shared objective owned by something else (e.g. a secret department) can't be deleted this
+    /// way, since other holders may still reference it. It drops out of a holder's own list on its
+    /// own the next time <see cref="RegenerateObjectiveList"/> runs and stops picking it up.
     /// </summary>
-    public void AddObjective(EntityUid holderUid, CEObjectiveHolderComponent holderComp, EntityUid objective)
-    {
-        if (holderComp.Objectives.Contains(objective))
-            return;
-
-        holderComp.Objectives.Add(objective);
-        Dirty(holderUid, holderComp);
-
-        if (TryGetHolderSession(holderUid, out var session))
-            _pvsOverride.AddSessionOverride(objective, session);
-
-        var ev = new CEObjectivesChangedEvent(holderUid);
-        RaiseLocalEvent(holderUid, ref ev);
-    }
-
     public bool TryRemoveObjective(EntityUid holderUid, EntityUid objective)
     {
         if (!TryComp<CEObjectiveHolderComponent>(holderUid, out var holderComp) ||
-            !holderComp.Objectives.Remove(objective))
+            !holderComp.OwnedObjectives.Remove(objective))
             return false;
 
-        Dirty(holderUid, holderComp);
-
-        if (TryGetHolderSession(holderUid, out var session))
-            _pvsOverride.RemoveSessionOverride(objective, session);
-
+        RegenerateObjectiveList((holderUid, holderComp));
         Del(objective);
-
-        var ev = new CEObjectivesChangedEvent(holderUid);
-        RaiseLocalEvent(holderUid, ref ev);
         return true;
+    }
+
+    /// <summary>
+    /// Recomputes a holder's full <see cref="CEObjectiveHolderComponent.Objectives"/> list -
+    /// <see cref="CEObjectiveHolderComponent.OwnedObjectives"/> plus whatever
+    /// <see cref="CEGetAdditionalObjectivesEvent"/> contributes - and syncs PVS overrides for
+    /// whatever was added or removed. Call this whenever something that could change the result of
+    /// that event happens (e.g. a secret role/department membership change).
+    /// </summary>
+    public void RegenerateObjectiveList(Entity<CEObjectiveHolderComponent?> ent)
+    {
+        if (!Resolve(ent, ref ent.Comp, false))
+            return;
+
+        var oldObjectives = new List<EntityUid>(ent.Comp.Objectives);
+        var newObjectives = new List<EntityUid>();
+
+        var ev = new CEGetAdditionalObjectivesEvent((ent, ent.Comp), []);
+        RaiseLocalEvent(ent, ref ev);
+
+        newObjectives.AddRange(ev.Objectives.Select(e => e.Owner));
+        newObjectives.AddRange(ent.Comp.OwnedObjectives);
+
+        var added = newObjectives.Except(oldObjectives).ToList();
+        var removed = oldObjectives.Except(newObjectives).ToList();
+
+        if (added.Count == 0 && removed.Count == 0)
+            return;
+
+        ent.Comp.Objectives = newObjectives;
+        Dirty(ent);
+
+        if (TryGetHolderSession(ent.Owner, out var session))
+        {
+            foreach (var obj in added)
+                _pvsOverride.AddSessionOverride(obj, session);
+
+            foreach (var obj in removed)
+                _pvsOverride.RemoveSessionOverride(obj, session);
+        }
+
+        var changedEv = new CEObjectivesChangedEvent(ent.Owner);
+        RaiseLocalEvent(ent.Owner, ref changedEv);
     }
 
     /// <summary>

@@ -3,18 +3,35 @@ using Content.Shared._CE.Objectives.Components;
 using Content.Shared._CE.Roles;
 using Content.Shared.Mind;
 using Content.Shared.Random.Helpers;
+using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
 namespace Content.Server._CE.Roles;
 
-// Objective distribution for secret roles: granted right alongside the role itself in
-// GrantSecretRole, so round-start assignment and late-join both flow through one place.
-// Uses our own CEObjectiveSystem (see Content.Shared._CE.Objectives), not upstream's Objectives
-// system - see CEObjectiveComponent for why.
 public sealed partial class CESecretRoleSelectionSystem
 {
-    [Dependency] private CEObjectiveSystem _ceObjectives = default!;
+    [Dependency] private CEObjectiveSystem _objectives = default!;
+
+    [SubscribeLocalEvent]
+    private void OnGetAdditionalObjectives(Entity<MindComponent> ent, ref CEGetAdditionalObjectivesEvent args)
+    {
+        if (!_role.MindHasRole<CESecretRoleComponent>((ent.Owner, ent.Comp), out var roleEnt))
+            return;
+
+        if (roleEnt.Value.Comp2.Role is not { } roleId || !TryGetDepartment(roleId, out var department))
+            return;
+
+        var rules = QueryActiveRules();
+        while (rules.MoveNext(out _, out _, out var comp, out _))
+        {
+            if (!comp.DepartmentObjectiveHolders.TryGetValue(department.ID, out var holderUid))
+                continue;
+
+            args.Objectives.AddRange(_objectives.GetObjectives(holderUid));
+            return;
+        }
+    }
 
     private void GrantSecretRoleObjectives(
         Entity<CESecretRoleSelectionComponent> rule,
@@ -31,39 +48,35 @@ public sealed partial class CESecretRoleSelectionSystem
         if (rolePool is not null)
             CreateObjectivesFromPool(mindId, rolePool);
 
-        if (!TryGetDepartment(role.ID, out var department))
-            return;
+        if (TryGetDepartment(role.ID, out var department))
+        {
+            var departmentPool = overrides is { } d && d.DepartmentOverrides.TryGetValue(department.ID, out var deptOverride)
+                ? deptOverride
+                : department.ObjectivePool;
 
-        var departmentPool = overrides is { } d && d.DepartmentOverrides.TryGetValue(department.ID, out var deptOverride)
-            ? deptOverride
-            : department.ObjectivePool;
+            if (departmentPool is not null)
+                EnsureSharedDepartmentObjectives(rule, department, departmentPool);
+        }
 
-        if (departmentPool is not null)
-            GrantSharedDepartmentObjectives(rule, mindId, department, departmentPool);
+        EnsureComp<CEObjectiveHolderComponent>(mindId);
+        _objectives.RegenerateObjectiveList(mindId);
     }
 
-    // Department objectives are shared across the whole faction: the pool is only drawn once
-    // (for whoever is granted them first), and every other member of the department - including
-    // late-joiners - is handed the same objective entities rather than a personal copy.
-    private void GrantSharedDepartmentObjectives(
+    private void EnsureSharedDepartmentObjectives(
         Entity<CESecretRoleSelectionComponent> rule,
-        EntityUid mindId,
         CESecretDepartmentPrototype department,
         CEObjectivePool pool)
     {
-        if (rule.Comp.DepartmentObjectives.TryGetValue(department.ID, out var objectives))
-        {
-            var holderComp = EnsureComp<CEObjectiveHolderComponent>(mindId);
-            foreach (var objective in objectives)
-                _ceObjectives.AddObjective(mindId, holderComp, objective);
+        if (rule.Comp.DepartmentObjectiveHolders.ContainsKey(department.ID))
             return;
-        }
 
-        rule.Comp.DepartmentObjectives[department.ID] = CreateObjectivesFromPool(mindId, pool, department.Name, department.Color);
+        var holderUid = Spawn(null, MapCoordinates.Nullspace);
+        rule.Comp.DepartmentObjectiveHolders[department.ID] = holderUid;
+        CreateObjectivesFromPool(holderUid, pool, department.Name, department.Color);
     }
 
     private List<EntityUid> CreateObjectivesFromPool(
-        EntityUid mindId,
+        EntityUid holderUid,
         CEObjectivePool pool,
         LocId? descriptorName = null,
         Color? color = null)
@@ -80,11 +93,11 @@ public sealed partial class CESecretRoleSelectionSystem
             if (objectiveComp.Difficulty > pool.MaxDifficulty - difficulty)
                 continue;
 
-            if (!_ceObjectives.TryCreateObjective(mindId, objectiveProto, out var objective))
+            if (!_objectives.TryCreateObjective(holderUid, objectiveProto, out var objective))
                 continue;
 
             if (descriptorName is { } name)
-                _ceObjectives.SetDescriptor(objective.Value.Owner, name, color ?? Color.White);
+                _objectives.SetDescriptor(objective.Value.Owner, name, color ?? Color.White);
 
             difficulty += objectiveComp.Difficulty;
             created.Add(objective.Value.Owner);

@@ -3,7 +3,7 @@
     xmlns:windows="clr-namespace:Content.Client._CE.UserInterface.Systems.Character.Windows"
     xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls"
     Title="{Loc 'character-info-title'}"
-    MinWidth="560"
+    MinWidth="660"
     MinHeight="450">
     <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
         <BoxContainer Orientation="Vertical" HorizontalAlignment="Center" HorizontalExpand="False" MaxWidth="200" Margin="10">
@@ -34,7 +34,6 @@
             <RichTextLabel Name="DetailsLabel" Access="Public" StyleClasses="LabelSubText" HorizontalAlignment="Center" HorizontalExpand="True" Margin="0 10 0 0" />
             <BoxContainer Name="AdditionalInfoContainer" Orientation="Vertical" Access="Public" HorizontalExpand="True" Margin="0 4 0 0" />
         </BoxContainer>
-        <cc:VSeparator Margin="0 10" />
         <TabContainer Name="Tabs" Access="Public" HorizontalExpand="True" VerticalExpand="True" />
     </BoxContainer>
 </windows:CECharacterWindow>

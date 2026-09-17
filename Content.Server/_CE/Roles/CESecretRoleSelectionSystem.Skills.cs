@@ -12,15 +12,18 @@ public sealed partial class CESecretRoleSelectionSystem
 
     private void GrantSecretRoleSkills(EntityUid target, CESecretRolePrototype role)
     {
-        foreach (var skill in role.Skills)
-            _skill.TryAddSkill(target, skill, force: true);
+        var hasDepartment = TryGetDepartment(role.ID, out var department);
 
-        if (!TryGetDepartment(role.ID, out var department))
+        var roleDescriptor = new CESkillDescriptor { Name = role.Name, Color = hasDepartment ? department.Color : Color.White };
+        foreach (var skill in role.Skills)
+            _skill.TryAddSkill(target, skill, force: true, descriptor: roleDescriptor);
+
+        if (!hasDepartment)
             return;
 
-        var descriptor = new CESkillDescriptor { Name = department.Name, Color = department.Color };
+        var departmentDescriptor = new CESkillDescriptor { Name = department.Name, Color = department.Color };
         foreach (var skill in department.Skills)
-            _skill.TryAddSkill(target, skill, force: true, descriptor: descriptor);
+            _skill.TryAddSkill(target, skill, force: true, descriptor: departmentDescriptor);
     }
 
     private void RemoveSecretRoleSkills(EntityUid target, ProtoId<CESecretRolePrototype> roleId)
