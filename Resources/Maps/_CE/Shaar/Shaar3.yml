@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.0
   forkId: ""
   forkVersion: ""
-  time: 09/08/2026 10:13:03
-  entityCount: 119
+  time: 09/15/2026 10:54:57
+  entityCount: 120
 maps:
 - 1
 grids:
@@ -580,6 +580,13 @@ entities:
       parent: 1
       rot: 3.141592653589793 rad
       pos: -6.5,-11.5
+- proto: CEMurkLucsonSphere50
+  entities:
+  - uid: 119
+    components:
+    - type: Transform
+      parent: 1
+      pos: -4.5,-12.5
 - proto: CEPipeBrassMediumVerticalDown
   entities:
   - uid: 46

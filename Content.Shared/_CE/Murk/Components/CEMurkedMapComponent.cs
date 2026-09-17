@@ -14,7 +14,7 @@ public sealed partial class CEMurkedMapComponent : Component
     /// Expected to change at runtime (round events, admin commands) - do not cache it.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public float Intensity;
+    public float Intensity = 1;
 
     /// <summary>
     /// Brightest tint the murk drifts to. The darkest point is always pure black.
@@ -23,13 +23,11 @@ public sealed partial class CEMurkedMapComponent : Component
     public Color MurkColor = new(0.025f, 0.032f, 0.054f);
 
     /// <summary>
-    /// Client-side render value chasing <see cref="Intensity"/>.
+    /// Client-side render value chasing <see cref="Intensity"/>. Always starts at zero, so murk
+    /// rolls in smoothly even when the component is added to an already running map.
     /// </summary>
     [NonSerialized]
     public float LerpedIntensity;
-
-    [NonSerialized]
-    public bool LerpInitialized;
 
     /// <summary>
     ///     Maximum number of murk sources that can be shown on screen at a time.

@@ -228,6 +228,18 @@
   - type: StaticPrice
     price: 250
 
+- type: entity
+  id: CEMachineCoreMurkSphereFixerProjector
+  parent: CEBaseMachineCore
+  name: pillar of light status projector machine core
+  components:
+  - type: Sprite
+    state: power
+  - type: MachineBoard
+    prototype: CEMurkSphereFixerProjector
+  - type: StaticPrice
+    price: 180
+
 # Trading
 
 - type: entity

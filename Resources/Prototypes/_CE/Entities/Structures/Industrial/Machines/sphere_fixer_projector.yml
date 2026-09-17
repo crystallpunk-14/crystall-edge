@@ -1,0 +1,74 @@
+- type: entity
+  id: CEMurkSphereFixerProjector
+  parent:
+  - CEConstructibleMachine
+  - CEBaseMachinePowered
+  - BaseMachine
+  name: pillar of light status projector
+  description: Projects the Pillar of Light's charge status and pinpoints whatever's stopping it from filling.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Machine
+    board: CEMachineCoreMurkSphereFixerProjector
+  - type: PlacementReplacement
+    key: walls
+  - type: Sprite
+    drawdepth: Mobs
+    noRot: true
+    offset: 0, 0.3
+    sprite: _CE/Structures/Industrial/map_projector_murk.rsi
+    layers:
+    - state: base
+    - state: holo
+      shader: unshaded
+      map: ["holo"]
+      visible: false
+    - state: island
+      shader: unshaded
+      map: ["island"]
+      visible: false
+    - state: ok
+      shader: unshaded
+      map: ["status"]
+      visible: false
+  - type: Icon
+    sprite: _CE/Structures/Industrial/map_projector_murk.rsi
+    state: base
+  - type: CEMurkSphereFixerMonitor
+  - type: ActivatableUI
+    key: enum.CEMurkSphereFixerMonitorUiKey.Key
+  - type: ActivatableUIRequiresPower
+  - type: Clickable
+  - type: InteractionOutline
+  - type: ApcPowerReceiver
+    powerLoad: 0.1
+  - type: UserInterface
+    interfaces:
+      enum.CEMurkSphereFixerMonitorUiKey.Key:
+        type: CEMurkSphereFixerMonitorBoundUserInterface
+  - type: ExtensionCableReceiver
+    receptionRange: 0
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        status:
+          True: {visible: true}
+          False: {visible: false}
+        holo:
+          True: {visible: true}
+          False: {visible: false}
+        island:
+          True: {visible: true}
+          False: {visible: false}
+      enum.CEMurkSphereFixerMonitorVisuals.Blocked:
+        status:
+          True: {state: error}
+          False: {state: ok}
+  - type: AmbientOnPowered
+  - type: LitOnPowered
+  - type: PointLight
+    radius: 2
+    energy: 4
+    color: "#fef6c9"
+    enabled: false

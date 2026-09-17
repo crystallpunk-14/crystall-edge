@@ -1,0 +1,38 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:navmap="clr-namespace:Content.Client._CE.ZLevels.NavMap"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      Resizable="False"
+                      MinSize="1000 720"
+                      SetSize="1000 720">
+    <BoxContainer Orientation="Horizontal" VerticalExpand="True" HorizontalExpand="True">
+        <!-- Map, same layout as CEPowerMonitoringWindow: navmap on top, info row stacked below it -->
+        <BoxContainer Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True">
+            <navmap:CEZLevelsNavMapControl Name="NavMap" VerticalExpand="True" HorizontalExpand="True" />
+
+            <!-- Charge -->
+            <BoxContainer Orientation="Horizontal" Margin="10 20 5 20" HorizontalExpand="True">
+                <ProgressBar Name="ChargeBar" MinValue="0" MaxValue="1" HorizontalExpand="True" SetHeight="24">
+                    <Label Name="ChargeLabel" Text="0%" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </ProgressBar>
+            </BoxContainer>
+        </BoxContainer>
+
+        <PanelContainer StyleClasses="LowDivider" VerticalExpand="True" SetWidth="2" />
+
+        <!-- Status -->
+        <PanelContainer StyleClasses="PanelDark" VerticalExpand="True" SetWidth="340">
+            <BoxContainer Orientation="Vertical" VerticalExpand="True" Margin="0 0 0 0" HorizontalExpand="True">
+                <controls:StripeBack>
+                    <PanelContainer>
+                        <Label Text="{Loc 'ce-murk-sphere-fixer-monitor-window-blockers'}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 3" />
+                    </PanelContainer>
+                </controls:StripeBack>
+
+                <ScrollContainer HorizontalExpand="True" VerticalExpand="True"  Margin="15 15 5 0" HScrollEnabled="False">
+                    <BoxContainer Name="BlockersContainer" Orientation="Vertical" HorizontalExpand="True" Margin="0 0 10 0" />
+                </ScrollContainer>
+            </BoxContainer>
+        </PanelContainer>
+    </BoxContainer>
+</controls:FancyWindow>

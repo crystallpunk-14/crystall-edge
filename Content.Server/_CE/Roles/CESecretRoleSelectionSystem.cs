@@ -1,16 +1,20 @@
 using System.Linq;
+using Content.Server._CE.GameTicking;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server.Mind;
 using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Roles;
+using Content.Shared._CE.Murk.Components;
 using Content.Shared._CE.Roles;
+using Content.Shared._CE.Roundflow;
 using Content.Shared.GameTicking;
 using Content.Shared.Ghost.Components;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Components;
 using Robust.Server.Player;
+using Robust.Shared.Audio;
 using Robust.Shared.Enums;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
@@ -19,15 +23,6 @@ using Robust.Shared.Random;
 
 namespace Content.Server._CE.Roles;
 
-/// <summary>
-/// Grants secret roles to players based on their <see cref="HumanoidCharacterProfile.SecretRolePriorities"/>.
-/// Mirrors the round-start job assignment algorithm (tiered High/Medium/Low pass) rather than the
-/// vanilla antag pipeline, since secret roles are not selected through <c>AntagSelectionSystem</c>.
-/// Every player is expected to end up with a secret role (the lowest-weight entry, e.g. Civilian,
-/// is meant to have enough headroom to catch everyone else) - late joiners are topped up
-/// individually via <see cref="PlayerSpawnCompleteEvent"/>, mirroring how AntagSelectionSystem
-/// handles late joins, minus its random chance gate (secret roles are not optional/rare here).
-/// </summary>
 public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecretRoleSelectionComponent>
 {
     private static readonly EntProtoId MindRoleSecret = "CEMindRoleSecret";
@@ -39,14 +34,19 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
     [Dependency] private RoleSystem _role = default!;
     [Dependency] private PlayTimeTrackingManager _playTimeTracking = default!;
 
-    public override void Initialize()
+    /// <summary>
+    /// The Lucson Sphere just cracked - reveal every player's already-assigned secret role and its goal.
+    /// </summary>
+    [SubscribeLocalEvent]
+    private void OnRoundStart(CERoundStartEvent ev)
     {
-        base.Initialize();
-
-        SubscribeLocalEvent<RulePlayerJobsAssignedEvent>(OnJobsAssigned);
-        SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawnComplete);
+        foreach (var session in _playerManager.Sessions)
+        {
+            SendRolePopup(session);
+        }
     }
 
+    [SubscribeLocalEvent]
     private void OnJobsAssigned(RulePlayerJobsAssignedEvent args)
     {
         var query = QueryActiveRules();
@@ -56,23 +56,51 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
         }
     }
 
+    [SubscribeLocalEvent(after: [typeof(CEMurkConsumingRuleSystem)])]
     private void OnPlayerSpawnComplete(PlayerSpawnCompleteEvent args)
     {
         if (!args.LateJoin)
             return;
 
-        // Already has a secret role from earlier this round (e.g. this is a respawn) - don't re-roll.
         if (HasSecretRole(args.Player))
             return;
 
         var playerCount = GetActivePlayerCount();
 
-        var query = QueryActiveRules();
-        while (query.MoveNext(out var uid, out _, out var comp, out _))
+        var activeRules = QueryActiveRules();
+        while (activeRules.MoveNext(out var uid, out _, out var roleSelection, out _))
         {
-            if (TryAssignLateJoinSecretRole((uid, comp), args.Player, args.Profile, playerCount))
-                return;
+            if (!TryAssignLateJoinSecretRole((uid, roleSelection), args.Player, args.Profile, playerCount))
+                continue;
+
+            var sphereQuery = EntityQueryEnumerator<CEMurkLusconSphereComponent>();
+            while (sphereQuery.MoveNext(out _, out var sphere))
+            {
+                if (sphere.State == CEMurkSphereState.Cracked)
+                {
+                    SendRolePopup(args.Player);
+                    break;
+                }
+            }
+            return;
         }
+    }
+
+    private void SendRolePopup(ICommonSession session)
+    {
+        if (!_mind.TryGetMind(session, out var mindId, out var mind)
+            || !_role.MindHasRole<CESecretRoleComponent>((mindId, mind), out var roleEnt))
+            return;
+
+        if (roleEnt.Value.Comp2.Role is not { } roleId || !_proto.TryIndex(roleId, out var role))
+            return;
+
+        var goalText = TryComp<RoleBriefingComponent>(roleEnt.Value.Owner, out var briefing)
+            ? Loc.GetString(briefing.Briefing)
+            : string.Empty;
+
+        RaiseNetworkEvent(new CEScreenPopupShowEvent(role.LocalizedName, goalText,
+            new SoundPathSpecifier("/Audio/_CE/Announce/darkness_boom.ogg")), session);
     }
 
     private void AssignSecretRoles(
@@ -105,11 +133,6 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
         }
     }
 
-    /// <summary>
-    /// Tries to slot a single late-joining player into whatever secret role still has room,
-    /// in weight order. Unlike the round-start draw there's no competition to resolve, so this
-    /// just checks eligibility (Requirements) rather than tiering by priority.
-    /// </summary>
     private bool TryAssignLateJoinSecretRole(
         Entity<CESecretRoleSelectionComponent> rule,
         ICommonSession session,

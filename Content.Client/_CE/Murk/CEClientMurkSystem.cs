@@ -44,15 +44,9 @@ public sealed partial class CEClientMurkSystem : CESharedMurkSystem
         var maps = EntityQueryEnumerator<CEMurkedMapComponent>();
         while (maps.MoveNext(out var mapUid, out var murkedMap))
         {
-            if (murkedMap.LerpInitialized)
-            {
-                murkedMap.LerpedIntensity = MathHelper.Lerp(murkedMap.LerpedIntensity, murkedMap.Intensity, rate);
-            }
-            else
-            {
-                murkedMap.LerpedIntensity = murkedMap.Intensity;
-                murkedMap.LerpInitialized = true;
-            }
+            // Starts at zero even when the component appears mid-round, so murk rolls in
+            // instead of snapping on.
+            murkedMap.LerpedIntensity = MathHelper.Lerp(murkedMap.LerpedIntensity, murkedMap.Intensity, rate);
 
             UpdateSourceBuffer((mapUid, murkedMap), rate);
         }
@@ -77,14 +71,9 @@ public sealed partial class CEClientMurkSystem : CESharedMurkSystem
 
             if (!comp.MurkBuffer.TryGetValue(uid, out var entry))
             {
-                // Snap on first sight, so flying across the map does not send waves through the murk.
-                comp.MurkBuffer[uid] = new CEMurkedMapComponent.MurkEntry
-                {
-                    Position = position,
-                    Radius = radius,
-                    Strength = source.Intensity,
-                };
-                continue;
+                // Position is exact from the start, but the sphere itself grows out of nothing.
+                entry = new CEMurkedMapComponent.MurkEntry { Position = position };
+                comp.MurkBuffer[uid] = entry;
             }
 
             entry.Position = position;

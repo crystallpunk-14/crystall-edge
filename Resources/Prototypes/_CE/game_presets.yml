@@ -27,7 +27,7 @@
   description: ce-game-preset-greenshift-description
   showInVote: true
   rules:
-  - CEGameRule7Days
+  - CEGameRuleMurkConsuming
   #- CEGameRuleThieves
   - CERampingStationEventScheduler
   - CEBasicRoundstartVariation
@@ -39,7 +39,7 @@
   description: ce-game-preset-coral-awakening-description
   showInVote: true
   rules:
-  - CEGameRule7Days
+  - CEGameRuleMurkConsuming
   - CEGameRuleCoralAwakening
   - CERampingStationEventScheduler
   - CEBasicRoundstartVariation
