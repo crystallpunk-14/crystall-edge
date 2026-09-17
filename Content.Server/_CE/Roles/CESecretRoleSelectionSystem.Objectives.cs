@@ -27,7 +27,7 @@ public sealed partial class CESecretRoleSelectionSystem
             : role.ObjectivePool;
 
         if (rolePool is not null)
-            GrantObjectivesFromPool(mindId, mind, rolePool);
+            CreateObjectivesFromPool(mindId, mind, rolePool);
 
         if (!TryGetDepartment(role.ID, out var department))
             return;
@@ -37,11 +37,32 @@ public sealed partial class CESecretRoleSelectionSystem
             : department.ObjectivePool;
 
         if (departmentPool is not null)
-            GrantObjectivesFromPool(mindId, mind, departmentPool);
+            GrantSharedDepartmentObjectives(rule, mindId, mind, department.ID, departmentPool);
     }
 
-    private void GrantObjectivesFromPool(EntityUid mindId, MindComponent mind, CEObjectivePool pool)
+    // Department objectives are shared across the whole faction: the pool is only drawn once
+    // (for whoever is granted them first), and every other member of the department - including
+    // late-joiners - is handed the same objective entities rather than a personal copy.
+    private void GrantSharedDepartmentObjectives(
+        Entity<CESecretRoleSelectionComponent> rule,
+        EntityUid mindId,
+        MindComponent mind,
+        ProtoId<CESecretDepartmentPrototype> department,
+        CEObjectivePool pool)
     {
+        if (rule.Comp.DepartmentObjectives.TryGetValue(department, out var objectives))
+        {
+            foreach (var objective in objectives)
+                _mind.AddObjective(mindId, mind, objective);
+            return;
+        }
+
+        rule.Comp.DepartmentObjectives[department] = CreateObjectivesFromPool(mindId, mind, pool);
+    }
+
+    private List<EntityUid> CreateObjectivesFromPool(EntityUid mindId, MindComponent mind, CEObjectivePool pool)
+    {
+        var created = new List<EntityUid>();
         var candidates = pool.Weighted.ShallowClone();
         var difficulty = 0f;
 
@@ -58,7 +79,10 @@ public sealed partial class CESecretRoleSelectionSystem
 
             _mind.AddObjective(mindId, mind, objective.Value);
             difficulty += objectiveComp.Difficulty;
+            created.Add(objective.Value);
         }
+
+        return created;
     }
 
     private bool TryGetDepartment(ProtoId<CESecretRolePrototype> role, out CESecretDepartmentPrototype department)

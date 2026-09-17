@@ -20,6 +20,15 @@ public sealed partial class CESecretRoleSelectionComponent : Component
     /// </summary>
     [DataField]
     public Dictionary<ProtoId<CESecretRolePrototype>, int> AssignedCounts = new();
+
+    /// <summary>
+    /// Objectives already drawn from each secret department's pool this round. A department's
+    /// objectives are shared: drawn once for the first member granted them, then the same
+    /// objective entities are handed to every later member of that department (including
+    /// late-joiners), rather than each player getting their own personal copy.
+    /// </summary>
+    [DataField]
+    public Dictionary<ProtoId<CESecretDepartmentPrototype>, List<EntityUid>> DepartmentObjectives = new();
 }
 
 /// <summary>

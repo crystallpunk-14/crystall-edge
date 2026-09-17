@@ -41,10 +41,10 @@ public sealed partial class CESecretDepartmentPrototype : IPrototype
     public int Weight;
 
     /// <summary>
-    /// Default pool of shared objectives granted independently to every player holding a role
-    /// in this faction, unless a GameRule's
-    /// <see cref="Content.Server._CE.Roles.CESecretRoleObjectivesOverrideComponent"/> overrides
-    /// it for that round.
+    /// Default pool of objectives shared by the whole faction: drawn once per round and handed
+    /// to every player holding a role in this faction (including late-joiners), rather than a
+    /// personal copy per player. Overridable per round by a GameRule's
+    /// <see cref="Content.Server._CE.Roles.CESecretRoleObjectivesOverrideComponent"/>.
     /// </summary>
     [DataField]
     public CEObjectivePool? ObjectivePool;
