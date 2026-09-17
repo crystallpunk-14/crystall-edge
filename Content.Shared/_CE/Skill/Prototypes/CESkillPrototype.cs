@@ -60,11 +60,12 @@ public sealed partial class CESkillPrototype : IPrototype, IInheritingPrototype
     public EntProtoId Book = "CEBaseScienceBookUndefined";
 
     /// <summary>
-    /// Whether this skill can be recorded into a book via the pen-writing system
-    /// (<see cref="CESharedSkillSystem.InitializePen"/>).
+    /// Whether this skill's knowledge can be copied into a book via the pen-writing system
+    /// (<see cref="CESharedSkillSystem.InitializePen"/>). Defaults to false - most skills
+    /// represent something learned firsthand, not a recipe to hand off.
     /// </summary>
     [DataField]
-    public bool WritableToBook = true;
+    public bool Copyable;
 
     /// <summary>
     /// Skill effect. Used to determine what happens when the player learns the skill. Optional -

@@ -2,8 +2,10 @@
   id: ArcaneEngineeringSkillBase
   abstract: true
   book: CEBaseScienceBookArcaneEngineering
+  copyable: true
 
 - type: skill
   id: SpellcastingSkillBase
   abstract: true
   book: CEBaseScienceBookSpellcasting
+  copyable: true

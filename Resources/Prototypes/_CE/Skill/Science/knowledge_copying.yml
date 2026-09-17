@@ -5,3 +5,13 @@
   icon:
     sprite: _CE/Interface/Paper/pen_interact_icons.rsi
     state: reseaerch_write
+  copyable: true
+  effect: !type:AddStatusEffect
+    effect: CEStatusEffectKnowledgeCopying
+
+- type: entity
+  parent: StatusEffectBase
+  id: CEStatusEffectKnowledgeCopying
+  name: knowledge copying
+  components:
+  - type: CEKnowledgeCopyingAbility

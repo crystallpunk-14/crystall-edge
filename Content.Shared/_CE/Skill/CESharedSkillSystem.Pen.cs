@@ -1,7 +1,7 @@
 using Content.Shared._CE.Skill.Components;
-using Content.Shared._CE.Skill.Prototypes;
 using Content.Shared._CE.Pen;
 using Content.Shared.DoAfter;
+using Content.Shared.StatusEffectNew;
 using Content.Shared.Tag;
 using Robust.Shared.Analyzers;
 using Robust.Shared.Audio;
@@ -15,10 +15,9 @@ public abstract partial class CESharedSkillSystem
 {
     [Dependency] private TagSystem _tag = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private StatusEffectsSystem _statusEffects = default!;
 
     private static readonly ProtoId<TagPrototype> BookTag = "Book";
-
-    private static readonly ProtoId<CESkillPrototype> KnowledgeCopyingSkill = "KnowledgeCopyingTechniques";
 
     private static readonly SpriteSpecifier RecordSkillIcon =
         new SpriteSpecifier.Rsi(new ResPath("/Textures/_CE/Interface/Paper/pen_interact_icons.rsi"), "reseaerch_write");
@@ -36,7 +35,7 @@ public abstract partial class CESharedSkillSystem
         if (ent.Owner != args.User || ent.Comp.LearnedSkills.Count == 0)
             return;
 
-        if (!HaveSkill(ent.Owner, KnowledgeCopyingSkill, ent.Comp))
+        if (!_statusEffects.HasEffectComp<CEKnowledgeCopyingAbilityComponent>(ent.Owner))
             return;
 
         if (!CanRecordSkill(args.Target))
@@ -51,13 +50,13 @@ public abstract partial class CESharedSkillSystem
         if (!ent.Comp.LearnedSkills.Contains(args.Skill))
             return;
 
-        if (!HaveSkill(ent.Owner, KnowledgeCopyingSkill, ent.Comp))
+        if (!_statusEffects.HasEffectComp<CEKnowledgeCopyingAbilityComponent>(ent.Owner))
             return;
 
         if (!CanRecordSkill(args.Target))
             return;
 
-        if (!_proto.TryIndex(args.Skill, out var skillProto) || !skillProto.WritableToBook)
+        if (!_proto.TryIndex(args.Skill, out var skillProto) || !skillProto.Copyable)
             return;
 
         var doAfterArgs = new DoAfterArgs(EntityManager, ent.Owner, ReadTime, new CEPenRecordSkillDoAfterEvent(args.Skill), ent, target: args.Target, used: args.Pen)
@@ -81,10 +80,10 @@ public abstract partial class CESharedSkillSystem
         if (!ent.Comp.LearnedSkills.Contains(args.Skill) || !CanRecordSkill(target))
             return;
 
-        if (!HaveSkill(ent.Owner, KnowledgeCopyingSkill, ent.Comp))
+        if (!_statusEffects.HasEffectComp<CEKnowledgeCopyingAbilityComponent>(ent.Owner))
             return;
 
-        if (!_proto.TryIndex(args.Skill, out var skill) || !skill.WritableToBook)
+        if (!_proto.TryIndex(args.Skill, out var skill) || !skill.Copyable)
             return;
 
         var coordinates = Transform(target).Coordinates;
