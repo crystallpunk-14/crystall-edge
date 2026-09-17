@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server._CE.GameTicking;
 using Content.Server.GameTicking;
@@ -6,10 +7,12 @@ using Content.Server.Mind;
 using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Roles;
 using Content.Shared._CE.Murk.Components;
+using Content.Shared._CE.Objectives.Components;
 using Content.Shared._CE.Roles;
 using Content.Shared._CE.Roundflow;
 using Content.Shared.GameTicking;
 using Content.Shared.Ghost.Components;
+using Content.Shared.Mind;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Components;
@@ -84,6 +87,84 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
             }
             return;
         }
+    }
+
+    /// <summary>
+    /// Clears a player's current secret role (if any) - including its objectives - and grants
+    /// them a new one via whichever active rule is running (used as the bookkeeping container for
+    /// AssignedCounts/DepartmentObjectives even if it doesn't list this role in its own Roles).
+    /// Reused by admin tooling (<c>secretroleset</c>); round-start/late-join assignment calls
+    /// <see cref="GrantSecretRole"/> directly since there's nothing to clear yet.
+    /// </summary>
+    public bool TrySetSecretRole(ICommonSession session, ProtoId<CESecretRolePrototype> roleId, [NotNullWhen(false)] out string? error)
+    {
+        error = null;
+
+        if (!_proto.TryIndex(roleId, out var role))
+        {
+            error = $"Unknown secret role '{roleId}'";
+            return false;
+        }
+
+        Entity<CESecretRoleSelectionComponent>? targetRule = null;
+        var rules = QueryActiveRules();
+        if (rules.MoveNext(out var uid, out _, out var comp, out _))
+            targetRule = (uid, comp);
+
+        if (targetRule is null)
+        {
+            error = "No active secret role rule is running";
+            return false;
+        }
+
+        if (!_mind.TryGetMind(session, out var mindId, out var mind))
+        {
+            error = "Player has no mind";
+            return false;
+        }
+
+        ClearSecretRole(mindId, mind);
+        GrantSecretRole(targetRule.Value, session, role);
+
+        var sphereQuery = EntityQueryEnumerator<CEMurkLusconSphereComponent>();
+        while (sphereQuery.MoveNext(out _, out var sphere))
+        {
+            if (sphere.State == CEMurkSphereState.Cracked)
+            {
+                SendRolePopup(session);
+                break;
+            }
+        }
+
+        return true;
+    }
+
+    /// <summary>
+    /// Removes a mind's current secret role and every objective it was holding, and rolls back
+    /// the granting rule's assigned-count bookkeeping so future assignment stays consistent.
+    /// </summary>
+    private void ClearSecretRole(EntityUid mindId, MindComponent mind)
+    {
+        if (!_role.MindHasRole<CESecretRoleComponent>((mindId, mind), out var roleEnt))
+            return;
+
+        if (roleEnt.Value.Comp2.Role is { } oldRoleId)
+        {
+            var rules = QueryActiveRules();
+            while (rules.MoveNext(out _, out _, out var comp, out _))
+            {
+                if (comp.AssignedCounts.TryGetValue(oldRoleId, out var count) && count > 0)
+                    comp.AssignedCounts[oldRoleId] = count - 1;
+            }
+        }
+
+        if (TryComp<CEObjectiveHolderComponent>(mindId, out var holderComp))
+        {
+            foreach (var objective in holderComp.Objectives.ToList())
+                _ceObjectives.TryRemoveObjective(mindId, objective);
+        }
+
+        _role.MindRemoveRole<CESecretRoleComponent>((mindId, mind));
     }
 
     private void SendRolePopup(ICommonSession session)

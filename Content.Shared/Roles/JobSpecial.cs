@@ -1,3 +1,5 @@
+using Robust.Shared.Prototypes;
+
 namespace Content.Shared.Roles
 {
     /// <summary>
@@ -9,5 +11,10 @@ namespace Content.Shared.Roles
     public abstract partial class JobSpecial
     {
         public abstract void AfterEquip(EntityUid mob);
+
+        // CrystallEdge: lets a special know which job granted it (e.g. to badge skills with their
+        // source profession), without forcing every existing special to take on a job parameter.
+        public virtual void AfterEquip(EntityUid mob, ProtoId<JobPrototype>? job) => AfterEquip(mob);
+        // CrystallEdge end
     }
 }
