@@ -5,7 +5,6 @@
   - BaseMob
   - CEMobDamageable
   - CEMobTemperature
-  - CEMobMurkDissolving
   id: CEMobSimple
   save: false
   abstract: true
@@ -118,10 +117,13 @@
   categories: [ ForkFiltered ]
   abstract: true
   components:
+  - type: CEMurkDissolvingSlowdown
+  - type: CEMurkDissolvingAccent
   - type: CEMurkDissolving
     conversionRemoveComponents:
     - type: Damageable
     - type: MobCollision
+    - type: CEMurkDissolvingAccent
     conversionComponents:
     - type: CEGOAP
       goals:

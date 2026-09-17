@@ -22,14 +22,12 @@ public abstract partial class CESharedMurkSystem
     ];
 
     [SubscribeLocalEvent]
-    private void OnDissolvingAccent(Entity<CEMurkDissolvingComponent> ent, ref AccentGetEvent args)
+    private void OnDissolvingAccent(Entity<CEMurkDissolvingAccentComponent> ent, ref AccentGetEvent args)
     {
-        // A converted soul speaks through its own system, garbling that on top would eat the
-        // words it picked up.
-        if (!ent.Comp.Enabled || !ent.Comp.AffectSpeech || ent.Comp.Converted)
+        if (!TryComp<CEMurkDissolvingStatusComponent>(ent.Owner, out var status))
             return;
 
-        args.Message = Garble(args.Message, ent.Comp.Dissolved);
+        args.Message = Garble(args.Message, status.Dissolved);
     }
 
     /// <summary>

@@ -46,14 +46,14 @@ public sealed partial class CEMurkDissolvingOverlay : Overlay
         if (playerEntity == null)
             return;
 
-        if (!_entityManager.TryGetComponent<CEMurkDissolvingComponent>(playerEntity, out var dissolving)
-            || !dissolving.Enabled)
+        if (!_entityManager.TryGetComponent<CEMurkDissolvingStatusComponent>(playerEntity, out var status)
+            || !status.OverlayEnabled)
         {
             CurrentDissolved = 0f;
             return;
         }
 
-        CurrentDissolved = dissolving.Dissolved;
+        CurrentDissolved = status.Dissolved;
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)

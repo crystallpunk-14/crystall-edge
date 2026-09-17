@@ -31,7 +31,7 @@ public sealed partial class CEMurkDissolvingSystem : EntitySystem
     }
 
     [SubscribeLocalEvent]
-    private void OnStartup(Entity<CEMurkDissolvingComponent> ent, ref ComponentStartup args)
+    private void OnStartup(Entity<CEMurkDissolvingStatusComponent> ent, ref ComponentStartup args)
     {
         UpdateShader(ent);
 
@@ -40,7 +40,7 @@ public sealed partial class CEMurkDissolvingSystem : EntitySystem
     }
 
     [SubscribeLocalEvent]
-    private void OnShutdown(Entity<CEMurkDissolvingComponent> ent, ref ComponentShutdown args)
+    private void OnShutdown(Entity<CEMurkDissolvingStatusComponent> ent, ref ComponentShutdown args)
     {
         if (!Terminating(ent))
             SetShader(ent.Owner, false);
@@ -52,7 +52,7 @@ public sealed partial class CEMurkDissolvingSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnPlayerAttached(LocalPlayerAttachedEvent args)
     {
-        if (HasComp<CEMurkDissolvingComponent>(args.Entity))
+        if (HasComp<CEMurkDissolvingStatusComponent>(args.Entity))
             AddOverlay();
     }
 
@@ -81,13 +81,13 @@ public sealed partial class CEMurkDissolvingSystem : EntitySystem
     }
 
     [SubscribeLocalEvent]
-    private void OnHandleState(Entity<CEMurkDissolvingComponent> ent, ref AfterAutoHandleStateEvent args)
+    private void OnHandleState(Entity<CEMurkDissolvingStatusComponent> ent, ref AfterAutoHandleStateEvent args)
     {
         UpdateShader(ent);
     }
 
     [SubscribeLocalEvent]
-    private void OnBeforeShaderPost(Entity<CEMurkDissolvingComponent> ent, ref BeforePostShaderRenderEvent args)
+    private void OnBeforeShaderPost(Entity<CEMurkDissolvingStatusComponent> ent, ref BeforePostShaderRenderEvent args)
     {
         _shader.SetParameter("dissolve", GetEffectStrength(ent.Comp.Dissolved));
     }
@@ -97,9 +97,9 @@ public sealed partial class CEMurkDissolvingSystem : EntitySystem
         return Math.Clamp((dissolved - EffectStart) / (EffectEnd - EffectStart), 0f, 1f);
     }
 
-    private void UpdateShader(Entity<CEMurkDissolvingComponent> ent)
+    private void UpdateShader(Entity<CEMurkDissolvingStatusComponent> ent)
     {
-        SetShader(ent.Owner, ent.Comp.Enabled && GetEffectStrength(ent.Comp.Dissolved) > 0f);
+        SetShader(ent.Owner, ent.Comp.ShaderEnabled && GetEffectStrength(ent.Comp.Dissolved) > 0f);
     }
 
     private void SetShader(Entity<SpriteComponent?> entity, bool enabled)

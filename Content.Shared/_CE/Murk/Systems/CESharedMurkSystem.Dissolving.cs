@@ -13,19 +13,12 @@ public abstract partial class CESharedMurkSystem
     [Dependency] private AlertsSystem _alerts = default!;
 
     [SubscribeLocalEvent]
-    private void OnDissolvingRefreshMovementSpeed(Entity<CEMurkDissolvingComponent> ent, ref RefreshMovementSpeedModifiersEvent args)
-    {
-        if (!ent.Comp.Enabled || ent.Comp.Dissolved <= 0f)
-            return;
-
-        var modifier = 1f - ent.Comp.Dissolved * ent.Comp.MaxSlowdown;
-        args.ModifySpeed(modifier);
-    }
-
-    [SubscribeLocalEvent]
     private void OnDissolvingRejuvenate(Entity<CEMurkDissolvingComponent> ent, ref RejuvenateEvent args)
     {
-        SetDissolved(ent.Owner, ent.Comp, 0f);
+        if (ent.Comp.Converted || !TryComp<CEMurkDissolvingStatusComponent>(ent.Owner, out var status))
+            return;
+
+        SetDissolved(ent.Owner, status, 0f);
     }
 
     public override void Update(float frameTime)
@@ -51,50 +44,53 @@ public abstract partial class CESharedMurkSystem
             dissolving.NextUpdate = now + dissolving.Frequency;
             DirtyField(uid, dissolving, nameof(CEMurkDissolvingComponent.NextUpdate));
 
+            var status = EnsureComp<CEMurkDissolvingStatusComponent>(uid);
+
             var speed = InMurk(uid, xform) ? dissolving.DissolvingSpeed : -dissolving.RestoringSpeed;
             var delta = speed * (float)dissolving.Frequency.TotalSeconds;
-            var newDissolved = Math.Clamp(dissolving.Dissolved + delta, 0f, 1f);
-            SetDissolved(uid, dissolving, newDissolved);
+            var newDissolved = Math.Clamp(status.Dissolved + delta, 0f, 1f);
+
+            if (SetDissolved(uid, status, newDissolved) && newDissolved >= 1f)
+            {
+                var ev = new CEMurkDissolvedEvent();
+                RaiseLocalEvent(uid, ref ev);
+            }
         }
     }
 
-    private void SetDissolved(EntityUid uid, CEMurkDissolvingComponent dissolving, float value)
+    /// <summary>
+    /// Sets <see cref="CEMurkDissolvingStatusComponent.Dissolved"/> and refreshes everything that
+    /// reacts to it. Returns whether the value actually changed.
+    /// </summary>
+    private bool SetDissolved(EntityUid uid, CEMurkDissolvingStatusComponent status, float value)
     {
-        // A soul stays dissolved. Nothing, rejuvenate included, walks this back.
-        if (dissolving.Converted)
-            return;
+        if (value == status.Dissolved)
+            return false;
 
-        if (value == dissolving.Dissolved)
-            return;
-
-        dissolving.Dissolved = value;
-        DirtyField(uid, dissolving, nameof(CEMurkDissolvingComponent.Dissolved));
+        status.Dissolved = value;
+        DirtyField(uid, status, nameof(CEMurkDissolvingStatusComponent.Dissolved));
         _movement.RefreshMovementSpeedModifiers(uid);
-        UpdateDissolvingAlert(uid, dissolving);
+        UpdateDissolvingAlert(uid, status);
 
-        if (value >= 1f)
-        {
-            var ev = new CEMurkDissolvedEvent();
-            RaiseLocalEvent(uid, ref ev);
-        }
+        return true;
     }
 
-    private void UpdateDissolvingAlert(EntityUid uid, CEMurkDissolvingComponent dissolving)
+    private void UpdateDissolvingAlert(EntityUid uid, CEMurkDissolvingStatusComponent status)
     {
-        if (dissolving.Dissolved <= 0f)
+        if (status.Dissolved <= 0f)
         {
-            _alerts.ClearAlert(uid, dissolving.Alert);
+            _alerts.ClearAlert(uid, status.Alert);
             return;
         }
 
-        short severity = dissolving.Dissolved switch
+        short severity = status.Dissolved switch
         {
             <= 1f / 3f => 1,
             <= 2f / 3f => 2,
             _ => 3,
         };
 
-        _alerts.ShowAlert(uid, dissolving.Alert, severity);
+        _alerts.ShowAlert(uid, status.Alert, severity);
     }
 }
 
