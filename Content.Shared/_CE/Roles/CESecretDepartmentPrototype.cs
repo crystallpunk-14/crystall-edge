@@ -39,4 +39,13 @@ public sealed partial class CESecretDepartmentPrototype : IPrototype
     /// </summary>
     [DataField]
     public int Weight;
+
+    /// <summary>
+    /// Default pool of shared objectives granted independently to every player holding a role
+    /// in this faction, unless a GameRule's
+    /// <see cref="Content.Server._CE.Roles.CESecretRoleObjectivesOverrideComponent"/> overrides
+    /// it for that round.
+    /// </summary>
+    [DataField]
+    public CEObjectivePool? ObjectivePool;
 }
