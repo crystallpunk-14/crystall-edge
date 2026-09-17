@@ -902,3 +902,12 @@
   id: 1084
   time: '2026-09-12T14:45:27.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/461
+- author: TheShuEd
+  changes:
+  - message: Removed ambitions system
+    type: Remove
+  - message: Removed bluetext system
+    type: Remove
+  id: 1085
+  time: '2026-09-17T20:10:41.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/472
