@@ -194,6 +194,18 @@ namespace Content.Shared.GameTicking
             public bool Observer;
 
             public bool Connected;
+
+            // CrystallEdge: secret role revealed in the round-end manifest
+            /// <summary>
+            /// LocId of the secret role's display name, or null if the player never held one.
+            /// </summary>
+            public string? SecretRole;
+
+            /// <summary>
+            /// The secret role's faction color. Meaningless when <see cref="SecretRole"/> is null.
+            /// </summary>
+            public Color SecretRoleColor;
+            // CrystallEdge end
         }
 
         public string GamemodeTitle { get; }

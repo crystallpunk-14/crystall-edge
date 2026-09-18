@@ -45,7 +45,7 @@ public sealed partial class CESecretRoleSelectionSystem
         if (departments.Count == 0)
             return;
 
-        args.AddLine(Loc.GetString("ce-roundend-secret-role-count-department"));
+        args.AddLine(Loc.GetString("ce-roundend-secret-role-factions-header"));
         foreach (var (department, _) in departments)
         {
             args.AddLine(Loc.GetString("ce-roundend-secret-role-department-list",

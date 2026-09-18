@@ -199,10 +199,14 @@ public abstract partial class CESharedObjectiveSystem : EntitySystem
         if (!Resolve(ent, ref ent.Comp))
             return string.Empty;
 
+        var completed = IsCompleted(ent);
+
+        var percent = completed ? 100 : Math.Min(99, (int) (GetProgress(ent) * 100));
+
         return Loc.GetString("ce-objective-summary-fmt",
             ("name", Name(ent)),
-            ("success", IsCompleted(ent)),
-            ("percent", (int) (GetProgress(ent) * 100)));
+            ("success", completed),
+            ("percent", percent));
     }
 
     /// <summary>

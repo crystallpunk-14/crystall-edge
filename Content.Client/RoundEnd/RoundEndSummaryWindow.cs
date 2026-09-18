@@ -154,7 +154,7 @@ public sealed partial class RoundEndSummaryWindow : DefaultWindow
 
         var icNameButton = CreateSortButton("round-end-summary-window-player-manifest-tab-sort-character", SortField.ICName);
         var roleButton = CreateSortButton("round-end-summary-window-player-manifest-tab-sort-role", SortField.Role);
-        var secretRoleButton = CreateSortButton("ce-humanoid-profile-editor-secret-roles-header-title", SortField.SecretRole); //CrystallEdge: replaced player-type sort button with secret role
+        var secretRoleButton = CreateSortButton("ce-roundend-secret-role-column", SortField.SecretRole); //CrystallEdge: replaced player-type sort button with secret role
         var oocNameButton = CreateSortButton("round-end-summary-window-player-manifest-tab-sort-player", SortField.OOCName);
 
         secretRoleButton.SetSortIndicator(true); //CrystallEdge: was playerTypeButton
