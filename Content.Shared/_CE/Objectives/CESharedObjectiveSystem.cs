@@ -191,6 +191,25 @@ public abstract partial class CESharedObjectiveSystem : EntitySystem
     }
 
     /// <summary>
+    /// Formats an objective's name, completion state, and progress into a single localized line
+    /// for round-end summaries.
+    /// </summary>
+    public string GetObjectiveString(Entity<CEObjectiveComponent?> ent)
+    {
+        if (!Resolve(ent, ref ent.Comp))
+            return string.Empty;
+
+        var completed = IsCompleted(ent);
+
+        var percent = completed ? 100 : Math.Min(99, (int) (GetProgress(ent) * 100));
+
+        return Loc.GetString("ce-objective-summary-fmt",
+            ("name", Name(ent)),
+            ("success", completed),
+            ("percent", percent));
+    }
+
+    /// <summary>
     /// Sets the badge shown on an objective's card in the character menu.
     /// </summary>
     public void SetDescriptor(EntityUid uid, LocId name, Color color, LocId? tooltip = null)
