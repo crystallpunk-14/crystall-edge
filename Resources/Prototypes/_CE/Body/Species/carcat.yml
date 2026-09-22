@@ -285,8 +285,11 @@
     lightingColor: '#FFFFFF15'
   - type: FootstepModifier
     footstepSoundCollection: null # Silent footstep
-  - type: CESoftPaws #Soft paws. Awwww
-    maxSpeedLimit: 7 # 2 floors safe fall
+  - type: CEInnateSkills
+    skills:
+    - SoftLanding
+    descriptorName: ce-innate-skill-source-carcat
+    descriptorColor: "#D2691E"
   - type: Bloodstream
     bloodReferenceSolution:
       reagents:

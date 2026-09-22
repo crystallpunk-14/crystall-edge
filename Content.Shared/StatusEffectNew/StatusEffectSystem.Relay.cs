@@ -1,4 +1,5 @@
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
+using Content.Shared._CE.ZLevels.Damage;
 using Content.Shared.Body.Events;
 using Content.Shared.Atmos;
 using Content.Shared.Chat;
@@ -39,6 +40,7 @@ public sealed partial class StatusEffectsSystem
         SubscribeLocalEvent<StatusEffectContainerComponent, AttackAttemptEvent>(RelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, ShotAttemptedEvent>(RefRelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, BeforeThrowEvent>(RefRelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, CEZFallingDamageCalculateEvent>(RelayStatusEffectEvent);
         //CrystallEdge zone end
 
         SubscribeLocalEvent<StatusEffectContainerComponent, LocalPlayerAttachedEvent>(RelayStatusEffectEvent);

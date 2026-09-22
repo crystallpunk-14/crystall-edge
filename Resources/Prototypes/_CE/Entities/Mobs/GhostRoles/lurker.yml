@@ -95,8 +95,11 @@
   - type: ConditionalSpawner
     prototypes:
     - CELurkerRoarSound
-  - type: CESoftPaws
-    maxSpeedLimit: 7 # 2 floors safe fall
+  - type: CEInnateSkills
+    skills:
+    - SoftLanding
+    descriptorName: ce-innate-skill-source-lurker
+    descriptorColor: "#2E3A4E"
   - type: ActionGrant
     actions:
     - CEActionLurkerJump

@@ -1,17 +1,14 @@
-/*
- * This file is sublicensed under MIT License
- * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
- */
-
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._CE.ZLevels.Damage.SoftPaws;
+namespace Content.Shared._CE.ZLevels.Damage.SoftLanding;
 
 /// <summary>
 /// Reduces fall damage and removes stun if the fall speed does not exceed a certain limit.
+/// Lives on a status effect entity granted by the <c>SoftLanding</c> skill - see
+/// <see cref="CESoftLandingStatusEffectSystem"/>.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-public sealed partial class CESoftPawsComponent : Component
+public sealed partial class CESoftLandingStatusEffectComponent : Component
 {
     /// <summary>
     /// The fall speed must be less than this for damage reduction and stun to start working.
