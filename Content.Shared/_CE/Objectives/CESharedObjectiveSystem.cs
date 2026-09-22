@@ -141,7 +141,7 @@ public abstract partial class CESharedObjectiveSystem : EntitySystem
                 _pvsOverride.RemoveSessionOverride(obj, session);
         }
 
-        var changedEv = new CEObjectivesChangedEvent(ent.Owner);
+        var changedEv = new CEObjectivesChangedEvent(ent.Owner, added, removed);
         RaiseLocalEvent(ent.Owner, ref changedEv);
     }
 

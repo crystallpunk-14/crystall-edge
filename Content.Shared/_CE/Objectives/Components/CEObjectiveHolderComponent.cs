@@ -32,7 +32,7 @@ public sealed partial class CEObjectiveHolderComponent : Component
 /// Raised on a <see cref="CEObjectiveHolderComponent"/> when its objective list changes.
 /// </summary>
 [ByRefEvent]
-public readonly record struct CEObjectivesChangedEvent(EntityUid Holder);
+public readonly record struct CEObjectivesChangedEvent(EntityUid Holder, List<EntityUid> Added, List<EntityUid> Removed);
 
 /// <summary>
 /// Raised on an objective holder to collect any additional objectives it has from other sources -

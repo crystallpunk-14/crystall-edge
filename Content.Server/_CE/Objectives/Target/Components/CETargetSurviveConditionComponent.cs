@@ -9,4 +9,11 @@ namespace Content.Server._CE.Objectives.Target.Components;
 /// </summary>
 [RegisterComponent]
 [Access(typeof(CETargetSurviveConditionSystem))]
-public sealed partial class CETargetSurviveConditionComponent : Component;
+public sealed partial class CETargetSurviveConditionComponent : Component
+{
+    /// <summary>
+    /// Progress shown while no target has been picked yet.
+    /// </summary>
+    [DataField]
+    public float DefaultProgress;
+}

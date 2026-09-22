@@ -1,4 +1,3 @@
-using Content.Shared._CE.Objectives;
 using Content.Shared._CE.Objectives.Components;
 using Content.Shared._CE.Objectives.Target.Components;
 using Content.Shared.Whitelist;
@@ -8,14 +7,12 @@ namespace Content.Shared._CE.Objectives.Target;
 /// <summary>
 /// Handles <see cref="CEShareTargetObjectiveComponent"/>.
 /// </summary>
-public sealed partial class CEShareTargetObjectiveSystem : EntitySystem
+public sealed partial class CEShareTargetObjectiveSystem : CEBaseObjectiveSystem<CEShareTargetObjectiveComponent>
 {
     [Dependency] private EntityWhitelistSystem _entityWhitelist = default!;
     [Dependency] private CETargetObjectiveSystem _targetObjective = default!;
-    [Dependency] private CESharedObjectiveSystem _objectives = default!;
 
-    [SubscribeLocalEvent]
-    private void OnInitializeObjective(Entity<CEShareTargetObjectiveComponent> ent, ref CEInitializeObjectiveEvent args)
+    protected override void InitializeObjective(Entity<CEShareTargetObjectiveComponent> ent, ref CEInitializeObjectiveEvent args)
     {
         TryResolveTarget(ent, args.Holder.AsNullable());
     }
@@ -28,7 +25,7 @@ public sealed partial class CEShareTargetObjectiveSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnObjectivesChanged(Entity<CEObjectiveHolderComponent> ent, ref CEObjectivesChangedEvent args)
     {
-        foreach (var objective in _objectives.GetObjectives(ent.AsNullable()))
+        foreach (var objective in ObjectivesSys.GetObjectives(ent.AsNullable()))
         {
             if (!TryComp<CEShareTargetObjectiveComponent>(objective.Owner, out var share))
                 continue;
@@ -42,7 +39,7 @@ public sealed partial class CEShareTargetObjectiveSystem : EntitySystem
 
     private void TryResolveTarget(Entity<CEShareTargetObjectiveComponent> ent, Entity<CEObjectiveHolderComponent?> holder)
     {
-        foreach (var objective in _objectives.GetObjectives(holder))
+        foreach (var objective in ObjectivesSys.GetObjectives(holder))
         {
             if (objective.Owner == ent.Owner)
                 continue;

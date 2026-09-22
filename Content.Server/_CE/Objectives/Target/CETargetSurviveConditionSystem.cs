@@ -1,52 +1,41 @@
-using System.Linq;
 using Content.Server._CE.Objectives.Target.Components;
-using Content.Shared._CE.Objectives;
 using Content.Shared._CE.Objectives.Components;
 using Content.Shared._CE.Objectives.Target;
-using Content.Shared._CE.Objectives.Target.Components;
 using Content.Shared.Mobs;
-using Content.Shared.Mobs.Systems;
+using Content.Shared.Mobs.Components;
 
 namespace Content.Server._CE.Objectives.Target;
 
 /// <summary>
 /// Handles <see cref="CETargetSurviveConditionComponent"/>.
 /// </summary>
-public sealed partial class CETargetSurviveConditionSystem : EntitySystem
+public sealed partial class CETargetSurviveConditionSystem : CEBaseTargetObjectiveSystem<CETargetSurviveConditionComponent>
 {
-    [Dependency] private CETargetObjectiveSystem _target = default!;
-    [Dependency] private CESharedObjectiveSystem _objectives = default!;
-    [Dependency] private MobStateSystem _mobState = default!;
+    public override Type[] TargetRelayComponents { get; } = [typeof(CETargetSurviveConditionMarkerComponent)];
 
-    [SubscribeLocalEvent]
-    private void OnGetProgress(Entity<CETargetSurviveConditionComponent> ent, ref CEGetObjectiveProgressEvent args)
+    protected override void GetObjectiveProgress(Entity<CETargetSurviveConditionComponent> ent, ref CEGetObjectiveProgressEvent args)
     {
-        if (!TryComp<CETargetObjectiveComponent>(ent.Owner, out var targetComp) || targetComp.Target is not { } target)
-            return;
-
-        args.Progress = _mobState.IsAlive(target) ? 1f : 0f;
-    }
-
-    [SubscribeLocalEvent]
-    private void OnTargetChanged(Entity<CETargetSurviveConditionComponent> ent, ref CEObjectiveTargetChangedEvent args)
-    {
-        if (args.OldTarget is { } oldTarget &&
-            !TerminatingOrDeleted(oldTarget) &&
-            !_target.GetTargetingObjectives<CETargetSurviveConditionComponent>(oldTarget).Any())
+        if (!TargetObjective.TryGetTarget(ent.Owner, out var target))
         {
-            RemComp<CETargetSurviveConditionMarkerComponent>(oldTarget);
+            args.Progress = ent.Comp.DefaultProgress;
+            return;
         }
 
-        if (args.NewTarget is { } newTarget)
-            EnsureComp<CETargetSurviveConditionMarkerComponent>(newTarget);
+        if (!TryComp<MobStateComponent>(target.Value, out var mobState))
+            return;
 
-        _objectives.RefreshObjectiveProgress(ent.Owner);
+        args.Progress = mobState.CurrentState switch
+        {
+            MobState.Alive => 1f,
+            MobState.Critical => 0.5f,
+            MobState.Dead => 0f,
+            _ => 1f,
+        };
     }
 
     [SubscribeLocalEvent]
     private void OnMobStateChanged(Entity<CETargetSurviveConditionMarkerComponent> ent, ref MobStateChangedEvent args)
     {
-        foreach (var objective in _target.GetTargetingObjectives<CETargetSurviveConditionComponent>(ent.Owner))
-            _objectives.RefreshObjectiveProgress(objective.Owner);
+        RefreshTargetingObjectives(ent);
     }
 }
