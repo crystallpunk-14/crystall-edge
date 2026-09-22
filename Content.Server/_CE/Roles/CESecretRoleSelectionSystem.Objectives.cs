@@ -45,10 +45,12 @@ public sealed partial class CESecretRoleSelectionSystem
             ? roleOverride
             : role.ObjectivePool;
 
-        if (rolePool is not null)
-            CreateObjectivesFromPool(mindId, rolePool);
+        var hasDepartment = TryGetDepartment(role.ID, out var department);
 
-        if (TryGetDepartment(role.ID, out var department))
+        if (rolePool is not null)
+            CreateObjectivesFromPool(mindId, rolePool, role.Name, hasDepartment ? department.Color : Color.White);
+
+        if (hasDepartment)
         {
             var departmentPool = overrides is { } d && d.DepartmentOverrides.TryGetValue(department.ID, out var deptOverride)
                 ? deptOverride

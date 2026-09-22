@@ -5,3 +5,11 @@
   service: !type:CEBuyItemsService
     product: CEBaseLockpick
     count: 1
+
+- type: tradingPosition
+  id: CEPlushieGoldenFlem
+  faction: BlackMarket
+  priceMarkup: 200
+  service: !type:CEBuyItemsService
+    product: CEPlushieGoldenFlem
+    count: 1

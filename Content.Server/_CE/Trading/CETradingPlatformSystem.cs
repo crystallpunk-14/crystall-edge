@@ -108,6 +108,9 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
         if (!_currency.TryTakeCurrency(args.Actor, price))
             return;
 
+        var purchaseEv = new CEPlatformPurchaseEvent(args.Actor, ent.Comp.Faction, price);
+        RaiseLocalEvent(ref purchaseEv);
+
         ent.Comp.NextBuyTime = Timing.CurTime + TimeSpan.FromSeconds(1f);
         Dirty(ent);
 

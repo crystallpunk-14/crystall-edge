@@ -36,3 +36,10 @@ public sealed class CETradingPlatformUiState(NetEntity platform, int sellBalance
 public readonly struct CETradingProductEntry
 {
 }
+
+/// <summary>
+/// Broadcast whenever a purchase on any trading platform succeeds - lets unrelated systems (e.g.
+/// objective conditions) react without the trading system needing to know about them.
+/// </summary>
+[ByRefEvent]
+public readonly record struct CEPlatformPurchaseEvent(EntityUid Buyer, ProtoId<CETradingFactionPrototype> Faction, int Price);
