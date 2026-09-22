@@ -14,4 +14,4 @@
   name: soft landing
   components:
   - type: CESoftLandingStatusEffect
-    maxSpeedLimit: 1
+    maxSpeedLimit: 7 # 2 floors safe fall
