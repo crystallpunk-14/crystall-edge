@@ -199,38 +199,59 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
         ICommonSession[] players,
         IReadOnlyDictionary<NetUserId, HumanoidCharacterProfile> profiles)
     {
-        // Players still eligible to receive a secret role this round - at most one each,
-        // and never someone who already has a secret role from another active rule.
-        var available = players
-            .Where(session => profiles.ContainsKey(session.UserId) && !HasSecretRole(session))
-            .ToHashSet();
+        var decisions = DecideSecretRoles(rule, players, profiles);
 
-        var entries = rule.Comp.Roles.OrderByDescending(entry => entry.Weight);
-
-        // Grant all roles first, create objectives after - a target-based objective (e.g. Lover)
-        // may need another role's objectives to already exist to pick a valid target.
         var granted = new List<(EntityUid MindId, MindComponent Mind, CESecretRolePrototype Role)>();
 
-        foreach (var entry in entries)
+        foreach (var session in players)
         {
-            if (!_proto.TryIndex(entry.Role, out var role))
+            if (!decisions.TryGetValue(session.UserId, out var roleId) || !_proto.TryIndex(roleId, out var role))
                 continue;
 
-            var target = entry.GetTargetCount(players.Length);
-            while (GetAssignedCount(rule, entry.Role) < target)
-            {
-                if (!TryPickCandidate(role, available, profiles, out var picked))
-                    break;
-
-                available.Remove(picked);
-
-                if (GrantSecretRole(rule, picked, role) is { } grantedMind)
-                    granted.Add((grantedMind.MindId, grantedMind.Mind, role));
-            }
+            if (GrantSecretRole(rule, session, role) is { } grantedMind)
+                granted.Add((grantedMind.MindId, grantedMind.Mind, role));
         }
 
         foreach (var (mindId, mind, role) in granted)
             GrantSecretRoleObjectives(rule, mindId, mind, role);
+    }
+
+    /// <summary>
+    /// Decides which secret role, if any, each player should receive this round. Pure - touches no
+    /// minds/components, so it's directly unit-testable without spinning up a round. Resolves
+    /// strictly by priority tier, globally, before moving to the next tier: a player who set even
+    /// one role to High must never lose it to someone else's default-Low "don't care" pick for that
+    /// same role, regardless of shuffle order.
+    /// </summary>
+    public Dictionary<NetUserId, ProtoId<CESecretRolePrototype>> DecideSecretRoles(
+        Entity<CESecretRoleSelectionComponent> rule,
+        ICommonSession[] players,
+        IReadOnlyDictionary<NetUserId, HumanoidCharacterProfile> profiles)
+    {
+        var available = players
+            .Where(session => profiles.ContainsKey(session.UserId) && !HasSecretRole(session))
+            .ToList();
+        _random.Shuffle(available);
+
+        var assignedCounts = new Dictionary<ProtoId<CESecretRolePrototype>, int>(rule.Comp.AssignedCounts);
+        var result = new Dictionary<NetUserId, ProtoId<CESecretRolePrototype>>();
+
+        for (var tier = JobPriority.High; tier >= JobPriority.Low; tier--)
+        {
+            foreach (var session in available)
+            {
+                if (result.ContainsKey(session.UserId))
+                    continue;
+
+                if (!TryPickRoleAtTier(rule, assignedCounts, session, profiles[session.UserId], players.Length, tier, out var role))
+                    continue;
+
+                assignedCounts[role.ID] = assignedCounts.GetValueOrDefault(role.ID) + 1;
+                result[session.UserId] = role.ID;
+            }
+        }
+
+        return result;
     }
 
     private bool TryAssignLateJoinSecretRole(
@@ -239,65 +260,89 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
         HumanoidCharacterProfile profile,
         int playerCount)
     {
-        foreach (var entry in rule.Comp.Roles.OrderByDescending(e => e.Weight))
-        {
-            if (!_proto.TryIndex(entry.Role, out var role))
-                continue;
+        if (!TryPickRole(rule, rule.Comp.AssignedCounts, session, profile, playerCount, out var role))
+            return false;
 
-            if (GetAssignedCount(rule, entry.Role) >= entry.GetTargetCount(playerCount))
-                continue;
+        if (GrantSecretRole(rule, session, role) is { } granted)
+            GrantSecretRoleObjectives(rule, granted.MindId, granted.Mind, role);
 
-            if (!IsEligible(session, profile, role))
-                continue;
-
-            // Not batched like AssignSecretRoles - a single late joiner needs no deferral.
-            if (GrantSecretRole(rule, session, role) is { } granted)
-                GrantSecretRoleObjectives(rule, granted.MindId, granted.Mind, role);
-
-            return true;
-        }
-
-        return false;
+        return true;
     }
 
-    private bool TryPickCandidate(
-        CESecretRolePrototype role,
-        HashSet<ICommonSession> available,
-        IReadOnlyDictionary<NetUserId, HumanoidCharacterProfile> profiles,
-        out ICommonSession picked)
+    /// <summary>
+    /// Picks a single player's own highest-priority role, checking tiers one at a time via
+    /// <see cref="TryPickRoleAtTier"/> against the rule's live assigned counts. Only used for a lone
+    /// late joiner - <see cref="DecideSecretRoles"/> handles the round-start batch, where tiers must
+    /// be resolved globally across every player before moving to the next.
+    /// </summary>
+    private bool TryPickRole(
+        Entity<CESecretRoleSelectionComponent> rule,
+        IReadOnlyDictionary<ProtoId<CESecretRolePrototype>, int> assignedCounts,
+        ICommonSession session,
+        HumanoidCharacterProfile profile,
+        int playerCount,
+        [NotNullWhen(true)] out CESecretRolePrototype? role)
     {
         for (var tier = JobPriority.High; tier >= JobPriority.Low; tier--)
         {
-            var candidates = new List<ICommonSession>();
-
-            foreach (var session in available)
-            {
-                var profile = profiles[session.UserId];
-
-                // "Never" no longer exists in the UI, but old data or an untouched role should
-                // still be treated as the Low floor rather than excluded.
-                var priority = profile.SecretRolePriorities.GetValueOrDefault(role.ID, JobPriority.Low);
-                if (priority < JobPriority.Low)
-                    priority = JobPriority.Low;
-
-                if (priority != tier)
-                    continue;
-
-                if (!IsEligible(session, profile, role))
-                    continue;
-
-                candidates.Add(session);
-            }
-
-            if (candidates.Count == 0)
-                continue;
-
-            picked = _random.Pick(candidates);
-            return true;
+            if (TryPickRoleAtTier(rule, assignedCounts, session, profile, playerCount, tier, out role))
+                return true;
         }
 
-        picked = default!;
+        role = null;
         return false;
+    }
+
+    /// <summary>
+    /// Picks a player's highest-<see cref="CESecretRoleSelectorEntry.Weight"/> role (random tie-break)
+    /// among the ones they set to exactly <paramref name="tier"/> priority, that they're eligible
+    /// for, and that still have room per <paramref name="assignedCounts"/>.
+    /// </summary>
+    private bool TryPickRoleAtTier(
+        Entity<CESecretRoleSelectionComponent> rule,
+        IReadOnlyDictionary<ProtoId<CESecretRolePrototype>, int> assignedCounts,
+        ICommonSession session,
+        HumanoidCharacterProfile profile,
+        int playerCount,
+        JobPriority tier,
+        [NotNullWhen(true)] out CESecretRolePrototype? role)
+    {
+        var candidates = new List<(CESecretRoleSelectorEntry Entry, CESecretRolePrototype Role)>();
+
+        foreach (var entry in rule.Comp.Roles)
+        {
+            if (!_proto.TryIndex(entry.Role, out var candidateRole))
+                continue;
+
+            // "Never" no longer exists in the UI, but old data or an untouched role should
+            // still be treated as the Low floor rather than excluded.
+            var priority = profile.SecretRolePriorities.GetValueOrDefault(entry.Role, JobPriority.Low);
+            if (priority < JobPriority.Low)
+                priority = JobPriority.Low;
+
+            if (priority != tier)
+                continue;
+
+            if (assignedCounts.GetValueOrDefault(entry.Role) >= entry.GetTargetCount(playerCount))
+                continue;
+
+            if (!IsEligible(session, profile, candidateRole))
+                continue;
+
+            candidates.Add((entry, candidateRole));
+        }
+
+        if (candidates.Count == 0)
+        {
+            role = null;
+            return false;
+        }
+
+        var maxWeight = candidates.Max(c => c.Entry.Weight);
+        var topCandidates = candidates.Where(c => c.Entry.Weight == maxWeight).ToList();
+
+        role = _random.Pick(topCandidates).Role;
+        return true;
     }
 
     private bool IsEligible(ICommonSession session, HumanoidCharacterProfile profile, CESecretRolePrototype role)

@@ -56,16 +56,16 @@ public sealed partial class CESecretRoleSelectorEntry
     public MinMax Range = new(0, int.MaxValue);
 
     /// <summary>
-    /// If true, this role ignores <see cref="PlayerRatio"/>/<see cref="Range"/> entirely and
-    /// absorbs every player left over after higher-weight roles have taken their share -
-    /// a guaranteed fallback (e.g. Civilian), rather than a population-scaled slot count.
+    /// If true, this role ignores <see cref="PlayerRatio"/>/<see cref="Range"/> entirely and never
+    /// runs out of room - a guaranteed fallback (e.g. Civilian). Pair with a low <see cref="Weight"/>
+    /// so it only gets picked when nothing else is available.
     /// </summary>
     [DataField]
     public bool FillRemaining;
 
     /// <summary>
-    /// Roles with a higher weight have their candidate pool fully resolved (all priority tiers)
-    /// before lower-weight roles are considered.
+    /// Tie-breaker used when a player has equal priority for more than one still-open role -
+    /// the higher-weight one wins (see <see cref="CESecretRoleSelectionSystem.TryPickRole"/>).
     /// </summary>
     [DataField]
     public int Weight;
