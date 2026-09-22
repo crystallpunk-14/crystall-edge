@@ -101,8 +101,6 @@
           False: {visible: false}
         unfoldedLayer:
           True: {visible: false}
-  - type: CETheftValue
-    difficulty: 2
   - type: MultiHandedItem
   - type: ClothingSpeedModifier
     walkModifier: 0.8

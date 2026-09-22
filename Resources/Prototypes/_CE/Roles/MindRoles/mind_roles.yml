@@ -1,15 +1,3 @@
-- type: entity
-  parent: BaseMindRoleAntag
-  id: CEMindRoleThief
-  categories: [ ForkFiltered ]
-  name: Thief role
-  components:
-  - type: MindRole
-    antagPrototype: CEThief
-    roleType: SoloAntagonist
-    exclusiveAntag: true
-  - type: CEThiefRole
-
 # One generic mind role shared by every secret role - the actual role is stored on CESecretRoleComponent.
 - type: entity
   parent: BaseMindRole

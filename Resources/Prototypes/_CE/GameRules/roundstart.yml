@@ -7,29 +7,6 @@
 
 - type: entity
   parent: CEBaseGameRule
-  id: CEGameRuleThieves
-  components:
-  - type: GameRule
-    minPlayers: 3
-  - type: CEThiefRule
-  - type: AntagObjectives
-    objectives:
-    - CEThiefObjectiveBeCool
-    - CEThiefObjectiveBeSafe
-  - type: AntagSelection
-    selectionTime: JobsAssigned
-    agentName: ce-roles-antag-thief-name
-    lateJoinAdditional: true
-    antags:
-    - !type:LinearAntagCount
-      proto: CEThief
-      playerRatio: 3
-      range:
-        min: 1
-        max: 5
-
-- type: entity
-  parent: CEBaseGameRule
   id: CEGameRuleMagicEssenceNodes
   components:
   - type: CEMagicEssenceNodeRule

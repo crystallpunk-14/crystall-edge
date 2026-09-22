@@ -19,6 +19,10 @@ ce-secret-role-name-murkwalker = Murkwalker
 ce-secret-role-description-murkwalker = TODO
 ce-secret-role-briefing-murkwalker = TODO
 
+ce-secret-role-name-thief = Thief
+ce-secret-role-description-thief = TODO
+ce-secret-role-briefing-thief = TODO
+
 ce-roundend-secret-role-column = Hidden Role
 ce-roundend-secret-role-factions-header = [font size=14]This round's factions:[/font]
 ce-roundend-secret-role-department-list = [font size=16]The [color={$color}][bold]{$name}[/bold][/color] faction[/font]

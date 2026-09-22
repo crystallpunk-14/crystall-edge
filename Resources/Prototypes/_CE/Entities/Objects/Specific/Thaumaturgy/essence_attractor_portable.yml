@@ -92,8 +92,6 @@
         unfoldedLayer:
           True: { visible: false }
           False: { visible: true }
-  - type: CETheftValue
-    difficulty: 2
   - type: ClothingSpeedModifier
     walkModifier: 0.8
     sprintModifier: 0.8

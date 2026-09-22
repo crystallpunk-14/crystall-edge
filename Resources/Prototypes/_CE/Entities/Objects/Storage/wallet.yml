@@ -6,6 +6,9 @@
   suffix: Empty
   categories: [ ForkFiltered ]
   components:
+  - type: Tag
+    tags:
+    - CEWallet
   - type: Sprite
     sprite: /Textures/_CE/Objects/Storage/wallet.rsi
     layers:

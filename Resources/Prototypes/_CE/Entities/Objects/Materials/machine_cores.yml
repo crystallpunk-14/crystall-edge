@@ -262,14 +262,6 @@
     prototype: CETradingPlatformEmpireGuard
 
 - type: entity
-  id: CEMachineCoreTradingPlatformBlackMarket
-  parent: CEMachineCoreTradingBase
-  name: trading platform machine core (Black Market)
-  components:
-  - type: MachineBoard
-    prototype: CETradingPlatformBlackMarket
-
-- type: entity
   id: CEMachineCoreTradingPlatformHomeDecor
   parent: CEMachineCoreTradingBase
   name: trading platform machine core (Home Decor)

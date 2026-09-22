@@ -15,8 +15,9 @@
   color: "#87b7ff"
   weight: 0
   roles:
-  - CEMurkwalker
   - CECivilian
+  - CEThief
+  - CEMurkwalker
   objectivePool:
     maxDifficulty: 1
     weighted:

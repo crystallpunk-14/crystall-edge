@@ -7,10 +7,9 @@
     count: 1
 
 - type: tradingPosition
-  id: CEThiefHideoutFlag
+  id: CEPlushieGoldenFlem
   faction: BlackMarket
-  priceMarkup: 10
-  category: Materials
+  priceMarkup: 200
   service: !type:CEBuyItemsService
-    product: CEThiefHideoutFlag
+    product: CEPlushieGoldenFlem
     count: 1

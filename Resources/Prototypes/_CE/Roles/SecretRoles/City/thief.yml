@@ -1,0 +1,13 @@
+- type: secretRole
+  id: CEThief
+  name: ce-secret-role-name-thief
+  description: ce-secret-role-description-thief
+  icon: CEJobIconThief
+  briefing: ce-secret-role-briefing-thief
+  skills:
+  - Pickpocketing
+  - BlackMarket
+  objectivePool:
+    maxDifficulty: 1
+    weighted:
+      CEObjectiveThiefCashOut: 1

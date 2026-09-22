@@ -184,3 +184,23 @@
   components:
   - type: Sprite
     state: carrin
+
+#MARK: Golden
+
+- type: entity
+  parent: CEPlushieBase
+  id: CEPlushieGoldenFlem
+  name: golden flem statue
+  description: Every gold fleam is personalized. Each one is worth a fortune. Each one is utterly useless.
+  components:
+  - type: Sprite
+    state: golden_flem
+  - type: StaticPrice
+    price: 100
+  - type: CEShiny
+    effect: CEEffectShinyGold
+  - type: CEMagicEssenceStructure
+    essences:
+      Metal: { min: 1, max: 3 }
+      Water: { min: 1, max: 2 }
+      Greed: { min: 3, max: 5 }

@@ -23,17 +23,29 @@ public sealed partial class CETradingPlatformComponent : Component
     public ProtoId<TagPrototype> CoinTag = "CECoin";
 
     [DataField]
-    public EntProtoId BuyVisual = "CECashImpact";
+    public EntProtoId? BuyVisual;
 
     [DataField]
-    public SoundSpecifier SellSound = new SoundPathSpecifier("/Audio/_CE/Effects/cash.ogg")
-    {
-        Params = AudioParams.Default.WithVariation(0.1f)
-    };
+    public SoundSpecifier? SellSound;
 
     [DataField]
-    public EntProtoId SellVisual = "CECashImpact";
+    public EntProtoId? SellVisual;
 
     [DataField(required: true)]
     public ProtoId<CETradingFactionPrototype> Faction = default!;
+
+    /// <summary>
+    /// Where purchased items go. False (default) spawns them next to the platform.
+    /// True tries to put them directly into the buyer's hand instead (falling back to a drop
+    /// if their hands are full) - used by discreet platforms like the black market.
+    /// </summary>
+    [DataField]
+    public bool GiveToBuyerHand;
+
+    /// <summary>
+    /// Whether this platform lets players sell items/fulfill requests. False for one-way
+    /// platforms like the black market, which has nothing physical to place items on.
+    /// </summary>
+    [DataField]
+    public bool SupportSelling = true;
 }

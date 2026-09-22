@@ -1,4 +1,6 @@
+using Content.Shared._CE.Trading.Components;
 using Content.Shared._CE.Trading.Prototypes;
+using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Stacks;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
@@ -15,13 +17,20 @@ public sealed partial class CEBuyItemsService : CEStoreBuyService
 
     public override void Buy(EntityManager entManager,
         IPrototypeManager prototype,
-        EntityUid platform)
+        Entity<CETradingPlatformComponent> platform,
+        EntityUid buyer)
     {
         var physSys = entManager.System<SharedPhysicsSystem>();
+        var hands = entManager.System<SharedHandsSystem>();
+        var giveToHand = platform.Comp.GiveToBuyerHand;
 
         for (var i = 0; i < Count; i++)
         {
-            var spawned = entManager.SpawnNextToOrDrop(Product, platform);
+            var spawned = entManager.SpawnNextToOrDrop(Product, giveToHand ? buyer : platform.Owner);
+
+            if (giveToHand)
+                hands.TryPickupAnyHand(buyer, spawned, checkActionBlocker: false, animate: false);
+
             physSys.WakeBody(spawned);
         }
     }

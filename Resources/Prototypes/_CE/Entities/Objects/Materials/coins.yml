@@ -39,6 +39,10 @@
   - type: CEMagicEssenceStructure
     essences:
       Metal: { min: 1, max: 3 }
+  - type: CEShiny
+    radius: 0.2
+    minFrequency: 2
+    maxFrequency: 6
 
 # Copper
 
@@ -63,6 +67,8 @@
     essences:
       Metal: { min: 1, max: 3 }
       Greed: { min: 0, max: 1 }
+  - type: CEShiny
+    effect: CEEffectShinyCopper
 
 - type: entity
   id: CECoinCopper5
@@ -107,6 +113,8 @@
     essences:
       Metal: { min: 1, max: 3 }
       Greed: { min: 1, max: 2 }
+  - type: CEShiny
+    effect: CEEffectShinySilver
 
 - type: entity
   id: CECoinSilver5
@@ -151,6 +159,8 @@
     essences:
       Metal: { min: 1, max: 3 }
       Greed: { min: 2, max: 4 }
+  - type: CEShiny
+    effect: CEEffectShinyGold
 
 - type: entity
   id: CECoinGold5
@@ -195,6 +205,8 @@
     essences:
       Metal: { min: 1, max: 3 }
       Greed: { min: 3, max: 6 }
+  - type: CEShiny
+    effect: CEEffectShinyPlatinum
 
 - type: entity
   id: CECoinPlatinum5

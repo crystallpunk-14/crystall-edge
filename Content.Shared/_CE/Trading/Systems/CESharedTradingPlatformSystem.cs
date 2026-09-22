@@ -1,6 +1,9 @@
 using Content.Shared._CE.Trading.Components;
 using Content.Shared._CE.Trading.Prototypes;
+using Content.Shared.Actions.Events;
+using Content.Shared.Interaction;
 using Content.Shared.Placeable;
+using Content.Shared.UserInterface;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
@@ -11,6 +14,42 @@ public abstract partial class CESharedTradingPlatformSystem : EntitySystem
 {
     [Dependency] protected IPrototypeManager Proto = default!;
     [Dependency] protected IGameTiming Timing = default!;
+    [Dependency] protected SharedUserInterfaceSystem Ui = default!;
+
+    /// <summary>
+    /// The action entity carrying a trading platform lives in an actions container (mind or body,
+    /// not the physical world), so it can't pass the normal "same/parent container or in
+    /// range" accessibility checks. So we shitcode it here. Temmporaly.
+    /// </summary>
+    [SubscribeLocalEvent]
+    private void OnAccessibleOverride(Entity<CETradingPlatformComponent> ent, ref AccessibleOverrideEvent args)
+    {
+        if (args.Target != ent.Owner)
+            return;
+
+        args.Handled = true;
+        args.Accessible = true;
+    }
+
+    /// <summary>
+    /// Catch-all: marks the action event handled wherever it lands (performer's body by default),
+    /// so the engine's unconditional post-perform <see cref="ActionPerformedEvent"/> fires next.
+    /// </summary>
+    [SubscribeLocalEvent]
+    private void OnOpenTradingUiAction(Entity<TransformComponent> ent, ref CEOpenTradingUiEvent args)
+    {
+        args.Handled = true;
+    }
+
+    /// <summary>
+    /// Always raised directed at the action entity itself - opens the trading UI carried by that
+    /// same entity, regardless of where the action lives (mind, body, item...).
+    /// </summary>
+    [SubscribeLocalEvent]
+    private void OnTradingActionPerformed(Entity<CETradingPlatformComponent> ent, ref ActionPerformedEvent args)
+    {
+        Ui.TryToggleUi(ent.Owner, CETradingUiKey.Buy, args.Performer);
+    }
 
     public int? GetPrice(ProtoId<CETradingPositionPrototype> position)
     {

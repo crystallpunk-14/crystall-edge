@@ -78,6 +78,11 @@
       map: ["enum.StorageVisualLayers.Base"]
     - state: closed
       map: ["enum.StorageVisualLayers.Door"]
+  - type: CEShiny
+    effect: CEEffectShinyGold
+    radius: 0.8
+    minFrequency: 1.5
+    maxFrequency: 4
   - type: Damageable
     damageModifierSet: CEMetallicStructural
   - type: Injurable

@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Client._CE.Currency;
 using Content.Client._CE.UserInterface;
 using Content.Shared._CE.Trading;
 using Content.Shared._CE.Trading.Components;
@@ -22,6 +23,7 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
     [Dependency] private IPlayerManager _player = default!;
 
     private readonly CEClientTradingPlatformSystem _tradingSystem;
+    private readonly CEClientCurrencySystem _currency;
     private string _searchFilter = string.Empty;
 
     private CETradingPlatformUiState? _cachedState;
@@ -50,6 +52,7 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
 
         Sawmill = _log.GetSawmill("ce_trading");
         _tradingSystem = _entityManager.System<CEClientTradingPlatformSystem>();
+        _currency = _entityManager.System<CEClientCurrencySystem>();
 
         UpdatePositionVisibility();
         _prototype.PrototypesReloaded += _ => UpdatePositionVisibility();
@@ -128,6 +131,7 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
 
         // Sort by price within category (cheapest first)
         var sortedByPrice = category.OrderBy(e => _tradingSystem.GetPrice(e) ?? double.MaxValue);
+        var buyBalance = _player.LocalEntity is { } localEntity ? _currency.GetPriceTotal(localEntity) : 0;
 
         foreach (var entry in sortedByPrice)
         {
@@ -137,7 +141,7 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
             if (!ProcessSearchCategoryFilter(entry))
                 continue;
 
-            var active = _tradingSystem.GetPrice(entry) <= _cachedState.BuyBalance;
+            var active = _tradingSystem.GetPrice(entry) <= buyBalance;
             var control = new CEBuyPositionControl(entry, active);
             control.OnSelect += SelectPosition;
 
@@ -289,23 +293,38 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
             count++;
         }
 
-        // Sell UI
-        SellPriceHolder.RemoveAllChildren();
-        SellPriceHolder.AddChild(new CEPriceControl(state.SellBalance));
+        // Sell UI - platforms that can't be sold to (e.g. the black market) hide it entirely
+        SellBox.Visible = state.SupportSelling;
+        RequestsPanel.Visible = state.SupportSelling;
+        RequestsDivider.Visible = state.SupportSelling;
 
-        var treeNameText = string.Empty;
-        if (_prototype.TryIndex(state.Faction, out var platformFaction))
-            treeNameText = Loc.GetString("ce-trading-faction-request-prefix") + " " + Loc.GetString(platformFaction.Name);
-        TreeName.Text = treeNameText;
-
-        Requests.RemoveAllChildren();
-        foreach (var request in _tradingSystem.GetRequests(state.Faction))
+        if (state.SupportSelling)
         {
-            var canFulfill = _tradingSystem.CanFulfillRequest(platform, request);
-            var requestControl = new CESellingRequestControl(request, canFulfill );
+            SellPriceHolder.RemoveAllChildren();
+            SellPriceHolder.AddChild(new CEPriceControl(state.SellBalance));
+        }
 
-            requestControl.OnSellAttempt += () => OnRequestSell?.Invoke(request);
-            Requests.AddChild(requestControl);
+        // Balance UI
+        var buyBalance = _currency.GetPriceTotal(_player.LocalEntity.Value);
+        BalanceHolder.RemoveAllChildren();
+        BalanceHolder.AddChild(new CEPriceControl(buyBalance));
+
+        if (state.SupportSelling)
+        {
+            var treeNameText = string.Empty;
+            if (_prototype.TryIndex(state.Faction, out var platformFaction))
+                treeNameText = Loc.GetString("ce-trading-faction-request-prefix") + " " + Loc.GetString(platformFaction.Name);
+            TreeName.Text = treeNameText;
+
+            Requests.RemoveAllChildren();
+            foreach (var request in _tradingSystem.GetRequests(state.Faction))
+            {
+                var canFulfill = _tradingSystem.CanFulfillRequest(platform, request);
+                var requestControl = new CESellingRequestControl(request, canFulfill);
+
+                requestControl.OnSellAttempt += () => OnRequestSell?.Invoke(request);
+                Requests.AddChild(requestControl);
+            }
         }
 
         UpdatePositionVisibility();

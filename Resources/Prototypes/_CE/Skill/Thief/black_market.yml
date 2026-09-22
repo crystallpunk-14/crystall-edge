@@ -1,0 +1,34 @@
+- type: skill
+  id: BlackMarket
+  icon:
+    sprite: _CE/Interface/Skills/thief.rsi
+    state: treasure_show
+  effect: !type:AddAction
+    action: CEActionThiefBlackMarket
+
+- type: entity
+  id: CEActionThiefBlackMarket
+  name: Black market
+  description: Opens a connection to the black market, letting you buy contraband.
+  parent: BaseMentalAction
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    priority: -8
+  - type: Sprite
+    sprite: _CE/Interface/Skills/thief.rsi
+    layers:
+    - state: treasure_show
+  - type: InstantAction
+    event: !type:CEOpenTradingUiEvent
+  - type: UserInterface
+    interfaces:
+      enum.CETradingUiKey.Buy:
+        type: CETradingPlatformBoundUserInterface
+        interactionRange: 0
+  - type: CETradingPlatform
+    faction: BlackMarket
+    giveToBuyerHand: true
+    supportSelling: false
+    buySound:
+      collection: CECoins
