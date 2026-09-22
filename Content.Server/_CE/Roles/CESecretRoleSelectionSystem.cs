@@ -99,7 +99,7 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
     public bool TrySetSecretRole(ICommonSession session,
         ProtoId<CESecretRolePrototype> roleId,
         [NotNullWhen(false)] out string? error,
-        bool removeSkills = false)
+        bool removeSkills = true)
     {
         error = null;
 
@@ -142,13 +142,7 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
         return true;
     }
 
-    /// <summary>
-    /// Removes a mind's current secret role and every objective it was holding, and rolls back
-    /// the granting rule's assigned-count bookkeeping so future assignment stays consistent.
-    /// Skills granted by the role/department are only stripped if <paramref name="removeSkills"/>
-    /// is set - by default a role swap leaves previously-learned skills in place.
-    /// </summary>
-    private void ClearSecretRole(EntityUid mindId, MindComponent mind, bool removeSkills = false)
+    private void ClearSecretRole(EntityUid mindId, MindComponent mind, bool removeSkills = true)
     {
         if (!_role.MindHasRole<CESecretRoleComponent>((mindId, mind), out var roleEnt))
             return;

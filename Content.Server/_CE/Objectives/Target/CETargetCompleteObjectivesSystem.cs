@@ -81,13 +81,14 @@ public sealed partial class CETargetCompleteObjectivesSystem : CEBaseTargetObjec
         _loop = false;
     }
 
-    [SubscribeLocalEvent]
-    private void OnMapInit(Entity<CETargetCompleteOwnedObjectiveMarkerComponent> ent, ref MapInitEvent args)
+    protected override void OnTargetChanged(Entity<CETargetCompleteOwnedObjectiveComponent> ent, ref CEObjectiveTargetChangedEvent args)
     {
-        if (!MindSys.TryGetMind(ent.Owner, out var mind, out _))
+        base.OnTargetChanged(ent, ref args);
+
+        if (args.NewTarget is not { } newTarget || !MindSys.TryGetMind(newTarget, out var mind, out _))
             return;
 
-        foreach (var objective in GetTargetingObjectives(ent))
+        foreach (var objective in GetTargetingObjectives(newTarget))
             objective.Comp.TargetMind = mind;
     }
 

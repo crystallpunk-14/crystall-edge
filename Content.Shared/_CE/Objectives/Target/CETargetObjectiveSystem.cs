@@ -43,6 +43,12 @@ public sealed partial class CETargetObjectiveSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
+    private void OnObjectiveTerminating(Entity<CETargetObjectiveComponent> ent, ref EntityTerminatingEvent args)
+    {
+        SetTarget(ent.AsNullable(), null);
+    }
+
     /// <summary>
     /// Picks a random valid target candidate for an objective from its holder's other objectives'
     /// perspective (excluding whatever they're already targeting).

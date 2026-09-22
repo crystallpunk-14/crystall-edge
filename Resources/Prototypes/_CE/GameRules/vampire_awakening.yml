@@ -7,14 +7,18 @@
   - type: CESecretRoleSelection
     roles:
     # Vampires
-    - role: CEArchvampire
-      range: { min: 1, max: 1 }
-      weight: 10
-    - role: CEVampire
-      playerRatio: 10
-      range: { min: 1, max: 4 }
-      weight: 10
+    #- role: CEArchvampire
+    #  range: { min: 1, max: 1 }
+    #  weight: 10
+    #- role: CEVampire
+    #  playerRatio: 10
+    #  range: { min: 1, max: 4 }
+    #  weight: 10
     # City
+    - role: CELover
+      playerRatio: 10
+      range: { min: 1, max: 2 }
+      weight: 5
     - role: CEThief
       playerRatio: 10
       range: { min: 1, max: 2 }
