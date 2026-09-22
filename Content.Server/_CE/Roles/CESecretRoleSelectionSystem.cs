@@ -127,7 +127,8 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
         }
 
         ClearSecretRole(mindId, mind, removeSkills);
-        GrantSecretRole(targetRule.Value, session, role);
+        if (GrantSecretRole(targetRule.Value, session, role) is { } granted)
+            GrantSecretRoleObjectives(targetRule.Value, granted.MindId, granted.Mind, role);
 
         var sphereQuery = EntityQueryEnumerator<CEMurkLusconSphereComponent>();
         while (sphereQuery.MoveNext(out _, out var sphere))
@@ -206,6 +207,10 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
 
         var entries = rule.Comp.Roles.OrderByDescending(entry => entry.Weight);
 
+        // Grant all roles first, create objectives after - a target-based objective (e.g. Lover)
+        // may need another role's objectives to already exist to pick a valid target.
+        var granted = new List<(EntityUid MindId, MindComponent Mind, CESecretRolePrototype Role)>();
+
         foreach (var entry in entries)
         {
             if (!_proto.TryIndex(entry.Role, out var role))
@@ -218,9 +223,14 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
                     break;
 
                 available.Remove(picked);
-                GrantSecretRole(rule, picked, role);
+
+                if (GrantSecretRole(rule, picked, role) is { } grantedMind)
+                    granted.Add((grantedMind.MindId, grantedMind.Mind, role));
             }
         }
+
+        foreach (var (mindId, mind, role) in granted)
+            GrantSecretRoleObjectives(rule, mindId, mind, role);
     }
 
     private bool TryAssignLateJoinSecretRole(
@@ -240,7 +250,10 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
             if (!IsEligible(session, profile, role))
                 continue;
 
-            GrantSecretRole(rule, session, role);
+            // Not batched like AssignSecretRoles - a single late joiner needs no deferral.
+            if (GrantSecretRole(rule, session, role) is { } granted)
+                GrantSecretRoleObjectives(rule, granted.MindId, granted.Mind, role);
+
             return true;
         }
 
@@ -310,15 +323,21 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
         return rule.Comp.AssignedCounts.GetValueOrDefault(role);
     }
 
-    private void GrantSecretRole(Entity<CESecretRoleSelectionComponent> rule, ICommonSession session, CESecretRolePrototype role)
+    /// <summary>
+    /// Grants the mind role and skills for a secret role - not objectives, callers create those separately.
+    /// </summary>
+    private (EntityUid MindId, MindComponent Mind)? GrantSecretRole(
+        Entity<CESecretRoleSelectionComponent> rule,
+        ICommonSession session,
+        CESecretRolePrototype role)
     {
         if (!_mind.TryGetMind(session, out var mindId, out var mind))
-            return;
+            return null;
 
         _role.MindAddRole(mindId, MindRoleSecret, mind, silent: true);
 
         if (!_role.MindHasRole<CESecretRoleComponent>((mindId, mind), out var roleEnt))
-            return;
+            return null;
 
         roleEnt.Value.Comp2.Role = role.ID;
         rule.Comp.AssignedCounts[role.ID] = GetAssignedCount(rule, role.ID) + 1;
@@ -326,10 +345,10 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
         if (role.Briefing is { } briefing)
             EnsureComp<RoleBriefingComponent>(roleEnt.Value.Owner).Briefing = briefing;
 
-        GrantSecretRoleObjectives(rule, mindId, mind, role);
-
         if (session.AttachedEntity is { } target)
             GrantSecretRoleSkills(target, role);
+
+        return (mindId, mind);
     }
 
     /// <summary>

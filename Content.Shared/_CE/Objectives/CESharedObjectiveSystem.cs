@@ -180,7 +180,7 @@ public abstract partial class CESharedObjectiveSystem : EntitySystem
     /// </summary>
     public void RefreshObjectiveProgress(Entity<CEObjectiveComponent?> ent)
     {
-        if (!Resolve(ent, ref ent.Comp))
+        if (!Resolve(ent, ref ent.Comp, logMissing: false))
             return;
 
         var ev = new CEGetObjectiveProgressEvent();
