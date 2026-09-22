@@ -84,12 +84,6 @@
     speechSounds: CECarcat
   - type: FootstepModifier
     footstepSoundCollection: null # Silent footstep
-  - type: Stealth
-    enabledOnDeath: false
-    maxVisibility: 1.2
-  - type: StealthOnMove
-    passiveVisibilityRate: -0.15
-    movementVisibilityRate: 0.15
   - type: ConditionalSpawner
     prototypes:
     - CELurkerRoarSound
@@ -97,6 +91,7 @@
     skills:
     - SoftLanding
     - NightVision
+    - Invisibility
     - LurkerJump
     - LurkerShadowStep
     - LurkerFear
