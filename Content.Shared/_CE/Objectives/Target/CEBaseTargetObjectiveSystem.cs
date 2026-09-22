@@ -30,19 +30,15 @@ public abstract partial class CEBaseTargetObjectiveSystem<TComponent> : CEBaseOb
     [MustCallBase]
     protected virtual void OnTargetChanged(Entity<TComponent> ent, ref CEObjectiveTargetChangedEvent args)
     {
-        // The old target might still be targeted by another objective of this same type (e.g. two
-        // different players both have a "protect Bob" objective) - only strip the relay once nothing
-        // of this type targets it anymore. SetTarget already removes `ent` from the marker's
-        // Objectives set before raising this event, so GetTargetingObjectives here reflects that.
+        // Only strip the relay once no other objective of this type still targets it.
         if (args.OldTarget is { } oldTarget &&
             !TerminatingOrDeleted(oldTarget) &&
             !GetTargetingObjectives(oldTarget).Any())
         {
             foreach (var relayType in TargetRelayComponents)
             {
-                // Use the Type overload (not Factory.GetComponent(relayType)) - that would create a
-                // throwaway unattached instance and hand it to RemComp(uid, IComponent), which removes
-                // by that exact reference instead of looking up the real attached one.
+                // Type overload, not Factory.GetComponent(relayType) - that would RemComp a throwaway
+                // unattached instance instead of the real attached one.
                 RemComp(oldTarget, relayType);
             }
         }

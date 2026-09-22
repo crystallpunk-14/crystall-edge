@@ -142,7 +142,7 @@ public abstract partial class CESharedObjectiveSystem : EntitySystem
         }
 
         var changedEv = new CEObjectivesChangedEvent(ent.Owner, added, removed);
-        RaiseLocalEvent(ent.Owner, ref changedEv);
+        RaiseLocalEvent(ent.Owner, ref changedEv, true);
     }
 
     /// <summary>
