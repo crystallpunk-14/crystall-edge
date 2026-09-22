@@ -49,6 +49,26 @@ public sealed partial class CETargetObjectiveSystem : EntitySystem
         SetTarget(ent.AsNullable(), null);
     }
 
+    // Retries unresolved targets on any objective list change, since a candidate may be rejected
+    // just because their own objectives don't exist yet. Broadcast because the directed slot for
+    // CEObjectiveHolderComponent+CEObjectivesChangedEvent is already taken by CEShareTargetObjectiveSystem.
+    [SubscribeLocalEvent]
+    private void OnObjectivesChanged(ref CEObjectivesChangedEvent args)
+    {
+        var query = EntityQueryEnumerator<CEObjectiveHolderComponent>();
+        while (query.MoveNext(out var holderUid, out var holderComp))
+        {
+            foreach (var objective in holderComp.Objectives)
+            {
+                if (!TryComp<CETargetObjectiveComponent>(objective, out var targetComp) || targetComp.Target != null)
+                    continue;
+
+                if (TryGetCandidate((holderUid, holderComp), (objective, targetComp), out var candidate))
+                    SetTarget((objective, targetComp), candidate);
+            }
+        }
+    }
+
     /// <summary>
     /// Picks a random valid target candidate for an objective from its holder's other objectives'
     /// perspective (excluding whatever they're already targeting).

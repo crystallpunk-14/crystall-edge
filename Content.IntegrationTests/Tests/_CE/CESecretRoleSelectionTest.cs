@@ -50,14 +50,9 @@ public sealed class CESecretRoleSelectionTest : GameTest
       weight: 5
 ";
 
-    /// <summary>
-    /// A player's own explicit High priority for a role must always win it, even against other
-    /// players who have no preference at all (default Low for everything) - regardless of the
-    /// random order roles/players get resolved in. Reproduces a real bug report: with 3 players
-    /// and 3 population-scaled roles each wanting exactly 1, the one player who set High on a
-    /// specific role would sometimes end up with a different role instead, because role-by-role
-    /// (or naive per-player-shuffle) resolution let a "don't care" player claim it first.
-    /// </summary>
+    // Reproduces a bug: with 3 players and 3 population-scaled roles wanting 1 each, the player who
+    // set High on a specific role could end up with a different one, because per-role resolution let
+    // a no-preference player claim it first.
     [Test]
     public async Task HighPriorityAlwaysWinsOverNoPreference()
     {
@@ -79,12 +74,10 @@ public sealed class CESecretRoleSelectionTest : GameTest
 
                 var profiles = new Dictionary<NetUserId, HumanoidCharacterProfile>
                 {
-                    // The only player with any explicit preference at all - Gamma is their top pick.
                     [dummies[0].UserId] = HumanoidCharacterProfile.Random()
                         .WithSecretRolePriority(Gamma, JobPriority.High)
                         .WithSecretRolePriority(Alpha, JobPriority.Medium)
                         .WithSecretRolePriority(Beta, JobPriority.Medium),
-                    // Both other players have no preference (default Low for every role).
                     [dummies[1].UserId] = HumanoidCharacterProfile.Random(),
                     [dummies[2].UserId] = HumanoidCharacterProfile.Random(),
                 };

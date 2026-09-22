@@ -194,7 +194,12 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
             new SoundPathSpecifier("/Audio/_CE/Announce/darkness_boom.ogg")), session);
     }
 
-    private void AssignSecretRoles(
+    /// <summary>
+    /// Grants every player their decided role (<see cref="DecideSecretRoles"/>), then creates
+    /// objectives for all of them - exposed (rather than private) so integration tests can drive
+    /// the whole round-start flow without needing a running GameRule/GameTicker.
+    /// </summary>
+    public void AssignSecretRoles(
         Entity<CESecretRoleSelectionComponent> rule,
         ICommonSession[] players,
         IReadOnlyDictionary<NetUserId, HumanoidCharacterProfile> profiles)
