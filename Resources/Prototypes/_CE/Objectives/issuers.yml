@@ -1,7 +1,3 @@
-- type: objectiveIssuer
-  id: CEAntagThief
-  name: ce-objective-issuer-thief
-
 #MARK: Secret Department Objectives
 
 - type: objectiveIssuer

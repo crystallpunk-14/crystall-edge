@@ -71,23 +71,6 @@
 - type: entity
   parent:
   - CETradingPlatformBase
-  id: CETradingPlatformBlackMarket
-  name: black market trading platform
-  description: A trading platform servicing black market factions.
-  categories: [ ForkFiltered ]
-  components:
-  - type: Machine
-    board: CEMachineCoreTradingPlatformBlackMarket
-  - type: Sprite
-    layers:
-    - state: base
-    - state: sell
-  - type: CETradingPlatform
-    faction: BlackMarket
-
-- type: entity
-  parent:
-  - CETradingPlatformBase
   id: CETradingPlatformHomeDecor
   name: home decor trading platform
   description: A trading platform tied to the Home Decor faction.

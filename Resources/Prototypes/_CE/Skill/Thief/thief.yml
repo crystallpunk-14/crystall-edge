@@ -27,24 +27,3 @@
   - !type:SkillRequired
     skill: Pickpocketing
 
-- type: skill
-  id: PickpocketingMovingUpgrade
-  name: ce-skill-thief-pickpocketing-moving-name
-  desc: ce-skill-thief-pickpocketing-moving-desc
-  icon:
-    sprite: _CE/Interface/Skills/thief.rsi
-    state: pickpocketing_moving
-  effect: !type:AddComponents
-    components:
-    - type: CEThievingStripOnMoving
-  conditions:
-  - !type:SkillRequired
-    skill: Pickpocketing
-
-- type: skill
-  id: TreasureHunt
-  icon:
-    sprite: _CE/Interface/Skills/thief.rsi
-    state: treasure_show
-  effect: !type:AddAction
-    action: CEActionThiefShowTreasures
