@@ -41,3 +41,10 @@
   id: ImperialChancellery
   color: "#5b4b8a"
   name: ce-trade-faction-imperial-chancellery
+
+# Antags
+
+- type: tradingFaction
+  id: BlackMarket
+  color: "#4a0e0e"
+  name: ce-trade-faction-black-market

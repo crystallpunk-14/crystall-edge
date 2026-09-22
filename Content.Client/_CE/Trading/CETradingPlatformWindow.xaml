@@ -86,10 +86,10 @@
             </ScrollContainer>
         </BoxContainer>
 
-        <customControls:VSeparator StyleClasses="LowDivider" />
+        <customControls:VSeparator Name="RequestsDivider" StyleClasses="LowDivider" />
 
         <!-- Special requests (right) -->
-        <BoxContainer MinWidth="340" SetWidth="340" Orientation="Vertical" Margin="0 0 10 0" VerticalExpand="True">
+        <BoxContainer Name="RequestsPanel" MinWidth="340" SetWidth="340" Orientation="Vertical" Margin="0 0 10 0" VerticalExpand="True">
             <Label Name="TreeName" Access="Public" />
             <ScrollContainer HorizontalExpand="True" VerticalExpand="True" MinSize="0 100" HScrollEnabled="False">
                 <BoxContainer Name="Requests" Orientation="Vertical" HorizontalExpand="True" VerticalAlignment="Top" Access="Public"/>

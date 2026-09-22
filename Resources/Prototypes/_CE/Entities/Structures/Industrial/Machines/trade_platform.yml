@@ -50,6 +50,13 @@
         type: CETradingPlatformBoundUserInterface
   - type: ExtensionCableReceiver
     receptionRange: 0
+  - type: CETradingPlatform
+    buyVisual: CECashImpact
+    sellVisual: CECashImpact
+    sellSound:
+      path: /Audio/_CE/Effects/cash.ogg
+      params:
+        variation: 0.1
 
 - type: entity
   parent:

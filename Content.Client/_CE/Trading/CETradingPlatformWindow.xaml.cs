@@ -293,28 +293,38 @@ public sealed partial class CETradingPlatformWindow : DefaultWindow
             count++;
         }
 
-        // Sell UI
-        SellPriceHolder.RemoveAllChildren();
-        SellPriceHolder.AddChild(new CEPriceControl(state.SellBalance));
+        // Sell UI - platforms that can't be sold to (e.g. the black market) hide it entirely
+        SellBox.Visible = state.SupportSelling;
+        RequestsPanel.Visible = state.SupportSelling;
+        RequestsDivider.Visible = state.SupportSelling;
+
+        if (state.SupportSelling)
+        {
+            SellPriceHolder.RemoveAllChildren();
+            SellPriceHolder.AddChild(new CEPriceControl(state.SellBalance));
+        }
 
         // Balance UI
         var buyBalance = _currency.GetPriceTotal(_player.LocalEntity.Value);
         BalanceHolder.RemoveAllChildren();
         BalanceHolder.AddChild(new CEPriceControl(buyBalance));
 
-        var treeNameText = string.Empty;
-        if (_prototype.TryIndex(state.Faction, out var platformFaction))
-            treeNameText = Loc.GetString("ce-trading-faction-request-prefix") + " " + Loc.GetString(platformFaction.Name);
-        TreeName.Text = treeNameText;
-
-        Requests.RemoveAllChildren();
-        foreach (var request in _tradingSystem.GetRequests(state.Faction))
+        if (state.SupportSelling)
         {
-            var canFulfill = _tradingSystem.CanFulfillRequest(platform, request);
-            var requestControl = new CESellingRequestControl(request, canFulfill );
+            var treeNameText = string.Empty;
+            if (_prototype.TryIndex(state.Faction, out var platformFaction))
+                treeNameText = Loc.GetString("ce-trading-faction-request-prefix") + " " + Loc.GetString(platformFaction.Name);
+            TreeName.Text = treeNameText;
 
-            requestControl.OnSellAttempt += () => OnRequestSell?.Invoke(request);
-            Requests.AddChild(requestControl);
+            Requests.RemoveAllChildren();
+            foreach (var request in _tradingSystem.GetRequests(state.Faction))
+            {
+                var canFulfill = _tradingSystem.CanFulfillRequest(platform, request);
+                var requestControl = new CESellingRequestControl(request, canFulfill);
+
+                requestControl.OnSellAttempt += () => OnRequestSell?.Invoke(request);
+                Requests.AddChild(requestControl);
+            }
         }
 
         UpdatePositionVisibility();

@@ -1,3 +1,4 @@
+using Content.Shared._CE.Trading.Components;
 using Content.Shared._CE.Workbench.Prototypes;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
@@ -44,7 +45,7 @@ public sealed partial class CETradingPositionPrototype : IPrototype
 [MeansImplicitUse]
 public abstract partial class CEStoreBuyService
 {
-    public abstract void Buy(EntityManager entManager, IPrototypeManager prototype,  EntityUid platform);
+    public abstract void Buy(EntityManager entManager, IPrototypeManager prototype, Entity<CETradingPlatformComponent> platform, EntityUid buyer);
 
     public abstract string GetName(IPrototypeManager protoMan);
 

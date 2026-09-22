@@ -45,7 +45,7 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
     }
 
     [SubscribeLocalEvent]
-    private void OnBeforeActivatableUIOpen(Entity<CETradingPlatformComponent> ent, ref BeforeActivatableUIOpenEvent args)
+    private void OnUiOpened(Entity<CETradingPlatformComponent> ent, ref BoundUIOpenedEvent args)
     {
         UpdatePlatformUIState(ent);
     }
@@ -54,7 +54,7 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
     {
         // Calculate sell balance
         double sellBalance = 0;
-        if (TryComp<ItemPlacerComponent>(ent, out var itemPlacer))
+        if (ent.Comp.SupportSelling && TryComp<ItemPlacerComponent>(ent, out var itemPlacer))
         {
             foreach (var placed in itemPlacer.PlacedEntities)
             {
@@ -66,7 +66,7 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
         }
 
         var faction = ent.Comp.Faction;
-        _userInterface.SetUiState(ent.Owner, CETradingUiKey.Buy, new CETradingPlatformUiState(GetNetEntity(ent), (int)sellBalance, faction));
+        _userInterface.SetUiState(ent.Owner, CETradingUiKey.Buy, new CETradingPlatformUiState(GetNetEntity(ent), (int)sellBalance, faction, ent.Comp.SupportSelling));
     }
 
     public bool CanSell(EntityUid uid)
@@ -111,10 +111,11 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
         ent.Comp.NextBuyTime = Timing.CurTime + TimeSpan.FromSeconds(1f);
         Dirty(ent);
 
-        indexedPosition.Service.Buy(EntityManager, Proto, ent);
+        indexedPosition.Service.Buy(EntityManager, Proto, ent, args.Actor);
 
         _audio.PlayPvs(ent.Comp.BuySound, Transform(ent).Coordinates);
-        SpawnAtPosition(ent.Comp.BuyVisual, Transform(ent).Coordinates);
+        if (ent.Comp.BuyVisual is { } buyVisual)
+            SpawnAtPosition(buyVisual, Transform(ent).Coordinates);
 
         UpdatePlatformUIState(ent);
     }
@@ -122,6 +123,9 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
     [SubscribeLocalEvent]
     private void OnSellAttempt(Entity<CETradingPlatformComponent> ent, ref CETradingSellAttempt args)
     {
+        if (!ent.Comp.SupportSelling)
+            return;
+
         if (!TryComp<ItemPlacerComponent>(ent, out var itemPlacer))
             return;
 
@@ -145,7 +149,8 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
 
         _audio.PlayPvs(ent.Comp.SellSound, Transform(ent).Coordinates);
         _currency.GenerateMoney(balance, Transform(ent).Coordinates);
-        SpawnAtPosition(ent.Comp.SellVisual, Transform(ent).Coordinates);
+        if (ent.Comp.SellVisual is { } sellVisual)
+            SpawnAtPosition(sellVisual, Transform(ent).Coordinates);
 
         UpdatePlatformUIState(ent);
     }
@@ -153,6 +158,9 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
     [SubscribeLocalEvent]
     private void OnSellRequestAttempt(Entity<CETradingPlatformComponent> ent, ref CETradingRequestSellAttempt args)
     {
+        if (!ent.Comp.SupportSelling)
+            return;
+
         if (!TryComp<ItemPlacerComponent>(ent, out var itemPlacer))
             return;
 
@@ -173,7 +181,8 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
         _audio.PlayPvs(ent.Comp.SellSound, Transform(ent).Coordinates);
         var price = GetPrice(indexedRequest) ?? 0;
         _currency.GenerateMoney(price, Transform(ent).Coordinates);
-        SpawnAtPosition(ent.Comp.SellVisual, Transform(ent).Coordinates);
+        if (ent.Comp.SellVisual is { } sellVisual)
+            SpawnAtPosition(sellVisual, Transform(ent).Coordinates);
 
         UpdatePlatformUIState(ent);
     }
