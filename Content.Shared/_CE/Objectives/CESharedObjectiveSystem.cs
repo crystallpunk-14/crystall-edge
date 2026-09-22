@@ -34,6 +34,25 @@ public abstract partial class CESharedObjectiveSystem : EntitySystem
     }
 
     /// <summary>
+    /// Returns the objectives a holder owns directly (<see cref="CEObjectiveHolderComponent.OwnedObjectives"/>),
+    /// excluding whatever <see cref="CEGetAdditionalObjectivesEvent"/> contributes from other sources.
+    /// </summary>
+    public List<Entity<CEObjectiveComponent>> GetOwnedObjectives(Entity<CEObjectiveHolderComponent?> holder)
+    {
+        if (!Resolve(holder, ref holder.Comp, false))
+            return [];
+
+        var objectives = new List<Entity<CEObjectiveComponent>>();
+        foreach (var objective in holder.Comp.OwnedObjectives)
+        {
+            if (TryComp<CEObjectiveComponent>(objective, out var comp))
+                objectives.Add((objective, comp));
+        }
+
+        return objectives;
+    }
+
+    /// <summary>
     /// Spawns an objective from a prototype and adds it to a holder's
     /// <see cref="CEObjectiveHolderComponent.OwnedObjectives"/>.
     /// </summary>
