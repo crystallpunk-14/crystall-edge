@@ -28,20 +28,24 @@
   - type: CEWeapon
     range: 0.4
     hitSound:
-      collection: ToySqueak
+      path: /Audio/Weapons/bladeslice.ogg
     effectSlots:
       OnHit:
-      - !type:WeaponArcAttack
-        arcWidth: 40
-        effects:
-        - !type:Damage
-          damage:
-            types:
-              Blunt: 0
+      - !type:Damage
+        damage:
+          types:
+            Piercing: 4
+      OnHeavyHit:
+      - !type:Damage
+        damage:
+          types:
+            Piercing: 4
     animations:
       Primary:
-      - anim: Punch1
-      - anim: Punch2
+      - anim: DaggerAttackLight1
+      - anim: DaggerAttackLight2
+      Secondary:
+      - anim: DaggerAttackHeavy
   - type: CEWeaponStaminaCost
     costs:
       Primary: 10
@@ -260,13 +264,15 @@
   - type: CEWeapon
     effectSlots:
       OnHit:
-      - !type:WeaponArcAttack
-        arcWidth: 40
-        effects:
-        - !type:Damage
-          damage:
-            types:
-              Piercing: 5
+      - !type:Damage
+        damage:
+          types:
+            Piercing: 4
+      OnHeavyHit:
+      - !type:Damage
+        damage:
+          types:
+            Piercing: 8
 
 - type: entity
   parent: CEPlushieGoldenBase
