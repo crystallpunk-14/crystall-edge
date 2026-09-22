@@ -11,19 +11,3 @@
       stripTimeReduction: 0
       stealthy: true
 
-- type: skill
-  id: PickpocketingSpeedUpgrade
-  name: ce-skill-thief-pickpocketing-speed-name
-  desc: ce-skill-thief-pickpocketing-speed-desc
-  icon:
-    sprite: _CE/Interface/Skills/thief.rsi
-    state: pickpocketing_speed
-  effect: !type:AddComponents
-    components:
-    - type: Thieving
-      stripTimeReduction: 2 # We just override the previous value to add more speed
-      stealthy: true
-  conditions:
-  - !type:SkillRequired
-    skill: Pickpocketing
-

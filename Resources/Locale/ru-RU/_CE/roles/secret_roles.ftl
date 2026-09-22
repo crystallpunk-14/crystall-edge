@@ -20,6 +20,10 @@ ce-secret-role-name-murkwalker = Мракоходец
 ce-secret-role-description-murkwalker = TODO
 ce-secret-role-briefing-murkwalker = TODO
 
+ce-secret-role-name-thief = Вор
+ce-secret-role-description-thief = TODO
+ce-secret-role-briefing-thief = TODO
+
 ce-roundend-secret-role-column = Скрытая роль
 ce-roundend-secret-role-factions-header = [font size=14]Фракции этого раунда:[/font]
 ce-roundend-secret-role-department-list = [font size=16]Фракция [color={$color}][bold]{$name}[/bold][/color][/font]
