@@ -8,7 +8,7 @@
   tier: 0
   essenceProto: CEEssenceEarth
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: terra
   reagent: CEEssenceEarth
 
@@ -20,7 +20,7 @@
   tier: 0
   essenceProto: CEEssenceFire
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: ignis
   reagent: CEEssenceFire
 
@@ -32,7 +32,7 @@
   tier: 0
   essenceProto: CEEssenceWater
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: aqua
   reagent: CEEssenceWater
 
@@ -44,7 +44,7 @@
   tier: 0
   essenceProto: CEEssenceAir
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: aer
   reagent: CEEssenceAir
 
@@ -56,7 +56,7 @@
   tier: 0
   essenceProto: CEEssenceOrder
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: ordo
   reagent: CEEssenceOrder
 
@@ -68,7 +68,7 @@
   tier: 0
   essenceProto: CEEssenceChaos
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: perditio
   reagent: CEEssenceChaos
 
@@ -82,7 +82,7 @@
   tier: 1
   essenceProto: CEEssenceFrost
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: gelium
   reagent: CEEssenceFrost
 
@@ -94,7 +94,7 @@
   tier: 1
   essenceProto: CEEssenceLight
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: lux
   reagent: CEEssenceLight
 
@@ -106,7 +106,7 @@
   tier: 1
   essenceProto: CEEssenceMotion
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: motus
   reagent: CEEssenceMotion
 
@@ -118,7 +118,7 @@
   tier: 1
   essenceProto: CEEssenceCycle
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: permutatio
   reagent: CEEssenceCycle
 
@@ -130,7 +130,7 @@
   tier: 1
   essenceProto: CEEssenceEnergia
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: potentia
   reagent: CEEssenceEnergia
 
@@ -142,7 +142,7 @@
   tier: 1
   essenceProto: CEEssenceVoid
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: vacuos
   reagent: CEEssenceVoid
 
@@ -154,7 +154,7 @@
   tier: 1
   essenceProto: CEEssencePoison
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: venenum
   reagent: CEEssencePoison
 
@@ -166,7 +166,7 @@
   tier: 1
   essenceProto: CEEssenceLife
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: victus
   reagent: CEEssenceLife
 
@@ -178,7 +178,7 @@
   tier: 1
   essenceProto: CEEssenceCrystal
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: vitreus
   reagent: CEEssenceCrystal
 
@@ -190,7 +190,7 @@
   tier: 1
   essenceProto: CEEssenceWeather
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: tempestas
   reagent: CEEssenceWeather
 
@@ -204,7 +204,7 @@
   tier: 2
   essenceProto: CEEssenceMagic
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: praecantatio
   reagent: CEEssenceMagic
 
@@ -216,7 +216,7 @@
   tier: 2
   essenceProto: CEEssenceBeast
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: bestia
   reagent: CEEssenceBeast
 
@@ -228,7 +228,7 @@
   tier: 2
   essenceProto: CEEssenceHunger
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: fames
   reagent: CEEssenceHunger
 
@@ -240,7 +240,7 @@
   tier: 2
   essenceProto: CEEssencePlant
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: herba
   reagent: CEEssencePlant
 
@@ -252,7 +252,7 @@
   tier: 2
   essenceProto: CEEssenceTravel
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: iter
   reagent: CEEssenceTravel
 
@@ -264,7 +264,7 @@
   tier: 2
   essenceProto: CEEssenceSlime
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: limus
   reagent: CEEssenceSlime
 
@@ -276,7 +276,7 @@
   tier: 2
   essenceProto: CEEssenceMetal
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: metallum
   reagent: CEEssenceMetal
 
@@ -288,7 +288,7 @@
   tier: 2
   essenceProto: CEEssenceDeath
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: mortuus
   reagent: CEEssenceDeath
 
@@ -300,7 +300,7 @@
   tier: 2
   essenceProto: CEEssenceHealing
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: sano
   reagent: CEEssenceHealing
 
@@ -312,7 +312,7 @@
   tier: 2
   essenceProto: CEEssenceDarkness
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: tenebrae
   reagent: CEEssenceDarkness
 
@@ -324,7 +324,7 @@
   tier: 2
   essenceProto: CEEssenceTrap
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: vinculum
   reagent: CEEssenceTrap
 
@@ -336,7 +336,7 @@
   tier: 2
   essenceProto: CEEssenceFlight
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: volatus
   reagent: CEEssenceFlight
 
@@ -350,7 +350,7 @@
   tier: 3
   essenceProto: CEEssenceEldritch
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: alienis
   reagent: CEEssenceEldritch
 
@@ -362,7 +362,7 @@
   tier: 3
   essenceProto: CEEssenceTree
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: arbor
   reagent: CEEssenceTree
 
@@ -374,7 +374,7 @@
   tier: 3
   essenceProto: CEEssenceAura
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: auram
   reagent: CEEssenceAura
 
@@ -386,7 +386,7 @@
   tier: 3
   essenceProto: CEEssenceFlesh
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: corpus
   reagent: CEEssenceFlesh
 
@@ -398,7 +398,7 @@
   tier: 3
   essenceProto: CEEssenceUndead
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: exanimis
   reagent: CEEssenceUndead
 
@@ -410,7 +410,7 @@
   tier: 3
   essenceProto: CEEssenceSoul
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: spiritus
   reagent: CEEssenceSoul
 
@@ -422,7 +422,7 @@
   tier: 3
   essenceProto: CEEssenceTaint
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: vitium
   reagent: CEEssenceTaint
 
@@ -436,7 +436,7 @@
   tier: 4
   essenceProto: CEEssenceMind
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: cognitio
   reagent: CEEssenceMind
 
@@ -448,7 +448,7 @@
   tier: 4
   essenceProto: CEEssenceSenses
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: sensus
   reagent: CEEssenceSenses
 
@@ -462,7 +462,7 @@
   tier: 5
   essenceProto: CEEssenceHuman
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: humanus
   reagent: CEEssenceHuman
 
@@ -476,7 +476,7 @@
   tier: 6
   essenceProto: CEEssenceTool
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: instrumentum
   reagent: CEEssenceTool
 
@@ -488,7 +488,7 @@
   tier: 6
   essenceProto: CEEssenceCrop
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: messis
   reagent: CEEssenceCrop
 
@@ -500,7 +500,7 @@
   tier: 6
   essenceProto: CEEssenceGreed
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: lucrum
   reagent: CEEssenceGreed
 
@@ -512,7 +512,7 @@
   tier: 6
   essenceProto: CEEssenceMining
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: perfodio
   reagent: CEEssenceMining
 
@@ -526,7 +526,7 @@
   tier: 7
   essenceProto: CEEssenceCraft
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: fabrico
   reagent: CEEssenceCraft
 
@@ -538,7 +538,7 @@
   tier: 7
   essenceProto: CEEssenceMachine
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: machina
   reagent: CEEssenceMachine
 
@@ -550,7 +550,7 @@
   tier: 7
   essenceProto: CEEssenceCloth
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: pannus
   reagent: CEEssenceCloth
 
@@ -562,7 +562,7 @@
   tier: 7
   essenceProto: CEEssenceWeapon
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: telum
   reagent: CEEssenceWeapon
 
@@ -574,7 +574,7 @@
   tier: 7
   essenceProto: CEEssenceArmor
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: tutamen
   reagent: CEEssenceArmor
 
@@ -586,6 +586,6 @@
   tier: 7
   essenceProto: CEEssenceHarvest
   icon:
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     state: meto
   reagent: CEEssenceHarvest

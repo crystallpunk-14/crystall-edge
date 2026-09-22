@@ -14,7 +14,7 @@
   save: false
   components:
   - type: Sprite
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     layers:
     - state: terra
 
@@ -24,7 +24,7 @@
   save: false
   components:
   - type: Sprite
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     layers:
     - state: ignis
 
@@ -34,7 +34,7 @@
   save: false
   components:
   - type: Sprite
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     layers:
     - state: aqua
 
@@ -44,7 +44,7 @@
   save: false
   components:
   - type: Sprite
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     layers:
     - state: aer
 
@@ -54,7 +54,7 @@
   save: false
   components:
   - type: Sprite
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     layers:
     - state: ordo
 
@@ -64,7 +64,7 @@
   save: false
   components:
   - type: Sprite
-    sprite: _CE/Interface/Misc/thaum_essense.rsi
+    sprite: _CE/Interface/Science/thaum_essense.rsi
     layers:
     - state: perditio
 
