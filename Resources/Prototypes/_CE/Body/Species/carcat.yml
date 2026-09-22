@@ -277,19 +277,14 @@
       - anim: ClawAttack3
       Secondary:
       - anim: ClawCarcatKick
-  - type: NightVision #Night vision
-    enabled: false
-    prioritized: false
-    relayOverlay: false
-    action: ActionToggleNightVision
-    lightingColor: '#FFFFFF15'
   - type: FootstepModifier
     footstepSoundCollection: null # Silent footstep
   - type: CEInnateSkills
     skills:
     - SoftLanding
+    - NightVision
     descriptorName: ce-innate-skill-source-carcat
-    descriptorColor: "#D2691E"
+    descriptorColor: "#6e492f"
   - type: Bloodstream
     bloodReferenceSolution:
       reagents:

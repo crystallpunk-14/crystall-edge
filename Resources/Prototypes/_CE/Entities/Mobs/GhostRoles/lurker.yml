@@ -82,8 +82,6 @@
   - type: NoSlip
   - type: Speech
     speechSounds: CECarcat
-  - type: NightVision
-    prioritized: false
   - type: FootstepModifier
     footstepSoundCollection: null # Silent footstep
   - type: Stealth
@@ -98,6 +96,7 @@
   - type: CEInnateSkills
     skills:
     - SoftLanding
+    - NightVision
     - LurkerJump
     - LurkerShadowStep
     - LurkerFear
