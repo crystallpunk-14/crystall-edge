@@ -911,3 +911,15 @@
   id: 1085
   time: '2026-09-17T20:10:41.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/472
+- author: TheShuEd
+  changes:
+  - message: Thief is back!
+    type: Add
+  - message: Golden flem statue was added.
+    type: Add
+  - message: trading platforms no longer require players to deposit money into them.
+      They automatically take money directly from buyers' pockets and wallets.
+    type: Tweak
+  id: 1086
+  time: '2026-09-22T15:38:44.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/475
