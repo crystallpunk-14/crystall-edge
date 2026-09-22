@@ -38,7 +38,7 @@
       - !type:Damage
         damage:
           types:
-            Piercing: 4
+            Piercing: 8
     animations:
       Primary:
       - anim: DaggerAttackLight1

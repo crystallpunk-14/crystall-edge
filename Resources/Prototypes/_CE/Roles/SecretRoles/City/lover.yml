@@ -1,0 +1,14 @@
+- type: secretRole
+  id: CELover
+  name: ce-secret-role-name-lover
+  description: ce-secret-role-description-lover
+  icon: CEJobIconLover
+  briefing: ce-secret-role-briefing-lover
+  objectivePool:
+    # Both objectives are weight 1 with difficulty 1 each and the budget is exactly their sum,
+    # so both always get picked together - they target the same person (see CEShareTargetObjective
+    # on CEObjectiveLoverSurvive) and only make sense as a pair.
+    maxDifficulty: 2
+    weighted:
+      CEObjectiveLoverAssist: 1
+      CEObjectiveLoverSurvive: 1

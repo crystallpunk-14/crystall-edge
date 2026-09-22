@@ -6,10 +6,100 @@
     product: CEBaseLockpick
     count: 1
 
+#MARK: Golden plushies
+
+- type: tradingPosition
+  id: CEPlushieGoldenHuman
+  faction: BlackMarket
+  priceMarkup: 200
+  service: !type:CEBuyItemsService
+    product: CEPlushieGoldenHuman
+    count: 1
+
+- type: tradingPosition
+  id: CEPlushieGoldenDwarf
+  faction: BlackMarket
+  priceMarkup: 200
+  service: !type:CEBuyItemsService
+    product: CEPlushieGoldenDwarf
+    count: 1
+
+- type: tradingPosition
+  id: CEPlushieGoldenElf
+  faction: BlackMarket
+  priceMarkup: 200
+  service: !type:CEBuyItemsService
+    product: CEPlushieGoldenElf
+    count: 1
+
+- type: tradingPosition
+  id: CEPlushieGoldenGoblin
+  faction: BlackMarket
+  priceMarkup: 200
+  service: !type:CEBuyItemsService
+    product: CEPlushieGoldenGoblin
+    count: 1
+
+- type: tradingPosition
+  id: CEPlushieGoldenSilva
+  faction: BlackMarket
+  priceMarkup: 200
+  service: !type:CEBuyItemsService
+    product: CEPlushieGoldenSilva
+    count: 1
+
+- type: tradingPosition
+  id: CEPlushieGoldenTiefling
+  faction: BlackMarket
+  priceMarkup: 200
+  service: !type:CEBuyItemsService
+    product: CEPlushieGoldenTiefling
+    count: 1
+
+- type: tradingPosition
+  id: CEPlushieGoldenCarcat
+  faction: BlackMarket
+  priceMarkup: 200
+  service: !type:CEBuyItemsService
+    product: CEPlushieGoldenCarcat
+    count: 1
+
+- type: tradingPosition
+  id: CEPlushieGoldenFrog
+  faction: BlackMarket
+  priceMarkup: 200
+  service: !type:CEBuyItemsService
+    product: CEPlushieGoldenFrog
+    count: 1
+
+- type: tradingPosition
+  id: CEPlushieGoldenSkeleton
+  faction: BlackMarket
+  priceMarkup: 200
+  service: !type:CEBuyItemsService
+    product: CEPlushieGoldenSkeleton
+    count: 1
+
+- type: tradingPosition
+  id: CEPlushieGoldenLumi
+  faction: BlackMarket
+  priceMarkup: 200
+  service: !type:CEBuyItemsService
+    product: CEPlushieGoldenLumi
+    count: 1
+
 - type: tradingPosition
   id: CEPlushieGoldenFlem
   faction: BlackMarket
   priceMarkup: 200
   service: !type:CEBuyItemsService
     product: CEPlushieGoldenFlem
+    count: 1
+
+- type: tradingPosition
+  id: CEPlushieGoldenAgaric
+  faction: BlackMarket
+  priceMarkup: 200
+  service: !type:CEBuyItemsService
+    product: CEPlushieGoldenAgaric
     count: 1

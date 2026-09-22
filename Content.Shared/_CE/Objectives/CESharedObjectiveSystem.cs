@@ -34,6 +34,25 @@ public abstract partial class CESharedObjectiveSystem : EntitySystem
     }
 
     /// <summary>
+    /// Returns the objectives a holder owns directly (<see cref="CEObjectiveHolderComponent.OwnedObjectives"/>),
+    /// excluding whatever <see cref="CEGetAdditionalObjectivesEvent"/> contributes from other sources.
+    /// </summary>
+    public List<Entity<CEObjectiveComponent>> GetOwnedObjectives(Entity<CEObjectiveHolderComponent?> holder)
+    {
+        if (!Resolve(holder, ref holder.Comp, false))
+            return [];
+
+        var objectives = new List<Entity<CEObjectiveComponent>>();
+        foreach (var objective in holder.Comp.OwnedObjectives)
+        {
+            if (TryComp<CEObjectiveComponent>(objective, out var comp))
+                objectives.Add((objective, comp));
+        }
+
+        return objectives;
+    }
+
+    /// <summary>
     /// Spawns an objective from a prototype and adds it to a holder's
     /// <see cref="CEObjectiveHolderComponent.OwnedObjectives"/>.
     /// </summary>
@@ -122,8 +141,8 @@ public abstract partial class CESharedObjectiveSystem : EntitySystem
                 _pvsOverride.RemoveSessionOverride(obj, session);
         }
 
-        var changedEv = new CEObjectivesChangedEvent(ent.Owner);
-        RaiseLocalEvent(ent.Owner, ref changedEv);
+        var changedEv = new CEObjectivesChangedEvent(ent.Owner, added, removed);
+        RaiseLocalEvent(ent.Owner, ref changedEv, true);
     }
 
     /// <summary>
@@ -161,7 +180,7 @@ public abstract partial class CESharedObjectiveSystem : EntitySystem
     /// </summary>
     public void RefreshObjectiveProgress(Entity<CEObjectiveComponent?> ent)
     {
-        if (!Resolve(ent, ref ent.Comp))
+        if (!Resolve(ent, ref ent.Comp, logMissing: false))
             return;
 
         var ev = new CEGetObjectiveProgressEvent();

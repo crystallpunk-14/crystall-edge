@@ -18,7 +18,7 @@ public sealed partial class CEPriceControl : Control
 
         var sprite = _entity.System<SpriteSystem>();
 
-        var rsiPath = new ResPath("_CE/Interface/Misc/coins.rsi");
+        var rsiPath = new ResPath("_CE/Interface/coins.rsi");
 
         var total = price;
 

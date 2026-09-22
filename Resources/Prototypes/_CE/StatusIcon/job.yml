@@ -11,7 +11,7 @@
   parent: CEJobIcon
   id: CEJobIconGuardCommander
   icon:
-    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
     state: guard_commander
   jobName: ce-job-name-guard-commander
 
@@ -19,7 +19,7 @@
   parent: CEJobIcon
   id: CEJobIconGuard
   icon:
-    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
     state: guard
   jobName: ce-job-name-guard
 
@@ -27,7 +27,7 @@
   parent: CEJobIcon
   id: CEJobIconInvestigator
   icon:
-    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
     state: investigator
   jobName: ce-job-name-investigator
 
@@ -37,7 +37,7 @@
   parent: CEJobIcon
   id: CEJobIconTavernmaster
   icon:
-    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
     state: tavernmaster
   jobName: ce-job-name-tavernmaster
 
@@ -45,7 +45,7 @@
   parent: CEJobIcon
   id: CEJobIconBartender
   icon:
-    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
     state: bartender
   jobName: ce-job-name-bartender
 
@@ -53,7 +53,7 @@
   parent: CEJobIcon
   id: CEJobIconChef
   icon:
-    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
     state: chef
   jobName: ce-job-name-chef
 
@@ -61,7 +61,7 @@
   parent: CEJobIcon
   id: CEJobIconFarmer
   icon:
-    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
     state: farmer
   jobName: ce-job-name-farmer
 
@@ -71,7 +71,7 @@
   parent: CEJobIcon
   id: CEJobIconBrigadier
   icon:
-    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
     state: brigadier
   jobName: ce-job-name-brigadier
 
@@ -79,7 +79,7 @@
   parent: CEJobIcon
   id: CEJobIconTechnician
   icon:
-    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
     state: technician
   jobName: ce-job-name-technician
 
@@ -89,7 +89,7 @@
   parent: CEJobIcon
   id: CEJobIconBard
   icon:
-    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
     state: bard
   jobName: ce-job-name-bard
 
@@ -97,7 +97,7 @@
   parent: CEJobIcon
   id: CEJobIconTownfolk
   icon:
-    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
     state: jobless
   jobName: ce-job-name-townfolk
 
@@ -107,7 +107,7 @@
   parent: CEJobIcon
   id: CEJobIconAcademyStudent
   icon:
-    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
     state: student
   jobName: ce-job-name-academy-student
 
@@ -115,7 +115,7 @@
   parent: CEJobIcon
   id: CEJobIconAcademyProfessor
   icon:
-    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
     state: professor
   jobName: ce-job-name-academy-professor
 
@@ -123,6 +123,6 @@
   parent: CEJobIcon
   id: CEJobIconAcademyRector
   icon:
-    sprite: /Textures/_CE/Interface/Misc/job_icons.rsi
+    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
     state: rector
   jobName: ce-job-name-academy-rector

@@ -50,7 +50,7 @@ public abstract partial class CESharedSkillSystem
             Text = "Reset skills",
             Message = "Remove all learned skills",
             Category = VerbCategory.Debug,
-            Icon = new SpriteSpecifier.Rsi(new("/Textures/_CE/Interface/Misc/reroll.rsi"), "reroll"),
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/_CE/Interface/Skills/reroll.rsi"), "reroll"),
             Act = () =>
             {
                 TryResetSkills(target);

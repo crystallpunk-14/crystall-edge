@@ -18,6 +18,7 @@
   - CECivilian
   - CEThief
   - CEMurkwalker
+  - CELover
   objectivePool:
     maxDifficulty: 1
     weighted:

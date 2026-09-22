@@ -15,7 +15,7 @@ public sealed partial class CESecretRoleSetCommand : LocalizedCommands
     [Dependency] private IPrototypeManager _proto = default!;
 
     public override string Command => "secretroleset";
-    public override string Description => "Sets a player's secret role, replacing whatever secret role (and objectives) they had before.";
+    public override string Description => "Sets a player's secret role, replacing whatever secret role (objectives and skills included) they had before.";
     public override string Help => "Usage: secretroleset <player> <roleId>";
 
     public override void Execute(IConsoleShell shell, string argStr, string[] args)
