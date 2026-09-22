@@ -13,10 +13,9 @@ public enum CETradingUiKey
 }
 
 [Serializable, NetSerializable]
-public sealed class CETradingPlatformUiState(NetEntity platform, int buyBalance, int sellBalance, ProtoId<CETradingFactionPrototype> faction) : BoundUserInterfaceState
+public sealed class CETradingPlatformUiState(NetEntity platform, int sellBalance, ProtoId<CETradingFactionPrototype> faction) : BoundUserInterfaceState
 {
     public NetEntity Platform = platform;
-    public int BuyBalance = buyBalance;
     public int SellBalance = sellBalance;
     public ProtoId<CETradingFactionPrototype> Faction = faction;
 }

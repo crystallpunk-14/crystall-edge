@@ -45,6 +45,12 @@
 
                 <!-- Buttons -->
                 <BoxContainer Orientation="Vertical" HorizontalExpand="True">
+                    <BoxContainer Name="BalanceBox" Orientation="Horizontal" HorizontalExpand="True" Visible="True">
+                        <Label Text="{Loc 'ce-trading-ui-your-balance'}" VerticalAlignment="Center" />
+                        <BoxContainer Orientation="Horizontal" HorizontalExpand="True" HorizontalAlignment="Right">
+                            <BoxContainer SetWidth="100" Name="BalanceHolder" VerticalAlignment="Center" HorizontalExpand="True" HorizontalAlignment="Center" />
+                        </BoxContainer>
+                    </BoxContainer>
                     <BoxContainer Name="BuyBox" Orientation="Horizontal" HorizontalExpand="True" Visible="True">
                         <Button Name="BuyButton" Text="{Loc 'ce-trading-ui-button-buy'}"
                                 ToolTip="{Loc 'ce-trading-ui-button-buy-tooltip'}" StyleClasses="OpenRight"

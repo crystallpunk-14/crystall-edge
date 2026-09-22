@@ -52,31 +52,21 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
 
     private void UpdatePlatformUIState(Entity<CETradingPlatformComponent> ent)
     {
-        if (!TryComp<ItemPlacerComponent>(ent, out var itemPlacer))
-            return;
-
         // Calculate sell balance
         double sellBalance = 0;
-        foreach (var placed in itemPlacer.PlacedEntities)
+        if (TryComp<ItemPlacerComponent>(ent, out var itemPlacer))
         {
-            if (!CanSell(placed))
-                continue;
+            foreach (var placed in itemPlacer.PlacedEntities)
+            {
+                if (!CanSell(placed))
+                    continue;
 
-            sellBalance += _price.GetPrice(placed);
-        }
-
-        // Calculate buy balance
-        double buyBalance = 0;
-        foreach (var placed in itemPlacer.PlacedEntities)
-        {
-            if (!_tag.HasTag(placed, ent.Comp.CoinTag))
-                continue;
-
-            buyBalance += _price.GetPrice(placed);
+                sellBalance += _price.GetPrice(placed);
+            }
         }
 
         var faction = ent.Comp.Faction;
-        _userInterface.SetUiState(ent.Owner, CETradingUiKey.Buy, new CETradingPlatformUiState(GetNetEntity(ent), (int)buyBalance, (int)sellBalance, faction));
+        _userInterface.SetUiState(ent.Owner, CETradingUiKey.Buy, new CETradingPlatformUiState(GetNetEntity(ent), (int)sellBalance, faction));
     }
 
     public bool CanSell(EntityUid uid)
@@ -112,33 +102,11 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
         if (ent.Comp.Faction != indexedPosition.Faction)
             return;
 
-        if (!TryComp<ItemPlacerComponent>(ent, out var itemPlacer))
-            return;
-
-        //Top up balance
-        double balance = 0;
-        foreach (var placedEntity in itemPlacer.PlacedEntities)
-        {
-            if (!_tag.HasTag(placedEntity, ent.Comp.CoinTag))
-                continue;
-            balance += _price.GetPrice(placedEntity);
-        }
-
+        // The buyer pays out of their own wallet/inventory, not anything placed on the platform -
+        // this is what lets several players shop the same platform at once.
         var price = GetPrice(args.Position) ?? 10000;
-        if (balance < price)
-        {
-            // Not enough balance to buy the position
+        if (!_currency.TryTakeCurrency(args.Actor, price))
             return;
-        }
-
-        foreach (var placedEntity in itemPlacer.PlacedEntities)
-        {
-            if (!_tag.HasTag(placedEntity, ent.Comp.CoinTag))
-                continue;
-            QueueDel(placedEntity);
-        }
-
-        balance -= price;
 
         ent.Comp.NextBuyTime = Timing.CurTime + TimeSpan.FromSeconds(1f);
         Dirty(ent);
@@ -146,9 +114,6 @@ public sealed partial class CETradingPlatformSystem : CESharedTradingPlatformSys
         indexedPosition.Service.Buy(EntityManager, Proto, ent);
 
         _audio.PlayPvs(ent.Comp.BuySound, Transform(ent).Coordinates);
-
-        //return the change
-        _currency.GenerateMoney(balance, Transform(ent).Coordinates);
         SpawnAtPosition(ent.Comp.BuyVisual, Transform(ent).Coordinates);
 
         UpdatePlatformUIState(ent);
