@@ -102,6 +102,8 @@
     - LurkerFear
     descriptorName: ce-innate-skill-source-lurker
     descriptorColor: "#2E3A4E"
+  - type: CEMurkSphereChargingBlocker
+    name: ce-innate-skill-source-lurker
 
 #MARK: Spawners
 - type: entity
