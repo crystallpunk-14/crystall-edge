@@ -1,0 +1,17 @@
+- type: skill
+  id: SoftLanding
+  name: ce-skill-soft-landing-name
+  desc: ce-skill-soft-landing-desc
+  icon:
+    sprite: _CE/Actions/misc.rsi
+    state: todo
+  effect: !type:AddStatusEffect
+    effect: CEStatusEffectSoftLanding
+
+- type: entity
+  parent: StatusEffectBase
+  id: CEStatusEffectSoftLanding
+  name: soft landing
+  components:
+  - type: CESoftLandingStatusEffect
+    maxSpeedLimit: 7 # 2 floors safe fall

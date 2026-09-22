@@ -16,3 +16,5 @@ ce-murk-sphere-fixer-block-unpowered-desc = The Pillar of Light has no power.
 
 ce-murk-sphere-fixer-block-missing-title = What the hell?
 ce-murk-sphere-fixer-block-missing-desc = There's no Pillar of Light. Nothing to charge.
+
+ce-murk-sphere-charging-blocker-desc = An aura of darkness within the sphere's radius is blocking the Pillar of Light's charge.

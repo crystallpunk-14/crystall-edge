@@ -253,12 +253,11 @@
   - type: CESkinColoredLayers
     maps:
     - wings
-  - type: CEZFlyer # Flying birb!!!
-  - type: CEControllableFlight
-    startFlightDoAfter: 1.5
-  - type: CEZFlyerBlockHands
-  - type: CEZFlyerStamina
-    staminaDraw: 10
+  - type: CEInnateSkills
+    skills:
+    - Flight
+    descriptorName: ce-innate-skill-source-carrin
+    descriptorColor: "#e7e397"
   - type: AmbientSound
     enabled: false
     volume: 2

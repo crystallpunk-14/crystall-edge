@@ -20,3 +20,5 @@ ce-murk-sphere-fixer-block-unpowered-desc = Столп Света не запи�
 
 ce-murk-sphere-fixer-block-missing-title = Что блять?
 ce-murk-sphere-fixer-block-missing-desc = Отсутствует столп света. Заряжать нечего.
+
+ce-murk-sphere-charging-blocker-desc = Аура мрака внутри действия сферы блокирует заряд столба света.

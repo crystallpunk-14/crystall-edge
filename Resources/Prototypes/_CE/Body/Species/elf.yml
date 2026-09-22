@@ -159,10 +159,11 @@
       reagents:
       - ReagentId: CEBloodElf
         Quantity: 300
-  - type: CEEnergyOverchargeDamage
-    damage:
-      types:
-        Slash: 0 # Zero overcharge damage
+  - type: CEInnateSkills
+    skills:
+    - EnergyOverchargeImmunity
+    descriptorName: ce-innate-skill-source-elf
+    descriptorColor: "#92efef"
 
 - type: entity
   parent: OrganBase

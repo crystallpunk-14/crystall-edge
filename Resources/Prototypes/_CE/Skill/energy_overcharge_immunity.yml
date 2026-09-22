@@ -1,0 +1,13 @@
+- type: skill
+  id: EnergyOverchargeImmunity
+  name: ce-skill-energy-overcharge-immunity-name
+  desc: ce-skill-energy-overcharge-immunity-desc
+  icon:
+    sprite: _CE/Actions/misc.rsi
+    state: todo
+  effect: !type:AddComponents
+    components:
+    - type: CEEnergyOverchargeDamage
+      damage:
+        types:
+          Slash: 0 # Zero overcharge damage
