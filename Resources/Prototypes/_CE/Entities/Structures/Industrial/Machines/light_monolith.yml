@@ -93,6 +93,7 @@
     powerLoad: 2
   - type: AmbientOnPowered
   - type: LitOnPowered
+  - type: CEMurkPylon
   - type: PointLight
     enabled: true
     color: "#8ebab9"

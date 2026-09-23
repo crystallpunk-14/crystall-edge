@@ -116,8 +116,13 @@ public sealed class CEMurkSphereFixerBlockRefreshEvent : EntityEventArgs
 
     public void Block(string title, string description, EntityCoordinates coordinates)
     {
+        Block(title, description, new[] { coordinates });
+    }
+
+    public void Block(string title, string description, IReadOnlyList<EntityCoordinates> coordinates)
+    {
         _blockers.Add(new CEMurkSphereFixerBlocker(title, description, coordinates));
     }
 }
 
-public readonly record struct CEMurkSphereFixerBlocker(string Title, string Description, EntityCoordinates Coordinates);
+public readonly record struct CEMurkSphereFixerBlocker(string Title, string Description, IReadOnlyList<EntityCoordinates> Coordinates);

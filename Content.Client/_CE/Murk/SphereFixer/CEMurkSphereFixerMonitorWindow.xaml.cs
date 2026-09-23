@@ -6,6 +6,7 @@ using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
+using Robust.Shared.Map;
 using Robust.Shared.Utility;
 
 namespace Content.Client._CE.Murk.SphereFixer;
@@ -68,24 +69,35 @@ public sealed partial class CEMurkSphereFixerMonitorWindow : FancyWindow
 
         BlockersContainer.RemoveAllChildren();
 
-        for (var i = 0; i < state.Blockers.Count; i++)
+        var blipIndex = 0;
+        foreach (var blocker in state.Blockers)
         {
-            var blocker = state.Blockers[i];
-            var hasLocation = blocker.Coordinates is not null;
+            var hasLocation = blocker.Coordinates.Count > 0;
 
             var entry = new CEMurkSphereFixerBlockerEntry(blocker.Title, blocker.Description, hasLocation);
             BlockersContainer.AddChild(entry);
 
-            if (blocker.Coordinates is not { } netCoords)
+            if (!hasLocation)
                 continue;
 
-            var coords = _entManager.GetCoordinates(netCoords);
-            var blipKey = new NetEntity(int.MinValue + 1 + i);
+            var coordsList = new List<EntityCoordinates>(blocker.Coordinates.Count);
+            foreach (var netCoords in blocker.Coordinates)
+            {
+                var coords = _entManager.GetCoordinates(netCoords);
+                coordsList.Add(coords);
 
-            NavMap.TrackedEntities[blipKey] =
-                new NavMapBlip(coords, spriteSystem.Frame0(BlockerBlip), Color.Red, true, false);
+                var blipKey = new NetEntity(int.MinValue + 1 + blipIndex++);
+                NavMap.TrackedEntities[blipKey] =
+                    new NavMapBlip(coords, spriteSystem.Frame0(BlockerBlip), Color.Red, true, false);
+            }
 
-            entry.CenterButton!.OnPressed += _ => NavMap.CenterToCoordinates(coords);
+            // Cycles through every location this blocker points at, one per press.
+            var cycleIndex = 0;
+            entry.CenterButton!.OnPressed += _ =>
+            {
+                NavMap.CenterToCoordinates(coordsList[cycleIndex]);
+                cycleIndex = (cycleIndex + 1) % coordsList.Count;
+            };
         }
     }
 }

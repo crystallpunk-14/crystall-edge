@@ -66,7 +66,13 @@ public sealed partial class CEMurkSphereFixerMonitorSystem : EntitySystem
 
             foreach (var blocker in fixer.Blockers)
             {
-                blockers.Add(new CEMurkSphereFixerBlockerInfo(blocker.Title, blocker.Description, GetNetCoordinates(blocker.Coordinates)));
+                var coordinates = new List<NetCoordinates>(blocker.Coordinates.Count);
+                foreach (var coords in blocker.Coordinates)
+                {
+                    coordinates.Add(GetNetCoordinates(coords));
+                }
+
+                blockers.Add(new CEMurkSphereFixerBlockerInfo(blocker.Title, blocker.Description, coordinates));
             }
         }
 
@@ -80,7 +86,7 @@ public sealed partial class CEMurkSphereFixerMonitorSystem : EntitySystem
             blockers.Add(new CEMurkSphereFixerBlockerInfo(
                 Loc.GetString("ce-murk-sphere-fixer-block-missing-title"),
                 Loc.GetString("ce-murk-sphere-fixer-block-missing-desc"),
-                null));
+                new List<NetCoordinates>()));
         }
 
         _ui.SetUiState(uid,

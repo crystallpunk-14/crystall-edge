@@ -33,4 +33,18 @@ public sealed partial class CEMurkSphereFixerComponent : Component
     /// by <see cref="CEMurkSphereFixerMonitorSystem"/> to feed the monitor console.
     /// </summary>
     public readonly List<CEMurkSphereFixerBlocker> Blockers = new();
+
+    /// <summary>
+    /// How many pylons (see <see cref="CEMurkPylonComponent"/>) must be powered, in the murk, and
+    /// far enough from every other powered pylon for the monolith to charge.
+    /// </summary>
+    [DataField]
+    public int PylonsRequired = 6;
+
+    /// <summary>
+    /// Minimum distance, in tiles, a powered pylon must keep from every other powered pylon to
+    /// count towards <see cref="PylonsRequired"/>.
+    /// </summary>
+    [DataField]
+    public float PylonsMinRadius = 15f;
 }

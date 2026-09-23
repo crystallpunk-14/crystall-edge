@@ -10,7 +10,7 @@ public enum CEMurkSphereFixerMonitorUiKey : byte
 }
 
 [Serializable, NetSerializable]
-public readonly record struct CEMurkSphereFixerBlockerInfo(string Title, string Description, NetCoordinates? Coordinates);
+public readonly record struct CEMurkSphereFixerBlockerInfo(string Title, string Description, List<NetCoordinates> Coordinates);
 
 [Serializable, NetSerializable]
 public sealed class CEMurkSphereFixerMonitorBoundUserInterfaceState(
