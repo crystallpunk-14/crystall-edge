@@ -15,10 +15,10 @@ ce-job-name-tavernmaster = Tavernmaster
 ce-job-desc-tavernmaster = Organize your workers to maximize profits... Or not.
 
 ce-job-name-bartender = Bartender
-ce-job-desc-bartender = Not implemented.
+ce-job-desc-bartender = TODO
 
 ce-job-name-chef = Chef
-ce-job-desc-chef = Not implemented.
+ce-job-desc-chef = Run the kitchen, preparing a variety of dishes for your guests.
 
 ce-job-name-farmer = Farmer
 ce-job-desc-farmer = Your garden is your fortress. Grow anything and experiment with irradiating plants to get previously unknown products.

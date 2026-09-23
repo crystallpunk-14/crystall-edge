@@ -108,6 +108,8 @@
       - id: CERope
       - id: CEFork
       - id: CESpoon
+      - id: CESmokingPipe
+      - id: CEGroundTobacco
       - id: CEFloorTileGrass30
       - id: CEFloorTileMycelium30
       - id: CEEnergyCrystalShard
