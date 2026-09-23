@@ -1,0 +1,80 @@
+- type: gameMap
+  id: Pharus
+  mapName: Pharus
+  minPlayers: 1
+  maxPlayers: 20
+  mapPath: /Maps/_CE/Pharus/Pharus0.yml
+  stations:
+    Pharus:
+      stationProto: CEStandardImperialFloatingIsland
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: "Pharus"
+        - type: StationJobs
+          availableJobs:
+            #Guard (5)
+            #CEGuardCommander: [ 1, 1 ]
+            #CEGuard: [ 4, 4 ]
+            ##Engineering (4)
+            #CEBrigadier: [ 1, 1 ]
+            #CETechnician: [ 3, 4 ]
+            ##Tavern (4)
+            #CETavernmaster: [ 1, 1 ]
+            #CEChef: [ 3, 3 ]
+            ##Academy
+            #CEAcademyRector: [ 1, 1 ]
+            #CEAcademyProfessor: [ 2, 2 ]
+            #CEAcademyStudent: [ 2, 3 ]
+            ##Citizens
+            #CEBard: [ 2, 2 ]
+            CETownfolk: [ -1, -1 ]
+        - type: CEStationZLevels
+          mapsBelow:
+          - /Maps/_CE/Pharus/Pharus-1.yml
+          mapsAbove:
+          - /Maps/_CE/Pharus/Pharus1.yml
+          - /Maps/_CE/Pharus/Pharus2.yml
+          - /Maps/_CE/Pharus/Pharus3.yml
+          - /Maps/_CE/Pharus/Pharus4.yml
+          - /Maps/_CE/Pharus/Pharus5.yml
+          zLevelsComponentOverrides:
+            - type: MapAtmosphere
+              space: False
+              mixture:
+                volume: 2500
+                immutable: True
+                temperature: 293.15
+                moles:
+                  Oxygen: 21.824879
+                  Nitrogen: 82.10312
+            - type: Parallax
+              parallax: CEBedrock
+            - type: MapLight #BEFORE Light Cycle
+              ambientLightColor: "#adcfd8"
+            - type: LightCycle #BEFORE Sun shadow cycle!
+            - type: CELightCycle
+              colors:
+                0: "#1c1c27"
+                0.125: "#2e2f42"
+                0.25: "#465269"
+                0.375: "#d8ffff"
+                0.625: "#d8ffff"
+                0.75: "#334347"
+                0.875: "#323347"
+            - type: SunShadowCycle
+            - type: CEZLevelRoof
+            - type: SunShadow
+            - type: CECloudsOverlay
+              seed: 490
+              frequency: 0.2
+              octaves: 4
+              lacunarity: 2.0
+              gain: 0.5
+              windVelocity: -1, 0.3
+              evolutionSpeed: 0.1
+              coverage: 0.6
+              shadowStrength: 0.6
+              shadowColor: "#000000"
+            - type: CEGridStability
+              supportLowestLevel: True
+            - type: CEMurkedMap

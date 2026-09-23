@@ -90,6 +90,14 @@
 
 - type: entity
   parent: CEMurkLucsonSphere
+  id: CEMurkLucsonSphere35
+  suffix: One per Map, 35 radius
+  components:
+  - type: CEMurkSource
+    intensity: -35
+
+- type: entity
+  parent: CEMurkLucsonSphere
   id: CEMurkLucsonSphere50
   suffix: One per Map, 50 radius
   components:
