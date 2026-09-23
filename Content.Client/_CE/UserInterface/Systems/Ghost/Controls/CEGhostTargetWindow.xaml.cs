@@ -1,4 +1,6 @@
 using System.Linq;
+using Content.Client._CE.Roles;
+using Content.Client._CE.UserInterface.Systems.Character.Windows;
 using Content.Shared._CE.Ghost;
 using Content.Shared._CE.Roles;
 using Content.Shared.Roles;
@@ -43,8 +45,13 @@ public sealed partial class CEGhostTargetWindow : DefaultWindow
         string Name,
         string? JobName,
         Texture? JobIcon,
+        Color? JobColor,
+        string JobDepartmentSearchText,
         string? SecretRoleName,
-        Texture? SecretRoleIcon);
+        Texture? SecretRoleIcon,
+        Color? SecretRoleColor,
+        string? SecretRoleFactionName,
+        string SecretRoleDepartmentSearchText);
 
     private sealed record LocationRow(NetEntity Entity, string Name);
 
@@ -95,25 +102,48 @@ public sealed partial class CEGhostTargetWindow : DefaultWindow
 
             string? jobName = null;
             Texture? jobIcon = null;
+            Color? jobColor = null;
+            var jobDepartmentSearchText = string.Empty;
             if (warp.Job is { } jobId && _prototype.TryIndex(jobId, out var jobProto))
             {
                 jobName = jobProto.LocalizedName;
                 jobIcon = _prototype.TryIndex(jobProto.Icon, out JobIconPrototype? jobIconProto)
                     ? Sprite.Frame0(jobIconProto.Icon)
                     : null;
+
+                (var jobDepartment, jobDepartmentSearchText) = CEDepartmentResolver.ResolveJobDepartment(_prototype, jobId);
+                jobColor = jobDepartment?.Color;
             }
 
             string? secretRoleName = null;
             Texture? secretRoleIcon = null;
+            Color? secretRoleColor = null;
+            string? secretRoleFactionName = null;
+            var secretRoleDepartmentSearchText = string.Empty;
             if (warp.SecretRole is { } secretRoleId && _prototype.TryIndex(secretRoleId, out var secretRoleProto))
             {
                 secretRoleName = secretRoleProto.LocalizedName;
                 secretRoleIcon = _prototype.TryIndex(secretRoleProto.Icon, out JobIconPrototype? secretRoleIconProto)
                     ? Sprite.Frame0(secretRoleIconProto.Icon)
                     : null;
+
+                (var secretDepartment, secretRoleDepartmentSearchText) = CEDepartmentResolver.ResolveSecretDepartment(_prototype, secretRoleId);
+                secretRoleColor = secretDepartment?.Color;
+                secretRoleFactionName = secretDepartment != null ? Loc.GetString(secretDepartment.Name) : null;
             }
 
-            _allPlayers.Add(new PlayerRow(warp.Entity, warp.DisplayName, jobName, jobIcon, secretRoleName, secretRoleIcon));
+            _allPlayers.Add(new PlayerRow(
+                warp.Entity,
+                warp.DisplayName,
+                jobName,
+                jobIcon,
+                jobColor,
+                jobDepartmentSearchText,
+                secretRoleName,
+                secretRoleIcon,
+                secretRoleColor,
+                secretRoleFactionName,
+                secretRoleDepartmentSearchText));
         }
     }
 
@@ -140,11 +170,12 @@ public sealed partial class CEGhostTargetWindow : DefaultWindow
         {
             var row = players[i];
             var control = new CEGhostWarpPlayerRow();
-            control.SetData(row.Name, row.JobName, row.JobIcon, row.SecretRoleName, row.SecretRoleIcon);
+            control.SetData(row.Name, row.JobName, row.JobIcon, row.JobColor, row.SecretRoleName, row.SecretRoleIcon, row.SecretRoleColor);
             control.PanelOverride = new StyleBoxFlat(i % 2 == 0 ? AltColor : DefaultColor);
 
             var target = row.Entity;
             control.WarpButton.OnPressed += _ => WarpClicked?.Invoke(target);
+            control.InfoButton.OnPressed += _ => OpenCharacterView(row);
 
             PlayersRows.AddChild(control);
         }
@@ -174,7 +205,24 @@ public sealed partial class CEGhostTargetWindow : DefaultWindow
         return _allPlayers.Where(row =>
             row.Name.Contains(_searchText, StringComparison.OrdinalIgnoreCase)
             || (row.JobName?.Contains(_searchText, StringComparison.OrdinalIgnoreCase) ?? false)
-            || (row.SecretRoleName?.Contains(_searchText, StringComparison.OrdinalIgnoreCase) ?? false));
+            || (row.SecretRoleName?.Contains(_searchText, StringComparison.OrdinalIgnoreCase) ?? false)
+            || row.JobDepartmentSearchText.Contains(_searchText, StringComparison.OrdinalIgnoreCase)
+            || row.SecretRoleDepartmentSearchText.Contains(_searchText, StringComparison.OrdinalIgnoreCase));
+    }
+
+    private void OpenCharacterView(PlayerRow row)
+    {
+        var window = new CECharacterViewWindow();
+        window.Open(
+            row.Entity,
+            row.Name,
+            row.JobName,
+            row.JobIcon,
+            row.JobColor,
+            row.SecretRoleName,
+            row.SecretRoleIcon,
+            row.SecretRoleColor,
+            row.SecretRoleFactionName);
     }
 
     private IEnumerable<LocationRow> FilterLocations()

@@ -14,7 +14,9 @@
             <Label Name="SecretRoleLabel" HorizontalExpand="True" ClipText="True" />
         </BoxContainer>
         <cc:VSeparator />
-        <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" MinSize="32 0">
+        <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" MinSize="64 0" SeparationOverride="4">
+            <TextureButton Name="InfoButton" Access="Public" TexturePath="/Textures/Interface/info.svg.192dpi.png"
+                           Scale="0.5 0.5" HorizontalAlignment="Center" VerticalAlignment="Center" />
             <TextureButton Name="WarpButton" Access="Public" TexturePath="right_arrow.svg.192dpi"
                            Scale="0.5 0.5" HorizontalAlignment="Center" VerticalAlignment="Center" />
         </BoxContainer>

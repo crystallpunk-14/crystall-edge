@@ -18,18 +18,28 @@ public sealed partial class CEGhostWarpPlayerRow : PanelContainer
         RobustXamlLoader.Load(this);
     }
 
-    public void SetData(string name, string? jobName, Texture? jobIcon, string? secretRoleName, Texture? secretRoleIcon)
+    public void SetData(
+        string name,
+        string? jobName,
+        Texture? jobIcon,
+        Color? jobColor,
+        string? secretRoleName,
+        Texture? secretRoleIcon,
+        Color? secretRoleColor)
     {
         NameLabel.Text = name;
 
         JobLabel.Text = jobName ?? "-";
+        JobLabel.FontColorOverride = jobColor;
         JobIcon.Texture = jobIcon;
         JobIcon.Visible = jobIcon != null;
 
         SecretRoleLabel.Text = secretRoleName ?? "-";
+        SecretRoleLabel.FontColorOverride = secretRoleColor;
         SecretRoleIcon.Texture = secretRoleIcon;
         SecretRoleIcon.Visible = secretRoleIcon != null;
 
         WarpButton.ToolTip = Loc.GetString("ce-ghost-target-window-warp-tooltip", ("name", name));
+        InfoButton.ToolTip = Loc.GetString("ce-ghost-target-window-info-tooltip", ("name", name));
     }
 }

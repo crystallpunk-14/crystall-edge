@@ -36,7 +36,7 @@
                             <Label Name="PlayersSecretRoleHeader" SizeFlagsStretchRatio="2" HorizontalExpand="True"
                                    ClipText="True" MouseFilter="Pass" />
                             <cc:VSeparator />
-                            <Control MinSize="32 0" />
+                            <Control MinSize="64 0" />
                         </BoxContainer>
                     </PanelContainer>
                     <BoxContainer Name="PlayersRows" Orientation="Vertical" />
