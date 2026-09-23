@@ -13,12 +13,12 @@ ce-murk-days-left-title =
     }
 
 ce-murk-sphere-fixed-title = Сфера Люксона восстановлена
-ce-murk-sphere-fixed-desc = Столп Света запечатал трещину. Город в безопасности.
+ce-murk-sphere-fixed-desc = Монолит Света запечатал трещину. Город в безопасности.
 
 ce-murk-sphere-fixer-block-unpowered-title = Нет питания
-ce-murk-sphere-fixer-block-unpowered-desc = Столп Света не запитан энергией.
+ce-murk-sphere-fixer-block-unpowered-desc = Монолит Света не запитан энергией.
 
 ce-murk-sphere-fixer-block-missing-title = Что блять?
-ce-murk-sphere-fixer-block-missing-desc = Отсутствует столп света. Заряжать нечего.
+ce-murk-sphere-fixer-block-missing-desc = Отсутствует монолит света. Заряжать нечего.
 
-ce-murk-sphere-charging-blocker-desc = Аура мрака внутри действия сферы блокирует заряд столба света.
+ce-murk-sphere-charging-blocker-desc = Аура мрака внутри действия сферы блокирует заряд монолита света.

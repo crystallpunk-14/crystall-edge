@@ -1,0 +1,128 @@
+#MARK: Monolith
+
+- type: entity
+  id: CELightMonolith
+  parent: CEBaseMachinePowered
+  name: light monolith
+  description: A manufactured crystal capable of storing a vast amount of light and using it to repair the Lucson Sphere.
+  categories: [ ForkFiltered ]
+  components:
+  - type: PlacementReplacement
+    key: walls
+  - type: Sprite
+    drawdepth: Mobs
+    noRot: true
+    offset: 0,0.8
+    sprite: _CE/Structures/light_monolith.rsi
+    layers:
+    - state: base
+      shader: unshaded
+    - state: frame
+  - type: SunShadowCast
+    points:
+    - "-0.3,-0.3"
+    - "0.3,-0.3"
+    - "0.3,0.3"
+    - "-0.3,0.3"
+  - type: AmbientSound
+    volume: 5
+    range: 10
+    sound:
+      path: /Audio/_CE/Ambience/Loops/magic_pulse.ogg
+  - type: ApcPowerReceiver
+    powerLoad: 10
+  - type: AmbientOnPowered
+  - type: LitOnPowered
+  - type: PointLight
+    enabled: true
+    color: "#8ebab9"
+    energy: 1
+    radius: 5
+    netsync: false
+  - type: LightBehaviour
+    behaviours:
+      - !type:PulseBehaviour
+        interpolate: Cubic
+        maxDuration: 5
+        startValue: 0.1
+        endValue: 2.0
+        property: Energy
+        isLooped: true
+        enabled: true
+  - type: CEMurkSphereFixer
+  - type: CEPvsOverride
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        density: 1000
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        collection: GlassSmash
+  - type: CEGridStabilityCore
+    levitationForce: 1
+
+#MARK: Pylon
+
+- type: entity
+  id: CELightPylon
+  parent: CEBaseMachinePowered
+  name: light pylon
+  description: A component of the Light Monolith mechanism. All pylons must be operational, powered, and shrouded in murk for the main monolith to charge.
+  categories: [ ForkFiltered]
+  components:
+  - type: PlacementReplacement
+    key: walls
+  - type: Sprite
+    drawdepth: Mobs
+    noRot: true
+    offset: 0,0.4
+    sprite: _CE/Structures/light_monolith_small.rsi
+    layers:
+    - state: base
+      shader: unshaded
+    - state: frame
+  - type: ApcPowerReceiver
+    powerLoad: 2
+  - type: AmbientOnPowered
+  - type: LitOnPowered
+  - type: PointLight
+    enabled: true
+    color: "#8ebab9"
+    energy: 1
+    radius: 2
+    netsync: false
+  - type: LightBehaviour
+    behaviours:
+      - !type:PulseBehaviour
+        interpolate: Cubic
+        maxDuration: 5
+        startValue: 0.1
+        endValue: 2.0
+        property: Energy
+        isLooped: true
+        enabled: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.2,-0.2,0.2,0.2"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        density: 250
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        collection: GlassSmash
+  - type: Anchorable
+  - type: Pullable

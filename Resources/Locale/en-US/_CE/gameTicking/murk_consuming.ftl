@@ -9,12 +9,12 @@ ce-murk-days-left-title = { $days } { $days ->
     } left
 
 ce-murk-sphere-fixed-title = The Lucson Sphere has been mended
-ce-murk-sphere-fixed-desc = The Pillar of Light has sealed the crack. The city is safe.
+ce-murk-sphere-fixed-desc = The Light Monolith has sealed the crack. The city is safe.
 
 ce-murk-sphere-fixer-block-unpowered-title = No power
-ce-murk-sphere-fixer-block-unpowered-desc = The Pillar of Light has no power.
+ce-murk-sphere-fixer-block-unpowered-desc = The Light Monolith has no power.
 
 ce-murk-sphere-fixer-block-missing-title = What the hell?
-ce-murk-sphere-fixer-block-missing-desc = There's no Pillar of Light. Nothing to charge.
+ce-murk-sphere-fixer-block-missing-desc = There's no Light Monolith. Nothing to charge.
 
-ce-murk-sphere-charging-blocker-desc = An aura of darkness within the sphere's radius is blocking the Pillar of Light's charge.
+ce-murk-sphere-charging-blocker-desc = An aura of darkness within the sphere's radius is blocking the Light Monolith's charge.

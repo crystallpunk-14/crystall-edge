@@ -1,7 +1,7 @@
 namespace Content.Server._CE.Murk.SphereFixer;
 
 /// <summary>
-/// The Pillar of Light: charges up over time and, once full, mends every cracked
+/// The Light Monolith: charges up over time and, once full, mends every cracked
 /// <c>CEMurkLusconSphereComponent</c> and ends the round. Charging only progresses while
 /// <see cref="CEMurkSphereFixerBlockRefreshEvent"/> comes back with no blockers - see
 /// <see cref="CEMurkSphereFixerSystem.RefreshBlockConditions"/>.

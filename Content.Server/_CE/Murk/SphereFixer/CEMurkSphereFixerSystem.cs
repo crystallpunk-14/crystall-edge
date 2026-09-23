@@ -26,7 +26,7 @@ public sealed partial class CEMurkSphereFixerSystem : EntitySystem
     }
 
     /// <summary>
-    /// The Pillar itself must be powered.
+    /// The Monolith itself must be powered.
     /// </summary>
     [SubscribeLocalEvent]
     private void OnPowerBlockCheck(Entity<CEMurkSphereFixerComponent> ent, ref CEMurkSphereFixerBlockRefreshEvent args)
@@ -40,7 +40,7 @@ public sealed partial class CEMurkSphereFixerSystem : EntitySystem
     }
 
     /// <summary>
-    /// Recomputes and caches whether charging is currently blocked, for whichever Pillar of Light
+    /// Recomputes and caches whether charging is currently blocked, for whichever Light Monolith
     /// exists (there's normally only one per round). Call this whenever something a condition
     /// depends on changes.
     /// </summary>
