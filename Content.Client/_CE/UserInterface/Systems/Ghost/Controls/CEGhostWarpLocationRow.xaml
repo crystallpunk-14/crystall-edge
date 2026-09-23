@@ -3,8 +3,8 @@
     <BoxContainer Orientation="Horizontal" HorizontalExpand="True" SeparationOverride="4" Margin="4 2 4 2">
         <Label Name="NameLabel" HorizontalExpand="True" ClipText="True" />
         <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" MinSize="32 0">
-            <TextureButton Name="WarpButton" Access="Public" TexturePath="right_arrow.svg.192dpi"
-                           Scale="0.5 0.5" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextureButton Name="WarpButton" Access="Public" TexturePath="/Textures/Interface/VerbIcons/point.svg.192dpi.png"
+                           Scale="0.34 0.34" HorizontalAlignment="Center" VerticalAlignment="Center" />
         </BoxContainer>
     </BoxContainer>
 </controls:CEGhostWarpLocationRow>

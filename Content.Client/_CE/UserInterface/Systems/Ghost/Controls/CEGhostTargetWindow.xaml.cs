@@ -46,6 +46,7 @@ public sealed partial class CEGhostTargetWindow : DefaultWindow
         string? JobName,
         Texture? JobIcon,
         Color? JobColor,
+        string? JobDepartmentName,
         string JobDepartmentSearchText,
         string? SecretRoleName,
         Texture? SecretRoleIcon,
@@ -103,6 +104,7 @@ public sealed partial class CEGhostTargetWindow : DefaultWindow
             string? jobName = null;
             Texture? jobIcon = null;
             Color? jobColor = null;
+            string? jobDepartmentName = null;
             var jobDepartmentSearchText = string.Empty;
             if (warp.Job is { } jobId && _prototype.TryIndex(jobId, out var jobProto))
             {
@@ -113,6 +115,7 @@ public sealed partial class CEGhostTargetWindow : DefaultWindow
 
                 (var jobDepartment, jobDepartmentSearchText) = CEDepartmentResolver.ResolveJobDepartment(_prototype, jobId);
                 jobColor = jobDepartment?.Color;
+                jobDepartmentName = jobDepartment != null ? Loc.GetString(jobDepartment.Name) : null;
             }
 
             string? secretRoleName = null;
@@ -138,6 +141,7 @@ public sealed partial class CEGhostTargetWindow : DefaultWindow
                 jobName,
                 jobIcon,
                 jobColor,
+                jobDepartmentName,
                 jobDepartmentSearchText,
                 secretRoleName,
                 secretRoleIcon,
@@ -170,7 +174,16 @@ public sealed partial class CEGhostTargetWindow : DefaultWindow
         {
             var row = players[i];
             var control = new CEGhostWarpPlayerRow();
-            control.SetData(row.Name, row.JobName, row.JobIcon, row.JobColor, row.SecretRoleName, row.SecretRoleIcon, row.SecretRoleColor);
+            control.SetData(
+                row.Name,
+                row.JobName,
+                row.JobIcon,
+                row.JobColor,
+                row.JobDepartmentName,
+                row.SecretRoleName,
+                row.SecretRoleIcon,
+                row.SecretRoleColor,
+                row.SecretRoleFactionName);
             control.PanelOverride = new StyleBoxFlat(i % 2 == 0 ? AltColor : DefaultColor);
 
             var target = row.Entity;
