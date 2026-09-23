@@ -1,3 +1,6 @@
+using Content.Shared._CE.Roles;
+using Content.Shared.Roles;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._CE.Ghost;
@@ -17,11 +20,18 @@ public sealed class CEGhostWarpsRequestEvent : EntityEventArgs
 [Serializable, NetSerializable]
 public struct CEGhostWarp
 {
-    public CEGhostWarp(NetEntity entity, string displayName, bool isWarpPoint)
+    public CEGhostWarp(
+        NetEntity entity,
+        string displayName,
+        bool isWarpPoint,
+        ProtoId<JobPrototype>? job = null,
+        ProtoId<CESecretRolePrototype>? secretRole = null)
     {
         Entity = entity;
         DisplayName = displayName;
         IsWarpPoint = isWarpPoint;
+        Job = job;
+        SecretRole = secretRole;
     }
 
     /// <summary>
@@ -39,6 +49,18 @@ public struct CEGhostWarp
     /// Whether this warp represents a warp point or a player.
     /// </summary>
     public bool IsWarpPoint { get; }
+
+    /// <summary>
+    /// The target's job, if any. Null for warp points and jobless players.
+    /// Resolved to an icon/localized name client-side via the prototype manager.
+    /// </summary>
+    public ProtoId<JobPrototype>? Job { get; }
+
+    /// <summary>
+    /// The target's secret role, if any. Null for warp points and players without one.
+    /// Shown to every ghost - see CEGhostWarpSystem for the reveal-to-others lookup.
+    /// </summary>
+    public ProtoId<CESecretRolePrototype>? SecretRole { get; }
 }
 
 /// <summary>

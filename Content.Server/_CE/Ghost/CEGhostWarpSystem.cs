@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Server._CE.Roles;
 using Content.Server.Roles.Jobs;
 using Content.Shared._CE.Ghost;
 using Content.Shared.Ghost.Components;
@@ -20,6 +21,7 @@ public sealed partial class CEGhostWarpSystem : EntitySystem
     [Dependency] private ISharedPlayerManager _player = default!;
     [Dependency] private JobSystem _jobs = default!;
     [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private CESecretRoleInfoSystem _secretRoleInfo = default!;
 
     [Dependency] private EntityQuery<GhostComponent> _ghostQuery = default!;
 
@@ -61,11 +63,13 @@ public sealed partial class CEGhostWarpSystem : EntitySystem
 
             TryComp<MindContainerComponent>(attached, out var mind);
 
-            var jobName = _jobs.MindTryGetJobName(mind?.Mind);
-            var playerInfo = $"{Comp<MetaDataComponent>(attached).EntityName} ({jobName})";
+            _jobs.MindTryGetJobId(mind?.Mind, out var jobId);
+            _secretRoleInfo.TryGetSecretRole(attached, out var secretRole);
+
+            var playerName = Comp<MetaDataComponent>(attached).EntityName;
 
             if (_mobState.IsAlive(attached) || _mobState.IsCritical(attached))
-                yield return new CEGhostWarp(GetNetEntity(attached), playerInfo, false);
+                yield return new CEGhostWarp(GetNetEntity(attached), playerName, false, jobId, secretRole);
         }
     }
 }
