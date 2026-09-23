@@ -30,13 +30,25 @@ public sealed partial class CESecretRoleInfoSystem : EntitySystem
 
         var entity = args.SenderSession.AttachedEntity.Value;
 
-        ProtoId<CESecretRolePrototype>? secretRole = null;
-        if (_minds.TryGetMind(entity, out var mindId, out var mind)
-            && _role.MindHasRole<CESecretRoleComponent>((mindId, mind), out var roleEnt))
-        {
-            secretRole = roleEnt.Value.Comp2.Role;
-        }
+        TryGetSecretRole(entity, out var secretRole);
 
         RaiseNetworkEvent(new CESecretRoleInfoEvent(GetNetEntity(entity), secretRole), args.SenderSession);
+    }
+
+    /// <summary>
+    /// Looks up the secret role assigned to an arbitrary entity's mind. Unlike
+    /// <see cref="OnRequestSecretRoleInfo"/> (which only answers a client about themselves),
+    /// this has no self-only restriction - callers decide who else is allowed to see the result.
+    /// </summary>
+    public bool TryGetSecretRole(EntityUid entity, out ProtoId<CESecretRolePrototype>? role)
+    {
+        role = null;
+
+        if (!_minds.TryGetMind(entity, out var mindId, out var mind)
+            || !_role.MindHasRole<CESecretRoleComponent>((mindId, mind), out var roleEnt))
+            return false;
+
+        role = roleEnt.Value.Comp2.Role;
+        return role is not null;
     }
 }

@@ -6,5 +6,5 @@
   name: Secret role
   components:
   - type: MindRole
-    roleType: SoloAntagonist
+    roleType: Neutral
   - type: CESecretRole

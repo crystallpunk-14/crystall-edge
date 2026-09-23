@@ -160,7 +160,7 @@ public sealed partial class CETargetObjectiveSystem : EntitySystem
         }
 
         var ev = new CEObjectiveTargetChangedEvent(oldTarget, target);
-        RaiseLocalEvent(ent.Owner, ref ev);
+        RaiseLocalEvent(ent.Owner, ref ev, true);
 
         _objective.RefreshObjectiveProgress(ent.Owner);
     }

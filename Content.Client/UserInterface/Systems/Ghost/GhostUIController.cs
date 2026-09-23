@@ -1,7 +1,9 @@
+using Content.Client._CE.Ghost;
 using Content.Client.Gameplay;
 using Content.Client.Ghost;
 using Content.Client.UserInterface.Systems.Gameplay;
 using Content.Client.UserInterface.Systems.Ghost.Widgets;
+using Content.Shared._CE.Ghost;
 using Content.Shared.Ghost.Components;
 using Content.Shared.Ghost.Systems;
 using Robust.Client.UserInterface;
@@ -10,11 +12,13 @@ using Robust.Client.UserInterface.Controllers;
 namespace Content.Client.UserInterface.Systems.Ghost;
 
 // TODO hud refactor BEFORE MERGE fix ghost gui being too far up
-public sealed partial class GhostUIController : UIController, IOnSystemChanged<GhostSystem>
+// CrystallEdge: also implements IOnSystemChanged<CEGhostWarpSystem> - the warp target list moved to a CE copy
+public sealed partial class GhostUIController : UIController, IOnSystemChanged<GhostSystem>, IOnSystemChanged<CEGhostWarpSystem>
 {
     [Dependency] private IEntityNetworkManager _net = default!;
 
     [UISystemDependency] private readonly GhostSystem? _system = default;
+    [UISystemDependency] private readonly CEGhostWarpSystem? _ceGhostWarp = default; // CrystallEdge: see above
 
     private GhostGui? Gui => UIManager.GetActiveUIWidgetOrNull<GhostGui>();
 
@@ -43,7 +47,6 @@ public sealed partial class GhostUIController : UIController, IOnSystemChanged<G
         system.PlayerUpdated += OnPlayerUpdated;
         system.PlayerAttached += OnPlayerAttached;
         system.PlayerDetached += OnPlayerDetached;
-        system.GhostWarpsResponse += OnWarpsResponse;
         system.GhostRoleCountUpdated += OnRoleCountUpdated;
     }
 
@@ -53,8 +56,18 @@ public sealed partial class GhostUIController : UIController, IOnSystemChanged<G
         system.PlayerUpdated -= OnPlayerUpdated;
         system.PlayerAttached -= OnPlayerAttached;
         system.PlayerDetached -= OnPlayerDetached;
-        system.GhostWarpsResponse -= OnWarpsResponse;
         system.GhostRoleCountUpdated -= OnRoleCountUpdated;
+    }
+
+    // CrystallEdge: warp target list moved to a CE copy of the request/response pipeline
+    public void OnSystemLoaded(CEGhostWarpSystem system)
+    {
+        system.CEGhostWarpsResponse += OnWarpsResponse;
+    }
+
+    public void OnSystemUnloaded(CEGhostWarpSystem system)
+    {
+        system.CEGhostWarpsResponse -= OnWarpsResponse;
     }
 
     public void UpdateGui()
@@ -92,7 +105,7 @@ public sealed partial class GhostUIController : UIController, IOnSystemChanged<G
         Gui?.Hide();
     }
 
-    private void OnWarpsResponse(GhostWarpsResponseEvent msg)
+    private void OnWarpsResponse(CEGhostWarpsResponseEvent msg)
     {
         if (Gui?.TargetWindow is not { } window)
             return;
@@ -166,7 +179,7 @@ public sealed partial class GhostUIController : UIController, IOnSystemChanged<G
 
     private void RequestWarps()
     {
-        _system?.RequestWarps();
+        _ceGhostWarp?.RequestWarps(); // CrystallEdge: was _system?.RequestWarps()
         Gui?.TargetWindow.Populate();
         Gui?.TargetWindow.OpenCentered();
     }

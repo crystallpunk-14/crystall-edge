@@ -17,15 +17,26 @@ public sealed partial class CEShareTargetObjectiveSystem : CEBaseObjectiveSystem
         TryResolveTarget(ent, args.Holder.AsNullable());
     }
 
-    // A holder's objectives (e.g. from a weighted CEObjectivePool) aren't created in a guaranteed
-    // order, so the objective we're meant to share a target from might not exist yet when our own
-    // CEInitializeObjectiveEvent fires. Retry on every subsequent change to the holder's objective
-    // list - each objective's own creation triggers one of these, including whichever one adds the
-    // source objective we're waiting on.
+    // Retries when the holder's own objective list changes (e.g. the source objective gets created
+    // after us) and, globally, whenever any target-objective's target changes (e.g. the source
+    // objective was created but its own target only resolved later via a retry elsewhere).
     [SubscribeLocalEvent]
     private void OnObjectivesChanged(Entity<CEObjectiveHolderComponent> ent, ref CEObjectivesChangedEvent args)
     {
-        foreach (var objective in ObjectivesSys.GetObjectives(ent.AsNullable()))
+        RetryHolder(ent.AsNullable());
+    }
+
+    [SubscribeLocalEvent]
+    private void OnAnyTargetChanged(ref CEObjectiveTargetChangedEvent args)
+    {
+        var query = EntityQueryEnumerator<CEObjectiveHolderComponent>();
+        while (query.MoveNext(out var holderUid, out var holderComp))
+            RetryHolder((holderUid, holderComp));
+    }
+
+    private void RetryHolder(Entity<CEObjectiveHolderComponent?> holder)
+    {
+        foreach (var objective in ObjectivesSys.GetObjectives(holder))
         {
             if (!TryComp<CEShareTargetObjectiveComponent>(objective.Owner, out var share))
                 continue;
@@ -33,7 +44,7 @@ public sealed partial class CEShareTargetObjectiveSystem : CEBaseObjectiveSystem
             if (TryComp<CETargetObjectiveComponent>(objective.Owner, out var targetComp) && targetComp.Target != null)
                 continue; // already resolved
 
-            TryResolveTarget((objective.Owner, share), ent.AsNullable());
+            TryResolveTarget((objective.Owner, share), holder);
         }
     }
 
