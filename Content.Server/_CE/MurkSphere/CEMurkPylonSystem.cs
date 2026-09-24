@@ -10,12 +10,18 @@ namespace Content.Server._CE.MurkSphere;
 
 /// <summary>
 /// Each pylon checks its own conditions independently - powered, in the murk, and far enough from
-/// every other powered pylon (see <see cref="CEMurkSphereFixerComponent.PylonsMinRadius"/>). Extra
-/// broken pylons beyond <see cref="CEMurkSphereFixerComponent.PylonsRequired"/> don't matter as
-/// long as enough others pass.
+/// every other powered pylon (see <see cref="PylonsMinRadius"/>). Extra broken pylons beyond
+/// <see cref="CEMurkSphereFixerComponent.PylonsRequired"/> don't matter as long as enough others
+/// pass.
 /// </summary>
 public sealed partial class CEMurkPylonSystem : EntitySystem
 {
+    /// <summary>
+    /// Minimum distance, in tiles, a powered pylon must keep from every other powered pylon to
+    /// count towards <see cref="CEMurkSphereFixerComponent.PylonsRequired"/>.
+    /// </summary>
+    public const float PylonsMinRadius = 15f;
+
     [Dependency] private CEMurkSphereFixerSystem _sphereFixer = default!;
     [Dependency] private CESharedMurkSystem _murk = default!;
     [Dependency] private CESharedZLevelsSystem _zLevels = default!;
@@ -76,25 +82,7 @@ public sealed partial class CEMurkPylonSystem : EntitySystem
         {
             var powered = _power.IsPowered(pylonUid);
             var inMurk = _murk.InMurk(pylonUid, pylonXform);
-            var tooClose = false;
-
-            if (powered)
-            {
-                foreach (var (otherUid, _) in pylons)
-                {
-                    if (otherUid == pylonUid || !_power.IsPowered(otherUid))
-                        continue;
-
-                    if (!_zLevels.TryGetEffectiveDistance(pylonUid, otherUid, out var distance))
-                        continue;
-
-                    if (distance < fixer.PylonsMinRadius)
-                    {
-                        tooClose = true;
-                        break;
-                    }
-                }
-            }
+            var tooClose = powered && IsTooClose(pylonUid, pylons, requirePowered: true);
 
             if (powered && inMurk && !tooClose)
             {
@@ -130,5 +118,39 @@ public sealed partial class CEMurkPylonSystem : EntitySystem
                 Loc.GetString("ce-murk-pylon-block-count-desc", ("count", validCount), ("required", fixer.PylonsRequired)),
                 problemPylons);
         }
+    }
+
+    // Any other pylon (only powered ones, if requirePowered) within PylonsMinRadius.
+    private bool IsTooClose(EntityUid pylonUid, List<(EntityUid Uid, TransformComponent Xform)> pylons, bool requirePowered)
+    {
+        foreach (var (otherUid, _) in pylons)
+        {
+            if (otherUid == pylonUid || (requirePowered && !_power.IsPowered(otherUid)))
+                continue;
+
+            if (_zLevels.TryGetEffectiveDistance(pylonUid, otherUid, out var distance) && distance < PylonsMinRadius)
+                return true;
+        }
+
+        return false;
+    }
+
+    // Every pylon and whether it's too close to another, ignoring power/murk state - for showmurkdebug.
+    public List<(EntityUid Uid, TransformComponent Xform, bool TooClose)> GetPylonDebugInfo()
+    {
+        var pylons = new List<(EntityUid Uid, TransformComponent Xform)>();
+        var query = AllEntityQuery<CEMurkPylonComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out _, out var xform))
+        {
+            pylons.Add((uid, xform));
+        }
+
+        var result = new List<(EntityUid, TransformComponent, bool)>(pylons.Count);
+        foreach (var (uid, xform) in pylons)
+        {
+            result.Add((uid, xform, IsTooClose(uid, pylons, requirePowered: false)));
+        }
+
+        return result;
     }
 }

@@ -10,6 +10,8 @@ public sealed partial class CEMurkSystem : CESharedMurkSystem
     {
         base.Update(frameTime);
 
+        PushDebugSnapshot();
+
         var query = EntityQueryEnumerator<CEMurkGeneratorComponent, CEMurkSourceComponent, ApcPowerReceiverComponent>();
         while (query.MoveNext(out var uid, out var generator, out var source, out var receiver))
         {

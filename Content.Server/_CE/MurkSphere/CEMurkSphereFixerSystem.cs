@@ -39,7 +39,7 @@ public sealed partial class CEMurkSphereFixerSystem : EntitySystem
                 Transform(ent).Coordinates);
         }
     }
-
+    
     /// <summary>
     /// Recomputes and caches whether charging is currently blocked, for whichever Light Monolith
     /// exists (there's normally only one per round). Call this whenever something a condition

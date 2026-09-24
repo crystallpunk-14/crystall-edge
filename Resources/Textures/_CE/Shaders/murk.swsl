@@ -1,3 +1,5 @@
+#include "/Textures/_CE/Shaders/murk_common.swsl"
+
 uniform highp vec3 MURK_COLOR;
 uniform highp vec2 corner_bl;
 uniform highp vec2 corner_br;
@@ -33,23 +35,15 @@ highp float simplexNoise(highp vec2 coord)
     return dot(n, vec3(70.0));
 }
 
-// Everything is in world units: radii are tiles, already sliced down for this z-level by the
-// sphere projection on the CPU side.
-// x - ordinary murk, y - boundary wall. Both layers start from the same base and use the same
-// falloff; a source only chooses which layer it edits.
+// x - ordinary murk, y - boundary wall. Same base, same falloff; a source picks which layer it edits.
 highp vec2 murkAt(highp vec2 world_pos)
 {
     highp vec2 total = vec2(baseIntensity);
 
     for (lowp int i = 0; i < min(count, 64); i++)
     {
-        highp float radius = radii[i];
-        if (radius <= 0.0) continue;
-
-        highp float dist = length(world_pos - positions[i]);
-        if (dist >= radius) continue;
-
-        total += strengths[i] * (1.0 - dist / radius) * vec2(1.0 - isBoundary[i], isBoundary[i]);
+        highp float contribution = circleContribution(world_pos, positions[i], radii[i], strengths[i]);
+        total += contribution * vec2(1.0 - isBoundary[i], isBoundary[i]);
     }
 
     return total;

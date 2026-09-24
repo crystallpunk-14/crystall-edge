@@ -4,6 +4,11 @@
   path: "/Textures/_CE/Shaders/murk.swsl"
 
 - type: shader
+  id: CEMurkDebug
+  kind: source
+  path: "/Textures/_CE/Shaders/murkdebug.swsl"
+
+- type: shader
   id: CEWave
   kind: source
   path: "/Textures/_CE/Shaders/wave.swsl"

@@ -42,11 +42,4 @@ public sealed partial class CEMurkSphereFixerComponent : Component
     /// </summary>
     [DataField]
     public int PylonsRequired = 6;
-
-    /// <summary>
-    /// Minimum distance, in tiles, a powered pylon must keep from every other powered pylon to
-    /// count towards <see cref="PylonsRequired"/>.
-    /// </summary>
-    [DataField]
-    public float PylonsMinRadius = 15f;
 }
