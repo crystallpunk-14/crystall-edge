@@ -1,257 +1,257 @@
-# Bushes
+#MARK: Autumn Bushes
 
 - type: decal
-  id: CEGrassBushes1
+  id: CEGrassAutumnBushes1
   snapCardinals: true
   defaultSnap: true
   showMenu: true
   sprite:
-    sprite: _CE/Decals/Flora/Grass.rsi
+    sprite: _CE/Decals/Flora/grass_autumn.rsi
     state: grass_bushes1
 
 - type: decal
-  id: CEGrassBushes2
+  id: CEGrassAutumnBushes2
   snapCardinals: true
   defaultSnap: true
   showMenu: true
   sprite:
-    sprite: _CE/Decals/Flora/Grass.rsi
+    sprite: _CE/Decals/Flora/grass_autumn.rsi
     state: grass_bushes2
 
 - type: decal
-  id: CEGrassBushes3
+  id: CEGrassAutumnBushes3
   snapCardinals: true
   defaultSnap: true
   showMenu: true
   sprite:
-    sprite: _CE/Decals/Flora/Grass.rsi
+    sprite: _CE/Decals/Flora/grass_autumn.rsi
     state: grass_bushes3
 
 - type: decal
-  id: CEGrassBushes4
+  id: CEGrassAutumnBushes4
   snapCardinals: true
   defaultSnap: true
   showMenu: true
   sprite:
-    sprite: _CE/Decals/Flora/Grass.rsi
+    sprite: _CE/Decals/Flora/grass_autumn.rsi
     state: grass_bushes4
 
 - type: decal
-  id: CEGrassBushes5
+  id: CEGrassAutumnBushes5
   snapCardinals: true
   defaultSnap: true
   showMenu: true
   sprite:
-    sprite: _CE/Decals/Flora/Grass.rsi
+    sprite: _CE/Decals/Flora/grass_autumn.rsi
     state: grass_bushes5
 
 - type: decal
-  id: CEGrassBushes6
+  id: CEGrassAutumnBushes6
   snapCardinals: true
   defaultSnap: true
   showMenu: true
   sprite:
-    sprite: _CE/Decals/Flora/Grass.rsi
+    sprite: _CE/Decals/Flora/grass_autumn.rsi
     state: grass_bushes6
 
 - type: decal
-  id: CEGrassBushes7
+  id: CEGrassAutumnBushes7
   snapCardinals: true
   defaultSnap: true
   showMenu: true
   sprite:
-    sprite: _CE/Decals/Flora/Grass.rsi
+    sprite: _CE/Decals/Flora/grass_autumn.rsi
     state: grass_bushes7
 
 - type: decal
-  id: CEGrassBushes8
+  id: CEGrassAutumnBushes8
   snapCardinals: true
   defaultSnap: true
   showMenu: true
   sprite:
-    sprite: _CE/Decals/Flora/Grass.rsi
+    sprite: _CE/Decals/Flora/grass_autumn.rsi
     state: grass_bushes8
 
 - type: decal
-  id: CEGrassBushes9
+  id: CEGrassAutumnBushes9
   snapCardinals: true
   defaultSnap: true
   showMenu: true
   sprite:
-    sprite: _CE/Decals/Flora/Grass.rsi
+    sprite: _CE/Decals/Flora/grass_autumn.rsi
     state: grass_bushes9
 
-# Grass
+#MARK: Autumn Grass
 
 - type: decal
-  id: CEFloraGrass1
+  id: CEFloraGrassAutumn1
   snapCardinals: true
   defaultSnap: true
   showMenu: true
   sprite:
-    sprite: _CE/Decals/Flora/Grass.rsi
+    sprite: _CE/Decals/Flora/grass_autumn.rsi
     state: grass_short1
 
 - type: decal
-  id: CEFloraGrass2
+  id: CEFloraGrassAutumn2
   snapCardinals: true
   defaultSnap: true
   showMenu: true
   sprite:
-    sprite: _CE/Decals/Flora/Grass.rsi
+    sprite: _CE/Decals/Flora/grass_autumn.rsi
     state: grass_short2
 
 - type: decal
-  id: CEFloraGrass3
+  id: CEFloraGrassAutumn3
   snapCardinals: true
   defaultSnap: true
   showMenu: true
   sprite:
-    sprite: _CE/Decals/Flora/Grass.rsi
+    sprite: _CE/Decals/Flora/grass_autumn.rsi
     state: grass_short3
 
 - type: decal
-  id: CEFloraGrass4
+  id: CEFloraGrassAutumn4
   snapCardinals: true
   defaultSnap: true
   showMenu: true
   sprite:
-    sprite: _CE/Decals/Flora/Grass.rsi
+    sprite: _CE/Decals/Flora/grass_autumn.rsi
     state: grass_short4
 
 - type: decal
-  id: CEFloraGrass5
+  id: CEFloraGrassAutumn5
   snapCardinals: true
   defaultSnap: true
   showMenu: true
   sprite:
-    sprite: _CE/Decals/Flora/Grass.rsi
+    sprite: _CE/Decals/Flora/grass_autumn.rsi
     state: grass_short5
 
 - type: decal
-  id: CEFloraGrass6
+  id: CEFloraGrassAutumn6
   snapCardinals: true
   defaultSnap: true
   showMenu: true
   sprite:
-    sprite: _CE/Decals/Flora/Grass.rsi
+    sprite: _CE/Decals/Flora/grass_autumn.rsi
     state: grass_short6
 
 - type: decal
-  id: CEFloraGrass7
+  id: CEFloraGrassAutumn7
   snapCardinals: true
   defaultSnap: true
   showMenu: true
   sprite:
-    sprite: _CE/Decals/Flora/Grass.rsi
+    sprite: _CE/Decals/Flora/grass_autumn.rsi
     state: grass_short7
 
 - type: decal
-  id: CEFloraGrass8
+  id: CEFloraGrassAutumn8
   snapCardinals: true
   defaultSnap: true
   showMenu: true
   sprite:
-    sprite: _CE/Decals/Flora/Grass.rsi
+    sprite: _CE/Decals/Flora/grass_autumn.rsi
     state: grass_short8
 
 - type: decal
-  id: CEFloraGrass9
+  id: CEFloraGrassAutumn9
   snapCardinals: true
   defaultSnap: true
   showMenu: true
   sprite:
-    sprite: _CE/Decals/Flora/Grass.rsi
+    sprite: _CE/Decals/Flora/grass_autumn.rsi
     state: grass_short9
 
 - type: decal
-  id: CEFloraGrass10
+  id: CEFloraGrassAutumn10
   snapCardinals: true
   defaultSnap: true
   showMenu: true
   sprite:
-    sprite: _CE/Decals/Flora/Grass.rsi
+    sprite: _CE/Decals/Flora/grass_autumn.rsi
     state: grass_short10
 
 - type: decal
-  id: CEFloraGrass11
+  id: CEFloraGrassAutumn11
   snapCardinals: true
   defaultSnap: true
   showMenu: true
   sprite:
-    sprite: _CE/Decals/Flora/Grass.rsi
+    sprite: _CE/Decals/Flora/grass_autumn.rsi
     state: grass_short11
 
 - type: decal
-  id: CEFloraGrass12
+  id: CEFloraGrassAutumn12
   snapCardinals: true
   defaultSnap: true
   showMenu: true
   sprite:
-    sprite: _CE/Decals/Flora/Grass.rsi
+    sprite: _CE/Decals/Flora/grass_autumn.rsi
     state: grass_short12
 
 - type: decal
-  id: CEFloraGrass13
+  id: CEFloraGrassAutumn13
   snapCardinals: true
   defaultSnap: true
   showMenu: true
   sprite:
-    sprite: _CE/Decals/Flora/Grass.rsi
+    sprite: _CE/Decals/Flora/grass_autumn.rsi
     state: grass_short13
 
 - type: decal
-  id: CEFloraGrass14
+  id: CEFloraGrassAutumn14
   snapCardinals: true
   defaultSnap: true
   showMenu: true
   sprite:
-    sprite: _CE/Decals/Flora/Grass.rsi
+    sprite: _CE/Decals/Flora/grass_autumn.rsi
     state: grass_short14
-# Rocks
+
+#MARK: Autumn Rocks
 
 - type: decal
-  id: CEFloraRock01
+  id: CEFloraRockAutumn01
   snapCardinals: true
   defaultSnap: true
   showMenu: true
   sprite:
-    sprite: Decals/Flora/flora_rocks.rsi
+    sprite: _CE/Decals/Flora/flora_rocks_autumn.rsi
     state: rock01
 
 - type: decal
-  id: CEFloraRock02
+  id: CEFloraRockAutumn02
   snapCardinals: true
   defaultSnap: true
   showMenu: true
   sprite:
-    sprite: Decals/Flora/flora_rocks.rsi
+    sprite: _CE/Decals/Flora/flora_rocks_autumn.rsi
     state: rock02
 
 - type: decal
-  id: CEFloraRock03
+  id: CEFloraRockAutumn03
   snapCardinals: true
   defaultSnap: true
   showMenu: true
   sprite:
-    sprite: Decals/Flora/flora_rocks.rsi
+    sprite: _CE/Decals/Flora/flora_rocks_autumn.rsi
     state: rock03
 
 - type: decal
-  id: CEFloraRock04
+  id: CEFloraRockAutumn04
   snapCardinals: true
   defaultSnap: true
   showMenu: true
   sprite:
-    sprite: Decals/Flora/flora_rocks.rsi
+    sprite: _CE/Decals/Flora/flora_rocks_autumn.rsi
     state: rock04
 
 - type: decal
-  id: CEFloraRock05
+  id: CEFloraRockAutumn05
   snapCardinals: true
   defaultSnap: true
   showMenu: true
   sprite:
-    sprite: Decals/Flora/flora_rocks.rsi
+    sprite: _CE/Decals/Flora/flora_rocks_autumn.rsi
     state: rock05
-
