@@ -137,6 +137,25 @@
 
 - type: entity
   parent: CEBaseTree
+  id: CEFloraTreeAutumn
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Nature/Trees/autumn.rsi
+    layers:
+    - state: tree01
+      map: ["random"]
+  - type: RandomSprite
+    available:
+    - random:
+        tree01: ""
+        tree02: ""
+        tree03: ""
+        tree04: ""
+        tree05: ""
+        tree06: ""
+
+- type: entity
+  parent: CEBaseTree
   id: CEFloraTreeSnow
   components:
   - type: Sprite
@@ -216,6 +235,25 @@
   #- type: Tag
   #  tags:
   #  - CEAmbientForest
+
+- type: entity
+  parent: CEBaseTreeLarge
+  id: CEFloraTreeAutumnLarge
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Nature/Trees/autumn_large.rsi
+    layers:
+    - state: treelarge01
+      map: ["random"]
+  - type: RandomSprite
+    available:
+    - random:
+        treelarge01: ""
+        treelarge02: ""
+        treelarge03: ""
+        treelarge04: ""
+        treelarge05: ""
+        treelarge06: ""
 
 - type: entity
   parent: CEBaseTree
