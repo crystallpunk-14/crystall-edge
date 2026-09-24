@@ -221,6 +221,14 @@
     count: 1
 
 - type: tradingPosition
+  id: CEFloorTileGrassAutumn30
+  faction: Horticulture
+  category: FloorTile
+  service: !type:CEBuyItemsService
+    product: CEFloorTileGrassAutumn30
+    count: 1
+
+- type: tradingPosition
   id: CEFloorTileMycelium30
   faction: Horticulture
   category: FloorTile

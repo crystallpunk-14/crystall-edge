@@ -111,6 +111,7 @@
       - id: CESmokingPipe
       - id: CEGroundTobacco
       - id: CEFloorTileGrass30
+      - id: CEFloorTileGrassAutumn30
       - id: CEFloorTileMycelium30
       - id: CEEnergyCrystalShard
       - id: CEd20Dice
