@@ -4,7 +4,7 @@
   editorHidden: false
   id: CEPlanks
   name: ce-tiles-planks
-  sprite: /Textures/_CE/Tiles/planks.png
+  sprite: /Textures/_CE/Tiles/WoodPlanks/planks.png
   variants: 4
   placementVariants:
   - 1.0
