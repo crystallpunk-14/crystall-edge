@@ -118,7 +118,7 @@
   id: CEFloraTreeGreen
   components:
   - type: Sprite
-    sprite: Objects/Decoration/Flora/flora_trees.rsi
+    sprite: _CE/Structures/Nature/Trees/green.rsi
     layers:
     - state: tree01
       map: ["random"]
@@ -200,7 +200,7 @@
   id: CEFloraTreeGreenLarge
   components:
   - type: Sprite
-    sprite: Objects/Decoration/Flora/flora_treeslarge.rsi
+    sprite: _CE/Structures/Nature/Trees/green_large.rsi
     layers:
     - state: treelarge01
       map: ["random"]
