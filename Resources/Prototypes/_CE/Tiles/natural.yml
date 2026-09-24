@@ -286,3 +286,25 @@
     collection: FootstepSnow
   heatCapacity: 10000
   weather: true
+
+- type: tile
+  editorHidden: false
+  id: CESandstone
+  name: ce-tiles-sandstone
+  sprite: /Textures/_CE/Tiles/sandstone.png
+  variants: 6
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: CEStone
+  deconstructTools: [ CEPickaxe ]
+  itemDrop: CEStoneBlock1
+  isSubfloor: true
+  footstepSounds:
+    collection: FootstepAsteroid
+  heatCapacity: 10000
+  weather: true

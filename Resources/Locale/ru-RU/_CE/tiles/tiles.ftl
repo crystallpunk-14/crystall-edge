@@ -31,6 +31,7 @@ ce-tiles-snow = снег
 ce-tiles-snow-deep = глубокий снег
 ce-tiles-snow-deep-deep = очень глубокий снег
 ce-tiles-cobblestone = булыжник
+ce-tiles-sandstone = песчаник
 ce-tiles-mycelium = мицелий
 ce-tiles-mycelium-light = густой мицелий
 
@@ -39,6 +40,8 @@ ce-tiles-foundation = фундамент
 ce-tiles-dirt-seedbed = земляная грядка
 ce-tiles-glass = стеклянный пол
 ce-tiles-roof = черепица
+ce-tiles-concrete = бетон
+ce-tiles-concrete-bricks = бетонная кладка
 
 ce-tiles-oak-woodplanks = дубовые доски
 ce-tiles-oak-woodplanks-big = большие дубовые доски

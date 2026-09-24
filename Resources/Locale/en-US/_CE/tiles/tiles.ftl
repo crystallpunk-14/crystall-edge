@@ -30,6 +30,7 @@ ce-tiles-snow = snow
 ce-tiles-snow-deep = deep snow
 ce-tiles-snow-deep-deep = deep deep snow
 ce-tiles-cobblestone = cobblestone
+ce-tiles-sandstone = sandstone
 ce-tiles-mycelium = mycelium
 ce-tiles-mycelium-light = dense mycelium
 
@@ -38,6 +39,8 @@ ce-tiles-foundation = foundation
 ce-tiles-dirt-seedbed = dirt seedbed
 ce-tiles-glass = glass floor
 ce-tiles-roof = roof tile
+ce-tiles-concrete = concrete
+ce-tiles-concrete-bricks = brick concrete
 
 ce-tiles-oak-woodplanks = oak woodplanks
 ce-tiles-oak-woodplanks-big = big oak planks
