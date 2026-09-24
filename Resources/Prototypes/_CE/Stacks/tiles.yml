@@ -111,6 +111,13 @@
   maxCount: 30
 
 - type: stack
+  id: CEFloorTileGrassAutumn
+  name: ce-tiles-grass-autumn
+  spawn: CEFloorTileGrassAutumn
+  icon: { sprite: _CE/Objects/Materials/seeds_tile.rsi, state: grass_autumn }
+  maxCount: 30
+
+- type: stack
   id: CEFloorTileMycelium
   name: ce-tiles-mycelium
   spawn: CEFloorTileMycelium

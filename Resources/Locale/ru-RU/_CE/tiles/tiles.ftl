@@ -21,6 +21,10 @@ ce-tiles-bloodgrass = кровьтрава
 ce-tiles-bloodgrass-light = светлая кровьтрава
 ce-tiles-bloodgrass-tall = высокая кровьтрава
 
+ce-tiles-grass-autumn = осенняя трава
+ce-tiles-grass-autumn-light = светлая осенняя трава
+ce-tiles-grass-autumn-tall = высокая осенняя трава
+
 ce-tiles-dirt = почва
 ce-tiles-sand = песок
 ce-tiles-snow = снег

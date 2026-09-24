@@ -20,6 +20,10 @@ ce-tiles-bloodgrass = bloodgrass
 ce-tiles-bloodgrass-light = light bloodgrass
 ce-tiles-bloodgrass-tall = tall bloodgrass
 
+ce-tiles-grass-autumn = autumn grass
+ce-tiles-grass-autumn-light = light autumn grass
+ce-tiles-grass-autumn-tall = tall autumn grass
+
 ce-tiles-dirt = soil
 ce-tiles-sand = sand
 ce-tiles-snow = snow

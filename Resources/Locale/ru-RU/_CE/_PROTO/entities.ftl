@@ -909,6 +909,14 @@ ent-CEFloorTileGrass30 = { ent-CEFloorTileGrass }
     .desc = { ent-CEFloorTileGrass.desc }
     .suffix = 30
 
+ent-CEFloorTileGrassAutumn = мешок осенней травы
+    .desc = { ent-CEFloorTileGrassBagBase.desc }
+    .suffix = 1
+
+ent-CEFloorTileGrassAutumn30 = { ent-CEFloorTileGrassAutumn }
+    .desc = { ent-CEFloorTileGrassAutumn.desc }
+    .suffix = 30
+
 ent-CEFloorTileMycelium = мешок мицелия
     .desc = { ent-CEFloorTileGrassBagBase.desc }
     .suffix = 1
