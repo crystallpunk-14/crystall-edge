@@ -38,6 +38,19 @@
     biome: CEGrassland
 
 - type: entity
+  id: CEBiomeSpawnerGrasslandAutumn
+  parent: CEBaseBiomeSpawner
+  suffix: Grassland Autumn
+  components:
+  - type: Sprite
+    layers:
+      - state: grass
+        color: "#D98A3D"
+      - state: frame
+  - type: CEBiomeSpawner
+    biome: CEGrasslandAutumn
+
+- type: entity
   id: CEBiomeSpawnerSnowland
   parent: CEBaseBiomeSpawner
   suffix: Snowland
@@ -72,6 +85,32 @@
       - state: frame
   - type: CEBiomeSpawner
     biome: CEGrasslandHills
+
+- type: entity
+  id: CEBiomeSpawnerGrasslandAutumnForest
+  parent: CEBaseBiomeSpawner
+  suffix: Grassland Autumn Forest
+  components:
+  - type: Sprite
+    layers:
+      - state: forest
+        color: "#D98A3D"
+      - state: frame
+  - type: CEBiomeSpawner
+    biome: CEGrasslandAutumnForest
+
+- type: entity
+  id: CEBiomeSpawnerGrasslandAutumnHills
+  parent: CEBaseBiomeSpawner
+  suffix: Grassland Autumn Hills
+  components:
+  - type: Sprite
+    layers:
+      - state: grass
+        color: "#D98A3D"
+      - state: frame
+  - type: CEBiomeSpawner
+    biome: CEGrasslandAutumnHills
 
 - type: entity
   id: CEBiomeSpawnerSnowlandForest
