@@ -120,3 +120,40 @@
       - state: frame
   - type: CEBiomeSpawner
     biome: CECavesGeneric
+
+- type: entity
+  id: CEBiomeSpawnerIceCaves
+  parent: CEBaseBiomeSpawner
+  suffix: Ice Caves
+  components:
+  - type: Sprite
+    layers:
+      - state: snow
+        color: blue
+      - state: frame
+  - type: CEBiomeSpawner
+    biome: CEIceCavesGeneric
+
+- type: entity
+  id: CEBiomeSpawnerWastelands
+  parent: CEBaseBiomeSpawner
+  suffix: Wastelands
+  components:
+  - type: Sprite
+    layers:
+      - state: dirt
+      - state: frame
+  - type: CEBiomeSpawner
+    biome: CEWastelands
+
+- type: entity
+  id: CEBiomeSpawnerLeafMaze
+  parent: CEBaseBiomeSpawner
+  suffix: Leaf Maze
+  components:
+  - type: Sprite
+    layers:
+      - state: forest
+      - state: frame
+  - type: CEBiomeSpawner
+    biome: CELeafMaze
