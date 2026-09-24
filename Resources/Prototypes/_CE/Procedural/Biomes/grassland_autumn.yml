@@ -143,9 +143,9 @@
         - CEGrassAutumnLight
         - CEGrassAutumnTall
       entities:
-        - CEFloraTreeSpruceSmall
-        - CEFloraTreeSpruceSmall
-        - CEFloraTreeSpruceMedium
+        - CEFloraTreeSpruce
+        - CEFloraTreeSpruce
+        - CEFloraTreeSpruce
         - CEFloraTreeAutumn
         - CEFloraTreeAutumn
         - CEFloraTreeAutumn
@@ -207,9 +207,9 @@
         - CEGrassAutumnLight
         - CEGrassAutumnTall
       entities:
-        - CEFloraTreeSpruceSmall
-        - CEFloraTreeSpruceSmall
-        - CEFloraTreeSpruceMedium
+        - CEFloraTreeSpruce
+        - CEFloraTreeSpruce
+        - CEFloraTreeSpruce
         - CEFloraTreeAutumn
         - CEFloraTreeAutumn
         - CEFloraTreeAutumn

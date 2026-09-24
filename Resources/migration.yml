@@ -83,6 +83,10 @@ CECurtainsGreenOpened: CECurtainsGreen
 
 CESpellMasteryAltar: CEInfusionAltar
 
+CEFloraTreeSpruceSmall: CEFloraTreeSpruce
+CEFloraTreeSpruceMedium: CEFloraTreeSpruce
+CEFloraTreeSpruceLarge: CEFloraTreeSpruce
+
 # CrystallEdge migration zone end
 
 

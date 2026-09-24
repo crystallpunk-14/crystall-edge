@@ -1685,17 +1685,8 @@ ent-CEFloraTreeBirchLarge = { ent-CEBaseTree }
     .desc = { ent-CEBaseTree.desc }
     .suffix = Большая
 
-ent-CEFloraTreeSpruceSmall = { ent-CEBaseTree }
+ent-CEFloraTreeSpruce = { ent-CEBaseTree }
     .desc = { ent-CEBaseTree.desc }
-    .suffix = Маленькая
-
-ent-CEFloraTreeSpruceMedium = { ent-CEBaseTree }
-    .desc = { ent-CEBaseTree.desc }
-    .suffix = Средняя
-
-ent-CEFloraTreeSpruceLarge = { ent-CEBaseTree }
-    .desc = { ent-CEBaseTree.desc }
-    .suffix = Большая
 
 ent-CEBaseGameRule = None
 
