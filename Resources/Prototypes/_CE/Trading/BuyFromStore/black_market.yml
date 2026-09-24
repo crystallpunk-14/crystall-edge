@@ -103,3 +103,61 @@
   service: !type:CEBuyItemsService
     product: CEPlushieGoldenAgaric
     count: 1
+
+#MARK: Smokeables
+
+- type: tradingPosition
+  id: CEBlackMarketSmokingPipe
+  faction: BlackMarket
+  category: Materials
+  priceMarkup: 15
+  service: !type:CEBuyItemsService
+    product: CESmokingPipe
+    count: 1
+
+- type: tradingPosition
+  id: CEBlackMarketGroundTobacco
+  faction: BlackMarket
+  category: Materials
+  priceMarkup: 12
+  service: !type:CEBuyItemsService
+    product: CEGroundTobacco
+    count: 1
+
+#MARK: Alcohol
+
+- type: tradingPosition
+  id: CEBlackMarketBottleWine
+  faction: BlackMarket
+  category: Materials
+  priceMarkup: 18
+  service: !type:CEBuyItemsService
+    product: CEBottleWineFull
+    count: 1
+
+- type: tradingPosition
+  id: CEBlackMarketBottleWhiskey
+  faction: BlackMarket
+  category: Materials
+  priceMarkup: 20
+  service: !type:CEBuyItemsService
+    product: CEBottleWhiskeyFull
+    count: 1
+
+- type: tradingPosition
+  id: CEBlackMarketBottleVodka
+  faction: BlackMarket
+  category: Materials
+  priceMarkup: 14
+  service: !type:CEBuyItemsService
+    product: CEBottleVodkaFull
+    count: 1
+
+- type: tradingPosition
+  id: CEBlackMarketBottleRum
+  faction: BlackMarket
+  category: Materials
+  priceMarkup: 16
+  service: !type:CEBuyItemsService
+    product: CEBottleRumFull
+    count: 1

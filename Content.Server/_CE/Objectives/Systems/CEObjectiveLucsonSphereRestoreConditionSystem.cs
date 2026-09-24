@@ -1,4 +1,4 @@
-using Content.Server._CE.Murk.SphereFixer;
+using Content.Server._CE.MurkSphere.Components;
 using Content.Server._CE.Objectives.Components;
 using Content.Shared._CE.Objectives.Components;
 
@@ -6,7 +6,7 @@ namespace Content.Server._CE.Objectives.Systems;
 
 /// <summary>
 /// Handles progress for <see cref="CEObjectiveLucsonSphereRestoreConditionComponent"/> - taken
-/// directly from the station's single Pillar of Light charge.
+/// directly from the station's single Light Monolith charge.
 /// </summary>
 public sealed partial class CEObjectiveLucsonSphereRestoreConditionSystem : EntitySystem
 {

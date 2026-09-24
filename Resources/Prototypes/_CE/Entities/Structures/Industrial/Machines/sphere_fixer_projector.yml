@@ -4,8 +4,8 @@
   - CEConstructibleMachine
   - CEBaseMachinePowered
   - BaseMachine
-  name: pillar of light status projector
-  description: Projects the Pillar of Light's charge status and pinpoints whatever's stopping it from filling.
+  name: light monolith status projector
+  description: Projects the Light Monolith's charge status and pinpoints whatever's stopping it from filling.
   categories: [ ForkFiltered ]
   components:
   - type: Machine

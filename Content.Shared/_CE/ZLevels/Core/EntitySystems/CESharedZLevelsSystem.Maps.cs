@@ -6,6 +6,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using Content.Shared._CE.ZLevels.Core.Components;
+using Content.Shared.CCVar;
 using Content.Shared.Chasm;
 using JetBrains.Annotations;
 using Robust.Shared.Audio;
@@ -171,6 +172,32 @@ public abstract partial class CESharedZLevelsSystem
         }
 
         return result;
+    }
+
+    /// <summary>
+    /// Effective distance between two entities across z-levels: planar distance plus the vertical
+    /// cost of their depth difference, using the same scale murk sources use to punch through
+    /// floors (see <c>Content.Shared._CE.Murk.CESharedMurkSystem.ZDistancePerLevel</c>).
+    /// Returns false if the entities aren't on connected z-levels.
+    /// </summary>
+    [PublicAPI]
+    public bool TryGetEffectiveDistance(EntityUid a, EntityUid b, out float distance)
+    {
+        distance = 0f;
+
+        if (!_transformQuery.TryComp(a, out var xformA) || !_transformQuery.TryComp(b, out var xformB))
+            return false;
+
+        if (xformA.MapUid is not { } mapA || xformB.MapUid is not { } mapB)
+            return false;
+
+        if (!TryGetZLevelOffset(mapA, mapB, out var zOffset))
+            return false;
+
+        var planar = Vector2.Distance(_transform.GetWorldPosition(a), _transform.GetWorldPosition(b));
+        var vertical = zOffset * ZLevelOffset * _config.GetCVar(CCVars.CEMurkZScale);
+        distance = MathF.Sqrt(planar * planar + vertical * vertical);
+        return true;
     }
 
     private Entity<CEZMapComponent>? MapOffset(Entity<CEZMapComponent?> entity, int offset)

@@ -1,0 +1,14 @@
+using Robust.Shared.Serialization;
+
+namespace Content.Shared._CE.MurkSphere;
+
+/// <summary>
+/// Whether the Light Monolith currently has blockers. Layer visibility is handled separately
+/// via the engine's own <c>PowerDeviceVisuals.Powered</c> - this only switches which sprite
+/// state (error/ok) is shown once powered.
+/// </summary>
+[Serializable, NetSerializable]
+public enum CEMurkSphereFixerMonitorVisuals : byte
+{
+    Blocked,
+}

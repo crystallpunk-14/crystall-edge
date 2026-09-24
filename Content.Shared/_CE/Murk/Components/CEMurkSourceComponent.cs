@@ -1,4 +1,4 @@
-using Content.Shared._CE.Murk.Systems;
+using Content.Shared._CE.Murk;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared._CE.Murk.Components;

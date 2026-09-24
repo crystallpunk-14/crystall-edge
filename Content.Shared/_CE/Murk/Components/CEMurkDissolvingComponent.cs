@@ -52,6 +52,13 @@ public sealed partial class CEMurkDissolvingComponent : Component
     public float RestoringSpeed = 0.01f;
 
     /// <summary>
+    /// How much the dissolution level grows per second beyond the world boundary, replacing
+    /// <see cref="DissolvingSpeed"/> entirely - no dissolving/restoring modifier applies out there.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float OutsideBoundarySpeed = 0.1f;
+
+    /// <summary>
     /// How often the dissolution level is updated.
     /// </summary>
     [DataField, AutoNetworkedField]

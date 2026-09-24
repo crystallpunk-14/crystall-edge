@@ -87,6 +87,18 @@
   components:
   - type: CEMurkSource
     intensity: -25
+  - type: CEMurkBoundary
+    radius: 50
+
+- type: entity
+  parent: CEMurkLucsonSphere
+  id: CEMurkLucsonSphere35
+  suffix: One per Map, 35 radius
+  components:
+  - type: CEMurkSource
+    intensity: -35
+  - type: CEMurkBoundary
+    radius: 70
 
 - type: entity
   parent: CEMurkLucsonSphere
@@ -95,6 +107,8 @@
   components:
   - type: CEMurkSource
     intensity: -50
+  - type: CEMurkBoundary
+    radius: 100
 
 - type: entity
   parent: CEMurkLucsonSphere
@@ -103,6 +117,8 @@
   components:
   - type: CEMurkSource
     intensity: -75
+  - type: CEMurkBoundary
+    radius: 150
 
 - type: entity
   parent: CEMurkLucsonSphere
@@ -111,3 +127,5 @@
   components:
   - type: CEMurkSource
     intensity: -100
+  - type: CEMurkBoundary
+    radius: 200

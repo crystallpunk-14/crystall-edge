@@ -1,6 +1,6 @@
 using Content.Server.Power.Components;
+using Content.Shared._CE.Murk;
 using Content.Shared._CE.Murk.Components;
-using Content.Shared._CE.Murk.Systems;
 
 namespace Content.Server._CE.Murk;
 
@@ -9,6 +9,8 @@ public sealed partial class CEMurkSystem : CESharedMurkSystem
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
+
+        PushDebugSnapshot();
 
         var query = EntityQueryEnumerator<CEMurkGeneratorComponent, CEMurkSourceComponent, ApcPowerReceiverComponent>();
         while (query.MoveNext(out var uid, out var generator, out var source, out var receiver))

@@ -231,7 +231,7 @@
 - type: entity
   id: CEMachineCoreMurkSphereFixerProjector
   parent: CEBaseMachineCore
-  name: pillar of light status projector machine core
+  name: light monolith status projector machine core
   components:
   - type: Sprite
     state: power

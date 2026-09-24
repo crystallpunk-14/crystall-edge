@@ -1,3 +1,5 @@
+#include "/Textures/_CE/Shaders/murk_common.swsl"
+
 uniform highp vec3 MURK_COLOR;
 uniform highp vec2 corner_bl;
 uniform highp vec2 corner_br;
@@ -8,6 +10,8 @@ uniform lowp int count;
 uniform highp vec2[64] positions;
 uniform highp float[64] radii;
 uniform highp float[64] strengths;
+// 1 if the source edits the boundary wall layer instead of the ordinary murk layer, 0 otherwise.
+uniform highp float[64] isBoundary;
 uniform highp float maxOpacity;
 uniform highp float noiseStrength;
 
@@ -31,21 +35,15 @@ highp float simplexNoise(highp vec2 coord)
     return dot(n, vec3(70.0));
 }
 
-// Everything is in world units: radii are tiles, already sliced down for this z-level by the
-// sphere projection on the CPU side.
-highp float murkAt(highp vec2 world_pos)
+// x - ordinary murk, y - boundary wall. Same base, same falloff; a source picks which layer it edits.
+highp vec2 murkAt(highp vec2 world_pos)
 {
-    highp float total = baseIntensity;
+    highp vec2 total = vec2(baseIntensity);
 
     for (lowp int i = 0; i < min(count, 64); i++)
     {
-        highp float radius = radii[i];
-        if (radius <= 0.0) continue;
-
-        highp float dist = length(world_pos - positions[i]);
-        if (dist >= radius) continue;
-
-        total += strengths[i] * (1.0 - dist / radius);
+        highp float contribution = circleContribution(world_pos, positions[i], radii[i], strengths[i]);
+        total += contribution * vec2(1.0 - isBoundary[i], isBoundary[i]);
     }
 
     return total;
@@ -61,10 +59,11 @@ void fragment()
         simplexNoise(noiseCoord + vec2(3.1, 7.7)),
         simplexNoise(noiseCoord + vec2(9.3, 2.4))) * noiseStrength;
 
-    highp float murk = clamp(murkAt(world_pos + distortion), 0.0, 1.0);
+    highp vec2 murk = clamp(murkAt(world_pos + distortion), 0.0, 1.0);
 
     // The murk itself is not a flat fill: it drifts between pure black and the map's tint.
     highp vec3 color = mix(vec3(0.0), MURK_COLOR, clamp(simplexNoise(noiseCoord) + 0.5, 0.0, 1.0));
 
-    COLOR = vec4(color, murk * maxOpacity);
+    // The wall is the same murk, only it is not capped by maxOpacity.
+    COLOR = vec4(color, max(murk.x * maxOpacity, murk.y));
 }
