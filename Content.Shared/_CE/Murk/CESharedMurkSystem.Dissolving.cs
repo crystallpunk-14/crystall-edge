@@ -48,9 +48,12 @@ public abstract partial class CESharedMurkSystem
 
             var status = EnsureComp<CEMurkDissolvingStatusComponent>(uid);
 
-            var speed = InMurk(uid, xform)
-                ? dissolving.DissolvingSpeed * GetDissolvingModifier(uid)
-                : -dissolving.RestoringSpeed * GetRestoringModifier(uid);
+            // Beyond the world boundary nothing saves you - full speed, no modifiers.
+            var speed = OutsideBoundary(uid, xform)
+                ? dissolving.OutsideBoundarySpeed
+                : InMurk(uid, xform)
+                    ? dissolving.DissolvingSpeed * GetDissolvingModifier(uid)
+                    : -dissolving.RestoringSpeed * GetRestoringModifier(uid);
             var delta = speed * (float)dissolving.Frequency.TotalSeconds;
             var newDissolved = Math.Clamp(status.Dissolved + delta, 0f, 1f);
 
