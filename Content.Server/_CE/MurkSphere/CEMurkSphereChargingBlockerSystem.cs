@@ -1,8 +1,8 @@
 using System.Numerics;
+using Content.Shared._CE.Murk;
 using Content.Shared._CE.Murk.Components;
-using Content.Shared._CE.Murk.Systems;
 
-namespace Content.Server._CE.Murk.SphereFixer;
+namespace Content.Server._CE.MurkSphere;
 
 public sealed partial class CEMurkSphereChargingBlockerSystem : EntitySystem
 {

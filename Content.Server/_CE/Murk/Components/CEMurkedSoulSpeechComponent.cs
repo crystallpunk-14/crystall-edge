@@ -1,4 +1,4 @@
-namespace Content.Server._CE.Murk;
+namespace Content.Server._CE.Murk.Components;
 
 /// <summary>
 /// Makes a murked soul mutter to itself and strike up conversations with whoever is nearby,

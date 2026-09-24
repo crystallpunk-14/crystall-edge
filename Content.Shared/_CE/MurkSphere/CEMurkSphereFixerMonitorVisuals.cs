@@ -1,6 +1,6 @@
 using Robust.Shared.Serialization;
 
-namespace Content.Shared._CE.Murk.SphereFixer;
+namespace Content.Shared._CE.MurkSphere;
 
 /// <summary>
 /// Whether the Light Monolith currently has blockers. Layer visibility is handled separately

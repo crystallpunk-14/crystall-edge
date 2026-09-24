@@ -1,4 +1,4 @@
-using Content.Server._CE.Murk.SphereFixer;
+using Content.Server._CE.MurkSphere.Components;
 using Content.Server._CE.Objectives.Components;
 using Content.Shared._CE.Objectives.Components;
 

@@ -1,10 +1,10 @@
 using Content.Server.Administration;
-using Content.Shared._CE.Murk.Systems;
+using Content.Shared._CE.Murk;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
 
-namespace Content.Server._CE.Murk;
+namespace Content.Server._CE.Murk.Commands;
 
 [AdminCommand(AdminFlags.Fun)]
 public sealed partial class CESetMurkCommand : LocalizedCommands

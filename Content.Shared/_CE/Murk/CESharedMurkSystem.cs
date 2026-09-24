@@ -6,7 +6,7 @@ using Content.Shared.CCVar;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
 
-namespace Content.Shared._CE.Murk.Systems;
+namespace Content.Shared._CE.Murk;
 
 /// <summary>
 /// Murk is a binary wall of darkness around the world: a map has a base intensity, and sources

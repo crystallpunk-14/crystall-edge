@@ -1,4 +1,6 @@
-namespace Content.Server._CE.Murk.SphereFixer;
+using Content.Server._CE.MurkSphere;
+
+namespace Content.Server._CE.MurkSphere.Components;
 
 /// <summary>
 /// Marks an entity as one of the Light Monolith's pylons - see <see cref="CEMurkPylonSystem"/>

@@ -1,11 +1,12 @@
+using Content.Server._CE.MurkSphere.Components;
 using Content.Server.Power.EntitySystems;
+using Content.Shared._CE.Murk;
 using Content.Shared._CE.Murk.Components;
-using Content.Shared._CE.Murk.Systems;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Power;
 using Robust.Shared.Map;
 
-namespace Content.Server._CE.Murk.SphereFixer;
+namespace Content.Server._CE.MurkSphere;
 
 /// <summary>
 /// Each pylon checks its own conditions independently - powered, in the murk, and far enough from

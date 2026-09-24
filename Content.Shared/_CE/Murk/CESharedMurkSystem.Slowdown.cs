@@ -1,7 +1,7 @@
 using Content.Shared._CE.Murk.Components;
 using Content.Shared.Movement.Systems;
 
-namespace Content.Shared._CE.Murk.Systems;
+namespace Content.Shared._CE.Murk;
 
 public abstract partial class CESharedMurkSystem
 {

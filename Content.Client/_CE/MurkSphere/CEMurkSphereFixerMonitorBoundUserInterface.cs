@@ -1,7 +1,7 @@
-using Content.Shared._CE.Murk.SphereFixer;
+using Content.Shared._CE.MurkSphere;
 using Robust.Client.UserInterface;
 
-namespace Content.Client._CE.Murk.SphereFixer;
+namespace Content.Client._CE.MurkSphere;
 
 public sealed class CEMurkSphereFixerMonitorBoundUserInterface(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey)
 {

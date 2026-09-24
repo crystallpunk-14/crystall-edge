@@ -2,7 +2,7 @@ using System.Text;
 using Content.Shared._CE.Murk.Components;
 using Content.Shared.Speech;
 
-namespace Content.Shared._CE.Murk.Systems;
+namespace Content.Shared._CE.Murk;
 
 public abstract partial class CESharedMurkSystem
 {

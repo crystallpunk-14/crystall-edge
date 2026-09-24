@@ -1,4 +1,6 @@
-namespace Content.Server._CE.Murk.SphereFixer;
+using Content.Server._CE.MurkSphere;
+
+namespace Content.Server._CE.MurkSphere.Components;
 
 /// <summary>
 /// The Light Monolith: charges up over time and, once full, mends every cracked

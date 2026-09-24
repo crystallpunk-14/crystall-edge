@@ -1,7 +1,7 @@
 using Robust.Shared.Map;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared._CE.Murk.SphereFixer;
+namespace Content.Shared._CE.MurkSphere;
 
 [Serializable, NetSerializable]
 public enum CEMurkSphereFixerMonitorUiKey : byte

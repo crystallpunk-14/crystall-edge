@@ -5,7 +5,7 @@ using Content.Shared.Rejuvenate;
 using Content.Shared.StatusEffectNew;
 using Robust.Shared.Timing;
 
-namespace Content.Shared._CE.Murk.Systems;
+namespace Content.Shared._CE.Murk;
 
 public abstract partial class CESharedMurkSystem
 {

@@ -1,9 +1,10 @@
+using Content.Server._CE.MurkSphere.Components;
 using Content.Shared._CE.Murk.Components;
-using Content.Shared._CE.Murk.SphereFixer;
+using Content.Shared._CE.MurkSphere;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 
-namespace Content.Server._CE.Murk.SphereFixer;
+namespace Content.Server._CE.MurkSphere;
 
 public sealed partial class CEMurkSphereFixerMonitorSystem : EntitySystem
 {

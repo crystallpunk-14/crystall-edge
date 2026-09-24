@@ -1,4 +1,6 @@
-namespace Content.Server._CE.Murk.SphereFixer;
+using Content.Server._CE.MurkSphere;
+
+namespace Content.Server._CE.MurkSphere.Components;
 
 /// <summary>
 /// Marks an entity as a Light Monolith monitor console, so

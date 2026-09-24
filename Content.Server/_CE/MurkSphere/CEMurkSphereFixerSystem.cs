@@ -1,3 +1,4 @@
+using Content.Server._CE.MurkSphere.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.RoundEnd;
 using Content.Shared._CE.Murk.Components;
@@ -6,7 +7,7 @@ using Content.Shared.Power;
 using Robust.Shared.Audio;
 using Robust.Shared.Map;
 
-namespace Content.Server._CE.Murk.SphereFixer;
+namespace Content.Server._CE.MurkSphere;
 
 public sealed partial class CEMurkSphereFixerSystem : EntitySystem
 {

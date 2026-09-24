@@ -177,7 +177,7 @@ public abstract partial class CESharedZLevelsSystem
     /// <summary>
     /// Effective distance between two entities across z-levels: planar distance plus the vertical
     /// cost of their depth difference, using the same scale murk sources use to punch through
-    /// floors (see <c>Content.Shared._CE.Murk.Systems.CESharedMurkSystem.ZDistancePerLevel</c>).
+    /// floors (see <c>Content.Shared._CE.Murk.CESharedMurkSystem.ZDistancePerLevel</c>).
     /// Returns false if the entities aren't on connected z-levels.
     /// </summary>
     [PublicAPI]
