@@ -12,7 +12,7 @@ public sealed partial class CEClientMurkSystem : CESharedMurkSystem
     [Dependency] private IConfigurationManager _config = default!;
     [Dependency] private SharedTransformSystem _xform = default!;
 
-    private readonly List<EntityUid> _cachedRemovalList = new();
+    private readonly List<CEMurkedMapComponent.MurkKey> _cachedRemovalList = new();
 
     private const float FadeCutoff = 0.01f;
 
@@ -57,35 +57,26 @@ public sealed partial class CEClientMurkSystem : CESharedMurkSystem
         var comp = map.Comp;
         comp.Seen.Clear();
 
-        var query = EntityQueryEnumerator<CEMurkSourceComponent, TransformComponent>();
-        while (query.MoveNext(out var uid, out var source, out var xform))
+        var sources = EntityQueryEnumerator<CEMurkSourceComponent, TransformComponent>();
+        while (sources.MoveNext(out var uid, out var source, out var xform))
         {
-            if (!source.Active)
-                continue;
+            if (source.Active)
+                UpdateEntry(map, new CEMurkedMapComponent.MurkKey(uid, false), xform, source.Intensity, rate);
+        }
 
-            if (!TryProjectSource(map.Owner, (uid, xform), source.Intensity, out var radius))
-                continue;
-
-            comp.Seen.Add(uid);
-            var position = _xform.GetWorldPosition(uid);
-
-            if (!comp.MurkBuffer.TryGetValue(uid, out var entry))
-            {
-                // Position is exact from the start, but the sphere itself grows out of nothing.
-                entry = new CEMurkedMapComponent.MurkEntry { Position = position };
-                comp.MurkBuffer[uid] = entry;
-            }
-
-            entry.Position = position;
-            entry.Radius = MathHelper.Lerp(entry.Radius, radius, rate);
-            entry.Strength = MathHelper.Lerp(entry.Strength, source.Intensity, rate);
+        // A boundary clears the wall layer the same way a negative source clears ordinary murk.
+        var boundaries = EntityQueryEnumerator<CEMurkBoundaryComponent, TransformComponent>();
+        while (boundaries.MoveNext(out var uid, out var boundary, out var xform))
+        {
+            if (boundary.Active)
+                UpdateEntry(map, new CEMurkedMapComponent.MurkKey(uid, true), xform, -boundary.Radius, rate);
         }
 
         _cachedRemovalList.Clear();
 
-        foreach (var (uid, entry) in comp.MurkBuffer)
+        foreach (var (key, entry) in comp.MurkBuffer)
         {
-            if (comp.Seen.Contains(uid))
+            if (comp.Seen.Contains(key))
                 continue;
 
             // Deleted, disabled or out of PVS - collapse the sphere instead of blinking it away.
@@ -93,13 +84,38 @@ public sealed partial class CEClientMurkSystem : CESharedMurkSystem
             entry.Strength = MathHelper.Lerp(entry.Strength, 0f, rate);
 
             if (MathF.Abs(entry.Strength) < FadeCutoff)
-                _cachedRemovalList.Add(uid);
+                _cachedRemovalList.Add(key);
         }
 
-        foreach (var uid in _cachedRemovalList)
+        foreach (var key in _cachedRemovalList)
         {
-            comp.MurkBuffer.Remove(uid);
+            comp.MurkBuffer.Remove(key);
         }
+    }
+
+    /// <summary>
+    /// Projects a sphere of <paramref name="intensity"/> onto the map and smooths its buffer entry
+    /// towards it. Spheres that don't reach the map stay unseen and collapse like removed ones.
+    /// </summary>
+    private void UpdateEntry(Entity<CEMurkedMapComponent> map, CEMurkedMapComponent.MurkKey key, TransformComponent xform, float intensity, float rate)
+    {
+        if (!TryProjectSource(map.Owner, (key.Uid, xform), intensity, out var radius))
+            return;
+
+        var comp = map.Comp;
+        comp.Seen.Add(key);
+        var position = _xform.GetWorldPosition(xform);
+
+        if (!comp.MurkBuffer.TryGetValue(key, out var entry))
+        {
+            // Position is exact from the start, but the sphere itself grows out of nothing.
+            entry = new CEMurkedMapComponent.MurkEntry { Position = position };
+            comp.MurkBuffer[key] = entry;
+        }
+
+        entry.Position = position;
+        entry.Radius = MathHelper.Lerp(entry.Radius, radius, rate);
+        entry.Strength = MathHelper.Lerp(entry.Strength, intensity, rate);
     }
 
     /// <summary>
@@ -112,7 +128,7 @@ public sealed partial class CEClientMurkSystem : CESharedMurkSystem
         comp.Count = 0;
         var anyMurk = comp.LerpedIntensity > 0f;
 
-        foreach (var entry in comp.MurkBuffer.Values)
+        foreach (var (key, entry) in comp.MurkBuffer)
         {
             if (comp.Count >= CEMurkedMapComponent.MaxCount)
                 break;
@@ -123,6 +139,7 @@ public sealed partial class CEClientMurkSystem : CESharedMurkSystem
             comp.Positions[comp.Count] = entry.Position;
             comp.Radii[comp.Count] = entry.Radius;
             comp.Strengths[comp.Count] = entry.Strength;
+            comp.IsBoundary[comp.Count] = key.IsBoundary ? 1f : 0f;
             comp.Count++;
 
             anyMurk |= entry.Strength > 0f;

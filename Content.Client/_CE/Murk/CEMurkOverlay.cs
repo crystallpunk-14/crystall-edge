@@ -67,6 +67,7 @@ public sealed partial class CEMurkOverlay : Overlay
         _murkShader?.SetParameter("positions", murkedMap.Positions);
         _murkShader?.SetParameter("radii", murkedMap.Radii);
         _murkShader?.SetParameter("strengths", murkedMap.Strengths);
+        _murkShader?.SetParameter("isBoundary", murkedMap.IsBoundary);
         _murkShader?.SetParameter("maxOpacity", _config.GetCVar(CCVars.CEMurkMaxOpacity));
         _murkShader?.SetParameter("noiseStrength", _config.GetCVar(CCVars.CEMurkNoiseStrength));
 

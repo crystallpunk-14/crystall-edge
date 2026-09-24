@@ -22,7 +22,7 @@ public sealed partial class CCVars
     /// Opacity of a single murk layer. Full blackness is reached by stacking several murky z-levels.
     /// </summary>
     public static readonly CVarDef<float>
-        CEMurkMaxOpacity = CVarDef.Create("ce.murk.max_opacity", 0.95f, CVar.CLIENT | CVar.ARCHIVE);
+        CEMurkMaxOpacity = CVarDef.Create("ce.murk.max_opacity", 0.5f, CVar.CLIENT | CVar.ARCHIVE);
 
     /// <summary>
     /// Exponential smoothing rate for murk intensity changes, in units per second.

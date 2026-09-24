@@ -11,7 +11,6 @@ public sealed partial class CEMurkedMapComponent : Component
 {
     /// <summary>
     /// Base murk of this map. 0 means no murk at all, 1 means murk at full strength.
-    /// Expected to change at runtime (round events, admin commands) - do not cache it.
     /// </summary>
     [DataField, AutoNetworkedField]
     public float Intensity = 1;
@@ -35,16 +34,11 @@ public sealed partial class CEMurkedMapComponent : Component
     /// </summary>
     public const int MaxCount = 64;
 
-    /// <summary>
-    /// Smoothed state of every source affecting this map, already projected onto its z-level.
-    /// Entries outlive the source entity so that removing a lighthouse fades its sphere out
-    /// instead of blinking it away.
-    /// </summary>
     [NonSerialized]
-    public readonly Dictionary<EntityUid, MurkEntry> MurkBuffer = new();
+    public readonly Dictionary<MurkKey, MurkEntry> MurkBuffer = new();
 
     [NonSerialized]
-    public readonly HashSet<EntityUid> Seen = [];
+    public readonly HashSet<MurkKey> Seen = [];
 
     // Flattened copy of the buffer handed to the shader.
     [NonSerialized]
@@ -57,7 +51,12 @@ public sealed partial class CEMurkedMapComponent : Component
     public readonly float[] Strengths = new float[MaxCount];
 
     [NonSerialized]
+    public readonly float[] IsBoundary = new float[MaxCount];
+
+    [NonSerialized]
     public int Count;
+
+    public readonly record struct MurkKey(EntityUid Uid, bool IsBoundary);
 
     public sealed class MurkEntry
     {
