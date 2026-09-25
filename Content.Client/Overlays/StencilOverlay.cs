@@ -3,6 +3,7 @@ using Content.Client.Graphics;
 using Content.Client.Light.EntitySystems;
 using Content.Client.Parallax;
 using Content.Client.Weather;
+using Content.Shared.Maps;
 using Content.Shared.Salvage;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.StatusEffectNew.Components;
@@ -24,6 +25,7 @@ public sealed partial class StencilOverlay : Overlay
     private static readonly ProtoId<ShaderPrototype> CircleShader = "WorldGradientCircle";
     private static readonly ProtoId<ShaderPrototype> StencilMask = "StencilMask";
     private static readonly ProtoId<ShaderPrototype> StencilDraw = "StencilDraw";
+    private static readonly ProtoId<ShaderPrototype> StencilClear = "StencilClear"; //CrystallEdge: resets the stencil buffer between the weather ground and drops mask/draw cycles
 
     [Dependency] private IClyde _clyde = default!;
     [Dependency] private IEntityManager _entManager = default!;
@@ -36,6 +38,7 @@ public sealed partial class StencilOverlay : Overlay
     private readonly WeatherSystem _weather;
     private readonly StatusEffectsSystem _statusEffects;
     private GridStencilSystem _gridStencil = default!;
+    private TurfSystem _turf = default!; //CrystallEdge: used to exclude space tiles from the weather ground/splash layer
     private HashSet<Entity<WeatherStatusEffectComponent, StatusEffectComponent>>? _weatherSet = new();
 
     public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowFOV;
@@ -55,6 +58,7 @@ public sealed partial class StencilOverlay : Overlay
         _statusEffects = statusEffects;
         IoCManager.InjectDependencies(this);
         _gridStencil = _entManager.System<GridStencilSystem>();
+        _turf = _entManager.System<TurfSystem>(); //CrystallEdge
         _shader = _protoManager.Index(CircleShader).InstanceUnique();
     }
 
