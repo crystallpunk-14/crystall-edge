@@ -2,7 +2,7 @@
   id: CENightmares
   name: ce-secret-department-nightmares-name
   description: ce-secret-department-nightmares-description
-  color: "#2E3A4E"
+  color: "#922525"
   weight: 0
   roles:
   - CEWerewolf

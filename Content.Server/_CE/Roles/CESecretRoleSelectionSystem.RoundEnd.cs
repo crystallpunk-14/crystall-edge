@@ -57,6 +57,8 @@ public sealed partial class CESecretRoleSelectionSystem
 
             foreach (var objective in _objectives.GetObjectives(holderUid))
             {
+                _objectives.RefreshObjectiveProgress(objective.AsNullable());
+
                 args.AddLine(Loc.GetString("ce-roundend-secret-role-objective-fmt",
                     ("text", _objectives.GetObjectiveString(objective.AsNullable()))));
             }
@@ -90,6 +92,8 @@ public sealed partial class CESecretRoleSelectionSystem
                 {
                     if (!TryComp<CEObjectiveComponent>(objectiveUid, out var objectiveComp))
                         continue;
+
+                    _objectives.RefreshObjectiveProgress((objectiveUid, objectiveComp));
 
                     args.AddLine(Loc.GetString("ce-roundend-secret-role-objective-fmt",
                         ("text", _objectives.GetObjectiveString((objectiveUid, objectiveComp)))));

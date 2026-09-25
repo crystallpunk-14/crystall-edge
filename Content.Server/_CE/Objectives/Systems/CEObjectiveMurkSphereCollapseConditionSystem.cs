@@ -1,3 +1,4 @@
+using Content.Server._CE.GameTicking;
 using Content.Server._CE.GameTicking.Components;
 using Content.Server._CE.Objectives.Components;
 using Content.Shared._CE.DayCycle;
@@ -56,7 +57,7 @@ public sealed partial class CEObjectiveMurkSphereCollapseConditionSystem : Entit
         RefreshAll();
     }
 
-    [SubscribeLocalEvent]
+    [SubscribeLocalEvent(after: [typeof(CEMurkConsumingRuleSystem)])]
     private void OnStartDay(CEStartDayEvent args)
     {
         RefreshAll();
