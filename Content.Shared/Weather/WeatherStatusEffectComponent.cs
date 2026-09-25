@@ -19,6 +19,15 @@ public sealed partial class WeatherStatusEffectComponent : Component
     [DataField(required: true)]
     public SpriteSpecifier Sprite = default!;
 
+    // CrystallEdge: optional second sprite layer, drawn under Sprite and clipped to solid (non-space) tiles only
+    /// <summary>
+    /// An optional second texture, tiled and rendered only on solid weather-affected tiles (not over space/gaps).
+    /// Drawn underneath <see cref="Sprite"/>. Uses the same <see cref="Color"/> tint.
+    /// </summary>
+    [DataField]
+    public SpriteSpecifier? GroundSprite;
+    // CrystallEdge end
+
     /// <summary>
     /// Tint that will be applied to the weather texture.
     /// </summary>

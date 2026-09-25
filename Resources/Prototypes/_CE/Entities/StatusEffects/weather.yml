@@ -4,8 +4,11 @@
   components:
   - type: WeatherStatusEffect
     sprite:
-      sprite: /Textures/_CE/Effects/weather.rsi
-      state: rain
+      sprite: /Textures/_CE/Effects/Weather/rain.rsi
+      state: base
+    groundSprite:
+      sprite: /Textures/_CE/Effects/Weather/rain.rsi
+      state: ground
     sound:
       collection: Rain
       params:
@@ -23,8 +26,11 @@
   components:
   - type: WeatherStatusEffect
     sprite:
-      sprite: /Textures/_CE/Effects/weather.rsi
-      state: storm
+      sprite: /Textures/_CE/Effects/Weather/storm.rsi
+      state: base
+    groundSprite:
+      sprite: /Textures/_CE/Effects/Weather/storm.rsi
+      state: ground
     sound:
       path: /Audio/Effects/Weather/rain.ogg
       params:
@@ -50,8 +56,8 @@
   components:
   - type: WeatherStatusEffect
     sprite:
-      sprite: /Textures/_CE/Effects/weather.rsi
-      state: snowfall_light
+      sprite: /Textures/_CE/Effects/Weather/snow.rsi
+      state: base
 
 - type: entity
   parent: WeatherBase
