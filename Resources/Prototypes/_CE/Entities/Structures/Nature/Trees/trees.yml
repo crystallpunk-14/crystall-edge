@@ -118,7 +118,7 @@
   id: CEFloraTreeGreen
   components:
   - type: Sprite
-    sprite: Objects/Decoration/Flora/flora_trees.rsi
+    sprite: _CE/Structures/Nature/Trees/green.rsi
     layers:
     - state: tree01
       map: ["random"]
@@ -134,6 +134,25 @@
   #- type: Tag
   #  tags:
   #  - CEAmbientForest
+
+- type: entity
+  parent: CEBaseTree
+  id: CEFloraTreeAutumn
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Nature/Trees/autumn.rsi
+    layers:
+    - state: tree01
+      map: ["random"]
+  - type: RandomSprite
+    available:
+    - random:
+        tree01: ""
+        tree02: ""
+        tree03: ""
+        tree04: ""
+        tree05: ""
+        tree06: ""
 
 - type: entity
   parent: CEBaseTree
@@ -200,7 +219,7 @@
   id: CEFloraTreeGreenLarge
   components:
   - type: Sprite
-    sprite: Objects/Decoration/Flora/flora_treeslarge.rsi
+    sprite: _CE/Structures/Nature/Trees/green_large.rsi
     layers:
     - state: treelarge01
       map: ["random"]
@@ -216,6 +235,25 @@
   #- type: Tag
   #  tags:
   #  - CEAmbientForest
+
+- type: entity
+  parent: CEBaseTreeLarge
+  id: CEFloraTreeAutumnLarge
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Nature/Trees/autumn_large.rsi
+    layers:
+    - state: treelarge01
+      map: ["random"]
+  - type: RandomSprite
+    available:
+    - random:
+        treelarge01: ""
+        treelarge02: ""
+        treelarge03: ""
+        treelarge04: ""
+        treelarge05: ""
+        treelarge06: ""
 
 - type: entity
   parent: CEBaseTree
@@ -272,33 +310,11 @@
 
 - type: entity
   parent: CEBaseTree
-  id: CEFloraTreeSpruceSmall
-  suffix: Small
-  components:
-  - type: Sprite
-    offset: 0,1
-    sprite: _CE/Structures/Nature/Trees/spruce_small.rsi
-    layers:
-    - state: tree01
-      map: ["random"]
-  - type: RandomSprite
-    available:
-    - random:
-        tree01: ""
-        tree02: ""
-        tree03: ""
-        tree04: ""
-        tree05: ""
-        tree06: ""
-
-- type: entity
-  parent: CEBaseTree
-  id: CEFloraTreeSpruceMedium
-  suffix: Medium
+  id: CEFloraTreeSpruce
   components:
   - type: Sprite
     offset: 0,1.6
-    sprite: _CE/Structures/Nature/Trees/spruce_medium.rsi
+    sprite: _CE/Structures/Nature/Trees/spruce.rsi
     layers:
     - state: tree01
       map: ["random"]
@@ -308,21 +324,3 @@
         tree01: ""
         tree02: ""
         tree03: ""
-        tree04: ""
-
-- type: entity
-  parent: CEBaseTree
-  id: CEFloraTreeSpruceLarge
-  suffix: Large
-  components:
-  - type: Sprite
-    offset: 0,1.9
-    sprite: _CE/Structures/Nature/Trees/spruce_big.rsi
-    layers:
-    - state: tree01
-      map: ["random"]
-  - type: RandomSprite
-    available:
-    - random:
-        tree01: ""
-        tree02: ""

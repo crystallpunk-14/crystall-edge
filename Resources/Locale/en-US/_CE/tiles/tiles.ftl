@@ -20,12 +20,17 @@ ce-tiles-bloodgrass = bloodgrass
 ce-tiles-bloodgrass-light = light bloodgrass
 ce-tiles-bloodgrass-tall = tall bloodgrass
 
+ce-tiles-grass-autumn = autumn grass
+ce-tiles-grass-autumn-light = light autumn grass
+ce-tiles-grass-autumn-tall = tall autumn grass
+
 ce-tiles-dirt = soil
 ce-tiles-sand = sand
 ce-tiles-snow = snow
 ce-tiles-snow-deep = deep snow
 ce-tiles-snow-deep-deep = deep deep snow
 ce-tiles-cobblestone = cobblestone
+ce-tiles-sandstone = sandstone
 ce-tiles-mycelium = mycelium
 ce-tiles-mycelium-light = dense mycelium
 
@@ -34,6 +39,8 @@ ce-tiles-foundation = foundation
 ce-tiles-dirt-seedbed = dirt seedbed
 ce-tiles-glass = glass floor
 ce-tiles-roof = roof tile
+ce-tiles-concrete = concrete
+ce-tiles-concrete-bricks = brick concrete
 
 ce-tiles-oak-woodplanks = oak woodplanks
 ce-tiles-oak-woodplanks-big = big oak planks

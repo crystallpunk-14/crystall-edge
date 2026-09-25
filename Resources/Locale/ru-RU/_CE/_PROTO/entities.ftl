@@ -909,6 +909,14 @@ ent-CEFloorTileGrass30 = { ent-CEFloorTileGrass }
     .desc = { ent-CEFloorTileGrass.desc }
     .suffix = 30
 
+ent-CEFloorTileGrassAutumn = мешок осенней травы
+    .desc = { ent-CEFloorTileGrassBagBase.desc }
+    .suffix = 1
+
+ent-CEFloorTileGrassAutumn30 = { ent-CEFloorTileGrassAutumn }
+    .desc = { ent-CEFloorTileGrassAutumn.desc }
+    .suffix = 30
+
 ent-CEFloorTileMycelium = мешок мицелия
     .desc = { ent-CEFloorTileGrassBagBase.desc }
     .suffix = 1
@@ -1677,17 +1685,8 @@ ent-CEFloraTreeBirchLarge = { ent-CEBaseTree }
     .desc = { ent-CEBaseTree.desc }
     .suffix = Большая
 
-ent-CEFloraTreeSpruceSmall = { ent-CEBaseTree }
+ent-CEFloraTreeSpruce = { ent-CEBaseTree }
     .desc = { ent-CEBaseTree.desc }
-    .suffix = Маленькая
-
-ent-CEFloraTreeSpruceMedium = { ent-CEBaseTree }
-    .desc = { ent-CEBaseTree.desc }
-    .suffix = Средняя
-
-ent-CEFloraTreeSpruceLarge = { ent-CEBaseTree }
-    .desc = { ent-CEBaseTree.desc }
-    .suffix = Большая
 
 ent-CEBaseGameRule = None
 
@@ -2007,6 +2006,9 @@ ent-CEThinWindowDoorIron = { ent-CEBaseThinWindowDoor }
 
 ent-CEWallLeaf = лиственная стена
     .desc = Плотные, краевые кусты. Вы можете пролезть через них, но берегитесь колючих веток!
+
+ent-CEWallLeafAutumn = осенняя лиственная стена
+    .desc = Плотные, краевые кусты, пожелтевшие с приходом осени. Вы можете пролезть через них, но берегитесь колючих веток!
 
 ent-CEWallWoodenPalisade = частокол
     .desc = Стена из острых брёвен. Не то чтобы это безопасное убежище.

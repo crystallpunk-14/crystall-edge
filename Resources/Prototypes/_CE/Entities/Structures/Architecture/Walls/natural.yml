@@ -196,6 +196,20 @@
     supportStrength: 1
 
 - type: entity
+  id: CEWallLeafAutumn
+  parent: CEWallLeaf
+  name: autumn leaf wall
+  description: Dense, marginal bushes turned orange with the season. You can climb through them, but watch out for thorny branches!
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Walls/leaf_autumn.rsi
+  - type: Icon
+    sprite: _CE/Structures/Architecture/Walls/leaf_autumn.rsi
+  - type: IconSmooth
+    key: CEwallLeafAutumn
+    base: wall
+
+- type: entity
   id: CEWallSnow
   name: snow wall
   parent: CEBaseWall

@@ -57,6 +57,29 @@
 
 - type: entity
   parent: CEFloorTileGrassBagBase
+  id: CEFloorTileGrassAutumn
+  name: autumn grass bag
+  components:
+  - type: Sprite
+    state: grass_autumn
+  - type: FloorTile
+    outputs:
+      - CEGrassAutumn
+      - CEGrassAutumnLight
+      - CEGrassAutumnTall
+  - type: Stack
+    stackType: CEFloorTileGrassAutumn
+
+- type: entity
+  parent: CEFloorTileGrassAutumn
+  id: CEFloorTileGrassAutumn30
+  suffix: 30
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
+  parent: CEFloorTileGrassBagBase
   id: CEFloorTileMycelium
   name: mycelium bag
   components:
