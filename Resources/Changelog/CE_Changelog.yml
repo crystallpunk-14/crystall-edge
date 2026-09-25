@@ -930,3 +930,11 @@
   id: 1087
   time: '2026-09-25T06:49:46.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/480
+- author: TheShuEd
+  changes:
+  - message: The visual effects for rain, storms, and light snowfall have been significantly
+      improved
+    type: Tweak
+  id: 1088
+  time: '2026-09-25T22:20:21.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/481
