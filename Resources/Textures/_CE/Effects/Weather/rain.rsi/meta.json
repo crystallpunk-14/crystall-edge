@@ -2,6 +2,7 @@
   "version": 1,
   "copyright": "Created by TheShuEd",
   "license": "CC-BY-SA-3.0",
+  "metaAtlas": false,
   "size": {
     "x": 256,
     "y": 256
