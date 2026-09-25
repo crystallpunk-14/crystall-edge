@@ -1,12 +1,15 @@
 - type: secretDepartment
-  id: CEVampires
-  name: ce-secret-department-vampires-name
-  description: ce-secret-department-vampires-description
-  color: "#8B1A1A"
+  id: CENightmares
+  name: ce-secret-department-nightmares-name
+  description: ce-secret-department-nightmares-description
+  color: "#2E3A4E"
   weight: 0
   roles:
-  - CEArchvampire
-  - CEVampire
+  - CEWerewolf
+  objectivePool:
+    maxDifficulty: 1
+    weighted:
+      CEObjectiveNightmareSphereCollapse: 1
 
 - type: secretDepartment
   id: CECity

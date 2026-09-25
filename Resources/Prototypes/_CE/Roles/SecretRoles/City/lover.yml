@@ -2,7 +2,7 @@
   id: CELover
   name: ce-secret-role-name-lover
   description: ce-secret-role-description-lover
-  icon: CEJobIconLover
+  icon: CESecretRoleIconLover
   briefing: ce-secret-role-briefing-lover
   objectivePool:
     # Both objectives are weight 1 with difficulty 1 each and the budget is exactly their sum,

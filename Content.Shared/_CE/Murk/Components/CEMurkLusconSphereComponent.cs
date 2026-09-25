@@ -21,3 +21,13 @@ public enum CEMurkSphereState : byte
     Collapsing,
     Fixed,
 }
+
+/// <summary>
+/// Raised on a <see cref="CEMurkLusconSphereComponent"/> entity whenever its
+/// <see cref="CEMurkLusconSphereComponent.State"/> changes.
+/// </summary>
+public sealed class CEMurkSphereStateChangedEvent(CEMurkSphereState oldState, CEMurkSphereState newState) : EntityEventArgs
+{
+    public readonly CEMurkSphereState OldState = oldState;
+    public readonly CEMurkSphereState NewState = newState;
+}

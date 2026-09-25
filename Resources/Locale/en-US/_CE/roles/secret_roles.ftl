@@ -1,12 +1,8 @@
-ce-secret-department-vampires-name = Vampires
-ce-secret-department-vampires-description = TODO
-ce-secret-role-name-archvampire = Archvampire
-ce-secret-role-description-archvampire = TODO
-ce-secret-role-briefing-archvampire = TODO
-
-ce-secret-role-name-vampire = Vampire
-ce-secret-role-description-vampire = TODO
-ce-secret-role-briefing-vampire = TODO
+ce-secret-department-nightmares-name = Nightmares
+ce-secret-department-nightmares-description = TODO
+ce-secret-role-name-werewolf = Werewolf
+ce-secret-role-description-werewolf = TODO
+ce-secret-role-briefing-werewolf = TODO
 
 ce-secret-department-city-name = Zellasian Empire
 ce-secret-department-city-description = OTODO
