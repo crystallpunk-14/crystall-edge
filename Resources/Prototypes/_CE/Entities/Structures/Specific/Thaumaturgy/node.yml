@@ -5,13 +5,17 @@
   description: A cluster of magical essence that briefly took shape in physical reality.
   components:
   - type: CEMagicEssenceNode
+  - type: CERandomizedTimedDespawn
+    minLifetime: 600
+    maxLifetime: 1200
+  - type: CETimedDespawnFadeout
+    fadeInEnd: 0.4
+    fadeOutStart: 0.6
   - type: Solution
     id: essence
     solution:
       maxVol: 50
   - type: InteractionOutline
-  - type: TimedDespawn
-    lifetime: 600
   - type: Transform
     anchored: true
   - type: Physics
