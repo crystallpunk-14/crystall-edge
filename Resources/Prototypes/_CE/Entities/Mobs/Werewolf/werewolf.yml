@@ -1,0 +1,96 @@
+#MARK: Werewolf
+
+- type: entity
+  id: CEMobWerewolf
+  parent:
+  - CEMobSimple
+  - CEMobCombat
+  name: wolf
+  description: A large, feral wolf.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _CE/Mobs/werewolf.rsi
+    state: live
+  - type: Appearance
+  - type: Body
+  - type: Stamina
+    baseCritThreshold: 200
+  - type: Grammar
+    attributes:
+      gender: epicene
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 500
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      50: 0.6
+  - type: CEWeapon
+    range: 0.7
+    hitSound:
+      collection: AlienClaw
+    effectSlots:
+      OnHit:
+      - !type:Damage
+        damage:
+          types:
+            Slash: 4
+            Piercing: 2
+            Structural: 5
+    animations:
+      Primary:
+      - anim: ClawBigAttack1
+      - anim: ClawBigAttack2
+      - anim: ClawBigAttack3
+      Secondary:
+      - anim: ClawCarcatKick
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 6
+    acceleration: 16.0
+  - type: Climbing
+  - type: FloorOcclusion
+  - type: NoSlip
+  - type: Speech
+    speechSounds: CECarcat
+  - type: ReplacementAccent
+    accent: xeno
+  - type: TypingIndicator
+    proto: alien
+  - type: FootstepModifier
+    footstepSoundCollection: null # Silent footstep
+  - type: CEInnateSkills
+    skills:
+    - SoftLanding
+    - NightVision
+    - Invisibility
+    - LurkerJump
+    - Murkwalker
+    - LurkerShadowStep
+    - LurkerFear
+    descriptorName: ce-secret-role-name-werewolf
+    descriptorColor: "#922525"
+  - type: Puller
+    needsHands: false
+
+#MARK: Polymorph
+
+- type: polymorph
+  id: CEWerewolfPolymorph
+  configuration:
+    entity: CEMobWerewolf
+    forced: true
+    inventory: None
+    transferName: false
+    transferHumanoidAppearance: false
+    polymorphPopup: null
+    exitPolymorphPopup: null

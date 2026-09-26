@@ -6,6 +6,7 @@
   briefing: ce-secret-role-briefing-werewolf
   skills:
   - Murkwalker
+  - CEWerewolfTransformation
   objectives: !type:EntSelector
     id: CEObjectiveNightmareHunt
     amount: 3
