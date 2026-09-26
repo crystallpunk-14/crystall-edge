@@ -3,8 +3,8 @@
   name: ce-skill-werewolf-transformation-name
   desc: ce-skill-werewolf-transformation-desc
   icon:
-    sprite: /Textures/_CE/Actions/lurker.rsi
-    state: kick
+    sprite: /Textures/_CE/Actions/werewolf.rsi
+    state: true_form
   effect: !type:AddComponents
     components:
     - type: CENightPolymorph
