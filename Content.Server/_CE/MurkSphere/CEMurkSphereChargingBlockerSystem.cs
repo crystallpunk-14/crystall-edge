@@ -59,7 +59,7 @@ public sealed partial class CEMurkSphereChargingBlockerSystem : EntitySystem
             var sphereWorldPos = _transform.GetWorldPosition(sphereUid);
 
             var blockerQuery = EntityQueryEnumerator<CEMurkSphereChargingBlockerComponent, TransformComponent>();
-            while (blockerQuery.MoveNext(out var blockerUid, out var blocker, out var blockerXform))
+            while (blockerQuery.MoveNext(out var blockerUid, out _, out var blockerXform))
             {
                 if (blockerXform.MapUid is not { } blockerMap)
                     continue;
@@ -71,7 +71,7 @@ public sealed partial class CEMurkSphereChargingBlockerSystem : EntitySystem
                 if (distance >= radius)
                     continue;
 
-                args.Block(Loc.GetString(blocker.Name),
+                args.Block(Name(blockerUid),
                     Loc.GetString("ce-murk-sphere-charging-blocker-desc"),
                     blockerXform.Coordinates);
             }

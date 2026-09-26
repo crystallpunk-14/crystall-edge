@@ -87,7 +87,6 @@
   - type: MessyDrinker
     spillChance: 0.3
   - type: CEMurkSphereChargingBlocker
-    name: ce-secret-role-name-werewolf
 
 #MARK: Polymorph
 
