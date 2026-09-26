@@ -23,6 +23,8 @@ ce-secret-role-name-lover = Lover
 ce-secret-role-description-lover = TODO
 ce-secret-role-briefing-lover = TODO
 
+ce-secretrole-examine-fmt = Hidden role: [color={$color}]{$role}[/color]
+
 ce-roundend-secret-role-column = Hidden Role
 ce-roundend-secret-role-factions-header = [font size=14]This round's factions:[/font]
 ce-roundend-secret-role-department-list = [font size=16]The [color={$color}][bold]{$name}[/bold][/color] faction[/font]

@@ -24,6 +24,8 @@ ce-secret-role-name-lover = Влюблённый
 ce-secret-role-description-lover = TODO
 ce-secret-role-briefing-lover = TODO
 
+ce-secretrole-examine-fmt = Скрытая роль: [color={$color}]{$role}[/color]
+
 ce-roundend-secret-role-column = Скрытая роль
 ce-roundend-secret-role-factions-header = [font size=14]Фракции этого раунда:[/font]
 ce-roundend-secret-role-department-list = [font size=16]Фракция [color={$color}][bold]{$name}[/bold][/color][/font]

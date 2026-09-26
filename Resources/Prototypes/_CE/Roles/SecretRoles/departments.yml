@@ -4,6 +4,7 @@
   description: ce-secret-department-nightmares-description
   color: "#922525"
   weight: 0
+  membersRecognizeEachOther: true
   roles:
   - CEWerewolf
   objectives: !type:EntSelector

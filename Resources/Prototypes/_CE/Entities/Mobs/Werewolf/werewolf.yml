@@ -20,6 +20,10 @@
   - type: Grammar
     attributes:
       gender: epicene
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      300: Dead
   - type: Fixtures
     fixtures:
       fix1:
@@ -88,9 +92,15 @@
   id: CEWerewolfPolymorph
   configuration:
     entity: CEMobWerewolf
-    forced: true
+    effectProto: CELurkerShadowStepEffect
+    polymorphSound:
+      collection: gib
+    exitPolymorphSound:
+      collection: gib
+    forced: false
     inventory: None
     transferName: false
     transferHumanoidAppearance: false
     polymorphPopup: null
     exitPolymorphPopup: null
+    revertConfirmationPopup: false

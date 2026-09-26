@@ -57,4 +57,13 @@ public sealed partial class CESecretDepartmentPrototype : IPrototype
     /// </summary>
     [DataField]
     public List<ProtoId<CESkillPrototype>> Skills = new();
+
+    /// <summary>
+    /// Whether holders of any role in this department can see each other's secret role icon and
+    /// examine text, even when they hold different roles within it. See
+    /// <see cref="CESecretRoleIconComponent"/>. A role always recognizes its own kind regardless of
+    /// this flag - this only controls cross-role recognition within the same department.
+    /// </summary>
+    [DataField]
+    public bool MembersRecognizeEachOther;
 }
