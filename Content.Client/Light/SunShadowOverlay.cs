@@ -1,7 +1,6 @@
 using System.Numerics;
 using Content.Client.Graphics;
 using Content.Shared.Light.Components;
-using Content.Shared.Light.EntitySystems;
 using Robust.Client.Graphics;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
@@ -23,6 +22,9 @@ public sealed partial class SunShadowOverlay : Overlay
         new(0.5f, 0.5f),
         new(-0.5f, 0.5f),
     };
+
+    // DrawPrimitives stackallocs its vertex buffer, so roof shadows are flushed in chunks of this size.
+    private const int MaxRoofShadowBatchVertices = 1536;
     // CrystallEdge end
 
     public override OverlaySpace Space => OverlaySpace.BeforeLighting;
@@ -33,14 +35,16 @@ public sealed partial class SunShadowOverlay : Overlay
     private readonly EntityLookupSystem _lookup;
     private readonly SharedMapSystem _mapSys;
     private readonly SharedTransformSystem _xformSys;
-    // CrystallEdge: rooved tiles have no sky above them so they shadow themselves too, see Draw()
-    private readonly SharedRoofSystem _roof;
-    // CrystallEdge end
 
     private readonly HashSet<Entity<SunShadowCastComponent>> _shadows = new();
     // CrystallEdge: tiles already shadowed by their own roof this frame, so entities standing on them
     // don't also cast a (redundant) shadow, see Draw()
     private readonly HashSet<Vector2i> _roofedTiles = new();
+
+    // Per-frame scratch for roof shadows: IsRoofComponent tiles are gathered once per frame instead of
+    // looked up per tile (what SharedRoofSystem.IsRooved does), and all roof shadows go into one batched triangle list.
+    private readonly HashSet<Vector2i> _roofEntityTiles = new();
+    private readonly List<Vector2> _roofShadowVertices = new();
     // CrystallEdge end
 
     private readonly OverlayResourceCache<CachedResources> _resources = new();
@@ -51,9 +55,6 @@ public sealed partial class SunShadowOverlay : Overlay
         _xformSys = _entManager.System<SharedTransformSystem>();
         _mapSys = _entManager.System<SharedMapSystem>();
         _lookup = _entManager.System<EntityLookupSystem>();
-        // CrystallEdge: rooved tiles have no sky above them so they shadow themselves too, see Draw()
-        _roof = _entManager.System<SharedRoofSystem>();
-        // CrystallEdge end
         ZIndex = AfterLightTargetOverlay.ContentZIndex + 1;
     }
 
@@ -130,39 +131,7 @@ public sealed partial class SunShadowOverlay : Overlay
                     _roofedTiles.Clear();
 
                     if (_entManager.TryGetComponent(grid.Owner, out RoofComponent? roofComp))
-                    {
-                        var roofEnt = (grid.Owner, grid.Comp, roofComp);
-                        var gridMatrix = _xformSys.GetWorldMatrix(grid.Owner);
-                        var tileSize = grid.Comp.TileSize;
-                        var tileEnumerator = _mapSys.GetTilesEnumerator(grid.Owner, grid.Comp, expandedBounds);
-
-                        while (tileEnumerator.MoveNext(out var tileRef))
-                        {
-                            if (!_roof.IsRooved(roofEnt, tileRef.GridIndices))
-                                continue;
-
-                            _roofedTiles.Add(tileRef.GridIndices);
-
-                            var localCenter = new Vector2(
-                                (tileRef.GridIndices.X + 0.5f) * tileSize,
-                                (tileRef.GridIndices.Y + 0.5f) * tileSize);
-                            var worldPos = Vector2.Transform(localCenter, gridMatrix);
-                            var renderMatrix = Matrix3x2.Multiply(Matrix3x2.CreateTranslation(worldPos), invMatrix);
-
-                            Array.Copy(TileCastPoints, indices, TileCastPoints.Length);
-
-                            for (var i = 0; i < TileCastPoints.Length; i++)
-                            {
-                                // Add the offset point by the sun shadow direction.
-                                indices[TileCastPoints.Length + i] = indices[i] + direction;
-                            }
-
-                            var points = PhysicsHull.ComputePoints(indices, TileCastPoints.Length * 2);
-                            worldHandle.SetTransform(renderMatrix);
-
-                            worldHandle.DrawPrimitives(DrawPrimitiveTopology.TriangleFan, points, Color.White);
-                        }
-                    }
+                        DrawRoofShadows(worldHandle, grid, roofComp, expandedBounds, direction, invMatrix, indices);
                     // CrystallEdge end
 
                     // Go through shadows in range.
@@ -235,6 +204,96 @@ public sealed partial class SunShadowOverlay : Overlay
                 }, null);
         }
     }
+
+    // CrystallEdge: every rooved tile casts the same shadow shape, so the hull is computed once and
+    // all tiles are drawn as one batched triangle list (instead of a hull + draw call per tile).
+    private void DrawRoofShadows(
+        DrawingHandleWorld worldHandle,
+        Entity<MapGridComponent> grid,
+        RoofComponent roof,
+        Box2Rotated expandedBounds,
+        Vector2 direction,
+        Matrix3x2 invMatrix,
+        Vector2[] indices)
+    {
+        Array.Copy(TileCastPoints, indices, TileCastPoints.Length);
+
+        for (var i = 0; i < TileCastPoints.Length; i++)
+        {
+            // Add the offset point by the sun shadow direction.
+            indices[TileCastPoints.Length + i] = indices[i] + direction;
+        }
+
+        var hull = PhysicsHull.ComputePoints(indices, TileCastPoints.Length * 2);
+
+        if (hull.Length < 3)
+            return;
+
+        // Same rule as SharedRoofSystem.IsRooved: enabled IsRoofComponent entities also roof their tile.
+        // Enumerated directly rather than via a broadphase lookup: these entities are rare, while a lookup
+        // over the whole view would walk every entity on screen just to filter them out.
+        _roofEntityTiles.Clear();
+
+        var roofEntities = _entManager.EntityQueryEnumerator<IsRoofComponent, TransformComponent>();
+        while (roofEntities.MoveNext(out var isRoof, out var xform))
+        {
+            if (!isRoof.Enabled || xform.GridUid != grid.Owner)
+                continue;
+
+            _roofEntityTiles.Add(_mapSys.TileIndicesFor(grid, xform.Coordinates));
+        }
+
+        var gridMatrix = _xformSys.GetWorldMatrix(grid.Owner);
+        var tileSize = grid.Comp.TileSize;
+        var tileEnumerator = _mapSys.GetTilesEnumerator(grid.Owner, grid.Comp, expandedBounds);
+        var trianglesPerTile = hull.Length - 2;
+
+        _roofShadowVertices.Clear();
+        worldHandle.SetTransform(invMatrix);
+
+        while (tileEnumerator.MoveNext(out var tileRef))
+        {
+            var index = tileRef.GridIndices;
+
+            if (!IsRoofFlagged(roof, index) && !_roofEntityTiles.Contains(index))
+                continue;
+
+            _roofedTiles.Add(index);
+
+            if (_roofShadowVertices.Count + trianglesPerTile * 3 > MaxRoofShadowBatchVertices)
+            {
+                worldHandle.DrawPrimitives(DrawPrimitiveTopology.TriangleList, _roofShadowVertices, Color.White);
+                _roofShadowVertices.Clear();
+            }
+
+            var localCenter = new Vector2((index.X + 0.5f) * tileSize, (index.Y + 0.5f) * tileSize);
+            var worldPos = Vector2.Transform(localCenter, gridMatrix);
+
+            // Triangle fan -> triangle list so every tile fits in the same draw call.
+            for (var i = 1; i <= trianglesPerTile; i++)
+            {
+                _roofShadowVertices.Add(hull[0] + worldPos);
+                _roofShadowVertices.Add(hull[i] + worldPos);
+                _roofShadowVertices.Add(hull[i + 1] + worldPos);
+            }
+        }
+
+        if (_roofShadowVertices.Count > 0)
+            worldHandle.DrawPrimitives(DrawPrimitiveTopology.TriangleList, _roofShadowVertices, Color.White);
+    }
+
+    private static bool IsRoofFlagged(RoofComponent roof, Vector2i index)
+    {
+        var chunkOrigin = SharedMapSystem.GetChunkIndices(index, RoofComponent.ChunkSize);
+
+        if (!roof.Data.TryGetValue(chunkOrigin, out var bitMask))
+            return false;
+
+        var chunkRelative = SharedMapSystem.GetChunkRelative(index, RoofComponent.ChunkSize);
+        var bitFlag = (ulong) 1 << (chunkRelative.X + chunkRelative.Y * RoofComponent.ChunkSize);
+        return (bitMask & bitFlag) == bitFlag;
+    }
+    // CrystallEdge end
 
     protected override void DisposeBehavior()
     {

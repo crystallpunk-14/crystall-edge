@@ -63,6 +63,13 @@ public sealed partial class CEZPhysicsComponent : Component
     public Vector2 SpriteOffsetDefault = Vector2.Zero;
 
     /// <summary>
+    /// Client-only: true while a non-zero Z height is applied to this entity's sprite offset / draw depth.
+    /// Lets the client skip entities resting at Z = 0 instead of rewriting their sprite every frame.
+    /// </summary>
+    [ViewVariables]
+    public bool VisualZApplied;
+
+    /// <summary>
     /// automatically rises if the current localPosition is lower than the height. Enabled by default, but for ghosts, for example, there is no point in climbing stairs
     /// </summary>
     [DataField]
