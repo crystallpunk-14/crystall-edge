@@ -138,4 +138,17 @@ public abstract partial class CESharedActionSystem
         if (staminaComp.CritThreshold - staminaComp.StaminaDamage < ent.Comp.Cost)
             args.Cancelled = true;
     }
+
+    [SubscribeLocalEvent]
+    private void OnRequireNightActionAttempt(Entity<CEActionRequireNightComponent> ent, ref ActionAttemptEvent args)
+    {
+        if (args.Cancelled)
+            return;
+
+        if (_transform.GetMap(args.User) is { } map && !_dayCycle.IsDayNow(map))
+            return;
+
+        Popup.PopupClient(Loc.GetString("ce-action-require-night"), args.User, args.User);
+        args.Cancelled = true;
+    }
 }

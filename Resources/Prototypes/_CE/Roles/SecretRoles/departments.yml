@@ -1,12 +1,14 @@
 - type: secretDepartment
-  id: CEVampires
-  name: ce-secret-department-vampires-name
-  description: ce-secret-department-vampires-description
-  color: "#8B1A1A"
+  id: CENightmares
+  name: ce-secret-department-nightmares-name
+  description: ce-secret-department-nightmares-description
+  color: "#922525"
   weight: 0
+  membersRecognizeEachOther: true
   roles:
-  - CEArchvampire
-  - CEVampire
+  - CEWerewolf
+  objectives: !type:EntSelector
+    id: CEObjectiveNightmareSphereCollapse
 
 - type: secretDepartment
   id: CECity
@@ -19,7 +21,5 @@
   - CEThief
   - CEMurkwalker
   - CELover
-  objectivePool:
-    maxDifficulty: 1
-    weighted:
-      CEObjectiveCityRestoreLucsonSphere: 1
+  objectives: !type:EntSelector
+    id: CEObjectiveCityRestoreLucsonSphere

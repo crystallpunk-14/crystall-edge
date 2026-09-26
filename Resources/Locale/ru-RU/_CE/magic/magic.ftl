@@ -27,6 +27,7 @@ ce-magic-staminacost = Затраты выносливости
 ce-magic-weapon-required = Необходимо держать в руках оружие
 ce-magic-spell-pacified = Это может причинить кому-то вред!
 ce-magic-spell-ssd = Не трогайте отключившихся игроков!
+ce-action-require-night = Можно использовать только ночью.
 
 ce-magic-spell-target-not-mob = Цель должна быть живым существом!
 

@@ -1,17 +1,18 @@
 using Content.Server._CE.Objectives;
 using Content.Shared._CE.Objectives.Components;
 using Content.Shared._CE.Roles;
+using Content.Shared.EntityTable;
+using Content.Shared.EntityTable.EntitySelectors;
 using Content.Shared.Mind;
-using Content.Shared.Random.Helpers;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Utility;
 
 namespace Content.Server._CE.Roles;
 
 public sealed partial class CESecretRoleSelectionSystem
 {
     [Dependency] private CEObjectiveSystem _objectives = default!;
+    [Dependency] private EntityTableSystem _entityTable = default!;
 
     [SubscribeLocalEvent]
     private void OnGetAdditionalObjectives(Entity<MindComponent> ent, ref CEGetAdditionalObjectivesEvent args)
@@ -41,23 +42,23 @@ public sealed partial class CESecretRoleSelectionSystem
     {
         var overrides = CompOrNull<CESecretRoleObjectivesOverrideComponent>(rule.Owner);
 
-        var rolePool = overrides is { } o && o.RoleOverrides.TryGetValue(role.ID, out var roleOverride)
+        var roleObjectives = overrides is { } o && o.RoleOverrides.TryGetValue(role.ID, out var roleOverride)
             ? roleOverride
-            : role.ObjectivePool;
+            : role.Objectives;
 
         var hasDepartment = TryGetDepartment(role.ID, out var department);
 
-        if (rolePool is not null)
-            CreateObjectivesFromPool(mindId, rolePool, role.Name, hasDepartment ? department.Color : Color.White);
+        if (roleObjectives is not null)
+            CreateObjectivesFromTable(mindId, roleObjectives, role.Name, hasDepartment ? department.Color : Color.White);
 
         if (hasDepartment)
         {
-            var departmentPool = overrides is { } d && d.DepartmentOverrides.TryGetValue(department.ID, out var deptOverride)
+            var departmentObjectives = overrides is { } d && d.DepartmentOverrides.TryGetValue(department.ID, out var deptOverride)
                 ? deptOverride
-                : department.ObjectivePool;
+                : department.Objectives;
 
-            if (departmentPool is not null)
-                EnsureSharedDepartmentObjectives(rule, department, departmentPool);
+            if (departmentObjectives is not null)
+                EnsureSharedDepartmentObjectives(rule, department, departmentObjectives);
         }
 
         EnsureComp<CEObjectiveHolderComponent>(mindId);
@@ -67,48 +68,39 @@ public sealed partial class CESecretRoleSelectionSystem
     private void EnsureSharedDepartmentObjectives(
         Entity<CESecretRoleSelectionComponent> rule,
         CESecretDepartmentPrototype department,
-        CEObjectivePool pool)
+        EntityTableSelector table)
     {
         if (rule.Comp.DepartmentObjectiveHolders.ContainsKey(department.ID))
             return;
 
         var holderUid = Spawn(null, MapCoordinates.Nullspace);
         rule.Comp.DepartmentObjectiveHolders[department.ID] = holderUid;
-        CreateObjectivesFromPool(holderUid, pool, department.Name, department.Color);
+        CreateObjectivesFromTable(holderUid, table, department.Name, department.Color);
     }
 
-    private List<EntityUid> CreateObjectivesFromPool(
+    private List<EntityUid> CreateObjectivesFromTable(
         EntityUid holderUid,
-        CEObjectivePool pool,
+        EntityTableSelector table,
         LocId? descriptorName = null,
         Color? color = null)
     {
         var created = new List<EntityUid>();
-        var candidates = pool.Weighted.ShallowClone();
-        var difficulty = 0f;
 
-        while (difficulty < pool.MaxDifficulty && _random.TryPickAndTake(candidates, out var objectiveProto))
+        foreach (var objectiveProto in _entityTable.GetSpawns(table))
         {
-            if (!_proto.Index(objectiveProto).TryComp<CEObjectiveComponent>(out var objectiveComp, EntityManager.ComponentFactory))
-                continue;
-
-            if (objectiveComp.Difficulty > pool.MaxDifficulty - difficulty)
-                continue;
-
             if (!_objectives.TryCreateObjective(holderUid, objectiveProto, out var objective))
                 continue;
 
             if (descriptorName is { } name)
                 _objectives.SetDescriptor(objective.Value.Owner, name, color ?? Color.White);
 
-            difficulty += objectiveComp.Difficulty;
             created.Add(objective.Value.Owner);
         }
 
         return created;
     }
 
-    private bool TryGetDepartment(ProtoId<CESecretRolePrototype> role, out CESecretDepartmentPrototype department)
+    public bool TryGetDepartment(ProtoId<CESecretRolePrototype> role, out CESecretDepartmentPrototype department)
     {
         foreach (var candidate in _proto.EnumeratePrototypes<CESecretDepartmentPrototype>())
         {

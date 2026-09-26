@@ -45,8 +45,7 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
 
     private void StartRound(CEMurkConsumingRuleComponent component, Entity<CEMurkLusconSphereComponent> sphere)
     {
-        sphere.Comp.State = CEMurkSphereState.Cracked;
-        Dirty(sphere);
+        _murk.SetSphereState(sphere, CEMurkSphereState.Cracked);
         _appearance.SetData(sphere.Owner, CEMurkSphereState.Stable, sphere.Comp.State);
         Spawn(_sphereShockwave, Transform(sphere.Owner).Coordinates);
 
@@ -90,8 +89,7 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
                 var collapseQuery = EntityQueryEnumerator<CEMurkLusconSphereComponent>();
                 while (collapseQuery.MoveNext(out var collapseUid, out var collapseSphere))
                 {
-                    collapseSphere.State = CEMurkSphereState.Collapsing;
-                    Dirty(collapseUid, collapseSphere);
+                    _murk.SetSphereState((collapseUid, collapseSphere), CEMurkSphereState.Collapsing);
                     _appearance.SetData(collapseUid, CEMurkSphereState.Stable, collapseSphere.State);
                     Spawn(_sphereShockwave, Transform(collapseUid).Coordinates);
                 }

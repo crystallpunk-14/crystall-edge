@@ -184,6 +184,22 @@ public abstract partial class CESharedMurkSystem : EntitySystem
     }
 
     /// <summary>
+    /// Sets a <see cref="CEMurkLusconSphereComponent"/>'s state, dirties it, and raises
+    /// <see cref="CEMurkSphereStateChangedEvent"/> so listeners (e.g. round objectives) can react.
+    /// No-op if the state isn't actually changing.
+    /// </summary>
+    public void SetSphereState(Entity<CEMurkLusconSphereComponent> sphere, CEMurkSphereState newState)
+    {
+        var oldState = sphere.Comp.State;
+        if (oldState == newState)
+            return;
+
+        sphere.Comp.State = newState;
+        Dirty(sphere);
+        RaiseLocalEvent(sphere.Owner, new CEMurkSphereStateChangedEvent(oldState, newState));
+    }
+
+    /// <summary>
     /// Ensures a <see cref="CEMurkedMapComponent"/> on every map of the given zNetwork and sets its intensity.
     /// </summary>
     public void SetNetworkIntensity(Entity<CEZMapNetworkComponent?> network, float intensity)

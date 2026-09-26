@@ -1,13 +1,9 @@
-ce-secret-department-vampires-name = Вампиры
-ce-secret-department-vampires-description = TODO
+ce-secret-department-nightmares-name = Кошмары
+ce-secret-department-nightmares-description = TODO
 
-ce-secret-role-name-archvampire = Архивампир
-ce-secret-role-description-archvampire = TODO
-ce-secret-role-briefing-archvampire = TODO
-
-ce-secret-role-name-vampire = Вампир
-ce-secret-role-description-vampire = TODO
-ce-secret-role-briefing-vampire = TODO
+ce-secret-role-name-werewolf = Оборотень
+ce-secret-role-description-werewolf = TODO
+ce-secret-role-briefing-werewolf = TODO
 
 ce-secret-department-city-name = Империя Зелласиан
 ce-secret-department-city-description = TODO
@@ -27,6 +23,8 @@ ce-secret-role-briefing-thief = TODO
 ce-secret-role-name-lover = Влюблённый
 ce-secret-role-description-lover = TODO
 ce-secret-role-briefing-lover = TODO
+
+ce-secretrole-examine-fmt = Скрытая роль: [color={$color}]{$role}[/color]
 
 ce-roundend-secret-role-column = Скрытая роль
 ce-roundend-secret-role-factions-header = [font size=14]Фракции этого раунда:[/font]

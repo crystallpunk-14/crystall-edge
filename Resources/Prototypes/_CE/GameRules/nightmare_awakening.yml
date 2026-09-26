@@ -1,19 +1,16 @@
 - type: entity
   parent: CEBaseGameRule
-  id: CEGameRuleVampireAwakening
+  id: CEGameRuleNightmareAwakening
   components:
   - type: GameRule
     minPlayers: 1
   - type: CESecretRoleSelection
     roles:
-    # Vampires
-    #- role: CEArchvampire
-    #  range: { min: 1, max: 1 }
-    #  weight: 10
-    #- role: CEVampire
-    #  playerRatio: 10
-    #  range: { min: 1, max: 4 }
-    #  weight: 10
+    # Nightmares
+    - role: CEWerewolf
+      playerRatio: 10
+      range: { min: 1, max: 4 }
+      weight: 10
     # City
     - role: CELover
       playerRatio: 10

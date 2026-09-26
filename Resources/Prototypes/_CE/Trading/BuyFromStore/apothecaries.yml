@@ -18,10 +18,3 @@
   service: !type:CEBuyItemsService
     product: CEBloodpack
     count: 1
-
-- type: tradingPosition
-  id: CEMagicDefib
-  faction: ApothecariesGuild
-  service: !type:CEBuyItemsService
-    product: CEMagicDefib
-    count: 1

@@ -34,13 +34,13 @@
   - CEGameRuleMagicEssenceNodes
 
 - type: gamePreset
-  id: CEVampireAwakening
-  name: ce-game-preset-vampire-awakening-title
-  description: ce-game-preset-vampire-awakening-description
+  id: CENightmareAwakening
+  name: ce-game-preset-nightmare-awakening-title
+  description: ce-game-preset-nightmare-awakening-description
   showInVote: true
   rules:
   - CEGameRuleMurkConsuming
-  - CEGameRuleVampireAwakening
+  - CEGameRuleNightmareAwakening
   - CERampingStationEventScheduler
   - CEBasicRoundstartVariation
   - CEGameRuleMagicEssenceNodes

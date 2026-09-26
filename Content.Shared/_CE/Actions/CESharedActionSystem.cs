@@ -1,5 +1,6 @@
 using Content.Shared._CE.Animation.Core;
 using Content.Shared._CE.Animation.Core.Prototypes;
+using Content.Shared._CE.DayCycle;
 using Content.Shared._CE.MagicEnergy.Systems;
 using Content.Shared._CE.MagicFocus.Systems;
 using Content.Shared.Actions;
@@ -27,6 +28,7 @@ public abstract partial class CESharedActionSystem : EntitySystem
     [Dependency] private SharedBatterySystem _battery = default!;
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private CEDayCycleSystem _dayCycle = default!;
 
     [Dependency] private EntityQuery<ActionComponent> _actionQuery = default!;
 

@@ -30,7 +30,7 @@ public sealed partial class CEMurkConsumingRuleComponent : Component
     /// How much the sphere's dispel intensity weakens (moves toward 0) each day after cracking.
     /// </summary>
     [DataField]
-    public float IntensityPerDay = 5f;
+    public float IntensityPerDay = 1f;
 
     /// <summary>
     /// How fast the sphere's remaining intensity drains (units/sec) once it starts collapsing.

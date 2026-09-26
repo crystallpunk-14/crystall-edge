@@ -1,6 +1,7 @@
 using Content.Server._CE.MurkSphere.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.RoundEnd;
+using Content.Shared._CE.Murk;
 using Content.Shared._CE.Murk.Components;
 using Content.Shared._CE.Roundflow;
 using Content.Shared.Power;
@@ -13,6 +14,7 @@ public sealed partial class CEMurkSphereFixerSystem : EntitySystem
 {
     [Dependency] private RoundEndSystem _roundEndSystem = default!;
     [Dependency] private PowerReceiverSystem _power = default!;
+    [Dependency] private CESharedMurkSystem _murk = default!;
 
     [SubscribeLocalEvent]
     private void OnMapInit(Entity<CEMurkSphereFixerComponent> ent, ref MapInitEvent args)
@@ -80,8 +82,7 @@ public sealed partial class CEMurkSphereFixerSystem : EntitySystem
                 if (sphere.State != CEMurkSphereState.Cracked)
                     continue;
 
-                sphere.State = CEMurkSphereState.Fixed;
-                Dirty(sphereUid, sphere);
+                _murk.SetSphereState((sphereUid, sphere), CEMurkSphereState.Fixed);
                 anyFixed = true;
             }
 

@@ -27,6 +27,7 @@ ce-magic-staminacost = Stamina cost
 ce-magic-weapon-required = Requires a weapon in hand
 ce-magic-spell-pacified = It could hurt someone!
 ce-magic-spell-ssd = Do not touch disconnected players!
+ce-action-require-night = Can only be used at night.
 
 ce-magic-spell-target-not-mob = The target must be a living thing!
 
