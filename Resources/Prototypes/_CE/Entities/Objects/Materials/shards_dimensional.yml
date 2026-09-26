@@ -1,0 +1,22 @@
+- type: entity
+  parent: BaseItem
+  id: CEDimensionalShard
+  name: dimensional shard
+  description: A jagged fragment of torn space, still humming with residual thaumaturgical potential.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: _CE/Objects/Materials/shards_dimensional.rsi
+    layers:
+    - state: core1
+      shader: unshaded
+      map: ["random"]
+  - type: RandomSprite
+    available:
+    - random:
+        core1: ""
+        core2: ""
+        core3: ""
+        core4: ""

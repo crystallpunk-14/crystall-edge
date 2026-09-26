@@ -16,7 +16,7 @@
   - type: CEActionRequireNight
   - type: Action
     itemIconStyle: BigAction
-    useDelay: 3
+    useDelay: 60
   - type: Sprite
     sprite: /Textures/_CE/Actions/werewolf.rsi
     layers:

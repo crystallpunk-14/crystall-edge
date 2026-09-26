@@ -28,3 +28,12 @@
   - type: CEMagicEssenceNode
   maxRange: 20
   workOnGrid: true
+
+- type: waypointer
+  parent: CEBaseWaypointer
+  id: CEMagicEssenceHungryNodeWaypointer
+  color: "#571414"
+  trackedComponents:
+  - type: CEMagicEssenceHungryNode
+  maxRange: 20
+  workOnGrid: true
