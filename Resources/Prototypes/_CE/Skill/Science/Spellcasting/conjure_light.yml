@@ -10,13 +10,13 @@
 - type: entity
   id: CEActionSpellConjureLight
   name: Conjure Light
-  description: You create a floating light source above your palm.
+  description: You create a floating light source above your palm. Dispels the murk.
   components:
   - type: CEActionManaCost
-    manaCost: 10
+    manaCost: 15
   - type: CEActionEssenceCost
     essenceCost:
-      Light: 1
+      Light: 2
   - type: Action
     useDelay: 30
     itemIconStyle: BigAction
@@ -48,7 +48,7 @@
   parent: BaseItem
   categories: [ ForkFiltered ]
   name: conjured light
-  description: A floating orb of light, conjured by a spell.
+  description: A floating orb of light, conjured by a spell. Dispels the murk.
   components:
   - type: Item
     size: Tiny
@@ -75,3 +75,5 @@
   - type: CEMagicEssenceStructure
     essences:
       Light: { min: 1, max: 1 }
+  - type: CEMurkSource
+    intensity: -3

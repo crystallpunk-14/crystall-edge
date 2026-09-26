@@ -73,6 +73,7 @@
         - id: CERubberStampDenied
         - id: CERubberStampAcademy
         - id: CEThaumaturgicMagnifyingGlass
+        - id: CEClothingBackPortableLighthouse
 
 - type: entity
   id: CEBedsideTableFilledAcademyRector

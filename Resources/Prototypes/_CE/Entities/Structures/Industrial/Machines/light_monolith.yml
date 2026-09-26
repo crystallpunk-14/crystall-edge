@@ -127,3 +127,5 @@
         collection: GlassSmash
   - type: CEGridStabilityCore
     levitationForce: 1
+  - type: StaticPrice
+    price: 250

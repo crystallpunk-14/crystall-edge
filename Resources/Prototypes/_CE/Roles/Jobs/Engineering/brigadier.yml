@@ -58,6 +58,7 @@
         - id: CERubberStampEngineering
         - id: CEThirdArm
         - id: CEThirdArmModuleManipulation
+        - id: CEClothingBackPortableLighthouse
 
 - type: entity
   id: CEBedsideTableFilledBrigadier

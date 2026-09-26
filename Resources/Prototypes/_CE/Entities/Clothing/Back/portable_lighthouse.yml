@@ -34,4 +34,4 @@
     energy: 2.0
     netsync: false
   - type: StaticPrice
-    price: 1000
+    price: 500
