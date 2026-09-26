@@ -1,0 +1,7 @@
+- type: secretRole
+  id: CEBaseSecretRoleGuardRestricted
+  abstract: true
+  prohibitedJobs:
+  - CEGuard
+  - CEGuardCommander
+  - CEInvestigator

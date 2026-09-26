@@ -16,6 +16,7 @@ using Content.Shared.Mind;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Components;
+using Content.Shared.Roles.Jobs;
 using Robust.Server.Player;
 using Robust.Shared.Audio;
 using Robust.Shared.Enums;
@@ -36,6 +37,7 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
     [Dependency] private MindSystem _mind = default!;
     [Dependency] private RoleSystem _role = default!;
     [Dependency] private PlayTimeTrackingManager _playTimeTracking = default!;
+    [Dependency] private SharedJobSystem _jobs = default!;
 
     /// <summary>
     /// The Lucson Sphere just cracked - reveal every player's already-assigned secret role and its goal.
@@ -355,6 +357,13 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
 
     private bool IsEligible(ICommonSession session, HumanoidCharacterProfile profile, CESecretRolePrototype role)
     {
+        if (role.ProhibitedJobs.Count > 0
+            && _mind.TryGetMind(session, out var mindId, out _)
+            && _jobs.MindTryGetJobId(mindId, out var job)
+            && job is { } jobId
+            && role.ProhibitedJobs.Contains(jobId))
+            return false;
+
         _playTimeTracking.TryGetTrackerTimes(session, out var playTimes);
         return JobRequirements.TryRequirementsMet(
             role.Requirements,

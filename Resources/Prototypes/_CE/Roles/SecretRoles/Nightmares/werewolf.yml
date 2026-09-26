@@ -1,4 +1,5 @@
 - type: secretRole
+  parent: CEBaseSecretRoleGuardRestricted
   id: CEWerewolf
   name: ce-secret-role-name-werewolf
   description: ce-secret-role-description-werewolf

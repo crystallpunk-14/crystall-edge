@@ -3,6 +3,7 @@ using Content.Shared.EntityTable.EntitySelectors;
 using Content.Shared.Roles;
 using Content.Shared.StatusIcon;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Array;
 
 namespace Content.Shared._CE.Roles;
 
@@ -13,11 +14,18 @@ namespace Content.Shared._CE.Roles;
 /// selector and a loadout button.
 /// </summary>
 [Prototype("secretRole")]
-public sealed partial class CESecretRolePrototype : IPrototype
+public sealed partial class CESecretRolePrototype : IPrototype, IInheritingPrototype
 {
     [ViewVariables]
     [IdDataField]
     public string ID { get; private set; } = default!;
+
+    [ParentDataField(typeof(AbstractPrototypeIdArraySerializer<CESecretRolePrototype>))]
+    public string[]? Parents { get; private set; }
+
+    [NeverPushInheritance]
+    [AbstractDataField]
+    public bool Abstract { get; private set; }
 
     /// <summary>
     /// The name of this role as displayed to players.
@@ -65,4 +73,10 @@ public sealed partial class CESecretRolePrototype : IPrototype
     /// </summary>
     [DataField]
     public List<ProtoId<CESkillPrototype>> Skills = new();
+
+    /// <summary>
+    /// Players with any of these jobs are ineligible for this role.
+    /// </summary>
+    [DataField]
+    public HashSet<ProtoId<JobPrototype>> ProhibitedJobs = new();
 }
