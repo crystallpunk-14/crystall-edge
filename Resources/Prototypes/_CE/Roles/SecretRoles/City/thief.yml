@@ -7,7 +7,5 @@
   skills:
   - Pickpocketing
   - BlackMarket
-  objectivePool:
-    maxDifficulty: 1
-    weighted:
-      CEObjectiveThiefCashOut: 1
+  objectives: !type:EntSelector
+    id: CEObjectiveThiefCashOut

@@ -7,7 +7,6 @@
     sprite: _CE/Actions/misc.rsi
     state: todo
   - type: CEObjective
-    difficulty: 1
   - type: CETargetObjective
     title: ce-lover-assist-objective-title
   - type: CETargetPlayersObjective
@@ -25,7 +24,6 @@
     sprite: _CE/Actions/misc.rsi
     state: todo
   - type: CEObjective
-    difficulty: 1
   - type: CETargetObjective
     title: ce-lover-survive-objective-title
   - type: CEShareTargetObjective

@@ -4,3 +4,8 @@
   description: ce-secret-role-description-werewolf
   icon: CESecretRoleIconWerewolf
   briefing: ce-secret-role-briefing-werewolf
+  skills:
+  - Murkwalker
+  objectives: !type:EntSelector
+    id: CEObjectiveNightmareHunt
+    amount: 3

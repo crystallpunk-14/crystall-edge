@@ -1,4 +1,5 @@
 using Content.Shared._CE.Skill.Prototypes;
+using Content.Shared.EntityTable.EntitySelectors;
 using Content.Shared.Roles;
 using Content.Shared.StatusIcon;
 using Robust.Shared.Prototypes;
@@ -52,12 +53,12 @@ public sealed partial class CESecretRolePrototype : IPrototype
     public LocId? Briefing;
 
     /// <summary>
-    /// Default pool of personal objectives granted to a player holding this role, unless a
-    /// GameRule's <see cref="Content.Server._CE.Roles.CESecretRoleObjectivesOverrideComponent"/>
-    /// overrides it for that round.
+    /// Personal objectives granted to a player holding this role, unless a GameRule's
+    /// <see cref="Content.Server._CE.Roles.CESecretRoleObjectivesOverrideComponent"/> overrides it
+    /// for that round. Mirrors ES's <c>ESSecretIdentityPrototype.Objectives</c>.
     /// </summary>
     [DataField]
-    public CEObjectivePool? ObjectivePool;
+    public EntityTableSelector? Objectives;
 
     /// <summary>
     /// Skills granted directly to a player holding this role.

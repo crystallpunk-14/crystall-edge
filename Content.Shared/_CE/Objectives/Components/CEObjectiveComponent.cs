@@ -19,13 +19,6 @@ public sealed partial class CEObjectiveComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public float Progress;
-
-    /// <summary>
-    /// Difficulty rating used by <see cref="Content.Shared._CE.Roles.CEObjectivePool"/> to avoid
-    /// assigning too many difficult objectives at once.
-    /// </summary>
-    [DataField(required: true)]
-    public float Difficulty;
 }
 
 /// <summary>

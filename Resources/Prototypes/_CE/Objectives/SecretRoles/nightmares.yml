@@ -7,5 +7,19 @@
     sprite: _CE/Structures/LucsonSphere/core.rsi
     state: cracked
   - type: CEObjective
-    difficulty: 1
   - type: CEObjectiveMurkSphereCollapseCondition
+
+- type: entity
+  id: CEObjectiveNightmareHunt
+  name: Hunt a victim
+  description: Kill, kill, kill!
+  components:
+  - type: Sprite
+    sprite: _CE/Actions/misc.rsi
+    state: todo
+  - type: CEObjective
+  - type: CETargetObjective
+    title: ce-nightmare-hunt-objective-title
+  - type: CETargetPlayersObjective
+  - type: CETargetExcludeHolderDepartment
+  - type: CETargetKillCondition

@@ -7,5 +7,4 @@
     sprite: _CE/Structures/LucsonSphere/core.rsi
     state: full
   - type: CEObjective
-    difficulty: 1
   - type: CEObjectiveLucsonSphereRestoreCondition

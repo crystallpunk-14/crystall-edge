@@ -7,6 +7,5 @@
     sprite: _CE/Objects/Materials/Currency/coin_gp.rsi
     state: coin10
   - type: CEObjective
-    difficulty: 1
   - type: CEObjectiveBlackMarketSpendCondition
     targetGoldSteal: 20

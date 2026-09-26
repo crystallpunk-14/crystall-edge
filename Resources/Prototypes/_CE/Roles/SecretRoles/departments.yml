@@ -6,10 +6,8 @@
   weight: 0
   roles:
   - CEWerewolf
-  objectivePool:
-    maxDifficulty: 1
-    weighted:
-      CEObjectiveNightmareSphereCollapse: 1
+  objectives: !type:EntSelector
+    id: CEObjectiveNightmareSphereCollapse
 
 - type: secretDepartment
   id: CECity
@@ -22,7 +20,5 @@
   - CEThief
   - CEMurkwalker
   - CELover
-  objectivePool:
-    maxDifficulty: 1
-    weighted:
-      CEObjectiveCityRestoreLucsonSphere: 1
+  objectives: !type:EntSelector
+    id: CEObjectiveCityRestoreLucsonSphere
