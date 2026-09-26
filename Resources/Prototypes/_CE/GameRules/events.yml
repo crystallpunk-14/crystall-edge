@@ -12,7 +12,6 @@
   table: !type:AllSelector
     children:
     - id: CERandomPipeBreak
-    - id: CERandomLurkerSpawn
 
 - type: entity
   parent: CEBaseGameRule
@@ -38,15 +37,3 @@
     centerVfx: CEShockWaveStrongVFX
     breakSound:
       collection: MetalBreak
-
-- type: entity
-  parent: CEBaseGameRule
-  id: CERandomLurkerSpawn
-  components:
-  - type: StationEvent
-    weight: 5
-    duration: 1
-    minimumPlayers: 5
-    earliestStart: 20
-  - type: CETopTileSpawnRule
-    prototype: CESpawnPointGhostMobLurker

@@ -5,7 +5,51 @@
   icon:
     sprite: /Textures/_CE/Actions/werewolf.rsi
     state: true_form
-  effect: !type:AddComponents
-    components:
-    - type: CENightPolymorph
-      polymorph: CEWerewolfPolymorph
+  effect: !type:AddAction
+    action: ActionCEWerewolfTransform
+
+- type: entity
+  id: ActionCEWerewolfTransform
+  name: True Form
+  description: Give in to the beast and take your true, wolf form. Only works at night.
+  components:
+  - type: CEActionRequireNight
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 3
+  - type: Sprite
+    sprite: /Textures/_CE/Actions/werewolf.rsi
+    layers:
+    - state: true_form
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:CEInstantActionAnimationEvent
+      animation: AnimationWerewolfTransform
+
+- type: entityEffectAnimation
+  id: AnimationWerewolfTransform
+  movementSpeed: 0.4
+  duration: 0.5
+  events:
+    0:
+    - !type:SpawnEntity
+      effectTarget: User
+      spawns:
+      - CELurkerShadowStepEffect
+    - !type:UserAnimation
+      scaleAnimation:
+      - time: 0
+        scale: 1, 1
+      - time: 0.2
+        scale: 1.2, 0.8
+      - time: 0.3
+        scale: 1.2, 0.8
+      - time: 0.4
+        scale: 1, 1
+    0.4:
+    - !type:SpawnEntity
+      effectTarget: User
+      spawns:
+      - CELurkerShadowStepEffect
+    - !type:CEPolymorph
+      polymorphPrototype: CEWerewolfPolymorph

@@ -5,10 +5,11 @@
   parent:
   - CEMobSimple
   - CEMobCombat
-  name: wolf
-  description: A large, feral wolf.
+  name: werewolf
+  description: A terrifying and extremely dangerous creature of the night. By day, it hides under the guise of your friendly neighbor.
   categories: [ HideSpawnMenu ]
   components:
+  - type: CEUnpolymorphOnDawn
   - type: Sprite
     drawdepth: Mobs
     sprite: _CE/Mobs/werewolf.rsi
@@ -66,10 +67,8 @@
   - type: NoSlip
   - type: Speech
     speechSounds: CECarcat
-  - type: ReplacementAccent
-    accent: xeno
-  - type: TypingIndicator
-    proto: alien
+  - type: Vocal
+    emoteSounds: CEUnisexCarcat
   - type: FootstepModifier
     footstepSoundCollection: null # Silent footstep
   - type: CEInnateSkills
@@ -85,6 +84,8 @@
     descriptorColor: "#922525"
   - type: Puller
     needsHands: false
+  - type: MessyDrinker
+    spillChance: 0.3
 
 #MARK: Polymorph
 
