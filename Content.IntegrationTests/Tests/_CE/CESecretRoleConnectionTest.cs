@@ -77,7 +77,7 @@ public sealed class CESecretRoleConnectionTest : GameTest
 
         foreach (var roleId in roleIds)
         {
-            TestContext.WriteLine($"Testing role {roleId}");
+            TestContext.Out.WriteLine($"Testing role {roleId}");
 
             await server.WaitPost(() =>
             {
