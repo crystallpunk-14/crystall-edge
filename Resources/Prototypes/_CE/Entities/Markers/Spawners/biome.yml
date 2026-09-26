@@ -45,7 +45,7 @@
   - type: Sprite
     layers:
       - state: grass
-        color: "#D98A3D"
+        color: "#ffa040"
       - state: frame
   - type: CEBiomeSpawner
     biome: CEGrasslandAutumn
@@ -94,7 +94,7 @@
   - type: Sprite
     layers:
       - state: forest
-        color: "#D98A3D"
+        color: "#d47d26"
       - state: frame
   - type: CEBiomeSpawner
     biome: CEGrasslandAutumnForest
@@ -107,7 +107,7 @@
   - type: Sprite
     layers:
       - state: grass
-        color: "#D98A3D"
+        color: "#6e451b"
       - state: frame
   - type: CEBiomeSpawner
     biome: CEGrasslandAutumnHills

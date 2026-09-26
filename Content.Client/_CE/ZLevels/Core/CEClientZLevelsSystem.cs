@@ -87,6 +87,14 @@ internal sealed partial class CEClientZLevelsPreAnimSystem : EntitySystem
     [Dependency] private SpriteSystem _sprite = default!;
     [Dependency] private EntityQuery<MapGridComponent> _mapGridQuery = default!;
     [Dependency] private EntityQuery<CEZPhysicsComponent> _zPhysQuery = default!;
+    [Dependency] private EntityQuery<SpriteComponent> _spriteQuery = default!;
+    [Dependency] private EntityQuery<TransformComponent> _xformQuery = default!;
+
+    /// <summary>
+    /// Per-frame scratch, rebuilt every <see cref="FrameUpdate"/>: entities whose Z visuals need touching this frame.
+    /// Shared with <see cref="CEClientZLevelsPostAnimSystem"/> so both passes work on the same small set.
+    /// </summary>
+    internal readonly HashSet<EntityUid> ZVisualEntities = new();
 
     public override void Initialize()
     {
@@ -96,14 +104,43 @@ internal sealed partial class CEClientZLevelsPreAnimSystem : EntitySystem
 
     public override void FrameUpdate(float frameTime)
     {
+        // Most Z-physics entities rest at Z = 0 and need no visual changes, so only collect the ones that have
+        // height, still carry Z visuals from last frame (to reset them once), or ride on a body that has height.
+        ZVisualEntities.Clear();
+
+        var candidates = EntityQueryEnumerator<CEZPhysicsComponent>();
+        while (candidates.MoveNext(out var uid, out var zPhys))
+        {
+            if (zPhys.LocalPosition == 0f && !zPhys.VisualZApplied)
+                continue;
+
+            ZVisualEntities.Add(uid);
+
+            if (zPhys.LocalPosition == 0f || !_xformQuery.TryComp(uid, out var bodyXform) || bodyXform.ChildCount == 0)
+                continue;
+
+            // Riders never step their own LocalPosition, they follow this body's height, see GetVisualLocalPosition.
+            var children = bodyXform.ChildEnumerator;
+            while (children.MoveNext(out var child))
+            {
+                if (_zPhysQuery.HasComp(child))
+                    ZVisualEntities.Add(child);
+            }
+        }
+
         // Phase 1 (per render frame): strip any Z left from last frame so the animation player
         // always starts from a Z-free base, and Phase 2 can add exactly one Z contribution.
-        var query = EntityQueryEnumerator<CEZPhysicsComponent, SpriteComponent, TransformComponent>();
-        while (query.MoveNext(out var uid, out var zPhys, out var sprite, out var xform))
+        foreach (var uid in ZVisualEntities)
         {
+            if (!_zPhysQuery.TryComp(uid, out var zPhys) ||
+                !_spriteQuery.TryComp(uid, out var sprite) ||
+                !_xformQuery.TryComp(uid, out var xform))
+                continue;
+
             var localPosition = CEClientZLevelsSystem.GetVisualLocalPosition(uid, zPhys, xform, _zPhysQuery);
             _sprite.SetOffset((uid, sprite), zPhys.SpriteOffsetDefault);
             _sprite.SetDrawDepth((uid, sprite), localPosition > 0 ? (int)Shared.DrawDepth.DrawDepth.OverMobs : zPhys.DrawDepthDefault);
+            zPhys.VisualZApplied = localPosition != 0f;
         }
 
         // Set parent-synced status effect offsets to the parent's current Z value each frame — prevents accumulation.
@@ -132,7 +169,10 @@ internal sealed partial class CEClientZLevelsPostAnimSystem : EntitySystem
 {
     [Dependency] private SpriteSystem _sprite = default!;
     [Dependency] private SharedTransformSystem _xform = default!;
+    [Dependency] private CEClientZLevelsPreAnimSystem _preAnim = default!;
     [Dependency] private EntityQuery<CEZPhysicsComponent> _zPhysQuery = default!;
+    [Dependency] private EntityQuery<SpriteComponent> _spriteQuery = default!;
+    [Dependency] private EntityQuery<TransformComponent> _xformQuery = default!;
 
     public override void Initialize()
     {
@@ -146,10 +186,19 @@ internal sealed partial class CEClientZLevelsPostAnimSystem : EntitySystem
         // At this point sprite.Offset == animationValue (or SpriteOffsetDefault if no anim ran).
         // The offset is counter-rotated by the entity's world angle so it always points world-up,
         // preventing it from orbiting the pivot when the entity has angular velocity (e.g. shurikens).
-        var query = EntityQueryEnumerator<CEZPhysicsComponent, SpriteComponent, TransformComponent>();
-        while (query.MoveNext(out var uid, out var zPhys, out var sprite, out var xform))
+        // Only the entities collected by the pre-anim pass can have a non-zero Z this frame.
+        foreach (var uid in _preAnim.ZVisualEntities)
         {
+            if (!_zPhysQuery.TryComp(uid, out var zPhys) ||
+                !_spriteQuery.TryComp(uid, out var sprite) ||
+                !_xformQuery.TryComp(uid, out var xform))
+                continue;
+
             var localPosition = CEClientZLevelsSystem.GetVisualLocalPosition(uid, zPhys, xform, _zPhysQuery);
+
+            if (localPosition == 0f)
+                continue;
+
             var rawZ = new Vector2(0, localPosition * CESharedZLevelsSystem.ZLevelOffset);
             Vector2 zOffset;
             if (sprite.NoRotation)
