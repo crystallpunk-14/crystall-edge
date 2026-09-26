@@ -1,0 +1,37 @@
+- type: entity
+  parent: Clothing
+  id: CEClothingBackPortableLighthouse
+  name: portable lighthouse
+  description: A portable device that dispels the murk.  It works within a small radius, so you'll have to stay close to your group.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Back/Generic/antimurk_lantern.rsi
+    layers:
+    - state: icon
+    - state: icon_light
+      shader: unshaded
+      map: [ "light" ]
+  - type: Item
+    size: Ginormous
+    sprite: _CE/Clothing/Back/Generic/antimurk_lantern.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Back/Generic/antimurk_lantern.rsi
+    slots:
+    - back
+    equipDelay: 1.5
+    unequipDelay: 2
+    clothingVisuals:
+      back:
+      - state: equipped-BACKPACK
+      - state: equipped-BACKPACK-light
+        shader: unshaded
+  - type: CEMurkSource
+    intensity: -5
+  - type: PointLight
+    color: "#ffffff"
+    radius: 5.0
+    energy: 2.0
+    netsync: false
+  - type: StaticPrice
+    price: 1000

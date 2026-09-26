@@ -125,5 +125,5 @@
     soundGroups:
       Brute:
         collection: GlassSmash
-  - type: Anchorable
-  - type: Pullable
+  - type: CEGridStabilityCore
+    levitationForce: 1
