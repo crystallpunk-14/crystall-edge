@@ -11,12 +11,13 @@ namespace Content.Server._CE.Objectives.Systems;
 /// Handles progress for <see cref="CEObjectiveMurkSphereCollapseConditionComponent"/> - the
 /// inverse of <see cref="CEObjectiveLucsonSphereRestoreConditionSystem"/>. Progress tracks how
 /// close the station is to the murk consuming the Lucson Sphere before the Light Monolith
-/// restores it, based on <see cref="CEMurkConsumingRuleComponent"/>'s day countdown rather than
+/// restores it, based on <see cref="CEMurkConsumingRuleComponent"/>'s collapse countdown rather than
 /// the monolith's charge - the monolith only matters for the terminal "already restored" case.
 /// </summary>
 public sealed partial class CEObjectiveMurkSphereCollapseConditionSystem : EntitySystem
 {
     [Dependency] private CEObjectiveSystem _objectives = default!;
+    [Dependency] private CEMurkConsumingRuleSystem _murkConsuming = default!;
 
     [SubscribeLocalEvent]
     private void OnGetProgress(Entity<CEObjectiveMurkSphereCollapseConditionComponent> ent, ref CEGetObjectiveProgressEvent args)
@@ -42,13 +43,13 @@ public sealed partial class CEObjectiveMurkSphereCollapseConditionSystem : Entit
         // Cracked: the race is on - progress follows how much of the collapse countdown has
         // elapsed, independent of the monolith's charge (which only matters once it hits Fixed).
         var ruleQuery = EntityQueryEnumerator<CEMurkConsumingRuleComponent>();
-        if (!ruleQuery.MoveNext(out _, out var rule) || rule.DaysToCollapse <= 0)
+        if (!ruleQuery.MoveNext(out _, out var rule))
         {
             args.Progress = 1f;
             return;
         }
 
-        args.Progress = (float) rule.DaysSinceCrack / rule.DaysToCollapse;
+        args.Progress = _murkConsuming.GetCollapseProgress(rule);
     }
 
     [SubscribeLocalEvent]

@@ -255,19 +255,6 @@
     volume: 10
 
 - type: barkSpeech
-  id: Wordolon_2
-  saySound:
-    path: /Audio/_CE/Voice/wordolon2.ogg
-  askSound:
-    path: /Audio/_CE/Voice/wordolon2_a.ogg
-  exclaimSound:
-    path: /Audio/_CE/Voice/wordolon2_e.ogg
-  syllableInterval: 0.11
-  charsPerSyllable: 2
-  audioParams:
-    volume: 10
-
-- type: barkSpeech
   id: Vojner
   saySound:
     path: /Audio/_CE/Voice/vojner.ogg

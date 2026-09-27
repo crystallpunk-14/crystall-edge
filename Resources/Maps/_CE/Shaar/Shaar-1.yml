@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.0
   forkId: ""
   forkVersion: ""
-  time: 09/26/2026 19:56:42
-  entityCount: 4731
+  time: 09/27/2026 17:12:48
+  entityCount: 4732
 maps:
 - 1
 grids:
@@ -15606,6 +15606,13 @@ entities:
       parent: 1
       rot: 1.5707963267948966 rad
       pos: 2.5,-12.5
+- proto: CEClothingBackPortableLighthouse
+  entities:
+  - uid: 1271
+    components:
+    - type: Transform
+      parent: 1
+      pos: -2.4708858,-16.288784
 - proto: CEClothingCloakCommandant
   entities:
   - uid: 2806

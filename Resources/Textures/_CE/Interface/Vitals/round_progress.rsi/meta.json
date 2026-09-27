@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "license": "All rights reserved",
+  "copyright": "by TheShuEd for CrystallEdge",
+  "size": {
+    "x": 261,
+    "y": 12
+  },
+  "states": [
+    {
+      "name": "base"
+    },
+    {
+      "name": "light"
+    },
+    {
+      "name": "murk"
+    },
+    {
+      "name": "mask"
+    }
+  ]
+}

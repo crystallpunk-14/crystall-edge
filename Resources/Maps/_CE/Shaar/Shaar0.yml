@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.0
   forkId: ""
   forkVersion: ""
-  time: 09/26/2026 19:56:41
-  entityCount: 3512
+  time: 09/27/2026 17:12:46
+  entityCount: 3515
 maps:
 - 1
 grids:
@@ -19836,6 +19836,21 @@ entities:
     - type: Transform
       parent: 1
       pos: -29.5,-10.5
+  - uid: 3513
+    components:
+    - type: Transform
+      parent: 1
+      pos: -4.5,32.5
+  - uid: 3514
+    components:
+    - type: Transform
+      parent: 1
+      pos: -2.5,34.5
+  - uid: 3515
+    components:
+    - type: Transform
+      parent: 1
+      pos: -0.5,32.5
 - proto: CEWoodenBed
   entities:
   - uid: 755

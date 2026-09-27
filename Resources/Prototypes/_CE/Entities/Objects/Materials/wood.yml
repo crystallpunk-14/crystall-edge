@@ -32,7 +32,7 @@
       types:
         Heat: 1
   - type: ToolRefinable
-    qualityNeeded: Sawing
+    qualityNeeded: Slicing #TODO: add a dedicated saw tool with Sawing quality and switch to it
     refineResult:
     - id: CEWoodenPlanks1
       amount: 3

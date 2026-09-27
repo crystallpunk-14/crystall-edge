@@ -6,13 +6,17 @@ ce-murk-sphere-cracked-desc =
        *[other] дней
     } мрак поглотит этот город
 ce-murk-days-left-title =
-    Осталось { $days ->
-        [one] { $days } день
-        [few] { $days } дня
-       *[other] { $days } дней
+    { $days ->
+        [one] Остался { $days } день
+        [few] Осталось { $days } дня
+       *[other] Осталось { $days } дней
     }
 
-ce-murk-sphere-fixed-title = Сфера Люксона восстановлена
+ce-round-progress-tooltip =
+    Заряд монолита: { $light }%
+    Поглощение мраком: { $murk }%
+
+ce-murk-sphere-fixed-title =Сфера Люксона восстановлена
 ce-murk-sphere-fixed-desc = Монолит Света запечатал трещину. Город в безопасности.
 
 ce-murk-sphere-fixer-block-unpowered-title = Нет питания

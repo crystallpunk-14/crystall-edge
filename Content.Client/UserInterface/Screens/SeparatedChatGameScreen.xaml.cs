@@ -44,6 +44,10 @@ public sealed partial class SeparatedChatGameScreen : InGameScreen
         SetMarginLeft(StaminaBar, -StaminaBar.MinSize.X / 2f);
         SetMarginRight(StaminaBar, StaminaBar.MinSize.X / 2f);
 
+        SetAnchorAndMarginPreset(RoundProgressBar, LayoutPreset.CenterTop, margin: 10);
+        SetMarginLeft(RoundProgressBar, -RoundProgressBar.MinSize.X / 2f);
+        SetMarginRight(RoundProgressBar, RoundProgressBar.MinSize.X / 2f);
+
         SetAnchorPreset(Actions, LayoutPreset.BottomWide);
         SetMarginLeft(Actions, 0);
         SetMarginRight(Actions, 0);
