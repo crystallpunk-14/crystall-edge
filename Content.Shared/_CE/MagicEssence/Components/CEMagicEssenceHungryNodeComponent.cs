@@ -1,4 +1,5 @@
 using Content.Shared._CE.MagicEssence.Prototypes;
+using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -51,4 +52,14 @@ public sealed partial class CEMagicEssenceHungryNodeComponent : Component
     /// satisfaction reward a second time.
     /// </summary>
     public bool Satisfied;
+
+    /// <summary>
+    /// Played whenever the node consumes a floating essence orb, matching or not - same sound as
+    /// <see cref="Content.Server._CE.MagicEssence.Components.CEMagicEssenceAttractorComponent.ConsumeSound"/>.
+    /// </summary>
+    [DataField]
+    public SoundSpecifier ConsumeSound = new SoundPathSpecifier("/Audio/_CE/Effects/essence_consume.ogg")
+    {
+        Params = AudioParams.Default.WithVolume(-2f).WithVariation(0.2f),
+    };
 }

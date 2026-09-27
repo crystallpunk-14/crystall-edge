@@ -12,6 +12,7 @@
   table: !type:AllSelector
     children:
     - id: CERandomPipeBreak
+    - id: CERandomHungryNodeSpawn
 
 - type: entity
   parent: CEBaseGameRule
@@ -37,3 +38,14 @@
     centerVfx: CEShockWaveStrongVFX
     breakSound:
       collection: MetalBreak
+
+- type: entity
+  parent: CEBaseGameRule
+  id: CERandomHungryNodeSpawn
+  components:
+  - type: StationEvent
+    weight: 5
+    minimumPlayers: 5
+    earliestStart: 20
+  - type: CEInLucsonSphereSpawnRule
+    prototype: CEMagicEssenceHungryNode

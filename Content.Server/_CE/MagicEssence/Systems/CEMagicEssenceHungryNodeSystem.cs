@@ -5,6 +5,7 @@ using Content.Shared._CE.Science;
 using Content.Shared._CE.Science.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Destructible.Thresholds;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Random;
 
@@ -15,6 +16,7 @@ public sealed partial class CEMagicEssenceHungryNodeSystem : EntitySystem
     [Dependency] private CEMagicEssenceSystem _essence = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
 
     [SubscribeLocalEvent]
     private void OnMapInit(Entity<CEMagicEssenceHungryNodeComponent> ent, ref MapInitEvent args)
@@ -58,6 +60,7 @@ public sealed partial class CEMagicEssenceHungryNodeSystem : EntitySystem
 
         Dirty(ent);
         _solutionContainer.RemoveAllSolution(essenceSoln.Value);
+        _audio.PlayPvs(ent.Comp.ConsumeSound, ent);
 
         if (ent.Comp.RequiredEssence.Count == 0)
         {

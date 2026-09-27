@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Numerics;
 using Content.Client.Gameplay;
+using Content.Shared._CE.MagicEssence.Components;
 using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.MagicEssence.Systems;
 using Content.Shared.Interaction;
@@ -197,11 +198,13 @@ public sealed partial class CEMagicEssenceOverlay : Overlay
             // digits have no descenders and the line-height box would otherwise sit too high.
             var textPos = new Vector2(x + iconSize - textDims.X, screenPos.Y + iconSize - ascent);
 
+            var entryTextColor = amount < 0 ? Color.Red.WithAlpha(alpha) : textColor;
+
             handle.DrawString(_font, textPos + OLeft * textScale, text, textScale, outlineColor);
             handle.DrawString(_font, textPos + ORight * textScale, text, textScale, outlineColor);
             handle.DrawString(_font, textPos + OUp * textScale, text, textScale, outlineColor);
             handle.DrawString(_font, textPos + ODown * textScale, text, textScale, outlineColor);
-            handle.DrawString(_font, textPos, text, textScale, textColor);
+            handle.DrawString(_font, textPos, text, textScale, entryTextColor);
 
             x += iconSize + iconGap;
         }
@@ -245,7 +248,12 @@ public sealed partial class CEMagicEssenceOverlay : Overlay
         if (!_interaction.InRangeUnobstructed((player, null), (target, xform)))
             return null;
 
-        var essenceDict = _essence.GetEssence(target, recursive: false);
+        // TODO: hardcoded branch for the hungry node's deficit display - replace with a proper
+        // mechanism once GetEssence (or a sibling) supports negative deltas generically.
+        var essenceDict = _entityManager.TryGetComponent<CEMagicEssenceHungryNodeComponent>(target, out var hungry)
+            ? hungry.RequiredEssence.ToDictionary(kv => kv.Key, kv => -kv.Value)
+            : _essence.GetEssence(target, recursive: false);
+
         if (essenceDict.Count == 0)
             return null;
 
