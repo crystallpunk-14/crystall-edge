@@ -43,11 +43,7 @@ public sealed partial class CESecretDepartmentPrototype : IPrototype
     public int Weight;
 
     /// <summary>
-    /// Objectives shared by the whole faction: drawn once per round and handed to every player
-    /// holding a role in this faction (including late-joiners), rather than a personal copy per
-    /// player. Overridable per round by a GameRule's
-    /// <see cref="Content.Server._CE.Roles.CESecretRoleObjectivesOverrideComponent"/>. Mirrors ES's
-    /// <c>ESOrganizationPrototype.Objectives</c>.
+    /// Objectives shared by the whole faction
     /// </summary>
     [DataField]
     public EntityTableSelector? Objectives;
@@ -60,9 +56,8 @@ public sealed partial class CESecretDepartmentPrototype : IPrototype
 
     /// <summary>
     /// Whether holders of any role in this department can see each other's secret role icon and
-    /// examine text, even when they hold different roles within it. See
-    /// <see cref="CESecretRoleIconComponent"/>. A role always recognizes its own kind regardless of
-    /// this flag - this only controls cross-role recognition within the same department.
+    /// examine text - including two holders of the exact same role, e.g. two unrelated Lovers. See
+    /// <see cref="CESecretRoleIconComponent"/>.
     /// </summary>
     [DataField]
     public bool MembersRecognizeEachOther;

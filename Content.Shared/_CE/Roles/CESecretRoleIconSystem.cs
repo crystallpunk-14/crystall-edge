@@ -11,13 +11,6 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared._CE.Roles;
 
-/// <summary>
-/// Lets holders of a <see cref="CESecretRoleIconComponent"/> recognize each other - via a status
-/// icon above their head and an examine line - without leaking that recognition to anyone else.
-/// A viewer always recognizes their own exact role; whether they also recognize other roles in the
-/// same department is <see cref="CESecretDepartmentPrototype.MembersRecognizeEachOther"/>. Ghosts
-/// (observers) recognize every role, same as spectating in general lets you see everything.
-/// </summary>
 public sealed partial class CESecretRoleIconSystem : EntitySystem
 {
     [Dependency] private IPrototypeManager _proto = default!;
@@ -111,9 +104,6 @@ public sealed partial class CESecretRoleIconSystem : EntitySystem
         {
             return false;
         }
-
-        if (viewerRole == ent.Comp.Role)
-            return true;
 
         return TryGetDepartment(viewerRole, out var viewerDepartment) &&
             viewerDepartment.MembersRecognizeEachOther &&
