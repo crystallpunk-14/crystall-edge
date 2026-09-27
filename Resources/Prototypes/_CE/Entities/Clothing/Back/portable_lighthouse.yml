@@ -35,3 +35,7 @@
     netsync: false
   - type: StaticPrice
     price: 500
+  - type: CEMagicEssenceStructure
+    essences:
+      Light: { min: 4, max: 6 }
+      Metal: { min: 1, max: 3 }
