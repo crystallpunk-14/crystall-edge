@@ -20,15 +20,7 @@ public sealed partial class CEMurkDissolvingSystem : EntitySystem
     private const float EffectStart = 0.2f;
     private const float EffectEnd = 0.8f;
 
-    private ShaderInstance _shader = default!;
     private CEMurkDissolvingOverlay? _overlay;
-
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        _shader = ProtoMan.Index(Shader).InstanceUnique();
-    }
 
     [SubscribeLocalEvent]
     private void OnStartup(Entity<CEMurkDissolvingStatusComponent> ent, ref ComponentStartup args)
@@ -89,7 +81,10 @@ public sealed partial class CEMurkDissolvingSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnBeforeShaderPost(Entity<CEMurkDissolvingStatusComponent> ent, ref BeforePostShaderRenderEvent args)
     {
-        _shader.SetParameter("dissolve", GetEffectStrength(ent.Comp.Dissolved));
+        if (args.Id != ContentPostShaderIds.CEMurkDissolving)
+            return;
+
+        args.Shader.SetParameter("dissolve", GetEffectStrength(ent.Comp.Dissolved));
     }
 
     private static float GetEffectStrength(float dissolved)
@@ -107,17 +102,25 @@ public sealed partial class CEMurkDissolvingSystem : EntitySystem
         if (!Resolve(entity, ref entity.Comp, false))
             return;
 
+        var hasShader = _sprite.TryGetPostShader(entity.Comp, ContentPostShaderIds.CEMurkDissolving, out var existing);
+
         if (enabled)
         {
-            _sprite.SetPostShader((entity.Owner, entity.Comp), new SpriteComponent.PostShaderArgs(ContentPostShaderIds.CEMurkDissolving, _shader)
+            if (hasShader)
+                return;
+
+            // Per-entity instance: sprite draws are queued and read params at flush time, so a shared instance would leak one entity's "dissolve" onto others.
+            var shader = ProtoMan.Index(Shader).InstanceUnique();
+            _sprite.SetPostShader(entity.Comp, new SpriteComponent.PostShaderArgs(ContentPostShaderIds.CEMurkDissolving, shader)
             {
                 RaiseShaderEvent = true,
                 After = ContentPostShaderIds.AfterBaseEffects,
             });
         }
-        else
+        else if (hasShader)
         {
-            _sprite.RemovePostShader((entity.Owner, entity.Comp), ContentPostShaderIds.CEMurkDissolving);
+            _sprite.RemovePostShader(entity.Comp, ContentPostShaderIds.CEMurkDissolving);
+            existing.Shader.Dispose();
         }
     }
 }
