@@ -938,3 +938,31 @@
   id: 1088
   time: '2026-09-25T22:20:21.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/481
+- author: TheShuEd
+  changes:
+  - message: Added a progress bar showing the spread of murk and the charging of light,
+      visible to all players.
+    type: Add
+  - message: Removed Wordolon_2 bark
+    type: Remove
+  - message: The number of ore veins has increased in proportion to the increased
+      size of the island
+    type: Tweak
+  - message: The visibility of the edge of the murk has been improved
+    type: Tweak
+  - message: Fixed a bug where players with the same role could see each other
+    type: Fix
+  - message: "Fixed a bug where a player who was \u201CLost in the Murk\u201D was\
+      \ not counted as dead for the purposes of the Lover and the Werewolf."
+    type: Fix
+  - message: Fixed a bug that allowed players to return to the body of a character
+      dissolved in darkness.
+    type: Fix
+  - message: Fixed a bug where the dissolution level would flicker when there were
+      many players nearby.
+    type: Fix
+  - message: Fixed an issue where logs could not be cut into planks using sharp objects.
+    type: Fix
+  id: 1089
+  time: '2026-09-27T18:40:39.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/485
