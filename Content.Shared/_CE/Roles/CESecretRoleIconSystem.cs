@@ -14,6 +14,7 @@ namespace Content.Shared._CE.Roles;
 public sealed partial class CESecretRoleIconSystem : EntitySystem
 {
     [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private ISharedPlayerManager _player = default!;
     [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private SharedRoleSystem _role = default!;
 
@@ -56,6 +57,9 @@ public sealed partial class CESecretRoleIconSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnGetStatusIcons(Entity<CESecretRoleIconComponent> ent, ref GetStatusIconsEvent args)
     {
+        if (_player.LocalEntity is not { } viewer || !CanRecognize(ent, viewer))
+            return;
+
         if (_proto.TryIndex(ent.Comp.Role, out var role) && _proto.TryIndex(role.Icon, out var icon))
             args.StatusIcons.Add(icon);
     }
