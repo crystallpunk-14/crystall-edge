@@ -50,6 +50,7 @@
         isLooped: true
         enabled: true
   - type: CEMurkSphereFixer
+    chargeDuration: 20m
   - type: CEPvsOverride
   - type: Fixtures
     fixtures:

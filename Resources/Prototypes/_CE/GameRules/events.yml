@@ -25,9 +25,8 @@
       path: /Audio/_CE/Announce/broken_pipe_far.ogg
       params:
         volume: 10
-    weight: 5
     duration: 1
-    minimumPlayers: 5
+    minimumPlayers: 0
   - type: CEPipeBreakageRule
     replacementMap:
       CEPipeBrassMedium: CEPipeBrassMediumBroken
@@ -45,7 +44,6 @@
   components:
   - type: StationEvent
     weight: 5
-    minimumPlayers: 5
-    earliestStart: 20
+    minimumPlayers: 0
   - type: CEInLucsonSphereSpawnRule
     prototype: CEMagicEssenceHungryNode

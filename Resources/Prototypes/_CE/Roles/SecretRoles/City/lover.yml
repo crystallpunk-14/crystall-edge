@@ -3,7 +3,6 @@
   name: ce-secret-role-name-lover
   description: ce-secret-role-description-lover
   icon: CESecretRoleIconLover
-  briefing: ce-secret-role-briefing-lover
   objectives: !type:AllSelector
     children:
     - !type:EntSelector

@@ -3,6 +3,5 @@
   name: ce-secret-role-name-murkwalker
   description: ce-secret-role-description-murkwalker
   icon: CESecretRoleIconMurkwalker
-  briefing: ce-secret-role-briefing-murkwalker
   skills:
   - Murkwalker

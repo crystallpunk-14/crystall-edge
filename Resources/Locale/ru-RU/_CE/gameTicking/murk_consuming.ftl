@@ -21,7 +21,7 @@ ce-murk-sphere-fixer-block-unpowered-desc = Монолит Света не за�
 ce-murk-sphere-fixer-block-missing-title = Что блять?
 ce-murk-sphere-fixer-block-missing-desc = Отсутствует монолит света. Заряжать нечего.
 
-ce-murk-sphere-charging-blocker-desc = Аура мрака внутри действия сферы блокирует заряд монолита света.
+ce-murk-sphere-charging-blocker-desc = Аура мрака блокирует заряд монолита света.
 
 ce-murk-pylon-block-unpowered-title = Пилон не запитан
 ce-murk-pylon-block-unpowered-desc = У этого пилона нет питания.

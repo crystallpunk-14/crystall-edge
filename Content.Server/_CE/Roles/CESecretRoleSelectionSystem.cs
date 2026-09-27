@@ -15,7 +15,6 @@ using Content.Shared.Ghost.Components;
 using Content.Shared.Mind;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
-using Content.Shared.Roles.Components;
 using Content.Shared.Roles.Jobs;
 using Robust.Server.Player;
 using Robust.Shared.Audio;
@@ -191,12 +190,8 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
         if (roleEnt.Value.Comp2.Role is not { } roleId || !_proto.TryIndex(roleId, out var role))
             return;
 
-        var goalText = TryComp<RoleBriefingComponent>(roleEnt.Value.Owner, out var briefing)
-            ? Loc.GetString(briefing.Briefing)
-            : string.Empty;
-
-        RaiseNetworkEvent(new CEScreenPopupShowEvent(role.LocalizedName, goalText,
-            new SoundPathSpecifier("/Audio/_CE/Announce/darkness_boom.ogg")), session);
+        RaiseNetworkEvent(new CEScreenPopupShowEvent(role.LocalizedName,
+            audioPath: new SoundPathSpecifier("/Audio/_CE/Announce/darkness_boom.ogg")), session);
     }
 
     /// <summary>
@@ -403,9 +398,6 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
 
         roleEnt.Value.Comp2.Role = role.ID;
         rule.Comp.AssignedCounts[role.ID] = GetAssignedCount(rule, role.ID) + 1;
-
-        if (role.Briefing is { } briefing)
-            EnsureComp<RoleBriefingComponent>(roleEnt.Value.Owner).Briefing = briefing;
 
         if (session.AttachedEntity is { } target)
         {

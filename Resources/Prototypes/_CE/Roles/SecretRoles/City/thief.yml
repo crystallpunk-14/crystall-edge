@@ -3,7 +3,6 @@
   name: ce-secret-role-name-thief
   description: ce-secret-role-description-thief
   icon: CESecretRoleIconThief
-  briefing: ce-secret-role-briefing-thief
   skills:
   - Pickpocketing
   - BlackMarket
