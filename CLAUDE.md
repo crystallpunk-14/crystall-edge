@@ -6,8 +6,9 @@ CrystallEdge (CE) is a fork of Space Station 14 built on RobustToolbox. It uses 
 
 The project takes ~5 minutes for a full build.
 
+The raw build output is flooded with RobustToolbox warnings. To see only errors (PowerShell):
 ```
-dotnet build -c Tools
+$out = dotnet build -c Tools -clp:ErrorsOnly -nologo 2>&1; $out | Select-String -Pattern ": error |Build succeeded|FAILED|Time Elapsed|\d+ Error" | Select-Object -Unique
 ```
 
 ## Testing

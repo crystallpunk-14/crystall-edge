@@ -1,0 +1,6 @@
+<widgets:CERoundProgressUI xmlns="https://spacestation14.io"
+                           xmlns:widgets="clr-namespace:Content.Client._CE.UserInterface.Systems.Vitals.Widgets"
+                           Orientation="Vertical"
+                           HorizontalExpand="False"
+                           VerticalExpand="False"
+                           Visible="False" />

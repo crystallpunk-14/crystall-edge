@@ -15,26 +15,35 @@ public sealed partial class CEMurkConsumingRuleComponent : Component
     public TimeSpan CrackDelay = TimeSpan.FromMinutes(1);
 
     /// <summary>
-    /// Days (inclusive) the sphere can hold out after cracking before it collapses.
+    /// Real time after the sphere cracks until it collapses.
     /// </summary>
     [DataField]
-    public int DaysToCollapse = 7;
+    public TimeSpan CollapseDelay = TimeSpan.FromMinutes(60);
 
     /// <summary>
-    /// Days passed since the sphere cracked.
+    /// When the sphere cracked. Null until it does.
     /// </summary>
     [DataField]
-    public int DaysSinceCrack;
+    public TimeSpan? CrackTime;
 
     /// <summary>
-    /// How much the sphere's dispel intensity weakens (moves toward 0) each day after cracking.
+    /// When the sphere left the cracked state (fixed or collapsed). Freezes the collapse progress.
     /// </summary>
     [DataField]
-    public float IntensityPerDay = 1f;
+    public TimeSpan? CrackEndTime;
 
     /// <summary>
     /// How fast the sphere's remaining intensity drains (units/sec) once it starts collapsing.
     /// </summary>
     [DataField]
     public float CollapseRate = 2f;
+
+    /// <summary>
+    /// How often the round progress state is broadcast to clients.
+    /// </summary>
+    [DataField]
+    public TimeSpan BroadcastInterval = TimeSpan.FromSeconds(1);
+
+    [DataField]
+    public TimeSpan NextBroadcast;
 }

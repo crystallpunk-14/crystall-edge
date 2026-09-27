@@ -12,7 +12,11 @@ ce-murk-days-left-title =
        *[other] Осталось { $days } дней
     }
 
-ce-murk-sphere-fixed-title = Сфера Люксона восстановлена
+ce-round-progress-tooltip =
+    Заряд монолита: { $light }%
+    Поглощение мраком: { $murk }%
+
+ce-murk-sphere-fixed-title =Сфера Люксона восстановлена
 ce-murk-sphere-fixed-desc = Монолит Света запечатал трещину. Город в безопасности.
 
 ce-murk-sphere-fixer-block-unpowered-title = Нет питания

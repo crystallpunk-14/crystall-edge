@@ -8,7 +8,11 @@ ce-murk-days-left-title = { $days } { $days ->
        *[other] days
     } left
 
-ce-murk-sphere-fixed-title = The Lucson Sphere has been mended
+ce-round-progress-tooltip =
+    Monolith charge: { $light }%
+    Murk consumption: { $murk }%
+
+ce-murk-sphere-fixed-title =The Lucson Sphere has been mended
 ce-murk-sphere-fixed-desc = The Light Monolith has sealed the crack. The city is safe.
 
 ce-murk-sphere-fixer-block-unpowered-title = No power
