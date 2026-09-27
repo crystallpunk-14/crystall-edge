@@ -23,7 +23,6 @@ uniform highp float threshold;
 
 const highp vec3 FreeColor = vec3(0.35, 1.0, 0.45);
 const highp vec3 WallColor = vec3(1.0, 0.85, 0.2);
-const highp float LineWidth = 0.4;
 
 highp float freeField(highp vec2 world_pos)
 {
@@ -50,17 +49,14 @@ highp float wallField(highp vec2 world_pos)
 }
 
 // Anti-aliased line where value crosses threshold - merges overlapping circles into one outline.
+// Fixed width, not fwidth()-based: derivatives inside a non-entry-point helper broke shader
+// compilation on some drivers, and adaptive AA isn't worth that fragility for a debug overlay.
 highp float contourAlpha(highp float value)
 {
     highp float d = abs(value - threshold);
+    const highp float width = 0.05;
 
-#ifdef HAS_DFDX
-    highp float width = fwidth(value) * LineWidth;
-#else
-    highp float width = 0.05;
-#endif
-
-    return 1.0 - smoothstep(0.0, max(width, 0.001), d);
+    return 1.0 - smoothstep(0.0, width, d);
 }
 
 void fragment()
