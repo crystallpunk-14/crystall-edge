@@ -66,7 +66,7 @@
   desc: ce-reagent-desc-essence-earth
   color: "#7dbf41"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceEarth
 
 - type: reagent
@@ -76,7 +76,7 @@
   desc: ce-reagent-desc-essence-fire
   color: "#e67130"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceFire
 
 - type: reagent
@@ -86,7 +86,7 @@
   desc: ce-reagent-desc-essence-water
   color: "#6ab8e2"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceWater
 
 - type: reagent
@@ -96,7 +96,7 @@
   desc: ce-reagent-desc-essence-air
   color: "#ebda68"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceAir
 
 - type: reagent
@@ -106,7 +106,7 @@
   desc: ce-reagent-desc-essence-order
   color: "#b7b7c6"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceOrder
 
 - type: reagent
@@ -116,7 +116,7 @@
   desc: ce-reagent-desc-essence-chaos
   color: "#383838"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceChaos
 
 # Complex tier 1
@@ -128,7 +128,7 @@
   desc: ce-reagent-desc-essence-frost
   color: "#c6d8e2"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceFrost
 
 - type: reagent
@@ -138,7 +138,7 @@
   desc: ce-reagent-desc-essence-light
   color: "#faee88"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceLight
 
 - type: reagent
@@ -148,7 +148,7 @@
   desc: ce-reagent-desc-essence-motion
   color: "#9593b2"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceMotion
 
 - type: reagent
@@ -158,7 +158,7 @@
   desc: ce-reagent-desc-essence-cycle
   color: "#5c7956"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceCycle
 
 - type: reagent
@@ -168,7 +168,7 @@
   desc: ce-reagent-desc-essence-energia
   color: "#eedcbc"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceEnergia
 
 - type: reagent
@@ -178,7 +178,7 @@
   desc: ce-reagent-desc-essence-void
   color: "#606060"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceVoid
 
 - type: reagent
@@ -188,7 +188,7 @@
   desc: ce-reagent-desc-essence-poison
   color: "#94d14a"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssencePoison
 
 - type: reagent
@@ -198,7 +198,7 @@
   desc: ce-reagent-desc-essence-life
   color: "#a31e22"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceLife
 
 - type: reagent
@@ -208,7 +208,7 @@
   desc: ce-reagent-desc-essence-crystal
   color: "#74cfca"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceCrystal
 
 - type: reagent
@@ -218,7 +218,7 @@
   desc: ce-reagent-desc-essence-weather
   color: "#ececed"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceWeather
 
 # Complex tier 2
@@ -230,7 +230,7 @@
   desc: ce-reagent-desc-essence-magic
   color: "#9102b4"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceMagic
 
 - type: reagent
@@ -240,7 +240,7 @@
   desc: ce-reagent-desc-essence-beast
   color: "#ac6f11"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceBeast
 
 - type: reagent
@@ -250,7 +250,7 @@
   desc: ce-reagent-desc-essence-hunger
   color: "#860b11"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceHunger
 
 - type: reagent
@@ -260,7 +260,7 @@
   desc: ce-reagent-desc-essence-plant
   color: "#6ec03a"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssencePlant
 
 - type: reagent
@@ -270,7 +270,7 @@
   desc: ce-reagent-desc-essence-travel
   color: "#cd5d68"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceTravel
 
 - type: reagent
@@ -280,7 +280,7 @@
   desc: ce-reagent-desc-essence-slime
   color: "#20d734"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceSlime
 
 - type: reagent
@@ -290,7 +290,7 @@
   desc: ce-reagent-desc-essence-metal
   color: "#a5a7bf"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceMetal
 
 - type: reagent
@@ -300,7 +300,7 @@
   desc: ce-reagent-desc-essence-death
   color: "#77697c"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceDeath
 
 - type: reagent
@@ -310,7 +310,7 @@
   desc: ce-reagent-desc-essence-healing
   color: "#ec2f3a"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceHealing
 
 - type: reagent
@@ -320,7 +320,7 @@
   desc: ce-reagent-desc-essence-darkness
   color: "#282828"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceDarkness
 
 - type: reagent
@@ -330,7 +330,7 @@
   desc: ce-reagent-desc-essence-trap
   color: "#807778"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceTrap
 
 - type: reagent
@@ -340,7 +340,7 @@
   desc: ce-reagent-desc-essence-flight
   color: "#d3d6c8"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceFlight
 
 # Complex tier 3
@@ -352,7 +352,7 @@
   desc: ce-reagent-desc-essence-eldritch
   color: "#734a77"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceEldritch
 
 - type: reagent
@@ -362,7 +362,7 @@
   desc: ce-reagent-desc-essence-tree
   color: "#7f5d39"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceTree
 
 - type: reagent
@@ -372,7 +372,7 @@
   desc: ce-reagent-desc-essence-aura
   color: "#bb8cc0"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceAura
 
 - type: reagent
@@ -382,7 +382,7 @@
   desc: ce-reagent-desc-essence-flesh
   color: "#de5195"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceFlesh
 
 - type: reagent
@@ -392,7 +392,7 @@
   desc: ce-reagent-desc-essence-undead
   color: "#3a4a07"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceUndead
 
 - type: reagent
@@ -402,7 +402,7 @@
   desc: ce-reagent-desc-essence-soul
   color: "#4e585d"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceSoul
 
 - type: reagent
@@ -412,7 +412,7 @@
   desc: ce-reagent-desc-essence-taint
   color: "#780186"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceTaint
 
 # Complex tier 4
@@ -424,7 +424,7 @@
   desc: ce-reagent-desc-essence-mind
   color: "#e8afa7"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceMind
 
 - type: reagent
@@ -434,7 +434,7 @@
   desc: ce-reagent-desc-essence-senses
   color: "#28b6e4"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceSenses
 
 # Complex tier 5
@@ -446,7 +446,7 @@
   desc: ce-reagent-desc-essence-human
   color: "#ddc0aa"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceHuman
 
 # Complex tier 6
@@ -458,7 +458,7 @@
   desc: ce-reagent-desc-essence-tool
   color: "#4c56b2"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceTool
 
 - type: reagent
@@ -468,7 +468,7 @@
   desc: ce-reagent-desc-essence-crop
   color: "#d36c36"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceCrop
 
 - type: reagent
@@ -478,7 +478,7 @@
   desc: ce-reagent-desc-essence-greed
   color: "#d9aa4a"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceGreed
 
 - type: reagent
@@ -488,7 +488,7 @@
   desc: ce-reagent-desc-essence-mining
   color: "#cbc3c8"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceMining
 
 # Complex tier 7
@@ -500,7 +500,7 @@
   desc: ce-reagent-desc-essence-craft
   color: "#79907d"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceCraft
 
 - type: reagent
@@ -510,7 +510,7 @@
   desc: ce-reagent-desc-essence-machine
   color: "#767891"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceMachine
 
 - type: reagent
@@ -520,7 +520,7 @@
   desc: ce-reagent-desc-essence-cloth
   color: "#d2d3b7"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceCloth
 
 - type: reagent
@@ -530,7 +530,7 @@
   desc: ce-reagent-desc-essence-weapon
   color: "#9d5e6c"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceWeapon
 
 - type: reagent
@@ -540,7 +540,7 @@
   desc: ce-reagent-desc-essence-armor
   color: "#62aad3"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceArmor
 
 - type: reagent
@@ -550,5 +550,5 @@
   desc: ce-reagent-desc-essence-harvest
   color: "#d9ac7a"
   tileReactions:
-  - !type:CreateEntityTileReaction
+  - !type:CECreateEntityStackTileReaction
     entity: CEEssenceHarvest

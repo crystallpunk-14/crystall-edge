@@ -17,7 +17,7 @@ ce-murk-sphere-fixer-block-unpowered-desc = The Light Monolith has no power.
 ce-murk-sphere-fixer-block-missing-title = What the hell?
 ce-murk-sphere-fixer-block-missing-desc = There's no Light Monolith. Nothing to charge.
 
-ce-murk-sphere-charging-blocker-desc = An aura of darkness within the sphere's radius is blocking the Light Monolith's charge.
+ce-murk-sphere-charging-blocker-desc = An aura of murk is blocking the Light Monolith's charge.
 
 ce-murk-pylon-block-unpowered-title = Pylon unpowered
 ce-murk-pylon-block-unpowered-desc = This pylon has no power.

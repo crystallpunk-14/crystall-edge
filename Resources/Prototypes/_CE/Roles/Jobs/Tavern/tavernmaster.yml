@@ -48,6 +48,7 @@
         - id: CERubberStampApproved
         - id: CERubberStampDenied
         - id: CERubberStampGuildmaster
+        - id: CEClothingBackPortableLighthouse
 
 - type: entity
   id: CEBedsideTableFilledTavernmaster

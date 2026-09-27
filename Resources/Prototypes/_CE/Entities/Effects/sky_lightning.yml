@@ -18,7 +18,7 @@
     tags:
     - HideContextMenu
   - type: PointLight
-    color: "#73efff"
+    color: "#e3fcff"
     enabled: true
     radius: 50
     energy: 8

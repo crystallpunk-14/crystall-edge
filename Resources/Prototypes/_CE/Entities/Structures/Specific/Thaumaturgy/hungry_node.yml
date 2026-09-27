@@ -1,0 +1,71 @@
+- type: entity
+  id: CEMagicEssenceHungryNode
+  categories: [ ForkFiltered ]
+  name: hungry node
+  description: A famished pocket of dark magic, quietly starving for a particular flavor of essence.
+  components:
+  - type: CEMagicEssenceAttracting
+  - type: CEMagicEssenceHungryNode
+    hungerVolume: 10
+    vFX:
+    - CEShockWaveVFX
+    - CEInfusionAltarMishapManaConsume
+    reward: CEDimensionalShard
+  - type: CERandomizedTimedDespawn
+    minLifetime: 600
+    maxLifetime: 1200
+  - type: CETimedDespawnFadeout
+    fadeInEnd: 0.02
+    fadeOutStart: 0.6
+  - type: CEMurkSphereChargingBlocker
+  - type: InteractionOutline
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+    bodyStatus: InAir
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 50
+        mask:
+        - FlyingMobMask
+        layer:
+        - FlyingMobLayer
+      fix2:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        hard: false # floating essence should fly in, not bounce off
+        mask:
+        - Impassable
+        layer:
+        - Impassable
+  - type: Sprite
+    noRot: true
+    drawdepth: Effects
+    layers:
+    - sprite: _CE/Structures/Specific/Thaumaturgy/Node/big_node.rsi
+      color: "#000000"
+      state: base
+      shader: unshaded
+      offset: 0.05, 0.02
+    - sprite: _CE/Structures/Specific/Thaumaturgy/Node/medium_node.rsi
+      color: "#29092b"
+      state: base
+      shader: unshaded
+      offset: 0.05, 0.06
+    - sprite: _CE/Structures/Specific/Thaumaturgy/Node/smol_node.rsi
+      color: "#4d0e1d"
+      state: base
+      shader: unshaded
+      offset: -0.05, 0.06
+  - type: SingularityDistortion
+    intensity: -10
+    falloffPower: 1.5
+  - type: Clickable
+  - type: Visibility
+    layer: 16 #magic vision only

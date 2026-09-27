@@ -132,3 +132,19 @@
   service: !type:CEBuyItemsService
     product: CEScrewdriver
     count: 1
+
+- type: tradingPosition
+  id: CEClothingBackPortableLighthouse
+  faction: DwarfMiners
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CEClothingBackPortableLighthouse
+    count: 1
+
+- type: tradingPosition
+  id: CELightPylon
+  faction: DwarfMiners
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CELightPylon
+    count: 1

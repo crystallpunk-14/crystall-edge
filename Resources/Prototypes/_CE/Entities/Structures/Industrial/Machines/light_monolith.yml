@@ -50,6 +50,7 @@
         isLooped: true
         enabled: true
   - type: CEMurkSphereFixer
+    chargeDuration: 20m
   - type: CEPvsOverride
   - type: Fixtures
     fixtures:
@@ -125,5 +126,7 @@
     soundGroups:
       Brute:
         collection: GlassSmash
-  - type: Anchorable
-  - type: Pullable
+  - type: CEGridStabilityCore
+    levitationForce: 1
+  - type: StaticPrice
+    price: 250

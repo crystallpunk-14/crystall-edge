@@ -76,21 +76,27 @@ public sealed partial class CEMurkPylonSystem : EntitySystem
         }
 
         var validCount = 0;
+        foreach (var (pylonUid, pylonXform) in pylons)
+        {
+            if (IsValidPylon(pylonUid, pylonXform, pylons))
+                validCount++;
+        }
+
+        // Enough pylons already pass - the rest don't matter, however broken they are.
+        if (validCount >= fixer.PylonsRequired)
+            return;
+
         var problemPylons = new List<EntityCoordinates>();
 
         foreach (var (pylonUid, pylonXform) in pylons)
         {
-            var powered = _power.IsPowered(pylonUid);
-            var inMurk = _murk.InMurk(pylonUid, pylonXform);
-            var tooClose = powered && IsTooClose(pylonUid, pylons, requirePowered: true);
-
-            if (powered && inMurk && !tooClose)
-            {
-                validCount++;
+            if (IsValidPylon(pylonUid, pylonXform, pylons))
                 continue;
-            }
 
             problemPylons.Add(pylonXform.Coordinates);
+
+            var powered = _power.IsPowered(pylonUid);
+            var inMurk = _murk.InMurk(pylonUid, pylonXform);
 
             if (!powered)
             {
@@ -112,12 +118,17 @@ public sealed partial class CEMurkPylonSystem : EntitySystem
             }
         }
 
-        if (validCount < fixer.PylonsRequired)
-        {
-            args.Block(Loc.GetString("ce-murk-pylon-block-count-title"),
-                Loc.GetString("ce-murk-pylon-block-count-desc", ("count", validCount), ("required", fixer.PylonsRequired)),
-                problemPylons);
-        }
+        args.Block(Loc.GetString("ce-murk-pylon-block-count-title"),
+            Loc.GetString("ce-murk-pylon-block-count-desc", ("count", validCount), ("required", fixer.PylonsRequired)),
+            problemPylons);
+    }
+
+    private bool IsValidPylon(EntityUid pylonUid, TransformComponent pylonXform, List<(EntityUid Uid, TransformComponent Xform)> pylons)
+    {
+        var powered = _power.IsPowered(pylonUid);
+        var inMurk = _murk.InMurk(pylonUid, pylonXform);
+        var tooClose = powered && IsTooClose(pylonUid, pylons, requirePowered: true);
+        return powered && inMurk && !tooClose;
     }
 
     // Any other pylon (only powered ones, if requirePowered) within PylonsMinRadius.

@@ -7,6 +7,7 @@ using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.MagicEssence.Systems;
 using Content.Shared._CE.Science;
 using Content.Shared._CE.Science.Components;
+using Content.Shared._CE.TimedDespawn;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Destructible.Thresholds;
@@ -92,25 +93,26 @@ public sealed partial class CEMagicEssenceNodeSystem : EntitySystem
         if (!Resolve(ent, ref ent.Comp) || ent.Comp.StopTime is not { } stopTime)
             return;
 
+        if (!TryComp<CERandomizedTimedDespawnComponent>(ent, out var randomized))
+            return;
+
         var elapsed = _timing.CurTime - stopTime;
         ent.Comp.StopTime = null;
-        ent.Comp.SpawnTime += elapsed;
+        randomized.SpawnTime += elapsed;
 
         var despawn = EnsureComp<TimedDespawnComponent>(ent);
-        despawn.Lifetime = (float)(ent.Comp.SpawnTime + ent.Comp.Lifetime - _timing.CurTime).TotalSeconds;
+        despawn.Lifetime = (float)(randomized.SpawnTime + randomized.Lifetime - _timing.CurTime).TotalSeconds;
 
         Dirty(ent);
+        Dirty(ent.Owner, randomized);
     }
 
     /// <summary>
-    /// Rolls 3 random essence aspects for a freshly spawned node, and rolls its total lifetime
-    /// between <see cref="CEMagicEssenceNodeComponent.MinLifetime"/> and
-    /// <see cref="CEMagicEssenceNodeComponent.MaxLifetime"/>, applying it to both the networked
-    /// <see cref="CEMagicEssenceNodeComponent.Lifetime"/> (for the client's fade curve) and the
-    /// entity's own <see cref="TimedDespawnComponent"/> (the actual despawn timer). Aspects may repeat.
-    /// Also grants the node a <see cref="CEScientificInterestComponent"/> so it can be studied for
-    /// research points, rolling <see cref="CEMagicEssenceNodeComponent.InterestPoints"/> distributed
-    /// across its 3 rolled aspects 70/20/10.
+    /// Rolls 3 random essence aspects for a freshly spawned node. Aspects may repeat. Also grants the
+    /// node a <see cref="CEScientificInterestComponent"/> so it can be studied for research points,
+    /// rolling <see cref="CEMagicEssenceNodeComponent.InterestPoints"/> distributed across its 3 rolled
+    /// aspects 70/20/10. The node's lifetime/despawn timing itself is rolled by
+    /// <see cref="Content.Server._CE.TimedDespawn.CERandomizedTimedDespawnSystem"/>.
     /// </summary>
     [SubscribeLocalEvent]
     private void OnNodeMapInit(Entity<CEMagicEssenceNodeComponent> ent, ref MapInitEvent args)
@@ -119,16 +121,6 @@ public sealed partial class CEMagicEssenceNodeSystem : EntitySystem
         ent.Comp.EssenceB = _essence.GetRandomEssenceType();
         ent.Comp.EssenceC = _essence.GetRandomEssenceType();
         ent.Comp.NextGenerationTime = _timing.CurTime + ent.Comp.GenerationInterval;
-
-        var minSeconds = (float)ent.Comp.MinLifetime.TotalSeconds;
-        var maxSeconds = (float)ent.Comp.MaxLifetime.TotalSeconds;
-        var lifetime = TimeSpan.FromSeconds(_random.NextFloat(minSeconds, maxSeconds));
-
-        ent.Comp.SpawnTime = _timing.CurTime;
-        ent.Comp.Lifetime = lifetime;
-
-        if (TryComp<TimedDespawnComponent>(ent, out var despawn))
-            despawn.Lifetime = (float)lifetime.TotalSeconds;
 
         Dirty(ent);
 

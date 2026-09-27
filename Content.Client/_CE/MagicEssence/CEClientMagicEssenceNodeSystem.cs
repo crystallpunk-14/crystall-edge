@@ -1,5 +1,7 @@
+using Content.Client._CE.TimedDespawnFadeout;
 using Content.Shared._CE.MagicEssence.Components;
 using Content.Shared._CE.MagicEssence.Prototypes;
+using Content.Shared._CE.TimedDespawn;
 using Robust.Client.GameObjects;
 using Robust.Shared.Analyzers;
 using Robust.Shared.Prototypes;
@@ -9,16 +11,6 @@ namespace Content.Client._CE.MagicEssence;
 
 public sealed partial class CEClientMagicEssenceNodeSystem : EntitySystem
 {
-    /// <summary>
-    /// Fraction of the node's lifetime (0-1) at which the fade-in from invisible finishes.
-    /// </summary>
-    private const float FadeInEnd = 0.4f;
-
-    /// <summary>
-    /// Fraction of the node's lifetime (0-1) at which the fade-out back to invisible begins.
-    /// </summary>
-    private const float FadeOutStart = 0.6f;
-
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private SharedPointLightSystem _pointLight = default!;
@@ -61,44 +53,28 @@ public sealed partial class CEClientMagicEssenceNodeSystem : EntitySystem
     }
 
     /// <summary>
-    /// Fades the node in over the first <see cref="FadeInEnd"/> of its lifetime, holds it fully
-    /// visible until <see cref="FadeOutStart"/>, then fades it back out by the time it despawns.
-    /// The same curve drives the point light's energy; the light's color is a 70/20/10 blend of the
-    /// node's 3 rolled essence aspects (matching the essence generation weights).
+    /// Drives the point light's energy off the same fade curve <see cref="CETimedDespawnFadeoutSystem"/>
+    /// applies to the node's sprite alpha (the node is expected to have a paired
+    /// <see cref="CETimedDespawnFadeoutComponent"/> and <see cref="CERandomizedTimedDespawnComponent"/>).
+    /// The light's color is a 70/20/10 blend of the node's 3 rolled essence aspects (matching the
+    /// essence generation weights).
     /// </summary>
     public override void FrameUpdate(float frameTime)
     {
         base.FrameUpdate(frameTime);
 
-        var query = EntityQueryEnumerator<CEMagicEssenceNodeComponent, SpriteComponent>();
-        while (query.MoveNext(out var uid, out var node, out var sprite))
+        var query = EntityQueryEnumerator<CEMagicEssenceNodeComponent, CERandomizedTimedDespawnComponent, CETimedDespawnFadeoutComponent, PointLightComponent>();
+        while (query.MoveNext(out var uid, out var node, out var randomized, out var fadeout, out var light))
         {
-            if (node.Lifetime <= TimeSpan.Zero)
+            if (randomized.Lifetime <= TimeSpan.Zero)
                 continue;
 
-            var elapsed = Math.Clamp((float)((_timing.CurTime - node.SpawnTime) / node.Lifetime), 0f, 1f);
-            var alpha = GetFadeAlpha(elapsed);
+            var elapsed = Math.Clamp((float)((_timing.CurTime - randomized.SpawnTime) / randomized.Lifetime), 0f, 1f);
+            var alpha = CETimedDespawnFadeoutSystem.GetFadeAlpha(elapsed, fadeout.FadeInEnd, fadeout.FadeOutStart);
 
-            if (!sprite.Color.A.Equals(alpha))
-                _sprite.SetColor((uid, sprite), sprite.Color.WithAlpha(alpha));
-
-            if (TryComp<PointLightComponent>(uid, out var light))
-            {
-                _pointLight.SetColor(uid, node.LightColor ?? Color.White, light);
-                _pointLight.SetEnergy(uid, alpha, light);
-            }
+            _pointLight.SetColor(uid, node.LightColor ?? Color.White, light);
+            _pointLight.SetEnergy(uid, alpha, light);
         }
-    }
-
-    private static float GetFadeAlpha(float elapsed)
-    {
-        if (elapsed <= FadeInEnd)
-            return elapsed / FadeInEnd;
-
-        if (elapsed <= FadeOutStart)
-            return 1f;
-
-        return (1f - elapsed) / (1f - FadeOutStart);
     }
 
     private Color GetLightColor(CEMagicEssenceNodeComponent node)

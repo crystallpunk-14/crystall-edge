@@ -55,12 +55,6 @@ public sealed partial class CESecretRolePrototype : IPrototype, IInheritingProto
     public HashSet<JobRequirement>? Requirements;
 
     /// <summary>
-    /// Flavor text shown to the player when they are granted this role.
-    /// </summary>
-    [DataField]
-    public LocId? Briefing;
-
-    /// <summary>
     /// Personal objectives granted to a player holding this role, unless a GameRule's
     /// <see cref="Content.Server._CE.Roles.CESecretRoleObjectivesOverrideComponent"/> overrides it
     /// for that round. Mirrors ES's <c>ESSecretIdentityPrototype.Objectives</c>.
