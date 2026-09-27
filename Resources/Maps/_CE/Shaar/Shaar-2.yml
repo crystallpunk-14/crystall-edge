@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.0
   forkId: ""
   forkVersion: ""
-  time: 09/26/2026 19:56:41
-  entityCount: 3313
+  time: 09/27/2026 17:12:47
+  entityCount: 3314
 maps:
 - 1
 grids:
@@ -7807,6 +7807,13 @@ entities:
     - type: Transform
       parent: 1
       pos: -25.5,10.5
+- proto: CEClothingBackPortableLighthouse
+  entities:
+  - uid: 3314
+    components:
+    - type: Transform
+      parent: 1
+      pos: -20.462973,-2.3296254
 - proto: CEClothingEyesMiningGlasses
   entities:
   - uid: 1416

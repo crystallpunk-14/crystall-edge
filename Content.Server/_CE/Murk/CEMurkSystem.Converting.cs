@@ -62,15 +62,25 @@ public sealed partial class CEMurkSystem
     /// </summary>
     private void Evict(EntityUid uid)
     {
-        if (TryComp<ActorComponent>(uid, out var actor))
+        if (!_mind.TryGetMind(uid, out var mindId, out var mind))
+            return;
+
+        var actorEntity = mind.VisitingEntity ?? uid;
+
+        if (TryComp<ActorComponent>(actorEntity, out var actor))
         {
             RaiseNetworkEvent(
                 new CEScreenPopupShowEvent(Loc.GetString("ce-murk-soul-lost-title"), audioPath: ConvertSound),
                 actor.PlayerSession);
         }
 
-        if (_mind.TryGetMind(uid, out var mindId, out var mind))
-            _ghost.OnGhostAttempt(mindId, false, viaCommand: true, forced: true, mind: mind);
+        if (mind.VisitingEntity is { } visiting)
+        {
+            _mind.TransferTo(mindId, visiting, mind: mind);
+            return;
+        }
+
+        _ghost.OnGhostAttempt(mindId, false, viaCommand: true, forced: true, mind: mind);
     }
 
     /// <summary>
