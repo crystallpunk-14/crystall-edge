@@ -25,7 +25,7 @@
   storage:
     back:
     - CEGuidebookImperialLaws
-    - CEGunJustice
+    - CEWeaponGunJustice
 
 
 - type: entity

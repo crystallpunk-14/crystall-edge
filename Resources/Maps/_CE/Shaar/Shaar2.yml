@@ -4,7 +4,7 @@ meta:
   engineVersion: 289.0.0
   forkId: ""
   forkVersion: ""
-  time: 09/27/2026 17:12:49
+  time: 09/28/2026 20:58:23
   entityCount: 536
 maps:
 - 1
@@ -1162,22 +1162,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -37.5,-16.5
-- proto: CEMop
-  entities:
-  - uid: 395
-    components:
-    - type: Transform
-      parent: 1
-      rot: -1.5707963267948966 rad
-      pos: -5.638021,-0.8746167
-  - uid: 410
-    components:
-    - type: Transform
-      parent: 1
-      pos: -9.686622,-0.6549616
-    - type: Physics
-      linearDamping: 8
-      angularDamping: 8
 - proto: CEPipeBrassBig
   entities:
   - uid: 125
@@ -2858,6 +2842,22 @@ entities:
     - type: Transform
       parent: 1
       pos: -8.5,5.5
+- proto: CEWeaponMop
+  entities:
+  - uid: 395
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -5.638021,-0.8746167
+  - uid: 410
+    components:
+    - type: Transform
+      parent: 1
+      pos: -9.686622,-0.6549616
+    - type: Physics
+      linearDamping: 8
+      angularDamping: 8
 - proto: CEWindowStone
   entities:
   - uid: 104

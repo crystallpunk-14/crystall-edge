@@ -1212,3 +1212,9 @@ DrinkNeurotoxinGlass: null
 #2026-08-19
 JanitorServiceLight: null
 
+#2026-09-28
+CEGunJustice: CEWeaponGunJustice
+CEGunPeacekeeper: CEWeaponGunPeacekeeper
+CEGunPeacekeeperGolden: CEWeaponGunPeacekeeperGolden
+CEMop: CEWeaponMop
+

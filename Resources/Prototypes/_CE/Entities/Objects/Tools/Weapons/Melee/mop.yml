@@ -63,7 +63,7 @@
 
 - type: entity
   parent: CEBaseWeaponMop
-  id: CEMop
+  id: CEWeaponMop
   name: mop
   description: A simple mop for cleaning up spills and messes.
   components:

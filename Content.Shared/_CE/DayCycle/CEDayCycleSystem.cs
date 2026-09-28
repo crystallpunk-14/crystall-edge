@@ -96,7 +96,7 @@ public sealed partial class CEDayCycleSystem : EntitySystem
         if (!Resolve(map, ref map.Comp, false))
             return false;
 
-        return GetCurrentLightLevel(map) >= 0.4;
+        return GetCurrentLightLevel(map) >= 0.6f; //TODO use CEDayCycleComponent.Threshold;
     }
 
     public float GetCurrentLightLevel(Entity<LightCycleComponent?> map)

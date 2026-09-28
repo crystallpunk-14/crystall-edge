@@ -101,7 +101,7 @@
   id: CEGunJustice
   faction: EmpireGuard
   service: !type:CEBuyItemsService
-    product: CEGunJustice
+    product: CEWeaponGunJustice
     count: 1
   category: Weapon
 
@@ -109,7 +109,7 @@
   id: CEGunPeacekeeper
   faction: EmpireGuard
   service: !type:CEBuyItemsService
-    product: CEGunPeacekeeper
+    product: CEWeaponGunPeacekeeper
     count: 1
   category: Weapon
 

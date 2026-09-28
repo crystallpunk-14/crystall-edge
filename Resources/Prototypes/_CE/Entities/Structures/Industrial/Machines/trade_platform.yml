@@ -78,6 +78,23 @@
 - type: entity
   parent:
   - CETradingPlatformBase
+  id: CETradingPlatformHelsinWarHouse
+  name: Helsin War House trading platform
+  description: Standard trading platform tied to the Helsin War House faction.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Machine
+    board: CEMachineCoreTradingPlatformHelsinWarHouse
+  - type: Sprite
+    layers:
+    - state: base
+    - state: buy
+  - type: CETradingPlatform
+    faction: HelsinWarHouse
+
+- type: entity
+  parent:
+  - CETradingPlatformBase
   id: CETradingPlatformHomeDecor
   name: home decor trading platform
   description: A trading platform tied to the Home Decor faction.

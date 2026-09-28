@@ -21,7 +21,7 @@
   storage:
     back:
     - CEGuidebookImperialLaws
-    - CEGunJustice
+    - CEWeaponGunJustice
 
 
 - type: entity
@@ -47,7 +47,7 @@
     containers:
       entity_storage: !type:AllSelector
         children:
-        - id: CEGunJustice
+        - id: CEWeaponGunJustice
         - id: CERope
         - id: CERope
         - id: CERope

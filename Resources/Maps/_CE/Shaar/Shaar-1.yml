@@ -4,7 +4,7 @@ meta:
   engineVersion: 289.0.0
   forkId: ""
   forkVersion: ""
-  time: 09/27/2026 17:12:48
+  time: 09/28/2026 20:58:22
   entityCount: 4732
 maps:
 - 1
@@ -17868,57 +17868,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -34.748707,-13.170626
-- proto: CEGunJustice
-  entities:
-  - uid: 1004
-    components:
-    - type: Transform
-      parent: 1
-      pos: -2.5537412,-18.261274
-  - uid: 1005
-    components:
-    - type: Transform
-      parent: 1
-      pos: -2.4300141,-18.418695
-  - uid: 1006
-    components:
-    - type: Transform
-      parent: 1
-      pos: -2.3625257,-18.58736
-  - uid: 1007
-    components:
-    - type: Transform
-      parent: 1
-      pos: -1.6539025,-18.261274
-  - uid: 1008
-    components:
-    - type: Transform
-      parent: 1
-      pos: -1.5189258,-18.418695
-  - uid: 1009
-    components:
-    - type: Transform
-      parent: 1
-      pos: -1.4289422,-18.576117
-- proto: CEGunPeacekeeper
-  entities:
-  - uid: 1010
-    components:
-    - type: Transform
-      parent: 1
-      pos: 1.9004633,-20.262774
-  - uid: 1011
-    components:
-    - type: Transform
-      parent: 1
-      pos: 2.0916789,-20.465172
-- proto: CEGunPeacekeeperGolden
-  entities:
-  - uid: 1609
-    components:
-    - type: Transform
-      parent: 1
-      pos: 2.0400443,-20.79391
 - proto: CEIronDoor
   entities:
   - uid: 95
@@ -26995,6 +26944,57 @@ entities:
     - type: Transform
       parent: 1
       pos: 21.5,-0.5
+- proto: CEWeaponGunJustice
+  entities:
+  - uid: 1004
+    components:
+    - type: Transform
+      parent: 1
+      pos: -2.5537412,-18.261274
+  - uid: 1005
+    components:
+    - type: Transform
+      parent: 1
+      pos: -2.4300141,-18.418695
+  - uid: 1006
+    components:
+    - type: Transform
+      parent: 1
+      pos: -2.3625257,-18.58736
+  - uid: 1007
+    components:
+    - type: Transform
+      parent: 1
+      pos: -1.6539025,-18.261274
+  - uid: 1008
+    components:
+    - type: Transform
+      parent: 1
+      pos: -1.5189258,-18.418695
+  - uid: 1009
+    components:
+    - type: Transform
+      parent: 1
+      pos: -1.4289422,-18.576117
+- proto: CEWeaponGunPeacekeeper
+  entities:
+  - uid: 1010
+    components:
+    - type: Transform
+      parent: 1
+      pos: 1.9004633,-20.262774
+  - uid: 1011
+    components:
+    - type: Transform
+      parent: 1
+      pos: 2.0916789,-20.465172
+- proto: CEWeaponGunPeacekeeperGolden
+  entities:
+  - uid: 1609
+    components:
+    - type: Transform
+      parent: 1
+      pos: 2.0400443,-20.79391
 - proto: CEWeaponPickaxeIron
   entities:
   - uid: 1225

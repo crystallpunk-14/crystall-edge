@@ -1,5 +1,5 @@
 - type: entity
-  id: CEGunJustice
+  id: CEWeaponGunJustice
   parent:
   - BaseWeaponBattery
   name: Justice Revolver

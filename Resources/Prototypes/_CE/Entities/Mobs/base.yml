@@ -176,7 +176,7 @@
         - !type:Damage
           damage:
             types:
-              Blunt: 5
+              Blunt: 4
     animations:
       Primary:
       - anim: Punch1

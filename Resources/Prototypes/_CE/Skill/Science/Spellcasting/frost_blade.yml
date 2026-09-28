@@ -2,7 +2,7 @@
   id: FrostBlade
   parent: SpellcastingSkillBase
   icon:
-    sprite: _CE/Objects/Weapons/Sword/ice_temporary.rsi
+    sprite: _CE/Objects/Tools/Weapons/Melee/Sword/ice_temporary.rsi
     state: icon
   effect: !type:AddAction
     action: CEActionFrostBlade
@@ -24,7 +24,7 @@
     sound: !type:SoundPathSpecifier
       path: /Audio/Magic/rumble.ogg
   - type: Sprite
-    sprite: _CE/Objects/Weapons/Sword/ice_temporary.rsi
+    sprite: _CE/Objects/Tools/Weapons/Melee/Sword/ice_temporary.rsi
     layers:
     - state: icon
       map: ["enum.ActionVisuals.Icon"]
@@ -93,7 +93,7 @@
     shape:
     - 0, 0, 3, 0
   - type: Sprite
-    sprite: _CE/Objects/Weapons/Sword/ice_temporary.rsi
+    sprite: _CE/Objects/Tools/Weapons/Melee/Sword/ice_temporary.rsi
     layers:
     - state: icon
       shader: unshaded

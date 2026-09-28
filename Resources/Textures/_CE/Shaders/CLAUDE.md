@@ -43,6 +43,20 @@ helper genuinely needs a derivative, test it explicitly (see Testing below) befo
 If a derivative-based effect is only cosmetic (e.g. debug/dev overlays), it's simplest and safest
 to skip `fwidth` entirely and hardcode the fallback width — one less thing that can break per-driver.
 
+## Never rely on implicit int-to-float conversion
+
+Desktop GLSL (`#version 140`, used when not on GLES/compat) implicitly converts `int` literals to
+`float` in arithmetic and initializers, so `highp float x = 1;` or `vec3 * 10` compile fine there.
+GLSL ES (the `#version 100`/`300 es` path this engine uses for GLES/`--cvar display.compat=true`)
+does **not** allow this — it's a compile error, not a warning. Always write float literals as
+float literals: `1.0`, `10.0`, `0.5`, never bare `1`, `10`, `0` in a `float`/`vecN` context. This
+is an easy mistake to introduce (it compiles and runs fine on your desktop dev GPU) and only shows
+up when compat mode or a GLES device actually compiles the shader — test both (see Testing below)
+before assuming a new shader edit is done.
+
+Also don't call `smoothstep(edge0, edge1, x)` with `edge0 == edge1` — the GLSL spec leaves the
+result undefined in that case (some drivers return NaN). Use two genuinely distinct edges.
+
 ## Uniform array budgets
 
 GLES2 only *guarantees* 16 `vec4` (64 scalar components) of fragment uniforms; desktop GL
