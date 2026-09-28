@@ -993,3 +993,29 @@
   id: 1090
   time: '2026-09-28T13:42:43.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/486
+- author: TheShuEd
+  changes:
+  - message: Crossbow & bolts
+    type: Add
+  - message: Bow & arrows
+    type: Add
+  - message: Quiver
+    type: Add
+  - message: Skimitar
+    type: Add
+  - message: Sword
+    type: Add
+  - message: Spear
+    type: Add
+  - message: Wooden Staff
+    type: Add
+  - message: War Axe
+    type: Add
+  - message: Two Handed Sword
+    type: Add
+  - message: You can find upon all these cool things in crates around town, or buy
+      them at the new store.
+    type: Add
+  id: 1091
+  time: '2026-09-28T21:54:08.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/487
