@@ -7,6 +7,7 @@ ce-trade-faction-horticulture = Консорциум садоводов
 ce-trade-faction-home-decor = Уютный дом
 ce-trade-faction-tailors = Гильдия портных 'Шелк и игла'
 ce-trade-faction-empire-guard = Склад имперской стражи
+ce-trade-faction-helsin-war-house = Военный дом Хельсин
 ce-trade-faction-dwarf-mining = Шахтерский филиал 'Дворфийская сталь'
 ce-trade-faction-alcohol = Алгокольная компания 'Алый вереск'
 ce-trade-faction-black-market = Нелегальный черный рынок

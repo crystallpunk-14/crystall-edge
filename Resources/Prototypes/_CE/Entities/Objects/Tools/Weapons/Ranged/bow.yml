@@ -24,6 +24,8 @@
   - type: UseDelay
     delay: 1
   - type: GunRequiresWield
+  - type: StaticPrice
+    price: 100
   - type: Gun
     minAngle: 0
     maxAngle: 5

@@ -262,6 +262,14 @@
     prototype: CETradingPlatformEmpireGuard
 
 - type: entity
+  id: CEMachineCoreTradingPlatformHelsinWarHouse
+  parent: CEMachineCoreTradingBase
+  name: trading platform machine core (Helsin War House)
+  components:
+  - type: MachineBoard
+    prototype: CETradingPlatformHelsinWarHouse
+
+- type: entity
   id: CEMachineCoreTradingPlatformHomeDecor
   parent: CEMachineCoreTradingBase
   name: trading platform machine core (Home Decor)

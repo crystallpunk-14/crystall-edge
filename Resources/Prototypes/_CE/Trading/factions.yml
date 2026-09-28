@@ -33,6 +33,11 @@
   name: ce-trade-faction-empire-guard
 
 - type: tradingFaction
+  id: HelsinWarHouse
+  color: "#8b1a1a"
+  name: ce-trade-faction-helsin-war-house
+
+- type: tradingFaction
   id: ApothecariesGuild
   color: "#749a94"
   name: ce-trade-faction-apothecaries-guild

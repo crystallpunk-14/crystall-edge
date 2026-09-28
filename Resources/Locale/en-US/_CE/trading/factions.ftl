@@ -8,6 +8,7 @@ ce-trade-faction-horticulture = Horticulture Consortium
 ce-trade-faction-home-decor = Cozy home
 ce-trade-faction-tailors = 'Silk & Needle' Tailors Guild
 ce-trade-faction-empire-guard = Imperial Guard Warehouse
+ce-trade-faction-helsin-war-house = Helsin War House
 ce-trade-faction-dwarf-mining = 'Dwarf Steel' mining branch
 ce-trade-faction-alcohol = Alcohol company 'Scarlet Heather'
 ce-trade-faction-black-market = Illegal black market
