@@ -37,6 +37,20 @@
       prob: 0.5
       rolls: !type:RangeNumberSelector
         range: 4, 5
+    # Large weapons (Ginormous/Huge — too big for the small crate's storage)
+    - !type:NestedSelector
+      tableId: CEStationCrateLootLargeWeapons
+      prob: 0.2
+
+- type: entityTable
+  id: CEStationCrateLootLargeWeapons
+  table: !type:GroupSelector
+    children:
+    - id: CEClothingBeltQuiver
+    - id: CEWeaponSpearIron
+    - id: CEWeaponTwoHandedSwordIron
+    - id: CEWeaponWarAxeIron
+    - id: CEWeaponBowCombat
 
 - type: entityTable
   id: CEStationCrateLootTools
@@ -47,16 +61,10 @@
       - !type:GroupSelector
         weight: 0.6
         children:
-        - id: CEClothingBeltQuiver
         - id: CEWeaponDaggerIron
         - id: CEWeaponSkimitarIron
-        - id: CEWeaponSpearIron
         - id: CEWeaponStaffWooden
         - id: CEWeaponSwordIron
-        - id: CEWeaponTwoHandedSwordIron
-        - id: CEWeaponWarAxeIron
-        - id: CEWeaponBowCombat
-          weight: 0.5
         - id: CEWeaponLightCrossbow
           weight: 0.5
       - !type:GroupSelector
