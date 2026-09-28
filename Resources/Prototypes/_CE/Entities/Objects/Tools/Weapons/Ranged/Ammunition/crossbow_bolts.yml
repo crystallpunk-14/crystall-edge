@@ -33,3 +33,7 @@
   - type: PhysicalComposition
     materialComposition:
       CEIron: 2
+  - type: CEMagicEssenceStructure
+    essences:
+      Weapon: { min: 1, max: 2 }
+      Metal: { min: 1, max: 2 }
