@@ -27,7 +27,7 @@
   storage:
     back:
     - CEGuidebookImperialLaws
-    - CEGunJustice
+    - CEWeaponGunJustice
 
 - type: entity
   id: CEWalletFilledGuardCommander
@@ -53,7 +53,7 @@
     containers:
       entity_storage: !type:AllSelector
         children:
-        - id: CEGunPeacekeeperGolden
+        - id: CEWeaponGunPeacekeeperGolden
         - id: CERope
         - id: CERope
         - id: CERope

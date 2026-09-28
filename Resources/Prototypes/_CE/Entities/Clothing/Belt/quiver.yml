@@ -1,0 +1,47 @@
+- type: entity
+  parent: ClothingBeltStorageBase
+  id: CEClothingBeltQuiver
+  name: quiver
+  description: Holds many arrows and crossbow bolts, and fits snug around your waist.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Belt/quiver.rsi
+    layers:
+    - state: icon
+    - map: [ "enum.StorageContainerVisualLayers.Fill" ]
+      visible: false
+  - type: Clothing
+    equipWhileMoving: true
+    equipDelay: 0.45
+    unequipDelay: 0.45
+    quickEquip: false
+    slots:
+    - belt
+  - type: Storage
+    grid:
+    - 0,0,7,3
+    maxItemSize: Small
+    whitelist:
+      tags:
+      - CEArrow
+      - CECrossbowBolt
+  - type: Appearance
+  - type: StorageContainerVisuals
+    maxFillLevels: 3
+    fillBaseName: fill-
+  - type: PhysicalComposition
+    materialComposition:
+      CELeather: 20
+      CECloth: 20
+
+- type: entity
+  parent: CEClothingBeltQuiver
+  id: CEClothingBeltQuiverArrows
+  categories: [ ForkFiltered ]
+  suffix: Filled with arrows
+  components:
+  - type: StorageFill
+    contents:
+    - id: CEArrowIron
+      amount: 16

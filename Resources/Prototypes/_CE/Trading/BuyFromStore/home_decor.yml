@@ -166,7 +166,7 @@
   faction: HomeDecor
   category: Tools
   service: !type:CEBuyItemsService
-    product: CEMop
+    product: CEWeaponMop
 
 - type: tradingPosition
   id: CEd20Dice
