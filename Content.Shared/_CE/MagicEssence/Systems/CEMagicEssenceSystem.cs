@@ -43,39 +43,23 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
         args.CanScan = true;
     }
 
-    /// <summary>
-    /// Shows essence composition on examine while wearing thaumaturgy glasses. Useful for
-    /// inspecting items inside storage UIs, where the cursor can't be hovered over them.
-    /// </summary>
     [SubscribeLocalEvent]
     private void OnExamineAugment(CEExamineAugmentEvent args)
     {
         if (!TryScan(args.Examiner))
             return;
 
+        if (TryComp<CEMagicEssenceHungryNodeComponent>(args.Examined, out var hungryNode) && hungryNode.RequiredEssence.Count > 0)
+        {
+            args.AddMarkup(BuildEssenceExamineMarkup("ce-magic-essence-hungry-node-examine-title", hungryNode.RequiredEssence));
+            return;
+        }
+
         var essenceDict = GetEssence(args.Examined, recursive: false);
         if (essenceDict.Count == 0)
             return;
 
         args.AddMarkup(BuildEssenceExamineMarkup("ce-magic-essence-examine-title", essenceDict));
-    }
-
-    /// <summary>
-    /// Shows the essence still required to satisfy a <see cref="CEMagicEssenceHungryNodeComponent"/>
-    /// on examine while wearing thaumaturgy glasses - same list style as <see cref="OnExamineAugment"/>,
-    /// but sourced from <see cref="CEMagicEssenceHungryNodeComponent.RequiredEssence"/> instead of the
-    /// entity's rolled essence composition.
-    /// </summary>
-    [SubscribeLocalEvent]
-    private void OnHungryNodeExamineAugment(CEExamineAugmentEvent args)
-    {
-        if (!TryComp<CEMagicEssenceHungryNodeComponent>(args.Examined, out var hungryNode) || hungryNode.RequiredEssence.Count == 0)
-            return;
-
-        if (!TryScan(args.Examiner))
-            return;
-
-        args.AddMarkup(BuildEssenceExamineMarkup("ce-magic-essence-hungry-node-examine-title", hungryNode.RequiredEssence));
     }
 
     private bool TryScan(EntityUid examiner)
