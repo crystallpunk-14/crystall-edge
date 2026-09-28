@@ -10,7 +10,7 @@
   id: CEGameRuleMagicEssenceNodes
   components:
   - type: CEMagicEssenceNodeRule
-    nodeCount: 10
+    nodeCount: 5
 
 # variation passes
 - type: entity
