@@ -1,10 +1,13 @@
 using System.Linq;
+using System.Numerics;
 using Robust.Shared.Analyzers;
 using Content.Server._CE.ZLevels.Core;
 using Content.Server.Station.Systems;
 using Content.Shared._CE.MagicEssence.Components;
 using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.MagicEssence.Systems;
+using Content.Shared._CE.Murk;
+using Content.Shared._CE.Murk.Components;
 using Content.Shared._CE.Science;
 using Content.Shared._CE.Science.Components;
 using Content.Shared._CE.TimedDespawn;
@@ -41,6 +44,8 @@ public sealed partial class CEMagicEssenceNodeSystem : EntitySystem
     [Dependency] private StationSystem _stations = default!;
     [Dependency] private CEZLevelsSystem _zLevels = default!;
     [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private CESharedMurkSystem _murk = default!;
     [Dependency] private EntityQuery<PhysicsComponent> _physicsQuery = default!;
 
     /// <summary>
@@ -308,12 +313,26 @@ public sealed partial class CEMagicEssenceNodeSystem : EntitySystem
         if (grids.Count == 0)
             return false;
 
+        var hasSphere = TryFindActiveLucsonSphere(out var sphere, out var sphereIntensity);
+
         _random.Shuffle(grids);
 
         foreach (var grid in grids)
         {
             if (!TryComp<MapGridComponent>(grid, out var gridComp))
                 continue;
+
+            if (hasSphere)
+            {
+                if (!_murk.TryProjectSource(grid, sphere, sphereIntensity, out var radius) || radius <= 0f)
+                    continue;
+
+                var sphereWorldPos = _transform.GetWorldPosition(sphere.Owner);
+                if (TryGetRandomTileOnGrid(grid, gridComp, out coordinates, sphereWorldPos, radius))
+                    return true;
+
+                continue;
+            }
 
             if (TryGetRandomTileOnGrid(grid, gridComp, out coordinates))
                 return true;
@@ -322,7 +341,26 @@ public sealed partial class CEMagicEssenceNodeSystem : EntitySystem
         return false;
     }
 
-    private bool TryGetRandomTileOnGrid(EntityUid grid, MapGridComponent gridComp, out EntityCoordinates coordinates)
+    private bool TryFindActiveLucsonSphere(out Entity<TransformComponent> sphere, out float intensity)
+    {
+        sphere = default;
+        intensity = 0f;
+
+        var query = EntityQueryEnumerator<CEMurkLusconSphereComponent, CEMurkSourceComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out _, out var source, out var xform))
+        {
+            if (!source.Active)
+                continue;
+
+            sphere = (uid, xform);
+            intensity = source.Intensity;
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool TryGetRandomTileOnGrid(EntityUid grid, MapGridComponent gridComp, out EntityCoordinates coordinates, Vector2? sphereWorldPos = null, float sphereRadius = 0f)
     {
         coordinates = default;
 
@@ -330,6 +368,13 @@ public sealed partial class CEMagicEssenceNodeSystem : EntitySystem
         {
             if (!TryPickRandomTile(grid, gridComp, out var tile))
                 return false; // grid has no tiles at all - no point retrying
+
+            if (sphereWorldPos is { } pos)
+            {
+                var tileWorldPos = _mapSystem.GridTileToWorldPos(grid, gridComp, tile);
+                if (Vector2.Distance(pos, tileWorldPos) >= sphereRadius)
+                    continue;
+            }
 
             var valid = true;
             foreach (var ent in _mapSystem.GetAnchoredEntities(grid, gridComp, tile))

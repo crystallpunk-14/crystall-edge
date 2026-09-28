@@ -6,9 +6,6 @@
     sprite:
       sprite: /Textures/_CE/Effects/Weather/rain.rsi
       state: base
-    groundSprite:
-      sprite: /Textures/_CE/Effects/Weather/rain.rsi
-      state: ground
     sound:
       collection: Rain
       params:
@@ -28,9 +25,6 @@
     sprite:
       sprite: /Textures/_CE/Effects/Weather/storm.rsi
       state: base
-    groundSprite:
-      sprite: /Textures/_CE/Effects/Weather/storm.rsi
-      state: ground
     sound:
       path: /Audio/Effects/Weather/rain.ogg
       params:

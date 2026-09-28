@@ -11,12 +11,6 @@
     - CEShockWaveVFX
     - CEInfusionAltarMishapManaConsume
     reward: CEDimensionalShard
-  - type: CERandomizedTimedDespawn
-    minLifetime: 600
-    maxLifetime: 1200
-  - type: CETimedDespawnFadeout
-    fadeInEnd: 0.02
-    fadeOutStart: 0.6
   - type: CEMurkSphereChargingBlocker
   - type: InteractionOutline
   - type: Transform

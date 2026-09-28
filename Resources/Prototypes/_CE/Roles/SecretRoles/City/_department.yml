@@ -1,0 +1,24 @@
+- type: secretDepartment
+  id: CECity
+  name: ce-secret-department-city-name
+  description: ce-secret-department-city-description
+  color: "#87b7ff"
+  weight: 0
+  roles:
+  - CECivilian
+  - CEThief
+  - CEMurkwalker
+  - CELover
+  objectives: !type:EntSelector
+    id: CEObjectiveCityRestoreLucsonSphere
+
+- type: entity
+  id: CEObjectiveCityRestoreLucsonSphere
+  name: Restore the Lucson sphere
+  description: Keep the light monolith and its 6 pylons charging by resolving every problem that comes up.
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/LucsonSphere/core.rsi
+    state: full
+  - type: CEObjective
+  - type: CEObjectiveLucsonSphereRestoreCondition
