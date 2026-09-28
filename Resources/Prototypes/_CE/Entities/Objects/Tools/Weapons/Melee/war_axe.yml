@@ -1,0 +1,72 @@
+- type: entity
+  abstract: true
+  id: CEBaseWeaponWarAxe
+  parent:
+  - BaseItem
+  - CEBaseWeaponChemical
+  components:
+  - type: Item
+    size: Ginormous
+  - type: CEWeapon
+    range: 0.84
+    effectSlots:
+      OnHit:
+      - !type:Damage
+        damage:
+          types:
+            Slash: 18
+      OnHeavyHit:
+      - !type:Damage
+        damage:
+          types:
+            Slash: 24
+    animations:
+      Primary:
+      - anim: WarAxeAttackLight
+        speed: 0.6
+      - anim: WarAxeAttackLight2
+        speed: 0.6
+      Secondary:
+      - anim: WarAxeAttackHeavy1
+        speed: 0.6
+      - anim: WarAxeAttackHeavy2
+        speed: 0.6
+  - type: CEWieldedWeapon
+    animations:
+      Primary:
+      - anim: WarAxeAttackLight
+      - anim: WarAxeAttackLight2
+      Secondary:
+      - anim: WarAxeAttackHeavy1
+      - anim: WarAxeAttackHeavy2
+  - type: CEWeaponStaminaCost
+    costs:
+      Primary: 10
+      Secondary: 10
+  - type: CERotationForAnimation
+    rotation: -90
+  - type: Wieldable
+  - type: Clothing
+    slots:
+    - neck
+    equipWhileMoving: true
+    equipDelay: 1
+    unequipDelay: 1
+  - type: CEMagicEssenceStructure
+    essences:
+      Weapon: { min: 1, max: 3 }
+      Metal: { min: 1, max: 4 }
+
+- type: entity
+  parent: CEBaseWeaponWarAxe
+  id: CEWeaponWarAxeIron
+  name: iron war axe
+  description: A large and heavy iron war axe. Heavy means reliable.
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Tools/Weapons/Melee/WarAxe/iron.rsi
+    state: icon
+  - type: PhysicalComposition
+    materialComposition:
+      CEWood: 10
+      CEIron: 25
