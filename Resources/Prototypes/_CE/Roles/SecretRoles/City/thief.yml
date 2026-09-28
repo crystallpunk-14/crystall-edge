@@ -19,4 +19,4 @@
     state: coin10
   - type: CEObjective
   - type: CEObjectiveBlackMarketSpendCondition
-    targetGoldSteal: 20
+    targetGoldSteal: 10
