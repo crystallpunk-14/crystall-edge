@@ -20,6 +20,8 @@
         core2: ""
         core3: ""
         core4: ""
+  - type: StaticPrice
+    price: 50
   - type: CEMagicEssenceStructure
     essences:
       Void: { min: 4, max: 6 }
