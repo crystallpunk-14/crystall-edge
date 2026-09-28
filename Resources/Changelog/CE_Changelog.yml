@@ -966,3 +966,30 @@
   id: 1089
   time: '2026-09-27T18:40:39.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/485
+- author: TheShuEd
+  changes:
+  - message: Dimensional shards that appear from hungry nodes can now be sold for
+      5 silver coins.
+    type: Add
+  - message: The second layer of the weather visualizer - showing raindrops on the
+      ground - has been removed for performance reasons.
+    type: Remove
+  - message: Fixed a bug that caused all magic nodes to have the same lifespan and
+      explode simultaneously, putting a heavy load on the server.
+    type: Fix
+  - message: We will reduce the amount of essence inside the magic node by half to
+      reduce the load on the server.
+    type: Tweak
+  - message: Hungry nodes no longer disappear over time.
+    type: Tweak
+  - message: Magic nodes will no longer spawn in the Murk.
+    type: Tweak
+  - message: The number of gold coins required to complete the thief's objective has
+      been reduced from 20 to 10 gold coins.
+    type: Tweak
+  - message: You can now inspect hungry nodes to see a hint on what to do with them
+      and view the names of the required essences.
+    type: Tweak
+  id: 1090
+  time: '2026-09-28T13:42:43.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/486
