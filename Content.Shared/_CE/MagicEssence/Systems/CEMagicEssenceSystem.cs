@@ -50,21 +50,49 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnExamineAugment(CEExamineAugmentEvent args)
     {
-        var scanEvent = new CEMagicEssenceScanEvent();
-        RaiseLocalEvent(args.Examiner, scanEvent);
-
-        if (!scanEvent.CanScan)
+        if (!TryScan(args.Examiner))
             return;
 
         var essenceDict = GetEssence(args.Examined, recursive: false);
         if (essenceDict.Count == 0)
             return;
 
+        args.AddMarkup(BuildEssenceExamineMarkup("ce-magic-essence-examine-title", essenceDict));
+    }
+
+    /// <summary>
+    /// Shows the essence still required to satisfy a <see cref="CEMagicEssenceHungryNodeComponent"/>
+    /// on examine while wearing thaumaturgy glasses - same list style as <see cref="OnExamineAugment"/>,
+    /// but sourced from <see cref="CEMagicEssenceHungryNodeComponent.RequiredEssence"/> instead of the
+    /// entity's rolled essence composition.
+    /// </summary>
+    [SubscribeLocalEvent]
+    private void OnHungryNodeExamineAugment(CEExamineAugmentEvent args)
+    {
+        if (!TryComp<CEMagicEssenceHungryNodeComponent>(args.Examined, out var hungryNode) || hungryNode.RequiredEssence.Count == 0)
+            return;
+
+        if (!TryScan(args.Examiner))
+            return;
+
+        args.AddMarkup(BuildEssenceExamineMarkup("ce-magic-essence-hungry-node-examine-title", hungryNode.RequiredEssence));
+    }
+
+    private bool TryScan(EntityUid examiner)
+    {
+        var scanEvent = new CEMagicEssenceScanEvent();
+        RaiseLocalEvent(examiner, scanEvent);
+
+        return scanEvent.CanScan;
+    }
+
+    private string BuildEssenceExamineMarkup(LocId titleLocId, IEnumerable<KeyValuePair<ProtoId<CEMagicEssenceTypePrototype>, int>> essences)
+    {
         var sb = new StringBuilder();
-        sb.Append(Loc.GetString("ce-magic-essence-examine-title"));
+        sb.Append(Loc.GetString(titleLocId));
         sb.Append('\n');
 
-        foreach (var (type, amount) in essenceDict
+        foreach (var (type, amount) in essences
             .OrderByDescending(kv => kv.Value)
             .ThenBy(kv => kv.Key.Id))
         {
@@ -74,7 +102,7 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
             sb.Append($"[color={essenceProto.Color.ToHex()}]{essenceProto.Name}[/color]: x{amount}\n");
         }
 
-        args.AddMarkup(sb.ToString().TrimEnd());
+        return sb.ToString().TrimEnd();
     }
 
     [SubscribeLocalEvent]
