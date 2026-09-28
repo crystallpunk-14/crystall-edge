@@ -44,7 +44,25 @@
     children:
     - !type:GroupSelector
       children:
-      - id: CEWeaponDaggerIron
+      - !type:GroupSelector
+        weight: 0.6
+        children:
+        - id: CEClothingBeltQuiver
+        - id: CEWeaponDaggerIron
+        - id: CEWeaponSkimitarIron
+        - id: CEWeaponSpearIron
+        - id: CEWeaponStaffWooden
+        - id: CEWeaponSwordIron
+        - id: CEWeaponTwoHandedSwordIron
+        - id: CEWeaponWarAxeIron
+        - id: CEWeaponBowCombat
+          weight: 0.5
+        - id: CEWeaponLightCrossbow
+          weight: 0.5
+      - !type:GroupSelector
+        children:
+        - id: CEArrowIron
+        - id: CECrossboltIron
       - !type:GroupSelector
         weight: 2
         children:

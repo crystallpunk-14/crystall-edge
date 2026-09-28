@@ -39,9 +39,20 @@
   parent: CEClothingBeltQuiver
   id: CEClothingBeltQuiverArrows
   categories: [ ForkFiltered ]
-  suffix: Filled with arrows
+  suffix: Filled, Arrows
   components:
   - type: StorageFill
     contents:
     - id: CEArrowIron
+      amount: 16
+
+- type: entity
+  parent: CEClothingBeltQuiver
+  id: CEClothingBeltQuiverBolts
+  categories: [ ForkFiltered ]
+  suffix: Filled, Crossbow bolts
+  components:
+  - type: StorageFill
+    contents:
+    - id: CECrossboltIron
       amount: 16

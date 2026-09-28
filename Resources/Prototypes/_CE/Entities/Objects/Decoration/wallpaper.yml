@@ -8,6 +8,7 @@
   components:
   - type: Item
     size: Small
+    storedRotation: -65
   - type: Stack
     count: 10
   - type: Sprite

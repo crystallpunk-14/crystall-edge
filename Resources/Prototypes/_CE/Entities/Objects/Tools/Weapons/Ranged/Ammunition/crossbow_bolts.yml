@@ -17,7 +17,7 @@
 - type: entity
   parent: CEBaseCrossbolt
   id: CECrossboltIron
-  name: iron crossbow bolt
+  name: crossbow bolt
   description: Rod with a pointed spike in iron. No plumage, they're not bows.
   components:
   - type: Sprite
@@ -29,7 +29,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 20
+        Piercing: 15
   - type: PhysicalComposition
     materialComposition:
       CEIron: 2
