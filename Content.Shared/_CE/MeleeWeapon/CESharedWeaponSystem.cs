@@ -10,6 +10,7 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory.VirtualItem;
+using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Stealth;
 using Content.Shared.Stealth.Components;
 using Content.Shared.Wieldable.Components;
@@ -46,6 +47,24 @@ public abstract partial class CESharedWeaponSystem : EntitySystem
             return;
 
         if (!wielded.Wielded)
+            return;
+
+        if (!ent.Comp.Animations.TryGetValue(args.UseType, out var animations))
+            return;
+
+        args.Animations = animations;
+        args.Handled = true;
+    }
+
+    /// <summary>
+    /// Overrides attack animations while the weapon's <see cref="ItemToggleComponent"/> is activated.
+    /// Deliberately ignores <see cref="CEGetWeaponAnimationsEvent.Handled"/> (and doesn't set it early-return
+    /// friendly) so it always wins over <see cref="OnGetWeaponAnimation"/> regardless of subscription order.
+    /// </summary>
+    [SubscribeLocalEvent]
+    private void OnGetToggledWeaponAnimation(Entity<CEToggledWeaponAnimationComponent> ent, ref CEGetWeaponAnimationsEvent args)
+    {
+        if (!TryComp<ItemToggleComponent>(ent, out var toggle) || !toggle.Activated)
             return;
 
         if (!ent.Comp.Animations.TryGetValue(args.UseType, out var animations))

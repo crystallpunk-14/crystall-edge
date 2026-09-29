@@ -1,5 +1,7 @@
 ce-lover-assist-objective-title = Help {$targetName}, {CAPITALIZE($job)} complete their objectives
 ce-lover-survive-objective-title = Ensure {$targetName}, {CAPITALIZE($job)} stays alive
+ce-tormentor-spite-objective-title = Make {$targetName}, {CAPITALIZE($job)} fail their objectives
+ce-tormentor-survive-objective-title = Ensure {$targetName}, {CAPITALIZE($job)} stays alive
 ce-nightmare-hunt-objective-title = Kill {$targetName}, {CAPITALIZE($job)}
 
 ce-objective-summary-fmt = {$name}: {$success ->

@@ -1,0 +1,57 @@
+- type: skill
+  id: CEMilitaryTraining
+  icon:
+    sprite: _CE/Skills/Guard/military_training.rsi
+    state: icon
+  effect: !type:AddAction
+    action: ActionCEMilitaryTraining
+
+- type: entity
+  id: ActionCEMilitaryTraining
+  name: Military training
+  description: Rigorous drilling has taught your body to push past exhaustion. Catch your second wind and instantly restore your stamina.
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 300
+  - type: Sprite
+    sprite: _CE/Skills/Guard/military_training.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:CEInstantActionAnimationEvent
+      animation: AnimationCEMilitaryTraining
+
+- type: entityEffectAnimation
+  id: AnimationCEMilitaryTraining
+  duration: 0.5
+  lockRotation: false
+  events:
+    0:
+    - !type:SpawnEntity
+      effectTarget: User
+      spawns:
+      - CEEffectMilitaryTraining
+    - !type:PlaySound
+      sound:
+        path: /Audio/_CE/Effects/heartbeat.ogg
+    - !type:StaminaRestore
+      effectTarget: User
+      amount: 100
+
+- type: entity
+  id: CEEffectMilitaryTraining
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _CE/Effects/amplification.rsi
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - state: effect
+  - type: TimedDespawn
+    lifetime: 2.5
+  - type: Tag
+    tags:
+      - HideContextMenu

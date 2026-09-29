@@ -11,11 +11,6 @@
   name: ce-lock-shape-guard-staff
 
 - type: lockType
-  id: GuardArmory
-  complexity: 7
-  name: ce-lock-shape-guard-armory
-
-- type: lockType
   id: GuardHeadRoom
   complexity: 5
   name: ce-lock-shape-guard-head-room

@@ -30,26 +30,6 @@
 
 - type: entity
   parent: CEIronDoor
-  id: CEIronDoorGuardArmory
-  suffix: Guard Armory
-  components:
-  - type: CELock
-    autoGenerateShape: GuardArmory
-  - type: Lock
-    locked: true
-
-- type: entity
-  parent: CEIronDoorMirrored
-  id: CEIronDoorGuardArmoryMirrored
-  suffix: Guard Armory, Mirrored
-  components:
-  - type: CELock
-    autoGenerateShape: GuardArmory
-  - type: Lock
-    locked: true
-
-- type: entity
-  parent: CEIronDoor
   id: CEIronDoorGuardHeadRoom
   suffix: Guard Head Room
   components:
