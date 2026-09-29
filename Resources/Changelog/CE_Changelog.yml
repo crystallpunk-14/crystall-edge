@@ -1038,3 +1038,21 @@
   id: 1092
   time: '2026-09-29T11:02:53.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/488
+- author: TheShuEd
+  changes:
+  - message: Werewolfes now have new skill "Time sense"
+    type: Add
+  - message: A large clock displaying the time has been added
+    type: Add
+  - message: "Healing items now have the \u201Csano\u201D aspect rather than the \u201C\
+      victus\u201D"
+    type: Tweak
+  - message: The number of pylons required to power the city has been reduced from
+      6 to 4, and they have been moved inside the city rather than outside in the
+      darkness. The excess areas around the city have been removed back.
+    type: Tweak
+  - message: Fixed a bug where climbing over fences would work only intermittently.
+    type: Fix
+  id: 1093
+  time: '2026-09-29T21:42:07.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/491
