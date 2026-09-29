@@ -1,0 +1,44 @@
+- type: secretRole
+  id: CETormentor
+  name: ce-secret-role-name-tormentor
+  description: ce-secret-role-description-tormentor
+  icon: CESecretRoleIconTormentor
+  objectives: !type:AllSelector
+    children:
+    - id: CEObjectiveTormentorSpite
+    - id: CEObjectiveTormentorSurvive
+
+- type: entity
+  id: CEObjectiveTormentorSpite
+  name: Ruin your target
+  description: Do whatever it takes to make the person you secretly despise fail every one of their personal objectives.
+  components:
+  - type: Sprite
+    sprite: _CE/Actions/misc.rsi
+    state: todo
+  - type: CEObjective
+  - type: CETargetObjective
+    title: ce-tormentor-spite-objective-title
+  - type: CETargetPlayersObjective
+  - type: CETargetCompleteOwnedObjective
+    invert: true
+    objectiveBlacklist:
+      components: # avoid an infinite loop if this ever targets another tormentor
+      - CETargetCompleteOwnedObjective
+
+- type: entity
+  id: CEObjectiveTormentorSurvive
+  name: Keep your target alive
+  description: Your target must live under the burden of knowing its own insignificance.
+  components:
+  - type: Sprite
+    sprite: _CE/Actions/misc.rsi
+    state: todo
+  - type: CEObjective
+  - type: CETargetObjective
+    title: ce-tormentor-survive-objective-title
+  - type: CEShareTargetObjective
+    objectiveWhitelist:
+      components:
+      - CETargetCompleteOwnedObjective
+  - type: CETargetSurviveCondition
