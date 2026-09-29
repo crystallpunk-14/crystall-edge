@@ -1019,3 +1019,22 @@
   id: 1091
   time: '2026-09-28T21:54:08.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/487
+- author: TheShuEd
+  changes:
+  - message: "A new secret role, \u201CTormentor,\u201D has been added."
+    type: Add
+  - message: "All guards have gained the innate skill \u201CMilitary Training,\u201D\
+      \ which allows them to fully restore their stamina once every 5 minutes."
+    type: Add
+  - message: Added a bola for the guard.
+    type: Add
+  - message: The Guard's Mace is working again, and it has been significantly redesigned.
+      When activated, it fires energy orbs that deal heavy damage to stamina.
+    type: Fix
+  - message: The separate key and room for the armory guard have been removed; it
+      is now located in the main hallway. The entrance to the armory via the roof
+      is secured.
+    type: Tweak
+  id: 1092
+  time: '2026-09-29T11:02:53.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/488
