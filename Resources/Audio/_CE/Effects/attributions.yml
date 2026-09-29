@@ -162,3 +162,8 @@
   license: "CC-BY-NC-4.0"
   copyright: 'Created by Mrthenoronha on Freesound.org'
   source: "https://freesound.org/people/Mrthenoronha/sounds/371922/"
+
+- files: ["heartbeat.ogg"]
+  license: "CC0-1.0"
+  copyright: 'Created by MickBoere on Freesound.org'
+  source: "https://freesound.org/people/MickBoere/sounds/276578/"

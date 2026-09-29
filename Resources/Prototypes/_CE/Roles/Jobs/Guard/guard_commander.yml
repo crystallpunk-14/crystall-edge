@@ -18,6 +18,9 @@
       components:
       - type: CESalaryCounter
         salary: 200
+    - !type:CELearnSkillsSpecial
+      skills:
+      - CEMilitaryTraining
 
 - type: startingGear
   id: CEGuardCommanderGear
