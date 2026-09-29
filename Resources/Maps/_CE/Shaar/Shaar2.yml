@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.0
   forkId: ""
   forkVersion: ""
-  time: 09/29/2026 18:58:41
-  entityCount: 602
+  time: 09/29/2026 21:09:17
+  entityCount: 603
 maps:
 - 1
 grids:
@@ -434,6 +434,13 @@ entities:
     - type: Transform
       parent: 1
       pos: -37.5,-10.5
+- proto: CEClockBig
+  entities:
+  - uid: 504
+    components:
+    - type: Transform
+      parent: 1
+      pos: -37.5,-12.5
 - proto: CECrystalGrowths
   entities:
   - uid: 262

@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.0
   forkId: ""
   forkVersion: ""
-  time: 09/29/2026 18:58:41
-  entityCount: 1666
+  time: 09/29/2026 21:09:16
+  entityCount: 1667
 maps:
 - 1
 grids:
@@ -1167,6 +1167,13 @@ entities:
     - type: Transform
       parent: 1
       pos: -4.5,4.5
+- proto: CEClockBig
+  entities:
+  - uid: 109
+    components:
+    - type: Transform
+      parent: 1
+      pos: -6.5,0.5
 - proto: CEClothingCloakBlacksmithApron
   entities:
   - uid: 1144

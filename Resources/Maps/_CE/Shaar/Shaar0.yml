@@ -4,7 +4,7 @@ meta:
   engineVersion: 289.0.0
   forkId: ""
   forkVersion: ""
-  time: 09/29/2026 18:58:38
+  time: 09/29/2026 21:09:15
   entityCount: 2229
 maps:
 - 1
@@ -1510,11 +1510,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -7.5,-12.5
-  - uid: 3465
-    components:
-    - type: Transform
-      parent: 1
-      pos: -11.5,-16.5
   - uid: 3466
     components:
     - type: Transform
@@ -2952,6 +2947,19 @@ entities:
           ent: null
           showEnts: False
           occludes: True
+- proto: CEClockBig
+  entities:
+  - uid: 987
+    components:
+    - type: Transform
+      parent: 1
+      pos: -15.5,-17.5
+  - uid: 1833
+    components:
+    - type: Transform
+      parent: 1
+      rot: 3.141592653589793 rad
+      pos: -0.5,-20.5
 - proto: CEClosedSign
   entities:
   - uid: 96
@@ -9341,13 +9349,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 0.5,-20.5
-- proto: CETargetStake
-  entities:
-  - uid: 987
-    components:
-    - type: Transform
-      parent: 1
-      pos: -0.5,-20.5
 - proto: CEThinWindowDoorIron
   entities:
   - uid: 69

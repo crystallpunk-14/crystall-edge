@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.0
   forkId: ""
   forkVersion: ""
-  time: 09/29/2026 18:58:39
-  entityCount: 1977
+  time: 09/29/2026 21:09:16
+  entityCount: 1979
 maps:
 - 1
 grids:
@@ -490,11 +490,6 @@ entities:
       pos: -20.545252,9.773753
 - proto: CEBenchWood
   entities:
-  - uid: 430
-    components:
-    - type: Transform
-      parent: 1
-      pos: -14.5,12.5
   - uid: 432
     components:
     - type: Transform
@@ -1656,6 +1651,13 @@ entities:
     - type: Transform
       parent: 1
       pos: -25.5,10.5
+- proto: CEClockBig
+  entities:
+  - uid: 1841
+    components:
+    - type: Transform
+      parent: 1
+      pos: -19.5,13.5
 - proto: CEClothingBackPortableLighthouse
   entities:
   - uid: 3314
@@ -4020,6 +4022,11 @@ entities:
       pos: -11.5,0.5
 - proto: CEMurkSphereFixerProjector
   entities:
+  - uid: 430
+    components:
+    - type: Transform
+      parent: 1
+      pos: -14.5,12.5
   - uid: 1600
     components:
     - type: Transform
@@ -6327,6 +6334,13 @@ entities:
     - type: Transform
       parent: 1
       pos: -0.5,2.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1840
+    components:
+    - type: Transform
+      parent: 1
+      pos: -14.5,12.5
     - type: Fixtures
       fixtures: {}
   - uid: 3316
