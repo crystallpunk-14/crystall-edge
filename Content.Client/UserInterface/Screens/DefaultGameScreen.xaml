@@ -33,6 +33,7 @@
     <alerts:AlertsUI Name="Alerts" Access="Protected" />
     <vitals:CEHealthUI Name="HealthBar" Access="Public" />
     <vitals:CEManaUI Name="ManaBar" Access="Public" />
+    <vitals:CEClockUI Name="Clock" Access="Public" /> <!-- CrystallEdge: time sense clock -->
     <vitals:CEStaminaUI Name="StaminaBar" Access="Public" />
     <vitals:CERoundProgressUI Name="RoundProgressBar" Access="Public" /> <!-- CrystallEdge: round progress bar -->
     <actions:ActionsBar Name="Actions" Access="Protected" />

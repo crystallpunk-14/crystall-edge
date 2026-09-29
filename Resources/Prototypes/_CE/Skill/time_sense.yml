@@ -1,0 +1,10 @@
+- type: skill
+  id: TimeSense
+  name: ce-skill-time-sense-name
+  desc: ce-skill-time-sense-desc
+  icon:
+    sprite: _CE/Interface/Vitals/clock.rsi
+    state: base
+  effect: !type:AddComponents
+    components:
+    - type: CETimeSense

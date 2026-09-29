@@ -1,0 +1,5 @@
+<widgets:CEClockUI xmlns="https://spacestation14.io"
+                   xmlns:widgets="clr-namespace:Content.Client._CE.UserInterface.Systems.Vitals.Widgets"
+                   HorizontalExpand="False"
+                   VerticalExpand="False"
+                   Visible="False" />

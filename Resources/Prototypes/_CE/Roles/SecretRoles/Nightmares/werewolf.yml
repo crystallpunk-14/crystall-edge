@@ -6,6 +6,7 @@
   icon: CESecretRoleIconWerewolf
   skills:
   - Murkwalker
+  - TimeSense
   - CEWerewolfTransformation
   objectives: !type:EntSelector
     id: CEObjectiveNightmareHunt
