@@ -80,6 +80,7 @@
     - Murkwalker
     - LurkerShadowStep
     - LurkerFear
+    - TimeSense
     descriptorName: ce-secret-role-name-werewolf
     descriptorColor: "#922525"
   - type: Puller

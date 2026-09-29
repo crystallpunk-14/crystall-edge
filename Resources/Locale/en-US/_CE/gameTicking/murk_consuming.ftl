@@ -26,9 +26,6 @@ ce-murk-sphere-charging-blocker-desc = An aura of murk is blocking the Light Mon
 ce-murk-pylon-block-unpowered-title = Pylon unpowered
 ce-murk-pylon-block-unpowered-desc = This pylon has no power.
 
-ce-murk-pylon-block-outside-murk-title = Pylon outside the murk
-ce-murk-pylon-block-outside-murk-desc = This pylon is no longer shrouded in murk.
-
 ce-murk-pylon-block-too-close-title = Pylons too close together
 ce-murk-pylon-block-too-close-desc = Another powered pylon is too close to this one.
 

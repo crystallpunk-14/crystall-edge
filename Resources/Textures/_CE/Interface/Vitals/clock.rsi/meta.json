@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "license": "All rights reserved",
+  "copyright": "by TheShuEd for CrystallEdge",
+  "size": {
+    "x": 24,
+    "y": 24
+  },
+  "states": [
+    {
+      "name": "base"
+    },
+    {
+      "name": "arrow"
+    }
+  ]
+}

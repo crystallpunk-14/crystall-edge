@@ -42,6 +42,11 @@ public sealed partial class CEMinimalismGameScreen : InGameScreen
         SetAnchorAndMarginPreset(ManaBar, LayoutPreset.CenterBottom);
         SetMarginLeft(ManaBar, manaOffset);
 
+        // Time sense clock: right of the mana sphere, bottom-aligned with it
+        SetAnchorAndMarginPreset(Clock, LayoutPreset.CenterBottom);
+        SetMarginLeft(Clock, manaOffset + ManaBar.MinSize.X + 4f);
+        SetMarginTop(Clock, -Clock.MinSize.Y);
+
         SetAnchorAndMarginPreset(StaminaBar, LayoutPreset.CenterBottom, margin: 80);
         SetMarginLeft(StaminaBar, -StaminaBar.MinSize.X / 2f);
         SetMarginRight(StaminaBar, StaminaBar.MinSize.X / 2f);
