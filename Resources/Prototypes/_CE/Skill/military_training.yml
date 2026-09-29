@@ -12,6 +12,7 @@
   description: Rigorous drilling has taught your body to push past exhaustion. Catch your second wind and instantly restore your stamina.
   components:
   - type: Action
+    itemIconStyle: BigAction
     useDelay: 300
   - type: Sprite
     sprite: _CE/Skills/Guard/military_training.rsi
