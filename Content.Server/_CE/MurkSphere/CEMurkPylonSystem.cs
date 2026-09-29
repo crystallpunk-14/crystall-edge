@@ -104,12 +104,6 @@ public sealed partial class CEMurkPylonSystem : EntitySystem
                     Loc.GetString("ce-murk-pylon-block-unpowered-desc"),
                     pylonXform.Coordinates);
             }
-            else if (!inMurk)
-            {
-                args.Block(Loc.GetString("ce-murk-pylon-block-outside-murk-title"),
-                    Loc.GetString("ce-murk-pylon-block-outside-murk-desc"),
-                    pylonXform.Coordinates);
-            }
             else
             {
                 args.Block(Loc.GetString("ce-murk-pylon-block-too-close-title"),

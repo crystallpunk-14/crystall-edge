@@ -41,5 +41,5 @@ public sealed partial class CEMurkSphereFixerComponent : Component
     /// far enough from every other powered pylon for the monolith to charge.
     /// </summary>
     [DataField]
-    public int PylonsRequired = 6;
+    public int PylonsRequired = 4;
 }
