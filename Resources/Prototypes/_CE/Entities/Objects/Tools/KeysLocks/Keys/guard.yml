@@ -24,16 +24,6 @@
 
 - type: entity
   parent: CEKeyGuardBase
-  id: CEKeyGuardArmory
-  suffix: Guard Armory
-  components:
-  - type: Sprite
-    state: key_guard_commander
-  - type: CEKey
-    autoGenerateShape: GuardArmory
-
-- type: entity
-  parent: CEKeyGuardBase
   id: CEKeyGuardHeadRoom
   suffix: Guard Head Room
   components:

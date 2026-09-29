@@ -92,7 +92,6 @@
   components:
   - type: StorageFill
     contents:
-    - id: CEKeyGuardArmory
     - id: CEKeyGuardHeadRoom
     - id: CEKeyGuardHall
     - id: CEKeyGuardStaff

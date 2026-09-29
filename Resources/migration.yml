@@ -87,6 +87,10 @@ CEFloraTreeSpruceSmall: CEFloraTreeSpruce
 CEFloraTreeSpruceMedium: CEFloraTreeSpruce
 CEFloraTreeSpruceLarge: CEFloraTreeSpruce
 
+CEIronDoorGuardArmory: null
+CEIronDoorGuardArmoryMirrored: null
+CEKeyGuardArmory: null
+
 # CrystallEdge migration zone end
 
 

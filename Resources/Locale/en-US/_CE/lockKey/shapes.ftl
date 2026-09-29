@@ -19,7 +19,6 @@ ce-lock-shape-tavern-dorm-10 = tavern room 10
 
 ce-lock-shape-guard-hall = guard campus entrance hall
 ce-lock-shape-guard-staff = guard campus internal areas
-ce-lock-shape-guard-armory = guard armory
 ce-lock-shape-guard-head-room = guard commander office
 
 ce-lock-shape-guard-cage-1 = prison cage 1

@@ -19,7 +19,6 @@ ce-lock-shape-tavern-dorm-10 = комната таверны 10
 
 ce-lock-shape-guard-hall = прихожая кампуса стражи
 ce-lock-shape-guard-staff = внутренние помещения кампуса стражи
-ce-lock-shape-guard-armory = оружейная стражи
 ce-lock-shape-guard-head-room = кабинет командира стражи
 
 ce-lock-shape-guard-cage-1 = тюремная клетка 1
