@@ -99,8 +99,8 @@
       Secondary:
       - anim: CEGuardMaceChargedShot
   - type: Battery
-    startingCharge: 50
-    maxCharge: 50
+    startingCharge: 100
+    maxCharge: 100
   - type: ItemToggle
     onActivate: false
     onUse: false

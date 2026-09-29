@@ -98,6 +98,14 @@
     count: 1
 
 - type: tradingPosition
+  id: CEGuardBola
+  faction: EmpireGuard
+  category: Tools
+  service: !type:CEBuyItemsService
+    product: CEGuardBola
+    count: 1
+
+- type: tradingPosition
   id: CEGunJustice
   faction: EmpireGuard
   service: !type:CEBuyItemsService
