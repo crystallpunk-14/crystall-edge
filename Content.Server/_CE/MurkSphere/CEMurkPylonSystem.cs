@@ -1,6 +1,5 @@
 using Content.Server._CE.MurkSphere.Components;
 using Content.Server.Power.EntitySystems;
-using Content.Shared._CE.Murk;
 using Content.Shared._CE.Murk.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Power;
@@ -9,8 +8,8 @@ using Robust.Shared.Map;
 namespace Content.Server._CE.MurkSphere;
 
 /// <summary>
-/// Each pylon checks its own conditions independently - powered, in the murk, and far enough from
-/// every other powered pylon (see <see cref="PylonsMinRadius"/>). Extra broken pylons beyond
+/// Each pylon checks its own conditions independently - powered, and far enough from every other
+/// powered pylon (see <see cref="PylonsMinRadius"/>). Extra broken pylons beyond
 /// <see cref="CEMurkSphereFixerComponent.PylonsRequired"/> don't matter as long as enough others
 /// pass.
 /// </summary>
@@ -23,7 +22,6 @@ public sealed partial class CEMurkPylonSystem : EntitySystem
     public const float PylonsMinRadius = 15f;
 
     [Dependency] private CEMurkSphereFixerSystem _sphereFixer = default!;
-    [Dependency] private CESharedMurkSystem _murk = default!;
     [Dependency] private CESharedZLevelsSystem _zLevels = default!;
     [Dependency] private PowerReceiverSystem _power = default!;
 
@@ -76,9 +74,9 @@ public sealed partial class CEMurkPylonSystem : EntitySystem
         }
 
         var validCount = 0;
-        foreach (var (pylonUid, pylonXform) in pylons)
+        foreach (var (pylonUid, _) in pylons)
         {
-            if (IsValidPylon(pylonUid, pylonXform, pylons))
+            if (IsValidPylon(pylonUid, pylons))
                 validCount++;
         }
 
@@ -90,13 +88,12 @@ public sealed partial class CEMurkPylonSystem : EntitySystem
 
         foreach (var (pylonUid, pylonXform) in pylons)
         {
-            if (IsValidPylon(pylonUid, pylonXform, pylons))
+            if (IsValidPylon(pylonUid, pylons))
                 continue;
 
             problemPylons.Add(pylonXform.Coordinates);
 
             var powered = _power.IsPowered(pylonUid);
-            var inMurk = _murk.InMurk(pylonUid, pylonXform);
 
             if (!powered)
             {
@@ -117,12 +114,11 @@ public sealed partial class CEMurkPylonSystem : EntitySystem
             problemPylons);
     }
 
-    private bool IsValidPylon(EntityUid pylonUid, TransformComponent pylonXform, List<(EntityUid Uid, TransformComponent Xform)> pylons)
+    private bool IsValidPylon(EntityUid pylonUid, List<(EntityUid Uid, TransformComponent Xform)> pylons)
     {
         var powered = _power.IsPowered(pylonUid);
-        var inMurk = _murk.InMurk(pylonUid, pylonXform);
         var tooClose = powered && IsTooClose(pylonUid, pylons, requirePowered: true);
-        return powered && inMurk && !tooClose;
+        return powered && !tooClose;
     }
 
     // Any other pylon (only powered ones, if requirePowered) within PylonsMinRadius.
@@ -140,7 +136,7 @@ public sealed partial class CEMurkPylonSystem : EntitySystem
         return false;
     }
 
-    // Every pylon and whether it's too close to another, ignoring power/murk state - for showmurkdebug.
+    // Every pylon and whether it's too close to another, ignoring power state - for showmurkdebug.
     public List<(EntityUid Uid, TransformComponent Xform, bool TooClose)> GetPylonDebugInfo()
     {
         var pylons = new List<(EntityUid Uid, TransformComponent Xform)>();
