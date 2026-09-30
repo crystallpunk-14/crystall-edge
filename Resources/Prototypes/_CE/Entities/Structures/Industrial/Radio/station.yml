@@ -1,0 +1,38 @@
+- type: entity
+  parent: CEBaseMachinePowered
+  id: CERadioStation
+  name: radio booth
+  description: A broadcasting console. When switched on, everything said next to it is repeated by loudspeakers on its frequencies.
+  categories: [ ForkFiltered ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    snapCardinals: true
+    sprite: _CE/Structures/Industrial/radio_station.rsi
+    drawdepth: Mobs
+    layers:
+    - state: base
+    - state: recording
+      shader: unshaded
+      map: ["enum.RadioDeviceVisualLayers.Broadcasting"]
+      visible: false
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.RadioDeviceVisuals.Broadcasting:
+        enum.RadioDeviceVisualLayers.Broadcasting:
+          True: { visible: true }
+          False: { visible: false }
+  - type: Damageable
+    damageModifierSet: StructuralMetallicStrong
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: ApcPowerReceiver
+    powerLoad: 0.2
+  - type: CERadioMicrophone
+    frequencies:
+    - CECommon
+    radius: 300
+  - type: StaticPrice
+    price: 100

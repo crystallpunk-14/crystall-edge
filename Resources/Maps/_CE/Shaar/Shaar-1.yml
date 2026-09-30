@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.0
   forkId: ""
   forkVersion: ""
-  time: 09/29/2026 21:09:16
-  entityCount: 2372
+  time: 09/30/2026 19:20:08
+  entityCount: 2376
 maps:
 - 1
 grids:
@@ -6958,6 +6958,13 @@ entities:
       pos: -18.5,3.5
     - type: Fixtures
       fixtures: {}
+  - uid: 951
+    components:
+    - type: Transform
+      parent: 1
+      pos: -2.5,-14.5
+    - type: Fixtures
+      fixtures: {}
   - uid: 955
     components:
     - type: Transform
@@ -8271,6 +8278,13 @@ entities:
     - type: Transform
       parent: 1
       pos: -32.5,-11.5
+- proto: CERadioStation
+  entities:
+  - uid: 949
+    components:
+    - type: Transform
+      parent: 1
+      pos: -2.5,-14.5
 - proto: CEResearchTable
   entities:
   - uid: 877
@@ -9916,6 +9930,25 @@ entities:
           - 1030
           showEnts: False
           occludes: True
+    - type: Fixtures
+      fixtures: {}
+- proto: CEWallRadioSpeakerAcademy
+  entities:
+  - uid: 948
+    components:
+    - type: Transform
+      parent: 1
+      rot: 3.141592653589793 rad
+      pos: -35.5,-16.5
+    - type: Fixtures
+      fixtures: {}
+- proto: CEWallRadioSpeakerGuard
+  entities:
+  - uid: 947
+    components:
+    - type: Transform
+      parent: 1
+      pos: 0.5,-12.5
     - type: Fixtures
       fixtures: {}
 - proto: CEWallStone

@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.0
   forkId: ""
   forkVersion: ""
-  time: 09/29/2026 21:09:17
-  entityCount: 603
+  time: 09/30/2026 19:20:09
+  entityCount: 604
 maps:
 - 1
 grids:
@@ -2106,6 +2106,16 @@ entities:
           - 644
           showEnts: False
           occludes: True
+    - type: Fixtures
+      fixtures: {}
+- proto: CEWallRadioSpeakerAcademy
+  entities:
+  - uid: 505
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -30.5,-10.5
     - type: Fixtures
       fixtures: {}
 - proto: CEWallStone

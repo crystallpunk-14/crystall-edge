@@ -1,0 +1,88 @@
+- type: entity
+  abstract: true
+  parent: CEBaseWallmount
+  id: CEWallRadioSpeakerBase
+  name: loudspeaker
+  description: Remote radio broadcasting device
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Industrial/loudspeaker.rsi
+    layers:
+    - state: base
+  - type: Damageable
+    damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEScrapIron1:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+  - type: Appearance
+  - type: ApcPowerReceiver
+    powerLoad: 0.05
+  - type: ExtensionCableReceiver
+    receptionRange: 0
+  - type: Speech
+    speechVerb: CEBroadcast
+    suffixSpeechVerbs: {}
+
+- type: entity
+  parent: CEWallRadioSpeakerBase
+  id: CEWallRadioSpeaker
+  suffix: Common
+  components:
+  - type: CERadioSpeaker
+    frequencies:
+    - CECommon
+
+- type: entity
+  parent: CEWallRadioSpeakerBase
+  id: CEWallRadioSpeakerAcademy
+  suffix: Common, Academy
+  components:
+  - type: CERadioSpeaker
+    frequencies:
+    - CECommon
+    - CEAcademy
+
+- type: entity
+  parent: CEWallRadioSpeakerBase
+  id: CEWallRadioSpeakerEngineering
+  suffix: Common, Engineering
+  components:
+  - type: CERadioSpeaker
+    frequencies:
+    - CECommon
+    - CEEngineering
+
+- type: entity
+  parent: CEWallRadioSpeakerBase
+  id: CEWallRadioSpeakerGuard
+  suffix: Common, Guard
+  components:
+  - type: CERadioSpeaker
+    frequencies:
+    - CECommon
+    - CEGuard
+
+- type: entity
+  parent: CEWallRadioSpeakerBase
+  id: CEWallRadioSpeakerTavern
+  suffix: Common, Tavern
+  components:
+  - type: CERadioSpeaker
+    frequencies:
+    - CECommon
+    - CETavern

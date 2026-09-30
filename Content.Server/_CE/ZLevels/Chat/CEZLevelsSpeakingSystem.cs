@@ -10,8 +10,10 @@ using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Chat;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Speech;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Spawners;
 using Robust.Shared.Timing;
 
@@ -38,16 +40,29 @@ public sealed partial class CEZLevelsSpeakingSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnSpoke(Entity<CEZLevelViewerComponent> ent, ref EntitySpokeEvent args)
     {
-        var xform = Transform(ent);
+        if (args.ObfuscatedMessage is not null) //Curse of chatcode: this is only way detect whispers
+            return;
+
+        TransmitToAdjacentZLevels(ent, args.Message, Identity.Name(ent, EntityManager), InGameICChatType.Whisper);
+    }
+
+    /// <summary>
+    /// Repeats a message one z-level above and below the source, at the same world position.
+    /// </summary>
+    /// <param name="speechVerb">If set, the repeated message uses this verb for every suffix.</param>
+    public void TransmitToAdjacentZLevels(
+        EntityUid source,
+        string message,
+        string name,
+        InGameICChatType chatType,
+        ProtoId<SpeechVerbPrototype>? speechVerb = null)
+    {
+        var xform = Transform(source);
         var sourceMap = xform.MapUid;
         if (sourceMap is null)
             return;
 
-        if (args.ObfuscatedMessage is not null) //Curse of chatcode: this is only way detect whispers
-            return;
-
         var globalPosition = _transform.GetWorldPosition(xform);
-        var message = args.Message;
 
         //Try transmit message to 1 zlevel down
         if (_zLevel.TryMapDown(sourceMap.Value, out var belowMapUid) &&
@@ -57,7 +72,9 @@ public sealed partial class CEZLevelsSpeakingSystem : EntitySystem
                 belowMapComp,
                 globalPosition,
                 message,
-                Loc.GetString("ce-zlevel-voice-from-up", ("name", Identity.Name(ent, EntityManager))));
+                Loc.GetString("ce-zlevel-voice-from-up", ("name", name)),
+                chatType,
+                speechVerb);
         }
 
         //Try transmit message to 1 zlevel up
@@ -68,15 +85,31 @@ public sealed partial class CEZLevelsSpeakingSystem : EntitySystem
                 aboveMapComp,
                 globalPosition,
                 message,
-                Loc.GetString("ce-zlevel-voice-from-down", ("name", Identity.Name(ent, EntityManager))));
+                Loc.GetString("ce-zlevel-voice-from-down", ("name", name)),
+                chatType,
+                speechVerb);
         }
     }
 
-    private void TransmitMessageToZLevel(MapComponent mapComp, Vector2 position, string message, string nameOverride)
+    private void TransmitMessageToZLevel(
+        MapComponent mapComp,
+        Vector2 position,
+        string message,
+        string nameOverride,
+        InGameICChatType chatType,
+        ProtoId<SpeechVerbPrototype>? speechVerb)
     {
         var targetPos = new MapCoordinates(position, mapComp.MapId);
         var transmit = Spawn(null, targetPos);
         EnsureComp<TimedDespawnComponent>(transmit).Lifetime = TransmitterLifetime;
+        EnsureComp<CEZLevelSpeechTransmitterComponent>(transmit);
+
+        if (speechVerb is not null)
+        {
+            var speech = EnsureComp<SpeechComponent>(transmit);
+            speech.SpeechVerb = speechVerb.Value;
+            speech.SuffixSpeechVerbs.Clear();
+        }
 
         //It's not the most elegant solution, but as far as I understand, the entity doesn't have time to enter
         //the client's PVS after spawning, and we already start communicating through it. A slight delay solves the problem.
@@ -86,7 +119,7 @@ public sealed partial class CEZLevelsSpeakingSystem : EntitySystem
                 _chat.TrySendInGameICMessage(
                     transmit,
                     message,
-                    InGameICChatType.Whisper,
+                    chatType,
                     false,
                     nameOverride: nameOverride,
                     ignoreActionBlocker: true);

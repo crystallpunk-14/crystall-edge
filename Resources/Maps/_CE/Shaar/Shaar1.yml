@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.0
   forkId: ""
   forkVersion: ""
-  time: 09/29/2026 21:09:16
-  entityCount: 1667
+  time: 09/30/2026 19:20:08
+  entityCount: 1675
 maps:
 - 1
 grids:
@@ -3424,6 +3424,41 @@ entities:
       pos: -29.5,-13.5
     - type: Fixtures
       fixtures: {}
+  - uid: 119
+    components:
+    - type: Transform
+      parent: 1
+      pos: -16.5,2.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 133
+    components:
+    - type: Transform
+      parent: 1
+      pos: -32.5,-11.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 149
+    components:
+    - type: Transform
+      parent: 1
+      pos: -30.5,-11.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 154
+    components:
+    - type: Transform
+      parent: 1
+      pos: -16.5,1.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 173
+    components:
+    - type: Transform
+      parent: 1
+      pos: -16.5,0.5
+    - type: Fixtures
+      fixtures: {}
   - uid: 197
     components:
     - type: Transform
@@ -4234,13 +4269,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -32.5,-10.5
-    - type: Fixtures
-      fixtures: {}
-  - uid: 1448
-    components:
-    - type: Transform
-      parent: 1
-      pos: -31.5,-10.5
     - type: Fixtures
       fixtures: {}
   - uid: 1488
@@ -6379,6 +6407,45 @@ entities:
       pos: -29.23865,-15.848955
     - type: Stack
       count: 12
+- proto: CEWallRadioSpeaker
+  entities:
+  - uid: 116
+    components:
+    - type: Transform
+      parent: 1
+      pos: -16.5,0.5
+    - type: Fixtures
+      fixtures: {}
+- proto: CEWallRadioSpeakerAcademy
+  entities:
+  - uid: 122
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: -32.5,-11.5
+    - type: Fixtures
+      fixtures: {}
+- proto: CEWallRadioSpeakerGuard
+  entities:
+  - uid: 118
+    components:
+    - type: Transform
+      parent: 1
+      rot: 3.141592653589793 rad
+      pos: 2.5,-16.5
+    - type: Fixtures
+      fixtures: {}
+- proto: CEWallRadioSpeakerTavern
+  entities:
+  - uid: 117
+    components:
+    - type: Transform
+      parent: 1
+      rot: 3.141592653589793 rad
+      pos: -4.5,-0.5
+    - type: Fixtures
+      fixtures: {}
 - proto: CEWallStone
   entities:
   - uid: 309
