@@ -12,7 +12,7 @@
 - type: entity
   id: CEObjectiveThiefCashOut
   name: Cash out
-  description: Steal money from other players, sell useful equipment, and spend at least 20 gold coins at the black market.
+  description: Steal money from other players, sell useful equipment, and spend at least 10 gold coins at the black market.
   components:
   - type: Sprite
     sprite: _CE/Objects/Materials/Currency/coin_gp.rsi

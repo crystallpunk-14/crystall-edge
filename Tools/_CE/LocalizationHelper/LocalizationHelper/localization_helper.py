@@ -78,6 +78,10 @@ class LocalizationHelper:
             log_text = f"Has been updated from: {final_prototype_obj.attrs_dict}, to: "
 
             for key, value in yaml_prototype_obj.attrs_dict.items():
+                # Only touch attributes that changed in YAML since the last launch,
+                # otherwise existing translations of unchanged attributes get overwritten
+                if last_launch_prototype_obj.attrs_dict.get(key) == value:
+                    continue
                 if final_prototype_obj.attrs_dict[key] != value:
                     final_prototype_obj.set_attrs_dict_value(key, value)
 
@@ -199,6 +203,9 @@ class LocalizationHelper:
         """
         result = ""
         for prototype_obj in general_prototypes_dict.values():
+            # Entities with nothing to localize (even after parent resolution) are useless in FTL
+            if not (prototype_obj.name or prototype_obj.description or prototype_obj.suffix):
+                continue
             result += create_ftl(prototype_obj)
         return result
 

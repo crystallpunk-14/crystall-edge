@@ -18,7 +18,7 @@ void fragment() {
     highp vec2 distortedCoord = coord;
     highp float brightness = 0.0;
 
-    for (int i = 0; i < count; ++i) {
+    for (lowp int i = 0; i < count; ++i) {
         highp vec2 WaveCentre = position[i];
 
         highp float Dist = distance(

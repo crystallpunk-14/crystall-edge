@@ -17,7 +17,8 @@ class YamlParser(BaseParser):
         for prototype_obj in prototypes_with_multiple_parents.values():
             available_parents = []
             for parent in prototype_obj.parent:
-                if parent in prototypes:
+                # A parent may itself have a list of parents, so it is not in `prototypes` yet
+                if parent in prototypes or parent in prototypes_with_multiple_parents:
                     available_parents.append(parent)
 
             if len(available_parents) >= 2:

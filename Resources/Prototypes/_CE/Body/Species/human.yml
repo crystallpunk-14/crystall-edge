@@ -44,11 +44,6 @@
     enum.HumanoidVisualLayers.Special:
       limit: 0
       required: false
-  appearances:
-    enum.HumanoidVisualLayers.Head:
-      matchSkin: true
-    enum.HumanoidVisualLayers.Chest:
-      matchSkin: true
 
 - type: entity
   parent: CEBaseSpeciesAppearance
@@ -161,10 +156,12 @@
 - type: entity
   parent: [ CEOrganBaseTorsoSexed, OrganBaseTorso, CEOrganHumanExternal ]
   id: CEOrganHumanTorso
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseHeadSexed, OrganBaseHead, CEOrganHumanExternal ]
   id: CEOrganHumanHead
+  categories: [ HideSpawnMenu ]
   components:
   - type: VisualOrganMarkings
     hideableLayers:
@@ -174,38 +171,47 @@
 - type: entity
   parent: [ CEOrganBaseArmLeftSexed, OrganBaseArmLeft, CEOrganHumanExternal ]
   id: CEOrganHumanArmLeft
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseArmRightSexed, OrganBaseArmRight, CEOrganHumanExternal ]
   id: CEOrganHumanArmRight
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseHandLeftSexed, OrganBaseHandLeft, CEOrganHumanExternal ]
   id: CEOrganHumanHandLeft
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseHandRightSexed, OrganBaseHandRight, CEOrganHumanExternal ]
   id: CEOrganHumanHandRight
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseLegLeftSexed, OrganBaseLegLeft, CEOrganHumanExternal ]
   id: CEOrganHumanLegLeft
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseLegRightSexed, OrganBaseLegRight, CEOrganHumanExternal ]
   id: CEOrganHumanLegRight
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseFootLeftSexed, OrganBaseFootLeft, CEOrganHumanExternal ]
   id: CEOrganHumanFootLeft
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseFootRightSexed, OrganBaseFootRight, CEOrganHumanExternal ]
   id: CEOrganHumanFootRight
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ OrganBaseEyes, OrganHumanInternal, CEOrganHumanExternal ]
   id: CEOrganHumanEyes
+  categories: [ HideSpawnMenu ]
   components:
   - type: VisualOrgan
     data:
