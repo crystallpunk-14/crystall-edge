@@ -1,0 +1,95 @@
+- type: entity
+  parent:
+  - BaseLaserRifle
+  - BaseGunWieldable
+  id: CEWeaponGunJudgement
+  name: judgement
+  description: A modified version of the peacekeeper, it stores 2 shots at once per cycle. It has an improved sight on it for more accurate shots.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _CE/Objects/Tools/Weapons/Guns/peacekeeper_golden.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-4
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Clothing
+    sprite: _CE/Objects/Tools/Weapons/Guns/peacekeeper_golden.rsi
+    equipDelay: 2
+    unequipDelay: 2.5
+    equipWhileMoving: true
+    slots:
+    - neck
+  - type: Item
+    size: Ginormous
+    shape:
+    - 0, 0, 5, 1 # 2x6
+  - type: BatteryAmmoProvider
+    proto: CEJudgementHitscan
+    fireCost: 15
+  - type: Battery
+    maxCharge: 150
+    startingCharge: 150
+  - type: Gun
+    selectedMode: Burst
+    availableModes:
+    - Burst
+    fireRate: 0.2
+    burstFireRate: 5
+    shotsPerBurst: 2
+    burstCooldown: 3
+    angleIncrease: 2
+    minAngle: 20
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
+      params:
+        variation: 0.2
+        volume: 2
+        pitch: -1
+  - type: SpeedModifiedOnWield
+    walkModifier: 0.35
+    sprintModifier: 0.35
+  - type: CursorOffsetRequiresWield
+  - type: EyeCursorOffset
+    maxOffset: 5
+    pvsIncrease: 0.3
+  - type: StaticPrice
+    price: 650
+  - type: CEMagicEssenceStructure
+    essences:
+      Weapon: { min: 1, max: 3 }
+      Metal: { min: 1, max: 4 }
+      Energia: { min: 0, max: 3 }
+      Greed: { min: 1, max: 3 }
+
+- type: entity
+  parent: BasicHitscan
+  id: CEJudgementHitscan
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Shock: 28
+  - type: CEHitscanEntityEffect
+    effects:
+    - !type:SpawnEntity
+      effectTarget: Target
+      spawns:
+      - CEOverchargeVFX
+    - !type:ThrowFrom
+      distance: 1
+    - !type:Irradiate
+      charge: 10
+  - type: HitscanBasicVisuals
+    muzzleFlash:
+      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      state: muzzle_blue
+    travelFlash:
+      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      state: beam_blue
+    impactFlash:
+      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      state: impact_blue
