@@ -2567,26 +2567,26 @@ ent-CEWeaponBowCombat = боевой лук
 ent-CEWeaponLightCrossbow = лёгкий арбалет
     .desc = Небольшой компактный арбалет, удобный для стрельбы одной рукой. С обратной стороны не слишком точен.
 
-ent-CEArrowIron = arrow
-    .desc = A sharp arrow made of wood and metal.
+ent-CEArrowIron = стрела
+    .desc = Острая стрела из дерева и металла.
 
-ent-CECrossboltIron = crossbow bolt
-    .desc = Rod with a pointed spike in iron. No plumage, they're not bows.
+ent-CECrossboltIron = арбалетный болт
+    .desc = Стержень с острым железным наконечником. Без оперения, это не стрелы.
 
-ent-CEGuardBola = bola
-    .desc = A tactical bola issued to guards, made of steel anchors linked by a strong rope. Reliable and reusable.
+ent-CEGuardBola = бола
+    .desc = Тактическая бола, выдаваемая страже: стальные якоря, соединённые прочной верёвкой. Надёжная и многоразовая.
 
-ent-CEStatusEffectAirCaught = air caught
+ent-CEStatusEffectAirCaught = воздушная ловушка
     .desc = { "" }
 
-ent-CEStatusEffectGoodFoodRegen = pleasant aftertaste
+ent-CEStatusEffectGoodFoodRegen = приятное послевкусие
     .desc = { "" }
 
-ent-CEStatusEffectBadFoodVomit = terrible aftertaste
+ent-CEStatusEffectBadFoodVomit = ужасное послевкусие
     .desc = { "" }
 
-ent-CEMurkLucsonSphere = Lucson Sphere
-    .desc = Your last hope for survival. A barrier against the murk, a ray of light in the realm of darkness.
+ent-CEMurkLucsonSphere = Сфера Люксона
+    .desc = Ваша последняя надежда на выживание. Барьер против мрака, луч света в царстве тьмы.
 
 ent-CEMurkLucsonSphere25 = { ent-CEMurkLucsonSphere }
     .desc = { ent-CEMurkLucsonSphere.desc }
@@ -2859,8 +2859,8 @@ ent-CEFenceWindowIron = { ent-CEBaseFenceWindow }
 ent-CEBaseFenceGate = ворота забора
     .desc = У вас есть два пути. Вы можете открыть дверь как обычный человек или перелезть через дверь как забавный человек.
 
-ent-CEBasePole = pole
-    .desc = A simple wooden pole. Perfect for reinforcing fence sections and creating corner joints.
+ent-CEBasePole = столб
+    .desc = Простой деревянный столб. Идеален для укрепления секций забора и создания угловых соединений.
 
 ent-CEZLevelLadderBase = лестница
     .desc = Будьте осторожны, чем выше вы поднимаетесь, тем болезненнее падение.
@@ -2874,22 +2874,22 @@ ent-CEZLevelLadderCornerInnerBase = {{ ent-CEZLevelLadderCornerBase }}
 ent-CEZLevelsLadderDirtCliffBase = грязный обрыв
     .desc = TODO
 
-ent-CEZLevelLadderFrameBase = ladder frame
-    .desc = An unfinished wooden support frame. It needs to be covered before it's safe to climb.
+ent-CEZLevelLadderFrameBase = каркас лестницы
+    .desc = Недостроенный деревянный опорный каркас. Его нужно обшить, прежде чем по нему безопасно лазить.
 
-ent-CEZLevelLadderFrame = ladder frame
+ent-CEZLevelLadderFrame = каркас лестницы
     .desc = { ent-CEZLevelLadderFrameBase.desc }
 
-ent-CEZLevelLadderFrameCorner = ladder frame
+ent-CEZLevelLadderFrameCorner = каркас лестницы
     .desc = { ent-CEZLevelLadderFrameBase.desc }
     .suffix = Corner
 
-ent-CEZLevelLadderFrameCornerInner = ladder frame
+ent-CEZLevelLadderFrameCornerInner = каркас лестницы
     .desc = { ent-CEZLevelLadderFrameCorner.desc }
     .suffix = Inner Corner
 
-ent-CEZLevelsLadderRoofBase = roof tile
-    .desc = Roof tiles, for covering building roofs.
+ent-CEZLevelsLadderRoofBase = кровельная плитка
+    .desc = Кровельная плитка для покрытия крыш зданий.
 
 ent-CEZLevelsLadderRoofRedBase = { ent-CEZLevelsLadderRoofBase }
     .desc = { ent-CEZLevelsLadderRoofBase.desc }
@@ -2910,13 +2910,13 @@ ent-CEBaseThinWindow = тонкое окно
     .desc = Узкое окно, обеспечивающее видимость при сохранении структуры.
 
 ent-CEBaseThinWindowDoor = тонкая дверь с окном
-    .desc = Thin window doors. It has a latch; it can be unlocked and locked from only one side.
+    .desc = Тонкие дверцы с окном. Есть щеколда; открывать и запирать можно только с одной стороны.
 
-ent-CEBaseThinWindowFrame = thin window frame
-    .desc = An unfinished window frame, waiting for glass panels.
+ent-CEBaseThinWindowFrame = каркас тонкого окна
+    .desc = Недостроенная оконная рама, ожидающая стеклянных панелей.
 
-ent-CEBaseThinWindowDoorFrame = thin window hopper frame
-    .desc = An unfinished hopper window frame, waiting for glass panels.
+ent-CEBaseThinWindowDoorFrame = каркас тонкой оконной двери
+    .desc = Недостроенная рама оконной двери, ожидающая стеклянных панелей.
 
 ent-CEBaseThinWindowIron = { "" }
     .desc = { "" }
@@ -2973,8 +2973,8 @@ ent-CEOreCoreBase = {{ ent-CEBaseWall }}
 ent-CEWallIronCore = ядро железной руды
     .desc = Невероятно твёрдое и железорудное ядро. Вы можете разбить его киркой, но лучше использовать какой-нибудь автоматический бур...
 
-ent-CEWallCoalCore = coal ore core
-    .desc = An extremely hard and coal-rich ore core. You can certainly break it with a pickaxe, but it's better to use some kind of automatic drill...
+ent-CEWallCoalCore = угольное рудное ядро
+    .desc = Чрезвычайно твёрдое и богатое углём рудное ядро. Разбить его киркой, конечно, можно, но лучше использовать какой-нибудь автоматический бур...
 
 ent-CEWallCrystalCore = ядро кристалла энергии
     .desc = Ядро, сделанное из кристаллов сконцентрированной магической энергии. Это чрезвычайно опасно и может быть добыто только со специализированным оборудованием.
@@ -2988,7 +2988,7 @@ ent-CEWallStoneBrick = каменная кирпичная стена
 ent-CEWallStoneBrickBrown = коричневая каменная кирпичная стена
     .desc = { ent-CEBaseWall.desc }
 
-ent-CEWallStoneBrickDiagonal = diagonal stone brick wall
+ent-CEWallStoneBrickDiagonal = диагональная стена из каменного кирпича
     .desc = { "" }
     .suffix = Diagonal
 
@@ -2999,7 +2999,7 @@ ent-CEWallFrameWoodenFinished = { ent-CEWallFrameWooden }
     .desc = { ent-CEWallFrameWooden.desc }
     .suffix = Finished
 
-ent-CEWallWoodenBase = wooden wall
+ent-CEWallWoodenBase = деревянная стена
     .desc = { ent-CEBaseWall.desc }
 
 ent-CEWallWooden = { ent-CEWallWoodenBase }
@@ -3023,17 +3023,17 @@ ent-CEBaseWindowFrame = { "" }
 ent-CEBaseWindowFrameBroken = { "" }
     .desc = Разбитое окно. Вы можете войти, но острые осколки разрежут вашу кожу.
 
-ent-CEWindowIceBlock = ice block
-    .desc = Smooth and translucent ice.
+ent-CEWindowIceBlock = ледяной блок
+    .desc = Гладкий полупрозрачный лёд.
 
-ent-CEBaseBoneRemains = bone remains
-    .desc = The remains of bones have grown into the ground.
+ent-CEBaseBoneRemains = костные останки
+    .desc = Останки костей, вросшие в землю.
 
-ent-CEBoneSpine = bone spine
-    .desc = The large bony torso of an unknown creature, as if it had been torn to pieces.
+ent-CEBoneSpine = костяной хребет
+    .desc = Большой костяной торс неизвестного существа, будто разорванный на куски.
 
-ent-CEBoneDragon = bone dragon
-    .desc = The large skeleton of a dragon, the possibility of encountering such a creature is both fascinating and terrifying.
+ent-CEBoneDragon = костяной дракон
+    .desc = Огромный скелет дракона. Возможность встретить такое существо одновременно завораживает и пугает.
 
 ent-CECobwebLeft1 = { ent-CECobwebRight1 }
     .desc = { ent-CECobwebRight1.desc }
@@ -3067,36 +3067,36 @@ ent-CEWallmountGarlandBlue = { ent-CEWallmauntGarlandBase }
     .desc = { ent-CEWallmauntGarlandBase.desc }
     .suffix = Blue
 
-ent-CEWallmountPaintingSkull = skull painting
-    .desc = A bizarre skull painting. Depressing.
+ent-CEWallmountPaintingSkull = картина с черепом
+    .desc = Причудливая картина с черепом. Удручает.
 
-ent-CEWallmountPaintingCandle = candle painting
-    .desc = A nicely drawn candle in a frame.
+ent-CEWallmountPaintingCandle = картина со свечой
+    .desc = Красиво нарисованная свеча в раме.
 
-ent-CEWallmountPaintingWoman = painting of a woman
-    .desc = The painting depicts a woman with a mysterious smile.
+ent-CEWallmountPaintingWoman = портрет женщины
+    .desc = На картине изображена женщина с загадочной улыбкой.
 
-ent-CEWallmountPaintingSaint = painting of a saint
-    .desc = A drawing of a nun with a halo over her head. This is how you can feel the holiness of the picture.
+ent-CEWallmountPaintingSaint = портрет святой
+    .desc = Рисунок монахини с нимбом над головой. Так и чувствуется святость картины.
 
-ent-CEStatueGob = statue of Gob
-    .desc = It's beautiful.
+ent-CEStatueGob = статуя Гоба
+    .desc = Она прекрасна.
     .suffix = Normal
 
-ent-CEStatueGobVines = statue of Gob
+ent-CEStatueGobVines = статуя Гоба
     .desc = { ent-CEStatueGob.desc }
     .suffix = Normal. Overgrown.
 
-ent-CEStatueGobRuined = broken statue of Gob
+ent-CEStatueGobRuined = разбитая статуя Гоба
     .desc = { ent-CEStatueGob.desc }
     .suffix = Ruined
 
-ent-CEStatueGobRuinedVines = broken statue of Gob
+ent-CEStatueGobRuinedVines = разбитая статуя Гоба
     .desc = { ent-CEStatueGob.desc }
     .suffix = Ruined. Overgrown.
 
-ent-CEStatueAngel = angel statue
-    .desc = A divine statue of a praying angel.
+ent-CEStatueAngel = статуя ангела
+    .desc = Божественная статуя молящегося ангела.
     .suffix = Stone
 
 ent-CEStatueAngelMarble = { ent-CEStatueAngel }
@@ -3107,19 +3107,19 @@ ent-CEStatueAngelLimestone = { ent-CEStatueAngel }
     .desc = { ent-CEStatueAngel.desc }
     .suffix = Limestone
 
-ent-CEStatueStoneHeadHigh = stone head
-    .desc = Strange stone heads, they seem to be watching.
+ent-CEStatueStoneHeadHigh = каменная голова
+    .desc = Странные каменные головы, кажется, они наблюдают.
     .suffix = High
 
 ent-CEStatueStoneHeadLow = { ent-CEStatueStoneHeadHigh }
     .desc = { ent-CEStatueStoneHeadHigh.desc }
     .suffix = Low
 
-ent-CEStatueWizard = statue wizard
-    .desc = A statue of a magician holding magic.
+ent-CEStatueWizard = статуя волшебника
+    .desc = Статуя мага, держащего магию.
 
-ent-CEBaseTombstone = tombstone
-    .desc = A piece of stone placed in memory of the dead.
+ent-CEBaseTombstone = надгробие
+    .desc = Камень, установленный в память об умерших.
 
 ent-CETombstone = { ent-CEBaseTombstone }
     .desc = { ent-CEBaseTombstone.desc }
@@ -3139,10 +3139,10 @@ ent-CEArmchairColoredBase = { ent-CEArmchairWoodBase }
 ent-CEArmchairColoredPillowBase = { ent-CEArmchairWoodBase }
     .desc = { ent-CEArmchairWoodBase.desc }
 
-ent-CEArmchairFrame = armchair frame
-    .desc = An armchair's wooden skeleton.
+ent-CEArmchairFrame = каркас кресла
+    .desc = Деревянный скелет кресла.
 
-ent-CEArmchairWood = wooden armchair
+ent-CEArmchairWood = деревянное кресло
     .desc = { ent-CEArmchairColoredBase.desc }
 
 ent-CEArmchairWoodPillowBlue = { ent-CEArmchairColoredPillowBase }
@@ -3169,7 +3169,7 @@ ent-CEArmchairWoodPillowYellow = { ent-CEArmchairColoredPillowBase }
     .desc = { ent-CEArmchairColoredPillowBase.desc }
     .suffix = Yellow Pillow
 
-ent-CEArmchairLight = light armchair
+ent-CEArmchairLight = светлое кресло
     .desc = { ent-CEArmchairColoredBase.desc }
 
 ent-CEArmchairLightPillowBlue = { ent-CEArmchairColoredPillowBase }
@@ -3196,7 +3196,7 @@ ent-CEArmchairLightPillowYellow = { ent-CEArmchairColoredPillowBase }
     .desc = { ent-CEArmchairColoredPillowBase.desc }
     .suffix = Yellow Pillow
 
-ent-CEArmchairDark = dark armchair
+ent-CEArmchairDark = тёмное кресло
     .desc = { ent-CEArmchairColoredBase.desc }
 
 ent-CEArmchairDarkPillowBlue = { ent-CEArmchairColoredPillowBase }
@@ -3223,8 +3223,8 @@ ent-CEArmchairDarkPillowYellow = { ent-CEArmchairColoredPillowBase }
     .desc = { ent-CEArmchairColoredPillowBase.desc }
     .suffix = Yellow Pillow
 
-ent-CEArmchairMetallicBase = metal armchair
-    .desc = A metal-framed armchair. Somebody thought comfort and cold iron could coexist.
+ent-CEArmchairMetallicBase = металлическое кресло
+    .desc = Кресло в металлическом каркасе. Кто-то решил, что комфорт и холодное железо могут сосуществовать.
 
 ent-CEArmchairMetallicPillowBase = { ent-CEArmchairMetallicBase }
     .desc = { ent-CEArmchairMetallicBase.desc }
@@ -3338,7 +3338,7 @@ ent-CEWoodenBed = { ent-CEWoodenBedBase }
 ent-CEWoodenBedLight = { ent-CEWoodenBedBase }
     .desc = { ent-CEWoodenBedBase.desc }
 
-ent-CEBenchWoodFrame = bench frame
+ent-CEBenchWoodFrame = каркас скамьи
     .desc = { ent-CEBenchWood.desc }
 
 ent-CEBenchWoodLight = { ent-CEBenchWood }
@@ -3347,8 +3347,8 @@ ent-CEBenchWoodLight = { ent-CEBenchWood }
 ent-CEBenchWoodDark = { ent-CEBenchWood }
     .desc = { ent-CEBenchWood.desc }
 
-ent-CECabinetBase = cabinet
-    .desc = Just an ordinary, decrepit cabinet.
+ent-CECabinetBase = шкаф
+    .desc = Просто обычный, ветхий шкаф.
 
 ent-CECarpetBlue = { ent-CECarpetBase }
     .desc = { ent-CECarpetBase.desc }
@@ -3369,7 +3369,7 @@ ent-CECarpetBlack = { ent-CECarpetBase }
 ent-CECashConverter = конвертер денег
     .desc = Простое магическое устройство, соединённое маленькими порталами с центральным банком империи. Это позволяет вам конвертировать монеты между номиналами и даже не берёт комиссию! Это щедро.
 
-ent-CEChairFrame = wooden chair frame
+ent-CEChairFrame = каркас деревянного стула
     .desc = { ent-CEChairWooden.desc }
 
 ent-CEChairStoolWooden = { ent-CEChairWooden }
@@ -3390,98 +3390,98 @@ ent-CEChairStoolWoodenRed = { ent-CEChairWooden }
 ent-CECurtainsWhiteBase = { ent-CEBaseCurtains }
     .desc = { ent-CEBaseCurtains.desc }
 
-ent-CECurtainsWhite = white curtains
+ent-CECurtainsWhite = белые шторы
     .desc = { ent-CEBaseCurtains.desc }
 
-ent-CECurtainsWhiteFlower = white curtains, flower
+ent-CECurtainsWhiteFlower = белые шторы, цветок
     .desc = { ent-CECurtainsWhiteBase.desc }
 
-ent-CECurtainsWhiteStar = white curtains, star
+ent-CECurtainsWhiteStar = белые шторы, звезда
     .desc = { ent-CECurtainsWhiteBase.desc }
 
-ent-CECurtainsWhiteGoldenline = white curtains, golden line
+ent-CECurtainsWhiteGoldenline = белые шторы, золотая линия
     .desc = { ent-CECurtainsWhiteBase.desc }
 
-ent-CECurtainsWhiteGoldenline2 = white curtains, two golden line
+ent-CECurtainsWhiteGoldenline2 = белые шторы, две золотые линии
     .desc = { ent-CECurtainsWhiteBase.desc }
 
 ent-CECurtainsBlueBase = { ent-CEBaseCurtains }
     .desc = { ent-CEBaseCurtains.desc }
 
-ent-CECurtainsBlue = blue curtains
+ent-CECurtainsBlue = синие шторы
     .desc = { ent-CEBaseCurtains.desc }
 
-ent-CECurtainsBlueFlower = blue curtains, flower
+ent-CECurtainsBlueFlower = синие шторы, цветок
     .desc = { ent-CECurtainsBlueBase.desc }
 
-ent-CECurtainsBlueStar = blue curtains, star
+ent-CECurtainsBlueStar = синие шторы, звезда
     .desc = { ent-CECurtainsBlueBase.desc }
 
-ent-CECurtainsBlueGoldenline = blue curtains, golden line
+ent-CECurtainsBlueGoldenline = синие шторы, золотая линия
     .desc = { ent-CECurtainsBlueBase.desc }
 
-ent-CECurtainsBlueGoldenline2 = blue curtains, two golden line
+ent-CECurtainsBlueGoldenline2 = синие шторы, две золотые линии
     .desc = { ent-CECurtainsBlueBase.desc }
 
 ent-CECurtainsRedBase = { ent-CEBaseCurtains }
     .desc = { ent-CEBaseCurtains.desc }
 
-ent-CECurtainsRed = red curtains
+ent-CECurtainsRed = красные шторы
     .desc = { ent-CEBaseCurtains.desc }
 
-ent-CECurtainsRedFlower = red curtains, flower
+ent-CECurtainsRedFlower = красные шторы, цветок
     .desc = { ent-CECurtainsRedBase.desc }
 
-ent-CECurtainsRedStar = red curtains, star
+ent-CECurtainsRedStar = красные шторы, звезда
     .desc = { ent-CECurtainsRedBase.desc }
 
-ent-CECurtainsRedGoldenline = red curtains, golden line
+ent-CECurtainsRedGoldenline = красные шторы, золотая линия
     .desc = { ent-CECurtainsRedBase.desc }
 
-ent-CECurtainsRedGoldenline2 = red curtains, two golden line
+ent-CECurtainsRedGoldenline2 = красные шторы, две золотые линии
     .desc = { ent-CECurtainsRedBase.desc }
 
 ent-CECurtainsPurpleBase = { ent-CEBaseCurtains }
     .desc = { ent-CEBaseCurtains.desc }
 
-ent-CECurtainsPurple = purple curtains
+ent-CECurtainsPurple = фиолетовые шторы
     .desc = { ent-CECurtainsPurpleBase.desc }
 
-ent-CECurtainsPurpleFlower = purple curtains, flower
+ent-CECurtainsPurpleFlower = фиолетовые шторы, цветок
     .desc = { ent-CECurtainsPurpleBase.desc }
 
-ent-CECurtainsPurpleStar = purple curtains, star
+ent-CECurtainsPurpleStar = фиолетовые шторы, звезда
     .desc = { ent-CECurtainsPurpleBase.desc }
 
-ent-CECurtainsPurpleGoldenline = purple curtains, golden line
+ent-CECurtainsPurpleGoldenline = фиолетовые шторы, золотая линия
     .desc = { ent-CECurtainsPurpleBase.desc }
 
-ent-CECurtainsPurpleGoldenline2 = purple curtains, two golden line
+ent-CECurtainsPurpleGoldenline2 = фиолетовые шторы, две золотые линии
     .desc = { ent-CECurtainsPurpleBase.desc }
 
 ent-CECurtainsGreenBase = { ent-CEBaseCurtains }
     .desc = { ent-CEBaseCurtains.desc }
 
-ent-CECurtainsGreen = green curtains
+ent-CECurtainsGreen = зелёные шторы
     .desc = { ent-CECurtainsGreenBase.desc }
 
-ent-CECurtainsGreenFlower = green curtains, flower
+ent-CECurtainsGreenFlower = зелёные шторы, цветок
     .desc = { ent-CECurtainsGreenBase.desc }
 
-ent-CECurtainsGreenStar = green curtains, star
+ent-CECurtainsGreenStar = зелёные шторы, звезда
     .desc = { ent-CECurtainsGreenBase.desc }
 
-ent-CECurtainsGreenGoldenline = green curtains, golden line
+ent-CECurtainsGreenGoldenline = зелёные шторы, золотая линия
     .desc = { ent-CECurtainsGreenBase.desc }
 
-ent-CECurtainsGreenGoldenline2 = green curtains, two golden line
+ent-CECurtainsGreenGoldenline2 = зелёные шторы, две золотые линии
     .desc = { ent-CECurtainsGreenBase.desc }
 
 ent-CEMannequinBase = { "" }
-    .desc = A handy stand for clothing or armor.
+    .desc = Удобная подставка для одежды или доспехов.
 
-ent-CEOrderBoard = orders board
-    .desc = Is there a job for a witcher?
+ent-CEOrderBoard = доска заказов
+    .desc = Нет ли работы для ведьмака?
 
 ent-CEOrderBoardBlue = { ent-CEOrderBoard }
     .desc = { ent-CEOrderBoard.desc }
@@ -3503,8 +3503,8 @@ ent-CEOrderBoardYellow = { ent-CEOrderBoard }
     .desc = { ent-CEOrderBoard.desc }
     .suffix = Yellow flag
 
-ent-CEPottedPlantBase = potted plant
-    .desc = A domesticated plant in a clay pot, more plants.
+ent-CEPottedPlantBase = растение в горшке
+    .desc = Одомашненное растение в глиняном горшке, ещё растения.
 
 ent-CEPottedPlant1 = { ent-CEPottedPlantBase }
     .desc = { ent-CEPottedPlantBase.desc }
@@ -3518,7 +3518,7 @@ ent-CEPottedPlant3 = { ent-CEPottedPlantBase }
 ent-CEPottedPlant4 = { ent-CEPottedPlantBase }
     .desc = { ent-CEPottedPlantBase.desc }
 
-ent-CEWoodenSpikes = wooden spikes
+ent-CEWoodenSpikes = деревянные колья
     .desc = Sharp wooden stakes stuck into the ground. You definitely don't want to fall on them!
 
 ent-CEBaseTorch = { "" }
