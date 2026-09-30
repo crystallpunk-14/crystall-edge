@@ -21,7 +21,7 @@
       - Portal
       - MindContainer
   - type: PlacementReplacement
-    key: CEBiomeSpawner
+    key: walls
   - type: CEAutoTilePlacement
     tile: CEStone
 
