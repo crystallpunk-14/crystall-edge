@@ -1848,8 +1848,8 @@ ent-CEBrassRod30 = { ent-CEBrassRod1 }
     .desc = { ent-CEBrassRod1.desc }
     .suffix = 30
 
-ent-CEIronRod1 = iron rod
-    .desc = A solid rod of iron. Useful for crafting.
+ent-CEIronRod1 = железный стержень
+    .desc = Цельный железный стержень. Полезен для крафта.
 
 ent-CEIronRod15 = { ent-CEIronRod1 }
     .desc = { ent-CEIronRod1.desc }
@@ -1859,8 +1859,8 @@ ent-CEIronRod30 = { ent-CEIronRod1 }
     .desc = { ent-CEIronRod1.desc }
     .suffix = 30
 
-ent-CEBrassSheet1 = brass sheet
-    .desc = Brass bars, hammered thin into sheets. Useful for crafting.
+ent-CEBrassSheet1 = латунный лист
+    .desc = Латунные слитки, выкованные в тонкие листы. Полезны для крафта.
 
 ent-CEBrassSheet5 = { ent-CEBrassSheet1 }
     .desc = { ent-CEBrassSheet1.desc }
@@ -1874,8 +1874,8 @@ ent-CEBrassSheet20 = { ent-CEBrassSheet1 }
     .desc = { ent-CEBrassSheet1.desc }
     .suffix = 20
 
-ent-CEIronSheet1 = iron sheet
-    .desc = Iron bars, hammered thin into sheets. Useful for crafting.
+ent-CEIronSheet1 = железный лист
+    .desc = Железные слитки, выкованные в тонкие листы. Полезны для крафта.
 
 ent-CEIronSheet5 = { ent-CEIronSheet1 }
     .desc = { ent-CEIronSheet1.desc }
@@ -1900,41 +1900,41 @@ ent-CEGlassSheet10 = { ent-CEGlassSheet1 }
     .desc = { ent-CEGlassSheet1.desc }
     .suffix = 10
 
-ent-CEDropper = dropper
-    .desc = Small dropper for managing very small values of liquids
+ent-CEDropper = пипетка
+    .desc = Маленькая пипетка для работы с очень малыми объёмами жидкостей.
 
-ent-CESyringe = syringe
-    .desc = Used to draw blood samples from mobs, or to inject them with reagents.
+ent-CESyringe = шприц
+    .desc = Используется для взятия образцов крови у существ или для введения им реагентов.
 
-ent-CEVialTiny = tiny vial
-    .desc = A fragile glass vial to hold a tiny amount of liquid.
+ent-CEVialTiny = крошечный флакон
+    .desc = Хрупкий стеклянный флакон для крошечного количества жидкости.
 
-ent-CEVialTinyReinforced = reinforced tiny vial
-    .desc = A reinforced glass vial to hold a tiny amount of liquid.
+ent-CEVialTinyReinforced = укреплённый крошечный флакон
+    .desc = Укреплённый стеклянный флакон для крошечного количества жидкости.
 
-ent-CEVialSmall = small vial
-    .desc = A fragile glass vial to hold a small amount of liquid.
+ent-CEVialSmall = малый флакон
+    .desc = Хрупкий стеклянный флакон для небольшого количества жидкости.
 
-ent-CEVialSmallReinforced = reinforced small vial
-    .desc = A reinforced glass vial to hold a small amount of liquid.
+ent-CEVialSmallReinforced = укреплённый малый флакон
+    .desc = Укреплённый стеклянный флакон для небольшого количества жидкости.
 
-ent-CEVialMedium = medium vial
-    .desc = A fragile glass vial to hold a medium amount of liquid.
+ent-CEVialMedium = средний флакон
+    .desc = Хрупкий стеклянный флакон для среднего количества жидкости.
 
-ent-CEVialMediumReinforced = reinforced medium vial
-    .desc = A reinforced glass vial to hold a medium amount of liquid.
+ent-CEVialMediumReinforced = укреплённый средний флакон
+    .desc = Укреплённый стеклянный флакон для среднего количества жидкости.
 
-ent-CEVialStar = star vial
-    .desc = A fragile glass vial in the shape of a star, an unusual but symbolic shape.
+ent-CEVialStar = флакон-звезда
+    .desc = Хрупкий стеклянный флакон в форме звезды — необычная, но символичная форма.
 
-ent-CEVialStarReinforced = reinforced star vial
-    .desc = A reinforced glass star-shaped vial to hold a small amount of liquid.
+ent-CEVialStarReinforced = укреплённый флакон-звезда
+    .desc = Укреплённый стеклянный флакон в форме звезды для небольшого количества жидкости.
 
-ent-CEVialSkull = skull vial
-    .desc = A fragile skull-shaped vial in which to conveniently store poisonous liquids.
+ent-CEVialSkull = флакон-череп
+    .desc = Хрупкий флакон в форме черепа, в котором удобно хранить ядовитые жидкости.
 
-ent-CEVialSkullReinforced = reinforced skull vial
-    .desc = A skull-shaped reinforced glass vial to hold a small amount of liquid, now the poison is sure not to accidentally spill onto your skin.
+ent-CEVialSkullReinforced = укреплённый флакон-череп
+    .desc = Укреплённый стеклянный флакон в форме черепа для небольшого количества жидкости. Теперь яд точно не прольётся на кожу.
 
 ent-CEVialMediumEarthEssence = { ent-CEVialMedium }
     .desc = { ent-CEVialMedium.desc }
@@ -1960,14 +1960,14 @@ ent-CEVialMediumChaosEssence = { ent-CEVialMedium }
     .desc = { ent-CEVialMedium.desc }
     .suffix = Perditio
 
-ent-CEGroundTobacco = ground tobacco
-    .desc = Grinded and dried tabac leaves, some like it is a cure.
+ent-CEGroundTobacco = молотый табак
+    .desc = Измельчённые и высушенные листья табака. Некоторые считают его лекарством.
 
-ent-CEGroundSage = ground sage
-    .desc = Ground and dried sage root as it turns out is an excellent substitute for tobacco.
+ent-CEGroundSage = молотый шалфей
+    .desc = Измельчённый и высушенный корень шалфея оказался отличной заменой табаку.
 
-ent-CEBaseEssence = magic essence
-    .desc = Particles of magical energy polarised into a particular type of magic. Will be gone soon, so try to collect them as soon as possible!
+ent-CEBaseEssence = магическая эссенция
+    .desc = Частицы магической энергии, поляризованные в определённый тип магии. Скоро исчезнут, так что постарайтесь собрать их как можно скорее!
 
 ent-CEEssenceEarth = terra
     .desc = { ent-CEBaseEssence.desc }
@@ -2161,23 +2161,23 @@ ent-CEEssenceHarvest = meto
     .desc = { ent-CEBaseEssence.desc }
     .suffix = T7
 
-ent-CEPortableMagicEssenceAttractor = portable essence attractor
-    .desc = A folding thaumaturgical device that draws in floating magic essence from the air while deployed and charged with mana.
+ent-CEPortableMagicEssenceAttractor = портативный притягиватель эссенции
+    .desc = Складное тауматургическое устройство, которое в развёрнутом виде и при заряде маной притягивает из воздуха парящую магическую эссенцию.
 
-ent-CEUnselectedDiscoveryProject = draft research proposal
-    .desc = A scientist's rambling notes about some great discoveries in the making. So far, only the author himself can make sense of them.
+ent-CEUnselectedDiscoveryProject = черновик исследовательского предложения
+    .desc = Путаные записки учёного о великих открытиях, которые вот-вот будут сделаны. Пока разобраться в них может только сам автор.
 
-ent-CEDiscoveryProjectBase = research project
+ent-CEDiscoveryProjectBase = исследовательский проект
     .desc = { "" }
 
-ent-CEDiscoveryProjectEngineering = engineering research project
+ent-CEDiscoveryProjectEngineering = инженерный исследовательский проект
     .desc = { "" }
 
-ent-CEDiscoveryProjectSpellcasting = spellcasting research project
+ent-CEDiscoveryProjectSpellcasting = исследовательский проект по колдовству
     .desc = { "" }
 
-ent-CEThaumaturgicMagnifyingGlass = thaumaturgic magnifying glass
-    .desc = A lens attuned to residual magic. While held, it reveals nearby objects and creatures of scientific interest, and can be used on them to study them for research points.
+ent-CEThaumaturgicMagnifyingGlass = тауматургическая лупа
+    .desc = Линза, настроенная на остаточную магию. В руках показывает ближайшие предметы и существа, представляющие научный интерес, и позволяет изучать их для получения очков исследования.
 
 ent-CEThaumaturgicMagnifyingGlassAdmin = { ent-CEThaumaturgicMagnifyingGlass }
     .desc = { ent-CEThaumaturgicMagnifyingGlass.desc }
@@ -2191,11 +2191,11 @@ ent-CEWallet = кошелёк
     .desc = Маленький кошелёк, удобный для хранения монет.
     .suffix = Пусто
 
-ent-CESafeFallingAmulet = Emergency Levitation Amulet
-    .desc = An essential piece of everyday equipment for residents of the flying islands, protecting them from accidental falls from the island. Put it on your belt, and if you accidentally fall from the island, you will have a chance to save yourself.
+ent-CESafeFallingAmulet = амулет экстренной левитации
+    .desc = Необходимая часть повседневного снаряжения жителей летающих островов, защищающая от случайного падения с острова. Наденьте на пояс, и если случайно упадёте с острова, у вас будет шанс спастись.
 
-ent-CECrayonBase = crayon
-    .desc = A colourful crayon.
+ent-CECrayonBase = мелок
+    .desc = Разноцветный мелок.
 
 ent-CECrayon = { ent-CECrayonBase }
     .desc = { ent-CECrayonBase.desc }
@@ -2235,30 +2235,30 @@ ent-CECrayonPurple = { ent-CECrayon }
 ent-CECrowbar = лом
     .desc = Прочный железный лом, полезный для открывания вещей.
 
-ent-CELighter = flint and steel
-    .desc = Setting things on fire
+ent-CELighter = кремень и огниво
+    .desc = Поджигает всякое.
     .suffix = NOT WORKING
 
-ent-CEHandLabeler = hand labeler
-    .desc = A hand labeler, used to label items and objects.
+ent-CEHandLabeler = ручной этикетировщик
+    .desc = Ручной этикетировщик, используется для маркировки предметов и объектов.
 
-ent-CEThirdArm = manipulator arm
-    .desc = The most important tool for an engineering mana technician. A modular, battery-powered robotic arm capable of performing a variety of functions, depending on the module attached to it.
+ent-CEThirdArm = манипуляторная рука
+    .desc = Важнейший инструмент инженера-маготехника. Модульная роботизированная рука на батарее, способная выполнять множество функций в зависимости от подключённого модуля.
 
-ent-CEThirdArmModuleLight = manipulator light module
-    .desc = Module for the manipulator arm. Provides a powerful light source.
+ent-CEThirdArmModuleLight = световой модуль манипулятора
+    .desc = Модуль для манипуляторной руки. Даёт мощный источник света.
 
-ent-CEThirdArmModuleManipulation = manipulator tool module
-    .desc = Module for the manipulator arm. It allows you to build and take apart complex structures.
+ent-CEThirdArmModuleManipulation = инструментальный модуль манипулятора
+    .desc = Модуль для манипуляторной руки. Позволяет строить и разбирать сложные конструкции.
 
-ent-ActionCEThirdArmManipulation = matter manipulation
-    .desc = Allows you to build and take apart complex structures.
+ent-ActionCEThirdArmManipulation = манипуляция материей
+    .desc = Позволяет строить и разбирать сложные конструкции.
 
-ent-CEThirdArmModuleMining = manipulator mining module
-    .desc = Module for the manipulator arm. Equips the arm with a mining laser.
+ent-CEThirdArmModuleMining = добывающий модуль манипулятора
+    .desc = Модуль для манипуляторной руки. Оснащает руку добывающим лазером.
 
-ent-ActionCEThirdArmMiningLaser = mining laser
-    .desc = Fire a series of precise laser beams capable of destroying structures.
+ent-ActionCEThirdArmMiningLaser = добывающий лазер
+    .desc = Выпускает серию точных лазерных лучей, способных разрушать конструкции.
 
 ent-CEInstrumentFlute = флейта
     .desc = Компактный музыкальный духовой инструмент, популярный в деревнях и в больших музыкальных труппах.
@@ -2278,8 +2278,8 @@ ent-CERope = верёвка
 ent-CESack = тканевой мешок
     .desc = { "" }
 
-ent-CEScissors = scissors
-    .desc = A tool for shredding wool, hair, clothing, and, if not handled carefully, even fingers.
+ent-CEScissors = ножницы
+    .desc = Инструмент для стрижки шерсти, волос, одежды и, при неосторожном обращении, даже пальцев.
 
 ent-CEScrewdriver = отвёртка
     .desc = Промышленная крутящий момент в маленьком пакете отвёрток.
@@ -2305,7 +2305,7 @@ ent-CEBowlWooden = деревянная чаша
 ent-CEBowlIron = железная чаша
     .desc = { ent-CEBowlBase.desc }
 
-ent-CEBowlIronTreasure = iron treasure bowl
+ent-CEBowlIronTreasure = железная чаша с сокровищами
     .desc = { ent-CEBowlBase.desc }
     .suffix = Theft Target
 
@@ -2319,7 +2319,7 @@ ent-CEPlateIron = железная тарелка
     .desc = { ent-CEPlateBase.desc }
 
 ent-CEBaseLockpick = отмычка
-    .desc = A thief's tool that, with proper skill, allows you to pick any lock.
+    .desc = Инструмент вора, который при надлежащем мастерстве позволяет вскрыть любой замок.
 
 ent-CEKeyFile = напильник для ключа
     .desc = Напильник, идеальный для заточки ключей и переделки их.
@@ -2497,21 +2497,21 @@ ent-CEKeyHomeGoodsHome = { ent-CEKeyIronBlank }
     .desc = { ent-CEKeyIronBlank.desc }
     .suffix = Home Goods Home
 
-ent-CESpellcastingAmulet = magic focus amulet
-    .desc = An ergonomic focusing option for casting spells. The most basic option for general use.
+ent-CESpellcastingAmulet = амулет магической фокусировки
+    .desc = Эргономичный вариант фокусировки для чтения заклинаний. Самый простой вариант для общего использования.
 
-ent-CECastingStaffAdmin = spellcasting admin staff
+ent-CECastingStaffAdmin = админский посох заклинателя
     .desc = TODO
 
-ent-CECastingStaffBasic = spellcasting staff
+ent-CECastingStaffBasic = посох заклинателя
     .desc = TODO
 
-ent-CEWeaponGunPeacekeeperGolden = golden Peacemaker
-    .desc = A low-charge energy rifle that fires a powerful repulsive beam of concentrated mana. This is a special item, made as a one-off piece to order for the guard commander. It has a slightly higher ammunition capacity.
+ent-CEWeaponGunPeacekeeperGolden = золотой Миротворец
+    .desc = Энергетическая винтовка с малым зарядом, стреляющая мощным отталкивающим лучом сконцентрированной маны. Особый предмет, изготовленный в единственном экземпляре на заказ для командира стражи. Ёмкость боезапаса немного выше.
     .suffix = Theft Target
 
-ent-CEWeaponClubWooden = heavy club
-    .desc = A heavy wooden club. Blunt, brutal, and effective.
+ent-CEWeaponClubWooden = тяжёлая дубина
+    .desc = Тяжёлая деревянная дубина. Тупая, жестокая и эффективная.
 
 ent-CEWeaponDaggerIron = железный кинжал
     .desc = Стандартный кинжал из железа.
@@ -2525,17 +2525,17 @@ ent-CEWeaponDaggerSickle = серп
 ent-CEWeaponHammerIron = железный молот
     .desc = Стандартный молот из железа.
 
-ent-CEWeaponMaceTwoHandedGuardrail = guardrail mace
-    .desc = A mana-powered heavy mace used by guards. When activated, it delivers a powerful blow that knocks back targets and drains their stamina.
+ent-CEWeaponMaceTwoHandedGuardrail = булава стражи
+    .desc = Тяжёлая булава на мане, используемая стражей. При активации наносит мощный удар, отбрасывающий цели и истощающий их выносливость.
 
-ent-CEGuardMaceEnergyBall = energy ball
+ent-CEGuardMaceEnergyBall = энергетический шар
     .desc = { "" }
 
-ent-ActionCEGuardMaceCharge = activate energy core
-    .desc = Toggles the guardrail mace's energy core, swapping its attack mode.
+ent-ActionCEGuardMaceCharge = активировать энергоядро
+    .desc = Переключает энергоядро булавы стражи, меняя режим атаки.
 
-ent-CEWeaponMop = mop
-    .desc = A simple mop for cleaning up spills and messes.
+ent-CEWeaponMop = швабра
+    .desc = Простая швабра для уборки луж и грязи.
 
 ent-CEWeaponPickaxeIron = железная кирка
     .desc = Прочная железная кирка, идеальная для добычи, а не для боя.
@@ -2543,29 +2543,29 @@ ent-CEWeaponPickaxeIron = железная кирка
 ent-CEWeaponShovelIron = железная лопата
     .desc = Прочная железная лопата, идеальная для копания, а не для боя.
 
-ent-CEWeaponSkimitarIron = iron skimitar
-    .desc = A curved iron blade, favored for its fast, sweeping strikes.
+ent-CEWeaponSkimitarIron = железный скимитар
+    .desc = Изогнутый железный клинок, ценимый за быстрые рубящие удары.
 
-ent-CEWeaponSpearIron = iron spear
-    .desc = A long iron-tipped spear. Excellent reach keeps enemies at bay.
+ent-CEWeaponSpearIron = железное копьё
+    .desc = Длинное копьё с железным наконечником. Отличная дальность удерживает врагов на расстоянии.
 
-ent-CEWeaponStaffWooden = wooden staff
-    .desc = A long wooden stick with an iron tip.
+ent-CEWeaponStaffWooden = деревянный посох
+    .desc = Длинная деревянная палка с железным наконечником.
 
-ent-CEWeaponSwordIron = iron sword
-    .desc = A finely crafted sword favored by imperial officers. Its blade gleams with authority and tradition.
+ent-CEWeaponSwordIron = железный меч
+    .desc = Искусно выкованный меч, любимый имперскими офицерами. Его клинок блестит властью и традицией.
 
-ent-CEWeaponTwoHandedSwordIron = iron two-handed sword
-    .desc = A large and heavy two-handed sword. Heavy means reliable.
+ent-CEWeaponTwoHandedSwordIron = железный двуручный меч
+    .desc = Большой и тяжёлый двуручный меч. Тяжёлый — значит надёжный.
 
-ent-CEWeaponWarAxeIron = iron war axe
-    .desc = A large and heavy iron war axe. Heavy means reliable.
+ent-CEWeaponWarAxeIron = железный боевой топор
+    .desc = Большой и тяжёлый железный боевой топор. Тяжёлый — значит надёжный.
 
-ent-CEWeaponBowCombat = combat bow
-    .desc = A standard ranged weapon, and even without magic.
+ent-CEWeaponBowCombat = боевой лук
+    .desc = Стандартное оружие дальнего боя, причём даже без магии.
 
-ent-CEWeaponLightCrossbow = light crossbow
-    .desc = A small, compact crossbow that is comfortable to hold with one hand. Not too accurate on the reverse side.
+ent-CEWeaponLightCrossbow = лёгкий арбалет
+    .desc = Небольшой компактный арбалет, удобный для стрельбы одной рукой. С обратной стороны не слишком точен.
 
 ent-CEArrowIron = arrow
     .desc = A sharp arrow made of wood and metal.
