@@ -1067,3 +1067,13 @@
   id: 1094
   time: '2026-09-30T15:57:08.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/493
+- author: TheShuEd
+  changes:
+  - message: The loudspeakers mounted on the walls have been added.
+    type: Add
+  - message: A radio room has been added, through which information can be broadcast
+      throughout the city via loudspeakers.
+    type: Add
+  id: 1095
+  time: '2026-09-30T19:55:44.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/492
