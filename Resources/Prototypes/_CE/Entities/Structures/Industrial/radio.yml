@@ -1,8 +1,9 @@
 - type: entity
+  abstract: true
   parent: CEBaseWallmount
-  id: CEWallRadioSpeaker
+  id: CEWallRadioSpeakerBase
   name: loudspeaker
-  description: A wall-mounted loudspeaker. Repeats announcements from radio booths broadcasting on its frequency.
+  description: A wall-mounted loudspeaker. Repeats announcements from radio booths broadcasting on its frequencies.
   components:
   - type: Sprite
     sprite: Structures/Wallmounts/intercom.rsi # TODO: CE sprite
@@ -45,7 +46,55 @@
   - type: Speech
     speechVerb: CEBroadcast
     suffixSpeechVerbs: {}
+
+- type: entity
+  parent: CEWallRadioSpeakerBase
+  id: CEWallRadioSpeaker
+  suffix: Common
+  components:
   - type: CERadioSpeaker
+    frequencies:
+    - CECommon
+
+- type: entity
+  parent: CEWallRadioSpeakerBase
+  id: CEWallRadioSpeakerAcademy
+  suffix: Common, Academy
+  components:
+  - type: CERadioSpeaker
+    frequencies:
+    - CECommon
+    - CEAcademy
+
+- type: entity
+  parent: CEWallRadioSpeakerBase
+  id: CEWallRadioSpeakerEngineering
+  suffix: Common, Engineering
+  components:
+  - type: CERadioSpeaker
+    frequencies:
+    - CECommon
+    - CEEngineering
+
+- type: entity
+  parent: CEWallRadioSpeakerBase
+  id: CEWallRadioSpeakerGuard
+  suffix: Common, Guard
+  components:
+  - type: CERadioSpeaker
+    frequencies:
+    - CECommon
+    - CEGuard
+
+- type: entity
+  parent: CEWallRadioSpeakerBase
+  id: CEWallRadioSpeakerTavern
+  suffix: Common, Tavern
+  components:
+  - type: CERadioSpeaker
+    frequencies:
+    - CECommon
+    - CETavern
 
 - type: entity
   parent: CEBaseMachinePowered
@@ -89,7 +138,7 @@
     powerLoad: 0.2
   - type: CERadioMicrophone
     frequencies:
-    - 0
+    - CECommon
     radius: 30
   - type: StaticPrice
     price: 100

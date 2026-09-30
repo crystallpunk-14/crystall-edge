@@ -1,0 +1,19 @@
+- type: CERadioFrequency
+  id: CECommon
+  name: ce-radio-frequency-common
+
+- type: CERadioFrequency
+  id: CEAcademy
+  name: ce-radio-frequency-academy
+
+- type: CERadioFrequency
+  id: CEEngineering
+  name: ce-radio-frequency-engineering
+
+- type: CERadioFrequency
+  id: CEGuard
+  name: ce-radio-frequency-guard
+
+- type: CERadioFrequency
+  id: CETavern
+  name: ce-radio-frequency-tavern

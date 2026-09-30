@@ -2,6 +2,7 @@ using Content.Server._CE.ZLevels.Chat;
 using Content.Server.Chat.Systems;
 using Content.Shared._CE.Radio;
 using Content.Shared._CE.Radio.Components;
+using Content.Shared._CE.Radio.Prototypes;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Chat;
 using Content.Shared.Power.EntitySystems;
@@ -43,7 +44,17 @@ public sealed partial class CERadioSystem : CESharedRadioSystem
         var query = EntityQueryEnumerator<CERadioSpeakerComponent>();
         while (query.MoveNext(out var uid, out var speaker))
         {
-            if (!ent.Comp.Frequencies.Contains(speaker.Frequency))
+            var sharesFrequency = false;
+            foreach (var frequency in ent.Comp.Frequencies)
+            {
+                if (!speaker.Frequencies.Contains(frequency))
+                    continue;
+
+                sharesFrequency = true;
+                break;
+            }
+
+            if (!sharesFrequency)
                 continue;
 
             if (!_power.IsPowered(uid))

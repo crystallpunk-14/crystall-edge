@@ -78,8 +78,14 @@ public abstract partial class CESharedRadioSystem : EntitySystem
         if (!args.IsInDetailsRange)
             return;
 
-        args.PushMarkup(Loc.GetString("ce-radio-microphone-examine-frequencies",
-            ("frequencies", string.Join(", ", ent.Comp.Frequencies))));
+        var names = new List<string>();
+        foreach (var id in ent.Comp.Frequencies)
+        {
+            if (ProtoMan.Resolve(id, out var proto))
+                names.Add(Loc.GetString(proto.Name));
+        }
+
+        args.PushMarkup(Loc.GetString("ce-radio-examine-frequencies", ("frequencies", string.Join(", ", names))));
     }
 
     [SubscribeLocalEvent]
@@ -88,7 +94,14 @@ public abstract partial class CESharedRadioSystem : EntitySystem
         if (!args.IsInDetailsRange)
             return;
 
-        args.PushMarkup(Loc.GetString("ce-radio-speaker-examine-frequency", ("frequency", ent.Comp.Frequency)));
+        var names = new List<string>();
+        foreach (var id in ent.Comp.Frequencies)
+        {
+            if (ProtoMan.Resolve(id, out var proto))
+                names.Add(Loc.GetString(proto.Name));
+        }
+
+        args.PushMarkup(Loc.GetString("ce-radio-examine-frequencies", ("frequencies", string.Join(", ", names))));
     }
 
     /// <summary>

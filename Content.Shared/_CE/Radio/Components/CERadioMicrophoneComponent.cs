@@ -1,4 +1,6 @@
+using Content.Shared._CE.Radio.Prototypes;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.Radio.Components;
 
@@ -10,7 +12,7 @@ namespace Content.Shared._CE.Radio.Components;
 public sealed partial class CERadioMicrophoneComponent : Component
 {
     [DataField, AutoNetworkedField]
-    public List<int> Frequencies = new();
+    public List<ProtoId<CERadioFrequencyPrototype>> Frequencies = new();
 
     /// <summary>
     /// Max effective distance (z-level aware) to the loudspeakers that will repeat the speech.
