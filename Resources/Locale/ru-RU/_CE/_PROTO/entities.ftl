@@ -604,7 +604,7 @@ ent-CEShockWaveHugeVFX = { ent-CEShockWaveVFX }
 ent-CESkyLightning = молния с неба
     .desc = { "" }
 
-ent-CEDustTileEffect = dust effect
+ent-CEDustTileEffect = эффект пыли
     .desc = Облако пыли при ударе.
     .suffix = VFX
 
@@ -3683,7 +3683,7 @@ ent-CEDistributionUnitEmpty = { ent-CEDistributionUnitBase }
     .desc = { ent-CEDistributionUnitBase.desc }
     .suffix = Пусто
 
-ent-CEPipeBrassBig = big brass pipe
+ent-CEPipeBrassBig = большая латунная труба
     .desc = { ent-CEPipeBrassBigBase.desc }
 
 ent-CEPipeBrassBigVerticalUp = большая латунная труба вверх
@@ -3707,7 +3707,7 @@ ent-CEPipeBrassBigBroken = { ent-CEPipeBrassBig }
 ent-CEPipeBrassMediumBase = { "" }
     .desc = Изолированная латунная труба с железными опорами. Стандартизированный метод передачи магической энергии на большие расстояния. Однако любые отверстия или трещины могут привести к утечке энергии и нанести вред окружающим существам, восприимчивым к магии.
 
-ent-CEPipeBrassMedium = medium brass pipe
+ent-CEPipeBrassMedium = средняя латунная труба
     .desc = { ent-CEPipeBrassMediumBase.desc }
 
 ent-CEPipeBrassMediumVerticalUp = средняя латунная труба вверх
@@ -3859,19 +3859,19 @@ ent-CEFloraTreeSpruce = { ent-CEBaseTree }
 ent-CEMagicEssenceHungryNode = голодная нода
     .desc = Изголодавшийся карман тёмной магии, тихо страдающий без определённого вкуса эссенции.
 
-ent-CEInfusionAltarPositionIndicator = возможная позиция постамента для инфузии
+ent-CEInfusionAltarPositionIndicator = возможная позиция постамента для слияния
     .desc = { "" }
 
-ent-CEInfusionAltarMishapManaConsume = сбой алтаря инфузии: поглощение маны
+ent-CEInfusionAltarMishapManaConsume = сбой алтаря слияния: поглощение маны
     .desc = TODO
 
-ent-CEInfusionAltarMishapManaRestore = сбой алтаря инфузии: восстановление маны
+ent-CEInfusionAltarMishapManaRestore = сбой алтаря слияния: восстановление маны
     .desc = TODO
 
-ent-CEInfusionAltarMishapPulse = сбой алтаря инфузии: импульс маны
+ent-CEInfusionAltarMishapPulse = сбой алтаря слияния: импульс маны
     .desc = TODO
 
-ent-CEInfusionAltarMishapExplosion = сбой алтаря инфузии: взрыв маны
+ent-CEInfusionAltarMishapExplosion = сбой алтаря слияния: взрыв маны
     .desc = TODO
 
 ent-CEMagicEssenceNode = нода магической эссенции
@@ -4682,7 +4682,7 @@ ent-CEFoodEggBase = { "" }
     .desc = Яйцо!
 
 ent-CEFoodMeatLamb = сырая баранина
-    .desc = Succulent lamb steak
+    .desc = Сочный стейк из ягнёнка.
 
 ent-CEFoodMeatPig = сырая свинина
     .desc = Я ел свинину, я ем свинину, и, похоже, буду есть свинину вечно.
@@ -4736,7 +4736,7 @@ ent-CEFoodSunflowerHead = подсолнечная головка
     .desc = Срезанный цветок от весёлого растения, любящего солнце. Внутри много вкусных семян.
 
 ent-CEHalloweenPumpkinEmmisiveBase = тыквенный фонарь
-    .desc = Oooh! Scary!
+    .desc = У-у-у! Страшно!
 
 ent-CEOpenSign = переворачивающаяся табличка «Открыто»
     .desc = Небольшая двусторонняя табличка, которую можно перевернуть.
@@ -4953,48 +4953,48 @@ ent-CEWindowWooden = деревянное окно
 ent-CEWindowFrameWooden = деревянная оконная рама
     .desc = { ent-CEBaseWindowFrame.desc }
 
-ent-CECobwebRight1 = cobweb
-    .desc = The sticky web is surprisingly strong and unpleasant.
+ent-CECobwebRight1 = паутина
+    .desc = Липкая паутина, на удивление прочная и неприятная.
     .suffix = Right. Corner.
 
-ent-CEWallmauntGarlandBase = crystals garland
-    .desc = Carefully crafted sparkling crystals tied on a string. For a festive attitude.
+ent-CEWallmauntGarlandBase = гирлянда из кристаллов
+    .desc = Аккуратно изготовленные сверкающие кристаллы, нанизанные на нить. Для праздничного настроения.
 
-ent-CEArmchairBase = armchair
-    .desc = A plush armchair, perfect for sinking into after a long day.
+ent-CEArmchairBase = кресло
+    .desc = Мягкое кресло, в которое так приятно погрузиться после долгого дня.
 
-ent-CEBaseBarrel = wooden barrel
-    .desc = The simplest design for storing liquids.
+ent-CEBaseBarrel = деревянная бочка
+    .desc = Простейшая конструкция для хранения жидкостей.
     .suffix = Empty
 
-ent-CECraneBarrel = wooden crane barrel
-    .desc = Large lying barrel with tap, for storing valuable liquids.
+ent-CECraneBarrel = деревянная бочка с краном
+    .desc = Большая лежачая бочка с краном для хранения ценных жидкостей.
     .suffix = Empty
 
-ent-CECraneBarrelSmall = wooden small crane barrel
-    .desc = A small lying barrel with a tap to quickly pour liquid into mugs.
+ent-CECraneBarrelSmall = малая деревянная бочка с краном
+    .desc = Небольшая лежачая бочка с краном, чтобы быстро разливать жидкость по кружкам.
     .suffix = Empty
 
-ent-CEBedFrameWooden = bed frame
+ent-CEBedFrameWooden = каркас кровати
     .desc = { "" }
 
-ent-CEWoodenBedBase = wooden bed
-    .desc = Wooden bed. Better than nothing.
+ent-CEWoodenBedBase = деревянная кровать
+    .desc = Деревянная кровать. Лучше, чем ничего.
 
-ent-CEBedsideTableWooden = wooden bedside table
-    .desc = A small place to store everyday items
+ent-CEBedsideTableWooden = деревянная прикроватная тумба
+    .desc = Небольшое место для хранения повседневных вещей.
 
-ent-CEBenchWood = wood bench
-    .desc = A bench carved from wood, a comfortable part of the interior designed for sitting and relaxing.
+ent-CEBenchWood = деревянная скамья
+    .desc = Скамья, вырезанная из дерева, — удобная часть интерьера для сидения и отдыха.
 
-ent-CEBookshelfWooden = wooden bookshelf
-    .desc = Mostly filled with books.
+ent-CEBookshelfWooden = деревянный книжный шкаф
+    .desc = В основном заполнен книгами.
 
-ent-CEBookshelfStone = stone bookshelf
-    .desc = Mostly filled with books.
+ent-CEBookshelfStone = каменный книжный шкаф
+    .desc = В основном заполнен книгами.
 
-ent-CECabinetWooden = wooden cabinet
-    .desc = Keep an eye on the skeletons in your closet.
+ent-CECabinetWooden = деревянный шкаф
+    .desc = Следите за скелетами в вашем шкафу.
 
 ent-CECarpetBase = ковёр
     .desc = Изысканная поверхность для ходьбы.
@@ -5002,20 +5002,20 @@ ent-CECarpetBase = ковёр
 ent-CEChairWooden = деревянный стул
     .desc = Сделан из самых обычных досок. Просто и эффективно!
 
-ent-CEClockBig = grandfather clock
-    .desc = A tall wooden clock with a swinging pendulum.
+ent-CEClockBig = напольные часы
+    .desc = Высокие деревянные часы с качающимся маятником.
 
 ent-CEBaseCurtains = занавески
     .desc = Скрывают то, что другим не следует видеть.
 
-ent-CEMannequinHumanMale = human male mannequin
+ent-CEMannequinHumanMale = манекен мужчины-человека
     .desc = { ent-CEMannequinBase.desc }
 
-ent-CEMannequinCarcat = carcat mannequin
+ent-CEMannequinCarcat = манекен каркат
     .desc = { ent-CEMannequinBase.desc }
 
-ent-CEMannequinSnowman = snowman
-    .desc = Someone had the idea to stack up big snowballs, and for some reason people call it a snow "man".
+ent-CEMannequinSnowman = снеговик
+    .desc = Кому-то пришла идея сложить большие снежки, и почему-то люди называют это снежным «человеком».
 
 ent-CETarget = мишень
     .desc = Мишень для практики стрельбы.
@@ -5026,11 +5026,11 @@ ent-CETargetStake = столб для мишени
 ent-CETargetEffigy = чучело-мишень
     .desc = Мишень-чучело для практики ударов в ближнем бою... или магии.
 
-ent-CEFloorTorch = floor torch
+ent-CEFloorTorch = напольный факел
     .desc = { ent-CEBaseTorch.desc }
     .suffix = NOT WORKING
 
-ent-CEWallmountTorch = wallmount torch
+ent-CEWallmountTorch = настенный факел
     .desc = { ent-CEBaseTorch.desc }
     .suffix = NOT WORKING
 
@@ -5043,103 +5043,103 @@ ent-CELargeWoodenCrate = большой деревянный ящик
 ent-CESmallWoodenCrate = малый деревянный ящик
     .desc = Прочный деревянный ящик.
 
-ent-CEResearchTable = research table
-    .desc = A table for conducting scientific research.
+ent-CEResearchTable = исследовательский стол
+    .desc = Стол для проведения научных исследований.
 
 ent-CEWorkbench = верстак
     .desc = Стол для производства различных базовых инструментов.
 
-ent-CEEngineeringTable = engineering table
-    .desc = A place for creating various engineering machine parts.
+ent-CEEngineeringTable = инженерный стол
+    .desc = Место для создания различных деталей инженерных машин.
 
 ent-CEHeater = нагреватель
     .desc = Механизм, который преобразует энергию в контролируемое горящее пламя.
 
-ent-CEPress = industrial press
-    .desc = Once powered up, the heavy press will be ready to rise and crush any objects beneath it. Use specialized press platforms to achieve the desired result.
+ent-CEPress = промышленный пресс
+    .desc = После включения тяжёлый пресс будет готов подняться и раздавить любые предметы под собой. Используйте специальные платформы пресса, чтобы получить нужный результат.
 
 ent-CEPressShockWaveVFX = { ent-CEDustTileEffect }
     .desc = { ent-CEDustTileEffect.desc }
     .suffix = VFX
 
-ent-CEBaseAutoCrafter = automatic workbench
-    .desc = An automated crafting station that continuously produces the selected recipe.
+ent-CEBaseAutoCrafter = автоматический верстак
+    .desc = Автоматизированная станция крафта, непрерывно производящая выбранный рецепт.
 
-ent-CEMeltingFurnace = melting furnace
+ent-CEMeltingFurnace = плавильная печь
     .desc = { ent-CEBaseAutoCrafter.desc }
 
 ent-CECharger = энергозарядная станция
     .desc = Механизм, который позволяет заполнять маной что угодно, от инструментов до гоблинов.
 
-ent-CEDimensionalLift = dimensional elevator
-    .desc = Anchors a rift between the tile it stands on and the ground far below it. Handy on a floating island, or for dropping into a roofed room from the level above.
+ent-CEDimensionalLift = пространственный лифт
+    .desc = Закрепляет разлом между плиткой, на которой стоит, и землёй далеко внизу. Удобен на летающем острове или чтобы спуститься в помещение с крышей с уровня выше.
 
 ent-CEDrill = стационарная дрель
     .desc = Большая промышленная дрель, способная разрушить что угодно при постоянной подаче энергии. Она была разработана имперскими инженерами для добычи особо твёрдых рудных залежей.
 
-ent-CEFunnel = funnel
-    .desc = A device for placing items inside storage facilities or removing items from them. To extract items, attach a conveyor belt.
+ent-CEFunnel = воронка
+    .desc = Устройство для помещения предметов в хранилища или извлечения из них. Для извлечения предметов подключите конвейерную ленту.
 
-ent-CEMapProjector = map projector
-    .desc = Projects a three-dimensional rotating model of the island
+ent-CEMapProjector = проектор карты
+    .desc = Проецирует трёхмерную вращающуюся модель острова.
 
-ent-CEPowerGridProjector = island power grid projector
-    .desc = Projects a three-dimensional rotating model of the island with a detailed layout of all energy devices.
+ent-CEPowerGridProjector = проектор энергосети острова
+    .desc = Проецирует трёхмерную вращающуюся модель острова с подробной схемой всех энергетических устройств.
 
 ent-CERecycler = переработчик
     .desc = Большая разрушительная машина, используемая для извлечения энергии из магических предметов путём их уничтожения. Также может использоваться как способ переработки предметов в базовые материалы.
 
-ent-CEMurkSphereFixerProjector = light monolith status projector
-    .desc = Projects the Light Monolith's charge status and pinpoints whatever's stopping it from filling.
+ent-CEMurkSphereFixerProjector = проектор состояния светового монолита
+    .desc = Проецирует состояние заряда светового монолита и указывает, что мешает ему зарядиться.
 
-ent-CETradingPlatformBase = trading platform
-    .desc = Abstract base prototype for trading platforms.
+ent-CETradingPlatformBase = торговая платформа
+    .desc = Абстрактный базовый прототип торговых платформ.
 
-ent-CETradingPlatformEmpireGuard = empire Guard trading platform
-    .desc = Standard trading platform tied to the Empire Guard faction.
+ent-CETradingPlatformEmpireGuard = торговая платформа Стражи Империи
+    .desc = Стандартная торговая платформа, привязанная к фракции Стражи Империи.
 
-ent-CETradingPlatformHelsinWarHouse = Helsin War House trading platform
-    .desc = Standard trading platform tied to the Helsin War House faction.
+ent-CETradingPlatformHelsinWarHouse = торговая платформа Военного дома Хельсина
+    .desc = Стандартная торговая платформа, привязанная к фракции Военного дома Хельсина.
 
-ent-CETradingPlatformHomeDecor = home decor trading platform
-    .desc = A trading platform tied to the Home Decor faction.
+ent-CETradingPlatformHomeDecor = торговая платформа Домашнего декора
+    .desc = Торговая платформа, привязанная к фракции Домашнего декора.
 
-ent-CETradingPlatformTailors = tailors trading platform
-    .desc = A trading platform tied to the Tailors faction.
+ent-CETradingPlatformTailors = торговая платформа Портных
+    .desc = Торговая платформа, привязанная к фракции Портных.
 
-ent-CETradingPlatformHorticulture = Horticulture trading platform
-    .desc = A trading platform tied to the Horticulture faction.
+ent-CETradingPlatformHorticulture = торговая платформа Садоводства
+    .desc = Торговая платформа, привязанная к фракции Садоводства.
 
-ent-CETradingPlatformDwarfMiners = dwarf miners trading platform
-    .desc = A trading platform tied to the Dwarf Miners faction.
+ent-CETradingPlatformDwarfMiners = торговая платформа Дварфов-шахтёров
+    .desc = Торговая платформа, привязанная к фракции Дварфов-шахтёров.
 
-ent-CETradingPlatformAlcohol = alcohol trading platform
-    .desc = A trading platform tied to the Alcohol faction.
+ent-CETradingPlatformAlcohol = торговая платформа Алкоголя
+    .desc = Торговая платформа, привязанная к фракции Алкоголя.
 
-ent-CETradingPlatformApothecariesGuild = apothecaries guild trading platform
-    .desc = A trading platform tied to the Apothecaries Guild faction.
+ent-CETradingPlatformApothecariesGuild = торговая платформа Гильдии аптекарей
+    .desc = Торговая платформа, привязанная к фракции Гильдии аптекарей.
 
-ent-CETradingPlatformImperialChancellery = imperial chancellery trading platform
-    .desc = A trading platform tied to the Imperial Magical Chancellery faction.
+ent-CETradingPlatformImperialChancellery = торговая платформа Имперской канцелярии
+    .desc = Торговая платформа, привязанная к фракции Имперской магической канцелярии.
 
-ent-CESalaryPlatform = salary platform
-    .desc = Allows you to quickly receive the salary you are entitled to (if, of course, you are supposed to receive a salary from the empire)
+ent-CESalaryPlatform = платформа выплат
+    .desc = Позволяет быстро получить причитающуюся вам зарплату (если, конечно, вам положена зарплата от империи).
 
-ent-CEAccumulatorVesselBase = accumulator vessel
-    .desc = A structure that collects magical energy and stores it for later use.
+ent-CEAccumulatorVesselBase = аккумулирующий сосуд
+    .desc = Конструкция, собирающая магическую энергию и хранящая её для дальнейшего использования.
 
 ent-CEDistributionUnitBase = блок распределения энергии
     .desc = { "" }
 
-ent-CEPipeTerminalDebug = terminal
+ent-CEPipeTerminalDebug = терминал
     .desc = TODO
     .suffix = DONT WORKING
 
-ent-CEEnergyExtractor = energy extractor
-    .desc = Splits crystals and other unstable items fed into its hopper, dumping the released energy straight into the city grid. Attach a funnel and a conveyor belt to keep it stocked.
+ent-CEEnergyExtractor = извлекатель энергии
+    .desc = Расщепляет кристаллы и другие нестабильные предметы, помещённые в его загрузочный бункер, и направляет высвободившуюся энергию прямо в сеть города. Подключите воронку и конвейерную ленту, чтобы он не пустовал.
 
-ent-CEGeneratorMagicCapacitor = air capacitor
-    .desc = Absorbs magical energy diffusing in the air, condenses it into a liquid form that can be transported through brass pipes.
+ent-CEGeneratorMagicCapacitor = воздушный конденсатор
+    .desc = Поглощает магическую энергию, рассеянную в воздухе, и конденсирует её в жидкую форму, которую можно транспортировать по латунным трубам.
 
 ent-CEPipeBrassBigBase = { "" }
     .desc = Изолированная латунная труба с железными опорами. Стандартизированный метод передачи магической энергии на большие расстояния. Однако любые отверстия или трещины могут привести к утечке энергии и нанести вред окружающим существам, восприимчивым к магии.
@@ -5153,14 +5153,14 @@ ent-CEPlantAppleTree = яблоня
 ent-CEPlantCabbage = капуста
     .desc = Вы видите перед собой капусту. Возможно, вы родились в одной из них.
 
-ent-CEPlantCarrot = carrot
-    .desc = In this world, they have not yet learned to use carrots as noses for snowmen.
+ent-CEPlantCarrot = морковь
+    .desc = В этом мире ещё не научились использовать морковь вместо носа для снеговиков.
 
 ent-CEPlantChanterelle = лисичка
     .desc = Вид дикого гриба с характерным жёлтым цветом и слегка фруктовым ароматом.
 
-ent-CEPlantCorn = corn
-    .desc = There are rumors that lurkers can be found inside cornfields.
+ent-CEPlantCorn = кукуруза
+    .desc = Ходят слухи, что в кукурузных полях можно встретить луркеров.
 
 ent-CEPlantCotton = хлопок
     .desc = В некотором смысле вы выращиваете будущую одежду.
@@ -5168,8 +5168,8 @@ ent-CEPlantCotton = хлопок
 ent-CEPlantCucumber = огурец
     .desc = Не доверяйте людям, которые умеют превращаться в огурцы.
 
-ent-CEPlantGarlic = garlic
-    .desc = Only humans figured out how to take a sharp, unpalatable root vegetable and use it as a seasoning wherever possible.
+ent-CEPlantGarlic = чеснок
+    .desc = Только люди догадались взять острый, невкусный корнеплод и использовать его как приправу где только можно.
 
 ent-CEPlantOnion = лук
     .desc = Он такой милый, что до слёз, когда его режешь.
@@ -5192,18 +5192,18 @@ ent-CEPlantTomatoes = помидоры
 ent-CEPlantWheat = пшеница
     .desc = Самая популярная культура. Неприхотливая, она открывает путь к изобилию мучных изделий.
 
-ent-CEMagicEssenceAttractor = essence attractor
-    .desc = A thaumaturgical device that draws in floating magic essence from the air and condenses it into a collectible liquid, as long as it has power.
+ent-CEMagicEssenceAttractor = притягиватель эссенции
+    .desc = Тауматургическое устройство, притягивающее из воздуха парящую магическую эссенцию и конденсирующее её в собираемую жидкость, пока оно запитано.
 
-ent-CEInfusionAltar = infusion altar
+ent-CEInfusionAltar = алтарь слияния
     .desc = TODO
 
-ent-CEInfusionAltarPedestal = infusion altar pedestal
+ent-CEInfusionAltarPedestal = постамент алтаря слияния
     .desc = TODO
 
-ent-CESolutionNormalizer = solution normalizer
-    .desc = An alchemical device that destroys the reagent that is least present in a solution poured into it, gradually normalizing mixtures down to their dominant reagents. Requires power to operate.
+ent-CESolutionNormalizer = нормализатор растворов
+    .desc = Алхимическое устройство, уничтожающее реагент, которого в залитом в него растворе меньше всего, постепенно приводя смеси к их преобладающим реагентам. Для работы требуется энергия.
 
-ent-CEVehicleHoverboard = hoverboard
-    .desc = Floating personal transport device
+ent-CEVehicleHoverboard = ховерборд
+    .desc = Парящее личное транспортное средство.
 
