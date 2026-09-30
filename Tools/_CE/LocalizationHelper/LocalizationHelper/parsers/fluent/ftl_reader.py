@@ -3,6 +3,14 @@ from LocalizationHelper import get_logger, LogText
 logger = get_logger(__name__)
 
 
+EMPTY_VALUES = ("None", '{ "" }')
+
+
+def _value_or_none(value: str):
+    value = value.strip()
+    return None if value in EMPTY_VALUES else value
+
+
 def read_ftl(path: str) -> dict:
 
     prototypes = {}
@@ -21,17 +29,19 @@ def read_ftl(path: str) -> dict:
                     last_prototype = proto_id
                     prototypes[proto_id] = {
                         "id": proto_id,
-                        "name": proto_name.strip(),
+                        "name": _value_or_none(proto_name),
                         "description": None,
                         "suffix": None
                     }
                 else:
-                    if "desc" in line:
+                    if line.strip().startswith(".desc"):
                         attr = "description"
-                    elif "suffix" in line:
+                    elif line.strip().startswith(".suffix"):
                         attr = "suffix"
+                    else:
+                        continue
 
-                    prototypes[last_prototype][attr] = line.split(" = ", 1)[1].strip()
+                    prototypes[last_prototype][attr] = _value_or_none(line.split(" = ", 1)[1])
     except Exception as e:
         logger.error("%s: %s - %s", LogText.ERROR_WHILE_READING_DATA_FROM_FILE, path, e, exc_info=True)
     else:
