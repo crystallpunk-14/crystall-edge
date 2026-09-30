@@ -4147,36 +4147,36 @@ ent-CEStatusEffectFeatherFall = падение пёрышка
     .desc = { "" }
 
 ent-CEActionFrostBlade = Ледяной клинок
-    .desc = You create a powerful temporary weapon made of ice that deals high damage.
+    .desc = Вы создаёте мощное временное оружие изо льда, наносящее высокий урон.
 
-ent-CEWeaponSwordFrostTemporary = frost blade
-    .desc = A magical weapon woven from ice, which will soon melt away.
+ent-CEWeaponSwordFrostTemporary = ледяной клинок
+    .desc = Магическое оружие, сплетённое изо льда, которое скоро растает.
     .suffix = 120 seconds
 
-ent-CEActionSpellManaGift = Mana gift
-    .desc = You restore mana to the selected target.
+ent-CEActionSpellManaGift = Дар маны
+    .desc = Вы восстанавливаете ману выбранной цели.
 
-ent-CEActionSpellManaSteal = Mana steal
-    .desc = You steal mana from the target and add it to your own reserves.
+ent-CEActionSpellManaSteal = Кража маны
+    .desc = Вы крадёте ману у цели и добавляете её в свои запасы.
 
-ent-CEActionSpellPlantGrowth = Plant Growth
-    .desc = You channel vital essence into the area, feeding nearby plants energy and resources and nudging their growth forward, while also mending the wounds of any creatures caught in the bloom.
+ent-CEActionSpellPlantGrowth = Рост растений
+    .desc = Вы направляете жизненную эссенцию в область, питая ближайшие растения энергией и ресурсами и ускоряя их рост, а также залечивая раны всех существ, попавших в цветение.
 
-ent-CEEffectHealingGenericGreen = verdant impact
+ent-CEEffectHealingGenericGreen = зелёный всплеск
     .desc = { "" }
     .suffix = VFX
 
-ent-CEEffectAreaHealingTelegraphyPlantGrowth = verdant area impact
+ent-CEEffectAreaHealingTelegraphyPlantGrowth = зелёный всплеск по области
     .desc = { "" }
     .suffix = VFX
 
-ent-CEActionThiefBlackMarket = Black market
-    .desc = Opens a connection to the black market, letting you buy contraband.
+ent-CEActionThiefBlackMarket = Чёрный рынок
+    .desc = Открывает связь с чёрным рынком, позволяя покупать контрабанду.
 
-ent-ActionCEWerewolfTransform = True Form
-    .desc = Give in to the beast and take your true, wolf form. Only works at night.
+ent-ActionCEWerewolfTransform = Истинная форма
+    .desc = Поддайтесь зверю и примите свою истинную, волчью форму. Работает только ночью.
 
-ent-CEMobCarcat = Mr. Cat
+ent-CEMobCarcat = Мистер Кот
     .desc = { "" }
 
 ent-CEOrganCarcatTorso = { "" }
@@ -4223,7 +4223,7 @@ ent-CEOrganCarcatEyes = { "" }
     .desc = { "" }
     .suffix = carcat
 
-ent-CEMobCarrin = Mr. Birb
+ent-CEMobCarrin = Мистер Птиц
     .desc = { "" }
 
 ent-CEOrganCarrinTorso = { "" }
@@ -4270,7 +4270,7 @@ ent-CEOrganCarrinEyes = { "" }
     .desc = { "" }
     .suffix = carrin
 
-ent-CEMobDwarf = Mr. Dwarf
+ent-CEMobDwarf = Мистер Дварф
     .desc = { "" }
 
 ent-CEOrganDwarfTorso = { "" }
@@ -4317,7 +4317,7 @@ ent-CEOrganDwarfEyes = { "" }
     .desc = { "" }
     .suffix = dwarf
 
-ent-CEMobElf = Mr. Elf
+ent-CEMobElf = Мистер Эльф
     .desc = { "" }
 
 ent-CEOrganElfTorso = { "" }
@@ -4364,7 +4364,7 @@ ent-CEOrganElfEyes = { "" }
     .desc = { "" }
     .suffix = elf
 
-ent-CEMobGoblin = Mr. Goblin
+ent-CEMobGoblin = Мистер Гоблин
     .desc = { "" }
 
 ent-CEOrganGoblinTorso = { "" }
@@ -4411,7 +4411,7 @@ ent-CEOrganGoblinEyes = { "" }
     .desc = { "" }
     .suffix = goblin
 
-ent-CEMobHuman = Mr. Human
+ent-CEMobHuman = Мистер Человек
     .desc = { "" }
 
 ent-CEOrganHumanTorso = { "" }
@@ -4458,7 +4458,7 @@ ent-CEOrganHumanEyes = { "" }
     .desc = { "" }
     .suffix = human
 
-ent-CEMobSilva = Mr. Silva
+ent-CEMobSilva = Мистер Сильва
     .desc = { "" }
 
 ent-CEOrganSilvaTorso = { "" }
@@ -4505,7 +4505,7 @@ ent-CEOrganSilvaEyes = { "" }
     .desc = { "" }
     .suffix = silva
 
-ent-CEMobTiefling = Mr. Tiefling
+ent-CEMobTiefling = Мистер Тифлинг
     .desc = { "" }
 
 ent-CEOrganTieflingTorso = { "" }
@@ -4560,14 +4560,14 @@ ent-CELargeWoodenCrateFilled = { "" }
     .desc = { "" }
     .suffix = Filled, Tools and Fluff
 
-ent-CEClothingCloakCapeBarbarian = barbarian cape
-    .desc = A rugged cape favored by barbarians, often made from rough hides.
+ent-CEClothingCloakCapeBarbarian = плащ варвара
+    .desc = Грубый плащ, любимый варварами, часто сделанный из необработанных шкур.
 
-ent-CEClothingCloakCapeFur = fur cape
-    .desc = A warm fur cape ideal for cold climates.
+ent-CEClothingCloakCapeFur = меховой плащ
+    .desc = Тёплый меховой плащ, идеальный для холодного климата.
 
-ent-CEClothingCloakCapeFur2 = fur cape variant
-    .desc = A secondary fur cape style with a different fur pattern.
+ent-CEClothingCloakCapeFur2 = меховой плащ, вариант
+    .desc = Второй фасон мехового плаща с другим узором меха.
 
 ent-CEClothingCloakBlue = синий плащ
     .desc = Простой синий плащ для повседневных путешествий и защиты.
@@ -4578,8 +4578,8 @@ ent-CEClothingCloakCommandant = плащ коменданта
 ent-CEClothingCloakGuardCommander = плащ командира стражи
     .desc = Престижный плащ, носимый командиром стражи, обозначающий власть.
 
-ent-CEClothingCloakBrigadier = brigadier's cloak
-    .desc = A status item that only senior foremen responsible for the integrity of the island are allowed to wear. The fabric is stitched with thin brass threads, providing excellent insulation from magical radiation.
+ent-CEClothingCloakBrigadier = плащ бригадира
+    .desc = Знак статуса, который разрешено носить только старшим бригадирам, отвечающим за целостность острова. Ткань прошита тонкими латунными нитями, обеспечивающими отличную защиту от магического излучения.
 
 ent-CEClothingCloakTavernmaster = плащ хозяина таверны
     .desc = Церемониальный плащ, носимый хозяином таверны, символизирующий лидерство.
@@ -4596,11 +4596,11 @@ ent-CEClothingCloakVampireBlue = синий вампирский плащ
 ent-CEClothingCloakVampireRed = красный вампирский плащ
     .desc = Багровый плащ, излюбленный вампирской аристократией.
 
-ent-CEClothingCloakCoatFur = fur coat
-    .desc = A luxurious fur coat made for warmth and style.
+ent-CEClothingCloakCoatFur = меховая шуба
+    .desc = Роскошная меховая шуба для тепла и стиля.
 
-ent-CEClothingCloakCoatFurBrown = brown fur coat
-    .desc = A rugged brown fur coat for colder climates.
+ent-CEClothingCloakCoatFurBrown = коричневая меховая шуба
+    .desc = Грубая коричневая меховая шуба для холодного климата.
 
 ent-CEClothingCloakMantleAlchemist = мантия алхимика
     .desc = Мантия, носимая алхимиками, часто используемая для защиты одежды от проливов и реагентов.
@@ -4608,8 +4608,8 @@ ent-CEClothingCloakMantleAlchemist = мантия алхимика
 ent-CEClothingCloakMantleInvestigator = мантия следователя
     .desc = Практичная мантия, излюбленная следователями за её незаметный внешний вид.
 
-ent-CEClothingCloakMantleThaumaturge = thaumaturge's mantle
-    .desc = A formal mantle worn by thaumaturges of the Academy, with an attachable ceremonial hood.
+ent-CEClothingCloakMantleThaumaturge = мантия тауматурга
+    .desc = Парадная мантия, которую носят тауматурги Академии, с пристёгивающимся церемониальным капюшоном.
 
 ent-CEClothingCloakBlacksmithApron = фартук кузнеца
     .desc = Тяжёлый фартук, используемый кузнецами для защиты от искр и жара.
@@ -4623,20 +4623,20 @@ ent-CEClothingCloakHaori = хаори
 ent-CEClothingCloakMaidApron = фартук горничной
     .desc = Аккуратный фартук, обычно носимый горничными и домашним персоналом.
 
-ent-CEClothingCloakRaincoatAlchemist = alchemist's raincoat
-    .desc = A protective raincoat used by alchemists to shield reagents from the weather.
+ent-CEClothingCloakRaincoatAlchemist = плащ алхимика
+    .desc = Защитный дождевик, который алхимики используют, чтобы уберечь реагенты от непогоды.
 
-ent-CEClothingCloakRaincoatGreen = green raincoat
-    .desc = A waterproof green raincoat for everyday use.
+ent-CEClothingCloakRaincoatGreen = зелёный дождевик
+    .desc = Водонепроницаемый зелёный дождевик на каждый день.
 
-ent-CEClothingCloakRaincoatGuard = guard raincoat
-    .desc = A reinforced raincoat issued to guards for weather protection while on duty.
+ent-CEClothingCloakRaincoatGuard = дождевик стражи
+    .desc = Усиленный дождевик, выдаваемый страже для защиты от непогоды во время службы.
 
-ent-CEClothingCloakRaincoatWhite = white raincoat
-    .desc = A crisp white raincoat commonly used by professionals requiring a clean appearance.
+ent-CEClothingCloakRaincoatWhite = белый дождевик
+    .desc = Чистый белый дождевик, часто используемый профессионалами, которым нужен опрятный вид.
 
 ent-CEClothingMaskVampireVoiceBase = { "" }
-    .desc = This mask reeks of blood. Effectively conceals the identity of the wearer.
+    .desc = От этой маски разит кровью. Эффективно скрывает личность владельца.
     .suffix = Voice mask
 
 ent-CEClothingShirtSyurkoBlack = чёрное сюрко
@@ -4660,41 +4660,41 @@ ent-CEClothingShirtSyurkoWhite = белое сюрко
 ent-CEClothingShirtSyurkoYellow = жёлтое сюрко
     .desc = Жёлтое сюрко, которое выделяется на парадах и фестивалях.
 
-ent-CEMobWerewolf = werewolf
-    .desc = A terrifying and extremely dangerous creature of the night. By day, it hides under the guise of your friendly neighbor.
+ent-CEMobWerewolf = оборотень
+    .desc = Ужасающее и чрезвычайно опасное создание ночи. Днём прячется под личиной вашего дружелюбного соседа.
 
-ent-CEMobLurker = lurker
-    .desc = The spirit of hunger and night. The Hunter of Lost Solitaries
+ent-CEMobLurker = луркер
+    .desc = Дух голода и ночи. Охотник на заблудших одиночек.
 
-ent-CEMobRat = rat
-    .desc = A small, unpleasant rodent.
+ent-CEMobRat = крыса
+    .desc = Маленький неприятный грызун.
 
-ent-CEFoodCheeseWheel = cheese wheel
-    .desc = A large wheel of soft, fragrant piece of cheese.
+ent-CEFoodCheeseWheel = круг сыра
+    .desc = Большой круг мягкого душистого сыра.
 
-ent-CEFoodCheesePart = cheese
-    .desc = A triangle of soft, fragrant cheese.
+ent-CEFoodCheesePart = сыр
+    .desc = Треугольный кусок мягкого душистого сыра.
 
-ent-CEFoodDoughLarge = large piece of dough
-    .desc = The perfect ingredient for any flour product. The only thing left to do is to shape it.
+ent-CEFoodDoughLarge = большой кусок теста
+    .desc = Идеальный ингредиент для любых мучных изделий. Осталось только придать форму.
 
 ent-CEFoodEggBase = { "" }
-    .desc = An egg!
+    .desc = Яйцо!
 
-ent-CEFoodMeatLamb = raw lamb
+ent-CEFoodMeatLamb = сырая баранина
     .desc = Succulent lamb steak
 
-ent-CEFoodMeatPig = raw pig meat
-    .desc = I've eaten pork, I eat pork, and it looks like I'll be eating pork forever and ever.
+ent-CEFoodMeatPig = сырая свинина
+    .desc = Я ел свинину, я ем свинину, и, похоже, буду есть свинину вечно.
 
-ent-CEFoodMeatBoar = raw boar meat
-    .desc = It's like pig meat, except more odorous.
+ent-CEFoodMeatBoar = сырое мясо кабана
+    .desc = Как свинина, только с более сильным запахом.
 
-ent-CEFoodMeatMonster = raw monster meat
-    .desc = The colour is quite suspicious, not everyone would dare to try it out, perhaps give it to a goblin?
+ent-CEFoodMeatMonster = сырое мясо монстра
+    .desc = Цвет довольно подозрительный, не каждый решится попробовать. Может, отдать гоблину?
 
-ent-CEFoodMeatFlemTorso = raw flem torso
-    .desc = Seems to be hollow.
+ent-CEFoodMeatFlemTorso = сырой торс флема
+    .desc = Кажется, он пустой внутри.
 
 ent-CEWheat = пучок пшеницы
     .desc = У вас есть выбор: либо пересадить зёрна заново, либо смолоть их в муку.
@@ -4720,14 +4720,14 @@ ent-CEFoodApple = яблоко
 ent-CEFoodPepper = перец
     .desc = Красный и сладковатый.
 
-ent-CEFoodGarlic = garlic
-    .desc = A bulb of garlic, full of flavor and pungency.
+ent-CEFoodGarlic = чеснок
+    .desc = Головка чеснока, полная вкуса и остроты.
 
-ent-CEFoodCorn = ear of corn
-    .desc = Needs some butter! And some cooking...
+ent-CEFoodCorn = початок кукурузы
+    .desc = Хорошо бы с маслом! И приготовить...
 
-ent-CEFoodCarrot = carrot
-    .desc = A bright orange carrot, crunchy and sweet.
+ent-CEFoodCarrot = морковь
+    .desc = Яркая оранжевая морковь, хрустящая и сладкая.
 
 ent-CEFoodOnion = лук
     .desc = Если вы съедите слишком много, вы можете плакать от радости.
@@ -4735,23 +4735,23 @@ ent-CEFoodOnion = лук
 ent-CEFoodSunflowerHead = подсолнечная головка
     .desc = Срезанный цветок от весёлого растения, любящего солнце. Внутри много вкусных семян.
 
-ent-CEHalloweenPumpkinEmmisiveBase = jack-o lantern
+ent-CEHalloweenPumpkinEmmisiveBase = тыквенный фонарь
     .desc = Oooh! Scary!
 
-ent-CEOpenSign = flip sign "Open"
-    .desc = A small double-sided sign that can be turned over
+ent-CEOpenSign = переворачивающаяся табличка «Открыто»
+    .desc = Небольшая двусторонняя табличка, которую можно перевернуть.
 
-ent-CEClosedSign = flip sign "Closed"
-    .desc = A small double-sided sign that can be turned over
+ent-CEClosedSign = переворачивающаяся табличка «Закрыто»
+    .desc = Небольшая двусторонняя табличка, которую можно перевернуть.
 
-ent-CEPlushieGoblin = goblin plushie
-    .desc = A sneaky one, for sure... It seems like you can put a coin in it, but it's not clear if you can get it back!
+ent-CEPlushieGoblin = плюшевый гоблин
+    .desc = Хитрец, это точно... Кажется, в него можно положить монетку, но неясно, получится ли достать её обратно!
 
-ent-CEPlushieSilva = silva plushie
-    .desc = A little cute bush! You can put some seeds in it, but sadly, they won't grow...
+ent-CEPlushieSilva = плюшевая сильва
+    .desc = Маленький милый кустик! В него можно насыпать семена, но, увы, они не прорастут...
 
-ent-CECrystalShardAir = air crystal shard
-    .desc = A fragment of an air crystal capable of floating freely in the air.
+ent-CECrystalShardAir = осколок воздушного кристалла
+    .desc = Фрагмент воздушного кристалла, способный свободно парить в воздухе.
 
 ent-CEEnergyCrystalShard = осколок энергетического кристалла
     .desc = Кристаллизованная магическая энергия, появляющаяся в местах с высокой концентрацией маны. Может использоваться как одноразовый источник энергии.
@@ -4762,21 +4762,21 @@ ent-CEWoodLog = деревянное бревно
 ent-CEBucket = ведро
     .desc = Это скучное старое ведро.
 
-ent-CELantern = lantern
-    .desc = A device that converts energy from crystals into a source of directional light. Convenient for traveling.
+ent-CELantern = фонарь
+    .desc = Устройство, преобразующее энергию кристаллов в источник направленного света. Удобно в путешествиях.
 
 ent-CEManaTransferGlove = перчатка передачи маны
     .desc = Перчатка, позволяющая передавать ману в хранилища маны и из них.
 
-ent-CETorch = torch
-    .desc = At its core, a stick burning on one side. Used to light up the area.
+ent-CETorch = факел
+    .desc = По сути, палка, горящая с одного конца. Используется для освещения местности.
     .suffix = NOT WORKING
 
 ent-CEWrench = гаечный ключ
     .desc = Обычный инструмент для сборки и разборки. Помните: влево затягивать, вправо откручивать.
 
-ent-CESnowball = snowball
-    .desc = A small handful of snow, handy for throwing.
+ent-CESnowball = снежок
+    .desc = Небольшая горсть снега, удобная для метания.
 
 ent-CEWeaponGunJustice = Револьвер "Справедливость"
     .desc = Быстрый и удобный револьвер стражи, из которого можно легко стрелять двумя руками.
@@ -4863,36 +4863,36 @@ ent-CEZLevelLadderDirtCliffCornerInner = { ent-CEZLevelLadderCornerInnerBase }
     .desc = { ent-CEZLevelLadderCornerInnerBase.desc }
     .suffix = Внутренний угол
 
-ent-CEZLevelsLadderRoofRed = red roof
+ent-CEZLevelsLadderRoofRed = красная крыша
     .desc = { ent-CEZLevelLadderBase.desc }
 
-ent-CEZLevelsLadderRoofRedCorner = red roof
+ent-CEZLevelsLadderRoofRedCorner = красная крыша
     .desc = { ent-CEZLevelLadderCornerBase.desc }
     .suffix = Угол
 
-ent-CEZLevelsLadderRoofRedCornerInner = red roof
+ent-CEZLevelsLadderRoofRedCornerInner = красная крыша
     .desc = { ent-CEZLevelLadderCornerInnerBase.desc }
     .suffix = Внутренний угол
 
-ent-CEZLevelsLadderRoofGreen = green roof
+ent-CEZLevelsLadderRoofGreen = зелёная крыша
     .desc = { ent-CEZLevelLadderBase.desc }
 
-ent-CEZLevelsLadderRoofGreenCorner = green roof
+ent-CEZLevelsLadderRoofGreenCorner = зелёная крыша
     .desc = { ent-CEZLevelLadderCornerBase.desc }
     .suffix = Corner
 
-ent-CEZLevelsLadderRoofGreenCornerInner = green roof
+ent-CEZLevelsLadderRoofGreenCornerInner = зелёная крыша
     .desc = { ent-CEZLevelLadderCornerInnerBase.desc }
     .suffix = Inner Corner
 
-ent-CEZLevelsLadderRoofBlue = blue roof
+ent-CEZLevelsLadderRoofBlue = синяя крыша
     .desc = { ent-CEZLevelLadderBase.desc }
 
-ent-CEZLevelsLadderRoofBlueCorner = blue roof
+ent-CEZLevelsLadderRoofBlueCorner = синяя крыша
     .desc = { ent-CEZLevelLadderCornerBase.desc }
     .suffix = Corner
 
-ent-CEZLevelsLadderRoofBlueCornerInner = blue roof
+ent-CEZLevelsLadderRoofBlueCornerInner = синяя крыша
     .desc = { ent-CEZLevelLadderCornerInnerBase.desc }
     .suffix = Inner Corner
 
