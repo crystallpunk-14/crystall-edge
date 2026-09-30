@@ -3519,17 +3519,17 @@ ent-CEPottedPlant4 = { ent-CEPottedPlantBase }
     .desc = { ent-CEPottedPlantBase.desc }
 
 ent-CEWoodenSpikes = деревянные колья
-    .desc = Sharp wooden stakes stuck into the ground. You definitely don't want to fall on them!
+    .desc = Острые деревянные колья, вбитые в землю. На них определённо не хочется падать!
 
 ent-CEBaseTorch = { "" }
-    .desc = A good, reliable light source. Too bad it doesn't last.
+    .desc = Хороший, надёжный источник света. Жаль, что ненадолго.
     .suffix = NOT WORKING
 
-ent-CEFloorTorchAlwaysPowered = floor torch
+ent-CEFloorTorchAlwaysPowered = напольный факел
     .desc = { "" }
     .suffix = Debug, Infinite
 
-ent-CEWallmountTorchAlwaysPowered = wallmount torch
+ent-CEWallmountTorchAlwaysPowered = настенный факел
     .desc = { "" }
     .suffix = Debug, Infinite
 
@@ -3576,16 +3576,16 @@ ent-CEConveyorLadderReverse = { ent-CEConveyorLadder }
     .desc = { ent-CEConveyorLadder.desc }
     .suffix = Обратная
 
-ent-CEGridStabilityCore = flying island core
-    .desc = The energy of this air crystal is capable of keeping a huge island suspended in the air. Cherish it as the apple of your eye: the lives of all its inhabitants depend on its integrity.
+ent-CEGridStabilityCore = ядро летающего острова
+    .desc = Энергия этого воздушного кристалла способна удерживать в воздухе огромный остров. Берегите его как зеницу ока: жизни всех обитателей зависят от его целостности.
     .suffix = 50 range
 
-ent-CEGridStabilityCoreNatural = natural levitation core
+ent-CEGridStabilityCoreNatural = природное ядро левитации
     .desc = { ent-CEGridStabilityCore.desc }
     .suffix = 25 range
 
-ent-CEIsolator = insulator loop
-    .desc = Prevents unwanted connections between pipes.
+ent-CEIsolator = изолирующая петля
+    .desc = Предотвращает нежелательные соединения между трубами.
 
 ent-CELamppostBase = фонарный столб
     .desc = Высокий столб с фонарём, освещающий окружающие территории.
@@ -3602,11 +3602,11 @@ ent-CELamppostCurve = { ent-CELamppostBase }
     .desc = { ent-CELamppostBase.desc }
     .suffix = Изогнутый
 
-ent-CEPressTargetAnvil = industrial anvil
-    .desc = A solid anvil for an industrial press. It is used to flatten objects into flatter shapes.
+ent-CEPressTargetAnvil = промышленная наковальня
+    .desc = Прочная наковальня для промышленного пресса. Используется, чтобы сплющивать предметы.
 
-ent-CEPressTargetThaumaturgySplitter = thaumaturgical splitter
-    .desc = An enchanted platform for the press that allows objects to be broken down into their primordial essences.
+ent-CEPressTargetThaumaturgySplitter = тауматургический расщепитель
+    .desc = Зачарованная платформа для пресса, позволяющая разлагать предметы на первичные эссенции.
 
 ent-CEShuttleWingBase = крыло дирижабля
     .desc = Гигантские перепончатые крылья, способные, вместе с магией, удерживать в воздухе самые тяжёлые объекты.
@@ -3633,37 +3633,37 @@ ent-CEWallLightBase = настенная лампа
 ent-CEWallLight = { ent-CEWallLightBase }
     .desc = { ent-CEWallLightBase.desc }
 
-ent-CEPortalDimensionalLift = dimensional rift
-    .desc = A stable rift punched straight down through the world.
+ent-CEPortalDimensionalLift = пространственный разлом
+    .desc = Стабильный разлом, пробитый прямо вниз сквозь мир.
     .suffix = Dimensional Lift
 
-ent-CEDimensionalLiftTraversalEffect = dimensional rift beam
+ent-CEDimensionalLiftTraversalEffect = луч пространственного разлома
     .desc = { "" }
     .suffix = VFX
 
-ent-CEDimensionalLiftTraversalImpact = dimensional rift flash
+ent-CEDimensionalLiftTraversalImpact = вспышка пространственного разлома
     .desc = { "" }
     .suffix = VFX
 
-ent-CEDrillAdvanced = advanced stationary drill
-    .desc = An industrial drill rebuilt with reinforced components, hitting twice as hard as the standard model.
+ent-CEDrillAdvanced = улучшенный стационарный бур
+    .desc = Промышленный бур, перестроенный с усиленными компонентами, бьёт вдвое сильнее стандартной модели.
 
-ent-CEMachineFrameBase = machine frame
+ent-CEMachineFrameBase = каркас машины
     .desc = { "" }
 
 ent-CEMachineFrame = { ent-CEMachineFrameBase }
     .desc = { "" }
 
-ent-CEMachineFrameDestroyed = destroyed machine frame
+ent-CEMachineFrameDestroyed = разрушенный каркас машины
     .desc = { "" }
 
-ent-CELightMonolith = light monolith
-    .desc = A manufactured crystal capable of storing a vast amount of light and using it to repair the Lucson Sphere.
+ent-CELightMonolith = световой монолит
+    .desc = Искусственный кристалл, способный накапливать огромное количество света и использовать его для восстановления Сферы Люксона.
 
-ent-CELightPylon = light pylon
-    .desc = A component of the Light Monolith mechanism. All pylons must be operational, powered, and shrouded in murk for the main monolith to charge.
+ent-CELightPylon = световой пилон
+    .desc = Компонент механизма светового монолита. Все пилоны должны быть исправны, запитаны и окутаны мраком, чтобы главный монолит заряжался.
 
-ent-CECashImpact = cash impact
+ent-CECashImpact = звон монет
     .desc = { "" }
     .suffix = VFX
 
@@ -3686,13 +3686,13 @@ ent-CEDistributionUnitEmpty = { ent-CEDistributionUnitBase }
 ent-CEPipeBrassBig = big brass pipe
     .desc = { ent-CEPipeBrassBigBase.desc }
 
-ent-CEPipeBrassBigVerticalUp = big brass pipe up
+ent-CEPipeBrassBigVerticalUp = большая латунная труба вверх
     .desc = { ent-CEPipeBrassBig.desc }
 
-ent-CEPipeBrassBigVerticalDown = big brass pipe down
+ent-CEPipeBrassBigVerticalDown = большая латунная труба вниз
     .desc = { ent-CEPipeBrassBig.desc }
 
-ent-CEPipeBrassBigValve = big valve
+ent-CEPipeBrassBigValve = большой клапан
     .desc = Клапан, установленный на латунной трубе, позволяющий регулировать поток магической энергии через трубу.
     .suffix = Клапан, Выкл
 
@@ -3710,13 +3710,13 @@ ent-CEPipeBrassMediumBase = { "" }
 ent-CEPipeBrassMedium = medium brass pipe
     .desc = { ent-CEPipeBrassMediumBase.desc }
 
-ent-CEPipeBrassMediumVerticalUp = medium brass pipe up
+ent-CEPipeBrassMediumVerticalUp = средняя латунная труба вверх
     .desc = { ent-CEPipeBrassMedium.desc }
 
-ent-CEPipeBrassMediumVerticalDown = medium brass pipe down
+ent-CEPipeBrassMediumVerticalDown = средняя латунная труба вниз
     .desc = { ent-CEPipeBrassMedium.desc }
 
-ent-CEPipeBrassMediumValve = medium valve
+ent-CEPipeBrassMediumValve = средний клапан
     .desc = Клапан, установленный на латунной трубе, позволяющий регулировать поток магической энергии через трубу.
     .suffix = Клапан, Выкл
 
@@ -3757,62 +3757,62 @@ ent-CERockBigMoss = { ent-CERockBig }
     .desc = { ent-CERockBig.desc }
     .suffix = Большой. Мох.
 
-ent-CESnowdrift = snowdrift
-    .desc = A big, cold pile of snow.
+ent-CESnowdrift = сугроб
+    .desc = Большая холодная куча снега.
 
 ent-CESpiderWeb = паутина
     .desc = Нитевидная и липкая.
 
-ent-CEPlantCabbageDead = dead cabbage
+ent-CEPlantCabbageDead = мёртвая капуста
     .desc = { ent-CEPlantDeadBase.desc }
 
-ent-CEPlantCarrotDead = dead carrot
-    .desc = { ent-CEPlantDeadBase.desc }
-    .suffix = SPRITE TODO
-
-ent-CEPlantChanterelleDead = dead chanterelle
+ent-CEPlantCarrotDead = мёртвая морковь
     .desc = { ent-CEPlantDeadBase.desc }
     .suffix = SPRITE TODO
 
-ent-CEPlantCornDead = dead corn
+ent-CEPlantChanterelleDead = мёртвая лисичка
     .desc = { ent-CEPlantDeadBase.desc }
     .suffix = SPRITE TODO
 
-ent-CEPlantCottonDead = dead cotton
+ent-CEPlantCornDead = мёртвая кукуруза
     .desc = { ent-CEPlantDeadBase.desc }
     .suffix = SPRITE TODO
 
-ent-CEPlantCucumberDead = dead cucumber
-    .desc = { ent-CEPlantDeadBase.desc }
-
-ent-CEPlantGarlicDead = dead garlic
+ent-CEPlantCottonDead = мёртвый хлопок
     .desc = { ent-CEPlantDeadBase.desc }
     .suffix = SPRITE TODO
 
-ent-CEPlantOnionDead = dead onion
+ent-CEPlantCucumberDead = мёртвый огурец
     .desc = { ent-CEPlantDeadBase.desc }
 
-ent-CEPlantPepperDead = dead pepper
-    .desc = { ent-CEPlantDeadBase.desc }
-
-ent-CEPlantPotatoDead = dead potato
-    .desc = { ent-CEPlantDeadBase.desc }
-
-ent-CEPlantPumpkinDead = dead pumpkin
-    .desc = { ent-CEPlantDeadBase.desc }
-
-ent-CEPlantSunflowerDead = dead sunflower
+ent-CEPlantGarlicDead = мёртвый чеснок
     .desc = { ent-CEPlantDeadBase.desc }
     .suffix = SPRITE TODO
 
-ent-CEPlantTomatoesDead = dead tomatoes
+ent-CEPlantOnionDead = мёртвый лук
     .desc = { ent-CEPlantDeadBase.desc }
 
-ent-CEPlantWheatDead = dead wheat
+ent-CEPlantPepperDead = мёртвый перец
     .desc = { ent-CEPlantDeadBase.desc }
 
-ent-CEPlantDeadBase = dead plant
-    .desc = A withered, lifeless husk. Clear it away before planting here again.
+ent-CEPlantPotatoDead = мёртвый картофель
+    .desc = { ent-CEPlantDeadBase.desc }
+
+ent-CEPlantPumpkinDead = мёртвая тыква
+    .desc = { ent-CEPlantDeadBase.desc }
+
+ent-CEPlantSunflowerDead = мёртвый подсолнух
+    .desc = { ent-CEPlantDeadBase.desc }
+    .suffix = SPRITE TODO
+
+ent-CEPlantTomatoesDead = мёртвые помидоры
+    .desc = { ent-CEPlantDeadBase.desc }
+
+ent-CEPlantWheatDead = мёртвая пшеница
+    .desc = { ent-CEPlantDeadBase.desc }
+
+ent-CEPlantDeadBase = мёртвое растение
+    .desc = Засохшая безжизненная оболочка. Уберите её, прежде чем снова сажать здесь.
 
 ent-CEBaseTree = дерево
     .desc = Десятилетия жизни и роста, насыщающие окружающую природу свежим воздухом.
@@ -3856,29 +3856,29 @@ ent-CEFloraTreeBirchLarge = { ent-CEBaseTree }
 ent-CEFloraTreeSpruce = { ent-CEBaseTree }
     .desc = { ent-CEBaseTree.desc }
 
-ent-CEMagicEssenceHungryNode = hungry node
-    .desc = A famished pocket of dark magic, quietly starving for a particular flavor of essence.
+ent-CEMagicEssenceHungryNode = голодная нода
+    .desc = Изголодавшийся карман тёмной магии, тихо страдающий без определённого вкуса эссенции.
 
-ent-CEInfusionAltarPositionIndicator = infusion pedestal possible position
+ent-CEInfusionAltarPositionIndicator = возможная позиция постамента для инфузии
     .desc = { "" }
 
-ent-CEInfusionAltarMishapManaConsume = infusion altar mana consume mishap
+ent-CEInfusionAltarMishapManaConsume = сбой алтаря инфузии: поглощение маны
     .desc = TODO
 
-ent-CEInfusionAltarMishapManaRestore = infusion altar mana restore mishap
+ent-CEInfusionAltarMishapManaRestore = сбой алтаря инфузии: восстановление маны
     .desc = TODO
 
-ent-CEInfusionAltarMishapPulse = infusion altar mana pulse mishap
+ent-CEInfusionAltarMishapPulse = сбой алтаря инфузии: импульс маны
     .desc = TODO
 
-ent-CEInfusionAltarMishapExplosion = infusion altar mana explosion mishap
+ent-CEInfusionAltarMishapExplosion = сбой алтаря инфузии: взрыв маны
     .desc = TODO
 
-ent-CEMagicEssenceNode = magic essence node
-    .desc = A cluster of magical essence that briefly took shape in physical reality.
+ent-CEMagicEssenceNode = нода магической эссенции
+    .desc = Скопление магической эссенции, ненадолго обретшее форму в физической реальности.
 
-ent-CENodeStabilizerSphere = node stabilizer sphere
-    .desc = A large glass sphere ringed with brass. Anchored and powered on a magic essence node, it stops the node from aging, preserving it indefinitely while it keeps generating essence.
+ent-CENodeStabilizerSphere = сфера-стабилизатор ноды
+    .desc = Большая стеклянная сфера в латунном кольце. Закреплённая и запитанная на ноде магической эссенции, она останавливает старение ноды, сохраняя её бесконечно, пока та продолжает вырабатывать эссенцию.
 
 ent-CEWalletFilledAcademyProfessor = { ent-CEWallet }
     .desc = { ent-CEWallet.desc }
@@ -4080,73 +4080,73 @@ ent-CEKeyRingTavernmaster = { ent-CEBaseKeyRing }
     .desc = { ent-CEBaseKeyRing.desc }
     .suffix = Пусто
 
-ent-CEMindRoleSecret = Secret role
+ent-CEMindRoleSecret = Секретная роль
     .desc = { "" }
 
-ent-CEObjectiveLoverAssist = Help your beloved
-    .desc = Do whatever it takes to help the person you secretly love complete every one of their personal objectives this shift.
+ent-CEObjectiveLoverAssist = Помогите возлюбленному
+    .desc = Сделайте всё возможное, чтобы человек, которого вы тайно любите, выполнил все свои личные цели.
 
-ent-CEObjectiveLoverSurvive = Keep your beloved alive
-    .desc = The person you secretly love must survive this shift.
+ent-CEObjectiveLoverSurvive = Сохраните возлюбленному жизнь
+    .desc = Человек, которого вы тайно любите, должен выжить.
 
-ent-CEObjectiveThiefCashOut = Cash out
-    .desc = Steal money from other players, sell useful equipment, and spend at least 20 gold coins at the black market.
+ent-CEObjectiveThiefCashOut = Обналичить
+    .desc = Крадите деньги у других игроков, продавайте полезное снаряжение и потратьте не менее 10 золотых монет на чёрном рынке.
 
-ent-CEObjectiveTormentorSpite = Ruin your target
-    .desc = Do whatever it takes to make the person you secretly despise fail every one of their personal objectives.
+ent-CEObjectiveTormentorSpite = Сорвите планы цели
+    .desc = Сделайте всё возможное, чтобы человек, которого вы тайно презираете, провалил все свои личные цели.
 
-ent-CEObjectiveTormentorSurvive = Keep your target alive
-    .desc = Your target must live under the burden of knowing its own insignificance.
+ent-CEObjectiveTormentorSurvive = Сохраните цели жизнь
+    .desc = Ваша цель должна жить под бременем осознания собственной ничтожности.
 
-ent-CEObjectiveCityRestoreLucsonSphere = Restore the Lucson sphere
-    .desc = Keep the light monolith and its 6 pylons charging by resolving every problem that comes up.
+ent-CEObjectiveCityRestoreLucsonSphere = Восстановите Сферу Люксона
+    .desc = Поддерживайте зарядку светового монолита и его 6 пилонов, решая все возникающие проблемы.
 
-ent-CEObjectiveNightmareHunt = Hunt a victim
-    .desc = Kill, kill, kill!
+ent-CEObjectiveNightmareHunt = Охота на жертву
+    .desc = Убей, убей, убей!
 
-ent-CEObjectiveNightmareSphereCollapse = Plunge the City into Murk.
-    .desc = The lucson sphere has cracked. Keep the light monolith from being restored until the murk consumes it.
+ent-CEObjectiveNightmareSphereCollapse = Погрузите Город во мрак.
+    .desc = Сфера Люксона дала трещину. Не позволяйте восстановить световой монолит, пока мрак не поглотит его.
 
-ent-ActionCEMilitaryTraining = Military training
-    .desc = Rigorous drilling has taught your body to push past exhaustion. Catch your second wind and instantly restore your stamina.
+ent-ActionCEMilitaryTraining = Военная подготовка
+    .desc = Жёсткая муштра научила ваше тело преодолевать усталость. Переведите дух и мгновенно восстановите выносливость.
 
-ent-CEStatusEffectSoftLanding = soft landing
+ent-CEStatusEffectSoftLanding = мягкая посадка
     .desc = { "" }
 
-ent-CEActionLurkerFear = Primal Terror
-    .desc = You plunge the target into primal terror, crippling their ability to fight back.
+ent-CEActionLurkerFear = Первобытный ужас
+    .desc = Вы погружаете цель в первобытный ужас, лишая её способности сопротивляться.
 
-ent-CEStatusEffectLurkerFear = primal terror
+ent-CEStatusEffectLurkerFear = первобытный ужас
     .desc = { "" }
 
-ent-CEActionLurkerJump = Jump
-    .desc = You perform a powerful leap that can raise you by one level.
+ent-CEActionLurkerJump = Прыжок
+    .desc = Вы совершаете мощный прыжок, способный поднять вас на один уровень.
 
-ent-CEActionLurkerShadowStep = Shadow Step
-    .desc = A step through a tear in reality to a nearby spot you can see.
+ent-CEActionLurkerShadowStep = Теневой шаг
+    .desc = Шаг сквозь разрыв реальности в ближайшее место, которое вы видите.
 
-ent-CEStatusEffectMurkwalker = murk immunity
+ent-CEStatusEffectMurkwalker = иммунитет к мраку
     .desc = { "" }
 
-ent-CEStatusEffectKnowledgeCopying = knowledge copying
+ent-CEStatusEffectKnowledgeCopying = копирование знаний
     .desc = { "" }
 
-ent-CEActionSpellConjureLight = Conjure Light
-    .desc = You create a floating light source above your palm. Dispels the murk.
+ent-CEActionSpellConjureLight = Создать свет
+    .desc = Вы создаёте парящий источник света над ладонью. Рассеивает мрак.
 
-ent-CEConjuredLight = conjured light
-    .desc = A floating orb of light, conjured by a spell. Dispels the murk.
+ent-CEConjuredLight = созданный свет
+    .desc = Парящая сфера света, созданная заклинанием. Рассеивает мрак.
 
-ent-CEActionSpellCureWounds = Cure wounds
-    .desc = You restore health to the creature you touch.
+ent-CEActionSpellCureWounds = Лечение ран
+    .desc = Вы восстанавливаете здоровье существа, к которому прикасаетесь.
 
-ent-CEActionSpellFeatherFall = Feather Fall
-    .desc = You call forth a gentle updraft that greatly weakens gravity for everyone in the area, letting them fall slowly and safely.
+ent-CEActionSpellFeatherFall = Падение пёрышка
+    .desc = Вы вызываете мягкий восходящий поток, сильно ослабляющий гравитацию для всех в области, позволяя им падать медленно и безопасно.
 
-ent-CEStatusEffectFeatherFall = feather fall
+ent-CEStatusEffectFeatherFall = падение пёрышка
     .desc = { "" }
 
-ent-CEActionFrostBlade = Frost blade
+ent-CEActionFrostBlade = Ледяной клинок
     .desc = You create a powerful temporary weapon made of ice that deals high damage.
 
 ent-CEWeaponSwordFrostTemporary = frost blade
