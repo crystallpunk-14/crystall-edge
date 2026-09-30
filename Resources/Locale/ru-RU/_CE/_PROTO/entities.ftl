@@ -585,7 +585,7 @@ ent-CEFireWhooshEffect = огненный всплеск
     .desc = { "" }
     .suffix = VFX
 
-ent-CEShockWaveVFX = shock wave
+ent-CEShockWaveVFX = ударная волна
     .desc = { "" }
     .suffix = VFX, Medium
 
@@ -601,11 +601,11 @@ ent-CEShockWaveHugeVFX = { ent-CEShockWaveVFX }
     .desc = { "" }
     .suffix = VFX, Huge
 
-ent-CESkyLightning = sky lightning
+ent-CESkyLightning = молния с неба
     .desc = { "" }
 
 ent-CEDustTileEffect = dust effect
-    .desc = A burst of dust upon impact.
+    .desc = Облако пыли при ударе.
     .suffix = VFX
 
 ent-CEBaseBiomeSpawner = спаунер биома
@@ -691,29 +691,29 @@ ent-CESpawnPointFarmer = фермер
 ent-CESpawnPointBard = бард
     .desc = { "" }
 
-ent-CESpawnPointTownfolk = jobless
+ent-CESpawnPointTownfolk = безработный
     .desc = { "" }
 
-ent-CESpawnPointAcademyStudent = academy student
+ent-CESpawnPointAcademyStudent = студент академии
     .desc = { "" }
 
-ent-CESpawnPointAcademyProfessor = academy professor
+ent-CESpawnPointAcademyProfessor = профессор академии
     .desc = { "" }
 
-ent-CESpawnPointAcademyRector = academy rector
+ent-CESpawnPointAcademyRector = ректор академии
     .desc = { "" }
 
-ent-CESpawnPointBrigadier = brigadier
+ent-CESpawnPointBrigadier = бригадир
     .desc = { "" }
 
-ent-CESpawnPointTechnician = technician
+ent-CESpawnPointTechnician = техник
     .desc = { "" }
 
-ent-CELurkerRoarSound = lurker roar
+ent-CELurkerRoarSound = рёв луркера
     .desc = { "" }
 
-ent-CESpawnPointGhostMobLurker = spawn point lurker
-    .desc = Spawn point for the lurker ghost role
+ent-CESpawnPointGhostMobLurker = точка появления луркера
+    .desc = Точка появления для роли призрака-луркера
 
 ent-CEPaperFolderBase = папка
     .desc = Папка, заполненная какой-то документацией.
@@ -733,35 +733,35 @@ ent-CEPaperFolderPurple = { ent-CEPaperFolderBase }
 ent-CEPaper = бумага
     .desc = Лист белой бумаги
 
-ent-CEPassport = passport
-    .desc = Identification document.
+ent-CEPassport = паспорт
+    .desc = Документ, удостоверяющий личность.
 
 ent-CEPenFeather = перьевая ручка
     .desc = Острый обрезанный перо птицы, адаптированный в качестве письменного инструмента.
 
-ent-CERubberStampBase = rubber stamp
-    .desc = A rubber stamp for stamping important documents.
+ent-CERubberStampBase = печать
+    .desc = Резиновая печать для заверения важных документов.
 
-ent-CERubberStampApproved = "APPROVED" stamp
+ent-CERubberStampApproved = печать «ОДОБРЕНО»
     .desc = { ent-CERubberStampBase.desc }
 
-ent-CERubberStampDenied = "DENIED" stamp
+ent-CERubberStampDenied = печать «ОТКАЗАНО»
     .desc = { ent-CERubberStampBase.desc }
 
-ent-CERubberStampBank = bank stamp
-    .desc = A rubber stamp bearing the seal of the imperial bank.
+ent-CERubberStampBank = печать банка
+    .desc = Резиновая печать с оттиском имперского банка.
 
-ent-CERubberStampGuard = guard commander's stamp
-    .desc = A rubber stamp bearing the seal of the guard commander.
+ent-CERubberStampGuard = печать командира стражи
+    .desc = Резиновая печать с оттиском командира стражи.
 
-ent-CERubberStampGuildmaster = guildmaster's stamp
-    .desc = A rubber stamp bearing the seal of the tavern guildmaster.
+ent-CERubberStampGuildmaster = печать гильдмастера
+    .desc = Резиновая печать с оттиском гильдмастера таверны.
 
-ent-CERubberStampAcademy = academy rector's stamp
-    .desc = A rubber stamp bearing the seal of the academy rector.
+ent-CERubberStampAcademy = печать ректора академии
+    .desc = Резиновая печать с оттиском ректора академии.
 
-ent-CERubberStampEngineering = brigadier's stamp
-    .desc = A rubber stamp bearing the seal of the brigadier.
+ent-CERubberStampEngineering = печать бригадира
+    .desc = Резиновая печать с оттиском бригадира.
 
 ent-CEBookBase = книга
     .desc = Книга в твёрдом переплёте.
@@ -782,161 +782,161 @@ ent-CEBookPantheonGodsSileita = Пантеон богов Силеиты
 ent-CEBookPantheonGodsSileitaImitators = Пантеон богов Силеиты - Имитаторы богов
     .desc = Дополнение к основной части книги, которое они не желали включать в общее издание.
 
-ent-CEDebugKnowledgeBook = endless thaumanomiconium
-    .desc = An admin-only book brimming with impossible knowledge of every aspect at once.
+ent-CEDebugKnowledgeBook = бесконечный тауманомикониум
+    .desc = Книга для админов, полная невозможных знаний обо всех аспектах сразу.
     .suffix = Debug, All Aspects, 100
 
-ent-CEGuidebookImperialLaws = imperial laws
-    .desc = A book about Imperial Laws.
+ent-CEGuidebookImperialLaws = имперские законы
+    .desc = Книга об имперских законах.
     .suffix = Путеводитель
 
-ent-CEGuidebookFarmingGuide = farmer's guide
-    .desc = A guide to plant care and maintenance. The author is, of course, Silva.
+ent-CEGuidebookFarmingGuide = справочник фермера
+    .desc = Руководство по уходу за растениями. Автор, конечно же, сильва.
     .suffix = Путеводитель
 
-ent-CEGuidebookCookingRecipes = cookbook
-    .desc = 1000 and 1 recipes - as written on the cover. This is a blatant lie.
+ent-CEGuidebookCookingRecipes = кулинарная книга
+    .desc = 1001 рецепт — так написано на обложке. Это наглая ложь.
     .suffix = Путеводитель
 
-ent-CEGuidebookThaumaturgy = thaumamicon
-    .desc = A tome bound in essence-stained leather, cataloguing the aspects of thaumaturgy and how to derive them.
+ent-CEGuidebookThaumaturgy = тауманомикон
+    .desc = Фолиант в коже, пропитанной эссенцией, каталогизирующий аспекты тауматургии и способы их получения.
     .suffix = Путеводитель
 
-ent-CEBookEmpty = empty book
-    .desc = A plain book with a blank white cover, ready to be filled.
+ent-CEBookEmpty = пустая книга
+    .desc = Простая книга с белой пустой обложкой, готовая к заполнению.
 
-ent-CEBookAncient = ancient book
-    .desc = A weathered old book. It looks like it might be worth studying.
+ent-CEBookAncient = древняя книга
+    .desc = Потрёпанная старая книга. Похоже, её стоит изучить.
     .suffix = Random visual, scientific interest
 
-ent-CEBaseScienceBookUndefined = arcane engineering science book
+ent-CEBaseScienceBookUndefined = научная книга по магической инженерии
     .desc = { ent-CEBookBase.desc }
 
-ent-CEBaseScienceBookArcaneEngineering = arcane engineering science book
+ent-CEBaseScienceBookArcaneEngineering = научная книга по магической инженерии
     .desc = { ent-CEBookBase.desc }
 
-ent-CEBaseScienceBookSpellcasting = spellcasting science book
+ent-CEBaseScienceBookSpellcasting = научная книга по колдовству
     .desc = { ent-CEBookBase.desc }
 
-ent-CEDrinkBaseGoblet = goblet
-    .desc = A metal goblet for those who want to drink exquisitely.
+ent-CEDrinkBaseGoblet = кубок
+    .desc = Металлический кубок для тех, кто хочет пить изысканно.
 
-ent-CESteelGobletIron = iron goblet
+ent-CESteelGobletIron = железный кубок
     .desc = { ent-CEDrinkBaseGoblet.desc }
 
-ent-CESteelGobletCopper = copper goblet
+ent-CESteelGobletCopper = медный кубок
     .desc = { ent-CEDrinkBaseGoblet.desc }
 
-ent-CESteelGobletGold = gold goblet
-    .desc = A goblet made of solid gold to show how rich its owner is.
+ent-CESteelGobletGold = золотой кубок
+    .desc = Кубок из цельного золота, демонстрирующий богатство владельца.
 
-ent-CESteelGobletBottomless = bottomless goblet
-    .desc = A jeweled goblet enchanted to have no bottom, fit for a never ending king's banquet.
+ent-CESteelGobletBottomless = бездонный кубок
+    .desc = Украшенный самоцветами кубок, зачарованный так, что у него нет дна. Достоин нескончаемого королевского пира.
     .suffix = Artifact
 
-ent-CEMetalBeerMug = metal mug
-    .desc = The most common metal mug.
+ent-CEMetalBeerMug = металлическая кружка
+    .desc = Самая обычная металлическая кружка.
 
-ent-CEWoodenBeerMug = wooden mug
-    .desc = Wooden mug for beer.
+ent-CEWoodenBeerMug = деревянная кружка
+    .desc = Деревянная кружка для пива.
 
-ent-CESteelBeerMug = beer mug
-    .desc = Metal mug with iron inclusions.
+ent-CESteelBeerMug = пивная кружка
+    .desc = Металлическая кружка с железными вставками.
 
-ent-CESteelWoodBeerMug = beer mug
-    .desc = Wooden mug with iron inclusions.
+ent-CESteelWoodBeerMug = пивная кружка
+    .desc = Деревянная кружка с железными вставками.
 
-ent-CEBottleWine = wine bottle
-    .desc = A bouquet of scents from the last century.
+ent-CEBottleWine = бутылка вина
+    .desc = Букет ароматов прошлого века.
     .suffix = Empty
 
 ent-CEBottleWineFull = { ent-CEBottleWine }
     .desc = { ent-CEBottleWine.desc }
     .suffix = Full
 
-ent-CEBottleWhiskey = whiskey bottle
-    .desc = A strong drink for strong people.
+ent-CEBottleWhiskey = бутылка виски
+    .desc = Крепкий напиток для крепких людей.
     .suffix = Empty
 
 ent-CEBottleWhiskeyFull = { ent-CEBottleWhiskey }
     .desc = { ent-CEBottleWhiskey.desc }
     .suffix = Full
 
-ent-CEBottleVodka = vodka bottle
-    .desc = Pure crystalline spirits for the refined palate.
+ent-CEBottleVodka = бутылка водки
+    .desc = Чистый кристальный спирт для утончённого вкуса.
     .suffix = Empty
 
 ent-CEBottleVodkaFull = { ent-CEBottleVodka }
     .desc = { ent-CEBottleVodka.desc }
     .suffix = Full
 
-ent-CEBottleRum = rum bottle
-    .desc = Tropical spirit with notes of caramel and exotic adventure.
+ent-CEBottleRum = бутылка рома
+    .desc = Тропический напиток с нотками карамели и экзотических приключений.
     .suffix = Empty
 
 ent-CEBottleRumFull = { ent-CEBottleRum }
     .desc = { ent-CEBottleRum.desc }
     .suffix = Full
 
-ent-CEBottleSyrupGrenadineine = syrup grenadine bottle
-    .desc = Thick, sweet syrup with a rich ruby color, traditionally made from pomegranate juice, perfect for cocktails and mocktails alike.
+ent-CEBottleSyrupGrenadineine = бутылка сиропа гренадин
+    .desc = Густой сладкий сироп насыщенного рубинового цвета, традиционно изготавливаемый из гранатового сока. Отлично подходит для коктейлей и безалкогольных напитков.
     .suffix = Empty
 
 ent-CEBottleSyrupGrenadineineFull = { ent-CEBottleSyrupGrenadineine }
     .desc = { ent-CEBottleSyrupGrenadineine.desc }
     .suffix = Full
 
-ent-CEBottleSyrupSugar = sugar syrup bottle
-    .desc = A simple sugar syrup used to sweeten cocktails, coffees, and other beverages.
+ent-CEBottleSyrupSugar = бутылка сахарного сиропа
+    .desc = Простой сахарный сироп для подслащивания коктейлей, кофе и других напитков.
     .suffix = Empty
 
 ent-CEBottleSyrupSugarFull = { ent-CEBottleSyrupSugar }
     .desc = { ent-CEBottleSyrupSugar.desc }
     .suffix = Full
 
-ent-CEFoodCheeseSlice = cheese slice
-    .desc = A thin slice of delicious smelling cheese.
+ent-CEFoodCheeseSlice = ломтик сыра
+    .desc = Тонкий ломтик вкусно пахнущего сыра.
 
-ent-CEFoodBlueCheeseWheel = blue cheese wheel
-    .desc = A wheel of cheese with distinctive blue veins. Strong aroma!
+ent-CEFoodBlueCheeseWheel = круг голубого сыра
+    .desc = Круг сыра с характерными голубыми прожилками. Сильный аромат!
 
-ent-CEFoodBlueCheesePart = blue cheese wedge
-    .desc = A triangle of pungent blue-veined cheese.
+ent-CEFoodBlueCheesePart = долька голубого сыра
+    .desc = Треугольный кусок острого сыра с голубыми прожилками.
 
-ent-CEFoodBlueCheeseSlice = blue cheese slice
-    .desc = A thin slice of pungent blue cheese.
+ent-CEFoodBlueCheeseSlice = ломтик голубого сыра
+    .desc = Тонкий ломтик острого голубого сыра.
 
-ent-CEFoodAgedCheeseWheel = aged cheese wheel
-    .desc = Hard cheese aged for months to develop rich flavor.
+ent-CEFoodAgedCheeseWheel = круг выдержанного сыра
+    .desc = Твёрдый сыр, выдержанный несколько месяцев для насыщенного вкуса.
 
-ent-CEFoodAgedCheesePart = aged cheese wedge
-    .desc = A triangle of richly flavored aged cheese.
+ent-CEFoodAgedCheesePart = долька выдержанного сыра
+    .desc = Треугольный кусок выдержанного сыра с богатым вкусом.
 
-ent-CEFoodAgedCheeseSlice = aged cheese slice
-    .desc = A thin slice of richly flavored aged cheese.
+ent-CEFoodAgedCheeseSlice = ломтик выдержанного сыра
+    .desc = Тонкий ломтик выдержанного сыра с богатым вкусом.
 
-ent-CEFoodBread = bread
-    .desc = Crispy and so flavourful!
+ent-CEFoodBread = хлеб
+    .desc = Хрустящий и такой ароматный!
 
-ent-CEFoodBreadSlice = bread slice
+ent-CEFoodBreadSlice = ломоть хлеба
     .desc = { "" }
 
-ent-CEFoodDoughMedium = medium piece of dough
+ent-CEFoodDoughMedium = средний кусок теста
     .desc = { "" }
 
-ent-CEFoodBreadBun = bread bun
-    .desc = it's like regular bread, only smaller and funnier.
+ent-CEFoodBreadBun = булочка
+    .desc = Как обычный хлеб, только меньше и забавнее.
 
-ent-CEFoodBreadBunBottom = bottom bread bun
-    .desc = It's like regular bread, only smaller and funnier. And cut in half.
+ent-CEFoodBreadBunBottom = нижняя половинка булочки
+    .desc = Как обычный хлеб, только меньше и забавнее. И разрезанный пополам.
 
-ent-CEFoodBreadBunTop = top bread bun
-    .desc = It's like regular bread, only smaller and funnier. And cut in half.
+ent-CEFoodBreadBunTop = верхняя половинка булочки
+    .desc = Как обычный хлеб, только меньше и забавнее. И разрезанный пополам.
 
-ent-CEFoodDoughMediumFlat = rolled dough
+ent-CEFoodDoughMediumFlat = раскатанное тесто
     .desc = { "" }
 
-ent-CEEggshells = eggshells
+ent-CEEggshells = яичная скорлупа
     .desc = You're walkin' on 'em bud.
 
 ent-CEFoodEgg = egg
