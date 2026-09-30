@@ -1,0 +1,5 @@
+- type: speechVerb
+  id: CEBroadcast
+  name: ce-chat-speech-verb-name-broadcast
+  speechVerbStrings:
+  - ce-chat-speech-verb-broadcast

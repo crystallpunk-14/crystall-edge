@@ -1,0 +1,95 @@
+- type: entity
+  parent: CEBaseWallmount
+  id: CEWallRadioSpeaker
+  name: loudspeaker
+  description: A wall-mounted loudspeaker. Repeats announcements from radio booths broadcasting on its frequency.
+  components:
+  - type: Sprite
+    sprite: Structures/Wallmounts/intercom.rsi # TODO: CE sprite
+    layers:
+    - state: base
+    - state: speaker
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+      shader: unshaded
+  - type: Damageable
+    damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEScrapIron1:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
+  - type: ApcPowerReceiver
+    powerLoad: 0.05
+  - type: ExtensionCableReceiver
+    receptionRange: 0
+  - type: Speech
+    speechVerb: CEBroadcast
+    suffixSpeechVerbs: {}
+  - type: CERadioSpeaker
+
+- type: entity
+  parent: CEBaseMachinePowered
+  id: CERadioBooth
+  name: radio booth
+  description: A broadcasting console. When switched on, everything said next to it is repeated by loudspeakers on its frequencies.
+  categories: [ ForkFiltered ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Industrial/Power/distribution_unit.rsi # TODO: CE sprite
+    drawdepth: Mobs
+    layers:
+    - state: base
+    - state: fill-9
+      shader: unshaded
+      map: ["enum.RadioDeviceVisualLayers.Broadcasting"]
+      visible: false
+    - state: glass
+    - state: top
+    - state: discharging1
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
+      enum.RadioDeviceVisuals.Broadcasting:
+        enum.RadioDeviceVisualLayers.Broadcasting:
+          True: { visible: true }
+          False: { visible: false }
+  - type: Damageable
+    damageModifierSet: StructuralMetallicStrong
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: ApcPowerReceiver
+    powerLoad: 0.2
+  - type: CERadioMicrophone
+    frequencies:
+    - 0
+    radius: 30
+  - type: StaticPrice
+    price: 100
