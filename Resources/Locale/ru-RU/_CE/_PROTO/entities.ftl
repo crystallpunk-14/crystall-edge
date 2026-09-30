@@ -62,14 +62,14 @@ ent-CEOrganTieflingExternal = { "" }
     .desc = { "" }
     .suffix = tiefling
 
-ent-CEActionZFlightUp = Move up
-    .desc = Move up one Z-Level
+ent-CEActionZFlightUp = Подняться
+    .desc = Подняться на один уровень вверх
 
-ent-CEActionZFlightDown = Move down
-    .desc = Move down one Z-Level
+ent-CEActionZFlightDown = Спуститься
+    .desc = Спуститься на один уровень вниз
 
-ent-CEActionZFlightToggle = Toggle flight mode
-    .desc = Toggle flight mode on or off
+ent-CEActionZFlightToggle = Переключить режим полёта
+    .desc = Включает или выключает режим полёта
 
 ent-CEActionZLevelUp = Подняться
     .desc = Подняться на один уровень вверх
@@ -80,20 +80,20 @@ ent-CEActionZLevelDown = Спуститься
 ent-CEActionToggleLookUp = Посмотреть вверх
     .desc = Вы поднимаете голову и смотрите на небо.
 
-ent-CEClothingBackBackpack = backpack
-    .desc = A standard backpack with decent storage space. Perfect for everyday use. It covers your back from blows!
+ent-CEClothingBackBackpack = рюкзак
+    .desc = Обычный рюкзак с приличным объёмом. Идеален для повседневного использования. Защищает спину от ударов!
 
-ent-CEClothingBackSatchel = rustic satchel
-    .desc = A handcrafted leather satchel with rustic charm. Provides modest storage with traditional styling. Can be worn on the over the shoulder.
+ent-CEClothingBackSatchel = простая сумка
+    .desc = Самодельная кожаная сумка с деревенским шармом. Вмещает немного, зато выглядит по-старинному. Носится через плечо.
 
-ent-CEClothingBackPortableLighthouse = portable lighthouse
-    .desc = A portable device that dispels the murk.  It works within a small radius, so you'll have to stay close to your group.
+ent-CEClothingBackPortableLighthouse = переносной маяк
+    .desc = Переносное устройство, рассеивающее мрак. Действует в небольшом радиусе, так что держитесь поближе к группе.
 
-ent-CEClothingBeltPouch = pouch
-    .desc = A small basic pouch for carrying essential items. Can be worn on the belt.
+ent-CEClothingBeltPouch = поясной кошель
+    .desc = Небольшой простой кошель для самых необходимых вещей. Носится на поясе.
 
-ent-CEClothingBeltQuiver = quiver
-    .desc = Holds many arrows and crossbow bolts, and fits snug around your waist.
+ent-CEClothingBeltQuiver = колчан
+    .desc = Вмещает множество стрел и арбалетных болтов и плотно облегает талию.
 
 ent-CEClothingBeltQuiverArrows = { ent-CEClothingBeltQuiver }
     .desc = { ent-CEClothingBeltQuiver.desc }
@@ -103,42 +103,41 @@ ent-CEClothingBeltQuiverBolts = { ent-CEClothingBeltQuiver }
     .desc = { ent-CEClothingBeltQuiver.desc }
     .suffix = Filled, Crossbow bolts
 
-ent-CEClothingEyesGlasses = glasses
-    .desc = Aristocratic, fancy.
+ent-CEClothingEyesGlasses = очки
+    .desc = Аристократично, изысканно.
 
-ent-CEClothingEyesAlchemyGlasses = alchemy glasses
-    .desc = Special magic infused glasses that allow you to clearly see the composition of any mixtures.
+ent-CEClothingEyesAlchemyGlasses = алхимические очки
+    .desc = Особые очки, пропитанные магией, позволяющие ясно видеть состав любых смесей.
 
-ent-CEClothingEyesMiningGlasses = mining glasses
-    .desc = Miner's glasses tuned to search for nearby ore veins.
+ent-CEClothingEyesMiningGlasses = шахтёрские очки
+    .desc = Шахтёрские очки, настроенные на поиск ближайших рудных жил.
 
-ent-CEClothingEyesMonocle = monocle
-    .desc = Aristocratic, fancy.
+ent-CEClothingEyesMonocle = монокль
+    .desc = Аристократично, изысканно.
 
-ent-CEClothingEyesAlchemyMonocle = alchemy monocle
-    .desc = Special magic infused monocle that allows you to clearly see the composition of any mixtures.
+ent-CEClothingEyesAlchemyMonocle = алхимический монокль
+    .desc = Особый монокль, пропитанный магией, позволяющий ясно видеть состав любых смесей.
 
-ent-CEClothingEyesMerchantMonocle = merchant's monocle
-    .desc = High-quality magnifying monocle infused with magic to help you determine the exact price of any item.
-    .suffix = Theft target
+ent-CEClothingEyesMerchantMonocle = монокль торговца
+    .desc = Качественный увеличительный монокль, пропитанный магией, помогающий определить точную цену любого предмета.
 
-ent-CEClothingEyesEyePatch = eye patch
-    .desc = Hides the mutilation of the eyes.
+ent-CEClothingEyesEyePatch = повязка на глаз
+    .desc = Скрывает увечья глаз.
 
-ent-CEClothingEyesThaumaturgyGlasses = thaumaturgy glasses
-    .desc = It allows one to see the hidden world of magic, the very essence of objects, and the fundamental aspects from which all existence is composed.
+ent-CEClothingEyesThaumaturgyGlasses = очки тауматурга
+    .desc = Позволяют увидеть скрытый мир магии, саму сущность предметов и фундаментальные аспекты, из которых состоит всё сущее.
 
-ent-CEClothingEyesThaumaturgyGlassesAdvanced = advanced thaumaturgy glasses
-    .desc = It allows one to see the hidden world of magic, the very essence of objects, and the fundamental aspects from which all existence is composed. An essence node locator is attached to these glasses.
+ent-CEClothingEyesThaumaturgyGlassesAdvanced = улучшенные очки тауматурга
+    .desc = Позволяют увидеть скрытый мир магии, саму сущность предметов и фундаментальные аспекты, из которых состоит всё сущее. К этим очкам прикреплён определитель узлов эссенции.
 
-ent-CEClothingGlovesGirdles = iron girdles
-    .desc = Armored combat girdles.
+ent-CEClothingGlovesGirdles = железные наручи
+    .desc = Бронированные боевые наручи.
 
-ent-CEClothingGlovesJagermeister = jagermeister's gloves
-    .desc = Leather gloves, a deep favourite of the local jagermeister's.
+ent-CEClothingGlovesJagermeister = перчатки егеря
+    .desc = Кожаные перчатки, любимые местными егерями.
 
-ent-CEClothingGlovesBlacksmith = blacksmith's gloves
-    .desc = They say you can handle a newly poured ingot with them, but it's still not worth checking.
+ent-CEClothingGlovesBlacksmith = перчатки кузнеца
+    .desc = Говорят, в них можно держать свежеотлитый слиток, но проверять всё же не стоит.
 
 ent-CEClothingHeadBandanaAlchemist = платок алхимика
     .desc = Скрывает ваши волосы от химических паров
@@ -173,20 +172,20 @@ ent-CEClothingHeadFedoraGuard = шляпа-федора стражника
 ent-CEClothingHeadFedoraTavernmaster = шляпа-федора хозяина трактира
     .desc = Стильная шляпа-федора, носимая главным трактирщиком.
 
-ent-CEClothingHeadFedoraBlack = black fedora
-    .desc = A sleek black fedora favored by skilled hunters.
+ent-CEClothingHeadFedoraBlack = чёрная федора
+    .desc = Изящная чёрная федора, любимая опытными охотниками.
 
-ent-CEClothingHeadFedoraBlue = blue fedora
-    .desc = A distinctive blue fedora worn by hunters.
+ent-CEClothingHeadFedoraBlue = синяя федора
+    .desc = Приметная синяя федора, которую носят охотники.
 
-ent-CEClothingHeadFedoraGreen = green fedora
-    .desc = A forest green fedora perfect for hunters.
+ent-CEClothingHeadFedoraGreen = зелёная федора
+    .desc = Лесно-зелёная федора, идеальная для охотников.
 
-ent-CEClothingHeadFedoraRed = red fedora
-    .desc = A bold red fedora worn by veteran hunters.
+ent-CEClothingHeadFedoraRed = красная федора
+    .desc = Яркая красная федора, которую носят охотники-ветераны.
 
-ent-CEClothingHeadFedoraBrown = brown fedora
-    .desc = A bold brown fedora worn by veteran hunters.
+ent-CEClothingHeadFedoraBrown = коричневая федора
+    .desc = Яркая коричневая федора, которую носят охотники-ветераны.
 
 ent-CEClothingHeadHelmetGuard = шлем стражника
     .desc = Прочный шлем, носимый городскими стражниками для защиты в опасных ситуациях.
@@ -200,11 +199,11 @@ ent-CEClothingHeadHelmetInvestigator = шлем дознавателя
 ent-CEClothingHeadMetalHeadband = металлический обруч
     .desc = Простой, но эффективный металлический обруч, обеспечивающий минимальную защиту и порядок волос.
 
-ent-CEClothingHeadHelmetBrassInsulator = brass insulator
-    .desc = A simple but effective magical energy insulator for the head. Not the most robust protection, but it works great for shielding against excess magical energy.
+ent-CEClothingHeadHelmetBrassInsulator = латунный изолятор
+    .desc = Простой, но эффективный изолятор магической энергии для головы. Не самая прочная защита, зато отлично защищает от избытка магической энергии.
 
-ent-CEClothingHeadHoodThaumaturge = thaumaturge's hood
-    .desc = A ceremonial hood attached to the thaumaturge's mantle.
+ent-CEClothingHeadHoodThaumaturge = капюшон тауматурга
+    .desc = Церемониальный капюшон, прикреплённый к мантии тауматурга.
 
 ent-CEClothingHeadAmanitaHelmet = шлем аманиты
     .desc = Необычный шлем в форме гриба аманиты.
@@ -230,8 +229,8 @@ ent-CEClothingHeadStrawHat = соломенная шляпа
 ent-CEClothingHeadWreath = венок
     .desc = Декоративный венок, который можно носить как корону. Сделан из переплетённых веток и листьев.
 
-ent-CEClothingHeadBowlerLeather = leather bowler hat
-    .desc = It looks sturdy enough to withstand a couple of stone falls on the forehead. But that's not certain.
+ent-CEClothingHeadBowlerLeather = кожаный котелок
+    .desc = Выглядит достаточно крепким, чтобы выдержать пару падающих на лоб камней. Но это не точно.
 
 ent-CEClothingHeadTriangularGuard = треугольная шляпа стражника
     .desc = Отличительная треугольная шляпа, носимая стражниками. Её уникальная форма облегчает идентификацию персонала охраны издалека.
@@ -242,44 +241,44 @@ ent-CEClothingHeadTriangularLeather = кожаная треугольная шл
 ent-CEClothingHeadTriangularLeatherGolden = золотая кожаная треугольная шляпа
     .desc = Роскошная треугольная шляпа из прекрасной кожи с золотыми вставками. Знак высокого статуса и богатства.
 
-ent-CEClothingMaskSteelMask = steel mask
-    .desc = A steel mask that protects the face from the external effects of iron.
+ent-CEClothingMaskSteelMask = стальная маска
+    .desc = Стальная маска, защищающая лицо от внешнего воздействия железа.
 
-ent-CEClothingMaskNeckerchief = neckerchief
-    .desc = It hides your face to the best of its ability.
+ent-CEClothingMaskNeckerchief = шейный платок
+    .desc = Скрывает ваше лицо, как может.
 
-ent-CEClothingMaskRedNeckerchief = red neckerchief
-    .desc = It hides your face to the best of its ability.
+ent-CEClothingMaskRedNeckerchief = красный шейный платок
+    .desc = Скрывает ваше лицо, как может.
 
-ent-CEClothingMaskGreenNeckerchief = green neckerchief
-    .desc = It hides your face to the best of its ability.
+ent-CEClothingMaskGreenNeckerchief = зелёный шейный платок
+    .desc = Скрывает ваше лицо, как может.
 
-ent-CEClothingMaskBoneMask = bone mask
-    .desc = A bone mask of human.
+ent-CEClothingMaskBoneMask = костяная маска
+    .desc = Костяная маска, сделанная из человеческих костей.
 
-ent-CEClothingMaskBoneHornedMask = horned bone mask
-    .desc = A bone mask of some kind of animal.
+ent-CEClothingMaskBoneHornedMask = рогатая костяная маска
+    .desc = Костяная маска, сделанная из костей какого-то животного.
 
-ent-CEClothingMaskMime = mask of silence
+ent-CEClothingMaskMime = маска молчания
     .desc = ...
 
-ent-CEClothingMaskVampireVoiceDevourers = bloody bone mask
+ent-CEClothingMaskVampireVoiceDevourers = кровавая костяная маска
     .desc = { ent-CEClothingMaskVampireVoiceBase.desc }
     .suffix = Voice mask
 
-ent-CEClothingMaskVampireVoiceNightChildrens = mysterious black mask
+ent-CEClothingMaskVampireVoiceNightChildrens = загадочная чёрная маска
     .desc = { ent-CEClothingMaskVampireVoiceBase.desc }
     .suffix = Voice mask
 
-ent-CEClothingMaskVampireVoiceUnnameable = frightening white mask
+ent-CEClothingMaskVampireVoiceUnnameable = пугающая белая маска
     .desc = { ent-CEClothingMaskVampireVoiceBase.desc }
     .suffix = Voice mask
 
-ent-CEClothingOuterClothingBrassInsulator = brass insulator chestplate
-    .desc = A simple but effective magical energy insulator for the chest. Not the most robust protection, but it works great for shielding against excess magical energy.
+ent-CEClothingOuterClothingBrassInsulator = латунный изолятор для груди
+    .desc = Простой, но эффективный изолятор магической энергии для груди. Не самая прочная защита, зато отлично защищает от избытка магической энергии.
 
 ent-CEClothingOuterClothingBase = { "" }
-    .desc = Armor or something important to wear.
+    .desc = Броня или что-то важное, что нужно носить.
 
 ent-CEClothingPantsBase = { "" }
     .desc = Штаны, чтобы защитить мои бедра от холода.
@@ -317,8 +316,8 @@ ent-CEClothingPantsMercenary = штаны наёмника
 ent-CEClothingPantsMerchantsPantaloons = шаровары купца
     .desc = Декоративные шаровары, любимые торговцами и торговцами.
 
-ent-CEClothingPantsEngineering = engineering pants
-    .desc = Durable pants for durable people.
+ent-CEClothingPantsEngineering = инженерные штаны
+    .desc = Прочные штаны для выносливых людей.
 
 ent-CEClothingShirtBase = { "" }
     .desc = Приятный на ощупь материал в удобной, свободной форме рубашки.
@@ -395,8 +394,8 @@ ent-CEClothingShirtDressYellowWizard = жёлтое платье волшебн�
 ent-CEClothingShirtDressMerchant = платье купца
     .desc = Таинственные купцы, которых не видели сотни лет, носили ровно этот тип одежды.
 
-ent-CEClothingShirtEngineeringDress = engineering dress
-    .desc = Girls also do physically demanding jobs, and they still want to look cute!
+ent-CEClothingShirtEngineeringDress = инженерное платье
+    .desc = Девушки тоже занимаются физически тяжёлой работой, и им тоже хочется выглядеть мило!
 
 ent-CEClothingShirtWarriorGarb = боевое облачение
     .desc = Грубое и практичное облачение, носимое воинами и бойцами. Созданная для прочности и свободы движений в бою.
@@ -461,17 +460,17 @@ ent-CEClothingShirtGuard = рубашка стражника
 ent-CEClothingShirtMerchant = рубашка купца
     .desc = Таинственные купцы, которых не видели сотни лет, носили ровно этот тип одежды.
 
-ent-CEClothingShirtEngineeringJacket = engineering jacket
-    .desc = A durable engineering jacket designed for practical use in technical environments.
+ent-CEClothingShirtEngineeringJacket = инженерная куртка
+    .desc = Прочная инженерная куртка, рассчитанная на практичное использование в технических условиях.
 
-ent-CEClothingShirtEngineeringShirt = engineering shirt
-    .desc = A durable engineering shirt designed for practical use in technical environments.
+ent-CEClothingShirtEngineeringShirt = инженерная рубашка
+    .desc = Прочная инженерная рубашка, рассчитанная на практичное использование в технических условиях.
 
-ent-CEClothingShirtAcademyRobe = academy robe
-    .desc = A formal robe worn by scholars of the Thaumaturgic Academy.
+ent-CEClothingShirtAcademyRobe = мантия академии
+    .desc = Парадная мантия, которую носят учёные Тауматургической академии.
 
-ent-CEClothingShirtAcademyRobe2 = academy robe
-    .desc = A formal robe worn by scholars of the Thaumaturgic Academy.
+ent-CEClothingShirtAcademyRobe2 = мантия академии
+    .desc = Парадная мантия, которую носят учёные Тауматургической академии.
 
 ent-CEClothingShoesBlack = простые чёрные сапоги
     .desc = Они не будут задерживать влагу, но это лучше, чем ходить босиком.
@@ -491,10 +490,10 @@ ent-CEClothingShoesJestersRingers = звенящие башмаки шута
 ent-CEClothingShoesPinkSlippers = розовые тапочки
     .desc = Розовые тапочки из редчайшего розового меха ламы. Несмотря на странный вид, это очень дорогая обувь.
 
-ent-CEClothingShoesHeels = heels
-    .desc = Elegant high-heeled shoes.
+ent-CEClothingShoesHeels = туфли на каблуках
+    .desc = Элегантные туфли на высоком каблуке.
 
-ent-CEEffectShinyBase = shine sparkle
+ent-CEEffectShinyBase = блеск
     .desc = { "" }
     .suffix = VFX
 
@@ -514,15 +513,15 @@ ent-CEEffectShinyCopper = { ent-CEEffectShinyBase }
     .desc = { "" }
     .suffix = Copper
 
-ent-CEEffectAreaHealingTelegraphy = area healing telegraphy
+ent-CEEffectAreaHealingTelegraphy = область исцеления
     .desc = { "" }
     .suffix = VFX
 
-ent-CEEffectAreaHealingEffect = area healing impact
+ent-CEEffectAreaHealingEffect = эффект исцеления по области
     .desc = { "" }
     .suffix = VFX
 
-ent-CEEffectHealingGeneric = healing impact
+ent-CEEffectHealingGeneric = эффект исцеления
     .desc = { "" }
     .suffix = VFX
 
@@ -530,11 +529,11 @@ ent-CEEffectFrostConsume = { ent-CEEffectAreaHealingTelegraphy }
     .desc = { "" }
     .suffix = VFX
 
-ent-CEEffectManaRestoreGeneric = mana restore impact
+ent-CEEffectManaRestoreGeneric = эффект восстановления маны
     .desc = { "" }
     .suffix = VFX
 
-ent-CEEffectManaDrain = mana drain impact
+ent-CEEffectManaDrain = эффект истощения маны
     .desc = { "" }
     .suffix = VFX
 
@@ -546,7 +545,7 @@ ent-CEOverchargeBrightVFX = { ent-CEOverchargeVFX }
     .desc = { ent-CEOverchargeVFX.desc }
     .suffix = Bright
 
-ent-CEOverchargeSmallVFX = smol magic overcharge
+ent-CEOverchargeSmallVFX = малая магическая перегрузка
     .desc = { ent-CEOverchargeVFX.desc }
     .suffix = VFX
 
@@ -554,35 +553,35 @@ ent-CERadiationSourceVFX = источник радиации
     .desc = { "" }
     .suffix = VFX
 
-ent-CEStrongRadiationSourceVFX = radiation source
+ent-CEStrongRadiationSourceVFX = источник радиации
     .desc = { "" }
     .suffix = VFX, Strong radiation
 
-ent-CEDirtEffect = dirt effect
+ent-CEDirtEffect = эффект грязи
     .desc = { "" }
     .suffix = VFX
 
-ent-CESnowEffect = snow effect
+ent-CESnowEffect = эффект снега
     .desc = { "" }
     .suffix = VFX
 
-ent-CEDustEffect = dust effect
+ent-CEDustEffect = эффект пыли
     .desc = { "" }
     .suffix = VFX
 
-ent-CETreasureSparkVFX = treasure spark
+ent-CETreasureSparkVFX = искра сокровища
     .desc = { "" }
     .suffix = VFX
 
-ent-CEEssenceConsumeVFX = essence consume effect
+ent-CEEssenceConsumeVFX = эффект поглощения эссенции
     .desc = { "" }
     .suffix = VFX
 
-ent-CEScientificInterestVFX = scientific interest marker
+ent-CEScientificInterestVFX = метка научного интереса
     .desc = { "" }
     .suffix = VFX
 
-ent-CEFireWhooshEffect = fire whoosh
+ent-CEFireWhooshEffect = огненный всплеск
     .desc = { "" }
     .suffix = VFX
 
@@ -4897,25 +4896,25 @@ ent-CEZLevelsLadderRoofBlueCornerInner = blue roof
     .desc = { ent-CEZLevelLadderCornerInnerBase.desc }
     .suffix = Inner Corner
 
-ent-CEZLevelLadderStone = stone ladder
+ent-CEZLevelLadderStone = каменная лестница
     .desc = { ent-CEZLevelLadderBase.desc }
 
-ent-CEZLevelLadderStoneCorner = stone ladder
+ent-CEZLevelLadderStoneCorner = каменная лестница
     .desc = { ent-CEZLevelLadderCornerBase.desc }
     .suffix = Угол
 
-ent-CEZLevelLadderStoneCornerInner = stone ladder
+ent-CEZLevelLadderStoneCornerInner = каменная лестница
     .desc = { ent-CEZLevelLadderCornerInnerBase.desc }
     .suffix = Внутренний угол
 
-ent-CEZLevelLadderWooden = wooden ladder
+ent-CEZLevelLadderWooden = деревянная лестница
     .desc = { ent-CEZLevelLadderBase.desc }
 
-ent-CEZLevelLadderWoodenCorner = wooden ladder
+ent-CEZLevelLadderWoodenCorner = деревянная лестница
     .desc = { ent-CEZLevelLadderCornerBase.desc }
     .suffix = Угол
 
-ent-CEZLevelLadderWoodenCornerInner = wooden ladder
+ent-CEZLevelLadderWoodenCornerInner = деревянная лестница
     .desc = { ent-CEZLevelLadderCornerInnerBase.desc }
     .suffix = Inner Corner
 
