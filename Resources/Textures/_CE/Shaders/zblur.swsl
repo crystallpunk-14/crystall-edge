@@ -8,8 +8,8 @@ void fragment() {
     highp vec4 color = texture(SCREEN_TEXTURE, UV);
 
     highp vec4 blurred_color = vec4(0.0);
-    for (int x = -1; x <= 1; x++) {
-        for (int y = -1; y <= 1; y++) {
+    for (lowp int x = -1; x <= 1; x++) {
+        for (lowp int y = -1; y <= 1; y++) {
             blurred_color += texture(SCREEN_TEXTURE, UV + vec2(x, y) * SCREEN_PIXEL_SIZE * blur_radius);
         }
     }

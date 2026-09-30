@@ -13,7 +13,7 @@ void fragment() {
 }
 
 void vertex() {
-    vec2 pos = aPos;
+    highp vec2 pos = aPos;
     pos.x += sin(TIME * Speed + Offset) * Dis * (UV2.y - 1.0);
     VERTEX = apply_mvp(pos);
 

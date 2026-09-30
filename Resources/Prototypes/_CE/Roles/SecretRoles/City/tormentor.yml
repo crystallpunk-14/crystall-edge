@@ -10,7 +10,7 @@
 
 - type: entity
   id: CEObjectiveTormentorSpite
-  name: Ruin your target
+  name: Foil your target's plans
   description: Do whatever it takes to make the person you secretly despise fail every one of their personal objectives.
   components:
   - type: Sprite
