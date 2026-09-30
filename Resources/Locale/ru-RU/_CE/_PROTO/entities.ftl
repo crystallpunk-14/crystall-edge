@@ -1237,32 +1237,32 @@ ent-CEPlushieGoldenElf = золотая фигурка эльфа
 ent-CEPlushieGoldenGoblin = золотая фигурка гоблина
     .desc = Гоблины очень любят золотые фигурки гоблинов! Хотя, наверное, они просто любят всё, что сделано из золота.
 
-ent-CEPlushieGoldenSilva = golden silva figurine
+ent-CEPlushieGoldenSilva = золотая фигурка сильвы
     .desc = TODO fun description
 
-ent-CEPlushieGoldenTiefling = golden tiefling figurine
-    .desc = These sharp horns are made of metal! You heard that right. This golden figurine could easily be used as a weapon.
+ent-CEPlushieGoldenTiefling = золотая фигурка тифлинга
+    .desc = Эти острые рога сделаны из металла! Вы не ослышались. Эту золотую фигурку вполне можно использовать как оружие.
 
-ent-CEPlushieGoldenCarcat = golden carcat figurine
-    .desc = This is a very old figurine of an old carcat. Some kind of very important guy. “Tyau” is scratched into the side.
+ent-CEPlushieGoldenCarcat = золотая фигурка каркат
+    .desc = Очень старая фигурка старого каркат. Какой-то очень важный тип. На боку нацарапано «Тяу».
 
-ent-CEPlushieGoldenFrog = golden frog figurine
+ent-CEPlushieGoldenFrog = золотая фигурка лягушки
     .desc = TODO fun description
 
-ent-CEPlushieGoldenSkeleton = golden skeleton figurine
+ent-CEPlushieGoldenSkeleton = золотая фигурка скелета
     .desc = TODO fun description
 
-ent-CEPlushieGoldenLumi = golden lumi figurine
+ent-CEPlushieGoldenLumi = золотая фигурка люмигриба
     .desc = TODO fun description
 
-ent-CEPlushieGoldenFlem = golden flem figurine
-    .desc = Every gold flem is personalized. Each one is worth a fortune. Each one is utterly useless.
+ent-CEPlushieGoldenFlem = золотая фигурка флема
+    .desc = Каждый золотой флем уникален. Каждый стоит целое состояние. Каждый абсолютно бесполезен.
 
-ent-CEPlushieGoldenAgaric = golden myconid figurine
-    .desc = The golden mushroom! A symbol of prosperity and health.
+ent-CEPlushieGoldenAgaric = золотая фигурка миконида
+    .desc = Золотой гриб! Символ процветания и здоровья.
 
-ent-CEWallpaperItemBase = wallpaper roll
-    .desc = A roll of wallpaper. Glue it to a wall from whichever side you're standing on.
+ent-CEWallpaperItemBase = рулон обоев
+    .desc = Рулон обоев. Приклейте их к стене с той стороны, с которой вы стоите.
 
 ent-CEWallpaperItemPurple = { ent-CEWallpaperItemBase }
     .desc = { ent-CEWallpaperItemBase.desc }
@@ -1277,10 +1277,10 @@ ent-CEWallpaperItemBlack = { ent-CEWallpaperItemBase }
     .suffix = Black
 
 ent-CEd20Dice = d20
-    .desc = What are the odds of me drinking wine and choking and dropping the candle on the dwarf's head?
+    .desc = Каковы шансы, что я выпью вина, подавлюсь и уроню свечу дварфу на голову?
 
 ent-CEd6Dice = d6
-    .desc = A bone cube for board games.
+    .desc = Костяной кубик для настольных игр.
 
 ent-CEAsh1 = пепел
     .desc = Раньше это было что-то, что могло быть интересным и полезным, теперь это не так.
@@ -1290,8 +1290,8 @@ ent-CEAsh30 = { ent-CEAsh1 }
     .desc = { ent-CEAsh1.desc }
     .suffix = 30
 
-ent-CEBone1 = bone
-    .desc = A yellowed bone that once belonged to a living creature.
+ent-CEBone1 = кость
+    .desc = Пожелтевшая кость, когда-то принадлежавшая живому существу.
 
 ent-CEBone5 = { ent-CEBone1 }
     .desc = { ent-CEBone1.desc }
@@ -1301,11 +1301,11 @@ ent-CEBone10 = { ent-CEBone1 }
     .desc = { ent-CEBone1.desc }
     .suffix = 10
 
-ent-CEBrassPipeStackBase = metal pipes
+ent-CEBrassPipeStackBase = металлические трубы
     .desc = { "" }
 
-ent-CEMediumBrassPipe1 = medium brass pipe
-    .desc = A  pipe for transferring mana energy. The brass casing insulates accidental spills, but if damaged, the flow can harm surrounding entities.
+ent-CEMediumBrassPipe1 = средняя латунная труба
+    .desc = Труба для передачи энергии маны. Латунная оболочка изолирует случайные утечки, но в случае повреждения поток может навредить окружающим.
     .suffix = 1
 
 ent-CEMediumBrassPipe15 = { ent-CEMediumBrassPipe1 }
@@ -1316,8 +1316,8 @@ ent-CEMediumBrassPipe30 = { ent-CEMediumBrassPipe1 }
     .desc = { ent-CEMediumBrassPipe1.desc }
     .suffix = 30
 
-ent-CEBigBrassPipe1 = big brass pipe
-    .desc = A large pipe for transferring mana energy. The brass casing insulates accidental spills, but if damaged, the flow can harm surrounding entities.
+ent-CEBigBrassPipe1 = большая латунная труба
+    .desc = Крупная труба для передачи энергии маны. Латунная оболочка изолирует случайные утечки, но в случае повреждения поток может навредить окружающим.
     .suffix = 1
 
 ent-CEBigBrassPipe15 = { ent-CEBigBrassPipe1 }
@@ -1328,8 +1328,8 @@ ent-CEBigBrassPipe30 = { ent-CEBigBrassPipe1 }
     .desc = { ent-CEBigBrassPipe1.desc }
     .suffix = 30
 
-ent-CEPipeValve1 = pipe valve
-    .desc = When attached to a mana pipe, it allows you to easily control the flow of energy.
+ent-CEPipeValve1 = вентиль трубы
+    .desc = При подключении к трубе маны позволяет легко управлять потоком энергии.
     .suffix = 1
 
 ent-CEPipeValve10 = { ent-CEPipeValve1 }
@@ -1397,28 +1397,28 @@ ent-CECoinPlatinum10 = { ent-CECoinPlatinum1 }
     .suffix = 10 монет
 
 ent-CEBaseEssenceSphere = { "" }
-    .desc = A perfectly round crystal sphere containing an essence trapped inside, preserved in a plasma-like form. A valuable resource for many thaumaturgical recipes and rituals.
+    .desc = Идеально круглая кристальная сфера с заключённой внутри эссенцией, сохранённой в плазмоподобной форме. Ценный ресурс для многих тауматургических рецептов и ритуалов.
 
-ent-CEEssenceSphereEarth = essence sphere of Terra
-    .desc = A sealed glass sphere holding pure liquid Terra essence.
+ent-CEEssenceSphereEarth = сфера эссенции Terra
+    .desc = Запечатанная стеклянная сфера с чистой жидкой эссенцией Terra.
 
-ent-CEEssenceSphereFire = essence sphere of Ignis
-    .desc = A sealed glass sphere holding pure liquid Ignis essence.
+ent-CEEssenceSphereFire = сфера эссенции Ignis
+    .desc = Запечатанная стеклянная сфера с чистой жидкой эссенцией Ignis.
 
-ent-CEEssenceSphereWater = essence sphere of Aqua
-    .desc = A sealed glass sphere holding pure liquid Aqua essence.
+ent-CEEssenceSphereWater = сфера эссенции Aqua
+    .desc = Запечатанная стеклянная сфера с чистой жидкой эссенцией Aqua.
 
-ent-CEEssenceSphereAir = essence sphere of Aer
-    .desc = A sealed glass sphere holding pure liquid Aer essence.
+ent-CEEssenceSphereAir = сфера эссенции Aer
+    .desc = Запечатанная стеклянная сфера с чистой жидкой эссенцией Aer.
 
-ent-CEEssenceSphereOrder = essence sphere of Ordo
-    .desc = A sealed glass sphere holding pure liquid Ordo essence.
+ent-CEEssenceSphereOrder = сфера эссенции Ordo
+    .desc = Запечатанная стеклянная сфера с чистой жидкой эссенцией Ordo.
 
-ent-CEEssenceSphereChaos = essence sphere of Perditio
-    .desc = A sealed glass sphere holding pure liquid Perditio essence.
+ent-CEEssenceSphereChaos = сфера эссенции Perditio
+    .desc = Запечатанная стеклянная сфера с чистой жидкой эссенцией Perditio.
 
-ent-CELeather1 = leather
-    .desc = A roll of tanned leather.
+ent-CELeather1 = кожа
+    .desc = Рулон выделанной кожи.
     .suffix = 1
 
 ent-CELeather5 = { ent-CELeather1 }
@@ -1429,117 +1429,117 @@ ent-CELeather10 = { ent-CELeather1 }
     .desc = { ent-CELeather1.desc }
     .suffix = 10
 
-ent-CEBaseMachineCore = machine core
-    .desc = A modular control core containing the circuitry and logic needed to assemble and operate advanced machines.
+ent-CEBaseMachineCore = ядро машины
+    .desc = Модульное управляющее ядро со схемами и логикой, необходимыми для сборки и работы сложных машин.
 
-ent-CEMachineCoreMeltingFurnace = melting furnace machine core
+ent-CEMachineCoreMeltingFurnace = ядро плавильной печи
     .desc = { ent-CEBaseMachineCore.desc }
 
-ent-CEMachineCoreRecycler = recycler machine core
+ent-CEMachineCoreRecycler = ядро переработчика
     .desc = { ent-CEBaseMachineCore.desc }
 
-ent-CEMachineCoreDrill = drill machine core
+ent-CEMachineCoreDrill = ядро бура
     .desc = { ent-CEBaseMachineCore.desc }
 
-ent-CEMachineCoreDrillAdvanced = advanced drill machine core
+ent-CEMachineCoreDrillAdvanced = ядро улучшенного бура
     .desc = { ent-CEBaseMachineCore.desc }
 
-ent-CEMachineCoreCharger = charger machine core
+ent-CEMachineCoreCharger = ядро зарядника
     .desc = { ent-CEBaseMachineCore.desc }
 
-ent-CEMachineCoreFunnel = funnel machine core
+ent-CEMachineCoreFunnel = ядро воронки
     .desc = { ent-CEBaseMachineCore.desc }
 
-ent-CEMachineCoreSalaryPlatform = salary platform machine core
+ent-CEMachineCoreSalaryPlatform = ядро платформы выплат
     .desc = { ent-CEBaseMachineCore.desc }
 
-ent-CEMachineCoreDimensionalLift = dimensional lift machine core
+ent-CEMachineCoreDimensionalLift = ядро пространственного лифта
     .desc = { ent-CEBaseMachineCore.desc }
 
-ent-CEMachineCoreHeater = heater machine core
+ent-CEMachineCoreHeater = ядро нагревателя
     .desc = { ent-CEBaseMachineCore.desc }
 
-ent-CEMachineCorePress = press machine core
+ent-CEMachineCorePress = ядро пресса
     .desc = { ent-CEBaseMachineCore.desc }
 
-ent-CEMachineCorePressTargetThaumaturgySplitter = thaumaturgical splitter machine core
+ent-CEMachineCorePressTargetThaumaturgySplitter = ядро тауматургического расщепителя
     .desc = { ent-CEBaseMachineCore.desc }
 
-ent-CEMachineCoreEssenceAttractor = essence attractor machine core
+ent-CEMachineCoreEssenceAttractor = ядро притягивателя эссенции
     .desc = { ent-CEBaseMachineCore.desc }
 
-ent-CEMachineCoreDistributionUnit = distribution unit machine core
+ent-CEMachineCoreDistributionUnit = ядро блока распределения
     .desc = { ent-CEBaseMachineCore.desc }
 
-ent-CEMachineCoreEnergyExtractor = energy extractor machine core
+ent-CEMachineCoreEnergyExtractor = ядро извлекателя энергии
     .desc = { ent-CEBaseMachineCore.desc }
 
-ent-CEMachineCoreAccumulatorVessel = accumulator vessel machine core
+ent-CEMachineCoreAccumulatorVessel = ядро аккумулирующего сосуда
     .desc = { ent-CEBaseMachineCore.desc }
 
-ent-CEMachineCoreTerminal = terminal machine core
+ent-CEMachineCoreTerminal = ядро терминала
     .desc = { ent-CEBaseMachineCore.desc }
 
-ent-CEMachineCoreGeneratorMagicCapacitor = magic capacitor machine core
+ent-CEMachineCoreGeneratorMagicCapacitor = ядро магического конденсатора
     .desc = { ent-CEBaseMachineCore.desc }
 
-ent-CEMachineCoreMapProjector = map projector machine core
+ent-CEMachineCoreMapProjector = ядро проектора карты
     .desc = { ent-CEBaseMachineCore.desc }
 
-ent-CEMachineCoreGridProjector = island power grid projector machine core
+ent-CEMachineCoreGridProjector = ядро проектора энергосети острова
     .desc = { ent-CEBaseMachineCore.desc }
 
-ent-CEMachineCoreMurkSphereFixerProjector = light monolith status projector machine core
+ent-CEMachineCoreMurkSphereFixerProjector = ядро проектора состояния световых монолитов
     .desc = { ent-CEBaseMachineCore.desc }
 
-ent-CEMachineCoreTradingBase = trading platform machine core
+ent-CEMachineCoreTradingBase = ядро торговой платформы
     .desc = { ent-CEBaseMachineCore.desc }
 
-ent-CEMachineCoreTradingPlatformEmpireGuard = trading platform machine core (Empire Guard)
+ent-CEMachineCoreTradingPlatformEmpireGuard = ядро торговой платформы (Стража Империи)
     .desc = { ent-CEMachineCoreTradingBase.desc }
 
-ent-CEMachineCoreTradingPlatformHelsinWarHouse = trading platform machine core (Helsin War House)
+ent-CEMachineCoreTradingPlatformHelsinWarHouse = ядро торговой платформы (Военный дом Хельсина)
     .desc = { ent-CEMachineCoreTradingBase.desc }
 
-ent-CEMachineCoreTradingPlatformHomeDecor = trading platform machine core (Home Decor)
+ent-CEMachineCoreTradingPlatformHomeDecor = ядро торговой платформы (Домашний декор)
     .desc = { ent-CEMachineCoreTradingBase.desc }
 
-ent-CEMachineCoreTradingPlatformTailors = trading platform machine core (Tailors)
+ent-CEMachineCoreTradingPlatformTailors = ядро торговой платформы (Портные)
     .desc = { ent-CEMachineCoreTradingBase.desc }
 
-ent-CEMachineCoreTradingPlatformHorticulture = trading platform machine core (Horticulture)
+ent-CEMachineCoreTradingPlatformHorticulture = ядро торговой платформы (Садоводство)
     .desc = { ent-CEMachineCoreTradingBase.desc }
 
-ent-CEMachineCoreTradingPlatformDwarfMiners = trading platform machine core (Dwarf Miners)
+ent-CEMachineCoreTradingPlatformDwarfMiners = ядро торговой платформы (Дварфы-шахтёры)
     .desc = { ent-CEMachineCoreTradingBase.desc }
 
-ent-CEMachineCoreTradingPlatformAlcohol = trading platform machine core (Alcohol)
+ent-CEMachineCoreTradingPlatformAlcohol = ядро торговой платформы (Алкоголь)
     .desc = { ent-CEMachineCoreTradingBase.desc }
 
-ent-CEMachineCoreTradingPlatformApothecariesGuild = trading platform machine core (Apothecaries Guild)
+ent-CEMachineCoreTradingPlatformApothecariesGuild = ядро торговой платформы (Гильдия аптекарей)
     .desc = { ent-CEMachineCoreTradingBase.desc }
 
-ent-CEMachineCoreTradingPlatformImperialChancellery = trading platform machine core (Imperial Chancellery)
+ent-CEMachineCoreTradingPlatformImperialChancellery = ядро торговой платформы (Имперская канцелярия)
     .desc = { ent-CEMachineCoreTradingBase.desc }
 
-ent-CEMachinePartEnergyLine1 = energyline
-    .desc = Reinforced energy cells connected in a line. A mechanical component often used to create large machines.
+ent-CEMachinePartEnergyLine1 = энерголиния
+    .desc = Усиленные энергоячейки, соединённые в линию. Механический компонент, часто используемый для создания крупных машин.
     .suffix = 1
 
 ent-CEMachinePartEnergyLine5 = { ent-CEMachinePartEnergyLine1 }
     .desc = { ent-CEMachinePartEnergyLine1.desc }
     .suffix = 5
 
-ent-CEMachinePartCoalDiffuser1 = coal diffuser
-    .desc = Glass-carbon energy dissipator. Used as a material for mechanical engineering.
+ent-CEMachinePartCoalDiffuser1 = угольный диффузор
+    .desc = Стеклоуглеродный рассеиватель энергии. Используется как материал для машиностроения.
     .suffix = 1
 
 ent-CEMachinePartCoalDiffuser5 = { ent-CEMachinePartCoalDiffuser1 }
     .desc = { ent-CEMachinePartCoalDiffuser1.desc }
     .suffix = 5
 
-ent-CEMachinePartDimensionalMatrix1 = dimensional matrix
-    .desc = Fragments of demiplane cores filled with spatial distortions are used as ingredients to create more complex machines.
+ent-CEMachinePartDimensionalMatrix1 = пространственная матрица
+    .desc = Фрагменты ядер полуплоскостей, наполненные пространственными искажениями, используются как ингредиенты для создания более сложных машин.
     .suffix = 1
 
 ent-CEMachinePartDimensionalMatrix5 = { ent-CEMachinePartDimensionalMatrix1 }
@@ -1568,8 +1568,8 @@ ent-CEStoneBlock10 = { ent-CEStoneBlock1 }
     .desc = { ent-CEStoneBlock1.desc }
     .suffix = 10
 
-ent-CESnowBlock1 = snow block
-    .desc = A block of compacted snow.
+ent-CESnowBlock1 = снежный блок
+    .desc = Блок уплотнённого снега.
 
 ent-CESnowBlock10 = { ent-CESnowBlock1 }
     .desc = { ent-CESnowBlock1.desc }
@@ -1578,8 +1578,8 @@ ent-CESnowBlock10 = { ent-CESnowBlock1 }
 ent-CESeedAppleTree = саженцы яблони
     .desc = Саженцы яблони. Посадите их, чтобы вырастить яблони.
 
-ent-CEScrapIron1 = iron scrap
-    .desc = Crooked pieces of iron. Only to be melted down.
+ent-CEScrapIron1 = железный лом
+    .desc = Кривые куски железа. Только на переплавку.
     .suffix = 1
 
 ent-CEScrapIron5 = { ent-CEScrapIron1 }
@@ -1590,8 +1590,8 @@ ent-CEScrapIron10 = { ent-CEScrapIron1 }
     .desc = { ent-CEScrapIron1.desc }
     .suffix = 10
 
-ent-CEScrapBrass1 = brass scrap
-    .desc = Crooked pieces of brass. The secret of producing this material has been lost. Only ancient ruins remain as a source of this valuable metal.
+ent-CEScrapBrass1 = латунный лом
+    .desc = Кривые куски латуни. Секрет производства этого материала утерян. Единственным источником этого ценного металла остались древние руины.
     .suffix = 1
 
 ent-CEScrapBrass5 = { ent-CEScrapBrass1 }
@@ -1670,27 +1670,27 @@ ent-CESeedSunflower30 = { ent-CESeedSunflower }
     .desc = { ent-CESeedSunflower.desc }
     .suffix = 30
 
-ent-CESeedCorn = corn seeds
-    .desc = Tiny corn seeds for planting.
+ent-CESeedCorn = семена кукурузы
+    .desc = Крошечные семена кукурузы для посадки.
     .suffix = 1
 
 ent-CESeedCorn30 = { ent-CESeedCorn }
     .desc = { ent-CESeedCorn.desc }
     .suffix = 30
 
-ent-CESeedCarrot = carrot seeds
-    .desc = Tiny carrot seeds for planting.
+ent-CESeedCarrot = семена моркови
+    .desc = Крошечные семена моркови для посадки.
     .suffix = 1
 
 ent-CESeedCarrot30 = { ent-CESeedCarrot }
     .desc = { ent-CESeedCarrot.desc }
     .suffix = 30
 
-ent-CEDimensionalShard = dimensional shard
-    .desc = A jagged fragment of torn space, still humming with residual thaumaturgical potential.
+ent-CEDimensionalShard = пространственный осколок
+    .desc = Зазубренный обломок разорванного пространства, всё ещё гудящий остаточным тауматургическим потенциалом.
 
-ent-CEEnergyCrystalCell = energy crystal cell
-    .desc = An energy crystal encased in a secure brass cell. It protects the crystal from accidental destruction and energy spillage into the air.
+ent-CEEnergyCrystalCell = ячейка энергокристалла
+    .desc = Энергокристалл в надёжной латунной ячейке. Защищает кристалл от случайного разрушения и утечки энергии в воздух.
 
 ent-CEFloorTileBase = { "" }
     .desc = Делает пол более приятным для ваших ног. И для ваших глаз.
@@ -1743,10 +1743,10 @@ ent-CEFloorTileStonebricksSquareCarved = квадратные резные ка�
 ent-CEFloorTileRoofRed = красная кровельная плитка
     .desc = { ent-CEFloorTileBase.desc }
 
-ent-CEFloorTileRoofGreen = green roof tile
+ent-CEFloorTileRoofGreen = зелёная кровельная плитка
     .desc = { ent-CEFloorTileBase.desc }
 
-ent-CEFloorTileRoofBlue = blue roof tile
+ent-CEFloorTileRoofBlue = синяя кровельная плитка
     .desc = { ent-CEFloorTileBase.desc }
 
 ent-CEFloorTileGrassBagBase = { "" }
@@ -1825,8 +1825,8 @@ ent-CEIronOre30 = { ent-CEIronOre1 }
     .desc = { ent-CEIronOre1.desc }
     .suffix = 30
 
-ent-CECoal1 = coal
-    .desc = A chunk of coal. Can be used as fuel or in crafting.
+ent-CECoal1 = уголь
+    .desc = Кусок угля. Можно использовать как топливо или для крафта.
     .suffix = 1
 
 ent-CECoal10 = { ent-CECoal1 }
@@ -1837,8 +1837,8 @@ ent-CECoal30 = { ent-CECoal1 }
     .desc = { ent-CECoal1.desc }
     .suffix = 30
 
-ent-CEBrassRod1 = brass rod
-    .desc = A solid rod of brass. Useful for crafting.
+ent-CEBrassRod1 = латунный стержень
+    .desc = Цельный латунный стержень. Полезен для крафта.
 
 ent-CEBrassRod15 = { ent-CEBrassRod1 }
     .desc = { ent-CEBrassRod1.desc }
