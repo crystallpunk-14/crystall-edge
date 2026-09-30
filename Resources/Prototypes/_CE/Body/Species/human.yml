@@ -44,11 +44,6 @@
     enum.HumanoidVisualLayers.Special:
       limit: 0
       required: false
-  appearances:
-    enum.HumanoidVisualLayers.Head:
-      matchSkin: true
-    enum.HumanoidVisualLayers.Chest:
-      matchSkin: true
 
 - type: entity
   parent: CEBaseSpeciesAppearance

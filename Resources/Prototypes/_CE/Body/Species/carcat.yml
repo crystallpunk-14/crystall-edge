@@ -62,15 +62,11 @@
       limit: 0
       required: false
   appearances:
-    enum.HumanoidVisualLayers.Head:
-      matchSkin: true
     enum.HumanoidVisualLayers.Snout:
       matchSkin: true
     enum.HumanoidVisualLayers.Tail:
       matchSkin: true
     enum.HumanoidVisualLayers.HeadTop:
-      matchSkin: true
-    enum.HumanoidVisualLayers.Chest:
       matchSkin: true
     enum.HumanoidVisualLayers.LArm:
       matchSkin: true
