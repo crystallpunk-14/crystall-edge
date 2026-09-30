@@ -6,12 +6,9 @@
   description: A wall-mounted loudspeaker. Repeats announcements from radio booths broadcasting on its frequencies.
   components:
   - type: Sprite
-    sprite: Structures/Wallmounts/intercom.rsi # TODO: CE sprite
+    sprite: _CE/Structures/Industrial/loudspeaker.rsi
     layers:
     - state: base
-    - state: speaker
-      map: ["enum.PowerDeviceVisualLayers.Powered"]
-      shader: unshaded
   - type: Damageable
     damageModifierSet: Metallic
   - type: Injurable
@@ -33,12 +30,6 @@
         sound:
           collection: MetalBreak
   - type: Appearance
-  - type: GenericVisualizer
-    visuals:
-      enum.PowerDeviceVisuals.Powered:
-        enum.PowerDeviceVisualLayers.Powered:
-          True: { visible: true }
-          False: { visible: false }
   - type: ApcPowerReceiver
     powerLoad: 0.05
   - type: ExtensionCableReceiver
