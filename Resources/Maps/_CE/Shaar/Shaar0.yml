@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.0
   forkId: ""
   forkVersion: ""
-  time: 09/29/2026 21:09:15
-  entityCount: 2229
+  time: 09/30/2026 19:20:06
+  entityCount: 2239
 maps:
 - 1
 grids:
@@ -5896,11 +5896,6 @@ entities:
       canCollide: False
 - proto: CELamppostDouble
   entities:
-  - uid: 109
-    components:
-    - type: Transform
-      parent: 1
-      pos: -25.5,7.5
   - uid: 319
     components:
     - type: Transform
@@ -5923,12 +5918,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -25.5,-0.5
-  - uid: 406
-    components:
-    - type: Transform
-      parent: 1
-      rot: 1.5707963267948966 rad
-      pos: 10.5,-6.5
   - uid: 538
     components:
     - type: Transform
@@ -5941,12 +5930,6 @@ entities:
       parent: 1
       rot: 1.5707963267948966 rad
       pos: -21.5,-7.5
-  - uid: 1049
-    components:
-    - type: Transform
-      parent: 1
-      rot: 1.5707963267948966 rad
-      pos: -12.5,-7.5
 - proto: CELantern
   entities:
   - uid: 205
@@ -7546,6 +7529,27 @@ entities:
       pos: -0.5,2.5
     - type: Fixtures
       fixtures: {}
+  - uid: 1840
+    components:
+    - type: Transform
+      parent: 1
+      pos: -4.5,13.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1841
+    components:
+    - type: Transform
+      parent: 1
+      pos: -4.5,12.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1842
+    components:
+    - type: Transform
+      parent: 1
+      pos: -5.5,12.5
+    - type: Fixtures
+      fixtures: {}
   - uid: 2615
     components:
     - type: Transform
@@ -8165,6 +8169,23 @@ entities:
     - type: Transform
       parent: 1
       pos: -2.5,-4.5
+- proto: CERadioPostSpeaker
+  entities:
+  - uid: 109
+    components:
+    - type: Transform
+      parent: 1
+      pos: -25.5,7.5
+  - uid: 406
+    components:
+    - type: Transform
+      parent: 1
+      pos: 10.5,-6.5
+  - uid: 1049
+    components:
+    - type: Transform
+      parent: 1
+      pos: -12.5,-7.5
 - proto: CEResearchTable
   entities:
   - uid: 12
@@ -10294,6 +10315,69 @@ entities:
       parent: 1
       rot: 1.5707963267948966 rad
       pos: 26.5,-18.5
+    - type: Fixtures
+      fixtures: {}
+- proto: CEWallRadioSpeaker
+  entities:
+  - uid: 1837
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: -5.5,12.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1838
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: -13.5,-16.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1843
+    components:
+    - type: Transform
+      parent: 1
+      pos: 17.5,1.5
+    - type: Fixtures
+      fixtures: {}
+- proto: CEWallRadioSpeakerAcademy
+  entities:
+  - uid: 1836
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -30.5,-12.5
+    - type: Fixtures
+      fixtures: {}
+- proto: CEWallRadioSpeakerGuard
+  entities:
+  - uid: 1839
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -2.5,-15.5
+    - type: Fixtures
+      fixtures: {}
+- proto: CEWallRadioSpeakerTavern
+  entities:
+  - uid: 1834
+    components:
+    - type: Transform
+      parent: 1
+      rot: 3.141592653589793 rad
+      pos: -9.5,5.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1835
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: 6.5,-0.5
     - type: Fixtures
       fixtures: {}
 - proto: CEWallStone

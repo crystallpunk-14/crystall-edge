@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.0
   forkId: ""
   forkVersion: ""
-  time: 09/29/2026 21:09:16
-  entityCount: 1979
+  time: 09/30/2026 19:20:07
+  entityCount: 1975
 maps:
 - 1
 grids:
@@ -2145,50 +2145,6 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: -17.775911,-27.78288
-- proto: CECurtainsRed
-  entities:
-  - uid: 1565
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: -38.5,-16.5
-  - uid: 1591
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: -37.5,-16.5
-  - uid: 1592
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: -36.5,-16.5
-  - uid: 1593
-    components:
-    - type: Transform
-      parent: 1
-      rot: 1.5707963267948966 rad
-      pos: -39.5,-15.5
-  - uid: 1594
-    components:
-    - type: Transform
-      parent: 1
-      rot: 1.5707963267948966 rad
-      pos: -39.5,-14.5
-  - uid: 1595
-    components:
-    - type: Transform
-      parent: 1
-      rot: 1.5707963267948966 rad
-      pos: -39.5,-10.5
-  - uid: 1596
-    components:
-    - type: Transform
-      parent: 1
-      rot: 1.5707963267948966 rad
-      pos: -39.5,-9.5
 - proto: CEd20Dice
   entities:
   - uid: 1392
@@ -8405,12 +8361,6 @@ entities:
       parent: 1
       rot: 3.141592653589793 rad
       pos: -19.5,0.5
-  - uid: 899
-    components:
-    - type: Transform
-      parent: 1
-      rot: 3.141592653589793 rad
-      pos: -14.5,0.5
   - uid: 969
     components:
     - type: Transform
@@ -8651,6 +8601,41 @@ entities:
       parent: 1
       rot: 3.141592653589793 rad
       pos: 8.5,4.5
+    - type: Fixtures
+      fixtures: {}
+- proto: CEWallRadioSpeakerAcademy
+  entities:
+  - uid: 1565
+    components:
+    - type: Transform
+      parent: 1
+      rot: 1.5707963267948966 rad
+      pos: -39.5,-10.5
+    - type: Fixtures
+      fixtures: {}
+- proto: CEWallRadioSpeakerEngineering
+  entities:
+  - uid: 899
+    components:
+    - type: Transform
+      parent: 1
+      rot: 3.141592653589793 rad
+      pos: -14.5,0.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1591
+    components:
+    - type: Transform
+      parent: 1
+      pos: -8.5,14.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 1592
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -22.5,10.5
     - type: Fixtures
       fixtures: {}
 - proto: CEWallStone
@@ -11112,6 +11097,11 @@ entities:
     - type: Transform
       parent: 1
       pos: -40.5,-7.5
+  - uid: 1511
+    components:
+    - type: Transform
+      parent: 1
+      pos: -38.5,-17.5
   - uid: 1515
     components:
     - type: Transform
@@ -11122,6 +11112,16 @@ entities:
     - type: Transform
       parent: 1
       pos: -33.5,-8.5
+  - uid: 1519
+    components:
+    - type: Transform
+      parent: 1
+      pos: -37.5,-17.5
+  - uid: 1520
+    components:
+    - type: Transform
+      parent: 1
+      pos: -36.5,-17.5
   - uid: 1522
     components:
     - type: Transform
@@ -11592,23 +11592,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -3.5,1.5
-- proto: CEWindowStonePurple
-  entities:
-  - uid: 1511
-    components:
-    - type: Transform
-      parent: 1
-      pos: -38.5,-17.5
-  - uid: 1519
-    components:
-    - type: Transform
-      parent: 1
-      pos: -37.5,-17.5
-  - uid: 1520
-    components:
-    - type: Transform
-      parent: 1
-      pos: -36.5,-17.5
 - proto: CEWoodenBedLight
   entities:
   - uid: 675

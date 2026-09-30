@@ -8,6 +8,7 @@ using Content.Shared.Radio;
 using Content.Shared.Speech;
 using Content.Shared.Speech.Components;
 using Content.Shared.Verbs;
+using Robust.Shared.Audio.Systems;
 
 namespace Content.Shared._CE.Radio;
 
@@ -20,6 +21,7 @@ public abstract partial class CESharedRadioSystem : EntitySystem
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedPowerReceiverSystem _power = default!;
     [Dependency] private SharedInteractionSystem _interaction = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
 
     [SubscribeLocalEvent]
     private void OnMicrophoneInit(Entity<CERadioMicrophoneComponent> ent, ref MapInitEvent args)
@@ -121,6 +123,12 @@ public abstract partial class CESharedRadioSystem : EntitySystem
 
         ent.Comp.Enabled = enabled;
         Dirty(ent);
+
+        if (user != null)
+        {
+            _audio.PlayPredicted(enabled ? ent.Comp.SoundOn : ent.Comp.SoundOff, ent, user);
+            _popup.PopupClient(Loc.GetString(enabled ? "ce-radio-microphone-on" : "ce-radio-microphone-off"), ent, user.Value);
+        }
 
         UpdateListener(ent);
     }

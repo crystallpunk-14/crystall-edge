@@ -2,6 +2,9 @@ ce-radio-microphone-verb-on = Выйти в эфир
 ce-radio-microphone-verb-off = Выйти из эфира
 ce-radio-microphone-no-power = Рубка обесточена.
 
+ce-radio-microphone-on = Включено.
+ce-radio-microphone-off = Выключено.
+
 ce-radio-examine-frequencies = Частоты: [color=yellow]{$frequencies}[/color].
 
 ce-radio-frequency-common = Общий

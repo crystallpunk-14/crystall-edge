@@ -2,6 +2,9 @@ ce-radio-microphone-verb-on = Go on air
 ce-radio-microphone-verb-off = Go off air
 ce-radio-microphone-no-power = The booth has no power.
 
+ce-radio-microphone-on = Enabled.
+ce-radio-microphone-off = Disabled.
+
 ce-radio-examine-frequencies = Frequencies: [color=yellow]{$frequencies}[/color].
 
 ce-radio-frequency-common = Common

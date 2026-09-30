@@ -1,4 +1,5 @@
 using Content.Shared._CE.Radio.Prototypes;
+using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -28,4 +29,16 @@ public sealed partial class CERadioMicrophoneComponent : Component
 
     [DataField, AutoNetworkedField]
     public bool Enabled;
+
+    /// <summary>
+    /// Played when the booth is switched on.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public SoundSpecifier? SoundOn = new SoundPathSpecifier("/Audio/Machines/machine_switch.ogg");
+
+    /// <summary>
+    /// Played when the booth is switched off. Same clip as <see cref="SoundOn"/>, pitched down.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public SoundSpecifier? SoundOff = new SoundPathSpecifier("/Audio/Machines/machine_switch.ogg", AudioParams.Default.WithPitchScale(0.8f));
 }
