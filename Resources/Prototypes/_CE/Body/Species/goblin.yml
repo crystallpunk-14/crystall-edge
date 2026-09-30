@@ -272,10 +272,12 @@
 - type: entity
   parent: [ CEOrganBaseTorsoSexed, OrganBaseTorso, CEOrganGoblinExternal ]
   id: CEOrganGoblinTorso
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseHeadSexed, OrganBaseHead, CEOrganGoblinExternal ]
   id: CEOrganGoblinHead
+  categories: [ HideSpawnMenu ]
   components:
   - type: VisualOrganMarkings
     hideableLayers:
@@ -294,38 +296,47 @@
 - type: entity
   parent: [ CEOrganBaseArmLeftNonSexed, OrganBaseArmLeft, CEOrganGoblinExternal ]
   id: CEOrganGoblinArmLeft
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseArmRightNonSexed, OrganBaseArmRight, CEOrganGoblinExternal ]
   id: CEOrganGoblinArmRight
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseHandLeftNonSexed, OrganBaseHandLeft, CEOrganGoblinExternal ]
   id: CEOrganGoblinHandLeft
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseHandRightNonSexed, OrganBaseHandRight, CEOrganGoblinExternal ]
   id: CEOrganGoblinHandRight
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseLegLeftNonSexed, OrganBaseLegLeft, CEOrganGoblinExternal ]
   id: CEOrganGoblinLegLeft
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseLegRightNonSexed, OrganBaseLegRight, CEOrganGoblinExternal ]
   id: CEOrganGoblinLegRight
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseFootLeftNonSexed, OrganBaseFootLeft, CEOrganGoblinExternal ]
   id: CEOrganGoblinFootLeft
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseFootRightNonSexed, OrganBaseFootRight, CEOrganGoblinExternal ]
   id: CEOrganGoblinFootRight
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ OrganBaseEyes, OrganHumanInternal, CEOrganGoblinExternal ]
   id: CEOrganGoblinEyes
+  categories: [ HideSpawnMenu ]
   components:
   - type: VisualOrgan
     data:

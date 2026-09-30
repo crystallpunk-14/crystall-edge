@@ -4552,12 +4552,12 @@ ent-CEOrganTieflingEyes = { "" }
     .desc = { "" }
     .suffix = tiefling
 
-ent-CESmallWoodenCrateFilled = { "" }
-    .desc = { "" }
+ent-CESmallWoodenCrateFilled = { ent-CESmallWoodenCrate }
+    .desc = { ent-CESmallWoodenCrate.desc }
     .suffix = Filled, Tools and Fluff
 
-ent-CELargeWoodenCrateFilled = { "" }
-    .desc = { "" }
+ent-CELargeWoodenCrateFilled = { ent-CELargeWoodenCrate }
+    .desc = { ent-CELargeWoodenCrate.desc }
     .suffix = Filled, Tools and Fluff
 
 ent-CEClothingCloakCapeBarbarian = плащ варвара

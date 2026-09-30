@@ -315,10 +315,12 @@
 - type: entity
   parent: [ OrganBaseTorso, CEOrganCarcatExternal ]
   id: CEOrganCarcatTorso
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ OrganBaseHead, CEOrganCarcatExternal ]
   id: CEOrganCarcatHead
+  categories: [ HideSpawnMenu ]
   components:
   - type: VisualOrganMarkings
     hideableLayers:
@@ -345,38 +347,47 @@
 - type: entity
   parent: [ OrganBaseArmLeft, CEOrganCarcatExternal ]
   id: CEOrganCarcatArmLeft
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ OrganBaseArmRight, CEOrganCarcatExternal ]
   id: CEOrganCarcatArmRight
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ OrganBaseHandLeft, CEOrganCarcatExternal ]
   id: CEOrganCarcatHandLeft
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ OrganBaseHandRight, CEOrganCarcatExternal ]
   id: CEOrganCarcatHandRight
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ OrganBaseLegLeft, CEOrganCarcatExternal ]
   id: CEOrganCarcatLegLeft
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ OrganBaseLegRight, CEOrganCarcatExternal ]
   id: CEOrganCarcatLegRight
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ OrganBaseFootLeft, CEOrganCarcatExternal ]
   id: CEOrganCarcatFootLeft
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ OrganBaseFootRight, CEOrganCarcatExternal ]
   id: CEOrganCarcatFootRight
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ OrganBaseEyes, OrganHumanInternal, CEOrganCarcatExternal ]
   id: CEOrganCarcatEyes
+  categories: [ HideSpawnMenu ]
   components:
   - type: VisualOrgan
     data:

@@ -212,6 +212,7 @@
 - type: entity
   parent: [ CEOrganBaseTorsoSexed, OrganBaseTorso, CEOrganSilvaExternal ]
   id: CEOrganSilvaTorso
+  categories: [ HideSpawnMenu ]
   components:
   - type: VisualOrganMarkings
     markingsDisplacement:
@@ -224,6 +225,7 @@
 - type: entity
   parent: [ CEOrganBaseHeadSexed, OrganBaseHead, CEOrganSilvaExternal ]
   id: CEOrganSilvaHead
+  categories: [ HideSpawnMenu ]
   components:
   - type: VisualOrganMarkings
     hideableLayers:
@@ -233,38 +235,47 @@
 - type: entity
   parent: [ CEOrganBaseArmLeftSexed, OrganBaseArmLeft, CEOrganSilvaExternal ]
   id: CEOrganSilvaArmLeft
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseArmRightSexed, OrganBaseArmRight, CEOrganSilvaExternal ]
   id: CEOrganSilvaArmRight
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseHandLeftSexed, OrganBaseHandLeft, CEOrganSilvaExternal ]
   id: CEOrganSilvaHandLeft
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseHandRightSexed, OrganBaseHandRight, CEOrganSilvaExternal ]
   id: CEOrganSilvaHandRight
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseLegLeftSexed, OrganBaseLegLeft, CEOrganSilvaExternal ]
   id: CEOrganSilvaLegLeft
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseLegRightSexed, OrganBaseLegRight, CEOrganSilvaExternal ]
   id: CEOrganSilvaLegRight
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseFootLeftSexed, OrganBaseFootLeft, CEOrganSilvaExternal ]
   id: CEOrganSilvaFootLeft
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseFootRightSexed, OrganBaseFootRight, CEOrganSilvaExternal ]
   id: CEOrganSilvaFootRight
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ OrganBaseEyes, OrganHumanInternal, CEOrganSilvaExternal ]
   id: CEOrganSilvaEyes
+  categories: [ HideSpawnMenu ]
   components:
   - type: VisualOrgan
     data:
