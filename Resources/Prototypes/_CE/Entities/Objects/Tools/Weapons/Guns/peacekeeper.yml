@@ -30,10 +30,13 @@
     proto: CEPeaceKeeperHitscan
     fireCost: 10
   - type: Battery
-    maxCharge: 50
-    startingCharge: 50
+    maxCharge: 100
+    startingCharge: 100
   - type: Gun
-    fireRate: 0.5
+    fireRate: 0.8
+    angleDecay: 10
+    angleIncrease: 2
+    maxAngle: 36
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
       params:
@@ -54,7 +57,7 @@
   - type: HitscanBasicDamage
     damage:
       types:
-        Shock: 35
+        Shock: 30
   - type: CEHitscanEntityEffect
     effects:
     - !type:SpawnEntity
@@ -62,7 +65,7 @@
       spawns:
       - CEOverchargeVFX
     - !type:ThrowFrom
-      distance: 1
+      distance: 0.75
     - !type:Irradiate
       charge: 5
   - type: HitscanBasicVisuals
@@ -75,25 +78,4 @@
     impactFlash:
       sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
       state: impact_blue
-
-- type: entity
-  parent: CEWeaponGunPeacekeeper
-  id: CEWeaponGunPeacekeeperGolden
-  name: golden Peacemaker
-  description: A low-charge energy rifle that fires a powerful repulsive beam of concentrated mana. This is a special item, made as a one-off piece to order for the guard commander. It has a slightly higher ammunition capacity.
-  suffix: Theft Target
-  components:
-  - type: Sprite
-    sprite: _CE/Objects/Tools/Weapons/Guns/peacekeeper_golden.rsi
-  - type: Battery
-    maxCharge: 80
-    startingCharge: 80
-  - type: StaticPrice
-    price: 550
-  - type: CEMagicEssenceStructure
-    essences:
-      Weapon: { min: 1, max: 3 }
-      Metal: { min: 1, max: 4 }
-      Energia: { min: 0, max: 2 }
-      Greed: { min: 1, max: 3 }
 
