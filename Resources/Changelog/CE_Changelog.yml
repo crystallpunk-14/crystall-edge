@@ -1056,3 +1056,14 @@
   id: 1093
   time: '2026-09-29T21:42:07.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/491
+- author: TheShuEd
+  changes:
+  - message: Conveyors can now be rotated without unclipping them
+    type: Tweak
+  - message: Fixed a bug that prevented the web from being destroyed
+    type: Fix
+  - message: You can now repaint scars in the character editor
+    type: Fix
+  id: 1094
+  time: '2026-09-30T15:57:08.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/493
