@@ -36,7 +36,7 @@
     selectedMode: Burst
     availableModes:
     - Burst
-    fireRate: 0.2
+    fireRate: 0.4
     burstFireRate: 5
     shotsPerBurst: 2
     burstCooldown: 3
@@ -82,7 +82,7 @@
     - !type:ThrowFrom
       distance: 1
     - !type:Irradiate
-      charge: 10
+      charge: 8
   - type: HitscanBasicVisuals
     muzzleFlash:
       sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
