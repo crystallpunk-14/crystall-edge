@@ -9,6 +9,7 @@
   - type: PlacementReplacement
     key: walls
   - type: Rotatable
+    rotateWhileAnchored: true
   - type: Clickable
   - type: InteractionOutline
   - type: Transform
