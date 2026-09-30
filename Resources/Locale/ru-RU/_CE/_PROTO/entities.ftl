@@ -937,112 +937,112 @@ ent-CEFoodDoughMediumFlat = раскатанное тесто
     .desc = { "" }
 
 ent-CEEggshells = яичная скорлупа
-    .desc = You're walkin' on 'em bud.
+    .desc = Ты на неё наступаешь, дружище.
 
-ent-CEFoodEgg = egg
+ent-CEFoodEgg = яйцо
     .desc = { ent-CEFoodEggBase.desc }
 
-ent-CEFoodEggCooked = cooked egg
+ent-CEFoodEggCooked = варёное яйцо
     .desc = { ent-CEFoodEgg.desc }
 
-ent-CEFoodMeatLambCooked = cooked lamb steak
+ent-CEFoodMeatLambCooked = жареный стейк из ягнёнка
     .desc = { ent-CEFoodMeatLamb.desc }
 
-ent-CEFoodMeatLambSlice = meat pieces
-    .desc = Succulent lamb steak
+ent-CEFoodMeatLambSlice = кусочки мяса
+    .desc = Сочный стейк из ягнёнка.
 
-ent-CEFoodMeatLambCookedSlice = cooked meat pieces
+ent-CEFoodMeatLambCookedSlice = жареные кусочки мяса
     .desc = { ent-CEFoodMeatLambSlice.desc }
 
-ent-CEFoodMeatLambCutlet = lamb cutlet
-    .desc = The result of mixing sliced lamb and egg - a raw round cutlet.
+ent-CEFoodMeatLambCutlet = котлета из ягнёнка
+    .desc = Результат смешивания нарезанной баранины и яйца — сырая круглая котлета.
 
-ent-CEFoodMeatLambCutletCooked = cooked lamb cutlet
-    .desc = Yammi!
+ent-CEFoodMeatLambCutletCooked = жареная котлета из ягнёнка
+    .desc = Ням!
 
-ent-CEFoodMeatFrogLeg = frog leg
-    .desc = They say they eat it somewhere.
+ent-CEFoodMeatFrogLeg = лягушачья лапка
+    .desc = Говорят, где-то это едят.
 
-ent-CEFoodMeatFrogLegCooked = cooked frog leg
-    .desc = It even seems edible.
+ent-CEFoodMeatFrogLegCooked = жареная лягушачья лапка
+    .desc = Кажется, даже съедобно.
 
-ent-CEFoodMeatHuman = raw human meat
-    .desc = This meat has a suspicious look to it.
+ent-CEFoodMeatHuman = сырое человеческое мясо
+    .desc = У этого мяса подозрительный вид.
 
-ent-CEFoodMeatHumanCooked = cooked human meat
+ent-CEFoodMeatHumanCooked = жареное человеческое мясо
     .desc = { ent-CEFoodMeatHuman.desc }
 
-ent-CEFoodMeatDino = raw dino meat
-    .desc = Now who's going to eat who?
+ent-CEFoodMeatDino = сырое мясо динозавра
+    .desc = Ну и кто теперь кого съест?
 
-ent-CEFoodMeatDinoCooked = cooked dino meat
+ent-CEFoodMeatDinoCooked = жареное мясо динозавра
     .desc = { ent-CEFoodMeatDino.desc }
 
-ent-CEFoodMeatHydra = raw hydra meat
-    .desc = Not as much meat as I would have liked.
+ent-CEFoodMeatHydra = сырое мясо гидры
+    .desc = Мяса не так много, как хотелось бы.
 
-ent-CEFoodMeatHydraCooked = cooked hydra meat
+ent-CEFoodMeatHydraCooked = жареное мясо гидры
     .desc = { ent-CEFoodMeatHydra.desc }
 
-ent-CEFoodMeatRabbit = raw rabbit meat
-    .desc = The meat seems tough and the odour is unpleasant.
+ent-CEFoodMeatRabbit = сырое мясо кролика
+    .desc = Мясо кажется жёстким, а запах неприятный.
 
-ent-CEFoodMeatRabbitCooked = cooked rabbit meat
-    .desc = The frying went to good use, now the meat seems juicy and tender.
+ent-CEFoodMeatRabbitCooked = жареное мясо кролика
+    .desc = Жарка пошла на пользу, теперь мясо выглядит сочным и нежным.
 
-ent-CEFoodMeatPigCooked = cooked pig meat
+ent-CEFoodMeatPigCooked = жареная свинина
     .desc = { ent-CEFoodMeatPig.desc }
 
-ent-CEFoodMeatPigLeg = raw pig leg meat
-    .desc = A decent ham, albeit with a large preponderance of bone.
+ent-CEFoodMeatPigLeg = сырая свиная нога
+    .desc = Вполне приличный окорок, хоть и с большим перевесом кости.
 
-ent-CEFoodMeatPigLegCooked = cooked pig leg meat
+ent-CEFoodMeatPigLegCooked = жареная свиная нога
     .desc = { ent-CEFoodMeatPigLeg.desc }
 
-ent-CEFoodMeatBoarCooked = cooked boar meat
-    .desc = After a good frying, it's almost indistinguishable from pork meat.
+ent-CEFoodMeatBoarCooked = жареное мясо кабана
+    .desc = После хорошей обжарки почти не отличить от свинины.
 
-ent-CEFoodMeatPigSlice = meat pieces
-    .desc = Pork meat ball with veins of lard.
+ent-CEFoodMeatPigSlice = кусочки мяса
+    .desc = Кусочки свинины с прожилками сала.
 
-ent-CEFoodMeatPigCookedSlice = cooked meat pieces
+ent-CEFoodMeatPigCookedSlice = жареные кусочки мяса
     .desc = { ent-CEFoodMeatPigSlice.desc }
 
-ent-CEFoodMeatMonsterCooked = cooked monster meat
+ent-CEFoodMeatMonsterCooked = жареное мясо монстра
     .desc = { ent-CEFoodMeatMonster.desc }
 
-ent-CEFoodMeatMonsterLeg = raw monster leg meat
-    .desc = The suspicious colour of the meat makes you question its edibility, but if you're really hungry...
+ent-CEFoodMeatMonsterLeg = сырая нога монстра
+    .desc = Подозрительный цвет мяса заставляет усомниться в его съедобности, но если вы очень голодны...
 
-ent-CEFoodMeatMonsterLegCooked = cooked monster leg meat
+ent-CEFoodMeatMonsterLegCooked = жареная нога монстра
     .desc = { ent-CEFoodMeatMonsterLeg.desc }
 
-ent-CEFoodMeatMonsterSlice = monster meat piece
-    .desc = Monster meat balls with their trademark suspicious colour.
+ent-CEFoodMeatMonsterSlice = кусочек мяса монстра
+    .desc = Кусочки мяса монстра с их фирменным подозрительным цветом.
 
-ent-CEFoodMeatMonsterCookedSlice = cooked monster meat pieces
+ent-CEFoodMeatMonsterCookedSlice = жареные кусочки мяса монстра
     .desc = { ent-CEFoodMeatMonsterSlice.desc }
 
-ent-CEFoodMeatFlemHead = raw flem head
-    .desc = Honestly looks quite tasty.
+ent-CEFoodMeatFlemHead = сырая голова флема
+    .desc = Честно говоря, выглядит довольно аппетитно.
 
-ent-CEFoodMeatFlemHeadCooked = cooked flem head
+ent-CEFoodMeatFlemHeadCooked = жареная голова флема
     .desc = { ent-CEFoodMeatFlemHead.desc }
 
-ent-CEFoodMeatFlemTorsoCooked = cooked flem torso
+ent-CEFoodMeatFlemTorsoCooked = жареный торс флема
     .desc = { ent-CEFoodMeatFlemTorso.desc }
 
-ent-CEFoodMeatFlemTorsoCut = raw flem ring
-    .desc = Onions not included.
+ent-CEFoodMeatFlemTorsoCut = сырое кольцо флема
+    .desc = Лук в комплект не входит.
 
-ent-CEFoodMeatFlemTorsoCookedCut = fishy rings
+ent-CEFoodMeatFlemTorsoCookedCut = рыбные кольца
     .desc = { ent-CEFoodMeatFlemTorsoCut.desc }
 
-ent-CEFoodMeatFlemLeg = raw flem leg
-    .desc = Probably not the best part to eat. but you never know until you try.
+ent-CEFoodMeatFlemLeg = сырая нога флема
+    .desc = Наверное, не лучшая часть для еды, но пока не попробуешь — не узнаешь.
 
-ent-CEFoodMeatFlemLegCooked = fish sticks
-    .desc = Like fries. But fish!
+ent-CEFoodMeatFlemLegCooked = рыбные палочки
+    .desc = Как картошка фри. Только рыба!
 
 ent-CEFoodCabbageSlice = капустный лист
     .desc = Время готовить зелёные салаты.
@@ -1062,14 +1062,14 @@ ent-CEFoodTomatoesSlice = ломтик помидора
 ent-CEFoodAppleSlice = ломтик яблока
     .desc = Маленькие ломтики для одноразового употребления.
 
-ent-CEFoodGarlicClove = garlic clove
-    .desc = A single clove of garlic, potent and aromatic.
+ent-CEFoodGarlicClove = зубчик чеснока
+    .desc = Один зубчик чеснока, острый и ароматный.
 
-ent-CEFoodCornKernel = corn kernel
-    .desc = A single kernel of corn.
+ent-CEFoodCornKernel = кукурузное зёрнышко
+    .desc = Одно зёрнышко кукурузы.
 
-ent-CEFoodCarrotSlice = carrot slice
-    .desc = A neatly sliced piece of carrot.
+ent-CEFoodCarrotSlice = ломтик моркови
+    .desc = Аккуратно нарезанный кусочек моркови.
 
 ent-CEFoodPepperSlice = ломтик перца
     .desc = По-прежнему красный и сладковатый.
@@ -1104,8 +1104,8 @@ ent-CEPlastiseal1 = { ent-CEPlastiseal }
     .desc = { ent-CEPlastiseal.desc }
     .suffix = 1
 
-ent-CESmokingPipe = pipe
-    .desc = A comfortable and practical smoking pipe, the latest fashion in the Empire.
+ent-CESmokingPipe = трубка
+    .desc = Удобная и практичная курительная трубка, последний писк моды в Империи.
 
 ent-CESmokingPipeFilledTobacco = { ent-CESmokingPipe }
     .desc = { ent-CESmokingPipe.desc }
@@ -1115,8 +1115,8 @@ ent-CESmokingPipeFilledSage = { ent-CESmokingPipe }
     .desc = { ent-CESmokingPipe.desc }
     .suffix = Sage
 
-ent-CEBell = bell
-    .desc = A regular bell with a handle to attract attention.
+ent-CEBell = колокольчик
+    .desc = Обычный колокольчик с ручкой, чтобы привлекать внимание.
 
 ent-CECandle = свеча
     .desc = Тонкий фитиль, пропущенный через жир.
@@ -1167,8 +1167,8 @@ ent-CEFloorCarpetItemBlack10 = { ent-CEFloorCarpetItemBlack1 }
     .desc = { ent-CEFloorCarpetItemBlack1.desc }
     .suffix = Чёрный 10
 
-ent-CEHalloweenPumpkin = scary pumpkin
-    .desc = It was a normal pumpkin one day... Now it's a scary pumpkin!
+ent-CEHalloweenPumpkin = страшная тыква
+    .desc = Однажды это была обычная тыква... Теперь это страшная тыква!
 
 ent-CEJackOLanternVariant1 = { ent-CEHalloweenPumpkinEmmisiveBase }
     .desc = { ent-CEHalloweenPumpkinEmmisiveBase.desc }
@@ -1186,56 +1186,56 @@ ent-CEJackOLanternVariant4 = { ent-CEHalloweenPumpkinEmmisiveBase }
     .desc = { ent-CEHalloweenPumpkinEmmisiveBase.desc }
     .suffix = Variant 4
 
-ent-CEJackOLantern = jack-o lantern spawner
-    .desc = Oooh! Scary!
+ent-CEJackOLantern = спавнер тыквенного фонаря
+    .desc = У-у-у! Страшно!
 
-ent-CEPlushieHuman = human plushie
-    .desc = The most basic one doesn't mean the worst one!
+ent-CEPlushieHuman = плюшевый человек
+    .desc = Самый простой — не значит худший!
 
-ent-CEPlushieDwarf = dwarf plushie
-    .desc = A very short, but sturdy lad... A good one to drink with, or from. Rock and stone!
+ent-CEPlushieDwarf = плюшевый дварф
+    .desc = Очень низкий, но крепкий малый... С таким хорошо пить — или из него. Рок энд стоун!
 
-ent-CEPlushieElf = elf plushie
-    .desc = It is unclear, if that thing is a man or a woman... But it can hold a bit of mana!
+ent-CEPlushieElf = плюшевый эльф
+    .desc = Непонятно, мужчина это или женщина... Зато вмещает немного маны!
 
-ent-CEPlushieTiefling = tiefling plushie
-    .desc = Be careful, don't stab your finger on the horn! So hot...
+ent-CEPlushieTiefling = плюшевый тифлинг
+    .desc = Осторожно, не уколи палец о рог! Так горячо...
 
-ent-CEPlushieCarcat = carcat plushie
-    .desc = Look at this adorable snout! Likes to be petted, sharpen its claws, and butcher dead bodies...
+ent-CEPlushieCarcat = плюшевый каркат
+    .desc = Посмотри на эту милую мордочку! Любит, когда его гладят, точит когти и разделывает трупы...
 
-ent-CEPlushieFrog = frog plushie
-    .desc = Croak-croak.
+ent-CEPlushieFrog = плюшевая лягушка
+    .desc = Ква-ква.
 
-ent-CEPlushieSkeleton = skeleton plushie
-    .desc = These skeletons are meowing... Weird...
+ent-CEPlushieSkeleton = плюшевый скелет
+    .desc = Эти скелеты мяукают... Странно...
 
-ent-CEPlushieAgaric = myconide plushie
-    .desc = The mushrooms are alive! I swear!
+ent-CEPlushieAgaric = плюшевый миконид
+    .desc = Грибы живые! Клянусь!
 
-ent-CEPlushieZombie = zombie plushie
-    .desc = Braaaains... in plushie form!
+ent-CEPlushieZombie = плюшевый зомби
+    .desc = Мозги-и-и... в плюшевом виде!
 
-ent-CEPlushieLumi = lumishroom plushie
-    .desc = A glowing plushie mushroom! With mouth!
+ent-CEPlushieLumi = плюшевый люмигриб
+    .desc = Светящийся плюшевый гриб! С ртом!
 
-ent-CEPlushieFlem = flem plushie
-    .desc = There are no fish that walk on two legs. this is a myth.
+ent-CEPlushieFlem = плюшевый флем
+    .desc = Не бывает рыб, ходящих на двух ногах. Это миф.
 
-ent-CEPlushieCarrin = carrin plushie
-    .desc = Caw? CAW! CAW!
+ent-CEPlushieCarrin = плюшевый каррин
+    .desc = Кар? КАР! КАР!
 
-ent-CEPlushieGoldenHuman = golden human figurine
-    .desc = A small golden statue of a naked man. Ugly, but expensive.
+ent-CEPlushieGoldenHuman = золотая фигурка человека
+    .desc = Маленькая золотая статуэтка голого мужчины. Уродливая, но дорогая.
 
-ent-CEPlushieGoldenDwarf = golden dwarf figurine
-    .desc = I'm almost certain that the dwarves make these golden dwarves themselves, just for themselves. What an outrageous ego!
+ent-CEPlushieGoldenDwarf = золотая фигурка дварфа
+    .desc = Почти уверен, что дварфы делают этих золотых дварфов сами, для себя. Какое неслыханное эго!
 
-ent-CEPlushieGoldenElf = golden elf figurine
+ent-CEPlushieGoldenElf = золотая фигурка эльфа
     .desc = TODO fun description
 
-ent-CEPlushieGoldenGoblin = golden goblin figurine
-    .desc = Goblins really love golden goblin figurines! Although, they probably just love anything made of gold.
+ent-CEPlushieGoldenGoblin = золотая фигурка гоблина
+    .desc = Гоблины очень любят золотые фигурки гоблинов! Хотя, наверное, они просто любят всё, что сделано из золота.
 
 ent-CEPlushieGoldenSilva = golden silva figurine
     .desc = TODO fun description
