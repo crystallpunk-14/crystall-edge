@@ -1092,3 +1092,15 @@
   id: 1097
   time: '2026-10-01T12:10:26.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/496
+- author: TheShuEd
+  changes:
+  - message: The tormentor and the lover can no longer choose each other as targets
+    type: Tweak
+  - message: Fixed a bug where a phantom item would appear in the Carrins' hands after
+      they began flying
+    type: Fix
+  - message: A bug that prevented users from making soups has been fixed.
+    type: Fix
+  id: 1098
+  time: '2026-10-01T19:47:23.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/497
