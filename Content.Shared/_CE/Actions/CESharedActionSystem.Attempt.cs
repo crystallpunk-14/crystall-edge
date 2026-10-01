@@ -1,5 +1,6 @@
 using Content.Shared._CE.Actions.Components;
 using Content.Shared._CE.Animation.Item.Components;
+using Content.Shared._CE.EntityEffect;
 using Content.Shared.Actions.Components;
 using Content.Shared.Actions.Events;
 using Content.Shared.Damage.Components;
@@ -97,6 +98,30 @@ public abstract partial class CESharedActionSystem
         {
             Popup.PopupClient(Loc.GetString("ce-magic-spell-ssd"), args.User, args.User);
             args.Invalid = true;
+        }
+    }
+
+    [SubscribeLocalEvent]
+    private void OnTargetConditionsValidate(Entity<CEActionTargetConditionsComponent> ent, ref ActionValidateEvent args)
+    {
+        if (args.Invalid)
+            return;
+
+        if (GetEntity(args.Input.EntityTarget) is not { Valid: true } target)
+            return;
+
+        var effectArgs = new CEEntityEffectArgs(EntityManager, args.User, null, Angle.Zero, 1f, target, null);
+        foreach (var condition in ent.Comp.Conditions)
+        {
+            if (condition.Passes(effectArgs))
+                continue;
+
+            var description = condition.GetDescription(EntityManager, _proto);
+            if (description != string.Empty)
+                Popup.PopupClient(description, args.User, args.User);
+
+            args.Invalid = true;
+            return;
         }
     }
 

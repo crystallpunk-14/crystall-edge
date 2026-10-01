@@ -1,3 +1,4 @@
+using Content.Shared._CE.EntityEffect;
 using JetBrains.Annotations;
 using Robust.Shared.Map;
 
@@ -12,6 +13,31 @@ namespace Content.Shared._CE.GOAP.Selectors;
 [MeansImplicitUse]
 public abstract partial class CEGOAPTargetSelector
 {
+    /// <summary>
+    /// Conditions every candidate entity must pass. The agent is the condition's user,
+    /// the candidate is its target.
+    /// </summary>
+    [DataField]
+    public List<CEEntityCondition> Conditions = new();
+
+    /// <summary>
+    /// Whether the candidate passes every entry of <see cref="Conditions"/>.
+    /// </summary>
+    public bool CandidatePasses(EntityUid agent, EntityUid candidate, IEntityManager entMan)
+    {
+        if (Conditions.Count == 0)
+            return true;
+
+        var args = new CEEntityEffectArgs(entMan, agent, null, Angle.Zero, 1f, candidate, null);
+        foreach (var condition in Conditions)
+        {
+            if (!condition.Passes(args))
+                return false;
+        }
+
+        return true;
+    }
+
     /// <summary>
     /// Resolves the selector to an entity and/or coordinate.
     /// </summary>

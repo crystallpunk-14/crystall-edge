@@ -8,18 +8,50 @@
   description: A being of darkness that feeds on the shadows of living creatures.
   categories: [ ForkFiltered ]
   components:
-  - type: MobThresholds
-    thresholds:
-      0: Alive
-      75: Dead
+  - type: CEGOAPRangeToTargetSensor
+    entries:
+    - conditionKey: SoulKnown
+      selector: !type:CEGOAPSelectorNearestKnown
+        conditions:
+        - !type:MurkDissolved
+      range: 100
+    - conditionKey: SoulInReach
+      selector: !type:CEGOAPSelectorNearestKnown
+        conditions:
+        - !type:MurkDissolved
+      range: 1
   - type: CEGOAP
     goals:
-    # Single stupid goal - kill enemies
+    # Eating a dissolved soul beats everything else
+    - desiredState:
+        Fed: true
+      priority: 2
+    # Otherwise - kill enemies
     - desiredState:
         EnemyDead: true
       priority: 1
 
     actions:
+    # Move to a dissolved soul
+    - !type:CEGOAPMoveToTargetAction
+      selector: !type:CEGOAPSelectorNearestKnown
+        conditions:
+        - !type:MurkDissolved
+      preconditions:
+        SoulKnown: true
+      effects:
+        SoulInReach: true
+    # Devour it
+    - !type:CEGOAPUseAction
+      actionPrototype: CEActionShadowEaterDevour
+      selector: !type:CEGOAPSelectorNearestKnown
+        conditions:
+        - !type:MurkDissolved
+      preconditions:
+        SoulInReach: true
+      effects:
+        Fed: true
+      cost: 0.5
     # Move to target
     - !type:CEGOAPMoveToTargetAction
       selector: !type:CEGOAPSelectorNearestEnemy
@@ -75,6 +107,102 @@
       Primary:
       - anim: ShadowEaterBite
   - type: CEMurkSphereChargingBlocker
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 75
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: CEDestructionEffect
+    effects:
+    - !type:SpawnEntity
+      effectTarget: User
+      spawns:
+      - CELurkerShadowStepEffect
+    - !type:PlaySound
+      positional: true
+      sound:
+        path: /Audio/_CE/Effects/heartbeat.ogg
+        params:
+          variation: 0.1
+          pitch: 0.5
+
+- type: entity
+  id: CEActionShadowEaterDevour
+  name: Devour shadow
+  description: Devour a fully dissolved creature, restoring your health and birthing a new shadow eater from its remains.
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 20
+  - type: Sprite
+    sprite: _CE/Mobs/shadow_eater.rsi
+    layers:
+    - state: live
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 1.2
+    interactOnMiss: false
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - CEMurkDissolvingStatus
+    event: !type:CEEntityTargetActionAnimationEvent
+      animation: AnimationShadowEaterDevour
+  - type: CEActionTargetConditions
+    conditions:
+    - !type:MurkDissolved
+
+- type: entityEffectAnimation
+  id: AnimationShadowEaterDevour
+  movementSpeed: 0
+  duration: 2
+  events:
+    0:
+    - !type:UserAnimation
+      scaleAnimation:
+      - time: 0
+        scale: 1, 1
+      - time: 0.2
+        scale: 1.2, 0.8
+      - time: 0.3
+        scale: 1.2, 0.8
+      - time: 0.4
+        scale: 1, 1
+    - !type:SpawnEntity
+      effectTarget: User
+      spawns:
+      - CELurkerShadowStepEffect
+    - !type:PlaySound
+      positional: true
+      sound:
+        path: /Audio/_CE/Effects/vampire_scream_telegraphy.ogg
+        params:
+          variation: 0.1
+    1.5:
+    - !type:ConditionalEffectGroup
+      conditions:
+      - !type:MurkDissolved
+      effects:
+      - !type:PlaySound
+        positional: true
+        sound:
+          path: /Audio/_CE/Effects/vampire_scream_cast.ogg
+          params:
+            variation: 0.1
+      - !type:SpawnEntity
+        effectTarget: Target
+        spawns:
+        - CELurkerFearScreamEffect
+      - !type:Undress
+      - !type:SpawnEntity
+        spawns:
+        - CEMobShadowEater
+      - !type:Delete
+      - !type:Rejuvenate
+        effectTarget: User
 
 - type: entity
   id: CEShadowEaterBiteEffectTelegraphy

@@ -46,39 +46,33 @@ public abstract partial class CESharedMurkSystem
             dissolving.NextUpdate = now + dissolving.Frequency;
             DirtyField(uid, dissolving, nameof(CEMurkDissolvingComponent.NextUpdate));
 
-            var status = EnsureComp<CEMurkDissolvingStatusComponent>(uid);
-
             // Beyond the world boundary nothing saves you - full speed, no modifiers.
-            var speed = OutsideBoundary(uid, xform)
+            var outside = OutsideBoundary(uid, xform);
+            var speed = outside
                 ? dissolving.OutsideBoundarySpeed
                 : InMurk(uid, xform)
-                    ? dissolving.DissolvingSpeed * GetDissolvingModifier(uid)
-                    : -dissolving.RestoringSpeed * GetRestoringModifier(uid);
-            var delta = speed * (float)dissolving.Frequency.TotalSeconds;
-            var newDissolved = Math.Clamp(status.Dissolved + delta, 0f, 1f);
+                    ? dissolving.DissolvingSpeed
+                    : -dissolving.RestoringSpeed;
 
-            SetDissolved(uid, status, newDissolved);
+            AddDissolved((uid, dissolving), speed * (float)dissolving.Frequency.TotalSeconds, !outside);
         }
     }
 
     /// <summary>
     /// Shifts the dissolution level of an entity by <paramref name="delta"/> (negative restores it).
-    /// Only works on entities with <see cref="CEMurkDissolvingComponent"/> that are not converted yet.
     /// </summary>
-    public void AddDissolved(Entity<CEMurkDissolvingComponent?> ent, float delta)
+    public void AddDissolved(Entity<CEMurkDissolvingComponent?> ent, float delta, bool applyModifiers = true)
     {
         if (!Resolve(ent, ref ent.Comp, false) || ent.Comp.Converted)
             return;
+
+        if (applyModifiers)
+            delta *= delta >= 0f ? GetDissolvingModifier(ent) : GetRestoringModifier(ent);
 
         var status = EnsureComp<CEMurkDissolvingStatusComponent>(ent);
         SetDissolved(ent, status, Math.Clamp(status.Dissolved + delta, 0f, 1f));
     }
 
-    /// <summary>
-    /// Sets <see cref="CEMurkDissolvingStatusComponent.Dissolved"/> and refreshes everything that
-    /// reacts to it. Raises <see cref="CEMurkDissolvedEvent"/> when the entity reaches full dissolution.
-    /// Returns whether the value actually changed.
-    /// </summary>
     private bool SetDissolved(EntityUid uid, CEMurkDissolvingStatusComponent status, float value)
     {
         if (value == status.Dissolved)
@@ -97,11 +91,6 @@ public abstract partial class CESharedMurkSystem
 
         return true;
     }
-
-    /// <summary>
-    /// Combined <see cref="CEMurkDissolvingModifierComponent.DissolvingModifier"/> of every active
-    /// status effect on the entity, multiplied together. 1 if none are active.
-    /// </summary>
     private float GetDissolvingModifier(EntityUid uid)
     {
         if (!_statusEffects.TryEffectsWithComp<CEMurkDissolvingModifierComponent>(uid, out var effects))
@@ -116,10 +105,6 @@ public abstract partial class CESharedMurkSystem
         return modifier;
     }
 
-    /// <summary>
-    /// Combined <see cref="CEMurkDissolvingModifierComponent.RestoringModifier"/> of every active
-    /// status effect on the entity, multiplied together. 1 if none are active.
-    /// </summary>
     private float GetRestoringModifier(EntityUid uid)
     {
         if (!_statusEffects.TryEffectsWithComp<CEMurkDissolvingModifierComponent>(uid, out var effects))
