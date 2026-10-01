@@ -55,3 +55,24 @@
       Crystal: { min: 1, max: 3 }
       Mining: { min: 1, max: 2 }
       Senses: { min: 1, max: 3 }
+
+- type: entity
+  parent: CEClothingEyesGogglesFoldableBase
+  id: CEClothingEyesEnergyScanner
+  name: energy scanner glasses
+  description: Engineering glasses that reveal the flow of mana through pipes, even through walls and floors, and show detailed readings of energy networks.
+  components:
+  # TODO: draw a unique sprite instead of the mining glasses one
+  - type: Sprite
+    sprite: _CE/Clothing/Eyes/Engineering/energy_scanner.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Eyes/Engineering/energy_scanner.rsi
+  - type: VisionCorrection
+  - type: CEEnergyScannerClothing
+  - type: StaticPrice
+    price: 50
+  - type: CEMagicEssenceStructure
+    essences:
+      Crystal: { min: 1, max: 3 }
+      Magic: { min: 1, max: 2 }
+      Senses: { min: 1, max: 3 }
