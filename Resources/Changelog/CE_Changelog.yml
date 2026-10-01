@@ -1084,3 +1084,11 @@
   id: 1096
   time: '2026-10-01T10:44:56.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/495
+- author: TheShuEd
+  changes:
+  - message: Energy scanner goggles have been added. They allow you to see pipes through
+      Z-levels and view information about the pipes' power supply.
+    type: Add
+  id: 1097
+  time: '2026-10-01T12:10:26.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/496
