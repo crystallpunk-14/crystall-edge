@@ -57,7 +57,7 @@ public sealed partial class CEUndressEffectSystem : CEEntityEffectSystem<Undress
         foreach (var item in items)
         {
             var dir = _random.NextAngle().ToVec() * args.Effect.Distance;
-            _throwing.TryThrow(item, dir, args.Effect.ThrowPower, target);
+            _throwing.TryThrow(item, dir, args.Effect.ThrowPower);
         }
     }
 }
