@@ -124,6 +124,8 @@
     product: CEFoodMeatMonsterLeg
     count: 1
 
+#MARK: Seeds
+
 - type: tradingPosition
   id: CESeedWheat30
   faction: Horticulture
@@ -212,6 +214,8 @@
     product: CESeedAppleTree
     count: 1
 
+#MARK: Floor Tiles
+
 - type: tradingPosition
   id: CEFloorTileGrass30
   faction: Horticulture
@@ -235,6 +239,8 @@
   service: !type:CEBuyItemsService
     product: CEFloorTileMycelium30
     count: 1
+
+#MARK: Materials
 
 - type: tradingPosition
   id: CEWoodLog
