@@ -25,6 +25,10 @@
     objectiveBlacklist:
       components: # avoid an infinite loop if this ever targets another tormentor
       - CETargetCompleteOwnedObjective
+  - type: CETargetSecretRoleBlacklist
+    secretRoleBlacklist:
+    - CETormentor
+    - CELover
 
 - type: entity
   id: CEObjectiveTormentorSurvive

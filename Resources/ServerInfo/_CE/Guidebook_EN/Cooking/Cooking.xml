@@ -1,17 +1,12 @@
 <Document>
 
 # Food and Water
-In CrystallEdge, your characters have [color=yellow]no hunger or thirst[/color].
-If you don't drink or eat, you won't suffer any negative effects.
-
-However, you can eat and drink to gain long-lasting beneficial bonuses.
+In CrystallEdge, your characters [color=yellow]have hunger and thirst[/color].
+If you don't drink or eat, you will suffer negative effects such as slowing down and taking damage.
 
 ## Nutrition
 
 Eating enables your character's [color=yellow]passive health regeneration[/color].
-This regeneration bonus is [color=yellow]doubled[/color] if you overeat, but at the cost of [color=yellow]slowing you down[/color]: it's physically difficult to move with an overfilled belly.
-
-Be careful: excessive gluttony can lead to negative consequences... even irreversible ones.
 
 <Box>
 	<GuideEntityEmbed Entity="CEFork"/>
@@ -21,13 +16,6 @@ Be careful: excessive gluttony can lead to negative consequences... even irrever
 	<GuideEntityEmbed Entity="CEFoodCabbage"/>
 	<GuideEntityEmbed Entity="CESpoon"/>
 </Box>
-
-## Drinks
-
-Drinks [color=yellow]increase your maximum stamina capacity[/color].
-This bonus is [color=yellow]doubled[/color] if you drink enough, but as with nutrition, it will [color=yellow]slow your character[/color].
-
-Excessive drinking can also lead to negative consequences...
 
 <Box>
 	<GuideEntityEmbed Entity="CEBottleRum"/>

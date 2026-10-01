@@ -24,6 +24,10 @@
     objectiveBlacklist:
       components: # avoid an infinite loop if this ever targets another lover
       - CETargetCompleteOwnedObjective
+  - type: CETargetSecretRoleBlacklist
+    secretRoleBlacklist:
+    - CETormentor
+    - CELover
 
 - type: entity
   id: CEObjectiveLoverSurvive

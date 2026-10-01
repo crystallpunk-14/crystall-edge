@@ -120,6 +120,12 @@ public abstract partial class CESharedAnimationActionSystem : EntitySystem
                     OnKeyframeActions(uid, controller, keyFrame, actions);
                 }
 
+                if (controller.TargetEntity is { } postEventTarget && TerminatingOrDeleted(postEventTarget))
+                {
+                    controller.TargetEntity = null;
+                    anyEventFired = true;
+                }
+
                 if (anyEventFired)
                     Dirty(uid, controller);
             }
