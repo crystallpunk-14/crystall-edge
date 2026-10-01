@@ -709,6 +709,9 @@ ent-CESpawnPointBrigadier = бригадир
 ent-CESpawnPointTechnician = техник
     .desc = { "" }
 
+ent-CEActionShadowEaterDevour = Поглотить тень
+    .desc = Поглотите полностью растворившееся существо, восстановив здоровье и породив из его останков нового пожирателя теней.
+
 ent-CELurkerRoarSound = рёв луркера
     .desc = { "" }
 
@@ -3728,6 +3731,55 @@ ent-CEPipeBrassMediumBroken = { ent-CEPipeBrassMedium }
     .desc = Повреждённая латунная труба. Магическая энергия, протекающая через неё, будет вытекать здесь и может представлять серьёзную опасность для существ, восприимчивых к магии.
     .suffix = Сломана
 
+ent-CEWallRadioSpeakerBase = громкоговоритель
+    .desc = Устройство удалённого радиовещания.
+
+ent-CEWallRadioSpeaker = { ent-CEWallRadioSpeakerBase }
+    .desc = { ent-CEWallRadioSpeakerBase.desc }
+    .suffix = Common
+
+ent-CEWallRadioSpeakerAcademy = { ent-CEWallRadioSpeakerBase }
+    .desc = { ent-CEWallRadioSpeakerBase.desc }
+    .suffix = Common, Academy
+
+ent-CEWallRadioSpeakerEngineering = { ent-CEWallRadioSpeakerBase }
+    .desc = { ent-CEWallRadioSpeakerBase.desc }
+    .suffix = Common, Engineering
+
+ent-CEWallRadioSpeakerGuard = { ent-CEWallRadioSpeakerBase }
+    .desc = { ent-CEWallRadioSpeakerBase.desc }
+    .suffix = Common, Guard
+
+ent-CEWallRadioSpeakerTavern = { ent-CEWallRadioSpeakerBase }
+    .desc = { ent-CEWallRadioSpeakerBase.desc }
+    .suffix = Common, Tavern
+
+ent-CERadioPostSpeakerBase = стойка с громкоговорителем
+    .desc = Устройство удалённого радиовещания.
+
+ent-CERadioPostSpeaker = { ent-CERadioPostSpeakerBase }
+    .desc = { ent-CERadioPostSpeakerBase.desc }
+    .suffix = Common
+
+ent-CERadioPostSpeakerAcademy = { ent-CERadioPostSpeakerBase }
+    .desc = { ent-CERadioPostSpeakerBase.desc }
+    .suffix = Common, Academy
+
+ent-CERadioPostSpeakerEngineering = { ent-CERadioPostSpeakerBase }
+    .desc = { ent-CERadioPostSpeakerBase.desc }
+    .suffix = Common, Engineering
+
+ent-CERadioPostSpeakerGuard = { ent-CERadioPostSpeakerBase }
+    .desc = { ent-CERadioPostSpeakerBase.desc }
+    .suffix = Common, Guard
+
+ent-CERadioPostSpeakerTavern = { ent-CERadioPostSpeakerBase }
+    .desc = { ent-CERadioPostSpeakerBase.desc }
+    .suffix = Common, Tavern
+
+ent-CERadioStation = радиорубка
+    .desc = Вещательная консоль. Когда она включена, всё сказанное рядом с ней повторяется громкоговорителями на её частотах.
+
 ent-CEHighBushRandom = { ent-CEHighBush }
     .desc = { ent-CEHighBush.desc }
     .suffix = Случайный рост
@@ -4659,6 +4711,9 @@ ent-CEClothingShirtSyurkoWhite = белое сюрко
 
 ent-CEClothingShirtSyurkoYellow = жёлтое сюрко
     .desc = Жёлтое сюрко, которое выделяется на парадах и фестивалях.
+
+ent-CEMobShadowEater = пожиратель теней
+    .desc = Существо тьмы, питающееся тенями живых созданий.
 
 ent-CEMobWerewolf = оборотень
     .desc = Ужасающее и чрезвычайно опасное создание ночи. Днём прячется под личиной вашего дружелюбного соседа.

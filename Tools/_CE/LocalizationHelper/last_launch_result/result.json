@@ -347,7 +347,7 @@
         "name": "merchant's monocle",
         "description": "High-quality magnifying monocle infused with magic to help you determine the exact price of any item.",
         "parent": "CEClothingEyesBase",
-        "suffix": "Theft target"
+        "suffix": null
     },
     "CEClothingEyesEyePatch": {
         "id": "CEClothingEyesEyePatch",
@@ -1656,6 +1656,13 @@
         "name": "technician",
         "description": null,
         "parent": "CESpawnPointJobBase",
+        "suffix": null
+    },
+    "CEActionShadowEaterDevour": {
+        "id": "CEActionShadowEaterDevour",
+        "name": "Devour shadow",
+        "description": "Devour a fully dissolved creature, restoring your health and birthing a new shadow eater from its remains.",
+        "parent": null,
         "suffix": null
     },
     "CELurkerRoarSound": {
@@ -7965,6 +7972,97 @@
         "parent": "CEPipeBrassMedium",
         "suffix": "Broken"
     },
+    "CEWallRadioSpeakerBase": {
+        "id": "CEWallRadioSpeakerBase",
+        "name": "loudspeaker",
+        "description": "Remote radio broadcasting device",
+        "parent": "CEBaseWallmount",
+        "suffix": null
+    },
+    "CEWallRadioSpeaker": {
+        "id": "CEWallRadioSpeaker",
+        "name": null,
+        "description": null,
+        "parent": "CEWallRadioSpeakerBase",
+        "suffix": "Common"
+    },
+    "CEWallRadioSpeakerAcademy": {
+        "id": "CEWallRadioSpeakerAcademy",
+        "name": null,
+        "description": null,
+        "parent": "CEWallRadioSpeakerBase",
+        "suffix": "Common, Academy"
+    },
+    "CEWallRadioSpeakerEngineering": {
+        "id": "CEWallRadioSpeakerEngineering",
+        "name": null,
+        "description": null,
+        "parent": "CEWallRadioSpeakerBase",
+        "suffix": "Common, Engineering"
+    },
+    "CEWallRadioSpeakerGuard": {
+        "id": "CEWallRadioSpeakerGuard",
+        "name": null,
+        "description": null,
+        "parent": "CEWallRadioSpeakerBase",
+        "suffix": "Common, Guard"
+    },
+    "CEWallRadioSpeakerTavern": {
+        "id": "CEWallRadioSpeakerTavern",
+        "name": null,
+        "description": null,
+        "parent": "CEWallRadioSpeakerBase",
+        "suffix": "Common, Tavern"
+    },
+    "CERadioPostSpeakerBase": {
+        "id": "CERadioPostSpeakerBase",
+        "name": "loudspeaker post",
+        "description": "Remote radio broadcasting device",
+        "parent": null,
+        "suffix": null
+    },
+    "CERadioPostSpeaker": {
+        "id": "CERadioPostSpeaker",
+        "name": null,
+        "description": null,
+        "parent": "CERadioPostSpeakerBase",
+        "suffix": "Common"
+    },
+    "CERadioPostSpeakerAcademy": {
+        "id": "CERadioPostSpeakerAcademy",
+        "name": null,
+        "description": null,
+        "parent": "CERadioPostSpeakerBase",
+        "suffix": "Common, Academy"
+    },
+    "CERadioPostSpeakerEngineering": {
+        "id": "CERadioPostSpeakerEngineering",
+        "name": null,
+        "description": null,
+        "parent": "CERadioPostSpeakerBase",
+        "suffix": "Common, Engineering"
+    },
+    "CERadioPostSpeakerGuard": {
+        "id": "CERadioPostSpeakerGuard",
+        "name": null,
+        "description": null,
+        "parent": "CERadioPostSpeakerBase",
+        "suffix": "Common, Guard"
+    },
+    "CERadioPostSpeakerTavern": {
+        "id": "CERadioPostSpeakerTavern",
+        "name": null,
+        "description": null,
+        "parent": "CERadioPostSpeakerBase",
+        "suffix": "Common, Tavern"
+    },
+    "CERadioStation": {
+        "id": "CERadioStation",
+        "name": "radio booth",
+        "description": "A broadcasting console. When switched on, everything said next to it is repeated by loudspeakers on its frequencies.",
+        "parent": "CEBaseMachinePowered",
+        "suffix": null
+    },
     "CEHighBushRandom": {
         "id": "CEHighBushRandom",
         "name": null,
@@ -9722,14 +9820,14 @@
         "id": "CESmallWoodenCrateFilled",
         "name": null,
         "description": null,
-        "parent": null,
+        "parent": "CESmallWoodenCrate",
         "suffix": "Filled, Tools and Fluff"
     },
     "CELargeWoodenCrateFilled": {
         "id": "CELargeWoodenCrateFilled",
         "name": null,
         "description": null,
-        "parent": null,
+        "parent": "CELargeWoodenCrate",
         "suffix": "Filled, Tools and Fluff"
     },
     "CEClothingBackContainerBase": {
@@ -9975,6 +10073,13 @@
         "name": null,
         "description": null,
         "parent": null,
+        "suffix": null
+    },
+    "CEMobShadowEater": {
+        "id": "CEMobShadowEater",
+        "name": "shadow eater",
+        "description": "A being of darkness that feeds on the shadows of living creatures.",
+        "parent": "CEMobSimple",
         "suffix": null
     },
     "CEMobWerewolf": {
