@@ -57,17 +57,27 @@ public abstract partial class CESharedMurkSystem
             var delta = speed * (float)dissolving.Frequency.TotalSeconds;
             var newDissolved = Math.Clamp(status.Dissolved + delta, 0f, 1f);
 
-            if (SetDissolved(uid, status, newDissolved) && newDissolved >= 1f)
-            {
-                var ev = new CEMurkDissolvedEvent();
-                RaiseLocalEvent(uid, ref ev);
-            }
+            SetDissolved(uid, status, newDissolved);
         }
     }
 
     /// <summary>
+    /// Shifts the dissolution level of an entity by <paramref name="delta"/> (negative restores it).
+    /// Only works on entities with <see cref="CEMurkDissolvingComponent"/> that are not converted yet.
+    /// </summary>
+    public void AddDissolved(Entity<CEMurkDissolvingComponent?> ent, float delta)
+    {
+        if (!Resolve(ent, ref ent.Comp, false) || ent.Comp.Converted)
+            return;
+
+        var status = EnsureComp<CEMurkDissolvingStatusComponent>(ent);
+        SetDissolved(ent, status, Math.Clamp(status.Dissolved + delta, 0f, 1f));
+    }
+
+    /// <summary>
     /// Sets <see cref="CEMurkDissolvingStatusComponent.Dissolved"/> and refreshes everything that
-    /// reacts to it. Returns whether the value actually changed.
+    /// reacts to it. Raises <see cref="CEMurkDissolvedEvent"/> when the entity reaches full dissolution.
+    /// Returns whether the value actually changed.
     /// </summary>
     private bool SetDissolved(EntityUid uid, CEMurkDissolvingStatusComponent status, float value)
     {
@@ -78,6 +88,12 @@ public abstract partial class CESharedMurkSystem
         DirtyField(uid, status, nameof(CEMurkDissolvingStatusComponent.Dissolved));
         _movement.RefreshMovementSpeedModifiers(uid);
         UpdateDissolvingAlert(uid, status);
+
+        if (value >= 1f)
+        {
+            var ev = new CEMurkDissolvedEvent();
+            RaiseLocalEvent(uid, ref ev);
+        }
 
         return true;
     }
