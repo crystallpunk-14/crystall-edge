@@ -52,6 +52,9 @@ public sealed partial class CEGOAPSelectorNearestEnemySystem : CEGOAPTargetSelec
                 : Terminating(enemy))
                 continue;
 
+            if (!ev.Selector.CandidatePasses(ev.Agent, enemy, EntityManager))
+                continue;
+
             if (!_xformQuery.TryGetComponent(enemy, out var ex))
                 continue;
 

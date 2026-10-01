@@ -15,3 +15,6 @@ ce-reagent-desc-blood-goblin = Жизненная энергия зеленок�
 
 ce-reagent-name-blood-silva = Нектар сильв
 ce-reagent-desc-blood-silva = Жизненная энергия разумного растения.
+
+ce-reagent-name-blood-carcat = Кровь карката
+ce-reagent-desc-blood-carcat = Жизненная энергия кошачьего гуманоида.

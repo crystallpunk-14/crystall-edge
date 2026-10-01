@@ -55,6 +55,12 @@ public abstract partial class CESharedAnimationActionSystem : EntitySystem
             if (_timing.ApplyingState)
                 continue;
 
+            if (controller.TargetEntity is { } target && TerminatingOrDeleted(target))
+            {
+                controller.TargetEntity = null;
+                Dirty(uid, controller);
+            }
+
             // Rotate towards the target if LockRotation is active with a TargetEntity or TargetPosition.
             if (controller.LockRotation && controller.TargetEntity != uid)
             {
