@@ -37,6 +37,7 @@
   minLimit: 0
   loadouts:
   - CEClothingEyesMiningGlasses
+  - CEClothingEyesEnergyScanner
   - CEClothingEyesMonocle
   - CEClothingEyesGlasses
   - CEClothingEyesEyePatch
@@ -45,6 +46,11 @@
   id: CEClothingEyesMiningGlasses
   equipment:
     eyes: CEClothingEyesMiningGlasses
+
+- type: loadout
+  id: CEClothingEyesEnergyScanner
+  equipment:
+    eyes: CEClothingEyesEnergyScanner
 
 # Shirt
 

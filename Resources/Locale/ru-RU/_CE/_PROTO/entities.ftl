@@ -112,6 +112,9 @@ ent-CEClothingEyesAlchemyGlasses = алхимические очки
 ent-CEClothingEyesMiningGlasses = шахтёрские очки
     .desc = Шахтёрские очки, настроенные на поиск ближайших рудных жил.
 
+ent-CEClothingEyesEnergyScanner = очки-энергосканер
+    .desc = Инженерные очки, показывающие течение маны по трубам даже сквозь стены и перекрытия, а также подробные показания энергосетей.
+
 ent-CEClothingEyesMonocle = монокль
     .desc = Аристократично, изысканно.
 
