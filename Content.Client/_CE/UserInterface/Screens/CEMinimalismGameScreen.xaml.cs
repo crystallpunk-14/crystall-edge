@@ -23,9 +23,10 @@ public sealed partial class CEMinimalismGameScreen : InGameScreen
         SetAnchorAndMarginPreset(CharacterMenuButton, LayoutPreset.BottomLeft, margin: 5);
         SetAnchorAndMarginPreset(Hotbar, LayoutPreset.BottomWide, margin: 5);
         SetAnchorAndMarginPreset(Chat, LayoutPreset.BottomLeft, margin: 10);
-        var chatClearance = 5 + CharacterMenuButton.MinSize.Y + 5;
-        SetMarginTop(Chat, Chat.GetValue<float>(MarginTopProperty) - chatClearance);
-        SetMarginBottom(Chat, Chat.GetValue<float>(MarginBottomProperty) - chatClearance);
+        var chatBottom = MathF.Max(HealthBar.MinSize.Y, 5 + CharacterMenuButton.MinSize.Y + 5 + 10);
+        var chatLift = chatBottom - 10;
+        SetMarginTop(Chat, Chat.GetValue<float>(MarginTopProperty) - chatLift);
+        SetMarginBottom(Chat, Chat.GetValue<float>(MarginBottomProperty) - chatLift);
         SetAnchorAndMarginPreset(Alerts, LayoutPreset.TopRight, margin: 10);
 
         TopBar.Visible = false;
