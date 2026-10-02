@@ -54,13 +54,13 @@ public sealed partial class CEEnergyScannerViewerComponent : Component
     /// Lowest alpha multiplier of the neighbouring z-level pulse.
     /// </summary>
     [DataField]
-    public float NeighborLevelMinAlpha = 0.0f;
+    public float NeighborLevelMinAlpha = 0.02f;
 
     /// <summary>
     /// Period of the neighbouring z-level alpha pulse, in seconds.
     /// </summary>
     [DataField]
-    public float NeighborLevelPulsePeriod = 2f;
+    public float NeighborLevelPulsePeriod = 4f;
 
     /// <summary>
     /// Width multiplier of the faint halo drawn under powered and broken pipes.
@@ -70,4 +70,28 @@ public sealed partial class CEEnergyScannerViewerComponent : Component
 
     [DataField]
     public float GlowAlpha = 0.1f;
+
+    /// <summary>
+    /// Number of triangle arrows travelling along a z-level connection at once, evenly spaced in time.
+    /// </summary>
+    [DataField]
+    public int VerticalArrowCount = 2;
+
+    /// <summary>
+    /// Time for one arrow to travel from the pipe centre to the end of its path, in seconds.
+    /// </summary>
+    [DataField]
+    public float VerticalArrowPeriod = 1f;
+
+    /// <summary>
+    /// Length and base width of a z-level connection arrow.
+    /// </summary>
+    [DataField]
+    public float VerticalArrowSize = 0.16f;
+
+    /// <summary>
+    /// How far an arrow travels from the pipe centre before fully fading out.
+    /// </summary>
+    [DataField]
+    public float VerticalArrowDistance = 0.35f;
 }

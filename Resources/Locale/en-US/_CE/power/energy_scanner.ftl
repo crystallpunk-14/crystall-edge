@@ -12,3 +12,8 @@ ce-energy-scanner-statistics =
     Total draw: {$consumption}
     Accumulators discharging: {$storagec} / {$storagem} ({ TOSTRING($storager, "P1") })
     Accumulators charging: {$storageoc} / {$storageom} ({ TOSTRING($storageor, "P1") })
+
+ce-energy-scanner-mode-below = Scanner: current and lower level
+ce-energy-scanner-mode-current = Scanner: current level only
+ce-energy-scanner-mode-above = Scanner: current and upper level
+ce-energy-scanner-mode-off = Scanner: off
