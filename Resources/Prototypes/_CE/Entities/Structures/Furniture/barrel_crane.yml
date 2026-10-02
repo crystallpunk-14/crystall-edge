@@ -16,8 +16,6 @@
       maxVol: 500
   - type: MixableSolution
     solution: barrel
-  - type: RefillableSolution
-    solution: barrel
   - type: DrawableSolution
     solution: barrel
   - type: DrainableSolution
@@ -167,8 +165,6 @@
     solution:
       maxVol: 50
   - type: MixableSolution
-    solution: barrel
-  - type: RefillableSolution
     solution: barrel
   - type: DrawableSolution
     solution: barrel

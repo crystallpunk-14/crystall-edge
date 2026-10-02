@@ -26,10 +26,6 @@
   - type: PhysicalComposition
     materialComposition:
       CEIron: 10
-  - type: CEMagicEssenceStructure
-    essences:
-      Metal: { min: 1, max: 3 }
-      Void: { min: 0, max: 2 }
 
 - type: entity
   parent: CEDrinkBaseGoblet
@@ -46,10 +42,6 @@
         visible: false
   - type: StaticPrice
     price: 15
-  - type: CEMagicEssenceStructure
-    essences:
-      Metal: { min: 1, max: 3 }
-      Void: { min: 0, max: 2 }
 
 - type: entity
   parent: CEDrinkBaseGoblet
@@ -67,10 +59,6 @@
         visible: false
   - type: StaticPrice
     price: 50
-  - type: CEMagicEssenceStructure
-    essences:
-      Greed: { min: 1, max: 2 }
-      Void: { min: 0, max: 2 }
 
 - type: entity
   parent: CEDrinkBaseGoblet
@@ -95,8 +83,3 @@
       maxVol: 1000
   - type: StaticPrice
     price: 220
-  - type: CEMagicEssenceStructure
-    essences:
-      Greed: { min: 3, max: 2 }
-      Void: { min: 5, max: 6 }
-      Magic: { min: 1, max: 3 }
