@@ -1104,3 +1104,21 @@
   id: 1098
   time: '2026-10-01T19:47:23.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/497
+- author: TheShuEd
+  changes:
+  - message: Any interaction with pipes or critical power equipment without a protective
+      suit is now interrupted by a burst of energy that knocks the player back and
+      deals damage. Sabotaging pipes has become significantly more difficult.
+    type: Add
+  - message: "The elves' innate ability, \u201CImmunity to Mana Damage,\u201D has\
+      \ been removed."
+    type: Remove
+  - message: Passive mana regeneration has been removed from all creatures.
+    type: Remove
+  - message: "Elves have gained a new innate ability called \u201CMana Control,\u201D\
+      \ which allows them to either passively regenerate mana or passively expend\
+      \ it, depending on the mode"
+    type: Add
+  id: 1099
+  time: '2026-10-02T10:43:01.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/498
