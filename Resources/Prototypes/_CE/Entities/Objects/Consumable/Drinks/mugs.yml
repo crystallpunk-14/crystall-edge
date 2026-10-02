@@ -9,6 +9,16 @@
       maxVol: 10
   - type: CEWeatherRefillable
     solution: drink
+  - type: SolutionTransfer
+    canSend: false
+    canReceive: false
+  - type: Injector
+    solutionName: drink
+    ignoreMobs: true
+    activeModeProtoId: CEAlchemyVialDrawMode
+    allowedModes: 
+    - CEAlchemyVialDrawMode
+    - CEAlchemyVialInjectMode
   - type: Appearance
   - type: Sprite
     sprite: Objects/Consumable/Drinks/mug.rsi
