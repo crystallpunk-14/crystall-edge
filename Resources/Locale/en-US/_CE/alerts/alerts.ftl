@@ -18,3 +18,9 @@ ce-alerts-bad-food-aftertaste-desc = Poorly prepared food causes you to feel nau
 
 ce-alerts-murk-dissolving-name = Dissolving in the murk
 ce-alerts-murk-dissolving-desc = Your flesh is starting to smoke and evaporate. Leave the murk immediately if you want to stay alive!
+
+ce-alerts-mana-regen-name = Mana regeneration
+ce-alerts-mana-regen-desc = Your mana is constantly being restored. Click to switch to mana drain.
+
+ce-alerts-mana-drain-name = Mana drain
+ce-alerts-mana-drain-desc = Your mana is constantly being spent. Click to switch to mana regeneration.
