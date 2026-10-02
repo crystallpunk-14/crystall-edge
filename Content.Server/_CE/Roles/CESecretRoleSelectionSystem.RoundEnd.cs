@@ -52,19 +52,20 @@ public sealed partial class CESecretRoleSelectionSystem
                 ("name", Loc.GetString(department.Name)),
                 ("color", department.Color)));
 
-            if (!component.DepartmentObjectiveHolders.TryGetValue(department.ID, out var holderUid))
-                continue;
-
-            foreach (var objective in _objectives.GetObjectives(holderUid))
+            if (component.DepartmentObjectiveHolders.TryGetValue(department.ID, out var holderUid))
             {
-                _objectives.RefreshObjectiveProgress(objective.AsNullable());
+                foreach (var objective in _objectives.GetObjectives(holderUid))
+                {
+                    _objectives.RefreshObjectiveProgress(objective.AsNullable());
 
-                args.AddLine(Loc.GetString("ce-roundend-secret-role-objective-fmt",
-                    ("text", _objectives.GetObjectiveString(objective.AsNullable()))));
+                    args.AddLine(Loc.GetString("ce-roundend-secret-role-objective-fmt",
+                        ("text", _objectives.GetObjectiveString(objective.AsNullable()))));
+                }
             }
+
+            args.AddLine(string.Empty);
         }
 
-        args.AddLine(string.Empty);
         args.AddLine(Loc.GetString("ce-roundend-secret-role-player-summary-header"));
         foreach (var (department, members) in departments)
         {
@@ -86,6 +87,7 @@ public sealed partial class CESecretRoleSelectionSystem
                     ("name", characterName),
                     ("username", username),
                     ("role", role.LocalizedName),
+                    ("color", department.Color),
                     ("objCount", objectives.Count)));
 
                 foreach (var objectiveUid in objectives)
@@ -95,7 +97,7 @@ public sealed partial class CESecretRoleSelectionSystem
 
                     _objectives.RefreshObjectiveProgress((objectiveUid, objectiveComp));
 
-                    args.AddLine(Loc.GetString("ce-roundend-secret-role-objective-fmt",
+                    args.AddLine(Loc.GetString("ce-roundend-secret-role-player-objective-fmt",
                         ("text", _objectives.GetObjectiveString((objectiveUid, objectiveComp)))));
                 }
             }
