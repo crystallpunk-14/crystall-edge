@@ -31,12 +31,14 @@
       - !type:Damage
         damage:
           types:
-            Blunt: 0
+            Blunt: 1
+      - !type:UseItem
       OnHeavyHit:
       - !type:Damage
         damage:
           types:
-            Blunt: 0
+            Blunt: 1
+      - !type:UseItem
     animations:
       Primary:
       - anim: DaggerAttackLight1
