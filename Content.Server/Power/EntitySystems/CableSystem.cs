@@ -43,7 +43,7 @@ public sealed partial class CableSystem : EntitySystem
 
     private void OnCableCut(EntityUid uid, CableComponent cable, DoAfterEvent args)
     {
-        if (args.Cancelled)
+        if (args.Cancelled || args.Handled) // CrystallEdge: let energized pipes cancel prying
             return;
 
         var xform = Transform(uid);
