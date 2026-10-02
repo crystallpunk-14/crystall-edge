@@ -11,6 +11,7 @@ using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
+using Robust.Shared.Timing;
 
 namespace Content.Client._CE.EnergyScanner;
 
@@ -23,6 +24,7 @@ public sealed partial class CEEnergyScannerOverlay : Overlay
 {
     [Dependency] private IEntityManager _entMan = default!;
     [Dependency] private IPlayerManager _player = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     private readonly EntityLookupSystem _lookup;
     private readonly SharedAppearanceSystem _appearance;
@@ -105,13 +107,18 @@ public sealed partial class CEEnergyScannerOverlay : Overlay
         var neighborDepth = lookUp ? 1 : -1;
         if (_zLevels.TryMapOffset(mapUid, neighborDepth, out var neighborMap))
         {
+            // Sine pulse between the min and peak alpha.
+            var phase = (float) _timing.RealTime.TotalSeconds / scanner.NeighborLevelPulsePeriod * MathF.Tau;
+            var pulse = 0.5f + 0.5f * MathF.Sin(phase);
+            var neighborAlpha = MathHelper.Lerp(scanner.NeighborLevelMinAlpha, scanner.NeighborLevelAlpha, pulse);
+
             DrawLevel(handle,
                 args.WorldAABB,
                 _transform.GetMapId(neighborMap.Owner),
                 neighborDepth,
                 levelStep,
                 scanner,
-                scanner.NeighborLevelAlpha);
+                neighborAlpha);
         }
 
         DrawLevel(handle, args.WorldAABB, xform.MapID, 0, levelStep, scanner, 1f);
@@ -154,7 +161,7 @@ public sealed partial class CEEnergyScannerOverlay : Overlay
                 color = large ? style.LargeColor : style.MediumColor;
 
             var data = new PipeDrawData(
-                _transform.GetWorldPosition(uid) + shift,
+                _transform.GetWorldPosition(uid) + shift + (large ? style.LargeOffset : style.MediumOffset),
                 mask,
                 vertical,
                 large ? style.LargeWidth : style.MediumWidth,
