@@ -4,7 +4,7 @@
   - BaseGunWieldable
   id: CEWeaponGunJudgement
   name: judgement
-  description: A modified version of the peacekeeper, it stores 2 shots at once per cycle. It has an improved sight on it for more accurate shots.
+  description: TODO
   categories: [ ForkFiltered ]
   components:
   - type: Sprite
