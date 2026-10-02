@@ -45,7 +45,6 @@
         collection: sparks
     - !type:SpawnEntity
       spawns:
-      - CEShockWaveWeakVFX
       - CEOverchargeVFX
     - !type:AreaEffect
       range: 2.5
