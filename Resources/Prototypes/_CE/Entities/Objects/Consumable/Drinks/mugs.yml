@@ -51,10 +51,6 @@
   - type: PhysicalComposition
     materialComposition:
       CEIron: 10
-  - type: CEMagicEssenceStructure
-    essences:
-      Metal: { min: 1, max: 3 }
-      Void: { min: 0, max: 2 }
 
 - type: entity
   parent: CEDrinkBaseMug
@@ -68,10 +64,6 @@
   - type: PhysicalComposition
     materialComposition:
       CEWood: 10
-  - type: CEMagicEssenceStructure
-    essences:
-      Tree: { min: 1, max: 3 }
-      Void: { min: 0, max: 2 }
 
 - type: entity
   parent: CEDrinkBaseMug
@@ -85,11 +77,6 @@
   - type: PhysicalComposition
     materialComposition:
       CEIron: 10
-  - type: CEMagicEssenceStructure
-    essences:
-      Metal: { min: 1, max: 2 }
-      Tree: { min: 0, max: 2 }
-      Void: { min: 0, max: 1 }
 
 - type: entity
   parent: CEDrinkBaseMug
@@ -104,8 +91,3 @@
     materialComposition:
       CEWood: 5
       CEIron: 5
-  - type: CEMagicEssenceStructure
-    essences:
-      Metal: { min: 1, max: 2 }
-      Tree: { min: 0, max: 2 }
-      Void: { min: 0, max: 1 }
