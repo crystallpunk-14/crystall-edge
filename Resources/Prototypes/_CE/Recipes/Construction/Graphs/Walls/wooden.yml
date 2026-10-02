@@ -23,10 +23,8 @@
               amount: 2
             - !type:DeleteEntity {}
           steps:
-            - tool: Prying
-              doAfter: 1
-            - tool: Prying
-              doAfter: 2
+            - tool: CEMatterManipulation
+              doAfter: 3
         - to: CEWallFrameWoodenFinished
           steps:
             - material: CEWood
@@ -43,10 +41,8 @@
       edges:
         - to: CEWallFrameWooden
           steps:
-            - tool: Prying
-              doAfter: 1
-            - tool: Prying
-              doAfter: 2
+            - tool: CEMatterManipulation
+              doAfter: 3
           completed:
             - !type:SpawnPrototype
               prototype: CEWoodenPlanks1

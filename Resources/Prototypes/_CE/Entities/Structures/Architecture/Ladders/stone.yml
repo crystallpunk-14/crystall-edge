@@ -6,14 +6,14 @@
   - type: Sprite
     sprite: _CE/Structures/Architecture/Ladders/stone.rsi
   - type: Damageable
-    damageModifierSet: Rock
+    damageModifierSet: CERockStructural
   - type: Injurable
     damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 30
+        damage: 200
       behaviors:
       - !type:PlaySoundBehavior
         sound:

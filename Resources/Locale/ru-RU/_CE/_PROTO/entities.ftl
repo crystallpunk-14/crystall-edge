@@ -4987,9 +4987,6 @@ ent-CEThinWindowDoorIron = { ent-CEBaseThinWindowDoor }
 ent-CEWallLeaf = лиственная стена
     .desc = Плотные, краевые кусты. Вы можете пролезть через них, но берегитесь колючих веток!
 
-ent-CEWallWoodenPalisade = частокол
-    .desc = Стена из острых брёвен. Не то чтобы это безопасное убежище.
-
 ent-CEWindowFrameStone = каменная оконная рама
     .desc = { ent-CEBaseWindowFrame.desc }
 
