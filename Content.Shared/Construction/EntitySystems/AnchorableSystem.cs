@@ -129,7 +129,7 @@ public sealed partial class AnchorableSystem : EntitySystem
 
     private void OnUnanchorComplete(EntityUid uid, AnchorableComponent component, TryUnanchorCompletedEvent args)
     {
-        if (args.Cancelled || args.Used is not { } used)
+        if (args.Cancelled || args.Handled || args.Used is not { } used) // CrystallEdge: let energized pipes cancel unanchoring
             return;
 
         var xform = Transform(uid);
@@ -421,7 +421,7 @@ public sealed partial class AnchorableSystem : EntitySystem
     }
 
     [Serializable, NetSerializable]
-    private sealed partial class TryUnanchorCompletedEvent : SimpleDoAfterEvent
+    public sealed partial class TryUnanchorCompletedEvent : SimpleDoAfterEvent // CrystallEdge: public so energized pipes can cancel unanchoring
     {
     }
 

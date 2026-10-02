@@ -4,7 +4,8 @@ ce-entity-effect-guidebook-learn-skill = Teaches [color=yellow]{ $name }[/color]
 
 ce-entity-effect-guidebook-add-z-velocity = Launches the target into the air with [color=yellow]{ $speed }[/color] force
 ce-entity-effect-guidebook-apply-status = Applies the [color=yellow]{ $status }[/color] status effect for [color=yellow]{ $duration }[/color] sec.
-ce-entity-effect-guidebook-remove-status = Removes the [color=yellow]{ $status }[/color] status effect
+ce-entity-effect-guidebook-apply-status-permanent = Applies the [color=yellow]{ $status }[/color] status effect until it is removed.
+ce-entity-effect-guidebook-remove-status =Removes the [color=yellow]{ $status }[/color] status effect
 ce-entity-effect-guidebook-dash = Dashes forward [color=yellow]{ $distance }[/color] m.
 ce-entity-effect-guidebook-delete = Destroys the target
 ce-entity-effect-guidebook-play-sound = Plays a sound

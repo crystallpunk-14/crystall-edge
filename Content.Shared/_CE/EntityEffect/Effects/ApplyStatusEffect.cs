@@ -12,13 +12,20 @@ public sealed partial class ApplyStatusEffect : CEEntityEffectBase<ApplyStatusEf
     [DataField(required: true)]
     public EntProtoId StatusEffect;
 
-    [DataField(required: true)]
-    public TimeSpan Duration = TimeSpan.FromSeconds(1f);
+    /// <summary>
+    /// How long the status lasts. Leave null for a permanent status that stays until it is removed.
+    /// </summary>
+    [DataField]
+    public TimeSpan? Duration;
 
     public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
     {
         var statusName = prototype.TryIndex(StatusEffect, out var statusProto) ? statusProto.Name : StatusEffect.Id;
-        return Loc.GetString("ce-entity-effect-guidebook-apply-status", ("status", statusName), ("duration", Duration.TotalSeconds));
+
+        if (Duration is not { } duration)
+            return Loc.GetString("ce-entity-effect-guidebook-apply-status-permanent", ("status", statusName));
+
+        return Loc.GetString("ce-entity-effect-guidebook-apply-status", ("status", statusName), ("duration", duration.TotalSeconds));
     }
 }
 
@@ -59,11 +66,11 @@ public sealed partial class CEApplyStatusEffectEffectSystem : CEEntityEffectSyst
 /// target. Cancelling prevents the effect from being applied. Relayed to the source's active
 /// status effects via <c>StatusEffectRelayedEvent</c>.
 /// </summary>
-public sealed partial class CEAttemptApplyStatusEffectEvent(EntityUid target, EntProtoId statusEffect, TimeSpan duration) : EntityEventArgs
+public sealed partial class CEAttemptApplyStatusEffectEvent(EntityUid target, EntProtoId statusEffect, TimeSpan? duration) : EntityEventArgs
 {
     public readonly EntityUid Target = target;
     public readonly EntProtoId StatusEffect = statusEffect;
-    public readonly TimeSpan Duration = duration;
+    public readonly TimeSpan? Duration = duration;
     public bool Cancelled;
 }
 
@@ -72,11 +79,11 @@ public sealed partial class CEAttemptApplyStatusEffectEvent(EntityUid target, En
 /// Cancelling prevents the effect from being applied.
 /// Relayed to the target's active status effects via <c>StatusEffectRelayedEvent</c>.
 /// </summary>
-public sealed partial class CEAttemptReceiveStatusEffectEvent(EntityUid target, EntProtoId statusEffect, TimeSpan duration) : EntityEventArgs
+public sealed partial class CEAttemptReceiveStatusEffectEvent(EntityUid target, EntProtoId statusEffect, TimeSpan? duration) : EntityEventArgs
 {
     public readonly EntityUid Target = target;
     public readonly EntProtoId StatusEffect = statusEffect;
-    public readonly TimeSpan Duration = duration;
+    public readonly TimeSpan? Duration = duration;
     public bool Cancelled;
 }
 

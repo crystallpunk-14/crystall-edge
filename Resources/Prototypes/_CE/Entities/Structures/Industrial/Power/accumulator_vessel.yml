@@ -5,6 +5,7 @@
   parent:
   - CEBaseMachineBigPipeConnectable
   - CEConstructibleMachine
+  - CEBaseMachineEnergized
   - BaseMachine
   name: accumulator vessel
   description: A structure that collects magical energy and stores it for later use.

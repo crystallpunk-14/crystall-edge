@@ -161,7 +161,7 @@
         Quantity: 300
   - type: CEInnateSkills
     skills:
-    - EnergyOverchargeImmunity
+    - ManaControl
     descriptorName: ce-innate-skill-source-elf
     descriptorColor: "#92efef"
 
