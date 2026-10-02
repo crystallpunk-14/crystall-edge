@@ -23,41 +23,23 @@
       state: arrow
 
 - type: marking
-  id: CECarrinTorsoStandart1
+  id: CECarrinTorsoStandart
   bodyPart: Chest
   groupWhitelist: [ CECarrin ]
   sprites:
     - sprite: _CE/Mobs/Customization/carrin_torso_markings.rsi
       state: 1_standart
+    - sprite: _CE/Mobs/Customization/carrin_torso_markings.rsi
+      state: 2_standart
+    - sprite: _CE/Mobs/Customization/carrin_torso_markings.rsi
+      state: 3_standart
 
 - type: marking
-  id: CECarrinTorsoTitmouse1
+  id: CECarrinTorsoTitmouse
   bodyPart: Chest
   groupWhitelist: [ CECarrin ]
   sprites:
     - sprite: _CE/Mobs/Customization/carrin_torso_markings.rsi
       state: 1_titmouse
-
-- type: marking
-  id: CECarrinTorsoStandart2
-  bodyPart: Chest
-  groupWhitelist: [ CECarrin ]
-  sprites:
-    - sprite: _CE/Mobs/Customization/carrin_torso_markings.rsi
-      state: 2_standart
-
-- type: marking
-  id: CECarrinTorsoTitmouse2
-  bodyPart: Chest
-  groupWhitelist: [ CECarrin ]
-  sprites:
     - sprite: _CE/Mobs/Customization/carrin_torso_markings.rsi
       state: 2_titmouse
-
-- type: marking
-  id: CECarrinTorsoStandart3
-  bodyPart: Chest
-  groupWhitelist: [ CECarrin ]
-  sprites:
-    - sprite: _CE/Mobs/Customization/carrin_torso_markings.rsi
-      state: 3_standart

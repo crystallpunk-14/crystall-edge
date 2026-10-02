@@ -4,7 +4,8 @@ ce-entity-effect-guidebook-learn-skill = Обучает: [color=yellow]{ $name }
 
 ce-entity-effect-guidebook-add-z-velocity = Подбрасывает цель в воздух с силой [color=yellow]{ $speed }[/color]
 ce-entity-effect-guidebook-apply-status = Накладывает статус-эффект [color=yellow]{ $status }[/color] на [color=yellow]{ $duration }[/color] сек.
-ce-entity-effect-guidebook-remove-status = Снимает статус-эффект [color=yellow]{ $status }[/color]
+ce-entity-effect-guidebook-apply-status-permanent = Накладывает статус-эффект [color=yellow]{ $status }[/color], пока он не будет снят.
+ce-entity-effect-guidebook-remove-status =Снимает статус-эффект [color=yellow]{ $status }[/color]
 ce-entity-effect-guidebook-dash = Совершает рывок вперёд на [color=yellow]{ $distance }[/color] м.
 ce-entity-effect-guidebook-delete = Уничтожает цель
 ce-entity-effect-guidebook-play-sound = Проигрывает звук
@@ -30,6 +31,7 @@ ce-entity-effect-guidebook-spawn-in-hand = Создаёт [color=yellow]{ $entit
 ce-entity-effect-guidebook-eject-slot-item = Выбрасывает предмет из слота
 ce-entity-effect-guidebook-throw-from = Отбрасывает цель с силой [color=yellow]{ $power }[/color]
 ce-entity-effect-guidebook-throw-to = Отбрасывает цель с силой [color=yellow]{ $power }[/color]
+ce-entity-effect-guidebook-use-item = Применяет предмет на цель, как при клике им
 ce-entity-effect-guidebook-stamina-damage = Наносит [color=yellow]{ $amount }[/color] урона по выносливости
 ce-entity-effect-guidebook-stamina-restore = Восстанавливает [color=yellow]{ $amount }[/color] выносливости
 ce-entity-effect-guidebook-affect-plant-energy = Дает растению [color=yellow]{ $amount }[/color] энергии

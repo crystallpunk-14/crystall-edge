@@ -1,5 +1,6 @@
 - type: entity
   name: cloth sack
+  description: For convenient storage and transport of your belongings. Or to blind your enemies.
   parent: BaseStorageItem
   id: CESack
   categories: [ ForkFiltered ]
@@ -26,7 +27,10 @@
     maxFillLevels: 3
     fillBaseName: icon
   - type: Dumpable
+  - type: StaticPrice
+    price: 5
   - type: Clothing
+    quickEquip: false
     slots: [head]
     sprite: _CE/Objects/Tools/sack.rsi
   - type: Item

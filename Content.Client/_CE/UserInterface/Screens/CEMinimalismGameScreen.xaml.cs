@@ -23,9 +23,10 @@ public sealed partial class CEMinimalismGameScreen : InGameScreen
         SetAnchorAndMarginPreset(CharacterMenuButton, LayoutPreset.BottomLeft, margin: 5);
         SetAnchorAndMarginPreset(Hotbar, LayoutPreset.BottomWide, margin: 5);
         SetAnchorAndMarginPreset(Chat, LayoutPreset.BottomLeft, margin: 10);
-        var chatClearance = 5 + CharacterMenuButton.MinSize.Y + 5;
-        SetMarginTop(Chat, Chat.GetValue<float>(MarginTopProperty) - chatClearance);
-        SetMarginBottom(Chat, Chat.GetValue<float>(MarginBottomProperty) - chatClearance);
+        var chatBottom = MathF.Max(HealthBar.MinSize.Y, 5 + CharacterMenuButton.MinSize.Y + 5 + 10);
+        var chatLift = chatBottom - 10;
+        SetMarginTop(Chat, Chat.GetValue<float>(MarginTopProperty) - chatLift);
+        SetMarginBottom(Chat, Chat.GetValue<float>(MarginBottomProperty) - chatLift);
         SetAnchorAndMarginPreset(Alerts, LayoutPreset.TopRight, margin: 10);
 
         TopBar.Visible = false;
@@ -41,6 +42,11 @@ public sealed partial class CEMinimalismGameScreen : InGameScreen
 
         SetAnchorAndMarginPreset(ManaBar, LayoutPreset.CenterBottom);
         SetMarginLeft(ManaBar, manaOffset);
+
+        // Time sense clock: right of the mana sphere, bottom-aligned with it
+        SetAnchorAndMarginPreset(Clock, LayoutPreset.CenterBottom);
+        SetMarginLeft(Clock, manaOffset + ManaBar.MinSize.X + 4f);
+        SetMarginTop(Clock, -Clock.MinSize.Y);
 
         SetAnchorAndMarginPreset(StaminaBar, LayoutPreset.CenterBottom, margin: 80);
         SetMarginLeft(StaminaBar, -StaminaBar.MinSize.X / 2f);

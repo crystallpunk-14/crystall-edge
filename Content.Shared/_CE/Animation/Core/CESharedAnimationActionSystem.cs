@@ -55,6 +55,12 @@ public abstract partial class CESharedAnimationActionSystem : EntitySystem
             if (_timing.ApplyingState)
                 continue;
 
+            if (controller.TargetEntity is { } target && TerminatingOrDeleted(target))
+            {
+                controller.TargetEntity = null;
+                Dirty(uid, controller);
+            }
+
             // Rotate towards the target if LockRotation is active with a TargetEntity or TargetPosition.
             if (controller.LockRotation && controller.TargetEntity != uid)
             {
@@ -112,6 +118,12 @@ public abstract partial class CESharedAnimationActionSystem : EntitySystem
                     controller.LastEvent = realKeyFrame;
                     anyEventFired = true;
                     OnKeyframeActions(uid, controller, keyFrame, actions);
+                }
+
+                if (controller.TargetEntity is { } postEventTarget && TerminatingOrDeleted(postEventTarget))
+                {
+                    controller.TargetEntity = null;
+                    anyEventFired = true;
                 }
 
                 if (anyEventFired)

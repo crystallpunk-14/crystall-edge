@@ -30,9 +30,6 @@ ce-murk-sphere-charging-blocker-desc = Аура мрака блокирует з
 ce-murk-pylon-block-unpowered-title = Пилон не запитан
 ce-murk-pylon-block-unpowered-desc = У этого пилона нет питания.
 
-ce-murk-pylon-block-outside-murk-title = Пилон вне мрака
-ce-murk-pylon-block-outside-murk-desc = Этот пилон больше не окутан мраком.
-
 ce-murk-pylon-block-too-close-title = Пилоны слишком близко друг к другу
 ce-murk-pylon-block-too-close-desc = Другой запитанный пилон находится слишком близко к этому.
 

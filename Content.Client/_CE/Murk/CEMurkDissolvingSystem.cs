@@ -75,6 +75,10 @@ public sealed partial class CEMurkDissolvingSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnHandleState(Entity<CEMurkDissolvingStatusComponent> ent, ref AfterAutoHandleStateEvent args)
     {
+        // The initial state arrives before the sprite is initialized; OnStartup sets the shader then.
+        if (ent.Comp.LifeStage < ComponentLifeStage.Running)
+            return;
+
         UpdateShader(ent);
     }
 

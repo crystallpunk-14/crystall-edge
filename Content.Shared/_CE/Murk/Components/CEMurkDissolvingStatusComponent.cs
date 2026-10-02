@@ -17,7 +17,7 @@ public sealed partial class CEMurkDissolvingStatusComponent : Component
     /// Current dissolution level, 0 (not dissolved) to 1 (fully dissolved).
     /// </summary>
     [DataField, AutoNetworkedField]
-    public float Dissolved;
+    public float Dissolved = 0;
 
     /// <summary>
     /// Whether the client-side desaturation overlay reacts to <see cref="Dissolved"/>.

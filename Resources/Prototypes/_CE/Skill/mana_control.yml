@@ -1,0 +1,73 @@
+- type: skill
+  id: ManaControl
+  name: ce-skill-mana-control-name
+  desc: ce-skill-mana-control-desc
+  icon:
+    sprite: _CE/Interface/Skills/mana_control.rsi
+    state: toggle
+  effect: !type:AddStatusEffect
+    effect: CEStatusEffectManaRegen
+    removeAlso:
+    - CEStatusEffectManaDrain
+
+- type: entity
+  parent: StatusEffectBase
+  id: CEStatusEffectManaRegen
+  name: mana regeneration
+  description: Your mana is constantly being restored. Click to switch to mana drain.
+  components:
+  - type: StatusEffect
+    whitelist:
+      components:
+      - Battery
+  - type: StatusEffectAlert
+    alert: CEManaRegen
+    showDuration: false
+  - type: CEBatteryRechargeStatusEffect
+    rate: 2
+  - type: CEAlertClickStatusEffect
+    effects:
+    - !type:RemoveStatusEffect
+      statusEffect: CEStatusEffectManaRegen
+    - !type:ApplyStatusEffect
+      statusEffect: CEStatusEffectManaDrain
+
+- type: entity
+  parent: StatusEffectBase
+  id: CEStatusEffectManaDrain
+  name: mana drain
+  description: Your mana is constantly being spent. Click to switch to mana regeneration.
+  components:
+  - type: StatusEffect
+    whitelist:
+      components:
+      - Battery
+  - type: StatusEffectAlert
+    alert: CEManaDrain
+    showDuration: false
+  - type: CEBatteryRechargeStatusEffect
+    rate: -2
+  - type: CEAlertClickStatusEffect
+    effects:
+    - !type:RemoveStatusEffect
+      statusEffect: CEStatusEffectManaDrain
+    - !type:ApplyStatusEffect
+      statusEffect: CEStatusEffectManaRegen
+
+- type: alert
+  id: CEManaRegen
+  icons:
+  - sprite: /Textures/_CE/Interface/Skills/mana_control.rsi
+    state: restore
+  name: ce-alerts-mana-regen-name
+  description: ce-alerts-mana-regen-desc
+  clickEvent: !type:CEStatusEffectAlertClickEvent
+
+- type: alert
+  id: CEManaDrain
+  icons:
+  - sprite: /Textures/_CE/Interface/Skills/mana_control.rsi
+    state: consume
+  name: ce-alerts-mana-drain-name
+  description: ce-alerts-mana-drain-desc
+  clickEvent: !type:CEStatusEffectAlertClickEvent

@@ -2,7 +2,9 @@
 
 - type: entity
   id: CELightMonolith
-  parent: CEBaseMachinePowered
+  parent: 
+  - CEBaseMachinePowered
+  - CEBaseMachineEnergized
   name: light monolith
   description: A manufactured crystal capable of storing a vast amount of light and using it to repair the Lucson Sphere.
   categories: [ ForkFiltered ]
@@ -74,7 +76,9 @@
 
 - type: entity
   id: CELightPylon
-  parent: CEBaseMachinePowered
+  parent: 
+  - CEBaseMachinePowered
+  - CEBaseMachineEnergized
   name: light pylon
   description: A component of the Light Monolith mechanism. All pylons must be operational, powered, and shrouded in murk for the main monolith to charge.
   categories: [ ForkFiltered]

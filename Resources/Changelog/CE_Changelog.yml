@@ -1038,3 +1038,98 @@
   id: 1092
   time: '2026-09-29T11:02:53.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/488
+- author: TheShuEd
+  changes:
+  - message: Werewolfes now have new skill "Time sense"
+    type: Add
+  - message: A large clock displaying the time has been added
+    type: Add
+  - message: "Healing items now have the \u201Csano\u201D aspect rather than the \u201C\
+      victus\u201D"
+    type: Tweak
+  - message: The number of pylons required to power the city has been reduced from
+      6 to 4, and they have been moved inside the city rather than outside in the
+      darkness. The excess areas around the city have been removed back.
+    type: Tweak
+  - message: Fixed a bug where climbing over fences would work only intermittently.
+    type: Fix
+  id: 1093
+  time: '2026-09-29T21:42:07.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/491
+- author: TheShuEd
+  changes:
+  - message: Conveyors can now be rotated without unclipping them
+    type: Tweak
+  - message: Fixed a bug that prevented the web from being destroyed
+    type: Fix
+  - message: You can now repaint scars in the character editor
+    type: Fix
+  id: 1094
+  time: '2026-09-30T15:57:08.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/493
+- author: TheShuEd
+  changes:
+  - message: The loudspeakers mounted on the walls have been added.
+    type: Add
+  - message: A radio room has been added, through which information can be broadcast
+      throughout the city via loudspeakers.
+    type: Add
+  id: 1095
+  time: '2026-09-30T19:55:44.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/492
+- author: TheShuEd
+  changes:
+  - message: Shadow eaters added
+    type: Add
+  id: 1096
+  time: '2026-10-01T10:44:56.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/495
+- author: TheShuEd
+  changes:
+  - message: Energy scanner goggles have been added. They allow you to see pipes through
+      Z-levels and view information about the pipes' power supply.
+    type: Add
+  id: 1097
+  time: '2026-10-01T12:10:26.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/496
+- author: TheShuEd
+  changes:
+  - message: The tormentor and the lover can no longer choose each other as targets
+    type: Tweak
+  - message: Fixed a bug where a phantom item would appear in the Carrins' hands after
+      they began flying
+    type: Fix
+  - message: A bug that prevented users from making soups has been fixed.
+    type: Fix
+  id: 1098
+  time: '2026-10-01T19:47:23.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/497
+- author: TheShuEd
+  changes:
+  - message: Any interaction with pipes or critical power equipment without a protective
+      suit is now interrupted by a burst of energy that knocks the player back and
+      deals damage. Sabotaging pipes has become significantly more difficult.
+    type: Add
+  - message: "The elves' innate ability, \u201CImmunity to Mana Damage,\u201D has\
+      \ been removed."
+    type: Remove
+  - message: Passive mana regeneration has been removed from all creatures.
+    type: Remove
+  - message: "Elves have gained a new innate ability called \u201CMana Control,\u201D\
+      \ which allows them to either passively regenerate mana or passively expend\
+      \ it, depending on the mode"
+    type: Add
+  id: 1099
+  time: '2026-10-02T10:43:01.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/498
+- author: TheShuEd
+  changes:
+  - message: Fixed mugs!
+    type: Fix
+  - message: Fixed carring torso markings.
+    type: Fix
+  - message: Attack with rope now starts roping doAfter
+    type: Fix
+  id: 1100
+  time: '2026-10-02T14:48:09.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/499

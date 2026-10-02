@@ -1,4 +1,3 @@
-ce-trade-faction-victoria-gardens = Victoria Gardens
 ce-trade-faction-brad-potions = Brad's marvelous potions
 ce-trade-faction-butchers = Master Butchers Union
 ce-trade-faction-dairy = Golden Udder Dairy

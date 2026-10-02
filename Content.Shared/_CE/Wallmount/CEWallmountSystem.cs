@@ -16,7 +16,7 @@ public sealed partial class CEWallmountSystem : EntitySystem
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private INetManager _net = default!;
 
-    // CrystallEdge: upstream removed the "Wall" tag in favor of WallComponent; windows still use a tag
+    //Upstream removed the "Wall" tag in favor of WallComponent; windows still use a tag
     public static readonly ProtoId<TagPrototype> WindowTag = "Window";
 
     [SubscribeLocalEvent]

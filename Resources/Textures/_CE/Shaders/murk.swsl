@@ -19,7 +19,7 @@ const highp float noiseFrequency = 0.2;
 const highp float noiseTimeSpeed = 0.1;
 
 const highp float edgePeak = 0.45;
-const highp float edgeEnd = 0.45;
+const highp float edgeEnd = 0.5;
 const highp float edgeStrength = 1.0;
 
 highp vec3 randomVector(highp vec2 coord)

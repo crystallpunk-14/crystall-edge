@@ -34,6 +34,44 @@
 
 - type: entity
   abstract: true
+  id: CEBaseMachineEnergized
+  components:
+  - type: CEEnergizedInteraction
+    effects:
+    - !type:PlaySound
+      effectTarget: User
+      positional: true
+      sound:
+        collection: sparks
+    - !type:SpawnEntity
+      spawns:
+      - CEOverchargeVFX
+    - !type:AreaEffect
+      range: 2.5
+      whitelist:
+        components:
+        - MobState
+      effects:
+      - !type:ConditionalEffectGroup
+        conditions:
+        - !type:Insulated
+          inverted: true
+        effects:
+        - !type:Damage
+          damage:
+            types:
+              Shock: 10
+        - !type:ThrowFrom
+          throwPower: 15
+          distance: 2
+        - !type:Knockdown
+          duration: 0.5
+          dropItems: false
+        - !type:StaminaDamage
+          amount: 30
+
+- type: entity
+  abstract: true
   parent: BaseMachine
   id: CEBaseMachinePowered
   components:

@@ -16,8 +16,6 @@ public sealed partial class CEGOAPSelectorRandomEnemy : CEGOAPTargetSelectorBase
 public sealed partial class CEGOAPSelectorRandomEnemySystem : CEGOAPTargetSelectorSystem<CEGOAPSelectorRandomEnemy>
 {
     [Dependency] private IRobustRandom _random = default!;
-    // CrystallEdge: Rogue used CEMobStateSystem (CE-only). This fork has no CE health stack,
-    // so use vanilla MobStateSystem instead.
     [Dependency] private MobStateSystem _mobState = default!;
 
     [Dependency] private EntityQuery<TransformComponent> _xformQuery = default!;
@@ -35,7 +33,7 @@ public sealed partial class CEGOAPSelectorRandomEnemySystem : CEGOAPTargetSelect
             var isAlive = _mobStateQuery.TryGetComponent(enemy, out var mobState)
                 ? !_mobState.IsIncapacitated(enemy, mobState)
                 : !Terminating(enemy);
-            if (isAlive)
+            if (isAlive && ev.Selector.CandidatePasses(ev.Agent, enemy, EntityManager))
                 aliveEnemies.Add(enemy);
         }
 

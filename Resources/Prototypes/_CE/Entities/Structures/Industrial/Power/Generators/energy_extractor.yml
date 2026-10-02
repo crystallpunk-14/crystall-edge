@@ -4,6 +4,7 @@
   parent:
   - CEConstructibleMachine
   - CEBaseMachinePowered
+  - CEBaseMachineEnergized
   - BaseMachine
   name: energy extractor
   description: Splits crystals and other unstable items fed into its hopper, dumping the released energy straight into the city grid. Attach a funnel and a conveyor belt to keep it stocked.

@@ -132,10 +132,12 @@
 - type: entity
   parent: [ CEOrganBaseTorsoSexed, OrganBaseTorso, CEOrganDwarfExternal ]
   id: CEOrganDwarfTorso
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseHeadSexed, OrganBaseHead, CEOrganDwarfExternal ]
   id: CEOrganDwarfHead
+  categories: [ HideSpawnMenu ]
   components:
   - type: VisualOrganMarkings
     hideableLayers:
@@ -145,38 +147,47 @@
 - type: entity
   parent: [ CEOrganBaseArmLeftNonSexed, OrganBaseArmLeft, CEOrganDwarfExternal ]
   id: CEOrganDwarfArmLeft
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseArmRightNonSexed, OrganBaseArmRight, CEOrganDwarfExternal ]
   id: CEOrganDwarfArmRight
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseHandLeftNonSexed, OrganBaseHandLeft, CEOrganDwarfExternal ]
   id: CEOrganDwarfHandLeft
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseHandRightNonSexed, OrganBaseHandRight, CEOrganDwarfExternal ]
   id: CEOrganDwarfHandRight
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseLegLeftNonSexed, OrganBaseLegLeft, CEOrganDwarfExternal ]
   id: CEOrganDwarfLegLeft
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseLegRightNonSexed, OrganBaseLegRight, CEOrganDwarfExternal ]
   id: CEOrganDwarfLegRight
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseFootLeftNonSexed, OrganBaseFootLeft, CEOrganDwarfExternal ]
   id: CEOrganDwarfFootLeft
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ CEOrganBaseFootRightNonSexed, OrganBaseFootRight, CEOrganDwarfExternal ]
   id: CEOrganDwarfFootRight
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   parent: [ OrganBaseEyes, OrganHumanInternal, CEOrganDwarfExternal ]
   id: CEOrganDwarfEyes
+  categories: [ HideSpawnMenu ]
   components:
   - type: VisualOrgan
     data:

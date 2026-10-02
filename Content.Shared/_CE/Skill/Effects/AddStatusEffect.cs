@@ -16,6 +16,13 @@ public sealed partial class AddStatusEffect : CESkillEffect
     [DataField(required: true)]
     public EntProtoId Effect;
 
+    /// <summary>
+    /// Other status effects removed together with <see cref="Effect"/> when the skill is lost, e.g. effects
+    /// that <see cref="Effect"/> can be swapped for while the skill is known.
+    /// </summary>
+    [DataField]
+    public List<EntProtoId> RemoveAlso = new();
+
     public override void AddSkill(IEntityManager entManager, EntityUid target)
     {
         var statusEffects = entManager.System<StatusEffectsSystem>();
@@ -26,6 +33,11 @@ public sealed partial class AddStatusEffect : CESkillEffect
     {
         var statusEffects = entManager.System<StatusEffectsSystem>();
         statusEffects.TryRemoveStatusEffect(target, Effect);
+
+        foreach (var other in RemoveAlso)
+        {
+            statusEffects.TryRemoveStatusEffect(target, other);
+        }
     }
 
     public override string? GetName(IEntityManager entManager, IPrototypeManager protoManager)

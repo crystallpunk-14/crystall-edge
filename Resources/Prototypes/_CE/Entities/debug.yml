@@ -15,12 +15,12 @@
     solution:
       maxVol: 9999999 #.inf seems to break the whole yaml file, but would definitely be preferable.
       reagents:
-      - ReagentId: CEWater
+      - ReagentId: Water
         Quantity: 9999999
   - type: SolutionRegeneration
     generated:
       reagents:
-      - ReagentId: CEWater
+      - ReagentId: Water
         Quantity: 100
   - type: Edible
     solution: pool

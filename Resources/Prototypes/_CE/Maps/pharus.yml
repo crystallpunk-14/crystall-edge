@@ -30,13 +30,12 @@
             CETownfolk: [ -1, -1 ]
         - type: CEStationZLevels
           mapsBelow:
+          - /Maps/_CE/Pharus/Pharus-2.yml
           - /Maps/_CE/Pharus/Pharus-1.yml
           mapsAbove:
           - /Maps/_CE/Pharus/Pharus1.yml
           - /Maps/_CE/Pharus/Pharus2.yml
           - /Maps/_CE/Pharus/Pharus3.yml
-          - /Maps/_CE/Pharus/Pharus4.yml
-          - /Maps/_CE/Pharus/Pharus5.yml
           zLevelsComponentOverrides:
             - type: MapAtmosphere
               space: False
@@ -55,12 +54,12 @@
             - type: CELightCycle
               colors:
                 0: "#1c1c27"
-                0.125: "#2e2f42"
-                0.25: "#465269"
-                0.375: "#d8ffff"
-                0.625: "#d8ffff"
-                0.75: "#334347"
-                0.875: "#323347"
+                0.125: "#3c3c40"
+                0.25: "#63656b"
+                0.375: "#d8e4ff"
+                0.625: "#d8e4ff"
+                0.75: "#424347"
+                0.875: "#3a3a42"
             - type: SunShadowCycle
             - type: CEZLevelRoof
             - type: SunShadow

@@ -47,6 +47,7 @@ public sealed partial class AHelpUIController: UIController, IOnSystemChanged<Bw
     public IAHelpUIHandler? UIHelper;
     private bool _discordRelayActive;
     private bool _hasUnreadAHelp;
+    public bool HasUnreadAHelp => _hasUnreadAHelp; // CrystallEdge: minimalist HUD shows its own AHelp alert button
     private bool _bwoinkSoundEnabled;
     private string? _aHelpSound;
 
