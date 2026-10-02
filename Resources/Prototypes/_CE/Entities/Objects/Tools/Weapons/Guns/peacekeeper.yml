@@ -67,7 +67,7 @@
     - !type:ThrowFrom
       distance: 0.75
     - !type:Irradiate
-      charge: 5
+      charge: 8
   - type: HitscanBasicVisuals
     muzzleFlash:
       sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi

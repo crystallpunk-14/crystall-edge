@@ -46,8 +46,9 @@
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
       params:
         variation: 0.2
-        volume: 2
-        pitch: -1
+        volume: 4
+        pitch: 0.5
+        maxDistance: 22
   - type: SpeedModifiedOnWield
     walkModifier: 0.35
     sprintModifier: 0.35
@@ -80,9 +81,9 @@
       spawns:
       - CEOverchargeVFX
     - !type:ThrowFrom
-      distance: 1
+      distance: 1.25
     - !type:Irradiate
-      charge: 8
+      charge: 10
   - type: HitscanBasicVisuals
     muzzleFlash:
       sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
