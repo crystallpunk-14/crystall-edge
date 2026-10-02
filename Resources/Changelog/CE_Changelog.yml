@@ -1122,3 +1122,14 @@
   id: 1099
   time: '2026-10-02T10:43:01.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/498
+- author: TheShuEd
+  changes:
+  - message: Fixed mugs!
+    type: Fix
+  - message: Fixed carring torso markings.
+    type: Fix
+  - message: Attack with rope now starts roping doAfter
+    type: Fix
+  id: 1100
+  time: '2026-10-02T14:48:09.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/499
