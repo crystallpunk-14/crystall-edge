@@ -1,21 +1,12 @@
-using Content.Shared._CE.GOAP;
 using Content.Shared._CE.GOAP.Components;
-using Content.Shared._CE.GOAP.Selectors;
-using Robust.Shared.Analyzers;
 using Robust.Shared.Map;
 using Robust.Shared.Timing;
 
 namespace Content.Server._CE.GOAP.Sensors;
 
 [DataDefinition]
-public sealed partial class CEGOAPRangeToTargetSensorEntry
+public sealed partial class CEGOAPRangeToTargetSensorEntry : CEGOAPSensorEntryBase
 {
-    [DataField(required: true)]
-    public string ConditionKey = string.Empty;
-
-    [DataField(required: true)]
-    public CEGOAPTargetSelector Selector = default!;
-
     /// <summary>
     /// Range threshold in tiles.
     /// </summary>

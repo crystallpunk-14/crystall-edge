@@ -8,14 +8,8 @@ using Robust.Shared.Analyzers;
 namespace Content.Server._CE.GOAP.Sensors;
 
 [DataDefinition]
-public sealed partial class CEGOAPCheckHealthLevelSensorEntry
+public sealed partial class CEGOAPCheckHealthLevelSensorEntry : CEGOAPSensorEntryBase
 {
-    [DataField(required: true)]
-    public string ConditionKey = string.Empty;
-
-    [DataField(required: true)]
-    public CEGOAPTargetSelector Selector = default!;
-
     /// <summary>
     /// Health fraction (0..1) below which the condition is set to true.
     /// </summary>

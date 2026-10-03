@@ -8,14 +8,8 @@ using Robust.Shared.Prototypes;
 namespace Content.Server._CE.GOAP.Sensors;
 
 [DataDefinition]
-public sealed partial class CEGOAPHasStatusEffectSensorEntry
+public sealed partial class CEGOAPHasStatusEffectSensorEntry : CEGOAPSensorEntryBase
 {
-    [DataField(required: true)]
-    public string ConditionKey = string.Empty;
-
-    [DataField(required: true)]
-    public CEGOAPTargetSelector Selector = default!;
-
     /// <summary>
     /// Prototype ID of the status effect entity to check for.
     /// </summary>

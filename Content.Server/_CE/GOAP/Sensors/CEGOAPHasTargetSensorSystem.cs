@@ -6,13 +6,8 @@ using Robust.Shared.Analyzers;
 namespace Content.Server._CE.GOAP.Sensors;
 
 [DataDefinition]
-public sealed partial class CEGOAPHasTargetSensorEntry
+public sealed partial class CEGOAPHasTargetSensorEntry : CEGOAPSensorEntryBase
 {
-    [DataField(required: true)]
-    public string ConditionKey = string.Empty;
-
-    [DataField(required: true)]
-    public CEGOAPTargetSelector Selector = default!;
 }
 
 /// <summary>

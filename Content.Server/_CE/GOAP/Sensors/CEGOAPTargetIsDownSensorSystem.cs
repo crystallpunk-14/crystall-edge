@@ -1,20 +1,12 @@
-using Content.Shared._CE.GOAP;
 using Content.Shared._CE.GOAP.Components;
-using Content.Shared._CE.GOAP.Selectors;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
-using Robust.Shared.Analyzers;
 
 namespace Content.Server._CE.GOAP.Sensors;
 
 [DataDefinition]
-public sealed partial class CEGOAPTargetIsDownSensorEntry
+public sealed partial class CEGOAPTargetIsDownSensorEntry : CEGOAPSensorEntryBase
 {
-    [DataField(required: true)]
-    public string ConditionKey = string.Empty;
-
-    [DataField(required: true)]
-    public CEGOAPTargetSelector Selector = default!;
 }
 
 /// <summary>
@@ -54,7 +46,9 @@ public sealed partial class CEGOAPTargetIsDownSensorSystem : EntitySystem
             return;
 
         foreach (var entry in ent.Comp.Entries)
+        {
             EvaluateEntry((ent.Owner, goap), entry);
+        }
     }
 
     private void EvaluateEntry(Entity<CEGOAPComponent> ent, CEGOAPTargetIsDownSensorEntry entry)
