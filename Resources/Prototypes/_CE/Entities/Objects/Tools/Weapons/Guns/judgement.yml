@@ -37,7 +37,7 @@
     availableModes:
     - Burst
     fireRate: 0.4
-    burstFireRate: 5
+    burstFireRate: 3.5
     shotsPerBurst: 2
     burstCooldown: 3
     angleIncrease: 2
