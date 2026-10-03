@@ -69,7 +69,6 @@
     sprite: _CE/Clothing/Eyes/Engineering/energy_scanner.rsi
   - type: VisionCorrection
   - type: CEEnergyScannerClothing
-  - type: ActionsContainer
   - type: StaticPrice
     price: 50
   - type: CEMagicEssenceStructure
