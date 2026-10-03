@@ -1,7 +1,6 @@
 using Content.Shared._CE.GOAP.Components;
 using Content.Shared.NPC.Components;
 using Content.Shared.NPC.Systems;
-using Robust.Shared.Analyzers;
 
 namespace Content.Server._CE.GOAP.Classifiers;
 
@@ -31,7 +30,7 @@ public sealed partial class CEGOAPKnowledgeCacheSystem : EntitySystem
     {
         foreach (var enemy in ent.Comp.Enemies)
         {
-            UntrackEnemy(enemy, ent.Owner);
+            Untrack(enemy, ent.Owner);
         }
 
         ent.Comp.Enemies.Clear();
@@ -55,7 +54,7 @@ public sealed partial class CEGOAPKnowledgeCacheSystem : EntitySystem
         {
             foreach (var prev in _previousEnemies)
             {
-                UntrackEnemy(prev, uid);
+                Untrack(prev, uid);
             }
 
             return;
@@ -84,13 +83,13 @@ public sealed partial class CEGOAPKnowledgeCacheSystem : EntitySystem
         foreach (var prev in _previousEnemies)
         {
             if (!cache.Enemies.Contains(prev))
-                UntrackEnemy(prev, uid);
+                Untrack(prev, uid);
         }
 
         foreach (var current in cache.Enemies)
         {
             if (!_previousEnemies.Contains(current))
-                TrackEnemy(current, uid);
+                Track(current, uid);
         }
 
         if (_previousEnemies.Count == 0 && cache.Enemies.Count > 0)
@@ -109,20 +108,20 @@ public sealed partial class CEGOAPKnowledgeCacheSystem : EntitySystem
         RaiseLocalEvent(uid, ref rebuilt);
     }
 
-    private void TrackEnemy(EntityUid enemy, EntityUid agent)
+    private void Track(EntityUid target, EntityUid agent)
     {
-        var comp = EnsureComp<CEGOAPTargetComponent>(enemy);
+        var comp = EnsureComp<CEGOAPTargetComponent>(target);
         comp.Trackers.Add(agent);
     }
 
-    private void UntrackEnemy(EntityUid enemy, EntityUid agent)
+    private void Untrack(EntityUid target, EntityUid agent)
     {
-        if (!TryComp<CEGOAPTargetComponent>(enemy, out var comp))
+        if (!TryComp<CEGOAPTargetComponent>(target, out var comp))
             return;
 
         comp.Trackers.Remove(agent);
         if (comp.Trackers.Count == 0)
-            RemCompDeferred<CEGOAPTargetComponent>(enemy);
+            RemCompDeferred<CEGOAPTargetComponent>(target);
     }
 }
 

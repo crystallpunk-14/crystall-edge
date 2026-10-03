@@ -10,8 +10,6 @@ namespace Content.Server._CE.GOAP;
 
 public sealed partial class CEGOAPSystem
 {
-    // CrystallEdge: Rogue used a CE-only CEMobStateSystem (Alive/Critical only). This fork has no CE health
-    // stack, so GOAP hooks into vanilla mob state instead, treating Critical/Dead as "down".
     [Dependency] private MobStateSystem _mobState = default!;
 
     private void InitWake()

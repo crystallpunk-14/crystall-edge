@@ -3,7 +3,7 @@ using Robust.Shared.GameStates;
 namespace Content.Shared._CE.GOAP.Components;
 
 /// <summary>
-/// Added to entities that are currently classified as an enemy by some GOAP agent's
+/// Added to entities that are currently classified as an target by some GOAP agent's
 /// knowledge cache. Used for event-based target sensors (mob state changed) and to let
 /// clients detect when the local player is being hunted.
 /// Automatically managed by <see cref="CEGOAPKnowledgeCacheComponent"/> classifier.

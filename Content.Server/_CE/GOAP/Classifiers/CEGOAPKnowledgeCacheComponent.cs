@@ -9,11 +9,15 @@ namespace Content.Server._CE.GOAP.Classifiers;
 [RegisterComponent]
 public sealed partial class CEGOAPKnowledgeCacheComponent : Component
 {
-    /// <summary>Known entities classified as hostile relative to this agent.</summary>
+    /// <summary>
+    /// Known entities classified as hostile relative to this agent.
+    /// </summary>
     [ViewVariables]
     public readonly HashSet<EntityUid> Enemies = new();
 
-    /// <summary>Known entities classified as friendly relative to this agent.</summary>
+    /// <summary>
+    /// Known entities classified as friendly relative to this agent.
+    /// </summary>
     [ViewVariables]
     public readonly HashSet<EntityUid> Allies = new();
 }

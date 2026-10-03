@@ -22,8 +22,6 @@ public sealed partial class CEGOAPSelectorNearestEnemy : CEGOAPTargetSelectorBas
 public sealed partial class CEGOAPSelectorNearestEnemySystem : CEGOAPTargetSelectorSystem<CEGOAPSelectorNearestEnemy>
 {
     [Dependency] private SharedTransformSystem _transform = default!;
-    // CrystallEdge: Rogue used CEMobStateSystem (CE-only). This fork has no CE health stack,
-    // so use vanilla MobStateSystem instead.
     [Dependency] private MobStateSystem _mobState = default!;
 
     [Dependency] private EntityQuery<TransformComponent> _xformQuery = default!;
