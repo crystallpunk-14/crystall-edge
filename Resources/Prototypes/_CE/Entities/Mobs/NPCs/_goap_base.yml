@@ -4,15 +4,23 @@
   categories: [ ForkFiltered ]
   components:
   - type: CEGOAP
-  - type: CEGOAPKnowledgeCache
   - type: CEGOAPEyesPerceptor
     visionRadius: 8
   - type: CEGOAPPainPerceptor
-  - type: CEGOAPHasEnemySensor
+  - type: CEGOAPHasTargetSensor
     entries:
     - conditionKey: EnemyVisible
+      selector: !type:CEGOAPSelectorNearestKnown
+        conditions:
+        - !type:InEnemyFaction
+        - !type:Incapacitated
+          inverted: true
   - type: CEGOAPRangeToTargetSensor
     entries:
     - conditionKey: EnemyInMeleeRange
-      selector: !type:CEGOAPSelectorNearestEnemy
+      selector: !type:CEGOAPSelectorNearestKnown
+        conditions:
+        - !type:InEnemyFaction
+        - !type:Incapacitated
+          inverted: true
       range: 1

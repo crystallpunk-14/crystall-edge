@@ -138,7 +138,6 @@
           Wandered: true
         cost: 1
         exploreRadius: 8
-    - type: CEGOAPKnowledgeCache
     - type: CEGOAPEyesPerceptor
       visionRadius: 8
     - type: ActiveListener

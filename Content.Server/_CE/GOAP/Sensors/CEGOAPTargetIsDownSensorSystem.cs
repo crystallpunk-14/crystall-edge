@@ -1,7 +1,6 @@
 using Content.Shared._CE.GOAP;
 using Content.Shared._CE.GOAP.Components;
 using Content.Shared._CE.GOAP.Selectors;
-using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Robust.Shared.Analyzers;
@@ -20,7 +19,6 @@ public sealed partial class CEGOAPTargetIsDownSensorEntry
 
 /// <summary>
 /// Checks if a selector-resolved target is incapacitated (critical or dead).
-/// Event-driven via CEGOAPTargetComponent: reacts to MobStateChangedEvent on tracked targets.
 /// </summary>
 [RegisterComponent]
 public sealed partial class CEGOAPTargetIsDownSensorComponent : Component
@@ -39,29 +37,24 @@ public sealed partial class CEGOAPTargetIsDownSensorSystem : EntitySystem
     [Dependency] private EntityQuery<MobStateComponent> _mobStateQuery = default!;
 
     [SubscribeLocalEvent]
+    private void OnKnowledgeUpdated(Entity<CEGOAPTargetIsDownSensorComponent> ent, ref CEGOAPKnowledgeUpdatedEvent args)
+    {
+        EvaluateAll(ent);
+    }
+
+    [SubscribeLocalEvent]
     private void OnRefresh(Entity<CEGOAPTargetIsDownSensorComponent> ent, ref CEGOAPSensorRefreshEvent args)
+    {
+        EvaluateAll(ent);
+    }
+
+    private void EvaluateAll(Entity<CEGOAPTargetIsDownSensorComponent> ent)
     {
         if (!TryComp<CEGOAPComponent>(ent, out var goap))
             return;
 
         foreach (var entry in ent.Comp.Entries)
             EvaluateEntry((ent.Owner, goap), entry);
-    }
-
-    [SubscribeLocalEvent]
-    private void OnTargetMobStateChanged(Entity<CEGOAPTargetComponent> ent, ref MobStateChangedEvent args)
-    {
-        foreach (var goapUid in ent.Comp.Trackers)
-        {
-            if (!TryComp<CEGOAPComponent>(goapUid, out var goap))
-                continue;
-
-            if (!TryComp<CEGOAPTargetIsDownSensorComponent>(goapUid, out var sensor))
-                continue;
-
-            foreach (var entry in sensor.Entries)
-                EvaluateEntry((goapUid, goap), entry);
-        }
     }
 
     private void EvaluateEntry(Entity<CEGOAPComponent> ent, CEGOAPTargetIsDownSensorEntry entry)

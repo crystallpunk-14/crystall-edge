@@ -54,14 +54,22 @@
       cost: 0.5
     # Move to target
     - !type:CEGOAPMoveToTargetAction
-      selector: !type:CEGOAPSelectorNearestEnemy
+      selector: !type:CEGOAPSelectorNearestKnown
+        conditions:
+        - !type:InEnemyFaction
+        - !type:Incapacitated
+          inverted: true
       preconditions:
         EnemyVisible: true
       effects:
         EnemyInMeleeRange: true
     # Attack target
     - !type:CEGOAPMeleeAttackAction
-      selector: !type:CEGOAPSelectorNearestEnemy
+      selector: !type:CEGOAPSelectorNearestKnown
+        conditions:
+        - !type:InEnemyFaction
+        - !type:Incapacitated
+          inverted: true
       preconditions:
         EnemyInMeleeRange: true
       effects:
