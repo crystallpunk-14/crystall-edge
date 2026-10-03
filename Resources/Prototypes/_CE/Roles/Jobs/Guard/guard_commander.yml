@@ -56,7 +56,7 @@
     containers:
       entity_storage: !type:AllSelector
         children:
-        - id: CEWeaponGunPeacekeeperGolden
+        - id: CEWeaponGunJudgement
         - id: CERope
         - id: CERope
         - id: CERope
