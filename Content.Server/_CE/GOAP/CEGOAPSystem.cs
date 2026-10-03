@@ -155,6 +155,7 @@ public sealed partial class CEGOAPSystem : EntitySystem
                 continue;
 
             PurgeExpiredKnowledge((uid, goap));
+            FlushKnowledgeUpdate((uid, goap));
             UpdateAgent((uid, goap), frameTime);
             count++;
         }

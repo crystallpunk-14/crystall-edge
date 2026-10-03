@@ -39,6 +39,13 @@ public sealed partial class CEGOAPComponent : Component
     [ViewVariables]
     public Dictionary<EntityUid, CEGOAPKnowledgeEntry> Knowledge = new();
 
+    /// <summary>
+    /// Set when <see cref="Knowledge"/> gained or lost entries since the last agent tick.
+    /// The orchestrator raises a single knowledge-updated event per tick while this is set.
+    /// </summary>
+    [ViewVariables]
+    public bool KnowledgeDirty;
+
     [DataField]
     public TimeSpan MemoryDuration = TimeSpan.FromSeconds(10);
 
