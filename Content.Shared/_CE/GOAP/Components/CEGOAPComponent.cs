@@ -3,6 +3,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 using Content.Shared._CE.GOAP.Prototypes;
 using Robust.Shared.Prototypes;
+using Content.Shared._CE.GOAP.Selectors;
 
 namespace Content.Shared._CE.GOAP.Components;
 
@@ -26,6 +27,14 @@ public sealed partial class CEGOAPComponent : Component
     /// </summary>
     [DataField]
     public List<ProtoId<CEGOAPBehaviorPrototype>> Behaviors = new();
+
+    /// <summary>
+    /// Target slots of this agent: each slot's selector, referenced by id from actions and sensors.
+    /// Behavior packages add their slots here on MapInit.
+    /// </summary>
+    [DataField(serverOnly: true)]
+    [AlwaysPushInheritance]
+    public Dictionary<ProtoId<CEGOAPTargetPrototype>, CEGOAPTargetSelector> Targets = new();
 
     /// <summary>
     /// List of goals this entity can pursue.

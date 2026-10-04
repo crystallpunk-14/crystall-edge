@@ -1,6 +1,5 @@
 using Content.Shared._CE.GOAP;
 using Content.Shared._CE.GOAP.Components;
-using Content.Shared._CE.GOAP.Selectors;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Mobs.Systems;
 using Robust.Shared.Analyzers;
@@ -37,6 +36,7 @@ public sealed partial class CEGOAPCheckHealthLevelSensorComponent : Component
 
 public sealed partial class CEGOAPCheckHealthLevelSensorSystem : EntitySystem
 {
+    [Dependency] private CEGOAPSystem _goap = default!;
     // CrystallEdge: Rogue used CESharedDamageableSystem.GetHealthInfo() (CE-only). This fork
     // has no CE health stack, so compute health fraction from vanilla MobThresholdSystem's
     // incapacitation percentage instead.
@@ -70,7 +70,7 @@ public sealed partial class CEGOAPCheckHealthLevelSensorSystem : EntitySystem
 
     private void EvaluateEntry(EntityUid uid, CEGOAPCheckHealthLevelSensorEntry entry, CEGOAPComponent goap)
     {
-        var result = entry.Selector.Resolve(uid, EntityManager);
+        var result = _goap.ResolveTarget(uid, entry.Target);
         if (result.Entity is not { } target)
         {
             goap.WorldState[entry.ConditionKey] = false;

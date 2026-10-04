@@ -39,6 +39,7 @@ public sealed partial class CEGOAPRangeToTargetSensorComponent : Component
 
 public sealed partial class CEGOAPRangeToTargetSensorSystem : EntitySystem
 {
+    [Dependency] private CEGOAPSystem _goap = default!;
     [Dependency] private IGameTiming _timing = default!;
 
     [Dependency] private EntityQuery<TransformComponent> _xformQuery = default!;
@@ -70,7 +71,7 @@ public sealed partial class CEGOAPRangeToTargetSensorSystem : EntitySystem
 
     private void EvaluateEntry(EntityUid uid, CEGOAPRangeToTargetSensorEntry entry, CEGOAPComponent goap)
     {
-        var result = entry.Selector.Resolve(uid, EntityManager);
+        var result = _goap.ResolveTarget(uid, entry.Target);
 
         if (!_xformQuery.TryGetComponent(uid, out var xform))
         {

@@ -11,19 +11,19 @@
   - type: CEGOAPRangeToTargetSensor
     entries:
     - conditionKey: SoulKnown
-      selector: !type:CEGOAPSelectorNearestKnown
-        conditions:
-        - !type:MurkDissolved
+      target: DissolvedSoul
       range: 100
     - conditionKey: SoulInReach
-      selector: !type:CEGOAPSelectorNearestKnown
-        conditions:
-        - !type:MurkDissolved
+      target: DissolvedSoul
       range: 1
   - type: CEGOAP
     behaviors:
     - MeleeAttacker
     - Explorer
+    targets:
+      DissolvedSoul: !type:CEGOAPSelectorNearestKnown
+        conditions:
+        - !type:MurkDissolved
     goals:
     # Eating a dissolved soul beats everything else
     - desiredState:
@@ -33,9 +33,7 @@
     actions:
     # Move to a dissolved soul
     - !type:CEGOAPMoveToTargetAction
-      selector: !type:CEGOAPSelectorNearestKnown
-        conditions:
-        - !type:MurkDissolved
+      target: DissolvedSoul
       preconditions:
         SoulKnown: true
       effects:
@@ -43,9 +41,7 @@
     # Devour it
     - !type:CEGOAPUseAction
       actionPrototype: CEActionShadowEaterDevour
-      selector: !type:CEGOAPSelectorNearestKnown
-        conditions:
-        - !type:MurkDissolved
+      target: DissolvedSoul
       preconditions:
         SoulInReach: true
       effects:

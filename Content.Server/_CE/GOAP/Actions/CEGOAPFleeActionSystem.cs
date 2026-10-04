@@ -42,10 +42,7 @@ public sealed partial class CEGOAPFleeActionSystem : CEGOAPActionSystem<CEGOAPFl
         Entity<CEGOAPComponent> ent,
         ref CEGOAPActionStartupEvent<CEGOAPFleeAction> args)
     {
-        if (args.Action.Selector == null)
-            return;
-
-        var result = args.Action.Selector.Resolve(ent, EntityManager);
+        var result = Goap.ResolveTarget(ent, args.Action.Target);
         if (result.Entity is not { } target)
             return;
 
@@ -57,13 +54,7 @@ public sealed partial class CEGOAPFleeActionSystem : CEGOAPActionSystem<CEGOAPFl
         Entity<CEGOAPComponent> ent,
         ref CEGOAPActionUpdateEvent<CEGOAPFleeAction> args)
     {
-        if (args.Action.Selector == null)
-        {
-            args.Status = CEGOAPActionStatus.Finished;
-            return;
-        }
-
-        var result = args.Action.Selector.Resolve(ent, EntityManager);
+        var result = Goap.ResolveTarget(ent, args.Action.Target);
         if (result.Entity is not { } target)
         {
             args.Status = CEGOAPActionStatus.Finished;

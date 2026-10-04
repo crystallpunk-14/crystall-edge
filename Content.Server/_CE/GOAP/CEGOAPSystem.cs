@@ -61,6 +61,7 @@ public sealed partial class CEGOAPSystem : EntitySystem
     private void OnMapInit(Entity<CEGOAPComponent> ent, ref MapInitEvent args)
     {
         MergeBehaviors(ent);
+        ValidateTargets(ent);
 
         foreach (var action in ent.Comp.Actions)
         {

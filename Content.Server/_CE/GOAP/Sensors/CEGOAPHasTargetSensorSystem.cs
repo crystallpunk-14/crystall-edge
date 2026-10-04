@@ -1,6 +1,5 @@
 using Content.Shared._CE.GOAP;
 using Content.Shared._CE.GOAP.Components;
-using Content.Shared._CE.GOAP.Selectors;
 using Robust.Shared.Analyzers;
 using Content.Shared._CE.GOAP.Sensors;
 
@@ -29,6 +28,7 @@ public sealed partial class CEGOAPHasTargetSensorComponent : Component
 
 public sealed partial class CEGOAPHasTargetSensorSystem : EntitySystem
 {
+    [Dependency] private CEGOAPSystem _goap = default!;
     [SubscribeLocalEvent]
     private void OnKnowledgeUpdated(Entity<CEGOAPHasTargetSensorComponent> ent, ref CEGOAPKnowledgeUpdatedEvent args)
     {
@@ -48,7 +48,7 @@ public sealed partial class CEGOAPHasTargetSensorSystem : EntitySystem
 
         foreach (var entry in ent.Comp.Entries)
         {
-            var result = entry.Selector.Resolve(ent, EntityManager);
+            var result = _goap.ResolveTarget(ent, entry.Target);
             goap.WorldState[entry.ConditionKey] = result.Entity != null;
         }
     }

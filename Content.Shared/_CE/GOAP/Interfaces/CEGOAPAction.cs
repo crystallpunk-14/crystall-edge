@@ -1,6 +1,5 @@
 namespace Content.Shared._CE.GOAP;
 
-using Content.Shared._CE.GOAP.Selectors;
 using Content.Shared._CE.GOAP.Prototypes;
 using Robust.Shared.Prototypes;
 
@@ -49,11 +48,11 @@ public abstract partial class CEGOAPAction
     public float Cost = 1f;
 
     /// <summary>
-    /// Selector that resolves this action's target entity and/or coordinate at runtime.
-    /// Null means the action has no target.
+    /// Target slot this action works on, resolved through the agent's
+    /// <see cref="Components.CEGOAPComponent.Targets"/>. Null means the action has no target.
     /// </summary>
     [DataField]
-    public CEGOAPTargetSelector? Selector;
+    public ProtoId<CEGOAPTargetPrototype>? Target;
 
     /// <summary>
     /// Called once during entity map initialization.

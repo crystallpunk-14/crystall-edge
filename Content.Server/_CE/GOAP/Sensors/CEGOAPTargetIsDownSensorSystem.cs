@@ -27,6 +27,7 @@ public sealed partial class CEGOAPTargetIsDownSensorComponent : Component
 
 public sealed partial class CEGOAPTargetIsDownSensorSystem : EntitySystem
 {
+    [Dependency] private CEGOAPSystem _goap = default!;
     // CrystallEdge: Rogue used CEMobStateSystem (CE-only). This fork has no CE health stack,
     // so use vanilla MobStateSystem instead.
     [Dependency] private MobStateSystem _mobState = default!;
@@ -58,7 +59,7 @@ public sealed partial class CEGOAPTargetIsDownSensorSystem : EntitySystem
 
     private void EvaluateEntry(Entity<CEGOAPComponent> ent, CEGOAPTargetIsDownSensorEntry entry)
     {
-        var result = entry.Selector.Resolve(ent, EntityManager);
+        var result = _goap.ResolveTarget(ent, entry.Target);
         var isDown = result.Entity is { } target && (
             _mobStateQuery.TryGetComponent(target, out var mobState)
                 ? _mobState.IsIncapacitated(target, mobState)

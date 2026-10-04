@@ -1,6 +1,5 @@
 using Content.Shared._CE.GOAP;
 using Content.Shared._CE.GOAP.Components;
-using Content.Shared._CE.GOAP.Selectors;
 using Content.Shared.StatusEffectNew;
 using Robust.Shared.Analyzers;
 using Robust.Shared.Prototypes;
@@ -37,6 +36,7 @@ public sealed partial class CEGOAPHasStatusEffectSensorComponent : Component
 
 public sealed partial class CEGOAPHasStatusEffectSensorSystem : EntitySystem
 {
+    [Dependency] private CEGOAPSystem _goap = default!;
     [Dependency] private StatusEffectsSystem _statusEffect = default!;
 
     [SubscribeLocalEvent]
@@ -76,7 +76,7 @@ public sealed partial class CEGOAPHasStatusEffectSensorSystem : EntitySystem
 
     private void EvaluateEntry(EntityUid uid, CEGOAPHasStatusEffectSensorEntry entry, CEGOAPComponent goap)
     {
-        var result = entry.Selector.Resolve(uid, EntityManager);
+        var result = _goap.ResolveTarget(uid, entry.Target);
         if (result.Entity is not { } target)
         {
             goap.WorldState[entry.ConditionKey] = false;

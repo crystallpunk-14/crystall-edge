@@ -66,7 +66,7 @@ public sealed partial class CEGOAPMoveToTargetActionSystem : CEGOAPActionSystem<
         Entity<CEGOAPComponent> ent,
         ref CEGOAPActionUpdateEvent<CEGOAPMoveToTargetAction> args)
     {
-        if (!TryResolveCoords(ent, args.Action.Selector, out var coords))
+        if (!TryResolveCoords(ent, args.Action.Target, out var coords))
             return;
 
 
@@ -148,7 +148,7 @@ public sealed partial class CEGOAPMoveToTargetActionSystem : CEGOAPActionSystem<
 
     private void RegisterSteering(Entity<CEGOAPComponent> ent, CEGOAPMoveToTargetAction action)
     {
-        if (!TryResolveCoords(ent, action.Selector, out var coords))
+        if (!TryResolveCoords(ent, action.Target, out var coords))
             return;
 
         if (!_xformQuery.TryGetComponent(ent, out var npcXform))

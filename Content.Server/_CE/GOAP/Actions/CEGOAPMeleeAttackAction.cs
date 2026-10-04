@@ -46,13 +46,7 @@ public sealed partial class CEGOAPMeleeAttackActionSystem : CEGOAPActionSystem<C
         Entity<CEGOAPComponent> ent,
         ref CEGOAPActionUpdateEvent<CEGOAPMeleeAttackAction> args)
     {
-        if (args.Action.Selector == null)
-        {
-            args.Status = CEGOAPActionStatus.Failed;
-            return;
-        }
-
-        var result = args.Action.Selector.Resolve(ent, EntityManager);
+        var result = Goap.ResolveTarget(ent, args.Action.Target);
         if (result.Entity is not { } target)
         {
             args.Status = CEGOAPActionStatus.Failed;

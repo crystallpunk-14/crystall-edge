@@ -15,21 +15,19 @@
 # Move to the nearest conscious enemy and attacks it in melee.
 - type: GOAPBehavior
   id: MeleeAttacker
+  targets:
+    Enemy: !type:CEGOAPSelectorNearestKnown
+      conditions:
+      - !type:InEnemyFaction
+      - !type:Incapacitated
+        inverted: true
   sensors:
   - !type:CEGOAPHasTargetSensorEntry
     conditionKey: EnemyVisible
-    selector: !type:CEGOAPSelectorNearestKnown
-      conditions:
-      - !type:InEnemyFaction
-      - !type:Incapacitated
-        inverted: true
+    target: Enemy
   - !type:CEGOAPRangeToTargetSensorEntry
     conditionKey: EnemyInMeleeRange
-    selector: !type:CEGOAPSelectorNearestKnown
-      conditions:
-      - !type:InEnemyFaction
-      - !type:Incapacitated
-        inverted: true
+    target: Enemy
     range: 1
   goals:
   - desiredState:
@@ -37,21 +35,13 @@
     priority: 1
   actions:
   - !type:CEGOAPMoveToTargetAction
-    selector: !type:CEGOAPSelectorNearestKnown
-      conditions:
-      - !type:InEnemyFaction
-      - !type:Incapacitated
-        inverted: true
+    target: Enemy
     preconditions:
       EnemyVisible: true
     effects:
       EnemyInMeleeRange: true
   - !type:CEGOAPMeleeAttackAction
-    selector: !type:CEGOAPSelectorNearestKnown
-      conditions:
-      - !type:InEnemyFaction
-      - !type:Incapacitated
-        inverted: true
+    target: Enemy
     preconditions:
       EnemyInMeleeRange: true
     effects:

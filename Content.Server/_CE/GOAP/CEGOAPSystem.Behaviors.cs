@@ -14,7 +14,7 @@ public sealed partial class CEGOAPSystem
     private readonly HashSet<ProtoId<CEGOAPBehaviorPrototype>> _appliedBehaviors = new();
 
     /// <summary>
-    /// Appends goals and actions of every listed package (and its includes) to the agent and
+    /// Appends target slots, goals and actions of every listed package (and its includes) to the agent and
     /// attaches the package sensors. Each package is applied once, even if reached through several includes.
     /// </summary>
     private void MergeBehaviors(Entity<CEGOAPComponent> ent)
@@ -38,6 +38,12 @@ public sealed partial class CEGOAPSystem
         foreach (var include in behavior.Includes)
         {
             ApplyBehavior(ent, include);
+        }
+
+        foreach (var (slot, selector) in behavior.Targets)
+        {
+            if (!ent.Comp.Targets.TryAdd(slot, selector))
+                Log.Error($"GOAP target slot {slot} on {ToPrettyString(ent)} is defined more than once (again by behavior {id})");
         }
 
         ent.Comp.Goals.AddRange(behavior.Goals);

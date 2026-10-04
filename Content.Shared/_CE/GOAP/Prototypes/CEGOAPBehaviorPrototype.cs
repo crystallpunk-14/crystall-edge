@@ -1,5 +1,6 @@
 using Content.Shared._CE.GOAP.Sensors;
 using Robust.Shared.Prototypes;
+using Content.Shared._CE.GOAP.Selectors;
 
 namespace Content.Shared._CE.GOAP.Prototypes;
 
@@ -23,6 +24,12 @@ public sealed partial class CEGOAPBehaviorPrototype : IPrototype
     /// </summary>
     [DataField]
     public List<ProtoId<CEGOAPBehaviorPrototype>> Includes = new();
+
+    /// <summary>
+    /// Target slots this package defines. A slot may be defined only once per mob.
+    /// </summary>
+    [DataField(serverOnly: true)]
+    public Dictionary<ProtoId<CEGOAPTargetPrototype>, CEGOAPTargetSelector> Targets = new();
 
     [DataField(serverOnly: true)]
     public List<CEGOAPGoal> Goals = new();
