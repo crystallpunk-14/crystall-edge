@@ -1,0 +1,5 @@
+- type: GOAPTarget
+  id: Enemy
+
+- type: GOAPTarget
+  id: DissolvedSoul

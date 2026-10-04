@@ -1,6 +1,9 @@
 using Robust.Shared.GameStates;
 using Robust.Shared.Map;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
+using Content.Shared._CE.GOAP.Prototypes;
+using Robust.Shared.Prototypes;
+using Content.Shared._CE.GOAP.Selectors;
 
 namespace Content.Shared._CE.GOAP.Components;
 
@@ -17,6 +20,21 @@ public sealed partial class CEGOAPComponent : Component
     /// </summary>
     [DataField]
     public bool StartSleeping = false;
+
+    /// <summary>
+    /// Behavior packages expanded onto this entity on MapInit, in addition to the inline
+    /// <see cref="Goals"/>, <see cref="Actions"/> and sensor components.
+    /// </summary>
+    [DataField]
+    public List<ProtoId<CEGOAPBehaviorPrototype>> Behaviors = new();
+
+    /// <summary>
+    /// Target slots of this agent: each slot's selector, referenced by id from actions and sensors.
+    /// Behavior packages add their slots here on MapInit.
+    /// </summary>
+    [DataField(serverOnly: true)]
+    [AlwaysPushInheritance]
+    public Dictionary<ProtoId<CEGOAPTargetPrototype>, CEGOAPTargetSelector> Targets = new();
 
     /// <summary>
     /// List of goals this entity can pursue.
@@ -39,15 +57,22 @@ public sealed partial class CEGOAPComponent : Component
     [ViewVariables]
     public Dictionary<EntityUid, CEGOAPKnowledgeEntry> Knowledge = new();
 
+    /// <summary>
+    /// Set when <see cref="Knowledge"/> gained or lost entries since the last agent tick.
+    /// The orchestrator raises a single knowledge-updated event per tick while this is set.
+    /// </summary>
+    [ViewVariables]
+    public bool KnowledgeDirty;
+
     [DataField]
     public TimeSpan MemoryDuration = TimeSpan.FromSeconds(10);
 
     /// <summary>
     /// Current world state as perceived by this entity.
-    /// Keys are condition prototype IDs, values are boolean states.
+    /// Keys are <see cref="CEGOAPConditionPrototype"/> IDs, values are boolean states.
     /// </summary>
     [ViewVariables]
-    public Dictionary<string, bool> WorldState = new();
+    public Dictionary<ProtoId<CEGOAPConditionPrototype>, bool> WorldState = new();
 
     /// <summary>
     /// Current plan being executed. Null if no plan.
@@ -72,6 +97,13 @@ public sealed partial class CEGOAPComponent : Component
     /// </summary>
     [ViewVariables]
     public int ActiveGoalIndex = -1;
+
+    /// <summary>
+    /// Planning cost added per tile the agent has to walk to reach an action's target
+    /// (see <see cref="CEGOAPAction.Range"/>), so nearer targets are preferred.
+    /// </summary>
+    [DataField]
+    public float DistanceCost = 0.1f;
 
     /// <summary>
     /// Time between re-planning attempts.

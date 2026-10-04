@@ -7,7 +7,7 @@ namespace Content.Shared._CE.EntityEffect.Conditions;
 /// <summary>
 /// Passes when the target entity already has a specific skill learned.
 /// </summary>
-public sealed partial class SkillRequired : CEEntityConditionBase<SkillRequired>
+public sealed partial class HaveSkill : CEEntityConditionBase<HaveSkill>
 {
     [DataField(required: true)]
     public ProtoId<CESkillPrototype> Skill;
@@ -20,11 +20,11 @@ public sealed partial class SkillRequired : CEEntityConditionBase<SkillRequired>
     }
 }
 
-public sealed partial class CESkillRequiredConditionSystem : CEEntityConditionSystem<SkillRequired>
+public sealed partial class CEHaveSkillConditionSystem : CEEntityConditionSystem<HaveSkill>
 {
     [Dependency] private CESharedSkillSystem _skill = default!;
 
-    protected override void Condition(ref CEEntityConditionEvent<SkillRequired> args)
+    protected override void Condition(ref CEEntityConditionEvent<HaveSkill> args)
     {
         args.Result = _skill.HaveSkill(args.Entity, args.Condition.Skill);
     }

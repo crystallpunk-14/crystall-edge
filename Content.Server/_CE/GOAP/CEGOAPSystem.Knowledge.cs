@@ -6,13 +6,14 @@ namespace Content.Server._CE.GOAP;
 
 /// <summary>
 /// Partial: knowledge store API. Perceptors call <see cref="Remember"/>;
-/// the orchestrator drives expiration via <see cref="PurgeExpiredKnowledge"/>.
+/// the orchestrator drives expiration via <see cref="PurgeExpiredKnowledge"/> and flushes
+/// changes via <see cref="UpdateDirtiedKnowledge"/>.
 /// </summary>
 public sealed partial class CEGOAPSystem
 {
     /// <summary>
-    /// Adds or refreshes a knowledge entry. Raises <see cref="CEGOAPKnowledgeUpdatedEvent"/>
-    /// when a new entity is added or its position changes.
+    /// Adds or refreshes a knowledge entry. Marks knowledge dirty only when a new entity is added:
+    /// a position change alone doesn't alter the known set.
     /// </summary>
     public void Remember(
         Entity<CEGOAPComponent?> ent,
@@ -23,8 +24,7 @@ public sealed partial class CEGOAPSystem
             return;
         var now = _timing.CurTime;
         var expires = now + ent.Comp.MemoryDuration;
-        var changed = !ent.Comp.Knowledge.TryGetValue(target, out var existing)
-                      || !existing.LastSeenCoords.Equals(coords);
+        var added = !ent.Comp.Knowledge.ContainsKey(target);
 
         ent.Comp.Knowledge[target] = new CEGOAPKnowledgeEntry
         {
@@ -33,12 +33,12 @@ public sealed partial class CEGOAPSystem
             ExpiresAt = expires,
         };
 
-        if (changed)
-            RaiseKnowledgeUpdated(ent);
+        if (added)
+            ent.Comp.KnowledgeDirty = true;
     }
 
     /// <summary>
-    /// Removes a knowledge entry, raising the update event if anything was removed.
+    /// Removes a knowledge entry, marking knowledge dirty if anything was removed.
     /// </summary>
     public bool Forget(Entity<CEGOAPComponent?> ent, EntityUid target)
     {
@@ -48,7 +48,7 @@ public sealed partial class CEGOAPSystem
         if (!ent.Comp.Knowledge.Remove(target))
             return false;
 
-        RaiseKnowledgeUpdated(ent);
+        ent.Comp.KnowledgeDirty = true;
         return true;
     }
 
@@ -84,19 +84,23 @@ public sealed partial class CEGOAPSystem
             ent.Comp.Knowledge.Remove(uid);
         }
 
-        RaiseKnowledgeUpdated(ent);
+        ent.Comp.KnowledgeDirty = true;
     }
 
-    private void RaiseKnowledgeUpdated(EntityUid ent)
+    private void UpdateDirtiedKnowledge(Entity<CEGOAPComponent> ent)
     {
+        if (!ent.Comp.KnowledgeDirty)
+            return;
+
+        ent.Comp.KnowledgeDirty = false;
         var ev = new CEGOAPKnowledgeUpdatedEvent();
         RaiseLocalEvent(ent, ref ev);
     }
 }
 
 /// <summary>
-/// Raised on a GOAP entity whenever its <see cref="CEGOAPComponent.Knowledge"/> set changes
-/// (entry added, removed, or its position/source changed). Sensors and selectors that depend
+/// Raised on a GOAP entity at most once per agent tick when its <see cref="CEGOAPComponent.Knowledge"/>
+/// set changed (entries added or removed). Sensors and selectors that depend
 /// on knowledge should listen to this event instead of polling.
 /// </summary>
 [ByRefEvent]

@@ -1,0 +1,36 @@
+# Wanders around when there is nothing better to do.
+- type: GOAPBehavior
+  id: Explorer
+  goals:
+  - desiredState:
+      Exploring: true
+    priority: 0
+  actions:
+  - !type:CEGOAPExploreAction
+    effects:
+      Exploring: true
+    cost: 1
+    exploreRadius: 8
+
+# Walks up to the nearest conscious enemy and attacks it in melee.
+- type: GOAPBehavior
+  id: MeleeAttacker
+  targets:
+    Enemy: !type:CEGOAPSelectorNearestKnown
+      conditions:
+      - !type:InEnemyFaction
+      - !type:Incapacitated
+        inverted: true
+  goals:
+  - desiredState:
+      EnemyDead: true
+    priority: 1
+  actions:
+  - !type:CEGOAPMeleeAttackAction
+    target: Enemy
+    range: 1
+    effects:
+      EnemyDead: true
+    cost: 1
+    useType: Primary
+    angleVariation: 5

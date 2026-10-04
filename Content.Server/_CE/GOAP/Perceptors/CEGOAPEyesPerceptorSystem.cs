@@ -55,8 +55,6 @@ public sealed partial class CEGOAPEyesPerceptorSystem : EntitySystem
     [Dependency] private CEGOAPSystem _goap = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private ExamineSystemShared _examine = default!;
-    // CrystallEdge: Rogue used CEMobStateSystem (CE-only). This fork has no CE health stack,
-    // so use vanilla MobStateSystem instead.
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private CESharedZLevelsSystem _zLevels = default!;

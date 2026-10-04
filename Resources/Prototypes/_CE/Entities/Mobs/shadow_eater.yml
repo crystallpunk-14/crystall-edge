@@ -8,73 +8,29 @@
   description: A being of darkness that feeds on the shadows of living creatures.
   categories: [ ForkFiltered ]
   components:
-  - type: CEGOAPRangeToTargetSensor
-    entries:
-    - conditionKey: SoulKnown
-      selector: !type:CEGOAPSelectorNearestKnown
-        conditions:
-        - !type:MurkDissolved
-      range: 100
-    - conditionKey: SoulInReach
-      selector: !type:CEGOAPSelectorNearestKnown
-        conditions:
-        - !type:MurkDissolved
-      range: 1
   - type: CEGOAP
+    behaviors:
+    - MeleeAttacker
+    - Explorer
+    targets:
+      DissolvedSoul: !type:CEGOAPSelectorNearestKnown
+        conditions:
+        - !type:MurkDissolved
     goals:
     # Eating a dissolved soul beats everything else
     - desiredState:
         Fed: true
       priority: 2
-    # Otherwise - kill enemies
-    - desiredState:
-        EnemyDead: true
-      priority: 1
 
     actions:
-    # Move to a dissolved soul
-    - !type:CEGOAPMoveToTargetAction
-      selector: !type:CEGOAPSelectorNearestKnown
-        conditions:
-        - !type:MurkDissolved
-      preconditions:
-        SoulKnown: true
-      effects:
-        SoulInReach: true
-    # Devour it
+    # Walk up to a dissolved soul and devour it
     - !type:CEGOAPUseAction
       actionPrototype: CEActionShadowEaterDevour
-      selector: !type:CEGOAPSelectorNearestKnown
-        conditions:
-        - !type:MurkDissolved
-      preconditions:
-        SoulInReach: true
+      target: DissolvedSoul
+      range: 1
       effects:
         Fed: true
       cost: 0.5
-    # Move to target
-    - !type:CEGOAPMoveToTargetAction
-      selector: !type:CEGOAPSelectorNearestEnemy
-      preconditions:
-        EnemyVisible: true
-      effects:
-        EnemyInMeleeRange: true
-    # Attack target
-    - !type:CEGOAPMeleeAttackAction
-      selector: !type:CEGOAPSelectorNearestEnemy
-      preconditions:
-        EnemyInMeleeRange: true
-      effects:
-        EnemyDead: true
-      cost: 1
-      useType: Primary
-      angleVariation: 5
-    # Explore
-    - !type:CEGOAPExploreAction
-      effects:
-        EnemyVisible: true
-      cost: 1
-      exploreRadius: 8
   - type: NpcFactionMember
     factions:
     - CEHostileEveryone

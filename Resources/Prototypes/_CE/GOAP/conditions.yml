@@ -1,0 +1,15 @@
+# Combat
+- type: GOAPCondition
+  id: EnemyDead
+
+# Exploring
+- type: GOAPCondition
+  id: Exploring
+
+# Shadow eater
+- type: GOAPCondition
+  id: Fed
+
+# Murk soul (written by CEMurkedSoulSpeechSystem)
+- type: GOAPCondition
+  id: SoulIsSpeaking

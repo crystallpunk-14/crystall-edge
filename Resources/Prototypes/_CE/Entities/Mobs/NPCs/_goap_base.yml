@@ -4,15 +4,11 @@
   categories: [ ForkFiltered ]
   components:
   - type: CEGOAP
-  - type: CEGOAPKnowledgeCache
   - type: CEGOAPEyesPerceptor
     visionRadius: 8
   - type: CEGOAPPainPerceptor
-  - type: CEGOAPHasEnemySensor
-    entries:
-    - conditionKey: EnemyVisible
-  - type: CEGOAPRangeToTargetSensor
-    entries:
-    - conditionKey: EnemyInMeleeRange
-      selector: !type:CEGOAPSelectorNearestEnemy
-      range: 1
+  - type: CEGOAPSteering
+    climb: true
+  # NPCs don't aim with a mouse; keep them turning towards where they walk in combat mode.
+  - type: CombatMode
+    toggleMouseRotator: false

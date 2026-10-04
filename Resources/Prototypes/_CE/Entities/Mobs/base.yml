@@ -9,6 +9,7 @@
   save: false
   abstract: true
   components:
+  - type: Climbing
   - type: CanMoveInAir
   - type: CEAnimationController
   - type: CEIdleAnimation
@@ -122,23 +123,13 @@
   - type: CEMurkDissolving
     conversionRemoveComponents:
     - type: Damageable
+    - type: SSDIndicator
     - type: MobCollision
     - type: CEMurkDissolvingAccent
     conversionComponents:
     - type: CEGOAP
-      goals:
-      - desiredState:
-          Wandered: true
-        priority: 1
-      actions:
-      - !type:CEGOAPExploreAction
-        preconditions:
-          SoulIsSpeaking: false
-        effects:
-          Wandered: true
-        cost: 1
-        exploreRadius: 8
-    - type: CEGOAPKnowledgeCache
+      behaviors:
+      - Explorer
     - type: CEGOAPEyesPerceptor
       visionRadius: 8
     - type: ActiveListener

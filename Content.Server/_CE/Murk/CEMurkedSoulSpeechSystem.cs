@@ -1,8 +1,8 @@
 using System.Numerics;
 using System.Text;
+using Content.Server._CE.GOAP.Steering;
 using Content.Server._CE.Murk.Components;
 using Content.Server.Chat.Systems;
-using Content.Server.NPC.Systems;
 using Content.Shared._CE.GOAP.Components;
 using Content.Shared._CE.Murk;
 using Content.Shared.Chat;
@@ -10,6 +10,8 @@ using Content.Shared.Speech;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Content.Shared._CE.GOAP.Prototypes;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.Murk;
 
@@ -22,7 +24,7 @@ public sealed partial class CEMurkedSoulSpeechSystem : EntitySystem
     [Dependency] private ChatSystem _chat = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private SharedTransformSystem _xforms = default!;
-    [Dependency] private NPCSteeringSystem _steering = default!;
+    [Dependency] private CEGOAPSteeringSystem _steering = default!;
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IRobustRandom _random = default!;
 
@@ -35,7 +37,7 @@ public sealed partial class CEMurkedSoulSpeechSystem : EntitySystem
     /// <summary>
     /// World state key the GOAP planner uses to keep a talking soul standing still.
     /// </summary>
-    private const string SpeakingKey = "SoulIsSpeaking";
+    private static readonly ProtoId<CEGOAPConditionPrototype> SpeakingKey = "SoulIsSpeaking";
 
     [SubscribeLocalEvent]
     private void OnInit(Entity<CEMurkedSoulSpeechComponent> ent, ref ComponentInit args)
@@ -232,7 +234,7 @@ public sealed partial class CEMurkedSoulSpeechSystem : EntitySystem
         if (_goapQuery.TryGetComponent(uid, out var goap))
             goap.WorldState[SpeakingKey] = true;
 
-        _steering.Unregister(uid);
+        _steering.Stop(uid);
     }
 
     private void ResumeMovement(EntityUid uid)
