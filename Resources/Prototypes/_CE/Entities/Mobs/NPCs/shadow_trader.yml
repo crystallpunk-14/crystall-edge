@@ -1,0 +1,128 @@
+- type: entity
+  parent:
+  - CEMobSimple
+  - CEMobGOAPBase
+  id: CEMobShadowTrader
+  save: true
+  name: shadow trader
+  description: A silent shade that keeps the shop shelves stocked.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Godmode
+  - type: CEGOAPSteering
+    climb: false
+    smash: false
+  - type: CEGOAP
+    behaviors:
+    - ShadowTrader
+    - Explorer
+  - type: CEGOAPEyesPerceptor
+    whitelist:
+      components:
+      - CETradeTable
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _CE/Mobs/ghost.rsi
+    layers:
+    - state: base
+      color: "#1a1a1acc"
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 2
+
+- type: entity
+  id: CEActionRestockTradeTable
+  name: restock
+  description: Lays out a new offer on an empty spot of a trade table.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 2
+  - type: TargetAction
+    range: 1.5
+    interactOnMiss: false
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - CETradeTable
+    event: !type:CEEntityTargetActionAnimationEvent
+      animation: CEAnimationRestockTradeTable
+  - type: CEActionTargetConditions
+    conditions:
+    - !type:TradeTableHasFreeSlot
+
+- type: entityEffectAnimation
+  id: CEAnimationRestockTradeTable
+  movementSpeed: 0
+  duration: 1
+  events:
+    0:
+    - !type:UserAnimation
+      scaleAnimation:
+      - time: 0
+        scale: 1, 1
+      - time: 0.4
+        scale: 1.1, 0.9
+      - time: 1.2
+        scale: 1.1, 0.9
+      - time: 1.5
+        scale: 1, 1
+    - !type:PlaySound
+      positional: true
+      sound:
+        path: /Audio/_CE/Effects/coins1.ogg
+        params:
+          pitch: 0.6
+          variation: 0.05
+    0.7:
+    - !type:RestockTradeTable
+    - !type:SpawnEntity
+      spawns:
+      - CECashImpact
+
+- type: entity
+  id: CEActionClearTradeTable
+  name: clear
+  description: Takes an offer back off a trade table.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 0.5
+  - type: TargetAction
+    range: 1.5
+    interactOnMiss: false
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - CETradeTable
+    event: !type:CEEntityTargetActionAnimationEvent
+      animation: CEAnimationClearTradeTable
+  - type: CEActionTargetConditions
+    conditions:
+    - !type:TradeTableHasOffer
+
+- type: entityEffectAnimation
+  id: CEAnimationClearTradeTable
+  movementSpeed: 0
+  duration: 1.0
+  events:
+    0:
+    - !type:UserAnimation
+      scaleAnimation:
+      - time: 0
+        scale: 1, 1
+      - time: 0.4
+        scale: 0.9, 1.1
+      - time: 1.2
+        scale: 0.9, 1.1
+      - time: 1.5
+        scale: 1, 1
+    - !type:PlaySound
+      positional: true
+      sound:
+        path: /Audio/_CE/Effects/coins2.ogg
+        params:
+          pitch: 0.6
+          variation: 0.05
+    0.8:
+    - !type:ClearTradeTable

@@ -1,0 +1,107 @@
+- type: entity
+  parent: CEWoodenTableBase
+  id: CETradeTableBase
+  abstract: true
+  name: trade table
+  description: Goods are laid out here. Shadow traders keep it stocked.
+  components:
+  - type: Transform
+    noRot: true
+  - type: Sprite
+    sprite: _CE/Structures/Furniture/Tables/wood.rsi
+  - type: Icon
+    sprite: _CE/Structures/Furniture/Tables/wood.rsi
+    state: full
+  - type: IconSmooth
+    key: state
+    base: state
+
+- type: entity
+  parent: CETradeTableBase
+  id: CETradeTableHorticulture
+  suffix: horticulture
+  categories: [ ForkFiltered ]
+  components:
+  - type: CETradeTable
+    shop: Horticulture
+
+- type: entity
+  parent: CETradeTableBase
+  id: CETradeTableHomeDecor
+  suffix: home decor
+  categories: [ ForkFiltered ]
+  components:
+  - type: CETradeTable
+    shop: HomeDecor
+
+- type: entity
+  parent: CETradeTableBase
+  id: CETradeTableTailors
+  suffix: tailors
+  categories: [ ForkFiltered ]
+  components:
+  - type: CETradeTable
+    shop: Tailors
+
+- type: entity
+  parent: CETradeTableBase
+  id: CETradeTableDwarfMiners
+  suffix: dwarf miners
+  categories: [ ForkFiltered ]
+  components:
+  - type: CETradeTable
+    shop: DwarfMiners
+
+- type: entity
+  parent: CETradeTableBase
+  id: CETradeTableAlcohol
+  suffix: alcohol
+  categories: [ ForkFiltered ]
+  components:
+  - type: CETradeTable
+    shop: Alcohol
+
+- type: entity
+  parent: CETradeTableBase
+  id: CETradeTableEmpireGuard
+  suffix: empire guard
+  categories: [ ForkFiltered ]
+  components:
+  - type: CETradeTable
+    shop: EmpireGuard
+
+- type: entity
+  parent: CETradeTableBase
+  id: CETradeTableHelsinWarHouse
+  suffix: Helsin War House
+  categories: [ ForkFiltered ]
+  components:
+  - type: CETradeTable
+    shop: HelsinWarHouse
+
+- type: entity
+  parent: CETradeTableBase
+  id: CETradeTableApothecariesGuild
+  suffix: apothecaries guild
+  categories: [ ForkFiltered ]
+  components:
+  - type: CETradeTable
+    shop: ApothecariesGuild
+
+- type: entity
+  parent: CETradeTableBase
+  id: CETradeTableImperialChancellery
+  suffix: imperial chancellery
+  categories: [ ForkFiltered ]
+  components:
+  - type: CETradeTable
+    shop: ImperialChancellery
+
+- type: entity
+  parent: CETradeTableBase
+  id: CETradeTableBlackMarket
+  suffix: black market
+  categories: [ ForkFiltered ]
+  components:
+  - type: CETradeTable
+    shop: BlackMarket
