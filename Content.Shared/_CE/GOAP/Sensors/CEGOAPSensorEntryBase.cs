@@ -7,7 +7,7 @@ namespace Content.Shared._CE.GOAP.Sensors;
 /// Data-only base for a sensor entry: which condition key it writes and which target slot it inspects.
 /// Concrete entries and their sensor components/systems live on the server.
 /// </summary>
-[DataDefinition]
+[ImplicitDataDefinitionForInheritors]
 public abstract partial class CEGOAPSensorEntryBase
 {
     [DataField(required: true)]

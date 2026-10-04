@@ -4,7 +4,6 @@ using Content.Shared.Mobs.Systems;
 
 namespace Content.Server._CE.GOAP.Sensors;
 
-[DataDefinition]
 public sealed partial class CEGOAPTargetIsDownSensorEntry
     : CEGOAPSensorEntry<CEGOAPTargetIsDownSensorEntry, CEGOAPTargetIsDownSensorComponent>;
 

@@ -5,7 +5,6 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._CE.GOAP.Sensors;
 
-[DataDefinition]
 public sealed partial class CEGOAPRangeToTargetSensorEntry
     : CEGOAPSensorEntry<CEGOAPRangeToTargetSensorEntry, CEGOAPRangeToTargetSensorComponent>
 {

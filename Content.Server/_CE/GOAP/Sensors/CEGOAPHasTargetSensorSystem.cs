@@ -2,7 +2,6 @@ using Content.Shared._CE.GOAP.Selectors;
 
 namespace Content.Server._CE.GOAP.Sensors;
 
-[DataDefinition]
 public sealed partial class CEGOAPHasTargetSensorEntry
     : CEGOAPSensorEntry<CEGOAPHasTargetSensorEntry, CEGOAPHasTargetSensorComponent>;
 

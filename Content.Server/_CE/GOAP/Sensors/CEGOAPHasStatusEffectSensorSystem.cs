@@ -4,7 +4,6 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.GOAP.Sensors;
 
-[DataDefinition]
 public sealed partial class CEGOAPHasStatusEffectSensorEntry
     : CEGOAPSensorEntry<CEGOAPHasStatusEffectSensorEntry, CEGOAPHasStatusEffectSensorComponent>
 {
