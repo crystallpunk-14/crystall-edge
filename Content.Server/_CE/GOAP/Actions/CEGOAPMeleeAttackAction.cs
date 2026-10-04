@@ -1,5 +1,6 @@
 using System.Numerics;
 using Content.Server._CE.MeleeWeapon;
+using Content.Shared._CE.Animation.Core;
 using Content.Shared._CE.Animation.Item.Components;
 using Content.Shared._CE.GOAP;
 using Content.Shared._CE.GOAP.Components;
@@ -11,7 +12,8 @@ using Robust.Shared.Random;
 namespace Content.Server._CE.GOAP.Actions;
 
 /// <summary>
-/// Performs a melee attack on the current target.
+/// Performs a melee attack on the current target. Set <see cref="CEGOAPAction.Range"/> to the weapon reach so
+/// the orchestrator brings the agent close enough.
 /// </summary>
 public sealed partial class CEGOAPMeleeAttackAction : CEGOAPActionBase<CEGOAPMeleeAttackAction>
 {
@@ -28,6 +30,7 @@ public sealed partial class CEGOAPMeleeAttackAction : CEGOAPActionBase<CEGOAPMel
 public sealed partial class CEGOAPMeleeAttackActionSystem : CEGOAPActionSystem<CEGOAPMeleeAttackAction>
 {
     [Dependency] private CEWeaponSystem _weapon = default!;
+    [Dependency] private CESharedAnimationActionSystem _animationAction = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private SharedCombatModeSystem _combatMode = default!;
     [Dependency] private IRobustRandom _random = default!;
@@ -73,13 +76,10 @@ public sealed partial class CEGOAPMeleeAttackActionSystem : CEGOAPActionSystem<C
             return;
         }
 
-        if (!xform.Coordinates.TryDistance(EntityManager, targetXform.Coordinates, out var distance))
-        {
-            args.Status = CEGOAPActionStatus.Failed;
+        // The previous swing is still playing: wait for it instead of failing the attack.
+        if (_animationAction.IsPlayingAnimation(ent))
             return;
-        }
 
-        // In range: attack
         var ownerPos = _transform.GetWorldPosition(xform);
         var targetPos = _transform.GetWorldPosition(targetXform);
         var direction = targetPos - ownerPos;

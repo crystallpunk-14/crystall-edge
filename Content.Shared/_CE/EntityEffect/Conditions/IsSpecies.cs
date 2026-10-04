@@ -8,7 +8,7 @@ namespace Content.Shared._CE.EntityEffect.Conditions;
 /// Passes when the target entity's species matches. Combine with <see cref="CEEntityCondition.Inverted"/>
 /// to express a species blacklist instead of a whitelist.
 /// </summary>
-public sealed partial class SpeciesRequired : CEEntityConditionBase<SpeciesRequired>
+public sealed partial class IsSpecies : CEEntityConditionBase<IsSpecies>
 {
     [DataField(required: true)]
     public ProtoId<SpeciesPrototype> Species;
@@ -21,9 +21,9 @@ public sealed partial class SpeciesRequired : CEEntityConditionBase<SpeciesRequi
     }
 }
 
-public sealed partial class CESpeciesRequiredConditionSystem : CEEntityConditionSystem<SpeciesRequired>
+public sealed partial class CEIsSpeciesConditionSystem : CEEntityConditionSystem<IsSpecies>
 {
-    protected override void Condition(ref CEEntityConditionEvent<SpeciesRequired> args)
+    protected override void Condition(ref CEEntityConditionEvent<IsSpecies> args)
     {
         args.Result = TryComp<HumanoidProfileComponent>(args.Entity, out var appearance)
             && appearance.Species == args.Condition.Species;

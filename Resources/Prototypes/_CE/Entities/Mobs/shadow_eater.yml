@@ -8,14 +8,6 @@
   description: A being of darkness that feeds on the shadows of living creatures.
   categories: [ ForkFiltered ]
   components:
-  - type: CEGOAPRangeToTargetSensor
-    entries:
-    - conditionKey: SoulKnown
-      target: DissolvedSoul
-      range: 100
-    - conditionKey: SoulInReach
-      target: DissolvedSoul
-      range: 1
   - type: CEGOAP
     behaviors:
     - MeleeAttacker
@@ -31,19 +23,11 @@
       priority: 2
 
     actions:
-    # Move to a dissolved soul
-    - !type:CEGOAPMoveToTargetAction
-      target: DissolvedSoul
-      preconditions:
-        SoulKnown: true
-      effects:
-        SoulInReach: true
-    # Devour it
+    # Walk up to a dissolved soul and devour it
     - !type:CEGOAPUseAction
       actionPrototype: CEActionShadowEaterDevour
       target: DissolvedSoul
-      preconditions:
-        SoulInReach: true
+      range: 1
       effects:
         Fed: true
       cost: 0.5

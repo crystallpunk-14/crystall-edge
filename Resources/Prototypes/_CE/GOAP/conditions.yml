@@ -1,11 +1,5 @@
 # Combat
 - type: GOAPCondition
-  id: EnemyVisible
-
-- type: GOAPCondition
-  id: EnemyInMeleeRange
-
-- type: GOAPCondition
   id: EnemyDead
 
 # Exploring
@@ -13,12 +7,6 @@
   id: Exploring
 
 # Shadow eater
-- type: GOAPCondition
-  id: SoulKnown
-
-- type: GOAPCondition
-  id: SoulInReach
-
 - type: GOAPCondition
   id: Fed
 

@@ -12,7 +12,7 @@
     cost: 1
     exploreRadius: 8
 
-# Move to the nearest conscious enemy and attacks it in melee.
+# Walks up to the nearest conscious enemy and attacks it in melee.
 - type: GOAPBehavior
   id: MeleeAttacker
   targets:
@@ -21,29 +21,14 @@
       - !type:InEnemyFaction
       - !type:Incapacitated
         inverted: true
-  sensors:
-  - !type:CEGOAPHasTargetSensorEntry
-    conditionKey: EnemyVisible
-    target: Enemy
-  - !type:CEGOAPRangeToTargetSensorEntry
-    conditionKey: EnemyInMeleeRange
-    target: Enemy
-    range: 1
   goals:
   - desiredState:
       EnemyDead: true
     priority: 1
   actions:
-  - !type:CEGOAPMoveToTargetAction
-    target: Enemy
-    preconditions:
-      EnemyVisible: true
-    effects:
-      EnemyInMeleeRange: true
   - !type:CEGOAPMeleeAttackAction
     target: Enemy
-    preconditions:
-      EnemyInMeleeRange: true
+    range: 1
     effects:
       EnemyDead: true
     cost: 1

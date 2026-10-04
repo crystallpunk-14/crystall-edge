@@ -1,7 +1,7 @@
 #nullable enable
 using System.Numerics;
 using Content.Server._CE.GOAP;
-using Content.Server._CE.GOAP.Sensors;
+using Content.Server._CE.GOAP.Actions;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Gravity;
 using Content.Shared._CE.GOAP.Components;
@@ -20,7 +20,7 @@ namespace Content.IntegrationTests.Tests._CE;
 
 /// <summary>
 /// End-to-end GOAP check: a rat a few tiles from a hostile human, behind a fence, must notice the human,
-/// get over or through the fence, walk up to it and bite it.
+/// plan a melee attack on it, get over or through the fence on the way and bite it.
 /// Each step of the chain is asserted separately so a failure points at the broken link.
 /// </summary>
 [TestFixture]
@@ -30,7 +30,6 @@ public sealed class CEGOAPRatAttackTest
     private static readonly EntProtoId Human = "CEMobHuman";
     private static readonly EntProtoId Fence = "CEFenceWooden";
     private static readonly ProtoId<CEGOAPTargetPrototype> EnemySlot = "Enemy";
-    private static readonly ProtoId<CEGOAPConditionPrototype> EnemyVisible = "EnemyVisible";
     private static readonly ProtoId<DamageTypePrototype> Bite = "Piercing";
 
     [Test]
@@ -97,17 +96,16 @@ public sealed class CEGOAPRatAttackTest
                 Assert.That(goap.Targets.ContainsKey(EnemySlot),
                     $"Rat should have the {EnemySlot} target slot from its behaviors");
 
-                Assert.That(entMan.TryGetComponent<CEGOAPHasTargetSensorComponent>(rat, out var sensor)
-                            && sensor.Entries.Count > 0,
-                    "Rat should have the HasTarget sensor attached by its behaviors");
-
                 Assert.That(goap.Knowledge.ContainsKey(human), "Rat should have perceived the human");
 
                 Assert.That(entMan.System<CEGOAPSystem>().ResolveTarget(rat, EnemySlot).Entity, Is.EqualTo(human),
                     $"The {EnemySlot} slot should resolve to the human");
 
-                Assert.That(goap.WorldState.TryGetValue(EnemyVisible, out var visible) && visible,
-                    $"{EnemyVisible} should be true while the human is in sight");
+                // Walking up to the human is part of the attack, not a separate step of the plan.
+                Assert.That(goap.CurrentActionIndex < goap.CurrentPlan.Count
+                            && goap.CurrentPlan[goap.CurrentActionIndex] is CEGOAPMeleeAttackAction { Target: var slot }
+                            && slot == EnemySlot,
+                    $"Rat should be carrying out a melee attack on its {EnemySlot} slot");
             });
         });
 

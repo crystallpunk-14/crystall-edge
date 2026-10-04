@@ -99,6 +99,13 @@ public sealed partial class CEGOAPComponent : Component
     public int ActiveGoalIndex = -1;
 
     /// <summary>
+    /// Planning cost added per tile the agent has to walk to reach an action's target
+    /// (see <see cref="CEGOAPAction.Range"/>), so nearer targets are preferred.
+    /// </summary>
+    [DataField]
+    public float DistanceCost = 0.1f;
+
+    /// <summary>
     /// Time between re-planning attempts.
     /// </summary>
     [DataField]

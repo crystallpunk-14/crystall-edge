@@ -50,9 +50,20 @@ public abstract partial class CEGOAPAction
     /// <summary>
     /// Target slot this action works on, resolved through the agent's
     /// <see cref="Components.CEGOAPComponent.Targets"/>. Null means the action has no target.
+    /// An action with a target is left out of planning while the slot resolves to nothing.
     /// </summary>
     [DataField]
     public ProtoId<CEGOAPTargetPrototype>? Target;
+
+    /// <summary>
+    /// How close the agent has to be to <see cref="Target"/> to perform this action. The orchestrator walks
+    /// the agent there before the action starts and pauses the action whenever the target gets out of range,
+    /// so movement never appears in the plan. The walk also adds
+    /// <see cref="Components.CEGOAPComponent.DistanceCost"/> per tile to the action cost.
+    /// Null means the action is performed wherever the agent stands.
+    /// </summary>
+    [DataField]
+    public float? Range;
 
     /// <summary>
     /// Called once during entity map initialization.

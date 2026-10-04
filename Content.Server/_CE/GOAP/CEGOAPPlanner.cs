@@ -99,11 +99,14 @@ public sealed class CEGOAPPlanner
     /// <summary>
     /// Plans a sequence of actions to achieve the goal from the current state.
     /// Returns true if a plan was found and populates the output plan list.
+    /// <paramref name="actionCosts"/> holds the cost of each action in <paramref name="availableActions"/>
+    /// for this plan, which may differ from <see cref="CEGOAPAction.Cost"/> (e.g. distance to the target).
     /// </summary>
     public bool Plan(
         Dictionary<ProtoId<CEGOAPConditionPrototype>, bool> currentState,
         Dictionary<ProtoId<CEGOAPConditionPrototype>, bool> goalState,
         List<CEGOAPAction> availableActions,
+        List<float> actionCosts,
         List<CEGOAPAction> outPlan,
         int maxIterations = 100)
     {
@@ -118,8 +121,9 @@ public sealed class CEGOAPPlanner
         var startBits = ToBitmask(currentState);
         ToBitmaskCondition(goalState, out var goalMask, out var goalRequired);
 
-        foreach (var action in availableActions)
+        for (var i = 0; i < availableActions.Count; i++)
         {
+            var action = availableActions[i];
             ToBitmaskCondition(action.Preconditions, out var precMask, out var precReq);
             ToBitmaskCondition(action.Effects, out var effMask, out var effReq);
             _compiledActions.Add(new CompiledAction
@@ -128,7 +132,7 @@ public sealed class CEGOAPPlanner
                 PrecRequired = precReq,
                 EffMask = effMask,
                 EffRequired = effReq,
-                Cost = action.Cost,
+                Cost = actionCosts[i],
             });
         }
 
