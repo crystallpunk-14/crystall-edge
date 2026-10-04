@@ -7,7 +7,4 @@ public sealed partial class CETradeShopPrototype : IPrototype
 {
     [IdDataField]
     public string ID { get; private set; } = default!;
-
-    [DataField(required: true)]
-    public LocId Name;
 }

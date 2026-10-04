@@ -34,3 +34,44 @@
     cost: 1
     useType: Primary
     angleVariation: 5
+
+# Opens the shop by day and closes it at night: fills empty table slots while it's day,
+# takes the offers back off the tables once night falls.
+- type: GOAPBehavior
+  id: ShadowTrader
+  targets:
+    EmptyTradeTable: !type:CEGOAPSelectorNearestKnown
+      conditions:
+      - !type:TradeTableHasFreeSlot
+    StockedTradeTable: !type:CEGOAPSelectorNearestKnown
+      conditions:
+      - !type:TradeTableHasOffer
+  sensors:
+  - !type:CEGOAPIsNightSensorEntry
+    conditionKey: IsNight
+  goals:
+  - desiredState:
+      TradeTablesStocked: true
+    preconditions:
+      IsNight: false
+    priority: 1
+  - desiredState:
+      TradeTablesCleared: true
+    preconditions:
+      IsNight: true
+    priority: 1
+  actions:
+  - !type:CEGOAPUseAction
+    actionPrototype: CEActionRestockTradeTable
+    target: EmptyTradeTable
+    range: 1
+    effects:
+      TradeTablesStocked: true
+    cost: 1
+  - !type:CEGOAPUseAction
+    actionPrototype: CEActionClearTradeTable
+    target: StockedTradeTable
+    range: 1
+    effects:
+      TradeTablesCleared: true
+    cost: 1
