@@ -13,3 +13,7 @@
 # Murk soul (written by CEMurkedSoulSpeechSystem)
 - type: GOAPCondition
   id: SoulIsSpeaking
+
+# World
+- type: GOAPCondition
+  id: IsNight

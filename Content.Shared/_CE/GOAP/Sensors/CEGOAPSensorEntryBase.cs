@@ -15,10 +15,11 @@ public abstract partial class CEGOAPSensorEntryBase
 
     /// <summary>
     /// Target slot this sensor inspects, resolved through the agent's
-    /// <see cref="Components.CEGOAPComponent.Targets"/>.
+    /// <see cref="Components.CEGOAPComponent.Targets"/>. Null for sensors that only look at the agent
+    /// or the world around it.
     /// </summary>
-    [DataField(required: true)]
-    public ProtoId<CEGOAPTargetPrototype> Target;
+    [DataField]
+    public ProtoId<CEGOAPTargetPrototype>? Target;
 
     /// <summary>
     /// Attaches this entry to the agent: ensures the matching sensor component exists and appends
