@@ -8,9 +8,9 @@
 - type: GOAPCondition
   id: EnemyDead
 
-# Wandering
+# Exploring
 - type: GOAPCondition
-  id: Wandered
+  id: Exploring
 
 # Shadow eater
 - type: GOAPCondition

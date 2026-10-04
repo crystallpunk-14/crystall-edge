@@ -3,12 +3,12 @@
   id: Explorer
   goals:
   - desiredState:
-      Wandered: true
+      Exploring: true
     priority: 0
   actions:
   - !type:CEGOAPExploreAction
     effects:
-      Wandered: true
+      Exploring: true
     cost: 1
     exploreRadius: 8
 
