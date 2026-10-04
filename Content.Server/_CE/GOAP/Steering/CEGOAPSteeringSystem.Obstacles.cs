@@ -124,7 +124,8 @@ public sealed partial class CEGOAPSteeringSystem
                     return SteeringObstacleStatus.Completed;
             }
             // Try climbing obstacles
-            else if (component.Climb && isClimbable)
+            // CrystallEdge: only agents that can climb; others fall through to smashing.
+            else if (CanClimb(uid, component) && isClimbable)
             {
                 if (TryComp<ClimbingComponent>(uid, out var climbing))
                 {

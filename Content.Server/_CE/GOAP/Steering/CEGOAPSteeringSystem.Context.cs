@@ -47,7 +47,7 @@ public sealed partial class CEGOAPSteeringSystem
         }
         // Handle the case where the node is a climb, we can climb, and we are climbing.
         else if ((node.Data.Flags & PathfindingBreadcrumbFlag.Climb) != 0x0 &&
-            steering.Climb &&
+            CanClimb(uid, steering) &&
             TryComp<ClimbingComponent>(uid, out var climbing) &&
             climbing.IsClimbing)
         {
@@ -160,7 +160,13 @@ public sealed partial class CEGOAPSteeringSystem
             arrived = node.Box.Contains(ourCoordinates.Position);
         }
         // Try getting into blocked range I guess?
-        // TODO: Consider melee range or the likes.
+        // CrystallEdge: walk right up to the obstacle instead of stopping within interaction range of its node
+        // center. From ~1.4 tiles away climbing fails to reach offset fence colliders and short melee weapons
+        // swing at air, so the agent would loop between failing and re-approaching.
+        else if (steering.CurrentPath.TryPeek(out var blocked))
+        {
+            arrived = DistanceToPoly(ourMap.Position, blocked) <= steering.Radius + ObstacleReachMargin;
+        }
         else
         {
             arrived = direction.Length() <= SharedInteractionSystem.InteractionRange - 0.05f;
@@ -314,6 +320,21 @@ public sealed partial class CEGOAPSteeringSystem
         return true;
     }
 
+    /// <summary>
+    /// How much closer than touching an obstacle node the agent has to get before handling the obstacle.
+    /// </summary>
+    private const float ObstacleReachMargin = 0.15f;
+
+    /// <summary>
+    /// World distance from <paramref name="position"/> to the nearest point of the poly's area.
+    /// </summary>
+    private float DistanceToPoly(Vector2 position, PathPoly poly)
+    {
+        var box = _transform.GetWorldMatrix(poly.GraphUid).TransformBox(poly.Box);
+        var closest = Vector2.Clamp(position, box.BottomLeft, box.TopRight);
+        return (position - closest).Length();
+    }
+
     private void ResetStuck(CEGOAPSteeringComponent component, EntityCoordinates ourCoordinates)
     {
         component.LastStuckCoordinates = ourCoordinates;
@@ -456,7 +477,8 @@ public sealed partial class CEGOAPSteeringSystem
         int layer,
         int mask,
         TransformComponent xform,
-        Span<float> danger)
+        Span<float> danger,
+        List<EntityUid> ignored)
     {
         var objectRadius = 0.25f;
         var detectionRadius = MathF.Max(0.35f, agentRadius + objectRadius);
@@ -465,6 +487,10 @@ public sealed partial class CEGOAPSteeringSystem
 
         foreach (var ent in ents)
         {
+            // CrystallEdge: don't steer away from the obstacle we're walking up to climb or smash.
+            if (ignored.Contains(ent))
+                continue;
+
             // TODO: If we can access the door or smth.
             if (!_physicsQuery.TryGetComponent(ent, out var otherBody) ||
                 !otherBody.Hard ||

@@ -22,13 +22,13 @@ public sealed partial class CEGOAPSteeringComponent : Component
     /// Climb over tables, railings and other climbable obstacles on the path.
     /// </summary>
     [DataField]
-    public bool Climb;
+    public bool Climb = true;
 
     /// <summary>
     /// Break obstacles on the path with the agent's weapon.
     /// </summary>
     [DataField]
-    public bool Smash;
+    public bool Smash = true;
 
     /// <summary>
     /// Pry doors open.

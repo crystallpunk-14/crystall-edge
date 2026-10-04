@@ -24,13 +24,19 @@ public sealed partial class CEGOAPMoveToTargetActionSystem : CEGOAPActionSystem<
         Entity<CEGOAPComponent> ent,
         ref CEGOAPActionUpdateEvent<CEGOAPMoveToTargetAction> args)
     {
-        if (!TryResolveCoords(ent, args.Action.Target, out var coords))
+        var target = Goap.ResolveTarget(ent, args.Action.Target);
+        CEGOAPSteeringStatus status;
+        if (target.Entity is { } entity)
+            status = _steering.Navigate(ent, entity, args.Action.Range);
+        else if (target.Position is { } position)
+            status = _steering.Navigate(ent, position, args.Action.Range);
+        else
         {
             args.Status = CEGOAPActionStatus.Failed;
             return;
         }
 
-        args.Status = _steering.Navigate(ent, coords, args.Action.Range) switch
+        args.Status = status switch
         {
             CEGOAPSteeringStatus.InRange => CEGOAPActionStatus.Finished,
             CEGOAPSteeringStatus.NoPath => CEGOAPActionStatus.Failed,

@@ -15,6 +15,7 @@ using Content.Shared.ActionBlocker;
 using Content.Shared.Buckle;
 using Content.Shared.Buckle.Components;
 using Content.Shared.CCVar;
+using Content.Shared.Climbing.Components;
 using Content.Shared.Climbing.Systems;
 using Content.Shared.CombatMode;
 using Content.Shared.Interaction;
@@ -110,6 +111,8 @@ public sealed partial class CEGOAPSteeringSystem : EntitySystem
 
     private readonly List<(EntityUid Uid, CEGOAPSteeringComponent Steering, InputMoverComponent Mover, TransformComponent Xform)> _agents = new();
 
+    private readonly List<EntityUid> _ignoredObstacles = new();
+
     private bool _enabled = true;
 
     public override void Initialize()
@@ -152,6 +155,16 @@ public sealed partial class CEGOAPSteeringSystem : EntitySystem
         }
 
         return Advance((uid, steering), destination, restart);
+    }
+
+    /// <summary>
+    /// Follows <paramref name="target"/> until within <paramref name="range"/>. Steers to the entity itself
+    /// rather than to a snapshot of its position, so a moving target only re-paths when it drifts away
+    /// from the end of the current path instead of restarting steering.
+    /// </summary>
+    public CEGOAPSteeringStatus Navigate(EntityUid uid, EntityUid target, float range)
+    {
+        return Navigate(uid, new EntityCoordinates(target, Vector2.Zero), range);
     }
 
     /// <summary>
@@ -442,10 +455,19 @@ public sealed partial class CEGOAPSteeringSystem : EntitySystem
         steering.CurrentPath.Clear();
     }
 
-    private PathFlags GetPathFlags(CEGOAPSteeringComponent steering)
+    /// <summary>
+    /// Whether the agent may climb: allowed by its settings and physically able to.
+    /// </summary>
+    private bool CanClimb(EntityUid uid, CEGOAPSteeringComponent steering)
+    {
+        return steering.Climb && HasComp<ClimbingComponent>(uid);
+    }
+
+    private PathFlags GetPathFlags(EntityUid uid, CEGOAPSteeringComponent steering)
     {
         var flags = PathFlags.None;
-        if (steering.Climb)
+        // Routing over climbables the agent can't climb would just walk it into the obstacle.
+        if (CanClimb(uid, steering))
             flags |= PathFlags.Climbing;
         if (steering.Smash)
             flags |= PathFlags.Smashing;
@@ -611,8 +633,13 @@ public sealed partial class CEGOAPSteeringSystem : EntitySystem
             return;
         }
 
-        // Avoid static objects like walls
-        CollisionAvoidance(uid, offsetRot, worldPos, agentRadius, layer, mask, xform, danger);
+        // Avoid static objects like walls, except the obstacle on the next path node: the agent has to touch it
+        // to climb or smash it, and avoidance would keep it just out of reach.
+        _ignoredObstacles.Clear();
+        if (steering.CurrentPath.TryPeek(out var nextNode) && !nextNode.Data.IsFreeSpace)
+            GetObstacleEntities(nextNode, mask, layer, _ignoredObstacles);
+
+        CollisionAvoidance(uid, offsetRot, worldPos, agentRadius, layer, mask, xform, danger, _ignoredObstacles);
         DebugTools.Assert(!float.IsNaN(danger[0]));
 
         Separation(uid, offsetRot, worldPos, agentRadius, layer, mask, body, xform, danger);
@@ -661,8 +688,14 @@ public sealed partial class CEGOAPSteeringSystem : EntitySystem
     private async void RequestPath(EntityUid uid, CEGOAPSteeringComponent steering, TransformComponent xform, float targetDistance)
     {
         // If we already have a pathfinding request then don't grab another.
+        if (steering.Pathfind)
+            return;
+
         // If we're in range then just beeline them; this can avoid stutter stepping and is an easy way to look nicer.
-        if (steering.Pathfind || targetDistance < steering.RepathRange)
+        // CrystallEdge: only with a clear line. Obstacles (climb, smash, pry) are handled on path nodes, so
+        // beelining into a fence next to the target would just rub against it.
+        if (targetDistance < steering.RepathRange &&
+            _interaction.InRangeUnobstructed(uid, steering.Coordinates, steering.RepathRange + 0.5f))
             return;
 
         // Short-circuit with no path.
@@ -686,7 +719,7 @@ public sealed partial class CEGOAPSteeringSystem : EntitySystem
             steering.Coordinates,
             steering.Range,
             steering.PathfindToken.Token,
-            GetPathFlags(steering));
+            GetPathFlags(uid, steering));
 
         steering.PathfindToken = null;
 

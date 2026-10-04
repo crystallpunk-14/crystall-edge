@@ -9,6 +9,7 @@
   save: false
   abstract: true
   components:
+  - type: Climbing
   - type: CanMoveInAir
   - type: CEAnimationController
   - type: CEIdleAnimation
