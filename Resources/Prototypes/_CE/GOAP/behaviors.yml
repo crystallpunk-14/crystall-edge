@@ -64,14 +64,14 @@
   - !type:CEGOAPUseAction
     actionPrototype: CEActionRestockTradeTable
     target: EmptyTradeTable
-    range: 1
+    range: 2
     effects:
       TradeTablesStocked: true
     cost: 1
   - !type:CEGOAPUseAction
     actionPrototype: CEActionClearTradeTable
     target: StockedTradeTable
-    range: 1
+    range: 2
     effects:
       TradeTablesCleared: true
     cost: 1

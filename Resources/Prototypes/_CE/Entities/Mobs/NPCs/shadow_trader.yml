@@ -1,34 +1,191 @@
 - type: entity
-  parent:
-  - CEMobSimple
-  - CEMobGOAPBase
-  id: CEMobShadowTrader
-  save: true
-  name: shadow trader
-  description: A silent shade that keeps the shop shelves stocked.
+  parent: MarkerBase
+  id: CEMobShadowTraderSpawner
+  name: shadow trader spawner
+  description: Spawns a shadow trader of a random race.
   categories: [ ForkFiltered ]
   components:
-  - type: Godmode
-  - type: CEGOAPSteering
-    climb: false
-    smash: false
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _CE/Mobs/ghost.rsi
+      state: base
+      color: "#1a1a1acc"
+  - type: RandomSpawner
+    offset: 0
+    prototypes:
+    - CEMobShadowTraderCarcat
+    - CEMobShadowTraderCarrin
+    - CEMobShadowTraderDwarf
+    - CEMobShadowTraderElf
+    - CEMobShadowTraderGoblin
+    - CEMobShadowTraderHuman
+    - CEMobShadowTraderSilva
+    - CEMobShadowTraderTiefling
+
+- type: entity
+  parent:
+  - BaseControllable
+  - CEMobGOAPBase
+  id: CEMobShadowTrader
+  abstract: true
+  name: shadow trader
+  description: A silent shade that keeps the shop shelves stocked.
+  components:
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 185
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Physics
+    bodyType: KinematicController
+  - type: InputMover
+  - type: MobMover
+  - type: LagCompensation
+  - type: CEZPhysics
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 1
+    baseAcceleration: 5
+    baseFriction: 0.5
+  - type: RandomHumanoidAppearance
+  - type: CEMurkDissolvingStatus
+    dissolved: 1
+    overlayEnabled: false
+    soundEnabled: false
   - type: CEGOAP
     behaviors:
     - ShadowTrader
     - Explorer
   - type: CEGOAPEyesPerceptor
+    visionRadius: 8
     whitelist:
       components:
       - CETradeTable
-  - type: Sprite
-    drawdepth: Mobs
-    sprite: _CE/Mobs/ghost.rsi
-    layers:
-    - state: base
-      color: "#1a1a1acc"
-  - type: MovementSpeedModifier
-    baseWalkSpeed: 2
-    baseSprintSpeed: 2
+  - type: CEGOAPSteering
+    climb: false
+    smash: false
+  - type: Speech
+    speechSounds: Alto
+  - type: CEBarkSpeech
+    barkSpeech: DarkSoul
+  - type: ActiveListener
+    range: 12
+  - type: CEMurkedSoulSpeech
+  - type: CEMurkedSoulSpeechAccent
+  - type: CEAnimationController
+  - type: CEIdleAnimation
+    animation:
+      scaleAnimation:
+      - time: 0
+        scale: 1.01, 0.99
+      - time: 2
+        scale: 0.99, 1.01
+      - time: 4
+        scale: 1.01, 0.99
+      offsetAnimation:
+      - time: 0
+        offset: 0, 0
+      - time: 2
+        offset: 0, 0.01
+      - time: 4
+        offset: 0, 0
+  - type: CEWalkingAnimation
+    animation:
+      scaleAnimation:
+      - time: 0
+        scale: 1.02, 0.98
+      - time: 1
+        scale: 0.98, 1.02
+      - time: 2
+        scale: 1.02, 0.98
+      offsetAnimation:
+      - time: 0
+        offset: 0, 0
+      - time: 1
+        offset: 0, 0.02
+      - time: 2
+        offset: 0, 0
+  - type: CESpawnAnimation
+    animation: CEAnimationShadowTraderSpawn
+
+- type: entity
+  parent:
+  - CEAppearanceCarcat
+  - CEMobShadowTrader
+  id: CEMobShadowTraderCarcat
+  categories: [ ForkFiltered, HideSpawnMenu ]
+
+- type: entity
+  parent:
+  - CEAppearanceCarrin
+  - CEMobShadowTrader
+  id: CEMobShadowTraderCarrin
+  categories: [ ForkFiltered, HideSpawnMenu ]
+
+- type: entity
+  parent:
+  - CEAppearanceDwarf
+  - CEMobShadowTrader
+  id: CEMobShadowTraderDwarf
+  categories: [ ForkFiltered, HideSpawnMenu ]
+
+- type: entity
+  parent:
+  - CEAppearanceElf
+  - CEMobShadowTrader
+  id: CEMobShadowTraderElf
+  categories: [ ForkFiltered, HideSpawnMenu ]
+
+- type: entity
+  parent:
+  - CEAppearanceGoblin
+  - CEMobShadowTrader
+  id: CEMobShadowTraderGoblin
+  categories: [ ForkFiltered, HideSpawnMenu ]
+
+- type: entity
+  parent:
+  - CEAppearanceHuman
+  - CEMobShadowTrader
+  id: CEMobShadowTraderHuman
+  categories: [ ForkFiltered, HideSpawnMenu ]
+
+- type: entity
+  parent:
+  - CEAppearanceSilva
+  - CEMobShadowTrader
+  id: CEMobShadowTraderSilva
+  categories: [ ForkFiltered, HideSpawnMenu ]
+
+- type: entity
+  parent:
+  - CEAppearanceTiefling
+  - CEMobShadowTrader
+  id: CEMobShadowTraderTiefling
+  categories: [ ForkFiltered, HideSpawnMenu ]
+
+- type: entityEffectAnimation
+  id: CEAnimationShadowTraderSpawn
+  movementSpeed: 0
+  duration: 1
+  events:
+    0:
+    - !type:SpawnEntity
+      effectTarget: User
+      spawns:
+      - CELurkerShadowStepEffect
+    - !type:UserAnimation
+      colorAnimation:
+      - time: 0.0
+        color: "#ffffff01"
+      - time: 0.9
+        color: "#ffffff"
 
 - type: entity
   id: CEActionRestockTradeTable
@@ -39,7 +196,7 @@
   - type: Action
     useDelay: 2
   - type: TargetAction
-    range: 1.5
+    range: 2
     interactOnMiss: false
   - type: EntityTargetAction
     whitelist:
@@ -54,7 +211,7 @@
 - type: entityEffectAnimation
   id: CEAnimationRestockTradeTable
   movementSpeed: 0
-  duration: 1
+  duration: 0.5
   events:
     0:
     - !type:UserAnimation
@@ -74,11 +231,11 @@
         params:
           pitch: 0.6
           variation: 0.05
-    0.7:
+    0.4:
     - !type:RestockTradeTable
     - !type:SpawnEntity
       spawns:
-      - CECashImpact
+      - CELurkerShadowStepEffect
 
 - type: entity
   id: CEActionClearTradeTable
@@ -89,7 +246,7 @@
   - type: Action
     useDelay: 0.5
   - type: TargetAction
-    range: 1.5
+    range: 2
     interactOnMiss: false
   - type: EntityTargetAction
     whitelist:
@@ -104,7 +261,7 @@
 - type: entityEffectAnimation
   id: CEAnimationClearTradeTable
   movementSpeed: 0
-  duration: 1.0
+  duration: 0.5
   events:
     0:
     - !type:UserAnimation
@@ -124,5 +281,5 @@
         params:
           pitch: 0.6
           variation: 0.05
-    0.8:
+    0.4:
     - !type:ClearTradeTable
