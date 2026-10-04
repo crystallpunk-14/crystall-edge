@@ -83,6 +83,11 @@ public sealed partial class StackResource : CEResourceRequirement
         return $"{Loc.GetString(indexedStack.Name)} x{Count}";
     }
 
+    public override string GetRequirementAmount()
+    {
+        return Count.ToString();
+    }
+
     public override SpriteSpecifier? GetRequirementTexture(IPrototypeManager protoManager)
     {
         return !protoManager.TryIndex(Stack, out var indexedStack) ? null : indexedStack.Icon;

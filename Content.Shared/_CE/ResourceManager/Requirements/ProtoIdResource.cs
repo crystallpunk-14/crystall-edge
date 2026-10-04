@@ -60,6 +60,11 @@ public sealed partial class ProtoIdResource : CEResourceRequirement
         return $"{indexedProto.Name} x{Count}";
     }
 
+    public override string GetRequirementAmount()
+    {
+        return Count.ToString();
+    }
+
     public override EntityPrototype? GetRequirementEntityView(IPrototypeManager protoManager)
     {
         if (!protoManager.TryIndex(ProtoId, out var indexedProto))

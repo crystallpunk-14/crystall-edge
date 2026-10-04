@@ -84,6 +84,11 @@ public sealed partial class FoodResource : CEResourceRequirement
         return complexity * 6;
     }
 
+    public override string GetRequirementAmount()
+    {
+        return Count.ToString();
+    }
+
     public override string GetRequirementTitle(IPrototypeManager protoManager)
     {
         if (!protoManager.TryIndex(Recipe, out var indexedRecipe))
