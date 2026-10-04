@@ -25,17 +25,12 @@ public abstract partial class CESharedTradeSystem : EntitySystem
     [Dependency] private EntityQuery<StorageComponent> _storageQuery = default!;
     [Dependency] private EntityQuery<CETradeOfferComponent> _offerQuery = default!;
 
-    private static readonly (EntProtoId Proto, int Value)[] CoinPiles =
+    private static readonly (EntProtoId Proto, int Value)[] Coins =
     [
         ("CECoinCopper1", 1),
-        ("CECoinCopper5", 5),
         ("CECoinSilver1", 10),
-        ("CECoinSilver5", 50),
         ("CECoinGold1", 100),
-        ("CECoinGold5", 500),
         ("CECoinPlatinum1", 1000),
-        ("CECoinPlatinum5", 5000),
-        ("CECoinPlatinum10", 10000),
     ];
 
     private readonly List<int> _freeSlots = new();
@@ -199,7 +194,7 @@ public abstract partial class CESharedTradeSystem : EntitySystem
                 }
             }
 
-            price *= money.Markup;
+            price = price * money.Markup + money.Bonus;
         }
 
         price *= 1 + _random.NextFloat(-money.Variation, money.Variation);
@@ -244,11 +239,19 @@ public abstract partial class CESharedTradeSystem : EntitySystem
         }
     }
 
+    public EntProtoId? GetPreview(CETradeOfferPrototype offer, int receivePrice)
+    {
+        return GetPreview(offer, receivePrice, out _);
+    }
+
     /// <summary>
     /// Entity whose sprite represents the offer: explicit preview, first reward, coins when paying out, first cost.
     /// </summary>
-    public EntProtoId? GetPreview(CETradeOfferPrototype offer, int receivePrice)
+    /// <param name="stackCount">Stack size to display, or null to keep the prototype's own.</param>
+    public EntProtoId? GetPreview(CETradeOfferPrototype offer, int receivePrice, out int? stackCount)
     {
+        stackCount = null;
+
         if (offer.Preview is { } preview)
             return preview;
 
@@ -259,7 +262,11 @@ public abstract partial class CESharedTradeSystem : EntitySystem
         }
 
         if (receivePrice > 0)
-            return GetCoinPreview(receivePrice);
+        {
+            var coin = GetCoinPreview(receivePrice, out var count);
+            stackCount = count;
+            return coin;
+        }
 
         foreach (var cost in offer.Cost)
         {
@@ -271,17 +278,21 @@ public abstract partial class CESharedTradeSystem : EntitySystem
     }
 
     /// <summary>
-    /// The biggest coin pile whose value doesn't exceed the amount.
+    /// The biggest coin denomination not exceeding the amount, and how many of those coins fit into it.
     /// </summary>
-    public static EntProtoId GetCoinPreview(int amount)
+    public static EntProtoId GetCoinPreview(int amount, out int count)
     {
-        for (var i = CoinPiles.Length - 1; i > 0; i--)
+        for (var i = Coins.Length - 1; i >= 0; i--)
         {
-            if (CoinPiles[i].Value <= amount)
-                return CoinPiles[i].Proto;
+            if (Coins[i].Value > amount && i > 0)
+                continue;
+
+            count = Math.Max(1, amount / Coins[i].Value);
+            return Coins[i].Proto;
         }
 
-        return CoinPiles[0].Proto;
+        count = 1;
+        return Coins[0].Proto;
     }
 
     public string GetOfferName(CETradeOfferPrototype offer)

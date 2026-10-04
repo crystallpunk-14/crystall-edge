@@ -1,6 +1,7 @@
 using Content.Server._CE.Objectives.Components;
 using Content.Shared._CE.Currency;
 using Content.Shared._CE.Objectives.Components;
+using Content.Shared._CE.Trade;
 using Content.Shared._CE.Trading;
 using Content.Shared.Mind;
 
@@ -31,7 +32,21 @@ public sealed partial class CEObjectiveBlackMarketSpendConditionSystem : EntityS
         if (args.Faction != "BlackMarket")
             return;
 
-        if (!_mind.TryGetMind(args.Buyer, out var mindId, out _))
+        AddSpent(args.Buyer, args.Price);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnTradeCompleted(ref CETradeCompletedEvent args)
+    {
+        if (args.Shop != "BlackMarket" || args.Paid <= 0)
+            return;
+
+        AddSpent(args.Buyer, args.Paid);
+    }
+
+    private void AddSpent(EntityUid buyer, int amount)
+    {
+        if (!_mind.TryGetMind(buyer, out var mindId, out _))
             return;
 
         if (!TryComp<CEObjectiveHolderComponent>(mindId, out var holder))
@@ -42,7 +57,7 @@ public sealed partial class CEObjectiveBlackMarketSpendConditionSystem : EntityS
             if (!TryComp<CEObjectiveBlackMarketSpendConditionComponent>(objectiveUid, out var condition))
                 continue;
 
-            condition.AmountSpent += args.Price;
+            condition.AmountSpent += amount;
             _objectives.RefreshObjectiveProgress(objectiveUid);
         }
     }
