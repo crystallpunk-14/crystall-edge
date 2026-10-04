@@ -1,6 +1,8 @@
 namespace Content.Shared._CE.GOAP;
 
 using Content.Shared._CE.GOAP.Selectors;
+using Content.Shared._CE.GOAP.Prototypes;
+using Robust.Shared.Prototypes;
 
 /// <summary>
 /// Execution status of a GOAP action.
@@ -32,13 +34,13 @@ public abstract partial class CEGOAPAction
     /// World state conditions required before this action can execute.
     /// </summary>
     [DataField]
-    public Dictionary<string, bool> Preconditions = new();
+    public Dictionary<ProtoId<CEGOAPConditionPrototype>, bool> Preconditions = new();
 
     /// <summary>
     /// World state changes produced when this action completes successfully.
     /// </summary>
     [DataField]
-    public Dictionary<string, bool> Effects = new();
+    public Dictionary<ProtoId<CEGOAPConditionPrototype>, bool> Effects = new();
 
     /// <summary>
     /// Cost of performing this action. Lower cost actions are preferred by the planner.

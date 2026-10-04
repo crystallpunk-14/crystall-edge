@@ -1,11 +1,13 @@
 using System.Numerics;
 using Content.Shared._CE.GOAP;
+using Content.Shared._CE.GOAP.Prototypes;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.GOAP;
 
 /// <summary>
 /// GOAP planner using forward A* search with bitmask-packed state.
-/// String keys are mapped to bit indices once per call, so the search
+/// Condition keys are mapped to bit indices once per call, so the search
 /// operates entirely on integers — minimal heap allocations during A*.
 /// </summary>
 public sealed class CEGOAPPlanner
@@ -31,7 +33,7 @@ public sealed class CEGOAPPlanner
     // Reusable structures cleared at the start of each Plan() call.
     // Held as instance fields so each CEGOAPSystem gets its own planner
     // with no shared mutable state between systems or test runs.
-    private readonly Dictionary<string, int> _keyMap = new();
+    private readonly Dictionary<ProtoId<CEGOAPConditionPrototype>, int> _keyMap = new();
     private readonly List<CompiledAction> _compiledActions = new();
     private readonly List<PlanNode> _nodes = new();
     private readonly MinHeap _openList = new();
@@ -99,8 +101,8 @@ public sealed class CEGOAPPlanner
     /// Returns true if a plan was found and populates the output plan list.
     /// </summary>
     public bool Plan(
-        Dictionary<string, bool> currentState,
-        Dictionary<string, bool> goalState,
+        Dictionary<ProtoId<CEGOAPConditionPrototype>, bool> currentState,
+        Dictionary<ProtoId<CEGOAPConditionPrototype>, bool> goalState,
         List<CEGOAPAction> availableActions,
         List<CEGOAPAction> outPlan,
         int maxIterations = 100)
@@ -187,8 +189,8 @@ public sealed class CEGOAPPlanner
     }
 
     private void BuildKeyMap(
-        Dictionary<string, bool> currentState,
-        Dictionary<string, bool> goalState,
+        Dictionary<ProtoId<CEGOAPConditionPrototype>, bool> currentState,
+        Dictionary<ProtoId<CEGOAPConditionPrototype>, bool> goalState,
         List<CEGOAPAction> actions)
     {
         foreach (var key in currentState.Keys)
@@ -215,13 +217,13 @@ public sealed class CEGOAPPlanner
         }
     }
 
-    private void TryAddKey(string key)
+    private void TryAddKey(ProtoId<CEGOAPConditionPrototype> key)
     {
         if (!_keyMap.ContainsKey(key))
             _keyMap[key] = _keyMap.Count;
     }
 
-    private int ToBitmask(Dictionary<string, bool> state)
+    private int ToBitmask(Dictionary<ProtoId<CEGOAPConditionPrototype>, bool> state)
     {
         var bits = 0;
         foreach (var (key, value) in state)
@@ -234,7 +236,7 @@ public sealed class CEGOAPPlanner
     }
 
     private void ToBitmaskCondition(
-        Dictionary<string, bool> conditions,
+        Dictionary<ProtoId<CEGOAPConditionPrototype>, bool> conditions,
         out int mask,
         out int required)
     {

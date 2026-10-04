@@ -10,6 +10,8 @@ using Content.Shared.Speech;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Content.Shared._CE.GOAP.Prototypes;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.Murk;
 
@@ -35,7 +37,7 @@ public sealed partial class CEMurkedSoulSpeechSystem : EntitySystem
     /// <summary>
     /// World state key the GOAP planner uses to keep a talking soul standing still.
     /// </summary>
-    private const string SpeakingKey = "SoulIsSpeaking";
+    private static readonly ProtoId<CEGOAPConditionPrototype> SpeakingKey = "SoulIsSpeaking";
 
     [SubscribeLocalEvent]
     private void OnInit(Entity<CEMurkedSoulSpeechComponent> ent, ref ComponentInit args)

@@ -1,6 +1,8 @@
 using Robust.Shared.GameStates;
 using Robust.Shared.Map;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
+using Content.Shared._CE.GOAP.Prototypes;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.GOAP.Components;
 
@@ -51,10 +53,10 @@ public sealed partial class CEGOAPComponent : Component
 
     /// <summary>
     /// Current world state as perceived by this entity.
-    /// Keys are condition prototype IDs, values are boolean states.
+    /// Keys are <see cref="CEGOAPConditionPrototype"/> IDs, values are boolean states.
     /// </summary>
     [ViewVariables]
-    public Dictionary<string, bool> WorldState = new();
+    public Dictionary<ProtoId<CEGOAPConditionPrototype>, bool> WorldState = new();
 
     /// <summary>
     /// Current plan being executed. Null if no plan.

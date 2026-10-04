@@ -1,0 +1,27 @@
+# Combat
+- type: GOAPCondition
+  id: EnemyVisible
+
+- type: GOAPCondition
+  id: EnemyInMeleeRange
+
+- type: GOAPCondition
+  id: EnemyDead
+
+# Wandering
+- type: GOAPCondition
+  id: Wandered
+
+# Shadow eater
+- type: GOAPCondition
+  id: SoulKnown
+
+- type: GOAPCondition
+  id: SoulInReach
+
+- type: GOAPCondition
+  id: Fed
+
+# Murk soul (written by CEMurkedSoulSpeechSystem)
+- type: GOAPCondition
+  id: SoulIsSpeaking
