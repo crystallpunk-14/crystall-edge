@@ -122,6 +122,7 @@
   - type: CEMurkDissolving
     conversionRemoveComponents:
     - type: Damageable
+    - type: SSDIndicator
     - type: MobCollision
     - type: CEMurkDissolvingAccent
     conversionComponents:

@@ -7,3 +7,8 @@
   - type: CEGOAPEyesPerceptor
     visionRadius: 8
   - type: CEGOAPPainPerceptor
+  - type: CEGOAPSteering
+    climb: true
+  # NPCs don't aim with a mouse; keep them turning towards where they walk in combat mode.
+  - type: CombatMode
+    toggleMouseRotator: false

@@ -1,7 +1,6 @@
 using Content.Shared._CE.GOAP;
 using Content.Shared._CE.GOAP.Components;
 using Content.Shared.CCVar;
-using Content.Shared.NPC;
 using Robust.Shared.Analyzers;
 using Robust.Shared.Configuration;
 using Robust.Shared.Timing;
@@ -106,7 +105,6 @@ public sealed partial class CEGOAPSystem : EntitySystem
     {
         ClearPlan(ent);
         RemCompDeferred<CEActiveGOAPComponent>(ent);
-        RemCompDeferred<ActiveNPCComponent>(ent);
     }
 
     /// <summary>

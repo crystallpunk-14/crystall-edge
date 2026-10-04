@@ -1,5 +1,4 @@
 using Content.Client.NPC.HTN;
-using Content.Shared._CE.GOAP.Components;
 using Content.Shared.NPC.Systems;
 
 namespace Content.Client.NPC.Systems;
@@ -8,6 +7,6 @@ public sealed partial class NPCSystem : SharedNPCSystem
 {
     public override bool IsNpc(EntityUid uid)
     {
-        return HasComp<HTNComponent>(uid) || HasComp<CEGOAPComponent>(uid); // CrystallEdge: recognize CE GOAP mobs as NPCs
+        return HasComp<HTNComponent>(uid);
     }
 }

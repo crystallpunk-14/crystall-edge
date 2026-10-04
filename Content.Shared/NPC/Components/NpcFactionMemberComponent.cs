@@ -5,7 +5,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared.NPC.Components;
 
-[RegisterComponent, NetworkedComponent] // CrystallEdge: dropped Access(typeof(NpcFactionSystem)) so CE GOAP can read Factions/HostileFactions directly
+[RegisterComponent, NetworkedComponent, Access(typeof(NpcFactionSystem))]
 public sealed partial class NpcFactionMemberComponent : Component
 {
     /// <summary>

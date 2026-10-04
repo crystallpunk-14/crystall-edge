@@ -2,7 +2,6 @@ using Content.Shared._CE.GOAP.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
-using Content.Shared.NPC;
 using Robust.Shared.Analyzers;
 using Robust.Shared.Player;
 
@@ -73,7 +72,6 @@ public sealed partial class CEGOAPSystem
             return;
 
         EnsureComp<CEActiveGOAPComponent>(ent);
-        EnsureComp<ActiveNPCComponent>(ent);
     }
 
     /// <summary>
@@ -86,7 +84,6 @@ public sealed partial class CEGOAPSystem
 
         ClearPlan((ent, ent.Comp));
         RemCompDeferred<CEActiveGOAPComponent>(ent);
-        RemCompDeferred<ActiveNPCComponent>(ent);
     }
 }
 

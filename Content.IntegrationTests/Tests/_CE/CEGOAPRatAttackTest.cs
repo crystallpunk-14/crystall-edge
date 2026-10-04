@@ -14,7 +14,7 @@ using Robust.Shared.Timing;
 namespace Content.IntegrationTests.Tests._CE;
 
 /// <summary>
-/// End-to-end GOAP check: a rat next to a hostile human must notice it, plan an attack and bite it.
+/// End-to-end GOAP check: a rat a few tiles from a hostile human must notice it, walk up to it and bite it.
 /// Each step of the chain is asserted separately so a failure points at the broken link.
 /// </summary>
 [TestFixture]
@@ -51,8 +51,8 @@ public sealed class CEGOAPRatAttackTest
                 }
             }
 
-            human = entMan.SpawnEntity(Human, new EntityCoordinates(map.Grid.Owner, new Vector2(2.5f, 2.5f)));
-            rat = entMan.SpawnEntity(Rat, new EntityCoordinates(map.Grid.Owner, new Vector2(3.5f, 2.5f)));
+            human = entMan.SpawnEntity(Human, new EntityCoordinates(map.Grid.Owner, new Vector2(4.5f, 2.5f)));
+            rat = entMan.SpawnEntity(Rat, new EntityCoordinates(map.Grid.Owner, new Vector2(0.5f, 2.5f)));
         });
 
         var timing = server.ResolveDependency<IGameTiming>();

@@ -35,6 +35,6 @@ public sealed partial class CEInEnemyFactionConditionSystem : CEEntityConditionS
         if (_faction.IsEntityFriendly((relative, relativeFaction), (args.Entity, entityFaction)))
             return;
 
-        args.Result = relativeFaction.HostileFactions.Overlaps(entityFaction.Factions);
+        args.Result = _faction.IsMemberOfAny((args.Entity, entityFaction), relativeFaction.HostileFactions);
     }
 }

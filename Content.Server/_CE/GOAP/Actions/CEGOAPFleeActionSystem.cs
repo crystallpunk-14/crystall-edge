@@ -1,7 +1,6 @@
 using System.Numerics;
-using Content.Server.NPC.Components;
+using Content.Server._CE.GOAP.Steering;
 using Content.Server.NPC.Pathfinding;
-using Content.Server.NPC.Systems;
 using Content.Shared._CE.GOAP;
 using Content.Shared._CE.GOAP.Components;
 using Content.Shared.NPC;
@@ -32,7 +31,7 @@ public sealed partial class CEGOAPFleeAction : CEGOAPActionBase<CEGOAPFleeAction
 public sealed partial class CEGOAPFleeActionSystem : CEGOAPActionSystem<CEGOAPFleeAction>
 {
     [Dependency] private IGameTiming _timing = default!;
-    [Dependency] private NPCSteeringSystem _steering = default!;
+    [Dependency] private CEGOAPSteeringSystem _steering = default!;
     [Dependency] private PathfindingSystem _pathfinding = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
 
@@ -61,12 +60,6 @@ public sealed partial class CEGOAPFleeActionSystem : CEGOAPActionSystem<CEGOAPFl
             return;
         }
 
-        if (!TryComp<NPCSteeringComponent>(ent, out var steering))
-        {
-            args.Status = CEGOAPActionStatus.Failed;
-            return;
-        }
-
         // Recalculate flee destination periodically.
         if (_timing.CurTime >= _nextRecalc.GetValueOrDefault(ent))
         {
@@ -74,13 +67,13 @@ public sealed partial class CEGOAPFleeActionSystem : CEGOAPActionSystem<CEGOAPFl
             _nextRecalc[ent] = _timing.CurTime + TimeSpan.FromSeconds(args.Action.RecalculateInterval);
         }
 
-        switch (steering.Status)
+        switch (_steering.Continue(ent))
         {
-            case SteeringStatus.InRange:
+            case CEGOAPSteeringStatus.InRange:
                 // Reached the flee point — keep running, recalc will pick a new one.
                 args.Status = CEGOAPActionStatus.Running;
                 return;
-            case SteeringStatus.NoPath:
+            case CEGOAPSteeringStatus.NoPath:
                 args.Status = CEGOAPActionStatus.Failed;
                 return;
             default:
@@ -94,7 +87,7 @@ public sealed partial class CEGOAPFleeActionSystem : CEGOAPActionSystem<CEGOAPFl
         ref CEGOAPActionShutdownEvent<CEGOAPFleeAction> args)
     {
         _nextRecalc.Remove(ent);
-        _steering.Unregister(ent);
+        _steering.Stop(ent.Owner);
     }
 
     /// <summary>
@@ -157,7 +150,6 @@ public sealed partial class CEGOAPFleeActionSystem : CEGOAPActionSystem<CEGOAPFl
         if (bestPoly == null)
             return;
 
-        var comp = _steering.Register(ent, bestPoly.Coordinates);
-        comp.Range = 1.5f;
+        _steering.Navigate(ent, bestPoly.Coordinates, 1.5f);
     }
 }
