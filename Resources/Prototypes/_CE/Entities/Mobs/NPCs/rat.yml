@@ -13,44 +13,9 @@
       0: Alive
       25: Dead
   - type: CEGOAP
-    goals:
-    # Single stupid goal - kill enemies
-    - desiredState:
-        EnemyDead: true
-      priority: 1
-
-    actions:
-    # Move to target
-    - !type:CEGOAPMoveToTargetAction
-      selector: !type:CEGOAPSelectorNearestKnown
-        conditions:
-        - !type:InEnemyFaction
-        - !type:Incapacitated
-          inverted: true
-      preconditions:
-        EnemyVisible: true
-      effects:
-        EnemyInMeleeRange: true
-    # Attack target
-    - !type:CEGOAPMeleeAttackAction
-      selector: !type:CEGOAPSelectorNearestKnown
-        conditions:
-        - !type:InEnemyFaction
-        - !type:Incapacitated
-          inverted: true
-      preconditions:
-        EnemyInMeleeRange: true
-      effects:
-        EnemyDead: true
-      cost: 1
-      useType: Primary
-      angleVariation: 5
-    # Explore
-    - !type:CEGOAPExploreAction
-      effects:
-        EnemyVisible: true
-      cost: 1
-      exploreRadius: 8
+    behaviors:
+    - MeleeAttacker
+    - Explorer
   - type: NpcFactionMember
     factions:
     - CEHostileEveryone

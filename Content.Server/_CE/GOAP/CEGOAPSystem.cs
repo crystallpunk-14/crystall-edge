@@ -43,11 +43,6 @@ public sealed partial class CEGOAPSystem : EntitySystem
     private readonly CEGOAPPlanner _planner = new();
 
     /// <summary>
-    /// Note: CurrentPlan lists in entity components are reused and cleared/repopulated
-    /// rather than creating new lists each time to minimize GC allocations.
-    /// </summary>
-
-    /// <summary>
     /// Snapshot buffer for active GOAP entities. Populated at the start of each Update()
     /// to avoid collection-modified exceptions when WakeMob adds CEActiveGOAPComponent
     /// to new entities during action execution.
@@ -60,13 +55,13 @@ public sealed partial class CEGOAPSystem : EntitySystem
 
         Subs.CVar(_cfg, CCVars.CEGOAPEnabled, v => _enabled = v, true);
         Subs.CVar(_cfg, CCVars.CEGOAPMaxUpdates, v => _maxUpdates = v, true);
-
-        InitWake();
     }
 
     [SubscribeLocalEvent]
     private void OnMapInit(Entity<CEGOAPComponent> ent, ref MapInitEvent args)
     {
+        MergeBehaviors(ent);
+
         foreach (var action in ent.Comp.Actions)
         {
             foreach (var prec in action.Preconditions)
@@ -155,7 +150,7 @@ public sealed partial class CEGOAPSystem : EntitySystem
                 continue;
 
             PurgeExpiredKnowledge((uid, goap));
-            FlushKnowledgeUpdate((uid, goap));
+            UpdateDirtiedKnowledge((uid, goap));
             UpdateAgent((uid, goap), frameTime);
             count++;
         }

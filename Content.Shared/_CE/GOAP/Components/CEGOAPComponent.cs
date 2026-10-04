@@ -21,6 +21,13 @@ public sealed partial class CEGOAPComponent : Component
     public bool StartSleeping = false;
 
     /// <summary>
+    /// Behavior packages expanded onto this entity on MapInit, in addition to the inline
+    /// <see cref="Goals"/>, <see cref="Actions"/> and sensor components.
+    /// </summary>
+    [DataField]
+    public List<ProtoId<CEGOAPBehaviorPrototype>> Behaviors = new();
+
+    /// <summary>
     /// List of goals this entity can pursue.
     /// </summary>
     [DataField(serverOnly: true)]

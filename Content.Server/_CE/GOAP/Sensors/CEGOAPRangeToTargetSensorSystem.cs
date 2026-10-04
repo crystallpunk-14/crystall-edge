@@ -1,6 +1,7 @@
 using Content.Shared._CE.GOAP.Components;
 using Robust.Shared.Map;
 using Robust.Shared.Timing;
+using Content.Shared._CE.GOAP.Sensors;
 
 namespace Content.Server._CE.GOAP.Sensors;
 
@@ -12,6 +13,11 @@ public sealed partial class CEGOAPRangeToTargetSensorEntry : CEGOAPSensorEntryBa
     /// </summary>
     [DataField(required: true)]
     public float Range = 1f;
+
+    public override void AddTo(EntityUid uid, IEntityManager entMan)
+    {
+        entMan.EnsureComponent<CEGOAPRangeToTargetSensorComponent>(uid).Entries.Add(this);
+    }
 }
 
 /// <summary>

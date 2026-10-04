@@ -38,8 +38,6 @@ public sealed partial class CEGOAPSleepingSystem : EntitySystem
 
         _nextProximityCheck = _timing.CurTime + ProximityCheckInterval;
 
-        // CrystallEdge: Rogue gated this on CEDungeonPlayerComponent (procgen dungeon instances),
-        // which doesn't exist in this fork. Any player near a sleeping GOAP mob wakes it.
         var playerQuery = EntityQueryEnumerator<ActorComponent, TransformComponent>();
         while (playerQuery.MoveNext(out _, out _, out var xform))
         {

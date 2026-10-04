@@ -4,6 +4,7 @@ using Content.Shared._CE.GOAP.Selectors;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Mobs.Systems;
 using Robust.Shared.Analyzers;
+using Content.Shared._CE.GOAP.Sensors;
 
 namespace Content.Server._CE.GOAP.Sensors;
 
@@ -15,6 +16,11 @@ public sealed partial class CEGOAPCheckHealthLevelSensorEntry : CEGOAPSensorEntr
     /// </summary>
     [DataField]
     public float Threshold = 0.5f;
+
+    public override void AddTo(EntityUid uid, IEntityManager entMan)
+    {
+        entMan.EnsureComponent<CEGOAPCheckHealthLevelSensorComponent>(uid).Entries.Add(this);
+    }
 }
 
 /// <summary>

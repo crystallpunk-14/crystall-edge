@@ -4,6 +4,7 @@ using Content.Shared._CE.GOAP.Selectors;
 using Content.Shared.StatusEffectNew;
 using Robust.Shared.Analyzers;
 using Robust.Shared.Prototypes;
+using Content.Shared._CE.GOAP.Sensors;
 
 namespace Content.Server._CE.GOAP.Sensors;
 
@@ -15,6 +16,11 @@ public sealed partial class CEGOAPHasStatusEffectSensorEntry : CEGOAPSensorEntry
     /// </summary>
     [DataField(required: true)]
     public EntProtoId StatusEffect;
+
+    public override void AddTo(EntityUid uid, IEntityManager entMan)
+    {
+        entMan.EnsureComponent<CEGOAPHasStatusEffectSensorComponent>(uid).Entries.Add(this);
+    }
 }
 
 /// <summary>

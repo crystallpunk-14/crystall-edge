@@ -1,12 +1,17 @@
 using Content.Shared._CE.GOAP.Components;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
+using Content.Shared._CE.GOAP.Sensors;
 
 namespace Content.Server._CE.GOAP.Sensors;
 
 [DataDefinition]
 public sealed partial class CEGOAPTargetIsDownSensorEntry : CEGOAPSensorEntryBase
 {
+    public override void AddTo(EntityUid uid, IEntityManager entMan)
+    {
+        entMan.EnsureComponent<CEGOAPTargetIsDownSensorComponent>(uid).Entries.Add(this);
+    }
 }
 
 /// <summary>

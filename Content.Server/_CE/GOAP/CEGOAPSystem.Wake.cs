@@ -12,10 +12,6 @@ public sealed partial class CEGOAPSystem
 {
     [Dependency] private MobStateSystem _mobState = default!;
 
-    private void InitWake()
-    {
-    }
-
     [SubscribeLocalEvent]
     private void OnPlayerDetached(Entity<CEGOAPComponent> ent, ref PlayerDetachedEvent args)
     {

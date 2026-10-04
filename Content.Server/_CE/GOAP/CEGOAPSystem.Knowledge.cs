@@ -7,7 +7,7 @@ namespace Content.Server._CE.GOAP;
 /// <summary>
 /// Partial: knowledge store API. Perceptors call <see cref="Remember"/>;
 /// the orchestrator drives expiration via <see cref="PurgeExpiredKnowledge"/> and flushes
-/// changes via <see cref="FlushKnowledgeUpdate"/>.
+/// changes via <see cref="UpdateDirtiedKnowledge"/>.
 /// </summary>
 public sealed partial class CEGOAPSystem
 {
@@ -87,12 +87,7 @@ public sealed partial class CEGOAPSystem
         ent.Comp.KnowledgeDirty = true;
     }
 
-    /// <summary>
-    /// Raises <see cref="CEGOAPKnowledgeUpdatedEvent"/> once if knowledge changed since the last call,
-    /// so any number of Remember/Forget calls within a tick cost a single sensor re-evaluation.
-    /// Called by the GOAP orchestrator each agent tick.
-    /// </summary>
-    private void FlushKnowledgeUpdate(Entity<CEGOAPComponent> ent)
+    private void UpdateDirtiedKnowledge(Entity<CEGOAPComponent> ent)
     {
         if (!ent.Comp.KnowledgeDirty)
             return;

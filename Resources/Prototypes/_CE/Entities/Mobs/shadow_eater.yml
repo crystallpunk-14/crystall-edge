@@ -21,15 +21,14 @@
         - !type:MurkDissolved
       range: 1
   - type: CEGOAP
+    behaviors:
+    - MeleeAttacker
+    - Explorer
     goals:
     # Eating a dissolved soul beats everything else
     - desiredState:
         Fed: true
       priority: 2
-    # Otherwise - kill enemies
-    - desiredState:
-        EnemyDead: true
-      priority: 1
 
     actions:
     # Move to a dissolved soul
@@ -52,37 +51,6 @@
       effects:
         Fed: true
       cost: 0.5
-    # Move to target
-    - !type:CEGOAPMoveToTargetAction
-      selector: !type:CEGOAPSelectorNearestKnown
-        conditions:
-        - !type:InEnemyFaction
-        - !type:Incapacitated
-          inverted: true
-      preconditions:
-        EnemyVisible: true
-      effects:
-        EnemyInMeleeRange: true
-    # Attack target
-    - !type:CEGOAPMeleeAttackAction
-      selector: !type:CEGOAPSelectorNearestKnown
-        conditions:
-        - !type:InEnemyFaction
-        - !type:Incapacitated
-          inverted: true
-      preconditions:
-        EnemyInMeleeRange: true
-      effects:
-        EnemyDead: true
-      cost: 1
-      useType: Primary
-      angleVariation: 5
-    # Explore
-    - !type:CEGOAPExploreAction
-      effects:
-        EnemyVisible: true
-      cost: 1
-      exploreRadius: 8
   - type: NpcFactionMember
     factions:
     - CEHostileEveryone

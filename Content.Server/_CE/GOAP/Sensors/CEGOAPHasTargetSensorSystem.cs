@@ -2,12 +2,17 @@ using Content.Shared._CE.GOAP;
 using Content.Shared._CE.GOAP.Components;
 using Content.Shared._CE.GOAP.Selectors;
 using Robust.Shared.Analyzers;
+using Content.Shared._CE.GOAP.Sensors;
 
 namespace Content.Server._CE.GOAP.Sensors;
 
 [DataDefinition]
 public sealed partial class CEGOAPHasTargetSensorEntry : CEGOAPSensorEntryBase
 {
+    public override void AddTo(EntityUid uid, IEntityManager entMan)
+    {
+        entMan.EnsureComponent<CEGOAPHasTargetSensorComponent>(uid).Entries.Add(this);
+    }
 }
 
 /// <summary>
