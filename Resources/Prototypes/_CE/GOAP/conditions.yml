@@ -17,3 +17,10 @@
 # World
 - type: GOAPCondition
   id: IsNight
+
+# Shadow trader
+- type: GOAPCondition
+  id: TradeTablesStocked
+
+- type: GOAPCondition
+  id: TradeTablesCleared

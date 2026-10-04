@@ -1,0 +1,332 @@
+- type: tradeOffer
+  id: CETradeOfferWoodenPlanks10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWoodenPlanks20
+
+- type: tradeOffer
+  id: CETradeOfferCandle
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CECandle
+
+- type: tradeOffer
+  id: CETradeOfferCandelabra
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CECandelabra
+
+- type: tradeOffer
+  id: CETradeOfferNail10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CENail10
+
+- type: tradeOffer
+  id: CETradeOfferGlassSheet10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEGlassSheet10
+
+- type: tradeOffer
+  id: CETradeOfferMannequinHumanMale
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEMannequinHumanMale
+
+- type: tradeOffer
+  id: CETradeOfferMannequinCarcat
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEMannequinCarcat
+
+- type: tradeOffer
+  id: CETradeOfferPlushieHuman
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlushieHuman
+
+- type: tradeOffer
+  id: CETradeOfferPlushieDwarf
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlushieDwarf
+
+- type: tradeOffer
+  id: CETradeOfferPlushieElf
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlushieElf
+
+- type: tradeOffer
+  id: CETradeOfferPlushieGoblin
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlushieGoblin
+
+- type: tradeOffer
+  id: CETradeOfferPlushieSilva
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlushieSilva
+
+- type: tradeOffer
+  id: CETradeOfferPlushieTiefling
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlushieTiefling
+
+- type: tradeOffer
+  id: CETradeOfferPlushieCarcat
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlushieCarcat
+
+- type: tradeOffer
+  id: CETradeOfferPlushieFrog
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlushieFrog
+
+- type: tradeOffer
+  id: CETradeOfferPlushieSkeleton
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlushieSkeleton
+
+- type: tradeOffer
+  id: CETradeOfferPlushieAgaric
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlushieAgaric
+
+- type: tradeOffer
+  id: CETradeOfferPlushieZombie
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlushieZombie
+
+- type: tradeOffer
+  id: CETradeOfferPlushieLumi
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlushieLumi
+
+- type: tradeOffer
+  id: CETradeOfferPlushieFlem
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlushieFlem
+
+- type: tradeOffer
+  id: CETradeOfferPlushieCarrin
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlushieCarrin
+
+- type: tradeOffer
+  id: CETradeOfferOpenSign
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEOpenSign
+
+- type: tradeOffer
+  id: CETradeOfferBell
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEBell
+
+- type: tradeOffer
+  id: CETradeOfferMop
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWeaponMop
+
+- type: tradeOffer
+  id: CETradeOfferd20Dice
+  shop: HomeDecor
+  pay:
+    bonus: 5
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEd20Dice
+
+- type: tradeOffer
+  id: CETradeOfferd6Dice
+  shop: HomeDecor
+  pay:
+    bonus: 5
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEd6Dice
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemBlue10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemBlue10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemRed10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemRed10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemPurple10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemPurple10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemBlack10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemBlack10
+
+- type: tradeOffer
+  id: CETradeOfferWallpaperItemPurple
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemPurple
+
+- type: tradeOffer
+  id: CETradeOfferWallpaperItemYellowVerticalLines
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemYellowVerticalLines
+
+- type: tradeOffer
+  id: CETradeOfferWallpaperItemBlack
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemBlack
+
+- type: tradeOffer
+  id: CETradeOfferPottedPlant1
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPottedPlant1
+
+- type: tradeOffer
+  id: CETradeOfferPottedPlant2
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPottedPlant2
+
+- type: tradeOffer
+  id: CETradeOfferPottedPlant3
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPottedPlant3
+
+- type: tradeOffer
+  id: CETradeOfferPottedPlant4
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPottedPlant4

@@ -1,0 +1,39 @@
+- type: tradeShop
+  id: Horticulture
+  name: ce-trade-shop-horticulture
+
+- type: tradeShop
+  id: HomeDecor
+  name: ce-trade-shop-home-decor
+
+- type: tradeShop
+  id: Tailors
+  name: ce-trade-shop-tailors
+
+- type: tradeShop
+  id: DwarfMiners
+  name: ce-trade-shop-dwarf-mining
+
+- type: tradeShop
+  id: Alcohol
+  name: ce-trade-shop-alcohol
+
+- type: tradeShop
+  id: EmpireGuard
+  name: ce-trade-shop-empire-guard
+
+- type: tradeShop
+  id: HelsinWarHouse
+  name: ce-trade-shop-helsin-war-house
+
+- type: tradeShop
+  id: ApothecariesGuild
+  name: ce-trade-shop-apothecaries-guild
+
+- type: tradeShop
+  id: ImperialChancellery
+  name: ce-trade-shop-imperial-chancellery
+
+- type: tradeShop
+  id: BlackMarket
+  name: ce-trade-shop-black-market

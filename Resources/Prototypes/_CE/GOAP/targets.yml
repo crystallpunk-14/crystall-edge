@@ -3,3 +3,9 @@
 
 - type: GOAPTarget
   id: DissolvedSoul
+
+- type: GOAPTarget
+  id: EmptyTradeTable
+
+- type: GOAPTarget
+  id: StockedTradeTable

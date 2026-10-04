@@ -1,0 +1,532 @@
+- type: tradeOffer
+  id: CETradeOfferWheat
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWheat
+    count: 5
+
+- type: tradeOffer
+  id: CETradeOfferCotton
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CECotton
+    count: 5
+
+- type: tradeOffer
+  id: CETradeOfferFoodPotato
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFoodPotato
+    count: 5
+
+- type: tradeOffer
+  id: CETradeOfferFoodApple
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFoodApple
+    count: 5
+
+- type: tradeOffer
+  id: CETradeOfferFoodGarlic
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFoodGarlic
+    count: 5
+
+- type: tradeOffer
+  id: CETradeOfferFoodOnion
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFoodOnion
+    count: 5
+
+- type: tradeOffer
+  id: CETradeOfferFoodChanterelle
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFoodChanterelle
+    count: 5
+
+- type: tradeOffer
+  id: CETradeOfferFoodSunflowerHead
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFoodSunflowerHead
+    count: 5
+
+- type: tradeOffer
+  id: CETradeOfferFoodMeatLamb
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFoodMeatLamb
+
+- type: tradeOffer
+  id: CETradeOfferFoodMeatFrogLeg
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFoodMeatFrogLeg
+
+- type: tradeOffer
+  id: CETradeOfferFoodMeatDino
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFoodMeatDino
+
+- type: tradeOffer
+  id: CETradeOfferFoodMeatHydra
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFoodMeatHydra
+
+- type: tradeOffer
+  id: CETradeOfferFoodMeatRabbit
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFoodMeatRabbit
+
+- type: tradeOffer
+  id: CETradeOfferFoodMeatPig
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFoodMeatPig
+
+- type: tradeOffer
+  id: CETradeOfferFoodMeatPigLeg
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFoodMeatPigLeg
+
+- type: tradeOffer
+  id: CETradeOfferFoodMeatBoar
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFoodMeatBoar
+
+- type: tradeOffer
+  id: CETradeOfferFoodMeatMonster
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFoodMeatMonster
+
+- type: tradeOffer
+  id: CETradeOfferFoodMeatMonsterLeg
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFoodMeatMonsterLeg
+
+- type: tradeOffer
+  id: CETradeOfferSeedWheat30
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CESeedWheat30
+
+- type: tradeOffer
+  id: CETradeOfferSeedPumpkin30
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CESeedPumpkin30
+
+- type: tradeOffer
+  id: CETradeOfferSeedCabbage30
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CESeedCabbage30
+
+- type: tradeOffer
+  id: CETradeOfferSeedCucumber30
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CESeedCucumber30
+
+- type: tradeOffer
+  id: CETradeOfferSeedTomato30
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CESeedTomato30
+
+- type: tradeOffer
+  id: CETradeOfferSeedPepper30
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CESeedPepper30
+
+- type: tradeOffer
+  id: CETradeOfferSeedCarrot30
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CESeedCarrot30
+
+- type: tradeOffer
+  id: CETradeOfferSeedCotton30
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CESeedCotton30
+
+- type: tradeOffer
+  id: CETradeOfferSeedSunflower30
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CESeedSunflower30
+
+- type: tradeOffer
+  id: CETradeOfferSeedCorn30
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CESeedCorn30
+
+- type: tradeOffer
+  id: CETradeOfferSeedAppleTree
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CESeedAppleTree
+
+- type: tradeOffer
+  id: CETradeOfferFloorTileGrass30
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorTileGrass30
+
+- type: tradeOffer
+  id: CETradeOfferFloorTileGrassAutumn30
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorTileGrassAutumn30
+
+- type: tradeOffer
+  id: CETradeOfferFloorTileMycelium30
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorTileMycelium30
+
+- type: tradeOffer
+  id: CETradeOfferWoodLog
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWoodLog
+
+- type: tradeOffer
+  id: CETradeOfferSack
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CESack
+
+- type: tradeOffer
+  id: CETradeOfferBucket
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEBucket
+
+- type: tradeOffer
+  id: CETradeOfferWeaponDaggerHatchet
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWeaponDaggerHatchet
+
+- type: tradeOffer
+  id: CETradeOfferWeaponDaggerSickle
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWeaponDaggerSickle
+
+- type: tradeOffer
+  id: CETradeOfferWeaponShovelIron
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWeaponShovelIron
+
+- type: tradeOffer
+  id: CETradeOfferFryingPan
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFryingPan
+
+- type: tradeOffer
+  id: CETradeOfferCookingPot
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CECookingPot
+
+- type: tradeOffer
+  id: CETradeOfferFork
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFork
+    count: 3
+
+- type: tradeOffer
+  id: CETradeOfferSpoon
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CESpoon
+    count: 3
+
+- type: tradeOffer
+  id: CETradeOfferFoodCheeseWheel
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFoodCheeseWheel
+
+- type: tradeOffer
+  id: CETradeOfferFoodBlueCheeseWheel
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFoodBlueCheeseWheel
+
+- type: tradeOffer
+  id: CETradeOfferFoodAgedCheeseWheel
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFoodAgedCheeseWheel
+
+- type: tradeOffer
+  id: CETradeOfferFoodDoughLarge
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFoodDoughLarge
+
+- type: tradeOffer
+  id: CETradeOfferFoodEgg
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFoodEgg
+    count: 5
+
+- type: tradeOffer
+  id: CETradeOfferBowlWooden
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEBowlWooden
+
+- type: tradeOffer
+  id: CETradeOfferBowlIron
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEBowlIron
+
+- type: tradeOffer
+  id: CETradeOfferPlateWooden
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlateWooden
+
+- type: tradeOffer
+  id: CETradeOfferPlateIron
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlateIron
+
+- type: tradeOffer
+  id: CETradeOfferWoodenBeerMug
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWoodenBeerMug
+
+- type: tradeOffer
+  id: CETradeOfferSteelBeerMug
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CESteelBeerMug
+
+- type: tradeOffer
+  id: CETradeOfferSteelWoodBeerMug
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CESteelWoodBeerMug
+
+- type: tradeOffer
+  id: CETradeOfferMetalBeerMug
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEMetalBeerMug
+
+- type: tradeOffer
+  id: CETradeOfferSteelGobletIron
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CESteelGobletIron
+
+- type: tradeOffer
+  id: CETradeOfferSteelGobletCopper
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CESteelGobletCopper
+
+- type: tradeOffer
+  id: CETradeOfferSteelGobletGold
+  shop: Horticulture
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CESteelGobletGold
