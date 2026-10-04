@@ -44,6 +44,28 @@ CETradeContractDwarfMiners: null
 CETradeContractBlackMarket: null
 CETradeContractApothecariesGuild: null
 
+CETradingPlatformEmpireGuard: null
+CETradingPlatformHelsinWarHouse: null
+CETradingPlatformHomeDecor: null
+CETradingPlatformTailors: null
+CETradingPlatformHorticulture: null
+CETradingPlatformDwarfMiners: null
+CETradingPlatformAlcohol: null
+CETradingPlatformApothecariesGuild: null
+CETradingPlatformImperialChancellery: null
+
+CEMachineCoreTradingPlatformEmpireGuard: null
+CEMachineCoreTradingPlatformHelsinWarHouse: null
+CEMachineCoreTradingPlatformHomeDecor: null
+CEMachineCoreTradingPlatformTailors: null
+CEMachineCoreTradingPlatformHorticulture: null
+CEMachineCoreTradingPlatformDwarfMiners: null
+CEMachineCoreTradingPlatformAlcohol: null
+CEMachineCoreTradingPlatformApothecariesGuild: null
+CEMachineCoreTradingPlatformImperialChancellery: null
+
+CEActionThiefBlackMarket: null
+
 CEBenchWoodSpruce: CEBenchWoodDark
 CEBenchWoodBirch: CEBenchWoodLight
 

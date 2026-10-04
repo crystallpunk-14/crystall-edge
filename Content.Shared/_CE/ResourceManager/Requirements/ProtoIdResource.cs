@@ -1,4 +1,4 @@
-using Content.Shared._CE.Trading.Systems;
+using Content.Shared._CE.Trade;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.ResourceManager.Requirements;
@@ -47,7 +47,7 @@ public sealed partial class ProtoIdResource : CEResourceRequirement
         if (!protoManager.TryIndex(ProtoId, out var indexedProto))
             return 0;
 
-        var priceSys = entManager.System<CESharedEconomySystem>();
+        var priceSys = entManager.System<CEEconomySystem>();
 
         return priceSys.GetEstimatedPrice(indexedProto) * Count;
     }

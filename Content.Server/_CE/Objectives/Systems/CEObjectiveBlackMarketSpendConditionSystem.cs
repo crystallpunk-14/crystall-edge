@@ -2,7 +2,6 @@ using Content.Server._CE.Objectives.Components;
 using Content.Shared._CE.Currency;
 using Content.Shared._CE.Objectives.Components;
 using Content.Shared._CE.Trade;
-using Content.Shared._CE.Trading;
 using Content.Shared.Mind;
 
 namespace Content.Server._CE.Objectives.Systems;
@@ -24,15 +23,6 @@ public sealed partial class CEObjectiveBlackMarketSpendConditionSystem : EntityS
             return;
 
         args.Progress = (float) ent.Comp.AmountSpent / target;
-    }
-
-    [SubscribeLocalEvent]
-    private void OnPlatformPurchase(ref CEPlatformPurchaseEvent args)
-    {
-        if (args.Faction != "BlackMarket")
-            return;
-
-        AddSpent(args.Buyer, args.Price);
     }
 
     [SubscribeLocalEvent]

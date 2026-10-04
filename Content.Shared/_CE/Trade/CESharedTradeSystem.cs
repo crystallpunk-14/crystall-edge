@@ -1,7 +1,6 @@
 using Content.Shared._CE.Currency;
 using Content.Shared._CE.Trade.Components;
 using Content.Shared._CE.Trade.Prototypes;
-using Content.Shared._CE.Trading.Systems;
 using Content.Shared.Examine;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Inventory;
@@ -18,7 +17,7 @@ public abstract partial class CESharedTradeSystem : EntitySystem
     [Dependency] protected CESharedCurrencySystem Currency = default!;
     [Dependency] private SharedHandsSystem _hands = default!;
     [Dependency] private InventorySystem _inventory = default!;
-    [Dependency] private CESharedEconomySystem _economy = default!;
+    [Dependency] private CEEconomySystem _economy = default!;
     [Dependency] private MetaDataSystem _meta = default!;
     [Dependency] private IRobustRandom _random = default!;
 

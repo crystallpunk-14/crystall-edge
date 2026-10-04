@@ -3,11 +3,10 @@ using Content.Shared._CE.Currency;
 using Content.Shared._CE.Examine;
 using Content.Shared.Inventory;
 using Content.Shared.Tag;
-using Content.Shared._CE.Trading.Components;
+using Content.Shared._CE.Trade.Components;
 using Content.Shared.Mobs.Components;
-using Robust.Shared.Analyzers;
 
-namespace Content.Server._CE.Trading;
+namespace Content.Server._CE.Trade;
 
 public sealed partial class CEPriceScannerSystem : EntitySystem
 {
@@ -31,7 +30,7 @@ public sealed partial class CEPriceScannerSystem : EntitySystem
     {
         if (!IsAbleExamine(args.Examiner))
             return;
-        if (_tag.HasTag(args.Examined, CETradingPlatformSystem.CoinTag))
+        if (_tag.HasTag(args.Examined, CESharedCurrencySystem.CoinTag))
             return;
         if (HasComp<MobStateComponent>(args.Examined))
             return;

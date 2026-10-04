@@ -7,10 +7,13 @@ using Content.Shared.Materials;
 using Content.Shared.Stacks;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared._CE.Trading.Systems;
+namespace Content.Shared._CE.Trade;
 
 //TODO: All of this should be removed when PricingSystem in the upstream moves to Shared.
-public abstract partial class CESharedEconomySystem : EntitySystem
+/// <summary>
+/// Estimates entity prototype prices without spawning them.
+/// </summary>
+public sealed partial class CEEconomySystem : EntitySystem
 {
     [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
     [Dependency] private IPrototypeManager _prototypeManager = default!;
