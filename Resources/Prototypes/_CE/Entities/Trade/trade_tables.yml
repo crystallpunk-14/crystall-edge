@@ -148,3 +148,12 @@
   components:
   - type: CETradeTable
     shop: BlackMarket
+
+- type: entity
+  parent: CETradeCarpetBase
+  id: CETradeTableOrders
+  suffix: orders
+  categories: [ ForkFiltered ]
+  components:
+  - type: CETradeTable
+    shop: Orders

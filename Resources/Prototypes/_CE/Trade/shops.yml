@@ -27,3 +27,6 @@
 
 - type: tradeShop
   id: BlackMarket
+
+- type: tradeShop
+  id: Orders

@@ -1,6 +1,6 @@
 - type: tradeOffer
   id: CETradeOfferSellCabbageBulk
-  shop: Horticulture
+  shop: Orders
   cost:
   - !type:ProtoIdResource
     protoId: CEFoodCabbage
@@ -10,7 +10,7 @@
 
 - type: tradeOffer
   id: CETradeOfferSellPumpkinBulk
-  shop: Horticulture
+  shop: Orders
   cost:
   - !type:ProtoIdResource
     protoId: CEFoodPumpkin
@@ -20,7 +20,7 @@
 
 - type: tradeOffer
   id: CETradeOfferSellCucumberBulk
-  shop: Horticulture
+  shop: Orders
   cost:
   - !type:ProtoIdResource
     protoId: CEFoodCucumber
@@ -30,7 +30,7 @@
 
 - type: tradeOffer
   id: CETradeOfferSellTomatoesBulk
-  shop: Horticulture
+  shop: Orders
   cost:
   - !type:ProtoIdResource
     protoId: CEFoodTomatoes
@@ -40,7 +40,7 @@
 
 - type: tradeOffer
   id: CETradeOfferSellPepperBulk
-  shop: Horticulture
+  shop: Orders
   cost:
   - !type:ProtoIdResource
     protoId: CEFoodPepper
@@ -50,7 +50,7 @@
 
 - type: tradeOffer
   id: CETradeOfferSellCornBulk
-  shop: Horticulture
+  shop: Orders
   cost:
   - !type:ProtoIdResource
     protoId: CEFoodCorn
@@ -60,7 +60,7 @@
 
 - type: tradeOffer
   id: CETradeOfferSellCarrotBulk
-  shop: Horticulture
+  shop: Orders
   cost:
   - !type:ProtoIdResource
     protoId: CEFoodCarrot
