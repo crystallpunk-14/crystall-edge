@@ -1459,9 +1459,6 @@ ent-CEMachineCoreFunnel = ядро воронки
 ent-CEMachineCoreSalaryPlatform = ядро платформы выплат
     .desc = { ent-CEBaseMachineCore.desc }
 
-ent-CEMachineCoreDimensionalLift = ядро пространственного лифта
-    .desc = { ent-CEBaseMachineCore.desc }
-
 ent-CEMachineCoreHeater = ядро нагревателя
     .desc = { ent-CEBaseMachineCore.desc }
 
@@ -3639,18 +3636,6 @@ ent-CEWallLightBase = настенная лампа
 ent-CEWallLight = { ent-CEWallLightBase }
     .desc = { ent-CEWallLightBase.desc }
 
-ent-CEPortalDimensionalLift = пространственный разлом
-    .desc = Стабильный разлом, пробитый прямо вниз сквозь мир.
-    .suffix = Dimensional Lift
-
-ent-CEDimensionalLiftTraversalEffect = луч пространственного разлома
-    .desc = { "" }
-    .suffix = VFX
-
-ent-CEDimensionalLiftTraversalImpact = вспышка пространственного разлома
-    .desc = { "" }
-    .suffix = VFX
-
 ent-CEDrillAdvanced = улучшенный стационарный бур
     .desc = Промышленный бур, перестроенный с усиленными компонентами, бьёт вдвое сильнее стандартной модели.
 
@@ -5125,9 +5110,6 @@ ent-CEMeltingFurnace = плавильная печь
 
 ent-CECharger = энергозарядная станция
     .desc = Механизм, который позволяет заполнять маной что угодно, от инструментов до гоблинов.
-
-ent-CEDimensionalLift = пространственный лифт
-    .desc = Закрепляет разлом между плиткой, на которой стоит, и землёй далеко внизу. Удобен на летающем острове или чтобы спуститься в помещение с крышей с уровня выше.
 
 ent-CEDrill = стационарная дрель
     .desc = Большая промышленная дрель, способная разрушить что угодно при постоянной подаче энергии. Она была разработана имперскими инженерами для добычи особо твёрдых рудных залежей.

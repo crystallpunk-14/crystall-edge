@@ -3296,13 +3296,6 @@
         "parent": "CEBaseMachineCore",
         "suffix": null
     },
-    "CEMachineCoreDimensionalLift": {
-        "id": "CEMachineCoreDimensionalLift",
-        "name": "dimensional lift machine core",
-        "description": null,
-        "parent": "CEBaseMachineCore",
-        "suffix": null
-    },
     "CEMachineCoreHeater": {
         "id": "CEMachineCoreHeater",
         "name": "heater machine core",
@@ -7782,28 +7775,7 @@
         "description": null,
         "parent": "BaseMachine",
         "suffix": null
-    },
-    "CEPortalDimensionalLift": {
-        "id": "CEPortalDimensionalLift",
-        "name": "dimensional rift",
-        "description": "A stable rift punched straight down through the world.",
-        "parent": "BasePortal",
-        "suffix": "Dimensional Lift"
-    },
-    "CEDimensionalLiftTraversalEffect": {
-        "id": "CEDimensionalLiftTraversalEffect",
-        "name": "dimensional rift beam",
-        "description": null,
-        "parent": null,
-        "suffix": "VFX"
-    },
-    "CEDimensionalLiftTraversalImpact": {
-        "id": "CEDimensionalLiftTraversalImpact",
-        "name": "dimensional rift flash",
-        "description": null,
-        "parent": null,
-        "suffix": "VFX"
-    },
+    },
     "CEDrillAdvanced": {
         "id": "CEDrillAdvanced",
         "name": "advanced stationary drill",
@@ -11134,13 +11106,6 @@
         "id": "CECharger",
         "name": "energy charger",
         "description": "A mechanism that allows filling with mana anything, from tools to goblins.",
-        "parent": "CEBaseMachinePowered",
-        "suffix": null
-    },
-    "CEDimensionalLift": {
-        "id": "CEDimensionalLift",
-        "name": "dimensional elevator",
-        "description": "Anchors a rift between the tile it stands on and the ground far below it. Handy on a floating island, or for dropping into a roofed room from the level above.",
         "parent": "CEBaseMachinePowered",
         "suffix": null
     },
