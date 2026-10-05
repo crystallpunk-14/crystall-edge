@@ -70,6 +70,7 @@
   - type: CEGOAPSteering
     climb: false
     smash: false
+    interact: true
   - type: Speech
     speechSounds: Alto
   - type: CEBarkSpeech
