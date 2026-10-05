@@ -75,3 +75,66 @@
     effects:
       TradeTablesCleared: true
     cost: 1
+
+# Strikes up conversations with nearby souls and players now and then, and keeps
+# standing and answering while a conversation goes on.
+- type: GOAPBehavior
+  id: MurkSoulChatter
+  targets:
+    Self: !type:CEGOAPSelectorSelf
+    Interlocutor: !type:CEGOAPSelectorNearestKnown
+      conditions:
+      - !type:HasComponents
+        any: true
+        components:
+        - type: CEMurkedSoulSpeech
+        - type: Actor
+      - !type:HasComponents
+        inverted: true
+        components:
+        - type: CEMurkConversation
+      - !type:Incapacitated
+        inverted: true
+  sensors:
+  - !type:CEGOAPHasComponentSensorEntry
+    conditionKey: InConversation
+    target: Self
+    components:
+    - type: CEMurkConversation
+  - !type:CEGOAPHasComponentSensorEntry
+    conditionKey: ConversationTurn
+    target: Self
+    components:
+    - type: CEMurkConversationTurn
+  goals:
+  - desiredState:
+      ConversationStarted: true
+    preconditions:
+      InConversation: false
+    priority: 0.5
+  - desiredState:
+      ConversationContinued: true
+    preconditions:
+      InConversation: true
+    priority: 1.5
+  actions:
+  - !type:CEGOAPUseAction
+    actionPrototype: CEActionMurkStartConversation
+    target: Interlocutor
+    range: 2
+    effects:
+      ConversationStarted: true
+    cost: 1
+  - !type:CEGOAPUseAction
+    actionPrototype: CEActionMurkConversationReply
+    preconditions:
+      ConversationTurn: true
+    effects:
+      ConversationContinued: true
+    cost: 1
+  - !type:CEGOAPIdleAction
+    preconditions:
+      ConversationTurn: false
+    effects:
+      ConversationContinued: true
+    cost: 1

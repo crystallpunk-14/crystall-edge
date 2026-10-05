@@ -61,12 +61,15 @@
   - type: CEGOAP
     behaviors:
     - ShadowTrader
+    - MurkSoulChatter
     - Explorer
   - type: CEGOAPEyesPerceptor
     visionRadius: 8
     whitelist:
       components:
       - CETradeTable
+      - NpcFactionMember
+      - CEMurkedSoulSpeech
   - type: CEGOAPSteering
     climb: false
     smash: false
@@ -78,7 +81,6 @@
   - type: ActiveListener
     range: 12
   - type: CEMurkedSoulSpeech
-  - type: CEMurkedSoulSpeechAccent
   - type: CEAnimationController
   - type: CEIdleAnimation
     animation:

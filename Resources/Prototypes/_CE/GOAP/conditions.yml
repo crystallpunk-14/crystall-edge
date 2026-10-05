@@ -10,9 +10,18 @@
 - type: GOAPCondition
   id: Fed
 
-# Murk soul (written by CEMurkedSoulSpeechSystem)
+# Murk conversation
 - type: GOAPCondition
-  id: SoulIsSpeaking
+  id: InConversation
+
+- type: GOAPCondition
+  id: ConversationTurn
+
+- type: GOAPCondition
+  id: ConversationStarted
+
+- type: GOAPCondition
+  id: ConversationContinued
 
 # World
 - type: GOAPCondition

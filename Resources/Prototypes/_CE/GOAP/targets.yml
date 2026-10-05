@@ -9,3 +9,9 @@
 
 - type: GOAPTarget
   id: StockedTradeTable
+
+- type: GOAPTarget
+  id: Self
+
+- type: GOAPTarget
+  id: Interlocutor
