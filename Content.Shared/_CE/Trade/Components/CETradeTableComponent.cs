@@ -13,14 +13,8 @@ public sealed partial class CETradeTableComponent : Component
     [DataField(required: true)]
     public ProtoId<CETradeShopPrototype> Shop;
 
-    [DataField]
-    public List<Vector2> Slots = new()
-    {
-        new Vector2(-0.22f, 0.22f),
-        new Vector2(0.22f, 0.22f),
-        new Vector2(-0.22f, -0.22f),
-        new Vector2(0.22f, -0.22f),
-    };
+    [DataField(required: true)]
+    public List<Vector2> Slots = new();
 
     [DataField]
     public EntProtoId OfferEntity = "CETradeOffer";
