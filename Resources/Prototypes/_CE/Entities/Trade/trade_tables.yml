@@ -1,23 +1,34 @@
 - type: entity
-  parent: CEWoodenTableBase
-  id: CETradeTableBase
+  parent: BaseStructure
+  id: CETradeCarpetBase
   abstract: true
-  name: trade table
-  description: Goods are laid out here. Shadow traders keep it stocked.
+  name: murk trade carpet
+  description: Traders post their items for sale here
   components:
+  - type: PlacementReplacement
+    key: floorTile
+  - type: Physics
+    canCollide: false
+  - type: Fixtures
   - type: Transform
     noRot: true
   - type: Sprite
-    sprite: _CE/Structures/Furniture/Tables/wood.rsi
+    sprite: _CE/Structures/Furniture/Carpets/murk.rsi
+    drawdepth: FloorTiles
+    color: "#ffffffd1"
   - type: Icon
-    sprite: _CE/Structures/Furniture/Tables/wood.rsi
+    sprite: _CE/Structures/Furniture/Carpets/murk.rsi
     state: full
   - type: IconSmooth
-    key: state
-    base: state
+    key: carpet
+    base: carpet_
+  - type: Tag
+    tags:
+    - Carpet
+    - ForceFixRotations
 
 - type: entity
-  parent: CETradeTableBase
+  parent: CETradeCarpetBase
   id: CETradeTableHorticulture
   suffix: horticulture
   categories: [ ForkFiltered ]
@@ -26,7 +37,7 @@
     shop: Horticulture
 
 - type: entity
-  parent: CETradeTableBase
+  parent: CETradeCarpetBase
   id: CETradeTableHomeDecor
   suffix: home decor
   categories: [ ForkFiltered ]
@@ -35,7 +46,7 @@
     shop: HomeDecor
 
 - type: entity
-  parent: CETradeTableBase
+  parent: CETradeCarpetBase
   id: CETradeTableTailors
   suffix: tailors
   categories: [ ForkFiltered ]
@@ -44,7 +55,7 @@
     shop: Tailors
 
 - type: entity
-  parent: CETradeTableBase
+  parent: CETradeCarpetBase
   id: CETradeTableDwarfMiners
   suffix: dwarf miners
   categories: [ ForkFiltered ]
@@ -53,7 +64,7 @@
     shop: DwarfMiners
 
 - type: entity
-  parent: CETradeTableBase
+  parent: CETradeCarpetBase
   id: CETradeTableAlcohol
   suffix: alcohol
   categories: [ ForkFiltered ]
@@ -62,7 +73,7 @@
     shop: Alcohol
 
 - type: entity
-  parent: CETradeTableBase
+  parent: CETradeCarpetBase
   id: CETradeTableEmpireGuard
   suffix: empire guard
   categories: [ ForkFiltered ]
@@ -71,7 +82,7 @@
     shop: EmpireGuard
 
 - type: entity
-  parent: CETradeTableBase
+  parent: CETradeCarpetBase
   id: CETradeTableHelsinWarHouse
   suffix: Helsin War House
   categories: [ ForkFiltered ]
@@ -80,7 +91,7 @@
     shop: HelsinWarHouse
 
 - type: entity
-  parent: CETradeTableBase
+  parent: CETradeCarpetBase
   id: CETradeTableApothecariesGuild
   suffix: apothecaries guild
   categories: [ ForkFiltered ]
@@ -89,7 +100,7 @@
     shop: ApothecariesGuild
 
 - type: entity
-  parent: CETradeTableBase
+  parent: CETradeCarpetBase
   id: CETradeTableImperialChancellery
   suffix: imperial chancellery
   categories: [ ForkFiltered ]
@@ -98,7 +109,7 @@
     shop: ImperialChancellery
 
 - type: entity
-  parent: CETradeTableBase
+  parent: CETradeCarpetBase
   id: CETradeTableBlackMarket
   suffix: black market
   categories: [ ForkFiltered ]
