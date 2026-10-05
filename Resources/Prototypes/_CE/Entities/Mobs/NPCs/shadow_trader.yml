@@ -65,8 +65,10 @@
     - Explorer
   - type: CEGOAPEyesPerceptor
     visionRadius: 8
+    memoryDuration: 600
     whitelist:
       components:
+      - CEShadowRift
       - CETradeTable
       - NpcFactionMember
       - CEMurkedSoulSpeech

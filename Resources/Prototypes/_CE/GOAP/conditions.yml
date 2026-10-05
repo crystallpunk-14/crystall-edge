@@ -33,3 +33,9 @@
 
 - type: GOAPCondition
   id: TradeTablesCleared
+
+- type: GOAPCondition
+  id: ReturnedHome
+
+- type: GOAPCondition
+  id: WalkingAround

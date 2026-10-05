@@ -44,6 +44,12 @@ public sealed partial class CEGOAPEyesPerceptorComponent : Component
     [DataField]
     public bool CrossZLevelVision = true;
 
+    /// <summary>
+    /// How long a seen entity is remembered. Falls back to the agent's memory duration if null.
+    /// </summary>
+    [DataField]
+    public TimeSpan? MemoryDuration;
+
     [ViewVariables]
     public TimeSpan NextUpdateTime;
 }
@@ -151,7 +157,7 @@ public sealed partial class CEGOAPEyesPerceptorSystem : EntitySystem
             if (ceilingMap is { } ceiling && !IsTileTransparentAt(ceiling, targetPos))
                 continue;
 
-            _goap.Remember((uid, goap), target, targetXform.Coordinates);
+            _goap.Remember((uid, goap), target, targetXform.Coordinates, eyes.MemoryDuration);
         }
     }
 

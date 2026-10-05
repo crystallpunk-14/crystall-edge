@@ -36,10 +36,16 @@
     angleVariation: 5
 
 # Opens the shop by day and closes it at night: fills empty table slots while it's day,
-# takes the offers back off the tables once night falls.
+# takes the offers back off the tables once night falls and then leaves through its rift.
+# Idles around the rift when there is nothing to do.
 - type: GOAPBehavior
   id: ShadowTrader
   targets:
+    Home: !type:CEGOAPSelectorNearestKnown
+      conditions:
+      - !type:HasComponents
+        components:
+        - type: CEShadowRift
     EmptyTradeTable: !type:CEGOAPSelectorNearestKnown
       conditions:
       - !type:TradeTableHasFreeSlot
@@ -60,6 +66,14 @@
     preconditions:
       IsNight: true
     priority: 1
+  - desiredState:
+      ReturnedHome: true
+    preconditions:
+      IsNight: true
+    priority: 0.9
+  - desiredState:
+      WalkingAround: true
+    priority: 0.1
   actions:
   - !type:CEGOAPUseAction
     actionPrototype: CEActionRestockTradeTable
@@ -74,6 +88,20 @@
     range: 2
     effects:
       TradeTablesCleared: true
+    cost: 1
+  - !type:CEGOAPUseAction
+    actionPrototype: CEActionEnterShadowRift
+    target: Home
+    range: 1
+    effects:
+      ReturnedHome: true
+    cost: 1
+  - !type:CEGOAPWalkAroundAction
+    target: Home
+    radius: 4
+    lineOfSightRadius: 10
+    effects:
+      WalkingAround: true
     cost: 1
 
 # Strikes up conversations with nearby souls and players now and then, and keeps
