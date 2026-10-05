@@ -32,7 +32,7 @@ rules_file = "CERules"
 
 [tips]
 login_dataset = "CETips"
-dataset = "CETips
+dataset = "CETips"
 
 [tippy]
 entity = "CEPlushieFlem"
