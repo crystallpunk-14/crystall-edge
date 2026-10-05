@@ -129,11 +129,7 @@ public abstract partial class CESharedTradeSystem : EntitySystem
         if (_offers.Count == 0)
             return false;
 
-        var offer = _random.Pick(_offers);
-        if (_offerQuery.Comp(offer).TradeVisual is { } visual)
-            SpawnAtPosition(visual, Transform(offer).Coordinates);
-
-        QueueDel(offer);
+        QueueDel(_random.Pick(_offers));
         return true;
     }
 

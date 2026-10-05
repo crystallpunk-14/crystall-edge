@@ -12,7 +12,7 @@ public sealed partial class CETradeSpawnReward : CETradeReward
     [DataField]
     public int Count = 1;
 
-    public override void Give(IEntityManager entMan, EntityUid buyer)
+    public override void Give(IEntityManager entMan, EntityUid buyer, List<EntityUid> given)
     {
         var hands = entMan.System<SharedHandsSystem>();
 
@@ -20,6 +20,7 @@ public sealed partial class CETradeSpawnReward : CETradeReward
         {
             var spawned = entMan.SpawnNextToOrDrop(Proto, buyer);
             hands.TryPickupAnyHand(buyer, spawned, checkActionBlocker: false);
+            given.Add(spawned);
         }
     }
 

@@ -39,7 +39,4 @@ public sealed partial class CETradeOfferComponent : Component
     {
         Params = AudioParams.Default.WithVariation(0.1f),
     };
-
-    [DataField]
-    public EntProtoId? TradeVisual = "CECashImpact";
 }

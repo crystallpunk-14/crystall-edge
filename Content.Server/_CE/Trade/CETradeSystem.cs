@@ -2,11 +2,13 @@ using Content.Server._CE.Currency;
 using Content.Server.Cargo.Systems;
 using Content.Shared._CE.Trade;
 using Content.Shared._CE.Trade.Components;
+using Content.Shared.Hands;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
@@ -73,9 +75,10 @@ public sealed partial class CETradeSystem : CESharedTradeSystem
             cost.PostCraft(EntityManager, Proto, items);
         }
 
+        var given = new List<EntityUid>();
         foreach (var reward in offer.Reward)
         {
-            reward.Give(EntityManager, user);
+            reward.Give(EntityManager, user, given);
         }
 
         if (ent.Comp.ReceivePrice > 0)
@@ -83,18 +86,36 @@ public sealed partial class CETradeSystem : CESharedTradeSystem
             foreach (var coin in _currency.GenerateMoney(ent.Comp.ReceivePrice, Transform(user).Coordinates))
             {
                 _hands.TryPickupAnyHand(user, coin, checkActionBlocker: false);
+                given.Add(coin);
             }
         }
 
         var coords = Transform(ent).Coordinates;
         _audio.PlayPvs(ent.Comp.TradeSound, coords);
-        if (ent.Comp.TradeVisual is { } visual)
-            SpawnAtPosition(visual, coords);
+        AnimateGiven(given, coords, user);
 
         var ev = new CETradeCompletedEvent(user, offer.Shop, offer.ID, ent.Comp.PayPrice, ent.Comp.ReceivePrice);
         RaiseLocalEvent(ref ev);
 
         QueueDel(ent);
         return true;
+    }
+
+    /// <summary>
+    /// Shows the given entities flying from the offer into the buyer's hands.
+    /// </summary>
+    private void AnimateGiven(List<EntityUid> given, EntityCoordinates from, EntityUid user)
+    {
+        var to = GetNetCoordinates(Transform(user).Coordinates);
+        var netFrom = GetNetCoordinates(from);
+        var filter = Filter.Pvs(user, entityManager: EntityManager);
+
+        foreach (var item in given)
+        {
+            if (Deleted(item))
+                continue;
+
+            RaiseNetworkEvent(new PickupAnimationEvent(GetNetEntity(item), netFrom, to, Angle.Zero), filter);
+        }
     }
 }

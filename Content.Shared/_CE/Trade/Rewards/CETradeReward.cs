@@ -10,7 +10,8 @@ public abstract partial class CETradeReward
     /// <summary>
     /// Hands the reward to the buyer.
     /// </summary>
-    public abstract void Give(IEntityManager entMan, EntityUid buyer);
+    /// <param name="given">Receives the entities handed to the buyer.</param>
+    public abstract void Give(IEntityManager entMan, EntityUid buyer, List<EntityUid> given);
 
     /// <summary>
     /// Base value used for auto-pricing.
