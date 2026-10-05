@@ -181,6 +181,13 @@
         "parent": "FloorWaterEntity",
         "suffix": null
     },
+    "CEActionEnergyScannerMode": {
+        "id": "CEActionEnergyScannerMode",
+        "name": "Switch scanner mode",
+        "description": "Cycle which energy pipes the glasses show - current and lower level, current level only, current and upper level, or nothing.",
+        "parent": null,
+        "suffix": null
+    },
     "CEActionZFlightUp": {
         "id": "CEActionZFlightUp",
         "name": "Move up",
@@ -200,6 +207,20 @@
         "name": "Toggle flight mode",
         "description": "Toggle flight mode on or off",
         "parent": "BaseToggleAction",
+        "suffix": null
+    },
+    "CEActionMurkStartConversation": {
+        "id": "CEActionMurkStartConversation",
+        "name": "strike up a conversation",
+        "description": "Says something to someone nearby and waits for an answer.",
+        "parent": null,
+        "suffix": null
+    },
+    "CEActionMurkConversationReply": {
+        "id": "CEActionMurkConversationReply",
+        "name": "answer",
+        "description": "Says the next line of the conversation.",
+        "parent": null,
         "suffix": null
     },
     "CEActionZLevelUp": {
@@ -325,6 +346,13 @@
         "id": "CEClothingEyesMiningGlasses",
         "name": "mining glasses",
         "description": "Miner's glasses tuned to search for nearby ore veins.",
+        "parent": "CEClothingEyesGogglesFoldableBase",
+        "suffix": null
+    },
+    "CEClothingEyesEnergyScanner": {
+        "id": "CEClothingEyesEnergyScanner",
+        "name": "energy scanner glasses",
+        "description": "Engineering glasses that reveal the flow of mana through pipes, even through walls and floors, and show detailed readings of energy networks.",
         "parent": "CEClothingEyesGogglesFoldableBase",
         "suffix": null
     },
@@ -1658,13 +1686,6 @@
         "parent": "CESpawnPointJobBase",
         "suffix": null
     },
-    "CEActionShadowEaterDevour": {
-        "id": "CEActionShadowEaterDevour",
-        "name": "Devour shadow",
-        "description": "Devour a fully dissolved creature, restoring your health and birthing a new shadow eater from its remains.",
-        "parent": null,
-        "suffix": null
-    },
     "CELurkerRoarSound": {
         "id": "CELurkerRoarSound",
         "name": "lurker roar",
@@ -1677,6 +1698,34 @@
         "name": "spawn point lurker",
         "description": "Spawn point for the lurker ghost role",
         "parent": "MarkerBase",
+        "suffix": null
+    },
+    "CEActionShadowEaterDevour": {
+        "id": "CEActionShadowEaterDevour",
+        "name": "Devour shadow",
+        "description": "Devour a fully dissolved creature, restoring your health and birthing a new shadow eater from its remains.",
+        "parent": null,
+        "suffix": null
+    },
+    "CEMobShadowTraderSpawner": {
+        "id": "CEMobShadowTraderSpawner",
+        "name": "shadow trader spawner",
+        "description": "Spawns a shadow trader of a random race.",
+        "parent": "MarkerBase",
+        "suffix": null
+    },
+    "CEActionRestockTradeTable": {
+        "id": "CEActionRestockTradeTable",
+        "name": "restock",
+        "description": "Lays out a new offer on an empty spot of a trade table.",
+        "parent": null,
+        "suffix": null
+    },
+    "CEActionClearTradeTable": {
+        "id": "CEActionClearTradeTable",
+        "name": "clear",
+        "description": "Takes an offer back off a trade table.",
+        "parent": null,
         "suffix": null
     },
     "CEPaperFolderBase": {
@@ -3380,76 +3429,6 @@
         "parent": "CEBaseMachineCore",
         "suffix": null
     },
-    "CEMachineCoreTradingBase": {
-        "id": "CEMachineCoreTradingBase",
-        "name": "trading platform machine core",
-        "description": null,
-        "parent": "CEBaseMachineCore",
-        "suffix": null
-    },
-    "CEMachineCoreTradingPlatformEmpireGuard": {
-        "id": "CEMachineCoreTradingPlatformEmpireGuard",
-        "name": "trading platform machine core (Empire Guard)",
-        "description": null,
-        "parent": "CEMachineCoreTradingBase",
-        "suffix": null
-    },
-    "CEMachineCoreTradingPlatformHelsinWarHouse": {
-        "id": "CEMachineCoreTradingPlatformHelsinWarHouse",
-        "name": "trading platform machine core (Helsin War House)",
-        "description": null,
-        "parent": "CEMachineCoreTradingBase",
-        "suffix": null
-    },
-    "CEMachineCoreTradingPlatformHomeDecor": {
-        "id": "CEMachineCoreTradingPlatformHomeDecor",
-        "name": "trading platform machine core (Home Decor)",
-        "description": null,
-        "parent": "CEMachineCoreTradingBase",
-        "suffix": null
-    },
-    "CEMachineCoreTradingPlatformTailors": {
-        "id": "CEMachineCoreTradingPlatformTailors",
-        "name": "trading platform machine core (Tailors)",
-        "description": null,
-        "parent": "CEMachineCoreTradingBase",
-        "suffix": null
-    },
-    "CEMachineCoreTradingPlatformHorticulture": {
-        "id": "CEMachineCoreTradingPlatformHorticulture",
-        "name": "trading platform machine core (Horticulture)",
-        "description": null,
-        "parent": "CEMachineCoreTradingBase",
-        "suffix": null
-    },
-    "CEMachineCoreTradingPlatformDwarfMiners": {
-        "id": "CEMachineCoreTradingPlatformDwarfMiners",
-        "name": "trading platform machine core (Dwarf Miners)",
-        "description": null,
-        "parent": "CEMachineCoreTradingBase",
-        "suffix": null
-    },
-    "CEMachineCoreTradingPlatformAlcohol": {
-        "id": "CEMachineCoreTradingPlatformAlcohol",
-        "name": "trading platform machine core (Alcohol)",
-        "description": null,
-        "parent": "CEMachineCoreTradingBase",
-        "suffix": null
-    },
-    "CEMachineCoreTradingPlatformApothecariesGuild": {
-        "id": "CEMachineCoreTradingPlatformApothecariesGuild",
-        "name": "trading platform machine core (Apothecaries Guild)",
-        "description": null,
-        "parent": "CEMachineCoreTradingBase",
-        "suffix": null
-    },
-    "CEMachineCoreTradingPlatformImperialChancellery": {
-        "id": "CEMachineCoreTradingPlatformImperialChancellery",
-        "name": "trading platform machine core (Imperial Chancellery)",
-        "description": null,
-        "parent": "CEMachineCoreTradingBase",
-        "suffix": null
-    },
     "CEMachinePartEnergyLine1": {
         "id": "CEMachinePartEnergyLine1",
         "name": "energyline",
@@ -4923,7 +4902,7 @@
     "CESack": {
         "id": "CESack",
         "name": "cloth sack",
-        "description": null,
+        "description": "For convenient storage and transport of your belongings. Or to blind your enemies.",
         "parent": "BaseStorageItem",
         "suffix": null
     },
@@ -7531,6 +7510,13 @@
         "parent": null,
         "suffix": "NOT WORKING"
     },
+    "CEFloorMurkTorchAlwaysPowered": {
+        "id": "CEFloorMurkTorchAlwaysPowered",
+        "name": "murk torch",
+        "description": "The violet lights of the wandering shadow-merchants, who have regained their minds.",
+        "parent": "BaseStructure",
+        "suffix": "Infinite"
+    },
     "CEFloorTorchAlwaysPowered": {
         "id": "CEFloorTorchAlwaysPowered",
         "name": "floor torch",
@@ -7775,7 +7761,7 @@
         "description": null,
         "parent": "BaseMachine",
         "suffix": null
-    },
+    },
     "CEDrillAdvanced": {
         "id": "CEDrillAdvanced",
         "name": "advanced stationary drill",
@@ -7802,20 +7788,6 @@
         "name": "destroyed machine frame",
         "description": null,
         "parent": "CEMachineFrameBase",
-        "suffix": null
-    },
-    "CELightMonolith": {
-        "id": "CELightMonolith",
-        "name": "light monolith",
-        "description": "A manufactured crystal capable of storing a vast amount of light and using it to repair the Lucson Sphere.",
-        "parent": "CEBaseMachinePowered",
-        "suffix": null
-    },
-    "CELightPylon": {
-        "id": "CELightPylon",
-        "name": "light pylon",
-        "description": "A component of the Light Monolith mechanism. All pylons must be operational, powered, and shrouded in murk for the main monolith to charge.",
-        "parent": "CEBaseMachinePowered",
         "suffix": null
     },
     "CECashImpact": {
@@ -7852,6 +7824,13 @@
         "description": null,
         "parent": "CEDistributionUnitBase",
         "suffix": "Empty"
+    },
+    "CEPipeBase": {
+        "id": "CEPipeBase",
+        "name": null,
+        "description": null,
+        "parent": "CEBaseMachineEnergized",
+        "suffix": null
     },
     "CEPipeBrassBig": {
         "id": "CEPipeBrassBig",
@@ -8399,6 +8378,125 @@
         "parent": "CEBaseMachinePowered",
         "suffix": null
     },
+    "CEShadowRift": {
+        "id": "CEShadowRift",
+        "name": "shadow rift",
+        "description": "A tear in the world. Shadow traders come out of it at dawn and slip back in at nightfall.",
+        "parent": null,
+        "suffix": "Traders"
+    },
+    "CEActionEnterShadowRift": {
+        "id": "CEActionEnterShadowRift",
+        "name": "enter the rift",
+        "description": "Steps back into the shadow rift.",
+        "parent": null,
+        "suffix": null
+    },
+    "CETradeOffer": {
+        "id": "CETradeOffer",
+        "name": "trade offer",
+        "description": "Something for sale.",
+        "parent": null,
+        "suffix": null
+    },
+    "CETradeStandBase": {
+        "id": "CETradeStandBase",
+        "name": null,
+        "description": null,
+        "parent": "BaseStructure",
+        "suffix": null
+    },
+    "CETradeCarpetBase": {
+        "id": "CETradeCarpetBase",
+        "name": "murk trade carpet",
+        "description": "Traders post their items for sale here",
+        "parent": "CETradeStandBase",
+        "suffix": null
+    },
+    "CETradePostamentBase": {
+        "id": "CETradePostamentBase",
+        "name": "murk trade postament",
+        "description": "Traders showcase their special goods here",
+        "parent": "CETradeStandBase",
+        "suffix": null
+    },
+    "CETradeTableHorticulture": {
+        "id": "CETradeTableHorticulture",
+        "name": null,
+        "description": null,
+        "parent": "CETradeCarpetBase",
+        "suffix": "horticulture"
+    },
+    "CETradeTableHomeDecor": {
+        "id": "CETradeTableHomeDecor",
+        "name": null,
+        "description": null,
+        "parent": "CETradeCarpetBase",
+        "suffix": "home decor"
+    },
+    "CETradeTableTailors": {
+        "id": "CETradeTableTailors",
+        "name": null,
+        "description": null,
+        "parent": "CETradeCarpetBase",
+        "suffix": "tailors"
+    },
+    "CETradeTableDwarfMiners": {
+        "id": "CETradeTableDwarfMiners",
+        "name": null,
+        "description": null,
+        "parent": "CETradeCarpetBase",
+        "suffix": "dwarf miners"
+    },
+    "CETradeTableAlcohol": {
+        "id": "CETradeTableAlcohol",
+        "name": null,
+        "description": null,
+        "parent": "CETradeCarpetBase",
+        "suffix": "alcohol"
+    },
+    "CETradeTableEmpireGuard": {
+        "id": "CETradeTableEmpireGuard",
+        "name": null,
+        "description": null,
+        "parent": "CETradeCarpetBase",
+        "suffix": "empire guard"
+    },
+    "CETradeTableHelsinWarHouse": {
+        "id": "CETradeTableHelsinWarHouse",
+        "name": null,
+        "description": null,
+        "parent": "CETradeCarpetBase",
+        "suffix": "Helsin War House"
+    },
+    "CETradeTableApothecariesGuild": {
+        "id": "CETradeTableApothecariesGuild",
+        "name": null,
+        "description": null,
+        "parent": "CETradeCarpetBase",
+        "suffix": "apothecaries guild"
+    },
+    "CETradeTableImperialChancellery": {
+        "id": "CETradeTableImperialChancellery",
+        "name": null,
+        "description": null,
+        "parent": "CETradeCarpetBase",
+        "suffix": "imperial chancellery"
+    },
+    "CETradeTableBlackMarket": {
+        "id": "CETradeTableBlackMarket",
+        "name": null,
+        "description": null,
+        "parent": "CETradeCarpetBase",
+        "suffix": "black market"
+    },
+    "CETradeTableOrders": {
+        "id": "CETradeTableOrders",
+        "name": null,
+        "description": null,
+        "parent": "CETradeCarpetBase",
+        "suffix": "orders"
+    },
     "CEBaseGameRule": {
         "id": "CEBaseGameRule",
         "name": null,
@@ -8917,6 +9015,20 @@
         "parent": null,
         "suffix": null
     },
+    "CEStatusEffectManaRegen": {
+        "id": "CEStatusEffectManaRegen",
+        "name": "mana regeneration",
+        "description": "Your mana is constantly being restored. Click to switch to mana drain.",
+        "parent": "StatusEffectBase",
+        "suffix": null
+    },
+    "CEStatusEffectManaDrain": {
+        "id": "CEStatusEffectManaDrain",
+        "name": "mana drain",
+        "description": "Your mana is constantly being spent. Click to switch to mana regeneration.",
+        "parent": "StatusEffectBase",
+        "suffix": null
+    },
     "ActionCEMilitaryTraining": {
         "id": "ActionCEMilitaryTraining",
         "name": "Military training",
@@ -9055,13 +9167,6 @@
         "name": "verdant area impact",
         "description": null,
         "parent": "CEEffectAreaHealingTelegraphy",
-        "suffix": null
-    },
-    "CEActionThiefBlackMarket": {
-        "id": "CEActionThiefBlackMarket",
-        "name": "Black market",
-        "description": "Opens a connection to the black market, letting you buy contraband.",
-        "parent": "BaseMentalAction",
         "suffix": null
     },
     "ActionCEWerewolfTransform": {
@@ -10047,13 +10152,6 @@
         "parent": null,
         "suffix": null
     },
-    "CEMobShadowEater": {
-        "id": "CEMobShadowEater",
-        "name": "shadow eater",
-        "description": "A being of darkness that feeds on the shadows of living creatures.",
-        "parent": "CEMobSimple",
-        "suffix": null
-    },
     "CEMobWerewolf": {
         "id": "CEMobWerewolf",
         "name": "werewolf",
@@ -10073,6 +10171,100 @@
         "name": "rat",
         "description": "A small, unpleasant rodent.",
         "parent": "CEMobSimple",
+        "suffix": null
+    },
+    "CEMobShadowEater": {
+        "id": "CEMobShadowEater",
+        "name": "shadow eater",
+        "description": "A being of darkness that feeds on the shadows of living creatures.",
+        "parent": "CEMobSimple",
+        "suffix": null
+    },
+    "CEMobShadowTrader": {
+        "id": "CEMobShadowTrader",
+        "name": "shadow trader",
+        "description": "A silent shade that keeps the shop shelves stocked.",
+        "parent": null,
+        "suffix": null
+    },
+    "CEMobShadowTraderCarcat": {
+        "id": "CEMobShadowTraderCarcat",
+        "name": null,
+        "description": null,
+        "parent": [
+            "CEAppearanceCarcat",
+            "CEMobShadowTrader"
+        ],
+        "suffix": null
+    },
+    "CEMobShadowTraderCarrin": {
+        "id": "CEMobShadowTraderCarrin",
+        "name": null,
+        "description": null,
+        "parent": [
+            "CEAppearanceCarrin",
+            "CEMobShadowTrader"
+        ],
+        "suffix": null
+    },
+    "CEMobShadowTraderDwarf": {
+        "id": "CEMobShadowTraderDwarf",
+        "name": null,
+        "description": null,
+        "parent": [
+            "CEAppearanceDwarf",
+            "CEMobShadowTrader"
+        ],
+        "suffix": null
+    },
+    "CEMobShadowTraderElf": {
+        "id": "CEMobShadowTraderElf",
+        "name": null,
+        "description": null,
+        "parent": [
+            "CEAppearanceElf",
+            "CEMobShadowTrader"
+        ],
+        "suffix": null
+    },
+    "CEMobShadowTraderGoblin": {
+        "id": "CEMobShadowTraderGoblin",
+        "name": null,
+        "description": null,
+        "parent": [
+            "CEAppearanceGoblin",
+            "CEMobShadowTrader"
+        ],
+        "suffix": null
+    },
+    "CEMobShadowTraderHuman": {
+        "id": "CEMobShadowTraderHuman",
+        "name": null,
+        "description": null,
+        "parent": [
+            "CEAppearanceHuman",
+            "CEMobShadowTrader"
+        ],
+        "suffix": null
+    },
+    "CEMobShadowTraderSilva": {
+        "id": "CEMobShadowTraderSilva",
+        "name": null,
+        "description": null,
+        "parent": [
+            "CEAppearanceSilva",
+            "CEMobShadowTrader"
+        ],
+        "suffix": null
+    },
+    "CEMobShadowTraderTiefling": {
+        "id": "CEMobShadowTraderTiefling",
+        "name": null,
+        "description": null,
+        "parent": [
+            "CEAppearanceTiefling",
+            "CEMobShadowTrader"
+        ],
         "suffix": null
     },
     "CEDrinkBottleBase": {
@@ -11123,6 +11315,20 @@
         "parent": null,
         "suffix": null
     },
+    "CELightMonolith": {
+        "id": "CELightMonolith",
+        "name": "light monolith",
+        "description": "A manufactured crystal capable of storing a vast amount of light and using it to repair the Lucson Sphere.",
+        "parent": "CEBaseMachinePowered",
+        "suffix": null
+    },
+    "CELightPylon": {
+        "id": "CELightPylon",
+        "name": "light pylon",
+        "description": "A component of the Light Monolith mechanism. All pylons must be operational, powered, and shrouded in murk for the main monolith to charge.",
+        "parent": "CEBaseMachinePowered",
+        "suffix": null
+    },
     "CEMapProjector": {
         "id": "CEMapProjector",
         "name": "map projector",
@@ -11149,76 +11355,6 @@
         "name": "light monolith status projector",
         "description": "Projects the Light Monolith's charge status and pinpoints whatever's stopping it from filling.",
         "parent": "CEBaseMachinePowered",
-        "suffix": null
-    },
-    "CETradingPlatformBase": {
-        "id": "CETradingPlatformBase",
-        "name": "trading platform",
-        "description": "Abstract base prototype for trading platforms.",
-        "parent": "CEBaseMachinePowered",
-        "suffix": null
-    },
-    "CETradingPlatformEmpireGuard": {
-        "id": "CETradingPlatformEmpireGuard",
-        "name": "empire Guard trading platform",
-        "description": "Standard trading platform tied to the Empire Guard faction.",
-        "parent": "CETradingPlatformBase",
-        "suffix": null
-    },
-    "CETradingPlatformHelsinWarHouse": {
-        "id": "CETradingPlatformHelsinWarHouse",
-        "name": "Helsin War House trading platform",
-        "description": "Standard trading platform tied to the Helsin War House faction.",
-        "parent": "CETradingPlatformBase",
-        "suffix": null
-    },
-    "CETradingPlatformHomeDecor": {
-        "id": "CETradingPlatformHomeDecor",
-        "name": "home decor trading platform",
-        "description": "A trading platform tied to the Home Decor faction.",
-        "parent": "CETradingPlatformBase",
-        "suffix": null
-    },
-    "CETradingPlatformTailors": {
-        "id": "CETradingPlatformTailors",
-        "name": "tailors trading platform",
-        "description": "A trading platform tied to the Tailors faction.",
-        "parent": "CETradingPlatformBase",
-        "suffix": null
-    },
-    "CETradingPlatformHorticulture": {
-        "id": "CETradingPlatformHorticulture",
-        "name": "Horticulture trading platform",
-        "description": "A trading platform tied to the Horticulture faction.",
-        "parent": "CETradingPlatformBase",
-        "suffix": null
-    },
-    "CETradingPlatformDwarfMiners": {
-        "id": "CETradingPlatformDwarfMiners",
-        "name": "dwarf miners trading platform",
-        "description": "A trading platform tied to the Dwarf Miners faction.",
-        "parent": "CETradingPlatformBase",
-        "suffix": null
-    },
-    "CETradingPlatformAlcohol": {
-        "id": "CETradingPlatformAlcohol",
-        "name": "alcohol trading platform",
-        "description": "A trading platform tied to the Alcohol faction.",
-        "parent": "CETradingPlatformBase",
-        "suffix": null
-    },
-    "CETradingPlatformApothecariesGuild": {
-        "id": "CETradingPlatformApothecariesGuild",
-        "name": "apothecaries guild trading platform",
-        "description": "A trading platform tied to the Apothecaries Guild faction.",
-        "parent": "CETradingPlatformBase",
-        "suffix": null
-    },
-    "CETradingPlatformImperialChancellery": {
-        "id": "CETradingPlatformImperialChancellery",
-        "name": "imperial chancellery trading platform",
-        "description": "A trading platform tied to the Imperial Magical Chancellery faction.",
-        "parent": "CETradingPlatformBase",
         "suffix": null
     },
     "CESalaryPlatform": {
@@ -11267,7 +11403,7 @@
         "id": "CEPipeBrassBigBase",
         "name": null,
         "description": "Insulated brass pipe with iron supports. A standardized method of transmitting arcane energy over long distances. However, any holes or cracks can lead to energy leakage and harm to surrounding creatures susceptible to magic.",
-        "parent": null,
+        "parent": "CEPipeBase",
         "suffix": null
     },
     "CEHighBush": {
