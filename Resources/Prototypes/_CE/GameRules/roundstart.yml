@@ -28,3 +28,4 @@
     - id: CEStaticIronCoreVariationPass
     - id: CEStaticCoalCoreVariationPass
     - id: CEStaticCrystalCoreVariationPass
+    - id: CEStaticDiamondCoreVariationPass

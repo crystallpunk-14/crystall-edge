@@ -94,3 +94,15 @@
     color: "#9fe3f0"
   - type: PointLight
     color: "#9fe3f0"
+
+- type: entity
+  id: CEEffectShinyEnergyCrystal
+  parent: CEEffectShinyBase
+  categories: [ ForkFiltered ]
+  suffix: Energy Crystal
+  save: false
+  components:
+  - type: Sprite
+    color: "#4cc0f2"
+  - type: PointLight
+    color: "#4cc0f2"
