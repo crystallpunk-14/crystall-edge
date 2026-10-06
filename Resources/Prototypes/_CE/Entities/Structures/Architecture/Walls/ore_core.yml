@@ -83,7 +83,7 @@
 - type: entity
   id: CEWallDiamondCore
   name: diamond ore core
-  description: "An extremely hard core studded with diamonds. You can certainly break it with a pickaxe, but it's better to use some kind of automatic drill..."
+  description: "An incredibly hard core studded with diamonds. Pickaxes and ordinary drills just bounce off it - only an advanced drill or a manipulator's mining laser can break it."
   parent: CEOreCoreBase
   components:
   - type: Sprite
@@ -92,6 +92,8 @@
     sprite: _CE/Structures/Architecture/Walls/Ore/core_diamond.rsi
   - type: IconSmooth
     base: wall
+  - type: Damageable
+    damageModifierSet: CERockStructuralHard
   - type: CEShiny
     effect: CEEffectShinyDiamond
     radius: 0.4

@@ -266,15 +266,6 @@
     - !type:Hitscan
       prototype: CEThirdArmMiningHitscan
       angle: -4
-    0.1:
-    - !type:PlaySound
-      sound:
-        path: /Audio/Effects/sparks1.ogg
-        params:
-          variation: 0.1
-    - !type:Hitscan
-      prototype: CEThirdArmMiningHitscan
-      angle: -2
     0.2:
     - !type:PlaySound
       sound:
@@ -284,16 +275,7 @@
     - !type:Hitscan
       prototype: CEThirdArmMiningHitscan
       angle: 0
-    0.3:
-    - !type:PlaySound
-      sound:
-        path: /Audio/Effects/sparks1.ogg
-        params:
-          variation: 0.1
-    - !type:Hitscan
-      prototype: CEThirdArmMiningHitscan
-      angle: 2
-    0.5:
+    0.4:
     - !type:PlaySound
       sound:
         path: /Audio/Effects/sparks1.ogg
@@ -311,7 +293,7 @@
   - type: HitscanBasicDamage
     damage:
       types:
-        Structural: 20
+        Structural: 30
         Shock: 2
   - type: HitscanBasicVisuals
     muzzleFlash:
