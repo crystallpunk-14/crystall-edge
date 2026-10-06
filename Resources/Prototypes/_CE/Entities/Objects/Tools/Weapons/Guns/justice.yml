@@ -33,8 +33,8 @@
     proto: CEJusticeHitscan
     fireCost: 5
   - type: Battery
-    maxCharge: 40
-    startingCharge: 40
+    maxCharge: 60
+    startingCharge: 60
   - type: Gun
     selectedMode: SemiAuto
     availableModes:
