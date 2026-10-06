@@ -97,7 +97,8 @@ public abstract partial class CESharedTradeSystem : EntitySystem
             return false;
 
         var slot = _random.Pick(_freeSlots);
-        var uid = SpawnAttachedTo(table.Comp.OfferEntity, new EntityCoordinates(table, table.Comp.Slots[slot]));
+        var position = table.Comp.Slots[slot] + _random.NextVector2(table.Comp.SlotJitter);
+        var uid = SpawnAttachedTo(table.Comp.OfferEntity, new EntityCoordinates(table, position));
 
         var comp = EnsureComp<CETradeOfferComponent>(uid);
         comp.Offer = offer.ID;

@@ -18,4 +18,10 @@ public sealed partial class CETradeTableComponent : Component
 
     [DataField]
     public EntProtoId OfferEntity = "CETradeOffer";
+
+    /// <summary>
+    /// Max distance in tiles an offer is randomly shifted from its slot position.
+    /// </summary>
+    [DataField]
+    public float SlotJitter = 0.1f;
 }
