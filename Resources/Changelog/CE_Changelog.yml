@@ -1140,3 +1140,53 @@
   id: 1101
   time: '2026-10-04T12:49:49.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/502
+- author: TheShuEd
+  changes:
+  - message: Diamond ore has been added. It is quite rare. Diamonds are useless on
+      their own, but merchants pay a lot of money for them.
+    type: Add
+  - message: Added a diamond ore core. Infinite. There is only one of these on the
+      entire map. Can only be mined with advanced drills.
+    type: Add
+  - message: "\U0001F48E\U0001F48E\U0001F48E Crystal \U0001F48E\U0001F48E\U0001F48E\
+      \ Punk \U0001F48E\U0001F48E\U0001F48E or \U0001F48EEdge\U0001F48E\U0001F48E\U0001F48E\
+      \U0001F48E"
+    type: Add
+  id: 1102
+  time: '2026-10-06T14:24:35.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/506
+- author: TheShuEd
+  changes:
+  - message: Trading platform mechanics have been removed.
+    type: Remove
+  - message: "The thief's \u201CBlack Market\u201D ability has been removed"
+    type: Remove
+  - message: "The thief's objective has been simplified (and has become less interesting)\u2014\
+      it now requires spending 10 gold coins on any items in the shadow merchants'\
+      \ shop."
+    type: Tweak
+  - message: Gold toys and lock picks are now available at the new store
+    type: Tweak
+  - message: The Shadow Traders' Camp has been added. Vendors set out a random assortment
+      of goods at dawn and close their shops at night.
+    type: Add
+  - message: Fixed a bug that allowed players to pull a mob to disable its movement
+      AI.
+    type: Fix
+  id: 1103
+  time: '2026-10-06T10:44:33.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/504
+- author: TheShuEd
+  changes:
+  - message: Orders for spellbooks and essence orbs have been added to the store.
+      Scientists now have a way to make money.
+    type: Add
+  - message: The guard's revolver's magazine capacity has been increased from 8 to
+      12 rounds
+    type: Tweak
+  - message: "Fixed a bug that prevented players from using a guard's \u201CMilitary\
+      \ Training\u201D ability when they in stamina crit."
+    type: Fix
+  id: 1104
+  time: '2026-10-06T21:48:05.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/507
