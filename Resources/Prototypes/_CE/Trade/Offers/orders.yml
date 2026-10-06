@@ -101,3 +101,85 @@
     count: 5
   receive:
     bonus: 1
+
+- type: tradeOffer
+  id: SellEnergyCrystalShard
+  shop: Orders
+  cost:
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalShard
+    count: 10
+  receive:
+    bonus: 10
+
+- type: tradeOffer
+  id: SellEnergyCrystalCell
+  shop: Orders
+  cost:
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
+    count: 10
+  receive:
+    bonus: 10
+
+#MARK: Essence Spheres
+
+- type: tradeOffer
+  id: SellEssenceSphereEarth
+  shop: Orders
+  cost:
+  - !type:ProtoIdResource
+    protoId: CEEssenceSphereEarth
+    count: 1
+  receive:
+    bonus: 50
+
+- type: tradeOffer
+  id: SellEssenceSphereFire
+  shop: Orders
+  cost:
+  - !type:ProtoIdResource
+    protoId: CEEssenceSphereFire
+    count: 1
+  receive:
+    bonus: 50
+
+- type: tradeOffer
+  id: SellEssenceSphereWater
+  shop: Orders
+  cost:
+  - !type:ProtoIdResource
+    protoId: CEEssenceSphereWater
+    count: 1
+  receive:
+    bonus: 50
+
+- type: tradeOffer
+  id: SellEssenceSphereAir
+  shop: Orders
+  cost:
+  - !type:ProtoIdResource
+    protoId: CEEssenceSphereAir
+    count: 1
+  receive:
+    bonus: 50
+
+- type: tradeOffer
+  id: SellEssenceSphereOrder
+  shop: Orders
+  cost:
+  - !type:ProtoIdResource
+    protoId: CEEssenceSphereOrder
+    count: 1
+  receive:
+    bonus: 50
+
+- type: tradeOffer
+  id: SellEssenceSphereChaos
+  shop: Orders
+  cost:
+  - !type:ProtoIdResource
+    protoId: CEEssenceSphereChaos
+    count: 1
+  receive:
+    bonus: 50
