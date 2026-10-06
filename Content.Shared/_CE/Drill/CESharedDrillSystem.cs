@@ -70,18 +70,22 @@ public sealed partial class CESharedDrillSystem : EntitySystem
             var rayCastResults = _physics.IntersectRay(xform.MapID, ray, distance, uid, returnOnFirstHit: false);
 
             _cachedEntityList.Clear();
+            var hitAny = false;
             foreach (var hit in rayCastResults)
             {
-                _damageable.TryChangeDamage(hit.HitEntity, melee.Damage, false, true, uid);
+                hitAny = true;
+                _damageable.TryChangeDamage(hit.HitEntity, melee.Damage, out var dealt, false, true, uid);
 
                 _meleeSound.PlayHitSound(hit.HitEntity, uid, SharedMeleeWeaponSystem.GetHighestDamageSound(melee.Damage, _proto), null, melee);
-                _cachedEntityList.Add(hit.HitEntity);
+
+                if (dealt.GetTotal() > 0)
+                    _cachedEntityList.Add(hit.HitEntity);
             }
 
-            if (_cachedEntityList.Count == 0)
+            if (!hitAny)
                 continue;
 
-            if (_net.IsClient)
+            if (_net.IsClient && _cachedEntityList.Count > 0)
                 _color.RaiseEffect(Color.Red, _cachedEntityList, Filter.Pvs(uid, entityManager: EntityManager));
             _jitter.DoJitter(uid, freq, true, drill.JitterAmplitude, drill.JitterFreq);
         }

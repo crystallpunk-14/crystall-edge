@@ -14,6 +14,11 @@
         map: ["random"]
     offset: 0, 0.25
     noRot: true
+  - type: CEShiny
+    effect: CEEffectShinyEnergyCrystal
+    radius: 0.3
+    minFrequency: 3
+    maxFrequency: 8
   - type: InteractionOutline
   - type: InteractionPopup
     interactSuccessString: ce-popup-crystal-ding
