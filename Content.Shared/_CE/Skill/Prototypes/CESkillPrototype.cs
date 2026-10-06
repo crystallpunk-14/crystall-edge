@@ -68,6 +68,12 @@ public sealed partial class CESkillPrototype : IPrototype, IInheritingPrototype
     public bool Copyable;
 
     /// <summary>
+    /// Price added on top of the books teaching this skill.
+    /// </summary>
+    [DataField]
+    public double Price = 50;
+
+    /// <summary>
     /// Skill effect. Used to determine what happens when the player learns the skill. Optional -
     /// a skill with no effect is a pure "known/not known" flag, gating whatever external systems
     /// (recipes, achievements, ...) choose to check it.

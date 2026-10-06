@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Client._CE.ResourceManager;
 using Content.Client.Gameplay;
 using Content.Shared._CE.Currency;
 using Content.Shared._CE.Trade;
@@ -56,7 +57,6 @@ public sealed partial class CETradeCostOverlay : Overlay
         new(0f, OutlineOffset),
     ];
 
-    private readonly SpriteSystem _sprite;
     private readonly SharedInteractionSystem _interaction;
     private readonly CESharedCurrencySystem _currency;
     private readonly CESharedTradeSystem _trade;
@@ -66,16 +66,16 @@ public sealed partial class CETradeCostOverlay : Overlay
     private static readonly int[] CoinValues = [1000, 100, 10, 1];
 
     private readonly List<Entry> _entries = new();
+    private readonly List<CEResourceIconRenderer> _costIcons = new();
     private EntityUid? _cachedOffer;
     private TimeSpan _nextRefresh;
 
-    private readonly record struct Entry(Texture? Icon, float IconSize, Color IconColor, string Text, Color TextColor);
+    private readonly record struct Entry(Texture? Icon, CEResourceIconRenderer? Renderer, float IconSize, Color IconColor, string Text, Color TextColor);
 
     public CETradeCostOverlay()
     {
         IoCManager.InjectDependencies(this);
 
-        _sprite = _entityManager.System<SpriteSystem>();
         _interaction = _entityManager.System<SharedInteractionSystem>();
         _currency = _entityManager.System<CESharedCurrencySystem>();
         _trade = _entityManager.System<CESharedTradeSystem>();
@@ -100,13 +100,22 @@ public sealed partial class CETradeCostOverlay : Overlay
 
         if (GetHoveredOffer(args) is not { } offer || _player.LocalEntity is not { } player)
         {
+            if (_cachedOffer is not null)
+                ClearCostIcons();
+
             _cachedOffer = null;
             return;
         }
 
-        if (_cachedOffer != offer.Owner || _timing.RealTime >= _nextRefresh)
+        if (_cachedOffer != offer.Owner)
         {
             _cachedOffer = offer.Owner;
+            BuildCostIcons(offer);
+            BuildEntries(offer, player);
+            _nextRefresh = _timing.RealTime + RefreshInterval;
+        }
+        else if (_timing.RealTime >= _nextRefresh)
+        {
             _nextRefresh = _timing.RealTime + RefreshInterval;
             BuildEntries(offer, player);
         }
@@ -132,9 +141,15 @@ public sealed partial class CETradeCostOverlay : Overlay
             var iconSize = entry.IconSize * uiScale;
             var top = pos.Y + (rowHeight - iconSize) / 2f;
 
-            if (entry.Icon != null)
+            var iconBox = UIBox2.FromDimensions(new Vector2(pos.X, top), new Vector2(iconSize, iconSize));
+            if (entry.Renderer is { IsEmpty: false } renderer)
             {
-                handle.DrawTextureRect(entry.Icon, UIBox2.FromDimensions(new Vector2(pos.X, top), new Vector2(iconSize, iconSize)), entry.IconColor);
+                renderer.Draw(handle, iconBox);
+                pos.X += iconSize + IconTextGap * uiScale;
+            }
+            else if (entry.Icon != null)
+            {
+                handle.DrawTextureRect(entry.Icon, iconBox, entry.IconColor);
                 pos.X += iconSize + IconTextGap * uiScale;
             }
 
@@ -162,17 +177,13 @@ public sealed partial class CETradeCostOverlay : Overlay
             return;
 
         var items = _trade.CollectTradeableItems(player);
-        foreach (var cost in offerProto.Cost)
+        for (var i = 0; i < offerProto.Cost.Count; i++)
         {
+            var cost = offerProto.Cost[i];
             var color = cost.CheckRequirement(_entityManager, _proto, items) ? EnoughColor : NotEnoughColor;
+            var renderer = i < _costIcons.Count ? _costIcons[i] : null;
 
-            Texture? icon = null;
-            if (cost.GetRequirementEntityView(_proto) is { } view)
-                icon = _sprite.GetPrototypeIcon(view).Default;
-            else if (cost.GetRequirementTexture(_proto) is { } texture)
-                icon = _sprite.Frame0(texture);
-
-            _entries.Add(new Entry(icon, ItemIconSize, cost.GetRequirementColor(_proto), cost.GetRequirementAmount(), color));
+            _entries.Add(new Entry(null, renderer, ItemIconSize, Color.White, cost.GetRequirementAmount(), color));
         }
 
         if (offer.Comp.PayPrice > 0)
@@ -183,7 +194,7 @@ public sealed partial class CETradeCostOverlay : Overlay
 
         if (offer.Comp.ReceivePrice > 0)
         {
-            _entries.Add(new Entry(null, CoinIconSize, Color.White, "»", ReceiveColor));
+            _entries.Add(new Entry(null, null, CoinIconSize, Color.White, "»", ReceiveColor));
             AddCoins(offer.Comp.ReceivePrice, ReceiveColor);
         }
     }
@@ -196,8 +207,39 @@ public sealed partial class CETradeCostOverlay : Overlay
             amount %= CoinValues[i];
 
             if (count > 0)
-                _entries.Add(new Entry(_coinIcons[i], CoinIconSize, Color.White, count.ToString(), textColor));
+                _entries.Add(new Entry(_coinIcons[i], null, CoinIconSize, Color.White, count.ToString(), textColor));
         }
+    }
+
+    private void BuildCostIcons(Entity<CETradeOfferComponent> offer)
+    {
+        ClearCostIcons();
+
+        if (!_proto.Resolve(offer.Comp.Offer, out var offerProto))
+            return;
+
+        foreach (var cost in offerProto.Cost)
+        {
+            var renderer = new CEResourceIconRenderer();
+            renderer.SetLayers(cost.GetRequirementIcon(_entityManager, _proto));
+            _costIcons.Add(renderer);
+        }
+    }
+
+    private void ClearCostIcons()
+    {
+        foreach (var renderer in _costIcons)
+        {
+            renderer.Clear();
+        }
+
+        _costIcons.Clear();
+    }
+
+    protected override void DisposeBehavior()
+    {
+        base.DisposeBehavior();
+        ClearCostIcons();
     }
 
     private Entity<CETradeOfferComponent>? GetHoveredOffer(in OverlayDrawArgs args)

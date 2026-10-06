@@ -14,6 +14,7 @@
   - type: Action
     itemIconStyle: BigAction
     useDelay: 300
+    checkCanInteract: false
   - type: Sprite
     sprite: _CE/Skills/Guard/military_training.rsi
     layers:

@@ -1,0 +1,62 @@
+- type: tradeOffer
+  id: SellSpellbookConjureLight
+  shop: Orders
+  cost:
+  - !type:SkillBookResource
+    skill: ConjureLight
+  receive:
+    bonus: 10
+
+- type: tradeOffer
+  id: SellSpellbookCureWounds
+  shop: Orders
+  cost:
+  - !type:SkillBookResource
+    skill: CureWounds
+  receive:
+    bonus: 10
+
+- type: tradeOffer
+  id: SellSpellbookFeatherFall
+  shop: Orders
+  cost:
+  - !type:SkillBookResource
+    skill: FeatherFall
+  receive:
+    bonus: 10
+
+- type: tradeOffer
+  id: SellSpellbookFrostBlade
+  shop: Orders
+  cost:
+  - !type:SkillBookResource
+    skill: FrostBlade
+  receive:
+    bonus: 10
+
+- type: tradeOffer
+  id: SellSpellbookManaGift
+  shop: Orders
+  cost:
+  - !type:SkillBookResource
+    skill: ManaGift
+  receive:
+    bonus: 10
+
+- type: tradeOffer
+  id: SellSpellbookManaSteal
+  shop: Orders
+  cost:
+  - !type:SkillBookResource
+    skill: ManaSteal
+  receive:
+    bonus: 10
+
+- type: tradeOffer
+  id: SellSpellbookPlantGrowth
+  shop: Orders
+  cost:
+  - !type:SkillBookResource
+    skill: PlantGrowth
+  receive:
+    bonus: 10

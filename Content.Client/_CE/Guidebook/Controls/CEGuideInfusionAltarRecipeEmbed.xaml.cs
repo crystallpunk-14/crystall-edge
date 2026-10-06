@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Numerics;
 using Content.Client._CE.MagicEssence.Controls;
+using Content.Client._CE.ResourceManager;
 using Content.Client.Guidebook.Controls;
 using Content.Client.Message;
 using Content.Client.UserInterface.ControlExtensions;
@@ -44,8 +45,6 @@ public sealed partial class CEGuideInfusionAltarRecipeEmbed : PanelContainer, IS
     private const float EssenceIconSize = 32f;
     private const float ResultIconSize = 64f;
 
-    private readonly SpriteSystem _sprite;
-
     /// <summary>
     /// Extra search terms not carried by any Label/RichTextLabel child - the catalyst, pedestal item,
     /// and essence names, which <see cref="ControlExtension.ChildrenContainText"/> can't see since they
@@ -59,7 +58,6 @@ public sealed partial class CEGuideInfusionAltarRecipeEmbed : PanelContainer, IS
         IoCManager.InjectDependencies(this);
 
         MouseFilter = MouseFilterMode.Stop;
-        _sprite = _entity.System<SpriteSystem>();
     }
 
     public CEGuideInfusionAltarRecipeEmbed(CEInfusionAltarRecipePrototype recipe, CEInfusionAltarKnownRecipeInfo info) : this()
@@ -186,33 +184,13 @@ public sealed partial class CEGuideInfusionAltarRecipeEmbed : PanelContainer, IS
 
     private Control CreateRequirementIcon(CEResourceRequirement requirement, float size)
     {
-        var tooltip = requirement.GetRequirementTitle(_prototype);
-
-        if (requirement.GetRequirementTexture(_prototype) is { } texture)
+        var icon = new CEResourceIconControl
         {
-            return new TextureRect
-            {
-                Texture = _sprite.Frame0(texture),
-                MinSize = new Vector2(size, size),
-                Stretch = TextureRect.StretchMode.KeepAspectCentered,
-                MouseFilter = MouseFilterMode.Stop,
-                ToolTip = tooltip,
-            };
-        }
-
-        if (requirement.GetRequirementEntityView(_prototype) is { } entityView)
-        {
-            var view = new EntityPrototypeView
-            {
-                MinSize = new Vector2(size, size),
-                Scale = EntityViewScale(size),
-                MouseFilter = MouseFilterMode.Stop,
-                ToolTip = tooltip,
-            };
-            view.SetPrototype(entityView);
-            return view;
-        }
-
-        return new Control { MinSize = new Vector2(size, size) };
+            MinSize = new Vector2(size, size),
+            MouseFilter = MouseFilterMode.Stop,
+            ToolTip = requirement.GetRequirementTitle(_prototype),
+        };
+        icon.SetLayers(requirement.GetRequirementIcon(_entity, _prototype));
+        return icon;
     }
 }
