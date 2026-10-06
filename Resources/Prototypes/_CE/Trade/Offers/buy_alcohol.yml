@@ -51,3 +51,21 @@
   reward:
   - !type:CETradeSpawnReward
     proto: CEBottleSyrupSugarFull
+
+- type: tradeOffer
+  id: CETradeOfferSmokingPipe
+  shop: Alcohol
+  pay:
+    bonus: 15
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CESmokingPipe
+
+- type: tradeOffer
+  id: CETradeOfferGroundTobacco
+  shop: Alcohol
+  pay:
+    bonus: 12
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEGroundTobacco

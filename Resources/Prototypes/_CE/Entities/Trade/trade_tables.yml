@@ -142,15 +142,6 @@
 
 - type: entity
   parent: CETradeCarpetBase
-  id: CETradeTableBlackMarket
-  suffix: black market
-  categories: [ ForkFiltered ]
-  components:
-  - type: CETradeTable
-    shop: BlackMarket
-
-- type: entity
-  parent: CETradeCarpetBase
   id: CETradeTableOrders
   suffix: orders
   categories: [ ForkFiltered ]

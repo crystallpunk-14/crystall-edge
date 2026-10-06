@@ -330,3 +330,111 @@
   reward:
   - !type:CETradeSpawnReward
     proto: CEPottedPlant4
+
+- type: tradeOffer
+  id: CETradeOfferPlushieGoldenHuman
+  shop: HomeDecor
+  pay:
+    bonus: 200
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlushieGoldenHuman
+
+- type: tradeOffer
+  id: CETradeOfferPlushieGoldenDwarf
+  shop: HomeDecor
+  pay:
+    bonus: 200
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlushieGoldenDwarf
+
+- type: tradeOffer
+  id: CETradeOfferPlushieGoldenElf
+  shop: HomeDecor
+  pay:
+    bonus: 200
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlushieGoldenElf
+
+- type: tradeOffer
+  id: CETradeOfferPlushieGoldenGoblin
+  shop: HomeDecor
+  pay:
+    bonus: 200
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlushieGoldenGoblin
+
+- type: tradeOffer
+  id: CETradeOfferPlushieGoldenSilva
+  shop: HomeDecor
+  pay:
+    bonus: 200
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlushieGoldenSilva
+
+- type: tradeOffer
+  id: CETradeOfferPlushieGoldenTiefling
+  shop: HomeDecor
+  pay:
+    bonus: 200
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlushieGoldenTiefling
+
+- type: tradeOffer
+  id: CETradeOfferPlushieGoldenCarcat
+  shop: HomeDecor
+  pay:
+    bonus: 200
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlushieGoldenCarcat
+
+- type: tradeOffer
+  id: CETradeOfferPlushieGoldenFrog
+  shop: HomeDecor
+  pay:
+    bonus: 200
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlushieGoldenFrog
+
+- type: tradeOffer
+  id: CETradeOfferPlushieGoldenSkeleton
+  shop: HomeDecor
+  pay:
+    bonus: 200
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlushieGoldenSkeleton
+
+- type: tradeOffer
+  id: CETradeOfferPlushieGoldenLumi
+  shop: HomeDecor
+  pay:
+    bonus: 200
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlushieGoldenLumi
+
+- type: tradeOffer
+  id: CETradeOfferPlushieGoldenFlem
+  shop: HomeDecor
+  pay:
+    bonus: 200
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlushieGoldenFlem
+
+- type: tradeOffer
+  id: CETradeOfferPlushieGoldenAgaric
+  shop: HomeDecor
+  pay:
+    bonus: 200
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlushieGoldenAgaric

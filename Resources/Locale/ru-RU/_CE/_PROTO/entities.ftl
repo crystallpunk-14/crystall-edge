@@ -3958,10 +3958,6 @@ ent-CETradeTableImperialChancellery = { ent-CETradeCarpetBase }
     .desc = { ent-CETradeCarpetBase.desc }
     .suffix = imperial chancellery
 
-ent-CETradeTableBlackMarket = { ent-CETradeCarpetBase }
-    .desc = { ent-CETradeCarpetBase.desc }
-    .suffix = black market
-
 ent-CETradeTableOrders = { ent-CETradeCarpetBase }
     .desc = { ent-CETradeCarpetBase.desc }
     .suffix = orders
@@ -4175,8 +4171,8 @@ ent-CEObjectiveLoverAssist = Помогите возлюбленному
 ent-CEObjectiveLoverSurvive = Сохраните возлюбленному жизнь
     .desc = Человек, которого вы тайно любите, должен выжить.
 
-ent-CEObjectiveThiefCashOut = Обналичить
-    .desc = Крадите деньги у других игроков, продавайте полезное снаряжение и потратьте не менее 10 золотых монет на чёрном рынке.
+ent-CEObjectiveThiefCashOut = Прокутите 10 золотых
+    .desc = Потратьте 10 золотых монет на покупки в магазине теней.
 
 ent-CEObjectiveTormentorSpite = Сорвите планы цели
     .desc = Сделайте всё возможное, чтобы человек, которого вы тайно презираете, провалил все свои личные цели.

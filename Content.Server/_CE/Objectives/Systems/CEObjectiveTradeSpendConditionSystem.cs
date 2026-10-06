@@ -7,18 +7,18 @@ using Content.Shared.Mind;
 namespace Content.Server._CE.Objectives.Systems;
 
 /// <summary>
-/// Handles progress for <see cref="CEObjectiveBlackMarketSpendConditionComponent"/> - increments
-/// as the holder's mind spends currency on the black market, wherever that money came from.
+/// Handles progress for <see cref="CEObjectiveTradeSpendConditionComponent"/> - increments
+/// as the holder's mind spends currency at any trading shop, wherever that money came from.
 /// </summary>
-public sealed partial class CEObjectiveBlackMarketSpendConditionSystem : EntitySystem
+public sealed partial class CEObjectiveTradeSpendConditionSystem : EntitySystem
 {
     [Dependency] private CEObjectiveSystem _objectives = default!;
     [Dependency] private SharedMindSystem _mind = default!;
 
     [SubscribeLocalEvent]
-    private void OnGetProgress(Entity<CEObjectiveBlackMarketSpendConditionComponent> ent, ref CEGetObjectiveProgressEvent args)
+    private void OnGetProgress(Entity<CEObjectiveTradeSpendConditionComponent> ent, ref CEGetObjectiveProgressEvent args)
     {
-        var target = ent.Comp.TargetGoldSteal * CESharedCurrencySystem.GP.Value;
+        var target = ent.Comp.TargetGoldSpend * CESharedCurrencySystem.GP.Value;
         if (target <= 0)
             return;
 
@@ -28,7 +28,7 @@ public sealed partial class CEObjectiveBlackMarketSpendConditionSystem : EntityS
     [SubscribeLocalEvent]
     private void OnTradeCompleted(ref CETradeCompletedEvent args)
     {
-        if (args.Shop != "BlackMarket" || args.Paid <= 0)
+        if (args.Paid <= 0)
             return;
 
         AddSpent(args.Buyer, args.Paid);
@@ -44,7 +44,7 @@ public sealed partial class CEObjectiveBlackMarketSpendConditionSystem : EntityS
 
         foreach (var objectiveUid in holder.Objectives)
         {
-            if (!TryComp<CEObjectiveBlackMarketSpendConditionComponent>(objectiveUid, out var condition))
+            if (!TryComp<CEObjectiveTradeSpendConditionComponent>(objectiveUid, out var condition))
                 continue;
 
             condition.AmountSpent += amount;

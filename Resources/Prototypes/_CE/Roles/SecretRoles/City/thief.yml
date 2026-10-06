@@ -10,12 +10,12 @@
 
 - type: entity
   id: CEObjectiveThiefCashOut
-  name: Cash out
-  description: Steal money from other players, sell useful equipment, and spend at least 10 gold coins at the black market.
+  name: Squander 10 gold
+  description: Spend 10 gold coins on purchases in the shadow shop.
   components:
   - type: Sprite
     sprite: _CE/Objects/Materials/Currency/coin_gp.rsi
     state: coin10
   - type: CEObjective
-  - type: CEObjectiveBlackMarketSpendCondition
-    targetGoldSteal: 10
+  - type: CEObjectiveTradeSpendCondition
+    targetGoldSpend: 10

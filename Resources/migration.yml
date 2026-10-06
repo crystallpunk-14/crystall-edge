@@ -65,6 +65,7 @@ CEMachineCoreTradingPlatformApothecariesGuild: null
 CEMachineCoreTradingPlatformImperialChancellery: null
 
 CEActionThiefBlackMarket: null
+CETradeTableBlackMarket: null
 
 CEBenchWoodSpruce: CEBenchWoodDark
 CEBenchWoodBirch: CEBenchWoodLight
