@@ -41,6 +41,14 @@ public abstract partial class CEResourceRequirement
     }
 
     /// <summary>
+    /// Short amount label drawn next to the requirement icon, e.g. "10". Empty to hide.
+    /// </summary>
+    public virtual string GetRequirementAmount()
+    {
+        return string.Empty;
+    }
+
+    /// <summary>
     /// You can specify an icon generated from an entity. It will support layering, colour changes and other layer options. Return null to disable.
     /// </summary>
     public virtual EntityPrototype? GetRequirementEntityView(IPrototypeManager protoManager)

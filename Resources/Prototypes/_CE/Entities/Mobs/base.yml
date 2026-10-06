@@ -129,9 +129,14 @@
     conversionComponents:
     - type: CEGOAP
       behaviors:
+      - MurkSoulChatter
       - Explorer
     - type: CEGOAPEyesPerceptor
       visionRadius: 8
+      whitelist:
+        components:
+        - NpcFactionMember
+        - CEMurkedSoulSpeech
     - type: ActiveListener
       range: 12
     - type: CEMurkedSoulSpeech

@@ -1,0 +1,26 @@
+- type: tradeOffer
+  id: CETradeOfferGauze5
+  shop: ApothecariesGuild
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEGauze
+
+- type: tradeOffer
+  id: CETradeOfferPlastiseal5
+  shop: ApothecariesGuild
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPlastiseal
+
+- type: tradeOffer
+  id: CETradeOfferBloodpack10
+  shop: ApothecariesGuild
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEBloodpack

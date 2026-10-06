@@ -1,0 +1,71 @@
+- type: tradeOffer
+  id: CETradeOfferBottleWine
+  shop: Alcohol
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEBottleWineFull
+
+- type: tradeOffer
+  id: CETradeOfferBottleWhiskey
+  shop: Alcohol
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEBottleWhiskeyFull
+
+- type: tradeOffer
+  id: CETradeOfferBottleVodka
+  shop: Alcohol
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEBottleVodkaFull
+
+- type: tradeOffer
+  id: CETradeOfferBottleRum
+  shop: Alcohol
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEBottleRumFull
+
+- type: tradeOffer
+  id: CETradeOfferBottleSyrupGrenadineine
+  shop: Alcohol
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEBottleSyrupGrenadineineFull
+
+- type: tradeOffer
+  id: CETradeOfferBottleSyrupSugar
+  shop: Alcohol
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEBottleSyrupSugarFull
+
+- type: tradeOffer
+  id: CETradeOfferSmokingPipe
+  shop: Alcohol
+  pay:
+    bonus: 15
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CESmokingPipe
+
+- type: tradeOffer
+  id: CETradeOfferGroundTobacco
+  shop: Alcohol
+  pay:
+    bonus: 12
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEGroundTobacco

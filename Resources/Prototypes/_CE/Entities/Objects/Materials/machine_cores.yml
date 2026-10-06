@@ -96,18 +96,6 @@
     prototype: CESalaryPlatform
 
 - type: entity
-  id: CEMachineCoreDimensionalLift
-  parent: CEBaseMachineCore
-  name: dimensional lift machine core
-  components:
-  - type: Sprite
-    state: dimensional
-  - type: MachineBoard
-    prototype: CEDimensionalLift
-  - type: StaticPrice
-    price: 200
-
-- type: entity
   id: CEMachineCoreHeater
   parent: CEBaseMachineCore
   name: heater machine core
@@ -146,7 +134,6 @@
     prototype: CEMagicEssenceAttractor
   - type: StaticPrice
     price: 130
-
 
 - type: entity
   id: CEMachineCoreDistributionUnit
@@ -241,86 +228,3 @@
     price: 180
 
 # Trading
-
-- type: entity
-  abstract: true
-  parent: CEBaseMachineCore
-  id: CEMachineCoreTradingBase
-  name: trading platform machine core
-  components:
-  - type: Sprite
-    state: dimensional
-  - type: StaticPrice
-    price: 140
-
-- type: entity
-  id: CEMachineCoreTradingPlatformEmpireGuard
-  parent: CEMachineCoreTradingBase
-  name: trading platform machine core (Empire Guard)
-  components:
-  - type: MachineBoard
-    prototype: CETradingPlatformEmpireGuard
-
-- type: entity
-  id: CEMachineCoreTradingPlatformHelsinWarHouse
-  parent: CEMachineCoreTradingBase
-  name: trading platform machine core (Helsin War House)
-  components:
-  - type: MachineBoard
-    prototype: CETradingPlatformHelsinWarHouse
-
-- type: entity
-  id: CEMachineCoreTradingPlatformHomeDecor
-  parent: CEMachineCoreTradingBase
-  name: trading platform machine core (Home Decor)
-  components:
-  - type: MachineBoard
-    prototype: CETradingPlatformHomeDecor
-
-- type: entity
-  id: CEMachineCoreTradingPlatformTailors
-  parent: CEMachineCoreTradingBase
-  name: trading platform machine core (Tailors)
-  components:
-  - type: MachineBoard
-    prototype: CETradingPlatformTailors
-
-- type: entity
-  id: CEMachineCoreTradingPlatformHorticulture
-  parent: CEMachineCoreTradingBase
-  name: trading platform machine core (Horticulture)
-  components:
-  - type: MachineBoard
-    prototype: CETradingPlatformHorticulture
-
-- type: entity
-  id: CEMachineCoreTradingPlatformDwarfMiners
-  parent: CEMachineCoreTradingBase
-  name: trading platform machine core (Dwarf Miners)
-  components:
-  - type: MachineBoard
-    prototype: CETradingPlatformDwarfMiners
-
-- type: entity
-  id: CEMachineCoreTradingPlatformAlcohol
-  parent: CEMachineCoreTradingBase
-  name: trading platform machine core (Alcohol)
-  components:
-  - type: MachineBoard
-    prototype: CETradingPlatformAlcohol
-
-- type: entity
-  id: CEMachineCoreTradingPlatformApothecariesGuild
-  parent: CEMachineCoreTradingBase
-  name: trading platform machine core (Apothecaries Guild)
-  components:
-  - type: MachineBoard
-    prototype: CETradingPlatformApothecariesGuild
-
-- type: entity
-  id: CEMachineCoreTradingPlatformImperialChancellery
-  parent: CEMachineCoreTradingBase
-  name: trading platform machine core (Imperial Chancellery)
-  components:
-  - type: MachineBoard
-    prototype: CETradingPlatformImperialChancellery

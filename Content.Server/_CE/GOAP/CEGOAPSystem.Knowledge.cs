@@ -15,15 +15,17 @@ public sealed partial class CEGOAPSystem
     /// Adds or refreshes a knowledge entry. Marks knowledge dirty only when a new entity is added:
     /// a position change alone doesn't alter the known set.
     /// </summary>
+    /// <param name="duration">How long the entry is kept; the agent's <see cref="CEGOAPComponent.MemoryDuration"/> if null.</param>
     public void Remember(
         Entity<CEGOAPComponent?> ent,
         EntityUid target,
-        EntityCoordinates coords)
+        EntityCoordinates coords,
+        TimeSpan? duration = null)
     {
         if (!Resolve(ent, ref ent.Comp))
             return;
         var now = _timing.CurTime;
-        var expires = now + ent.Comp.MemoryDuration;
+        var expires = now + (duration ?? ent.Comp.MemoryDuration);
         var added = !ent.Comp.Knowledge.ContainsKey(target);
 
         ent.Comp.Knowledge[target] = new CEGOAPKnowledgeEntry

@@ -62,6 +62,9 @@ ent-CEOrganTieflingExternal = { "" }
     .desc = { "" }
     .suffix = tiefling
 
+ent-CEActionEnergyScannerMode = Переключить режим сканера
+    .desc = Меняет, какие энергетические трубы показывают очки: текущий уровень и нижний, только текущий, текущий и верхний или ничего.
+
 ent-CEActionZFlightUp = Подняться
     .desc = Подняться на один уровень вверх
 
@@ -70,6 +73,12 @@ ent-CEActionZFlightDown = Спуститься
 
 ent-CEActionZFlightToggle = Переключить режим полёта
     .desc = Включает или выключает режим полёта
+
+ent-CEActionMurkStartConversation = Завести разговор
+    .desc = Говорит что-нибудь кому-то поблизости и ждёт ответа.
+
+ent-CEActionMurkConversationReply = Ответить
+    .desc = Произносит следующую реплику разговора.
 
 ent-CEActionZLevelUp = Подняться
     .desc = Подняться на один уровень вверх
@@ -712,14 +721,23 @@ ent-CESpawnPointBrigadier = бригадир
 ent-CESpawnPointTechnician = техник
     .desc = { "" }
 
-ent-CEActionShadowEaterDevour = Поглотить тень
-    .desc = Поглотите полностью растворившееся существо, восстановив здоровье и породив из его останков нового пожирателя теней.
-
 ent-CELurkerRoarSound = рёв луркера
     .desc = { "" }
 
 ent-CESpawnPointGhostMobLurker = точка появления луркера
     .desc = Точка появления для роли призрака-луркера
+
+ent-CEActionShadowEaterDevour = Поглотить тень
+    .desc = Поглотите полностью растворившееся существо, восстановив здоровье и породив из его останков нового пожирателя теней.
+
+ent-CEMobShadowTraderSpawner = спавнер теневого торговца
+    .desc = Создаёт теневого торговца случайной расы.
+
+ent-CEActionRestockTradeTable = Пополнить
+    .desc = Выкладывает новое предложение на свободное место торгового стола.
+
+ent-CEActionClearTradeTable = Убрать
+    .desc = Снимает предложение с торгового стола.
 
 ent-CEPaperFolderBase = папка
     .desc = Папка, заполненная какой-то документацией.
@@ -1459,9 +1477,6 @@ ent-CEMachineCoreFunnel = ядро воронки
 ent-CEMachineCoreSalaryPlatform = ядро платформы выплат
     .desc = { ent-CEBaseMachineCore.desc }
 
-ent-CEMachineCoreDimensionalLift = ядро пространственного лифта
-    .desc = { ent-CEBaseMachineCore.desc }
-
 ent-CEMachineCoreHeater = ядро нагревателя
     .desc = { ent-CEBaseMachineCore.desc }
 
@@ -1497,36 +1512,6 @@ ent-CEMachineCoreGridProjector = ядро проектора энергосет�
 
 ent-CEMachineCoreMurkSphereFixerProjector = ядро проектора состояния световых монолитов
     .desc = { ent-CEBaseMachineCore.desc }
-
-ent-CEMachineCoreTradingBase = ядро торговой платформы
-    .desc = { ent-CEBaseMachineCore.desc }
-
-ent-CEMachineCoreTradingPlatformEmpireGuard = ядро торговой платформы (Стража Империи)
-    .desc = { ent-CEMachineCoreTradingBase.desc }
-
-ent-CEMachineCoreTradingPlatformHelsinWarHouse = ядро торговой платформы (Военный дом Хельсина)
-    .desc = { ent-CEMachineCoreTradingBase.desc }
-
-ent-CEMachineCoreTradingPlatformHomeDecor = ядро торговой платформы (Домашний декор)
-    .desc = { ent-CEMachineCoreTradingBase.desc }
-
-ent-CEMachineCoreTradingPlatformTailors = ядро торговой платформы (Портные)
-    .desc = { ent-CEMachineCoreTradingBase.desc }
-
-ent-CEMachineCoreTradingPlatformHorticulture = ядро торговой платформы (Садоводство)
-    .desc = { ent-CEMachineCoreTradingBase.desc }
-
-ent-CEMachineCoreTradingPlatformDwarfMiners = ядро торговой платформы (Дварфы-шахтёры)
-    .desc = { ent-CEMachineCoreTradingBase.desc }
-
-ent-CEMachineCoreTradingPlatformAlcohol = ядро торговой платформы (Алкоголь)
-    .desc = { ent-CEMachineCoreTradingBase.desc }
-
-ent-CEMachineCoreTradingPlatformApothecariesGuild = ядро торговой платформы (Гильдия аптекарей)
-    .desc = { ent-CEMachineCoreTradingBase.desc }
-
-ent-CEMachineCoreTradingPlatformImperialChancellery = ядро торговой платформы (Имперская канцелярия)
-    .desc = { ent-CEMachineCoreTradingBase.desc }
 
 ent-CEMachinePartEnergyLine1 = энерголиния
     .desc = Усиленные энергоячейки, соединённые в линию. Механический компонент, часто используемый для создания крупных машин.
@@ -2282,7 +2267,7 @@ ent-CERope = верёвка
     .desc = Многофункциональная верёвка. Вы можете что-то завязать ею. Или кого-то.
 
 ent-CESack = тканевой мешок
-    .desc = { "" }
+    .desc = Для удобного хранения и переноски ваших вещей. Или чтобы ослепить врагов.
 
 ent-CEScissors = ножницы
     .desc = Инструмент для стрижки шерсти, волос, одежды и, при неосторожном обращении, даже пальцев.
@@ -3531,6 +3516,10 @@ ent-CEBaseTorch = { "" }
     .desc = Хороший, надёжный источник света. Жаль, что ненадолго.
     .suffix = NOT WORKING
 
+ent-CEFloorMurkTorchAlwaysPowered = факел мрака
+    .desc = Фиолетовые огни странствующих теневых торговцев, вернувших себе рассудок.
+    .suffix = Infinite
+
 ent-CEFloorTorchAlwaysPowered = напольный факел
     .desc = { "" }
     .suffix = Debug, Infinite
@@ -3639,18 +3628,6 @@ ent-CEWallLightBase = настенная лампа
 ent-CEWallLight = { ent-CEWallLightBase }
     .desc = { ent-CEWallLightBase.desc }
 
-ent-CEPortalDimensionalLift = пространственный разлом
-    .desc = Стабильный разлом, пробитый прямо вниз сквозь мир.
-    .suffix = Dimensional Lift
-
-ent-CEDimensionalLiftTraversalEffect = луч пространственного разлома
-    .desc = { "" }
-    .suffix = VFX
-
-ent-CEDimensionalLiftTraversalImpact = вспышка пространственного разлома
-    .desc = { "" }
-    .suffix = VFX
-
 ent-CEDrillAdvanced = улучшенный стационарный бур
     .desc = Промышленный бур, перестроенный с усиленными компонентами, бьёт вдвое сильнее стандартной модели.
 
@@ -3662,12 +3639,6 @@ ent-CEMachineFrame = { ent-CEMachineFrameBase }
 
 ent-CEMachineFrameDestroyed = разрушенный каркас машины
     .desc = { "" }
-
-ent-CELightMonolith = световой монолит
-    .desc = Искусственный кристалл, способный накапливать огромное количество света и использовать его для восстановления Сферы Люксона.
-
-ent-CELightPylon = световой пилон
-    .desc = Компонент механизма светового монолита. Все пилоны должны быть исправны, запитаны и окутаны мраком, чтобы главный монолит заряжался.
 
 ent-CECashImpact = звон монет
     .desc = { "" }
@@ -3935,6 +3906,62 @@ ent-CEMagicEssenceNode = нода магической эссенции
 ent-CENodeStabilizerSphere = сфера-стабилизатор ноды
     .desc = Большая стеклянная сфера в латунном кольце. Закреплённая и запитанная на ноде магической эссенции, она останавливает старение ноды, сохраняя её бесконечно, пока та продолжает вырабатывать эссенцию.
 
+ent-CEShadowRift = теневой разлом
+    .desc = Прореха в мироздании. На рассвете из неё выходят теневые торговцы, а с наступлением ночи ускользают обратно.
+    .suffix = Traders
+
+ent-CEActionEnterShadowRift = Войти в разлом
+    .desc = Вернуться обратно в теневой разлом.
+
+ent-CETradeOffer = торговое предложение
+    .desc = Что-то на продажу.
+
+ent-CETradeCarpetBase = торговый ковёр мрака
+    .desc = Здесь торговцы выкладывают товары на продажу.
+
+ent-CETradePostamentBase = торговый постамент мрака
+    .desc = Здесь торговцы выставляют свои особые товары.
+
+ent-CETradeTableHorticulture = { ent-CETradeCarpetBase }
+    .desc = { ent-CETradeCarpetBase.desc }
+    .suffix = horticulture
+
+ent-CETradeTableHomeDecor = { ent-CETradeCarpetBase }
+    .desc = { ent-CETradeCarpetBase.desc }
+    .suffix = home decor
+
+ent-CETradeTableTailors = { ent-CETradeCarpetBase }
+    .desc = { ent-CETradeCarpetBase.desc }
+    .suffix = tailors
+
+ent-CETradeTableDwarfMiners = { ent-CETradeCarpetBase }
+    .desc = { ent-CETradeCarpetBase.desc }
+    .suffix = dwarf miners
+
+ent-CETradeTableAlcohol = { ent-CETradeCarpetBase }
+    .desc = { ent-CETradeCarpetBase.desc }
+    .suffix = alcohol
+
+ent-CETradeTableEmpireGuard = { ent-CETradeCarpetBase }
+    .desc = { ent-CETradeCarpetBase.desc }
+    .suffix = empire guard
+
+ent-CETradeTableHelsinWarHouse = { ent-CETradeCarpetBase }
+    .desc = { ent-CETradeCarpetBase.desc }
+    .suffix = Helsin War House
+
+ent-CETradeTableApothecariesGuild = { ent-CETradeCarpetBase }
+    .desc = { ent-CETradeCarpetBase.desc }
+    .suffix = apothecaries guild
+
+ent-CETradeTableImperialChancellery = { ent-CETradeCarpetBase }
+    .desc = { ent-CETradeCarpetBase.desc }
+    .suffix = imperial chancellery
+
+ent-CETradeTableOrders = { ent-CETradeCarpetBase }
+    .desc = { ent-CETradeCarpetBase.desc }
+    .suffix = orders
+
 ent-CEWalletFilledAcademyProfessor = { ent-CEWallet }
     .desc = { ent-CEWallet.desc }
     .suffix = Пусто
@@ -4144,8 +4171,8 @@ ent-CEObjectiveLoverAssist = Помогите возлюбленному
 ent-CEObjectiveLoverSurvive = Сохраните возлюбленному жизнь
     .desc = Человек, которого вы тайно любите, должен выжить.
 
-ent-CEObjectiveThiefCashOut = Обналичить
-    .desc = Крадите деньги у других игроков, продавайте полезное снаряжение и потратьте не менее 10 золотых монет на чёрном рынке.
+ent-CEObjectiveThiefCashOut = Прокутите 10 золотых
+    .desc = Потратьте 10 золотых монет на покупки в магазине теней.
 
 ent-CEObjectiveTormentorSpite = Сорвите планы цели
     .desc = Сделайте всё возможное, чтобы человек, которого вы тайно презираете, провалил все свои личные цели.
@@ -4161,6 +4188,12 @@ ent-CEObjectiveNightmareHunt = Охота на жертву
 
 ent-CEObjectiveNightmareSphereCollapse = Погрузите Город во мрак.
     .desc = Сфера Люксона дала трещину. Не позволяйте восстановить световой монолит, пока мрак не поглотит его.
+
+ent-CEStatusEffectManaRegen = восстановление маны
+    .desc = Ваша мана постоянно восстанавливается. Нажмите, чтобы переключиться на расход маны.
+
+ent-CEStatusEffectManaDrain = расход маны
+    .desc = Ваша мана постоянно расходуется. Нажмите, чтобы переключиться на восстановление маны.
 
 ent-ActionCEMilitaryTraining = Военная подготовка
     .desc = Жёсткая муштра научила ваше тело преодолевать усталость. Переведите дух и мгновенно восстановите выносливость.
@@ -4224,9 +4257,6 @@ ent-CEEffectHealingGenericGreen = зелёный всплеск
 ent-CEEffectAreaHealingTelegraphyPlantGrowth = зелёный всплеск по области
     .desc = { "" }
     .suffix = VFX
-
-ent-CEActionThiefBlackMarket = Чёрный рынок
-    .desc = Открывает связь с чёрным рынком, позволяя покупать контрабанду.
 
 ent-ActionCEWerewolfTransform = Истинная форма
     .desc = Поддайтесь зверю и примите свою истинную, волчью форму. Работает только ночью.
@@ -4715,9 +4745,6 @@ ent-CEClothingShirtSyurkoWhite = белое сюрко
 ent-CEClothingShirtSyurkoYellow = жёлтое сюрко
     .desc = Жёлтое сюрко, которое выделяется на парадах и фестивалях.
 
-ent-CEMobShadowEater = пожиратель теней
-    .desc = Существо тьмы, питающееся тенями живых созданий.
-
 ent-CEMobWerewolf = оборотень
     .desc = Ужасающее и чрезвычайно опасное создание ночи. Днём прячется под личиной вашего дружелюбного соседа.
 
@@ -4726,6 +4753,36 @@ ent-CEMobLurker = луркер
 
 ent-CEMobRat = крыса
     .desc = Маленький неприятный грызун.
+
+ent-CEMobShadowEater = пожиратель теней
+    .desc = Существо тьмы, питающееся тенями живых созданий.
+
+ent-CEMobShadowTrader = теневой торговец
+    .desc = Безмолвная тень, следящая, чтобы полки лавки не пустели.
+
+ent-CEMobShadowTraderCarcat = { ent-CEMobShadowTrader }
+    .desc = { ent-CEMobShadowTrader.desc }
+
+ent-CEMobShadowTraderCarrin = { ent-CEMobShadowTrader }
+    .desc = { ent-CEMobShadowTrader.desc }
+
+ent-CEMobShadowTraderDwarf = { ent-CEMobShadowTrader }
+    .desc = { ent-CEMobShadowTrader.desc }
+
+ent-CEMobShadowTraderElf = { ent-CEMobShadowTrader }
+    .desc = { ent-CEMobShadowTrader.desc }
+
+ent-CEMobShadowTraderGoblin = { ent-CEMobShadowTrader }
+    .desc = { ent-CEMobShadowTrader.desc }
+
+ent-CEMobShadowTraderHuman = { ent-CEMobShadowTrader }
+    .desc = { ent-CEMobShadowTrader.desc }
+
+ent-CEMobShadowTraderSilva = { ent-CEMobShadowTrader }
+    .desc = { ent-CEMobShadowTrader.desc }
+
+ent-CEMobShadowTraderTiefling = { ent-CEMobShadowTrader }
+    .desc = { ent-CEMobShadowTrader.desc }
 
 ent-CEFoodCheeseWheel = круг сыра
     .desc = Большой круг мягкого душистого сыра.
@@ -5126,14 +5183,17 @@ ent-CEMeltingFurnace = плавильная печь
 ent-CECharger = энергозарядная станция
     .desc = Механизм, который позволяет заполнять маной что угодно, от инструментов до гоблинов.
 
-ent-CEDimensionalLift = пространственный лифт
-    .desc = Закрепляет разлом между плиткой, на которой стоит, и землёй далеко внизу. Удобен на летающем острове или чтобы спуститься в помещение с крышей с уровня выше.
-
 ent-CEDrill = стационарная дрель
     .desc = Большая промышленная дрель, способная разрушить что угодно при постоянной подаче энергии. Она была разработана имперскими инженерами для добычи особо твёрдых рудных залежей.
 
 ent-CEFunnel = воронка
     .desc = Устройство для помещения предметов в хранилища или извлечения из них. Для извлечения предметов подключите конвейерную ленту.
+
+ent-CELightMonolith = световой монолит
+    .desc = Искусственный кристалл, способный накапливать огромное количество света и использовать его для восстановления Сферы Люксона.
+
+ent-CELightPylon = световой пилон
+    .desc = Компонент механизма светового монолита. Все пилоны должны быть исправны, запитаны и окутаны мраком, чтобы главный монолит заряжался.
 
 ent-CEMapProjector = проектор карты
     .desc = Проецирует трёхмерную вращающуюся модель острова.
@@ -5146,36 +5206,6 @@ ent-CERecycler = переработчик
 
 ent-CEMurkSphereFixerProjector = проектор состояния светового монолита
     .desc = Проецирует состояние заряда светового монолита и указывает, что мешает ему зарядиться.
-
-ent-CETradingPlatformBase = торговая платформа
-    .desc = Абстрактный базовый прототип торговых платформ.
-
-ent-CETradingPlatformEmpireGuard = торговая платформа Стражи Империи
-    .desc = Стандартная торговая платформа, привязанная к фракции Стражи Империи.
-
-ent-CETradingPlatformHelsinWarHouse = торговая платформа Военного дома Хельсина
-    .desc = Стандартная торговая платформа, привязанная к фракции Военного дома Хельсина.
-
-ent-CETradingPlatformHomeDecor = торговая платформа Домашнего декора
-    .desc = Торговая платформа, привязанная к фракции Домашнего декора.
-
-ent-CETradingPlatformTailors = торговая платформа Портных
-    .desc = Торговая платформа, привязанная к фракции Портных.
-
-ent-CETradingPlatformHorticulture = торговая платформа Садоводства
-    .desc = Торговая платформа, привязанная к фракции Садоводства.
-
-ent-CETradingPlatformDwarfMiners = торговая платформа Дварфов-шахтёров
-    .desc = Торговая платформа, привязанная к фракции Дварфов-шахтёров.
-
-ent-CETradingPlatformAlcohol = торговая платформа Алкоголя
-    .desc = Торговая платформа, привязанная к фракции Алкоголя.
-
-ent-CETradingPlatformApothecariesGuild = торговая платформа Гильдии аптекарей
-    .desc = Торговая платформа, привязанная к фракции Гильдии аптекарей.
-
-ent-CETradingPlatformImperialChancellery = торговая платформа Имперской канцелярии
-    .desc = Торговая платформа, привязанная к фракции Имперской магической канцелярии.
 
 ent-CESalaryPlatform = платформа выплат
     .desc = Позволяет быстро получить причитающуюся вам зарплату (если, конечно, вам положена зарплата от империи).

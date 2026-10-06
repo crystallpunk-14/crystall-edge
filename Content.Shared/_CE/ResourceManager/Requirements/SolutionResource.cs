@@ -89,6 +89,11 @@ public sealed partial class SolutionResource : CEResourceRequirement
         return indexedReagent.PricePerUnit * (double)Amount;
     }
 
+    public override string GetRequirementAmount()
+    {
+        return Amount.ToString();
+    }
+
     public override string GetRequirementTitle(IPrototypeManager protoManager)
     {
         if (!protoManager.TryIndex(Reagent, out var indexedReagent))

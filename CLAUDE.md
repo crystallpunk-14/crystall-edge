@@ -13,12 +13,18 @@ $out = dotnet build -c Tools -clp:ErrorsOnly -nologo 2>&1; $out | Select-String 
 
 Never build only shared: build server, client or both via full dotnet build.
 
+`MSB3027` / "file is locked" errors mean the user's Content.Server or Content.Client is running and holds the DLLs in `bin/`. Ask the user to close them; rebuilding won't help.
+
 ## Testing
 
+Reuse the Tools build and target the tests you need; without `-c Tools --no-build` the test run rebuilds everything in Debug (~5 min):
 ```powershell
-dotnet test Content.Tests/Content.Tests.csproj
-dotnet test Content.IntegrationTests/Content.IntegrationTests.csproj
+dotnet test Content.IntegrationTests/Content.IntegrationTests.csproj -c Tools --no-build --filter "FullyQualifiedName~TestName"
 ```
+
+## Searching
+
+Repo-wide Grep times out (~54k files, mostly textures and maps). Always pass a path: `Content.*`, `Resources/Prototypes`, `Resources/Locale`, or `Resources/Maps` when maps are the target.
 
 ## C# Code Style
 

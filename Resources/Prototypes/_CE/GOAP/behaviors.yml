@@ -34,3 +34,135 @@
     cost: 1
     useType: Primary
     angleVariation: 5
+
+# Opens the shop by day and closes it at night: fills empty table slots while it's day,
+# takes the offers back off the tables once night falls and then leaves through its rift.
+# Idles around the rift when there is nothing to do.
+- type: GOAPBehavior
+  id: ShadowTrader
+  targets:
+    Home: !type:CEGOAPSelectorNearestKnown
+      conditions:
+      - !type:HasComponents
+        components:
+        - type: CEShadowRift
+    EmptyTradeTable: !type:CEGOAPSelectorNearestKnown
+      conditions:
+      - !type:TradeTableHasFreeSlot
+    StockedTradeTable: !type:CEGOAPSelectorNearestKnown
+      conditions:
+      - !type:TradeTableHasOffer
+  sensors:
+  - !type:CEGOAPIsNightSensorEntry
+    conditionKey: IsNight
+  goals:
+  - desiredState:
+      TradeTablesStocked: true
+    preconditions:
+      IsNight: false
+    priority: 1
+  - desiredState:
+      TradeTablesCleared: true
+    preconditions:
+      IsNight: true
+    priority: 1
+  - desiredState:
+      ReturnedHome: true
+    preconditions:
+      IsNight: true
+    priority: 0.9
+  - desiredState:
+      WalkingAround: true
+    priority: 0.1
+  actions:
+  - !type:CEGOAPUseAction
+    actionPrototype: CEActionRestockTradeTable
+    target: EmptyTradeTable
+    range: 1
+    effects:
+      TradeTablesStocked: true
+    cost: 1
+  - !type:CEGOAPUseAction
+    actionPrototype: CEActionClearTradeTable
+    target: StockedTradeTable
+    range: 1
+    effects:
+      TradeTablesCleared: true
+    cost: 1
+  - !type:CEGOAPUseAction
+    actionPrototype: CEActionEnterShadowRift
+    target: Home
+    range: 1
+    effects:
+      ReturnedHome: true
+    cost: 1
+  - !type:CEGOAPWalkAroundAction
+    target: Home
+    radius: 4
+    lineOfSightRadius: 10
+    effects:
+      WalkingAround: true
+    cost: 1
+
+# Strikes up conversations with nearby souls and players now and then, and keeps
+# standing and answering while a conversation goes on.
+- type: GOAPBehavior
+  id: MurkSoulChatter
+  targets:
+    Self: !type:CEGOAPSelectorSelf
+    Interlocutor: !type:CEGOAPSelectorNearestKnown
+      conditions:
+      - !type:HasComponents
+        any: true
+        components:
+        - type: CEMurkedSoulSpeech
+        - type: Actor
+      - !type:HasComponents
+        inverted: true
+        components:
+        - type: CEMurkConversation
+      - !type:Incapacitated
+        inverted: true
+  sensors:
+  - !type:CEGOAPHasComponentSensorEntry
+    conditionKey: InConversation
+    target: Self
+    components:
+    - type: CEMurkConversation
+  - !type:CEGOAPHasComponentSensorEntry
+    conditionKey: ConversationTurn
+    target: Self
+    components:
+    - type: CEMurkConversationTurn
+  goals:
+  - desiredState:
+      ConversationStarted: true
+    preconditions:
+      InConversation: false
+    priority: 0.5
+  - desiredState:
+      ConversationContinued: true
+    preconditions:
+      InConversation: true
+    priority: 1.5
+  actions:
+  - !type:CEGOAPUseAction
+    actionPrototype: CEActionMurkStartConversation
+    target: Interlocutor
+    range: 2
+    effects:
+      ConversationStarted: true
+    cost: 1
+  - !type:CEGOAPUseAction
+    actionPrototype: CEActionMurkConversationReply
+    preconditions:
+      ConversationTurn: true
+    effects:
+      ConversationContinued: true
+    cost: 1
+  - !type:CEGOAPIdleAction
+    preconditions:
+      ConversationTurn: false
+    effects:
+      ConversationContinued: true
+    cost: 1

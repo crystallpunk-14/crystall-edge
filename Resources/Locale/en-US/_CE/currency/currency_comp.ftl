@@ -10,3 +10,4 @@ ce-currency-converter-get-cp = As cp (1cp)
 ce-currency-converter-get-sp = As sp (10cp)
 ce-currency-converter-get-gp = As gp (100cp)
 ce-currency-converter-get-pp = As pp (1000cp)
+ce-trading-empty-price = None!

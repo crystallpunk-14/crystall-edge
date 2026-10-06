@@ -1,0 +1,207 @@
+- type: tradeOffer
+  id: CETradeOfferPenFeather
+  shop: ImperialChancellery
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPenFeather
+
+- type: tradeOffer
+  id: CETradeOfferPaper
+  shop: ImperialChancellery
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPaper
+    count: 5
+
+- type: tradeOffer
+  id: CETradeOfferPaperFolderBlue
+  shop: ImperialChancellery
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPaperFolderBlue
+
+- type: tradeOffer
+  id: CETradeOfferPaperFolderRed
+  shop: ImperialChancellery
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPaperFolderRed
+
+- type: tradeOffer
+  id: CETradeOfferPaperFolderGreen
+  shop: ImperialChancellery
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPaperFolderGreen
+
+- type: tradeOffer
+  id: CETradeOfferPaperFolderPurple
+  shop: ImperialChancellery
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEPaperFolderPurple
+
+- type: tradeOffer
+  id: CETradeOfferBookEmpty
+  shop: ImperialChancellery
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEBookEmpty
+
+- type: tradeOffer
+  id: CETradeOfferClothingEyesThaumaturgyGlasses
+  shop: ImperialChancellery
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEClothingEyesThaumaturgyGlasses
+
+- type: tradeOffer
+  id: CETradeOfferThaumaturgicMagnifyingGlass
+  shop: ImperialChancellery
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEThaumaturgicMagnifyingGlass
+
+- type: tradeOffer
+  id: CETradeOfferDropper
+  shop: ImperialChancellery
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEDropper
+
+- type: tradeOffer
+  id: CETradeOfferSyringe
+  shop: ImperialChancellery
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CESyringe
+
+- type: tradeOffer
+  id: CETradeOfferVialTiny
+  shop: ImperialChancellery
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialTiny
+
+- type: tradeOffer
+  id: CETradeOfferVialTinyReinforced
+  shop: ImperialChancellery
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialTinyReinforced
+
+- type: tradeOffer
+  id: CETradeOfferVialSmall
+  shop: ImperialChancellery
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialSmall
+
+- type: tradeOffer
+  id: CETradeOfferVialSmallReinforced
+  shop: ImperialChancellery
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialSmallReinforced
+
+- type: tradeOffer
+  id: CETradeOfferVialMedium
+  shop: ImperialChancellery
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialMedium
+
+- type: tradeOffer
+  id: CETradeOfferVialMediumReinforced
+  shop: ImperialChancellery
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialMediumReinforced
+
+- type: tradeOffer
+  id: CETradeOfferVialStar
+  shop: ImperialChancellery
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialStar
+
+- type: tradeOffer
+  id: CETradeOfferVialStarReinforced
+  shop: ImperialChancellery
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialStarReinforced
+
+- type: tradeOffer
+  id: CETradeOfferVialSkull
+  shop: ImperialChancellery
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialSkull
+
+- type: tradeOffer
+  id: CETradeOfferVialSkullReinforced
+  shop: ImperialChancellery
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEVialSkullReinforced
+
+- type: tradeOffer
+  id: CETradeOfferCastingStaffBasic
+  shop: ImperialChancellery
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CECastingStaffBasic
+
+- type: tradeOffer
+  id: CETradeOfferSpellcastingAmulet
+  shop: ImperialChancellery
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CESpellcastingAmulet

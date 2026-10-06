@@ -1,13 +1,9 @@
 using System.Numerics;
-using Content.Shared._CE.GOAP;
 using Content.Shared._CE.GOAP.Components;
-using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Examine;
 using Content.Shared.Maps;
-using Content.Shared.Mobs.Components;
-using Content.Shared.Mobs.Systems;
-using Content.Shared.NPC.Components;
+using Content.Shared.Whitelist;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Timing;
@@ -15,14 +11,19 @@ using Robust.Shared.Timing;
 namespace Content.Server._CE.GOAP.Perceptors;
 
 /// <summary>
-/// Vision-based perception. Periodically scans living mobs in radius with line-of-sight
-/// and feeds them into the GOAP knowledge store without any faction filtering — classification
-/// (friend/foe/etc.) is the responsibility of higher layers.
+/// Vision-based perception. Periodically remembers entities passing <see cref="Whitelist"/>
+/// that are within radius and line of sight. Classification is the responsibility of higher layers.
 /// Optionally extends scanning to adjacent Z-levels via tile-transparency gating.
 /// </summary>
 [RegisterComponent]
 public sealed partial class CEGOAPEyesPerceptorComponent : Component
 {
+    /// <summary>
+    /// What the eyes can see.
+    /// </summary>
+    [DataField(required: true)]
+    public EntityWhitelist Whitelist = new();
+
     /// <summary>
     /// Detection range in tiles.
     /// </summary>
@@ -36,13 +37,18 @@ public sealed partial class CEGOAPEyesPerceptorComponent : Component
     public TimeSpan UpdateInterval = TimeSpan.FromSeconds(1.5);
 
     /// <summary>
-    /// When true, the perceptor also scans mobs on the adjacent Z-level above and below.
-    /// Targets on the map below are only detected if there is a transparent tile above them
-    /// on the NPC's map. Targets on the map above are only detected if the NPC stands on a
-    /// transparent tile.
+    /// When true, the perceptor also scans the adjacent Z-level above and below.
+    /// Entities on the map below are only seen through a transparent tile above them on the agent's map.
+    /// Entities on the map above are only seen while the agent stands under a transparent tile.
     /// </summary>
     [DataField]
     public bool CrossZLevelVision = true;
+
+    /// <summary>
+    /// How long a seen entity is remembered. Falls back to the agent's memory duration if null.
+    /// </summary>
+    [DataField]
+    public TimeSpan? MemoryDuration;
 
     [ViewVariables]
     public TimeSpan NextUpdateTime;
@@ -55,17 +61,16 @@ public sealed partial class CEGOAPEyesPerceptorSystem : EntitySystem
     [Dependency] private CEGOAPSystem _goap = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private ExamineSystemShared _examine = default!;
-    [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private CESharedZLevelsSystem _zLevels = default!;
     [Dependency] private SharedMapSystem _mapSystem = default!;
+    [Dependency] private EntityWhitelistSystem _whitelist = default!;
 
     [Dependency] private EntityQuery<TransformComponent> _xformQuery = default!;
     [Dependency] private EntityQuery<MapGridComponent> _gridQuery = default!;
     [Dependency] private EntityQuery<MapComponent> _mapQuery = default!;
-    [Dependency] private EntityQuery<MobStateComponent> _mobStateQuery = default!;
 
-    private readonly HashSet<Entity<NpcFactionMemberComponent>> _nearbyBuffer = new();
+    private readonly HashSet<EntityUid> _nearbyBuffer = new();
 
     public override void Update(float frameTime)
     {
@@ -83,136 +88,76 @@ public sealed partial class CEGOAPEyesPerceptorSystem : EntitySystem
 
     private void Scan(Entity<CEGOAPEyesPerceptorComponent, CEGOAPComponent> ent)
     {
-        var (uid, eyes, goap) = ent;
-
-        if (!_xformQuery.TryGetComponent(uid, out var xform))
+        if (!_xformQuery.TryGetComponent(ent, out var xform))
             return;
 
-        var selfWorldPos = _transform.GetWorldPosition(xform);
-        var currentMapUid = xform.MapUid;
+        var selfPos = _transform.GetWorldPosition(xform);
+        ScanMap(ent, xform.MapID, selfPos, xform.MapID, null);
 
-        // --- Same-map scan (with LOS) ---
-        // Scan all faction members: covers both player mobs (MobStateComponent) and CE NPC mobs.
-        // Alive check: players use MobStateComponent; NPCs without it are alive while non-terminating.
+        if (!ent.Comp1.CrossZLevelVision || xform.MapUid is not { } currentMap)
+            return;
+
+        // Below: line of sight is checked on our map, and the tile above the target must let light through.
+        if (_zLevels.TryMapDown((currentMap, null), out var mapBelow) &&
+            _mapQuery.TryComp(mapBelow, out var belowMap))
+        {
+            ScanMap(ent, belowMap.MapId, selfPos, xform.MapID, currentMap);
+        }
+
+        // Above: only while we stand under a transparent tile; line of sight is checked on the map above.
+        if (_zLevels.TryMapUp((currentMap, null), out var mapAbove) &&
+            IsTileTransparentAt(mapAbove, selfPos) &&
+            _mapQuery.TryComp(mapAbove, out var aboveMap))
+        {
+            ScanMap(ent, aboveMap.MapId, selfPos, aboveMap.MapId, null);
+        }
+    }
+
+    /// <summary>
+    /// Remembers whitelisted entities on <paramref name="lookMap"/> around <paramref name="selfPos"/>
+    /// that are visible along a line of sight traced on <paramref name="losMap"/>.
+    /// </summary>
+    /// <param name="ceilingMap">If set, a target is only seen through a transparent tile above it on this map.</param>
+    private void ScanMap(
+        Entity<CEGOAPEyesPerceptorComponent, CEGOAPComponent> ent,
+        MapId lookMap,
+        Vector2 selfPos,
+        MapId losMap,
+        EntityUid? ceilingMap)
+    {
+        var (uid, eyes, goap) = ent;
+        var sameMap = _transform.GetMapId(uid) == lookMap;
+
         _nearbyBuffer.Clear();
-        _lookup.GetEntitiesInRange(xform.Coordinates, eyes.VisionRadius, _nearbyBuffer);
+        _lookup.GetEntitiesInRange(lookMap, selfPos, eyes.VisionRadius, _nearbyBuffer);
 
         foreach (var target in _nearbyBuffer)
         {
-            var targetUid = target.Owner;
-            if (targetUid == uid)
+            if (target == uid || Terminating(target) || !_whitelist.IsValid(eyes.Whitelist, target))
                 continue;
 
-            if (_mobStateQuery.TryGetComponent(targetUid, out var mobState)
-                ? _mobState.IsIncapacitated(targetUid, mobState)
-                : Terminating(targetUid))
+            if (!_xformQuery.TryGetComponent(target, out var targetXform))
                 continue;
 
-            if (!_xformQuery.TryGetComponent(targetUid, out var targetXform))
+            var targetPos = _transform.GetWorldPosition(targetXform);
+            if (Vector2.Distance(selfPos, targetPos) > eyes.VisionRadius)
                 continue;
 
-            var targetWorldPos = _transform.GetWorldPosition(targetXform);
-            if (Vector2.Distance(selfWorldPos, targetWorldPos) > eyes.VisionRadius)
+            var visible = sameMap
+                ? _examine.InRangeUnOccluded(uid, target, eyes.VisionRadius + 0.5f)
+                : _examine.InRangeUnOccluded(
+                    new MapCoordinates(selfPos, losMap),
+                    new MapCoordinates(targetPos, losMap),
+                    eyes.VisionRadius + 0.5f,
+                    null);
+
+            if (!visible)
                 continue;
 
-            if (!_examine.InRangeUnOccluded(uid, targetUid, eyes.VisionRadius + 0.5f))
+            if (ceilingMap is { } ceiling && !IsTileTransparentAt(ceiling, targetPos))
                 continue;
 
-            _goap.Remember((uid, goap), targetUid, targetXform.Coordinates);
-        }
-
-        if (!eyes.CrossZLevelVision || currentMapUid == null)
-            return;
-
-        if (!_mapQuery.TryComp(currentMapUid.Value, out var currentMapComp))
-            return;
-
-        // Second - search map below and filter targets with transparent tile above their head.
-        // LOS is checked on our current map; then we verify the floor tile
-        // directly above the target (on our map) is transparent — i.e. there is a hole/grate
-        // in the ceiling the NPC can look through.
-        if (_zLevels.TryMapDown((currentMapUid.Value, null), out var mapBelow) &&
-            _mapQuery.TryComp(mapBelow, out var belowMapComp))
-        {
-            _nearbyBuffer.Clear();
-            _lookup.GetEntitiesInRange(
-                new MapCoordinates(selfWorldPos, belowMapComp.MapId),
-                eyes.VisionRadius,
-                _nearbyBuffer);
-
-            foreach (var target in _nearbyBuffer)
-            {
-                var targetUid = target.Owner;
-                if (targetUid == uid)
-                    continue;
-
-                if (TryComp<MobStateComponent>(targetUid, out var mobState)
-                    ? _mobState.IsIncapacitated(targetUid, mobState)
-                    : Terminating(targetUid))
-                    continue;
-
-                if (!_xformQuery.TryGetComponent(targetUid, out var targetXform))
-                    continue;
-
-                var targetWorldPos = _transform.GetWorldPosition(targetXform);
-                if (Vector2.Distance(selfWorldPos, targetWorldPos) > eyes.VisionRadius)
-                    continue;
-
-                // LOS check — both points on our current map. We verify there is a direct line
-                // of sight from us to the point on our level where the target below is located.
-                var selfOnCurrentMap = new MapCoordinates(selfWorldPos, currentMapComp.MapId);
-                var targetPosOnCurrentMap = new MapCoordinates(targetWorldPos, currentMapComp.MapId);
-                if (!_examine.InRangeUnOccluded(selfOnCurrentMap, targetPosOnCurrentMap, eyes.VisionRadius + 0.5f, null))
-                    continue;
-
-                // Only visible if the tile directly above the target (on our map) is transparent:
-                // i.e. the floor/ceiling between the two levels lets light through.
-                if (!IsTileTransparentAt(currentMapUid.Value, targetWorldPos))
-                    continue;
-
-                _goap.Remember((uid, goap), targetUid, targetXform.Coordinates);
-            }
-        }
-
-        // Third - if we have a transparent tile above us, search map above.
-        // The transparent tile check gates the entire scan; LOS is then checked per-target
-        // on the above map's coordinate space.
-        if (_zLevels.TryMapUp((currentMapUid.Value, null), out var mapAbove) &&
-            IsTileTransparentAt(mapAbove, selfWorldPos) &&
-            _mapQuery.TryComp(mapAbove, out var aboveMapComp))
-        {
-            _nearbyBuffer.Clear();
-            _lookup.GetEntitiesInRange(
-                new MapCoordinates(selfWorldPos, aboveMapComp.MapId),
-                eyes.VisionRadius,
-                _nearbyBuffer);
-
-            foreach (var target in _nearbyBuffer)
-            {
-                var targetUid = target.Owner;
-                if (targetUid == uid)
-                    continue;
-
-                if (TryComp<MobStateComponent>(targetUid, out var mobState)
-                    ? _mobState.IsIncapacitated(targetUid, mobState)
-                    : Terminating(targetUid))
-                    continue;
-
-                if (!_xformQuery.TryGetComponent(targetUid, out var targetXform))
-                    continue;
-
-                var targetWorldPos = _transform.GetWorldPosition(targetXform);
-                if (Vector2.Distance(selfWorldPos, targetWorldPos) > eyes.VisionRadius)
-                    continue;
-
-                // LOS check — both points projected onto the above map.
-                var selfOnAboveMap = new MapCoordinates(selfWorldPos, aboveMapComp.MapId);
-                var targetOnAboveMap = new MapCoordinates(targetWorldPos, aboveMapComp.MapId);
-                if (!_examine.InRangeUnOccluded(selfOnAboveMap, targetOnAboveMap, eyes.VisionRadius + 0.5f, null))
-                    continue;
-
-                _goap.Remember((uid, goap), targetUid, targetXform.Coordinates);
-            }
+            _goap.Remember((uid, goap), target, targetXform.Coordinates, eyes.MemoryDuration);
         }
     }
 

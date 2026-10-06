@@ -1,0 +1,154 @@
+- type: entity
+  parent: BaseStructure
+  id: CETradeStandBase
+  abstract: true
+  components:
+  - type: PlacementReplacement
+    key: floorTile
+  - type: Physics
+    canCollide: false
+  - type: Fixtures
+  - type: Transform
+    noRot: true
+  - type: Sprite
+    sprite: _CE/Structures/Furniture/Carpets/murk.rsi
+    drawdepth: FloorTiles
+    color: "#ffffffd1"
+  - type: CETradeTable
+  - type: GuideHelp
+    guides:
+    - CETradeGuideEN
+    - CETradeGuideRU
+
+- type: entity
+  parent: CETradeStandBase
+  id: CETradeCarpetBase
+  abstract: true
+  name: murk trade carpet
+  description: Traders post their items for sale here
+  components:
+  - type: Icon
+    sprite: _CE/Structures/Furniture/Carpets/murk.rsi
+    state: full
+  - type: IconSmooth
+    key: carpet
+    base: carpet_
+  - type: Tag
+    tags:
+    - Carpet
+    - ForceFixRotations
+  - type: CETradeTable
+    slots:
+    - -0.22, 0.22
+    - 0.22, 0.22
+    - -0.22, -0.22
+    - 0.22, -0.22
+
+- type: entity
+  parent: CETradeStandBase
+  id: CETradePostamentBase
+  abstract: true
+  name: murk trade postament
+  description: Traders showcase their special goods here
+  components:
+  - type: Sprite
+    state: postament
+  - type: Icon
+    sprite: _CE/Structures/Furniture/Carpets/murk.rsi
+    state: postament
+  - type: Tag
+    tags:
+    - ForceFixRotations
+  - type: CETradeTable
+    slots:
+    - 0, 0
+
+- type: entity
+  parent: CETradeCarpetBase
+  id: CETradeTableHorticulture
+  suffix: horticulture
+  categories: [ ForkFiltered ]
+  components:
+  - type: CETradeTable
+    shop: Horticulture
+
+- type: entity
+  parent: CETradeCarpetBase
+  id: CETradeTableHomeDecor
+  suffix: home decor
+  categories: [ ForkFiltered ]
+  components:
+  - type: CETradeTable
+    shop: HomeDecor
+
+- type: entity
+  parent: CETradeCarpetBase
+  id: CETradeTableTailors
+  suffix: tailors
+  categories: [ ForkFiltered ]
+  components:
+  - type: CETradeTable
+    shop: Tailors
+
+- type: entity
+  parent: CETradeCarpetBase
+  id: CETradeTableDwarfMiners
+  suffix: dwarf miners
+  categories: [ ForkFiltered ]
+  components:
+  - type: CETradeTable
+    shop: DwarfMiners
+
+- type: entity
+  parent: CETradeCarpetBase
+  id: CETradeTableAlcohol
+  suffix: alcohol
+  categories: [ ForkFiltered ]
+  components:
+  - type: CETradeTable
+    shop: Alcohol
+
+- type: entity
+  parent: CETradeCarpetBase
+  id: CETradeTableEmpireGuard
+  suffix: empire guard
+  categories: [ ForkFiltered ]
+  components:
+  - type: CETradeTable
+    shop: EmpireGuard
+
+- type: entity
+  parent: CETradeCarpetBase
+  id: CETradeTableHelsinWarHouse
+  suffix: Helsin War House
+  categories: [ ForkFiltered ]
+  components:
+  - type: CETradeTable
+    shop: HelsinWarHouse
+
+- type: entity
+  parent: CETradeCarpetBase
+  id: CETradeTableApothecariesGuild
+  suffix: apothecaries guild
+  categories: [ ForkFiltered ]
+  components:
+  - type: CETradeTable
+    shop: ApothecariesGuild
+
+- type: entity
+  parent: CETradeCarpetBase
+  id: CETradeTableImperialChancellery
+  suffix: imperial chancellery
+  categories: [ ForkFiltered ]
+  components:
+  - type: CETradeTable
+    shop: ImperialChancellery
+
+- type: entity
+  parent: CETradeCarpetBase
+  id: CETradeTableOrders
+  suffix: orders
+  categories: [ ForkFiltered ]
+  components:
+  - type: CETradeTable
+    shop: Orders

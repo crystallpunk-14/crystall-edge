@@ -102,6 +102,11 @@ public sealed partial class MaterialResource : CEResourceRequirement
         return 0;
     }
 
+    public override string GetRequirementAmount()
+    {
+        return Count.ToString();
+    }
+
     public override string GetRequirementTitle(IPrototypeManager protoManager)
     {
         if (!protoManager.TryIndex(Material, out var indexedMaterial))

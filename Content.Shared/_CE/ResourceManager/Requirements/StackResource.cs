@@ -1,4 +1,4 @@
-using Content.Shared._CE.Trading.Systems;
+using Content.Shared._CE.Trade;
 using Content.Shared.Stacks;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
@@ -70,7 +70,7 @@ public sealed partial class StackResource : CEResourceRequirement
         if (!protoManager.TryIndex(indexedStack.Spawn, out var indexedProto))
             return 0;
 
-        var priceSys = entManager.System<CESharedEconomySystem>();
+        var priceSys = entManager.System<CEEconomySystem>();
 
         return priceSys.GetEstimatedPrice(indexedProto) * Count;
     }
@@ -81,6 +81,11 @@ public sealed partial class StackResource : CEResourceRequirement
             return "Error stack";
 
         return $"{Loc.GetString(indexedStack.Name)} x{Count}";
+    }
+
+    public override string GetRequirementAmount()
+    {
+        return Count.ToString();
     }
 
     public override SpriteSpecifier? GetRequirementTexture(IPrototypeManager protoManager)
