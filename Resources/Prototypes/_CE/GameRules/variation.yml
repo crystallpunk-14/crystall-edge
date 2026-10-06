@@ -12,7 +12,7 @@
   - type: CERockReplaceVariationPass
   - type: EntityReplaceVariationPass
     entitiesPerReplacementAverage: 10
-    entitiesPerReplacementStdDev: 8
+    entitiesPerReplacementStdDev: 2
     replacements:
     - id: CEWallStoneOreCoal
       weight: 1
@@ -24,10 +24,20 @@
   - type: CERockReplaceVariationPass
   - type: EntityReplaceVariationPass
     entitiesPerReplacementAverage: 10
-    entitiesPerReplacementStdDev: 8
+    entitiesPerReplacementStdDev: 2
     replacements:
     - id: CEWallStoneOreIron
       weight: 1
+
+- type: entity
+  id: CEGameRuleDiamondOreDistributionVariationPass
+  parent: CEBaseVariationPass
+  components:
+  - type: CERockReplaceVariationPass
+  - type: CEStaticEntityReplacementVariationPass
+    replacementCount: 10
+    replacementMap:
+      CEWallStone: CEWallStoneOreDiamond
 
 - type: entity
   id: CEGameRuleWallsDamagedVariationPass
@@ -66,3 +76,12 @@
     replacementCount: 15
     replacementMap:
       CEWallStone: CEWallCrystalCore
+
+- type: entity
+  id: CEStaticDiamondCoreVariationPass
+  parent: CEBaseVariationPass
+  components:
+  - type: CEStaticEntityReplacementVariationPass
+    replacementCount: 1
+    replacementMap:
+      CEWallStone: CEWallDiamondCore

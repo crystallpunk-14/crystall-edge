@@ -22,8 +22,10 @@
     # Ore veins
     - id: CEGameRuleCoalOreDistributionVariationPass
     - id: CEGameRuleIronOreDistributionVariationPass
+    - id: CEGameRuleDiamondOreDistributionVariationPass
     - id: CEGameRuleWallsDamagedVariationPass
     # Cores
     - id: CEStaticIronCoreVariationPass
     - id: CEStaticCoalCoreVariationPass
     - id: CEStaticCrystalCoreVariationPass
+    - id: CEStaticDiamondCoreVariationPass

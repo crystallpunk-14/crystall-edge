@@ -58,6 +58,11 @@
     essences:
       Energia: { min: 2, max: 6 }
       Crystal: { min: 1, max: 3 }
+  - type: CEShiny
+    effect: CEEffectShinyEnergyCrystal
+    radius: 0.2
+    minFrequency: 3
+    maxFrequency: 8
 
 - type: entity
   id: CEEnergyCrystalCell

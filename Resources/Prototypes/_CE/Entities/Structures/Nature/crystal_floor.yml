@@ -36,6 +36,11 @@
     canCollide: true
   - type: TileEmission
     color: "#00ddff"
+  - type: CEShiny
+    effect: CEEffectShinyEnergyCrystal
+    radius: 0.4
+    minFrequency: 3
+    maxFrequency: 8
   - type: Fixtures
     fixtures:
       fix1:

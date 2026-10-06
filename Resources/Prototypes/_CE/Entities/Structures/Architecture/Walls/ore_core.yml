@@ -24,6 +24,11 @@
     sprite: _CE/Structures/Architecture/Walls/Ore/core_iron.rsi
   - type: IconSmooth
     base: wall
+  - type: CEShiny
+    effect: CEEffectShinySilver
+    radius: 0.4
+    minFrequency: 3
+    maxFrequency: 8
   - type: CEOreVein
     table: !type:AllSelector
       children:
@@ -61,6 +66,11 @@
     shader: unshaded
   - type: TileEmission
     color: "#00ddff"
+  - type: CEShiny
+    effect: CEEffectShinyEnergyCrystal
+    radius: 0.4
+    minFrequency: 3
+    maxFrequency: 8
   - type: CEOreVein
     table: !type:AllSelector
       children:
@@ -69,3 +79,27 @@
     damage:
       types:
         Structural: 30
+
+- type: entity
+  id: CEWallDiamondCore
+  name: diamond ore core
+  description: "An incredibly hard core studded with diamonds. Pickaxes and ordinary drills just bounce off it - only an advanced drill or a manipulator's mining laser can break it."
+  parent: CEOreCoreBase
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Architecture/Walls/Ore/core_diamond.rsi
+  - type: Icon
+    sprite: _CE/Structures/Architecture/Walls/Ore/core_diamond.rsi
+  - type: IconSmooth
+    base: wall
+  - type: Damageable
+    damageModifierSet: CERockStructuralHard
+  - type: CEShiny
+    effect: CEEffectShinyDiamond
+    radius: 0.4
+    minFrequency: 3
+    maxFrequency: 8
+  - type: CEOreVein
+    table: !type:AllSelector
+      children:
+      - id: CEDiamondOre1
