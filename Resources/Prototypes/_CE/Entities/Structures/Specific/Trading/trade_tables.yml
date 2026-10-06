@@ -15,6 +15,10 @@
     drawdepth: FloorTiles
     color: "#ffffffd1"
   - type: CETradeTable
+  - type: GuideHelp
+    guides:
+    - CETradeGuideEN
+    - CETradeGuideRU
 
 - type: entity
   parent: CETradeStandBase

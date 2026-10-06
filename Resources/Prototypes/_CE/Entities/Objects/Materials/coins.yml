@@ -43,6 +43,10 @@
     radius: 0.2
     minFrequency: 2
     maxFrequency: 6
+  - type: GuideHelp
+    guides:
+    - CETradeGuideEN
+    - CETradeGuideRU
 
 # Copper
 

@@ -9,6 +9,16 @@
     - state: farming
 
 - type: entity
+  id: CEGuidebookTradingDummy
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    sprite: _CE/Interface/guidebook.rsi
+    layers:
+    - state: trading
+
+- type: entity
   id: CEGuidebookEssenceEarthDummy
   categories: [ HideSpawnMenu ]
   save: false

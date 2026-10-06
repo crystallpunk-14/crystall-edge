@@ -44,6 +44,10 @@
     dissolved: 0.75
     overlayEnabled: false
     soundEnabled: false
+  - type: GuideHelp
+    guides:
+    - CETradeGuideEN
+    - CETradeGuideRU
 
 - type: entity
   id: CEActionEnterShadowRift

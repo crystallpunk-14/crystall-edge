@@ -16,3 +16,7 @@
     dissolved: 0.5
     overlayEnabled: false
     soundEnabled: false
+  - type: GuideHelp
+    guides:
+    - CETradeGuideEN
+    - CETradeGuideRU
