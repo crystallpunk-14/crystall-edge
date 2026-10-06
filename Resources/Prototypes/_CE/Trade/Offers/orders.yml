@@ -80,7 +80,7 @@
     stack: CEIronBar
     count: 5
   receive:
-    bonus: 50
+    bonus: 1
 
 - type: tradeOffer
   id: SellCoal
@@ -90,7 +90,7 @@
     stack: CECoal
     count: 5
   receive:
-    bonus: 25
+    bonus: 1
 
 - type: tradeOffer
   id: SellDiamond
@@ -100,4 +100,4 @@
     stack: CEDiamond
     count: 5
   receive:
-    bonus: 100
+    bonus: 1
