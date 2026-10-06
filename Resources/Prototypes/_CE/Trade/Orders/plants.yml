@@ -1,0 +1,70 @@
+
+- type: tradeOffer
+  id: SellCabbage
+  shop: Orders
+  cost:
+  - !type:ProtoIdResource
+    protoId: CEFoodCabbage
+    count: 15
+  receive:
+    bonus: 10
+
+- type: tradeOffer
+  id: SellPumpkin
+  shop: Orders
+  cost:
+  - !type:ProtoIdResource
+    protoId: CEFoodPumpkin
+    count: 10
+  receive:
+    bonus: 10
+
+- type: tradeOffer
+  id: SellCucumber
+  shop: Orders
+  cost:
+  - !type:ProtoIdResource
+    protoId: CEFoodCucumber
+    count: 20
+  receive:
+    bonus: 10
+
+- type: tradeOffer
+  id: SellTomatoes
+  shop: Orders
+  cost:
+  - !type:ProtoIdResource
+    protoId: CEFoodTomatoes
+    count: 20
+  receive:
+    bonus: 10
+
+- type: tradeOffer
+  id: SellPepper
+  shop: Orders
+  cost:
+  - !type:ProtoIdResource
+    protoId: CEFoodPepper
+    count: 15
+  receive:
+    bonus: 10
+
+- type: tradeOffer
+  id: SellCorn
+  shop: Orders
+  cost:
+  - !type:ProtoIdResource
+    protoId: CEFoodCorn
+    count: 15
+  receive:
+    bonus: 10
+
+- type: tradeOffer
+  id: SellCarrot
+  shop: Orders
+  cost:
+  - !type:ProtoIdResource
+    protoId: CEFoodCarrot
+    count: 20
+  receive:
+    bonus: 10

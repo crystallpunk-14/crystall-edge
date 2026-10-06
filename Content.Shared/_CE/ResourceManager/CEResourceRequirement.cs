@@ -1,6 +1,5 @@
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Utility;
 
 namespace Content.Shared._CE.ResourceManager;
 
@@ -49,26 +48,10 @@ public abstract partial class CEResourceRequirement
     }
 
     /// <summary>
-    /// You can specify an icon generated from an entity. It will support layering, colour changes and other layer options. Return null to disable.
+    /// Icon layers drawn bottom to top. Empty to hide the icon.
     /// </summary>
-    public virtual EntityPrototype? GetRequirementEntityView(IPrototypeManager protoManager)
+    public virtual List<CEResourceIconLayer> GetRequirementIcon(IEntityManager entManager, IPrototypeManager protoManager)
     {
-        return null;
-    }
-
-    /// <summary>
-    /// You can specify the texture directly. Return null to disable.
-    /// </summary>
-    public virtual SpriteSpecifier? GetRequirementTexture(IPrototypeManager protoManager)
-    {
-        return null;
-    }
-
-    /// <summary>
-    /// Optional, allows you to repaint the icon.
-    /// </summary>
-    public virtual Color GetRequirementColor(IPrototypeManager protoManager)
-    {
-        return Color.White;
+        return new List<CEResourceIconLayer>();
     }
 }

@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Shared._CE.Cooking.Components;
 using Content.Shared._CE.Cooking.Prototypes;
 using Content.Shared.Chemistry.EntitySystems;
@@ -86,7 +85,7 @@ public sealed partial class FoodResource : CEResourceRequirement
 
     public override string GetRequirementAmount()
     {
-        return Count.ToString();
+        return $"{Count}u";
     }
 
     public override string GetRequirementTitle(IPrototypeManager protoManager)
@@ -97,22 +96,30 @@ public sealed partial class FoodResource : CEResourceRequirement
         return $"{Loc.GetString(indexedRecipe.FoodData.Name ?? "Unknown Food")} ({Count}u)";
     }
 
-    public override SpriteSpecifier? GetRequirementTexture(IPrototypeManager protoManager)
+    public override List<CEResourceIconLayer> GetRequirementIcon(IEntityManager entManager, IPrototypeManager protoManager)
     {
+        var layers = new List<CEResourceIconLayer>();
         if (!protoManager.TryIndex(Recipe, out var indexedRecipe))
-            return null;
+            return layers;
 
-        var firstLayer = indexedRecipe.FoodData.Visuals.First();
+        if (protoManager.TryIndex(indexedRecipe.FoodType, out var foodType) && foodType.IconHolder is { } holder)
+            layers.Add(CEResourceIconLayer.FromEntity(holder));
 
-        return new SpriteSpecifier.Rsi(new(firstLayer.RsiPath ?? ""), firstLayer.State ?? "");
-    }
+        foreach (var visual in indexedRecipe.FoodData.Visuals)
+        {
+            if (visual.Visible == false)
+                continue;
 
-    public override Color GetRequirementColor(IPrototypeManager protoManager)
-    {
-        if (!protoManager.TryIndex(Recipe, out var indexedRecipe))
-            return Color.White;
+            SpriteSpecifier? sprite = null;
+            if (visual.RsiPath is { } rsi && visual.State is { } state)
+                sprite = new SpriteSpecifier.Rsi(new ResPath(rsi), state);
+            else if (visual.TexturePath is { } texture)
+                sprite = new SpriteSpecifier.Texture(new ResPath(texture));
 
-        var firstLayer = indexedRecipe.FoodData.Visuals.First();
-        return firstLayer.Color ?? Color.White;
+            if (sprite is not null)
+                layers.Add(CEResourceIconLayer.FromSprite(sprite, visual.Color));
+        }
+
+        return layers;
     }
 }

@@ -1,4 +1,5 @@
 using Content.Shared._CE.Skill.Components;
+using Content.Shared.Cargo;
 using Content.Shared.DoAfter;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction.Events;
@@ -88,5 +89,25 @@ public abstract partial class CESharedSkillSystem
             _popup.PopupClient(Loc.GetString("ce-skill-learned"), target, target);
         else
             _popup.PopupClient(Loc.GetString("ce-skill-already-known"), target, target);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnBookPrice(Entity<CESkillBookComponent> ent, ref PriceCalculationEvent args)
+    {
+        if (args.Handled || !_proto.Resolve(ent.Comp.Skill, out var skill))
+            return;
+
+        args.Price += skill.Price;
+    }
+
+    [SubscribeLocalEvent]
+    private void OnBookEstimatedPrice(ref EstimatedPriceCalculationEvent args)
+    {
+        if (args.Handled ||
+            !args.Prototype.TryComp<CESkillBookComponent>(out var book, Factory) ||
+            !_proto.Resolve(book.Skill, out var skill))
+            return;
+
+        args.Price += skill.Price;
     }
 }

@@ -1,7 +1,6 @@
 using Content.Shared.Materials;
 using Content.Shared.Stacks;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Utility;
 
 namespace Content.Shared._CE.ResourceManager.Requirements;
 
@@ -115,8 +114,11 @@ public sealed partial class MaterialResource : CEResourceRequirement
         return $"{Loc.GetString(indexedMaterial.Name)} x{Count}";
     }
 
-    public override SpriteSpecifier? GetRequirementTexture(IPrototypeManager protoManager)
+    public override List<CEResourceIconLayer> GetRequirementIcon(IEntityManager entManager, IPrototypeManager protoManager)
     {
-        return !protoManager.TryIndex(Material, out var indexedMaterial) ? null : indexedMaterial.Icon;
+        if (!protoManager.TryIndex(Material, out var indexedMaterial) || indexedMaterial.Icon is not { } icon)
+            return new List<CEResourceIconLayer>();
+
+        return new List<CEResourceIconLayer> { CEResourceIconLayer.FromSprite(icon) };
     }
 }

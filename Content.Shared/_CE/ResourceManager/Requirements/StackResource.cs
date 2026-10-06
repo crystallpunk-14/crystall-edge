@@ -1,7 +1,6 @@
 using Content.Shared._CE.Trade;
 using Content.Shared.Stacks;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Utility;
 
 namespace Content.Shared._CE.ResourceManager.Requirements;
 
@@ -88,8 +87,11 @@ public sealed partial class StackResource : CEResourceRequirement
         return Count.ToString();
     }
 
-    public override SpriteSpecifier? GetRequirementTexture(IPrototypeManager protoManager)
+    public override List<CEResourceIconLayer> GetRequirementIcon(IEntityManager entManager, IPrototypeManager protoManager)
     {
-        return !protoManager.TryIndex(Stack, out var indexedStack) ? null : indexedStack.Icon;
+        if (!protoManager.TryIndex(Stack, out var indexedStack) || indexedStack.Icon is not { } icon)
+            return new List<CEResourceIconLayer>();
+
+        return new List<CEResourceIconLayer> { CEResourceIconLayer.FromSprite(icon) };
     }
 }

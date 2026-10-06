@@ -65,12 +65,9 @@ public sealed partial class ProtoIdResource : CEResourceRequirement
         return Count.ToString();
     }
 
-    public override EntityPrototype? GetRequirementEntityView(IPrototypeManager protoManager)
+    public override List<CEResourceIconLayer> GetRequirementIcon(IEntityManager entManager, IPrototypeManager protoManager)
     {
-        if (!protoManager.TryIndex(ProtoId, out var indexedProto))
-            return null;
-
-        return indexedProto;
+        return new List<CEResourceIconLayer> { CEResourceIconLayer.FromEntity(ProtoId) };
     }
 
     private Dictionary<EntProtoId, int> IndexIngredients(IEntityManager entManager, HashSet<EntityUid> ingredients)

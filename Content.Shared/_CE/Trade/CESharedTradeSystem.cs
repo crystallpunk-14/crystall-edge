@@ -265,8 +265,11 @@ public abstract partial class CESharedTradeSystem : EntitySystem
 
         foreach (var cost in offer.Cost)
         {
-            if (cost.GetRequirementEntityView(Proto) is { } view)
-                return view.ID;
+            foreach (var layer in cost.GetRequirementIcon(EntityManager, Proto))
+            {
+                if (layer.Entity is { } entity)
+                    return entity;
+            }
         }
 
         return null;
