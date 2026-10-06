@@ -30,6 +30,18 @@
       weight: 1
 
 - type: entity
+  id: CEGameRuleDiamondOreDistributionVariationPass
+  parent: CEBaseVariationPass
+  components:
+  - type: CERockReplaceVariationPass
+  - type: EntityReplaceVariationPass
+    entitiesPerReplacementAverage: 120
+    entitiesPerReplacementStdDev: 8
+    replacements:
+    - id: CEWallStoneOreDiamond
+      weight: 1
+
+- type: entity
   id: CEGameRuleWallsDamagedVariationPass
   parent: CEBaseVariationPass
   components:

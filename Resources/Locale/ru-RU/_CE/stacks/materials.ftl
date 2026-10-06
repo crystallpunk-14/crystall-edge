@@ -25,6 +25,9 @@ ce-stack-gold-scrap = золотой металлолом
 ce-stack-coal-ore = каменный уголь
 ce-stack-iron-ore = железная руда
 ce-stack-gold-ore = золотая руда
+ce-stack-diamond-ore = алмазная руда
+
+ce-stack-diamonds = алмазы
 
 ce-stack-glass-sheet = стекло
 

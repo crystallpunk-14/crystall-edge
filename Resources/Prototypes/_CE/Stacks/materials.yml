@@ -62,6 +62,20 @@
   maxCount: 30
 
 - type: stack
+  id: CEDiamondOre
+  name: ce-stack-diamond-ore
+  spawn: CEDiamondOre1
+  icon: { sprite: _CE/Objects/Materials/diamonds_ore.rsi, state: diamond_2 }
+  maxCount: 30
+
+- type: stack
+  id: CEDiamond
+  name: ce-stack-diamonds
+  spawn: CEDiamond1
+  icon: { sprite: _CE/Objects/Materials/diamonds.rsi, state: diamond_2 }
+  maxCount: 10
+
+- type: stack
   id: CECoal
   name: ce-stack-coal
   icon: { sprite: "_CE/Objects/Materials/coal.rsi", state: ore1 }

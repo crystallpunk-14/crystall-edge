@@ -36,6 +36,23 @@
   result: CEBrassBar1
   resultCount: 1
 
+#MARK: Gems
+
+- type: CERecipe
+  id: CEDiamond1
+  parent: CEBaseMeltingFurnaceRecipe
+  category: Materials
+  craftTime: 4
+  requirements:
+  - !type:MaterialResource
+    material: CEDiamond
+    count: 5
+  - !type:StackResource
+    stack: CECoal
+    count: 1
+  result: CEDiamond1
+  resultCount: 1
+
 #MARK: Sheet
 
 - type: CERecipe

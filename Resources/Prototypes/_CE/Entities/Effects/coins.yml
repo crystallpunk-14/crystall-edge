@@ -82,3 +82,15 @@
     color: "#d36630"
   - type: PointLight
     color: "#d36630"
+
+- type: entity
+  id: CEEffectShinyDiamond
+  parent: CEEffectShinyBase
+  categories: [ ForkFiltered ]
+  suffix: Diamond
+  save: false
+  components:
+  - type: Sprite
+    color: "#9fe3f0"
+  - type: PointLight
+    color: "#9fe3f0"

@@ -25,6 +25,9 @@ ce-stack-gold-scrap = gold scrap
 ce-stack-coal-ore = hard coal
 ce-stack-iron-ore = iron ore
 ce-stack-gold-ore = gold ore
+ce-stack-diamond-ore = diamond ore
+
+ce-stack-diamonds = diamonds
 
 ce-stack-glass-sheet = glass
 
