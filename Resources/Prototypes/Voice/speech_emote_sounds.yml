@@ -641,14 +641,6 @@
     Salute:
       collection: Salutes
 
-# mobs
-- type: emoteSounds
-  id: Zombie
-  sound:
-    collection: ZombieScreams
-    params:
-      variation: 0.125
-
 - type: emoteSounds
   id: Skeleton
   sound:

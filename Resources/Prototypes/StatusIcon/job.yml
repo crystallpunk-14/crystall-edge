@@ -480,17 +480,6 @@
 
 - type: jobIcon
   parent: JobIcon
-  id: JobIconZombie # This is a perfectly legitimate profession to pursue
-  icon:
-    sprite: *icon-rsi
-    state: Zombie
-  jobName: job-name-zombie
-  isCrewJob: false
-
-# Admin
-
-- type: jobIcon
-  parent: JobIcon
   id: JobIconCBURN
   icon:
     sprite: *icon-rsi

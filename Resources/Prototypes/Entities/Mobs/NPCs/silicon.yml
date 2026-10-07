@@ -47,7 +47,6 @@
   - type: Vocal
     emoteSounds: UnisexSilicon
   - type: Emoting
-  - type: ZombieImmune
   - type: ProtectedFromStepTriggers
   - type: NoSlip
   - type: Insulated

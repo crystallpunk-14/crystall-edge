@@ -155,7 +155,6 @@
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
-  - type: ZombieImmune
   - type: Destructible
     thresholds:
     - trigger:
@@ -194,7 +193,6 @@
       reagents:
       - ReagentId: Blood
         Quantity: 0.1
-  - type: ZombieImmune
 
 
 - type: entity
@@ -424,7 +422,6 @@
     tags:
     - Trash
     - VimPilot
-  - type: NonSpreaderZombie
   - type: StepTrigger
     requiredTriggeredSpeed: 1
   - type: TriggerOnStepTrigger
@@ -603,8 +600,6 @@
     grindableSolutionName: food
   - type: ReplacementAccent
     accent: mothroach
-  - type: ZombieAccentOverride
-    accent: zombieMoth
   - type: Vocal
     emoteSounds: UnisexMoth
     wilhelmProbability: 0.001
@@ -889,7 +884,6 @@
       behaviors:
       - !type:GibBehavior
         recursive: false
-  - type: ZombieImmune
 
 - type: entity
   name: cow
@@ -2108,7 +2102,6 @@
   - type: MobPrice
     price: 50
   - type: BadFood
-  - type: NonSpreaderZombie
   - type: FireVisuals
     sprite: Mobs/Effects/onfire.rsi
     normalState: Mouse_burning
@@ -2251,7 +2244,6 @@
     - id: SheetUranium1
       amount: 1
   - type: Damageable
-    damageModifierSet: Zombie
 
 - type: entity
   name: lizard #Weh
@@ -3810,7 +3802,6 @@
     baseResistTime: 3
   - type: MobPrice
     price: 60
-  - type: NonSpreaderZombie
   - type: FireVisuals
     sprite: Mobs/Effects/onfire.rsi
     normalState: Mouse_burning

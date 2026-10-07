@@ -1,7 +1,6 @@
 using Content.Server.Antag;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules.Components;
-using Content.Server.Zombies;
 using Content.Shared.Administration;
 using Content.Server.Clothing.Systems;
 using Content.Shared.Database;
@@ -19,12 +18,10 @@ namespace Content.Server.Administration.Systems;
 public sealed partial class AdminVerbSystem
 {
     [Dependency] private AntagSelectionSystem _antag = default!;
-    [Dependency] private ZombieSystem _zombie = default!;
     [Dependency] private GameTicker _gameTicker = default!;
     [Dependency] private OutfitSystem _outfit = default!;
 
     private static readonly EntProtoId DefaultTraitorRule = "Traitor";
-    private static readonly EntProtoId DefaultInitialInfectedRule = "Zombie";
     private static readonly EntProtoId DefaultNukeOpRule = "LoneOpsSpawn";
     private static readonly EntProtoId DefaultRevsRule = "Revolutionary";
     private static readonly EntProtoId DefaultThiefRule = "Thief";
@@ -65,36 +62,6 @@ public sealed partial class AdminVerbSystem
             Message = string.Join(": ", traitorName, Loc.GetString("admin-verb-make-traitor")),
         };
         args.Verbs.Add(traitor);
-
-        var initialInfectedName = Loc.GetString("admin-verb-text-make-initial-infected");
-        Verb initialInfected = new()
-        {
-            Text = initialInfectedName,
-            Category = VerbCategory.Antag,
-            Icon = new SpriteSpecifier.Rsi(new("/Textures/Interface/Misc/job_icons.rsi"), "InitialInfected"),
-            Act = () =>
-            {
-                _antag.ForceMakeAntag<ZombieRuleComponent>(targetPlayer, DefaultInitialInfectedRule);
-            },
-            Impact = LogImpact.High,
-            Message = string.Join(": ", initialInfectedName, Loc.GetString("admin-verb-make-initial-infected")),
-        };
-        args.Verbs.Add(initialInfected);
-
-        var zombieName = Loc.GetString("admin-verb-text-make-zombie");
-        Verb zombie = new()
-        {
-            Text = zombieName,
-            Category = VerbCategory.Antag,
-            Icon = new SpriteSpecifier.Rsi(new("/Textures/Interface/Misc/job_icons.rsi"), "Zombie"),
-            Act = () =>
-            {
-                _zombie.ZombifyEntity(args.Target);
-            },
-            Impact = LogImpact.High,
-            Message = string.Join(": ", zombieName, Loc.GetString("admin-verb-make-zombie")),
-        };
-        args.Verbs.Add(zombie);
 
         var nukeOpName = Loc.GetString("admin-verb-text-make-nuclear-operative");
         Verb nukeOp = new()

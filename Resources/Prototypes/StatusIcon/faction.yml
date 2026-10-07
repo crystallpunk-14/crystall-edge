@@ -1,28 +1,4 @@
 - type: factionIcon
-  id: ZombieFaction
-  priority: 11
-  showTo:
-    components:
-    - ShowAntagIcons
-    - Zombie
-    - InitialInfected
-  icon:
-    sprite: /Textures/Interface/Misc/job_icons.rsi
-    state: Zombie
-
-- type: factionIcon
-  id: InitialInfectedFaction
-  priority: 11
-  showTo:
-    components:
-    - ShowAntagIcons
-    - InitialInfected
-    - Zombie
-  icon:
-    sprite: /Textures/Interface/Misc/job_icons.rsi
-    state: InitialInfected
-
-- type: factionIcon
   id: RevolutionaryFaction
   isShaded: true
   priority: 11

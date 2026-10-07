@@ -207,18 +207,6 @@
     Phalanximine: 3
 
 - type: reaction
-  id: Ambuzol
-  reactants:
-    Ultravasculine:
-      amount: 1
-    Mannitol:
-      amount: 2
-    Romerodone:
-      amount: 1
-  products:
-    Ambuzol: 4
-
-- type: reaction
   id: Synaptizine
   reactants:
     Lithium:
