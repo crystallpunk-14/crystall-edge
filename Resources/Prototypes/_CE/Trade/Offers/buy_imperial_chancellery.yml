@@ -187,21 +187,3 @@
   reward:
   - !type:CETradeSpawnReward
     proto: CEVialSkullReinforced
-
-- type: tradeOffer
-  id: CETradeOfferCastingStaffBasic
-  shop: ImperialChancellery
-  pay:
-    bonus: 1
-  reward:
-  - !type:CETradeSpawnReward
-    proto: CECastingStaffBasic
-
-- type: tradeOffer
-  id: CETradeOfferSpellcastingAmulet
-  shop: ImperialChancellery
-  pay:
-    bonus: 1
-  reward:
-  - !type:CETradeSpawnReward
-    proto: CESpellcastingAmulet

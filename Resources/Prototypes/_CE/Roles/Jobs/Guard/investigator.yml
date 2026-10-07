@@ -7,15 +7,26 @@
   startingGear: CEInvestigatorGear
   icon: CEJobIconInvestigator
   supervisors: ce-job-supervisors-guard-commander
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: CEGuard
+      time: 1h
+    - !type:DepartmentTimeRequirement
+      department: CEAcademy
+      time: 1h
+    # The investigator mask is mandatory, these species have no mask slot
+    - !type:SpeciesRequirement
+      inverted: true
+      species:
+      - CECarrin
   special:
     - !type:AddComponentSpecial
       components:
       - type: CESalaryCounter
         salary: 75
-  #requirements:
-  #  - !type:DepartmentTimeRequirement
-  #    department: CEGuard
-  #    time: 3600 # 1 hours
+    - !type:CELearnSkillsSpecial
+      skills:
+      - CEMilitaryTraining
 
 - type: startingGear
   id: CEInvestigatorGear
@@ -25,7 +36,6 @@
   storage:
     back:
     - CEGuidebookImperialLaws
-    - CEWeaponGunJustice
 
 
 - type: entity

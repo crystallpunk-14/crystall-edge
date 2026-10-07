@@ -17,10 +17,6 @@
     radius: 2.5
   - type: CEActionManaCost
     manaCost: 20
-  - type: CEActionEssenceCost
-    essenceCost:
-      Air: 2
-      Flight: 1
   - type: CEActionStaminaCost
     cost: 15
   - type: Action

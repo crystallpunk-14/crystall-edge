@@ -1,7 +1,6 @@
 #nullable enable
 using System.Collections.Generic;
 using Content.Shared._CE.MagicEssence.Components;
-using Content.Shared._CE.MagicFocus.Components;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Item;
 using Robust.Shared.GameObjects;
@@ -57,10 +56,6 @@ public sealed class CEMagicEssenceStructureTest
                 if (proto.TryComp<CEMagicEssenceStructureExemptComponent>(out _, componentFactory))
                     continue;
 
-                // Magic foci show their own stored essence, not a rolled material essence.
-                if (proto.TryComp<CEMagicFocusComponent>(out _, componentFactory))
-                    continue;
-
                 if (!proto.TryComp<CEMagicEssenceStructureComponent>(out _, componentFactory))
                     missing.Add(proto.ID);
             }
@@ -101,39 +96,6 @@ public sealed class CEMagicEssenceStructureTest
         Assert.That(polluted, Is.Empty,
             $"{polluted.Count} EntityPrototype(s) have InjectorComponent (draw/inject vessels) but also CEMagicEssenceStructureComponent, " +
             $"which pollutes the essence reading of whatever gets drawn into them with the vessel's own material essence:\n{string.Join('\n', polluted)}");
-
-        await pair.CleanReturnAsync();
-    }
-
-    [Test]
-    public async Task CheckMagicFociHaveNoOwnEssenceStructure()
-    {
-        await using var pair = await PoolManager.GetServerClient();
-        var server = pair.Server;
-
-        var protoManager = server.ResolveDependency<IPrototypeManager>();
-        var componentFactory = server.ResolveDependency<IComponentFactory>();
-
-        var polluted = new List<string>();
-
-        await server.WaitAssertion(() =>
-        {
-            foreach (var proto in protoManager.EnumeratePrototypes<EntityPrototype>())
-            {
-                if (proto.Abstract)
-                    continue;
-
-                if (!proto.TryComp<CEMagicFocusComponent>(out _, componentFactory))
-                    continue;
-
-                if (proto.TryComp<CEMagicEssenceStructureComponent>(out _, componentFactory))
-                    polluted.Add(proto.ID);
-            }
-        });
-
-        Assert.That(polluted, Is.Empty,
-            $"{polluted.Count} EntityPrototype(s) have CEMagicFocusComponent but also CEMagicEssenceStructureComponent, " +
-            $"which pollutes the essence reading with a rolled material essence on top of the focus's own stored essence:\n{string.Join('\n', polluted)}");
 
         await pair.CleanReturnAsync();
     }

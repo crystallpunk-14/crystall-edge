@@ -12,9 +12,10 @@
           mapNameTemplate: "Shaar"
         - type: StationJobs
           availableJobs:
-            #Guard (5)
+            #Guard (6)
             CEGuardCommander: [ 1, 1 ]
-            CEGuard: [ 4, 4 ]
+            CEInvestigator: [ 2, 2 ]
+            CEGuard: [ 3, 3 ]
             #Engineering (4)
             CEBrigadier: [ 1, 1 ]
             CETechnician: [ 3, 4 ]

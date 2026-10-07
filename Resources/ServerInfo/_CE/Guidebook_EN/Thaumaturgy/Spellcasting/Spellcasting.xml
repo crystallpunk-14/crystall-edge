@@ -1,17 +1,12 @@
 <Document>
-# Magical focus
+# Spells
 
-Using spells requires a focus item charged with essence:
-
-<Box>
-<GuideEntityEmbed Entity="CECastingStaffBasic"/>
-<GuideEntityEmbed Entity="CESpellcastingAmulet"/>
-</Box>
-
-You can click the focus against any essence storage (vials, nodes) to absorb essence and charge the focus.
+Spells are discovered at the research table in the [bold]Spellcasting[/bold] area. Once the research is finished, you learn the spell immediately and receive a book that anyone can read to learn it as well.
 
 <Box>
-<GuideEntityEmbed Entity="CEGuidebookEssenceNodeDummy" Caption=""/>
+<GuideEntityEmbed Entity="CEResearchTable" Caption=""/>
 </Box>
+
+Casting spells consumes your mana, and some of them also drain stamina.
 
 </Document>

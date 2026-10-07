@@ -48,6 +48,12 @@
       - CEEffectManaDrain
     - !type:ChangeMana
       amount: -20
+    - !type:SpawnMagicTrace
+      icon:
+        sprite: _CE/Actions/Spells/mana_steal.rsi
+        state: icon
+      description: ce-magic-trace-mana-steal
+      duration: 1200 # 20 mana stolen x 60s, same rate as mana-costing spells
     0.45:
     - !type:SpawnEntity
       effectTarget: User

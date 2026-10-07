@@ -1,0 +1,27 @@
+- type: entity
+  id: CEMagicTrace
+  categories: [ HideSpawnMenu ]
+  name: magic trace
+  description: A faint imprint of magic, slowly dissolving.
+  components:
+  - type: CEMagicTrace
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - map: [ "enum.CEMagicTraceVisuals.Base" ]
+      sprite: _CE/Effects/Magic/pointer_sphere.rsi
+      state: sphere
+      shader: unshaded
+      color: "#42a4f5"
+    - map: [ "enum.CEMagicTraceVisuals.Icon" ]
+      shader: unshaded
+      scale: 0.5, 0.5
+  - type: Clickable
+  - type: Visibility
+    layer: 16 #magic vision only
+  # Placeholder lifetime, overridden on spawn by CEMagicTraceSystem
+  - type: CERandomizedTimedDespawn
+    minLifetime: 60
+    maxLifetime: 60
+  - type: CETimedDespawnFadeout
