@@ -49,6 +49,9 @@
     objectiveBlacklist:
       components: # avoid an infinite loop through e.g. a tormentor's spite objective
       - CETargetCompleteOwnedObjective
+  - type: CETargetSecretRoleBlacklist
+    secretRoleBlacklist:
+    - CEBountyHunter # helping the man hired to wipe us out complete his job makes no sense
 
 - type: entity
   id: CEObjectiveBrotherhoodDebt
