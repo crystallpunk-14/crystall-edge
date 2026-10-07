@@ -65256,25 +65256,11 @@ entities:
     - type: Transform
       parent: 2
       pos: 124.5,70.5
-    - type: AnalysisConsole
-      analyzerEntity: 17036
-    - type: DeviceLinkSource
-      linkedPorts:
-        17036:
-        - - ArtifactAnalyzerSender
-          - ArtifactAnalyzerReceiver
   - uid: 9244
     components:
     - type: Transform
       parent: 2
       pos: 124.5,73.5
-    - type: AnalysisConsole
-      analyzerEntity: 17035
-    - type: DeviceLinkSource
-      linkedPorts:
-        17035:
-        - - ArtifactAnalyzerSender
-          - ArtifactAnalyzerReceiver
 - proto: ComputerAtmosMonitoring
   entities:
   - uid: 9245

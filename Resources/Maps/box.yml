@@ -78788,11 +78788,6 @@ entities:
     - type: Transform
       parent: 8364
       pos: 71.5,-43.5
-    - type: DeviceLinkSource
-      linkedPorts:
-        21199:
-        - - ArtifactAnalyzerSender
-          - ArtifactAnalyzerReceiver
 - proto: ComputerAtmosMonitoring
   entities:
   - uid: 19021
@@ -79730,14 +79725,6 @@ entities:
     - type: Transform
       parent: 8364
       pos: 80.5,-23.5
-    - type: EntityStorage
-      air:
-        temperature: 293.1496
-        volume: 200
-        moles:
-          Oxygen: 5.001885
-          Nitrogen: 18.816614
-        immutable: False
   - uid: 27530
     components:
     - type: Transform
