@@ -7,7 +7,7 @@ using static Robust.Client.UserInterface.Controls.BoxContainer;
 
 namespace Content.Client._CE.Recruitment;
 
-public sealed class CERecruitmentWindow : DefaultWindow
+public sealed partial class CERecruitmentWindow : DefaultWindow
 {
     [Dependency] private IGameTiming _timing = default!;
 
