@@ -1,0 +1,23 @@
+- type: secretRole
+  parent: CEBaseSecretRoleGuardRestricted
+  id: CEVandal
+  name: ce-secret-role-name-vandal
+  description: ce-secret-role-description-vandal
+  icon: CESecretRoleIconVandal
+  skills:
+  - CEVandalCrushing
+  objectives: !type:EntSelector
+    id: CEObjectiveVandalSabotageRadio
+
+- type: entity
+  id: CEObjectiveVandalSabotageRadio
+  name: Sabotage the radio
+  description: No propaganda in my city. Every radio booth must be destroyed.
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Industrial/radio_station.rsi
+    state: base
+  - type: CEObjective
+  - type: CEObjectiveNoPrototypesCondition
+    prototypes:
+    - CERadioStation

@@ -3,13 +3,13 @@
   name: ce-secret-department-city-name
   description: ce-secret-department-city-description
   color: "#87b7ff"
-  weight: 0
+  weight: 10
   roles:
   - CECivilian
-  - CEThief
   - CEMurkwalker
   - CELover
   - CETormentor
+  - CEBountyHunter
   objectives: !type:EntSelector
     id: CEObjectiveCityRestoreLucsonSphere
 

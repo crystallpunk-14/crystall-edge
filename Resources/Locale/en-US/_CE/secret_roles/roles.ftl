@@ -19,3 +19,15 @@ ce-secret-role-description-lover = You're obsessed with one special person. You'
 
 ce-secret-role-name-tormentor = Tormentor
 ce-secret-role-description-tormentor = You'll do whatever it takes to watch your target suffer through a lifetime of failure. You intend to make sure that failure is guaranteed.
+
+ce-secret-role-name-recruiter = Recruiter
+ce-secret-role-description-recruiter = You know how to spot people the city has failed. Bring them into the Brotherhood - the more hands, the safer everyone is.
+
+ce-secret-role-name-recruit = Recruit
+ce-secret-role-description-recruit = You gave up your old ambitions and swore yourself to the Brotherhood. Its goals are yours now.
+
+ce-secret-role-name-bounty-hunter = Bounty Hunter
+ce-secret-role-description-bounty-hunter = You've been paid a large sum of money and hired to wipe out the criminal gang known as the Brotherhood in this city. Do your job.
+
+ce-secret-role-name-vandal = Vandal
+ce-secret-role-description-vandal = Oh, you're against the way things are and the guard's grip on the city. Let's wreck the place a little.

@@ -8,16 +8,13 @@
   },
   "states": [
     {
-      "name": "werewolf"
+      "name": "bounty_hunter"
     },
     {
       "name": "civilian"
     },
     {
       "name": "lover"
-    },
-    {
-      "name": "thief"
     },
     {
       "name": "murkwalker"

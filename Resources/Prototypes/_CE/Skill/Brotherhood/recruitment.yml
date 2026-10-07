@@ -1,0 +1,37 @@
+- type: skill
+  id: CERecruitment
+  name: ce-skill-brotherhood-recruitment-name
+  desc: ce-skill-brotherhood-recruitment-desc
+  icon:
+    sprite: _CE/Interface/Icons/SecretRoles/brotherhood.rsi
+    state: recruiter
+  effect: !type:AddAction
+    action: CEActionRecruit
+
+- type: entity
+  id: CEActionRecruit
+  name: Recruitment
+  description: Invite someone nearby to join the Brotherhood. They can refuse.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: CEVisualizeRadiusTargetAction
+  - type: CEVisualizeAoEZoneAction
+    radius: 0.5
+  - type: Action
+    useDelay: 600
+    itemIconStyle: BigAction
+  - type: Sprite
+    sprite: _CE/Interface/Icons/SecretRoles/brotherhood.rsi
+    layers:
+    - state: recruiter
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 1.5
+    interactOnMiss: false
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - MobState
+    event: !type:CERecruitActionEvent
+  - type: CERecruitmentAction
+    role: CERecruit

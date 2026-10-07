@@ -1,0 +1,25 @@
+- type: secretRole
+  id: CERecruiter
+  name: ce-secret-role-name-recruiter
+  description: ce-secret-role-description-recruiter
+  icon: CESecretRoleIconRecruiter
+  skills:
+  - CERecruitment
+  objectives: !type:EntSelector
+    id: CEObjectiveRecruiterRecruit
+
+- type: entity
+  id: CEObjectiveRecruiterRecruit
+  name: Recruit people
+  description: Find loyal people, willing to abandon their personal goals to become part of the Brotherhood.
+  components:
+  - type: Sprite
+    sprite: _CE/Interface/Icons/SecretRoles/brotherhood.rsi
+    state: recruit
+  - type: CEObjective
+  - type: CEObjectiveRoleCountCondition
+    role: CERecruit
+    title: ce-recruiter-recruit-objective-title
+    playersPerHolder: 10
+    minRequired: 1
+    maxRequired: 3

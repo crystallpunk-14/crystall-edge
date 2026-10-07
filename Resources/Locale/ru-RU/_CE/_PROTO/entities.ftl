@@ -4164,6 +4164,30 @@ ent-CEObjectiveLoverSurvive = Сохраните возлюбленному жи
 ent-CEObjectiveThiefCashOut = Прокутите 10 золотых
     .desc = Потратьте 10 золотых монет на покупки в магазине теней.
 
+ent-CEObjectiveBrotherhoodSurvive = Сохранить братство
+    .desc = Все члены братства должны выжить.
+
+ent-CEObjectiveBrotherhoodPatronage = Покровительство
+    .desc = Этот человек в прошлом помог братству. Отплатите ему тем же, он должен выполнить все свои цели.
+
+ent-CEObjectiveBrotherhoodDebt = Должок
+    .desc = Этот человек в прошлом перешёл дорогу братству. Сделайте его жизнь невыносимой. Он должен оказаться в критическом состоянии 3 раза, но при этом выжить, чтобы выучить свой урок.
+
+ent-CEObjectiveRecruiterRecruit = Завербуйте людей
+    .desc = Найдите лояльных людей, готовых бросить свои личные цели ради того, чтобы стать частью братства.
+
+ent-CEActionRecruit = Вербовка
+    .desc = Пригласите кого-то рядом вступить в братство. Он может отказаться.
+
+ent-CEObjectiveBountyHunterEliminate = Уничтожьте братство
+    .desc = Все члены братства должны быть мертвы.
+
+ent-CEPaperBountyHunterContract = заказ
+    .desc = Короткое письмо без обратного адреса.
+
+ent-CEObjectiveVandalSabotageRadio = Саботаж радиосвязи
+    .desc = Никакой пропаганды в моём городе. Все радиостанции должны быть уничтожены.
+
 ent-CEObjectiveTormentorSpite = Сорвите планы цели
     .desc = Сделайте всё возможное, чтобы человек, которого вы тайно презираете, провалил все свои личные цели.
 
@@ -4188,6 +4212,7 @@ ent-CEStatusEffectManaDrain = расход маны
 ent-ActionCEMilitaryTraining = Военная подготовка
     .desc = Жёсткая муштра научила ваше тело преодолевать усталость. Переведите дух и мгновенно восстановите выносливость.
 
+ent-CEStatusEffectVandalCrushing = крушение
 ent-CEStatusEffectSoftLanding = мягкая посадка
     .desc = { "" }
 

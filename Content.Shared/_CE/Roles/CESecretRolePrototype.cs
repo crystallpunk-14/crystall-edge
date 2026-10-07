@@ -49,6 +49,13 @@ public sealed partial class CESecretRolePrototype : IPrototype, IInheritingProto
     public ProtoId<JobIconPrototype> Icon = "JobIconUnknown";
 
     /// <summary>
+    /// Should this role appear in the character editor? Roles that are only ever granted mid-round
+    /// (e.g. by recruitment) still belong to their department, they just can't be picked.
+    /// </summary>
+    [DataField]
+    public bool SetPreference = true;
+
+    /// <summary>
     /// Requirements to select this role in the character editor.
     /// </summary>
     [DataField]
@@ -67,6 +74,13 @@ public sealed partial class CESecretRolePrototype : IPrototype, IInheritingProto
     /// </summary>
     [DataField]
     public List<ProtoId<CESkillPrototype>> Skills = new();
+
+    /// <summary>
+    /// Gear handed to a player when they receive this role - at round start and on a mid-round
+    /// role change alike. Never taken back when the role is removed.
+    /// </summary>
+    [DataField]
+    public ProtoId<StartingGearPrototype>? Gear;
 
     /// <summary>
     /// Players with any of these jobs are ineligible for this role.
