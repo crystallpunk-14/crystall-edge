@@ -41,8 +41,11 @@ public sealed partial class CEShareTargetObjectiveSystem : CEBaseObjectiveSystem
             if (!TryComp<CEShareTargetObjectiveComponent>(objective.Owner, out var share))
                 continue;
 
-            if (TryComp<CETargetObjectiveComponent>(objective.Owner, out var targetComp) && targetComp.Target != null)
-                continue; // already resolved
+            if (TryComp<CETargetObjectiveComponent>(objective.Owner, out var targetComp) &&
+                (targetComp.Target != null || targetComp.TargetLost))
+            {
+                continue; // already resolved, or the target is gone for good
+            }
 
             TryResolveTarget((objective.Owner, share), holder);
         }
