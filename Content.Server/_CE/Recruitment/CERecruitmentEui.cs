@@ -7,8 +7,23 @@ namespace Content.Server._CE.Recruitment;
 /// <summary>
 /// Accept/decline dialog for a recruitment invite. Closing it any other way counts as declining.
 /// </summary>
-public sealed class CERecruitmentEui(EntityUid target, CERecruitmentSystem recruitment) : BaseEui
+public sealed class CERecruitmentEui(
+    EntityUid target,
+    CERecruitmentSystem recruitment,
+    TimeSpan endTime,
+    TimeSpan duration) : BaseEui
 {
+    public override void Opened()
+    {
+        base.Opened();
+        StateDirty();
+    }
+
+    public override EuiStateBase GetNewState()
+    {
+        return new CERecruitmentEuiState(endTime, duration);
+    }
+
     public override void HandleMessage(EuiMessageBase msg)
     {
         base.HandleMessage(msg);

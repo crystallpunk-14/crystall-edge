@@ -47,7 +47,7 @@ public sealed partial class CERecruitmentSystem : CESharedRecruitmentSystem
         invite.Recruiter = args.Performer;
         invite.Role = recruitment.Role;
         invite.EndTime = _timing.CurTime + recruitment.Timeout;
-        invite.Eui = new CERecruitmentEui(target, this);
+        invite.Eui = new CERecruitmentEui(target, this, invite.EndTime, recruitment.Timeout);
 
         _eui.OpenEui(invite.Eui, actor.PlayerSession);
         args.Handled = true;

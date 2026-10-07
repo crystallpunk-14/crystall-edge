@@ -13,4 +13,11 @@ public sealed partial class CEObjectiveDepartmentSurviveConditionComponent : Com
 {
     [DataField(required: true)]
     public ProtoId<CESecretDepartmentPrototype> Department;
+
+    /// <summary>
+    /// Flips the objective into "every member must be eliminated" - progress becomes the average
+    /// of members not surviving, and an empty department counts as fully done.
+    /// </summary>
+    [DataField]
+    public bool Invert;
 }

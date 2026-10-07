@@ -25,3 +25,6 @@ ce-secret-role-description-recruiter = You know how to spot people the city has 
 
 ce-secret-role-name-recruit = Recruit
 ce-secret-role-description-recruit = You gave up your old ambitions and swore yourself to the Brotherhood. Its goals are yours now.
+
+ce-secret-role-name-bounty-hunter = Bounty Hunter
+ce-secret-role-description-bounty-hunter = You've been paid a large sum of money and hired to wipe out a criminal gang in this city. Do your job.

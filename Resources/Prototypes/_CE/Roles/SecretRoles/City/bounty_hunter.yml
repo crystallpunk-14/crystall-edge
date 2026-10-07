@@ -1,0 +1,20 @@
+- type: secretRole
+  id: CEBountyHunter
+  name: ce-secret-role-name-bounty-hunter
+  description: ce-secret-role-description-bounty-hunter
+  icon: CESecretRoleIconBountyHunter
+  objectives: !type:EntSelector
+    id: CEObjectiveBountyHunterEliminate
+
+- type: entity
+  id: CEObjectiveBountyHunterEliminate
+  name: Eliminate the Brotherhood
+  description: Every member of the Brotherhood must be dead.
+  components:
+  - type: Sprite
+    sprite: _CE/Interface/Icons/secret_role_icons.rsi
+    state: bounty_hunter
+  - type: CEObjective
+  - type: CEObjectiveDepartmentSurviveCondition
+    department: CEBrotherhood
+    invert: true

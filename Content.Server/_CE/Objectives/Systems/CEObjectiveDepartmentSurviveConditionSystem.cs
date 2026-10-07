@@ -49,7 +49,14 @@ public sealed partial class CEObjectiveDepartmentSurviveConditionSystem : Entity
             survival += GetSurvival(mind);
         }
 
-        args.Progress = members == 0 ? 0f : survival / members;
+        if (members == 0)
+        {
+            args.Progress = ent.Comp.Invert ? 1f : 0f;
+            return;
+        }
+
+        var average = survival / members;
+        args.Progress = ent.Comp.Invert ? 1f - average : average;
     }
 
     [SubscribeLocalEvent]

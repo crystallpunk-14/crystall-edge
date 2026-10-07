@@ -4179,6 +4179,9 @@ ent-CEObjectiveRecruiterRecruit = Завербуйте людей
 ent-CEActionRecruit = Вербовка
     .desc = Пригласите кого-то рядом вступить в братство. Он может отказаться.
 
+ent-CEObjectiveBountyHunterEliminate = Уничтожьте братство
+    .desc = Все члены братства должны быть мертвы.
+
 ent-CEObjectiveTormentorSpite = Сорвите планы цели
     .desc = Сделайте всё возможное, чтобы человек, которого вы тайно презираете, провалил все свои личные цели.
 

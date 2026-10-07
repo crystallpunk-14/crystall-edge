@@ -1,5 +1,6 @@
 using Content.Client.Eui;
 using Content.Shared._CE.Recruitment;
+using Content.Shared.Eui;
 using JetBrains.Annotations;
 using Robust.Client.Graphics;
 
@@ -34,6 +35,12 @@ public sealed class CERecruitmentEui : BaseEui
     {
         IoCManager.Resolve<IClyde>().RequestWindowAttention();
         _window.OpenCentered();
+    }
+
+    public override void HandleState(EuiStateBase state)
+    {
+        if (state is CERecruitmentEuiState recruitment)
+            _window.SetDeadline(recruitment.EndTime, recruitment.Duration);
     }
 
     public override void Closed()

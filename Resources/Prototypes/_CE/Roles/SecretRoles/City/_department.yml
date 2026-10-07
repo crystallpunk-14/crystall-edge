@@ -9,6 +9,7 @@
   - CEMurkwalker
   - CELover
   - CETormentor
+  - CEBountyHunter
   objectives: !type:EntSelector
     id: CEObjectiveCityRestoreLucsonSphere
 
