@@ -4164,6 +4164,9 @@ ent-CEObjectiveLoverSurvive = Сохраните возлюбленному жи
 ent-CEObjectiveThiefCashOut = Прокутите 10 золотых
     .desc = Потратьте 10 золотых монет на покупки в магазине теней.
 
+ent-CEObjectiveBrotherhoodSurvive = Сохранить братство
+    .desc = Все члены братства должны выжить.
+
 ent-CEObjectiveTormentorSpite = Сорвите планы цели
     .desc = Сделайте всё возможное, чтобы человек, которого вы тайно презираете, провалил все свои личные цели.
 

@@ -1,0 +1,23 @@
+- type: secretDepartment
+  id: CEBrotherhood
+  name: ce-secret-department-brotherhood-name
+  description: ce-secret-department-brotherhood-description
+  color: "#2f5236"
+  weight: 7
+  membersRecognizeEachOther: true
+  roles:
+  - CEThief
+  objectives: !type:EntSelector
+    id: CEObjectiveBrotherhoodSurvive
+
+- type: entity
+  id: CEObjectiveBrotherhoodSurvive
+  name: Keep the Brotherhood alive
+  description: Every member of the Brotherhood must survive.
+  components:
+  - type: Sprite
+    sprite: _CE/Interface/Alerts/vanilla/bleed.rsi
+    state: bleed10
+  - type: CEObjective
+  - type: CEObjectiveDepartmentSurviveCondition
+    department: CEBrotherhood
