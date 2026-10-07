@@ -650,56 +650,6 @@
         amount: -0.25
 
 - type: reagent
-  id: Ambuzol
-  name: reagent-name-ambuzol
-  group: Medicine
-  desc: reagent-desc-ambuzol
-  physicalDesc: reagent-physical-desc-crisp
-  flavor: medicine
-  color: "#86caf7"
-  metabolisms:
-    Bloodstream:
-      effects:
-        - !type:CureZombieInfection
-          conditions:
-            - !type:ReagentCondition
-              reagent: Ambuzol
-              min: 15
-    Digestion:
-      effects:
-        - !type:CureZombieInfection
-          conditions:
-            - !type:ReagentCondition
-              reagent: Ambuzol
-              min: 15
-
-- type: reagent
-  id: AmbuzolPlus
-  name: reagent-name-ambuzol-plus
-  group: Medicine
-  desc: reagent-desc-ambuzol-plus
-  physicalDesc: reagent-physical-desc-crisp
-  flavor: medicine
-  color: "#1274b5"
-  metabolisms:
-    Bloodstream:
-      effects:
-        - !type:CureZombieInfection
-          innoculate: true
-          conditions:
-            - !type:ReagentCondition
-              reagent: AmbuzolPlus
-              min: 5
-    Digestion:
-      effects:
-      - !type:CureZombieInfection
-        innoculate: true
-        conditions:
-        - !type:ReagentCondition
-          reagent: AmbuzolPlus
-          min: 5
-
-- type: reagent
   id: PulpedBananaPeel
   name: reagent-name-pulped-banana-peel
   group: Medicine

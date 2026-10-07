@@ -1400,6 +1400,23 @@ WeaponPistolCHIMPUpgraded: null
 WeaponPistolCHIMPUpgradeKit: null
 XenoArtifactAnomalySpawn: null
 
+#2026-10-07 zombie system removed
+ActionTurnUndead: null
+ChemistryBottleAmbuzol: null
+ChemistryBottleAmbuzolPlus: null
+ClothingBackpackDuffelZombieBundle: null
+MindRoleInitialInfected: null
+MindRoleZombie: null
+PillAmbuzol: null
+PillAmbuzolPlus: null
+PillCanisterAmbuzol: null
+PillRomerol: null
+SignZomlab: null
+SyringeAmbuzol: null
+SyringeRomerol: null
+Zombie: null
+ZombieOutbreak: null
+
 #2026-10-07 xenoarchaeology removed
 ActionArtifactActivate: null
 AnalysisComputerCircuitboard: null

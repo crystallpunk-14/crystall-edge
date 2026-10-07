@@ -62,13 +62,6 @@ namespace Content.Server.Dragon
             };
 
         /// <summary>
-        /// NPC faction to re-add after being zombified.
-        /// Prevents zombie dragon from being attacked by its own carp.
-        /// </summary>
-        [DataField]
-        public ProtoId<NpcFactionPrototype> Faction = "Dragon";
-
-        /// <summary>
         /// The smoke to spawn upon rift timeout death.
         /// </summary>
         [DataField]

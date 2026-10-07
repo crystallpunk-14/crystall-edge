@@ -5,7 +5,6 @@
   - Syndicate
   - Xeno
   - PetsNT
-  - Zombie
   - Revolutionary
   - AllHostile
   - Wizard
@@ -17,7 +16,6 @@
   - SimpleHostile
   - Syndicate
   - Xeno
-  - Zombie
   - Revolutionary
   - Dragon
   - AllHostile
@@ -41,7 +39,6 @@
   hostile:
   - Mouse
   - SimpleHostile
-  - Zombie
   - Xeno
   - AllHostile
   - Dragon
@@ -53,7 +50,6 @@
   - Syndicate
   - Passive
   - PetsNT
-  - Zombie
   - Revolutionary
   - Dragon
   - Xeno
@@ -71,7 +67,6 @@
   - SimpleHostile
   - Xeno
   - PetsNT
-  - Zombie
   - Dragon
   - AllHostile
   - Wizard
@@ -81,22 +76,6 @@
   id: Xeno
   hostile:
   - NanoTrasen
-  - Syndicate
-  - Passive
-  - PetsNT
-  - Zombie
-  - Revolutionary
-  - AllHostile
-  - Wizard
-  - Dragon
-  - Xenoborg
-
-- type: npcFaction
-  id: Zombie
-  hostile:
-  - NanoTrasen
-  - SimpleNeutral
-  - SimpleHostile
   - Syndicate
   - Passive
   - PetsNT
@@ -110,7 +89,6 @@
   id: Revolutionary
   hostile:
   - NanoTrasen
-  - Zombie
   - SimpleHostile
   - Dragon
   - AllHostile
@@ -129,7 +107,6 @@
   - SimpleNeutral
   - Syndicate
   - Xeno
-  - Zombie
   - Revolutionary
   - Wizard
   - Xenoborg
@@ -146,7 +123,6 @@
   - SimpleNeutral
   - Syndicate
   - Xeno
-  - Zombie
   - Revolutionary
   - AllHostile
   - Xenoborg
@@ -157,7 +133,6 @@
   # they have brains
   - NanoTrasen
   - Syndicate
-  - Zombie
   - Revolutionary
   - Wizard
 

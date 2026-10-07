@@ -996,15 +996,6 @@
 
 - type: entity
   parent: BaseSign
-  id: SignZomlab
-  name: zombie lab sign
-  description: The final remains of a shut-down Nanotrasen research project that aimed to harness the powers of Romerol. I wonder how that went...
-  components:
-  - type: Sprite
-    state: zomlab
-
-- type: entity
-  parent: BaseSign
   id: SignSecureMedRed
   name: red secure sign
   description: A sign indicating that the area ahead is a secure area.

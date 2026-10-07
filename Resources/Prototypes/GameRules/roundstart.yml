@@ -306,26 +306,6 @@
     cost: 150
 
 - type: entity
-  id: Zombie
-  parent: [ BaseGameRule, BaseRoundstartAntagRule]
-  components:
-  - type: GameRule
-    minPlayers: 20
-    delay:
-      min: 600
-      max: 900
-  - type: ZombieRule
-  - type: AntagSelection
-    antags:
-    - !type:LinearAntagCount
-      proto: InitialInfected
-      range:
-        min: 1
-        max: 6
-  - type: DynamicRuleCost
-    cost: 200
-
-- type: entity
   abstract: true
   parent: BaseGameRule
   id: BaseXenoborgsRule
@@ -380,7 +360,6 @@
   parent: RestrictedAntag
   id: DummyAntag
   prefRoles: # Only Station bound roles.
-  - InitialInfected
   - Traitor
   - Thief
   - HeadRev
