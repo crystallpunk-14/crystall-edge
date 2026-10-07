@@ -3,6 +3,8 @@ ce-lover-survive-objective-title = Обеспечить, чтобы { $targetNam
 ce-tormentor-spite-objective-title = Сделать так, чтобы { $targetName }, должность: { CAPITALIZE($job) }, провалил свои цели
 ce-tormentor-survive-objective-title = Обеспечить, чтобы { $targetName }, должность: { CAPITALIZE($job) }, остался жив
 ce-nightmare-hunt-objective-title = Убить { $targetName }, должность: { CAPITALIZE($job) }
+ce-brotherhood-patronage-objective-title = Покровительство: { $targetName }, должность: { CAPITALIZE($job) }
+ce-brotherhood-debt-objective-title = Должок: { $targetName }, должность: { CAPITALIZE($job) }
 
 ce-objective-summary-fmt = {$name}: {$success ->
     [true] [color=limegreen]Выполнено[/color]

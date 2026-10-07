@@ -3,6 +3,8 @@ ce-lover-survive-objective-title = Ensure {$targetName}, {CAPITALIZE($job)} stay
 ce-tormentor-spite-objective-title = Make {$targetName}, {CAPITALIZE($job)} fail their objectives
 ce-tormentor-survive-objective-title = Ensure {$targetName}, {CAPITALIZE($job)} stays alive
 ce-nightmare-hunt-objective-title = Kill {$targetName}, {CAPITALIZE($job)}
+ce-brotherhood-patronage-objective-title = Patronage: {$targetName}, {CAPITALIZE($job)}
+ce-brotherhood-debt-objective-title = A debt: {$targetName}, {CAPITALIZE($job)}
 
 ce-objective-summary-fmt = {$name}: {$success ->
     [true] [color=limegreen]Success[/color]

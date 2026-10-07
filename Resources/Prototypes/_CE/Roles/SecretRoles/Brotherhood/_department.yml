@@ -7,8 +7,15 @@
   membersRecognizeEachOther: true
   roles:
   - CEThief
-  objectives: !type:EntSelector
-    id: CEObjectiveBrotherhoodSurvive
+  objectives: !type:AllSelector
+    children:
+    - id: CEObjectiveBrotherhoodSurvive
+    - !type:GroupSelector
+      rolls: !type:ConstantNumberSelector
+        value: 2
+      children:
+      - id: CEObjectiveBrotherhoodPatronage
+      - id: CEObjectiveBrotherhoodDebt
 
 - type: entity
   id: CEObjectiveBrotherhoodSurvive
@@ -21,3 +28,37 @@
   - type: CEObjective
   - type: CEObjectiveDepartmentSurviveCondition
     department: CEBrotherhood
+
+- type: entity
+  id: CEObjectiveBrotherhoodPatronage
+  name: Patronage
+  description: This person once helped the Brotherhood. Repay the favor - they must complete all of their objectives.
+  components:
+  - type: Sprite
+    sprite: _CE/Actions/misc.rsi
+    state: todo
+  - type: CEObjective
+  - type: CETargetObjective
+    title: ce-brotherhood-patronage-objective-title
+  - type: CETargetPlayersObjective
+  - type: CETargetExcludeHolderDepartment
+  - type: CETargetCompleteOwnedObjective
+    objectiveBlacklist:
+      components: # avoid an infinite loop through e.g. a tormentor's spite objective
+      - CETargetCompleteOwnedObjective
+
+- type: entity
+  id: CEObjectiveBrotherhoodDebt
+  name: A debt
+  description: This person once crossed the Brotherhood. Make their life unbearable - they must end up in critical condition 3 times, yet survive to learn their lesson.
+  components:
+  - type: Sprite
+    sprite: _CE/Actions/misc.rsi
+    state: todo
+  - type: CEObjective
+  - type: CETargetObjective
+    title: ce-brotherhood-debt-objective-title
+  - type: CETargetPlayersObjective
+  - type: CETargetExcludeHolderDepartment
+  - type: CETargetCritCountCondition
+    requiredCrits: 3
