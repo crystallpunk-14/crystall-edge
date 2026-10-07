@@ -418,17 +418,6 @@
       - Trash
 
 - type: cargoBounty
-  id: BountyAnomalyCore
-  reward: 10000
-  description: bounty-description-anomaly-core
-  entries:
-  - name: bounty-item-anomaly-core
-    amount: 1
-    whitelist:
-      components:
-      - AnomalyCore
-
-- type: cargoBounty
   id: BountyBorgModule
   reward: 3500
   description: bounty-description-borg-module

@@ -355,7 +355,7 @@ public enum LogType
     /// <summary>
     /// Anomaly related interactions.
     /// </summary>
-    Anomaly = 79,
+    Anomaly = 79, // CrystallEdge: anomaly system removed, value kept for existing admin logs in DB
 
     /// <summary>
     /// Cutting, mending and pulsing of wires.

@@ -31,9 +31,6 @@
   id: Ambrosia # ConstructionGraph: flowerwreath
 
 - type: Tag
-  id: AnomalyHost # Targeting whitelist: BaseAnomalyInjector
-
-- type: Tag
   id: AppraisalTool # Storage whitelist: BaseClothingBeltEngineering
 
 - type: Tag
@@ -1524,9 +1521,6 @@
 
 - type: Tag
   id: WeaponAntiqueLaser # Storage whitelist: GlassBoxLaser
-
-- type: Tag
-  id: WeaponPistolCHIMPUpgradeKit # ConstructionGraph: UpgradeWeaponPistolCHIMP
 
 - type: Tag
   id: WeaponShotgunKammerer # Storage whitelist: ShotGunCabinet

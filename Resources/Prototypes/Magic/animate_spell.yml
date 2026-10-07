@@ -21,7 +21,6 @@
       - MindContainer
       - NukeDisk
       - GravityGenerator
-      - AnomalyGenerator
       - TegGenerator
       - TegCirculator
       - XenoArtifact

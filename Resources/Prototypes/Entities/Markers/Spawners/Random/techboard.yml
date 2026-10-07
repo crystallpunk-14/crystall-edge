@@ -22,7 +22,6 @@
         - id: IntercomElectronics
         - id: APCElectronics
         - id: SignalTimerElectronics
-        - id: APECircuitboard
         - id: SMESMachineCircuitboard
         - id: SubstationMachineCircuitboard
         - id: TelecomServerCircuitboard

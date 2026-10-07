@@ -108,23 +108,6 @@
     - Mime
 
 - type: listing
-  id: UplinkChimpUpgradeKit
-  name: uplink-chimp-upgrade-kit-name
-  description: uplink-chimp-upgrade-kit-desc
-  productEntity: WeaponPistolCHIMPUpgradeKit
-  discountCategory: usualDiscounts
-  discountDownTo:
-    Telecrystal: 2
-  cost:
-    Telecrystal: 4
-  categories:
-  - UplinkJob
-  conditions:
-    - !type:BuyerDepartmentCondition
-      whitelist:
-      - Science
-
-- type: listing
   id: uplinkProximityMine
   name: uplink-proximity-mine-name
   description: uplink-proximity-mine-desc

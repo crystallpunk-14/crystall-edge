@@ -1052,37 +1052,6 @@
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: node-scanner-module }
 
 - type: entity
-  id: BorgModuleAnomaly
-  parent: [ BaseBorgModuleScience, BaseProviderBorgModule ]
-  name: anomaly cyborg module
-  components:
-  - type: Sprite
-    layers:
-    - state: science
-    - state: icon-anomalies
-  - type: ItemBorgModule
-    hands:
-    - item: AnomalyScanner
-    - item: AnomalyLocatorUnpowered
-    - item: AnomalyLocatorWideUnpowered
-    - item: HandLabeler
-    - hand:
-        emptyRepresentative: SheetRGlass
-        emptyLabel: borg-slot-construction-empty
-        whitelist:
-          tags:
-          - ConstructionMaterial
-    - hand:
-        emptyRepresentative: SheetRPGlass
-        emptyLabel: borg-slot-construction-empty
-        whitelist:
-          tags:
-          - ConstructionMaterial
-  - type: BorgModuleIcon
-    icon: { sprite: Interface/Actions/actions_borg.rsi, state: anomaly-module }
-
-# service modules
-- type: entity
   id: BorgModuleService
   parent: [ BaseBorgModuleService, BaseProviderBorgModule ]
   name: service cyborg module

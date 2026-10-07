@@ -37,7 +37,7 @@
   id: UplinkScramImplanter
   name: uplink-scram-implanter-name
   description: uplink-scram-implanter-desc
-  icon: { sprite: /Textures/Structures/Specific/anomaly.rsi, state: anom4 }
+  icon: { sprite: /Textures/Effects/portal.rsi, state: portal-blue }
   productEntity: ScramImplanter
   discountCategory: veryRareDiscounts
   discountDownTo:

@@ -919,8 +919,6 @@
     back: ClothingBackpackSatchelScience
     ears: ClothingHeadsetScience
     eyes: ClothingEyesGlasses
-  inhand:
-  - AnomalyScanner
 
 # Civilian
 

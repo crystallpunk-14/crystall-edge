@@ -35,7 +35,6 @@
     TriggerInteractStamp: 1
     TriggerInteractShock: 1
     TriggerAttackParticleEngine: 0.1
-    TriggerAttackParticleAnomaly: 1
     TriggerAttackStaminaDamage: 1
     TriggerAttackLaser: 0.5
 
@@ -404,15 +403,6 @@
     whitelist:
       components:
       - ParticleProjectile
-
-- type: xenoArchTrigger
-  id: TriggerAttackParticleAnomaly
-  tip: xenoarch-trigger-tip-anomparticle
-  components:
-  - type: XATInteractAttack
-    whitelist:
-      components:
-      - AnomalousParticle
 
 - type: xenoArchTrigger
   id: TriggerAttackStaminaDamage

@@ -16,7 +16,6 @@
     - id: ClothingHeadsetScience
     - id: ClothingMaskSterile
     - id: ClothingOuterCoatRnd
-    - id: AnomalyScanner
     - id: NodeScanner
     - id: NetworkConfigurator
       prob: 0.5

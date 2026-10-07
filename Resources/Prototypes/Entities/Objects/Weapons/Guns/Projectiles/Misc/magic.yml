@@ -64,22 +64,6 @@
     lifetime: 5
 
 - type: entity
-  parent: ProjectileFireball
-  id: ProjectileAnomalyFireball
-  categories: [ HideSpawnMenu ]
-  name: fireball
-  description: Hovering blob of flame.
-  components:
-  - type: TimedDespawn
-    lifetime: 30
-  - type: Explosive
-    explosionType: Default
-    maxIntensity: 100
-    intensitySlope: 0.1
-    totalIntensity: 0.3
-    maxTileBreak: 0
-
-- type: entity
   parent: ClosetSteelBase
   id: ProjectileLocker
   categories: [ HideSpawnMenu ]
@@ -284,21 +268,6 @@
     userWhitelist:
       components:
       - MobState
-
-- type: entity
-  parent: BaseBullet
-  id: ProjectileIcicle
-  categories: [ HideSpawnMenu ]
-  name: icicle
-  description: Brrrrr.
-  components:
-  - type: Sprite
-    sprite: Structures/Specific/Anomalies/ice_anom.rsi
-  - type: Projectile
-    damage:
-      types:
-        Piercing: 20
-        Cold: 20
 
 - type: entity
   parent: ProjectilePolyboltBase

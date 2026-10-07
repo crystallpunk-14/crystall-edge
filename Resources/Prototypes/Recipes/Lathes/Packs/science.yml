@@ -15,10 +15,7 @@
 - type: latheRecipePack
   id: ScienceEquipment
   recipes:
-  - AnomalyScanner
   - NodeScanner
-  - AnomalyLocator
-  - AnomalyLocatorWide
   - HoloprojectorField
   - SignallerAdvanced
   - DeviceQuantumSpinInverter
@@ -47,14 +44,12 @@
 - type: latheRecipePack
   id: ScienceWeapons
   recipes:
-  - WeaponPistolCHIMP
   - WeaponForceGun
   - WeaponProtoKineticAccelerator
   - PKAUpgradeDamage
   - PKAUpgradeRange
   - PKAUpgradeFireRate
   - WeaponTetherGun
-  - WeaponGauntletGorilla
 
 # Only contains parts for making basic modular grenades, no actual explosives
 - type: latheRecipePack
@@ -78,10 +73,6 @@
   - SheetifierMachineCircuitboard
   - PowerCageRechargerCircuitboard
   - AnalysisComputerCircuitboard
-  - AnomalyVesselCircuitboard
-  - AnomalyVesselExperimentalCircuitboard
-  - AnomalySynchronizerCircuitboard
-  - APECircuitboard
   - ArtifactAnalyzerMachineCircuitboard
   - ArtifactCrusherMachineCircuitboard
   - StationTeleportersControlCircuitboard
