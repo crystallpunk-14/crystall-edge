@@ -268,6 +268,9 @@ ent-CEClothingMaskGreenNeckerchief = зелёный шейный платок
 ent-CEClothingMaskBoneMask = костяная маска
     .desc = Костяная маска, сделанная из человеческих костей.
 
+ent-CEClothingMaskInvestigator = маска дознавателя
+    .desc = Укреплённая маска с тауматургическими линзами, которую носят дознаватели. Позволяет видеть скрытый мир магии и суть предметов, защищая при этом лицо.
+
 ent-CEClothingMaskBoneHornedMask = рогатая костяная маска
     .desc = Костяная маска, сделанная из костей какого-то животного.
 
@@ -681,7 +684,7 @@ ent-CESpawnPointGuardCommander = командир охраны
 ent-CESpawnPointGuard = стражник
     .desc = { "" }
 
-ent-CESpawnPointInvestigator = следователь
+ent-CESpawnPointInvestigator = дознаватель
     .desc = { "" }
 
 ent-CESpawnPointTavernmaster = трактирщик
@@ -4680,8 +4683,8 @@ ent-CEClothingCloakCoatFurBrown = коричневая меховая шуба
 ent-CEClothingCloakMantleAlchemist = мантия алхимика
     .desc = Мантия, носимая алхимиками, часто используемая для защиты одежды от проливов и реагентов.
 
-ent-CEClothingCloakMantleInvestigator = мантия следователя
-    .desc = Практичная мантия, излюбленная следователями за её незаметный внешний вид.
+ent-CEClothingCloakMantleInvestigator = мантия дознавателя
+    .desc = Практичная мантия, излюбленная дознавателями за её незаметный внешний вид.
 
 ent-CEClothingCloakMantleThaumaturge = мантия тауматурга
     .desc = Парадная мантия, которую носят тауматурги Академии, с пристёгивающимся церемониальным капюшоном.
