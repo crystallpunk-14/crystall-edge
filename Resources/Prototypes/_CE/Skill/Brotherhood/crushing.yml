@@ -1,0 +1,20 @@
+- type: skill
+  id: CEVandalCrushing
+  name: ce-skill-brotherhood-crushing-name
+  desc: ce-skill-brotherhood-crushing-desc
+  icon:
+    sprite: _CE/Actions/misc.rsi
+    state: todo
+  effect: !type:AddStatusEffect
+    effect: CEStatusEffectVandalCrushing
+
+- type: entity
+  parent: StatusEffectBase
+  id: CEStatusEffectVandalCrushing
+  name: crushing
+  components:
+  - type: CEUnarmedDamageStatusEffect
+    multiplier: 2
+    bonus:
+      types:
+        Structural: 5

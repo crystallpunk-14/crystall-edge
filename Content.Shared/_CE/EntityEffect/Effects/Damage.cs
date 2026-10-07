@@ -58,6 +58,10 @@ public sealed partial class CEDamageEffectSystem : CEEntityEffectSystem<Damage>
 
         var damage = args.Effect.DamageSpec * args.Args.Power;
 
+        var outgoingEv = new CEGetOutgoingDamageEvent(args.Args.Used, entity, damage);
+        RaiseLocalEvent(args.Args.Source, outgoingEv);
+        damage = outgoingEv.Damage;
+
         var dealt = _damageable.TryChangeDamage(
             entity,
             damage,
@@ -71,4 +75,16 @@ public sealed partial class CEDamageEffectSystem : CEEntityEffectSystem<Damage>
             _colorFlash.RaiseEffect(Color.Red, new List<EntityUid> { entity }, filter);
         }
     }
+}
+
+/// <summary>
+/// Raised on the attacker right before a <see cref="Damage"/> effect deals its damage, so buffs can
+/// change it. <see cref="Used"/> is what the attack was made with - the attacker itself for
+/// unarmed attacks. Relayed to status effects.
+/// </summary>
+public sealed class CEGetOutgoingDamageEvent(EntityUid? used, EntityUid target, DamageSpecifier damage) : EntityEventArgs
+{
+    public readonly EntityUid? Used = used;
+    public readonly EntityUid Target = target;
+    public DamageSpecifier Damage = damage;
 }

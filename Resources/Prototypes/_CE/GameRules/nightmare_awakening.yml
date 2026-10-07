@@ -13,28 +13,32 @@
       weight: 10
     # Brotherhood
     - role: CEThief
-      playerRatio: 5
-      range: { min: 2, max: 4 }
+      playerRatio: 3
+      range: { min: 1, max: 3 }
       weight: 5
     - role: CERecruiter
-      playerRatio: 1
+      playerRatio: 3
       range: { min: 1, max: 1 }
+      weight: 5
+    - role: CEVandal
+      playerRatio: 3
+      range: { min: 1, max: 2 }
       weight: 5
     # City
     - role: CELover
-      playerRatio: 5
-      range: { min: 1, max: 5 }
+      playerRatio: 3
+      range: { min: 1, max: 3 }
       weight: 5
     - role: CETormentor
-      playerRatio: 5
-      range: { min: 1, max: 5 }
+      playerRatio: 3
+      range: { min: 1, max: 3 }
       weight: 5
     - role: CEMurkwalker
-      playerRatio: 5
-      range: { min: 1, max: 4 }
+      playerRatio: 3
+      range: { min: 1, max: 2 }
       weight: 5
     - role: CEBountyHunter
-      playerRatio: 1
+      playerRatio: 5
       range: { min: 1, max: 1 }
       weight: 5
     - role: CECivilian

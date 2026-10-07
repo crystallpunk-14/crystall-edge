@@ -4185,6 +4185,9 @@ ent-CEObjectiveBountyHunterEliminate = Уничтожьте братство
 ent-CEPaperBountyHunterContract = заказ
     .desc = Короткое письмо без обратного адреса.
 
+ent-CEObjectiveVandalSabotageRadio = Саботаж радиосвязи
+    .desc = Никакой пропаганды в моём городе. Все радиостанции должны быть уничтожены.
+
 ent-CEObjectiveTormentorSpite = Сорвите планы цели
     .desc = Сделайте всё возможное, чтобы человек, которого вы тайно презираете, провалил все свои личные цели.
 
@@ -4209,6 +4212,7 @@ ent-CEStatusEffectManaDrain = расход маны
 ent-ActionCEMilitaryTraining = Военная подготовка
     .desc = Жёсткая муштра научила ваше тело преодолевать усталость. Переведите дух и мгновенно восстановите выносливость.
 
+ent-CEStatusEffectVandalCrushing = крушение
 ent-CEStatusEffectSoftLanding = мягкая посадка
     .desc = { "" }
 
