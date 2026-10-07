@@ -397,6 +397,7 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
             return null;
 
         roleEnt.Value.Comp2.Role = role.ID;
+        Dirty(roleEnt.Value.Owner, roleEnt.Value.Comp2);
         rule.Comp.AssignedCounts[role.ID] = GetAssignedCount(rule, role.ID) + 1;
 
         if (session.AttachedEntity is { } target)
