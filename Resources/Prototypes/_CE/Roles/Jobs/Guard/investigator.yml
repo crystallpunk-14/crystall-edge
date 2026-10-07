@@ -14,6 +14,11 @@
     - !type:DepartmentTimeRequirement
       department: CEAcademy
       time: 1h
+    # The investigator mask is mandatory, these species have no mask slot
+    - !type:SpeciesRequirement
+      inverted: true
+      species:
+      - CECarrin
   special:
     - !type:AddComponentSpecial
       components:
