@@ -35,6 +35,8 @@ public abstract partial class CESharedActionSystem
 
         if (manaCost > 0 && TryComp<BatteryComponent>(args.Performer, out var playerMana))
             _battery.UseCharge((args.Performer, playerMana), manaCost);
+
+        _magicTrace.SpawnSpellTrace(args.Performer, ent, ent.Comp.ManaCost);
     }
 
     [SubscribeLocalEvent]
