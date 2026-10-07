@@ -817,47 +817,6 @@
       - state: slime-inhand-right
 
 - type: entity
-  parent: [SolutionHuge, FoodMeatRawBase, BaseSlicingRefinableFood]
-  id: FoodMeatAnomaly
-  name: anomalous meat mass
-  description: An impossibly dense slab of meat. Just looking at it makes you uncomfortable.
-  components:
-  - type: Sprite
-    state: anomalymeat
-  - type: Solution # Literally no space for anything but meat.
-    solution:
-      reagents:
-      - ReagentId: Nutriment
-        Quantity: 80
-      - ReagentId: UncookedAnimalProteins
-        Quantity: 320
-      - ReagentId: Fat
-        Quantity: 80
-  - type: ToolRefinable
-    refineTime: 5
-    refineResult:
-    - id: FoodMeatCutlet
-      amount: 16
-  - type: Construction
-    graph: AnomalyMeatSteak
-    node: start
-    defaultTarget: anomaly steak
-  - type: Tag
-    tags:
-    - Meat
-  - type: Item
-    size: Normal
-    shape:
-    - 0,0,1,1
-    inhandVisuals:
-      left:
-      - state: plain-inhand-left
-      right:
-      - state: plain-inhand-right
-
-# Cooked
-
-- type: entity
   parent: FoodBaseTrash
   id: MaterialSmileExtract
   name: smile extract
@@ -1375,39 +1334,6 @@
       right:
       - state: generic-pink-inhand-right
         color: "#5B3E2A"
-
-- type: entity
-  parent: [SolutionLarge, FoodMeatCookedBase, BaseSlicingRefinableFood] # Intentionlly gets smaller when cooked
-  id: FoodMeatAnomalyCooked
-  name: anomalous steak
-  description: A gigantic mass of cooked meat. A meal for a dinner party, or someone REALLY hungry.
-  components:
-  - type: Sprite
-    layers:
-    - state: anomalymeat-cooked #Kinda hard to cook this... thing evenly
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Nutriment
-        Quantity: 160
-      - ReagentId: Protein
-        Quantity: 80
-  - type: ToolRefinable
-    refineTime: 5
-    refineResult:
-    - id: FoodMeatCooked
-      amount: 8
-  - type: Construction
-    graph: AnomalyMeatSteak
-    node: anomaly steak
-  - type: Item
-    size: Normal
-    shape:
-    inhandVisuals:
-      left:
-      - state: plain-cooked-inhand-left
-      right:
-      - state: plain-cooked-inhand-right
 
 - type: entity
   parent: [FoodMeatCookedBase, BaseSlicingRefinableFood]

@@ -138,8 +138,6 @@
         orGroup: Guns
       - id: WeaponAdvancedLaser
         orGroup: Guns
-      - id: WeaponPistolCHIMP
-        orGroup: Guns
       - id: WeaponBehonkerLaser
         orGroup: Guns
       - id: WeaponEnergyShotgun

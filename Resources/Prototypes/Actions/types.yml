@@ -230,9 +230,9 @@
     itemIconStyle: BigAction
     priority: -20
   - type: Sprite
-    sprite: Structures/Specific/anomaly.rsi
+    sprite: Effects/portal.rsi
     layers:
-    - state: anom4
+    - state: portal-blue
       map: ["enum.ActionVisuals.Icon"]
 
 - type: entity

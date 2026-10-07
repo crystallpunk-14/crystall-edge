@@ -17,7 +17,6 @@
   - BorgModuleTool
   - BorgModuleInflatable
   - BorgModuleArtifact
-  - BorgModuleAnomaly
   radioChannels:
   - Science
 

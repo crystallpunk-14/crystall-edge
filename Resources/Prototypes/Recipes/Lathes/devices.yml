@@ -81,26 +81,6 @@
     Plasma: 100
 
 - type: latheRecipe
-  id: AnomalyLocator
-  result: AnomalyLocatorEmpty
-  categories:
-  - Tools
-  completetime: 3
-  materials:
-    Steel: 400
-    Glass: 100
-
-- type: latheRecipe
-  id: AnomalyLocatorWide
-  result: AnomalyLocatorWideEmpty
-  categories:
-  - Tools
-  completetime: 3
-  materials:
-    Steel: 400
-    Glass: 100
-
-- type: latheRecipe
   id: TeleporterChipBlank
   result: TeleporterChipBlank
   categories:
@@ -111,37 +91,6 @@
     Steel: 50
     Plastic: 50
     Plasma: 25
-
-- type: latheRecipe
-  parent: BaseToolRecipe
-  id: AnomalyScanner
-  result: AnomalyScanner
-  materials:
-    Plastic: 200
-    Glass: 150
-
-- type: latheRecipe
-  id: WeaponPistolCHIMP
-  result: WeaponPistolCHIMP
-  categories:
-  - Tools
-  completetime: 5
-  materials:
-    Steel: 500
-    Glass: 400
-
-- type: latheRecipe
-  id: WeaponGauntletGorilla
-  result: WeaponGauntletGorilla
-  categories:
-  - Tools
-  completetime: 5
-  materials:
-    Steel: 1500
-    Plastic: 300
-    Glass: 500
-    Plasma: 500
-    Silver: 250
 
 - type: latheRecipe
   id: ClothingBackpackHolding

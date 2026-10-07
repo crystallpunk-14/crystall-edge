@@ -38,7 +38,6 @@
   - Fingerprint
   - Grammar # Pronouns
   - HumanoidProfile # Age, Sex, Gender
-  - InnerBodyAnomalyVisuals # How you look with anomalies
   - MeleeWeapon # Attack animation, damage and sound
   - NpcFactionMember
   - RandomPrice

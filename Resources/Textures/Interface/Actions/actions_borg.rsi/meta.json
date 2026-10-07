@@ -86,9 +86,6 @@
             "name":"node-scanner-module"
         },
         {
-            "name":"anomaly-module"
-        },
-        {
             "name":"service-module"
         },
         {

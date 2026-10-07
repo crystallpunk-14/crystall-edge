@@ -2367,33 +2367,6 @@
     ShardGlass: 1
 
 - type: microwaveMealRecipe
-  id: RecipeInertAnomalyMeat
-  name: inert meat anomaly recipe
-  result: FoodMeatAnomaly
-  time: 5
-  group: Savory
-  solids:
-    AnomalyCoreFleshInert: 1
-
-- type: microwaveMealRecipe
-  id: RecipeAnomalyMeat
-  name: meat anomaly recipe
-  result: FoodMeatAnomaly
-  time: 5
-  group: Savory
-  solids:
-    AnomalyCoreFlesh: 1
-
-- type: microwaveMealRecipe
-  id: RecipeAnomalyMeatCooked
-  name: cooked meat anomaly recipe
-  result: FoodMeatAnomalyCooked
-  time: 5
-  group: Savory
-  solids:
-    FoodMeatAnomaly: 1
-
-- type: microwaveMealRecipe
   id: RecipeGrilledCheeseSandwich
   name: grilled cheese sandwich recipe
   result: FoodBakedGrilledCheeseSandwich

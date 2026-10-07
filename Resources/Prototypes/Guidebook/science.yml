@@ -4,7 +4,6 @@
   text: "/ServerInfo/Guidebook/Science/Science.xml"
   children:
   - Technologies
-  - AnomalousResearch
   - Xenoarchaeology
   - Robotics
 
@@ -13,24 +12,6 @@
   name: guide-entry-technologies
   text: "/ServerInfo/Guidebook/Science/Technologies.xml"
   filterEnabled: True
-
-- type: guideEntry
-  id: AnomalousResearch
-  name: guide-entry-anomalous-research
-  text: "/ServerInfo/Guidebook/Science/AnomalousResearch.xml"
-  children:
-  - APE
-  - ScannersAndVessels
-
-- type: guideEntry
-  id: ScannersAndVessels
-  name: guide-entry-scanners-and-vessels
-  text: "/ServerInfo/Guidebook/Science/ScannersAndVessels.xml"
-
-- type: guideEntry
-  id: APE
-  name: guide-entry-ape
-  text: "/ServerInfo/Guidebook/Science/APE.xml"
 
 - type: guideEntry
   id: Xenoarchaeology

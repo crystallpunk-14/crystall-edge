@@ -330,15 +330,6 @@
 
 - type: entity
   parent: BaseSign
-  id: SignAnomaly2
-  name: anomaly lab sign
-  description: A sign indicating the anomalous research lab.
-  components:
-  - type: Sprite
-    state: anomaly
-
-- type: entity
-  parent: BaseSign
   id: SignAtmos
   name: atmos sign
   description: A sign indicating the atmospherics area.

@@ -92,7 +92,6 @@
     - FootstepSound
     - DoorBumpOpener
     - SpiderCraft
-    - AnomalyHost
   - type: Butcherable
     spawned:
     - id: FoodMeatSpider

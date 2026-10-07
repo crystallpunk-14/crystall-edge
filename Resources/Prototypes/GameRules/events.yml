@@ -2,7 +2,6 @@
   id: BasicCalmEventsTable
   table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
     children:
-    - id: AnomalySpawn
     - id: BluespaceArtifact
     - id: BluespaceLocker
     - id: BreakerFlip
@@ -102,18 +101,6 @@
     delay:
       min:  40
       max:  60
-
-- type: entity
-  id: AnomalySpawn
-  parent: BaseStationEventShortDelay
-  components:
-  - type: StationEvent
-    startAnnouncementColor: "#18abf5"
-    startAudio:
-      path: /Audio/Announcements/announce.ogg
-    weight: 8
-    duration: 35
-  - type: AnomalySpawnRule
 
 - type: entity
   id: BluespaceArtifact
