@@ -27,4 +27,7 @@ ce-secret-role-name-recruit = Рекрут
 ce-secret-role-description-recruit = Вы отказались от прежних амбиций и поклялись в верности братству. Теперь его цели - ваши цели.
 
 ce-secret-role-name-bounty-hunter = Охотник за головами
-ce-secret-role-description-bounty-hunter = Вы получили крупную сумму денег и заказ уничтожить криминальную группировку в этом городе. Выполняйте свою работу.
+ce-secret-role-description-bounty-hunter = Вы получили крупную сумму денег и заказ уничтожить преступную группировку «Братство» в этом городе. Выполняйте свою работу.
+
+ce-secret-role-name-vandal = Вандал
+ce-secret-role-description-vandal = О, вы против текущего положения дел и контроля стражи над городом. Устроим немного погрома.

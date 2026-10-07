@@ -4182,6 +4182,9 @@ ent-CEActionRecruit = Вербовка
 ent-CEObjectiveBountyHunterEliminate = Уничтожьте братство
     .desc = Все члены братства должны быть мертвы.
 
+ent-CEPaperBountyHunterContract = заказ
+    .desc = Короткое письмо без обратного адреса.
+
 ent-CEObjectiveTormentorSpite = Сорвите планы цели
     .desc = Сделайте всё возможное, чтобы человек, которого вы тайно презираете, провалил все свои личные цели.
 

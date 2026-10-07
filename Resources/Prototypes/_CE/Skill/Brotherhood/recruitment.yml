@@ -3,7 +3,7 @@
   name: ce-skill-brotherhood-recruitment-name
   desc: ce-skill-brotherhood-recruitment-desc
   icon:
-    sprite: _CE/Interface/Icons/secret_role_icons.rsi
+    sprite: _CE/Interface/Icons/SecretRoles/brotherhood.rsi
     state: recruiter
   effect: !type:AddAction
     action: CEActionRecruit
@@ -21,7 +21,7 @@
     useDelay: 600
     itemIconStyle: BigAction
   - type: Sprite
-    sprite: _CE/Interface/Icons/secret_role_icons.rsi
+    sprite: _CE/Interface/Icons/SecretRoles/brotherhood.rsi
     layers:
     - state: recruiter
       map: ["enum.ActionVisuals.Icon"]

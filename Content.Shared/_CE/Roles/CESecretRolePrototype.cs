@@ -76,6 +76,13 @@ public sealed partial class CESecretRolePrototype : IPrototype, IInheritingProto
     public List<ProtoId<CESkillPrototype>> Skills = new();
 
     /// <summary>
+    /// Gear handed to a player when they receive this role - at round start and on a mid-round
+    /// role change alike. Never taken back when the role is removed.
+    /// </summary>
+    [DataField]
+    public ProtoId<StartingGearPrototype>? Gear;
+
+    /// <summary>
     /// Players with any of these jobs are ineligible for this role.
     /// </summary>
     [DataField]

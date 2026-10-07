@@ -8,9 +8,6 @@
   },
   "states": [
     {
-      "name": "werewolf"
-    },
-    {
       "name": "bounty_hunter"
     },
     {
@@ -18,21 +15,6 @@
     },
     {
       "name": "lover"
-    },
-    {
-      "name": "thief"
-    },
-    {
-      "name": "assassin"
-    },
-    {
-      "name": "vandal"
-    },
-    {
-      "name": "recruit"
-    },
-    {
-      "name": "recruiter"
     },
     {
       "name": "murkwalker"

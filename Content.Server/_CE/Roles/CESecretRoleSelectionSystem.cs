@@ -15,6 +15,7 @@ using Content.Shared.Mind;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
+using Content.Shared.Station;
 using Robust.Server.Player;
 using Robust.Shared.Audio;
 using Robust.Shared.Enums;
@@ -36,6 +37,7 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
     [Dependency] private RoleSystem _role = default!;
     [Dependency] private PlayTimeTrackingManager _playTimeTracking = default!;
     [Dependency] private SharedJobSystem _jobs = default!;
+    [Dependency] private SharedStationSpawningSystem _stationSpawning = default!;
 
     [SubscribeLocalEvent]
     private void OnJobsAssigned(RulePlayerJobsAssignedEvent args)
@@ -385,6 +387,7 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
         if (session.AttachedEntity is { } target)
         {
             GrantSecretRoleSkills(target, role);
+            _stationSpawning.EquipStartingGear(target, role.Gear);
 
             var icon = EnsureComp<CESecretRoleIconComponent>(target);
             icon.Role = role.ID;

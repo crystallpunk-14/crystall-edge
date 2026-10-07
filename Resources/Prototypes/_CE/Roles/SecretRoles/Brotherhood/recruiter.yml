@@ -14,7 +14,7 @@
   description: Find loyal people, willing to abandon their personal goals to become part of the Brotherhood.
   components:
   - type: Sprite
-    sprite: _CE/Interface/Icons/secret_role_icons.rsi
+    sprite: _CE/Interface/Icons/SecretRoles/brotherhood.rsi
     state: recruit
   - type: CEObjective
   - type: CEObjectiveRoleCountCondition

@@ -1,0 +1,5 @@
+- type: secretRole
+  id: CEVandal
+  name: ce-secret-role-name-vandal
+  description: ce-secret-role-description-vandal
+  icon: CESecretRoleIconVandal

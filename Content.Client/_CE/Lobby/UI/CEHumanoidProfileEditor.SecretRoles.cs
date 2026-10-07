@@ -56,7 +56,6 @@ public sealed partial class CEHumanoidProfileEditor
             {
                 Orientation = LayoutOrientation.Vertical,
                 Name = department.ID,
-                ToolTip = Loc.GetString(department.Description),
             };
 
             if (firstCategory)
@@ -71,9 +70,12 @@ public sealed partial class CEHumanoidProfileEditor
                 });
             }
 
+            // The header itself has to catch the hover - the category container ignores the mouse.
             category.AddChild(new PanelContainer
             {
                 PanelOverride = new StyleBoxFlat { BackgroundColor = Color.FromHex("#464966") },
+                MouseFilter = MouseFilterMode.Stop,
+                ToolTip = Loc.GetString(department.Description),
                 Children =
                 {
                     new Label
@@ -152,27 +154,8 @@ public sealed partial class CEHumanoidProfileEditor
                     SetDirty();
                 };
 
-                // Loadout support for secret roles is not implemented yet - keep the button visible for layout parity with jobs, but disabled.
-                var loadoutWindowBtn = new Button()
-                {
-                    ToolTip = Loc.GetString("loadout-window"),
-                    Disabled = true,
-                    HorizontalAlignment = HAlignment.Right,
-                    VerticalAlignment = VAlignment.Center,
-                    Margin = new Thickness(3f, 3f, 0f, 0f),
-                };
-                loadoutWindowBtn.AddChild(new TextureRect
-                {
-                    TexturePath = "/Textures/Interface/VerbIcons/outfit.svg.192dpi.png",
-                    HorizontalAlignment = HAlignment.Center,
-                    VerticalAlignment = VAlignment.Center,
-                    Stretch = TextureRect.StretchMode.Scale,
-                    SetSize = new Vector2(20, 20),
-                });
-
                 _secretRolePriorities.Add((role.ID, selector));
                 roleContainer.AddChild(selector);
-                roleContainer.AddChild(loadoutWindowBtn);
                 category.AddChild(roleContainer);
             }
         }

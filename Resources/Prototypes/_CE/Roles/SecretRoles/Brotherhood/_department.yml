@@ -9,6 +9,7 @@
   - CEThief
   - CERecruiter
   - CERecruit
+  - CEVandal
   objectives: !type:AllSelector
     children:
     - id: CEObjectiveBrotherhoodSurvive
