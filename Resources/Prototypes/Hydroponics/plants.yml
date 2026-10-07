@@ -2321,42 +2321,6 @@
 
 - type: entity
   parent: BasePlant
-  id: AnomalyBerryPlants
-  name: anomaly berry
-  components:
-  - type: Sprite
-    sprite: Objects/Specific/Hydroponics/anomaly_berry.rsi
-  - type: PlantData
-    name: seeds-anomaly-berry-name
-    packetPrototype: AnomalyBerrySeeds
-    productPrototypes: [ FoodAnomalyBerry ]
-  - type: Plant
-    lifespan: 25
-    maturation: 12
-    production: 3
-    yield: 3
-    potency: 10
-    growthStages: 2
-  - type: PlantGrowth
-    waterConsumption: 0.6
-    nutrientConsumption: 0.5
-  - type: PlantChemicals
-    chemicals:
-      Artifexium:
-        min: 1
-        max: 1
-        potencyDivisor: 4
-      Nutriment:
-        min: 1
-        max: 2
-        potencyDivisor: 30
-      Vitamin:
-        min: 1
-        max: 2
-        potencyDivisor: 40
-
-- type: entity
-  parent: BasePlant
   id: BloonionPlants
   name: bloonion bulb
   components:

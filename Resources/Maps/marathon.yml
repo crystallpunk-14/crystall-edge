@@ -59810,11 +59810,6 @@ entities:
     - type: Transform
       parent: 30
       pos: 37.5,10.5
-    - type: DeviceLinkSource
-      linkedPorts:
-        22233:
-        - - ArtifactAnalyzerSender
-          - ArtifactAnalyzerReceiver
 - proto: ComputerAtmosMonitoring
   entities:
   - uid: 11291
@@ -60573,14 +60568,6 @@ entities:
     - type: Transform
       parent: 30
       pos: 41.5,14.5
-    - type: EntityStorage
-      air:
-        temperature: 293.1496
-        volume: 200
-        moles:
-          Oxygen: 3.4430928
-          Nitrogen: 12.952587
-        immutable: False
 - proto: CrateCoffin
   entities:
   - uid: 20530

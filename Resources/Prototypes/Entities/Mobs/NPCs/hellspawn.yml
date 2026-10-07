@@ -5,7 +5,6 @@
   - MobCombat
   - MobBloodstream
   - BaseMobAnimal
-  - BaseSlicingRefinable
   - BaseMobDestructible
   id: MobHellspawn
   description: An unstoppable force of carnage.
@@ -83,10 +82,6 @@
     thresholds:
       0: Alive
       450: Dead
-  - type: ToolRefinable
-    refineResult:
-    - id: ArtifactFragment
-      amount: 4
   - type: MeleeWeapon
     attackRate: 0.6
     hidden: true

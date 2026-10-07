@@ -612,58 +612,6 @@
 
 - type: entity
   parent: BaseComputerAiAccess
-  id: ComputerAnalysisConsole
-  name: analysis console
-  description: A computer used to interface with the artifact analyzer.
-  components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: artifact
-    - map: ["computerLayerKeys"]
-      state: tech_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
-  - type: ResearchClient
-  - type: AnalysisConsole
-  - type: DeviceList
-  - type: DeviceNetwork
-    deviceNetId: Wired
-  - type: DeviceLinkSource
-    range: 5
-    ports:
-      - ArtifactAnalyzerSender
-  - type: ActivatableUI
-    key: enum.ArtifactAnalyzerUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ArtifactAnalyzerUiKey.Key:
-        type: AnalysisConsoleBoundUserInterface
-      enum.ResearchClientUiKey.Key:
-        type: ResearchClientBoundUserInterface
-      enum.WiresUiKey.Key:
-        type: WiresBoundUserInterface
-  - type: ApcPowerReceiver
-    powerLoad: 50
-  - type: PowerState
-    idlePowerDraw: 50
-    workingPowerDraw: 1000
-  - type: Computer
-    board: AnalysisComputerCircuitboard
-  - type: PointLight
-    radius: 1.5
-    energy: 4.0
-    color: "#b53ca1"
-  - type: GuideHelp
-    guides:
-    - AnalysisConsole
-
-- type: entity
-  parent: BaseComputerAiAccess
   id: ComputerId
   name: ID card computer
   description: Terminal for programming Nanotrasen employee ID cards to access parts of the station.

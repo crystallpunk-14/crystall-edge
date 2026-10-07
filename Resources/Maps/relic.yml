@@ -22479,11 +22479,6 @@ entities:
       parent: 2
       rot: 3.141592653589793 rad
       pos: 54.5,3.5
-    - type: DeviceLinkSource
-      linkedPorts:
-        77:
-        - - ArtifactAnalyzerSender
-          - ArtifactAnalyzerReceiver
 - proto: ComputerAtmosMonitoring
   entities:
   - uid: 1460

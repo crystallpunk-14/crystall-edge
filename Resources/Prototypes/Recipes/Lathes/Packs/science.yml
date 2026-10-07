@@ -15,7 +15,6 @@
 - type: latheRecipePack
   id: ScienceEquipment
   recipes:
-  - NodeScanner
   - HoloprojectorField
   - SignallerAdvanced
   - DeviceQuantumSpinInverter
@@ -72,9 +71,6 @@
   - FlatpackerMachineCircuitboard
   - SheetifierMachineCircuitboard
   - PowerCageRechargerCircuitboard
-  - AnalysisComputerCircuitboard
-  - ArtifactAnalyzerMachineCircuitboard
-  - ArtifactCrusherMachineCircuitboard
   - StationTeleportersControlCircuitboard
   - StationTeleporterMachineCircuitboard
 

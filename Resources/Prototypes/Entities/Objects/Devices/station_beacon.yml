@@ -376,14 +376,6 @@
     defaultText: station-beacon-robotics
 
 - type: entity
-  parent: DefaultStationBeaconScience
-  id: DefaultStationBeaconArtifactLab
-  suffix: Artifact Lab
-  components:
-  - type: NavMapBeacon
-    defaultText: station-beacon-artifact-lab
-
-- type: entity
   parent: DefaultStationBeacon
   id: DefaultStationBeaconSupply
   suffix: Supply

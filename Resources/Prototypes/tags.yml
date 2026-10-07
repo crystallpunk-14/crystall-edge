@@ -40,11 +40,6 @@
   id: Arrow # Storage whitelist: ClothingBeltQuiver
 
 - type: Tag
-  id: ArtifactFragment # Storage whitelist: OreBag. CargoBounty: BountyArtifactFragment. ConstructionGraph: Artifact
-
-## B ##
-
-- type: Tag
   id: Backpack # ConstructionGraph: ClothingBagPet
 
 - type: Tag
@@ -225,7 +220,7 @@
 
 - type: Tag
   id: CanPilot # Used by ShuttleConsoleSystem to guard who's allowed to pilot ships. Semi-synonymous with a sentient person/creature.
-               # Storage whitelist: BodyBag, MachineArtifactCrusher
+               # Storage whitelist: BodyBag
 
 - type: Tag
   id: CaptainSabre # Storage whitelist: ClothingBeltSheath. ItemMapper: ClothingBeltSheath
@@ -1335,7 +1330,7 @@
   id: SpeedLoaderCap # Ammo: RevolverCapGun, RevolverCapGunFake
 
 - type: Tag
-  id: SpeedLoaderMagnum # Ammo: BaseWeaponRevolver, XenoArtifactGun
+  id: SpeedLoaderMagnum # Ammo: BaseWeaponRevolver
 
 - type: Tag
   id: SpiderCraft # Used on various ConstructionPrototypes to create exclusive recipes for tagged entity.
@@ -1503,7 +1498,7 @@
 
 - type: Tag
   id: VimPilot # Used synonymously with harmless animals such as mice, station pets, or genetic ancestors (monkeys).
-               # Storage whitelist: MechVim, PetCarrier, BodyBag, MachineArtifactCrusher
+               # Storage whitelist: MechVim, PetCarrier, BodyBag
 
 - type: Tag
   id: VoiceTrigger # ConstructionGraph: Vim
@@ -1553,7 +1548,7 @@
   id: WindoorUranium # Used in ConstructionGraph "Windoor" to navigate between Windoor, PlasmaWindoor, and UraniumWindoor airlocks.
 
 - type: Tag
-  id: Window # Tagged entity is a window. Several systems and several targeting whitelists (XenoArtifactShatterWindows) care about this.
+  id: Window # Tagged entity is a window. Several systems care about this.
              # .cs: SharedNavMapSystem, ElectrocutionSystem, RevenantSystem, NoWindowsInTile
 
 - type: Tag

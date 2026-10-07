@@ -321,15 +321,6 @@
 
 - type: entity
   parent: BaseSign
-  id: SignAnomaly
-  name: xenoarcheology lab sign
-  description: A sign indicating the xenoarchaeology lab.
-  components:
-  - type: Sprite
-    state: xenoarch
-
-- type: entity
-  parent: BaseSign
   id: SignAtmos
   name: atmos sign
   description: A sign indicating the atmospherics area.

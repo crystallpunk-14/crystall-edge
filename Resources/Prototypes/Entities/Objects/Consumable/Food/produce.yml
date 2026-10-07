@@ -2696,49 +2696,6 @@
   - type: BadFood
 
 - type: entity
-  parent: [SolutionNormal, FoodProduceBase] # Anomalously large
-  id: FoodAnomalyBerry
-  name: anomaly berry
-  description: A strange blue fruit. Something about it doesn't seem right.
-  components:
-  - type: FlavorProfile
-    flavors:
-      - strange
-  - type: Sprite
-    sprite: Objects/Specific/Hydroponics/anomaly_berry.rsi
-    state: produce
-  - type: Item
-    heldPrefix: produce
-  - type: Produce
-    plantId: AnomalyBerryPlants
-  - type: Edible
-    trash:
-    - EffectAnomalyFloraBulb # Random loot
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Nutriment
-        Quantity: 20
-      - ReagentId: Vitamin
-        Quantity: 20
-      - ReagentId: JuiceBerry
-        Quantity: 20
-      - ReagentId: Artifexium
-        Quantity: 1
-  - type: Extractable
-    juiceSolution:
-      reagents:
-      - ReagentId: JuiceBerry
-        Quantity: 30
-  - type: Tag
-    tags:
-    - Fruit
-  - type: FoodSequenceElement
-    entries:
-      Taco: AnomalyBerry
-      Burger: AnomalyBerryBurger
-
-- type: entity
   name: bloonion bulb
   description: A strange floating bulb.. Nothing worth crying over.
   parent: [SolutionCryo, BaseStructureDynamic, ProduceBase]

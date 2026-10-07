@@ -60956,22 +60956,12 @@ entities:
       parent: 15
       rot: -1.5707963267948966 rad
       pos: 51.5,-53.5
-    - type: DeviceLinkSource
-      linkedPorts:
-        5733:
-        - - ArtifactAnalyzerSender
-          - ArtifactAnalyzerReceiver
   - uid: 5815
     components:
     - type: Transform
       parent: 15
       rot: 1.5707963267948966 rad
       pos: 65.5,-55.5
-    - type: DeviceLinkSource
-      linkedPorts:
-        5787:
-        - - ArtifactAnalyzerSender
-          - ArtifactAnalyzerReceiver
 - proto: ComputerAtmosMonitoring
   entities:
   - uid: 2342

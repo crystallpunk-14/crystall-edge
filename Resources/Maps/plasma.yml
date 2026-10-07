@@ -72790,23 +72790,11 @@ entities:
       parent: 2
       rot: 3.141592653589793 rad
       pos: -147.5,-47.5
-    - type: DeviceLinkSource
-      range: 7
-      linkedPorts:
-        14168:
-        - - ArtifactAnalyzerSender
-          - ArtifactAnalyzerReceiver
   - uid: 7251
     components:
     - type: Transform
       parent: 2
       pos: -147.5,-43.5
-    - type: DeviceLinkSource
-      range: 7
-      linkedPorts:
-        15401:
-        - - ArtifactAnalyzerSender
-          - ArtifactAnalyzerReceiver
 - proto: ComputerAtmosMonitoring
   entities:
   - uid: 5571

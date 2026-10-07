@@ -1217,22 +1217,6 @@
 # Anomaly berries
 
 - type: foodSequenceElement
-  id: AnomalyBerry
-  name: food-sequence-content-anomaly-berry
-  sprites:
-  - sprite: Objects/Specific/Hydroponics/anomaly_berry.rsi
-    state: produce
-
-- type: foodSequenceElement
-  id: AnomalyBerryBurger
-  name: food-sequence-burger-content-anomaly-berry
-  sprites:
-  - sprite: Objects/Specific/Hydroponics/anomaly_berry.rsi
-    state: produce
-
-# Cotton Top Bun
-
-- type: foodSequenceElement
   id: CottonBunTopBurger
   final: true
   sprites:

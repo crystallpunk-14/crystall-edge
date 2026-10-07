@@ -49018,25 +49018,11 @@ entities:
       parent: 1
       rot: 1.5707963267948966 rad
       pos: 7.5,91.5
-    - type: AnalysisConsole
-      analyzerEntity: 81
-    - type: DeviceLinkSource
-      linkedPorts:
-        81:
-        - - ArtifactAnalyzerSender
-          - ArtifactAnalyzerReceiver
   - uid: 1576
     components:
     - type: Transform
       parent: 1
       pos: 8.5,96.5
-    - type: AnalysisConsole
-      analyzerEntity: 1000
-    - type: DeviceLinkSource
-      linkedPorts:
-        1000:
-        - - ArtifactAnalyzerSender
-          - ArtifactAnalyzerReceiver
 - proto: ComputerAtmosMonitoring
   entities:
   - uid: 6789
