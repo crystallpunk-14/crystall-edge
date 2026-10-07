@@ -297,17 +297,6 @@
 
 - type: entity
   parent: BaseComputerCircuitboard
-  id: AnalysisComputerCircuitboard
-  name: analysis computer board
-  description: A computer printed circuit board for an analysis console.
-  components:
-    - type: Sprite
-      state: cpu_science
-    - type: ComputerBoard
-      prototype: ComputerAnalysisConsole
-
-- type: entity
-  parent: BaseComputerCircuitboard
   id: TechDiskComputerCircuitboard
   name: tech disk terminal board
   description: A computer printed circuit board for a technology disk terminal.

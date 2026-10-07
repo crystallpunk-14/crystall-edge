@@ -9,11 +9,10 @@
   - type: Sprite
     layers:
       - state: red
-      - sprite: Objects/Specific/Xenoarchaeology/node_scanner.rsi
+      - sprite: Objects/Specific/Research/researchdisk.rsi
         state: icon
   - type: RandomSpawner
     rarePrototypes:
-    - NodeScanner
     - Multitool
     - Igniter
     rareChance: 0.1
@@ -38,7 +37,6 @@
     - !type:GroupSelector
       weight: 90
       children:
-      - id: NodeScanner
       - id: NetworkConfigurator
       - id: Wirecutter
       - id: Screwdriver

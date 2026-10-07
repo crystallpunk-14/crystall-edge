@@ -390,17 +390,6 @@
 
 - type: entity
   parent: BaseThiefStealStructureObjective
-  id: XenoArtifactStealObjective
-  components:
-  - type: NotJobRequirement
-    jobs: [ Scientist ]
-  - type: StealCondition
-    stealGroup: XenoArtifact
-  - type: Objective
-    difficulty: 0.5
-
-- type: entity
-  parent: BaseThiefStealStructureObjective
   id: FreezerHeaterStealObjective
   components:
   - type: NotJobRequirement

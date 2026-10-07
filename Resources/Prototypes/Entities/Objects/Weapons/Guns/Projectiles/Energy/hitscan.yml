@@ -41,8 +41,6 @@
   id: LaserHitscanBase
   name: basic laser ray
   categories: [ HideSpawnMenu ]
-  components:
-  - type: LaserProjectile
 
 - type: entity
   parent: LaserHitscanBase

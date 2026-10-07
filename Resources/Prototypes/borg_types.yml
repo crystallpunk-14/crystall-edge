@@ -16,7 +16,6 @@
   - BorgModulePrying
   - BorgModuleTool
   - BorgModuleInflatable
-  - BorgModuleArtifact
   radioChannels:
   - Science
 

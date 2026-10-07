@@ -467,7 +467,7 @@ public enum LogType
     /// <summary>
     /// Artifact node got activated.
     /// </summary>
-    ArtifactNode = 101,
+    ArtifactNode = 101, // CrystallEdge: xenoarchaeology removed, value kept for existing admin logs in DB
 
     /// <summary>
     /// Damaging grid collision has occurred.

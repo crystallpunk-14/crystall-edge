@@ -23,7 +23,6 @@
       - GravityGenerator
       - TegGenerator
       - TegCirculator
-      - XenoArtifact
     event: !type:ChangeComponentsSpellEvent
       toAdd:
       - type: Animate
