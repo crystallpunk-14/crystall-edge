@@ -317,31 +317,6 @@
     subtype: role-subtype-xenoborg
   - type: XenoborgRole
 
-# Zombie Squad
-- type: entity
-  parent: BaseMindRoleAntag
-  id: MindRoleInitialInfected
-  name: Initial Infected Role
-  components:
-  - type: MindRole
-    antagPrototype: InitialInfected
-    exclusiveAntag: true
-    roleType: TeamAntagonist
-    subtype: role-subtype-initial-infected
-  - type: InitialInfectedRole
-
-- type: entity
-  parent: MindRoleGhostRoleTeamAntagonistFlock
-  id: MindRoleZombie
-  name: Zombie Role
-  components:
-  - type: MindRole
-    antagPrototype: Zombie
-    exclusiveAntag: true
-    subtype: role-subtype-zombie
-  - type: ZombieRole
-
-# Changeling
 - type: entity
   parent: BaseMindRoleAntag
   id: MindRoleChangeling

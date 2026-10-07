@@ -153,30 +153,6 @@
   physicalDesc: reagent-physical-desc-strong-smelling
 
 - type: reagent
-  id: ZombieBlood
-  name: reagent-name-zombie-blood
-  group: Biological
-  desc: reagent-desc-zombie-blood
-  physicalDesc: reagent-physical-desc-necrotic
-  flavor: bitter
-  color: "#2b0700"
-  metabolisms:
-    Digestion:
-      # Disgusting!
-      effects:
-      - !type:Satiate
-        satiationType: Thirst
-        factor: -0.5
-    Bloodstream:
-      effects:
-      - !type:HealthChange
-        damage:
-          types:
-            Poison: 4
-      - !type:Vomit
-        probability: 0.25
-
-- type: reagent
   id: Romerodone
   name: reagent-name-romerodone
   group: Biological

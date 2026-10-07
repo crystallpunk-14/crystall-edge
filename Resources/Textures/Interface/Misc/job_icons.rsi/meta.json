@@ -95,9 +95,6 @@
             "name": "HeadRevolutionary"
         },
         {
-            "name": "InitialInfected"
-        },
-        {
             "name": "Janitor"
         },
         {
@@ -243,9 +240,6 @@
         },
         {
             "name": "Zookeeper"
-        },
-        {
-            "name": "Zombie"
         },
         {
             "name": "TramDriver"

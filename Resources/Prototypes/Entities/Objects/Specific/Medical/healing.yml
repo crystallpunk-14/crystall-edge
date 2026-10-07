@@ -693,20 +693,6 @@
         id: PillTricordrazine
         amount: 5
 
--  type: entity
-   name: pill canister
-   parent: PillCanister
-   id: PillCanisterAmbuzol
-   suffix: Ambuzol 15u, 2
-   components:
-   - type: Label
-     localizedLabel: pill-label-ambuzol-15u
-   - type: EntityTableContainerFill
-     containers:
-       storagebase:
-         id: PillAmbuzol
-         amount: 2
-
 - type: entity
   name: pill
   suffix: Bicaridine 20u
@@ -770,43 +756,6 @@
       storagebase:
         id: PillCharcoal
         amount: 3
-
-- type: entity
-  name: romerol pill
-  parent: Pill
-  id: PillRomerol
-  components:
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Romerol
-        Quantity: 20
-
-- type: entity
-  name: ambuzol pill
-  parent: Pill
-  id: PillAmbuzol
-  components:
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Ambuzol
-        Quantity: 15
-
-- type: entity
-  name: ambuzol plus pill
-  parent: Pill
-  id: PillAmbuzolPlus
-  components:
-  - type: Pill
-    pillType: 2
-  - type: Sprite
-    state: pill3
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: AmbuzolPlus
-        Quantity: 5
 
 - type: entity
   parent: PillCanister
@@ -939,19 +888,6 @@
         Quantity: 15
 
 - type: entity
-  suffix: ambuzol
-  parent: PrefilledSyringe
-  id: SyringeAmbuzol
-  components:
-  - type: Label
-    localizedLabel: reagent-name-ambuzol
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Ambuzol
-        Quantity: 15
-
-- type: entity
   suffix: sigynate
   parent: PrefilledSyringe
   id: SyringeSigynate
@@ -1001,20 +937,6 @@
     solution:
       reagents:
       - ReagentId: Saline
-        Quantity: 15
-
-#this is where all the syringes are so i didn't know where to put it
-- type: entity
-  suffix: romerol
-  parent: PrefilledSyringe
-  id: SyringeRomerol
-  components:
-  - type: Label
-    localizedLabel: reagent-name-romerol
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Romerol
         Quantity: 15
 
 - type: entity

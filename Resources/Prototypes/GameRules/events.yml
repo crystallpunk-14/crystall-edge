@@ -41,7 +41,6 @@
     - id: NinjaSpawn
     - id: ParadoxCloneSpawn
     - id: SleeperAgents
-    - id: ZombieOutbreak
     - id: LoneOpsSpawn
     - id: WizardSpawn
     - !type:NestedSelector
@@ -465,27 +464,6 @@
       rolls: 4, 8
       children:
       - id: MobClownSpider
-
-- type: entity
-  id: ZombieOutbreak
-  parent: BaseGameRule
-  components:
-  - type: StationEvent
-    earliestStart: 90
-    minimumPlayers: 40
-    weight: 1 # Zombies was happening basically every single survival round, so now it's super rare
-    duration: 1
-    occursDuringRoundEnd: false
-  - type: ZombieRule
-  - type: AntagSelection
-    antags:
-    - !type:LinearAntagCount
-      proto: InitialInfected
-      range:
-        min: 1
-        max: 3
-  - type: DynamicRuleCost
-    cost: 200
 
 - type: entity
   parent: [ BaseAntagGhostRoleRule, BaseNukeopsRule ]

@@ -522,7 +522,6 @@
     children:
     - id: SpaceCash100
       weight: 10
-    - id: SyringeAmbuzol
     - id: SyringeHyronalin
     - id: SyringeDermaline
     - id: SyringeBicaridine

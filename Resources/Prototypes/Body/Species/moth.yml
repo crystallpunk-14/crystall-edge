@@ -142,8 +142,6 @@
   components:
   - type: Damageable
     damageModifierSet: Moth
-  - type: ZombieAccentOverride
-    accent: zombieMoth
   - type: Speech
     speechVerb: Moth
     allowedEmotes: ['Chitter', 'Squeak', 'Flap']

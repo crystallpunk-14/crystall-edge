@@ -398,8 +398,6 @@
     modifiers:
       coefficients:
         Caustic: 0.1
-  - type: ZombificationResistance
-    zombificationResistanceCoefficient: 0.4
   - type: ClothingSpeedModifier
     walkModifier: 0.95
     sprintModifier: 0.95
@@ -1027,8 +1025,6 @@
         Shock: 0.1
         Radiation: 0.1
         Caustic: 0.1
-  - type: ZombificationResistance
-    zombificationResistanceCoefficient: 0.25
   - type: ClothingSpeedModifier
     walkModifier: 1.0
     sprintModifier: 1.0

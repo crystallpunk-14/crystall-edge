@@ -9,7 +9,6 @@
   - NuclearOperatives
   - SpaceNinja
   - Wizard
-  - Zombies
   - Xenoborgs
   - Changelings
   - MinorAntagonists
@@ -23,11 +22,6 @@
   id: NuclearOperatives
   name: guide-entry-nuclear-operatives
   text: "/ServerInfo/Guidebook/Antagonist/Nuclear Operatives.xml"
-
-- type: guideEntry
-  id: Zombies
-  name: guide-entry-zombies
-  text: "/ServerInfo/Guidebook/Antagonist/Zombies.xml"
 
 - type: guideEntry
   id: Revolutionaries
