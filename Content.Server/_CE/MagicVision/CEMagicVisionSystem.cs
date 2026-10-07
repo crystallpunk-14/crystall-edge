@@ -36,7 +36,7 @@ public sealed partial class CEMagicVisionSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnClothingEquipped(Entity<CEMagicVisionClothingComponent> ent, ref GotEquippedEvent args)
     {
-        if ((args.SlotFlags & SlotFlags.EYES) == 0)
+        if ((args.SlotFlags & CECheckMagicVisionEvent.Slots) == 0)
             return;
 
         RefreshMagicVision(args.EquipTarget);
@@ -45,7 +45,7 @@ public sealed partial class CEMagicVisionSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnClothingUnequipped(Entity<CEMagicVisionClothingComponent> ent, ref GotUnequippedEvent args)
     {
-        if ((args.SlotFlags & SlotFlags.EYES) == 0)
+        if ((args.SlotFlags & CECheckMagicVisionEvent.Slots) == 0)
             return;
 
         RefreshMagicVision(args.EquipTarget);
