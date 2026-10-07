@@ -168,6 +168,12 @@
     - !type:ToolUse
       qualities:
       - CEMatterManipulation
+    - !type:SpawnMagicTrace
+      icon:
+        sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
+        state: icon
+      description: ce-magic-trace-matter-manipulation
+      duration: 300 # 5 mana x 60s, same rate as mana-costing spells
     - !type:SpawnEntity
       spawns:
       - CEOverchargeVFX

@@ -14,10 +14,6 @@
   components:
   - type: CEActionManaCost
     manaCost: 25
-  - type: CEActionEssenceCost
-    essenceCost:
-      Weapon: 1
-      Frost: 2
   - type: Action
     useDelay: 10
     itemIconStyle: BigAction

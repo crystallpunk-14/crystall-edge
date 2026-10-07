@@ -80,15 +80,6 @@
     proto: CEClothingCloakMantleInvestigator
 
 - type: tradeOffer
-  id: CETradeOfferClothingHeadHelmetInvestigator
-  shop: EmpireGuard
-  pay:
-    bonus: 10
-  reward:
-  - !type:CETradeSpawnReward
-    proto: CEClothingHeadHelmetInvestigator
-
-- type: tradeOffer
   id: CETradeOfferRope
   shop: EmpireGuard
   pay:
