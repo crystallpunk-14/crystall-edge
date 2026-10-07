@@ -585,10 +585,6 @@ ent-CETreasureSparkVFX = искра сокровища
     .desc = { "" }
     .suffix = VFX
 
-ent-CEEssenceConsumeVFX = эффект поглощения эссенции
-    .desc = { "" }
-    .suffix = VFX
-
 ent-CEScientificInterestVFX = метка научного интереса
     .desc = { "" }
     .suffix = VFX
@@ -2487,15 +2483,6 @@ ent-CEKeyHomeGoodsShop = { ent-CEKeyIronBlank }
 ent-CEKeyHomeGoodsHome = { ent-CEKeyIronBlank }
     .desc = { ent-CEKeyIronBlank.desc }
     .suffix = Home Goods Home
-
-ent-CESpellcastingAmulet = амулет магической фокусировки
-    .desc = Эргономичный вариант фокусировки для чтения заклинаний. Самый простой вариант для общего использования.
-
-ent-CECastingStaffAdmin = админский посох заклинателя
-    .desc = TODO
-
-ent-CECastingStaffBasic = посох заклинателя
-    .desc = TODO
 
 ent-CEWeaponGunPeacekeeperGolden = золотой Миротворец
     .desc = Энергетическая винтовка с малым зарядом, стреляющая мощным отталкивающим лучом сконцентрированной маны. Особый предмет, изготовленный в единственном экземпляре на заказ для командира стражи. Ёмкость боезапаса немного выше.

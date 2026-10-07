@@ -17,10 +17,6 @@
     radius: 1.5
   - type: CEActionManaCost
     manaCost: 15
-  - type: CEActionEssenceCost
-    essenceCost:
-      Plant: 2
-      Life: 1
   - type: CEActionStaminaCost
     cost: 10
   - type: Action

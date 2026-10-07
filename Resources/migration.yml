@@ -114,6 +114,17 @@ CEIronDoorGuardArmory: null
 CEIronDoorGuardArmoryMirrored: null
 CEKeyGuardArmory: null
 
+#2026-09-28
+CEGunJustice: CEWeaponGunJustice
+CEGunPeacekeeper: CEWeaponGunPeacekeeper
+CEGunPeacekeeperGolden: CEWeaponGunPeacekeeperGolden
+CEMop: CEWeaponMop
+
+#2026-10-07
+CECastingStaffBasic: null
+CESpellcastingAmulet: null
+
+
 # CrystallEdge migration zone end
 
 
@@ -1239,9 +1250,4 @@ DrinkNeurotoxinGlass: null
 #2026-08-19
 JanitorServiceLight: null
 
-#2026-09-28
-CEGunJustice: CEWeaponGunJustice
-CEGunPeacekeeper: CEWeaponGunPeacekeeper
-CEGunPeacekeeperGolden: CEWeaponGunPeacekeeperGolden
-CEMop: CEWeaponMop
-
+# P.s. Dont paste CrystallEdge migrations here, we have dedicated CE block in start of this file

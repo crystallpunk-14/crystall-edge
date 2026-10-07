@@ -59,19 +59,6 @@ public abstract partial class CESharedActionSystem
     }
 
     [SubscribeLocalEvent]
-    private void OnEssenceCostActionAttempt(Entity<CEActionEssenceCostComponent> ent, ref ActionAttemptEvent args)
-    {
-        if (args.Cancelled)
-            return;
-
-        if (!_magicFocus.HasEnoughEssence(args.User, ent.Comp.EssenceCost))
-        {
-            Popup.PopupClient(Loc.GetString("ce-magic-spell-not-enough-essence"), args.User, args.User);
-            args.Cancelled = true;
-        }
-    }
-
-    [SubscribeLocalEvent]
     private void OnWeaponRequiredActionAttempt(Entity<CEActionWeaponRequiredComponent> ent, ref ActionAttemptEvent args)
     {
         if (args.Cancelled)
