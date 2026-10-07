@@ -14,9 +14,6 @@
   components:
   - type: CEActionManaCost
     manaCost: 15
-  - type: CEActionEssenceCost
-    essenceCost:
-      Light: 2
   - type: Action
     useDelay: 30
     itemIconStyle: BigAction

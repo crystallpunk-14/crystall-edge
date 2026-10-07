@@ -2,7 +2,7 @@ using Content.Shared._CE.Animation.Core;
 using Content.Shared._CE.Animation.Core.Prototypes;
 using Content.Shared._CE.DayCycle;
 using Content.Shared._CE.MagicEnergy.Systems;
-using Content.Shared._CE.MagicFocus.Systems;
+using Content.Shared._CE.MagicTrace;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.Damage.Systems;
@@ -23,12 +23,12 @@ public abstract partial class CESharedActionSystem : EntitySystem
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private SharedHandsSystem _hand = default!;
     [Dependency] private CESharedMagicEnergySystem _magicEnergy = default!;
-    [Dependency] private CEMagicFocusSystem _magicFocus = default!;
     [Dependency] private SharedStaminaSystem _stamina = default!;
     [Dependency] private SharedBatterySystem _battery = default!;
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private CEDayCycleSystem _dayCycle = default!;
+    [Dependency] private CEMagicTraceSystem _magicTrace = default!;
 
     [Dependency] private EntityQuery<ActionComponent> _actionQuery = default!;
 

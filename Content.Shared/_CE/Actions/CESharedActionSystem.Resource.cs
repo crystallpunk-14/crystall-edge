@@ -35,17 +35,13 @@ public abstract partial class CESharedActionSystem
 
         if (manaCost > 0 && TryComp<BatteryComponent>(args.Performer, out var playerMana))
             _battery.UseCharge((args.Performer, playerMana), manaCost);
+
+        _magicTrace.SpawnSpellTrace(args.Performer, ent, ent.Comp.ManaCost);
     }
 
     [SubscribeLocalEvent]
     private void OnStaminaCostActionPerformed(Entity<CEActionStaminaCostComponent> ent, ref ActionPerformedEvent args)
     {
         _stamina.TakeStaminaDamage(args.Performer, ent.Comp.Cost);
-    }
-
-    [SubscribeLocalEvent]
-    private void OnEssenceCostActionPerformed(Entity<CEActionEssenceCostComponent> ent, ref ActionPerformedEvent args)
-    {
-        _magicFocus.TrySpendEssence(args.Performer, ent.Comp.EssenceCost);
     }
 }

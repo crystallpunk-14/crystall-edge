@@ -21,7 +21,7 @@
   editorHidden: false
   roles:
   - CEGuardCommander
-  #- CEInvestigator
+  - CEInvestigator
   - CEGuard
 
 - type: department

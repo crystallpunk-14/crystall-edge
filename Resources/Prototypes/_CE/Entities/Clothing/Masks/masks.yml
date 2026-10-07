@@ -88,3 +88,28 @@
   - type: Clothing
     sprite: _CE/Clothing/Masks/Generic/mime_mask.rsi
 
+- type: entity
+  parent: CEClothingMaskIdentityBlockerBase
+  id: CEClothingMaskInvestigator
+  name: investigator mask
+  description: A reinforced mask with thaumaturgic lenses, worn by investigators. It reveals the hidden world of magic and the essence of objects while protecting the face.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Masks/Guard/investigator_mask.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Masks/Guard/investigator_mask.rsi
+  - type: CEMagicEssenceScanner
+  - type: CEMagicVisionClothing
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+  - type: StaticPrice
+    price: 100
+  - type: CEMagicEssenceStructure
+    essences:
+      Metal: { min: 1, max: 3 }
+      Magic: { min: 1, max: 3 }
+      Senses: { min: 1, max: 3 }

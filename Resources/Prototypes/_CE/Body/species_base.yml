@@ -188,6 +188,7 @@
     weightlessModifier: 0.6
   - type: CEBlinker
   - type: CESkillStorage
+  - type: CEAuraImprint
   - type: Satiation
     satiations:
       Hunger:

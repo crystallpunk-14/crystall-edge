@@ -1,7 +1,6 @@
 using Content.Shared._CE.MagicEnergy.Components;
 using Content.Shared._CE.MagicEssence.Components;
 using Content.Shared._CE.MagicEssence.Events;
-using Content.Shared._CE.MagicFocus.Systems;
 using Content.Shared._CE.MagicVision.Events;
 using Content.Shared._CE.Waypointer;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
@@ -58,7 +57,6 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, CEMagicEssenceScanEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, CECheckMagicVisionEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, CERefreshWaypointersEvent>(RefRelayInventoryEvent);
-        SubscribeLocalEvent<InventoryComponent, CEGetMagicFocusEssenceEvent>(RelayInventoryEvent);
         //CrystallEdge end
 
         SubscribeLocalEvent<InventoryComponent, DamageModifyEvent>(RelayInventoryEvent);
