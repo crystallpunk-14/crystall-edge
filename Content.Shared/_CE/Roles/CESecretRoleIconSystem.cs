@@ -115,7 +115,7 @@ public sealed partial class CESecretRoleIconSystem : EntitySystem
             targetDepartment.ID == viewerDepartment.ID;
     }
 
-    private bool TryGetDepartment(ProtoId<CESecretRolePrototype> role, out CESecretDepartmentPrototype department)
+    public bool TryGetDepartment(ProtoId<CESecretRolePrototype> role, out CESecretDepartmentPrototype department)
     {
         foreach (var candidate in _proto.EnumeratePrototypes<CESecretDepartmentPrototype>())
         {

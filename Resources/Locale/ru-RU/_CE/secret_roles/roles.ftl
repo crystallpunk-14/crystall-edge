@@ -19,3 +19,9 @@ ce-secret-role-description-lover = Вы одержимы одним особен
 
 ce-secret-role-name-tormentor = Мучитель
 ce-secret-role-description-tormentor = Вы пойдете на все, чтобы видеть как ваша цель страдает всю свою оставшуюся жизнь, из-за постоянных поражений. И вы постараетесь, чтобы её поражения были гарантированны.
+
+ce-secret-role-name-recruiter = Вербовщик
+ce-secret-role-description-recruiter = Вы умеете замечать тех, кого подвёл город. Приведите их в братство - чем больше рук, тем безопаснее всем.
+
+ce-secret-role-name-recruit = Рекрут
+ce-secret-role-description-recruit = Вы отказались от прежних амбиций и поклялись в верности братству. Теперь его цели - ваши цели.

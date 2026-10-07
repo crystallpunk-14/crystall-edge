@@ -89,7 +89,7 @@ public sealed partial class CEHumanoidProfileEditor
 
             var roles = department.Roles
                 .Select(roleId => _prototypeManager.TryIndex(roleId, out var role) ? role : null)
-                .Where(role => role != null)
+                .Where(role => role is { SetPreference: true })
                 .Select(role => role!)
                 .ToArray();
 

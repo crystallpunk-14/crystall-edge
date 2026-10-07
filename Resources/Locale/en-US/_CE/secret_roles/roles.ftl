@@ -19,3 +19,9 @@ ce-secret-role-description-lover = You're obsessed with one special person. You'
 
 ce-secret-role-name-tormentor = Tormentor
 ce-secret-role-description-tormentor = You'll do whatever it takes to watch your target suffer through a lifetime of failure. You intend to make sure that failure is guaranteed.
+
+ce-secret-role-name-recruiter = Recruiter
+ce-secret-role-description-recruiter = You know how to spot people the city has failed. Bring them into the Brotherhood - the more hands, the safer everyone is.
+
+ce-secret-role-name-recruit = Recruit
+ce-secret-role-description-recruit = You gave up your old ambitions and swore yourself to the Brotherhood. Its goals are yours now.
