@@ -99,15 +99,6 @@
         - id: CEMachinePartDimensionalMatrix1
         - id: CEMachinePartCoalDiffuser1
       - !type:GroupSelector
-        weight: 0.05
-        children:
-        - id: CEEssenceSphereEarth
-        - id: CEEssenceSphereFire
-        - id: CEEssenceSphereWater
-        - id: CEEssenceSphereAir
-        - id: CEEssenceSphereOrder
-        - id: CEEssenceSphereChaos
-      - !type:GroupSelector
         children:
         - id: CEStoneBlock10
         - id: CEDirtBlock10

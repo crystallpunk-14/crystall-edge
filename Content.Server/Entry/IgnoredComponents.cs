@@ -8,7 +8,6 @@ namespace Content.Server.Entry
             "CEWaveShader",
             "CEPipeVisualizer",
             "CETimedDespawnFadeout",
-            "CEInfusionAltarDangerVisuals",
             //CrystallEdge end
             "ConstructionGhost",
             "IconSmooth",

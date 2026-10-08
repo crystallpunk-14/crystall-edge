@@ -65,4 +65,4 @@
         acts: [ "Destruction" ]
   - type: CEMagicEssenceNodeStabilizer
   - type: StaticPrice
-    price: 200
+    price: 120

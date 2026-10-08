@@ -106,7 +106,7 @@ CECurtainsGreenOpened: CECurtainsGreen
 CEWallStoneBrickOld: CEWallStoneBrick
 
 # 2026-08-24
-CESpellMasteryAltar: CEInfusionAltar
+CESpellMasteryAltar: null
 
 # 2026-09-25
 CEFloraTreeSpruceSmall: CEFloraTreeSpruce
@@ -149,6 +149,16 @@ CETradeTableBlackMarket: null
 CECastingStaffBasic: null
 CESpellcastingAmulet: null
 CEClothingHeadHelmetInvestigator: null
+
+# 2026-10-08
+CEInfusionAltar: null
+CEInfusionAltarPedestal: null
+CEEssenceSphereEarth: null
+CEEssenceSphereFire: null
+CEEssenceSphereWater: null
+CEEssenceSphereAir: null
+CEEssenceSphereOrder: null
+CEEssenceSphereChaos: null
 
 # CrystallEdge migration zone end
 
