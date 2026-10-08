@@ -5,7 +5,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 10/05/2026 22:33:00
-  entityCount: 1501
+  entityCount: 1497
 maps:
 - 1
 grids:
@@ -2254,35 +2254,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -35.5,-8.5
-- proto: CEInfusionAltar
-  entities:
-  - uid: 46
-    components:
-    - type: Transform
-      parent: 1
-      pos: -36.5,-15.5
-    - type: CEInfusionAltar
-      connectedPedestals:
-      - 19
-      - 20
-      - 21
-- proto: CEInfusionAltarPedestal
-  entities:
-  - uid: 19
-    components:
-    - type: Transform
-      parent: 1
-      pos: -34.5,-13.5
-  - uid: 20
-    components:
-    - type: Transform
-      parent: 1
-      pos: -36.5,-12.5
-  - uid: 21
-    components:
-    - type: Transform
-      parent: 1
-      pos: -38.5,-13.5
 - proto: CEIronDoorAcademyLab
   entities:
   - uid: 1464

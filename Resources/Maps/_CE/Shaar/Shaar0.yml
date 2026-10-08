@@ -5,7 +5,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 10/05/2026 22:32:59
-  entityCount: 2182
+  entityCount: 2181
 maps:
 - 1
 grids:
@@ -3468,14 +3468,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -6.5284524,1.8476849
-- proto: CEEssenceSphereOrder
-  entities:
-  - uid: 695
-    components:
-    - type: Transform
-      parent: 1
-      rot: 1.5707963267948966 rad
-      pos: -35.470062,-15.348797
 - proto: CEFenceBigBrass
   entities:
   - uid: 383
