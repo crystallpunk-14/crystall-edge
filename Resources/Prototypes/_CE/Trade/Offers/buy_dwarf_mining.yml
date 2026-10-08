@@ -71,6 +71,15 @@
     proto: CELantern
 
 - type: tradeOffer
+  id: CETradeOfferSafeFallingAmulet
+  shop: DwarfMiners
+  pay:
+    bonus: 5
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CESafeFallingAmulet
+
+- type: tradeOffer
   id: CETradeOfferStoneBlock10
   shop: DwarfMiners
   pay:

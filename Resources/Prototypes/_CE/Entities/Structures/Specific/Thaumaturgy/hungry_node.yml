@@ -9,7 +9,7 @@
     hungerVolume: 10
     vFX:
     - CEShockWaveVFX
-    - CEInfusionAltarMishapManaConsume
+    - CEEffectAreaManaConsume
     reward: CEDimensionalShard
   - type: CEMurkSphereChargingBlocker
   - type: InteractionOutline

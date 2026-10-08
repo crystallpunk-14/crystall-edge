@@ -1416,27 +1416,6 @@ ent-CECoinPlatinum10 = { ent-CECoinPlatinum1 }
     .desc = { ent-CECoinPlatinum1.desc }
     .suffix = 10 монет
 
-ent-CEBaseEssenceSphere = { "" }
-    .desc = Идеально круглая кристальная сфера с заключённой внутри эссенцией, сохранённой в плазмоподобной форме. Ценный ресурс для многих тауматургических рецептов и ритуалов.
-
-ent-CEEssenceSphereEarth = сфера эссенции Terra
-    .desc = Запечатанная стеклянная сфера с чистой жидкой эссенцией Terra.
-
-ent-CEEssenceSphereFire = сфера эссенции Ignis
-    .desc = Запечатанная стеклянная сфера с чистой жидкой эссенцией Ignis.
-
-ent-CEEssenceSphereWater = сфера эссенции Aqua
-    .desc = Запечатанная стеклянная сфера с чистой жидкой эссенцией Aqua.
-
-ent-CEEssenceSphereAir = сфера эссенции Aer
-    .desc = Запечатанная стеклянная сфера с чистой жидкой эссенцией Aer.
-
-ent-CEEssenceSphereOrder = сфера эссенции Ordo
-    .desc = Запечатанная стеклянная сфера с чистой жидкой эссенцией Ordo.
-
-ent-CEEssenceSphereChaos = сфера эссенции Perditio
-    .desc = Запечатанная стеклянная сфера с чистой жидкой эссенцией Perditio.
-
 ent-CELeather1 = кожа
     .desc = Рулон выделанной кожи.
     .suffix = 1
@@ -3875,20 +3854,17 @@ ent-CEFloraTreeSpruce = { ent-CEBaseTree }
 ent-CEMagicEssenceHungryNode = голодная нода
     .desc = Изголодавшийся карман тёмной магии, тихо страдающий без определённого вкуса эссенции.
 
-ent-CEInfusionAltarPositionIndicator = возможная позиция постамента для слияния
+ent-CEEffectAreaManaConsume = всплеск поглощения маны
     .desc = { "" }
 
-ent-CEInfusionAltarMishapManaConsume = сбой алтаря слияния: поглощение маны
-    .desc = TODO
+ent-CEEffectAreaManaRestore = всплеск восстановления маны
+    .desc = { "" }
 
-ent-CEInfusionAltarMishapManaRestore = сбой алтаря слияния: восстановление маны
-    .desc = TODO
+ent-CEEffectPulse = импульс
+    .desc = { "" }
 
-ent-CEInfusionAltarMishapPulse = сбой алтаря слияния: импульс маны
-    .desc = TODO
-
-ent-CEInfusionAltarMishapExplosion = сбой алтаря слияния: взрыв маны
-    .desc = TODO
+ent-CEEffectExplosion = взрыв
+    .desc = { "" }
 
 ent-CEMagicEssenceNode = нода магической эссенции
     .desc = Скопление магической эссенции, ненадолго обретшее форму в физической реальности.
@@ -5294,12 +5270,6 @@ ent-CEPlantWheat = пшеница
 
 ent-CEMagicEssenceAttractor = притягиватель эссенции
     .desc = Тауматургическое устройство, притягивающее из воздуха парящую магическую эссенцию и конденсирующее её в собираемую жидкость, пока оно запитано.
-
-ent-CEInfusionAltar = алтарь слияния
-    .desc = TODO
-
-ent-CEInfusionAltarPedestal = постамент алтаря слияния
-    .desc = TODO
 
 ent-CESolutionNormalizer = нормализатор растворов
     .desc = Алхимическое устройство, уничтожающее реагент, которого в залитом в него растворе меньше всего, постепенно приводя смеси к их преобладающим реагентам. Для работы требуется энергия.

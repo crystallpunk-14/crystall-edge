@@ -4,9 +4,3 @@
   components:
   - type: CEMagicEssenceSingleton
   - type: CEPvsOverride
-
-- type: entity
-  id: CEInfusionAltarSingleton
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: CEInfusionAltarSingleton

@@ -7,7 +7,6 @@
   children:
   - CEThaumaturgyAspectsEN
   - CEThaumaturgyResearchEN
-  - CEThaumaturgyInfusionAltarEN
   - CEThaumaturgySpellcastingEN
 
 - type: guideEntry
@@ -29,23 +28,6 @@
 - type: guideEntry
   hidden: false
   locFilter: "en-US"
-  id: CEThaumaturgyInfusionAltarEN
-  name: Infusion altar
-  text: "/ServerInfo/_CE/Guidebook_EN/Thaumaturgy/InfusionAltar/InfusionAltar.xml"
-  children:
-  - CEThaumaturgyInfusionAltarRecipesEN
-
-- type: guideEntry
-  hidden: false
-  locFilter: "en-US"
-  id: CEThaumaturgyInfusionAltarRecipesEN
-  name: Recipes
-  text: "/ServerInfo/_CE/Guidebook_EN/Thaumaturgy/InfusionAltar/Recipes.xml"
-  filterEnabled: True
-
-- type: guideEntry
-  hidden: false
-  locFilter: "en-US"
   id: CEThaumaturgySpellcastingEN
   name: Spellcasting
   text: "/ServerInfo/_CE/Guidebook_EN/Thaumaturgy/Spellcasting/Spellcasting.xml"
@@ -59,7 +41,6 @@
   children:
   - CEThaumaturgyAspectsRU
   - CEThaumaturgyResearchRU
-  - CEThaumaturgyInfusionAltarRU
   - CEThaumaturgySpellcastingRU
 
 - type: guideEntry
@@ -76,23 +57,6 @@
   id: CEThaumaturgyResearchRU
   name: Исследование
   text: "/ServerInfo/_CE/Guidebook_RU/Thaumaturgy/Research.xml"
-  filterEnabled: True
-
-- type: guideEntry
-  hidden: false
-  locFilter: "ru-RU"
-  id: CEThaumaturgyInfusionAltarRU
-  name: Алтарь инфузии
-  text: "/ServerInfo/_CE/Guidebook_RU/Thaumaturgy/InfusionAltar/InfusionAltar.xml"
-  children:
-  - CEThaumaturgyInfusionAltarRecipesRU
-
-- type: guideEntry
-  hidden: false
-  locFilter: "ru-RU"
-  id: CEThaumaturgyInfusionAltarRecipesRU
-  name: Рецепты
-  text: "/ServerInfo/_CE/Guidebook_RU/Thaumaturgy/InfusionAltar/Recipes.xml"
   filterEnabled: True
 
 - type: guideEntry
