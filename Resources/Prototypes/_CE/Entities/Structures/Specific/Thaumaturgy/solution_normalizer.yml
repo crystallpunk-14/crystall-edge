@@ -8,7 +8,7 @@
   description: An alchemical device that destroys the reagent that is least present in a solution poured into it, gradually normalizing mixtures down to their dominant reagents. Requires power to operate.
   components:
   - type: StaticPrice
-    price: 150
+    price: 65
   - type: InteractionOutline
   - type: Transform
     anchored: true
