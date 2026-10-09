@@ -14,6 +14,10 @@
     color: "#8ebab9"
     energy: 1
     radius: 2
+  - type: CEMagicEssenceStructure
+    essences:
+      Light: { min: 1, max: 3 }
+      Crystal: { min: 1, max: 2 }
 
 - type: entity
   parent: CELightShardBase
