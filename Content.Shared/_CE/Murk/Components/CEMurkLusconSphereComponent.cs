@@ -11,6 +11,13 @@ public sealed partial class CEMurkLusconSphereComponent : Component
 {
     [DataField, AutoNetworkedField]
     public CEMurkSphereState State = CEMurkSphereState.PreRound;
+
+    /// <summary>
+    /// The sphere's full-size <c>CEMurkSourceComponent.Intensity</c> ("100%" of the safe zone),
+    /// remembered from the prototype on MapInit. The round rule scales the source from it.
+    /// </summary>
+    [DataField]
+    public float? BaseIntensity;
 }
 
 [Serializable, NetSerializable]

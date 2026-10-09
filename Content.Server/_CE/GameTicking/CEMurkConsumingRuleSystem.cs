@@ -139,28 +139,47 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
     {
         base.ActiveTick(uid, component, gameRule, frameTime);
 
+        var pulse = Timing.CurTime >= component.NextPulseTime;
+        var pulsed = false;
+
         var sphereQuery = EntityQueryEnumerator<CEMurkLusconSphereComponent, CEMurkSourceComponent>();
         while (sphereQuery.MoveNext(out var sphereUid, out var sphere, out var source))
         {
             switch (sphere.State)
             {
                 case CEMurkSphereState.PreRound:
+                    SetSphereIntensity((sphereUid, source), sphere, 1f, 0f);
                     if (Timing.CurTime >= GameTicker.RoundStartTimeSpan + component.CrackDelay)
                         StartRound(component, (sphereUid, sphere));
                     break;
                 case CEMurkSphereState.InGame:
+                    var shrink = MathHelper.Lerp(1f, component.ShrinkMultiplier, GetCollapseProgress(component));
+                    SetSphereIntensity((sphereUid, source), sphere, shrink, component.IntensityWriteThreshold);
                     if (component.CrackTime is { } crackTime && Timing.CurTime >= crackTime + component.CollapseDelay)
                         Collapse();
                     break;
                 case CEMurkSphereState.Ritual:
+                    if (pulse)
+                    {
+                        var size = RobustRandom.NextFloat(component.RitualMinMultiplier, component.RitualMaxMultiplier);
+                        SetSphereIntensity((sphereUid, source), sphere, size, 0f);
+                        pulsed = true;
+                    }
+
                     if (component.RitualStartTime is { } ritualStart && Timing.CurTime >= ritualStart + component.RitualDuration)
                         CompleteRitual((sphereUid, sphere));
+                    break;
+                case CEMurkSphereState.Success:
+                    SetSphereIntensity((sphereUid, source), sphere, 1f, 0f);
                     break;
                 case CEMurkSphereState.Failure:
                     DrainIntensity(sphereUid, source, component.CollapseRate * frameTime);
                     break;
             }
         }
+
+        if (pulsed)
+            component.NextPulseTime = Timing.CurTime + RobustRandom.Next(component.PulseIntervalMin, component.PulseIntervalMax);
 
         if (Timing.CurTime < component.NextBroadcast)
             return;
@@ -209,6 +228,7 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
         while (query.MoveNext(out _, out _, out var consuming, out _))
         {
             consuming.RitualStartTime = Timing.CurTime;
+            consuming.NextPulseTime = Timing.CurTime; // The safe zone drops into the pulse range right away.
 
             SetSphereState(sphere, CEMurkSphereState.Ritual);
             Spawn(_sphereShockwave, Transform(sphere.Owner).Coordinates);
@@ -409,6 +429,30 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
         }
 
         return FallbackDayDuration;
+    }
+
+    [SubscribeLocalEvent]
+    private void OnSphereMapInit(Entity<CEMurkLusconSphereComponent> ent, ref MapInitEvent args)
+    {
+        if (TryComp<CEMurkSourceComponent>(ent, out var source))
+            ent.Comp.BaseIntensity ??= source.Intensity;
+    }
+
+    /// <summary>
+    /// Scales the sphere's murk source to <paramref name="multiplier"/> of its base intensity.
+    /// Skips the write (and the network update) while the target is within <paramref name="threshold"/> tiles.
+    /// </summary>
+    private void SetSphereIntensity(Entity<CEMurkSourceComponent> source, CEMurkLusconSphereComponent sphere, float multiplier, float threshold)
+    {
+        if (sphere.BaseIntensity is not { } baseIntensity)
+            return;
+
+        var target = baseIntensity * multiplier;
+        var delta = MathF.Abs(source.Comp.Intensity - target);
+        if (delta <= 0f || delta < threshold)
+            return;
+
+        _murk.SetSourceIntensity(source, target);
     }
 
     private void DrainIntensity(EntityUid uid, CEMurkSourceComponent source, float amount)
