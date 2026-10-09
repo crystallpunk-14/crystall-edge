@@ -74,7 +74,7 @@ public sealed partial class CERestorationRitualSystem : CESharedRestorationRitua
             if (xform.MapID != map)
                 continue;
 
-            if (!_itemSlots.TryGetSlot(uid, pedestal.Slot, out var slot, slots) || slot.Item is not { } item)
+            if (!_itemSlots.TryGetSlot((uid, slots), pedestal.Slot, out var slot) || slot.Item is not { } item)
                 continue;
 
             if (!TryComp<CEQuestItemComponent>(item, out var questItem))
