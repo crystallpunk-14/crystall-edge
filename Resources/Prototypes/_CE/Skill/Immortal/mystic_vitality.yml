@@ -1,0 +1,20 @@
+- type: skill
+  id: CEMysticVitality
+  name: ce-skill-immortal-mystic-vitality-name
+  desc: ce-skill-immortal-mystic-vitality-desc
+  icon:
+    sprite: _CE/Actions/misc.rsi
+    state: todo
+  effect: !type:AddStatusEffect
+    effect: CEStatusEffectMysticVitality
+
+- type: entity
+  parent: StatusEffectBase
+  id: CEStatusEffectMysticVitality
+  name: mystic vitality
+  components:
+  - type: StatusEffect
+    whitelist:
+      components:
+      - Damageable
+  - type: CEMysticVitalityStatusEffect

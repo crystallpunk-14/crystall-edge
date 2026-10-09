@@ -4219,6 +4219,9 @@ ent-CEActionSpellDivineShield = Защитный барьер
 ent-CEStatusEffectDivineShield = защитный барьер
     .desc = { "" }
 
+ent-CEStatusEffectMysticVitality = мистическая живучесть
+    .desc = { "" }
+
 ent-CEEffectBreakDivineShield = разрушение защитного барьера
     .desc = { "" }
     .suffix = VFX

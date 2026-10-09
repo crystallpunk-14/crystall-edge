@@ -3,8 +3,8 @@
   name: ce-skill-brotherhood-recruitment-name
   desc: ce-skill-brotherhood-recruitment-desc
   icon:
-    sprite: _CE/Interface/Icons/SecretRoles/brotherhood.rsi
-    state: recruiter
+    sprite: _CE/Actions/misc.rsi
+    state: todo
   effect: !type:AddAction
     action: CEActionRecruit
 
@@ -21,9 +21,9 @@
     useDelay: 600
     itemIconStyle: BigAction
   - type: Sprite
-    sprite: _CE/Interface/Icons/SecretRoles/brotherhood.rsi
+    sprite: _CE/Actions/misc.rsi
     layers:
-    - state: recruiter
+    - state: todo
       map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 1.5

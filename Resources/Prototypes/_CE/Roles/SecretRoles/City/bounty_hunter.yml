@@ -30,8 +30,8 @@
   description: Every member of the Brotherhood must be dead.
   components:
   - type: Sprite
-    sprite: _CE/Interface/Icons/SecretRoles/city.rsi
-    state: bounty_hunter
+    sprite: _CE/Actions/misc.rsi
+    state: todo
   - type: CEObjective
   - type: CEObjectiveDepartmentSurviveCondition
     department: CEBrotherhood
