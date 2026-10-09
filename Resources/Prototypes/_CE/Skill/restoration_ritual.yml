@@ -12,6 +12,9 @@
   description: Begin the ritual on the cracked Lucson Sphere once every lightheart shard lies on the ritual pedestals. The exposed core must survive until the ritual ends.
   categories: [ HideSpawnMenu ]
   components:
+  - type: CEVisualizeRadiusTargetAction
+  - type: CEVisualizeAoEZoneAction
+    radius: 1
   - type: Action
     useDelay: 5
     itemIconStyle: BigAction

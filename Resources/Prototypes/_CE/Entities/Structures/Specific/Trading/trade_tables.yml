@@ -206,10 +206,20 @@
 
 - type: entity
   parent: CETradePostamentBase
+  id: CELightShardPostament4
+  suffix: lightheart shard 4
+  categories: [ ForkFiltered ]
+  components:
+  - type: CETradeQuestTable
+    reward: CELightShard4
+    priceIndex: 4
+
+- type: entity
+  parent: CETradePostamentBase
   id: CERestorationRitualBookPostament
   suffix: restoration book
   categories: [ ForkFiltered ]
   components:
   - type: CETradeQuestTable
     reward: CERestorationRitualBook
-    priceIndex: 4
+    priceIndex: 5

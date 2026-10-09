@@ -39,7 +39,7 @@ public sealed partial class CEMurkConsumingRuleComponent : Component
     /// How long the Restoration Ritual lasts before the sphere is restored.
     /// </summary>
     [DataField]
-    public TimeSpan RitualDuration = TimeSpan.FromSeconds(60);
+    public TimeSpan RitualDuration = TimeSpan.FromMinutes(2);
 
     /// <summary>
     /// When the Restoration Ritual started. Null until it does.
@@ -110,13 +110,13 @@ public sealed partial class CEMurkConsumingRuleComponent : Component
     /// How many lightheart shards the Restoration Ritual needs.
     /// </summary>
     [DataField]
-    public int ShardCount = 3;
+    public int ShardCount = 4;
 
     /// <summary>
     /// How many prices the round rolls for the quest postaments: one per shard plus the restoration book.
     /// </summary>
     [DataField]
-    public int PriceCount = 4;
+    public int PriceCount = 5;
 
     /// <summary>
     /// The round's prices, rolled when the rule starts. Price number N (1-based) is <c>Prices[N - 1]</c>.

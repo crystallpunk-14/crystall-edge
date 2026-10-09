@@ -61,7 +61,11 @@ public sealed partial class CEObjectiveControl : BoxContainer
             Icon = new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/VerbIcons/information.svg.192dpi.png")),
             ClientExclusive = true,
         };
-        var helpButton = new ExamineButton(helpVerb, _sprite);
+        // Drop the examine tooltip's fixed 32px so the button fills HelpContainer, sized in XAML next to the descriptor badge.
+        var helpButton = new ExamineButton(helpVerb, _sprite) { Margin = new Thickness(0), HorizontalExpand = true };
+        helpButton.Icon.SetWidth = float.NaN;
+        helpButton.Icon.SetHeight = float.NaN;
+        helpButton.Icon.CanShrink = true;
         helpButton.OnPressed += _ => OpenHelp();
         HelpContainer.AddChild(helpButton);
 
@@ -222,8 +226,7 @@ public sealed partial class CEObjectiveControl : BoxContainer
 
     private void ResizeTitle()
     {
-        var help = HelpContainer.Visible ? HelpContainer.Width : 0;
-        TitleLabel.MaxWidth = Header.Width - OwnerPanel.Width - Icon.Width - help;
+        TitleLabel.MaxWidth = Header.Width - BadgeContainer.Width - Icon.Width;
     }
 
     protected override void Resized()

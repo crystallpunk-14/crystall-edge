@@ -26,6 +26,7 @@ ce-objective-city-restore-reward-shard = {$index ->
     [1] First lightheart shard
     [2] Second lightheart shard
     [3] Third lightheart shard
+    [4] Fourth lightheart shard
     *[other] Lightheart shard #{$index}
 }
 ce-objective-city-restore-reward-book = Restoration of the sphere book

@@ -5257,13 +5257,16 @@ ent-CEVehicleHoverboard = ховерборд
     .desc = Парящее личное транспортное средство.
 
 ent-CELightShard1 = первый осколок светсердца
-    .desc = Первый из трёх осколков, требуемых для восстановления Сферы Люксона.
+    .desc = Первый из четырёх осколков, требуемых для восстановления Сферы Люксона.
 
 ent-CELightShard2 = второй осколок светсердца
-    .desc = Второй из трёх осколков, требуемых для восстановления Сферы Люксона.
+    .desc = Второй из четырёх осколков, требуемых для восстановления Сферы Люксона.
 
 ent-CELightShard3 = третий осколок светсердца
-    .desc = Третий из трёх осколков, требуемых для восстановления Сферы Люксона.
+    .desc = Третий из четырёх осколков, требуемых для восстановления Сферы Люксона.
+
+ent-CELightShard4 = четвёртый осколок светсердца
+    .desc = Четвёртый из четырёх осколков, требуемых для восстановления Сферы Люксона.
 
 ent-CELightShardPostament1 = { ent-CETradePostamentBase }
     .desc = { ent-CETradePostamentBase.desc }
@@ -5276,6 +5279,10 @@ ent-CELightShardPostament2 = { ent-CETradePostamentBase }
 ent-CELightShardPostament3 = { ent-CETradePostamentBase }
     .desc = { ent-CETradePostamentBase.desc }
     .suffix = осколок светсердца 3
+
+ent-CELightShardPostament4 = { ent-CETradePostamentBase }
+    .desc = { ent-CETradePostamentBase.desc }
+    .suffix = осколок светсердца 4
 
 ent-CERestorationRitualBookPostament = { ent-CETradePostamentBase }
     .desc = { ent-CETradePostamentBase.desc }

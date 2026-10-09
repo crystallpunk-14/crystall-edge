@@ -19,7 +19,7 @@
   parent: CELightShardBase
   id: CELightShard1
   name: first lightheart shard
-  description: The first of the three shards needed to restore the Lucson Sphere.
+  description: The first of the four shards needed to restore the Lucson Sphere.
   categories: [ ForkFiltered ]
   components:
   - type: Sprite
@@ -33,7 +33,7 @@
   parent: CELightShardBase
   id: CELightShard2
   name: second lightheart shard
-  description: The second of the three shards needed to restore the Lucson Sphere.
+  description: The second of the four shards needed to restore the Lucson Sphere.
   categories: [ ForkFiltered ]
   components:
   - type: Sprite
@@ -47,7 +47,7 @@
   parent: CELightShardBase
   id: CELightShard3
   name: third lightheart shard
-  description: The third of the three shards needed to restore the Lucson Sphere.
+  description: The third of the four shards needed to restore the Lucson Sphere.
   categories: [ ForkFiltered ]
   components:
   - type: Sprite
@@ -56,3 +56,17 @@
       shader: unshaded
   - type: CEQuestItem
     index: 3
+
+- type: entity
+  parent: CELightShardBase
+  id: CELightShard4
+  name: fourth lightheart shard
+  description: The fourth of the four shards needed to restore the Lucson Sphere.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    layers:
+    - state: shard4
+      shader: unshaded
+  - type: CEQuestItem
+    index: 4
