@@ -20,7 +20,7 @@
     sprite: _CE/Interface/Icons/SecretRoles/city.rsi
     state: priest
   - type: CEObjective
-  - type: CEObjectiveDepartmentSurviveCondition
+  - type: CEObjectiveRoleSurviveCondition
     roles:
     - CEPriest
     invert: true

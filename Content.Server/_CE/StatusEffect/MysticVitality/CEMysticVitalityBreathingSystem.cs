@@ -1,36 +1,39 @@
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Shared._CE.StatusEffect.MysticVitality;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Mobs.Systems;
-using Content.Shared.StatusEffectNew.Components;
+using Content.Shared.StatusEffectNew;
 
 namespace Content.Server._CE.StatusEffect.MysticVitality;
 
 /// <summary>
-/// Keeps critical targets of <see cref="CEMysticVitalityStatusEffectComponent"/> fully saturated, so they never suffocate.
+/// Refills the breath of critical <see cref="CEMysticVitalityStatusEffectComponent"/> holders whenever they take damage.
 /// </summary>
 public sealed partial class CEMysticVitalityBreathingSystem : EntitySystem
 {
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private RespiratorSystem _respirator = default!;
+    [Dependency] private StatusEffectsSystem _statusEffects = default!;
 
-    public override void Update(float frameTime)
+    [SubscribeLocalEvent]
+    private void OnDamageChanged(EntityUid uid, RespiratorComponent respirator, DamageChangedEvent args)
     {
-        base.Update(frameTime);
-
-        var query = EntityQueryEnumerator<CEMysticVitalityStatusEffectComponent, StatusEffectComponent>();
-        while (query.MoveNext(out var vitality, out var status))
+        if (!args.DamageIncreased ||
+            !_mobState.IsCritical(uid) ||
+            !_statusEffects.TryEffectsWithComp<CEMysticVitalityStatusEffectComponent>(uid, out var effects))
         {
-            if (!vitality.PreventCritSuffocation ||
-                status.AppliedTo is not { } target ||
-                !_mobState.IsCritical(target) ||
-                !TryComp<RespiratorComponent>(target, out var respirator))
-            {
+            return;
+        }
+
+        foreach (var effect in effects)
+        {
+            if (!effect.Comp1.PreventCritSuffocation)
                 continue;
-            }
 
             // Saturation is clamped to its maximum, so this refills it completely.
-            _respirator.UpdateSaturation(target, float.MaxValue, respirator);
+            _respirator.UpdateSaturation(uid, float.MaxValue, respirator);
+            return;
         }
     }
 }

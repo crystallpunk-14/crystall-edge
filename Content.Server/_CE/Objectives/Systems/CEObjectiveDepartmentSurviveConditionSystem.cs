@@ -26,8 +26,7 @@ public sealed partial class CEObjectiveDepartmentSurviveConditionSystem : Entity
     [SubscribeLocalEvent]
     private void OnGetProgress(Entity<CEObjectiveDepartmentSurviveConditionComponent> ent, ref CEGetObjectiveProgressEvent args)
     {
-        CESecretDepartmentPrototype? department = null;
-        if (ent.Comp.Department is { } departmentId && !_proto.TryIndex(departmentId, out department))
+        if (!_proto.TryIndex(ent.Comp.Department, out var department))
         {
             args.Progress = 0f;
             return;
@@ -41,7 +40,7 @@ public sealed partial class CEObjectiveDepartmentSurviveConditionSystem : Entity
         {
             if (!_role.MindHasRole<CESecretRoleComponent>((mindId, mind), out var roleEnt) ||
                 roleEnt.Value.Comp2.Role is not { } roleId ||
-                !ent.Comp.Roles.Contains(roleId) && department?.Roles.Contains(roleId) != true)
+                !department.Roles.Contains(roleId))
             {
                 continue;
             }
@@ -70,7 +69,10 @@ public sealed partial class CEObjectiveDepartmentSurviveConditionSystem : Entity
         }
     }
 
-    private float GetSurvival(MindComponent mind)
+    /// <summary>
+    /// Survival of a mind's body: alive = 1, critical = 0.5, dead or gone = 0.
+    /// </summary>
+    public float GetSurvival(MindComponent mind)
     {
         // Ghosted out, left the server or lost the body entirely - counts as not having survived.
         if (mind.OwnedEntity is not { } body || HasComp<GhostComponent>(body))
