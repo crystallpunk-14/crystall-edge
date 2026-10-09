@@ -94,6 +94,15 @@ public sealed partial class CERestorationRitualSystem : CESharedRestorationRitua
     }
 
     [SubscribeLocalEvent]
+    private void OnStartRitualEvent(Entity<CEMurkLusconSphereComponent> ent, ref CEStartRestorationRitualEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        args.Handled = TryStartRitual(args.User, ent);
+    }
+
+    [SubscribeLocalEvent]
     private void OnSphereBroken(Entity<CEMurkLusconSphereComponent> ent, ref BreakageEventArgs args)
     {
         _rule.FailRitual(ent);

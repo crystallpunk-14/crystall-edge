@@ -31,6 +31,24 @@ public sealed partial class CETradeSystem : CESharedTradeSystem
     }
 
     [SubscribeLocalEvent]
+    private void OnRestockEvent(Entity<CETradeTableComponent> ent, ref CERestockTradeTableEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        args.Handled = TryRestock(ent);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnClearEvent(Entity<CETradeTableComponent> ent, ref CEClearTradeTableEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        args.Handled = TryClearOne(ent);
+    }
+
+    [SubscribeLocalEvent]
     private void OnInteractHand(Entity<CETradeOfferComponent> ent, ref InteractHandEvent args)
     {
         if (args.Handled)

@@ -42,4 +42,5 @@
       sound:
         path: /Audio/Magic/rumble.ogg
     4.9:
-    - !type:StartRestorationRitual
+    - !type:RaiseEvent
+      event: !type:CEStartRestorationRitualEvent
