@@ -237,7 +237,8 @@
           pitch: 0.6
           variation: 0.05
     0.4:
-    - !type:RestockTradeTable
+    - !type:RaiseEvent
+      event: !type:CERestockTradeTableEvent
     - !type:SpawnEntity
       spawns:
       - CELurkerShadowStepEffect
@@ -287,4 +288,5 @@
           pitch: 0.6
           variation: 0.05
     0.4:
-    - !type:ClearTradeTable
+    - !type:RaiseEvent
+      event: !type:CEClearTradeTableEvent

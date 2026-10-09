@@ -1,23 +1,22 @@
 namespace Content.Server._CE.Objectives.Components;
 
 /// <summary>
-/// Marks an objective whose progress tracks the station's single
-/// <see cref="Content.Server._CE.MurkSphere.Components.CEMurkSphereFixerComponent"/> charge -
-/// see <see cref="Content.Server._CE.Objectives.Systems.CEObjectiveLucsonSphereRestoreConditionSystem"/>.
+/// Marks the city's Lucson Sphere restoration objective: its description lists the round's prices,
+/// and it completes only when the Restoration Ritual succeeds.
+/// See <see cref="Content.Server._CE.Objectives.Systems.CEObjectiveLucsonSphereRestoreConditionSystem"/>.
 /// </summary>
 [RegisterComponent]
 public sealed partial class CEObjectiveLucsonSphereRestoreConditionComponent : Component
 {
     /// <summary>
-    /// How often to push the current charge into the objective's networked progress. Charge
-    /// itself updates every tick, but the character menu doesn't need updates that often.
+    /// Opening line of the description, followed by one line per round price.
     /// </summary>
     [DataField]
-    public TimeSpan RefreshInterval = TimeSpan.FromSeconds(10);
+    public LocId Description = "ce-objective-city-restore-desc";
 
     /// <summary>
-    /// Time remaining until the next refresh - see <see cref="RefreshInterval"/>.
+    /// Shown instead of the price list until the round's prices are rolled.
     /// </summary>
     [DataField]
-    public TimeSpan NextRefresh = TimeSpan.Zero;
+    public LocId UnknownPrices = "ce-objective-city-restore-desc-unknown";
 }

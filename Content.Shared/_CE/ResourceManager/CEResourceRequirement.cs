@@ -1,8 +1,10 @@
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._CE.ResourceManager;
 
+[Serializable, NetSerializable]
 [ImplicitDataDefinitionForInheritors]
 [MeansImplicitUse]
 public abstract partial class CEResourceRequirement

@@ -13,7 +13,7 @@
 - type: entity
   id: CEObjectiveNightmareSphereCollapse
   name: Plunge the City into Murk.
-  description: The lucson sphere has cracked. Keep the light monolith from being restored until the murk consumes it.
+  description: The lucson sphere has cracked. Keep the city from restoring it until the murk consumes it.
   components:
   - type: Sprite
     sprite: _CE/Structures/LucsonSphere/core.rsi

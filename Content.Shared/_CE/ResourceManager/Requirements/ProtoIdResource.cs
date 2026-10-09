@@ -1,8 +1,10 @@
 using Content.Shared._CE.Trade;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._CE.ResourceManager.Requirements;
 
+[Serializable, NetSerializable]
 public sealed partial class ProtoIdResource : CEResourceRequirement
 {
     [DataField(required: true)]

@@ -17,8 +17,7 @@ public sealed partial class CEClientTradeSystem : CESharedTradeSystem
     [SubscribeLocalEvent]
     private void OnAfterHandleState(Entity<CETradeOfferComponent> ent, ref AfterAutoHandleStateEvent args)
     {
-        if (!Proto.Resolve(ent.Comp.Offer, out var offer) ||
-            GetPreview(offer, ent.Comp.ReceivePrice, out var stackCount) is not { } preview)
+        if (GetPreview(ent.Comp, out var stackCount) is not { } preview)
         {
             _sprite.SetVisible(ent.Owner, false);
             return;

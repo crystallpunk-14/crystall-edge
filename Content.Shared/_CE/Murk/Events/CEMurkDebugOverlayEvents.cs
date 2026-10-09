@@ -14,17 +14,10 @@ public sealed class CEMurkDebugOverlayToggledEvent(bool isEnabled) : EntityEvent
 public readonly record struct CEMurkDebugSource(NetEntity Map, Vector2 WorldPos, float Strength);
 
 [Serializable, NetSerializable]
-public readonly record struct CEMurkDebugPylon(NetEntity Map, Vector2 WorldPos, bool TooClose);
-
-[Serializable, NetSerializable]
 public sealed class CEMurkDebugOverlaySnapshotEvent(
     List<CEMurkDebugSource> freeZoneSources,
-    List<CEMurkDebugSource> boundarySources,
-    float pylonRadius,
-    List<CEMurkDebugPylon> pylons) : EntityEventArgs
+    List<CEMurkDebugSource> boundarySources) : EntityEventArgs
 {
     public readonly List<CEMurkDebugSource> FreeZoneSources = freeZoneSources;
     public readonly List<CEMurkDebugSource> BoundarySources = boundarySources;
-    public readonly float PylonRadius = pylonRadius;
-    public readonly List<CEMurkDebugPylon> Pylons = pylons;
 }

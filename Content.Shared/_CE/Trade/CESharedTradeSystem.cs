@@ -1,6 +1,8 @@
 using Content.Shared._CE.Currency;
+using Content.Shared._CE.ResourceManager;
 using Content.Shared._CE.Trade.Components;
 using Content.Shared._CE.Trade.Prototypes;
+using Content.Shared._CE.Trade.Rewards;
 using Content.Shared.Examine;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Inventory;
@@ -85,7 +87,8 @@ public abstract partial class CESharedTradeSystem : EntitySystem
     }
 
     /// <summary>
-    /// Places a weighted random offer of the table's shop into a random empty slot.
+    /// Spawns an offer into a random empty slot and lets the table's stock source fill it
+    /// (see <see cref="CETradeTableFillOfferEvent"/>).
     /// </summary>
     public bool TryRestock(Entity<CETradeTableComponent> table)
     {
@@ -93,25 +96,70 @@ public abstract partial class CESharedTradeSystem : EntitySystem
         if (_freeSlots.Count == 0)
             return false;
 
-        if (PickOffer(table.Comp.Shop) is not { } offer)
-            return false;
-
         var slot = _random.Pick(_freeSlots);
         var position = table.Comp.Slots[slot] + _random.NextVector2(table.Comp.SlotJitter);
         var uid = SpawnAttachedTo(table.Comp.OfferEntity, new EntityCoordinates(table, position));
 
         var comp = EnsureComp<CETradeOfferComponent>(uid);
-        comp.Offer = offer.ID;
         comp.Slot = slot;
-        comp.PayPrice = RollPrice(offer.Pay, offer, pay: true);
-        comp.ReceivePrice = RollPrice(offer.Receive, offer, pay: false);
-        Dirty(uid, comp);
 
-        _meta.SetEntityName(uid, GetOfferName(offer));
-        if (offer.Reward.Count > 0 && GetPreview(offer, 0) is { } preview && Proto.TryIndex(preview, out var previewProto))
-            _meta.SetEntityDescription(uid, previewProto.Description);
+        var ev = new CETradeTableFillOfferEvent(uid);
+        RaiseLocalEvent(table, ref ev);
+
+        if (!ev.Handled)
+        {
+            Del(uid);
+            return false;
+        }
 
         return true;
+    }
+
+    /// <summary>
+    /// Writes the whole exchange into a freshly spawned offer.
+    /// </summary>
+    /// <param name="name">Offer name; defaults to the first reward's or cost's name.</param>
+    public void FillOffer(EntityUid uid,
+        List<CEResourceRequirement> cost,
+        List<CETradeReward> reward,
+        int payPrice,
+        int receivePrice,
+        EntProtoId? preview = null,
+        string? name = null)
+    {
+        if (!_offerQuery.TryComp(uid, out var comp))
+            return;
+
+        comp.Cost = new List<CEResourceRequirement>(cost);
+        comp.Reward = new List<CETradeReward>(reward);
+        comp.PayPrice = payPrice;
+        comp.ReceivePrice = receivePrice;
+        comp.Preview = preview;
+        Dirty(uid, comp);
+
+        _meta.SetEntityName(uid, name ?? GetOfferName(comp.Reward, comp.Cost) ?? string.Empty);
+        if (comp.Reward.Count > 0 && GetPreview(comp) is { } previewId && Proto.TryIndex(previewId, out var previewProto))
+            _meta.SetEntityDescription(uid, previewProto.Description);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnShopTableFill(Entity<CETradeShopTableComponent> ent, ref CETradeTableFillOfferEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        if (PickOffer(ent.Comp.Shop) is not { } offer)
+            return;
+
+        FillOffer(args.Offer,
+            offer.Cost,
+            offer.Reward,
+            RollPrice(offer.Pay, offer, pay: true),
+            RollPrice(offer.Receive, offer, pay: false),
+            offer.Preview,
+            GetOfferName(offer));
+
+        args.Handled = true;
     }
 
     /// <summary>
@@ -237,21 +285,35 @@ public abstract partial class CESharedTradeSystem : EntitySystem
 
     public EntProtoId? GetPreview(CETradeOfferPrototype offer, int receivePrice)
     {
-        return GetPreview(offer, receivePrice, out _);
+        return GetPreview(offer.Preview, offer.Reward, offer.Cost, receivePrice, out _);
+    }
+
+    public EntProtoId? GetPreview(CETradeOfferComponent offer)
+    {
+        return GetPreview(offer, out _);
+    }
+
+    /// <param name="stackCount">Stack size to display, or null to keep the prototype's own.</param>
+    public EntProtoId? GetPreview(CETradeOfferComponent offer, out int? stackCount)
+    {
+        return GetPreview(offer.Preview, offer.Reward, offer.Cost, offer.ReceivePrice, out stackCount);
     }
 
     /// <summary>
     /// Entity whose sprite represents the offer: explicit preview, first reward, coins when paying out, first cost.
     /// </summary>
-    /// <param name="stackCount">Stack size to display, or null to keep the prototype's own.</param>
-    public EntProtoId? GetPreview(CETradeOfferPrototype offer, int receivePrice, out int? stackCount)
+    private EntProtoId? GetPreview(EntProtoId? preview,
+        List<CETradeReward> rewards,
+        List<CEResourceRequirement> costs,
+        int receivePrice,
+        out int? stackCount)
     {
         stackCount = null;
 
-        if (offer.Preview is { } preview)
-            return preview;
+        if (preview is { } explicitPreview)
+            return explicitPreview;
 
-        foreach (var reward in offer.Reward)
+        foreach (var reward in rewards)
         {
             if (reward.GetPreview() is { } rewardPreview)
                 return rewardPreview;
@@ -264,7 +326,7 @@ public abstract partial class CESharedTradeSystem : EntitySystem
             return coin;
         }
 
-        foreach (var cost in offer.Cost)
+        foreach (var cost in costs)
         {
             foreach (var layer in cost.GetRequirementIcon(EntityManager, Proto))
             {
@@ -299,24 +361,28 @@ public abstract partial class CESharedTradeSystem : EntitySystem
         if (offer.Name is { } name)
             return Loc.GetString(name);
 
-        foreach (var reward in offer.Reward)
+        return GetOfferName(offer.Reward, offer.Cost) ?? offer.ID;
+    }
+
+    private string? GetOfferName(List<CETradeReward> rewards, List<CEResourceRequirement> costs)
+    {
+        foreach (var reward in rewards)
         {
             return reward.GetName(Proto);
         }
 
-        foreach (var cost in offer.Cost)
+        foreach (var cost in costs)
         {
             return cost.GetRequirementTitle(Proto);
         }
 
-        return offer.ID;
+        return null;
     }
 
     [SubscribeLocalEvent]
     private void OnOfferExamined(Entity<CETradeOfferComponent> ent, ref ExaminedEvent args)
     {
-        if (!Proto.Resolve(ent.Comp.Offer, out var offer))
-            return;
+        var offer = ent.Comp;
 
         using (args.PushGroup(nameof(CETradeOfferComponent)))
         {
@@ -353,7 +419,6 @@ public abstract partial class CESharedTradeSystem : EntitySystem
 [ByRefEvent]
 public readonly record struct CETradeCompletedEvent(
     EntityUid Buyer,
-    ProtoId<CETradeShopPrototype> Shop,
-    ProtoId<CETradeOfferPrototype> Offer,
+    EntityUid Offer,
     int Paid,
     int Received);

@@ -248,11 +248,7 @@ public sealed partial class CEMagicEssenceOverlay : Overlay
         if (!_interaction.InRangeUnobstructed((player, null), (target, xform)))
             return null;
 
-        // TODO: hardcoded branch for the hungry node's deficit display - replace with a proper
-        // mechanism once GetEssence (or a sibling) supports negative deltas generically.
-        var essenceDict = _entityManager.TryGetComponent<CEMagicEssenceHungryNodeComponent>(target, out var hungry)
-            ? hungry.RequiredEssence.ToDictionary(kv => kv.Key, kv => -kv.Value)
-            : _essence.GetEssence(target, recursive: false);
+        var essenceDict = _essence.GetEssence(target, recursive: false);
 
         if (essenceDict.Count == 0)
             return null;

@@ -1,5 +1,4 @@
 using System.Linq;
-using Content.Server._CE.MurkSphere;
 using Content.Shared._CE.Murk.Components;
 using Content.Shared._CE.Murk.Events;
 using Robust.Shared.Enums;
@@ -11,7 +10,6 @@ namespace Content.Server._CE.Murk;
 // Debug overlay networking for showmurkdebug - mirrors RadiationSystem.Debug.cs.
 public sealed partial class CEMurkSystem
 {
-    [Dependency] private CEMurkPylonSystem _pylons = default!;
     [Dependency] private SharedTransformSystem _debugTransform = default!;
     [Dependency] private IGameTiming _timing = default!;
 
@@ -85,15 +83,6 @@ public sealed partial class CEMurkSystem
             boundaries.Add(new CEMurkDebugSource(GetNetEntity(mapUid), _debugTransform.GetWorldPosition(xform), -boundary.Radius));
         }
 
-        var pylons = new List<CEMurkDebugPylon>();
-        foreach (var (_, xform, tooClose) in _pylons.GetPylonDebugInfo())
-        {
-            if (xform.MapUid is not { } mapUid)
-                continue;
-
-            pylons.Add(new CEMurkDebugPylon(GetNetEntity(mapUid), _debugTransform.GetWorldPosition(xform), tooClose));
-        }
-
-        return new CEMurkDebugOverlaySnapshotEvent(freeZones, boundaries, CEMurkPylonSystem.PylonsMinRadius, pylons);
+        return new CEMurkDebugOverlaySnapshotEvent(freeZones, boundaries);
     }
 }

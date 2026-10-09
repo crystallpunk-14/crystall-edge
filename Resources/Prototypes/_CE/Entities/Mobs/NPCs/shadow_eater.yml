@@ -62,7 +62,6 @@
     animations:
       Primary:
       - anim: ShadowEaterBite
-  - type: CEMurkSphereChargingBlocker
   - type: Destructible
     thresholds:
     - trigger:

@@ -1,0 +1,15 @@
+# Pool of main quest prices. Each round rolls one per quest postament, from different departments when it can.
+# Amounts are placeholders until balancing.
+
+- type: mainQuestPrice
+  id: CEMainQuestPriceDiamonds
+  department: CEEngineering
+  cost:
+  - !type:StackResource
+    stack: CEDiamond
+    count: 10
+
+- type: mainQuestPrice
+  id: CEMainQuestPriceCoins
+  department: CECitizens
+  pay: 1000

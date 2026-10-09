@@ -4,12 +4,14 @@ using Content.Shared._CE.Skill.Components;
 using Content.Shared._CE.Skill.Prototypes;
 using Content.Shared._CE.Trade;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._CE.ResourceManager.Requirements;
 
 /// <summary>
 /// Requires books teaching a specific skill.
 /// </summary>
+[Serializable, NetSerializable]
 public sealed partial class SkillBookResource : CEResourceRequirement
 {
     private static readonly Vector2 BookOffset = new(-0.15f, 0.15f);

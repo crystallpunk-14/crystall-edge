@@ -52,6 +52,12 @@
     StockedTradeTable: !type:CEGOAPSelectorNearestKnown
       conditions:
       - !type:TradeTableHasOffer
+      - !type:HasComponents
+        components:
+        - type: CETradeQuestTable
+          reward: CELightShard1 # YML Linter require that
+          priceIndex: 1 # YML Linter require that
+        inverted: true
   sensors:
   - !type:CEGOAPIsNightSensorEntry
     conditionKey: IsNight

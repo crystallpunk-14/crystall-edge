@@ -31,6 +31,24 @@ public sealed partial class CETradeSystem : CESharedTradeSystem
     }
 
     [SubscribeLocalEvent]
+    private void OnRestockEvent(Entity<CETradeTableComponent> ent, ref CERestockTradeTableEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        args.Handled = TryRestock(ent);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnClearEvent(Entity<CETradeTableComponent> ent, ref CEClearTradeTableEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        args.Handled = TryClearOne(ent);
+    }
+
+    [SubscribeLocalEvent]
     private void OnInteractHand(Entity<CETradeOfferComponent> ent, ref InteractHandEvent args)
     {
         if (args.Handled)
@@ -46,9 +64,7 @@ public sealed partial class CETradeSystem : CESharedTradeSystem
     /// </summary>
     public bool TryTrade(Entity<CETradeOfferComponent> ent, EntityUid user)
     {
-        if (!Proto.Resolve(ent.Comp.Offer, out var offer))
-            return false;
-
+        var offer = ent.Comp;
         var items = CollectTradeableItems(user);
 
         var missing = new List<string>();
@@ -94,7 +110,7 @@ public sealed partial class CETradeSystem : CESharedTradeSystem
         _audio.PlayPvs(ent.Comp.TradeSound, coords);
         AnimateGiven(given, coords, user);
 
-        var ev = new CETradeCompletedEvent(user, offer.Shop, offer.ID, ent.Comp.PayPrice, ent.Comp.ReceivePrice);
+        var ev = new CETradeCompletedEvent(user, ent, ent.Comp.PayPrice, ent.Comp.ReceivePrice);
         RaiseLocalEvent(ref ev);
 
         QueueDel(ent);

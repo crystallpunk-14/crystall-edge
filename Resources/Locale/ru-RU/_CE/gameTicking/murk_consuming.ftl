@@ -11,27 +11,9 @@ ce-murk-days-left-title =
         [few] Осталось { $days } дня
        *[other] Осталось { $days } дней
     }
+ce-murk-sphere-ritual-title = Ритуал восстановления начался
+ce-murk-sphere-ritual-desc = Ядро Сферы Люксона обнажено. Защищайте его { $seconds } секунд!
 
 ce-round-progress-tooltip =
-    Заряд монолита: { $light }%
+    Прогресс ритуала: { $light }%
     Поглощение мраком: { $murk }%
-
-ce-murk-sphere-fixed-title =Сфера Люксона восстановлена
-ce-murk-sphere-fixed-desc = Монолит Света запечатал трещину. Город в безопасности.
-
-ce-murk-sphere-fixer-block-unpowered-title = Нет питания
-ce-murk-sphere-fixer-block-unpowered-desc = Монолит Света не запитан энергией.
-
-ce-murk-sphere-fixer-block-missing-title = Что блять?
-ce-murk-sphere-fixer-block-missing-desc = Отсутствует монолит света. Заряжать нечего.
-
-ce-murk-sphere-charging-blocker-desc = Аура мрака блокирует заряд монолита света.
-
-ce-murk-pylon-block-unpowered-title = Пилон не запитан
-ce-murk-pylon-block-unpowered-desc = У этого пилона нет питания.
-
-ce-murk-pylon-block-too-close-title = Пилоны слишком близко друг к другу
-ce-murk-pylon-block-too-close-desc = Другой запитанный пилон находится слишком близко к этому.
-
-ce-murk-pylon-block-count-title = Недостаточно активных пилонов
-ce-murk-pylon-block-count-desc = Активно { $count } из { $required } пилонов.

@@ -1,0 +1,44 @@
+<Document>
+
+# Restoring the Lucson Sphere
+
+The city is surrounded by a wall of deadly murk, and it can only survive thanks to the [color=yellow]Lucson Sphere[/color] - an artifact that drives the murk away.
+
+The round's events begin the moment the sphere's protective shell cracks and its power starts to fade.
+The citizens' goal is to restore the sphere with the [color=yellow]Restoration Ritual[/color] within [color=red]1 hour[/color], or the murk will consume the city.
+
+## Preparing for the ritual
+
+<Box>
+  <GuideEntityEmbed Entity="CELightShard1" Caption=""/>
+  <GuideEntityEmbed Entity="CELightShard2" Caption=""/>
+  <GuideEntityEmbed Entity="CERestorationRitualBook" Caption=""/>
+  <GuideEntityEmbed Entity="CELightShard3" Caption=""/>
+  <GuideEntityEmbed Entity="CELightShard4" Caption=""/>
+</Box>
+
+Unfortunately for you, the ritual requires [color=yellow]4 light shards[/color] and the [color=yellow]"Restoration of the sphere" spellbook[/color].
+
+All of these are so conveniently sold by the Shadow Caravan, which is certainly not connected to the pressing murk problem...
+
+Every round, the Shadow Caravan demands different resources in exchange for the light shards and the book.
+
+Mostly, the traders demand resources that take organization and a division of duties among the city's players to obtain. And of course, someone will surely try to sabotage their gathering.
+
+## The ritual
+
+<Box>
+  <GuideEntityEmbed Entity="CERitualPedestal" Caption=""/>
+  <GuideEntityEmbed Entity="CEMurkLucsonSphere50" Caption=""/>
+  <GuideEntityEmbed Entity="CERitualPedestal" Caption=""/>
+</Box>
+
+Next to the Lucson Sphere you can find the ritual site: 4 altars around the sphere.
+To begin the ritual, place the 4 purchased shards on the altars and cast the "Restoration of the sphere" spell on the sphere itself.
+
+This starts the ritual. During the ritual, the Lucson Sphere sheds its protective shell, becoming [color=yellow]vulnerable[/color], and spends 2 minutes forming a new shell.
+
+While the new shell is forming, [color=red]the core can easily be destroyed[/color] if it takes enough damage. Destroying the core means an instant defeat for the city, which is then consumed by the murk.
+If the ritual is carried through to the end, the round ends in the city's victory.
+
+</Document>
