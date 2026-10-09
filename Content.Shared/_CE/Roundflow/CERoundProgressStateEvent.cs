@@ -15,7 +15,7 @@ public sealed class CERoundProgressStateEvent(bool visible, float light, float m
     public readonly bool Visible = visible;
 
     /// <summary>
-    /// Light Monolith charge, 0..1.
+    /// Restoration ritual progress, 0..1.
     /// </summary>
     public readonly float Light = light;
 

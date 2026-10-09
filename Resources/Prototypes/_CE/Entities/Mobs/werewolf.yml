@@ -87,7 +87,6 @@
     needsHands: false
   - type: MessyDrinker
     spillChance: 0.3
-  - type: CEMurkSphereChargingBlocker
 
 #MARK: Polymorph
 

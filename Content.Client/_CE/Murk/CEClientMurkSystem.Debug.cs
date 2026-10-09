@@ -12,9 +12,6 @@ public sealed partial class CEClientMurkSystem
     private List<CEMurkDebugSource> _freeZoneSources = new();
     private List<CEMurkDebugSource> _boundarySources = new();
 
-    public float PylonRadius;
-    public List<CEMurkDebugPylon> Pylons = new();
-
     [SubscribeNetworkEvent]
     private void OnDebugOverlayToggled(CEMurkDebugOverlayToggledEvent ev)
     {
@@ -29,8 +26,6 @@ public sealed partial class CEClientMurkSystem
     {
         _freeZoneSources = ev.FreeZoneSources;
         _boundarySources = ev.BoundarySources;
-        PylonRadius = ev.PylonRadius;
-        Pylons = ev.Pylons;
     }
 
     public bool BuildDebugBuffer(EntityUid targetMap, CEMurkDebugBuffer buffer)
@@ -64,18 +59,5 @@ public sealed partial class CEClientMurkSystem
         }
 
         return count;
-    }
-
-    // Same sphere-shrinking projection as everything else, so a pylon's exclusion radius shrinks
-    // with z-distance instead of only ever showing on its own level.
-    public bool TryProjectPylon(EntityUid targetMap, CEMurkDebugPylon pylon, out float radius)
-    {
-        radius = 0f;
-
-        var sourceMap = GetEntity(pylon.Map);
-        if (!_debugZLevels.TryGetZLevelOffset(targetMap, sourceMap, out var zOffset))
-            return false;
-
-        return TryProjectRadius(zOffset, PylonRadius, out radius);
     }
 }

@@ -16,9 +16,8 @@ namespace Content.Client._CE.Objectives.Ui;
 
 /// <summary>
 /// A single CE objective's card in the character menu: icon, title, description, a full-width
-/// progress bar (percent text drawn on top, matching <c>CEMurkSphereFixerMonitorWindow</c>'s
-/// charge bar), and - if the objective has a <see cref="CEObjectiveDescriptorComponent"/> - a
-/// colored badge naming its source.
+/// progress bar (percent text drawn on top), and - if the objective has a
+/// <see cref="CEObjectiveDescriptorComponent"/> - a colored badge naming its source.
 /// </summary>
 [GenerateTypedNameReferences]
 public sealed partial class CEObjectiveControl : BoxContainer

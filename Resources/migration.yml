@@ -160,6 +160,14 @@ CEEssenceSphereAir: null
 CEEssenceSphereOrder: null
 CEEssenceSphereChaos: null
 
+# 2026-10-09
+CELightMonolith: null
+CELightPylon: null
+CEMurkSphereFixerProjector: null
+CEMachineCoreMurkSphereFixerProjector: null
+CEMagicEssenceHungryNode: null
+CEDimensionalShard: null
+
 # CrystallEdge migration zone end
 
 

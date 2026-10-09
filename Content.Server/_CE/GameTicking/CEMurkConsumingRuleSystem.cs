@@ -1,5 +1,4 @@
 using Content.Server._CE.GameTicking.Components;
-using Content.Server._CE.MurkSphere.Components;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server.RoundEnd;
@@ -95,11 +94,8 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
         if (!sphereQuery.MoveNext(out _, out var sphere))
             return;
 
+        // TODO: restoration ritual progress.
         var light = 0f;
-        var fixerQuery = EntityQueryEnumerator<CEMurkSphereFixerComponent>();
-        if (fixerQuery.MoveNext(out _, out var fixer))
-            light = fixer.Charge;
-
         var murk = GetCollapseProgress(component);
 
         switch (sphere.State)
@@ -140,7 +136,7 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
         if (args.OldState != CEMurkSphereState.Cracked)
             return;
 
-        // Freeze the collapse countdown (e.g. the Light Monolith fixed the sphere).
+        // Freeze the collapse countdown (e.g. the sphere was restored).
         var query = QueryActiveRules();
         while (query.MoveNext(out _, out _, out var consuming, out _))
         {

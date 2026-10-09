@@ -49,12 +49,6 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
         if (!TryScan(args.Examiner))
             return;
 
-        if (TryComp<CEMagicEssenceHungryNodeComponent>(args.Examined, out var hungryNode) && hungryNode.RequiredEssence.Count > 0)
-        {
-            args.AddMarkup(BuildEssenceExamineMarkup("ce-magic-essence-hungry-node-examine-title", hungryNode.RequiredEssence));
-            return;
-        }
-
         var essenceDict = GetEssence(args.Examined, recursive: false);
         if (essenceDict.Count == 0)
             return;

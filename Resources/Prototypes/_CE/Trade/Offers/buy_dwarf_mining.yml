@@ -161,15 +161,6 @@
     proto: CEClothingBackPortableLighthouse
 
 - type: tradeOffer
-  id: CETradeOfferLightPylon
-  shop: DwarfMiners
-  pay:
-    bonus: 1
-  reward:
-  - !type:CETradeSpawnReward
-    proto: CELightPylon
-
-- type: tradeOffer
   id: CETradeOfferBaseLockpick
   shop: DwarfMiners
   pay:

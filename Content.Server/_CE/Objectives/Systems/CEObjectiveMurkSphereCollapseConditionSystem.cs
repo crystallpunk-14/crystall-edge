@@ -10,9 +10,9 @@ namespace Content.Server._CE.Objectives.Systems;
 /// <summary>
 /// Handles progress for <see cref="CEObjectiveMurkSphereCollapseConditionComponent"/> - the
 /// inverse of <see cref="CEObjectiveLucsonSphereRestoreConditionSystem"/>. Progress tracks how
-/// close the station is to the murk consuming the Lucson Sphere before the Light Monolith
-/// restores it, based on <see cref="CEMurkConsumingRuleComponent"/>'s collapse countdown rather than
-/// the monolith's charge - the monolith only matters for the terminal "already restored" case.
+/// close the station is to the murk consuming the Lucson Sphere before the city restores it,
+/// based on <see cref="CEMurkConsumingRuleComponent"/>'s collapse countdown - restoration only
+/// matters for the terminal "already restored" case.
 /// </summary>
 public sealed partial class CEObjectiveMurkSphereCollapseConditionSystem : EntitySystem
 {
@@ -41,7 +41,7 @@ public sealed partial class CEObjectiveMurkSphereCollapseConditionSystem : Entit
         }
 
         // Cracked: the race is on - progress follows how much of the collapse countdown has
-        // elapsed, independent of the monolith's charge (which only matters once it hits Fixed).
+        // elapsed (restoration only matters once the sphere hits Fixed).
         var ruleQuery = EntityQueryEnumerator<CEMurkConsumingRuleComponent>();
         if (!ruleQuery.MoveNext(out _, out var rule))
         {

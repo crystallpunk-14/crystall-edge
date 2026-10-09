@@ -16,7 +16,7 @@
 - type: entity
   id: CEObjectiveCityRestoreLucsonSphere
   name: Restore the Lucson sphere
-  description: Keep the light monolith and its 6 pylons charging by resolving every problem that comes up.
+  description: Perform the Restoration Ritual on the Lucson Sphere before the murk consumes the city.
   components:
   - type: Sprite
     sprite: _CE/Structures/LucsonSphere/core.rsi

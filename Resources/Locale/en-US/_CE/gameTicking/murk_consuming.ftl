@@ -9,25 +9,5 @@ ce-murk-days-left-title = { $days } { $days ->
     } left
 
 ce-round-progress-tooltip =
-    Monolith charge: { $light }%
+    Ritual progress: { $light }%
     Murk consumption: { $murk }%
-
-ce-murk-sphere-fixed-title =The Lucson Sphere has been mended
-ce-murk-sphere-fixed-desc = The Light Monolith has sealed the crack. The city is safe.
-
-ce-murk-sphere-fixer-block-unpowered-title = No power
-ce-murk-sphere-fixer-block-unpowered-desc = The Light Monolith has no power.
-
-ce-murk-sphere-fixer-block-missing-title = What the hell?
-ce-murk-sphere-fixer-block-missing-desc = There's no Light Monolith. Nothing to charge.
-
-ce-murk-sphere-charging-blocker-desc = An aura of murk is blocking the Light Monolith's charge.
-
-ce-murk-pylon-block-unpowered-title = Pylon unpowered
-ce-murk-pylon-block-unpowered-desc = This pylon has no power.
-
-ce-murk-pylon-block-too-close-title = Pylons too close together
-ce-murk-pylon-block-too-close-desc = Another powered pylon is too close to this one.
-
-ce-murk-pylon-block-count-title = Not enough active pylons
-ce-murk-pylon-block-count-desc = { $count } / { $required } pylons are active.

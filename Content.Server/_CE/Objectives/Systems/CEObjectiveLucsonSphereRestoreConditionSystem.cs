@@ -1,12 +1,10 @@
-using Content.Server._CE.MurkSphere.Components;
 using Content.Server._CE.Objectives.Components;
 using Content.Shared._CE.Objectives.Components;
 
 namespace Content.Server._CE.Objectives.Systems;
 
 /// <summary>
-/// Handles progress for <see cref="CEObjectiveLucsonSphereRestoreConditionComponent"/> - taken
-/// directly from the station's single Light Monolith charge.
+/// Handles progress for <see cref="CEObjectiveLucsonSphereRestoreConditionComponent"/>.
 /// </summary>
 public sealed partial class CEObjectiveLucsonSphereRestoreConditionSystem : EntitySystem
 {
@@ -15,13 +13,7 @@ public sealed partial class CEObjectiveLucsonSphereRestoreConditionSystem : Enti
     [SubscribeLocalEvent]
     private void OnGetProgress(Entity<CEObjectiveLucsonSphereRestoreConditionComponent> ent, ref CEGetObjectiveProgressEvent args)
     {
-        var query = EntityQueryEnumerator<CEMurkSphereFixerComponent>();
-        while (query.MoveNext(out _, out var fixer))
-        {
-            args.Progress = fixer.Charge;
-            return;
-        }
-
+        // TODO: binary progress from the restoration ritual's outcome.
         args.Progress = 0f;
     }
 
