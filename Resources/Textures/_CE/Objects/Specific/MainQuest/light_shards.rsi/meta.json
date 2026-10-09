@@ -8,16 +8,16 @@
   },
   "states": [
     {
-      "name": "core1"
+      "name": "shard1"
     },
     {
-      "name": "core2"
+      "name": "shard2"
     },
     {
-      "name": "core3"
+      "name": "shard3"
     },
     {
-      "name": "core4"
+      "name": "shard4"
     }
   ]
 }

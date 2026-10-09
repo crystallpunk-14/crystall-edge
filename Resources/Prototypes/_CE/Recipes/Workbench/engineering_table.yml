@@ -271,9 +271,6 @@
   - !type:StackResource
     stack: CEBrassBar
     count: 4
-  - !type:ProtoIdResource
-    protoId: CECrystalShardAir
-    count: 1
   - !type:StackResource
     stack: CEMachinePartEnergyLine
     count: 2

@@ -4847,9 +4847,6 @@ ent-CEPlushieGoblin = плюшевый гоблин
 ent-CEPlushieSilva = плюшевая сильва
     .desc = Маленький милый кустик! В него можно насыпать семена, но, увы, они не прорастут...
 
-ent-CECrystalShardAir = осколок воздушного кристалла
-    .desc = Фрагмент воздушного кристалла, способный свободно парить в воздухе.
-
 ent-CEEnergyCrystalShard = осколок энергетического кристалла
     .desc = Кристаллизованная магическая энергия, появляющаяся в местах с высокой концентрацией маны. Может использоваться как одноразовый источник энергии.
 
@@ -5258,3 +5255,24 @@ ent-CESolutionNormalizer = нормализатор растворов
 
 ent-CEVehicleHoverboard = ховерборд
     .desc = Парящее личное транспортное средство.
+
+ent-CELightShard1 = первый осколок светсердца
+    .desc = Первый из трёх осколков, требуемых для восстановления Сферы Люксона.
+
+ent-CELightShard2 = второй осколок светсердца
+    .desc = Второй из трёх осколков, требуемых для восстановления Сферы Люксона.
+
+ent-CELightShard3 = третий осколок светсердца
+    .desc = Третий из трёх осколков, требуемых для восстановления Сферы Люксона.
+
+ent-CELightShardPostament1 = { ent-CETradePostamentBase }
+    .desc = { ent-CETradePostamentBase.desc }
+    .suffix = осколок светсердца 1
+
+ent-CELightShardPostament2 = { ent-CETradePostamentBase }
+    .desc = { ent-CETradePostamentBase.desc }
+    .suffix = осколок светсердца 2
+
+ent-CELightShardPostament3 = { ent-CETradePostamentBase }
+    .desc = { ent-CETradePostamentBase.desc }
+    .suffix = осколок светсердца 3

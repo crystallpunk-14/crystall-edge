@@ -49,8 +49,7 @@ public sealed class CETradeTest
 
             foreach (var offer in offers)
             {
-                var proto = protoMan.Index(offer.Comp.Offer!.Value);
-                Assert.That(trade.GetPreview(proto, offer.Comp.ReceivePrice), Is.Not.Null, $"{proto.ID} must have something to show");
+                Assert.That(trade.GetPreview(offer.Comp), Is.Not.Null, $"{entMan.ToPrettyString(offer)} must have something to show");
             }
 
             // Selling offers show coins.
@@ -76,7 +75,7 @@ public sealed class CETradeTest
             for (var attempt = 0; attempt < 200 && buy == null; attempt++)
             {
                 buy = Offers(entMan, table).FirstOrDefault(o =>
-                    o.Comp.PayPrice > 0 && protoMan.Index(o.Comp.Offer!.Value).Cost.Count == 0);
+                    o.Comp.PayPrice > 0 && o.Comp.Cost.Count == 0);
 
                 if (buy != null)
                     break;

@@ -173,13 +173,10 @@ public sealed partial class CETradeCostOverlay : Overlay
     {
         _entries.Clear();
 
-        if (!_proto.Resolve(offer.Comp.Offer, out var offerProto))
-            return;
-
         var items = _trade.CollectTradeableItems(player);
-        for (var i = 0; i < offerProto.Cost.Count; i++)
+        for (var i = 0; i < offer.Comp.Cost.Count; i++)
         {
-            var cost = offerProto.Cost[i];
+            var cost = offer.Comp.Cost[i];
             var color = cost.CheckRequirement(_entityManager, _proto, items) ? EnoughColor : NotEnoughColor;
             var renderer = i < _costIcons.Count ? _costIcons[i] : null;
 
@@ -215,10 +212,7 @@ public sealed partial class CETradeCostOverlay : Overlay
     {
         ClearCostIcons();
 
-        if (!_proto.Resolve(offer.Comp.Offer, out var offerProto))
-            return;
-
-        foreach (var cost in offerProto.Cost)
+        foreach (var cost in offer.Comp.Cost)
         {
             var renderer = new CEResourceIconRenderer();
             renderer.SetLayers(cost.GetRequirementIcon(_entityManager, _proto));

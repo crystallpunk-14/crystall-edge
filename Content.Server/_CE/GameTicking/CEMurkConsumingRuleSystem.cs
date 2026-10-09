@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Content.Server._CE.GameTicking.Components;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
@@ -6,6 +7,7 @@ using Content.Shared._CE.DayCycle;
 using Content.Shared._CE.Murk;
 using Content.Shared._CE.Murk.Components;
 using Content.Shared._CE.Roundflow;
+using Content.Shared._CE.Trade.MainQuest;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Components;
@@ -13,6 +15,7 @@ using Content.Shared.Light.Components;
 using Content.Shared.Station.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 
 namespace Content.Server._CE.GameTicking;
 
@@ -21,6 +24,7 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
     [Dependency] private RoundEndSystem _roundEndSystem = default!;
     [Dependency] private CESharedMurkSystem _murk = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
 
     private readonly EntProtoId _sphereShockwave = "CEShockWaveHugeVFX";
 
@@ -28,6 +32,88 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
     /// Used for "days left" texts if no station map with a light cycle can be found.
     /// </summary>
     private static readonly TimeSpan FallbackDayDuration = TimeSpan.FromMinutes(60.0 / 7);
+
+    protected override void Started(EntityUid uid, CEMurkConsumingRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
+    {
+        base.Started(uid, component, gameRule, args);
+
+        RollPrices(component);
+    }
+
+    /// <summary>
+    /// Picks the round's prices from the pool: one per department first, then other entries of
+    /// departments already used, and repeats an entry only if the pool is smaller than the price count.
+    /// </summary>
+    private void RollPrices(CEMurkConsumingRuleComponent component)
+    {
+        component.Prices.Clear();
+
+        var pool = new List<CEMainQuestPricePrototype>(_proto.EnumeratePrototypes<CEMainQuestPricePrototype>());
+        if (pool.Count == 0)
+        {
+            Log.Error("No mainQuestPrice prototypes - quest postaments will stay empty.");
+            return;
+        }
+
+        RobustRandom.Shuffle(pool);
+
+        var departments = new HashSet<string>();
+        foreach (var price in pool)
+        {
+            if (component.Prices.Count >= component.PriceCount)
+                break;
+
+            if (departments.Add(price.Department))
+                component.Prices.Add(price.ID);
+        }
+
+        foreach (var price in pool)
+        {
+            if (component.Prices.Count >= component.PriceCount)
+                break;
+
+            if (!component.Prices.Contains(price.ID))
+                component.Prices.Add(price.ID);
+        }
+
+        while (component.Prices.Count < component.PriceCount)
+        {
+            component.Prices.Add(RobustRandom.Pick(pool).ID);
+        }
+    }
+
+    /// <summary>
+    /// The round's price number <paramref name="index"/> (1-based), if an active rule has rolled it.
+    /// </summary>
+    public bool TryGetPrice(int index, [NotNullWhen(true)] out CEMainQuestPricePrototype? price)
+    {
+        price = null;
+
+        var query = QueryActiveRules();
+        while (query.MoveNext(out _, out _, out var consuming, out _))
+        {
+            if (index < 1 || index > consuming.Prices.Count)
+                return false;
+
+            return _proto.Resolve(consuming.Prices[index - 1], out price);
+        }
+
+        return false;
+    }
+
+    public bool TryGetPriceCount(out int count)
+    {
+        count = 0;
+
+        var query = QueryActiveRules();
+        while (query.MoveNext(out _, out _, out var consuming, out _))
+        {
+            count = consuming.Prices.Count;
+            return true;
+        }
+
+        return false;
+    }
 
     protected override void ActiveTick(EntityUid uid, CEMurkConsumingRuleComponent component, GameRuleComponent gameRule, float frameTime)
     {

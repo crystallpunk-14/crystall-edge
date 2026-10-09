@@ -5,7 +5,7 @@ using Robust.Shared.Network;
 namespace Content.Shared._CE.EntityEffect.Effects;
 
 /// <summary>
-/// Puts a random offer of the table's shop into one of its empty slots.
+/// Puts a new offer into one of the table's empty slots - see <see cref="CESharedTradeSystem.TryRestock"/>.
 /// </summary>
 public sealed partial class RestockTradeTable : CEEntityEffectBase<RestockTradeTable>
 {

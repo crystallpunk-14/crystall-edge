@@ -1,3 +1,6 @@
+using Content.Shared._CE.Trade.MainQuest;
+using Robust.Shared.Prototypes;
+
 namespace Content.Server._CE.GameTicking.Components;
 
 /// <summary>
@@ -46,4 +49,22 @@ public sealed partial class CEMurkConsumingRuleComponent : Component
 
     [DataField]
     public TimeSpan NextBroadcast;
+
+    /// <summary>
+    /// How many lightheart shards the Restoration Ritual needs.
+    /// </summary>
+    [DataField]
+    public int ShardCount = 3;
+
+    /// <summary>
+    /// How many prices the round rolls for the quest postaments: one per shard plus the restoration book.
+    /// </summary>
+    [DataField]
+    public int PriceCount = 4;
+
+    /// <summary>
+    /// The round's prices, rolled when the rule starts. Price number N (1-based) is <c>Prices[N - 1]</c>.
+    /// </summary>
+    [DataField]
+    public List<ProtoId<CEMainQuestPricePrototype>> Prices = new();
 }

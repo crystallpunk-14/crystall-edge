@@ -1,9 +1,11 @@
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Stacks;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._CE.Trade.Rewards;
 
+[Serializable, NetSerializable]
 public sealed partial class CETradeSpawnReward : CETradeReward
 {
     [DataField(required: true)]

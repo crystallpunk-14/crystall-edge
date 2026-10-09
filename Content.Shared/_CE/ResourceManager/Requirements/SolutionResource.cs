@@ -2,9 +2,11 @@ using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._CE.ResourceManager.Requirements;
 
+[Serializable, NetSerializable]
 public sealed partial class SolutionResource : CEResourceRequirement
 {
     [DataField(required: true)]

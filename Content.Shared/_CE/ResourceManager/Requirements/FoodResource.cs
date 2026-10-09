@@ -5,9 +5,11 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Nutrition.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._CE.ResourceManager.Requirements;
 
+[Serializable, NetSerializable]
 public sealed partial class FoodResource : CEResourceRequirement
 {
     [DataField(required: true)]

@@ -1,9 +1,11 @@
 using Content.Shared._CE.Trade;
 using Content.Shared.Stacks;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._CE.ResourceManager.Requirements;
 
+[Serializable, NetSerializable]
 public sealed partial class StackResource : CEResourceRequirement
 {
     [DataField(required: true)]
