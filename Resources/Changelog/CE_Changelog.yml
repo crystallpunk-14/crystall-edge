@@ -1190,3 +1190,53 @@
   id: 1104
   time: '2026-10-06T21:48:05.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/507
+- author: TheShuEd
+  changes:
+  - message: "The \u201CInvestigator\u201D role has been added to the Guard Department."
+    type: Add
+  - message: Casting spells leaves traces that are visible when wearing thaumaturgical
+      goggles or an investigator's mask.
+    type: Add
+  - message: Magic focuses have been removed. Spells now require only mana to cast.
+    type: Remove
+  id: 1105
+  time: '2026-10-07T11:54:01.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/508
+- author: TheShuEd
+  changes:
+  - message: Removed infusion altar mechanic.
+    type: Remove
+  - message: ELA moved from infusion recipes to merchant store
+    type: Tweak
+  id: 1106
+  time: '2026-10-08T19:31:04.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/513
+- author: TheShuEd
+  changes:
+  - message: Added brotherhood secret fraction! It includes a vandal, a recruiter,
+      and a thief (the thief was transferred from the city faction). The faction's
+      goal is to protect one another. No one in the brotherhood should die.
+    type: Add
+  - message: 'A new city dweller role has been added: Bounty Hunter. This character,
+      who has a large sum of money at his disposal, must track down and kill all members
+      of the brotherhood.'
+    type: Add
+  - message: Fixed a bug where destroying a body was not counted as a kill
+    type: Fix
+  id: 1107
+  time: '2026-10-07T22:22:45.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/512
+- author: TheShuEd
+  changes:
+  - message: You can now buy 4 Shards of Light and the Book of the Sphere Restoration
+      Ritual at the Caravan of Shadows shop
+    type: Add
+  - message: The pylons, the monolith charge, the hungry nodes, and the entire passive
+      monolith charging system have been removed.
+    type: Remove
+  - message: 'The conditions for the city''s victory have changed: You must purchase
+      4 shards of light and a book, and perform the ritual.'
+    type: Tweak
+  id: 1108
+  time: '2026-10-09T19:46:21.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/515
