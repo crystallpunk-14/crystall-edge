@@ -1240,3 +1240,12 @@
   id: 1108
   time: '2026-10-09T19:46:21.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/515
+- author: TheShuEd
+  changes:
+  - message: 'Added 2 new city secret roles: Priest and Immortal'
+    type: Add
+  - message: Werewolf personal objective is now find and kill Priest.
+    type: Tweak
+  id: 1109
+  time: '2026-10-09T23:09:45.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/516
