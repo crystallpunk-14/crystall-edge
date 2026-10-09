@@ -69,7 +69,10 @@ public sealed partial class CEObjectiveDepartmentSurviveConditionSystem : Entity
         }
     }
 
-    private float GetSurvival(MindComponent mind)
+    /// <summary>
+    /// Survival of a mind's body: alive = 1, critical = 0.5, dead or gone = 0.
+    /// </summary>
+    public float GetSurvival(MindComponent mind)
     {
         // Ghosted out, left the server or lost the body entirely - counts as not having survived.
         if (mind.OwnedEntity is not { } body || HasComp<GhostComponent>(body))

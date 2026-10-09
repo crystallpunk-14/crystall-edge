@@ -9,20 +9,18 @@
   - TimeSense
   - CEWerewolfTransformation
   objectives: !type:EntSelector
-    id: CEObjectiveNightmareHunt
-    amount: 3
+    id: CEObjectiveNightmareKillPriests
 
 - type: entity
-  id: CEObjectiveNightmareHunt
-  name: Hunt a victim
-  description: Kill, kill, kill!
+  id: CEObjectiveNightmareKillPriests
+  name: Death to the light
+  description: There are priests of light in this city whose very existence is repugnant to your nature. Find them out and kill them.
   components:
   - type: Sprite
-    sprite: _CE/Actions/misc.rsi
-    state: todo
+    sprite: _CE/Interface/Icons/SecretRoles/city.rsi
+    state: priest
   - type: CEObjective
-  - type: CETargetObjective
-    title: ce-nightmare-hunt-objective-title
-  - type: CETargetPlayersObjective
-  - type: CETargetExcludeHolderDepartment
-  - type: CETargetKillCondition
+  - type: CEObjectiveRoleSurviveCondition
+    roles:
+    - CEPriest
+    invert: true

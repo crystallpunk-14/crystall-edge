@@ -10,6 +10,9 @@ ce-alerts-aircaught-desc = Вы подхвачены воздушным пото
 ce-alerts-featherfall-name = Падение перышком
 ce-alerts-featherfall-desc = Гравитация почти не действует на вас, позволяя падать медленно и безопасно.
 
+ce-alerts-divine-shield-name = Защитный барьер
+ce-alerts-divine-shield-desc = Щит света вдвое снижает любой получаемый вами урон.
+
 ce-alerts-good-food-aftertaste-name = Приятное послевкусие
 ce-alerts-good-food-aftertaste-desc = Качественно приготовленная еда дает вам дополнительный бонус к регенерации здоровья.
 

@@ -167,3 +167,8 @@
   license: "CC0-1.0"
   copyright: 'Created by MickBoere on Freesound.org'
   source: "https://freesound.org/people/MickBoere/sounds/276578/"
+
+- files: ["divine_shield_break.ogg"]
+  license: "CC-BY-SA-4.0"
+  copyright: "themfish on Freesound"
+  source: "https://freesound.org/people/themfish/sounds/34202/"
