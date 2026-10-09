@@ -36,6 +36,18 @@ public sealed partial class CEMurkConsumingRuleComponent : Component
     public TimeSpan? CrackEndTime;
 
     /// <summary>
+    /// How long the Restoration Ritual lasts before the sphere is restored.
+    /// </summary>
+    [DataField]
+    public TimeSpan RitualDuration = TimeSpan.FromSeconds(60);
+
+    /// <summary>
+    /// When the Restoration Ritual started. Null until it does.
+    /// </summary>
+    [DataField]
+    public TimeSpan? RitualStartTime;
+
+    /// <summary>
     /// How fast the sphere's remaining intensity drains (units/sec) once it starts collapsing.
     /// </summary>
     [DataField]

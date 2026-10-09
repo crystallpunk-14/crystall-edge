@@ -31,17 +31,17 @@ public sealed partial class CEObjectiveMurkSphereCollapseConditionSystem : Entit
 
         switch (sphere.State)
         {
-            case CEMurkSphereState.Collapsing:
+            case CEMurkSphereState.Failure:
                 args.Progress = 1f;
                 return;
-            case CEMurkSphereState.Stable:
-            case CEMurkSphereState.Fixed:
+            case CEMurkSphereState.PreRound:
+            case CEMurkSphereState.Success:
                 args.Progress = 0f;
                 return;
         }
 
-        // Cracked: the race is on - progress follows how much of the collapse countdown has
-        // elapsed (restoration only matters once the sphere hits Fixed).
+        // InGame or Ritual: progress follows how much of the collapse countdown has elapsed
+        // (frozen once the ritual starts; restoration only matters once the sphere hits Success).
         var ruleQuery = EntityQueryEnumerator<CEMurkConsumingRuleComponent>();
         if (!ruleQuery.MoveNext(out _, out var rule))
         {

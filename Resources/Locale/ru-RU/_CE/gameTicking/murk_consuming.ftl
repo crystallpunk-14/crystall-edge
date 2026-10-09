@@ -11,6 +11,8 @@ ce-murk-days-left-title =
         [few] Осталось { $days } дня
        *[other] Осталось { $days } дней
     }
+ce-murk-sphere-ritual-title = Ритуал восстановления начался
+ce-murk-sphere-ritual-desc = Ядро Сферы Люксона обнажено. Защищайте его { $seconds } секунд!
 
 ce-round-progress-tooltip =
     Прогресс ритуала: { $light }%

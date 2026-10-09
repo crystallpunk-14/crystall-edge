@@ -9,6 +9,8 @@ using Content.Shared._CE.Murk.Components;
 using Content.Shared._CE.Roundflow;
 using Content.Shared._CE.Trade.MainQuest;
 using Content.Shared._CE.ZLevels.Core.Components;
+using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
 using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Light.Components;
@@ -25,6 +27,7 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
     [Dependency] private CESharedMurkSystem _murk = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private SharedGodmodeSystem _godmode = default!;
 
     private readonly EntProtoId _sphereShockwave = "CEShockWaveHugeVFX";
 
@@ -101,6 +104,23 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
         return false;
     }
 
+    /// <summary>
+    /// How many lightheart shards the Restoration Ritual needs, if a rule is active.
+    /// </summary>
+    public bool TryGetShardCount(out int count)
+    {
+        count = 0;
+
+        var query = QueryActiveRules();
+        while (query.MoveNext(out _, out _, out var consuming, out _))
+        {
+            count = consuming.ShardCount;
+            return true;
+        }
+
+        return false;
+    }
+
     public bool TryGetPriceCount(out int count)
     {
         count = 0;
@@ -124,15 +144,19 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
         {
             switch (sphere.State)
             {
-                case CEMurkSphereState.Stable:
+                case CEMurkSphereState.PreRound:
                     if (Timing.CurTime >= GameTicker.RoundStartTimeSpan + component.CrackDelay)
                         StartRound(component, (sphereUid, sphere));
                     break;
-                case CEMurkSphereState.Cracked:
+                case CEMurkSphereState.InGame:
                     if (component.CrackTime is { } crackTime && Timing.CurTime >= crackTime + component.CollapseDelay)
                         Collapse();
                     break;
-                case CEMurkSphereState.Collapsing:
+                case CEMurkSphereState.Ritual:
+                    if (component.RitualStartTime is { } ritualStart && Timing.CurTime >= ritualStart + component.RitualDuration)
+                        CompleteRitual((sphereUid, sphere));
+                    break;
+                case CEMurkSphereState.Failure:
                     DrainIntensity(sphereUid, source, component.CollapseRate * frameTime);
                     break;
             }
@@ -149,8 +173,7 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
     {
         component.CrackTime = Timing.CurTime;
 
-        _murk.SetSphereState(sphere, CEMurkSphereState.Cracked);
-        _appearance.SetData(sphere.Owner, CEMurkSphereState.Stable, sphere.Comp.State);
+        SetSphereState(sphere, CEMurkSphereState.InGame);
         Spawn(_sphereShockwave, Transform(sphere.Owner).Coordinates);
 
         RaiseNetworkEvent(new CEScreenPopupShowEvent(
@@ -166,12 +189,70 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
         var collapseQuery = EntityQueryEnumerator<CEMurkLusconSphereComponent>();
         while (collapseQuery.MoveNext(out var collapseUid, out var collapseSphere))
         {
-            _murk.SetSphereState((collapseUid, collapseSphere), CEMurkSphereState.Collapsing);
-            _appearance.SetData(collapseUid, CEMurkSphereState.Stable, collapseSphere.State);
+            SetSphereState((collapseUid, collapseSphere), CEMurkSphereState.Failure);
             Spawn(_sphereShockwave, Transform(collapseUid).Coordinates);
         }
 
         _roundEndSystem.EndRound();
+    }
+
+    /// <summary>
+    /// Starts the Restoration Ritual on a cracked sphere: exposes the core and starts the ritual timer.
+    /// Whoever asks is responsible for checking the shards.
+    /// </summary>
+    public bool TryStartRitual(Entity<CEMurkLusconSphereComponent> sphere)
+    {
+        if (sphere.Comp.State != CEMurkSphereState.InGame)
+            return false;
+
+        var query = QueryActiveRules();
+        while (query.MoveNext(out _, out _, out var consuming, out _))
+        {
+            consuming.RitualStartTime = Timing.CurTime;
+
+            SetSphereState(sphere, CEMurkSphereState.Ritual);
+            Spawn(_sphereShockwave, Transform(sphere.Owner).Coordinates);
+
+            RaiseNetworkEvent(new CEScreenPopupShowEvent(
+                Loc.GetString("ce-murk-sphere-ritual-title"),
+                Loc.GetString("ce-murk-sphere-ritual-desc", ("seconds", (int) consuming.RitualDuration.TotalSeconds)),
+                new SoundPathSpecifier("/Audio/_CE/Announce/event_boom.ogg")));
+
+            return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// The core was destroyed during the ritual - the city loses just as if the countdown ran out.
+    /// </summary>
+    public void FailRitual(Entity<CEMurkLusconSphereComponent> sphere)
+    {
+        if (sphere.Comp.State != CEMurkSphereState.Ritual)
+            return;
+
+        Collapse();
+    }
+
+    private void CompleteRitual(Entity<CEMurkLusconSphereComponent> sphere)
+    {
+        SetSphereState(sphere, CEMurkSphereState.Success);
+        Spawn(_sphereShockwave, Transform(sphere.Owner).Coordinates);
+
+        _roundEndSystem.EndRound();
+    }
+
+    private void SetSphereState(Entity<CEMurkLusconSphereComponent> sphere, CEMurkSphereState state)
+    {
+        _murk.SetSphereState(sphere, state);
+        _appearance.SetData(sphere.Owner, CEMurkSphereVisuals.State, state);
+
+        // The core can only be damaged while the ritual runs.
+        if (state == CEMurkSphereState.Ritual)
+            _godmode.DisableGodmode(sphere);
+        else
+            EnsureComp<GodmodeComponent>(sphere);
     }
 
     private void BroadcastProgress(CEMurkConsumingRuleComponent component)
@@ -180,24 +261,40 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
         if (!sphereQuery.MoveNext(out _, out var sphere))
             return;
 
-        // TODO: restoration ritual progress.
         var light = 0f;
         var murk = GetCollapseProgress(component);
 
         switch (sphere.State)
         {
-            case CEMurkSphereState.Collapsing:
+            case CEMurkSphereState.Ritual:
+                light = GetRitualProgress(component);
+                break;
+            case CEMurkSphereState.Failure:
                 murk = 1f;
                 break;
-            case CEMurkSphereState.Fixed:
+            case CEMurkSphereState.Success:
                 light = 1f;
                 break;
         }
 
         RaiseNetworkEvent(new CERoundProgressStateEvent(
-            sphere.State != CEMurkSphereState.Stable,
+            sphere.State != CEMurkSphereState.PreRound,
             Math.Clamp(light, 0f, 1f),
             murk));
+    }
+
+    /// <summary>
+    /// How much of the Restoration Ritual has passed, 0..1.
+    /// </summary>
+    private float GetRitualProgress(CEMurkConsumingRuleComponent component)
+    {
+        if (component.RitualStartTime is not { } ritualStart)
+            return 0f;
+
+        if (component.RitualDuration <= TimeSpan.Zero)
+            return 1f;
+
+        return Math.Clamp((float) ((Timing.CurTime - ritualStart) / component.RitualDuration), 0f, 1f);
     }
 
     /// <summary>
@@ -219,10 +316,10 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
     [SubscribeLocalEvent]
     private void OnSphereStateChanged(Entity<CEMurkLusconSphereComponent> ent, ref CEMurkSphereStateChangedEvent args)
     {
-        if (args.OldState != CEMurkSphereState.Cracked)
+        if (args.OldState != CEMurkSphereState.InGame)
             return;
 
-        // Freeze the collapse countdown (e.g. the sphere was restored).
+        // Freeze the collapse countdown (e.g. the ritual has started).
         var query = QueryActiveRules();
         while (query.MoveNext(out _, out _, out var consuming, out _))
         {
@@ -281,7 +378,7 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
         var sphereQuery = EntityQueryEnumerator<CEMurkLusconSphereComponent>();
         while (sphereQuery.MoveNext(out _, out var sphere))
         {
-            return sphere.State == CEMurkSphereState.Cracked;
+            return sphere.State == CEMurkSphereState.InGame;
         }
 
         return false;

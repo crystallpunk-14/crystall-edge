@@ -1,0 +1,45 @@
+- type: entity
+  id: CERitualPedestal
+  name: ritual pedestal
+  description: A pedestal for a lightheart shard. When every shard lies near the Lucson Sphere, the Restoration Ritual can begin.
+  categories: [ ForkFiltered ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    drawdepth: Objects
+    noRot: true
+    sprite: _CE/Structures/Specific/MainQuest/ritual_pedestal.rsi
+    state: altar
+  - type: Icon
+    sprite: _CE/Structures/Specific/MainQuest/ritual_pedestal.rsi
+    state: altar
+  - type: Clickable
+  - type: InteractionOutline
+  - type: CERitualPedestal
+  - type: ItemSlots
+    slots:
+      pedestal:
+        name: ce-ritual-pedestal-slot-name
+        ejectOnInteract: true
+        whitelist:
+          components:
+          - CEQuestItem
+  - type: ContainerContainer
+    containers:
+      pedestal: !type:ContainerSlot
+        showEnts: true
+        occludes: false
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        density: 190
+        mask:
+        - TableMask
+        layer:
+        - TableLayer

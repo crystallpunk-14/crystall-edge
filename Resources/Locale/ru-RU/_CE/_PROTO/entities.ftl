@@ -5276,3 +5276,16 @@ ent-CELightShardPostament2 = { ent-CETradePostamentBase }
 ent-CELightShardPostament3 = { ent-CETradePostamentBase }
     .desc = { ent-CETradePostamentBase.desc }
     .suffix = осколок светсердца 3
+
+ent-CERestorationRitualBookPostament = { ent-CETradePostamentBase }
+    .desc = { ent-CETradePostamentBase.desc }
+    .suffix = книга восстановления
+
+ent-CERitualPedestal = пьедестал ритуала
+    .desc = Пьедестал для осколка светсердца. Когда все осколки лежат у Сферы Люксона, можно начать Ритуал восстановления.
+
+ent-CEActionRestorationRitual = Ритуал восстановления Сферы Люксона
+    .desc = Начать ритуал на треснувшей Сфере Люксона, когда все осколки светсердца лежат на пьедесталах ритуала. Обнажённое ядро должно уцелеть до конца ритуала.
+
+ent-CERestorationRitualBook = восстановление сферы
+    .desc = Обучает Ритуалу восстановления Сферы Люксона.

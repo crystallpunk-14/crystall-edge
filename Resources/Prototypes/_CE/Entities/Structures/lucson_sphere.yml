@@ -35,11 +35,13 @@
   - type: Appearance
   - type: GenericVisualizer
     visuals:
-      enum.CEMurkSphereState.Stable:
+      enum.CEMurkSphereVisuals.State:
         glass:
-          Stable: { state: full }
-          Cracked: { state: cracked }
-          Collapsing: { state: cracked }
+          PreRound: { state: full, visible: true }
+          InGame: { state: cracked, visible: true }
+          Ritual: { visible: false } # TODO: proper shell shedding visuals
+          Success: { state: full, visible: true }
+          Failure: { state: cracked, visible: true }
   - type: AmbientSound
     volume: 5
     range: 10
@@ -61,6 +63,19 @@
         enabled: true
   - type: CEPvsOverride
   - type: CEMurkLusconSphere
+  # Invulnerable until the Restoration Ritual exposes the core
+  - type: Godmode
+  - type: Damageable
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Breakage" ]
   - type: Clickable
   - type: Physics
     bodyType: Static

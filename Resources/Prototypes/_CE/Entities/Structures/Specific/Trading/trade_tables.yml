@@ -203,3 +203,13 @@
   - type: CETradeQuestTable
     reward: CELightShard3
     priceIndex: 3
+
+- type: entity
+  parent: CETradePostamentBase
+  id: CERestorationRitualBookPostament
+  suffix: restoration book
+  categories: [ ForkFiltered ]
+  components:
+  - type: CETradeQuestTable
+    reward: CERestorationRitualBook
+    priceIndex: 4
