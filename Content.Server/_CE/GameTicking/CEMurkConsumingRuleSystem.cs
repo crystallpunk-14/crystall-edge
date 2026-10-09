@@ -41,6 +41,7 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
         base.Started(uid, component, gameRule, args);
 
         RollPrices(component);
+        RaiseLocalEvent(new CEMainQuestPricesRolledEvent());
     }
 
     /// <summary>

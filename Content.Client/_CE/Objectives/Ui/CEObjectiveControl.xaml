@@ -10,6 +10,7 @@
                 <TextureRect Name="Icon" Margin="0 0 5 0" VerticalAlignment="Center"/>
                 <RichTextLabel Name="TitleLabel" HorizontalExpand="False" VerticalAlignment="Center"/>
                 <Control HorizontalExpand="True"/>
+                <BoxContainer Name="HelpContainer" Orientation="Horizontal" VerticalAlignment="Center" Visible="False"/>
                 <PanelContainer Name="OwnerPanel" StyleClasses="BackgroundPanel" Margin="0 -5 -15 0" VerticalAlignment="Top">
                     <BoxContainer Orientation="Horizontal">
                         <Label Name="OwnerLabel" StyleClasses="LabelKeyText" Margin="5 0" VerticalAlignment="Center"/>

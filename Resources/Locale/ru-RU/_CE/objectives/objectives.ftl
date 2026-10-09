@@ -18,3 +18,14 @@ ce-objective-summary-fmt = {$name}: {$success ->
     [100] {""}
     *[other] ([color=gray]{$percent}%[/color])
 }
+
+ce-objective-city-restore-desc = Купите у Каравана теней всё, что нужно для Ритуала восстановления, и проведите его у Сферы Люксона, пока мрак не поглотил город. Цены теней:
+ce-objective-city-restore-desc-unknown = Тени ещё не назвали цену.
+ce-objective-city-restore-price = - {$reward}: {$cost}
+ce-objective-city-restore-reward-shard = {$index ->
+    [1] Первый осколок светсердца
+    [2] Второй осколок светсердца
+    [3] Третий осколок светсердца
+    *[other] Осколок светсердца №{$index}
+}
+ce-objective-city-restore-reward-book = Книга «Восстановление сферы»

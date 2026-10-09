@@ -15,11 +15,15 @@
 
 - type: entity
   id: CEObjectiveCityRestoreLucsonSphere
-  name: Restore the Lucson sphere
-  description: Perform the Restoration Ritual on the Lucson Sphere before the murk consumes the city.
+  name: Restore the Lucson Sphere
+  description: Buy the lightheart shards and the restoration book from the Shadow Caravan, then perform the Restoration Ritual at the Lucson Sphere before the murk consumes the city.
   components:
   - type: Sprite
     sprite: _CE/Structures/LucsonSphere/core.rsi
     state: full
   - type: CEObjective
   - type: CEObjectiveLucsonSphereRestoreCondition
+  - type: GuideHelp
+    guides:
+    - CECityObjectiveGuideEN
+    - CECityObjectiveGuideRU

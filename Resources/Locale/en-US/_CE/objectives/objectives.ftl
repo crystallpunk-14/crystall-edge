@@ -18,3 +18,14 @@ ce-objective-summary-fmt = {$name}: {$success ->
     [100] {""}
     *[other] ([color=gray]{$percent}%[/color])
 }
+
+ce-objective-city-restore-desc = Buy from the Shadow Caravan everything the Restoration Ritual needs, then perform it at the Lucson Sphere before the murk consumes the city. The shadows' prices:
+ce-objective-city-restore-desc-unknown = The shadows haven't named their price yet.
+ce-objective-city-restore-price = - {$reward}: {$cost}
+ce-objective-city-restore-reward-shard = {$index ->
+    [1] First lightheart shard
+    [2] Second lightheart shard
+    [3] Third lightheart shard
+    *[other] Lightheart shard #{$index}
+}
+ce-objective-city-restore-reward-book = Restoration of the sphere book

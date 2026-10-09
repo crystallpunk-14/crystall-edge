@@ -1,0 +1,17 @@
+- type: guideEntry
+  hidden: false
+  locFilter: "en-US"
+  id: CECityObjectiveGuideEN
+  name: Restoring the Lucson Sphere
+  text: "/ServerInfo/_CE/Guidebook_EN/CityObjective/CityObjective.xml"
+  filterEnabled: True
+  children: []
+
+- type: guideEntry
+  hidden: false
+  locFilter: "ru-RU"
+  id: CECityObjectiveGuideRU
+  name: Восстановление Сферы Люксона
+  text: "/ServerInfo/_CE/Guidebook_RU/CityObjective/CityObjective.xml"
+  filterEnabled: True
+  children: []

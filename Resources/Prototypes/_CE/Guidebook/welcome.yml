@@ -5,6 +5,7 @@
   name: Welcome to CrystallEdge
   text: "/ServerInfo/_CE/Guidebook_EN/Welcome.xml"
   children:
+  - CECityObjectiveGuideEN
   - CECookingRecipesEN
   - CEFarmingGuideEN
   - CEMiningGuideEN
@@ -19,6 +20,7 @@
   name: Welcome to CrystallEdge
   text: "/ServerInfo/_CE/Guidebook_RU/Welcome.xml"
   children:
+  - CECityObjectiveGuideRU
   - CECookingRecipesRU
   - CEFarmingGuideRU
   - CEMiningGuideRU
