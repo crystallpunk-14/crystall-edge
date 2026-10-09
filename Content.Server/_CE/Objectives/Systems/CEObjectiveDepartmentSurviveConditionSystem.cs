@@ -26,7 +26,8 @@ public sealed partial class CEObjectiveDepartmentSurviveConditionSystem : Entity
     [SubscribeLocalEvent]
     private void OnGetProgress(Entity<CEObjectiveDepartmentSurviveConditionComponent> ent, ref CEGetObjectiveProgressEvent args)
     {
-        if (!_proto.TryIndex(ent.Comp.Department, out var department))
+        CESecretDepartmentPrototype? department = null;
+        if (ent.Comp.Department is { } departmentId && !_proto.TryIndex(departmentId, out department))
         {
             args.Progress = 0f;
             return;
@@ -40,7 +41,7 @@ public sealed partial class CEObjectiveDepartmentSurviveConditionSystem : Entity
         {
             if (!_role.MindHasRole<CESecretRoleComponent>((mindId, mind), out var roleEnt) ||
                 roleEnt.Value.Comp2.Role is not { } roleId ||
-                !department.Roles.Contains(roleId))
+                !ent.Comp.Roles.Contains(roleId) && department?.Roles.Contains(roleId) != true)
             {
                 continue;
             }

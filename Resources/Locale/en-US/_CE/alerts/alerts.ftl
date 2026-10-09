@@ -10,6 +10,9 @@ ce-alerts-aircaught-desc = You are caught by an air current that prevents you fr
 ce-alerts-featherfall-name = Feather fall
 ce-alerts-featherfall-desc = Gravity barely affects you, letting you fall slowly and safely.
 
+ce-alerts-divine-shield-name = Divine shield
+ce-alerts-divine-shield-desc = A shield of light halves all damage you take.
+
 ce-alerts-good-food-aftertaste-name = Pleasant aftertaste
 ce-alerts-good-food-aftertaste-desc = High-quality prepared food provides you with an additional bonus to health regeneration.
 

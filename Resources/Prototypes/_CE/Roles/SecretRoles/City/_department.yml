@@ -10,6 +10,7 @@
   - CELover
   - CETormentor
   - CEBountyHunter
+  - CEPriest
   objectives: !type:EntSelector
     id: CEObjectiveCityRestoreLucsonSphere
 

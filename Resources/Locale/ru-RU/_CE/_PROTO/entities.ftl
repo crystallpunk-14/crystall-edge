@@ -4164,8 +4164,11 @@ ent-CEObjectiveTormentorSurvive = Сохраните цели жизнь
 ent-CEObjectiveCityRestoreLucsonSphere = Восстановите Сферу Люксона
     .desc = Купите у Каравана теней осколки светсердца и книгу восстановления сферы, затем проведите Ритуал восстановления у Сферы Люксона, пока мрак не поглотил город.
 
-ent-CEObjectiveNightmareHunt = Охота на жертву
-    .desc = Убей, убей, убей!
+ent-CEObjectiveNightmareKillPriests = Смерть свету
+    .desc = В этом городе есть жрецы света, чье существование противно вашей природе. Вычислите и убейте их.
+
+ent-CEObjectivePriestSurvive = Выжить
+    .desc = Среди этого города есть существа, жаждающие моей смерти.
 
 ent-CEObjectiveNightmareSphereCollapse = Погрузите Город во мрак.
     .desc = Сфера Люксона дала трещину. Не позвольте городу восстановить её, пока мрак не поглотит его.
@@ -4209,6 +4212,16 @@ ent-CEConjuredLight = созданный свет
 
 ent-CEActionSpellCureWounds = Лечение ран
     .desc = Вы восстанавливаете здоровье существа, к которому прикасаетесь.
+
+ent-CEActionSpellDivineShield = Защитный барьер
+    .desc = Вы окружаете существо, к которому прикасаетесь, щитом, вдвое снижающим любой получаемый урон на 30 секунд.
+
+ent-CEStatusEffectDivineShield = защитный барьер
+    .desc = { "" }
+
+ent-CEEffectBreakDivineShield = разрушение защитного барьера
+    .desc = { "" }
+    .suffix = VFX
 
 ent-CEActionSpellFeatherFall = Падение пёрышка
     .desc = Вы вызываете мягкий восходящий поток, сильно ослабляющий гравитацию для всех в области, позволяя им падать медленно и безопасно.
