@@ -1249,3 +1249,12 @@
   id: 1109
   time: '2026-10-09T23:09:45.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/516
+- author: TheShuEd
+  changes:
+  - message: Fixed indestructable chests
+    type: Fix
+  - message: Fixed water drawing from puddle
+    type: Fix
+  id: 1110
+  time: '2026-10-10T11:36:40.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/518
