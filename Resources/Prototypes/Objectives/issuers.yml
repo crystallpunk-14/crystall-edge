@@ -15,10 +15,6 @@
   name: objective-issuer-spiderclan
 
 - type: objectiveIssuer
-  id: Changeling
-  name: objective-issuer-changeling
-
-- type: objectiveIssuer
   id: Paradox
   name: objective-issuer-paradox
 

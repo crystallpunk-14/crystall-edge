@@ -205,28 +205,6 @@
   - type: MindRole
     roleType: SoloAntagonist
 
-# Revolutionaries
-- type: entity
-  parent: BaseMindRoleAntag
-  id: MindRoleHeadRevolutionary
-  name: Head Revolutionary Role
-  components:
-  - type: MindRole
-    antagPrototype: HeadRev
-    exclusiveAntag: true
-    roleType: TeamAntagonist
-    subtype: role-subtype-head-revolutionary
-  - type: RevolutionaryRole
-
-- type: entity
-  parent: MindRoleHeadRevolutionary
-  id: MindRoleRevolutionary
-  name: Revolutionary Role
-  components:
-  - type: MindRole
-    antagPrototype: Rev
-    subtype: role-subtype-revolutionary
-
 # Survivors (Wizard)
 - type: entity
   parent: BaseMindRoleAntag
@@ -291,17 +269,3 @@
     exclusiveAntag: true
     subtype: role-subtype-wizard
   - type: WizardRole
-
-- type: entity
-  parent: BaseMindRoleAntag
-  id: MindRoleChangeling
-  name: Changeling Role
-  components:
-  - type: MindRole
-    antagPrototype: Changeling
-    exclusiveAntag: true
-    roleType: SoloAntagonist
-    subtype: role-subtype-changeling
-  - type: ChangelingRole
-  - type: RoleBriefing
-    briefing: changeling-briefing

@@ -40,7 +40,7 @@ public sealed partial class CreamPieSystem : SharedCreamPieSystem
 
     private void OnAfterAutoHandleState(Entity<CreamPiedComponent> ent, ref AfterAutoHandleStateEvent args)
     {
-        // Update when the sprite datafield is changed so that changelings can transform properly.
+        // Update when the sprite datafield is changed so that clones/transformations render properly.
         UpdateAppearance(ent);
     }
 

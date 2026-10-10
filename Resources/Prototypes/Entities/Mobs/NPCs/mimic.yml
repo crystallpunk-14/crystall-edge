@@ -40,7 +40,3 @@
   - type: MovementSpeedModifier
     baseWalkSpeed : 1
     baseSprintSpeed : 1
-  - type: ToolRefinable
-    refineResult:
-    - id: DrinkChangelingStingCan
-      amount: 1

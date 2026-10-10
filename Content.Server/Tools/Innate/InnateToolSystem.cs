@@ -14,7 +14,7 @@ namespace Content.Server.Tools.Innate;
 
 /// <summary>
 ///     Spawns a list unremovable tools in hands if possible. Used for drones,
-///     borgs, or maybe even stuff like changeling armblades!
+///     borgs, or maybe even stuff like retractable weapon implants!
 /// </summary>
 public sealed partial class InnateToolSystem : EntitySystem
 {
