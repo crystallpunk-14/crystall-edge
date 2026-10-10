@@ -50,6 +50,7 @@
 
 - type: tradeOffer
   id: SellFoodHamInCheese
+  weight: 0.5
   shop: Orders
   cost:
   - !type:FoodResource
@@ -60,6 +61,7 @@
 
 - type: tradeOffer
   id: SellFoodMeatCheeseSoup
+  weight: 0.5
   shop: Orders
   cost:
   - !type:FoodResource
@@ -70,6 +72,7 @@
 
 - type: tradeOffer
   id: SellFoodMeatSaladSoup
+  weight: 0.5
   shop: Orders
   cost:
   - !type:FoodResource
@@ -80,6 +83,7 @@
 
 - type: tradeOffer
   id: SellFoodMonsterBrew
+  weight: 0.5
   shop: Orders
   cost:
   - !type:FoodResource
@@ -90,6 +94,7 @@
 
 - type: tradeOffer
   id: SellFoodPorridgeApple
+  weight: 0.5
   shop: Orders
   cost:
   - !type:FoodResource
@@ -100,6 +105,7 @@
 
 - type: tradeOffer
   id: SellFoodPorridgeMeat
+  weight: 0.5
   shop: Orders
   cost:
   - !type:FoodResource
@@ -110,6 +116,7 @@
 
 - type: tradeOffer
   id: SellFoodPorridgePumpkin
+  weight: 0.5
   shop: Orders
   cost:
   - !type:FoodResource
@@ -120,6 +127,7 @@
 
 - type: tradeOffer
   id: SellFoodVegCarrotSoup
+  weight: 0.5
   shop: Orders
   cost:
   - !type:FoodResource
@@ -130,6 +138,7 @@
 
 - type: tradeOffer
   id: SellFoodVegSoup
+  weight: 0.5
   shop: Orders
   cost:
   - !type:FoodResource
@@ -140,6 +149,7 @@
 
 - type: tradeOffer
   id: SellFoodCornPorridge
+  weight: 0.5
   shop: Orders
   cost:
   - !type:FoodResource

@@ -25,7 +25,7 @@
   cost:
   - !type:StackResource
     stack: CEDiamond
-    count: 5
+    count: 1
   receive:
     bonus: 1
 

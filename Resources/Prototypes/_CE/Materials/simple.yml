@@ -83,4 +83,4 @@
   name: ce-material-diamond
   icon: { sprite: _CE/Objects/Materials/diamonds_ore.rsi, state: diamond }
   color: "#9fe3f0"
-  price: 20
+  price: 50
