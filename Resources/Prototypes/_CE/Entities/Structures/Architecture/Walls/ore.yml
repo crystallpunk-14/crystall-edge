@@ -114,6 +114,8 @@
     radius: 0.4
     minFrequency: 3
     maxFrequency: 8
+  - type: StaticPrice
+    price: 200
   - type: Destructible
     thresholds:
     - trigger:
