@@ -199,7 +199,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    useDelay: 2
+    useDelay: 0.5
   - type: TargetAction
     range: 2
     interactOnMiss: false
@@ -229,13 +229,6 @@
         scale: 1.1, 0.9
       - time: 1.5
         scale: 1, 1
-    - !type:PlaySound
-      positional: true
-      sound:
-        path: /Audio/_CE/Effects/coins1.ogg
-        params:
-          pitch: 0.6
-          variation: 0.05
     0.4:
     - !type:RaiseEvent
       event: !type:CERestockTradeTableEvent
