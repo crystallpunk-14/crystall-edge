@@ -4,7 +4,6 @@ location-beacon = beacon
 # Mobs
 location-nar-sie = Nar'Sie
 location-ratvar = Ratvar
-location-mothership-core = Mothership Core
 
 # Objects
 location-tesla-ball = tesla ball

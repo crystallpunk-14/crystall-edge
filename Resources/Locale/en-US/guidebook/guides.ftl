@@ -138,13 +138,10 @@ guide-entry-antagonists = Antagonists
 guide-entry-nuclear-operatives = Nuclear Operatives
 guide-entry-traitors = Traitors
 guide-entry-zombies = Zombies
-guide-entry-revolutionaries = Revolutionaries
 guide-entry-minor-antagonists = Minor Antagonists
 guide-entry-space-ninja = Space Ninja
 guide-entry-thieves = Thieves
 guide-entry-wizard = Wizard
-guide-entry-xenoborgs = Xenoborgs
-guide-entry-changelings = Changelings
 
 guide-entry-rules = Server Rules
 guide-entry-rules-core-only = Core Only Ruleset

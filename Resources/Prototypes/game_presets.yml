@@ -36,10 +36,7 @@
   rules:
     - Nukeops
     - Traitor
-    - Revolutionary
     - Wizard
-    - Xenoborgs
-    - Changeling
     - KesslerSyndromeScheduler
     - RampingStationEventScheduler
     - SpaceTrafficControlEventScheduler
@@ -58,10 +55,7 @@
   rules:
     - Nukeops
     - Traitor
-    - Revolutionary
     - Wizard
-    - Xenoborgs
-    - Changeling
     - BasicStationEventScheduler
     - KesslerSyndromeScheduler
     - MeteorSwarmMildScheduler
@@ -181,24 +175,6 @@
   - BasicRoundstartVariation
 
 - type: gamePreset
-  id: Revolutionary
-  alias:
-    - rev
-    - revs
-    - revolutionaries
-  name: rev-title
-  description: rev-description
-  showInVote: false
-  rules:
-  - DummyNonAntagChance
-  - Revolutionary
-  - SubGamemodesRuleNoWizard
-  - BasicStationEventScheduler
-  - MeteorSwarmScheduler
-  - SpaceTrafficControlEventScheduler
-  - BasicRoundstartVariation
-
-- type: gamePreset
   id: Wizard
   alias:
   - wizard
@@ -209,22 +185,6 @@
   - Wizard
   - DummyNonAntagChance
   - SubGamemodesRuleNoWizard #No Dual Wizards at the start, midround is fine
-  - BasicStationEventScheduler
-  - MeteorSwarmScheduler
-  - SpaceTrafficControlEventScheduler
-  - BasicRoundstartVariation
-
-- type: gamePreset
-  id: Xenoborgs
-  alias:
-    - xenoborgs
-  name: xenoborgs-title
-  description: xenoborgs-description
-  showInVote: false
-  rules:
-  - Xenoborgs
-  - DummyNonAntagChance
-  - SubGamemodesRuleNoWizardNoXenoborg # no two motherships
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler

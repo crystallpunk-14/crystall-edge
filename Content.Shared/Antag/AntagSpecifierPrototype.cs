@@ -136,7 +136,7 @@ public sealed partial class AntagSpecifierPrototype : IPrototype, IInheritingPro
 
 /// <summary>
 /// Used by AntagSelectionSystem to indicate which types of antag roles are allowed to choose the same entity
-/// For example, Thief HeadRev
+/// For example, Thief Traitor
 /// </summary>
 public enum AntagAcceptability
 {

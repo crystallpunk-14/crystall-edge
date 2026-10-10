@@ -152,9 +152,4 @@
   graph: PetCarrier
   targetNode: petCarrier
 
-- type: construction
-  parent: BaseItemMisc
-  id: RepairMothershipPinpointer
-  graph: RepairMothershipPinpointer
-  targetNode: repairedPinpointer
 # endregion Miscellaneous

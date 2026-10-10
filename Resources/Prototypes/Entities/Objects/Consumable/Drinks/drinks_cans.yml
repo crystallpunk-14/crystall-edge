@@ -325,22 +325,6 @@
 
 - type: entity
   parent: DrinkCanBaseFull
-  id: DrinkChangelingStingCan
-  name: Changeling Sting can
-  description: You take a tiny sip and feel a burning sensation...
-  components:
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: ChangelingSting
-        Quantity: 40
-  - type: Sprite
-    sprite: Objects/Consumable/Drinks/changelingsting.rsi
-  - type: Item
-    sprite: Objects/Consumable/Drinks/changelingsting.rsi
-
-- type: entity
-  parent: DrinkCanBaseFull
   id: DrinkDrGibbCan
   name: Dr. Gibb can
   description: A delicious blend of 42 different flavours.

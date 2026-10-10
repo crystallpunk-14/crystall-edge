@@ -941,7 +941,6 @@
     attributes:
       proper: true
       gender: male
-#  - type: AlwaysRevolutionaryConvertible
   - type: StealTarget
     stealGroup: AnimalTropico
 

@@ -378,7 +378,6 @@
   categories: [ HideSpawnMenu ]
   components:
    - type: SubdermalImplant
-   - type: MindShieldImplant
    - type: MindShield
 
 # Centcomm implants

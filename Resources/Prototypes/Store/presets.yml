@@ -42,19 +42,6 @@
     - Wizard
 
 - type: entity
-  id: StorePresetChangeling
-  abstract: true
-  components:
-  - type: Store
-    name: store-preset-name-changeling
-    categories:
-    - ChangelingStoreCombat
-    - ChangelingStoreStealth
-    - ChangelingStoreUtility
-    currencyWhitelist:
-    - ChangelingDNA
-
-- type: entity
   parent: StorePresetUplink
   id: StorePresetRemoteUplink
   categories: [ HideSpawnMenu ]
