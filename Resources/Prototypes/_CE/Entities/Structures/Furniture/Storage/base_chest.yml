@@ -61,3 +61,19 @@
   - type: CELock #Empty, for installing new locks
   - type: Lock
     locked: false
+  - type: RequireProjectileTarget
+  - type: Damageable
+    damageModifierSet: CEWoodStructural
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 60
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
