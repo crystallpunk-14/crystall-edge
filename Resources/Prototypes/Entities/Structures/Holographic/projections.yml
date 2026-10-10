@@ -134,11 +134,6 @@
         behaviors:
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
-    radius: 3
-    color: purple
-  - type: Reflect
-    reflectProb: 1
-  - type: Climbable
 
 - type: entity
   parent: BaseHoloSign

@@ -5,7 +5,6 @@
   children:
   - Traitors
   - Thieves
-  - Revolutionaries
   - NuclearOperatives
   - SpaceNinja
   - Wizard
@@ -20,11 +19,6 @@
   id: NuclearOperatives
   name: guide-entry-nuclear-operatives
   text: "/ServerInfo/Guidebook/Antagonist/Nuclear Operatives.xml"
-
-- type: guideEntry
-  id: Revolutionaries
-  name: guide-entry-revolutionaries
-  text: "/ServerInfo/Guidebook/Antagonist/Revolutionaries.xml"
 
 - type: guideEntry
   id: MinorAntagonists
