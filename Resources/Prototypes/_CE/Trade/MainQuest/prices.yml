@@ -1,15 +1,52 @@
-# Pool of main quest prices. Each round rolls one per quest postament, from different departments when it can.
-# Amounts are placeholders until balancing.
-
 - type: mainQuestPrice
-  id: CEMainQuestPriceDiamonds
+  id: MainQuestDiamonds
   department: CEEngineering
   cost:
   - !type:StackResource
     stack: CEDiamond
+    count: 5
+
+- type: mainQuestPrice
+  id: MainQuestCrystalCell
+  department: CEEngineering
+  cost:
+  - !type:ProtoIdResource
+    protoId: CEEnergyCrystalCell
     count: 10
 
 - type: mainQuestPrice
-  id: CEMainQuestPriceCoins
+  id: MainQuestCornPorridge
+  department: CETavern
+  cost:
+  - !type:FoodResource
+    recipe: CornPorridge
+    count: 30
+
+- type: mainQuestPrice
+  id: MainQuestHamInCheese
+  department: CETavern
+  cost:
+  - !type:FoodResource
+    recipe: HamInCheese
+    count: 20
+
+- type: mainQuestPrice
+  id: MainQuestManaGift
+  department: CEAcademy
+  cost:
+  - !type:SkillBookResource
+    skill: ManaGift
+    count: 1
+
+- type: mainQuestPrice
+  id: MainQuestManaSteal
+  department: CEAcademy
+  cost:
+  - !type:SkillBookResource
+    skill: ManaSteal
+    count: 1
+
+- type: mainQuestPrice
+  id: MainQuestCoins
   department: CECitizens
-  pay: 1000
+  pay: 500

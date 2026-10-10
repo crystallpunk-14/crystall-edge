@@ -36,6 +36,7 @@
 
 - type: tradeOffer
   id: CETradeOfferBrassBar10
+  weight: 2
   shop: DwarfMiners
   pay:
     bonus: 1
@@ -123,15 +124,6 @@
   reward:
   - !type:CETradeSpawnReward
     proto: CEClothingOuterClothingBrassInsulator
-
-- type: tradeOffer
-  id: CETradeOfferEnergyCrystalCell
-  shop: DwarfMiners
-  pay:
-    bonus: 1
-  reward:
-  - !type:CETradeSpawnReward
-    proto: CEEnergyCrystalCell
 
 - type: tradeOffer
   id: CETradeOfferMachinePartDimensionalMatrix1
