@@ -43,17 +43,15 @@
 - type: entityEffectAnimation
   id: AnimationManaGift
   movementSpeed: 0.5
-  duration: 0.5
+  duration: 0.3
   events:
     0:
     - !type:SpawnEntity
+      effectTarget: Target
       spawns:
-      - CEEffectManaRestoreGeneric
+      - CEEffectManaRestore
     - !type:SayChat
       sentence: "Dare magis"
-    0.45:
-    - !type:SpawnEntity
-      spawns:
-      - CEEffectManaRestoreGeneric
+    0.25:
     - !type:ChangeMana
       amount: 25

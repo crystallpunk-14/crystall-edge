@@ -17,8 +17,8 @@ public sealed partial class CEInnateSkillsComponent : Component
     /// <summary>
     /// Source badge name shown on each granted skill's card in the character menu.
     /// </summary>
-    [DataField(required: true)]
-    public LocId DescriptorName;
+    [DataField]
+    public LocId? DescriptorName;
 
     [DataField]
     public Color DescriptorColor = Color.White;
