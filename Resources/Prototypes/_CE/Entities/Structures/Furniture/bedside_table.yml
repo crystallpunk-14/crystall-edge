@@ -77,3 +77,45 @@
   - type: Construction
     graph: CEBedsideTableWooden
     node: CEBedsideTableWooden
+
+- type: entity
+  name: stone bedside table
+  parent:
+  - CEBedsideTableBase
+  id: CEBedsideTableStone
+  description: a stone bedside table. Sturdy, lockable. You can store your valuables here without fear of some burglar taking it all for himself.
+  components:
+  - type: Sprite
+    sprite: _CE/Structures/Furniture/stone_bedside_table.rsi
+    state: icon
+  - type: Damageable
+    damageModifierSet: CERock
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CEStoneBlock1:
+            min: 1
+            max: 3
+  - type: Construction
+    graph: CEBedsideTableStone
+    node: CEBedsideTableStone 
