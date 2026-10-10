@@ -199,7 +199,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    useDelay: 0.5
+    useDelay: 0.8
   - type: TargetAction
     range: 2
     interactOnMiss: false
@@ -216,7 +216,7 @@
 - type: entityEffectAnimation
   id: CEAnimationRestockTradeTable
   movementSpeed: 0
-  duration: 0.5
+  duration: 0.3
   events:
     0:
     - !type:UserAnimation
@@ -229,7 +229,7 @@
         scale: 1.1, 0.9
       - time: 1.5
         scale: 1, 1
-    0.4:
+    0.2:
     - !type:RaiseEvent
       event: !type:CERestockTradeTableEvent
     - !type:SpawnEntity
