@@ -1408,8 +1408,6 @@
           type: SurveillanceCameraMonitorBoundUserInterface
         enum.WiresUiKey.Key:
           type: WiresBoundUserInterface
-  - type: WirelessNetworkConnection
-    range: 2000
 
 - type: entity
   id: ComputerPalletConsole
