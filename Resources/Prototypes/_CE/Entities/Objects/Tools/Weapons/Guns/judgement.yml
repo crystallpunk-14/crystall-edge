@@ -1,14 +1,14 @@
 - type: entity
-  id: CEWeaponGunPeacekeeper
   parent:
   - BaseLaserRifle
   - BaseGunWieldable
-  name: Peacekeeper
-  description: A low-charge energy rifle that fires a powerful repulsive beam of concentrated mana.
+  id: CEWeaponGunJudgement
+  name: judgement
+  description: TODO
   categories: [ ForkFiltered ]
   components:
   - type: Sprite
-    sprite: _CE/Objects/Tools/Weapons/Guns/peacekeeper.rsi
+    sprite: _CE/Objects/Tools/Weapons/Guns/peacekeeper_golden.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -16,48 +16,64 @@
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
   - type: Clothing
-    sprite: _CE/Objects/Tools/Weapons/Guns/peacekeeper.rsi
-    equipDelay: 1
-    unequipDelay: 1.5
+    sprite: _CE/Objects/Tools/Weapons/Guns/peacekeeper_golden.rsi
+    equipDelay: 2
+    unequipDelay: 2.5
     equipWhileMoving: true
     slots:
     - neck
   - type: Item
     size: Ginormous
     shape:
-    - 0, 0, 4, 1 # 2x5
+    - 0, 0, 5, 1 # 2x6
   - type: BatteryAmmoProvider
-    proto: CEPeaceKeeperHitscan
-    fireCost: 10
+    proto: CEJudgementHitscan
+    fireCost: 15
   - type: Battery
-    maxCharge: 100
-    startingCharge: 100
+    maxCharge: 150
+    startingCharge: 150
   - type: Gun
-    fireRate: 0.8
-    angleDecay: 10
+    selectedMode: Burst
+    availableModes:
+    - Burst
+    fireRate: 0.4
+    burstFireRate: 3.5
+    shotsPerBurst: 2
+    burstCooldown: 3
     angleIncrease: 2
-    maxAngle: 36
+    minAngle: 20
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
       params:
         variation: 0.2
+        volume: 4
+        pitch: 0.5
+        maxDistance: 22
+  - type: SpeedModifiedOnWield
+    walkModifier: 0.35
+    sprintModifier: 0.35
+  - type: CursorOffsetRequiresWield
+  - type: EyeCursorOffset
+    maxOffset: 5
+    pvsIncrease: 0.3
   - type: StaticPrice
-    price: 350
+    price: 650
   - type: CEMagicEssenceStructure
     essences:
       Weapon: { min: 1, max: 3 }
       Metal: { min: 1, max: 4 }
-      Energia: { min: 0, max: 2 }
+      Energia: { min: 0, max: 3 }
+      Greed: { min: 1, max: 3 }
 
 - type: entity
   parent: BasicHitscan
-  id: CEPeaceKeeperHitscan
+  id: CEJudgementHitscan
   categories: [ HideSpawnMenu ]
   components:
   - type: HitscanBasicDamage
     damage:
       types:
-        Shock: 30
+        Shock: 28
   - type: CEHitscanEntityEffect
     effects:
     - !type:SpawnEntity
@@ -65,9 +81,9 @@
       spawns:
       - CEOverchargeVFX
     - !type:ThrowFrom
-      distance: 0.75
+      distance: 1.25
     - !type:Irradiate
-      charge: 8
+      charge: 10
   - type: HitscanBasicVisuals
     muzzleFlash:
       sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
@@ -78,4 +94,3 @@
     impactFlash:
       sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
       state: impact_blue
-
