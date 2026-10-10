@@ -174,7 +174,6 @@
     steps: 2
     zeroVisible: true
   - type: Appearance
-  - type: Appearance
 
 - type: entity
   parent: BaseWeaponLauncher
