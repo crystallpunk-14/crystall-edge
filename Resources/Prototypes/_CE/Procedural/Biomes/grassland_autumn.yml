@@ -152,12 +152,6 @@
         - CEFloraTreeAutumn
         - CEFloraTreeAutumn
         - CEFloraTreeAutumnLarge
-        - CEFloraTreeDead
-        - CEFloraTreeDead
-        - CEFloraTreeDead
-        - CEFloraTreeDeadSmall
-        - CEFloraTreeDeadSmall
-        - CEFloraTreeDeadSmall
     - !type:BiomeEntityLayer # More Rocks
       threshold: 0.7
       noise:
@@ -215,8 +209,6 @@
         - CEFloraTreeAutumn
         - CEFloraTreeAutumn
         - CEFloraTreeAutumnLarge
-        - CEFloraTreeDead
-        - CEFloraTreeDeadSmall
 
 # Hills
 
