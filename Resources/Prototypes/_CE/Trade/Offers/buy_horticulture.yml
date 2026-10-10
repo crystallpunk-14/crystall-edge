@@ -78,8 +78,10 @@
     proto: CEFoodSunflowerHead
     count: 5
 
+#MARK: Meat
 - type: tradeOffer
   id: CETradeOfferFoodMeatLamb
+  weight: 1.3
   shop: Horticulture
   pay:
     bonus: 1
@@ -89,6 +91,7 @@
 
 - type: tradeOffer
   id: CETradeOfferFoodMeatFrogLeg
+  weight: 1.3
   shop: Horticulture
   pay:
     bonus: 1
@@ -98,6 +101,7 @@
 
 - type: tradeOffer
   id: CETradeOfferFoodMeatDino
+  weight: 1.3
   shop: Horticulture
   pay:
     bonus: 1
@@ -107,6 +111,7 @@
 
 - type: tradeOffer
   id: CETradeOfferFoodMeatHydra
+  weight: 1.3
   shop: Horticulture
   pay:
     bonus: 1
@@ -116,6 +121,7 @@
 
 - type: tradeOffer
   id: CETradeOfferFoodMeatRabbit
+  weight: 1.3
   shop: Horticulture
   pay:
     bonus: 1
@@ -125,6 +131,7 @@
 
 - type: tradeOffer
   id: CETradeOfferFoodMeatPig
+  weight: 1.3
   shop: Horticulture
   pay:
     bonus: 1
@@ -134,6 +141,7 @@
 
 - type: tradeOffer
   id: CETradeOfferFoodMeatPigLeg
+  weight: 1.3
   shop: Horticulture
   pay:
     bonus: 1
@@ -143,6 +151,7 @@
 
 - type: tradeOffer
   id: CETradeOfferFoodMeatBoar
+  weight: 1.3
   shop: Horticulture
   pay:
     bonus: 1
@@ -152,6 +161,7 @@
 
 - type: tradeOffer
   id: CETradeOfferFoodMeatMonster
+  weight: 1.3
   shop: Horticulture
   pay:
     bonus: 1
@@ -161,6 +171,7 @@
 
 - type: tradeOffer
   id: CETradeOfferFoodMeatMonsterLeg
+  weight: 1.3
   shop: Horticulture
   pay:
     bonus: 1
@@ -168,8 +179,10 @@
   - !type:CETradeSpawnReward
     proto: CEFoodMeatMonsterLeg
 
+#MARK: Seeds
 - type: tradeOffer
   id: CETradeOfferSeedWheat30
+  weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
@@ -179,6 +192,7 @@
 
 - type: tradeOffer
   id: CETradeOfferSeedPumpkin30
+  weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
@@ -188,6 +202,7 @@
 
 - type: tradeOffer
   id: CETradeOfferSeedCabbage30
+  weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
@@ -197,6 +212,7 @@
 
 - type: tradeOffer
   id: CETradeOfferSeedCucumber30
+  weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
@@ -206,6 +222,7 @@
 
 - type: tradeOffer
   id: CETradeOfferSeedTomato30
+  weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
@@ -215,6 +232,7 @@
 
 - type: tradeOffer
   id: CETradeOfferSeedPepper30
+  weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
@@ -224,6 +242,7 @@
 
 - type: tradeOffer
   id: CETradeOfferSeedCarrot30
+  weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
@@ -233,6 +252,7 @@
 
 - type: tradeOffer
   id: CETradeOfferSeedCotton30
+  weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
@@ -242,6 +262,7 @@
 
 - type: tradeOffer
   id: CETradeOfferSeedSunflower30
+  weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
@@ -251,6 +272,7 @@
 
 - type: tradeOffer
   id: CETradeOfferSeedCorn30
+  weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
@@ -260,6 +282,7 @@
 
 - type: tradeOffer
   id: CETradeOfferSeedAppleTree
+  weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
@@ -267,8 +290,11 @@
   - !type:CETradeSpawnReward
     proto: CESeedAppleTree
 
+#MARK: Floor Tiles
+
 - type: tradeOffer
   id: CETradeOfferFloorTileGrass30
+  weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
@@ -278,6 +304,7 @@
 
 - type: tradeOffer
   id: CETradeOfferFloorTileGrassAutumn30
+  weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
@@ -287,12 +314,15 @@
 
 - type: tradeOffer
   id: CETradeOfferFloorTileMycelium30
+  weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
   reward:
   - !type:CETradeSpawnReward
     proto: CEFloorTileMycelium30
+
+#MARK: Materials
 
 - type: tradeOffer
   id: CETradeOfferWoodLog
@@ -302,6 +332,8 @@
   reward:
   - !type:CETradeSpawnReward
     proto: CEWoodLog
+
+#MARK: Tools
 
 - type: tradeOffer
   id: CETradeOfferSack
@@ -368,6 +400,7 @@
 
 - type: tradeOffer
   id: CETradeOfferFork
+  weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
@@ -378,6 +411,7 @@
 
 - type: tradeOffer
   id: CETradeOfferSpoon
+  weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
@@ -434,6 +468,7 @@
 
 - type: tradeOffer
   id: CETradeOfferBowlWooden
+  weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
@@ -443,6 +478,7 @@
 
 - type: tradeOffer
   id: CETradeOfferBowlIron
+  weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
@@ -452,6 +488,7 @@
 
 - type: tradeOffer
   id: CETradeOfferPlateWooden
+  weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
@@ -461,6 +498,7 @@
 
 - type: tradeOffer
   id: CETradeOfferPlateIron
+  weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
@@ -470,6 +508,7 @@
 
 - type: tradeOffer
   id: CETradeOfferWoodenBeerMug
+  weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
@@ -479,6 +518,7 @@
 
 - type: tradeOffer
   id: CETradeOfferSteelBeerMug
+  weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
@@ -488,6 +528,7 @@
 
 - type: tradeOffer
   id: CETradeOfferSteelWoodBeerMug
+  weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
@@ -497,6 +538,7 @@
 
 - type: tradeOffer
   id: CETradeOfferMetalBeerMug
+  weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
@@ -506,6 +548,7 @@
 
 - type: tradeOffer
   id: CETradeOfferSteelGobletIron
+  weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
@@ -515,6 +558,7 @@
 
 - type: tradeOffer
   id: CETradeOfferSteelGobletCopper
+  weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
@@ -524,6 +568,7 @@
 
 - type: tradeOffer
   id: CETradeOfferSteelGobletGold
+  weight: 0.1
   shop: Horticulture
   pay:
     bonus: 1
