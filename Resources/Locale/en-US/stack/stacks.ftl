@@ -79,11 +79,7 @@ stack-cotton = {$amount ->
 stack-artifact-fragment = artifact {$amount ->
     [1] fragment
     *[other] fragments
-}
-stack-xenoborg-crystal = xenoborg {$amount ->
-    [1] crystal
-    *[other] crystals
-}
+}}
 stack-conveyor-belt = {$amount ->
     [1] conveyor belt
     *[other] conveyor belts
