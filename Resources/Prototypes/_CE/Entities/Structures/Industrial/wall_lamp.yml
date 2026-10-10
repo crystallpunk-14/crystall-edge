@@ -33,12 +33,12 @@
   - type: Damageable
     damageModifierSet: Metallic
   - type: Injurable
-    damageContainer: Inorganic
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 200
+        damage: 30
       behaviors: #excess damage, don't spawn entities.
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
@@ -47,7 +47,7 @@
           collection: GlassBreak
     - trigger:
         !type:DamageTrigger
-        damage: 50
+        damage: 10
       behaviors:
       - !type:EmptyAllContainersBehaviour
       - !type:SpawnEntitiesBehavior
