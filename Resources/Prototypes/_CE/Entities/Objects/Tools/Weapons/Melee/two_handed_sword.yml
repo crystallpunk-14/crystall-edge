@@ -4,6 +4,7 @@
   parent:
   - BaseItem
   - CEBaseWeaponChemical
+  - CEBaseWeaponSharp
   components:
   - type: Item
     size: Ginormous

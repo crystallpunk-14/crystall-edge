@@ -3818,29 +3818,11 @@ ent-CEFloraTreeAutumn = { ent-CEBaseTree }
 ent-CEFloraTreeSnow = { ent-CEBaseTree }
     .desc = { ent-CEBaseTree.desc }
 
-ent-CEFloraTreeDead = { ent-CEBaseTree }
-    .desc = { ent-CEBaseTree.desc }
-
-ent-CEFloraTreeDeadSmall = { ent-CEBaseTree }
-    .desc = { ent-CEBaseTree.desc }
-
 ent-CEFloraTreeGreenLarge = { ent-CEBaseTreeLarge }
     .desc = { ent-CEBaseTreeLarge.desc }
 
 ent-CEFloraTreeAutumnLarge = { ent-CEBaseTreeLarge }
     .desc = { ent-CEBaseTreeLarge.desc }
-
-ent-CEFloraTreeBirchSmall = { ent-CEBaseTree }
-    .desc = { ent-CEBaseTree.desc }
-    .suffix = Маленькая
-
-ent-CEFloraTreeBirchMedium = { ent-CEBaseTree }
-    .desc = { ent-CEBaseTree.desc }
-    .suffix = Средняя
-
-ent-CEFloraTreeBirchLarge = { ent-CEBaseTree }
-    .desc = { ent-CEBaseTree.desc }
-    .suffix = Большая
 
 ent-CEFloraTreeSpruce = { ent-CEBaseTree }
     .desc = { ent-CEBaseTree.desc }
