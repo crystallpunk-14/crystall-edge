@@ -1258,3 +1258,25 @@
   id: 1110
   time: '2026-10-10T11:36:40.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/518
+- author: TheShuEd
+  changes:
+  - message: Ghosts now have an innate sense of time to make it easier to watch the
+      round.
+    type: Add
+  - message: "Books of Knowledge for scientists can now be found in the Shadow Traders\u2019\
+      \ caravan."
+    type: Add
+  - message: Birch trees and dead trees have been removed due to licensing issues.
+    type: Remove
+  - message: The number of Brotherhood roles per round has been halved.
+    type: Tweak
+  - message: "Numerous balance adjustments to the merchants\u2019 inventory."
+    type: Tweak
+  - message: Fixed an issue where the radio station could not be destroyed.
+    type: Fix
+  - message: Fixed an issue where logs could not be cut into planks with any sharp
+      weapon.
+    type: Fix
+  id: 1111
+  time: '2026-10-10T17:48:50.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/519
