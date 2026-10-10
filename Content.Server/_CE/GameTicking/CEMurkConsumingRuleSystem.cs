@@ -30,6 +30,7 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
     [Dependency] private SharedGodmodeSystem _godmode = default!;
 
     private readonly EntProtoId _sphereShockwave = "CEShockWaveHugeVFX";
+    private readonly EntProtoId _sphereFailureLightning = "CESkyLightning";
 
     /// <summary>
     /// Used for "days left" texts if no station map with a light cycle can be found.
@@ -210,7 +211,12 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
         while (collapseQuery.MoveNext(out var collapseUid, out var collapseSphere))
         {
             SetSphereState((collapseUid, collapseSphere), CEMurkSphereState.Failure);
-            Spawn(_sphereShockwave, Transform(collapseUid).Coordinates);
+
+            // The sphere itself is destroyed - leave a lightning strike and a shockwave in its place.
+            var coordinates = Transform(collapseUid).Coordinates;
+            Spawn(_sphereFailureLightning, coordinates);
+            Spawn(_sphereShockwave, coordinates);
+            QueueDel(collapseUid);
         }
 
         _roundEndSystem.EndRound();

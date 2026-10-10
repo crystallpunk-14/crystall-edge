@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.0
   forkId: ""
   forkVersion: ""
-  time: 10/09/2026 19:35:42
-  entityCount: 2308
+  time: 10/10/2026 11:17:17
+  entityCount: 2291
 maps:
 - 1
 grids:
@@ -5244,11 +5244,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -14.5,4.5
-  - uid: 55
-    components:
-    - type: Transform
-      parent: 1
-      pos: -22.5,7.5
   - uid: 65
     components:
     - type: Transform
@@ -5269,11 +5264,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -14.5,8.5
-  - uid: 149
-    components:
-    - type: Transform
-      parent: 1
-      pos: -19.5,6.5
   - uid: 179
     components:
     - type: Transform
@@ -5439,41 +5429,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -10.5,-8.5
-  - uid: 894
-    components:
-    - type: Transform
-      parent: 1
-      pos: -22.5,11.5
-  - uid: 897
-    components:
-    - type: Transform
-      parent: 1
-      pos: -22.5,9.5
-  - uid: 899
-    components:
-    - type: Transform
-      parent: 1
-      pos: -22.5,10.5
-  - uid: 930
-    components:
-    - type: Transform
-      parent: 1
-      pos: -22.5,13.5
-  - uid: 933
-    components:
-    - type: Transform
-      parent: 1
-      pos: -22.5,12.5
-  - uid: 934
-    components:
-    - type: Transform
-      parent: 1
-      pos: -22.5,14.5
-  - uid: 937
-    components:
-    - type: Transform
-      parent: 1
-      pos: -22.5,8.5
   - uid: 960
     components:
     - type: Transform
@@ -5499,21 +5454,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -14.5,-6.5
-  - uid: 1212
-    components:
-    - type: Transform
-      parent: 1
-      pos: -22.5,6.5
-  - uid: 1214
-    components:
-    - type: Transform
-      parent: 1
-      pos: -21.5,6.5
-  - uid: 1216
-    components:
-    - type: Transform
-      parent: 1
-      pos: -20.5,6.5
   - uid: 1237
     components:
     - type: Transform
@@ -5574,26 +5514,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -15.5,-3.5
-  - uid: 2657
-    components:
-    - type: Transform
-      parent: 1
-      pos: -18.5,6.5
-  - uid: 2658
-    components:
-    - type: Transform
-      parent: 1
-      pos: -15.5,6.5
-  - uid: 2664
-    components:
-    - type: Transform
-      parent: 1
-      pos: -17.5,6.5
-  - uid: 2665
-    components:
-    - type: Transform
-      parent: 1
-      pos: -16.5,6.5
 - proto: CEPipeBrassBigVerticalDown
   entities:
   - uid: 506
@@ -5618,11 +5538,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -10.5,16.5
-  - uid: 936
-    components:
-    - type: Transform
-      parent: 1
-      pos: -21.5,14.5
   - uid: 961
     components:
     - type: Transform

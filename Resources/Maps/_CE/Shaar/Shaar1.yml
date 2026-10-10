@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.0
   forkId: ""
   forkVersion: ""
-  time: 10/09/2026 19:35:43
-  entityCount: 1481
+  time: 10/10/2026 11:17:18
+  entityCount: 1480
 maps:
 - 1
 grids:
@@ -2767,11 +2767,6 @@ entities:
       pos: -28.5,-9.5
 - proto: CEPipeBrassBigVerticalUp
   entities:
-  - uid: 108
-    components:
-    - type: Transform
-      parent: 1
-      pos: -28.5,-8.5
   - uid: 344
     components:
     - type: Transform
