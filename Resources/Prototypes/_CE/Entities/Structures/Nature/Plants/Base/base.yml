@@ -125,9 +125,8 @@
   - type: CEPlantAdditionalProduceOnDestruct
     produce:
       CEWoodLog: 3
-  - type: CEPlantDying # a withered tree turns into the existing dead-tree entity
-    deathThreshold: 60
-    deadEntity: CEFloraTreeDead
+  #- type: CEPlantDying #TODO dead apple tree
+  #  deathThreshold: 60
   - type: CEWaveShader
     speed: 3
     dis: 4

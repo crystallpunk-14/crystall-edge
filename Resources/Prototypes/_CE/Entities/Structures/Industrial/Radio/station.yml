@@ -1,5 +1,8 @@
 - type: entity
-  parent: CEBaseMachinePowered
+  parent:
+  - CEConstructibleMachine
+  - CEBaseMachinePowered
+  - BaseMachine
   id: CERadioStation
   name: radio booth
   description: A broadcasting console. When switched on, everything said next to it is repeated by loudspeakers on its frequencies.

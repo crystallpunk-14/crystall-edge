@@ -11,14 +11,20 @@ public sealed partial class CEInnateSkillsSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnMapInit(Entity<CEInnateSkillsComponent> ent, ref MapInitEvent args)
     {
-        var descriptor = new CESkillDescriptor
+        CESkillDescriptor? descriptor = null;
+        if (ent.Comp.DescriptorName is not null)
         {
-            Name = ent.Comp.DescriptorName,
-            Color = ent.Comp.DescriptorColor,
-            Tooltip = ent.Comp.DescriptorTooltip,
-        };
+            descriptor = new CESkillDescriptor
+            {
+                Name = ent.Comp.DescriptorName.Value,
+                Color = ent.Comp.DescriptorColor,
+                Tooltip = ent.Comp.DescriptorTooltip,
+            };
+        }
 
         foreach (var skill in ent.Comp.Skills)
+        {
             _skill.TryAddSkill(ent.Owner, skill, force: true, descriptor: descriptor);
+        }
     }
 }

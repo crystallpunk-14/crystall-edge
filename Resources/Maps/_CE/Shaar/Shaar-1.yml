@@ -4,8 +4,8 @@ meta:
   engineVersion: 289.0.0
   forkId: ""
   forkVersion: ""
-  time: 10/10/2026 11:17:17
-  entityCount: 2291
+  time: 10/10/2026 17:02:43
+  entityCount: 2326
 maps:
 - 1
 grids:
@@ -86,7 +86,7 @@ entities:
           version: 7
         -2,-2:
           ind: -2,-2
-          tiles: GAAAAAABABgAAAAAAgAYAAAAAAMAGAAAAAAFAAEAAAAABAABAAAAAAEAGAAAAAABAAEAAAAAAAABAAAAAAEAAQAAAAADAAEAAAAABAAYAAAAAAMAGAAAAAACABgAAAAAAQAYAAAAAAQAGQAAAAAFABgAAAAABAAYAAAAAAMAGAAAAAABABgAAAAABQAYAAAAAAUAAQAAAAACAAEAAAAAAAABAAAAAAQAGAAAAAADABgAAAAAAAAYAAAAAAEAGAAAAAADABgAAAAAAAAYAAAAAAIAGgAAAAADABkAAAAAAAAYAAAAAAEAGAAAAAACABgAAAAAAgAYAAAAAAEAGAAAAAAEAAEAAAAAAAABAAAAAAIAGAAAAAADABgAAAAABAAYAAAAAAQAGAAAAAACABkAAAAAAQAZAAAAAAUAGQAAAAABABkAAAAABAAZAAAAAAEAGAAAAAACABgAAAAAAwAYAAAAAAAAGAAAAAAEABgAAAAAAgABAAAAAAIAAQAAAAACABgAAAAAAQAYAAAAAAQAGAAAAAABABkAAAAABQAZAAAAAAMAGQAAAAAFABgAAAAABQAZAAAAAAIAGgAAAAADABgAAAAABAAYAAAAAAMAGAAAAAADABgAAAAABAABAAAAAAIAAQAAAAACAAEAAAAAAAAYAAAAAAQAGAAAAAADABgAAAAAAgAZAAAAAAMAGAAAAAAFABgAAAAAAwAYAAAAAAEAGQAAAAAFABkAAAAAAwAYAAAAAAIAGAAAAAADABgAAAAAAgAYAAAAAAEAAQAAAAADAAEAAAAAAgAYAAAAAAUAGAAAAAAFABgAAAAAAgAYAAAAAAUAGAAAAAABABgAAAAABAAYAAAAAAQAGAAAAAAFABgAAAAABQAZAAAAAAEAGAAAAAADABgAAAAAAQAYAAAAAAEAGAAAAAAAAAEAAAAAAAABAAAAAAQAGAAAAAAEABgAAAAAAQAYAAAAAAEAGAAAAAAAABgAAAAAAwAYAAAAAAEAGAAAAAADABgAAAAAAwAYAAAAAAQAGAAAAAAEABgAAAAAAwAYAAAAAAMAGAAAAAADABgAAAAAAgABAAAAAAMAAQAAAAAEABgAAAAAAQAYAAAAAAAAGAAAAAABABgAAAAABQAYAAAAAAUAGAAAAAABABgAAAAABAAYAAAAAAIAGAAAAAAAABgAAAAAAgABAAAAAAAAAQAAAAABAAEAAAAAAwABAAAAAAIAAQAAAAADAAEAAAAAAgABAAAAAAMAGAAAAAABABgAAAAAAQAYAAAAAAIAGAAAAAADABgAAAAAAAAYAAAAAAEAGAAAAAADABgAAAAAAwAEAAAAAAUAAQAAAAABAAEAAAAAAwABAAAAAAQAAQAAAAABAAEAAAAAAgABAAAAAAIAAQAAAAAAAAEAAAAABAAYAAAAAAAAGAAAAAABABgAAAAAAwAYAAAAAAMAGAAAAAACABgAAAAAAQAFAAAAAAAABQAAAAAAAAEAAAAAAQABAAAAAAIAAQAAAAAAAAEAAAAAAQABAAAAAAEAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAABgAAAAAAQAYAAAAAAQAGAAAAAAAABgAAAAAAgAYAAAAAAAABQAAAAAAAAUAAAAAAAABAAAAAAIAAQAAAAABAAEAAAAABAAYAAAAAAEAAQAAAAADAAEAAAAAAQABAAAAAAIAAQAAAAADAAEAAAAAAwAYAAAAAAUAGAAAAAAAABgAAAAABAAYAAAAAAEAGAAAAAABAAUAAAAAAAAFAAAAAAAAAgAAAAAMAAIAAAAADgAYAAAAAAIAGAAAAAACABgAAAAAAwACAAAAAAwAAQAAAAADAAEAAAAAAQABAAAAAAEAGAAAAAACABgAAAAABAAYAAAAAAQAGAAAAAAFABgAAAAAAgAFAAAAAAAABQAAAAAAABgAAAAABQAYAAAAAAEAGAAAAAAEABgAAAAAAgAYAAAAAAUAGAAAAAABAAIAAAAAAQABAAAAAAAAAQAAAAACABgAAAAAAQAYAAAAAAUAGAAAAAACABgAAAAABQAYAAAAAAUAGAAAAAADAAUAAAAAAAAGAAAAAAMABgAAAAABAAYAAAAAAAAGAAAAAAMABgAAAAADABgAAAAAAQACAAAAAAMAAgAAAAADAAEAAAAAAQAYAAAAAAAAGAAAAAABABgAAAAAAAAYAAAAAAIAFQAAAAAAABUAAAAAAAAVAAAAAAIABgAAAAAAAA8AAAAAAgAPAAAAAAEABgAAAAADAAYAAAAAAAAGAAAAAAMABgAAAAACAAYAAAAAAwAGAAAAAAMABgAAAAADAAYAAAAAAwAGAAAAAAAABgAAAAABABUAAAAAAQAVAAAAAAMAFQAAAAACAA==
+          tiles: GAAAAAABABgAAAAAAgAYAAAAAAMAGAAAAAAFABgAAAAAAAAYAAAAAAAAGAAAAAABABgAAAAAAAAYAAAAAAAAGAAAAAAAABgAAAAAAAAYAAAAAAMAGAAAAAACABgAAAAAAQAYAAAAAAQAGQAAAAAFABgAAAAABAAYAAAAAAMAGAAAAAABABgAAAAABQAYAAAAAAUAGAAAAAAAABgAAAAAAAABAAAAAAQAGAAAAAADABgAAAAAAAAYAAAAAAEAGAAAAAADABgAAAAAAAAYAAAAAAIAGgAAAAADABkAAAAAAAAYAAAAAAEAGAAAAAACABgAAAAAAgAYAAAAAAEAGAAAAAAEABgAAAAAAAAYAAAAAAAAGAAAAAADABgAAAAABAAYAAAAAAQAGAAAAAACABkAAAAAAQAZAAAAAAUAGQAAAAABABkAAAAABAAZAAAAAAEAGAAAAAACABgAAAAAAwAYAAAAAAAAGAAAAAAEABgAAAAAAgAYAAAAAAAAGAAAAAAAABgAAAAAAQAYAAAAAAQAGAAAAAABABkAAAAABQAZAAAAAAMAGQAAAAAFABgAAAAABQAZAAAAAAIAGgAAAAADABgAAAAABAAYAAAAAAMAGAAAAAADABgAAAAABAAYAAAAAAAAGAAAAAAAABgAAAAAAAAYAAAAAAQAGAAAAAADABgAAAAAAgAZAAAAAAMAGAAAAAAFABgAAAAAAwAYAAAAAAEAGQAAAAAFABkAAAAAAwAYAAAAAAIAGAAAAAADABgAAAAAAgAYAAAAAAEAGAAAAAAAABgAAAAAAAAYAAAAAAUAGAAAAAAFABgAAAAAAgAYAAAAAAUAGAAAAAABABgAAAAABAAYAAAAAAQAGAAAAAAFABgAAAAABQAZAAAAAAEAGAAAAAADABgAAAAAAQAYAAAAAAEAGAAAAAAAABgAAAAAAAAYAAAAAAAAGAAAAAAEABgAAAAAAQAYAAAAAAEAGAAAAAAAABgAAAAAAwAYAAAAAAEAGAAAAAADABgAAAAAAwAYAAAAAAQAGAAAAAAEABgAAAAAAwAYAAAAAAMAGAAAAAADABgAAAAAAgAYAAAAAAAAGAAAAAAAABgAAAAAAQAYAAAAAAAAGAAAAAABABgAAAAABQAYAAAAAAUAGAAAAAABABgAAAAABAAYAAAAAAIAGAAAAAAAABgAAAAAAgABAAAAAAAAAQAAAAABAAEAAAAAAwABAAAAAAIAAQAAAAADABgAAAAAAAABAAAAAAMAGAAAAAABABgAAAAAAQAYAAAAAAIAGAAAAAADABgAAAAAAAAYAAAAAAEAGAAAAAADABgAAAAAAwAEAAAAAAUAAQAAAAABAAEAAAAAAwABAAAAAAQAAQAAAAABAAEAAAAAAgABAAAAAAIAAQAAAAAAAAEAAAAABAAYAAAAAAAAGAAAAAABABgAAAAAAwAYAAAAAAMAGAAAAAACABgAAAAAAQAFAAAAAAAABQAAAAAAAAEAAAAAAQABAAAAAAIAAQAAAAAAAAEAAAAAAQABAAAAAAEAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAABgAAAAAAQAYAAAAAAQAGAAAAAAAABgAAAAAAgAYAAAAAAAABQAAAAAAAAUAAAAAAAABAAAAAAIAAQAAAAABAAEAAAAABAAYAAAAAAEAAQAAAAADAAEAAAAAAQABAAAAAAIAAQAAAAADAAEAAAAAAwAYAAAAAAUAGAAAAAAAABgAAAAABAAYAAAAAAEAGAAAAAABAAUAAAAAAAAFAAAAAAAAAgAAAAAMAAIAAAAADgAYAAAAAAIAGAAAAAACABgAAAAAAwACAAAAAAwAAQAAAAADAAEAAAAAAQABAAAAAAEAGAAAAAACABgAAAAABAAYAAAAAAQAGAAAAAAFABgAAAAAAgAFAAAAAAAABQAAAAAAABgAAAAABQAYAAAAAAEAGAAAAAAEABgAAAAAAgAYAAAAAAUAGAAAAAABAAIAAAAAAQABAAAAAAAAAQAAAAACABgAAAAAAQAYAAAAAAUAGAAAAAACABgAAAAABQAYAAAAAAUAGAAAAAADAAUAAAAAAAAGAAAAAAMABgAAAAABAAYAAAAAAAAGAAAAAAMABgAAAAADABgAAAAAAQACAAAAAAMAAgAAAAADAAEAAAAAAQAYAAAAAAAAGAAAAAABABgAAAAAAAAYAAAAAAIAFQAAAAAAABUAAAAAAAAVAAAAAAIABgAAAAAAAA8AAAAAAgAPAAAAAAEABgAAAAADAAYAAAAAAAAGAAAAAAMABgAAAAACAAYAAAAAAwAGAAAAAAMABgAAAAADAAYAAAAAAwAGAAAAAAAABgAAAAABABUAAAAAAQAVAAAAAAMAFQAAAAACAA==
           version: 7
         -1,-1:
           ind: -1,-1
@@ -142,7 +142,7 @@ entities:
           version: 7
         -2,-3:
           ind: -2,-3
-          tiles: BQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAAGAAAAAADABgAAAAABAAYAAAAAAIABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAABgAAAAAAwABAAAAAAIAAQAAAAADAAEAAAAAAgABAAAAAAAAGAAAAAAAABgAAAAAAgAYAAAAAAAAGQAAAAAFAA==
+          tiles: BQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAAGAAAAAADABgAAAAABAAYAAAAAAIABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAABgAAAAAAwAYAAAAAAAAGAAAAAAAABgAAAAAAAAYAAAAAAAAGAAAAAAAABgAAAAAAgAYAAAAAAAAGQAAAAAFAA==
           version: 7
         -4,0:
           ind: -4,0
@@ -275,11 +275,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -43.5,-4.5
-  - uid: 1072
-    components:
-    - type: Transform
-      parent: 1
-      pos: -32.5,2.5
   - uid: 1577
     components:
     - type: Transform
@@ -320,11 +315,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -30.5,-5.5
-  - uid: 1789
-    components:
-    - type: Transform
-      parent: 1
-      pos: -30.5,2.5
 - proto: CEBedsideTableWooden
   entities:
   - uid: 1476
@@ -735,17 +725,143 @@ entities:
     - type: Transform
       parent: 1
       pos: -48.5,-18.5
+  - uid: 934
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -27.5,-24.5
   - uid: 935
     components:
     - type: Transform
       parent: 1
       pos: -48.5,-25.5
+  - uid: 937
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -27.5,-25.5
+  - uid: 1031
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -27.5,-26.5
+  - uid: 1072
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -27.5,-27.5
+  - uid: 1098
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -27.5,-28.5
+  - uid: 1125
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -27.5,-29.5
+  - uid: 1212
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -27.5,-30.5
+  - uid: 1214
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -26.5,-24.5
+  - uid: 1216
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -26.5,-25.5
   - uid: 1271
     components:
     - type: Transform
       parent: 1
       rot: -1.5707963267948966 rad
       pos: -4.5,-29.5
+  - uid: 1276
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -26.5,-26.5
+  - uid: 1278
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -26.5,-27.5
+  - uid: 1298
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -26.5,-28.5
+  - uid: 1314
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -26.5,-29.5
+  - uid: 1351
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -26.5,-30.5
+  - uid: 1391
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -25.5,-24.5
+  - uid: 1478
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -25.5,-25.5
+  - uid: 1482
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -25.5,-26.5
+  - uid: 1541
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -25.5,-27.5
+  - uid: 1641
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -25.5,-28.5
+  - uid: 1642
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -25.5,-29.5
+  - uid: 1643
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -25.5,-30.5
   - uid: 1757
     components:
     - type: Transform
@@ -797,6 +913,12 @@ entities:
     - type: Transform
       parent: 1
       pos: -45.5,-12.5
+  - uid: 1789
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -26.5,-31.5
   - uid: 1805
     components:
     - type: Transform
@@ -920,6 +1042,12 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: -28.5,-25.5
+  - uid: 1930
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -25.5,-31.5
   - uid: 1933
     components:
     - type: Transform
@@ -953,16 +1081,82 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: -35.5,-20.5
+  - uid: 1983
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -24.5,-31.5
+  - uid: 1986
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -23.5,-31.5
   - uid: 1988
     components:
     - type: Transform
       parent: 1
       pos: -45.5,-5.5
+  - uid: 2004
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -22.5,-31.5
+  - uid: 2009
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -24.5,-30.5
   - uid: 2017
     components:
     - type: Transform
       parent: 1
       pos: -45.5,-6.5
+  - uid: 2027
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -23.5,-30.5
+  - uid: 2028
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -22.5,-30.5
+  - uid: 2029
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -24.5,-32.5
+  - uid: 2030
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -23.5,-32.5
+  - uid: 2031
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -22.5,-32.5
+  - uid: 2032
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -21.5,-32.5
+  - uid: 2033
+    components:
+    - type: Transform
+      parent: 1
+      rot: -1.5707963267948966 rad
+      pos: -20.5,-32.5
   - uid: 3033
     components:
     - type: Transform
@@ -2248,11 +2442,6 @@ entities:
       pos: -4.5,-30.5
 - proto: CEBone1
   entities:
-  - uid: 63
-    components:
-    - type: Transform
-      parent: 1
-      pos: -35.455406,-6.3213696
   - uid: 953
     components:
     - type: Transform
@@ -2726,11 +2915,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -37.90108,-1.4672087
-  - uid: 2004
-    components:
-    - type: Transform
-      parent: 1
-      pos: -36.31122,-6.466236
   - uid: 2005
     components:
     - type: Transform
@@ -4660,16 +4844,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -37.5,2.5
-  - uid: 802
-    components:
-    - type: Transform
-      parent: 1
-      pos: -30.5,3.5
-  - uid: 1031
-    components:
-    - type: Transform
-      parent: 1
-      pos: -39.5,-3.5
   - uid: 1537
     components:
     - type: Transform
@@ -4720,6 +4894,16 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: -16.5,-31.5
+  - uid: 897
+    components:
+    - type: Transform
+      parent: 1
+      pos: -39.5,-3.5
+  - uid: 930
+    components:
+    - type: Transform
+      parent: 1
+      pos: -35.5,0.5
   - uid: 1217
     components:
     - type: Transform
@@ -5039,11 +5223,6 @@ entities:
       parent: 1
       rot: 1.5707963267948966 rad
       pos: -1.5,4.5
-  - uid: 1482
-    components:
-    - type: Transform
-      parent: 1
-      pos: -30.5,2.5
   - uid: 1581
     components:
     - type: Transform
@@ -7701,16 +7880,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -38.5,-6.5
-  - uid: 1098
-    components:
-    - type: Transform
-      parent: 1
-      pos: -35.5,-6.5
-  - uid: 1125
-    components:
-    - type: Transform
-      parent: 1
-      pos: -36.5,-6.5
   - uid: 1427
     components:
     - type: Transform
@@ -8060,6 +8229,16 @@ entities:
       pos: -38.5,3.5
 - proto: CETradeTableHelsinWarHouse
   entities:
+  - uid: 149
+    components:
+    - type: Transform
+      parent: 1
+      pos: -35.5,-6.5
+  - uid: 802
+    components:
+    - type: Transform
+      parent: 1
+      pos: -36.5,-6.5
   - uid: 1764
     components:
     - type: Transform
@@ -8084,11 +8263,31 @@ entities:
       pos: -33.5,3.5
 - proto: CETradeTableHorticulture
   entities:
+  - uid: 55
+    components:
+    - type: Transform
+      parent: 1
+      pos: -30.5,3.5
+  - uid: 63
+    components:
+    - type: Transform
+      parent: 1
+      pos: -30.5,2.5
+  - uid: 894
+    components:
+    - type: Transform
+      parent: 1
+      pos: -31.5,2.5
   - uid: 898
     components:
     - type: Transform
       parent: 1
       pos: -32.5,3.5
+  - uid: 899
+    components:
+    - type: Transform
+      parent: 1
+      pos: -32.5,2.5
   - uid: 2007
     components:
     - type: Transform
@@ -8096,6 +8295,16 @@ entities:
       pos: -31.5,3.5
 - proto: CETradeTableImperialChancellery
   entities:
+  - uid: 933
+    components:
+    - type: Transform
+      parent: 1
+      pos: -31.5,1.5
+  - uid: 936
+    components:
+    - type: Transform
+      parent: 1
+      pos: -31.5,0.5
   - uid: 1602
     components:
     - type: Transform
@@ -8862,190 +9071,1873 @@ entities:
     - type: Transform
       parent: 1
       pos: -16.5,-15.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 118
     components:
     - type: Transform
       parent: 1
       rot: -1.5707963267948966 rad
       pos: -7.5,-17.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 170
     components:
     - type: Transform
       parent: 1
       pos: -6.5,-18.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 276
     components:
     - type: Transform
       parent: 1
       rot: 1.5707963267948966 rad
       pos: -39.5,-16.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 278
     components:
     - type: Transform
       parent: 1
       rot: -1.5707963267948966 rad
       pos: -34.5,-12.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 281
     components:
     - type: Transform
       parent: 1
       rot: -1.5707963267948966 rad
       pos: -30.5,-11.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 373
     components:
     - type: Transform
       parent: 1
       rot: 3.141592653589793 rad
       pos: -1.5,-10.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 375
     components:
     - type: Transform
       parent: 1
       rot: 3.141592653589793 rad
       pos: 0.5,-10.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 462
     components:
     - type: Transform
       parent: 1
       pos: -14.5,16.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 468
     components:
     - type: Transform
       parent: 1
       rot: 1.5707963267948966 rad
       pos: -6.5,-3.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 473
     components:
     - type: Transform
       parent: 1
       rot: 1.5707963267948966 rad
       pos: -6.5,2.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 501
     components:
     - type: Transform
       parent: 1
       rot: -1.5707963267948966 rad
       pos: -15.5,18.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 858
     components:
     - type: Transform
       parent: 1
       pos: -16.5,-1.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 911
     components:
     - type: Transform
       parent: 1
       rot: 1.5707963267948966 rad
       pos: -39.5,-8.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 1153
     components:
     - type: Transform
       parent: 1
       rot: 3.141592653589793 rad
       pos: -34.5,-16.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 1299
     components:
     - type: Transform
       parent: 1
       pos: -1.5,7.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 1500
     components:
     - type: Transform
       parent: 1
       pos: -2.5,-12.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 1501
     components:
     - type: Transform
       parent: 1
       rot: 1.5707963267948966 rad
       pos: -2.5,-17.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 1505
     components:
     - type: Transform
       parent: 1
       rot: 1.5707963267948966 rad
       pos: 5.5,-16.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 1506
     components:
     - type: Transform
       parent: 1
       rot: -1.5707963267948966 rad
       pos: 7.5,-16.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 1507
     components:
     - type: Transform
       parent: 1
       rot: 1.5707963267948966 rad
       pos: -5.5,-15.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 1513
     components:
     - type: Transform
       parent: 1
       rot: -1.5707963267948966 rad
       pos: 2.5,-17.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 1532
     components:
     - type: Transform
       parent: 1
       pos: -16.5,16.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 1582
     components:
     - type: Transform
       parent: 1
       pos: -10.5,-7.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 1623
     components:
     - type: Transform
       parent: 1
       rot: -1.5707963267948966 rad
       pos: 2.5,-14.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 1659
     components:
     - type: Transform
       parent: 1
       rot: 1.5707963267948966 rad
       pos: -2.5,-14.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 1741
     components:
     - type: Transform
       parent: 1
       rot: -1.5707963267948966 rad
       pos: -34.5,-10.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 1835
     components:
     - type: Transform
       parent: 1
       rot: 3.141592653589793 rad
       pos: -28.5,-16.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 1838
     components:
     - type: Transform
       parent: 1
       rot: 3.141592653589793 rad
       pos: -32.5,-16.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 1840
     components:
     - type: Transform
       parent: 1
       rot: 1.5707963267948966 rad
       pos: -26.5,-13.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 1842
     components:
     - type: Transform
       parent: 1
       rot: 1.5707963267948966 rad
       pos: -26.5,-16.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 1844
     components:
     - type: Transform
       parent: 1
       rot: 1.5707963267948966 rad
       pos: -32.5,-8.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
   - uid: 1852
     components:
     - type: Transform
       parent: 1
       pos: -30.5,-13.5
+    - type: Injurable
+      damageContainer: Inorganic
+    - type: Destructible
+      thresholds:
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 50
+        behaviors:
+        - !type:EmptyAllContainersBehaviour {}
+        - !type:SpawnEntitiesBehavior
+          spawnInContainer: False
+          spawn:
+            CEScrapIron1:
+              min: 1
+              max: 1
+          offset: 0.5
+          transferForensics: False
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
+      - triggersOnce: False
+        triggered: False
+        trigger: !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: Destruction
+        - !type:PlaySoundBehavior
+          sound: !type:SoundCollectionSpecifier
+            collection: GlassBreak
+            params:
+              volume: 0
+              variation: null
+              rolloffFactor: 1
+              referenceDistance: 1
+              playOffsetSeconds: 0
+              pitch: 1
+              maxDistance: 15
+              loop: False
 - proto: CEWallmountBarShelf
   entities:
   - uid: 1780

@@ -90,9 +90,7 @@
         - CESnowDeep
         - CESnowDeepDeep
       entities:
-        - CEFloraTreeDead
         - CEFloraTreeSnow
-        - CEFloraTreeDeadSmall
         #- CEFloraTreeGreenLarge
 
 # Hills

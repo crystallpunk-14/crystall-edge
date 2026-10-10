@@ -21,6 +21,7 @@
 
 - type: tradeOffer
   id: SellDiamond
+  weight: 3
   shop: Orders
   cost:
   - !type:StackResource

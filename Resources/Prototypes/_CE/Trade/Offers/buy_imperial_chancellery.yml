@@ -8,6 +8,16 @@
     proto: CEPenFeather
 
 - type: tradeOffer
+  id: CETradeOfferCEBookAncient
+  weight: 2
+  shop: ImperialChancellery
+  pay:
+    bonus: 30
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEBookAncient
+
+- type: tradeOffer
   id: CETradeOfferPaper
   shop: ImperialChancellery
   pay:

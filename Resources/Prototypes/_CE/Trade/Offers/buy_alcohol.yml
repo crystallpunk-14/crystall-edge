@@ -69,3 +69,12 @@
   reward:
   - !type:CETradeSpawnReward
     proto: CEGroundTobacco
+
+- type: tradeOffer
+  id: CETradeOfferFlippoLighter #TODO delete vanilla lighter
+  shop: Alcohol
+  pay:
+    bonus: 40
+  reward:
+  - !type:CETradeSpawnReward
+    proto: FlippoLighter

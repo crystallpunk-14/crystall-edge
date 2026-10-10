@@ -40,12 +40,9 @@
 - type: entityEffectAnimation
   id: AnimationManaSteal
   movementSpeed: 0.6
-  duration: 0.5
+  duration: 0.3
   events:
     0:
-    - !type:SpawnEntity
-      spawns:
-      - CEEffectManaDrain
     - !type:ChangeMana
       amount: -20
     - !type:SpawnMagicTrace
@@ -54,11 +51,11 @@
         state: icon
       description: ce-magic-trace-mana-steal
       duration: 1200 # 20 mana stolen x 60s, same rate as mana-costing spells
-    0.45:
+    0.25:
     - !type:SpawnEntity
-      effectTarget: User
+      effectTarget: Target
       spawns:
-      - CEEffectManaRestoreGeneric
+      - CEEffectManaDrain
     - !type:ChangeMana
       effectTarget: User
       amount: 20

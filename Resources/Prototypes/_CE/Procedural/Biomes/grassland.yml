@@ -146,9 +146,6 @@
         - CEGrassLight
         - CEGrassTall
       entities:
-        - CEFloraTreeBirchLarge
-        - CEFloraTreeBirchSmall
-        - CEFloraTreeBirchMedium
         - CEFloraTreeSpruce
         - CEFloraTreeSpruce
         - CEFloraTreeSpruce
@@ -158,8 +155,6 @@
         - CEFloraTreeGreen
         - CEFloraTreeGreen
         - CEFloraTreeGreenLarge
-        - CEFloraTreeDead
-        - CEFloraTreeDeadSmall
     - !type:BiomeEntityLayer # More Rocks
       threshold: 0.7
       noise:
@@ -209,9 +204,6 @@
         - CEGrassLight
         - CEGrassTall
       entities:
-        - CEFloraTreeBirchLarge
-        - CEFloraTreeBirchSmall
-        - CEFloraTreeBirchMedium
         - CEFloraTreeSpruce
         - CEFloraTreeSpruce
         - CEFloraTreeSpruce
@@ -220,8 +212,6 @@
         - CEFloraTreeGreen
         - CEFloraTreeGreen
         - CEFloraTreeGreenLarge
-        - CEFloraTreeDead
-        - CEFloraTreeDeadSmall
 
 # Hills
 
