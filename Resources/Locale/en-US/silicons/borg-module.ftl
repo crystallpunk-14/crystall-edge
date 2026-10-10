@@ -10,9 +10,3 @@ borg-type-service = [color= #508242]service cyborgs[/color]
 
 borg-type-syndicate = [color= #962023]syndicate cyborgs[/color]
 borg-type-syndicate-assault = [color= #680a0d]syndicate assault cyborgs[/color]
-
-xenoborg-type-all = [color= #3d94ff]any xenoborg[/color]
-xenoborg-type-engi = [color= #edd45b]engi xenoborgs[/color]
-xenoborg-type-heavy = [color= #d62020]heavy xenoborgs[/color]
-xenoborg-type-scout = [color= #6a6b6f]scout xenoborgs[/color]
-xenoborg-type-stealth = [color= #ff00cc]stealth xenoborgs[/color]

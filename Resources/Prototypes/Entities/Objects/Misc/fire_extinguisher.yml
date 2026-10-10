@@ -160,9 +160,8 @@
       - ReagentId: Water
         Quantity: 60
 
-# used for a engi xenoborg module
 - type: entity
-  parent: [ FireExtinguisher, BaseXenoborgContraband ]
+  parent: [ FireExtinguisher ]
   id: SelfRechargingFireExtinguisher
   name: self-recharging fire extinguisher
   description: It extinguishes fires. it slowly refills with water.

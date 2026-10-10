@@ -188,21 +188,3 @@
         Quantity: 15
   - type: Tag
     tags: *TagVial
-
-- type: entity
-  parent: ChemistryEmptyAmpoule
-  id: XenoborgOilChemistryAmpoule
-  suffix: xenoborg oil
-  components:
-  - type: Label
-    localizedLabel: reagent-name-xenoborg-oil
-  - type: ThrowingAngle
-    angle: 90
-    angularVelocity: true
-  - type: Solution
-    solution:
-      reagents:
-        - ReagentId: XenoborgOil
-          Quantity: 30
-  - type: Tag
-    tags: *TagVial

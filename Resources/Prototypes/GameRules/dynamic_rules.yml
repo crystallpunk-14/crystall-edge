@@ -27,11 +27,6 @@
           - !type:MaxRuleOccurenceCondition
           - !type:PlayerCountCondition
             min: 20
-        - id: Revolutionary
-          weight: 5
-          conditions:
-          - !type:HasBudgetCondition
-          - !type:MaxRuleOccurenceCondition
         - id: Wizard
           weight: 5
           conditions:
@@ -47,11 +42,6 @@
         children:
         - id: Thief
           prob: 0.5
-          conditions:
-          - !type:HasBudgetCondition
-          - !type:MaxRuleOccurenceCondition
-        - id: Changeling
-          prob: 0.25
           conditions:
           - !type:HasBudgetCondition
           - !type:MaxRuleOccurenceCondition

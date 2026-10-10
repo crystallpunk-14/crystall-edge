@@ -79,16 +79,6 @@
     state: banner_medical
 
 - type: entity
-  id: BannerRevolution
-  parent: BannerBase
-  name: revolution banner
-  description: A banner displaying revolution. Viva!
-  components:
-  - type: Sprite
-    sprite: Structures/Decoration/banner.rsi
-    state: banner_revolution
-
-- type: entity
   id: BannerSyndicate
   parent: BannerBase
   name: syndicate banner

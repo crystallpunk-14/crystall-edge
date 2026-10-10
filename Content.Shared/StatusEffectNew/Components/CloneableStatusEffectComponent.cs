@@ -4,7 +4,7 @@ namespace Content.Shared.StatusEffectNew.Components;
 
 /// <summary>
 /// A simple marker component for a <see cref="StatusEffectComponent"/> which allows this status effect to be cloned
-/// by the CloningSystem (for example for paradox clones, cloning pods or changeling transformations).
+/// by the CloningSystem (for example for paradox clones or cloning pods).
 /// This is used for traits that use permanent status effects.
 /// </summary>
 [RegisterComponent, NetworkedComponent]

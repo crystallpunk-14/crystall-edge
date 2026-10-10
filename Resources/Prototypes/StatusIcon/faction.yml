@@ -1,28 +1,4 @@
 - type: factionIcon
-  id: RevolutionaryFaction
-  isShaded: true
-  priority: 11
-  showTo:
-    components:
-      - ShowAntagIcons
-      - Revolutionary
-  icon:
-    sprite: /Textures/Interface/Misc/job_icons.rsi
-    state: Revolutionary
-
-- type: factionIcon
-  id: HeadRevolutionaryFaction
-  isShaded: true
-  priority: 11
-  showTo:
-    components:
-      - ShowAntagIcons
-      - Revolutionary
-  icon:
-    sprite: /Textures/Interface/Misc/job_icons.rsi
-    state: HeadRevolutionary
-
-- type: factionIcon
   id: SyndicateFaction
   priority: 0
   locationPreference: Left

@@ -2,7 +2,6 @@ using Content.Server.Objectives.Components;
 using Content.Shared.Mind;
 using Content.Shared.Objectives.Components;
 using Content.Server.GameTicking.Rules;
-using Content.Server.Revolutionary.Components;
 using Robust.Shared.Random;
 using System.Linq;
 

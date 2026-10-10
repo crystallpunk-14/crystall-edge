@@ -300,9 +300,6 @@
   id: FloorTechMaint
   target: FloorTechMaint2
 
-- type: tileAlias
-  id: FloorXenoborg
-  target: FloorExoBorg
 
 - type: tileAlias
   id: FloorXeno

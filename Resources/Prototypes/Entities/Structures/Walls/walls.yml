@@ -808,33 +808,6 @@
     node: reinforcedWallChitin
 
 - type: entity
-  parent: WallPlastitanium
-  id: WallXenoborg
-  name: mechadermis wall
-  components:
-  - type: Sprite
-    sprite: Structures/Walls/exo-borg.rsi
-  - type: Icon
-    sprite: Structures/Walls/exo-borg.rsi
-  - type: IconSmooth
-    key: walls
-    base: xenoborg
-
-- type: entity
-  parent: WallPlastitaniumDiagonal
-  id: WallXenoborgDiagonal
-  name: mechadermis wall
-  suffix: diagonal
-  components:
-  - type: Sprite
-    drawdepth: Walls
-    sprite: Structures/Walls/exo-borg-diagonal.rsi
-    state: state0
-  - type: Icon
-    sprite: Structures/Walls/exo-borg-diagonal.rsi
-    state: state0
-
-- type: entity
   parent: [ BaseWall, StructureHealthWallWeak ]
   id: WallUranium
   name: uranium wall
