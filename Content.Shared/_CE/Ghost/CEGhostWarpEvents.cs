@@ -58,7 +58,7 @@ public struct CEGhostWarp
 
     /// <summary>
     /// The target's secret role, if any. Null for warp points and players without one.
-    /// Shown to every ghost - see CEGhostWarpSystem for the reveal-to-others lookup.
+    /// Only sent to ghosts that can see meta information - see CEGhostMetaSystem.
     /// </summary>
     public ProtoId<CESecretRolePrototype>? SecretRole { get; }
 }
@@ -69,13 +69,19 @@ public struct CEGhostWarp
 [Serializable, NetSerializable]
 public sealed class CEGhostWarpsResponseEvent : EntityEventArgs
 {
-    public CEGhostWarpsResponseEvent(List<CEGhostWarp> warps)
+    public CEGhostWarpsResponseEvent(List<CEGhostWarp> warps, bool canSeeMeta)
     {
         Warps = warps;
+        CanSeeMeta = canSeeMeta;
     }
 
     /// <summary>
     /// A list of warp points.
     /// </summary>
     public List<CEGhostWarp> Warps { get; }
+
+    /// <summary>
+    /// Whether the requesting ghost may see meta information, such as other players' dossiers.
+    /// </summary>
+    public bool CanSeeMeta { get; }
 }

@@ -30,7 +30,7 @@ ce-secret-role-name-bounty-hunter = Охотник за головами
 ce-secret-role-description-bounty-hunter = Вы получили крупную сумму денег и заказ уничтожить преступную группировку «Братство» в этом городе. Выполняйте свою работу.
 
 ce-secret-role-name-priest = Жрец
-ce-secret-role-description-priest = Свет избрал вас своим проводником. Вы лечите и оберегаете, но именно за это кое-кто в городе жаждет вашей крови.
+ce-secret-role-description-priest = Свет избрал вас своим проводником. Вы лечите живых и возвращаете мёртвых, но именно за это кое-кто в городе жаждет вашей крови.
 
 ce-secret-role-name-immortal = Бессмертный
 ce-secret-role-description-immortal = Вас невероятно тяжело убить. Можно сказать, почти невозможно.

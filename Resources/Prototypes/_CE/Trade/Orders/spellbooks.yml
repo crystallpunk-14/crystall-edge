@@ -8,15 +8,6 @@
     bonus: 10
 
 - type: tradeOffer
-  id: SellSpellbookCureWounds
-  shop: Orders
-  cost:
-  - !type:SkillBookResource
-    skill: CureWounds
-  receive:
-    bonus: 10
-
-- type: tradeOffer
   id: SellSpellbookFeatherFall
   shop: Orders
   cost:

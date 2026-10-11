@@ -1,7 +1,6 @@
 
 - type: skill
   id: CureWounds
-  parent: SpellcastingSkillBase
   icon:
     sprite: _CE/Actions/Spells/cure_wounds.rsi
     state: icon
@@ -66,5 +65,9 @@
     - !type:HealEvenly
       groups:
         Brute: 15
+        Burn: 15
+        Airloss: 15
+        Toxin: 15
+        Genetic: 15
     - !type:SayChat
       sentence: "vulnera tua"

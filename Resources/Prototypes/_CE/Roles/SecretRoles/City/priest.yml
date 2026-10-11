@@ -5,7 +5,7 @@
   icon: CESecretRoleIconPriest
   skills:
   - CureWounds
-  - CEDivineShield
+  - CEResurrection
   objectives: !type:EntSelector
     id: CEObjectivePriestSurvive
 
