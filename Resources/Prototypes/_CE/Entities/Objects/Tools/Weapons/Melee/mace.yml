@@ -94,8 +94,6 @@
         projectileSpeed: 10
   - type: CEToggledWeaponAnimation
     animations:
-      Primary:
-      - anim: CEGuardMaceChargedShot
       Secondary:
       - anim: CEGuardMaceChargedShot
   - type: Battery
