@@ -516,7 +516,7 @@ AirlockServiceCaptainLocked: AirlockCaptainLocked
 #2024-06-05
 DisasterVictimSpawner: CommandVisitorSpawner
 LostCargoTechnicianSpawner: VisitorCargoTechnicianSpawner
-ClownTroupeSpawner: VisitorClownSpawner
+ClownTroupeSpawner: null
 TravelingChefSpawner: VisitorChefSpawner
 SyndieDisasterVictimSpawner: SyndieVisitorSpawner
 
@@ -707,8 +707,8 @@ BorgModuleRadiationDetection: null
 BorgModuleGPS: null
 BorgModuleLightReplacer: BorgModuleCustodial
 BorgModuleAdvancedTreatment: null
-ClothingMaskSexyClown: ClothingMaskBlushingClown
-ClothingMaskSexyMime: ClothingMaskBlushingMime
+ClothingMaskSexyClown: null
+ClothingMaskSexyMime: null
 
 # 2025-01-27
 FoodCondimentPacketFrostoil: FoodCondimentPacketColdsauce
@@ -812,7 +812,7 @@ WeaponEnergyTurretStationControlPanel: WeaponEnergyTurretSecurityControlPanel
 WeaponEnergyTurretStationMachineCircuitboard: WeaponEnergyTurretSecurityMachineCircuitboard
 
 # 2025-05-30
-SpawnHonkBot: SpawnMobHonkBot
+SpawnHonkBot: null
 
 # 2025-06-01
 CrateFoodPizzaLarge: CrateFoodPizza
@@ -1286,7 +1286,7 @@ MeteorRockGold: AsteroidRockGold
 MeteorRockPlasma: AsteroidRockPlasma
 MeteorRockDiamond: AsteroidRockDiamond
 MeteorRockUranium: AsteroidRockUranium
-StatueBananiumClown: StatueOrnateClown
+StatueBananiumClown: null
 
 #2026-08-18
 DrinkNeurotoxinGlass: null
