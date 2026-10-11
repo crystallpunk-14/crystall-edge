@@ -92,21 +92,6 @@
   result: RipleyPeripheralsElectronics
 
 - type: latheRecipe
-  parent: [ BaseGoldCircuitboardRecipe, BaseMechRecipeCategory ]
-  id: HonkerCentralElectronics
-  result: HonkerCentralElectronics
-
-- type: latheRecipe
-  parent: HonkerCentralElectronics
-  id: HonkerPeripheralsElectronics
-  result: HonkerPeripheralsElectronics
-
-- type: latheRecipe
-  parent: HonkerCentralElectronics
-  id: HonkerTargetingElectronics
-  result: HonkerTargetingElectronics
-
-- type: latheRecipe
   parent: [ BaseGoldCircuitboardRecipe, BaseMechRecipeCategory]
   id: HamtrCentralElectronics
   result: HamtrCentralElectronics

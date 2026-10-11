@@ -327,16 +327,6 @@
       settings: VisitorChef
 
 - type: entity
-  id: RandomHumanoidVisitorClown
-  name: visiting clown ghost role
-  components:
-    - type: Sprite
-      sprite: Markers/jobs.rsi
-      state: clown
-    - type: RandomHumanoidSpawner
-      settings: VisitorClown
-
-- type: entity
   id: RandomHumanoidVisitorJanitor
   name: visiting janitor ghost role
   components:
@@ -407,16 +397,6 @@
       settings: VisitorMusicianRelaxed
 
 - type: entity
-  id: RandomHumanoidVisitorMime
-  name: visiting mime ghost role
-  components:
-    - type: Sprite
-      sprite: Markers/jobs.rsi
-      state: mime
-    - type: RandomHumanoidSpawner
-      settings: VisitorMime
-
-- type: entity
   id: RandomHumanoidVisitorReporter
   name: visiting reporter ghost role
   components:
@@ -445,16 +425,6 @@
       state: zookeeper
     - type: RandomHumanoidSpawner
       settings: VisitorZookeeper
-
-# Misc
-
-- type: entity
-  id: RandomHumanoidClownTroupeBanana
-  name: banana clown troupe
-  parent: RandomHumanoidVisitorClown
-  components:
-    - type: RandomHumanoidSpawner
-      settings: ClownTroupeBanana
 
 ### Visitors missing equipment for challenges
 

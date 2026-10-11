@@ -81,20 +81,6 @@
     exitPolymorphSound: !type:SoundPathSpecifier
       path: /Audio/Magic/forcewall.ogg
 
-- type: polymorph
-  id: WizardForcedCluwne
-  configuration:
-    entity: MobCluwne
-    forced: true
-    transferName: true
-    transferHumanoidAppearance: true
-    inventory: Transfer
-    revertOnDeath: true
-    polymorphSound: !type:SoundPathSpecifier
-      path: /Audio/Magic/forcewall.ogg
-    exitPolymorphSound: !type:SoundPathSpecifier
-      path: /Audio/Magic/forcewall.ogg
-
 # this is a test for transferring some visual appearance stuff
 - type: polymorph
   id: TestHumanMorph

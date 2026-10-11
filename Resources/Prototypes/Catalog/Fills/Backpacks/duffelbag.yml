@@ -158,24 +158,6 @@
           amount: 2
 
 - type: entity
-  parent: ClothingBackpackDuffelClown
-  id: ClothingBackpackDuffelSyndicateCostumeClown
-  suffix: syndicate
-  components:
-  - type: Tag
-    tags: [] # ignore "WhitelistChameleon" tag
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: ClothingUniformJumpsuitClown
-        - id: ClothingShoesClown
-        - id: ClothingMaskClown
-        - id: BikeHorn
-        - id: ClownPDA
-        - id: ClothingHeadsetService
-
-- type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
   id: ClothingBackpackDuffelSyndicateCarpSuit
   name: carp suit duffel bag

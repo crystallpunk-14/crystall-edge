@@ -145,7 +145,6 @@
     name: seeds-banana-name
     packetPrototype: BananaSeeds
     productPrototypes: [ FoodBanana ]
-    mutationPrototypes: [ MimanaPlants ]
   - type: Plant
     lifespan: 50
     maturation: 6
@@ -164,40 +163,6 @@
         min: 1
         max: 4
         potencyDivisor: 25
-      Nutriment:
-        min: 1
-        max: 2
-        potencyDivisor: 50
-
-- type: entity
-  parent: BasePlant
-  id: MimanaPlants
-  name: mimana plant
-  components:
-  - type: Sprite
-    sprite: Objects/Specific/Hydroponics/mimana.rsi
-  - type: PlantData
-    name: seeds-mimana-name
-    packetPrototype: MimanaSeeds
-    productPrototypes: [ FoodMimana ]
-  - type: Plant
-    lifespan: 50
-    maturation: 6
-    production: 6
-    yield: 2
-  - type: PlantHarvest
-    harvestRepeat: Repeat
-  - type: PlantGrowth
-    waterConsumption: 0.6
-  - type: PlantAtmospheric
-    lowHeatTolerance: 278 # 5°C
-    highHeatTolerance: 298 # 25°C
-  - type: PlantChemicals
-    chemicals:
-      MuteToxin:
-        min: 1
-        max: 5
-        potencyDivisor: 20
       Nutriment:
         min: 1
         max: 2

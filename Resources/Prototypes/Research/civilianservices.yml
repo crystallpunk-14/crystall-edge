@@ -151,26 +151,6 @@
   - TrashBagHolding
 
 - type: technology
-  id: HONKMech
-  name: research-technology-honk-mech
-  icon:
-    sprite: Objects/Specific/Mech/mecha.rsi
-    state: honker
-  discipline: CivilianServices
-  tier: 2
-  cost: 7500
-  recipeUnlocks:
-  - HonkerHarness
-  - HonkerLArm
-  - HonkerRArm
-  - HonkerLLeg
-  - HonkerRLeg
-  - HonkerCentralElectronics
-  - HonkerPeripheralsElectronics
-  - HonkerTargetingElectronics
-  - MechEquipmentHorn
-
-- type: technology
   id: AdvancedSpray
   name: research-technology-advanced-spray
   icon:
@@ -206,7 +186,6 @@
   cost: 4000
   recipeUnlocks:
   - PushHorn
-  - BorgModuleAdvancedClowning
 
 # Tier 3
 

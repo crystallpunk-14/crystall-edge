@@ -257,20 +257,6 @@
 
 - type: entity
   parent: ProjectilePolyboltBase
-  id: ProjectilePolyboltCluwne
-  categories: [ HideSpawnMenu ]
-  name: cluwne polybolt
-  description: KnoH KnoH!
-  components:
-  - type: PolymorphOnTrigger
-    polymorph: WizardForcedCluwne
-  - type: WhitelistTriggerCondition
-    userWhitelist:
-      components:
-      - MobState
-
-- type: entity
-  parent: ProjectilePolyboltBase
   id: ProjectilePolyboltBread
   categories: [ HideSpawnMenu ]
   name: bread polybolt

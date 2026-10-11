@@ -60,8 +60,6 @@
             CargoTechnician: [ 2, 2 ]
             #civilian 2-3 + overflow
             Passenger: [ -1, -1 ]
-            Clown: [ 1, 1 ]
-            Mime: [ 1, 1 ]
             Musician: [ 1, 1 ]
             #silicon 3
             StationAi: [ 1, 1 ]

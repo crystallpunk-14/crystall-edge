@@ -56,58 +56,6 @@
     sprite: Clothing/Uniforms/Jumpsuits/Service/chef.rsi
 
 - type: entity
-  parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitClown
-  name: clown suit
-  description: HONK!
-  components:
-  - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Service/clown.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Service/clown.rsi
-  - type: Tag
-    tags:
-    - ClownSuit
-    - WhitelistChameleon
-
-- type: entity
-  parent: ClothingUniformJumpsuitClown
-  id: ClothingUniformJumpsuitClownBanana
-  name: banana clown suit
-  components:
-  - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Service/clown_banana.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Service/clown_banana.rsi
-  - type: Construction
-    graph: BananaClownJumpsuit
-    node: jumpsuit
-  - type: Armor
-    modifiers:
-      coefficients:
-        Radiation: 0.8
-
-- type: entity
-  parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitJester
-  name: jester suit
-  description: A jolly dress, well suited to entertain your master, nuncle.
-  components:
-  - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Service/jester.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Service/jester.rsi
-
-- type: entity
-  parent: ClothingUniformJumpsuitJester
-  id: ClothingUniformJumpsuitJesterAlt
-  components:
-  - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Service/jester2.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Service/jester2.rsi
-
-- type: entity
   parent: [ClothingUniformBase, ClothingUniformFoldableBase]
   id: ClothingUniformJumpsuitHydroponics
   name: hydroponics jumpsuit
@@ -124,17 +72,6 @@
   components:
   - type: Sprite
     sprite: Clothing/Uniforms/Jumpsuits/Service/janitor.rsi
-
-- type: entity
-  parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitMime
-  name: mime suit
-  description: ...
-  components:
-  - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Service/mime.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Service/mime.rsi
 
 - type: entity
   parent: ClothingUniformBase
@@ -246,18 +183,6 @@
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuits/Service/musician.rsi
 
-- type: entity
-  parent: ClothingUniformJumpsuitClown
-  id: ClothingUniformJumpsuitCluwne
-  name: cluwne suit
-  suffix: Unremoveable
-  description: Cursed cluwne suit.
-  components:
-  - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Service/cluwne.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Service/cluwne.rsi
-  - type: Unremoveable
 
 - type: entity
   parent: ClothingUniformBase

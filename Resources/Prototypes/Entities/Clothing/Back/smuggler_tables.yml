@@ -7,8 +7,6 @@
       weight: 85
     - id: BriefcaseSmugglerCash
       weight: 10
-    - id: ClothingBackpackDuffelClownSmuggler
-      weight: 5
 
 #Table
 - type: entityTable
@@ -319,7 +317,6 @@
       weight: 10
     - id: FoodBurgerAppendix
     - id: FoodBurgerEmpowered
-    - id: FoodBurgerClown
     - id: FoodBurgerGhost
 
 - type: entityTable #1x small
@@ -394,11 +391,6 @@
     - !type:GroupSelector
       children:
       - id: MaterialDiamond1
-    - !type:GroupSelector
-      children:
-      - id: MaterialBananium1
-        weight: 2
-      - id: MaterialBananium
     - !type:GroupSelector
       children:
       - id: IngotGold1

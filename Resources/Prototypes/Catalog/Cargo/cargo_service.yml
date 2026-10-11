@@ -41,7 +41,7 @@
 - type: cargoProduct
   id: ServiceTheatre
   icon:
-    sprite: Clothing/Mask/mime.rsi
+    sprite: Clothing/Head/Hats/magician.rsi
     state: icon
   product: CrateServiceTheatre
   cost: 1800

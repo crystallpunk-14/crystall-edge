@@ -146,9 +146,6 @@ ghost-role-information-space-dragon-summoned-carp-rules = You are a [color={role
 ghost-role-information-space-dragon-dungeon-description = Defend the expedition dungeon with your fishy comrades!
 ghost-role-information-space-dragon-dungeon-rules = You are a [color={role-type-team-antagonist-color}][bold]{role-type-team-antagonist-name}[/bold][/color] with all dungeon mobs.
 
-ghost-role-information-cluwne-name = Cluwne
-ghost-role-information-cluwne-description = Become a pitiful cluwne, your only goal in life is to find a sweet release from your suffering (usually by being beaten to death). A cluwne is not an antagonist but may defend itself. Crewmembers may murder cluwnes freely.
-
 ghost-role-information-skeleton-pirate-name = Skeleton Pirate
 ghost-role-information-skeleton-pirate-description = Cause chaos and loot the station for treasure.
 

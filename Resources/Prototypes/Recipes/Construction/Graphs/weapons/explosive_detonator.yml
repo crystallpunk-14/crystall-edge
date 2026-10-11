@@ -6,7 +6,7 @@
     edges:
     - to: emptyDetonator
       steps:
-      - material: Bananium
+      - material: Plasma
         amount: 1
         doAfter: 1
   

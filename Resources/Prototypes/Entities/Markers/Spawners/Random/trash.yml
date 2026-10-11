@@ -37,9 +37,6 @@
       weight: 3
     - id: TrashBakedBananaPeel
       weight: 2
-    - id: TrashMimanaPeel
-    - id: TrashBananiumPeel
-      weight: 0.5
     - id: TrashBananaPeelExplosive
       weight: 0.001 # 1 in 6,500
 

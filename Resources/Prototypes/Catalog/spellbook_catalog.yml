@@ -40,19 +40,6 @@
     stock: 1
 
 - type: listing
-  id: SpellbookCluwne
-  name: spellbook-cluwne-name
-  description: spellbook-cluwne-desc
-  productAction: ActionCluwne
-  cost:
-    WizCoin: 3
-  categories:
-  - SpellbookOffensive
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 1
-
-- type: listing
   id: SpellbookSlip
   name: spellbook-slip-name
   description: spellbook-slip-desc

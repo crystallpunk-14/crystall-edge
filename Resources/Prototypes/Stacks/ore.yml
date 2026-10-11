@@ -51,13 +51,6 @@
 
 - type: stack
   parent: BaseMediumStack
-  id: BananiumOre
-  name: stack-bananium-ore
-  icon: { sprite: /Textures/Objects/Materials/ore.rsi, state: bananium }
-  spawn: BananiumOre1
-
-- type: stack
-  parent: BaseMediumStack
   id: Coal
   name: stack-coal
   icon: { sprite: /Textures/Objects/Materials/ore.rsi, state: coal }

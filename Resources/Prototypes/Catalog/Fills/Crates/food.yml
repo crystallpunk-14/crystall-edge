@@ -94,10 +94,6 @@
           amount: 3
         - id: FoodFrozenSnowconeRainbow
           amount: 3
-        - id: FoodFrozenSnowconeClown
-          amount: 2
-        - id: FoodFrozenSnowconeMime
-          amount: 2
 
 - type: entity
   parent: CratePlastic

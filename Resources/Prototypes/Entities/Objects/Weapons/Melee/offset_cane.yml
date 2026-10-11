@@ -39,30 +39,6 @@
 
 - type: entity
   parent: OffsetCane
-  id: OffsetCaneClown
-  name: rainbow offset cane
-  description: A rainbow offset cane, perfect for clowns and those who enjoy a splash of color in their lives.
-  components:
-  - type: Sprite
-    sprite: Objects/Weapons/Melee/offset_canes/clown.rsi
-    state: icon
-  - type: Item
-    sprite: Objects/Weapons/Melee/offset_canes/clown.rsi
-
-- type: entity
-  parent: OffsetCane
-  id: OffsetCaneMime
-  name: striped offset cane
-  description: A black and white striped cane, perfect for silent performances.
-  components:
-  - type: Sprite
-    sprite: Objects/Weapons/Melee/offset_canes/mime.rsi
-    state: icon
-  - type: Item
-    sprite: Objects/Weapons/Melee/offset_canes/mime.rsi
-
-- type: entity
-  parent: OffsetCane
   id: OffsetCaneNT
   name: nanotrasen offset cane
   description: A nanotrasen standard issue offset cane with the NT logo, favored by those who prefer a more corporate look.

@@ -53,17 +53,3 @@
   - type: ConditionalSpawner
     prototypes:
     - MobSupplyBot
-
-- type: entity
-  parent: MarkerBase
-  id: SpawnMobHonkBot
-  name: honkbot spawner
-  components:
-  - type: Sprite
-    layers:
-    - state: green
-    - sprite: Mobs/Silicon/Bots/honkbot.rsi
-      state: honkbot
-  - type: ConditionalSpawner
-    prototypes:
-    - MobHonkBot

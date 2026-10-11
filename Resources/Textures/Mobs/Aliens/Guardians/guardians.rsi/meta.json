@@ -28,36 +28,6 @@
             "directions": 4
         },
         {
-            "name": "holoclown",
-            "directions": 4
-        },
-        {
-            "name": "holoclown_base",
-            "directions": 4
-        },
-        {
-            "name": "holoclown_flare",
-            "directions": 4,
-            "delays": [
-                [
-                    0.1,
-                    0.1
-                ],
-                [
-                    0.1,
-                    0.1
-                ],
-                [
-                    0.1,
-                    0.1
-                ],
-                [
-                    0.1,
-                    0.1
-                ]
-            ]
-        },
-        {
             "name": "miner_flare",
             "directions": 4
         },

@@ -18,7 +18,6 @@
     - id: SlimesSpawnHorde
     - id: SolarFlare
     - id: SnakeSpawnHorde
-    - id: SpiderClownSpawnHorde
     - id: SpiderSpawnHorde
     - id: VentClog
 
@@ -428,25 +427,6 @@
       rolls: 4, 8
       children:
       - id: MobGiantSpiderAngry
-
-- type: entity
-  id: SpiderClownSpawnHorde
-  parent: BaseStationEventShortDelay
-  components:
-  - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-start-horde-announcement
-    startAudio:
-      path: /Audio/Announcements/attention.ogg
-    earliestStart: 20
-    minimumPlayers: 20
-    weight: 1.5
-    duration: 5
-    maxDuration: 20
-  - type: VentHordeRule
-    table: !type:GroupSelector
-      rolls: 4, 8
-      children:
-      - id: MobClownSpider
 
 - type: entity
   parent: [ BaseAntagGhostRoleRule, BaseNukeopsRule ]

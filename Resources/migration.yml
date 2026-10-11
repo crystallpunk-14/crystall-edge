@@ -1647,5 +1647,43 @@ SpawnPointGhostRoleMothershipCore: null
 SpawnPointGhostRoleXenoborg: null
 DoorElectronicsXenoborg: null
 
+# 2026-10-11
+# Clown, Mime, Bananium and Cluwne content removed
+SpawnPointClown: null
+SpawnPointMime: null
+MobHonkBot: null
+MobJonkBot: null
+MobMimeBot: null
+MobClownSpider: null
+MobBananiumCrab: null
+MobCluwne: null
+MobHoloClownGuardian: null
+SpawnClownSpider: null
+SpawnMechHonker: null
+SpawnMobHonkBot: null
+RandomHumanoidSpawnerCluwne: null
+BananiumOre: null
+BananiumOre1: null
+AltarBananium: null
+StatueOrnateClown: null
+MechHonker: null
+MechHonkerBattery: null
+WeaponWandCluwne: null
+ProjectilePolyboltCluwne: null
+TrashBananiumPeel: null
+TrashMimanaPeel: null
+SpiderWebClown: null
+ClownRecorder: null
+CluwneHorn: null
+BananiumHorn: null
+ClothingBackpackCluwne: null
+FoodBreadMimana: null
+FoodBreadMimanaSlice: null
+FoodTartMime: null
+FoodTartMimeSlice: null
+ImmovableRodClown: null
+BibleHonk: null
+Foolbox: null
+
 # P.s. Dont paste CrystallEdge migrations here, we have dedicated CE block in start of this file
 

@@ -259,16 +259,6 @@
     clothingPrototype: ClothingHeadHatHoodWinterCMO
 
 - type: entity
-  parent: ClothingOuterWinterCoat
-  id: ClothingOuterWinterClown
-  name: clown winter coat
-  components:
-  - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coatclown.rsi
-  - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coatclown.rsi
-
-- type: entity
   parent: ClothingOuterWinterCoatToggleable
   id: ClothingOuterWinterEngi
   name: engineering winter coat
@@ -471,29 +461,6 @@
     priceMultiplier: 0.15
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterMed
-
-- type: entity
-  parent: ClothingOuterWinterCoatToggleable
-  id: ClothingOuterWinterMime
-  name: mime winter coat
-  components:
-  - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
-    layers:
-    - state: MIME-icon
-  - type: Item
-    inhandVisuals:
-      left:
-      - state: MIME-inhand-left
-      right:
-      - state: MIME-inhand-right
-  - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
-    clothingVisuals:
-      outerClothing:
-      - state: MIME-equipped-OUTERCLOTHING
-  - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHatHoodWinterMime
 
 - type: entity
   parent: ClothingOuterWinterCoatToggleable

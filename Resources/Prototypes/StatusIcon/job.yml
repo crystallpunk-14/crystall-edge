@@ -335,22 +335,6 @@
 
 - type: jobIcon
   parent: JobIcon
-  id: JobIconClown # :o)
-  icon:
-    sprite: *icon-rsi
-    state: Clown
-  jobName: job-name-clown
-
-- type: jobIcon
-  parent: JobIcon
-  id: JobIconMime
-  icon:
-    sprite: *icon-rsi
-    state: Mime
-  jobName: job-name-mime
-
-- type: jobIcon
-  parent: JobIcon
   id: JobIconMusician
   icon:
     sprite: *icon-rsi
@@ -396,15 +380,6 @@
   isCrewJob: false
 
 # Bad guys
-
-- type: jobIcon
-  parent: JobIcon
-  id: JobIconCluwne # >:o(
-  icon:
-    sprite: *icon-rsi
-    state: Cluwne
-  jobName: job-name-cluwne
-  isCrewJob: false
 
 - type: jobIcon
   parent: JobIcon
