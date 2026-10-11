@@ -30,7 +30,7 @@ ce-secret-role-name-bounty-hunter = Bounty Hunter
 ce-secret-role-description-bounty-hunter = You've been paid a large sum of money and hired to wipe out the criminal gang known as the Brotherhood in this city. Do your job.
 
 ce-secret-role-name-priest = Priest
-ce-secret-role-description-priest = The light has chosen you as its vessel. You heal and protect, and that is exactly why someone in this city thirsts for your blood.
+ce-secret-role-description-priest = The light has chosen you as its vessel. You heal the living and return the dead, and that is exactly why someone in this city thirsts for your blood.
 
 ce-secret-role-name-immortal = Immortal
 ce-secret-role-description-immortal = You are incredibly hard to kill. One might even say almost impossible.

@@ -1,5 +1,5 @@
+using Content.Shared._CE.Ghost;
 using Content.Shared.Examine;
-using Content.Shared.Ghost.Components;
 using Content.Shared.Mind;
 using Content.Shared.Roles;
 using Content.Shared.StatusIcon;
@@ -17,6 +17,7 @@ public sealed partial class CESecretRoleIconSystem : EntitySystem
     [Dependency] private ISharedPlayerManager _player = default!;
     [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private SharedRoleSystem _role = default!;
+    [Dependency] private CEGhostMetaSystem _ghostMeta = default!;
 
     [SubscribeLocalEvent]
     private void OnStartup(Entity<CESecretRoleIconComponent> ent, ref ComponentStartup args)
@@ -36,7 +37,10 @@ public sealed partial class CESecretRoleIconSystem : EntitySystem
         DirtyAllRoleIcons();
     }
 
-    private void DirtyAllRoleIcons()
+    /// <summary>
+    /// Re-evaluates which viewers receive every role icon.
+    /// </summary>
+    public void DirtyAllRoleIcons()
     {
         var query = EntityQueryEnumerator<CESecretRoleIconComponent>();
         while (query.MoveNext(out var uid, out var comp))
@@ -99,7 +103,7 @@ public sealed partial class CESecretRoleIconSystem : EntitySystem
         if (viewer == ent.Owner)
             return false;
 
-        if (HasComp<GhostComponent>(viewer))
+        if (_ghostMeta.CanSeeMeta(viewer))
             return true;
 
         if (!_mind.TryGetMind(viewer, out var mindId, out var mind) ||

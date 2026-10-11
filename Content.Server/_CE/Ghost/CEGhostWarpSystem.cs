@@ -2,11 +2,13 @@ using System.Linq;
 using Content.Server._CE.Roles;
 using Content.Server.Roles.Jobs;
 using Content.Shared._CE.Ghost;
+using Content.Shared._CE.Roles;
 using Content.Shared.Ghost.Components;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Warps;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.Ghost;
 
@@ -22,6 +24,7 @@ public sealed partial class CEGhostWarpSystem : EntitySystem
     [Dependency] private JobSystem _jobs = default!;
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private CESecretRoleInfoSystem _secretRoleInfo = default!;
+    [Dependency] private CEGhostMetaSystem _ghostMeta = default!;
 
     [Dependency] private EntityQuery<GhostComponent> _ghostQuery = default!;
 
@@ -40,8 +43,24 @@ public sealed partial class CEGhostWarpSystem : EntitySystem
             return;
         }
 
-        var response = new CEGhostWarpsResponseEvent(GetPlayerWarps(entity).Concat(GetLocationWarps()).ToList());
-        RaiseNetworkEvent(response, args.SenderSession.Channel);
+        SendWarps(entity, args.SenderSession);
+    }
+
+    /// <summary>
+    /// Refreshes an open warp menu when the ghost gains or loses access to meta information.
+    /// </summary>
+    [SubscribeLocalEvent]
+    private void OnMetaAccessChanged(ref CEGhostMetaAccessChangedEvent args)
+    {
+        if (_player.TryGetSessionByEntity(args.Ghost, out var session))
+            SendWarps(args.Ghost, session);
+    }
+
+    private void SendWarps(EntityUid ghost, ICommonSession session)
+    {
+        var canSeeMeta = _ghostMeta.CanSeeMeta(ghost);
+        var response = new CEGhostWarpsResponseEvent(GetPlayerWarps(ghost, canSeeMeta).Concat(GetLocationWarps()).ToList(), canSeeMeta);
+        RaiseNetworkEvent(response, session.Channel);
     }
 
     private IEnumerable<CEGhostWarp> GetLocationWarps()
@@ -54,7 +73,7 @@ public sealed partial class CEGhostWarpSystem : EntitySystem
         }
     }
 
-    private IEnumerable<CEGhostWarp> GetPlayerWarps(EntityUid except)
+    private IEnumerable<CEGhostWarp> GetPlayerWarps(EntityUid except, bool canSeeMeta)
     {
         foreach (var player in _player.Sessions)
         {
@@ -64,7 +83,9 @@ public sealed partial class CEGhostWarpSystem : EntitySystem
             TryComp<MindContainerComponent>(attached, out var mind);
 
             _jobs.MindTryGetJobId(mind?.Mind, out var jobId);
-            _secretRoleInfo.TryGetSecretRole(attached, out var secretRole);
+            ProtoId<CESecretRolePrototype>? secretRole = null;
+            if (canSeeMeta)
+                _secretRoleInfo.TryGetSecretRole(attached, out secretRole);
 
             var playerName = Comp<MetaDataComponent>(attached).EntityName;
 
