@@ -24,6 +24,7 @@ public sealed partial class NoiseMask : ICETileMask
     public override bool Matches(CEProceduralGenerationContext context, EntityUid map, MapGridComponent grid, Vector2i tile, Tile currentTile)
     {
         Noise.SetSeed(context.Seed + Seed);
-        return Noise.GetNoise(tile.X, tile.Y) >= Threshold;
+        var local = tile - context.Center;
+        return Noise.GetNoise(local.X, local.Y) >= Threshold;
     }
 }

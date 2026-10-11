@@ -1,0 +1,114 @@
+# Constant: exactly N walls replaced at random. Ratio: about one in N matching walls replaced.
+
+# Ore
+
+- type: entity
+  id: CEWildlandsModifierOreCoalRatio10
+  parent: CEBaseWildlandsModifier
+  components:
+  - type: CEWildlandsModifier
+    effects:
+    - !type:ReplaceEntities
+      whitelist:
+        components:
+        - CERockReplacementMarker
+      replacement: CEWallStoneOreCoal
+      entitiesPerReplacement: 10
+      entitiesPerReplacementStdDev: 2
+
+- type: entity
+  id: CEWildlandsModifierOreIronRatio10
+  parent: CEBaseWildlandsModifier
+  components:
+  - type: CEWildlandsModifier
+    effects:
+    - !type:ReplaceEntities
+      whitelist:
+        components:
+        - CERockReplacementMarker
+      replacement: CEWallStoneOreIron
+      entitiesPerReplacement: 10
+      entitiesPerReplacementStdDev: 2
+
+- type: entity
+  id: CEWildlandsModifierOreDiamondConstant10
+  parent: CEBaseWildlandsModifier
+  components:
+  - type: CEWildlandsModifier
+    effects:
+    - !type:ReplaceEntities
+      whitelist:
+        components:
+        - CERockReplacementMarker
+      replacement: CEWallStoneOreDiamond
+      count: 10
+
+# Cores
+
+- type: entity
+  id: CEWildlandsModifierCoreIronConstant15
+  parent: CEBaseWildlandsModifier
+  components:
+  - type: CEWildlandsModifier
+    effects:
+    - !type:ReplaceEntities
+      whitelist:
+        components:
+        - CERockReplacementMarker
+      replacement: CEWallIronCore
+      count: 15
+
+- type: entity
+  id: CEWildlandsModifierCoreCoalConstant15
+  parent: CEBaseWildlandsModifier
+  components:
+  - type: CEWildlandsModifier
+    effects:
+    - !type:ReplaceEntities
+      whitelist:
+        components:
+        - CERockReplacementMarker
+      replacement: CEWallCoalCore
+      count: 15
+
+- type: entity
+  id: CEWildlandsModifierCoreCrystalConstant15
+  parent: CEBaseWildlandsModifier
+  components:
+  - type: CEWildlandsModifier
+    effects:
+    - !type:ReplaceEntities
+      whitelist:
+        components:
+        - CERockReplacementMarker
+      replacement: CEWallCrystalCore
+      count: 15
+
+- type: entity
+  id: CEWildlandsModifierCoreDiamondConstant1
+  parent: CEBaseWildlandsModifier
+  components:
+  - type: CEWildlandsModifier
+    effects:
+    - !type:ReplaceEntities
+      whitelist:
+        components:
+        - CERockReplacementMarker
+      replacement: CEWallDiamondCore
+      count: 1
+
+# Decay
+
+- type: entity
+  id: CEWildlandsModifierDamagedWoodenWallsRatio50
+  parent: CEBaseWildlandsModifier
+  components:
+  - type: CEWildlandsModifier
+    effects:
+    - !type:ReplaceEntities
+      whitelist:
+        components:
+        - WallReplacementMarker
+      replacement: CEWallFrameWooden
+      entitiesPerReplacement: 50
+      entitiesPerReplacementStdDev: 10
