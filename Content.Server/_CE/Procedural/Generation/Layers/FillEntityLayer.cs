@@ -44,7 +44,6 @@ public sealed partial class FillEntityLayer : ICEProceduralLayer
             var coords = context.Map.GridTileToLocal(map, grid, indices);
             var spawned = context.EntityManager.SpawnEntity(Entity, coords);
             var spawnedXform = context.EntityManager.GetComponent<TransformComponent>(spawned);
-            transform.AnchorEntity((spawned, spawnedXform), (map, grid));
         }
     }
 }

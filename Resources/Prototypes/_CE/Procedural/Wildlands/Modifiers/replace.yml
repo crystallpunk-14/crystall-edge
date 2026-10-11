@@ -5,6 +5,7 @@
 - type: entity
   id: CEWildlandsModifierOreCoalRatio10
   parent: CEBaseWildlandsModifier
+  categories: [ HideSpawnMenu ]
   components:
   - type: CEWildlandsModifier
     effects:
@@ -19,6 +20,7 @@
 - type: entity
   id: CEWildlandsModifierOreIronRatio10
   parent: CEBaseWildlandsModifier
+  categories: [ HideSpawnMenu ]
   components:
   - type: CEWildlandsModifier
     effects:
@@ -33,6 +35,7 @@
 - type: entity
   id: CEWildlandsModifierOreDiamondConstant10
   parent: CEBaseWildlandsModifier
+  categories: [ HideSpawnMenu ]
   components:
   - type: CEWildlandsModifier
     effects:
@@ -48,6 +51,7 @@
 - type: entity
   id: CEWildlandsModifierCoreIronConstant15
   parent: CEBaseWildlandsModifier
+  categories: [ HideSpawnMenu ]
   components:
   - type: CEWildlandsModifier
     effects:
@@ -61,6 +65,7 @@
 - type: entity
   id: CEWildlandsModifierCoreCoalConstant15
   parent: CEBaseWildlandsModifier
+  categories: [ HideSpawnMenu ]
   components:
   - type: CEWildlandsModifier
     effects:
@@ -74,6 +79,7 @@
 - type: entity
   id: CEWildlandsModifierCoreCrystalConstant15
   parent: CEBaseWildlandsModifier
+  categories: [ HideSpawnMenu ]
   components:
   - type: CEWildlandsModifier
     effects:
@@ -87,6 +93,7 @@
 - type: entity
   id: CEWildlandsModifierCoreDiamondConstant1
   parent: CEBaseWildlandsModifier
+  categories: [ HideSpawnMenu ]
   components:
   - type: CEWildlandsModifier
     effects:
@@ -102,6 +109,7 @@
 - type: entity
   id: CEWildlandsModifierDamagedWoodenWallsRatio50
   parent: CEBaseWildlandsModifier
+  categories: [ HideSpawnMenu ]
   components:
   - type: CEWildlandsModifier
     effects:
