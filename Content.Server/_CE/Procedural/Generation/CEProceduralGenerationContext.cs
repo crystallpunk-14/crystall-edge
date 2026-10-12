@@ -8,7 +8,8 @@ using Robust.Shared.Prototypes;
 namespace Content.Server._CE.Procedural.Generation;
 
 /// <summary>
-/// Everything a procedural layer needs; Region limits which tiles it may touch.
+/// Everything a procedural layer needs; Region limits which tiles it may touch. Points holds the absolute
+/// positions of every named <see cref="Points.CEProceduralPoint"/>, rolled once per run.
 /// </summary>
 public sealed record CEProceduralGenerationContext(
     IEntityManager EntityManager,
@@ -20,7 +21,8 @@ public sealed record CEProceduralGenerationContext(
     SharedRoofSystem Roof,
     int Seed,
     Vector2i Center,
-    CEProceduralRegion Region);
+    CEProceduralRegion Region,
+    IReadOnlyDictionary<string, List<Vector2i>> Points);
 
 /// <summary>
 /// Either the inside or the outside of a fixed tile set, shared by every z-level of a network.

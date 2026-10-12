@@ -1,0 +1,18 @@
+- type: entity
+  id: CEWildlandsModifierTestRoom
+  parent: CEBaseWildlandsModifier
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: CEWildlandsModifier
+    effects:
+    - !type:SpawnRooms
+      room: TestRoom
+      count:
+        min: 5
+        max: 10
+      mask: # only walls block a room; trees and other clutter get cleared
+      - !type:WhitelistMask
+        inverted: true
+        whitelist:
+          components:
+          - Wall

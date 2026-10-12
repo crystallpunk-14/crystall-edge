@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Content.Server._CE.Procedural.Generation;
+using Content.Server._CE.Procedural.Generation.Points;
 using Content.Server._CE.Procedural.Wildlands.Components;
 using Content.Server._CE.ZLevels.Core;
 using Content.Server._CE.ZLevels.Core.Components;
@@ -56,7 +57,8 @@ public sealed partial class CEWildlandsSystem : EntitySystem
         var stopwatch = Stopwatch.StartNew();
 
         var city = GetCityTiles(levels);
-        var wildContext = CreateContext(seed, config.Center, new CEProceduralRegion(city, inside: false));
+        var points = CEProceduralPoint.Resolve(config.Points, config.Center, seed);
+        var wildContext = CreateContext(seed, config.Center, new CEProceduralRegion(city, inside: false), points);
         var cityContext = wildContext with { Region = new CEProceduralRegion(city, inside: true) };
 
         var depths = new List<int>(config.LayersByDepth.Keys);
@@ -82,7 +84,11 @@ public sealed partial class CEWildlandsSystem : EntitySystem
         Log.Info($"Generated wildlands {config.ID} for {ToPrettyString(ent)} with seed {seed} in {stopwatch.Elapsed.TotalSeconds:0.00}s.");
     }
 
-    private CEProceduralGenerationContext CreateContext(int seed, Vector2i center, CEProceduralRegion region)
+    private CEProceduralGenerationContext CreateContext(
+        int seed,
+        Vector2i center,
+        CEProceduralRegion region,
+        IReadOnlyDictionary<string, List<Vector2i>> points)
     {
         return new CEProceduralGenerationContext(
             EntityManager,
@@ -94,7 +100,8 @@ public sealed partial class CEWildlandsSystem : EntitySystem
             _roof,
             seed,
             center,
-            region);
+            region,
+            points);
     }
 
     private Dictionary<int, EntityUid> GetLevels(Entity<CEStationWildlandsComponent> station)
