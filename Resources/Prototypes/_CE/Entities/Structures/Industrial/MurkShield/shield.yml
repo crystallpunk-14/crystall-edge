@@ -25,6 +25,7 @@
     layers:
     - state: effect
       shader: unshaded
+      offset: 0, 0.4
   - type: PointLight
     radius: 7.0
     energy: 1

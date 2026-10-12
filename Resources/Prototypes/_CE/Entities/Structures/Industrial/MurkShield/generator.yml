@@ -27,14 +27,25 @@
   - type: Transform
     anchored: true
     noRot: false
-  - type: Sprite # TODO: placeholder sprite
+  - type: Sprite
     snapCardinals: true
-    sprite: _CE/Structures/Industrial/charger.rsi
+    sprite: _CE/Structures/Industrial/murk_shield_generator.rsi
     layers:
     - state: base
-    - state: glass
+    - sprite: _CE/Structures/Specific/Thaumaturgy/Node/smol_node.rsi
+      state: base
+      shader: unshaded
+      offset: -0.05, 0.4
+      map: [ "powered" ]
+      visible: false
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        powered:
+          True: {visible: true}
+          False: {visible: false}
   - type: Icon
-    sprite: _CE/Structures/Industrial/charger.rsi
+    sprite: _CE/Structures/Industrial/murk_shield_generator.rsi
     state: base
   - type: PointLight
     radius: 2
