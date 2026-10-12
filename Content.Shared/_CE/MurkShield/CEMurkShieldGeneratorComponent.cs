@@ -11,4 +11,13 @@ public sealed partial class CEMurkShieldGeneratorComponent : Component
 {
     [DataField]
     public EntProtoId Shield = "CEMurkShield";
+
+    /// <summary>
+    /// Spawned on every other generator at dawn, when the shield is created somewhere else.
+    /// </summary>
+    [DataField]
+    public EntProtoId SpawnFailureEffect = "CEMurkShieldSpawnFailureVFX";
+
+    [DataField]
+    public LocId SpawnFailurePopup = "ce-murk-shield-spawn-failure";
 }

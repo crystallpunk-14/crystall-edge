@@ -1,3 +1,4 @@
+using Content.Server.Popups;
 using Content.Server.Power.EntitySystems;
 using Content.Shared._CE.DayCycle;
 using Content.Shared._CE.Murk;
@@ -6,6 +7,7 @@ using Content.Shared._CE.MurkShield;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Light.Components;
+using Content.Shared.Popups;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -21,6 +23,7 @@ public sealed partial class CEMurkShieldSystem : EntitySystem
     [Dependency] private CEDayCycleSystem _dayCycle = default!;
     [Dependency] private CESharedMurkSystem _murk = default!;
     [Dependency] private CESharedZLevelsSystem _zLevels = default!;
+    [Dependency] private PopupSystem _popup = default!;
     [Dependency] private PowerReceiverSystem _power = default!;
     [Dependency] private SharedPointLightSystem _pointLight = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
@@ -38,18 +41,30 @@ public sealed partial class CEMurkShieldSystem : EntitySystem
         }
 
         var generators = new List<Entity<CEMurkShieldGeneratorComponent>>();
+        var powered = new List<Entity<CEMurkShieldGeneratorComponent>>();
         var query = EntityQueryEnumerator<CEMurkShieldGeneratorComponent>();
         while (query.MoveNext(out var uid, out var generator))
         {
+            generators.Add((uid, generator));
+
             if (_power.IsPowered(uid))
-                generators.Add((uid, generator));
+                powered.Add((uid, generator));
         }
 
-        if (generators.Count == 0)
+        if (powered.Count == 0)
             return;
 
-        var chosen = _random.Pick(generators);
+        var chosen = _random.Pick(powered);
         SpawnAtPosition(chosen.Comp.Shield, Transform(chosen).Coordinates);
+
+        foreach (var generator in generators)
+        {
+            if (generator.Owner == chosen.Owner)
+                continue;
+
+            SpawnAtPosition(generator.Comp.SpawnFailureEffect, Transform(generator).Coordinates);
+            _popup.PopupEntity(Loc.GetString(generator.Comp.SpawnFailurePopup), generator, PopupType.LargeCaution);
+        }
     }
 
     public override void Update(float frameTime)
