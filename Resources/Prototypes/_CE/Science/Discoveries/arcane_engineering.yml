@@ -41,17 +41,6 @@
 #MARK: Medium
 
 - type: scienceDiscovery
-  id: Hoverboards
-  parent: MediumDifficult
-  area: ArcaneEngineering
-  targetAspects:
-  - Flight
-  - Machine
-  - Energia
-  - Energia
-  skill: Hoverboard
-
-- type: scienceDiscovery
   id: NodeStabilizer
   parent: MediumDifficult
   area: ArcaneEngineering
