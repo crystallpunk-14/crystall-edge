@@ -1,16 +1,6 @@
 #MARK: Medium
 
 - type: scienceDiscovery
-  id: ConjureLight
-  parent: MediumDifficult
-  area: Spellcasting
-  targetAspects:
-  - Light
-  - Magic
-  - Light
-  skill: ConjureLight
-
-- type: scienceDiscovery
   id: ManaGift
   parent: MediumDifficult
   area: Spellcasting

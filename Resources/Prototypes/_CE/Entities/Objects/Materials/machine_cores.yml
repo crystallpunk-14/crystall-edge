@@ -215,4 +215,14 @@
   - type: StaticPrice
     price: 250
 
-# Trading
+# Guild
+
+- type: entity
+  id: CEMachineCoreGuildLightAltar
+  parent: CEBaseMachineCore
+  name: guild light altar machine core
+  components:
+  - type: MachineBoard
+    prototype: CEGuildLightAltar
+  - type: StaticPrice
+    price: 150

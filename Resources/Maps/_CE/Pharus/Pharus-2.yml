@@ -138,13 +138,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -3.5,-19.5
-- proto: CEClothingBackPortableLighthouse
-  entities:
-  - uid: 194
-    components:
-    - type: Transform
-      parent: 1
-      pos: -3.5169864,-20.35226
 - proto: CEClothingHeadHelmetBrassInsulator
   entities:
   - uid: 3125

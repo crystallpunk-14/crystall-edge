@@ -137,15 +137,9 @@ public sealed partial class CEDayCycleSystem : EntitySystem
         if (!Resolve(map, ref map.Comp, false) || !TryGetDayProgress(map, out var progress))
             return false;
 
-        // Mirrors SharedLightCycleSystem.CalculateLightLevel: (crest - shift) * sin^6(PI * progress) + shift, clipped at ClipLight
-        var crest = MathF.Max(0f, map.Comp.MaxLightLevel);
-        var shift = MathF.Max(0f, map.Comp.MinLightLevel);
-        var threshold = GetThreshold(map);
-
-        if (threshold <= shift || threshold >= MathF.Min(crest, map.Comp.ClipLight))
+        if (!TryGetDawnProgress(map, out var dawn))
             return false;
 
-        var dawn = MathF.Asin(MathF.Pow((threshold - shift) / (crest - shift), 1f / 6f)) / MathF.PI;
         var sunset = 1f - dawn;
 
         float left;
@@ -162,6 +156,44 @@ public sealed partial class CEDayCycleSystem : EntitySystem
         }
 
         remaining = TimeSpan.FromSeconds(MathF.Ceiling(left * GetCycleDuration(map.Comp)));
+        return true;
+    }
+
+    /// <summary>
+    /// Returns how long the daylight part of the cycle lasts on the map, from dawn to sunset.
+    /// Returns false if the day threshold is never crossed there (it's always day or always night)
+    /// </summary>
+    public bool TryGetDayDuration(Entity<LightCycleComponent?> map, out TimeSpan duration)
+    {
+        duration = TimeSpan.Zero;
+
+        if (!Resolve(map, ref map.Comp, false) || !TryGetDawnProgress(map, out var dawn))
+            return false;
+
+        duration = TimeSpan.FromSeconds((1f - 2f * dawn) * GetCycleDuration(map.Comp));
+        return true;
+    }
+
+    /// <summary>
+    /// Cycle progress (0 is midnight, 0.5 is noon) at which the light level crosses the day threshold in the morning.
+    /// Sunset is mirrored at 1 - dawn
+    /// </summary>
+    private bool TryGetDawnProgress(Entity<LightCycleComponent?> map, out float dawn)
+    {
+        dawn = 0f;
+
+        if (!Resolve(map, ref map.Comp, false))
+            return false;
+
+        // Mirrors SharedLightCycleSystem.CalculateLightLevel: (crest - shift) * sin^6(PI * progress) + shift, clipped at ClipLight
+        var crest = MathF.Max(0f, map.Comp.MaxLightLevel);
+        var shift = MathF.Max(0f, map.Comp.MinLightLevel);
+        var threshold = GetThreshold(map);
+
+        if (threshold <= shift || threshold >= MathF.Min(crest, map.Comp.ClipLight))
+            return false;
+
+        dawn = MathF.Asin(MathF.Pow((threshold - shift) / (crest - shift), 1f / 6f)) / MathF.PI;
         return true;
     }
 

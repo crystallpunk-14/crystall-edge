@@ -169,6 +169,10 @@ CEMagicEssenceHungryNode: null
 CEDimensionalShard: null
 CECrystalShardAir: null
 
+# 2026-10-12
+CEClothingBackPortableLighthouse: null
+CEConjuredLight: null
+
 # CrystallEdge migration zone end
 
 

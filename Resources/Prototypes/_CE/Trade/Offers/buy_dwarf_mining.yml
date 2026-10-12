@@ -144,15 +144,6 @@
     proto: CEScrewdriver
 
 - type: tradeOffer
-  id: CETradeOfferClothingBackPortableLighthouse
-  shop: DwarfMiners
-  pay:
-    bonus: 1
-  reward:
-  - !type:CETradeSpawnReward
-    proto: CEClothingBackPortableLighthouse
-
-- type: tradeOffer
   id: CETradeOfferBaseLockpick
   shop: DwarfMiners
   pay:
