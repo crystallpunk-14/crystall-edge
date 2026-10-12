@@ -12,4 +12,10 @@ public sealed partial class CEDayCycleComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public float Threshold = 0.6f;
+
+    /// <summary>
+    /// Number of the current day on the map, increased at every dawn. 0 until the first dawn of the round
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public int DayNumber;
 }

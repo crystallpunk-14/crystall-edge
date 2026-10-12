@@ -121,7 +121,7 @@ public sealed partial class CEClockUiController : UIController
         if (!_dayCycle.TryGetTimeUntilTransition(map, out var remaining, out var untilDawn))
             _tooltip = null;
         else if (_tooltip == null || remaining != _lastRemaining || untilDawn != _lastUntilDawn)
-            _dayCycle.TryGetTimeUntilTransitionText(map, out _tooltip);
+            _dayCycle.TryGetClockText(map, out _tooltip);
 
         _lastRemaining = remaining;
         _lastUntilDawn = untilDawn;

@@ -21,7 +21,7 @@ public sealed partial class CEMurkConsumingRuleComponent : Component
     /// Real time after the sphere cracks until it collapses.
     /// </summary>
     [DataField]
-    public TimeSpan CollapseDelay = TimeSpan.FromMinutes(60);
+    public TimeSpan CollapseDelay = TimeSpan.FromMinutes(90);
 
     /// <summary>
     /// When the sphere cracked. Null until it does.

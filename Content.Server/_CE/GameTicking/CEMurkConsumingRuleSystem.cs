@@ -35,7 +35,7 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
     /// <summary>
     /// Used for "days left" texts if no station map with a light cycle can be found.
     /// </summary>
-    private static readonly TimeSpan FallbackDayDuration = TimeSpan.FromMinutes(60.0 / 7);
+    private static readonly TimeSpan FallbackDayDuration = TimeSpan.FromMinutes(15);
 
     protected override void Started(EntityUid uid, CEMurkConsumingRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
@@ -351,31 +351,6 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
         while (query.MoveNext(out _, out _, out var consuming, out _))
         {
             consuming.CrackEndTime ??= Timing.CurTime;
-        }
-    }
-
-    [SubscribeLocalEvent]
-    private void OnStartDay(CEStartDayEvent ev)
-    {
-        if (TryComp<CEZMapComponent>(ev.MapUid, out var zlevelMap) && zlevelMap.Depth != 0)
-            return; //We don't care about zlevels start day event
-
-        if (!HasComp<StationMemberComponent>(ev.MapUid))
-            return;
-
-        var query = QueryActiveRules();
-        while (query.MoveNext(out _, out _, out var consuming, out _))
-        {
-            //Days only count down after the sphere has cracked, and stop once it's collapsing
-            if (!IsSphereCracked())
-                break;
-
-            RaiseNetworkEvent(new CEScreenPopupShowEvent(
-                Loc.GetString("ce-murk-days-left-title", ("days", GetDaysLeft(consuming))),
-                "",
-                new SoundPathSpecifier("/Audio/_CE/Announce/event_boom.ogg")));
-
-            break; //Yeea we dont have multiple rules support rn.
         }
     }
 

@@ -179,6 +179,34 @@ public sealed partial class CEDayCycleSystem : EntitySystem
         return true;
     }
 
+    /// <summary>
+    /// Localized "Day N" / "Night N" text for the map. Returns false until the first dawn of the round
+    /// </summary>
+    public bool TryGetDayNumberText(Entity<CEDayCycleComponent?> map, [NotNullWhen(true)] out string? text)
+    {
+        text = null;
+
+        if (!Resolve(map, ref map.Comp, false) || map.Comp.DayNumber <= 0)
+            return false;
+
+        text = Loc.GetString(IsDayNow(map.Owner) ? "ce-day-cycle-day" : "ce-day-cycle-night", ("number", map.Comp.DayNumber));
+        return true;
+    }
+
+    /// <summary>
+    /// Text shown by clocks: the current day number and the time left until dawn or sunset
+    /// </summary>
+    public bool TryGetClockText(EntityUid map, [NotNullWhen(true)] out string? text)
+    {
+        if (!TryGetTimeUntilTransitionText(map, out text))
+            return false;
+
+        if (TryGetDayNumberText(map, out var day))
+            text = $"{day}\n{text}";
+
+        return true;
+    }
+
     private float GetCycleTime(EntityUid map, LightCycleComponent lightCycle)
     {
         return (float) _timing.CurTime
