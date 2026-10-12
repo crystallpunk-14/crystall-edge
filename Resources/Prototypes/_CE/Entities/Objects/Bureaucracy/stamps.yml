@@ -77,7 +77,7 @@
   name: guildmaster's stamp
   parent: CERubberStampBase
   id: CERubberStampGuildmaster
-  description: A rubber stamp bearing the seal of the tavern guildmaster.
+  description: A rubber stamp bearing the seal of the adventurers' guildmaster.
   components:
   - type: Stamp
     stampedName: ce-stamp-component-stamped-name-guildmaster

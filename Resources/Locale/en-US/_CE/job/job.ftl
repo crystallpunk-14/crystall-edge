@@ -23,6 +23,14 @@ ce-job-desc-chef = Run the kitchen, preparing a variety of dishes for your guest
 ce-job-name-farmer = Farmer
 ce-job-desc-farmer = Your garden is your fortress. Grow anything and experiment with irradiating plants to get previously unknown products.
 
+# Guild
+
+ce-job-name-guildmaster = Guildmaster
+ce-job-desc-guildmaster = Head of the adventurers' guild. Take requests from the island's residents, hand them out to adventurers and keep the guild thriving.
+
+ce-job-name-adventurer = Adventurer
+ce-job-desc-adventurer = A mercenary and seeker of adventure. Complete guild contracts, explore the wildlands and try to come back alive.
+
 # Engineering
 
 ce-job-name-brigadier = Brigadier

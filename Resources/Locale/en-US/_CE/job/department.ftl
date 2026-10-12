@@ -15,3 +15,6 @@ department-CETavern-desc = Workers of the city's most important entertainment es
 
 department-CEAcademy = Thaumaturgic Academy
 department-CEAcademy-desc = A home for scholars who study diverse fields of science and make useful discoveries that push the island forward.
+
+department-CEGuild = Adventurers' Guild
+department-CEGuild-desc = Mercenaries, hunters and seekers of fortune. Take contracts, explore the wildlands and come back with the loot.

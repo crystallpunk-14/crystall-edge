@@ -52,6 +52,36 @@
       - state: green
       - state: investigator
 
+# Guild
+
+- type: entity
+  id: CESpawnPointGuildmaster
+  parent: CESpawnPointJobBase
+  name: guildmaster
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEGuildmaster
+  - type: Sprite
+    layers:
+      - state: green
+      - state: guildmaster
+
+- type: entity
+  id: CESpawnPointAdventurer
+  parent: CESpawnPointJobBase
+  name: adventurer
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEAdventurer
+  - type: Sprite
+    layers:
+      - state: green
+      - state: adventurer
+
 # Tavern
 
 - type: entity

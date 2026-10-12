@@ -67,6 +67,18 @@
 - type: entity
   parent:
   - CEClothingCloakBase
+  id: CEClothingCloakGuildmaster
+  name: guildmaster's cloak
+  description: A ceremonial crimson cloak worn by the head of the adventurers' guild.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Cloak/Guild/guildmaster.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Cloak/Guild/guildmaster.rsi
+
+- type: entity
+  parent:
+  - CEClothingCloakBase
   id: CEClothingCloakInsulatedMantle
   name: insulated mantle
   description: An insulated mantle designed to retain heat in cold conditions.
