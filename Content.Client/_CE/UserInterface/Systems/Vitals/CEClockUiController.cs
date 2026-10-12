@@ -12,7 +12,7 @@ using Robust.Shared.Timing;
 namespace Content.Client._CE.UserInterface.Systems.Vitals;
 
 /// <summary>
-/// Shows the clock widget for players with <see cref="CETimeSenseComponent"/>
+/// Shows the clock widget for players who can sense the time of day, see <see cref="CETimeSenseSystem"/>
 /// </summary>
 [UsedImplicitly]
 public sealed partial class CEClockUiController : UIController
@@ -20,11 +20,13 @@ public sealed partial class CEClockUiController : UIController
     [Dependency] private IPlayerManager _player = default!;
 
     private CEDayCycleSystem? _dayCycle;
+    private CETimeSenseSystem? _timeSense;
     private CEClockUI? _clock;
 
     private string? _tooltip;
     private TimeSpan _lastRemaining;
     private bool _lastUntilDawn;
+    private bool _canSenseTime;
 
     public override void Initialize()
     {
@@ -36,6 +38,7 @@ public sealed partial class CEClockUiController : UIController
 
         SubscribeLocalEvent<LocalPlayerAttachedEvent>(OnPlayerAttached);
         SubscribeLocalEvent<LocalPlayerDetachedEvent>(OnPlayerDetached);
+        SubscribeLocalEvent<CETimeSenseRefreshedEvent>(OnTimeSenseRefreshed);
     }
 
     public override void FrameUpdate(FrameEventArgs args)
@@ -75,14 +78,27 @@ public sealed partial class CEClockUiController : UIController
 
     private void OnPlayerAttached(LocalPlayerAttachedEvent args)
     {
+        _timeSense ??= EntityManager.System<CETimeSenseSystem>();
+        _canSenseTime = _timeSense.CanSenseTime(args.Entity);
+
         _clock ??= GetClock();
         UpdateClock();
     }
 
     private void OnPlayerDetached(LocalPlayerDetachedEvent args)
     {
+        _canSenseTime = false;
+
         if (_clock != null)
             _clock.Visible = false;
+    }
+
+    private void OnTimeSenseRefreshed(CETimeSenseRefreshedEvent args)
+    {
+        if (args.Entity != _player.LocalEntity)
+            return;
+
+        _canSenseTime = args.CanSense;
     }
 
     private void UpdateClock()
@@ -92,8 +108,8 @@ public sealed partial class CEClockUiController : UIController
 
         _dayCycle ??= EntityManager.System<CEDayCycleSystem>();
 
-        if (_player.LocalEntity is not { } player
-            || !EntityManager.HasComponent<CETimeSenseComponent>(player)
+        if (!_canSenseTime
+            || _player.LocalEntity is not { } player
             || EntityManager.GetComponent<TransformComponent>(player).MapUid is not { } map
             || !_dayCycle.TryGetDayProgress(map, out var progress))
         {

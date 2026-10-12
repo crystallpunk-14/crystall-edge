@@ -5,6 +5,13 @@
   icon:
     sprite: _CE/Interface/Vitals/clock.rsi
     state: base
-  effect: !type:AddComponents
-    components:
-    - type: CETimeSense
+  effect: !type:AddStatusEffect
+    effect: CEStatusEffectTimeSense
+
+- type: entity
+  parent: StatusEffectBase
+  id: CEStatusEffectTimeSense
+  name: sense of time
+  description: You intuitively feel what time of day it is.
+  components:
+  - type: CETimeSenseStatusEffect
