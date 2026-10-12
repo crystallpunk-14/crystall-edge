@@ -269,6 +269,258 @@
     proto: CEFloorCarpetItemBlack10
 
 - type: tradeOffer
+  id: CETradeOfferFloorCarpetItemTasselScarletGold10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselScarletGold10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemCrimsonCopper10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemCrimsonCopper10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemTasselWineTonal10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselWineTonal10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemTasselTerracottaTonal10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselTerracottaTonal10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemOchreTonal10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemOchreTonal10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemTasselOliveTonal10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselOliveTonal10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemMossCopper10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemMossCopper10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemMossTonal10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemMossTonal10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemEmeraldTonal10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemEmeraldTonal10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemTasselEmeraldGold10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselEmeraldGold10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemPineCopper10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemPineCopper10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemTasselPineTonal10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselPineTonal10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemTealTonal10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTealTonal10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemTasselTealGold10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselTealGold10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemSeaSilver10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemSeaSilver10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemTasselSeaContrast10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselSeaContrast10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemTasselAzureTonal10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselAzureTonal10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemTasselAzureGold10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselAzureGold10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemTasselRoyalBlueTonal10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselRoyalBlueTonal10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemTasselIndigoTonal10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselIndigoTonal10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemTasselIndigoGold10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselIndigoGold10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemPlumCopper10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemPlumCopper10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemTasselPlumTonal10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselPlumTonal10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemChocolateGold10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemChocolateGold10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemTasselIvoryTonal10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselIvoryTonal10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemTasselAshTonal10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselAshTonal10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemCoalTonal10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemCoalTonal10
+
+- type: tradeOffer
+  id: CETradeOfferFloorCarpetItemTasselCoalTonal10
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselCoalTonal10
+
+- type: tradeOffer
   id: CETradeOfferWallpaperItemPurple
   shop: HomeDecor
   pay:
