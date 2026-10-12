@@ -67,7 +67,7 @@
 - type: loadoutGroup
   id: CEGuildmasterCloak
   name: ce-loadout-cloak
-  minLimit: 0
+  minLimit: 1
   loadouts:
   - CEClothingCloakGuildmaster
 
@@ -81,7 +81,7 @@
 - type: loadoutGroup
   id: CEGuildmasterHead
   name: ce-loadout-head
-  minLimit: 0
+  minLimit: 1
   loadouts:
   - CEClothingHeadFedoraGuildmaster
 

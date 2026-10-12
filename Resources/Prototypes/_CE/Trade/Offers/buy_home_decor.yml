@@ -235,6 +235,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemBlue10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -244,6 +245,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemRed10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -253,6 +255,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemPurple10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -262,6 +265,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemBlack10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -271,6 +275,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemTasselScarletGold10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -280,6 +285,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemCrimsonCopper10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -289,6 +295,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemTasselWineTonal10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -298,6 +305,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemTasselTerracottaTonal10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -307,6 +315,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemOchreTonal10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -316,6 +325,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemTasselOliveTonal10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -325,6 +335,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemMossCopper10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -334,6 +345,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemMossTonal10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -343,6 +355,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemEmeraldTonal10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -352,6 +365,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemTasselEmeraldGold10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -361,6 +375,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemPineCopper10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -370,6 +385,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemTasselPineTonal10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -379,6 +395,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemTealTonal10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -388,6 +405,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemTasselTealGold10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -397,6 +415,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemSeaSilver10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -406,6 +425,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemTasselSeaContrast10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -415,6 +435,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemTasselAzureTonal10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -424,6 +445,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemTasselAzureGold10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -433,6 +455,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemTasselRoyalBlueTonal10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -442,6 +465,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemTasselIndigoTonal10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -451,6 +475,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemTasselIndigoGold10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -460,6 +485,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemPlumCopper10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -469,6 +495,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemTasselPlumTonal10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -478,6 +505,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemChocolateGold10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -487,6 +515,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemTasselIvoryTonal10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -496,6 +525,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemTasselAshTonal10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -505,6 +535,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemCoalTonal10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -514,6 +545,7 @@
 - type: tradeOffer
   id: CETradeOfferFloorCarpetItemTasselCoalTonal10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
