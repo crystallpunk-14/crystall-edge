@@ -1,0 +1,16 @@
+- type: zMap
+  id: DunGenAtlas
+  maps:
+  - /Maps/_CE/Procedural/DunGenAtlas/DunGenAtlas0.yml
+  - /Maps/_CE/Procedural/DunGenAtlas/DunGenAtlas1.yml
+  - /Maps/_CE/Procedural/DunGenAtlas/DunGenAtlas2.yml
+  - /Maps/_CE/Procedural/DunGenAtlas/DunGenAtlas3.yml
+  - /Maps/_CE/Procedural/DunGenAtlas/DunGenAtlas4.yml
+  - /Maps/_CE/Procedural/DunGenAtlas/DunGenAtlas5.yml
+
+- type: dungeonRoom3d
+  id: TestRoom
+  zLevelMap: DunGenAtlas
+  offset: 0, 0
+  size: 6, 6
+  height: 5
