@@ -1,4 +1,5 @@
 using Content.Server._CE.Procedural.Generation.Distance;
+using Content.Server._CE.Procedural.Generation.Masks;
 using Content.Shared.Maps;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -31,6 +32,13 @@ public sealed partial class TileNoiseDistanceLayer : ICEProceduralLayer
     [DataField(required: true)]
     public List<TileNoiseFill> Fill = new();
 
+    /// <summary>
+    /// Only tiles passing every mask get painted, e.g. recoloring existing land without spilling into empty space.
+    /// Empty = paint anywhere.
+    /// </summary>
+    [DataField]
+    public List<ICETileMask> Mask = new();
+
     public void Apply(CEProceduralGenerationContext context, EntityUid map)
     {
         var grid = context.EntityManager.GetComponent<MapGridComponent>(map);
@@ -52,6 +60,10 @@ public sealed partial class TileNoiseDistanceLayer : ICEProceduralLayer
             {
                 var indices = context.Center + new Vector2i(x, y);
                 if (!context.Region.Contains(indices))
+                    continue;
+
+                if (Mask.Count > 0 &&
+                    !ICETileMask.PassesAll(context, map, grid, indices, context.Map.GetTileRef(map, grid, indices).Tile, Mask))
                     continue;
 
                 foreach (var fill in Fill)

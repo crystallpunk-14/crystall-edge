@@ -44,20 +44,31 @@ public abstract partial class ICETileMask
             if (!context.Region.Contains(indices))
                 continue;
 
-            var passes = true;
-            foreach (var mask in masks)
-            {
-                if (mask.Matches(context, map, grid, indices, tileRef.Value.Tile) == mask.Inverted)
-                {
-                    passes = false;
-                    break;
-                }
-            }
-
-            if (passes)
+            if (PassesAll(context, map, grid, indices, tileRef.Value.Tile, masks))
                 targets.Add(indices);
         }
 
         return targets;
+    }
+
+    /// <summary>
+    /// Whether <paramref name="tile"/> passes every one of <paramref name="masks"/>, each respecting its own
+    /// <see cref="Inverted"/>.
+    /// </summary>
+    public static bool PassesAll(
+        CEProceduralGenerationContext context,
+        EntityUid map,
+        MapGridComponent grid,
+        Vector2i tile,
+        Tile currentTile,
+        List<ICETileMask> masks)
+    {
+        foreach (var mask in masks)
+        {
+            if (mask.Matches(context, map, grid, tile, currentTile) == mask.Inverted)
+                return false;
+        }
+
+        return true;
     }
 }

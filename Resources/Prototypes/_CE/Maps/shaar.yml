@@ -84,8 +84,21 @@
 - type: wildlandsConfig
   id: Shaar
   center: -16, -3 # Lucson sphere position
+  points:
+  - id: snowIsland
+    area: !type:RingArea
+      minRadius: 70
+      maxRadius: 100
+  - id: voidHole
+    count:
+      min: 2
+      max: 3 
+    minDistance: 100 # clear of the snow island's halo and of each other
+    area: !type:RingArea
+      minRadius: 90
+      maxRadius: 170
   cityModifiers: !type:AllSelector
-    children:
+    children: 
     # Ore veins
     - id: CEWildlandsModifierOreCoalRatio10
     - id: CEWildlandsModifierOreIronRatio10
@@ -130,6 +143,69 @@
       - tile: CEStone
         threshold: 0.66
         noise: *islandNoise
+    - !type:AtPointLayer # snow hills: the snow island's halo freezes the hills above it
+      point: snowIsland
+      layers:
+      - !type:TileNoiseDistanceLayer
+        size: &snowHaloSize 110, 110
+        distanceConfig: &snowHaloDistance !type:EuclideanSquaredDistance
+          blendWeight: 0.8
+        mask:
+        - !type:TileMask
+          tiles:
+          - CEGrassAutumnTall
+        fill:
+        - tile: CESnow
+          threshold: 0.4
+          noise: &snowHaloNoise
+            frequency: 0.05
+            noiseType: OpenSimplex2
+            fractalType: FBm
+            octaves: 3
+            lacunarity: 2
+            gain: 0.5
+      - !type:TileNoiseDistanceLayer
+        size: *snowHaloSize
+        distanceConfig: *snowHaloDistance
+        mask:
+        - !type:TileMask
+          tiles:
+          - CEStone
+        fill:
+        - tile: CEIce
+          threshold: 0.4
+          noise: *snowHaloNoise
+    - !type:AtPointLayer # void hole: punches a gap through the archipelago on every level
+      point: voidHole
+      layers: &voidHoleLayers
+      - !type:TileNoiseDistanceLayer
+        size: 60, 60
+        distanceConfig: !type:EuclideanSquaredDistance
+          blendWeight: 0.8
+        fill:
+        - tile: Space
+          threshold: 0.4
+          noise:
+            frequency: 0.06
+            noiseType: OpenSimplex2
+            fractalType: FBm
+            octaves: 3
+            lacunarity: 2
+            gain: 0.5
+    - !type:FillBiomeLayer # snow rim = meadow. Must run before the snow forest: it never outputs CEIce, so the forest mask stays clean.
+      biome: CESnowland
+      seed: 4
+      mask:
+      - !type:TileMask
+        tiles:
+        - CESnow
+    - !type:FillBiomeLayer # snow core = forest
+      biome: CESnowlandForest
+      seed: 4
+      mask:
+      - !type:TileMask
+        tiles:
+        - CEIce
     - !type:FillBiomeLayer # rim = meadow. Must run before the forest: it never outputs CEStone, so the forest mask stays clean.
       biome: CEGrasslandAutumn
       mask:
@@ -159,6 +235,69 @@
       - tile: CEStone
         threshold: 0.6
         noise: *islandNoise
+    - !type:AtPointLayer
+      point: snowIsland
+      layers:
+      - !type:TileNoiseDistanceLayer # snow island: new land with an ice core, painted over void and grass
+        size: &snowIslandSize 80, 80
+        distanceConfig: *distance
+        mask: # landscape rock cores stay: hills stand on them, and the halo below turns them into ice caves
+        - !type:TileMask
+          inverted: true
+          tiles:
+          - CEStone
+        fill:
+        - tile: CEIce
+          threshold: 0.6
+          noise: &snowIslandNoise
+            frequency: 0.06
+            noiseType: OpenSimplex2
+            fractalType: FBm
+            octaves: 4
+            lacunarity: 2
+            gain: 0.5
+        - tile: CESnow
+          threshold: 0.45
+          noise: *snowIslandNoise
+      - !type:TileNoiseDistanceLayer # halo: freezes the landscape's small islands around it
+        size: *snowHaloSize
+        distanceConfig: *snowHaloDistance
+        mask:
+        - !type:TileMask
+          tiles:
+          - CEGrassAutumnTall
+        fill:
+        - tile: CESnow
+          threshold: 0.4
+          noise: *snowHaloNoise
+      - !type:TileNoiseDistanceLayer
+        size: *snowHaloSize
+        distanceConfig: *snowHaloDistance
+        mask:
+        - !type:TileMask
+          tiles:
+          - CEStone
+        fill:
+        - tile: CEIce
+          threshold: 0.4
+          noise: *snowHaloNoise
+    - !type:AtPointLayer
+      point: voidHole
+      layers: *voidHoleLayers
+    - !type:FillBiomeLayer # must run before the ice caves: it never outputs CEIce, while the caves output CESnow
+      biome: CESnowlandForest
+      seed: 4
+      mask:
+      - !type:TileMask
+        tiles:
+        - CESnow
+    - !type:FillBiomeLayer
+      biome: CEIceCavesGeneric
+      seed: 4
+      mask:
+      - !type:TileMask
+        tiles:
+        - CEIce
     - !type:FillBiomeLayer
       biome: CEGrasslandAutumnForest
       seed: 1
@@ -182,6 +321,37 @@
       - tile: CEStone
         threshold: 0.45 # same footprint as the surface
         noise: *islandNoise
+    - !type:AtPointLayer
+      point: snowIsland
+      layers:
+      - !type:TileNoiseDistanceLayer
+        size: *snowIslandSize
+        distanceConfig: *distance
+        fill:
+        - tile: CEIce
+          threshold: 0.45 # same footprint as the surface
+          noise: *snowIslandNoise
+      - !type:TileNoiseDistanceLayer
+        size: *snowHaloSize
+        distanceConfig: *snowHaloDistance
+        mask:
+        - !type:TileMask
+          tiles:
+          - CEStone
+        fill:
+        - tile: CEIce
+          threshold: 0.4
+          noise: *snowHaloNoise
+    - !type:AtPointLayer
+      point: voidHole
+      layers: *voidHoleLayers
+    - !type:FillBiomeLayer
+      biome: CEIceCavesGeneric
+      seed: 5
+      mask:
+      - !type:TileMask
+        tiles:
+        - CEIce
     - !type:FillBiomeLayer
       biome: CECavesGeneric
       seed: 2
@@ -198,6 +368,37 @@
       - tile: CEStone
         threshold: 0.59
         noise: *islandNoise
+    - !type:AtPointLayer
+      point: snowIsland
+      layers:
+      - !type:TileNoiseDistanceLayer
+        size: *snowIslandSize
+        distanceConfig: *distance
+        fill:
+        - tile: CEIce
+          threshold: 0.59
+          noise: *snowIslandNoise
+      - !type:TileNoiseDistanceLayer
+        size: *snowHaloSize
+        distanceConfig: *snowHaloDistance
+        mask:
+        - !type:TileMask
+          tiles:
+          - CEStone
+        fill:
+        - tile: CEIce
+          threshold: 0.4
+          noise: *snowHaloNoise
+    - !type:AtPointLayer
+      point: voidHole
+      layers: *voidHoleLayers
+    - !type:FillBiomeLayer
+      biome: CEIceCavesGeneric
+      seed: 6
+      mask:
+      - !type:TileMask
+        tiles:
+        - CEIce
     - !type:FillBiomeLayer
       biome: CECavesGeneric
       seed: 3

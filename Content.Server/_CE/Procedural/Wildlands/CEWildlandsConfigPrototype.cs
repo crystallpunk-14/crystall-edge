@@ -1,4 +1,5 @@
 using Content.Server._CE.Procedural.Generation;
+using Content.Server._CE.Procedural.Generation.Points;
 using Content.Shared.EntityTable.EntitySelectors;
 using Robust.Shared.Prototypes;
 
@@ -18,6 +19,12 @@ public sealed partial class CEWildlandsConfigPrototype : IPrototype
     /// </summary>
     [DataField]
     public Vector2i Center;
+
+    /// <summary>
+    /// Named positions around <see cref="Center"/>, rolled once and shared by all layers and modifiers.
+    /// </summary>
+    [DataField]
+    public List<CEProceduralPoint> Points = new();
 
     /// <summary>
     /// Landscape layers keyed by real z-network depth (main map = 0).
