@@ -29,6 +29,8 @@
             #Citizens
             CEBard: [ 2, 2 ]
             CETownfolk: [ -1, -1 ]
+        - type: CEStationWildlands
+          config: Shaar
         - type: CEStationZLevels
           mapsBelow:
           - /Maps/_CE/Shaar/Shaar-2.yml
@@ -78,3 +80,128 @@
             #- type: CEGridStability
             - type: CEZLevelChasm
             - type: CEMurkedMap
+
+- type: wildlandsConfig
+  id: Shaar
+  center: -16, -3 # Lucson sphere position
+  cityModifiers: !type:AllSelector
+    children:
+    # Ore veins
+    - id: CEWildlandsModifierOreCoalRatio10
+    - id: CEWildlandsModifierOreIronRatio10
+    - id: CEWildlandsModifierOreDiamondConstant10
+    - id: CEWildlandsModifierDamagedWoodenWallsRatio50
+    # Cores
+    - id: CEWildlandsModifierCoreIronConstant15
+    - id: CEWildlandsModifierCoreCoalConstant15
+    - id: CEWildlandsModifierCoreCrystalConstant15
+    - id: CEWildlandsModifierCoreDiamondConstant1
+  wildlandsModifiers: !type:AllSelector
+    children:
+    - id: CEWildlandsModifierOreCoalNoise
+      prob: 0.75
+    - id: CEWildlandsModifierOreIronNoise
+      prob: 0.75
+    - id: CEWildlandsModifierOreCrystalNoise
+      prob: 0.5
+  # Every level samples the same blended value (shared noise, size and distance), so a level's footprint
+  # only depends on its threshold: deeper levels use higher thresholds and can never outgrow the surface.
+  layersByDepth:
+  #MARK: 1 Hills top
+    1:
+    - !type:TileNoiseDistanceLayer # hills footprint
+      size: &size 280, 280 # CEMurkLucsonSphere35 boundary diameter
+      distanceConfig: &distance !type:EuclideanSquaredDistance
+        blendWeight: 0.55
+      fill:
+      - tile: CEGrassAutumnTall
+        threshold: 0.58
+        noise: &islandNoise
+          frequency: 0.0375
+          noiseType: OpenSimplex2
+          fractalType: FBm
+          octaves: 5
+          lacunarity: 2
+          gain: 0.5
+    - !type:TileNoiseDistanceLayer # forested hill cores
+      size: *size
+      distanceConfig: *distance
+      fill:
+      - tile: CEStone
+        threshold: 0.66
+        noise: *islandNoise
+    - !type:FillBiomeLayer # rim = meadow. Must run before the forest: it never outputs CEStone, so the forest mask stays clean.
+      biome: CEGrasslandAutumn
+      mask:
+      - !type:TileMask
+        tiles:
+        - CEGrassAutumnTall
+    - !type:FillBiomeLayer # center = forest
+      biome: CEGrasslandAutumnForest
+      seed: 2
+      mask:
+      - !type:TileMask
+        tiles:
+        - CEStone
+  #MARK: 0 Surface
+    0:
+    - !type:TileNoiseDistanceLayer # island footprint, the widest level
+      size: *size
+      distanceConfig: *distance
+      fill:
+      - tile: CEGrassAutumnTall
+        threshold: 0.45
+        noise: *islandNoise
+    - !type:TileNoiseDistanceLayer # rocky island cores
+      size: *size
+      distanceConfig: *distance
+      fill:
+      - tile: CEStone
+        threshold: 0.6
+        noise: *islandNoise
+    - !type:FillBiomeLayer
+      biome: CEGrasslandAutumnForest
+      seed: 1
+      mask:
+      - !type:TileMask
+        tiles:
+        - CEGrassAutumnTall
+    - !type:FillBiomeLayer
+      biome: CECavesGeneric
+      seed: 1
+      mask:
+      - !type:TileMask
+        tiles:
+        - CEStone
+  #MARK: -1 Caves
+    -1:
+    - !type:TileNoiseDistanceLayer
+      size: *size
+      distanceConfig: *distance
+      fill:
+      - tile: CEStone
+        threshold: 0.45 # same footprint as the surface
+        noise: *islandNoise
+    - !type:FillBiomeLayer
+      biome: CECavesGeneric
+      seed: 2
+      mask:
+      - !type:TileMask
+        tiles:
+        - CEStone
+  #MARK: -2 Caves
+    -2:
+    - !type:TileNoiseDistanceLayer
+      size: *size
+      distanceConfig: *distance
+      fill:
+      - tile: CEStone
+        threshold: 0.59
+        noise: *islandNoise
+    - !type:FillBiomeLayer
+      biome: CECavesGeneric
+      seed: 3
+      mask:
+      - !type:TileMask
+        tiles:
+        - CEStone

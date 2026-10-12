@@ -1,5 +1,3 @@
-using System.Threading;
-using System.Threading.Tasks;
 using Content.Server.Decals;
 using Content.Server.Parallax;
 using Content.Shared.Light.EntitySystems;
@@ -10,11 +8,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Server._CE.Procedural.Generation;
 
 /// <summary>
-/// Everything an <see cref="ICEProceduralLayer"/> needs to run, bundled so the interface method
-/// takes one parameter regardless of what a given layer actually uses. Also the context passed to
-/// demiplane location generators — they share this one type rather than each subsystem defining its
-/// own field-identical copy. A record so a modifier or a per-level pass can decorrelate itself with
-/// e.g. <c>context with { Seed = context.Seed + offset }</c> instead of a whole new context.
+/// Everything a procedural layer needs; Region limits which tiles it may touch.
 /// </summary>
 public sealed record CEProceduralGenerationContext(
     IEntityManager EntityManager,
@@ -25,6 +19,13 @@ public sealed record CEProceduralGenerationContext(
     DecalSystem Decals,
     SharedRoofSystem Roof,
     int Seed,
-    int Difficulty,
-    Func<ValueTask> Suspend,
-    CancellationToken Cancellation);
+    Vector2i Center,
+    CEProceduralRegion Region);
+
+/// <summary>
+/// Either the inside or the outside of a fixed tile set, shared by every z-level of a network.
+/// </summary>
+public sealed class CEProceduralRegion(HashSet<Vector2i> tiles, bool inside)
+{
+    public bool Contains(Vector2i tile) => tiles.Contains(tile) == inside;
+}

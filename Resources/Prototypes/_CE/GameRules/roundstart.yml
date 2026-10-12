@@ -11,21 +11,3 @@
   components:
   - type: CEMagicEssenceNodeRule
     nodeCount: 5
-
-# variation passes
-- type: entity
-  id: CEBasicRoundstartVariation
-  parent: CEBaseGameRule
-  components:
-  - type: RoundstartStationVariationRule
-    rules:
-    # Ore veins
-    - id: CEGameRuleCoalOreDistributionVariationPass
-    - id: CEGameRuleIronOreDistributionVariationPass
-    - id: CEGameRuleDiamondOreDistributionVariationPass
-    - id: CEGameRuleWallsDamagedVariationPass
-    # Cores
-    - id: CEStaticIronCoreVariationPass
-    - id: CEStaticCoalCoreVariationPass
-    - id: CEStaticCrystalCoreVariationPass
-    - id: CEStaticDiamondCoreVariationPass

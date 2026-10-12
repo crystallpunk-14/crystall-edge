@@ -25,4 +25,39 @@ public abstract partial class ICETileMask
     /// their own grid lookup, since the caller already paid for one while enumerating the grid.
     /// </summary>
     public abstract bool Matches(CEProceduralGenerationContext context, EntityUid map, MapGridComponent grid, Vector2i tile, Tile currentTile);
+
+    /// <summary>
+    /// Snapshots every existing tile of <paramref name="map"/> that lies inside the context's region
+    /// and passes all <paramref name="masks"/>.
+    /// </summary>
+    public static List<Vector2i> CollectTiles(
+        CEProceduralGenerationContext context,
+        EntityUid map,
+        MapGridComponent grid,
+        List<ICETileMask> masks)
+    {
+        var targets = new List<Vector2i>();
+        var enumerator = context.Map.GetAllTilesEnumerator(map, grid);
+        while (enumerator.MoveNext(out var tileRef))
+        {
+            var indices = tileRef.Value.GridIndices;
+            if (!context.Region.Contains(indices))
+                continue;
+
+            var passes = true;
+            foreach (var mask in masks)
+            {
+                if (mask.Matches(context, map, grid, indices, tileRef.Value.Tile) == mask.Inverted)
+                {
+                    passes = false;
+                    break;
+                }
+            }
+
+            if (passes)
+                targets.Add(indices);
+        }
+
+        return targets;
+    }
 }

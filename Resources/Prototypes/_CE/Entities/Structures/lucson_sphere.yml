@@ -103,7 +103,7 @@
   - type: CEMurkSource
     intensity: -25
   - type: CEMurkBoundary
-    radius: 50
+    radius: 100
 
 - type: entity
   parent: CEMurkLucsonSphere
@@ -113,7 +113,7 @@
   - type: CEMurkSource
     intensity: -35
   - type: CEMurkBoundary
-    radius: 70
+    radius: 140
 
 - type: entity
   parent: CEMurkLucsonSphere
@@ -123,7 +123,7 @@
   - type: CEMurkSource
     intensity: -50
   - type: CEMurkBoundary
-    radius: 100
+    radius: 200
 
 - type: entity
   parent: CEMurkLucsonSphere
@@ -133,7 +133,7 @@
   - type: CEMurkSource
     intensity: -75
   - type: CEMurkBoundary
-    radius: 150
+    radius: 300
 
 - type: entity
   parent: CEMurkLucsonSphere
@@ -143,4 +143,4 @@
   - type: CEMurkSource
     intensity: -100
   - type: CEMurkBoundary
-    radius: 200
+    radius: 400

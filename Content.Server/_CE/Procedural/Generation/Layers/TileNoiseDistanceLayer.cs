@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Content.Server._CE.Procedural.Generation.Distance;
 using Content.Shared.Maps;
 using Robust.Shared.Map;
@@ -18,7 +17,7 @@ namespace Content.Server._CE.Procedural.Generation.Layers;
 public sealed partial class TileNoiseDistanceLayer : ICEProceduralLayer
 {
     /// <summary>
-    /// Area to sample, centered on (0, 0).
+    /// Area to sample, centered on <see cref="CEProceduralGenerationContext.Center"/>.
     /// </summary>
     [DataField(required: true)]
     public Vector2i Size;
@@ -32,7 +31,7 @@ public sealed partial class TileNoiseDistanceLayer : ICEProceduralLayer
     [DataField(required: true)]
     public List<TileNoiseFill> Fill = new();
 
-    public async Task Apply(CEProceduralGenerationContext context, EntityUid map)
+    public void Apply(CEProceduralGenerationContext context, EntityUid map)
     {
         var grid = context.EntityManager.GetComponent<MapGridComponent>(map);
 
@@ -51,6 +50,10 @@ public sealed partial class TileNoiseDistanceLayer : ICEProceduralLayer
         {
             for (var y = area.Bottom; y <= area.Top; y++)
             {
+                var indices = context.Center + new Vector2i(x, y);
+                if (!context.Region.Contains(indices))
+                    continue;
+
                 foreach (var fill in Fill)
                 {
                     var value = fill.Noise.GetNoise(x, y);
@@ -68,14 +71,11 @@ public sealed partial class TileNoiseDistanceLayer : ICEProceduralLayer
                         continue;
 
                     var tileDef = context.TileDefManager[fill.Tile.Id];
-                    tiles.Add((new Vector2i(x, y), new Tile(tileDef.TileId)));
+                    tiles.Add((indices, new Tile(tileDef.TileId)));
                     // First matching fill wins — earlier entries take precedence over later ones.
                     break;
                 }
             }
-
-            await context.Suspend();
-            context.Cancellation.ThrowIfCancellationRequested();
         }
 
         context.Map.SetTiles(map, grid, tiles);
