@@ -95,8 +95,8 @@
       max: 3 
     minDistance: 100 # clear of the snow island's halo and of each other
     area: !type:RingArea
-      minRadius: 90
-      maxRadius: 170
+      minRadius: 50
+      maxRadius: 100
   cityModifiers: !type:AllSelector
     children: 
     # Ore veins
@@ -117,6 +117,8 @@
       prob: 0.75
     - id: CEWildlandsModifierOreCrystalNoise
       prob: 0.5
+    - id: CEWildlandsModifierTestRoom
+    - id: CEWildlandsModifierDamagedWoodenWallsRatio50
   # Every level samples the same blended value (shared noise, size and distance), so a level's footprint
   # only depends on its threshold: deeper levels use higher thresholds and can never outgrow the surface.
   layersByDepth:
@@ -179,7 +181,7 @@
       point: voidHole
       layers: &voidHoleLayers
       - !type:TileNoiseDistanceLayer
-        size: 60, 60
+        size: 90, 90
         distanceConfig: !type:EuclideanSquaredDistance
           blendWeight: 0.8
         fill:
