@@ -160,17 +160,20 @@ public sealed partial class CEDayCycleSystem : EntitySystem
     }
 
     /// <summary>
-    /// Returns how long the daylight part of the cycle lasts on the map, from dawn to sunset.
-    /// Returns false if the day threshold is never crossed there (it's always day or always night)
+    /// Returns how far the daylight on the map has progressed: 0 at dawn, 1 at sunset.
+    /// Returns false at night, or if the day threshold is never crossed there (it's always day or always night)
     /// </summary>
-    public bool TryGetDayDuration(Entity<LightCycleComponent?> map, out TimeSpan duration)
+    public bool TryGetDaylightProgress(Entity<LightCycleComponent?> map, out float progress)
     {
-        duration = TimeSpan.Zero;
+        progress = 0f;
 
-        if (!Resolve(map, ref map.Comp, false) || !TryGetDawnProgress(map, out var dawn))
+        if (!Resolve(map, ref map.Comp, false) || !IsDayNow(map))
             return false;
 
-        duration = TimeSpan.FromSeconds((1f - 2f * dawn) * GetCycleDuration(map.Comp));
+        if (!TryGetDayProgress(map, out var dayProgress) || !TryGetDawnProgress(map, out var dawn))
+            return false;
+
+        progress = Math.Clamp((dayProgress - dawn) / (1f - 2f * dawn), 0f, 1f);
         return true;
     }
 

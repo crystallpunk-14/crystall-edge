@@ -565,7 +565,7 @@
   resultCount: 1
 
 - type: CERecipe
-  id: CEMachineCoreGuildLightAltar
+  id: CEMachineCoreMurkShieldGenerator
   parent: CEBaseEngineeringTableRecipe
   category: MachineCore
   craftTime: 2.0
@@ -576,7 +576,7 @@
   - !type:StackResource
     stack: CEMachinePartEnergyLine
     count: 3
-  result: CEMachineCoreGuildLightAltar
+  result: CEMachineCoreMurkShieldGenerator
   resultCount: 1
 
 - type: CERecipe

@@ -1,14 +1,14 @@
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
-namespace Content.Shared._CE.GuildLight;
+namespace Content.Shared._CE.MurkShield;
 
 /// <summary>
-/// The single daily light of the adventurers' guild. Dims linearly from full strength at dawn down to
-/// <see cref="DuskFraction"/> at sunset, then collapses to nothing over <see cref="CollapseDuration"/> and vanishes.
-/// Drives the murk source intensity and the point light radius together.
+/// The single daily murk shield of the adventurers' guild. Follows the time of day of its z-network surface:
+/// dims linearly from full strength at dawn down to <see cref="DuskFraction"/> at sunset, then collapses to nothing
+/// over <see cref="CollapseDuration"/> and vanishes. Drives the murk source intensity and the point light radius together.
 /// </summary>
 [RegisterComponent, AutoGenerateComponentPause]
-public sealed partial class CEGuildLightComponent : Component
+public sealed partial class CEMurkShieldComponent : Component
 {
     /// <summary>
     /// Murk source intensity at full charge, negative dispels murk.
@@ -31,9 +31,9 @@ public sealed partial class CEGuildLightComponent : Component
     [DataField]
     public float SyncThreshold = 0.05f;
 
+    /// <summary>
+    /// When the shield met its first night and started collapsing. Null while it lives through the day.
+    /// </summary>
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
-    public TimeSpan DawnTime;
-
-    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
-    public TimeSpan SunsetTime;
+    public TimeSpan? CollapseStart;
 }

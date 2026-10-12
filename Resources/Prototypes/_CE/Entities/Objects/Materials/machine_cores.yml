@@ -218,11 +218,11 @@
 # Guild
 
 - type: entity
-  id: CEMachineCoreGuildLightAltar
+  id: CEMachineCoreMurkShieldGenerator
   parent: CEBaseMachineCore
-  name: guild light altar machine core
+  name: murk shield generator machine core
   components:
   - type: MachineBoard
-    prototype: CEGuildLightAltar
+    prototype: CEMurkShieldGenerator
   - type: StaticPrice
     price: 150

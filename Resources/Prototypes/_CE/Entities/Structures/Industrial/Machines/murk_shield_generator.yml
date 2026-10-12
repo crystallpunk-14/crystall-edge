@@ -3,13 +3,13 @@
   - CEConstructibleMachine
   - CEBaseMachinePowered
   - BaseMachine
-  id: CEGuildLightAltar
+  id: CEMurkShieldGenerator
   categories: [ ForkFiltered ]
-  name: guild light altar
-  description: Kindles the guild light at every dawn, if it has power. Only one light burns at a time, no matter how many altars there are.
+  name: murk shield generator
+  description: Kindles the murk shield at every dawn, if it has power. Only one shield burns at a time, no matter how many generators there are.
   components:
   - type: Machine
-    board: CEMachineCoreGuildLightAltar
+    board: CEMachineCoreMurkShieldGenerator
   - type: LitOnPowered
   - type: Fixtures
     fixtures:
@@ -39,7 +39,7 @@
   - type: PointLight
     radius: 2
     energy: 2
-    color: "#efedff"
+    color: "#eef2f5"
     enabled: false
   - type: Clickable
   - type: PlaceableSurface
@@ -47,4 +47,4 @@
     powerLoad: 3
   - type: Rotatable
   - type: Appearance
-  - type: CEGuildLightAltar
+  - type: CEMurkShieldGenerator
