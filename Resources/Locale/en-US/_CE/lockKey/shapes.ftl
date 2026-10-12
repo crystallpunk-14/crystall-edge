@@ -1,3 +1,9 @@
+# Guild
+
+ce-lock-shape-guild-lobby = guild lobby
+ce-lock-shape-guild-inner = guild inner rooms
+ce-lock-shape-guild-storage = guild storage
+
 # Tavern
 
 ce-lock-shape-tavern-hall = tavern hall

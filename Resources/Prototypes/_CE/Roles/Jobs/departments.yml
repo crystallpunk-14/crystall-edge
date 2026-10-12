@@ -11,6 +11,7 @@
   - CETavernmaster
   - CEBrigadier
   - CEAcademyRector
+  - CEGuildmaster
 
 - type: department
   id: CEGuard
@@ -70,3 +71,14 @@
   - CEAcademyStudent
   - CEAcademyProfessor
   - CEAcademyRector
+
+- type: department
+  id: CEGuild
+  name: department-CEGuild
+  description: department-CEGuild-desc
+  weight: 6
+  color: "#a83a32"
+  editorHidden: false
+  roles:
+  - CEGuildmaster
+  - CEAdventurer

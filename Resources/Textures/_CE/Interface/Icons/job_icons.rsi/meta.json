@@ -48,6 +48,12 @@
     },
     {
       "name": "rector"
+    },
+    {
+      "name": "guildmaster"
+    },
+    {
+      "name": "adventurer"
     }
   ]
 }

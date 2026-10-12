@@ -1,0 +1,50 @@
+- type: job
+  id: CEGuildmaster
+  setPreference: true
+  name: ce-job-name-guildmaster
+  description: ce-job-desc-guildmaster
+  playTimeTracker: CEJobGuildmaster
+  startingGear: CEGuildmasterGear
+  icon: CEJobIconGuildmaster
+  supervisors: ce-job-supervisors-empire
+  requireAdminNotify: true
+  joinNotifyCrew: true
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: CEGuild
+      time: 2.5h
+
+- type: startingGear
+  id: CEGuildmasterGear
+  equipment:
+    belt: CEKeyRingGuildmaster
+    pocket1: CEWalletFilledGuildmaster
+  storage:
+    back:
+    - CERubberStampGuildmaster
+
+- type: entity
+  id: CEWalletFilledGuildmaster
+  parent: CEWallet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents: #200cp total
+    - id: CECoinGold1
+    - id: CECoinSilver5
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinSilver1
+    - id: CECoinCopper10
+
+- type: entity
+  id: CEKeyRingGuildmaster
+  parent: CEBaseKeyRing
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+    - id: CEKeyGuildLobby
+    - id: CEKeyGuildInner
+    - id: CEKeyGuildStorage
