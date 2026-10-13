@@ -1280,3 +1280,58 @@
   id: 1111
   time: '2026-10-10T17:48:50.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/519
+- author: TheShuEd
+  changes:
+  - message: "The Priest gains a new skill, \u201CResurrection,\u201D which allows\
+      \ them to revive the dead."
+    type: Add
+  - message: The Priest's skill that casts a protective sphere has been removed
+    type: Remove
+  - message: "Ghosts who can still return to their bodies can no longer see other\
+      \ players\u2019 hidden roles. A button has been added allowing them to permanently\
+      \ leave their bodies to view all hidden information about the round."
+    type: Tweak
+  - message: "Fixed an issue where the Guard\u2019s mace attacks did not consume energy."
+    type: Fix
+  id: 1112
+  time: '2026-10-11T14:14:43.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/521
+- author: TheShuEd
+  changes:
+  - message: Added 20 new wallpaper types.
+    type: Add
+  - message: Fixed bugs with wallpaper rendering
+    type: Fix
+  - message: Improved placing wallpaper workflow
+    type: Tweak
+  id: 1113
+  time: '2026-10-13T09:29:13.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/526
+- author: TheShuEd
+  changes:
+  - message: Added 28 new types of carpets
+    type: Add
+  - message: Large procedurally generated areas shrouded in murk now appear around
+      the game map.
+    type: Add
+  - message: Added the Adventurer and Guildmaster roles.
+    type: Add
+  - message: Added a wristwatch that shows the time remaining until sunset and sunrise.
+    type: Add
+  - message: "Added a new machine, the \u201CMurk Shield Generator.\u201D It creates\
+      \ a portable sphere that protects against murk every dawn. The sphere lasts\
+      \ until sunset."
+    type: Add
+  - message: "The \u201CCreate Light\u201D spell has been removed from academy research."
+    type: Remove
+  - message: Hoverboards has been removed from the academy research. They can now
+      be freely crafted at the engineering table but require diamonds.
+    type: Tweak
+  - message: The duration of the day-night cycle has been increased from 8 to 15 minutes.
+    type: Tweak
+  - message: Fixed a bug that caused flying creatures to sometimes get stuck and be
+      unable to ascend to higher levels.
+    type: Fix
+  id: 1114
+  time: '2026-10-13T10:07:09.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/525
