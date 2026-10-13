@@ -1335,3 +1335,19 @@
   id: 1114
   time: '2026-10-13T10:07:09.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/525
+- author: TheShuEd
+  changes:
+  - message: Engineers' Insulator Armor no longer slows down the wearer.
+    type: Tweak
+  - message: Fixed bugs with cooking where dishes would get stuck food state after
+      spilling the solution.
+    type: Fix
+  - message: Fixed a bug where text written on paper was not visible.
+    type: Fix
+  - message: Fixed a bug that prevented tables from being destroyed.
+    type: Fix
+  - message: Imperial laws have been removed from the game. Anarchy!
+    type: Remove
+  id: 1115
+  time: '2026-10-13T15:38:15.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/527
