@@ -7,5 +7,8 @@ ce-workbench-cant-craft = Крафт не удался!
 
 ce-workbench-reagent-req = {$count}u {$reagent} с {$purity}%+ чистоты
 
+ce-workbench-skillbook-req = Книга с знаниями о {$skill}
+ce-workbench-food-req = Тарелка с {$food}
+
 ce-autocrafter-ui-title = Автоматический крафт
 ce-autocrafter-select-recipe = Выбрать рецепт
