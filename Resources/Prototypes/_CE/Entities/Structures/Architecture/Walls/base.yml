@@ -18,6 +18,7 @@
   - type: IconSmooth
     key: CEwall
     base: stone
+    index: 0 # corners go to the bottom of the layer list, so wallpaper layers always draw over them
   - type: Icon
     state: full
   - type: PlacementReplacement
