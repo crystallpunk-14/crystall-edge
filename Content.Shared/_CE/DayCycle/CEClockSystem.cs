@@ -13,7 +13,7 @@ public sealed partial class CEClockSystem : EntitySystem
         if (Transform(ent).MapUid is not { } map)
             return;
 
-        if (_dayCycle.TryGetTimeUntilTransitionText(map, out var text))
+        if (_dayCycle.TryGetClockText(map, out var text))
             args.PushText(text);
     }
 }

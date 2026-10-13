@@ -137,15 +137,9 @@ public sealed partial class CEDayCycleSystem : EntitySystem
         if (!Resolve(map, ref map.Comp, false) || !TryGetDayProgress(map, out var progress))
             return false;
 
-        // Mirrors SharedLightCycleSystem.CalculateLightLevel: (crest - shift) * sin^6(PI * progress) + shift, clipped at ClipLight
-        var crest = MathF.Max(0f, map.Comp.MaxLightLevel);
-        var shift = MathF.Max(0f, map.Comp.MinLightLevel);
-        var threshold = GetThreshold(map);
-
-        if (threshold <= shift || threshold >= MathF.Min(crest, map.Comp.ClipLight))
+        if (!TryGetDawnProgress(map, out var dawn))
             return false;
 
-        var dawn = MathF.Asin(MathF.Pow((threshold - shift) / (crest - shift), 1f / 6f)) / MathF.PI;
         var sunset = 1f - dawn;
 
         float left;
@@ -166,6 +160,47 @@ public sealed partial class CEDayCycleSystem : EntitySystem
     }
 
     /// <summary>
+    /// Returns how far the daylight on the map has progressed: 0 at dawn, 1 at sunset.
+    /// Returns false at night, or if the day threshold is never crossed there (it's always day or always night)
+    /// </summary>
+    public bool TryGetDaylightProgress(Entity<LightCycleComponent?> map, out float progress)
+    {
+        progress = 0f;
+
+        if (!Resolve(map, ref map.Comp, false) || !IsDayNow(map))
+            return false;
+
+        if (!TryGetDayProgress(map, out var dayProgress) || !TryGetDawnProgress(map, out var dawn))
+            return false;
+
+        progress = Math.Clamp((dayProgress - dawn) / (1f - 2f * dawn), 0f, 1f);
+        return true;
+    }
+
+    /// <summary>
+    /// Cycle progress (0 is midnight, 0.5 is noon) at which the light level crosses the day threshold in the morning.
+    /// Sunset is mirrored at 1 - dawn
+    /// </summary>
+    private bool TryGetDawnProgress(Entity<LightCycleComponent?> map, out float dawn)
+    {
+        dawn = 0f;
+
+        if (!Resolve(map, ref map.Comp, false))
+            return false;
+
+        // Mirrors SharedLightCycleSystem.CalculateLightLevel: (crest - shift) * sin^6(PI * progress) + shift, clipped at ClipLight
+        var crest = MathF.Max(0f, map.Comp.MaxLightLevel);
+        var shift = MathF.Max(0f, map.Comp.MinLightLevel);
+        var threshold = GetThreshold(map);
+
+        if (threshold <= shift || threshold >= MathF.Min(crest, map.Comp.ClipLight))
+            return false;
+
+        dawn = MathF.Asin(MathF.Pow((threshold - shift) / (crest - shift), 1f / 6f)) / MathF.PI;
+        return true;
+    }
+
+    /// <summary>
     /// Localized "time left until dawn/sunset" text for the map, see <see cref="TryGetTimeUntilTransition"/>
     /// </summary>
     public bool TryGetTimeUntilTransitionText(Entity<LightCycleComponent?> map, [NotNullWhen(true)] out string? text)
@@ -176,6 +211,34 @@ public sealed partial class CEDayCycleSystem : EntitySystem
             return false;
 
         text = Loc.GetString(untilDawn ? "ce-day-cycle-until-dawn" : "ce-day-cycle-until-sunset", ("time", remaining));
+        return true;
+    }
+
+    /// <summary>
+    /// Localized "Day N" / "Night N" text for the map. Returns false until the first dawn of the round
+    /// </summary>
+    public bool TryGetDayNumberText(Entity<CEDayCycleComponent?> map, [NotNullWhen(true)] out string? text)
+    {
+        text = null;
+
+        if (!Resolve(map, ref map.Comp, false) || map.Comp.DayNumber <= 0)
+            return false;
+
+        text = Loc.GetString(IsDayNow(map.Owner) ? "ce-day-cycle-day" : "ce-day-cycle-night", ("number", map.Comp.DayNumber));
+        return true;
+    }
+
+    /// <summary>
+    /// Text shown by clocks: the current day number and the time left until dawn or sunset
+    /// </summary>
+    public bool TryGetClockText(EntityUid map, [NotNullWhen(true)] out string? text)
+    {
+        if (!TryGetTimeUntilTransitionText(map, out text))
+            return false;
+
+        if (TryGetDayNumberText(map, out var day))
+            text = $"{day}\n{text}";
+
         return true;
     }
 

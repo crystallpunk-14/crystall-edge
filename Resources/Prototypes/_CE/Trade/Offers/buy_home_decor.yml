@@ -932,3 +932,22 @@
   reward:
   - !type:CETradeSpawnReward
     proto: CEPlushieGoldenAgaric
+
+- type: tradeOffer
+  id: CETradeOfferClothingWristwatch
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEClothingWristwatch
+
+- type: tradeOffer
+  id: CETradeOfferClothingWristwatchGold
+  weight: 0.1
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEClothingWristwatchGold

@@ -1,3 +1,4 @@
+using Content.Shared._CE.DayCycle;
 using Content.Shared._CE.MagicEnergy.Components;
 using Content.Shared._CE.MagicEssence.Components;
 using Content.Shared._CE.MagicEssence.Events;
@@ -56,6 +57,7 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, CEMagicEssenceScanEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, CECheckMagicVisionEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, CERefreshWaypointersEvent>(RefRelayInventoryEvent);
+        SubscribeLocalEvent<InventoryComponent, CECheckTimeSenseEvent>(RefRelayInventoryEvent);
         //CrystallEdge end
 
         SubscribeLocalEvent<InventoryComponent, DamageModifyEvent>(RelayInventoryEvent);

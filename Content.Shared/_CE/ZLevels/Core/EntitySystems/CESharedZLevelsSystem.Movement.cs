@@ -82,8 +82,6 @@ public abstract partial class CESharedZLevelsSystem
     [SubscribeLocalEvent]
     private void OnZLevelMapMove(Entity<CEZPhysicsComponent> ent, ref CEZLevelMapMoveEvent args)
     {
-        ent.Comp.CurrentZLevel = args.CurrentZLevel;
-        DirtyField(ent, ent.Comp, nameof(CEZPhysicsComponent.CurrentZLevel));
         RequestCacheMovement(ent);
     }
 

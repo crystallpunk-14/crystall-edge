@@ -2770,13 +2770,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -29.5,-13.5
-- proto: CEClothingBackPortableLighthouse
-  entities:
-  - uid: 1503
-    components:
-    - type: Transform
-      parent: 1
-      pos: -2.6732345,-17.731834
 - proto: CEClothingCloakCommandant
   entities:
   - uid: 2806

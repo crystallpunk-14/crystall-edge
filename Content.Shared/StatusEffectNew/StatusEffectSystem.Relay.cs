@@ -1,3 +1,4 @@
+using Content.Shared._CE.DayCycle;
 using Content.Shared._CE.EntityEffect.Effects;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared._CE.ZLevels.Damage;
@@ -43,6 +44,7 @@ public sealed partial class StatusEffectsSystem
         SubscribeLocalEvent<StatusEffectContainerComponent, BeforeThrowEvent>(RefRelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, CEZFallingDamageCalculateEvent>(RelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, CEGetOutgoingDamageEvent>(RelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, CECheckTimeSenseEvent>(RefRelayStatusEffectEvent);
         //CrystallEdge zone end
 
         SubscribeLocalEvent<StatusEffectContainerComponent, LocalPlayerAttachedEvent>(RelayStatusEffectEvent);

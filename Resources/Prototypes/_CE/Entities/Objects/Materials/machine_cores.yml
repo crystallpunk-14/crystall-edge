@@ -215,4 +215,14 @@
   - type: StaticPrice
     price: 250
 
-# Trading
+# Guild
+
+- type: entity
+  id: CEMachineCoreMurkShieldGenerator
+  parent: CEBaseMachineCore
+  name: murk shield generator machine core
+  components:
+  - type: MachineBoard
+    prototype: CEMurkShieldGenerator
+  - type: StaticPrice
+    price: 150

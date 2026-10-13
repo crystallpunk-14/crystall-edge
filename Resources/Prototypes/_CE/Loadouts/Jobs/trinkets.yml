@@ -7,6 +7,7 @@
   - CESafeFallingAmulet
   - CELantern
   - CECoinSilver10
+  - CEClothingWristwatch
 
 - type: loadout
   id: CESafeFallingAmulet
@@ -24,3 +25,9 @@
   storage:
     back:
     - CECoinSilver10
+
+- type: loadout
+  id: CEClothingWristwatch
+  storage:
+    back:
+    - CEClothingWristwatch

@@ -1,13 +1,4 @@
 - type: tradeOffer
-  id: SellSpellbookConjureLight
-  shop: Orders
-  cost:
-  - !type:SkillBookResource
-    skill: ConjureLight
-  receive:
-    bonus: 10
-
-- type: tradeOffer
   id: SellSpellbookFeatherFall
   shop: Orders
   cost:
