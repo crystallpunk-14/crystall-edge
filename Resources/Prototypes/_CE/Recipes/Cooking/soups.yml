@@ -12,6 +12,20 @@
   requirements:
   - !type:AlwaysMet
 
+# Overcooked soup, see CEFoodType burntRecipe. No requirements: never cooked directly.
+- type: CECookingRecipe
+  id: BurntSoup
+  foodType: Soup
+  foodData:
+    name: ce-soup-recipe-burned-trash-name
+    desc: ce-soup-recipe-burned-trash-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Soups/food.rsi
+      state: trash
+      color: "#4a4a4a"
+    statusEffects:
+      CEStatusEffectBadFoodVomit: 10
+
 # 1 req
 
 # We dont have 1 req for soups because all soups is water + something

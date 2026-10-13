@@ -1,6 +1,9 @@
 ce-soup-recipe-trash-name = unidentified brew
 ce-soup-recipe-trash-desc = A failed attempt at soup.
 
+ce-soup-recipe-burned-trash-name = burnt brew
+ce-soup-recipe-burned-trash-desc = This could have been a delicious soup, but the cook left it on the fire for too long.
+
 ce-soup-recipe-veg-name = vegetarian soup
 ce-soup-recipe-veg-desc = Gluten-free, meat-free, dye-free, preservative-free, and gmo-free. Nourished with water and chamomile.
 

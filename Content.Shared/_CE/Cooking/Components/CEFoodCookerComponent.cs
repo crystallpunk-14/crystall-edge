@@ -13,26 +13,21 @@ using Robust.Shared.Serialization;
 namespace Content.Shared._CE.Cooking.Components;
 
 /// <summary>
-/// Prepares food from ingredients and places it in the FoodHolderComponent
+/// Prepares food from ingredients and places it in the <see cref="CEFoodHolderComponent"/> on the same entity.
+/// Food type and solution are taken from that holder.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true), Access(typeof(CESharedCookingSystem))]
+[RegisterComponent, NetworkedComponent, Access(typeof(CESharedCookingSystem))]
 public sealed partial class CEFoodCookerComponent : Component
 {
     [DataField(required: true)]
-    public ProtoId<CEFoodTypePrototype> FoodType;
-
-    [DataField(required: true)]
     public string ContainerId = string.Empty;
-
-    [DataField(required: true)]
-    public string SolutionId = string.Empty;
 
     public DoAfterId? DoAfterId = null;
 
     /// <summary>
     /// The moment in time when this entity was last heated. Used for calculations when DoAfter cooking should be reset.
     /// </summary>
-    [DataField, AutoNetworkedField]
+    [DataField]
     public TimeSpan LastHeatingTime = TimeSpan.Zero;
 
     /// <summary>
@@ -46,29 +41,16 @@ public sealed partial class CEFoodCookerComponent : Component
     /// </remarks>
     [DataField]
     public TimeSpan HeatingFrequencyRequired = TimeSpan.FromSeconds(2f);
-
-    //[DataField]
-    //public EntProtoId? BurntAdditionalSpawn = "CEFire";
-
-    //[DataField]
-    //public float BurntAdditionalSpawnProb = 0.2f;
 }
 
+/// <summary>
+/// Everything about a dish that reagents cannot store. Copy it with <c>ISerializationManager.CreateCopy</c>:
+/// the visual layers are reference types, so a shallow copy would share them with the recipe prototype.
+/// </summary>
 [Serializable]
 [DataDefinition]
 public sealed partial class CEFoodData
 {
-    public CEFoodData(CEFoodData data)
-    {
-        CurrentRecipe = data.CurrentRecipe;
-        Name = data.Name;
-        Desc = data.Desc;
-        Visuals = new List<PrototypeLayerData>(data.Visuals);
-        Trash = new List<EntProtoId>(data.Trash);
-        Flavors = new HashSet<ProtoId<FlavorPrototype>>(data.Flavors);
-        StatusEffects = new Dictionary<EntProtoId, float>(data.StatusEffects);
-    }
-
     [DataField]
     public ProtoId<CECookingRecipePrototype>? CurrentRecipe;
 
@@ -81,6 +63,9 @@ public sealed partial class CEFoodData
     [DataField]
     public List<PrototypeLayerData> Visuals = new();
 
+    /// <summary>
+    /// Trash left from the ingredients. Dropped next to the food holder once its food runs out.
+    /// </summary>
     [DataField]
     public List<EntProtoId> Trash = new();
 

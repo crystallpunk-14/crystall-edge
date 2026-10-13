@@ -9,7 +9,6 @@ using Content.Shared._CE.Cooking.Components;
 using Content.Shared.DisplacementMap;
 using Content.Shared.Rounding;
 using Robust.Client.GameObjects;
-using Robust.Shared.Analyzers;
 
 namespace Content.Client._CE.Cooking;
 
@@ -35,12 +34,6 @@ public sealed partial class CEClientCookingSystem : CESharedCookingSystem
         if (!TryComp<SpriteComponent>(ent, out var sprite))
             return;
 
-        if (ent.Comp.FoodData is null)
-            return;
-
-        if (ent.Comp.SolutionId is null ||  !Solution.TryGetSolution(ent.Owner, ent.Comp.SolutionId, out var soln, out var solution))
-            return;
-
         //Remove old layers
         foreach (var key in ent.Comp.RevealedLayers)
         {
@@ -48,6 +41,12 @@ public sealed partial class CEClientCookingSystem : CESharedCookingSystem
         }
 
         ent.Comp.RevealedLayers.Clear();
+
+        if (ent.Comp.FoodData is null)
+            return;
+
+        if (!Solution.TryGetSolution(ent.Owner, ent.Comp.SolutionId, out _, out var solution))
+            return;
 
         if (!_sprite.LayerMapTryGet((ent, sprite), ent.Comp.TargetLayerMap, out var index, true))
             return;

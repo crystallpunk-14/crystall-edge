@@ -309,7 +309,7 @@
   sprite: /Textures/_CE/Tiles/Stonebricks/stonebricks_square_carved.png
   variants: 4
   placementVariants:
-  - 1.0
+  - 5.0
   - 1.0
   - 1.0
   - 1.0
