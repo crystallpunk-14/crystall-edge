@@ -19,3 +19,162 @@
   - icon
   - icon2
   - icon3
+
+- type: ceWallpaper
+  id: PlainCrimsonWood
+  rsiPath: /Textures/_CE/Structures/Wallpaper/plain_crimson_wood.rsi
+  states:
+  - icon
+  - icon2
+  - icon3
+
+- type: ceWallpaper
+  id: PlainWineWood
+  rsiPath: /Textures/_CE/Structures/Wallpaper/plain_wine_wood.rsi
+  states:
+  - icon
+  - icon2
+  - icon3
+
+- type: ceWallpaper
+  id: OrnateRoseTonal
+  rsiPath: /Textures/_CE/Structures/Wallpaper/ornate_rose_tone.rsi
+  states:
+  - icon
+  - icon2
+
+- type: ceWallpaper
+  id: PlainTerracottaTonal
+  rsiPath: /Textures/_CE/Structures/Wallpaper/plain_terracotta_tone.rsi
+  states:
+  - icon
+  - icon2
+  - icon3
+
+- type: ceWallpaper
+  id: PlainOchreWood
+  rsiPath: /Textures/_CE/Structures/Wallpaper/plain_ochre_wood.rsi
+  states:
+  - icon
+  - icon2
+  - icon3
+
+- type: ceWallpaper
+  id: OrnateOliveTonal
+  rsiPath: /Textures/_CE/Structures/Wallpaper/ornate_olive_tone.rsi
+  states:
+  - icon
+  - icon2
+
+- type: ceWallpaper
+  id: PlainSageTonal
+  rsiPath: /Textures/_CE/Structures/Wallpaper/plain_sage_tone.rsi
+  states:
+  - icon
+  - icon2
+  - icon3
+
+- type: ceWallpaper
+  id: OrnateMossTonal
+  rsiPath: /Textures/_CE/Structures/Wallpaper/ornate_moss_tone.rsi
+  states:
+  - icon
+  - icon2
+
+- type: ceWallpaper
+  id: PlainEmeraldWood
+  rsiPath: /Textures/_CE/Structures/Wallpaper/plain_emerald_wood.rsi
+  states:
+  - icon
+  - icon2
+  - icon3
+
+- type: ceWallpaper
+  id: OrnatePineGold
+  rsiPath: /Textures/_CE/Structures/Wallpaper/ornate_pine_gold.rsi
+  states:
+  - icon
+  - icon2
+
+- type: ceWallpaper
+  id: PlainSeaWood
+  rsiPath: /Textures/_CE/Structures/Wallpaper/plain_sea_wood.rsi
+  states:
+  - icon
+  - icon2
+  - icon3
+
+- type: ceWallpaper
+  id: PlainPowderTonal
+  rsiPath: /Textures/_CE/Structures/Wallpaper/plain_powder_tone.rsi
+  states:
+  - icon
+  - icon2
+  - icon3
+
+- type: ceWallpaper
+  id: PlainAzureWood
+  rsiPath: /Textures/_CE/Structures/Wallpaper/plain_azure_wood.rsi
+  states:
+  - icon
+  - icon2
+  - icon3
+
+- type: ceWallpaper
+  id: OrnateRoyalTonal
+  rsiPath: /Textures/_CE/Structures/Wallpaper/ornate_royal_tone.rsi
+  states:
+  - icon
+  - icon2
+
+- type: ceWallpaper
+  id: OrnateIndigoTonal
+  rsiPath: /Textures/_CE/Structures/Wallpaper/ornate_indigo_tone.rsi
+  states:
+  - icon
+  - icon2
+
+- type: ceWallpaper
+  id: PlainChocolateTonal
+  rsiPath: /Textures/_CE/Structures/Wallpaper/plain_chocolate_tone.rsi
+  states:
+  - icon
+  - icon2
+  - icon3
+
+- type: ceWallpaper
+  id: PlainSandWood
+  rsiPath: /Textures/_CE/Structures/Wallpaper/plain_sand_wood.rsi
+  states:
+  - icon
+  - icon2
+  - icon3
+
+- type: ceWallpaper
+  id: OrnateIvoryTonal
+  rsiPath: /Textures/_CE/Structures/Wallpaper/ornate_ivory_tone.rsi
+  states:
+  - icon
+  - icon2
+
+- type: ceWallpaper
+  id: PlainAshTonal
+  rsiPath: /Textures/_CE/Structures/Wallpaper/plain_ash_tone.rsi
+  states:
+  - icon
+  - icon2
+  - icon3
+
+- type: ceWallpaper
+  id: StripesSandTerracotta
+  rsiPath: /Textures/_CE/Structures/Wallpaper/stripes_sand_terracotta.rsi
+  states:
+  - icon
+  - icon2
+
+- type: ceWallpaper
+  id: StripesAshTeal
+  rsiPath: /Textures/_CE/Structures/Wallpaper/stripes_ash_teal.rsi
+  states:
+  - icon
+  - icon2
