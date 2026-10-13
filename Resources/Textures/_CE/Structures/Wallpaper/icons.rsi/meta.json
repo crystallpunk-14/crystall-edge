@@ -27,6 +27,69 @@
     },
     {
       "name": "yellow_vertical_lines"
+    },
+    {
+      "name": "plain_crimson_wood"
+    },
+    {
+      "name": "plain_wine_wood"
+    },
+    {
+      "name": "ornate_rose_tone"
+    },
+    {
+      "name": "plain_terracotta_tone"
+    },
+    {
+      "name": "plain_ochre_wood"
+    },
+    {
+      "name": "ornate_olive_tone"
+    },
+    {
+      "name": "plain_sage_tone"
+    },
+    {
+      "name": "ornate_moss_tone"
+    },
+    {
+      "name": "plain_emerald_wood"
+    },
+    {
+      "name": "ornate_pine_gold"
+    },
+    {
+      "name": "plain_sea_wood"
+    },
+    {
+      "name": "plain_powder_tone"
+    },
+    {
+      "name": "plain_azure_wood"
+    },
+    {
+      "name": "ornate_royal_tone"
+    },
+    {
+      "name": "ornate_indigo_tone"
+    },
+    {
+      "name": "plain_chocolate_tone"
+    },
+    {
+      "name": "plain_sand_wood"
+    },
+    {
+      "name": "ornate_ivory_tone"
+    },
+    {
+      "name": "plain_ash_tone"
+    },
+    {
+      "name": "stripes_sand_terracotta"
+    },
+    {
+      "name": "stripes_ash_teal"
     }
   ]
 }

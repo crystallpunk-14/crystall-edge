@@ -580,6 +580,216 @@
     proto: CEWallpaperItemBlack
 
 - type: tradeOffer
+  id: CETradeOfferWallpaperItemPlainCrimsonWood
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemPlainCrimsonWood
+
+- type: tradeOffer
+  id: CETradeOfferWallpaperItemPlainWineWood
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemPlainWineWood
+
+- type: tradeOffer
+  id: CETradeOfferWallpaperItemOrnateRoseTonal
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemOrnateRoseTonal
+
+- type: tradeOffer
+  id: CETradeOfferWallpaperItemPlainTerracottaTonal
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemPlainTerracottaTonal
+
+- type: tradeOffer
+  id: CETradeOfferWallpaperItemPlainOchreWood
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemPlainOchreWood
+
+- type: tradeOffer
+  id: CETradeOfferWallpaperItemOrnateOliveTonal
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemOrnateOliveTonal
+
+- type: tradeOffer
+  id: CETradeOfferWallpaperItemPlainSageTonal
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemPlainSageTonal
+
+- type: tradeOffer
+  id: CETradeOfferWallpaperItemOrnateMossTonal
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemOrnateMossTonal
+
+- type: tradeOffer
+  id: CETradeOfferWallpaperItemPlainEmeraldWood
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemPlainEmeraldWood
+
+- type: tradeOffer
+  id: CETradeOfferWallpaperItemOrnatePineGold
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemOrnatePineGold
+
+- type: tradeOffer
+  id: CETradeOfferWallpaperItemPlainSeaWood
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemPlainSeaWood
+
+- type: tradeOffer
+  id: CETradeOfferWallpaperItemPlainPowderTonal
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemPlainPowderTonal
+
+- type: tradeOffer
+  id: CETradeOfferWallpaperItemPlainAzureWood
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemPlainAzureWood
+
+- type: tradeOffer
+  id: CETradeOfferWallpaperItemOrnateRoyalTonal
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemOrnateRoyalTonal
+
+- type: tradeOffer
+  id: CETradeOfferWallpaperItemOrnateIndigoTonal
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemOrnateIndigoTonal
+
+- type: tradeOffer
+  id: CETradeOfferWallpaperItemPlainChocolateTonal
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemPlainChocolateTonal
+
+- type: tradeOffer
+  id: CETradeOfferWallpaperItemPlainSandWood
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemPlainSandWood
+
+- type: tradeOffer
+  id: CETradeOfferWallpaperItemOrnateIvoryTonal
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemOrnateIvoryTonal
+
+- type: tradeOffer
+  id: CETradeOfferWallpaperItemPlainAshTonal
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemPlainAshTonal
+
+- type: tradeOffer
+  id: CETradeOfferWallpaperItemStripesSandTerracotta
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemStripesSandTerracotta
+
+- type: tradeOffer
+  id: CETradeOfferWallpaperItemStripesAshTeal
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemStripesAshTeal
+
+- type: tradeOffer
   id: CETradeOfferPottedPlant1
   shop: HomeDecor
   pay:
