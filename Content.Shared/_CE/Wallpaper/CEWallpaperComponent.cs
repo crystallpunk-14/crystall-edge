@@ -12,5 +12,5 @@ public sealed partial class CEWallpaperComponent : Component
     public ProtoId<CEWallpaperPrototype> Proto;
 
     [DataField]
-    public float Delay = 1f;
+    public float Delay = 0.25f;
 }
