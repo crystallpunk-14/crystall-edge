@@ -4,6 +4,8 @@ using Robust.Client.GameObjects;
 using Robust.Client.Input;
 using Robust.Client.Player;
 using Robust.Client.Graphics;
+using Robust.Client.State;
+using Robust.Client.UserInterface;
 
 namespace Content.Client._CE.MeleeWeapon;
 
@@ -14,6 +16,8 @@ public sealed partial class CEClientWeaponSystem : CESharedWeaponSystem
     [Dependency] private IPlayerManager _player = default!;
     [Dependency] private InputSystem _inputSystem = default!;
     [Dependency] private MapSystem _map = default!;
+    [Dependency] private IStateManager _stateManager = default!;
+    [Dependency] private IUserInterfaceManager _uiManager = default!;
 
     private EntityQuery<TransformComponent> _xformQuery;
 

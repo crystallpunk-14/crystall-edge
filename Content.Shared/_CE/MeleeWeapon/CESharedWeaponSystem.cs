@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Numerics;
 using Robust.Shared.Analyzers;
 using Content.Shared._CE.Animation.Core;
 using Content.Shared._CE.Animation.Item.Components;
@@ -87,7 +88,11 @@ public abstract partial class CESharedWeaponSystem : EntitySystem
             weapon.Value.Owner != GetEntity(ev.Weapon))
             return;
 
-        TryUse(user, weapon.Value, ev.UseType, ev.Angle);
+        EntityUid? cursorTarget = null;
+        if (ev.CursorTarget is { } netTarget && TryGetEntity(netTarget, out var target))
+            cursorTarget = target;
+
+        TryUse(user, weapon.Value, ev.UseType, ev.Angle, cursorTarget);
     }
 
     [EventSubscription]
@@ -185,7 +190,8 @@ public abstract partial class CESharedWeaponSystem : EntitySystem
         EntityUid user,
         Entity<CEWeaponComponent> used,
         CEUseType useType,
-        Angle angle)
+        Angle angle,
+        EntityUid? cursorTarget = null)
     {
         var curTime = Timing.CurTime;
 
@@ -228,6 +234,10 @@ public abstract partial class CESharedWeaponSystem : EntitySystem
 
         var animationProtoId = entry.Anim;
 
+        // Set before the animation starts, its arc effects read them.
+        used.Comp.CursorTarget = cursorTarget;
+        used.Comp.AttackAngle = angle;
+
         var animationSpeed = GetAnimationSpeed(user, used) * entry.Speed;
         if (!_animationAction.TryPlayAnimationToAngle(user, animationProtoId, angle, used.Owner, animationSpeed))
             return false;
@@ -248,6 +258,22 @@ public abstract partial class CESharedWeaponSystem : EntitySystem
         Dirty(used);
 
         return true;
+    }
+
+    /// <summary>
+    /// Whether a target at <paramref name="targetPos"/> lies inside an arc fanned around <paramref name="direction"/>.
+    /// The target is a body, not a point, so the arc is widened by the angle half a tile subtends at its distance.
+    /// </summary>
+    public static bool IsInArc(Vector2 origin, Vector2 targetPos, Angle direction, float arcWidthDeg)
+    {
+        var delta = targetPos - origin;
+        var distance = delta.Length();
+        if (distance <= 0.5f)
+            return true;
+
+        var halfArc = arcWidthDeg * MathF.PI / 360f + MathF.Atan(0.5f / distance);
+        var diff = Angle.ShortestDistance(new Angle(delta), direction);
+        return Math.Abs(diff.Theta) <= halfArc;
     }
 
     public bool TryGetWeapon(EntityUid entity, [NotNullWhen(true)] out Entity<CEWeaponComponent>? used)
