@@ -806,10 +806,6 @@ ent-CEDebugKnowledgeBook = бесконечный тауманомикониум
     .desc = Книга для админов, полная невозможных знаний обо всех аспектах сразу.
     .suffix = Debug, All Aspects, 100
 
-ent-CEGuidebookImperialLaws = имперские законы
-    .desc = Книга об имперских законах.
-    .suffix = Путеводитель
-
 ent-CEGuidebookFarmingGuide = справочник фермера
     .desc = Руководство по уходу за растениями. Автор, конечно же, сильва.
     .suffix = Путеводитель

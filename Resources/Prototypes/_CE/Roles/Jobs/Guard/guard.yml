@@ -23,7 +23,6 @@
     pocket1: CEWalletFilledGuard
   storage:
     back:
-    - CEGuidebookImperialLaws
     - CEWeaponGunJustice
 
 

@@ -17,9 +17,6 @@
         Slash: 0.9
         Piercing: 0.9
         Shock: 0.75
-  - type: ClothingSpeedModifier
-    walkModifier: 0.7
-    sprintModifier: 0.7
   - type: HeldSpeedModifier
   - type: StaticPrice
     price: 300

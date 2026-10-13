@@ -22,7 +22,7 @@
     solution:
       maxVol: 12
       reagents:
-      - ReagentId: Flour
+      - ReagentId: CENutriment
         Quantity: 5
   - type: ToolRefinable
     refineTime: 1.5

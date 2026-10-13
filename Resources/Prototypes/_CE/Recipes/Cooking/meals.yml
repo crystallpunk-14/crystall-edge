@@ -12,6 +12,20 @@
   requirements:
   - !type:AlwaysMet
 
+# Overcooked meal, see CEFoodType burntRecipe. No requirements: never cooked directly.
+- type: CECookingRecipe
+  id: BurntMeal
+  foodType: Meal
+  foodData:
+    name: ce-meal-recipe-burned-trash-name
+    desc: ce-meal-recipe-burned-trash-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Meals/food.rsi
+      state: trash
+      color: "#4a4a4a"
+    statusEffects:
+      CEStatusEffectBadFoodVomit: 10
+
 # 1 req
 
 - type: CECookingRecipe

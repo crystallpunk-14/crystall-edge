@@ -18,4 +18,10 @@ public sealed partial class CEFoodTypePrototype : IPrototype
     /// </summary>
     [DataField]
     public EntProtoId? IconHolder;
+
+    /// <summary>
+    /// Recipe that replaces food of this type when it gets overcooked.
+    /// </summary>
+    [DataField(required: true)]
+    public ProtoId<CECookingRecipePrototype> BurntRecipe;
 }

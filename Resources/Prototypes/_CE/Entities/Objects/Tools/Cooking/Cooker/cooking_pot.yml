@@ -30,9 +30,6 @@
     maxDisplacementFillLevels: 2
     canGiveFood: true
     autoRename: false
-  - type: CEFoodCooker
-    foodType: Soup
-    solutionId: cooker
   - type: Item
     size: Ginormous
   - type: MultiHandedItem

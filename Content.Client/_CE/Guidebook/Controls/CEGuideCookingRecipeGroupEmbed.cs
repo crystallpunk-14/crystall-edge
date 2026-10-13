@@ -55,7 +55,7 @@ public sealed partial class CEGuideCookingRecipeGroupEmbed : BoxContainer, IDocu
     private void CreateEntries(string foodType, string? plateRsi = null, string? plateState = null)
     {
         var prototypes = _prototype.EnumeratePrototypes<CECookingRecipePrototype>()
-            .Where(p => p.FoodType.Id.Equals(foodType))
+            .Where(p => p.Cookable && p.FoodType.Id.Equals(foodType))
             .OrderBy(p => p.GetComplexity())
             .ThenBy(p => Loc.GetString(p.FoodData.Name ?? "ce-guidebook-cooking-unknown-food-name"));
 

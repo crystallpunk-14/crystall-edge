@@ -70,7 +70,7 @@ public sealed partial class SkillBookResource : CEResourceRequirement
     public override string GetRequirementTitle(IPrototypeManager protoManager)
     {
         var skillSys = IoCManager.Resolve<IEntityManager>().System<CESharedSkillSystem>();
-        return $"{skillSys.GetSkillName(Skill)} x{Count}";
+        return $"{Loc.GetString("ce-workbench-skillbook-req", ("skill", skillSys.GetSkillName(Skill)))} x{Count}";
     }
 
     public override string GetRequirementAmount()

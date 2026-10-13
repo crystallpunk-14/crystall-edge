@@ -29,7 +29,6 @@
     pocket1: CEWalletFilledGuardCommander
   storage:
     back:
-    - CEGuidebookImperialLaws
     - CEWeaponGunJustice
 
 - type: entity

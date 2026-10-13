@@ -33,6 +33,11 @@ public sealed partial class CECookingRecipePrototype : IPrototype
     public ProtoId<CEFoodTypePrototype> FoodType;
 
     /// <summary>
+    /// Recipes without requirements (e.g. burnt food) are never picked by cooking and are hidden from the guidebook.
+    /// </summary>
+    public bool Cookable => Requirements.Count > 0;
+
+    /// <summary>
     /// Calculates the total complexity of this recipe by summing the complexity of all requirements.
     /// </summary>
     public float GetComplexity()

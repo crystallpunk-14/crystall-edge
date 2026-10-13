@@ -1,6 +1,9 @@
 ce-soup-recipe-trash-name = неопознанное варево
 ce-soup-recipe-trash-desc = Неудачная попытка приготовить суп.
 
+ce-soup-recipe-burned-trash-name = пригоревшее варево
+ce-soup-recipe-burned-trash-desc = Это мог быть вкусный суп, но повар передержал его на огне.
+
 ce-soup-recipe-veg-name = вегетарианский суп
 ce-soup-recipe-veg-desc = Без глютена, мяса, красителей, консервантов и гмо. Питаемся водой и ромашками.
 

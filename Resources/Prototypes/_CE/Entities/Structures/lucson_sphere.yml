@@ -87,10 +87,9 @@
           bounds: "-0.45,-0.45,0.45,0.45"
         density: 60
         mask:
-        - MachineMask
+        - FullTileMask
         layer:
-        - MidImpassable
-        - LowImpassable
+        - WallLayer 
   - type: CEAutoFloatingVisuals
 
 # Different intensity for different map sizes
