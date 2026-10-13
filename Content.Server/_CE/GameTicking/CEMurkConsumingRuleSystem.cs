@@ -1,5 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Server._CE.GameTicking.Components;
+using Content.Server.Destructible;
+using Content.Server.Destructible.Thresholds.Behaviors;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server.RoundEnd;
@@ -11,6 +13,9 @@ using Content.Shared._CE.Trade.MainQuest;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
+using Content.Shared.Destructible;
+using Content.Shared.Destructible.Thresholds.Triggers;
+using Content.Shared.FixedPoint;
 using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Light.Components;
@@ -28,6 +33,7 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
     [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private SharedGodmodeSystem _godmode = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
 
     private readonly EntProtoId _sphereShockwave = "CEShockWaveHugeVFX";
     private readonly EntProtoId _sphereFailureLightning = "CESkyLightning";
@@ -285,7 +291,7 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
     private void BroadcastProgress(CEMurkConsumingRuleComponent component)
     {
         var sphereQuery = EntityQueryEnumerator<CEMurkLusconSphereComponent>();
-        if (!sphereQuery.MoveNext(out _, out var sphere))
+        if (!sphereQuery.MoveNext(out var sphereUid, out var sphere))
             return;
 
         var light = 0f;
@@ -295,12 +301,14 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
         {
             case CEMurkSphereState.Ritual:
                 light = GetRitualProgress(component);
+                murk = GetSphereDamageProgress(sphereUid);
                 break;
             case CEMurkSphereState.Failure:
                 murk = 1f;
                 break;
             case CEMurkSphereState.Success:
                 light = 1f;
+                murk = 0f;
                 break;
         }
 
@@ -308,6 +316,37 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
             sphere.State != CEMurkSphereState.PreRound,
             Math.Clamp(light, 0f, 1f),
             murk));
+    }
+
+    /// <summary>
+    /// How close the exposed core is to breaking, 0..1: 0 is undamaged, 1 is destroyed.
+    /// </summary>
+    private float GetSphereDamageProgress(EntityUid sphere)
+    {
+        if (!TryComp<DestructibleComponent>(sphere, out var destructible))
+            return 0f;
+
+        FixedPoint2? breakDamage = null;
+        foreach (var threshold in destructible.Thresholds)
+        {
+            if (threshold.Trigger is not DamageTrigger trigger)
+                continue;
+
+            if (!threshold.Behaviors.Exists(b => b is DoActsBehavior doActs && doActs.HasAct(ThresholdActs.Breakage)))
+                continue;
+
+            if (breakDamage is null || trigger.Damage < breakDamage)
+                breakDamage = trigger.Damage;
+        }
+
+        if (breakDamage is not { } max || max <= FixedPoint2.Zero)
+        {
+            Log.Error($"{ToPrettyString(sphere)} has no Breakage damage threshold - the murk bar can't show the core damage.");
+            return 0f;
+        }
+
+        var damage = _damageable.GetTotalDamage(sphere);
+        return Math.Clamp((float) (damage / max), 0f, 1f);
     }
 
     /// <summary>
