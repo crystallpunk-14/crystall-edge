@@ -1351,3 +1351,17 @@
   id: 1115
   time: '2026-10-13T15:38:15.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/527
+- author: TheShuEd
+  changes:
+  - message: Around Shaar, you can now find the Snowy Mountain, Bone Graveyard, and
+      Mushroom Glade subbiomes.
+    type: Add
+  - message: Fly agaric mushrooms have appeared in the murk. They are extremely poisonous.
+      But someone might want to add them to a meal to poison an enemy.
+    type: Add
+  - message: Wall ladders have been added; they can be crafted from planks and nails.
+      They allow you to climb up and down vertically.
+    type: Add
+  id: 1116
+  time: '2026-10-14T17:52:04.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/529
