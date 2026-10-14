@@ -8,7 +8,6 @@
   physicalDesc: reagent-physical-desc-opaque
   metabolisms:
     Bloodstream:
-      rate: 0.1
       effects:
       - !type:HealthChange
         damage:
