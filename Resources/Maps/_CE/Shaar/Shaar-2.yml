@@ -165,7 +165,6 @@ entities:
       dNAs: []
     - type: RadiationGridResistance
     - type: ExplosionAirtightGrid
-    - type: CEZLevelsLaddersCache
     - type: TileHistory
       chunkHistory:
         -3,-2:
@@ -1973,7 +1972,7 @@ entities:
       parent: 1
       rot: 3.141592653589793 rad
       pos: 6.5,8.5
-- proto: CEConveyorLadder
+- proto: CEConveyorStairs
   entities:
   - uid: 370
     components:
@@ -13406,7 +13405,7 @@ entities:
       parent: 1
       rot: 3.141592653589793 rad
       pos: -10.650587,14.862585
-- proto: CEZLevelLadderDirtCliff
+- proto: CEZLevelStairsDirtCliff
   entities:
   - uid: 339
     components:
@@ -13414,7 +13413,7 @@ entities:
       parent: 1
       rot: 1.5707963267948966 rad
       pos: -16.5,-18.5
-- proto: CEZLevelLadderStone
+- proto: CEZLevelStairsStone
   entities:
   - uid: 189
     components:
@@ -13457,7 +13456,7 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: -9.5,-2.5
-- proto: CEZLevelLadderWooden
+- proto: CEZLevelStairsWooden
   entities:
   - uid: 761
     components:

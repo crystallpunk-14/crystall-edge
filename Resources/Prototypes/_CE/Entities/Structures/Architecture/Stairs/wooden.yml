@@ -1,10 +1,10 @@
 - type: entity
-  id: CEZLevelsLadderWoodenBase
+  id: CEZLevelStairsWoodenBase
   abstract: true
-  name: wooden ladder
+  name: wooden stairs
   components:
   - type: Sprite
-    sprite: _CE/Structures/Architecture/Ladders/wooden.rsi
+    sprite: _CE/Structures/Architecture/Stairs/wooden.rsi
   - type: Damageable
     damageModifierSet: CEWoodStructural
   - type: Injurable
@@ -28,35 +28,35 @@
 
 - type: entity
   parent:
-  - CEZLevelLadderBase
-  - CEZLevelsLadderWoodenBase
-  id: CEZLevelLadderWooden
-  name: wooden ladder
+  - CEZLevelStairsBase
+  - CEZLevelStairsWoodenBase
+  id: CEZLevelStairsWooden
+  name: wooden stairs
   components:
   - type: Construction
-    graph: CEZLevelLadder
-    node: CEZLevelLadderWooden
+    graph: CEZLevelStairs
+    node: CEZLevelStairsWooden
 
 - type: entity
   parent:
-  - CEZLevelLadderCornerBase
-  - CEZLevelsLadderWoodenBase
-  id: CEZLevelLadderWoodenCorner
-  name: wooden ladder
+  - CEZLevelStairsCornerBase
+  - CEZLevelStairsWoodenBase
+  id: CEZLevelStairsWoodenCorner
+  name: wooden stairs
   suffix: Corner
   components:
   - type: Construction
-    graph: CEZLevelLadder
-    node: CEZLevelLadderWoodenCorner
+    graph: CEZLevelStairs
+    node: CEZLevelStairsWoodenCorner
 
 - type: entity
   parent:
-  - CEZLevelLadderCornerInnerBase
-  - CEZLevelsLadderWoodenBase
-  id: CEZLevelLadderWoodenCornerInner
-  name: wooden ladder
+  - CEZLevelStairsCornerInnerBase
+  - CEZLevelStairsWoodenBase
+  id: CEZLevelStairsWoodenCornerInner
+  name: wooden stairs
   suffix: Inner Corner
   components:
   - type: Construction
-    graph: CEZLevelLadder
-    node: CEZLevelLadderWoodenCornerInner
+    graph: CEZLevelStairs
+    node: CEZLevelStairsWoodenCornerInner

@@ -1,11 +1,11 @@
 - type: entity
-  id: CEZLevelsLadderDirtCliffBase
+  id: CEZLevelStairsDirtCliffBase
   abstract: true
   name: dirt cliff
   description: TODO
   components:
   - type: Sprite
-    sprite: _CE/Structures/Architecture/Ladders/dirt_cliff.rsi
+    sprite: _CE/Structures/Architecture/Stairs/dirt_cliff.rsi
   - type: Damageable
     damageModifierSet: Rock
   - type: Injurable
@@ -31,32 +31,32 @@
 
 - type: entity
   parent:
-  - CEZLevelLadderBase
-  - CEZLevelsLadderDirtCliffBase
-  id: CEZLevelLadderDirtCliff
+  - CEZLevelStairsBase
+  - CEZLevelStairsDirtCliffBase
+  id: CEZLevelStairsDirtCliff
   #components:
   #- type: Construction
-  #  graph: CEZLevelLadderStone
-  #  node: CEZLevelLadderStone
+  #  graph: CEZLevelStairsStone
+  #  node: CEZLevelStairsStone
 
 - type: entity
   parent:
-  - CEZLevelLadderCornerBase
-  - CEZLevelsLadderDirtCliffBase
-  id: CEZLevelLadderDirtCliffCorner
+  - CEZLevelStairsCornerBase
+  - CEZLevelStairsDirtCliffBase
+  id: CEZLevelStairsDirtCliffCorner
   suffix: Corner
   #components:
   #- type: Construction
-  #  graph: CEZLevelLadderStone
-  #  node: CEZLevelLadderStoneCorner
+  #  graph: CEZLevelStairsStone
+  #  node: CEZLevelStairsStoneCorner
 
 - type: entity
   parent:
-  - CEZLevelLadderCornerInnerBase
-  - CEZLevelsLadderDirtCliffBase
-  id: CEZLevelLadderDirtCliffCornerInner
+  - CEZLevelStairsCornerInnerBase
+  - CEZLevelStairsDirtCliffBase
+  id: CEZLevelStairsDirtCliffCornerInner
   suffix: Inner Corner
   #components:
   #- type: Construction
-  #  graph: CEZLevelLadderStone
-  #  node: CEZLevelLadderStoneCorner
+  #  graph: CEZLevelStairsStone
+  #  node: CEZLevelStairsStoneCorner

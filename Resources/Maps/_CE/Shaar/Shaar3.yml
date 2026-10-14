@@ -116,7 +116,6 @@ entities:
       dNAs: []
     - type: RadiationGridResistance
     - type: ExplosionAirtightGrid
-    - type: CEZLevelsLaddersCache
     - type: TileHistory
       chunkHistory:
         -2,-1:
@@ -645,7 +644,7 @@ entities:
     - type: Transform
       parent: 1
       pos: -29.5,-7.5
-- proto: CEZLevelLadderStone
+- proto: CEZLevelStairsStone
   entities:
   - uid: 5
     components:

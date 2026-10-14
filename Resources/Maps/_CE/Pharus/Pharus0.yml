@@ -89,7 +89,6 @@ entities:
     - type: ChunkContainer
       chunkEntities: []
     - type: RadiationGridResistance
-    - type: CEZLevelsLaddersCache
     - type: TileHistory
       chunkHistory:
         0,0:
@@ -1045,7 +1044,7 @@ entities:
     - type: Transform
       parent: 1
       pos: -0.5,-22.5
-- proto: CEZLevelLadderStone
+- proto: CEZLevelStairsStone
   entities:
   - uid: 2734
     components:

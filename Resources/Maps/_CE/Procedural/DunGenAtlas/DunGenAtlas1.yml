@@ -84,7 +84,6 @@ entities:
       chunkEntities: []
     - type: ExplosionAirtightGrid
     - type: RadiationGridResistance
-    - type: CEZLevelsLaddersCache
 - proto: CEWallFrameWooden
   entities:
   - uid: 7

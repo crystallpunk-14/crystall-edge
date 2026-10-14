@@ -131,7 +131,6 @@ entities:
       chunkEntities: []
     - type: ExplosionAirtightGrid
     - type: RadiationGridResistance
-    - type: CEZLevelsLaddersCache
 - proto: CEBiomeSpawnerSnowlandForest
   entities:
   - uid: 2

@@ -1,5 +1,5 @@
 - type: entity
-  id: CEZLevelLadderBase
+  id: CEZLevelStairsBase
   abstract: true
   categories: [ ForkFiltered ]
   parent: BaseStructure
@@ -61,8 +61,8 @@
     sprintSpeedModifier: 0.3
 
 - type: entity
-  parent: CEZLevelLadderBase
-  id: CEZLevelLadderCornerBase
+  parent: CEZLevelStairsBase
+  id: CEZLevelStairsCornerBase
   abstract: true
   placement:
       mode: SnapgridCenter
@@ -104,8 +104,8 @@
         hard: false
 
 - type: entity
-  parent: CEZLevelLadderCornerBase
-  id: CEZLevelLadderCornerInnerBase
+  parent: CEZLevelStairsCornerBase
+  id: CEZLevelStairsCornerInnerBase
   abstract: true
   placement:
       mode: SnapgridCenter

@@ -13,10 +13,10 @@
 
 - type: construction
   hide: false
-  id: CEConveyorLadder
-  graph: CEConveyorLadder
+  id: CEConveyorStairs
+  graph: CEConveyorStairs
   startNode: start
-  targetNode: CEConveyorLadder
+  targetNode: CEConveyorStairs
   category: construction-category-machines
   objectType: Structure
   placementMode: SnapgridCenter
@@ -26,10 +26,10 @@
 
 - type: construction
   hide: false
-  id: CEConveyorLadderReverse
-  graph: CEConveyorLadder
+  id: CEConveyorStairsReverse
+  graph: CEConveyorStairs
   startNode: start
-  targetNode: CEConveyorLadderReverse
+  targetNode: CEConveyorStairsReverse
   category: construction-category-machines
   objectType: Structure
   placementMode: SnapgridCenter

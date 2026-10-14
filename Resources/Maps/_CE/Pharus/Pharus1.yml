@@ -117,7 +117,6 @@ entities:
       dNAs: []
     - type: ChunkContainer
       chunkEntities: []
-    - type: CEZLevelsLaddersCache
     - type: ExplosionAirtightGrid
     - type: RadiationGridResistance
 - proto: CEBiomeSpawnerSnowland
@@ -840,7 +839,7 @@ entities:
     - type: Transform
       parent: 1
       pos: -0.5,-18.5
-- proto: CEZLevelsLadderRoofRed
+- proto: CEZLevelStairsRoofRed
   entities:
   - uid: 825
     components:

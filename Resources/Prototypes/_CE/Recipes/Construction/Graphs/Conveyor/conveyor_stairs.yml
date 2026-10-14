@@ -1,12 +1,12 @@
 - type: constructionGraph
-  id: CEConveyorLadder
+  id: CEConveyorStairs
   start: start
   graph:
     - node: start
       actions:
         - !type:DestroyEntity {}
       edges:
-        - to: CEConveyorLadder
+        - to: CEConveyorStairs
           steps:
             - material: CEIronSheet
               amount: 1
@@ -15,8 +15,8 @@
               amount: 1
               doAfter: 1
 
-    - node: CEConveyorLadder
-      entity: CEConveyorLadder
+    - node: CEConveyorStairs
+      entity: CEConveyorStairs
       edges:
         - to: start
           steps:
@@ -29,13 +29,13 @@
             - !type:SpawnPrototype
               prototype: CEBrassRod1
               amount: 1
-        - to: CEConveyorLadderReverse
+        - to: CEConveyorStairsReverse
           steps:
             - tool: Screwing
               doAfter: 1
 
-    - node: CEConveyorLadderReverse
-      entity: CEConveyorLadderReverse
+    - node: CEConveyorStairsReverse
+      entity: CEConveyorStairsReverse
       edges:
         - to: start
           steps:
@@ -48,7 +48,7 @@
             - !type:SpawnPrototype
               prototype: CEBrassRod1
               amount: 1
-        - to: CEConveyorLadder
+        - to: CEConveyorStairs
           steps:
             - tool: Screwing
               doAfter: 1

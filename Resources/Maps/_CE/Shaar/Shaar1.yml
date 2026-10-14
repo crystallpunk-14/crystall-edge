@@ -161,7 +161,6 @@ entities:
       dNAs: []
     - type: RadiationGridResistance
     - type: ExplosionAirtightGrid
-    - type: CEZLevelsLaddersCache
     - type: TileHistory
       chunkHistory:
         0,-1:
@@ -10617,7 +10616,7 @@ entities:
     - type: Transform
       parent: 1
       pos: 3.4153585,-15.175855
-- proto: CEZLevelLadderDirtCliff
+- proto: CEZLevelStairsDirtCliff
   entities:
   - uid: 411
     components:
@@ -10713,7 +10712,7 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: 19.5,-4.5
-- proto: CEZLevelLadderDirtCliffCorner
+- proto: CEZLevelStairsDirtCliffCorner
   entities:
   - uid: 481
     components:
@@ -10801,7 +10800,7 @@ entities:
       parent: 1
       rot: 3.141592653589793 rad
       pos: 28.5,-0.5
-- proto: CEZLevelLadderDirtCliffCornerInner
+- proto: CEZLevelStairsDirtCliffCornerInner
   entities:
   - uid: 320
     components:
@@ -10889,7 +10888,7 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: 18.5,-9.5
-- proto: CEZLevelLadderStone
+- proto: CEZLevelStairsStone
   entities:
   - uid: 25
     components:
@@ -10921,7 +10920,7 @@ entities:
       parent: 1
       rot: 3.141592653589793 rad
       pos: -14.5,19.5
-- proto: CEZLevelLadderWooden
+- proto: CEZLevelStairsWooden
   entities:
   - uid: 124
     components:
@@ -10929,7 +10928,7 @@ entities:
       parent: 1
       rot: 3.141592653589793 rad
       pos: -8.5,2.5
-- proto: CEZLevelsLadderRoofBlue
+- proto: CEZLevelStairsRoofBlue
   entities:
   - uid: 46
     components:
@@ -11218,7 +11217,7 @@ entities:
       parent: 1
       rot: 3.141592653589793 rad
       pos: -7.5,-9.5
-- proto: CEZLevelsLadderRoofBlueCorner
+- proto: CEZLevelStairsRoofBlueCorner
   entities:
   - uid: 120
     components:
@@ -11282,7 +11281,7 @@ entities:
     - type: Transform
       parent: 1
       pos: -2.5,-22.5
-- proto: CEZLevelsLadderRoofBlueCornerInner
+- proto: CEZLevelStairsRoofBlueCornerInner
   entities:
   - uid: 913
     components:
@@ -11301,7 +11300,7 @@ entities:
       parent: 1
       rot: 1.5707963267948966 rad
       pos: 4.5,-18.5
-- proto: CEZLevelsLadderRoofGreen
+- proto: CEZLevelStairsRoofGreen
   entities:
   - uid: 1147
     components:
@@ -11476,7 +11475,7 @@ entities:
     - type: Transform
       parent: 1
       pos: 0.5,-4.5
-- proto: CEZLevelsLadderRoofGreenCorner
+- proto: CEZLevelStairsRoofGreenCorner
   entities:
   - uid: 954
     components:
@@ -11496,7 +11495,7 @@ entities:
       parent: 1
       rot: 3.141592653589793 rad
       pos: 8.5,9.5
-- proto: CEZLevelsLadderRoofRed
+- proto: CEZLevelStairsRoofRed
   entities:
   - uid: 64
     components:
@@ -11881,7 +11880,7 @@ entities:
       parent: 1
       rot: -1.5707963267948966 rad
       pos: -12.5,17.5
-- proto: CEZLevelsLadderRoofRedCorner
+- proto: CEZLevelStairsRoofRedCorner
   entities:
   - uid: 1040
     components:

@@ -1,5 +1,5 @@
 - type: entity
-  id: CEZLevelsLadderRoofBase
+  id: CEZLevelStairsRoofBase
   name: roof tile
   description: Roof tiles, for covering building roofs.
   abstract: true
@@ -30,8 +30,8 @@
 # Red
 
 - type: entity
-  id: CEZLevelsLadderRoofRedBase
-  parent: CEZLevelsLadderRoofBase
+  id: CEZLevelStairsRoofRedBase
+  parent: CEZLevelStairsRoofBase
   abstract: true
   components:
   - type: Destructible
@@ -55,50 +55,50 @@
 
 - type: entity
   parent:
-  - CEZLevelLadderBase
-  - CEZLevelsLadderRoofRedBase
-  id: CEZLevelsLadderRoofRed
+  - CEZLevelStairsBase
+  - CEZLevelStairsRoofRedBase
+  id: CEZLevelStairsRoofRed
   name: red roof
   components:
   - type: Sprite
-    sprite: _CE/Structures/Architecture/Ladders/roof_red.rsi
+    sprite: _CE/Structures/Architecture/Stairs/roof_red.rsi
   - type: Construction
-    graph: CEZLevelLadder
-    node: CEZLevelsLadderRoofRed
+    graph: CEZLevelStairs
+    node: CEZLevelStairsRoofRed
 
 - type: entity
   parent:
-  - CEZLevelLadderCornerBase
-  - CEZLevelsLadderRoofRedBase
-  id: CEZLevelsLadderRoofRedCorner
+  - CEZLevelStairsCornerBase
+  - CEZLevelStairsRoofRedBase
+  id: CEZLevelStairsRoofRedCorner
   name: red roof
   suffix: Corner
   components:
   - type: Sprite
-    sprite: _CE/Structures/Architecture/Ladders/roof_red.rsi
+    sprite: _CE/Structures/Architecture/Stairs/roof_red.rsi
   - type: Construction
-    graph: CEZLevelLadder
-    node: CEZLevelsLadderRoofRedCorner
+    graph: CEZLevelStairs
+    node: CEZLevelStairsRoofRedCorner
 
 - type: entity
   parent:
-  - CEZLevelLadderCornerInnerBase
-  - CEZLevelsLadderRoofRedBase
-  id: CEZLevelsLadderRoofRedCornerInner
+  - CEZLevelStairsCornerInnerBase
+  - CEZLevelStairsRoofRedBase
+  id: CEZLevelStairsRoofRedCornerInner
   name: red roof
   suffix: Inner Corner
   components:
   - type: Sprite
-    sprite: _CE/Structures/Architecture/Ladders/roof_red.rsi
+    sprite: _CE/Structures/Architecture/Stairs/roof_red.rsi
   - type: Construction
-    graph: CEZLevelLadder
-    node: CEZLevelsLadderRoofRedCornerInner
+    graph: CEZLevelStairs
+    node: CEZLevelStairsRoofRedCornerInner
 
 # Green
 
 - type: entity
-  id: CEZLevelsLadderRoofGreenBase
-  parent: CEZLevelsLadderRoofBase
+  id: CEZLevelStairsRoofGreenBase
+  parent: CEZLevelStairsRoofBase
   abstract: true
   components:
   - type: Destructible
@@ -122,50 +122,50 @@
 
 - type: entity
   parent:
-  - CEZLevelLadderBase
-  - CEZLevelsLadderRoofGreenBase
-  id: CEZLevelsLadderRoofGreen
+  - CEZLevelStairsBase
+  - CEZLevelStairsRoofGreenBase
+  id: CEZLevelStairsRoofGreen
   name: green roof
   components:
   - type: Sprite
-    sprite: _CE/Structures/Architecture/Ladders/roof_green.rsi
+    sprite: _CE/Structures/Architecture/Stairs/roof_green.rsi
   - type: Construction
-    graph: CEZLevelLadder
-    node: CEZLevelsLadderRoofGreen
+    graph: CEZLevelStairs
+    node: CEZLevelStairsRoofGreen
 
 - type: entity
   parent:
-  - CEZLevelLadderCornerBase
-  - CEZLevelsLadderRoofGreenBase
-  id: CEZLevelsLadderRoofGreenCorner
+  - CEZLevelStairsCornerBase
+  - CEZLevelStairsRoofGreenBase
+  id: CEZLevelStairsRoofGreenCorner
   name: green roof
   suffix: Corner
   components:
   - type: Sprite
-    sprite: _CE/Structures/Architecture/Ladders/roof_green.rsi
+    sprite: _CE/Structures/Architecture/Stairs/roof_green.rsi
   - type: Construction
-    graph: CEZLevelLadder
-    node: CEZLevelsLadderRoofGreenCorner
+    graph: CEZLevelStairs
+    node: CEZLevelStairsRoofGreenCorner
 
 - type: entity
   parent:
-  - CEZLevelLadderCornerInnerBase
-  - CEZLevelsLadderRoofGreenBase
-  id: CEZLevelsLadderRoofGreenCornerInner
+  - CEZLevelStairsCornerInnerBase
+  - CEZLevelStairsRoofGreenBase
+  id: CEZLevelStairsRoofGreenCornerInner
   name: green roof
   suffix: Inner Corner
   components:
   - type: Sprite
-    sprite: _CE/Structures/Architecture/Ladders/roof_green.rsi
+    sprite: _CE/Structures/Architecture/Stairs/roof_green.rsi
   - type: Construction
-    graph: CEZLevelLadder
-    node: CEZLevelsLadderRoofGreenCornerInner
+    graph: CEZLevelStairs
+    node: CEZLevelStairsRoofGreenCornerInner
 
 # Blue
 
 - type: entity
-  id: CEZLevelsLadderRoofBlueBase
-  parent: CEZLevelsLadderRoofBase
+  id: CEZLevelStairsRoofBlueBase
+  parent: CEZLevelStairsRoofBase
   abstract: true
   components:
   - type: Destructible
@@ -189,41 +189,41 @@
 
 - type: entity
   parent:
-  - CEZLevelLadderBase
-  - CEZLevelsLadderRoofBlueBase
-  id: CEZLevelsLadderRoofBlue
+  - CEZLevelStairsBase
+  - CEZLevelStairsRoofBlueBase
+  id: CEZLevelStairsRoofBlue
   name: blue roof
   components:
   - type: Sprite
-    sprite: _CE/Structures/Architecture/Ladders/roof_blue.rsi
+    sprite: _CE/Structures/Architecture/Stairs/roof_blue.rsi
   - type: Construction
-    graph: CEZLevelLadder
-    node: CEZLevelsLadderRoofBlue
+    graph: CEZLevelStairs
+    node: CEZLevelStairsRoofBlue
 
 - type: entity
   parent:
-  - CEZLevelLadderCornerBase
-  - CEZLevelsLadderRoofBlueBase
-  id: CEZLevelsLadderRoofBlueCorner
+  - CEZLevelStairsCornerBase
+  - CEZLevelStairsRoofBlueBase
+  id: CEZLevelStairsRoofBlueCorner
   name: blue roof
   suffix: Corner
   components:
   - type: Sprite
-    sprite: _CE/Structures/Architecture/Ladders/roof_blue.rsi
+    sprite: _CE/Structures/Architecture/Stairs/roof_blue.rsi
   - type: Construction
-    graph: CEZLevelLadder
-    node: CEZLevelsLadderRoofBlueCorner
+    graph: CEZLevelStairs
+    node: CEZLevelStairsRoofBlueCorner
 
 - type: entity
   parent:
-  - CEZLevelLadderCornerInnerBase
-  - CEZLevelsLadderRoofBlueBase
-  id: CEZLevelsLadderRoofBlueCornerInner
+  - CEZLevelStairsCornerInnerBase
+  - CEZLevelStairsRoofBlueBase
+  id: CEZLevelStairsRoofBlueCornerInner
   name: blue roof
   suffix: Inner Corner
   components:
   - type: Sprite
-    sprite: _CE/Structures/Architecture/Ladders/roof_blue.rsi
+    sprite: _CE/Structures/Architecture/Stairs/roof_blue.rsi
   - type: Construction
-    graph: CEZLevelLadder
-    node: CEZLevelsLadderRoofBlueCornerInner
+    graph: CEZLevelStairs
+    node: CEZLevelStairsRoofBlueCornerInner

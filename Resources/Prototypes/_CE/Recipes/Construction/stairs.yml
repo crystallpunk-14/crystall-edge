@@ -1,9 +1,9 @@
 - type: construction
   hide: false
-  id: CEZLevelLadderFrame
-  graph: CEZLevelLadder
+  id: CEZLevelStairsFrame
+  graph: CEZLevelStairs
   startNode: start
-  targetNode: CEZLevelLadderFrame
+  targetNode: CEZLevelStairsFrame
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
@@ -13,10 +13,10 @@
 
 - type: construction
   hide: false
-  id: CEZLevelLadderWooden
-  graph: CEZLevelLadder
+  id: CEZLevelStairsWooden
+  graph: CEZLevelStairs
   startNode: start
-  targetNode: CEZLevelLadderWooden
+  targetNode: CEZLevelStairsWooden
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
@@ -26,10 +26,10 @@
 
 - type: construction
   hide: false
-  id: CEZLevelLadderWoodenCorner
-  graph: CEZLevelLadder
+  id: CEZLevelStairsWoodenCorner
+  graph: CEZLevelStairs
   startNode: start
-  targetNode: CEZLevelLadderWoodenCorner
+  targetNode: CEZLevelStairsWoodenCorner
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
@@ -39,10 +39,10 @@
 
 - type: construction
   hide: false
-  id: CEZLevelLadderStone
-  graph: CEZLevelLadder
+  id: CEZLevelStairsStone
+  graph: CEZLevelStairs
   startNode: start
-  targetNode: CEZLevelLadderStone
+  targetNode: CEZLevelStairsStone
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
@@ -52,10 +52,10 @@
 
 - type: construction
   hide: false
-  id: CEZLevelLadderStoneCorner
-  graph: CEZLevelLadder
+  id: CEZLevelStairsStoneCorner
+  graph: CEZLevelStairs
   startNode: start
-  targetNode: CEZLevelLadderStoneCorner
+  targetNode: CEZLevelStairsStoneCorner
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
@@ -65,10 +65,10 @@
 
 - type: construction
   hide: false
-  id: CEZLevelsLadderRoofRed
-  graph: CEZLevelLadder
+  id: CEZLevelStairsRoofRed
+  graph: CEZLevelStairs
   startNode: start
-  targetNode: CEZLevelsLadderRoofRed
+  targetNode: CEZLevelStairsRoofRed
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
@@ -78,10 +78,10 @@
 
 - type: construction
   hide: false
-  id: CEZLevelsLadderRoofRedCorner
-  graph: CEZLevelLadder
+  id: CEZLevelStairsRoofRedCorner
+  graph: CEZLevelStairs
   startNode: start
-  targetNode: CEZLevelsLadderRoofRedCorner
+  targetNode: CEZLevelStairsRoofRedCorner
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
@@ -91,10 +91,10 @@
 
 - type: construction
   hide: false
-  id: CEZLevelsLadderRoofGreen
-  graph: CEZLevelLadder
+  id: CEZLevelStairsRoofGreen
+  graph: CEZLevelStairs
   startNode: start
-  targetNode: CEZLevelsLadderRoofGreen
+  targetNode: CEZLevelStairsRoofGreen
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
@@ -104,10 +104,10 @@
 
 - type: construction
   hide: false
-  id: CEZLevelsLadderRoofGreenCorner
-  graph: CEZLevelLadder
+  id: CEZLevelStairsRoofGreenCorner
+  graph: CEZLevelStairs
   startNode: start
-  targetNode: CEZLevelsLadderRoofGreenCorner
+  targetNode: CEZLevelStairsRoofGreenCorner
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
@@ -117,10 +117,10 @@
 
 - type: construction
   hide: false
-  id: CEZLevelsLadderRoofBlue
-  graph: CEZLevelLadder
+  id: CEZLevelStairsRoofBlue
+  graph: CEZLevelStairs
   startNode: start
-  targetNode: CEZLevelsLadderRoofBlue
+  targetNode: CEZLevelStairsRoofBlue
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
@@ -130,10 +130,10 @@
 
 - type: construction
   hide: false
-  id: CEZLevelsLadderRoofBlueCorner
-  graph: CEZLevelLadder
+  id: CEZLevelStairsRoofBlueCorner
+  graph: CEZLevelStairs
   startNode: start
-  targetNode: CEZLevelsLadderRoofBlueCorner
+  targetNode: CEZLevelStairsRoofBlueCorner
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter

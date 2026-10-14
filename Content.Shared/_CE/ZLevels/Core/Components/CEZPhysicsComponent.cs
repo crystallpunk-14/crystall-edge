@@ -101,7 +101,7 @@ public sealed partial class CEZPhysicsComponent : Component
     public float CachedGroundHeight;
 
     /// <summary>
-    /// Cached value of whether the entity is currently on sticky ground (ladders).
+    /// Cached value of whether the entity is currently on sticky ground (stairs).
     /// </summary>
     [ViewVariables]
     public bool CachedStickyGround;
