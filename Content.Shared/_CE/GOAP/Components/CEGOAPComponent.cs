@@ -15,11 +15,17 @@ namespace Content.Shared._CE.GOAP.Components;
 public sealed partial class CEGOAPComponent : Component
 {
     /// <summary>
-    /// When true, the entity spawns in a sleeping state (with <see cref="CEGOAPSleepingComponent"/>)
-    /// and must be explicitly woken by a trigger (damage, proximity, etc.).
+    /// When true, the agent sleeps (<see cref="CEGOAPSleepingComponent"/>) while no player is near and wakes when one
+    /// comes close or it takes damage. Turn off for agents that must keep working unobserved.
     /// </summary>
     [DataField]
-    public bool StartSleeping = false;
+    public bool Dormant = true;
+
+    /// <summary>
+    /// Last time a player was within the sleep radius of this agent.
+    /// </summary>
+    [ViewVariables]
+    public TimeSpan LastPlayerNearby;
 
     /// <summary>
     /// Behavior packages expanded onto this entity on MapInit, in addition to the inline

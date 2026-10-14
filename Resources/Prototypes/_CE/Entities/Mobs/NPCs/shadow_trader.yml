@@ -59,6 +59,7 @@
     overlayEnabled: false
     soundEnabled: false
   - type: CEGOAP
+    dormant: false # keeps the shops stocked while nobody watches
     behaviors:
     - ShadowTrader
     - MurkSoulChatter
