@@ -15,7 +15,8 @@
     effects:
     # Big bones first, so the remains veins flow around them instead of taking their tiles.
     - !type:SpawnRooms
-      room: DragonSkeleton
+      rooms:
+      - DragonSkeleton
       mask:
       - &boneyardArea !type:RadiusMask
         point: boneyard
