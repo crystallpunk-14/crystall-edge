@@ -49,3 +49,13 @@
     count: 10
   receive:
     bonus: 10
+
+- type: tradeOffer
+  id: SellBone
+  shop: Orders
+  cost:
+  - !type:StackResource
+    stack: CEBone
+    count: 10
+  receive:
+    bonus: 10
