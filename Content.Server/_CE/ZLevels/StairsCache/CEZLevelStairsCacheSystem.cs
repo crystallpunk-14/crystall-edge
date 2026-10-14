@@ -9,34 +9,34 @@ using Content.Shared._CE.ZLevels.Core.Components;
 using JetBrains.Annotations;
 using Robust.Shared.Map.Components;
 
-namespace Content.Server._CE.ZLevels.LaddersCache;
+namespace Content.Server._CE.ZLevels.StairsCache;
 
-public sealed partial class CEZLevelsLaddersCacheSystem : EntitySystem
+public sealed partial class CEZLevelStairsCacheSystem : EntitySystem
 {
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
 
     [Dependency] private EntityQuery<TransformComponent> _xformQuery = default!;
     [Dependency] private EntityQuery<MapGridComponent> _gridQuery = default!;
-    [Dependency] private EntityQuery<CEZLevelsLaddersCacheComponent> _cacheQuery = default!;
+    [Dependency] private EntityQuery<CEZLevelStairsCacheComponent> _cacheQuery = default!;
 
     [SubscribeLocalEvent]
-    private void OnLadderInit(Entity<CEZLevelHighGroundComponent> ent, ref MapInitEvent args)
+    private void OnStairsInit(Entity<CEZLevelHighGroundComponent> ent, ref MapInitEvent args)
     {
-        TryCacheLadder(ent);
+        TryCacheStairs(ent);
     }
 
     [SubscribeLocalEvent]
-    private void OnLadderShutdown(Entity<CEZLevelHighGroundComponent> ent, ref ComponentShutdown args)
+    private void OnStairsShutdown(Entity<CEZLevelHighGroundComponent> ent, ref ComponentShutdown args)
     {
         TryRemoveCache(ent);
     }
 
     [SubscribeLocalEvent]
-    private void OnLadderAnchorChanged(Entity<CEZLevelHighGroundComponent> ent, ref AnchorStateChangedEvent args)
+    private void OnStairsAnchorChanged(Entity<CEZLevelHighGroundComponent> ent, ref AnchorStateChangedEvent args)
     {
         if (args.Anchored)
-            TryCacheLadder(ent);
+            TryCacheStairs(ent);
         else
             TryRemoveCache(ent);
     }
@@ -46,7 +46,7 @@ public sealed partial class CEZLevelsLaddersCacheSystem : EntitySystem
     /// Checks if the HighGround entity qualifies as a navigable slope (ramp),
     /// and if so, registers it in the cache on its parent grid.
     /// </summary>
-    private void TryCacheLadder(Entity<CEZLevelHighGroundComponent> ent)
+    private void TryCacheStairs(Entity<CEZLevelHighGroundComponent> ent)
     {
         if (ent.Comp.HeightCurve.Count < 2)
             return;
@@ -61,7 +61,7 @@ public sealed partial class CEZLevelsLaddersCacheSystem : EntitySystem
         if (gridUid == null || !_gridQuery.TryGetComponent(gridUid.Value, out var grid))
             return;
 
-        var cache = EnsureComp<CEZLevelsLaddersCacheComponent>(gridUid.Value);
+        var cache = EnsureComp<CEZLevelStairsCacheComponent>(gridUid.Value);
         var tilePos = _map.WorldToTile(gridUid.Value, grid, _transform.GetWorldPosition(xform));
         var dir = xform.LocalRotation.GetCardinalDir();
 
@@ -93,11 +93,11 @@ public sealed partial class CEZLevelsLaddersCacheSystem : EntitySystem
     }
 
     /// <summary>
-    /// Finds the nearest cached ladder on a given grid to the specified world position.
+    /// Finds the nearest cached stairs on a given grid to the specified world position.
     /// </summary>
     /// <returns>True if a slope was found.</returns>
     [PublicAPI]
-    public bool GetNearestLadder(
+    public bool GetNearestStairs(
         EntityUid gridUid,
         Vector2 originPos,
         float maxRange,

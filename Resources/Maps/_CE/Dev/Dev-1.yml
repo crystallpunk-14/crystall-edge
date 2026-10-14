@@ -102,7 +102,6 @@ entities:
     - type: TileHistory
       chunkHistory: {}
     - type: ExplosionAirtightGrid
-    - type: CEZLevelsLaddersCache
     - type: ChunkContainer
       chunkEntities: []
 - proto: CEBiomeSpawnerCaves

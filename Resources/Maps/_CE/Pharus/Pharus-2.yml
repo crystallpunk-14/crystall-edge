@@ -99,7 +99,6 @@ entities:
       chunkEntities: []
     - type: ExplosionAirtightGrid
     - type: RadiationGridResistance
-    - type: CEZLevelsLaddersCache
 - proto: CEBrassBar10
   entities:
   - uid: 3091
@@ -1354,7 +1353,7 @@ entities:
     - type: Transform
       parent: 1
       pos: -3.3170035,-18.453209
-- proto: CEZLevelLadderStone
+- proto: CEZLevelStairsStone
   entities:
   - uid: 64
     components:

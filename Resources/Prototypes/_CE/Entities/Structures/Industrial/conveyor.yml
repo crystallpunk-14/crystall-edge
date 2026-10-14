@@ -70,8 +70,8 @@
         acts: [ "Destruction" ]
 
 - type: entity
-  id: CEConveyorLadder
-  name: conveyor ladder
+  id: CEConveyorStairs
+  name: conveyor stairs
   parent: CEConveyorBelt
   description: TODO
   categories: [ ForkFiltered ]
@@ -82,7 +82,7 @@
     key: walls
   - type: Sprite
     drawdepth: Mobs
-    sprite: _CE/Structures/Industrial/Conveyor/ladder.rsi
+    sprite: _CE/Structures/Industrial/Conveyor/stairs.rsi
   - type: CEZLevelHighGround
     stick: true
     heightCurve:
@@ -93,18 +93,18 @@
   - type: Conveyor
     speed: 3 # needed for stairs so that objects don't get stuck at the top, on the map above
   - type: Construction
-    graph: CEConveyorLadder
-    node: CEConveyorLadder
+    graph: CEConveyorStairs
+    node: CEConveyorStairs
 
 - type: entity
-  id: CEConveyorLadderReverse
-  parent: CEConveyorLadder
+  id: CEConveyorStairsReverse
+  parent: CEConveyorStairs
   suffix: Reverse
   placement:
     mode: SnapgridCenter
   components:
   - type: Sprite
-    sprite: _CE/Structures/Industrial/Conveyor/ladder_inversed.rsi
+    sprite: _CE/Structures/Industrial/Conveyor/stairs_inversed.rsi
   - type: CEZLevelHighGround
     stick: true
     heightCurve:
@@ -113,5 +113,5 @@
     - 1.05
     - 1.05
   - type: Construction
-    graph: CEConveyorLadder
-    node: CEConveyorLadderReverse
+    graph: CEConveyorStairs
+    node: CEConveyorStairsReverse

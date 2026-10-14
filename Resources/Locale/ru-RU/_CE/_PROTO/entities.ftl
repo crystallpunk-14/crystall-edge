@@ -3145,48 +3145,48 @@ ent-CEBaseFenceGate = ворота забора
 ent-CEBasePole = столб
     .desc = Простой деревянный столб. Идеален для укрепления секций забора и создания угловых соединений.
 
-ent-CEZLevelLadderBase = лестница
+ent-CEZLevelStairsBase = лестница
     .desc = Будьте осторожны, чем выше вы поднимаетесь, тем болезненнее падение.
 
-ent-CEZLevelLadderCornerBase = { ent-CEZLevelLadderBase }
-    .desc = { ent-CEZLevelLadderBase.desc }
+ent-CEZLevelStairsCornerBase = { ent-CEZLevelStairsBase }
+    .desc = { ent-CEZLevelStairsBase.desc }
 
-ent-CEZLevelLadderCornerInnerBase = {{ ent-CEZLevelLadderCornerBase }}
-    .desc = { ent-CEZLevelLadderCornerBase.desc }
+ent-CEZLevelStairsCornerInnerBase = {{ ent-CEZLevelStairsCornerBase }}
+    .desc = { ent-CEZLevelStairsCornerBase.desc }
 
-ent-CEZLevelsLadderDirtCliffBase = грязный обрыв
+ent-CEZLevelStairsDirtCliffBase = грязный обрыв
     .desc = TODO
 
-ent-CEZLevelLadderFrameBase = каркас лестницы
+ent-CEZLevelStairsFrameBase = каркас лестницы
     .desc = Недостроенный деревянный опорный каркас. Его нужно обшить, прежде чем по нему безопасно лазить.
 
-ent-CEZLevelLadderFrame = каркас лестницы
-    .desc = { ent-CEZLevelLadderFrameBase.desc }
+ent-CEZLevelStairsFrame = каркас лестницы
+    .desc = { ent-CEZLevelStairsFrameBase.desc }
 
-ent-CEZLevelLadderFrameCorner = каркас лестницы
-    .desc = { ent-CEZLevelLadderFrameBase.desc }
+ent-CEZLevelStairsFrameCorner = каркас лестницы
+    .desc = { ent-CEZLevelStairsFrameBase.desc }
     .suffix = Corner
 
-ent-CEZLevelLadderFrameCornerInner = каркас лестницы
-    .desc = { ent-CEZLevelLadderFrameCorner.desc }
+ent-CEZLevelStairsFrameCornerInner = каркас лестницы
+    .desc = { ent-CEZLevelStairsFrameCorner.desc }
     .suffix = Inner Corner
 
-ent-CEZLevelsLadderRoofBase = кровельная плитка
+ent-CEZLevelStairsRoofBase = кровельная плитка
     .desc = Кровельная плитка для покрытия крыш зданий.
 
-ent-CEZLevelsLadderRoofRedBase = { ent-CEZLevelsLadderRoofBase }
-    .desc = { ent-CEZLevelsLadderRoofBase.desc }
+ent-CEZLevelStairsRoofRedBase = { ent-CEZLevelStairsRoofBase }
+    .desc = { ent-CEZLevelStairsRoofBase.desc }
 
-ent-CEZLevelsLadderRoofGreenBase = { ent-CEZLevelsLadderRoofBase }
-    .desc = { ent-CEZLevelsLadderRoofBase.desc }
+ent-CEZLevelStairsRoofGreenBase = { ent-CEZLevelStairsRoofBase }
+    .desc = { ent-CEZLevelStairsRoofBase.desc }
 
-ent-CEZLevelsLadderRoofBlueBase = { ent-CEZLevelsLadderRoofBase }
-    .desc = { ent-CEZLevelsLadderRoofBase.desc }
+ent-CEZLevelStairsRoofBlueBase = { ent-CEZLevelStairsRoofBase }
+    .desc = { ent-CEZLevelStairsRoofBase.desc }
 
-ent-CEZLevelsLadderStoneBase = каменная лестница
+ent-CEZLevelStairsStoneBase = каменная лестница
     .desc = { "" }
 
-ent-CEZLevelsLadderWoodenBase = деревянная лестница
+ent-CEZLevelStairsWoodenBase = деревянная лестница
     .desc = { "" }
 
 ent-CEBaseThinWindow = тонкое окно
@@ -3975,11 +3975,11 @@ ent-CEWallmountKeyRack = вешалка для ключей
 ent-CEConveyorBelt = конвейерная лента
     .desc = Транспортирует предметы в указанном направлении.
 
-ent-CEConveyorLadder = конвейерная лестница
+ent-CEConveyorStairs = конвейерная лестница
     .desc = Перемещает предметы между уровнями.
 
-ent-CEConveyorLadderReverse = { ent-CEConveyorLadder }
-    .desc = { ent-CEConveyorLadder.desc }
+ent-CEConveyorStairsReverse = { ent-CEConveyorStairs }
+    .desc = { ent-CEConveyorStairs.desc }
     .suffix = Обратная
 
 ent-CEGridStabilityCore = ядро летающего острова
@@ -5431,70 +5431,70 @@ ent-CEPoleWooden = { ent-CEBasePole }
     .desc = { ent-CEBasePole.desc }
     .suffix = Wooden
 
-ent-CEZLevelLadderDirtCliff = { ent-CEZLevelLadderBase }
-    .desc = { ent-CEZLevelLadderBase.desc }
+ent-CEZLevelStairsDirtCliff = { ent-CEZLevelStairsBase }
+    .desc = { ent-CEZLevelStairsBase.desc }
 
-ent-CEZLevelLadderDirtCliffCorner = { ent-CEZLevelLadderCornerBase }
-    .desc = { ent-CEZLevelLadderCornerBase.desc }
+ent-CEZLevelStairsDirtCliffCorner = { ent-CEZLevelStairsCornerBase }
+    .desc = { ent-CEZLevelStairsCornerBase.desc }
     .suffix = Угол
 
-ent-CEZLevelLadderDirtCliffCornerInner = { ent-CEZLevelLadderCornerInnerBase }
-    .desc = { ent-CEZLevelLadderCornerInnerBase.desc }
+ent-CEZLevelStairsDirtCliffCornerInner = { ent-CEZLevelStairsCornerInnerBase }
+    .desc = { ent-CEZLevelStairsCornerInnerBase.desc }
     .suffix = Внутренний угол
 
-ent-CEZLevelsLadderRoofRed = красная крыша
-    .desc = { ent-CEZLevelLadderBase.desc }
+ent-CEZLevelStairsRoofRed = красная крыша
+    .desc = { ent-CEZLevelStairsBase.desc }
 
-ent-CEZLevelsLadderRoofRedCorner = красная крыша
-    .desc = { ent-CEZLevelLadderCornerBase.desc }
+ent-CEZLevelStairsRoofRedCorner = красная крыша
+    .desc = { ent-CEZLevelStairsCornerBase.desc }
     .suffix = Угол
 
-ent-CEZLevelsLadderRoofRedCornerInner = красная крыша
-    .desc = { ent-CEZLevelLadderCornerInnerBase.desc }
+ent-CEZLevelStairsRoofRedCornerInner = красная крыша
+    .desc = { ent-CEZLevelStairsCornerInnerBase.desc }
     .suffix = Внутренний угол
 
-ent-CEZLevelsLadderRoofGreen = зелёная крыша
-    .desc = { ent-CEZLevelLadderBase.desc }
+ent-CEZLevelStairsRoofGreen = зелёная крыша
+    .desc = { ent-CEZLevelStairsBase.desc }
 
-ent-CEZLevelsLadderRoofGreenCorner = зелёная крыша
-    .desc = { ent-CEZLevelLadderCornerBase.desc }
+ent-CEZLevelStairsRoofGreenCorner = зелёная крыша
+    .desc = { ent-CEZLevelStairsCornerBase.desc }
     .suffix = Corner
 
-ent-CEZLevelsLadderRoofGreenCornerInner = зелёная крыша
-    .desc = { ent-CEZLevelLadderCornerInnerBase.desc }
+ent-CEZLevelStairsRoofGreenCornerInner = зелёная крыша
+    .desc = { ent-CEZLevelStairsCornerInnerBase.desc }
     .suffix = Inner Corner
 
-ent-CEZLevelsLadderRoofBlue = синяя крыша
-    .desc = { ent-CEZLevelLadderBase.desc }
+ent-CEZLevelStairsRoofBlue = синяя крыша
+    .desc = { ent-CEZLevelStairsBase.desc }
 
-ent-CEZLevelsLadderRoofBlueCorner = синяя крыша
-    .desc = { ent-CEZLevelLadderCornerBase.desc }
+ent-CEZLevelStairsRoofBlueCorner = синяя крыша
+    .desc = { ent-CEZLevelStairsCornerBase.desc }
     .suffix = Corner
 
-ent-CEZLevelsLadderRoofBlueCornerInner = синяя крыша
-    .desc = { ent-CEZLevelLadderCornerInnerBase.desc }
+ent-CEZLevelStairsRoofBlueCornerInner = синяя крыша
+    .desc = { ent-CEZLevelStairsCornerInnerBase.desc }
     .suffix = Inner Corner
 
-ent-CEZLevelLadderStone = каменная лестница
-    .desc = { ent-CEZLevelLadderBase.desc }
+ent-CEZLevelStairsStone = каменная лестница
+    .desc = { ent-CEZLevelStairsBase.desc }
 
-ent-CEZLevelLadderStoneCorner = каменная лестница
-    .desc = { ent-CEZLevelLadderCornerBase.desc }
+ent-CEZLevelStairsStoneCorner = каменная лестница
+    .desc = { ent-CEZLevelStairsCornerBase.desc }
     .suffix = Угол
 
-ent-CEZLevelLadderStoneCornerInner = каменная лестница
-    .desc = { ent-CEZLevelLadderCornerInnerBase.desc }
+ent-CEZLevelStairsStoneCornerInner = каменная лестница
+    .desc = { ent-CEZLevelStairsCornerInnerBase.desc }
     .suffix = Внутренний угол
 
-ent-CEZLevelLadderWooden = деревянная лестница
-    .desc = { ent-CEZLevelLadderBase.desc }
+ent-CEZLevelStairsWooden = деревянная лестница
+    .desc = { ent-CEZLevelStairsBase.desc }
 
-ent-CEZLevelLadderWoodenCorner = деревянная лестница
-    .desc = { ent-CEZLevelLadderCornerBase.desc }
+ent-CEZLevelStairsWoodenCorner = деревянная лестница
+    .desc = { ent-CEZLevelStairsCornerBase.desc }
     .suffix = Угол
 
-ent-CEZLevelLadderWoodenCornerInner = деревянная лестница
-    .desc = { ent-CEZLevelLadderCornerInnerBase.desc }
+ent-CEZLevelStairsWoodenCornerInner = деревянная лестница
+    .desc = { ent-CEZLevelStairsCornerInnerBase.desc }
     .suffix = Inner Corner
 
 ent-CEThinWindowIron = { ent-CEBaseThinWindow }

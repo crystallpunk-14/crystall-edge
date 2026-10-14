@@ -55,7 +55,6 @@ entities:
       dNAs: []
     - type: ChunkContainer
       chunkEntities: []
-    - type: CEZLevelsLaddersCache
 - proto: CEMurkLucsonSphere25
   entities:
   - uid: 2

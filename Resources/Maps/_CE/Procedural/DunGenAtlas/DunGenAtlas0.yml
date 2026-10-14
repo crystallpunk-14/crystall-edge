@@ -75,7 +75,6 @@ entities:
     - type: ChunkContainer
       chunkEntities: []
     - type: RadiationGridResistance
-    - type: CEZLevelsLaddersCache
 - proto: CEBoneDragon
   entities:
   - uid: 22

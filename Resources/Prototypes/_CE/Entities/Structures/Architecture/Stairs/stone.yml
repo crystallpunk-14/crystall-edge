@@ -1,10 +1,10 @@
 - type: entity
-  id: CEZLevelsLadderStoneBase
+  id: CEZLevelStairsStoneBase
   abstract: true
-  name: stone ladder
+  name: stone stairs
   components:
   - type: Sprite
-    sprite: _CE/Structures/Architecture/Ladders/stone.rsi
+    sprite: _CE/Structures/Architecture/Stairs/stone.rsi
   - type: Damageable
     damageModifierSet: CERockStructural
   - type: Injurable
@@ -30,35 +30,35 @@
 
 - type: entity
   parent:
-  - CEZLevelLadderBase
-  - CEZLevelsLadderStoneBase
-  id: CEZLevelLadderStone
-  name: stone ladder
+  - CEZLevelStairsBase
+  - CEZLevelStairsStoneBase
+  id: CEZLevelStairsStone
+  name: stone stairs
   components:
   - type: Construction
-    graph: CEZLevelLadder
-    node: CEZLevelLadderStone
+    graph: CEZLevelStairs
+    node: CEZLevelStairsStone
 
 - type: entity
   parent:
-  - CEZLevelLadderCornerBase
-  - CEZLevelsLadderStoneBase
-  id: CEZLevelLadderStoneCorner
-  name: stone ladder
+  - CEZLevelStairsCornerBase
+  - CEZLevelStairsStoneBase
+  id: CEZLevelStairsStoneCorner
+  name: stone stairs
   suffix: Corner
   components:
   - type: Construction
-    graph: CEZLevelLadder
-    node: CEZLevelLadderStoneCorner
+    graph: CEZLevelStairs
+    node: CEZLevelStairsStoneCorner
 
 - type: entity
   parent:
-  - CEZLevelLadderCornerInnerBase
-  - CEZLevelsLadderStoneBase
-  id: CEZLevelLadderStoneCornerInner
-  name: stone ladder
+  - CEZLevelStairsCornerInnerBase
+  - CEZLevelStairsStoneBase
+  id: CEZLevelStairsStoneCornerInner
+  name: stone stairs
   suffix: Inner Corner
   components:
   - type: Construction
-    graph: CEZLevelLadder
-    node: CEZLevelLadderStoneCornerInner
+    graph: CEZLevelStairs
+    node: CEZLevelStairsStoneCornerInner

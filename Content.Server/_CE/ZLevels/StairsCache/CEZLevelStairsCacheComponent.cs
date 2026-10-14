@@ -3,14 +3,14 @@
  * https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT
  */
 
-namespace Content.Server._CE.ZLevels.LaddersCache;
+namespace Content.Server._CE.ZLevels.StairsCache;
 
 /// <summary>
-/// Cached positions of ladders entities (HighGround that act as ramps) on a given map grid.
+/// Cached positions of stairs entities (HighGround that act as ramps) on a given map grid.
 /// Stored on the map/grid entity for quick spatial lookups by NPC navigation systems.
 /// </summary>
-[RegisterComponent]
-public sealed partial class CEZLevelsLaddersCacheComponent : Component
+[RegisterComponent, UnsavedComponent]
+public sealed partial class CEZLevelStairsCacheComponent : Component
 {
     /// <summary>
     /// All ramp-like slope positions on this map, keyed by tile index.
