@@ -1,3 +1,4 @@
+using Content.Client._CE.Trade;
 using Content.Shared.Guidebook;
 using Robust.Shared.Prototypes;
 
@@ -7,7 +8,7 @@ namespace Content.Client.Guidebook.Components;
 /// This component stores a reference to a guidebook that contains information relevant to this entity.
 /// </summary>
 [RegisterComponent]
-[Access(typeof(GuidebookSystem))]
+[Access(typeof(GuidebookSystem), typeof(CEClientTradeSystem))] // CrystallEdge: trade offers attach guides at runtime
 public sealed partial class GuideHelpComponent : Component
 {
     /// <summary>

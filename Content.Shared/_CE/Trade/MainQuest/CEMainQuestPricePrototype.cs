@@ -1,4 +1,5 @@
 using Content.Shared._CE.ResourceManager;
+using Content.Shared.Guidebook;
 using Content.Shared.Roles;
 using Robust.Shared.Prototypes;
 
@@ -27,4 +28,10 @@ public sealed partial class CEMainQuestPricePrototype : IPrototype
     /// </summary>
     [DataField]
     public int Pay;
+
+    /// <summary>
+    /// Guidebook pages explaining this price's resource; the offer shows them like a <c>GuideHelp</c> entity does.
+    /// </summary>
+    [DataField]
+    public List<ProtoId<GuideEntryPrototype>> Guidebook = new();
 }

@@ -97,7 +97,7 @@
         entity: CEWallStoneOreDiamond
         mask:
         - !type:NoiseMask
-          threshold: 0.55
+          threshold: 0.65
           noise:
             seed: 521
             noiseType: OpenSimplex2

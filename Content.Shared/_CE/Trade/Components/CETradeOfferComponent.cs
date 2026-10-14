@@ -1,6 +1,7 @@
 using System.Numerics;
 using Content.Shared._CE.ResourceManager;
 using Content.Shared._CE.Trade.Rewards;
+using Content.Shared.Guidebook;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -47,6 +48,12 @@ public sealed partial class CETradeOfferComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public EntProtoId? Preview;
+
+    /// <summary>
+    /// Guidebook pages about the offer; the client turns them into a GuideHelp on the offer.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public List<ProtoId<GuideEntryPrototype>> Guides = new();
 
     [DataField]
     public Vector2 PreviewScale = new(0.85f, 0.85f);
