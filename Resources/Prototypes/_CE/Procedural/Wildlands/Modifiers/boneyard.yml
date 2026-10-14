@@ -8,7 +8,7 @@
   - type: CEWildlandsModifier
     points:
     - id: boneyard
-      minDistance: 10
+      minDistance: 0
       area: !type:RingArea
         minRadius: 50
         maxRadius: 110

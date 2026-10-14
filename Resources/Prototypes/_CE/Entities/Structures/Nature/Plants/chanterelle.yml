@@ -42,3 +42,12 @@
     sprite: _CE/Structures/Nature/Farm/cabbage.rsi
     state: death
     color: red
+
+# Already grown chanterelle for mapping and world generation
+- type: entity
+  id: CEPlantChanterelleGrown
+  parent: CEPlantChanterelle
+  suffix: Grown
+  components:
+  - type: CEPlant
+    growthLevel: 1

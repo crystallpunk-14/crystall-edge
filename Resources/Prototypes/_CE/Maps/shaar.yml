@@ -123,6 +123,7 @@
     - id: CEWildlandsModifierTestRoom
     - id: CEWildlandsModifierDamagedWoodenWallsRatio50
     - id: CEWildlandsModifierBoneyard
+    - id: CEWildlandsModifierMushroomGrove
   # Every level samples the same blended value (shared noise, size and distance), so a level's footprint
   # only depends on its threshold: deeper levels use higher thresholds and can never outgrow the surface.
   layersByDepth:
