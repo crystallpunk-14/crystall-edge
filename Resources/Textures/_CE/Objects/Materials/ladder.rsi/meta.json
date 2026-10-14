@@ -8,13 +8,13 @@
   "copyright": "Created by TheShuEd",
   "states": [
     {
-      "name": "stairs1"
+      "name": "wooden1"
     },
     {
-      "name": "stairs2"
+      "name": "wooden2"
     },
     {
-      "name": "stairs3"
+      "name": "wooden3"
     }
   ]
 }

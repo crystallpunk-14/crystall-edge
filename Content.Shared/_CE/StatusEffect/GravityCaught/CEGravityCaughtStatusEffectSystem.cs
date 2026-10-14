@@ -29,6 +29,7 @@ public sealed partial class CEGravityCaughtStatusEffectSystem : EntitySystem
             return;
 
         _zLevels.UpdateGravityState(args.Target);
+        _zLevels.RefreshVelocityRaiseEvent(args.Target);
         _gravity.RefreshWeightless(args.Target);
         _zLevels.SetZPosition(args.Target, 0.5f);
         _zLevels.SetZVelocity(args.Target, 0); //Reset velocity on apply
@@ -38,7 +39,16 @@ public sealed partial class CEGravityCaughtStatusEffectSystem : EntitySystem
     private void OnRemoved(Entity<CEGravityCaughtStatusEffectComponent> ent, ref StatusEffectRemovedEvent args)
     {
         _zLevels.UpdateGravityState(args.Target);
+        _zLevels.RefreshVelocityRaiseEvent(args.Target);
         _gravity.RefreshWeightless(args.Target);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnRefreshVelocityRaise(Entity<CEGravityCaughtStatusEffectComponent> ent, ref StatusEffectRelayedEvent<CERefreshVelocityRaiseEvent> args)
+    {
+        var ev = args.Args;
+        ev.Raise = true;
+        args.Args = ev;
     }
 
     [SubscribeLocalEvent]

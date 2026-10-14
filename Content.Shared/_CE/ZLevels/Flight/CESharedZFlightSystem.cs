@@ -154,6 +154,13 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
     }
 
     [SubscribeLocalEvent]
+    private void OnRefreshVelocityRaise(Entity<CEZFlyerComponent> ent, ref CERefreshVelocityRaiseEvent args)
+    {
+        if (ent.Comp.Active)
+            args.Raise = true;
+    }
+
+    [SubscribeLocalEvent]
     private void OnGetGravity(Entity<CEZFlyerComponent> ent, ref CECheckGravityEvent args)
     {
         if (ent.Comp.Active)
@@ -181,8 +188,7 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
         ent.Comp.Active = true;
         DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.Active));
 
-        zPhys.VelocityRaiseEvent = true;
-
+        _zLevel.RefreshVelocityRaiseEvent((ent, zPhys));
         _zLevel.UpdateGravityState((ent, zPhys));
         _zLevel.WakeBody((ent, zPhys));
         _gravity.RefreshWeightless(ent.Owner);
@@ -206,8 +212,7 @@ public abstract partial class CESharedZFlightSystem : EntitySystem
         ent.Comp.Active = false;
         DirtyField(ent, ent.Comp, nameof(CEZFlyerComponent.Active));
 
-        zPhys.VelocityRaiseEvent = false;
-
+        _zLevel.RefreshVelocityRaiseEvent((ent, zPhys));
         _zLevel.UpdateGravityState((ent, zPhys));
         _gravity.RefreshWeightless(ent.Owner);
 
