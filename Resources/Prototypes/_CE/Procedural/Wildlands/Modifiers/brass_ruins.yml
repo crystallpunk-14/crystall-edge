@@ -1,15 +1,18 @@
 - type: entity
-  id: CEWildlandsModifierTestRoom
+  id: CEWildlandsModifierBrassRuins
   parent: CEBaseWildlandsModifier
   categories: [ HideSpawnMenu ]
   components:
   - type: CEWildlandsModifier
     effects:
     - !type:SpawnRooms
-      room: TestRoom
+      rooms:
+      - BrassRuins1
+      - BrassRuins2
+      - BrassRuins3
       count:
-        min: 5
-        max: 10
+        min: 30
+        max: 40
       mask: # only walls block a room; trees and other clutter get cleared
       - !type:WhitelistMask
         inverted: true

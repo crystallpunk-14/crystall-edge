@@ -118,10 +118,11 @@
     - id: CEWildlandsModifierOreIronNoise
     - id: CEWildlandsModifierOreCrystalNoise
     - id: CEWildlandsModifierOreDiamondNoise
-    - id: CEWildlandsModifierTestRoom
+    - id: CEWildlandsModifierBrassRuins
     - id: CEWildlandsModifierDamagedWoodenWallsRatio50
     - id: CEWildlandsModifierBoneyard
     - id: CEWildlandsModifierMushroomGrove
+    - id: CEWildlandsModifierShadowEaters
   # Flat floating islands: the autumn archipelago is flat with caves underneath; only the ice island has caves on the surface and hills above.
   layersByDepth:
   #MARK: 0 Surface

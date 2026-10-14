@@ -11,7 +11,7 @@ Goal-oriented action planning for CE mobs. Data types live here in `Content.Shar
 3. **Replan** every `PlanCooldown`: actions that pass `CanExecute` and whose target slot resolves are costed (`Cost` + `DistanceCost` per tile to the target) and fed to `CEGOAPPlanner` (forward A* over a bitmask of keys). Goals are tried by descending `Priority`; a goal is active when its `Preconditions` match and its `DesiredState` doesn't yet.
 4. **Execute** the current action. If it has `range`, the orchestrator first walks the agent there via steering and pauses the action whenever the target leaves range.
 
-Sleeping (`CEGOAPSleepingComponent`, `CEGOAPSleepingSystem`, `CEGOAPSystem.Wake`) removes `CEActiveGOAPComponent`; agents wake on player proximity or damage. A player attached to the body puts GOAP to sleep.
+Sleeping (`CEGOAPSleepingComponent`, `CEGOAPSleepingSystem`, `CEGOAPSystem.Wake`) removes `CEActiveGOAPComponent`. Agents with `dormant` (default true) are born asleep unless a player is near, wake on player proximity or damage, and fall asleep again after `ce.goap.sleep_delay` without a player in `ce.goap.sleep_radius`. Distances are z-aware; ghosts don't count as players. Set `dormant: false` for agents that must work unobserved; tests that need awake agents without players turn off `ce.goap.dormancy`. A player attached to the body puts GOAP to sleep.
 
 ## Modules
 

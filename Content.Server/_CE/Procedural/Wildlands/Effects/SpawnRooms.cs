@@ -10,15 +10,18 @@ using Robust.Shared.Random;
 namespace Content.Server._CE.Procedural.Wildlands.Effects;
 
 /// <summary>
-/// Stamps <see cref="Room"/> at random spots, each with a random base depth (where all its floors exist) and a
-/// random cardinal rotation. A spot is valid when the rotated footprint on the base level is all land, inside the
+/// Stamps rooms from <see cref="Rooms"/> (one picked at random per placement) at random spots, each with a random
+/// base depth (where all its floors exist) and a random cardinal rotation. A spot is valid when the rotated footprint on the base level is all land, inside the
 /// region, passes <see cref="Mask"/> and stays clear of earlier rooms by <see cref="Spacing"/>. Whatever was anchored
 /// under the room is deleted on every floor. Running out of valid spots just places fewer rooms.
 /// </summary>
 public sealed partial class SpawnRooms : ICEWildlandsModifierEffect
 {
+    /// <summary>
+    /// Pool of rooms; every placement picks one of them at random.
+    /// </summary>
     [DataField(required: true)]
-    public ProtoId<CEDungeonRoom3DPrototype> Room;
+    public List<ProtoId<CEDungeonRoom3DPrototype>> Rooms = new();
 
     [DataField]
     public MinMax Count = new(1, 1);
@@ -51,7 +54,14 @@ public sealed partial class SpawnRooms : ICEWildlandsModifierEffect
     {
         var entMan = context.EntityManager;
         var dungeon = entMan.System<CEDungeonSystem>();
-        var room = context.Prototype.Index(Room);
+        if (Rooms.Count == 0)
+            return;
+
+        var rooms = new List<CEDungeonRoom3DPrototype>(Rooms.Count);
+        foreach (var roomId in Rooms)
+        {
+            rooms.Add(context.Prototype.Index(roomId));
+        }
 
         IRobustRandom random = new RobustRandom();
         random.SetSeed(context.Seed);
@@ -59,9 +69,6 @@ public sealed partial class SpawnRooms : ICEWildlandsModifierEffect
         var candidates = new List<(int Depth, Vector2i Tile)>();
         foreach (var (depth, map) in levels)
         {
-            if (!FitsAt(depth, room.Height, levels))
-                continue;
-
             var grid = entMan.GetComponent<MapGridComponent>(map);
             var tiles = context.Map.GetAllTilesEnumerator(map, grid);
             while (tiles.MoveNext(out var tileRef))
@@ -77,12 +84,16 @@ public sealed partial class SpawnRooms : ICEWildlandsModifierEffect
         var count = Count.Next(random);
         var placed = 0;
         var reserved = new HashSet<Vector2i>();
-        var footprint = new List<Vector2i>(room.Size.X * room.Size.Y);
+        var footprint = new List<Vector2i>();
 
         foreach (var (depth, anchor) in candidates)
         {
             if (placed >= count)
                 break;
+
+            var room = random.Pick(rooms);
+            if (!FitsAt(depth, room.Height, levels))
+                continue;
 
             var map = levels[depth];
             var grid = entMan.GetComponent<MapGridComponent>(map);

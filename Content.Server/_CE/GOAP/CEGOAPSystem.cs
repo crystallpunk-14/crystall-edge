@@ -16,9 +16,15 @@ public sealed partial class CEGOAPSystem : EntitySystem
 {
     [Dependency] private IConfigurationManager _cfg = default!;
     [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private CEGOAPSleepingSystem _sleeping = default!;
 
     private bool _enabled = true;
     private int _maxUpdates = 128;
+
+    /// <summary>
+    /// Snapshot index the next tick starts from, so agents past <see cref="_maxUpdates"/> take turns instead of starving.
+    /// </summary>
+    private int _nextUpdateIndex;
 
     /// <summary>
     /// Reusable list for executable actions to avoid allocations during planning.
@@ -99,10 +105,7 @@ public sealed partial class CEGOAPSystem : EntitySystem
         var refreshEv = new CEGOAPSensorRefreshEvent();
         RaiseLocalEvent(ent, ref refreshEv);
 
-        // If StartSleeping is set, add the sleeping marker so the entity stays dormant.
-        if (ent.Comp.StartSleeping)
-            EnsureComp<CEGOAPSleepingComponent>(ent);
-
+        _sleeping.InitDormancy(ent);
         UpdateAwakeStatus((ent, ent.Comp));
     }
 
@@ -145,11 +148,19 @@ public sealed partial class CEGOAPSystem : EntitySystem
             _activeSnapshot.Add((uid, goap));
         }
 
+        var total = _activeSnapshot.Count;
+        if (total == 0)
+            return;
+
+        if (_nextUpdateIndex >= total)
+            _nextUpdateIndex = 0;
+
         var count = 0;
-        foreach (var (uid, goap) in _activeSnapshot)
+        var visited = 0;
+        while (visited < total && count < _maxUpdates)
         {
-            if (count >= _maxUpdates)
-                break;
+            var (uid, goap) = _activeSnapshot[(_nextUpdateIndex + visited) % total];
+            visited++;
 
             if (!HasComp<CEActiveGOAPComponent>(uid))
                 continue;
@@ -159,6 +170,8 @@ public sealed partial class CEGOAPSystem : EntitySystem
             UpdateAgent((uid, goap), frameTime);
             count++;
         }
+
+        _nextUpdateIndex = (_nextUpdateIndex + visited) % total;
     }
 
     private void UpdateAgent(Entity<CEGOAPComponent> ent, float frameTime)

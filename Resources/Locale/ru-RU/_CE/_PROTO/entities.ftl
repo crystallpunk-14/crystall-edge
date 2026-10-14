@@ -1862,7 +1862,7 @@ ent-CESeedWheat = семена пшеницы
     .desc = Мелкие семена пшеницы. Что вы с ними будете делать? Смолоть их в муку или пересадить заново?
     .suffix = 1
 
-ent-CESeedWheat30 = { ent-CESeedWheat }
+ent-CESeedWheat10 = { ent-CESeedWheat }
     .desc = { ent-CESeedWheat.desc }
     .suffix = 30
 
@@ -1870,7 +1870,7 @@ ent-CESeedPumpkin = семена тыквы
     .desc = Семена тыквы. Кажется, какую-то тыкву выпотрошили и разрезали.
     .suffix = 1
 
-ent-CESeedPumpkin30 = { ent-CESeedPumpkin }
+ent-CESeedPumpkin10 = { ent-CESeedPumpkin }
     .desc = { ent-CESeedPumpkin.desc }
     .suffix = 30
 
@@ -1878,7 +1878,7 @@ ent-CESeedCabbage = семена капусты
     .desc = О нет, моя капуста!
     .suffix = 1
 
-ent-CESeedCabbage30 = { ent-CESeedCabbage }
+ent-CESeedCabbage10 = { ent-CESeedCabbage }
     .desc = { ent-CESeedCabbage.desc }
     .suffix = 30
 
@@ -1886,7 +1886,7 @@ ent-CESeedCucumber = семена огурца
     .desc = Семена огурца. Вы знаете, что с ними делать.
     .suffix = 1
 
-ent-CESeedCucumber30 = { ent-CESeedCucumber }
+ent-CESeedCucumber10 = { ent-CESeedCucumber }
     .desc = { ent-CESeedCucumber.desc }
     .suffix = 30
 
@@ -1894,7 +1894,7 @@ ent-CESeedTomato = семена помидора
     .desc = Похоже на порошок! Они такие маленькие, эти семена.
     .suffix = 1
 
-ent-CESeedTomato30 = { ent-CESeedTomato }
+ent-CESeedTomato10 = { ent-CESeedTomato }
     .desc = { ent-CESeedTomato.desc }
     .suffix = 30
 
@@ -1902,7 +1902,7 @@ ent-CESeedPepper = семена перца
     .desc = Семена перца с перцем внутри.
     .suffix = 1
 
-ent-CESeedPepper30 = { ent-CESeedPepper }
+ent-CESeedPepper10 = { ent-CESeedPepper }
     .desc = { ent-CESeedPepper.desc }
     .suffix = 30
 
@@ -1910,7 +1910,7 @@ ent-CESeedCotton = семена хлопка
     .desc = Семена хлопка. Пора вырастить какие-нибудь штаны!
     .suffix = 1
 
-ent-CESeedCotton30 = { ent-CESeedCotton }
+ent-CESeedCotton10 = { ent-CESeedCotton }
     .desc = { ent-CESeedCotton.desc }
     .suffix = 30
 
@@ -1918,7 +1918,7 @@ ent-CESeedSunflower = семена подсолнуха
     .desc = Семена подсолнуха!
     .suffix = 1
 
-ent-CESeedSunflower30 = { ent-CESeedSunflower }
+ent-CESeedSunflower10 = { ent-CESeedSunflower }
     .desc = { ent-CESeedSunflower.desc }
     .suffix = 30
 
@@ -1926,7 +1926,7 @@ ent-CESeedCorn = семена кукурузы
     .desc = Крошечные семена кукурузы для посадки.
     .suffix = 1
 
-ent-CESeedCorn30 = { ent-CESeedCorn }
+ent-CESeedCorn10 = { ent-CESeedCorn }
     .desc = { ent-CESeedCorn.desc }
     .suffix = 30
 
@@ -1934,7 +1934,7 @@ ent-CESeedCarrot = семена моркови
     .desc = Крошечные семена моркови для посадки.
     .suffix = 1
 
-ent-CESeedCarrot30 = { ent-CESeedCarrot }
+ent-CESeedCarrot10 = { ent-CESeedCarrot }
     .desc = { ent-CESeedCarrot.desc }
     .suffix = 30
 
@@ -3919,6 +3919,9 @@ ent-CEPottedPlant3 = { ent-CEPottedPlantBase }
 
 ent-CEPottedPlant4 = { ent-CEPottedPlantBase }
     .desc = { ent-CEPottedPlantBase.desc }
+
+ent-CEPot = глиняный горшок
+    .desc = Хрупкий глиняный горшок. Кто знает, что внутри?
 
 ent-CEWoodenSpikes = деревянные колья
     .desc = Острые деревянные колья, вбитые в землю. На них определённо не хочется падать!
