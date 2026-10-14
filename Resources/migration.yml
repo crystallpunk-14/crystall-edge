@@ -204,6 +204,16 @@ CEZLevelLadderWoodenCorner: CEZLevelStairsWoodenCorner
 CEZLevelLadderWoodenCornerInner: CEZLevelStairsWoodenCornerInner
 CEConveyorLadder: CEConveyorStairs
 CEConveyorLadderReverse: CEConveyorStairsReverse
+CESeedWheat30: CESeedWheat10
+CESeedPumpkin30: CESeedPumpkin10
+CESeedCabbage30: CESeedCabbage10
+CESeedCucumber30: CESeedCucumber10
+CESeedTomato30: CESeedTomato10
+CESeedPepper30: CESeedPepper10
+CESeedCotton30: CESeedCotton10
+CESeedSunflower30: CESeedSunflower10
+CESeedCorn30: CESeedCorn10
+CESeedCarrot30: CESeedCarrot10
 
 # CrystallEdge migration zone end
 

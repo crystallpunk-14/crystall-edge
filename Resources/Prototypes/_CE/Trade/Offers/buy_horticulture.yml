@@ -181,104 +181,104 @@
 
 #MARK: Seeds
 - type: tradeOffer
-  id: CETradeOfferSeedWheat30
+  id: CETradeOfferSeedWheat10
   weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
   reward:
   - !type:CETradeSpawnReward
-    proto: CESeedWheat30
+    proto: CESeedWheat10
 
 - type: tradeOffer
-  id: CETradeOfferSeedPumpkin30
+  id: CETradeOfferSeedPumpkin10
   weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
   reward:
   - !type:CETradeSpawnReward
-    proto: CESeedPumpkin30
+    proto: CESeedPumpkin10
 
 - type: tradeOffer
-  id: CETradeOfferSeedCabbage30
+  id: CETradeOfferSeedCabbage10
   weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
   reward:
   - !type:CETradeSpawnReward
-    proto: CESeedCabbage30
+    proto: CESeedCabbage10
 
 - type: tradeOffer
-  id: CETradeOfferSeedCucumber30
+  id: CETradeOfferSeedCucumber10
   weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
   reward:
   - !type:CETradeSpawnReward
-    proto: CESeedCucumber30
+    proto: CESeedCucumber10
 
 - type: tradeOffer
-  id: CETradeOfferSeedTomato30
+  id: CETradeOfferSeedTomato10
   weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
   reward:
   - !type:CETradeSpawnReward
-    proto: CESeedTomato30
+    proto: CESeedTomato10
 
 - type: tradeOffer
-  id: CETradeOfferSeedPepper30
+  id: CETradeOfferSeedPepper10
   weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
   reward:
   - !type:CETradeSpawnReward
-    proto: CESeedPepper30
+    proto: CESeedPepper10
 
 - type: tradeOffer
-  id: CETradeOfferSeedCarrot30
+  id: CETradeOfferSeedCarrot10
   weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
   reward:
   - !type:CETradeSpawnReward
-    proto: CESeedCarrot30
+    proto: CESeedCarrot10
 
 - type: tradeOffer
-  id: CETradeOfferSeedCotton30
+  id: CETradeOfferSeedCotton10
   weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
   reward:
   - !type:CETradeSpawnReward
-    proto: CESeedCotton30
+    proto: CESeedCotton10
 
 - type: tradeOffer
-  id: CETradeOfferSeedSunflower30
+  id: CETradeOfferSeedSunflower10
   weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
   reward:
   - !type:CETradeSpawnReward
-    proto: CESeedSunflower30
+    proto: CESeedSunflower10
 
 - type: tradeOffer
-  id: CETradeOfferSeedCorn30
+  id: CETradeOfferSeedCorn10
   weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
   reward:
   - !type:CETradeSpawnReward
-    proto: CESeedCorn30
+    proto: CESeedCorn10
 
 - type: tradeOffer
   id: CETradeOfferSeedAppleTree
