@@ -57,6 +57,7 @@
   - type: Damageable
   - type: Injurable
     damageContainer: CEBiological
+  - type: DamageOverlay
   - type: Destructible
     thresholds:
     - trigger:

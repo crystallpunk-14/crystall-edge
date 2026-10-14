@@ -15,7 +15,7 @@
     effects:
     - !type:GenerationLayers
       minDepth: -2 # caves only: the mushrooms feed on darkness
-      maxDepth: -1
+      maxDepth: 0
       layers:
       - !type:AtPointLayer
         point: grove

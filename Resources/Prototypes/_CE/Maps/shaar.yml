@@ -95,13 +95,13 @@
   - id: voidHole
     count:
       min: 2
-      max: 3 
+      max: 3
     minDistance: 100 # clear of the snow island's halo and of each other
     area: !type:RingArea
       minRadius: 50
       maxRadius: 100
   cityModifiers: !type:AllSelector
-    children: 
+    children:
     # Ore veins
     - id: CEWildlandsModifierOreCoalRatio10
     - id: CEWildlandsModifierOreIronRatio10
@@ -115,11 +115,9 @@
   wildlandsModifiers: !type:AllSelector
     children:
     - id: CEWildlandsModifierOreCoalNoise
-      prob: 0.75
     - id: CEWildlandsModifierOreIronNoise
-      prob: 0.75
     - id: CEWildlandsModifierOreCrystalNoise
-      prob: 0.5
+    - id: CEWildlandsModifierOreDiamondNoise
     - id: CEWildlandsModifierTestRoom
     - id: CEWildlandsModifierDamagedWoodenWallsRatio50
     - id: CEWildlandsModifierBoneyard
