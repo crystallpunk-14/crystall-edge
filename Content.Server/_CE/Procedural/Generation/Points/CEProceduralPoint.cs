@@ -35,15 +35,21 @@ public sealed partial class CEProceduralPoint
 
     /// <summary>
     /// Resolves <paramref name="points"/> in declaration order into absolute tile positions around
-    /// <paramref name="center"/>. A position that finds no spot clear of <see cref="MinDistance"/> is dropped.
+    /// <paramref name="center"/>. <paramref name="taken"/> carries positions across calls so later points keep
+    /// <see cref="MinDistance"/> from earlier ones; a candidate outside <paramref name="region"/> is rerolled.
+    /// A position that finds no valid spot is dropped.
     /// </summary>
-    public static Dictionary<string, List<Vector2i>> Resolve(List<CEProceduralPoint> points, Vector2i center, int seed)
+    public static Dictionary<string, List<Vector2i>> Resolve(
+        List<CEProceduralPoint> points,
+        Vector2i center,
+        int seed,
+        List<Vector2i> taken,
+        CEProceduralRegion? region = null)
     {
         IRobustRandom random = new RobustRandom();
         random.SetSeed(seed);
 
         var resolved = new Dictionary<string, List<Vector2i>>();
-        var taken = new List<Vector2i>();
         foreach (var point in points)
         {
             var positions = new List<Vector2i>();
@@ -58,7 +64,7 @@ public sealed partial class CEProceduralPoint
                 for (var attempt = 0; attempt < MaxAttempts; attempt++)
                 {
                     var candidate = center + point.Area.Sample(random);
-                    if (!point.IsClear(candidate, taken))
+                    if (region?.Contains(candidate) == false || !point.IsClear(candidate, taken))
                         continue;
 
                     positions.Add(candidate);

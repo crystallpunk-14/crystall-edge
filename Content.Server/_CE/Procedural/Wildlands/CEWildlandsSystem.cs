@@ -57,7 +57,9 @@ public sealed partial class CEWildlandsSystem : EntitySystem
         var stopwatch = Stopwatch.StartNew();
 
         var city = GetCityTiles(levels);
-        var points = CEProceduralPoint.Resolve(config.Points, config.Center, seed);
+        // Shared by config and modifier points so every point keeps its MinDistance from all earlier ones.
+        var takenPoints = new List<Vector2i>();
+        var points = CEProceduralPoint.Resolve(config.Points, config.Center, seed, takenPoints);
         var wildContext = CreateContext(seed, config.Center, new CEProceduralRegion(city, inside: false), points);
         var cityContext = wildContext with { Region = new CEProceduralRegion(city, inside: true) };
 
@@ -78,8 +80,8 @@ public sealed partial class CEWildlandsSystem : EntitySystem
             }
         }
 
-        ApplyModifiers(config.WildlandsModifiers, wildContext, levels);
-        ApplyModifiers(config.CityModifiers, cityContext with { Seed = seed + 1 }, levels);
+        ApplyModifiers(config.WildlandsModifiers, wildContext, levels, takenPoints);
+        ApplyModifiers(config.CityModifiers, cityContext with { Seed = seed + 1 }, levels, takenPoints);
 
         Log.Info($"Generated wildlands {config.ID} for {ToPrettyString(ent)} with seed {seed} in {stopwatch.Elapsed.TotalSeconds:0.00}s.");
     }
@@ -193,7 +195,11 @@ public sealed partial class CEWildlandsSystem : EntitySystem
         return city;
     }
 
-    private void ApplyModifiers(EntityTableSelector? table, CEProceduralGenerationContext context, Dictionary<int, EntityUid> levels)
+    private void ApplyModifiers(
+        EntityTableSelector? table,
+        CEProceduralGenerationContext context,
+        Dictionary<int, EntityUid> levels,
+        List<Vector2i> takenPoints)
     {
         if (table is null)
             return;
@@ -213,10 +219,32 @@ public sealed partial class CEWildlandsSystem : EntitySystem
 
             // Each pick gets its own seed so two modifiers never roll identical noise or shuffles.
             var modifierContext = context with { Seed = context.Seed + index * 7919 };
+            if (modifier.Points.Count > 0)
+                modifierContext = modifierContext with { Points = ResolveModifierPoints(modifier, modifierContext, takenPoints) };
+
             foreach (var effect in modifier.Effects)
             {
                 effect.Apply(modifierContext, levels);
             }
         }
+    }
+
+    /// <summary>
+    /// The modifier's own points on top of the config's; they shadow same-named config points and stay invisible
+    /// to other modifiers.
+    /// </summary>
+    private static Dictionary<string, List<Vector2i>> ResolveModifierPoints(
+        CEWildlandsModifierComponent modifier,
+        CEProceduralGenerationContext context,
+        List<Vector2i> takenPoints)
+    {
+        var points = new Dictionary<string, List<Vector2i>>(context.Points);
+        var own = CEProceduralPoint.Resolve(modifier.Points, context.Center, context.Seed, takenPoints, context.Region);
+        foreach (var (id, positions) in own)
+        {
+            points[id] = positions;
+        }
+
+        return points;
     }
 }

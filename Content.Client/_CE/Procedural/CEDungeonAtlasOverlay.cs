@@ -1,5 +1,6 @@
 using System.Numerics;
 using Content.Shared._CE.Procedural;
+using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Mapping.Prototypes;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
@@ -10,10 +11,12 @@ namespace Content.Client._CE.Procedural;
 
 /// <summary>
 /// Draws rectangles showing the size and position of each <see cref="CEDungeonRoom3DPrototype"/>
-/// that uses the selected <see cref="CEZLevelMapPrototype"/> as its atlas source.
+/// that uses the selected <see cref="CEZLevelMapPrototype"/> as its atlas source. On a z-network loaded from the atlas
+/// a room only shows on the levels it spans: atlas map N loads at depth N and the room takes maps 0..Height-1.
 /// </summary>
 public sealed partial class CEDungeonAtlasOverlay : Overlay
 {
+    [Dependency] private IEntityManager _entMan = default!;
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IResourceCache _cache = default!;
 
@@ -24,6 +27,7 @@ public sealed partial class CEDungeonAtlasOverlay : Overlay
     /// </summary>
     public ProtoId<CEZLevelMapPrototype>? ZMapProtoId;
 
+    private readonly SharedMapSystem _map;
     private readonly Font _font;
 
     private readonly List<CEDungeonRoom3DPrototype> _rooms = new();
@@ -31,6 +35,7 @@ public sealed partial class CEDungeonAtlasOverlay : Overlay
     public CEDungeonAtlasOverlay()
     {
         IoCManager.InjectDependencies(this);
+        _map = _entMan.System<SharedMapSystem>();
         _font = new VectorFont(_cache.GetResource<FontResource>("/Fonts/NotoSans/NotoSans-Regular.ttf"), 12);
     }
 
@@ -39,11 +44,21 @@ public sealed partial class CEDungeonAtlasOverlay : Overlay
         if (ZMapProtoId is not { } zMap)
             return;
 
+        // Atlas maps opened outside a z-network have no depth; show every room there.
+        int? depth = _entMan.TryGetComponent<CEZMapComponent>(_map.GetMapOrInvalid(args.MapId), out var zMapComp)
+            ? zMapComp.Depth
+            : null;
+
         _rooms.Clear();
         foreach (var room in _proto.EnumeratePrototypes<CEDungeonRoom3DPrototype>())
         {
-            if (room.ZLevelMap == zMap)
-                _rooms.Add(room);
+            if (room.ZLevelMap != zMap)
+                continue;
+
+            if (depth is { } d && (d < 0 || d >= room.Height))
+                continue;
+
+            _rooms.Add(room);
         }
 
         if (args.Space == OverlaySpace.WorldSpace)

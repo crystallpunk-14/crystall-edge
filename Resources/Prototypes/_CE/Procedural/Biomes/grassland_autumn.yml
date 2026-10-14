@@ -190,7 +190,7 @@
     - !type:BiomeMetaLayer
       template: CEGrasslandAutumn
     - !type:BiomeEntityLayer # More Trees
-      threshold: 0.2
+      threshold: 0.3
       noise:
         seed: 4
         noiseType: OpenSimplex2
