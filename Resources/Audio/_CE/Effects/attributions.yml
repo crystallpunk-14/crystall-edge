@@ -172,3 +172,8 @@
   license: "CC-BY-SA-4.0"
   copyright: "themfish on Freesound"
   source: "https://freesound.org/people/themfish/sounds/34202/"
+
+- files: ["pot_break1.ogg", "pot_break2.ogg", "pot_break3.ogg", "pot_break4.ogg"]
+  license: "CC0-1.0"
+  copyright: 'by Kinoton of Freesound.org. Cropped by TheShuEd.'
+  source: "https://freesound.org/people/Kinoton/sounds/399080/"
