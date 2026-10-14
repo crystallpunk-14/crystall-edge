@@ -42,3 +42,6 @@ ce-stack-dimensional-matrix = dimensional matrices
 ce-stack-medium-brass-pipe = brass pipes
 ce-stack-big-brass-pipe = big brass pipes
 ce-stack-pipe-valve = pipe valves
+
+ce-stack-gold-bars = gold bars
+ce-stack-gold-ore = gold ore

@@ -36,6 +36,21 @@
   result: CEBrassBar1
   resultCount: 1
 
+- type: CERecipe
+  id: CEGoldBar1
+  parent: CEBaseMeltingFurnaceRecipe
+  category: Materials
+  craftTime: 2.5
+  requirements:
+  - !type:MaterialResource
+    material: CEGold
+    count: 10
+  - !type:StackResource
+    stack: CECoal
+    count: 1
+  result: CEGoldBar1
+  resultCount: 1
+
 #MARK: Gems
 
 - type: CERecipe

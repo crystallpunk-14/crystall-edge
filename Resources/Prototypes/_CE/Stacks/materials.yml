@@ -151,3 +151,18 @@
   spawn: CELeather1
   icon: { sprite: _CE/Objects/Materials/leather.rsi, state: leather }
   maxCount: 10
+
+
+- type: stack
+  id: CEGoldBar
+  name: ce-stack-gold-bars
+  spawn: CEGoldBar1
+  icon: { sprite: _CE/Objects/Materials/Metals/gold_bar.rsi, state: bar_2 }
+  maxCount: 10
+
+- type: stack
+  id: CEGoldOre
+  name: ce-stack-gold-ore
+  spawn: CEGoldOre1
+  icon: { sprite: _CE/Objects/Materials/Metals/gold_ore.rsi, state: ore2 }
+  maxCount: 30

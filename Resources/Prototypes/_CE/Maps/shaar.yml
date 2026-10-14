@@ -121,6 +121,7 @@
     - id: CEWildlandsModifierBrassRuins
     - id: CEWildlandsModifierDamagedWoodenWallsRatio50
     - id: CEWildlandsModifierBoneyard
+    - id: CEWildlandsModifierGoldVein
     - id: CEWildlandsModifierMushroomGrove
     - id: CEWildlandsModifierShadowEaters
   # Flat floating islands: the autumn archipelago is flat with caves underneath; only the ice island has caves on the surface and hills above.

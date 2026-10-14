@@ -7,6 +7,14 @@
     count: 5
 
 - type: mainQuestPrice
+  id: MainQuestGoldBars
+  department: CEGuild
+  cost:
+  - !type:StackResource
+    stack: CEGoldBar
+    count: 10
+
+- type: mainQuestPrice
   id: MainQuestCrystalCell
   department: CEEngineering
   cost:
