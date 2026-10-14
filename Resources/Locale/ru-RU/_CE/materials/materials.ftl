@@ -7,3 +7,5 @@ ce-material-iron = Железо
 ce-material-brass = Латунь
 ce-material-diamond = Алмаз
 ce-material-bone = Кости
+
+ce-material-gold = Золото

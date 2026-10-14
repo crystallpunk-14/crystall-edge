@@ -4,6 +4,7 @@ using Content.Shared._CE.Trade.Components;
 using Content.Shared._CE.Trade.Prototypes;
 using Content.Shared._CE.Trade.Rewards;
 using Content.Shared.Examine;
+using Content.Shared.Guidebook;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Inventory;
 using Content.Shared.Storage;
@@ -119,13 +120,15 @@ public abstract partial class CESharedTradeSystem : EntitySystem
     /// Writes the whole exchange into a freshly spawned offer.
     /// </summary>
     /// <param name="name">Offer name; defaults to the first reward's or cost's name.</param>
+    /// <param name="guides">Guidebook pages the offer links to.</param>
     public void FillOffer(EntityUid uid,
         List<CEResourceRequirement> cost,
         List<CETradeReward> reward,
         int payPrice,
         int receivePrice,
         EntProtoId? preview = null,
-        string? name = null)
+        string? name = null,
+        List<ProtoId<GuideEntryPrototype>>? guides = null)
     {
         if (!_offerQuery.TryComp(uid, out var comp))
             return;
@@ -135,6 +138,7 @@ public abstract partial class CESharedTradeSystem : EntitySystem
         comp.PayPrice = payPrice;
         comp.ReceivePrice = receivePrice;
         comp.Preview = preview;
+        comp.Guides = guides is null ? new() : new List<ProtoId<GuideEntryPrototype>>(guides);
         Dirty(uid, comp);
 
         _meta.SetEntityName(uid, name ?? GetOfferName(comp.Reward, comp.Cost) ?? string.Empty);

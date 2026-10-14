@@ -30,7 +30,8 @@ public sealed partial class CEMainQuestTradeSystem : EntitySystem
             price.Cost,
             [new CETradeSpawnReward { Proto = ent.Comp.Reward }],
             payPrice: price.Pay,
-            receivePrice: 0);
+            receivePrice: 0,
+            guides: price.Guidebook);
 
         args.Handled = true;
     }

@@ -5,6 +5,20 @@
   - !type:StackResource
     stack: CEDiamond
     count: 5
+  guidebook:
+  - CEGuideDiamondsEN
+  - CEGuideDiamondsRU
+
+- type: mainQuestPrice
+  id: MainQuestGoldBars
+  department: CEGuild
+  cost:
+  - !type:StackResource
+    stack: CEGoldBar
+    count: 10
+  guidebook:
+  - CEGuideGoldEN
+  - CEGuideGoldRU
 
 - type: mainQuestPrice
   id: MainQuestCrystalCell

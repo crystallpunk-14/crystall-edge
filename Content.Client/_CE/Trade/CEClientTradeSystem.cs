@@ -1,3 +1,4 @@
+using Content.Client.Guidebook.Components;
 using Content.Client.Stack;
 using Content.Client.Storage.Systems;
 using Content.Shared._CE.Trade;
@@ -17,6 +18,9 @@ public sealed partial class CEClientTradeSystem : CESharedTradeSystem
     [SubscribeLocalEvent]
     private void OnAfterHandleState(Entity<CETradeOfferComponent> ent, ref AfterAutoHandleStateEvent args)
     {
+        if (ent.Comp.Guides.Count > 0)
+            EnsureComp<GuideHelpComponent>(ent).Guides = new(ent.Comp.Guides);
+
         if (GetPreview(ent.Comp, out var stackCount) is not { } preview)
         {
             _sprite.SetVisible(ent.Owner, false);
