@@ -109,6 +109,10 @@
         weight: 0.3
       - id: CEBaseLockpick
         weight: 0.1
+      - id: CEClothingWristwatch
+        weight: 0.3
+      - id: CEClothingWristwatchGold
+        weight: 0.01
       - id: CELockIron
         weight: 0.3
       - !type:GroupSelector
