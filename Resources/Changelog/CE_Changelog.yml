@@ -1375,3 +1375,13 @@
   id: 1117
   time: '2026-10-14T19:54:43.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/531
+- author: TheShuEd
+  changes:
+  - message: Gold ore and gold ore coreshave been added; these can only be found in
+      the murk.
+    type: Add
+  - message: A merchant quest for 10 gold bars has been added.
+    type: Add
+  id: 1118
+  time: '2026-10-14T21:55:09.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/532
