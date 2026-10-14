@@ -30,6 +30,14 @@
     allowPlaceBelow: true
 
 - type: entity
+  id: CEWoodenLadderItem5
+  parent: CEWoodenLadderItem
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5
+
+- type: entity
   id: CEWoodenLadderItem10
   parent: CEWoodenLadderItem
   suffix: 10

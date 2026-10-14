@@ -7,13 +7,13 @@
         - to: CEWoodenLadderItem
           steps:
             - material: CEWood
-              amount: 2
+              amount: 6
               doAfter: 0.25
             - material: CENail
-              amount: 1
+              amount: 2
 
     - node: CEWoodenLadderItem
-      entity: CEWoodenLadderItem
+      entity: CEWoodenLadderItem5
 
 # The mounted ladder is placed from the item, this graph only takes it back down.
 - type: constructionGraph
