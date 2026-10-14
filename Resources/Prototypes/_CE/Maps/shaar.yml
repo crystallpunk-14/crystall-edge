@@ -122,6 +122,7 @@
     - id: CEWildlandsModifierDamagedWoodenWallsRatio50
     - id: CEWildlandsModifierBoneyard
     - id: CEWildlandsModifierGoldVein
+    - id: CEWildlandsModifierCaveEntrances
     - id: CEWildlandsModifierMushroomGrove
     - id: CEWildlandsModifierShadowEaters
   # Flat floating islands: the autumn archipelago is flat with caves underneath; only the ice island has caves on the surface and hills above.
@@ -134,12 +135,12 @@
         blendWeight: 0.55
       fill:
       - tile: CEGrassAutumnTall
-        threshold: 0.45
+        threshold: 0.4
         noise: &islandNoise
-          frequency: 0.0375
+          frequency: 0.03
           noiseType: OpenSimplex2
           fractalType: FBm
-          octaves: 5
+          octaves: 3
           lacunarity: 2
           gain: 0.5
     - !type:TileNoiseDistanceLayer # island centers, forest grows here
@@ -157,12 +158,12 @@
         distanceConfig: *distance
         fill:
         - tile: CEIce
-          threshold: 0.6
+          threshold: 0.5
           noise: &snowIslandNoise
-            frequency: 0.06
+            frequency: 0.04
             noiseType: OpenSimplex2
             fractalType: FBm
-            octaves: 4
+            octaves: 3
             lacunarity: 2
             gain: 0.5
         - tile: CESnow
@@ -205,7 +206,7 @@
             lacunarity: 2
             gain: 0.5
     - !type:FillBiomeLayer # must run before the ice caves: it never outputs CEIce, while the caves output CESnow
-      biome: CESnowlandForest
+      biome: CESnowland
       seed: 4
       mask:
       - !type:TileMask
@@ -270,7 +271,7 @@
       distanceConfig: *distance
       fill:
       - tile: CEStone
-        threshold: 0.45 # same footprint as the surface
+        threshold: 0.4 # same footprint as the surface
         noise: *islandNoise
     - !type:AtPointLayer
       point: snowIsland
@@ -280,7 +281,7 @@
         distanceConfig: *distance
         fill:
         - tile: CEIce
-          threshold: 0.45 # same footprint as the surface
+          threshold: 0.4 # same footprint as the surface
           noise: *snowIslandNoise
       - !type:TileNoiseDistanceLayer
         size: *snowHaloSize

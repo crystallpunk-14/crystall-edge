@@ -43,5 +43,3 @@ ce-stack-medium-brass-pipe = средние латунные трубы
 ce-stack-big-brass-pipe = большие латунные трубы
 ce-stack-pipe-valve = вентили для труб
 
-ce-stack-gold-bars = золотые слитки
-ce-stack-gold-ore = золотая руда
