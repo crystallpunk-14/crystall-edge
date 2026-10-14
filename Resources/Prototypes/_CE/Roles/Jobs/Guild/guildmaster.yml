@@ -19,9 +19,6 @@
   equipment:
     belt: CEKeyRingGuildmaster
     pocket1: CEWalletFilledGuildmaster
-  storage:
-    back:
-    - CERubberStampGuildmaster
 
 - type: entity
   id: CEWalletFilledGuildmaster
@@ -39,6 +36,33 @@
     - id: CECoinCopper10
 
 - type: entity
+  id: CEChestFilledGuildmaster
+  parent: CEGoldChest
+  suffix: Filled, Guildmaster
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: CERubberStampApproved
+        - id: CERubberStampDenied
+        - id: CERubberStampGuildmaster
+
+- type: entity
+  id: CEBedsideTableFilledGuildmaster
+  parent: CEBedsideTableWooden
+  suffix: Filled, Guildmaster
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 2, 3
+        children:
+        - id: CEClothingCloakGuildmaster
+        - id: CEClothingHeadFedoraGuildmaster
+
+- type: entity
   id: CEKeyRingGuildmaster
   parent: CEBaseKeyRing
   categories: [ HideSpawnMenu ]
@@ -48,3 +72,4 @@
     - id: CEKeyGuildLobby
     - id: CEKeyGuildInner
     - id: CEKeyGuildStorage
+    - id: CEKeyGuildmasterRoom

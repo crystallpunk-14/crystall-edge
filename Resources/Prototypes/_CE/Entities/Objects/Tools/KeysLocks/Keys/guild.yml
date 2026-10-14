@@ -21,3 +21,11 @@
   components:
   - type: CEKey
     autoGenerateShape: GuildStorage
+
+- type: entity
+  parent: CEKeyIronBlank
+  id: CEKeyGuildmasterRoom
+  suffix: Guildmaster Room
+  components:
+  - type: CEKey
+    autoGenerateShape: GuildmasterRoom

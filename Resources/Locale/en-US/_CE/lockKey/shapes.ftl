@@ -3,6 +3,7 @@
 ce-lock-shape-guild-lobby = guild lobby
 ce-lock-shape-guild-inner = guild inner rooms
 ce-lock-shape-guild-storage = guild storage
+ce-lock-shape-guildmaster-room = guildmaster's office
 
 # Tavern
 

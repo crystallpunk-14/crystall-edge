@@ -85,6 +85,48 @@
           - CEWallSnow
 
 - type: entity
+  id: CEWildlandsModifierOreDiamondNoise
+  parent: CEBaseWildlandsModifier
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: CEWildlandsModifier
+    effects:
+    - !type:GenerationLayers
+      layers:
+      - !type:FillEntityLayer
+        entity: CEWallStoneOreDiamond
+        mask:
+        - !type:NoiseMask
+          threshold: 0.55
+          noise:
+            seed: 521
+            noiseType: OpenSimplex2
+            fractalType: FBm
+            frequency: 0.08
+            octaves: 3
+        - !type:EntityMask
+          entities:
+          - CEWallStone
+          - CEWallDirt
+          - CEWallSnow
+      - !type:FillEntityLayer
+        entity: CEWallDiamondCore
+        mask:
+        - !type:NoiseMask
+          threshold: 0.85
+          noise:
+            seed: 523
+            noiseType: OpenSimplex2
+            fractalType: FBm
+            frequency: 0.2
+            octaves: 3
+        - !type:EntityMask
+          entities:
+          - CEWallStone
+          - CEWallDirt
+          - CEWallSnow
+
+- type: entity
   id: CEWildlandsModifierOreCrystalNoise
   parent: CEBaseWildlandsModifier
   categories: [ HideSpawnMenu ]

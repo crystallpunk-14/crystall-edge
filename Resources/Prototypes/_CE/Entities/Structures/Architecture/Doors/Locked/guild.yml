@@ -51,3 +51,23 @@
     autoGenerateShape: GuildStorage
   - type: Lock
     locked: true
+
+- type: entity
+  parent: CEIronDoor
+  id: CEIronDoorGuildmasterRoom
+  suffix: Guildmaster Room
+  components:
+  - type: CELock
+    autoGenerateShape: GuildmasterRoom
+  - type: Lock
+    locked: true
+
+- type: entity
+  parent: CEIronDoorMirrored
+  id: CEIronDoorGuildmasterRoomMirrored
+  suffix: Guildmaster Room, Mirrored
+  components:
+  - type: CELock
+    autoGenerateShape: GuildmasterRoom
+  - type: Lock
+    locked: true

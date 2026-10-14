@@ -1020,6 +1020,49 @@
       Life: { min: 0, max: 2 }
 
 - type: entity
+  id: CEFoodAgaric
+  parent: FoodInjectableBase
+  categories: [ ForkFiltered ]
+  name: fly agaric
+  description: A bright red mushroom with white spots. Very pretty, and very poisonous.
+  components:
+  - type: Item
+    size: Tiny
+  - type: FlavorProfile
+    flavors:
+      - bitter
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Food/agaric.rsi
+    layers:
+      - state: base1
+        map: [ "random" ]
+  - type: RandomSprite
+    available:
+      - random:
+          base1: ""
+          base2: ""
+          base3: ""
+          base4: ""
+          base5: ""
+  - type: Solution
+    id: food
+    solution:
+      maxVol: 11
+      reagents:
+      - ReagentId: CEMuscimol
+        Quantity: 5 # 3 agarics = 100 Poison damage over ~1 minute, see CEMuscimol
+  - type: CESeed
+    plantProto: CEPlantAgaric
+  - type: Temperature
+    temperature: 290
+    heatCapacity: 15000
+  - type: InternalTemperature
+  - type: CEMagicEssenceStructure
+    essences:
+      Plant: { min: 1, max: 2 }
+      Poison: { min: 1, max: 2 }
+
+- type: entity
   id: CEFoodSunflowerHead
   parent: [FoodInjectableBase, BaseSlicingRefinableFood]
   categories: [ ForkFiltered ]

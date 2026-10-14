@@ -4,7 +4,7 @@ meta:
   engineVersion: 289.0.0
   forkId: ""
   forkVersion: ""
-  time: 10/12/2026 09:51:38
+  time: 10/14/2026 10:55:45
   entityCount: 1
 maps:
 - 1
@@ -20,7 +20,7 @@ entities:
   - uid: 1
     components:
     - type: MetaData
-      name: Mapping Empty [5]
+      name: Mapping DunGenAtlas [5]
     - type: Transform
     - type: Map
       mapPaused: True

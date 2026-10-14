@@ -3,6 +3,7 @@
 ce-lock-shape-guild-lobby = лобби гильдии
 ce-lock-shape-guild-inner = внутренние помещения гильдии
 ce-lock-shape-guild-storage = склад гильдии
+ce-lock-shape-guildmaster-room = кабинет гильдмастера
 
 # Tavern
 
