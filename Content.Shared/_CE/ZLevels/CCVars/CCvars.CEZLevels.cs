@@ -50,6 +50,12 @@ public sealed partial class CCVars
     public static readonly CVarDef<int>
         CEZLevelsRenderingMaxZLevelsBelowRendering = CVarDef.Create("ce.zlevels.rendering.max_zLevels_below_rendering", 1, CVar.SERVER | CVar.REPLICATED);
 
+    /// <summary>
+    /// Draws a lip under tile edges bordering an opening into the z-level below, giving floors visual thickness.
+    /// </summary>
+    public static readonly CVarDef<bool>
+        CEZLevelsRenderingTileVolume = CVarDef.Create("ce.zlevels.rendering.tile_volume", true, CVar.ARCHIVE | CVar.CLIENTONLY);
+
     /**
      * Audio
      */

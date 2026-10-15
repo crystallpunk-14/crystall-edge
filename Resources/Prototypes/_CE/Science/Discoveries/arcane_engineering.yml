@@ -19,16 +19,6 @@
   skill: PortableEssenceAttractor
 
 - type: scienceDiscovery
-  id: ManaTransferGlove
-  parent: EasyDifficult
-  area: ArcaneEngineering
-  targetAspects:
-  - Magic
-  - Energia
-  - Motion
-  skill: ManaTransferGlove
-
-- type: scienceDiscovery
   id: ThaumaturgyGlassesAdvanced
   parent: EasyDifficult
   area: ArcaneEngineering
@@ -49,14 +39,3 @@
   - Trap
   - Machine
   skill: NodeStabilizer
-
-- type: scienceDiscovery
-  id: ThirdArmMiningModule
-  parent: MediumDifficult
-  area: ArcaneEngineering
-  targetAspects:
-  - Mining
-  - Tool
-  - Energia
-  - Weapon
-  skill: ThirdArmMiningModule

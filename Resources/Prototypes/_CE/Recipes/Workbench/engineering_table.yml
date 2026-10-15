@@ -208,7 +208,6 @@
 
 - type: CERecipe
   id: CEManaTransferGlove
-  requiredSkill: ManaTransferGlove
   parent: CEBaseEngineeringTableRecipe
   category: Tools
   craftTime: 1.0
@@ -313,25 +312,6 @@
     stack: CEGlass
     count: 2
   result: CEThirdArmModuleLight
-  resultCount: 1
-
-- type: CERecipe
-  id: CEThirdArmModuleMining
-  requiredSkill: ThirdArmMiningModule
-  parent: CEBaseEngineeringTableRecipe
-  category: Tools
-  craftTime: 2.0
-  requirements:
-  - !type:StackResource
-    stack: CEBrassSheet
-    count: 4
-  - !type:ProtoIdResource
-    protoId: CEEnergyCrystalCell
-    count: 2
-  - !type:StackResource
-    stack: CEIronRod
-    count: 3
-  result: CEThirdArmModuleMining
   resultCount: 1
 
 - type: CERecipe

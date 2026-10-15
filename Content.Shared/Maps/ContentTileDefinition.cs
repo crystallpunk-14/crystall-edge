@@ -138,6 +138,13 @@ public sealed partial class ContentTileDefinition : IPrototype, IInheritingProto
     [DataField]
     public bool Transparent = false;
 
+    /// <summary>
+    /// CrystallEdge: Lip drawn below this tile's edge where it borders an opening into the z-level below.
+    /// Height of the texture is the lip thickness in pixels, width is 32 px per variant.
+    /// </summary>
+    [DataField]
+    public ResPath VolumeSprite { get; private set; } = new("/Textures/_CE/Tiles/Volume/default.png");
+
     public void AssignTileId(ushort id)
     {
         TileId = id;
