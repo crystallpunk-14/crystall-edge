@@ -14,11 +14,6 @@
   previewEntity: CENodeStabilizerSphere
 
 - type: skill
-  id: ThirdArmMiningModule
-  parent: ArcaneEngineeringSkillBase
-  previewEntity: CEThirdArmModuleMining
-
-- type: skill
   id: ThaumaturgyGlassesAdvanced
   parent: ArcaneEngineeringSkillBase
   previewEntity: CEClothingEyesThaumaturgyGlassesAdvanced

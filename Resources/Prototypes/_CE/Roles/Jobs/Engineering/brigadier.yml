@@ -59,6 +59,7 @@
         - id: CERubberStampEngineering
         - id: CEThirdArm
         - id: CEThirdArmModuleManipulation
+        - id: CEThirdArmModuleMining
 
 - type: entity
   id: CEBedsideTableFilledBrigadier
