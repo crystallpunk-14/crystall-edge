@@ -1385,3 +1385,15 @@
   id: 1118
   time: '2026-10-14T21:55:09.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/532
+- author: TheShuEd
+  changes:
+  - message: The Mana Glove has been removed from the Academy's research tree; it
+      can now be selected in the loadout, found in crates, and crafted by Engineers
+      at the start of the round.
+    type: Tweak
+  - message: The Miner Module for the Manipulator Arm has been removed from the Academy's
+      research tree and added to the Brigadier chest as a unique item (one copy only).
+    type: Tweak
+  id: 1119
+  time: '2026-10-15T10:34:23.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/533
