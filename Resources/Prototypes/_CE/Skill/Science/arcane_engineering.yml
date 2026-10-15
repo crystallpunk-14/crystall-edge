@@ -4,11 +4,6 @@
   previewEntity: CEDrillAdvanced
 
 - type: skill
-  id: Hoverboard
-  parent: ArcaneEngineeringSkillBase
-  previewEntity: CEVehicleHoverboard
-
-- type: skill
   id: PortableEssenceAttractor
   parent: ArcaneEngineeringSkillBase
   previewEntity: CEPortableMagicEssenceAttractor
@@ -17,11 +12,6 @@
   id: NodeStabilizer
   parent: ArcaneEngineeringSkillBase
   previewEntity: CENodeStabilizerSphere
-
-- type: skill
-  id: ManaTransferGlove
-  parent: ArcaneEngineeringSkillBase
-  previewEntity: CEManaTransferGlove
 
 - type: skill
   id: ThirdArmMiningModule

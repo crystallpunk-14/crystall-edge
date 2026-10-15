@@ -19,16 +19,6 @@
   skill: PortableEssenceAttractor
 
 - type: scienceDiscovery
-  id: ManaTransferGlove
-  parent: EasyDifficult
-  area: ArcaneEngineering
-  targetAspects:
-  - Magic
-  - Energia
-  - Motion
-  skill: ManaTransferGlove
-
-- type: scienceDiscovery
   id: ThaumaturgyGlassesAdvanced
   parent: EasyDifficult
   area: ArcaneEngineering

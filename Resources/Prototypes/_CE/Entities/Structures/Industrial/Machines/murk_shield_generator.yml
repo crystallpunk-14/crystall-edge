@@ -2,6 +2,7 @@
   parent:
   - CEConstructibleMachine
   - CEBaseMachinePowered
+  - CEBaseMachineEnergized
   - BaseMachine
   id: CEMurkShieldGenerator
   categories: [ ForkFiltered ]

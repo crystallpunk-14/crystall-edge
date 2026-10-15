@@ -208,7 +208,6 @@
 
 - type: CERecipe
   id: CEManaTransferGlove
-  requiredSkill: ManaTransferGlove
   parent: CEBaseEngineeringTableRecipe
   category: Tools
   craftTime: 1.0
