@@ -37,6 +37,33 @@
     event: !type:CEEntityTargetActionAnimationEvent
       animation: AnimationDarkSideBanishment
 
+- type: skill
+  id: DarkSideWalk
+  icon:
+    sprite: _CE/Actions/misc.rsi
+    state: todo
+  effect: !type:AddAction
+    action: CEActionToggleDarkSideWalk
+
+- type: entity
+  id: CEActionToggleDarkSideWalk
+  name: Walk on the dark side
+  description: Step out of the material world, or return to it, at will.
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    checkCanInteract: false
+    sound: !type:SoundPathSpecifier
+      path: /Audio/Magic/rumble.ogg
+  - type: Sprite
+    sprite: _CE/Actions/misc.rsi
+    layers:
+    - state: todo
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:CEToggleStatusEffectsActionEvent
+      enabled: CEStatusEffectDarkSide
+
 - type: entityEffectAnimation
   id: AnimationDarkSideBanishment
   movementSpeed: 0.6
@@ -45,30 +72,36 @@
     0.25:
     - !type:ApplyStatusEffect
       effectTarget: Target
-      statusEffect: CEStatusEffectDarkSideWalk
+      statusEffect: CEStatusEffectDarkSide
       duration: 60
 
 - type: entity
   parent: StatusEffectSlowdown
-  id: CEStatusEffectDarkSideWalk
-  name: walk on the dark side
-  description: You have been cast out of the material world. Only those who perceive magic can see you.
+  id: CEStatusEffectDarkSide
+  name: on the dark side
+  description: You are outside the material world. Only those who perceive magic can see you.
   components:
+  - type: CEVFXStatusEffect
+    appliedVfx: CELurkerShadowStepEffect
+    removedVfx: CELurkerShadowStepEffect
   - type: MovementModStatusEffect
     walkSpeedModifier: 0.5
     sprintSpeedModifier: 0.5
   - type: StatusEffectAlert
-    alert: CEDarkSideWalk
+    alert: CEDarkSide
+  - type: CEPacifismStatusEffect
   - type: CEVisibilityLayerStatusEffect
     layers:
     - CEMagicVision
   - type: CEMagicVisionStatusEffect
+    showOverlay: false
   - type: CEMurkShadowStatusEffect
+  - type: CEDarkSideVisionStatusEffect
 
 - type: alert
-  id: CEDarkSideWalk
+  id: CEDarkSide
   icons:
   - sprite: /Textures/_CE/Actions/misc.rsi
     state: todo
-  name: ce-alerts-dark-side-walk-name
-  description: ce-alerts-dark-side-walk-desc
+  name: ce-alerts-dark-side-name
+  description: ce-alerts-dark-side-desc

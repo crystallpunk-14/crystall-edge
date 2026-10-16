@@ -22,5 +22,5 @@ ce-alerts-bad-food-aftertaste-desc = Poorly prepared food causes you to feel nau
 ce-alerts-murk-dissolving-name = Dissolving in the murk
 ce-alerts-murk-dissolving-desc = Your flesh is starting to smoke and evaporate. Leave the murk immediately if you want to stay alive!
 
-ce-alerts-dark-side-walk-name = Walk on the dark side
-ce-alerts-dark-side-walk-desc = You have been cast out of the material world. Only those who perceive magic can see you.
+ce-alerts-dark-side-name = On the dark side
+ce-alerts-dark-side-desc = You are outside the material world. Only those who perceive magic can see you.

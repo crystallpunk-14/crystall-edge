@@ -22,5 +22,5 @@ ce-alerts-bad-food-aftertaste-desc = Ужасно приготовленная �
 ce-alerts-murk-dissolving-name = Растворение во мраке
 ce-alerts-murk-dissolving-desc = Ваша плоть начинает дымиться и испаряться. Срочно покиньте мрак, если хотите остаться в живых!
 
-ce-alerts-dark-side-walk-name = Прогулка по тёмной стороне
-ce-alerts-dark-side-walk-desc = Вас изгнали из материального мира. Видеть вас могут лишь те, кто воспринимает магию.
+ce-alerts-dark-side-name = На тёмной стороне
+ce-alerts-dark-side-desc = Вы находитесь вне материального мира. Видеть вас могут лишь те, кто воспринимает магию.
