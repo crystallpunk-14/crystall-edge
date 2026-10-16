@@ -162,6 +162,8 @@
   - type: CEInnateSkills
     skills:
     - ManaControl
+    - ManaGift
+    - ManaSteal
     descriptorName: ce-innate-skill-source-elf
     descriptorColor: "#92efef"
 
