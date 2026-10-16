@@ -117,7 +117,7 @@
     - id: CEWildlandsModifierOreCoalNoise
     - id: CEWildlandsModifierOreIronNoise
     - id: CEWildlandsModifierOreCrystalNoise
-    - id: CEWildlandsModifierOreDiamondNoise
+    - id: CEWildlandsModifierDiamondVein
     - id: CEWildlandsModifierBrassRuins
     - id: CEWildlandsModifierDamagedWoodenWallsRatio50
     - id: CEWildlandsModifierBoneyard
