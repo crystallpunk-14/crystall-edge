@@ -49,16 +49,6 @@
 
 - type: entity
   parent: CEWallRadioSpeakerBase
-  id: CEWallRadioSpeakerAcademy
-  suffix: Common, Academy
-  components:
-  - type: CERadioSpeaker
-    frequencies:
-    - CECommon
-    - CEAcademy
-
-- type: entity
-  parent: CEWallRadioSpeakerBase
   id: CEWallRadioSpeakerEngineering
   suffix: Common, Engineering
   components:

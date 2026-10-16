@@ -220,6 +220,58 @@ CEClothingEyesThaumaturgyGlasses: null
 CEClothingEyesThaumaturgyGlassesAdvanced: null
 CEGuidebookThaumaturgy: null
 
+# Thaumaturgy and academy removal
+CEIronDoorAcademyHall: CEIronDoorWindowed
+CEIronDoorAcademyHallMirrored: CEIronDoorWindowedMirrored
+CEIronDoorAcademyTechnical: CEIronDoor
+CEIronDoorAcademyTechnicalMirrored: CEIronDoorMirrored
+CEIronDoorAcademyLab: CEIronDoor
+CEIronDoorAcademyLabMirrored: CEIronDoorMirrored
+CEIronDoorAcademyRectorRoom: CEIronDoor
+CEIronDoorAcademyRectorRoomMirrored: CEIronDoorMirrored
+CEChestFilledAcademyStudent: CEWoodenChest
+CEChestFilledAcademyProfessor: CEWoodenChest
+CEChestFilledAcademyRector: CEGoldChest
+CEBedsideTableFilledAcademyStudent: CEBedsideTableWooden
+CEBedsideTableFilledAcademyProfessor: CEBedsideTableWooden
+CEBedsideTableFilledAcademyRector: CEBedsideTableWooden
+CEResearchTable: CETableWooden
+CEWallRadioSpeakerAcademy: CEWallRadioSpeaker
+CERadioPostSpeakerAcademy: CERadioPostSpeaker
+CEKeyAcademyHall: null
+CEKeyAcademyTechnical: null
+CEKeyAcademyLab: null
+CEKeyAcademyRectorRoom: null
+CEKeyRingAcademyStudent: null
+CEKeyRingAcademyProfessor: null
+CEKeyRingAcademyRector: null
+CEWalletFilledAcademyStudent: null
+CEWalletFilledAcademyProfessor: null
+CEWalletFilledAcademyRector: null
+CESpawnPointAcademyStudent: null
+CESpawnPointAcademyProfessor: null
+CESpawnPointAcademyRector: null
+CEMagicEssenceAttractor: null
+CEMachineCoreEssenceAttractor: null
+CEPortableMagicEssenceAttractor: null
+CEMagicEssenceNode: null
+CENodeStabilizerSphere: null
+CEPressTargetThaumaturgySplitter: null
+CEMachineCorePressTargetThaumaturgySplitter: null
+CEThaumaturgicMagnifyingGlass: null
+CEThaumaturgicMagnifyingGlassAdmin: null
+CEUnselectedDiscoveryProject: null
+CEDiscoveryProjectEngineering: null
+CEDiscoveryProjectSpellcasting: null
+CEBookAncient: null
+CEDebugKnowledgeBook: null
+CEVialMediumEarthEssence: CEVialMedium
+CEVialMediumFireEssence: CEVialMedium
+CEVialMediumWaterEssence: CEVialMedium
+CEVialMediumAirEssence: CEVialMedium
+CEVialMediumOrderEssence: CEVialMedium
+CEVialMediumChaosEssence: CEVialMedium
+
 # CrystallEdge migration zone end
 
 

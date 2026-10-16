@@ -4,10 +4,3 @@
   components:
   - type: CEMurkConsumingRule
     crackDelay: 60s
-
-- type: entity
-  parent: CEBaseGameRule
-  id: CEGameRuleMagicEssenceNodes
-  components:
-  - type: CEMagicEssenceNodeRule
-    nodeCount: 5

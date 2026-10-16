@@ -10,7 +10,6 @@
   - CEGuardCommander
   - CETavernmaster
   - CEBrigadier
-  - CEAcademyRector
   - CEGuildmaster
 
 - type: department
@@ -59,18 +58,6 @@
   roles:
   - CETownfolk
   - CEBard
-
-- type: department
-  id: CEAcademy
-  name: department-CEAcademy
-  description: department-CEAcademy-desc
-  weight: 5
-  color: "#8759c9"
-  editorHidden: false
-  roles:
-  - CEAcademyStudent
-  - CEAcademyProfessor
-  - CEAcademyRector
 
 - type: department
   id: CEGuild

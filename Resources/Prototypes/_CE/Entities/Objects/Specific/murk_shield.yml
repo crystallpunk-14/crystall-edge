@@ -30,9 +30,6 @@
     radius: 7.0
     energy: 1
     color: "#eef2f5"
-  - type: CEMagicEssenceStructure
-    essences:
-      Light: { min: 4, max: 6 }
   - type: CEMurkSource
     intensity: -7
   - type: CEMurkShield

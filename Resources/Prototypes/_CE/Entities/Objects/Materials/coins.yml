@@ -36,9 +36,6 @@
   - type: EmitSoundOnPickup
     sound:
       collection: CECoins
-  - type: CEMagicEssenceStructure
-    essences:
-      Metal: { min: 1, max: 3 }
   - type: CEShiny
     radius: 0.2
     minFrequency: 2
@@ -67,10 +64,6 @@
     count: 1
   - type: StackPrice
     price: 1
-  - type: CEMagicEssenceStructure
-    essences:
-      Metal: { min: 1, max: 3 }
-      Greed: { min: 0, max: 1 }
   - type: CEShiny
     effect: CEEffectShinyCopper
 
@@ -113,10 +106,6 @@
     count: 1
   - type: StackPrice
     price: 10
-  - type: CEMagicEssenceStructure
-    essences:
-      Metal: { min: 1, max: 3 }
-      Greed: { min: 1, max: 2 }
   - type: CEShiny
     effect: CEEffectShinySilver
 
@@ -159,10 +148,6 @@
     count: 1
   - type: StackPrice
     price: 100
-  - type: CEMagicEssenceStructure
-    essences:
-      Metal: { min: 1, max: 3 }
-      Greed: { min: 2, max: 4 }
   - type: CEShiny
     effect: CEEffectShinyGold
 
@@ -205,10 +190,6 @@
     count: 1
   - type: StackPrice
     price: 1000
-  - type: CEMagicEssenceStructure
-    essences:
-      Metal: { min: 1, max: 3 }
-      Greed: { min: 3, max: 6 }
   - type: CEShiny
     effect: CEEffectShinyPlatinum
 

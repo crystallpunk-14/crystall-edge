@@ -15,9 +15,6 @@
     sprite: _CE/Structures/Wallpaper/icons.rsi
   - type: StackPrice
     price: 0.5
-  - type: CEMagicEssenceStructure
-    essences:
-      Cloth: { min: 1, max: 1 }
   - type: CEEntityGroupMember
     groups:
       Wallpaper: 1

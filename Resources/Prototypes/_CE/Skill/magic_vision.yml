@@ -11,7 +11,7 @@
 - type: entity
   id: CEActionToggleMagicVision
   name: Magical vision
-  description: You focus on magical flows, perceiving the hidden world of magic and the essence of objects.
+  description: You focus on magical flows, perceiving the hidden world of magic.
   components:
   - type: Action
     itemIconStyle: BigAction

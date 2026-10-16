@@ -31,7 +31,6 @@
             CETavernmaster: [ 1, 1 ]
             CEGuildmaster: [ 1, 1 ]
             CEAdventurer: [ 3, 4 ]
-            CEAcademyRector: [ 1, 1 ]
         - type: CEStationZLevels
           mapsBelow:
           - /Maps/_CE/Dev/Dev-1.yml

@@ -105,7 +105,6 @@
   - type: TimedDespawn
     lifetime: 5
 
-
 - type: entity
   parent: CERadiationSourceVFX
   id: CEStrongRadiationSourceVFX
@@ -240,27 +239,6 @@
       - HideContextMenu
   - type: TimedDespawn
     lifetime: 2
-
-- type: entity
-  id: CEScientificInterestVFX
-  categories: [ ForkFiltered ]
-  save: false
-  suffix: VFX
-  name: scientific interest marker
-  components:
-  - type: Sprite
-    sprite: _CE/Effects/question.rsi
-    drawdepth: Effects
-    layers:
-    - state: effect
-      shader: unshaded
-  - type: Physics
-    canCollide: false
-  - type: Tag
-    tags:
-      - HideContextMenu
-  - type: TimedDespawn
-    lifetime: 3.0
 
 - type: entity
   id: CEFireWhooshEffect

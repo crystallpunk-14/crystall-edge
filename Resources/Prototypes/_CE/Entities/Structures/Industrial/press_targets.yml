@@ -41,17 +41,3 @@
     sprite: _CE/Structures/Industrial/press.rsi
     layers:
     - state: platform
-
-- type: entity
-  id: CEPressTargetThaumaturgySplitter
-  parent: CEPressTargetBase
-  name: thaumaturgical splitter
-  description: An enchanted platform for the press that allows objects to be broken down into their primordial essences.
-  components:
-  - type: Machine
-    board: CEMachineCorePressTargetThaumaturgySplitter
-  - type: CEThaumaturgySplitter
-  - type: Sprite
-    sprite: _CE/Structures/Industrial/press.rsi
-    layers:
-    - state: platform_thaumaturgy

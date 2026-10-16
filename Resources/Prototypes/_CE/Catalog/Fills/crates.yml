@@ -107,8 +107,6 @@
       - id: CESafeFallingAmulet
       - id: CEKeyFile
       - id: CEScissors
-      - id: CEBookAncient
-        weight: 0.3
       - id: CEBaseLockpick
         weight: 0.1
       - id: CEClothingWristwatch
