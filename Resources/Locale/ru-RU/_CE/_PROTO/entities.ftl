@@ -552,9 +552,6 @@ ent-CEEffectFrostConsume = { ent-CEEffectAreaHealingTelegraphy }
     .desc = { "" }
     .suffix = VFX
 
-ent-CEMagicTrace = магический след
-    .desc = Слабый отпечаток магии, медленно рассеивающийся.
-
 ent-CEEffectManaDrain = эффект истощения маны
     .desc = { "" }
     .suffix = VFX
