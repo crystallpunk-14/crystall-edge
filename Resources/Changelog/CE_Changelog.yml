@@ -1397,3 +1397,12 @@
   id: 1119
   time: '2026-10-15T10:34:23.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/533
+- author: TheShuEd
+  changes:
+  - message: Removed thaumaturgy academy (Rest in peace), and all related content.
+    type: Remove
+  - message: Removed Spell magic trace system.
+    type: Remove
+  id: 1120
+  time: '2026-10-16T16:39:37.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/536
