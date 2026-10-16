@@ -3,5 +3,4 @@ ce-skill-req-prerequisite = Навык "{$name}" должен быть изуч�
 ce-skill-req-not-prerequisite = Навык "{$name}" не должен быть изучен
 ce-skill-req-species = Вы должны быть расы "{$name}"
 ce-skill-req-notspecies = Вы не должны быть расы "{$name}"
-ce-skill-req-researched = Необходимо провести исследование на исследовательском столе
 ce-skill-req-god-follower-percentage = Количество ваших последователей должно быть больше {$count}%

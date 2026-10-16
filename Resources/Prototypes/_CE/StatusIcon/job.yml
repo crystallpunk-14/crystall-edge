@@ -118,29 +118,3 @@
     sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
     state: jobless
   jobName: ce-job-name-townfolk
-
-# Academy
-
-- type: jobIcon
-  parent: CEJobIcon
-  id: CEJobIconAcademyStudent
-  icon:
-    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
-    state: student
-  jobName: ce-job-name-academy-student
-
-- type: jobIcon
-  parent: CEJobIcon
-  id: CEJobIconAcademyProfessor
-  icon:
-    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
-    state: professor
-  jobName: ce-job-name-academy-professor
-
-- type: jobIcon
-  parent: CEJobIcon
-  id: CEJobIconAcademyRector
-  icon:
-    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
-    state: rector
-  jobName: ce-job-name-academy-rector

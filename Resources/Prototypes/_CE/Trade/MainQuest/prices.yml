@@ -45,22 +45,6 @@
     count: 20
 
 - type: mainQuestPrice
-  id: MainQuestManaGift
-  department: CEAcademy
-  cost:
-  - !type:SkillBookResource
-    skill: ManaGift
-    count: 1
-
-- type: mainQuestPrice
-  id: MainQuestManaSteal
-  department: CEAcademy
-  cost:
-  - !type:SkillBookResource
-    skill: ManaSteal
-    count: 1
-
-- type: mainQuestPrice
   id: MainQuestCoins
   department: CECitizens
   pay: 500

@@ -32,10 +32,10 @@
     autoStep: false
     velocityGravity: false
   - type: CEZLevelGhostMover
-  - type: CEPermanentMagicVision
   - type: CEInnateSkills
     skills:
     - TimeSense
+    - MagicVision
 
 
 # shared parent between aghosts, replay spectators and normal observers

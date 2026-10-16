@@ -332,28 +332,6 @@
   result: CEThirdArmModuleManipulation
   resultCount: 1
 
-- type: CERecipe
-  id: CEClothingEyesThaumaturgyGlassesAdvanced
-  requiredSkill: ThaumaturgyGlassesAdvanced
-  parent: CEBaseEngineeringTableRecipe
-  category: Tools
-  craftTime: 2.0
-  requirements:
-  - !type:ProtoIdResource
-    protoId: CEClothingEyesThaumaturgyGlasses
-    count: 1
-  - !type:StackResource
-    stack: CEBrassSheet
-    count: 2
-  - !type:StackResource
-    stack: CEGlass
-    count: 1
-  - !type:StackResource
-    stack: CEMachinePartDimensionalMatrix
-    count: 1
-  result: CEClothingEyesThaumaturgyGlassesAdvanced
-  resultCount: 1
-
 #MARK: Machine cores
 
 - type: CERecipe
@@ -468,27 +446,7 @@
   resultCount: 1
 
 - type: CERecipe
-  id: CEMachineCorePressTargetThaumaturgySplitter
-  parent: CEBaseEngineeringTableRecipe
-  category: MachineCore
-  craftTime: 2.0
-  requirements:
-  - !type:StackResource
-    stack: CEBrassSheet
-    count: 5
-  - !type:StackResource
-    stack: CEMachinePartDimensionalMatrix
-    count: 1
-  - !type:StackResource
-    stack: CEIronSheet
-    count: 5
-  result: CEMachineCorePressTargetThaumaturgySplitter
-  resultCount: 1
-
-# Unlocked by the "Advanced Drilling" science achievement - see achievements.yml.
-- type: CERecipe
   id: CEMachineCoreDrillAdvanced
-  requiredSkill: DrillAdvanced
   parent: CEBaseEngineeringTableRecipe
   category: MachineCore
   craftTime: 3.0
@@ -506,27 +464,6 @@
     stack: CEMachinePartEnergyLine
     count: 2
   result: CEMachineCoreDrillAdvanced
-  resultCount: 1
-
-- type: CERecipe
-  id: CEMachineCoreEssenceAttractor
-  parent: CEBaseEngineeringTableRecipe
-  category: MachineCore
-  craftTime: 2.0
-  requirements:
-  - !type:StackResource
-    stack: CEBrassSheet
-    count: 5
-  - !type:ProtoIdResource
-    protoId: CEEnergyCrystalCell
-    count: 1
-  - !type:StackResource
-    stack: CEMachinePartCoalDiffuser
-    count: 2
-  - !type:StackResource
-    stack: CEGlass
-    count: 5
-  result: CEMachineCoreEssenceAttractor
   resultCount: 1
 
 - type: CERecipe
@@ -668,45 +605,4 @@
     stack: CEGlass
     count: 5
   result: CESolutionNormalizer
-  resultCount: 1
-
-- type: CERecipe
-  id: CEPortableMagicEssenceAttractor
-  requiredSkill: PortableEssenceAttractor
-  parent: CEBaseEngineeringTableRecipe
-  category: Tools
-  craftTime: 2.0
-  requirements:
-  - !type:StackResource
-    stack: CEIronBar
-    count: 2
-  - !type:StackResource
-    stack: CEBrassSheet
-    count: 4
-  - !type:StackResource
-    stack: CEGlass
-    count: 5
-  result: CEPortableMagicEssenceAttractor
-  resultCount: 1
-
-- type: CERecipe
-  id: CENodeStabilizerSphere
-  requiredSkill: NodeStabilizer
-  parent: CEBaseEngineeringTableRecipe
-  category: Tools
-  craftTime: 3.0
-  requirements:
-  - !type:StackResource
-    stack: CEBrassRod
-    count: 12
-  - !type:StackResource
-    stack: CEBrassBar
-    count: 4
-  - !type:StackResource
-    stack: CEGlass
-    count: 10
-  - !type:StackResource
-    stack: CEMachinePartEnergyLine
-    count: 1
-  result: CENodeStabilizerSphere
   resultCount: 1

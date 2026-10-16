@@ -1,0 +1,85 @@
+uniform sampler2D SCREEN_TEXTURE;
+// How far into the dark side the view is. 0 leaves the screen untouched, 1 is the full effect.
+uniform highp float Strength;
+// Scales the wind distortion. 0 keeps reality still (reduced motion).
+uniform highp float Wind;
+
+const highp vec3 neon_color = vec3(0.50, 0.66, 0.82);
+const highp vec3 shadow_tint = vec3(0.80, 0.88, 1.0);
+// Brightness of the brightest parts of the black and white remains of the original picture.
+const highp float shadow_brightness = 0.45;
+// Tone curve of the black and white picture. Black always stays black; below 1 spreads more
+// gradations through the darks and mids, above 1 crushes them towards black.
+const highp float shadow_gamma = 0.75;
+
+// Gamma applied to brightness before edge detection. Below 1 lifts dark areas, so their contours
+// show up too - but too low turns every texture detail into a line.
+const highp float edge_gamma = 0.6;
+// Sobel response range mapped from "no line" to "full line".
+const highp float edge_low = 0.08;
+const highp float edge_high = 0.35;
+const highp float line_brightness = 0.4;
+const highp float halo_brightness = 0.15;
+
+const highp float wind_strength = 0.007;
+const highp float wind_scale = 3.0;
+const highp float wind_speed = 0.35;
+
+highp float luma(highp vec2 uv)
+{
+    return zGrayscale(zTextureSpec(SCREEN_TEXTURE, uv).rgb);
+}
+
+// Brightness with dark tones stretched out, so edges between two dark surfaces are as strong as bright ones.
+highp float edge_luma(highp vec2 uv)
+{
+    return pow(max(luma(uv), 0.0), edge_gamma);
+}
+
+highp float sobel(highp vec2 uv, highp vec2 step)
+{
+    highp float tl = edge_luma(uv + vec2(-step.x, step.y));
+    highp float t = edge_luma(uv + vec2(0.0, step.y));
+    highp float tr = edge_luma(uv + vec2(step.x, step.y));
+    highp float l = edge_luma(uv + vec2(-step.x, 0.0));
+    highp float r = edge_luma(uv + vec2(step.x, 0.0));
+    highp float bl = edge_luma(uv + vec2(-step.x, -step.y));
+    highp float b = edge_luma(uv + vec2(0.0, -step.y));
+    highp float br = edge_luma(uv + vec2(step.x, -step.y));
+
+    highp float gx = (tr + 2.0 * r + br) - (tl + 2.0 * l + bl);
+    highp float gy = (tl + 2.0 * t + tr) - (bl + 2.0 * b + br);
+    return sqrt(gx * gx + gy * gy);
+}
+
+void fragment()
+{
+    highp vec4 original = zTextureSpec(SCREEN_TEXTURE, UV);
+    highp float time = TIME;
+
+    // Gusts: the wind itself swells and dies down unevenly instead of blowing at a constant rate.
+    highp float gust = 0.55 + 0.45 * sin(time * 0.9 + sin(time * 0.37) * 2.0);
+    gust *= 0.6 + 0.4 * zFBM(vec2(time * 0.15, 3.7));
+
+    // Domain-warped noise drifting sideways, so the whole world ripples like cloth in the wind.
+    highp vec2 p = UV * wind_scale;
+    highp vec2 drift = vec2(time * wind_speed, time * wind_speed * 0.3);
+    highp vec2 warp = vec2(zFBM(p + drift), zFBM(p + drift + vec2(5.2, 1.3)));
+    highp vec2 q = p * 1.7 + warp * 2.0 + drift;
+    highp vec2 offset = vec2(zFBM(q), zFBM(q + vec2(8.3, 2.8))) - 0.5;
+    highp vec2 uv = UV + offset * wind_strength * gust * Wind * Strength;
+
+    // Thin crisp contour plus a wider, dimmer pass that reads as a soft neon glow around it.
+    highp float line = smoothstep(edge_low, edge_high, sobel(uv, SCREEN_PIXEL_SIZE));
+    highp float halo = smoothstep(edge_low, edge_high * 1.5, sobel(uv, SCREEN_PIXEL_SIZE * 3.0));
+
+    // Slow uneven flicker, like a failing signal.
+    highp float flicker = 0.8 + 0.2 * zFBM(vec2(time * 1.3, UV.y * 4.0));
+
+    // Black and white remains of the original, dimmed, with black kept black.
+    highp float grey = pow(max(luma(uv), 0.0), shadow_gamma);
+    highp vec3 shadow = shadow_tint * grey * shadow_brightness;
+    highp vec3 neon = neon_color * (line * line_brightness + halo * halo_brightness) * flicker;
+
+    COLOR = vec4(mix(original.rgb, shadow + neon, Strength), original.a);
+}

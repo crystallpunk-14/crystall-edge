@@ -1,7 +1,5 @@
 using Content.Shared._CE.DayCycle;
 using Content.Shared._CE.MagicEnergy.Components;
-using Content.Shared._CE.MagicEssence.Components;
-using Content.Shared._CE.MagicEssence.Events;
 using Content.Shared._CE.MagicVision.Events;
 using Content.Shared._CE.Waypointer;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
@@ -53,8 +51,6 @@ public partial class InventorySystem
         //CrystallEdge relays
         SubscribeLocalEvent<InventoryComponent, CEEnergyRadiationDefenceCalculateEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, CEZLevelChasmAttempt>(RelayInventoryEvent);
-        SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<CEMagicEssenceScannerComponent>>(RefRelayInventoryEvent);
-        SubscribeLocalEvent<InventoryComponent, CEMagicEssenceScanEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, CECheckMagicVisionEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, CERefreshWaypointersEvent>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, CECheckTimeSenseEvent>(RefRelayInventoryEvent);

@@ -25,10 +25,6 @@
             #Guild
             CEGuildmaster: [ 1, 1 ]
             CEAdventurer: [ 3, 4 ]
-            #Academy
-            CEAcademyRector: [ 1, 1 ]
-            CEAcademyProfessor: [ 2, 2 ]
-            CEAcademyStudent: [ 2, 3 ]
             #Citizens
             CEBard: [ 2, 2 ]
             CETownfolk: [ -1, -1 ]
@@ -117,7 +113,7 @@
     - id: CEWildlandsModifierOreCoalNoise
     - id: CEWildlandsModifierOreIronNoise
     - id: CEWildlandsModifierOreCrystalNoise
-    - id: CEWildlandsModifierOreDiamondNoise
+    - id: CEWildlandsModifierDiamondVein
     - id: CEWildlandsModifierBrassRuins
     - id: CEWildlandsModifierDamagedWoodenWallsRatio50
     - id: CEWildlandsModifierBoneyard

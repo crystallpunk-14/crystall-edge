@@ -63,7 +63,7 @@ public sealed partial class CEPowerSystem : CESharedPowerSystem
     [SubscribeLocalEvent]
     private void OnPowerChanged(Entity<CEEnergyLeakComponent> ent, ref PowerConsumerReceivedChanged args)
     {
-        var enabled = args.ReceivedPower >= 0;
+        var enabled = args.ReceivedPower > 0;
 
         PointLight.SetEnabled(ent, enabled);
 

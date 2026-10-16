@@ -54,10 +54,6 @@
     damage:
       types:
         Blunt: 2
-  - type: CEMagicEssenceStructure
-    essences:
-      Energia: { min: 2, max: 6 }
-      Crystal: { min: 1, max: 3 }
   - type: CEShiny
     effect: CEEffectShinyEnergyCrystal
     radius: 0.2
@@ -105,8 +101,3 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: CEIrradiateOnDestroy
-  - type: CEMagicEssenceStructure
-    essences:
-      Energia: { min: 1, max: 4 }
-      Crystal: { min: 1, max: 2 }
-      Metal: { min: 0, max: 2 }

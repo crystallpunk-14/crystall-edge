@@ -23,7 +23,6 @@
       children:
       - id: CEArrowIron
       - id: CECrossboltIron
-    - id: CEBookAncient
     - !type:GroupSelector
       children:
       - id: CESeedWheat

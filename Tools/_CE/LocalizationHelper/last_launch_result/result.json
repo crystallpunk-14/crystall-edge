@@ -1371,13 +1371,6 @@
         "parent": "CEEffectAreaHealingTelegraphy",
         "suffix": null
     },
-    "CEMagicTrace": {
-        "id": "CEMagicTrace",
-        "name": "magic trace",
-        "description": "A faint imprint of magic, slowly dissolving.",
-        "parent": null,
-        "suffix": null
-    },
     "CEEffectManaDrain": {
         "id": "CEEffectManaDrain",
         "name": "mana drain impact",

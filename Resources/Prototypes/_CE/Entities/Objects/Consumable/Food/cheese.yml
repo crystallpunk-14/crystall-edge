@@ -29,10 +29,6 @@
   - type: CEFoodTag
     tags:
     - CECheese
-  - type: CEMagicEssenceStructure
-    essences:
-      Life: { min: 2, max: 6 }
-      Water: { min: 0, max: 3 }
 
 - type: entity
   id: CEFoodCheesePart
@@ -70,10 +66,6 @@
   - type: CEFoodTag
     tags:
     - CECheese
-  - type: CEMagicEssenceStructure
-    essences:
-      Life: { min: 1, max: 4 }
-      Water: { min: 0, max: 2 }
 
 - type: entity
   id: CEFoodCheeseSlice
@@ -108,9 +100,6 @@
   - type: CEFoodTag
     tags:
     - CECheese
-  - type: CEMagicEssenceStructure
-    essences:
-      Life: { min: 1, max: 2 }
 
 # Blue Cheese (50% more food)
 - type: entity
