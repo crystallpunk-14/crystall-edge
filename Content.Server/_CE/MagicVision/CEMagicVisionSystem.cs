@@ -1,10 +1,9 @@
 using Content.Shared._CE.MagicVision.Components;
 using Content.Shared._CE.MagicVision.Events;
-using Content.Shared.Actions;
 using Content.Shared.Eye;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
-using Content.Shared.Toggleable;
+using Content.Shared.StatusEffectNew;
 using Robust.Shared.Analyzers;
 using Robust.Shared.GameObjects;
 
@@ -13,15 +12,14 @@ namespace Content.Server._CE.MagicVision;
 /// <summary>
 /// Grants entities magic vision (the <see cref="CEMagicVisionComponent"/> marker, which drives the
 /// visibility mask and the client-side overlay) based on however many sources currently want them to
-/// have it - clothing (<see cref="CEMagicVisionClothingComponent"/>), the toggleable magic vision skill
-/// (<see cref="CEMagicVisionToggleComponent"/>), and potentially other sources in the future,
+/// have it - clothing (<see cref="CEMagicVisionClothingComponent"/>), status effects
+/// (<see cref="CEMagicVisionStatusEffectComponent"/>), and potentially other sources in the future,
 /// all decided fresh each time via <see cref="CECheckMagicVisionEvent"/>. This
 /// is entirely server-authoritative: the component is networked and drives PVS filtering, so the
 /// client only ever mirrors it from replicated state and never predicts it.
 /// </summary>
 public sealed partial class CEMagicVisionSystem : EntitySystem
 {
-    [Dependency] private SharedActionsSystem _actions = default!;
     [Dependency] private SharedEyeSystem _eye = default!;
 
     [SubscribeLocalEvent]
@@ -55,42 +53,23 @@ public sealed partial class CEMagicVisionSystem : EntitySystem
     }
 
     [SubscribeLocalEvent]
-    private void OnToggleMapInit(Entity<CEMagicVisionToggleComponent> ent, ref MapInitEvent args)
+    private void OnStatusEffectCheckVision(Entity<CEMagicVisionStatusEffectComponent> ent, ref StatusEffectRelayedEvent<CECheckMagicVisionEvent> args)
     {
-        _actions.AddAction(ent, ref ent.Comp.ActionEntity, ent.Comp.Action);
+        args.Args.GrantVision(ent.Comp.ShowOverlay);
     }
 
     [SubscribeLocalEvent]
-    private void OnToggleShutdown(Entity<CEMagicVisionToggleComponent> ent, ref ComponentShutdown args)
+    private void OnStatusEffectApplied(Entity<CEMagicVisionStatusEffectComponent> ent, ref StatusEffectAppliedEvent args)
     {
-        _actions.RemoveAction(ent.Owner, ent.Comp.ActionEntity);
-
-        // The component is still attached during shutdown, so drop its contribution before refreshing.
-        ent.Comp.Enabled = false;
-
-        if (!TerminatingOrDeleted(ent))
-            RefreshMagicVision(ent.Owner);
+        RefreshMagicVision(args.Target);
     }
 
     [SubscribeLocalEvent]
-    private void OnToggleAction(Entity<CEMagicVisionToggleComponent> ent, ref ToggleActionEvent args)
+    private void OnStatusEffectRemoved(Entity<CEMagicVisionStatusEffectComponent> ent, ref StatusEffectRemovedEvent args)
     {
-        if (args.Handled || args.Action.Owner != ent.Comp.ActionEntity)
-            return;
-
-        args.Handled = true;
-
-        ent.Comp.Enabled = !ent.Comp.Enabled;
-        _actions.SetToggled(ent.Comp.ActionEntity, ent.Comp.Enabled);
-
-        RefreshMagicVision(ent.Owner);
-    }
-
-    [SubscribeLocalEvent]
-    private void OnToggleCheckVision(Entity<CEMagicVisionToggleComponent> ent, ref CECheckMagicVisionEvent args)
-    {
-        if (ent.Comp.Enabled)
-            args.GrantVision();
+        // Already out of the status effect container here, so the relayed check no longer sees this effect.
+        if (!TerminatingOrDeleted(args.Target))
+            RefreshMagicVision(args.Target);
     }
 
     /// <summary>

@@ -5,12 +5,10 @@
   icon:
     sprite: _CE/Actions/Spells/magic_vision.rsi
     state: icon
-  effect: !type:AddComponents
-    components:
-    - type: CEMagicVisionToggle
+  effect: !type:AddAction
+    action: CEActionToggleMagicVision
 
 - type: entity
-  parent: BaseToggleAction
   id: CEActionToggleMagicVision
   name: Magical vision
   description: You focus on magical flows to track recent events, scan the aura imprints of living beings and the essence of objects.
@@ -29,3 +27,14 @@
     - state: toggled
       map: ["enum.ActionVisuals.IconToggled"]
       visible: false
+  - type: InstantAction
+    event: !type:CEToggleStatusEffectsActionEvent
+      enabled: CEStatusEffectMagicVision
+
+- type: entity
+  parent: StatusEffectBase
+  id: CEStatusEffectMagicVision
+  name: magical vision
+  description: You perceive the hidden world of magic.
+  components:
+  - type: CEMagicVisionStatusEffect

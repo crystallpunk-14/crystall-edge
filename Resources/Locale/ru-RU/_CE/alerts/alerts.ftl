@@ -22,8 +22,5 @@ ce-alerts-bad-food-aftertaste-desc = Ужасно приготовленная �
 ce-alerts-murk-dissolving-name = Растворение во мраке
 ce-alerts-murk-dissolving-desc = Ваша плоть начинает дымиться и испаряться. Срочно покиньте мрак, если хотите остаться в живых!
 
-ce-alerts-mana-regen-name = Восстановление маны
-ce-alerts-mana-regen-desc = Ваша мана постоянно восстанавливается. Нажмите, чтобы переключиться на расход маны.
-
-ce-alerts-mana-drain-name = Расход маны
-ce-alerts-mana-drain-desc = Ваша мана постоянно расходуется. Нажмите, чтобы переключиться на восстановление маны.
+ce-alerts-dark-side-walk-name = Прогулка по тёмной стороне
+ce-alerts-dark-side-walk-desc = Вас изгнали из материального мира. Видеть вас могут лишь те, кто воспринимает магию.

@@ -1,0 +1,74 @@
+- type: skill
+  id: DarkSideBanishment
+  icon:
+    sprite: _CE/Actions/misc.rsi
+    state: todo
+  effect: !type:AddAction
+    action: CEActionDarkSideBanishment
+
+- type: entity
+  id: CEActionDarkSideBanishment
+  name: Banishment to the dark side
+  description: With a touch, you cast a creature out of the material world for a minute. Only those who perceive magic can see it there.
+  components:
+  - type: CEVisualizeRadiusTargetAction
+  - type: CEVisualizeAoEZoneAction
+    radius: 0.5
+  - type: CEActionManaCost
+    manaCost: 50
+  - type: Action
+    useDelay: 300
+    itemIconStyle: BigAction
+    sound: !type:SoundPathSpecifier
+      path: /Audio/Magic/rumble.ogg
+  - type: Sprite
+    sprite: _CE/Actions/misc.rsi
+    layers:
+    - state: todo
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 1.5
+    interactOnMiss: false
+  - type: EntityTargetAction
+    canTargetSelf: true
+    whitelist:
+      components:
+      - MobState
+    event: !type:CEEntityTargetActionAnimationEvent
+      animation: AnimationDarkSideBanishment
+
+- type: entityEffectAnimation
+  id: AnimationDarkSideBanishment
+  movementSpeed: 0.6
+  duration: 0.3
+  events:
+    0.25:
+    - !type:ApplyStatusEffect
+      effectTarget: Target
+      statusEffect: CEStatusEffectDarkSideWalk
+      duration: 60
+
+- type: entity
+  parent: StatusEffectSlowdown
+  id: CEStatusEffectDarkSideWalk
+  name: walk on the dark side
+  description: You have been cast out of the material world. Only those who perceive magic can see you.
+  components:
+  - type: MovementModStatusEffect
+    walkSpeedModifier: 0.5
+    sprintSpeedModifier: 0.5
+  - type: StatusEffectAlert
+    alert: CEDarkSideWalk
+  - type: CEVisibilityLayerStatusEffect
+    layers:
+    - CEMagicVision
+  - type: CEMagicVisionStatusEffect
+  - type: CEMurkShadowStatusEffect
+
+- type: alert
+  id: CEDarkSideWalk
+  icons:
+  - sprite: /Textures/_CE/Actions/misc.rsi
+    state: todo
+  name: ce-alerts-dark-side-walk-name
+  description: ce-alerts-dark-side-walk-desc
