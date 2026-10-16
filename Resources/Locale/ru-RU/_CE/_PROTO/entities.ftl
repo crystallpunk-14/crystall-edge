@@ -1722,9 +1722,6 @@ ent-CEMachineCoreCharger = ядро зарядника
 ent-CEMachineCoreFunnel = ядро воронки
     .desc = { ent-CEBaseMachineCore.desc }
 
-ent-CEMachineCoreSalaryPlatform = ядро платформы выплат
-    .desc = { ent-CEBaseMachineCore.desc }
-
 ent-CEMachineCoreHeater = ядро нагревателя
     .desc = { ent-CEBaseMachineCore.desc }
 
@@ -4041,10 +4038,6 @@ ent-CEMachineFrame = { ent-CEMachineFrameBase }
 ent-CEMachineFrameDestroyed = разрушенный каркас машины
     .desc = { "" }
 
-ent-CECashImpact = звон монет
-    .desc = { "" }
-    .suffix = VFX
-
 ent-CEMurkShield = щит от мрака
     .desc = Небольшая сфера, защищающая от мрака. Действует до самого заката.
 
@@ -5651,9 +5644,6 @@ ent-CEPowerGridProjector = проектор энергосети острова
 
 ent-CERecycler = переработчик
     .desc = Большая разрушительная машина, используемая для извлечения энергии из магических предметов путём их уничтожения. Также может использоваться как способ переработки предметов в базовые материалы.
-
-ent-CESalaryPlatform = платформа выплат
-    .desc = Позволяет быстро получить причитающуюся вам зарплату (если, конечно, вам положена зарплата от империи).
 
 ent-CEMurkShieldGenerator = генератор щита от мрака
     .desc = Зажигает щит от мрака каждый рассвет, если подключён к питанию. Горит только один щит одновременно, независимо от количества генераторов.

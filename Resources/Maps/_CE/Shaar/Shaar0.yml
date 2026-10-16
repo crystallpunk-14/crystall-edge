@@ -8192,13 +8192,6 @@ entities:
       canCollide: False
     - type: InsideEntityStorage
       storage: 226
-- proto: CESalaryPlatform
-  entities:
-  - uid: 428
-    components:
-    - type: Transform
-      parent: 1
-      pos: -4.5,-12.5
 - proto: CESeedCabbage10
   entities:
   - uid: 369

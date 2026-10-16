@@ -52,6 +52,7 @@
   description: Step out of the material world, or return to it, at will.
   components:
   - type: Action
+    useDelay: 10
     itemIconStyle: BigAction
     checkCanInteract: false
     sound: !type:SoundPathSpecifier

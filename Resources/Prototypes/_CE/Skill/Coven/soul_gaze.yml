@@ -16,7 +16,7 @@
   - type: CEActionRequireLineOfSight
   - type: CEActionTargetRequireMind
   - type: Action
-    useDelay: 600
+    useDelay: 300
     itemIconStyle: BigAction
   - type: Sprite
     sprite: _CE/Actions/misc.rsi

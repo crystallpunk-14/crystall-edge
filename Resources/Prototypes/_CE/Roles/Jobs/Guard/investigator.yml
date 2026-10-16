@@ -17,10 +17,6 @@
       species:
       - CECarrin
   special:
-    - !type:AddComponentSpecial
-      components:
-      - type: CESalaryCounter
-        salary: 75
     - !type:CELearnSkillsSpecial
       skills:
       - CEMilitaryTraining

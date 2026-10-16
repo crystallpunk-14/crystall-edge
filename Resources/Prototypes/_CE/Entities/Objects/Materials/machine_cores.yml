@@ -82,16 +82,6 @@
     price: 30
 
 - type: entity
-  id: CEMachineCoreSalaryPlatform
-  parent: CEBaseMachineCore
-  name: salary platform machine core
-  components:
-  - type: Sprite
-    state: dimensional
-  - type: MachineBoard
-    prototype: CESalaryPlatform
-
-- type: entity
   id: CEMachineCoreHeater
   parent: CEBaseMachineCore
   name: heater machine core
