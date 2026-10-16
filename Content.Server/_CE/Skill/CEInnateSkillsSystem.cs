@@ -8,7 +8,7 @@ public sealed partial class CEInnateSkillsSystem : EntitySystem
 {
     [Dependency] private CESharedSkillSystem _skill = default!;
 
-    [SubscribeLocalEvent]
+    [SubscribeLocalEvent(after: [typeof(CESkillSystem)])]
     private void OnMapInit(Entity<CEInnateSkillsComponent> ent, ref MapInitEvent args)
     {
         CESkillDescriptor? descriptor = null;

@@ -46,6 +46,7 @@
     action: CEActionToggleDarkSideWalk
 
 - type: entity
+  parent: BaseAction
   id: CEActionToggleDarkSideWalk
   name: Walk on the dark side
   description: Step out of the material world, or return to it, at will.

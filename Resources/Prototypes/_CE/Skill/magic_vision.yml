@@ -9,11 +9,13 @@
     action: CEActionToggleMagicVision
 
 - type: entity
+  parent: BaseAction
   id: CEActionToggleMagicVision
   name: Magical vision
   description: You focus on magical flows, perceiving the hidden world of magic.
   components:
   - type: Action
+    useDelay: 3
     itemIconStyle: BigAction
     checkCanInteract: false
     checkConsciousness: true

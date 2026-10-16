@@ -9,11 +9,13 @@
     action: CEActionManaControl
 
 - type: entity
+  parent: BaseAction
   id: CEActionManaControl
   name: Mana control
   description: Switch between restoring and spending your mana.
   components:
   - type: Action
+    useDelay: 3
     itemIconStyle: BigAction
     checkCanInteract: false
   - type: Sprite
