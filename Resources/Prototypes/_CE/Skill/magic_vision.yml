@@ -1,0 +1,31 @@
+- type: skill
+  id: MagicVision
+  name: ce-skill-magic-vision-name
+  desc: ce-skill-magic-vision-desc
+  icon:
+    sprite: _CE/Actions/Spells/magic_vision.rsi
+    state: icon
+  effect: !type:AddComponents
+    components:
+    - type: CEMagicVisionToggle
+
+- type: entity
+  parent: BaseToggleAction
+  id: CEActionToggleMagicVision
+  name: Magical vision
+  description: You focus on magical flows to track recent events, scan the aura imprints of living beings and the essence of objects.
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    checkCanInteract: false
+    checkConsciousness: true
+    sound: !type:SoundPathSpecifier
+      path: /Audio/Magic/rumble.ogg
+  - type: Sprite
+    sprite: _CE/Actions/Spells/magic_vision.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
+    - state: toggled
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false

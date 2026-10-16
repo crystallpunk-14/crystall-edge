@@ -67,8 +67,6 @@
         - id: CEVialMediumAirEssence
         - id: CEVialMediumReinforced
         - id: CEVialMediumReinforced
-        - id: CEClothingEyesThaumaturgyGlasses
-        - id: CEGuidebookThaumaturgy
         - id: CERubberStampApproved
         - id: CERubberStampDenied
         - id: CERubberStampAcademy

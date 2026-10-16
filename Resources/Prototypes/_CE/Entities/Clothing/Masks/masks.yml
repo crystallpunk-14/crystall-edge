@@ -98,7 +98,6 @@
     sprite: _CE/Clothing/Masks/Guard/investigator_mask.rsi
   - type: Clothing
     sprite: _CE/Clothing/Masks/Guard/investigator_mask.rsi
-  - type: CEMagicEssenceScanner
   - type: CEMagicVisionClothing
   - type: Armor
     modifiers:

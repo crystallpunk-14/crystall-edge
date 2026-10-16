@@ -6,10 +6,10 @@ using Content.Shared._CE.Examine;
 using Content.Shared._CE.MagicEssence.Components;
 using Content.Shared._CE.MagicEssence.Events;
 using Content.Shared._CE.MagicEssence.Prototypes;
+using Content.Shared._CE.MagicVision.Components;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
-using Content.Shared.Inventory;
 using Content.Shared.Stacks;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
@@ -30,23 +30,10 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
 
     private Dictionary<ProtoId<ReagentPrototype>, ProtoId<CEMagicEssenceTypePrototype>>? _reagentToEssence;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-        SubscribeLocalEvent<CEMagicEssenceScannerComponent, InventoryRelayedEvent<CEMagicEssenceScanEvent>>(
-            (uid, comp, ev) => OnScanAttempt(uid, comp, ev.Args));
-    }
-
-    [SubscribeLocalEvent]
-    private void OnScanAttempt(EntityUid uid, CEMagicEssenceScannerComponent component, CEMagicEssenceScanEvent args)
-    {
-        args.CanScan = true;
-    }
-
     [SubscribeLocalEvent]
     private void OnExamineAugment(CEExamineAugmentEvent args)
     {
-        if (!TryScan(args.Examiner))
+        if (!HasComp<CEMagicVisionComponent>(args.Examiner))
             return;
 
         var essenceDict = GetEssence(args.Examined, recursive: false);
@@ -54,14 +41,6 @@ public sealed partial class CEMagicEssenceSystem : EntitySystem
             return;
 
         args.AddMarkup(BuildEssenceExamineMarkup("ce-magic-essence-examine-title", essenceDict));
-    }
-
-    private bool TryScan(EntityUid examiner)
-    {
-        var scanEvent = new CEMagicEssenceScanEvent();
-        RaiseLocalEvent(examiner, scanEvent);
-
-        return scanEvent.CanScan;
     }
 
     private string BuildEssenceExamineMarkup(LocId titleLocId, IEnumerable<KeyValuePair<ProtoId<CEMagicEssenceTypePrototype>, int>> essences)

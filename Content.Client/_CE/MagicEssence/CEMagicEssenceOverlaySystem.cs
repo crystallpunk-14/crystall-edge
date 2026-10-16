@@ -1,16 +1,13 @@
-using Content.Client.Overlays;
-using Content.Shared._CE.MagicEssence.Components;
-using Content.Shared.Inventory.Events;
-using Content.Shared.Overlays;
+using Content.Shared._CE.MagicVision.Components;
 using Robust.Client.Graphics;
 
 namespace Content.Client._CE.MagicEssence;
 
 /// <summary>
-/// Owns the lifecycle of <see cref="CEMagicEssenceOverlay"/>: adds/removes it whenever the
-/// wearer has a <see cref="CEMagicEssenceScannerComponent"/> equipped (thaumaturgy glasses).
+/// Owns the lifecycle of <see cref="CEMagicEssenceOverlay"/>. The overlay stays registered for the whole
+/// session and only draws while the local player has <see cref="CEMagicVisionComponent"/>.
 /// </summary>
-public sealed partial class CEMagicEssenceOverlaySystem : EquipmentHudSystem<CEMagicEssenceScannerComponent>
+public sealed partial class CEMagicEssenceOverlaySystem : EntitySystem
 {
     [Dependency] private IOverlayManager _overlayMan = default!;
 
@@ -21,19 +18,12 @@ public sealed partial class CEMagicEssenceOverlaySystem : EquipmentHudSystem<CEM
         base.Initialize();
 
         _overlay = new CEMagicEssenceOverlay();
+        _overlayMan.AddOverlay(_overlay);
     }
 
-    protected override void UpdateInternal(RefreshEquipmentHudEvent<CEMagicEssenceScannerComponent> component)
+    public override void Shutdown()
     {
-        base.UpdateInternal(component);
-
-        if (!_overlayMan.HasOverlay<CEMagicEssenceOverlay>())
-            _overlayMan.AddOverlay(_overlay);
-    }
-
-    protected override void DeactivateInternal()
-    {
-        base.DeactivateInternal();
+        base.Shutdown();
 
         _overlayMan.RemoveOverlay(_overlay);
     }

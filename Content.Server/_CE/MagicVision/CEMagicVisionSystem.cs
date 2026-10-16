@@ -1,8 +1,10 @@
 using Content.Shared._CE.MagicVision.Components;
 using Content.Shared._CE.MagicVision.Events;
+using Content.Shared.Actions;
 using Content.Shared.Eye;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
+using Content.Shared.Toggleable;
 using Robust.Shared.Analyzers;
 using Robust.Shared.GameObjects;
 
@@ -11,14 +13,15 @@ namespace Content.Server._CE.MagicVision;
 /// <summary>
 /// Grants entities magic vision (the <see cref="CEMagicVisionComponent"/> marker, which drives the
 /// visibility mask and the client-side overlay) based on however many sources currently want them to
-/// have it - clothing (<see cref="CEMagicVisionClothingComponent"/>), innate sources
-/// (<see cref="CEPermanentMagicVisionComponent"/>, e.g. ghosts), and potentially skills or other
-/// sources in the future, all decided fresh each time via <see cref="CECheckMagicVisionEvent"/>. This
+/// have it - clothing (<see cref="CEMagicVisionClothingComponent"/>), the toggleable magic vision skill
+/// (<see cref="CEMagicVisionToggleComponent"/>), and potentially other sources in the future,
+/// all decided fresh each time via <see cref="CECheckMagicVisionEvent"/>. This
 /// is entirely server-authoritative: the component is networked and drives PVS filtering, so the
 /// client only ever mirrors it from replicated state and never predicts it.
 /// </summary>
 public sealed partial class CEMagicVisionSystem : EntitySystem
 {
+    [Dependency] private SharedActionsSystem _actions = default!;
     [Dependency] private SharedEyeSystem _eye = default!;
 
     [SubscribeLocalEvent]
@@ -52,22 +55,42 @@ public sealed partial class CEMagicVisionSystem : EntitySystem
     }
 
     [SubscribeLocalEvent]
-    private void OnPermanentCheckVision(Entity<CEPermanentMagicVisionComponent> ent, ref CECheckMagicVisionEvent args)
+    private void OnToggleMapInit(Entity<CEMagicVisionToggleComponent> ent, ref MapInitEvent args)
     {
-        // Innate vision isn't a worn artifact straining the wearer, so no overlay.
-        args.GrantVision(showOverlay: false);
+        _actions.AddAction(ent, ref ent.Comp.ActionEntity, ent.Comp.Action);
     }
 
     [SubscribeLocalEvent]
-    private void OnPermanentInit(Entity<CEPermanentMagicVisionComponent> ent, ref ComponentInit args)
+    private void OnToggleShutdown(Entity<CEMagicVisionToggleComponent> ent, ref ComponentShutdown args)
     {
+        _actions.RemoveAction(ent.Owner, ent.Comp.ActionEntity);
+
+        // The component is still attached during shutdown, so drop its contribution before refreshing.
+        ent.Comp.Enabled = false;
+
+        if (!TerminatingOrDeleted(ent))
+            RefreshMagicVision(ent.Owner);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnToggleAction(Entity<CEMagicVisionToggleComponent> ent, ref ToggleActionEvent args)
+    {
+        if (args.Handled || args.Action.Owner != ent.Comp.ActionEntity)
+            return;
+
+        args.Handled = true;
+
+        ent.Comp.Enabled = !ent.Comp.Enabled;
+        _actions.SetToggled(ent.Comp.ActionEntity, ent.Comp.Enabled);
+
         RefreshMagicVision(ent.Owner);
     }
 
     [SubscribeLocalEvent]
-    private void OnPermanentShutdown(Entity<CEPermanentMagicVisionComponent> ent, ref ComponentShutdown args)
+    private void OnToggleCheckVision(Entity<CEMagicVisionToggleComponent> ent, ref CECheckMagicVisionEvent args)
     {
-        RefreshMagicVision(ent.Owner);
+        if (ent.Comp.Enabled)
+            args.GrantVision();
     }
 
     /// <summary>

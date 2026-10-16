@@ -4,6 +4,7 @@ using Content.Client.Gameplay;
 using Content.Shared._CE.MagicEssence.Components;
 using Content.Shared._CE.MagicEssence.Prototypes;
 using Content.Shared._CE.MagicEssence.Systems;
+using Content.Shared._CE.MagicVision.Components;
 using Content.Shared.Interaction;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
@@ -91,6 +92,12 @@ public sealed partial class CEMagicEssenceOverlay : Overlay
     {
         if (args.ViewportControl == null)
             return;
+
+        if (!_entityManager.HasComponent<CEMagicVisionComponent>(_player.LocalEntity))
+        {
+            _fades.Clear();
+            return;
+        }
 
         var hovered = GetHoveredEssenceTarget(args);
 

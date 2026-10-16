@@ -64,8 +64,6 @@
         - id: CEVialMediumAirEssence
         - id: CEVialMedium
         - id: CEVialMedium
-        - id: CEClothingEyesThaumaturgyGlasses
-        - id: CEGuidebookThaumaturgy
         - id: CEThaumaturgicMagnifyingGlass
 
 - type: entity

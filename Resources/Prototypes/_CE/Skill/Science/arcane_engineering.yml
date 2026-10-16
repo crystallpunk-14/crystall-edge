@@ -12,8 +12,3 @@
   id: NodeStabilizer
   parent: ArcaneEngineeringSkillBase
   previewEntity: CENodeStabilizerSphere
-
-- type: skill
-  id: ThaumaturgyGlassesAdvanced
-  parent: ArcaneEngineeringSkillBase
-  previewEntity: CEClothingEyesThaumaturgyGlassesAdvanced

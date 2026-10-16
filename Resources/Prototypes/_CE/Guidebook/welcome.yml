@@ -10,7 +10,6 @@
   - CEFarmingGuideEN
   - CEMiningGuideEN
   - CETradeGuideEN
-  - CEThaumaturgyEN
 
 - type: guideEntry
   hidden: false
@@ -24,4 +23,3 @@
   - CEFarmingGuideRU
   - CEMiningGuideRU
   - CETradeGuideRU
-  - CEThaumaturgyRU

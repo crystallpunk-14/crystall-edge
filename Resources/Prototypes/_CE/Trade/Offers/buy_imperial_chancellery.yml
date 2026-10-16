@@ -73,15 +73,6 @@
     proto: CEBookEmpty
 
 - type: tradeOffer
-  id: CETradeOfferClothingEyesThaumaturgyGlasses
-  shop: ImperialChancellery
-  pay:
-    bonus: 1
-  reward:
-  - !type:CETradeSpawnReward
-    proto: CEClothingEyesThaumaturgyGlasses
-
-- type: tradeOffer
   id: CETradeOfferThaumaturgicMagnifyingGlass
   shop: ImperialChancellery
   pay:

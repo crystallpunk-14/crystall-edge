@@ -215,6 +215,11 @@ CESeedSunflower30: CESeedSunflower10
 CESeedCorn30: CESeedCorn10
 CESeedCarrot30: CESeedCarrot10
 
+# 2026-10-16
+CEClothingEyesThaumaturgyGlasses: null
+CEClothingEyesThaumaturgyGlassesAdvanced: null
+CEGuidebookThaumaturgy: null
+
 # CrystallEdge migration zone end
 
 

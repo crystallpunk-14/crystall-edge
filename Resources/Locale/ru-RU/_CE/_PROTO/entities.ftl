@@ -136,12 +136,6 @@ ent-CEClothingEyesMerchantMonocle = монокль торговца
 ent-CEClothingEyesEyePatch = повязка на глаз
     .desc = Скрывает увечья глаз.
 
-ent-CEClothingEyesThaumaturgyGlasses = очки тауматурга
-    .desc = Позволяют увидеть скрытый мир магии, саму сущность предметов и фундаментальные аспекты, из которых состоит всё сущее.
-
-ent-CEClothingEyesThaumaturgyGlassesAdvanced = улучшенные очки тауматурга
-    .desc = Позволяют увидеть скрытый мир магии, саму сущность предметов и фундаментальные аспекты, из которых состоит всё сущее. К этим очкам прикреплён определитель узлов эссенции.
-
 ent-CEClothingGlovesGirdles = железные наручи
     .desc = Бронированные боевые наручи.
 
@@ -854,10 +848,6 @@ ent-CEGuidebookFarmingGuide = справочник фермера
 
 ent-CEGuidebookCookingRecipes = кулинарная книга
     .desc = 1001 рецепт — так написано на обложке. Это наглая ложь.
-    .suffix = Путеводитель
-
-ent-CEGuidebookThaumaturgy = тауманомикон
-    .desc = Фолиант в коже, пропитанной эссенцией, каталогизирующий аспекты тауматургии и способы их получения.
     .suffix = Путеводитель
 
 ent-CEBookEmpty = пустая книга

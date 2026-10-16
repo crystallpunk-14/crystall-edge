@@ -332,28 +332,6 @@
   result: CEThirdArmModuleManipulation
   resultCount: 1
 
-- type: CERecipe
-  id: CEClothingEyesThaumaturgyGlassesAdvanced
-  requiredSkill: ThaumaturgyGlassesAdvanced
-  parent: CEBaseEngineeringTableRecipe
-  category: Tools
-  craftTime: 2.0
-  requirements:
-  - !type:ProtoIdResource
-    protoId: CEClothingEyesThaumaturgyGlasses
-    count: 1
-  - !type:StackResource
-    stack: CEBrassSheet
-    count: 2
-  - !type:StackResource
-    stack: CEGlass
-    count: 1
-  - !type:StackResource
-    stack: CEMachinePartDimensionalMatrix
-    count: 1
-  result: CEClothingEyesThaumaturgyGlassesAdvanced
-  resultCount: 1
-
 #MARK: Machine cores
 
 - type: CERecipe
