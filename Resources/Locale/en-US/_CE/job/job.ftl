@@ -26,10 +26,10 @@ ce-job-desc-farmer = Your garden is your fortress. Grow anything and experiment 
 # Guild
 
 ce-job-name-guildmaster = Guildmaster
-ce-job-desc-guildmaster = Head of the adventurers' guild. Take requests from the island's residents, hand them out to adventurers and keep the guild thriving.
+ce-job-desc-guildmaster = The head of the Adventurers' Guild. I honestly don't know what he's supposed to do yet, but let's leave it at that for now. I'll figure it out later.
 
 ce-job-name-adventurer = Adventurer
-ce-job-desc-adventurer = A mercenary and seeker of adventure. Complete guild contracts, explore the wildlands and try to come back alive.
+ce-job-desc-adventurer = Embark on expeditions into the murk in search of valuable resources to save the city.
 
 # Engineering
 
