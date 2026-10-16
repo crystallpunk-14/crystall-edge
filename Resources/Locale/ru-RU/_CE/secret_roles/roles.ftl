@@ -37,3 +37,8 @@ ce-secret-role-description-immortal = Вас невероятно тяжело �
 
 ce-secret-role-name-vandal = Вандал
 ce-secret-role-description-vandal = О, вы против текущего положения дел и контроля стражи над городом. Устроим немного погрома.
+
+# Ковен
+
+ce-secret-role-name-seer = Провидец
+ce-secret-role-description-seer = Вы глядите в души, и видите истинную суть окружающих вас людей. Раскрывайте скрытые роли, и используйте эту информацию для выполнения своих целей.
