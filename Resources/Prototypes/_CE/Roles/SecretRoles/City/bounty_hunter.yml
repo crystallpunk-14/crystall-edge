@@ -4,6 +4,7 @@
   description: ce-secret-role-description-bounty-hunter
   icon: CESecretRoleIconBountyHunter
   gear: CEBountyHunterGear
+  victoryAchievement: GoldCoinEquipment
   objectives: !type:EntSelector
     id: CEObjectiveBountyHunterEliminate
 

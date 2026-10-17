@@ -10,21 +10,23 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: CEUnpolymorphOnDawn
+  - type: CERevertOnChasm
   - type: Sprite
     drawdepth: Mobs
     sprite: _CE/Mobs/werewolf.rsi
     state: live
   - type: Appearance
   - type: Body
-  - type: Stamina
-    baseCritThreshold: 200
   - type: Grammar
     attributes:
       gender: epicene
+  - type: Stamina
+    baseCritThreshold: 200
   - type: MobThresholds
     thresholds:
       0: Alive
-      300: Dead
+      200: Critical
+      400: Dead
   - type: Fixtures
     fixtures:
       fix1:

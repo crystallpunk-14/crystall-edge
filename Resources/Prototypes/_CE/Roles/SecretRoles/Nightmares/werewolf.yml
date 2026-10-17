@@ -4,6 +4,7 @@
   name: ce-secret-role-name-werewolf
   description: ce-secret-role-description-werewolf
   icon: CESecretRoleIconWerewolf
+  victoryAchievement: Murkwalker
   skills:
   - Murkwalker
   - TimeSense

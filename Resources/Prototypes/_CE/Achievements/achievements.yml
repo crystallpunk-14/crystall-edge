@@ -2,3 +2,19 @@
   id: BetaTester
   name: ce-achievement-betatester-name
   desc: ce-achievement-betatester-desc
+
+- type: achievement
+  id: Murkwalker
+  name: ce-achievement-murkwalker-name
+  desc: ce-achievement-murkwalker-desc
+  icon:
+    sprite: _CE/Interface/Skills/murkwalker.rsi
+    state: icon
+
+- type: achievement
+  id: GoldCoinEquipment
+  name: ce-achievement-goldcoin-name
+  desc: ce-achievement-goldcoin-desc
+  icon:
+    sprite: _CE/Objects/Materials/Currency/coin_gp.rsi
+    state: coin10

@@ -8,7 +8,7 @@
   - CELantern
   - CEClothingWristwatch
   - CEManaTransferGlove
-  - CECoinSilver10
+  - CECoinGold1
 
 - type: loadout
   id: CESafeFallingAmulet
@@ -22,10 +22,15 @@
     - CELantern
 
 - type: loadout
-  id: CECoinSilver10
+  id: CECoinGold1
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:CEAchievementRequirement
+      achievement: GoldCoinEquipment
   storage:
     back:
-    - CECoinSilver10
+    - CECoinGold1
 
 - type: loadout
   id: CEClothingWristwatch
