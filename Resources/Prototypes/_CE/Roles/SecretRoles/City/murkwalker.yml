@@ -3,5 +3,8 @@
   name: ce-secret-role-name-murkwalker
   description: ce-secret-role-description-murkwalker
   icon: CESecretRoleIconMurkwalker
+  requirements:
+  - !type:CEAchievementRequirement
+    achievement: Murkwalker
   skills:
   - Murkwalker

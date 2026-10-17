@@ -2,6 +2,7 @@ using Content.Client._CE.Lobby.UI;
 using Content.Client.Guidebook;
 using Content.Client.Lobby.UI;
 using Content.Client.Players.PlayTimeTracking;
+using Content.Shared._CE.Achievements;
 using Content.Shared._CE.Roles;
 using Content.Shared.CCVar;
 using Content.Shared.Humanoid.Markings;
@@ -31,6 +32,7 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
     [Dependency] private IResourceCache _resourceCache = default!;
     [Dependency] private IStateManager _stateManager = default!;
     [Dependency] private JobRequirementsManager _requirements = default!;
+    [Dependency] private ICEAchievementsRequirementManager _achievements = default!; // CrystallEdge: achievement role requirements
     [Dependency] private MarkingManager _markings = default!;
     [UISystemDependency] private readonly GuidebookSystem _guide = default!;
 
@@ -58,6 +60,7 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
         _prototypeManager.PrototypesReloaded += OnProtoReload;
         _preferencesManager.OnServerDataLoaded += PreferencesDataLoaded;
         _requirements.Updated += OnRequirementsUpdated;
+        _achievements.AchievementsUpdated += OnRequirementsUpdated; // CrystallEdge: achievement role requirements
 
         _configurationManager.OnValueChanged(CCVars.FlavorText, args =>
         {
@@ -86,6 +89,7 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
         {
             _profileEditor.RefreshAntags();
             _profileEditor.RefreshJobs();
+            _profileEditor.RefreshSecretRoles(); // CrystallEdge: secret role requirements
         }
     }
 
@@ -196,6 +200,7 @@ public sealed partial class LobbyUIController : UIController, IOnStateEntered<Lo
     {
         _profileEditor?.RefreshAntags();
         _profileEditor?.RefreshJobs();
+        _profileEditor?.RefreshSecretRoles(); // CrystallEdge: secret role requirements
         _profileEditor?.RefreshLoadouts();
     }
 
