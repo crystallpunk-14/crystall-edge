@@ -69,7 +69,7 @@
     Snore:
       collection: Snores
     Honk:
-      collection: CluwneHorn
+      collection: BikeHorn
     Sigh:
       collection: FemaleSigh
     Crying:
@@ -207,7 +207,7 @@
     Snore:
       collection: Snores
     Honk:
-      collection: CluwneHorn
+      collection: BikeHorn
     Sigh:
       collection: FemaleSigh
     Crying:
@@ -655,12 +655,6 @@
     params:
       variation: 0.125
 
-- type: emoteSounds
-  id: Cluwne
-  sound:
-    collection: CluwneScreams
-    params:
-      variation: 0.125
 
 - type: emoteSounds
   id: Bear

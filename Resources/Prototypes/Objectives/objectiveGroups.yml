@@ -96,7 +96,6 @@
     CargoShuttleCircuitboardStealObjective: 1
     BibleStealObjective: 1
     ClothingNeckGoldmedalStealObjective: 1              #other
-    ClothingNeckClownmedalStealObjective: 0.5
 
 - type: weightedRandom
   id: ThiefObjectiveGroupStructure

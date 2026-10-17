@@ -15,32 +15,6 @@
   groupBy: "canes"
 
 - type: loadout
-  id: OffsetCaneClown
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:RoleTimeRequirement
-      role: JobClown
-      time: 1h
-  storage:
-    back:
-    - OffsetCaneClown
-  groupBy: "canes"
-
-- type: loadout
-  id: OffsetCaneMime
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:RoleTimeRequirement
-      role: JobMime
-      time: 1h
-  storage:
-    back:
-    - OffsetCaneMime
-  groupBy: "canes"
-
-- type: loadout
   id: OffsetCaneNT
   effects:
   - !type:JobRequirementLoadoutEffect

@@ -8,8 +8,6 @@ materials-unit-plank = plank
 materials-unit-roll = roll
 # pieces of biomass
 materials-unit-piece = piece
-# bunches of bananium
-materials-unit-bunch = bunch
 # slabs of meat
 materials-unit-slab = slab
 # webs of silk

@@ -9,18 +9,6 @@
 # region Clothing
 - type: construction
   parent: BaseClothing
-  id: ClownHardsuit
-  graph: ClownHardsuit
-  targetNode: clownHardsuit
-
-- type: construction
-  parent: BaseClothing
-  id: MimeHardsuit
-  graph: MimeHardsuit
-  targetNode: mimeHardsuit
-
-- type: construction
-  parent: BaseClothing
   id: BoneArmor
   graph: BoneArmor
   targetNode: armor
@@ -42,24 +30,6 @@
   id: cardArmour
   graph: cardArmour
   targetNode: cardarmour
-
-- type: construction
-  parent: BaseClothing
-  id: BananaClownMask
-  graph: BananaClownMask
-  targetNode: mask
-
-- type: construction
-  parent: BaseClothing
-  id: BananaClownJumpsuit
-  graph: BananaClownJumpsuit
-  targetNode: jumpsuit
-
-- type: construction
-  parent: BaseClothing
-  id: BananaClownShoes
-  graph: BananaClownShoes
-  targetNode: shoes
 
 - type: construction
   parent: BaseClothing

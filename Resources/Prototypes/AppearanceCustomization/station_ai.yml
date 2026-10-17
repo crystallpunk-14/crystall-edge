@@ -7,7 +7,6 @@
   - StationAiIconAi
   - StationAiIconAngel
   - StationAiIconBliss
-  - StationAiIconClown
   - StationAiIconDorf
   - StationAiIconHeartline
   - StationAiIconSmiley
@@ -67,18 +66,6 @@
     Dead:
       sprite: Mobs/Silicon/station_ai.rsi
       state: ai_dead
-
-- type: stationAiCustomization
-  parent: StationAiIconBase
-  id: StationAiIconClown
-  name: station-ai-icon-clown
-  layerData:
-    Occupied:
-      sprite: Mobs/Silicon/station_ai.rsi
-      state: ai_clown
-    Dead:
-      sprite: Mobs/Silicon/station_ai.rsi
-      state: ai_clown_dead
 
 - type: stationAiCustomization
   parent: StationAiIconBase

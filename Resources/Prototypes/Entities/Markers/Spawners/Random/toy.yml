@@ -342,7 +342,6 @@
     children:
     - id: ToyRubberDuck
     - id: RubberChicken
-    - id: ClownRecorder
     - id: WhoopieCushion
     - id: NewtonCradle
     - id: Skub
@@ -367,8 +366,6 @@
     - !type:GroupSelector # Usually get the normal horn
       weight: .005 # 1 in 200
       children:
-      - id: CluwneHorn # you lose, clown >:o)
-      - id: BananiumHorn
       - id: PushHorn
       - id: GoldenBikeHorn
 
@@ -376,7 +373,6 @@
   id: AllCrayonsTable
   table: !type:GroupSelector
     children:
-    - id: CrayonMime
     - id: CrayonRainbow
     - id: CrayonWhite
     - id: CrayonBlack

@@ -10,7 +10,6 @@ loadout-group-backpack = Backpack
 loadout-group-instruments = Instruments
 loadout-group-survival-basic = Survival box
 loadout-group-survival-extended = Extended survival box
-loadout-group-survival-clown = Clown survival box
 loadout-group-survival-medical = Medical survival box
 loadout-group-survival-security = Security survival box
 loadout-group-survival-syndicate = Github is forcing me to write text that is literally twice-impossible for the player to ever see, send help
@@ -20,7 +19,6 @@ loadout-group-tank-harness = Species-specific survival equipment
 loadout-group-EVA-tank = Species-specific gas tank
 loadout-group-vox-tank = Vox-specific gas tank
 loadout-group-pocket-tank-double = Species-specific double emergency tank in pocket
-loadout-group-survival-mime = Mime survival box
 
 # Command
 loadout-group-captain-head = Captain head
@@ -75,19 +73,6 @@ loadout-group-botanist-head = Botanist head
 loadout-group-botanist-jumpsuit = Botanist jumpsuit
 loadout-group-botanist-backpack = Botanist backpack
 loadout-group-botanist-outerclothing = Botanist outer clothing
-
-loadout-group-clown-head = Clown head
-loadout-group-clown-jumpsuit = Clown jumpsuit
-loadout-group-clown-backpack = Clown backpack
-loadout-group-clown-outerclothing = Clown outer clothing
-loadout-group-clown-shoes = Clown shoes
-
-loadout-group-mime-head = Mime head
-loadout-group-mime-mask = Mime mask
-loadout-group-mime-jumpsuit = Mime jumpsuit
-loadout-group-mime-backpack = Mime backpack
-loadout-group-mime-outerclothing = Mime outer clothing
-loadout-group-mime-belt = Mime belt
 
 loadout-group-musician-jumpsuit = Musician jumpsuit
 loadout-group-musician-outerclothing = Musician outer clothing

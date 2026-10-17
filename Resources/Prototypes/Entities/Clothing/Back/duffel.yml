@@ -52,24 +52,6 @@
     sprite: Clothing/Back/Duffels/captain.rsi
 
 - type: entity
-  parent: ClothingBackpackDuffel
-  id: ClothingBackpackDuffelClown
-  name: clown duffel bag
-  description: A large duffel bag for holding extra honk goods.
-  components:
-  - type: Sprite
-    sprite: Clothing/Back/Duffels/clown.rsi
-  - type: Storage
-    storageOpenSound:
-      collection: BikeHorn
-      params:
-        variation: 0.125
-    storageInsertSound:
-      collection: FootstepClown
-      params:
-        variation: 0.125
-
-- type: entity
   parent: [ClothingBackpackDuffel, BaseSecurityContraband]
   id: ClothingBackpackDuffelSecurity
   name: security duffel bag
@@ -113,18 +95,6 @@
   components:
   - type: Sprite
     sprite: Clothing/Back/Duffels/genetics.rsi
-
-- type: entity
-  parent: ClothingBackpackDuffel
-  id: ClothingBackpackDuffelMime
-  name: mime duffel bag
-  description: A large duffel bag for holding... mime... stuff.
-  components:
-  - type: Sprite
-    sprite: Clothing/Back/Duffels/mime.rsi
-  - type: Storage
-    storageOpenSound: null
-    storageInsertSound: null
 
 - type: entity
   parent: ClothingBackpackDuffel

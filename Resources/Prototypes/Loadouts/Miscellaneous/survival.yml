@@ -46,25 +46,6 @@
     back:
     - BoxSurvivalNitrogen
 
-# Clown
-- type: loadout
-  id: EmergencyOxygenClown
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: OxygenBreather
-  storage:
-    back:
-    - BoxSurvivalHug
-
-- type: loadout
-  id: EmergencyNitrogenClown
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: NitrogenBreather
-  storage:
-    back:
-    - BoxSurvivalHugNitrogen
-
 # Engineering / Extended
 - type: loadout
   id: EmergencyOxygenExtended

@@ -333,17 +333,6 @@
 
 - type: entity
   parent: BaseThiefStealObjective
-  id: ClothingNeckClownmedalStealObjective
-  components:
-  - type: NotJobRequirement
-    jobs: [ Captain ]
-  - type: StealCondition
-    stealGroup: ClothingNeckClownmedal
-  - type: Objective
-    difficulty: 1
-
-- type: entity
-  parent: BaseThiefStealObjective
   id: CaptainSwordStealObjective
   components:
   - type: NotJobRequirement

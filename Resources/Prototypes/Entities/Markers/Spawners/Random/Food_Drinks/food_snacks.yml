@@ -29,9 +29,7 @@
     - id: FoodFrozenSandwichStrawberry
     - id: FoodFrozenSnowcone
     - id: FoodFrozenSnowconeBerry
-    - id: FoodFrozenSnowconeClown
     - id: FoodFrozenSnowconeFruit
-    - id: FoodFrozenSnowconeMime
     - id: FoodFrozenSnowconeRainbow
     - id: FoodFrozenSundae
     - id: FoodSnackBoritos

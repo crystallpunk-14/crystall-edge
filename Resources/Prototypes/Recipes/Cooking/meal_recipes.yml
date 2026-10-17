@@ -145,15 +145,6 @@
     FoodBreadBun: 1
     FoodMeatChicken: 1
 
-- type: microwaveMealRecipe
-  id: RecipeClownBurger
-  name: clownburger recipe
-  result: FoodBurgerClown
-  time: 10
-  group: Savory
-  solids:
-    FoodBreadBun: 1
-    ClothingMaskClown: 1
 
 - type: microwaveMealRecipe
   id: RecipeCorgiBurger
@@ -288,15 +279,6 @@
     FoodMealRibs: 1
     FoodOnionSlice: 5
 
-- type: microwaveMealRecipe
-  id: RecipeMimeBurger
-  name: mime burger recipe
-  result: FoodBurgerMime
-  time: 10
-  group: Savory
-  solids:
-    FoodBreadBun: 1
-    ClothingMaskMime: 1
 
 - type: microwaveMealRecipe
   id: RecipePlainBurger
@@ -438,18 +420,6 @@
     FoodDough: 1
     FoodMeatCutlet: 2
     FoodCheeseSlice: 1
-
-- type: microwaveMealRecipe
-  id: RecipeMimanaBread
-  name: mimana bread recipe
-  result: FoodBreadMimana
-  time: 15
-  group: Breads
-  reagents:
-    Nothing: 5
-  solids:
-    FoodDough: 1
-    FoodMimana: 2
 
 - type: microwaveMealRecipe
   id: RecipeBread
@@ -1051,21 +1021,6 @@
     FoodEggplant: 1
 
 - type: microwaveMealRecipe
-  id: RecipeClownTearsSoup
-  name: clown tears soup recipe
-  result: FoodSoupClown
-  time: 10
-  group: Soup
-  reagents:
-    Water: 10
-  solids:
-    FoodBowlBig: 1
-    FoodBanana: 1
-    MaterialBananium: 1
-    ShardGlass: 1
-    #idk probably replace shard with someting bananium when #14663 merged
-
-- type: microwaveMealRecipe
   id: RecipeMonkeysDelightSoup
   name: monkeys delight recipe
   result: FoodSoupMonkey
@@ -1284,20 +1239,6 @@
   solids:
     FoodDoughPie: 1
     FoodGrape: 3
-    FoodPlateTin: 1
-
-- type: microwaveMealRecipe
-  id: RecipeMimeTart
-  name: mime tart recipe
-  result: FoodTartMime
-  time: 15
-  group: Pie
-  reagents:
-    Sugar: 5
-    Milk: 5
-  solids:
-    FoodDoughPie: 1
-    FoodMimana: 3
     FoodPlateTin: 1
 
 #Other
@@ -1631,16 +1572,6 @@
     FoodPumpkin: 1
 
 - type: microwaveMealRecipe
-  id: RecipeClownCake
-  name: clown cake recipe
-  result: FoodCakeClown
-  time: 5
-  group: Cake
-  solids:
-    ClothingMaskClown: 1
-    FoodCakePlain: 1
-
-- type: microwaveMealRecipe
   id: RecipeCake
   name: cake recipe
   result: FoodCakePlain
@@ -1881,20 +1812,6 @@
     FoodOnionSlice: 1
     FoodTomato: 1
     BikeHorn: 1
-
-- type: microwaveMealRecipe
-  id: RecipeChiliClown
-  name: chili con carnival recipe
-  result: FoodSoupChiliClown
-  time: 30
-  group: Soup
-  solids:
-    FoodBowlBig: 1
-    FoodChiliPepper: 1
-    FoodMeatCutlet: 1
-    FoodOnionSlice: 1
-    FoodTomato: 1
-    ClothingShoesClown: 1
 
 - type: microwaveMealRecipe
   id: RecipeQueso

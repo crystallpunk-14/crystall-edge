@@ -37,7 +37,6 @@ steal-target-groups-cargo-shuttle-console-circuitboard = плата консол
 steal-target-groups-clothing-eyes-hud-beer = пивные очки
 steal-target-groups-bible = библия
 steal-target-groups-clothing-neck-goldmedal = золотая медаль мастерства экипажа
-steal-target-groups-clothing-neck-clownmedal = медаль клоуна
 steal-target-groups-wanted-list-cartridge = картридж Список разыскиваемых
 # Thief structures
 steal-target-groups-teg = часть термоэлектрического генератора

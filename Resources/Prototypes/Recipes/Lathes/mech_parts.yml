@@ -15,13 +15,6 @@
     Steel: 1000
     Glass: 750
 
-- type: latheRecipe
-  abstract: true
-  parent: BaseMechPartRecipe
-  id: BaseHonkerLimbRecipe
-  materials:
-    Steel: 2000
-    Glass: 750
     Gold: 250
 
 - type: latheRecipe
@@ -62,36 +55,6 @@
   parent: BaseRipleyLimbRecipe
   id: RipleyRArm
   result: RipleyRArm
-
-# H.O.N.K.
-- type: latheRecipe
-  parent: BaseMechPartRecipe
-  id: HonkerHarness
-  result: HonkerHarness
-  materials:
-    Steel: 3000
-    Glass: 1200
-    Gold: 500
-
-- type: latheRecipe
-  parent: BaseHonkerLimbRecipe
-  id: HonkerLArm
-  result: HonkerLArm
-
-- type: latheRecipe
-  parent: BaseHonkerLimbRecipe
-  id: HonkerLLeg
-  result: HonkerLLeg
-
-- type: latheRecipe
-  parent: BaseHonkerLimbRecipe
-  id: HonkerRLeg
-  result: HonkerRLeg
-
-- type: latheRecipe
-  parent: BaseHonkerLimbRecipe
-  id: HonkerRArm
-  result: HonkerRArm
 
 # HAMTR
 - type: latheRecipe

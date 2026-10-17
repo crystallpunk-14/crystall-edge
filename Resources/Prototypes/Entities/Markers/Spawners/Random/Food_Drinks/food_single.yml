@@ -62,8 +62,6 @@
         - id: FoodBurgerBaseball
         - id: FoodBurgerBear
         - id: FoodBurgerCat
-        - id: FoodBurgerClown
-        - id: FoodBurgerMime
         - id: FoodBurgerBrain
         - id: FoodBurgerGhost
         - id: FoodBurgerSpell

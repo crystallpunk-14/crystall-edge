@@ -50,47 +50,6 @@
     useSound: *SoundBikeHorn
 
 - type: entity
-  parent: BaseItem
-  id: CluwneHorn
-  name: broken bike horn
-  description: A broken horn off of a bicycle.
-  components:
-  - type: UseDelay
-  - type: Sprite
-    sprite: Objects/Fun/cluwnehorn.rsi
-    state: icon
-  - type: Item
-    sprite: Objects/Fun/cluwnehorn.rsi
-    size: Tiny
-  - type: Clothing
-    sprite: Objects/Fun/cluwnehorn.rsi
-    slots: [Belt]
-    quickEquip: false
-  - type: Tag
-    tags:
-    - Payload # yes, you can make re-usable prank grenades
-    - CluwneHorn
-  - type: EmitSoundOnTrigger
-    sound: &SoundCluwneHorn
-      collection: CluwneHorn
-      params:
-        variation: 0.125
-  - type: EmitSoundOnUse
-    sound: *SoundCluwneHorn
-  - type: EmitSoundOnActivate
-    sound: *SoundCluwneHorn
-  - type: EmitSoundOnCollide
-    sound: *SoundCluwneHorn
-  - type: EmitSoundOnLand
-    sound: *SoundCluwneHorn
-  - type: MeleeWeapon
-    wideAnimationRotation: 135
-    soundHit: *SoundCluwneHorn
-    damage:
-      types:
-        Blunt: 5
-
-- type: entity
   parent: BikeHorn
   id: GoldenBikeHorn
   name: golden honker
@@ -114,50 +73,6 @@
     energy: 2.2
     castShadows: false
     color: "#ffca1b"
-
-- type: entity
-  parent: BikeHorn
-  id: BananiumHorn
-  name: bananium horn
-  description: An air horn made from bananium.
-  components:
-  - type: Sprite
-    sprite: Objects/Fun/bananiumhorn.rsi
-    state: icon
-  - type: Item
-    sprite: Objects/Fun/bananiumhorn.rsi
-    size: Small
-  - type: Clothing
-    sprite: Objects/Fun/bananiumhorn.rsi
-    slots: [Belt]
-    quickEquip: false
-  - type: UseDelay
-    delay: 3
-  - type: EmitSoundOnUse
-    sound: &SoundBananiumHorn
-      collection: BananiumHorn
-      params:
-        variation: 0.246
-  - type: EmitSoundOnLand
-    sound: *SoundBananiumHorn
-  - type: EmitSoundOnTrigger
-    sound: *SoundBananiumHorn
-  - type: EmitSoundOnActivate
-    sound: *SoundBananiumHorn
-  - type: EmitSoundOnCollide
-    sound: *SoundBananiumHorn
-  - type: MeleeWeapon
-    wideAnimationRotation: 135
-    soundHit: *SoundBananiumHorn
-    damage:
-      types:
-        Blunt: 0
-    hidden: true
-  - type: Construction
-    graph: BananiumHorn
-    node: bananiumHorn
-  - type: Tool
-    useSound: *SoundBananiumHorn
 
 - type: entity
   parent: BaseItem
@@ -370,33 +285,6 @@
       params:
         volume: -9
         maxDistance: 3
-
-- type: entity
-  parent: BaseItem
-  id: ClownRecorder
-  name: clown recorder
-  description: When you just can't get those laughs coming the natural way!
-  components:
-  - type: Sprite
-    sprite: Objects/Fun/clownrecorder.rsi
-    state: icon
-  - type: EmitSoundOnUse
-    sound: &SoundClownRecorder
-      collection: ClownRecorder
-  - type: EmitSoundOnLand
-    sound: *SoundClownRecorder
-  - type: EmitSoundOnActivate
-    sound: *SoundClownRecorder
-  - type: EmitSoundOnTrigger
-    sound: *SoundClownRecorder
-  - type: EmitSoundOnCollide
-    sound: *SoundClownRecorder
-  - type: UseDelay
-    delay: 30.0
-  - type: Tag
-    tags:
-    - ClownRecorder
-    - Payload
 
 - type: entity
   parent: BaseItem

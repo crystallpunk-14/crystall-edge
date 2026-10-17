@@ -320,24 +320,6 @@
   id: ClothMade # SpecialDigestible: OrganMothStomach. Storage whitelist: FoodBoxCloth
 
 - type: Tag
-  id: ClownMask # ConstructionGraph: Honker, BananaClownMask
-
-- type: Tag
-  id: ClownRecorder # ConstructionGraph: ClownHardsuit
-
-- type: Tag
-  id: ClownShoes # ConstructionGraph: Honker, BananaClownShoes
-
-- type: Tag
-  id: ClownSuit # ConstructionGraph: BananaClownJumpsuit
-
-- type: Tag
-  id: CluwneHappyHonk # ConstructionGraph: JonkBot
-
-- type: Tag
-  id: CluwneHorn # ConstructionGraph: JonkBot
-
-- type: Tag
   id: Cola  # Storage whitelist: DrinkCanPack. ItemCounter: DrinkCanPack
 
 - type: Tag
@@ -754,26 +736,6 @@
 - type: Tag
   id: HolosignProjector # Storage whitelist: ClothingBeltJanitor
 
-- type: Tag
-  id: HonkerCentralControlModule # ConstructionGraph: Honker
-
-- type: Tag
-  id: HonkerLArm # PartAssembly: HonkerHarness. ItemMapper: HonkerHarness
-
-- type: Tag
-  id: HonkerLLeg # PartAssembly: HonkerHarness. ItemMapper: HonkerHarness
-
-- type: Tag
-  id: HonkerPeripheralsControlModule # ConstructionGraph: Honker
-
-- type: Tag
-  id: HonkerRArm # PartAssembly: HonkerHarness. ItemMapper: HonkerHarness
-
-- type: Tag
-  id: HonkerRLeg # PartAssembly: HonkerHarness. ItemMapper: HonkerHarness
-
-- type: Tag
-  id: HonkerTargetingControlModule # ConstructionGraph: Honker
 
 - type: Tag
   id: Hotsauce # Storage whitelist: ClothingBeltChef and FoodCartHot. ItemMapper: ClothingBeltChef and FoodCartHot
@@ -945,12 +907,6 @@
   id: MicrowaveMachineBoard # CargoBounty: BountyMicrowaveMachineBoard
 
 - type: Tag
-  id: MimeBelt # ConstructionGraph: MimeHardsuit, MimeBot
-
-- type: Tag
-  id: MimeHappyHonk # ConstructionGraph: MimeBot
-
-- type: Tag
   id: MindTransferTarget # Default value in TransferMindOnGibComponent. Moves the mind of the gibed component owner to the tagged giblet.
 
 - type: Tag # Used on DungeonRoom prototypes.
@@ -1013,9 +969,6 @@
 
 - type: Tag
   id: Ore # Storage whitelist: OreBag, OreBox. MaterialStorage whitelist: OreProcessor
-
-- type: Tag
-  id: OreBananium # CargoBounty: BountySalvageOreBananium
 
 - type: Tag
   id: OreGold # CargoBounty: BountySalvageOreGold

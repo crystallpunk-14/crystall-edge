@@ -6,8 +6,6 @@
   - type: Loadout
     prototypes:
       - HoPGear
-      - ClownGear
-      - MimeGear
       - JanitorGear
       - ServiceWorkerGear
       - MusicianGear

@@ -42,7 +42,6 @@ steal-target-groups-salvage-expeditions-computer-circuitboard = salvage expediti
 steal-target-groups-cargo-shuttle-console-circuitboard = cargo shuttle console board
 steal-target-groups-bible = bible
 steal-target-groups-clothing-neck-goldmedal = gold medal of crewmanship
-steal-target-groups-clothing-neck-clownmedal = clown medal
 steal-target-groups-wanted-list-cartridge = wanted list cartridge
 steal-target-groups-belt-ce = chief engineer's toolbelt
 steal-target-groups-captain-sword = captain's sabre

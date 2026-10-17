@@ -90,9 +90,6 @@
   recipes:
   - RipleyCentralElectronics
   - RipleyPeripheralsElectronics
-  - HonkerCentralElectronics
-  - HonkerPeripheralsElectronics
-  - HonkerTargetingElectronics
   - HamtrCentralElectronics
   - HamtrPeripheralsElectronics
 

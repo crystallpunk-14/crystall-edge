@@ -25,7 +25,6 @@ salv-job-board-name-BountySalvageOreSilver = Silver (Ore)
 
 salv-job-board-name-BountySalvageOreUranium = Uranium (Ore)
 salv-job-board-name-BountySalvageOrePlasma = Plasma (Ore)
-salv-job-board-name-BountySalvageOreBananium = Bananium (Ore)
 salv-job-board-name-BountyTeethSharkminnow = Sharkminnow
 
 salv-job-board-name-BountyGoliathPlates = Goliath
@@ -40,7 +39,6 @@ bounty-description-salvage-ore-silver = We are studying the material effects of 
 bounty-description-tooth-sharkminnow = We need you to get a sample of some Sharkminnow teeth. These guys are a fair bit nastier than the smaller carp you're familiar with. Take care to not let them bite you: they'll suck out your blood and heal.
 bounty-description-salvage-ore-plasma = We need a shipment of plasma ore to send over to the research station. Please provide us with some so that we can continue our testing. It can come from any source.
 bounty-description-salvage-ore-uranium = We need a sample of uranium ore for our ongoing experiments on nuclear devices. Be aware that while the uranium does glow slightly, it will probably not harm you. It can come from any source.
-bounty-description-salvage-ore-bananium = We have an ongoing project to decode the mystifying clown genomic sequence. We believe a sample of raw bananium will help us achieve this. Note that this only comes from the rarest of deep-space asteroids.
 
 bounty-description-remains = We need you to get a sample of a few Hivelord cores. Be aware that Hivelords can replicate infinitely if the core is not destroyed. Take care not to get overwhelmed.
 bounty-description-plates = We need you to get a couple sheets of Goliath hide. These guys are pretty slow, but be careful about the tentacles: they'll grab you and pull you to the ground. You don't want to know what happens next.

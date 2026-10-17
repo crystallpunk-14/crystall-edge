@@ -19,23 +19,8 @@
 
 - type: construction
   parent: BaseRobot
-  id: honkbot
-  graph: HonkBot
-
-- type: construction
-  parent: BaseRobot
-  id: jonkbot
-  graph: JonkBot
-
-- type: construction
-  parent: BaseRobot
   id: medibot
   graph: MediBot
-
-- type: construction
-  parent: BaseRobot
-  id: mimebot
-  graph: MimeBot
 
 - type: construction
   parent: BaseRobot

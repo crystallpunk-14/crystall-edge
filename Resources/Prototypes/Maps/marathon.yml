@@ -55,8 +55,6 @@
             CargoTechnician: [ 3, 3 ]
             #civilian (2-3 + overflow)
             Passenger: [ -1, -1 ] #infinite, not counted
-            Clown: [ 1, 1 ]
-            Mime: [ 1, 1 ]
             Musician: [ 1, 1 ]
             #silicon (3)
             StationAi: [ 1, 1 ]

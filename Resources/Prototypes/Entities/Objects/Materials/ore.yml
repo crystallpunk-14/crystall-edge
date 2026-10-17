@@ -223,39 +223,6 @@
 
 - type: entity
   parent: OreBase
-  id: BananiumOre
-  name: bananium ore
-  suffix: Full
-  components:
-  - type: Stack
-    stackType: BananiumOre
-  - type: Sprite
-    state: bananium
-  - type: PhysicalComposition
-    materialComposition:
-      RawBananium: 100
-  - type: PointLight
-    radius: 1.2
-    energy: 1
-    castShadows: false
-    color: "#eef066"
-  - type: Item
-    heldPrefix: bananium
-  - type: Tag
-    tags:
-    - Ore
-    - OreBananium
-
-- type: entity
-  parent: BananiumOre
-  id: BananiumOre1
-  suffix: Single
-  components:
-  - type: Stack
-    count: 1
-
-- type: entity
-  parent: OreBase
   id: Coal
   name: coal
   suffix: Full

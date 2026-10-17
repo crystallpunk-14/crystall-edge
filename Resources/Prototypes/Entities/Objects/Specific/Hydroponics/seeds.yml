@@ -67,16 +67,6 @@
 
 - type: entity
   parent: SeedBase
-  name: packet of mimana seeds
-  id: MimanaSeeds
-  components:
-    - type: Seed
-      plantId: MimanaPlants
-    - type: Sprite
-      sprite: Objects/Specific/Hydroponics/mimana.rsi
-
-- type: entity
-  parent: SeedBase
   name: packet of carrot seeds
   id: CarrotSeeds
   components:

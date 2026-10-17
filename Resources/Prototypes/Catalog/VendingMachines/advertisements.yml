@@ -158,7 +158,7 @@
   id: HappyHonkAds
   values:
     prefix: advertisement-happyhonk-
-    count: 10
+    count: 7
 
 - type: localizedDataset
   id: HyDrobeAds

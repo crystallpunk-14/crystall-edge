@@ -217,34 +217,6 @@
     - Fruit
 
 - type: entity
-  name: clowncone
-  parent: FoodFrozenSnowconeBase
-  id: FoodFrozenSnowconeClown
-  description: Laughter drizzled over a snowball in a paper cup.
-  components:
-  - type: Sprite
-    layers:
-    - state: cone
-    - state: clown
-  - type: Edible
-    trash:
-    - FoodFrozenSnowconeTrash
-
-- type: entity
-  name: mime snowcone
-  parent: FoodFrozenSnowconeBase
-  id: FoodFrozenSnowconeMime
-  description: ...
-  components:
-  - type: Sprite
-    layers:
-    - state: cone
-    - state: mime
-  - type: Edible
-    trash:
-    - FoodFrozenSnowconeTrash
-
-- type: entity
   name: rainbow snowcone
   parent: FoodFrozenSnowconeBase
   id: FoodFrozenSnowconeRainbow

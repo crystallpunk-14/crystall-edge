@@ -86,15 +86,3 @@
     state: crab_uranium
   - type: SpawnOnDespawn
     prototype: MobUraniumCrab
-
-- type: entity
-  id: MobSpawnCrabBananium
-  parent: MobSpawnCrabQuartz
-  name: mobspawner bananiumcrab
-  categories: [ HideSpawnMenu, Spawner ]
-  components:
-  - type: Sprite
-    sprite: /Textures/Effects/mobspawn.rsi
-    state: crab_bananium
-  - type: SpawnOnDespawn
-    prototype: MobBananiumCrab

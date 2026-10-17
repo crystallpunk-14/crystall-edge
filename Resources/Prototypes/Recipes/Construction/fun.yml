@@ -1,5 +1,0 @@
-- type: construction
-  parent: BaseWeapon
-  id: HornBananium
-  graph: BananiumHorn
-  targetNode: bananiumHorn

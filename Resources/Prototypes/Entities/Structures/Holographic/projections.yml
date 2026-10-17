@@ -64,42 +64,6 @@
 
 - type: entity
   parent: BaseHoloSign
-  id: HoloPeel
-  name: holopeel
-  description: A banana peel made of slippery hard light, watch your step!
-  components:
-  - type: Sprite
-    sprite: Structures/Holo/peel.rsi
-    state: icon
-  - type: Physics
-    canCollide: true
-  - type: Slippery
-  - type: StepTrigger
-    intersectRatio: 0.2
-  - type: CollisionWake
-    enabled: false
-  - type: Fixtures
-    fixtures:
-      slips:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.2,-0.2,0.2,0.2"
-        hard: false
-        layer:
-        - SlipLayer
-  - type: TimedDespawn
-    lifetime: 30
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 10
-      behaviors:
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-
-- type: entity
-  parent: BaseHoloSign
   id: HolosignSecurity
   name: holographic barrier
   description: A barrier of hard light that blocks movement, but pretty weak.

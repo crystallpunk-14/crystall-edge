@@ -155,14 +155,6 @@
   - chat-speech-verb-parrot-3
 
 - type: speechVerb
-  id: Cluwne
-  name: chat-speech-verb-name-cluwne
-  speechVerbStrings:
-  - chat-speech-verb-cluwne-1
-  - chat-speech-verb-cluwne-2
-  - chat-speech-verb-cluwne-3
-
-- type: speechVerb
   id: Ghost
   name: chat-speech-verb-name-ghost
   speechVerbStrings:

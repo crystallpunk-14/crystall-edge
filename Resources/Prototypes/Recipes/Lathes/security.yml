@@ -121,11 +121,6 @@
 
 - type: latheRecipe
   parent: BaseTargetRecipe
-  id: TargetClown
-  result: TargetClown
-
-- type: latheRecipe
-  parent: BaseTargetRecipe
   id: TargetSyndicate
   result: TargetSyndicate
 

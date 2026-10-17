@@ -55,17 +55,6 @@
 
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: ClothingUniformJumpskirtMime
-  name: mime jumpskirt
-  description: ...
-  components:
-  - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirts/Service/mime.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirts/Service/mime.rsi
-
-- type: entity
-  parent: ClothingUniformSkirtBase
   id: ClothingUniformJumpskirtLibrarian
   name: librarian jumpskirt
   description: A cosy green jumper fit for a curator of books.
@@ -140,21 +129,6 @@
     sprite: Clothing/Uniforms/Jumpskirts/Service/psychologist.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpskirts/Service/psychologist.rsi
-
-- type: entity
-  parent: ClothingUniformSkirtBase
-  id: ClothingUniformJumpskirtClown
-  name: clown skirt
-  description: HONK!
-  components:
-  - type: Sprite
-    sprite: Clothing/Uniforms/Jumpskirts/Service/clown.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpskirts/Service/clown.rsi
-  - type: Tag
-    tags:
-    - ClownSuit
-    - WhitelistChameleon
 
 - type: entity
   parent: ClothingUniformSkirtBase

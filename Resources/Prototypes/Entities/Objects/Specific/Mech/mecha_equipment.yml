@@ -91,7 +91,6 @@
   - type: MechSoundboard
     sounds:
     - collection: BikeHorn
-    - collection: CluwneHorn
     - collection: TrollAnimals
     - collection: TrollBeeping
     - collection: TrollEsword
