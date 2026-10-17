@@ -98,8 +98,6 @@
   minLimit: 1
   maxLimit: 1
   loadouts:
-  - CEAdventurerBow
-  - CEAdventurerCrossbow
   - CEWeaponSwordIron
   - CEWeaponSkimitarIron
   - CEWeaponSpearIron
@@ -109,6 +107,8 @@
   - CEWeaponClubWooden
   - CEWeaponHammerIron
   - CEWeaponStaffWooden
+  - CEAdventurerBow
+  - CEAdventurerCrossbow
 
 - type: loadout
   id: CEAdventurerBow
