@@ -9,3 +9,5 @@ ce-tool-quality-hammering-tool-name = Молот
 
 ce-tool-quality-matter-manipulation-name = Манипуляция материей
 ce-tool-quality-matter-manipulation-tool-name = Манипулятор материи
+
+ce-voice-distortion-name = Искаженный голос

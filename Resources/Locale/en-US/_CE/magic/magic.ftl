@@ -39,3 +39,4 @@ ce-magic-spell-target-mob-state-critical = dying
 ce-magic-skillpointcost = Resource costs "{$name}": [color=#eba834]{$count}[/color]
 ce-magic-spell-skillpoint-not-enough = There are {$count} resources of "{$name}" missing!
 
+ce-magic-spell-target-no-mind = The target must have a soul!

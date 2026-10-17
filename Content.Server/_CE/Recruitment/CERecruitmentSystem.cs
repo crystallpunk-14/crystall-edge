@@ -1,8 +1,10 @@
 using Content.Server._CE.Roles;
+using Content.Server.Administration.Logs;
 using Content.Server.Chat.Managers;
 using Content.Server.EUI;
 using Content.Shared._CE.Recruitment;
 using Content.Shared.Chat;
+using Content.Shared.Database;
 using Content.Shared.Mobs.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
@@ -15,6 +17,7 @@ namespace Content.Server._CE.Recruitment;
 /// </summary>
 public sealed partial class CERecruitmentSystem : CESharedRecruitmentSystem
 {
+    [Dependency] private IAdminLogManager _adminLog = default!;
     [Dependency] private CESecretRoleSelectionSystem _secretRoles = default!;
     [Dependency] private EuiManager _eui = default!;
     [Dependency] private IChatManager _chat = default!;
@@ -50,6 +53,10 @@ public sealed partial class CERecruitmentSystem : CESharedRecruitmentSystem
         invite.Eui = new CERecruitmentEui(target, this, invite.EndTime, recruitment.Timeout);
 
         _eui.OpenEui(invite.Eui, actor.PlayerSession);
+
+        _adminLog.Add(LogType.AntagSelection,
+            LogImpact.Medium,
+            $"{ToPrettyString(args.Performer):player} invited {ToPrettyString(target):target} to secret role {recruitment.Role}");
         args.Handled = true;
     }
 
@@ -77,6 +84,10 @@ public sealed partial class CERecruitmentSystem : CESharedRecruitmentSystem
         {
             accepted = false;
         }
+
+        _adminLog.Add(LogType.AntagSelection,
+            LogImpact.Medium,
+            $"{ToPrettyString(target):target} {(accepted ? "accepted" : "declined or ignored")} the invite of {ToPrettyString(recruiter):player} to secret role {role}");
 
         if (!TryComp<ActorComponent>(recruiter, out var recruiterActor))
             return;

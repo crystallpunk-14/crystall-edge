@@ -80,92 +80,103 @@
   - !type:CETradeSpawnReward
     proto: CESyringe
 
-- type: tradeOffer
-  id: CETradeOfferVialTiny
-  shop: ImperialChancellery
-  pay:
-    bonus: 1
-  reward:
-  - !type:CETradeSpawnReward
-    proto: CEVialTiny
+#Disabled due to useless without thaumaturgy academy. Awaits hospital to being added
+
+#- type: tradeOffer
+#  id: CETradeOfferVialTiny
+#  shop: ImperialChancellery
+#  pay:
+#    bonus: 1
+#  reward:
+#  - !type:CETradeSpawnReward
+#    proto: CEVialTiny
+#
+#- type: tradeOffer
+#  id: CETradeOfferVialTinyReinforced
+#  shop: ImperialChancellery
+#  pay:
+#    bonus: 1
+#  reward:
+#  - !type:CETradeSpawnReward
+#    proto: CEVialTinyReinforced
+#
+#- type: tradeOffer
+#  id: CETradeOfferVialSmall
+#  shop: ImperialChancellery
+#  pay:
+#    bonus: 1
+#  reward:
+#  - !type:CETradeSpawnReward
+#    proto: CEVialSmall
+#
+#- type: tradeOffer
+#  id: CETradeOfferVialSmallReinforced
+#  shop: ImperialChancellery
+#  pay:
+#    bonus: 1
+#  reward:
+#  - !type:CETradeSpawnReward
+#    proto: CEVialSmallReinforced
+#
+#- type: tradeOffer
+#  id: CETradeOfferVialMedium
+#  shop: ImperialChancellery
+#  pay:
+#    bonus: 1
+#  reward:
+#  - !type:CETradeSpawnReward
+#    proto: CEVialMedium
+#
+#- type: tradeOffer
+#  id: CETradeOfferVialMediumReinforced
+#  shop: ImperialChancellery
+#  pay:
+#    bonus: 1
+#  reward:
+#  - !type:CETradeSpawnReward
+#    proto: CEVialMediumReinforced
+#
+#- type: tradeOffer
+#  id: CETradeOfferVialStar
+#  shop: ImperialChancellery
+#  pay:
+#    bonus: 1
+#  reward:
+#  - !type:CETradeSpawnReward
+#    proto: CEVialStar
+#
+#- type: tradeOffer
+#  id: CETradeOfferVialStarReinforced
+#  shop: ImperialChancellery
+#  pay:
+#    bonus: 1
+#  reward:
+#  - !type:CETradeSpawnReward
+#    proto: CEVialStarReinforced
+#
+#- type: tradeOffer
+#  id: CETradeOfferVialSkull
+#  shop: ImperialChancellery
+#  pay:
+#    bonus: 1
+#  reward:
+#  - !type:CETradeSpawnReward
+#    proto: CEVialSkull
+#
+#- type: tradeOffer
+#  id: CETradeOfferVialSkullReinforced
+#  shop: ImperialChancellery
+#  pay:
+#    bonus: 1
+#  reward:
+#  - !type:CETradeSpawnReward
+#    proto: CEVialSkullReinforced
 
 - type: tradeOffer
-  id: CETradeOfferVialTinyReinforced
+  id: CETradeOfferVoiceDistortionAmulet
   shop: ImperialChancellery
   pay:
-    bonus: 1
+    bonus: 20
   reward:
   - !type:CETradeSpawnReward
-    proto: CEVialTinyReinforced
-
-- type: tradeOffer
-  id: CETradeOfferVialSmall
-  shop: ImperialChancellery
-  pay:
-    bonus: 1
-  reward:
-  - !type:CETradeSpawnReward
-    proto: CEVialSmall
-
-- type: tradeOffer
-  id: CETradeOfferVialSmallReinforced
-  shop: ImperialChancellery
-  pay:
-    bonus: 1
-  reward:
-  - !type:CETradeSpawnReward
-    proto: CEVialSmallReinforced
-
-- type: tradeOffer
-  id: CETradeOfferVialMedium
-  shop: ImperialChancellery
-  pay:
-    bonus: 1
-  reward:
-  - !type:CETradeSpawnReward
-    proto: CEVialMedium
-
-- type: tradeOffer
-  id: CETradeOfferVialMediumReinforced
-  shop: ImperialChancellery
-  pay:
-    bonus: 1
-  reward:
-  - !type:CETradeSpawnReward
-    proto: CEVialMediumReinforced
-
-- type: tradeOffer
-  id: CETradeOfferVialStar
-  shop: ImperialChancellery
-  pay:
-    bonus: 1
-  reward:
-  - !type:CETradeSpawnReward
-    proto: CEVialStar
-
-- type: tradeOffer
-  id: CETradeOfferVialStarReinforced
-  shop: ImperialChancellery
-  pay:
-    bonus: 1
-  reward:
-  - !type:CETradeSpawnReward
-    proto: CEVialStarReinforced
-
-- type: tradeOffer
-  id: CETradeOfferVialSkull
-  shop: ImperialChancellery
-  pay:
-    bonus: 1
-  reward:
-  - !type:CETradeSpawnReward
-    proto: CEVialSkull
-
-- type: tradeOffer
-  id: CETradeOfferVialSkullReinforced
-  shop: ImperialChancellery
-  pay:
-    bonus: 1
-  reward:
-  - !type:CETradeSpawnReward
-    proto: CEVialSkullReinforced
+    proto: CEVoiceDistortionAmulet

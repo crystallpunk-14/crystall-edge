@@ -37,3 +37,8 @@ ce-secret-role-description-immortal = You are incredibly hard to kill. One might
 
 ce-secret-role-name-vandal = Vandal
 ce-secret-role-description-vandal = Oh, you're against the way things are and the guard's grip on the city. Let's wreck the place a little.
+
+# Coven
+
+ce-secret-role-name-seer = Seer
+ce-secret-role-description-seer = You gaze into souls and see the true nature of the people around you. Uncover hidden roles and use that information to achieve your goals.

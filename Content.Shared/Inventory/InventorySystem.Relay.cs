@@ -1,6 +1,7 @@
 using Content.Shared._CE.DayCycle;
 using Content.Shared._CE.MagicEnergy.Components;
 using Content.Shared._CE.MagicVision.Events;
+using Content.Shared._CE.Speech;
 using Content.Shared._CE.Waypointer;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Armor;
@@ -54,6 +55,7 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, CECheckMagicVisionEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, CERefreshWaypointersEvent>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, CECheckTimeSenseEvent>(RefRelayInventoryEvent);
+        SubscribeLocalEvent<InventoryComponent, CEBarkSpeechOverrideEvent>(RefRelayInventoryEvent);
         //CrystallEdge end
 
         SubscribeLocalEvent<InventoryComponent, DamageModifyEvent>(RelayInventoryEvent);
