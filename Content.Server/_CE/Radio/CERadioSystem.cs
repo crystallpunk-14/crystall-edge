@@ -7,6 +7,7 @@ using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Chat;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.Speech;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.Radio;
@@ -24,6 +25,11 @@ public sealed partial class CERadioSystem : CESharedRadioSystem
     // Transient per-tick dedup: several booths hearing the same phrase make each speaker say it once.
     private readonly HashSet<(EntityUid Speaker, EntityUid Source, string Message)> _recentlySent = new();
     private readonly List<EntityUid> _targets = new();
+
+    // Transient per-broadcast: speakers currently relaying, and sessions that already got the phrase in their chat log.
+    private readonly HashSet<EntityUid> _broadcastingSpeakers = new();
+    private readonly HashSet<ICommonSession> _broadcastHeard = new();
+    private readonly List<ICommonSession> _alreadyHeard = new();
 
     public override void Update(float frameTime)
     {
@@ -75,6 +81,10 @@ public sealed partial class CERadioSystem : CESharedRadioSystem
         var nameEv = new TransformSpeakerNameEvent(args.Source, Name(args.Source));
         RaiseLocalEvent(args.Source, nameEv);
 
+        _broadcastingSpeakers.Clear();
+        _broadcastingSpeakers.UnionWith(_targets);
+        _broadcastHeard.Clear();
+
         // Speaking spawns z-level transmitters and raises more speech events, so do it outside the query.
         foreach (var speaker in _targets.ToArray())
         {
@@ -91,6 +101,29 @@ public sealed partial class CERadioSystem : CESharedRadioSystem
                 verb = speech.SpeechVerb;
 
             _zSpeaking.TransmitToAdjacentZLevels(speaker, args.Message, nameEv.VoiceName, InGameICChatType.Speak, verb);
+        }
+
+        _broadcastingSpeakers.Clear();
+        _broadcastHeard.Clear();
+    }
+
+    [SubscribeLocalEvent]
+    private void OnExpandRecipients(ExpandICChatRecipientsEvent ev)
+    {
+        if (!_broadcastingSpeakers.Contains(ev.Source))
+            return;
+
+        // Every speaker still shows its bubble, but each listener gets the phrase in the chat log only once.
+        _alreadyHeard.Clear();
+        foreach (var session in ev.Recipients.Keys)
+        {
+            if (!_broadcastHeard.Add(session))
+                _alreadyHeard.Add(session);
+        }
+
+        foreach (var session in _alreadyHeard)
+        {
+            ev.Recipients[session] = ev.Recipients[session] with { HideChatOverride = true };
         }
     }
 }
