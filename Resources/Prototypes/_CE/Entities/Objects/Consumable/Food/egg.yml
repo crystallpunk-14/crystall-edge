@@ -61,7 +61,7 @@
     - CEFitInFryingPan
   - type: CEFoodTag
     tags:
-    - CEEgg
+    - Egg
 
 # Splat
 - type: entity

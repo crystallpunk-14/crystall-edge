@@ -1,13 +1,13 @@
 - type: waypointer
   abstract: true
-  id: CEBaseWaypointer
+  id: BaseWaypointer
   rsiPath: _CE/Markers/Waypointers/waypointer.rsi
   waypointerStates: 5
   color: White
 
 - type: waypointer
-  parent: CEBaseWaypointer
-  id: CEOreCoreWaypointer
+  parent: BaseWaypointer
+  id: OreCoreWaypointer
   color: "#e17d44"
   trackedComponents:
   - type: CEOreVein

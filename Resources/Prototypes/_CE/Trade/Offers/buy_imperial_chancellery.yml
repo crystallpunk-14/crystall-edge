@@ -1,5 +1,5 @@
 - type: tradeOffer
-  id: CETradeOfferPenFeather
+  id: BuyPenFeather
   shop: ImperialChancellery
   pay:
     bonus: 1
@@ -8,7 +8,7 @@
     proto: CEPenFeather
 
 - type: tradeOffer
-  id: CETradeOfferPaper
+  id: BuyPaper
   shop: ImperialChancellery
   pay:
     bonus: 1
@@ -18,7 +18,7 @@
     count: 5
 
 - type: tradeOffer
-  id: CETradeOfferPaperFolderBlue
+  id: BuyPaperFolderBlue
   shop: ImperialChancellery
   pay:
     bonus: 1
@@ -27,7 +27,7 @@
     proto: CEPaperFolderBlue
 
 - type: tradeOffer
-  id: CETradeOfferPaperFolderRed
+  id: BuyPaperFolderRed
   shop: ImperialChancellery
   pay:
     bonus: 1
@@ -36,7 +36,7 @@
     proto: CEPaperFolderRed
 
 - type: tradeOffer
-  id: CETradeOfferPaperFolderGreen
+  id: BuyPaperFolderGreen
   shop: ImperialChancellery
   pay:
     bonus: 1
@@ -45,7 +45,7 @@
     proto: CEPaperFolderGreen
 
 - type: tradeOffer
-  id: CETradeOfferPaperFolderPurple
+  id: BuyPaperFolderPurple
   shop: ImperialChancellery
   pay:
     bonus: 1
@@ -54,7 +54,7 @@
     proto: CEPaperFolderPurple
 
 - type: tradeOffer
-  id: CETradeOfferBookEmpty
+  id: BuyBookEmpty
   shop: ImperialChancellery
   pay:
     bonus: 1
@@ -63,7 +63,7 @@
     proto: CEBookEmpty
 
 - type: tradeOffer
-  id: CETradeOfferDropper
+  id: BuyDropper
   shop: ImperialChancellery
   pay:
     bonus: 1
@@ -72,7 +72,7 @@
     proto: CEDropper
 
 - type: tradeOffer
-  id: CETradeOfferSyringe
+  id: BuySyringe
   shop: ImperialChancellery
   pay:
     bonus: 1
@@ -173,7 +173,7 @@
 #    proto: CEVialSkullReinforced
 
 - type: tradeOffer
-  id: CETradeOfferVoiceDistortionAmulet
+  id: BuyVoiceDistortionAmulet
   shop: ImperialChancellery
   pay:
     bonus: 20

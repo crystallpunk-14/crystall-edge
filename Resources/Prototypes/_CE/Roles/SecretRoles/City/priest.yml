@@ -1,11 +1,11 @@
 - type: secretRole
-  id: CEPriest
+  id: Priest
   name: ce-secret-role-name-priest
   description: ce-secret-role-description-priest
   icon: CESecretRoleIconPriest
   skills:
   - CureWounds
-  - CEResurrection
+  - Resurrection
   objectives: !type:EntSelector
     id: CEObjectivePriestSurvive
 

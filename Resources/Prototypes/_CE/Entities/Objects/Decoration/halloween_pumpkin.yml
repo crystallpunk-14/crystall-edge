@@ -58,8 +58,8 @@
       amount: 5
   - type: CEFoodTag
     tags:
-    - CEVegetable
-    - CEPumpkin
+    - Vegetable
+    - Pumpkin
 
 
 - type: entity

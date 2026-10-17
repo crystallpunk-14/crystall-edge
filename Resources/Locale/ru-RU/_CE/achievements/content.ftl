@@ -1,8 +1,8 @@
 ce-achievement-betatester-name = Бета тестер
 ce-achievement-betatester-desc = Поучаствуйте в тестировании ранних версий CrystallEdge
 
-ce-achievement-murkwalker-name = Мракоходец
-ce-achievement-murkwalker-desc = Выполните все цели и закончите раунд, играя за Оборотня
+ce-achievement-werewolf-win-name = Мракоходец
+ce-achievement-werewolf-win-desc = Выполните все цели и закончите раунд, играя за Оборотня
 
-ce-achievement-goldcoin-name = Экипировка: Золотая монета
-ce-achievement-goldcoin-desc = Выполните все цели и закончите раунд, играя за Охотника за головами
+ce-achievement-bounty-hunter-win-name = Экипировка: Золотая монета
+ce-achievement-bounty-hunter-win-desc = Выполните все цели и закончите раунд, играя за Охотника за головами

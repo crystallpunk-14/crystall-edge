@@ -16,7 +16,7 @@
   special:
     - !type:CELearnSkillsSpecial
       skills:
-      - CEMilitaryTraining
+      - MilitaryTraining
 
 - type: startingGear
   id: CEGuardCommanderGear

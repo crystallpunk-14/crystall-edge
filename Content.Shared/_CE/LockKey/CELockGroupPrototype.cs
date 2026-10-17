@@ -6,7 +6,7 @@ namespace Content.Shared._CE.LockKey;
 /// Group Affiliation. Used for “abstract key” mechanics,
 /// where the key takes one of the free forms from identical rooms (10 different kinds of tavern rooms for example).
 /// </summary>
-[Prototype("CELockGroup")]
+[Prototype("lockGroup")]
 public sealed partial class CELockGroupPrototype : IPrototype
 {
     [ViewVariables]

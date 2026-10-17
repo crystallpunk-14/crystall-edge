@@ -38,7 +38,7 @@
   - type: VisionCorrection
   - type: CEWaypointerClothing
     waypointerProtoIds:
-    - CEOreCoreWaypointer
+    - OreCoreWaypointer
   - type: GuideHelp
     guides:
     - CEMiningGuideEN

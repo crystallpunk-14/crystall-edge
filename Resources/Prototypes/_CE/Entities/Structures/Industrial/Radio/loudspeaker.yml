@@ -45,7 +45,7 @@
   components:
   - type: CERadioSpeaker
     frequencies:
-    - CECommon
+    - Common
 
 - type: entity
   parent: CEWallRadioSpeakerBase
@@ -54,8 +54,8 @@
   components:
   - type: CERadioSpeaker
     frequencies:
-    - CECommon
-    - CEEngineering
+    - Common
+    - Engineering
 
 - type: entity
   parent: CEWallRadioSpeakerBase
@@ -64,8 +64,8 @@
   components:
   - type: CERadioSpeaker
     frequencies:
-    - CECommon
-    - CEGuard
+    - Common
+    - Guard
 
 - type: entity
   parent: CEWallRadioSpeakerBase
@@ -74,5 +74,5 @@
   components:
   - type: CERadioSpeaker
     frequencies:
-    - CECommon
-    - CETavern
+    - Common
+    - Tavern

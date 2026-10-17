@@ -28,7 +28,7 @@
       amount: 5
   - type: CEFoodTag
     tags:
-    - CECheese
+    - Cheese
 
 - type: entity
   id: CEFoodCheesePart
@@ -65,7 +65,7 @@
       amount: 3
   - type: CEFoodTag
     tags:
-    - CECheese
+    - Cheese
 
 - type: entity
   id: CEFoodCheeseSlice
@@ -99,7 +99,7 @@
         Quantity: 2.4
   - type: CEFoodTag
     tags:
-    - CECheese
+    - Cheese
 
 # Blue Cheese (50% more food)
 - type: entity
@@ -130,7 +130,7 @@
     price: 20
   - type: CEFoodTag
     tags:
-    - CECheese
+    - Cheese
 
 - type: entity
   id: CEFoodBlueCheesePart
@@ -167,7 +167,7 @@
     price: 4
   - type: CEFoodTag
     tags:
-    - CECheese
+    - Cheese
 
 - type: entity
   id: CEFoodBlueCheeseSlice
@@ -200,7 +200,7 @@
     price: 1
   - type: CEFoodTag
     tags:
-    - CECheese
+    - Cheese
 
 # Aged Cheese (100% more food)
 - type: entity
@@ -231,7 +231,7 @@
     price: 35
   - type: CEFoodTag
     tags:
-    - CECheese
+    - Cheese
 
 - type: entity
   id: CEFoodAgedCheesePart
@@ -268,7 +268,7 @@
     price: 7
   - type: CEFoodTag
     tags:
-    - CECheese
+    - Cheese
 
 - type: entity
   id: CEFoodAgedCheeseSlice
@@ -301,4 +301,4 @@
     price: 2
   - type: CEFoodTag
     tags:
-    - CECheese
+    - Cheese

@@ -1,5 +1,5 @@
 - type: secretRole
-  id: CETormentor
+  id: Tormentor
   name: ce-secret-role-name-tormentor
   description: ce-secret-role-description-tormentor
   icon: CESecretRoleIconTormentor
@@ -27,8 +27,8 @@
       - CETargetCompleteOwnedObjective
   - type: CETargetSecretRoleBlacklist
     secretRoleBlacklist:
-    - CETormentor
-    - CELover
+    - Tormentor
+    - Lover
 
 - type: entity
   id: CEObjectiveTormentorSurvive

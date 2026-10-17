@@ -90,7 +90,7 @@
   - type: CEToggledWeaponAnimation
     animations:
       Secondary:
-      - anim: CEGuardMaceChargedShot
+      - anim: GuardMaceChargedShot
   - type: Battery
     startingCharge: 100
     maxCharge: 100
@@ -102,7 +102,7 @@
     soundDeactivate:
       path: /Audio/Weapons/ebladeoff.ogg
   - type: ToggleClothing
-    action: ActionCEGuardMaceCharge
+    action: CEActionGuardMaceCharge
     mustEquip: false
   - type: ItemToggleRequiresCharge
     requiredCharge: 10
@@ -197,7 +197,7 @@
 
 - type: entity
   parent: BaseToggleAction
-  id: ActionCEGuardMaceCharge
+  id: CEActionGuardMaceCharge
   name: activate energy core
   description: Toggles the guardrail mace's energy core, swapping its attack mode.
   components:
@@ -214,7 +214,7 @@
       visible: false
 
 - type: entityEffectAnimation
-  id: CEGuardMaceChargedShot
+  id: GuardMaceChargedShot
   movementSpeed: 0.3
   duration: 0.5
   events:

@@ -1,5 +1,5 @@
 - type: secretRole
-  id: CEThief
+  id: Thief
   name: ce-secret-role-name-thief
   description: ce-secret-role-description-thief
   icon: CESecretRoleIconThief

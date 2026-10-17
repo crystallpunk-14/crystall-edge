@@ -1,12 +1,12 @@
 - type: sponsorRole
-  id: CEContributor
+  id: Contributor
   name: Contributor
   discordRoleId: "1224637355193929818"
   priority: 1
   color: "#1fbf51"
 
 - type: sponsorRole
-  id: CESponsor1
+  id: Sponsor1
   name: "Sponsorship I"
   discordRoleId: "1254132975897935986"
   priority: 1.1
@@ -14,7 +14,7 @@
   examinable: true
 
 - type: sponsorRole
-  id: CESponsor2
+  id: Sponsor2
   name: "Sponsorship II"
   discordRoleId: "1316306142833414195"
   priority: 2
@@ -22,14 +22,14 @@
   examinable: true
 
 - type: sponsorRole
-  id: CEMaintainer
+  id: Maintainer
   name: Maintainer
   discordRoleId: "1263856724868333688"
   priority: 2.1
   color: "#287fc7"
 
 - type: sponsorRole
-  id: CESponsor3
+  id: Sponsor3
   name: "Sponsorship III"
   discordRoleId: "1327377639882752052"
   priority: 3

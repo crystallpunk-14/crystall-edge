@@ -9,7 +9,7 @@ namespace Content.Shared._CE.Wallpaper;
 /// Which side of the wall a given layer sits on is applied afterwards via a per-layer DirOffset, so a design
 /// only ever needs one state per visual variant - never one per wall side.
 /// </summary>
-[Prototype("ceWallpaper")]
+[Prototype("wallpaper")]
 public sealed partial class CEWallpaperPrototype : IPrototype
 {
     [IdDataField]

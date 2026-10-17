@@ -2502,13 +2502,13 @@ ent-CEThirdArmModuleLight = световой модуль манипулятор
 ent-CEThirdArmModuleManipulation = инструментальный модуль манипулятора
     .desc = Модуль для манипуляторной руки. Позволяет строить и разбирать сложные конструкции.
 
-ent-ActionCEThirdArmManipulation = манипуляция материей
+ent-CEActionThirdArmManipulation = манипуляция материей
     .desc = Позволяет строить и разбирать сложные конструкции.
 
 ent-CEThirdArmModuleMining = добывающий модуль манипулятора
     .desc = Модуль для манипуляторной руки. Оснащает руку добывающим лазером.
 
-ent-ActionCEThirdArmMiningLaser = добывающий лазер
+ent-CEActionThirdArmMiningLaser = добывающий лазер
     .desc = Выпускает серию точных лазерных лучей, способных разрушать конструкции.
 
 ent-CEInstrumentFlute = флейта
@@ -2785,7 +2785,7 @@ ent-CEWeaponMaceTwoHandedGuardrail = булава стражи
 ent-CEGuardMaceEnergyBall = энергетический шар
     .desc = { "" }
 
-ent-ActionCEGuardMaceCharge = активировать энергоядро
+ent-CEActionGuardMaceCharge = активировать энергоядро
     .desc = Переключает энергоядро булавы стражи, меняя режим атаки.
 
 ent-CEWeaponMop = швабра
@@ -4615,7 +4615,7 @@ ent-CEStatusEffectManaRegen = восстановление маны
 ent-CEStatusEffectManaDrain = расход маны
     .desc = Ваша мана постоянно расходуется.
 
-ent-ActionCEMilitaryTraining = Военная подготовка
+ent-CEActionMilitaryTraining = Военная подготовка
     .desc = Жёсткая муштра научила ваше тело преодолевать усталость. Переведите дух и мгновенно восстановите выносливость.
 
 ent-CEStatusEffectMurkwalker = иммунитет к мраку
@@ -4700,7 +4700,7 @@ ent-CEEffectAreaHealingTelegraphyPlantGrowth = зелёный всплеск п�
     .desc = { "" }
     .suffix = VFX
 
-ent-ActionCEWerewolfTransform = Истинная форма
+ent-CEActionWerewolfTransform = Истинная форма
     .desc = Поддайтесь зверю и примите свою истинную, волчью форму. Работает только ночью.
 
 ent-CEMobCarcat = Мистер Кот

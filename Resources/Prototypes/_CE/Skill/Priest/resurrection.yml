@@ -1,5 +1,5 @@
 - type: skill
-  id: CEResurrection
+  id: Resurrection
   icon:
     sprite: _CE/Actions/Spells/resurrection.rsi
     state: icon

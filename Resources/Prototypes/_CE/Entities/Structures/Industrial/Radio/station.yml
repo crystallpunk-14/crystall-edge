@@ -35,7 +35,7 @@
     powerLoad: 0.2
   - type: CERadioMicrophone
     frequencies:
-    - CECommon
+    - Common
     radius: 300
   - type: StaticPrice
     price: 100

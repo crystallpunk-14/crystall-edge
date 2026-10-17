@@ -1,15 +1,15 @@
 - type: skill
-  id: CEWerewolfTransformation
+  id: WerewolfTransformation
   name: ce-skill-werewolf-transformation-name
   desc: ce-skill-werewolf-transformation-desc
   icon:
     sprite: /Textures/_CE/Actions/werewolf.rsi
     state: true_form
   effect: !type:AddAction
-    action: ActionCEWerewolfTransform
+    action: CEActionWerewolfTransform
 
 - type: entity
-  id: ActionCEWerewolfTransform
+  id: CEActionWerewolfTransform
   name: True Form
   description: Give in to the beast and take your true, wolf form. Only works at night.
   components:

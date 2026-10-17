@@ -33,7 +33,7 @@
     price: 1
   - type: CEFoodTag
     tags:
-    - CEWheat
+    - Wheat
 
 - type: entity
   id: CECotton
@@ -110,9 +110,9 @@
       CESeedCabbage: 1
   - type: CEFoodTag
     tags:
-    - CECabbage
-    - CEVegetable
-    - CESalad
+    - Cabbage
+    - Vegetable
+    - Salad
 
 - type: entity
   id: CEFoodCabbageSlice
@@ -147,9 +147,9 @@
         Quantity: 0.97
   - type: CEFoodTag
     tags:
-    - CECabbage
-    - CEVegetable
-    - CESalad
+    - Cabbage
+    - Vegetable
+    - Salad
 
 - type: entity
   id: CEFoodPumpkin
@@ -192,8 +192,8 @@
       CESeedPumpkin: 1
   - type: CEFoodTag
     tags:
-    - CEVegetable
-    - CEPumpkin
+    - Vegetable
+    - Pumpkin
 
 - type: entity
   id: CEFoodPumpkinSlice
@@ -228,8 +228,8 @@
         Quantity: 1.9
   - type: CEFoodTag
     tags:
-    - CEVegetable
-    - CEPumpkin
+    - Vegetable
+    - Pumpkin
 
 - type: entity
   id: CEFoodPotato
@@ -274,8 +274,8 @@
   #    transformTo: CEFoodPotatoHot
   - type: CEFoodTag
     tags:
-    - CEVegetable
-    - CEPotato
+    - Vegetable
+    - Potato
 
 - type: entity
   id: CEFoodCucumber
@@ -321,8 +321,8 @@
       CESeedCucumber: 1
   - type: CEFoodTag
     tags:
-    - CEVegetable
-    - CECucumber
+    - Vegetable
+    - Cucumber
 
 - type: entity
   id: CEFoodCucumberSlice
@@ -352,8 +352,8 @@
         Quantity: 1.5
   - type: CEFoodTag
     tags:
-    - CEVegetable
-    - CECucumber
+    - Vegetable
+    - Cucumber
 
 - type: entity
   id: CEFoodTomatoes
@@ -424,7 +424,7 @@
         Blunt: 1
   - type: CEFoodTag
     tags:
-    - CEVegetable
+    - Vegetable
 
 - type: entity
   id: CEFoodTomatoesSlice
@@ -456,7 +456,7 @@
         Quantity: 0.9
   - type: CEFoodTag
     tags:
-    - CEVegetable
+    - Vegetable
 
 - type: entity
   id: CEFoodApple
@@ -501,8 +501,8 @@
       amount: 4
   - type: CEFoodTag
     tags:
-    - CEFruits
-    - CEApple
+    - Fruits
+    - Apple
 
 - type: entity
   id: CEFoodAppleSlice
@@ -535,8 +535,8 @@
         Quantity: 1.4
   - type: CEFoodTag
     tags:
-    - CEFruits
-    - CEApple
+    - Fruits
+    - Apple
 
 - type: entity
   id: CEFoodPepper
@@ -578,8 +578,8 @@
         Quantity: 6.1
   - type: CEFoodTag
     tags:
-    - CEVegetable
-    - CEPepper
+    - Vegetable
+    - Pepper
 
 - type: entity
   id: CEFoodGarlic
@@ -620,8 +620,8 @@
         Quantity: 4
   - type: CEFoodTag
     tags:
-    - CEVegetable
-    - CEGarlic
+    - Vegetable
+    - Garlic
 
 - type: entity
   id: CEFoodGarlicClove
@@ -652,8 +652,8 @@
     plantProto: CEPlantGarlic
   - type: CEFoodTag
     tags:
-    - CEVegetable
-    - CEGarlic
+    - Vegetable
+    - Garlic
 
 - type: entity
   id: CEFoodCorn
@@ -695,8 +695,8 @@
           base3: ""
   - type: CEFoodTag
     tags:
-    - CEVegetable
-    - CECorn
+    - Vegetable
+    - Corn
 
 - type: entity
   id: CEFoodCornKernel
@@ -723,8 +723,8 @@
         Quantity: 5
   - type: CEFoodTag
     tags:
-    - CEVegetable
-    - CECorn
+    - Vegetable
+    - Corn
 
 - type: entity
   id: CEFoodCarrot
@@ -766,8 +766,8 @@
         Quantity: 12
   - type: CEFoodTag
     tags:
-    - CEVegetable
-    - CECarrot
+    - Vegetable
+    - Carrot
 
 - type: entity
   id: CEFoodCarrotSlice
@@ -794,8 +794,8 @@
         Quantity: 4
   - type: CEFoodTag
     tags:
-    - CEVegetable
-    - CECarrot
+    - Vegetable
+    - Carrot
 
 - type: entity
   id: CEFoodPepperSlice
@@ -822,8 +822,8 @@
         Quantity: 3
   - type: CEFoodTag
     tags:
-    - CEVegetable
-    - CEPepper
+    - Vegetable
+    - Pepper
 
 - type: entity
   id: CEFoodOnion
@@ -866,7 +866,7 @@
     plantProto: CEPlantOnion
   - type: CEFoodTag
     tags:
-    - CEVegetable
+    - Vegetable
 
 - type: entity
   id: CEFoodOnionSlice
@@ -895,7 +895,7 @@
         Quantity: 0.8
   - type: CEFoodTag
     tags:
-    - CEVegetable
+    - Vegetable
 
 - type: entity
   id: CEFoodChanterelle

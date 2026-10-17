@@ -25,7 +25,7 @@
   - type: InternalTemperature
   - type: CEFoodTag
     tags:
-    - CEMeat
+    - Meat
 
 - type: entity
   id: CEFoodMeatSliceBase
@@ -45,7 +45,7 @@
   - type: InternalTemperature
   - type: CEFoodTag
     tags:
-    - CEMeatSlice
+    - MeatSlice
 
 # Lamb Meat
 - type: entity
@@ -80,7 +80,7 @@
       transformTo: CEFoodMeatLambCooked
   - type: CEFoodTag
     tags:
-    - CEMeat
+    - Meat
 
 - type: entity
   id: CEFoodMeatLambCooked
@@ -107,7 +107,7 @@
       transformTo: CEAsh1
   - type: CEFoodTag
     tags:
-    - CEMeat
+    - Meat
 
 - type: entity
   id: CEFoodMeatLambSlice
@@ -143,8 +143,8 @@
       transformTo: CEFoodMeatLambCookedSlice
   - type: CEFoodTag
     tags:
-    - CEMeat
-    - CEMeatSlice
+    - Meat
+    - MeatSlice
 
 - type: entity
   id: CEFoodMeatLambCookedSlice
@@ -175,8 +175,8 @@
       transformTo: CEAsh1
   - type: CEFoodTag
     tags:
-    - CEMeat
-    - CEMeatSlice
+    - Meat
+    - MeatSlice
 
 - type: entity
   id: CEFoodMeatLambCutlet
@@ -204,7 +204,7 @@
       transformTo: CEFoodMeatLambCutletCooked
   - type: CEFoodTag
     tags:
-    - CEMeat
+    - Meat
 
 - type: entity
   id: CEFoodMeatLambCutletCooked
@@ -230,7 +230,7 @@
       transformTo: CEAsh1
   - type: CEFoodTag
     tags:
-    - CEMeat
+    - Meat
 
 # Frog Leg
 - type: entity
@@ -259,8 +259,8 @@
       transformTo: CEFoodMeatFrogLegCooked
   - type: CEFoodTag
     tags:
-    - CEMeat
-    - CEMeatLeg
+    - Meat
+    - MeatLeg
 
 - type: entity
   id: CEFoodMeatFrogLegCooked
@@ -285,8 +285,8 @@
       transformTo: CEAsh1
   - type: CEFoodTag
     tags:
-    - CEMeat
-    - CEMeatLeg
+    - Meat
+    - MeatLeg
 
 # Human Meat
 - type: entity
@@ -322,7 +322,7 @@
       transformTo: CEFoodMeatHumanCooked
   - type: CEFoodTag
     tags:
-    - CEMeat
+    - Meat
 
 - type: entity
   id: CEFoodMeatHumanCooked
@@ -352,7 +352,7 @@
       transformTo: CEAsh1
   - type: CEFoodTag
     tags:
-    - CEMeat
+    - Meat
 
 # Dino Meat
 - type: entity
@@ -381,7 +381,7 @@
       transformTo: CEFoodMeatDinoCooked
   - type: CEFoodTag
     tags:
-    - CEMeat
+    - Meat
 
 - type: entity
   id: CEFoodMeatDinoCooked
@@ -404,7 +404,7 @@
       transformTo: CEAsh1
   - type: CEFoodTag
     tags:
-    - CEMeat
+    - Meat
 
 - type: entity
   id: CEFoodMeatHydra
@@ -432,7 +432,7 @@
       transformTo: CEFoodMeatHydraCooked
   - type: CEFoodTag
     tags:
-    - CEMeat
+    - Meat
 
 - type: entity
   id: CEFoodMeatHydraCooked
@@ -455,7 +455,7 @@
       transformTo: CEAsh1
   - type: CEFoodTag
     tags:
-    - CEMeat
+    - Meat
 
 # Rabbit Meat
 - type: entity
@@ -491,7 +491,7 @@
       transformTo: CEFoodMeatRabbitCooked
   - type: CEFoodTag
     tags:
-    - CEMeat
+    - Meat
 
 - type: entity
   id: CEFoodMeatRabbitCooked
@@ -522,7 +522,7 @@
       transformTo: CEAsh1
   - type: CEFoodTag
     tags:
-    - CEMeat
+    - Meat
 
 # Pig and Boar Meat
 - type: entity
@@ -562,8 +562,8 @@
       transformTo: CEFoodMeatPigCooked
   - type: CEFoodTag
     tags:
-    - CEMeat
-    - CEMeatPig
+    - Meat
+    - MeatPig
 
 - type: entity
   id: CEFoodMeatPigCooked
@@ -597,8 +597,8 @@
       transformTo: CEAsh1
   - type: CEFoodTag
     tags:
-    - CEMeat
-    - CEMeatPig
+    - Meat
+    - MeatPig
 
 - type: entity
   id: CEFoodMeatPigLeg
@@ -626,9 +626,9 @@
       transformTo: CEFoodMeatPigLegCooked
   - type: CEFoodTag
     tags:
-    - CEMeat
-    - CEMeatLeg
-    - CEMeatPig
+    - Meat
+    - MeatLeg
+    - MeatPig
 
 - type: entity
   id: CEFoodMeatPigLegCooked
@@ -651,9 +651,9 @@
       transformTo: CEAsh1
   - type: CEFoodTag
     tags:
-    - CEMeat
-    - CEMeatLeg
-    - CEMeatPig
+    - Meat
+    - MeatLeg
+    - MeatPig
 
 - type: entity
   id: CEFoodMeatBoar
@@ -692,8 +692,8 @@
       transformTo: CEFoodMeatBoarCooked
   - type: CEFoodTag
     tags:
-    - CEMeat
-    - CEMeatPig
+    - Meat
+    - MeatPig
 
 - type: entity
   id: CEFoodMeatBoarCooked
@@ -728,8 +728,8 @@
       transformTo: CEAsh1
   - type: CEFoodTag
     tags:
-    - CEMeat
-    - CEMeatPig
+    - Meat
+    - MeatPig
 
 - type: entity
   id: CEFoodMeatPigSlice
@@ -758,9 +758,9 @@
       transformTo: CEFoodMeatPigCookedSlice
   - type: CEFoodTag
     tags:
-    - CEMeat
-    - CEMeatSlice
-    - CEMeatPig
+    - Meat
+    - MeatSlice
+    - MeatPig
 
 - type: entity
   id: CEFoodMeatPigCookedSlice
@@ -784,9 +784,9 @@
       transformTo: CEAsh1
   - type: CEFoodTag
     tags:
-    - CEMeat
-    - CEMeatSlice
-    - CEMeatPig
+    - Meat
+    - MeatSlice
+    - MeatPig
 
 # Monster Meat
 - type: entity
@@ -828,8 +828,8 @@
       transformTo: CEFoodMeatMonsterCooked
   - type: CEFoodTag
     tags:
-    - CEMeat
-    - CEMeatMonster
+    - Meat
+    - MeatMonster
 
 - type: entity
   id: CEFoodMeatMonsterCooked
@@ -866,8 +866,8 @@
       transformTo: CEAsh1
   - type: CEFoodTag
     tags:
-    - CEMeat
-    - CEMeatMonster
+    - Meat
+    - MeatMonster
 
 - type: entity
   id: CEFoodMeatMonsterLeg
@@ -895,9 +895,9 @@
       transformTo: CEFoodMeatMonsterLegCooked
   - type: CEFoodTag
     tags:
-    - CEMeat
-    - CEMeatLeg
-    - CEMeatMonster
+    - Meat
+    - MeatLeg
+    - MeatMonster
 
 - type: entity
   id: CEFoodMeatMonsterLegCooked
@@ -921,9 +921,9 @@
       transformTo: CEAsh1
   - type: CEFoodTag
     tags:
-    - CEMeat
-    - CEMeatLeg
-    - CEMeatMonster
+    - Meat
+    - MeatLeg
+    - MeatMonster
 
 - type: entity
   id: CEFoodMeatMonsterSlice
@@ -952,9 +952,9 @@
       transformTo: CEFoodMeatMonsterCookedSlice
   - type: CEFoodTag
     tags:
-    - CEMeat
-    - CEMeatSlice
-    - CEMeatMonster
+    - Meat
+    - MeatSlice
+    - MeatMonster
 
 - type: entity
   id: CEFoodMeatMonsterCookedSlice
@@ -979,9 +979,9 @@
       transformTo: CEAsh1
   - type: CEFoodTag
     tags:
-    - CEMeat
-    - CEMeatSlice
-    - CEMeatMonster
+    - Meat
+    - MeatSlice
+    - MeatMonster
 
 # Flem meat
 - type: entity
@@ -1015,8 +1015,8 @@
       transformTo: CEFoodMeatFlemHeadCooked
   - type: CEFoodTag
     tags:
-    - CEMeat
-    - CEMeatMonster
+    - Meat
+    - MeatMonster
 
 - type: entity
   id: CEFoodMeatFlemHeadCooked
@@ -1039,8 +1039,8 @@
       transformTo: CEAsh1
   - type: CEFoodTag
     tags:
-    - CEMeat
-    - CEMeatMonster
+    - Meat
+    - MeatMonster
 
 - type: entity
   id: CEFoodMeatFlemTorso
@@ -1077,8 +1077,8 @@
       transformTo: CEFoodMeatFlemTorsoCooked
   - type: CEFoodTag
     tags:
-    - CEMeat
-    - CEMeatMonster
+    - Meat
+    - MeatMonster
 
 - type: entity
   id: CEFoodMeatFlemTorsoCooked
@@ -1105,8 +1105,8 @@
       transformTo: CEAsh1
   - type: CEFoodTag
     tags:
-    - CEMeat
-    - CEMeatMonster
+    - Meat
+    - MeatMonster
 
 - type: entity
   id: CEFoodMeatFlemTorsoCut
@@ -1138,9 +1138,9 @@
       transformTo: CEFoodMeatFlemTorsoCookedCut
   - type: CEFoodTag
     tags:
-    - CEMeat
-    - CEMeatSlice
-    - CEMeatMonster
+    - Meat
+    - MeatSlice
+    - MeatMonster
 
 - type: entity
   id: CEFoodMeatFlemTorsoCookedCut
@@ -1164,9 +1164,9 @@
       transformTo: CEAsh1
   - type: CEFoodTag
     tags:
-    - CEMeat
-    - CEMeatSlice
-    - CEMeatMonster
+    - Meat
+    - MeatSlice
+    - MeatMonster
 
 - type: entity
   id: CEFoodMeatFlemLeg
@@ -1199,9 +1199,9 @@
       transformTo: CEFoodMeatFlemLegCooked
   - type: CEFoodTag
     tags:
-    - CEMeat
-    - CEMeatLeg
-    - CEMeatMonster
+    - Meat
+    - MeatLeg
+    - MeatMonster
 
 - type: entity
   id: CEFoodMeatFlemLegCooked
@@ -1225,6 +1225,6 @@
       transformTo: CEAsh1
   - type: CEFoodTag
     tags:
-    - CEMeat
-    - CEMeatLeg
-    - CEMeatMonster
+    - Meat
+    - MeatLeg
+    - MeatMonster

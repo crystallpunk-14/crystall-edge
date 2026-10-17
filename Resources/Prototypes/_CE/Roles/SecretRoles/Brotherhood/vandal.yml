@@ -1,11 +1,11 @@
 - type: secretRole
-  parent: CEBaseSecretRoleGuardRestricted
-  id: CEVandal
+  parent: BaseSecretRoleGuardRestricted
+  id: Vandal
   name: ce-secret-role-name-vandal
   description: ce-secret-role-description-vandal
   icon: CESecretRoleIconVandal
   skills:
-  - CEVandalCrushing
+  - VandalCrushing
   objectives: !type:EntSelector
     id: CEObjectiveVandalSabotageRadio
 

@@ -1,13 +1,13 @@
 - type: skill
-  id: CEMilitaryTraining
+  id: MilitaryTraining
   icon:
     sprite: _CE/Skills/Guard/military_training.rsi
     state: icon
   effect: !type:AddAction
-    action: ActionCEMilitaryTraining
+    action: CEActionMilitaryTraining
 
 - type: entity
-  id: ActionCEMilitaryTraining
+  id: CEActionMilitaryTraining
   name: Military training
   description: Rigorous drilling has taught your body to push past exhaustion. Catch your second wind and instantly restore your stamina.
   components:
@@ -22,10 +22,10 @@
       map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:CEInstantActionAnimationEvent
-      animation: AnimationCEMilitaryTraining
+      animation: AnimationMilitaryTraining
 
 - type: entityEffectAnimation
-  id: AnimationCEMilitaryTraining
+  id: AnimationMilitaryTraining
   duration: 0.5
   lockRotation: false
   events:

@@ -1,5 +1,5 @@
 - type: skill
-  id: CERecruitment
+  id: Recruitment
   name: ce-skill-brotherhood-recruitment-name
   desc: ce-skill-brotherhood-recruitment-desc
   icon:
@@ -34,4 +34,4 @@
       - MobState
     event: !type:CERecruitActionEvent
   - type: CERecruitmentAction
-    role: CERecruit
+    role: Recruit
