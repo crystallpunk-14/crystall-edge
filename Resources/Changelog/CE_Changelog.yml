@@ -1406,3 +1406,14 @@
   id: 1120
   time: '2026-10-16T16:39:37.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/536
+- author: TheShuEd
+  changes:
+  - message: Added mana gift & mana steal as innate elf abilities.
+    type: Add
+  - message: Voice distortion amulet was added into shop
+    type: Add
+  - message: Removed guard salary.
+    type: Remove
+  id: 1121
+  time: '2026-10-17T09:53:40.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/537
