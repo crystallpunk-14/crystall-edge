@@ -7,3 +7,6 @@
   id: Murkwalker
   name: ce-achievement-murkwalker-name
   desc: ce-achievement-murkwalker-desc
+  icon:
+    sprite: _CE/Interface/Skills/murkwalker.rsi
+    state: icon

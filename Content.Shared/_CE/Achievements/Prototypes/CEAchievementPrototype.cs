@@ -22,11 +22,11 @@ public sealed partial class CEAchievementPrototype : IPrototype
     [DataField(required: true)]
     public LocId Desc = string.Empty;
 
+    /// <summary>
+    /// Icon of the achievement. Shown tinted black until the achievement is earned.
+    /// </summary>
     [DataField]
-    public SpriteSpecifier LockedIcon = new SpriteSpecifier.Rsi(new ResPath("/Textures/_CE/Achievements/_default.rsi"), "tester_0");
-
-    [DataField]
-    public SpriteSpecifier UnlockedIcon = new SpriteSpecifier.Rsi(new ResPath("/Textures/_CE/Achievements/_default.rsi"), "tester_1");
+    public SpriteSpecifier Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/_CE/Achievements/_default.rsi"), "tester_1");
 
     [DataField]
     public SpriteSpecifier SecretIcon = new SpriteSpecifier.Rsi(new ResPath("/Textures/_CE/Achievements/_default.rsi"), "secret");

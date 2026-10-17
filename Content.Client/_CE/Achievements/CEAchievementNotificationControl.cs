@@ -136,7 +136,7 @@ public sealed partial class CEAchievementNotificationControl : Control
         _percentageLabel.SetMarkup($"[color=#ffffff22]{Loc.GetString("ce-achievement-also-have", ("percent", percentage.ToString("F1")))}[/color]");
 
         // Set icon
-        _iconRect.Texture = _spriteSystem.Frame0(achievement.UnlockedIcon);
+        _iconRect.Texture = _spriteSystem.Frame0(achievement.Icon);
 
         // Calculate positions for animation using margin
         _onscreenMarginRight = 20f; // Normal margin from right edge
