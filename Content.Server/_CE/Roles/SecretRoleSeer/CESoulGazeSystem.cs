@@ -1,7 +1,9 @@
+using Content.Server.Administration.Logs;
 using Content.Server.Chat.Managers;
 using Content.Shared._CE.Roles;
 using Content.Shared._CE.Roles.SecretRoleSeer;
 using Content.Shared.Chat;
+using Content.Shared.Database;
 using Content.Shared.Jittering;
 using Content.Shared.Mind;
 using Content.Shared.Popups;
@@ -20,6 +22,7 @@ namespace Content.Server._CE.Roles.SecretRoleSeer;
 public sealed partial class CESoulGazeSystem : EntitySystem
 {
     [Dependency] private AudioSystem _audio = default!;
+    [Dependency] private IAdminLogManager _adminLog = default!;
     [Dependency] private CESecretRoleIconSystem _roleIcon = default!;
     [Dependency] private IChatManager _chat = default!;
     [Dependency] private IPrototypeManager _proto = default!;
@@ -56,6 +59,10 @@ public sealed partial class CESoulGazeSystem : EntitySystem
             if (TryComp<CESecretRoleIconComponent>(target, out var icon))
                 Dirty(target, icon);
 
+            _adminLog.Add(LogType.Action,
+                LogImpact.Medium,
+                $"{ToPrettyString(performer):player} used soul gaze on {ToPrettyString(target):target} and learned secret role {roleId}");
+
             var color = _roleIcon.TryGetDepartment(roleId, out var department) ? department.Color : Color.White;
             message = Loc.GetString("ce-soul-gaze-revealed",
                 ("name", Name(target)),
@@ -65,6 +72,10 @@ public sealed partial class CESoulGazeSystem : EntitySystem
         }
         else
         {
+            _adminLog.Add(LogType.Action,
+                LogImpact.Low,
+                $"{ToPrettyString(performer):player} used soul gaze on {ToPrettyString(target):target} and found no secret role");
+
             message = Loc.GetString("ce-soul-gaze-nothing", ("name", Name(target)));
         }
 
