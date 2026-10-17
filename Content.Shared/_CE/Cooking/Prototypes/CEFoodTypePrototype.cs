@@ -7,7 +7,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.Cooking.Prototypes;
 
-[Prototype("CEFoodType")]
+[Prototype("foodType")]
 public sealed partial class CEFoodTypePrototype : IPrototype
 {
     [IdDataField]

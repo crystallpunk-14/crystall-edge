@@ -59,8 +59,6 @@
           damage:
             types:
               Piercing: 3
-        - !type:MurkDissolve
-          amount: 0.1
     animations:
       Primary:
       - anim: ShadowEaterBite

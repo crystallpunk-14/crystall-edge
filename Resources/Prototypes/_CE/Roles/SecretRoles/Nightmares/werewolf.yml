@@ -1,14 +1,14 @@
 - type: secretRole
-  parent: CEBaseSecretRoleGuardRestricted
-  id: CEWerewolf
+  parent: BaseSecretRoleGuardRestricted
+  id: Werewolf
   name: ce-secret-role-name-werewolf
   description: ce-secret-role-description-werewolf
   icon: CESecretRoleIconWerewolf
-  victoryAchievement: Murkwalker
+  victoryAchievement: WerewolfWin
   skills:
   - Murkwalker
   - TimeSense
-  - CEWerewolfTransformation
+  - WerewolfTransformation
   objectives: !type:EntSelector
     id: CEObjectiveNightmareKillPriests
 
@@ -23,5 +23,5 @@
   - type: CEObjective
   - type: CEObjectiveRoleSurviveCondition
     roles:
-    - CEPriest
+    - Priest
     invert: true

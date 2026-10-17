@@ -2,7 +2,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.Workbench.Prototypes;
 
-[Prototype("CERecipeCategory")]
+[Prototype("workbenchRecipeCategory")]
 public sealed partial class CEWorkbenchRecipeCategoryPrototype : IPrototype
 {
     [IdDataField]

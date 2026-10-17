@@ -27,7 +27,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:CEAchievementRequirement
-      achievement: GoldCoinEquipment
+      achievement: BountyHunterWin
   storage:
     back:
     - CECoinGold1

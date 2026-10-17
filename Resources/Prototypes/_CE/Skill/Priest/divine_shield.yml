@@ -1,5 +1,5 @@
 - type: skill
-  id: CEDivineShield
+  id: DivineShield
   icon:
     sprite: _CE/Actions/Spells/divine_shield.rsi
     state: icon

@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Client.Parallax;
 using Content.Client.Resources;
 using Content.Shared.Maps;
 using Robust.Client.Graphics;
@@ -39,6 +40,8 @@ public sealed partial class CETileVolumeOverlay : Overlay
 
     public CETileVolumeOverlay()
     {
+        // After parallax, which shares this space on the lowest z-level and would otherwise cover the lip.
+        ZIndex = ParallaxSystem.ParallaxZIndex + 1;
         IoCManager.InjectDependencies(this);
 
         _volume = _entity.System<CEClientTileVolumeSystem>();

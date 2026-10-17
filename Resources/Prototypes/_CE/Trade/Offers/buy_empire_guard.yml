@@ -1,5 +1,5 @@
 - type: tradeOffer
-  id: CETradeOfferClothingCloakRaincoatGuard
+  id: BuyClothingCloakRaincoatGuard
   shop: EmpireGuard
   pay:
     bonus: 10
@@ -8,7 +8,7 @@
     proto: CEClothingCloakRaincoatGuard
 
 - type: tradeOffer
-  id: CETradeOfferClothingShirtSyurkoGuard
+  id: BuyClothingShirtSyurkoGuard
   shop: EmpireGuard
   pay:
     bonus: 10
@@ -17,7 +17,7 @@
     proto: CEClothingShirtSyurkoGuard
 
 - type: tradeOffer
-  id: CETradeOfferClothingHeadHelmetGuard
+  id: BuyClothingHeadHelmetGuard
   shop: EmpireGuard
   pay:
     bonus: 10
@@ -26,7 +26,7 @@
     proto: CEClothingHeadHelmetGuard
 
 - type: tradeOffer
-  id: CETradeOfferClothingHeadHelmetGuardCorinthian
+  id: BuyClothingHeadHelmetGuardCorinthian
   shop: EmpireGuard
   pay:
     bonus: 10
@@ -35,7 +35,7 @@
     proto: CEClothingHeadHelmetGuardCorinthian
 
 - type: tradeOffer
-  id: CETradeOfferClothingHeadCapGuard
+  id: BuyClothingHeadCapGuard
   shop: EmpireGuard
   pay:
     bonus: 10
@@ -44,7 +44,7 @@
     proto: CEClothingHeadCapGuard
 
 - type: tradeOffer
-  id: CETradeOfferClothingHeadFedoraGuard
+  id: BuyClothingHeadFedoraGuard
   shop: EmpireGuard
   pay:
     bonus: 10
@@ -53,7 +53,7 @@
     proto: CEClothingHeadFedoraGuard
 
 - type: tradeOffer
-  id: CETradeOfferClothingPantsGuard
+  id: BuyClothingPantsGuard
   shop: EmpireGuard
   pay:
     bonus: 10
@@ -62,7 +62,7 @@
     proto: CEClothingPantsGuard
 
 - type: tradeOffer
-  id: CETradeOfferClothingShirtGuard
+  id: BuyClothingShirtGuard
   shop: EmpireGuard
   pay:
     bonus: 10
@@ -71,7 +71,7 @@
     proto: CEClothingShirtGuard
 
 - type: tradeOffer
-  id: CETradeOfferClothingCloakMantleInvestigator
+  id: BuyClothingCloakMantleInvestigator
   shop: EmpireGuard
   pay:
     bonus: 10
@@ -80,7 +80,7 @@
     proto: CEClothingCloakMantleInvestigator
 
 - type: tradeOffer
-  id: CETradeOfferRope
+  id: BuyRope
   shop: EmpireGuard
   pay:
     bonus: 10
@@ -89,7 +89,7 @@
     proto: CERope
 
 - type: tradeOffer
-  id: CETradeOfferGuardBola
+  id: BuyGuardBola
   shop: EmpireGuard
   pay:
     bonus: 1
@@ -98,7 +98,7 @@
     proto: CEGuardBola
 
 - type: tradeOffer
-  id: CETradeOfferGunJustice
+  id: BuyGunJustice
   shop: EmpireGuard
   pay:
     bonus: 1
@@ -107,7 +107,7 @@
     proto: CEWeaponGunJustice
 
 - type: tradeOffer
-  id: CETradeOfferGunPeacekeeper
+  id: BuyGunPeacekeeper
   shop: EmpireGuard
   pay:
     bonus: 1
@@ -116,7 +116,7 @@
     proto: CEWeaponGunPeacekeeper
 
 - type: tradeOffer
-  id: CETradeOfferWeaponMaceTwoHandedGuardrail
+  id: BuyWeaponMaceTwoHandedGuardrail
   shop: EmpireGuard
   pay:
     bonus: 1

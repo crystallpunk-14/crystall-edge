@@ -46,6 +46,13 @@ Repo-wide Grep times out (~54k files, mostly textures and maps). Always pass a p
 - `Content.Shared._CE.MyFeature.CEMySystem`
 - `Content.Server._CE.MyFeature.CEMyServerSystem`
 
+**Prototype IDs** — the `CE` prefix exists only to avoid name collisions with upstream:
+- Prototype kind declared upstream/engine (`entity`, `reagent`, `Tag`, `job`, `soundCollection`, ...): ID **must** start with `CE` — `CEFoodBread`, `CEActionFireball` (not `ActionCEFireball`).
+- Prototype kind declared in `_CE` (`skill`, `secretRole`, `tradeOffer`, `workbenchRecipe`, `foodTag`, ...): **no** `CE` prefix — `Fireball`, `Thief`, `BuyIronBar`.
+- New `_CE` prototype kinds get plain camelCase names without prefix: `[Prototype("cookingRecipe")]`; check the name is not already taken by an upstream kind.
+- Exceptions: IDs that intentionally reuse upstream IDs because upstream code, tests or cvars look them up (`Secret`, `DefaultMapPool`, `Empty`, `Baseline*`), `roleLoadout` (upstream requires `Job<JobId>`, e.g. `JobCEGuard`), and existing `gameMap` IDs.
+- Renaming an ID stored in the DB (`secretRole` → `secret_role.secret_role_name`, `achievement` → `player_achievement.proto_id`, `barkSpeech`, jobs) drops players' data unless migrated.
+
 **When editing upstream (non-_CE) code**, wrap changes in comments:
 ```csharp
 // CrystallEdge: reason for the edit

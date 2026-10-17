@@ -88,7 +88,7 @@
     - sprite: _CE/Objects/Tools/ThirdArm/module_light.rsi
       state: module-icon
     equippedLayers:
-    - sprite: _CE/Objects/Tools/ThirdArm/module_light.rsi
+    - sprite: /Textures/_CE/Objects/Tools/ThirdArm/module_light.rsi
       state: equipped-NECK
   - type: StaticPrice
     price: 30
@@ -112,17 +112,17 @@
     - sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
       state: module-icon
     equippedLayers:
-    - sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
+    - sprite: /Textures/_CE/Objects/Tools/ThirdArm/module_manipulation.rsi
       state: equipped-NECK
   - type: CEThirdArmActionModule
     actions:
-    - ActionCEThirdArmManipulation
+    - CEActionThirdArmManipulation
   - type: StaticPrice
     price: 50
 
 - type: entity
   parent: BaseAction
-  id: ActionCEThirdArmManipulation
+  id: CEActionThirdArmManipulation
   name: matter manipulation
   description: Allows you to build and take apart complex structures.
   components:
@@ -200,17 +200,17 @@
     - sprite: _CE/Objects/Tools/ThirdArm/module_mining.rsi
       state: module-icon
     equippedLayers:
-    - sprite: _CE/Objects/Tools/ThirdArm/module_mining.rsi
+    - sprite: /Textures/_CE/Objects/Tools/ThirdArm/module_mining.rsi
       state: equipped-NECK
   - type: CEThirdArmActionModule
     actions:
-    - ActionCEThirdArmMiningLaser
+    - CEActionThirdArmMiningLaser
   - type: StaticPrice
     price: 60
 
 - type: entity
   parent: BaseAction
-  id: ActionCEThirdArmMiningLaser
+  id: CEActionThirdArmMiningLaser
   name: mining laser
   description: Fire a series of precise laser beams capable of destroying structures.
   components:

@@ -1,5 +1,5 @@
 - type: tradeOffer
-  id: CETradeOfferGauze5
+  id: BuyGauze5
   shop: ApothecariesGuild
   pay:
     bonus: 1
@@ -8,7 +8,7 @@
     proto: CEGauze
 
 - type: tradeOffer
-  id: CETradeOfferPlastiseal5
+  id: BuyPlastiseal5
   shop: ApothecariesGuild
   pay:
     bonus: 1
@@ -17,7 +17,7 @@
     proto: CEPlastiseal
 
 - type: tradeOffer
-  id: CETradeOfferBloodpack10
+  id: BuyBloodpack10
   shop: ApothecariesGuild
   pay:
     bonus: 1

@@ -1,10 +1,10 @@
 - type: secretRole
-  id: CERecruiter
+  id: Recruiter
   name: ce-secret-role-name-recruiter
   description: ce-secret-role-description-recruiter
   icon: CESecretRoleIconRecruiter
   skills:
-  - CERecruitment
+  - Recruitment
   objectives: !type:EntSelector
     id: CEObjectiveRecruiterRecruit
 
@@ -18,7 +18,7 @@
     state: todo
   - type: CEObjective
   - type: CEObjectiveRoleCountCondition
-    role: CERecruit
+    role: Recruit
     title: ce-recruiter-recruit-objective-title
     playersPerHolder: 10
     minRequired: 1

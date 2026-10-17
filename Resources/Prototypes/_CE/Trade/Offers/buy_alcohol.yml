@@ -1,5 +1,5 @@
 - type: tradeOffer
-  id: CETradeOfferBottleWine
+  id: BuyBottleWine
   shop: Alcohol
   pay:
     bonus: 1
@@ -8,7 +8,7 @@
     proto: CEBottleWineFull
 
 - type: tradeOffer
-  id: CETradeOfferBottleWhiskey
+  id: BuyBottleWhiskey
   shop: Alcohol
   pay:
     bonus: 1
@@ -17,7 +17,7 @@
     proto: CEBottleWhiskeyFull
 
 - type: tradeOffer
-  id: CETradeOfferBottleVodka
+  id: BuyBottleVodka
   shop: Alcohol
   pay:
     bonus: 1
@@ -26,7 +26,7 @@
     proto: CEBottleVodkaFull
 
 - type: tradeOffer
-  id: CETradeOfferBottleRum
+  id: BuyBottleRum
   shop: Alcohol
   pay:
     bonus: 1
@@ -35,7 +35,7 @@
     proto: CEBottleRumFull
 
 - type: tradeOffer
-  id: CETradeOfferBottleSyrupGrenadineine
+  id: BuyBottleSyrupGrenadineine
   shop: Alcohol
   pay:
     bonus: 1
@@ -44,7 +44,7 @@
     proto: CEBottleSyrupGrenadineineFull
 
 - type: tradeOffer
-  id: CETradeOfferBottleSyrupSugar
+  id: BuyBottleSyrupSugar
   shop: Alcohol
   pay:
     bonus: 1
@@ -53,7 +53,7 @@
     proto: CEBottleSyrupSugarFull
 
 - type: tradeOffer
-  id: CETradeOfferSmokingPipe
+  id: BuySmokingPipe
   shop: Alcohol
   pay:
     bonus: 15
@@ -62,7 +62,7 @@
     proto: CESmokingPipe
 
 - type: tradeOffer
-  id: CETradeOfferGroundTobacco
+  id: BuyGroundTobacco
   shop: Alcohol
   pay:
     bonus: 12
@@ -71,7 +71,7 @@
     proto: CEGroundTobacco
 
 - type: tradeOffer
-  id: CETradeOfferFlippoLighter #TODO delete vanilla lighter
+  id: BuyFlippoLighter #TODO delete vanilla lighter
   shop: Alcohol
   pay:
     bonus: 40

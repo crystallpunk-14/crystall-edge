@@ -5,7 +5,7 @@ namespace Content.Shared._CE.Radio.Prototypes;
 /// <summary>
 /// City broadcast frequency shared by radio booths and loudspeakers.
 /// </summary>
-[Prototype("CERadioFrequency")]
+[Prototype("radioFrequency")]
 public sealed partial class CERadioFrequencyPrototype : IPrototype
 {
     [IdDataField]

@@ -1,10 +1,10 @@
 - type: secretRole
-  id: CEMurkwalker
+  id: Murkwalker
   name: ce-secret-role-name-murkwalker
   description: ce-secret-role-description-murkwalker
   icon: CESecretRoleIconMurkwalker
   requirements:
   - !type:CEAchievementRequirement
-    achievement: Murkwalker
+    achievement: WerewolfWin
   skills:
   - Murkwalker

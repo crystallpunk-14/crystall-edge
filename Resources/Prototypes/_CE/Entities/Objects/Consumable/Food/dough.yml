@@ -34,7 +34,7 @@
       transformTo: CEFoodBread
   - type: CEFoodTag
     tags:
-    - CEDough
+    - Dough
 
 - type: entity
   id: CEFoodBread
@@ -63,7 +63,7 @@
       transformTo: CEAsh1
   - type: CEFoodTag
     tags:
-    - CEDough
+    - Dough
 
 - type: entity
   id: CEFoodBreadSlice
@@ -87,7 +87,7 @@
       transformTo: null
   - type: CEFoodTag
     tags:
-    - CEDough
+    - Dough
 
 - type: entity
   id: CEFoodDoughMedium
@@ -120,7 +120,7 @@
       transformTo: CEFoodBreadBun
   - type: CEFoodTag
     tags:
-    - CEDough
+    - Dough
 
 - type: entity
   id: CEFoodBreadBun
@@ -152,7 +152,7 @@
       transformTo: CEAsh1
   - type: CEFoodTag
     tags:
-    - CEDough
+    - Dough
 
 - type: entity
   id: CEFoodBreadBunBottom
@@ -181,7 +181,7 @@
       transformTo: CEAsh1
   - type: CEFoodTag
     tags:
-    - CEDough
+    - Dough
 
 - type: entity
   id: CEFoodBreadBunTop
@@ -206,7 +206,7 @@
       transformTo: CEAsh1
   - type: CEFoodTag
     tags:
-    - CEDough
+    - Dough
 
 - type: entity
   id: CEFoodDoughMediumFlat
@@ -233,4 +233,4 @@
       transformTo: CEAsh1 #TODO: лаваш?
   - type: CEFoodTag
     tags:
-    - CEDough
+    - Dough
