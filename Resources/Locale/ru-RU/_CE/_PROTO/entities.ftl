@@ -4026,7 +4026,7 @@ ent-CEShuttleWingBigR = { ent-CEShuttleWingBase }
 ent-CEWallLightBase = настенная лампа
     .desc = Осветительный прибор. Потребляет энергию и производит свет.
 
-ent-CEWallLight = { ent-CEWallLightBase }
+ent-CEWallLightOrange = { ent-CEWallLightBase }
     .desc = { ent-CEWallLightBase.desc }
 
 ent-CEDrillAdvanced = улучшенный стационарный бур
