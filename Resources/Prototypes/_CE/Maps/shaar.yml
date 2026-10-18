@@ -12,9 +12,8 @@
           mapNameTemplate: "Shaar"
         - type: StationJobs
           availableJobs:
-            #Guard (6)
+            #Army (4)
             CEGuardCommander: [ 1, 1 ]
-            CEInvestigator: [ 2, 2 ]
             CEGuard: [ 3, 3 ]
             #Engineering (4)
             CEBrigadier: [ 1, 1 ]
@@ -27,6 +26,7 @@
             CEAdventurer: [ 3, 4 ]
             #Citizens
             CEBard: [ 2, 2 ]
+            CEInvestigator: [ 1, 1 ]
             CETownfolk: [ -1, -1 ]
         - type: CEStationWildlands
           config: Shaar

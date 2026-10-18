@@ -71,3 +71,19 @@
   components:
   - type: CEKey
     autoGenerateShape: GuardCage5
+
+- type: entity
+  parent: CEKeyGuardBase
+  id: CEKeyInvestigatorHall
+  suffix: Investigator Hall
+  components:
+  - type: CEKey
+    autoGenerateShape: InvestigatorHall
+
+- type: entity
+  parent: CEKeyGuardBase
+  id: CEKeyInvestigatorStaff
+  suffix: Investigator Staff
+  components:
+  - type: CEKey
+    autoGenerateShape: InvestigatorStaff
