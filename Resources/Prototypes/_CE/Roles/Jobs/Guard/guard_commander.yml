@@ -26,6 +26,7 @@
   storage:
     back:
     - CEWeaponGunJustice
+    - CEPaperArmyOrders
 
 - type: entity
   id: CEWalletFilledGuardCommander

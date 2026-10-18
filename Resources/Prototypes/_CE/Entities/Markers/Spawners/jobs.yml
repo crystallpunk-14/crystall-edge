@@ -13,7 +13,7 @@
 - type: entity
   id: CESpawnPointGuardCommander
   parent: CESpawnPointJobBase
-  name: guard commander
+  name: commandant
   categories:
   - Spawner
   components:
@@ -27,7 +27,7 @@
 - type: entity
   id: CESpawnPointGuard
   parent: CESpawnPointJobBase
-  name: guard
+  name: soldier
   categories:
   - Spawner
   components:
@@ -41,7 +41,7 @@
 - type: entity
   id: CESpawnPointInvestigator
   parent: CESpawnPointJobBase
-  name: investigator
+  name: sheriff
   categories:
   - Spawner
   components:

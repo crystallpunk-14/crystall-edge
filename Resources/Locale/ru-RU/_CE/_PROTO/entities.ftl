@@ -702,13 +702,13 @@ ent-CEBiomeSpawnerLeafMaze = { ent-CEBaseBiomeSpawner }
     .desc = { ent-CEBaseBiomeSpawner.desc }
     .suffix = Leaf Maze
 
-ent-CESpawnPointGuardCommander = командир охраны
+ent-CESpawnPointGuardCommander = комендант
     .desc = { "" }
 
-ent-CESpawnPointGuard = стражник
+ent-CESpawnPointGuard = солдат
     .desc = { "" }
 
-ent-CESpawnPointInvestigator = дознаватель
+ent-CESpawnPointInvestigator = шериф
     .desc = { "" }
 
 ent-CESpawnPointGuildmaster = гильдмастер
@@ -2669,6 +2669,14 @@ ent-CEKeyGuardCage5 = { ent-CEKeyGuardBase }
     .desc = { ent-CEKeyGuardBase.desc }
     .suffix = Клетка охраны 5
 
+ent-CEKeyInvestigatorHall = { ent-CEKeyGuardBase }
+    .desc = { ent-CEKeyGuardBase.desc }
+    .suffix = Зал шерифа
+
+ent-CEKeyInvestigatorStaff = { ent-CEKeyGuardBase }
+    .desc = { ent-CEKeyGuardBase.desc }
+    .suffix = Персонал шерифа
+
 ent-CEKeyGuildLobby = { ent-CEKeyIronBlank }
     .desc = { ent-CEKeyIronBlank.desc }
     .suffix = Guild Lobby
@@ -3009,6 +3017,18 @@ ent-CEIronDoorGuardCage4 = { ent-CEBaseFenceGateBig }
 ent-CEIronDoorGuardCage5 = { ent-CEBaseFenceGateBig }
     .desc = { ent-CEBaseFenceGateBig.desc }
     .suffix = Клетка охраны 5
+
+ent-CEIronDoorInvestigatorHall = { ent-CEIronDoorWindowed }
+    .desc = { ent-CEIronDoorWindowed.desc }
+    .suffix = Зал шерифа
+
+ent-CEIronDoorInvestigatorHallMirrored = { ent-CEIronDoorInvestigatorHall }
+    .desc = { ent-CEIronDoorInvestigatorHall.desc }
+    .suffix = Зал шерифа, Отзеркалено
+
+ent-CEIronDoorInvestigatorStaff = { ent-CEIronDoor }
+    .desc = { ent-CEIronDoor.desc }
+    .suffix = Персонал шерифа
 
 ent-CEWoodenDoorGuildLobby = { ent-CEWoodenDoorWindowed }
     .desc = { ent-CEWoodenDoorWindowed.desc }
@@ -4450,6 +4470,10 @@ ent-CEChestFilledGuard = { ent-CEWoodenChest }
     .desc = { ent-CEWoodenChest.desc }
     .suffix = Filled, Guard
 
+ent-CEChestFilledInvestigator = { ent-CEChestFilledGuard }
+    .desc = { ent-CEChestFilledGuard.desc }
+    .suffix = Filled, Investigator
+
 ent-CEBedsideTableFilledGuard = { ent-CEBedsideTableWooden }
     .desc = { ent-CEBedsideTableWooden.desc }
     .suffix = Filled, Guard
@@ -4581,6 +4605,9 @@ ent-CEObjectiveBrotherhoodDebt = Должок
 
 ent-CEPaperBountyHunterContract = заказ
     .desc = Короткое письмо без обратного адреса.
+
+ent-CEPaperArmyOrders = приказ
+    .desc = Приказ главнокомандующего Императорской армии гарнизону поселения.
 
 ent-CEObjectiveBountyHunterEliminate = Уничтожьте братство
     .desc = Все члены братства должны быть мертвы.

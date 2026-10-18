@@ -9,7 +9,7 @@ ce-radio-examine-frequencies = Частоты: [color=yellow]{$frequencies}[/col
 
 ce-radio-frequency-common = Общий
 ce-radio-frequency-engineering = Инженерный
-ce-radio-frequency-guard = Стража
+ce-radio-frequency-guard = Армия
 ce-radio-frequency-tavern = Таверна
 
 ce-chat-speech-verb-name-broadcast = Вещание

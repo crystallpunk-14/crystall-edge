@@ -1,13 +1,15 @@
-# Guards
+# Army
 
-ce-job-name-guard-commander = Guard Commander
-ce-job-desc-guard-commander = The most dangerous person in the area. Manage a squad of soldiers to ensure the safety of all command members.
+ce-job-name-guard-commander = Commandant
+ce-job-desc-guard-commander = Head of the Imperial Army garrison. Only you command the army's soldiers and resources: decide when the city faces a threat worth fighting.
 
-ce-job-name-guard = Guard
-ce-job-desc-guard = A fighting unit of the empire, sworn to protect its people. Watch for safety, and defend others from possible dangers.
+ce-job-name-guard = Soldier
+ce-job-desc-guard = A soldier of the Imperial Army garrison. Defend the city from significant threats to its people. Keeping order is not your job.
 
-ce-job-name-investigator = Investigator
-ce-job-desc-investigator = Specialist in catching and neutralizing especially dangerous criminals.
+# Investigation
+
+ce-job-name-investigator = Sheriff
+ce-job-desc-investigator = Keep order in the city: thefts, break-ins, brawls. Detain offenders. You work alone, and the army does not answer to you.
 
 # Tavern
 
