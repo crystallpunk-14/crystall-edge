@@ -16,7 +16,8 @@ public sealed partial class CEAchievementEntry : PanelContainer
 
     public void SetData(string displayName, string displayDescription, bool isEarned, float percentage, bool showAdminId, string id)
     {
-        NameLabel.SetMessage(displayName + (showAdminId ? $" [{id}]" : ""), isEarned ? Color.White : Color.LightGray);
+        NameLabel.SetMessage(FormattedMessage.FromMarkupPermissive($"[bold]{FormattedMessage.EscapeText(displayName + (showAdminId ? $" [{id}]" : ""))}[/bold]"),
+            isEarned ? Color.White : Color.LightGray);
         DescLabel.SetMessage(displayDescription, isEarned ? Color.White : Color.LightGray);
         PercentLabel.Text = Loc.GetString("ce-achievements-percentage", ("percent", percentage.ToString("F1")));
         PercentLabel.FontColorOverride = Color.LightGray;

@@ -32,10 +32,10 @@
     autoStep: false
     velocityGravity: false
   - type: CEZLevelGhostMover
-  - type: CEPermanentMagicVision
   - type: CEInnateSkills
     skills:
     - TimeSense
+    - MagicVision
 
 
 # shared parent between aghosts, replay spectators and normal observers
@@ -122,6 +122,7 @@
   parent: MobObserverBase
   id: MobObserver
   components:
+  - type: CEGhostMeta # CrystallEdge: ghosts that can still return may give that up for meta information
   - type: Spectral
   - type: Tag
     tags:

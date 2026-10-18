@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server._CE.GameTicking;
+using Content.Server.Administration.Logs;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server.Mind;
@@ -9,6 +10,7 @@ using Content.Server.Roles;
 using Content.Shared._CE.Objectives.Components;
 using Content.Shared._CE.Roles;
 using Content.Shared._CE.Roundflow;
+using Content.Shared.Database;
 using Content.Shared.GameTicking;
 using Content.Shared.Ghost.Components;
 using Content.Shared.Mind;
@@ -30,6 +32,7 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
 {
     private static readonly EntProtoId MindRoleSecret = "CEMindRoleSecret";
 
+    [Dependency] private IAdminLogManager _adminLog = default!;
     [Dependency] private IPlayerManager _playerManager = default!;
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IRobustRandom _random = default!;
@@ -131,6 +134,10 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
 
         if (roleEnt.Value.Comp2.Role is { } oldRoleId)
         {
+            _adminLog.Add(LogType.AntagSelection,
+                LogImpact.High,
+                $"{ToPrettyString(mindId):player} lost secret role {oldRoleId}");
+
             var rules = QueryActiveRules();
             while (rules.MoveNext(out _, out _, out var comp, out _))
             {
@@ -382,6 +389,10 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
 
         roleEnt.Value.Comp2.Role = role.ID;
         Dirty(roleEnt.Value.Owner, roleEnt.Value.Comp2);
+
+        _adminLog.Add(LogType.AntagSelection,
+            LogImpact.High,
+            $"{ToPrettyString(mindId):player} was granted secret role {role.ID}");
         rule.Comp.AssignedCounts[role.ID] = GetAssignedCount(rule, role.ID) + 1;
 
         if (session.AttachedEntity is { } target)

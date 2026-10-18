@@ -152,6 +152,7 @@ public sealed partial class CEAchievementsWindow : FancyWindow
         string displayName;
         string displayDescription;
         SpriteSpecifier iconSpec;
+        var iconColor = Color.White;
 
         if (achievement.Secret && !isEarned)
         {
@@ -163,11 +164,14 @@ public sealed partial class CEAchievementsWindow : FancyWindow
         {
             displayName = Loc.GetString(achievement.Name);
             displayDescription = Loc.GetString(achievement.Desc);
-            iconSpec = isEarned ? achievement.UnlockedIcon : achievement.LockedIcon;
+            iconSpec = achievement.Icon;
+            if (!isEarned)
+                iconColor = Color.Black;
         }
 
         // Set icon texture using SpriteSystem
         entry.Icon.Texture = _sprite.Frame0(iconSpec);
+        entry.Icon.Modulate = iconColor;
 
         // Fill rest of data
         entry.SetData(displayName, displayDescription, isEarned, percentage, _adminManager.IsActive(), achievement.ID);

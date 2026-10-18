@@ -20,9 +20,9 @@ public sealed class CECheckMagicVisionEvent : EntityEventArgs, IInventoryRelayEv
     public bool HasVision { get; private set; }
 
     /// <summary>
-    /// Whether the client's screen-distorting overlay should be shown. Innate sources (e.g. ghosts,
-    /// who always perceive magic) opt out so the effect doesn't nag them constantly - it's meant to
-    /// represent the temporary strain of a worn artifact, not a permanent ability.
+    /// Whether the client's screen-distorting overlay should be shown. Permanent sources may opt out so
+    /// the effect doesn't nag them constantly - it's meant to represent the temporary strain of
+    /// perceiving magic, not a permanent ability.
     /// </summary>
     public bool ShowOverlay { get; private set; }
 

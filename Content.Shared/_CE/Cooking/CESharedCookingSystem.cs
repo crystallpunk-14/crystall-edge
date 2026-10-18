@@ -4,7 +4,6 @@
  */
 
 using System.Linq;
-using Robust.Shared.Analyzers;
 using Content.Shared._CE.Cooking.Components;
 using Content.Shared._CE.Cooking.Prototypes;
 using Content.Shared.Audio;
@@ -20,6 +19,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._CE.Cooking;
@@ -38,17 +38,18 @@ public abstract partial class CESharedCookingSystem : EntitySystem
     [Dependency] private INetManager _net = default!;
     [Dependency] private SharedAmbientSoundSystem _ambientSound = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private ISerializationManager _serialization = default!;
 
     /// <summary>
-    /// When overcooking food, we will replace the reagents inside with this reagent.
+    /// When overcooking food, half of the solution is removed and a quarter of it is added back as this reagent.
     /// </summary>
-    private readonly ProtoId<ReagentPrototype> _burntFoodReagent = "Ash";
+    private static readonly ProtoId<ReagentPrototype> BurntFoodReagent = "Ash";
 
     /// <summary>
     /// Stores a list of all recipes sorted by complexity: the most complex ones at the beginning.
     /// When attempting to cook, the most complex recipes will be checked first,
     /// gradually moving down to the easiest ones.
-    /// The easiest recipes are usually the most вЂњabstract,вЂќ
+    /// The easiest recipes are usually the most “abstract,”
     /// so they will be suitable for the largest number of recipes.
     /// </summary>
     private List<CECookingRecipePrototype> _orderedRecipes = [];
@@ -56,8 +57,6 @@ public abstract partial class CESharedCookingSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        InitTransfer();
-        InitDoAfter();
 
         CacheAndOrderRecipes();
     }
@@ -65,7 +64,7 @@ public abstract partial class CESharedCookingSystem : EntitySystem
     private void CacheAndOrderRecipes()
     {
         _orderedRecipes = _proto.EnumeratePrototypes<CECookingRecipePrototype>()
-            .Where(recipe => recipe.Requirements.Count > 0) // Only include recipes with requirements
+            .Where(recipe => recipe.Cookable)
             .OrderByDescending(recipe => recipe.GetComplexity())
             .ToList();
     }
@@ -99,7 +98,7 @@ public abstract partial class CESharedCookingSystem : EntitySystem
     }
 
     /// <summary>
-    /// Transfer food data from cooker to holder
+    /// Transfer food data and solution from one food holder to another
     /// </summary>
     private bool TryTransferFood(Entity<CEFoodHolderComponent> target,
         Entity<CEFoodHolderComponent> source)
@@ -110,101 +109,129 @@ public abstract partial class CESharedCookingSystem : EntitySystem
         if (target.Comp.FoodType != source.Comp.FoodType)
             return false;
 
-        if (source.Comp.FoodData is null)
-            return false;
-
-        if (!TryComp<EdibleComponent>(target, out var holderFoodComp))
+        if (source.Comp.FoodData is not { } sourceData)
             return false;
 
         if (!Solution.TryGetSolution(source.Owner, source.Comp.SolutionId, out var sourceSoln, out var sourceSolution))
             return false;
 
-        //Solutions
-        if (Solution.TryGetSolution(target.Owner, holderFoodComp.Solution, out var targetSoln, out var targetSolution))
-        {
-            if (targetSolution.Volume > 0)
-            {
-                if (_net.IsServer)
-                {
-                    _popup.PopupEntity(
-                        Loc.GetString("ce-cooking-popup-not-empty", ("name", MetaData(target).EntityName)),
-                        target);
-                }
+        if (!Solution.TryGetSolution(target.Owner, target.Comp.SolutionId, out var targetSoln, out var targetSolution))
+            return false;
 
-                return false;
+        if (targetSolution.Volume > 0)
+        {
+            if (_net.IsServer)
+            {
+                _popup.PopupEntity(
+                    Loc.GetString("ce-cooking-popup-not-empty", ("name", MetaData(target).EntityName)),
+                    target);
             }
 
-            Solution.TryTransferSolution(targetSoln.Value, sourceSolution, targetSolution.MaxVolume);
+            return false;
         }
+
+        var newData = CopyFoodData(sourceData);
+        newData.Trash.Clear();
 
         //Trash
         //If we have a lot of trash, we put 1 random trash in each plate. If it's a last plate (out of solution in cooker), we put all the remaining trash in it.
-        if (source.Comp.FoodData?.Trash.Count > 0)
+        if (sourceSolution.Volume <= targetSolution.AvailableVolume)
         {
-            if (sourceSolution.Volume <= 0)
-                holderFoodComp.Trash.AddRange(source.Comp.FoodData.Trash);
-            else
-            {
-                if (_net.IsServer)
-                {
-                    var newTrash = _random.Pick(source.Comp.FoodData.Trash);
-                    source.Comp.FoodData.Trash.Remove(newTrash);
-                    holderFoodComp.Trash.Add(newTrash);
-                }
-            }
+            newData.Trash.AddRange(sourceData.Trash);
+            sourceData.Trash.Clear();
+        }
+        else if (sourceData.Trash.Count > 0 && _net.IsServer)
+        {
+            var newTrash = _random.Pick(sourceData.Trash);
+            sourceData.Trash.Remove(newTrash);
+            newData.Trash.Add(newTrash);
         }
 
-        if (source.Comp.FoodData is not null)
-            SetFoodData(target, source.Comp.FoodData);
-
-        Dirty(target);
+        // Food data goes first: emptying the source clears its food data and drops its trash
+        SetFoodData(target, newData);
         Dirty(source);
 
+        Solution.TryTransferSolution(targetSoln.Value, sourceSolution, targetSolution.AvailableVolume);
         Solution.UpdateChemicals(sourceSoln.Value);
 
         return true;
     }
 
-    private void SetFoodData(Entity<CEFoodHolderComponent> ent, CEFoodData? data)
+    private CEFoodData CopyFoodData(CEFoodData data)
     {
-        ent.Comp.FoodData = data is not null ? new CEFoodData(data) : null;
-        UpdateFoodDataVisuals(ent);
+        return _serialization.CreateCopy(data, notNullableOverride: true);
     }
 
-    protected void UpdateFoodDataVisuals(
-        Entity<CEFoodHolderComponent> ent)
+    private void SetFoodData(Entity<CEFoodHolderComponent> ent, CEFoodData? data)
+    {
+        ent.Comp.FoodData = data;
+        UpdateFoodDataMeta(ent);
+        Dirty(ent);
+    }
+
+    /// <summary>
+    /// Removes the food data from the holder, dropping all the trash it still has.
+    /// </summary>
+    private void ClearFoodData(Entity<CEFoodHolderComponent> ent)
+    {
+        if (ent.Comp.FoodData is not { } data || TerminatingOrDeleted(ent))
+            return;
+
+        if (_net.IsServer)
+        {
+            foreach (var trash in data.Trash)
+            {
+                SpawnNextToOrDrop(trash, ent);
+            }
+        }
+
+        SetFoodData(ent, null);
+    }
+
+    /// <summary>
+    /// Applies name, description and flavors of the current food data, or restores the prototype ones if there is no food.
+    /// </summary>
+    private void UpdateFoodDataMeta(Entity<CEFoodHolderComponent> ent)
     {
         var data = ent.Comp.FoodData;
-
-        if (data is null)
-            return;
+        var proto = MetaData(ent).EntityPrototype;
 
         //Name and Description
         if (ent.Comp.AutoRename)
         {
-            if (data.Name is not null)
-                _metaData.SetEntityName(ent, Loc.GetString(data.Name));
-            if (data.Desc is not null)
-                _metaData.SetEntityDescription(ent, Loc.GetString(data.Desc));
+            var name = data?.Name is { } dataName ? Loc.GetString(dataName) : proto?.Name;
+            var desc = data?.Desc is { } dataDesc ? Loc.GetString(dataDesc) : proto?.Description;
+
+            if (name is not null)
+                _metaData.SetEntityName(ent, name);
+            if (desc is not null)
+                _metaData.SetEntityDescription(ent, desc);
         }
 
         //Flavors
-        EnsureComp<FlavorProfileComponent>(ent, out var flavorComp);
-        flavorComp.Flavors.Clear();
-        foreach (var flavor in data.Flavors)
+        var flavors = data?.Flavors;
+        if (flavors is null &&
+            proto is not null &&
+            proto.TryGetComponent<FlavorProfileComponent>(out var protoFlavor, EntityManager.ComponentFactory))
+            flavors = protoFlavor.Flavors;
+
+        if (flavors is null)
         {
-            flavorComp.Flavors.Add(flavor);
+            RemComp<FlavorProfileComponent>(ent);
+            return;
         }
 
-        Dirty(ent);
+        EnsureComp<FlavorProfileComponent>(ent, out var flavorComp);
+        flavorComp.Flavors.Clear();
+        flavorComp.Flavors.UnionWith(flavors);
     }
 
-    public CECookingRecipePrototype? GetRecipe(Entity<CEFoodCookerComponent> ent)
+    public CECookingRecipePrototype? GetRecipe(Entity<CEFoodCookerComponent> ent, CEFoodHolderComponent holder)
     {
         if (!Container.TryGetContainer(ent, ent.Comp.ContainerId, out var container))
             return null;
 
-        Solution.TryGetSolution(ent.Owner, ent.Comp.SolutionId, out _, out var solution);
+        Solution.TryGetSolution(ent.Owner, holder.SolutionId, out _, out var solution);
 
         //Get all food tags from placed ingredients
         var allFoodTags = new List<ProtoId<CEFoodTagPrototype>>();
@@ -216,7 +243,7 @@ public abstract partial class CESharedCookingSystem : EntitySystem
             allFoodTags.AddRange(foodTags.Tags);
         }
 
-        return GetRecipe(ent.Comp.FoodType, solution, allFoodTags);
+        return GetRecipe(holder.FoodType, solution, allFoodTags);
     }
 
     public CECookingRecipePrototype? GetRecipe(ProtoId<CEFoodTypePrototype> foodType,
@@ -255,23 +282,29 @@ public abstract partial class CESharedCookingSystem : EntitySystem
         return selectedRecipe;
     }
 
+    private float GetRecipeComplexity(ProtoId<CECookingRecipePrototype>? recipe)
+    {
+        if (recipe is null)
+            return 0;
+
+        if (!_proto.Resolve(recipe.Value, out var indexedRecipe))
+            return 0;
+
+        return indexedRecipe.GetComplexity();
+    }
+
     /// <summary>
     /// Combines all reagents and items inside the FoodHolder, adding a visual representation of food.
     /// </summary>
-    /// <param name="ent"></param>
-    /// <param name="recipe"></param>
-    private void Cook(Entity<CEFoodCookerComponent> ent, CECookingRecipePrototype recipe)
+    private void Cook(Entity<CEFoodCookerComponent> ent, CEFoodHolderComponent holder, CECookingRecipePrototype recipe)
     {
-        if (!TryComp<CEFoodHolderComponent>(ent.Owner, out var holder))
-            return;
-
-        if (!Solution.TryGetSolution(ent.Owner, ent.Comp.SolutionId, out var soln, out var solution))
+        if (!Solution.TryGetSolution(ent.Owner, holder.SolutionId, out var soln, out var solution))
             return;
 
         if (!Container.TryGetContainer(ent, ent.Comp.ContainerId, out var container))
             return;
 
-        var newData = new CEFoodData(recipe.FoodData);
+        var newData = CopyFoodData(recipe.FoodData);
 
         //Assign recipe to the FoodData
         newData.CurrentRecipe = recipe.ID;
@@ -298,10 +331,7 @@ public abstract partial class CESharedCookingSystem : EntitySystem
             if (TryComp<FlavorProfileComponent>(contained, out var flavorComp))
             {
                 //Merge flavors
-                foreach (var flavor in flavorComp.Flavors)
-                {
-                    newData.Flavors.Add(flavor);
-                }
+                newData.Flavors.UnionWith(flavorComp.Flavors);
             }
 
             QueueDel(contained);
@@ -313,28 +343,30 @@ public abstract partial class CESharedCookingSystem : EntitySystem
         SetFoodData((ent, holder), newData);
     }
 
-    private void BurntFood(Entity<CEFoodCookerComponent> ent)
+    /// <summary>
+    /// Turns the cooked food into the burnt recipe of its food type and replaces part of the solution with ash.
+    /// </summary>
+    private void BurntFood(Entity<CEFoodCookerComponent> ent, CEFoodHolderComponent holder)
     {
-        if (!TryComp<CEFoodHolderComponent>(ent, out var holder) || holder.FoodData is null)
+        if (holder.FoodData is not { } oldData)
             return;
 
-        if (!Solution.TryGetSolution(ent.Owner, ent.Comp.SolutionId, out var soln, out var solution))
+        if (!Solution.TryGetSolution(ent.Owner, holder.SolutionId, out var soln, out var solution))
             return;
 
-        var replacedVolume = solution.Volume / 2;
-        solution.SplitSolution(replacedVolume);
-        solution.AddReagent(_burntFoodReagent, replacedVolume / 2);
+        if (!_proto.Resolve(holder.FoodType, out var foodType) ||
+            !_proto.Resolve(foodType.BurntRecipe, out var burntRecipe))
+            return;
 
-        var newData = new CEFoodData(holder.FoodData);
-        //Brown visual
-        foreach (var visuals in newData.Visuals)
-        {
-            visuals.Color = Color.FromHex("#212121");
-        }
-
-        newData.Name = Loc.GetString("ce-meal-recipe-burned-trash-name");
-        newData.Desc = Loc.GetString("ce-meal-recipe-burned-trash-desc");
+        var newData = CopyFoodData(burntRecipe.FoodData);
+        newData.CurrentRecipe = burntRecipe.ID;
+        newData.Trash.AddRange(oldData.Trash);
+        newData.Flavors.UnionWith(oldData.Flavors);
 
         SetFoodData((ent, holder), newData);
+
+        var replacedVolume = solution.Volume / 2;
+        Solution.SplitSolution(soln.Value, replacedVolume);
+        Solution.TryAddReagent(soln.Value, BurntFoodReagent, replacedVolume / 2);
     }
 }

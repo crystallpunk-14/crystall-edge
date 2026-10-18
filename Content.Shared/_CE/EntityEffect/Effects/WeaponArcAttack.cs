@@ -156,6 +156,15 @@ public sealed partial class CEWeaponArcAttackEffectSystem : CEEntityEffectSystem
             }
         }
 
+        // The entity under the cursor counts too if it lies inside the arc: rays skip non-hard fixtures
+        // (webs, crystals, tables), so they would be impossible to hit otherwise.
+        if (weapon?.CursorTarget is { } cursorTarget
+            && Exists(cursorTarget)
+            && CESharedWeaponSystem.IsInArc(entityCoords.Position, _transform.GetWorldPosition(cursorTarget), direction, arcWidthDeg))
+        {
+            hitEntities.Add(cursorTarget);
+        }
+
         hitEntities.Remove(args.Args.Source);
         if (args.Args.Used is { } usedEntity)
             hitEntities.Remove(usedEntity);

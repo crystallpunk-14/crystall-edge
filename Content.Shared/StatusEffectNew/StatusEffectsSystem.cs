@@ -99,6 +99,10 @@ public sealed partial class StatusEffectsSystem : EntitySystem
         var ev = new StatusEffectRemovedEvent(ent);
         RaiseLocalEvent(args.Entity, ref ev);
 
+        // CrystallEdge: re-apply on re-insertion, e.g. when the client gets the effect back after it left PVS
+        statusComp.Applied = false;
+        // CrystallEdge end
+
         // Clear AppliedTo after events are handled so event handlers can use it.
         if (statusComp.AppliedTo == null)
             return;

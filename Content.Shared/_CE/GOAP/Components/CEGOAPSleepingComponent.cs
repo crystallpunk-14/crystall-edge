@@ -2,12 +2,8 @@ using Robust.Shared.GameStates;
 
 namespace Content.Shared._CE.GOAP.Components;
 
+/// <summary>
+/// Marks a sleeping GOAP agent: it can't wake through normal checks until <c>CEGOAPSleepingSystem</c> removes this.
+/// </summary>
 [RegisterComponent, NetworkedComponent]
-public sealed partial class CEGOAPSleepingComponent : Component
-{
-    /// <summary>
-    /// Radius within which a player's presence will wake this entity.
-    /// </summary>
-    [DataField]
-    public float WakeRadius = 5f;
-}
+public sealed partial class CEGOAPSleepingComponent : Component;

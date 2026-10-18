@@ -6,3 +6,6 @@ ce-secret-department-city-description = Citizens of the imperial city, trying to
 
 ce-secret-department-brotherhood-name = Brotherhood
 ce-secret-department-brotherhood-description = A secret criminal group that puts its own survival first, along with personal goals that are often at odds with the law.
+
+ce-secret-department-coven-name = Coven
+ce-secret-department-coven-description = A secret society pursuing the forbidden mysteries of magic. Take control of the souls of this city's people while the protection of the light is weak.

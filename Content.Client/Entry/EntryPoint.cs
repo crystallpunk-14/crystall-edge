@@ -142,9 +142,7 @@ namespace Content.Client.Entry
             _prototypeManager.RegisterIgnore("codewordFaction");
 
             // CrystallEdge
-            _prototypeManager.RegisterIgnore("demiplaneLocation");
-            _prototypeManager.RegisterIgnore("demiplaneModifier");
-            _prototypeManager.RegisterIgnore("demiplaneModifierCategory");
+            _prototypeManager.RegisterIgnore("wildlandsConfig");
             // CrystallEdge end
 
             _componentFactory.GenerateNetIds();

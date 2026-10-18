@@ -7,7 +7,7 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototy
 
 namespace Content.Shared._CE.Workbench.Prototypes;
 
-[Prototype("CERecipe")]
+[Prototype("workbenchRecipe")]
 public sealed partial class CEWorkbenchRecipePrototype : IPrototype, IInheritingPrototype
 {
     [IdDataField]

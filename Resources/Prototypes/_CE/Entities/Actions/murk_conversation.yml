@@ -13,10 +13,10 @@
     interactOnMiss: false
   - type: EntityTargetAction
     event: !type:CEEntityTargetActionAnimationEvent
-      animation: CEAnimationMurkStartConversation
+      animation: AnimationMurkStartConversation
 
 - type: entityEffectAnimation
-  id: CEAnimationMurkStartConversation
+  id: AnimationMurkStartConversation
   movementSpeed: 0
   duration: 0.3
   events:
@@ -35,10 +35,10 @@
     useDelay: 0.5
   - type: InstantAction
     event: !type:CEInstantActionAnimationEvent
-      animation: CEAnimationMurkConversationReply
+      animation: AnimationMurkConversationReply
 
 - type: entityEffectAnimation
-  id: CEAnimationMurkConversationReply
+  id: AnimationMurkConversationReply
   movementSpeed: 0
   duration: 0.3
   events:

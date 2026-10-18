@@ -1,15 +1,15 @@
 - type: secretDepartment
-  id: CEBrotherhood
+  id: Brotherhood
   name: ce-secret-department-brotherhood-name
   description: ce-secret-department-brotherhood-description
   color: "#2f5236"
   weight: 7
   membersRecognizeEachOther: true
   roles:
-  - CEThief
-  - CERecruiter
-  - CERecruit
-  - CEVandal
+  - Thief
+  - Recruiter
+  - Recruit
+  - Vandal
   objectives: !type:AllSelector
     children:
     - id: CEObjectiveBrotherhoodSurvive
@@ -30,7 +30,7 @@
     state: bleed10
   - type: CEObjective
   - type: CEObjectiveDepartmentSurviveCondition
-    department: CEBrotherhood
+    department: Brotherhood
 
 - type: entity
   id: CEObjectiveBrotherhoodPatronage
@@ -51,7 +51,7 @@
       - CETargetCompleteOwnedObjective
   - type: CETargetSecretRoleBlacklist
     secretRoleBlacklist:
-    - CEBountyHunter # helping the man hired to wipe us out complete his job makes no sense
+    - BountyHunter # helping the man hired to wipe us out complete his job makes no sense
 
 - type: entity
   id: CEObjectiveBrotherhoodDebt

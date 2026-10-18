@@ -41,3 +41,15 @@
   id: GuardCage5
   complexity: 3
   name: ce-lock-shape-guard-cage-5
+
+# Investigator
+
+- type: lockType
+  id: InvestigatorHall
+  complexity: 3
+  name: ce-lock-shape-investigator-hall
+
+- type: lockType
+  id: InvestigatorStaff
+  complexity: 5
+  name: ce-lock-shape-investigator-staff

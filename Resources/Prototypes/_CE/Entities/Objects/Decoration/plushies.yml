@@ -54,10 +54,6 @@
   - type: PhysicalComposition
     materialComposition:
       CECloth: 20
-  - type: CEMagicEssenceStructure
-    essences:
-      Beast: { min: 1, max: 3 }
-      Cloth: { min: 0, max: 2 }
 
 #MARK: Species plushies
 
@@ -198,11 +194,6 @@
   components:
   - type: Sprite
     sprite: _CE/Objects/Decorations/plushies_golden.rsi
-  - type: CEMagicEssenceStructure
-    essences:
-      Metal: { min: 1, max: 3 }
-      Water: { min: 1, max: 2 }
-      Greed: { min: 3, max: 5 }
   - type: StaticPrice
     price: 100
   - type: CEShiny

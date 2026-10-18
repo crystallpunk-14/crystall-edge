@@ -1280,3 +1280,151 @@
   id: 1111
   time: '2026-10-10T17:48:50.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/519
+- author: TheShuEd
+  changes:
+  - message: "The Priest gains a new skill, \u201CResurrection,\u201D which allows\
+      \ them to revive the dead."
+    type: Add
+  - message: The Priest's skill that casts a protective sphere has been removed
+    type: Remove
+  - message: "Ghosts who can still return to their bodies can no longer see other\
+      \ players\u2019 hidden roles. A button has been added allowing them to permanently\
+      \ leave their bodies to view all hidden information about the round."
+    type: Tweak
+  - message: "Fixed an issue where the Guard\u2019s mace attacks did not consume energy."
+    type: Fix
+  id: 1112
+  time: '2026-10-11T14:14:43.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/521
+- author: TheShuEd
+  changes:
+  - message: Added 20 new wallpaper types.
+    type: Add
+  - message: Fixed bugs with wallpaper rendering
+    type: Fix
+  - message: Improved placing wallpaper workflow
+    type: Tweak
+  id: 1113
+  time: '2026-10-13T09:29:13.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/526
+- author: TheShuEd
+  changes:
+  - message: Added 28 new types of carpets
+    type: Add
+  - message: Large procedurally generated areas shrouded in murk now appear around
+      the game map.
+    type: Add
+  - message: Added the Adventurer and Guildmaster roles.
+    type: Add
+  - message: Added a wristwatch that shows the time remaining until sunset and sunrise.
+    type: Add
+  - message: "Added a new machine, the \u201CMurk Shield Generator.\u201D It creates\
+      \ a portable sphere that protects against murk every dawn. The sphere lasts\
+      \ until sunset."
+    type: Add
+  - message: "The \u201CCreate Light\u201D spell has been removed from academy research."
+    type: Remove
+  - message: Hoverboards has been removed from the academy research. They can now
+      be freely crafted at the engineering table but require diamonds.
+    type: Tweak
+  - message: The duration of the day-night cycle has been increased from 8 to 15 minutes.
+    type: Tweak
+  - message: Fixed a bug that caused flying creatures to sometimes get stuck and be
+      unable to ascend to higher levels.
+    type: Fix
+  id: 1114
+  time: '2026-10-13T10:07:09.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/525
+- author: TheShuEd
+  changes:
+  - message: Engineers' Insulator Armor no longer slows down the wearer.
+    type: Tweak
+  - message: Fixed bugs with cooking where dishes would get stuck food state after
+      spilling the solution.
+    type: Fix
+  - message: Fixed a bug where text written on paper was not visible.
+    type: Fix
+  - message: Fixed a bug that prevented tables from being destroyed.
+    type: Fix
+  - message: Imperial laws have been removed from the game. Anarchy!
+    type: Remove
+  id: 1115
+  time: '2026-10-13T15:38:15.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/527
+- author: TheShuEd
+  changes:
+  - message: Around Shaar, you can now find the Snowy Mountain, Bone Graveyard, and
+      Mushroom Glade subbiomes.
+    type: Add
+  - message: Fly agaric mushrooms have appeared in the murk. They are extremely poisonous.
+      But someone might want to add them to a meal to poison an enemy.
+    type: Add
+  - message: Wall ladders have been added; they can be crafted from planks and nails.
+      They allow you to climb up and down vertically.
+    type: Add
+  id: 1116
+  time: '2026-10-14T17:52:04.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/529
+- author: TheShuEd
+  changes:
+  - message: Shadow Eaters now roam the wilderness around the city.
+    type: Add
+  - message: You can now find ruins containing brass scraps and useful resources in
+      the wilderness around the city.
+    type: Add
+  id: 1117
+  time: '2026-10-14T19:54:43.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/531
+- author: TheShuEd
+  changes:
+  - message: Gold ore and gold ore coreshave been added; these can only be found in
+      the murk.
+    type: Add
+  - message: A merchant quest for 10 gold bars has been added.
+    type: Add
+  id: 1118
+  time: '2026-10-14T21:55:09.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/532
+- author: TheShuEd
+  changes:
+  - message: The Mana Glove has been removed from the Academy's research tree; it
+      can now be selected in the loadout, found in crates, and crafted by Engineers
+      at the start of the round.
+    type: Tweak
+  - message: The Miner Module for the Manipulator Arm has been removed from the Academy's
+      research tree and added to the Brigadier chest as a unique item (one copy only).
+    type: Tweak
+  id: 1119
+  time: '2026-10-15T10:34:23.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/533
+- author: TheShuEd
+  changes:
+  - message: Removed thaumaturgy academy (Rest in peace), and all related content.
+    type: Remove
+  - message: Removed Spell magic trace system.
+    type: Remove
+  id: 1120
+  time: '2026-10-16T16:39:37.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/536
+- author: TheShuEd
+  changes:
+  - message: Added mana gift & mana steal as innate elf abilities.
+    type: Add
+  - message: Voice distortion amulet was added into shop
+    type: Add
+  - message: Removed guard salary.
+    type: Remove
+  id: 1121
+  time: '2026-10-17T09:53:40.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/537
+- author: TheShuEd
+  changes:
+  - message: Added 2 new achievements
+    type: Add
+  - message: Fixed insta death when werewolf fall into chasm.
+    type: Fix
+  - message: Fixed werewolf damage transfering between forms
+    type: Fix
+  id: 1122
+  time: '2026-10-17T12:07:03.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/538

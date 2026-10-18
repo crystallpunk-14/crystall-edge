@@ -43,6 +43,8 @@
     soundEnabled: false
     overlayEnabled: false
     dissolved: 0.7
+  - type: CEZPhysics
+    gravityMultiplier: 0 # hovers, so it no longer wanders off into chasms
   - type: MovementSpeedModifier
     baseSprintSpeed: 2.5
     baseFriction: 0.5
@@ -57,8 +59,6 @@
           damage:
             types:
               Piercing: 3
-        - !type:MurkDissolve
-          amount: 0.1
     animations:
       Primary:
       - anim: ShadowEaterBite

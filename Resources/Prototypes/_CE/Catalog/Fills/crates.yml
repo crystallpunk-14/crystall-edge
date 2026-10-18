@@ -103,19 +103,18 @@
         - id: CEStoneBlock10
         - id: CEDirtBlock10
         - id: CENail10
+      - id: CEManaTransferGlove
+      - id: CESafeFallingAmulet
       - id: CEKeyFile
       - id: CEScissors
-      - id: CEBookAncient
-        weight: 0.3
       - id: CEBaseLockpick
         weight: 0.1
+      - id: CEClothingWristwatch
+        weight: 0.3
+      - id: CEClothingWristwatchGold
+        weight: 0.01
       - id: CELockIron
         weight: 0.3
-      - !type:GroupSelector
-        weight: 0.1
-        children:
-        - id: CERubberStampApproved
-        - id: CERubberStampDenied
       - !type:GroupSelector
         children:
         - id: CEInstrumentFlute
@@ -133,8 +132,20 @@
       - id: CEEnergyCrystalShard
       - id: CEd20Dice
       - id: CEd6Dice
-      - id: CECoinCopper5
+      - !type:GroupSelector
         weight: 0.5
+        children:
+        - id: CECoinCopper1
+        - id: CECoinCopper5
+          weight: 0.5
+        - id: CECoinCopper10
+          weight: 0.1
+        - id: CECoinSilver1
+          weight: 0.1
+        - id: CECoinSilver5
+          weight: 0.05
+        - id: CECoinSilver10
+          weight: 0.01
 
 
 - type: entityTable

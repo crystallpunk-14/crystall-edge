@@ -1,5 +1,5 @@
 - type: tradeOffer
-  id: CETradeOfferWoodenPlanks10
+  id: BuyWoodenPlanks10
   shop: HomeDecor
   pay:
     bonus: 1
@@ -8,7 +8,7 @@
     proto: CEWoodenPlanks20
 
 - type: tradeOffer
-  id: CETradeOfferCandle
+  id: BuyCandle
   shop: HomeDecor
   pay:
     bonus: 1
@@ -17,7 +17,7 @@
     proto: CECandle
 
 - type: tradeOffer
-  id: CETradeOfferCandelabra
+  id: BuyCandelabra
   shop: HomeDecor
   pay:
     bonus: 1
@@ -26,7 +26,7 @@
     proto: CECandelabra
 
 - type: tradeOffer
-  id: CETradeOfferNail10
+  id: BuyNail10
   shop: HomeDecor
   pay:
     bonus: 1
@@ -35,7 +35,7 @@
     proto: CENail10
 
 - type: tradeOffer
-  id: CETradeOfferGlassSheet10
+  id: BuyGlassSheet10
   shop: HomeDecor
   pay:
     bonus: 1
@@ -44,7 +44,7 @@
     proto: CEGlassSheet10
 
 - type: tradeOffer
-  id: CETradeOfferMannequinHumanMale
+  id: BuyMannequinHumanMale
   shop: HomeDecor
   pay:
     bonus: 1
@@ -53,7 +53,7 @@
     proto: CEMannequinHumanMale
 
 - type: tradeOffer
-  id: CETradeOfferMannequinCarcat
+  id: BuyMannequinCarcat
   shop: HomeDecor
   pay:
     bonus: 1
@@ -62,7 +62,7 @@
     proto: CEMannequinCarcat
 
 - type: tradeOffer
-  id: CETradeOfferPlushieHuman
+  id: BuyPlushieHuman
   shop: HomeDecor
   pay:
     bonus: 1
@@ -71,7 +71,7 @@
     proto: CEPlushieHuman
 
 - type: tradeOffer
-  id: CETradeOfferPlushieDwarf
+  id: BuyPlushieDwarf
   shop: HomeDecor
   pay:
     bonus: 1
@@ -80,7 +80,7 @@
     proto: CEPlushieDwarf
 
 - type: tradeOffer
-  id: CETradeOfferPlushieElf
+  id: BuyPlushieElf
   shop: HomeDecor
   pay:
     bonus: 1
@@ -89,7 +89,7 @@
     proto: CEPlushieElf
 
 - type: tradeOffer
-  id: CETradeOfferPlushieGoblin
+  id: BuyPlushieGoblin
   shop: HomeDecor
   pay:
     bonus: 1
@@ -98,7 +98,7 @@
     proto: CEPlushieGoblin
 
 - type: tradeOffer
-  id: CETradeOfferPlushieSilva
+  id: BuyPlushieSilva
   shop: HomeDecor
   pay:
     bonus: 1
@@ -107,7 +107,7 @@
     proto: CEPlushieSilva
 
 - type: tradeOffer
-  id: CETradeOfferPlushieTiefling
+  id: BuyPlushieTiefling
   shop: HomeDecor
   pay:
     bonus: 1
@@ -116,7 +116,7 @@
     proto: CEPlushieTiefling
 
 - type: tradeOffer
-  id: CETradeOfferPlushieCarcat
+  id: BuyPlushieCarcat
   shop: HomeDecor
   pay:
     bonus: 1
@@ -125,7 +125,7 @@
     proto: CEPlushieCarcat
 
 - type: tradeOffer
-  id: CETradeOfferPlushieFrog
+  id: BuyPlushieFrog
   shop: HomeDecor
   pay:
     bonus: 1
@@ -134,7 +134,7 @@
     proto: CEPlushieFrog
 
 - type: tradeOffer
-  id: CETradeOfferPlushieSkeleton
+  id: BuyPlushieSkeleton
   shop: HomeDecor
   pay:
     bonus: 1
@@ -143,7 +143,7 @@
     proto: CEPlushieSkeleton
 
 - type: tradeOffer
-  id: CETradeOfferPlushieAgaric
+  id: BuyPlushieAgaric
   shop: HomeDecor
   pay:
     bonus: 1
@@ -152,7 +152,7 @@
     proto: CEPlushieAgaric
 
 - type: tradeOffer
-  id: CETradeOfferPlushieZombie
+  id: BuyPlushieZombie
   shop: HomeDecor
   pay:
     bonus: 1
@@ -161,7 +161,7 @@
     proto: CEPlushieZombie
 
 - type: tradeOffer
-  id: CETradeOfferPlushieLumi
+  id: BuyPlushieLumi
   shop: HomeDecor
   pay:
     bonus: 1
@@ -170,7 +170,7 @@
     proto: CEPlushieLumi
 
 - type: tradeOffer
-  id: CETradeOfferPlushieFlem
+  id: BuyPlushieFlem
   shop: HomeDecor
   pay:
     bonus: 1
@@ -179,7 +179,7 @@
     proto: CEPlushieFlem
 
 - type: tradeOffer
-  id: CETradeOfferPlushieCarrin
+  id: BuyPlushieCarrin
   shop: HomeDecor
   pay:
     bonus: 1
@@ -188,7 +188,7 @@
     proto: CEPlushieCarrin
 
 - type: tradeOffer
-  id: CETradeOfferOpenSign
+  id: BuyOpenSign
   shop: HomeDecor
   pay:
     bonus: 1
@@ -197,7 +197,7 @@
     proto: CEOpenSign
 
 - type: tradeOffer
-  id: CETradeOfferBell
+  id: BuyBell
   shop: HomeDecor
   pay:
     bonus: 1
@@ -206,7 +206,7 @@
     proto: CEBell
 
 - type: tradeOffer
-  id: CETradeOfferMop
+  id: BuyMop
   shop: HomeDecor
   pay:
     bonus: 1
@@ -215,7 +215,7 @@
     proto: CEWeaponMop
 
 - type: tradeOffer
-  id: CETradeOfferd20Dice
+  id: Buyd20Dice
   shop: HomeDecor
   pay:
     bonus: 5
@@ -224,7 +224,7 @@
     proto: CEd20Dice
 
 - type: tradeOffer
-  id: CETradeOfferd6Dice
+  id: Buyd6Dice
   shop: HomeDecor
   pay:
     bonus: 5
@@ -233,8 +233,9 @@
     proto: CEd6Dice
 
 - type: tradeOffer
-  id: CETradeOfferFloorCarpetItemBlue10
+  id: BuyFloorCarpetItemBlue10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -242,8 +243,9 @@
     proto: CEFloorCarpetItemBlue10
 
 - type: tradeOffer
-  id: CETradeOfferFloorCarpetItemRed10
+  id: BuyFloorCarpetItemRed10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -251,8 +253,9 @@
     proto: CEFloorCarpetItemRed10
 
 - type: tradeOffer
-  id: CETradeOfferFloorCarpetItemPurple10
+  id: BuyFloorCarpetItemPurple10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -260,8 +263,9 @@
     proto: CEFloorCarpetItemPurple10
 
 - type: tradeOffer
-  id: CETradeOfferFloorCarpetItemBlack10
+  id: BuyFloorCarpetItemBlack10
   shop: HomeDecor
+  weight: 0.1
   pay:
     bonus: 1
   reward:
@@ -269,7 +273,287 @@
     proto: CEFloorCarpetItemBlack10
 
 - type: tradeOffer
-  id: CETradeOfferWallpaperItemPurple
+  id: BuyFloorCarpetItemTasselScarletGold10
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselScarletGold10
+
+- type: tradeOffer
+  id: BuyFloorCarpetItemCrimsonCopper10
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemCrimsonCopper10
+
+- type: tradeOffer
+  id: BuyFloorCarpetItemTasselWineTonal10
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselWineTonal10
+
+- type: tradeOffer
+  id: BuyFloorCarpetItemTasselTerracottaTonal10
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselTerracottaTonal10
+
+- type: tradeOffer
+  id: BuyFloorCarpetItemOchreTonal10
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemOchreTonal10
+
+- type: tradeOffer
+  id: BuyFloorCarpetItemTasselOliveTonal10
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselOliveTonal10
+
+- type: tradeOffer
+  id: BuyFloorCarpetItemMossCopper10
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemMossCopper10
+
+- type: tradeOffer
+  id: BuyFloorCarpetItemMossTonal10
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemMossTonal10
+
+- type: tradeOffer
+  id: BuyFloorCarpetItemEmeraldTonal10
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemEmeraldTonal10
+
+- type: tradeOffer
+  id: BuyFloorCarpetItemTasselEmeraldGold10
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselEmeraldGold10
+
+- type: tradeOffer
+  id: BuyFloorCarpetItemPineCopper10
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemPineCopper10
+
+- type: tradeOffer
+  id: BuyFloorCarpetItemTasselPineTonal10
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselPineTonal10
+
+- type: tradeOffer
+  id: BuyFloorCarpetItemTealTonal10
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTealTonal10
+
+- type: tradeOffer
+  id: BuyFloorCarpetItemTasselTealGold10
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselTealGold10
+
+- type: tradeOffer
+  id: BuyFloorCarpetItemSeaSilver10
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemSeaSilver10
+
+- type: tradeOffer
+  id: BuyFloorCarpetItemTasselSeaContrast10
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselSeaContrast10
+
+- type: tradeOffer
+  id: BuyFloorCarpetItemTasselAzureTonal10
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselAzureTonal10
+
+- type: tradeOffer
+  id: BuyFloorCarpetItemTasselAzureGold10
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselAzureGold10
+
+- type: tradeOffer
+  id: BuyFloorCarpetItemTasselRoyalBlueTonal10
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselRoyalBlueTonal10
+
+- type: tradeOffer
+  id: BuyFloorCarpetItemTasselIndigoTonal10
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselIndigoTonal10
+
+- type: tradeOffer
+  id: BuyFloorCarpetItemTasselIndigoGold10
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselIndigoGold10
+
+- type: tradeOffer
+  id: BuyFloorCarpetItemPlumCopper10
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemPlumCopper10
+
+- type: tradeOffer
+  id: BuyFloorCarpetItemTasselPlumTonal10
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselPlumTonal10
+
+- type: tradeOffer
+  id: BuyFloorCarpetItemChocolateGold10
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemChocolateGold10
+
+- type: tradeOffer
+  id: BuyFloorCarpetItemTasselIvoryTonal10
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselIvoryTonal10
+
+- type: tradeOffer
+  id: BuyFloorCarpetItemTasselAshTonal10
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselAshTonal10
+
+- type: tradeOffer
+  id: BuyFloorCarpetItemCoalTonal10
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemCoalTonal10
+
+- type: tradeOffer
+  id: BuyFloorCarpetItemTasselCoalTonal10
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEFloorCarpetItemTasselCoalTonal10
+
+- type: tradeOffer
+  id: BuyWallpaperItemPurple
   shop: HomeDecor
   pay:
     bonus: 1
@@ -278,7 +562,7 @@
     proto: CEWallpaperItemPurple
 
 - type: tradeOffer
-  id: CETradeOfferWallpaperItemYellowVerticalLines
+  id: BuyWallpaperItemYellowVerticalLines
   shop: HomeDecor
   pay:
     bonus: 1
@@ -287,7 +571,7 @@
     proto: CEWallpaperItemYellowVerticalLines
 
 - type: tradeOffer
-  id: CETradeOfferWallpaperItemBlack
+  id: BuyWallpaperItemBlack
   shop: HomeDecor
   pay:
     bonus: 1
@@ -296,7 +580,217 @@
     proto: CEWallpaperItemBlack
 
 - type: tradeOffer
-  id: CETradeOfferPottedPlant1
+  id: BuyWallpaperItemPlainCrimsonWood
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemPlainCrimsonWood
+
+- type: tradeOffer
+  id: BuyWallpaperItemPlainWineWood
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemPlainWineWood
+
+- type: tradeOffer
+  id: BuyWallpaperItemOrnateRoseTonal
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemOrnateRoseTonal
+
+- type: tradeOffer
+  id: BuyWallpaperItemPlainTerracottaTonal
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemPlainTerracottaTonal
+
+- type: tradeOffer
+  id: BuyWallpaperItemPlainOchreWood
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemPlainOchreWood
+
+- type: tradeOffer
+  id: BuyWallpaperItemOrnateOliveTonal
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemOrnateOliveTonal
+
+- type: tradeOffer
+  id: BuyWallpaperItemPlainSageTonal
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemPlainSageTonal
+
+- type: tradeOffer
+  id: BuyWallpaperItemOrnateMossTonal
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemOrnateMossTonal
+
+- type: tradeOffer
+  id: BuyWallpaperItemPlainEmeraldWood
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemPlainEmeraldWood
+
+- type: tradeOffer
+  id: BuyWallpaperItemOrnatePineGold
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemOrnatePineGold
+
+- type: tradeOffer
+  id: BuyWallpaperItemPlainSeaWood
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemPlainSeaWood
+
+- type: tradeOffer
+  id: BuyWallpaperItemPlainPowderTonal
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemPlainPowderTonal
+
+- type: tradeOffer
+  id: BuyWallpaperItemPlainAzureWood
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemPlainAzureWood
+
+- type: tradeOffer
+  id: BuyWallpaperItemOrnateRoyalTonal
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemOrnateRoyalTonal
+
+- type: tradeOffer
+  id: BuyWallpaperItemOrnateIndigoTonal
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemOrnateIndigoTonal
+
+- type: tradeOffer
+  id: BuyWallpaperItemPlainChocolateTonal
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemPlainChocolateTonal
+
+- type: tradeOffer
+  id: BuyWallpaperItemPlainSandWood
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemPlainSandWood
+
+- type: tradeOffer
+  id: BuyWallpaperItemOrnateIvoryTonal
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemOrnateIvoryTonal
+
+- type: tradeOffer
+  id: BuyWallpaperItemPlainAshTonal
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemPlainAshTonal
+
+- type: tradeOffer
+  id: BuyWallpaperItemStripesSandTerracotta
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemStripesSandTerracotta
+
+- type: tradeOffer
+  id: BuyWallpaperItemStripesAshTeal
+  shop: HomeDecor
+  weight: 0.1
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWallpaperItemStripesAshTeal
+
+- type: tradeOffer
+  id: BuyPottedPlant1
   shop: HomeDecor
   pay:
     bonus: 1
@@ -305,7 +799,7 @@
     proto: CEPottedPlant1
 
 - type: tradeOffer
-  id: CETradeOfferPottedPlant2
+  id: BuyPottedPlant2
   shop: HomeDecor
   pay:
     bonus: 1
@@ -314,7 +808,7 @@
     proto: CEPottedPlant2
 
 - type: tradeOffer
-  id: CETradeOfferPottedPlant3
+  id: BuyPottedPlant3
   shop: HomeDecor
   pay:
     bonus: 1
@@ -323,7 +817,7 @@
     proto: CEPottedPlant3
 
 - type: tradeOffer
-  id: CETradeOfferPottedPlant4
+  id: BuyPottedPlant4
   shop: HomeDecor
   pay:
     bonus: 1
@@ -332,7 +826,7 @@
     proto: CEPottedPlant4
 
 - type: tradeOffer
-  id: CETradeOfferPlushieGoldenHuman
+  id: BuyPlushieGoldenHuman
   shop: HomeDecor
   pay:
     bonus: 200
@@ -341,7 +835,7 @@
     proto: CEPlushieGoldenHuman
 
 - type: tradeOffer
-  id: CETradeOfferPlushieGoldenDwarf
+  id: BuyPlushieGoldenDwarf
   shop: HomeDecor
   pay:
     bonus: 200
@@ -350,7 +844,7 @@
     proto: CEPlushieGoldenDwarf
 
 - type: tradeOffer
-  id: CETradeOfferPlushieGoldenElf
+  id: BuyPlushieGoldenElf
   shop: HomeDecor
   pay:
     bonus: 200
@@ -359,7 +853,7 @@
     proto: CEPlushieGoldenElf
 
 - type: tradeOffer
-  id: CETradeOfferPlushieGoldenGoblin
+  id: BuyPlushieGoldenGoblin
   shop: HomeDecor
   pay:
     bonus: 200
@@ -368,7 +862,7 @@
     proto: CEPlushieGoldenGoblin
 
 - type: tradeOffer
-  id: CETradeOfferPlushieGoldenSilva
+  id: BuyPlushieGoldenSilva
   shop: HomeDecor
   pay:
     bonus: 200
@@ -377,7 +871,7 @@
     proto: CEPlushieGoldenSilva
 
 - type: tradeOffer
-  id: CETradeOfferPlushieGoldenTiefling
+  id: BuyPlushieGoldenTiefling
   shop: HomeDecor
   pay:
     bonus: 200
@@ -386,7 +880,7 @@
     proto: CEPlushieGoldenTiefling
 
 - type: tradeOffer
-  id: CETradeOfferPlushieGoldenCarcat
+  id: BuyPlushieGoldenCarcat
   shop: HomeDecor
   pay:
     bonus: 200
@@ -395,7 +889,7 @@
     proto: CEPlushieGoldenCarcat
 
 - type: tradeOffer
-  id: CETradeOfferPlushieGoldenFrog
+  id: BuyPlushieGoldenFrog
   shop: HomeDecor
   pay:
     bonus: 200
@@ -404,7 +898,7 @@
     proto: CEPlushieGoldenFrog
 
 - type: tradeOffer
-  id: CETradeOfferPlushieGoldenSkeleton
+  id: BuyPlushieGoldenSkeleton
   shop: HomeDecor
   pay:
     bonus: 200
@@ -413,7 +907,7 @@
     proto: CEPlushieGoldenSkeleton
 
 - type: tradeOffer
-  id: CETradeOfferPlushieGoldenLumi
+  id: BuyPlushieGoldenLumi
   shop: HomeDecor
   pay:
     bonus: 200
@@ -422,7 +916,7 @@
     proto: CEPlushieGoldenLumi
 
 - type: tradeOffer
-  id: CETradeOfferPlushieGoldenFlem
+  id: BuyPlushieGoldenFlem
   shop: HomeDecor
   pay:
     bonus: 200
@@ -431,10 +925,29 @@
     proto: CEPlushieGoldenFlem
 
 - type: tradeOffer
-  id: CETradeOfferPlushieGoldenAgaric
+  id: BuyPlushieGoldenAgaric
   shop: HomeDecor
   pay:
     bonus: 200
   reward:
   - !type:CETradeSpawnReward
     proto: CEPlushieGoldenAgaric
+
+- type: tradeOffer
+  id: BuyClothingWristwatch
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEClothingWristwatch
+
+- type: tradeOffer
+  id: BuyClothingWristwatchGold
+  weight: 0.1
+  shop: HomeDecor
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEClothingWristwatchGold

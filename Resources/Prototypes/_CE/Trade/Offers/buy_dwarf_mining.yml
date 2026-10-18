@@ -1,5 +1,5 @@
 - type: tradeOffer
-  id: CETradeOfferCrowbar
+  id: BuyCrowbar
   shop: DwarfMiners
   pay:
     bonus: 1
@@ -8,7 +8,7 @@
     proto: CECrowbar
 
 - type: tradeOffer
-  id: CETradeOfferWeaponHammerIron
+  id: BuyWeaponHammerIron
   shop: DwarfMiners
   pay:
     bonus: 1
@@ -17,7 +17,7 @@
     proto: CEWeaponHammerIron
 
 - type: tradeOffer
-  id: CETradeOfferWrench
+  id: BuyWrench
   shop: DwarfMiners
   pay:
     bonus: 1
@@ -26,7 +26,7 @@
     proto: CEWrench
 
 - type: tradeOffer
-  id: CETradeOfferWeaponPickaxeIron
+  id: BuyWeaponPickaxeIron
   shop: DwarfMiners
   pay:
     bonus: 10
@@ -35,7 +35,7 @@
     proto: CEWeaponPickaxeIron
 
 - type: tradeOffer
-  id: CETradeOfferBrassBar10
+  id: BuyBrassBar10
   weight: 2
   shop: DwarfMiners
   pay:
@@ -45,7 +45,7 @@
     proto: CEBrassBar10
 
 - type: tradeOffer
-  id: CETradeOfferIronBar10
+  id: BuyIronBar10
   shop: DwarfMiners
   pay:
     bonus: 1
@@ -54,7 +54,7 @@
     proto: CEIronBar10
 
 - type: tradeOffer
-  id: CETradeOfferCoal10
+  id: BuyCoal10
   shop: DwarfMiners
   pay:
     bonus: 1
@@ -63,7 +63,7 @@
     proto: CECoal10
 
 - type: tradeOffer
-  id: CETradeOfferLantern
+  id: BuyLantern
   shop: DwarfMiners
   pay:
     bonus: 1
@@ -72,7 +72,7 @@
     proto: CELantern
 
 - type: tradeOffer
-  id: CETradeOfferSafeFallingAmulet
+  id: BuySafeFallingAmulet
   shop: DwarfMiners
   pay:
     bonus: 5
@@ -81,7 +81,7 @@
     proto: CESafeFallingAmulet
 
 - type: tradeOffer
-  id: CETradeOfferStoneBlock10
+  id: BuyStoneBlock10
   shop: DwarfMiners
   pay:
     bonus: 10
@@ -90,7 +90,7 @@
     proto: CEStoneBlock10
 
 - type: tradeOffer
-  id: CETradeOfferDirtBlock10
+  id: BuyDirtBlock10
   shop: DwarfMiners
   pay:
     bonus: 10
@@ -99,7 +99,7 @@
     proto: CEDirtBlock10
 
 - type: tradeOffer
-  id: CETradeOfferSnowBlock10
+  id: BuySnowBlock10
   shop: DwarfMiners
   pay:
     bonus: 5
@@ -108,7 +108,7 @@
     proto: CESnowBlock10
 
 - type: tradeOffer
-  id: CETradeOfferClothingHeadHelmetBrassInsulator
+  id: BuyClothingHeadHelmetBrassInsulator
   shop: DwarfMiners
   pay:
     bonus: 1
@@ -117,7 +117,7 @@
     proto: CEClothingHeadHelmetBrassInsulator
 
 - type: tradeOffer
-  id: CETradeOfferClothingOuterClothingBrassInsulator
+  id: BuyClothingOuterClothingBrassInsulator
   shop: DwarfMiners
   pay:
     bonus: 1
@@ -126,7 +126,7 @@
     proto: CEClothingOuterClothingBrassInsulator
 
 - type: tradeOffer
-  id: CETradeOfferMachinePartDimensionalMatrix1
+  id: BuyMachinePartDimensionalMatrix1
   shop: DwarfMiners
   pay:
     bonus: 1
@@ -135,7 +135,7 @@
     proto: CEMachinePartDimensionalMatrix1
 
 - type: tradeOffer
-  id: CETradeOfferScrewdriver
+  id: BuyScrewdriver
   shop: DwarfMiners
   pay:
     bonus: 1
@@ -144,16 +144,7 @@
     proto: CEScrewdriver
 
 - type: tradeOffer
-  id: CETradeOfferClothingBackPortableLighthouse
-  shop: DwarfMiners
-  pay:
-    bonus: 1
-  reward:
-  - !type:CETradeSpawnReward
-    proto: CEClothingBackPortableLighthouse
-
-- type: tradeOffer
-  id: CETradeOfferBaseLockpick
+  id: BuyBaseLockpick
   shop: DwarfMiners
   pay:
     bonus: 1

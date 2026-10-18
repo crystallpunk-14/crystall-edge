@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Content.Shared._CE.Actions;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions.Components;
 using Content.Shared.Actions.Events;
@@ -698,6 +699,12 @@ public abstract partial class SharedActionsSystem : EntitySystem
         performer.Comp.Actions.Add(ent);
         Dirty(performer, performer.Comp);
         ActionAdded((performer, performer.Comp), (ent, ent.Comp));
+
+        // CrystallEdge: let the action itself react to being granted
+        var grantedEv = new CEActionGrantedEvent(performer);
+        RaiseLocalEvent(ent, ref grantedEv);
+        // CrystallEdge end
+
         return true;
     }
 
@@ -855,6 +862,11 @@ public abstract partial class SharedActionsSystem : EntitySystem
         ent.Comp.AttachedEntity = null;
         DirtyField(ent, ent.Comp, nameof(ActionComponent.AttachedEntity));
         ActionRemoved((performer, performer.Comp), ent);
+
+        // CrystallEdge: let the action itself react to being revoked
+        var revokedEv = new CEActionRevokedEvent(performer);
+        RaiseLocalEvent(ent, ref revokedEv);
+        // CrystallEdge end
 
         if (ent.Comp.Temporary)
             QueueDel(ent);

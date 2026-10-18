@@ -1,6 +1,8 @@
 using Content.Server.Administration;
+using Content.Server.Administration.Logs;
 using Content.Shared._CE.Roles;
 using Content.Shared.Administration;
+using Content.Shared.Database;
 using Robust.Shared.Console;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -10,6 +12,7 @@ namespace Content.Server._CE.Roles.Commands;
 [AdminCommand(AdminFlags.Fun)]
 public sealed partial class CESecretRoleSetCommand : LocalizedCommands
 {
+    [Dependency] private IAdminLogManager _adminLog = default!;
     [Dependency] private IEntityManager _entities = default!;
     [Dependency] private ISharedPlayerManager _players = default!;
     [Dependency] private IPrototypeManager _proto = default!;
@@ -39,6 +42,11 @@ public sealed partial class CESecretRoleSetCommand : LocalizedCommands
             shell.WriteError(error);
             return;
         }
+
+        var admin = shell.Player?.Name ?? "Console";
+        _adminLog.Add(LogType.AdminCommands,
+            LogImpact.High,
+            $"{admin} set secret role of {session.Name} to {roleId}");
 
         shell.WriteLine($"Successfully set secret role '{args[1]}' for player '{args[0]}'.");
     }

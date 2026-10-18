@@ -95,7 +95,8 @@ public sealed partial class FoodResource : CEResourceRequirement
         if (!protoManager.TryIndex(Recipe, out var indexedRecipe))
             return "Unknown Recipe";
 
-        return $"{Loc.GetString(indexedRecipe.FoodData.Name ?? "Unknown Food")} ({Count}u)";
+        var food = Loc.GetString(indexedRecipe.FoodData.Name ?? "Unknown Food");
+        return $"{Loc.GetString("ce-workbench-food-req", ("food", food))} ({Count}u)";
     }
 
     public override List<CEResourceIconLayer> GetRequirementIcon(IEntityManager entManager, IPrototypeManager protoManager)

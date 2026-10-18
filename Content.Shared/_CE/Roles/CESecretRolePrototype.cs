@@ -1,3 +1,4 @@
+using Content.Shared._CE.Achievements.Prototypes;
 using Content.Shared._CE.Skill.Prototypes;
 using Content.Shared.EntityTable.EntitySelectors;
 using Content.Shared.Roles;
@@ -87,4 +88,11 @@ public sealed partial class CESecretRolePrototype : IPrototype, IInheritingProto
     /// </summary>
     [DataField]
     public HashSet<ProtoId<JobPrototype>> ProhibitedJobs = new();
+
+    /// <summary>
+    /// Achievement granted at round end to a player still holding this role, if every objective
+    /// they have (personal and department) is completed.
+    /// </summary>
+    [DataField]
+    public ProtoId<CEAchievementPrototype>? VictoryAchievement;
 }

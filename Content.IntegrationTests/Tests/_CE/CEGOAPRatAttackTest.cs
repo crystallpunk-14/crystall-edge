@@ -7,6 +7,7 @@ using Content.Server.Gravity;
 using Content.Shared._CE.GOAP.Components;
 using Content.Shared._CE.GOAP.Prototypes;
 using Content.Shared.Atmos;
+using Content.Shared.CCVar;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Gravity;
@@ -39,6 +40,9 @@ public sealed class CEGOAPRatAttackTest
         var server = pair.Server;
         var entMan = server.EntMan;
         var timing = server.ResolveDependency<IGameTiming>();
+
+        // No player is near the rat, so dormancy would put it to sleep right away.
+        await server.WaitPost(() => server.CfgMan.SetCVar(CCVars.CEGOAPDormancy, false));
 
         var map = await pair.CreateTestMap();
 

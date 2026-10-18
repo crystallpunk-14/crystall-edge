@@ -14,13 +14,9 @@
       department: CEGuard
       time: 4h
   special:
-    - !type:AddComponentSpecial
-      components:
-      - type: CESalaryCounter
-        salary: 200
     - !type:CELearnSkillsSpecial
       skills:
-      - CEMilitaryTraining
+      - MilitaryTraining
 
 - type: startingGear
   id: CEGuardCommanderGear
@@ -29,8 +25,8 @@
     pocket1: CEWalletFilledGuardCommander
   storage:
     back:
-    - CEGuidebookImperialLaws
     - CEWeaponGunJustice
+    - CEPaperArmyOrders
 
 - type: entity
   id: CEWalletFilledGuardCommander
@@ -63,7 +59,6 @@
         - id: CERubberStampApproved
         - id: CERubberStampDenied
         - id: CERubberStampGuard
-        - id: CEClothingBackPortableLighthouse
 
 - type: entity
   id: CEBedsideTableFilledGuardCommander

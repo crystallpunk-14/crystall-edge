@@ -1,5 +1,9 @@
 using Content.Shared._CE.Animation.Item.Components;
+using Content.Client.Gameplay;
+using Content.Client.Viewport;
 using Content.Shared._CE.MeleeWeapon;
+using Robust.Client.UserInterface;
+using Robust.Client.UserInterface.CustomControls;
 using Robust.Shared.Input;
 using Robust.Shared.Map;
 
@@ -68,15 +72,34 @@ public sealed partial class CEClientWeaponSystem
         var direction = targetPos - playerPos;
         var angle = Angle.FromWorldVec(direction);
 
+        var cursorTarget = GetEntityUnderCursor();
+
         if (primaryDown == BoundKeyState.Down)
         {
-            RaisePredictiveEvent(new CEWeaponUseEvent(angle, GetNetEntity(used.Value), CEUseType.Primary));
+            RaisePredictiveEvent(new CEWeaponUseEvent(angle, GetNetEntity(used.Value), CEUseType.Primary, GetNetEntity(cursorTarget)));
             return;
         }
 
         if (secondaryDown == BoundKeyState.Down)
         {
-            RaisePredictiveEvent(new CEWeaponUseEvent(angle, GetNetEntity(used.Value), CEUseType.Secondary));
+            RaisePredictiveEvent(new CEWeaponUseEvent(angle, GetNetEntity(used.Value), CEUseType.Secondary, GetNetEntity(cursorTarget)));
         }
+    }
+
+    /// <summary>
+    /// The clickable entity the cursor is over in the game viewport, if any.
+    /// </summary>
+    private EntityUid? GetEntityUnderCursor()
+    {
+        if (_stateManager.CurrentState is not GameplayStateBase screen)
+            return null;
+
+        if (_uiManager.CurrentlyHovered is not IViewportControl vp || !_inputManager.MouseScreenPosition.IsValid)
+            return null;
+
+        var mousePosWorld = vp.PixelToMap(_inputManager.MouseScreenPosition.Position);
+        return vp is ScalingViewport svp
+            ? screen.GetClickedEntity(mousePosWorld, svp.Eye)
+            : screen.GetClickedEntity(mousePosWorld);
     }
 }

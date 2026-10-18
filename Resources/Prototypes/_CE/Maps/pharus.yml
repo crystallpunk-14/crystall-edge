@@ -21,13 +21,14 @@
             ##Tavern (4)
             #CETavernmaster: [ 1, 1 ]
             #CEChef: [ 3, 3 ]
-            ##Academy
-            #CEAcademyRector: [ 1, 1 ]
-            #CEAcademyProfessor: [ 2, 2 ]
-            #CEAcademyStudent: [ 2, 3 ]
+            ##Guild
+            #CEGuildmaster: [ 1, 1 ]
+            #CEAdventurer: [ 3, 4 ]
             ##Citizens
             #CEBard: [ 2, 2 ]
             CETownfolk: [ -1, -1 ]
+        - type: CEStationWildlands
+          config: Pharus
         - type: CEStationZLevels
           mapsBelow:
           - /Maps/_CE/Pharus/Pharus-2.yml
@@ -74,6 +75,221 @@
               coverage: 0.6
               shadowStrength: 0.6
               shadowColor: "#000000"
-            - type: CEGridStability
+            #- type: CEGridStability
               supportLowestLevel: True
             - type: CEMurkedMap
+
+- type: wildlandsConfig
+  id: Pharus
+  center: 12, -23 # Lucson sphere position
+  cityModifiers: !type:AllSelector
+    children:
+    # Ore veins
+    - id: CEWildlandsModifierOreCoalRatio10
+    - id: CEWildlandsModifierOreIronRatio10
+    - id: CEWildlandsModifierOreDiamondConstant10
+    - id: CEWildlandsModifierDamagedWoodenWallsRatio50
+    # Cores
+    - id: CEWildlandsModifierCoreIronConstant15
+    - id: CEWildlandsModifierCoreCoalConstant15
+    - id: CEWildlandsModifierCoreCrystalConstant15
+    - id: CEWildlandsModifierCoreDiamondConstant1
+  wildlandsModifiers: !type:AllSelector
+    children:
+    - id: CEWildlandsModifierOreCoalNoise
+      prob: 0.75
+    - id: CEWildlandsModifierOreIronNoise
+      prob: 0.75
+    - id: CEWildlandsModifierOreCrystalNoise
+      prob: 0.5
+    - id: CEWildlandsModifierShadowEaters
+  layersByDepth:
+  #MARK: 2 Hills top
+    2:
+    - !type:TileNoiseDistanceLayer
+      size: &size 200, 200 # CEMurkLucsonSphere25 boundary diameter
+      distanceConfig: !type:EuclideanSquaredDistance
+        blendWeight: 0.6
+      fill:
+      - tile: CESnow
+        threshold: 0.7
+        noise: &islandNoise
+          frequency: 0.030
+          noiseType: OpenSimplex2
+          fractalType: FBm
+          octaves: 5
+          lacunarity: 2
+          gain: 0.5
+    #Biome fill
+    - !type:FillBiomeLayer
+      biome: CESnowland
+      seed: 6
+      mask:
+      - !type:TileMask
+        tiles:
+        - CESnow
+  #MARK: 1 Hills
+    1:
+    - !type:TileNoiseDistanceLayer
+      size: *size
+      distanceConfig: !type:EuclideanSquaredDistance
+        blendWeight: 0.6
+      fill:
+      - tile: CESnow
+        threshold: 0.6
+        noise: *islandNoise
+    - !type:TileNoiseDistanceLayer
+      size: *size
+      distanceConfig: !type:EuclideanSquaredDistance
+        blendWeight: 0.6
+      fill:
+      - tile: CEStone
+        threshold: 0.7
+        noise: *islandNoise
+    #Biome fill
+    - !type:FillBiomeLayer
+      biome: CESnowland
+      seed: 3
+      mask:
+      - !type:TileMask
+        tiles:
+        - CESnow
+    - !type:FillBiomeLayer
+      biome: CECavesGeneric
+      seed: 2
+      mask:
+      - !type:TileMask
+        tiles:
+        - CEStone
+  #MARK: 0 Surface
+    0:
+    - !type:TileNoiseDistanceLayer
+      size: *size
+      distanceConfig: !type:EuclideanSquaredDistance
+        blendWeight: 0.95
+      fill:
+      - tile: CESnow
+        threshold: 0.5
+        noise: &shapeNoise
+          seed: 1
+          noiseType: OpenSimplex2
+          frequency: 0.05
+          lacunarity: 1.50
+          fractalType: Ridged
+          octaves: 1
+    - !type:TileNoiseDistanceLayer
+      size: *size
+      distanceConfig: !type:EuclideanSquaredDistance
+        blendWeight: 0.5
+      fill:
+      - tile: Space
+        threshold: 0.6
+        noise:
+          frequency: 0.04
+          noiseType: OpenSimplex2
+          fractalType: FBm
+          octaves: 5
+          lacunarity: 2
+          gain: 0.5
+    - !type:TileNoiseDistanceLayer
+      size: *size
+      distanceConfig: !type:EuclideanSquaredDistance
+        blendWeight: 0.6
+      fill:
+      - tile: CEStone
+        threshold: 0.6
+        noise: *islandNoise
+    #Biome fill
+    - !type:FillBiomeLayer
+      biome: CESnowland
+      mask:
+      - !type:TileMask
+        tiles:
+        - CESnow
+    - !type:FillBiomeLayer
+      biome: CECavesGeneric
+      seed: 1
+      mask:
+      - !type:TileMask
+        tiles:
+        - CEStone
+  #MARK: -1 Caves
+    -1:
+    - !type:TileNoiseDistanceLayer
+      size: *size
+      distanceConfig: !type:EuclideanSquaredDistance
+        blendWeight: 0.95
+      fill:
+      - tile: CEStone
+        threshold: 0.45
+        noise: *shapeNoise
+    - !type:TileNoiseDistanceLayer
+      size: *size
+      distanceConfig: !type:EuclideanSquaredDistance
+        blendWeight: 0.5
+      fill:
+      - tile: CESnow
+        threshold: 0.6
+        noise: &caveHolesNoise
+          frequency: 0.04
+          noiseType: OpenSimplex2
+          fractalType: FBm
+          octaves: 5
+          lacunarity: 2
+          gain: 0.5
+    - !type:TileNoiseDistanceLayer
+      size: *size
+      distanceConfig: !type:EuclideanSquaredDistance
+        blendWeight: 0.5
+      fill:
+      - tile: Space
+        threshold: 0.7
+        noise: *caveHolesNoise
+    #Biome fill
+    - !type:FillBiomeLayer
+      biome: CECavesGeneric
+      seed: 368
+      mask:
+      - !type:TileMask
+        tiles:
+        - CEStone
+    - !type:FillBiomeLayer
+      biome: CECavesFloor
+      seed: 362
+      mask:
+      - !type:TileMask
+        tiles:
+        - CESnow
+  #MARK: -2 Caves
+    -2:
+    - !type:TileNoiseDistanceLayer
+      size: *size
+      distanceConfig: !type:EuclideanSquaredDistance
+        blendWeight: 0.95
+      fill:
+      - tile: CEStone
+        threshold: 0.4
+        noise: *shapeNoise
+    - !type:TileNoiseDistanceLayer
+      size: *size
+      distanceConfig: !type:EuclideanSquaredDistance
+        blendWeight: 0.5
+      fill:
+      - tile: CESnow
+        threshold: 0.7
+        noise: *caveHolesNoise
+    #Biome fill
+    - !type:FillBiomeLayer
+      biome: CECavesGeneric
+      seed: 87
+      mask:
+      - !type:TileMask
+        tiles:
+        - CEStone
+    - !type:FillBiomeLayer
+      biome: CECavesFloor
+      seed: 362
+      mask:
+      - !type:TileMask
+        tiles:
+        - CESnow

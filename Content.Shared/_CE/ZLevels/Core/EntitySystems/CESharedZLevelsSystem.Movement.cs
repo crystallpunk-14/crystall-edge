@@ -82,8 +82,6 @@ public abstract partial class CESharedZLevelsSystem
     [SubscribeLocalEvent]
     private void OnZLevelMapMove(Entity<CEZPhysicsComponent> ent, ref CEZLevelMapMoveEvent args)
     {
-        ent.Comp.CurrentZLevel = args.CurrentZLevel;
-        DirtyField(ent, ent.Comp, nameof(CEZPhysicsComponent.CurrentZLevel));
         RequestCacheMovement(ent);
     }
 
@@ -271,6 +269,28 @@ public abstract partial class CESharedZLevelsSystem
         SetZGravity(ent, ev.Gravity);
     }
 
+    /// <summary>
+    /// Recomputes <see cref="CEZPhysicsComponent.VelocityRaiseEvent"/> by asking subscribers of
+    /// <see cref="CERefreshVelocityRaiseEvent"/> whether they need <see cref="CEGetZVelocityEvent"/>.
+    /// Call it whenever such a subscriber may have started or stopped needing it.
+    /// </summary>
+    [PublicAPI]
+    public void RefreshVelocityRaiseEvent(Entity<CEZPhysicsComponent?> ent)
+    {
+        if (!Resolve(ent.Owner, ref ent.Comp, false))
+            return;
+
+        var ev = new CERefreshVelocityRaiseEvent();
+        RaiseLocalEvent(ent.Owner, ref ev);
+
+        if (ent.Comp.VelocityRaiseEvent == ev.Raise)
+            return;
+
+        ent.Comp.VelocityRaiseEvent = ev.Raise;
+        DirtyField(ent, ent.Comp, nameof(CEZPhysicsComponent.VelocityRaiseEvent));
+        WakeBody(ent);
+    }
+
     private void SetZGravity(Entity<CEZPhysicsComponent?> ent, float newGravityMultiplier)
     {
         if (!Resolve(ent.Owner, ref ent.Comp))
@@ -452,10 +472,23 @@ public struct CEZLevelHitEvent(float impactPower)
 /// Is called every frame to calculate the current vertical velocity of the active zphysics entities.
 /// </summary>
 [ByRefEvent]
-public struct CEGetZVelocityEvent(Entity<CEZPhysicsComponent> target)
+public struct CEGetZVelocityEvent(Entity<CEZPhysicsComponent> target, float frameTime)
 {
     public Entity<CEZPhysicsComponent> Target = target;
+
+    public float FrameTime = frameTime;
+
     public float VelocityDelta = 0;
+}
+
+/// <summary>
+/// Raised by <see cref="CESharedZLevelsSystem.RefreshVelocityRaiseEvent"/>. Set <see cref="Raise"/> to true if this
+/// entity currently needs <see cref="CEGetZVelocityEvent"/> every z-physics step.
+/// </summary>
+[ByRefEvent]
+public struct CERefreshVelocityRaiseEvent
+{
+    public bool Raise;
 }
 
 /// <summary>

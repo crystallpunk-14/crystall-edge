@@ -44,3 +44,5 @@ ce-entity-effect-guidebook-area-effect =
 ce-entity-effect-guidebook-conditional-effect-group =
     If the conditions are met:
     { $effects }
+
+ce-revivable-required = Only a dead body whose soul has not left it for good can be brought back.

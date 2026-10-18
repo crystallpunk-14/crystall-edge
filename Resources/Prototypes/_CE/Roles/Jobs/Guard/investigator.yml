@@ -6,13 +6,9 @@
   playTimeTracker: CEJobInvestigator
   startingGear: CEInvestigatorGear
   icon: CEJobIconInvestigator
-  supervisors: ce-job-supervisors-guard-commander
+  supervisors: ce-job-supervisors-empire
   requirements:
-    - !type:DepartmentTimeRequirement
-      department: CEGuard
-      time: 1h
-    - !type:DepartmentTimeRequirement
-      department: CEAcademy
+    - !type:OverallPlaytimeRequirement
       time: 1h
     # The investigator mask is mandatory, these species have no mask slot
     - !type:SpeciesRequirement
@@ -20,13 +16,9 @@
       species:
       - CECarrin
   special:
-    - !type:AddComponentSpecial
-      components:
-      - type: CESalaryCounter
-        salary: 75
     - !type:CELearnSkillsSpecial
       skills:
-      - CEMilitaryTraining
+      - MilitaryTraining
 
 - type: startingGear
   id: CEInvestigatorGear
@@ -35,7 +27,8 @@
     pocket1: CEWalletFilledInvestigator
   storage:
     back:
-    - CEGuidebookImperialLaws
+    - CEWeaponGunJustice
+    - CEPaperArmyOrders
 
 
 - type: entity
@@ -59,5 +52,10 @@
   components:
   - type: StorageFill
     contents:
-    - id: CEKeyGuardHall
-    - id: CEKeyGuardStaff
+    - id: CEKeyInvestigatorHall
+    - id: CEKeyInvestigatorStaff
+
+- type: entity
+  id: CEChestFilledInvestigator
+  parent: CEChestFilledGuard
+  suffix: Filled, Investigator

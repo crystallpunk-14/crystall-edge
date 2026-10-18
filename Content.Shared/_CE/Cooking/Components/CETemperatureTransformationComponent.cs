@@ -5,19 +5,13 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._CE.Cooking.Components;
 
 /// <summary>
-/// passively returns the solution temperature to the standard
+/// Replaces this entity with another one when its temperature reaches one of the specified ranges (e.g. raw meat becomes cooked).
 /// </summary>
 [RegisterComponent, NetworkedComponent]
 public sealed partial class CETemperatureTransformationComponent : Component
 {
     [DataField(required: true)]
     public List<CETemperatureTransformEntry> Entries = new();
-
-    /// <summary>
-    /// solution where reagents will be added from newly added ingredients
-    /// </summary>
-    [DataField]
-    public string Solution = "food";
 
     /// <summary>
     /// The transformation will occur instantly if the entity was in FoodCookerComponent at the moment cooking ended.

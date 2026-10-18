@@ -31,6 +31,24 @@
     state: investigator
   jobName: ce-job-name-investigator
 
+# Guild
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconGuildmaster
+  icon:
+    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
+    state: guildmaster
+  jobName: ce-job-name-guildmaster
+
+- type: jobIcon
+  parent: CEJobIcon
+  id: CEJobIconAdventurer
+  icon:
+    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
+    state: adventurer
+  jobName: ce-job-name-adventurer
+
 # Tavern
 
 - type: jobIcon
@@ -100,29 +118,3 @@
     sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
     state: jobless
   jobName: ce-job-name-townfolk
-
-# Academy
-
-- type: jobIcon
-  parent: CEJobIcon
-  id: CEJobIconAcademyStudent
-  icon:
-    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
-    state: student
-  jobName: ce-job-name-academy-student
-
-- type: jobIcon
-  parent: CEJobIcon
-  id: CEJobIconAcademyProfessor
-  icon:
-    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
-    state: professor
-  jobName: ce-job-name-academy-professor
-
-- type: jobIcon
-  parent: CEJobIcon
-  id: CEJobIconAcademyRector
-  icon:
-    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
-    state: rector
-  jobName: ce-job-name-academy-rector

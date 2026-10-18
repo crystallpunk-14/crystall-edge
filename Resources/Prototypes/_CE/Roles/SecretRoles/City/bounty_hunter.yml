@@ -1,9 +1,10 @@
 - type: secretRole
-  id: CEBountyHunter
+  id: BountyHunter
   name: ce-secret-role-name-bounty-hunter
   description: ce-secret-role-description-bounty-hunter
   icon: CESecretRoleIconBountyHunter
   gear: CEBountyHunterGear
+  victoryAchievement: BountyHunterWin
   objectives: !type:EntSelector
     id: CEObjectiveBountyHunterEliminate
 
@@ -34,5 +35,5 @@
     state: todo
   - type: CEObjective
   - type: CEObjectiveDepartmentSurviveCondition
-    department: CEBrotherhood
+    department: Brotherhood
     invert: true

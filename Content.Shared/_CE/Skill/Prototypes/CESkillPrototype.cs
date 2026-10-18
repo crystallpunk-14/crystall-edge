@@ -53,21 +53,6 @@ public sealed partial class CESkillPrototype : IPrototype, IInheritingPrototype
     public SpriteSpecifier? IconOverride;
 
     /// <summary>
-    /// Blank book cover entity spawned when this skill is written down with a pen. Usually set
-    /// once per domain's abstract base prototype rather than repeated on every entry.
-    /// </summary>
-    [DataField]
-    public EntProtoId Book = "CEBaseScienceBookUndefined";
-
-    /// <summary>
-    /// Whether this skill's knowledge can be copied into a book via the pen-writing system
-    /// (<see cref="CESharedSkillSystem.InitializePen"/>). Defaults to false - most skills
-    /// represent something learned firsthand, not a recipe to hand off.
-    /// </summary>
-    [DataField]
-    public bool Copyable;
-
-    /// <summary>
     /// Price added on top of the books teaching this skill.
     /// </summary>
     [DataField]

@@ -1,5 +1,5 @@
 - type: tradeOffer
-  id: CETradeOfferWheat
+  id: BuyWheat
   shop: Horticulture
   pay:
     bonus: 1
@@ -9,7 +9,7 @@
     count: 5
 
 - type: tradeOffer
-  id: CETradeOfferCotton
+  id: BuyCotton
   shop: Horticulture
   pay:
     bonus: 1
@@ -19,7 +19,7 @@
     count: 5
 
 - type: tradeOffer
-  id: CETradeOfferFoodPotato
+  id: BuyFoodPotato
   shop: Horticulture
   pay:
     bonus: 1
@@ -29,7 +29,7 @@
     count: 5
 
 - type: tradeOffer
-  id: CETradeOfferFoodApple
+  id: BuyFoodApple
   shop: Horticulture
   pay:
     bonus: 1
@@ -39,7 +39,7 @@
     count: 5
 
 - type: tradeOffer
-  id: CETradeOfferFoodGarlic
+  id: BuyFoodGarlic
   shop: Horticulture
   pay:
     bonus: 1
@@ -49,7 +49,7 @@
     count: 5
 
 - type: tradeOffer
-  id: CETradeOfferFoodOnion
+  id: BuyFoodOnion
   shop: Horticulture
   pay:
     bonus: 1
@@ -59,7 +59,7 @@
     count: 5
 
 - type: tradeOffer
-  id: CETradeOfferFoodChanterelle
+  id: BuyFoodChanterelle
   shop: Horticulture
   pay:
     bonus: 1
@@ -69,7 +69,7 @@
     count: 5
 
 - type: tradeOffer
-  id: CETradeOfferFoodSunflowerHead
+  id: BuyFoodSunflowerHead
   shop: Horticulture
   pay:
     bonus: 1
@@ -80,7 +80,7 @@
 
 #MARK: Meat
 - type: tradeOffer
-  id: CETradeOfferFoodMeatLamb
+  id: BuyFoodMeatLamb
   weight: 1.3
   shop: Horticulture
   pay:
@@ -90,7 +90,7 @@
     proto: CEFoodMeatLamb
 
 - type: tradeOffer
-  id: CETradeOfferFoodMeatFrogLeg
+  id: BuyFoodMeatFrogLeg
   weight: 1.3
   shop: Horticulture
   pay:
@@ -100,7 +100,7 @@
     proto: CEFoodMeatFrogLeg
 
 - type: tradeOffer
-  id: CETradeOfferFoodMeatDino
+  id: BuyFoodMeatDino
   weight: 1.3
   shop: Horticulture
   pay:
@@ -110,7 +110,7 @@
     proto: CEFoodMeatDino
 
 - type: tradeOffer
-  id: CETradeOfferFoodMeatHydra
+  id: BuyFoodMeatHydra
   weight: 1.3
   shop: Horticulture
   pay:
@@ -120,7 +120,7 @@
     proto: CEFoodMeatHydra
 
 - type: tradeOffer
-  id: CETradeOfferFoodMeatRabbit
+  id: BuyFoodMeatRabbit
   weight: 1.3
   shop: Horticulture
   pay:
@@ -130,7 +130,7 @@
     proto: CEFoodMeatRabbit
 
 - type: tradeOffer
-  id: CETradeOfferFoodMeatPig
+  id: BuyFoodMeatPig
   weight: 1.3
   shop: Horticulture
   pay:
@@ -140,7 +140,7 @@
     proto: CEFoodMeatPig
 
 - type: tradeOffer
-  id: CETradeOfferFoodMeatPigLeg
+  id: BuyFoodMeatPigLeg
   weight: 1.3
   shop: Horticulture
   pay:
@@ -150,7 +150,7 @@
     proto: CEFoodMeatPigLeg
 
 - type: tradeOffer
-  id: CETradeOfferFoodMeatBoar
+  id: BuyFoodMeatBoar
   weight: 1.3
   shop: Horticulture
   pay:
@@ -160,7 +160,7 @@
     proto: CEFoodMeatBoar
 
 - type: tradeOffer
-  id: CETradeOfferFoodMeatMonster
+  id: BuyFoodMeatMonster
   weight: 1.3
   shop: Horticulture
   pay:
@@ -170,7 +170,7 @@
     proto: CEFoodMeatMonster
 
 - type: tradeOffer
-  id: CETradeOfferFoodMeatMonsterLeg
+  id: BuyFoodMeatMonsterLeg
   weight: 1.3
   shop: Horticulture
   pay:
@@ -181,107 +181,107 @@
 
 #MARK: Seeds
 - type: tradeOffer
-  id: CETradeOfferSeedWheat30
+  id: BuySeedWheat10
   weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
   reward:
   - !type:CETradeSpawnReward
-    proto: CESeedWheat30
+    proto: CESeedWheat10
 
 - type: tradeOffer
-  id: CETradeOfferSeedPumpkin30
+  id: BuySeedPumpkin10
   weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
   reward:
   - !type:CETradeSpawnReward
-    proto: CESeedPumpkin30
+    proto: CESeedPumpkin10
 
 - type: tradeOffer
-  id: CETradeOfferSeedCabbage30
+  id: BuySeedCabbage10
   weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
   reward:
   - !type:CETradeSpawnReward
-    proto: CESeedCabbage30
+    proto: CESeedCabbage10
 
 - type: tradeOffer
-  id: CETradeOfferSeedCucumber30
+  id: BuySeedCucumber10
   weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
   reward:
   - !type:CETradeSpawnReward
-    proto: CESeedCucumber30
+    proto: CESeedCucumber10
 
 - type: tradeOffer
-  id: CETradeOfferSeedTomato30
+  id: BuySeedTomato10
   weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
   reward:
   - !type:CETradeSpawnReward
-    proto: CESeedTomato30
+    proto: CESeedTomato10
 
 - type: tradeOffer
-  id: CETradeOfferSeedPepper30
+  id: BuySeedPepper10
   weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
   reward:
   - !type:CETradeSpawnReward
-    proto: CESeedPepper30
+    proto: CESeedPepper10
 
 - type: tradeOffer
-  id: CETradeOfferSeedCarrot30
+  id: BuySeedCarrot10
   weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
   reward:
   - !type:CETradeSpawnReward
-    proto: CESeedCarrot30
+    proto: CESeedCarrot10
 
 - type: tradeOffer
-  id: CETradeOfferSeedCotton30
+  id: BuySeedCotton10
   weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
   reward:
   - !type:CETradeSpawnReward
-    proto: CESeedCotton30
+    proto: CESeedCotton10
 
 - type: tradeOffer
-  id: CETradeOfferSeedSunflower30
+  id: BuySeedSunflower10
   weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
   reward:
   - !type:CETradeSpawnReward
-    proto: CESeedSunflower30
+    proto: CESeedSunflower10
 
 - type: tradeOffer
-  id: CETradeOfferSeedCorn30
+  id: BuySeedCorn10
   weight: 0.2
   shop: Horticulture
   pay:
     bonus: 1
   reward:
   - !type:CETradeSpawnReward
-    proto: CESeedCorn30
+    proto: CESeedCorn10
 
 - type: tradeOffer
-  id: CETradeOfferSeedAppleTree
+  id: BuySeedAppleTree
   weight: 0.2
   shop: Horticulture
   pay:
@@ -293,7 +293,7 @@
 #MARK: Floor Tiles
 
 - type: tradeOffer
-  id: CETradeOfferFloorTileGrass30
+  id: BuyFloorTileGrass30
   weight: 0.2
   shop: Horticulture
   pay:
@@ -303,7 +303,7 @@
     proto: CEFloorTileGrass30
 
 - type: tradeOffer
-  id: CETradeOfferFloorTileGrassAutumn30
+  id: BuyFloorTileGrassAutumn30
   weight: 0.2
   shop: Horticulture
   pay:
@@ -313,7 +313,7 @@
     proto: CEFloorTileGrassAutumn30
 
 - type: tradeOffer
-  id: CETradeOfferFloorTileMycelium30
+  id: BuyFloorTileMycelium30
   weight: 0.2
   shop: Horticulture
   pay:
@@ -325,7 +325,7 @@
 #MARK: Materials
 
 - type: tradeOffer
-  id: CETradeOfferWoodLog
+  id: BuyWoodLog
   shop: Horticulture
   pay:
     bonus: 1
@@ -336,7 +336,7 @@
 #MARK: Tools
 
 - type: tradeOffer
-  id: CETradeOfferSack
+  id: BuySack
   shop: Horticulture
   pay:
     bonus: 1
@@ -345,7 +345,7 @@
     proto: CESack
 
 - type: tradeOffer
-  id: CETradeOfferBucket
+  id: BuyBucket
   shop: Horticulture
   pay:
     bonus: 1
@@ -354,7 +354,7 @@
     proto: CEBucket
 
 - type: tradeOffer
-  id: CETradeOfferWeaponDaggerHatchet
+  id: BuyWeaponDaggerHatchet
   shop: Horticulture
   pay:
     bonus: 1
@@ -363,7 +363,7 @@
     proto: CEWeaponDaggerHatchet
 
 - type: tradeOffer
-  id: CETradeOfferWeaponDaggerSickle
+  id: BuyWeaponDaggerSickle
   shop: Horticulture
   pay:
     bonus: 1
@@ -372,7 +372,7 @@
     proto: CEWeaponDaggerSickle
 
 - type: tradeOffer
-  id: CETradeOfferWeaponShovelIron
+  id: BuyWeaponShovelIron
   shop: Horticulture
   pay:
     bonus: 1
@@ -381,7 +381,7 @@
     proto: CEWeaponShovelIron
 
 - type: tradeOffer
-  id: CETradeOfferFryingPan
+  id: BuyFryingPan
   shop: Horticulture
   pay:
     bonus: 1
@@ -390,7 +390,7 @@
     proto: CEFryingPan
 
 - type: tradeOffer
-  id: CETradeOfferCookingPot
+  id: BuyCookingPot
   shop: Horticulture
   pay:
     bonus: 1
@@ -399,7 +399,7 @@
     proto: CECookingPot
 
 - type: tradeOffer
-  id: CETradeOfferFork
+  id: BuyFork
   weight: 0.2
   shop: Horticulture
   pay:
@@ -410,7 +410,7 @@
     count: 3
 
 - type: tradeOffer
-  id: CETradeOfferSpoon
+  id: BuySpoon
   weight: 0.2
   shop: Horticulture
   pay:
@@ -421,7 +421,7 @@
     count: 3
 
 - type: tradeOffer
-  id: CETradeOfferFoodCheeseWheel
+  id: BuyFoodCheeseWheel
   shop: Horticulture
   pay:
     bonus: 1
@@ -430,7 +430,7 @@
     proto: CEFoodCheeseWheel
 
 - type: tradeOffer
-  id: CETradeOfferFoodBlueCheeseWheel
+  id: BuyFoodBlueCheeseWheel
   shop: Horticulture
   pay:
     bonus: 1
@@ -439,7 +439,7 @@
     proto: CEFoodBlueCheeseWheel
 
 - type: tradeOffer
-  id: CETradeOfferFoodAgedCheeseWheel
+  id: BuyFoodAgedCheeseWheel
   shop: Horticulture
   pay:
     bonus: 1
@@ -448,7 +448,7 @@
     proto: CEFoodAgedCheeseWheel
 
 - type: tradeOffer
-  id: CETradeOfferFoodDoughLarge
+  id: BuyFoodDoughLarge
   shop: Horticulture
   pay:
     bonus: 1
@@ -457,7 +457,7 @@
     proto: CEFoodDoughLarge
 
 - type: tradeOffer
-  id: CETradeOfferFoodEgg
+  id: BuyFoodEgg
   shop: Horticulture
   pay:
     bonus: 1
@@ -467,7 +467,7 @@
     count: 5
 
 - type: tradeOffer
-  id: CETradeOfferBowlWooden
+  id: BuyBowlWooden
   weight: 0.2
   shop: Horticulture
   pay:
@@ -477,7 +477,7 @@
     proto: CEBowlWooden
 
 - type: tradeOffer
-  id: CETradeOfferBowlIron
+  id: BuyBowlIron
   weight: 0.2
   shop: Horticulture
   pay:
@@ -487,7 +487,7 @@
     proto: CEBowlIron
 
 - type: tradeOffer
-  id: CETradeOfferPlateWooden
+  id: BuyPlateWooden
   weight: 0.2
   shop: Horticulture
   pay:
@@ -497,7 +497,7 @@
     proto: CEPlateWooden
 
 - type: tradeOffer
-  id: CETradeOfferPlateIron
+  id: BuyPlateIron
   weight: 0.2
   shop: Horticulture
   pay:
@@ -507,7 +507,7 @@
     proto: CEPlateIron
 
 - type: tradeOffer
-  id: CETradeOfferWoodenBeerMug
+  id: BuyWoodenBeerMug
   weight: 0.2
   shop: Horticulture
   pay:
@@ -517,7 +517,7 @@
     proto: CEWoodenBeerMug
 
 - type: tradeOffer
-  id: CETradeOfferSteelBeerMug
+  id: BuySteelBeerMug
   weight: 0.2
   shop: Horticulture
   pay:
@@ -527,7 +527,7 @@
     proto: CESteelBeerMug
 
 - type: tradeOffer
-  id: CETradeOfferSteelWoodBeerMug
+  id: BuySteelWoodBeerMug
   weight: 0.2
   shop: Horticulture
   pay:
@@ -537,7 +537,7 @@
     proto: CESteelWoodBeerMug
 
 - type: tradeOffer
-  id: CETradeOfferMetalBeerMug
+  id: BuyMetalBeerMug
   weight: 0.2
   shop: Horticulture
   pay:
@@ -547,7 +547,7 @@
     proto: CEMetalBeerMug
 
 - type: tradeOffer
-  id: CETradeOfferSteelGobletIron
+  id: BuySteelGobletIron
   weight: 0.2
   shop: Horticulture
   pay:
@@ -557,7 +557,7 @@
     proto: CESteelGobletIron
 
 - type: tradeOffer
-  id: CETradeOfferSteelGobletCopper
+  id: BuySteelGobletCopper
   weight: 0.2
   shop: Horticulture
   pay:
@@ -567,7 +567,7 @@
     proto: CESteelGobletCopper
 
 - type: tradeOffer
-  id: CETradeOfferSteelGobletGold
+  id: BuySteelGobletGold
   weight: 0.1
   shop: Horticulture
   pay:

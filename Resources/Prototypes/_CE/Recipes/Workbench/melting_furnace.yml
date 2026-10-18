@@ -1,14 +1,14 @@
-- type: CERecipe
-  id: CEBaseMeltingFurnaceRecipe
+- type: workbenchRecipe
+  id: BaseMeltingFurnaceRecipe
   abstract: true
   tag: CERecipeMeltingFurnace
   workbench: CEMeltingFurnace
 
 #MARK: Ingot
 
-- type: CERecipe
-  id: CEIronBar1
-  parent: CEBaseMeltingFurnaceRecipe
+- type: workbenchRecipe
+  id: IronBar1
+  parent: BaseMeltingFurnaceRecipe
   category: Materials
   craftTime: 2.5
   requirements:
@@ -21,9 +21,9 @@
   result: CEIronBar1
   resultCount: 1
 
-- type: CERecipe
-  id: CEBrassBar1
-  parent: CEBaseMeltingFurnaceRecipe
+- type: workbenchRecipe
+  id: BrassBar1
+  parent: BaseMeltingFurnaceRecipe
   category: Materials
   craftTime: 2.5
   requirements:
@@ -36,11 +36,26 @@
   result: CEBrassBar1
   resultCount: 1
 
+- type: workbenchRecipe
+  id: GoldBar1
+  parent: BaseMeltingFurnaceRecipe
+  category: Materials
+  craftTime: 2.5
+  requirements:
+  - !type:MaterialResource
+    material: CEGold
+    count: 10
+  - !type:StackResource
+    stack: CECoal
+    count: 1
+  result: CEGoldBar1
+  resultCount: 1
+
 #MARK: Gems
 
-- type: CERecipe
-  id: CEDiamond1
-  parent: CEBaseMeltingFurnaceRecipe
+- type: workbenchRecipe
+  id: Diamond1
+  parent: BaseMeltingFurnaceRecipe
   category: Materials
   craftTime: 4
   requirements:
@@ -55,9 +70,9 @@
 
 #MARK: Sheet
 
-- type: CERecipe
-  id: CEBrassSheet1
-  parent: CEBaseMeltingFurnaceRecipe
+- type: workbenchRecipe
+  id: BrassSheet1
+  parent: BaseMeltingFurnaceRecipe
   category: Materials
   craftTime: 2.5
   requirements:
@@ -70,9 +85,9 @@
   result: CEBrassSheet1
   resultCount: 2
 
-- type: CERecipe
-  id: CEIronSheet1
-  parent: CEBaseMeltingFurnaceRecipe
+- type: workbenchRecipe
+  id: IronSheet1
+  parent: BaseMeltingFurnaceRecipe
   category: Materials
   craftTime: 2.5
   requirements:
@@ -87,9 +102,9 @@
 
 #MARK: Rod
 
-- type: CERecipe
-  id: CEIronRod1
-  parent: CEBaseMeltingFurnaceRecipe
+- type: workbenchRecipe
+  id: IronRod1
+  parent: BaseMeltingFurnaceRecipe
   category: Materials
   craftTime: 2.5
   requirements:
@@ -102,9 +117,9 @@
   result: CEIronRod1
   resultCount: 5
 
-- type: CERecipe
-  id: CEBrassRod1
-  parent: CEBaseMeltingFurnaceRecipe
+- type: workbenchRecipe
+  id: BrassRod1
+  parent: BaseMeltingFurnaceRecipe
   category: Materials
   craftTime: 2.5
   requirements:
@@ -119,9 +134,9 @@
 
 #MARK: Ash
 
-- type: CERecipe
-  id: CEAsh1
-  parent: CEBaseMeltingFurnaceRecipe
+- type: workbenchRecipe
+  id: Ash1
+  parent: BaseMeltingFurnaceRecipe
   category: Materials
   craftTime: 1.5
   requirements:

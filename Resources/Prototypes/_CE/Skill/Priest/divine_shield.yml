@@ -1,5 +1,5 @@
 - type: skill
-  id: CEDivineShield
+  id: DivineShield
   icon:
     sprite: _CE/Actions/Spells/divine_shield.rsi
     state: icon
@@ -75,9 +75,9 @@
         Structural: 0.5
   - type: StatusEffectAlert
     alert: CEDivineShield
-  - type: CERemovedVFXStatusEffect
-    vfx: CEEffectBreakDivineShield
-    sound:
+  - type: CEVFXStatusEffect
+    removedVfx: CEEffectBreakDivineShield
+    removedSound:
       path: /Audio/_CE/Effects/divine_shield_break.ogg
       params:
         variation: 0.1

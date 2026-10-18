@@ -8,9 +8,6 @@
     sprite: _CE/Clothing/Head/Guard/Helmets/basic.rsi
   - type: Clothing
     sprite: _CE/Clothing/Head/Guard/Helmets/basic.rsi
-  - type: CEMagicEssenceStructure
-    essences:
-      Metal: { min: 1, max: 3 }
 
 - type: entity
   parent: CEClothingHeadBase
@@ -27,9 +24,6 @@
     - Hair
     - HeadTop
     - HeadSide
-  - type: CEMagicEssenceStructure
-    essences:
-      Metal: { min: 1, max: 3 }
 
 - type: entity
   parent: CEClothingHeadBase
@@ -41,9 +35,6 @@
     sprite: _CE/Clothing/Head/Generic/metalheadband.rsi
   - type: Clothing
     sprite: _CE/Clothing/Head/Generic/metalheadband.rsi
-  - type: CEMagicEssenceStructure
-    essences:
-      Metal: { min: 1, max: 3 }
 
 - type: entity
   parent: CEClothingHeadBase
@@ -68,7 +59,3 @@
         Shock: 0.9
   - type: StaticPrice
     price: 100
-  - type: CEMagicEssenceStructure
-    essences:
-      Metal: { min: 1, max: 3 }
-      Energia: { min: 1, max: 3 }

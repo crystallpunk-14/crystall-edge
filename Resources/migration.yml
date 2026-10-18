@@ -23,7 +23,7 @@ CEPlantSage: null
 CENail110: CENail10
 
 # 2025-12-04
-CEAlwaysPoweredWallLight: CEWallLight
+CEAlwaysPoweredWallLight: CEWallLightOrange
 
 # 2025-12-06
 CEWallCrystal: CEWallCrystalCore
@@ -168,6 +168,112 @@ CEMachineCoreMurkSphereFixerProjector: null
 CEMagicEssenceHungryNode: null
 CEDimensionalShard: null
 CECrystalShardAir: null
+
+# 2026-10-12
+CEClothingBackPortableLighthouse: null
+CEConjuredLight: null
+
+# 2026-10-13
+CEGuidebookImperialLaws: null
+CECobwebRight1: null
+CECobwebLeft1: null
+CECobwebLeft2: null
+CECobwebRight2: null
+
+# 2026-10-14
+CEZLevelLadderDirtCliff: CEZLevelStairsDirtCliff
+CEZLevelLadderDirtCliffCorner: CEZLevelStairsDirtCliffCorner
+CEZLevelLadderDirtCliffCornerInner: CEZLevelStairsDirtCliffCornerInner
+CEZLevelLadderFrame: CEZLevelStairsFrame
+CEZLevelLadderFrameCorner: CEZLevelStairsFrameCorner
+CEZLevelLadderFrameCornerInner: CEZLevelStairsFrameCornerInner
+CEZLevelsLadderRoofRed: CEZLevelStairsRoofRed
+CEZLevelsLadderRoofRedCorner: CEZLevelStairsRoofRedCorner
+CEZLevelsLadderRoofRedCornerInner: CEZLevelStairsRoofRedCornerInner
+CEZLevelsLadderRoofGreen: CEZLevelStairsRoofGreen
+CEZLevelsLadderRoofGreenCorner: CEZLevelStairsRoofGreenCorner
+CEZLevelsLadderRoofGreenCornerInner: CEZLevelStairsRoofGreenCornerInner
+CEZLevelsLadderRoofBlue: CEZLevelStairsRoofBlue
+CEZLevelsLadderRoofBlueCorner: CEZLevelStairsRoofBlueCorner
+CEZLevelsLadderRoofBlueCornerInner: CEZLevelStairsRoofBlueCornerInner
+CEZLevelLadderStone: CEZLevelStairsStone
+CEZLevelLadderStoneCorner: CEZLevelStairsStoneCorner
+CEZLevelLadderStoneCornerInner: CEZLevelStairsStoneCornerInner
+CEZLevelLadderWooden: CEZLevelStairsWooden
+CEZLevelLadderWoodenCorner: CEZLevelStairsWoodenCorner
+CEZLevelLadderWoodenCornerInner: CEZLevelStairsWoodenCornerInner
+CEConveyorLadder: CEConveyorStairs
+CEConveyorLadderReverse: CEConveyorStairsReverse
+CESeedWheat30: CESeedWheat10
+CESeedPumpkin30: CESeedPumpkin10
+CESeedCabbage30: CESeedCabbage10
+CESeedCucumber30: CESeedCucumber10
+CESeedTomato30: CESeedTomato10
+CESeedPepper30: CESeedPepper10
+CESeedCotton30: CESeedCotton10
+CESeedSunflower30: CESeedSunflower10
+CESeedCorn30: CESeedCorn10
+CESeedCarrot30: CESeedCarrot10
+
+# 2026-10-16
+CEClothingEyesThaumaturgyGlasses: null
+CEClothingEyesThaumaturgyGlassesAdvanced: null
+CEGuidebookThaumaturgy: null
+
+# Thaumaturgy and academy removal
+CEIronDoorAcademyHall: CEIronDoorWindowed
+CEIronDoorAcademyHallMirrored: CEIronDoorWindowedMirrored
+CEIronDoorAcademyTechnical: CEIronDoor
+CEIronDoorAcademyTechnicalMirrored: CEIronDoorMirrored
+CEIronDoorAcademyLab: CEIronDoor
+CEIronDoorAcademyLabMirrored: CEIronDoorMirrored
+CEIronDoorAcademyRectorRoom: CEIronDoor
+CEIronDoorAcademyRectorRoomMirrored: CEIronDoorMirrored
+CEChestFilledAcademyStudent: CEWoodenChest
+CEChestFilledAcademyProfessor: CEWoodenChest
+CEChestFilledAcademyRector: CEGoldChest
+CEBedsideTableFilledAcademyStudent: CEBedsideTableWooden
+CEBedsideTableFilledAcademyProfessor: CEBedsideTableWooden
+CEBedsideTableFilledAcademyRector: CEBedsideTableWooden
+CEResearchTable: CETableWooden
+CEWallRadioSpeakerAcademy: CEWallRadioSpeaker
+CERadioPostSpeakerAcademy: CERadioPostSpeaker
+CEKeyAcademyHall: null
+CEKeyAcademyTechnical: null
+CEKeyAcademyLab: null
+CEKeyAcademyRectorRoom: null
+CEKeyRingAcademyStudent: null
+CEKeyRingAcademyProfessor: null
+CEKeyRingAcademyRector: null
+CEWalletFilledAcademyStudent: null
+CEWalletFilledAcademyProfessor: null
+CEWalletFilledAcademyRector: null
+CESpawnPointAcademyStudent: null
+CESpawnPointAcademyProfessor: null
+CESpawnPointAcademyRector: null
+CEMagicEssenceAttractor: null
+CEMachineCoreEssenceAttractor: null
+CEPortableMagicEssenceAttractor: null
+CEMagicEssenceNode: null
+CENodeStabilizerSphere: null
+CEPressTargetThaumaturgySplitter: null
+CEMachineCorePressTargetThaumaturgySplitter: null
+CEThaumaturgicMagnifyingGlass: null
+CEThaumaturgicMagnifyingGlassAdmin: null
+CEUnselectedDiscoveryProject: null
+CEDiscoveryProjectEngineering: null
+CEDiscoveryProjectSpellcasting: null
+CEBookAncient: null
+CEDebugKnowledgeBook: null
+CEVialMediumEarthEssence: CEVialMedium
+CEVialMediumFireEssence: CEVialMedium
+CEVialMediumWaterEssence: CEVialMedium
+CEVialMediumAirEssence: CEVialMedium
+CEVialMediumOrderEssence: CEVialMedium
+CEVialMediumChaosEssence: CEVialMedium
+
+# 2026-10-18
+CEWallLight: CEWallLightOrange
 
 # CrystallEdge migration zone end
 

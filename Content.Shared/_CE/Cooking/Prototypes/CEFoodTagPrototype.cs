@@ -5,7 +5,7 @@ namespace Content.Shared._CE.Cooking.Prototypes;
 /// <summary>
 /// Localized food tag used by the cooking system.
 /// </summary>
-[Prototype("CEFoodTag")]
+[Prototype("foodTag")]
 public sealed partial class CEFoodTagPrototype : IPrototype
 {
     [IdDataField]

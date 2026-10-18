@@ -1,7 +1,7 @@
 using System.Numerics;
 using System.Threading;
 using Content.Server._CE.MeleeWeapon;
-using Content.Server._CE.ZLevels.LaddersCache;
+using Content.Server._CE.ZLevels.StairsCache;
 using Content.Server.Administration.Managers;
 using Content.Server.DoAfter;
 using Content.Server.NPC.Pathfinding;
@@ -70,7 +70,7 @@ public sealed partial class CEGOAPSteeringSystem : EntitySystem
     [Dependency] private CEWeaponSystem _weapon = default!;
     [Dependency] private CESharedAnimationActionSystem _animationAction = default!;
     [Dependency] private CESharedZLevelsSystem _zLevels = default!;
-    [Dependency] private CEZLevelsLaddersCacheSystem _ladderCache = default!;
+    [Dependency] private CEZLevelStairsCacheSystem _stairsCache = default!;
     [Dependency] private ClimbSystem _climb = default!;
     [Dependency] private DoAfterSystem _doAfter = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
@@ -324,7 +324,7 @@ public sealed partial class CEGOAPSteeringSystem : EntitySystem
         if (zOffset > 0)
         {
             // Steer to the uphill edge of the nearest slope on the current map.
-            if (!_ladderCache.GetNearestLadder(agentMap, agentWorldPos, 5, out var slopeTilePos, out var slope))
+            if (!_stairsCache.GetNearestStairs(agentMap, agentWorldPos, 5, out var slopeTilePos, out var slope))
             {
                 SetNoPath(ent);
                 return;
@@ -339,7 +339,7 @@ public sealed partial class CEGOAPSteeringSystem : EntitySystem
         {
             // Find the nearest slope on the map below and walk to the tile above its uphill end.
             if (!_zLevels.TryMapDown(agentMap, out var belowMap) ||
-                !_ladderCache.GetNearestLadder(belowMap, agentWorldPos, 5, out var slopeTilePos, out var slope))
+                !_stairsCache.GetNearestStairs(belowMap, agentWorldPos, 5, out var slopeTilePos, out var slope))
             {
                 SetNoPath(ent);
                 return;

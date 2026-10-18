@@ -110,7 +110,7 @@ public sealed partial class GhostUIController : UIController, IOnSystemChanged<G
         if (Gui?.TargetWindow is not { } window)
             return;
 
-        window.UpdateWarps(msg.Warps);
+        window.UpdateWarps(msg.Warps, msg.CanSeeMeta); // CrystallEdge: dossier is hidden from ghosts without meta access
         window.Populate();
     }
 

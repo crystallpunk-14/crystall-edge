@@ -161,6 +161,7 @@ public sealed partial class FloorTileSystem : EntitySystem
                         BreakOnMove = true,
                         BreakOnDamage = true,
                         NeedHand = true,
+                        BlockDuplicate = false, // several floors at once
                     };
                     args.Handled = _doAfter.TryStartDoAfter(doAfterEventArgs);
                     //CrystallEdge end
@@ -196,9 +197,6 @@ public sealed partial class FloorTileSystem : EntitySystem
         if (args.Handled || args.Cancelled)
             return;
 
-        if (!_stackSystem.TryUse(uid, 1))
-            return;
-
         var grid = GetEntity(args.TargetGrid);
         if (grid != null)
         {
@@ -206,7 +204,14 @@ public sealed partial class FloorTileSystem : EntitySystem
             if (!TryComp<MapGridComponent>(grid, out var mapGrid))
                 return;
 
-            PlaceAt(args.User, grid.Value, mapGrid, GetCoordinates(args.Location), args.TileId, args.PlaceSound, args.Offset);
+            var location = GetCoordinates(args.Location);
+            if (_map.GetTileRef(grid.Value, mapGrid, location).Tile.TypeId == args.TileId)
+                return;
+
+            if (!_stackSystem.TryUse(uid, 1))
+                return;
+
+            PlaceAt(args.User, grid.Value, mapGrid, location, args.TileId, args.PlaceSound, args.Offset);
         }
 
         args.Handled = true;

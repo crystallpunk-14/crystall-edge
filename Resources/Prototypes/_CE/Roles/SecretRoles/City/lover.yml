@@ -1,5 +1,5 @@
 - type: secretRole
-  id: CELover
+  id: Lover
   name: ce-secret-role-name-lover
   description: ce-secret-role-description-lover
   icon: CESecretRoleIconLover
@@ -26,8 +26,8 @@
       - CETargetCompleteOwnedObjective
   - type: CETargetSecretRoleBlacklist
     secretRoleBlacklist:
-    - CETormentor
-    - CELover
+    - Tormentor
+    - Lover
 
 - type: entity
   id: CEObjectiveLoverSurvive

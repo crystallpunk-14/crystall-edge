@@ -1,4 +1,4 @@
-- type: CECookingRecipe
+- type: cookingRecipe
   id: InedibleSoup
   foodType: Soup
   foodData:
@@ -12,13 +12,27 @@
   requirements:
   - !type:AlwaysMet
 
+# Overcooked soup, see CEFoodType burntRecipe. No requirements: never cooked directly.
+- type: cookingRecipe
+  id: BurntSoup
+  foodType: Soup
+  foodData:
+    name: ce-soup-recipe-burned-trash-name
+    desc: ce-soup-recipe-burned-trash-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Soups/food.rsi
+      state: trash
+      color: "#4a4a4a"
+    statusEffects:
+      CEStatusEffectBadFoodVomit: 10
+
 # 1 req
 
 # We dont have 1 req for soups because all soups is water + something
 
 # 2 req
 
-- type: CECookingRecipe
+- type: cookingRecipe
   id: MeatSoup
   foodType: Soup
   foodData:
@@ -34,9 +48,9 @@
     - Water
   - !type:TagRequired
     tags:
-    - CEMeat
+    - Meat
 
-- type: CECookingRecipe
+- type: cookingRecipe
   id: CheeseSoup
   foodType: Soup
   foodData:
@@ -52,9 +66,9 @@
     - Water
   - !type:TagRequired
     tags:
-    - CECheese
+    - Cheese
 
-- type: CECookingRecipe
+- type: cookingRecipe
   id: PumpkinPuree
   foodType: Soup
   foodData:
@@ -70,9 +84,9 @@
     - Water #TODO: Milk Cream!!
   - !type:TagRequired
     tags:
-    - CEPumpkin
+    - Pumpkin
 
-- type: CECookingRecipe
+- type: cookingRecipe
   id: PorridgePlain
   foodType: Soup
   foodData:
@@ -88,11 +102,11 @@
     - Water
   - !type:TagRequired
     tags:
-    - CEWheat
+    - Wheat
 
 # 3 req
 
-- type: CECookingRecipe
+- type: cookingRecipe
   id: VegSoup
   foodType: Soup
   foodData:
@@ -108,13 +122,13 @@
     - Water
   - !type:TagRequired
     tags:
-    - CESalad
-    - CEVegetable
+    - Salad
+    - Vegetable
   - !type:TagBlocked
     tags:
-    - CEMeat
+    - Meat
 
-- type: CECookingRecipe
+- type: cookingRecipe
   id: MeatCheeseSoup
   foodType: Soup
   foodData:
@@ -130,12 +144,12 @@
     - Water
   - !type:TagRequired
     tags:
-    - CEMeat
+    - Meat
   - !type:TagRequired
     tags:
-    - CECheese
+    - Cheese
 
-- type: CECookingRecipe
+- type: cookingRecipe
   id: MeatSaladSoup
   foodType: Soup
   foodData:
@@ -151,13 +165,13 @@
     - Water
   - !type:TagRequired
     tags:
-    - CEMeat
+    - Meat
   - !type:TagRequired
     tags:
-    - CESalad
-    - CEVegetable
+    - Salad
+    - Vegetable
 
-- type: CECookingRecipe
+- type: cookingRecipe
   id: MonsterBrew
   foodType: Soup
   foodData:
@@ -173,12 +187,12 @@
     - Water
   - !type:TagRequired
     tags:
-    - CEMeatMonster
+    - MeatMonster
   - !type:TagRequired
     tags:
-    - CEEgg
+    - Egg
 
-- type: CECookingRecipe
+- type: cookingRecipe
   id: PorridgeApple
   foodType: Soup
   foodData:
@@ -194,12 +208,12 @@
     - Water
   - !type:TagRequired
     tags:
-    - CEWheat
+    - Wheat
   - !type:TagRequired
     tags:
-    - CEApple
+    - Apple
 
-- type: CECookingRecipe
+- type: cookingRecipe
   id: PorridgeMeat
   foodType: Soup
   foodData:
@@ -215,12 +229,12 @@
     - Water
   - !type:TagRequired
     tags:
-    - CEWheat
+    - Wheat
   - !type:TagRequired
     tags:
-    - CEMeat
+    - Meat
 
-- type: CECookingRecipe
+- type: cookingRecipe
   id: PorridgePumpkin
   foodType: Soup
   foodData:
@@ -236,12 +250,12 @@
     - Water
   - !type:TagRequired
     tags:
-    - CEWheat
+    - Wheat
   - !type:TagRequired
     tags:
-    - CEPumpkin
+    - Pumpkin
 
-- type: CECookingRecipe
+- type: cookingRecipe
   id: VegCarrotSoup
   foodType: Soup
   foodData:
@@ -257,14 +271,14 @@
     - Water
   - !type:TagRequired
     tags:
-    - CECarrot
+    - Carrot
   - !type:TagRequired
     tags:
-    - CECucumber
+    - Cucumber
 
 # 4 req
 
-- type: CECookingRecipe
+- type: cookingRecipe
   id: CornPorridge
   foodType: Soup
   foodData:
@@ -280,13 +294,13 @@
     - Water
   - !type:TagRequired
     tags:
-    - CEWheat
+    - Wheat
   - !type:TagRequired
     tags:
-    - CECorn
+    - Corn
   - !type:TagRequired
     tags:
-    - CESalad
+    - Salad
 
 # Unused soup.rsi states lacking recipes:
 # - flyagaric

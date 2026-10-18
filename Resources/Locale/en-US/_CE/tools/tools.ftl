@@ -9,3 +9,5 @@ ce-tool-quality-hammering-tool-name = Hammer
 
 ce-tool-quality-matter-manipulation-name = Matter Manipulation
 ce-tool-quality-matter-manipulation-tool-name = Matter Manipulator
+
+ce-voice-distortion-name = Distorted voice
