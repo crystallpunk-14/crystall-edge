@@ -16,7 +16,6 @@
     - BaseStationRecords
     - BaseStationAlertLevels
     - BaseStationMagnet
-    - BaseStationExpeditions
     - BaseStationSalvageJobs
     - BaseStationSiliconLawCrewsimov
     - BaseStationAllEventsEligible
