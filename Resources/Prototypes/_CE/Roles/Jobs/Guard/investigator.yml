@@ -30,7 +30,6 @@
     - CEWeaponGunJustice
     - CEPaperArmyOrders
 
-
 - type: entity
   id: CEWalletFilledInvestigator
   parent: CEWallet
@@ -54,6 +53,23 @@
     contents:
     - id: CEKeyInvestigatorHall
     - id: CEKeyInvestigatorStaff
+
+- type: entity
+  id: CEBedsideTableFilledInvestigator
+  parent: CEBedsideTableWooden
+  suffix: Filled, Investigator
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 2, 3
+        children:
+        - id: CEClothingCloakMantleInvestigator
+        - id: CEClothingMaskInvestigator
+        - id: CEClothingShirtGuard
+        - id: CEClothingShirtSyurkoGuard
+        - id: CEClothingPantsGuard
 
 - type: entity
   id: CEChestFilledInvestigator
