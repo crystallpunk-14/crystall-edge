@@ -154,7 +154,8 @@ public sealed class AllGamePresetsStartTest : AntagTest
         // Maps now exist
         Assert.That(SEntMan.Count<MapComponent>(), Is.GreaterThan(0));
         Assert.That(SEntMan.Count<MapGridComponent>(), Is.GreaterThan(0));
-        Assert.That(SEntMan.Count<StationCentcommComponent>(), Is.EqualTo(1));
+        // CrystallEdge: CE stations have no centcomm
+        //Assert.That(SEntMan.Count<StationCentcommComponent>(), Is.EqualTo(1));
 
         // Clear game preset and return to lobby
         await Pair.WaitCommand("golobby");

@@ -1236,11 +1236,7 @@
   id: AirlockExternalGlassShuttleEscape
   suffix: External, Escape 3x4, Glass, Docking
   components:
-  - type: GridFill
-    addComponents:
-    - type: IFF
-      flags:
-      - HideLabel
+  # CrystallEdge: GridFill removed, escape_pod_small.yml deleted with upstream maps
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsExternal ]
