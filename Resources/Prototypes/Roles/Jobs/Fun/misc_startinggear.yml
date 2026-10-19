@@ -176,18 +176,6 @@
     head: ClothingHeadHelmetBone
     shoes: ClothingShoesCult
 
-#Banana Clown
-- type: startingGear
-  id: BananaClown
-  equipment:
-    id: VisitorPDA
-    back: ClothingBackpackClown
-    shoes: ClothingShoesClownBanana
-    jumpsuit: ClothingUniformJumpsuitClownBanana
-    mask: ClothingMaskClownBanana
-    pocket1: BikeHorn
-    pocket2: ClownRecorder
-
 # Passenger but without the ID, bag, or headset
 - type: startingGear
   id: LimitedPassengerGear

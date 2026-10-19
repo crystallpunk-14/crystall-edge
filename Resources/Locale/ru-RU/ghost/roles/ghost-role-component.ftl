@@ -109,8 +109,6 @@ ghost-role-information-space-dragon-rules = Вы [color=red][bold]Командн
 ghost-role-information-space-dragon-summoned-carp-rules = Вы [color=red][bold]Командный антагонист[/bold][/color], в команде с драконом и другими его союзниками.
 ghost-role-information-space-dragon-dungeon-description = Защищайте подземелье экспедиции вместе со своими рыбьими товарищами!
 ghost-role-information-space-dragon-dungeon-rules = Вы [color=red][bold]Командный антагонист[/bold][/color], в команде с другими обитателями подземелья.
-ghost-role-information-cluwne-name = Клувень
-ghost-role-information-cluwne-description = Станьте жалким клувнем. Ваша единственная цель в жизни - найти сладкое избавление от страданий (обычно через избиение до смерти). Клоун не является антагонистом, но может защищаться. Члены экипажа могут свободно убивать клувней (Или нет, в зависимости от правил сервера)
 ghost-role-information-skeleton-pirate-name = Скелет-пират
 ghost-role-information-skeleton-pirate-description = Устройте хаос и разграбьте станцию в поисках сокровищ.
 ghost-role-information-skeleton-biker-name = Скелет-байкер

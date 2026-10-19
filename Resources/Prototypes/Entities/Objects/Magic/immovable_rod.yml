@@ -124,18 +124,6 @@
 
 - type: entity
   parent: ImmovableRodKeepTilesStill
-  id: ImmovableRodClown
-  name: immovable clown
-  description: Ejected from the neighbouring station one solar system over. HONK!
-  components:
-  - type: Sprite
-    sprite: Markers/jobs.rsi
-    state: clown
-    rotation: 180
-    noRot: false
-
-- type: entity
-  parent: ImmovableRodKeepTilesStill
   id: ImmovableRodBanana
   name: immovable banana
   description: At least you won't slip on it.

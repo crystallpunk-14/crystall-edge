@@ -139,29 +139,6 @@
         color: "#162742"
 
 - type: entity
-  name: clown's rubber stamp
-  parent: RubberStampBase
-  id: RubberStampClown
-  categories: [ DoNotMap ]
-  components:
-  - type: Stamp
-    stampedName: stamp-component-stamped-name-clown
-    stampedColor: "#ff33cc"
-    stampState: "paper_stamp-clown"
-  - type: Sprite
-    state: stamp-clown
-  - type: Item
-    inhandVisuals:
-      left:
-      - state: stamp-inhand-left
-      - state: handle-inhand-left
-        color: "#ff33cc"
-      right:
-      - state: stamp-inhand-right
-      - state: handle-inhand-right
-        color: "#ff33cc"
-
-- type: entity
   name: chief engineer's rubber stamp
   parent: [RubberStampBase, BaseCommandContraband]
   id: RubberStampCE
@@ -252,30 +229,6 @@
       - state: stamp-inhand-right
       - state: handle-inhand-right
         color: "#cc0000"
-
-- type: entity
-  name: mime's rubber stamp
-  parent: RubberStampBase
-  id: RubberStampMime
-  categories: [ DoNotMap ]
-  components:
-  - type: Stamp
-    stampedName: stamp-component-stamped-name-mime
-    stampedColor: "#777777"
-    stampState: "paper_stamp-mime"
-    sound: null
-  - type: Sprite
-    state: stamp-mime
-  - type: Item
-    inhandVisuals:
-      left:
-      - state: stamp-inhand-left
-      - state: handle-inhand-left
-        color: "#777777"
-      right:
-      - state: stamp-inhand-right
-      - state: handle-inhand-right
-        color: "#777777"
 
 - type: entity
   name: quartermaster's rubber stamp

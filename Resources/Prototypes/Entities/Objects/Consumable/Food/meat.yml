@@ -706,28 +706,6 @@
         Blunt: 2
 
 - type: entity
-  parent: [FoodMeatBase, BaseSlicingRefinableFood]
-  id: FoodMeatClown
-  name: meat clown
-  description: A delicious, round piece of meat clown. How horrifying.
-  components:
-  - type: Item
-    storedOffset: 0,3
-  - type: FlavorProfile
-    flavors:
-      - meaty
-      - funny
-  - type: Tag
-    tags:
-    - Raw
-    - Meat
-  - type: Sprite
-    state: clown
-  - type: ToolRefinable
-    refineResult:
-    - id: FoodMeatSalamiSlice
-
-- type: entity
   parent: [SolutionTiny, FoodMeatBase]
   id: FoodMeatMeatball
   name: meatball

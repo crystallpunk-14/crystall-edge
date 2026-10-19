@@ -443,39 +443,6 @@
 # Tastes like pie, mint.
 
 - type: entity
-  name: mime tart
-  parent: [FoodPieBase, BaseSlicingRefinableFood]
-  id: FoodTartMime
-  description: "\"      \""
-  components:
-  - type: FlavorProfile
-    flavors:
-      - nothing
-  - type: Sprite
-    state: mime
-  - type: Item
-    heldPrefix: mime
-  - type: ToolRefinable
-    refineResult:
-    - id: FoodTartMimeSlice
-      amount: 8
-
-- type: entity
-  name: slice of mime tart
-  parent: FoodPieSliceBase
-  id: FoodTartMimeSlice
-  components:
-  - type: FlavorProfile
-    flavors:
-      - nothing
-  - type: Sprite
-    layers:
-    - state: mimetart-slice
-  - type: Item
-    heldPrefix: mime
-# Tastes like nothing.
-
-- type: entity
   name: amanita pie
   parent: [FoodPieBase, BaseSlicingRefinableFood]
   id: FoodPieAmanita

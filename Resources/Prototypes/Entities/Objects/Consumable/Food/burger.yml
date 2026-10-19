@@ -432,29 +432,6 @@
 
 - type: entity
   parent: FoodBurgerBase
-  id: FoodBurgerClown
-  name: clown burger
-  description: This tastes funny...
-  components:
-  - type: Item
-    storedOffset: 0,1
-    inhandVisuals:
-      left:
-      - state: clown-inhand-left
-      right:
-      - state: clown-inhand-right
-  - type: FlavorProfile
-    flavors:
-      - bun
-      - funny
-  - type: Sprite
-    state: clown
-  - type: Tag
-    tags:
-    - Meat
-
-- type: entity
-  parent: FoodBurgerBase
   id: FoodBurgerCorgi
   name: corger #not curger
   description: The Head of Personnel's favorite!
@@ -861,35 +838,6 @@
       - state: alpha-patty-inhand-right
         color: "#a94a31"
 # Tastes like bun, pork patty.
-
-- type: entity
-  name: mime burger
-  parent: FoodBurgerBase
-  id: FoodBurgerMime
-  description: Its taste defies language.
-  components:
-  - type: FlavorProfile
-    flavors:
-      - bun
-      - nothing
-  - type: Sprite
-    state: mime
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Nutriment
-        Quantity: 10
-      - ReagentId: Vitamin
-        Quantity: 5
-      - ReagentId: Nothing
-        Quantity: 30
-  - type: Item
-    inhandVisuals:
-      left:
-      - state: mime-inhand-left
-      right:
-      - state: mime-inhand-right
-# Tastes like  .
 
 - type: entity
   name: plain burger

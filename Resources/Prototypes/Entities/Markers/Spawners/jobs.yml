@@ -199,30 +199,6 @@
       - state: botanist
 
 - type: entity
-  id: SpawnPointClown
-  parent: SpawnPointJobBase
-  name: clown
-  components:
-  - type: SpawnPoint
-    job_id: Clown
-  - type: Sprite
-    layers:
-      - state: green
-      - state: clown
-
-- type: entity
-  id: SpawnPointMime
-  parent: SpawnPointJobBase
-  name: mime
-  components:
-  - type: SpawnPoint
-    job_id: Mime
-  - type: Sprite
-    layers:
-      - state: green
-      - state: mime
-
-- type: entity
   id: SpawnPointChaplain
   parent: SpawnPointJobBase
   name: chaplain

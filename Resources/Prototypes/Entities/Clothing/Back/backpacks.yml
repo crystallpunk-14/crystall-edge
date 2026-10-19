@@ -41,24 +41,6 @@
 
 - type: entity
   parent: ClothingBackpack
-  id: ClothingBackpackClown
-  name: giggles von honkerton
-  description: It's a backpack made by Honk! Co.
-  components:
-  - type: Sprite
-    sprite: Clothing/Back/Backpacks/clown.rsi
-  - type: Storage
-    storageOpenSound:
-      collection: BikeHorn
-      params:
-        variation: 0.125
-    storageInsertSound:
-      collection: FootstepClown
-      params:
-        variation: 0.125
-
-- type: entity
-  parent: ClothingBackpack
   id: ClothingBackpackIan
   name: Ian's backpack
   description: Sometimes he wears it.
@@ -123,17 +105,6 @@
   - type: Sprite
     sprite: Clothing/Back/Backpacks/captain.rsi
 
-- type: entity
-  parent: ClothingBackpack
-  id: ClothingBackpackMime
-  name: mime backpack
-  description: A silent backpack made for those silent workers. Silence Co.
-  components:
-  - type: Sprite
-    sprite: Clothing/Back/Backpacks/mime.rsi
-  - type: Storage
-    storageOpenSound: null
-    storageInsertSound: null
 
 - type: entity
   parent: ClothingBackpack
@@ -260,15 +231,6 @@
 
 - type: entity
   parent: ClothingBackpackERTLeader
-  id: ClothingBackpackERTClown
-  name: ERT clown backpack
-  description: A spacious backpack with lots of pockets, worn by Clowns of an Emergency Response Team.
-  components:
-  - type: Sprite
-    sprite: Clothing/Back/Backpacks/ertclown.rsi
-
-- type: entity
-  parent: ClothingBackpackERTLeader
   id: ClothingBackpackERTChaplain
   name: ERT chaplain backpack
   description: A spacious backpack with lots of pockets, worn by Chaplains of an Emergency Response Team.
@@ -331,18 +293,6 @@
     - state: holding
     - state: holding-unlit
       shader: unshaded
-
-- type: entity
-  parent: ClothingBackpackClown
-  id: ClothingBackpackCluwne
-  name: jiggles von jonkerton
-  suffix: Unremoveable
-  description: It's a backpack made by Jonk! Co.
-  components:
-  - type: Sprite
-    sprite: Clothing/Back/Backpacks/cluwne.rsi
-  - type: Unremoveable
-    deleteOnDrop: false
 
 - type: entity
   parent: ClothingBackpack

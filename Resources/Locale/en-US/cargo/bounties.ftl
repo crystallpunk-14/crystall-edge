@@ -24,7 +24,6 @@ bounty-item-lime = Lime
 bounty-item-lung = Lung
 bounty-item-monkey-cube = Monkey cube
 bounty-item-mouse = Dead mouse
-bounty-item-ore-bananium = Bananium ore
 bounty-item-ore-gold = Gold ore
 bounty-item-ore-plasma = Plasma ore
 bounty-item-ore-silver = Silver ore

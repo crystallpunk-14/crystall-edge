@@ -8,8 +8,6 @@ materials-unit-plank = доски
 materials-unit-roll = рулоны
 # pieces of biomass
 materials-unit-piece = единицы
-# bunches of bananium
-materials-unit-bunch = единицы
 # slabs of meat
 materials-unit-slab = куски
 # webs of silk

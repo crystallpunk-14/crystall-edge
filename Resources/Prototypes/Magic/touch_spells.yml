@@ -53,29 +53,6 @@
 
 - type: entity
   parent: BaseSmiteAction
-  id: ActionCluwne
-  name: Cluwne's Curse
-  description: Turns someone into a Cluwne!
-  components:
-  - type: Action
-    useDelay: 120
-    sound: !type:SoundPathSpecifier
-      path: /Audio/Items/brokenbikehorn.ogg
-  - type: Sprite
-    sprite: Clothing/Mask/cluwne.rsi
-    layers:
-    - state: icon
-  - type: EntityTargetAction
-    event: !type:ChangeComponentsSpellEvent
-      toAdd:
-      - type: Cluwne
-  - type: SpeakOnAction
-    sentence: action-speech-spell-cluwne
-  - type: Magic
-    requiresClothes: true
-
-- type: entity
-  parent: BaseSmiteAction
   id: ActionSlippery
   name: Slippery Slope
   description: Make someone slippery.

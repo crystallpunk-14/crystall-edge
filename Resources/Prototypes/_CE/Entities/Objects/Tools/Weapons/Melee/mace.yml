@@ -110,6 +110,7 @@
     components:
     - type: CEWeaponBatteryCost
       costs:
+        Primary: 10
         Secondary: 10
   - type: ToggleableVisuals
     spriteLayer: charge

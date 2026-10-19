@@ -5,9 +5,6 @@ construction-graph-tag-clown-shoes = clown shoes
 construction-graph-tag-clown-mask = a clown mask
 construction-graph-tag-clown-recorder = clown recorder
 construction-graph-tag-clown-bike-horn = bike horn
-construction-graph-tag-clowne-horn = broken bike horn
-construction-graph-tag-happy-honk-meal = happy honk meal
-construction-graph-tag-woeful-cluwne-meal = woeful cluwne meal
 construction-graph-tag-boxhug = a box of hugs
 
 # mime

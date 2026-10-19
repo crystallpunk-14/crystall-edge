@@ -41,9 +41,6 @@
   id: JobChiefMedicalOfficer
 
 - type: playTimeTracker
-  id: JobClown
-
-- type: playTimeTracker
   id: JobDetective
 
 - type: playTimeTracker
@@ -90,9 +87,6 @@
 
 - type: playTimeTracker
   id: JobMedicalIntern
-
-- type: playTimeTracker
-  id: JobMime
 
 - type: playTimeTracker
   id: JobMusician

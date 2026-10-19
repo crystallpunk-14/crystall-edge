@@ -110,21 +110,6 @@
       tags:
       - OreUranium
 
-- type: cargoBounty
-  id: BountySalvageOreBananium
-  reward: 12500
-  description: bounty-description-salvage-ore-bananium
-  group: SalvageJobTier2
-  sprite:
-    sprite: Objects/Materials/ore.rsi
-    state: bananium
-  entries:
-  - name: bounty-item-ore-bananium
-    amount: 30
-    whitelist:
-      tags:
-      - OreBananium
-
 # Tier 3
 
 - type: cargoBounty

@@ -88,13 +88,3 @@
         Blunt: 19
   - type: Inventory
     templateId: corpse
-
-- type: entity
-  parent: MobHuman
-  id: MobCluwne
-  name: person
-  description: A polymorphed unfortunate.
-  components:
-  - type: Cluwne
-  - type: Speech
-    speechVerb: Cluwne

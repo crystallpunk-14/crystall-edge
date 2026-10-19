@@ -516,12 +516,10 @@
     - RandomHumanoidVisitorBoxer
     - RandomHumanoidVisitorChaplain
     - RandomHumanoidVisitorChef
-    - RandomHumanoidVisitorClown
     - RandomHumanoidVisitorJanitor
     - RandomHumanoidVisitorLawyer
     - RandomHumanoidVisitorLibrarian
     - RandomHumanoidVisitorMusician
-    - RandomHumanoidVisitorMime
     - RandomHumanoidVisitorReporter
     - RandomHumanoidVisitorServiceWorker
     - RandomHumanoidVisitorZookeeper
@@ -598,20 +596,6 @@
   - type: RandomSpawner
     prototypes:
     - RandomHumanoidVisitorChef
-
-- type: entity
-  name: visiting clown spawner
-  id: VisitorClownSpawner
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: red
-      - sprite: Structures/Decoration/banner.rsi
-        state: banner
-  - type: RandomSpawner
-    prototypes:
-    - RandomHumanoidVisitorClown
 
 - type: entity
   name: visiting janitor spawner
@@ -710,20 +694,6 @@
   - type: RandomSpawner
     prototypes:
     - RandomHumanoidVisitorMusicianRelaxed
-
-- type: entity
-  name: visiting mime spawner
-  id: VisitorMimeSpawner
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-      - state: red
-      - sprite: Structures/Decoration/banner.rsi
-        state: banner
-  - type: RandomSpawner
-    prototypes:
-    - RandomHumanoidVisitorMime
 
 - type: entity
   name: visiting reporter spawner
@@ -869,12 +839,10 @@
     - RandomHumanoidVisitorBoxer
     - RandomHumanoidVisitorChaplain
     - RandomHumanoidVisitorChef
-    - RandomHumanoidVisitorClown
     - RandomHumanoidVisitorJanitor
     - RandomHumanoidVisitorLawyer
     - RandomHumanoidVisitorLibrarian
     - RandomHumanoidVisitorMusician
-    - RandomHumanoidVisitorMime
     - RandomHumanoidVisitorReporter
     - RandomHumanoidVisitorServiceWorker
     - RandomHumanoidVisitorZookeeper
