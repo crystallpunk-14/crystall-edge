@@ -29,6 +29,16 @@
     locked: true
 
 - type: entity
+  parent: CEIronDoorMirrored
+  id: CEIronDoorGuardStaffMirrored
+  suffix: Guard Staff, Mirrored
+  components:
+  - type: CELock
+    autoGenerateShape: GuardStaff
+  - type: Lock
+    locked: true
+
+- type: entity
   parent: CEIronDoor
   id: CEIronDoorGuardHeadRoom
   suffix: Guard Head Room
@@ -112,6 +122,16 @@
   parent: CEIronDoor
   id: CEIronDoorInvestigatorStaff
   suffix: Investigator Staff
+  components:
+  - type: CELock
+    autoGenerateShape: InvestigatorStaff
+  - type: Lock
+    locked: true
+
+- type: entity
+  parent: CEIronDoorMirrored
+  id: CEIronDoorInvestigatorStaffMirrored
+  suffix: Investigator Staff, Mirrored
   components:
   - type: CELock
     autoGenerateShape: InvestigatorStaff

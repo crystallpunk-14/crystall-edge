@@ -52,6 +52,7 @@
   components:
   - type: Sprite
     state: postament
+    noRot: true
   - type: Icon
     sprite: _CE/Structures/Furniture/Carpets/murk.rsi
     state: postament

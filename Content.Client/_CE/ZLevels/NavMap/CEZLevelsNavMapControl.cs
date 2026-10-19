@@ -89,6 +89,9 @@ public partial class CEZLevelsNavMapControl : MapGridControl
     public Color TileColor = new(58, 100, 128);
     public Color FloorEdgeColor = new(72, 126, 166);
 
+    // Even, so a chunk never splits a line segment; well below Clyde's 65532-vertex batch buffer.
+    private const int LineListChunkSize = 16384;
+
     protected Color BackgroundColor = Color.Black;
 
     protected float LevelHeightOffset = 1.0f;
@@ -454,7 +457,7 @@ public partial class CEZLevelsNavMapControl : MapGridControl
                     edges.Add(LevelToScreen(depth, b));
                 }
 
-                handle.DrawPrimitives(DrawPrimitiveTopology.LineList, edges.Span, edgeColor);
+                DrawLineListChunked(handle, edges.Span, edgeColor);
             }
 
             if (render.Geometry.WallLines.Count > 0)
@@ -466,7 +469,7 @@ public partial class CEZLevelsNavMapControl : MapGridControl
                     lines.Add(LevelToScreen(depth, new Vector2(b.X, -b.Y)));
                 }
 
-                handle.DrawPrimitives(DrawPrimitiveTopology.LineList, lines.Span, wallColor);
+                DrawLineListChunked(handle, lines.Span, wallColor);
             }
 
             if (render.Geometry.WallRects.Count > 0)
@@ -490,7 +493,7 @@ public partial class CEZLevelsNavMapControl : MapGridControl
                     rects.Add(a);
                 }
 
-                handle.DrawPrimitives(DrawPrimitiveTopology.LineList, rects.Span, wallColor);
+                DrawLineListChunked(handle, rects.Span, wallColor);
             }
 
             // Draw this level's blips within its own pass, so higher levels can occlude them.
@@ -500,6 +503,18 @@ public partial class CEZLevelsNavMapControl : MapGridControl
         }
 
         PostDrawingAction?.Invoke(handle);
+    }
+
+    /// <summary>
+    /// Clyde's batch buffer holds ~65k vertices; a single larger call throws, so big maps are split into chunks.
+    /// </summary>
+    private static void DrawLineListChunked(DrawingHandleScreen handle, ReadOnlySpan<Vector2> vertices, Color color)
+    {
+        for (var start = 0; start < vertices.Length; start += LineListChunkSize)
+        {
+            var length = Math.Min(LineListChunkSize, vertices.Length - start);
+            handle.DrawPrimitives(DrawPrimitiveTopology.LineList, vertices.Slice(start, length), color);
+        }
     }
 
     private void DrawTrackedOverlaysForLevel(DrawingHandleScreen handle, int depth)

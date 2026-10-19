@@ -1,7 +1,7 @@
 - type: gameMap
   id: Pharus
   mapName: Pharus
-  minPlayers: 1
+  minPlayers: 0
   maxPlayers: 20
   mapPath: /Maps/_CE/Pharus/Pharus0.yml
   stations:
@@ -12,20 +12,21 @@
           mapNameTemplate: "Pharus"
         - type: StationJobs
           availableJobs:
-            #Guard (5)
-            #CEGuardCommander: [ 1, 1 ]
-            #CEGuard: [ 4, 4 ]
-            ##Engineering (4)
-            #CEBrigadier: [ 1, 1 ]
-            #CETechnician: [ 3, 4 ]
-            ##Tavern (4)
-            #CETavernmaster: [ 1, 1 ]
-            #CEChef: [ 3, 3 ]
-            ##Guild
-            #CEGuildmaster: [ 1, 1 ]
-            #CEAdventurer: [ 3, 4 ]
-            ##Citizens
-            #CEBard: [ 2, 2 ]
+            #Army
+            CEGuardCommander: [ 1, 1 ]
+            CEGuard: [ 2, 2 ]
+            #Engineering
+            CEBrigadier: [ 1, 1 ]
+            CETechnician: [ 2, 2 ]
+            #Tavern
+            CETavernmaster: [ 1, 1 ]
+            CEChef: [ 2, 2 ]
+            #Guild
+            CEGuildmaster: [ 1, 1 ]
+            CEAdventurer: [ 3, 4 ]
+            #Citizens
+            CEBard: [ 1, 1 ]
+            CEInvestigator: [ 1, 1 ]
             CETownfolk: [ -1, -1 ]
         - type: CEStationWildlands
           config: Pharus
@@ -81,7 +82,12 @@
 
 - type: wildlandsConfig
   id: Pharus
-  center: 12, -23 # Lucson sphere position
+  center: 14, -28 # Lucson sphere position
+  points:
+  - id: snowIsland
+    area: !type:RingArea
+      minRadius: 70
+      maxRadius: 100
   cityModifiers: !type:AllSelector
     children:
     # Ore veins
@@ -97,17 +103,21 @@
   wildlandsModifiers: !type:AllSelector
     children:
     - id: CEWildlandsModifierOreCoalNoise
-      prob: 0.75
     - id: CEWildlandsModifierOreIronNoise
-      prob: 0.75
     - id: CEWildlandsModifierOreCrystalNoise
-      prob: 0.5
+    - id: CEWildlandsModifierDiamondVein
+    - id: CEWildlandsModifierBrassRuins
+    - id: CEWildlandsModifierDamagedWoodenWallsRatio50
+    - id: CEWildlandsModifierBoneyard
+    - id: CEWildlandsModifierGoldVein
+    - id: CEWildlandsModifierCaveEntrances
+    - id: CEWildlandsModifierMushroomGrove
     - id: CEWildlandsModifierShadowEaters
   layersByDepth:
   #MARK: 2 Hills top
     2:
     - !type:TileNoiseDistanceLayer
-      size: &size 200, 200 # CEMurkLucsonSphere25 boundary diameter
+      size: &size 340, 340
       distanceConfig: !type:EuclideanSquaredDistance
         blendWeight: 0.6
       fill:

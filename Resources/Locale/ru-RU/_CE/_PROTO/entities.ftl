@@ -2994,6 +2994,10 @@ ent-CEIronDoorGuardStaff = { ent-CEIronDoor }
     .desc = { ent-CEIronDoor.desc }
     .suffix = Персонал охраны
 
+ent-CEIronDoorGuardStaffMirrored = { ent-CEIronDoorMirrored }
+    .desc = { ent-CEIronDoorMirrored.desc }
+    .suffix = Персонал охраны, Отзеркалено
+
 ent-CEIronDoorGuardHeadRoom = { ent-CEIronDoor }
     .desc = { ent-CEIronDoor.desc }
     .suffix = Кабинет главы охраны
@@ -3029,6 +3033,10 @@ ent-CEIronDoorInvestigatorHallMirrored = { ent-CEIronDoorInvestigatorHall }
 ent-CEIronDoorInvestigatorStaff = { ent-CEIronDoor }
     .desc = { ent-CEIronDoor.desc }
     .suffix = Персонал шерифа
+
+ent-CEIronDoorInvestigatorStaffMirrored = { ent-CEIronDoorMirrored }
+    .desc = { ent-CEIronDoorMirrored.desc }
+    .suffix = Персонал шерифа, Отзеркалено
 
 ent-CEWoodenDoorGuildLobby = { ent-CEWoodenDoorWindowed }
     .desc = { ent-CEWoodenDoorWindowed.desc }
@@ -4469,6 +4477,10 @@ ent-CEWalletFilledGuard = { ent-CEWallet }
 ent-CEChestFilledGuard = { ent-CEWoodenChest }
     .desc = { ent-CEWoodenChest.desc }
     .suffix = Filled, Guard
+
+ent-CEBedsideTableFilledInvestigator = { ent-CEBedsideTableWooden }
+    .desc = { ent-CEBedsideTableWooden.desc }
+    .suffix = Filled, Investigator
 
 ent-CEChestFilledInvestigator = { ent-CEChestFilledGuard }
     .desc = { ent-CEChestFilledGuard.desc }
