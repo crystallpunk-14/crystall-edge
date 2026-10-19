@@ -349,15 +349,6 @@
       stealGroup: FreezerHeater
 
 - type: entity
-  parent: GasThermoMachineHeater
-  id: GasThermoMachineHeaterEnabled
-  suffix: Enabled
-  components:
-  - type: GasThermoMachine
-  - type: ApcPowerReceiver
-    powerDisabled: false
-
-- type: entity
   parent: GasThermoMachineFreezer
   id: GasThermoMachineHellfireFreezer
   name: hellfire freezer
@@ -470,4 +461,3 @@
   - type: GuideHelp
     guides:
     - GasCondensing
-

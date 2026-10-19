@@ -119,13 +119,6 @@
   - chat-speech-verb-goat-3
 
 - type: speechVerb
-  id: Sheep
-  name: chat-speech-verb-name-sheep
-  speechVerbStrings:
-  - chat-speech-verb-sheep-1
-  - chat-speech-verb-sheep-2
-
-- type: speechVerb
   id: LargeMob
   name: chat-speech-verb-name-large-mob
   speechVerbStrings:
@@ -147,14 +140,6 @@
   - chat-speech-verb-monkey-2
 
 - type: speechVerb
-  id: Parrot
-  name: chat-speech-verb-name-parrot
-  speechVerbStrings:
-  - chat-speech-verb-parrot-1
-  - chat-speech-verb-parrot-2
-  - chat-speech-verb-parrot-3
-
-- type: speechVerb
   id: Ghost
   name: chat-speech-verb-name-ghost
   speechVerbStrings:
@@ -163,14 +148,6 @@
   - chat-speech-verb-ghost-3
   - chat-speech-verb-ghost-4
   - chat-speech-verb-mumble
-
-- type: speechVerb
-  id: Electricity
-  name: chat-speech-verb-name-electricity
-  speechVerbStrings:
-  - chat-speech-verb-electricity-1
-  - chat-speech-verb-electricity-2
-  - chat-speech-verb-electricity-3
 
 - type: speechVerb
   id: Vulpkanin

@@ -29,15 +29,6 @@
 
 - type: entity
   abstract: true
-  parent: DrinkCartonNormalBase
-  id: DrinkCartonNormalBaseFull
-  suffix: Full
-  components:
-  - type: Tag
-    tags: [ ]
-
-- type: entity
-  abstract: true
   parent: [SolutionLarge, DrinkCartonBase ]
   id: DrinkCartonBaseLarge
   components:
@@ -237,31 +228,6 @@
         Quantity: 120
   - type: Tag
     tags: [ ]
-
-- type: entity
-  parent: [DrinkBaseMaterialPlastic, DrinkCartonNormalBase]
-  id: DrinkCartonOatMilk
-  name: oat milk
-  description: It's oat milk. Tan and nutritious goodness!
-  components:
-  - type: Sprite
-    sprite: Objects/Consumable/Drinks/oatmilk.rsi
-
-- type: entity
-  parent: DrinkCartonOatMilk
-  id: DrinkOatMilkCarton
-  name: oat milk
-  suffix: Full
-  components:
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: MilkOat
-        Quantity: 120
-  - type: Tag
-    tags: [ ]
-
-# Large cartons
 
 - type: entity
   parent: [DrinkBaseMaterialPlastic, DrinkCartonBaseLargeFull]

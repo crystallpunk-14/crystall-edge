@@ -250,21 +250,6 @@
             max: 1
 
 - type: entity
-  id: LiquidOxygenCanister
-  parent: OxygenCanister
-  name: liquid oxygen canister
-  description: A canister that can contain any type of gas. This one is supposed to contain liquid oxygen. It can be attached to connector ports using a wrench.
-  components:
-  - type: GasCanister
-    air:
-      volume: 1500
-      moles:
-        Oxygen: 18710.71051 # oxygen
-      temperature: 72
-  - type: AccessReader
-    access: [["Atmospherics"]]
-
-- type: entity
   parent: GasCanister
   id: NitrogenCanister
   name: nitrogen canister
@@ -300,21 +285,6 @@
             NitrogenCanisterBroken:
               min: 1
               max: 1
-
-- type: entity
-  id: LiquidNitrogenCanister
-  parent: NitrogenCanister
-  name: liquid nitrogen canister
-  description: A canister that can contain any type of gas. This one is supposed to contain liquid nitrogen. It can be attached to connector ports using a wrench.
-  components:
-  - type: GasCanister
-    air:
-      volume: 1500
-      moles:
-        Nitrogen: 18710.71051 # nitrogen
-      temperature: 72
-  - type: AccessReader
-    access: [["Atmospherics"]]
 
 - type: entity
   parent: GasCanister
@@ -354,21 +324,6 @@
               max: 1
     - type: Lock
       locked: true
-
-- type: entity
-  id: LiquidCarbonDioxideCanister
-  parent: CarbonDioxideCanister
-  name: liquid carbon dioxide canister
-  description: A canister that can contain any type of gas. This one is supposed to contain liquid carbon dioxide. It can be attached to connector ports using a wrench.
-  components:
-  - type: GasCanister
-    air:
-      volume: 1500
-      moles:
-        CarbonDioxide: 18710.71051 # CO2
-      temperature: 72
-  - type: AccessReader
-    access: [["Atmospherics"]]
 
 - type: entity
   parent: GasCanister
@@ -601,24 +556,6 @@
             max: 1
   - type: Lock
     locked: true
-
-
-- type: entity
-  parent: GasCanister
-  id: MaxCapCanister # As of writing canisters currently have about 9000 explosive intensity. 95% the total damage of a syndicate bomb but spread across a larger area.
-  categories: [ Debug ]
-  name: max cap in a can
-  suffix: Max Cap
-  components:
-  - type: GasCanister
-    air:
-      volume: 1500
-      moles:
-        Oxygen: 1400
-        Tritium: 700
-      temperature: 373.149
-
-# Broke Entities
 
 - type: entity
   parent: [ BaseStructureDynamic, StructureHealthContainerWeak ]

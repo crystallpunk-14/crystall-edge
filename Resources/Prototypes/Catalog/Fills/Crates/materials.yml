@@ -24,19 +24,6 @@
 
 - type: entity
   parent: CrateGenericSteel
-  id: CrateMaterialCloth
-  name: cloth crate
-  description: 90 pieces of cloth.
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: MaterialCloth
-          amount: 3
-
-- type: entity
-  parent: CrateGenericSteel
   id: CrateMaterialPlastic
   name: plastic sheet crate
   description: 90 sheets of plastic.
@@ -60,18 +47,6 @@
 
 - type: entity
   parent: CrateGenericSteel
-  id: CrateMaterialBrass
-  name: brass crate
-  description: 90 sheets of brass.
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      entity_storage:
-        id: SheetBrass
-        amount: 3
-
-- type: entity
-  parent: CrateGenericSteel
   id: CrateMaterialPlasteel
   name: plasteel crate
   description: 30 sheets of plasteel.
@@ -91,52 +66,6 @@
     containers:
       entity_storage:
         id: SheetPlasma
-
-- type: entity
-  parent: CrateGenericSteel
-  id: CrateMaterialGold
-  name: gold crate
-  description: 30 bars of gold.
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      entity_storage:
-        id: IngotGold
-
-- type: entity
-  parent: CrateGenericSteel
-  id: CrateMaterialSilver
-  name: silver crate
-  description: 30 bars of silver.
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      entity_storage:
-        id: IngotSilver
-
-- type: entity
-  parent: CrateGenericSteel
-  id: CrateMaterialCardboard
-  name: cardboard crate
-  description: 90 pieces of cardboard.
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      entity_storage:
-        id: MaterialCardboard
-        amount: 3
-
-- type: entity
-  parent: CrateGenericSteel
-  id: CrateMaterialPaper
-  name: paper crate
-  description: 90 sheets of paper.
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      entity_storage:
-        id: SheetPaper
-        amount: 3
 
 - type: entityTable
   id: RandomMaterialCrateTable
@@ -181,24 +110,6 @@
         tableId: RandomMaterialCrateTable
         rolls: !type:RangeNumberSelector
           range: 2, 4
-
-- type: entity
-  parent: CrateGenericSteel
-  id: CrateMaterialSilo
-  name: material silo crate
-  description: A package including all the materials to create a material silo.
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: MaterialSiloMachineCircuitboard
-        - id: SheetSteel1
-          amount: 5
-        - id: MicroManipulatorStockPart
-          amount: 4
-        - id: CableApcStack1
-          amount: 2
 
 - type: entity
   parent: CrateGenericSteel

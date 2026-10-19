@@ -49,48 +49,6 @@
         Quantity: 60
   - type: Lube
 
-# Find your nearest clown and give them a gift :o)
-- type: entity
-  parent: BluespaceBeaker
-  id: BottomlessLube
-  name: bottomless lube beaker
-  suffix: DEBUG
-  description: This anomalous beaker infinitely produces space lube and as such is to be closely guarded such that it doesn't fall in the wrong hands.
-  components:
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: SpaceLube
-        Quantity: 960
-  - type: SolutionRegeneration
-    generated:
-      reagents:
-      - ReagentId: SpaceLube
-        Quantity: 240
-
-- type: entity
-  parent: [DrinkBaseMaterialGlass, DrinkBase]
-  id: DrinkJarWhat
-  name: jar of something
-  description: You can't really tell what this is.
-  components:
-  - type: Sprite
-    sprite: Objects/Consumable/Drinks/jar_what.rsi
-  - type: FitsInDispenser
-    solution: drink
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 5
-      behaviors:
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          ShardGlass:
-            min: 1
-            max: 1
-        transferForensics: true
-
 # Mopwata
 - type: weightedRandomFillSolution
   id: RandomFillMopwata

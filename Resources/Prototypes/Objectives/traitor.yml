@@ -141,29 +141,6 @@
 # social
 
 - type: entity
-  parent: [BaseTraitorSocialObjective, BaseKeepAliveObjective]
-  id: RandomTraitorAliveObjective
-  description: Identify yourself at your own risk. We just need them alive.
-  components:
-  - type: Objective
-    difficulty: 1.75
-  - type: TargetObjective
-    title: objective-condition-other-traitor-alive-title
-  - type: PickRandomPerson
-    conditions:
-    - !type:RoleCondition
-      whitelist:
-        components:
-        - TraitorRole
-    # Can't have multiple objectives to help/save the same person
-    - !type:ObjectiveTargetCondition
-      inverted: true
-      whitelist:
-        components:
-        - HelpProgressCondition
-        - KeepAliveCondition
-
-- type: entity
   parent: [BaseTraitorSocialObjective, BaseHelpProgressObjective]
   id: RandomTraitorProgressObjective
   description: Identify yourself at your own risk. We just need them to succeed.

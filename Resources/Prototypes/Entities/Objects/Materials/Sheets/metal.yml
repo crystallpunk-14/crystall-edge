@@ -107,18 +107,6 @@
 
 - type: entity
   parent: SheetBrass
-  id: SheetBrass10
-  name: brass
-  suffix: 10
-  components:
-  - type: Sprite
-    state: brass
-  - type: Stack
-    stackType: Brass
-    count: 10
-
-- type: entity
-  parent: SheetBrass
   id: SheetBrass1
   name: brass
   suffix: Single

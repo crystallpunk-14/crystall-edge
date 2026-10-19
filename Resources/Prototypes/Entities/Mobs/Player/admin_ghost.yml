@@ -130,15 +130,6 @@
 
 - type: entity
   parent: BaseAGhostAction
-  id: ActionAGhostShowSolar
-  name: Solar Control Interface
-  description: View a Solar Control Interface.
-  components:
-  - type: InstantAction
-    event: !type:ToggleIntrinsicUIEvent { key: enum.SolarControlConsoleUiKey.Key }
-
-- type: entity
-  parent: BaseAGhostAction
   id: ActionAGhostShowCommunications
   name: Communications Interface
   description: View a Communications Interface.
@@ -172,15 +163,6 @@
       visible: false
   - type: InstantAction
     event: !type:ToggleIntrinsicUIEvent { key: enum.RadarConsoleUiKey.Key }
-
-- type: entity
-  parent: BaseAGhostAction
-  id: ActionAGhostShowCargo
-  name: Cargo Ordering Interface
-  description: View a Cargo Ordering Interface.
-  components:
-  - type: InstantAction
-    event: !type:ToggleIntrinsicUIEvent { key: enum.CargoConsoleUiKey.Orders }
 
 - type: entity
   parent: BaseAGhostAction

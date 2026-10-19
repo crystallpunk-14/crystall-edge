@@ -130,28 +130,3 @@
       maxIntensity: 75
     - type: StaticPrice
       price: 10000 # Good luck!
-
-- type: entity
-  parent: SyndicateBomb
-  id: SyndicateBombFake
-  suffix: fake
-  components:
-    - type: Explosive
-      explosionType: Default
-      totalIntensity: 5.0
-      intensitySlope: 5
-      maxIntensity: 4
-      canCreateVacuum: false
-
-- type: entity
-  parent: SyndicateBomb
-  id: DebugHardBomb
-  name: debug bomb
-  suffix: DEBUG
-  description: Holy shit this is gonna explode.
-  components:
-    - type: Defusable
-      disposable: true
-    - type: TimerTrigger
-      delay: 10
-      delayOptions: [10, 20, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300]

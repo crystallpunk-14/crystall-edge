@@ -19,8 +19,3 @@
   id: WizCoin
   displayName: store-currency-display-wizcoin
   canWithdraw: false
-
-#debug
-- type: currency
-  id: DebugDollar
-  displayName: store-currency-display-debugdollar

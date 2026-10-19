@@ -56,11 +56,6 @@
     - Heat
 
 - type: damageContainer
-  id: ShadowHaze
-  supportedTypes:
-    - Heat
-
-- type: damageContainer
   id: ManifestedSpirit
   supportedGroups:
     - Metaphysical

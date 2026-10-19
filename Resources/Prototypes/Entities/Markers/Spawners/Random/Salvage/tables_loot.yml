@@ -227,51 +227,6 @@
         weight: 0.1
 
 - type: entityTable
-  id: SalvageEquipmentRare
-  table: !type:GroupSelector
-    children:
-    - id: BlueprintDoubleEmergencyTank
-    - id: FultonBeacon
-    - id: Fulton
-      amount: !type:RangeNumberSelector
-        range: 1, 3
-    - id: HandHeldMassScanner
-    - id: WeaponCrusherDagger
-    - id: MiningDrill
-    - id: ClothingEyesGlassesMeson
-    - id: ClothingBeltSalvageWebbing
-    - id: SeismicCharge
-    - id: MineralScanner
-      weight: 0.5
-    - id: WeaponCrusher
-      weight: 0.5
-    - !type:GroupSelector
-      children:
-      - id: JetpackBlue
-      - id: JetpackBlack
-
-- type: entityTable
-  id: SalvageEquipmentLegendary
-  table: !type:GroupSelector
-    children:
-    - id: AdvancedMineralScanner
-    - id: BlueprintFulton
-    - id: BlueprintSeismicCharge
-    - id: WeaponCrusherGlaive
-    - id: ClothingOuterHardsuitSalvage
-    - id: ChemistryBottleOmnizine
-    - !type:GroupSelector
-      children:
-      - id: JetpackBlueFilled
-      - id: JetpackBlackFilled
-    - !type:GroupSelector
-      children:
-      - id: PKAUpgradeDamage
-      - id: PKAUpgradeRange
-      - id: PKAUpgradeFireRate
-
-
-- type: entityTable
   id: RandomGeneratorTable
   table: !type:GroupSelector
     children:

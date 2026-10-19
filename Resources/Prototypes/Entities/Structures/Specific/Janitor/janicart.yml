@@ -121,23 +121,6 @@
         - MachineMask
 
 - type: entity
-  name: mop bucket
-  id: MopBucketFull
-  parent: MopBucket
-  suffix: full
-  components:
-  - type: Sprite
-    layers:
-      - state: mopbucket
-      - state: mopbucket_water-3
-        map: [ "enum.SolutionContainerLayers.Fill" ]
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Water
-        Quantity: 960
-
-- type: entity
   parent: BaseWrappedCube
   name: mop bucket cube
   id: MopBucketCubeWrapped

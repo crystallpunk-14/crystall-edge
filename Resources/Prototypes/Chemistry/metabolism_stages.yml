@@ -17,7 +17,3 @@
   name: metabolism-stage-metabolites
 
 # Dummy for the guide
-
-- type: metabolismStage
-  id: PlantMetabolisms
-  name: metabolism-stage-plant

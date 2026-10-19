@@ -55,22 +55,3 @@
         base:
           True: { state: sleeper_1 }
           False: { state: sleeper_0 }
-
-# This one handles all spawns, latejoin and roundstart.
-- type: entity
-  parent: CryogenicSleepUnit
-  id: CryogenicSleepUnitSpawner
-  suffix: Spawner, Roundstart AllJobs
-  components:
-  - type: ContainerSpawnPoint
-    containerId: storage
-
-# This one only handles latejoin spawns.
-- type: entity
-  parent: CryogenicSleepUnit
-  id: CryogenicSleepUnitSpawnerLateJoin
-  suffix: Spawner, LateJoin
-  components:
-    - type: ContainerSpawnPoint
-      containerId: storage
-      spawnType: LateJoin

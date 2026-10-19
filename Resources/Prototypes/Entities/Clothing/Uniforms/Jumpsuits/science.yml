@@ -19,17 +19,6 @@
     sprite: Clothing/Uniforms/Jumpsuits/Science/scientist.rsi
 
 - type: entity
-  parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitScientistFormal
-  name: scientist's formal jumpsuit
-  description: A uniform for sophisticated scientists, best worn with its matching tie.
-  components:
-  - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Science/scientist_formal.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Science/scientist_formal.rsi
-
-- type: entity
   parent: [ClothingUniformBase, ClothingUniformFoldableBase]
   id: ClothingUniformJumpsuitRoboticist
   name: roboticist jumpsuit

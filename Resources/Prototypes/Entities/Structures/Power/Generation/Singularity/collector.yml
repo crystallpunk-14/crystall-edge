@@ -93,28 +93,3 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalGlassBreak
-
-- type: entity
-  id: RadiationCollectorNoTank
-  suffix: No tank
-  parent: RadiationCollector
-  components:
-  - type: ItemSlots
-    slots:
-      gas_tank:
-        whitelist:
-          components:
-          - GasTank
-
-- type: entity
-  id: RadiationCollectorFullTank
-  suffix: Filled tank
-  parent: RadiationCollector
-  components:
-  - type: ItemSlots
-    slots:
-      gas_tank:
-        startingItem: PlasmaTankFilled
-        whitelist:
-          components:
-          - GasTank

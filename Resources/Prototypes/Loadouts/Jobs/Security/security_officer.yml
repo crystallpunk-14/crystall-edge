@@ -119,12 +119,6 @@
   equipment:
     outerClothing: ClothingOuterWinterSec
 
-# Shoes
-- type: loadout
-  id: CombatBoots
-  equipment:
-    shoes: ClothingShoesBootsCombatFilled
-
 - type: loadout
   id: JackBoots
   equipment:

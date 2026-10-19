@@ -8,10 +8,6 @@
   format: name-identifier-format-kobold
 
 - type: nameIdentifierGroup
-  id: Holoparasite
-  format: name-identifier-format-holoparasite
-
-- type: nameIdentifierGroup
   id: MMI
   format: name-identifier-format-mmi
   minValue: 100
@@ -28,7 +24,6 @@
   format: name-identifier-format-silicon
   minValue: 1000
   maxValue: 9999
-
 
 - type: nameIdentifierGroup
   id: StationAi

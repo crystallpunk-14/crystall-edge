@@ -1,4 +1,3 @@
-
 - type: entity
   name: telecrystal
   parent: [BaseItem, BaseSyndicateContraband]
@@ -33,14 +32,6 @@
 
 - type: entity
   parent: Telecrystal
-  id: Telecrystal5
-  suffix: 5 TC
-  components:
-  - type: Stack
-    count: 5
-
-- type: entity
-  parent: Telecrystal
   id: Telecrystal10
   suffix: 10 TC
   components:
@@ -72,24 +63,6 @@
     balance:
       Telecrystal: 0
 
-- type: entity
-  parent: BaseUplinkRadio
-  id: BaseUplinkRadio20TC
-  suffix: 20 TC
-  components:
-  - type: Store
-    balance:
-      Telecrystal: 20
-
-- type: entity
-  parent: BaseUplinkRadio
-  id: BaseUplinkRadio25TC
-  suffix: 25 TC
-  components:
-  - type: Store
-    balance:
-      Telecrystal: 25
-
 #this uplink MUST be used for nukeops, as it has the tag for filtering the listing.
 - type: entity
   parent: BaseUplinkRadio
@@ -102,25 +75,3 @@
   - type: Tag
     tags:
     - NukeOpsUplink
-
-- type: entity
-  parent: BaseUplinkRadio
-  id: BaseUplinkRadio60TC
-  suffix: 60 TC, LoneOps
-  components:
-  - type: Store
-    balance:
-      Telecrystal: 60
-  - type: Tag
-    tags:
-    - NukeOpsUplink
-
-- type: entity
-  parent: BaseUplinkRadio
-  id: BaseUplinkRadioDebug
-  suffix: DEBUG
-  components:
-  - type: Store
-    balance:
-      Telecrystal: 99999
-    expectedFaction: #nulls out the expected faction

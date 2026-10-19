@@ -96,22 +96,6 @@
     - WhitelistChameleon
 
 - type: entity
-  parent: BaseClothingBeltEngineering
-  id: ClothingBeltChiefEngineer
-  name: chief engineer's toolbelt
-  description: Holds tools, looks snazzy.
-  components:
-  - type: Sprite
-    sprite: Clothing/Belt/ce.rsi
-  - type: Clothing
-    sprite: Clothing/Belt/ce.rsi
-  - type: Storage
-    grid:
-    - 0,0,9,1
-  - type: StealTarget
-    stealGroup: ChiefEngineerToolBelt
-
-- type: entity
   parent: ClothingBeltStorageBase
   id: ClothingBeltJanitor
   name: janibelt

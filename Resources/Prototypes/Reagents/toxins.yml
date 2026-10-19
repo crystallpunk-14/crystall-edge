@@ -120,74 +120,6 @@
             Poison: 1
 
 - type: reagent
-  id: PolytrinicAcid
-  name: reagent-name-polytrinic-acid
-  group: Toxins
-  desc: reagent-desc-polytrinic-acid
-  physicalDesc: reagent-physical-desc-strong-smelling
-  contrabandSeverity: Major
-  flavor: acid
-  color: "#a1000b"
-  boilingPoint: 78.2 # This isn't a real chemical...
-  meltingPoint: -19.4
-  plantMetabolism:
-  - !type:PlantAdjustToxins
-    amount: 20
-  - !type:PlantAdjustWeeds
-    amount: -4
-  - !type:PlantAdjustHealth
-    amount: -8
-  reactiveEffects:
-    Acidic:
-      methods: [ Touch ]
-      effects:
-      - !type:HealthChange
-        ignoreResistances: false
-        damage:
-          types:
-            Caustic: 0.5
-      - !type:Emote
-        emote: Scream
-        probability: 0.3
-  metabolisms:
-    Bloodstream:
-      metabolismRate : 3.00 # High damage, high metabolism rate. You need a lot of units to crit. Simulates acid burning through you fast.
-      effects:
-      - !type:HealthChange
-        damage:
-          types:
-            Caustic: 11.0
-      - !type:PopupMessage
-        type: Local
-        visualType: Large
-        messages: [ "generic-reagent-effect-burning-insides" ]
-        probability: 0.33
-      - !type:Emote
-        emote: Scream
-        probability: 0.3
-
-- type: reagent
-  id: FerrochromicAcid
-  name: reagent-name-ferrochromic-acid
-  group: Toxins
-  desc: reagent-desc-ferrochromic-acid
-  flavor: sour
-  color: "#48b3b8"
-  physicalDesc: reagent-physical-desc-ferrous
-  metabolisms:
-    Bloodstream:
-      effects:
-      - !type:Satiate
-        satiationType: Thirst
-        factor: -1.5
-      - !type:HealthChange
-        ignoreResistances: true
-        damage:
-          types:
-            Heat: 2.5
-            Caustic: 1
-
-- type: reagent
   id: FluorosulfuricAcid
   name: reagent-name-fluorosulfuric-acid
   group: Toxins
@@ -560,7 +492,6 @@
           types:
             Poison: 0.06
 
-
 - type: reagent
   id: Lead
   name: reagent-name-lead
@@ -727,64 +658,3 @@
         conditions:
         - !type:MetabolizerTypeCondition
           type: [Vox]
-
-- type: reagent
-  id: Hemorrhinol
-  name: reagent-name-hemorrhinol
-  group: Toxins
-  desc: reagent-desc-hemorrhinol
-  physicalDesc: reagent-physical-desc-thin
-  contrabandSeverity: Major
-  flavor: sharp
-  color: "#96424f"
-  metabolisms:
-    Bloodstream:
-      effects:
-      - !type:ModifyStatusEffect
-        effectProto: StatusEffectHemorrhage
-        time: 21 # 7 bleed ticks, you bleed every 3 seconds by default.
-        type: Update
-      - !type:ModifyBleed
-        amount: 0.5
-
-- type: reagent
-  id: PhosphoricAcid
-  name: reagent-name-phosphoric-acid
-  desc: reagent-name-phosphoric-acid
-  physicalDesc: reagent-physical-desc-oily
-  group: Toxins
-  flavor: sour
-  color: "#236931" # Not actually green IRL but is often dyed green when diluted.
-  plantMetabolism:
-  - !type:PlantAdjustNutrition
-    amount: 2
-  - !type:PlantAdjustHealth
-    amount: -0.5
-  reactiveEffects:
-    Acidic:
-      methods: [ Touch ]
-      effects:
-      - !type:HealthChange
-        ignoreResistances: false
-        damage:
-          types:
-            Caustic: 0.1
-      - !type:Emote
-        emote: Scream
-        probability: 0.1
-  metabolisms:
-    Bloodstream:
-      metabolismRate: 0.2 # Phosphoric Acid is a relatively slow acid.
-      effects:
-      - !type:HealthChange
-        damage:
-          types:
-            Caustic: 0.3
-      - !type:PopupMessage
-        type: Local
-        visualType: Large
-        messages: [ "generic-reagent-effect-burning-insides" ]
-        probability: 0.2
-      - !type:Emote
-        emote: Scream
-        probability: 0.1

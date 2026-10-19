@@ -85,18 +85,3 @@
   # Short lifespan
   - type: TimedDespawn
     lifetime: 0.4
-
-# Deals less damage, glaive has better HP recovery
-- type: entity
-  parent: BulletCharge
-  id: BulletChargeGlaive
-  name: leech bolt
-  components:
-  - type: DamageMarkerOnCollide
-    whitelist:
-      components:
-      - MobState
-    damage:
-      types:
-        Blunt: 1
-        Slash: 5

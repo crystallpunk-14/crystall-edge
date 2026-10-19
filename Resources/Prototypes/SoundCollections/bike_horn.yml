@@ -14,11 +14,6 @@
   - /Audio/Items/ring.ogg
 
 - type: soundCollection
-  id: BoxingBell
-  files:
-  - /Audio/Weapons/boxingbell.ogg
-
-- type: soundCollection
   id: RubberHammer
   files:
   - /Audio/Weapons/rubberhammer.ogg

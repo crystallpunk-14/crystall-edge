@@ -1,14 +1,4 @@
 - type: reagent
-  id: Astrotame
-  name: reagent-name-astrotame
-  group: Foods
-  desc: reagent-desc-astrotame
-  physicalDesc: reagent-physical-desc-sugary
-  flavor: sweet
-  color: aquamarine
-  recognizable: true
-
-- type: reagent
   id: BbqSauce
   name: reagent-name-bbq-sauce
   group: Foods
@@ -17,15 +7,6 @@
   flavor: sweet
   color: darkred
   recognizable: true
-
-- type: reagent
-  id: Coldsauce
-  name: reagent-name-coldsauce
-  group: Foods
-  desc: reagent-desc-coldsauce
-  physicalDesc: reagent-physical-desc-cold
-  flavor: cold
-  color: skyblue
 
 - type: reagent
   id: Cornoil
@@ -68,16 +49,6 @@
   recognizable: true
 
 - type: reagent
-  id: Ketchunaise
-  name: reagent-name-ketchunaise
-  group: Foods
-  desc: reagent-desc-ketchunaise
-  physicalDesc: reagent-physical-desc-saucey
-  flavor: ketchunaise
-  color: "#fba399"
-  recognizable: true
-
-- type: reagent
   id: LaughinSyrup
   name: reagent-name-laughin-syrup
   group: Foods
@@ -105,16 +76,6 @@
   physicalDesc: reagent-physical-desc-thick
   flavor: mustard
   color: "#ffdb58"
-  recognizable: true
-
-- type: reagent
-  id: Vinaigrette
-  name: reagent-name-vinaigrette
-  group: Foods
-  desc: reagent-desc-vinaigrette
-  physicalDesc: reagent-physical-desc-sour
-  flavor: sour
-  color: "#efdaae"
   recognizable: true
 
 - type: reagent
@@ -167,27 +128,3 @@
       - !type:Satiate
         satiationType: Thirst
         factor: -0.5
-
-- type: reagent
-  id: Syrup
-  name: reagent-name-syrup
-  group: Foods
-  desc: reagent-desc-syrup
-  flavor: sweet
-  color: "#fb7125"
-  recognizable: true
-  physicalDesc: reagent-physical-desc-sticky
-  viscosity: 0.55 #Start using syrup to attach your remote recievers to your microwaves!
-  tileReactions:
-    - !type:SpillTileReaction
-  metabolisms:
-    Digestion:
-      # 12 diona blood for 1 unit of syrup, this stuff better be worthwhile.
-      effects:
-      - !type:Satiate
-        satiationType: Hunger
-        factor: 6.0 #Stronger than cookedramen
-  footstepSound:
-    collection: FootstepSlime
-    params:
-      volume: 6

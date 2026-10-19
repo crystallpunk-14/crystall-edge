@@ -110,17 +110,6 @@
       tableId: SalvageScrapSpawnerValuable
       prob: 0.5
 
-- type: entity
-  parent: SalvageSpawnerScrapValuable
-  id: SalvageSpawnerScrapValuable75
-  suffix: Valuable, 75%
-  components:
-  - type: EntityTableSpawner
-    offset: 0.4
-    table: !type:NestedSelector
-      tableId: SalvageScrapSpawnerValuable
-      prob: 0.75
-
 - type: entityTable
   id: SalvageTreasureSpawnerCommon
   table: !type:GroupSelector
@@ -255,130 +244,6 @@
       tableId: SalvageTreasureSpawnerValuable
       prob: 0.75
 
-- type: entityTable
-  id: SalvageEquipmentSpawnerCommon
-  table: !type:GroupSelector
-    children:
-    # 90% chance of equipment item
-    - !type:GroupSelector
-      weight: 90
-      children:
-      - !type:NestedSelector
-        tableId: SalvageEquipmentCommon
-        weight: 20
-      - !type:NestedSelector
-        tableId: SalvageEquipmentUncommon
-        weight: 35
-      - !type:NestedSelector
-        tableId: SalvageEquipmentRare
-        weight: 35
-      - !type:NestedSelector
-        tableId: SalvageEquipmentLegendary
-        weight: 10
-    # 5% chance of decent-ish treasure
-    - !type:GroupSelector
-      weight: 5
-      children:
-      - !type:NestedSelector
-        tableId: SalvageTreasureCommon
-        weight: 75
-      - !type:NestedSelector
-        tableId: SalvageTreasureUncommon
-        weight: 20
-      - !type:NestedSelector
-        tableId: SalvageTreasureRare
-        weight: 5
-    # 5% chance of decent maintenance loot
-    - !type:GroupSelector
-      weight: 5
-      children:
-      - !type:NestedSelector
-        tableId: MaintToolsTable
-      - !type:NestedSelector
-        tableId: MaintFluffTable
-
-- type: entity
-  parent: MarkerBase
-  id: SalvageSpawnerEquipment
-  name: Salvage Equipment Spawner
-  suffix: Common, 75%
-  components:
-  - type: Sprite
-    layers:
-    - state: pink
-    - sprite: Objects/Devices/communication.rsi
-      state: walkietalkie
-  - type: EntityTableSpawner
-    offset: 0.4
-    table: !type:NestedSelector
-      tableId: SalvageEquipmentSpawnerCommon
-      prob: 0.75
-
-- type: entityTable
-  id: SalvageEquipmentSpawnerValuable
-  table: !type:GroupSelector
-    children:
-    # 90% chance of equipment item
-    - !type:GroupSelector
-      weight: 90
-      children:
-      - !type:NestedSelector
-        tableId: SalvageEquipmentCommon
-        weight: 5
-      - !type:NestedSelector
-        tableId: SalvageEquipmentUncommon
-        weight: 25
-      - !type:NestedSelector
-        tableId: SalvageEquipmentRare
-        weight: 45
-      - !type:NestedSelector
-        tableId: SalvageEquipmentLegendary
-        weight: 25
-    # 5% chance of decent-ish treasure
-    - !type:GroupSelector
-      weight: 5
-      children:
-      - !type:NestedSelector
-        tableId: SalvageTreasureCommon
-        weight: 60
-      - !type:NestedSelector
-        tableId: SalvageTreasureUncommon
-        weight: 30
-      - !type:NestedSelector
-        tableId: SalvageTreasureRare
-        weight: 10
-    # 4% chance of decent maintenance loot
-    - !type:GroupSelector
-      weight: 4
-      children:
-      - !type:NestedSelector
-        tableId: MaintToolsTable
-      - !type:NestedSelector
-        tableId: MaintFluffTable
-    # 1% chance of syndie maintenance loot
-    - !type:GroupSelector
-      weight: 1
-      children:
-      - !type:NestedSelector
-        tableId: SyndieMaintLoot
-
-- type: entity
-  parent: MarkerBase
-  id: SalvageSpawnerEquipmentValuable
-  name: Salvage Equipment Spawner
-  suffix: Valuable, 75%
-  components:
-  - type: Sprite
-    layers:
-    - state: pink
-    - sprite: Objects/Devices/communication.rsi
-      state: walkietalkie
-  - type: EntityTableSpawner
-    offset: 0.4
-    table: !type:NestedSelector
-      tableId: SalvageEquipmentSpawnerValuable
-      prob: 0.75
-
 - type: entity
   name: Salvage Canister Spawner
   id: SalvageCanisterSpawner
@@ -434,7 +299,6 @@
           tableId: TreasureCoinPileRare
       #- id: MobHivebot (solo hivebot spawn)
 
-
 - type: entity
   parent: MarkerBase
   id: SalvageSpawnerMobMagnet
@@ -459,16 +323,6 @@
   - type: EntityTableSpawner
     table: !type:NestedSelector
       prob: 0.75
-      tableId: SalvageMagnetMobTable
-
-- type: entity
-  parent: SalvageSpawnerMobMagnet
-  id: SalvageSpawnerMobMagnet100
-  suffix: 100%
-  components:
-  - type: EntityTableSpawner
-    table: !type:NestedSelector
-      prob: 1.0
       tableId: SalvageMagnetMobTable
 
 - type: entity
@@ -506,40 +360,3 @@
         children:
         - id: Thruster
         - id: Gyroscope
-
-- type: entity
-  parent: MarkerBase
-  id: SalvageSpawnerMobShark
-  name: Salvage Sharkminnow Spawner
-  components:
-  - type: Sprite
-    layers:
-    - state: pink
-    - sprite: Mobs/Aliens/Carps/sharkminnow.rsi
-      state: alive
-  - type: EntityTableSpawner
-    table: !type:AllSelector
-      children:
-      - id: MobSharkSalvage
-      - id: MobCarpSalvage
-        amount: 3
-
-- type: entity
-  parent: MarkerBase
-  id: SalvageSpawnerMobMiningAsteroid
-  name: Mining Asteroid Mob Spawner
-  components:
-  - type: Sprite
-    layers:
-    - state: green
-    - sprite: Mobs/Aliens/Asteroid/goliath.rsi
-      state: goliath
-  - type: EntityTableSpawner
-    table: !type:GroupSelector
-      children:
-      - id: MobGoliath
-        weight: 45
-      - id: MobHivelord
-        weight: 35
-      - id: MobBasilisk
-        weight: 20

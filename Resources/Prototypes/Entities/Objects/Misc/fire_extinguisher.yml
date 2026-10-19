@@ -159,15 +159,3 @@
       reagents:
       - ReagentId: Water
         Quantity: 60
-
-- type: entity
-  parent: [ FireExtinguisher ]
-  id: SelfRechargingFireExtinguisher
-  name: self-recharging fire extinguisher
-  description: It extinguishes fires. it slowly refills with water.
-  components:
-  - type: SolutionRegeneration
-    generated:
-      reagents:
-      - ReagentId: Water
-        Quantity: 1

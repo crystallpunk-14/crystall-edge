@@ -51,7 +51,6 @@
     HijackTradeStationObjective: 1
     MailFraudObjective: 1
 
-
 #Thief groups
 - type: weightedRandom
   id: ThiefObjectiveGroups
@@ -121,11 +120,3 @@
     RenaultStealObjective: 1
     ShivaStealObjective: 1
     TropicoStealObjective: 1
-
-- type: weightedRandom
-  id: ThiefObjectiveGroupEscape
-  weights:
-    EscapeThiefShuttleObjective: 1
-
-
-# Crew, wizard, when you code it...

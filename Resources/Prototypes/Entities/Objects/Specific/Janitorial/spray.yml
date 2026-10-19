@@ -77,21 +77,6 @@
 
 - type: entity
   parent: SprayBottle
-  id: SprayBottleWater
-  name: spray bottle
-  suffix: Filled
-  components:
-  - type: Tag
-    tags:
-    - Spray
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Water
-        Quantity: 60
-
-- type: entity
-  parent: SprayBottle
   id: SprayBottleSpaceCleaner
   suffix: Space Cleaner
   description: BLAM!-brand non-foaming space cleaner!

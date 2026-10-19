@@ -88,17 +88,3 @@
   - type: SpaceGarbage
   - type: StaticPrice
     price: 0
-
-- type: entity
-  name: bowl
-  parent: FoodBowlBig
-  id: FoodBowlFancy
-  description: A fancy bowl, used for SPECIAL soups and salads.
-  components:
-  - type: Sprite
-    sprite: Objects/Consumable/Food/bowl.rsi
-    layers:
-    - state: bowl2
-    - map: ["enum.SolutionContainerLayers.Fill"]
-      state: fill-1
-      visible: false

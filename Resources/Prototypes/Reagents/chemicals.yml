@@ -53,21 +53,6 @@
   color: white
 
 - type: reagent
-  id: Lye
-  name: reagent-name-lye
-  desc: reagent-desc-lye
-  flavor: alkaline
-  physicalDesc: reagent-physical-desc-alkaline
-  color: "#e5420b"
-  metabolisms:
-    Bloodstream:
-      effects:
-      - !type:HealthChange
-        damage:
-          types:
-            Caustic: 1
-
-- type: reagent
   id: SodiumCarbonate
   name: reagent-name-sodium-carbonate
   desc: reagent-desc-sodium-carbonate
@@ -91,37 +76,6 @@
         damage:
           types:
             Cellular: 1 #it's a carcinogen, reckon this is fine
-
-- type: reagent
-  id: Hydroxide
-  name: reagent-name-hydroxide
-  desc: reagent-desc-hydroxide
-  physicalDesc: reagent-physical-desc-alkaline
-  color: "white"
-  boilingPoint: 1661.0
-  meltingPoint: 596.0
-
-- type: reagent
-  id: SodiumHydroxide
-  name: reagent-name-sodium-hydroxide
-  desc: reagent-desc-sodium-hydroxide
-  physicalDesc: reagent-physical-desc-alkaline
-  color: "white"
-  boilingPoint: 1661.0
-  meltingPoint: 596.0
-  metabolisms:
-    Bloodstream:
-      effects:
-      - !type:HealthChange
-        damage:
-          types:
-            Heat: 1.5
-      - !type:Vomit
-        conditions:
-        - !type:ReagentCondition
-          reagent: SodiumHydroxide
-          min: 5
-        probability: 0.1
 
 - type: reagent
   id: Fersilicite

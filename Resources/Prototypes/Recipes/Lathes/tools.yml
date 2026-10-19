@@ -87,14 +87,6 @@
 
 - type: latheRecipe
   parent: BaseToolRecipe
-  id: Shovel
-  result: Shovel
-  materials:
-    Steel: 200
-    Wood: 100
-
-- type: latheRecipe
-  parent: BaseToolRecipe
   id: Multitool
   result: Multitool
   materials:

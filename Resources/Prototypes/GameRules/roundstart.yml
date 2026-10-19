@@ -13,78 +13,12 @@
     selectionTime: PrePlayerSpawn
 
 - type: entity
-  parent: BaseGameRule
-  id: RespawnDeadRule
-  components:
-  - type: RespawnDeadRule
-    alwaysRespawnDead: true
-  - type: RespawnTracker
-    respawnDelay: 10
-    deleteBody: false
-
-- type: entity
-  parent: BaseGameRule
-  id: SubGamemodesRule
-  components:
-  - type: SubGamemodes
-    rules:
-    - id: Thief
-      prob: 0.5
-
-- type: entity
-  parent: BaseGameRule
-  id: SubGamemodesRuleNoWizard
-  components:
-  - type: SubGamemodes
-    rules:
-    - id: Thief
-      prob: 0.5
-
-- type: entity
-  parent: BaseGameRule
-  id: DummyNonAntagChance
-  components:
-  - type: SubGamemodes
-    rules:
-    - id: DummyNonAntag
-      prob: 0.3
-
-- type: entity
-  id: InactivityTimeRestart
-  parent: BaseGameRule
-  components:
-  - type: InactivityRule
-    inactivityMaxTime: 600
-    roundEndDelay: 10
-
-- type: entity
   id: MaxTimeRestart
   parent: BaseGameRule
   components:
   - type: MaxTimeRestartRule
     roundMaxTime: 300
     roundEndDelay: 10
-
-- type: entity
-  abstract: true
-  parent: BaseGameRule
-  id: BaseNukeopsRule
-  components:
-  - type: RandomMetadata #this generates the random operation name cuz it's cool.
-    nameSegments:
-    - NamesOperationPrefix
-    - NamesOperationSuffix
-    nameFormat: name-format-nuclear-operation
-  - type: NukeopsRule
-  - type: RuleGrids
-  - type: AntagSelection
-  - type: AntagLoadProfileRule
-    speciesOverride: Human
-    speciesOverrideBlacklist:
-    #Species that do not work with nukies should be included in this list.
-    #Once the issues are fixed the species should be removed from this list to be enabled.
-    #Balance concerns are not a valid reason to disable a species, except for high-impact Nukie-specific exploits.
-    #- Vox
 
 - type: entity
   abstract: true
@@ -120,18 +54,6 @@
       range:
         min: 1
         max: 8
-
-- type: entity
-  id: TraitorReinforcement # This shouldn't be in here but I'm not sure where to put it :(
-  parent: BaseTraitorRule
-  components:
-  - type: TraitorRule
-    giveUplink: false
-    giveBriefing: false
-  - type: AntagSelection
-    antags:
-    - !type:FixedAntagCount
-      proto: TraitorReinforcement
 
 - type: entity
   id: Sandbox
@@ -174,23 +96,6 @@
 # event schedulers
 
 - type: entityTable
-  id: BasicGameRulesTable
-  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
-    children:
-      - !type:NestedSelector
-        tableId: BasicCalmEventsTable
-      - !type:NestedSelector
-        tableId: BasicAntagEventsTable
-      - !type:NestedSelector
-        tableId: ModerateAntagEventsTable
-      - !type:NestedSelector
-        tableId: CargoGiftsTable
-      - !type:NestedSelector
-        tableId: CalmPestEventsTable
-      - !type:NestedSelector
-        tableId: SpicyPestEventsTable
-
-- type: entityTable
   id: DynamicGameRulesTable
   table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
     children:
@@ -211,28 +116,12 @@
     tableId: UnknownShuttlesHostileTable
 
 - type: entity
-  id: BasicStationEventScheduler
-  parent: BaseGameRule
-  components:
-  - type: BasicStationEventScheduler
-    scheduledGameRules: !type:NestedSelector
-      tableId: BasicGameRulesTable
-
-- type: entity
   id: DynamicStationEventScheduler # this isn't the dynamic mode, but rather the station event scheduler used for dynamic
   parent: BaseGameRule
   components:
   - type: BasicStationEventScheduler
     scheduledGameRules: !type:NestedSelector
       tableId: DynamicGameRulesTable
-
-- type: entity
-  id: RampingStationEventScheduler
-  parent: BaseGameRule
-  components:
-  - type: RampingStationEventScheduler
-    scheduledGameRules: !type:NestedSelector
-      tableId: BasicGameRulesTable
 
 - type: entity
   id: SpaceTrafficControlEventScheduler # iff we make a selector for EntityTables that can respect StationEventComp restrictions, or somehow impliment them otherwise in said tables,

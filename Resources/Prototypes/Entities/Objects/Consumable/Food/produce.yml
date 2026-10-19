@@ -455,7 +455,6 @@
       - ReagentId: Carbon
         Quantity: 2
 
-
 - type: entity
   name: carrot
   parent: FoodProduceBase
@@ -748,43 +747,6 @@
       Taco: ExtradimensionalOrange
 
 - type: entity
-  name: pineapple
-  parent: [FoodProduceBase, BaseSlicingRefinableFood]
-  id: FoodPineapple
-  description: Mmm, tropical.
-  components:
-  - type: FlavorProfile
-    flavors:
-      - pineapple
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Nutriment
-        Quantity: 8
-      - ReagentId: Vitamin
-        Quantity: 2
-      - ReagentId: JuicePineapple
-        Quantity: 5
-  - type: Sprite
-    sprite: Objects/Specific/Hydroponics/pineapple.rsi
-  - type: Item
-    heldPrefix: produce
-  - type: Produce
-    plantId: PineapplePlants
-  - type: Extractable
-    juiceSolution:
-      reagents:
-      - ReagentId: JuicePineapple
-        Quantity: 10
-  - type: ToolRefinable
-    refineResult:
-    - id: FoodPineappleSlice
-      amount: 5
-  - type: Tag
-    tags:
-    - Fruit
-
-- type: entity
   name: potato
   parent: FoodProduceBase
   id: FoodPotato
@@ -1064,37 +1026,6 @@
       Taco: GoldenApple
 
 - type: entity
-  name: cocoa pod
-  parent: FoodProduceBase
-  id: FoodCocoaPod
-  description: You can never have too much chocolate!
-  components:
-  - type: FlavorProfile
-    flavors:
-      - chocolate
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Nutriment
-        Quantity: 6
-      - ReagentId: Vitamin
-        Quantity: 3
-      - ReagentId: CocoaPowder
-        Quantity: 6
-  - type: Sprite
-    sprite: Objects/Specific/Hydroponics/cocoa.rsi
-  - type: Produce
-    plantId: CocoaPlants
-  - type: SpawnItemsOnUse
-    items:
-      - id: FoodCocoaBeans
-    sound:
-      path: /Audio/Effects/packetrip.ogg
-  - type: Tag
-    tags:
-    - Fruit
-
-- type: entity
   name: ear of corn
   parent: [FoodProduceBase, BaseSlicingRefinable]
   id: FoodCorn
@@ -1268,31 +1199,6 @@
   - type: Tag
     tags:
     - Slice
-
-- type: entity
-  name: pineapple slice
-  parent: ProduceSliceBase
-  id: FoodPineappleSlice
-  description: Mmm, tropical.
-  components:
-  - type: FlavorProfile
-    flavors:
-      - pineapple
-  - type: Sprite
-    sprite: Objects/Specific/Hydroponics/pineapple.rsi
-  - type: Extractable
-    juiceSolution:
-      reagents:
-      - ReagentId: JuicePineapple
-        Quantity: 2
-  - type: Tag
-    tags:
-    - Fruit
-    - Slice
-  - type: FoodSequenceElement
-    entries:
-      Burger: PineappleSliceBurger
-      Taco: PineappleSlice
 
 - type: entity
   name: onion slice
@@ -2205,43 +2111,6 @@
     - Fruit
 
 - type: entity
-  name: berries
-  parent: FoodProduceBase
-  id: FoodBerries
-  description: A handful of various types of berries.
-  components:
-  - type: FlavorProfile
-    flavors:
-      - berry
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Nutriment
-        Quantity: 5
-      - ReagentId: Vitamin
-        Quantity: 5
-      - ReagentId: JuiceBerry
-        Quantity: 5
-  - type: Sprite
-    sprite: Objects/Specific/Hydroponics/berries.rsi
-  - type: Item
-    heldPrefix: produce
-  - type: Produce
-    plantId: BerryPlants
-  - type: Extractable
-    juiceSolution:
-      reagents:
-      - ReagentId: JuiceBerry
-        Quantity: 10
-  - type: Tag
-    tags:
-    - Fruit
-  - type: FoodSequenceElement
-    entries:
-      Taco: Berries
-      Burger: BerriesBurger
-
-- type: entity
   name: bungo fruit
   parent: [FoodProduceBase, BaseSlicingRefinable]
   id: FoodBungo
@@ -2368,110 +2237,6 @@
     entries:
       Taco: WorldPea
       Burger: WorldPeaBurger
-
-- type: entity
-  name: pumpkin
-  parent: [FoodProduceBase, BaseSlicingRefinable]
-  id: FoodPumpkin
-  description: A large, orange... berry. Seriously.
-  components:
-  - type: Item
-    size: Normal
-    heldPrefix: produce
-  - type: FlavorProfile
-    flavors:
-      - pumpkin
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: PumpkinFlesh # Mostly empty space
-        Quantity: 20
-      - ReagentId: Nutriment
-        Quantity: 5
-      - ReagentId: Vitamin
-        Quantity: 5
-  - type: Sprite
-    sprite: Objects/Specific/Hydroponics/pumpkin.rsi
-  - type: Produce
-    plantId: PumpkinPlants
-  - type: Damageable
-  - type: Injurable
-    damageContainer: Biological
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 16
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: desecration
-      - !type:SpillBehavior
-        solution: food
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-  - type: ToolRefinable
-    refineResult:
-    - id: CarvedPumpkin
-    - id: PumpkinSeeds
-  - type: Tag
-    tags:
-    - Fruit
-    - Vegetable
-
-- type: entity
-  name: blue pumpkin
-  parent: FoodProduceBase
-  id: FoodBluePumpkin
-  description: A large, blue... berry. Seriously.
-  components:
-  - type: Item
-    size: Small
-    heldPrefix: produce
-  - type: FlavorProfile
-    flavors:
-      - bluepumpkin
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: PumpkinFlesh # Mostly empty space
-        Quantity: 20
-      - ReagentId: Nutriment
-        Quantity: 10
-      - ReagentId: Ammonia
-        Quantity: 10
-      - ReagentId: Chlorine
-        Quantity: 10
-      - ReagentId: Vitamin
-        Quantity: 10
-  - type: Extractable
-    juiceSolution:
-      reagents:
-      - ReagentId: JuiceBluePumpkin
-        Quantity: 10
-  - type: Sprite
-    sprite: Objects/Specific/Hydroponics/blue_pumpkin.rsi
-  - type: Produce
-    plantId: BluePumpkinPlants
-  - type: Damageable
-  - type: Injurable
-    damageContainer: Biological
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 16
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: desecration
-      - !type:SpillBehavior
-        solution: food
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-  - type: Tag
-    tags:
-    - Fruit
 
 - type: entity
   name: cotton boll

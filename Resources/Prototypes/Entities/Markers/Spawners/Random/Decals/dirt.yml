@@ -47,25 +47,6 @@
 
 - type: entity
   parent: DecalSpawnerDirtBase
-  id: DecalSpawnerDirtSingle
-  suffix: Dirt, 0 Radius
-  components:
-  - type: RandomDecalSpawner
-    radius: 0
-    prob: 1.0
-    maxDecals: 1
-
-- type: entity
-  parent: DecalSpawnerDirtBase
-  id: DecalSpawnerDirtNear
-  suffix: Dirt, 1.5 Radius
-  components:
-  - type: RandomDecalSpawner
-    radius: 1.5
-    maxDecals: 5
-
-- type: entity
-  parent: DecalSpawnerDirtBase
   id: DecalSpawnerDirtWide
   suffix: Dirt, 3 Radius
   components:

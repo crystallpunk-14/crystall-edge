@@ -50,31 +50,3 @@
     oxygen: ClosetEmergency
     radiation: ClosetRadiationSuit
     tool: ClosetTool
-
-- type: paintableGroup
-  id: WallCloset
-  cost: 2
-  defaultStyle: basic
-  styles:
-    atmospherics: ClosetWallAtmospherics
-    basic: ClosetWall
-    black: ClosetWallBlack
-    blue: ClosetWallBlue
-    fire: ClosetWallFire
-    green: ClosetWallGreen
-    grey: ClosetWallGrey
-    mixed: ClosetWallMixed
-    nitrogen: ClosetWallEmergencyN2
-    orange: ClosetWallOrange
-    oxygen: ClosetWallEmergency
-    pink: ClosetWallPink
-    white: ClosetWallWhite
-    yellow: ClosetWallYellow
-
-- type: paintableGroup
-  id: WallLocker
-  cost: 2
-  defaultStyle: medical
-  styles:
-    evac: LockerWallEvacRepair
-    medical: LockerWallMedical

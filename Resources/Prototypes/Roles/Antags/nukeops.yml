@@ -91,36 +91,6 @@
   mindRoles:
   - MindRoleNukeopsMedic
 
-- type: antagSpecifier
-  parent: BaseNukeops
-  id: NukeopsOperative
-  prefRoles:
-  - Nukeops
-  spawnerPrototype: SpawnPointNukeopsOperative
-  startingGear: SyndicateOperativeGearFull
-  components:
-  - type: RandomMetadata
-    nameSegments:
-    - NamesSyndicateNormal
-    nameFormat: name-format-nukie-operator
-  mindRoles:
-  - MindRoleNukeops
-
-- type: antagSpecifier
-  parent: BaseNukeops
-  id: LoneOp
-  spawnerPrototype: SpawnPointLoneNukeOperative
-  pickPlayer: false
-  startingGear: SyndicateLoneOperativeGearFull
-  components:
-  - type: RandomMetadata
-    nameSegments:
-    - NamesSyndicatePrefix
-    - NamesSyndicateNormal
-    nameFormat: name-format-nukie-generic
-  mindRoles:
-  - MindRoleLoneops
-
 - type: startingGear
   id: SyndicateOperativeGearFullNoUplink
   equipment:
@@ -148,15 +118,6 @@
   equipment:
     pocket2: BaseUplinkRadio40TC
 
-- type: chameleonOutfit
-  id: NukeopsOutfit
-  name: roles-antag-nuclear-operative-name
-  startingGear: SyndicateOperativeGearFullNoUplink
-  icon: "JobIconSyndicateOperative"
-  equipment:
-    head: ClothingHeadHelmetHardsuitSyndie
-    neck: ClothingNeckScarfStripedSyndieRed
-
 #Nuclear Operative Commander Gear
 - type: startingGear
   id: SyndicateCommanderGearFull
@@ -167,15 +128,6 @@
     outerClothing: ClothingOuterHardsuitSyndieCommander
   inhand:
   - NukeOpsDeclarationOfWar
-
-- type: chameleonOutfit
-  id: NukeopsCommanderOutfit
-  name: roles-antag-nuclear-operative-commander-name
-  startingGear: SyndicateCommanderGearFull
-  icon: "JobIconSyndicateCommander"
-  equipment:
-    head: ClothingHeadHelmetHardsuitSyndieCommander
-    neck: ClothingNeckScarfStripedSyndieGreen
 
 #Nuclear Operative Medic Gear
 - type: startingGear
@@ -198,19 +150,3 @@
     - HandheldHealthAnalyzer
     - CombatMedipen
     - DeathAcidifierImplanter
-
-- type: chameleonOutfit
-  id: NukeopsMedicOutfit
-  name: roles-antag-nuclear-operative-agent-name
-  startingGear: SyndicateOperativeMedicFull
-  icon: "JobIconSyndicateCorpsman"
-  equipment:
-    head: ClothingHeadHelmetHardsuitSyndieMedic
-    neck: ClothingNeckScarfStripedLightBlue
-
-#Lone Operative Gear
-- type: startingGear
-  id: SyndicateLoneOperativeGearFull
-  parent: SyndicateOperativeGearFull
-  equipment:
-    pocket2: BaseUplinkRadio60TC

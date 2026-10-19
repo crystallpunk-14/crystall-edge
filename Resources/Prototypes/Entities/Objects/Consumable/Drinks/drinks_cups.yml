@@ -312,26 +312,3 @@
     state: icon-vend-green-tea
   - type: TrashOnSolutionEmpty
     solution: drink
-
-# TODO this needs fill levels
-- type: entity
-  parent: [DrinkBaseMaterialPlastic, SolutionSmall, DrinkBaseCup]
-  id: DrinkLean
-  name: grape juice
-  description: Damn, no fun allowed.
-  components:
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: JuiceGrape
-        Quantity: 60
-  - type: Sprite
-    sprite: Objects/Consumable/Drinks/lean.rsi
-  - type: Item
-    sprite: Objects/Consumable/Drinks/lean.rsi
-    size: Small
-  - type: TrashOnSolutionEmpty
-    solution: drink
-
-#[1] https://en.wikipedia.org/wiki/Cup
-#[2] https://en.wikipedia.org/wiki/Mug

@@ -27,13 +27,3 @@
       !type:RoleTimeRequirement
       role: JobMedicalDoctor
       time: 20h
-
-# Mid-level timer for CMO
-- type: loadoutEffectGroup
-  id: MasterCMO
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:RoleTimeRequirement
-      role: JobChiefMedicalOfficer
-      time: 20h

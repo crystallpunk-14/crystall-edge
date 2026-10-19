@@ -62,40 +62,6 @@
     stealGroup: Bible
 
 - type: entity
-  parent: [Bible, BaseSyndicateContraband]
-  name: necronomicon
-  description: "There's a note: Klatuu, Verata, Nikto -- Don't forget it again!"
-  id: BibleNecronomicon
-  components:
-  - type: Bible
-    damage:
-      types:
-        Caustic: 20 ## ~15 dps
-    damageOnFail:
-      types:
-        Blunt: 5
-        Piercing: 5
-        Slash: 5
-        Asphyxiation: 25
-    damageOnUntrainedUse:
-      types:
-        Caustic: 50
-    failChance: 0
-    healFailOthersText: necro-heal-fail-others
-    healFailSelfText: necro-heal-fail-self
-    healSuccessOthersText: necro-heal-success-others
-    healSuccessSelfText: necro-heal-success-self
-    healSound: "/Audio/Effects/lightburn.ogg"
-    healingLightEffect: EvilLightEffect
-  - type: Summonable
-    summonEntity: SpawnPointGhostCerberus
-    respawnTime: 300
-  - type: Sprite
-    sprite: Objects/Specific/Chapel/necronomicon.rsi
-  - type: Item
-    sprite: Objects/Specific/Chapel/necronomicon.rsi
-
-- type: entity
   parent: BaseAction
   id: ActionBibleSummon
   name: Summon familiar
@@ -111,61 +77,6 @@
     event: !type:SummonActionEvent
 
 - type: entity
-  id: BibleDruid
-  name: druidic tablet
-  parent: Bible
-  description: "It's the mystery of the druids!"
-  components:
-  - type: Sprite
-    sprite: Objects/Specific/Chapel/mysteryofthedruids.rsi
-  - type: Item
-    sprite: Objects/Specific/Chapel/mysteryofthedruids.rsi
-
-- type: entity
-  id: BibleCommunistManifesto
-  name: communist manifesto
-  parent: Bible
-  description: "Remove the mask of humanity from Capital."
-  components:
-  - type: Sprite
-    sprite: Objects/Specific/Chapel/communistmanifesto.rsi
-  - type: Item
-    sprite: Objects/Specific/Chapel/communistmanifesto.rsi
-
-- type: entity
-  id: BibleNarsie
-  name: tome of nar'sie
-  parent: Bible
-  description: "What could possibly go wrong with a book covered in blood?"
-  components:
-  - type: Sprite
-    sprite: Objects/Specific/Chapel/tomeofnarsie.rsi
-  - type: Item
-    sprite: Objects/Specific/Chapel/tomeofnarsie.rsi
-
-- type: entity
-  id: BibleNanoTrasen
-  name: codex nanotrasimus
-  parent: Bible
-  description: "A familiar book containing the Sacred Operating Procedures."
-  components:
-  - type: Sprite
-    sprite: Objects/Specific/Chapel/codexnanotrasimus.rsi
-  - type: Item
-    sprite: Objects/Specific/Chapel/codexnanotrasimus.rsi
-
-- type: entity
-  id: BibleRatvar
-  name: tablet of ratvar
-  parent: Bible
-  description: "A holy relic of the Clockwork Cult, blessed by the Clockwork Justice, Ratvar."
-  components:
-  - type: Sprite
-    sprite: Objects/Specific/Chapel/ratvartablet.rsi
-  - type: Item
-    sprite: Objects/Specific/Chapel/ratvartablet.rsi
-
-- type: entity
   id: HolyLightEffect
   categories: [ HideSpawnMenu ]
   components:
@@ -179,11 +90,3 @@
       duration: 0.7
     - type: TimedDespawn
       lifetime: 0.7
-
-- type: entity
-  id: EvilLightEffect
-  categories: [ HideSpawnMenu ]
-  parent: HolyLightEffect
-  components:
-    - type: PointLight
-      color: red

@@ -50,28 +50,3 @@
   components:
   - type: Magic
     requiresClothes: false
-
-- type: entity
-  parent: BaseSmiteAction
-  id: ActionSlippery
-  name: Slippery Slope
-  description: Make someone slippery.
-  components:
-  - type: Action
-    useDelay: 60
-    sound: !type:SoundPathSpecifier
-      path: /Audio/Effects/slip.ogg
-  - type: Sprite
-    sprite: Objects/Specific/Janitorial/soap.rsi
-    layers:
-    - state: omega-4
-  - type: EntityTargetAction
-    event: !type:ChangeComponentsSpellEvent
-      toAdd:
-      - type: Slippery
-      - type: StepTrigger
-        requiredTriggeredSpeed: -1
-  - type: SpeakOnAction
-    sentence: action-speech-spell-slip
-  - type: Magic
-    requiresClothes: false

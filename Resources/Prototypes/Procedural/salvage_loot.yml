@@ -106,7 +106,6 @@
 
 # Mob loot table
 
-
 # Boss loot table
 
 # Ores - these are guaranteed
@@ -119,59 +118,8 @@
       proto: OreIron
 
 - type: salvageLoot
-  id: OreCoal
-  guaranteed: true
-  loots:
-    - !type:BiomeMarkerLoot
-      proto: OreCoal
-
-- type: salvageLoot
   id: OreQuartz
   guaranteed: true
   loots:
     - !type:BiomeMarkerLoot
       proto: OreQuartz
-
-- type: salvageLoot
-  id: OreSalt
-  guaranteed: true
-  loots:
-    - !type:BiomeMarkerLoot
-      proto: OreSalt
-
-# - Medium value
-- type: salvageLoot
-  id: OreGold
-  guaranteed: true
-  loots:
-    - !type:BiomeMarkerLoot
-      proto: OreGold
-
-- type: salvageLoot
-  id: OreSilver
-  guaranteed: true
-  loots:
-    - !type:BiomeMarkerLoot
-      proto: OreSilver
-
-# - High value
-- type: salvageLoot
-  id: OrePlasma
-  guaranteed: true
-  loots:
-    - !type:BiomeMarkerLoot
-      proto: OrePlasma
-
-- type: salvageLoot
-  id: OreUranium
-  guaranteed: true
-  loots:
-    - !type:BiomeMarkerLoot
-      proto: OreUranium
-
-- type: salvageLoot
-  id: OreDiamond
-  guaranteed: true
-  loots:
-    - !type:BiomeMarkerLoot
-      proto: OreDiamond

@@ -218,38 +218,6 @@
         spawn:
           FloorCarpetItemWhite: *BaseCarpetSpawn
 
-# TODO nuke this once tiles support rotating sprites
-- type: entity
-  parent: BaseStructure
-  id: CarpetChapel
-  name: "chapel's carpet"
-  components:
-  - type: Sprite
-    sprite: Structures/Furniture/Carpets/chapel_carpet.rsi
-    state: chapel
-    drawdepth: FloorTiles
-  - type: Icon
-    sprite: Structures/Furniture/Carpets/chapel_carpet.rsi
-    state: chapel
-  - type: Tag
-    tags:
-    - Carpet
-  - type: Physics
-    canCollide: false
-  - type: Fixtures
-  - type: Damageable
-  - type: Injurable
-    damageContainer: Inorganic
-  - type: Destructible
-    thresholds:
-    - trigger: *DamageFurnitureWeak
-      behaviors:
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-  - type: TrayScanReveal
-
-#cardpet
-
 - type: entity
   parent: [ BaseStructure, StructureHealthFurnitureWeak ]
   id: CarpetCard

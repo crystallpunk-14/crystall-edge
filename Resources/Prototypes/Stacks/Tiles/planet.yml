@@ -11,9 +11,3 @@
   id: FloorTileGrassJungle
   name: stack-grass-jungle-floor-tile
   spawn: FloorTileItemGrassJungle
-
-- type: stack
-  parent: BaseTileStack
-  id: FloorTileSnow
-  name: stack-snow-floor-tile
-  spawn: FloorTileItemSnow

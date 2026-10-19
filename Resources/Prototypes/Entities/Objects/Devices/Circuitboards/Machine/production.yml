@@ -220,43 +220,6 @@
       Manipulator: 3
 
 - type: entity
-  id: VaccinatorMachineCircuitboard
-  parent: BaseMachineCircuitboard
-  name: vaccinator machine board
-  components:
-  - type: Sprite
-    state: medical
-  - type: MachineBoard
-    prototype: Vaccinator
-    stackRequirements:
-      Manipulator: 2
-      Cable: 5
-    tagRequirements:
-        GlassBeaker:
-          amount: 1
-          defaultPrototype: Beaker
-
-- type: entity
-  id: DiagnoserMachineCircuitboard
-  parent: BaseMachineCircuitboard
-  name: diagnoser machine board
-  components:
-  - type: Sprite
-    state: medical
-  - type: MachineBoard
-    prototype: DiseaseDiagnoser
-    stackRequirements:
-      Cable: 5
-    tagRequirements:
-      GlassBeaker:
-        amount: 1
-        defaultPrototype: Beaker
-    componentRequirements:
-      BotanySwab:
-        amount: 1
-        defaultPrototype: DiseaseSwab
-
-- type: entity
   id: StationTeleporterMachineCircuitboard
   parent: BaseMachineCircuitboard
   name: teleporter machine board
@@ -415,18 +378,6 @@
         Manipulator: 1
         Glass: 5
         Cable: 1
-
-- type: entity
-  id: CrewMonitoringServerMachineCircuitboard
-  parent: BaseMachineCircuitboard
-  name: crew monitoring server machine board
-  description: A machine printed circuit board for a crew monitoring server.
-  components:
-    - type: MachineBoard
-      prototype: CrewMonitoringServer
-      stackRequirements:
-        Steel: 1
-        Cable: 2
 
 - type: entity
   id: CryoPodMachineCircuitboard
@@ -908,19 +859,6 @@
       Steel: 1
 
 - type: entity
-  id: MaterialSiloMachineCircuitboard
-  parent: BaseMachineCircuitboard
-  name: material silo machine board
-  components:
-  - type: Sprite
-    state: supply
-  - type: MachineBoard
-    prototype: MachineMaterialSilo
-    stackRequirements:
-      Manipulator: 4
-      Cable: 1
-
-- type: entity
   id: OreProcessorMachineCircuitboard
   parent: BaseMachineCircuitboard
   name: ore processor machine board
@@ -1132,20 +1070,6 @@
         Steel: 5
 
 - type: entity
-  id: MailTeleporterMachineCircuitboard
-  parent: BaseMachineCircuitboard
-  name: mail teleporter machine board
-  description: A machine printed circuit board for a mail teleporter.
-  components:
-  - type: Sprite
-    state: supply
-  - type: MachineBoard
-    prototype: CargoMailTeleporter
-    stackRequirements:
-      Manipulator: 2
-      Plasteel: 5
-
-- type: entity
   id: SodaDispenserMachineCircuitboard
   parent: BaseMachineCircuitboard
   name: soda dispenser machine board
@@ -1206,21 +1130,6 @@
       Manipulator: 7
       Steel: 5
       CableHV: 5
-      Uranium: 2
-
-- type: entity
-  parent: BaseMachineCircuitboard
-  id: StationAnchorCircuitboard
-  name: station anchor machine board
-  description: A machine printed circuit board for a station anchor.
-  components:
-  - type: MachineBoard
-    prototype: StationAnchor
-    stackRequirements:
-      Manipulator: 7
-      Plasteel: 10
-      Glass: 5
-      CableHV: 8
       Uranium: 2
 
 - type: entity

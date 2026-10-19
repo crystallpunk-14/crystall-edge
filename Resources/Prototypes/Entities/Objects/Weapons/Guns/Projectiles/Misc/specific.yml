@@ -55,17 +55,6 @@
   - type: VaporVisuals
 
 - type: entity
-  parent: BaseBullet
-  id: BulletHivebot
-  categories: [ HideSpawnMenu ]
-  name: hivebot bullet
-  components:
-  - type: Projectile
-    damage:
-      types:
-        Piercing: 10
-
-- type: entity
   id: GrapplingHook
   categories: [ HideSpawnMenu ]
   name: grappling hook

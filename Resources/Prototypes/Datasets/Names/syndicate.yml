@@ -9,9 +9,3 @@
   values:
     prefix: names-syndicate-elite-dataset-
     count: 23
-
-- type: localizedDataset
-  id: NamesSyndicatePrefix
-  values:
-    prefix: names-syndicate-prefix-dataset-
-    count: 2

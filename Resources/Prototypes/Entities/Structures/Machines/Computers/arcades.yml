@@ -182,15 +182,6 @@
     pack: SpaceVillainGoodbyes
 
 - type: entity
-  id: SpaceVillainArcadeFilled
-  parent: SpaceVillainArcade
-  suffix: Filled
-  components:
-  - type: SpaceVillainArcade
-    rewardMinAmount: 5
-    rewardMaxAmount: 8
-
-- type: entity
   id: BlockGameArcade
   description: An arcade cabinet with a strangely familiar game.
   name: NT block game

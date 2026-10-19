@@ -377,16 +377,6 @@
     rechargeDuration: 10
 
 - type: entity
-  id: RCDExperimental
-  parent: RCD
-  suffix: Admeme
-  name: experimental RCD
-  description: A bluespace-enhanced rapid construction device that passively generates its own compressed matter.
-  components:
-  - type: AutoRecharge
-    rechargeDuration: 1
-
-- type: entity
   name: compressed matter
   parent: BaseItem
   id: RCDAmmo

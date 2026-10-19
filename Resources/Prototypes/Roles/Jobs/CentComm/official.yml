@@ -29,12 +29,3 @@
     belt: WeaponPistolN1984
     pocket1: BoxFolderCentComClipboardThreePapers
     pocket2: PenCentcom
-
-
-- type: chameleonOutfit
-  id: CentralCommandOfficialOutfit
-  job: CentralCommandOfficial
-  hasMindShield: true
-  equipment:
-    neck: ClothingNeckScarfStripedCentcom
-    mask: ClothingMaskGasCentcom

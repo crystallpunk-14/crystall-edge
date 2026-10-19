@@ -76,18 +76,6 @@
     sprite: Clothing/Shoes/Boots/magboots-science.rsi
 
 - type: entity
-  parent: ClothingShoesBootsMagBase
-  id: ClothingShoesBootsMagBlinding
-  name: magboots of blinding speed
-  description: These would look fetching on a fetcher like you.
-  components:
-  - type: ClothingSpeedModifier
-    walkModifier: 1.1 #PVS isn't too much of an issue when you are blind...
-    sprintModifier: 1.1
-  - type: StaticPrice
-    price: 3000
-
-- type: entity
   parent: [ClothingShoesBootsMagBase, BaseJetpack, BaseSyndicateContraband]
   id: ClothingShoesBootsMagSyndie
   name: blood-red magboots

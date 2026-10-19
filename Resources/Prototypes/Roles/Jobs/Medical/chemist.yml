@@ -20,14 +20,3 @@
   equipment:
     id: ChemistryPDA
     ears: ClothingHeadsetMedical
-
-- type: chameleonOutfit
-  id: ChemistChameleonOutfit
-  job: Chemist
-  equipment:
-    head: ClothingHeadHatBeretMedic
-    eyes: ClothingEyesGlassesChemical
-    mask: ClothingMaskSterile
-    neck: ClothingNeckStethoscope
-    outerClothing: ClothingOuterCoatLabChem
-    gloves: ClothingHandsGlovesLatex

@@ -90,37 +90,3 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
-
-# Admeme
-- type: entity
-  parent: WeaponTetherGun
-  id: WeaponTetherGunAdmin
-  name: tether gun
-  description: Manipulates gravity around objects to fling them at high velocities.
-  suffix: Admeme
-  components:
-  - type: TetherGun
-    canTetherAlive: true
-    canUnanchor: true
-    maxForce: 10000
-    massLimit: 10000
-    dampingRatio: 4
-    frequency: 20
-
-- type: entity
-  parent: WeaponForceGun
-  id: WeaponForceGunAdmin
-  name: force gun
-  description: Manipulates gravity around objects to fling them at high velocities.
-  suffix: Admeme
-  components:
-  - type: ForceGun
-    canTetherAlive: true
-    canUnanchor: true
-    maxForce: 10000
-    massLimit: 10000
-    frequency: 15
-    dampingRatio: 4
-    throwForce: 50
-    throwDistance: 100
-    lineColor: "#18a2d5"

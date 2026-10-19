@@ -46,13 +46,3 @@
   categories: [HideSpawnMenu]
   components:
   - type: Sprite
-
-- type: entity
-  id: ArrivalsShuttleTimer
-  parent: Screen
-  name: arrivals screen
-  description: Displays time of arrivals shuttle ETA.
-  components:
-  - type: DeviceNetwork
-    deviceNetId: Private
-    receiveFrequencyId: ArrivalsShuttleTimer

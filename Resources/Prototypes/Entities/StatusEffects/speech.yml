@@ -10,14 +10,6 @@
       - Speech
       requireAll: true
 
-# Causes you to st-t-u-t-t-t-er randomly when talking.
-- type: entity
-  parent: SpeechStatusEffectBase
-  id: StatusEffectStutter
-  name: stutter
-  components:
-  - type: StutteringAccent
-
 # Causes you to schlur your words schwhen talking.
 - type: entity
   parent: SpeechStatusEffectBase
@@ -34,22 +26,6 @@
   components:
   - type: ScrambledAccent
 
-# Causes wu to tawk wike a cat. ^w^
-- type: entity
-  parent: SpeechStatusEffectBase
-  id: StatusEffectOwO
-  name: owoaccent
-  components:
-  - type: OwOAccent
-
-# Causes you to shout everything.
-- type: entity
-  parent: SpeechStatusEffectBase
-  id: StatusEffectAllCaps
-  name: allcapsaccent
-  components:
-  - type: AllCapsAccent
-
 # Causes you to speak like a servant of Ratvar.
 - type: entity
   parent: SpeechStatusEffectBase
@@ -57,11 +33,3 @@
   name: ratvarian language patterns
   components:
   - type: RatvarianLanguage
-
-# Causes you to tark rike a dog. Woof!
-- type: entity
-  parent: SpeechStatusEffectBase
-  id: StatusEffectBark
-  name: barkaccent
-  components:
-  - type: BarkAccent
