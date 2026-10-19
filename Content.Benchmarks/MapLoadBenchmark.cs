@@ -49,19 +49,10 @@ public class MapLoadBenchmark
     }
 
     public static string[] MapsSource { get; } = {
-        "Bagel",
-        "Box",
-        "CentComm",
         "Dev",
         "Empty",
-        "Marathon",
-        "MeteorArena",
-        "Packed",
-        "Saltern",
-        "Sushi",
-        "TestTeg",
-        "Tram2",
-        "Snowball"
+        "Pharus",
+        "Shaar"
     };
 
     [ParamsSource(nameof(MapsSource))]

@@ -39,8 +39,6 @@
     - id: NinjaSpawn
     - id: ParadoxCloneSpawn
     - id: SleeperAgents
-    - id: LoneOpsSpawn
-    - id: WizardSpawn
     - !type:NestedSelector
       tableId: DerelictBorgEventTable
 
@@ -262,18 +260,6 @@
   - type: RandomSpawnRule
     prototype: MobRevenant
 
-- type: entity
-  parent: [ BaseAntagGhostRoleRule, BaseWizardRule ]
-  id: WizardSpawn
-  components:
-  - type: StationEvent
-    weight: 1 # rare
-    duration: null
-    occursDuringRoundEnd: false
-    earliestStart: 30
-    reoccurrenceDelay: 60
-    minimumPlayers: 30
-
 # disabled until event is rewritten to be more interesting
 #- type: entity
 #  id: FalseAlarm
@@ -427,28 +413,6 @@
       rolls: 4, 8
       children:
       - id: MobGiantSpiderAngry
-
-- type: entity
-  parent: [ BaseAntagGhostRoleRule, BaseNukeopsRule ]
-  id: LoneOpsSpawn
-  components:
-  - type: StationEvent
-    earliestStart: 35
-    weight: 5.5
-    minimumPlayers: 20
-    duration: null # LoneOpsSpawn needs an infinite duration so that it inherits the NukeOpsRule things of an actually appropriate end screen (not always "Neutral outcome!") and... ending the game if the station is nuked.
-    occursDuringRoundEnd: false
-  - type: RuleGrids
-  - type: LoadMapRule
-    gridPath: /Maps/Shuttles/ShuttleEvent/striker.yml
-  - type: NukeopsRule
-    roundEndBehavior: Nothing
-  - type: AntagSelection
-    antags:
-    - !type:FixedAntagCount
-      proto: LoneOp
-  - type: DynamicRuleCost
-    cost: 75
 
 - type: entity
   parent: BaseTraitorRule

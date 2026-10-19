@@ -30,7 +30,7 @@ namespace Content.Benchmarks;
 [Virtual]
 public class PvsBenchmark
 {
-    public const string Map = "Maps/box.yml";
+    public const string Map = "Maps/_CE/Shaar/Shaar0.yml";
 
     [Params(1, 8, 80)]
     public int PlayerCount { get; set; }
