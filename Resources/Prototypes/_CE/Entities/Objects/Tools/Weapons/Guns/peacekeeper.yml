@@ -30,8 +30,8 @@
     proto: CEPeaceKeeperHitscan
     fireCost: 10
   - type: Battery
-    maxCharge: 100
-    startingCharge: 100
+    maxCharge: 80
+    startingCharge: 80
   - type: Gun
     fireRate: 0.8
     angleDecay: 10
