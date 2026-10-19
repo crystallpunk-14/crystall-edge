@@ -61,5 +61,4 @@
   id: MechEquipment
   recipes:
     - MechEquipmentGrabber
-    - MechEquipmentHorn
     - MechEquipmentGrabberSmall
