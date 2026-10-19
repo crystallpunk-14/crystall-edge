@@ -29,12 +29,3 @@
     cost: 75
   - type: GameRule
     cancelPresetOnTooFewPlayers: false
-
-# Needs testing
-- type: entity
-  parent: BaseWizardRule
-  id: SubWizard
-  components:
-  - type: GameRule
-    cancelPresetOnTooFewPlayers: false
-

@@ -49,7 +49,6 @@ namespace Content.IntegrationTests.Tests
 
         private static readonly string[] Grids =
         {
-            "/Maps/centcomm.yml",
             AdminTestArenaSystem.ArenaMapPath
         };
 
@@ -63,11 +62,6 @@ namespace Content.IntegrationTests.Tests
         /// </remarks>
         private static readonly Dictionary<string, HashSet<EntProtoId>> DoNotMapWhitelistSpecific = new()
         {
-            {"/Maps/reach.yml", ["HandheldCrewMonitor"]},
-            {"/Maps/Shuttles/ShuttleEvent/honki.yml", ["GoldenBikeHorn"]}, // CrystallEdge: clown & mime content removed
-            {"/Maps/Shuttles/ShuttleEvent/syndie_evacpod.yml", ["RubberStampSyndicate"]},
-            {"/Maps/Shuttles/ShuttleEvent/cruiser.yml", ["ShuttleGunPerforator"]},
-            {"/Maps/Shuttles/ShuttleEvent/instigator.yml", ["ShuttleGunFriendship"]},
         };
 
         /// <summary>
@@ -75,12 +69,10 @@ namespace Content.IntegrationTests.Tests
         /// </summary>
         /// <remarks>
         /// It is also possible to whitelist entire directories here. For example, adding
-        /// "/Maps/Shuttles/**" will whitelist all shuttle maps.
+        /// "/Maps/_CE/Dev/**" will whitelist all dev maps.
         /// </remarks>
         private static readonly string[] DoNotMapWhitelist =
         {
-            "/Maps/centcomm.yml",
-            "/Maps/Shuttles/AdminSpawn/**", // admin gaming
             "/Maps/_CE/Dev/**", // CrystallEdge dev maps
         };
 
@@ -93,7 +85,6 @@ namespace Content.IntegrationTests.Tests
 
         private static readonly string[] GameMaps = GameDataScrounger.PrototypesOfKind<GameMapPrototype>().Where(x => x != PoolManager.TestMap).ToArray();
         private static readonly ResPath[] AllMapFiles = GameDataScrounger.FilesInDirectoryInVfs("/Maps/_CE", "*.yml");
-        private static readonly ResPath[] ShuttleMapFiles = GameDataScrounger.FilesInDirectoryInVfs("/Maps/Shuttles", "*.yml");
 
         private static readonly ProtoId<EntityCategoryPrototype> DoNotMapCategory = "DoNotMap";
 
@@ -127,43 +118,6 @@ namespace Content.IntegrationTests.Tests
                 }
 
                 mapSystem.DeleteMap(mapId);
-            });
-        }
-
-        /// <summary>
-        /// Asserts that shuttles are loadable and have been saved as grids and not maps.
-        /// </summary>
-        [Test]
-        [TestCaseSource(nameof(ShuttleMapFiles))]
-        [EnsureCVar(Side.Server, typeof(CCVars), nameof(CCVars.GridFill), false)]
-        [Ignore("CrystallEdge")]
-        public async Task ShuttlesLoadableTest(ResPath path)
-        {
-            var pair = Pair;
-            var server = pair.Server;
-
-            var entManager = server.ResolveDependency<IEntityManager>();
-            var mapLoader = entManager.System<MapLoaderSystem>();
-            var mapSystem = entManager.System<SharedMapSystem>();
-            var cfg = server.ResolveDependency<IConfigurationManager>();
-
-            await server.WaitPost(() =>
-            {
-                Assert.Multiple(() =>
-                {
-                    mapSystem.CreateMap(out var mapId);
-                    try
-                    {
-                        Assert.That(mapLoader.TryLoadGrid(mapId, path, out _),
-                            $"Failed to load shuttle {path}, was it saved as a map instead of a grid?");
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new Exception($"Failed to load shuttle {path}, was it saved as a map instead of a grid?",
-                            ex);
-                    }
-                    mapSystem.DeleteMap(mapId);
-                });
             });
         }
 
