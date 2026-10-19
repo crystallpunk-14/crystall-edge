@@ -2,9 +2,9 @@
   parent:
   - BaseLaserRifle
   - BaseGunWieldable
-  id: CEWeaponGunJudgement
-  name: judgement
-  description: TODO
+  id: CEWeaponGunArbiter
+  name: arbiter
+  description: A high quality, long range, rifle that shoots 2 powerful mana bursts in quick succession. It is loud and able to be heard by half the island.
   categories: [ ForkFiltered ]
   components:
   - type: Sprite
@@ -58,12 +58,6 @@
     pvsIncrease: 0.3
   - type: StaticPrice
     price: 650
-  - type: CEMagicEssenceStructure
-    essences:
-      Weapon: { min: 1, max: 3 }
-      Metal: { min: 1, max: 4 }
-      Energia: { min: 0, max: 3 }
-      Greed: { min: 1, max: 3 }
 
 - type: entity
   parent: BasicHitscan

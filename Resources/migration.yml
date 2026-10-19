@@ -122,7 +122,7 @@ CEMop: CEWeaponMop
 CEIronDoorGuardArmory: null
 CEIronDoorGuardArmoryMirrored: null
 CEKeyGuardArmory: null
-CEWeaponGunPeacekeeperGolden: CEWeaponGunJudgement
+CEWeaponGunPeacekeeperGolden: CEWeaponGunArbiter
 
 # 2026-10-06
 CETradingPlatformEmpireGuard: null
