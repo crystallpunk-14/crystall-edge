@@ -1791,6 +1791,36 @@ FoodTartMimeSlice: null
 ImmovableRodClown: null
 BibleHonk: null
 Foolbox: null
+ClothingBackpackClown: null
+ClothingBackpackDuffelMime: null
+ClothingBackpackMime: null
+ClothingBackpackSatchelClown: null
+ClothingHeadHatJesterAlt: null
+ClothingMaskBlushingClown: null
+ClothingMaskBlushingMime: null
+ClothingMaskClown: null
+ClothingMaskMime: null
+ClothingNeckClownmedal: null
+ClothingOuterHardsuitClown: null
+ClothingOuterWinterClown: null
+ClothingShoesClown: null
+ClothingShoesClownLarge: null
+ClothingShoesJester: null
+ClothingUniformJumpsuitClown: null
+ClownIDCard: null
+CrayonMime: null
+FoodBurgerClown: null
+FoodBurgerMime: null
+FoodFrozenSnowconeClown: null
+FoodFrozenSnowconeMime: null
+FoodMeatClown: null
+MaterialBananium: null
+MaterialBananium1: null
+OffsetCaneMime: null
+RubberStampClown: null
+RubberStampMime: null
+TargetClown: null
+VisitorClownSpawner: null
 
 # P.s. Dont paste CrystallEdge migrations here, we have dedicated CE block in start of this file
 
