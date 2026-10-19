@@ -11,6 +11,7 @@ public sealed class MachineConstruction : InteractionTest
     private const string Beaker = "Beaker";
 
     [Test]
+    [Ignore("CrystallEdge")] // CrystallEdge: MachineFrame construction recipe deleted with upstream content
     public async Task ConstructProtolathe()
     {
         await StartConstruction(MachineFrame);
