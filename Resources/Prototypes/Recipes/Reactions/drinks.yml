@@ -1522,18 +1522,6 @@
     WhiskeySour: 6
 
 - type: reaction
-  id: ZombieCocktail
-  reactants:
-    Rum:
-      amount: 2
-    Grenadine:
-      amount: 1
-    ZombieBlood:
-      amount: 1
-  products:
-    ZombieCocktail: 4
-
-- type: reaction
   id: BacchusBlessing
   reactants:
     Hooch:
@@ -1561,16 +1549,3 @@
     Hydrogen: 0.5
     Oxygen: 0.5
 
-- type: reaction
-  id: ChangelingSting
-  reactants:
-    AcidSpit:
-      amount: 1
-    Whiskey:
-      amount: 1
-    SodaWater:
-      amount: 1
-    Ice:
-      amount: 1
-  products:
-    ChangelingSting: 2

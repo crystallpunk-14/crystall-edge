@@ -30,7 +30,6 @@
     quickEquip: true
   - type: Tag
     tags:
-    - MimeBelt
     - WhitelistChameleon
 
 - type: entity

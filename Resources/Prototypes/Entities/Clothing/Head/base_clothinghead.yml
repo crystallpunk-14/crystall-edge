@@ -280,11 +280,6 @@
     unequipSound: /Audio/Effects/rustle2.ogg
     quickEquip: false
     slots: [ HEAD ]
-  - type: ZombificationResistance
-    zombificationResistanceCoefficient: 0.90
-  - type: Armor # so zombification resistance shows up
-    modifiers:
-      coefficients: { }
   - type: GroupExamine
   - type: HideLayerClothing
     slots:

@@ -234,19 +234,3 @@
       - ReagentId: WeldingFuel
         Quantity: 15
 
-- type: entity
-  parent: [ Welder, BaseXenoborgContraband ]
-  id: RefuelingWelder
-  name: refueling welding tool
-  description: "A slow welder that can refuel itself over time."
-  components:
-  - type: Tool
-    speedModifier: 0.5
-  - type: Welder
-    fuelConsumption: 2
-    fuelLitCost: 1
-  - type: SolutionRegeneration
-    generated:
-      reagents:
-      - ReagentId: WeldingFuel
-        Quantity: 0.1

@@ -55,7 +55,3 @@
     guides:
     - CECookingRecipesEN
     - CECookingRecipesRU
-  - type: CEMagicEssenceStructure
-    essences:
-      Metal: { min: 1, max: 4 }
-      Fire: { min: 0, max: 2 }

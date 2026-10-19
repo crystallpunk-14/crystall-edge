@@ -1,6 +1,7 @@
 using Content.Server._CE.Objectives;
 using Content.Shared._CE.Objectives.Components;
 using Content.Shared._CE.Roles;
+using Content.Shared.Database;
 using Content.Shared.EntityTable;
 using Content.Shared.EntityTable.EntitySelectors;
 using Content.Shared.Mind;
@@ -63,6 +64,16 @@ public sealed partial class CESecretRoleSelectionSystem
 
         EnsureComp<CEObjectiveHolderComponent>(mindId);
         _objectives.RegenerateObjectiveList(mindId);
+
+        var objectiveNames = new List<string>();
+        foreach (var objective in _objectives.GetObjectives(mindId))
+        {
+            objectiveNames.Add(MetaData(objective).EntityPrototype?.ID ?? ToPrettyString(objective));
+        }
+
+        _adminLog.Add(LogType.AntagSelection,
+            LogImpact.High,
+            $"{ToPrettyString(mindId):player} with secret role {role.ID} received objectives: {string.Join(", ", objectiveNames)}");
     }
 
     private void EnsureSharedDepartmentObjectives(
@@ -98,6 +109,26 @@ public sealed partial class CESecretRoleSelectionSystem
         }
 
         return created;
+    }
+
+    /// <summary>
+    /// Finds the department whose shared objectives live on <paramref name="holderUid"/> - see
+    /// <see cref="CESecretRoleSelectionComponent.DepartmentObjectiveHolders"/>.
+    /// </summary>
+    public bool TryGetHolderDepartment(EntityUid holderUid, out CESecretDepartmentPrototype department)
+    {
+        var rules = QueryActiveRules();
+        while (rules.MoveNext(out _, out _, out var comp, out _))
+        {
+            foreach (var (departmentId, departmentHolder) in comp.DepartmentObjectiveHolders)
+            {
+                if (departmentHolder == holderUid && _proto.TryIndex(departmentId, out department!))
+                    return true;
+            }
+        }
+
+        department = default!;
+        return false;
     }
 
     public bool TryGetDepartment(ProtoId<CESecretRolePrototype> role, out CESecretDepartmentPrototype department)

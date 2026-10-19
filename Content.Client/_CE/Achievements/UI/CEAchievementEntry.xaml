@@ -7,12 +7,15 @@
     <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="8,6,8,6">
       <TextureRect Name="Icon" MinWidth="64" MinHeight="64" MouseFilter="Ignore" Stretch="KeepAspect" Margin="0,0,16,0" Access="Public" />
 
-      <BoxContainer Name="InfoBox" Orientation="Vertical" HorizontalExpand="True" MaxWidth="360">
-        <RichTextLabel Name="NameLabel" VerticalAlignment="Center" />
-        <RichTextLabel Name="DescLabel" Margin="0,2,0,0" />
-      </BoxContainer>
+      <!-- Overlay so the percentage keeps its own column: a BoxContainer would hand the text all the width first -->
+      <Control HorizontalExpand="True">
+        <BoxContainer Name="InfoBox" Orientation="Vertical" Margin="0,0,68,0">
+          <RichTextLabel Name="NameLabel" />
+          <RichTextLabel Name="DescLabel" Margin="0,2,0,0" />
+        </BoxContainer>
 
-      <Label Name="PercentLabel" MinWidth="60" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0" />
+        <Label Name="PercentLabel" HorizontalAlignment="Right" VerticalAlignment="Center" />
+      </Control>
     </BoxContainer>
   </PanelContainer>
 </ui:CEAchievementEntry>

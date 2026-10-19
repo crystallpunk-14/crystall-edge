@@ -1,7 +1,8 @@
 using Content.Shared._CE.GOAP;
 using Content.Shared._CE.GOAP.Components;
-using Content.Shared._CE.GOAP.Selectors;
 using Robust.Shared.Map;
+using Content.Shared._CE.GOAP.Prototypes;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.GOAP;
 
@@ -63,16 +64,13 @@ public abstract partial class CEGOAPActionSystem<T> : EntitySystem where T : CEG
     }
 
     /// <summary>
-    /// Resolves a <see cref="CEGOAPTargetSelector"/> to world coordinates.
+    /// Resolves a target slot to world coordinates.
     /// Prefers the resolved entity's transform, falling back to a raw position.
     /// </summary>
-    protected bool TryResolveCoords(EntityUid agent, CEGOAPTargetSelector? selector, out EntityCoordinates coords)
+    protected bool TryResolveCoords(EntityUid agent, ProtoId<CEGOAPTargetPrototype>? target, out EntityCoordinates coords)
     {
         coords = default;
-        if (selector == null)
-            return false;
-
-        var result = selector.Resolve(agent, EntityManager);
+        var result = Goap.ResolveTarget(agent, target);
         if (result.Entity is { } e && _coordsXformQuery.TryGetComponent(e, out var xform))
         {
             coords = xform.Coordinates;

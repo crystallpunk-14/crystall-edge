@@ -17,12 +17,6 @@
             "name": "vault"
         },
         {
-            "name": "xenoarch"
-        },
-        {
-            "name": "anomaly"
-        },
-        {
             "name": "arcade"
         },
         {
@@ -405,9 +399,6 @@
         },
         {
             "name": "xenobio"
-        },
-        {
-            "name": "zomlab"
         },
         {
             "name": "vox"

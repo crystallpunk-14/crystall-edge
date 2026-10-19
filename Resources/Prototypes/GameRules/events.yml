@@ -2,8 +2,6 @@
   id: BasicCalmEventsTable
   table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
     children:
-    - id: AnomalySpawn
-    - id: BluespaceArtifact
     - id: BluespaceLocker
     - id: BreakerFlip
     - id: BureaucraticError
@@ -20,7 +18,6 @@
     - id: SlimesSpawnHorde
     - id: SolarFlare
     - id: SnakeSpawnHorde
-    - id: SpiderClownSpawnHorde
     - id: SpiderSpawnHorde
     - id: VentClog
 
@@ -42,7 +39,6 @@
     - id: NinjaSpawn
     - id: ParadoxCloneSpawn
     - id: SleeperAgents
-    - id: ZombieOutbreak
     - id: LoneOpsSpawn
     - id: WizardSpawn
     - !type:NestedSelector
@@ -102,34 +98,6 @@
     delay:
       min:  40
       max:  60
-
-- type: entity
-  id: AnomalySpawn
-  parent: BaseStationEventShortDelay
-  components:
-  - type: StationEvent
-    startAnnouncementColor: "#18abf5"
-    startAudio:
-      path: /Audio/Announcements/announce.ogg
-    weight: 8
-    duration: 35
-  - type: AnomalySpawnRule
-
-- type: entity
-  id: BluespaceArtifact
-  parent: BaseStationEventShortDelay
-  components:
-  - type: GameRule
-    delay:
-      min:  30
-      max:  30
-  - type: StationEvent
-    startAnnouncementColor: "#18abf5"
-    startAudio:
-      path: /Audio/Announcements/announce.ogg
-    weight: 8
-    duration: 35
-  - type: BluespaceArtifactRule
 
 - type: entity
   id: BluespaceLocker
@@ -459,46 +427,6 @@
       rolls: 4, 8
       children:
       - id: MobGiantSpiderAngry
-
-- type: entity
-  id: SpiderClownSpawnHorde
-  parent: BaseStationEventShortDelay
-  components:
-  - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-start-horde-announcement
-    startAudio:
-      path: /Audio/Announcements/attention.ogg
-    earliestStart: 20
-    minimumPlayers: 20
-    weight: 1.5
-    duration: 5
-    maxDuration: 20
-  - type: VentHordeRule
-    table: !type:GroupSelector
-      rolls: 4, 8
-      children:
-      - id: MobClownSpider
-
-- type: entity
-  id: ZombieOutbreak
-  parent: BaseGameRule
-  components:
-  - type: StationEvent
-    earliestStart: 90
-    minimumPlayers: 40
-    weight: 1 # Zombies was happening basically every single survival round, so now it's super rare
-    duration: 1
-    occursDuringRoundEnd: false
-  - type: ZombieRule
-  - type: AntagSelection
-    antags:
-    - !type:LinearAntagCount
-      proto: InitialInfected
-      range:
-        min: 1
-        max: 3
-  - type: DynamicRuleCost
-    cost: 200
 
 - type: entity
   parent: [ BaseAntagGhostRoleRule, BaseNukeopsRule ]

@@ -55,6 +55,10 @@ public sealed partial class CEWeaponSystem : CESharedWeaponSystem
             if (!Exists(target) || target == user)
                 continue;
 
+            // Cursor targets aren't found by the arc's rays, so the client's word isn't enough: re-check the arc here.
+            if (target == weapon.Comp.CursorTarget && !IsInAnyAttackArc(user, weapon, target))
+                continue;
+
             if (session is { } pSession)
             {
                 EntityCoordinates targetCoordinates;
@@ -71,6 +75,37 @@ public sealed partial class CEWeaponSystem : CESharedWeaponSystem
         }
 
         return validated;
+    }
+
+    /// <summary>
+    /// Whether the target lies inside any <see cref="WeaponArcAttack"/> arc of the weapon's animations,
+    /// fanned around the angle of the current swing.
+    /// </summary>
+    private bool IsInAnyAttackArc(EntityUid user, Entity<CEWeaponComponent> weapon, EntityUid target)
+    {
+        var origin = TransformSystem.GetWorldPosition(user);
+        var targetPos = TransformSystem.GetWorldPosition(target);
+        var swing = new Angle(weapon.Comp.AttackAngle.ToWorldVec());
+
+        foreach (var entries in weapon.Comp.Animations.Values)
+        {
+            foreach (var entry in entries)
+            {
+                if (!_proto.TryIndex(entry.Anim, out var anim))
+                    continue;
+
+                foreach (var effects in anim.Events.Values)
+                {
+                    foreach (var effect in effects)
+                    {
+                        if (effect is WeaponArcAttack arc && IsInArc(origin, targetPos, swing + arc.Angle, arc.ArcWidth))
+                            return true;
+                    }
+                }
+            }
+        }
+
+        return false;
     }
 
     /// <summary>

@@ -10,3 +10,4 @@ ce-loadout-masks = Masks
 
 ce-loadout-music-tool = Musical instrument
 ce-loadout-instruments = Instruments
+ce-loadout-weapon = Weapon

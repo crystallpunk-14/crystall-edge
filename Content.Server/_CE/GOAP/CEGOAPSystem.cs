@@ -1,7 +1,7 @@
+using Content.Server._CE.GOAP.Steering;
 using Content.Shared._CE.GOAP;
 using Content.Shared._CE.GOAP.Components;
 using Content.Shared.CCVar;
-using Content.Shared.NPC;
 using Robust.Shared.Analyzers;
 using Robust.Shared.Configuration;
 using Robust.Shared.Timing;
@@ -16,14 +16,25 @@ public sealed partial class CEGOAPSystem : EntitySystem
 {
     [Dependency] private IConfigurationManager _cfg = default!;
     [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private CEGOAPSleepingSystem _sleeping = default!;
 
     private bool _enabled = true;
     private int _maxUpdates = 128;
 
     /// <summary>
+    /// Snapshot index the next tick starts from, so agents past <see cref="_maxUpdates"/> take turns instead of starving.
+    /// </summary>
+    private int _nextUpdateIndex;
+
+    /// <summary>
     /// Reusable list for executable actions to avoid allocations during planning.
     /// </summary>
     private readonly List<CEGOAPAction> _executableActions = new();
+
+    /// <summary>
+    /// Planning cost of each entry in <see cref="_executableActions"/>, distance to the target included.
+    /// </summary>
+    private readonly List<float> _executableCosts = new();
 
     /// <summary>
     /// Reusable list for candidate goal indices, sorted by descending priority, to avoid per-frame allocations.
@@ -43,11 +54,6 @@ public sealed partial class CEGOAPSystem : EntitySystem
     private readonly CEGOAPPlanner _planner = new();
 
     /// <summary>
-    /// Note: CurrentPlan lists in entity components are reused and cleared/repopulated
-    /// rather than creating new lists each time to minimize GC allocations.
-    /// </summary>
-
-    /// <summary>
     /// Snapshot buffer for active GOAP entities. Populated at the start of each Update()
     /// to avoid collection-modified exceptions when WakeMob adds CEActiveGOAPComponent
     /// to new entities during action execution.
@@ -60,13 +66,14 @@ public sealed partial class CEGOAPSystem : EntitySystem
 
         Subs.CVar(_cfg, CCVars.CEGOAPEnabled, v => _enabled = v, true);
         Subs.CVar(_cfg, CCVars.CEGOAPMaxUpdates, v => _maxUpdates = v, true);
-
-        InitWake();
     }
 
     [SubscribeLocalEvent]
     private void OnMapInit(Entity<CEGOAPComponent> ent, ref MapInitEvent args)
     {
+        MergeBehaviors(ent);
+        ValidateTargets(ent);
+
         foreach (var action in ent.Comp.Actions)
         {
             foreach (var prec in action.Preconditions)
@@ -98,10 +105,7 @@ public sealed partial class CEGOAPSystem : EntitySystem
         var refreshEv = new CEGOAPSensorRefreshEvent();
         RaiseLocalEvent(ent, ref refreshEv);
 
-        // If StartSleeping is set, add the sleeping marker so the entity stays dormant.
-        if (ent.Comp.StartSleeping)
-            EnsureComp<CEGOAPSleepingComponent>(ent);
-
+        _sleeping.InitDormancy(ent);
         UpdateAwakeStatus((ent, ent.Comp));
     }
 
@@ -110,7 +114,6 @@ public sealed partial class CEGOAPSystem : EntitySystem
     {
         ClearPlan(ent);
         RemCompDeferred<CEActiveGOAPComponent>(ent);
-        RemCompDeferred<ActiveNPCComponent>(ent);
     }
 
     /// <summary>
@@ -145,19 +148,30 @@ public sealed partial class CEGOAPSystem : EntitySystem
             _activeSnapshot.Add((uid, goap));
         }
 
+        var total = _activeSnapshot.Count;
+        if (total == 0)
+            return;
+
+        if (_nextUpdateIndex >= total)
+            _nextUpdateIndex = 0;
+
         var count = 0;
-        foreach (var (uid, goap) in _activeSnapshot)
+        var visited = 0;
+        while (visited < total && count < _maxUpdates)
         {
-            if (count >= _maxUpdates)
-                break;
+            var (uid, goap) = _activeSnapshot[(_nextUpdateIndex + visited) % total];
+            visited++;
 
             if (!HasComp<CEActiveGOAPComponent>(uid))
                 continue;
 
             PurgeExpiredKnowledge((uid, goap));
+            UpdateDirtiedKnowledge((uid, goap));
             UpdateAgent((uid, goap), frameTime);
             count++;
         }
+
+        _nextUpdateIndex = (_nextUpdateIndex + visited) % total;
     }
 
     private void UpdateAgent(Entity<CEGOAPComponent> ent, float frameTime)
@@ -175,12 +189,16 @@ public sealed partial class CEGOAPSystem : EntitySystem
     {
         ent.Comp.NextPlanTime = _timing.CurTime + ent.Comp.PlanCooldown;
 
-        // Filter actions by feasibility (CanExecute) before planning — done once for all goals
+        // Filter actions by feasibility (CanExecute, target present) before planning — done once for all goals
         _executableActions.Clear();
+        _executableCosts.Clear();
         foreach (var action in ent.Comp.Actions)
         {
-            if (action.RaiseCanExecute(ent, EntityManager))
-                _executableActions.Add(action);
+            if (!action.RaiseCanExecute(ent, EntityManager) || !TryGetPlanningCost(ent, action, out var cost))
+                continue;
+
+            _executableActions.Add(action);
+            _executableCosts.Add(cost);
         }
 
         // Try active goals in descending priority order; adopt the first one that yields a valid plan
@@ -192,7 +210,7 @@ public sealed partial class CEGOAPSystem : EntitySystem
             // Always compute a fresh plan into the temporary buffer so we can compare it
             // against what is currently executing before deciding whether to interrupt.
             _newPlanBuffer.Clear();
-            if (!_planner.Plan(ent.Comp.WorldState, goal.DesiredState, _executableActions, _newPlanBuffer))
+            if (!_planner.Plan(ent.Comp.WorldState, goal.DesiredState, _executableActions, _executableCosts, _newPlanBuffer))
                 continue;
 
             if (_newPlanBuffer.Count == 0)
@@ -272,7 +290,21 @@ public sealed partial class CEGOAPSystem : EntitySystem
 
     private void ExecuteCurrentAction(Entity<CEGOAPComponent> ent, float frameTime)
     {
-        var action = ent.Comp.CurrentPlan![ent.Comp.CurrentActionIndex];
+        var action = ent.Comp.CurrentPlan[ent.Comp.CurrentActionIndex];
+
+        // Walk into range first; a started action is paused while its target is out of range.
+        if (action.Range is { } range)
+        {
+            switch (Approach(ent, action, range))
+            {
+                case CEGOAPSteeringStatus.NoPath:
+                    ClearPlan(ent);
+                    ent.Comp.NextPlanTime = TimeSpan.Zero; // Re-plan immediately
+                    return;
+                case CEGOAPSteeringStatus.Moving:
+                    return;
+            }
+        }
 
         if (!ent.Comp.CurrentActionStarted)
         {
@@ -288,7 +320,7 @@ public sealed partial class CEGOAPSystem : EntitySystem
                 break;
 
             case CEGOAPActionStatus.Finished:
-                action.RaiseShutdown(ent, EntityManager);
+                ShutdownCurrentAction(ent);
                 ent.Comp.CurrentActionIndex++;
                 ent.Comp.CurrentActionStarted = false;
 
@@ -298,7 +330,6 @@ public sealed partial class CEGOAPSystem : EntitySystem
                 break;
 
             case CEGOAPActionStatus.Failed:
-                action.RaiseShutdown(ent, EntityManager);
                 ClearPlan(ent);
                 ent.Comp.NextPlanTime = TimeSpan.Zero; // Re-plan immediately
                 break;
@@ -307,13 +338,20 @@ public sealed partial class CEGOAPSystem : EntitySystem
 
     private void ShutdownCurrentAction(Entity<CEGOAPComponent> ent)
     {
-        if (!ent.Comp.CurrentActionStarted)
-            return;
-
         if (ent.Comp.CurrentActionIndex >= ent.Comp.CurrentPlan.Count)
             return;
 
-        ent.Comp.CurrentPlan[ent.Comp.CurrentActionIndex].RaiseShutdown(ent, EntityManager);
+        var action = ent.Comp.CurrentPlan[ent.Comp.CurrentActionIndex];
+
+        // The orchestrator may have been walking the agent to this action's target.
+        if (action.Range != null)
+            _steering.Stop(ent.Owner);
+
+        if (!ent.Comp.CurrentActionStarted)
+            return;
+
+        ent.Comp.CurrentActionStarted = false;
+        action.RaiseShutdown(ent, EntityManager);
     }
 
     private void ClearPlan(Entity<CEGOAPComponent> ent)

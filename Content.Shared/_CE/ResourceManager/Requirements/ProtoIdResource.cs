@@ -1,8 +1,10 @@
-using Content.Shared._CE.Trading.Systems;
+using Content.Shared._CE.Trade;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._CE.ResourceManager.Requirements;
 
+[Serializable, NetSerializable]
 public sealed partial class ProtoIdResource : CEResourceRequirement
 {
     [DataField(required: true)]
@@ -47,7 +49,7 @@ public sealed partial class ProtoIdResource : CEResourceRequirement
         if (!protoManager.TryIndex(ProtoId, out var indexedProto))
             return 0;
 
-        var priceSys = entManager.System<CESharedEconomySystem>();
+        var priceSys = entManager.System<CEEconomySystem>();
 
         return priceSys.GetEstimatedPrice(indexedProto) * Count;
     }
@@ -60,12 +62,14 @@ public sealed partial class ProtoIdResource : CEResourceRequirement
         return $"{indexedProto.Name} x{Count}";
     }
 
-    public override EntityPrototype? GetRequirementEntityView(IPrototypeManager protoManager)
+    public override string GetRequirementAmount()
     {
-        if (!protoManager.TryIndex(ProtoId, out var indexedProto))
-            return null;
+        return Count.ToString();
+    }
 
-        return indexedProto;
+    public override List<CEResourceIconLayer> GetRequirementIcon(IEntityManager entManager, IPrototypeManager protoManager)
+    {
+        return new List<CEResourceIconLayer> { CEResourceIconLayer.FromEntity(ProtoId) };
     }
 
     private Dictionary<EntProtoId, int> IndexIngredients(IEntityManager entManager, HashSet<EntityUid> ingredients)

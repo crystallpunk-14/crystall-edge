@@ -6,34 +6,39 @@ using Content.Shared._CE.EnergyScanner;
 using Content.Shared._CE.Power.Components;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
+using Content.Shared.Inventory;
 using Content.Shared.Wires;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
+using Robust.Shared.Timing;
 
 namespace Content.Client._CE.EnergyScanner;
 
 /// <summary>
-/// Draws glowing lines over pipes on the viewer's z-level and one neighbouring level (below by default, above while
-/// looking up). Everything is drawn in a single pass - the topmost rendered z-level - so tiles of upper levels never
+/// Draws glowing lines over pipes on the viewer's z-level and, depending on <see cref="CEEnergyScannerMode"/> of the
+/// worn glasses, the level below or above. Everything is drawn in a single pass - the topmost rendered z-level - so tiles of upper levels never
 /// cover the lines. Pipes of other levels are shifted by the same per-level offset the z-level renderer uses.
 /// </summary>
 public sealed partial class CEEnergyScannerOverlay : Overlay
 {
     [Dependency] private IEntityManager _entMan = default!;
     [Dependency] private IPlayerManager _player = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     private readonly EntityLookupSystem _lookup;
     private readonly SharedAppearanceSystem _appearance;
     private readonly SharedTransformSystem _transform;
     private readonly CEClientZLevelsSystem _zLevels;
+    private readonly InventorySystem _inventory;
     private readonly EntityQuery<CEEnergyLeakComponent> _leakQuery;
 
     private readonly HashSet<Entity<CEPipeVisualizerComponent>> _pipes = new();
     private readonly List<PipeDrawData> _largePipes = new();
     private readonly List<PipeDrawData> _mediumPipes = new();
     private readonly Vector2[] _segmentVertices = new Vector2[6];
+    private readonly Vector2[] _arrowVertices = new Vector2[3];
 
     /// <summary>
     /// Depth (relative to the viewer) of the z-level being rendered when <see cref="Draw"/> runs.
@@ -50,6 +55,7 @@ public sealed partial class CEEnergyScannerOverlay : Overlay
         _appearance = _entMan.System<SharedAppearanceSystem>();
         _transform = _entMan.System<SharedTransformSystem>();
         _zLevels = _entMan.System<CEClientZLevelsSystem>();
+        _inventory = _entMan.System<InventorySystem>();
         _leakQuery = _entMan.GetEntityQuery<CEEnergyLeakComponent>();
     }
 
@@ -94,7 +100,9 @@ public sealed partial class CEEnergyScannerOverlay : Overlay
         if (xform.MapUid is not { } mapUid)
             return;
 
-        var lookUp = _entMan.TryGetComponent<CEZLevelViewerComponent>(player, out var viewer) && viewer.LookUp;
+        var mode = GetMode(player);
+        if (mode == CEEnergyScannerMode.Off)
+            return;
 
         // On-screen displacement from a z-level to the one above it, mirroring the z-level eye offsets.
         var levelStep = -(-eye.Rotation).ToWorldVec() * CESharedZLevelsSystem.ZLevelOffset;
@@ -102,19 +110,43 @@ public sealed partial class CEEnergyScannerOverlay : Overlay
         var handle = args.WorldHandle;
 
         // Neighbouring level first, so the viewer's own level is drawn on top.
-        var neighborDepth = lookUp ? 1 : -1;
-        if (_zLevels.TryMapOffset(mapUid, neighborDepth, out var neighborMap))
+        var neighborDepth = mode switch
         {
+            CEEnergyScannerMode.Below => -1,
+            CEEnergyScannerMode.Above => 1,
+            _ => 0,
+        };
+
+        if (neighborDepth != 0 && _zLevels.TryMapOffset(mapUid, neighborDepth, out var neighborMap))
+        {
+            // Sine pulse between the min and peak alpha.
+            var phase = (float) _timing.RealTime.TotalSeconds / scanner.NeighborLevelPulsePeriod * MathF.Tau;
+            var pulse = 0.5f + 0.5f * MathF.Sin(phase);
+            var neighborAlpha = MathHelper.Lerp(scanner.NeighborLevelMinAlpha, scanner.NeighborLevelAlpha, pulse);
+
             DrawLevel(handle,
                 args.WorldAABB,
                 _transform.GetMapId(neighborMap.Owner),
                 neighborDepth,
                 levelStep,
                 scanner,
-                scanner.NeighborLevelAlpha);
+                neighborAlpha);
         }
 
         DrawLevel(handle, args.WorldAABB, xform.MapID, 0, levelStep, scanner, 1f);
+    }
+
+    /// <summary>
+    /// Mode of the scanner glasses in the viewer's eyes slot. Defaults to <see cref="CEEnergyScannerMode.Below"/> when
+    /// the viewer component comes from somewhere else.
+    /// </summary>
+    private CEEnergyScannerMode GetMode(EntityUid player)
+    {
+        if (_inventory.TryGetSlotEntity(player, "eyes", out var glasses) &&
+            _entMan.TryGetComponent<CEEnergyScannerClothingComponent>(glasses, out var scanner))
+            return scanner.Mode;
+
+        return CEEnergyScannerMode.Below;
     }
 
     private void DrawLevel(
@@ -154,7 +186,7 @@ public sealed partial class CEEnergyScannerOverlay : Overlay
                 color = large ? style.LargeColor : style.MediumColor;
 
             var data = new PipeDrawData(
-                _transform.GetWorldPosition(uid) + shift,
+                _transform.GetWorldPosition(uid) + shift + (large ? style.LargeOffset : style.MediumOffset),
                 mask,
                 vertical,
                 large ? style.LargeWidth : style.MediumWidth,
@@ -185,16 +217,57 @@ public sealed partial class CEEnergyScannerOverlay : Overlay
                 continue;
 
             var glowColor = pipe.Color.WithAlpha(style.GlowAlpha * alpha);
-            DrawPipe(handle, pipe, levelStep, pipe.Width * style.GlowWidthMultiplier, glowColor);
+            DrawPipe(handle, pipe, pipe.Width * style.GlowWidthMultiplier, glowColor);
         }
 
         foreach (var pipe in pipes)
         {
-            DrawPipe(handle, pipe, levelStep, pipe.Width, pipe.Color);
+            DrawPipe(handle, pipe, pipe.Width, pipe.Color);
+        }
+
+        // Z-level connections: arrows rising towards the level above / sinking towards the level below.
+        var screenUp = Vector2.Normalize(levelStep);
+        foreach (var pipe in pipes)
+        {
+            if ((pipe.Vertical & CEPipeVerticalDirection.Up) != 0)
+                DrawVerticalArrows(handle, pipe.Position, screenUp, pipe.Color, style);
+            if ((pipe.Vertical & CEPipeVerticalDirection.Down) != 0)
+                DrawVerticalArrows(handle, pipe.Position, -screenUp, pipe.Color, style);
         }
     }
 
-    private void DrawPipe(DrawingHandleWorld handle, PipeDrawData pipe, Vector2 levelStep, float width, Color color)
+    /// <summary>
+    /// Triangles that loop from the pipe centre along <paramref name="dir"/>, fading out as they travel.
+    /// </summary>
+    private void DrawVerticalArrows(
+        DrawingHandleWorld handle,
+        Vector2 center,
+        Vector2 dir,
+        Color color,
+        CEEnergyScannerViewerComponent style)
+    {
+        var count = Math.Max(style.VerticalArrowCount, 1);
+        var cycle = _timing.RealTime.TotalSeconds / style.VerticalArrowPeriod;
+        var half = style.VerticalArrowSize * 0.5f;
+        var side = new Vector2(-dir.Y, dir.X) * half;
+
+        for (var i = 0; i < count; i++)
+        {
+            var progress = (float) ((cycle + (double) i / count) % 1.0);
+            var pos = center + dir * (style.VerticalArrowDistance * progress);
+            var basePos = pos - dir * half;
+
+            _arrowVertices[0] = pos + dir * half;
+            _arrowVertices[1] = basePos + side;
+            _arrowVertices[2] = basePos - side;
+
+            handle.DrawPrimitives(DrawPrimitiveTopology.TriangleList,
+                _arrowVertices,
+                color.WithAlpha(color.A * (1f - progress)));
+        }
+    }
+
+    private void DrawPipe(DrawingHandleWorld handle, PipeDrawData pipe, float width, Color color)
     {
         var center = pipe.Position;
         var drawn = false;
@@ -207,12 +280,6 @@ public sealed partial class CEEnergyScannerOverlay : Overlay
             drawn |= DrawSegment(handle, center, center + new Vector2(0.5f, 0f), width, color);
         if ((pipe.Mask & WireVisDirFlags.West) != 0)
             drawn |= DrawSegment(handle, center, center + new Vector2(-0.5f, 0f), width, color);
-
-        // Half a level offset each way: the stubs of two connected levels meet in the middle.
-        if ((pipe.Vertical & CEPipeVerticalDirection.Up) != 0)
-            drawn |= DrawSegment(handle, center, center + levelStep * 0.5f, width, color);
-        if ((pipe.Vertical & CEPipeVerticalDirection.Down) != 0)
-            drawn |= DrawSegment(handle, center, center - levelStep * 0.5f, width, color);
 
         if (!drawn)
             handle.DrawRect(Box2.CenteredAround(center, new Vector2(width, width)), color);

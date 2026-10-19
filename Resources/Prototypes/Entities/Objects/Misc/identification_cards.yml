@@ -554,39 +554,6 @@
 
 - type: entity
   parent: IDCardStandard
-  id: ClownIDCard
-  name: clown ID card
-  components:
-  - type: Sprite
-    layers:
-    - state: default
-    - state: stripe_clown
-    - sprite: *icon-rsi
-      offset: *icon-offset
-      state: Clown
-  - type: PresetIdCard
-    job: Clown
-
-- type: entity
-  parent: IDCardStandard
-  id: MimeIDCard
-  name: mime ID card
-  components:
-  - type: Sprite
-    layers:
-    - state: default
-    - state: stripe_top
-      color: "#2d2d2d"
-    - state: stripe_bottom
-      color: "#1d1d1d"
-    - sprite: *icon-rsi
-      offset: *icon-offset
-      state: Mime
-  - type: PresetIdCard
-    job: Mime
-
-- type: entity
-  parent: IDCardStandard
   id: MusicianIDCard
   name: musician ID card
   components:
@@ -914,27 +881,6 @@
 
 - type: entity
   parent: IDCardStandard
-  id: CluwneIDCard
-  name: cluwne ID card
-  suffix: Unremoveable
-  components:
-  - type: Sprite
-    layers:
-    - state: default
-    - state: stripe_top
-      color: "#5dc574"
-    - state: stripe_bottom
-      color: "#3f9b53"
-    - sprite: *icon-rsi
-      offset: *icon-offset
-      state: Cluwne
-  - type: IdCard
-    jobTitle: job-title-cluwne
-    jobIcon: JobIconCluwne
-  - type: Unremoveable
-
-- type: entity
-  parent: IDCardStandard
   id: VisitorIDCard
   name: visitor ID card
   components:
@@ -1131,18 +1077,6 @@
     heldPrefix: orange #this is close enough to the weird puce color pirate IDs have going on
   - type: IdCard
     jobIcon: JobIconPirate
-
-- type: entity
-  parent: IDCardStandard
-  id: XenoborgIDCard
-  name: xenoborg ID card
-  components:
-  - type: Sprite
-    layers:
-    - state: default
-  - type: Access
-    tags:
-    - Xenoborg
 
 - type: entity
   parent: [ IDCardStandard, BaseMagicalContraband ]
@@ -1376,7 +1310,6 @@
     - NuclearOperative
     - SyndicateAgent
     - Wizard
-    - Xenoborg
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener

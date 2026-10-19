@@ -1,4 +1,3 @@
-using System.Numerics;
 using Content.Shared.CCVar;
 using Robust.Client.Graphics;
 using Robust.Shared.Configuration;
@@ -23,10 +22,6 @@ public sealed partial class CEMurkDebugOverlay : Overlay
 
     private readonly CEMurkDebugBuffer _buffer = new();
 
-    private static readonly Color TooCloseColor = Color.Red;
-    private static readonly Color OkColor = Color.White.WithAlpha(0.5f);
-    private const float PylonLineWidth = 0.1f;
-
     public CEMurkDebugOverlay()
     {
         IoCManager.InjectDependencies(this);
@@ -40,7 +35,7 @@ public sealed partial class CEMurkDebugOverlay : Overlay
         if (args.MapId == MapId.Nullspace)
             return false;
 
-        return _murk.BuildDebugBuffer(args.MapUid, _buffer) || _murk.Pylons.Count > 0;
+        return _murk.BuildDebugBuffer(args.MapUid, _buffer);
     }
 
     protected override void Draw(in OverlayDrawArgs args)
@@ -65,38 +60,5 @@ public sealed partial class CEMurkDebugOverlay : Overlay
         worldHandle.UseShader(_shader);
         worldHandle.DrawRect(bounds, Color.White);
         worldHandle.UseShader(null);
-
-        DrawPylons(args);
-    }
-
-    private void DrawPylons(in OverlayDrawArgs args)
-    {
-        if (_murk.PylonRadius <= 0f)
-            return;
-
-        var handle = args.WorldHandle;
-
-        foreach (var pylon in _murk.Pylons)
-        {
-            if (!_murk.TryProjectPylon(args.MapUid, pylon, out var radius))
-                continue;
-
-            var color = pylon.TooClose ? TooCloseColor : OkColor;
-            DrawRing(handle, pylon.WorldPos, radius, color);
-        }
-    }
-
-    // Stacks a few rings since an unfilled DrawCircle is only 1px wide.
-    private static void DrawRing(DrawingHandleWorld handle, Vector2 center, float radius, Color color)
-    {
-        const int steps = 3;
-        for (var i = 0; i < steps; i++)
-        {
-            var r = radius - i * PylonLineWidth;
-            if (r <= 0f)
-                break;
-
-            handle.DrawCircle(center, r, color, filled: false);
-        }
     }
 }

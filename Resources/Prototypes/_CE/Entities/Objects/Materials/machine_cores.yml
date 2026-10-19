@@ -17,10 +17,6 @@
   - type: Item
     size: Normal
   - type: Circuitboard
-  - type: CEMagicEssenceStructure
-    essences:
-      Machine: { min: 1, max: 3 }
-      Energia: { min: 0, max: 2 }
 
 - type: entity
   id: CEMachineCoreMeltingFurnace
@@ -86,28 +82,6 @@
     price: 30
 
 - type: entity
-  id: CEMachineCoreSalaryPlatform
-  parent: CEBaseMachineCore
-  name: salary platform machine core
-  components:
-  - type: Sprite
-    state: dimensional
-  - type: MachineBoard
-    prototype: CESalaryPlatform
-
-- type: entity
-  id: CEMachineCoreDimensionalLift
-  parent: CEBaseMachineCore
-  name: dimensional lift machine core
-  components:
-  - type: Sprite
-    state: dimensional
-  - type: MachineBoard
-    prototype: CEDimensionalLift
-  - type: StaticPrice
-    price: 200
-
-- type: entity
   id: CEMachineCoreHeater
   parent: CEBaseMachineCore
   name: heater machine core
@@ -126,27 +100,6 @@
     prototype: CEPress
   - type: StaticPrice
     price: 150
-
-- type: entity
-  id: CEMachineCorePressTargetThaumaturgySplitter
-  parent: CEBaseMachineCore
-  name: thaumaturgical splitter machine core
-  components:
-  - type: MachineBoard
-    prototype: CEPressTargetThaumaturgySplitter
-  - type: StaticPrice
-    price: 150
-
-- type: entity
-  id: CEMachineCoreEssenceAttractor
-  parent: CEBaseMachineCore
-  name: essence attractor machine core
-  components:
-  - type: MachineBoard
-    prototype: CEMagicEssenceAttractor
-  - type: StaticPrice
-    price: 130
-
 
 - type: entity
   id: CEMachineCoreDistributionUnit
@@ -228,99 +181,14 @@
   - type: StaticPrice
     price: 250
 
+# Guild
+
 - type: entity
-  id: CEMachineCoreMurkSphereFixerProjector
+  id: CEMachineCoreMurkShieldGenerator
   parent: CEBaseMachineCore
-  name: light monolith status projector machine core
+  name: murk shield generator machine core
   components:
-  - type: Sprite
-    state: power
   - type: MachineBoard
-    prototype: CEMurkSphereFixerProjector
+    prototype: CEMurkShieldGenerator
   - type: StaticPrice
-    price: 180
-
-# Trading
-
-- type: entity
-  abstract: true
-  parent: CEBaseMachineCore
-  id: CEMachineCoreTradingBase
-  name: trading platform machine core
-  components:
-  - type: Sprite
-    state: dimensional
-  - type: StaticPrice
-    price: 140
-
-- type: entity
-  id: CEMachineCoreTradingPlatformEmpireGuard
-  parent: CEMachineCoreTradingBase
-  name: trading platform machine core (Empire Guard)
-  components:
-  - type: MachineBoard
-    prototype: CETradingPlatformEmpireGuard
-
-- type: entity
-  id: CEMachineCoreTradingPlatformHelsinWarHouse
-  parent: CEMachineCoreTradingBase
-  name: trading platform machine core (Helsin War House)
-  components:
-  - type: MachineBoard
-    prototype: CETradingPlatformHelsinWarHouse
-
-- type: entity
-  id: CEMachineCoreTradingPlatformHomeDecor
-  parent: CEMachineCoreTradingBase
-  name: trading platform machine core (Home Decor)
-  components:
-  - type: MachineBoard
-    prototype: CETradingPlatformHomeDecor
-
-- type: entity
-  id: CEMachineCoreTradingPlatformTailors
-  parent: CEMachineCoreTradingBase
-  name: trading platform machine core (Tailors)
-  components:
-  - type: MachineBoard
-    prototype: CETradingPlatformTailors
-
-- type: entity
-  id: CEMachineCoreTradingPlatformHorticulture
-  parent: CEMachineCoreTradingBase
-  name: trading platform machine core (Horticulture)
-  components:
-  - type: MachineBoard
-    prototype: CETradingPlatformHorticulture
-
-- type: entity
-  id: CEMachineCoreTradingPlatformDwarfMiners
-  parent: CEMachineCoreTradingBase
-  name: trading platform machine core (Dwarf Miners)
-  components:
-  - type: MachineBoard
-    prototype: CETradingPlatformDwarfMiners
-
-- type: entity
-  id: CEMachineCoreTradingPlatformAlcohol
-  parent: CEMachineCoreTradingBase
-  name: trading platform machine core (Alcohol)
-  components:
-  - type: MachineBoard
-    prototype: CETradingPlatformAlcohol
-
-- type: entity
-  id: CEMachineCoreTradingPlatformApothecariesGuild
-  parent: CEMachineCoreTradingBase
-  name: trading platform machine core (Apothecaries Guild)
-  components:
-  - type: MachineBoard
-    prototype: CETradingPlatformApothecariesGuild
-
-- type: entity
-  id: CEMachineCoreTradingPlatformImperialChancellery
-  parent: CEMachineCoreTradingBase
-  name: trading platform machine core (Imperial Chancellery)
-  components:
-  - type: MachineBoard
-    prototype: CETradingPlatformImperialChancellery
+    price: 150

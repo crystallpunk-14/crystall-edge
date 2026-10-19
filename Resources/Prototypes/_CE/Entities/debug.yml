@@ -25,3 +25,5 @@
   - type: Edible
     solution: pool
     edible: Drink
+  - type: DrawableSolution
+    solution: pool

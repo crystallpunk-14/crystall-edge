@@ -13,7 +13,7 @@
 - type: entity
   id: CESpawnPointGuardCommander
   parent: CESpawnPointJobBase
-  name: guard commander
+  name: commandant
   categories:
   - Spawner
   components:
@@ -27,7 +27,7 @@
 - type: entity
   id: CESpawnPointGuard
   parent: CESpawnPointJobBase
-  name: guard
+  name: soldier
   categories:
   - Spawner
   components:
@@ -41,7 +41,7 @@
 - type: entity
   id: CESpawnPointInvestigator
   parent: CESpawnPointJobBase
-  name: investigator
+  name: sheriff
   categories:
   - Spawner
   components:
@@ -51,6 +51,36 @@
     layers:
       - state: green
       - state: investigator
+
+# Guild
+
+- type: entity
+  id: CESpawnPointGuildmaster
+  parent: CESpawnPointJobBase
+  name: guildmaster
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEGuildmaster
+  - type: Sprite
+    layers:
+      - state: green
+      - state: guildmaster
+
+- type: entity
+  id: CESpawnPointAdventurer
+  parent: CESpawnPointJobBase
+  name: adventurer
+  categories:
+  - Spawner
+  components:
+  - type: SpawnPoint
+    job_id: CEAdventurer
+  - type: Sprite
+    layers:
+      - state: green
+      - state: adventurer
 
 # Tavern
 
@@ -139,52 +169,6 @@
     layers:
       - state: green
       - state: workman
-
-# Academy
-
-- type: entity
-  id: CESpawnPointAcademyStudent
-  parent: CESpawnPointJobBase
-  name: academy student
-  categories:
-  - Spawner
-  components:
-  - type: SpawnPoint
-    job_id: CEAcademyStudent
-  - type: Sprite
-    layers:
-      - state: green
-      - state: workman
-
-- type: entity
-  id: CESpawnPointAcademyProfessor
-  parent: CESpawnPointJobBase
-  name: academy professor
-  categories:
-  - Spawner
-  components:
-  - type: SpawnPoint
-    job_id: CEAcademyProfessor
-  - type: Sprite
-    layers:
-      - state: green
-      - state: workman
-
-- type: entity
-  id: CESpawnPointAcademyRector
-  parent: CESpawnPointJobBase
-  name: academy rector
-  categories:
-  - Spawner
-  components:
-  - type: SpawnPoint
-    job_id: CEAcademyRector
-  - type: Sprite
-    layers:
-      - state: green
-      - state: workman
-
-# Engineering
 
 - type: entity
   id: CESpawnPointBrigadier

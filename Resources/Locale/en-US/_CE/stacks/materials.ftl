@@ -25,6 +25,9 @@ ce-stack-gold-scrap = gold scrap
 ce-stack-coal-ore = hard coal
 ce-stack-iron-ore = iron ore
 ce-stack-gold-ore = gold ore
+ce-stack-diamond-ore = diamond ore
+
+ce-stack-diamonds = diamonds
 
 ce-stack-glass-sheet = glass
 
@@ -39,3 +42,4 @@ ce-stack-dimensional-matrix = dimensional matrices
 ce-stack-medium-brass-pipe = brass pipes
 ce-stack-big-brass-pipe = big brass pipes
 ce-stack-pipe-valve = pipe valves
+

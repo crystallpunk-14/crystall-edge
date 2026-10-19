@@ -1,14 +1,14 @@
 ce-alerts-health-name = Здоровье
 ce-alerts-health-desc = Запас жизненных сил. Чем меньше, тем хуже. Постарайтесь выжить, пожалуйста.
 
-ce-alerts-confused-aura-name = Спутанная аура
-ce-alerts-confused-aura-desc = Ваша магическая аура изменена, и вы оставляете ненастоящие следы, используя магические заклинания.
-
 ce-alerts-aircaught-name = В воздушной ловушке
 ce-alerts-aircaught-desc = Вы подхвачены воздушным потоком, который не дает вам упасть ниже или подняться выше.
 
 ce-alerts-featherfall-name = Падение перышком
 ce-alerts-featherfall-desc = Гравитация почти не действует на вас, позволяя падать медленно и безопасно.
+
+ce-alerts-divine-shield-name = Защитный барьер
+ce-alerts-divine-shield-desc = Щит света вдвое снижает любой получаемый вами урон.
 
 ce-alerts-good-food-aftertaste-name = Приятное послевкусие
 ce-alerts-good-food-aftertaste-desc = Качественно приготовленная еда дает вам дополнительный бонус к регенерации здоровья.
@@ -19,8 +19,5 @@ ce-alerts-bad-food-aftertaste-desc = Ужасно приготовленная �
 ce-alerts-murk-dissolving-name = Растворение во мраке
 ce-alerts-murk-dissolving-desc = Ваша плоть начинает дымиться и испаряться. Срочно покиньте мрак, если хотите остаться в живых!
 
-ce-alerts-mana-regen-name = Восстановление маны
-ce-alerts-mana-regen-desc = Ваша мана постоянно восстанавливается. Нажмите, чтобы переключиться на расход маны.
-
-ce-alerts-mana-drain-name = Расход маны
-ce-alerts-mana-drain-desc = Ваша мана постоянно расходуется. Нажмите, чтобы переключиться на восстановление маны.
+ce-alerts-dark-side-name = На тёмной стороне
+ce-alerts-dark-side-desc = Вы находитесь вне материального мира. Видеть вас могут лишь те, кто воспринимает магию.

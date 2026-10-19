@@ -6,8 +6,8 @@
   - type: Sprite
     layers:
     - state: red
-    - sprite: Structures/Specific/Anomalies/shadow_anom.rsi
-      state: anom
+    - sprite: Effects/spookysmoke.rsi
+      state: spookysmoke
   - type: EntityTableSpawner
     table: !type:GroupSelector
       children:
@@ -24,5 +24,4 @@
         weight: 0.05
         children:
         - id: MobCatShadow
-        - id: ArtifactFragment1
     offset: 0.05

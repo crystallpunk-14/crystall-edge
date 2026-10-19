@@ -206,7 +206,6 @@ figurines-greytider-2 = Uh-oh, who's lost their stunbaton?
 figurines-greytider-3 = Robust.
 figurines-greytider-4 = I'm not me without a toolbox.
 figurines-greytider-5 = Grey tide station wide!
-figurines-greytider-6 = Viva la revolution.
 
 figurines-janitor-1 = Clown stole my soap. Again.
 figurines-janitor-2 = Look at the signs, you idiot.

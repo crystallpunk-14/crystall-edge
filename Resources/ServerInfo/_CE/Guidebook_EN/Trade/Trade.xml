@@ -1,0 +1,34 @@
+<Document>
+
+# Traders
+
+<Box>
+  <GuideEntityEmbed Entity="CEGuidebookTradingDummy"/>
+</Box>
+
+Every city has a camp of shadow traders, where they offer their goods.
+
+## Day and night cycle
+
+Traders work according to the time of day: at dawn they emerge from the rift and lay out their goods. At sunset they pack up the shop and leave until the next dawn.
+This rotates the goods on sale, even if players don't buy anything.
+
+## Orders
+
+Besides selling goods, traders give you a way to earn money: they have a special area where they post requests for resources and pay coins in return.
+
+## Currency
+There are 4 types of coins in the game, each of a different denomination.
+
+1 silver coin = 10 copper coins
+1 gold coin = 10 silver coins
+1 platinum coin = 10 gold coins
+
+<Box>
+  <GuideEntityEmbed Entity="CECoinCopper10"/>
+  <GuideEntityEmbed Entity="CECoinSilver10"/>
+  <GuideEntityEmbed Entity="CECoinGold10"/>
+  <GuideEntityEmbed Entity="CECoinPlatinum10"/>
+</Box>
+
+</Document>

@@ -21,10 +21,8 @@
       - MindContainer
       - NukeDisk
       - GravityGenerator
-      - AnomalyGenerator
       - TegGenerator
       - TegCirculator
-      - XenoArtifact
     event: !type:ChangeComponentsSpellEvent
       toAdd:
       - type: Animate

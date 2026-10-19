@@ -1,0 +1,69 @@
+meta:
+  format: 7
+  category: Map
+  engineVersion: 289.0.0
+  forkId: ""
+  forkVersion: ""
+  time: 10/14/2026 19:18:00
+  entityCount: 1
+maps:
+- 1
+grids:
+- 1
+orphans: []
+nullspace: []
+tilemap:
+  0: Space
+  1: CEOakWoodPlanks
+entities:
+- proto: ""
+  entities:
+  - uid: 1
+    components:
+    - type: MetaData
+      name: Mapping DunGenAtlas [3]
+    - type: Transform
+    - type: Map
+      mapPaused: True
+    - type: GridTree
+    - type: Broadphase
+    - type: OccluderTree
+    - type: MapGrid
+      chunks: {}
+    - type: SpreaderGrid
+      updateAccumulator: 0.93349075
+    - type: GridPathfinding
+    - type: Gravity
+      inherent: True
+      gravityShakeSound: !type:SoundPathSpecifier
+        path: /Audio/Effects/alert.ogg
+      enabled: True
+    - type: MapAtmosphere
+      space: False
+      mixture:
+        temperature: 293.15
+        volume: 2500
+        moles:
+          Oxygen: 21.824879
+          Nitrogen: 82.10312
+        immutable: True
+    - type: TileHistory
+      chunkHistory:
+        0,0:
+          history:
+            5,2: []
+            5,3: []
+            5,4: []
+            4,5: []
+            5,5: []
+            0,4: []
+            0,0: []
+    - type: Forensics
+      residues: []
+      fingerprints: []
+      fibers: []
+      dNAs: []
+    - type: ChunkContainer
+      chunkEntities: []
+    - type: ExplosionAirtightGrid
+...

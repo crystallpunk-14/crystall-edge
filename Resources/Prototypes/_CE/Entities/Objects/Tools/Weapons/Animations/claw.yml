@@ -356,6 +356,10 @@
         throwPower: 8
       - !type:StaminaDamage
         amount: 30
+      - !type:Damage
+        damage:
+          types:
+            Blunt: 3
 
 - type: entity
   id: CEClawCarrinKickEffect
@@ -413,6 +417,10 @@
         throwPower: 8
       - !type:StaminaDamage
         amount: 30
+      - !type:Damage
+        damage:
+          types:
+            Blunt: 3
 
 - type: entity
   id: CEClawCarcatKickEffect

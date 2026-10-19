@@ -38,10 +38,3 @@
   - type: GameRule
     cancelPresetOnTooFewPlayers: false
 
-- type: entity
-  parent: BaseXenoborgsRule
-  id: SubXenoborgs
-  components:
-  - type: GameRule
-    minPlayers: 30
-    cancelPresetOnTooFewPlayers: false

@@ -25,6 +25,9 @@ ce-stack-gold-scrap = золотой металлолом
 ce-stack-coal-ore = каменный уголь
 ce-stack-iron-ore = железная руда
 ce-stack-gold-ore = золотая руда
+ce-stack-diamond-ore = алмазная руда
+
+ce-stack-diamonds = алмазы
 
 ce-stack-glass-sheet = стекло
 
@@ -39,3 +42,4 @@ ce-stack-dimensional-matrix = пространственные матрицы
 ce-stack-medium-brass-pipe = средние латунные трубы
 ce-stack-big-brass-pipe = большие латунные трубы
 ce-stack-pipe-valve = вентили для труб
+

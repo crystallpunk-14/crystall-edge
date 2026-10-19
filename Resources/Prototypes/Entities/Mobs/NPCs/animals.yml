@@ -155,7 +155,6 @@
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
-  - type: ZombieImmune
   - type: Destructible
     thresholds:
     - trigger:
@@ -194,7 +193,6 @@
       reagents:
       - ReagentId: Blood
         Quantity: 0.1
-  - type: ZombieImmune
 
 
 - type: entity
@@ -424,7 +422,6 @@
     tags:
     - Trash
     - VimPilot
-  - type: NonSpreaderZombie
   - type: StepTrigger
     requiredTriggeredSpeed: 1
   - type: TriggerOnStepTrigger
@@ -603,8 +600,6 @@
     grindableSolutionName: food
   - type: ReplacementAccent
     accent: mothroach
-  - type: ZombieAccentOverride
-    accent: zombieMoth
   - type: Vocal
     emoteSounds: UnisexMoth
     wilhelmProbability: 0.001
@@ -889,7 +884,6 @@
       behaviors:
       - !type:GibBehavior
         recursive: false
-  - type: ZombieImmune
 
 - type: entity
   name: cow
@@ -1718,7 +1712,6 @@
     tags:
     - VimPilot
     - DoorBumpOpener
-    - AnomalyHost
   - type: Reactive
     groups:
       Flammable: [ Touch ]
@@ -1747,7 +1740,6 @@
   - type: MonkeyAccent
   - type: SentienceTarget
     flavorKind: station-event-random-sentience-flavor-primate
-  - type: AlwaysRevolutionaryConvertible
   - type: GhostRole
     prob: 0.05
     makeSentient: true
@@ -1900,7 +1892,6 @@
     spawned:
     - id: FoodMeat
       amount: 2
-  - type: AlwaysRevolutionaryConvertible
   - type: GhostTakeoverAvailable
   - type: SentienceTarget
     flavorKind: station-event-random-sentience-flavor-kobold
@@ -2109,7 +2100,6 @@
   - type: MobPrice
     price: 50
   - type: BadFood
-  - type: NonSpreaderZombie
   - type: FireVisuals
     sprite: Mobs/Effects/onfire.rsi
     normalState: Mouse_burning
@@ -2252,7 +2242,6 @@
     - id: SheetUranium1
       amount: 1
   - type: Damageable
-    damageModifierSet: Zombie
 
 - type: entity
   name: lizard #Weh
@@ -2866,56 +2855,6 @@
   - MobSpiderAngryBase
   - MobGiantSpider
   id: MobGiantSpiderAngry
-
-- type: entity
-  name: clown spider
-  parent: [MobSpiderAngryBase, BaseSlicingRefinable]
-  id: MobClownSpider
-  description: Combines the two most terrifying things in existence, spiders and clowns.
-  components:
-    - type: Sprite
-      drawdepth: Mobs
-      layers:
-      - map: ["enum.DamageStateVisualLayers.Base"]
-        state: clown
-        sprite: Mobs/Animals/clownspider.rsi
-    - type: ToolRefinable
-      refineResult:
-      - id: MaterialBananium1
-        amount: 1
-    - type: DamageStateVisuals
-      states:
-        Alive:
-          Base: clown
-        Critical:
-          Base: dead
-        Dead:
-          Base: dead
-    - type: MobThresholds
-      thresholds:
-        0: Alive
-        180: Dead
-    - type: Spider
-      webPrototype: SpiderWebClown
-    - type: MeleeWeapon
-      altDisarm: false
-      angle: 0
-      animation: WeaponArcBite
-      soundHit:
-        path: /Audio/Effects/bite.ogg
-      damage:
-        types:
-          Piercing: 8
-    - type: FootstepModifier
-      footstepSoundCollection:
-        collection: FootstepClownFast
-    - type: Speech
-      speechVerb: Cluwne
-    - type: Bloodstream
-      bloodReferenceSolution:
-        reagents:
-        - ReagentId: Laughter
-          Quantity: 150
 
 - type: entity
   name: wizard spider
@@ -3811,7 +3750,6 @@
     baseResistTime: 3
   - type: MobPrice
     price: 60
-  - type: NonSpreaderZombie
   - type: FireVisuals
     sprite: Mobs/Effects/onfire.rsi
     normalState: Mouse_burning

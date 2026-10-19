@@ -1,40 +1,40 @@
-- type: CERecipeCategory
+- type: workbenchRecipeCategory
   id: MachineCore
   name: ce-recipe-category-machine-core
   priority: 3
 
-- type: CERecipeCategory
+- type: workbenchRecipeCategory
   id: Tools
   name: ce-recipe-category-tool
   priority: 2
 
-- type: CERecipeCategory
+- type: workbenchRecipeCategory
   id: Weapon
   name: ce-recipe-category-weapon
   priority: 2
 
-- type: CERecipeCategory
+- type: workbenchRecipeCategory
   id: Armor
   name: ce-recipe-category-armor
   priority: 2
 
-- type: CERecipeCategory
+- type: workbenchRecipeCategory
   id: Materials
   name: ce-recipe-category-materials
   priority: 1
 
-- type: CERecipeCategory
+- type: workbenchRecipeCategory
   id: FloorTile
   name: ce-recipe-category-tile
 
-- type: CERecipeCategory
+- type: workbenchRecipeCategory
   id: Carpet
   name: ce-recipe-category-carpet
 
-- type: CERecipeCategory
+- type: workbenchRecipeCategory
   id: Wallpaper
   name: ce-recipe-category-wallpaper
 
-- type: CERecipeCategory
+- type: workbenchRecipeCategory
   id: Clothing
   name: ce-recipe-category-clothing

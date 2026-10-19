@@ -334,17 +334,6 @@
     sprite: Clothing/OuterClothing/Coats/damedanecoat.rsi
 
 - type: entity
-  parent: ClothingOuterStorageBase
-  id: ClothingOuterClownPriest
-  name: honkmother coat
-  description: Meant for a clown of the cloth.
-  components:
-  - type: Sprite
-    sprite: Clothing/OuterClothing/Coats/clownpriest.rsi
-  - type: Clothing
-    sprite: Clothing/OuterClothing/Coats/clownpriest.rsi
-
-- type: entity
   parent: [ClothingOuterStorageBase, BaseMajorContraband]
   id: ClothingOuterDogi
   name: samurai dogi

@@ -185,7 +185,7 @@ public abstract partial class CESharedMurkSystem : EntitySystem
 
     /// <summary>
     /// Sets a <see cref="CEMurkLusconSphereComponent"/>'s state, dirties it, and raises
-    /// <see cref="CEMurkSphereStateChangedEvent"/> so listeners (e.g. round objectives) can react.
+    /// <see cref="CEMurkSphereStateChangedEvent"/> (directed and broadcast) so listeners (e.g. round objectives) can react.
     /// No-op if the state isn't actually changing.
     /// </summary>
     public void SetSphereState(Entity<CEMurkLusconSphereComponent> sphere, CEMurkSphereState newState)
@@ -196,7 +196,7 @@ public abstract partial class CESharedMurkSystem : EntitySystem
 
         sphere.Comp.State = newState;
         Dirty(sphere);
-        RaiseLocalEvent(sphere.Owner, new CEMurkSphereStateChangedEvent(oldState, newState));
+        RaiseLocalEvent(sphere.Owner, new CEMurkSphereStateChangedEvent(oldState, newState), broadcast: true);
     }
 
     /// <summary>

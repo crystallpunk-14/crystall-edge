@@ -19,6 +19,14 @@
   - /Audio/_CE/Effects/doorknob_2.ogg
 
 - type: soundCollection
+  id: CEPotBreak
+  files:
+  - /Audio/_CE/Effects/pot_break1.ogg
+  - /Audio/_CE/Effects/pot_break2.ogg
+  - /Audio/_CE/Effects/pot_break3.ogg
+  - /Audio/_CE/Effects/pot_break4.ogg
+
+- type: soundCollection
   id: CECrystalDings
   files:
   - /Audio/_CE/Effects/crystal_ding.ogg

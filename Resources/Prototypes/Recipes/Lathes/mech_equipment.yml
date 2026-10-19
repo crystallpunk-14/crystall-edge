@@ -25,11 +25,3 @@
   materials:
     Steel: 400
     Plastic: 100
-
-- type: latheRecipe
-  parent: BaseMechEquipmentRecipe
-  id: MechEquipmentHorn
-  result: MechEquipmentHorn
-  materials:
-    Steel: 500
-    Gold: 200

@@ -120,17 +120,3 @@
   minGroupSize: 1
   maxGroupSize: 2
   radius: 4
-
-# Artifact Fragment
-- type: biomeMarkerLayer
-  id: OreArtifactFragmentLow
-  entityMask:
-    AsteroidRock: AsteroidRockArtifactFragment
-    WallRock: WallRockArtifactFragment
-    WallRockChromite: WallRockChromiteArtifactFragment
-    WallRockSand: WallRockSandArtifactFragment
-    WallRockSnow: WallRockSnowArtifactFragment
-  maxCount: 3
-  minGroupSize: 1
-  maxGroupSize: 2
-  radius: 4

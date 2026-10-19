@@ -1,4 +1,5 @@
 using Content.Shared._CE.Character;
+using Content.Shared._CE.Ghost;
 using Content.Shared._CE.Objectives;
 using Content.Shared._CE.Objectives.Components;
 using Content.Shared.Ghost.Components;
@@ -16,6 +17,7 @@ public sealed partial class CEViewCharacterSystem : EntitySystem
 {
     [Dependency] private SharedMindSystem _minds = default!;
     [Dependency] private CESharedObjectiveSystem _objectives = default!;
+    [Dependency] private CEGhostMetaSystem _ghostMeta = default!;
 
     [Dependency] private EntityQuery<GhostComponent> _ghostQuery = default!;
 
@@ -33,6 +35,9 @@ public sealed partial class CEViewCharacterSystem : EntitySystem
             Log.Warning($"User {args.SenderSession.Name} sent a {nameof(CEViewCharacterRequestEvent)} without being a ghost.");
             return;
         }
+
+        if (!_ghostMeta.CanSeeMeta(sender))
+            return;
 
         var target = GetEntity(msg.Target);
         var objectives = new List<CEObjectiveInfo>();

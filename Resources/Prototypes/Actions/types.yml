@@ -88,19 +88,6 @@
       emote: Scream
 
 - type: entity
-  parent: BaseMentalAction
-  id: ActionTurnUndead
-  name: Turn Undead
-  description: Succumb to your infection and become a zombie.
-  components:
-  - type: Action
-  - type: Sprite
-    layers:
-    - texture: Interface/Actions/zombie-turn.png
-  - type: InstantAction
-    event: !type:ZombifySelfActionEvent
-
-- type: entity
   parent: BaseToggleAction
   id: ActionToggleLight
   name: Toggle Light
@@ -230,9 +217,9 @@
     itemIconStyle: BigAction
     priority: -20
   - type: Sprite
-    sprite: Structures/Specific/anomaly.rsi
+    sprite: Effects/portal.rsi
     layers:
-    - state: anom4
+    - state: portal-blue
       map: ["enum.ActionVisuals.Icon"]
 
 - type: entity
@@ -548,18 +535,6 @@
     - state: icon
   - type: InstantAction
     event: !type:GravityJumpEvent {}
-
-- type: entity
-  parent: ActionGravityJump
-  id: ActionJumpBoost
-  name: Jump boost
-  components:
-  - type: Action
-    useDelay: 10
-  - type: Sprite
-    sprite: Interface/Actions/actions_borg.rsi
-    layers:
-    - state: xenoborg-jump-module
 
 - type: entity
   parent: BaseAction

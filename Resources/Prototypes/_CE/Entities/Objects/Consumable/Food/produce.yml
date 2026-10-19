@@ -22,7 +22,7 @@
     solution:
       maxVol: 12
       reagents:
-      - ReagentId: Flour
+      - ReagentId: CENutriment
         Quantity: 5
   - type: ToolRefinable
     refineTime: 1.5
@@ -33,11 +33,7 @@
     price: 1
   - type: CEFoodTag
     tags:
-    - CEWheat
-  - type: CEMagicEssenceStructure
-    essences:
-      Plant: { min: 1, max: 3 }
-      Crop: { min: 0, max: 2 }
+    - Wheat
 
 - type: entity
   id: CECotton
@@ -73,10 +69,6 @@
       amount: 3
   - type: StaticPrice
     price: 1
-  - type: CEMagicEssenceStructure
-    essences:
-      Plant: { min: 1, max: 3 }
-      Cloth: { min: 0, max: 1 }
 
 - type: entity
   id: CEFoodCabbage
@@ -118,12 +110,9 @@
       CESeedCabbage: 1
   - type: CEFoodTag
     tags:
-    - CECabbage
-    - CEVegetable
-    - CESalad
-  - type: CEMagicEssenceStructure
-    essences:
-      Plant: { min: 1, max: 4 }
+    - Cabbage
+    - Vegetable
+    - Salad
 
 - type: entity
   id: CEFoodCabbageSlice
@@ -158,12 +147,9 @@
         Quantity: 0.97
   - type: CEFoodTag
     tags:
-    - CECabbage
-    - CEVegetable
-    - CESalad
-  - type: CEMagicEssenceStructure
-    essences:
-      Plant: { min: 1, max: 2 }
+    - Cabbage
+    - Vegetable
+    - Salad
 
 - type: entity
   id: CEFoodPumpkin
@@ -206,12 +192,8 @@
       CESeedPumpkin: 1
   - type: CEFoodTag
     tags:
-    - CEVegetable
-    - CEPumpkin
-  - type: CEMagicEssenceStructure
-    essences:
-      Plant: { min: 1, max: 4 }
-      Life: { min: 0, max: 2 }
+    - Vegetable
+    - Pumpkin
 
 - type: entity
   id: CEFoodPumpkinSlice
@@ -246,11 +228,8 @@
         Quantity: 1.9
   - type: CEFoodTag
     tags:
-    - CEVegetable
-    - CEPumpkin
-  - type: CEMagicEssenceStructure
-    essences:
-      Plant: { min: 1, max: 2 }
+    - Vegetable
+    - Pumpkin
 
 - type: entity
   id: CEFoodPotato
@@ -295,12 +274,8 @@
   #    transformTo: CEFoodPotatoHot
   - type: CEFoodTag
     tags:
-    - CEVegetable
-    - CEPotato
-  - type: CEMagicEssenceStructure
-    essences:
-      Plant: { min: 1, max: 3 }
-      Earth: { min: 0, max: 2 }
+    - Vegetable
+    - Potato
 
 - type: entity
   id: CEFoodCucumber
@@ -346,12 +321,8 @@
       CESeedCucumber: 1
   - type: CEFoodTag
     tags:
-    - CEVegetable
-    - CECucumber
-  - type: CEMagicEssenceStructure
-    essences:
-      Plant: { min: 1, max: 3 }
-      Water: { min: 0, max: 2 }
+    - Vegetable
+    - Cucumber
 
 - type: entity
   id: CEFoodCucumberSlice
@@ -381,11 +352,8 @@
         Quantity: 1.5
   - type: CEFoodTag
     tags:
-    - CEVegetable
-    - CECucumber
-  - type: CEMagicEssenceStructure
-    essences:
-      Plant: { min: 1, max: 2 }
+    - Vegetable
+    - Cucumber
 
 - type: entity
   id: CEFoodTomatoes
@@ -456,11 +424,7 @@
         Blunt: 1
   - type: CEFoodTag
     tags:
-    - CEVegetable
-  - type: CEMagicEssenceStructure
-    essences:
-      Plant: { min: 1, max: 3 }
-      Water: { min: 0, max: 2 }
+    - Vegetable
 
 - type: entity
   id: CEFoodTomatoesSlice
@@ -492,10 +456,7 @@
         Quantity: 0.9
   - type: CEFoodTag
     tags:
-    - CEVegetable
-  - type: CEMagicEssenceStructure
-    essences:
-      Plant: { min: 1, max: 2 }
+    - Vegetable
 
 - type: entity
   id: CEFoodApple
@@ -540,12 +501,8 @@
       amount: 4
   - type: CEFoodTag
     tags:
-    - CEFruits
-    - CEApple
-  - type: CEMagicEssenceStructure
-    essences:
-      Plant: { min: 1, max: 3 }
-      Tree: { min: 0, max: 2 }
+    - Fruits
+    - Apple
 
 - type: entity
   id: CEFoodAppleSlice
@@ -578,11 +535,8 @@
         Quantity: 1.4
   - type: CEFoodTag
     tags:
-    - CEFruits
-    - CEApple
-  - type: CEMagicEssenceStructure
-    essences:
-      Plant: { min: 1, max: 2 }
+    - Fruits
+    - Apple
 
 - type: entity
   id: CEFoodPepper
@@ -624,12 +578,8 @@
         Quantity: 6.1
   - type: CEFoodTag
     tags:
-    - CEVegetable
-    - CEPepper
-  - type: CEMagicEssenceStructure
-    essences:
-      Plant: { min: 1, max: 3 }
-      Fire: { min: 0, max: 1 }
+    - Vegetable
+    - Pepper
 
 - type: entity
   id: CEFoodGarlic
@@ -670,12 +620,8 @@
         Quantity: 4
   - type: CEFoodTag
     tags:
-    - CEVegetable
-    - CEGarlic
-  - type: CEMagicEssenceStructure
-    essences:
-      Plant: { min: 1, max: 3 }
-      Poison: { min: 0, max: 1 }
+    - Vegetable
+    - Garlic
 
 - type: entity
   id: CEFoodGarlicClove
@@ -706,12 +652,8 @@
     plantProto: CEPlantGarlic
   - type: CEFoodTag
     tags:
-    - CEVegetable
-    - CEGarlic
-  - type: CEMagicEssenceStructure
-    essences:
-      Plant: { min: 1, max: 3 }
-      Poison: { min: 0, max: 1 }
+    - Vegetable
+    - Garlic
 
 - type: entity
   id: CEFoodCorn
@@ -753,12 +695,8 @@
           base3: ""
   - type: CEFoodTag
     tags:
-    - CEVegetable
-    - CECorn
-  - type: CEMagicEssenceStructure
-    essences:
-      Plant: { min: 1, max: 3 }
-      Crop: { min: 0, max: 2 }
+    - Vegetable
+    - Corn
 
 - type: entity
   id: CEFoodCornKernel
@@ -785,11 +723,8 @@
         Quantity: 5
   - type: CEFoodTag
     tags:
-    - CEVegetable
-    - CECorn
-  - type: CEMagicEssenceStructure
-    essences:
-      Plant: { min: 1, max: 2 }
+    - Vegetable
+    - Corn
 
 - type: entity
   id: CEFoodCarrot
@@ -831,12 +766,8 @@
         Quantity: 12
   - type: CEFoodTag
     tags:
-    - CEVegetable
-    - CECarrot
-  - type: CEMagicEssenceStructure
-    essences:
-      Plant: { min: 1, max: 3 }
-      Earth: { min: 0, max: 1 }
+    - Vegetable
+    - Carrot
 
 - type: entity
   id: CEFoodCarrotSlice
@@ -863,11 +794,8 @@
         Quantity: 4
   - type: CEFoodTag
     tags:
-    - CEVegetable
-    - CECarrot
-  - type: CEMagicEssenceStructure
-    essences:
-      Plant: { min: 1, max: 2 }
+    - Vegetable
+    - Carrot
 
 - type: entity
   id: CEFoodPepperSlice
@@ -894,11 +822,8 @@
         Quantity: 3
   - type: CEFoodTag
     tags:
-    - CEVegetable
-    - CEPepper
-  - type: CEMagicEssenceStructure
-    essences:
-      Plant: { min: 1, max: 2 }
+    - Vegetable
+    - Pepper
 
 - type: entity
   id: CEFoodOnion
@@ -941,11 +866,7 @@
     plantProto: CEPlantOnion
   - type: CEFoodTag
     tags:
-    - CEVegetable
-  - type: CEMagicEssenceStructure
-    essences:
-      Plant: { min: 1, max: 3 }
-      Poison: { min: 0, max: 1 }
+    - Vegetable
 
 - type: entity
   id: CEFoodOnionSlice
@@ -974,10 +895,7 @@
         Quantity: 0.8
   - type: CEFoodTag
     tags:
-    - CEVegetable
-  - type: CEMagicEssenceStructure
-    essences:
-      Plant: { min: 1, max: 2 }
+    - Vegetable
 
 - type: entity
   id: CEFoodChanterelle
@@ -1014,10 +932,45 @@
     temperature: 290
     heatCapacity: 15000
   - type: InternalTemperature
-  - type: CEMagicEssenceStructure
-    essences:
-      Plant: { min: 1, max: 2 }
-      Life: { min: 0, max: 2 }
+
+- type: entity
+  id: CEFoodAgaric
+  parent: FoodInjectableBase
+  categories: [ ForkFiltered ]
+  name: fly agaric
+  description: A bright red mushroom with white spots. Very pretty, and very poisonous.
+  components:
+  - type: Item
+    size: Tiny
+  - type: FlavorProfile
+    flavors:
+      - bitter
+  - type: Sprite
+    sprite: _CE/Objects/Consumable/Food/agaric.rsi
+    layers:
+      - state: base1
+        map: [ "random" ]
+  - type: RandomSprite
+    available:
+      - random:
+          base1: ""
+          base2: ""
+          base3: ""
+          base4: ""
+          base5: ""
+  - type: Solution
+    id: food
+    solution:
+      maxVol: 11
+      reagents:
+      - ReagentId: CEMuscimol
+        Quantity: 5 # 3 agarics = 100 Poison damage over ~1 minute, see CEMuscimol
+  - type: CESeed
+    plantProto: CEPlantAgaric
+  - type: Temperature
+    temperature: 290
+    heatCapacity: 15000
+  - type: InternalTemperature
 
 - type: entity
   id: CEFoodSunflowerHead
@@ -1056,7 +1009,3 @@
     temperature: 290
     heatCapacity: 15000
   - type: InternalTemperature
-  - type: CEMagicEssenceStructure
-    essences:
-      Plant: { min: 1, max: 3 }
-      Light: { min: 0, max: 2 }

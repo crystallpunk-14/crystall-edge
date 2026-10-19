@@ -31,9 +31,6 @@
   id: Ambrosia # ConstructionGraph: flowerwreath
 
 - type: Tag
-  id: AnomalyHost # Targeting whitelist: BaseAnomalyInjector
-
-- type: Tag
   id: AppraisalTool # Storage whitelist: BaseClothingBeltEngineering
 
 - type: Tag
@@ -41,11 +38,6 @@
 
 - type: Tag
   id: Arrow # Storage whitelist: ClothingBeltQuiver
-
-- type: Tag
-  id: ArtifactFragment # Storage whitelist: OreBag. CargoBounty: BountyArtifactFragment. ConstructionGraph: Artifact
-
-## B ##
 
 - type: Tag
   id: Backpack # ConstructionGraph: ClothingBagPet
@@ -228,7 +220,7 @@
 
 - type: Tag
   id: CanPilot # Used by ShuttleConsoleSystem to guard who's allowed to pilot ships. Semi-synonymous with a sentient person/creature.
-               # Storage whitelist: BodyBag, MachineArtifactCrusher
+               # Storage whitelist: BodyBag
 
 - type: Tag
   id: CaptainSabre # Storage whitelist: ClothingBeltSheath. ItemMapper: ClothingBeltSheath
@@ -326,24 +318,6 @@
 
 - type: Tag
   id: ClothMade # SpecialDigestible: OrganMothStomach. Storage whitelist: FoodBoxCloth
-
-- type: Tag
-  id: ClownMask # ConstructionGraph: Honker, BananaClownMask
-
-- type: Tag
-  id: ClownRecorder # ConstructionGraph: ClownHardsuit
-
-- type: Tag
-  id: ClownShoes # ConstructionGraph: Honker, BananaClownShoes
-
-- type: Tag
-  id: ClownSuit # ConstructionGraph: BananaClownJumpsuit
-
-- type: Tag
-  id: CluwneHappyHonk # ConstructionGraph: JonkBot
-
-- type: Tag
-  id: CluwneHorn # ConstructionGraph: JonkBot
 
 - type: Tag
   id: Cola  # Storage whitelist: DrinkCanPack. ItemCounter: DrinkCanPack
@@ -556,9 +530,6 @@
 - type: Tag
   id: FakeMindShieldImplant # Used by FakeMindShieldSystem to toggle the tagged action when a chameleon outfit is selected.
 
-- type: Tag # Also used by FakeMindShieldSystem, but only for changelings
-  id: FakeMindShieldChangeling
-
 - type: Tag
   id: FakeNukeDisk # Exists so that the fake nuke disk can be blacklisted by storages that blacklist the real disk.
 
@@ -765,26 +736,6 @@
 - type: Tag
   id: HolosignProjector # Storage whitelist: ClothingBeltJanitor
 
-- type: Tag
-  id: HonkerCentralControlModule # ConstructionGraph: Honker
-
-- type: Tag
-  id: HonkerLArm # PartAssembly: HonkerHarness. ItemMapper: HonkerHarness
-
-- type: Tag
-  id: HonkerLLeg # PartAssembly: HonkerHarness. ItemMapper: HonkerHarness
-
-- type: Tag
-  id: HonkerPeripheralsControlModule # ConstructionGraph: Honker
-
-- type: Tag
-  id: HonkerRArm # PartAssembly: HonkerHarness. ItemMapper: HonkerHarness
-
-- type: Tag
-  id: HonkerRLeg # PartAssembly: HonkerHarness. ItemMapper: HonkerHarness
-
-- type: Tag
-  id: HonkerTargetingControlModule # ConstructionGraph: Honker
 
 - type: Tag
   id: Hotsauce # Storage whitelist: ClothingBeltChef and FoodCartHot. ItemMapper: ClothingBeltChef and FoodCartHot
@@ -956,12 +907,6 @@
   id: MicrowaveMachineBoard # CargoBounty: BountyMicrowaveMachineBoard
 
 - type: Tag
-  id: MimeBelt # ConstructionGraph: MimeHardsuit, MimeBot
-
-- type: Tag
-  id: MimeHappyHonk # ConstructionGraph: MimeBot
-
-- type: Tag
   id: MindTransferTarget # Default value in TransferMindOnGibComponent. Moves the mind of the gibed component owner to the tagged giblet.
 
 - type: Tag # Used on DungeonRoom prototypes.
@@ -984,15 +929,6 @@
 
 - type: Tag
   id: MopBasic # ItemMapper: JanitorialTrolley. ConstructionGraph: MoproachShoes
-
-- type: Tag
-  id: MothershipCoreGhostrole # spawn whitelist : SpawnPointGhostRoleMothershipCore
-
-- type: Tag
-  id: MothershipModule # Cyborg module category for evil xenoborg core
-
-- type: Tag
-  id: MothershipPinpointerPiece # ConstructionGraph: RepairMothershipPinpointer
 
 - type: Tag
   id: Mouse # CargoBounty: BountyMouse
@@ -1033,9 +969,6 @@
 
 - type: Tag
   id: Ore # Storage whitelist: OreBag, OreBox. MaterialStorage whitelist: OreProcessor
-
-- type: Tag
-  id: OreBananium # CargoBounty: BountySalvageOreBananium
 
 - type: Tag
   id: OreGold # CargoBounty: BountySalvageOreGold
@@ -1338,7 +1271,7 @@
   id: SpeedLoaderCap # Ammo: RevolverCapGun, RevolverCapGunFake
 
 - type: Tag
-  id: SpeedLoaderMagnum # Ammo: BaseWeaponRevolver, XenoArtifactGun
+  id: SpeedLoaderMagnum # Ammo: BaseWeaponRevolver
 
 - type: Tag
   id: SpiderCraft # Used on various ConstructionPrototypes to create exclusive recipes for tagged entity.
@@ -1506,7 +1439,7 @@
 
 - type: Tag
   id: VimPilot # Used synonymously with harmless animals such as mice, station pets, or genetic ancestors (monkeys).
-               # Storage whitelist: MechVim, PetCarrier, BodyBag, MachineArtifactCrusher
+               # Storage whitelist: MechVim, PetCarrier, BodyBag
 
 - type: Tag
   id: VoiceTrigger # ConstructionGraph: Vim
@@ -1524,9 +1457,6 @@
 
 - type: Tag
   id: WeaponAntiqueLaser # Storage whitelist: GlassBoxLaser
-
-- type: Tag
-  id: WeaponPistolCHIMPUpgradeKit # ConstructionGraph: UpgradeWeaponPistolCHIMP
 
 - type: Tag
   id: WeaponShotgunKammerer # Storage whitelist: ShotGunCabinet
@@ -1559,7 +1489,7 @@
   id: WindoorUranium # Used in ConstructionGraph "Windoor" to navigate between Windoor, PlasmaWindoor, and UraniumWindoor airlocks.
 
 - type: Tag
-  id: Window # Tagged entity is a window. Several systems and several targeting whitelists (XenoArtifactShatterWindows) care about this.
+  id: Window # Tagged entity is a window. Several systems care about this.
              # .cs: SharedNavMapSystem, ElectrocutionSystem, RevenantSystem, NoWindowsInTile
 
 - type: Tag
@@ -1594,42 +1524,6 @@
   id: WriteIgnoreStamps # Used by PaperSystem to allow tagged entity to bypass stamps.
 
 ## X ##
-
-- type: Tag
-  id: XenoborgCrystal # MaterialStorage whitelist: Mothership core
-
-- type: Tag
-  id: XenoborgGhostrole # spawn whitelist : SpawnPointGhostRoleXenoborg
-
-- type: Tag
-  id: XenoborgModuleEngi # Cyborg module category for evil engineer xenoborg
-
-- type: Tag
-  id: XenoborgModuleGeneric # Cyborg module category for evil xenoborg
-
-- type: Tag
-  id: XenoborgModuleHeavy # Cyborg module category for evil heavy xenoborg
-
-- type: Tag
-  id: XenoborgModuleScout # Cyborg module category for evil scout xenoborg
-
-- type: Tag
-  id: XenoborgModuleStealth # Cyborg module category for evil stealth xenoborg
-
-- type: Tag
-  id: XenoborgModuleAccessBreaker # Used for module blacklisting
-
-- type: Tag
-  id: XenoborgModuleInvisibility # Used for module blacklisting
-
-- type: Tag
-  id: XenoborgModulePrimaryWeapon # Used for module blacklisting
-
-- type: Tag
-  id: XenoborgModuleSecondaryWeapon # Used for module blacklisting
-
-- type: Tag
-  id: XenoborgModuleWithSimpleOverlay # Used for module blacklisting
 
 ## Y ##
 ## Z ##

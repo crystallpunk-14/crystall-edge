@@ -181,39 +181,6 @@
   - GroupSpeciesBreathTool
 
 - type: roleLoadout
-  id: JobClown
-  canCustomizeName: true
-  groups:
-  - GroupTankHarness
-  - ClownHead
-  - ClownJumpsuit
-  - ClownBackpack
-  - ClownOuterClothing
-  - ClownShoes
-  - Glasses
-  - AssistiveItems
-  - SurvivalClown
-  - Trinkets
-  - ClownJobTrinkets
-
-- type: roleLoadout
-  id: JobMime
-  canCustomizeName: true
-  groups:
-  - GroupTankHarness
-  - MimeHead
-  - MimeMask
-  - MimeJumpsuit
-  - MimeBackpack
-  - MimeOuterClothing
-  - MimeBelt
-  - Glasses
-  - AssistiveItems
-  - Survival
-  - Trinkets
-  #- MimeJobTrinkets
-
-- type: roleLoadout
   id: JobMusician
   canCustomizeName: true
   groups:
@@ -529,12 +496,6 @@
   groups:
   - Survival
   - GroupSpeciesBreathTool
-  - GroupTankHarness
-
-- type: roleLoadout
-  id: RoleSurvivalClown
-  groups:
-  - SurvivalClown
   - GroupTankHarness
 
 - type: roleLoadout

@@ -6305,9 +6305,6 @@ entities:
     components:
     - type: Transform
       parent: 14590
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: AnomalyScanner
   entities:
   - uid: 5381
@@ -7045,9 +7042,6 @@ entities:
     components:
     - type: Transform
       parent: 14590
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: ArtistCircuitBoard
   entities:
   - uid: 14277
@@ -46524,13 +46518,6 @@ entities:
     - type: Transform
       parent: 2
       pos: 62.5,25.5
-    - type: AnalysisConsole
-      analyzerEntity: 5444
-    - type: DeviceLinkSource
-      linkedPorts:
-        5444:
-        - - ArtifactAnalyzerSender
-          - ArtifactAnalyzerReceiver
 - proto: ComputerAtmosMonitoring
   entities:
   - uid: 15222

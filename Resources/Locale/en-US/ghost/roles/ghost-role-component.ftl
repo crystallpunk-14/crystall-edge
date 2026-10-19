@@ -146,9 +146,6 @@ ghost-role-information-space-dragon-summoned-carp-rules = You are a [color={role
 ghost-role-information-space-dragon-dungeon-description = Defend the expedition dungeon with your fishy comrades!
 ghost-role-information-space-dragon-dungeon-rules = You are a [color={role-type-team-antagonist-color}][bold]{role-type-team-antagonist-name}[/bold][/color] with all dungeon mobs.
 
-ghost-role-information-cluwne-name = Cluwne
-ghost-role-information-cluwne-description = Become a pitiful cluwne, your only goal in life is to find a sweet release from your suffering (usually by being beaten to death). A cluwne is not an antagonist but may defend itself. Crewmembers may murder cluwnes freely.
-
 ghost-role-information-skeleton-pirate-name = Skeleton Pirate
 ghost-role-information-skeleton-pirate-description = Cause chaos and loot the station for treasure.
 
@@ -338,12 +335,6 @@ ghost-role-information-tomatokiller-description = This little tomato will serve 
 ghost-role-information-gingerbread-name = Gingerbread Man
 ghost-role-information-gingerbread-description = A being of pure holiday spirit.
                                      Spread molassesy goodness and to all good cheer.
-
-ghost-role-information-mothership-core-name = Mothership Core
-ghost-role-information-mothership-core-desc = You are the core of the xenoborg mothership, help them multiply by borging any brain they bring to you.
-
-ghost-role-information-xenoborg-name = Xenoborg
-ghost-role-information-xenoborg-desc = A strange cyborg made to replicate itself and take over the station by turning any sentient being into xenoborgs.
 
 ghost-role-information-wizard-name = Wizard
 ghost-role-information-wizard-desc = YER A WIZARD! Show the station what your magic is made of.

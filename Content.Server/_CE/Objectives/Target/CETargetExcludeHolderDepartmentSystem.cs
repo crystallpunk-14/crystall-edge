@@ -19,8 +19,13 @@ public sealed partial class CETargetExcludeHolderDepartmentSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnValidateCandidate(Entity<CETargetExcludeHolderDepartmentComponent> ent, ref CEValidateObjectiveTargetCandidateEvent args)
     {
-        if (!TryGetDepartment(args.Holder.Owner, out var holderDepartment))
+        // The holder is either a member's mind (personal objectives) or the department's own
+        // holder entity (objectives shared by the whole department).
+        if (!TryGetDepartment(args.Holder.Owner, out var holderDepartment) &&
+            !_secretRoleSelection.TryGetHolderDepartment(args.Holder.Owner, out holderDepartment))
+        {
             return;
+        }
 
         if (!_mind.TryGetMind(args.Candidate, out var candidateMindId, out _))
             return;
@@ -33,7 +38,8 @@ public sealed partial class CETargetExcludeHolderDepartmentSystem : EntitySystem
     {
         department = default!;
 
-        return _role.MindHasRole<CESecretRoleComponent>(mindId, out var roleEnt) &&
+        return TryComp<MindComponent>(mindId, out var mind) &&
+               _role.MindHasRole<CESecretRoleComponent>((mindId, mind), out var roleEnt) &&
                roleEnt.Value.Comp2.Role is { } roleId &&
                _secretRoleSelection.TryGetDepartment(roleId, out department);
     }

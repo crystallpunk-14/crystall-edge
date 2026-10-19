@@ -1,0 +1,57 @@
+- type: guideEntry
+  hidden: false
+  locFilter: "en-US"
+  id: CECityObjectiveGuideEN
+  name: Restoring the Lucson Sphere
+  text: "/ServerInfo/_CE/Guidebook_EN/CityObjective/CityObjective.xml"
+  filterEnabled: True
+  children:
+  - CEGuideGoldEN
+  - CEGuideDiamondsEN
+
+- type: guideEntry
+  hidden: false
+  locFilter: "ru-RU"
+  id: CECityObjectiveGuideRU
+  name: Восстановление Сферы Люксона
+  text: "/ServerInfo/_CE/Guidebook_RU/CityObjective/CityObjective.xml"
+  filterEnabled: True
+  children:
+  - CEGuideGoldRU
+  - CEGuideDiamondsRU
+
+- type: guideEntry
+  hidden: false
+  locFilter: "en-US"
+  id: CEGuideGoldEN
+  name: Gold
+  text: "/ServerInfo/_CE/Guidebook_EN/CityObjective/Gold.xml"
+  filterEnabled: True
+  children: []
+
+- type: guideEntry
+  hidden: false
+  locFilter: "en-US"
+  id: CEGuideDiamondsEN
+  name: Diamonds
+  text: "/ServerInfo/_CE/Guidebook_EN/CityObjective/Diamonds.xml"
+  filterEnabled: True
+  children: []
+
+- type: guideEntry
+  hidden: false
+  locFilter: "ru-RU"
+  id: CEGuideGoldRU
+  name: Золото
+  text: "/ServerInfo/_CE/Guidebook_RU/CityObjective/Gold.xml"
+  filterEnabled: True
+  children: []
+
+- type: guideEntry
+  hidden: false
+  locFilter: "ru-RU"
+  id: CEGuideDiamondsRU
+  name: Алмазы
+  text: "/ServerInfo/_CE/Guidebook_RU/CityObjective/Diamonds.xml"
+  filterEnabled: True
+  children: []

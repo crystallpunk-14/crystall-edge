@@ -10,6 +10,7 @@ public static class ContentPostShaderIds
     public const string DragDropOutline = "drag-drop-outline";
     // CrystallEdge zone
     public const string CEMurkDissolving = "ce-murk-dissolving";
+    public const string CEMurkShadow = "ce-murk-shadow";
     // CrystallEdge end
 
     public static readonly string[] BeforeOutlines =

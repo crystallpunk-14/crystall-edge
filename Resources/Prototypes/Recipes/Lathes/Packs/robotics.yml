@@ -39,7 +39,6 @@
   recipes:
   - BorgModuleAdvancedCleaning
   - BorgModuleAdvancedTool
-  - BorgModuleAdvancedClowning
   - BorgModuleAdvancedTopical
   - BorgModuleAdvancedMining
 
@@ -51,11 +50,6 @@
   - RipleyRArm
   - RipleyLLeg
   - RipleyRLeg
-  - HonkerHarness
-  - HonkerLArm
-  - HonkerRArm
-  - HonkerLLeg
-  - HonkerRLeg
   - HamtrHarness
   - HamtrLArm
   - HamtrRArm
@@ -67,5 +61,4 @@
   id: MechEquipment
   recipes:
     - MechEquipmentGrabber
-    - MechEquipmentHorn
     - MechEquipmentGrabberSmall

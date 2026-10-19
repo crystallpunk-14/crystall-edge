@@ -67,13 +67,45 @@
   - type: FireVisuals
     sprite: _CE/Structures/Furniture/torch_floor.rsi
     normalState: fire
-  #- type: GenericVisualizer
-  #  visuals:
-  #    enum.FireplaceFuelVisuals.Status:
-  #      fuel:
-  #        Empty: { state: burned }
-  #        Medium: { state: base }
-  #        Full: { state: base }
+
+- type: entity
+  id: CEFloorMurkTorchAlwaysPowered
+  name: murk torch
+  description: The violet lights of the wandering shadow-merchants, who have regained their minds.
+  parent: BaseStructure
+  categories: [ ForkFiltered ]
+  suffix: Infinite
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _CE/Structures/Furniture/torch_floor_murk.rsi
+    offset: 0, 0.3
+    layers:
+      - state: base
+      - state: fire
+        shader: unshaded
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.2,-0.2,0.2,0.2"
+        density: 1000
+        hard: false
+        layer:
+        - LowImpassable
+        - MidImpassable
+  - type: PointLight
+    color: "#9045f3"
+    energy: 2
+    radius: 8
+  - type: AmbientSound
+    enabled: true
+    volume: -15
+    range: 5
+    sound:
+      path: /Audio/Ambience/Objects/fireplace.ogg
 
 - type: entity
   id: CEFloorTorchAlwaysPowered

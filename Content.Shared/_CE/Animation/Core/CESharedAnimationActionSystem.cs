@@ -115,10 +115,17 @@ public abstract partial class CESharedAnimationActionSystem : EntitySystem
                             action.Effect(effectArgs);
                     }
 
+                    // An effect may delete the animated entity itself.
+                    if (TerminatingOrDeleted(uid))
+                        break;
+
                     controller.LastEvent = realKeyFrame;
                     anyEventFired = true;
                     OnKeyframeActions(uid, controller, keyFrame, actions);
                 }
+
+                if (TerminatingOrDeleted(uid))
+                    continue;
 
                 if (controller.TargetEntity is { } postEventTarget && TerminatingOrDeleted(postEventTarget))
                 {

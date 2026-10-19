@@ -55,7 +55,6 @@
         weight: 0.05
         children:
         - id: FoodBreadMeatSpider
-        - id: FoodBreadMimana
         - id: FoodCakeBrain
         - id: FoodCakeClown
         - id: FoodCakeSpaceman

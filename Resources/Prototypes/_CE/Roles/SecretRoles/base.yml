@@ -1,5 +1,5 @@
 - type: secretRole
-  id: CEBaseSecretRoleGuardRestricted
+  id: BaseSecretRoleGuardRestricted
   abstract: true
   prohibitedJobs:
   - CEGuard

@@ -148,8 +148,6 @@
     displacement: Dwarfism
   - type: Flammable
     displacement: Dwarfism
-  - type: InnerBodyAnomalyVisuals
-    displacement: Dwarfism
 
 - type: entity
   parent: OrganBaseOrganic

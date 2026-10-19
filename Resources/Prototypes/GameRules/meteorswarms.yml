@@ -33,7 +33,6 @@
     - id: MeteorSwarmMedium
     - id: MeteorSwarmLarge
     - id: UristSwarm
-    - id: ClownSwarm
     - id: CowSwarm
     - id: PotatoSwarm
     - id: FunSwarm
@@ -222,9 +221,6 @@
     - id: ImmovableRodShark
       prob: 0.0075
       orGroup: rodProto
-    - id: ImmovableRodClown
-      prob: 0.0075
-      orGroup: rodProto
     - id: ImmovableRodBanana
       prob: 0.0075
       orGroup: rodProto
@@ -261,24 +257,6 @@
 
 - type: entity
   parent: MeteorSwarm
-  id: ClownSwarm
-  components:
-  - type: StationEvent
-    weight: 0.05
-  - type: MeteorSwarm
-    announcement: station-event-meteor-clown-start-announcement
-    announcementSound: /Audio/Announcements/attention.ogg
-    meteors:
-      MeteorClown: 1
-    waves:
-      min: 3
-      max: 3
-    meteorsPerWave:
-      min: 10
-      max: 10
-
-- type: entity
-  parent: MeteorSwarm
   id: PotatoSwarm
   components:
   - type: StationEvent
@@ -305,7 +283,6 @@
     announcement: station-event-fun-swarm-start-announcement
     announcementSound: /Audio/Announcements/attention.ogg
     meteors:
-      MeteorClown: 1
       MeteorCow: 1
       MeteorPotato: 1
       MeteorUrist: 1

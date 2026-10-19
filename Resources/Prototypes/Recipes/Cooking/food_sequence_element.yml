@@ -496,17 +496,6 @@
   tags:
   - Fruit
 
-# Mimana
-
-- type: foodSequenceElement
-  id: Mimana
-  name: food-sequence-content-mimana
-  sprites:
-  - sprite: Objects/Specific/Hydroponics/mimana.rsi
-    state: produce
-  tags:
-  - Fruit
-
 # Carrot
 
 - type: foodSequenceElement
@@ -1215,22 +1204,6 @@
 
 
 # Anomaly berries
-
-- type: foodSequenceElement
-  id: AnomalyBerry
-  name: food-sequence-content-anomaly-berry
-  sprites:
-  - sprite: Objects/Specific/Hydroponics/anomaly_berry.rsi
-    state: produce
-
-- type: foodSequenceElement
-  id: AnomalyBerryBurger
-  name: food-sequence-burger-content-anomaly-berry
-  sprites:
-  - sprite: Objects/Specific/Hydroponics/anomaly_berry.rsi
-    state: produce
-
-# Cotton Top Bun
 
 - type: foodSequenceElement
   id: CottonBunTopBurger

@@ -1,19 +1,19 @@
 - type: secretDepartment
-  id: CENightmares
+  id: Nightmares
   name: ce-secret-department-nightmares-name
   description: ce-secret-department-nightmares-description
   color: "#922525"
   weight: 0
   membersRecognizeEachOther: true
   roles:
-  - CEWerewolf
+  - Werewolf
   objectives: !type:EntSelector
     id: CEObjectiveNightmareSphereCollapse
 
 - type: entity
   id: CEObjectiveNightmareSphereCollapse
   name: Plunge the City into Murk.
-  description: The lucson sphere has cracked. Keep the light monolith from being restored until the murk consumes it.
+  description: The lucson sphere has cracked. Keep the city from restoring it until the murk consumes it.
   components:
   - type: Sprite
     sprite: _CE/Structures/LucsonSphere/core.rsi

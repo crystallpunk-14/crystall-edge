@@ -59,6 +59,7 @@ public sealed partial class CEGhostTargetWindow : DefaultWindow
     private List<PlayerRow> _allPlayers = new();
     private List<LocationRow> _allLocations = new();
     private string _searchText = string.Empty;
+    private bool _canSeeMeta;
 
     private PlayerColumn _playerSortColumn = PlayerColumn.Name;
     private bool _playerSortAscending = true;
@@ -88,8 +89,9 @@ public sealed partial class CEGhostTargetWindow : DefaultWindow
         UpdateHeaderText();
     }
 
-    public void UpdateWarps(IEnumerable<CEGhostWarp> warps)
+    public void UpdateWarps(IEnumerable<CEGhostWarp> warps, bool canSeeMeta)
     {
+        _canSeeMeta = canSeeMeta;
         _allPlayers = new List<PlayerRow>();
         _allLocations = new List<LocationRow>();
 
@@ -183,7 +185,8 @@ public sealed partial class CEGhostTargetWindow : DefaultWindow
                 row.SecretRoleName,
                 row.SecretRoleIcon,
                 row.SecretRoleColor,
-                row.SecretRoleFactionName);
+                row.SecretRoleFactionName,
+                _canSeeMeta);
             control.PanelOverride = new StyleBoxFlat(i % 2 == 0 ? AltColor : DefaultColor);
 
             var target = row.Entity;

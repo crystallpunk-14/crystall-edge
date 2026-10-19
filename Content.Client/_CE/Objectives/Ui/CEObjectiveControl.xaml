@@ -10,11 +10,14 @@
                 <TextureRect Name="Icon" Margin="0 0 5 0" VerticalAlignment="Center"/>
                 <RichTextLabel Name="TitleLabel" HorizontalExpand="False" VerticalAlignment="Center"/>
                 <Control HorizontalExpand="True"/>
-                <PanelContainer Name="OwnerPanel" StyleClasses="BackgroundPanel" Margin="0 -5 -15 0" VerticalAlignment="Top">
-                    <BoxContainer Orientation="Horizontal">
-                        <Label Name="OwnerLabel" StyleClasses="LabelKeyText" Margin="5 0" VerticalAlignment="Center"/>
-                    </BoxContainer>
-                </PanelContainer>
+                <BoxContainer Name="BadgeContainer" Orientation="Horizontal" Margin="0 -5 -15 0" VerticalAlignment="Top">
+                    <BoxContainer Name="HelpContainer" Orientation="Horizontal" SetWidth="24" MinHeight="24" Margin="0 0 2 0" Visible="False"/>
+                    <PanelContainer Name="OwnerPanel" StyleClasses="BackgroundPanel">
+                        <BoxContainer Orientation="Horizontal">
+                            <Label Name="OwnerLabel" StyleClasses="LabelKeyText" Margin="5 0" VerticalAlignment="Center"/>
+                        </BoxContainer>
+                    </PanelContainer>
+                </BoxContainer>
             </BoxContainer>
             <customControls:HSeparator/>
             <BoxContainer Orientation="Horizontal" HorizontalExpand="True">

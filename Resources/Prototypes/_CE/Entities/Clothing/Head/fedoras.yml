@@ -22,6 +22,17 @@
 
 - type: entity
   parent: CEClothingHeadBase
+  id: CEClothingHeadFedoraGuildmaster
+  name: guildmaster's fedora
+  description: A stylish crimson fedora worn by the head of the adventurers' guild.
+  components:
+  - type: Sprite
+    sprite: _CE/Clothing/Head/Guild/guildmaster.rsi
+  - type: Clothing
+    sprite: _CE/Clothing/Head/Guild/guildmaster.rsi
+
+- type: entity
+  parent: CEClothingHeadBase
   id: CEClothingHeadFedoraBlack
   name: black fedora
   description: A sleek black fedora favored by skilled hunters.

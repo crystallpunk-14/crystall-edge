@@ -19,7 +19,6 @@
   maxPlayers: 5
   rules:
   - Sandbox
-  - CEBasicRoundstartVariation
 
 - type: gamePreset
   id: CEGreenshift
@@ -30,8 +29,6 @@
   - CEGameRuleMurkConsuming
   #- CEGameRuleThieves
   - CERampingStationEventScheduler
-  - CEBasicRoundstartVariation
-  - CEGameRuleMagicEssenceNodes
 
 - type: gamePreset
   id: CENightmareAwakening
@@ -42,5 +39,3 @@
   - CEGameRuleMurkConsuming
   - CEGameRuleNightmareAwakening
   - CERampingStationEventScheduler
-  - CEBasicRoundstartVariation
-  - CEGameRuleMagicEssenceNodes

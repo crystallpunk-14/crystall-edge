@@ -1,9 +1,7 @@
 using Content.Server.Mind;
-using Content.Server.Zombies;
 using Content.Shared.Body;
 using Content.Shared.Species.Components;
 using Content.Shared.Whitelist;
-using Content.Shared.Zombies;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Species.Systems;
@@ -11,7 +9,6 @@ namespace Content.Server.Species.Systems;
 public sealed partial class NymphSystem : EntitySystem
 {
     [Dependency] private MindSystem _mindSystem = default!;
-    [Dependency] private ZombieSystem _zombie = default!;
     [Dependency] private EntityWhitelistSystem _whitelist = default!;
 
     public override void Initialize()
@@ -35,9 +32,6 @@ public sealed partial class NymphSystem : EntitySystem
         // Get the organs' position & spawn a nymph there
         var coords = Transform(uid).Coordinates;
         var nymph = SpawnAtPosition(entityProto.ID, coords);
-
-        if (HasComp<ZombieComponent>(args.Target)) // Zombify the new nymph if old one is a zombie
-            _zombie.ZombifyEntity(nymph);
 
         // Move the mind if there is one and it's supposed to be transferred
         if (comp.TransferMind && _mindSystem.TryGetMind(uid, out var mindId, out var mind))

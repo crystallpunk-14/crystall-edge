@@ -95,16 +95,3 @@
     Hydrogen: 1
     CarbonDioxide: 3
     Protein: 4
-
-- type: reaction
-  id: ZombieBloodBreakdown
-  source: true
-  requiredMixerCategories:
-  - Centrifuge
-  reactants:
-    ZombieBlood:
-      amount: 4
-  products:
-    Romerodone: 2
-    Protein: 1
-    Mold: 1

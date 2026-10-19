@@ -1,10 +1,11 @@
-using Content.Shared._CE.Trading.Systems;
+using Content.Shared._CE.Trade;
 using Content.Shared.Stacks;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Utility;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._CE.ResourceManager.Requirements;
 
+[Serializable, NetSerializable]
 public sealed partial class StackResource : CEResourceRequirement
 {
     [DataField(required: true)]
@@ -70,7 +71,7 @@ public sealed partial class StackResource : CEResourceRequirement
         if (!protoManager.TryIndex(indexedStack.Spawn, out var indexedProto))
             return 0;
 
-        var priceSys = entManager.System<CESharedEconomySystem>();
+        var priceSys = entManager.System<CEEconomySystem>();
 
         return priceSys.GetEstimatedPrice(indexedProto) * Count;
     }
@@ -83,8 +84,16 @@ public sealed partial class StackResource : CEResourceRequirement
         return $"{Loc.GetString(indexedStack.Name)} x{Count}";
     }
 
-    public override SpriteSpecifier? GetRequirementTexture(IPrototypeManager protoManager)
+    public override string GetRequirementAmount()
     {
-        return !protoManager.TryIndex(Stack, out var indexedStack) ? null : indexedStack.Icon;
+        return Count.ToString();
+    }
+
+    public override List<CEResourceIconLayer> GetRequirementIcon(IEntityManager entManager, IPrototypeManager protoManager)
+    {
+        if (!protoManager.TryIndex(Stack, out var indexedStack) || indexedStack.Icon is not { } icon)
+            return new List<CEResourceIconLayer>();
+
+        return new List<CEResourceIconLayer> { CEResourceIconLayer.FromSprite(icon) };
     }
 }

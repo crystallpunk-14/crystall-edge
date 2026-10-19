@@ -7,14 +7,6 @@
   - type: Contraband
     severity: HighlyIllegal
 
-# used by the unique items of xenoborgs (like modules and stuff)
-- type: entity
-  id: BaseXenoborgContraband
-  abstract: true
-  components:
-  - type: Contraband
-    severity: HighlyIllegal
-
 # any type of magical items used by wizards and similiar
 - type: entity
   id: BaseMagicalContraband

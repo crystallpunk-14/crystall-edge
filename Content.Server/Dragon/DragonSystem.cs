@@ -12,7 +12,6 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
 using Content.Shared.NPC.Systems;
-using Content.Shared.Zombies;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -192,13 +191,6 @@ public sealed partial class DragonSystem : EntitySystem
 
         // objective is explicitly not reset so that it will show how many you got before dying in round end text
         DeleteRifts(uid, false, component);
-    }
-
-    [SubscribeLocalEvent]
-    private void OnZombified(Entity<DragonComponent> ent, ref EntityZombifiedEvent args)
-    {
-        // prevent carp attacking zombie dragon
-        _faction.AddFaction(ent.Owner, ent.Comp.Faction);
     }
 
     private void Roar(EntityUid uid, DragonComponent comp, EntityCoordinates? coords = null)

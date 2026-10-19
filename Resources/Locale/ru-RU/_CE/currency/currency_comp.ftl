@@ -10,3 +10,4 @@ ce-currency-converter-get-cp = Вывести как мм (1мм)
 ce-currency-converter-get-sp = Вывести как см (10мм)
 ce-currency-converter-get-gp = Вывести как зм (100мм)
 ce-currency-converter-get-pp = Вывести как пм (1000мм)
+ce-trading-empty-price = Отсутствует!

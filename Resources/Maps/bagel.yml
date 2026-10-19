@@ -68778,21 +68778,11 @@ entities:
       parent: 60
       rot: 1.5707963267948966 rad
       pos: -47.5,16.5
-    - type: DeviceLinkSource
-      linkedPorts:
-        9442:
-        - - ArtifactAnalyzerSender
-          - ArtifactAnalyzerReceiver
   - uid: 24680
     components:
     - type: Transform
       parent: 60
       pos: -52.5,14.5
-    - type: DeviceLinkSource
-      linkedPorts:
-        9570:
-        - - ArtifactAnalyzerSender
-          - ArtifactAnalyzerReceiver
 - proto: ComputerAtmosMonitoring
   entities:
   - uid: 13949
@@ -69709,14 +69699,6 @@ entities:
     - type: Transform
       parent: 60
       pos: -44.5,14.5
-    - type: EntityStorage
-      air:
-        temperature: 293.1496
-        volume: 200
-        moles:
-          Oxygen: 1.6495836
-          Nitrogen: 6.2055764
-        immutable: False
 - proto: CrateCoffin
   entities:
   - uid: 14213

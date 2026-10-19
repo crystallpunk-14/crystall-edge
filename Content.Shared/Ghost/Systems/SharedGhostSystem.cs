@@ -1,3 +1,4 @@
+using Content.Shared._CE.Ghost;
 using Content.Shared.Emoting;
 using Content.Shared.Examine;
 using Content.Shared.Ghost.Components;
@@ -86,6 +87,11 @@ public abstract partial class SharedGhostSystem : EntitySystem
 
         entity.Comp.CanReturnToBody = value;
         Dirty(entity);
+
+        // CrystallEdge: ghost access to meta information depends on whether it can still return
+        var ev = new CEGhostCanReturnToBodyChangedEvent();
+        RaiseLocalEvent(entity, ref ev);
+        // CrystallEdge end
     }
 
     [Obsolete("Use the Entity<GhostComponent?> overload")]

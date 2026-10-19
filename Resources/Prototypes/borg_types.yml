@@ -16,8 +16,6 @@
   - BorgModulePrying
   - BorgModuleTool
   - BorgModuleInflatable
-  - BorgModuleArtifact
-  - BorgModuleAnomaly
   radioChannels:
   - Science
 
@@ -212,7 +210,6 @@
   - BorgModulePrying
   - BorgModuleMusique
   - BorgModuleService
-  - BorgModuleClowning
   - BorgModuleGardening
   - BorgModuleHarvesting
   radioChannels:

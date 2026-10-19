@@ -83,8 +83,9 @@ public sealed partial class CEZPhysicsComponent : Component
     /// <summary>
     /// If true, CEGetZVelocityEvent is raised every physics tick so systems (e.g. flight) can adjust Velocity.
     /// Off by default to avoid the event overhead for entities that never need custom vertical control.
+    /// Don't set it directly - call CESharedZLevelsSystem.RefreshVelocityRaiseEvent and answer CERefreshVelocityRaiseEvent.
     /// </summary>
-    [DataField]
+    [ViewVariables, AutoNetworkedField]
     public bool VelocityRaiseEvent;
 
     #endregion
@@ -101,7 +102,7 @@ public sealed partial class CEZPhysicsComponent : Component
     public float CachedGroundHeight;
 
     /// <summary>
-    /// Cached value of whether the entity is currently on sticky ground (ladders).
+    /// Cached value of whether the entity is currently on sticky ground (stairs).
     /// </summary>
     [ViewVariables]
     public bool CachedStickyGround;

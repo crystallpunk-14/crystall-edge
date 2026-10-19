@@ -53,12 +53,6 @@
             "name": "ChiefMedicalOfficer"
         },
         {
-            "name": "Clown"
-        },
-        {
-            "name": "Cluwne"
-        },
-        {
             "name": "Detective"
         },
         {
@@ -92,12 +86,6 @@
             "name": "HeadOfSecurity"
         },
         {
-            "name": "HeadRevolutionary"
-        },
-        {
-            "name": "InitialInfected"
-        },
-        {
             "name": "Janitor"
         },
         {
@@ -111,9 +99,6 @@
         },
         {
             "name": "MedicalIntern"
-        },
-        {
-            "name": "Mime"
         },
         {
             "name": "MindShield",
@@ -165,9 +150,6 @@
         },
         {
             "name": "ResearchDirector"
-        },
-        {
-            "name": "Revolutionary"
         },
         {
             "name": "Roboticist"
@@ -243,9 +225,6 @@
         },
         {
             "name": "Zookeeper"
-        },
-        {
-            "name": "Zombie"
         },
         {
             "name": "TramDriver"

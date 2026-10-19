@@ -6,7 +6,9 @@
   loadouts:
   - CESafeFallingAmulet
   - CELantern
-  - CECoinSilver10
+  - CEClothingWristwatch
+  - CEManaTransferGlove
+  - CECoinGold1
 
 - type: loadout
   id: CESafeFallingAmulet
@@ -20,7 +22,24 @@
     - CELantern
 
 - type: loadout
-  id: CECoinSilver10
+  id: CECoinGold1
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:CEAchievementRequirement
+      achievement: BountyHunterWin
   storage:
     back:
-    - CECoinSilver10
+    - CECoinGold1
+
+- type: loadout
+  id: CEClothingWristwatch
+  storage:
+    back:
+    - CEClothingWristwatch
+
+- type: loadout
+  id: CEManaTransferGlove
+  storage:
+    back:
+    - CEManaTransferGlove

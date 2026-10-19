@@ -69,7 +69,7 @@
     Snore:
       collection: Snores
     Honk:
-      collection: CluwneHorn
+      collection: BikeHorn
     Sigh:
       collection: FemaleSigh
     Crying:
@@ -207,7 +207,7 @@
     Snore:
       collection: Snores
     Honk:
-      collection: CluwneHorn
+      collection: BikeHorn
     Sigh:
       collection: FemaleSigh
     Crying:
@@ -641,14 +641,6 @@
     Salute:
       collection: Salutes
 
-# mobs
-- type: emoteSounds
-  id: Zombie
-  sound:
-    collection: ZombieScreams
-    params:
-      variation: 0.125
-
 - type: emoteSounds
   id: Skeleton
   sound:
@@ -663,12 +655,6 @@
     params:
       variation: 0.125
 
-- type: emoteSounds
-  id: Cluwne
-  sound:
-    collection: CluwneScreams
-    params:
-      variation: 0.125
 
 - type: emoteSounds
   id: Bear

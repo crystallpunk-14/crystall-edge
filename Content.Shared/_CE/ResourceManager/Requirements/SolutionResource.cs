@@ -2,9 +2,11 @@ using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._CE.ResourceManager.Requirements;
 
+[Serializable, NetSerializable]
 public sealed partial class SolutionResource : CEResourceRequirement
 {
     [DataField(required: true)]
@@ -89,6 +91,11 @@ public sealed partial class SolutionResource : CEResourceRequirement
         return indexedReagent.PricePerUnit * (double)Amount;
     }
 
+    public override string GetRequirementAmount()
+    {
+        return $"{Amount}u";
+    }
+
     public override string GetRequirementTitle(IPrototypeManager protoManager)
     {
         if (!protoManager.TryIndex(Reagent, out var indexedReagent))
@@ -100,18 +107,9 @@ public sealed partial class SolutionResource : CEResourceRequirement
             ("purity", Purity * 100));
     }
 
-    public override EntityPrototype? GetRequirementEntityView(IPrototypeManager protoManager)
+    public override List<CEResourceIconLayer> GetRequirementIcon(IEntityManager entManager, IPrototypeManager protoManager)
     {
-        if (!protoManager.TryIndex(DummyEntityIcon, out var indexedEnt))
-            return null;
-        return indexedEnt;
-    }
-
-    public override Color GetRequirementColor(IPrototypeManager protoManager)
-    {
-        if (!protoManager.TryIndex(Reagent, out var indexedReagent))
-            return Color.White;
-
-        return indexedReagent.SubstanceColor;
+        var color = protoManager.TryIndex(Reagent, out var indexedReagent) ? indexedReagent.SubstanceColor : Color.White;
+        return new List<CEResourceIconLayer> { CEResourceIconLayer.FromEntity(DummyEntityIcon, color) };
     }
 }

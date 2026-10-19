@@ -31,9 +31,15 @@ public sealed class CEGetWeaponEvent : HandledEntityEventArgs
 public sealed class CEWeaponUseEvent(
     Angle angle,
     NetEntity weapon,
-    CEUseType useType)
+    CEUseType useType,
+    NetEntity? cursorTarget = null)
     : EntityEventArgs
 {
+    /// <summary>
+    /// Entity under the cursor when the attack started, if any. Added to the arc's targets when it lies inside the arc.
+    /// </summary>
+    public readonly NetEntity? CursorTarget = cursorTarget;
+
     /// <summary>
     /// Angle being attacked.
     /// </summary>

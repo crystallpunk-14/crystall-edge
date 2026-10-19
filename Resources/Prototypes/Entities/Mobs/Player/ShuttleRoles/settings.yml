@@ -414,20 +414,6 @@
       roleLoadout: [ RoleSurvivalStandard ]
 
 - type: randomHumanoidSettings
-  id: VisitorClown
-  parent: VisitorCivilian
-  randomizeName: false
-  components:
-    - type: GhostRole
-      name: job-name-clown
-    - type: Loadout
-      prototypes: [ VisitorClown ]
-      roleLoadout: [ RoleSurvivalClown ]
-    - type: RandomMetadata
-      nameSegments:
-      - NamesClown
-
-- type: randomHumanoidSettings
   id: VisitorJanitor
   parent: VisitorCivilian
   components:
@@ -499,17 +485,6 @@
       roleLoadout: [ RoleSurvivalStandard ]
 
 - type: randomHumanoidSettings
-  id: VisitorMime
-  parent: VisitorCivilian
-  components:
-    - type: MimePowers
-    - type: GhostRole
-      name: job-name-mime
-    - type: Loadout
-      prototypes: [ VisitorMime, VisitorMimeAlt ]
-      roleLoadout: [ RoleSurvivalStandard ]
-
-- type: randomHumanoidSettings
   id: VisitorReporter
   parent: VisitorCivilian
   components:
@@ -538,15 +513,6 @@
     - type: Loadout
       prototypes: [ VisitorZookeeper, VisitorZookeeperAlt ]
       roleLoadout: [ RoleSurvivalStandard ]
-
-- type: randomHumanoidSettings
-  id: ClownTroupeBanana
-  parent: VisitorClown
-  randomizeName: false
-  components:
-    - type: Loadout
-      prototypes: [ BananaClown ]
-      roleLoadout: [ RoleSurvivalClown ]
 
 # Misc
 

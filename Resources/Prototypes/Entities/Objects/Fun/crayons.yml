@@ -53,25 +53,6 @@
 
 - type: entity
   parent: Crayon
-  id: CrayonMime
-  name: mime crayon
-  components:
-  - type: Sprite
-    state: mime
-  - type: Item
-    heldPrefix: mime
-  - type: Crayon
-    color: white
-  - type: Tag
-    tags:
-    - Write
-    - Crayon
-    - CrayonWhite
-    - Recyclable
-    - Trash
-
-- type: entity
-  parent: Crayon
   id: CrayonRainbow
   name: rainbow crayon
   components:

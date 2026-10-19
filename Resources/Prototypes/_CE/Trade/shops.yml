@@ -1,0 +1,29 @@
+- type: tradeShop
+  id: Horticulture
+
+- type: tradeShop
+  id: HomeDecor
+
+- type: tradeShop
+  id: Tailors
+
+- type: tradeShop
+  id: DwarfMiners
+
+- type: tradeShop
+  id: Alcohol
+
+- type: tradeShop
+  id: EmpireGuard
+
+- type: tradeShop
+  id: HelsinWarHouse
+
+- type: tradeShop
+  id: ApothecariesGuild
+
+- type: tradeShop
+  id: ImperialChancellery
+
+- type: tradeShop
+  id: Orders

@@ -66,12 +66,7 @@
   - type: Item
     size: Ginormous
   - type: MultiHandedItem
-  - type: CEFoodCooker
-    foodType: Meal
-    solutionId: cooker
   - type: RefillableSolution
-    solution: cooker
-  - type: DrainableSolution
     solution: cooker
   - type: Spillable
     solution: cooker
@@ -82,8 +77,3 @@
     materialComposition:
       CEIron: 20
       CEWood: 10
-  - type: CEMagicEssenceStructure
-    essences:
-      Metal: { min: 1, max: 4 }
-      Fire: { min: 0, max: 2 }
-      Tree: { min: 0, max: 1 }

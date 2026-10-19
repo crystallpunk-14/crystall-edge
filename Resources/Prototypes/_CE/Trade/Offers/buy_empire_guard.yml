@@ -1,0 +1,125 @@
+- type: tradeOffer
+  id: BuyClothingCloakRaincoatGuard
+  shop: EmpireGuard
+  pay:
+    bonus: 10
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEClothingCloakRaincoatGuard
+
+- type: tradeOffer
+  id: BuyClothingShirtSyurkoGuard
+  shop: EmpireGuard
+  pay:
+    bonus: 10
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEClothingShirtSyurkoGuard
+
+- type: tradeOffer
+  id: BuyClothingHeadHelmetGuard
+  shop: EmpireGuard
+  pay:
+    bonus: 10
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEClothingHeadHelmetGuard
+
+- type: tradeOffer
+  id: BuyClothingHeadHelmetGuardCorinthian
+  shop: EmpireGuard
+  pay:
+    bonus: 10
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEClothingHeadHelmetGuardCorinthian
+
+- type: tradeOffer
+  id: BuyClothingHeadCapGuard
+  shop: EmpireGuard
+  pay:
+    bonus: 10
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEClothingHeadCapGuard
+
+- type: tradeOffer
+  id: BuyClothingHeadFedoraGuard
+  shop: EmpireGuard
+  pay:
+    bonus: 10
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEClothingHeadFedoraGuard
+
+- type: tradeOffer
+  id: BuyClothingPantsGuard
+  shop: EmpireGuard
+  pay:
+    bonus: 10
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEClothingPantsGuard
+
+- type: tradeOffer
+  id: BuyClothingShirtGuard
+  shop: EmpireGuard
+  pay:
+    bonus: 10
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEClothingShirtGuard
+
+- type: tradeOffer
+  id: BuyClothingCloakMantleInvestigator
+  shop: EmpireGuard
+  pay:
+    bonus: 10
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEClothingCloakMantleInvestigator
+
+- type: tradeOffer
+  id: BuyRope
+  shop: EmpireGuard
+  pay:
+    bonus: 10
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CERope
+
+- type: tradeOffer
+  id: BuyGuardBola
+  shop: EmpireGuard
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEGuardBola
+
+- type: tradeOffer
+  id: BuyGunJustice
+  shop: EmpireGuard
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWeaponGunJustice
+
+- type: tradeOffer
+  id: BuyGunPeacekeeper
+  shop: EmpireGuard
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWeaponGunPeacekeeper
+
+- type: tradeOffer
+  id: BuyWeaponMaceTwoHandedGuardrail
+  shop: EmpireGuard
+  pay:
+    bonus: 1
+  reward:
+  - !type:CETradeSpawnReward
+    proto: CEWeaponMaceTwoHandedGuardrail

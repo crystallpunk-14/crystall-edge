@@ -35,8 +35,6 @@
     - WeaponShotgunDoubleBarreled
     - BoxShotgunIncendiary
     - GrenadeFlashBang
-    - PillAmbuzolPlus
-    - PillAmbuzol
 
 - type: chameleonOutfit
   id: CBURNChameleonOutfit

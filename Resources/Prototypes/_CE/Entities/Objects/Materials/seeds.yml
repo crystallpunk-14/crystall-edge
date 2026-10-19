@@ -18,10 +18,6 @@
     guides:
     - CEFarmingGuideEN
     - CEFarmingGuideRU
-  - type: CEMagicEssenceStructure
-    essences:
-      Plant: { min: 1, max: 1 }
-      Crop: { min: 1, max: 1 }
 
 - type: entity
   id: CESeedWheat
@@ -37,13 +33,13 @@
     stackType: CESeedWheat
 
 - type: entity
-  id: CESeedWheat30
+  id: CESeedWheat10
   parent: CESeedWheat
-  suffix: 30
+  suffix: 10
   components:
   - type: Stack
     stackType: CESeedWheat
-    count: 30
+    count: 10
 
 - type: entity
   id: CESeedPumpkin
@@ -59,13 +55,13 @@
     stackType: CESeedPumpkin
 
 - type: entity
-  id: CESeedPumpkin30
+  id: CESeedPumpkin10
   parent: CESeedPumpkin
-  suffix: 30
+  suffix: 10
   components:
   - type: Stack
     stackType: CESeedPumpkin
-    count: 30
+    count: 10
 
 - type: entity
   id: CESeedCabbage
@@ -81,13 +77,13 @@
     stackType: CESeedCabbage
 
 - type: entity
-  id: CESeedCabbage30
+  id: CESeedCabbage10
   parent: CESeedCabbage
-  suffix: 30
+  suffix: 10
   components:
   - type: Stack
     stackType: CESeedCabbage
-    count: 30
+    count: 10
 
 - type: entity
   id: CESeedCucumber
@@ -103,13 +99,13 @@
     stackType: CESeedCucumber
 
 - type: entity
-  id: CESeedCucumber30
+  id: CESeedCucumber10
   parent: CESeedCucumber
-  suffix: 30
+  suffix: 10
   components:
   - type: Stack
     stackType: CESeedCucumber
-    count: 30
+    count: 10
 
 - type: entity
   id: CESeedTomato
@@ -125,13 +121,13 @@
     stackType: CESeedTomato
 
 - type: entity
-  id: CESeedTomato30
+  id: CESeedTomato10
   parent: CESeedTomato
-  suffix: 30
+  suffix: 10
   components:
   - type: Stack
     stackType: CESeedTomato
-    count: 30
+    count: 10
 
 - type: entity
   id: CESeedPepper
@@ -147,13 +143,13 @@
     stackType: CESeedPepper
 
 - type: entity
-  id: CESeedPepper30
+  id: CESeedPepper10
   parent: CESeedPepper
-  suffix: 30
+  suffix: 10
   components:
   - type: Stack
     stackType: CESeedPepper
-    count: 30
+    count: 10
 
 - type: entity
   id: CESeedCotton
@@ -169,13 +165,13 @@
     stackType: CESeedCotton
 
 - type: entity
-  id: CESeedCotton30
+  id: CESeedCotton10
   parent: CESeedCotton
-  suffix: 30
+  suffix: 10
   components:
   - type: Stack
     stackType: CESeedCotton
-    count: 30
+    count: 10
 
 - type: entity
   id: CESeedSunflower
@@ -191,13 +187,13 @@
     stackType: CESeedSunflower
 
 - type: entity
-  id: CESeedSunflower30
+  id: CESeedSunflower10
   parent: CESeedSunflower
-  suffix: 30
+  suffix: 10
   components:
   - type: Stack
     stackType: CESeedSunflower
-    count: 30
+    count: 10
 
 - type: entity
   id: CESeedCorn
@@ -213,13 +209,13 @@
     stackType: CESeedCorn
 
 - type: entity
-  id: CESeedCorn30
+  id: CESeedCorn10
   parent: CESeedCorn
-  suffix: 30
+  suffix: 10
   components:
   - type: Stack
     stackType: CESeedCorn
-    count: 30
+    count: 10
 
 - type: entity
   id: CESeedCarrot
@@ -235,10 +231,10 @@
     stackType: CESeedCarrot
 
 - type: entity
-  id: CESeedCarrot30
+  id: CESeedCarrot10
   parent: CESeedCarrot
-  suffix: 30
+  suffix: 10
   components:
   - type: Stack
     stackType: CESeedCarrot
-    count: 30
+    count: 10

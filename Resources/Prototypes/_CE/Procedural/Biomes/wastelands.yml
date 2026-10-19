@@ -30,18 +30,6 @@
       entities:
         - CERockSmall
         - CERockBig
-    - !type:BiomeEntityLayer # More Trees
-      threshold: 0.4
-      noise:
-        seed: 4
-        noiseType: OpenSimplex2
-        fractalType: FBm
-        frequency: 2
-      allowedTiles:
-        - CEDirt
-      entities:
-        - CEFloraTreeDead
-        - CEFloraTreeDeadSmall
     - !type:BiomeEntityLayer # Walls
       allowedTiles:
         - CEDirt

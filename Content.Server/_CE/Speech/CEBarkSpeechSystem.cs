@@ -36,12 +36,15 @@ public sealed partial class CEBarkSpeechSystem : CESharedBarkSpeechSystem
         if (string.IsNullOrWhiteSpace(message))
             return;
 
-        if (!_proto.TryIndex(comp.BarkSpeech, out var profile))
+        var overrideEv = new CEBarkSpeechOverrideEvent(comp.BarkSpeech, comp.BasePitch);
+        RaiseLocalEvent(uid, ref overrideEv);
+
+        if (!_proto.TryIndex(overrideEv.BarkSpeech, out var profile))
             return;
 
         var isWhisper = args.ObfuscatedMessage != null;
 
-        var syllables = BuildSyllables(message, comp.BasePitch, profile);
+        var syllables = BuildSyllables(message, overrideEv.BasePitch, profile);
         if (syllables.Count == 0)
             return;
 

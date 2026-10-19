@@ -158,24 +158,6 @@
           amount: 2
 
 - type: entity
-  parent: ClothingBackpackDuffelClown
-  id: ClothingBackpackDuffelSyndicateCostumeClown
-  suffix: syndicate
-  components:
-  - type: Tag
-    tags: [] # ignore "WhitelistChameleon" tag
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: ClothingUniformJumpsuitClown
-        - id: ClothingShoesClown
-        - id: ClothingMaskClown
-        - id: BikeHorn
-        - id: ClownPDA
-        - id: ClothingHeadsetService
-
-- type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
   id: ClothingBackpackDuffelSyndicateCarpSuit
   name: carp suit duffel bag
@@ -335,22 +317,6 @@
     - id: ClothingHandsGlovesCombat
     - id: DoubleEmergencyOxygenTankFilled
     - id: DoubleEmergencyNitrogenTankFilled
-
-- type: entity
-  parent: ClothingBackpackDuffelSyndicateBundle
-  id: ClothingBackpackDuffelZombieBundle
-  name: syndicate zombie bundle
-  description: "An all-in-one kit for unleashing the undead upon a station."
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: SyringeRomerol
-        - id: WeaponRevolverPython
-        - id: MagazineBoxMagnumIncendiary
-        - id: PillCanisterAmbuzol
-          amount: 5
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateMedicalBundle

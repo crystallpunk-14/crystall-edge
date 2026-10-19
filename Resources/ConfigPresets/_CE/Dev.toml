@@ -30,6 +30,13 @@ closed_beta_test = true
 [server]
 rules_file = "CERules"
 
+[tips]
+login_dataset = "CETips"
+dataset = "CETips"
+
+[tippy]
+entity = "CEPlushieFlem"
+
 [hub]
 advertise = true
 tags = "lang:ru, lang:en, rp:med, region:eu_e"

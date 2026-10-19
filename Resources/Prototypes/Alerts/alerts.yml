@@ -379,13 +379,6 @@
   description: alerts-parched-desc
 
 - type: alert
-  id: VowBroken
-  icons: [ /Textures/Interface/Actions/scream.png ]
-  name: alerts-vow-broken-name
-  clickEvent: !type:RetakeVowAlertEvent
-  description: alerts-vow-broken-desc
-
-- type: alert
   id: Pulled
   icons: [ /Textures/Interface/Alerts/Pull/pulled.png ]
   clickEvent: !type:StopBeingPulledAlertEvent

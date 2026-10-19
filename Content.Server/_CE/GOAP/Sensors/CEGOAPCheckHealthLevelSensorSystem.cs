@@ -1,21 +1,12 @@
-using Content.Shared._CE.GOAP;
-using Content.Shared._CE.GOAP.Components;
 using Content.Shared._CE.GOAP.Selectors;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Mobs.Systems;
-using Robust.Shared.Analyzers;
 
 namespace Content.Server._CE.GOAP.Sensors;
 
-[DataDefinition]
 public sealed partial class CEGOAPCheckHealthLevelSensorEntry
+    : CEGOAPSensorEntry<CEGOAPCheckHealthLevelSensorEntry, CEGOAPCheckHealthLevelSensorComponent>
 {
-    [DataField(required: true)]
-    public string ConditionKey = string.Empty;
-
-    [DataField(required: true)]
-    public CEGOAPTargetSelector Selector = default!;
-
     /// <summary>
     /// Health fraction (0..1) below which the condition is set to true.
     /// </summary>
@@ -24,30 +15,17 @@ public sealed partial class CEGOAPCheckHealthLevelSensorEntry
 }
 
 /// <summary>
-/// Checks if the entity's own health fraction is below a threshold.
-/// Event-driven via DamageDealtEvent.
+/// Checks if the target slot's entity health fraction is below a threshold.
+/// Event-driven via DamageDealtEvent on the agent.
 /// </summary>
 [RegisterComponent]
-public sealed partial class CEGOAPCheckHealthLevelSensorComponent : Component
-{
-    [DataField]
-    [AlwaysPushInheritance]
-    public List<CEGOAPCheckHealthLevelSensorEntry> Entries = [];
-}
+public sealed partial class CEGOAPCheckHealthLevelSensorComponent : CEGOAPSensorComponent<CEGOAPCheckHealthLevelSensorEntry>;
 
-public sealed partial class CEGOAPCheckHealthLevelSensorSystem : EntitySystem
+public sealed partial class CEGOAPCheckHealthLevelSensorSystem
+    : CEGOAPSensorSystem<CEGOAPCheckHealthLevelSensorComponent, CEGOAPCheckHealthLevelSensorEntry>
 {
-    // CrystallEdge: Rogue used CESharedDamageableSystem.GetHealthInfo() (CE-only). This fork
-    // has no CE health stack, so compute health fraction from vanilla MobThresholdSystem's
-    // incapacitation percentage instead.
     [Dependency] private MobThresholdSystem _mobThreshold = default!;
     [Dependency] private DamageableSystem _damageable = default!;
-
-    [SubscribeLocalEvent]
-    private void OnRefresh(Entity<CEGOAPCheckHealthLevelSensorComponent> ent, ref CEGOAPSensorRefreshEvent args)
-    {
-        EvaluateAll(ent);
-    }
 
     // Runs after DamageableSystem applies the DamageDealtEvent to DamageableComponent.TotalDamage,
     // so the percentage read below reflects the post-hit value.
@@ -57,33 +35,15 @@ public sealed partial class CEGOAPCheckHealthLevelSensorSystem : EntitySystem
         EvaluateAll(ent);
     }
 
-    private void EvaluateAll(Entity<CEGOAPCheckHealthLevelSensorComponent> ent)
+    protected override bool Evaluate(EntityUid agent, CEGOAPCheckHealthLevelSensorEntry entry, CEGOAPSelectorResult target)
     {
-        if (!TryComp<CEGOAPComponent>(ent, out var goap))
-            return;
+        if (target.Entity is not { } entity)
+            return false;
 
-        foreach (var entry in ent.Comp.Entries)
-        {
-            EvaluateEntry(ent, entry, goap);
-        }
-    }
+        var totalDamage = _damageable.GetTotalDamage(entity);
+        if (!_mobThreshold.TryGetIncapPercentage(entity, totalDamage, out var percentage))
+            return false;
 
-    private void EvaluateEntry(EntityUid uid, CEGOAPCheckHealthLevelSensorEntry entry, CEGOAPComponent goap)
-    {
-        var result = entry.Selector.Resolve(uid, EntityManager);
-        if (result.Entity is not { } target)
-        {
-            goap.WorldState[entry.ConditionKey] = false;
-            return;
-        }
-
-        var totalDamage = _damageable.GetTotalDamage(target);
-        if (!_mobThreshold.TryGetIncapPercentage(target, totalDamage, out var percentage))
-        {
-            goap.WorldState[entry.ConditionKey] = false;
-            return;
-        }
-
-        goap.WorldState[entry.ConditionKey] = (float) percentage.Value < entry.Threshold;
+        return (float) percentage.Value < entry.Threshold;
     }
 }

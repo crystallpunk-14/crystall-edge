@@ -8,9 +8,8 @@ ce-radio-microphone-off = Disabled.
 ce-radio-examine-frequencies = Frequencies: [color=yellow]{$frequencies}[/color].
 
 ce-radio-frequency-common = Common
-ce-radio-frequency-academy = Academy
 ce-radio-frequency-engineering = Engineering
-ce-radio-frequency-guard = Guard
+ce-radio-frequency-guard = Army
 ce-radio-frequency-tavern = Tavern
 
 ce-chat-speech-verb-name-broadcast = Broadcast

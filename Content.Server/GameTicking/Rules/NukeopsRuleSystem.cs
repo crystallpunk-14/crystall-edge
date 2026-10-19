@@ -30,7 +30,6 @@ using Content.Shared.StationRecords;
 using Content.Shared.Store;
 using Content.Shared.Store.Components;
 using Content.Shared.Tag;
-using Content.Shared.Zombies;
 using Robust.Server.Player;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
@@ -84,7 +83,6 @@ public sealed partial class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleCompon
 
         SubscribeLocalEvent<NukeOperativeComponent, ComponentRemove>(OnComponentRemove);
         SubscribeLocalEvent<NukeOperativeComponent, MobStateChangedEvent>(OnMobStateChanged);
-        SubscribeLocalEvent<NukeOperativeComponent, EntityZombifiedEvent>(OnOperativeZombified);
 
         SubscribeLocalEvent<NukeopsRoleComponent, GetBriefingEvent>(OnGetBriefing);
 
@@ -366,11 +364,6 @@ public sealed partial class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleCompon
     {
         if (ev.NewMobState == MobState.Dead)
             CheckRoundShouldEnd();
-    }
-
-    private void OnOperativeZombified(EntityUid uid, NukeOperativeComponent component, ref EntityZombifiedEvent args)
-    {
-        RemCompDeferred(uid, component);
     }
 
     private void OnRuleLoadedGrids(Entity<NukeopsRuleComponent> ent, ref RuleLoadedGridsEvent args)

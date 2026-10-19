@@ -1,4 +1,3 @@
-using System.Text;
 using Robust.Shared.Analyzers;
 using Content.Shared._CE.Actions.Components;
 using Content.Shared.Actions.Components;
@@ -27,28 +26,6 @@ public abstract partial class CESharedActionSystem
     private void OnManacostExamined(Entity<CEActionManaCostComponent> ent, ref ExaminedEvent args)
     {
         args.PushMarkup($"{Loc.GetString("ce-magic-manacost")}: [color=#5da9e8]{ent.Comp.ManaCost}[/color]", priority: 9);
-    }
-
-    [SubscribeLocalEvent]
-    private void OnEssenceCostExamined(Entity<CEActionEssenceCostComponent> ent, ref ExaminedEvent args)
-    {
-        if (ent.Comp.EssenceCost.Count == 0)
-            return;
-
-        var sb = new StringBuilder();
-        sb.Append(Loc.GetString("ce-magic-essencecost"));
-        sb.Append(": \n");
-
-        foreach (var (type, amount) in ent.Comp.EssenceCost)
-        {
-            if (!_proto.Resolve(type, out var essenceProto))
-                continue;
-
-            sb.Append($"- [color={essenceProto.Color.ToHex()}]{essenceProto.Name}[/color]: {amount}\n");
-        }
-        sb.Append("\n");
-
-        args.PushMarkup(sb.ToString(), priority: 9);
     }
 
     [SubscribeLocalEvent]

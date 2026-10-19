@@ -79,12 +79,6 @@
       maxGroupSize: 8
     - !type:OreDunGen
       replacement: IronRock
-      entity: IronRockArtifactFragment
-      count: 25
-      minGroupSize: 1
-      maxGroupSize: 3
-    - !type:OreDunGen
-      replacement: IronRock
       entity: IronRockDiamond
       count: 15
       minGroupSize: 1

@@ -82,7 +82,6 @@ entities:
       fibers: []
       dNAs: []
     - type: ExplosionAirtightGrid
-    - type: CEZLevelsLaddersCache
     - type: ChunkContainer
       chunkEntities: []
 ...

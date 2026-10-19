@@ -1,0 +1,39 @@
+- type: secretRole
+  id: BountyHunter
+  name: ce-secret-role-name-bounty-hunter
+  description: ce-secret-role-description-bounty-hunter
+  icon: CESecretRoleIconBountyHunter
+  gear: CEBountyHunterGear
+  victoryAchievement: BountyHunterWin
+  objectives: !type:EntSelector
+    id: CEObjectiveBountyHunterEliminate
+
+- type: startingGear
+  id: CEBountyHunterGear
+  storage:
+    back:
+    - CECoinGold5
+    - CEWeaponGunJustice
+    - CEPaperBountyHunterContract
+
+- type: entity
+  parent: CEPaper
+  id: CEPaperBountyHunterContract
+  name: contract
+  description: A short letter with no return address.
+  components:
+  - type: Paper
+    content: ce-paper-text-bounty-hunter-contract
+
+- type: entity
+  id: CEObjectiveBountyHunterEliminate
+  name: Eliminate the Brotherhood
+  description: Every member of the Brotherhood must be dead.
+  components:
+  - type: Sprite
+    sprite: _CE/Actions/misc.rsi
+    state: todo
+  - type: CEObjective
+  - type: CEObjectiveDepartmentSurviveCondition
+    department: Brotherhood
+    invert: true

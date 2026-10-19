@@ -53,20 +53,6 @@
     color: SkyBlue
 
 - type: entity
-  parent: BasePortal
-  id: PortalArtifact
-  components:
-  - type: Sprite
-    layers:
-    - state: portal-artifact
-  - type: PointLight
-    color: "#ed85c2"
-  - type: TimedDespawn
-    lifetime: 1
-  - type: Portal
-    canTeleportToOtherMaps: true
-
-- type: entity
   parent: [ BasePortal, BaseShadow ]
   id: ShadowPortal
   name: shadow rift

@@ -104,7 +104,7 @@
         acts: ["Destruction"]
     - trigger:
         !type:DamageTrigger
-        damage: 100
+        damage: 50
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
@@ -113,5 +113,8 @@
             max: 2
       - !type:DoActsBehavior
         acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
   - type: Sprite
     state: destroyed

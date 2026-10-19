@@ -76,3 +76,21 @@
   icon: { sprite: _CE/Objects/Materials/bones.rsi, state: bone_2 }
   color: "#9C9C9C"
   price: 0.15
+
+- type: material
+  id: CEDiamond
+  stackEntity: CEDiamond1
+  name: ce-material-diamond
+  icon: { sprite: _CE/Objects/Materials/diamonds_ore.rsi, state: diamond }
+  color: "#9fe3f0"
+  price: 50
+
+
+- type: material
+  id: CEGold
+  stackEntity: CEGoldOre1
+  name: ce-material-gold
+  unit: materials-unit-bar
+  icon: { sprite: _CE/Objects/Materials/Metals/gold_bar.rsi, state: bar_2 }
+  color: "#f1a94b"
+  price: 8

@@ -27,11 +27,6 @@
   - type: Item
     sprite: _CE/Objects/Tools/ThirdArm/third_arm.rsi
     size: Large
-  - type: CEMagicEssenceStructure
-    essences:
-      Tool: { min: 2, max: 8 }
-      Metal: { min: 2, max: 4 }
-      Energia: { min: 0, max: 4 }
   - type: Appearance
   - type: Battery
     maxCharge: 100
@@ -93,14 +88,10 @@
     - sprite: _CE/Objects/Tools/ThirdArm/module_light.rsi
       state: module-icon
     equippedLayers:
-    - sprite: _CE/Objects/Tools/ThirdArm/module_light.rsi
+    - sprite: /Textures/_CE/Objects/Tools/ThirdArm/module_light.rsi
       state: equipped-NECK
   - type: StaticPrice
     price: 30
-  - type: CEMagicEssenceStructure
-    essences:
-      Tool: { min: 1, max: 3 }
-      Light: { min: 1, max: 3 }
 
 #MARK: Tool Module
 
@@ -121,20 +112,17 @@
     - sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
       state: module-icon
     equippedLayers:
-    - sprite: _CE/Objects/Tools/ThirdArm/module_manipulation.rsi
+    - sprite: /Textures/_CE/Objects/Tools/ThirdArm/module_manipulation.rsi
       state: equipped-NECK
   - type: CEThirdArmActionModule
     actions:
-    - ActionCEThirdArmManipulation
+    - CEActionThirdArmManipulation
   - type: StaticPrice
     price: 50
-  - type: CEMagicEssenceStructure
-    essences:
-      Tool: { min: 4, max: 6 }
 
 - type: entity
   parent: BaseAction
-  id: ActionCEThirdArmManipulation
+  id: CEActionThirdArmManipulation
   name: matter manipulation
   description: Allows you to build and take apart complex structures.
   components:
@@ -212,21 +200,17 @@
     - sprite: _CE/Objects/Tools/ThirdArm/module_mining.rsi
       state: module-icon
     equippedLayers:
-    - sprite: _CE/Objects/Tools/ThirdArm/module_mining.rsi
+    - sprite: /Textures/_CE/Objects/Tools/ThirdArm/module_mining.rsi
       state: equipped-NECK
   - type: CEThirdArmActionModule
     actions:
-    - ActionCEThirdArmMiningLaser
+    - CEActionThirdArmMiningLaser
   - type: StaticPrice
     price: 60
-  - type: CEMagicEssenceStructure
-    essences:
-      Tool: { min: 1, max: 3 }
-      Mining: { min: 1, max: 3 }
 
 - type: entity
   parent: BaseAction
-  id: ActionCEThirdArmMiningLaser
+  id: CEActionThirdArmMiningLaser
   name: mining laser
   description: Fire a series of precise laser beams capable of destroying structures.
   components:
@@ -266,15 +250,6 @@
     - !type:Hitscan
       prototype: CEThirdArmMiningHitscan
       angle: -4
-    0.1:
-    - !type:PlaySound
-      sound:
-        path: /Audio/Effects/sparks1.ogg
-        params:
-          variation: 0.1
-    - !type:Hitscan
-      prototype: CEThirdArmMiningHitscan
-      angle: -2
     0.2:
     - !type:PlaySound
       sound:
@@ -284,16 +259,7 @@
     - !type:Hitscan
       prototype: CEThirdArmMiningHitscan
       angle: 0
-    0.3:
-    - !type:PlaySound
-      sound:
-        path: /Audio/Effects/sparks1.ogg
-        params:
-          variation: 0.1
-    - !type:Hitscan
-      prototype: CEThirdArmMiningHitscan
-      angle: 2
-    0.5:
+    0.4:
     - !type:PlaySound
       sound:
         path: /Audio/Effects/sparks1.ogg
@@ -311,7 +277,7 @@
   - type: HitscanBasicDamage
     damage:
       types:
-        Structural: 20
+        Structural: 30
         Shock: 2
   - type: HitscanBasicVisuals
     muzzleFlash:

@@ -73,6 +73,19 @@ public sealed partial class CEWeaponComponent : Component
     /// </summary>
     [DataField]
     public float StealthRevealOnAttack = 0.5f;
+
+    /// <summary>
+    /// Entity under the attacker's cursor when the current swing started. Set on both client and server
+    /// (the client sends it with <see cref="CEWeaponUseEvent"/>), so the arc check can include it on both peers.
+    /// </summary>
+    [ViewVariables]
+    public EntityUid? CursorTarget;
+
+    /// <summary>
+    /// Angle of the current swing, remembered so the server can validate <see cref="CursorTarget"/> against the arc.
+    /// </summary>
+    [ViewVariables]
+    public Angle AttackAngle;
 }
 
 [DataDefinition, Serializable]

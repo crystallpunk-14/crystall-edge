@@ -16,10 +16,10 @@ public sealed partial class LightCycleComponent : Component
     /// How long an entire cycle lasts
     /// </summary>
     [DataField, AutoNetworkedField]
-    public TimeSpan Duration = TimeSpan.FromMinutes(60.0 / 7); //CrystallEdge 30 -> 60/7 minutes, 7 days per 60 min murk collapse timer
+    public TimeSpan Duration = TimeSpan.FromMinutes(15); //CrystallEdge 30 -> 15 minutes
 
     [DataField, AutoNetworkedField]
-    public TimeSpan Offset = TimeSpan.FromMinutes(25.0 / 7); //CrystallEdge 5/12 of the day, same start time of day as before
+    public TimeSpan Offset = TimeSpan.FromSeconds(189); //CrystallEdge round starts 30s before dawn: asin((0.6 - 0.3) / (3 - 0.3) ^ (1/6)) / PI * 900s - 30s
 
     [DataField, AutoNetworkedField]
     public bool Enabled = true;

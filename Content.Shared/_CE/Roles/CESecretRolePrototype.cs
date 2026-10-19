@@ -1,3 +1,4 @@
+using Content.Shared._CE.Achievements.Prototypes;
 using Content.Shared._CE.Skill.Prototypes;
 using Content.Shared.EntityTable.EntitySelectors;
 using Content.Shared.Roles;
@@ -49,6 +50,13 @@ public sealed partial class CESecretRolePrototype : IPrototype, IInheritingProto
     public ProtoId<JobIconPrototype> Icon = "JobIconUnknown";
 
     /// <summary>
+    /// Should this role appear in the character editor? Roles that are only ever granted mid-round
+    /// (e.g. by recruitment) still belong to their department, they just can't be picked.
+    /// </summary>
+    [DataField]
+    public bool SetPreference = true;
+
+    /// <summary>
     /// Requirements to select this role in the character editor.
     /// </summary>
     [DataField]
@@ -69,8 +77,22 @@ public sealed partial class CESecretRolePrototype : IPrototype, IInheritingProto
     public List<ProtoId<CESkillPrototype>> Skills = new();
 
     /// <summary>
+    /// Gear handed to a player when they receive this role - at round start and on a mid-round
+    /// role change alike. Never taken back when the role is removed.
+    /// </summary>
+    [DataField]
+    public ProtoId<StartingGearPrototype>? Gear;
+
+    /// <summary>
     /// Players with any of these jobs are ineligible for this role.
     /// </summary>
     [DataField]
     public HashSet<ProtoId<JobPrototype>> ProhibitedJobs = new();
+
+    /// <summary>
+    /// Achievement granted at round end to a player still holding this role, if every objective
+    /// they have (personal and department) is completed.
+    /// </summary>
+    [DataField]
+    public ProtoId<CEAchievementPrototype>? VictoryAchievement;
 }

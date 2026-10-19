@@ -372,52 +372,6 @@
       Taco: Banana
 
 - type: entity
-  name: mimana
-  parent: [FoodProduceBase, BaseSlicingRefinableFood]
-  id: FoodMimana
-  description: Mime's favorite.
-  components:
-  - type: FlavorProfile
-    flavors:
-      - banana
-      - nothing
-  - type: Edible
-    trash:
-    - TrashMimanaPeel
-  - type: ToolRefinable
-    refineResult:
-    - id: TrashMimanaPeel
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Nutriment
-        Quantity: 8
-      - ReagentId: Vitamin
-        Quantity: 2
-      - ReagentId: MuteToxin
-        Quantity: 5
-  - type: Sprite
-    sprite: Objects/Specific/Hydroponics/mimana.rsi
-  - type: Item
-    heldPrefix: produce
-  - type: Produce
-    plantId: MimanaPlants
-  - type: Extractable
-    juiceSolution:
-      reagents:
-      - ReagentId: JuiceBanana
-        Quantity: 5
-      - ReagentId: Nothing
-        Quantity: 5
-  - type: Tag
-    tags:
-    - Fruit
-  - type: FoodSequenceElement
-    entries:
-      Burger: Mimana
-      Taco: Mimana
-
-- type: entity
   parent: [SolutionFood, SolutionVeryTiny, BaseItem]
   id: TrashBananaPeel
   name: banana peel
@@ -501,41 +455,6 @@
       - ReagentId: Carbon
         Quantity: 2
 
-- type: entity
-  parent: TrashBananaPeel
-  id: TrashMimanaPeel
-  name: mimana peel
-  components:
-  - type: Sprite
-    sprite: Objects/Specific/Hydroponics/mimana.rsi
-    state: peel
-  - type: Item
-    sprite: Objects/Specific/Hydroponics/mimana.rsi
-    heldPrefix: peel
-  - type: Clothing
-    sprite: Objects/Specific/Hydroponics/mimana.rsi
-    equippedPrefix: peel
-  - type: Slippery
-    slipSound:
-      path: /Audio/Effects/slip.ogg
-      params:
-        volume: -100
-
-- type: entity
-  parent: TrashBananaPeel
-  id: TrashBananiumPeel
-  name: bananium peel
-  components:
-  - type: Sprite
-    sprite: Objects/Materials/materials.rsi
-    state: peel
-  - type: Item
-    sprite: Objects/Materials/materials.rsi
-    heldPrefix: peel
-  - type: Slippery
-  - type: Clothing
-    sprite: Objects/Materials/materials.rsi
-    equippedPrefix: peel
 
 - type: entity
   name: carrot
@@ -2694,49 +2613,6 @@
     plantId: CherryPlants
   - type: SpaceGarbage
   - type: BadFood
-
-- type: entity
-  parent: [SolutionNormal, FoodProduceBase] # Anomalously large
-  id: FoodAnomalyBerry
-  name: anomaly berry
-  description: A strange blue fruit. Something about it doesn't seem right.
-  components:
-  - type: FlavorProfile
-    flavors:
-      - strange
-  - type: Sprite
-    sprite: Objects/Specific/Hydroponics/anomaly_berry.rsi
-    state: produce
-  - type: Item
-    heldPrefix: produce
-  - type: Produce
-    plantId: AnomalyBerryPlants
-  - type: Edible
-    trash:
-    - EffectAnomalyFloraBulb # Random loot
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Nutriment
-        Quantity: 20
-      - ReagentId: Vitamin
-        Quantity: 20
-      - ReagentId: JuiceBerry
-        Quantity: 20
-      - ReagentId: Artifexium
-        Quantity: 1
-  - type: Extractable
-    juiceSolution:
-      reagents:
-      - ReagentId: JuiceBerry
-        Quantity: 30
-  - type: Tag
-    tags:
-    - Fruit
-  - type: FoodSequenceElement
-    entries:
-      Taco: AnomalyBerry
-      Burger: AnomalyBerryBurger
 
 - type: entity
   name: bloonion bulb

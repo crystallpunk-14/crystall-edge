@@ -29,9 +29,6 @@
   The Mothership Core is capable of upgrading the Xenoborgs with borg-type-specific modules to increase their effectiveness in harvesting sentient brains.
 
   ### Adding crew to your ranks:
-  <Box>
-    <GuideEntityEmbed Entity="MachineArtifactCrusherXenoborg" Caption="body crusher"/>
-  </Box>
   As the mothership, you must grow your army of borgs. To do so, you must convert all the sentient beings you can find. This can be achieved in the following manner:
   - 1. Have your Xenoborgs bring dead crew to your shop, placing them in the body crusher
   - 2. As the mothership core, you can print Xenoborg shells by inserting materials into yourself and then using yourself as a lathe

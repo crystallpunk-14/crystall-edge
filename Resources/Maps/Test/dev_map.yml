@@ -12147,11 +12147,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 58.5,28.5
-    - type: DeviceLinkSource
-      linkedPorts:
-        844:
-        - - ArtifactAnalyzerSender
-          - ArtifactAnalyzerReceiver
   - uid: 2616
     components:
     - type: Transform
@@ -12771,18 +12766,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 58.5,25.5
-    - type: Lock
-      locked: False
-    - type: ContainerContainer
-      containers:
-        entity_storage: !type:Container
-          ents: []
-          showEnts: False
-          occludes: True
-        paper_label: !type:ContainerSlot
-          ent: 802
-          showEnts: False
-          occludes: True
 - proto: CrateFreezer
   entities:
   - uid: 988

@@ -254,21 +254,6 @@
 
 - type: entity
   abstract: true
-  id: BaseVeinArtifactFragment
-  suffix: Artifact Fragment
-  description: A vein rich with strange artifacts.
-  components:
-  - type: OreVein
-    oreChance: 1.0
-    currentOre: OreArtifactFragment
-  - type: Sprite
-    layers:
-    - state: rock_artifact_fragment
-      sprite: Structures/Walls/stone-ore.rsi
-      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
-
-- type: entity
-  abstract: true
   id: BaseVeinRandom
   suffix: 33% Random Ores
   description: A vein rich with strange artifacts.
@@ -383,10 +368,6 @@
   id: AsteroidRockSalt
 
 - type: entity
-  parent: [ BaseVeinArtifactFragment, AsteroidRock ]
-  id: AsteroidRockArtifactFragment
-
-- type: entity
   parent: [ BaseRockGibtonite, BaseAsteroidRockVisuals, BaseAsteroidRock ]
   id: AsteroidRockGibtonite
 
@@ -448,10 +429,6 @@
 - type: entity
   parent: [ BaseVeinSalt, IronRock ]
   id: IronRockSalt
-
-- type: entity
-  parent: [ BaseVeinArtifactFragment, IronRock ]
-  id: IronRockArtifactFragment
 
 - type: entity
   parent: [ BaseRockGibtonite, BaseIronRockVisuals, IronRock ]
@@ -588,17 +565,6 @@
       WallRockSnow: WallRockSnowUranium
 
 - type: entity
-  parent: [ BaseVeinArtifactFragment, WallRock ]
-  id: WallRockArtifactFragment
-  components:
-  - type: EntityRemap
-    mask:
-      AsteroidRock: AsteroidRockArtifactFragment
-      WallRockChromite: WallRockChromiteArtifactFragment
-      WallRockSand: WallRockSandArtifactFragment
-      WallRockSnow: WallRockSnowArtifactFragment
-
-- type: entity
   parent: [ BaseVeinSalt, WallRock ]
   id: WallRockSalt
   components:
@@ -656,10 +622,6 @@
   id: WallRockSnowUranium
 
 - type: entity
-  parent: [ BaseVeinArtifactFragment, WallRockSnow ]
-  id: WallRockSnowArtifactFragment
-
-- type: entity
   parent: [ BaseVeinSalt, WallRockSnow ]
   id: WallRockSnowSalt
 
@@ -710,10 +672,6 @@
   id: WallRockSandUranium
 
 - type: entity
-  parent: [ BaseVeinArtifactFragment, WallRockSand ]
-  id: WallRockSandArtifactFragment
-
-- type: entity
   parent: [ BaseVeinSalt, WallRockSand ]
   id: WallRockSandSalt
 
@@ -762,10 +720,6 @@
 - type: entity
   parent: [ BaseVeinUranium, WallRockChromite ]
   id: WallRockChromiteUranium
-
-- type: entity
-  parent: [ BaseVeinArtifactFragment, WallRockChromite ]
-  id: WallRockChromiteArtifactFragment
 
 - type: entity
   parent: [ BaseVeinSalt, WallRockChromite ]

@@ -1,21 +1,23 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server._CE.GameTicking;
+using Content.Server.Administration.Logs;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server.Mind;
 using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Roles;
-using Content.Shared._CE.Murk.Components;
 using Content.Shared._CE.Objectives.Components;
 using Content.Shared._CE.Roles;
 using Content.Shared._CE.Roundflow;
+using Content.Shared.Database;
 using Content.Shared.GameTicking;
 using Content.Shared.Ghost.Components;
 using Content.Shared.Mind;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
+using Content.Shared.Station;
 using Robust.Server.Player;
 using Robust.Shared.Audio;
 using Robust.Shared.Enums;
@@ -30,6 +32,7 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
 {
     private static readonly EntProtoId MindRoleSecret = "CEMindRoleSecret";
 
+    [Dependency] private IAdminLogManager _adminLog = default!;
     [Dependency] private IPlayerManager _playerManager = default!;
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IRobustRandom _random = default!;
@@ -37,18 +40,7 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
     [Dependency] private RoleSystem _role = default!;
     [Dependency] private PlayTimeTrackingManager _playTimeTracking = default!;
     [Dependency] private SharedJobSystem _jobs = default!;
-
-    /// <summary>
-    /// The Lucson Sphere just cracked - reveal every player's already-assigned secret role and its goal.
-    /// </summary>
-    [SubscribeLocalEvent]
-    private void OnRoundStart(CERoundStartEvent ev)
-    {
-        foreach (var session in _playerManager.Sessions)
-        {
-            SendRolePopup(session);
-        }
-    }
+    [Dependency] private SharedStationSpawningSystem _stationSpawning = default!;
 
     [SubscribeLocalEvent]
     private void OnJobsAssigned(RulePlayerJobsAssignedEvent args)
@@ -57,6 +49,12 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
         while (query.MoveNext(out var uid, out _, out var comp, out _))
         {
             AssignSecretRoles((uid, comp), args.Players, args.Profiles);
+        }
+
+        // Every player learns their secret role right as they spawn.
+        foreach (var session in args.Players)
+        {
+            SendRolePopup(session);
         }
     }
 
@@ -77,15 +75,7 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
             if (!TryAssignLateJoinSecretRole((uid, roleSelection), args.Player, args.Profile, playerCount))
                 continue;
 
-            var sphereQuery = EntityQueryEnumerator<CEMurkLusconSphereComponent>();
-            while (sphereQuery.MoveNext(out _, out var sphere))
-            {
-                if (sphere.State == CEMurkSphereState.Cracked)
-                {
-                    SendRolePopup(args.Player);
-                    break;
-                }
-            }
+            SendRolePopup(args.Player);
             return;
         }
     }
@@ -131,15 +121,8 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
         if (GrantSecretRole(targetRule.Value, session, role) is { } granted)
             GrantSecretRoleObjectives(targetRule.Value, granted.MindId, granted.Mind, role);
 
-        var sphereQuery = EntityQueryEnumerator<CEMurkLusconSphereComponent>();
-        while (sphereQuery.MoveNext(out _, out var sphere))
-        {
-            if (sphere.State == CEMurkSphereState.Cracked)
-            {
-                SendRolePopup(session);
-                break;
-            }
-        }
+        // A mid-round role change is always announced, cracked sphere or not.
+        SendRolePopup(session);
 
         return true;
     }
@@ -151,6 +134,10 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
 
         if (roleEnt.Value.Comp2.Role is { } oldRoleId)
         {
+            _adminLog.Add(LogType.AntagSelection,
+                LogImpact.High,
+                $"{ToPrettyString(mindId):player} lost secret role {oldRoleId}");
+
             var rules = QueryActiveRules();
             while (rules.MoveNext(out _, out _, out var comp, out _))
             {
@@ -158,9 +145,13 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
                     comp.AssignedCounts[oldRoleId] = count - 1;
             }
 
-            if (removeSkills && mind.OwnedEntity is { } target)
+            if (mind.OwnedEntity is { } target)
             {
-                RemoveSecretRoleSkills(target, oldRoleId);
+                if (removeSkills)
+                    RemoveSecretRoleSkills(target, oldRoleId);
+
+                // Always re-added fresh by GrantSecretRole, so its startup re-sends every other
+                // role icon to viewers whose department just changed.
                 RemComp<CESecretRoleIconComponent>(target);
             }
         }
@@ -397,11 +388,17 @@ public sealed partial class CESecretRoleSelectionSystem : GameRuleSystem<CESecre
             return null;
 
         roleEnt.Value.Comp2.Role = role.ID;
+        Dirty(roleEnt.Value.Owner, roleEnt.Value.Comp2);
+
+        _adminLog.Add(LogType.AntagSelection,
+            LogImpact.High,
+            $"{ToPrettyString(mindId):player} was granted secret role {role.ID}");
         rule.Comp.AssignedCounts[role.ID] = GetAssignedCount(rule, role.ID) + 1;
 
         if (session.AttachedEntity is { } target)
         {
             GrantSecretRoleSkills(target, role);
+            _stationSpawning.EquipStartingGear(target, role.Gear);
 
             var icon = EnsureComp<CESecretRoleIconComponent>(target);
             icon.Role = role.ID;

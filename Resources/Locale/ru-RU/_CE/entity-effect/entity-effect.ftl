@@ -44,3 +44,5 @@ ce-entity-effect-guidebook-area-effect =
 ce-entity-effect-guidebook-conditional-effect-group =
     Если условия выполнены:
     { $effects }
+
+ce-revivable-required = Вернуть можно лишь мёртвое тело, которое душа не покинула окончательно.

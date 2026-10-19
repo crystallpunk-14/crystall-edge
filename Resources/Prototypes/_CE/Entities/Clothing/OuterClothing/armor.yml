@@ -17,13 +17,6 @@
         Slash: 0.9
         Piercing: 0.9
         Shock: 0.75
-  - type: ClothingSpeedModifier
-    walkModifier: 0.7
-    sprintModifier: 0.7
   - type: HeldSpeedModifier
   - type: StaticPrice
     price: 300
-  - type: CEMagicEssenceStructure
-    essences:
-      Armor: { min: 3, max: 6 }
-      Energia: { min: 3, max: 6 }

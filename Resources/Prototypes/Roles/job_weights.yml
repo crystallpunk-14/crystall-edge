@@ -18,11 +18,9 @@
     Botanist: 0
     Chaplain: 0
     Chef: 0
-    Clown: 0
     Janitor: 0
     Lawyer: 0
     Librarian: 0
-    Mime: 0
     Musician: 0
     ServiceWorker: 0
     Visitor: 0
@@ -50,7 +48,7 @@
     Psychologist: 0
     Reporter: 0
     # CrystallEdge
-    CEAcademyRector: 3
     CEBrigadier: 3
     CEGuardCommander: 3
     CETavernmaster: 2
+    CEGuildmaster: 2

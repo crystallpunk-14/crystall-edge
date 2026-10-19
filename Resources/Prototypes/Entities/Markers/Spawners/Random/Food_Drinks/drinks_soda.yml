@@ -32,7 +32,6 @@
     children:
     - id: DrinkBeerCan
     - id: DrinkCafeLatte
-    - id: DrinkChangelingStingCan
     - id: DrinkColaBottleFull
     - id: DrinkColaCan
     - id: DrinkDrGibbCan

@@ -9,7 +9,7 @@ using Robust.Shared.Utility;
 namespace Content.Client._CE.UserInterface.Systems.Vitals.Widgets;
 
 /// <summary>
-/// Round progress bar: the Light Monolith's charge (light) racing the murk's collapse countdown (murk).
+/// Round progress bar: the restoration ritual's progress (light) racing the murk's collapse countdown (murk).
 /// Both fill left to right, murk is drawn over light.
 /// </summary>
 [GenerateTypedNameReferences]

@@ -1,14 +1,14 @@
 ce-alerts-health-name = Health
 ce-alerts-health-desc = Vitality reserve. The less, the worse. Try to survive, please.
 
-ce-alerts-confused-aura-name = Confused aura
-ce-alerts-confused-aura-desc = Your magical aura is altered, and you leave false traces when using magic spells.
-
 ce-alerts-aircaught-name = Caught in the air
 ce-alerts-aircaught-desc = You are caught by an air current that prevents you from falling lower or rising higher.
 
 ce-alerts-featherfall-name = Feather fall
 ce-alerts-featherfall-desc = Gravity barely affects you, letting you fall slowly and safely.
+
+ce-alerts-divine-shield-name = Divine shield
+ce-alerts-divine-shield-desc = A shield of light halves all damage you take.
 
 ce-alerts-good-food-aftertaste-name = Pleasant aftertaste
 ce-alerts-good-food-aftertaste-desc = High-quality prepared food provides you with an additional bonus to health regeneration.
@@ -19,8 +19,5 @@ ce-alerts-bad-food-aftertaste-desc = Poorly prepared food causes you to feel nau
 ce-alerts-murk-dissolving-name = Dissolving in the murk
 ce-alerts-murk-dissolving-desc = Your flesh is starting to smoke and evaporate. Leave the murk immediately if you want to stay alive!
 
-ce-alerts-mana-regen-name = Mana regeneration
-ce-alerts-mana-regen-desc = Your mana is constantly being restored. Click to switch to mana drain.
-
-ce-alerts-mana-drain-name = Mana drain
-ce-alerts-mana-drain-desc = Your mana is constantly being spent. Click to switch to mana regeneration.
+ce-alerts-dark-side-name = On the dark side
+ce-alerts-dark-side-desc = You are outside the material world. Only those who perceive magic can see you.

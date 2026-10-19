@@ -19,3 +19,26 @@ ce-secret-role-description-lover = Вы одержимы одним особен
 
 ce-secret-role-name-tormentor = Мучитель
 ce-secret-role-description-tormentor = Вы пойдете на все, чтобы видеть как ваша цель страдает всю свою оставшуюся жизнь, из-за постоянных поражений. И вы постараетесь, чтобы её поражения были гарантированны.
+
+ce-secret-role-name-recruiter = Вербовщик
+ce-secret-role-description-recruiter = Вы умеете замечать тех, кого подвёл город. Приведите их в братство - чем больше рук, тем безопаснее всем.
+
+ce-secret-role-name-recruit = Рекрут
+ce-secret-role-description-recruit = Вы отказались от прежних амбиций и поклялись в верности братству. Теперь его цели - ваши цели.
+
+ce-secret-role-name-bounty-hunter = Охотник за головами
+ce-secret-role-description-bounty-hunter = Вы получили крупную сумму денег и заказ уничтожить преступную группировку «Братство» в этом городе. Выполняйте свою работу.
+
+ce-secret-role-name-priest = Жрец
+ce-secret-role-description-priest = Свет избрал вас своим проводником. Вы лечите живых и возвращаете мёртвых, но именно за это кое-кто в городе жаждет вашей крови.
+
+ce-secret-role-name-immortal = Бессмертный
+ce-secret-role-description-immortal = Вас невероятно тяжело убить. Можно сказать, почти невозможно.
+
+ce-secret-role-name-vandal = Вандал
+ce-secret-role-description-vandal = О, вы против текущего положения дел и контроля стражи над городом. Устроим немного погрома.
+
+# Ковен
+
+ce-secret-role-name-seer = Провидец
+ce-secret-role-description-seer = Вы глядите в души, и видите истинную суть окружающих вас людей. Раскрывайте скрытые роли, и используйте эту информацию для выполнения своих целей.

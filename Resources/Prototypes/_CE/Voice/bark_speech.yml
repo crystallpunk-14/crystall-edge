@@ -144,7 +144,7 @@
 - type: barkSpeech
   id: 4g10w_3
   saySound:
-    collection: eglowLaugh
+    collection: CEEglowLaugh
   askSound:
     path: /Audio/_CE/Voice/eglow3_a.ogg
   exclaimSound:
@@ -155,7 +155,7 @@
     volume: 10
 
 - type: soundCollection
-  id: eglowLaugh
+  id: CEEglowLaugh
   files:
   - /Audio/_CE/Voice/eglow3_1.ogg
   - /Audio/_CE/Voice/eglow3_2.ogg

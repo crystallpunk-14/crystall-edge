@@ -150,7 +150,6 @@
     - CanPilot
     - FootstepSound
     - DoorBumpOpener
-    - AnomalyHost
 
 - type: entity
   abstract: true

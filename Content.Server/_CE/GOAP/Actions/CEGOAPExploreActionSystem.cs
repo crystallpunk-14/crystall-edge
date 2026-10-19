@@ -1,6 +1,5 @@
 using System.Numerics;
-using Content.Server.NPC.Components;
-using Content.Server.NPC.Systems;
+using Content.Server._CE.GOAP.Steering;
 using Content.Shared._CE.GOAP;
 using Content.Shared._CE.GOAP.Components;
 using Robust.Shared.Map;
@@ -42,7 +41,7 @@ public sealed partial class CEGOAPExploreAction : CEGOAPActionBase<CEGOAPExplore
 
 public sealed partial class CEGOAPExploreActionSystem : CEGOAPActionSystem<CEGOAPExploreAction>
 {
-    [Dependency] private NPCSteeringSystem _steering = default!;
+    [Dependency] private CEGOAPSteeringSystem _steering = default!;
     [Dependency] private SharedMapSystem _mapSystem = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private IRobustRandom _random = default!;
@@ -68,8 +67,7 @@ public sealed partial class CEGOAPExploreActionSystem : CEGOAPActionSystem<CEGOA
         var localPos = Vector2.Transform(destination.Value, invMatrix);
         var coords = new EntityCoordinates(xform.ParentUid, localPos);
 
-        var comp = _steering.Register(ent, coords);
-        comp.Range = 1.5f;
+        _steering.Navigate(ent, coords, 1.5f);
     }
 
     protected override void OnActionUpdate(
@@ -86,20 +84,14 @@ public sealed partial class CEGOAPExploreActionSystem : CEGOAPActionSystem<CEGOA
             return;
         }
 
-        if (!TryComp<NPCSteeringComponent>(ent, out var steering))
+        switch (_steering.Continue(ent))
         {
-            args.Status = CEGOAPActionStatus.Failed;
-            return;
-        }
-
-        switch (steering.Status)
-        {
-            case SteeringStatus.InRange:
+            case CEGOAPSteeringStatus.InRange:
                 var idleSecs = _random.NextFloat(args.Action.MinIdleTime, args.Action.MaxIdleTime);
                 _idleUntil[ent] = _timing.CurTime + TimeSpan.FromSeconds(idleSecs);
                 args.Status = CEGOAPActionStatus.Running;
                 return;
-            case SteeringStatus.NoPath:
+            case CEGOAPSteeringStatus.NoPath:
                 args.Status = CEGOAPActionStatus.Failed;
                 return;
             default:
@@ -113,7 +105,7 @@ public sealed partial class CEGOAPExploreActionSystem : CEGOAPActionSystem<CEGOA
         ref CEGOAPActionShutdownEvent<CEGOAPExploreAction> args)
     {
         _idleUntil.Remove(ent);
-        _steering.Unregister(ent);
+        _steering.Stop(ent.Owner);
     }
 
     /// <summary>

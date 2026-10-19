@@ -1,6 +1,3 @@
-using Content.Shared._CE.Skill.Prototypes;
-using Content.Shared.DoAfter;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
 
@@ -13,7 +10,6 @@ namespace Content.Shared._CE.Pen;
 public enum CEPenActionKind : byte
 {
     Write,
-    RecordSkill,
 }
 
 /// <summary>
@@ -43,44 +39,10 @@ public enum CEPenActionsUiKey : byte
 }
 
 /// <summary>
-/// Sent by the client when the player picks a pen action from the radial menu (or its nested
-/// skill submenu, for <see cref="CEPenActionKind.RecordSkill"/>).
+/// Sent by the client when the player picks a pen action from the radial menu.
 /// </summary>
 [Serializable, NetSerializable]
-public sealed class CEPenActionsMessage(
-    CEPenActionKind kind,
-    ProtoId<CESkillPrototype>? skill = null)
-    : BoundUserInterfaceMessage
+public sealed class CEPenActionsMessage(CEPenActionKind kind) : BoundUserInterfaceMessage
 {
     public readonly CEPenActionKind Kind = kind;
-    public readonly ProtoId<CESkillPrototype>? Skill = skill;
-}
-
-/// <summary>
-/// Raised on the user (where <c>CESkillStorageComponent</c> lives) to request starting the "record
-/// skill" do-after, once the player has picked which skill to write down.
-/// </summary>
-public sealed class CEPenRecordSkillRequestEvent(
-    EntityUid pen,
-    EntityUid target,
-    ProtoId<CESkillPrototype> skill)
-    : EntityEventArgs
-{
-    public readonly EntityUid Pen = pen;
-    public readonly EntityUid Target = target;
-    public readonly ProtoId<CESkillPrototype> Skill = skill;
-}
-
-/// <summary>
-/// DoAfter fired when recording a skill into a book with a pen finishes.
-/// </summary>
-[Serializable, NetSerializable]
-public sealed partial class CEPenRecordSkillDoAfterEvent : SimpleDoAfterEvent
-{
-    public readonly ProtoId<CESkillPrototype> Skill;
-
-    public CEPenRecordSkillDoAfterEvent(ProtoId<CESkillPrototype> skill)
-    {
-        Skill = skill;
-    }
 }

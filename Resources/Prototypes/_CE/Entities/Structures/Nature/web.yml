@@ -31,8 +31,6 @@
   - type: Transform
     anchored: true
   - type: Physics
-    bodyType: Static
-    canCollide: true
   - type: Fixtures
     fixtures:
       fix1:
@@ -43,15 +41,6 @@
           bounds: "-0.5,-0.5,0.5,0.5"
         layer:
         - MidImpassable
-      # for melee attacks
-      fix2:
-        hard: true
-        density: 7
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.45,-0.45,0.45,0.45"
-        layer:
-        - Opaque
   - type: Damageable
     damageModifierSet: Wood
   - type: Injurable

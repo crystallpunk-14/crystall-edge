@@ -57,8 +57,6 @@
       weight: 0.2
     - id: SheetPlasma10
       weight: 0.2
-    - id: ArtifactFragment1
-      weight: 0.05
     - id: SheetPlasteel10
       weight: 0.05
 

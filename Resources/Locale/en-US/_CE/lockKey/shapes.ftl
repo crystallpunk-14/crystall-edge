@@ -1,3 +1,10 @@
+# Guild
+
+ce-lock-shape-guild-lobby = guild lobby
+ce-lock-shape-guild-inner = guild inner rooms
+ce-lock-shape-guild-storage = guild storage
+ce-lock-shape-guildmaster-room = guildmaster's office
+
 # Tavern
 
 ce-lock-shape-tavern-hall = tavern hall
@@ -17,15 +24,20 @@ ce-lock-shape-tavern-dorm-10 = tavern room 10
 
 # Guard
 
-ce-lock-shape-guard-hall = guard campus entrance hall
-ce-lock-shape-guard-staff = guard campus internal areas
-ce-lock-shape-guard-head-room = guard commander office
+ce-lock-shape-guard-hall = barracks entrance hall
+ce-lock-shape-guard-staff = barracks internal areas
+ce-lock-shape-guard-head-room = commandant office
 
 ce-lock-shape-guard-cage-1 = prison cage 1
 ce-lock-shape-guard-cage-2 = prison cage 2
 ce-lock-shape-guard-cage-3 = prison cage 3
 ce-lock-shape-guard-cage-4 = prison cage 4
 ce-lock-shape-guard-cage-5 = prison cage 5
+
+# Investigation
+
+ce-lock-shape-investigator-hall = sheriff's office entrance hall
+ce-lock-shape-investigator-staff = sheriff's office internal areas
 
 # Engineering
 
@@ -35,13 +47,6 @@ ce-lock-shape-engineering-generator = generator room
 ce-lock-shape-engineering-tunnels = engineering tunnels
 ce-lock-shape-engineering-brigadier = brigadier's office
 ce-lock-shape-engineering-storage = engineering storage
-
-# Academy
-
-ce-lock-shape-academy-hall = academy hall
-ce-lock-shape-academy-technical = academy technical areas
-ce-lock-shape-academy-lab = academy laboratory
-ce-lock-shape-academy-rector-room = rector's office
 
 # Citizens
 

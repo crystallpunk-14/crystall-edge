@@ -40,7 +40,7 @@ public sealed partial class PermanentBlindnessSystem : EntitySystem
 
         // Heal all eye damage when the component is removed.
         // Otherwise you would still be blind, but not *permanently* blind, meaning you have to heal the eye damage with oculine.
-        // This is needed for changelings that transform from a blind player to a non-blind one.
+        // This is needed for cloning systems that transform a blind player into a non-blind one.
         _blinding.AdjustEyeDamage((blindness.Owner, blindable), -blindable.EyeDamage);
     }
 

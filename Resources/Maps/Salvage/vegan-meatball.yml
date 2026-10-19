@@ -1258,9 +1258,6 @@ entities:
       parent: 1
       rot: 3.141592653589793 rad
       pos: 0.5,-3.5
-    - type: AccessReader
-      accessListsOriginal:
-      - - Research
 - proto: MaterialBananium
   entities:
   - uid: 123

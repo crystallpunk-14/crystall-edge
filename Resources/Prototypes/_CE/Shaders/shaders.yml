@@ -58,3 +58,8 @@
   id: CEMurkDesaturate
   kind: source
   path: "/Textures/_CE/Shaders/murk_desaturate.swsl"
+
+- type: shader
+  id: CEDarkSide
+  kind: source
+  path: "/Textures/_CE/Shaders/dark_side.swsl"

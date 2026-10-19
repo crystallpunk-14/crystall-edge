@@ -40,16 +40,6 @@
     Caustic: 0.0
 
 - type: damageModifierSet
-  id: Zombie #Blunt resistant and immune to biological threats, but can be hacked apart and burned
-  coefficients:
-    Blunt: 0.6
-    Piercing: 0.8
-    Cold: 0.3
-    Heat: 1.25
-    Poison: 0.0
-    Radiation: 0.0
-
-- type: damageModifierSet
   id: Infernal
   coefficients:
     Blunt: 0.8

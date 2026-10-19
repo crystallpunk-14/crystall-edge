@@ -8,13 +8,9 @@
   icon: CEJobIconGuard
   supervisors: ce-job-supervisors-guard-commander
   special:
-    - !type:AddComponentSpecial
-      components:
-      - type: CESalaryCounter
-        salary: 50
     - !type:CELearnSkillsSpecial
       skills:
-      - CEMilitaryTraining
+      - MilitaryTraining
 
 - type: startingGear
   id: CEGuardGear
@@ -23,8 +19,8 @@
     pocket1: CEWalletFilledGuard
   storage:
     back:
-    - CEGuidebookImperialLaws
     - CEWeaponGunJustice
+    - CEPaperArmyOrders
 
 
 - type: entity
@@ -84,3 +80,16 @@
     contents:
     - id: CEKeyGuardHall
     - id: CEKeyGuardStaff
+
+- type: entity
+  parent: CEPaper
+  id: CEPaperArmyOrders
+  name: order
+  description: An order from the commander-in-chief of the Imperial Army to the settlement garrison.
+  components:
+  - type: Paper
+    content: ce-paper-text-army-orders
+    stampState: "red_on_paper" #TODO: empire stamp sprite
+    stampedBy:
+    - stampedName: ce-stamp-component-stamped-name-empire
+      stampedColor: "#a23e3e"

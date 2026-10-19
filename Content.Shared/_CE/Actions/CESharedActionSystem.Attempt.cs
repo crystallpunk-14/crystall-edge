@@ -5,6 +5,7 @@ using Content.Shared.Actions.Components;
 using Content.Shared.Actions.Events;
 using Content.Shared.Damage.Components;
 using Content.Shared.Examine;
+using Content.Shared.Mind.Components;
 using Content.Shared.Power.Components;
 using Content.Shared.SSDIndicator;
 using Robust.Shared.Analyzers;
@@ -46,27 +47,14 @@ public abstract partial class CESharedActionSystem
         //Trying get mana from performer
         if (!TryComp<BatteryComponent>(args.User, out var playerMana))
         {
-            Popup.PopupClient(Loc.GetString("ce-magic-spell-no-mana-component"), args.User, args.User);
+            Popup.PopupEntity(Loc.GetString("ce-magic-spell-no-mana-component"), args.User, args.User);
             args.Cancelled = true;
             return;
         }
 
         if (_battery.GetCharge((args.User, playerMana)) < requiredMana)
         {
-            Popup.PopupClient(Loc.GetString("ce-magic-spell-not-enough-mana"), args.User, args.User);
-            args.Cancelled = true;
-        }
-    }
-
-    [SubscribeLocalEvent]
-    private void OnEssenceCostActionAttempt(Entity<CEActionEssenceCostComponent> ent, ref ActionAttemptEvent args)
-    {
-        if (args.Cancelled)
-            return;
-
-        if (!_magicFocus.HasEnoughEssence(args.User, ent.Comp.EssenceCost))
-        {
-            Popup.PopupClient(Loc.GetString("ce-magic-spell-not-enough-essence"), args.User, args.User);
+            Popup.PopupEntity(Loc.GetString("ce-magic-spell-not-enough-mana"), args.User, args.User);
             args.Cancelled = true;
         }
     }
@@ -81,7 +69,7 @@ public abstract partial class CESharedActionSystem
             HasComp<CEWeaponComponent>(held))
             return;
 
-        Popup.PopupClient(Loc.GetString("ce-magic-weapon-required"), args.User, args.User);
+        Popup.PopupEntity(Loc.GetString("ce-magic-weapon-required"), args.User, args.User);
         args.Cancelled = true;
     }
 
@@ -96,7 +84,7 @@ public abstract partial class CESharedActionSystem
 
         if (ssdIndication.IsSSD)
         {
-            Popup.PopupClient(Loc.GetString("ce-magic-spell-ssd"), args.User, args.User);
+            Popup.PopupEntity(Loc.GetString("ce-magic-spell-ssd"), args.User, args.User);
             args.Invalid = true;
         }
     }
@@ -118,11 +106,27 @@ public abstract partial class CESharedActionSystem
 
             var description = condition.GetDescription(EntityManager, _proto);
             if (description != string.Empty)
-                Popup.PopupClient(description, args.User, args.User);
+                Popup.PopupEntity(description, args.User, args.User);
 
             args.Invalid = true;
             return;
         }
+    }
+
+    [SubscribeLocalEvent]
+    private void OnTargetRequireMindValidate(Entity<CEActionTargetRequireMindComponent> ent, ref ActionValidateEvent args)
+    {
+        if (args.Invalid)
+            return;
+
+        if (GetEntity(args.Input.EntityTarget) is not { Valid: true } target)
+            return;
+
+        if (TryComp<MindContainerComponent>(target, out var mindContainer) && mindContainer.HasMind)
+            return;
+
+        Popup.PopupEntity(Loc.GetString("ce-magic-spell-target-no-mind"), args.User, args.User);
+        args.Invalid = true;
     }
 
     [SubscribeLocalEvent]
@@ -147,7 +151,7 @@ public abstract partial class CESharedActionSystem
         if (_examine.InRangeUnOccluded(args.User, coords, range))
             return;
 
-        Popup.PopupClient(Loc.GetString("dash-ability-cant-see"), args.User, args.User);
+        Popup.PopupEntity(Loc.GetString("dash-ability-cant-see"), args.User, args.User);
         args.Invalid = true;
     }
 
@@ -173,7 +177,7 @@ public abstract partial class CESharedActionSystem
         if (_transform.GetMap(args.User) is { } map && !_dayCycle.IsDayNow(map))
             return;
 
-        Popup.PopupClient(Loc.GetString("ce-action-require-night"), args.User, args.User);
+        Popup.PopupEntity(Loc.GetString("ce-action-require-night"), args.User, args.User);
         args.Cancelled = true;
     }
 }

@@ -17,6 +17,14 @@ public sealed partial class CETargetObjectiveComponent : Component
     public EntityUid? Target;
 
     /// <summary>
+    /// Set once the target left the round for good - its mind went to a ghost or nowhere at all, or
+    /// its body got deleted. <see cref="Target"/> is cleared then, but the objective is never
+    /// retargeted, and conditions treat it as their final outcome (killed, not survived, ...).
+    /// </summary>
+    [DataField]
+    public bool TargetLost;
+
+    /// <summary>
     /// Locale id for the objective title. It is passed "targetName" and "job" arguments.
     /// </summary>
     [DataField]

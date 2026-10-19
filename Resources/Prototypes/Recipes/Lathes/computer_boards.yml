@@ -59,12 +59,6 @@
 
 # Medical
 
-# Science
-- type: latheRecipe
-  parent: [ BaseGoldCircuitboardRecipe, BaseResearchComputerRecipeCategory ]
-  id: AnalysisComputerCircuitboard
-  result: AnalysisComputerCircuitboard
-
 - type: latheRecipe
   parent: [ BaseGoldCircuitboardRecipe, BaseResearchComputerRecipeCategory ]
   id: TechDiskComputerCircuitboard

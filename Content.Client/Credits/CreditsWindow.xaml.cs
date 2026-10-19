@@ -35,7 +35,6 @@ public sealed partial class CreditsWindow : DefaultWindow
     {
         ["Nuclear Operative"] = 1,
         ["Syndicate Agent"] = 2,
-        ["Revolutionary"] = 3,
     };
 
     private readonly List<FormattedMessage> _attributions = [];

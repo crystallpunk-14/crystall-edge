@@ -1,21 +1,13 @@
-using Content.Shared._CE.GOAP;
 using Content.Shared._CE.GOAP.Components;
 using Content.Shared._CE.GOAP.Selectors;
-using Robust.Shared.Analyzers;
 using Robust.Shared.Map;
 using Robust.Shared.Timing;
 
 namespace Content.Server._CE.GOAP.Sensors;
 
-[DataDefinition]
 public sealed partial class CEGOAPRangeToTargetSensorEntry
+    : CEGOAPSensorEntry<CEGOAPRangeToTargetSensorEntry, CEGOAPRangeToTargetSensorComponent>
 {
-    [DataField(required: true)]
-    public string ConditionKey = string.Empty;
-
-    [DataField(required: true)]
-    public CEGOAPTargetSelector Selector = default!;
-
     /// <summary>
     /// Range threshold in tiles.
     /// </summary>
@@ -24,15 +16,11 @@ public sealed partial class CEGOAPRangeToTargetSensorEntry
 }
 
 /// <summary>
-/// Checks if a selector-resolved target is within a specified range.
+/// Checks if the target slot is within a specified range. Polled while the agent is active.
 /// </summary>
 [RegisterComponent]
-public sealed partial class CEGOAPRangeToTargetSensorComponent : Component
+public sealed partial class CEGOAPRangeToTargetSensorComponent : CEGOAPSensorComponent<CEGOAPRangeToTargetSensorEntry>
 {
-    [DataField]
-    [AlwaysPushInheritance]
-    public List<CEGOAPRangeToTargetSensorEntry> Entries = new();
-
     [DataField]
     public TimeSpan UpdateInterval = TimeSpan.FromSeconds(0.2);
 
@@ -40,7 +28,8 @@ public sealed partial class CEGOAPRangeToTargetSensorComponent : Component
     public TimeSpan NextUpdateTime;
 }
 
-public sealed partial class CEGOAPRangeToTargetSensorSystem : EntitySystem
+public sealed partial class CEGOAPRangeToTargetSensorSystem
+    : CEGOAPSensorSystem<CEGOAPRangeToTargetSensorComponent, CEGOAPRangeToTargetSensorEntry>
 {
     [Dependency] private IGameTiming _timing = default!;
 
@@ -56,44 +45,23 @@ public sealed partial class CEGOAPRangeToTargetSensorSystem : EntitySystem
                 continue;
 
             sensor.NextUpdateTime = curTime + sensor.UpdateInterval;
-            foreach (var entry in sensor.Entries)
-                EvaluateEntry(uid, entry, goap);
+            EvaluateAll((uid, sensor), goap);
         }
     }
 
-    [SubscribeLocalEvent]
-    private void OnRefresh(Entity<CEGOAPRangeToTargetSensorComponent> ent, ref CEGOAPSensorRefreshEvent args)
+    protected override bool Evaluate(EntityUid agent, CEGOAPRangeToTargetSensorEntry entry, CEGOAPSelectorResult target)
     {
-        if (!TryComp<CEGOAPComponent>(ent, out var goap))
-            return;
-
-        foreach (var entry in ent.Comp.Entries)
-            EvaluateEntry(ent, entry, goap);
-    }
-
-    private void EvaluateEntry(EntityUid uid, CEGOAPRangeToTargetSensorEntry entry, CEGOAPComponent goap)
-    {
-        var result = entry.Selector.Resolve(uid, EntityManager);
-
-        if (!_xformQuery.TryGetComponent(uid, out var xform))
-        {
-            goap.WorldState[entry.ConditionKey] = false;
-            return;
-        }
+        if (!_xformQuery.TryGetComponent(agent, out var xform))
+            return false;
 
         EntityCoordinates? targetCoords = null;
-        if (result.Entity is { } e && _xformQuery.TryGetComponent(e, out var ex))
-            targetCoords = ex.Coordinates;
-        else if (result.Position is { } p)
-            targetCoords = p;
+        if (target.Entity is { } entity && _xformQuery.TryGetComponent(entity, out var targetXform))
+            targetCoords = targetXform.Coordinates;
+        else if (target.Position is { } position)
+            targetCoords = position;
 
-        if (targetCoords is not { } coords ||
-            !xform.Coordinates.TryDistance(EntityManager, coords, out var distance))
-        {
-            goap.WorldState[entry.ConditionKey] = false;
-            return;
-        }
-
-        goap.WorldState[entry.ConditionKey] = distance <= entry.Range;
+        return targetCoords is { } coords
+               && xform.Coordinates.TryDistance(EntityManager, coords, out var distance)
+               && distance <= entry.Range;
     }
 }

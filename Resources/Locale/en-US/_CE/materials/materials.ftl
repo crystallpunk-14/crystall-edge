@@ -5,4 +5,7 @@ ce-material-cloth = Cloth
 ce-material-leather = Leather
 ce-material-iron = Iron
 ce-material-brass = Brass
-ce-material-bone = Кости
+ce-material-diamond = Diamond
+ce-material-bone = Bone
+
+ce-material-gold = Gold

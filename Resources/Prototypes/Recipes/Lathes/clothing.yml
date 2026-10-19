@@ -216,18 +216,6 @@
   id: ClothingUniformJumpskirtChemistry
   result: ClothingUniformJumpskirtChemistry
 
-## Clown
-
-- type: latheRecipe
-  parent: BaseJumpsuitRecipe
-  id: ClothingUniformJumpsuitClown
-  result: ClothingUniformJumpsuitClown
-
-- type: latheRecipe
-  parent: BaseJumpsuitRecipe
-  id: ClothingUniformJumpskirtClown
-  result: ClothingUniformJumpskirtClown
-
 ## CMO
 
 - type: latheRecipe
@@ -429,18 +417,6 @@
   parent: BaseJumpsuitRecipe
   id: ClothingUniformJumpskirtSeniorPhysician
   result: ClothingUniformJumpskirtSeniorPhysician
-
-## Mime
-
-- type: latheRecipe
-  parent: BaseJumpsuitRecipe
-  id: ClothingUniformJumpsuitMime
-  result: ClothingUniformJumpsuitMime
-
-- type: latheRecipe
-  parent: BaseJumpsuitRecipe
-  id: ClothingUniformJumpskirtMime
-  result: ClothingUniformJumpskirtMime
 
 ## Musician
 
@@ -684,16 +660,6 @@
   parent: BaseCoatRecipe
   id: ClothingOuterWinterMusician
   result: ClothingOuterWinterMusician
-
-- type: latheRecipe
-  parent: BaseCoatRecipe
-  id: ClothingOuterWinterClown
-  result: ClothingOuterWinterClown
-
-- type: latheRecipe
-  parent: BaseCoatRecipe
-  id: ClothingOuterWinterMime
-  result: ClothingOuterWinterMime
 
 - type: latheRecipe
   parent: BaseCoatRecipe

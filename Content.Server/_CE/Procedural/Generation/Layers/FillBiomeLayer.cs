@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Content.Server._CE.Procedural.Generation.Masks;
 using Content.Shared.Parallax.Biomes;
 using Robust.Shared.Map;
@@ -33,36 +32,17 @@ public sealed partial class FillBiomeLayer : ICEProceduralLayer
     [DataField]
     public int Seed;
 
-    public async Task Apply(CEProceduralGenerationContext context, EntityUid map)
+    public void Apply(CEProceduralGenerationContext context, EntityUid map)
     {
         var grid = context.EntityManager.GetComponent<MapGridComponent>(map);
         var biome = context.Prototype.Index(Biome);
 
         // Snapshot the masked tiles up front — we mutate tiles below, which would disturb a live
         // enumerator.
-        var targets = new List<Vector2i>();
-        var enumerator = context.Map.GetAllTilesEnumerator(map, grid);
-        while (enumerator.MoveNext(out var tileRef))
-        {
-            var indices = tileRef.Value.GridIndices;
-
-            var passes = true;
-            foreach (var tileMask in Mask)
-            {
-                if (tileMask.Matches(context, map, grid, indices, tileRef.Value.Tile) == tileMask.Inverted)
-                {
-                    passes = false;
-                    break;
-                }
-            }
-
-            if (passes)
-                targets.Add(indices);
-        }
+        var targets = ICETileMask.CollectTiles(context, map, grid, Mask);
 
         var seed = context.Seed + Seed;
 
-        var processed = 0;
         foreach (var indices in targets)
         {
             if (!context.Biome.TryGetTile(indices, biome.Layers, seed, (map, grid), out var tile))
@@ -82,12 +62,6 @@ public sealed partial class FillBiomeLayer : ICEProceduralLayer
             {
                 var center = indices + grid.TileSizeHalfVector;
                 context.EntityManager.SpawnEntity(entityProto, new EntityCoordinates(map, center));
-            }
-
-            if (++processed % 64 == 0)
-            {
-                await context.Suspend();
-                context.Cancellation.ThrowIfCancellationRequested();
             }
         }
     }

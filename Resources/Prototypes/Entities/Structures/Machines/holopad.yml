@@ -344,39 +344,6 @@
   - type: Label
     localizedLabel: holopad-command-hos
 
-# Science
-- type: entity
-  parent: Holopad
-  id: HolopadScienceAnomaly
-  suffix: Anomaly
-  components:
-  - type: Label
-    localizedLabel: holopad-science-anomaly
-
-- type: entity
-  parent: Holopad
-  id: HolopadScienceArtifact
-  suffix: Artifact
-  components:
-  - type: Label
-    localizedLabel: holopad-science-artifact
-
-- type: entity
-  parent: Holopad
-  id: HolopadScienceArtifactNorth
-  suffix: Artifact North
-  components:
-  - type: Label
-    localizedLabel: holopad-science-artifact-north
-
-- type: entity
-  parent: Holopad
-  id: HolopadScienceArtifactSouth
-  suffix: Artifact South
-  components:
-  - type: Label
-    localizedLabel: holopad-science-artifact-south
-
 - type: entity
   parent: Holopad
   id: HolopadScienceRobotics

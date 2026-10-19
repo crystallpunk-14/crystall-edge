@@ -1,10 +1,11 @@
 using Content.Shared.Materials;
 using Content.Shared.Stacks;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Utility;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._CE.ResourceManager.Requirements;
 
+[Serializable, NetSerializable]
 public sealed partial class MaterialResource : CEResourceRequirement
 {
     [DataField(required: true)]
@@ -102,6 +103,11 @@ public sealed partial class MaterialResource : CEResourceRequirement
         return 0;
     }
 
+    public override string GetRequirementAmount()
+    {
+        return Count.ToString();
+    }
+
     public override string GetRequirementTitle(IPrototypeManager protoManager)
     {
         if (!protoManager.TryIndex(Material, out var indexedMaterial))
@@ -110,8 +116,11 @@ public sealed partial class MaterialResource : CEResourceRequirement
         return $"{Loc.GetString(indexedMaterial.Name)} x{Count}";
     }
 
-    public override SpriteSpecifier? GetRequirementTexture(IPrototypeManager protoManager)
+    public override List<CEResourceIconLayer> GetRequirementIcon(IEntityManager entManager, IPrototypeManager protoManager)
     {
-        return !protoManager.TryIndex(Material, out var indexedMaterial) ? null : indexedMaterial.Icon;
+        if (!protoManager.TryIndex(Material, out var indexedMaterial) || indexedMaterial.Icon is not { } icon)
+            return new List<CEResourceIconLayer>();
+
+        return new List<CEResourceIconLayer> { CEResourceIconLayer.FromSprite(icon) };
     }
 }

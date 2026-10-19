@@ -33,19 +33,26 @@
         collection: GlassSmash
   - type: Physics
     bodyType: Static
-    canCollide: true
+    canCollide: false
   - type: TileEmission
     color: "#00ddff"
+  - type: CEShiny
+    effect: CEEffectShinyEnergyCrystal
+    radius: 0.4
+    minFrequency: 3
+    maxFrequency: 8
   - type: Fixtures
     fixtures:
       fix1:
-        hard: true
+        hard: false
         shape:
           !type:PhysShapeAabb
           bounds: "-0.45,-0.45,0.45,0.45"
         density: 60
+        mask:
+        - TableMask
         layer:
-        - Opaque
+        - TableLayer
   - type: Appearance
   - type: Destructible
     thresholds:

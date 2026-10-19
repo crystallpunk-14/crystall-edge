@@ -14,8 +14,6 @@
   - type: GroupExamine
   - type: Armor
     modifiers: { }
-  - type: ZombificationResistance
-    zombificationResistanceCoefficient: 0.9
   - type: Tag
     tags:
     - WhitelistChameleon
@@ -38,8 +36,6 @@
     sprite: Clothing/Head/Hoods/Bio/cmo.rsi
   - type: Clothing
     sprite: Clothing/Head/Hoods/Bio/cmo.rsi
-  - type: ZombificationResistance
-    zombificationResistanceCoefficient: 0.8
 
 - type: entity
   parent: ClothingHeadHatHoodBioGeneral
@@ -92,8 +88,6 @@
     sprite: Clothing/Head/Hoods/Bio/virology.rsi
   - type: Clothing
     sprite: Clothing/Head/Hoods/Bio/virology.rsi
-  - type: ZombificationResistance
-    zombificationResistanceCoefficient: 0.8
 
 - type: entity
   parent: ClothingHeadBase
@@ -416,17 +410,6 @@
     sprite: Clothing/Head/Hoods/Coat/hoodmed.rsi
   - type: Clothing
     sprite: Clothing/Head/Hoods/Coat/hoodmed.rsi
-
-- type: entity
-  parent: ClothingHeadHatHoodWinterBase
-  id: ClothingHeadHatHoodWinterMime
-  categories: [ HideSpawnMenu ]
-  name: mime coat hood
-  components:
-  - type: Sprite
-    sprite: Clothing/Head/Hoods/Coat/hoodmime.rsi
-  - type: Clothing
-    sprite: Clothing/Head/Hoods/Coat/hoodmime.rsi
 
 - type: entity
   parent: ClothingHeadHatHoodWinterBase

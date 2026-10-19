@@ -1,19 +1,15 @@
-- type: CERadioFrequency
-  id: CECommon
+- type: radioFrequency
+  id: Common
   name: ce-radio-frequency-common
 
-- type: CERadioFrequency
-  id: CEAcademy
-  name: ce-radio-frequency-academy
-
-- type: CERadioFrequency
-  id: CEEngineering
+- type: radioFrequency
+  id: Engineering
   name: ce-radio-frequency-engineering
 
-- type: CERadioFrequency
-  id: CEGuard
+- type: radioFrequency
+  id: Guard
   name: ce-radio-frequency-guard
 
-- type: CERadioFrequency
-  id: CETavern
+- type: radioFrequency
+  id: Tavern
   name: ce-radio-frequency-tavern

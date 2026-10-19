@@ -355,7 +355,7 @@ public enum LogType
     /// <summary>
     /// Anomaly related interactions.
     /// </summary>
-    Anomaly = 79,
+    Anomaly = 79, // CrystallEdge: anomaly system removed, value kept for existing admin logs in DB
 
     /// <summary>
     /// Cutting, mending and pulsing of wires.
@@ -467,7 +467,7 @@ public enum LogType
     /// <summary>
     /// Artifact node got activated.
     /// </summary>
-    ArtifactNode = 101,
+    ArtifactNode = 101, // CrystallEdge: xenoarchaeology removed, value kept for existing admin logs in DB
 
     /// <summary>
     /// Damaging grid collision has occurred.

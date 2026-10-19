@@ -1,5 +1,4 @@
 stack-steel = steel
-stack-bananium = bananium
 stack-glass = glass
 stack-plasteel = plasteel
 stack-brass = brass
@@ -80,10 +79,6 @@ stack-artifact-fragment = artifact {$amount ->
     [1] fragment
     *[other] fragments
 }
-stack-xenoborg-crystal = xenoborg {$amount ->
-    [1] crystal
-    *[other] crystals
-}
 stack-conveyor-belt = {$amount ->
     [1] conveyor belt
     *[other] conveyor belts
@@ -121,7 +116,6 @@ stack-plasma-ore = plasma ore
 stack-silver-ore = silver ore
 stack-space-quartz = space quartz
 stack-uranium-ore = uranium ore
-stack-bananium-ore = bananium ore
 stack-coal = coal
 stack-salt = salt
 stack-inflatable-wall = inflatable wall

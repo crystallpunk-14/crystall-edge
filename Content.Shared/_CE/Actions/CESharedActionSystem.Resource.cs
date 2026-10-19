@@ -42,10 +42,4 @@ public abstract partial class CESharedActionSystem
     {
         _stamina.TakeStaminaDamage(args.Performer, ent.Comp.Cost);
     }
-
-    [SubscribeLocalEvent]
-    private void OnEssenceCostActionPerformed(Entity<CEActionEssenceCostComponent> ent, ref ActionPerformedEvent args)
-    {
-        _magicFocus.TrySpendEssence(args.Performer, ent.Comp.EssenceCost);
-    }
 }

@@ -84,12 +84,10 @@
         - id: FoodTartCoco
         - id: FoodBakedBrownie
         - id: FoodPieBananaCreamSlice
-        - id: FoodTartMimeSlice
       - !type:GroupSelector #rare
         weight: 0.05
         children:
         - id: FoodBreadMeatSpiderSlice
-        - id: FoodBreadMimanaSlice
         - id: FoodCakeBrainSlice
         - id: FoodCakeClownSlice
         - id: FoodCakeSpacemanSlice

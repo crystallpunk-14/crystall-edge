@@ -1,15 +1,4 @@
 - type: cargoBounty
-  id: BountyArtifact
-  reward: 2500
-  description: bounty-description-artifact
-  entries:
-  - name: bounty-item-artifact
-    amount: 1
-    whitelist:
-      components:
-      - XenoArtifact
-
-- type: cargoBounty
   id: BountyBaseballBat
   reward: 4000
   description: bounty-description-baseball-bat
@@ -418,17 +407,6 @@
       - Trash
 
 - type: cargoBounty
-  id: BountyAnomalyCore
-  reward: 10000
-  description: bounty-description-anomaly-core
-  entries:
-  - name: bounty-item-anomaly-core
-    amount: 1
-    whitelist:
-      components:
-      - AnomalyCore
-
-- type: cargoBounty
   id: BountyBorgModule
   reward: 3500
   description: bounty-description-borg-module
@@ -438,17 +416,6 @@
     whitelist:
       components:
       - BorgModule
-
-- type: cargoBounty
-  id: BountyArtifactFragment
-  reward: 32500
-  description: bounty-description-artifact-fragment
-  entries:
-  - name: bounty-item-artifact-fragment
-    amount: 7
-    whitelist:
-      tags:
-      - ArtifactFragment
 
 - type: cargoBounty
   id: BountyOrgans

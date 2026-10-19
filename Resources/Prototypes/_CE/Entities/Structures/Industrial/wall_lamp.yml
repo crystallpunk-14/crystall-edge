@@ -33,12 +33,12 @@
   - type: Damageable
     damageModifierSet: Metallic
   - type: Injurable
-    damageContainer: Inorganic
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 200
+        damage: 30
       behaviors: #excess damage, don't spawn entities.
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
@@ -47,7 +47,7 @@
           collection: GlassBreak
     - trigger:
         !type:DamageTrigger
-        damage: 50
+        damage: 10
       behaviors:
       - !type:EmptyAllContainersBehaviour
       - !type:SpawnEntitiesBehavior
@@ -89,7 +89,8 @@
 
 - type: entity
   parent: CEWallLightBase
-  id: CEWallLight
+  id: CEWallLightOrange
+  suffix: Orange
   components:
   - type: Sprite
     layers:
@@ -98,3 +99,78 @@
       state: glow
       shader: unshaded
       color: "#f8ab58"
+
+- type: entity
+  parent: CEWallLightBase
+  id: CEWallLightPink
+  suffix: Pink
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - map: ["enum.PowerDeviceVisualLayers.Powered"]
+      state: glow
+      shader: unshaded
+      color: "#ff3cc8"
+  - type: PointLight
+    color: "#ff9de3"
+
+- type: entity
+  parent: CEWallLightBase
+  id: CEWallLightCyan
+  suffix: Cyan
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - map: ["enum.PowerDeviceVisualLayers.Powered"]
+      state: glow
+      shader: unshaded
+      color: "#3cf0ff"
+  - type: PointLight
+    color: "#9df7ff"
+
+- type: entity
+  parent: CEWallLightBase
+  id: CEWallLightGreen
+  suffix: Green
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - map: ["enum.PowerDeviceVisualLayers.Powered"]
+      state: glow
+      shader: unshaded
+      color: "#5cff6a"
+  - type: PointLight
+    color: "#adffb4"
+
+- type: entity
+  parent: CEWallLightBase
+  id: CEWallLightPurple
+  suffix: Purple
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - map: ["enum.PowerDeviceVisualLayers.Powered"]
+      state: glow
+      shader: unshaded
+      color: "#a050ff"
+  - type: PointLight
+    color: "#cfa7ff"
+
+- type: entity
+  parent: CEWallLightBase
+  id: CEWallLightRed
+  suffix: Red
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - map: ["enum.PowerDeviceVisualLayers.Powered"]
+      state: glow
+      shader: unshaded
+      color: "#ff3c3c"
+  - type: PointLight
+    color: "#ff9d9d"

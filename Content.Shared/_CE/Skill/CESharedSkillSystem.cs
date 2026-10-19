@@ -4,7 +4,6 @@ using System.Text;
 using Content.Shared._CE.EntityEffect;
 using Content.Shared._CE.Skill.Components;
 using Content.Shared._CE.Skill.Prototypes;
-using Content.Shared.Administration.Managers;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
 using Robust.Shared.Maths;
@@ -17,14 +16,12 @@ namespace Content.Shared._CE.Skill;
 public abstract partial class CESharedSkillSystem : EntitySystem
 {
     [Dependency] private ExamineSystemShared _examine = default!;
-    [Dependency] private ISharedAdminManager _admin = default!;
     [Dependency] private IPrototypeManager _proto = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        InitializeAdmin();
         InitializeScanning();
     }
 

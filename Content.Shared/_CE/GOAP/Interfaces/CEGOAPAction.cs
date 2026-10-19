@@ -1,6 +1,7 @@
 namespace Content.Shared._CE.GOAP;
 
-using Content.Shared._CE.GOAP.Selectors;
+using Content.Shared._CE.GOAP.Prototypes;
+using Robust.Shared.Prototypes;
 
 /// <summary>
 /// Execution status of a GOAP action.
@@ -32,13 +33,13 @@ public abstract partial class CEGOAPAction
     /// World state conditions required before this action can execute.
     /// </summary>
     [DataField]
-    public Dictionary<string, bool> Preconditions = new();
+    public Dictionary<ProtoId<CEGOAPConditionPrototype>, bool> Preconditions = new();
 
     /// <summary>
     /// World state changes produced when this action completes successfully.
     /// </summary>
     [DataField]
-    public Dictionary<string, bool> Effects = new();
+    public Dictionary<ProtoId<CEGOAPConditionPrototype>, bool> Effects = new();
 
     /// <summary>
     /// Cost of performing this action. Lower cost actions are preferred by the planner.
@@ -47,11 +48,22 @@ public abstract partial class CEGOAPAction
     public float Cost = 1f;
 
     /// <summary>
-    /// Selector that resolves this action's target entity and/or coordinate at runtime.
-    /// Null means the action has no target.
+    /// Target slot this action works on, resolved through the agent's
+    /// <see cref="Components.CEGOAPComponent.Targets"/>. Null means the action has no target.
+    /// An action with a target is left out of planning while the slot resolves to nothing.
     /// </summary>
     [DataField]
-    public CEGOAPTargetSelector? Selector;
+    public ProtoId<CEGOAPTargetPrototype>? Target;
+
+    /// <summary>
+    /// How close the agent has to be to <see cref="Target"/> to perform this action. The orchestrator walks
+    /// the agent there before the action starts and pauses the action whenever the target gets out of range,
+    /// so movement never appears in the plan. The walk also adds
+    /// <see cref="Components.CEGOAPComponent.DistanceCost"/> per tile to the action cost.
+    /// Null means the action is performed wherever the agent stands.
+    /// </summary>
+    [DataField]
+    public float? Range;
 
     /// <summary>
     /// Called once during entity map initialization.

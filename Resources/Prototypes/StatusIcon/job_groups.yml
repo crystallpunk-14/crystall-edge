@@ -105,10 +105,8 @@
   groupName: job-icon-group-entertainer
   sprite:
     sprite: /Textures/Interface/Misc/job_icons.rsi
-    state: Clown
+    state: Musician
   icons:
-  - JobIconClown
-  - JobIconMime
   - JobIconMusician
 
 - type: jobIconGroup
@@ -166,7 +164,6 @@
     sprite: /Textures/Interface/Misc/job_icons.rsi
     state: Syndicate
   icons:
-  - JobIconCluwne
   - JobIconNinja
   - JobIconPirate
   - JobIconPrisoner
@@ -185,7 +182,6 @@
     state: Admin
   icons:
   - JobIconAdmin
-  - JobIconZombie
   - JobIconSeniorEngineer
   - JobIconSeniorPhysician
   - JobIconSeniorResearcher

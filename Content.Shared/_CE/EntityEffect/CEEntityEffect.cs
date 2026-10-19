@@ -70,7 +70,21 @@ public record struct CEEntityEffectArgs(
     float Speed,
     EntityUid? Target,
     EntityCoordinates? Position,
-    float Power = 1f);
+    float Power = 1f)
+{
+    /// <summary>
+    /// Resolves which entity of these args the given <see cref="CEEffectTarget"/> refers to.
+    /// </summary>
+    public readonly EntityUid? Resolve(CEEffectTarget target)
+    {
+        return target switch
+        {
+            CEEffectTarget.User => Source,
+            CEEffectTarget.Used => Used,
+            _ => Target,
+        };
+    }
+}
 
 /// <summary>
 /// Broadcast event raised when a CE entity effect is dispatched.

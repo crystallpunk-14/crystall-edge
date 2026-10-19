@@ -333,17 +333,6 @@
 
 - type: entity
   parent: BaseThiefStealObjective
-  id: ClothingNeckClownmedalStealObjective
-  components:
-  - type: NotJobRequirement
-    jobs: [ Captain ]
-  - type: StealCondition
-    stealGroup: ClothingNeckClownmedal
-  - type: Objective
-    difficulty: 1
-
-- type: entity
-  parent: BaseThiefStealObjective
   id: CaptainSwordStealObjective
   components:
   - type: NotJobRequirement
@@ -387,17 +376,6 @@
     stealGroup: ChemDispenser
   - type: Objective
     difficulty: 1
-
-- type: entity
-  parent: BaseThiefStealStructureObjective
-  id: XenoArtifactStealObjective
-  components:
-  - type: NotJobRequirement
-    jobs: [ Scientist ]
-  - type: StealCondition
-    stealGroup: XenoArtifact
-  - type: Objective
-    difficulty: 0.5
 
 - type: entity
   parent: BaseThiefStealStructureObjective

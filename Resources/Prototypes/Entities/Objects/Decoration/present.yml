@@ -308,8 +308,6 @@
         orGroup: GiftPool
       - id: FoodPoppy
         orGroup: GiftPool
-      - id: ClothingMaskClown
-        orGroup: GiftPool
       - id: ClothingOuterCoatGentle
         orGroup: GiftPool
       - id: ClothingOuterCoatJensen

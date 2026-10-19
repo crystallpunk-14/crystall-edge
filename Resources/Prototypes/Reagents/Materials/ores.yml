@@ -61,15 +61,6 @@
   price: 0.2
 
 - type: material
-  id: RawBananium
-  stackEntity: BananiumOre1
-  name: materials-raw-bananium
-  unit: materials-unit-chunk
-  icon: { sprite: Objects/Materials/ore.rsi, state: bananium }
-  color: "#32a852"
-  price: 0.2
-
-- type: material
   id: RawSalt
   stackEntity: Salt1
   name: materials-raw-salt

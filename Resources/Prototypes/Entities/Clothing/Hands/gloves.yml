@@ -415,15 +415,6 @@
     stealthy: true
 
 - type: entity
-  parent: ClothingHandsGlovesColorWhite
-  id: ClothingHandsGlovesCluwne
-  name: cluwne hands
-  suffix: Unremoveable
-  description:  A cursed pair of cluwne hands.
-  components:
-  - type: Unremoveable
-
-- type: entity
   parent: [ClothingHandsButcherable, BaseSyndicateContraband]
   id: ClothingHandsGlovesNorthStar
   name: gloves of the north star

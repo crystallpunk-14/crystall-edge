@@ -207,18 +207,6 @@
     Phalanximine: 3
 
 - type: reaction
-  id: Ambuzol
-  reactants:
-    Ultravasculine:
-      amount: 1
-    Mannitol:
-      amount: 2
-    Romerodone:
-      amount: 1
-  products:
-    Ambuzol: 4
-
-- type: reaction
   id: Synaptizine
   reactants:
     Lithium:
@@ -578,18 +566,6 @@
   products:
     Opporozidone: 3
 
-- type: reaction
-  id: OpporozidoneLivingTissue
-  minTemp: 400
-  reactants:
-    LivingTissue: # Do you want to save the victim from rotting, or check if the dude is a changeling? Hmm...
-      amount: 2
-    Plasma:
-      amount: 2
-    Doxarubixadone:
-      amount: 2
-  products:
-    Opporozidone: 6
 
 - type: reaction
   id: Arcryox

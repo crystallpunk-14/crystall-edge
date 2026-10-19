@@ -1,9 +1,10 @@
-using Content.Server._CE.MagicEssence.Systems;
+using Content.Server._CE.ZLevels.Core;
 using Content.Server.GameTicking.Rules;
 using Content.Server.StationEvents.Events;
 using Content.Shared._CE.ZLevels.Core.Components;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Physics;
+using Content.Shared.Station.Components;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
@@ -19,7 +20,7 @@ namespace Content.Server._CE.StationEvents;
 /// </summary>
 public sealed partial class CETopTileSpawnRuleSystem : StationEventSystem<CETopTileSpawnRuleComponent>
 {
-    [Dependency] private CEMagicEssenceNodeSystem _essenceNode = default!;
+    [Dependency] private CEZLevelsSystem _zLevels = default!;
     [Dependency] private SharedMapSystem _mapSystem = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private EntityQuery<PhysicsComponent> _physicsQuery = default!;
@@ -33,7 +34,7 @@ public sealed partial class CETopTileSpawnRuleSystem : StationEventSystem<CETopT
     {
         base.Started(ruleUid, component, gameRule, args);
 
-        if (!_essenceNode.TryGetStationNetwork(out var network))
+        if (!TryGetStationNetwork(out var network))
         {
             Log.Warning("CETopTileSpawnRuleSystem: couldn't resolve a station z-map network - nothing spawned.");
             return;
@@ -46,6 +47,25 @@ public sealed partial class CETopTileSpawnRuleSystem : StationEventSystem<CETopT
         }
 
         Spawn(component.Prototype, coordinates);
+    }
+
+    /// <summary>
+    /// Resolves the z-map network of the first found station's largest grid - currently all maps
+    /// are planetary (the grid entity is itself the map entity), so this is a map-network lookup
+    /// rather than a grid-network one.
+    /// </summary>
+    private bool TryGetStationNetwork(out Entity<CEZMapNetworkComponent> network)
+    {
+        network = default;
+
+        var stationQuery = EntityQueryEnumerator<StationDataComponent>();
+        if (!stationQuery.MoveNext(out var stationUid, out var stationData))
+            return false;
+
+        if (StationSystem.GetLargestGrid((stationUid, stationData)) is not { } grid)
+            return false;
+
+        return _zLevels.TryGetMapNetwork(grid, out network);
     }
 
     /// <summary>
@@ -97,7 +117,7 @@ public sealed partial class CETopTileSpawnRuleSystem : StationEventSystem<CETopT
 
     /// <summary>
     /// A tile is free if it actually exists (not space/void) and isn't blocked by a static, hard,
-    /// impassable anchored entity - same check as <c>CEMagicEssenceNodeSystem</c> uses for node spawns.
+    /// impassable anchored entity.
     /// </summary>
     private bool IsTileFree(EntityUid grid, MapGridComponent gridComp, Vector2i tile)
     {

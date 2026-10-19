@@ -13,12 +13,18 @@ $out = dotnet build -c Tools -clp:ErrorsOnly -nologo 2>&1; $out | Select-String 
 
 Never build only shared: build server, client or both via full dotnet build.
 
+`MSB3027` / "file is locked" errors mean the user's Content.Server or Content.Client is running and holds the DLLs in `bin/`. Ask the user to close them; rebuilding won't help.
+
 ## Testing
 
+Reuse the Tools build and target the tests you need; without `-c Tools --no-build` the test run rebuilds everything in Debug (~5 min):
 ```powershell
-dotnet test Content.Tests/Content.Tests.csproj
-dotnet test Content.IntegrationTests/Content.IntegrationTests.csproj
+dotnet test Content.IntegrationTests/Content.IntegrationTests.csproj -c Tools --no-build --filter "FullyQualifiedName~TestName"
 ```
+
+## Searching
+
+Repo-wide Grep times out (~54k files, mostly textures and maps). Always pass a path: `Content.*`, `Resources/Prototypes`, `Resources/Locale`, or `Resources/Maps` when maps are the target.
 
 ## C# Code Style
 
@@ -39,6 +45,13 @@ dotnet test Content.IntegrationTests/Content.IntegrationTests.csproj
 **Always place CE code in `_CE/` subfolders** and prefix class names with `CE`:
 - `Content.Shared._CE.MyFeature.CEMySystem`
 - `Content.Server._CE.MyFeature.CEMyServerSystem`
+
+**Prototype IDs** — the `CE` prefix exists only to avoid name collisions with upstream:
+- Prototype kind declared upstream/engine (`entity`, `reagent`, `Tag`, `job`, `soundCollection`, ...): ID **must** start with `CE` — `CEFoodBread`, `CEActionFireball` (not `ActionCEFireball`).
+- Prototype kind declared in `_CE` (`skill`, `secretRole`, `tradeOffer`, `workbenchRecipe`, `foodTag`, ...): **no** `CE` prefix — `Fireball`, `Thief`, `BuyIronBar`.
+- New `_CE` prototype kinds get plain camelCase names without prefix: `[Prototype("cookingRecipe")]`; check the name is not already taken by an upstream kind.
+- Exceptions: IDs that intentionally reuse upstream IDs because upstream code, tests or cvars look them up (`Secret`, `DefaultMapPool`, `Empty`, `Baseline*`), `roleLoadout` (upstream requires `Job<JobId>`, e.g. `JobCEGuard`), and existing `gameMap` IDs.
+- Renaming an ID stored in the DB (`secretRole` → `secret_role.secret_role_name`, `achievement` → `player_achievement.proto_id`, `barkSpeech`, jobs) drops players' data unless migrated.
 
 **When editing upstream (non-_CE) code**, wrap changes in comments:
 ```csharp
