@@ -28,14 +28,10 @@ public sealed partial class CETileVolumeOverlay : Overlay
 
     private List<Entity<MapGridComponent>> _grids = new();
 
-    /// <summary>
-    /// Resolved lip sprites indexed by tile type id, filled lazily.
-    /// </summary>
     private VolumeSprite?[] _sprites = [];
 
     private const int VariantWidth = EyeManager.PixelsPerMeter;
 
-    // Below grids, so transparent tiles (glass) draw over the lip instead of the lip covering them.
     public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowWorld;
 
     public CETileVolumeOverlay()
