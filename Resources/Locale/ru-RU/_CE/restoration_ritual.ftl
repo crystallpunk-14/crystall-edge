@@ -3,3 +3,4 @@ ce-restoration-ritual-unavailable = Сейчас Ритуал восстанов
 ce-restoration-ritual-missing-shards = На пьедесталах ритуала не хватает осколков светсердца: { $shards }.
 
 ce-ritual-pedestal-slot-name = Осколок светсердца
+ce-ritual-pedestal-shard-rejected = Этот осколок не подходит.

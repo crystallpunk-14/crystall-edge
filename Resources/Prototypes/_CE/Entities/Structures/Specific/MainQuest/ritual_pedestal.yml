@@ -17,11 +17,30 @@
   - type: Clickable
   - type: InteractionOutline
   - type: CERitualPedestal
+    insertEffects:
+    - !type:PlayFarSound
+      sound:
+        path: /Audio/_CE/Effects/ritual_insert_far.ogg
+      minRange: 0
+      maxRange: 60
+    acceptEffects:
+    - !type:SpawnEntity
+      spawns:
+      - CEShockWaveVFX
+    rejectEffects:
+    - !type:SpawnEntity
+      spawns:
+      - CEEffectBreakDivineShield
+    - !type:PlaySound
+      positional: true
+      sound:
+        path: /Audio/_CE/Effects/divine_shield_break.ogg
+        params:
+          variation: 0.1
   - type: ItemSlots
     slots:
       pedestal:
         name: ce-ritual-pedestal-slot-name
-        ejectOnInteract: true
         whitelist:
           components:
           - CEQuestItem
