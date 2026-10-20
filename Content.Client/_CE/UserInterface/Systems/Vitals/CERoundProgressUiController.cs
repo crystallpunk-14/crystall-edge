@@ -11,11 +11,11 @@ using Robust.Shared.Timing;
 namespace Content.Client._CE.UserInterface.Systems.Vitals;
 
 /// <summary>
-/// Drives <see cref="CERoundProgressUI"/> from the server's periodic <see cref="CERoundProgressStateEvent"/>,
-/// smoothing the displayed values between updates.
+/// Drives <see cref="CERoundProgressUI"/> from the server's periodic <see cref="CERoundProgressStateEvent"/>
+/// (received through <see cref="CERoundProgressSystem"/>), smoothing the displayed values between updates.
 /// </summary>
 [UsedImplicitly]
-public sealed partial class CERoundProgressUiController : UIController, IOnStateExited<GameplayState>
+public sealed partial class CERoundProgressUiController : UIController, IOnStateExited<GameplayState>, IOnSystemChanged<CERoundProgressSystem>
 {
     /// <summary>
     /// How fast the displayed values catch up with the last received ones (fraction of the gap per second).
@@ -36,8 +36,16 @@ public sealed partial class CERoundProgressUiController : UIController, IOnState
         var gameplayStateLoad = UIManager.GetUIController<GameplayStateLoadController>();
         gameplayStateLoad.OnScreenLoad += OnScreenLoad;
         gameplayStateLoad.OnScreenUnload += OnScreenUnload;
+    }
 
-        SubscribeNetworkEvent<CERoundProgressStateEvent>(OnProgressState);
+    public void OnSystemLoaded(CERoundProgressSystem system)
+    {
+        system.OnProgressState += OnProgressState;
+    }
+
+    public void OnSystemUnloaded(CERoundProgressSystem system)
+    {
+        system.OnProgressState -= OnProgressState;
     }
 
     public void OnStateExited(GameplayState state)
@@ -74,7 +82,7 @@ public sealed partial class CERoundProgressUiController : UIController, IOnState
         return null;
     }
 
-    private void OnProgressState(CERoundProgressStateEvent ev, EntitySessionEventArgs args)
+    private void OnProgressState(CERoundProgressStateEvent ev)
     {
         // Snap instead of sliding in from zero when the bar first appears.
         if (!_visible && ev.Visible)
