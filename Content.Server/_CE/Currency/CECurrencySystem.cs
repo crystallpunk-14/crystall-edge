@@ -4,14 +4,10 @@ using Content.Server.Popups;
 using Content.Server.Stack;
 using Content.Shared._CE.Currency;
 using Content.Shared.Examine;
-using Content.Shared.Storage;
-using Content.Shared.Storage.EntitySystems;
-using Content.Shared.Tag;
 using Content.Shared.Whitelist;
 using Robust.Server.Audio;
 using Robust.Shared.Analyzers;
 using Robust.Shared.Containers;
-using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.Currency;
@@ -24,11 +20,6 @@ public sealed partial class CECurrencySystem : CESharedCurrencySystem
     [Dependency] private AudioSystem _audio = default!;
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private PricingSystem _price = default!;
-    [Dependency] private SharedStorageSystem _storage = default!;
-
-    [Dependency] private EntityQuery<StorageComponent> _storageQuery = default!;
-
-    private readonly ProtoId<TagPrototype> _walletTag = "CEWallet";
 
     [SubscribeLocalEvent]
     private void OnExamine(Entity<CECurrencyExaminableComponent> currency, ref ExaminedEvent args)
@@ -41,12 +32,13 @@ public sealed partial class CECurrencySystem : CESharedCurrencySystem
 
     /// <summary>
     /// Takes <paramref name="amount"/> worth of coins from anywhere in the player's containers,
-    /// greedily spending the highest denominations first, and refunds any overpaid remainder as
-    /// change (into their wallet if they have one, otherwise dropped at their feet).
+    /// greedily spending the highest denominations first.
     /// Returns false (and takes nothing) if the player doesn't have enough.
     /// </summary>
-    public bool TryTakeCurrency(EntityUid player, int amount)
+    /// <param name="change">Overpaid remainder the caller owes the player back.</param>
+    public bool TryTakeCurrency(EntityUid player, int amount, out int change)
     {
+        change = 0;
         if (amount <= 0)
             return true;
 
@@ -108,64 +100,7 @@ public sealed partial class CECurrencySystem : CESharedCurrencySystem
             }
         }
 
-        if (overpaid > 0)
-            SpawnChangeFor(player, overpaid);
-
+        change = overpaid;
         return true;
-    }
-
-    private void SpawnChangeFor(EntityUid player, int change)
-    {
-        var coords = Transform(player).Coordinates;
-        var wallet = FindWallet(player);
-
-        if (wallet is not { } walletUid)
-        {
-            GenerateMoney(change, coords);
-            return;
-        }
-
-        SpawnAndStoreChange(PP.Key, change / 1000, coords, walletUid);
-        change %= 1000;
-        SpawnAndStoreChange(GP.Key, change / 100, coords, walletUid);
-        change %= 100;
-        SpawnAndStoreChange(SP.Key, change / 10, coords, walletUid);
-        change %= 10;
-        SpawnAndStoreChange(CP.Key, change, coords, walletUid);
-    }
-
-    private void SpawnAndStoreChange(EntProtoId proto, int count, EntityCoordinates coords, EntityUid wallet)
-    {
-        if (count <= 0)
-            return;
-
-        var coin = Spawn(proto, coords);
-        _stack.SetCount(coin, count);
-        _storage.Insert(wallet, coin, out _, playSound: false);
-    }
-
-    private EntityUid? FindWallet(EntityUid player)
-    {
-        if (!ContainerQuery.TryGetComponent(player, out var initial))
-            return null;
-
-        var containerStack = new Stack<ContainerManagerComponent>();
-        containerStack.Push(initial);
-
-        do
-        {
-            var current = containerStack.Pop();
-            foreach (var container in current.Containers.Values)
-            foreach (var item in container.ContainedEntities)
-            {
-                if (_tag.HasTag(item, _walletTag) && _storageQuery.HasComponent(item))
-                    return item;
-
-                if (ContainerQuery.TryGetComponent(item, out var nested))
-                    containerStack.Push(nested);
-            }
-        } while (containerStack.Count > 0);
-
-        return null;
     }
 }

@@ -6,9 +6,6 @@ using Content.Shared.Mind;
 
 namespace Content.Server._CE.Objectives.Target;
 
-/// <summary>
-/// Handles <see cref="CETargetSecretRoleBlacklistComponent"/>.
-/// </summary>
 public sealed partial class CETargetSecretRoleBlacklistSystem : EntitySystem
 {
     [Dependency] private SharedMindSystem _mind = default!;

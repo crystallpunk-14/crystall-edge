@@ -6,7 +6,7 @@ namespace Content.Server._CE.Objectives.Target.Components;
 
 /// <summary>
 /// Rejects target candidates (see <see cref="Content.Shared._CE.Objectives.Target.Components.CETargetObjectiveComponent"/>)
-/// who hold one of the listed secret roles - e.g. so a Tormentor can't target a fellow Tormentor.
+/// who hold one of the listed secret roles.
 /// </summary>
 [RegisterComponent]
 [Access(typeof(CETargetSecretRoleBlacklistSystem))]

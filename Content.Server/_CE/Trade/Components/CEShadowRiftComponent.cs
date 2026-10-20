@@ -3,7 +3,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Server._CE.Trade.Components;
 
 /// <summary>
-/// Home of shadow traders. At every dawn it dissolves the traders it released before and lets out a new batch.
+/// Home of shadow traders. At every nightfall it dissolves the traders it released before and lets out a new batch.
 /// </summary>
 [RegisterComponent, Access(typeof(CEShadowRiftSystem))]
 public sealed partial class CEShadowRiftComponent : Component

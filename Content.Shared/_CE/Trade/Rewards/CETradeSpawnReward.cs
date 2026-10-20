@@ -1,5 +1,5 @@
-using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Stacks;
+using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
@@ -14,15 +14,11 @@ public sealed partial class CETradeSpawnReward : CETradeReward
     [DataField]
     public int Count = 1;
 
-    public override void Give(IEntityManager entMan, EntityUid buyer, List<EntityUid> given)
+    public override void Give(IEntityManager entMan, MapCoordinates coordinates, List<EntityUid> given)
     {
-        var hands = entMan.System<SharedHandsSystem>();
-
         for (var i = 0; i < Count; i++)
         {
-            var spawned = entMan.SpawnNextToOrDrop(Proto, buyer);
-            hands.TryPickupAnyHand(buyer, spawned, checkActionBlocker: false);
-            given.Add(spawned);
+            given.Add(entMan.SpawnEntity(Proto, coordinates));
         }
     }
 

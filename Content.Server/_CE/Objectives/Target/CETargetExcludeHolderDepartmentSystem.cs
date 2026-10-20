@@ -7,9 +7,6 @@ using Content.Shared.Mind;
 
 namespace Content.Server._CE.Objectives.Target;
 
-/// <summary>
-/// Handles <see cref="CETargetExcludeHolderDepartmentComponent"/>.
-/// </summary>
 public sealed partial class CETargetExcludeHolderDepartmentSystem : EntitySystem
 {
     [Dependency] private SharedMindSystem _mind = default!;

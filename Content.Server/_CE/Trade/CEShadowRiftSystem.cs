@@ -15,12 +15,12 @@ public sealed partial class CEShadowRiftSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnMapInit(Entity<CEShadowRiftComponent> ent, ref MapInitEvent args)
     {
-        if (_transform.GetMap(ent.Owner) is { } map && _dayCycle.IsDayNow(map))
+        if (_transform.GetMap(ent.Owner) is { } map && !_dayCycle.IsDayNow(map))
             StartShift(ent);
     }
 
     [SubscribeLocalEvent]
-    private void OnStartDay(CEStartDayEvent args)
+    private void OnStartNight(CEStartNightEvent args)
     {
         var query = EntityQueryEnumerator<CEShadowRiftComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out var rift, out var xform))
