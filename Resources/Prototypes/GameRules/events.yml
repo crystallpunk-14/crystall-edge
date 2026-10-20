@@ -32,17 +32,6 @@
       tableId: DerelictBorgEventTable
 
 - type: entityTable
-  id: ModerateAntagEventsTable
-  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
-    children:
-    - id: DragonSpawn
-    - id: NinjaSpawn
-    - id: ParadoxCloneSpawn
-    - id: SleeperAgents
-    - !type:NestedSelector
-      tableId: DerelictBorgEventTable
-
-- type: entityTable
   id: DerelictBorgEventTable #For Derelict Borg spawns
   table: !type:GroupSelector
     children:
@@ -66,16 +55,6 @@
   components:
   - type: AntagSelection
     selectionTime: Never
-
-- type: entity
-  id: BaseStationEvent
-  parent: BaseGameRule
-  abstract: true
-  components:
-  - type: GameRule
-    delay:
-      min:  10
-      max:  20
 
 - type: entity
   id: BaseStationEventShortDelay
@@ -120,7 +99,6 @@
     blacklist:
       components:
         - ProtectedGrid
-
 
 - type: entity
   id: BureaucraticError

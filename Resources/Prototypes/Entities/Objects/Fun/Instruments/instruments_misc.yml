@@ -65,19 +65,6 @@
     verbImage: null
 
 - type: entity
-  parent: PhoneInstrument
-  id: PhoneInstrumentSyndicate
-  name: blood-red phone
-  description: For evil people to call their friends.
-  components:
-  - type: Sprite
-    sprite: Objects/Fun/Instruments/blood_red_phone.rsi
-    state: icon
-  - type: Prayable
-    sentMessage: prayer-popup-notify-syndicate-sent
-    notificationPrefix: prayer-chat-notify-syndicate
-
-- type: entity
   parent: BaseHandheldInstrument
   id: HelicopterInstrument
   name: toy helicopter
@@ -144,40 +131,3 @@
   - type: Clothing
     slots: [Belt]
     quickEquip: false
-
-- type: entity
-  parent: PhoneInstrument
-  id: BananaPhoneInstrument
-  name: banana phone
-  description: A direct line to the Honkmother. Seems to always go to voicemail.
-  components:
-  - type: Sprite
-    state: banana_phone
-  - type: EmitSoundOnLand
-    sound:
-       path: /Audio/Items/bikehorn.ogg
-  - type: Slippery
-  - type: StepTrigger
-  - type: CollisionWake
-    enabled: false
-  - type: Fixtures
-    fixtures:
-      slips:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.4,-0.3,0.4,0.3"
-        hard: false
-        layer:
-        - SlipLayer
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.4,-0.3,0.4,0.3"
-        density: 5
-        mask:
-        - ItemMask
-  - type: Prayable
-    sentMessage: prayer-popup-notify-honkmother-sent
-    notificationPrefix: prayer-chat-notify-honkmother
-    verb: prayer-verbs-call
-    verbImage: null

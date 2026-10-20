@@ -40,14 +40,6 @@
     heldPrefix: super
 
 - type: entity
-  parent: SuperSynthesizerInstrument
-  id: SuperSynthesizerNoLimitInstrument
-  suffix: NoLimits Admin
-  components:
-  - type: Instrument
-    respectMidiLimits: false
-
-- type: entity
   parent: BaseKeyedInstrument
   id: AccordionInstrument
   name: accordion

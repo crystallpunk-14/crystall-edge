@@ -271,34 +271,6 @@
   - type: Stack
     count: 1
 
-# Following not used currently
-- type: entity
-  parent: MaterialBase
-  id: MaterialHideBear
-  name: bear hide
-  components:
-  - type: Sprite
-    sprite: Objects/Materials/materials.rsi
-    layers:
-    - map: [ "enum.DamageStateVisualLayers.Base" ]
-      state: bearpelt
-    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
-      state: bearpelt_glow
-      shader: unshaded
-  - type: Item
-    sprite: Clothing/Head/Misc/hides.rsi
-    heldPrefix: bear
-  - type: Clothing
-    sprite: Clothing/Head/Misc/hides.rsi
-    equippedPrefix: bear
-    slots:
-      - HEAD
-  - type: PointLight
-    radius: 1.2
-    energy: 2.7
-    color: "#4faffb"
-    slots:
-
 - type: entity
   parent: MaterialBase
   id: MaterialHideCorgi
@@ -494,14 +466,6 @@
   - type: Item
     sprite: Objects/Materials/silk.rsi
     heldPrefix: silk
-
-- type: entity
-  parent: MaterialWebSilk
-  id: MaterialWebSilk25
-  suffix: 25
-  components:
-  - type: Stack
-    count: 25
 
 - type: entity
   parent: MaterialWebSilk

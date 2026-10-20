@@ -21,15 +21,3 @@
     id: TramDriverPDA
     ears: ClothingHeadsetService
     neck: ClothingNeckTieSerious
-
-- type: chameleonOutfit
-  id: TramDriverChameleonOutfit
-  job: TramDriver
-  equipment:
-    head: ClothingHeadHatTramDriver
-    eyes: ClothingEyesGlasses
-    mask: ClothingMaskBreath
-    outerClothing: ClothingOuterSuitTramDriver
-    neck: ClothingNeckTieSerious
-    belt: ClothingBeltUtility
-    gloves: ClothingHandsGlovesColorWhite

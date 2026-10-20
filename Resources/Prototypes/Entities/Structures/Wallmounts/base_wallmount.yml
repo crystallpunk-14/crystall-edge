@@ -27,18 +27,6 @@
 - type: entity
   abstract: true
   parent: BaseWallmount
-  id: BaseWallmountGlass
-  components:
-  - type: MeleeSound
-    soundGroups:
-      Brute:
-        collection: GlassSmash
-  - type: Damageable
-    damageModifierSet: GlassMod
-
-- type: entity
-  abstract: true
-  parent: BaseWallmount
   id: BaseWallmountMetallic
   components:
   - type: MeleeSound

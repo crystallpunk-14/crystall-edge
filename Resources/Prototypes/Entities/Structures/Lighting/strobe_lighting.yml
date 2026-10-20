@@ -119,36 +119,3 @@
       types:
         Heat: 2
     popupText: powered-light-component-burn-hand
-
-- type: entity
-  id: PoweredStrobeLightPolice
-  suffix: "Empty, police"
-  parent: PoweredStrobeLightEmpty
-  components:
-  - type: AmbientSound
-    volume: 0
-    range: 10
-    sound:
-      path: "/Audio/Effects/Lightning/strobe.ogg"
-
-- type: entity
-  id: PoweredStrobeLightSiren
-  suffix: "Empty, siren"
-  parent: PoweredStrobeLightEmpty
-  components:
-  - type: AmbientSound
-    volume: 0
-    range: 10
-    sound:
-      path: "/Audio/Misc/gamma.ogg"
-
-- type: entity
-  id: PoweredStrobeLightEpsilon
-  suffix: "Empty, epsilon"
-  parent: PoweredStrobeLightEmpty
-  components:
-  - type: AmbientSound
-    volume: 0
-    range: 10
-    sound:
-      path: "/Audio/Effects/Lightning/strobeepsilon.ogg"

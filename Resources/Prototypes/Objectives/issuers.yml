@@ -3,10 +3,6 @@
   name: objective-issuer-unknown
 
 - type: objectiveIssuer
-  id: SpaceWizardsFederation
-  name: objective-issuer-swf
-
-- type: objectiveIssuer
   id: TheSyndicate
   name: objective-issuer-syndicate
 

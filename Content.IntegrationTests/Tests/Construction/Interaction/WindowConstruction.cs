@@ -8,6 +8,7 @@ public sealed class WindowConstruction : InteractionTest
     private const string RWindow = "ReinforcedWindow";
 
     [Test]
+    [Ignore("CrystallEdge")] // CrystallEdge: Window construction recipes deleted with upstream content
     public async Task ConstructWindow()
     {
         await StartConstruction(Window);
@@ -25,6 +26,7 @@ public sealed class WindowConstruction : InteractionTest
     }
 
     [Test]
+    [Ignore("CrystallEdge")] // CrystallEdge: Window construction recipes deleted with upstream content
     public async Task ConstructReinforcedWindow()
     {
         await StartConstruction(RWindow);

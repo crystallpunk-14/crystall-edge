@@ -110,35 +110,6 @@
         restitution: 0.3
         friction: 0.2
 
-
-- type: entity
-  name: advanced scalpel
-  id: ScalpelAdvanced
-  parent: Scalpel
-  description: Made of more expensive materials, sharper and generally more reliable.
-  components:
-  - type: Sprite
-    state: advanced
-  - type: Item
-    heldPrefix: advanced
-  - type: MeleeWeapon
-    damage:
-      types:
-        Slash: 12
-
-- type: entity
-  name: laser scalpel
-  id: ScalpelLaser
-  parent: Scalpel
-  description: A scalpel which uses a directed laser to slice instead of a blade, for more precise surgery while also cauterizing as it cuts.
-  components:
-  - type: Sprite
-    state: laser
-  - type: Item
-    heldPrefix: laser
-
-# Scissors
-
 - type: entity
   name: retractor
   id: Retractor

@@ -90,15 +90,6 @@
     state: d6_6
 
 - type: entity
-  parent: d6Dice
-  id: d6DiceTricked
-  suffix: Tricked
-  components:
-  - type: Dice
-    weightedProb: 0.5
-    weightedValue: 6
-
-- type: entity
   parent: BaseDice
   id: d4Dice
   name: d4
@@ -153,17 +144,6 @@
     state: d2_1
 
 - type: entity
-  parent: d2Dice
-  id: d2DiceTricked
-  suffix: Tricked
-  components:
-  - type: Dice
-    weightedValue: 2
-
-
-# bags
-
-- type: entity
   parent: BaseStorageItem
   id: DiceBag
   name: bag of dice
@@ -192,15 +172,3 @@
     whitelist:
       tags:
       - Dice
-
-- type: entity
-  parent: DiceBag
-  id: MagicDiceBag
-  name: bag of dice
-  components:
-  - type: Sprite
-    sprite: Objects/Fun/dice.rsi
-    state: magicdicebag
-  - type: Storage
-    grid:
-    - 0,0,4,3

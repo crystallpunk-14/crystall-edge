@@ -43,15 +43,6 @@
     sprite: Clothing/Back/Duffels/medical.rsi
 
 - type: entity
-  parent: [ClothingBackpackDuffel, BaseCommandContraband]
-  id: ClothingBackpackDuffelCaptain
-  name: captain's duffel bag
-  description: A large duffel bag for holding extra captainly goods.
-  components:
-  - type: Sprite
-    sprite: Clothing/Back/Duffels/captain.rsi
-
-- type: entity
   parent: [ClothingBackpackDuffel, BaseSecurityContraband]
   id: ClothingBackpackDuffelSecurity
   name: security duffel bag
@@ -59,15 +50,6 @@
   components:
   - type: Sprite
     sprite: Clothing/Back/Duffels/security.rsi
-
-- type: entity
-  parent: [ClothingBackpackDuffel, BaseSecurityContraband]
-  id: ClothingBackpackDuffelBrigmedic
-  name: brigmedic duffel bag
-  description: A large duffel bag for holding extra medical related goods.
-  components:
-  - type: Sprite
-    sprite: Clothing/Back/Duffels/brigmedic.rsi
 
 - type: entity
   parent: ClothingBackpackDuffel
@@ -80,39 +62,12 @@
 
 - type: entity
   parent: ClothingBackpackDuffel
-  id: ClothingBackpackDuffelVirology
-  name: virology duffel bag
-  description: A large duffel bag made of hypo-allergenic fibers. It's designed to help prevent the spread of disease. Smells like monkey.
-  components:
-  - type: Sprite
-    sprite: Clothing/Back/Duffels/virology.rsi
-
-- type: entity
-  parent: ClothingBackpackDuffel
-  id: ClothingBackpackDuffelGenetics
-  name: genetics duffel bag
-  description: A large duffel bag for holding extra genetic mutations.
-  components:
-  - type: Sprite
-    sprite: Clothing/Back/Duffels/genetics.rsi
-
-- type: entity
-  parent: ClothingBackpackDuffel
   id: ClothingBackpackDuffelScience
   name: science duffel bag
   description: A large duffel bag for holding extra science related goods.
   components:
   - type: Sprite
     sprite: Clothing/Back/Duffels/science.rsi
-
-- type: entity
-  parent: ClothingBackpackDuffel
-  id: ClothingBackpackDuffelHydroponics
-  name: hydroponics duffel bag
-  description: A large duffel bag for holding extra gardening tools.
-  components:
-    - type: Sprite
-      sprite: Clothing/Back/Duffels/hydroponics.rsi
 
 - type: entity
   parent: ClothingBackpackDuffel
@@ -149,57 +104,6 @@
 - type: entity
   parent: [ ClothingBackpackDuffelSyndicate, BaseSyndicateContraband ]
   id: ClothingBackpackDuffelSyndicateBundle
-  abstract: true
-  components:
-  - type: Tag
-    tags:
-    - Backpack # ignore "WhitelistChameleon" tag
-
-- type: entity
-  parent: ClothingBackpackDuffel
-  id: ClothingBackpackDuffelBundle
-  abstract: true
-  components:
-  - type: Tag
-    tags:
-    - Backpack # ignore "WhitelistChameleon" tag
-
-- type: entity
-  parent: ClothingBackpackDuffelSyndicate
-  id: ClothingBackpackDuffelSyndicateAmmo
-  components:
-  - type: Sprite
-    sprite: Clothing/Back/Duffels/syndicate.rsi
-    state: icon-ammo
-  - type: Item
-    heldPrefix: ammo
-  - type: Clothing
-    equippedPrefix: ammo
-
-- type: entity
-  parent: ClothingBackpackDuffelSyndicateAmmo
-  id: ClothingBackpackDuffelSyndicateAmmoBundle
-  abstract: true
-  components:
-  - type: Tag
-    tags:
-    - Backpack # ignore "WhitelistChameleon" tag
-
-- type: entity
-  parent: ClothingBackpackDuffelSyndicate
-  id: ClothingBackpackDuffelSyndicateMedical
-  components:
-  - type: Sprite
-    sprite: Clothing/Back/Duffels/syndicate.rsi
-    state: icon-med
-  - type: Item
-    heldPrefix: med
-  - type: Clothing
-    equippedPrefix: med
-
-- type: entity
-  parent: ClothingBackpackDuffelSyndicateMedical
-  id: ClothingBackpackDuffelSyndicateMedicalBundle
   abstract: true
   components:
   - type: Tag

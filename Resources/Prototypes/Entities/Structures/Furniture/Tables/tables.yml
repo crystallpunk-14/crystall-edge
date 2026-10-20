@@ -1,4 +1,3 @@
-
 #region Frames
 
 - type: entity
@@ -482,31 +481,6 @@
 
 - type: entity
   parent: [ TableBase, StructureHealthFurniture ]
-  id: TableStone
-  name: stone table
-  description: Literally the sturdiest thing you have ever seen.
-  components:
-  - type: Sprite
-    sprite: Structures/Furniture/Tables/stone.rsi
-  - type: Icon
-    sprite: Structures/Furniture/Tables/stone.rsi
-  - type: Damageable
-    damageModifierSet: RockMod
-  - type: Destructible
-    thresholds:
-    - trigger: *DamageFurnitureNormal
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          path: /Audio/Effects/break_stone.ogg
-  - type: IconSmooth
-    key: stonetable
-  - type: FootstepModifier
-    footstepSoundCollection:
-      collection: FootstepFloor
-
-- type: entity
-  parent: [ TableBase, StructureHealthFurniture ]
   id: TableWeb
   name: web table
   description: Really smooth and surprisingly durable.
@@ -816,28 +790,6 @@
 
 #endregion
 #Debug
-
-- type: entity
-  parent: [ TableBase, BaseStructureHealth ]
-  id: TableDebug
-  name: table
-  description: PUT ON THEM CODERSOCKS!!
-  suffix: DEBUG
-  components:
-  - type: Sprite
-    sprite: Structures/Furniture/Tables/debug.rsi
-  - type: Icon
-    sprite: Structures/Furniture/Tables/debug.rsi
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 1
-      behaviors:
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
-
-#region Counters
 
 - type: entity
   parent: [ CounterBase, StructureHealthFurniture ]

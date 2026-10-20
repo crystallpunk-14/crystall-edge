@@ -37,6 +37,7 @@ public sealed class CraftingTests : InteractionTest
     /// Craft a complex recipe (more than one ingredient).
     /// </summary>
     [Test]
+    [Ignore("CrystallEdge")] // CrystallEdge: Spear construction recipe deleted with upstream content
     public async Task CraftSpear()
     {
         // Spawn a full tack of rods in the user's hands.
@@ -66,6 +67,7 @@ public sealed class CraftingTests : InteractionTest
     /// Cancel crafting a complex recipe.
     /// </summary>
     [Test]
+    [Ignore("CrystallEdge")] // CrystallEdge: Spear construction recipe deleted with upstream content
     public async Task CancelCraft()
     {
         var serverTargetCoords = SEntMan.GetCoordinates(TargetCoords);

@@ -1,17 +1,6 @@
 # Bun bottom
 
 - type: foodSequenceElement
-  id: BunTopBurger
-  final: true
-  sprites:
-  - sprite: Objects/Consumable/Food/burger_sequence.rsi
-    state: bun_top
-  tags:
-  - Bun
-
-# Mice
-
-- type: foodSequenceElement
   id: RatBurger
   name: food-sequence-burger-content-rat
   sprites:
@@ -70,17 +59,6 @@
 # Cooked Patty
 
 - type: foodSequenceElement
-  id: MeatPatty
-  sprites:
-  - sprite: Objects/Consumable/Food/meat.rsi
-    state: patty
-  tags:
-  - Cooked
-  - Meat
-
-# Dragon Steak
-
-- type: foodSequenceElement
   id: DragonSteak
   name: food-sequence-content-dragon
   sprites:
@@ -91,63 +69,6 @@
   - Meat
 
 # Bacon
-
-- type: foodSequenceElement
-  id: MeatBacon
-  sprites:
-  - sprite: Objects/Consumable/Food/meat.rsi
-    state: bacon-cooked
-  - sprite: Objects/Consumable/Food/meat.rsi
-    state: bacon2-cooked
-  tags:
-  - Cooked
-  - Meat
-
-# Bear meat
-
-- type: foodSequenceElement
-  id: MeatBear
-  name: food-sequence-content-bear
-  sprites:
-  - sprite: Objects/Consumable/Food/meat.rsi
-    state: product-cooked
-  tags:
-  - Cooked
-  - Meat
-
-- type: foodSequenceElement
-  id: MeatBearBurger
-  name: food-sequence-burger-content-bear
-  sprites:
-  - sprite: Objects/Consumable/Food/meat.rsi
-    state: product-cooked
-  tags:
-  - Cooked
-  - Meat
-
-# Penguin meat
-
-- type: foodSequenceElement
-  id: MeatPenguin
-  name: food-sequence-content-penguin
-  sprites:
-  - sprite: Objects/Consumable/Food/meat.rsi
-    state: bird-cooked
-  tags:
-  - Cooked
-  - Meat
-
-- type: foodSequenceElement
-  id: MeatPenguinBurger
-  name: food-sequence-burger-content-penguin
-  sprites:
-  - sprite: Objects/Consumable/Food/meat.rsi
-    state: bird-cooked
-  tags:
-  - Cooked
-  - Meat
-
-# Chicken meat
 
 - type: foodSequenceElement
   id: MeatChicken
@@ -161,57 +82,6 @@
   - Chicken
 
 # Fried Chicken meat
-
-- type: foodSequenceElement
-  id: MeatFriedChicken
-  name: food-sequence-content-chicken
-  sprites:
-  - sprite: Objects/Consumable/Food/meat.rsi
-    state: chicken-fried
-  - sprite: Objects/Consumable/Food/meat.rsi
-    state: chicken2-fried
-  tags:
-  - Cooked
-  - Meat
-  - Chicken
-
-# Duck meat
-
-- type: foodSequenceElement
-  id: MeatDuck
-  name: food-sequence-content-duck
-  sprites:
-  - sprite: Objects/Consumable/Food/meat.rsi
-    state: bird-cooked
-  tags:
-  - Cooked
-  - Meat
-
-# Crab meat
-
-- type: foodSequenceElement
-  id: MeatCrab
-  name: food-sequence-content-crab
-  sprites:
-  - sprite: Objects/Consumable/Food/meat.rsi
-    state: crab-cooked
-  tags:
-  - Cooked
-  - Meat
-  - Crab
-
-- type: foodSequenceElement
-  id: MeatCrabBurger
-  name: food-sequence-burger-content-crab
-  sprites:
-  - sprite: Objects/Consumable/Food/meat.rsi
-    state: crab-cooked
-  tags:
-  - Cooked
-  - Meat
-  - Crab
-
-# Meat goliath
 
 - type: foodSequenceElement
   id: MeatGoliath
@@ -236,18 +106,6 @@
 # Xeno meat
 
 - type: foodSequenceElement
-  id: MeatXeno
-  name: food-sequence-content-xeno
-  sprites:
-  - sprite: Objects/Consumable/Food/meat.rsi
-    state: rouny-cooked
-  tags:
-  - Cooked
-  - Meat
-
-# Meat lizard
-
-- type: foodSequenceElement
   id: MeatLizard
   name: food-sequence-content-lizard
   sprites:
@@ -270,51 +128,6 @@
 # Meat spider
 
 - type: foodSequenceElement
-  id: MeatSpider
-  name: food-sequence-content-spider
-  sprites:
-  - sprite: Objects/Consumable/Food/meat.rsi
-    state: spiderleg-cooked
-  tags:
-  - Cooked
-  - Meat
-
-- type: foodSequenceElement
-  id: MeatSpiderBurger
-  name: food-sequence-burger-content-spider
-  sprites:
-  - sprite: Objects/Consumable/Food/meat.rsi
-    state: spiderleg-cooked
-  tags:
-  - Cooked
-  - Meat
-
-# Meatball
-
-- type: foodSequenceElement
-  id: MeatBall
-  sprites:
-  - sprite: Objects/Consumable/Food/meat.rsi
-    state: meatball-cooked
-  tags:
-  - Cooked
-  - Meat
-
-# Snail meat
-
-- type: foodSequenceElement
-  id: MeatSnail
-  name: food-sequence-content-snail
-  sprites:
-  - sprite: Objects/Consumable/Food/meat.rsi
-    state: snail-cooked
-  tags:
-  - Cooked
-  - Meat
-
-# Meat cutlet
-
-- type: foodSequenceElement
   id: MeatCutlet
   sprites:
   - sprite: Objects/Consumable/Food/meat.rsi
@@ -325,54 +138,6 @@
   - Meat
 
 # Bear cutlet
-
-- type: foodSequenceElement
-  id: BearCutlet
-  name: food-sequence-content-bear
-  sprites:
-  - sprite: Objects/Consumable/Food/meat.rsi
-    state: cutlet-cooked
-  tags:
-  - Cooked
-  - Cutlet
-  - Meat
-
-- type: foodSequenceElement
-  id: BearCutletBurger
-  name: food-sequence-burger-content-bear
-  sprites:
-  - sprite: Objects/Consumable/Food/meat.rsi
-    state: cutlet-cooked
-  tags:
-  - Cooked
-  - Cutlet
-  - Meat
-
-# Penguin cutlet
-
-- type: foodSequenceElement
-  id: PenguinCutlet
-  name: food-sequence-content-penguin
-  sprites:
-  - sprite: Objects/Consumable/Food/meat.rsi
-    state: cutlet-cooked
-  tags:
-  - Cooked
-  - Cutlet
-  - Meat
-
-- type: foodSequenceElement
-  id: PenguinCutletBurger
-  name: food-sequence-burger-content-penguin
-  sprites:
-  - sprite: Objects/Consumable/Food/meat.rsi
-    state: cutlet-cooked
-  tags:
-  - Cooked
-  - Cutlet
-  - Meat
-
-# Chicken cutlet
 
 - type: foodSequenceElement
   id: ChickenCutlet
@@ -387,19 +152,6 @@
   - Chicken
 
 # Duck cutlet
-
-- type: foodSequenceElement
-  id: DuckCutlet
-  name: food-sequence-content-duck
-  sprites:
-  - sprite: Objects/Consumable/Food/meat.rsi
-    state: cutlet-cooked
-  tags:
-  - Cooked
-  - Cutlet
-  - Meat
-
-# Spider cutlet
 
 - type: foodSequenceElement
   id: LizardCutlet
@@ -702,28 +454,6 @@
   - Fruit
 
 # Pineapple
-
-- type: foodSequenceElement
-  id: PineappleSliceBurger
-  name: food-sequence-burger-content-pineapple
-  sprites:
-  - sprite: Objects/Specific/Hydroponics/pineapple.rsi
-    state: slice
-  tags:
-  - Fruit
-  - Slice
-
-- type: foodSequenceElement
-  id: PineappleSlice
-  name: food-sequence-content-pineapple
-  sprites:
-  - sprite: Objects/Specific/Hydroponics/pineapple.rsi
-    state: slice
-  tags:
-  - Fruit
-  - Slice
-
-# Onion
 
 - type: foodSequenceElement
   id: OnionSliceBurger
@@ -1167,55 +897,6 @@
   - Fruit
 
 # Berries
-
-- type: foodSequenceElement
-  id: Berries
-  name: food-sequence-content-berries
-  sprites:
-  - sprite: Objects/Specific/Hydroponics/berries.rsi
-    state: produce
-  tags:
-  - Fruit
-
-- type: foodSequenceElement
-  id: BerriesBurger
-  name: food-sequence-burger-content-berries
-  sprites:
-  - sprite: Objects/Specific/Hydroponics/berries.rsi
-    state: produce
-  tags:
-  - Fruit
-
-# Suppermatter
-
-- type: foodSequenceElement
-  id: Suppermatter
-  name: food-sequence-content-suppermatter
-  sprites:
-  - sprite: Objects/Consumable/Food/Baked/cake.rsi
-    state: suppermatter-shard
-
-- type: foodSequenceElement
-  id: SuppermatterBurger
-  name: food-sequence-burger-content-suppermatter
-  sprites:
-  - sprite: Objects/Consumable/Food/Baked/cake.rsi
-    state: suppermatter-shard
-
-
-# Anomaly berries
-
-- type: foodSequenceElement
-  id: CottonBunTopBurger
-  final: true
-  sprites:
-  - sprite: Objects/Consumable/Food/cottonburger.rsi
-    state: cottonbun_top
-  tags:
-  - Bun
-  - ClothMade
-
-# Cotton Bol
 
 - type: foodSequenceElement
   id: CottonBol

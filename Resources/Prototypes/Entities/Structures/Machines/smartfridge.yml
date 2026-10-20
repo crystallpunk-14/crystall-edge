@@ -128,13 +128,3 @@
           True: { visible: true }
           False: { visible: false }
   - type: AmbientMusicMarkerMedical
-
-- type: entity
-  parent: SmartFridge
-  id: SmartFridgeMedical
-  suffix: Medical
-  components:
-  - type: SmartFridge
-    flavorText: smart-fridge-request-chemistry
-  - type: AccessReader
-    access: [["Medical"]]

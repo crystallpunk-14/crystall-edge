@@ -237,34 +237,6 @@
       sprite: Structures/Walls/stone-ore.rsi
       map: [ "enum.MiningScannerVisualLayers.Overlay" ]
 
-- type: entity
-  abstract: true
-  id: BaseVeinSalt
-  suffix: Salt
-  description: An ore vein rich with salt.
-  components:
-  - type: OreVein
-    oreChance: 1.0
-    currentOre: OreSalt
-  - type: Sprite
-    layers:
-    - state: rock_salt
-      sprite: Structures/Walls/stone-ore.rsi
-      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
-
-- type: entity
-  abstract: true
-  id: BaseVeinRandom
-  suffix: 33% Random Ores
-  description: A vein rich with strange artifacts.
-  components:
-  - type: OreVein
-    oreChance: 0.33
-    oreRarityPrototypeId: RandomOreDistributionStandard
-
-#endregion
-#region Asteroid Rock
-
 # Visuals separated from the base rock to fix destruction conflicts with gibtonite
 - type: entity
   abstract: true
@@ -287,24 +259,8 @@
   id: AsteroidRockCoal
 
 - type: entity
-  parent: AsteroidRockCoal
-  id: AsteroidRockCoalCrab
-  suffix: Coal Crab
-  components:
-  - type: OreVein
-    currentOre: OreCoalCrab
-
-- type: entity
   parent: [ BaseVeinGold, AsteroidRock ]
   id: AsteroidRockGold
-
-- type: entity
-  parent: AsteroidRockGold
-  id: AsteroidRockGoldCrab
-  suffix: Gold Crab
-  components:
-  - type: OreVein
-    currentOre: OreGoldCrab
 
 - type: entity
   parent: [ BaseVeinDiamond, AsteroidRock ]
@@ -319,24 +275,8 @@
   id: AsteroidRockQuartz
 
 - type: entity
-  parent: AsteroidRockQuartz
-  id: AsteroidRockQuartzCrab
-  suffix: Quartz Crab
-  components:
-  - type: OreVein
-    currentOre: OreQuartzCrab
-
-- type: entity
   parent: [ BaseVeinSilver, AsteroidRock ]
   id: AsteroidRockSilver
-
-- type: entity
-  parent: AsteroidRockSilver
-  id: AsteroidRockSilverCrab
-  suffix: Silver Crab
-  components:
-  - type: OreVein
-    currentOre: OreSilverCrab
 
 # Yes I know it drops steel but we may get smelting at some point
 - type: entity
@@ -344,102 +284,12 @@
   id: AsteroidRockTin
 
 - type: entity
-  parent: AsteroidRockTin
-  id: AsteroidRockTinCrab
-  suffix: Iron Crab
-  components:
-  - type: OreVein
-    currentOre: OreIronCrab
-
-- type: entity
   parent: [ BaseVeinUranium, AsteroidRock ]
   id: AsteroidRockUranium
 
 - type: entity
-  parent: AsteroidRockUranium
-  id: AsteroidRockUraniumCrab
-  suffix: Uranium Crab
-  components:
-  - type: OreVein
-    currentOre: OreUraniumCrab
-
-- type: entity
-  parent: [ BaseVeinSalt, AsteroidRock ]
-  id: AsteroidRockSalt
-
-- type: entity
   parent: [ BaseRockGibtonite, BaseAsteroidRockVisuals, BaseAsteroidRock ]
   id: AsteroidRockGibtonite
-
-- type: entity
-  parent: [ BaseVeinRandom, AsteroidRock ]
-  id: AsteroidRockMining
-
-#endregion
-#region Iron Rock
-
-- type: entity
-  abstract: true
-  id: BaseIronRockVisuals
-  name: ironrock
-  description: A rocky asteroid.
-  components:
-  - type: Icon
-    sprite: Structures/Walls/stone-ironrock.rsi
-    state: full
-  - type: Sprite
-    sprite: Structures/Walls/stone-ironrock.rsi
-
-- type: entity
-  parent: [ BaseIronRockVisuals, BaseAsteroidRock, BaseAsteroidDestructible ]
-  id: IronRock
-
-- type: entity
-  parent: [ BaseVeinRandom, IronRock ]
-  id: IronRockMining
-
-- type: entity
-  parent: [ BaseVeinCoal, IronRock ]
-  id: IronRockCoal
-
-- type: entity
-  parent: [ BaseVeinGold, IronRock ]
-  id: IronRockGold
-
-- type: entity
-  parent: [ BaseVeinPlasma, IronRock ]
-  id: IronRockPlasma
-
-- type: entity
-  parent: [ BaseVeinQuartz, IronRock ]
-  id: IronRockQuartz
-
-- type: entity
-  parent: [ BaseVeinSilver, IronRock ]
-  id: IronRockSilver
-
-- type: entity
-  parent: [ BaseVeinSteel, IronRock ]
-  id: IronRockIron
-
-- type: entity
-  parent: [ BaseVeinUranium, IronRock ]
-  id: IronRockUranium
-
-- type: entity
-  parent: [ BaseVeinSalt, IronRock ]
-  id: IronRockSalt
-
-- type: entity
-  parent: [ BaseRockGibtonite, BaseIronRockVisuals, IronRock ]
-  id: IronRockGibtonite
-
-- type: entity
-  parent: [ BaseVeinDiamond, IronRock ]
-  id: IronRockDiamond
-
-#endregion
-#region Wall Rock
 
 # Rocks and ore veins
 - type: entity
@@ -475,51 +325,6 @@
   - type: Sprite
     sprite: Structures/Walls/stone-dirt.rsi
 
-# Ore veins
-- type: entity
-  parent: [ BaseVeinCoal, WallRock ]
-  id: WallRockCoal
-  components:
-  - type: EntityRemap
-    mask:
-      AsteroidRock: AsteroidRockCoal
-      WallRockChromite: WallRockChromiteCoal
-      WallRockSand: WallRockSandCoal
-      WallRockSnow: WallRockSnowCoal
-
-- type: entity
-  parent: [ BaseVeinGold, WallRock ]
-  id: WallRockGold
-  components:
-  - type: EntityRemap
-    mask:
-      AsteroidRock: AsteroidRockGold
-      WallRockChromite: WallRockChromiteGold
-      WallRockSand: WallRockSandGold
-      WallRockSnow: WallRockSnowGold
-
-- type: entity
-  parent: [ BaseVeinDiamond, WallRock ]
-  id: WallRockDiamond
-  components:
-  - type: EntityRemap
-    mask:
-      AsteroidRock: AsteroidRockDiamond
-      WallRockChromite: WallRockChromiteDiamond
-      WallRockSand: WallRockSandDiamond
-      WallRockSnow: WallRockSnowDiamond
-
-- type: entity
-  parent: [ BaseVeinPlasma, WallRock ]
-  id: WallRockPlasma
-  components:
-  - type: EntityRemap
-    mask:
-      AsteroidRock: AsteroidRockPlasma
-      WallRockChromite: WallRockChromitePlasma
-      WallRockSand: WallRockSandPlasma
-      WallRockSnow: WallRockSnowPlasma
-
 - type: entity
   parent: [ BaseVeinQuartz, WallRock ]
   id: WallRockQuartz
@@ -530,17 +335,6 @@
       WallRockChromite: WallRockChromiteQuartz
       WallRockSand: WallRockSandQuartz
       WallRockSnow: WallRockSnowQuartz
-
-- type: entity
-  parent: [ BaseVeinSilver, WallRock ]
-  id: WallRockSilver
-  components:
-  - type: EntityRemap
-    mask:
-      AsteroidRock: AsteroidRockSilver
-      WallRockChromite: WallRockChromiteSilver
-      WallRockSand: WallRockSandSilver
-      WallRockSnow: WallRockSnowSilver
 
 - type: entity
   parent: [ BaseVeinSteel, WallRock ]
@@ -554,31 +348,6 @@
       WallRockSnow: WallRockSnowTin
 
 - type: entity
-  parent: [ BaseVeinUranium, WallRock ]
-  id: WallRockUranium
-  components:
-  - type: EntityRemap
-    mask:
-      AsteroidRock: AsteroidRockUranium
-      WallRockChromite: WallRockChromiteUranium
-      WallRockSand: WallRockSandUranium
-      WallRockSnow: WallRockSnowUranium
-
-- type: entity
-  parent: [ BaseVeinSalt, WallRock ]
-  id: WallRockSalt
-  components:
-  - type: EntityRemap
-    mask:
-      AsteroidRock: AsteroidRockSalt
-      WallRockChromite: WallRockChromiteSalt
-      WallRockSand: WallRockSandSalt
-      WallRockSnow: WallRockSnowSalt
-
-#endregion
-#region Wall Rock (Snow)
-
-- type: entity
   parent: WallRock
   id: WallRockSnow
   name: snowdrift
@@ -590,43 +359,12 @@
     sprite: Structures/Walls/stone-snow.rsi
 
 - type: entity
-  parent: [ BaseVeinCoal, WallRockSnow ]
-  id: WallRockSnowCoal
-
-- type: entity
-  parent: [ BaseVeinGold, WallRockSnow ]
-  id: WallRockSnowGold
-
-- type: entity
-  parent: [ BaseVeinDiamond, WallRockSnow ]
-  id: WallRockSnowDiamond
-
-- type: entity
-  parent: [ BaseVeinPlasma, WallRockSnow ]
-  id: WallRockSnowPlasma
-
-- type: entity
   parent: [ BaseVeinQuartz, WallRockSnow ]
   id: WallRockSnowQuartz
 
 - type: entity
-  parent: [ BaseVeinSilver, WallRockSnow ]
-  id: WallRockSnowSilver
-
-- type: entity
   parent: [ BaseVeinSteel, WallRockSnow ]
   id: WallRockSnowTin
-
-- type: entity
-  parent: [ BaseVeinUranium, WallRockSnow ]
-  id: WallRockSnowUranium
-
-- type: entity
-  parent: [ BaseVeinSalt, WallRockSnow ]
-  id: WallRockSnowSalt
-
-#endregion
-#region Wall Rock (Sand)
 
 - type: entity
   parent: WallRock
@@ -640,43 +378,12 @@
     sprite: Structures/Walls/stone-sand.rsi
 
 - type: entity
-  parent: [ BaseVeinCoal, WallRockSand ]
-  id: WallRockSandCoal
-
-- type: entity
-  parent: [ BaseVeinGold, WallRockSand ]
-  id: WallRockSandGold
-
-- type: entity
-  parent: [ BaseVeinDiamond, WallRockSand ]
-  id: WallRockSandDiamond
-
-- type: entity
-  parent: [ BaseVeinPlasma, WallRockSand ]
-  id: WallRockSandPlasma
-
-- type: entity
   parent: [ BaseVeinQuartz, WallRockSand ]
   id: WallRockSandQuartz
 
 - type: entity
-  parent: [ BaseVeinSilver, WallRockSand ]
-  id: WallRockSandSilver
-
-- type: entity
   parent: [ BaseVeinSteel, WallRockSand ]
   id: WallRockSandTin
-
-- type: entity
-  parent: [ BaseVeinUranium, WallRockSand ]
-  id: WallRockSandUranium
-
-- type: entity
-  parent: [ BaseVeinSalt, WallRockSand ]
-  id: WallRockSandSalt
-
-#endregion
-#region Wall Rock (Chromite)
 
 - type: entity
   id: WallRockChromite
@@ -690,39 +397,9 @@
     sprite: Structures/Walls/stone-chromite.rsi
 
 - type: entity
-  parent: [ BaseVeinCoal, WallRockChromite ]
-  id: WallRockChromiteCoal
-
-- type: entity
-  parent: [ BaseVeinGold, WallRockChromite ]
-  id: WallRockChromiteGold
-
-- type: entity
-  parent: [ BaseVeinDiamond, WallRockChromite ]
-  id: WallRockChromiteDiamond
-
-- type: entity
-  parent: [ BaseVeinPlasma, WallRockChromite ]
-  id: WallRockChromitePlasma
-
-- type: entity
   parent: [ BaseVeinQuartz, WallRockChromite ]
   id: WallRockChromiteQuartz
 
 - type: entity
-  parent: [ BaseVeinSilver, WallRockChromite ]
-  id: WallRockChromiteSilver
-
-- type: entity
   parent: [ BaseVeinSteel, WallRockChromite ]
   id: WallRockChromiteTin
-
-- type: entity
-  parent: [ BaseVeinUranium, WallRockChromite ]
-  id: WallRockChromiteUranium
-
-- type: entity
-  parent: [ BaseVeinSalt, WallRockChromite ]
-  id: WallRockChromiteSalt
-
-#endregion

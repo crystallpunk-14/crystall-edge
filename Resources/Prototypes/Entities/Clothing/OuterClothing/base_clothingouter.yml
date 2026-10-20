@@ -101,27 +101,6 @@
 
 - type: entity
   abstract: true
-  parent: ClothingOuterStorageFoldableBase
-  id: ClothingOuterStorageFoldableBaseOpened
-  suffix: opened
-  components:
-  - type: Foldable
-    folded: true
-  - type: Clothing
-    equippedPrefix: open
-  - type: Item
-    heldPrefix: open
-  - type: Sprite
-    layers:
-    - state: icon
-      map: [ "unfoldedLayer" ]
-      visible: false
-    - state: icon-open
-      map: ["foldedLayer"]
-      visible: true
-
-- type: entity
-  abstract: true
   parent: ClothingOuterJacketBase
   id: ClothingOuterJacketToggleableBase
   components:

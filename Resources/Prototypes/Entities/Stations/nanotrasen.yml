@@ -24,24 +24,3 @@
   categories: [ HideSpawnMenu ]
   components:
     - type: Transform
-
-- type: entity
-  id: NanotrasenCentralCommand
-  parent:
-    - BaseStation
-    - BaseStationAlertLevels
-    - BaseStationNanotrasen
-  categories: [ HideSpawnMenu ]
-  components:
-    - type: Transform
-
-- type: entity
-  id: StandardStationArena
-  parent:
-  - BaseStation
-  - BaseStationJobsSpawning
-  - BaseStationRecords
-  - BaseStationNanotrasen
-  categories: [ HideSpawnMenu ]
-  components:
-    - type: Transform

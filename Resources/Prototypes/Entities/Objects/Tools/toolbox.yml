@@ -76,33 +76,6 @@
     sprite: Objects/Tools/Toolboxes/toolbox_yellow.rsi
 
 - type: entity
-  name: electrical toolbox
-  suffix: Syndicate, Turret
-  parent: ToolboxElectrical
-  id: ToolboxElectricalTurret
-  description: A toolbox typically stocked with electrical gear.
-  components:
-  - type: Damageable
-  - type: Injurable
-    damageContainer: Inorganic
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 1
-      behaviors:
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-      - !type:SpawnEntitiesBehavior # todo this is not a good way to be doing this. Should probably use a construction graph
-        offset: 0
-        spawn:
-          WeaponTurretSyndicateDisposable:
-            min: 1
-            max: 1
-  - type: StaticPrice
-    price: 1350
-
-- type: entity
   name: artistic toolbox
   parent: ToolboxBase
   id: ToolboxArtistic
@@ -145,4 +118,3 @@
     state: icon
   - type: Item
     sprite: Objects/Tools/Toolboxes/toolbox_gold.rsi
-

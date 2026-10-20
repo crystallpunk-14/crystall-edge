@@ -9,32 +9,6 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitJacketMonkey
-  name: bartender's monkey jacket
-  description: A decent jacket, for a decent monkey.
-  components:
-  - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Service/punpun.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Service/punpun.rsi
-  - type: SuitSensor
-    controlsLocked: false
-    randomMode: false
-    mode: SensorCords
-
-- type: entity
-  parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitBartenderPurple
-  name: purple bartender's uniform
-  description: A special purple outfit to serve drinks.
-  components:
-  - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Service/bartender_purple.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Service/bartender_purple.rsi
-
-- type: entity
-  parent: ClothingUniformBase
   id: ClothingUniformJumpsuitChaplain
   name: chaplain's jumpsuit
   description: It's a black jumpsuit, often worn by religious folk.
@@ -97,17 +71,6 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitPsychologist
-  name: psychologist suit
-  description: I don't lose things. I place things in locations which later elude me.
-  components:
-  - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Service/psychologist.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Service/psychologist.rsi
-
-- type: entity
-  parent: ClothingUniformBase
   id: ClothingUniformJumpsuitTramDriver
   name: tram driver jumpsuit
   description: Perfectly ironed, for well-prepared professionals.
@@ -116,61 +79,6 @@
     sprite: Clothing/Uniforms/Jumpsuits/Service/tramdriver.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuits/Service/tramdriver.rsi
-
-- type: entity
-  parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitReporter
-  name: reporter suit
-  description: A good reporter remains a skeptic all their life.
-  components:
-  - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Service/reporter.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Service/reporter.rsi
-
-- type: entity
-  parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitSafari
-  name: safari suit
-  description: Perfect for a jungle excursion.
-  components:
-  - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Service/safari.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Service/safari.rsi
-
-- type: entity
-  parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitJournalist
-  name: journalist suit
-  description: If journalism is good, it is controversial, by nature.
-  components:
-  - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Service/journalist.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Service/journalist.rsi
-
-- type: entity
-  parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitMonasticRobeDark
-  name: dark monastic robe
-  description: It's a dark robe, often worn by religious folk.
-  components:
-  - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Service/monastic_robe_dark.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Service/monastic_robe_dark.rsi
-
-- type: entity
-  parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitMonasticRobeLight
-  name: light monastic robe
-  description: It's a light robe, often worn by religious folk.
-  components:
-  - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Service/monastic_robe_light.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Service/monastic_robe_light.rsi
 
 - type: entity
   parent: ClothingUniformBase
@@ -183,29 +91,6 @@
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuits/Service/musician.rsi
 
-
-- type: entity
-  parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitLawyerRed
-  name: red lawyer suit
-  description: A flashy red suit worn by lawyers and show-offs.
-  components:
-  - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Service/lawyerred.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Service/lawyerred.rsi
-
-- type: entity
-  parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitLawyerBlue
-  name: blue lawyer suit
-  description: A flashy blue suit worn by lawyers and show-offs.
-  components:
-  - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Service/lawyerblue.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Service/lawyerblue.rsi
-
 - type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitLawyerBlack
@@ -216,28 +101,6 @@
     sprite: Clothing/Uniforms/Jumpsuits/Service/lawyerblack.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuits/Service/lawyerblack.rsi
-
-- type: entity
-  parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitLawyerPurple
-  name: purple lawyer suit
-  description: A stylish purple piece worn by lawyers and show people.
-  components:
-  - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Service/lawyerpurple.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Service/lawyerpurple.rsi
-
-- type: entity
-  parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitLawyerGood
-  name: good lawyer's suit
-  description: A tacky suit perfect for a CRIMINAL lawyer!
-  components:
-  - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Service/lawyergood.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Service/lawyergood.rsi
 
 - type: entity
   parent: ClothingUniformBase

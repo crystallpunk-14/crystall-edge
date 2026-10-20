@@ -39,55 +39,6 @@
 
 - type: entity
   parent: CrateMedical
-  id: CrateMindShieldImplants
-  name: MindShield implant crate
-  description: Crate filled with 3 MindShield implants.
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      entity_storage:
-        id: MindShieldImplanter
-        amount: 3
-
-- type: entity
-  parent: CrateSurgery
-  id: CrateMedicalSurgery
-  name: surgical supplies crate
-  description: Surgical instruments.
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: Scalpel
-        - id: Retractor
-        - id: Cautery
-        - id: Drill
-        - id: Saw
-        - id: Hemostat
-        - id: ClothingMaskSterile
-
-- type: entity
-  parent: CrateMedical
-  id: CrateMedicalScrubs
-  name: medical scrubs crate
-  description: Medical clothings.
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: UniformScrubsColorGreen
-        - id: UniformScrubsColorPurple
-        - id: UniformScrubsColorBlue
-        - id: ClothingHeadHatSurgcapBlue
-        - id: ClothingHeadHatSurgcapPurple
-        - id: ClothingHeadHatSurgcapGreen
-        - id: ClothingMaskSterile
-          amount: 3
-
-- type: entity
-  parent: CrateMedical
   id: CrateEmergencyBurnKit
   name: emergency burn kit
   description: Crate filled with a burn treatment kit.

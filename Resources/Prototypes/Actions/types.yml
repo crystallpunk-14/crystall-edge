@@ -27,14 +27,6 @@
           True: { color: White }
           False: { color: DimGray }
 
-# base proto for an action that requires a DoAfter
-- type: entity
-  abstract: true
-  parent: BaseAction
-  id: BaseDoAfterAction
-  components:
-  - type: DoAfterArgs
-
 # an action that is done all in le head and cant be prevented by any means
 - type: entity
   abstract: true
@@ -351,21 +343,6 @@
     event: !type:ClearAllOverlaysEvent
 
 - type: entity
-  parent: BaseAction
-  id: ActionAnimalLayEgg
-  name: Lay egg
-  description: Uses hunger to lay an egg.
-  components:
-  - type: Action
-    useDelay: 60
-  - type: Sprite
-    sprite: Objects/Consumable/Food/egg.rsi
-    layers:
-    - state: icon
-  - type: InstantAction
-    event: !type:EntityProductionActionEvent
-
-- type: entity
   parent: BaseMentalAction
   id: ActionSleep
   name: Sleep
@@ -479,20 +456,6 @@
   - type: Tag
     tags:
     - FakeMindShieldImplant
-
-- type: entity
-  parent: BaseToggleAction
-  id: ActionToggleParamedicSiren
-  name: Toggle Paramedic Siren
-  description: Toggles the paramedic siren on and off.
-  components:
-  - type: Action
-    useDelay: 1
-    itemIconStyle: BigAction
-  - type: Sprite
-    sprite: Clothing/OuterClothing/Hardsuits/paramed.rsi
-    layers:
-    - state: icon-siren
 
 - type: entity
   parent: BaseAction

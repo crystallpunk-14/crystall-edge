@@ -71,21 +71,6 @@
         factor: 4 # Coconut water is 94% water
 
 - type: reagent
-  id: CreamOfCoconut
-  name: reagent-name-cream-of-coconut
-  parent: BaseDrink
-  desc: reagent-desc-cream-of-coconut
-  physicalDesc: reagent-physical-desc-syrupy
-  flavor: creamy
-  color: "#FFEABF"
-  metabolisms:
-    Digestion:
-      effects:
-      - !type:Satiate
-        satiationType: Thirst
-        factor: 2
-
-- type: reagent
   id: CafeLatte
   name: reagent-name-cafe-latte
   parent: BaseDrink
@@ -143,48 +128,6 @@
     collection: FootstepSlime
 
 - type: reagent
-  id: IcedCoffee
-  name: reagent-name-iced-coffee
-  parent: BaseDrink
-  desc: reagent-desc-iced-coffee
-  physicalDesc: reagent-physical-desc-aromatic
-  flavor: coffee
-  color: "#102838"
-  metamorphicSprite:
-    sprite: Objects/Consumable/Drinks/icedcoffeeglass.rsi
-    state: icon_empty
-  metamorphicMaxFillLevels: 5
-  metamorphicFillBaseName: fill-
-  metamorphicChangeColor: false
-  metabolisms:
-    Digestion:
-      metabolites:
-        Theobromine: 0.1
-      effects:
-      - !type:Satiate
-        satiationType: Thirst
-        factor: 2
-      - !type:ModifyStatusEffect
-        effectProto: StatusEffectDrowsiness
-        time: 2
-        type: Remove
-
-- type: reagent
-  id: IcedGreenTea
-  name: reagent-name-iced-green-tea
-  parent: BaseDrink
-  desc: reagent-desc-iced-green-tea
-  physicalDesc: reagent-physical-desc-aromatic
-  flavor: icedtea
-  color: "#5B821B"
-  metamorphicSprite:
-    sprite: Objects/Consumable/Drinks/icedgreenteaglass.rsi
-    state: icon_empty
-  metamorphicMaxFillLevels: 5
-  metamorphicFillBaseName: fill-
-  metamorphicChangeColor: false
-
-- type: reagent
   id: IcedTea
   name: reagent-name-iced-tea
   parent: BaseDrink
@@ -202,7 +145,6 @@
     Digestion:
       metabolites:
         Theobromine: 0.1
-
 
 - type: reagent
   id: JuiceBerryPoison
@@ -271,12 +213,6 @@
   parent: Milk
   name: reagent-name-milk-goat
   desc: reagent-desc-milk-goat
-
-- type: reagent
-  id: MilkSheep
-  parent: Milk
-  name: reagent-name-milk-sheep
-  desc: reagent-desc-milk-sheep
 
 - type: reagent
   id: MilkOat
@@ -372,31 +308,6 @@
   flavor: fizzy
   color: "#619494"
   fizziness: 0.8
-
-- type: reagent
-  id: SoyLatte
-  name: reagent-name-soy-latte
-  parent: BaseDrink
-  desc: reagent-desc-soy-latte
-  physicalDesc: reagent-physical-desc-strong-smelling
-  flavor: soy
-  color: "#664300"
-  metamorphicSprite:
-    sprite: Objects/Consumable/Drinks/soy_latte.rsi
-    state: icon_empty
-  metamorphicMaxFillLevels: 1
-  metamorphicFillBaseName: fill-
-  metamorphicChangeColor: false
-  metabolisms:
-    Digestion:
-      effects:
-      - !type:Satiate
-        satiationType: Thirst
-        factor: 2
-      - !type:ModifyStatusEffect
-        effectProto: StatusEffectDrowsiness
-        time: 2
-        type: Remove
 
 - type: reagent
   id: Tea
@@ -496,59 +407,6 @@
   metamorphicChangeColor: false
 
 - type: reagent
-  id: DryRamen
-  name: reagent-name-dry-ramen
-  parent: BaseDrink
-  desc: reagent-desc-dry-ramen
-  physicalDesc: reagent-physical-desc-wormy
-  flavor: cheapnoodles
-  color: "#664300"
-  metabolisms:
-    Digestion:
-      effects:
-      - !type:Satiate
-        satiationType: Hunger
-        factor: 1
-
-- type: reagent
-  id: HotRamen
-  name: reagent-name-hot-ramen
-  parent: BaseDrink
-  desc: reagent-desc-hot-ramen
-  physicalDesc: reagent-physical-desc-wormy
-  flavor: cheapnoodles
-  color: "#664300"
-  metabolisms:
-    Digestion:
-      effects:
-      - !type:Satiate
-        satiationType: Hunger
-        factor: 4
-
-- type: reagent
-  id: ArnoldPalmer
-  name: reagent-name-arnold-palmer
-  parent: BaseAlcohol
-  desc: reagent-desc-arnold-palmer
-  physicalDesc: reagent-physical-desc-sweet
-  flavor: arnoldpalmer
-  color: "#d8cc5d"
-  metamorphicSprite:
-    sprite: Objects/Consumable/Drinks/arnoldpalmer.rsi
-    state: icon_empty
-  metamorphicMaxFillLevels: 4
-  metamorphicFillBaseName: fill-
-  metamorphicChangeColor: false
-  metabolisms:
-    Digestion:
-      metabolites:
-        Theobromine: 0.1
-      effects:
-      - !type:Satiate
-        satiationType: Thirst
-        factor: 4
-
-- type: reagent
   id: Pilk
   name: reagent-name-pilk
   parent: BaseDrink
@@ -574,38 +432,6 @@
   color: "#B3B599"
 
 - type: reagent
-  id: OrangeLimeSoda
-  name: reagent-name-orange-lime-soda
-  parent: BaseDrink
-  desc: reagent-desc-orange-lime-soda
-  physicalDesc: reagent-physical-desc-strong-smelling
-  flavor: sweet
-  color: "#CCCC99"
-  metamorphicSprite:
-    sprite: Objects/Consumable/Drinks/orangelime_soda.rsi
-    state: icon_empty
-  metamorphicMaxFillLevels: 3
-  metamorphicFillBaseName: fill-
-  metamorphicChangeColor: false
-  fizziness: 0.3
-
-- type: reagent
-  id: Rewriter
-  name: reagent-name-rewriter
-  parent: BaseDrink
-  desc: reagent-desc-rewriter
-  physicalDesc: reagent-physical-desc-strong-smelling
-  flavor: sweet
-  color: "#485000"
-  metamorphicSprite:
-    sprite: Objects/Consumable/Drinks/rewriter.rsi
-    state: icon_empty
-  metamorphicMaxFillLevels: 5
-  metamorphicFillBaseName: fill-
-  metamorphicChangeColor: true
-  fizziness: 0.3
-
-- type: reagent
   id: Mopwata
   name: reagent-name-mopwata
   parent: BaseDrink
@@ -619,18 +445,3 @@
       - !type:Satiate
         satiationType: Thirst
         factor: 0.6
-
-- type: reagent
-  id: Tortuga
-  name: reagent-name-tortuga
-  parent: BaseDrink
-  desc: reagent-desc-tortuga
-  physicalDesc: reagent-physical-desc-sweet
-  flavor: tortuga
-  color: "#1c8c40"
-  metamorphicSprite:
-    sprite: Objects/Consumable/Drinks/tortuga.rsi
-    state: icon_empty
-  metamorphicMaxFillLevels: 4
-  metamorphicFillBaseName: fill-
-  metamorphicChangeColor: false

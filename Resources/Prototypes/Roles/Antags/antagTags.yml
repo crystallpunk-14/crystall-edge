@@ -12,6 +12,3 @@
 
 - type: antagTag
   id: Midround # This antag can be chosen midround via events. (Ex. Clones, Initial Infected)
-
-- type: antagTag
-  id: Converted # This antag is selected by being converted midround. (Ex. Revs, Zombies, Xorgs)

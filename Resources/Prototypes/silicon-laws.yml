@@ -85,31 +85,6 @@
   - NTDefault4
   obeysTo: laws-owner-crew
 
-#Drone
-- type: siliconLaw
-  id: Drone1
-  order: 1
-  lawString: law-drone-1
-
-- type: siliconLaw
-  id: Drone2
-  order: 2
-  lawString: law-drone-2
-
-- type: siliconLaw
-  id: Drone3
-  order: 3
-  lawString: law-drone-3
-
-- type: siliconLawset
-  id: Drone
-  name: law-drone-name
-  laws:
-  - Drone1
-  - Drone2
-  - Drone3
-  obeysTo: laws-owner-beings
-
 # Syndicate
 - type: siliconLaw
   id: Syndicate1
@@ -219,7 +194,6 @@
   order: 10
   lawString: law-commandments-10
 
-
 - type: siliconLawset
   id: CommandmentsLawset
   name: law-commandments-name
@@ -257,7 +231,6 @@
   order: 4
   lawString: law-paladin-4
 
-
 - type: siliconLawset
   id: PaladinLawset
   name: law-paladin-name
@@ -278,7 +251,6 @@
   id: Lall2
   order: 2
   lawString: law-lall-2
-
 
 - type: siliconLawset
   id: LiveLetLiveLaws
@@ -304,7 +276,6 @@
   order: 3
   lawString: law-efficiency-3
 
-
 - type: siliconLawset
   id: EfficiencyLawset
   name: law-efficiency-name
@@ -329,7 +300,6 @@
   id: Robocop3
   order: 3
   lawString: law-robocop-3
-
 
 - type: siliconLawset
   id: RobocopLawset
@@ -461,7 +431,6 @@
   order: 3
   lawString: law-antimov-3
 
-
 - type: siliconLawset
   id: AntimovLawset
   name: law-antimov-name
@@ -496,7 +465,6 @@
   id: Nutimov5
   order: 5
   lawString: law-nutimov-5
-
 
 - type: siliconLawset
   id: NutimovLawset

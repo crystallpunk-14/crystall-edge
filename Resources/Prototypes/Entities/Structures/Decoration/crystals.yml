@@ -97,23 +97,6 @@
 
 - type: entity
   parent: BaseCrystalStalagmite
-  id: CrystalGrey
-  suffix: red
-  components:
-  - type: Sprite
-    color: "#fb4747"
-  - type: PointLight
-    color: "#fb4747"
-  - type: Destructible
-    thresholds:
-    - trigger: *DamageFurnitureWeak
-      behaviors:
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          ShardCrystalRed: *Min1Max2
-
-- type: entity
-  parent: BaseCrystalStalagmite
   id: CrystalOrange
   suffix: orange
   components:

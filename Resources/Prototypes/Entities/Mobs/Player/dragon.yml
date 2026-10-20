@@ -188,32 +188,6 @@
     - MinorAntagonists
 
 - type: entity
-  parent: BaseMobDragon
-  id: MobDragonDungeon
-  suffix: Dungeon
-  components:
-  - type: GhostRole
-    description: ghost-role-information-space-dragon-dungeon-description
-    rules: ghost-role-information-space-dragon-dungeon-rules
-    raffle:
-      settings: default
-  - type: SlowOnDamage
-    speedModifierThresholds:
-      100: 0.7
-  - type: MobThresholds
-    thresholds:
-      0: Alive
-      200: Dead
-  # less meat spawned since it's a lot easier to kill
-  - type: ToolRefinable
-    refineResult:
-    - id: FoodMeatDragon
-  - type: MeleeWeapon
-    damage:
-      types:
-        Piercing: 12
-
-- type: entity
   parent: BaseAction
   id: ActionSpawnRift
   name: Summon Carp Rift

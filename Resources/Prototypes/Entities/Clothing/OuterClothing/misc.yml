@@ -1,36 +1,5 @@
 - type: entity
   parent: ClothingOuterStorageBase
-  id: ClothingOuterApron
-  name: apron
-  description: A fancy apron for a stylish person.
-  components:
-  - type: Sprite
-    sprite: Clothing/OuterClothing/Misc/apron.rsi
-  - type: Clothing
-    sprite: Clothing/OuterClothing/Misc/apron.rsi
-  - type: Tag
-    tags:
-    - Apron
-    - WhitelistChameleon
-
-- type: entity
-  parent: ClothingOuterStorageBase
-  id: ClothingOuterApronBar
-  suffix: Bartender
-  name: apron
-  description: A darker apron designed for bartenders.
-  components:
-  - type: Sprite
-    sprite: Clothing/OuterClothing/Misc/apronbar.rsi
-  - type: Clothing
-    sprite: Clothing/OuterClothing/Misc/apronbar.rsi
-  - type: Tag
-    tags:
-    - Apron
-    - WhitelistChameleon
-
-- type: entity
-  parent: ClothingOuterStorageBase
   id: ClothingOuterApronBotanist
   name: apron
   suffix: Botanical
@@ -44,33 +13,6 @@
     tags:
     - Apron
     - WhitelistChameleon
-
-- type: entity
-  parent: ClothingOuterStorageBase
-  id: ClothingOuterApronChef
-  name: apron
-  suffix: Chef
-  description: An apron-jacket used by a high class chef.
-  components:
-  - type: Sprite
-    sprite: Clothing/OuterClothing/Misc/apronchef.rsi
-  - type: Clothing
-    sprite: Clothing/OuterClothing/Misc/apronchef.rsi
-  - type: Tag
-    tags:
-    - Apron
-    - WhitelistChameleon
-
-- type: entity
-  parent: ClothingOuterStorageBase
-  id: ClothingOuterJacketChef
-  name: chef jacket
-  description: An apron-jacket used by a high class chef.
-  components:
-  - type: Sprite
-    sprite: Clothing/OuterClothing/Misc/chef.rsi
-  - type: Clothing
-    sprite: Clothing/OuterClothing/Misc/chef.rsi
 
 - type: entity
   parent: ClothingOuterBase
@@ -96,48 +38,6 @@
 
 - type: entity
   parent: ClothingOuterBase
-  id: ClothingOuterCardborg
-  name: cardborg costume
-  description: An ordinary cardboard box with holes cut in the sides.
-  components:
-  - type: Sprite
-    sprite: Clothing/OuterClothing/Misc/cardborg.rsi
-  - type: Clothing
-    sprite: Clothing/OuterClothing/Misc/cardborg.rsi
-  - type: TypingIndicatorClothing
-    proto: robot
-  - type: Tag
-    tags:
-    - WhitelistChameleon
-
-- type: entity
-  parent: ClothingOuterBaseToggleable
-  id: ClothingOuterHoodieChaplain
-  name: chaplain's hoodie
-  description: Black and strict chaplain hoodie.
-  components:
-  - type: Sprite
-    sprite: Clothing/OuterClothing/Misc/chaplain_hoodie.rsi
-  - type: Clothing
-    sprite: Clothing/OuterClothing/Misc/chaplain_hoodie.rsi
-  - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHatHoodChaplainHood
-
-- type: entity
-  parent: ClothingOuterBase
-  id: ClothingOuterPonchoClassic
-  name: classic poncho
-  description: A warm and comfy classic poncho.
-  components:
-  - type: Sprite
-    sprite: Clothing/OuterClothing/Misc/classicponcho.rsi
-  - type: Clothing
-    sprite: Clothing/OuterClothing/Misc/classicponcho.rsi
-  - type: SpanishAccent
-    relayAccent: true
-
-- type: entity
-  parent: ClothingOuterBase
   id: ClothingOuterRobesCult
   name: cult robes
   description: There's no cult without classic red/crimson cult robes.
@@ -148,61 +48,11 @@
     sprite: Clothing/OuterClothing/Misc/cultrobes.rsi
 
 - type: entity
-  parent: ClothingOuterBase
-  id: ClothingOuterRobesJudge
-  name: judge robes
-  description: This robe commands authority.
-  components:
-  - type: Sprite
-    sprite: Clothing/OuterClothing/Misc/judge.rsi
-  - type: Clothing
-    sprite: Clothing/OuterClothing/Misc/judge.rsi
-
-- type: entity
-  parent: ClothingOuterBase
-  id: ClothingOuterPoncho
-  name: poncho
-  description: A warm and comfy poncho.
-  components:
-  - type: Sprite
-    sprite: Clothing/OuterClothing/Misc/poncho.rsi
-  - type: Clothing
-    sprite: Clothing/OuterClothing/Misc/poncho.rsi
-  - type: SpanishAccent
-    relayAccent: true
-
-- type: entity
-  parent: ClothingOuterBase
-  id: ClothingOuterSanta
-  name: santa suit
-  description: Ho ho ho!
-  components:
-  - type: Sprite
-    sprite: Clothing/OuterClothing/Misc/santa.rsi
-  - type: Clothing
-    sprite: Clothing/OuterClothing/Misc/santa.rsi
-
-- type: entity
   abstract: true
   parent: [ ClothingOuterBase, AllowSuitStorageClothingGasTanks, BaseMagicalContraband ]
   id: ClothingOuterWizardBase
   components:
   - type: WizardClothes
-
-# Is this wizard wearing a fanny pack???
-- type: entity
-  parent: ClothingOuterWizardBase
-  id: ClothingOuterWizardViolet
-  name: violet wizard robes
-  description: A bizarre gem-encrusted violet robe that radiates magical energies.
-  components:
-  - type: Sprite
-    sprite: Clothing/OuterClothing/Misc/violetwizard.rsi
-  - type: Clothing
-    sprite: Clothing/OuterClothing/Misc/violetwizard.rsi
-  - type: Tag
-    tags:
-    - WhitelistChameleon
 
 - type: entity
   parent: ClothingOuterWizardBase
@@ -218,64 +68,6 @@
     tags:
     - CorgiWearable
     - WhitelistChameleon
-
-- type: entity
-  parent: ClothingOuterWizardBase
-  id: ClothingOuterWizardRed
-  name: red wizard robes
-  description: Strange-looking, red, hat-wear that most certainly belongs to a real magic user.
-  components:
-  - type: Sprite
-    sprite: Clothing/OuterClothing/Misc/redwizard.rsi
-  - type: Clothing
-    sprite: Clothing/OuterClothing/Misc/redwizard.rsi
-  - type: Tag
-    tags:
-    - WhitelistChameleon
-
-- type: entity
-  parent: ClothingOuterBase
-  id: ClothingOuterWizardFake
-  name: fake wizard robes
-  description: Covered in glittery stars and mystery stains. Instantly boosts your arcane fashion sense.
-  components:
-  - type: Sprite
-    sprite: Clothing/OuterClothing/Misc/wizard_fake.rsi
-  - type: Clothing
-    sprite: Clothing/OuterClothing/Misc/wizard_fake.rsi
-
-- type: entity
-  parent: ClothingOuterBase
-  id: ClothingOuterSkub
-  name: skub suit
-  description: 'Skub is crudely written on the outside of this cylindrical suit.'
-  components:
-  - type: Sprite
-    sprite: Clothing/OuterClothing/Misc/skubbody.rsi
-  - type: Clothing
-    sprite: Clothing/OuterClothing/Misc/skubbody.rsi
-
-- type: entity
-  parent: ClothingOuterBase
-  id: ClothingOuterPlagueSuit
-  name: plague doctor suit
-  description: A bad omen.
-  components:
-  - type: Sprite
-    sprite: Clothing/OuterClothing/Misc/plaguedoctorsuit.rsi
-  - type: Clothing
-    sprite: Clothing/OuterClothing/Misc/plaguedoctorsuit.rsi
-
-- type: entity
-  parent: ClothingOuterBase
-  id: ClothingOuterNunRobe
-  name: nun robe
-  description: Maximum piety in this star system.
-  components:
-  - type: Sprite
-    sprite: Clothing/OuterClothing/Misc/nunrobe.rsi
-  - type: Clothing
-    sprite: Clothing/OuterClothing/Misc/nunrobe.rsi
 
 - type: entity
   parent: ClothingOuterBase
@@ -404,14 +196,3 @@
         color: "#164d0f"
       - state: equipped-OUTERCLOTHING-lines
         color: "#000000"
-
-- type: entity
-  parent: ClothingOuterBase
-  id: ClothingOuterRedRacoon
-  name: red racoon suit
-  description: Fluffy suit of red racoon!
-  components:
-  - type: Sprite
-    sprite: Clothing/OuterClothing/Misc/red_racoon.rsi
-  - type: Clothing
-    sprite: Clothing/OuterClothing/Misc/red_racoon.rsi

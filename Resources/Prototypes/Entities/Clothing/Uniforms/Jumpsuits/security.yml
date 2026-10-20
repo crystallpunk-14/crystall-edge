@@ -160,17 +160,6 @@
       - state: overlay-inhand-right
 
 - type: entity
-  parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitSecBlue
-  name: blue shirt and tie
-  description: I'm a little busy right now, Calhoun.
-  components:
-  - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Security/security_blue.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Security/security_blue.rsi
-
-- type: entity
   parent: [ClothingUniformBase, BaseSecurityContraband]
   id: ClothingUniformJumpsuitSecGrey
   name: grey security jumpsuit

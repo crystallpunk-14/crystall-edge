@@ -4,21 +4,6 @@
 ## Metals resist brute, making them resilient to common attacks and especially bullets.
 ## Neutral against burns, making burn the preferred damage to destroy it.
 
-# Extremely strong metal that's unavailable to crew.
-- type: damageModifierSet
-  id: PlastitaniumMod
-  coefficients:
-    Piercing: 0.7 # Bullets aren't a good option against metal
-  flatReductions:
-    Blunt: 20
-    Slash: 20
-    Piercing: 20
-    Heat: 20
-    Cold: 20
-    Shock: 20
-    Caustic: 20
-    Structural: 9
-
 # Strong metal used by crew to protect important areas and items.
 # Used for static entities which mostly never move.
 - type: damageModifierSet
@@ -222,19 +207,6 @@
     Slash: 2
     Piercing: 1.5
     Heat: 2
-
-# Halfway between thread and plastic.
-- type: damageModifierSet
-  id: DurathreadMod
-  coefficients:
-    Slash: 1.5
-    Piercing: 1.2
-    Heat: 1.5
-    Caustic: 1.5
-  flatReductions:
-    Blunt: 2
-    Cold: 2
-    Shock: 2
 
 # A little bit resistant to everything.
 - type: damageModifierSet

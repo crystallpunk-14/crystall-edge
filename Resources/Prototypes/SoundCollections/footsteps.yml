@@ -85,16 +85,6 @@
   - /Audio/Items/Toys/skates.ogg
 
 - type: soundCollection
-  id: FootstepDuck
-  files:
-  - /Audio/Items/Toys/quack.ogg
-
-- type: soundCollection
-  id: FootstepLizardSlippers
-  files:
-  - /Audio/Items/Toys/weh.ogg
-
-- type: soundCollection
   id: FootstepAsteroid
   files:
   - /Audio/Effects/Footsteps/asteroid1.ogg
@@ -155,22 +145,6 @@
   - /Audio/Effects/Footsteps/woodbarefoot5.ogg
 
 - type: soundCollection
-  id: FootstepBounce
-  files:
-  - /Audio/Effects/Footsteps/bounce.ogg
-
-- type: soundCollection
-  id: FootstepClownFast
-  files:
-  - /Audio/Effects/Footsteps/clownspiderstep1.ogg
-  - /Audio/Effects/Footsteps/clownspiderstep2.ogg
-
-- type: soundCollection
-  id: FootstepThud
-  files:
-  - /Audio/Effects/Footsteps/largethud.ogg
-
-- type: soundCollection
   id: FootstepSnake
   files:
   - /Audio/Effects/Footsteps/snake1.ogg
@@ -185,11 +159,6 @@
   - /Audio/Effects/Footsteps/bells3.ogg
   - /Audio/Effects/Footsteps/bells4.ogg
   - /Audio/Effects/Footsteps/bells5.ogg
-
-- type: soundCollection
-  id: FootstepSlip
-  files:
-  - /Audio/Effects/slip.ogg
 
 - type: soundCollection
   id: FootstepPuddle
@@ -210,11 +179,6 @@
   - /Audio/Effects/Footsteps/blood5.ogg
 
 - type: soundCollection
-  id: FootstepSticky
-  files:
-  - /Audio/Effects/Footsteps/meatslap.ogg
-
-- type: soundCollection
   id: FootstepSpurs
   files:
   - /Audio/Effects/Footsteps/spurs1.ogg
@@ -227,19 +191,9 @@
   - /Audio/Effects/Footsteps/borgwalk1.ogg
 
 - type: soundCollection
-  id: FootstepXenoborg
-  files:
-  - /Audio/Effects/Footsteps/borgwalk3.ogg
-
-- type: soundCollection
   id: FootstepHoverBorg
   files:
   - /Audio/Effects/Footsteps/borgwalk2.ogg
-
-- type: soundCollection
-  id: FootstepHoverXenoborg
-  files:
-  - /Audio/Effects/Footsteps/borgwalk4.ogg
 
 - type: soundCollection
   id: FootstepHighHeels

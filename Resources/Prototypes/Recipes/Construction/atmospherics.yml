@@ -22,64 +22,12 @@
   conditions:
   - !type:NoUnstackableInTile
 
-# we allow stacking for shit like radiators on top of atmosdevices
-# for now (trademark patent pending)
-- type: construction
-  abstract: true
-  parent: BaseAtmos
-  id: BaseGasDeviceStackable
-
-- type: construction
-  abstract: true
-  parent: BaseGasDevice
-  id: BaseGasUnary
-  graph: GasUnary
-
 - type: construction
   abstract: true
   parent: BaseGasDevice
   id: BaseGasBinary
   graph: GasBinary
   placementMode: AlignAtmosPipeLayers # most binary devices support layers
-
-- type: construction
-  abstract: true
-  parent: BaseGasDeviceStackable
-  id: BaseGasBinaryStackable
-  graph: GasBinary
-  placementMode: AlignAtmosPipeLayers
-
-- type: construction
-  abstract: true
-  parent: BaseGasDevice
-  id: BaseGasTrinary
-  graph: GasTrinary
-# endregion Base
-
-# region Machines
-- type: construction
-  parent: BaseAtmos
-  id: AirAlarmFixture
-  graph: AirAlarm
-  targetNode: air_alarm
-  canBuildInImpassable: true
-  conditions:
-  - !type:WallmountCondition
-
-- type: construction
-  parent: BaseAtmos
-  id: FireAlarm
-  graph: FireAlarm
-  targetNode: fire_alarm
-  canBuildInImpassable: true
-  conditions:
-  - !type:WallmountCondition
-
-- type: construction
-  parent: BaseAtmos
-  id: AirSensor
-  graph: AirSensor
-  targetNode: sensor
 
 - type: construction
   parent: BaseAtmos
@@ -215,35 +163,6 @@
   hide: true
   targetNode: fourwayAlt2
 
-- type: construction
-  parent: BaseGasPipe
-  id: GasPipeManifold
-  targetNode: manifold
-  placementMode: SnapgridCenter
-# endregion Pipes
-
-# region Unary
-- type: construction
-  parent: BaseGasUnary
-  id: GasVentPump
-  targetNode: ventpump
-
-- type: construction
-  parent: BaseGasUnary
-  id: GasPassiveVent
-  targetNode: passivevent
-
-- type: construction
-  parent: BaseGasUnary
-  id: GasVentScrubber
-  targetNode: ventscrubber
-
-- type: construction
-  parent: BaseGasUnary
-  id: GasOutletInjector
-  targetNode: outletinjector
-# endregion Unary
-
 # region Binary
 - type: construction
   parent: BaseGasBinary
@@ -370,62 +289,3 @@
   id: SignalControlledValveAlt2
   hide: true
   targetNode: signalvalveAlt2
-
-- type: construction
-  parent: BaseGasBinary
-  id: GasPort
-  targetNode: port
-  placementMode: SnapgridCenter
-
-- type: construction
-  parent: BaseGasBinary
-  id: GasDualPortVentPump
-  targetNode: dualportventpump
-  placementMode: SnapgridCenter
-
-- type: construction
-  parent: BaseGasBinaryStackable
-  id: HeatExchanger
-  targetNode: radiator
-  placementMode: SnapgridCenter
-
-- type: construction
-  parent: BaseGasBinaryStackable
-  id: HeatExchangerBend
-  name: construction-recipe-heat-exchanger-bend
-  targetNode: bendradiator
-  placementMode: SnapgridCenter
-# endregion Binary
-
-# region Trinary
-- type: construction
-  parent: BaseGasTrinary
-  id: GasFilter
-  targetNode: filter
-  mirror: GasFilterFlipped
-
-- type: construction
-  parent: GasFilter
-  id: GasFilterFlipped
-  hide: true
-  targetNode: filterflipped
-  mirror: GasFilter
-
-- type: construction
-  parent: BaseGasTrinary
-  id: GasMixer
-  targetNode: mixer
-  mirror: GasMixerFlipped
-
-- type: construction
-  parent: GasMixer
-  id: GasMixerFlipped
-  hide: true
-  targetNode: mixerflipped
-  mirror: GasMixer
-
-- type: construction
-  parent: BaseGasTrinary
-  id: PressureControlledValve
-  targetNode: pneumaticvalve
-# endregion Trinary

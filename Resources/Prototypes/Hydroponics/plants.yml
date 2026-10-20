@@ -401,41 +401,6 @@
 
 - type: entity
   parent: BasePlant
-  id: PineapplePlants
-  name: pineapple plant
-  components:
-  - type: Sprite
-    sprite: Objects/Specific/Hydroponics/pineapple.rsi
-  - type: PlantData
-    name: seeds-pineapple-name
-    packetPrototype: PineappleSeeds
-    productPrototypes: [ FoodPineapple ]
-  - type: Plant
-    lifespan: 55
-    maturation: 6
-    production: 6
-    yield: 3
-    potency: 10
-    growthStages: 3
-  - type: PlantHarvest
-    harvestRepeat: Repeat
-  - type: PlantChemicals
-    chemicals:
-      Nutriment:
-        min: 1
-        max: 20
-        potencyDivisor: 20
-      Water:
-        min: 1
-        max: 4
-        potencyDivisor: 25
-      Vitamin:
-        min: 1
-        max: 2
-        potencyDivisor: 50
-
-- type: entity
-  parent: BasePlant
   id: PotatoPlants
   name: potato
   components:
@@ -495,38 +460,6 @@
         min: 4
         max: 5
         potencyDivisor: 5
-
-- type: entity
-  parent: BasePlant
-  id: TeaPlantPlants
-  name: tea plant
-  components:
-  - type: Sprite
-    sprite: Objects/Specific/Hydroponics/tea_plant.rsi
-  - type: PlantData
-    name: seeds-teaplant-name
-    packetPrototype: TeaPlantSeeds
-    productPrototypes: [ LeavesTea ]
-  - type: Plant
-    lifespan: 75
-    maturation: 5
-    production: 3
-    yield: 2
-    potency: 20
-    growthStages: 5
-  - type: PlantHarvest
-    harvestRepeat: Repeat
-  - type: PlantGrowth
-    waterConsumption: 0.6
-  - type: PlantAtmospheric
-    lowHeatTolerance: 278 # 5°C
-    highHeatTolerance: 298 # 25°C
-  - type: PlantChemicals
-    chemicals:
-      Vitamin:
-        min: 1
-        max: 5
-        potencyDivisor: 20
 
 - type: entity
   parent: BasePlant
@@ -1955,72 +1888,6 @@
 
 - type: entity
   parent: BasePlant
-  id: CocoaPlants
-  name: cocoa plant
-  components:
-  - type: Sprite
-    sprite: Objects/Specific/Hydroponics/cocoa.rsi
-  - type: PlantData
-    name: seeds-cocoa-name
-    packetPrototype: CocoaSeeds
-    productPrototypes: [ FoodCocoaPod ]
-  - type: Plant
-    lifespan: 50
-    maturation: 6
-    production: 6
-    yield: 6
-  - type: PlantHarvest
-    harvestRepeat: Repeat
-  - type: PlantGrowth
-    waterConsumption: 1.0
-    nutrientConsumption: 0.8
-  - type: PlantAtmospheric
-    lowHeatTolerance: 278 # 5°C
-    highHeatTolerance: 298 # 25°C
-  - type: PlantChemicals
-    chemicals:
-      Vitamin:
-        min: 1
-        max: 4
-        potencyDivisor: 25
-      Nutriment:
-        min: 1
-        max: 2
-        potencyDivisor: 50
-
-- type: entity
-  parent: BasePlant
-  id: BerryPlants
-  name: berry bush
-  components:
-  - type: Sprite
-    sprite: Objects/Specific/Hydroponics/berries.rsi
-  - type: PlantData
-    name: seeds-berries-name
-    packetPrototype: BerrySeeds
-    productPrototypes: [ FoodBerries ]
-  - type: Plant
-    lifespan: 50
-    maturation: 6
-    production: 6
-    yield: 4
-  - type: PlantHarvest
-    harvestRepeat: Repeat
-  - type: PlantGrowth
-    nutrientConsumption: 0.6
-  - type: PlantChemicals
-    chemicals:
-      Nutriment:
-        min: 2
-        max: 5
-        potencyDivisor: 30
-      Vitamin:
-        min: 1
-        max: 4
-        potencyDivisor: 40
-
-- type: entity
-  parent: BasePlant
   id: BungoPlants
   name: bungo plant
   components:
@@ -2125,75 +1992,6 @@
         min: 1
         max: 2
         potencyDivisor: 50
-
-- type: entity
-  parent: BasePlant
-  id: PumpkinPlants
-  name: pumpkin
-  components:
-  - type: Sprite
-    sprite: Objects/Specific/Hydroponics/pumpkin.rsi
-  - type: PlantData
-    name: seeds-pumpkin-name
-    packetPrototype: PumpkinSeeds
-    productPrototypes: [ FoodPumpkin ]
-    mutationPrototypes: [ BluePumpkinPlants ]
-  - type: Plant
-    lifespan: 55
-    maturation: 10
-    production: 4
-    yield: 2
-    potency: 10
-    growthStages: 3
-  - type: PlantAtmospheric
-    lowHeatTolerance: 278 # 5°C
-    highHeatTolerance: 298 # 25°C
-  - type: PlantChemicals
-    chemicals:
-      PumpkinFlesh:
-        min: 1
-        max: 20
-        potencyDivisor: 5
-      Vitamin:
-        min: 1
-        max: 5
-        potencyDivisor: 20
-
-- type: entity
-  parent: BasePlant
-  id: BluePumpkinPlants
-  name: blue pumpkin
-  components:
-  - type: Sprite
-    sprite: Objects/Specific/Hydroponics/blue_pumpkin.rsi
-  - type: PlantData
-    name: seeds-blue-pumpkin-name
-    packetPrototype: BluePumpkinSeeds
-    productPrototypes: [ FoodBluePumpkin ]
-  - type: Plant
-    lifespan: 55
-    maturation: 10
-    production: 4
-    yield: 2
-    potency: 10
-    growthStages: 3
-  - type: PlantAtmospheric
-    lowHeatTolerance: 278 # 5°C
-    highHeatTolerance: 298 # 25°C
-  - type: PlantChemicals
-    chemicals:
-      Ammonia:
-        min: 1
-        max: 15
-        potencyDivisor: 3
-      Chlorine:
-        min: 1
-        max: 5
-        potencyDivisor: 5
-      Vitamin:
-        min: 1
-        max: 10
-        potencyDivisor: 3
 
 - type: entity
   parent: BasePlant

@@ -1,69 +1,5 @@
 - type: entity
   parent: BaseBulletTrigger
-  id: BulletRocket
-  categories: [ HideSpawnMenu ]
-  name: rocket
-  components:
-  - type: Sprite
-    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
-    layers:
-    - state: frag
-  - type: ExplodeOnTrigger
-  - type: Explosive
-    explosionType: Default
-    maxIntensity: 40
-    intensitySlope: 6
-    totalIntensity: 200
-    maxTileBreak: 1
-  - type: PointLight
-    radius: 3.5
-    color: orange
-    energy: 0.5
-
-- type: entity
-  parent: BaseBulletTrigger
-  id: BulletWeakRocket
-  categories: [ HideSpawnMenu ]
-  name: weak rocket
-  components:
-  - type: Sprite
-    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
-    layers:
-    - state: frag
-  - type: ExplodeOnTrigger
-  - type: Explosive
-    explosionType: Default
-    maxIntensity: 2 # max 30 per tile
-    intensitySlope: 1
-    totalIntensity: 4 # 60 total damage to distribute over tiles
-    maxTileBreak: 1
-  - type: PointLight
-    radius: 3.5
-    color: orange
-    energy: 0.5
-
-- type: entity
-  parent: BaseBullet
-  id: BulletGrenadeBaton
-  categories: [ HideSpawnMenu ]
-  name: baton grenade
-  components:
-  - type: Sprite
-    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
-    layers:
-    - state: grenade
-  - type: Projectile
-    deleteOnCollide: false
-    damage:
-      types:
-        Blunt: 1
-    soundHit:
-      path: /Audio/Effects/gen_hit.ogg
-  - type: StaminaDamageOnCollide
-    damage: 80
-
-- type: entity
-  parent: BaseBulletTrigger
   id: BulletGrenadeBlast
   categories: [ HideSpawnMenu ]
   name: blast grenade
@@ -95,31 +31,6 @@
   - type: SpawnOnTrigger
     proto: GrenadeFlashEffect
   - type: DeleteOnTrigger
-
-- type: entity
-  parent: BaseBulletTrigger
-  id: BulletGrenadeFrag
-  categories: [ HideSpawnMenu ]
-  name: frag grenade
-  components:
-  - type: Sprite
-    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
-    layers:
-    - state: grenade
-  - type: ExplodeOnTrigger
-  - type: Explosive
-    explosionType: Default
-    totalIntensity: 50
-    intensitySlope: 1
-    maxIntensity: 5
-    canCreateVacuum: false
-  - type: ContainerContainer
-    containers:
-      cluster-payload: !type:Container
-  - type: ProjectileGrenade
-    triggerKey: trigger
-    fillPrototype: PelletClusterLessLethal
-    capacity: 30
 
 - type: entity
   parent: BaseBulletTrigger
@@ -192,4 +103,3 @@
     radius: 1
     color: orange
     energy: 0.5
-

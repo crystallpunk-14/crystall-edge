@@ -143,28 +143,6 @@
 
 - type: entity
   parent: [ BaseShellShotgun, BaseSecurityContraband ]
-  id: ShellShotgunImprovised
-  name: improvised shotgun shell
-  description: A homemade shotgun shell loaded with chunks of glass shrapnel. Surprisingly effective, but the spread is so wide that you couldn't hit the broad side of a barn.
-  components:
-  - type: Tag
-    tags:
-    - ShellShotgun
-    - ShellShotgunLight
-  - type: Sprite
-    layers:
-      - state: improvised
-        map: [ "enum.AmmoVisualLayers.Base" ]
-  - type: Construction
-    graph: ImprovisedShotgunShellGraph
-    node: shell
-  - type: CartridgeAmmo
-    proto: PelletShotgunImprovisedSpread
-  - type: SpentAmmoVisuals
-    state: "improvised"
-
-- type: entity
-  parent: [ BaseShellShotgun, BaseSecurityContraband ]
   id: ShellShotgunUranium
   name: uranium shotgun shell
   description: The standard cartridge used by most modern shotguns. Uranium ammunition replaces the lead core of the pellets with fissile material, irradiating targets from the inside.

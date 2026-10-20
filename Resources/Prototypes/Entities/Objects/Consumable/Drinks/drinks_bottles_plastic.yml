@@ -284,21 +284,6 @@
 
 - type: entity
   parent: CustomDrinkJugFilled
-  id: DrinkIcedTeaJug
-  name: iced tea jug
-  description: For when the regular tea is too hot for you. Boohoo.
-  components:
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: IcedTea
-        Quantity: 240
-  - type: Label
-    localizedLabel: reagent-name-iced-tea
-  # TODO new sprite
-
-- type: entity
-  parent: CustomDrinkJugFilled
   id: DrinkDrGibbJug
   name: Dr. Gibb jug
   description: 42 different flavours... in a jug!

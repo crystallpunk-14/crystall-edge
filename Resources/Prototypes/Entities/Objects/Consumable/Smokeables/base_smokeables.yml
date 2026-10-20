@@ -60,17 +60,3 @@
         path: /Audio/Weapons/Guns/Empty/empty.ogg
       ejectSound:
         path: /Audio/Weapons/Guns/Empty/empty.ogg
-
-- type: entity
-  parent: [SolutionSmokable, SolutionTiny, BaseItem]
-  id: BaseVape
-  abstract: true
-  components:
-  - type: Vape
-    damage:
-      types:
-        Heat: 2
-  - type: RefillableSolution
-    solution: smokable
-  - type: ExaminableSolution
-    solution: smokable

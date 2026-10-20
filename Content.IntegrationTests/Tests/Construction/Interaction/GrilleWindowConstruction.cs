@@ -13,6 +13,7 @@ public sealed class GrilleWindowConstruction : InteractionTest
     private const string Window = "Window";
 
     [Test]
+    [Ignore("CrystallEdge")] // CrystallEdge: Grille/Window construction recipes deleted with upstream content
     public async Task WindowOnGrille()
     {
         // Construct Grille
@@ -40,6 +41,7 @@ public sealed class GrilleWindowConstruction : InteractionTest
     [TestCase(Grille, Grille)]
     [TestCase(Window, Grille)]
     [TestCase(Window, Window)]
+    [Ignore("CrystallEdge")] // CrystallEdge: Grille/Window construction recipes deleted with upstream content
     public async Task ConstructionBlocker(string first, string second)
     {
         // Spawn blocking entity

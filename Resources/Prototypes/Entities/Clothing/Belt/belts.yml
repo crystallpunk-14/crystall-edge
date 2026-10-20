@@ -1,78 +1,6 @@
 ## Belts that need/have visualizers
 
 - type: entity
-  parent: [ClothingBeltBase, ClothingSlotBase, BaseCommandContraband]
-  id: ClothingBeltSheath
-  name: sabre sheath
-  description: An ornate sheath designed to hold an officer's blade.
-  components:
-  - type: Sprite
-    sprite: Clothing/Belt/sheath.rsi
-    state: sheath
-  - type: Clothing
-    sprite: Clothing/Belt/sheath.rsi
-  - type: Item
-    size: Ginormous
-    shape:
-    - 0,0,1,2
-    storedOffset: 0,-2
-    storedRotation: 45
-  - type: ItemSlots
-    slots:
-      item:
-        name: Sabre
-        insertVerbText: sheath-insert-verb
-        ejectVerbText: sheath-eject-verb
-        insertSound: /Audio/Items/sheath.ogg
-        ejectSound: /Audio/Items/unsheath.ogg
-        ejectOnBreak: true
-        whitelist:
-          tags:
-          - CaptainSabre
-  - type: ItemMapper
-    mapLayers:
-      sheath-sabre:
-        whitelist:
-          tags:
-          - CaptainSabre
-  - type: Appearance
-
-- type: entity
-  parent: ClothingBeltStorageBase
-  id: ClothingBeltQuiver
-  name: quiver
-  description: Can hold up to 16 arrows, and fits snug around your waist.
-  components:
-  - type: Sprite
-    sprite: Clothing/Belt/quiver.rsi
-    layers:
-    - state: icon
-    - map: [ "enum.StorageContainerVisualLayers.Fill" ]
-      visible: false
-  - type: Clothing
-  - type: Storage
-    grid:
-    - 0,0,7,3
-    maxItemSize: Small
-    whitelist:
-      tags:
-      - Arrow
-      - Plunger
-  - type: Item
-    size: Ginormous
-    shape:
-    - 0,0,5,2
-  - type: Appearance
-  - type: StorageContainerVisuals
-    maxFillLevels: 3
-    fillBaseName: fill-
-  - type: Construction
-    graph: Quiver
-    node: Quiver
-
-## Belts without visualizers
-
-- type: entity
   parent: [ClothingBeltAmmoProviderBase, BaseSecurityBartenderContraband]
   id: ClothingBeltBandolier
   name: bandolier
@@ -128,34 +56,6 @@
     shape:
     - 0,0,4,1
 
-- type: entity
-  parent: [ClothingBeltStorageBase, BaseSyndicateContraband]
-  id: ClothingBeltSyndieHolster
-  name: syndicate shoulder holster
-  description: A deep shoulder holster capable of holding many types of ballistics.
-  components:
-  - type: Sprite
-    sprite: Clothing/Belt/syndieholster.rsi
-  - type: Clothing
-    sprite: Clothing/Belt/syndieholster.rsi
-  - type: Storage
-    maxItemSize: Huge
-    grid:
-    - 0,0,3,3
-    whitelist:
-      components:
-      - Gun
-      - BallisticAmmoProvider
-      - CartridgeAmmo
-  - type: Item
-    size: Ginormous
-    shape:
-    - 0,0,4,2
-  - type: StaticPrice
-    price: 500
-
-## Webbing
-
 # Weirdly the only webbing with a storage whitelist and item mapper.
 # Might be worth making less common (armory only?) and removing the whitelist to eliminate the inconsistency.
 - type: entity
@@ -168,17 +68,6 @@
     sprite: Clothing/Belt/securitywebbing.rsi
   - type: Clothing
     sprite: Clothing/Belt/securitywebbing.rsi
-
-- type: entity
-  parent: [ ClothingBeltStorageBase, BaseSecurityCargoContraband ]
-  id: ClothingBeltMercWebbing
-  name: mercenary webbing
-  description: Ideal for storing everything from ammo to weapons and combat essentials.
-  components:
-  - type: Sprite
-    sprite: Clothing/Belt/mercwebbing.rsi
-  - type: Clothing
-    sprite: Clothing/Belt/mercwebbing.rsi
 
 - type: entity
   parent: ClothingBeltStorageBase

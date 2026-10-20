@@ -6,31 +6,6 @@
   objectType: Item
 # endregion Base
 
-# region Clothing
-- type: construction
-  parent: BaseClothing
-  id: BoneArmor
-  graph: BoneArmor
-  targetNode: armor
-
-- type: construction
-  parent: BaseClothing
-  id: BoneHelmet
-  graph: BoneHelmet
-  targetNode: helmet
-
-- type: construction
-  parent: BaseClothing
-  id: cardHelmet
-  graph: cardHelmet
-  targetNode: cardhelmet
-
-- type: construction
-  parent: BaseClothing
-  id: cardArmour
-  graph: cardArmour
-  targetNode: cardarmour
-
 - type: construction
   parent: BaseClothing
   id: ClothingEyesHudMedSec
@@ -39,31 +14,6 @@
 
 - type: construction
   parent: BaseClothing
-  id: ClothingShoeSlippersDuck
-  graph: ClothingShoeSlippersDuck
-  targetNode: shoes
-
-- type: construction
-  parent: BaseClothing
-  id: ClothingShoeSlippersLizard
-  graph: ClothingShoeSlippersLizard
-  targetNode: shoes
-
-- type: construction
-  parent: BaseClothing
   id: ClothingEyesGlassesSecurity
   graph: GlassesSecHUD
   targetNode: glassesSec
-
-- type: construction
-  parent: BaseClothing
-  id: ClothingBeltQuiver
-  graph: Quiver
-  targetNode: Quiver
-
-- type: construction
-  parent: BaseClothing
-  id: ClothingHeadHelmetJustice
-  graph: HelmetJustice
-  targetNode: helmet
-# endregion Clothing

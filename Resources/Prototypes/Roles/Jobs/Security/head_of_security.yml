@@ -50,12 +50,3 @@
     back:
     - Flash
     - MagazinePistol
-
-- type: chameleonOutfit
-  id: HeadOfSecurityChameleonOutfit
-  job: HeadOfSecurity
-  hasMindShield: true
-  equipment:
-    head: ClothingHeadHatBeretHoS
-    mask: ClothingMaskGasSecurity
-    neck: ClothingNeckCloakHos

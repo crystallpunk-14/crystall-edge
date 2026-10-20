@@ -8,28 +8,6 @@
     sprite: Clothing/Uniforms/Jumpsuits/Medical/chemistry.rsi
 
 - type: entity
-  parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitVirology
-  name: virology jumpsuit
-  description: It's made of a special fiber that gives special protection against biohazards. It has a virologist rank stripe on it.
-  components:
-  - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Medical/virology.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Medical/virology.rsi
-
-- type: entity
-  parent: ClothingUniformBase
-  id: ClothingUniformJumpsuitGenetics
-  name: genetics jumpsuit
-  description: It's made of a special fiber that gives special protection against biohazards. It has a geneticist rank stripe on it.
-  components:
-  - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuits/Medical/genetics.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuits/Medical/genetics.rsi
-
-- type: entity
   parent: [ClothingUniformBase, BaseCommandContraband, ClothingUniformFoldableBase]
   id: ClothingUniformJumpsuitCMO
   name: chief medical officer's jumpsuit

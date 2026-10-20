@@ -89,14 +89,6 @@
       - KillPersonCondition
   - type: SocialObjective
 
-# requires that the target survives the round
-- type: entity
-  abstract: true
-  parent: BaseSocialObjective
-  id: BaseKeepAliveObjective
-  components:
-  - type: KeepAliveCondition
-
 # requires that the target completes at least 50% of their objectives
 - type: entity
   abstract: true
@@ -132,14 +124,6 @@
   id: BaseCodeObjective
   components:
   - type: CodeCondition
-
-# a free objective, which is a free greentext
-- type: entity
-  abstract: true
-  parent: BaseObjective
-  id: BaseFreeObjective
-  components:
-  - type: FreeObjective
 
 # requires the player to perform some action a certain number of times
 - type: entity

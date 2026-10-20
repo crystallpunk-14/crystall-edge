@@ -34,30 +34,6 @@
     - type: StationRecords
 
 - type: entity
-  id: BaseStationArrivals
-  abstract: true
-  components:
-    - type: StationArrivals
-
-- type: entity
-  id: BaseStationCentcomm
-  abstract: true
-  components:
-    - type: StationCentcomm
-
-- type: entity
-  id: BaseStationEvacuation
-  abstract: true
-  components:
-    - type: StationEmergencyShuttle
-
-- type: entity
-  id: BaseStationExpeditions
-  abstract: true
-  components:
-    - type: SalvageExpeditionData
-
-- type: entity
   id: BaseStationMagnet
   abstract: true
   components:

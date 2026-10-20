@@ -49,45 +49,12 @@
 
 - type: entity
   parent: ImmovableRodDespawn
-  id: ImmovableRodSlow
-  suffix: Slow
-  components:
-  - type: ImmovableRod
-    minSpeed: 1
-    maxSpeed: 5
-
-- type: entity
-  parent: ImmovableRodDespawn
   id: ImmovableRodKeepTiles
   suffix: Keep Tiles
   components:
   - type: ImmovableRod
     destroyTiles: false
     hitSoundProbability: 1.0
-
-# For Wizard Polymorph
-- type: entity
-  parent: ImmovableRod
-  id: ImmovableRodWizard
-  suffix: Wizard
-  components:
-  - type: ImmovableRod
-    maxSpeed: 25
-    destroyTiles: false
-    randomizeVelocity: false
-    shouldGib: false
-  - type: Physics
-    bodyType: KinematicController
-  - type: InputMover
-  - type: MovementSpeedModifier
-    baseWeightlessAcceleration: 5
-    baseWeightlessModifier: 2
-    baseWeightlessFriction: 0
-    baseFriction: 0
-    offGridFriction: 0
-  - type: CanMoveInAir
-  - type: MovementAlwaysTouching
-  - type: NoSlip
 
 - type: entity
   parent: ImmovableRodKeepTiles

@@ -154,9 +154,6 @@
   id: BoxCardboard # CargoBounty: BountyCardboardBox. Storage whitelist: MailCart
 
 - type: Tag
-  id: BoxHug # ConstructionGraph: HugBot
-
-- type: Tag
   id: Brain # Storage whitelist: MMI. CargoBounty: BountyBrain
 
 - type: Tag
@@ -166,12 +163,6 @@
   id: Bread # CargoBounty: BountyBread. Blacklisted in BountyFruit and BountyVegetable
 
 - type: Tag
-  id: BrimFlatcapBrown # ConstructionGraph: BladedFlatcapBrown
-
-- type: Tag
-  id: BrimFlatcapGrey # ConstructionGraph: BladedFlatcapGrey
-
-- type: Tag
   id: Brutepack # Storage whitelist: ClothingBeltMedical
 
 - type: Tag
@@ -179,9 +170,6 @@
 
 - type: Tag
   id: BulletFoam # Ammo: WeaponRifleFoam, FoamCrossbow, MagazineFoamBox, BoxDonkSoftBox
-
-- type: Tag
-  id: Bun # LastElement key on burger associated MetamorphRecipes.
 
 - type: Tag
   id: Burger # Food sequence key
@@ -210,9 +198,6 @@
   id: Candle # Storage whitelist: BoxCandle
 
 - type: Tag
-  id: CaneBlade # Storage whitelist: CaneSheath. ItemMapper: CaneSheath
-
-- type: Tag
   id: CannonBall # Ammo: WeaponLauncherPirateCannon, ShuttleGunPirateCannon
 
 - type: Tag
@@ -221,9 +206,6 @@
 - type: Tag
   id: CanPilot # Used by ShuttleConsoleSystem to guard who's allowed to pilot ships. Semi-synonymous with a sentient person/creature.
                # Storage whitelist: BodyBag
-
-- type: Tag
-  id: CaptainSabre # Storage whitelist: ClothingBeltSheath. ItemMapper: ClothingBeltSheath
 
 - type: Tag
   id: Carp # CargoBounty: BountyCarp
@@ -255,12 +237,6 @@
   id: CartridgeCaselessRifle # Specialty ammo for WeaponPistolCobra.
 
 - type: Tag
-  id: CartridgeDebug # Specialty ammo for debug guns like the deadly WeaponPistolDebug.
-
-- type: Tag
-  id: CartridgeHeavyRifle # .10 caliber ammo type only used by WeaponMinigun (but the tag is unused).
-
-- type: Tag
   id: CartridgeLightRifle # .30 caliber used by lmgs and middle range rifles like WeaponLightMachineGunL6, WeaponRifleAk, WeaponSniperMosin.
 
 - type: Tag
@@ -271,11 +247,6 @@
 
 - type: Tag
   id: CartridgeRifle # .20 caliber used by precise rifles like WeaponRifleLecter, WeaponRifleEstoc.
-
-- type: Tag
-  id: CartridgeRocket # Specialty ammo for WeaponLauncherRocket.
-
-#endregion
 
 - type: Tag
   id: Catwalk # If a tagged entity is intersecting a hazard tile entity such as lava or chasms, step triggers on those hazards are cancelled.
@@ -354,9 +325,6 @@
 
 - type: Tag
   id: Cow # Reproductive partner key
-
-- type: Tag
-  id: Crab # MetamorphRecipe: FoodBurgerCrab
 
 - type: Tag
   id: Crayon # SpecialDigestible: OrganAnimalStomach. CargoBounty: BountyCrayon
@@ -479,11 +447,6 @@
   id: Dropper # Storage whitelist: ClothingBeltMedical, ClothingBeltPlant, ChemBag
 
 - type: Tag
-  id: Duck # Reproductive partner key. MetamorphRecipe: FoodBurgerDuck
-
-## E ##
-
-- type: Tag
   id: Ectoplasm # ConstructionGraph: PlushieGhostRevenant
 
 - type: Tag
@@ -547,9 +510,6 @@
 
 - type: Tag
   id: FireExtinguisher # ConstructionGraph: FireBot
-
-- type: Tag
-  id: FireHelmet # ConstructionGraph: FireBot
 
 - type: Tag
   id: FirelockElectronics # ConstructionGraph: Firelock
@@ -688,16 +648,10 @@
   id: HandGrenade # Storage whitelist: ClothingBeltSecurity
 
 - type: Tag
-  id: HappyHonk # ConstructionGraph: HonkBot
-
-- type: Tag
   id: Hardsuit # Used by SolutionInjectOnCollideSystem to guard from injection. Copied TODO replace with a cancellable event
 
 - type: Tag
   id: HardsuitSpatio # ConstructionGraph: HardsuitGoliath
-
-- type: Tag # Used on DungeonRoom prototypes.
-  id: Haunted # PrefabDunGen whitelist on Haunted DungeonConfig.
 
 - type: Tag
   id: Head # ConstructionGraph: RitualSeat
@@ -735,7 +689,6 @@
 
 - type: Tag
   id: HolosignProjector # Storage whitelist: ClothingBeltJanitor
-
 
 - type: Tag
   id: Hotsauce # Storage whitelist: ClothingBeltChef and FoodCartHot. ItemMapper: ClothingBeltChef and FoodCartHot
@@ -785,11 +738,6 @@
   id: JawsOfLife # Storage whitelist: BaseClothingBeltEngineering. ItemMapper: BaseClothingBeltEngineering
 
 - type: Tag
-  id: JanicartKeys # Uses for GenericKeyedVehicle of Janicart
-
-## K ##
-
-- type: Tag
   id: Kangaroo # Used by inventoryTemplate:kangaroo to whitelist clothes wearable by the man shaped animal.
 
 - type: Tag
@@ -813,9 +761,6 @@
 - type: Tag
   id: LaserWeapon # Used for a cargo bounty. Added to all hitscan weapons that shoot lasers.
 
-- type: Tag # Used on DungeonRoom prototypes.
-  id: LavaBrig # PrefabDunGen whitelist on LavaBrig DungeonConfig.
-
 - type: Tag
   id: Lemon # CargoBounty: BountyLemon
 
@@ -834,9 +779,6 @@
 
 # Entities tagged with the following are some sort of gun magazine. Guns whitelist their storage using these tags.
 # Tagged entities always have BallisticAmmoProviderComponent.
-
-- type: Tag
-  id: MagazineDebug # WeaponPistolDebug
 
 - type: Tag
   id: MagazineGrenade # ShuttleGunDuster
@@ -876,9 +818,6 @@
 - type: Tag
   id: MailingUnitElectronics # ConstructionGraph: DisposalMachine
 
-- type: Tag # Used on DungeonRoom prototypes.
-  id: Maints # RoomFill spawner whitelist for MaintsRoomMarker.
-
 - type: Tag
   id: Matchstick # Storage whitelist: Ashtray. ConstructionGraph: ImprovisedShotgunShellGraph
 
@@ -887,9 +826,6 @@
 
 - type: Tag
   id: Meat # SpecialDigestible: OrganReptilianStomach. CargoBounty: BountyFood. Several MetamorphRecipes.
-
-- type: Tag
-  id: Medal # Storage whitelist: MedalCase
 
 - type: Tag
   id: Medkit # CargoBounty: BountyMedkitBox. ConstructionGraph: MediBot
@@ -908,9 +844,6 @@
 
 - type: Tag
   id: MindTransferTarget # Default value in TransferMindOnGibComponent. Moves the mind of the gibed component owner to the tagged giblet.
-
-- type: Tag # Used on DungeonRoom prototypes.
-  id: Mineshaft # PrefabDunGen whitelist on Mineshaft DungeonConfig.
 
 - type: Tag
   id: ModularReceiver # ConstructionGraph: ImprovisedShotgunGraph
@@ -957,9 +890,6 @@
   id: NozzleBackTank # Used by WeaponSprayNozzle to find a tagged entity for supplying ammo.
 
 - type: Tag
-  id: Nugget # ItemCounter: FoodBoxNugget
-
-- type: Tag
   id: NukeOpsUplink # Used by NukeopsRuleSystem to find nukie uplinks during warops. Whitelisting for ListingPrototypes.
 
 ## O ##
@@ -983,9 +913,6 @@
   id: OreUranium # CargoBounty: BountySalvageOreUranium
 
 ## P ##
-
-- type: Tag
-  id: PackageDelivery # ItemMapper: MailCart
 
 - type: Tag
   id: Packet # Storage whitelist: ClothingBeltChef
@@ -1026,9 +953,6 @@
 
 - type: Tag
   id: Pie # CargoBounty: BountyPie. Blacklisted in BountyFruit and BountyVegetable.
-
-- type: Tag
-  id: Pig # Reproductive partner key.
 
 - type: Tag
   id: Pill # Storage whitelist: PillCanister. SpecialDigestible: OrganMothStomach, OrganReptilianStomach
@@ -1186,9 +1110,6 @@
 - type: Tag
   id: SaltShaker # Storage whitelist: ClothingBeltChef. ItemMapper: ClothingBeltChef
 
-- type: Tag # Used on DungeonRoom prototypes.
-  id: SalvageExperiment # PrefabDunGen whitelist on Experiment DungeonConfig.
-
 - type: Tag
   id: SalvageScrap # CargoBounty: BountySalvageScrap
 
@@ -1206,9 +1127,6 @@
 
 - type: Tag
   id: SecurityHelmet # ConstructionGraph: HelmetJustice
-
-- type: Tag
-  id: Sheep # Reproductive partner key
 
 - type: Tag
   id: Sheet # MaterialStorage whitelist for many machines and lathes. Storage whitelist: MaterialBag
@@ -1252,9 +1170,6 @@
 - type: Tag
   id: Smokable # Storage whitelist: BaseSmokingPipe (and children)
 
-- type: Tag # Used on DungeonRoom prototypes.
-  id: SnowyLabs # PrefabDunGen whitelist on SnowyLabs DungeonConfig.
-
 - type: Tag
   id: Soap # Storage whitelist: BorgModuleCustodial, ClothingBeltJanitor. CargoBounty: BountySoap
 
@@ -1275,9 +1190,6 @@
 
 - type: Tag
   id: SpiderCraft # Used on various ConstructionPrototypes to create exclusive recipes for tagged entity.
-
-- type: Tag
-  id: SpookyFog # Used by RulesPrototype SpookyFog inside AmbientMusicPrototype to play sounds when tagged entity is near the listener.
 
 - type: Tag
   id: Spray # Storage whitelist: ClothingBeltJanitor, ClothingBeltMedical, JanitorialTrolley.
@@ -1317,9 +1229,6 @@
   id: SubdermalImplant # Storage whitelist: BaseImplanter
 
 - type: Tag
-  id: SuitEVA # ConstructionGraph: ClownHardsuit, MimeHardsuit
-
-- type: Tag
   id: Sunglasses # ConstructionGraph: GlassesSecHUD
 
 - type: Tag
@@ -1338,11 +1247,6 @@
   id: SyringeGunAmmo # Storage whitelist: LauncherSyringe
 
 - type: Tag
-  id: Spellbook # Storage whitelist: Bookshelf
-
-## T ##
-
-- type: Tag
   id: TabletopBoard # Storage whitelist: BooksBag, BorgModuleService
 
 - type: Tag
@@ -1356,9 +1260,6 @@
 
 - type: Tag
   id: TeleportScrollWarpBlacklist # blacklists a warp point for the wizard's teleport scroll
-
-- type: Tag
-  id: TheaterBagel # used for Bagel Station's randomized theater
 
 - type: Tag
   id: TimerBrigElectronics # ConstructionGraph: Timer
@@ -1410,11 +1311,6 @@
   id: TurretCompatibleWeapon # Used in the construction of sentry turrets
 
 - type: Tag
-  id: TurretControlElectronics # Used in the construction of sentry turret control panels
-
-## U ##
-
-- type: Tag
   id: Unimplantable # Targeting blacklist: BaseImplanter
 
 - type: Tag
@@ -1433,9 +1329,6 @@
 
 - type: Tag
   id: Vegetable # CargoBounty: BountyVegetable
-
-- type: Tag # Used on DungeonRoom prototypes.
-  id: VGRoidInterior # RoomFill spawner whitelist for VGRoidInteriorRoomMarker.
 
 - type: Tag
   id: VimPilot # Used synonymously with harmless animals such as mice, station pets, or genetic ancestors (monkeys).

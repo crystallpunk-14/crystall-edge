@@ -287,29 +287,29 @@ ClothingHeadHelmetHelmetOld: ClothingHeadHelmetBasic
 ClothingOuterVestKevlar: ClothingOuterArmorBasic
 
 # 2023-07-10
-Intercom: IntercomCommon
+Intercom: null
 
 # 2023-07-12
 ToyAssistant: ToyFigurinePassenger
 
 # 2023-07-20
-ForensicGloves: ClothingHandsGlovesForensic
+ForensicGloves: null
 
 # 2023-07-24
-ClothingEyesGlassesBeer: ClothingEyesHudBeer
+ClothingEyesGlassesBeer: null
 
 # 2023-08-01
 lantern: Lantern
 lanternextrabright: LanternFlash
 
 # 2023-08-04
-BoxMagazineLightRifleHighVelocity: BoxMagazineLightRifle
+BoxMagazineLightRifleHighVelocity: null
 BoxMagazineMagnumSubMachineGunHighVelocity: null
-BoxMagazinePistolCaselessRifleHighVelocity: BoxMagazinePistolCaselessRifle
-BoxMagazinePistolHighCapacityHighVelocity: BoxMagazinePistolHighCapacity
-BoxMagazinePistolHighVelocity: BoxMagazinePistol
-BoxMagazinePistolSubMachineGunHighVelocity: BoxMagazinePistolSubMachineGun
-BoxMagazineRifleHighVelocity: BoxMagazineRifle
+BoxMagazinePistolCaselessRifleHighVelocity: null
+BoxMagazinePistolHighCapacityHighVelocity: null
+BoxMagazinePistolHighVelocity: null
+BoxMagazinePistolSubMachineGunHighVelocity: null
+BoxMagazineRifleHighVelocity: null
 BulletCaselessRifleHighVelocity: BulletCaselessRifle
 BulletLightRifleHighVelocity: BulletLightRifle
 BulletMagnumHighVelocity: BulletMagnum
@@ -320,7 +320,7 @@ CartridgeLightRifleHighVelocity: CartridgeLightRifle
 CartridgeMagnumHighVelocity: CartridgeMagnum
 CartridgePistolHighVelocity: CartridgePistol
 CartridgeRifleHighVelocity: CartridgeRifle
-MagazineBoxCaselessRifleHighVelocity: MagazineBoxCaselessRifle
+MagazineBoxCaselessRifleHighVelocity: null
 MagazineBoxLightRifleHighVelocity: MagazineBoxLightRifle
 MagazineBoxMagnumHighVelocity: MagazineBoxMagnum
 MagazineBoxPistolHighVelocity: MagazineBoxPistol
@@ -341,10 +341,10 @@ SpeedLoaderPistolHighVelocity: null
 #If the name is anything to go off of, these are presumably just CEV-Eris versions of the snow rock (which we already have.)
 #They are practically never used in this way however, so they're migrated to the basic rock type.
 MountainRock: AsteroidRock
-MountainRockMining: AsteroidRockMining
+MountainRockMining: null
 
 # 2023-08-08
-WindowTintedDirectional: WindowFrostedDirectional
+WindowTintedDirectional: null
 
 # 2023-08-10
 SyringeSpaceacillin: null
@@ -374,7 +374,7 @@ VendingMachineSmartFridge: SmartFridge
 # 2023-12-18
 ReagentContainerMilk: DrinkMilkCarton
 ReagentContainerMilkSoy: DrinkSoyMilkCarton
-ReagentContainerMilkOat: DrinkOatMilkCarton
+ReagentContainerMilkOat: null
 
 # 2023-12-20
 MiasmaCanister: AmmoniaCanister
@@ -392,20 +392,20 @@ WarpPointBeaconService: null
 
 # 2023-12-30
 ClothingEyesGlassesCosmeticSunglasses: ClothingEyesGlassesSunglasses
-SpawnPointAssistant: SpawnPointPassenger
+SpawnPointAssistant: null
 
 # 2024-01-05
 DrinkGoldschlagerBottleFull: DrinkGildlagerBottleFull
-DrinkGoldschlagerGlass: DrinkGildlagerGlass
+DrinkGoldschlagerGlass: null
 
 # 2024-01-07
 ClosetBase: ClosetSteelBase
 
 # 2024-01-08
-SalvagePartsT4Spawner: SalvageLootSpawner
-SalvagePartsT3Spawner: SalvageLootSpawner
-SalvagePartsT3T4Spawner: SalvageLootSpawner
-SalvagePartsT2Spawner: SalvageLootSpawner
+SalvagePartsT4Spawner: null
+SalvagePartsT3Spawner: null
+SalvagePartsT3T4Spawner: null
+SalvagePartsT2Spawner: null
 #SuperCapacitorStockPart: CapacitorStockPart
 #QuadraticCapacitorStockPart: CapacitorStockPart
 #NanoManipulatorStockPart: MicroManipulatorStockPart
@@ -482,8 +482,8 @@ YellowOxygenTank: OxygenTank
 YellowOxygenTankFilled: OxygenTankFilled
 
 # 2024-02-12
-FoodDonutBlumpkin: FoodDonutBluePumpkin
-FoodDonutJellyBlumpkin: FoodDonutJellyBluePumpkin
+FoodDonutBlumpkin: null
+FoodDonutJellyBlumpkin: null
 
 # 2024-02-19
 Drone: null
@@ -514,13 +514,13 @@ BookDetective: BookRandomStory
 
 # 2024-03-07
 AirlockExternalEasyPry: AirlockExternal
-AirlockExternalGlassEasyPry: AirlockExternalGlass
+AirlockExternalGlassEasyPry: null
 AirlockGlassShuttleEasyPry: AirlockGlassShuttle
 AirlockShuttleEasyPry: AirlockShuttle
-AirlockExternalEasyPryLocked: AirlockExternalLocked
-AirlockExternalGlassEasyPryLocked: AirlockExternalGlassLocked
-AirlockGlassShuttleEasyPryLocked: AirlockExternalGlassShuttleLocked
-AirlockShuttleEasyPryLocked: AirlockExternalShuttleLocked
+AirlockExternalEasyPryLocked: null
+AirlockExternalGlassEasyPryLocked: null
+AirlockGlassShuttleEasyPryLocked: null
+AirlockShuttleEasyPryLocked: null
 
 # 2024-03-10
 FoodChili: FoodChiliPepper
@@ -530,9 +530,9 @@ FoodChilly: FoodChillyPepper
 # ClothingBackpackSatchelFilledDetective: ClothingBackpackSatchelSecurityFilledDetective
 
 # 2024-03-11
-ImprovisedExplosive: FireBomb
-ImprovisedExplosiveEmpty: FireBombEmpty
-ImprovisedExplosiveFuel: FireBombFuel
+ImprovisedExplosive: null
+ImprovisedExplosiveEmpty: null
+ImprovisedExplosiveFuel: null
 
 # 2024-03-16
 ClothingHeadHatHairflower: FoodPoppy
@@ -584,24 +584,24 @@ MagazineBoxPistolRubber: MagazineBoxPistol
 MagazineBoxMagnumRubber: MagazineBoxMagnum
 MagazineBoxLightRifleRubber: MagazineBoxLightRifle
 MagazineBoxRifleRubber: MagazineBoxRifle
-MagazineBoxRifleBigRubber: MagazineBoxRifleBig
-MagazineBoxCaselessRifleRubber: MagazineBoxCaselessRifle
-BoxMagazinePistolRubber: BoxMagazinePistol
-BoxMagazinePistolHighCapacityRubber: BoxMagazinePistolHighCapacity
-BoxMagazinePistolSubMachineGunRubber: BoxMagazinePistolSubMachineGun
-BoxMagazineLightRifleRubber: BoxMagazineLightRifle
-BoxMagazineRifleRubber: BoxMagazineRifle
-BoxMagazineCaselessRifleRubber: BoxMagazinePistolCaselessRifle
+MagazineBoxRifleBigRubber: null
+MagazineBoxCaselessRifleRubber: null
+BoxMagazinePistolRubber: null
+BoxMagazinePistolHighCapacityRubber: null
+BoxMagazinePistolSubMachineGunRubber: null
+BoxMagazineLightRifleRubber: null
+BoxMagazineRifleRubber: null
+BoxMagazineCaselessRifleRubber: null
 BoxMagazineMagnumSubMachineGunRubber: null
 WeaponPistolMk58Nonlethal: WeaponPistolMk58
 WeaponPistolN1984Nonlethal: WeaponPistolN1984
-WeaponSubMachineGunDrozdRubber: WeaponSubMachineGunDrozd
+WeaponSubMachineGunDrozdRubber: null
 WeaponRifleLecterRubber: WeaponRifleLecter
 
 # 2024-04-26
-GlassBoxLaserBroken: GlassBoxBroken
-ReinforcementRadioSyndicateMonkey: ReinforcementRadioSyndicateAncestor
-ReinforcementRadioSyndicateMonkeyNukeops: ReinforcementRadioSyndicateAncestorNukeops
+GlassBoxLaserBroken: null
+ReinforcementRadioSyndicateMonkey: null
+ReinforcementRadioSyndicateMonkeyNukeops: null
 
 # 2024-05-01
 DrinkBottleGoldschlager: DrinkBottleGildlager
@@ -611,20 +611,20 @@ soda_dispenser: SodaDispenser
 chem_master: ChemMaster
 
 # 2024-05-21
-CrateJanitorExplosive: ClosetJanitorBombFilled
+CrateJanitorExplosive: null
 
 # 2024-05-27
 DoorRemoteFirefight: null
 
 # 2024-06-03
-AirlockServiceCaptainLocked: AirlockCaptainLocked
+AirlockServiceCaptainLocked: null
 
 #2024-06-05
-DisasterVictimSpawner: CommandVisitorSpawner
-LostCargoTechnicianSpawner: VisitorCargoTechnicianSpawner
+DisasterVictimSpawner: null
+LostCargoTechnicianSpawner: null
 ClownTroupeSpawner: null
-TravelingChefSpawner: VisitorChefSpawner
-SyndieDisasterVictimSpawner: SyndieVisitorSpawner
+TravelingChefSpawner: null
+SyndieDisasterVictimSpawner: null
 
 # 2024-06-15
 ClothingOuterCoatInspector: ClothingOuterCoatJensen
@@ -633,41 +633,41 @@ ClothingOuterCoatInspector: ClothingOuterCoatJensen
 FloorTileItemReinforced: PartRodMetal1
 
 #2024-06-25
-BookChefGaming: BookHowToCookForFortySpaceman
+BookChefGaming: null
 
 #2024-06-29
-IntercomAssesmbly: IntercomAssembly
+IntercomAssesmbly: null
 
 # 2024-07-7
-SignScience1: SignScience
-SignScience2: SignScience
-SignXenobio2: SignXenobio
-SignXenolab: SignXenobio
-SignToxins2: SignToxins
-SignMinerDock: SignShipDock
-SignChemistry1: SignChem
-SignChemistry2: SignChem
-SignCourt: SignLawyer
-SignAtmosMinsky: SignAtmos
-SignDrones: SignMaterials
+SignScience1: null
+SignScience2: null
+SignXenobio2: null
+SignXenolab: null
+SignToxins2: null
+SignMinerDock: null
+SignChemistry1: null
+SignChemistry2: null
+SignCourt: null
+SignAtmosMinsky: null
+SignDrones: null
 SignShield: null # what was this even for?
 SignHydro2: SignHydro1
 SignHydro3: SignHydro1
 
 # 2024-07-27
-LogicGate: LogicGateOr
+LogicGate: null
 
 # 2024-08-08
 MaterialReclaimer: null
 MaterialReclaimerMachineCircuitboard: null
 
 # 2024-08-11
-FoodTacoBeef: FoodTacoShell
-FoodTacoChicken: FoodTacoShell
-FoodTacoFish: FoodTacoShell
-FoodTacoBeefSupreme: FoodTacoShell
-FoodTacoChickenSupreme: FoodTacoShell
-FoodTacoRat: FoodTacoShell
+FoodTacoBeef: null
+FoodTacoChicken: null
+FoodTacoFish: null
+FoodTacoBeefSupreme: null
+FoodTacoChickenSupreme: null
+FoodTacoRat: null
 
 FoodMeatHumanKebab: FoodKebabSkewer
 FoodMeatLizardtailKebab: FoodKebabSkewer
@@ -744,16 +744,16 @@ HeadBorgJanitor: LightHeadBorg
 TorsoBorgJanitor: TorsoBorg
 
 # 2024-11-17
-PresentRandomAsh: PresentRandomCoal
+PresentRandomAsh: null
 
 # 2024-11-19
-CrateCrewMonitoringBoards: CrateCrewMonitoring
+CrateCrewMonitoringBoards: null
 
 # 2024-11-25
 CrateSlimepersonLifeSupport: CrateEmergencyEVA
 
 # 2024-12-01
-DungeonMasterCircuitBoard: GameMasterCircuitBoard
+DungeonMasterCircuitBoard: null
 
 # 2024-12-12
 FloraRockSolid01: FloraRockSolid
@@ -765,12 +765,12 @@ FloraStalagmite3: FloraStalagmite
 FloraStalagmite4: FloraStalagmite
 FloraStalagmite5: FloraStalagmite
 FloraStalagmite6: FloraStalagmite
-FloraGreyStalagmite1: FloraGreyStalagmite
-FloraGreyStalagmite2: FloraGreyStalagmite
-FloraGreyStalagmite3: FloraGreyStalagmite
-FloraGreyStalagmite4: FloraGreyStalagmite
-FloraGreyStalagmite5: FloraGreyStalagmite
-FloraGreyStalagmite6: FloraGreyStalagmite
+FloraGreyStalagmite1: null
+FloraGreyStalagmite2: null
+FloraGreyStalagmite3: null
+FloraGreyStalagmite4: null
+FloraGreyStalagmite5: null
+FloraGreyStalagmite6: null
 FloraTree01: FloraTree
 FloraTree02: FloraTree
 FloraTree03: FloraTree
@@ -789,9 +789,9 @@ FloraTreeLarge03: FloraTreeLarge
 FloraTreeLarge04: FloraTreeLarge
 FloraTreeLarge05: FloraTreeLarge
 FloraTreeLarge06: FloraTreeLarge
-FloraTreeConifer01: FloraTreeConifer
-FloraTreeConifer02: FloraTreeConifer
-FloraTreeConifer03: FloraTreeConifer
+FloraTreeConifer01: null
+FloraTreeConifer02: null
+FloraTreeConifer03: null
 ShadowTree01: ShadowTree
 ShadowTree02: ShadowTree
 ShadowTree03: ShadowTree
@@ -806,7 +806,7 @@ LightTree05: LightTree
 LightTree06: LightTree
 
 # 2024-12-28
-DrinkIrishCarBomb: DrinkIrishSlammer
+DrinkIrishCarBomb: null
 
 # 2025-01-06
 BorgModuleRadiationDetection: null
@@ -817,7 +817,7 @@ ClothingMaskSexyClown: null
 ClothingMaskSexyMime: null
 
 # 2025-01-27
-FoodCondimentPacketFrostoil: FoodCondimentPacketColdsauce
+FoodCondimentPacketFrostoil: null
 
 # 2025-02-05
 WeaponSubMachineGunVector: null
@@ -827,8 +827,8 @@ WeaponSubMachineGunVectorRubber: null
 WallShuttleInterior: WallShuttle
 
 # 2025-02-18
-PosterContrabandLustyExomorph: PosterContrabandRealExomorph
-PosterContrabandBustyBackdoorExoBabes6: PosterContrabandRouny
+PosterContrabandLustyExomorph: null
+PosterContrabandBustyBackdoorExoBabes6: null
 
 # 2025-02-20
 MagazineBoxAntiMaterielBig: null
@@ -851,27 +851,27 @@ OmnizineChemistryBottle: ChemistryBottleOmnizine
 HydrogenChemistryBottle: ChemistryBottleHydrogen
 CognizineChemistryBottle: ChemistryBottleCognizine
 EthanolChemistryBottle: ChemistryBottleEthanol
-PaxChemistryBottle: ChemistryBottlePax
-MuteToxinChemistryBottle: ChemistryBottleMuteToxin
-LeadChemistryBottle: ChemistryBottleLead
+PaxChemistryBottle: null
+MuteToxinChemistryBottle: null
+LeadChemistryBottle: null
 ToxinChemistryBottle: ChemistryBottleToxin
 
 # 2025-03-29
-ClothingBackpackDuffelSyndicateRaidBundle: ClothingBackpackSyndicateRaidBundle
+ClothingBackpackDuffelSyndicateRaidBundle: null
 
 # 2025-04-14
-MailRobustToolsSpam: MailSpamLetter
-MailNanotrasenSpam: MailSpamLetter
-MailSyndicateSpam: MailSpamLetter
-MailAlternativeDimensionSpam: MailSpamLetter
-MailNarsieCultSpam: MailSpamLetter
-MailRageCageSpam: MailSpamLetter
-MailVoyageAdvertisementSpam: MailSpamLetter
-MailScienceSpiderClanSpam: MailSpamLetter
-MailAllAccessSpam: MailSpamLetter
-MailCentcommRetributionSpam: MailSpamLetter
-MailEvilLizardSpam: MailSpamLetter
-MailParentsNeedMoneySpam: MailSpamLetter
+MailRobustToolsSpam: null
+MailNanotrasenSpam: null
+MailSyndicateSpam: null
+MailAlternativeDimensionSpam: null
+MailNarsieCultSpam: null
+MailRageCageSpam: null
+MailVoyageAdvertisementSpam: null
+MailScienceSpiderClanSpam: null
+MailAllAccessSpam: null
+MailCentcommRetributionSpam: null
+MailEvilLizardSpam: null
+MailParentsNeedMoneySpam: null
 
 # 2025-04-15
 SimpleXenoArtifact: null
@@ -881,7 +881,7 @@ MediumXenoArtifactItem: null
 VariedXenoArtifactItem: null
 
 # 2025-04-19
-ClothingOuterHardsuitSyndicate: ClothingOuterEVASuitSyndicate
+ClothingOuterHardsuitSyndicate: null
 AirlockMaintCommonLocked: AirlockMaintLocked
 AirlockMaintIntLocked: AirlockMaintLocked
 
@@ -890,20 +890,20 @@ ComputerCargoShuttle: ComputerShuttleCargo
 CargoShuttleComputerCircuitboard: CargoShuttleConsoleCircuitboard
 
 # 2025-05-02
-CigPackMixedNasty: CigPackMixed
-CigPackMixedMedical: CigPackMixed
-CigaretteIpecac: CigaretteNutriment
-CigarettePax: CigaretteSaline
-CigaretteTHC: CigaretteRobustHarvest
-CigaretteMuteToxin: CigaretteSodiumPolyacrylate
-CigaretteSpaceDrugs: CigaretteLipolicide
-CigaretteMilk: CigaretteHaloperidol
-CigaretteBread: CigaretteBbqSauce
+CigPackMixedNasty: null
+CigPackMixedMedical: null
+CigaretteIpecac: null
+CigarettePax: null
+CigaretteTHC: null
+CigaretteMuteToxin: null
+CigaretteSpaceDrugs: null
+CigaretteMilk: null
+CigaretteBread: null
 
 # 2025-05-09
-ClothingOuterHardsuitBasic: ClothingOuterHardsuitEVA
+ClothingOuterHardsuitBasic: null
 ClothingHeadHelmetHardsuitBasic: null
-SuitStorageBasic: SuitStorageEVA
+SuitStorageBasic: null
 
 # 2025-05-18
 ClothingNeckCloakMiner: null
@@ -913,9 +913,9 @@ MatterBinStockPart: MicroManipulatorStockPart
 CapacitorStockPart: MicroManipulatorStockPart
 
 # 2025-05-26 Turrets
-WeaponEnergyTurretStation: WeaponEnergyTurretSecurity
-WeaponEnergyTurretStationControlPanel: WeaponEnergyTurretSecurityControlPanel
-WeaponEnergyTurretStationMachineCircuitboard: WeaponEnergyTurretSecurityMachineCircuitboard
+WeaponEnergyTurretStation: null
+WeaponEnergyTurretStationControlPanel: null
+WeaponEnergyTurretStationMachineCircuitboard: null
 
 # 2025-05-30
 SpawnHonkBot: null
@@ -946,32 +946,32 @@ BoxMagazineMagnumSubMachineGun: null
 BoxMagazineMagnumSubMachineGunPractice: null
 
 # 2025-06-09
-BarSignAlignTile: BarSign
-BarSignComboCafeAlignTile: BarSignComboCafe
-BarSignEmergencyRumPartyAlignTile: BarSignEmergencyRumParty
-BarSignLV426AlignTile: BarSignLV426
-BarSignMaidCafeAlignTile: BarSignMaidCafe
-BarSignMalteseFalconAlignTile: BarSignMalteseFalcon
-BarSignOfficerBeerskyAlignTile: BarSignOfficerBeersky
-BarSignRobustaCafeAlignTile: BarSignRobustaCafe
-BarSignTheAleNathAlignTile: BarSignTheAleNath
-BarSignTheBirdCageAlignTile: BarSignTheBirdCage
-BarSignTheCoderbusAlignTile: BarSignTheCoderbus
-BarSignTheDrunkCarpAlignTile: BarSignTheDrunkCarp
-BarSignEngineChangeAlignTile: BarSignEngineChange
-BarSignTheHarmbatonAlignTile: BarSignTheHarmbaton
-BarSignTheLightbulbAlignTile: BarSignTheLightbulb
-BarSignTheLooseGooseAlignTile: BarSignTheLooseGoose
-BarSignTheNetAlignTile: BarSignTheNet
-BarSignTheOuterSpessAlignTile: BarSignTheOuterSpess
-BarSignTheSinguloAlignTile: BarSignTheSingulo
-BarSignTheSunAlignTile: BarSignTheSun
-BarSignWiggleRoomAlignTile: BarSignWiggleRoom
-BarSignZocaloAlignTile: BarSignZocalo
-BarSignEmprahAlignTile: BarSignEmprah
-BarSignSpacebucksAlignTile: BarSignSpacebucks
-BarSignMaltroachAlignTile: BarSignMaltroach
-BarSignWhiskeyEchoesAlignTile: BarSignWhiskeyEchoes
+BarSignAlignTile: null
+BarSignComboCafeAlignTile: null
+BarSignEmergencyRumPartyAlignTile: null
+BarSignLV426AlignTile: null
+BarSignMaidCafeAlignTile: null
+BarSignMalteseFalconAlignTile: null
+BarSignOfficerBeerskyAlignTile: null
+BarSignRobustaCafeAlignTile: null
+BarSignTheAleNathAlignTile: null
+BarSignTheBirdCageAlignTile: null
+BarSignTheCoderbusAlignTile: null
+BarSignTheDrunkCarpAlignTile: null
+BarSignEngineChangeAlignTile: null
+BarSignTheHarmbatonAlignTile: null
+BarSignTheLightbulbAlignTile: null
+BarSignTheLooseGooseAlignTile: null
+BarSignTheNetAlignTile: null
+BarSignTheOuterSpessAlignTile: null
+BarSignTheSinguloAlignTile: null
+BarSignTheSunAlignTile: null
+BarSignWiggleRoomAlignTile: null
+BarSignZocaloAlignTile: null
+BarSignEmprahAlignTile: null
+BarSignSpacebucksAlignTile: null
+BarSignMaltroachAlignTile: null
+BarSignWhiskeyEchoesAlignTile: null
 
 # 2025-06-21
 ClothingNeckHeadphones: ClothingMultipleHeadphones
@@ -983,7 +983,7 @@ HamtrChassis: null
 VimChassis: null
 
 # 2025-08-01
-FoodDonutJellySlugcat: FoodDonutJellyScurret
+FoodDonutJellySlugcat: null
 
 # 2025-08-06
 TrashBagBlue: TrashBagHolding
@@ -1013,7 +1013,7 @@ ToyOwlman: ToyFigurineOwlman
 ToySkeleton: ToyFigurineSkeleton
 
 # 2025-10-28
-DrinkKiraSpecial: DrinkOrangeLimeSodaGlass
+DrinkKiraSpecial: null
 
 # 2025-12-02
 GhostWarpPoint: null
@@ -1025,7 +1025,7 @@ DebugSubstation: SubstationBasicEmpty
 DebugSubstationWall: BaseSubstationWall
 DebugAPC: BaseAPC
 MagazineCaselessRifle: MagazinePistolCaselessRifle
-MagazineCaselessRiflePractice: MagazinePistolCaselessRiflePractice
+MagazineCaselessRiflePractice: null
 SpeedLoaderPistol: null
 SpeedLoaderPistolPractice: null
 
@@ -1037,8 +1037,8 @@ SpawnPointZookeeper: null
 SpawnPointBoxer: null
 
 # 2025-12-07
-FigureSpawner: MechFigurineSpawner50
-ToySpawner: PlushieSpawner50
+FigureSpawner: null
+ToySpawner: null
 SpacemenFigureSpawner: SpacemenFigurineSpawner90
 
 # 2026-01-07
@@ -1086,25 +1086,25 @@ TowelColorMime: null
 # 2026-02-18
 # Replace cargo order crates which contain exactly one item with the item, parcel wrapped.
 CrateVendingMachineRestockBoozeFilled: VendingMachineRestockBooze
-CrateVendingMachineRestockChefvendFilled: VendingMachineRestockChefvend
-CrateVendingMachineRestockClothesFilled: VendingMachineRestockClothes
-CrateVendingMachineRestockAutoDrobeFilled: VendingMachineRestockCostumes
-CrateVendingMachineRestockCondimentStationFilled: VendingMachineRestockCondimentStation
-CrateVendingMachineRestockDinnerwareFilled: VendingMachineRestockDinnerware
-CrateVendingMachineRestockGamesFilled: VendingMachineRestockGames
-CrateVendingMachineRestockPTechFilled: VendingMachineRestockPTech
-CrateVendingMachineRestockSalvageEquipmentFilled: VendingMachineRestockSalvageEquipment
+CrateVendingMachineRestockChefvendFilled: null
+CrateVendingMachineRestockClothesFilled: null
+CrateVendingMachineRestockAutoDrobeFilled: null
+CrateVendingMachineRestockCondimentStationFilled: null
+CrateVendingMachineRestockDinnerwareFilled: null
+CrateVendingMachineRestockGamesFilled: null
+CrateVendingMachineRestockPTechFilled: null
+CrateVendingMachineRestockSalvageEquipmentFilled: null
 CrateVendingMachineRestockVendomatFilled: VendingMachineRestockVendomat
-CrateVendingMachineRestockTankDispenserFilled: VendingMachineRestockTankDispenser
+CrateVendingMachineRestockTankDispenserFilled: null
 # The crates below contained _two_ of the restock items, so these are technically not direct migrations. But eh.
 CrateVendingMachineRestockHotDrinksFilled: VendingMachineRestockHotDrinks
 CrateVendingMachineRestockRobustSoftdrinksFilled: VendingMachineRestockRobustSoftdrinks
-CrateVendingMachineRestockSmokesFilled: VendingMachineRestockSmokes
-CrateVendingMachineRestockHappyHonkFilled: VendingMachineRestockHappyHonk
+CrateVendingMachineRestockSmokesFilled: null
+CrateVendingMachineRestockHappyHonkFilled: null
 CrateVendingMachineRestockGetmoreChocolateCorpFilled: VendingMachineRestockGetmoreChocolateCorp
-CrateVendingMachineRestockChangFilled: VendingMachineRestockChang
-CrateVendingMachineRestockDiscountDansFilled: VendingMachineRestockDiscountDans
-CrateVendingMachineRestockDonutFilled: VendingMachineRestockDonut
+CrateVendingMachineRestockChangFilled: null
+CrateVendingMachineRestockDiscountDansFilled: null
+CrateVendingMachineRestockDonutFilled: null
 
 # 2026-03-28
 # The great solutions YAML nuke
@@ -1122,32 +1122,32 @@ WallVaultRock: WallSolid
 WallVaultSandstone: WallSolid
 WallSandstone: WallSolid
 WallDiamond: WallReinforced
-WallCult: WallBrick
+WallCult: null
 WallClown: WallGold
 WallClock: WallBrass
 WallPlastic: WallSolid
 ClockworkGrille: Grille
 ClockworkGrilleBroken: GrilleBroken
-ClockworkGrilleDiagonal: GrilleDiagonal
+ClockworkGrilleDiagonal: null
 ClockworkWindow: Window
-ClockworkWindowDiagonal: WindowDiagonal
+ClockworkWindowDiagonal: null
 WindowClockworkDirectional: WindowDirectional
 WindoorClockwork: Windoor
 WindoorAssemblyClockwork: WindoorAssembly
 PinionAirlock: Airlock
 PinionAirlockGlass: AirlockGlass
 PinionAirlockAssembly: AirlockAssembly
-BananiumDoor: GoldDoor
-EncrustedIronstoneDoor: SilverDoor
-IronstoneDoor: SilverDoor
-WallSnowCobblebrick: WallBrick
-WallSandCobblebrick: WallBrick
-WallChromiteCobblebrick: WallBrick
-WallAndesiteCobblebrick: WallBrick
-WallIronsandCobblebrick: WallBrick
-WallCobblebrick: WallConcrete
-WallAsteroidCobblebrick: WallConcrete
-WallBasaltCobblebrick: WallConcrete
+BananiumDoor: null
+EncrustedIronstoneDoor: null
+IronstoneDoor: null
+WallSnowCobblebrick: null
+WallSandCobblebrick: null
+WallChromiteCobblebrick: null
+WallAndesiteCobblebrick: null
+WallIronsandCobblebrick: null
+WallCobblebrick: null
+WallAsteroidCobblebrick: null
+WallBasaltCobblebrick: null
 WallIce: WallRockSnow
 
 #2026-07-17
@@ -1178,7 +1178,7 @@ CableMVStackLingering10: CableMVStack10
 CableApcStackLingering10: CableApcStack10
 
 # 2026-07-19
-BoxHugNitrogen: BoxSurvivalHugNitrogen
+BoxHugNitrogen: null
 BoxMime: BoxSurvival
 BoxMimeNitrogen: BoxSurvivalNitrogen
 BoxMimeMoth: BoxSurvival
@@ -1189,27 +1189,27 @@ CrateSecurityHelmet: null
 CrateEmergencyInternals: CrateEmergencyEVA
 CrateEmergencyInternalsLarge: CrateEmergencyEVA
 CrateNitrogenInternals: CrateEmergencyEVA
-CrateServiceCleanerGrenades: CrateJanitorialCleanerGrenades
+CrateServiceCleanerGrenades: null
 CrateServiceColorfulLights: CrateJanitorialColorfulLights
-CrateServiceHolidayLights: CrateJanitorialHolidayLights
-CrateMousetrapBoxes: CrateJanitorialMousetraps
+CrateServiceHolidayLights: null
+CrateMousetrapBoxes: null
 CrateServiceReplacementLights: CrateJanitorialReplacementLights
 CrateServiceJanitorialSupplies: CrateJanitorialSupplies
-CrateMaterialTextiles: CrateMaterialCloth
-CrateFoodBarSupply: CrateServiceBarSupply
-CrateFoodCooking: CrateServiceCooking
-CrateFoodDinnerware: CrateServiceDinnerware
-CrateFoodGetMore: CrateServiceGetMore
-CrateEngineeringGyroscope: CrateSpaceGyroscope
-CrateEngineeringJetpack: CrateSpaceMiniJetpack
-CrateEngineeringMiniJetpack: CrateSpaceMiniJetpack
-CrateEngineeringShuttle: CrateSpaceShuttlePower
-CrateEngineeringThruster: CrateSpaceThruster
+CrateMaterialTextiles: null
+CrateFoodBarSupply: null
+CrateFoodCooking: null
+CrateFoodDinnerware: null
+CrateFoodGetMore: null
+CrateEngineeringGyroscope: null
+CrateEngineeringJetpack: null
+CrateEngineeringMiniJetpack: null
+CrateEngineeringShuttle: null
+CrateEngineeringThruster: null
 
 # 2026-07-22
 
-BlastDoorXenoborg: BlastDoorXeno
-BlastDoorXenoborgOpen: BlastDoorXenoOpen
+BlastDoorXenoborg: null
+BlastDoorXenoborgOpen: null
 
 ### Dark Tiles
 FloorTileItemDarkDiagonalMini: FloorTileItemDark
@@ -1257,12 +1257,12 @@ IronsandStepConcaveCorner: null
 IronsandStep: null
 
 # 2026-07-27
-TurnstileGenpopEnter: EnergyGateGenpopEnter
-TurnstileGenpopLeave: EnergyGateGenpopLeave
-Turnstile: EnergyGate
-MetalDoor: SilverDoor
+TurnstileGenpopEnter: null
+TurnstileGenpopLeave: null
+Turnstile: null
+MetalDoor: null
 MiningWindow: ReinforcedWindow
-MiningWindowDiagonal: ReinforcedWindowDiagonal
+MiningWindowDiagonal: null
 FloorTileItemLightAstroGrass: FloorTileItemAstroGrass
 FloorTileItemGrayConcrete: FloorTileItemConcrete
 FloorTileItemGrayConcreteMono: FloorTileItemConcreteMono
@@ -1273,47 +1273,47 @@ FloorTileItemOldConcreteSmooth: FloorTileItemConcreteSmooth
 FloorTileItemIronsandConcrete: null
 FloorTileItemIronsandConcreteMono: null
 FloorTileItemIronsandConcreteSmooth: null
-IronSandstone: IronRock
-IronSandstoneMining: IronRock
+IronSandstone: null
+IronSandstoneMining: null
 AsteroidRockBananium: AsteroidRock
 AsteroidRockBananiumCrab: AsteroidRock
-IronRockBananium: IronRock
+IronRockBananium: null
 WallRockBananium: WallRock
 WallRockChromiteBananium: WallRockChromite
 WallRockSandBananium: WallRockSand
 WallRockSnowBananium: WallRockSnow
 MeteorRockBananium: AsteroidRock
 WallRockBasalt: WallRock
-WallRockBasaltCoal: WallRockCoal
-WallRockBasaltGold: WallRockGold
-WallRockBasaltDiamond: WallRockDiamond
-WallRockBasaltPlasma: WallRockPlasma
+WallRockBasaltCoal: null
+WallRockBasaltGold: null
+WallRockBasaltDiamond: null
+WallRockBasaltPlasma: null
 WallRockBasaltQuartz: WallRockQuartz
-WallRockBasaltSilver: WallRockSilver
+WallRockBasaltSilver: null
 WallRockBasaltBananium: WallRock
 WallRockBasaltTin: WallRockTin
-WallRockBasaltUranium: WallRockUranium
+WallRockBasaltUranium: null
 WallRockBasaltArtifactFragment: null
-WallRockBasaltSalt: WallRockSalt
+WallRockBasaltSalt: null
 WallRockAndesite: WallRock
-WallRockAndesiteCoal: WallRockCoal
-WallRockAndesiteGold: WallRockGold
-WallRockAndesiteDiamond: WallRockDiamond
-WallRockAndesitePlasma: WallRockPlasma
+WallRockAndesiteCoal: null
+WallRockAndesiteGold: null
+WallRockAndesiteDiamond: null
+WallRockAndesitePlasma: null
 WallRockAndesiteQuartz: WallRockQuartz
-WallRockAndesiteSilver: WallRockSilver
+WallRockAndesiteSilver: null
 WallRockAndesiteBananium: WallRock
 WallRockAndesiteTin: WallRockTin
-WallRockAndesiteUranium: WallRockUranium
+WallRockAndesiteUranium: null
 WallRockAndesiteArtifactFragment: null
-WallRockAndesiteSalt: WallRockSalt
+WallRockAndesiteSalt: null
 FloorTileItemTechmaint: FloorTileItemSteelMaint
-FloorTileItemXeno: FloorTileItemExoViscera
-FloorTileItemXenoSteel: FloorTileItemExoHull
-FloorTileItemXenoSteelCorner: FloorTileItemExoCornerSW
-FloorTileItemXenoMaint: FloorTileItemExoTechmaint
-FloorTileItemXenoborg: FloorTileItemExoBorg
-FloorTileItemDarkSquiggly: FloorTileItemExoHorizontal
+FloorTileItemXeno: null
+FloorTileItemXenoSteel: null
+FloorTileItemXenoSteelCorner: null
+FloorTileItemXenoMaint: null
+FloorTileItemXenoborg: null
+FloorTileItemDarkSquiggly: null
 
 # 2026-08-04
 FloorSnowChasm: FloorChasmEntity
@@ -1328,55 +1328,55 @@ WallSpawnAsteroidBananiumCrab: null
 
 # 2026-08-11
 FloorTileItemDirty: null
-PinionAirlockAssemblyGlass: AirlockAssemblyGlass
+PinionAirlockAssemblyGlass: null
 AnomalyRockBananium: null
 ClockworkGirder: Girder
 BaseAsteroidRock: AsteroidRock
-ButtonFrameExit: ButtonFrameWhite
+ButtonFrameExit: null
 
 # 2026-08-12
 WindoorSecure: Windoor
 WindoorSecurePlasma: WindoorPlasma
 WindoorSecureUranium: WindoorUranium
-WindoorSecureArmoryLocked: WindoorArmoryLocked
-PlasmaWindoorSecureArmoryLocked: PlasmaWindoorArmoryLocked
-WindoorSecureEngineeringLocked: WindoorEngineeringLocked
-WindoorSecureAtmosphericsLocked: WindoorEngineeringLocked
-PlasmaWindoorSecureEngineeringLocked: PlasmaWindoorEngineeringLocked
-PlasmaWindoorSecureAtmosphericsLocked: PlasmaWindoorAtmosphericsLocked
-WindoorSecureServiceLocked: WindoorServiceLocked
-WindoorSecureKitchenLocked: WindoorKitchenLocked
-WindoorSecureBarLocked: WindoorBarLocked
-WindoorSecureJanitorLocked: WindoorJanitorLocked
-WindoorSecureSecurityLocked: WindoorSecurityLocked
-WindoorSecureBrigLocked: WindoorBrigLocked
-WindoorSecureDetectiveLocked: WindoorDetectiveLocked
-WindoorSecureSecurityLawyerLocked: WindoorSecurityLawyerLocked
-WindoorSecureCargoLocked: WindoorCargoLocked
-WindoorSecureSalvageLocked: WindoorSalvageLocked
-WindoorSecureChapelLocked: WindoorChapelLocked
-WindoorSecureMedicalLocked: WindoorMedicalLocked
-WindoorSecureChemistryLocked: WindoorChemistryLocked
-PlasmaWindoorSecureChemistryLocked: PlasmaWindoorChemistryLocked
-WindoorSecureCommandLocked: WindoorCommandLocked
-WindoorSecureCentralCommandLocked: WindoorCentralCommandLocked
-PlasmaWindoorSecureCentralCommandLocked: PlasmaWindoorCentralCommandLocked
-UraniumWindoorSecureCentralCommandLocked: UraniumWindoorCentralCommandLocked
-PlasmaWindoorSecureCommandLocked: PlasmaWindoorCommandLocked
-UraniumWindoorSecureEngineeringLocked: UraniumWindoorEngineeringLocked
-WindoorSecureExternalLocked: WindoorExternalLocked
-PlasmaWindoorSecureJanitorLocked: PlasmaWindoorJanitorLocked
-WindoorSecureResearchDirectorLocked: WindoorResearchDirectorLocked
-PlasmaWindoorSecureSecurityLocked: PlasmaWindoorSecurityLocked
-WindoorSecureScienceLocked: WindoorScienceLocked
-PlasmaWindoorSecureScienceLocked: PlasmaWindoorScienceLocked
-WindoorSecureHeadOfPersonnelLocked: WindoorHeadOfPersonnelLocked
-WindoorSecureSyndicateLocked: WindoorSyndicateLocked
-PlasmaWindoorSecureSyndicateLocked: PlasmaWindoorSyndicateLocked
-UraniumWindoorSecureSyndicateLocked: UraniumWindoorSyndicateLocked
-WindoorSecureNukeopLocked: WindoorNukeopLocked
-PlasmaWindoorSecureNukeopLocked: PlasmaWindoorNukeopLocked
-UraniumWindoorSecureNukeopLocked: UraniumWindoorNukeopLocked
+WindoorSecureArmoryLocked: null
+PlasmaWindoorSecureArmoryLocked: null
+WindoorSecureEngineeringLocked: null
+WindoorSecureAtmosphericsLocked: null
+PlasmaWindoorSecureEngineeringLocked: null
+PlasmaWindoorSecureAtmosphericsLocked: null
+WindoorSecureServiceLocked: null
+WindoorSecureKitchenLocked: null
+WindoorSecureBarLocked: null
+WindoorSecureJanitorLocked: null
+WindoorSecureSecurityLocked: null
+WindoorSecureBrigLocked: null
+WindoorSecureDetectiveLocked: null
+WindoorSecureSecurityLawyerLocked: null
+WindoorSecureCargoLocked: null
+WindoorSecureSalvageLocked: null
+WindoorSecureChapelLocked: null
+WindoorSecureMedicalLocked: null
+WindoorSecureChemistryLocked: null
+PlasmaWindoorSecureChemistryLocked: null
+WindoorSecureCommandLocked: null
+WindoorSecureCentralCommandLocked: null
+PlasmaWindoorSecureCentralCommandLocked: null
+UraniumWindoorSecureCentralCommandLocked: null
+PlasmaWindoorSecureCommandLocked: null
+UraniumWindoorSecureEngineeringLocked: null
+WindoorSecureExternalLocked: null
+PlasmaWindoorSecureJanitorLocked: null
+WindoorSecureResearchDirectorLocked: null
+PlasmaWindoorSecureSecurityLocked: null
+WindoorSecureScienceLocked: null
+PlasmaWindoorSecureScienceLocked: null
+WindoorSecureHeadOfPersonnelLocked: null
+WindoorSecureSyndicateLocked: null
+PlasmaWindoorSecureSyndicateLocked: null
+UraniumWindoorSecureSyndicateLocked: null
+WindoorSecureNukeopLocked: null
+PlasmaWindoorSecureNukeopLocked: null
+UraniumWindoorSecureNukeopLocked: null
 WindoorAssemblySecure: WindoorAssembly
 WindoorAssemblySecurePlasma: WindoorAssemblyPlasma
 WindoorAssemblySecureUranium: WindoorAssemblyUranium

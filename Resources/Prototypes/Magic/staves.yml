@@ -38,35 +38,6 @@
     radius: 2
 
 - type: entity
-  id: AnimationStaff
-  parent: [ BaseItem, BaseMagicalContraband ]
-  name: staff of animation
-  description: Brings inanimate objects to life!
-  components:
-  - type: LimitedCharges
-    maxCharges: 5
-  - type: AutoRecharge
-    rechargeDuration: 30
-  - type: Sprite
-    sprite: Objects/Weapons/Guns/Basic/staves.rsi
-    layers:
-    - state: animation
-  - type: ActionOnInteract
-    requiresCharge: true
-    actions:
-    - ActionAnimateSpell
-  - type: Item
-    size: Normal
-    inhandVisuals:
-      left:
-      - state: animation-inhand-left
-      right:
-      - state: animation-inhand-right
-  - type: Tag
-    tags:
-    - WizardWand
-
-- type: entity
   parent: BaseAction
   id: ActionRgbLight
   components:

@@ -750,26 +750,6 @@
 
 - type: entity
   parent: BasePlushieLizardJob
-  id: PlushieLizardJobWarden
-  name: warden lizard plushie
-  description: An adorable stuffed toy that resembles a lizardperson as a warden. Smells like black powder and gun oil.
-  components:
-  - type: Sprite
-    sprite: Objects/Fun/plushielizard_jobs/warden.rsi
-  - type: Item
-    sprite: Objects/Fun/plushielizard_jobs/warden.rsi
-  - type: Clothing
-    sprite: Objects/Fun/plushielizard_jobs/warden.rsi
-    slots:
-    - HEAD
-    quickEquip: false
-    clothingVisuals:
-      head:
-      - state: equipped-HELMET
-        offset: "0, 0.06"
-
-- type: entity
-  parent: BasePlushieLizardJob
   id: PlushieLizardJobZookeeper
   name: zookeeper lizard plushie
   description: An adorable stuffed toy that resembles a lizardperson as a zookeeper. It has some gorilla fur stuck to it.

@@ -100,31 +100,6 @@
     sprite: Objects/Tools/Lighters/lighters.rsi
 
 - type: entity
-  parent: Lighter
-  id: CheapLighter
-  name: cheap lighter
-  description: "A dangerously inexpensive plastic lighter. Don't burn your thumb!"
-  components:
-  - type: Sprite
-    sprite: Objects/Tools/Lighters/lighters.rsi
-    layers:
-    - state: icon_map
-    - state: cheap_icon_base
-      map: [ "skin" ]
-    - state: cheap_icon_top
-    - state: lighter_flame
-      visible: false
-      shader: unshaded
-      map: [ "flame" ]
-  - type: RandomSprite
-    available:
-      - skin:
-          cheap_icon_base: Rainbow
-  - type: Welder
-    fuelConsumption: 0.02
-    fuelLitCost: 0.2
-
-- type: entity
   parent: [ SolutionLighter, BaseLighter ]
   id: DiscountDanLighter
   name: Discount Dan's lighter
@@ -341,34 +316,6 @@
       reagents:
       - ReagentId: Plasma
         Quantity: 15
-
-- type: entity
-  parent: [SolutionToolWelderExperimental, BaseBrandedLighter, BaseCentcommContraband]
-  id: CentCommFlippo
-  name: Gilded CentComm Flippo
-  description: An Ornate, jade embossed and gilded flippo frame containing a bluespace powered jet. The latch is secured by a miniature access reader that only responds to CentComm officials. The nicest lighter known to man.
-  suffix: DO NOT MAP
-  components:
-  - type: Sprite
-    sprite: Objects/Tools/Lighters/centcomm.rsi
-  - type: Item
-    sprite: Objects/Tools/Lighters/centcomm.rsi
-  - type: ItemToggleRequiresLock
-    requireLocked: false
-  - type: Welder
-    fuelConsumption: 0.0
-    fuelLitCost: 10
-    fuelReagent: Plasma
-  - type: PointLight
-    radius: 4 #Excessively powerful
-    color: Gold
-  - type: Tool
-    useSound:
-      collection: Welder
-    qualities: [ Welding ]
-  - type: Lock
-  - type: AccessReader
-    access: [["CentralCommand"]]
 
 - type: entity
   parent: [BaseBrandedLighter, BaseMajorContraband]

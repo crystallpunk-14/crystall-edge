@@ -18,24 +18,6 @@
   color: "#FFE777"
 
 - type: reagent
-  id: JuiceBerry
-  name: reagent-name-juice-berry
-  parent: BaseJuice
-  desc: reagent-desc-juice-berry
-  physicalDesc: reagent-physical-desc-sweet
-  flavor: berry
-  color: "#660099"
-
-- type: reagent
-  id: JuiceBluePumpkin
-  name: reagent-name-juice-blue-pumpkin
-  parent: BaseJuice
-  desc: reagent-desc-juice-blue-pumpkin
-  physicalDesc: reagent-physical-desc-strong-smelling
-  flavor: bluepumpkin
-  color: "#00BFFF"
-
-- type: reagent
   id: JuiceBungo
   name: reagent-name-juice-bungo
   parent: BaseJuice

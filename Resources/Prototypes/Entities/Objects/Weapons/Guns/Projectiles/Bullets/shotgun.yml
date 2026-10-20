@@ -98,33 +98,6 @@
     spread: 15
 
 - type: entity
-  parent: BaseBullet
-  id: PelletShotgunImprovised
-  categories: [ HideSpawnMenu ]
-  name: improvised pellet
-  components:
-  - type: Sprite
-    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
-    layers:
-    - state: shard
-      shader: unshaded
-  - type: Projectile
-    damage:
-      types:
-        Piercing: 3
-        Slash: 3
-
-- type: entity
-  parent: PelletShotgunImprovised
-  id: PelletShotgunImprovisedSpread
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: ProjectileSpread
-    proto: PelletShotgunImprovised
-    count: 10
-    spread: 45
-
-- type: entity
   parent: [ SolutionAmmo, SolutionToolVeryTiny, BaseBulletPractice ]
   id: PelletShotgunTranquilizer
   categories: [ HideSpawnMenu ]
@@ -206,59 +179,3 @@
     proto: PelletShotgunUranium
     count: 5
     spread: 6
-
-- type: entity
-  parent: BaseBullet
-  id: PelletGrapeshot #tally fucking ho
-  categories: [ HideSpawnMenu ]
-  name: grapeshot pellet
-  components:
-  - type: Sprite
-    noRot: false
-    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
-    layers:
-    - state: grapeshot
-      shader: unshaded
-  - type: Projectile
-    damage:
-      types:
-        Piercing: 25
-
-- type: entity
-  parent: PelletGrapeshot
-  id: PelletGrapeshotSpread
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: ProjectileSpread
-    proto: PelletGrapeshot
-    count: 5
-    spread: 40
-
-- type: entity
-  parent: BaseBullet
-  id: PelletGlass
-  categories: [ HideSpawnMenu ]
-  name: glass shard
-  components:
-  - type: Sprite
-    noRot: false
-    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
-    layers:
-    - state: shard
-  - type: EmbeddableProjectile
-    deleteOnRemove: true
-  - type: Projectile
-    deleteOnCollide: false
-    damage:
-      types:
-        Slash: 25
-
-- type: entity
-  parent: PelletGlass
-  id: PelletGlassSpread
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: ProjectileSpread
-    proto: PelletGlass
-    count: 5
-    spread: 10
