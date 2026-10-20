@@ -55,6 +55,9 @@ public sealed partial class CEWeaponSystem : CESharedWeaponSystem
             if (!Exists(target) || target == user)
                 continue;
 
+            if (!CanAttackTarget(user, target))
+                continue;
+
             // Cursor targets aren't found by the arc's rays, so the client's word isn't enough: re-check the arc here.
             if (target == weapon.Comp.CursorTarget && !IsInAnyAttackArc(user, weapon, target))
                 continue;

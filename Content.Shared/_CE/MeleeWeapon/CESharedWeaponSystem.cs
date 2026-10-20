@@ -16,6 +16,7 @@ using Content.Shared.Stealth;
 using Content.Shared.Stealth.Components;
 using Content.Shared.Wieldable.Components;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -35,6 +36,7 @@ public abstract partial class CESharedWeaponSystem : EntitySystem
     [Dependency] protected IPrototypeManager _proto = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedStealthSystem _stealth = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
 
     [Dependency] private EntityQuery<StealthComponent> _stealthQuery = default!;
 
@@ -274,6 +276,27 @@ public abstract partial class CESharedWeaponSystem : EntitySystem
         var halfArc = arcWidthDeg * MathF.PI / 360f + MathF.Atan(0.5f / distance);
         var diff = Angle.ShortestDistance(new Angle(delta), direction);
         return Math.Abs(diff.Theta) <= halfArc;
+    }
+
+    /// <summary>
+    /// The outermost container holding <paramref name="user"/> - the only thing it can hit from inside.
+    /// </summary>
+    public bool TryGetAttackerContainer(EntityUid user, out EntityUid container)
+    {
+        container = default;
+        if (!_container.TryGetOuterContainer(user, Transform(user), out var outer))
+            return false;
+
+        container = outer.Owner;
+        return true;
+    }
+
+    /// <summary>
+    /// Per-target attack check: containers, pacifism, hidden subfloor entities etc.
+    /// </summary>
+    public bool CanAttackTarget(EntityUid user, EntityUid target)
+    {
+        return Blocker.CanAttack(user, target);
     }
 
     public bool TryGetWeapon(EntityUid entity, [NotNullWhen(true)] out Entity<CEWeaponComponent>? used)
