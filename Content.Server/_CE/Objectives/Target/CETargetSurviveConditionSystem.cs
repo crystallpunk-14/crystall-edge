@@ -6,9 +6,6 @@ using Content.Shared.Mobs.Components;
 
 namespace Content.Server._CE.Objectives.Target;
 
-/// <summary>
-/// Handles <see cref="CETargetSurviveConditionComponent"/>.
-/// </summary>
 public sealed partial class CETargetSurviveConditionSystem : CEBaseTargetObjectiveSystem<CETargetSurviveConditionComponent>
 {
     public override Type[] TargetRelayComponents { get; } = [typeof(CETargetSurviveConditionMarkerComponent)];

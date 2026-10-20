@@ -8,9 +8,6 @@ using Robust.Shared.Utility;
 
 namespace Content.Server._CE.Objectives.Target;
 
-/// <summary>
-/// Handles <see cref="CETargetCompleteOwnedObjectiveComponent"/>.
-/// </summary>
 public sealed partial class CETargetCompleteObjectivesSystem : CEBaseTargetObjectiveSystem<CETargetCompleteOwnedObjectiveComponent>
 {
     [Dependency] private EntityWhitelistSystem _entityWhitelist = default!;

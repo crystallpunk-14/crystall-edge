@@ -52,6 +52,9 @@
   - type: CETargetSecretRoleBlacklist
     secretRoleBlacklist:
     - BountyHunter # helping the man hired to wipe us out complete his job makes no sense
+  - type: CETargetSecretDepartmentBlacklist
+    departments:
+    - Nightmares # the Brotherhood lives off the city, it won't help the murk swallow it
 
 - type: entity
   id: CEObjectiveBrotherhoodDebt
