@@ -8,6 +8,7 @@ using Content.Server.RoundEnd;
 using Content.Shared._CE.DayCycle;
 using Content.Shared._CE.Murk;
 using Content.Shared._CE.Murk.Components;
+using Content.Shared._CE.RestorationRitual.Components;
 using Content.Shared._CE.Roundflow;
 using Content.Shared._CE.Trade.MainQuest;
 using Content.Shared._CE.ZLevels.Core.Components;
@@ -21,6 +22,9 @@ using Content.Shared.GameTicking.Components;
 using Content.Shared.Light.Components;
 using Content.Shared.Station.Components;
 using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
+using Robust.Shared.Map;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
@@ -34,6 +38,7 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private SharedGodmodeSystem _godmode = default!;
     [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
 
     private readonly EntProtoId _sphereShockwave = "CEShockWaveHugeVFX";
     private readonly EntProtoId _sphereFailureLightning = "CESkyLightning";
@@ -240,6 +245,10 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
         var query = QueryActiveRules();
         while (query.MoveNext(out _, out _, out var consuming, out _))
         {
+            // The ritual lasts exactly as long as its music track.
+            var music = _audio.ResolveSound(consuming.RitualMusic);
+            consuming.RitualDuration = _audio.GetAudioLength(music);
+            consuming.RitualMusicStream = _audio.PlayGlobal(music, Filter.Broadcast(), true, consuming.RitualMusic.Params)?.Entity;
             consuming.RitualStartTime = Timing.CurTime;
             consuming.NextPulseTime = Timing.CurTime; // The safe zone drops into the pulse range right away.
 
@@ -265,15 +274,26 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
         if (sphere.Comp.State != CEMurkSphereState.Ritual)
             return;
 
+        StopRitualMusic();
         Collapse();
     }
 
     private void CompleteRitual(Entity<CEMurkLusconSphereComponent> sphere)
     {
+        StopRitualMusic();
         SetSphereState(sphere, CEMurkSphereState.Success);
         Spawn(_sphereShockwave, Transform(sphere.Owner).Coordinates);
 
         _roundEndSystem.EndRound();
+    }
+
+    private void StopRitualMusic()
+    {
+        var query = QueryActiveRules();
+        while (query.MoveNext(out _, out _, out var consuming, out _))
+        {
+            consuming.RitualMusicStream = _audio.Stop(consuming.RitualMusicStream);
+        }
     }
 
     private void SetSphereState(Entity<CEMurkLusconSphereComponent> sphere, CEMurkSphereState state)
@@ -294,16 +314,19 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
         if (!sphereQuery.MoveNext(out var sphereUid, out var sphere))
             return;
 
-        var light = 0f;
+        // Each accepted shard fills an equal share of the light bar; the ritual fills the last one.
+        var share = 1f / (component.ShardCount + 1);
+        var light = Math.Min(CountAcceptedShards(Transform(sphereUid).MapID), component.ShardCount) * share;
         var murk = GetCollapseProgress(component);
 
         switch (sphere.State)
         {
             case CEMurkSphereState.Ritual:
-                light = GetRitualProgress(component);
+                light += GetRitualProgress(component) * share;
                 murk = GetSphereDamageProgress(sphereUid);
                 break;
             case CEMurkSphereState.Failure:
+                light = 0f;
                 murk = 1f;
                 break;
             case CEMurkSphereState.Success:
@@ -316,6 +339,22 @@ public sealed partial class CEMurkConsumingRuleSystem : GameRuleSystem<CEMurkCon
             sphere.State != CEMurkSphereState.PreRound,
             Math.Clamp(light, 0f, 1f),
             murk));
+    }
+
+    /// <summary>
+    /// How many lightheart shards are accepted on the ritual pedestals of the map.
+    /// </summary>
+    private int CountAcceptedShards(MapId map)
+    {
+        var count = 0;
+        var query = EntityQueryEnumerator<CERitualPedestalComponent, TransformComponent>();
+        while (query.MoveNext(out var pedestal, out var xform))
+        {
+            if (xform.MapID == map && pedestal.Accepted)
+                count++;
+        }
+
+        return count;
     }
 
     /// <summary>

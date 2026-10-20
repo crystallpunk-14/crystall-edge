@@ -3,3 +3,4 @@ ce-restoration-ritual-unavailable = The Restoration Ritual cannot be performed n
 ce-restoration-ritual-missing-shards = Lightheart shards missing from the ritual pedestals: { $shards }.
 
 ce-ritual-pedestal-slot-name = Lightheart shard
+ce-ritual-pedestal-shard-rejected = This shard doesn't fit.

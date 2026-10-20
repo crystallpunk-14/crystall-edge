@@ -1,4 +1,5 @@
 using Content.Shared._CE.Trade.MainQuest;
+using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._CE.GameTicking.Components;
@@ -36,10 +37,26 @@ public sealed partial class CEMurkConsumingRuleComponent : Component
     public TimeSpan? CrackEndTime;
 
     /// <summary>
-    /// How long the Restoration Ritual lasts before the sphere is restored.
+    /// Music played to everyone during the Restoration Ritual. The ritual lasts exactly as long as the track.
     /// </summary>
     [DataField]
-    public TimeSpan RitualDuration = TimeSpan.FromMinutes(2);
+    public SoundSpecifier RitualMusic = new SoundPathSpecifier("/Audio/Expedition/tension_session.ogg")
+    {
+        Params = AudioParams.Default.AddVolume(-5),
+    };
+
+    /// <summary>
+    /// How long the Restoration Ritual lasts before the sphere is restored: the length of the
+    /// <see cref="RitualMusic"/> track picked when the ritual starts.
+    /// </summary>
+    [DataField]
+    public TimeSpan RitualDuration;
+
+    /// <summary>
+    /// The playing <see cref="RitualMusic"/> stream.
+    /// </summary>
+    [DataField]
+    public EntityUid? RitualMusicStream;
 
     /// <summary>
     /// When the Restoration Ritual started. Null until it does.
