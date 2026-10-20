@@ -1,7 +1,7 @@
 - type: entity
   id: CEShadowRift
   name: shadow rift
-  description: A tear in the world. Shadow traders come out of it at dawn and slip back in at nightfall.
+  description: A tear in the world. Shadow traders come out of it at nightfall and slip back in at dawn.
   suffix: Traders
   categories: [ ForkFiltered ]
   placement:

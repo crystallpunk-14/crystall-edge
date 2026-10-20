@@ -35,8 +35,8 @@
     useType: Primary
     angleVariation: 5
 
-# Opens the shop by day and closes it at night: fills empty table slots while it's day,
-# takes the offers back off the tables once night falls and then leaves through its rift.
+# Opens the shop at night and closes it by day: fills empty table slots while it's night,
+# takes the offers back off the tables once day breaks and then leaves through its rift.
 # Idles around the rift when there is nothing to do.
 - type: GOAPBehavior
   id: ShadowTrader
@@ -65,17 +65,17 @@
   - desiredState:
       TradeTablesStocked: true
     preconditions:
-      IsNight: false
+      IsNight: true
     priority: 1
   - desiredState:
       TradeTablesCleared: true
     preconditions:
-      IsNight: true
+      IsNight: false
     priority: 1
   - desiredState:
       ReturnedHome: true
     preconditions:
-      IsNight: true
+      IsNight: false
     priority: 0.9
   - desiredState:
       WalkingAround: true
