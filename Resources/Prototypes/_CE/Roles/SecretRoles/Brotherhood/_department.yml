@@ -47,7 +47,7 @@
   - type: CETargetExcludeHolderDepartment
   - type: CETargetCompleteOwnedObjective
     objectiveBlacklist:
-      components: # avoid an infinite loop through e.g. a tormentor's spite objective
+      components: # avoid an infinite loop through e.g. a lover's assist objective
       - CETargetCompleteOwnedObjective
   - type: CETargetSecretRoleBlacklist
     secretRoleBlacklist:

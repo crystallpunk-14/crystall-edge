@@ -17,9 +17,6 @@ ce-secret-role-description-thief = Угроза городского масшт�
 ce-secret-role-name-lover = Влюблённый
 ce-secret-role-description-lover = Вы одержимы одним особенным человеком. Вы готовы на все чтобы помочь ему.
 
-ce-secret-role-name-tormentor = Мучитель
-ce-secret-role-description-tormentor = Вы пойдете на все, чтобы видеть как ваша цель страдает всю свою оставшуюся жизнь, из-за постоянных поражений. И вы постараетесь, чтобы её поражения были гарантированны.
-
 ce-secret-role-name-recruiter = Вербовщик
 ce-secret-role-description-recruiter = Вы умеете замечать тех, кого подвёл город. Приведите их в братство - чем больше рук, тем безопаснее всем.
 

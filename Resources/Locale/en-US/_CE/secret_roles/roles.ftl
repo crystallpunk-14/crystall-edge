@@ -17,9 +17,6 @@ ce-secret-role-description-thief = A city-wide threat? A great opportunity to ma
 ce-secret-role-name-lover = Lover
 ce-secret-role-description-lover = You're obsessed with one special person. You'll do anything to help them.
 
-ce-secret-role-name-tormentor = Tormentor
-ce-secret-role-description-tormentor = You'll do whatever it takes to watch your target suffer through a lifetime of failure. You intend to make sure that failure is guaranteed.
-
 ce-secret-role-name-recruiter = Recruiter
 ce-secret-role-description-recruiter = You know how to spot people the city has failed. Bring them into the Brotherhood - the more hands, the safer everyone is.
 
