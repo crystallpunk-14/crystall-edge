@@ -3,8 +3,8 @@
   name: ce-skill-soft-landing-name
   desc: ce-skill-soft-landing-desc
   icon:
-    sprite: _CE/Actions/misc.rsi
-    state: todo
+    sprite: _CE/Actions/Spells/feather_fall.rsi
+    state: icon
   effect: !type:AddStatusEffect
     effect: CEStatusEffectSoftLanding
 
