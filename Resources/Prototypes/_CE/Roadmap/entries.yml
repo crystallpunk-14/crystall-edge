@@ -17,13 +17,6 @@
   status: Backlog
 
 - type: roadmapItem
-  id: HardLabor
-  name: ce-roadmap-sheriff-hard-labor-name
-  desc: ce-roadmap-sheriff-hard-labor-desc
-  category: Sheriff
-  status: Backlog
-
-- type: roadmapItem
   id: Silvas
   name: ce-roadmap-farming-silvas-name
   desc: ce-roadmap-farming-silvas-desc

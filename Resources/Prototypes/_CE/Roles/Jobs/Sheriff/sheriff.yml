@@ -64,6 +64,7 @@
         - id: CEClothingHeadHelmetSheriffCorinthian
         - id: CEClothingHeadCapSheriff
         - id: CEClothingHeadFedoraSheriff
+        - id: CEClothingHeadTriangularSheriff
         - id: CEClothingShirtSheriff
         - id: CEClothingShirtSyurkoSheriff
         - id: CEClothingPantsSheriff

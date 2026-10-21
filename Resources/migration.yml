@@ -339,7 +339,7 @@ CEClothingHeadTriangularGuard: CEClothingHeadTriangularSheriff
 CEWeaponMaceTwoHandedGuardrail: CEWeaponMaceTwoHandedSheriff
 CEGuardMaceEnergyBall: CESheriffMaceEnergyBall
 CEActionGuardMaceCharge: CEActionSheriffMaceCharge
-CEGuardBola: CESheriffBola
+CEGuardBola: CEBola
 CETradeTableEmpireGuard: CETradeTableEmpireSheriff
 CEWallRadioSpeakerGuard: CEWallRadioSpeaker
 CERadioPostSpeakerGuard: CERadioPostSpeaker

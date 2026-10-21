@@ -24,6 +24,7 @@
   loadouts:
   - CEClothingHeadCapSheriff
   - CEClothingHeadFedoraSheriff
+  - CEClothingHeadTriangularSheriff
   - CEClothingHeadHelmetSheriff
   - CEClothingHeadHelmetSheriffCorinthian
 
@@ -36,6 +37,11 @@
   id: CEClothingHeadFedoraSheriff
   equipment:
     head: CEClothingHeadFedoraSheriff
+
+- type: loadout
+  id: CEClothingHeadTriangularSheriff
+  equipment:
+    head: CEClothingHeadTriangularSheriff
 
 - type: loadout
   id: CEClothingHeadHelmetSheriff

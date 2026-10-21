@@ -5,12 +5,6 @@
   priority: 6
 
 - type: roadmapCategory
-  id: Sheriff
-  title: ce-roadmap-category-sheriff
-  color: "#2f78d1"
-  priority: 5
-
-- type: roadmapCategory
   id: Engineering
   title: ce-roadmap-category-engineering
   color: "#c77629"

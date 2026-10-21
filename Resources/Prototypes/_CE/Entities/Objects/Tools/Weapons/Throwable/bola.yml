@@ -1,8 +1,8 @@
 - type: entity
   parent: BaseItem
-  id: CESheriffBola
+  id: CEBola
   name: bola
-  description: A tactical bola issued to the sheriff, made of steel anchors linked by a strong rope. Reliable and reusable.
+  description: A tactical bola made of steel anchors linked by a strong rope. Reliable and reusable.
   categories: [ ForkFiltered ]
   components:
   - type: Item

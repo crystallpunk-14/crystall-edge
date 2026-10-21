@@ -1,6 +1,3 @@
-ce-roadmap-sheriff-hard-labor-name = Hard Labor
-ce-roadmap-sheriff-hard-labor-desc = Instead of prison cells and taking away the player's gameplay, offending citizens will be sent to work off their debts to society through various manual labor under the sheriff's supervision... And they will have the opportunity to escape from there.
-
 ce-roadmap-farming-silvas-name = Growing Silvas
 ce-roadmap-farming-silvas-desc = The ability to grow various plants and mushrooms on a Silva's head. Different plants grant unique effects, especially when we're talking about magical mutated specimens.
 

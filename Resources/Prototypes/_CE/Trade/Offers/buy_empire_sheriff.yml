@@ -89,13 +89,13 @@
     proto: CERope
 
 - type: tradeOffer
-  id: BuySheriffBola
+  id: BuyBola
   shop: EmpireSheriff
   pay:
     bonus: 1
   reward:
   - !type:CETradeSpawnReward
-    proto: CESheriffBola
+    proto: CEBola
 
 - type: tradeOffer
   id: BuyGunJustice

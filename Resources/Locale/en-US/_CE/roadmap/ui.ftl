@@ -4,7 +4,6 @@ ce-roadmap-header-in-progress = In progress
 ce-roadmap-header-backlogs = Planned
 
 ce-roadmap-category-general = GENERAL
-ce-roadmap-category-sheriff = SHERIFF
 ce-roadmap-category-farming = FARMING
 ce-roadmap-category-medical = MEDICAL
 ce-roadmap-category-adventures = ADVENTURES
