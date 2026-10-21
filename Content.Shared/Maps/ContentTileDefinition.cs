@@ -134,6 +134,12 @@ public sealed partial class ContentTileDefinition : IPrototype, IInheritingProto
     public bool Transparent = false;
 
     /// <summary>
+    /// CrystallEdge: shields everything on the zlevels below from weather (independent of <see cref="Transparent"/>)
+    /// </summary>
+    [DataField]
+    public bool BlocksWeather = true;
+
+    /// <summary>
     /// CrystallEdge: Lip drawn below this tile's edge where it borders an opening into the z-level below.
     /// Height of the texture is the lip thickness in pixels, width is 32 px per variant.
     /// </summary>

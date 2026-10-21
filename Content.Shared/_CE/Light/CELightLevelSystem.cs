@@ -32,7 +32,7 @@ public sealed partial class CELightLevelSystem : EntitySystem
     [Dependency] private SharedRoofSystem _roof = default!;
     [Dependency] private CEDayCycleSystem _dayCycle = default!;
     [Dependency] private INetManager _net = default!;
-    
+
     [Dependency] private EntityQuery<MapComponent> _mapQuery = default!;
     [Dependency] private EntityQuery<MapLightComponent> _mapLightQuery = default!;
     [Dependency] private EntityQuery<LightCycleComponent> _lightCycleQuery = default!;
