@@ -21,24 +21,57 @@ public abstract class CESharedLightCycleSystem : EntitySystem
         if (t < 0f)
             t += 1f;
 
-        var stops = comp.Colors.OrderBy(kv => kv.Key).ToList();
+        // Single allocation-free pass: find the stops around t, plus the first and last stops for the wrap segment
+        // (last stop -> first stop + 1). Called on demand by gameplay light level queries, so no LINQ here.
+        float? prevKey = null;
+        float? nextKey = null;
+        var prevColor = default(Color);
+        var nextColor = default(Color);
+        var minKey = float.MaxValue;
+        var maxKey = float.MinValue;
+        var minColor = default(Color);
+        var maxColor = default(Color);
 
-        // Values before the first stop belong to the tail of the wrap segment (previous stop -> first stop + 1).
-        if (t < stops[0].Key)
-            t += 1f;
-
-        for (var i = 0; i < stops.Count - 1; i++)
+        foreach (var (key, color) in comp.Colors)
         {
-            if (t < stops[i].Key || t >= stops[i + 1].Key)
-                continue;
+            if (key < minKey)
+            {
+                minKey = key;
+                minColor = color;
+            }
 
-            var frac = (t - stops[i].Key) / (stops[i + 1].Key - stops[i].Key);
-            return Color.InterpolateBetween(stops[i].Value, stops[i + 1].Value, frac);
+            if (key > maxKey)
+            {
+                maxKey = key;
+                maxColor = color;
+            }
+
+            if (key <= t && (prevKey is null || key > prevKey))
+            {
+                prevKey = key;
+                prevColor = color;
+            }
+
+            if (key > t && (nextKey is null || key < nextKey))
+            {
+                nextKey = key;
+                nextColor = color;
+            }
         }
 
-        var last = stops[^1];
-        var wrapKey = stops[0].Key + 1f;
-        var wrapFrac = (t - last.Key) / (wrapKey - last.Key);
-        return Color.InterpolateBetween(last.Value, stops[0].Value, wrapFrac);
+        if (prevKey is null)
+        {
+            prevKey = maxKey - 1f;
+            prevColor = maxColor;
+        }
+
+        if (nextKey is null)
+        {
+            nextKey = minKey + 1f;
+            nextColor = minColor;
+        }
+
+        var frac = (t - prevKey.Value) / (nextKey.Value - prevKey.Value);
+        return Color.InterpolateBetween(prevColor, nextColor, frac);
     }
 }

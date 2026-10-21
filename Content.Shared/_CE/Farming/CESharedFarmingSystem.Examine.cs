@@ -72,14 +72,12 @@ public abstract partial class CESharedFarmingSystem
     [SubscribeLocalEvent]
     private void OnLightExamine(Entity<CEPlantEnergyFromLightComponent> ent, ref ExaminedEvent args)
     {
-        if (ent.Comp.Daytime && ent.Comp.Nighttime)
+        if (!LightLevel.TryGetLightLevel(ent, out var level))
             return;
 
-        var daylight = DayCycle.UnderSunlight(ent);
-
-        if (ent.Comp.Daytime && !daylight)
-            args.PushMarkup(Loc.GetString("ce-farming-producing-examine-need-sun"));
-        if (ent.Comp.Nighttime && daylight)
+        if (!ent.Comp.Inverted && level < ent.Comp.MinLevel)
+            args.PushMarkup(Loc.GetString("ce-farming-producing-examine-need-light"));
+        if (ent.Comp.Inverted && level > ent.Comp.MaxLevel)
             args.PushMarkup(Loc.GetString("ce-farming-producing-examine-need-dark"));
     }
 }

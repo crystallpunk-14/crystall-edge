@@ -1,4 +1,3 @@
-using Content.Shared._CE.DayCycle;
 using Content.Shared._CE.Farming;
 using Content.Shared._CE.Farming.Components;
 using Content.Shared.Chemistry.EntitySystems;

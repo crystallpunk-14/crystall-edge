@@ -81,7 +81,13 @@ Examine a plant to check its condition.
 
 # Lighting
 
-Most plants require [color=yellow]natural light[/color] to grow.
-Mushrooms are an exception - they prefer darkness.
+Most plants need [color=yellow]light[/color] to grow. Both sunlight and [color=yellow]lamps[/color] count, so you can grow crops indoors or underground under good lighting.
+
+- The brighter the light, the faster the plant grows. Bright noon is best, dusk is slow, and at night it stops.
+- A roof blocks sunlight, but not the light of lamps beneath it.
+
+Mushrooms are an exception - they prefer [color=yellow]darkness[/color] and grow fastest at night or in dark cellars. Too much light, from the sun or a lamp, stops their growth.
+
+Examine a plant to see whether it is getting too little or too much light.
 
 </Document>

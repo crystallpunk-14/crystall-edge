@@ -6,8 +6,8 @@ ce-farming-harvest-examine-title = Ready for harvest:
 
 ce-farming-producing-examine-early = It has [color=yellow]not yet grown enough[/color] to begin bearing fruit.
 
-ce-farming-producing-examine-need-sun = The plant [color=red]does not get enough sunlight[/color].
-ce-farming-producing-examine-need-dark = The plant [color=red]don't like sunlight[/color].
+ce-farming-producing-examine-need-light = The plant [color=red]does not get enough light[/color].
+ce-farming-producing-examine-need-dark = The plant [color=red]is getting too much light[/color].
 
 ce-farming-producing-examine-unefficient-soil = This type of soil is [color=red]ineffective[/color] for the plant.
 
