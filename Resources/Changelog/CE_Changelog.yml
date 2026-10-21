@@ -1428,3 +1428,39 @@
   id: 1122
   time: '2026-10-17T12:07:03.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/538
+- author: TheShuEd
+  changes:
+  - message: Removed Tormentor secret role, because too boring
+    type: Remove
+  - message: Shadow traders are now opening their shops at night instead of during
+      the day
+    type: Tweak
+  - message: When you buy items in a store, the purchased items will now attempt to
+      be placed in your inventory, or will visibly scatter on the ground if there
+      is no space in your inventory, instead of appearing unnoticed at your feet.
+    type: Fix
+  - message: The Brotherhood can no longer receive the objective of helping the werewolf
+      achieve his goals.
+    type: Tweak
+  id: 1123
+  time: '2026-10-20T14:47:22.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/544
+- author: TheShuEd
+  changes:
+  - message: Added new "Pharus" map for 0-20 players count.
+    type: Add
+  - message: Shaar map player count is now 20-40.
+    type: Tweak
+  id: 1124
+  time: '2026-10-19T20:54:52.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/542
+- author: TheShuEd
+  changes:
+  - message: Any light source, including wall lamps or lanterns, is now sufficient
+      for plant growth. The rate of plant growth is proportional to the light intensity.
+    type: Tweak
+  - message: Fixed bugs where weather effects could be visible on tiles under roofs
+    type: Fix
+  id: 1125
+  time: '2026-10-21T11:59:04.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/547
