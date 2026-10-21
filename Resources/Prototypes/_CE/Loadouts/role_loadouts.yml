@@ -25,20 +25,7 @@
   - CEGeneralShoes
   - CEGeneralInstruments
 
-# Guard
-
-- type: roleLoadout
-  id: JobCEGuardCommander
-  groups:
-  - CEGeneralBag
-  - CEGuardHead
-  - CEGeneralEyes
-  - CEGuardCommanderCloak #
-  - CEGeneralGloves
-  - CEGuardShirt
-  - CEGuardPants
-  - CEGeneralShoes
-  - CEGeneralInstruments
+# Sheriff
 
 - type: roleLoadout
   id: JobCEInvestigator
@@ -47,19 +34,6 @@
   - CEInvestigatorMask
   - CEGeneralEyes
   - CEInvestigatorCloak #
-  - CEGeneralGloves
-  - CEGuardShirt
-  - CEGuardPants
-  - CEGeneralShoes
-  - CEGeneralInstruments
-
-- type: roleLoadout
-  id: JobCEGuard
-  groups:
-  - CEGeneralBag
-  - CEGuardHead
-  - CEGeneralEyes
-  - CEGuardCloak
   - CEGeneralGloves
   - CEGuardShirt
   - CEGuardPants

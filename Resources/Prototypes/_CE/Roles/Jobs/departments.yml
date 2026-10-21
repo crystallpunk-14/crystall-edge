@@ -7,21 +7,9 @@
   editorHidden: false
   primary: false
   roles:
-  - CEGuardCommander
   - CETavernmaster
   - CEBrigadier
   - CEGuildmaster
-
-- type: department
-  id: CEGuard
-  name: department-CEGuard
-  description: department-CEGuard-desc
-  weight: 9
-  color: "#576384"
-  editorHidden: false
-  roles:
-  - CEGuardCommander
-  - CEGuard
 
 - type: department
   id: CETavern

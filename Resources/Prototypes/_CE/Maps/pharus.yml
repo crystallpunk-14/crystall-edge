@@ -13,8 +13,6 @@
         - type: StationJobs
           availableJobs:
             #Army
-            CEGuardCommander: [ 1, 1 ]
-            CEGuard: [ 2, 2 ]
             #Engineering
             CEBrigadier: [ 1, 1 ]
             CETechnician: [ 2, 2 ]

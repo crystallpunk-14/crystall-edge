@@ -27,7 +27,6 @@
         - type: StationJobs
           availableJobs:
             CETownfolk: [ -1, -1 ]
-            CEGuardCommander: [ 1, 1 ]
             CETavernmaster: [ 1, 1 ]
             CEGuildmaster: [ 1, 1 ]
             CEAdventurer: [ 3, 4 ]

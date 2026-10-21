@@ -22,18 +22,6 @@ ce-lock-shape-tavern-dorm-8 = tavern room 8
 ce-lock-shape-tavern-dorm-9 = tavern room 9
 ce-lock-shape-tavern-dorm-10 = tavern room 10
 
-# Guard
-
-ce-lock-shape-guard-hall = barracks entrance hall
-ce-lock-shape-guard-staff = barracks internal areas
-ce-lock-shape-guard-head-room = commandant office
-
-ce-lock-shape-guard-cage-1 = prison cage 1
-ce-lock-shape-guard-cage-2 = prison cage 2
-ce-lock-shape-guard-cage-3 = prison cage 3
-ce-lock-shape-guard-cage-4 = prison cage 4
-ce-lock-shape-guard-cage-5 = prison cage 5
-
 # Investigation
 
 ce-lock-shape-investigator-hall = sheriff's office entrance hall

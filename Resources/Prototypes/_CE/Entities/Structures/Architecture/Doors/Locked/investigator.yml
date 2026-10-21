@@ -1,0 +1,39 @@
+- type: entity
+  parent: CEIronDoorWindowed
+  id: CEIronDoorInvestigatorHall
+  suffix: Investigator Hall
+  components:
+  - type: CELock
+    autoGenerateShape: InvestigatorHall
+  - type: Lock
+    locked: false
+
+- type: entity
+  parent: CEIronDoorWindowedMirrored
+  id: CEIronDoorInvestigatorHallMirrored
+  suffix: Investigator Hall, Mirrored
+  components:
+  - type: CELock
+    autoGenerateShape: InvestigatorHall
+  - type: Lock
+    locked: false
+
+- type: entity
+  parent: CEIronDoor
+  id: CEIronDoorInvestigatorStaff
+  suffix: Investigator Staff
+  components:
+  - type: CELock
+    autoGenerateShape: InvestigatorStaff
+  - type: Lock
+    locked: true
+
+- type: entity
+  parent: CEIronDoorMirrored
+  id: CEIronDoorInvestigatorStaffMirrored
+  suffix: Investigator Staff, Mirrored
+  components:
+  - type: CELock
+    autoGenerateShape: InvestigatorStaff
+  - type: Lock
+    locked: true

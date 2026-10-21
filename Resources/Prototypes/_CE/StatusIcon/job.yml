@@ -5,23 +5,7 @@
   locationPreference: Right
   isShaded: true
 
-# Guards
-
-- type: jobIcon
-  parent: CEJobIcon
-  id: CEJobIconGuardCommander
-  icon:
-    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
-    state: guard_commander
-  jobName: ce-job-name-guard-commander
-
-- type: jobIcon
-  parent: CEJobIcon
-  id: CEJobIconGuard
-  icon:
-    sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
-    state: guard
-  jobName: ce-job-name-guard
+# Sheriff
 
 - type: jobIcon
   parent: CEJobIcon

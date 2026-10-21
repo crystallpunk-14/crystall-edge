@@ -25,18 +25,6 @@
 - type: entity
   parent:
   - CEClothingCloakBase
-  id: CEClothingCloakGuardCommander
-  name: guard commander's cloak
-  description: A prestigious cloak worn by the guard commander, denoting authority.
-  components:
-  - type: Sprite
-    sprite: _CE/Clothing/Cloak/Guard/commander.rsi
-  - type: Clothing
-    sprite: _CE/Clothing/Cloak/Guard/commander.rsi
-
-- type: entity
-  parent:
-  - CEClothingCloakBase
   id: CEClothingCloakBrigadier
   name: brigadier's cloak
   description: A status item that only senior foremen responsible for the integrity of the island are allowed to wear. The fabric is stitched with thin brass threads, providing excellent insulation from magical radiation.

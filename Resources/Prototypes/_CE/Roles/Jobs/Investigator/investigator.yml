@@ -28,7 +28,6 @@
   storage:
     back:
     - CEWeaponGunJustice
-    - CEPaperArmyOrders
 
 - type: entity
   id: CEWalletFilledInvestigator
@@ -73,5 +72,14 @@
 
 - type: entity
   id: CEChestFilledInvestigator
-  parent: CEChestFilledGuard
+  parent: CEWoodenChest
   suffix: Filled, Investigator
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: CEWeaponGunJustice
+        - id: CERope
+        - id: CERope
+        - id: CERope

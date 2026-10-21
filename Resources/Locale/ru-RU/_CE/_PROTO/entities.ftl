@@ -702,12 +702,6 @@ ent-CEBiomeSpawnerLeafMaze = { ent-CEBaseBiomeSpawner }
     .desc = { ent-CEBaseBiomeSpawner.desc }
     .suffix = Leaf Maze
 
-ent-CESpawnPointGuardCommander = комендант
-    .desc = { "" }
-
-ent-CESpawnPointGuard = солдат
-    .desc = { "" }
-
 ent-CESpawnPointInvestigator = шериф
     .desc = { "" }
 
@@ -803,9 +797,6 @@ ent-CERubberStampDenied = печать «ОТКАЗАНО»
 
 ent-CERubberStampBank = печать банка
     .desc = Резиновая печать с оттиском имперского банка.
-
-ent-CERubberStampGuard = печать командира стражи
-    .desc = Резиновая печать с оттиском командира стражи.
 
 ent-CERubberStampGuildmaster = печать гильдмастера
     .desc = Резиновая печать с оттиском гильдмастера гильдии авантюристов.
@@ -2634,47 +2625,15 @@ ent-CEKeyEngineeringStorage = { ent-CEKeyEngineeringBase }
     .desc = { ent-CEKeyEngineeringBase.desc }
     .suffix = Engineering Storage
 
-ent-CEKeyGuardBase = { ent-CEKeyIronBlank }
+ent-CEKeyInvestigatorBase = { ent-CEKeyIronBlank }
     .desc = { ent-CEKeyIronBlank.desc }
 
-ent-CEKeyGuardHall = { ent-CEKeyGuardBase }
-    .desc = { ent-CEKeyGuardBase.desc }
-    .suffix = Зал охраны
-
-ent-CEKeyGuardStaff = { ent-CEKeyGuardBase }
-    .desc = { ent-CEKeyGuardBase.desc }
-    .suffix = Персонал охраны
-
-ent-CEKeyGuardHeadRoom = { ent-CEKeyGuardBase }
-    .desc = { ent-CEKeyGuardBase.desc }
-    .suffix = Кабинет главы охраны
-
-ent-CEKeyGuardCage1 = { ent-CEKeyGuardBase }
-    .desc = { ent-CEKeyGuardBase.desc }
-    .suffix = Клетка охраны 1
-
-ent-CEKeyGuardCage2 = { ent-CEKeyGuardBase }
-    .desc = { ent-CEKeyGuardBase.desc }
-    .suffix = Клетка охраны 2
-
-ent-CEKeyGuardCage3 = { ent-CEKeyGuardBase }
-    .desc = { ent-CEKeyGuardBase.desc }
-    .suffix = Клетка охраны 3
-
-ent-CEKeyGuardCage4 = { ent-CEKeyGuardBase }
-    .desc = { ent-CEKeyGuardBase.desc }
-    .suffix = Клетка охраны 4
-
-ent-CEKeyGuardCage5 = { ent-CEKeyGuardBase }
-    .desc = { ent-CEKeyGuardBase.desc }
-    .suffix = Клетка охраны 5
-
-ent-CEKeyInvestigatorHall = { ent-CEKeyGuardBase }
-    .desc = { ent-CEKeyGuardBase.desc }
+ent-CEKeyInvestigatorHall = { ent-CEKeyInvestigatorBase }
+    .desc = { ent-CEKeyInvestigatorBase.desc }
     .suffix = Зал шерифа
 
-ent-CEKeyInvestigatorStaff = { ent-CEKeyGuardBase }
-    .desc = { ent-CEKeyGuardBase.desc }
+ent-CEKeyInvestigatorStaff = { ent-CEKeyInvestigatorBase }
+    .desc = { ent-CEKeyInvestigatorBase.desc }
     .suffix = Персонал шерифа
 
 ent-CEKeyGuildLobby = { ent-CEKeyIronBlank }
@@ -2981,46 +2940,6 @@ ent-CEIronDoorEngineeringStorageMirrored = { ent-CEIronDoorMirrored }
 ent-CEIronGrateEngineeringTunnels = { ent-CEFenceGateBigIron }
     .desc = { ent-CEFenceGateBigIron.desc }
     .suffix = Engineering Tunnels
-
-ent-CEIronDoorGuardHall = { ent-CEIronDoorWindowed }
-    .desc = { ent-CEIronDoorWindowed.desc }
-    .suffix = Зал охраны
-
-ent-CEIronDoorGuardHallMirrored = { ent-CEIronDoorGuardHall }
-    .desc = { ent-CEIronDoorGuardHall.desc }
-    .suffix = Зал охраны, Отзеркалено
-
-ent-CEIronDoorGuardStaff = { ent-CEIronDoor }
-    .desc = { ent-CEIronDoor.desc }
-    .suffix = Персонал охраны
-
-ent-CEIronDoorGuardStaffMirrored = { ent-CEIronDoorMirrored }
-    .desc = { ent-CEIronDoorMirrored.desc }
-    .suffix = Персонал охраны, Отзеркалено
-
-ent-CEIronDoorGuardHeadRoom = { ent-CEIronDoor }
-    .desc = { ent-CEIronDoor.desc }
-    .suffix = Кабинет главы охраны
-
-ent-CEIronDoorGuardCage1 = { ent-CEBaseFenceGateBig }
-    .desc = { ent-CEBaseFenceGateBig.desc }
-    .suffix = Клетка охраны 1
-
-ent-CEIronDoorGuardCage2 = { ent-CEBaseFenceGateBig }
-    .desc = { ent-CEBaseFenceGateBig.desc }
-    .suffix = Клетка охраны 2
-
-ent-CEIronDoorGuardCage3 = { ent-CEBaseFenceGateBig }
-    .desc = { ent-CEBaseFenceGateBig.desc }
-    .suffix = Клетка охраны 3
-
-ent-CEIronDoorGuardCage4 = { ent-CEBaseFenceGateBig }
-    .desc = { ent-CEBaseFenceGateBig.desc }
-    .suffix = Клетка охраны 4
-
-ent-CEIronDoorGuardCage5 = { ent-CEBaseFenceGateBig }
-    .desc = { ent-CEBaseFenceGateBig.desc }
-    .suffix = Клетка охраны 5
 
 ent-CEIronDoorInvestigatorHall = { ent-CEIronDoorWindowed }
     .desc = { ent-CEIronDoorWindowed.desc }
@@ -4470,45 +4389,13 @@ ent-CEKeyRingTechnician = { ent-CEBaseKeyRing }
     .desc = { ent-CEBaseKeyRing.desc }
     .suffix = Пусто
 
-ent-CEWalletFilledGuard = { ent-CEWallet }
-    .desc = { ent-CEWallet.desc }
-    .suffix = Пусто
-
-ent-CEChestFilledGuard = { ent-CEWoodenChest }
-    .desc = { ent-CEWoodenChest.desc }
-    .suffix = Filled, Guard
-
 ent-CEBedsideTableFilledInvestigator = { ent-CEBedsideTableWooden }
     .desc = { ent-CEBedsideTableWooden.desc }
     .suffix = Filled, Investigator
 
-ent-CEChestFilledInvestigator = { ent-CEChestFilledGuard }
-    .desc = { ent-CEChestFilledGuard.desc }
+ent-CEChestFilledInvestigator = { ent-CEWoodenChest }
+    .desc = { ent-CEWoodenChest.desc }
     .suffix = Filled, Investigator
-
-ent-CEBedsideTableFilledGuard = { ent-CEBedsideTableWooden }
-    .desc = { ent-CEBedsideTableWooden.desc }
-    .suffix = Filled, Guard
-
-ent-CEKeyRingGuard = { ent-CEBaseKeyRing }
-    .desc = { ent-CEBaseKeyRing.desc }
-    .suffix = Пусто
-
-ent-CEWalletFilledGuardCommander = { ent-CEWallet }
-    .desc = { ent-CEWallet.desc }
-    .suffix = Пусто
-
-ent-CEChestFilledGuardCommander = { ent-CEGoldChest }
-    .desc = { ent-CEGoldChest.desc }
-    .suffix = Filled, Guard Commander
-
-ent-CEBedsideTableFilledGuardCommander = { ent-CEBedsideTableWooden }
-    .desc = { ent-CEBedsideTableWooden.desc }
-    .suffix = Filled, Guard Commander
-
-ent-CEKeyRingGuardCommander = { ent-CEBaseKeyRing }
-    .desc = { ent-CEBaseKeyRing.desc }
-    .suffix = Пусто
 
 ent-CEWalletFilledInvestigator = { ent-CEWallet }
     .desc = { ent-CEWallet.desc }
@@ -4617,9 +4504,6 @@ ent-CEObjectiveBrotherhoodDebt = Должок
 
 ent-CEPaperBountyHunterContract = заказ
     .desc = Короткое письмо без обратного адреса.
-
-ent-CEPaperArmyOrders = приказ
-    .desc = Приказ главнокомандующего Императорской армии гарнизону поселения.
 
 ent-CEObjectiveBountyHunterEliminate = Уничтожьте братство
     .desc = Все члены братства должны быть мертвы.
@@ -5134,9 +5018,6 @@ ent-CEClothingCloakBlue = синий плащ
 
 ent-CEClothingCloakCommandant = плащ коменданта
     .desc = Величественный плащ, носимый высокопоставленными офицерами и комендантами.
-
-ent-CEClothingCloakGuardCommander = плащ командира стражи
-    .desc = Престижный плащ, носимый командиром стражи, обозначающий власть.
 
 ent-CEClothingCloakBrigadier = плащ бригадира
     .desc = Знак статуса, который разрешено носить только старшим бригадирам, отвечающим за целостность острова. Ткань прошита тонкими латунными нитями, обеспечивающими отличную защиту от магического излучения.
