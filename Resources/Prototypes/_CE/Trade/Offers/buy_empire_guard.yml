@@ -71,13 +71,13 @@
     proto: CEClothingShirtGuard
 
 - type: tradeOffer
-  id: BuyClothingCloakMantleInvestigator
+  id: BuyClothingCloakSheriff
   shop: EmpireGuard
   pay:
     bonus: 10
   reward:
   - !type:CETradeSpawnReward
-    proto: CEClothingCloakMantleInvestigator
+    proto: CEClothingCloakSheriff
 
 - type: tradeOffer
   id: BuyRope

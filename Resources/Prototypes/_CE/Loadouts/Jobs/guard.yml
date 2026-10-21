@@ -1,17 +1,51 @@
 #MARK: Cloak
 
-## Investigator
+## Sheriff
 
 - type: loadoutGroup
-  id: CEInvestigatorCloak
+  id: CESheriffCloak
   name: ce-loadout-cloak
   loadouts:
-  - CEClothingCloakMantleInvestigator
+  - CEClothingCloakSheriff
 
 - type: loadout
-  id: CEClothingCloakMantleInvestigator
+  id: CEClothingCloakSheriff
   equipment:
-    cloak: CEClothingCloakMantleInvestigator
+    cloak: CEClothingCloakSheriff
+
+#MARK: Head
+
+## Sheriff
+
+- type: loadoutGroup
+  id: CESheriffHead
+  name: ce-loadout-head
+  minLimit: 1
+  loadouts:
+  - CEClothingHeadHelmetGuard
+  - CEClothingHeadHelmetGuardCorinthian
+  - CEClothingHeadCapGuard
+  - CEClothingHeadFedoraGuard
+
+- type: loadout
+  id: CEClothingHeadHelmetGuard
+  equipment:
+    head: CEClothingHeadHelmetGuard
+
+- type: loadout
+  id: CEClothingHeadHelmetGuardCorinthian
+  equipment:
+    head: CEClothingHeadHelmetGuardCorinthian
+
+- type: loadout
+  id: CEClothingHeadCapGuard
+  equipment:
+    head: CEClothingHeadCapGuard
+
+- type: loadout
+  id: CEClothingHeadFedoraGuard
+  equipment:
+    head: CEClothingHeadFedoraGuard
 
 #MARK: Pants
 
@@ -44,19 +78,3 @@
   id: CEClothingShirtSyurkoGuard
   equipment:
     shirt: CEClothingShirtSyurkoGuard
-
-#MARK: Mask
-
-## Investigator
-
-- type: loadoutGroup
-  id: CEInvestigatorMask
-  name: ce-loadout-masks
-  minLimit: 1
-  loadouts:
-  - CEClothingMaskInvestigator
-
-- type: loadout
-  id: CEClothingMaskInvestigator
-  equipment:
-    mask: CEClothingMaskInvestigator

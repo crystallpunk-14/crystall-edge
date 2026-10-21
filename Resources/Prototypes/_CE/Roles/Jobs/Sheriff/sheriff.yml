@@ -1,36 +1,31 @@
 - type: job
-  id: CEInvestigator
+  id: CESheriff
   setPreference: true
-  name: ce-job-name-investigator
-  description: ce-job-desc-investigator
-  playTimeTracker: CEJobInvestigator
-  startingGear: CEInvestigatorGear
-  icon: CEJobIconInvestigator
+  name: ce-job-name-sheriff
+  description: ce-job-desc-sheriff
+  playTimeTracker: CEJobSheriff
+  startingGear: CESheriffGear
+  icon: CEJobIconSheriff
   supervisors: ce-job-supervisors-empire
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 1h
-    # The investigator mask is mandatory, these species have no mask slot
-    - !type:SpeciesRequirement
-      inverted: true
-      species:
-      - CECarrin
   special:
     - !type:CELearnSkillsSpecial
       skills:
       - MilitaryTraining
 
 - type: startingGear
-  id: CEInvestigatorGear
+  id: CESheriffGear
   equipment:
-    belt: CEKeyRingInvestigator
-    pocket1: CEWalletFilledInvestigator
+    belt: CEKeyRingSheriff
+    pocket1: CEWalletFilledSheriff
   storage:
     back:
     - CEWeaponGunJustice
 
 - type: entity
-  id: CEWalletFilledInvestigator
+  id: CEWalletFilledSheriff
   parent: CEWallet
   categories: [ HideSpawnMenu ]
   components:
@@ -44,19 +39,19 @@
     - id: CECoinCopper10
 
 - type: entity
-  id: CEKeyRingInvestigator
+  id: CEKeyRingSheriff
   parent: CEBaseKeyRing
   categories: [ HideSpawnMenu ]
   components:
   - type: StorageFill
     contents:
-    - id: CEKeyInvestigatorHall
-    - id: CEKeyInvestigatorStaff
+    - id: CEKeySheriffHall
+    - id: CEKeySheriffStaff
 
 - type: entity
-  id: CEBedsideTableFilledInvestigator
+  id: CEBedsideTableFilledSheriff
   parent: CEBedsideTableWooden
-  suffix: Filled, Investigator
+  suffix: Filled, Sheriff
   components:
   - type: EntityTableContainerFill
     containers:
@@ -64,16 +59,19 @@
         rolls: !type:RangeNumberSelector
           range: 2, 3
         children:
-        - id: CEClothingCloakMantleInvestigator
-        - id: CEClothingMaskInvestigator
+        - id: CEClothingCloakSheriff
+        - id: CEClothingHeadHelmetGuard
+        - id: CEClothingHeadHelmetGuardCorinthian
+        - id: CEClothingHeadCapGuard
+        - id: CEClothingHeadFedoraGuard
         - id: CEClothingShirtGuard
         - id: CEClothingShirtSyurkoGuard
         - id: CEClothingPantsGuard
 
 - type: entity
-  id: CEChestFilledInvestigator
+  id: CEChestFilledSheriff
   parent: CEWoodenChest
-  suffix: Filled, Investigator
+  suffix: Filled, Sheriff
   components:
   - type: EntityTableContainerFill
     containers:

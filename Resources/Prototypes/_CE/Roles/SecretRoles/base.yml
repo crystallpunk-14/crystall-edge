@@ -2,4 +2,4 @@
   id: BaseSecretRoleGuardRestricted
   abstract: true
   prohibitedJobs:
-  - CEInvestigator
+  - CESheriff

@@ -9,11 +9,11 @@
 
 - type: jobIcon
   parent: CEJobIcon
-  id: CEJobIconInvestigator
+  id: CEJobIconSheriff
   icon:
     sprite: /Textures/_CE/Interface/Icons/job_icons.rsi
-    state: investigator
-  jobName: ce-job-name-investigator
+    state: sheriff
+  jobName: ce-job-name-sheriff
 
 # Guild
 

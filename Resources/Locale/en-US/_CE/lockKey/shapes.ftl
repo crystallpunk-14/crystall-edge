@@ -22,10 +22,10 @@ ce-lock-shape-tavern-dorm-8 = tavern room 8
 ce-lock-shape-tavern-dorm-9 = tavern room 9
 ce-lock-shape-tavern-dorm-10 = tavern room 10
 
-# Investigation
+# Sheriff
 
-ce-lock-shape-investigator-hall = sheriff's office entrance hall
-ce-lock-shape-investigator-staff = sheriff's office internal areas
+ce-lock-shape-sheriff-hall = sheriff's office entrance hall
+ce-lock-shape-sheriff-staff = sheriff's office internal areas
 
 # Engineering
 

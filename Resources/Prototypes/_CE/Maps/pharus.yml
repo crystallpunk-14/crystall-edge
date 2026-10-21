@@ -24,7 +24,7 @@
             CEAdventurer: [ 3, 4 ]
             #Citizens
             CEBard: [ 1, 1 ]
-            CEInvestigator: [ 1, 1 ]
+            CESheriff: [ 1, 1 ]
             CETownfolk: [ -1, -1 ]
         - type: CEStationWildlands
           config: Pharus

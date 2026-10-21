@@ -22,10 +22,10 @@ ce-lock-shape-tavern-dorm-8 = комната таверны 8
 ce-lock-shape-tavern-dorm-9 = комната таверны 9
 ce-lock-shape-tavern-dorm-10 = комната таверны 10
 
-# Investigation
+# Sheriff
 
-ce-lock-shape-investigator-hall = прихожая участка шерифа
-ce-lock-shape-investigator-staff = внутренние помещения участка шерифа
+ce-lock-shape-sheriff-hall = прихожая участка шерифа
+ce-lock-shape-sheriff-staff = внутренние помещения участка шерифа
 
 # Engineering
 

@@ -11,18 +11,18 @@
 # Sheriff
 
 - type: entity
-  id: CESpawnPointInvestigator
+  id: CESpawnPointSheriff
   parent: CESpawnPointJobBase
   name: sheriff
   categories:
   - Spawner
   components:
   - type: SpawnPoint
-    job_id: CEInvestigator
+    job_id: CESheriff
   - type: Sprite
     layers:
       - state: green
-      - state: investigator
+      - state: sheriff
 
 # Guild
 

@@ -3,6 +3,6 @@
   abstract: true
   id: CERestrictedAntag
   jobBlacklist:
-  - CEInvestigator
+  - CESheriff
   - CETechnician
   - CEBrigadier

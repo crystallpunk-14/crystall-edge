@@ -24,7 +24,7 @@
             CEAdventurer: [ 4, 5 ]
             #Citizens
             CEBard: [ 2, 2 ]
-            CEInvestigator: [ 1, 1 ]
+            CESheriff: [ 1, 1 ]
             CETownfolk: [ -1, -1 ]
         - type: CEStationWildlands
           config: Shaar

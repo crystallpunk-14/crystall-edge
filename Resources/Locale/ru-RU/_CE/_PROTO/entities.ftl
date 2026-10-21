@@ -274,9 +274,6 @@ ent-CEClothingMaskBoneHornedMask = рогатая костяная маска
 ent-CEClothingMaskMime = маска молчания
     .desc = ...
 
-ent-CEClothingMaskInvestigator = маска дознавателя
-    .desc = Укреплённая маска с тауматургическими линзами, которую носят дознаватели. Позволяет видеть скрытый мир магии и суть предметов, защищая при этом лицо.
-
 ent-CEClothingMaskVampireVoiceDevourers = кровавая костяная маска
     .desc = { ent-CEClothingMaskVampireVoiceBase.desc }
     .suffix = Voice mask
@@ -702,7 +699,7 @@ ent-CEBiomeSpawnerLeafMaze = { ent-CEBaseBiomeSpawner }
     .desc = { ent-CEBaseBiomeSpawner.desc }
     .suffix = Leaf Maze
 
-ent-CESpawnPointInvestigator = шериф
+ent-CESpawnPointSheriff = шериф
     .desc = { "" }
 
 ent-CESpawnPointGuildmaster = гильдмастер
@@ -2625,15 +2622,15 @@ ent-CEKeyEngineeringStorage = { ent-CEKeyEngineeringBase }
     .desc = { ent-CEKeyEngineeringBase.desc }
     .suffix = Engineering Storage
 
-ent-CEKeyInvestigatorBase = { ent-CEKeyIronBlank }
+ent-CEKeySheriffBase = { ent-CEKeyIronBlank }
     .desc = { ent-CEKeyIronBlank.desc }
 
-ent-CEKeyInvestigatorHall = { ent-CEKeyInvestigatorBase }
-    .desc = { ent-CEKeyInvestigatorBase.desc }
+ent-CEKeySheriffHall = { ent-CEKeySheriffBase }
+    .desc = { ent-CEKeySheriffBase.desc }
     .suffix = Зал шерифа
 
-ent-CEKeyInvestigatorStaff = { ent-CEKeyInvestigatorBase }
-    .desc = { ent-CEKeyInvestigatorBase.desc }
+ent-CEKeySheriffStaff = { ent-CEKeySheriffBase }
+    .desc = { ent-CEKeySheriffBase.desc }
     .suffix = Персонал шерифа
 
 ent-CEKeyGuildLobby = { ent-CEKeyIronBlank }
@@ -2941,19 +2938,19 @@ ent-CEIronGrateEngineeringTunnels = { ent-CEFenceGateBigIron }
     .desc = { ent-CEFenceGateBigIron.desc }
     .suffix = Engineering Tunnels
 
-ent-CEIronDoorInvestigatorHall = { ent-CEIronDoorWindowed }
+ent-CEIronDoorSheriffHall = { ent-CEIronDoorWindowed }
     .desc = { ent-CEIronDoorWindowed.desc }
     .suffix = Зал шерифа
 
-ent-CEIronDoorInvestigatorHallMirrored = { ent-CEIronDoorInvestigatorHall }
-    .desc = { ent-CEIronDoorInvestigatorHall.desc }
+ent-CEIronDoorSheriffHallMirrored = { ent-CEIronDoorSheriffHall }
+    .desc = { ent-CEIronDoorSheriffHall.desc }
     .suffix = Зал шерифа, Отзеркалено
 
-ent-CEIronDoorInvestigatorStaff = { ent-CEIronDoor }
+ent-CEIronDoorSheriffStaff = { ent-CEIronDoor }
     .desc = { ent-CEIronDoor.desc }
     .suffix = Персонал шерифа
 
-ent-CEIronDoorInvestigatorStaffMirrored = { ent-CEIronDoorMirrored }
+ent-CEIronDoorSheriffStaffMirrored = { ent-CEIronDoorMirrored }
     .desc = { ent-CEIronDoorMirrored.desc }
     .suffix = Персонал шерифа, Отзеркалено
 
@@ -4389,19 +4386,19 @@ ent-CEKeyRingTechnician = { ent-CEBaseKeyRing }
     .desc = { ent-CEBaseKeyRing.desc }
     .suffix = Пусто
 
-ent-CEBedsideTableFilledInvestigator = { ent-CEBedsideTableWooden }
+ent-CEBedsideTableFilledSheriff = { ent-CEBedsideTableWooden }
     .desc = { ent-CEBedsideTableWooden.desc }
-    .suffix = Filled, Investigator
+    .suffix = Filled, Sheriff
 
-ent-CEChestFilledInvestigator = { ent-CEWoodenChest }
+ent-CEChestFilledSheriff = { ent-CEWoodenChest }
     .desc = { ent-CEWoodenChest.desc }
-    .suffix = Filled, Investigator
+    .suffix = Filled, Sheriff
 
-ent-CEWalletFilledInvestigator = { ent-CEWallet }
+ent-CEWalletFilledSheriff = { ent-CEWallet }
     .desc = { ent-CEWallet.desc }
     .suffix = Пусто
 
-ent-CEKeyRingInvestigator = { ent-CEBaseKeyRing }
+ent-CEKeyRingSheriff = { ent-CEBaseKeyRing }
     .desc = { ent-CEBaseKeyRing.desc }
     .suffix = Пусто
 
@@ -5019,6 +5016,9 @@ ent-CEClothingCloakBlue = синий плащ
 ent-CEClothingCloakCommandant = плащ коменданта
     .desc = Величественный плащ, носимый высокопоставленными офицерами и комендантами.
 
+ent-CEClothingCloakSheriff = плащ шерифа
+    .desc = Престижный плащ, который носит шериф, — знак его власти.
+
 ent-CEClothingCloakBrigadier = плащ бригадира
     .desc = Знак статуса, который разрешено носить только старшим бригадирам, отвечающим за целостность острова. Ткань прошита тонкими латунными нитями, обеспечивающими отличную защиту от магического излучения.
 
@@ -5048,9 +5048,6 @@ ent-CEClothingCloakCoatFurBrown = коричневая меховая шуба
 
 ent-CEClothingCloakMantleAlchemist = мантия алхимика
     .desc = Мантия, носимая алхимиками, часто используемая для защиты одежды от проливов и реагентов.
-
-ent-CEClothingCloakMantleInvestigator = мантия дознавателя
-    .desc = Практичная мантия, излюбленная дознавателями за её незаметный внешний вид.
 
 ent-CEClothingCloakMantleThaumaturge = мантия тауматурга
     .desc = Парадная мантия, которую носят тауматурги Академии, с пристёгивающимся церемониальным капюшоном.

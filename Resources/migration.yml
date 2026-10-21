@@ -305,9 +305,24 @@ CEWalletFilledGuard: null
 CEWalletFilledGuardCommander: null
 CEPaperArmyOrders: null
 CERubberStampGuard: null
-CEClothingCloakGuardCommander: null
+CEClothingCloakGuardCommander: CEClothingCloakSheriff
 CESpawnPointGuard: null
 CESpawnPointGuardCommander: null
+
+# Investigator renamed to Sheriff
+CEBedsideTableFilledInvestigator: CEBedsideTableFilledSheriff
+CEChestFilledInvestigator: CEChestFilledSheriff
+CEClothingCloakMantleInvestigator: CEClothingCloakSheriff
+CEClothingMaskInvestigator: null
+CEIronDoorInvestigatorHall: CEIronDoorSheriffHall
+CEIronDoorInvestigatorHallMirrored: CEIronDoorSheriffHallMirrored
+CEIronDoorInvestigatorStaff: CEIronDoorSheriffStaff
+CEIronDoorInvestigatorStaffMirrored: CEIronDoorSheriffStaffMirrored
+CEKeyInvestigatorHall: CEKeySheriffHall
+CEKeyInvestigatorStaff: CEKeySheriffStaff
+CEKeyRingInvestigator: CEKeyRingSheriff
+CESpawnPointInvestigator: CESpawnPointSheriff
+CEWalletFilledInvestigator: CEWalletFilledSheriff
 
 # CrystallEdge migration zone end
 

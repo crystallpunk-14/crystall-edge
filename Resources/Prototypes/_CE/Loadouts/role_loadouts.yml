@@ -28,12 +28,12 @@
 # Sheriff
 
 - type: roleLoadout
-  id: JobCEInvestigator
+  id: JobCESheriff
   groups:
   - CEGeneralBag
-  - CEInvestigatorMask
+  - CESheriffHead
   - CEGeneralEyes
-  - CEInvestigatorCloak #
+  - CESheriffCloak #
   - CEGeneralGloves
   - CEGuardShirt
   - CEGuardPants

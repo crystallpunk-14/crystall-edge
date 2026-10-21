@@ -45,7 +45,7 @@
   roles:
   - CETownfolk
   - CEBard
-  - CEInvestigator
+  - CESheriff
 
 - type: department
   id: CEGuild
