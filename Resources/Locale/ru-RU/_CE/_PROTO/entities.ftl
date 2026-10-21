@@ -4242,10 +4242,6 @@ ent-CETradeTableAlcohol = { ent-CETradeCarpetBase }
     .desc = { ent-CETradeCarpetBase.desc }
     .suffix = alcohol
 
-ent-CETradeTableEmpireSheriff = { ent-CETradeCarpetBase }
-    .desc = { ent-CETradeCarpetBase.desc }
-    .suffix = empire sheriff
-
 ent-CETradeTableHelsinWarHouse = { ent-CETradeCarpetBase }
     .desc = { ent-CETradeCarpetBase.desc }
     .suffix = Helsin War House
@@ -4529,6 +4525,9 @@ ent-CEActionMilitaryTraining = Военная подготовка
 
 ent-CEActionImperialSalary200 = Жалование Империи
     .desc = Империя платит своим слугам 2 золотых на каждом рассвете. Заберите накопившееся жалование.
+
+ent-CEActionShopEmpireSheriff = Имперское снабжение
+    .desc = Закажите снаряжение со складов Империи.
 
 ent-CEStatusEffectMurkwalker = иммунитет к мраку
     .desc = { "" }

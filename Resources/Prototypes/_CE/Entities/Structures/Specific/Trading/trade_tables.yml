@@ -120,17 +120,6 @@
 
 - type: entity
   parent: CETradeCarpetBase
-  id: CETradeTableEmpireSheriff
-  suffix: empire sheriff
-  categories: [ ForkFiltered ]
-  components:
-  - type: IconSmooth
-    key: trade_EmpireSheriff
-  - type: CETradeShopTable
-    shop: EmpireSheriff
-
-- type: entity
-  parent: CETradeCarpetBase
   id: CETradeTableHelsinWarHouse
   suffix: Helsin War House
   categories: [ ForkFiltered ]

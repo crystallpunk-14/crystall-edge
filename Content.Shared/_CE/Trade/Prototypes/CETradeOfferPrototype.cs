@@ -1,5 +1,6 @@
 using Content.Shared._CE.ResourceManager;
 using Content.Shared._CE.Trade.Rewards;
+using Content.Shared._CE.Workbench.Prototypes;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._CE.Trade.Prototypes;
@@ -51,6 +52,12 @@ public sealed partial class CETradeOfferPrototype : IPrototype
 
     [DataField]
     public LocId? Name;
+
+    /// <summary>
+    /// Section the offer is listed under in trade shop windows.
+    /// </summary>
+    [DataField]
+    public ProtoId<CEWorkbenchRecipeCategoryPrototype>? Category;
 }
 
 [DataDefinition]

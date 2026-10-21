@@ -340,9 +340,10 @@ CEWeaponMaceTwoHandedGuardrail: CEWeaponMaceTwoHandedSheriff
 CEGuardMaceEnergyBall: CESheriffMaceEnergyBall
 CEActionGuardMaceCharge: CEActionSheriffMaceCharge
 CEGuardBola: CEBola
-CETradeTableEmpireGuard: CETradeTableEmpireSheriff
+CETradeTableEmpireGuard: null
 CEWallRadioSpeakerGuard: CEWallRadioSpeaker
 CERadioPostSpeakerGuard: CERadioPostSpeaker
+CETradeTableEmpireSheriff: null
 
 # CrystallEdge migration zone end
 

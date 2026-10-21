@@ -3,8 +3,10 @@ using System.Numerics;
 using Content.Server._CE.Currency;
 using Content.Server.Cargo.Systems;
 using Content.Server.Stack;
+using Content.Shared._CE.ResourceManager;
 using Content.Shared._CE.Trade;
 using Content.Shared._CE.Trade.Components;
+using Content.Shared._CE.Trade.Rewards;
 using Content.Shared.Hands;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
@@ -13,6 +15,7 @@ using Content.Shared.Popups;
 using Content.Shared.Stacks;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
+using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Physics.Components;
@@ -90,59 +93,87 @@ public sealed partial class CETradeSystem : CESharedTradeSystem
     public bool TryTrade(Entity<CETradeOfferComponent> ent, EntityUid user)
     {
         var offer = ent.Comp;
-        var items = CollectTradeableItems(user);
-
-        var missing = new List<string>();
-        foreach (var cost in offer.Cost)
-        {
-            if (!cost.CheckRequirement(EntityManager, Proto, items))
-                missing.Add(cost.GetRequirementTitle(Proto));
-        }
-
-        if (ent.Comp.PayPrice > 0 && Currency.GetPriceTotal(user) < ent.Comp.PayPrice)
-            missing.Add(FormattedMessage.RemoveMarkupPermissive(Currency.GetCurrencyPrettyString(ent.Comp.PayPrice)).Trim());
-
-        if (missing.Count > 0)
-        {
-            _popup.PopupEntity(Loc.GetString("ce-trade-missing", ("items", string.Join(", ", missing))), ent, user, PopupType.SmallCaution);
+        if (!TryExchange(user, ent, ent, offer.Cost, offer.Reward, offer.PayPrice, offer.ReceivePrice, offer.TradeSound))
             return false;
-        }
-
-        if (!_currency.TryTakeCurrency(user, ent.Comp.PayPrice, out var change))
-            return false;
-
-        foreach (var cost in offer.Cost)
-        {
-            cost.PostCraft(EntityManager, Proto, items);
-        }
-
-        var mapCoords = _transform.GetMapCoordinates(ent);
-        var given = new List<EntityUid>();
-        foreach (var reward in offer.Reward)
-        {
-            reward.Give(EntityManager, mapCoords, given);
-        }
-
-        var money = ent.Comp.ReceivePrice + change;
-        if (money > 0)
-            given.AddRange(_currency.GenerateMoney(money, _transform.ToCoordinates(mapCoords)));
-
-        var coords = Transform(ent).Coordinates;
-        _audio.PlayPvs(ent.Comp.TradeSound, coords);
-        Deliver(given, user, mapCoords, coords);
-
-        var ev = new CETradeCompletedEvent(user, ent, ent.Comp.PayPrice, ent.Comp.ReceivePrice);
-        RaiseLocalEvent(ref ev);
 
         QueueDel(ent);
         return true;
     }
 
     /// <summary>
+    /// Takes the cost from the user and gives them the reward. Fails without taking anything if the user can't pay in full.
+    /// </summary>
+    /// <param name="source">Entity the exchange is made with, reported in <see cref="CETradeCompletedEvent"/>.</param>
+    /// <param name="origin">Where the reward appears and the popups and sound come from.</param>
+    public bool TryExchange(EntityUid user,
+        EntityUid source,
+        EntityUid origin,
+        List<CEResourceRequirement> cost,
+        List<CETradeReward> reward,
+        int payPrice,
+        int receivePrice,
+        SoundSpecifier sound)
+    {
+        var items = CollectTradeableItems(user);
+
+        if (GetMissing(user, items, cost, payPrice) is { } missing)
+        {
+            _popup.PopupEntity(Loc.GetString("ce-trade-missing", ("items", missing)), origin, user, PopupType.SmallCaution);
+            return false;
+        }
+
+        if (!_currency.TryTakeCurrency(user, payPrice, out var change))
+            return false;
+
+        foreach (var req in cost)
+        {
+            req.PostCraft(EntityManager, Proto, items);
+        }
+
+        var mapCoords = _transform.GetMapCoordinates(origin);
+        var given = new List<EntityUid>();
+        foreach (var entry in reward)
+        {
+            entry.Give(EntityManager, mapCoords, given);
+        }
+
+        var coords = Transform(origin).Coordinates;
+        _audio.PlayPvs(sound, coords);
+        Deliver(given, user, mapCoords, coords, handsFirst: true);
+
+        var money = receivePrice + change;
+        if (money > 0)
+            Deliver(_currency.GenerateMoney(money, _transform.ToCoordinates(mapCoords)).ToList(), user, mapCoords, coords);
+
+        var ev = new CETradeCompletedEvent(user, source, payPrice, receivePrice);
+        RaiseLocalEvent(ref ev);
+        return true;
+    }
+
+    /// <summary>
+    /// Comma-separated list of what the user lacks for the exchange, or null if they have everything.
+    /// </summary>
+    public string? GetMissing(EntityUid user, HashSet<EntityUid> items, List<CEResourceRequirement> cost, int payPrice)
+    {
+        var missing = new List<string>();
+        foreach (var req in cost)
+        {
+            if (!req.CheckRequirement(EntityManager, Proto, items))
+                missing.Add(req.GetRequirementTitle(Proto));
+        }
+
+        if (payPrice > 0 && Currency.GetPriceTotal(user) < payPrice)
+            missing.Add(FormattedMessage.RemoveMarkupPermissive(Currency.GetCurrencyPrettyString(payPrice)).Trim());
+
+        return missing.Count > 0 ? string.Join(", ", missing) : null;
+    }
+
+    /// <summary>
     /// Puts the given entities into the buyer's inventory: existing stacks first, then storages, then free hands.
     /// Whatever doesn't fit scatters around the offer.
     /// </summary>
-    public void Deliver(List<EntityUid> items, EntityUid user, MapCoordinates offerPos, EntityCoordinates offerCoords)
+    /// <param name="handsFirst">Try free hands before stacks and storages.</param>
+    public void Deliver(List<EntityUid> items, EntityUid user, MapCoordinates offerPos, EntityCoordinates offerCoords, bool handsFirst = false)
     {
         var stacks = new List<Entity<StackComponent>>();
         foreach (var owned in CollectTradeableItems(user))
@@ -156,7 +187,7 @@ public sealed partial class CETradeSystem : CESharedTradeSystem
 
         foreach (var item in items)
         {
-            if (!TryDeliver(item, user, stacks, storages, delivered))
+            if (!TryDeliver(item, user, stacks, storages, delivered, handsFirst))
                 Scatter(item, offerPos);
         }
 
@@ -168,9 +199,19 @@ public sealed partial class CETradeSystem : CESharedTradeSystem
         EntityUid user,
         List<Entity<StackComponent>> stacks,
         List<Entity<StorageComponent>> storages,
-        HashSet<EntityUid> delivered)
+        HashSet<EntityUid> delivered,
+        bool handsFirst)
     {
         _stackQuery.TryComp(item, out var itemStack);
+        if (handsFirst && _hands.TryPickupAnyHand(user, item, checkActionBlocker: false))
+        {
+            delivered.Add(item);
+            if (itemStack != null)
+                stacks.Add((item, itemStack));
+
+            return true;
+        }
+
         if (itemStack != null)
         {
             foreach (var stack in stacks)
