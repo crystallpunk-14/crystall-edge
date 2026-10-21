@@ -59,16 +59,6 @@
 
 - type: entity
   parent: CEWallRadioSpeakerBase
-  id: CEWallRadioSpeakerGuard
-  suffix: Common, Guard
-  components:
-  - type: CERadioSpeaker
-    frequencies:
-    - Common
-    - Guard
-
-- type: entity
-  parent: CEWallRadioSpeakerBase
   id: CEWallRadioSpeakerTavern
   suffix: Common, Tavern
   components:

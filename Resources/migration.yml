@@ -333,6 +333,17 @@ CEClothingPantsGuard: CEClothingPantsSheriff
 CEClothingShirtGuard: CEClothingShirtSheriff
 CEClothingShirtSyurkoGuard: CEClothingShirtSyurkoSheriff
 
+# Remaining guard content renamed to Sheriff
+CEClothingCloakRaincoatGuard: CEClothingCloakRaincoatSheriff
+CEClothingHeadTriangularGuard: CEClothingHeadTriangularSheriff
+CEWeaponMaceTwoHandedGuardrail: CEWeaponMaceTwoHandedSheriff
+CEGuardMaceEnergyBall: CESheriffMaceEnergyBall
+CEActionGuardMaceCharge: CEActionSheriffMaceCharge
+CEGuardBola: CESheriffBola
+CETradeTableEmpireGuard: CETradeTableEmpireSheriff
+CEWallRadioSpeakerGuard: CEWallRadioSpeaker
+CERadioPostSpeakerGuard: CERadioPostSpeaker
+
 # CrystallEdge migration zone end
 
 

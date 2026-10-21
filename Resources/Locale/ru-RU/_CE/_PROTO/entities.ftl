@@ -244,8 +244,8 @@ ent-CEClothingHeadWreath = венок
 ent-CEClothingHeadBowlerLeather = кожаный котелок
     .desc = Выглядит достаточно крепким, чтобы выдержать пару падающих на лоб камней. Но это не точно.
 
-ent-CEClothingHeadTriangularGuard = треугольная шляпа стражника
-    .desc = Отличительная треугольная шляпа, носимая стражниками. Её уникальная форма облегчает идентификацию персонала охраны издалека.
+ent-CEClothingHeadTriangularSheriff = треугольная шляпа шерифа
+    .desc = Отличительная треугольная шляпа, которую носит шериф. Её уникальная форма позволяет узнать шерифа издалека.
 
 ent-CEClothingHeadTriangularLeather = кожаная треугольная шляпа
     .desc = Практичная треугольная шляпа из качественной кожи. Прочная и устойчивая к погоде.
@@ -2725,7 +2725,7 @@ ent-CEKeyHomeGoodsHome = { ent-CEKeyIronBlank }
     .suffix = Home Goods Home
 
 ent-CEWeaponGunPeacekeeperGolden = золотой Миротворец
-    .desc = Энергетическая винтовка с малым зарядом, стреляющая мощным отталкивающим лучом сконцентрированной маны. Особый предмет, изготовленный в единственном экземпляре на заказ для командира стражи. Ёмкость боезапаса немного выше.
+    .desc = Энергетическая винтовка с малым зарядом, стреляющая мощным отталкивающим лучом сконцентрированной маны. Особый предмет, изготовленный в единственном экземпляре на заказ для шерифа. Ёмкость боезапаса немного выше.
     .suffix = Theft Target
 
 ent-CEWeaponClubWooden = тяжёлая дубина
@@ -2743,14 +2743,14 @@ ent-CEWeaponDaggerSickle = серп
 ent-CEWeaponHammerIron = железный молот
     .desc = Стандартный молот из железа.
 
-ent-CEWeaponMaceTwoHandedGuardrail = булава стражи
-    .desc = Тяжёлая булава на мане, используемая стражей. При активации наносит мощный удар, отбрасывающий цели и истощающий их выносливость.
+ent-CEWeaponMaceTwoHandedSheriff = булава шерифа
+    .desc = Тяжёлая булава на мане, которой пользуется шериф. При активации наносит мощный удар, отбрасывающий цели и истощающий их выносливость.
 
-ent-CEGuardMaceEnergyBall = энергетический шар
+ent-CESheriffMaceEnergyBall = энергетический шар
     .desc = { "" }
 
-ent-CEActionGuardMaceCharge = активировать энергоядро
-    .desc = Переключает энергоядро булавы стражи, меняя режим атаки.
+ent-CEActionSheriffMaceCharge = активировать энергоядро
+    .desc = Переключает энергоядро булавы шерифа, меняя режим атаки.
 
 ent-CEWeaponMop = швабра
     .desc = Простая швабра для уборки луж и грязи.
@@ -2791,8 +2791,8 @@ ent-CEArrowIron = стрела
 ent-CECrossboltIron = арбалетный болт
     .desc = Стержень с острым железным наконечником. Без оперения, это не стрелы.
 
-ent-CEGuardBola = бола
-    .desc = Тактическая бола, выдаваемая страже: стальные якоря, соединённые прочной верёвкой. Надёжная и многоразовая.
+ent-CESheriffBola = бола
+    .desc = Тактическая бола, выдаваемая шерифу: стальные якоря, соединённые прочной верёвкой. Надёжная и многоразовая.
 
 ent-CEStatusEffectAirCaught = воздушная ловушка
     .desc = { "" }
@@ -4064,10 +4064,6 @@ ent-CEWallRadioSpeakerEngineering = { ent-CEWallRadioSpeakerBase }
     .desc = { ent-CEWallRadioSpeakerBase.desc }
     .suffix = Common, Engineering
 
-ent-CEWallRadioSpeakerGuard = { ent-CEWallRadioSpeakerBase }
-    .desc = { ent-CEWallRadioSpeakerBase.desc }
-    .suffix = Common, Guard
-
 ent-CEWallRadioSpeakerTavern = { ent-CEWallRadioSpeakerBase }
     .desc = { ent-CEWallRadioSpeakerBase.desc }
     .suffix = Common, Tavern
@@ -4086,10 +4082,6 @@ ent-CERadioPostSpeakerAcademy = { ent-CERadioPostSpeakerBase }
 ent-CERadioPostSpeakerEngineering = { ent-CERadioPostSpeakerBase }
     .desc = { ent-CERadioPostSpeakerBase.desc }
     .suffix = Common, Engineering
-
-ent-CERadioPostSpeakerGuard = { ent-CERadioPostSpeakerBase }
-    .desc = { ent-CERadioPostSpeakerBase.desc }
-    .suffix = Common, Guard
 
 ent-CERadioPostSpeakerTavern = { ent-CERadioPostSpeakerBase }
     .desc = { ent-CERadioPostSpeakerBase.desc }
@@ -4250,9 +4242,9 @@ ent-CETradeTableAlcohol = { ent-CETradeCarpetBase }
     .desc = { ent-CETradeCarpetBase.desc }
     .suffix = alcohol
 
-ent-CETradeTableEmpireGuard = { ent-CETradeCarpetBase }
+ent-CETradeTableEmpireSheriff = { ent-CETradeCarpetBase }
     .desc = { ent-CETradeCarpetBase.desc }
-    .suffix = empire guard
+    .suffix = empire sheriff
 
 ent-CETradeTableHelsinWarHouse = { ent-CETradeCarpetBase }
     .desc = { ent-CETradeCarpetBase.desc }
@@ -5070,8 +5062,8 @@ ent-CEClothingCloakRaincoatAlchemist = плащ алхимика
 ent-CEClothingCloakRaincoatGreen = зелёный дождевик
     .desc = Водонепроницаемый зелёный дождевик на каждый день.
 
-ent-CEClothingCloakRaincoatGuard = дождевик стражи
-    .desc = Усиленный дождевик, выдаваемый страже для защиты от непогоды во время службы.
+ent-CEClothingCloakRaincoatSheriff = дождевик шерифа
+    .desc = Усиленный дождевик, выдаваемый шерифу для защиты от непогоды во время службы.
 
 ent-CEClothingCloakRaincoatWhite = белый дождевик
     .desc = Чистый белый дождевик, часто используемый профессионалами, которым нужен опрятный вид.
@@ -5247,7 +5239,7 @@ ent-CESnowball = снежок
     .desc = Небольшая горсть снега, удобная для метания.
 
 ent-CEWeaponGunJustice = Револьвер "Справедливость"
-    .desc = Быстрый и удобный револьвер стражи, из которого можно легко стрелять двумя руками.
+    .desc = Быстрый и удобный револьвер шерифа, из которого можно легко стрелять двумя руками.
 
 ent-CEWeaponGunPeacekeeper = Миротворец
     .desc = Низкозарядная энергетическая винтовка, которая стреляет мощным отталкивающим лучом концентрированной маны.

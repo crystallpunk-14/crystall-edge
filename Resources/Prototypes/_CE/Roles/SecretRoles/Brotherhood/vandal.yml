@@ -1,5 +1,5 @@
 - type: secretRole
-  parent: BaseSecretRoleGuardRestricted
+  parent: BaseSecretRoleSheriffRestricted
   id: Vandal
   name: ce-secret-role-name-vandal
   description: ce-secret-role-description-vandal

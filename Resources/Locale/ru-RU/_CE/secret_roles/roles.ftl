@@ -33,7 +33,7 @@ ce-secret-role-name-immortal = Бессмертный
 ce-secret-role-description-immortal = Вас невероятно тяжело убить. Можно сказать, почти невозможно.
 
 ce-secret-role-name-vandal = Вандал
-ce-secret-role-description-vandal = О, вы против текущего положения дел и контроля стражи над городом. Устроим немного погрома.
+ce-secret-role-description-vandal = О, вы против текущего положения дел и контроля шерифа над городом. Устроим немного погрома.
 
 # Ковен
 

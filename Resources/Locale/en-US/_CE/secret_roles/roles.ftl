@@ -33,7 +33,7 @@ ce-secret-role-name-immortal = Immortal
 ce-secret-role-description-immortal = You are incredibly hard to kill. One might even say almost impossible.
 
 ce-secret-role-name-vandal = Vandal
-ce-secret-role-description-vandal = Oh, you're against the way things are and the guard's grip on the city. Let's wreck the place a little.
+ce-secret-role-description-vandal = Oh, you're against the way things are and the sheriff's grip on the city. Let's wreck the place a little.
 
 # Coven
 

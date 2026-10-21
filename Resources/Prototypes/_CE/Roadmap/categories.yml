@@ -5,8 +5,8 @@
   priority: 6
 
 - type: roadmapCategory
-  id: Guard
-  title: ce-roadmap-category-guard
+  id: Sheriff
+  title: ce-roadmap-category-sheriff
   color: "#2f78d1"
   priority: 5
 

@@ -1,7 +1,7 @@
 - type: skill
   id: MilitaryTraining
   icon:
-    sprite: _CE/Skills/Guard/military_training.rsi
+    sprite: _CE/Skills/Sheriff/military_training.rsi
     state: icon
   effect: !type:AddAction
     action: CEActionMilitaryTraining
@@ -16,7 +16,7 @@
     useDelay: 300
     checkCanInteract: false
   - type: Sprite
-    sprite: _CE/Skills/Guard/military_training.rsi
+    sprite: _CE/Skills/Sheriff/military_training.rsi
     layers:
     - state: icon
       map: ["enum.ActionVisuals.Icon"]

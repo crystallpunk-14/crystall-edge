@@ -30,9 +30,9 @@
   description: A prestigious cloak worn by the sheriff, denoting authority.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Cloak/Guard/sheriff.rsi
+    sprite: _CE/Clothing/Cloak/Sheriff/sheriff.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Cloak/Guard/sheriff.rsi
+    sprite: _CE/Clothing/Cloak/Sheriff/sheriff.rsi
 
 - type: entity
   parent:

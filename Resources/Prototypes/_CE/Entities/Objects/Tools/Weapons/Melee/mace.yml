@@ -59,12 +59,12 @@
 
 - type: entity
   parent: CEBaseWeaponMaceTwoHanded
-  id: CEWeaponMaceTwoHandedGuardrail
-  name: guardrail mace
-  description: A mana-powered heavy mace used by guards. When activated, it delivers a powerful blow that knocks back targets and drains their stamina.
+  id: CEWeaponMaceTwoHandedSheriff
+  name: sheriff's mace
+  description: A mana-powered heavy mace used by the sheriff. When activated, it delivers a powerful blow that knocks back targets and drains their stamina.
   components:
   - type: Sprite
-    sprite: _CE/Objects/Tools/Weapons/Melee/Mace/guardrail.rsi
+    sprite: _CE/Objects/Tools/Weapons/Melee/Mace/sheriff.rsi
     layers:
     - state: icon
     - state: charge
@@ -85,12 +85,12 @@
             Blunt: 20
       OnChargedHit:
       - !type:ShootProjectile
-        prototype: CEGuardMaceEnergyBall
+        prototype: CESheriffMaceEnergyBall
         projectileSpeed: 10
   - type: CEToggledWeaponAnimation
     animations:
       Secondary:
-      - anim: GuardMaceChargedShot
+      - anim: SheriffMaceChargedShot
   - type: Battery
     startingCharge: 100
     maxCharge: 100
@@ -102,7 +102,7 @@
     soundDeactivate:
       path: /Audio/Weapons/ebladeoff.ogg
   - type: ToggleClothing
-    action: CEActionGuardMaceCharge
+    action: CEActionSheriffMaceCharge
     mustEquip: false
   - type: ItemToggleRequiresCharge
     requiredCharge: 10
@@ -129,7 +129,7 @@
 
 - type: entity
   parent: BaseBullet
-  id: CEGuardMaceEnergyBall
+  id: CESheriffMaceEnergyBall
   categories: [ HideSpawnMenu ]
   name: energy ball
   components:
@@ -198,15 +198,15 @@
 
 - type: entity
   parent: BaseToggleAction
-  id: CEActionGuardMaceCharge
+  id: CEActionSheriffMaceCharge
   name: activate energy core
-  description: Toggles the guardrail mace's energy core, swapping its attack mode.
+  description: Toggles the sheriff's mace's energy core, swapping its attack mode.
   components:
   - type: Action
     useDelay: 1
     itemIconStyle: BigItem
   - type: Sprite
-    sprite: _CE/Objects/Tools/Weapons/Melee/Mace/guardrail.rsi
+    sprite: _CE/Objects/Tools/Weapons/Melee/Mace/sheriff.rsi
     layers:
     - state: icon
       map: [ "enum.ActionVisuals.Icon" ]
@@ -215,7 +215,7 @@
       visible: false
 
 - type: entityEffectAnimation
-  id: GuardMaceChargedShot
+  id: SheriffMaceChargedShot
   movementSpeed: 0.3
   duration: 0.5
   events:

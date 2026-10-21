@@ -18,9 +18,9 @@
 
 - type: roadmapItem
   id: HardLabor
-  name: ce-roadmap-guard-hard-labor-name
-  desc: ce-roadmap-guard-hard-labor-desc
-  category: Guard
+  name: ce-roadmap-sheriff-hard-labor-name
+  desc: ce-roadmap-sheriff-hard-labor-desc
+  category: Sheriff
   status: Backlog
 
 - type: roadmapItem

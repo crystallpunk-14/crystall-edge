@@ -120,14 +120,14 @@
 
 - type: entity
   parent: CETradeCarpetBase
-  id: CETradeTableEmpireGuard
-  suffix: empire guard
+  id: CETradeTableEmpireSheriff
+  suffix: empire sheriff
   categories: [ ForkFiltered ]
   components:
   - type: IconSmooth
-    key: trade_EmpireGuard
+    key: trade_EmpireSheriff
   - type: CETradeShopTable
-    shop: EmpireGuard
+    shop: EmpireSheriff
 
 - type: entity
   parent: CETradeCarpetBase

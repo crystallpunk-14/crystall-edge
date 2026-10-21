@@ -1,5 +1,5 @@
 - type: secretRole
-  parent: BaseSecretRoleGuardRestricted
+  parent: BaseSecretRoleSheriffRestricted
   id: Werewolf
   name: ce-secret-role-name-werewolf
   description: ce-secret-role-description-werewolf

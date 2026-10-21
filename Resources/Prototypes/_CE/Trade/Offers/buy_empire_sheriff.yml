@@ -1,15 +1,15 @@
 - type: tradeOffer
-  id: BuyClothingCloakRaincoatGuard
-  shop: EmpireGuard
+  id: BuyClothingCloakRaincoatSheriff
+  shop: EmpireSheriff
   pay:
     bonus: 10
   reward:
   - !type:CETradeSpawnReward
-    proto: CEClothingCloakRaincoatGuard
+    proto: CEClothingCloakRaincoatSheriff
 
 - type: tradeOffer
   id: BuyClothingShirtSyurkoSheriff
-  shop: EmpireGuard
+  shop: EmpireSheriff
   pay:
     bonus: 10
   reward:
@@ -18,7 +18,7 @@
 
 - type: tradeOffer
   id: BuyClothingHeadHelmetSheriff
-  shop: EmpireGuard
+  shop: EmpireSheriff
   pay:
     bonus: 10
   reward:
@@ -27,7 +27,7 @@
 
 - type: tradeOffer
   id: BuyClothingHeadHelmetSheriffCorinthian
-  shop: EmpireGuard
+  shop: EmpireSheriff
   pay:
     bonus: 10
   reward:
@@ -36,7 +36,7 @@
 
 - type: tradeOffer
   id: BuyClothingHeadCapSheriff
-  shop: EmpireGuard
+  shop: EmpireSheriff
   pay:
     bonus: 10
   reward:
@@ -45,7 +45,7 @@
 
 - type: tradeOffer
   id: BuyClothingHeadFedoraSheriff
-  shop: EmpireGuard
+  shop: EmpireSheriff
   pay:
     bonus: 10
   reward:
@@ -54,7 +54,7 @@
 
 - type: tradeOffer
   id: BuyClothingPantsSheriff
-  shop: EmpireGuard
+  shop: EmpireSheriff
   pay:
     bonus: 10
   reward:
@@ -63,7 +63,7 @@
 
 - type: tradeOffer
   id: BuyClothingShirtSheriff
-  shop: EmpireGuard
+  shop: EmpireSheriff
   pay:
     bonus: 10
   reward:
@@ -72,7 +72,7 @@
 
 - type: tradeOffer
   id: BuyClothingCloakSheriff
-  shop: EmpireGuard
+  shop: EmpireSheriff
   pay:
     bonus: 10
   reward:
@@ -81,7 +81,7 @@
 
 - type: tradeOffer
   id: BuyRope
-  shop: EmpireGuard
+  shop: EmpireSheriff
   pay:
     bonus: 10
   reward:
@@ -89,17 +89,17 @@
     proto: CERope
 
 - type: tradeOffer
-  id: BuyGuardBola
-  shop: EmpireGuard
+  id: BuySheriffBola
+  shop: EmpireSheriff
   pay:
     bonus: 1
   reward:
   - !type:CETradeSpawnReward
-    proto: CEGuardBola
+    proto: CESheriffBola
 
 - type: tradeOffer
   id: BuyGunJustice
-  shop: EmpireGuard
+  shop: EmpireSheriff
   pay:
     bonus: 1
   reward:
@@ -108,7 +108,7 @@
 
 - type: tradeOffer
   id: BuyGunPeacekeeper
-  shop: EmpireGuard
+  shop: EmpireSheriff
   pay:
     bonus: 1
   reward:
@@ -116,10 +116,10 @@
     proto: CEWeaponGunPeacekeeper
 
 - type: tradeOffer
-  id: BuyWeaponMaceTwoHandedGuardrail
-  shop: EmpireGuard
+  id: BuyWeaponMaceTwoHandedSheriff
+  shop: EmpireSheriff
   pay:
     bonus: 1
   reward:
   - !type:CETradeSpawnReward
-    proto: CEWeaponMaceTwoHandedGuardrail
+    proto: CEWeaponMaceTwoHandedSheriff

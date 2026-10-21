@@ -25,14 +25,14 @@
 - type: entity
   parent:
   - CEClothingCloakBase
-  id: CEClothingCloakRaincoatGuard
-  name: guard raincoat
-  description: A reinforced raincoat issued to guards for weather protection while on duty.
+  id: CEClothingCloakRaincoatSheriff
+  name: sheriff's raincoat
+  description: A reinforced raincoat issued to the sheriff for weather protection while on duty.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Cloak/Guard/raincoat.rsi
+    sprite: _CE/Clothing/Cloak/Sheriff/raincoat.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Cloak/Guard/raincoat.rsi
+    sprite: _CE/Clothing/Cloak/Sheriff/raincoat.rsi
 
 - type: entity
   parent:

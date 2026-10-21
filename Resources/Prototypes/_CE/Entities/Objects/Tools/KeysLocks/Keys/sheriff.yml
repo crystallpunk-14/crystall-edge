@@ -4,7 +4,7 @@
   abstract: true
   components:
   - type: Sprite
-    state: key_guard
+    state: key_sheriff
 
 - type: entity
   parent: CEKeySheriffBase
