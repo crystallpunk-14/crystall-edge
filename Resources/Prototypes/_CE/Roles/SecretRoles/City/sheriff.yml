@@ -8,6 +8,7 @@
   - CESheriff
   skills:
   - MilitaryTraining
+  - ImperialSalary200
   objectives: !type:EntSelector
     id: CEObjectiveSheriffDestroyDarkness
 

@@ -142,7 +142,7 @@ public sealed partial class CETradeSystem : CESharedTradeSystem
     /// Puts the given entities into the buyer's inventory: existing stacks first, then storages, then free hands.
     /// Whatever doesn't fit scatters around the offer.
     /// </summary>
-    private void Deliver(List<EntityUid> items, EntityUid user, MapCoordinates offerPos, EntityCoordinates offerCoords)
+    public void Deliver(List<EntityUid> items, EntityUid user, MapCoordinates offerPos, EntityCoordinates offerCoords)
     {
         var stacks = new List<Entity<StackComponent>>();
         foreach (var owned in CollectTradeableItems(user))
