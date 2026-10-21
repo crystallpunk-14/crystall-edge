@@ -22,59 +22,59 @@
   name: ce-loadout-head
   minLimit: 1
   loadouts:
-  - CEClothingHeadHelmetGuard
-  - CEClothingHeadHelmetGuardCorinthian
-  - CEClothingHeadCapGuard
-  - CEClothingHeadFedoraGuard
+  - CEClothingHeadCapSheriff
+  - CEClothingHeadFedoraSheriff
+  - CEClothingHeadHelmetSheriff
+  - CEClothingHeadHelmetSheriffCorinthian
 
 - type: loadout
-  id: CEClothingHeadHelmetGuard
+  id: CEClothingHeadCapSheriff
   equipment:
-    head: CEClothingHeadHelmetGuard
+    head: CEClothingHeadCapSheriff
 
 - type: loadout
-  id: CEClothingHeadHelmetGuardCorinthian
+  id: CEClothingHeadFedoraSheriff
   equipment:
-    head: CEClothingHeadHelmetGuardCorinthian
+    head: CEClothingHeadFedoraSheriff
 
 - type: loadout
-  id: CEClothingHeadCapGuard
+  id: CEClothingHeadHelmetSheriff
   equipment:
-    head: CEClothingHeadCapGuard
+    head: CEClothingHeadHelmetSheriff
 
 - type: loadout
-  id: CEClothingHeadFedoraGuard
+  id: CEClothingHeadHelmetSheriffCorinthian
   equipment:
-    head: CEClothingHeadFedoraGuard
+    head: CEClothingHeadHelmetSheriffCorinthian
 
 #MARK: Pants
 
 - type: loadoutGroup
-  id: CEGuardPants
+  id: CESheriffPants
   name: ce-loadout-pants
   loadouts:
-  - CEClothingPantsGuard
+  - CEClothingPantsSheriff
 
 - type: loadout
-  id: CEClothingPantsGuard
+  id: CEClothingPantsSheriff
   equipment:
-    pants: CEClothingPantsGuard
+    pants: CEClothingPantsSheriff
 
 # Shirt
 
 - type: loadoutGroup
-  id: CEGuardShirt
+  id: CESheriffShirt
   name: ce-loadout-shirt
   loadouts:
-  - CEClothingShirtGuard
-  - CEClothingShirtSyurkoGuard
+  - CEClothingShirtSheriff
+  - CEClothingShirtSyurkoSheriff
 
 - type: loadout
-  id: CEClothingShirtGuard
+  id: CEClothingShirtSheriff
   equipment:
-    shirt: CEClothingShirtGuard
+    shirt: CEClothingShirtSheriff
 
 - type: loadout
-  id: CEClothingShirtSyurkoGuard
+  id: CEClothingShirtSyurkoSheriff
   equipment:
-    shirt: CEClothingShirtSyurkoGuard
+    shirt: CEClothingShirtSyurkoSheriff
