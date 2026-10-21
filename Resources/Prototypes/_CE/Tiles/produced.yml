@@ -29,7 +29,6 @@
   footstepSounds:
     collection: FootstepAsteroid
   heatCapacity: 10000
-  weather: true
   deconstructTools: [ Prying ]
   itemDrop: CEFloorTileStonebricks
 
@@ -64,7 +63,6 @@
   footstepSounds:
     collection: FootstepAsteroid
   heatCapacity: 10000
-  weather: true
   deconstructTools: [ Prying ]
   itemDrop: CEFloorTileStonebricks
 
@@ -91,7 +89,6 @@
   footstepSounds:
     collection: FootstepAsteroid
   heatCapacity: 10000
-  weather: true
   deconstructTools: [ Prying ]
   itemDrop: CEFloorTileStonebricksSmallCarved
 
@@ -118,7 +115,6 @@
   footstepSounds:
     collection: FootstepAsteroid
   heatCapacity: 10000
-  weather: true
   deconstructTools: [ Prying ]
   itemDrop: CEFloorTileStonebricksSmallCarved2
 
@@ -148,7 +144,6 @@
   footstepSounds:
     collection: FootstepAsteroid
   heatCapacity: 10000
-  weather: true
   deconstructTools: [ Prying ]
   itemDrop: CEFloorTileStoneLongBricks
 
@@ -178,7 +173,6 @@
   footstepSounds:
     collection: FootstepAsteroid
   heatCapacity: 10000
-  weather: true
   deconstructTools: [ Prying ]
   itemDrop: CEFloorTileStoneMediumBricks
 
@@ -208,7 +202,6 @@
   footstepSounds:
     collection: FootstepAsteroid
   heatCapacity: 10000
-  weather: true
   deconstructTools: [ Prying ]
   itemDrop: CEFloorTileStoneDiamond
 
@@ -238,7 +231,6 @@
   footstepSounds:
     collection: FootstepAsteroid
   heatCapacity: 10000
-  weather: true
   deconstructTools: [ Prying ]
   itemDrop: CEFloorTileStoneSquarePattern
 
@@ -268,7 +260,6 @@
   footstepSounds:
     collection: FootstepAsteroid
   heatCapacity: 10000
-  weather: true
   deconstructTools: [ Prying ]
   itemDrop: CEFloorTileStoneMediumCircles
 
@@ -298,7 +289,6 @@
   footstepSounds:
     collection: FootstepAsteroid
   heatCapacity: 10000
-  weather: true
   deconstructTools: [ Prying ]
   itemDrop: CEFloorTileStoneSmallCircles
 
@@ -328,7 +318,6 @@
   footstepSounds:
     collection: FootstepAsteroid
   heatCapacity: 10000
-  weather: true
   deconstructTools: [ Prying ]
   itemDrop: CEFloorTileStonebricksSquareCarved
 
@@ -358,7 +347,6 @@
   footstepSounds:
     collection: FootstepAsteroid
   heatCapacity: 10000
-  weather: true
 
 - type: tile
   editorHidden: false
@@ -376,4 +364,3 @@
   deconstructTools: [ Prying ]
   itemDrop: CEFloorTileGlass
   transparent: true
-  weather: true

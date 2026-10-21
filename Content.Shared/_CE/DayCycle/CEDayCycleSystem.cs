@@ -242,7 +242,10 @@ public sealed partial class CEDayCycleSystem : EntitySystem
         return true;
     }
 
-    private float GetCycleTime(EntityUid map, LightCycleComponent lightCycle)
+    /// <summary>
+    /// Seconds elapsed in the map's light cycle, the same time value the client uses to color the sky
+    /// </summary>
+    public float GetCycleTime(EntityUid map, LightCycleComponent lightCycle)
     {
         return (float) _timing.CurTime
             .Add(lightCycle.Offset)

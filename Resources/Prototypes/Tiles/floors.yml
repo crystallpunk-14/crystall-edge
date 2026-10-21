@@ -6,7 +6,6 @@
   footstepSounds:
     collection: FootstepFloor
   heatCapacity: 10000
-  weather: false
   baseTurf: Plating
   baseWhitelist:
   - FloorAsteroidIronsand

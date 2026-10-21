@@ -28,7 +28,6 @@
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
-  weather: true
   #burnedTile: CEWoodPlanksBurned
 
 - type: tile #Big
@@ -59,7 +58,6 @@
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
-  weather: true
   #burnedTile: CEWoodPlanksBigBurned
 
 - type: tile #Cruci
@@ -90,7 +88,6 @@
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
-  weather: true
   #burnedTile: CEWoodPlanksCruciformBurned
 
 - type: tile #Stairways
@@ -121,7 +118,6 @@
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
-  weather: true
   #burnedTile: CEWoodPlanksStairwaysBurned
 
 #broken
@@ -153,7 +149,6 @@
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
-  weather: true
   #burnedTile: CEWoodPlanksBurned
 
 - type: tile #Big
@@ -183,7 +178,6 @@
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
-  weather: true
   #burnedTile: CEWoodPlanksBigBurned
 
 - type: tile #Cruci
@@ -213,7 +207,6 @@
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
-  weather: true
   #burnedTile: CEWoodPlanksCruciformBurned
 
 - type: tile #Stairways
@@ -243,7 +236,6 @@
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
-  weather: true
   #burnedTile: CEWoodPlanksStairwaysBurned
 
 ### BURNED
@@ -268,7 +260,6 @@
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
-  weather: true
 
 - type: tile #Big
   editorHidden: false
@@ -291,7 +282,6 @@
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
-  weather: true
 
 - type: tile #Cruci
   editorHidden: false
@@ -314,7 +304,6 @@
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
-  weather: true
 
 - type: tile #Stairways
   editorHidden: false
@@ -337,5 +326,4 @@
   footstepSounds:
     collection: FootstepWood
   heatCapacity: 10000
-  weather: true
 ### /BURNED

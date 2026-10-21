@@ -29,7 +29,6 @@
     collection: FootstepGrass
   itemDrop: FloorTileItemGrass
   heatCapacity: 10000
-  weather: true
 
 - type: tile
   id: FloorGrassJungle
@@ -52,7 +51,6 @@
     collection: FootstepGrass
   itemDrop: FloorTileItemGrassJungle
   heatCapacity: 10000
-  weather: true
 
 - type: tile
   id: FloorGrassDark
@@ -74,7 +72,6 @@
   footstepSounds:
     collection: FootstepGrass
   heatCapacity: 10000
-  weather: true
 
 ### ASTRO TILES
 - type: tile

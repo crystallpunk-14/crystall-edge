@@ -36,17 +36,15 @@ public sealed partial class CEFarmingSystem
     [SubscribeLocalEvent]
     private void OnTakeEnergyFromLight(Entity<CEPlantEnergyFromLightComponent> regeneration, ref CEPlantUpdateEvent args)
     {
-        var gainEnergy = false;
-        var daylight = DayCycle.UnderSunlight(regeneration);
+        if (!LightLevel.TryGetLightLevel(regeneration, out var level))
+            return;
 
-        if (regeneration.Comp.Daytime && daylight)
-            gainEnergy = true;
+        var comp = regeneration.Comp;
+        var factor = comp.Inverted
+            ? level > comp.MaxLevel ? 0f : 1f - level
+            : level < comp.MinLevel ? 0f : level;
 
-        if (regeneration.Comp.Nighttime && !daylight)
-            gainEnergy = true;
-
-        if (gainEnergy)
-            AffectEnergy(args.Plant, regeneration.Comp.Energy);
+        AffectEnergy(args.Plant, comp.Energy * factor);
     }
 
     [SubscribeLocalEvent]

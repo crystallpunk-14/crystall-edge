@@ -1,8 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
-using Content.Shared._CE.ZLevels.Core.EntitySystems;
+using Content.Shared._CE.ZLevels.Roof;
 using Content.Shared.Light.Components;
 using Content.Shared.Light.EntitySystems;
-using Content.Shared.Maps;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.StatusEffectNew.Components;
 using Robust.Shared.Audio.Systems;
@@ -17,11 +16,10 @@ public abstract partial class SharedWeatherSystem : EntitySystem
 {
     [Dependency] protected IGameTiming Timing = default!;
     [Dependency] protected SharedAudioSystem Audio = default!;
-    [Dependency] private ITileDefinitionManager _tileDefManager = default!;
     [Dependency] private SharedMapSystem _mapSystem = default!;
     [Dependency] private SharedRoofSystem _roof = default!;
     [Dependency] private StatusEffectsSystem _statusEffects = default!;
-    [Dependency] private CESharedZLevelsSystem _zLevel = default!; //CrystallEdge
+    [Dependency] private CESharedZLevelsRoofSystem _zLevelRoof = default!; //CrystallEdge
 
     [Dependency] private EntityQuery<BlockWeatherComponent> _blockQuery = default!;
     [Dependency] private EntityQuery<WeatherStatusEffectComponent> _weatherQuery = default!;
@@ -40,12 +38,7 @@ public abstract partial class SharedWeatherSystem : EntitySystem
         if (Resolve(ent, ref ent.Comp2, false) && _roof.IsRooved((ent, ent.Comp1, ent.Comp2), tileRef.GridIndices))
             return false;
 
-        if (_zLevel.HasTileAbove(tileRef.GridIndices, (ent.Owner, null))) //CrystallEdge - we need also custom check for zLevel roofs above empty (unrooved by roofSystem) tiles
-            return false;
-
-        var tileDef = (ContentTileDefinition)_tileDefManager[tileRef.Tile.TypeId];
-
-        if (!tileDef.Weather)
+        if (_zLevelRoof.IsWeatherBlocked(ent.Owner, tileRef.GridIndices)) //CrystallEdge - zLevel roofs above shield from weather even when transparent (glass) and not rooved by roofSystem
             return false;
 
         var anchoredEntities = _mapSystem.GetAnchoredEntities(ent, ent.Comp1, tileRef.GridIndices);

@@ -60,3 +60,6 @@ pg_password = "postgres"
 [net]
 max_rapid_connections = 413
 max_ip_connections = 413
+
+[lookup]
+enable_server_light_tree = true

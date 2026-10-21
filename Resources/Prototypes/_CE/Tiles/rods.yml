@@ -19,7 +19,7 @@
   deconstructTools: [ Prying ]
   itemDrop: CEWoodenPlanks1
   transparent: true
-  weather: true
+  blocksWeather: false
 
 - type: tile
   editorHidden: false
@@ -39,7 +39,7 @@
   deconstructTools: [ CEMatterManipulation ]
   itemDrop: CEIronRod1
   transparent: true
-  weather: true
+  blocksWeather: false
 
 - type: tile
   editorHidden: false
@@ -59,7 +59,7 @@
   deconstructTools: [ CEMatterManipulation ]
   itemDrop: CEIronSheet1
   transparent: true
-  weather: true
+  blocksWeather: false
 
 - type: tile
   editorHidden: false
@@ -79,7 +79,7 @@
   deconstructTools: [ CEMatterManipulation ]
   itemDrop: CEBrassSheet1
   transparent: true
-  weather: true
+  blocksWeather: false
 
 - type: tile
   editorHidden: false
@@ -99,4 +99,4 @@
   deconstructTools: [ CEMatterManipulation ]
   itemDrop: CEBrassRod1
   transparent: true
-  weather: true
+  blocksWeather: false
