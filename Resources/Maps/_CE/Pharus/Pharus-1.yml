@@ -6470,18 +6470,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 19.5,-11.5
-- proto: CESpawnPointGuard
-  entities:
-  - uid: 1250
-    components:
-    - type: Transform
-      parent: 1
-      pos: 2.5,-36.5
-  - uid: 1251
-    components:
-    - type: Transform
-      parent: 1
-      pos: 1.5,-39.5
 - proto: CESpawnPointGuildmaster
   entities:
   - uid: 1446

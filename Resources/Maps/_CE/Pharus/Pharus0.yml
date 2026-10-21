@@ -2309,40 +2309,6 @@ entities:
       pos: 6.5,-14.5
     - type: Fixtures
       fixtures: {}
-- proto: CEKeyGuardHall
-  entities:
-  - uid: 986
-    components:
-    - type: Transform
-      parent: 982
-    - type: Physics
-      canCollide: False
-- proto: CEKeyGuardStaff
-  entities:
-  - uid: 983
-    components:
-    - type: Transform
-      parent: 982
-    - type: Physics
-      canCollide: False
-  - uid: 984
-    components:
-    - type: Transform
-      parent: 982
-    - type: Physics
-      canCollide: False
-  - uid: 985
-    components:
-    - type: Transform
-      parent: 982
-    - type: Physics
-      canCollide: False
-  - uid: 987
-    components:
-    - type: Transform
-      parent: 982
-    - type: Physics
-      canCollide: False
 - proto: CEKeyTavernHall
   entities:
   - uid: 1086
@@ -3991,13 +3957,6 @@ entities:
     - type: Transform
       parent: 1
       pos: 19.5,-14.5
-- proto: CESpawnPointGuardCommander
-  entities:
-  - uid: 1024
-    components:
-    - type: Transform
-      parent: 1
-      pos: -2.5,-40.5
 - proto: CESpawnPointTechnician
   entities:
   - uid: 912
@@ -4623,31 +4582,11 @@ entities:
       parent: 1
       pos: 1.5,-40.5
     - type: Storage
-      storedItems:
-        983:
-          position: 0,0
-          _rotation: South
-        984:
-          position: 1,0
-          _rotation: South
-        985:
-          position: 2,0
-          _rotation: South
-        986:
-          position: 3,0
-          _rotation: South
-        987:
-          position: 4,0
-          _rotation: South
+      storedItems: {}
     - type: ContainerContainer
       containers:
         storagebase: !type:Container
-          ents:
-          - 983
-          - 984
-          - 985
-          - 986
-          - 987
+          ents: []
           showEnts: False
           occludes: True
     - type: Fixtures

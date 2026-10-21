@@ -4336,30 +4336,6 @@ entities:
       pos: -15.5,-2.5
     - type: Fixtures
       fixtures: {}
-- proto: CEKeyGuardCage1
-  entities:
-  - uid: 1028
-    components:
-    - type: Transform
-      parent: 1027
-    - type: Physics
-      canCollide: False
-- proto: CEKeyGuardCage2
-  entities:
-  - uid: 1029
-    components:
-    - type: Transform
-      parent: 1027
-    - type: Physics
-      canCollide: False
-- proto: CEKeyGuardCage3
-  entities:
-  - uid: 1030
-    components:
-    - type: Transform
-      parent: 1027
-    - type: Physics
-      canCollide: False
 - proto: CELamppostDouble
   entities:
   - uid: 1034
@@ -6963,18 +6939,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -24.5,-11.5
-- proto: CESpawnPointGuard
-  entities:
-  - uid: 1049
-    components:
-    - type: Transform
-      parent: 1
-      pos: 6.5,-15.5
-  - uid: 1179
-    components:
-    - type: Transform
-      parent: 1
-      pos: 1.5,-15.5
 - proto: CESpawnPointTownfolk
   entities:
   - uid: 975
@@ -10420,23 +10384,11 @@ entities:
       parent: 1
       pos: -1.5,-12.5
     - type: Storage
-      storedItems:
-        1028:
-          position: 0,0
-          _rotation: South
-        1029:
-          position: 1,0
-          _rotation: South
-        1030:
-          position: 2,0
-          _rotation: South
+      storedItems: {}
     - type: ContainerContainer
       containers:
         storagebase: !type:Container
-          ents:
-          - 1028
-          - 1029
-          - 1030
+          ents: []
           showEnts: False
           occludes: True
     - type: Fixtures

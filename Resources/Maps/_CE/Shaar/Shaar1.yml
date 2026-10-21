@@ -1904,46 +1904,6 @@ entities:
       pos: -34.5,-8.5
     - type: Fixtures
       fixtures: {}
-- proto: CEKeyGuardCage1
-  entities:
-  - uid: 933
-    components:
-    - type: Transform
-      parent: 927
-    - type: Physics
-      canCollide: False
-- proto: CEKeyGuardCage2
-  entities:
-  - uid: 932
-    components:
-    - type: Transform
-      parent: 927
-    - type: Physics
-      canCollide: False
-- proto: CEKeyGuardCage3
-  entities:
-  - uid: 929
-    components:
-    - type: Transform
-      parent: 927
-    - type: Physics
-      canCollide: False
-- proto: CEKeyGuardHall
-  entities:
-  - uid: 930
-    components:
-    - type: Transform
-      parent: 927
-    - type: Physics
-      canCollide: False
-- proto: CEKeyGuardStaff
-  entities:
-  - uid: 928
-    components:
-    - type: Transform
-      parent: 927
-    - type: Physics
-      canCollide: False
 - proto: CEKeyTavernDorm1
   entities:
   - uid: 918
@@ -3877,13 +3837,6 @@ entities:
     - type: Transform
       parent: 1
       pos: -38.5,-8.5
-- proto: CESpawnPointGuardCommander
-  entities:
-  - uid: 701
-    components:
-    - type: Transform
-      parent: 1
-      pos: 1.5,-19.5
 - proto: CESpawnPointGuildmaster
   entities:
   - uid: 1152
@@ -6656,31 +6609,11 @@ entities:
       parent: 1
       pos: -0.5,-18.5
     - type: Storage
-      storedItems:
-        928:
-          position: 0,0
-          _rotation: South
-        929:
-          position: 1,0
-          _rotation: South
-        930:
-          position: 2,0
-          _rotation: South
-        932:
-          position: 4,0
-          _rotation: South
-        933:
-          position: 0,1
-          _rotation: South
+      storedItems: {}
     - type: ContainerContainer
       containers:
         storagebase: !type:Container
-          ents:
-          - 928
-          - 929
-          - 930
-          - 932
-          - 933
+          ents: []
           showEnts: False
           occludes: True
     - type: Fixtures
