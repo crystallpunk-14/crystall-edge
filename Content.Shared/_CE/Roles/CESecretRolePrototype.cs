@@ -90,6 +90,14 @@ public sealed partial class CESecretRolePrototype : IPrototype, IInheritingProto
     public HashSet<ProtoId<JobPrototype>> ProhibitedJobs = new();
 
     /// <summary>
+    /// Players with any of these jobs always receive this role, bypassing the priority draw
+    /// entirely - they never take part in it and never count toward its quotas. A job may be
+    /// guaranteed by at most one role. Usually paired with <see cref="SetPreference"/> = false.
+    /// </summary>
+    [DataField]
+    public HashSet<ProtoId<JobPrototype>> GuaranteedJobs = new();
+
+    /// <summary>
     /// Achievement granted at round end to a player still holding this role, if every objective
     /// they have (personal and department) is completed.
     /// </summary>

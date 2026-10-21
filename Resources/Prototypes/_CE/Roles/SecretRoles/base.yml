@@ -1,5 +1,0 @@
-- type: secretRole
-  id: BaseSecretRoleSheriffRestricted
-  abstract: true
-  prohibitedJobs:
-  - CESheriff

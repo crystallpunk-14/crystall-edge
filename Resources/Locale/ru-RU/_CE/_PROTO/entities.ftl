@@ -4497,6 +4497,9 @@ ent-CEPaperBountyHunterContract = заказ
 ent-CEObjectiveBountyHunterEliminate = Уничтожьте братство
     .desc = Все члены братства должны быть мертвы.
 
+ent-CEObjectiveSheriffDestroyDarkness = Уничтожить тьму
+    .desc = Все кошмары, скрывающиеся в городе, должны быть мертвы.
+
 ent-CEObjectiveLoverAssist = Помогите возлюбленному
     .desc = Сделайте всё возможное, чтобы человек, которого вы тайно любите, выполнил все свои личные цели.
 

@@ -5,6 +5,9 @@ ce-secret-role-description-werewolf = Turn into a wolf under cover of night. Kil
 
 # City
 
+ce-secret-role-name-sheriff = Sheriff
+ce-secret-role-description-sheriff = You are the defender of this city on the brink of darkness. Dark creatures hide among its residents. Find them and destroy every last one.
+
 ce-secret-role-name-civilian = Peaceful Citizen
 ce-secret-role-description-civilian = Nothing special! You just want the city to survive.
 

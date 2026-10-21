@@ -10,10 +10,6 @@
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 1h
-  special:
-    - !type:CELearnSkillsSpecial
-      skills:
-      - MilitaryTraining
 
 - type: startingGear
   id: CESheriffGear

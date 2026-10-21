@@ -5,6 +5,9 @@ ce-secret-role-description-werewolf = Превращайтесь в волка �
 
 # City
 
+ce-secret-role-name-sheriff = Шериф
+ce-secret-role-description-sheriff = Вы — защитник этого города на пороге тьмы. Среди его жителей прячутся тёмные твари. Вычислите и уничтожьте их всех до единого.
+
 ce-secret-role-name-civilian = Мирный гражданин
 ce-secret-role-description-civilian = Ничего примечательного! Вы просто хотите чтобы город выжил!
 

@@ -92,4 +92,29 @@ public sealed class CESecretRoleSelectionTest : GameTest
             }
         });
     }
+
+    /// <summary>
+    /// <see cref="CESecretRolePrototype.GuaranteedJobs"/> must be unambiguous: a job may be guaranteed
+    /// by at most one role, and every guaranteed job must exist.
+    /// </summary>
+    [Test]
+    public async Task GuaranteedJobsAreUnambiguous()
+    {
+        var server = Pair.Server;
+        var protoMan = server.ResolveDependency<IPrototypeManager>();
+
+        await server.WaitAssertion(() =>
+        {
+            var owners = new Dictionary<ProtoId<JobPrototype>, string>();
+            foreach (var role in protoMan.EnumeratePrototypes<CESecretRolePrototype>())
+            {
+                foreach (var job in role.GuaranteedJobs)
+                {
+                    Assert.That(protoMan.HasIndex(job), $"Secret role {role.ID} guarantees unknown job {job}");
+                    Assert.That(owners.TryAdd(job, role.ID),
+                        $"Job {job} is guaranteed by both {owners.GetValueOrDefault(job)} and {role.ID}");
+                }
+            }
+        });
+    }
 }
