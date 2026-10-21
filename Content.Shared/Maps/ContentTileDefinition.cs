@@ -118,11 +118,6 @@ public sealed partial class ContentTileDefinition : IPrototype, IInheritingProto
     [DataField] public bool Sturdy { get; private set; } = true;
 
     /// <summary>
-    /// Can weather affect this tile.
-    /// </summary>
-    [DataField] public bool Weather = false;
-
-    /// <summary>
     /// Is this tile immune to RCD deconstruct.
     /// </summary>
     [DataField] public bool Indestructible = false;

@@ -8,7 +8,6 @@
   footstepSounds:
     collection: FootstepAsteroid
   heatCapacity: 10000
-  weather: true
 
 - type: tile
   id: FloorAsteroidSand
@@ -38,7 +37,6 @@
   footstepSounds:
     collection: FootstepAsteroid
   heatCapacity: 10000
-  weather: true
 
 ### ASTRO TILES
 - type: tile

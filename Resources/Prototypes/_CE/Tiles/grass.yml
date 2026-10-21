@@ -27,7 +27,6 @@
   footstepSounds:
     collection: FootstepGrass
   heatCapacity: 10000
-  weather: true
 
 - type: tile
   id: CEGrassLight
@@ -58,7 +57,6 @@
   footstepSounds:
     collection: FootstepGrass
   heatCapacity: 10000
-  weather: true
 
 - type: tile
   id: CEGrassTall
@@ -89,7 +87,6 @@
   footstepSounds:
     collection: FootstepGrass
   heatCapacity: 10000
-  weather: true
 
 - type: tile
   id: CEGrassBlood
@@ -120,7 +117,6 @@
   footstepSounds:
     collection: FootstepGrass
   heatCapacity: 10000
-  weather: true
 
 - type: tile
   id: CEGrassLightBlood
@@ -151,7 +147,6 @@
   footstepSounds:
     collection: FootstepGrass
   heatCapacity: 10000
-  weather: true
 
 - type: tile
   id: CEGrassTallBlood
@@ -182,7 +177,6 @@
   footstepSounds:
     collection: FootstepGrass
   heatCapacity: 10000
-  weather: true
 
 - type: tile
   id: CEGrassAutumn
@@ -213,7 +207,6 @@
   footstepSounds:
     collection: FootstepGrass
   heatCapacity: 10000
-  weather: true
 
 - type: tile
   id: CEGrassAutumnLight
@@ -244,7 +237,6 @@
   footstepSounds:
     collection: FootstepGrass
   heatCapacity: 10000
-  weather: true
 
 - type: tile
   id: CEGrassAutumnTall
@@ -275,4 +267,3 @@
   footstepSounds:
     collection: FootstepGrass
   heatCapacity: 10000
-  weather: true

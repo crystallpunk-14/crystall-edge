@@ -2,7 +2,6 @@ using System.Diagnostics.CodeAnalysis;
 using Content.Shared._CE.ZLevels.Core.EntitySystems;
 using Content.Shared.Light.Components;
 using Content.Shared.Light.EntitySystems;
-using Content.Shared.Maps;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.StatusEffectNew.Components;
 using Robust.Shared.Audio.Systems;
@@ -17,7 +16,6 @@ public abstract partial class SharedWeatherSystem : EntitySystem
 {
     [Dependency] protected IGameTiming Timing = default!;
     [Dependency] protected SharedAudioSystem Audio = default!;
-    [Dependency] private ITileDefinitionManager _tileDefManager = default!;
     [Dependency] private SharedMapSystem _mapSystem = default!;
     [Dependency] private SharedRoofSystem _roof = default!;
     [Dependency] private StatusEffectsSystem _statusEffects = default!;
@@ -41,11 +39,6 @@ public abstract partial class SharedWeatherSystem : EntitySystem
             return false;
 
         if (_zLevel.HasTileAbove(tileRef.GridIndices, (ent.Owner, null))) //CrystallEdge - we need also custom check for zLevel roofs above empty (unrooved by roofSystem) tiles
-            return false;
-
-        var tileDef = (ContentTileDefinition)_tileDefManager[tileRef.Tile.TypeId];
-
-        if (!tileDef.Weather)
             return false;
 
         var anchoredEntities = _mapSystem.GetAnchoredEntities(ent, ent.Comp1, tileRef.GridIndices);

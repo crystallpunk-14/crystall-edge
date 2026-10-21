@@ -11,7 +11,6 @@
   footstepSounds:
     collection: FootstepAsteroid
   heatCapacity: 10000
-  weather: true
   deconstructTools: [ Prying ]
   itemDrop: CEStoneBlock1
 
@@ -36,6 +35,5 @@
   footstepSounds:
     collection: FootstepAsteroid
   heatCapacity: 10000
-  weather: true
   deconstructTools: [ Prying ]
   itemDrop: CEStoneBlock1

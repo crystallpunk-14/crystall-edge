@@ -4,7 +4,6 @@
   editorHidden: false
   edgeSpritePriority: 10000
   #friction: 0.2 #CrystallEdge
-  weather: true #CrystallEdge
   transparent: true #CrystallEdge
   isSubfloor: true
   isSpace: true

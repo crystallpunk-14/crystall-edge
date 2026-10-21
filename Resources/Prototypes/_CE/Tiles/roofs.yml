@@ -14,7 +14,6 @@
   footstepSounds:
     collection: FootstepAsteroid
   heatCapacity: 10000
-  weather: true
   deconstructTools: [ Prying ]
   itemDrop: CEFloorTileRoofRed
 
@@ -34,7 +33,6 @@
   footstepSounds:
     collection: FootstepAsteroid
   heatCapacity: 10000
-  weather: true
   deconstructTools: [ Prying ]
   itemDrop: CEFloorTileRoofGreen
 
@@ -54,6 +52,5 @@
   footstepSounds:
     collection: FootstepAsteroid
   heatCapacity: 10000
-  weather: true
   deconstructTools: [ Prying ]
   itemDrop: CEFloorTileRoofBlue
