@@ -324,6 +324,15 @@ CEKeyRingInvestigator: CEKeyRingSheriff
 CESpawnPointInvestigator: CESpawnPointSheriff
 CEWalletFilledInvestigator: CEWalletFilledSheriff
 
+# Guard clothing renamed to Sheriff
+CEClothingHeadCapGuard: CEClothingHeadCapSheriff
+CEClothingHeadFedoraGuard: CEClothingHeadFedoraSheriff
+CEClothingHeadHelmetGuard: CEClothingHeadHelmetSheriff
+CEClothingHeadHelmetGuardCorinthian: CEClothingHeadHelmetSheriffCorinthian
+CEClothingPantsGuard: CEClothingPantsSheriff
+CEClothingShirtGuard: CEClothingShirtSheriff
+CEClothingShirtSyurkoGuard: CEClothingShirtSyurkoSheriff
+
 # CrystallEdge migration zone end
 
 

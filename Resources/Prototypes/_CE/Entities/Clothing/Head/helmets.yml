@@ -1,24 +1,24 @@
 - type: entity
   parent: CEClothingHeadBase
-  id: CEClothingHeadHelmetGuard
-  name: guard helmet
-  description: A sturdy helmet worn by city guards for protection in dangerous situations.
+  id: CEClothingHeadHelmetSheriff
+  name: sheriff's helmet
+  description: A sturdy helmet worn by the sheriff for protection in dangerous situations.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Head/Guard/Helmets/basic.rsi
+    sprite: _CE/Clothing/Head/Sheriff/Helmets/basic.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Head/Guard/Helmets/basic.rsi
+    sprite: _CE/Clothing/Head/Sheriff/Helmets/basic.rsi
 
 - type: entity
   parent: CEClothingHeadBase
-  id: CEClothingHeadHelmetGuardCorinthian
-  name: corinthian guard helmet
-  description: An ornate corinthian-style helmet worn by elite city guards. Its classical design commands respect and authority.
+  id: CEClothingHeadHelmetSheriffCorinthian
+  name: sheriff's corinthian helmet
+  description: An ornate corinthian-style helmet worn by the sheriff. Its classical design commands respect and authority.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Head/Guard/Helmets/corinthian.rsi
+    sprite: _CE/Clothing/Head/Sheriff/Helmets/corinthian.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Head/Guard/Helmets/corinthian.rsi
+    sprite: _CE/Clothing/Head/Sheriff/Helmets/corinthian.rsi
   - type: HideLayerClothing
     slots:
     - Hair

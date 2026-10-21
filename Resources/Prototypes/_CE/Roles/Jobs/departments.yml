@@ -7,6 +7,7 @@
   editorHidden: false
   primary: false
   roles:
+  - CESheriff
   - CETavernmaster
   - CEBrigadier
   - CEGuildmaster
@@ -45,7 +46,6 @@
   roles:
   - CETownfolk
   - CEBard
-  - CESheriff
 
 - type: department
   id: CEGuild

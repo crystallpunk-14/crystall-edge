@@ -1,13 +1,13 @@
 - type: entity
   parent: CEClothingHeadBase
-  id: CEClothingHeadFedoraGuard
-  name: guard fedora
-  description: A stylish fedora worn by city guards.
+  id: CEClothingHeadFedoraSheriff
+  name: sheriff's hat
+  description: A stylish fedora worn by the sheriff.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Head/Guard/fedora.rsi
+    sprite: _CE/Clothing/Head/Sheriff/fedora.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Head/Guard/fedora.rsi
+    sprite: _CE/Clothing/Head/Sheriff/fedora.rsi
 
 - type: entity
   parent: CEClothingHeadBase

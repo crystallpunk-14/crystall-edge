@@ -175,11 +175,11 @@ ent-CEClothingHeadBeretGuildYellow = жёлтый берет рабочего г
 ent-CEClothingHeadBeretMercenary = берет наёмника
     .desc = Потёртый берет, носимый свободными наёмниками. Его изношенный вид говорит о бесчисленных битвах и контрактах.
 
-ent-CEClothingHeadCapGuard = кепка стражника
-    .desc = Стандартная кепка, носимая городскими стражниками.
+ent-CEClothingHeadCapSheriff = кепка шерифа
+    .desc = Стандартная кепка, которую носит шериф.
 
-ent-CEClothingHeadFedoraGuard = шляпа-федора стражника
-    .desc = Стильная шляпа-федора, носимая городскими стражниками.
+ent-CEClothingHeadFedoraSheriff = шляпа шерифа
+    .desc = Стильная шляпа-федора, которую носит шериф.
 
 ent-CEClothingHeadFedoraTavernmaster = шляпа-федора хозяина трактира
     .desc = Стильная шляпа-федора, носимая главным трактирщиком.
@@ -202,11 +202,11 @@ ent-CEClothingHeadFedoraRed = красная федора
 ent-CEClothingHeadFedoraBrown = коричневая федора
     .desc = Яркая коричневая федора, которую носят охотники-ветераны.
 
-ent-CEClothingHeadHelmetGuard = шлем стражника
-    .desc = Прочный шлем, носимый городскими стражниками для защиты в опасных ситуациях.
+ent-CEClothingHeadHelmetSheriff = шлем шерифа
+    .desc = Прочный шлем, который шериф носит для защиты в опасных ситуациях.
 
-ent-CEClothingHeadHelmetGuardCorinthian = коринфский шлем стражника
-    .desc = Изукрашенный коринфский шлем, носимый элитными городскими стражниками. Его классический дизайн вызывает уважение и авторитет.
+ent-CEClothingHeadHelmetSheriffCorinthian = коринфский шлем шерифа
+    .desc = Изукрашенный коринфский шлем, который носит шериф. Его классический дизайн вызывает уважение и авторитет.
 
 ent-CEClothingHeadMetalHeadband = металлический обруч
     .desc = Простой, но эффективный металлический обруч, обеспечивающий минимальную защиту и порядок волос.
@@ -307,8 +307,8 @@ ent-CEClothingPantsBrown = коричневые штаны
 ent-CEClothingPantsGreen = зелёные штаны
     .desc = Удобные зелёные штаны, хорошо гармонирующие с природным окружением.
 
-ent-CEClothingPantsGuard = штаны стражника
-    .desc = Стандартные штаны, носимые городскими стражниками.
+ent-CEClothingPantsSheriff = штаны шерифа
+    .desc = Стандартные штаны, которые носит шериф.
 
 ent-CEClothingPantsHakama = хакама
     .desc = Традиционные хакама, часто носимые с церемониальной одеждой.
@@ -466,8 +466,8 @@ ent-CEClothingShirtYellow = жёлтая рубашка
 ent-CEClothingShirtYellowCollar = жёлтая рубашка с воротником
     .desc = Яркая жёлтая рубашка с элегантным дизайном воротника.
 
-ent-CEClothingShirtGuard = рубашка стражника
-    .desc = Рубашка, носимая имперской охраной. Все идентичны в едином, строгом стиле.
+ent-CEClothingShirtSheriff = рубашка шерифа
+    .desc = Рубашка, которую носит шериф, в едином строгом стиле.
 
 ent-CEClothingShirtMerchant = рубашка купца
     .desc = Таинственные купцы, которых не видели сотни лет, носили ровно этот тип одежды.
@@ -5089,8 +5089,8 @@ ent-CEClothingShirtSyurkoBlue = синее сюрко
 ent-CEClothingShirtSyurkoGreen = зелёное сюрко
     .desc = Зелёный плащ сюрко, часто используемый в церемониальной обстановке.
 
-ent-CEClothingShirtSyurkoGuard = сюрко стражника
-    .desc = Сюрко, стилизованное под форму стражников.
+ent-CEClothingShirtSyurkoSheriff = сюрко шерифа
+    .desc = Сюрко, стилизованное под форму шерифа.
 
 ent-CEClothingShirtSyurkoRed = красное сюрко
     .desc = Яркое красное сюрко, излюбленное в некоторых регионах.

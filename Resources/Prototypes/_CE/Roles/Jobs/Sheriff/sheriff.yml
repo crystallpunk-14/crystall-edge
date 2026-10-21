@@ -60,13 +60,13 @@
           range: 2, 3
         children:
         - id: CEClothingCloakSheriff
-        - id: CEClothingHeadHelmetGuard
-        - id: CEClothingHeadHelmetGuardCorinthian
-        - id: CEClothingHeadCapGuard
-        - id: CEClothingHeadFedoraGuard
-        - id: CEClothingShirtGuard
-        - id: CEClothingShirtSyurkoGuard
-        - id: CEClothingPantsGuard
+        - id: CEClothingHeadHelmetSheriff
+        - id: CEClothingHeadHelmetSheriffCorinthian
+        - id: CEClothingHeadCapSheriff
+        - id: CEClothingHeadFedoraSheriff
+        - id: CEClothingShirtSheriff
+        - id: CEClothingShirtSyurkoSheriff
+        - id: CEClothingPantsSheriff
 
 - type: entity
   id: CEChestFilledSheriff

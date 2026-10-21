@@ -8,67 +8,67 @@
     proto: CEClothingCloakRaincoatGuard
 
 - type: tradeOffer
-  id: BuyClothingShirtSyurkoGuard
+  id: BuyClothingShirtSyurkoSheriff
   shop: EmpireGuard
   pay:
     bonus: 10
   reward:
   - !type:CETradeSpawnReward
-    proto: CEClothingShirtSyurkoGuard
+    proto: CEClothingShirtSyurkoSheriff
 
 - type: tradeOffer
-  id: BuyClothingHeadHelmetGuard
+  id: BuyClothingHeadHelmetSheriff
   shop: EmpireGuard
   pay:
     bonus: 10
   reward:
   - !type:CETradeSpawnReward
-    proto: CEClothingHeadHelmetGuard
+    proto: CEClothingHeadHelmetSheriff
 
 - type: tradeOffer
-  id: BuyClothingHeadHelmetGuardCorinthian
+  id: BuyClothingHeadHelmetSheriffCorinthian
   shop: EmpireGuard
   pay:
     bonus: 10
   reward:
   - !type:CETradeSpawnReward
-    proto: CEClothingHeadHelmetGuardCorinthian
+    proto: CEClothingHeadHelmetSheriffCorinthian
 
 - type: tradeOffer
-  id: BuyClothingHeadCapGuard
+  id: BuyClothingHeadCapSheriff
   shop: EmpireGuard
   pay:
     bonus: 10
   reward:
   - !type:CETradeSpawnReward
-    proto: CEClothingHeadCapGuard
+    proto: CEClothingHeadCapSheriff
 
 - type: tradeOffer
-  id: BuyClothingHeadFedoraGuard
+  id: BuyClothingHeadFedoraSheriff
   shop: EmpireGuard
   pay:
     bonus: 10
   reward:
   - !type:CETradeSpawnReward
-    proto: CEClothingHeadFedoraGuard
+    proto: CEClothingHeadFedoraSheriff
 
 - type: tradeOffer
-  id: BuyClothingPantsGuard
+  id: BuyClothingPantsSheriff
   shop: EmpireGuard
   pay:
     bonus: 10
   reward:
   - !type:CETradeSpawnReward
-    proto: CEClothingPantsGuard
+    proto: CEClothingPantsSheriff
 
 - type: tradeOffer
-  id: BuyClothingShirtGuard
+  id: BuyClothingShirtSheriff
   shop: EmpireGuard
   pay:
     bonus: 10
   reward:
   - !type:CETradeSpawnReward
-    proto: CEClothingShirtGuard
+    proto: CEClothingShirtSheriff
 
 - type: tradeOffer
   id: BuyClothingCloakSheriff

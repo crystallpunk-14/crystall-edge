@@ -33,14 +33,14 @@
 
 - type: entity
   parent: CEClothingPantsBase
-  id: CEClothingPantsGuard
-  name: guard pants
-  description: Standard issue pants worn by city guards.
+  id: CEClothingPantsSheriff
+  name: sheriff's pants
+  description: Standard issue pants worn by the sheriff.
   components:
   - type: Sprite
-    sprite: _CE/Clothing/Pants/Guard/pants.rsi
+    sprite: _CE/Clothing/Pants/Sheriff/pants.rsi
   - type: Clothing
-    sprite: _CE/Clothing/Pants/Guard/pants.rsi
+    sprite: _CE/Clothing/Pants/Sheriff/pants.rsi
 
 - type: entity
   parent: CEClothingPantsBase
