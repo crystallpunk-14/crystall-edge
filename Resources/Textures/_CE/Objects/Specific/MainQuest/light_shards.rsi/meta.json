@@ -7,11 +7,25 @@
     "y": 32
   },
   "states": [
-    { "name": "shard1" },
-    { "name": "shard2" },
-    { "name": "shard3" },
-    { "name": "shard4" },
-    { "name": "inhand-left", "directions": 4 },
-    { "name": "inhand-right", "directions": 4 }
+    {
+      "name": "shard1"
+    },
+    {
+      "name": "shard2"
+    },
+    {
+      "name": "shard3"
+    },
+    {
+      "name": "shard4"
+    },
+    {
+      "name": "inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right",
+      "directions": 4
+    }
   ]
 }

@@ -7,9 +7,19 @@
     "y": 32
   },
   "states": [
-    { "name": "lockpick_iron" },
-    { "name": "file" },
-    { "name": "inhand-left", "directions": 4 },
-    { "name": "inhand-right", "directions": 4 }
+    {
+      "name": "lockpick_iron"
+    },
+    {
+      "name": "file"
+    },
+    {
+      "name": "inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right",
+      "directions": 4
+    }
   ]
 }

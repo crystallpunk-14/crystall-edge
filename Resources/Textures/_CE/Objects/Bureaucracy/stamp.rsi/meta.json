@@ -7,14 +7,34 @@
     "y": 32
   },
   "states": [
-    { "name": "approved" },
-    { "name": "bank" },
-    { "name": "denied" },
-    { "name": "guard" },
-    { "name": "guildmaster" },
-    { "name": "academy" },
-    { "name": "engineering" },
-    { "name": "inhand-left", "directions": 4 },
-    { "name": "inhand-right", "directions": 4 }
+    {
+      "name": "approved"
+    },
+    {
+      "name": "bank"
+    },
+    {
+      "name": "denied"
+    },
+    {
+      "name": "guard"
+    },
+    {
+      "name": "guildmaster"
+    },
+    {
+      "name": "academy"
+    },
+    {
+      "name": "engineering"
+    },
+    {
+      "name": "inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right",
+      "directions": 4
+    }
   ]
 }

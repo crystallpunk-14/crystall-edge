@@ -7,12 +7,28 @@
     "y": 32
   },
   "states": [
-    { "name": "keyring" },
-    { "name": "ring-0" },
-    { "name": "ring-1" },
-    { "name": "ring-2" },
-    { "name": "ring-3" },
-    { "name": "inhand-left", "directions": 4 },
-    { "name": "inhand-right", "directions": 4 }
+    {
+      "name": "keyring"
+    },
+    {
+      "name": "ring-0"
+    },
+    {
+      "name": "ring-1"
+    },
+    {
+      "name": "ring-2"
+    },
+    {
+      "name": "ring-3"
+    },
+    {
+      "name": "inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right",
+      "directions": 4
+    }
   ]
 }
