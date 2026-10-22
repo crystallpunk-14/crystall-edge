@@ -61,5 +61,11 @@ ce-meal-recipe-green-omelette-desc = Запеченный яичный омле�
 ce-meal-recipe-garlic-bread-name = Чесночный хлеб
 ce-meal-recipe-garlic-bread-desc = Прожаренный до хрустящей корочки хлеб с пряным чесночным ароматом. Остренько. Хрустит.
 
+ce-meal-recipe-carrot-patties-name = Морковные котлеты с сыром
+ce-meal-recipe-carrot-patties-desc = Золотистые котлеты из моркови, яйца и муки с расплавленным сыром внутри. Хрустящие снаружи, нежные внутри.
+
+ce-meal-recipe-carrot-salad-name = Морковный салат
+ce-meal-recipe-carrot-salad-desc = Сочная тёртая морковь, приправленная чесноком. Сладкий, хрустящий, с острой ноткой.
+
 ce-meal-recipe-corn-pepper-meat-name = Жаркое с кукурузой и перцем
 ce-meal-recipe-corn-pepper-meat-desc = Аппетитное жаркое из кукурузы, болгарского перца и сочного мяса.

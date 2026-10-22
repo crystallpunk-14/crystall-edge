@@ -116,8 +116,18 @@
     2:
     - !type:TileNoiseDistanceLayer
       size: &size 340, 340
-      distanceConfig: !type:EuclideanSquaredDistance
+      # Mountains ring the city instead of crowding it, thinning out again toward the shore.
+      distanceConfig: &mountainRing !type:RingDistance
+        radius: 0.7
+        width: 0.6
         blendWeight: 0.6
+      mask:
+      - !type:BelowMask
+        masks: &onLand
+        - !type:TileMask
+          tiles:
+          - CESnow
+          - CEStone
       fill:
       - tile: CESnow
         threshold: 0.7
@@ -140,16 +150,20 @@
     1:
     - !type:TileNoiseDistanceLayer
       size: *size
-      distanceConfig: !type:EuclideanSquaredDistance
-        blendWeight: 0.6
+      distanceConfig: *mountainRing
+      mask:
+      - !type:BelowMask
+        masks: *onLand
       fill:
       - tile: CESnow
         threshold: 0.6
         noise: *islandNoise
     - !type:TileNoiseDistanceLayer
       size: *size
-      distanceConfig: !type:EuclideanSquaredDistance
-        blendWeight: 0.6
+      distanceConfig: *mountainRing
+      mask:
+      - !type:BelowMask
+        masks: *onLand
       fill:
       - tile: CEStone
         threshold: 0.7
@@ -201,8 +215,11 @@
           gain: 0.5
     - !type:TileNoiseDistanceLayer
       size: *size
-      distanceConfig: !type:EuclideanSquaredDistance
-        blendWeight: 0.6
+      distanceConfig: *mountainRing
+      mask:
+      - !type:TileMask
+        tiles:
+        - CESnow
       fill:
       - tile: CEStone
         threshold: 0.6

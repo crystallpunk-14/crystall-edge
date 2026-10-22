@@ -6,9 +6,8 @@
   - type: CEGOAP
   - type: CEGOAPEyesPerceptor
     visionRadius: 8
-    whitelist:
-      components:
-      - NpcFactionMember
+    components:
+    - type: NpcFactionMember
   - type: CEGOAPPainPerceptor
   - type: CEGOAPSteering
     climb: true

@@ -20,7 +20,7 @@
     tags:
     - Document
   - type: Sprite
-    sprite: _CE/Objects/Bureaucracy/paper.rsi
+    sprite: _CE/Objects/Bureaucracy/passport.rsi
     layers:
     - state: passport
   - type: PaperVisuals

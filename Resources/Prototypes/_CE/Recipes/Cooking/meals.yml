@@ -152,6 +152,23 @@
     - Garlic
 
 - type: cookingRecipe
+  id: CarrotSalad
+  foodType: Meal
+  foodData:
+    name: ce-meal-recipe-carrot-salad-name
+    desc: ce-meal-recipe-carrot-salad-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Meals/food.rsi
+      state: carrot_salad
+  requirements:
+  - !type:TagRequired
+    tags:
+    - Carrot
+  - !type:TagRequired
+    tags:
+    - Garlic
+
+- type: cookingRecipe
   id: GreenSaladMeat
   foodType: Meal
   foodData:
@@ -378,6 +395,29 @@
   - !type:TagRequired
     tags:
     - Salad
+
+- type: cookingRecipe
+  id: CarrotPatties
+  foodType: Meal
+  foodData:
+    name: ce-meal-recipe-carrot-patties-name
+    desc: ce-meal-recipe-carrot-patties-desc
+    visuals:
+    - sprite: _CE/Objects/Consumable/Food/Meals/food.rsi
+      state: carrot_patties
+  requirements:
+  - !type:TagRequired
+    tags:
+    - Egg
+  - !type:TagRequired
+    tags:
+    - Wheat
+  - !type:TagRequired
+    tags:
+    - Carrot
+  - !type:TagRequired
+    tags:
+    - Cheese
 
 # Unused meal sprites lacking ingredients/tags:
 # - beef_rice

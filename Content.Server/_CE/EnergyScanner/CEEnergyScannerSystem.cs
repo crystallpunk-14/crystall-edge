@@ -1,3 +1,4 @@
+using Content.Server._CE.Power;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Power.NodeGroups;
 using Content.Shared._CE.EnergyScanner;
@@ -66,7 +67,7 @@ public sealed partial class CEEnergyScannerSystem : EntitySystem
             _ => "ce-energy-scanner-network-other",
         });
 
-        var status = Loc.GetString(IsPowered(net) ? "ce-energy-scanner-powered" : "ce-energy-scanner-unpowered");
+        var status = Loc.GetString(CEPowerSystem.IsPowered(net) ?"ce-energy-scanner-powered" : "ce-energy-scanner-unpowered");
 
         return Loc.GetString("ce-energy-scanner-statistics",
             ("header", header),
@@ -84,10 +85,4 @@ public sealed partial class CEEnergyScannerSystem : EntitySystem
     }
 
     private static string FormatValue(float value) => Math.Round(value).ToString("N0");
-
-    /// <summary>
-    /// A network counts as powered when it has at least one enabled source (generator or discharging battery).
-    /// Written by the power solver every tick.
-    /// </summary>
-    private static bool IsPowered(IBasePowerNet net) => net.NetworkNode.LastCombinedMaxSupply > 0;
 }

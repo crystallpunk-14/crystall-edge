@@ -59,8 +59,8 @@
         rolls: !type:RangeNumberSelector
           range: 2, 3
         children:
-        - id: CEClothingCloakTavernmaster
-        - id: CEClothingHeadFedoraTavernmaster
+        - id: CEClothingCloakTavernmasterJacket1
+        - id: CEClothingCloakTavernmasterJacket2
 
 - type: entity
   id: CEKeyRingTavernmaster

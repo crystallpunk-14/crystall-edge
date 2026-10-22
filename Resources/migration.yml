@@ -345,6 +345,11 @@ CEWallRadioSpeakerGuard: CEWallRadioSpeaker
 CERadioPostSpeakerGuard: CERadioPostSpeaker
 CETradeTableEmpireSheriff: null
 
+# 2026-10-22
+CEClothingCloakTavernmaster: null
+CEClothingHeadFedoraTavernmaster: null
+CEClothingHeadBeretGuildGreen: null
+
 # CrystallEdge migration zone end
 
 

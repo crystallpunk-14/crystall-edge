@@ -9,7 +9,7 @@
   - type: Item
     size: Tiny
   - type: Sprite
-    sprite: _CE/Objects/Tools/keys.rsi
+    sprite: _CE/Objects/Tools/lock.rsi
   - type: EmitSoundOnLand
     sound:
       path: /Audio/Items/welder_drop.ogg

@@ -4,12 +4,10 @@
   id: JobCETavernmaster
   groups:
   - CEGeneralBag
-  - CETavernmasterHead #
   - CEGeneralEyes
-  - CETavernmasterCloak #
-  - CEGeneralGloves
-  - CEGeneralShirt
-  - CEGeneralPants
+  - CETavernmasterCloak
+  - CETavernShirt
+  - CETavernPants
   - CEGeneralShoes
   - CEGeneralInstruments
 
@@ -17,11 +15,11 @@
   id: JobCEChef
   groups:
   - CEGeneralBag
-  - CEChefHead
+  - CEChefHead 
   - CEGeneralEyes
-  - CEGeneralGloves
-  - CEGeneralShirt
-  - CEGeneralPants
+  - CETavernCloak
+  - CETavernShirt
+  - CETavernPants
   - CEGeneralShoes
   - CEGeneralInstruments
 
