@@ -275,6 +275,11 @@ CEVialMediumChaosEssence: CEVialMedium
 # 2026-10-18
 CEWallLight: CEWallLightOrange
 
+# 2026-10-22
+CEClothingCloakTavernmaster: null
+CEClothingHeadFedoraTavernmaster: null
+CEClothingHeadBeretGuildGreen: null
+
 # CrystallEdge migration zone end
 
 
