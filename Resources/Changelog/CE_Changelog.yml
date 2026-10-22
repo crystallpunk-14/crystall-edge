@@ -1496,3 +1496,17 @@
   id: 1127
   time: '2026-10-22T20:04:21.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/548
+- author: TheShuEd
+  changes:
+  - message: A character's profile now stores their original role if they change it
+      for any reason.
+    type: Add
+  - message: Fixed a bug where recruiting a priest into the Brotherhood caused the
+      game to treat him as dead to the werewolf and indicate that he had completed
+      his objective.
+    type: Fix
+  - message: Bounty hunter now have military training active skill
+    type: Tweak
+  id: 1128
+  time: '2026-10-22T21:48:54.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/550
