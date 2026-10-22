@@ -1480,3 +1480,19 @@
   id: 1126
   time: '2026-10-22T16:05:50.0000000+00:00'
   url: https://github.com/crystallpunk-14/crystall-edge/pull/549
+- author: TheShuEd
+  changes:
+  - message: The Guard (Army) deparment has been removed from the game
+    type: Remove
+  - message: "A new hidden role, the Sheriff, has been added. It\u2019s not really\
+      \ that \u201Chidden,\u201D though, since the new single Sheriff job is guaranteed\
+      \ to have it. The Sheriff has been tasked with destroying the Nightmare faction."
+    type: Add
+  - message: Sheriff get salary back! 2 gold coin per day.
+    type: Add
+  - message: All ore cores except gold was removed from procedural generation around
+      the city.
+    type: Tweak
+  id: 1127
+  time: '2026-10-22T20:04:21.0000000+00:00'
+  url: https://github.com/crystallpunk-14/crystall-edge/pull/548
